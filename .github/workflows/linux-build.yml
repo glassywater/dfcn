@@ -37,7 +37,7 @@ jobs:
     outputs:
       changed: ${{ steps.merge.outputs.changed }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: main
           fetch-depth: 0
@@ -75,7 +75,7 @@ jobs:
       )
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           # 同步后要编译刚合并的 main
           ref: ${{ needs.sync.result == 'success' && 'main' || github.ref }}
@@ -93,7 +93,7 @@ jobs:
 
       - name: Cache g_src
         id: cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/g_src
           key: g_src-${{ steps.version.outputs.df }}
@@ -121,7 +121,7 @@ jobs:
         run: G_SRC="$HOME/g_src" OUT=dist bash .github/scripts/build-linux.sh
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: >-
             DFCN-Linux-x64-${{ steps.version.outputs.df
