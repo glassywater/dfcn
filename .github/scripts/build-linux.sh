@@ -68,6 +68,19 @@ DFCN Linux x64 运行包（由 GitHub Actions 自动编译，非上游官方发�
 
 卸载：删除游戏根目录的 libdfhooks.so 与 dfcn 文件夹。
 EOF
+# Game executables whose addresses are in src/native_elf_build_bindings.inc
+# (header lines "// Reference: <build-id>; SHA-256: <hash>" and "// Native: ...").
+# The installer compares the local dwarfort against these.
+supported="$(grep -m 2 -oP '^// (Reference|Native): [0-9a-f]+; SHA-256: \K[0-9a-f]{64}' \
+    src/native_elf_build_bindings.inc | tr '\n' ' ')"
+df_version="$(grep -oP '当前适配版本为 \*\*\K[0-9]+\.[0-9]+' README.md | head -n 1 || true)"
+{
+    echo "commit=$(git rev-parse HEAD 2>/dev/null || echo unknown)"
+    echo "df_version=${df_version:-unknown}"
+    echo "built_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+    echo "supported_dwarfort_sha256=${supported% }"
+} >"$stage/dfcn/BUILD-INFO"
+cat "$stage/dfcn/BUILD-INFO"
 (cd "$stage" && sha256sum libdfhooks.so dfcn/libdfcn_core.so dfcn/libdfhooks.so >dfcn/SHA256SUMS)
 tar -C "$stage" -czf "$OUT/DFCN-Linux-x64.tar.gz" .
 echo "Package: $OUT/DFCN-Linux-x64.tar.gz"
