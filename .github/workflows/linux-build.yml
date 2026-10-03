@@ -1,0 +1,148 @@
+name: Linux build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      sync_upstream:
+        description: 先合并上游 pokemonchw/dfcn 的最新提交再编译
+        type: boolean
+        default: false
+  schedule:
+    - cron: '17 3 * * *'   # 每天检查一次上游更新
+
+permissions:
+  contents: write
+
+concurrency:
+  group: linux-build-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  UPSTREAM_REPO: https://github.com/pokemonchw/dfcn.git
+  # 上游 README 未写明适配版本时使用的游戏版本
+  DF_VERSION_FALLBACK: '53.16'
+  BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+
+jobs:
+  sync:
+    name: Sync upstream
+    if: >-
+      github.event_name == 'schedule' ||
+      (github.event_name == 'workflow_dispatch' && inputs.sync_upstream)
+    runs-on: ubuntu-24.04
+    outputs:
+      changed: ${{ steps.merge.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Merge upstream main
+        id: merge
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email "$BOT_EMAIL"
+          git fetch --no-tags "$UPSTREAM_REPO" main
+          if git merge-base --is-ancestor FETCH_HEAD HEAD; then
+            echo '上游没有新提交。'
+            echo changed=false >>"$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git log --oneline HEAD..FETCH_HEAD
+          message='Merge upstream pokemonchw/dfcn main'
+          if ! git merge --no-edit -m "$message" FETCH_HEAD; then
+            echo '::error::与上游合并冲突，请在本地手动合并：' \
+              'git fetch upstream && git merge upstream/main'
+            exit 1
+          fi
+          git push origin HEAD:main
+          echo changed=true >>"$GITHUB_OUTPUT"
+
+  build:
+    name: Build Linux x64
+    needs: sync
+    # 定时任务仅在上游有更新时编译；其他触发方式总是编译
+    if: >-
+      always() && (
+        needs.sync.result == 'skipped' ||
+        (needs.sync.result == 'success' && (
+          github.event_name == 'workflow_dispatch' ||
+          needs.sync.outputs.changed == 'true'))
+      )
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # 同步后要编译刚合并的 main
+          ref: ${{ needs.sync.result == 'success' && 'main' || github.ref }}
+          persist-credentials: false
+
+      - name: Detect target game version
+        id: version
+        run: |
+          pattern='当前适配版本为 \*\*\K[0-9]+\.[0-9]+'
+          version="$(grep -oP "$pattern" README.md | head -n 1 || true)"
+          version="${version:-$DF_VERSION_FALLBACK}"
+          echo "Dwarf Fortress $version"
+          echo "df=$version" >>"$GITHUB_OUTPUT"
+          echo "file=df_${version//./_}_linux.tar.bz2" >>"$GITHUB_OUTPUT"
+
+      - name: Cache g_src
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: ~/g_src
+          key: g_src-${{ steps.version.outputs.df }}
+
+      - name: Download g_src from bay12games.com
+        if: steps.cache.outputs.cache-hit != 'true'
+        env:
+          DF_FILE: ${{ steps.version.outputs.file }}
+        run: |
+          mkdir -p ~/df
+          curl -fsSL --retry 3 \
+            "https://www.bay12games.com/dwarves/$DF_FILE" \
+            | tar -xj -C ~/df --wildcards '*g_src/*'
+          mv "$(find ~/df -maxdepth 2 -type d -name g_src | head -n 1)" \
+            ~/g_src
+          rm -rf ~/df
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq g++ pkg-config \
+            libsdl2-dev libfreetype-dev libfontconfig-dev
+
+      - name: Build
+        run: G_SRC="$HOME/g_src" OUT=dist bash .github/scripts/build-linux.sh
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: >-
+            DFCN-Linux-x64-${{ steps.version.outputs.df
+            }}-${{ github.run_number }}
+          path: dist/DFCN-Linux-x64.tar.gz
+          if-no-files-found: error
+
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DF: ${{ steps.version.outputs.df }}
+        run: |
+          tag="${GITHUB_REF_NAME}"
+          asset=dist/DFCN-Linux-x64.tar.gz
+          notes="Linux x64 运行包，适配 Dwarf Fortress ${DF}。
+          由 GitHub Actions 自动编译（提交 ${GITHUB_SHA::7}）。
+          解压到包含 dwarfort 的游戏根目录，详见包内 dfcn/INSTALL-Linux.txt。"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" "$asset" --clobber
+          else
+            gh release create "$tag" "$asset" \
+              --title "DFCN Linux x64 · $tag" --notes "$notes"
+          fi
