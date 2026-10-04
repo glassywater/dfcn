@@ -1,0 +1,453 @@
+Fortress location detail: native text construction (source extraction)
+
+Source images are the reference and classic PE images configured in
+data/runtime/native-pe-images.json. The two saved renderer disassemblies are
+reference-render.asm and classic-render.asm. Native literal loads, including
+instruction RVAs and literal RVAs for both editions, are recorded in
+native-literal-sources.tsv. This file records source semantics; it is not a
+test, a game-observation result, or an assertion about an observed game frame.
+
+Renderer boundaries and address notation
+----------------------------------------
+reference: RVA 0x3b13d0..0x3b90e9; jump tables 0x3b90ec..0x3b926c.
+classic:   corresponding renderer instructions are reference RVA - 0x2440.
+All instruction references below use reference RVAs unless stated otherwise.
+The absolute image base in the saved objdump output is 0x140000000.
+The display emits strings through text renderer RVA 0xad9960. Rows containing
+labels, values, and punctuation can use several separate calls. A screen row
+is therefore not necessarily one source string or one translation key.
+
+The renderer dispatches by the location object's virtual type:
+  2 = temple; 8 = tavern; 9 = library; 11 = guildhall; 13 = hospital.
+The temple detail branch starts at 0x3b690c; it rejoins the shared personnel
+list at 0x3b7c02. Temple-specific source text must include the shared header,
+visitor policy, and shared personnel paths in addition to this branch.
+
+Shared name and type header
+---------------------------
+0x3b179b calls location.virtual(+0x10) to obtain its language_name.
+If the name exists and byte +0x72 is nonzero, 0x3b17fc calls the native
+language-name formatter (RVA 0xa946e0) with capitalized=true and final=false.
+The resulting dynamic name is drawn at 0x3b1887. It is shortened to available
+width by the native code, with the final three available bytes changed to
+literal '.' when there is sufficient room (0x3b1827..0x3b186b).
+This is a generated language name, not a finite English literal list.
+
+Temple type header, 0x3b1d98..0x3b1e71:
+  location.+0x16c == 0 -> "Shrine"
+  location.+0x16c == 1 -> "Temple"
+  location.+0x16c == 2 -> "Temple complex"
+
+Temple religion/deity header, 0x3b1eac..0x3b1fca:
+  if location.+0xb8 == 1:
+      entity = find_entity(location.+0xbc)            # RVA 0x7daf0
+      if entity:
+          source = format_language_name(entity.+0x20, true, false)
+          native_name_case_helper(source)             # RVA 0x52d650
+      else:
+          source = "No particular deity"
+  else if location.+0xb8 == 0:
+      historical_figure = find_hf(location.+0xbc)      # RVA 0x67dc0
+      if historical_figure:
+          source = "Dedicated to "
+          source += format_language_name(hf.+0x38, true, false)
+      else:
+          source = "No particular deity"
+  else:
+      source = "No particular deity"
+  draw(source)
+
+The organized-religion branch supplies its generated name directly; it does
+not prepend "Dedicated to ". The deity branch prepends that literal.
+
+Other type headers in the same renderer are "Hospital", "Library", "Tavern",
+and a generated profession descriptor followed by " meeting place",
+" guildhall", or " grand guildhall". The guild header also constructs
+"<count> member[s]", ", no members", "No established guild",
+"<count> worker[s]", and ", no workers". These are sibling type branches,
+not additional temple states.
+
+Shared visitor policy
+---------------------
+0x3b22db..0x3b2332 reads location flag bits in priority order:
+  flag bit 6 -> members policy
+  otherwise flag bit 4 -> all visitors
+  otherwise flag bit 5 -> citizens plus long-term residents
+  otherwise -> citizens only
+
+0x3b2695..0x3b27ed draws exactly one of:
+  members policy and type == 11:
+      "Only members can visit (if guild established)"
+  members policy and any other supported type:
+      "Only members can visit"
+  all visitors:
+      "All visitors welcome"
+  citizens plus long-term residents:
+      "Citizens and long-term residents only"
+  citizens only:
+      "Citizens only"
+
+The members button is exposed for guildhalls and for temples whose
+location.+0xb8 == 1 (0x3b233c..0x3b236e). The visitor icons are texture draws;
+they do not replace or supply the visitor policy string.
+
+Temple value and next-rank line
+------------------------------
+0x3b690c calls RVA 0xe64560; its result minus one is passed as the native
+value-format option to helper RVA 0x77f920. The detail data is the object returned by
+location.virtual(+0x18), saved in renderer local [rbp-0x58].
+
+if detail exists:
+    current_value = native_value_format(detail.+0x38, native_option - 1)
+    switch detail.+0x34:
+        2: source = "Temple Complex, " + current_value
+        1: source = "Temple, " + current_value
+           source += " (next at "
+           source += integer(global RVA 0x239a1bc)
+           source += byte(0x0f)
+           source += ")"
+        0: source = "Shrine, " + current_value
+           source += " (next at "
+           source += integer(global RVA 0x239a1b8)
+           source += byte(0x0f)
+           source += ")"
+    draw(source)                                     # 0x3b6aab
+
+The value helper can supply an approximate value, such as "~3000" plus the
+native money glyph. The next-rank value is formatted as an integer, then the
+money glyph byte 0x0f is appended explicitly at 0x3b6a85. This value, money
+glyph, and next-rank clause are meaningful source content and must survive
+translation. "Temple Complex, " uses title case in this line while the upper
+type header uses "Temple complex".
+
+Complete native money-value helper
+----------------------------------
+The helper disassemblies are saved as reference-value.asm and classic-value.asm.
+reference RVA 0x77f920..0x77fb92 includes both the initial unwind body and its
+continuation at 0x77fa58; the continuation must not be mistaken for a separate
+text builder. The corresponding classic range is 0x77d340..0x77d5b4.
+
+currency = byte(0x0f)                                # native CP437 money glyph
+if native_option <= -1:
+    return "?" + currency                            # unknown value
+if native_option >= 15:
+    return integer(signed_value) + currency           # exact signed value
+
+For option 0..14 the helper takes abs(signed_value), retains a negative flag,
+and chooses a native threshold through its jump table. Immediate threshold
+arms are 10000, 5000, 4000, 3000, 2500, 2000, 1500, 1000, 500, 200, 100,
+50, 25, and 10; the initially cleared threshold also supplies zero.
+if absolute_value <= threshold:
+    return integer(absolute_value) + currency
+    # This native early return uses the absolute amount without reinserting
+    # its saved sign; translation retains the actual source output.
+
+rounding_boundary = threshold + 50
+if absolute_value <= rounding_boundary:
+    amount = round_to_nearest_10(absolute_value), with minimum amount 10
+    approximate_prefix = "~"
+else if absolute_value <= 3 * rounding_boundary:
+    amount = round_to_nearest_100(absolute_value), with minimum amount 100
+    approximate_prefix = "~"
+else if absolute_value <= 30 * rounding_boundary:
+    amount = round_to_nearest_1000(absolute_value), with minimum amount 1000
+    approximate_prefix = "~"
+else:
+    amount = 30 * rounding_boundary + 500
+    approximate_prefix = ""
+    append_uncertainty_suffix = true
+
+source = approximate_prefix
+if signed_value < 0: source += "-"
+source += integer(amount)
+source += currency
+if append_uncertainty_suffix: source += "?"
+return source
+
+The source union therefore includes unknown "?" plus currency, exact integer
+plus currency, approximate "~" plus integer plus currency, their native signed
+forms, and very uncertain amounts with a trailing "?" after the currency.
+This helper supplies no English nouns. A complete translation of the temple
+rank line must preserve these source value forms and the money glyph rather
+than accepting only the photographed "~3000" amount.
+
+Temple worshipper count
+-----------------------
+0x3b6ac4 obtains count = RVA 0x2a6e00(location.+0xb8, location.+0xbc).
+  count > 0 -> format_integer(count)                  # 0x3b6b12
+  count <= 0 -> "No"                                 # 0x3b6b35
+The renderer then draws a separate " " and:
+  count == 1 -> "worshipper"
+  otherwise -> "worshippers"
+Thus the possible row grammar is:
+  "No worshippers"
+  "1 worshipper"
+  "<integer other than 1> worshippers"
+The count and noun use distinct draw calls; translating only one physical
+fragment is not complete coverage of the constructed row.
+
+Priest recognition, requirements, and agreements
+------------------------------------------------
+0x3b6be9 tests whether the location has an organized religion (+0xb8 == 1).
+If it does not, the branch displays:
+  "Only organized religions can have recognized priesthoods."
+If the religion lookup is absent, the branch omits further recognition text.
+
+For an organized religion with a valid entity:
+  recognized_rank = 0
+  for each position in entity.+0x10c0:
+      match position token "PRIEST" or "HIGH_PRIEST"
+      inspect entity assignments at +0x1110
+      retain assignments whose position id matches position.+0x20 and whose
+      site id equals the current site global RVA 0x2393674
+      matching PRIEST -> recognized_rank at least 1
+      matching HIGH_PRIEST -> recognized_rank at least 2
+
+"PRIEST" and "HIGH_PRIEST" (loads at 0x3b6c79 and 0x3b6d55) are internal
+position tokens used for comparisons, not user-facing text labels.
+
+if detail.+0x34 > recognized_rank:
+    search the current agreements for the matching organized religion
+    if an applicable agreement exists, the recognition action is available
+    otherwise:
+        required_count = global RVA 0x239a1c0 when recognized_rank == 0
+                         global RVA 0x239a1c4 when recognized_rank == 1
+        if worshipper_count < required_count:
+            source = recognized_rank == 0 ? "Priest: " : "High priest: "
+            source += integer(required_count)
+            source += " worshipper"
+            if required_count != 1: source += "s"
+            source += " needed"
+            draw(source)
+        else:
+            draw(recognized_rank == 0 ? "Recognize priesthood"
+                                     : "Recognize high priest")
+else if detail.+0x34 == 0:
+    draw("You can recognize a priesthood once this is a temple.")
+else if detail.+0x34 == 1:
+    draw("You can recognize a high priest when this is a temple complex.")
+
+For current agreements of type 0x0c that match the religion, if the agreed
+rank exceeds detail.+0x34:
+  agreed rank 1 -> "Agreed to build temple"
+  agreed rank 2 -> "Agreed to build temple complex"
+The renderer only searches these build-agreement messages while the current
+detail rank is at most 1 (0x3b713d..0x3b741d).
+
+All recognition explanations, both button captions, both agreement captions,
+both singular/plural requirement rows, and the non-organized-religion state
+are part of the temple detail's source grammar. They are not mutually
+replaceable with the one explanation visible in the supplied screenshot.
+
+Temple common-area rows
+-----------------------
+Chests: 0x3b748c..0x3b7677 counts item type 0x0a within eligible common-area
+building contents. The label and value are drawn separately:
+  "Chests in common area: " + integer(chest_count)
+If no detail object exists, the count is zero.
+
+Stored instruments: 0x3b77a3..0x3b799a, only when a detail object exists:
+  "Stored Instruments (Desired): " + integer(detail.+0x40)
+  + " (" + desired_field + ")"
+  desired_field = integer(detail.+0x0c) normally
+  desired_field = screen.+0x88 text while that value is actively edited
+  the active field also draws "_" or " " as a blinking cursor
+The cursor changes by the native tick value modulo 2000 and threshold 1000.
+These number fields and cursor calls are separate from the label call.
+
+Dance floor: 0x3b7ad4..0x3b7bef:
+  draw("Dance floor in common area: ")
+  width = screen.+0x10; height = screen.+0x14
+  if width > 0 and height > 0:
+      draw(integer(width) + "x" + integer(height))
+  else:
+      draw("None")
+The positive dimensions remain meaningful even when either dimension is
+less than 5; only native display color differs.
+
+The temple branch has no "Rented rooms (Total): " row. That row belongs to
+the tavern sibling branch at 0x3b6847..0x3b68d7.
+
+Shared personnel and position rows
+----------------------------------
+0x3b7c02..0x3b903f iterates the screen's combined personnel vectors in their
+native order. Each row is three native cell rows high. The renderer is shared
+between location types, so its complete fixed title union is:
+  "Tavern Keeper"
+  "Performer"
+  "Scholar"
+  "Scribe"
+  "Mercenary"
+  "Monster Slayer"
+  "Doctor"
+  "Diagnostician"
+  "Surgeon"
+  "Bone Doctor"
+Their load instructions are 0x3b7edb, 0x3b7fc9, 0x3b7ff6, 0x3b8023,
+0x3b8050, 0x3b807d, 0x3b80aa, 0x3b80d7, 0x3b8104, and 0x3b8131.
+
+A null entry in screen.+0x20 follows the generated position-title path:
+  entry = screen.+0x50[index]                         # 0x3b8166
+  source = copy(entry.+0x98 string)                   # 0x3b816e..0x3b8179
+  title_case(source)                                 # RVA 0x52d3c0
+  draw(source)                                       # 0x3b8199
+This title is dynamic. The screenshot's "Sacred Turquoise" is not a hardcoded
+renderer literal and must not be reduced to a one-title vocabulary patch.
+Its upstream generated-position construction is a separate source helper
+dependency; see the generated priest-title notes appended below.
+
+Assigned person name, 0x3b7f41..0x3b8250:
+  for ordinary role entries:
+      find current unit using entry.+0x0c, unless that id == -1
+      if a current unit exists:
+          source = unit_name_helper(unit, option=false)  # RVA 0x1330c30
+      if source is empty and entry.+0x08 != -1:
+          use historical figure entry.+0x08
+  for generated position entries:
+      assignment = screen.+0x68[index]
+      if assignment.+0x04 != -1:
+          find current unit from this historical-figure id
+          if present: source = unit_name_helper(unit, false)
+          if source is empty: use the same historical figure id
+  historical-figure fallback:
+      name = hf.+0x38
+      identity = hf_identity_lookup(hf)                # RVA 0xc0f630
+      if identity:
+          name = identity_name_lookup(identity)        # RVA 0xc3a4f0
+      source = format_name(name)                       # RVA 0xa94030
+
+The assigned name is drawn at 0x3b84db after native truncation with a final
+ellipsis when needed (0x3b847d..0x3b84bf). A missing assignment can leave the
+name field empty; the role or generated position title still exists.
+The remaining calls in 0x3b825e..0x3b900b draw portrait, affiliation, role,
+assignment, and remove buttons from native texture ids. They do not add
+additional English literals to the static text renderer's source stream.
+
+Generated priest-position title dependency
+------------------------------------------
+The shared position layout and native selection paths are already documented
+in data/extracted/character-header-profession-decompiled.txt:
+  neutral singular title +0x98
+  female singular title +0xd8
+  male singular title +0x118
+  neutral/female/male plural titles +0x158/+0x198/+0x1d8
+The detail's empty-position row copies the neutral singular title +0x98;
+assigned-unit name/profession helpers may select the other native variants.
+
+Existing generated priest vocabulary is derived by
+tools/legends_grammar.py::religious_name_nouns from installed
+data/vanilla/vanilla_languages/objects/language_words.txt WORD/NOUN forms,
+with data/runtime/procedural-word-senses.tsv as the WORD-aware noun meanings.
+Both singular and plural noun spellings are retained. For homonymous English
+nouns, the existing procedural name default is reused only if that default
+matches a reviewed noun sense; unrelated generic UI/verb meanings are not
+substituted into generated religious titles.
+
+The existing data/runtime/legends-events.tsv religious-prefix entries supply
+the complete native ordinary/highest-priest prefix family:
+  high         -> 高阶
+  first        -> 第一
+  exalted      -> 高尚
+  holy         -> 神圣
+  sacred       -> 神圣
+  most high    -> 至高
+  absolute     -> 绝对
+  most exalted -> 至尊
+  most holy    -> 至圣
+  most sacred  -> 至圣
+The existing compiler combines each complete prefix with each eligible
+generated language noun and emits complete Native history office terms.
+The documented highest-priest no-word fallback is "most high priest" or
+"most high priests". Ordinary generated priest offices use the same noun
+forms with their own prefixes. These inputs remain in the shared vocabulary;
+this task does not run a generator or create a screenshot-title-only glossary.
+
+For example, "Sacred Turquoise" is the title-cased form of the complete native
+office "sacred turquoise". The existing sacred prefix and TURQUOISE noun sense
+compose its translation, and the same source grammar covers the other native
+prefix/noun combinations rather than naming a single photographed title.
+
+Scope of native source extraction
+----------------------------------
+This renderer also sets native hover-tooltip ids for several icons. Actual
+tooltip prose is constructed outside this renderer. Those ids are distinct
+from text strings and are not classified here as renderer literals; the
+existing complete tooltip sources and translations are recorded below.
+The temple's direct textual output includes generated location/religion/deity
+names, generated position titles, assigned names, all fixed branch captions,
+numeric values, money glyphs, punctuation, editable values, and the cursor.
+Sibling library, guildhall, tavern, and hospital literals are retained in
+native-literal-sources.tsv so their shared-renderer provenance is explicit.
+
+Hover tooltip source dependencies
+----------------------------------
+Existing source catalog: data/extracted/tooltip-sources.tsv.
+Existing complete translations: data/runtime/tooltip-translations.tsv.
+The source catalog stores the shared tooltip paragraph-vector address as
+0x26fe370 + (tooltip_id * 24); each paragraph's native width is 24.
+Its existing initializer addresses use that source catalog's address space,
+not the renderer's reference PE RVA space used above. Exact source paragraphs
+are normalized for repeated whitespace in the runtime translation file.
+
+Renderer load 0x3b1ffa, tooltip ID 0x117, catalog paragraph 0x26ffd98:
+  Source: Rename this location.
+  Existing Chinese: 重命名此地点。
+Renderer load 0x3b239a, tooltip ID 0x118, catalog paragraph 0x26ffdb0:
+  Source: This option allows visitors from outside the fortress to enter this location.
+  Existing Chinese: 此选项允许来自要塞外的访客进入此地点。
+Renderer load 0x3b245c, tooltip ID 0x119, catalog paragraph 0x26ffdc8:
+  Source: This option allows long-term residents of the fortress to enter this location.
+  Existing Chinese: 此选项允许要塞的长期居民进入此地点。
+Renderer load 0x3b251f, tooltip ID 0x11a, catalog paragraph 0x26ffde0:
+  Source: This option indicates that the location is only open to fortress citizens.
+  Existing Chinese: 此选项表示此地点仅对要塞公民开放。
+Renderer load 0x3b25e8, tooltip ID 0x11b, catalog paragraph 0x26ffdf8:
+  Source: This option indicates that the location is only open to members.
+  Existing Chinese: 此选项表示此地点仅对成员开放。
+Renderer load 0x3b8f94, tooltip ID 0x11c, catalog paragraph 0x26ffe10:
+  Source: Remove this worker from this occupation.
+  Existing Chinese: 解除此工人的这项职务。
+
+Shared assigned-person row, 0x3b8551..0x3b8566, chooses tooltip ID 0x103
+when unit.+0x11c has bit 0x400; otherwise it chooses 0x104:
+ID 0x103, catalog paragraph 0x26ffbb8:
+  Source: This worker is specialized and will only do tasks that match their workshop assignments, work details, and occupations.  Click to toggle.
+  Existing Chinese: 此工人已设为专职，只会执行与其工坊分配、劳动分组和职务相符的任务。点击切换。
+ID 0x104, catalog paragraph 0x26ffbd0:
+  Source: This worker is not specialized and will do any free tasks that become available.  Click to toggle.
+  Existing Chinese: 此工人未设为专职，会执行任何可接手的空闲任务。点击切换。
+
+Shared assigned-person occupations, renderer 0x3b8787..0x3b87ed:
+ID 0x105, catalog paragraph 0x26ffbe8:
+  Source: This creature is a tavern keeper.
+  Existing Chinese: 此生物担任酒保。
+ID 0x106, catalog paragraph 0x26ffc00:
+  Source: This creature is a performer.
+  Existing Chinese: 此生物担任表演者。
+ID 0x107, catalog paragraph 0x26ffc18:
+  Source: This creature is a scholar.
+  Existing Chinese: 此生物担任学者。
+ID 0x108, catalog paragraph 0x26ffc30:
+  Source: This creature is a scribe.
+  Existing Chinese: 此生物担任抄写员。
+ID 0x109, catalog paragraph 0x26ffc48:
+  Source: This creature is a mercenary.
+  Existing Chinese: 此生物担任佣兵。
+ID 0x10a, catalog paragraph 0x26ffc60:
+  Source: This creature is a monster slayer.
+  Existing Chinese: 此生物担任怪物杀手。
+ID 0x10b, catalog paragraph 0x26ffc78:
+  Source: This creature is a doctor.
+  Existing Chinese: 此生物担任医生。
+
+Renderer loads 0x3b8a9f and 0x3b8c57, tooltip ID 0x10c,
+catalog paragraph 0x26ffc90:
+  Source: This creature is assigned to a specific workshop.
+  Existing Chinese: 此生物被分配到指定工坊。
+Renderer load 0x3b8df4, tooltip ID 0x10d, catalog paragraph 0x26ffca8:
+  Source: This creature is assigned to a work detail.
+  Existing Chinese: 此生物被分配到某项劳动分组。
+
+Each tooltip paragraph above already has an entire-paragraph Chinese entry
+in the existing runtime TSV. These paragraphs use the shared tooltip path;
+they do not rely on the partial matching of the main detail row text.

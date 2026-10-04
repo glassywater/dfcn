@@ -1,0 +1,34 @@
+native_helper	instruction_rva	operand_kind	literal_rva	source
+classic-entity-name	0xb8f9aa	rip-relative	0x16592f8	[LPAGE:ENT:
+classic-entity-name	0xb8f9ca	rip-relative	0x15f8664	]
+classic-entity-name	0xb8fa34	rip-relative	0x15f8b50	[/LPAGE]
+classic-entity-name	0xb8fa8c	rip-relative	0x16da720	an unknown civilization
+classic-figure-reference	0xb8ffca	rip-relative	0x16da770	interrogator
+classic-figure-reference	0xb8ffe1	rip-relative	0x166fb90	subject
+classic-figure-reference	0xb900b3	rip-relative	0x1623ec0	Nameless
+classic-figure-reference	0xb9014e	rip-relative	0x16da750	an unidentified creature
+classic-figure-reference	0xb90173	rip-relative	0x15f8b40	[LPAGE:HF:
+classic-figure-reference	0xb90193	rip-relative	0x15f8664	]
+classic-figure-reference	0xb9029d	rip-relative	0x165df6c	myself
+classic-figure-reference	0xb902a6	rip-relative	0x165df70	lf
+classic-figure-reference	0xb902be	inline-immediate		my
+classic-figure-reference	0xb902eb	inline-immediate		me
+classic-figure-reference	0xb9030c	inline-immediate		I
+classic-figure-reference	0xb9035b	rip-relative	0x15e3e34	the 
+classic-figure-reference	0xb9037f	rip-relative	0x16789f8	zombie 
+classic-figure-reference	0xb903b7	rip-relative	0x15f8b70	ghostly 
+classic-figure-reference	0xb904d9	rip-relative	0x15e3720	 
+classic-figure-reference	0xb90508	rip-relative	0x15e3720	 
+classic-figure-reference	0xb90591	rip-relative	0x15e4548	 the 
+classic-figure-reference	0xb905b5	rip-relative	0x16789f8	zombie 
+classic-figure-reference	0xb905ed	rip-relative	0x15f8b70	ghostly 
+classic-figure-reference	0xb9070d	rip-relative	0x15e3720	 
+classic-figure-reference	0xb9078e	rip-relative	0x15e8618	a 
+classic-figure-reference	0xb90795	rip-relative	0x15e3e34	the 
+classic-figure-reference	0xb907bd	rip-relative	0x16789f8	zombie 
+classic-figure-reference	0xb907f5	rip-relative	0x15f8b70	ghostly 
+classic-figure-reference	0xb9085c	rip-relative	0x15e3720	 
+classic-figure-reference	0xb908a7	rip-relative	0x15e4214	's
+classic-figure-reference	0xb908c6	rip-relative	0x15f8b50	[/LPAGE]
+classic-figure-reference	0xb9091c	rip-relative	0x165ed98	an unknown creature
+classic-figure-reference	0xb90932	rip-relative	0x15e4214	's

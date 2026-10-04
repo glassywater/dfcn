@@ -46,6 +46,13 @@ class Generator:
         last = next(i for i, child in enumerate(children) if child.get('name') == 'race_id')
         for child in children[last + 1:]:
             plotinfo.remove(child)
+        # The legacy stocks renderer exposes only its retained filter prefix.
+        stocks = self.types['stocks_interfacest']
+        children = list(stocks)
+        last = next(i for i, child in enumerate(children)
+                    if child.get('name') == 'entering_item_filter')
+        for child in children[last + 1:]:
+            stocks.remove(child)
         self.lines: list[str] = []
         self.serial = 0
         symbols = ET.parse(SOURCE / 'symbols.xml').getroot()
@@ -231,7 +238,9 @@ class Generator:
                  'itemdef_weaponst', 'entity_entity_link',
                  'general_ref_is_artifactst', 'plant_raw', 'material', 'inorganic_raw',
                  'viewscreen_legendsst', 'viewscreen_new_regionst',
+                 'mod_headerst', 'viewscreen_titlest', 'viewscreen_new_arenast',
                  'viewscreen_dwarfmodest', 'viewscreen_dungeonmodest', 'viewscreen_worldst',
+                 'widget_textbox', 'stocks_interfacest',
                  'plotinfost', 'report',
                  'adv_announcementst',
                  'name_creator_interfacest', 'language_word', 'language_translation', 'language_name'}
@@ -274,6 +283,45 @@ class Generator:
                 if path and length:
                     lines.append(f'    {{0x{legacy:x}, DFCN_NATIVE_FIELD({shape.cpp}, {path}, 0x{legacy:x}), {length}}},')
             lines.append('}};')
+        textbox = self.cache['widget_textbox']
+        for label, member in (('parent', 'parent'), ('rect', 'rect'),
+                              ('visibility', 'flag'), ('string', 'str'),
+                              ('flags', 'flags'), ('maxlen', 'maxlen'),
+                              ('type', 'textbox_type')):
+            path = ident(member)
+            if member == 'rect':
+                # Compound fields are flattened in the field directory.
+                # The render hook consumes the entire inclusive native rect.
+                legacy = next(offset for offset, _, field in textbox.fields
+                              if field.startswith(path + '.'))
+            else:
+                legacy = next(offset for offset, _, field in textbox.fields if field == path)
+            lines.append(f'static constexpr size_t textbox_{label}_offset = '
+                         f'DFCN_NATIVE_FIELD({textbox.cpp}, {path}, 0x{legacy:x});')
+        stocks = self.cache['stocks_interfacest']
+        for label, member in (('open', 'open'), ('filter', 'item_filter'),
+                              ('entering_filter', 'entering_item_filter')):
+            path = ident(member)
+            legacy = next(offset for offset, _, field in stocks.fields if field == path)
+            lines.append(f'static constexpr size_t stocks_{label}_offset = '
+                         f'DFCN_NATIVE_FIELD({stocks.cpp}, {path}, 0x{legacy:x});')
+        lines.append('struct ModScreenFields { size_t active, hover_rows; std::array<size_t, 3> headers; };')
+        for name, label, active, headers in (
+                ('viewscreen_titlest', 'title', 'managing_mods', ('mod',)),
+                ('viewscreen_new_regionst', 'newregion', 'doing_mods',
+                 ('object_load_order_mod_header', 'available_mod_header', 'base_available_mod_header')),
+                ('viewscreen_new_arenast', 'newarena', 'doing_mods',
+                 ('object_load_order_mod_header', 'available_mod_header', 'base_available_mod_header'))):
+            screen = self.cache[name]
+            def mod_field(member: str) -> str:
+                path = '.'.join(ident(part) for part in member.split('.'))
+                legacy = next(offset for offset, _, field in screen.fields if field == path)
+                return f'DFCN_NATIVE_FIELD({screen.cpp}, {path}, 0x{legacy:x})'
+            fields = [mod_field(member) for member in (active, 'hover_mod_description.text')]
+            vectors = [mod_field(member) for member in headers]
+            vectors.extend('SIZE_MAX' for _ in range(3 - len(vectors)))
+            lines.append(f'static constexpr ModScreenFields mod_{label}_fields = {{' +
+                         ', '.join(fields) + ', {{' + ', '.join(vectors) + '}}};')
         for name in sorted(roots):
             methods = self.virtuals(name)
             if not methods:

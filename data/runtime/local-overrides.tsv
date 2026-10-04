@@ -233,6 +233,7 @@ Assign new display items	指定新展品	wi
 # Reuse Bodywear's established term only for this category, not actual armor
 # items, the broader stockpile category, workshop menus or skill names.
 Stocks category: armor	躯干装备	li
+Stocks category: logs	木材	li
 
 # Complete native stockpile settings vocabulary; source families and native
 # references are inventoried in data/extracted/stockpile-sources.tsv. Existing labels retain
@@ -2687,9 +2688,9 @@ I am ready!	准备好了！	w
 {d} dwarven rum	{d} 份矮人朗姆酒	wt
 {d} plump helmets	{d} 份肉盔菇	wt
 Cloth (Plant)	植物布	wi
-Cloth (Silk)	丝质布	wi
-silk	丝质布	wi
- silk	丝质布	wi
+Cloth (Silk)	丝布	wi
+silk	丝布	wi
+ silk	丝布	wi
 # Project terminology: thread/threads and case variants share the item noun 线.
 thread	线	wi
 threads	线	wi
@@ -5640,8 +5641,8 @@ goblin-caps	哥布林菇	wi
 pear	白梨	wi
 pears	白梨	wi
 pear wood	白梨木	wi
-wagon wood	货车木质	wi
-wagon wooden	货车木质	wi
+wagon wood	货车木	wi
+wagon wooden	货车木	wi
 
 # Preserve the selected drink family names: cider=西打酒, wine=果酒,
 # beer=啤酒, ale=艾尔啤酒, rum=朗姆酒. Complete material names and
@@ -5800,6 +5801,15 @@ Unmet need: 	未满足的需求：
 I have unmet needs.	我有尚未满足的需求。	l
 You are distracted by unmet needs.  View your status for more information.	需求未得到满足，使你分心。请查看状态页了解详情。	l
 
+# Character header: the native renderer draws each relation prefix and its
+# object separately on one line (data/extracted/character-header-native-sources.tsv).
+# A creation name can be empty in the original native branch: its complete
+# bare caption means 创作：未命名. Named creations retain the complete relation
+# grammar in professions.toml.
+Creator of	创作：未命名	wli
+Pet of	宠物主人：	wli
+Somebody	某人	wl
+
 # The header uses complete job labels shared with Tasks/Creatures. Keep the
 # action and its object together; building remains 建筑 in noun-only tabs.
 Construct building	建造建筑	wi
@@ -5842,10 +5852,10 @@ Make traction bench	制作牵引台	wi
 Dye thread	染线	wi
 Dye cloth	染布匹	wi
 Dye leather	染皮革	wi
-Weave metal cloth	纺织金属布匹	wi
-Weave thread into silk	将线纺织为丝绸	wi
-Weave yarn into cloth	将纱线纺织为布匹	wi
-Weave thread into cloth	将线纺织为布匹	wi
+Weave metal cloth	织金属布	wi
+Weave thread into silk	将线织成丝绸	wi
+Weave yarn into cloth	将纱线织成布	wi
+Weave thread into cloth	将线织成布	wi
 Bring item to shop	将物品搬到工坊	wi
 Bring item to depot	将物品搬到贸易站	wi
 Store owned item	存放私人物品	wi
@@ -5946,6 +5956,126 @@ Fortress activity: Chained	被拴住	li
 # Restraint suffixes can also occupy the activity field without a role/job.
 Fortress activity: (Caged)	（关在笼中）	li
 Fortress activity: (Chained)	（被拴住）	li
+# Complete native header job/status captions also license activity recognition before a separator.
+# Windows sources: data/extracted/character-header-activity-sources.tsv; preserve the existing meanings.
+Fortress activity: Apply cast	打石膏	li
+Fortress activity: Beat criminal	殴打罪犯	li
+Fortress activity: Bring crutch	送来拐杖	li
+Fortress activity: Bring item to depot	将物品搬到贸易站	li
+Fortress activity: Bring item to shop	将物品搬到工坊	li
+Fortress activity: Cage small animal	将小型动物关入笼子	li
+Fortress activity: Carve downward staircase	挖掘下行楼梯	li
+Fortress activity: Carve fortification	雕凿城防垛口	li
+Fortress activity: Carve ramp	挖掘斜坡	li
+Fortress activity: Carve track	雕凿轨道	li
+Fortress activity: Carve up/down staircase	挖掘上下楼梯	li
+Fortress activity: Carve upward staircase	挖掘上行楼梯	li
+Fortress activity: Cause trouble	惹是生非	li
+Fortress activity: Clean	清洁	li
+Fortress activity: Clean patient	清洗病人	li
+Fortress activity: Clean self	清洗自身	li
+Fortress activity: Clean trap	清理陷阱	li
+Fortress activity: Collect hive products	收集蜂箱产物	li
+Fortress activity: Collect taxes	征税	li
+Fortress activity: Construct building	建造建筑	li
+Fortress activity: Destroy building	拆除建筑	li
+Fortress activity: Detail floor	雕刻地板	li
+Fortress activity: Detail wall	雕刻墙壁	li
+Fortress activity: Diagnose patient	诊断病人	li
+Fortress activity: Dig	挖掘	li
+Fortress activity: Dig channel	挖掘沟道	li
+Fortress activity: Drain aquarium	排空水族箱	li
+Fortress activity: Dress wound	包扎伤口	li
+Fortress activity: Dump item	倾倒物品	li
+Fortress activity: Eat	进食	li
+Fortress activity: Engrave memorial slab	雕刻纪念石板	li
+Fortress activity: Execute criminal	处决罪犯	li
+Fortress activity: Fell tree	砍倒树木	li
+Fortress activity: Fertilize field	给田地施肥	li
+Fortress activity: Fill aquarium	给水族箱注水	li
+Fortress activity: Fill pond	给池塘注水	li
+Fortress activity: Fill waterskin	灌满水袋	li
+Fortress activity: Fire ballista	发射弩炮	li
+Fortress activity: Fire bolt thrower	发射弩箭投射器	li
+Fortress activity: Fire catapult	发射投石机	li
+Fortress activity: Gather plants	采集植物	li
+Fortress activity: Get provisions	获取补给	li
+Fortress activity: Give food	送食物	li
+Fortress activity: Give water	送水	li
+Fortress activity: Go shopping	购物	li
+Fortress activity: Guard tax collector	保护税务官	li
+Fortress activity: Handle small creature	照料小型生物	li
+Fortress activity: Harvest plants	收获植物	li
+Fortress activity: Hunt	狩猎	li
+Fortress activity: Hunt for small creature	猎捕小型生物	li
+Fortress activity: Immobilize break	固定骨折部位	li
+Fortress activity: Install colony in hive	将蜂群安置到蜂箱	li
+Fortress activity: Kidnap	绑架	li
+Fortress activity: Link a building to trigger	将建筑连接到触发装置	li
+Fortress activity: Load ballista	装填弩炮	li
+Fortress activity: Load bolt thrower	装填弩箭投射器	li
+Fortress activity: Load cage trap	装填笼陷阱	li
+Fortress activity: Load catapult	装填投石机	li
+Fortress activity: Load stone trap	装填落石陷阱	li
+Fortress activity: Load weapon trap	装填武器陷阱	li
+Fortress activity: Manage work orders	管理工单	li
+Fortress activity: No activity	无活动	li
+Fortress activity: No job	没有工作	li
+Fortress activity: Operate pump	操作泵机	li
+Fortress activity: Pen/pasture small animal	将小型动物带入畜栏或牧场	li
+Fortress activity: Pickup equipment	拾取装备	li
+Fortress activity: Pit/pond small animal	将小型动物放入坑洞或池塘	li
+Fortress activity: Place in traction	进行牵引治疗	li
+Fortress activity: Place item in tomb	将物品放入陵墓	li
+Fortress activity: Place track vehicle	放置轨道载具	li
+Fortress activity: Plant seeds	播种种子	li
+Fortress activity: Pull the lever	拉动控制杆	li
+Fortress activity: Push track vehicle	推动轨道载具	li
+Fortress activity: Put in chains	戴上锁链	li
+Fortress activity: Put item on display	陈列物品	li
+Fortress activity: Reaction	进行反应	li
+Fortress activity: Recover pet	找回宠物	li
+Fortress activity: Recover wounded	救助伤员	li
+Fortress activity: Release pet	释放宠物	li
+Fortress activity: Release small creature	释放小型生物	li
+Fortress activity: Remove construction	拆除构筑	li
+Fortress activity: Remove stairs/ramps	移除楼梯与坡道	li
+Fortress activity: Report crime	报告罪行	li
+Fortress activity: Rest	休息	li
+Fortress activity: Return kill	带回猎物	li
+Fortress activity: Seek artifact	寻找造物	li
+Fortress activity: Seek infant	寻找婴儿	li
+Fortress activity: Set bone	接骨	li
+Fortress activity: Sleep	睡觉	li
+Fortress activity: Smooth floor	打磨地板	li
+Fortress activity: Smooth wall	打磨墙壁	li
+Fortress activity: Starting fist fight	挑起斗殴	li
+Fortress activity: Store armor	存放护甲	li
+Fortress activity: Store item in bag	将物品存入袋子	li
+Fortress activity: Store item in barrel	将物品存入圆桶	li
+Fortress activity: Store item in bin	将物品存入储物箱	li
+Fortress activity: Store item in location	将物品存放到地点	li
+Fortress activity: Store item in stockpile	将物品存入储物堆	li
+Fortress activity: Store item in vehicle	将物品存入载具	li
+Fortress activity: Store owned item	存放私人物品	li
+Fortress activity: Store squad equipment	存放小队装备	li
+Fortress activity: Store weapon	存放武器	li
+Fortress activity: Strange mood	怪异心情	li
+Fortress activity: Surgery	外科手术	li
+Fortress activity: Suture	缝合	li
+Fortress activity: Trade at depot	在贸易站交易	li
+Fortress activity: Unchain	解开锁链	li
+Fortress activity: Unchain pet	解开宠物的锁链	li
+Fortress activity: Update stockpile records	更新库存记录	li
+Fortress activity: Attend Meeting	参加会面	li
+Fortress activity: New Arrival	刚刚抵达	li
+Fortress activity: Mercenary	佣兵	li
+Fortress activity: Monster Slayer	怪物猎手	li
+Fortress activity: Play	游玩	li
+Fortress activity: Socialize	社交	li
+Fortress activity: Squad Order	小队命令	li
+# RAW CustomReaction NAME: reaction_other.txt:538 in both configured editions.
+Fortress activity: Carve wooden helve from branch	用树枝雕刻木制斧柄	li
 # Complete unit activity graph, not only job_type. See data/extracted/unit-activity-sources.tsv.
 # Scoped meanings are shared by Tasks, Creatures, headers, depot and search.
 Fortress activity: Conduct Meeting	主持会面	li
@@ -8310,6 +8440,33 @@ Craft guild	工艺行会	wi
 Guild	行会	wi
 No members	没有成员	wi
 No worshippers	没有信徒	wi
+# Fortress faith picker, complete native renderer branches rather than word
+# replacements. Source constructions and both PE editions are retained in
+# data/extracted/fortress-faith-picker/. Requested/existing tiers are 0, 1, 2.
+Want shrine	需要圣地	wli
+Want temple	需要神殿	wli
+Want temple complex	需要神殿建筑群	wli
+Have shrine	已有圣地	wli
+Have temple	已有神殿	wli
+Have temple complex	已有神殿建筑群	wli
+(No particular deity)	（无特定神祇）	wli
+{d} worshipper	{d}名信徒	wtli
+{d} worshippers	{d}名信徒	wtli
+# Only the typed faith-card label uses this key. Other Worship actions keep
+# their existing activity wording; spheres use the shared semantic r glossary.
+Fortress faith picker: Worship	供奉	l
+# Native temple detail fields; complete construction and edition coordinates
+# are retained in data/extracted/fortress-location-detail/.
+Fortress temple detail: Only members can visit (if guild established)	仅成员可以到访（行会成立后）	l
+Fortress temple detail: Only members can visit	仅成员可以到访	l
+Fortress temple detail: Citizens and long-term residents only	仅限公民和长期居民	l
+Fortress temple detail: You can recognize a priesthood once this is a temple.	此处成为神殿后，即可认可祭司团。	l
+Fortress temple detail: You can recognize a high priest when this is a temple complex.	此处成为神殿建筑群后，即可认可高阶祭司。	l
+Fortress temple detail: Only organized religions can have recognized priesthoods.	只有有组织的宗教才能获得祭司团认可。	l
+Fortress temple detail: Priest: {d} worshipper needed	祭司：需要{d}名信徒	wtli
+Fortress temple detail: Priest: {d} worshippers needed	祭司：需要{d}名信徒	wtli
+Fortress temple detail: High priest: {d} worshipper needed	高阶祭司：需要{d}名信徒	wtli
+Fortress temple detail: High priest: {d} worshippers needed	高阶祭司：需要{d}名信徒	wtli
 All visitors welcome	欢迎所有访客	wi
 Citizens only	仅限公民	wi
 # Location staff positions use the established occupation name.
@@ -8403,6 +8560,140 @@ Work details	劳动分组	wi
 # The Kitchen tab reuses Cooking; the workshop remains Kitchen.
 Labor tab: Work details	分组	wi
 Labor tab: Standing orders	规则	wi
+# Complete system labor captions. The Work details editor renders these as
+# single fields; substrings must not leave suffixes or become generated names.
+Working Wood	木材加工	wi
+Working Stone	石材加工	wi
+Woodworking	木材加工	wi
+Stoneworking	石材加工	wi
+Crossbow-making	制弩	wi
+Stone Cutting	切石	wi
+Stone Carving	石雕	wi
+Stone Engraving	石刻	wi
+Stonecrafting	石艺	wi
+Animal Care	动物护理	wi
+Small Animal Dissection	小动物解剖	wi
+Hunting/Related	狩猎及相关劳动	wi
+Fishing/Related	捕鱼及相关劳动	wi
+Farming/Related	农业及相关劳动	wi
+Farming (Fields)	耕种	wi
+Plant Gathering	植物采集	wi
+Plant Processing	植物加工	wi
+Healthcare	医疗	wi
+Armoring	锻甲	wi
+Weaponsmithing	锻造武器	wi
+Blacksmithing	锻造杂物	wi
+Metalcrafting	金属工艺	wi
+Clothesmaking	制衣	wi
+Setting Bones	接骨	wi
+Dressing Wounds	包扎伤口	wi
+Recovering Wounded	救助伤员	wi
+Wall/Floor Construction	墙壁与地板建造	wi
+Jewelry	珠宝	wi
+Push/Haul Vehicles	推拉车辆	wi
+Other Jobs	其他劳动	wi
+Road Building	修筑道路	wi
+Reset to default	恢复默认	wi
+# unit_labor captions use a labor-specific lookup so profession nouns such
+# as Soap Maker and Mechanics retain their meanings outside this selector.
+# All named 53.16 unit_labor entries are listed in native enum order.
+Labor caption: Mining	挖掘	wi
+Labor caption: Stone Hauling	搬运石头	wi
+Labor caption: Wood Hauling	搬运木材	wi
+Labor caption: Burial	埋葬	wi
+Labor caption: Food Hauling	搬运食物	wi
+Labor caption: Refuse Hauling	搬运垃圾	wi
+Labor caption: Item Hauling	搬运物品	wi
+Labor caption: Furniture Hauling	搬运家具	wi
+Labor caption: Animal Hauling	搬运动物	wi
+Labor caption: Cleaning	清扫	wi
+Labor caption: Wood Cutting	伐木	wi
+Labor caption: Carpentry	木工	wi
+Labor caption: Stone Cutting	切石	wi
+Labor caption: Stone Carving	石雕	wi
+Labor caption: Stone Engraving	石刻	wi
+Labor caption: Masonry	石工	wi
+Labor caption: Animal Training	驯兽	wi
+Labor caption: Animal Care	动物护理	wi
+Labor caption: Diagnosis	诊断	wi
+Labor caption: Surgery	外科手术	wi
+Labor caption: Setting Bones	接骨	wi
+Labor caption: Suturing	缝合	wi
+Labor caption: Dressing Wounds	包扎伤口	wi
+Labor caption: Feed Patients/Prisoners	喂食病患和囚犯	wi
+Labor caption: Recovering Wounded	救助伤员	wi
+Labor caption: Butchery	屠宰	wi
+Labor caption: Trapping	诱捕	wi
+Labor caption: Small Animal Dissection	小动物解剖	wi
+Labor caption: Leatherworking	皮革加工	wi
+Labor caption: Tanning	制革	wi
+Labor caption: Brewing	酿造	wi
+Labor caption: Soap Maker	制皂	wi
+Labor caption: Weaving	织布	wi
+Labor caption: Clothesmaking	制衣	wi
+Labor caption: Milling	碾磨	wi
+Labor caption: Plant Processing	植物加工	wi
+Labor caption: Cheese Making	制酪	wi
+Labor caption: Milking	挤奶	wi
+Labor caption: Cooking	烹饪	wi
+Labor caption: Farming (Fields)	耕种	wi
+Labor caption: Plant Gathering	植物采集	wi
+Labor caption: Fishing	捕鱼	wi
+Labor caption: Fish Cleaning	清理鱼	wi
+Labor caption: Fish Dissection	鱼类解剖	wi
+Labor caption: Hunting	狩猎	wi
+Labor caption: Furnace Operating	操作熔炉	wi
+Labor caption: Weaponsmithing	锻造武器	wi
+Labor caption: Armoring	锻甲	wi
+Labor caption: Blacksmithing	锻造杂物	wi
+Labor caption: Metalcrafting	金属工艺	wi
+Labor caption: Gem Cutting	宝石切割	wi
+Labor caption: Gem Setting	宝石镶嵌	wi
+Labor caption: Woodcrafting	木艺	wi
+Labor caption: Stonecrafting	石艺	wi
+Labor caption: Bone Carving	骨雕	wi
+Labor caption: Glassmaking	玻璃制作	wi
+Labor caption: Strand Extraction	缕丝提取	wi
+Labor caption: Siege Engineering	制造攻城器械	wi
+Labor caption: Siege Operating	操作攻城器械	wi
+Labor caption: Crossbow-making	制弩	wi
+Labor caption: Mechanics	机械作业	wi
+Labor caption: Potash Making	制草碱	wi
+Labor caption: Lye Making	制碱液	wi
+Labor caption: Dyeing	染色	wi
+Labor caption: Wood Burning	烧炭	wi
+Labor caption: Pump Operating	操作水泵	wi
+Labor caption: Shearing	剪毛	wi
+Labor caption: Spinning	纺纱	wi
+Labor caption: Pottery	制陶	wi
+Labor caption: Glazing	上釉	wi
+Labor caption: Pressing	压榨	wi
+Labor caption: Bee Keeping	养蜂	wi
+Labor caption: Wax Working	蜡工	wi
+Labor caption: Push/Haul Vehicles	推拉车辆	wi
+Labor caption: Trade Good Hauling	搬运贸易货物	wi
+Labor caption: Lever Operation	操作控制杆	wi
+Labor caption: Water Hauling	运水	wi
+Labor caption: Gelding	阉割	wi
+Labor caption: Road Building	修筑道路	wi
+Labor caption: Wall/Floor Construction	墙壁与地板建造	wi
+Labor caption: Papermaking	造纸	wi
+Labor caption: Bookbinding	书籍装订	wi
+# The negative labor-category IDs have their own native display captions.
+Labor caption: Working Wood	木材加工	wi
+Labor caption: Working Stone	石材加工	wi
+Labor caption: Woodworking	木材加工	wi
+Labor caption: Stoneworking	石材加工	wi
+Labor caption: Hunting/Related	狩猎及相关劳动	wi
+Labor caption: Healthcare	医疗	wi
+Labor caption: Farming/Related	农业及相关劳动	wi
+Labor caption: Fishing/Related	捕鱼及相关劳动	wi
+Labor caption: Metalsmithing	金属加工	wi
+Labor caption: Jewelry	珠宝加工	wi
+Labor caption: Crafts	工艺制作	wi
+Labor caption: Engineering	工程	wi
+Labor caption: Hauling	搬运	wi
+Labor caption: Other Jobs	其他劳动	wi
 # Kitchen sort labels and complete food-type selector captions.
 # Keep plant, drink and ingredient names in the shared item dictionaries.
 Type	类型	wi
@@ -8422,7 +8713,24 @@ Standing orders	劳动规则	wi
 Hauling	搬运	w
 Refuse	垃圾	w
 Forbidding	禁用	w
-Petitions	申请	w
+# Main HUD notification draws PETITIONS; the standing-orders tab draws Petitions.
+# Both captions share the same case-insensitive UI term.
+Petitions	申请	wi
+# Petitions renderer, Steam RVA 0x418680..0x41b597 (classic 0x416240..0x419157).
+# Complete captions/prose live in ui-messages.tsv. These fixed title prefixes
+# also cover the native list's shortened names without changing name identity
+# or sending Status through the unrelated health-tab vocabulary.
+A Priest for	祭司申请：	wi
+A High Priest for	高阶祭司申请：	wi
+A Guildhall for	行会大厅申请：	wi
+A Grand Guildhall for	大行会大厅申请：	wi
+Parley with	和谈对象：	wi
+Citizenship of	公民资格申请：	wi
+Status of	状态：	wi
+# All five petition kinds share these controls; Deny is an inline immediate,
+# not a .rdata string. Semantic literals must precede personal-name fallback.
+Approve	批准	wi
+Deny	拒绝	wi
 Chores	杂务	w
 # Complete policy captions from the native executable, including alternate
 # states. The widget owns left alignment; l is for prose, not button captions.
@@ -9654,9 +9962,84 @@ Conversation keyword: shaken	动摇	l
 Conversation keyword: thrill	激动	l
 Conversation keyword: angst	焦虑不安	l
 Conversation keyword: grim	冷酷	l
+# Adventure local/travel structures: complete native productions from both
+# PE 53.16 popup branches; data/extracted/travel-structures retains the source.
+# Names and shrine arguments are resolved by their typed native draw caller.
+Travel building: Sewer Access	下水道入口	wi
+Travel building: Tree House	树屋	wi
+Travel building: The Home Tree	家园树	wi
+Travel building: Shaping Tree	塑形树	wi
+Travel building: Market Tree	市场树	wi
+Travel building: Tavern Tree	酒馆树	wi
+Travel building: Library Tree	图书馆树	wi
+Travel building: Counting Tree	账房树	wi
+Travel building: Guild Tree	行会树	wi
+Travel building: Tower Tree	高塔树	wi
+Travel building: Drinking Mound	饮酒丘	wi
+Travel building: Castle Mound	城堡丘	wi
+Travel building: Civic Mound	政务丘	wi
+Travel building: Mead Hall	蜂蜜酒厅	wi
+Travel building: Temple	神庙	wi
+Travel building: Counting House	账房	wi
+Travel building: Guildhall	行会大厅	wi
+Travel building: Tower	高塔	wi
+Travel building: Library	图书馆	wi
+Travel building: Tavern	酒馆	wi
+Travel building: Abandoned shop	废弃商店	wi
+Travel building: Food imports	食品进口店	wi
+Travel building: Clothing imports	服装进口店	wi
+Travel building: General imports	杂货进口店	wi
+Travel building: Cloth shop	布料店	wi
+Travel building: Leather shop	皮革店	wi
+Travel building: Woven clothing shop	布制服装店	wi
+Travel building: Leather clothing shop	皮制服装店	wi
+Travel building: Bone carver's shop	骨雕店	wi
+Travel building: Gem cutter's shop	宝石切割店	wi
+Travel building: Weaponsmith's shop	武器锻造店	wi
+Travel building: Bowyer's shop	弓弩店	wi
+Travel building: Blacksmith's shop	铁匠铺	wi
+Travel building: Armorsmith's shop	护甲锻造店	wi
+Travel building: Metal craft shop	金属工艺品店	wi
+Travel building: Leather goods shop	皮具店	wi
+Travel building: Carpenter's shop	木匠铺	wi
+Travel building: Stone furniture shop	石制家具店	wi
+Travel building: Metal furniture shop	金属家具店	wi
 Travel building: Dormitory	宿舍	wi
+Travel building: Barrow	坟冢	wi
+Travel building: Dining Hall	餐厅	wi
 Travel building: Dining hall	餐厅	wi
 Travel building: Warehouse	仓库	wi
+Travel building: Fortress Entrance	要塞入口	wi
+Travel building: Well	水井	wi
+Travel building: Trenches	壕沟	wi
+Travel building: Shrine	神龛	wi
+Travel building: Empty market	空市场	wi
+Travel building: Imported goods market	进口杂货市场	wi
+Travel building: Imported food market	进口食品市场	wi
+Travel building: Imported clothing market	进口服装市场	wi
+Travel building: Meat market	肉类市场	wi
+Travel building: Fruit and vegetable market	果蔬市场	wi
+Travel building: Cheese market	奶酪市场	wi
+Travel building: Processed goods market	加工商品市场	wi
+Travel building: Underground Fortress	地下要塞	wi
+Travel building: Underground Farms	地下农场	wi
+Travel building: Underground Stair	地下楼梯	wi
+Travel building: Hillocks	丘堡群	wi
+Travel building: Houses	住宅群	wi
+Travel building: Hillock	丘堡	wi
+Travel building: House	住宅	wi
+Travel building: Abandoned hillocks	废弃丘堡群	wi
+Travel building: Abandoned houses	废弃住宅群	wi
+Travel building: Abandoned hillock	废弃丘堡	wi
+Travel building: Abandoned house	废弃住宅	wi
+Travel building: Ruined hillocks	丘堡群废墟	wi
+Travel building: Ruined houses	住宅群废墟	wi
+Travel building: Ruined hillock	丘堡废墟	wi
+Travel building: Ruined house	住宅废墟	wi
+Travel building: No significant structures	无重要建筑	wi
+Travel building: {p} shrine	{p1}神龛	ht
+Travel building: Shrine of {p}	{p1}神龛	ht
+Travel building: Shrine to {n}	供奉{n1}的神龛	ht
 Warehouse	仓库	wi
 gabbro Lever	辉长岩控制杆	w
 
@@ -9842,6 +10225,136 @@ Adventure item action: Heat {s} ({p})	加热{s}（{p}）	h
 # Vermin caption only appends its RAW singular when origin is available.
 Adventure item action: A {s} ({p})	一只{s}（{p}）	h
 Adventure item action: A ({p})	小生物（{p}）	h
+
+# Adventure chooser: all native caption constructors in the 77-type RTTI
+# directory, decompiled from both configured Windows PEs. Full productions
+# and their literal/call ownership live in data/extracted/adventure-action-menu/.
+# p is the complete 74f220 direction plus native movement constraints:
+# holding/from take another direction, not a terrain or a free name.
+# /Air, /Water and /(Lava|Magma) are independent appends in that order.
+# These are lookup-only scoped terms, never global replacements for verbs.
+Adventure movement qualifier: holding	，抓住	h
+Adventure movement qualifier: releasing hold	，松开抓握	h
+Adventure movement qualifier: from	，从	h
+Adventure movement medium: Air	空气	h
+Adventure movement medium: Water	水	h
+Adventure movement medium: Lava	熔岩	h
+Adventure movement medium: Magma	岩浆	h
+Adventure action target: creature	生物	h
+Adventure action target: creatures	生物	h
+Adventure action target: item	物品	h
+Adventure action target: building	建筑	h
+Adventure action target: tree	树	h
+Adventure action target: the Void	虚空	h
+Adventure item action: the Void	虚空	h
+Adventure item action: engraving	雕刻	h
+Adventure item action: View engraving	查看雕刻	h
+Adventure item action: View yourself	查看自己	h
+Adventure item action: View {n}	查看{n}	h
+Adventure item action: Start new conversation with {n}	与{n}开始新的交谈	h
+Adventure item action: Continue conversation with {n}	继续与{n}交谈	h
+Adventure item action: Continue conversation with	继续交谈	h
+Adventure item action: Continue shouting	继续喊话	h
+Adventure item action: Shout out to everybody	向所有人喊话	h
+Adventure item action: Assume an identity	假扮身份	h
+Adventure item action: Attack error	攻击错误	h
+Adventure item action: Combat error	战斗错误	h
+Adventure item action: Attack {n}	攻击{n}	h
+Adventure item action: Attack {n} ({p})	攻击{n}（{p}）	h
+Adventure item action: Combat {n}	与{n}战斗	h
+Adventure item action: Combat {n} ({p})	与{n}战斗（{p}）	h
+Adventure item action: Quickly shoot {n}	快速射击{n}	h
+Adventure item action: Aim carefully and shoot {n}	仔细瞄准并射击{n}	h
+Adventure item action: Shoot {s}	射击{s}	h
+Adventure item action: Quickly throw at {n}	快速投向{n}	h
+Adventure item action: Aim carefully and throw at {n}	仔细瞄准并投向{n}	h
+Adventure item action: Throw at {s}	投向{s}	h
+Adventure item action: Jump to the {p}	跳向{p}	h
+Adventure item action: {p}	{p}	h
+Adventure item action: Move to {n}	移动到{n}	h
+Adventure item action: Move to {n} ({p})	移动到{n}（{p}）	h
+Adventure item action: Move to {s}	移动到{s}	h
+Adventure item action: Move to {s} ({p})	移动到{s}（{p}）	h
+Adventure item action: Charge {n}	冲向{n}	h
+Adventure item action: Charge {n} ({p})	冲向{n}（{p}）	h
+Adventure item action: Charge {s}	冲向{s}	h
+Adventure item action: Charge {s} ({p})	冲向{s}（{p}）	h
+Adventure item action: Climb to {s}	攀向{s}	h
+Adventure item action: Climb to {s} ({p})	攀向{s}（{p}）	h
+Adventure item action: Hold {s}	抓住{s}	h
+Adventure item action: Hold {s} ({p})	抓住{s}（{p}）	h
+Adventure item action: Hang from {s}	悬挂于{s}	h
+Adventure item action: Hang from {s} ({p})	悬挂于{s}（{p}）	h
+Adventure item action: Release hold on {s}	松开抓住的{s}	h
+Adventure item action: Climb	攀爬	h
+Adventure item action: Climb ({p})	攀爬（{p}）	h
+Adventure item action: Climb {s}	攀爬{s}	h
+Adventure item action: Climb {s} ({p})	攀爬{s}（{p}）	h
+Adventure item action: Climb down	爬下	h
+Adventure item action: Climb down from {s}	从{s}爬下	h
+Adventure item action: Mount {n}	骑上{n}	h
+Adventure item action: Mount {n} ({p})	骑上{n}（{p}）	h
+Adventure item action: Dismount to {s}	下坐骑到{s}	h
+Adventure item action: Dismount to {s} ({p})	下坐骑到{s}（{p}）	h
+Adventure item action: Claim {n} as pet	认领{n}为宠物	h
+Adventure item action: Claim {n} ({p}) as pet	认领{n}为宠物（{p}）	h
+Adventure item action: Lead {n}	牵领{n}	h
+Adventure item action: Lead {n} ({p})	牵领{n}（{p}）	h
+Adventure item action: Stop leading {n}	停止牵领{n}	h
+Adventure item action: Push {s}	推动{s}	h
+Adventure item action: Ride {s}	乘坐{s}	h
+Adventure item action: Guide {s}	引导{s}	h
+Adventure item action: Raise {s} bucket	升起{s}的水桶	h
+Adventure item action: Raise {s} bucket ({p})	升起{s}的水桶（{p}）	h
+Adventure item action: Lower {s} bucket	降下{s}的水桶	h
+Adventure item action: Lower {s} bucket ({p})	降下{s}的水桶（{p}）	h
+Adventure item action: Pull {s}	拉动{s}	h
+Adventure item action: Pull {s} ({p})	拉动{s}（{p}）	h
+Adventure item action: Break in {s}	破开{s}	h
+Adventure item action: Break in {s} ({p})	破开{s}（{p}）	h
+Adventure item action: Pick {s} lock	撬开{s}的锁	h
+Adventure item action: Pick {s} lock ({p})	撬开{s}的锁（{p}）	h
+Adventure item action: Bash down {s}	撞倒{s}	h
+Adventure item action: Bash down {s} ({p})	撞倒{s}（{p}）	h
+Adventure item action: Topple {s}	推倒{s}	h
+Adventure item action: Topple {s} ({p})	推倒{s}（{p}）	h
+Adventure item action: Get {s}	拿取{s}	h
+Adventure item action: Get {s} ({p})	拿取{s}（{p}）	h
+Adventure item action: Get {s} from {n}	从{n}拿取{s}	h
+Adventure item action: Get {s} from {n} ({p})	从{n}拿取{s}（{p}）	h
+Adventure item action: Get {s} from {s}	从{s2}拿取{s1}	h
+Adventure item action: Get {s} from {s} ({p})	从{s2}拿取{s1}（{p}）	h
+Adventure item action: Pick {s}	采摘{s}	h
+Adventure item action: Pick {s} ({p})	采摘{s}（{p}）	h
+Adventure item action: Ignite	点火	h
+Adventure item action: Ignite {s} ({p})	点燃{s}（{p}）	h
+Adventure item action: Make Campfire	搭建篝火	h
+Adventure item action: Make Campfire ({p})	搭建篝火（{p}）	h
+Adventure item action: Fell {s}	砍倒{s}	h
+Adventure item action: Fell {s} ({p})	砍倒{s}（{p}）	h
+# 842ab0: prefix, the optional no-climbing flag, and independent level delta.
+Adventure item action: Path to here	前往此处	h
+Adventure item action: Path to here (no climbing/jumping)	前往此处（不攀爬或跳跃）	h
+Adventure item action: Path to here ({d} level up)	前往此处（上方{d}层）	h
+Adventure item action: Path to here ({d} levels up)	前往此处（上方{d}层）	h
+Adventure item action: Path to here ({d} level down)	前往此处（下方{d}层）	h
+Adventure item action: Path to here ({d} levels down)	前往此处（下方{d}层）	h
+Adventure item action: Path to here (no climbing/jumping) ({d} level up)	前往此处（不攀爬或跳跃，上方{d}层）	h
+Adventure item action: Path to here (no climbing/jumping) ({d} levels up)	前往此处（不攀爬或跳跃，上方{d}层）	h
+Adventure item action: Path to here (no climbing/jumping) ({d} level down)	前往此处（不攀爬或跳跃，下方{d}层）	h
+Adventure item action: Path to here (no climbing/jumping) ({d} levels down)	前往此处（不攀爬或跳跃，下方{d}层）	h
+Adventure item action: Go below hatch	到舱盖下方	h
+Adventure item action: Go below hatch (no climbing/jumping)	到舱盖下方（不攀爬或跳跃）	h
+Adventure item action: Go below hatch ({d} level up)	到舱盖下方（上方{d}层）	h
+Adventure item action: Go below hatch ({d} levels up)	到舱盖下方（上方{d}层）	h
+Adventure item action: Go below hatch ({d} level down)	到舱盖下方（下方{d}层）	h
+Adventure item action: Go below hatch ({d} levels down)	到舱盖下方（下方{d}层）	h
+Adventure item action: Go below hatch (no climbing/jumping) ({d} level up)	到舱盖下方（不攀爬或跳跃，上方{d}层）	h
+Adventure item action: Go below hatch (no climbing/jumping) ({d} levels up)	到舱盖下方（不攀爬或跳跃，上方{d}层）	h
+Adventure item action: Go below hatch (no climbing/jumping) ({d} level down)	到舱盖下方（不攀爬或跳跃，下方{d}层）	h
+Adventure item action: Go below hatch (no climbing/jumping) ({d} levels down)	到舱盖下方（不攀爬或跳跃，下方{d}层）	h
+# 884769..8847ac: exactly one bounded quantity prompt, with its native maximum.
+Pick up how many? (0-{d})	拾取多少？（0-{d}）	hPt
 Adventure vermin: A	小生物	l
 
 # DFHack plugins/stocks.lua: action fields, separate from keys and frame brand.
@@ -10035,3 +10548,231 @@ Popup: Justice	弹窗：司法	w
 Popup: Work orders	弹窗：工作指令	w
 Popup: The world	弹窗：世界	w
 Bins, bags, and barrels	箱子、袋子与桶	w
+
+# Visitor Overview: native itinerary and rumour constructors, both Windows images.
+# Original functions, jump tables and decompiled grammar: data/extracted/visitor-overview/.
+# {s} owns the entire itinerary vector, including each optional at <location>.
+# {e} is a complete generated location name; {b} is the native artifact identity.
+Visitor overview purpose: to pray	祈祷	hl
+"{q}"	“{q1}”	hPt
+""	“”	hP
+Visitor overview purpose: to study	学习	hl
+Visitor overview purpose: to relax	放松	hl
+Visitor overview purpose: to perform	表演	hl
+Visitor overview purpose: to slay beasts	猎杀野兽	hl
+Visitor overview purpose: seeking work as a performer	寻找表演者的工作	hl
+Visitor overview purpose: seeking work as a mercenary	寻找佣兵的工作	hl
+Visitor overview purpose: seeking work as a scholar	寻找学者的工作	hl
+Visitor overview purpose: for diplomacy	开展外交	hl
+Visitor overview purpose: seeking sanctuary	寻求庇护	hl
+Visitor overview purpose: asking questions	询问信息	hl
+Visitor overview purpose at {s}: {e}	在{e1}{s1}	hlt
+Visitor overview purpose location: {e}	访问{e1}	hlt
+Visitor overview purpose empty	此地	hl
+Visitor overview purpose separator: comma	、	hl
+Visitor overview purpose separator: and	及	hl
+This visitor is ready to leave.	这位访客准备离开了。	hP
+This visitor has come {s}.	这位访客前来{s1}。	hPt
+This visitor has come {s}. He heard this was a good place to search for monsters.	这位访客前来{s1}。他听说这里是寻找怪兽的好地方。	hPt
+This visitor has come {s}. He heard this was the place for those seeking danger.	这位访客前来{s1}。他听说这里适合寻求冒险的人。	hPt
+This visitor has come {s}. He went on this journey out of curiosity.	这位访客前来{s1}。他出于好奇踏上了这段旅程。	hPt
+This visitor has come {s}. He was curious about {e}.	这位访客前来{s1}。他对{e1}感到好奇。	hPt
+This visitor has come {s}. He heard this was the place for prayer.	这位访客前来{s1}。他听说这里适合祈祷。	hPt
+This visitor has come {s}. He heard {e} was the place for prayer.	这位访客前来{s1}。他听说{e1}适合祈祷。	hPt
+This visitor has come {s}. He heard this was the place for a good drink.	这位访客前来{s1}。他听说这里能喝到好酒。	hPt
+This visitor has come {s}. He heard {e} was the place for a good drink.	这位访客前来{s1}。他听说可以在{e1}喝到好酒。	hPt
+This visitor has come {s}. He heard this was the place to admire fine architecture.	这位访客前来{s1}。他听说这里能欣赏精美的建筑。	hPt
+This visitor has come {s}. He heard {e} was the place to admire fine architecture.	这位访客前来{s1}。他听说可以在{e1}欣赏精美的建筑。	hPt
+This visitor has come {s}. He heard this was the place to enjoy oneself.	这位访客前来{s1}。他听说这里适合享乐。	hPt
+This visitor has come {s}. He heard {e} was the place to enjoy oneself.	这位访客前来{s1}。他听说{e1}适合享乐。	hPt
+This visitor has come {s}. He heard this was the place to entertain people.	这位访客前来{s1}。他听说这里适合为人们表演。	hPt
+This visitor has come {s}. He heard {e} was the place to entertain people.	这位访客前来{s1}。他听说可以在{e1}为人们表演。	hPt
+This visitor has come {s}. He heard this was the place to perform research.	这位访客前来{s1}。他听说这里适合开展研究。	hPt
+This visitor has come {s}. He heard {e} was the place to perform research.	这位访客前来{s1}。他听说{e1}适合开展研究。	hPt
+This visitor has come {s}. He heard this was the place for long-term scholarship.	这位访客前来{s1}。他听说这里适合长期从事学术研究。	hPt
+This visitor has come {s}. He heard {e} was the place for long-term scholarship.	这位访客前来{s1}。他听说{e1}适合长期从事学术研究。	hPt
+This visitor has come {s}. He heard this would make a good base for a mercenary.	这位访客前来{s1}。他听说这里适合作为佣兵的基地。	hPt
+This visitor has come {s}. He heard {e} would make a good base for a mercenary.	这位访客前来{s1}。他听说{e1}适合作为佣兵的基地。	hPt
+This visitor has come {s}. He heard this was the place to look for long-term work.	这位访客前来{s1}。他听说可以在这里找到长期工作。	hPt
+This visitor has come {s}. He heard {e} was the place to look for long-term work.	这位访客前来{s1}。他听说可以在{e1}找到长期工作。	hPt
+This visitor has come {s}. He believes this would be a safe place to stay.	这位访客前来{s1}。他相信这里可以安全居留。	hPt
+This visitor has come {s}. He believes {e} would be a safe place to stay.	这位访客前来{s1}。他相信可以安全地居留在{e1}。	hPt
+This visitor has come {s}. He is seeking information.	这位访客前来{s1}。他正在打听消息。	hPt
+This visitor has come {s}. He is seeking information about the location of {b}.	这位访客前来{s1}。他正在打听{b1}的下落。	hPt
+This visitor has come {s}. He	这位访客前来{s1}。他	hPt
+This visitor has come {s}. She heard this was a good place to search for monsters.	这位访客前来{s1}。她听说这里是寻找怪兽的好地方。	hPt
+This visitor has come {s}. She heard this was the place for those seeking danger.	这位访客前来{s1}。她听说这里适合寻求冒险的人。	hPt
+This visitor has come {s}. She went on this journey out of curiosity.	这位访客前来{s1}。她出于好奇踏上了这段旅程。	hPt
+This visitor has come {s}. She was curious about {e}.	这位访客前来{s1}。她对{e1}感到好奇。	hPt
+This visitor has come {s}. She heard this was the place for prayer.	这位访客前来{s1}。她听说这里适合祈祷。	hPt
+This visitor has come {s}. She heard {e} was the place for prayer.	这位访客前来{s1}。她听说{e1}适合祈祷。	hPt
+This visitor has come {s}. She heard this was the place for a good drink.	这位访客前来{s1}。她听说这里能喝到好酒。	hPt
+This visitor has come {s}. She heard {e} was the place for a good drink.	这位访客前来{s1}。她听说可以在{e1}喝到好酒。	hPt
+This visitor has come {s}. She heard this was the place to admire fine architecture.	这位访客前来{s1}。她听说这里能欣赏精美的建筑。	hPt
+This visitor has come {s}. She heard {e} was the place to admire fine architecture.	这位访客前来{s1}。她听说可以在{e1}欣赏精美的建筑。	hPt
+This visitor has come {s}. She heard this was the place to enjoy oneself.	这位访客前来{s1}。她听说这里适合享乐。	hPt
+This visitor has come {s}. She heard {e} was the place to enjoy oneself.	这位访客前来{s1}。她听说{e1}适合享乐。	hPt
+This visitor has come {s}. She heard this was the place to entertain people.	这位访客前来{s1}。她听说这里适合为人们表演。	hPt
+This visitor has come {s}. She heard {e} was the place to entertain people.	这位访客前来{s1}。她听说可以在{e1}为人们表演。	hPt
+This visitor has come {s}. She heard this was the place to perform research.	这位访客前来{s1}。她听说这里适合开展研究。	hPt
+This visitor has come {s}. She heard {e} was the place to perform research.	这位访客前来{s1}。她听说{e1}适合开展研究。	hPt
+This visitor has come {s}. She heard this was the place for long-term scholarship.	这位访客前来{s1}。她听说这里适合长期从事学术研究。	hPt
+This visitor has come {s}. She heard {e} was the place for long-term scholarship.	这位访客前来{s1}。她听说{e1}适合长期从事学术研究。	hPt
+This visitor has come {s}. She heard this would make a good base for a mercenary.	这位访客前来{s1}。她听说这里适合作为佣兵的基地。	hPt
+This visitor has come {s}. She heard {e} would make a good base for a mercenary.	这位访客前来{s1}。她听说{e1}适合作为佣兵的基地。	hPt
+This visitor has come {s}. She heard this was the place to look for long-term work.	这位访客前来{s1}。她听说可以在这里找到长期工作。	hPt
+This visitor has come {s}. She heard {e} was the place to look for long-term work.	这位访客前来{s1}。她听说可以在{e1}找到长期工作。	hPt
+This visitor has come {s}. She believes this would be a safe place to stay.	这位访客前来{s1}。她相信这里可以安全居留。	hPt
+This visitor has come {s}. She believes {e} would be a safe place to stay.	这位访客前来{s1}。她相信可以安全地居留在{e1}。	hPt
+This visitor has come {s}. She is seeking information.	这位访客前来{s1}。她正在打听消息。	hPt
+This visitor has come {s}. She is seeking information about the location of {b}.	这位访客前来{s1}。她正在打听{b1}的下落。	hPt
+This visitor has come {s}. She	这位访客前来{s1}。她	hPt
+This visitor has come {s}. It heard this was a good place to search for monsters.	这位访客前来{s1}。它听说这里是寻找怪兽的好地方。	hPt
+This visitor has come {s}. It heard this was the place for those seeking danger.	这位访客前来{s1}。它听说这里适合寻求冒险的人。	hPt
+This visitor has come {s}. It went on this journey out of curiosity.	这位访客前来{s1}。它出于好奇踏上了这段旅程。	hPt
+This visitor has come {s}. It was curious about {e}.	这位访客前来{s1}。它对{e1}感到好奇。	hPt
+This visitor has come {s}. It heard this was the place for prayer.	这位访客前来{s1}。它听说这里适合祈祷。	hPt
+This visitor has come {s}. It heard {e} was the place for prayer.	这位访客前来{s1}。它听说{e1}适合祈祷。	hPt
+This visitor has come {s}. It heard this was the place for a good drink.	这位访客前来{s1}。它听说这里能喝到好酒。	hPt
+This visitor has come {s}. It heard {e} was the place for a good drink.	这位访客前来{s1}。它听说可以在{e1}喝到好酒。	hPt
+This visitor has come {s}. It heard this was the place to admire fine architecture.	这位访客前来{s1}。它听说这里能欣赏精美的建筑。	hPt
+This visitor has come {s}. It heard {e} was the place to admire fine architecture.	这位访客前来{s1}。它听说可以在{e1}欣赏精美的建筑。	hPt
+This visitor has come {s}. It heard this was the place to enjoy oneself.	这位访客前来{s1}。它听说这里适合享乐。	hPt
+This visitor has come {s}. It heard {e} was the place to enjoy oneself.	这位访客前来{s1}。它听说{e1}适合享乐。	hPt
+This visitor has come {s}. It heard this was the place to entertain people.	这位访客前来{s1}。它听说这里适合为人们表演。	hPt
+This visitor has come {s}. It heard {e} was the place to entertain people.	这位访客前来{s1}。它听说可以在{e1}为人们表演。	hPt
+This visitor has come {s}. It heard this was the place to perform research.	这位访客前来{s1}。它听说这里适合开展研究。	hPt
+This visitor has come {s}. It heard {e} was the place to perform research.	这位访客前来{s1}。它听说{e1}适合开展研究。	hPt
+This visitor has come {s}. It heard this was the place for long-term scholarship.	这位访客前来{s1}。它听说这里适合长期从事学术研究。	hPt
+This visitor has come {s}. It heard {e} was the place for long-term scholarship.	这位访客前来{s1}。它听说{e1}适合长期从事学术研究。	hPt
+This visitor has come {s}. It heard this would make a good base for a mercenary.	这位访客前来{s1}。它听说这里适合作为佣兵的基地。	hPt
+This visitor has come {s}. It heard {e} would make a good base for a mercenary.	这位访客前来{s1}。它听说{e1}适合作为佣兵的基地。	hPt
+This visitor has come {s}. It heard this was the place to look for long-term work.	这位访客前来{s1}。它听说可以在这里找到长期工作。	hPt
+This visitor has come {s}. It heard {e} was the place to look for long-term work.	这位访客前来{s1}。它听说可以在{e1}找到长期工作。	hPt
+This visitor has come {s}. It believes this would be a safe place to stay.	这位访客前来{s1}。它相信这里可以安全居留。	hPt
+This visitor has come {s}. It believes {e} would be a safe place to stay.	这位访客前来{s1}。它相信可以安全地居留在{e1}。	hPt
+This visitor has come {s}. It is seeking information.	这位访客前来{s1}。它正在打听消息。	hPt
+This visitor has come {s}. It is seeking information about the location of {b}.	这位访客前来{s1}。它正在打听{b1}的下落。	hPt
+This visitor has come {s}. It	这位访客前来{s1}。它	hPt
+This visitor has come .	这位访客已经到来。	hP
+This visitor has come . He heard this was a good place to search for monsters.	这位访客已经到来。他听说这里是寻找怪兽的好地方。	hP
+This visitor has come . He heard this was the place for those seeking danger.	这位访客已经到来。他听说这里适合寻求冒险的人。	hP
+This visitor has come . He went on this journey out of curiosity.	这位访客已经到来。他出于好奇踏上了这段旅程。	hP
+This visitor has come . He was curious about {e}.	这位访客已经到来。他对{e1}感到好奇。	hPt
+This visitor has come . He heard this was the place for prayer.	这位访客已经到来。他听说这里适合祈祷。	hP
+This visitor has come . He heard {e} was the place for prayer.	这位访客已经到来。他听说{e1}适合祈祷。	hPt
+This visitor has come . He heard this was the place for a good drink.	这位访客已经到来。他听说这里能喝到好酒。	hP
+This visitor has come . He heard {e} was the place for a good drink.	这位访客已经到来。他听说可以在{e1}喝到好酒。	hPt
+This visitor has come . He heard this was the place to admire fine architecture.	这位访客已经到来。他听说这里能欣赏精美的建筑。	hP
+This visitor has come . He heard {e} was the place to admire fine architecture.	这位访客已经到来。他听说可以在{e1}欣赏精美的建筑。	hPt
+This visitor has come . He heard this was the place to enjoy oneself.	这位访客已经到来。他听说这里适合享乐。	hP
+This visitor has come . He heard {e} was the place to enjoy oneself.	这位访客已经到来。他听说{e1}适合享乐。	hPt
+This visitor has come . He heard this was the place to entertain people.	这位访客已经到来。他听说这里适合为人们表演。	hP
+This visitor has come . He heard {e} was the place to entertain people.	这位访客已经到来。他听说可以在{e1}为人们表演。	hPt
+This visitor has come . He heard this was the place to perform research.	这位访客已经到来。他听说这里适合开展研究。	hP
+This visitor has come . He heard {e} was the place to perform research.	这位访客已经到来。他听说{e1}适合开展研究。	hPt
+This visitor has come . He heard this was the place for long-term scholarship.	这位访客已经到来。他听说这里适合长期从事学术研究。	hP
+This visitor has come . He heard {e} was the place for long-term scholarship.	这位访客已经到来。他听说{e1}适合长期从事学术研究。	hPt
+This visitor has come . He heard this would make a good base for a mercenary.	这位访客已经到来。他听说这里适合作为佣兵的基地。	hP
+This visitor has come . He heard {e} would make a good base for a mercenary.	这位访客已经到来。他听说{e1}适合作为佣兵的基地。	hPt
+This visitor has come . He heard this was the place to look for long-term work.	这位访客已经到来。他听说可以在这里找到长期工作。	hP
+This visitor has come . He heard {e} was the place to look for long-term work.	这位访客已经到来。他听说可以在{e1}找到长期工作。	hPt
+This visitor has come . He believes this would be a safe place to stay.	这位访客已经到来。他相信这里可以安全居留。	hP
+This visitor has come . He believes {e} would be a safe place to stay.	这位访客已经到来。他相信可以安全地居留在{e1}。	hPt
+This visitor has come . He is seeking information.	这位访客已经到来。他正在打听消息。	hP
+This visitor has come . He is seeking information about the location of {b}.	这位访客已经到来。他正在打听{b1}的下落。	hPt
+This visitor has come . He	这位访客已经到来。他	hP
+This visitor has come . She heard this was a good place to search for monsters.	这位访客已经到来。她听说这里是寻找怪兽的好地方。	hP
+This visitor has come . She heard this was the place for those seeking danger.	这位访客已经到来。她听说这里适合寻求冒险的人。	hP
+This visitor has come . She went on this journey out of curiosity.	这位访客已经到来。她出于好奇踏上了这段旅程。	hP
+This visitor has come . She was curious about {e}.	这位访客已经到来。她对{e1}感到好奇。	hPt
+This visitor has come . She heard this was the place for prayer.	这位访客已经到来。她听说这里适合祈祷。	hP
+This visitor has come . She heard {e} was the place for prayer.	这位访客已经到来。她听说{e1}适合祈祷。	hPt
+This visitor has come . She heard this was the place for a good drink.	这位访客已经到来。她听说这里能喝到好酒。	hP
+This visitor has come . She heard {e} was the place for a good drink.	这位访客已经到来。她听说可以在{e1}喝到好酒。	hPt
+This visitor has come . She heard this was the place to admire fine architecture.	这位访客已经到来。她听说这里能欣赏精美的建筑。	hP
+This visitor has come . She heard {e} was the place to admire fine architecture.	这位访客已经到来。她听说可以在{e1}欣赏精美的建筑。	hPt
+This visitor has come . She heard this was the place to enjoy oneself.	这位访客已经到来。她听说这里适合享乐。	hP
+This visitor has come . She heard {e} was the place to enjoy oneself.	这位访客已经到来。她听说{e1}适合享乐。	hPt
+This visitor has come . She heard this was the place to entertain people.	这位访客已经到来。她听说这里适合为人们表演。	hP
+This visitor has come . She heard {e} was the place to entertain people.	这位访客已经到来。她听说可以在{e1}为人们表演。	hPt
+This visitor has come . She heard this was the place to perform research.	这位访客已经到来。她听说这里适合开展研究。	hP
+This visitor has come . She heard {e} was the place to perform research.	这位访客已经到来。她听说{e1}适合开展研究。	hPt
+This visitor has come . She heard this was the place for long-term scholarship.	这位访客已经到来。她听说这里适合长期从事学术研究。	hP
+This visitor has come . She heard {e} was the place for long-term scholarship.	这位访客已经到来。她听说{e1}适合长期从事学术研究。	hPt
+This visitor has come . She heard this would make a good base for a mercenary.	这位访客已经到来。她听说这里适合作为佣兵的基地。	hP
+This visitor has come . She heard {e} would make a good base for a mercenary.	这位访客已经到来。她听说{e1}适合作为佣兵的基地。	hPt
+This visitor has come . She heard this was the place to look for long-term work.	这位访客已经到来。她听说可以在这里找到长期工作。	hP
+This visitor has come . She heard {e} was the place to look for long-term work.	这位访客已经到来。她听说可以在{e1}找到长期工作。	hPt
+This visitor has come . She believes this would be a safe place to stay.	这位访客已经到来。她相信这里可以安全居留。	hP
+This visitor has come . She believes {e} would be a safe place to stay.	这位访客已经到来。她相信可以安全地居留在{e1}。	hPt
+This visitor has come . She is seeking information.	这位访客已经到来。她正在打听消息。	hP
+This visitor has come . She is seeking information about the location of {b}.	这位访客已经到来。她正在打听{b1}的下落。	hPt
+This visitor has come . She	这位访客已经到来。她	hP
+This visitor has come . It heard this was a good place to search for monsters.	这位访客已经到来。它听说这里是寻找怪兽的好地方。	hP
+This visitor has come . It heard this was the place for those seeking danger.	这位访客已经到来。它听说这里适合寻求冒险的人。	hP
+This visitor has come . It went on this journey out of curiosity.	这位访客已经到来。它出于好奇踏上了这段旅程。	hP
+This visitor has come . It was curious about {e}.	这位访客已经到来。它对{e1}感到好奇。	hPt
+This visitor has come . It heard this was the place for prayer.	这位访客已经到来。它听说这里适合祈祷。	hP
+This visitor has come . It heard {e} was the place for prayer.	这位访客已经到来。它听说{e1}适合祈祷。	hPt
+This visitor has come . It heard this was the place for a good drink.	这位访客已经到来。它听说这里能喝到好酒。	hP
+This visitor has come . It heard {e} was the place for a good drink.	这位访客已经到来。它听说可以在{e1}喝到好酒。	hPt
+This visitor has come . It heard this was the place to admire fine architecture.	这位访客已经到来。它听说这里能欣赏精美的建筑。	hP
+This visitor has come . It heard {e} was the place to admire fine architecture.	这位访客已经到来。它听说可以在{e1}欣赏精美的建筑。	hPt
+This visitor has come . It heard this was the place to enjoy oneself.	这位访客已经到来。它听说这里适合享乐。	hP
+This visitor has come . It heard {e} was the place to enjoy oneself.	这位访客已经到来。它听说{e1}适合享乐。	hPt
+This visitor has come . It heard this was the place to entertain people.	这位访客已经到来。它听说这里适合为人们表演。	hP
+This visitor has come . It heard {e} was the place to entertain people.	这位访客已经到来。它听说可以在{e1}为人们表演。	hPt
+This visitor has come . It heard this was the place to perform research.	这位访客已经到来。它听说这里适合开展研究。	hP
+This visitor has come . It heard {e} was the place to perform research.	这位访客已经到来。它听说{e1}适合开展研究。	hPt
+This visitor has come . It heard this was the place for long-term scholarship.	这位访客已经到来。它听说这里适合长期从事学术研究。	hP
+This visitor has come . It heard {e} was the place for long-term scholarship.	这位访客已经到来。它听说{e1}适合长期从事学术研究。	hPt
+This visitor has come . It heard this would make a good base for a mercenary.	这位访客已经到来。它听说这里适合作为佣兵的基地。	hP
+This visitor has come . It heard {e} would make a good base for a mercenary.	这位访客已经到来。它听说{e1}适合作为佣兵的基地。	hPt
+This visitor has come . It heard this was the place to look for long-term work.	这位访客已经到来。它听说可以在这里找到长期工作。	hP
+This visitor has come . It heard {e} was the place to look for long-term work.	这位访客已经到来。它听说可以在{e1}找到长期工作。	hPt
+This visitor has come . It believes this would be a safe place to stay.	这位访客已经到来。它相信这里可以安全居留。	hP
+This visitor has come . It believes {e} would be a safe place to stay.	这位访客已经到来。它相信可以安全地居留在{e1}。	hPt
+This visitor has come . It is seeking information.	这位访客已经到来。它正在打听消息。	hP
+This visitor has come . It is seeking information about the location of {b}.	这位访客已经到来。它正在打听{b1}的下落。	hPt
+This visitor has come . It	这位访客已经到来。它	hP
+
+Mod details label: Author	作者：	l
+Mod details label: Version	版本：	l
+Mod details label: Earliest compatible version	最早兼容版本：	l
+Mod details label: Description	说明：	l
+Mod dependency label: Must be after	需后于：	l
+Mod dependency label: Must be before	需先于：	l
+Mod dependency label: Requires	依赖：	l
+Mod dependency label: Conflicts with	冲突：	l
+
+# Official package DESCRIPTION catalog: Steam data/vanilla/vanilla_*/info.txt
+# and Classic data/vanilla/vanilla_*/info.txt (For save compatibility.).
+# Context keys are resolved only for native vanilla mod records; authored names
+# and third-party descriptions never enter this translation domain.
+Vanilla mod description: These are the default Dwarf Fortress reactions, which are various task-like activities.	这些是《矮人要塞》的默认反应，包括各种类似任务的活动。	l
+Vanilla mod description: These are the default Dwarf Fortress interactions, which allow creatures to do some unusual actions.	这些是《矮人要塞》的默认互动，让生物能够执行一些特殊行为。	l
+Vanilla mod description: These are the default Dwarf Fortress bodies for creatures, including randomly generated creatures and tissue templates.	这些是《矮人要塞》的默认生物身体结构，涵盖随机生成的生物和组织模板。	l
+Vanilla mod description: These are the default Dwarf Fortress words and their translations into the in-game languages.	这些是《矮人要塞》的默认词汇，以及这些词汇在游戏内各语言中的译法。	l
+Vanilla mod description: These are the images of the default Dwarf Fortress creatures.  Some parts, like the dwarf wielded equipment images, rely on the vanilla items or equivalents being present.	这些是《矮人要塞》默认生物的图像。其中一些部分，例如矮人所持装备的图像，需要存在原版物品或等效物品。	l
+Vanilla mod description: The graphics for shapes and colors.  Includes the palette which is linked to the defined colors.	用于形状和颜色的图像，包括与已定义颜色关联的调色板。	l
+Vanilla mod description: The default Dwarf Fortress graphics for walls, floors, fluids, and other environmental objects.	《矮人要塞》中墙壁、地板、流体和其他环境对象的默认图像。	l
+Vanilla mod description: The default Dwarf Fortress graphics for the interface buttons, icons, etc.	《矮人要塞》中界面按钮、图标等元素的默认图像。	l
+Vanilla mod description: The default Dwarf Fortress graphics for the world map.	《矮人要塞》世界地图的默认图像。	l
+Vanilla mod description: These are the triggers for the default Dwarf Fortress music and sound effects.	这些是《矮人要塞》默认音乐和音效的触发规则。	l
+Vanilla mod description: Various text strings used by the game.	游戏使用的各种文本。	l
+Vanilla mod description: The object definitions for shapes and colors.	形状和颜色的对象定义。	l
+Vanilla mod description: These are the default Dwarf Fortress generated objects.	这些是《矮人要塞》默认的程序生成对象。	l
+Vanilla mod description: These are the default Dwarf Fortress civilizations.	这些是《矮人要塞》的默认文明。	l
+Vanilla mod description: These are the default Dwarf Fortress creatures.	这些是《矮人要塞》的默认生物。	l
+Vanilla mod description: These are the default Dwarf Fortress extinct creatures.	这些是《矮人要塞》的默认灭绝生物。	l
+Vanilla mod description: These are the default Dwarf Fortress materials.	这些是《矮人要塞》的默认材料。	l
+Vanilla mod description: These are the default Dwarf Fortress items.	这些是《矮人要塞》的默认物品。	l
+Vanilla mod description: These are the default Dwarf Fortress buildings.	这些是《矮人要塞》的默认建筑。	l
+Vanilla mod description: These are the default Dwarf Fortress plants and fungi.	这些是《矮人要塞》的默认植物和真菌。	l
+Vanilla mod description: These are the images of the default Dwarf Fortress extinct creatures.	这些是《矮人要塞》默认灭绝生物的图像。	l
+Vanilla mod description: These are the images used by the default Dwarf Fortress interactions.	这些是《矮人要塞》默认互动所使用的图像。	l
+Vanilla mod description: These are the graphics for the default Dwarf Fortress items.	这些是《矮人要塞》默认物品的图像。	l
+Vanilla mod description: These are the graphics for the default Dwarf Fortress buildings.	这些是《矮人要塞》默认建筑的图像。	l
+Vanilla mod description: These are the graphics for the default Dwarf Fortress plants and fungi.	这些是《矮人要塞》默认植物和真菌的图像。	l
+Vanilla mod description: For save compatibility.	用于保持存档兼容性。	l

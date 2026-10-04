@@ -1,0 +1,161 @@
+Native source: Adventure travel map significant-structures panel
+
+Images read directly:
+  reference PE:6a70a6d9:02711000
+    D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+  classic PE:6a70b91c:0270a000
+    C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+
+Ownership:
+  Classic .?AVviewscreen_dungeonmodest@@ COL RVA 0x179a550,
+  vtable RVA 0x16b4e38, render slot +0x18 RVA 0x7f1530..0x7f44a1.
+  Its call RVA 0x7f433c invokes the travel/map renderer
+  RVA 0x80ae60..0x81622c (reference RVA 0x80d5e0..0x8189ac).
+  Panel body starts classic RVA 0x80eee1 and 0x811326;
+  reference corresponding bodies start RVA 0x811661 and 0x813aa6.
+
+Source scope:
+  The two panel bodies contain 75 distinct literal operands: 72 whole finite
+  captions, the suffix " shrine", and prefixes "Shrine to " and "Shrine of ".
+  Repeated operands are retained with native call-site and literal RVAs in
+  native-literals.tsv. Caption labels use RIP-relative source strings. The
+  panel bodies contain no additional printable multi-byte inline literal labels.
+  The complete switch targets, including cases that emit no caption, are in
+  source-branches.tsv. Native machine instructions are retained in the two
+  *-structures.asm files. These are extracted translation sources, not runtime
+  output or a simulation of the game UI.
+
+Panel selection and dimensions:
+  The renderer obtains a current travel/map z level from the native selected
+  coordinate or selected unit position. At classic RVA 0x80ed6c the comparison
+  z>=1 selects the first panel; z<1 selects the second. Both panels occupy the
+  rightmost 30 native columns, with text at panel_left+3. The first has border
+  rows 1..11 and content rows 2..10; the second has border rows 1..20 and
+  content rows 2..19. Row limiting is part of native rendering, not a text rule.
+
+Site and cell selection:
+  Iterate world_data.sites (world_data+0x178). Reject the native site+0x2a0
+  predicate when true. Site x/y bounds at +0x1f8..+0x204 are multiplied by 3
+  for the selected travel coordinate. The first branch also requires its z
+  coordinate between site+0x348 and site+0x34c; the second requires
+  site+0x348<=0. There must be a realization pointer at site+0x308.
+  Selected local cell coordinates are derived from selected x/y minus the
+  site's lower x/y bounds and then scaled 16/48. The realization grid uses
+  local_x*17+local_y. Native flags at realization + cell*0xa8 +0xb518 have
+  bit 0x100000 for the preceding "Sewer Access" line.
+  Iterate structures from realization + cell*0x40 +0x17278. Each structure's
+  type is +4, abstract building id +0x4c, info pointer +0x58, flags +0x78.
+
+Main structure enum:
+  Unsigned type<=31 guards both 32-entry switches. Enum names are corroborated
+  with data/upstream/df-structures/df.site_realization.xml; the executable's
+  switch determines which labels actually appear here.
+  0 cottage_plot and 4 house => housing counters.
+  1 castle_wall, 2 castle_tower, 3 castle_courtyard, 6 tomb, 10 pasture,
+  11 waste, 12 courtyard, 14 vault, 15 great_tower, 27 meadow and
+  30 necromancer_tower => no caption.
+  5 temple => actual abstract name, otherwise Temple.
+  7 shop_house => shop subtype, or Abandoned shop if flags&1.
+  8 warehouse => Warehouse.
+  9 market_square => market subtype, or Empty market if flags&1.
+  13 well => Well. 16 trenches => Trenches.
+  17 tree_house => tree subtype. 18 hillock_house => mound subtype.
+  19 mead_hall => actual abstract name, otherwise Mead Hall.
+  20 fortress_entrance => Fortress Entrance.
+  21 library => actual abstract name, otherwise Library.
+  22 tavern => actual abstract name, otherwise Tavern.
+  23 counting_house => actual abstract name, otherwise Counting House.
+  24 guild_hall => actual abstract name, otherwise Guildhall.
+  25 city_tower => actual abstract name, otherwise Tower.
+  26 shrine => practice caption or Shrine when info is null.
+  28 dormitory => Dormitory.
+  29 dininghall => Dining Hall in first branch, Dining hall in second branch.
+  31 barrow => Barrow.
+  NONE(-1), 32 mythical_palace, 33 mythical_dungeon and 34 mythical_lair in
+  the local schema fall outside this native <=31 caption switch.
+
+Subtypes:
+  Tree info+8 values 0..8: Tree House, The Home Tree, Shaping Tree,
+  Market Tree, Tavern Tree, Library Tree, Counting Tree, Guild Tree,
+  Tower Tree. This renderer does not use tree_info.name.
+  Mound info+8 values: 0 Residence => housing counters;
+  1 Civic Mound; 2 Castle Mound; 3 Drinking Mound.
+  Shop info+8 values 0..17: General imports, Food imports,
+  Clothing imports, Cloth shop, Leather shop, Woven clothing shop,
+  Leather clothing shop, Bone carver's shop, Gem cutter's shop,
+  Weaponsmith's shop, Bowyer's shop, Blacksmith's shop, Armorsmith's shop,
+  Metal craft shop, Leather goods shop, Carpenter's shop,
+  Stone furniture shop, Metal furniture shop.
+  Market info+8 values 18..24: Imported goods market, Imported food market,
+  Imported clothing market, Meat market, Fruit and vegetable market,
+  Cheese market, Processed goods market. Native subtraction of 18 produces
+  the 0..6 jump table index. Shop icon tables draw glyphs separately and
+  supply no extra prose captions.
+
+Underground feature additions, first panel only:
+  Iterate realization + cell*0xa8 +0xb538. Feature base type must be 7.
+  feature+4 subtype 11 CIVILIZED_CONNECTION_FORTRESS => Underground Fortress;
+  subtype 10 CIVILIZED_CONNECTION_FARMING => Underground Farms;
+  subtype 8 CIVILIZED_LIVING => Underground Stair, only if feature+0x54!=-1.
+
+Housing aggregation:
+  cottage_plot, house and hillock_house.Residence do not each print a row.
+  The renderer accumulates three groups. If flags&0x0a is nonzero, increment
+  ruined; otherwise flags&1 increments abandoned; otherwise increment intact.
+  This matches ruined and cz_ruined taking priority over abandoned.
+  When site.type at +0x80 equals 3, the noun is Hillock/Hillocks. Otherwise
+  the noun is House/Houses. A count of 1 prints singular, a count>1 plural,
+  and a zero count prints no row. Finite captions are:
+    House, Houses, Hillock, Hillocks;
+    Abandoned house, Abandoned houses, Abandoned hillock, Abandoned hillocks;
+    Ruined house, Ruined houses, Ruined hillock, Ruined hillocks.
+  After all applicable rows, printed_row==2 emits one complete native string
+  "No significant structures". "No" is not a separate Boolean caption.
+
+Dynamic abstract building names:
+  For the seven named structure types, resolve SRB.abstract_building_id
+  through site.buildings+0x2b0 (classic helper 0x6fe90), call virtual getter
+  at +0x10, then language_name formatter classic 0xa91760 / reference
+  0xa946e0 with English=true and first-person=false. If id is -1, lookup
+  fails or the getter returns null, print the category fallback above.
+  The full language_name can be procedural or player-customized; no finite
+  list of complete names can replace this source. Existing language/name
+  translation must receive the complete row.
+
+Shrine practice:
+  A nonnull info pointer has religious_practice_type at +8 and practice id
+  at +0xc. Enum 0 WORSHIP_HFID formats "Shrine to " + historical figure
+  reference. Enum 1 RELIGION_ENID first finds the historical entity, then
+  formats entity.name; first panel renders "{entity name} shrine", second
+  panel renders "Shrine of {entity name}". Other practice values, or a
+  missing religious entity in the guarded RELIGION_ENID branch, supply no
+  additional label. A null info pointer emits the fixed caption Shrine.
+  The RELIGION_ENID source is a historical entity name, not a sphere name.
+
+Shrine helper source and reachable fallbacks:
+  Entity formatter classic 0xb8f940..0xb8fab8 / reference 0xb92900 takes
+  flags=0 here. It formats entity.name at +0x20 through language_name(true,
+  false); LPAGE markup is disabled. Its general missing-entity fallback is
+  "an unknown civilization", although this panel guards entity existence
+  before calling it. Full helper instructions are classic-entity-name.asm.
+
+  Figure formatter classic 0xb8ff50..0xb90967 / reference 0xb92f10 receives
+  a fresh default reference context (classic constructor 0x72010), context
+  flags=0, person IDs=-1, and the two word arguments 1,1. Thus no LPAGE
+  markup, first-person pronouns, interrogator/subject role, or possessive
+  suffix is generated for this panel. The helper can render:
+    - named figure: full English generated/custom name at figure+0x38;
+    - nameless figure: "a " + optional "zombie " + optional "ghostly " +
+      creature/caste name via classic 0xaa0c50, optionally followed by a
+      generated creature name held by figure+0x130 -> +0x48 -> +0x90;
+    - missing figure: "an unknown creature".
+  The nameless species/creature vocabulary comes from RAW data, not a
+  bounded set of strings inside the renderer. The named-figure species
+  suffix is disabled by the supplied word argument 1.
+  General helper-only literals Nameless, an unidentified creature,
+  interrogator, subject, myself, my, me, I, the, 's and LPAGE markers have
+  been retained in helper-literals.tsv and full classic-figure-reference.asm;
+  they are not all reachable with this panel's default context and arguments.
+  The reachable unnamed-figure modifiers and unknown-creature fallback are
+  source-derived; complete actor/name composition should use the established
+  historical-figure/name and creature/caste translation pathways.

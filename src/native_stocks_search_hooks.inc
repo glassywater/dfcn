@@ -26,13 +26,13 @@ static void capture_native_stocks_search_term(NativeString *term,
         std::string_view query, caption;
         if (g_overlay.translation_enabled() &&
             native_string_view(query_string, &query, 4096) &&
-            contains_non_ascii_codepoint(query) &&
+            !query.empty() &&
             native_string_view(term, &caption, 65536)) source.assign(caption);
     } catch (...) {}
     prepare_native_inlined_search_term(term, query_string, g_native_stocks_search_fold,
         [&](std::string_view, std::string_view query) {
             return !source.empty() &&
-                g_overlay.translated_item_search_matches(source, query, true);
+                g_overlay.translated_stocks_search_matches(source, query);
         });
 }
 

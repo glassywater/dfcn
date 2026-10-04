@@ -25,6 +25,7 @@
 #else
 #include <ft2build.h>
 #include FT_FREETYPE_H
+#include FT_SYNTHESIS_H
 #include <fontconfig/fontconfig.h>
 #include <dlfcn.h>
 #include <elf.h>
@@ -56,7 +57,10 @@ inline graphicst *native_graphics() {
     return executable ? reinterpret_cast<graphicst *>(
         native_pe_address(reinterpret_cast<uintptr_t>(executable), gps_rva)) : nullptr;
 #else
-    return reinterpret_cast<graphicst *>(dlsym(RTLD_DEFAULT, "gps"));
+    // gps is a process-lifetime object; keep symbol lookup out of native
+    // caption and DFHack tile callbacks while reading its live buffers.
+    static auto *graphics = reinterpret_cast<graphicst *>(dlsym(RTLD_DEFAULT, "gps"));
+    return graphics;
 #endif
 }
 
@@ -147,7 +151,9 @@ inline const auto *native_ui_settings_source() {
     const auto *settings = executable ? reinterpret_cast<const NativeUiSettingsAbi *>(
         native_pe_address(reinterpret_cast<uintptr_t>(executable), init_rva)) : nullptr;
 #else
-    const auto *settings = static_cast<const initst *>(dlsym(RTLD_DEFAULT, "init"));
+    // The game library and its init object stay loaded for the process
+    // lifetime. Cache only the address; callers still read live settings.
+    static const auto *settings = static_cast<const initst *>(dlsym(RTLD_DEFAULT, "init"));
 #endif
     return settings;
 }
@@ -228,8 +234,9 @@ inline std::optional<NativeUiSettings> native_ui_settings() {
     return result;
 }
 
-inline void native_find_font(std::string &path, int &index) {
+inline void native_find_font(std::string &path, int &index, bool bold = false) {
 #ifdef _WIN32
+    (void)bold;
     if (path.empty()) {
         wchar_t directory[32768]{};
         const auto length = GetWindowsDirectoryW(directory, 32768);
@@ -250,7 +257,7 @@ inline void native_find_font(std::string &path, int &index) {
 #else
     if (path.empty() && FcInit()) {
         FcPattern *pattern = FcPatternCreate();
-        // Prefer a medium-weight Simplified-Chinese face. At DF's small UI
+        // Prefer the requested Simplified-Chinese weight. At DF's small UI
         // sizes it keeps the primary strokes solid instead of looking washed
         // out after grayscale antialiasing; Fontconfig still supplies a
         // generic CJK fallback when these families are not installed.
@@ -260,7 +267,7 @@ inline void native_find_font(std::string &path, int &index) {
                            reinterpret_cast<const FcChar8 *>("Noto Sans CJK SC"));
         FcPatternAddString(pattern, FC_FAMILY, reinterpret_cast<const FcChar8 *>("sans-serif"));
         FcPatternAddString(pattern, FC_LANG, reinterpret_cast<const FcChar8 *>("zh-cn"));
-        FcPatternAddInteger(pattern, FC_WEIGHT, FC_WEIGHT_MEDIUM);
+        FcPatternAddInteger(pattern, FC_WEIGHT, bold ? FC_WEIGHT_BOLD : FC_WEIGHT_MEDIUM);
         FcConfigSubstitute(nullptr, pattern, FcMatchPattern);
         FcDefaultSubstitute(pattern);
         FcResult result = FcResultNoMatch;
@@ -279,6 +286,20 @@ inline void native_find_font(std::string &path, int &index) {
         FcPatternDestroy(pattern);
     }
 #endif
+}
+
+inline FT_Error native_load_font_glyph(FT_Face face, FT_UInt index, bool bold) {
+    const FT_Error error = FT_Load_Glyph(face, index, FT_LOAD_DEFAULT);
+#ifdef _WIN32
+    // GDI applies the selected weight to both advances and bitmap bounds.
+    (void)bold;
+#else
+    // Explicit font files may only contain a regular face. Apply synthesis
+    // before reading advances or rendering, and never thicken a bold face twice.
+    if (!error && bold && !(face->style_flags & FT_STYLE_FLAG_BOLD))
+        FT_GlyphSlot_Embolden(face->glyph);
+#endif
+    return error;
 }
 
 #ifdef _WIN32

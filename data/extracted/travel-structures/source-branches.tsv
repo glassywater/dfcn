@@ -1,0 +1,163 @@
+phase	native_enum_or_source	value	symbol	classic_entry_rva	reference_entry_rva	possible_complete_text	native_control_and_dynamic_source
+z>=1; max row 10	site_realization_building_type	0	cottage_plot	0x80f5cd	0x811d4d	housing counters	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	1	castle_wall	0x810b47	0x8132c7	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	2	castle_tower	0x810b47	0x8132c7	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	3	castle_courtyard	0x810b47	0x8132c7	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	4	house	0x80f5cd	0x811d4d	housing counters	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	5	temple	0x80f73f	0x811ebf	{abstract-building-name} | Temple	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	6	tomb	0x810b47	0x8132c7	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	7	shop_house	0x80fef2	0x812672	shop subtype | Abandoned shop	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	8	warehouse	0x810673	0x812df3	Warehouse	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	9	market_square	0x810939	0x8130b9	market subtype | Empty market	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	10	pasture	0x810b47	0x8132c7	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	11	waste	0x810b47	0x8132c7	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	12	courtyard	0x810b47	0x8132c7	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	13	well	0x81072f	0x812eaf	Well	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	14	vault	0x810b47	0x8132c7	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	15	great_tower	0x810b47	0x8132c7	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	16	trenches	0x81078e	0x812f0e	Trenches	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	17	tree_house	0x80f26e	0x8119ee	tree subtype	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	18	hillock_house	0x80f4a0	0x811c20	mound subtype; residence => housing counters	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	19	mead_hall	0x80f5f7	0x811d77	{abstract-building-name} | Mead Hall	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	20	fortress_entrance	0x8106d1	0x812e51	Fortress Entrance	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	21	library	0x80fc5f	0x8123df	{abstract-building-name} | Library	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	22	tavern	0x80fdaa	0x81252a	{abstract-building-name} | Tavern	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	23	counting_house	0x80f887	0x812007	{abstract-building-name} | Counting House	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	24	guild_hall	0x80f9cf	0x81214f	{abstract-building-name} | Guildhall	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	25	city_tower	0x80fb17	0x812297	{abstract-building-name} | Tower	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	26	shrine	0x8107ec	0x812f6c	shrine practice | Shrine	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	27	meadow	0x810b47	0x8132c7	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	28	dormitory	0x810559	0x812cd9	Dormitory	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	29	dininghall	0x810615	0x812d95	Dining Hall (z>=1); Dining hall (z<1)	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	30	necromancer_tower	0x810b47	0x8132c7	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	31	barrow	0x8105b7	0x812d37	Barrow	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z>=1; max row 10	site_realization_building_type	-1	NONE			no caption	Unsigned guard type<=31 excludes these cases in this native renderer
+z>=1; max row 10	site_realization_building_type	32	mythical_palace			no caption	Unsigned guard type<=31 excludes these cases in this native renderer
+z>=1; max row 10	site_realization_building_type	33	mythical_dungeon			no caption	Unsigned guard type<=31 excludes these cases in this native renderer
+z>=1; max row 10	site_realization_building_type	34	mythical_lair			no caption	Unsigned guard type<=31 excludes these cases in this native renderer
+z<1; max row 19	site_realization_building_type	0	cottage_plot	0x811a95	0x814215	housing counters	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	1	castle_wall	0x813132	0x8158b2	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	2	castle_tower	0x813132	0x8158b2	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	3	castle_courtyard	0x813132	0x8158b2	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	4	house	0x811a95	0x814215	housing counters	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	5	temple	0x811c14	0x814394	{abstract-building-name} | Temple	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	6	tomb	0x813132	0x8158b2	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	7	shop_house	0x8124a5	0x814c25	shop subtype | Abandoned shop	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	8	warehouse	0x812c3b	0x8153bb	Warehouse	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	9	market_square	0x812f20	0x8156a0	market subtype | Empty market	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	10	pasture	0x813132	0x8158b2	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	11	waste	0x813132	0x8158b2	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	12	courtyard	0x813132	0x8158b2	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	13	well	0x812d05	0x815485	Well	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	14	vault	0x813132	0x8158b2	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	15	great_tower	0x813132	0x8158b2	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	16	trenches	0x812d6b	0x8154eb	Trenches	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	17	tree_house	0x8116a8	0x813e28	tree subtype	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	18	hillock_house	0x81193e	0x8140be	mound subtype; residence => housing counters	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	19	mead_hall	0x811aa7	0x814227	{abstract-building-name} | Mead Hall	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	20	fortress_entrance	0x812ca0	0x815420	Fortress Entrance	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	21	library	0x8121c8	0x814948	{abstract-building-name} | Library	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	22	tavern	0x812338	0x814ab8	{abstract-building-name} | Tavern	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	23	counting_house	0x811d81	0x814501	{abstract-building-name} | Counting House	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	24	guild_hall	0x811eee	0x81466e	{abstract-building-name} | Guildhall	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	25	city_tower	0x81205b	0x8147db	{abstract-building-name} | Tower	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	26	shrine	0x812dd0	0x815550	shrine practice | Shrine	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	27	meadow	0x813132	0x8158b2	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	28	dormitory	0x812b0c	0x81528c	Dormitory	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	29	dininghall	0x812bd6	0x815356	Dining Hall (z>=1); Dining hall (z<1)	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	30	necromancer_tower	0x813132	0x8158b2	no caption	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	31	barrow	0x812b71	0x8152f1	Barrow	SRB.type at +4; default cases continue; named cases use +4c abstract id; +58 info; +78 flags
+z<1; max row 19	site_realization_building_type	-1	NONE			no caption	Unsigned guard type<=31 excludes these cases in this native renderer
+z<1; max row 19	site_realization_building_type	32	mythical_palace			no caption	Unsigned guard type<=31 excludes these cases in this native renderer
+z<1; max row 19	site_realization_building_type	33	mythical_dungeon			no caption	Unsigned guard type<=31 excludes these cases in this native renderer
+z<1; max row 19	site_realization_building_type	34	mythical_lair			no caption	Unsigned guard type<=31 excludes these cases in this native renderer
+z>=1	tree_house_type	0	TreeHouse	0x80f2ba	0x811a3a	Tree House	SRB.info(+58).type(+8); no dynamic tree name used
+z>=1	tree_house_type	1	HomeTree	0x80f2f0	0x811a70	The Home Tree	SRB.info(+58).type(+8); no dynamic tree name used
+z>=1	tree_house_type	2	ShapingTree	0x80f326	0x811aa6	Shaping Tree	SRB.info(+58).type(+8); no dynamic tree name used
+z>=1	tree_house_type	3	MarketTree	0x80f35c	0x811adc	Market Tree	SRB.info(+58).type(+8); no dynamic tree name used
+z>=1	tree_house_type	4	Tavern	0x80f392	0x811b12	Tavern Tree	SRB.info(+58).type(+8); no dynamic tree name used
+z>=1	tree_house_type	5	Library	0x80f3c8	0x811b48	Library Tree	SRB.info(+58).type(+8); no dynamic tree name used
+z>=1	tree_house_type	6	CountingHouse	0x80f3fe	0x811b7e	Counting Tree	SRB.info(+58).type(+8); no dynamic tree name used
+z>=1	tree_house_type	7	Guildhall	0x80f434	0x811bb4	Guild Tree	SRB.info(+58).type(+8); no dynamic tree name used
+z>=1	tree_house_type	8	Tower	0x80f46a	0x811bea	Tower Tree	SRB.info(+58).type(+8); no dynamic tree name used
+z<1	tree_house_type	0	TreeHouse	0x8116f5	0x813e75	Tree House	SRB.info(+58).type(+8); no dynamic tree name used
+z<1	tree_house_type	1	HomeTree	0x811736	0x813eb6	The Home Tree	SRB.info(+58).type(+8); no dynamic tree name used
+z<1	tree_house_type	2	ShapingTree	0x811777	0x813ef7	Shaping Tree	SRB.info(+58).type(+8); no dynamic tree name used
+z<1	tree_house_type	3	MarketTree	0x8117b8	0x813f38	Market Tree	SRB.info(+58).type(+8); no dynamic tree name used
+z<1	tree_house_type	4	Tavern	0x8117f9	0x813f79	Tavern Tree	SRB.info(+58).type(+8); no dynamic tree name used
+z<1	tree_house_type	5	Library	0x81183a	0x813fba	Library Tree	SRB.info(+58).type(+8); no dynamic tree name used
+z<1	tree_house_type	6	CountingHouse	0x81187b	0x813ffb	Counting Tree	SRB.info(+58).type(+8); no dynamic tree name used
+z<1	tree_house_type	7	Guildhall	0x8118bc	0x81403c	Guild Tree	SRB.info(+58).type(+8); no dynamic tree name used
+z<1	tree_house_type	8	Tower	0x8118fd	0x81407d	Tower Tree	SRB.info(+58).type(+8); no dynamic tree name used
+z>=1	site_shop_type	0	GeneralImports	0x8101f9	0x812979	General imports	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z>=1	site_shop_type	1	FoodImports	0x81018d	0x81290d	Food imports	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z>=1	site_shop_type	2	ClothingImports	0x8101c3	0x812943	Clothing imports	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z>=1	site_shop_type	3	Cloth	0x81022f	0x8129af	Cloth shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z>=1	site_shop_type	4	Leather	0x810265	0x8129e5	Leather shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z>=1	site_shop_type	5	WovenClothing	0x81029b	0x812a1b	Woven clothing shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z>=1	site_shop_type	6	LeatherClothing	0x8102d1	0x812a51	Leather clothing shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z>=1	site_shop_type	7	BoneCarver	0x810307	0x812a87	Bone carver's shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z>=1	site_shop_type	8	GemCutter	0x81033d	0x812abd	Gem cutter's shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z>=1	site_shop_type	9	Weaponsmith	0x810373	0x812af3	Weaponsmith's shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z>=1	site_shop_type	10	Bowyer	0x8103a9	0x812b29	Bowyer's shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z>=1	site_shop_type	11	Blacksmith	0x8103df	0x812b5f	Blacksmith's shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z>=1	site_shop_type	12	Armorsmith	0x810415	0x812b95	Armorsmith's shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z>=1	site_shop_type	13	MetalCraft	0x81044b	0x812bcb	Metal craft shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z>=1	site_shop_type	14	LeatherGoods	0x810481	0x812c01	Leather goods shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z>=1	site_shop_type	15	Carpenter	0x8104b7	0x812c37	Carpenter's shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z>=1	site_shop_type	16	StoneFurniture	0x8104ed	0x812c6d	Stone furniture shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z>=1	site_shop_type	17	MetalFurniture	0x810523	0x812ca3	Metal furniture shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z<1	site_shop_type	0	GeneralImports	0x8127ac	0x814f2c	General imports	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z<1	site_shop_type	1	FoodImports	0x812740	0x814ec0	Food imports	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z<1	site_shop_type	2	ClothingImports	0x812776	0x814ef6	Clothing imports	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z<1	site_shop_type	3	Cloth	0x8127e2	0x814f62	Cloth shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z<1	site_shop_type	4	Leather	0x812818	0x814f98	Leather shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z<1	site_shop_type	5	WovenClothing	0x81284e	0x814fce	Woven clothing shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z<1	site_shop_type	6	LeatherClothing	0x812884	0x815004	Leather clothing shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z<1	site_shop_type	7	BoneCarver	0x8128ba	0x81503a	Bone carver's shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z<1	site_shop_type	8	GemCutter	0x8128f0	0x815070	Gem cutter's shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z<1	site_shop_type	9	Weaponsmith	0x812926	0x8150a6	Weaponsmith's shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z<1	site_shop_type	10	Bowyer	0x81295c	0x8150dc	Bowyer's shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z<1	site_shop_type	11	Blacksmith	0x812992	0x815112	Blacksmith's shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z<1	site_shop_type	12	Armorsmith	0x8129c8	0x815148	Armorsmith's shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z<1	site_shop_type	13	MetalCraft	0x8129fe	0x81517e	Metal craft shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z<1	site_shop_type	14	LeatherGoods	0x812a34	0x8151b4	Leather goods shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z<1	site_shop_type	15	Carpenter	0x812a6a	0x8151ea	Carpenter's shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z<1	site_shop_type	16	StoneFurniture	0x812aa0	0x815220	Stone furniture shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z<1	site_shop_type	17	MetalFurniture	0x812ad6	0x815256	Metal furniture shop	SRB.info(+58).type(+8), when !(flags&1); abandoned flag overrides all subtypes
+z>=1	site_shop_type	18	ImportedGoodsMarket	0x8109d1	0x813151	Imported goods market	SRB.info(+58).type(+8), table indexes type-18; when !(flags&1); abandoned => Empty market
+z>=1	site_shop_type	19	ImportedFoodMarket	0x810a07	0x813187	Imported food market	SRB.info(+58).type(+8), table indexes type-18; when !(flags&1); abandoned => Empty market
+z>=1	site_shop_type	20	ImportedClothingMarket	0x810a3d	0x8131bd	Imported clothing market	SRB.info(+58).type(+8), table indexes type-18; when !(flags&1); abandoned => Empty market
+z>=1	site_shop_type	21	MeatMarket	0x810a73	0x8131f3	Meat market	SRB.info(+58).type(+8), table indexes type-18; when !(flags&1); abandoned => Empty market
+z>=1	site_shop_type	22	FruitAndVegetableMarket	0x810aa9	0x813229	Fruit and vegetable market	SRB.info(+58).type(+8), table indexes type-18; when !(flags&1); abandoned => Empty market
+z>=1	site_shop_type	23	CheeseMarket	0x810adc	0x81325c	Cheese market	SRB.info(+58).type(+8), table indexes type-18; when !(flags&1); abandoned => Empty market
+z>=1	site_shop_type	24	ProcessedGoodsMarket	0x810b0f	0x81328f	Processed goods market	SRB.info(+58).type(+8), table indexes type-18; when !(flags&1); abandoned => Empty market
+z<1	site_shop_type	18	ImportedGoodsMarket	0x812fb8	0x815738	Imported goods market	SRB.info(+58).type(+8), table indexes type-18; when !(flags&1); abandoned => Empty market
+z<1	site_shop_type	19	ImportedFoodMarket	0x812fee	0x81576e	Imported food market	SRB.info(+58).type(+8), table indexes type-18; when !(flags&1); abandoned => Empty market
+z<1	site_shop_type	20	ImportedClothingMarket	0x813024	0x8157a4	Imported clothing market	SRB.info(+58).type(+8), table indexes type-18; when !(flags&1); abandoned => Empty market
+z<1	site_shop_type	21	MeatMarket	0x81305a	0x8157da	Meat market	SRB.info(+58).type(+8), table indexes type-18; when !(flags&1); abandoned => Empty market
+z<1	site_shop_type	22	FruitAndVegetableMarket	0x813090	0x815810	Fruit and vegetable market	SRB.info(+58).type(+8), table indexes type-18; when !(flags&1); abandoned => Empty market
+z<1	site_shop_type	23	CheeseMarket	0x8130c3	0x815843	Cheese market	SRB.info(+58).type(+8), table indexes type-18; when !(flags&1); abandoned => Empty market
+z<1	site_shop_type	24	ProcessedGoodsMarket	0x8130f6	0x815876	Processed goods market	SRB.info(+58).type(+8), table indexes type-18; when !(flags&1); abandoned => Empty market
+z>=1	hillock_house_type	0	Residence	0x80f5cd	0x811d4d	housing counters	SRB.info(+58).type(+8); subtype 0 enters shared housing aggregation
+z>=1	hillock_house_type	1	CivicMound	0x80f584	0x811d04	Civic Mound	SRB.info(+58).type(+8); subtype 0 enters shared housing aggregation
+z>=1	hillock_house_type	2	CastleMound	0x80f53b	0x811cbb	Castle Mound	SRB.info(+58).type(+8); subtype 0 enters shared housing aggregation
+z>=1	hillock_house_type	3	DrinkingMound	0x80f4f1	0x811c71	Drinking Mound	SRB.info(+58).type(+8); subtype 0 enters shared housing aggregation
+z<1	hillock_house_type	0	Residence	0x811a6b	0x8141eb	housing counters	SRB.info(+58).type(+8); subtype 0 enters shared housing aggregation
+z<1	hillock_house_type	1	CivicMound	0x811a22	0x8141a2	Civic Mound	SRB.info(+58).type(+8); subtype 0 enters shared housing aggregation
+z<1	hillock_house_type	2	CastleMound	0x8119d9	0x814159	Castle Mound	SRB.info(+58).type(+8); subtype 0 enters shared housing aggregation
+z<1	hillock_house_type	3	DrinkingMound	0x81198f	0x81410f	Drinking Mound	SRB.info(+58).type(+8); subtype 0 enters shared housing aggregation
+z>=1 only; underground vector	site_underground_layer_type	8	CIVILIZED_LIVING	0x810d0e	0x81348e	Underground Stair	Only feature objects with type==7; Stair requires object+54 != -1; increments printed row
+z>=1 only; underground vector	site_underground_layer_type	10	CIVILIZED_CONNECTION_FARMING	0x810cbd	0x81343d	Underground Farms	Only feature objects with type==7; Stair requires object+54 != -1; increments printed row
+z>=1 only; underground vector	site_underground_layer_type	11	CIVILIZED_CONNECTION_FORTRESS	0x810c66	0x8133e6	Underground Fortress	Only feature objects with type==7; Stair requires object+54 != -1; increments printed row
+both; shrine SRB type 26	religious_practice_type	0	WORSHIP_HFID	0x810881	0x813001	Shrine to {historical-figure reference}	SRB.info.practice_type+8, practice_id+c; entity name is not sphere vocabulary
+both; shrine SRB type 26	religious_practice_type	1	RELIGION_ENID	0x81083e	0x812fbe	{religion entity name} shrine (z>=1); Shrine of {religion entity name} (z<1)	SRB.info.practice_type+8, practice_id+c; entity name is not sphere vocabulary
+both; housing counters	srb_building_flag	0	intact			House/Houses or Hillock/Hillocks	flags&0xa takes precedence, then flags&1; selected site.type(+80)==3 chooses Hillock, otherwise House; each group count==1 singular, >1 plural, 0 omitted
+both; housing counters	srb_building_flag	1	abandoned			Abandoned house/Abandoned houses or Abandoned hillock/Abandoned hillocks	flags&0xa takes precedence, then flags&1; selected site.type(+80)==3 chooses Hillock, otherwise House; each group count==1 singular, >1 plural, 0 omitted
+both; housing counters	srb_building_flag	2	ruined/cz_ruined			Ruined house/Ruined houses or Ruined hillock/Ruined hillocks	flags&0xa takes precedence, then flags&1; selected site.type(+80)==3 chooses Hillock, otherwise House; each group count==1 singular, >1 plural, 0 omitted
+both; housing counters	srb_building_flag	8	ruined/cz_ruined			Ruined house/Ruined houses or Ruined hillock/Ruined hillocks	flags&0xa takes precedence, then flags&1; selected site.type(+80)==3 chooses Hillock, otherwise House; each group count==1 singular, >1 plural, 0 omitted
+both	empty list	0	printed-row==2	0x8111c5	0x813945	No significant structures	Sewer Access or any emitted row prevents empty branch; full phrase is one native text draw
+both	realization cell flags	1048576	sewer-access	0x80f18e	0x81190e	Sewer Access	selected realization cell flags+0xb518 & 0x100000; emits one row before structure iteration
+both; named SRB types	dynamic-name	0	abstract-building	0xa91760	0xa946e0	{English generated/custom building name}	SRB.abstract_building_id+4c -> site.buildings+2b0 lookup -> virtual getter+10 -> language_name -> formatter(true,false); fallback category only when id missing, lookup missing or getter returns null
+both; Shrine to	dynamic-reference	0	historical-figure	0xb8ff50	0xb92f10	{English generated/custom name} | a [zombie ][ghostly ]{creature/caste} [generated creature name] | an unknown creature	default context flags=0, entity/figure IDs=-1; arguments 1,1 disable species suffix for named figures; missing id => an unknown creature
+both; religion shrine	dynamic-reference	1	historical-entity	0xb8f940	0xb92900	{English entity.name} | an unknown civilization	entity+20 language_name -> name formatter(true,false); flags=0 prevents LPAGE markup; caller checks entity exists before invocation

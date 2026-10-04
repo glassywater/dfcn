@@ -23,6 +23,12 @@ struct NativeMultilineWidgetBinding {
     NativeCaptionWidgetArrangeFn base_arrange = nullptr;
     size_t minimum_height = 0;
 };
+struct NativeTextboxWidgetBinding {
+    uintptr_t table = 0;
+    void **render_slot = nullptr;
+    void *expected_render = nullptr;
+    uintptr_t text_return_address = 0;
+};
 
 struct NativeCaptionSite {
     uintptr_t resize, draw;
@@ -49,6 +55,10 @@ struct NativeCivilizationCaptionSite {
 struct NativeLocationPickerSite {
     uintptr_t return_address = 0;
     NativeLocationPickerField field = NativeLocationPickerField::None;
+};
+struct NativeTravelBuildingSite {
+    uintptr_t return_address = 0;
+    NativeTravelBuildingField field = NativeTravelBuildingField::None;
 };
 struct NativeInfoTitleBinding {
     std::vector<NativeInfoTitleSite> sites;
@@ -89,6 +99,7 @@ struct NativeCaptionProfile {
     std::vector<unsigned char> default_resize_entry_prefix;
     NativeCaptionWidgetBinding truncated_widget;
     NativeMultilineWidgetBinding multiline_widget;
+    NativeTextboxWidgetBinding textbox_widget;
     void **tooltip_container_slot = nullptr;
     void *tooltip_container_render = nullptr;
     bool legacy_toolbar_tooltip = false;
@@ -106,6 +117,7 @@ struct NativeCaptionProfile {
     NativeInfoTitleBinding info_titles;
     std::vector<NativeCivilizationCaptionSite> civilization_fields;
     std::vector<NativeLocationPickerSite> location_picker_fields;
+    std::vector<NativeTravelBuildingSite> travel_building_fields;
     std::vector<uintptr_t> mission_title_returns;
     NativeAnnouncementPageBinding announcement_page;
 };
@@ -122,9 +134,15 @@ static NativeCaptionWidgetBinding g_native_caption_widget_binding;
 static NativeImportHook g_native_multiline_widget_hook;
 static NativeImportHook g_native_multiline_arrange_hook;
 static NativeMultilineWidgetBinding g_native_multiline_widget_binding;
+static NativeImportHook g_native_textbox_widget_hook;
+static NativeTextboxWidgetBinding g_native_textbox_widget_binding;
 static NativeImportHook g_native_tooltip_container_hook;
 static NativeImportHook g_native_help_tile_hook;
 static NativeImportHook g_native_help_top_tile_hook;
+using NativeHelpTileFn = void (*)(graphicst *, long);
+using NativeHelpTopTileFn = void (*)(graphicst *, long, char);
+static NativeHelpTileFn g_real_native_help_tile = nullptr;
+static NativeHelpTopTileFn g_real_native_help_top_tile = nullptr;
 static NativeAnnouncementPageBinding g_native_announcement_page_binding;
 static NativeAnnouncementRowsFn g_native_announcement_page_rows = nullptr;
 
@@ -182,47 +200,55 @@ static size_t capture_native_announcement_page_rows(const void *paragraph) {
 
 static void capture_native_help_cell(graphicst *gps) {
     try {
-        NativeCaptureMaskScope capture_mask(gps);
-        const auto settings = native_ui_settings();
-        if (settings && settings->classic && gps && gps->screen &&
-            gps->dimx > 0 && gps->dimx <= 1000 && gps->dimy > 0 && gps->dimy <= 1000 &&
-            gps->screenx >= 0 && gps->screenx < gps->dimx &&
-            gps->screeny >= 0 && gps->screeny < gps->dimy &&
-            gps->screenx >= gps->clipx[0] && gps->screenx <= gps->clipx[1] &&
-            gps->screeny >= gps->clipy[0] && gps->screeny <= gps->clipy[1]) {
-                const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
-                std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-                if (!g_native_help_page || g_native_help_page_epoch != epoch ||
-                    g_native_help_page_dimx != gps->dimx || g_native_help_page_dimy != gps->dimy) {
-                    g_native_help_page = std::make_shared<NativeTooltipPage>(*gps);
-                    std::fill(g_native_help_page->cells.begin(), g_native_help_page->cells.end(), 0);
-                    g_native_help_page_epoch = epoch;
-                    g_native_help_page_dimx = gps->dimx;
-                    g_native_help_page_dimy = gps->dimy;
-                }
-                // Save each cell immediately before its first top-layer write,
-                // not the whole page at the first (possibly unrelated) tile.
-                // Only recognized help rectangles consume these saved bytes.
-                const size_t at = static_cast<size_t>(gps->screenx) * gps->dimy + gps->screeny;
-                if (!g_native_help_page->cells[at]) {
-                    std::memcpy(g_native_help_page->screen.data() + at * 8, gps->screen + at * 8, 8);
-                    if (!g_native_help_page->texture.empty())
-                        g_native_help_page->texture[at] = gps->screentexpos ? gps->screentexpos[at] : 0;
-                    g_native_help_page->cells[at] = 1;
-                }
+        if (!native_capture_grid_valid(gps) || !gps->screen ||
+            gps->screenx < 0 || gps->screenx >= gps->dimx ||
+            gps->screeny < 0 || gps->screeny >= gps->dimy ||
+            gps->screenx < gps->clipx[0] || gps->screenx > gps->clipx[1] ||
+            gps->screeny < gps->clipy[0] || gps->screeny > gps->clipy[1]) return;
+        // Graphical mode needs no help-background capture. Read just this
+        // flag instead of copying all of the UI's skin/texture settings.
+        const auto classic = native_ui_classic();
+        if (!classic || !*classic) return;
+        const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+        std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+        if (!g_native_help_page || g_native_help_page_epoch != epoch ||
+            g_native_help_page_dimx != gps->dimx || g_native_help_page_dimy != gps->dimy) {
+            g_native_help_page = std::make_shared<NativeTooltipPage>(*gps);
+            std::fill(g_native_help_page->cells.begin(), g_native_help_page->cells.end(), 0);
+            g_native_help_page_epoch = epoch;
+            g_native_help_page_dimx = gps->dimx;
+            g_native_help_page_dimy = gps->dimy;
         }
+        // Save each cell immediately before its first top-layer write.
+        // Only recognized help rectangles consume these saved bytes.
+        const size_t at = static_cast<size_t>(gps->screenx) * gps->dimy + gps->screeny;
+        if (g_native_help_page->cells[at]) return;
+        // The page constructor masks the full snapshot once per epoch. Each
+        // later tile needs only a local logo lookup, not another grid scan.
+        const bool ignored = native_capture_ignored_cell(gps, gps->screenx, gps->screeny);
+        auto *destination = g_native_help_page->screen.data() + at * 8;
+        if (ignored) {
+            std::memset(destination, 0, 8);
+            destination[0] = ' ';
+        } else {
+            std::memcpy(destination, gps->screen + at * 8, 8);
+        }
+        if (!g_native_help_page->texture.empty())
+            g_native_help_page->texture[at] = !ignored && gps->screentexpos
+                ? gps->screentexpos[at] : 0;
+        g_native_help_page->cells[at] = 1;
     } catch (...) {}
 }
 static void capture_native_help_tile(graphicst *gps, long tile) {
     NativeInputCallbackScope callback;
     capture_native_help_cell(gps);
-    const auto original = reinterpret_cast<void (*)(graphicst *, long)>(g_native_help_tile_hook.original);
+    const auto original = g_real_native_help_tile;
     if (original) callback.call_native([&] { original(gps, tile); });
 }
 static void capture_native_help_top_tile(graphicst *gps, long tile, char color) {
     NativeInputCallbackScope callback;
     capture_native_help_cell(gps);
-    const auto original = reinterpret_cast<void (*)(graphicst *, long, char)>(g_native_help_top_tile_hook.original);
+    const auto original = g_real_native_help_top_tile;
     if (original) callback.call_native([&] { original(gps, tile, color); });
 }
 static thread_local NativeTooltipWidgetFrame *g_native_tooltip_write = nullptr;
@@ -301,6 +327,7 @@ static void capture_native_tooltip_container(void *widget, uint32_t tick) {
 static NativeInfoTitleBinding g_native_info_title_binding;
 static std::vector<NativeCivilizationCaptionSite> g_native_civilization_caption_sites;
 static std::vector<NativeLocationPickerSite> g_native_location_picker_sites;
+static std::vector<NativeTravelBuildingSite> g_native_travel_building_sites;
 static std::vector<uintptr_t> g_native_mission_title_returns;
 static std::vector<uintptr_t> g_native_map_hover_returns;
 static size_t g_native_map_hover_text_offset = 0;
@@ -323,12 +350,21 @@ static NativeLocationPickerField native_location_picker_field(uintptr_t caller) 
     return NativeLocationPickerField::None;
 }
 
+static NativeTravelBuildingField native_travel_building_field(uintptr_t caller) {
+    for (const auto &site : g_native_travel_building_sites)
+        if (site.return_address == caller) return site.field;
+    return NativeTravelBuildingField::None;
+}
+
 static std::optional<SDL_Rect> native_location_picker_draw_box(
         const graphicst *graphics, const NativeString *source,
-        NativeLocationPickerField field) {
+        NativeLocationPickerField field, uintptr_t caller = 0) {
+    const bool faith = native_faith_picker_field(field);
+    const bool detail = native_location_detail_field(field);
     if (field == NativeLocationPickerField::None ||
             field == NativeLocationPickerField::Prompt ||
-            !graphics || !graphics->screen || !native_ui_classic().value_or(false))
+            !graphics || !graphics->screen ||
+            (!faith && !detail && !native_ui_classic().value_or(false)))
         return std::nullopt;
     const int x = graphics->screenx, y = graphics->screeny;
     if (graphics->dimx <= 0 || graphics->dimx > 1000 ||
@@ -336,6 +372,55 @@ static std::optional<SDL_Rect> native_location_picker_draw_box(
             x < 0 || x >= graphics->dimx || y < 0 || y >= graphics->dimy)
         return std::nullopt;
     NativePanelReadScope panel_scope(graphics);
+    if (detail) {
+        // Location detail writes every caption directly into its closed
+        // panel. Retain the native column and clip before later row draws;
+        // the source's English length never determines its Chinese budget.
+        int left = static_cast<int>(std::clamp<int64_t>(graphics->clipx[0], 0, graphics->dimx));
+        int right = static_cast<int>(std::clamp<int64_t>(
+            int64_t(graphics->clipx[1]) + 1, 0, graphics->dimx));
+        if (y < graphics->clipy[0] || y > graphics->clipy[1] || x < left || x >= right)
+            return std::nullopt;
+        const NativePanelBorders borders(*graphics);
+        if (const auto panel = native_panel_interior(borders, *graphics, x, x + 1, y)) {
+            left = std::max(left, panel->x);
+            right = std::min(right, panel->x + panel->w);
+        }
+        if (field == NativeLocationPickerField::DetailRole) {
+            // The shared occupation row begins at list_left+6; its native
+            // add-person button begins at list_left+24, for all ten roles
+            // and every generated entity_position title.
+            right = std::min(right, x + 18);
+        } else if (field == NativeLocationPickerField::DetailUnit) {
+#ifdef _WIN32
+            // Only the proved detail-unit draw has this caller frame.
+            // rbp+0x50 owns the name and rbp+0x00 its exclusive column end;
+            // 3b8465..3b8488 reserve three cells before native truncation.
+            const uintptr_t address = reinterpret_cast<uintptr_t>(source);
+            int32_t column_end = 0;
+            if (caller == native_pe_address(native_history_profile_base(), 0x3b84e0) &&
+                    address >= 0x50 && native_history_copy(address - 0x50, column_end) &&
+                    column_end > x + 3 && column_end <= graphics->dimx)
+                right = std::min(right, column_end - 3);
+#else
+            (void)caller;
+#endif
+        }
+        if (x >= left && right > x) return SDL_Rect{x, y, right - x, 1};
+        return std::nullopt;
+    }
+    if (faith && field != NativeLocationPickerField::FaithChoice &&
+            field != NativeLocationPickerField::FaithStatus) {
+        // 3baddc..3bb04d draws the faith card after its complete hover frame.
+        // Its 21 interior columns, rather than the outer chooser or screen,
+        // own counts, the Worship relation, deity identity and each sphere.
+        const NativePanelBorders borders(*graphics);
+        if (const auto panel = native_panel_interior(borders, *graphics, x, x + 1, y)) {
+            const int right = panel->x + panel->w;
+            if (x >= panel->x && right > x) return SDL_Rect{x, y, right - x, 1};
+        }
+        return std::nullopt;
+    }
     if (field == NativeLocationPickerField::Action) {
         std::string_view text;
         if (!native_string_view(source, &text, 4096) || text.empty() ||
@@ -350,12 +435,14 @@ static std::optional<SDL_Rect> native_location_picker_draw_box(
         }
         return std::nullopt;
     }
-    const int middle = field == NativeLocationPickerField::Name ? y : y - 1;
+    const int middle = field == NativeLocationPickerField::Name ||
+        field == NativeLocationPickerField::FaithChoice ? y : y - 1;
     if (const auto frame = native_picture_caption_rect(
             *graphics, x, middle, true, nullptr, true)) {
-        // This caller paints main[181] after both captions. Reserve its
-        // four columns while the complete underlying strip still exists.
-        const int right = frame->x + frame->w - 4;
+        // The main chooser paints main[181] after both captions. Reserve
+        // those four columns there; the faith subpage allocates the entire
+        // picture strip to its name and status without that later action.
+        const int right = frame->x + frame->w - (faith ? 0 : 4);
         if (right > x) return SDL_Rect{x, y, right - x, 1};
     }
     return std::nullopt;
@@ -390,6 +477,54 @@ static bool native_info_title_memory_readable(const void *pointer, size_t size) 
     return false;
 #endif
 }
+
+static bool native_textbox_widget_editable(const void *widget) {
+    const auto address = reinterpret_cast<uintptr_t>(widget);
+    const auto &binding = g_native_textbox_widget_binding;
+    uintptr_t table = 0, parent = 0;
+    uint8_t visibility = 0;
+    uint32_t flags = 0;
+    int32_t maxlen = 0, type = -1;
+    std::array<int32_t, 4> rect{};
+    const auto read_field = [&](size_t offset, auto &value) {
+        return offset <= UINTPTR_MAX - address &&
+            native_history_copy(address + offset, value);
+    };
+    if (!address || !binding.table || !native_history_copy(address, table) ||
+        table != binding.table ||
+        !read_field(native_history_layout::textbox_parent_offset, parent) ||
+        !read_field(native_history_layout::textbox_rect_offset, rect) ||
+        !read_field(native_history_layout::textbox_visibility_offset, visibility) ||
+        !read_field(native_history_layout::textbox_flags_offset, flags) ||
+        !read_field(native_history_layout::textbox_maxlen_offset, maxlen) ||
+        !read_field(native_history_layout::textbox_type_offset, type) ||
+        (visibility & 3u) != 3u || maxlen < 0 || type < 0 || type > 2 ||
+        (flags & ~0x7fu) != 0 || rect[2] < rect[0] || rect[3] < rect[1]) return false;
+    // FILTER, NAME and NONE are all editable textbox classes. A textbox
+    // need not own keyboard focus or a parent to retain its authored text.
+    // Read its owned string safely; render may draw a temporary substring,
+    // so protection belongs to this native render scope, never its address.
+    std::string text;
+    return native_history_layout::textbox_string_offset <= UINTPTR_MAX - address &&
+        native_history_copy_string(address + native_history_layout::textbox_string_offset, text);
+}
+
+static void capture_native_textbox_widget_render(void *widget, uint32_t tick) {
+    NativeInputCallbackScope callback;
+    const auto original = reinterpret_cast<NativeCaptionWidgetRenderFn>(
+        g_native_textbox_widget_hook.original);
+    if (!original) return;
+    bool editable = false;
+    try { editable = native_textbox_widget_editable(widget); } catch (...) {}
+    // widget::render runs custom callbacks before textbox draws str. The
+    // verified caller alone activates protection for that actual addst;
+    // callbacks and separately drawn labels retain ordinary translation.
+    NativeEditableTextScope scope(editable,
+        g_native_textbox_widget_binding.text_return_address);
+    callback.call_native([&] { original(widget, tick); });
+}
+
+#include "native_fortress_labor_capture.inc"
 
 static NativeMapHoverContext native_map_hover_context(uintptr_t caller,
         const NativeString *source) {
@@ -1041,7 +1176,9 @@ static PendingNativeField remember_native_clipped_draw(graphicst *graphics, cons
         bool mission_title = false, int mission_title_right = -1,
         NativeMapHoverContext map_hover = {},
         NativeLocationPickerField location_picker_field = NativeLocationPickerField::None,
-        std::optional<SDL_Rect> location_picker_box = std::nullopt) {
+        std::optional<SDL_Rect> location_picker_box = std::nullopt,
+        std::optional<NativeFortressLaborCaption> fortress_labor_caption = std::nullopt,
+        NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None) {
     PendingNativeField captured;
     auto &state = native_clipped_pending();
     // Both supported addst implementations draw at the current cursor and
@@ -1087,7 +1224,8 @@ static PendingNativeField remember_native_clipped_draw(graphicst *graphics, cons
                         reinterpret_cast<uintptr_t>(source), graphics,
                         top_layer, complete, info_title_kind, info_title_authored, info_title_right,
                         civilization_field, mission_title, mission_title_right, std::nullopt, epoch,
-                        map_hover, location_picker_field, location_picker_box);
+                        map_hover, location_picker_field, location_picker_box, fortress_labor_caption,
+                        travel_building_field);
                     if (!complete.empty())
                         remember_clipped_caption(graphics->screenx, graphics->screeny,
                             visible, complete);
@@ -1113,7 +1251,9 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         NativeCivilizationField civilization_field = NativeCivilizationField::None,
         bool mission_title = false,
         NativeMapHoverContext map_hover = {},
-        NativeLocationPickerField location_picker_field = NativeLocationPickerField::None) {
+        NativeLocationPickerField location_picker_field = NativeLocationPickerField::None,
+        NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None,
+        uintptr_t native_caller = 0) {
     const std::array<long, 4> draw_clip = graphics
         ? std::array<long, 4>{graphics->clipx[0], graphics->clipx[1],
                               graphics->clipy[0], graphics->clipy[1]}
@@ -1148,14 +1288,19 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         if (mission_title) mission_title_right = right;
     }
     std::optional<SDL_Rect> location_picker_box;
+    std::optional<NativeFortressLaborCaption> fortress_labor_caption;
     try {
-        if (!top_layer) location_picker_box = native_location_picker_draw_box(
-            graphics, source, location_picker_field);
+        if (!top_layer) {
+            location_picker_box = native_location_picker_draw_box(
+                graphics, source, location_picker_field, native_caller);
+            fortress_labor_caption = capture_native_fortress_labor_caption(
+                reinterpret_cast<uintptr_t>(source));
+        }
     } catch (...) {}
     const auto captured_source = remember_native_clipped_draw(graphics, source, just, width, top_layer,
         info_title_kind, info_title_authored, info_title_right, civilization_field,
         mission_title, mission_title_right, map_hover,
-        location_picker_field, location_picker_box);
+        location_picker_field, location_picker_box, fortress_labor_caption, travel_building_field);
     std::string complete;
     int x = -1, y = -1, dimx = 0, dimy = 0;
     const unsigned char *screen = nullptr;
@@ -1204,7 +1349,8 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
             graphics->dimx != dimx || graphics->dimy != dimy ||
             graphics->screeny != y || graphics->screenx <= x ||
             (graphics->screenx > dimx && info_title_kind == NativeInfoTitleKind::None &&
-                !mission_title) ||
+                !mission_title && !fortress_labor_caption &&
+                travel_building_field == NativeTravelBuildingField::None) ||
             (width > 0 && graphics->screenx - x > width) ||
             epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire)) return;
         // addchar advances the cursor even outside clipx/clipy. Its verified
@@ -1240,26 +1386,80 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         // proves the visible prefix to the map text filter.
         if (width > 0 || first != x || info_title_kind != NativeInfoTitleKind::None ||
                 civilization_field != NativeCivilizationField::None || mission_title ||
-                location_picker_field != NativeLocationPickerField::None)
+                location_picker_field != NativeLocationPickerField::None || fortress_labor_caption ||
+                travel_building_field != NativeTravelBuildingField::None)
             remember_native_drawn_text_row(first, y, visible,
                 reinterpret_cast<uintptr_t>(source), graphics, top_layer,
                 first == x ? std::string_view(complete) : std::string_view{},
                 first == x ? info_title_kind : NativeInfoTitleKind::None,
                 info_title_authored, info_title_right, civilization_field,
                 first == x && mission_title, mission_title_right, draw_clip, epoch,
-                map_hover, location_picker_field, location_picker_box);
+                map_hover, location_picker_field, location_picker_box, fortress_labor_caption,
+                travel_building_field);
         if (first == x && visible != complete)
             remember_clipped_caption(x, y, visible, complete);
     } catch (...) {}
 }
 
+static bool native_legacy_editable_draw(uintptr_t caller) {
+#ifdef _WIN32
+    const uintptr_t base = native_history_profile_base();
+    if (!base) return false;
+    uintptr_t owner = 0;
+    size_t string_offset = 0, entering_offset = 0;
+    bool has_open = true;
+    // Each legacy renderer copies this one owned edit string before addst.
+    // Its ordinary list/button captions have different callers. Reference
+    // coordinates are resolved for both supported PE editions.
+    if (caller == native_pe_address(base, 0x3a20c7)) {
+        owner = native_reference_address(base, 0x18a2710);
+        string_offset = native_history_layout::stocks_filter_offset;
+        entering_offset = native_history_layout::stocks_entering_filter_offset;
+    } else if (caller == native_pe_address(base, 0x382106)) {
+        // construction_interfacest.item_filter / entering_item_filter.
+        owner = native_reference_address(base, 0x18a1788);
+        string_offset = 0x68;
+        entering_offset = 0x88;
+        has_open = false; // Construction has category state, not an open bit.
+    } else if (caller == native_pe_address(base, 0x380e14)) {
+        // custom_stockpile_interfacest.spec_filter / entering_spec_filter.
+        owner = native_reference_address(base, 0x18a4238);
+        string_offset = 0x18;
+        entering_offset = 0x38;
+    } else if (caller == native_pe_address(base, 0x38d4af)) {
+        // create_work_order_interfacest.job_filter / entering_job_filter.
+        owner = native_reference_address(base, 0x18a7200);
+        string_offset = 0x50;
+        entering_offset = 0x70;
+    } else return false;
+    if (!owner) return false;
+    uint8_t open = 0, entering = 0;
+    std::string text;
+    const auto field = [&](size_t offset) -> uintptr_t {
+        return offset <= UINTPTR_MAX - owner ? owner + offset : 0;
+    };
+    // entering records keyboard focus, not whether this field is editable.
+    // Retain the owned input while unfocused too, without comparing words.
+    return (!has_open || (native_history_copy(owner, open) && open == 1)) &&
+        native_history_copy(field(entering_offset), entering) &&
+        entering <= 1 && native_history_copy_string(
+            field(string_offset), text);
+#else
+    (void)caller;
+    return false;
+#endif
+}
+
 static void capture_native_clipped_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width) {
     const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+    NativeEditableTextScope input_scope(
+        NativeEditableTextScope::owns(caller) || native_legacy_editable_draw(caller));
     const auto kind = native_info_title_kind(caller);
     const bool authored = native_info_title_authored(kind, source, caller);
     const auto civilization_field = native_civilization_caption_field(caller);
     const auto location_picker_field = native_location_picker_field(caller);
+    const auto travel_building_field = native_travel_building_field(caller);
     const bool mission_title = native_mission_title_caller(caller);
     const auto map_hover = native_map_hover_context(caller, source);
     std::shared_ptr<const NativeEmbarkReclaimHistoryParagraph> reclaim_history;
@@ -1292,7 +1492,7 @@ static void capture_native_clipped_draw(graphicst *graphics, const NativeString 
         if (g_native_clipped_caption_hooks.draw)
             g_native_clipped_caption_hooks.draw(graphics, source, just, width);
     }, false, kind, authored, std::move(reclaim_history), history_lock.owns_lock(),
-        civilization_field, mission_title, map_hover, location_picker_field);
+        civilization_field, mission_title, map_hover, location_picker_field, travel_building_field, caller);
 }
 
 static void capture_native_clipped_flag_draw(graphicst *graphics, const NativeString *source,
@@ -1385,6 +1585,7 @@ static bool native_caption_hooks_active() {
     return g_native_help_top_tile_hook.active() || g_native_help_tile_hook.active() ||
         g_native_legacy_tooltip_hook.active() || g_native_tooltip_container_hook.active() ||
         g_native_multiline_arrange_hook.active() || g_native_multiline_widget_hook.active() ||
+        g_native_textbox_widget_hook.active() ||
         g_native_caption_widget_hook.active() || g_native_caption_hooks.code.active() ||
         g_native_map_track_caption_hooks.build_entry.active() ||
         g_native_clipped_caption_hooks.resize_entry.active() ||
@@ -1413,7 +1614,7 @@ static bool install_native_caption_hooks() {
     } guard;
     NativeCaptionProfile profile;
     if (!resolve_native_caption_profile(profile) || !profile.resize || !profile.draw ||
-        !profile.truncated_widget.render_slot) {
+        !profile.truncated_widget.render_slot || !profile.textbox_widget.render_slot) {
         log_line("ERROR", "Cannot resolve the native complete-caption profile");
         return false;
     }
@@ -1470,6 +1671,7 @@ static bool install_native_caption_hooks() {
     g_native_info_title_binding = std::move(profile.info_titles);
     g_native_civilization_caption_sites = std::move(profile.civilization_fields);
     g_native_location_picker_sites = std::move(profile.location_picker_fields);
+    g_native_travel_building_sites = std::move(profile.travel_building_fields);
     g_native_mission_title_returns = std::move(profile.mission_title_returns);
     g_native_map_hover_returns = std::move(profile.map_hover_returns);
     g_native_map_hover_text_offset = profile.map_caption_text_offset;
@@ -1554,6 +1756,19 @@ static bool install_native_caption_hooks() {
     g_native_caption_widget_hook = {profile.truncated_widget.render_slot, nullptr,
         reinterpret_cast<void *>(&capture_native_truncated_widget_render)};
     if (!g_native_caption_widget_hook.install("Native original widget caption capture")) return false;
+    {
+        const auto &binding = profile.textbox_widget;
+        if (!binding.table || !binding.expected_render ||
+            std::atomic_ref<void *>(*binding.render_slot).load(
+                std::memory_order_acquire) != binding.expected_render) {
+            log_line("ERROR", "Native editable textbox original render mismatch");
+            return false;
+        }
+        g_native_textbox_widget_binding = binding;
+        g_native_textbox_widget_hook = {binding.render_slot, binding.expected_render,
+            reinterpret_cast<void *>(&capture_native_textbox_widget_render)};
+        if (!g_native_textbox_widget_hook.install("Native editable textbox properties")) return false;
+    }
     if (profile.multiline_widget.render_slot) {
         // The announcement binding resolves this same profile after caption
         // hooks are installed. Validate mutable slot ownership only here,
@@ -1587,15 +1802,21 @@ static bool install_native_caption_hooks() {
         constexpr const char *symbol = "_ZN9graphicst18add_top_lower_tileEl";
         PatchSearch search{symbol};
         dl_iterate_phdr(find_main_import_slot, &search);
-        if (!search.slot) return false;
-        g_native_help_tile_hook = {search.slot, dlsym(RTLD_DEFAULT, symbol),
+        g_real_native_help_tile = reinterpret_cast<NativeHelpTileFn>(dlsym(RTLD_DEFAULT, symbol));
+        if (!search.slot || !g_real_native_help_tile) return false;
+        // Classic may never have called these graphical tile imports. Keep
+        // the live slot (possibly a lazy PLT resolver) for ownership/restore,
+        // but forward directly to the resolved function so the resolver cannot
+        // overwrite our installed hook on the first captured tile.
+        g_native_help_tile_hook = {search.slot, nullptr,
             reinterpret_cast<void *>(&capture_native_help_tile)};
         if (!g_native_help_tile_hook.install("Native classic help background capture")) return false;
         constexpr const char *top_symbol = "_ZN9graphicst12add_top_tileElc";
         PatchSearch top_search{top_symbol};
         dl_iterate_phdr(find_main_import_slot, &top_search);
-        if (!top_search.slot) return false;
-        g_native_help_top_tile_hook = {top_search.slot, dlsym(RTLD_DEFAULT, top_symbol),
+        g_real_native_help_top_tile = reinterpret_cast<NativeHelpTopTileFn>(dlsym(RTLD_DEFAULT, top_symbol));
+        if (!top_search.slot || !g_real_native_help_top_tile) return false;
+        g_native_help_top_tile_hook = {top_search.slot, nullptr,
             reinterpret_cast<void *>(&capture_native_help_top_tile)};
         if (!g_native_help_top_tile_hook.install("Native classic help artwork capture")) return false;
     }
@@ -1607,8 +1828,10 @@ static bool install_native_caption_hooks() {
 static bool uninstall_native_caption_hooks() {
     if (!g_native_help_top_tile_hook.uninstall("Native classic help artwork restore")) return false;
     g_native_help_top_tile_hook = {};
+    g_real_native_help_top_tile = nullptr;
     if (!g_native_help_tile_hook.uninstall("Native classic help background restore")) return false;
     g_native_help_tile_hook = {};
+    g_real_native_help_tile = nullptr;
     g_native_help_page.reset();
     // Live relays retain the native targets until restoration and release both
     // succeed, including failures during a partially completed installation.
@@ -1621,6 +1844,9 @@ static bool uninstall_native_caption_hooks() {
     if (!g_native_multiline_widget_hook.uninstall("Native complete multiline widget restore")) return false;
     g_native_multiline_widget_hook = {};
     g_native_multiline_widget_binding = {};
+    if (!g_native_textbox_widget_hook.uninstall("Native editable textbox properties restore")) return false;
+    g_native_textbox_widget_hook = {};
+    g_native_textbox_widget_binding = {};
     if (!g_native_caption_widget_hook.uninstall("Native original widget caption restore")) return false;
     g_native_caption_widget_hook = {};
     g_native_caption_widget_binding = {};
@@ -1660,6 +1886,7 @@ static bool uninstall_native_caption_hooks() {
     g_native_info_title_binding = {};
     g_native_civilization_caption_sites.clear();
     g_native_location_picker_sites.clear();
+    g_native_travel_building_sites.clear();
     g_native_mission_title_returns.clear();
     g_native_caption_hooks.resize = nullptr;
     g_native_caption_hooks.draw = nullptr;
