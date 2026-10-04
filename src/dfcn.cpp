@@ -4311,7 +4311,7 @@ private:
         std::string_view gloss;
     };
     enum class ProceduralFragmentContext {
-        general_text, generated_name, personal_name, native_item_name
+        general_text, generated_name, personal_name, native_item_name, book_title
     };
     std::optional<std::string> translate_procedural_fragment(
         const std::string &screen_text, bool phonetic_only = false,
@@ -9073,6 +9073,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     // Keep the existing structural validators and shared name renderer below.
     const bool personal_name = context == ProceduralFragmentContext::personal_name;
     const bool native_item_name = context == ProceduralFragmentContext::native_item_name;
+    const bool book_title = context == ProceduralFragmentContext::book_title;
     if (!phonetic_only && !personal_name && !native_item_name &&
             trim_view(screen_text).starts_with("Unnamed "))
         if (auto figure = translate_legends_unnamed_figure(screen_text)) return figure;
@@ -9080,7 +9081,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         : split_legends_figure_record(screen_text);
     const auto generated_identity = phonetic_only || personal_name || native_item_name || figure_record ? std::nullopt
         : split_generated_name_identity(screen_text);
-    const bool name_only = phonetic_only || personal_name || native_item_name ||
+    const bool name_only = phonetic_only || personal_name || native_item_name || book_title ||
         figure_record || generated_identity;
 
     // A profession is a separate native row for long names and part of the
@@ -9949,6 +9950,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             ? target : std::nullopt;
     }
 
+    bool book_components_complete = true;
     auto translate_token = [&](std::string token, bool terminal = false) {
         while (!token.empty() && !std::isalnum(static_cast<unsigned char>(token.front())))
             token.erase(token.begin());
@@ -9962,6 +9964,12 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         // English name and the bare fortress HUD gloss keep the same senses
         // and Chinese word order (including rear verbs/adjectives).
         if (auto compound = translate_generated_surname(folded)) return *compound;
+        // Book prose is not a native-language name. An unknown title word
+        // must not become phonetic syllables or arbitrary dictionary pieces.
+        if (book_title) {
+            book_components_complete = false;
+            return std::string{};
+        }
         if (auto compound = segment_generated_compound(folded, terminal)) return *compound;
         return transliterate(folded);
     };
@@ -10194,6 +10202,38 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     auto translate_name = [&](std::string name) {
         return render_name(std::move(name), true);
     };
+
+    if (book_title) {
+        // A subject can be a historical figure: its native given name and
+        // complete native/English surname already have a strict resolver.
+        if (const auto person = translate_generated_person_name(screen_text))
+            return complete_generated_name(*person);
+        if (!generated_title_shape(screen_text)) return std::nullopt;
+        // The list capitalizes every word after the native title generator.
+        // Restore only its grammatical Of/The connectors for the shared
+        // generated-name renderer, preserving all actual name spellings.
+        std::string generated = screen_text;
+        for (size_t at = generated.find(' '); at != std::string::npos;) {
+            const size_t begin = at + 1;
+            const size_t end = generated.find(' ', begin);
+            const size_t length = (end == std::string::npos ? generated.size() : end) - begin;
+            const std::string folded = lower(generated.substr(begin, length));
+            if (folded == "of") generated.replace(begin, length, "of");
+            else if (folded == "the" &&
+                    (begin < 3 || generated.substr(begin - 3, 3) != "of "))
+                generated.replace(begin, length, "the");
+            at = end;
+        }
+        const auto translated = translate_name(generated);
+        if (book_components_complete) return translated;
+        // A single native-language given name or compound is also a valid
+        // subject, but title case alone is never evidence for transliteration.
+        if (const auto given = resolve_native_given_word(screen_text))
+            return given->translated;
+        if (const auto native = resolve_native_compound_word(screen_text))
+            return native->translated;
+        return std::nullopt;
+    }
 
     // Symbol-editor figures omit the sex/species suffix used by Legends.
     // Both records, and world/site identities, must resolve native words via
@@ -22915,20 +22955,19 @@ std::vector<Match> Overlay::find_matches(int only_y,
     // mode identity. Claim them before ordinary word/name matching.
     append_save_list_captions(screen_rows, result, only_y);
 
-    // The Export XML control identifies Legends even when its captions
+    // The export control identifies Legends, including its busy caption,
     // reside on a different logical layer. This is context only: the complete
     // identity below must still come from the exact layer being matched.
     bool legends_context = false;
     for (int y = 0; !announcement_panel_only && y < gps_->dimy && !legends_context; ++y) {
-        legends_context = screen_rows[static_cast<size_t>(y)].find("Export XML") !=
-            std::string::npos;
+        legends_context = legends_export_control_present(screen_rows[static_cast<size_t>(y)]);
         if (!legends_context && screen_override) {
             std::string composed(static_cast<size_t>(gps_->dimx), ' ');
             for (int x = 0; x < gps_->dimx; ++x) {
                 const unsigned char ch = visible_char_at(x, y);
                 composed[static_cast<size_t>(x)] = ch ? static_cast<char>(ch) : ' ';
             }
-            legends_context = composed.find("Export XML") != std::string::npos;
+            legends_context = legends_export_control_present(composed);
         }
     }
 
@@ -39742,7 +39781,7 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
         // no minimum row count is needed for a filtered one-site result.
         const bool sites_list = std::any_of(prepared_matches_.begin(),
             prepared_matches_.end(), [](const Match &match) {
-                return match.source == "Export XML";
+                return legends_export_control_present(match.source);
             }) && std::any_of(prepared_matches_.begin(),
             prepared_matches_.end(), [](const Match &match) {
                 return match.source == "Sites";
@@ -39892,7 +39931,7 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
                 int margin = 2;
                 for (const Match &control : prepared_matches_) {
                     if (control.y != match.y) continue;
-                    if (control.source == "Export XML") {
+                    if (legends_export_control_present(control.source)) {
                         margin = std::max(margin, control.x + control.length + 2);
                     } else if (control.source == "Done") {
                         margin = std::max(margin, gps_->dimx - control.x + 2);

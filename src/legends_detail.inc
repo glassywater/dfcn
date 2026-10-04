@@ -881,6 +881,61 @@ std::optional<std::string> Overlay::translate_legends_book(
     const std::string normalized = normalize_utterance(value);
     value = normalized;
     if (value.empty() || value.ends_with("...") || depth >= 8) return std::nullopt;
+    // Instructional titles have printed subject aliases in addition to the
+    // short research topics. Resolve a whole subject before the generic
+    // conjunction/colon wrappers can split it into unrelated name words.
+    std::string subject = lower(std::string(value));
+    if (const auto found = legends_terms_ci_.find("book title phrase: " + subject);
+            found != legends_terms_ci_.end()) return found->second;
+    if (const auto found = legends_terms_ci_.find("book title subject: " + subject);
+            found != legends_terms_ci_.end()) return found->second;
+    if (subject.starts_with("the ")) subject.erase(0, 4);
+    if (const auto found = legends_terms_ci_.find("book title subject: " + subject);
+            found != legends_terms_ci_.end()) return found->second;
+    if (const auto topic = RULESETS.compose_bound_rule("::activities::topic", subject))
+        return topic;
+    if (const auto found = legends_terms_ci_.find(lower(std::string(value)));
+            found != legends_terms_ci_.end()) return found->second;
+    // Historical-figure subject references can supply a caste descriptor
+    // instead of a personal name; sphere references supply one exact sphere.
+    // Both native branches retain their existing semantic dictionaries.
+    if (const auto creature = translate_creature_reference(value)) return creature;
+    if (const auto sphere = deity_sphere_translations_.find(subject);
+            sphere != deity_sphere_translations_.end()) return sphere->second;
+    auto article_free = value;
+    if (template_literal_at(article_free, 0, "the ", true))
+        article_free.remove_prefix(4);
+    // Historical-figure references can replace a name with the selected
+    // gender-specific office title from entity RAWs. Resolve that complete
+    // singular office through its existing semantic namespace.
+    const std::string noun_source = lower(std::string(article_free));
+    if (const auto office = legends_terms_.find("Native history office: " + noun_source);
+            office != legends_terms_.end()) return office->second;
+    std::vector<size_t> office_origins;
+    if (const auto office = RULESETS.translate_with_origins(
+            native_text_to_utf8(noun_source), "::positions::singular", office_origins))
+        return office;
+    // Artifact references can use their complete item description or their
+    // native solid material, including an actual owner's possessive name.
+    // Reuse those typed grammars before title wrappers split their contents.
+    if (const auto material = translate_material_name(article_free)) return material;
+    if (const auto item = translate_legends_item(value)) return item;
+    // BOOK_ART NOUN selects a complete singular/plural WORD form, without
+    // compound-name flags. Its noun sense must not inherit a homonymous
+    // adjective or verb, and a multiword form must remain one source field.
+    if (const auto found = legends_terms_ci_.find("book title noun: " + noun_source);
+            found != legends_terms_ci_.end()) return found->second;
+    if (const auto forms = name_editor_word_forms_.find(noun_source);
+            forms != name_editor_word_forms_.end()) {
+        std::optional<std::string> noun;
+        bool ambiguous = false;
+        for (const auto &meaning : forms->second) {
+            if (meaning.part_of_speech != ProceduralNamePartOfSpeech::noun) continue;
+            if (noun && *noun != meaning.gloss) { ambiguous = true; break; }
+            noun = meaning.gloss;
+        }
+        if (noun && !ambiguous) return noun;
+    }
     // BOOK_ART adds fixed phrases to generated names. Keep these phrases in
     // the scoped TSV, not in the name vocabulary: "Ever Onward" has a title
     // meaning, while the existing standalone "ever" sense must not change.
@@ -894,7 +949,47 @@ std::optional<std::string> Overlay::translate_legends_book(
     for (int index : legends_book_rules_)
         if (auto title = translate_legends_nested(
                 rules_[static_cast<size_t>(index)], value, depth)) return title;
-    return translate_legends_name(value, false);
+    if (const auto person = translate_procedural_fragment(std::string(value), false,
+            false, {}, ProceduralFragmentContext::personal_name)) return person;
+    // BOOK_ART has both [ADJ] [NO_ART_NAME] and [NAME] [ADJ]. The same
+    // reviewed RAW adjective must precede its subject in Chinese in either
+    // production. Select its grammatical role, rather than transliterating
+    // a suffix or treating it as the noun at the end of a generated name.
+    const auto adjective = [&](std::string_view raw) -> std::optional<std::string> {
+        const std::string folded = lower(std::string(raw));
+        if (const auto found = legends_terms_ci_.find("book title adjective: " + folded);
+                found != legends_terms_ci_.end()) {
+            std::string modifier = found->second;
+            if (!modifier.ends_with("的")) modifier += "的";
+            return modifier;
+        }
+        const auto forms = name_editor_word_forms_.find(folded);
+        if (forms == name_editor_word_forms_.end()) return std::nullopt;
+        std::optional<std::string> gloss;
+        for (const auto &meaning : forms->second) {
+            if (meaning.part_of_speech != ProceduralNamePartOfSpeech::adjective) continue;
+            if (gloss && *gloss != meaning.gloss) return std::nullopt;
+            gloss = meaning.gloss;
+        }
+        if (gloss && !gloss->ends_with("的")) *gloss += "的";
+        return gloss;
+    };
+    auto base = value;
+    if (template_literal_at(base, 0, "the ", true)) base.remove_prefix(4);
+    for (size_t at = base.find(' '); at != std::string_view::npos;
+            at = base.find(' ', at + 1)) {
+        if (const auto modifier = adjective(base.substr(0, at)))
+            if (const auto title = translate_legends_book(base.substr(at + 1), depth + 1))
+                return *modifier + *title;
+    }
+    for (size_t at = value.rfind(' '); at != std::string_view::npos;
+            at = at == 0 ? std::string_view::npos : value.rfind(' ', at - 1)) {
+        if (const auto modifier = adjective(value.substr(at + 1)))
+            if (const auto title = translate_legends_book(value.substr(0, at), depth + 1))
+                return *modifier + *title;
+    }
+    return translate_procedural_fragment(std::string(value), false, false, {},
+        ProceduralFragmentContext::book_title);
 }
 
 std::optional<std::string> Overlay::translate_legends_text(
@@ -1119,6 +1214,13 @@ std::optional<std::string> Overlay::translate_legends_text(
     return result;
 }
 
+static bool legends_export_control_present(std::string_view source) {
+    // Legends remains browsable while the same export control changes
+    // its caption from Export XML to Exporting!.
+    return source.find("Export XML") != std::string_view::npos ||
+        source.find("Exporting!") != std::string_view::npos;
+}
+
 void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y,
         const unsigned char *screen_override) const {
@@ -1144,7 +1246,7 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
     int export_y = -1;
     for (int y = 0; y < static_cast<int>(rows.size()); ++y) {
         const auto &row = context[static_cast<size_t>(y)];
-        if (row.find("Export XML") != std::string::npos) { export_y = y; break; }
+        if (legends_export_control_present(row)) { export_y = y; break; }
     }
     if (export_y < 0) return;
     // Graphical captions occupy two flagged rows. Claim BOTH before the

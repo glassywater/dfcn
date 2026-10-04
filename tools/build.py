@@ -240,6 +240,7 @@ def generate_data(env: dict[str, str]) -> None:
     wood_names = RUNTIME / "rulesets/zh-Hans/items/wood/raw_names.toml"
     outputs = [dictionary, ROOT / "src/preference_vocabulary.inc", anatomy, creature_names, wood_names]
     inputs = [SCRIPT, ROOT / "tools/build_translations.py", ROOT / "tools/legends_grammar.py",
+              ROOT / "tools/book_title_grammar.py",
               ROOT / "tools/announcement_grammar.py",
               ROOT / "tools/magical_materials.py", ROOT / "tools/extract_tooltip_catalog.py",
               ROOT / "tools/extract_workshop_tooltip_catalog.py"]

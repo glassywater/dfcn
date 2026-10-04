@@ -1,0 +1,855 @@
+# Native book title subjects: complete knowledge and value preset aliases.
+# Standard source<TAB>replacement UTF-8<TAB>flags; all scalar keys are lookup-scoped.
+# Producers: general_ref_knowledge_scholar_flagst +0x88 (Steam RVA 0xee73f0),
+# general_ref_value_levelst +0x88 (0xee5920). Native predicates, random synonyms,
+# exact literals and true NO_ART_NAME aliases are retained in
+# data/extracted/book-title-subject-sources.tsv for both configured PE images.
+# Targets reuse data/runtime/rulesets/zh-Hans/activities.toml topic vocabulary
+# where labels agree; printed synonym aliases keep their discipline meanings.
+# NO_ART_NAME is the native ede350 transformation: an initial the/The gates
+# removal of all same-case occurrences, including inner articles. Case-fold
+# lookup covers final native title casing. Initial screenshot subject aliases
+# remain here; other reference presets are in book-title-reference-translations.tsv.
+Book title subject: Absence	无	hi
+Book title subject: Acids and Alkalis	酸与碱	hi
+Book title subject: Acute and Chronic Diseases	急性与慢性疾病	hi
+Book title subject: Adhesives	黏合材料	hi
+Book title subject: Adjusting Maps	地图校正	hi
+Book title subject: Adventure	冒险	hi
+Book title subject: Alembic	蒸馏器	hi
+Book title subject: Alembics	蒸馏器	hi
+Book title subject: Algorithm	算法	hi
+Book title subject: Alkalis and Acids	碱与酸	hi
+Book title subject: Allocation	土地分配	hi
+Book title subject: Alloys	合金	hi
+Book title subject: Alternatives	其他可能	hi
+Book title subject: Altitude	高	hi
+Book title subject: Altruism	利他主义	hi
+Book title subject: Ampoule	安瓿	hi
+Book title subject: Ampoules	安瓿	hi
+Book title subject: Analogy	类比	hi
+Book title subject: Anatomies	解剖学	hi
+Book title subject: Anatomy	解剖学	hi
+Book title subject: Anatomy of Eye	眼的解剖结构	hi
+Book title subject: Anesthesia	麻醉	hi
+Book title subject: Angle Sums	角度和	hi
+Book title subject: Angles	角	hi
+Book title subject: Animal Courtship	动物求偶	hi
+Book title subject: Animal Development	动物发育	hi
+Book title subject: Animal Diets	动物食性	hi
+Book title subject: Animal Diseases	动物疾病	hi
+Book title subject: Animal Embryos	动物胚胎	hi
+Book title subject: Animal Remedies	动物药物	hi
+Book title subject: Animal Societies	动物群体	hi
+Book title subject: Animal Survival	动物生存	hi
+Book title subject: Animals	动物	hi
+Book title subject: Animals and the Climate	动物与气候	hi
+Book title subject: Another History	另一种历史	hi
+Book title subject: Approximation	近似计算	hi
+Book title subject: Aqua Regia	王水	hi
+Book title subject: Area	面积	hi
+Book title subject: Area and Circumference	面积与周长	hi
+Book title subject: Area and Sides	面积与边长	hi
+Book title subject: Area of Circles	圆的面积	hi
+Book title subject: Armillary Sphere	浑仪	hi
+Book title subject: Armillary Spheres	浑仪	hi
+Book title subject: Art	艺术	hi
+Book title subject: Artifacts	造物	hi
+Book title subject: Artwork	艺术作品	hi
+Book title subject: Assumption	假设	hi
+Book title subject: Assumptions	假设	hi
+Book title subject: Astrarium	天文钟	hi
+Book title subject: Astrariums	天文钟	hi
+Book title subject: Astrolabe	星盘	hi
+Book title subject: Astrolabes	星盘	hi
+Book title subject: Asylum	精神疾病收容院	hi
+Book title subject: Atlas	地图集	hi
+Book title subject: Autopsy	尸体解剖	hi
+Book title subject: Axioms	公理	hi
+Book title subject: Balance Wheel	摆轮	hi
+Book title subject: Balance Wheels	摆轮	hi
+Book title subject: Balancing	平衡	hi
+Book title subject: Balancing and Completion	平衡与配方	hi
+Book title subject: Bandages	绷带	hi
+Book title subject: Battle	战斗	hi
+Book title subject: Beaker	烧杯	hi
+Book title subject: Beakers	烧杯	hi
+Book title subject: Beauty	美	hi
+Book title subject: Belief	信念	hi
+Book title subject: Beliefs	信仰	hi
+Book title subject: Believer	信徒	hi
+Book title subject: Bellows	风箱	hi
+Book title subject: Betrayal	背叛	hi
+Book title subject: Bias	偏见	hi
+Book title subject: Biographies	传记	hi
+Book title subject: Biography	传记	hi
+Book title subject: Blast Furnace	高炉	hi
+Book title subject: Blood and Breath	血液与呼吸	hi
+Book title subject: Blood Vessels	血管	hi
+Book title subject: Body	身体	hi
+Book title subject: Bond	纽带	hi
+Book title subject: Bonds	纽带	hi
+Book title subject: Breaks	骨折	hi
+Book title subject: Breathing	呼吸	hi
+Book title subject: Brightness of Stars	恒星亮度	hi
+Book title subject: Buoyancy	浮力	hi
+Book title subject: Burning	燃烧	hi
+Book title subject: Burning Glass	聚光透镜	hi
+Book title subject: Burning Mirror	聚光镜	hi
+Book title subject: Burrow	地洞	hi
+Book title subject: Camera Obscura	暗箱	hi
+Book title subject: Camshaft	凸轮轴	hi
+Book title subject: Camshafts	凸轮轴	hi
+Book title subject: Caravans	商队	hi
+Book title subject: Cast	石膏固定	hi
+Book title subject: Castle	城堡	hi
+Book title subject: Cataract Surgery	白内障手术	hi
+Book title subject: Cataracts	白内障	hi
+Book title subject: Causation	因果关系	hi
+Book title subject: Cause	原因	hi
+Book title subject: Cause and Effect	因果关系	hi
+Book title subject: Cause of Twilight	曙暮光的成因	hi
+Book title subject: Causes	原因	hi
+Book title subject: Cauterization	烧灼术	hi
+Book title subject: Cavern	洞穴	hi
+Book title subject: Center	中心	hi
+Book title subject: Chain Drive	链传动装置	hi
+Book title subject: Chain Drives	链传动装置	hi
+Book title subject: Chord	弦	hi
+Book title subject: Chord and Diameter	弦与直径	hi
+Book title subject: Chords	弦	hi
+Book title subject: Chords and Sides	弦与边	hi
+Book title subject: Circle	圆	hi
+Book title subject: Circle and Angle	圆与角	hi
+Book title subject: Circles	圆	hi
+Book title subject: Circulation	血液循环	hi
+Book title subject: Circumference	周长	hi
+Book title subject: Civilization	文明	hi
+Book title subject: Classification	分类学	hi
+Book title subject: Climate	气候	hi
+Book title subject: Climate Zones	气候区	hi
+Book title subject: Coefficients	系数	hi
+Book title subject: Collection	汇编	hi
+Book title subject: Color	颜色	hi
+Book title subject: Color of Stars	恒星颜色	hi
+Book title subject: Combat	战斗	hi
+Book title subject: Combustion	燃烧	hi
+Book title subject: Commerce	商业	hi
+Book title subject: Comparative Anatomy	比较解剖学	hi
+Book title subject: Comparison	比较	hi
+Book title subject: Competition	竞争	hi
+Book title subject: Competitor	竞争者	hi
+Book title subject: Complaints	抱怨	hi
+Book title subject: Completing the Square	配方法	hi
+Book title subject: Completion	配方	hi
+Book title subject: Composition	物质组成	hi
+Book title subject: Cone	圆锥	hi
+Book title subject: Conflict	冲突	hi
+Book title subject: Congruence	全等	hi
+Book title subject: Conic Sections	圆锥曲线	hi
+Book title subject: Contagion	传染	hi
+Book title subject: Contradiction	矛盾	hi
+Book title subject: Convalescence	康复	hi
+Book title subject: Conversations	交谈	hi
+Book title subject: Cooperation	合作	hi
+Book title subject: Course of Disease	病程	hi
+Book title subject: Crafts	工艺	hi
+Book title subject: Crank	曲柄	hi
+Book title subject: Cranks	曲柄	hi
+Book title subject: Crankshaft	曲轴	hi
+Book title subject: Crankshafts	曲轴	hi
+Book title subject: Creation	创造	hi
+Book title subject: Creativity	创造力	hi
+Book title subject: Creatures	生物	hi
+Book title subject: Crucible	坩埚	hi
+Book title subject: Crucibles	坩埚	hi
+Book title subject: Cultural Differences	文化差异	hi
+Book title subject: Cultures	文化	hi
+Book title subject: Cunning	计谋	hi
+Book title subject: Customs	习俗	hi
+Book title subject: Cycles	历史、政体与社会的循环	hi
+Book title subject: Dark Fortress	黑暗要塞	hi
+Book title subject: Daylight and the Seasons	日照与季节	hi
+Book title subject: Dealings	交往	hi
+Book title subject: Decorum	礼仪	hi
+Book title subject: Delta	河口三角洲	hi
+Book title subject: Diagonal	对角线	hi
+Book title subject: Dialogue	对话	hi
+Book title subject: Dictionary	词典	hi
+Book title subject: Different Fractures	不同类型的骨折	hi
+Book title subject: Dioptra	照准仪	hi
+Book title subject: Dioptras	照准仪	hi
+Book title subject: Diplomacy	外交	hi
+Book title subject: Disease and Water	疾病与水	hi
+Book title subject: Disease Classification	疾病分类	hi
+Book title subject: Diseases	疾病	hi
+Book title subject: Diseases of Animals	动物疾病	hi
+Book title subject: Disputes	争端	hi
+Book title subject: Dissection	生物解剖	hi
+Book title subject: Distance Scale	比例尺	hi
+Book title subject: Distillation	蒸馏	hi
+Book title subject: Division	除法	hi
+Book title subject: Draining	外科引流	hi
+Book title subject: Eclipse	日食与月食	hi
+Book title subject: Eclipses	日食与月食	hi
+Book title subject: Economic Policy	经济政策	hi
+Book title subject: Economics	经济学	hi
+Book title subject: Economy	经济	hi
+Book title subject: Education	教育	hi
+Book title subject: Effect	结果	hi
+Book title subject: Effect from Cause	由因及果	hi
+Book title subject: Effects	结果	hi
+Book title subject: Elements	元素	hi
+Book title subject: Eloquence	口才	hi
+Book title subject: Emotions	情绪	hi
+Book title subject: Endemic Diseases	地方病	hi
+Book title subject: Epidemic Diseases	流行病	hi
+Book title subject: Equation	方程	hi
+Book title subject: Equality	平等	hi
+Book title subject: Equinoxes	分点与岁差	hi
+Book title subject: Etymology	词源学	hi
+Book title subject: Evaporation	蒸发	hi
+Book title subject: Evaporation and Condensation	蒸发与凝结	hi
+Book title subject: Event	事件	hi
+Book title subject: Events	事件	hi
+Book title subject: Everything	万物	hi
+Book title subject: Exacerbation	病情加重	hi
+Book title subject: Examination	检查	hi
+Book title subject: Examination of the Dead	尸体检查	hi
+Book title subject: Examination of the Patient	病患检查	hi
+Book title subject: Excision	外科切除	hi
+Book title subject: Exhaustion	穷竭法	hi
+Book title subject: Existence	存在	hi
+Book title subject: Experiments	实验	hi
+Book title subject: Eye	眼	hi
+Book title subject: Facts	事实	hi
+Book title subject: Fairness	公平	hi
+Book title subject: Family	家庭	hi
+Book title subject: Festival	节庆	hi
+Book title subject: Fidelity	忠贞	hi
+Book title subject: Fire	火	hi
+Book title subject: Flask	烧瓶	hi
+Book title subject: Flasks	烧瓶	hi
+Book title subject: Floating Bodies	浮体	hi
+Book title subject: Flotation	漂浮	hi
+Book title subject: Fluids	体液	hi
+Book title subject: Food Chain	食物链	hi
+Book title subject: Foraging Behavior	觅食行为	hi
+Book title subject: Force Pump	压力泵	hi
+Book title subject: Force Pumps	压力泵	hi
+Book title subject: Forceps	手术钳	hi
+Book title subject: Forest	森林	hi
+Book title subject: Forest Retreat	森林聚落	hi
+Book title subject: Formula	公式	hi
+Book title subject: Fort	堡垒	hi
+Book title subject: Fortress	要塞	hi
+Book title subject: Fouled Water	污水	hi
+Book title subject: Fracture Treatment	骨折治疗	hi
+Book title subject: Fractures	骨折	hi
+Book title subject: Friends	朋友	hi
+Book title subject: Friendship	友情	hi
+Book title subject: Funnel	漏斗	hi
+Book title subject: Funnels	漏斗	hi
+Book title subject: Furnace	熔炉	hi
+Book title subject: Gaiety	欢乐	hi
+Book title subject: Gear	齿轮	hi
+Book title subject: Gears	齿轮	hi
+Book title subject: Generalization	概括	hi
+Book title subject: Glue	胶	hi
+Book title subject: Government	政府	hi
+Book title subject: Grains of Sand	沙粒	hi
+Book title subject: Grammar	语法	hi
+Book title subject: Greatest Common Divisor	最大公约数	hi
+Book title subject: Grid	网格	hi
+Book title subject: Hamlet	村庄	hi
+Book title subject: Happenings	事件	hi
+Book title subject: Happiness	幸福	hi
+Book title subject: Hard Work	勤劳	hi
+Book title subject: Hardness	硬度	hi
+Book title subject: Harm	伤害	hi
+Book title subject: Harmony	和谐	hi
+Book title subject: Healing	医治	hi
+Book title subject: Healing Plants	药用植物	hi
+Book title subject: Height Measurement	高度测量	hi
+Book title subject: Height of Sky	天空高度	hi
+Book title subject: Height of Tides	潮汐高度	hi
+Book title subject: Herbal Remedies	草药	hi
+Book title subject: Hernia	疝	hi
+Book title subject: Historical Cycles	历史周期	hi
+Book title subject: Histories	历史	hi
+Book title subject: Hole	洞	hi
+Book title subject: Honesty	诚实	hi
+Book title subject: Hospital	医院	hi
+Book title subject: Hospitals	医院	hi
+Book title subject: Hourglass	沙漏	hi
+Book title subject: Hourglasses	沙漏	hi
+Book title subject: Hypotenuse	斜边	hi
+Book title subject: Ignorance	无知	hi
+Book title subject: Immobilization	固定	hi
+Book title subject: Incision	外科切开	hi
+Book title subject: Incommensurable	不可公度量	hi
+Book title subject: Incommensurable Ratios	不可公度比	hi
+Book title subject: Independence	独立	hi
+Book title subject: Individual	个人	hi
+Book title subject: Inference	推理	hi
+Book title subject: Infinite	无限	hi
+Book title subject: Injuries	损伤	hi
+Book title subject: Injury	损伤	hi
+Book title subject: Inscribed Triangle	内接三角形	hi
+Book title subject: Interpersonal Conduct	人际行为	hi
+Book title subject: Interviews	访谈	hi
+Book title subject: Introspection	自省	hi
+Book title subject: Isoceles Triangles	等腰三角形	hi
+Book title subject: Joy	喜悦	hi
+Book title subject: Justification	证成	hi
+Book title subject: Kin	亲族	hi
+Book title subject: Knowledge	知识	hi
+Book title subject: Laboratory	实验室	hi
+Book title subject: Laboratory Oven	实验室烘炉	hi
+Book title subject: Laboratory Ovens	实验室烘炉	hi
+Book title subject: Lamination	层压技术	hi
+Book title subject: Large Numbers	大数	hi
+Book title subject: Law	法律	hi
+Book title subject: Law of Refraction	折射定律	hi
+Book title subject: Lawlessness	无法无天	hi
+Book title subject: Laws	法律	hi
+Book title subject: Leisure	闲暇	hi
+Book title subject: Lens	透镜	hi
+Book title subject: Lenses	透镜	hi
+Book title subject: Lever	杠杆	hi
+Book title subject: Levers	杠杆	hi
+Book title subject: Lie	谎言	hi
+Book title subject: Lies	谎言	hi
+Book title subject: Ligature	外科结扎	hi
+Book title subject: Light and Color	光与颜色	hi
+Book title subject: Light of Day	日光	hi
+Book title subject: Line	直线	hi
+Book title subject: Lineage	家系	hi
+Book title subject: Linear Equations	线性方程	hi
+Book title subject: Liquids	液体	hi
+Book title subject: Lock	锁	hi
+Book title subject: Locks	锁	hi
+Book title subject: Logic	逻辑	hi
+Book title subject: Love	爱	hi
+Book title subject: Loyalty	忠诚	hi
+Book title subject: Lunar Phases	月相	hi
+Book title subject: Making Maps	地图绘制	hi
+Book title subject: Manners	礼貌	hi
+Book title subject: Map	地图	hi
+Book title subject: Map Grids	地图网格	hi
+Book title subject: Mapmaking	地图绘制	hi
+Book title subject: Maps	地图	hi
+Book title subject: Maps and Distances	地图与距离	hi
+Book title subject: Maps and the Economy	地图与经济	hi
+Book title subject: Maps and the World	地图与世界	hi
+Book title subject: Martial Prowess	武艺	hi
+Book title subject: Mastery	精通	hi
+Book title subject: Mating	交配	hi
+Book title subject: Meaning	意义	hi
+Book title subject: Mechanical Clock	机械钟	hi
+Book title subject: Mechanical Clocks	机械钟	hi
+Book title subject: Mechanical Compass	机械指南装置	hi
+Book title subject: Mechanical Compasses	机械指南装置	hi
+Book title subject: Medical Ethics	医学伦理	hi
+Book title subject: Medical School	医学学派	hi
+Book title subject: Mental Illness	精神疾病	hi
+Book title subject: Merriment	欢乐	hi
+Book title subject: Metals	金属	hi
+Book title subject: Method	方法	hi
+Book title subject: Methods	方法	hi
+Book title subject: Might	力量	hi
+Book title subject: Migration	迁徙	hi
+Book title subject: Military	军事	hi
+Book title subject: Mind	心灵	hi
+Book title subject: Mineral Remedies	矿物药物	hi
+Book title subject: Minerals	矿物	hi
+Book title subject: Minerals and Maps	矿物与地图	hi
+Book title subject: Model	模型	hi
+Book title subject: Models	模型	hi
+Book title subject: Models and Templates	模型与模板	hi
+Book title subject: Monastery	修道院	hi
+Book title subject: Moon	月亮	hi
+Book title subject: Moon and Tides	月亮与潮汐	hi
+Book title subject: Moon's Path	月亮的运行轨迹	hi
+Book title subject: Mountain Halls	山地大厅	hi
+Book title subject: Mountains and Valleys	山脉与山谷	hi
+Book title subject: Movement of Animals	动物运动	hi
+Book title subject: Moving Sun	运动的太阳	hi
+Book title subject: Moving World	运动的世界	hi
+Book title subject: Mural Instrument	壁式天文观测仪器	hi
+Book title subject: Mural Instruments	壁式天文观测仪器	hi
+Book title subject: Muscles	肌肉	hi
+Book title subject: Nature	自然	hi
+Book title subject: Negation	否定	hi
+Book title subject: Negativity	负数	hi
+Book title subject: Nerves	神经	hi
+Book title subject: Notation	数学记号	hi
+Book title subject: Nothing	无	hi
+Book title subject: Nothingness	零	hi
+Book title subject: Numbers	数	hi
+Book title subject: Object	事物	hi
+Book title subject: Objects	事物	hi
+Book title subject: Observation	观测	hi
+Book title subject: Occurrences	事件	hi
+Book title subject: Odometer	里程计	hi
+Book title subject: Odometers	里程计	hi
+Book title subject: Oil of Vitriol	硫酸	hi
+Book title subject: Opposites	相反之数	hi
+Book title subject: Ores	矿石	hi
+Book title subject: Origin of Rainbows	彩虹的形成	hi
+Book title subject: Origin of Rainfall	降雨的形成	hi
+Book title subject: Orreries	太阳系运行仪	hi
+Book title subject: Orrery	太阳系运行仪	hi
+Book title subject: Outcomes	结果	hi
+Book title subject: Parabola	抛物线	hi
+Book title subject: Parabolic Mirror	抛物面镜	hi
+Book title subject: Paroxysm	阵发性发作	hi
+Book title subject: Parts	部分	hi
+Book title subject: Path	路径	hi
+Book title subject: Path of Moon	月亮的运行轨迹	hi
+Book title subject: Paths	路径	hi
+Book title subject: Peace	和平	hi
+Book title subject: Perception	知觉	hi
+Book title subject: Perpendicularity	垂直	hi
+Book title subject: Perseverance	毅力	hi
+Book title subject: Personal History	个人史	hi
+Book title subject: Phases	月相	hi
+Book title subject: Piston	活塞	hi
+Book title subject: Pistons	活塞	hi
+Book title subject: Pit	深坑	hi
+Book title subject: Place Holders	占位符	hi
+Book title subject: Plague	瘟疫	hi
+Book title subject: Plagues	瘟疫	hi
+Book title subject: Plans	计划	hi
+Book title subject: Plots	土地分区	hi
+Book title subject: Point	点	hi
+Book title subject: Poisons	毒物	hi
+Book title subject: Politeness	礼貌	hi
+Book title subject: Poor	穷人	hi
+Book title subject: Position	位值	hi
+Book title subject: Postulates	公设	hi
+Book title subject: Power	权力	hi
+Book title subject: Powers	幂	hi
+Book title subject: Powers of Sums	和的幂	hi
+Book title subject: Practice	实践	hi
+Book title subject: Practicing Surgery	外科练习	hi
+Book title subject: Precession	岁差	hi
+Book title subject: Predator and Prey	捕食者与猎物	hi
+Book title subject: Prime Divisors	质因数	hi
+Book title subject: Primes	质数	hi
+Book title subject: Probing	外科探查	hi
+Book title subject: Process	过程	hi
+Book title subject: Processes	过程	hi
+Book title subject: Prognosis	预后	hi
+Book title subject: Proof	证明	hi
+Book title subject: Propaganda	宣传	hi
+Book title subject: Properties	属性	hi
+Book title subject: Prosperity	繁荣	hi
+Book title subject: Pulley	滑轮	hi
+Book title subject: Pulleys	滑轮	hi
+Book title subject: Pyramid	棱锥	hi
+Book title subject: Quadratic Equation	二次方程	hi
+Book title subject: Quadratic Formula	求根公式	hi
+Book title subject: Quadratics	二次方程	hi
+Book title subject: Quality	品质	hi
+Book title subject: Quiet	宁静	hi
+Book title subject: Rainbows	彩虹	hi
+Book title subject: Rainfall	降雨	hi
+Book title subject: Rainfall and Rivers	降雨与河流	hi
+Book title subject: Ratio	比	hi
+Book title subject: Ratios	比	hi
+Book title subject: Reaction Time	反应时间	hi
+Book title subject: Reason	理性	hi
+Book title subject: Reasoning	推理	hi
+Book title subject: Refraction	折射	hi
+Book title subject: Relapse	复发	hi
+Book title subject: Relations	关系	hi
+Book title subject: Relationship	关系	hi
+Book title subject: Relationships	关系	hi
+Book title subject: Reliability	可靠性	hi
+Book title subject: Relics	遗物	hi
+Book title subject: Remainders	余数	hi
+Book title subject: Removing Stones	取石	hi
+Book title subject: Repetition	重复	hi
+Book title subject: Reproduction	繁殖	hi
+Book title subject: Rest	休息	hi
+Book title subject: Retort	曲颈甑	hi
+Book title subject: Retorts	曲颈甑	hi
+Book title subject: Right Triangle	直角三角形	hi
+Book title subject: Right Triangles	直角三角形	hi
+Book title subject: Rising of Moon	月出	hi
+Book title subject: Rising of Sun	日出	hi
+Book title subject: Ritual	仪式	hi
+Book title subject: River Mouth	河口	hi
+Book title subject: Romance	浪漫	hi
+Book title subject: Ruins	遗迹	hi
+Book title subject: Rule	法则	hi
+Book title subject: Rules	法则	hi
+Book title subject: Sacrifice	牺牲	hi
+Book title subject: Sawmill	锯木厂	hi
+Book title subject: Sawmills	锯木厂	hi
+Book title subject: Scalpel	手术刀	hi
+Book title subject: Scalpels	手术刀	hi
+Book title subject: Schemes	计谋	hi
+Book title subject: School of Medicine	医学学派	hi
+Book title subject: Scraping	外科刮除	hi
+Book title subject: Scratch Test	划痕测试	hi
+Book title subject: Screw	螺杆	hi
+Book title subject: Screws	螺杆	hi
+Book title subject: Seasons and the Moon	季节与月亮	hi
+Book title subject: Seasons and the Sun	季节与太阳	hi
+Book title subject: Self-Control	自制	hi
+Book title subject: Self-Examination	自我省察	hi
+Book title subject: Shadow Clock	日晷	hi
+Book title subject: Shadow Clocks	日晷	hi
+Book title subject: Shape	形状	hi
+Book title subject: Shape of World	世界的形状	hi
+Book title subject: Shapes	形状	hi
+Book title subject: Shrine	圣地	hi
+Book title subject: Sides and Hypotenuse	边与斜边	hi
+Book title subject: Similar Triangles	相似三角形	hi
+Book title subject: Similarity	相似	hi
+Book title subject: Simultaneous Solutions	联立求解	hi
+Book title subject: Siphon	虹吸	hi
+Book title subject: Siphons	虹吸	hi
+Book title subject: Skill	技艺	hi
+Book title subject: Sky and Refraction	天空与折射	hi
+Book title subject: Social Animals	群居动物	hi
+Book title subject: Social Welfare	社会福利	hi
+Book title subject: Soldier	士兵	hi
+Book title subject: Solution	解	hi
+Book title subject: Solutions	溶液	hi
+Book title subject: Soul	灵魂	hi
+Book title subject: Sources	史料	hi
+Book title subject: Sphere	球体	hi
+Book title subject: Spherical Astrolabe	球形星盘	hi
+Book title subject: Spherical Astrolabes	球形星盘	hi
+Book title subject: Spirit of Niter	硝酸	hi
+Book title subject: Stability	稳定	hi
+Book title subject: Staff	标尺	hi
+Book title subject: Star Brightness	恒星亮度	hi
+Book title subject: Star Catalogues	星表	hi
+Book title subject: Star Charts	星图	hi
+Book title subject: Star Color	恒星颜色	hi
+Book title subject: Stars	星辰	hi
+Book title subject: State	国家	hi
+Book title subject: Stationary Sun	静止的太阳	hi
+Book title subject: Straight Road	直道	hi
+Book title subject: Straight-Beam Balance	直梁天平	hi
+Book title subject: Straight-Beam Balances	直梁天平	hi
+Book title subject: Strategems	谋略	hi
+Book title subject: Struggle of Animals	动物的生存斗争	hi
+Book title subject: Stubborness	固执	hi
+Book title subject: Student	学徒	hi
+Book title subject: Study	学习	hi
+Book title subject: Sudden Attacks	突然发作	hi
+Book title subject: Sum	和	hi
+Book title subject: Sum of Squares	平方和	hi
+Book title subject: Summaries	概要	hi
+Book title subject: Sums	和	hi
+Book title subject: Sums and Differences	和与差	hi
+Book title subject: Sun and Moon	太阳与月亮	hi
+Book title subject: Sundial	日晷	hi
+Book title subject: Sundials	日晷	hi
+Book title subject: Surface Area	表面积	hi
+Book title subject: Surgery	外科手术	hi
+Book title subject: Surgery Models	外科练习模型	hi
+Book title subject: Surgical Instruments	外科器械	hi
+Book title subject: Surgical Needle	手术针	hi
+Book title subject: Surgical Needles	手术针	hi
+Book title subject: Surgical Scissors	手术剪	hi
+Book title subject: Surgical Tools	外科工具	hi
+Book title subject: Surveying	测量	hi
+Book title subject: Surveying and War	测量与战争	hi
+Book title subject: Surveying Staff	测量标尺	hi
+Book title subject: Survival of Animals	动物生存	hi
+Book title subject: Sutures	缝合	hi
+Book title subject: Suturing	缝合	hi
+Book title subject: Systemic Bias	系统性偏见	hi
+Book title subject: Table	数表	hi
+Book title subject: Teacher	教师	hi
+Book title subject: Techniques	技术	hi
+Book title subject: Technology	技术	hi
+Book title subject: Template	模板	hi
+Book title subject: Templates	模板	hi
+Book title subject: the Alembic	蒸馏器	hi
+Book title subject: the Algorithm	算法	hi
+Book title subject: the Altitude	高	hi
+Book title subject: the Ampoule	安瓿	hi
+Book title subject: the Anatomy of the Eye	眼的解剖结构	hi
+Book title subject: the Angles	角	hi
+Book title subject: the Animals	动物	hi
+Book title subject: the Area	面积	hi
+Book title subject: the Area of Circles	圆的面积	hi
+Book title subject: the Armillary Sphere	浑仪	hi
+Book title subject: the Assumption	假设	hi
+Book title subject: the Astrarium	天文钟	hi
+Book title subject: the Astrolabe	星盘	hi
+Book title subject: the Atlas	地图集	hi
+Book title subject: the Axioms	公理	hi
+Book title subject: the Balance Wheel	摆轮	hi
+Book title subject: the Beaker	烧杯	hi
+Book title subject: the Believer	信徒	hi
+Book title subject: the Bellows	风箱	hi
+Book title subject: the Blast Furnace	高炉	hi
+Book title subject: the Body	身体	hi
+Book title subject: the Bond	纽带	hi
+Book title subject: the Brightness of Stars	恒星亮度	hi
+Book title subject: the Burning Glass	聚光透镜	hi
+Book title subject: the Burning Mirror	聚光镜	hi
+Book title subject: the Camera Obscura	暗箱	hi
+Book title subject: the Camshaft	凸轮轴	hi
+Book title subject: the Cast	石膏固定	hi
+Book title subject: the Cause	原因	hi
+Book title subject: the Cause of Twilight	曙暮光的成因	hi
+Book title subject: the Center	中心	hi
+Book title subject: the Chain Drive	链传动装置	hi
+Book title subject: the Chord	弦	hi
+Book title subject: the Chords	弦	hi
+Book title subject: the Circle	圆	hi
+Book title subject: the Circumference	周长	hi
+Book title subject: the Collection	汇编	hi
+Book title subject: the Color of Stars	恒星颜色	hi
+Book title subject: the Competitor	竞争者	hi
+Book title subject: the Cone	圆锥	hi
+Book title subject: the Contradiction	矛盾	hi
+Book title subject: the Course of Disease	病程	hi
+Book title subject: the Crank	曲柄	hi
+Book title subject: the Crankshaft	曲轴	hi
+Book title subject: the Creatures	生物	hi
+Book title subject: the Crucible	坩埚	hi
+Book title subject: the Delta	河口三角洲	hi
+Book title subject: the Diagonal	对角线	hi
+Book title subject: the Dioptra	照准仪	hi
+Book title subject: the Diseases of Animals	动物疾病	hi
+Book title subject: the Distance Scale	比例尺	hi
+Book title subject: the Eclipse	日食与月食	hi
+Book title subject: the Economy	经济	hi
+Book title subject: the Effect	结果	hi
+Book title subject: the Elements	元素	hi
+Book title subject: the Equation	方程	hi
+Book title subject: the Equinoxes	分点与岁差	hi
+Book title subject: the Event	事件	hi
+Book title subject: the Examination	检查	hi
+Book title subject: the Eye	眼	hi
+Book title subject: the Facts	事实	hi
+Book title subject: the Festival	节庆	hi
+Book title subject: the Flask	烧瓶	hi
+Book title subject: the Fluids	体液	hi
+Book title subject: the Food Chain	食物链	hi
+Book title subject: the Force Pump	压力泵	hi
+Book title subject: the Formula	公式	hi
+Book title subject: the Fractures	骨折	hi
+Book title subject: the Funnel	漏斗	hi
+Book title subject: the Furnace	熔炉	hi
+Book title subject: the Gear	齿轮	hi
+Book title subject: the Greatest Common Divisor	最大公约数	hi
+Book title subject: the Grid	网格	hi
+Book title subject: the Healing Plants	药用植物	hi
+Book title subject: the Height of the Sky	天空高度	hi
+Book title subject: the Height of Tides	潮汐高度	hi
+Book title subject: the Hospital	医院	hi
+Book title subject: the Hourglass	沙漏	hi
+Book title subject: the Hypotenuse	斜边	hi
+Book title subject: the Incommensurable	不可公度量	hi
+Book title subject: the Individual	个人	hi
+Book title subject: the Infinite	无限	hi
+Book title subject: the Injury	损伤	hi
+Book title subject: the Inscribed Triangle	内接三角形	hi
+Book title subject: the Laboratory	实验室	hi
+Book title subject: the Laboratory Oven	实验室烘炉	hi
+Book title subject: the Law	法律	hi
+Book title subject: the Law of Refraction	折射定律	hi
+Book title subject: the Lens	透镜	hi
+Book title subject: the Lever	杠杆	hi
+Book title subject: the Lie	谎言	hi
+Book title subject: the Light of Day	日光	hi
+Book title subject: the Line	直线	hi
+Book title subject: the Liquids	液体	hi
+Book title subject: the Lock	锁	hi
+Book title subject: the Map	地图	hi
+Book title subject: the Meaning	意义	hi
+Book title subject: the Mechanical Clock	机械钟	hi
+Book title subject: the Mechanical Compass	机械指南装置	hi
+Book title subject: the Method	方法	hi
+Book title subject: the Military	军事	hi
+Book title subject: the Mind	心灵	hi
+Book title subject: the Model	模型	hi
+Book title subject: the Moon	月亮	hi
+Book title subject: the Moon and Tides	月亮与潮汐	hi
+Book title subject: the Moon's Path	月亮的运行轨迹	hi
+Book title subject: the Movement of Animals	动物运动	hi
+Book title subject: the Moving Sun	运动的太阳	hi
+Book title subject: the Moving World	运动的世界	hi
+Book title subject: the Mural Instrument	壁式天文观测仪器	hi
+Book title subject: the Muscles	肌肉	hi
+Book title subject: the Negation	否定	hi
+Book title subject: the Nerves	神经	hi
+Book title subject: the Numbers	数	hi
+Book title subject: the Object	事物	hi
+Book title subject: the Odometer	里程计	hi
+Book title subject: the Origin of Rainbows	彩虹的形成	hi
+Book title subject: the Origin of Rainfall	降雨的形成	hi
+Book title subject: the Orrery	太阳系运行仪	hi
+Book title subject: the Parabola	抛物线	hi
+Book title subject: the Parabolic Mirror	抛物面镜	hi
+Book title subject: the Path	路径	hi
+Book title subject: the Path of the Moon	月亮的运行轨迹	hi
+Book title subject: the Phases	月相	hi
+Book title subject: the Piston	活塞	hi
+Book title subject: the Plague	瘟疫	hi
+Book title subject: the Point	点	hi
+Book title subject: the Poor	穷人	hi
+Book title subject: the Postulates	公设	hi
+Book title subject: the Powers	幂	hi
+Book title subject: the Prime Divisors	质因数	hi
+Book title subject: the Primes	质数	hi
+Book title subject: the Process	过程	hi
+Book title subject: the Proof	证明	hi
+Book title subject: the Pulley	滑轮	hi
+Book title subject: the Pyramid	棱锥	hi
+Book title subject: the Quadratic Equation	二次方程	hi
+Book title subject: the Quadratic Formula	求根公式	hi
+Book title subject: the Ratio	比	hi
+Book title subject: the Relationship	关系	hi
+Book title subject: the Retort	曲颈甑	hi
+Book title subject: the Right Triangle	直角三角形	hi
+Book title subject: the Rising of the Moon	月出	hi
+Book title subject: the Rising of the Sun	日出	hi
+Book title subject: the River Mouth	河口	hi
+Book title subject: the Rule	法则	hi
+Book title subject: the Sawmill	锯木厂	hi
+Book title subject: the Scalpel	手术刀	hi
+Book title subject: the School of Medicine	医学学派	hi
+Book title subject: the Scratch Test	划痕测试	hi
+Book title subject: the Screw	螺杆	hi
+Book title subject: the Shadow Clock	日晷	hi
+Book title subject: the Shape	形状	hi
+Book title subject: the Shape of the World	世界的形状	hi
+Book title subject: the Siphon	虹吸	hi
+Book title subject: the Sky and Refraction	天空与折射	hi
+Book title subject: the Soldier	士兵	hi
+Book title subject: the Solution	解	hi
+Book title subject: the Soul	灵魂	hi
+Book title subject: the Sphere	球体	hi
+Book title subject: the Spherical Astrolabe	球形星盘	hi
+Book title subject: the Staff	标尺	hi
+Book title subject: the Stars	星辰	hi
+Book title subject: the State	国家	hi
+Book title subject: the Stationary Sun	静止的太阳	hi
+Book title subject: the Straight Road	直道	hi
+Book title subject: the Straight-Beam Balance	直梁天平	hi
+Book title subject: the Struggle of Animals	动物的生存斗争	hi
+Book title subject: the Student	学徒	hi
+Book title subject: the Sum	和	hi
+Book title subject: the Sum of Squares	平方和	hi
+Book title subject: the Sums	和	hi
+Book title subject: the Sun and Moon	太阳与月亮	hi
+Book title subject: the Sundial	日晷	hi
+Book title subject: the Surgical Needle	手术针	hi
+Book title subject: the Surveying Staff	测量标尺	hi
+Book title subject: the Survival of Animals	动物生存	hi
+Book title subject: the Table	数表	hi
+Book title subject: the Teacher	教师	hi
+Book title subject: the Template	模板	hi
+Book title subject: the Tides	潮汐	hi
+Book title subject: the Traction Bench	牵引台	hi
+Book title subject: the Triangle	三角形	hi
+Book title subject: the Triangles	三角形	hi
+Book title subject: the Trip Hammer	锻锤	hi
+Book title subject: the Truth	真理	hi
+Book title subject: the Valve	阀门	hi
+Book title subject: the Verge Escapement	冠轮擒纵机构	hi
+Book title subject: the Vial	小药瓶	hi
+Book title subject: the Voice	声音	hi
+Book title subject: the Volume	体积	hi
+Book title subject: the War	战争	hi
+Book title subject: the Warrior	战士	hi
+Book title subject: the Water Clock	水钟	hi
+Book title subject: the Water Cycle	水循环	hi
+Book title subject: the Water Wheel	水轮	hi
+Book title subject: the Wedge	楔子	hi
+Book title subject: the Wheel-and-Axles	轮轴	hi
+Book title subject: the Whole	整体	hi
+Book title subject: the Wilds	荒野	hi
+Book title subject: the Wind	风	hi
+Book title subject: the Windlass	绞盘	hi
+Book title subject: the Word	词	hi
+Book title subject: the Words	词	hi
+Book title subject: the World's Shape	世界的形状	hi
+Book title subject: the Year	年	hi
+Book title subject: Those in Need	困苦者	hi
+Book title subject: Thought	思想	hi
+Book title subject: Tides	潮汐	hi
+Book title subject: Tides and the Moon	潮汐与月亮	hi
+Book title subject: Tides and the Sun	潮汐与太阳	hi
+Book title subject: Time	时间	hi
+Book title subject: Toil	劳作	hi
+Book title subject: Tower	高塔	hi
+Book title subject: Town	城镇	hi
+Book title subject: Toxic Substances	有毒物质	hi
+Book title subject: Tracheotomy	气管切开术	hi
+Book title subject: Traction	牵引	hi
+Book title subject: Traction Bench	牵引台	hi
+Book title subject: Trade	贸易	hi
+Book title subject: Trade Maps	贸易地图	hi
+Book title subject: Tradition	传统	hi
+Book title subject: Training	训练	hi
+Book title subject: Tranquility	宁静	hi
+Book title subject: Transactions	交易	hi
+Book title subject: Trauma	创伤	hi
+Book title subject: Treating Injuries	损伤治疗	hi
+Book title subject: Trees	树木	hi
+Book title subject: Trenches	壕沟	hi
+Book title subject: Triangle	三角形	hi
+Book title subject: Triangles	三角形	hi
+Book title subject: Triangles and Circles	三角形与圆	hi
+Book title subject: Triangulation	三角测量	hi
+Book title subject: Trip Hammer	锻锤	hi
+Book title subject: Trip Hammers	锻锤	hi
+Book title subject: Truth	真理	hi
+Book title subject: Tunnels	隧道	hi
+Book title subject: Twilight	曙暮光	hi
+Book title subject: Types of Diseases	疾病类型	hi
+Book title subject: Types of Muscles	肌肉类型	hi
+Book title subject: Types of Nerves	神经类型	hi
+Book title subject: Tyranny	暴政	hi
+Book title subject: Union	联盟	hi
+Book title subject: Uniqueness	唯一性	hi
+Book title subject: Values	价值观	hi
+Book title subject: Valve	阀门	hi
+Book title subject: Valves	阀门	hi
+Book title subject: Vast Amounts	极大数	hi
+Book title subject: Veins and Arteries	静脉与动脉	hi
+Book title subject: Verge Escapement	冠轮擒纵机构	hi
+Book title subject: Verge Escapements	冠轮擒纵机构	hi
+Book title subject: Vial	小药瓶	hi
+Book title subject: Vials	小药瓶	hi
+Book title subject: Village	村庄	hi
+Book title subject: Voice	声音	hi
+Book title subject: Volume	体积	hi
+Book title subject: War	战争	hi
+Book title subject: Warrior	战士	hi
+Book title subject: Water Clock	水钟	hi
+Book title subject: Water Clocks	水钟	hi
+Book title subject: Water Cycle	水循环	hi
+Book title subject: Water Displacement	排水量	hi
+Book title subject: Water Wheel	水轮	hi
+Book title subject: Water Wheels	水轮	hi
+Book title subject: Waxing and Waning	盈亏	hi
+Book title subject: Wedge	楔子	hi
+Book title subject: Wedges	楔子	hi
+Book title subject: Wheel-and-Axles	轮轴	hi
+Book title subject: Whole	整体	hi
+Book title subject: Wilds	荒野	hi
+Book title subject: Willpower	意志力	hi
+Book title subject: Wind	风	hi
+Book title subject: Wind Direction	风向	hi
+Book title subject: Wind Patterns	风向与风力变化	hi
+Book title subject: Windlass	绞盘	hi
+Book title subject: Word	词	hi
+Book title subject: Words	词	hi
+Book title subject: World's Shape	世界的形状	hi
+Book title subject: Wound Wrapping	伤口包扎	hi
+Book title subject: Year	年	hi
+Book title subject: Your Own Story	你自己的故事	hi

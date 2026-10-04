@@ -1,0 +1,1206 @@
+# Complete native scalar title subjects from general_refst producers other
+# than scholar knowledge and value levels; source evidence is recorded in
+# data/extracted/book-title-subject-sources.tsv. Exact leading articles are
+# retained before runtime article fallback. Existing curated noun terminology
+# is reused; the Composition is the event sense while bare Composition is
+# supplied by the scholar catalogue as the scientific material-composition sense.
+# general_ref_historical_eventst; reference RVA 0xeef31e; no-article-alias.
+Book title subject: Abduction	绑架	hi
+# general_ref_historical_eventst; reference RVA 0xeef63b; literal.
+Book title subject: Absence	无	hi
+# general_ref_historical_eventst; reference RVA 0xeee5d1; no-article-alias.
+Book title subject: Agreement	协议	hi
+# general_ref_historical_eventst; reference RVA 0xeefc26; no-article-alias.
+Book title subject: Alliance	联盟	hi
+# general_ref_entity_art_imagest; reference RVA 0xef51be; literal.
+Book title subject: Art	艺术	hi
+# general_ref_artifactst,general_ref_is_artifactst; reference RVA 0xeecb99; no-article-alias.
+Book title subject: Artifact	造物	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef5ed1; no-article-alias.
+Book title subject: Artisans	工匠	hi
+# general_ref_historical_eventst; reference RVA 0xeee002; no-article-alias.
+Book title subject: Attack	攻击	hi
+# general_ref_historical_eventst; reference RVA 0xeef8aa; no-article-alias.
+Book title subject: Author	作者	hi
+# general_ref_historical_eventst; reference RVA 0xeef23c; no-article-alias.
+Book title subject: Battle	战斗	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef62a3; literal.
+Book title subject: Beliefs	信仰	hi
+# general_ref_historical_eventst; reference RVA 0xeee3b8; no-article-alias.
+Book title subject: Betrayal	背叛	hi
+# general_ref_subregionst; reference RVA 0xef37f5; no-article-alias.
+Book title subject: Bog	泥沼	hi
+# general_ref_historical_eventst; reference RVA 0xeee363; no-article-alias.
+Book title subject: Bond	纽带	hi
+# general_ref_historical_eventst; reference RVA 0xeefcac; literal.
+Book title subject: Bondage	奴役	hi
+# general_ref_historical_eventst; reference RVA 0xeefbdd; no-article-alias.
+Book title subject: Breach	突破	hi
+# general_ref_historical_eventst; reference RVA 0xeef1b3; no-article-alias.
+Book title subject: Brooding	忧思	hi
+# general_ref_historical_eventst; reference RVA 0xeefa14; no-article-alias.
+Book title subject: Building	建筑	hi
+# general_ref_sitest; reference RVA 0xef2aff; no-article-alias.
+Book title subject: Burial	埋葬	hi
+# general_ref_sitest; reference RVA 0xef271e; no-article-alias.
+Book title subject: Burrow	地洞	hi
+# general_ref_subregionst; reference RVA 0xef3ae4; no-article-alias.
+Book title subject: Canopy	林冠	hi
+# general_ref_historical_eventst; reference RVA 0xeee755; no-article-alias.
+Book title subject: Caravan	商队	hi
+# general_ref_sitest; reference RVA 0xef28a2; no-article-alias.
+Book title subject: Castle	城堡	hi
+# general_ref_abstract_buildingst; reference RVA 0xeedb87; no-article-alias.
+Book title subject: Catacombs	地下墓穴	hi
+# general_ref_sitest; reference RVA 0xef20d9; no-article-alias.
+Book title subject: Cave	洞穴	hi
+# general_ref_sitest; reference RVA 0xef2142; no-article-alias.
+Book title subject: Cavern	洞穴	hi
+# general_ref_feature_layerst; reference RVA 0xef4821; no-article-alias.
+Book title subject: Caverns	洞窟	hi
+# general_ref_historical_eventst; reference RVA 0xeeedb8; no-article-alias.
+Book title subject: Ceremony	仪式	hi
+# general_ref_historical_eventst; reference RVA 0xeee6e8; literal.
+Book title subject: Chance	机遇	hi
+# general_ref_historical_eventst; reference RVA 0xeef746; literal.
+Book title subject: Change	变化	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef5b26; literal.
+Book title subject: Civilization	文明	hi
+# general_ref_historical_eventst; reference RVA 0xeee830; no-article-alias.
+Book title subject: Claim	宣称	hi
+# general_ref_historical_eventst; reference RVA 0xeef230; no-article-alias.
+Book title subject: Clash	交锋	hi
+# general_ref_coinbatchst; reference RVA 0xef5078; literal.
+Book title subject: Coins	钱币	hi
+# general_ref_historical_eventst; reference RVA 0xeef6cd; no-article-alias.
+Book title subject: Companion	伙伴	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef5dbb; no-article-alias.
+Book title subject: Company	商团	hi
+# general_ref_historical_eventst; reference RVA 0xeeec4f; no-article-alias.
+Book title subject: Competition	竞争	hi
+# Bare Composition -> 物质组成 is supplied by book-title-translations.tsv.
+# general_ref_historical_eventst; reference RVA 0xeee7aa; literal.
+Book title subject: Concealment	隐匿	hi
+# general_ref_historical_eventst; reference RVA 0xeef7e8; no-article-alias.
+Book title subject: Confrontation	对抗	hi
+# general_ref_historical_eventst; reference RVA 0xeee249; literal.
+Book title subject: Construction	建造	hi
+# general_ref_historical_eventst; reference RVA 0xeefdeb; no-article-alias.
+Book title subject: Conviction	定罪	hi
+# general_ref_historical_eventst; reference RVA 0xeee960; literal.
+Book title subject: Copy	复制	hi
+# general_ref_historical_figurest; reference RVA 0xef1200; no-article-alias.
+Book title subject: Corpse	尸体	hi
+# general_ref_abstract_buildingst; reference RVA 0xeed9fc; no-article-alias.
+Book title subject: Counting House	商行	hi
+# general_ref_historical_eventst; reference RVA 0xeee3c4; no-article-alias.
+Book title subject: Coup	政变	hi
+# general_ref_historical_eventst,general_ref_sitest; reference RVA 0xeee8ce; literal.
+Book title subject: Creation	创造	hi
+# general_ref_creaturest; reference RVA 0xef4d14; no-article-alias.
+Book title subject: Creature	生物	hi
+# general_ref_entity_popst; reference RVA 0xef4b42; literal.
+Book title subject: Creatures	生物	hi
+# general_ref_historical_eventst; reference RVA 0xeefddf; no-article-alias.
+Book title subject: Crime	犯罪	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef650a; no-article-alias.
+Book title subject: Criminals	罪犯	hi
+# general_ref_dance_formst,general_ref_historical_eventst; reference RVA 0xee525a; no-article-alias.
+Book title subject: Dance	舞蹈	hi
+# general_ref_sitest; reference RVA 0xef2103; no-article-alias.
+Book title subject: Dark	黑暗	hi
+# general_ref_sitest; reference RVA 0xef1ddc; no-article-alias.
+Book title subject: Dark Fortress	黑暗要塞	hi
+# general_ref_feature_layerst,general_ref_sitest,general_ref_subregionst; reference RVA 0xef2118; no-article-alias.
+Book title subject: Darkness	黑暗	hi
+# general_ref_historical_eventst; reference RVA 0xeee29e; literal.
+Book title subject: Death	死亡	hi
+# general_ref_historical_eventst; reference RVA 0xeef5b6; literal.
+Book title subject: Debauchery	放荡	hi
+# general_ref_historical_eventst; reference RVA 0xeef722; literal.
+Book title subject: Deceit	欺骗	hi
+# general_ref_subregionst; reference RVA 0xef3c8d; no-article-alias.
+Book title subject: Deep	深处	hi
+# general_ref_historical_eventst; reference RVA 0xeef7dc; no-article-alias.
+Book title subject: Denial	否认	hi
+# general_ref_feature_layerst,general_ref_historical_eventst; reference RVA 0xeefbd1; no-article-alias.
+Book title subject: Depths	深处	hi
+# general_ref_historical_eventst; reference RVA 0xeef2d5; no-article-alias.
+Book title subject: Desecration	亵渎	hi
+# general_ref_subregionst; reference RVA 0xef395c; no-article-alias.
+Book title subject: Desert	沙漠	hi
+# general_ref_historical_eventst; reference RVA 0xeee191; literal.
+Book title subject: Destruction	毁灭	hi
+# general_ref_historical_eventst; reference RVA 0xeef3b0; no-article-alias.
+Book title subject: Devouring	吞噬	hi
+# general_ref_historical_eventst; reference RVA 0xeee69f; no-article-alias.
+Book title subject: Diplomat	外交官	hi
+# general_ref_historical_eventst; reference RVA 0xeeeaef; no-article-alias.
+Book title subject: Discovery	发现	hi
+# general_ref_historical_eventst; reference RVA 0xeee4d3; no-article-alias.
+Book title subject: Dispute	争端	hi
+# general_ref_historical_eventst; reference RVA 0xeef982; no-article-alias.
+Book title subject: Dissolution	解散	hi
+# general_ref_historical_eventst; reference RVA 0xeef45a; no-article-alias.
+Book title subject: Duel	决斗	hi
+# general_ref_abstract_buildingst; reference RVA 0xeedbcb; no-article-alias.
+Book title subject: Dungeon	地牢	hi
+# general_ref_historical_eventst; reference RVA 0xeee96c; literal.
+Book title subject: Duplicate	复本	hi
+# general_ref_historical_eventst; reference RVA 0xeeef5b; no-article-alias.
+Book title subject: Enlightenment	启蒙	hi
+# general_ref_historical_eventst; reference RVA 0xeefcb8; no-article-alias.
+Book title subject: Enslavement	奴役	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef61c1; literal.
+Book title subject: Entertainment	娱乐	hi
+# general_ref_historical_eventst; reference RVA 0xeef5e9; literal.
+Book title subject: Equipment	装备	hi
+# general_ref_historical_eventst; reference RVA 0xeef60c; literal.
+Book title subject: Experiments	实验	hi
+# general_ref_historical_eventst; reference RVA 0xeef4ec; no-article-alias.
+Book title subject: Explorer	探索者	hi
+# general_ref_historical_eventst; reference RVA 0xeee37b; literal.
+Book title subject: Expulsion	驱逐	hi
+# general_ref_historical_eventst; reference RVA 0xeef647; literal.
+Book title subject: Failure	失败	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef62b9; no-article-alias.
+Book title subject: Faith	信仰	hi
+# general_ref_historical_eventst; reference RVA 0xeef976; no-article-alias.
+Book title subject: Fall	衰亡	hi
+# general_ref_feature_layerst; reference RVA 0xef476d; no-article-alias.
+Book title subject: Fiery Depths	烈焰深处	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef643b; no-article-alias.
+Book title subject: Fighters	战士	hi
+# general_ref_historical_eventst; reference RVA 0xeee3f9; literal.
+Book title subject: First Contact	初次接触	hi
+# general_ref_feature_layerst; reference RVA 0xef47a4; no-article-alias.
+Book title subject: Flames	火焰	hi
+# general_ref_historical_eventst; reference RVA 0xeedf27; no-article-alias.
+Book title subject: Flight	逃离	hi
+# general_ref_sitest,general_ref_subregionst; reference RVA 0xef2267; no-article-alias.
+Book title subject: Forest	森林	hi
+# general_ref_sitest; reference RVA 0xef21cc; no-article-alias.
+Book title subject: Forest Retreat	森林聚落	hi
+# general_ref_sitest; reference RVA 0xef28dc; no-article-alias.
+Book title subject: Fort	堡垒	hi
+# general_ref_sitest; reference RVA 0xef1e5f; no-article-alias.
+Book title subject: Fortress	要塞	hi
+# general_ref_historical_eventst; reference RVA 0xeee255; no-article-alias.
+Book title subject: Founders	创始者	hi
+# general_ref_historical_eventst; reference RVA 0xeedede; literal.
+Book title subject: Freedom	自由	hi
+# general_ref_subregionst; reference RVA 0xef4010; no-article-alias.
+Book title subject: Frozen Wastes	冰封荒原	hi
+# general_ref_historical_eventst; reference RVA 0xeee6f4; no-article-alias.
+Book title subject: Gamble	赌博	hi
+# general_ref_historical_eventst; reference RVA 0xeee700; literal.
+Book title subject: Gambling	赌博	hi
+# general_ref_historical_eventst; reference RVA 0xeee8c2; literal.
+Book title subject: Genius	天才	hi
+# general_ref_historical_figurest; reference RVA 0xef1104; no-article-alias.
+Book title subject: Ghost	幽灵	hi
+# general_ref_historical_eventst; reference RVA 0xeee7e7; no-article-alias.
+Book title subject: Gift	礼物	hi
+# general_ref_subregionst; reference RVA 0xef3f2d; no-article-alias.
+Book title subject: Glacier	冰川	hi
+# general_ref_subregionst; reference RVA 0xef419d; no-article-alias.
+Book title subject: Grassland	草原	hi
+# general_ref_historical_eventst; reference RVA 0xeee879; literal.
+Book title subject: Greed	贪婪	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef5cf6; no-article-alias.
+Book title subject: Group	群体	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef5f64; no-article-alias.
+Book title subject: Guild	行会	hi
+# general_ref_abstract_buildingst; reference RVA 0xeeda42; no-article-alias.
+Book title subject: Guildhall	行会大厅	hi
+# general_ref_sitest; reference RVA 0xef1f2e; no-article-alias.
+Book title subject: Gutter	排水沟	hi
+# general_ref_sitest; reference RVA 0xef255c; no-article-alias.
+Book title subject: Hamlet	村庄	hi
+# general_ref_subregionst; reference RVA 0xef41d7; no-article-alias.
+Book title subject: Hills	丘陵	hi
+# general_ref_sitest; reference RVA 0xef212d; no-article-alias.
+Book title subject: Hole	洞	hi
+# general_ref_historical_eventst; reference RVA 0xeef2bd; no-article-alias.
+Book title subject: Holy City	圣城	hi
+# general_ref_historical_eventst; reference RVA 0xeef917; no-article-alias.
+Book title subject: Honor	荣誉	hi
+# general_ref_historical_eventst,general_ref_subregionst; reference RVA 0xeef618; literal.
+Book title subject: Horror	恐怖	hi
+# general_ref_abstract_buildingst; reference RVA 0xeeda23; no-article-alias.
+Book title subject: Hospital	医院	hi
+# general_ref_historical_eventst; reference RVA 0xeef3a4; literal.
+Book title subject: Hunger	饥饿	hi
+# general_ref_subregionst; reference RVA 0xef3e89; no-article-alias.
+Book title subject: Ice	冰	hi
+# general_ref_historical_eventst; reference RVA 0xeef73a; no-article-alias.
+Book title subject: Impersonation	冒充	hi
+# general_ref_historical_eventst; reference RVA 0xeefa08; no-article-alias.
+Book title subject: Improvements	改进	hi
+# general_ref_historical_eventst; reference RVA 0xeedfad; no-article-alias.
+Book title subject: Infiltration	渗透	hi
+# general_ref_historical_eventst; reference RVA 0xeee36f; literal.
+Book title subject: Initiation	入会	hi
+# general_ref_historical_eventst; reference RVA 0xeef1d7; literal.
+Book title subject: Insanity	疯狂	hi
+# general_ref_historical_eventst; reference RVA 0xeef18f; literal.
+Book title subject: Inspiration	灵感	hi
+# general_ref_historical_eventst; reference RVA 0xeeeeaa; no-article-alias.
+Book title subject: Insurrection	起义	hi
+# general_ref_historical_eventst; reference RVA 0xeefe5b; no-article-alias.
+Book title subject: Interrogation	审讯	hi
+# general_ref_historical_eventst; reference RVA 0xeee2e6; literal.
+Book title subject: Intrigue	阴谋	hi
+# general_ref_historical_eventst; reference RVA 0xeedff6; no-article-alias.
+Book title subject: Invasion	入侵	hi
+# general_ref_historical_eventst; reference RVA 0xeee885; literal.
+Book title subject: Jealousy	嫉妒	hi
+# general_ref_historical_eventst; reference RVA 0xeeef98; no-article-alias.
+Book title subject: Joining	结合	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst,general_ref_historical_eventst; reference RVA 0xeef684; no-article-alias.
+Book title subject: Journey	旅途	hi
+# general_ref_historical_eventst,general_ref_subregionst; reference RVA 0xeef4a3; literal.
+Book title subject: Joy	喜悦	hi
+# general_ref_sitest; reference RVA 0xef288d; no-article-alias.
+Book title subject: Keep	城堡主楼	hi
+# general_ref_historical_eventst; reference RVA 0xeef312; no-article-alias.
+Book title subject: Kidnapping	绑架	hi
+# general_ref_historical_eventst; reference RVA 0xeef825; no-article-alias.
+Book title subject: Knowledge	知识	hi
+# general_ref_sitest; reference RVA 0xef26a8; no-article-alias.
+Book title subject: Labyrinth	迷宫	hi
+# general_ref_abstract_buildingst; reference RVA 0xeedad1; no-article-alias.
+Book title subject: Library	图书馆	hi
+# general_ref_historical_eventst; reference RVA 0xeefe25; no-article-alias.
+Book title subject: Lie	谎言	hi
+# general_ref_historical_eventst; reference RVA 0xeee292; literal.
+Book title subject: Loss	失去	hi
+# general_ref_feature_layerst; reference RVA 0xef4789; no-article-alias.
+Book title subject: Magma	岩浆	hi
+# general_ref_historical_eventst; reference RVA 0xeef3f9; no-article-alias.
+Book title subject: Maiming	致残	hi
+# general_ref_abstract_buildingst,general_ref_sitest; reference RVA 0xeedb31; no-article-alias.
+Book title subject: Market	市场	hi
+# general_ref_subregionst; reference RVA 0xef37cb; no-article-alias.
+Book title subject: Marsh	沼泽	hi
+# general_ref_historical_eventst; reference RVA 0xeef0b0; literal.
+Book title subject: Masterpiece	杰作	hi
+# general_ref_sitest; reference RVA 0xef2aea; no-article-alias.
+Book title subject: Mausoleum	陵寝	hi
+# general_ref_sitest; reference RVA 0xef2693; no-article-alias.
+Book title subject: Maze	迷宫	hi
+# general_ref_abstract_buildingst; reference RVA 0xeeda6b; no-article-alias.
+Book title subject: Mead Hall	宴饮厅	hi
+# general_ref_historical_eventst; reference RVA 0xeee326; literal.
+Book title subject: Meeting	会面	hi
+# general_ref_historical_eventst; reference RVA 0xeef1cb; literal.
+Book title subject: Melancholy	忧郁	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst,general_ref_historical_eventst; reference RVA 0xeee749; no-article-alias.
+Book title subject: Merchants	商人	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef60b6; no-article-alias.
+Book title subject: Migration	迁徙	hi
+# general_ref_subregionst; reference RVA 0xef380a; no-article-alias.
+Book title subject: Mire	泥沼	hi
+# general_ref_sitest; reference RVA 0xef2903; no-article-alias.
+Book title subject: Monastery	修道院	hi
+# general_ref_sitest; reference RVA 0xef2965; no-article-alias.
+Book title subject: Monument	纪念碑	hi
+# general_ref_subregionst; reference RVA 0xef3b65; no-article-alias.
+Book title subject: Mountain	山地	hi
+# general_ref_sitest; reference RVA 0xef1ce8; no-article-alias.
+Book title subject: Mountain Halls	山地大厅	hi
+# general_ref_sitest; reference RVA 0xef1ba1; no-article-alias.
+Book title subject: Mountainhome	山中家园	hi
+# general_ref_subregionst; reference RVA 0xef3bb4; no-article-alias.
+Book title subject: Mountains	山峦	hi
+# general_ref_dance_formst; reference RVA 0xee5238; no-article-alias.
+Book title subject: Moves	舞步	hi
+# general_ref_historical_eventst; reference RVA 0xeef1bf; literal.
+Book title subject: Murder	谋杀	hi
+# general_ref_subregionst; reference RVA 0xef381f; no-article-alias.
+Book title subject: Murk	阴霾	hi
+# general_ref_historical_eventst,general_ref_musical_formst; reference RVA 0xee4eea; no-article-alias.
+Book title subject: Music	音乐	hi
+# general_ref_historical_eventst,general_ref_sitest; reference RVA 0xeef7d0; no-article-alias.
+Book title subject: Mystery	谜团	hi
+# general_ref_historical_eventst; reference RVA 0xeeefa4; literal.
+Book title subject: Nature	自然	hi
+# general_ref_historical_eventst; reference RVA 0xeee4bb; literal.
+Book title subject: Neighbors	邻居	hi
+# general_ref_musical_formst; reference RVA 0xee4ed9; no-article-alias.
+Book title subject: Notes	音符	hi
+# general_ref_historical_eventst; reference RVA 0xeef83d; no-article-alias.
+Book title subject: Obsession	执迷	hi
+# general_ref_subregionst; reference RVA 0xef3cb7; no-article-alias.
+Book title subject: Ocean	海洋	hi
+# general_ref_historical_eventst; reference RVA 0xeee7f3; no-article-alias.
+Book title subject: Offering	献礼	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef65a7; no-article-alias.
+Book title subject: Outcasts	被放逐者	hi
+# general_ref_historical_eventst; reference RVA 0xeeef06; no-article-alias.
+Book title subject: Overthrow	推翻	hi
+# general_ref_historical_eventst; reference RVA 0xeef5c2; no-article-alias.
+Book title subject: Party	聚会	hi
+# general_ref_historical_eventst,general_ref_subregionst; reference RVA 0xeee656; literal.
+Book title subject: Peace	和平	hi
+# general_ref_subregionst; reference RVA 0xef3b7a; no-article-alias.
+Book title subject: Peaks	山峰	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef59d5; no-article-alias.
+Book title subject: People	人们	hi
+# general_ref_historical_eventst; reference RVA 0xeee917; literal.
+Book title subject: Perfection	完美	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst,general_ref_historical_eventst; reference RVA 0xeeeb99; no-article-alias.
+Book title subject: Performance	表演	hi
+# general_ref_historical_eventst; reference RVA 0xeefacf; literal.
+Book title subject: Persecution	迫害	hi
+# general_ref_historical_eventst; reference RVA 0xeef6d9; no-article-alias.
+Book title subject: Pet	宠物	hi
+# general_ref_historical_eventst; reference RVA 0xeef285; literal.
+Book title subject: Pillage	劫掠	hi
+# general_ref_sitest; reference RVA 0xef20ee; no-article-alias.
+Book title subject: Pit	深坑	hi
+# general_ref_sitest; reference RVA 0xef2bdd; no-article-alias.
+Book title subject: Place	地点	hi
+# general_ref_subregionst; reference RVA 0xef4188; no-article-alias.
+Book title subject: Plains	平原	hi
+# general_ref_historical_eventst; reference RVA 0xeef279; literal.
+Book title subject: Plunder	掠夺	hi
+# general_ref_historical_eventst,general_ref_poetic_formst; reference RVA 0xee4b41; no-article-alias.
+Book title subject: Poetry	诗歌	hi
+# general_ref_historical_eventst; reference RVA 0xeef1a7; literal.
+Book title subject: Possession	附体	hi
+# general_ref_historical_eventst; reference RVA 0xeefa8e; literal.
+Book title subject: Preaching	布道	hi
+# general_ref_historical_eventst; reference RVA 0xeef90b; no-article-alias.
+Book title subject: Prestige	声望	hi
+# general_ref_historical_eventst; reference RVA 0xeefc63; no-article-alias.
+Book title subject: Price	代价	hi
+# general_ref_sitest; reference RVA 0xef29ef; no-article-alias.
+Book title subject: Primordial	太初	hi
+# general_ref_historical_eventst; reference RVA 0xeeed09; no-article-alias.
+Book title subject: Procession	游行	hi
+# general_ref_historical_eventst; reference RVA 0xeeeee3; no-article-alias.
+Book title subject: Punishment	惩罚	hi
+# general_ref_historical_eventst; reference RVA 0xeefa51; no-article-alias.
+Book title subject: Purchase	购买	hi
+# general_ref_historical_eventst; reference RVA 0xeef9cb; literal.
+Book title subject: Quality	品质	hi
+# general_ref_historical_eventst; reference RVA 0xeefe64; no-article-alias.
+Book title subject: Questioning	盘问	hi
+# general_ref_historical_eventst; reference RVA 0xeef1e3; literal.
+Book title subject: Rage	愤怒	hi
+# general_ref_historical_eventst; reference RVA 0xeedfb9; no-article-alias.
+Book title subject: Raid	突袭	hi
+# general_ref_historical_eventst; reference RVA 0xeee03f; no-article-alias.
+Book title subject: Rampage	暴行	hi
+# general_ref_historical_eventst; reference RVA 0xeef8ff; no-article-alias.
+Book title subject: Rank	地位	hi
+# general_ref_historical_eventst; reference RVA 0xeefc6f; no-article-alias.
+Book title subject: Ransom	赎金	hi
+# general_ref_historical_eventst; reference RVA 0xeee0a9; no-article-alias.
+Book title subject: Razing	夷平	hi
+# general_ref_historical_eventst; reference RVA 0xeeee86; no-article-alias.
+Book title subject: Rebellion	叛乱	hi
+# general_ref_historical_eventst; reference RVA 0xeef783; literal.
+Book title subject: Rebirth	重生	hi
+# general_ref_historical_eventst; reference RVA 0xeeef4f; no-article-alias.
+Book title subject: Reclamation	开垦	hi
+# general_ref_subregionst; reference RVA 0xef362e; no-article-alias.
+Book title subject: Region	地域	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef62f6; no-article-alias.
+Book title subject: Religion	宗教	hi
+# general_ref_historical_eventst; reference RVA 0xeee978; literal.
+Book title subject: Reproduction	繁殖	hi
+# general_ref_historical_eventst; reference RVA 0xeeded2; no-article-alias.
+Book title subject: Rescue	营救	hi
+# general_ref_historical_eventst; reference RVA 0xeeef43; no-article-alias.
+Book title subject: Resettlement	重新定居	hi
+# general_ref_historical_eventst; reference RVA 0xeef78f; no-article-alias.
+Book title subject: Resurrection	复活	hi
+# general_ref_historical_eventst; reference RVA 0xeef4af; no-article-alias.
+Book title subject: Reunion	重聚	hi
+# general_ref_historical_eventst; reference RVA 0xeeee92; no-article-alias.
+Book title subject: Revolt	反叛	hi
+# general_ref_historical_eventst; reference RVA 0xeeee9e; no-article-alias.
+Book title subject: Revolution	革命	hi
+# general_ref_dance_formst,general_ref_musical_formst; reference RVA 0xee4ec0; no-article-alias.
+Book title subject: Rhythm	节奏	hi
+# general_ref_subregionst; reference RVA 0xef387a; no-article-alias.
+Book title subject: Rocks	岩石	hi
+# general_ref_historical_eventst; reference RVA 0xeef96a; literal.
+Book title subject: Ruin	毁灭	hi
+# general_ref_subregionst; reference RVA 0xef3907; no-article-alias.
+Book title subject: Sand	沙	hi
+# general_ref_subregionst; reference RVA 0xef4173; no-article-alias.
+Book title subject: Savanna	稀树草原	hi
+# general_ref_subregionst; reference RVA 0xef3c78; no-article-alias.
+Book title subject: Sea	海	hi
+# general_ref_historical_eventst; reference RVA 0xeedf70; no-article-alias.
+Book title subject: Search	搜寻	hi
+# general_ref_historical_eventst; reference RVA 0xeee79e; no-article-alias.
+Book title subject: Secret	秘密	hi
+# general_ref_historical_eventst; reference RVA 0xeef19b; literal.
+Book title subject: Secrets	秘密	hi
+# general_ref_historical_eventst; reference RVA 0xeedf64; no-article-alias.
+Book title subject: Seekers	探寻者	hi
+# general_ref_historical_eventst; reference RVA 0xeefa9a; no-article-alias.
+Book title subject: Sermon	布道	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef5c15; no-article-alias.
+Book title subject: Settlement	聚落	hi
+# general_ref_abstract_buildingst; reference RVA 0xeedbad; no-article-alias.
+Book title subject: Sewers	下水道	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef61d7; no-article-alias.
+Book title subject: Show	演出	hi
+# general_ref_sitest; reference RVA 0xef264d; no-article-alias.
+Book title subject: Shrine	圣地	hi
+# general_ref_subregionst; reference RVA 0xef415e; no-article-alias.
+Book title subject: Shrubland	灌木丛	hi
+# general_ref_abstract_buildingst; reference RVA 0xeedb18; no-article-alias.
+Book title subject: Spire	尖塔	hi
+# general_ref_historical_figurest; reference RVA 0xef112e; no-article-alias.
+Book title subject: Spirit	幽魂	hi
+# general_ref_historical_eventst; reference RVA 0xeee4c7; literal.
+Book title subject: Squabbling	争吵	hi
+# general_ref_dance_formst; reference RVA 0xee5249; no-article-alias.
+Book title subject: Steps	舞步	hi
+# general_ref_historical_eventst; reference RVA 0xeef849; literal.
+Book title subject: Storage	储藏	hi
+# general_ref_historical_eventst; reference RVA 0xeef44e; no-article-alias.
+Book title subject: Struggle	斗争	hi
+# general_ref_historical_eventst; reference RVA 0xeef4f8; no-article-alias.
+Book title subject: Summit	会谈	hi
+# general_ref_historical_eventst; reference RVA 0xeef2c9; no-article-alias.
+Book title subject: Surrender	投降	hi
+# general_ref_historical_eventst; reference RVA 0xeee2f2; literal.
+Book title subject: Suspicion	怀疑	hi
+# general_ref_subregionst; reference RVA 0xef37e0; no-article-alias.
+Book title subject: Swamp	沼泽	hi
+# general_ref_historical_eventst; reference RVA 0xeef539; literal.
+Book title subject: Tactics	战术	hi
+# general_ref_abstract_buildingst; reference RVA 0xeedafc; no-article-alias.
+Book title subject: Tavern	酒馆	hi
+# general_ref_abstract_buildingst; reference RVA 0xeedab0; no-article-alias.
+Book title subject: Temple	神殿	hi
+# general_ref_historical_eventst; reference RVA 0xeedf1b; literal.
+Book title subject: Terror	恐惧	hi
+# general_ref_historical_eventst; reference RVA 0xeef367; no-article-alias.
+Book title subject: Theft	盗窃	hi
+# general_ref_historical_eventst; reference RVA 0xeef35b; no-article-alias.
+Book title subject: Thief	小偷	hi
+# general_ref_sitest; reference RVA 0xef2b14; no-article-alias.
+Book title subject: Tomb	陵墓	hi
+# general_ref_abstract_buildingst,general_ref_sitest; reference RVA 0xeedbee; no-article-alias.
+Book title subject: Tower	高塔	hi
+# general_ref_sitest; reference RVA 0xef247a; no-article-alias.
+Book title subject: Town	城镇	hi
+# general_ref_historical_eventst; reference RVA 0xeee761; literal.
+Book title subject: Trade	贸易	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef5da5; no-article-alias.
+Book title subject: Traders	交易者	hi
+# general_ref_historical_eventst; reference RVA 0xeee693; literal.
+Book title subject: Tragedy	悲剧	hi
+# general_ref_historical_eventst; reference RVA 0xeee90b; literal.
+Book title subject: Transformation	变身	hi
+# general_ref_historical_eventst; reference RVA 0xeef690; no-article-alias.
+Book title subject: Traveler	旅人	hi
+# general_ref_artifactst,general_ref_is_artifactst,general_ref_historical_eventst,general_ref_item_typest; reference RVA 0xeecd33; no-article-alias.
+Book title subject: Treasure	宝藏	hi
+# general_ref_historical_eventst; reference RVA 0xeefc1a; no-article-alias.
+Book title subject: Treaty	条约	hi
+# general_ref_sitest,general_ref_subregionst; reference RVA 0xef2304; no-article-alias.
+Book title subject: Trees	树木	hi
+# general_ref_sitest; reference RVA 0xef1f68; no-article-alias.
+Book title subject: Trenches	壕沟	hi
+# general_ref_historical_eventst; reference RVA 0xeef291; no-article-alias.
+Book title subject: Tribute	贡物	hi
+# general_ref_historical_eventst; reference RVA 0xeef72e; literal.
+Book title subject: Trickery	诡计	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef61ab; no-article-alias.
+Book title subject: Troupe	剧团	hi
+# general_ref_subregionst; reference RVA 0xef40aa; no-article-alias.
+Book title subject: Tundra	苔原	hi
+# general_ref_sitest; reference RVA 0xef267e; no-article-alias.
+Book title subject: Tunnels	隧道	hi
+# general_ref_feature_layerst; reference RVA 0xef4863; no-article-alias.
+Book title subject: Underground	地下	hi
+# general_ref_subregionst; reference RVA 0xef3acf; no-article-alias.
+Book title subject: Undergrowth	林下植被	hi
+# general_ref_feature_layerst; reference RVA 0xef46ec; no-article-alias.
+Book title subject: Underworld	地狱	hi
+# general_ref_subregionst; reference RVA 0xef359a; no-article-alias.
+Book title subject: Universe	宇宙	hi
+# general_ref_historical_eventst; reference RVA 0xeeee7a; no-article-alias.
+Book title subject: Uprising	起义	hi
+# general_ref_sitest; reference RVA 0xef2a53; no-article-alias.
+Book title subject: Vault	秘库	hi
+# general_ref_poetic_formst; reference RVA 0xee4b73; no-article-alias.
+Book title subject: Verse	诗篇	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef5ff8; no-article-alias.
+Book title subject: Vessel	船只	hi
+# general_ref_sitest; reference RVA 0xef2571; no-article-alias.
+Book title subject: Village	村庄	hi
+# general_ref_musical_formst; reference RVA 0xee4eaa; no-article-alias.
+Book title subject: Voice	声音	hi
+# general_ref_historical_eventst; reference RVA 0xeef57a; literal.
+Book title subject: War	战争	hi
+# general_ref_subregionst; reference RVA 0xef3d2d; no-article-alias.
+Book title subject: Waters	水域	hi
+# general_ref_subregionst; reference RVA 0xef3ca2; no-article-alias.
+Book title subject: Waves	波涛	hi
+# general_ref_subregionst; reference RVA 0xef37b6; no-article-alias.
+Book title subject: Wetland	湿地	hi
+# general_ref_poetic_formst; reference RVA 0xee4b84; no-article-alias.
+Book title subject: Words	词	hi
+# general_ref_subregionst; reference RVA 0xef36cb; no-article-alias.
+Book title subject: World	世界	hi
+# general_ref_historical_eventst; reference RVA 0xeef411; no-article-alias.
+Book title subject: Wound	伤口	hi
+# general_ref_historical_eventst; reference RVA 0xeef405; no-article-alias.
+Book title subject: Wounding	负伤	hi
+# general_ref_historical_eventst; reference RVA 0xeef31e; literal.
+Book title subject: the Abduction	绑架	hi
+# general_ref_historical_eventst; reference RVA 0xeee5d1; literal.
+Book title subject: the Agreement	协议	hi
+# general_ref_historical_eventst; reference RVA 0xeefc26; literal.
+Book title subject: the Alliance	联盟	hi
+# general_ref_entity_art_imagest; reference RVA 0xef5184; literal.
+Book title subject: the Art	艺术	hi
+# general_ref_artifactst,general_ref_is_artifactst; reference RVA 0xeecb99; literal.
+Book title subject: the Artifact	造物	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef5ed1; literal.
+Book title subject: the Artisans	工匠	hi
+# general_ref_historical_eventst; reference RVA 0xeee002; literal.
+Book title subject: the Attack	攻击	hi
+# general_ref_historical_eventst; reference RVA 0xeef8aa; literal.
+Book title subject: the Author	作者	hi
+# general_ref_historical_eventst; reference RVA 0xeef23c; literal.
+Book title subject: the Battle	战斗	hi
+# general_ref_historical_eventst; reference RVA 0xeee3b8; literal.
+Book title subject: the Betrayal	背叛	hi
+# general_ref_subregionst; reference RVA 0xef37f5; literal.
+Book title subject: the Bog	泥沼	hi
+# general_ref_historical_eventst; reference RVA 0xeee363; literal.
+Book title subject: the Bond	纽带	hi
+# general_ref_historical_eventst; reference RVA 0xeefbdd; literal.
+Book title subject: the Breach	突破	hi
+# general_ref_historical_eventst; reference RVA 0xeef1b3; literal.
+Book title subject: the Brooding	忧思	hi
+# general_ref_historical_eventst; reference RVA 0xeefa14; literal.
+Book title subject: the Building	建筑	hi
+# general_ref_sitest; reference RVA 0xef2aff; literal.
+Book title subject: the Burial	埋葬	hi
+# general_ref_sitest; reference RVA 0xef271e; literal.
+Book title subject: the Burrow	地洞	hi
+# general_ref_subregionst; reference RVA 0xef3ae4; literal.
+Book title subject: the Canopy	林冠	hi
+# general_ref_historical_eventst; reference RVA 0xeee755; literal.
+Book title subject: the Caravan	商队	hi
+# general_ref_sitest; reference RVA 0xef28a2; literal.
+Book title subject: the Castle	城堡	hi
+# general_ref_abstract_buildingst; reference RVA 0xeedb87; literal.
+Book title subject: the Catacombs	地下墓穴	hi
+# general_ref_sitest; reference RVA 0xef20d9; literal.
+Book title subject: the Cave	洞穴	hi
+# general_ref_sitest; reference RVA 0xef2142; literal.
+Book title subject: the Cavern	洞穴	hi
+# general_ref_feature_layerst; reference RVA 0xef4821; literal.
+Book title subject: the Caverns	洞窟	hi
+# general_ref_historical_eventst; reference RVA 0xeeedb8; literal.
+Book title subject: the Ceremony	仪式	hi
+# general_ref_historical_eventst; reference RVA 0xeee830; literal.
+Book title subject: the Claim	宣称	hi
+# general_ref_historical_eventst; reference RVA 0xeef230; literal.
+Book title subject: the Clash	交锋	hi
+# general_ref_coinbatchst; reference RVA 0xef5044; literal.
+Book title subject: the Coins	钱币	hi
+# general_ref_historical_eventst; reference RVA 0xeef6cd; literal.
+Book title subject: the Companion	伙伴	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef5dbb; literal.
+Book title subject: the Company	商团	hi
+# general_ref_historical_eventst; reference RVA 0xeeec4f; literal.
+Book title subject: the Competition	竞争	hi
+# general_ref_historical_eventst; reference RVA 0xeef8b6; literal.
+Book title subject: the Composition	创作	hi
+# general_ref_historical_eventst; reference RVA 0xeef7e8; literal.
+Book title subject: the Confrontation	对抗	hi
+# general_ref_historical_eventst; reference RVA 0xeef466; literal.
+Book title subject: the Construction	建造	hi
+# general_ref_historical_eventst; reference RVA 0xeefdeb; literal.
+Book title subject: the Conviction	定罪	hi
+# general_ref_historical_figurest; reference RVA 0xef1200; literal.
+Book title subject: the Corpse	尸体	hi
+# general_ref_abstract_buildingst; reference RVA 0xeed9fc; literal.
+Book title subject: the Counting House	商行	hi
+# general_ref_historical_eventst; reference RVA 0xeee3c4; literal.
+Book title subject: the Coup	政变	hi
+# general_ref_creaturest; reference RVA 0xef4d14; literal.
+Book title subject: the Creature	生物	hi
+# general_ref_entity_popst; reference RVA 0xef4b04; literal.
+Book title subject: the Creatures	生物	hi
+# general_ref_historical_eventst; reference RVA 0xeefddf; literal.
+Book title subject: the Crime	犯罪	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef650a; literal.
+Book title subject: the Criminals	罪犯	hi
+# general_ref_dance_formst,general_ref_historical_eventst; reference RVA 0xee525a; literal.
+Book title subject: the Dance	舞蹈	hi
+# general_ref_sitest; reference RVA 0xef2103; literal.
+Book title subject: the Dark	黑暗	hi
+# general_ref_sitest; reference RVA 0xef1ddc; literal.
+Book title subject: the Dark Fortress	黑暗要塞	hi
+# general_ref_feature_layerst,general_ref_sitest,general_ref_subregionst; reference RVA 0xef2118; literal.
+Book title subject: the Darkness	黑暗	hi
+# general_ref_subregionst; reference RVA 0xef3c8d; literal.
+Book title subject: the Deep	深处	hi
+# general_ref_historical_eventst; reference RVA 0xeef7dc; literal.
+Book title subject: the Denial	否认	hi
+# general_ref_feature_layerst,general_ref_historical_eventst; reference RVA 0xeefbd1; literal.
+Book title subject: the Depths	深处	hi
+# general_ref_historical_eventst; reference RVA 0xeef2d5; literal.
+Book title subject: the Desecration	亵渎	hi
+# general_ref_subregionst; reference RVA 0xef395c; literal.
+Book title subject: the Desert	沙漠	hi
+# general_ref_historical_eventst; reference RVA 0xeef3b0; literal.
+Book title subject: the Devouring	吞噬	hi
+# general_ref_historical_eventst; reference RVA 0xeee69f; literal.
+Book title subject: the Diplomat	外交官	hi
+# general_ref_historical_eventst; reference RVA 0xeeeaef; literal.
+Book title subject: the Discovery	发现	hi
+# general_ref_historical_eventst; reference RVA 0xeee4d3; literal.
+Book title subject: the Dispute	争端	hi
+# general_ref_historical_eventst; reference RVA 0xeef982; literal.
+Book title subject: the Dissolution	解散	hi
+# general_ref_historical_eventst; reference RVA 0xeef45a; literal.
+Book title subject: the Duel	决斗	hi
+# general_ref_abstract_buildingst; reference RVA 0xeedbcb; literal.
+Book title subject: the Dungeon	地牢	hi
+# general_ref_historical_eventst; reference RVA 0xeeef5b; literal.
+Book title subject: the Enlightenment	启蒙	hi
+# general_ref_historical_eventst; reference RVA 0xeefcb8; literal.
+Book title subject: the Enslavement	奴役	hi
+# general_ref_historical_eventst; reference RVA 0xeef9bf; literal.
+Book title subject: the Equipment	装备	hi
+# general_ref_historical_eventst; reference RVA 0xeef4ec; literal.
+Book title subject: the Explorer	探索者	hi
+# general_ref_historical_eventst; reference RVA 0xeef95e; literal.
+Book title subject: the Failure	失败	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef62b9; literal.
+Book title subject: the Faith	信仰	hi
+# general_ref_historical_eventst; reference RVA 0xeef976; literal.
+Book title subject: the Fall	衰亡	hi
+# general_ref_feature_layerst; reference RVA 0xef476d; literal.
+Book title subject: the Fiery Depths	烈焰深处	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef643b; literal.
+Book title subject: the Fighters	战士	hi
+# general_ref_feature_layerst; reference RVA 0xef47a4; literal.
+Book title subject: the Flames	火焰	hi
+# general_ref_historical_eventst; reference RVA 0xeedf27; literal.
+Book title subject: the Flight	逃离	hi
+# general_ref_sitest,general_ref_subregionst; reference RVA 0xef2267; literal.
+Book title subject: the Forest	森林	hi
+# general_ref_sitest; reference RVA 0xef21cc; literal.
+Book title subject: the Forest Retreat	森林聚落	hi
+# general_ref_sitest; reference RVA 0xef28dc; literal.
+Book title subject: the Fort	堡垒	hi
+# general_ref_sitest; reference RVA 0xef1e5f; literal.
+Book title subject: the Fortress	要塞	hi
+# general_ref_historical_eventst; reference RVA 0xeee255; literal.
+Book title subject: the Founders	创始者	hi
+# general_ref_subregionst; reference RVA 0xef4010; literal.
+Book title subject: the Frozen Wastes	冰封荒原	hi
+# general_ref_historical_eventst; reference RVA 0xeee6f4; literal.
+Book title subject: the Gamble	赌博	hi
+# general_ref_historical_figurest; reference RVA 0xef1104; literal.
+Book title subject: the Ghost	幽灵	hi
+# general_ref_historical_eventst; reference RVA 0xeee7e7; literal.
+Book title subject: the Gift	礼物	hi
+# general_ref_subregionst; reference RVA 0xef3f2d; literal.
+Book title subject: the Glacier	冰川	hi
+# general_ref_subregionst; reference RVA 0xef419d; literal.
+Book title subject: the Grassland	草原	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef5cf6; literal.
+Book title subject: the Group	群体	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef5f64; literal.
+Book title subject: the Guild	行会	hi
+# general_ref_abstract_buildingst; reference RVA 0xeeda42; literal.
+Book title subject: the Guildhall	行会大厅	hi
+# general_ref_sitest; reference RVA 0xef1f2e; literal.
+Book title subject: the Gutter	排水沟	hi
+# general_ref_sitest; reference RVA 0xef255c; literal.
+Book title subject: the Hamlet	村庄	hi
+# general_ref_subregionst; reference RVA 0xef41d7; literal.
+Book title subject: the Hills	丘陵	hi
+# general_ref_sitest; reference RVA 0xef212d; literal.
+Book title subject: the Hole	洞	hi
+# general_ref_historical_eventst; reference RVA 0xeef2bd; literal.
+Book title subject: the Holy City	圣城	hi
+# general_ref_historical_eventst; reference RVA 0xeef917; literal.
+Book title subject: the Honor	荣誉	hi
+# general_ref_subregionst; reference RVA 0xef30da; literal.
+Book title subject: the Horror	恐怖	hi
+# general_ref_abstract_buildingst; reference RVA 0xeeda23; literal.
+Book title subject: the Hospital	医院	hi
+# general_ref_subregionst; reference RVA 0xef3e89; literal.
+Book title subject: the Ice	冰	hi
+# general_ref_historical_eventst; reference RVA 0xeef73a; literal.
+Book title subject: the Impersonation	冒充	hi
+# general_ref_historical_eventst; reference RVA 0xeefa08; literal.
+Book title subject: the Improvements	改进	hi
+# general_ref_historical_eventst; reference RVA 0xeedfad; literal.
+Book title subject: the Infiltration	渗透	hi
+# general_ref_historical_eventst; reference RVA 0xeeeeaa; literal.
+Book title subject: the Insurrection	起义	hi
+# general_ref_historical_eventst; reference RVA 0xeefe5b; literal.
+Book title subject: the Interrogation	审讯	hi
+# general_ref_historical_eventst; reference RVA 0xeedff6; literal.
+Book title subject: the Invasion	入侵	hi
+# general_ref_historical_eventst; reference RVA 0xeeef98; literal.
+Book title subject: the Joining	结合	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst,general_ref_historical_eventst; reference RVA 0xeef684; literal.
+Book title subject: the Journey	旅途	hi
+# general_ref_subregionst; reference RVA 0xef3357; literal.
+Book title subject: the Joy	喜悦	hi
+# general_ref_sitest; reference RVA 0xef288d; literal.
+Book title subject: the Keep	城堡主楼	hi
+# general_ref_historical_eventst; reference RVA 0xeef312; literal.
+Book title subject: the Kidnapping	绑架	hi
+# general_ref_historical_eventst; reference RVA 0xeef825; literal.
+Book title subject: the Knowledge	知识	hi
+# general_ref_sitest; reference RVA 0xef26a8; literal.
+Book title subject: the Labyrinth	迷宫	hi
+# general_ref_abstract_buildingst; reference RVA 0xeedad1; literal.
+Book title subject: the Library	图书馆	hi
+# general_ref_historical_eventst; reference RVA 0xeefe25; literal.
+Book title subject: the Lie	谎言	hi
+# general_ref_feature_layerst; reference RVA 0xef4789; literal.
+Book title subject: the Magma	岩浆	hi
+# general_ref_historical_eventst; reference RVA 0xeef3f9; literal.
+Book title subject: the Maiming	致残	hi
+# general_ref_abstract_buildingst,general_ref_sitest; reference RVA 0xeedb31; literal.
+Book title subject: the Market	市场	hi
+# general_ref_subregionst; reference RVA 0xef37cb; literal.
+Book title subject: the Marsh	沼泽	hi
+# general_ref_sitest; reference RVA 0xef2aea; literal.
+Book title subject: the Mausoleum	陵寝	hi
+# general_ref_sitest; reference RVA 0xef2693; literal.
+Book title subject: the Maze	迷宫	hi
+# general_ref_abstract_buildingst; reference RVA 0xeeda6b; literal.
+Book title subject: the Mead Hall	宴饮厅	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst,general_ref_historical_eventst; reference RVA 0xeee749; literal.
+Book title subject: the Merchants	商人	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef60b6; literal.
+Book title subject: the Migration	迁徙	hi
+# general_ref_subregionst; reference RVA 0xef380a; literal.
+Book title subject: the Mire	泥沼	hi
+# general_ref_sitest; reference RVA 0xef2903; literal.
+Book title subject: the Monastery	修道院	hi
+# general_ref_sitest; reference RVA 0xef2965; literal.
+Book title subject: the Monument	纪念碑	hi
+# general_ref_subregionst; reference RVA 0xef3b65; literal.
+Book title subject: the Mountain	山地	hi
+# general_ref_sitest; reference RVA 0xef1ce8; literal.
+Book title subject: the Mountain Halls	山地大厅	hi
+# general_ref_sitest; reference RVA 0xef1ba1; literal.
+Book title subject: the Mountainhome	山中家园	hi
+# general_ref_subregionst; reference RVA 0xef3bb4; literal.
+Book title subject: the Mountains	山峦	hi
+# general_ref_dance_formst; reference RVA 0xee5238; literal.
+Book title subject: the Moves	舞步	hi
+# general_ref_subregionst; reference RVA 0xef381f; literal.
+Book title subject: the Murk	阴霾	hi
+# general_ref_historical_eventst,general_ref_musical_formst; reference RVA 0xee4eea; literal.
+Book title subject: the Music	音乐	hi
+# general_ref_historical_eventst,general_ref_sitest; reference RVA 0xeef7d0; literal.
+Book title subject: the Mystery	谜团	hi
+# general_ref_musical_formst; reference RVA 0xee4ed9; literal.
+Book title subject: the Notes	音符	hi
+# general_ref_historical_eventst; reference RVA 0xeef83d; literal.
+Book title subject: the Obsession	执迷	hi
+# general_ref_subregionst; reference RVA 0xef3cb7; literal.
+Book title subject: the Ocean	海洋	hi
+# general_ref_historical_eventst; reference RVA 0xeee7f3; literal.
+Book title subject: the Offering	献礼	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef65a7; literal.
+Book title subject: the Outcasts	被放逐者	hi
+# general_ref_historical_eventst; reference RVA 0xeeef06; literal.
+Book title subject: the Overthrow	推翻	hi
+# general_ref_historical_eventst; reference RVA 0xeef5c2; literal.
+Book title subject: the Party	聚会	hi
+# general_ref_subregionst; reference RVA 0xef3b7a; literal.
+Book title subject: the Peaks	山峰	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef59d5; literal.
+Book title subject: the People	人们	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst,general_ref_historical_eventst; reference RVA 0xeeeb99; literal.
+Book title subject: the Performance	表演	hi
+# general_ref_historical_eventst; reference RVA 0xeef6d9; literal.
+Book title subject: the Pet	宠物	hi
+# general_ref_sitest; reference RVA 0xef20ee; literal.
+Book title subject: the Pit	深坑	hi
+# general_ref_sitest; reference RVA 0xef2bdd; literal.
+Book title subject: the Place	地点	hi
+# general_ref_subregionst; reference RVA 0xef4188; literal.
+Book title subject: the Plains	平原	hi
+# general_ref_historical_eventst,general_ref_poetic_formst; reference RVA 0xee4b41; literal.
+Book title subject: the Poetry	诗歌	hi
+# general_ref_historical_eventst; reference RVA 0xeef90b; literal.
+Book title subject: the Prestige	声望	hi
+# general_ref_historical_eventst; reference RVA 0xeefc63; literal.
+Book title subject: the Price	代价	hi
+# general_ref_sitest; reference RVA 0xef29ef; literal.
+Book title subject: the Primordial	太初	hi
+# general_ref_historical_eventst; reference RVA 0xeeed09; literal.
+Book title subject: the Procession	游行	hi
+# general_ref_historical_eventst; reference RVA 0xeeeee3; literal.
+Book title subject: the Punishment	惩罚	hi
+# general_ref_historical_eventst; reference RVA 0xeefa51; literal.
+Book title subject: the Purchase	购买	hi
+# general_ref_historical_eventst; reference RVA 0xeefe64; literal.
+Book title subject: the Questioning	盘问	hi
+# general_ref_historical_eventst; reference RVA 0xeedfb9; literal.
+Book title subject: the Raid	突袭	hi
+# general_ref_historical_eventst; reference RVA 0xeee03f; literal.
+Book title subject: the Rampage	暴行	hi
+# general_ref_historical_eventst; reference RVA 0xeef8ff; literal.
+Book title subject: the Rank	地位	hi
+# general_ref_historical_eventst; reference RVA 0xeefc6f; literal.
+Book title subject: the Ransom	赎金	hi
+# general_ref_historical_eventst; reference RVA 0xeee0a9; literal.
+Book title subject: the Razing	夷平	hi
+# general_ref_historical_eventst; reference RVA 0xeeee86; literal.
+Book title subject: the Rebellion	叛乱	hi
+# general_ref_historical_eventst; reference RVA 0xeeef4f; literal.
+Book title subject: the Reclamation	开垦	hi
+# general_ref_subregionst; reference RVA 0xef362e; literal.
+Book title subject: the Region	地域	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef62f6; literal.
+Book title subject: the Religion	宗教	hi
+# general_ref_historical_eventst; reference RVA 0xeeded2; literal.
+Book title subject: the Rescue	营救	hi
+# general_ref_historical_eventst; reference RVA 0xeeef43; literal.
+Book title subject: the Resettlement	重新定居	hi
+# general_ref_historical_eventst; reference RVA 0xeef78f; literal.
+Book title subject: the Resurrection	复活	hi
+# general_ref_historical_eventst; reference RVA 0xeef4af; literal.
+Book title subject: the Reunion	重聚	hi
+# general_ref_historical_eventst; reference RVA 0xeeee92; literal.
+Book title subject: the Revolt	反叛	hi
+# general_ref_historical_eventst; reference RVA 0xeeee9e; literal.
+Book title subject: the Revolution	革命	hi
+# general_ref_dance_formst,general_ref_musical_formst; reference RVA 0xee4ec0; literal.
+Book title subject: the Rhythm	节奏	hi
+# general_ref_subregionst; reference RVA 0xef387a; literal.
+Book title subject: the Rocks	岩石	hi
+# general_ref_subregionst; reference RVA 0xef3907; literal.
+Book title subject: the Sand	沙	hi
+# general_ref_subregionst; reference RVA 0xef4173; literal.
+Book title subject: the Savanna	稀树草原	hi
+# general_ref_subregionst; reference RVA 0xef3c78; literal.
+Book title subject: the Sea	海	hi
+# general_ref_historical_eventst; reference RVA 0xeedf70; literal.
+Book title subject: the Search	搜寻	hi
+# general_ref_historical_eventst; reference RVA 0xeee79e; literal.
+Book title subject: the Secret	秘密	hi
+# general_ref_historical_eventst; reference RVA 0xeedf64; literal.
+Book title subject: the Seekers	探寻者	hi
+# general_ref_historical_eventst; reference RVA 0xeefa9a; literal.
+Book title subject: the Sermon	布道	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef5c15; literal.
+Book title subject: the Settlement	聚落	hi
+# general_ref_abstract_buildingst; reference RVA 0xeedbad; literal.
+Book title subject: the Sewers	下水道	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef61d7; literal.
+Book title subject: the Show	演出	hi
+# general_ref_sitest; reference RVA 0xef264d; literal.
+Book title subject: the Shrine	圣地	hi
+# general_ref_subregionst; reference RVA 0xef415e; literal.
+Book title subject: the Shrubland	灌木丛	hi
+# general_ref_abstract_buildingst; reference RVA 0xeedb18; literal.
+Book title subject: the Spire	尖塔	hi
+# general_ref_historical_figurest; reference RVA 0xef112e; literal.
+Book title subject: the Spirit	幽魂	hi
+# general_ref_dance_formst; reference RVA 0xee5249; literal.
+Book title subject: the Steps	舞步	hi
+# general_ref_historical_eventst; reference RVA 0xeef44e; literal.
+Book title subject: the Struggle	斗争	hi
+# general_ref_historical_eventst; reference RVA 0xeef4f8; literal.
+Book title subject: the Summit	会谈	hi
+# general_ref_historical_eventst; reference RVA 0xeef2c9; literal.
+Book title subject: the Surrender	投降	hi
+# general_ref_subregionst; reference RVA 0xef37e0; literal.
+Book title subject: the Swamp	沼泽	hi
+# general_ref_abstract_buildingst; reference RVA 0xeedafc; literal.
+Book title subject: the Tavern	酒馆	hi
+# general_ref_abstract_buildingst; reference RVA 0xeedab0; literal.
+Book title subject: the Temple	神殿	hi
+# general_ref_historical_eventst; reference RVA 0xeef367; literal.
+Book title subject: the Theft	盗窃	hi
+# general_ref_historical_eventst; reference RVA 0xeef35b; literal.
+Book title subject: the Thief	小偷	hi
+# general_ref_sitest; reference RVA 0xef2b14; literal.
+Book title subject: the Tomb	陵墓	hi
+# general_ref_abstract_buildingst,general_ref_sitest; reference RVA 0xeedbee; literal.
+Book title subject: the Tower	高塔	hi
+# general_ref_sitest; reference RVA 0xef247a; literal.
+Book title subject: the Town	城镇	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef5da5; literal.
+Book title subject: the Traders	交易者	hi
+# general_ref_historical_eventst; reference RVA 0xeef690; literal.
+Book title subject: the Traveler	旅人	hi
+# general_ref_artifactst,general_ref_is_artifactst,general_ref_historical_eventst,general_ref_item_typest; reference RVA 0xeecd33; literal.
+Book title subject: the Treasure	宝藏	hi
+# general_ref_historical_eventst; reference RVA 0xeefc1a; literal.
+Book title subject: the Treaty	条约	hi
+# general_ref_sitest,general_ref_subregionst; reference RVA 0xef2304; literal.
+Book title subject: the Trees	树木	hi
+# general_ref_sitest; reference RVA 0xef1f68; literal.
+Book title subject: the Trenches	壕沟	hi
+# general_ref_historical_eventst; reference RVA 0xeef291; literal.
+Book title subject: the Tribute	贡物	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef61ab; literal.
+Book title subject: the Troupe	剧团	hi
+# general_ref_subregionst; reference RVA 0xef40aa; literal.
+Book title subject: the Tundra	苔原	hi
+# general_ref_sitest; reference RVA 0xef267e; literal.
+Book title subject: the Tunnels	隧道	hi
+# general_ref_feature_layerst; reference RVA 0xef4863; literal.
+Book title subject: the Underground	地下	hi
+# general_ref_subregionst; reference RVA 0xef3acf; literal.
+Book title subject: the Undergrowth	林下植被	hi
+# general_ref_feature_layerst; reference RVA 0xef46ec; literal.
+Book title subject: the Underworld	地狱	hi
+# general_ref_subregionst; reference RVA 0xef359a; literal.
+Book title subject: the Universe	宇宙	hi
+# general_ref_historical_eventst; reference RVA 0xeeee7a; literal.
+Book title subject: the Uprising	起义	hi
+# general_ref_sitest; reference RVA 0xef2a53; literal.
+Book title subject: the Vault	秘库	hi
+# general_ref_poetic_formst; reference RVA 0xee4b73; literal.
+Book title subject: the Verse	诗篇	hi
+# general_ref_entity_itemownerst,general_ref_entity_offeredst,general_ref_entity_stolenst,general_ref_entityst; reference RVA 0xef5ff8; literal.
+Book title subject: the Vessel	船只	hi
+# general_ref_sitest; reference RVA 0xef2571; literal.
+Book title subject: the Village	村庄	hi
+# general_ref_musical_formst; reference RVA 0xee4eaa; literal.
+Book title subject: the Voice	声音	hi
+# general_ref_subregionst; reference RVA 0xef3d2d; literal.
+Book title subject: the Waters	水域	hi
+# general_ref_subregionst; reference RVA 0xef3ca2; literal.
+Book title subject: the Waves	波涛	hi
+# general_ref_subregionst; reference RVA 0xef37b6; literal.
+Book title subject: the Wetland	湿地	hi
+# general_ref_poetic_formst; reference RVA 0xee4b84; literal.
+Book title subject: the Words	词	hi
+# general_ref_subregionst; reference RVA 0xef36cb; literal.
+Book title subject: the World	世界	hi
+# general_ref_historical_eventst; reference RVA 0xeef411; literal.
+Book title subject: the Wound	伤口	hi
+# general_ref_historical_eventst; reference RVA 0xeef405; literal.
+Book title subject: the Wounding	负伤	hi
+# Native general_ref_languagest 0xee5600..0xee5913: raw language ID + Language (append 0xee56c2).
+# Native inline generic Language fallback 0xee5706.
+Book title subject: Language	语言	hi
+Book title subject: the Language	语言	hi
+# Inline native historical-event reference can supply the Time; both forms
+# keep the established knowledge-domain Time meaning.
+Book title subject: Time	时间	hi
+Book title subject: the Time	时间	hi
+# Native artifact fallback: 0xeed110 loads unknown material from literal RVA
+# 0x1789108; 0xeed12a capitalizes the complete subject before final title casing.
+Book title subject: Unknown Material	未知材料	hi
+Book title subject: the Unknown Material	未知材料	hi
+Book title subject: Dwarf Language	矮人语	hi
+Book title subject: the Dwarf Language	矮人语	hi
+Book title subject: Elf Language	精灵语	hi
+Book title subject: the Elf Language	精灵语	hi
+Book title subject: Human Language	人类语	hi
+Book title subject: the Human Language	人类语	hi
+Book title subject: Goblin Language	地精语	hi
+Book title subject: the Goblin Language	地精语	hi
+Book title subject: Gen_divine Language	神语	hi
+Book title subject: the Gen_divine Language	神语	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:7; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: Annihilation	毁灭	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:8; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: Bereavement	丧亲	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:10; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: Demise	亡故	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:11; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: Departure	离别	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:12; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: Doom	厄运	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:13; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: Dying	濒死	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:14; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: Eternal Rest	长眠	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:15; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: Expiration	逝去	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:16; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: Extinction	灭绝	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:17; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: Mortality	必死性	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:18; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: Immortality	不朽	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:20; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: Oblivion	遗忘	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:21; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: Parting	离别	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:23; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: Ruination	毁灭	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:24; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: Sleep	睡眠	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:25; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: the Afterlife	来世	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:25; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: Afterlife	来世	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:26; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: the End	终结	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:26; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: End	终结	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:27; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: the Grave	坟墓	hi
+# SECRET_DEATH; data/vanilla/vanilla_text/objects/text_secret_death.txt:27; common engine 0xee35f0 via interaction producer 0xeec1f0.
+Book title subject: Grave	坟墓	hi
+# Native artifact subject 0xeec930: owner + possessive at 0xeed051 + material prefix 0xeed0c8 and solid name 0xeed0f5.
+{b}'s {b}	{b1}的{b2}	hbti
+# Native language name assembly: raw ID 0xee5689, lower+initial cap 0xee5693/0xee569c, Language append 0xee56c2.
+{b} Language	{b}语	hbti
+# ANY_AGE empty-vector fallback at reference RVA 0xee3c4c (literal the Age).
+{b} In The Age	这个时代的{b}	hbti
+
+# Reviewed whole RAW NOUN homonyms used only in native BOOK_ART noun slots.
+# Rendered text omits the selected WORD identity. These explicit title meanings
+# resolve each ambiguous surface deterministically without relying on RAW order;
+# original candidate meanings remain documented in the extracted WORD catalogue.
+# Native NOUN selector 0xee3e90..0xee40b0; BAND GROUP=团伙 (data/vanilla/vanilla_languages/objects/language_words.txt:17906); BAND OBJECT=带子 (data/vanilla/vanilla_languages/objects/language_words.txt:17893)
+Book title noun: band	团伙	hi
+# Native NOUN selector 0xee3e90..0xee40b0; BAND GROUP=团伙 (data/vanilla/vanilla_languages/objects/language_words.txt:17906); BAND OBJECT=带子 (data/vanilla/vanilla_languages/objects/language_words.txt:17893)
+Book title noun: bands	团伙	hi
+# Native NOUN selector 0xee3e90..0xee40b0; BOWEL GUT=肠 (data/vanilla/vanilla_languages/objects/language_words.txt:18407); BOWEL INTERIOR=内部 (data/vanilla/vanilla_languages/objects/language_words.txt:18416)
+Book title noun: bowel	肠	hi
+# Native NOUN selector 0xee3e90..0xee40b0; BOWEL GUT=肠 (data/vanilla/vanilla_languages/objects/language_words.txt:18407); BOWEL INTERIOR=内部 (data/vanilla/vanilla_languages/objects/language_words.txt:18416)
+Book title noun: bowels	肠	hi
+# Native NOUN selector 0xee3e90..0xee40b0; BUSINESS=生意 (data/vanilla/vanilla_languages/objects/language_words.txt:961); BUSY=繁忙 (data/vanilla/vanilla_languages/objects/language_words.txt:969)
+Book title noun: business	生意	hi
+# Native NOUN selector 0xee3e90..0xee40b0; DATE_FRUIT=枣 (data/vanilla/vanilla_languages/objects/language_words.txt:1855); DATE_VERB=约会 (data/vanilla/vanilla_languages/objects/language_words.txt:1866)
+Book title noun: date	约会	hi
+# Native NOUN selector 0xee3e90..0xee40b0; DATE_FRUIT=枣 (data/vanilla/vanilla_languages/objects/language_words.txt:1855); DATE_VERB=约会 (data/vanilla/vanilla_languages/objects/language_words.txt:1866)
+Book title noun: dates	约会	hi
+# Native NOUN selector 0xee3e90..0xee40b0; DEPRESS SAD=沮丧 (data/vanilla/vanilla_languages/objects/language_words.txt:15753); DEPRESSION LOW=洼地 (data/vanilla/vanilla_languages/objects/language_words.txt:15763)
+Book title noun: depression	沮丧	hi
+# Native NOUN selector 0xee3e90..0xee40b0; DISTRACT ANNOY=打扰 (data/vanilla/vanilla_languages/objects/language_words.txt:14003); DISTRACTION GAME=消遣 (data/vanilla/vanilla_languages/objects/language_words.txt:14012)
+Book title noun: distraction	消遣	hi
+# Native NOUN selector 0xee3e90..0xee40b0; DISTRACT ANNOY=打扰 (data/vanilla/vanilla_languages/objects/language_words.txt:14003); DISTRACTION GAME=消遣 (data/vanilla/vanilla_languages/objects/language_words.txt:14012)
+Book title noun: distractions	消遣	hi
+# Native NOUN selector 0xee3e90..0xee40b0; DIVERSION GAME=娱乐 (data/vanilla/vanilla_languages/objects/language_words.txt:14018); DIVERT DETOUR=改道 (data/vanilla/vanilla_languages/objects/language_words.txt:14024)
+Book title noun: diversion	娱乐	hi
+# Native NOUN selector 0xee3e90..0xee40b0; DIVERSION GAME=娱乐 (data/vanilla/vanilla_languages/objects/language_words.txt:14018); DIVERT DETOUR=改道 (data/vanilla/vanilla_languages/objects/language_words.txt:14024)
+Book title noun: diversions	娱乐	hi
+# Native NOUN selector 0xee3e90..0xee40b0; FAITH LOYALTY=忠信 (data/vanilla/vanilla_languages/objects/language_words.txt:13591); FAITH=信心 (data/vanilla/vanilla_languages/objects/language_words.txt:13551)
+Book title noun: faith	信心	hi
+# Native NOUN selector 0xee3e90..0xee40b0; FORTUNE LUCK=幸运 (data/vanilla/vanilla_languages/objects/language_words.txt:13881); FORTUNE WEALTH=财富 (data/vanilla/vanilla_languages/objects/language_words.txt:13893)
+Book title noun: fortune	幸运	hi
+# Native NOUN selector 0xee3e90..0xee40b0; FORTUNE LUCK=幸运 (data/vanilla/vanilla_languages/objects/language_words.txt:13881); FORTUNE WEALTH=财富 (data/vanilla/vanilla_languages/objects/language_words.txt:13893)
+Book title noun: fortunes	幸运	hi
+# Native NOUN selector 0xee3e90..0xee40b0; GULF DISTANCE=鸿沟 (data/vanilla/vanilla_languages/objects/language_words.txt:15844); GULF PIT=深渊 (data/vanilla/vanilla_languages/objects/language_words.txt:15836); GULF SEA=海湾 (data/vanilla/vanilla_languages/objects/language_words.txt:15828)
+Book title noun: gulf	鸿沟	hi
+# Native NOUN selector 0xee3e90..0xee40b0; GULF DISTANCE=鸿沟 (data/vanilla/vanilla_languages/objects/language_words.txt:15844); GULF PIT=深渊 (data/vanilla/vanilla_languages/objects/language_words.txt:15836); GULF SEA=海湾 (data/vanilla/vanilla_languages/objects/language_words.txt:15828)
+Book title noun: gulfs	鸿沟	hi
+# Native NOUN selector 0xee3e90..0xee40b0; LOCK HAIR=发绺 (data/vanilla/vanilla_languages/objects/language_words.txt:12334); LOCK=锁 (data/vanilla/vanilla_languages/objects/language_words.txt:4665)
+Book title noun: lock	锁	hi
+# Native NOUN selector 0xee3e90..0xee40b0; LOCK HAIR=发绺 (data/vanilla/vanilla_languages/objects/language_words.txt:12334); LOCK=锁 (data/vanilla/vanilla_languages/objects/language_words.txt:4665)
+Book title noun: locks	锁	hi
+# Native NOUN selector 0xee3e90..0xee40b0; MATCH CONTEST=比赛 (data/vanilla/vanilla_languages/objects/language_words.txt:14057); MATCH EQUAL=匹配 (data/vanilla/vanilla_languages/objects/language_words.txt:14071)
+Book title noun: match	比赛	hi
+# Native NOUN selector 0xee3e90..0xee40b0; MATCH CONTEST=比赛 (data/vanilla/vanilla_languages/objects/language_words.txt:14057); MATCH EQUAL=匹配 (data/vanilla/vanilla_languages/objects/language_words.txt:14071)
+Book title noun: matches	比赛	hi
+# Native NOUN selector 0xee3e90..0xee40b0; MEAL_DOM=餐 (data/vanilla/vanilla_languages/objects/language_words.txt:4963); MEAL_GROUND=粉 (data/vanilla/vanilla_languages/objects/language_words.txt:4971)
+Book title noun: meal	餐	hi
+# Native NOUN selector 0xee3e90..0xee40b0; MEAL_DOM=餐 (data/vanilla/vanilla_languages/objects/language_words.txt:4963); MEAL_GROUND=粉 (data/vanilla/vanilla_languages/objects/language_words.txt:4971)
+Book title noun: meals	餐	hi
+# Native NOUN selector 0xee3e90..0xee40b0; MEAN LOW=低贱 (data/vanilla/vanilla_languages/objects/language_words.txt:12380); MEAN NASTY=卑鄙 (data/vanilla/vanilla_languages/objects/language_words.txt:12370)
+Book title noun: meanness	卑鄙	hi
+# Native NOUN selector 0xee3e90..0xee40b0; ORDER CONCEPT=秩序 (data/vanilla/vanilla_languages/objects/language_words.txt:13580); ORDER GROUP=教团 (data/vanilla/vanilla_languages/objects/language_words.txt:13516)
+Book title noun: order	秩序	hi
+# Native NOUN selector 0xee3e90..0xee40b0; PLAY FUN=游戏 (data/vanilla/vanilla_languages/objects/language_words.txt:10899); PLAY PERFORM=戏剧 (data/vanilla/vanilla_languages/objects/language_words.txt:10911)
+Book title noun: play	游戏	hi
+# Native NOUN selector 0xee3e90..0xee40b0; RACE_GROUP=种族 (data/vanilla/vanilla_languages/objects/language_words.txt:6189); RACE_VERB=赛跑 (data/vanilla/vanilla_languages/objects/language_words.txt:6198)
+Book title noun: race	种族	hi
+# Native NOUN selector 0xee3e90..0xee40b0; RACE_GROUP=种族 (data/vanilla/vanilla_languages/objects/language_words.txt:6189); RACE_VERB=赛跑 (data/vanilla/vanilla_languages/objects/language_words.txt:6198)
+Book title noun: races	种族	hi
+# Native NOUN selector 0xee3e90..0xee40b0; SEAL_ANIMAL=海豹 (data/vanilla/vanilla_languages/objects/language_words.txt:6821); SEAL_ART=印章 (data/vanilla/vanilla_languages/objects/language_words.txt:6831)
+Book title noun: seal	印章	hi
+# Native NOUN selector 0xee3e90..0xee40b0; SEAL_ANIMAL=海豹 (data/vanilla/vanilla_languages/objects/language_words.txt:6821); SEAL_ART=印章 (data/vanilla/vanilla_languages/objects/language_words.txt:6831)
+Book title noun: seals	印章	hi
+# Native NOUN selector 0xee3e90..0xee40b0; SPRING_NOUN=泉 (data/vanilla/vanilla_languages/objects/language_words.txt:7738); SPRING_SEASON=春天 (data/vanilla/vanilla_languages/objects/language_words.txt:7750)
+Book title noun: spring	春天	hi
+# Native NOUN selector 0xee3e90..0xee40b0; SPRING_NOUN=泉 (data/vanilla/vanilla_languages/objects/language_words.txt:7738); SPRING_SEASON=春天 (data/vanilla/vanilla_languages/objects/language_words.txt:7750)
+Book title noun: springs	春天	hi
+# Native NOUN selector 0xee3e90..0xee40b0; TEMPLE HEAD=太阳穴 (data/vanilla/vanilla_languages/objects/language_words.txt:13565); TEMPLE=圣堂 (data/vanilla/vanilla_languages/objects/language_words.txt:13480)
+Book title noun: temple	圣堂	hi
+# Native NOUN selector 0xee3e90..0xee40b0; TEMPLE HEAD=太阳穴 (data/vanilla/vanilla_languages/objects/language_words.txt:13565); TEMPLE=圣堂 (data/vanilla/vanilla_languages/objects/language_words.txt:13480)
+Book title noun: temples	圣堂	hi
+# Native NOUN selector 0xee3e90..0xee40b0; TICK_ANIMAL=蜱虫 (data/vanilla/vanilla_languages/objects/language_words.txt:8417); TICK_CLOCK=滴答声 (data/vanilla/vanilla_languages/objects/language_words.txt:8427)
+Book title noun: tick	滴答声	hi
+# Native NOUN selector 0xee3e90..0xee40b0; TICK_ANIMAL=蜱虫 (data/vanilla/vanilla_languages/objects/language_words.txt:8417); TICK_CLOCK=滴答声 (data/vanilla/vanilla_languages/objects/language_words.txt:8427)
+Book title noun: ticks	滴答声	hi
+
+# Reviewed whole RAW ADJ homonyms used only in native BOOK_ART adjective slots.
+# The selected WORD identity is absent from the rendered title; each explicit
+# title adjective meaning is independent of RAW declaration order.
+# Native ADJ selector 0xee3cf0..0xee3e8f; FAIR EVEN=公平 and FAIR COLOR=白皙.
+Book title adjective: fair	公平	hi
+# Native ADJ selector 0xee3cf0..0xee3e8f; MEAN NASTY=卑鄙 and MEAN LOW=低贱.
+Book title adjective: mean	卑鄙	hi
+
+# Complete native inline-immediate presets recovered from full producer bodies.
+# general_ref_sitest; reference RVA 0xef2b48; no-article-alias.
+Book title subject: Camp	营地	hi
+# general_ref_sitest; reference RVA 0xef24ae; no-article-alias.
+Book title subject: City	城市	hi
+# general_ref_historical_figurest; reference RVA 0xef11df; no-article-alias.
+Book title subject: Dead	死者	hi
+# general_ref_historical_eventst; reference RVA 0xeee537; no-article-alias.
+Book title subject: Deal	交易	hi
+# general_ref_subregionst; reference RVA 0xef324b; inline-literal.
+Book title subject: Evil	邪恶	hi
+# general_ref_sitest; reference RVA 0xef25a5; no-article-alias.
+Book title subject: Farm	农场	hi
+# general_ref_feature_layerst; reference RVA 0xef47bd; no-article-alias.
+Book title subject: Fire	火	hi
+# general_ref_subregionst; reference RVA 0xef348d; inline-literal.
+Book title subject: Goodness	善良	hi
+# general_ref_feature_layerst; reference RVA 0xef46d7; inline-literal.
+Book title subject: Hell	地狱	hi
+# general_ref_sitest; reference RVA 0xef27b5; no-article-alias.
+Book title subject: Lair	巢穴	hi
+# general_ref_subregionst; reference RVA 0xef3dbc; no-article-alias.
+Book title subject: Lake	湖泊	hi
+# general_ref_sitest; reference RVA 0xef201a; no-article-alias.
+Book title subject: Pits	深坑	hi
+# general_ref_poetic_formst; reference RVA 0xee4b5f; no-article-alias.
+Book title subject: Poem	诗歌	hi
+# general_ref_historical_eventst; reference RVA 0xeefce7; inline-literal.
+Book title subject: Sabotage	破坏	hi
+# general_ref_sitest; reference RVA 0xef239a; no-article-alias.
+Book title subject: Tree	树	hi
+# general_ref_sitest; reference RVA 0xef2b48; inline-literal.
+Book title subject: the Camp	营地	hi
+# general_ref_sitest; reference RVA 0xef24ae; inline-literal.
+Book title subject: the City	城市	hi
+# general_ref_historical_figurest; reference RVA 0xef11df; inline-literal.
+Book title subject: the Dead	死者	hi
+# general_ref_historical_eventst; reference RVA 0xeee537; inline-literal.
+Book title subject: the Deal	交易	hi
+# general_ref_sitest; reference RVA 0xef25a5; inline-literal.
+Book title subject: the Farm	农场	hi
+# general_ref_feature_layerst; reference RVA 0xef47bd; inline-literal.
+Book title subject: the Fire	火	hi
+# general_ref_sitest; reference RVA 0xef27b5; inline-literal.
+Book title subject: the Lair	巢穴	hi
+# general_ref_subregionst; reference RVA 0xef3dbc; inline-literal.
+Book title subject: the Lake	湖泊	hi
+# general_ref_sitest; reference RVA 0xef201a; inline-literal.
+Book title subject: the Pits	深坑	hi
+# general_ref_poetic_formst; reference RVA 0xee4b5f; inline-literal.
+Book title subject: the Poem	诗歌	hi
+# general_ref_sitest; reference RVA 0xef239a; inline-literal.
+Book title subject: the Tree	树	hi

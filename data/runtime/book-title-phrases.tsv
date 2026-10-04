@@ -1,0 +1,39 @@
+# Native BOOK_ART [PHRASE] grammar, Steam 53.16 PE RVA 0xee35f0..0xee486c.
+# The prefix, subject, verb and suffix selectors are independent. Only The Sands
+# and The Wise set the plural flag (0xee42e8/0xee4302); five verbs append s otherwise.
+# '-' is an explicit empty choice. Chinese clause templates place time/place
+# before the clause and put Slowly's adverb inside the predicate after a modal.
+# These factors compile only to complete Book title phrase: keys in the hi scope.
+kind	source	plural_source	target_template	adverb	plural	source_ref
+prefix	-	-	{subject}{predicate}	-	-	PE:RVA=0xee4159..0xee4160
+prefix	Slowly	-	{subject}{predicate}	缓缓	-	PE:RVA=0xee41b4
+prefix	Then	-	随后，{subject}{predicate}	-	-	PE:RVA=0xee41bd
+prefix	Surely	-	{subject}必定{predicate}	-	-	PE:RVA=0xee41cc
+prefix	Suddenly	-	突然，{subject}{predicate}	-	-	PE:RVA=0xee41db
+prefix	Only	-	只有{subject}{predicate}	-	-	PE:RVA=0xee41e4
+subject	Time	-	时间	-	0	PE:RVA=0xee4272
+subject	It	-	它	-	0	PE:RVA=0xee4284
+subject	The Day	-	白昼	-	0	PE:RVA=0xee4296
+subject	The Night	-	夜晚	-	0	PE:RVA=0xee42a8
+subject	The Wind	-	风	-	0	PE:RVA=0xee42b4
+subject	The Sea	-	大海	-	0	PE:RVA=0xee42c6
+subject	The Sands	-	沙粒	-	1	PE:RVA=0xee42d8;plural=0xee42e8
+subject	The Wise	-	智者	-	1	PE:RVA=0xee42f2;plural=0xee4302
+subject	The Dirt	-	尘土	-	0	PE:RVA=0xee4306
+subject	The Fool	-	愚者	-	0	PE:RVA=0xee430f
+subject	Nothing	-	虚无	-	0	PE:RVA=0xee431e
+subject	Nobody	-	无人	-	0	PE:RVA=0xee432d
+subject	The Future	-	未来	-	0	PE:RVA=0xee433c
+subject	The Past	-	过去	-	0	PE:RVA=0xee4345
+verb	Will Tell	Will Tell	会{adverb}揭晓	-	-	PE:RVA=0xee43c0
+verb	Foretells	Foretell	{adverb}预言	-	-	PE:RVA=0xee43db;singular-s=0xee43eb..0xee43ed
+verb	Can Say	Can Say	能够{adverb}诉说	-	-	PE:RVA=0xee44ac
+verb	Knows	Know	{adverb}知晓	-	-	PE:RVA=0xee44c7;singular-s=0xee44d7..0xee44d9
+verb	Mourns	Mourn	{adverb}哀悼	-	-	PE:RVA=0xee45a9;singular-s=0xee44d7..0xee44d9
+verb	Weeps	Weep	{adverb}哭泣	-	-	PE:RVA=0xee45bb;singular-s=0xee45cb..0xee45cd
+verb	Laughs	Laugh	{adverb}欢笑	-	-	PE:RVA=0xee45e2;singular-s=0xee45f2..0xee45f4
+suffix	-	-	{clause}	-	-	PE:RVA=0xee4660..0xee4667
+suffix	There	-	在那里，{clause}	-	-	PE:RVA=0xee46c9
+suffix	In The Beginning	-	起初，{clause}	-	-	PE:RVA=0xee46d8
+suffix	Afterward	-	此后，{clause}	-	-	PE:RVA=0xee46e7
+suffix	In The End	-	最终，{clause}	-	-	PE:RVA=0xee46f6
