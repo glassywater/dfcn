@@ -132437,3 +132437,34 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
+
+# Complete Character information -> Rooms requirements.
+Needs Meager Study	需要简陋书房	wl
+Needs Modest Study	需要普通书房	wl
+Needs Decent Study	需要像样书房	wl
+Needs Splendid Study	需要华美书房	wl
+Needs Throne Room	需要王座厅	wl
+Needs Opulent Throne Room	需要奢华王座厅	wl
+Needs Royal Throne Room	需要皇家王座厅	wl
+Needs Meager Quarters	需要简陋卧室	wl
+Needs Modest Quarters	需要普通卧室	wl
+Needs Decent Quarters	需要像样卧室	wl
+Needs Fine Quarters	需要舒适卧室	wl
+Needs Great Bedroom	需要宽敞卧室	wl
+Needs Grand Bedroom	需要豪华卧室	wl
+Needs Royal Bedroom	需要皇家卧室	wl
+Needs Meager Dining Room	需要简陋餐厅	wl
+Needs Modest Dining Room	需要普通餐厅	wl
+Needs Decent Dining Room	需要像样餐厅	wl
+Needs Fine Dining Room	需要精致餐厅	wl
+Needs Great Dining Room	需要宽敞餐厅	wl
+Needs Grand Dining Room	需要豪华餐厅	wl
+Needs Royal Dining Room	需要皇家餐厅	wl
+Needs Grave	需要坟墓	wl
+Needs Servant's Burial Chamber	需要仆役墓室	wl
+Needs Burial Chamber	需要墓室	wl
+Needs Tomb	需要陵墓	wl
+Needs Fine Tomb	需要华美陵墓	wl
+Needs Mausoleum	需要陵寝	wl
+Needs Grand Mausoleum	需要宏伟陵寝	wl
+Needs Royal Mausoleum	需要皇家陵寝	wl
