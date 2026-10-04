@@ -141,6 +141,8 @@ Corrupt {s} of {e}, agreed in {d}	拉拢{e1}的{s1}（第{d1}年商定）
 
 # Places zone list: a single assigned squad carries its complete generated name.
 {e} assigned	已分配：{e}
+Will be assigned to {e}, position {d}	将分配至{e}，位置{d}
+Assigned to {e}, position {d}	已分配至{e}，位置{d}
 
 # Location access, religious recognition, agreements and petitions.
 Only members can visit (if guild established)	仅成员可以到访（行会成立后）。

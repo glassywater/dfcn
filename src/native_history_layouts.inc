@@ -5536,6 +5536,11 @@ struct f_report {
     int32_t f_speaker_id;
     size_t f_pool_id;
 };
+struct f_squad {
+    int32_t f_id;
+    native_history_layout::f_language_name f_name;
+    std::string f_alias;
+};
 struct f_stocks_interfacest {
     bool f_open;
     Vector f_type_list;
@@ -17067,6 +17072,17 @@ static constexpr std::array<Field, 22> f_report_fields = {{
     {0x64, DFCN_NATIVE_FIELD(f_report, f_speaker_id, 0x64), 4},
     {0x68, DFCN_NATIVE_FIELD(f_report, f_pool_id, 0x68), 8},
 }};
+static constexpr std::array<Field, 9> f_squad_fields = {{
+    {0x0, DFCN_NATIVE_FIELD(f_squad, f_id, 0x0), 4},
+    {0x8, DFCN_NATIVE_FIELD(f_squad, f_name.f_first_name, 0x8), 32},
+    {0x28, DFCN_NATIVE_FIELD(f_squad, f_name.f_nickname, 0x28), 32},
+    {0x48, DFCN_NATIVE_FIELD(f_squad, f_name.f_words, 0x48), 28},
+    {0x64, DFCN_NATIVE_FIELD(f_squad, f_name.f_parts_of_speech, 0x64), 14},
+    {0x74, DFCN_NATIVE_FIELD(f_squad, f_name.f_language, 0x74), 4},
+    {0x78, DFCN_NATIVE_FIELD(f_squad, f_name.f_type, 0x78), 2},
+    {0x7a, DFCN_NATIVE_FIELD(f_squad, f_name.f_has_name, 0x7a), 1},
+    {0x80, DFCN_NATIVE_FIELD(f_squad, f_alias, 0x80), 32},
+}};
 static constexpr std::array<Field, 10> f_stocks_interfacest_fields = {{
     {0x0, DFCN_NATIVE_FIELD(f_stocks_interfacest, f_open, 0x0), 1},
     {0x8, DFCN_NATIVE_FIELD(f_stocks_interfacest, f_type_list, 0x8), 24},
@@ -18087,6 +18103,7 @@ static constexpr size_t textbox_type_offset = DFCN_NATIVE_FIELD(f_widget_textbox
 static constexpr size_t stocks_open_offset = DFCN_NATIVE_FIELD(f_stocks_interfacest, f_open, 0x0);
 static constexpr size_t stocks_filter_offset = DFCN_NATIVE_FIELD(f_stocks_interfacest, f_item_filter, 0x48);
 static constexpr size_t stocks_entering_filter_offset = DFCN_NATIVE_FIELD(f_stocks_interfacest, f_entering_item_filter, 0x68);
+static constexpr size_t squad_alias_offset = DFCN_NATIVE_FIELD(f_squad, f_alias, 0x80);
 struct ModScreenFields { size_t active, hover_rows; std::array<size_t, 3> headers; };
 static constexpr ModScreenFields mod_title_fields = {DFCN_NATIVE_FIELD(f_viewscreen_titlest, f_managing_mods, 0x92c), DFCN_NATIVE_FIELD(f_viewscreen_titlest, f_hover_mod_description.f_text, 0x950), {{DFCN_NATIVE_FIELD(f_viewscreen_titlest, f_mod, 0x930), SIZE_MAX, SIZE_MAX}}};
 static constexpr ModScreenFields mod_newregion_fields = {DFCN_NATIVE_FIELD(f_viewscreen_new_regionst, f_doing_mods, 0x2a8), DFCN_NATIVE_FIELD(f_viewscreen_new_regionst, f_hover_mod_description.f_text, 0x4b8), {{DFCN_NATIVE_FIELD(f_viewscreen_new_regionst, f_object_load_order_mod_header, 0x3f8), DFCN_NATIVE_FIELD(f_viewscreen_new_regionst, f_available_mod_header, 0x4a0), DFCN_NATIVE_FIELD(f_viewscreen_new_regionst, f_base_available_mod_header, 0x350)}}};
@@ -18730,6 +18747,7 @@ static constexpr Object objects[] = {
     {"plant_raw", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_plant_raw_fields.data(), std::size(f_plant_raw_fields), nullptr, 0},
     {"plotinfost", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_plotinfost_fields.data(), std::size(f_plotinfost_fields), nullptr, 0},
     {"report", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_report_fields.data(), std::size(f_report_fields), nullptr, 0},
+    {"squad", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_squad_fields.data(), std::size(f_squad_fields), nullptr, 0},
     {"stocks_interfacest", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_stocks_interfacest_fields.data(), std::size(f_stocks_interfacest_fields), nullptr, 0},
     {"viewscreen_dungeonmodest", "viewscreen", DFCN_NATIVE_BINDING(0x16b9f48, 0x207fb70), f_viewscreen_dungeonmodest_fields.data(), std::size(f_viewscreen_dungeonmodest_fields), f_viewscreen_dungeonmodest_slots, std::size(f_viewscreen_dungeonmodest_slots)},
     {"viewscreen_dwarfmodest", "viewscreen", DFCN_NATIVE_BINDING(0x16be500, 0x20802e8), f_viewscreen_dwarfmodest_fields.data(), std::size(f_viewscreen_dwarfmodest_fields), f_viewscreen_dwarfmodest_slots, std::size(f_viewscreen_dwarfmodest_slots)},

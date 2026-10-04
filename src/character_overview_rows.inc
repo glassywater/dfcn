@@ -118,7 +118,8 @@ void Overlay::append_character_overview_identities(
 
             const std::string source = normalize_utterance(row.source);
             if (source.empty()) continue;
-            auto target = exact_literal_translation("Character overview: " + source);
+            auto target = translate_fortress_squad_reference(row.source, row.x, row.y);
+            if (!target) target = exact_literal_translation("Character overview: " + source);
             if (!target) target = exact_literal_translation(source);
             if (!target) {
                 target = translate_procedural_fragment(source);
@@ -133,6 +134,11 @@ void Overlay::append_character_overview_identities(
             if (translate_rated_skill_phrase(row.source)) match.rule = kRatedSkillRule;
             if (!row.foregrounds.empty())
                 match.layout_foreground_rgb = row.foregrounds.front();
+            if (row.source.starts_with("Squad:"))
+                std::erase_if(matches, [&](const Match &previous) {
+                    return previous.y == row.y && previous.x < end &&
+                        row.x < previous.x + previous.length;
+                });
             matches.push_back(std::move(match));
         }
     }

@@ -51369,6 +51369,7 @@ Victory was spread among {c} winners.	共有{c1}名参赛者共同获得了胜�
 What will you say about the conflict?	关于这场冲突，你想说些什么？	hP
 What will you say about the incident?	关于这件事件，你想说些什么？	hP
 What will you say about the refugees?	关于难民，你想说些什么？	hP
+Will be assigned to {e}, position {d}	将分配至{e1}，位置{d1}	hPt
 Workers gather outdoor vermin remains	工人收集室外害兽残骸	wi
 Workers ignore outdoor vermin remains	工人不收集室外害兽残骸	wi
 Workshop recipe: body substance plant	植物组织	l
@@ -67098,6 +67099,7 @@ Argue the value of friendship	争辩友谊的价值	hP
 Art image named creature: X Y	X「Y」	wl
 Ask about somebody (new menu)	打听某个人（新菜单）	hP
 Ask for directions (new menu)	问路（新菜单）	hP
+Assigned to {e}, position {d}	已分配至{e1}，位置{d1}	hPt
 Auto-dumping is not required.	不必设置自动倾倒。	hP
 Automated vein and gem mining	自动挖掘矿脉与宝石	wo
 Be cautious of fatigue today.	今天要当心疲劳。	hP

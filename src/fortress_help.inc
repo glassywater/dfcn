@@ -290,7 +290,12 @@ std::optional<std::string> Overlay::translate_help_paragraph(
                                 translated = translate_ui_message_capture(native, true);
                         }
                         break;
-                    case 'e': translated = translate_legends_name(captures[i], false); break;
+                    case 'e':
+                        translated = ui_message && i == 0 &&
+                            fortress_squad_reference_template(rule.source)
+                            ? translate_fortress_squad_name(captures[i])
+                            : translate_legends_name(captures[i], false);
+                        break;
                     case 'r': translated = translate_deity_spheres(captures[i]); break;
                     case 'q':
                         if (ui_message) {

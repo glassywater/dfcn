@@ -195,7 +195,9 @@ if (!cards.empty()) {
             }
             if (text.source.empty()) continue;
             const std::string source = normalize_utterance(text.source);
-            auto target = exact_literal_translation("Character overview: " + source);
+            auto target = translate_fortress_squad_reference(text.source,
+                ordered.front()->draw->x, y);
+            if (!target) target = exact_literal_translation("Character overview: " + source);
             if (!target) target = exact_literal_translation(source);
             if (!target) target = translate_procedural_fragment(source);
             if (!target) target = translate_fortress_activity(source);

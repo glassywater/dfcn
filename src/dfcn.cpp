@@ -1331,6 +1331,8 @@ static std::unordered_map<uint64_t, EmbarkItemSourceCapture>
 static std::vector<EmbarkItemSourceCapture> g_embark_item_fields_this_frame;
 static std::atomic<uint64_t> g_embark_item_capture_epoch{1};
 #include "unit_identity_sources.inc"
+#include "squad_name_sources.inc"
+static bool capture_native_fortress_squad_aliases(std::vector<std::string> &aliases);
 // Generic clipping captures retain exact byte identity, not a prefix lookup.
 // Consumers bind complete fields to their current native position and bytes.
 struct NativeClippedCaption {
@@ -1923,6 +1925,9 @@ struct NativeDrawnTextRow {
     uintptr_t unit_identity_owner = 0;
     bool unit_identity_english = false;
     bool unit_identity_header = false;
+    // The native squad alias branch owns this exact string, independently
+    // of identically spelled generated names and ordinary UI labels.
+    std::optional<std::string> squad_alias_target{};
     NativeInfoTitleKind info_title_kind = NativeInfoTitleKind::None;
     bool info_title_authored = false;
     int info_title_right = -1; // exclusive native draw clip boundary
@@ -2605,6 +2610,9 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
             row.unit_identity_header = identity->character_header;
         }
         if (row.unit_identity_target) row.caption_source = true;
+        row.squad_alias_target = native_squad_alias_source_target(
+            complete_source.empty() ? source : complete_source, address);
+        if (row.squad_alias_target) row.caption_source = true;
         if (!complete_source.empty() && complete_source != source &&
             complete_source.size() <= 4096 &&
             complete_source.find('\0') == std::string_view::npos &&
@@ -4061,6 +4069,11 @@ private:
         const std::vector<Match *> &moving_fields = {});
     void append_fortress_squad_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
+    void append_fortress_squad_alias_rows(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, const unsigned char *raw) const;
+    std::optional<std::string> translate_fortress_squad_name(std::string_view source) const;
+    std::optional<std::string> translate_fortress_squad_reference(
+        std::string_view source, int x = -1, int y = -1) const;
     void layout_fortress_squads(SDL_Renderer *renderer);
     void layout_fortress_date(SDL_Renderer *renderer);
     void layout_fortress_build_menu(SDL_Renderer *renderer);
@@ -9220,10 +9233,9 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             const auto label = exact_literal_translation(
                 "Character overview: " + std::string(relation));
             const auto value = trim_view(std::string_view(screen_text).substr(prefix.size()));
-            auto name = relation == "Squad" && value == "None"
-                ? exact_literal_translation(value)
-                : relation == "Children" ? translate_ui_message_capture(value, true)
-                : translate_legends_name(value, relation != "Squad");
+            if (relation == "Squad") return translate_fortress_squad_reference(screen_text);
+            auto name = relation == "Children" ? translate_ui_message_capture(value, true)
+                : translate_legends_name(value, true);
             if (label && name) return *label + "：" + *name;
             return std::nullopt;
         }
@@ -10930,8 +10942,18 @@ static bool catalog_scoped_term_capture(const Rule &rule, size_t index) {
         trim_view(rule.template_literals[index + 1]) == "of";
 }
 
+static bool fortress_squad_reference_template(std::string_view source) {
+    return source == "{e} assigned" ||
+        source == "Will be assigned to {e}, position {d}" ||
+        source == "Assigned to {e}, position {d}";
+}
+
 std::optional<std::string> Overlay::translate_ui_catalog_capture(
         const Rule &rule, size_t index, std::string_view source) const {
+    // These native fields refer to squads. Their alias is authored text even
+    // when it happens to be an ordinary dictionary word or generated title.
+    if (index == 0 && fortress_squad_reference_template(rule.source))
+        return translate_fortress_squad_name(source);
     // The native visitor constructor walks an itinerary vector. Its first
     // field is a complete list of purposes, each with an optional named place.
     if (rule.ui_message && index == 0 &&
@@ -11313,6 +11335,14 @@ std::string Overlay::translate_template_captures(
         const Rule &rule, const std::vector<std::string> &captures,
         bool *all_string_captures_translated) const {
     std::vector<std::optional<std::string>> resolved;
+    if (fortress_squad_reference_template(rule.source) && !captures.empty()) {
+        resolved.resize(captures.size());
+        resolved[0] = translate_fortress_squad_name(captures[0]);
+        if (!resolved[0]) {
+            if (all_string_captures_translated) *all_string_captures_translated = false;
+            return {};
+        }
+    }
     const bool legends_world = rule.source == "Explore the history of {s}.";
     const bool group_symbol = rule.source == "The symbol of {s}";
     const bool identity_origin = rule.source == "Origin: {s}";
@@ -21615,6 +21645,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
         append_world_site_phrases(action, screen_rows, result, only_y, true);
     const auto world_mission_summary = capture_world_mission_summary_card();
     append_fortress_squad_rows(screen_rows, result, only_y, screen_override != nullptr);
+    append_fortress_squad_alias_rows(screen_rows, result, only_y, screen_override);
     append_world_mission_titles(screen_rows, result, only_y);
     append_world_mission_reports(screen_rows, result, only_y);
     append_world_mission_members(screen_rows, result, only_y);
