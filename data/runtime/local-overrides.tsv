@@ -622,7 +622,8 @@ crowns	头冠	wi
 bone opal	骨欧泊	wi
 bone opals	骨欧泊	wi
 Welcome to the arena!	欢迎来到竞技场！	wi
-Here you can test mods or just play around.	你可以在此测试模组，也可以随意游玩。	wi
+# Match the complete explanation in the UI-message pass before its Here caption.
+Here you can test mods or just play around.	你可以在此测试模组，也可以随意游玩。	wiP
 Small arena	小型竞技场	wi
 Forest	森林	wi
 Classic Arena	经典竞技场	wi
