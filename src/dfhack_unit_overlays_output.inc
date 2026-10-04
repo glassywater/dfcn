@@ -131,10 +131,33 @@
                 // widget's unused allocation.
                 dfhack_auxiliary_regions.push_back({x, y, current_right - x, 1});
                 dfhack_auxiliary_regions.push_back({x, y + 1, longterm_right - x, 1});
-                gui_literal(x, y, current, current_x - 1, "Unit overlay caption");
-                gui_literal(current_x, y, *current_mood, current_right, "Unit mood state");
-                gui_literal(x, y + 1, longterm, longterm_x - 1, "Unit overlay caption");
-                gui_literal(longterm_x, y + 1, *longterm_mood, longterm_right, "Unit mood state");
+                const auto emit_mood_row = [&](int row, std::string_view caption,
+                        std::string_view mood, int end) {
+                    if (only_y >= 0 && only_y != row) return;
+                    const std::string source = dfhack_context_rows[row].substr(x, end - x);
+                    if (read_row(row).compare(x, source.size(), source) != 0) return;
+                    const auto label = exact_literal_translation(
+                        "DFHack GUI Unit overlay caption: " + std::string(caption));
+                    const auto state = exact_literal_translation(
+                        "DFHack GUI Unit mood state: " + std::string(mood));
+                    if (!label || !state) return;
+                    // Caption and value are one colored text run. Keeping
+                    // separate matches makes Overview restore the English
+                    // caption's column offset after the Chinese label.
+                    Match match{x, row, end - x, kDfhackHotkeysHintRule,
+                        *label + *state, source};
+                    match.layout_x = x;
+                    match.layout_length = end - x;
+                    match.layout_left = true;
+                    match.layout_clip_right = end;
+                    match.layout_font_pixels = unified_font_pixels();
+                    match.layout_lock_font_pixels = true;
+                    // Leave layout_y native so the shared colon/value color
+                    // mapper retains the mood's original stress-level pen.
+                    dfhack_auxiliary_matches.push_back(std::move(match));
+                };
+                emit_mood_row(y, current, *current_mood, current_right);
+                emit_mood_row(y + 1, longterm, *longterm_mood, longterm_right);
             }
         }
     }
