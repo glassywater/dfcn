@@ -14,30 +14,12 @@ std::vector<SDL_Rect> dfhack_launcher_regions;
 std::vector<Match> dfhack_launcher_matches;
 {
     constexpr std::string_view title = "DFHack Launcher";
-    for (int title_y = 0; title_y < gps_->dimy; ++title_y) {
-        const size_t title_at = dfhack_context_rows[title_y].find(title);
-        if (title_at == std::string::npos) continue;
-        const auto frame = native_dfhack_frame(dfhack_context_rows, title_y,
-            static_cast<int>(title_at), static_cast<int>(title.size()));
-        if (!frame) continue;
-        const int left = frame->x, right = frame->x + frame->w - 1;
-        const int top = frame->y, bottom = frame->y + frame->h - 1;
+    for (const auto &frame : native_dfhack_launcher_geometry(dfhack_context_rows)) {
+        const int left = frame.x, right = frame.x + frame.w - 1;
+        const int top = frame.y, bottom = frame.y + frame.h - 1;
         const int divider = right - 29;
-        // These two native labels and their documented offsets distinguish
-        // the launcher from an arbitrary DFHack dialog with the same skin.
-        if (divider <= left + 20 || top + 9 >= bottom ||
-                dfhack_context_rows[top + 2].find("Tab/Shift+Tab", divider) == std::string::npos ||
-                dfhack_context_rows[top + 7].find("Showing:", divider) == std::string::npos)
-            continue;
-        bool connected = true;
-        for (int y = top + 1; connected && y < bottom; ++y) {
-            const auto ch = static_cast<unsigned char>(dfhack_context_rows[y][divider]);
-            connected = ch == 0xb3 || ch == 0xba || ch == 0xc5 ||
-                ch == 0xce || ch == 0xb4 || ch == 0xb9;
-        }
-        if (!connected) continue;
-        dfhack_launcher_frames.push_back(*frame);
-        dfhack_launcher_regions.push_back(*frame);
+        dfhack_launcher_frames.push_back(frame);
+        dfhack_launcher_regions.push_back(frame);
         const auto caption = [&](std::string_view source, int y, int begin, int end) {
             const size_t at = dfhack_context_rows[y].find(source, begin);
             if (at == std::string::npos || at + source.size() > static_cast<size_t>(end)) return;
@@ -561,6 +543,6 @@ std::vector<Match> dfhack_launcher_matches;
         // regardless of translation coverage. This never suppresses native
         // glyphs: only translated Match records own suppression/drawing.
         for (int y = top; y <= bottom; ++y)
-            std::fill_n(screen_rows[y].begin() + left, frame->w, ' ');
+            std::fill_n(screen_rows[y].begin() + left, frame.w, ' ');
     }
 }

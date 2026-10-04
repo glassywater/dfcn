@@ -20583,6 +20583,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 }
 
 #include "fortress_economy.inc"
+#include "dfhack_frame_geometry.inc"
 #include "dfhack_hotkeys_geometry.inc"
 #include "native_panel_layout.inc"
 
@@ -20981,6 +20982,8 @@ std::vector<Match> Overlay::find_matches(int only_y,
             auto help_frames = native_help_overlay_frames(*gps_);
             const auto announcement_frames = native_announcement_overlay_frames(*gps_);
             help_frames.insert(help_frames.end(), announcement_frames.begin(), announcement_frames.end());
+            const auto dfhack_frames = native_dfhack_text_overlay_frames(*gps_);
+            help_frames.insert(help_frames.end(), dfhack_frames.begin(), dfhack_frames.end());
             auto overlay_frames = help_frames;
             overlay_frames.push_back(box);
             auto frames = std::make_shared<const std::vector<SDL_Rect>>(
