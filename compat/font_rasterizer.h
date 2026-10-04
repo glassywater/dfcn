@@ -46,6 +46,8 @@ struct FT_FaceRec_ {
     HFONT font = nullptr;
     HGDIOBJ previous_font = nullptr;
     int pixel_size = 0;
+    bool monochrome = false;
+    bool font_monochrome = false;
     std::wstring family;
     std::wstring private_font_path;
     LOGFONTW font_description{};
@@ -60,7 +62,9 @@ struct FT_LibraryRec_ {};
 using FT_Library = FT_LibraryRec_ *;
 
 inline constexpr int FT_LOAD_DEFAULT = 0;
+inline constexpr int FT_LOAD_TARGET_MONO = 0x20000;
 inline constexpr int FT_RENDER_MODE_NORMAL = 0;
+inline constexpr int FT_RENDER_MODE_MONO = 2;
 inline constexpr int FT_KERNING_DEFAULT = 0;
 #define FT_HAS_KERNING(face) 0
 
@@ -207,7 +211,8 @@ inline FT_Error FT_Done_Face(FT_Face face) {
 
 inline FT_Error FT_Set_Pixel_Sizes(FT_Face face, FT_UInt, FT_UInt height) {
     if (!face || !face->dc || height == 0) return 1;
-    if (face->font && face->pixel_size == static_cast<int>(height)) return 0;
+    if (face->font && face->pixel_size == static_cast<int>(height) &&
+            face->font_monochrome == face->monochrome) return 0;
     if (face->previous_font) {
         SelectObject(face->dc, face->previous_font);
         face->previous_font = nullptr;
@@ -225,7 +230,8 @@ inline FT_Error FT_Set_Pixel_Sizes(FT_Face face, FT_UInt, FT_UInt height) {
     description.lfStrikeOut = FALSE;
     description.lfOutPrecision = OUT_TT_PRECIS;
     description.lfClipPrecision = CLIP_DEFAULT_PRECIS;
-    description.lfQuality = ANTIALIASED_QUALITY;
+    description.lfQuality = face->monochrome
+        ? NONANTIALIASED_QUALITY : ANTIALIASED_QUALITY;
     lstrcpynW(description.lfFaceName,
         face->family.empty() ? L"Noto Sans SC" : face->family.c_str(), LF_FACESIZE);
     face->font = CreateFontIndirectW(&description);
@@ -236,6 +242,7 @@ inline FT_Error FT_Set_Pixel_Sizes(FT_Face face, FT_UInt, FT_UInt height) {
     if (!face->font) return 1;
     face->previous_font = SelectObject(face->dc, face->font);
     face->pixel_size = static_cast<int>(height);
+    face->font_monochrome = face->monochrome;
     return 0;
 }
 
@@ -251,11 +258,15 @@ inline FT_UInt FT_Get_Char_Index(FT_Face face, unsigned long codepoint) {
     return static_cast<FT_UInt>(codepoint);
 }
 
-inline FT_Error FT_Load_Glyph(FT_Face face, FT_UInt glyph_index, int) {
+inline FT_Error FT_Load_Glyph(FT_Face face, FT_UInt glyph_index, int flags) {
     if (!face || !face->dc || !face->font || glyph_index == 0) return 1;
+    face->monochrome = (flags & FT_LOAD_TARGET_MONO) != 0;
+    if (FT_Set_Pixel_Sizes(face, 0, static_cast<FT_UInt>(face->pixel_size)) != 0)
+        return 1;
     GLYPHMETRICS metrics{};
     const MAT2 matrix = dfcn_identity_matrix();
-    const DWORD size = GetGlyphOutlineW(face->dc, glyph_index, GGO_GRAY8_BITMAP,
+    const UINT format = face->monochrome ? GGO_BITMAP : GGO_GRAY8_BITMAP;
+    const DWORD size = GetGlyphOutlineW(face->dc, glyph_index, format,
                                         &metrics, 0, nullptr, &matrix);
     if (size == GDI_ERROR) return 1;
     face->glyph_storage.codepoint = glyph_index;
@@ -271,13 +282,17 @@ inline FT_Error FT_Load_Glyph(FT_Face face, FT_UInt glyph_index, int) {
     return 0;
 }
 
-inline FT_Error FT_Render_Glyph(FT_GlyphSlot slot, int) {
+inline FT_Error FT_Render_Glyph(FT_GlyphSlot slot, int mode) {
     if (!slot || slot->codepoint == 0) return 1;
     auto *face = static_cast<FT_FaceRec_ *>(slot->owner);
     if (!face) return 1;
+    face->monochrome = mode == FT_RENDER_MODE_MONO;
+    if (FT_Set_Pixel_Sizes(face, 0, static_cast<FT_UInt>(face->pixel_size)) != 0)
+        return 1;
     GLYPHMETRICS metrics{};
     const MAT2 matrix = dfcn_identity_matrix();
-    const DWORD needed = GetGlyphOutlineW(face->dc, slot->codepoint, GGO_GRAY8_BITMAP,
+    const UINT format = face->monochrome ? GGO_BITMAP : GGO_GRAY8_BITMAP;
+    const DWORD needed = GetGlyphOutlineW(face->dc, slot->codepoint, format,
                                           &metrics, 0, nullptr, &matrix);
     if (needed == GDI_ERROR) return 1;
     slot->bitmap_left = metrics.gmptGlyphOrigin.x;
@@ -297,18 +312,28 @@ inline FT_Error FT_Render_Glyph(FT_GlyphSlot slot, int) {
         return 0;
     }
     std::vector<unsigned char> gdi_bitmap(needed);
-    if (GetGlyphOutlineW(face->dc, slot->codepoint, GGO_GRAY8_BITMAP, &metrics,
+    if (GetGlyphOutlineW(face->dc, slot->codepoint, format, &metrics,
                          needed, gdi_bitmap.data(), &matrix) == GDI_ERROR) {
         return 1;
     }
-    const std::size_t source_pitch = (static_cast<std::size_t>(metrics.gmBlackBoxX) + 3u) & ~3u;
+    // GDI's monochrome rows pack the leftmost pixel into the high bit and
+    // pad each row to a DWORD. Expand both modes to the shared byte coverage.
+    const std::size_t source_pitch = face->monochrome
+        ? ((static_cast<std::size_t>(metrics.gmBlackBoxX) + 31u) / 32u) * 4u
+        : (static_cast<std::size_t>(metrics.gmBlackBoxX) + 3u) & ~3u;
     const std::size_t target_pitch = metrics.gmBlackBoxX;
     face->bitmap_storage.assign(target_pitch * metrics.gmBlackBoxY, 0);
     for (std::size_t y = 0; y < metrics.gmBlackBoxY; ++y) {
         for (std::size_t x = 0; x < metrics.gmBlackBoxX; ++x) {
-            const unsigned int coverage = gdi_bitmap[y * source_pitch + x];
-            face->bitmap_storage[y * target_pitch + x] =
-                static_cast<unsigned char>(std::min(255u, coverage * 4u));
+            if (face->monochrome) {
+                face->bitmap_storage[y * target_pitch + x] =
+                    (gdi_bitmap[y * source_pitch + x / 8u] &
+                        (0x80u >> (x % 8u))) ? 255 : 0;
+            } else {
+                const unsigned int coverage = gdi_bitmap[y * source_pitch + x];
+                face->bitmap_storage[y * target_pitch + x] =
+                    static_cast<unsigned char>(std::min(255u, coverage * 4u));
+            }
         }
     }
     slot->bitmap.buffer = face->bitmap_storage.data();

@@ -272,7 +272,7 @@ bool Overlay::layout_embark_introduction(SDL_Renderer *renderer) {
                 FT_UInt previous = 0;
                 for (; end < cps.size(); ++end) {
                     const Metrics &metrics = glyphs.at(cps[end]);
-                    if (FT_HAS_KERNING(face_) && previous && metrics.index) {
+                    if (config_.font_pixel_grid == 0 && FT_HAS_KERNING(face_) && previous && metrics.index) {
                         FT_Vector delta{};
                         FT_Get_Kerning(face_, previous, metrics.index, FT_KERNING_DEFAULT, &delta);
                         pen += static_cast<int>(delta.x >> 6);

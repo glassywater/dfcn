@@ -1642,7 +1642,7 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
                 for (; at < cps.size(); ++at) {
                     const Metric &m = metric(cps[at]);
                     int kern = 0;
-                    if (FT_HAS_KERNING(face_) && previous && m.index) {
+                    if (config_.font_pixel_grid == 0 && FT_HAS_KERNING(face_) && previous && m.index) {
                         FT_Vector delta{};
                         FT_Get_Kerning(face_, previous, m.index, FT_KERNING_DEFAULT, &delta);
                         kern = static_cast<int>(delta.x >> 6);

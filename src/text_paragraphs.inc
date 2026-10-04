@@ -230,7 +230,7 @@ bool Overlay::append_bounded_paragraph(std::vector<Match> rows,
             for (; end < codepoints.size(); ++end) {
                 if (codepoints[end] == '\n') break;
                 const SetupGlyph &metrics = glyphs.at(codepoints[end]);
-                if (previous_face == metrics.face && FT_HAS_KERNING(metrics.face) &&
+                if (config_.font_pixel_grid == 0 && previous_face == metrics.face && FT_HAS_KERNING(metrics.face) &&
                         previous && metrics.index) {
                     FT_Vector delta{};
                     FT_Get_Kerning(metrics.face, previous, metrics.index,

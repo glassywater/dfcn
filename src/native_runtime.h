@@ -288,8 +288,10 @@ inline void native_find_font(std::string &path, int &index, bool bold = false) {
 #endif
 }
 
-inline FT_Error native_load_font_glyph(FT_Face face, FT_UInt index, bool bold) {
-    const FT_Error error = FT_Load_Glyph(face, index, FT_LOAD_DEFAULT);
+inline FT_Error native_load_font_glyph(FT_Face face, FT_UInt index, bool bold,
+        bool monochrome = false) {
+    const FT_Error error = FT_Load_Glyph(face, index,
+        monochrome ? FT_LOAD_TARGET_MONO : FT_LOAD_DEFAULT);
 #ifdef _WIN32
     // GDI applies the selected weight to both advances and bitmap bounds.
     (void)bold;

@@ -292,6 +292,13 @@ struct NativeEnglishInkBounds {
     int top = 0, bottom = 0; // exclusive bottom, relative to the native row
 };
 
+inline std::optional<int> native_font_cell_height() {
+    auto &cache = native_font_metrics_detail::english_ink_cache();
+    if (!cache.refreshed) refresh_native_font_metrics();
+    return cache.rows.cell_height > 0
+        ? std::optional<int>(cache.rows.cell_height) : std::nullopt;
+}
+
 inline std::optional<NativeEnglishInkBounds> native_english_ink_bounds(int row_height) {
     if (row_height <= 0) return std::nullopt;
     auto &cache = native_font_metrics_detail::english_ink_cache();

@@ -296,6 +296,8 @@ struct Config {
     int min_font_pixels = 6;
     // Zero matches native English ink height; positive values override the em size.
     int font_pixels = 0;
+    // Opt-in pixel font: rasterize this base once and enlarge whole pixels.
+    int font_pixel_grid = 0;
     int horizontal_padding = 1;
     int max_cached_textures = 2048;
     int collect_interval_seconds = 2;
@@ -3148,7 +3150,7 @@ private:
     FT_Face face_ = nullptr;
     mutable std::vector<FT_Face> fallback_fonts_;
     mutable std::unordered_map<uint32_t, FontGlyph> fallback_glyphs_;
-    // Different names reuse the same hinted gray glyphs. The face and pixel
+    // Different names reuse the same rasterized glyphs. The face and pixel
     // size are part of the key; text color, kerning and placement are not.
     mutable std::unordered_map<FontGlyphBitmapKey, FontGlyphBitmapCacheEntry,
         FontGlyphBitmapKeyHash> glyph_bitmap_cache_;
@@ -4803,6 +4805,7 @@ bool Overlay::load_config() {
             else if (key == "font_index") next.font_index = parse_int(value, next.font_index);
             else if (key == "font_bold") next.font_bold = parse_bool(value, next.font_bold);
             else if (key == "font_pixels") next.font_pixels = parse_int(value, next.font_pixels);
+            else if (key == "font_pixel_grid") next.font_pixel_grid = parse_int(value, next.font_pixel_grid);
             else if (key == "font_scale") next.font_scale = parse_double(value, next.font_scale);
             else if (key == "knowledge_font_scale") next.knowledge_font_scale = parse_double(value, next.knowledge_font_scale);
             else if (key == "min_font_pixels") next.min_font_pixels = parse_int(value, next.min_font_pixels);
@@ -4843,6 +4846,7 @@ bool Overlay::load_config() {
 
     next.font_scale = std::clamp(next.font_scale, 0.20, 2.0);
     next.font_pixels = next.font_pixels <= 0 ? 0 : std::clamp(next.font_pixels, 4, 64);
+    next.font_pixel_grid = next.font_pixel_grid <= 0 ? 0 : std::clamp(next.font_pixel_grid, 4, 64);
     next.knowledge_font_scale = std::clamp(next.knowledge_font_scale, 0.5, 2.0);
     next.min_font_pixels = std::clamp(next.min_font_pixels, 4, 64);
     next.horizontal_padding = std::clamp(next.horizontal_padding, 0, 16);
@@ -4854,6 +4858,7 @@ bool Overlay::load_config() {
                               next.font_index != config_.font_index ||
                               next.font_bold != config_.font_bold ||
                               next.font_pixels != config_.font_pixels ||
+                              next.font_pixel_grid != config_.font_pixel_grid ||
                               next.font_scale != config_.font_scale ||
                               next.min_font_pixels != config_.min_font_pixels;
     if (runtime_enabled_override_) next.enabled = *runtime_enabled_override_;
@@ -5771,6 +5776,21 @@ void Overlay::clear_fallback_fonts() {
 }
 
 int Overlay::unified_font_pixels() const {
+    if (config_.font_pixel_grid > 0) {
+        const int grid = config_.font_pixel_grid;
+        const int row_height = gps_ && gps_->tile_pixel_y > 0 ? gps_->tile_pixel_y : 12;
+        const int native_height = native_font_cell_height().value_or(12);
+        // Pixel fonts follow native UI enlargement without selecting arbitrary
+        // outline sizes. Keep the base image until another whole multiple fits.
+        const double target = config_.font_pixels > 0 ? config_.font_pixels :
+            grid * static_cast<double>(row_height) / native_height *
+                config_.font_scale / Config::font_scale_baseline;
+        const int minimum = config_.font_pixels > 0 ? 1 :
+            (config_.min_font_pixels + grid - 1) / grid;
+        const int multiple = std::clamp(static_cast<int>(std::floor(target / grid + 1e-6)),
+            minimum, 512 / grid);
+        return grid * multiple;
+    }
     if (config_.font_pixels > 0) return config_.font_pixels;
     // Preserve the native-ink calibration at the established scale baseline.
     // User scaling changes this one shared size, never a page-specific fit.
@@ -5920,30 +5940,55 @@ std::shared_ptr<const Overlay::FontGlyphBitmap> Overlay::font_glyph_bitmap_at_si
             glyph_bitmap_use_order_, found->second.use);
         return found->second.bitmap;
     }
-    if (!glyph.face || FT_Set_Pixel_Sizes(glyph.face, 0, pixels) != 0 ||
-        native_load_font_glyph(glyph.face, glyph.index, config_.font_bold) != 0)
+    const bool pixel_font = config_.font_pixel_grid > 0;
+    const int raster_pixels = pixel_font ? config_.font_pixel_grid : pixels;
+    const int bitmap_scale = pixel_font ? std::max(1, pixels / raster_pixels) : 1;
+    if (!glyph.face || FT_Set_Pixel_Sizes(glyph.face, 0, raster_pixels) != 0 ||
+        native_load_font_glyph(glyph.face, glyph.index, config_.font_bold, pixel_font) != 0)
         return {};
     auto bitmap = std::make_shared<FontGlyphBitmap>();
-    bitmap->advance = static_cast<int>(glyph.face->glyph->advance.x >> 6);
     // A failed render still advances like the uncached path, but must not
     // become a permanent empty glyph if the native rasterizer later recovers.
-    if (FT_Render_Glyph(glyph.face->glyph, FT_RENDER_MODE_NORMAL) != 0)
+    if (FT_Render_Glyph(glyph.face->glyph,
+            pixel_font ? FT_RENDER_MODE_MONO : FT_RENDER_MODE_NORMAL) != 0) {
+        bitmap->advance = static_cast<int>(glyph.face->glyph->advance.x >> 6) * bitmap_scale;
         return bitmap;
+    }
+    bitmap->advance = static_cast<int>(glyph.face->glyph->advance.x >> 6) * bitmap_scale;
     const FT_Bitmap &native = glyph.face->glyph->bitmap;
-    bitmap->left = glyph.face->glyph->bitmap_left;
-    bitmap->top = glyph.face->glyph->bitmap_top;
-    bitmap->width = native.width;
-    bitmap->rows = native.rows;
+    bitmap->left = glyph.face->glyph->bitmap_left * bitmap_scale;
+    bitmap->top = glyph.face->glyph->bitmap_top * bitmap_scale;
+    bitmap->width = native.width * bitmap_scale;
+    bitmap->rows = native.rows * bitmap_scale;
     if (native.width > 0 && native.rows > 0) {
         if (!native.buffer) return bitmap;
-        bitmap->coverage.resize(static_cast<size_t>(native.width) * native.rows);
+        bitmap->coverage.resize(static_cast<size_t>(bitmap->width) * bitmap->rows);
+#ifdef _WIN32
+        constexpr bool packed_monochrome = false;
+#else
+        const bool packed_monochrome = native.pixel_mode == FT_PIXEL_MODE_MONO;
+#endif
         for (unsigned int by = 0; by < native.rows; ++by) {
-            // Preserve the shared rasterizer's existing pitch/row semantics.
-            // The Windows adapter already expands GDI coverage to gray bytes.
+            // GDI already expands its monochrome bits to coverage bytes;
+            // FreeType keeps them packed. Scale both from the same base grid.
             const unsigned char *source = native.buffer +
-                static_cast<size_t>(by) * std::abs(native.pitch);
-            std::copy_n(source, native.width, bitmap->coverage.data() +
-                static_cast<size_t>(by) * native.width);
+                static_cast<size_t>(native.pitch >= 0 ? by : native.rows - 1 - by) *
+                    std::abs(native.pitch);
+            if (bitmap_scale == 1 && !packed_monochrome) {
+                std::copy_n(source, native.width, bitmap->coverage.data() +
+                    static_cast<size_t>(by) * bitmap->width);
+                continue;
+            }
+            for (unsigned int bx = 0; bx < native.width; ++bx) {
+                const unsigned char alpha = packed_monochrome
+                    ? ((source[bx / 8] & (0x80u >> (bx % 8))) ? 255 : 0) : source[bx];
+                for (int y = 0; y < bitmap_scale; ++y) {
+                    auto *destination = bitmap->coverage.data() +
+                        (static_cast<size_t>(by) * bitmap_scale + y) * bitmap->width +
+                        static_cast<size_t>(bx) * bitmap_scale;
+                    std::fill_n(destination, bitmap_scale, alpha);
+                }
+            }
         }
     }
 
@@ -19792,7 +19837,8 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
                 for (; end < cps.size(); ++end) {
                     const KnowledgeGlyph &metrics = glyphs.at(cps[end]);
                     const FT_UInt glyph = metrics.index;
-                    if (previous_face == metrics.face && FT_HAS_KERNING(metrics.face) && previous && glyph) {
+                    if (config_.font_pixel_grid == 0 && previous_face == metrics.face &&
+                            FT_HAS_KERNING(metrics.face) && previous && glyph) {
                         FT_Vector delta{};
                         FT_Get_Kerning(metrics.face, previous, glyph, FT_KERNING_DEFAULT, &delta);
                         pen += static_cast<int>(delta.x >> 6);
@@ -43931,9 +43977,9 @@ std::optional<Overlay::EllipsizedText> Overlay::ellipsize_text(
         FontGlyph previous{};
         int width() const { return std::max({pen, ink_right, 1}) - ink_left + 2; }
     };
-    const auto append = [](Bounds &bounds, const FontGlyph &glyph,
+    const auto append = [this](Bounds &bounds, const FontGlyph &glyph,
                            const FontGlyphBitmap &bitmap) {
-        if (bounds.previous.face == glyph.face && FT_HAS_KERNING(glyph.face) &&
+        if (config_.font_pixel_grid == 0 && bounds.previous.face == glyph.face && FT_HAS_KERNING(glyph.face) &&
             bounds.previous.index && glyph.index) {
             FT_Vector delta{};
             FT_Get_Kerning(glyph.face, bounds.previous.index, glyph.index,
@@ -44221,7 +44267,8 @@ GlyphTexture Overlay::rasterize(SDL_Renderer *renderer, const std::string &text,
             const FontGlyph glyph = resolve_font_glyph(cp, pixel_size);
             const auto bitmap = font_glyph_bitmap(glyph, pixel_size);
             int kerning = 0;
-            if (previous_face == glyph.face && FT_HAS_KERNING(glyph.face) && previous && glyph.index) {
+            if (config_.font_pixel_grid == 0 && previous_face == glyph.face &&
+                    FT_HAS_KERNING(glyph.face) && previous && glyph.index) {
                 FT_Vector delta{};
                 FT_Get_Kerning(glyph.face, previous, glyph.index, FT_KERNING_DEFAULT, &delta);
                 kerning = static_cast<int>(delta.x >> 6);

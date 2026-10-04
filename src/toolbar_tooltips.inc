@@ -1026,7 +1026,7 @@ void Overlay::layout_toolbar_tooltip(SDL_Renderer *renderer) {
                 }
             };
             std::unordered_map<uint32_t, GlyphMetrics> glyphs;
-            const bool kerning = FT_HAS_KERNING(face_);
+            const bool kerning = config_.font_pixel_grid == 0 && FT_HAS_KERNING(face_);
             const auto append_metrics = [&](LineMetrics &line, uint32_t cp) {
                 auto found = glyphs.find(cp);
                 if (found == glyphs.end()) {
