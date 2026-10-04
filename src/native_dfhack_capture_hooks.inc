@@ -15,6 +15,13 @@ static bool native_dfhack_set_tile_capture(const void *pen, int x, int y,
     NativeInputCallbackScope callback;
     const auto original = g_native_dfhack_original_set_tile.load(std::memory_order_acquire);
     if (!original || original == native_dfhack_set_tile_capture) return false;
+    if (pen && !map) {
+        try {
+            capture_native_dfhack_background_cell(native_graphics(), x, y);
+        } catch (...) {
+            // Background capture must never prevent the original tile write.
+        }
+    }
     const bool result = callback.call_native([&] {
         return original(pen, x, y, map, member_field);
     });
@@ -80,6 +87,7 @@ static void uninstall_native_dfhack_capture_hook() {
     auto *slot = g_native_dfhack_set_tile_slot.load(std::memory_order_acquire);
     if (!slot) {
         clear_native_dfhack_logo_captures();
+        clear_native_dfhack_background_capture();
         return;
     }
     const auto original = g_native_dfhack_original_set_tile.load(std::memory_order_acquire);
@@ -95,4 +103,5 @@ static void uninstall_native_dfhack_capture_hook() {
     // Keep the original target valid for callbacks already in flight; the
     // common callback counter prevents unloading their code prematurely.
     clear_native_dfhack_logo_captures();
+    clear_native_dfhack_background_capture();
 }

@@ -2182,6 +2182,77 @@ static std::shared_ptr<NativeTooltipPage> g_native_help_page;
 static uint64_t g_native_drawn_text_epoch = 0;
 static uint64_t g_native_help_page_epoch = 0;
 static int g_native_help_page_dimx = 0, g_native_help_page_dimy = 0;
+// DFHack set_tile erases both native layers, even when it draws into the
+// top layer. Keep each cell before its first foreign write in this draw.
+// Only a recognized current DFHack frame may consume the saved cells.
+static std::shared_ptr<NativeTooltipPage> g_native_dfhack_page;
+static uint64_t g_native_dfhack_page_epoch = 0;
+static const graphicst *g_native_dfhack_page_graphics = nullptr;
+static void capture_native_dfhack_background_cell(const graphicst *gps, int x, int y) {
+    if (!native_capture_grid_valid(gps) || !gps->screen ||
+            x < 0 || y < 0 || x >= gps->dimx || y >= gps->dimy) return;
+    const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+    if (!native_dfhack_capture_hook_active()) return;
+    if (!g_native_dfhack_page || g_native_dfhack_page_epoch != epoch ||
+            g_native_dfhack_page_graphics != gps ||
+            g_native_dfhack_page->bounds.w != gps->dimx ||
+            g_native_dfhack_page->bounds.h != gps->dimy) {
+        g_native_dfhack_page = std::make_shared<NativeTooltipPage>(*gps);
+        g_native_dfhack_page->bounds = {0, 0, gps->dimx, gps->dimy};
+        std::fill(g_native_dfhack_page->cells.begin(), g_native_dfhack_page->cells.end(), 0);
+        g_native_dfhack_page_epoch = epoch;
+        g_native_dfhack_page_graphics = gps;
+    }
+    auto &page = *g_native_dfhack_page;
+    const size_t at = static_cast<size_t>(x) * gps->dimy + y;
+    if (page.cells[at]) return;
+    const bool top = native_ui_top_layer_at(*gps, at);
+    const bool ignored = native_capture_ignored_cell(gps, x, y);
+    const auto *screen = top ? gps->screen_top : gps->screen;
+    auto *destination = page.screen.data() + at * 8;
+    if (ignored || !screen) {
+        std::memset(destination, 0, 8);
+        destination[0] = ' ';
+    } else {
+        std::memcpy(destination, screen + at * 8, 8);
+    }
+    page.origins[at] = native_text_grid_origin(*gps, at, top);
+    const auto copy = [at, ignored](auto &out, const auto *in) {
+        if (!out.empty()) out[at] = !ignored && in ? in[at] : 0;
+    };
+    copy(page.texture, top ? gps->screentexpos_top : gps->screentexpos);
+    copy(page.lower, top ? gps->screentexpos_top_lower : gps->screentexpos_lower);
+    copy(page.anchored, top ? gps->screentexpos_top_anchored : gps->screentexpos_anchored);
+    copy(page.anchor_x, top ? gps->screentexpos_top_anchored_x : gps->screentexpos_anchored_x);
+    copy(page.anchor_y, top ? gps->screentexpos_top_anchored_y : gps->screentexpos_anchored_y);
+    copy(page.flags, top ? gps->screentexpos_top_flag : gps->screentexpos_flag);
+    page.cells[at] = 1;
+}
+// The caller holds the capture lock while reading the saved cell mask.
+static bool native_dfhack_background_matches_locked(const graphicst &gps, const SDL_Rect &frame) {
+    if (!g_native_dfhack_page || g_native_dfhack_page_graphics != &gps ||
+            g_native_dfhack_page_epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire) ||
+            g_native_dfhack_page->bounds.w != gps.dimx ||
+            g_native_dfhack_page->bounds.h != gps.dimy ||
+            frame.x < 0 || frame.y < 0 || frame.w <= 0 || frame.h <= 0 ||
+            frame.x > gps.dimx - frame.w || frame.y > gps.dimy - frame.h) return false;
+    for (int x = frame.x; x < frame.x + frame.w; ++x)
+        for (int y = frame.y; y < frame.y + frame.h; ++y)
+            if (!g_native_dfhack_page->cells[static_cast<size_t>(x) * gps.dimy + y])
+                return false;
+    return true;
+}
+static bool native_dfhack_background_matches(const graphicst &gps, const SDL_Rect &frame) {
+    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+    return native_dfhack_background_matches_locked(gps, frame);
+}
+static void clear_native_dfhack_background_capture() {
+    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+    g_native_dfhack_page.reset();
+    g_native_dfhack_page_epoch = 0;
+    g_native_dfhack_page_graphics = nullptr;
+}
 // Alert flyouts erase the base grid in place. Preserve only the current
 // native draw's background, before the flyout starts writing its rectangle.
 static std::shared_ptr<NativeTooltipPage> g_native_announcement_page;
@@ -2224,6 +2295,12 @@ static std::shared_ptr<NativeTooltipPage> native_help_background_page(const grap
                              : std::make_shared<NativeTooltipPage>(gps);
     if (tooltip_page) page->compose_outside(gps, &frames);
     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+    // A foreign frame may destroy a page that was already in screen_top.
+    // Outside it, retain the current composed native page rather than using
+    // an empty base layer beside the restored cells.
+    if (!tooltip_page && std::any_of(frames.begin(), frames.end(), [&](const SDL_Rect &frame) {
+            return native_dfhack_background_matches_locked(gps, frame);
+        })) page->compose_outside(gps, &frames);
     if (g_native_help_page && g_native_help_page_epoch == g_native_drawn_text_epoch &&
         g_native_help_page_dimx == gps.dimx && g_native_help_page_dimy == gps.dimy) {
         const auto &saved = *g_native_help_page;
@@ -2247,6 +2324,25 @@ static std::shared_ptr<NativeTooltipPage> native_help_background_page(const grap
             for (int y = frame.y; y < frame.y + frame.h; ++y) {
                 const size_t at = static_cast<size_t>(x) * gps.dimy + y;
                 if (!saved.cells[at]) continue;
+                std::memcpy(page->screen.data() + at * 8, saved.screen.data() + at * 8, 8);
+                page->origins[at] = saved.origins[at];
+                const auto copy = [at](auto &out, const auto &in) {
+                    if (!out.empty()) out[at] = in.empty() ? 0 : in[at];
+                };
+                copy(page->texture, saved.texture);
+                copy(page->lower, saved.lower);
+                copy(page->anchored, saved.anchored);
+                copy(page->anchor_x, saved.anchor_x);
+                copy(page->anchor_y, saved.anchor_y);
+                copy(page->flags, saved.flags);
+            }
+    }
+    for (const auto &frame : frames) {
+        if (!native_dfhack_background_matches_locked(gps, frame)) continue;
+        const auto &saved = *g_native_dfhack_page;
+        for (int x = frame.x; x < frame.x + frame.w; ++x)
+            for (int y = frame.y; y < frame.y + frame.h; ++y) {
+                const size_t at = static_cast<size_t>(x) * gps.dimy + y;
                 std::memcpy(page->screen.data() + at * 8, saved.screen.data() + at * 8, 8);
                 page->origins[at] = saved.origins[at];
                 const auto copy = [at](auto &out, const auto &in) {
@@ -20487,6 +20583,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 }
 
 #include "fortress_economy.inc"
+#include "dfhack_hotkeys_geometry.inc"
 #include "native_panel_layout.inc"
 
 struct NativeKeybindingScope {
@@ -20950,6 +21047,9 @@ std::vector<Match> Overlay::find_matches(int only_y,
         // Only a separate foreground layer leaves a complete base page to
         // read. Same-layer cards continue to use captured native source rows.
         std::erase_if(overlay_frames, [&](const SDL_Rect &frame) {
+            // set_tile clears both layers, so screen_top cannot establish
+            // an intact base. Its current pre-write capture supplies it.
+            if (native_dfhack_background_matches(*gps_, frame)) return false;
             // The alert flyout writes screen directly. Its current native
             // draw snapshot, not screen_top, preserves the complete page.
             if (native_announcement_background_matches(*gps_, frame)) return false;

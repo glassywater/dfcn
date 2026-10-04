@@ -20,6 +20,7 @@ public:
     std::optional<std::vector<NativeCollapsedHelpPanel>> collapsed_help_panels;
     std::optional<std::vector<SDL_Rect>> help_frames;
     std::optional<std::vector<SDL_Rect>> announcement_frames;
+    std::optional<std::vector<SDL_Rect>> dfhack_hotkeys_frames;
     std::optional<std::vector<SDL_Rect>> overlay_frames;
     inline static thread_local NativePanelReadScope *active = nullptr;
 
@@ -2125,6 +2126,28 @@ static std::vector<SDL_Rect> native_help_overlay_frames(const graphicst &gps) {
 // multi-line help, even when their text has no tooltip-catalog entry.
 static std::vector<SDL_Rect> native_announcement_overlay_frames(const graphicst &gps);
 static std::vector<SDL_Rect> native_unit_chooser_overlay_frames(const graphicst &gps);
+static std::vector<SDL_Rect> native_dfhack_hotkeys_overlay_frames(const graphicst &gps) {
+    auto *cache = NativePanelReadScope::active;
+    if (cache && cache->gps == &gps && cache->dfhack_hotkeys_frames)
+        return *cache->dfhack_hotkeys_frames;
+    std::vector<SDL_Rect> frames;
+    if (!gps.screen || gps.dimx <= 0 || gps.dimx > 1000 ||
+            gps.dimy <= 0 || gps.dimy > 1000) return frames;
+    std::vector<std::string> rows(gps.dimy, std::string(gps.dimx, ' '));
+    for (int x = 0; x < gps.dimx; ++x)
+        for (int y = 0; y < gps.dimy; ++y) {
+            const size_t at = static_cast<size_t>(x) * gps.dimy + y;
+            const auto *screen = native_ui_top_layer_at(gps, at) ? gps.screen_top : gps.screen;
+            if (screen && screen[at * 8]) rows[y][x] = static_cast<char>(screen[at * 8]);
+        }
+    retain_native_dfhack_border_chars(gps, rows);
+    for (const auto &card : native_dfhack_hotkeys_geometry(rows)) {
+        frames.push_back(card.list);
+        if (card.help) frames.push_back(*card.help);
+    }
+    if (cache && cache->gps == &gps) cache->dfhack_hotkeys_frames = frames;
+    return frames;
+}
 static std::vector<SDL_Rect> native_text_overlay_frames(const graphicst &gps) {
     auto *cache = NativePanelReadScope::active;
     if (cache && cache->gps == &gps && cache->overlay_frames) return *cache->overlay_frames;
@@ -2133,6 +2156,8 @@ static std::vector<SDL_Rect> native_text_overlay_frames(const graphicst &gps) {
     frames.insert(frames.end(), announcements.begin(), announcements.end());
     const auto choosers = native_unit_chooser_overlay_frames(gps);
     frames.insert(frames.end(), choosers.begin(), choosers.end());
+    const auto hotkeys = native_dfhack_hotkeys_overlay_frames(gps);
+    frames.insert(frames.end(), hotkeys.begin(), hotkeys.end());
     if (const auto widget = captured_native_tooltip_widget(gps)) frames.push_back(widget->bounds);
     // HOVER_RECTANGLE is also used for ordinary floating panels. Its skin
     // alone does not establish an occluder or authorize clipping page text.
