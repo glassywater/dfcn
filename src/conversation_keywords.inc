@@ -95,6 +95,9 @@ std::optional<std::string> Overlay::translate_adventure_action_choice(
         std::vector<int> &target_colors, const NativePerformanceChoice *native_choice) const {
     TranslationStateScope translation_scope;
     target_colors.clear();
+    // The native entry, rather than the shortened button text, establishes
+    // both the complete source and its sphere/value/name/item namespace.
+    if (native_choice && !native_choice->source.empty()) source = native_choice->source;
     const std::string normalized = normalize_utterance(source);
     if (normalized.empty() || normalized.ends_with("...") || source_colors.empty())
         return std::nullopt;
@@ -122,17 +125,87 @@ std::optional<std::string> Overlay::translate_adventure_action_choice(
             case 8: target = "未知地点"; break; // STORY_SITE
             case 10: target = "未知群体"; break; // STORY_ENTITY
             case 11: target = "未知区域"; break; // STORY_SUBREGION
+            case 25: target = "未知崇拜对象"; break; // SERMON_HFID
             default: break;
             }
         }
         return uniform_colors(std::move(target));
     }
+    if (native_choice) {
+        switch (native_choice->type) {
+        case 26: // SERMON_SPHERE: all 130 native sphere enum values.
+            return uniform_colors(translate_deity_spheres(normalized));
+        case 27: case 28: // SERMON_PROMOTE_VALUE / SERMON_REFUSE_VALUE.
+            return uniform_colors(exact_literal_translation(
+                "Adventure performance value: " + normalized));
+        case 38: // WRITE_FORM_BY_INDEX: the finite written-work genre table.
+            return uniform_colors(exact_literal_translation(
+                "Adventure performance genre: " + normalized));
+        case 17: { // MUSIC_ROLE: voice, RAW instrument, actual item or artifact.
+            if (const auto voice = exact_literal_translation(
+                    "Adventure performance voice: " + normalized))
+                return uniform_colors(voice);
+            const bool simulate = normalized.starts_with("Simulate ");
+            const bool play = normalized.starts_with("Play ");
+            if (!simulate && !play) return std::nullopt;
+            const auto instrument = std::string_view(normalized).substr(simulate ? 9 : 5);
+            std::optional<std::string> target;
+            if (simulate) {
+                // Native +0x68 is a generated instrument type, with no item
+                // material or designation marks for this branch to invent.
+                target = translate_embark_instrument_item(instrument, false, true);
+            } else {
+                // Native item virtual +0x188 and artifact formatter c65450
+                // retain the actual object's complete material/quality/name.
+                target = translate_item_description_term(instrument);
+                if (!target) target = translate_inventory_item_name(instrument, -1, -1);
+                if (!target) target = translate_legends_item(instrument);
+                if (!target) target = translate_embark_instrument_item(instrument, true, true);
+                if (!target && generated_title_shape(instrument))
+                    target = translate_legends_artifact_identity(instrument);
+            }
+            if (!target) return std::nullopt;
+            return uniform_colors((simulate ? "模仿" : "演奏") + *target +
+                (simulate ? "的演奏" : ""));
+        }
+        case 9: // STORY_HF, with any visible assumed identity preserved.
+            return uniform_colors(translate_ui_message_capture(source, true));
+        case 25: // SERMON_HFID is the historical figure's own name.
+            return uniform_colors(translate_legends_name(source, true));
+        case 8: case 10: case 11: // STORY_SITE / ENTITY / SUBREGION.
+        case 13: case 15: case 18: // POETRY / MUSIC / DANCE_FORM.
+        case 31: case 33: case 35: // COMPOSE_*_FORM_BY_INDEX.
+            return uniform_colors(translate_legends_name(source, false));
+        case 14: case 16: case 19: case 39: // Memorized written compositions.
+            return uniform_colors(translate_legends_book(source));
+        case 12: // STORY_EVENT is the complete native history-event caption.
+            return uniform_colors(translate_legends_text(source, false, false));
+        case 37: { // WRITE_TARGET: the actual writable item's designation.
+            auto target = translate_item_description_term(source);
+            if (!target) target = translate_inventory_item_name(source, -1, -1);
+            if (!target) target = translate_legends_item(source);
+            return uniform_colors(std::move(target));
+        }
+        default: break;
+        }
+    }
+    if (const auto target = exact_literal_translation("Adventure action: " + normalized))
+        return uniform_colors(target);
+    // Complete fixed menu captions precede the permissive personal-name
+    // fallback. Their authored predicates must never become invented names.
+    std::vector<int> complete_colors;
+    const std::vector<int> *caption_colors = &source_colors;
+    if (source.size() != source_colors.size()) {
+        complete_colors.assign(source.size(), source_colors.front());
+        caption_colors = &complete_colors;
+    }
+    if (const auto target = translate_help_paragraph(source, *caption_colors,
+            target_colors, true)) return target;
     // Use this exact priority for both complete native search candidates and
     // visible action buttons, including the prompt's name-only submenus.
     auto target = native_unit_identity_source_target(source);
     if (!target && !native_choice && normalized == "A")
         target = exact_literal_translation("Adventure vermin: A");
-    if (!target) target = exact_literal_translation("Adventure action: " + normalized);
     if (!target) target = translate_adventure_item_action(normalized);
     if (!target) {
         // View-contaminant's native caption has no verb. Its complete
@@ -156,8 +229,6 @@ std::optional<std::string> Overlay::translate_adventure_action_choice(
         std::string(trim_view(source)), false, false, {},
         ProceduralFragmentContext::personal_name);
     if (target) return uniform_colors(std::move(target));
-    target = translate_help_paragraph(source, source_colors, target_colors, true);
-    if (target) return target;
     target = translate_ui_message_capture(normalized, false);
     if (target) return uniform_colors(std::move(target));
     return uniform_colors(translate_conversation_choice(source));
@@ -169,8 +240,8 @@ bool Overlay::translated_adventure_action_matches(std::string_view source,
     if (!config_.enabled || source.empty() || source.size() > 65536) return false;
     if (compact_translated_search_text(query).empty()) return false;
     if (native_choice) {
-        // Several different objects can have the identical native Unknown
-        // key. Their species must never enter a cache keyed by that text alone.
+        // Equal captions can have different enums or native identities.
+        // Never cache a sphere, genre or person's translation by text alone.
         std::vector<int> source_colors(source.size(), 0xffffff), target_colors;
         const auto target = translate_adventure_action_choice(
             source, source_colors, target_colors, native_choice);

@@ -1,5 +1,5 @@
-// The performance chooser owns typed story subjects. Bind a borrowed caption
-// to its live entry before resolving the native Unknown name placeholder.
+// The performance chooser's enum owns each caption's semantic kind. Borrow
+// the original list_name before print_name is shortened for the native view.
 static std::optional<NativePerformanceChoice> capture_native_performance_choice(
         uintptr_t caption_address) {
 #ifdef _WIN32
@@ -23,15 +23,14 @@ static std::optional<NativePerformanceChoice> capture_native_performance_choice(
     if (found == entries.end()) return std::nullopt;
     const uintptr_t entry = *found;
     NativePerformanceChoice result;
-    std::string complete;
     if (!native_history_copy(entry, result.type) ||
             !native_history_copy(entry + 0x68, result.id) ||
-            !native_history_copy_string(entry + 0x28, complete) || complete != "Unknown")
+            !native_history_copy_string(entry + 0x28, result.source) ||
+            result.type < 0 || result.type > 39 || result.source.empty())
         return std::nullopt;
     // STORY_SITE, STORY_HF, STORY_ENTITY and STORY_SUBREGION use separate
     // native enum values despite sharing the same display placeholder.
-    if (result.type < 8 || result.type > 11) return std::nullopt;
-    if (result.type != 9) return result;
+    if (result.type != 9 || result.source != "Unknown") return result;
     uintptr_t identity = 0;
     if (!native_history_copy(entry + 0x70, identity)) return std::nullopt;
     // A known assumed identity never authorizes revealing the real figure's

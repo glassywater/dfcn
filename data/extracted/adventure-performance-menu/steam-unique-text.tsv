@@ -1,0 +1,1485 @@
+category	function_start	instruction	literal	source
+menu_options	0x140854ec0	0x140854fc3	0x1416b1430	Tell a story
+menu_options	0x140854ec0	0x140855028	0x1416b1420	Give a sermon
+menu_options	0x140854ec0	0x1408550d9	0x1416b1530	Recite a poem
+menu_options	0x140854ec0	0x140855160	0x1416b1520	Perform music
+menu_options	0x140854ec0	0x1408551e7	0x1416a5454	Dance
+menu_options	0x140854ec0	0x1408552c7	0x1416b14a0	Prepare choreography
+menu_options	0x140854ec0	0x1408552ed	0x1416b1540	Compose music
+menu_options	0x140854ec0	0x140855313	0x1416b1550	Compose a poem
+menu_options	0x140854ec0	0x14085540e	0x1416b1488	Write something down
+menu_options	0x140854ec0	0x140855480	0x1416b14e8	Give a sermon concerning a deity or object of worship
+menu_options	0x140854ec0	0x1408554e5	0x1416b14b8	Give a sermon concerning a cosmic principle
+menu_options	0x140854ec0	0x14085554a	0x1416b1f40	Give a sermon promoting a value
+menu_options	0x140854ec0	0x1408555a7	0x1416b1f10	Give a sermon inveighing against a value
+menu_options	0x140854ec0	0x1408555d8	0x1416b1f80	Tell a story about a person or creature
+menu_options	0x140854ec0	0x14085563d	0x1416b1f60	Tell a story about a site
+menu_options	0x140854ec0	0x1408556a2	0x1416b1ec8	Tell a story about a civilization or organization
+menu_options	0x140854ec0	0x1408556ff	0x1416b1ea8	Tell a story about a region
+menu_options	0x140854ec0	0x140855a62	0x1415ec1e0	Unknown
+menu_options	0x140854ec0	0x140855c15	0x1415e8844	Law
+menu_options	0x140854ec0	0x140855c21	0x1415e8868	Loyalty
+menu_options	0x140854ec0	0x140855c2d	0x1415e885c	Family
+menu_options	0x140854ec0	0x140855c39	0x1415e8878	Friendship
+menu_options	0x140854ec0	0x140855c45	0x1415e8870	Power
+menu_options	0x140854ec0	0x140855c51	0x1415e8890	Truth
+menu_options	0x140854ec0	0x140855c5d	0x1415e8888	Cunning
+menu_options	0x140854ec0	0x140855c69	0x1415e88a8	Eloquence
+menu_options	0x140854ec0	0x140855c75	0x1415e8898	Fairness
+menu_options	0x140854ec0	0x140855c81	0x1415e88c8	Decorum
+menu_options	0x140854ec0	0x140855c8d	0x1415e88b8	Tradition
+menu_options	0x140854ec0	0x140855c99	0x1415e88e0	Artwork
+menu_options	0x140854ec0	0x140855ca5	0x1415e88d0	Cooperation
+menu_options	0x140854ec0	0x140855cb1	0x1415e88f8	Independence
+menu_options	0x140854ec0	0x140855cbd	0x1415e88e8	Stoicism
+menu_options	0x140854ec0	0x140855cc9	0x1415e8918	Introspection
+menu_options	0x140854ec0	0x140855cd5	0x1415e8908	Self-Control
+menu_options	0x140854ec0	0x140855ce1	0x1415e8930	Tranquility
+menu_options	0x140854ec0	0x140855ced	0x1415e8928	Harmony
+menu_options	0x140854ec0	0x140855cf6	0x1415e8950	Merriment
+menu_options	0x140854ec0	0x140855cff	0x1415e8940	Craftsmanship
+menu_options	0x140854ec0	0x140855d08	0x1415e8968	Martial Prowess
+menu_options	0x140854ec0	0x140855d11	0x1415e895c	Skill
+menu_options	0x140854ec0	0x140855d1a	0x1415e8988	Hard Work
+menu_options	0x140854ec0	0x140855d23	0x1415e8978	Sacrifice
+menu_options	0x140854ec0	0x140855d2c	0x1415e89a8	Competition
+menu_options	0x140854ec0	0x140855d35	0x1415e8998	Perseverance
+menu_options	0x140854ec0	0x140855d3e	0x1415e89c8	Leisure Time
+menu_options	0x140854ec0	0x140855d47	0x1415e89b8	Commerce
+menu_options	0x140854ec0	0x140855d50	0x1415e89e0	Romance
+menu_options	0x140854ec0	0x140855d59	0x1415e89d8	Nature
+menu_options	0x140854ec0	0x140855d62	0x1415e89f4	Peace
+menu_options	0x140854ec0	0x140855d6b	0x1415e89e8	Knowledge
+menu_options	0x140854ec0	0x140857658	0x1415e8a74	Play 
+menu_options	0x140854ec0	0x14085773b	0x1415e8a48	Simulate 
+menu_options	0x140854ec0	0x1408577e9	0x1415e8a6c	Sing
+menu_options	0x140854ec0	0x1408577f4	0x1415e8a90	Chant
+menu_options	0x140854ec0	0x1408577fd	0x1416b1f04	Speak
+menu_options	0x140854ec0	0x140857e92	0x1415ffb5c	Manual
+menu_options	0x140854ec0	0x140857e9e	0x1415ffb54	Guide
+menu_options	0x140854ec0	0x140857eaa	0x1415ffb48	Chronicle
+menu_options	0x140854ec0	0x140857eb6	0x1415ffb38	Short story
+menu_options	0x140854ec0	0x140857ec2	0x1415ffb2c	Novel
+menu_options	0x140854ec0	0x140857ece	0x1415ffb20	Biography
+menu_options	0x140854ec0	0x140857eda	0x1415ffb10	Autobiography
+menu_options	0x140854ec0	0x140857ee6	0x1415ffb04	Poem
+menu_options	0x140854ec0	0x140857ef2	0x1415e85ec	Play
+menu_options	0x140854ec0	0x140857efe	0x1415ffafc	Letter
+menu_options	0x140854ec0	0x140857f0a	0x1415ffaf4	Essay
+menu_options	0x140854ec0	0x140857f16	0x1415ffaec	Dialog
+menu_options	0x140854ec0	0x140857f1f	0x1415ffad8	Musical composition
+menu_options	0x140854ec0	0x140857f28	0x1415ffcd8	Choreography
+menu_options	0x140854ec0	0x140857f31	0x1415ffcc0	Comparative biography
+menu_options	0x140854ec0	0x140857f3a	0x1415ffca8	Biographical dictionary
+menu_options	0x140854ec0	0x140857f43	0x1415ffc98	Genealogy
+menu_options	0x140854ec0	0x140857f4c	0x1415ffc88	Encyclopedia
+menu_options	0x140854ec0	0x140857f55	0x1415ffc70	Cultural history
+menu_options	0x140854ec0	0x140857f5e	0x1415ffc58	Cultural comparison
+menu_options	0x140854ec0	0x140857f67	0x1415ffc40	Alternate history
+menu_options	0x140854ec0	0x140857f70	0x1415ffc18	Treatise on technological evolution
+menu_options	0x140854ec0	0x140857f79	0x1415ffc08	Dictionary
+menu_options	0x140854ec0	0x140857f82	0x1415ffbf8	Star chart
+menu_options	0x140854ec0	0x140857f8b	0x1415ffbe8	Star catalogue
+menu_options	0x140854ec0	0x140857f94	0x1415ffbdc	Atlas
+renderer	0x140870260	0x140870530	0x14178b3b0	)
+renderer	0x140870260	0x140870540	0x1416b3148	Choose a poetic form for the composition.
+renderer	0x140870260	0x14087054a	0x1416b3158	form for the composition.
+renderer	0x140870260	0x140870555	0x1416b3168	position.
+renderer	0x140870260	0x140870562	0x1416b3170	.
+renderer	0x140870260	0x1408705bd	0x14178b3c0	*
+renderer	0x140870260	0x1408705cd	0x1416b31b8	Choose a musical form for the composition.
+renderer	0x140870260	0x1408705d7	0x1416b31c8	 form for the composition.
+renderer	0x140870260	0x1408705e2	0x1416b31d8	mposition.
+renderer	0x140870260	0x1408705ef	0x1416b31e0	n.
+renderer	0x140870260	0x14087065b	0x1416b3188	Choose a dance form for the choreography.
+renderer	0x140870260	0x140870665	0x1416b3198	orm for the choreography.
+renderer	0x140870260	0x140870670	0x1416b31a8	eography.
+renderer	0x140870260	0x1408706fb	0x1416b30a0	Select memorized content or a form of prose.
+renderer	0x140870260	0x140870752	0x1416b3080	What would you like to do?
+renderer	0x140870260	0x140870ae6	0x1416b3110	You don't believe anything relevant, unfortunately.
+renderer	0x140870260	0x140870b28	0x1416b30d0	Assume an appropriate identity first if you'd like to pretend.
+renderer	0x140870260	0x140870b88	0x14178b4b0	;
+renderer	0x140870260	0x140870b98	0x1416b3248	You don't know anything specific about this, unfortunately.
+renderer	0x140870260	0x140870ba2	0x1416b3258	nything specific about this, unfortunately.
+renderer	0x140870260	0x140870bad	0x1416b3268	 about this, unfortunately.
+renderer	0x140870260	0x140870bb8	0x1416b3278	ortunately.
+renderer	0x140870260	0x140870bc5	0x1416b3280	ly.
+renderer	0x140870260	0x140870c51	0x1416b3200	You must compose a piece first (or learn an improvisational form).
+renderer	0x140870260	0x140870e4e	0x1415ec860	...
+renderer	0x140870260	0x140870e8a	0x1415ec82c	_
+renderer	0x140870260	0x140870f80	0x141602558	[C:6:0:1]
+renderer	0x140870260	0x140870f90	0x141602560	]
+renderer	0x140870260	0x140871893	0x14161b6c8	 is an example of 
+renderer	0x140870260	0x1408718f2	0x1415fd968	.  
+renderer	0x140870260	0x14087191e	0x1415fd258	[B]
+renderer	0x140870260	0x140871942	0x14161b6dc	poetry
+renderer	0x140870260	0x140871c86	0x141602ef0	musical composition
+renderer	0x140870260	0x1408720e8	0x141602ee0	choreography
+renderer	0x140870260	0x14087241c	0x1415f71e4	 is 
+renderer	0x140870260	0x14087244c	0x141602db8	an
+renderer	0x140870260	0x140872455	0x141602db4	a
+renderer	0x140870260	0x14087245e	0x141602da0	This is an untitled
+renderer	0x140870260	0x140872477	0x1415e873c	 
+renderer	0x140870260	0x1408724a3	0x141602d94	manual
+renderer	0x140870260	0x1408724af	0x141602d8c	guide
+renderer	0x140870260	0x1408724bb	0x141602d80	chronicle
+renderer	0x140870260	0x1408724c7	0x141602d70	short story
+renderer	0x140870260	0x1408724d3	0x141602d64	novel
+renderer	0x140870260	0x1408724df	0x141602d58	biography
+renderer	0x140870260	0x1408724eb	0x141602d48	autobiography
+renderer	0x140870260	0x1408724f7	0x141602d3c	poem
+renderer	0x140870260	0x140872503	0x141602d34	play
+renderer	0x140870260	0x14087250f	0x141602d2c	letter
+renderer	0x140870260	0x14087251b	0x141602d24	essay
+renderer	0x140870260	0x140872527	0x141602d1c	dialog
+renderer	0x140870260	0x140872542	0x141602ec8	comparative biography
+renderer	0x140870260	0x14087254b	0x141602eb0	biographical dictionary
+renderer	0x140870260	0x140872554	0x141602ea0	genealogy
+renderer	0x140870260	0x14087255d	0x141602e90	encyclopedia
+renderer	0x140870260	0x140872566	0x141602e78	cultural history
+renderer	0x140870260	0x14087256f	0x141602e60	cultural comparison
+renderer	0x140870260	0x140872578	0x141602e48	alternate history
+renderer	0x140870260	0x140872581	0x141602e20	treatise on technological evolution
+renderer	0x140870260	0x14087258a	0x141602e10	dictionary
+renderer	0x140870260	0x140872593	0x141602e00	star chart
+renderer	0x140870260	0x14087259c	0x141602df0	star catalogue
+renderer	0x140870260	0x1408725a5	0x141602de8	atlas
+renderer	0x140870260	0x140872623	0x141602dd8	, authored by 
+renderer	0x140870260	0x1408726d9	0x141602dc0	It is an example of 
+renderer	0x140870260	0x140872ae1	0x1416b32b0	(etc.)
+renderer	0x140870260	0x140872aed	0x1416b32b4	.)
+sphere	0x140756690	0x1407566b5	0x1416a1b08	agriculture
+sphere	0x140756690	0x1407566ca	0x1416a1250	animals
+sphere	0x140756690	0x1407566df	0x1416a1258	art
+sphere	0x140756690	0x1407566f4	0x1416a1260	balance
+sphere	0x140756690	0x140756709	0x1416a1268	beauty
+sphere	0x140756690	0x14075671e	0x1416a1270	birth
+sphere	0x140756690	0x140756733	0x1416a1278	blight
+sphere	0x140756690	0x140756748	0x1416a1280	boundaries
+sphere	0x140756690	0x14075675d	0x1416a1290	caverns
+sphere	0x140756690	0x140756772	0x1416a1298	chaos
+sphere	0x140756690	0x140756787	0x1416a12a0	charity
+sphere	0x140756690	0x14075679c	0x1416a12a8	children
+sphere	0x140756690	0x1407567b1	0x1416a12b4	coasts
+sphere	0x140756690	0x1407567c6	0x1416a12c0	consolation
+sphere	0x140756690	0x1407567db	0x1416a12d0	courage
+sphere	0x140756690	0x1407567f0	0x1416a12d8	crafts
+sphere	0x140756690	0x140756805	0x1416a12e0	creation
+sphere	0x140756690	0x14075681a	0x1415edfc0	dance
+sphere	0x140756690	0x14075682f	0x1416a1530	darkness
+sphere	0x140756690	0x140756844	0x1416706fc	dawn
+sphere	0x140756690	0x140756859	0x141670704	day
+sphere	0x140756690	0x14075686e	0x1415eddb4	death
+sphere	0x140756690	0x140756883	0x1416a1540	deformity
+sphere	0x140756690	0x140756898	0x1416a1550	depravity
+sphere	0x140756690	0x1407568ad	0x1416a1560	discipline
+sphere	0x140756690	0x1407568c2	0x1416a1570	disease
+sphere	0x140756690	0x1407568d7	0x1416a1578	dreams
+sphere	0x140756690	0x1407568ec	0x1416a1580	dusk
+sphere	0x140756690	0x140756901	0x141674c00	duty
+sphere	0x140756690	0x140756916	0x1416a1588	earth
+sphere	0x140756690	0x14075692b	0x1416415fc	family
+sphere	0x140756690	0x140756940	0x1416a1590	fame
+sphere	0x140756690	0x140756955	0x1416a1598	fate
+sphere	0x140756690	0x14075696a	0x1416a15a0	fertility
+sphere	0x140756690	0x14075697f	0x1416a15b0	festivals
+sphere	0x140756690	0x140756994	0x1416a15bc	fire
+sphere	0x140756690	0x1407569a9	0x1416a11f0	fish
+sphere	0x140756690	0x1407569be	0x1416a15c8	fishing
+sphere	0x140756690	0x1407569d3	0x1416a15d0	food
+sphere	0x140756690	0x1407569e8	0x1416a15d8	forgiveness
+sphere	0x140756690	0x1407569fd	0x1416a1470	fortresses
+sphere	0x140756690	0x140756a12	0x1416a1480	freedom
+sphere	0x140756690	0x140756a27	0x1416a11f8	gambling
+sphere	0x140756690	0x140756a3c	0x1416a1488	games
+sphere	0x140756690	0x140756a51	0x1416a1490	generosity
+sphere	0x140756690	0x140756a66	0x141670a58	happiness
+sphere	0x140756690	0x140756a7b	0x1416a1208	healing
+sphere	0x140756690	0x140756a90	0x1416a14a0	hospitality
+sphere	0x140756690	0x140756aa5	0x1416a1210	hunting
+sphere	0x140756690	0x140756aba	0x1416a14b0	inspiration
+sphere	0x140756690	0x140756acf	0x1416a14c0	jealousy
+sphere	0x140756690	0x140756ae4	0x1416a14cc	jewels
+sphere	0x140756690	0x140756af9	0x1416a14d8	justice
+sphere	0x140756690	0x140756b0e	0x1415ede6c	labor
+sphere	0x140756690	0x140756b23	0x1416a14e0	lakes
+sphere	0x140756690	0x140756b38	0x1416a14e8	laws
+sphere	0x140756690	0x140756b4d	0x1416a14f0	lies
+sphere	0x140756690	0x140756b62	0x14167607c	light
+sphere	0x140756690	0x140756b77	0x1416a14f8	lightning
+sphere	0x140756690	0x140756b8c	0x1416a1508	longevity
+sphere	0x140756690	0x140756ba1	0x1416025ec	love
+sphere	0x140756690	0x140756bb6	0x1416415b0	loyalty
+sphere	0x140756690	0x140756bcb	0x1416a1514	luck
+sphere	0x140756690	0x140756be0	0x141670fac	lust
+sphere	0x140756690	0x140756bf5	0x1416a1520	marriage
+sphere	0x140756690	0x140756c0a	0x1416a13bc	mercy
+sphere	0x140756690	0x140756c1f	0x1416a13c4	metals
+sphere	0x140756690	0x140756c34	0x1416a13d0	minerals
+sphere	0x140756690	0x140756c49	0x141670f84	misery
+sphere	0x140756690	0x140756c5e	0x1416a13dc	mist
+sphere	0x140756690	0x140756c73	0x1416a13e4	moon
+sphere	0x140756690	0x140756c88	0x14164c4a8	mountains
+sphere	0x140756690	0x140756c9d	0x1416a13ec	muck
+sphere	0x140756690	0x140756cb2	0x1415ede54	murder
+sphere	0x140756690	0x140756cc7	0x1415eb50c	music
+sphere	0x140756690	0x140756cdc	0x1416416ec	nature
+sphere	0x140756690	0x140756cf1	0x141670434	night
+sphere	0x140756690	0x140756d06	0x1416a13f8	nightmares
+sphere	0x140756690	0x140756d1b	0x1416a1404	oaths
+sphere	0x140756690	0x140756d30	0x1416a140c	oceans
+sphere	0x140756690	0x140756d45	0x1415eddcc	order
+sphere	0x140756690	0x140756d5a	0x1416a1418	painting
+sphere	0x140756690	0x140756d6f	0x1415ee0cc	peace
+sphere	0x140756690	0x140756d84	0x1416a1428	persuasion
+sphere	0x140756690	0x140756d99	0x1416a1434	plants
+sphere	0x140756690	0x140756dae	0x14161b6dc	poetry
+sphere	0x140756690	0x140756dc3	0x1416a1440	pregnancy
+sphere	0x140756690	0x140756dd8	0x14164bfac	rain
+sphere	0x140756690	0x140756ded	0x1416a1450	rainbows
+sphere	0x140756690	0x140756e02	0x1416a1460	rebirth
+sphere	0x140756690	0x140756e17	0x1416a1468	revelry
+sphere	0x140756690	0x140756e2c	0x1416a1320	revenge
+sphere	0x140756690	0x140756e41	0x1416a1328	rivers
+sphere	0x140756690	0x140756e56	0x1416a1330	rulership
+sphere	0x140756690	0x140756e6b	0x1416a133c	rumors
+sphere	0x140756690	0x140756e80	0x141641708	sacrifice
+sphere	0x140756690	0x140756e95	0x1416a1344	salt
+sphere	0x140756690	0x140756eaa	0x1416a1350	scholarship
+sphere	0x140756690	0x140756ebf	0x1416a1360	seasons
+sphere	0x140756690	0x140756ed4	0x1416a1368	silence
+sphere	0x140756690	0x140756ee9	0x14164c52c	sky
+sphere	0x140756690	0x140756efe	0x1415e9510	song
+sphere	0x140756690	0x140756f13	0x1416a1370	speech
+sphere	0x140756690	0x140756f28	0x1416a1378	stars
+sphere	0x140756690	0x140756f3d	0x1416a1380	storms
+sphere	0x140756690	0x140756f52	0x141661fd8	strength
+sphere	0x140756690	0x140756f67	0x1416a1388	suicide
+sphere	0x140756690	0x140756f7c	0x1416a1390	sun
+sphere	0x140756690	0x140756f91	0x1415edefc	theft
+sphere	0x140756690	0x140756fa6	0x1416a1398	thralldom
+sphere	0x140756690	0x140756fbb	0x1416a13a8	thunder
+sphere	0x140756690	0x140756fd0	0x141643a58	torture
+sphere	0x140756690	0x140756fe5	0x14164fbc4	trade
+sphere	0x140756690	0x140756ffa	0x1416a13b0	travelers
+sphere	0x140756690	0x14075700f	0x1416a1aa0	treachery
+sphere	0x140756690	0x140757024	0x1416a1aac	trees
+sphere	0x140756690	0x140757039	0x1416a1ab8	trickery
+sphere	0x140756690	0x14075704e	0x1416415dc	truth
+sphere	0x140756690	0x140757063	0x1416a12f8	twilight
+sphere	0x140756690	0x140757078	0x1416a1ac4	valor
+sphere	0x140756690	0x14075708d	0x1416a1ad0	victory
+sphere	0x140756690	0x1407570a2	0x1416a1ad8	volcanos
+sphere	0x140756690	0x1407570b7	0x141649be4	war
+sphere	0x140756690	0x1407570cc	0x14164b874	water
+sphere	0x140756690	0x1407570e1	0x1416a1ae4	wealth
+sphere	0x140756690	0x1407570f6	0x141674ef0	weather
+sphere	0x140756690	0x14075710b	0x1416a1aec	wind
+sphere	0x140756690	0x140757120	0x1416a1af4	wisdom
+sphere	0x140756690	0x140757135	0x1415edca0	writing
+sphere	0x140756690	0x14075714a	0x1416a1afc	youth
+sphere	0x140756690	0x14075715f	0x1416a1310	no sphere
+poetic_form	0x140e76400	0x140e76478	0x1415eebd8	 is
+poetic_form	0x140e76400	0x140e764aa	0x1416492ac	 a
+poetic_form	0x140e76400	0x140e764b3	0x1417301e8	 a solemn
+poetic_form	0x140e76400	0x140e764bc	0x1417301d8	 a light
+poetic_form	0x140e76400	0x140e764c5	0x1417301c8	 a ribald
+poetic_form	0x140e76400	0x140e764ce	0x141730120	 a reflective
+poetic_form	0x140e76400	0x140e764d7	0x141730110	 a dramatic
+poetic_form	0x140e76400	0x140e764e9	0x1417301f8	 poetic 
+poetic_form	0x140e76400	0x140e76504	0x141675eb4	riddle
+poetic_form	0x140e76400	0x140e7650d	0x141730190	narrative
+poetic_form	0x140e76400	0x140e76514	0x14173019c	form
+poetic_form	0x140e76400	0x140e76530	0x1415e873c	 
+poetic_form	0x140e76400	0x140e7654a	0x1417301a8	 intended 
+poetic_form	0x140e76400	0x140e76576	0x1417301b8	to describe
+poetic_form	0x140e76400	0x140e7658d	0x141730268	to satirize
+poetic_form	0x140e76400	0x140e765a4	0x141730278	to amuse the audience
+poetic_form	0x140e76400	0x140e765b0	0x141730290	to complain about
+poetic_form	0x140e76400	0x140e765c7	0x1417302a8	to renounce
+poetic_form	0x140e76400	0x140e765db	0x141730208	to make an apology
+poetic_form	0x140e76400	0x140e765e4	0x141730220	to express pleasure with
+poetic_form	0x140e76400	0x140e765f8	0x141730240	to express grief over
+poetic_form	0x140e76400	0x140e7660c	0x141730258	to praise
+poetic_form	0x140e76400	0x140e76620	0x141730310	to beseech
+poetic_form	0x140e76400	0x140e76631	0x141730320	to teach a moral lesson
+poetic_form	0x140e76400	0x140e7663a	0x141730338	to make an assertion
+poetic_form	0x140e76400	0x140e76643	0x141730350	to make a concession
+poetic_form	0x140e76400	0x140e7664c	0x1417302b8	to console the audience
+poetic_form	0x140e76400	0x140e76655	0x1417302d0	to refuse consolation
+poetic_form	0x140e76400	0x140e76674	0x1417302e8	 concerning
+poetic_form	0x140e76400	0x140e766b2	0x1417302f8	 a chosen subject
+poetic_form	0x140e76400	0x140e766f5	0x1417303c0	, originating in 
+poetic_form	0x140e76400	0x140e766fc	0x141649c18	 which grew out of the performances of 
+poetic_form	0x140e76400	0x140e76736	0x1417303b0	 concerning 
+poetic_form	0x140e76400	0x140e76758	0x141649c58	 originally devised by 
+poetic_form	0x140e76400	0x140e7678e	0x1415fd968	.  
+poetic_form	0x140e76400	0x140e767a5	0x141730440	The form guides poets during improvised performances.  
+poetic_form	0x140e76400	0x140e767ac	0x1417303e0	The rules of the form are applied by poets to produce individual poems which can be recited.  
+poetic_form	0x140e76400	0x140e767bf	0x141730368	The poem 
+poetic_form	0x140e76400	0x140e767e7	0x141730378	is divided into 
+poetic_form	0x140e76400	0x140e76877	0x141730390	two distinct 
+poetic_form	0x140e76400	0x140e768c6	0x1417303a0	-line stanza
+poetic_form	0x140e76400	0x140e768e2	0x1415e9298	s
+poetic_form	0x140e76400	0x140e768fb	0x1417304a0	octet
+poetic_form	0x140e76400	0x140e76909	0x1417304a8	septet
+poetic_form	0x140e76400	0x140e76917	0x1417304b0	sexain
+poetic_form	0x140e76400	0x140e76925	0x1417304b8	quintain
+poetic_form	0x140e76400	0x140e76933	0x141730478	quatrain
+poetic_form	0x140e76400	0x140e76941	0x141730484	tercet
+poetic_form	0x140e76400	0x140e7694d	0x141730490	couplet
+poetic_form	0x140e76400	0x140e76956	0x141686de8	line
+poetic_form	0x140e76400	0x140e7697b	0x141730540	 series of
+poetic_form	0x140e76400	0x140e769d0	0x141730498	another
+poetic_form	0x140e76400	0x140e769ec	0x141730508	 extremely long series of
+poetic_form	0x140e76400	0x140e76a00	0x141730528	 numerous series of
+poetic_form	0x140e76400	0x140e76a9d	0x1415ed5b4	 to 
+poetic_form	0x140e76400	0x140e76aea	0x141602db4	a
+poetic_form	0x140e76400	0x140e76b0e	0x141730550	an extremely long series of
+poetic_form	0x140e76400	0x140e76b25	0x1417304c8	numerous series of
+poetic_form	0x140e76400	0x140e76b2e	0x1417304e0	a series of
+poetic_form	0x140e76400	0x140e76c08	0x1417304ec	brief 
+poetic_form	0x140e76400	0x140e76c17	0x1417304f8	verse paragraph
+poetic_form	0x140e76400	0x140e76c28	0x141685d24	long 
+poetic_form	0x140e76400	0x140e76cab	0x1417305ac	n 
+poetic_form	0x140e76400	0x140e76cd6	0x1417305b0	 septet
+poetic_form	0x140e76400	0x140e76ce4	0x1417305b8	 sexain
+poetic_form	0x140e76400	0x140e76cf2	0x1417305c0	 quintain
+poetic_form	0x140e76400	0x140e76d00	0x141730570	 quatrain
+poetic_form	0x140e76400	0x140e76d0e	0x141730580	 tercet
+poetic_form	0x140e76400	0x140e76d1a	0x141730588	 couplet
+poetic_form	0x140e76400	0x140e76d23	0x14161afb8	 line
+poetic_form	0x140e76400	0x140e76d4b	0x1415e9110	 and 
+poetic_form	0x140e76400	0x140e76e08	0x141730598	 distinct parts: 
+poetic_form	0x140e76400	0x140e76e26	0x141602420	is 
+poetic_form	0x140e76400	0x140e76ec9	0x14172fb60	a single
+poetic_form	0x140e76400	0x140e76f75	0x14172fb30	extremely long series of
+poetic_form	0x140e76400	0x140e76fa3	0x14172fb50	series of
+poetic_form	0x140e76400	0x140e7728e	0x14172fb70	lengthy 
+poetic_form	0x140e76400	0x140e77297	0x14172fad8	full 
+poetic_form	0x140e76400	0x140e77500	0x1415e90d8	, 
+poetic_form	0x140e76400	0x140e7759d	0x14172fae0	 is always written from the perspective of 
+poetic_form	0x140e76400	0x140e775db	0x14172fb10	the author
+poetic_form	0x140e76400	0x140e775e7	0x14172fb20	a soldier
+poetic_form	0x140e76400	0x140e775f3	0x14172fbb8	a traveler
+poetic_form	0x140e76400	0x140e775ff	0x14172fbc8	a relative of the author
+poetic_form	0x140e76400	0x140e7760b	0x14172fbe8	a party to a debate
+poetic_form	0x140e76400	0x140e77617	0x14172fc00	a fictional poet
+poetic_form	0x140e76400	0x140e7765d	0x14172fa58	a historical figure
+poetic_form	0x140e76400	0x140e7766c	0x1415ed620	a 
+poetic_form	0x140e76400	0x140e776a1	0x14172fb80	an animal
+poetic_form	0x140e76400	0x140e77778	0x14172fb90	Use of 
+poetic_form	0x140e76400	0x140e77861	0x14172fc60	antanaclasis
+poetic_form	0x140e76400	0x140e7786d	0x14172fc50	onomatopoeia
+poetic_form	0x140e76400	0x140e77879	0x14172fba8	alliteration
+poetic_form	0x140e76400	0x140e77885	0x14172fb98	internal rhyme
+poetic_form	0x140e76400	0x140e77891	0x14172fc70	assonance
+poetic_form	0x140e76400	0x140e778b9	0x14172fc20	epenthesis
+poetic_form	0x140e76400	0x140e778c5	0x14172fc18	elision
+poetic_form	0x140e76400	0x140e778d1	0x14172fc80	consonance
+poetic_form	0x140e76400	0x140e778dd	0x14172fc30	synchysis
+poetic_form	0x140e76400	0x140e77913	0x14172fd08	metaphor
+poetic_form	0x140e76400	0x140e7791c	0x14172fcf8	symbolism
+poetic_form	0x140e76400	0x140e77925	0x14172fce8	ambiguity
+poetic_form	0x140e76400	0x140e7792e	0x14172fc40	allegory
+poetic_form	0x140e76400	0x140e77937	0x14172fd14	simile
+poetic_form	0x140e76400	0x140e77958	0x14172fcb0	juxtaposition
+poetic_form	0x140e76400	0x140e77961	0x14172fca0	vivid imagery
+poetic_form	0x140e76400	0x140e7796a	0x14172fc90	metonymy
+poetic_form	0x140e76400	0x140e779a5	0x14172fcc0	 is characteristic of the form.  
+poetic_form	0x140e76400	0x140e779d3	0x14172fd88	Forms of 
+poetic_form	0x140e76400	0x140e779df	0x14172fda8	parallelism 
+poetic_form	0x140e76400	0x140e779ee	0x1415e8ca8	are
+poetic_form	0x140e76400	0x140e779f7	0x14172fd98	A form of 
+poetic_form	0x140e76400	0x140e77a12	0x1415e8ca4	is
+poetic_form	0x140e76400	0x140e77a21	0x14172fdb8	 common throughout the poem, in that 
+poetic_form	0x140e76400	0x140e77a88	0x14172fd20	certain lines 
+poetic_form	0x140e76400	0x140e77a99	0x14172fd30	they 
+poetic_form	0x140e76400	0x140e77ac4	0x14172fd38	often share an underlying meaning
+poetic_form	0x140e76400	0x140e77acd	0x14172fd60	often contrast underlying meaning
+poetic_form	0x140e76400	0x140e77ad6	0x14172fe90	are required to maintain phrasing
+poetic_form	0x140e76400	0x140e77adf	0x14172feb8	have similar grammatical structures
+poetic_form	0x140e76400	0x140e77ae8	0x14172fee0	use the same placement of allusions
+poetic_form	0x140e76400	0x140e77af1	0x14172ff08	sometimes have reversed word orders
+poetic_form	0x140e76400	0x140e77afa	0x14172fde0	reverse grammatical structures
+poetic_form	0x140e76400	0x140e77b9f	0x14172fe00	Linguistic skill is required in the visual presentation as well, as 
+poetic_form	0x140e76400	0x140e77bed	0x14172fe48	 must feature 
+poetic_form	0x140e76400	0x140e77c5d	0x141663634	even 
+poetic_form	0x140e76400	0x140e77c6c	0x14172ffe0	lines which emerge when reading along certain prescribed paths across the body of the poem
+poetic_form	0x140e76400	0x140e77c75	0x14172ffa0	lines which can be read orthogonally across the standard lines
+poetic_form	0x140e76400	0x140e77c7e	0x14172ff68	lines which can be read backwards as well as forwards
+poetic_form	0x140e76400	0x140e77c87	0x14172fe58	lines with different readings depending on word breaks
+poetic_form	0x140e76400	0x140e77d15	0x14172ff30	The poem has 
+poetic_form	0x140e76400	0x140e77d1e	0x141730040	Each line has 
+poetic_form	0x140e76400	0x140e77d79	0x14172ff40	foot
+poetic_form	0x140e76400	0x140e77d82	0x14172ff48	feet
+poetic_form	0x140e76400	0x140e77d8e	0x1415ee5e0	 with 
+poetic_form	0x140e76400	0x140e77dae	0x14172ff50	a tone pattern of 
+poetic_form	0x140e76400	0x140e77dd7	0x1417300a8	even-uneven
+poetic_form	0x140e76400	0x140e77df2	0x1417300b8	uneven-even
+poetic_form	0x140e76400	0x140e77e0d	0x1417300c8	uneven-uneven
+poetic_form	0x140e76400	0x140e77e28	0x1417300d8	uneven-even-even
+poetic_form	0x140e76400	0x140e77e43	0x141730050	even-uneven-even
+poetic_form	0x140e76400	0x140e77e5e	0x141730068	even-even-uneven
+poetic_form	0x140e76400	0x140e77e79	0x141730080	uneven-even-uneven
+poetic_form	0x140e76400	0x140e77e94	0x141730098	even-even
+poetic_form	0x140e76400	0x140e77eaf	0x141730cf8	even-even-even
+poetic_form	0x140e76400	0x140e77eca	0x141730d08	even-uneven-uneven
+poetic_form	0x140e76400	0x140e77ee5	0x141730d20	uneven-uneven-even
+poetic_form	0x140e76400	0x140e77f00	0x141730d38	uneven-uneven-uneven
+poetic_form	0x140e76400	0x140e77f2c	0x141730ca8	a syllable weight pattern of 
+poetic_form	0x140e76400	0x140e77f51	0x141730cc8	short-long
+poetic_form	0x140e76400	0x140e77f5a	0x141730cd8	long-short
+poetic_form	0x140e76400	0x140e77f63	0x141730ce8	long-long
+poetic_form	0x140e76400	0x140e77f6c	0x141730d98	long-short-short
+poetic_form	0x140e76400	0x140e77f75	0x141730db0	short-long-short
+poetic_form	0x140e76400	0x140e77f7e	0x141730dc8	short-short-long
+poetic_form	0x140e76400	0x140e77f87	0x141730de0	long-short-long
+poetic_form	0x140e76400	0x140e77f90	0x141730d50	short-short
+poetic_form	0x140e76400	0x140e77f99	0x141730d60	short-short-short
+poetic_form	0x140e76400	0x140e77fa2	0x141730d78	short-long-long
+poetic_form	0x140e76400	0x140e77fab	0x141730d88	long-long-short
+poetic_form	0x140e76400	0x140e77fb4	0x141730e30	long-long-long
+poetic_form	0x140e76400	0x140e77fc3	0x141730e40	 (quantitative 
+poetic_form	0x140e76400	0x140e77feb	0x141730e50	iambic
+poetic_form	0x140e76400	0x140e77ff4	0x141730e58	trochaic
+poetic_form	0x140e76400	0x140e77ffd	0x141730df0	spondaic
+poetic_form	0x140e76400	0x140e78006	0x141730e00	dactylic
+poetic_form	0x140e76400	0x140e7800f	0x141730e10	amphibrachic
+poetic_form	0x140e76400	0x140e78018	0x141730e20	anapaestic
+poetic_form	0x140e76400	0x140e78021	0x141730ea0	cretic
+poetic_form	0x140e76400	0x140e7802a	0x141730ea8	pyrrhic
+poetic_form	0x140e76400	0x140e78033	0x141730eb0	tribrachic
+poetic_form	0x140e76400	0x140e7803c	0x141730ec0	bacchic
+poetic_form	0x140e76400	0x140e78045	0x141730e68	antibacchic
+poetic_form	0x140e76400	0x140e7804e	0x141730e78	molossic
+poetic_form	0x140e76400	0x140e78089	0x141730e88	monometer
+poetic_form	0x140e76400	0x140e78095	0x141730f08	trimeter
+poetic_form	0x140e76400	0x140e780a1	0x141730f18	tetrameter
+poetic_form	0x140e76400	0x140e780ad	0x141730f28	pentameter
+poetic_form	0x140e76400	0x140e780b9	0x141730f38	hexameter
+poetic_form	0x140e76400	0x140e780c5	0x141730ec8	heptameter
+poetic_form	0x140e76400	0x140e780d1	0x141730ef0	an accent pattern of 
+poetic_form	0x140e76400	0x140e780f6	0x141730fc0	unstressed-stressed
+poetic_form	0x140e76400	0x140e780ff	0x141730fd8	stressed-unstressed
+poetic_form	0x140e76400	0x140e78108	0x141730ff0	stressed-stressed
+poetic_form	0x140e76400	0x140e78111	0x141731008	stressed-unstressed-unstressed
+poetic_form	0x140e76400	0x140e7811a	0x141730f48	unstressed-stressed-unstressed
+poetic_form	0x140e76400	0x140e78123	0x141730f68	unstressed-unstressed-stressed
+poetic_form	0x140e76400	0x140e7812c	0x141730f88	stressed-unstressed-stressed
+poetic_form	0x140e76400	0x140e78135	0x141730fa8	unstressed-unstressed
+poetic_form	0x140e76400	0x140e7813e	0x141731080	unstressed-unstressed-unstressed
+poetic_form	0x140e76400	0x140e78147	0x1417310a8	unstressed-stressed-stressed
+poetic_form	0x140e76400	0x140e78150	0x1417310c8	stressed-stressed-unstressed
+poetic_form	0x140e76400	0x140e78159	0x1417310e8	stressed-stressed-stressed
+poetic_form	0x140e76400	0x140e78168	0x141731028	 (qualitative 
+poetic_form	0x140e76400	0x140e7822a	0x141730e98	dimeter
+poetic_form	0x140e76400	0x140e78233	0x141730ed8	octameter
+poetic_form	0x140e76400	0x140e78242	0x141730ee4	).  
+poetic_form	0x140e76400	0x140e783fc	0x141731038	 syllables.  
+poetic_form	0x140e76400	0x140e78456	0x141731048	Every line of the poem has 
+poetic_form	0x140e76400	0x140e7847a	0x141731188	a terminal caesura
+poetic_form	0x140e76400	0x140e78483	0x141731170	a medial caesura
+poetic_form	0x140e76400	0x140e7848c	0x141731068	an initial caesura
+poetic_form	0x140e76400	0x140e78684	0x1417311a0	The ending of each line of the poem shares the same rhyme
+poetic_form	0x140e76400	0x140e7869d	0x1417311e0	, though the rhyming doesn't have to be perfect
+poetic_form	0x140e76400	0x140e78768	0x141731108	, though rhymes at the end of lines in the 
+poetic_form	0x140e76400	0x140e78870	0x141731138	sections
+poetic_form	0x140e76400	0x140e78879	0x141731148	section
+poetic_form	0x140e76400	0x140e78885	0x141731150	 don't need to match perfectly
+poetic_form	0x140e76400	0x140e78960	0x141730620	, though the rhyme
+poetic_form	0x140e76400	0x140e78983	0x141730638	 at the end of the 
+poetic_form	0x140e76400	0x140e78aa0	0x141730650	lines don't
+poetic_form	0x140e76400	0x140e78aa9	0x141730660	line doesn't
+poetic_form	0x140e76400	0x140e78ab5	0x1417305d0	 need to match perfectly
+poetic_form	0x140e76400	0x140e78cbe	0x1415ed9bc	The 
+poetic_form	0x140e76400	0x140e78cf9	0x1415ee844	 part
+poetic_form	0x140e76400	0x140e78d19	0x1415ee548	It
+poetic_form	0x140e76400	0x140e78d59	0x1417305f0	is dramatic
+poetic_form	0x140e76400	0x140e78d62	0x141730600	is reflective
+poetic_form	0x140e76400	0x140e78d6b	0x141730610	is ribald
+poetic_form	0x140e76400	0x140e78d74	0x1417306f8	is light
+poetic_form	0x140e76400	0x140e78d7d	0x141730708	is solemn
+poetic_form	0x140e76400	0x140e78d86	0x141730718	is a riddle
+poetic_form	0x140e76400	0x140e78d8f	0x141730728	is a narrative
+poetic_form	0x140e76400	0x140e78db9	0x1415ee880	 and
+poetic_form	0x140e76400	0x140e78f02	0x141730670	to make a counter-assertion
+poetic_form	0x140e76400	0x140e78f0b	0x141730690	to synthesize previous ideas
+poetic_form	0x140e76400	0x140e78f14	0x1417306b0	to develop the previous idea
+poetic_form	0x140e76400	0x140e78f1d	0x1417306d0	to invert the previous assertion
+poetic_form	0x140e76400	0x140e78f26	0x1417307a8	to undercut the previous assertion
+poetic_form	0x140e76400	0x140e78f2f	0x1417307d0	to move away from previous ideas
+poetic_form	0x140e76400	0x140e78f38	0x1417307f8	to reflect on previous ideas
+poetic_form	0x140e76400	0x140e78f41	0x141730818	to offer a different perspective
+poetic_form	0x140e76400	0x140e78f81	0x141730738	 the subject of the poem
+poetic_form	0x140e76400	0x140e78fb7	0x141730758	concerns 
+poetic_form	0x140e76400	0x140e79072	0x141730768	 is written from the perspective of 
+poetic_form	0x140e76400	0x140e792e1	0x141730790	 must make use of 
+poetic_form	0x140e76400	0x140e7956b	0x141730888	Certain lines
+poetic_form	0x140e76400	0x140e79582	0x141672f90	 of the 
+poetic_form	0x140e76400	0x140e7969c	0x141730898	present different views of the same subject
+poetic_form	0x140e76400	0x140e79771	0x1417308c8	In the 
+poetic_form	0x140e76400	0x140e797af	0x1417308d0	 part, the 
+poetic_form	0x140e76400	0x140e79814	0x141730840	 line of 
+poetic_form	0x140e76400	0x140e7982c	0x14173084c	each 
+poetic_form	0x140e76400	0x140e79835	0x1415e8e48	the 
+poetic_form	0x140e76400	0x140e79857	0x141730854	stanza
+poetic_form	0x140e76400	0x140e798ff	0x141730860	shares the underlying meaning of
+poetic_form	0x140e76400	0x140e79908	0x141730970	contrasts the underlying meaning of
+poetic_form	0x140e76400	0x140e79911	0x141730998	is required to maintain the phrasing of
+poetic_form	0x140e76400	0x140e7991a	0x1417309c0	has the same grammatical structure as
+poetic_form	0x140e76400	0x140e79923	0x1417309e8	uses the same placement of allusions as
+poetic_form	0x140e76400	0x140e7992c	0x1417308e0	reverses the word order of
+poetic_form	0x140e76400	0x140e79935	0x141730900	reverses the grammatical structure of
+poetic_form	0x140e76400	0x140e7993e	0x141730928	presents a different view of the subject of
+poetic_form	0x140e76400	0x140e79947	0x141730958	must expand the idea of
+poetic_form	0x140e76400	0x140e79957	0x1415e956c	 the 
+poetic_form	0x140e76400	0x140e799a0	0x141730aa0	 line.  
+poetic_form	0x140e76400	0x140e79a91	0x141730ab0	 includes 
+poetic_form	0x140e76400	0x140e79b16	0x141730ac0	lines which emerge when reading along certain prescribed paths
+poetic_form	0x140e76400	0x140e79c6b	0x141730b00	 has lines with 
+poetic_form	0x140e76400	0x140e79c74	0x141671e94	 has 
+poetic_form	0x140e76400	0x140e7a4f1	0x141730a10	 in each line
+poetic_form	0x140e76400	0x140e7b0ab	0x141730a50	can be read backwards as well as forwards
+poetic_form	0x140e76400	0x140e7b0c3	0x141730a20	has different readings depending on word breaks
+poetic_form	0x140e76400	0x140e7bd10	0x141730a80	The refrain occurs as lines 
+poetic_form	0x140e76400	0x140e7bd82	0x141730b60	The refrain occurs as line 
+poetic_form	0x140e76400	0x140e7be1c	0x141730b80	 refrain occurs as lines 
+poetic_form	0x140e76400	0x140e7bee8	0x141730ba0	 refrain occurs as line 
+poetic_form	0x140e76400	0x140e7bfad	0x1415e94b8	 and the 
+poetic_form	0x140e76400	0x140e7c0fd	0x141730bc0	The ending of each line 
+poetic_form	0x140e76400	0x140e7c121	0x141730b18	of the poem
+poetic_form	0x140e76400	0x140e7c139	0x141730b28	of the 
+poetic_form	0x140e76400	0x140e7c193	0x141730b30	of this part
+poetic_form	0x140e76400	0x140e7c19f	0x141730b40	 shares the same rhyme.  
+poetic_form	0x140e76400	0x140e7c1bd	0x141730c50	The rhyme scheme 
+poetic_form	0x140e76400	0x140e7c20c	0x141730c68	repeating in each stanza of
+poetic_form	0x140e76400	0x140e7c221	0x141730c88	within each stanza of
+poetic_form	0x140e76400	0x140e7c22a	0x141730ca0	within
+poetic_form	0x140e76400	0x140e7c233	0x1416dd91c	of
+poetic_form	0x140e76400	0x140e7c2c1	0x141730be0	repeating in each stanza
+poetic_form	0x140e76400	0x140e7c2d0	0x141730c00	within each stanza
+poetic_form	0x140e76400	0x140e7c2d9	0x141730c18	within this stanza
+poetic_form	0x140e76400	0x140e7c2f0	0x141730c30	respecting the full poem
+poetic_form	0x140e76400	0x140e7c306	0x1415f71e4	 is 
+poetic_form	0x140e76400	0x140e7c513	0x141731230	, where numbers indicate a refrain
+poetic_form	0x140e76400	0x140e7c572	0x141731260	As a rule throughout the poem, the end rhymes don't generally match perfectly.  
+poetic_form	0x140e76400	0x140e7c59a	0x1417312c0	In this part of the poem, the end rhymes don't need to match perfectly.  
+poetic_form	0x140e76400	0x140e7c644	0x141731310	The rhyme
+poetic_form	0x140e76400	0x140e7c7a3	0x141731210	 need to match perfectly.  
+poetic_form	0x140e76400	0x140e7c7e4	0x1415fd258	[B]
+musical_form	0x140dd5ce0	0x140dd5d50	0x141649b7c	 is a 
+musical_form	0x140dd5ce0	0x140dd5d7d	0x14171a180	form of music used during marches and military engagements
+musical_form	0x140dd5ce0	0x140dd5d86	0x14171a288	devotional form of music
+musical_form	0x140dd5ce0	0x140dd5d9f	0x14171a260	 directed toward the worship of 
+musical_form	0x140dd5ce0	0x140dd5de3	0x14171a2a8	form of music used to commemorate important events
+musical_form	0x140dd5ce0	0x140dd5dec	0x14171a1c0	form of music used for entertainment
+musical_form	0x140dd5ce0	0x140dd5e21	0x141649c40	 originating in 
+musical_form	0x140dd5ce0	0x140dd5e28	0x141649c18	 which grew out of the performances of 
+musical_form	0x140dd5ce0	0x140dd5e6e	0x141649c58	 originally devised by 
+musical_form	0x140dd5ce0	0x140dd5ea4	0x1415fd968	.  
+musical_form	0x140dd5ce0	0x140dd5eba	0x14171a2f8	The form guides musicians during improvised performances.  
+musical_form	0x140dd5ce0	0x140dd5ec1	0x14171a1f0	The rules of the form are applied by composers to produce individual pieces of music which can be performed.  
+musical_form	0x140dd5ce0	0x140dd5f27	0x14171a360	recites
+musical_form	0x140dd5ce0	0x140dd5f2e	0x14171a398	while the
+musical_form	0x140dd5ce0	0x140dd5f6a	0x14166b990	A
+musical_form	0x140dd5ce0	0x140dd5f74	0x141602db4	a
+musical_form	0x140dd5ce0	0x140dd600c	0x1415ed5b4	 to 
+musical_form	0x140dd5ce0	0x140dd6060	0x1415e873c	 
+musical_form	0x140dd5ce0	0x140dd6082	0x14171a2f0	singer
+musical_form	0x140dd5ce0	0x140dd609e	0x14171a2e8	speaker
+musical_form	0x140dd5ce0	0x140dd60ba	0x14171a2e0	chanter
+musical_form	0x140dd5ce0	0x140dd60dc	0x1415e9298	s
+musical_form	0x140dd5ce0	0x140dd612b	0x14171a368	recite
+musical_form	0x140dd5ce0	0x140dd6142	0x14171a350	 the words of 
+musical_form	0x140dd5ce0	0x140dd61b7	0x14171a338	 a composition of
+musical_form	0x140dd5ce0	0x140dd623a	0x14171a3a8	 nonsensical words and sounds
+musical_form	0x140dd5ce0	0x140dd62af	0x14164a188	The
+musical_form	0x140dd5ce0	0x140dd62c5	0x14171a380	 music is played on 
+musical_form	0x140dd5ce0	0x140dd63f3	0x1415e90d8	, 
+musical_form	0x140dd5ce0	0x140dd6401	0x1415e9110	 and 
+musical_form	0x140dd5ce0	0x140dd65c0	0x14171a370	The music
+musical_form	0x140dd5ce0	0x140dd65d1	0x14171a450	al voices join in melody and counterpoint, harmony and rhythm
+musical_form	0x140dd5ce0	0x140dd65d8	0x14171a420	al voices bring melody, counterpoint and rhythm
+musical_form	0x140dd5ce0	0x140dd65e7	0x14171a3f0	al voices cover melody, harmony and rhythm
+musical_form	0x140dd5ce0	0x140dd65ee	0x14171a3c8	 is melody and rhythm without harmony
+musical_form	0x140dd5ce0	0x140dd65fd	0x14171a500	The musical voices 
+musical_form	0x140dd5ce0	0x140dd660e	0x14171a4d0	join in melody, counterpoint and harmony
+musical_form	0x140dd5ce0	0x140dd6615	0x14171a4b0	bring melody and counterpoint
+musical_form	0x140dd5ce0	0x140dd6624	0x14171a490	bring melody with harmony
+musical_form	0x140dd5ce0	0x140dd662b	0x14171a560	are joined in melody
+musical_form	0x140dd5ce0	0x140dd663a	0x14171a538	The musical voices are purely rhythmic
+musical_form	0x140dd5ce0	0x140dd6688	0x14171a520	The entire performance 
+musical_form	0x140dd5ce0	0x140dd66a6	0x14171a518	should 
+musical_form	0x140dd5ce0	0x140dd66d7	0x14171a5a8	stress the rhythm
+musical_form	0x140dd5ce0	0x140dd66e3	0x14171a598	be stately
+musical_form	0x140dd5ce0	0x140dd66ef	0x14171a588	be bright
+musical_form	0x140dd5ce0	0x140dd66fb	0x14171a578	be lively
+musical_form	0x140dd5ce0	0x140dd6707	0x14171ac00	be made with skill
+musical_form	0x140dd5ce0	0x140dd6713	0x14171abf0	be vigorous
+musical_form	0x140dd5ce0	0x140dd671f	0x14171abe0	be spirited
+musical_form	0x140dd5ce0	0x140dd672b	0x14171abd0	be delicate
+musical_form	0x140dd5ce0	0x140dd6737	0x14171ac40	bring a sense of motion
+musical_form	0x140dd5ce0	0x140dd6743	0x14171ac58	be fiery
+musical_form	0x140dd5ce0	0x140dd674f	0x14171ac28	be made with feeling
+musical_form	0x140dd5ce0	0x140dd675b	0x14171ac18	feel agitated
+musical_form	0x140dd5ce0	0x140dd6767	0x14171ac90	be passionate
+musical_form	0x140dd5ce0	0x140dd6773	0x14171ac88	sparkle
+musical_form	0x140dd5ce0	0x140dd677f	0x14171ac78	be broad
+musical_form	0x140dd5ce0	0x140dd678b	0x14171ac68	be made sweetly
+musical_form	0x140dd5ce0	0x140dd6797	0x14171acd0	be strong
+musical_form	0x140dd5ce0	0x140dd67a3	0x14171acc0	be energetic
+musical_form	0x140dd5ce0	0x140dd67af	0x14171acb0	be forceful
+musical_form	0x140dd5ce0	0x140dd67bb	0x14171aca0	feel heroic
+musical_form	0x140dd5ce0	0x140dd67c7	0x14171ad10	be made expressively
+musical_form	0x140dd5ce0	0x140dd67d3	0x14171ad00	feel furious
+musical_form	0x140dd5ce0	0x140dd67df	0x14171acf0	be joyful
+musical_form	0x140dd5ce0	0x140dd67eb	0x14171ace0	be grand
+musical_form	0x140dd5ce0	0x140dd67f4	0x14171ad60	be merry
+musical_form	0x140dd5ce0	0x140dd67fd	0x14171ad50	be graceful
+musical_form	0x140dd5ce0	0x140dd6806	0x14171ad38	build as it proceeds
+musical_form	0x140dd5ce0	0x140dd680f	0x14171ad28	evoke tears
+musical_form	0x140dd5ce0	0x140dd6818	0x14171adb0	be melancholic
+musical_form	0x140dd5ce0	0x140dd6821	0x14171ada0	feel mournful
+musical_form	0x140dd5ce0	0x140dd682a	0x14171ad80	be made with a light touch
+musical_form	0x140dd5ce0	0x140dd6833	0x14171ad70	feel heavy
+musical_form	0x140dd5ce0	0x140dd683c	0x14171adf0	feel mysterious
+musical_form	0x140dd5ce0	0x140dd6845	0x14171ade0	be jumpy
+musical_form	0x140dd5ce0	0x140dd684e	0x14171add0	feel playful
+musical_form	0x140dd5ce0	0x140dd6857	0x14171adc0	feel tender
+musical_form	0x140dd5ce0	0x140dd6860	0x14171ae38	feel calm
+musical_form	0x140dd5ce0	0x140dd6869	0x14171ae28	be triumphant
+musical_form	0x140dd5ce0	0x140dd68be	0x14171ae10	is at a free tempo
+musical_form	0x140dd5ce0	0x140dd68ca	0x14171ae00	is very slow
+musical_form	0x140dd5ce0	0x140dd68d6	0x14171ae90	is slow
+musical_form	0x140dd5ce0	0x140dd68df	0x14171ae78	is at a walking pace
+musical_form	0x140dd5ce0	0x140dd68e8	0x14171ae60	is moderately paced
+musical_form	0x140dd5ce0	0x140dd68f1	0x14171ae48	is moderately fast
+musical_form	0x140dd5ce0	0x140dd68fa	0x14171aee0	is fast
+musical_form	0x140dd5ce0	0x140dd6903	0x14171aed0	is very fast
+musical_form	0x140dd5ce0	0x140dd690c	0x14171aeb8	is extremely fast
+musical_form	0x140dd5ce0	0x140dd6915	0x14171ae98	accelerates as it proceeds
+musical_form	0x140dd5ce0	0x140dd691e	0x14171af40	slows and broadens
+musical_form	0x140dd5ce0	0x140dd6927	0x14171af28	is consistently slowing
+musical_form	0x140dd5ce0	0x140dd6930	0x14171af10	is at a hurried pace
+musical_form	0x140dd5ce0	0x140dd6939	0x14171aee8	gradually slows as it comes to an end
+musical_form	0x140dd5ce0	0x140dd6942	0x14171afa8	slows down and dies away as it draws to a close
+musical_form	0x140dd5ce0	0x140dd694b	0x14171af80	becomes calmer as the end is approached
+musical_form	0x140dd5ce0	0x140dd6954	0x14171af60	becomes frenzied as it proceeds
+musical_form	0x140dd5ce0	0x140dd6986	0x14171af54	is to
+musical_form	0x140dd5ce0	0x140dd698f	0x14171b010	, and it is to
+musical_form	0x140dd5ce0	0x140dd69cb	0x14171aff0	be in whispered undertones
+musical_form	0x140dd5ce0	0x140dd69d4	0x14171afe0	be very soft
+musical_form	0x140dd5ce0	0x140dd69dd	0x14171afd8	be soft
+musical_form	0x140dd5ce0	0x140dd69e6	0x14171b050	be moderately soft
+musical_form	0x140dd5ce0	0x140dd69ef	0x14171b038	be moderately loud
+musical_form	0x140dd5ce0	0x140dd69f8	0x14171b030	be loud
+musical_form	0x140dd5ce0	0x140dd6a01	0x14171b020	be very loud
+musical_form	0x140dd5ce0	0x140dd6a0a	0x14171b0c8	become louder and louder
+musical_form	0x140dd5ce0	0x140dd6a13	0x14171b0a8	become softer and softer
+musical_form	0x140dd5ce0	0x140dd6a1c	0x14171b090	fade into silence
+musical_form	0x140dd5ce0	0x140dd6a25	0x14171b068	start loud then be immediately soft
+musical_form	0x140dd5ce0	0x140dd6c25	0x14171a5f8	The melody and counterpoint both have 
+musical_form	0x140dd5ce0	0x140dd6c4e	0x14171a668	phrases of varied length
+musical_form	0x140dd5ce0	0x140dd6c5a	0x14171a5c0	long phrases
+musical_form	0x140dd5ce0	0x140dd6c66	0x14171a5d0	mid-length phrases
+musical_form	0x140dd5ce0	0x140dd6c72	0x14171a658	The melody has 
+musical_form	0x140dd5ce0	0x140dd6cae	0x14171a5e8	short phrases
+musical_form	0x140dd5ce0	0x140dd6cbd	0x14171a638	, while the counterpoint has 
+musical_form	0x140dd5ce0	0x140dd6ce6	0x14171a740	The counterpoint melody has 
+musical_form	0x140dd5ce0	0x140dd6d0d	0x14171a620	 throughout the form.  
+musical_form	0x140dd5ce0	0x140dd6d3c	0x14171a7a8	The music is broadly layered with chords spanning the range.  
+musical_form	0x140dd5ce0	0x140dd6d45	0x14171a7f0	Pitches are densely packed in clusters as music moves from chord to chord.  
+musical_form	0x140dd5ce0	0x140dd6d4e	0x14171a690	Chords, seldom-used, are sparse -- intervals and single pitches are favored.  
+musical_form	0x140dd5ce0	0x140dd6d57	0x14171a6e0	Never more than an interval sounds at once.  
+musical_form	0x140dd5ce0	0x140dd6d60	0x14171a710	Only one pitch is ever played at a time.  
+musical_form	0x140dd5ce0	0x140dd6d7a	0x14171a778	The music repeats for as long as necessary.  
+musical_form	0x140dd5ce0	0x140dd6e3d	0x14171a760	It is performed 
+musical_form	0x140dd5ce0	0x140dd6e4f	0x14171a868	without preference for a scale
+musical_form	0x140dd5ce0	0x140dd6ea2	0x14171a858	using the 
+musical_form	0x140dd5ce0	0x140dd6ed0	0x14171a84c	 scale
+musical_form	0x140dd5ce0	0x140dd6f17	0x1415ecf9c	in 
+musical_form	0x140dd5ce0	0x140dd6f20	0x14171a840	 and in 
+musical_form	0x140dd5ce0	0x140dd6f43	0x14171a910	free rhythm
+musical_form	0x140dd5ce0	0x140dd6f4f	0x1415e8e48	the 
+musical_form	0x140dd5ce0	0x140dd6fe3	0x141649a08	 rhythm
+musical_form	0x140dd5ce0	0x140dd7021	0x14171a8d0	Throughout, when possible, composers and performers are to 
+musical_form	0x140dd5ce0	0x140dd702a	0x14171a8a0	Throughout, when possible, performers are to 
+musical_form	0x140dd5ce0	0x140dd71cd	0x14171a888	glide from note to note
+musical_form	0x140dd5ce0	0x140dd71d9	0x14171a950	use grace notes
+musical_form	0x140dd5ce0	0x140dd71e5	0x14171a940	use mordents
+musical_form	0x140dd5ce0	0x140dd71f1	0x14171a930	make trills
+musical_form	0x140dd5ce0	0x140dd71fd	0x14171a920	play rapid runs
+musical_form	0x140dd5ce0	0x140dd7209	0x14171a9a0	locally improvise
+musical_form	0x140dd5ce0	0x140dd7215	0x14171aa48	spread syllables over many notes
+musical_form	0x140dd5ce0	0x140dd7221	0x14171aa28	match notes and syllables
+musical_form	0x140dd5ce0	0x140dd722d	0x14171a990	syncopate
+musical_form	0x140dd5ce0	0x140dd7258	0x14171a9e8	modulate frequently
+musical_form	0x140dd5ce0	0x140dd7261	0x14171a960	alternate tension and repose
+musical_form	0x140dd5ce0	0x140dd726a	0x14171a980	add fills
+musical_form	0x140dd5ce0	0x140dd7273	0x14171a9d8	play arpeggios
+musical_form	0x140dd5ce0	0x140dd7294	0x14171aa70	freely adjust the beats
+musical_form	0x140dd5ce0	0x140dd729d	0x14171a9b8	play legato
+musical_form	0x140dd5ce0	0x140dd72a6	0x14171a9c8	play staccato
+musical_form	0x140dd5ce0	0x140dd7311	0x14171aa00	From beginning to end, when improvising
+musical_form	0x140dd5ce0	0x140dd732b	0x14171aab0	 or composing
+musical_form	0x140dd5ce0	0x140dd733a	0x14171aa98	, artists should 
+musical_form	0x140dd5ce0	0x140dd73be	0x14171aae8	sometimes
+musical_form	0x140dd5ce0	0x140dd73c7	0x14171aa88	often
+musical_form	0x140dd5ce0	0x140dd73d0	0x14171aa90	always
+musical_form	0x140dd5ce0	0x140dd73df	0x14171aad8	 include a 
+musical_form	0x140dd5ce0	0x140dd7410	0x14171ab20	falling-rising
+musical_form	0x140dd5ce0	0x140dd7419	0x14171aac0	rising-falling
+musical_form	0x140dd5ce0	0x140dd7422	0x1415fda48	falling
+musical_form	0x140dd5ce0	0x140dd742b	0x14171aad0	rising
+musical_form	0x140dd5ce0	0x140dd743a	0x14171ab10	 melody pattern
+musical_form	0x140dd5ce0	0x140dd7468	0x1415ee5e0	 with 
+musical_form	0x140dd5ce0	0x140dd7503	0x1416856c8	flattened
+musical_form	0x140dd5ce0	0x140dd7525	0x14171ab00	sharpened
+musical_form	0x140dd5ce0	0x140dd7589	0x14171aaf8	 degree
+musical_form	0x140dd5ce0	0x140dd75d0	0x14171ab58	 on the rise
+musical_form	0x140dd5ce0	0x140dd75d9	0x14171ab48	 on the fall
+musical_form	0x140dd5ce0	0x140dd7679	0x14171ab38	 as well as 
+musical_form	0x140dd5ce0	0x140dd77a0	0x14171ab74	trills
+musical_form	0x140dd5ce0	0x140dd77a9	0x14171ab80	mordents
+musical_form	0x140dd5ce0	0x140dd77b2	0x14171ab90	grace notes
+musical_form	0x140dd5ce0	0x140dd77bb	0x14171ab30	glides
+musical_form	0x140dd5ce0	0x140dd77c4	0x14171ab68	rapid runs
+musical_form	0x140dd5ce0	0x140dd77e5	0x14171aba4	legato
+musical_form	0x140dd5ce0	0x140dd77ee	0x14171abb0	staccato
+musical_form	0x140dd5ce0	0x140dd77f7	0x14171abc0	arpeggios
+musical_form	0x140dd5ce0	0x140dd7cf7	0x1415fd258	[B]
+musical_form	0x140dd5ce0	0x140dd7d1a	0x14171ab9c	Each 
+musical_form	0x140dd5ce0	0x140dd7d23	0x1415ed9bc	The 
+musical_form	0x140dd5ce0	0x140dd7ee7	0x14171ba28	 always 
+musical_form	0x140dd5ce0	0x140dd7f23	0x14171ba78	provides the rhythm
+musical_form	0x140dd5ce0	0x140dd7f2c	0x14171b9e0	does harmony
+musical_form	0x140dd5ce0	0x140dd7f35	0x14171b9f0	does the counterpoint melody
+musical_form	0x140dd5ce0	0x140dd7f3e	0x14171ba10	does the main melody
+musical_form	0x140dd5ce0	0x140dd7ffb	0x14171ba60	perform with skill
+musical_form	0x140dd5ce0	0x140dd8043	0x14171ba48	perform with feeling
+musical_form	0x140dd5ce0	0x140dd807f	0x14171ba38	perform sweetly
+musical_form	0x140dd5ce0	0x140dd80bb	0x14171bae0	perform expressively
+musical_form	0x140dd5ce0	0x140dd80fa	0x14171bab8	build as the performance proceeds
+musical_form	0x140dd5ce0	0x140dd811e	0x14171ba98	perform with a light touch
+musical_form	0x140dd5ce0	0x140dd81be	0x14171ba8c	is to 
+musical_form	0x140dd5ce0	0x140dd836f	0x14171bb30	glides from note to note
+musical_form	0x140dd5ce0	0x140dd837b	0x14171bb18	uses grace notes
+musical_form	0x140dd5ce0	0x140dd8387	0x14171bb08	uses mordents
+musical_form	0x140dd5ce0	0x140dd8393	0x14171baf8	makes trills
+musical_form	0x140dd5ce0	0x140dd839f	0x14171bb88	plays rapid runs
+musical_form	0x140dd5ce0	0x140dd83ab	0x14171bc28	spreads syllables over many notes
+musical_form	0x140dd5ce0	0x140dd83b7	0x14171bc08	matches notes and syllables
+musical_form	0x140dd5ce0	0x140dd83c0	0x14171bb70	locally improvises
+musical_form	0x140dd5ce0	0x140dd83ef	0x14171bbd0	modulates frequently
+musical_form	0x140dd5ce0	0x140dd83f8	0x14171bb50	adds fills
+musical_form	0x140dd5ce0	0x140dd8401	0x14171bb60	syncopates
+musical_form	0x140dd5ce0	0x140dd840a	0x14171bbc0	plays arpeggios
+musical_form	0x140dd5ce0	0x140dd8425	0x14171bba0	plays legato
+musical_form	0x140dd5ce0	0x140dd842e	0x14171bbb0	plays staccato
+musical_form	0x140dd5ce0	0x140dd84c6	0x14171bbf0	The voice stays in the 
+musical_form	0x140dd5ce0	0x140dd84ee	0x141649e00	high
+musical_form	0x140dd5ce0	0x140dd84fa	0x14171bbe8	middle
+musical_form	0x140dd5ce0	0x140dd8510	0x14171bc88	The voice uses its entire range.  
+musical_form	0x140dd5ce0	0x140dd8524	0x14171bc68	The voice ranges from the 
+musical_form	0x140dd5ce0	0x140dd8556	0x141649e08	low
+musical_form	0x140dd5ce0	0x140dd8565	0x14171bc50	 register to the 
+musical_form	0x140dd5ce0	0x140dd859e	0x14171bcb0	 register.  
+musical_form	0x140dd5ce0	0x140dd85e8	0x14171bd00	The voice is confined to the 
+musical_form	0x140dd5ce0	0x140dd8684	0x14171bcf8	top
+musical_form	0x140dd5ce0	0x140dd8731	0x14171bcd8	 voice uses its entire range.  
+musical_form	0x140dd5ce0	0x140dd875f	0x14171bcc0	 voice ranges from the 
+musical_form	0x140dd5ce0	0x140dd8808	0x14171bd90	The voice uses its entire range from the 
+musical_form	0x140dd5ce0	0x140dd8aae	0x14171bd70	 has a simple structure: 
+musical_form	0x140dd5ce0	0x140dd8ac8	0x14171bd50	 has the following structure: 
+musical_form	0x140dd5ce0	0x140dd8ad1	0x14171bd20	 has a well-defined multi-passage structure: 
+musical_form	0x140dd5ce0	0x140dd8bbd	0x14171bde8	an additional
+musical_form	0x140dd5ce0	0x140dd8bce	0x14171bdd8	another 
+musical_form	0x140dd5ce0	0x140dd8d67	0x14171bdc8	 lengthy
+musical_form	0x140dd5ce0	0x140dd8d75	0x14171bdbc	 brief
+musical_form	0x140dd5ce0	0x140dd8db2	0x14171be28	 unrelated
+musical_form	0x140dd5ce0	0x140dd8dc1	0x14171be18	 passage
+musical_form	0x140dd5ce0	0x140dd8df3	0x141649304	n
+musical_form	0x140dd5ce0	0x140dd8e02	0x14171be08	 introduction
+musical_form	0x140dd5ce0	0x140dd8e22	0x14171bdf8	 exposition
+musical_form	0x140dd5ce0	0x140dd8e44	0x1415e8f68	 of the theme
+musical_form	0x140dd5ce0	0x140dd8e50	0x1415e8fa0	 of the first theme
+musical_form	0x140dd5ce0	0x140dd8e64	0x1415e8f88	 of the second theme
+musical_form	0x140dd5ce0	0x140dd8e70	0x1415e8fd0	 of the previous passage
+musical_form	0x140dd5ce0	0x140dd8e7c	0x14171be58	 recapitulation
+musical_form	0x140dd5ce0	0x140dd8eaa	0x14171be48	 synthesis
+musical_form	0x140dd5ce0	0x140dd8ec7	0x1415e8ff0	 of the two themes
+musical_form	0x140dd5ce0	0x140dd8ed3	0x1415e9020	 of previous passages
+musical_form	0x140dd5ce0	0x140dd8edf	0x14171be40	 verse
+musical_form	0x140dd5ce0	0x140dd8f04	0x14171be38	 chorus
+musical_form	0x140dd5ce0	0x140dd8f10	0x14171be88	 finale
+musical_form	0x140dd5ce0	0x140dd8f1c	0x14171be80	 coda
+musical_form	0x140dd5ce0	0x140dd8f28	0x14171be70	 bridge-passage
+musical_form	0x140dd5ce0	0x140dd8f4d	0x14171be68	 first
+musical_form	0x140dd5ce0	0x140dd8f5c	0x14171beb8	 theme
+musical_form	0x140dd5ce0	0x140dd8f77	0x14171bec0	 second
+musical_form	0x140dd5ce0	0x140dd8f92	0x14171bea0	 series of variations
+musical_form	0x140dd5ce0	0x140dd8fb4	0x1415e90c8	 on the theme
+musical_form	0x140dd5ce0	0x140dd8fbd	0x1415e90b0	 on the first theme
+musical_form	0x140dd5ce0	0x140dd8fcb	0x1415e90e0	 on the second theme
+musical_form	0x140dd5ce0	0x140dd9073	0x14171be90	possibly 
+musical_form	0x140dd5ce0	0x140dd9095	0x14171bee8	all repeated
+musical_form	0x140dd5ce0	0x140dd909e	0x14171bed8	repeated
+musical_form	0x140dd5ce0	0x140dd90ce	0x14171bed0	 up to 
+musical_form	0x140dd5ce0	0x140dd9116	0x14171bec8	 times
+musical_form	0x140dd5ce0	0x140dd96e0	0x14171b120	Each of the 
+musical_form	0x140dd5ce0	0x140dd978b	0x14171b110	simple passage
+musical_form	0x140dd5ce0	0x140dd97af	0x14164a3c0	introduction
+musical_form	0x140dd5ce0	0x140dd97b8	0x14164a3d0	exposition
+musical_form	0x140dd5ce0	0x140dd97c1	0x14164a3e0	recapitulation
+musical_form	0x140dd5ce0	0x140dd97ca	0x14164a3f0	synthesis
+musical_form	0x140dd5ce0	0x140dd97d3	0x14164a3fc	verse
+musical_form	0x140dd5ce0	0x140dd97dc	0x14164a404	chorus
+musical_form	0x140dd5ce0	0x140dd97e5	0x14164a40c	finale
+musical_form	0x140dd5ce0	0x140dd97ee	0x14164a414	coda
+musical_form	0x140dd5ce0	0x140dd97f7	0x14164a420	bridge-passage
+musical_form	0x140dd5ce0	0x140dd9800	0x1415e90a8	theme
+musical_form	0x140dd5ce0	0x140dd9809	0x14171b0f8	series of variations
+musical_form	0x140dd5ce0	0x140dd984f	0x14171b160	 is voiced by 
+musical_form	0x140dd5ce0	0x140dd98f5	0x141663d84	the
+musical_form	0x140dd5ce0	0x140dd98fe	0x14171b1a8	the rhythm of the
+musical_form	0x140dd5ce0	0x140dd9907	0x14171b1c0	the harmony of the
+musical_form	0x140dd5ce0	0x140dd9910	0x14171b130	the counterpoint of the
+musical_form	0x140dd5ce0	0x140dd9919	0x14171b148	the melody of the
+musical_form	0x140dd5ce0	0x140dd9a49	0x14171b190	 reciting the words of 
+musical_form	0x140dd5ce0	0x140dd9a8d	0x14171b180	 reciting
+musical_form	0x140dd5ce0	0x140dd9b18	0x14171b258	 reciting nonsensical words and sounds
+musical_form	0x140dd5ce0	0x140dd9bdb	0x14171b0e8	Each passage
+musical_form	0x140dd5ce0	0x140dd9be9	0x14171b170	The passage
+musical_form	0x140dd5ce0	0x140dd9f91	0x14171b230	is twice the tempo of the last passage
+musical_form	0x140dd5ce0	0x140dd9f9d	0x14171b208	is half the tempo of the last passage
+musical_form	0x140dd5ce0	0x140dd9fa9	0x14171b1d8	moves more quickly than the last passage
+musical_form	0x140dd5ce0	0x140dd9fb5	0x14171b2d0	is slower than the last passage
+musical_form	0x140dd5ce0	0x140dd9fc1	0x14171b2b0	resumes the previous tempo
+musical_form	0x140dd5ce0	0x140dd9fcd	0x14171b290	resumes the original tempo
+musical_form	0x140dd5ce0	0x140dda187	0x1415fe078	In 
+musical_form	0x140dd5ce0	0x140dda287	0x14171b280	each of the 
+musical_form	0x140dd5ce0	0x140dda2ba	0x14171b318	s'
+musical_form	0x140dd5ce0	0x140dda2c3	0x1415e9260	's
+musical_form	0x140dd5ce0	0x140dda2cf	0x14171b310	 voice
+musical_form	0x140dd5ce0	0x140dda41f	0x14171b300	stays in the 
+musical_form	0x140dd5ce0	0x140dda476	0x14171b378	covers its entire range
+musical_form	0x140dd5ce0	0x140dda482	0x14171b360	ranges from the 
+musical_form	0x140dd5ce0	0x140dda536	0x14171b348	is confined to the 
+musical_form	0x140dd5ce0	0x140dda751	0x14171b320	covers its entire range from the 
+musical_form	0x140dd5ce0	0x140dda856	0x14171b2f0	 register
+musical_form	0x140dd5ce0	0x140dda950	0x141671e94	 has 
+musical_form	0x140dd5ce0	0x140dda990	0x14171b3f8	 in the melody and counterpoint
+musical_form	0x140dd5ce0	0x140ddaa2a	0x14171b3c8	 in the melody, while the counterpoint has 
+musical_form	0x140dd5ce0	0x140ddaacb	0x14171b3b0	 in the melody.  
+musical_form	0x140dd5ce0	0x140ddab32	0x14171b390	 in the counterpoint melody.  
+musical_form	0x140dd5ce0	0x140ddab69	0x14171b580	This passage is richly layered with full chords making use of the available range.  
+musical_form	0x140dd5ce0	0x140ddab72	0x14171b420	Chords are packed close together in dense clusters in this passage.  
+musical_form	0x140dd5ce0	0x140ddab7b	0x14171b468	This passage typically has some sparse chords.  
+musical_form	0x140dd5ce0	0x140ddab84	0x14171b4a0	This passage features only melodic tones and intervals.  
+musical_form	0x140dd5ce0	0x140ddab8d	0x14171b4e0	Only one pitch is ever played at a time in this passage.  
+musical_form	0x140dd5ce0	0x140ddac09	0x14171b570	 is performed 
+musical_form	0x140dd5ce0	0x140ddade8	0x14171b540	 should be composed and performed using 
+musical_form	0x140dd5ce0	0x140ddadf1	0x14171b520	 should be performed using 
+musical_form	0x140dd5ce0	0x140ddb025	0x14171b618	locally improvisation
+musical_form	0x140dd5ce0	0x140ddb031	0x14171b648	melismatic phrasing
+musical_form	0x140dd5ce0	0x140ddb03d	0x14171b630	syllabic phrasing
+musical_form	0x140dd5ce0	0x140ddb049	0x14171b608	syncopation
+musical_form	0x140dd5ce0	0x140ddb074	0x14171b680	frequent modulation
+musical_form	0x140dd5ce0	0x140ddb07d	0x14171b5d8	alternation between tension and repose
+musical_form	0x140dd5ce0	0x140ddb086	0x14171b600	fills
+musical_form	0x140dd5ce0	0x140ddb0b0	0x14171b660	free adjustment of the beats
+musical_form	0x140dd5ce0	0x140ddb176	0x14171b708	 should 
+musical_form	0x140dd5ce0	0x140ddb78d	0x14171b730	Scales are conceived of as two chords built using a division of the perfect fourth interval into 
+musical_form	0x140dd5ce0	0x140ddb7c8	0x14171b718	 notes.  
+musical_form	0x140dd5ce0	0x140ddb7e4	0x14171b6e8	Scales are constructed from 
+musical_form	0x140dd5ce0	0x140ddb81f	0x14171b698	 notes dividing the octave.  
+musical_form	0x140dd5ce0	0x140ddb82e	0x14171b7e8	In quartertones, their spacing is roughly 
+musical_form	0x140dd5ce0	0x140ddb8bf	0x14171b7a0	, where 1 is the tonic, O marks the octave and x marks other notes.  
+musical_form	0x140dd5ce0	0x140ddb918	0x14171b6b8	 notes spaced evenly throughout the octave.  
+musical_form	0x140dd5ce0	0x140ddb93f	0x14171b8b8	The tonic note is fixed only at the time of performance.  
+musical_form	0x140dd5ce0	0x140ddb948	0x14171b870	The tonic note is a fixed tone passed from teacher to student.  
+musical_form	0x140dd5ce0	0x140ddb986	0x14171b910	After a scale is constructed, the root note of chords are named.  
+musical_form	0x140dd5ce0	0x140ddb98f	0x14171b960	After a scale is constructed, notes are named according to degree.  
+musical_form	0x140dd5ce0	0x140ddb9a0	0x14171b818	A single note in the fundamental scale is named.  
+musical_form	0x140dd5ce0	0x140ddb9a9	0x14171b9a8	Preferred notes in the fundamental scale are named.  
+musical_form	0x140dd5ce0	0x140ddb9b2	0x14171b850	Every note is named.  
+musical_form	0x140dd5ce0	0x140ddb9cc	0x14171b8f8	It is called 
+musical_form	0x140dd5ce0	0x140ddb9d5	0x14171bf20	The names are 
+musical_form	0x140dd5ce0	0x140ddba19	0x141615540	 (
+musical_form	0x140dd5ce0	0x140ddba2c	0x14171bf18	spoken 
+musical_form	0x140dd5ce0	0x140ddbaa2	0x141615580	)
+musical_form	0x140dd5ce0	0x140ddbbf2	0x14171bf08	As always, the 
+musical_form	0x140dd5ce0	0x140ddbc8a	0x14171bfb0	hexatonic
+musical_form	0x140dd5ce0	0x140ddbc93	0x14171bef8	pentatonic
+musical_form	0x140dd5ce0	0x140ddbcab	0x14171bfa0	heptatonic
+musical_form	0x140dd5ce0	0x140ddbcba	0x14171bf90	 scale is 
+musical_form	0x140dd5ce0	0x140ddbcf6	0x14171bfc0	thought of as two disjoint chords drawn from the fundamental division of the perfect fourth
+musical_form	0x140dd5ce0	0x140ddbd07	0x14171c140	thought of as two disjoint chords spanning two perfect fourths
+musical_form	0x140dd5ce0	0x140ddbd18	0x14171c020	thought of as two disjoint chords spanning a tritone and a perfect fourth
+musical_form	0x140dd5ce0	0x140ddbd2c	0x14171c070	thought of as two disjoint chords spanning a perfect fifth and a major third
+musical_form	0x140dd5ce0	0x140ddbd40	0x14171c0c0	thought of as joined chords spanning a perfect fifth and a perfect fourth
+musical_form	0x140dd5ce0	0x140ddbd54	0x14171bf30	constructed by selection of degrees from the fundamental scale.  The degrees selected are 
+musical_form	0x140dd5ce0	0x140ddbe2e	0x14171c128	These chords are named 
+musical_form	0x140dd5ce0	0x140ddbf5f	0x14171c120	[B]The 
+musical_form	0x140dd5ce0	0x140ddbf9b	0x14171c1c8	pentachord
+musical_form	0x140dd5ce0	0x140ddbfa4	0x14171c1d8	tetrachord
+musical_form	0x140dd5ce0	0x140ddbfad	0x14171c110	trichord
+musical_form	0x140dd5ce0	0x140ddbfbc	0x1415f71e4	 is 
+musical_form	0x140dd5ce0	0x140ddc045	0x14171c1a8	 (completing the octave)
+musical_form	0x140dd5ce0	0x140ddc0bf	0x14171c330	degrees of the fundamental perfect fourth division
+musical_form	0x140dd5ce0	0x140ddc0c8	0x14171c368	degrees of the octave scale
+musical_form	0x140dd5ce0	0x140ddc0d6	0x14171c180	degrees of the semitone octave scale
+musical_form	0x140dd5ce0	0x140ddc0df	0x14171c388	degrees of the quartertone octave scale
+musical_form	0x140dd5ce0	0x140ddc232	0x14171c1f0	[B]The rhythm system is fundamentally polyrhythmic.  There are always multiple rhythm lines, and each of their bars is played over the same period of time, regardless of the number of beats.  The rhythm lines are thought of as one, without a primary-subordinate relationship, though individual lines can be named.  
+musical_form	0x140dd5ce0	0x140ddc248	0x14171c400	[B]The rhythm system is fundamentally polymetric.  There are always multiple rhythm lines, and the beats are always played together, even if one rhythm line completes (and then repeats) before the other is finished.  The rhythm lines are thought of as one, without a primary-subordinate relationship, though individual lines can be named.  
+musical_form	0x140dd5ce0	0x140ddc37d	0x14171c3e0	 rhythm is made from 
+musical_form	0x140dd5ce0	0x140ddc3cd	0x14171c3d0	 patterns: 
+musical_form	0x140dd5ce0	0x140ddc49d	0x14171c3b0	 (considered the primary)
+musical_form	0x140dd5ce0	0x140ddc613	0x14171c670	As stated above, they are to be played in polyrhythm.  
+musical_form	0x140dd5ce0	0x140ddc620	0x14171c638	As stated above, they are to be played in polymeter.  
+musical_form	0x140dd5ce0	0x140ddc62e	0x14171c5d0	The patterns are to be played in the same beat, allowing one to repeat before the other is concluded.  
+musical_form	0x140dd5ce0	0x140ddc637	0x14171c560	The patterns are to be played over the same period of time, concluding together regardless of beat number.  
+musical_form	0x140dd5ce0	0x140ddc760	0x14171c6d0	 rhythm is a single line with 
+musical_form	0x140dd5ce0	0x140ddc7bd	0x14171c6c8	 beats
+musical_form	0x140dd5ce0	0x140ddc7e8	0x14171c6b8	 divided into 
+musical_form	0x140dd5ce0	0x140ddc838	0x14171c6a8	 bars in a 
+musical_form	0x140dd5ce0	0x140ddc8b2	0x14164b74c	-
+musical_form	0x140dd5ce0	0x140ddc8cf	0x14171c738	 pattern
+musical_form	0x140dd5ce0	0x140ddc901	0x14171c720	The beats are named 
+musical_form	0x140dd5ce0	0x140ddc9b6	0x14171c6f8	The beat is stressed as follows:
+musical_form	0x140dd5ce0	0x140ddc9ef	0x14171c6f0	| 
+musical_form	0x140dd5ce0	0x140ddca81	0x1415ee438	!
+musical_form	0x140dd5ce0	0x140ddca97	0x1416bf838	X
+musical_form	0x140dd5ce0	0x140ddcaad	0x1415fe6bc	x
+musical_form	0x140dd5ce0	0x140ddcad5	0x14171c794	`
+musical_form	0x140dd5ce0	0x140ddcaf1	0x14164f424	'
+musical_form	0x140dd5ce0	0x140ddcb7c	0x14171c788	[B]where 
+musical_form	0x140dd5ce0	0x140ddcb90	0x14171c768	! marks the primary accent, 
+musical_form	0x140dd5ce0	0x140ddcba4	0x14171c748	X marks an accented beat, 
+musical_form	0x140dd5ce0	0x140ddcbb8	0x14171c7d8	` marks a beat as early, 
+musical_form	0x140dd5ce0	0x140ddcbcc	0x14171c7b8	' marks a beat as late, 
+musical_form	0x140dd5ce0	0x140ddcbdb	0x14171c7a8	x is a beat
+musical_form	0x140dd5ce0	0x140ddcbf1	0x14171c798	, - is silent
+musical_form	0x140dd5ce0	0x140ddcc00	0x14171c7f8	 and | indicates a bar.  
+dance_form	0x1404ea820	0x1404ea895	0x141649b7c	 is a 
+dance_form	0x1404ea820	0x1404ea8c9	0x141649b84	sacred
+dance_form	0x1404ea820	0x1404ea8ed	0x141649b94	 group
+dance_form	0x1404ea820	0x1404ea8f9	0x141649b8c	 solo
+dance_form	0x1404ea820	0x1404ea916	0x141649ba4	group 
+dance_form	0x1404ea820	0x1404ea925	0x141649bb0	celebration
+dance_form	0x1404ea820	0x1404ea931	0x141649b9c	solo 
+dance_form	0x1404ea820	0x1404ea94c	0x141649bc0	participation
+dance_form	0x1404ea820	0x1404ea955	0x141649bd0	social
+dance_form	0x1404ea820	0x1404ea9a8	0x1415edf90	performance
+dance_form	0x1404ea820	0x1404ea9c2	0x141649bd8	 partner
+dance_form	0x1404ea820	0x1404ea9cb	0x141649be4	war
+dance_form	0x1404ea820	0x1404ea9da	0x1415e9694	 dance
+dance_form	0x1404ea820	0x1404ea9ff	0x141649be8	 for a single pair
+dance_form	0x1404ea820	0x1404eaa1a	0x141628974	 for 
+dance_form	0x1404ea820	0x1404eaa66	0x1415ed5b4	 to 
+dance_form	0x1404ea820	0x1404eaac4	0x141649c08	 dancers
+dance_form	0x1404ea820	0x1404eaacd	0x141649bfc	 pairs
+dance_form	0x1404ea820	0x1404eab07	0x141649c40	 originating in 
+dance_form	0x1404ea820	0x1404eab0e	0x141649c18	 which grew out of the performances of 
+dance_form	0x1404ea820	0x1404eab4c	0x141649c58	 originally devised by 
+dance_form	0x1404ea820	0x1404eab83	0x1415fd968	.  
+dance_form	0x1404ea820	0x1404eab9b	0x141649ce0	The form guides dancers during improvised performances.  
+dance_form	0x1404ea820	0x1404eaba2	0x141649c70	The rules of the form are applied by choreographers to produce individual dances which can be performed.  
+dance_form	0x1404ea820	0x1404eabc4	0x141649d60	 as the dancers act out 
+dance_form	0x1404ea820	0x1404eac15	0x141649d20	The dance is accompanied by 
+dance_form	0x1404ea820	0x1404eac3f	0x141649d40	 as the dancer acts out 
+dance_form	0x1404ea820	0x1404eac99	0x141649d80	a composition of 
+dance_form	0x1404ea820	0x1404eaf05	0x141649850	The dancers perform 
+dance_form	0x1404ea820	0x1404eaf0c	0x141649928	turning counterclockwise
+dance_form	0x1404ea820	0x1404eaf75	0x141649838	The dancer performs 
+dance_form	0x1404ea820	0x1404eafbd	0x1416498c0	loosely mingled
+dance_form	0x1404ea820	0x1404eafd5	0x1415e8d00	the story of 
+dance_form	0x1404ea820	0x1404eb01d	0x1416498a8	in a double circle
+dance_form	0x1404ea820	0x1404eb026	0x141649898	in a circle
+dance_form	0x1404ea820	0x1404eb02f	0x141649880	in several lines
+dance_form	0x1404ea820	0x1404eb038	0x141649868	in a single line
+dance_form	0x1404ea820	0x1404eb05d	0x1415e873c	 
+dance_form	0x1404ea820	0x1404eb087	0x141649968	along an intricate path
+dance_form	0x1404ea820	0x1404eb090	0x141649948	along an improvised path
+dance_form	0x1404ea820	0x1404eb099	0x141649908	along a counterclockwise circle
+dance_form	0x1404ea820	0x1404eb0b8	0x1416498d0	along a clockwise circle
+dance_form	0x1404ea820	0x1404eb0c1	0x1416498f0	turning clockwise
+dance_form	0x1404ea820	0x1404eb10e	0x141649980	, moving 
+dance_form	0x1404ea820	0x1404eb142	0x141649990	very slowly 
+dance_form	0x1404ea820	0x1404eb14b	0x1416499a0	slowly 
+dance_form	0x1404ea820	0x1404eb154	0x1416499a8	slower and slower 
+dance_form	0x1404ea820	0x1404eb15d	0x1416499c0	faster and faster 
+dance_form	0x1404ea820	0x1404eb166	0x1416499d8	quickly 
+dance_form	0x1404ea820	0x1404eb16f	0x1416499e8	very quickly 
+dance_form	0x1404ea820	0x1404eb1b8	0x1416499f8	to the music's 
+dance_form	0x1404ea820	0x1404eb1de	0x141649a08	 rhythm
+dance_form	0x1404ea820	0x1404eb21f	0x141649a10	with the music
+dance_form	0x1404ea820	0x1404eb24c	0x141649a20	The partners 
+dance_form	0x1404ea820	0x1404eb271	0x141649a58	rarely make contact
+dance_form	0x1404ea820	0x1404eb27a	0x141649a40	maintain open contact
+dance_form	0x1404ea820	0x1404eb283	0x141649a30	dance closely
+dance_form	0x1404ea820	0x1404eb292	0x141649a70	, communicating intent 
+dance_form	0x1404ea820	0x1404eb2bf	0x141649a88	by pushing together
+dance_form	0x1404ea820	0x1404eb2d9	0x141649aa0	 constantly
+dance_form	0x1404ea820	0x1404eb2f7	0x141649f38	 briefly
+dance_form	0x1404ea820	0x1404eb303	0x141649f48	by pulling away
+dance_form	0x1404ea820	0x1404eb317	0x141649f58	constantly 
+dance_form	0x1404ea820	0x1404eb331	0x141649f68	briefly 
+dance_form	0x1404ea820	0x1404eb340	0x141649f78	through touch
+dance_form	0x1404ea820	0x1404eb380	0x141649f88	through a light touch
+dance_form	0x1404ea820	0x1404eb3bd	0x141649fa0	through visual cues
+dance_form	0x1404ea820	0x1404eb3fa	0x141649fb8	through spoken cues
+dance_form	0x1404ea820	0x1404eb4bb	0x141649fd0	There are partner changes throughout the dance 
+dance_form	0x1404ea820	0x1404eb52d	0x14164a098	with the lead turning out counterclockwise
+dance_form	0x1404ea820	0x1404eb536	0x14164a070	with the lead turning out clockwise
+dance_form	0x1404ea820	0x1404eb53f	0x14164a038	with the lead advancing against the main line of motion
+dance_form	0x1404ea820	0x1404eb548	0x14164a000	with the lead advancing along the main line of motion
+dance_form	0x1404ea820	0x1404eb55c	0x1415fd504	,
+dance_form	0x1404ea820	0x1404eb56a	0x1415e9110	 and 
+dance_form	0x1404ea820	0x1404eb6e5	0x14164a0c8	The dancers imitate the movement of the 
+dance_form	0x1404ea820	0x1404eb748	0x14164a0f8	This dance is a refined artform, with 
+dance_form	0x1404ea820	0x1404eb79c	0x14164a120	 special position
+dance_form	0x1404ea820	0x1404eb7bb	0x1415e9298	s
+dance_form	0x1404ea820	0x1404eb838	0x14164a138	 specific move
+dance_form	0x1404ea820	0x1404eb869	0x14164a148	 to be mastered.  
+dance_form	0x1404ea820	0x1404eb890	0x14164a160	The entire dance has a basic movement 
+dance_form	0x1404ea820	0x1404eb98e	0x14164a188	The
+dance_form	0x1404ea820	0x1404eb9b3	0x14164a190	 dance is
+dance_form	0x1404ea820	0x1404eba2a	0x1416492c0	 graceful
+dance_form	0x1404ea820	0x1404eba36	0x1416492d0	 serene
+dance_form	0x1404ea820	0x1404eba42	0x1416492d8	 calm
+dance_form	0x1404ea820	0x1404eba4e	0x1416492e0	 grotesque
+dance_form	0x1404ea820	0x1404eba5a	0x1416492ec	 crude
+dance_form	0x1404ea820	0x1404eba66	0x1416492f8	 refined
+dance_form	0x1404ea820	0x1404eba72	0x141649308	 understated
+dance_form	0x1404ea820	0x1404eba7e	0x141649318	 delicate
+dance_form	0x1404ea820	0x1404eba8a	0x141649328	 elaborate
+dance_form	0x1404ea820	0x1404eba96	0x141649338	 expressive
+dance_form	0x1404ea820	0x1404ebaa2	0x141649348	 strong
+dance_form	0x1404ea820	0x1404ebaae	0x141649358	 weightless
+dance_form	0x1404ea820	0x1404ebaba	0x141649364	 fluid
+dance_form	0x1404ea820	0x1404ebac6	0x141649370	 undulating
+dance_form	0x1404ea820	0x1404ebad2	0x14164937c	 soft
+dance_form	0x1404ea820	0x1404ebade	0x141649388	 jerking
+dance_form	0x1404ea820	0x1404ebaea	0x141649398	 sharp-edged
+dance_form	0x1404ea820	0x1404ebaf6	0x1416493a8	 straight-lined
+dance_form	0x1404ea820	0x1404ebb02	0x141649690	 energetic
+dance_form	0x1404ea820	0x1404ebb0e	0x1416496a0	 passionate
+dance_form	0x1404ea820	0x1404ebb1a	0x1416496b0	 vivacious
+dance_form	0x1404ea820	0x1404ebb26	0x1416496c0	 joyous
+dance_form	0x1404ea820	0x1404ebb32	0x1416496c8	 proud
+dance_form	0x1404ea820	0x1404ebb3e	0x1416496d0	 flamboyant
+dance_form	0x1404ea820	0x1404ebb4a	0x1416496e0	 lively
+dance_form	0x1404ea820	0x1404ebb53	0x1416496e8	 spirited
+dance_form	0x1404ea820	0x1404ebb5c	0x1416496f8	 vigorous
+dance_form	0x1404ea820	0x1404ebb65	0x141649708	 intense
+dance_form	0x1404ea820	0x1404ebb6e	0x141649718	 aggressive
+dance_form	0x1404ea820	0x1404ebb77	0x141649728	 powerful
+dance_form	0x1404ea820	0x1404ebb80	0x141649738	 sluggish
+dance_form	0x1404ea820	0x1404ebb89	0x141649748	 relaxed
+dance_form	0x1404ea820	0x1404ebb92	0x141649758	 passive
+dance_form	0x1404ea820	0x1404ebb9b	0x141649768	 subtle
+dance_form	0x1404ea820	0x1404ebba4	0x141649770	 sensual
+dance_form	0x1404ea820	0x1404ebbad	0x141649780	 debauched
+dance_form	0x1404ea820	0x1404ebbb6	0x141649790	 twisting
+dance_form	0x1404ea820	0x1404ebbbf	0x1416497a0	 sprightly
+dance_form	0x1404ea820	0x1404ebbc8	0x1416497b0	 sinuous
+dance_form	0x1404ea820	0x1404ebbf9	0x1415ee880	 and
+dance_form	0x1404ea820	0x1404ebc52	0x14164a1a0	 dance is punctuated by 
+dance_form	0x1404ea820	0x1404ebcbd	0x1415e8e48	the 
+dance_form	0x1404ea820	0x1404ebcf3	0x14164a1c0	graceful
+dance_form	0x1404ea820	0x1404ebcff	0x14164a1cc	serene
+dance_form	0x1404ea820	0x1404ebd0b	0x14164a1d4	calm
+dance_form	0x1404ea820	0x1404ebd17	0x14164a1e0	grotesque
+dance_form	0x1404ea820	0x1404ebd23	0x14164a1ec	crude
+dance_form	0x1404ea820	0x1404ebd2f	0x14164a1f8	refined
+dance_form	0x1404ea820	0x1404ebd3b	0x14164a200	understated
+dance_form	0x1404ea820	0x1404ebd47	0x14164a210	delicate
+dance_form	0x1404ea820	0x1404ebd53	0x14164a220	elaborate
+dance_form	0x1404ea820	0x1404ebd5f	0x14164a230	expressive
+dance_form	0x1404ea820	0x1404ebd6b	0x141649d94	strong
+dance_form	0x1404ea820	0x1404ebd77	0x141649d9c	large
+dance_form	0x1404ea820	0x1404ebd83	0x141649da8	weightless
+dance_form	0x1404ea820	0x1404ebd8f	0x141649db4	fluid
+dance_form	0x1404ea820	0x1404ebd9b	0x141649dc0	undulating
+dance_form	0x1404ea820	0x1404ebda7	0x141649dcc	soft
+dance_form	0x1404ea820	0x1404ebdb3	0x141649dd8	jerking
+dance_form	0x1404ea820	0x1404ebdbf	0x141649de0	sharp-edged
+dance_form	0x1404ea820	0x1404ebdcb	0x141649df0	straight-lined
+dance_form	0x1404ea820	0x1404ebdd7	0x141649e00	high
+dance_form	0x1404ea820	0x1404ebde3	0x141649e08	low
+dance_form	0x1404ea820	0x1404ebdef	0x141649e10	loudly percussive
+dance_form	0x1404ea820	0x1404ebdfb	0x141649e28	softly percussive
+dance_form	0x1404ea820	0x1404ebe07	0x141649e40	aborted
+dance_form	0x1404ea820	0x1404ebe13	0x141649e48	partially realized
+dance_form	0x1404ea820	0x1404ebe1f	0x141649e60	energetic
+dance_form	0x1404ea820	0x1404ebe2b	0x1416029b8	passionate
+dance_form	0x1404ea820	0x1404ebe37	0x141649e70	vivacious
+dance_form	0x1404ea820	0x1404ebe43	0x141649e7c	joyous
+dance_form	0x1404ea820	0x1404ebe4f	0x14160299c	proud
+dance_form	0x1404ea820	0x1404ebe5b	0x141649e88	flamboyant
+dance_form	0x1404ea820	0x1404ebe67	0x141649e94	lively
+dance_form	0x1404ea820	0x1404ebe70	0x141649ea0	spirited
+dance_form	0x1404ea820	0x1404ebe79	0x141649eb0	vigorous
+dance_form	0x1404ea820	0x1404ebe82	0x141649ec0	intense
+dance_form	0x1404ea820	0x1404ebe8b	0x141649ec8	aggressive
+dance_form	0x1404ea820	0x1404ebe94	0x141649ed8	powerful
+dance_form	0x1404ea820	0x1404ebe9d	0x141649ee8	sluggish
+dance_form	0x1404ea820	0x1404ebea6	0x141649ef8	relaxed
+dance_form	0x1404ea820	0x1404ebeaf	0x141649f00	passive
+dance_form	0x1404ea820	0x1404ebeb8	0x141649f08	subtle
+dance_form	0x1404ea820	0x1404ebec1	0x141649f10	sensual
+dance_form	0x1404ea820	0x1404ebeca	0x141649f18	debauched
+dance_form	0x1404ea820	0x1404ebed3	0x141649f28	twisting
+dance_form	0x1404ea820	0x1404ebedc	0x14164a470	sprightly
+dance_form	0x1404ea820	0x1404ebee5	0x14164a480	sinuous
+dance_form	0x1404ea820	0x1404ebf46	0x14164a4d0	repeated 
+dance_form	0x1404ea820	0x1404ebf60	0x14164a488	counterclockwise 
+dance_form	0x1404ea820	0x1404ebf7d	0x14164a4a0	clockwise 
+dance_form	0x1404ea820	0x1404ebfa3	0x14164a4b0	eighth 
+dance_form	0x1404ea820	0x1404ebfc9	0x14164a4b8	quarter 
+dance_form	0x1404ea820	0x1404ebff2	0x14164a4c4	half 
+dance_form	0x1404ea820	0x1404ec027	0x14164a4dc	turns
+dance_form	0x1404ea820	0x1404ec033	0x14164a4e8	facial expressions
+dance_form	0x1404ea820	0x1404ec03f	0x14164a500	hand gestures
+dance_form	0x1404ea820	0x1404ec04b	0x14164a510	straight walks
+dance_form	0x1404ea820	0x1404ec057	0x14164a520	curved walks
+dance_form	0x1404ea820	0x1404ec063	0x14164a530	runs
+dance_form	0x1404ea820	0x1404ec06f	0x14164a538	leaps
+dance_form	0x1404ea820	0x1404ec07b	0x14164a540	kicks
+dance_form	0x1404ea820	0x1404ec087	0x14164a548	left kicks
+dance_form	0x1404ea820	0x1404ec093	0x14164a558	right kicks
+dance_form	0x1404ea820	0x1404ec09f	0x14164a568	leg lifts
+dance_form	0x1404ea820	0x1404ec0ab	0x14164a578	left leg lifts
+dance_form	0x1404ea820	0x1404ec0b7	0x14164a588	right leg lifts
+dance_form	0x1404ea820	0x1404ec0c3	0x14164a598	body level
+dance_form	0x1404ea820	0x1404ec0cc	0x14164a5a8	body level changes
+dance_form	0x1404ea820	0x1404ec0d5	0x14164a5c0	arm carriage
+dance_form	0x1404ea820	0x1404ec0de	0x14164a5d0	raised left arms
+dance_form	0x1404ea820	0x1404ec0e7	0x14164a5e8	raised right arms
+dance_form	0x1404ea820	0x1404ec0f0	0x14164a600	raised arms
+dance_form	0x1404ea820	0x1404ec0f9	0x14164a60c	spins
+dance_form	0x1404ea820	0x1404ec102	0x14164a618	independent body movement
+dance_form	0x1404ea820	0x1404ec10b	0x14164a634	sway
+dance_form	0x1404ea820	0x1404ec114	0x14164a640	forward bends
+dance_form	0x1404ea820	0x1404ec11d	0x14164a650	backward bends
+dance_form	0x1404ea820	0x1404ec126	0x14164a240	leftward bends
+dance_form	0x1404ea820	0x1404ec12f	0x14164a250	rightward bends
+dance_form	0x1404ea820	0x1404ec138	0x14164a260	footwork
+dance_form	0x1404ea820	0x1404ec141	0x14164a270	movement along the line of dance
+dance_form	0x1404ea820	0x1404ec1e6	0x141649b28	 shadowed
+dance_form	0x1404ea820	0x1404ec1ef	0x141649b08	 performed in succession
+dance_form	0x1404ea820	0x1404ec1f8	0x141649ae8	 performed in retrograde
+dance_form	0x1404ea820	0x1404ec201	0x141649ad8	 mirrored
+dance_form	0x1404ea820	0x1404ec243	0x141649b38	 by group members
+dance_form	0x1404ea820	0x1404ec275	0x14164a298	 of the lead
+dance_form	0x1404ea820	0x1404ec28a	0x14164a2a8	 of the follower
+dance_form	0x1404ea820	0x1404ec2a5	0x1415e90d8	, 
+dance_form	0x1404ea820	0x1404ec31f	0x14164a2c0	, with 
+dance_form	0x1404ea820	0x1404ec385	0x14164a2e0	partially realized 
+dance_form	0x1404ea820	0x1404ec38e	0x14164a2d0	aborted 
+dance_form	0x1404ea820	0x1404ec397	0x14164a2c8	large 
+dance_form	0x1404ea820	0x1404ec3d3	0x14164a2f4	moves
+dance_form	0x1404ea820	0x1404ec411	0x14164a300	movement 
+dance_form	0x1404ea820	0x1404ec4ee	0x14164a350	shadowed
+dance_form	0x1404ea820	0x1404ec4fd	0x14164a338	performed in succession
+dance_form	0x1404ea820	0x1404ec50c	0x14164a320	performed in retrograde
+dance_form	0x1404ea820	0x1404ec515	0x14164a310	mirrored
+dance_form	0x1404ea820	0x1404ec71c	0x1415fd258	[B]
+dance_form	0x1404ea820	0x1404ec766	0x14164a360	The dance begins with the 
+dance_form	0x1404ea820	0x1404ec775	0x14164a380	The dance enters a new section with the 
+dance_form	0x1404ea820	0x1404ec792	0x14164a3ac	next 
+dance_form	0x1404ea820	0x1404ec829	0x14164a3b8	passage
+dance_form	0x1404ea820	0x1404ec85b	0x14164a3c0	introduction
+dance_form	0x1404ea820	0x1404ec875	0x14164a3d0	exposition
+dance_form	0x1404ea820	0x1404ec897	0x1415e8f68	 of the theme
+dance_form	0x1404ea820	0x1404ec8a3	0x1415e8fa0	 of the first theme
+dance_form	0x1404ea820	0x1404ec8b7	0x1415e8f88	 of the second theme
+dance_form	0x1404ea820	0x1404ec8c9	0x14164a3e0	recapitulation
+dance_form	0x1404ea820	0x1404ec8fd	0x14164a3f0	synthesis
+dance_form	0x1404ea820	0x1404ec921	0x1415e8ff0	 of the two themes
+dance_form	0x1404ea820	0x1404ec933	0x14164a3fc	verse
+dance_form	0x1404ea820	0x1404ec966	0x14164a404	chorus
+dance_form	0x1404ea820	0x1404ec984	0x14164a40c	finale
+dance_form	0x1404ea820	0x1404ec99e	0x14164a414	coda
+dance_form	0x1404ea820	0x1404ec9b8	0x14164a420	bridge-passage
+dance_form	0x1404ea820	0x1404ec9f9	0x1415e9088	first 
+dance_form	0x1404ea820	0x1404eca06	0x1415e9080	second 
+dance_form	0x1404ea820	0x1404eca1b	0x1415e90a8	theme
+dance_form	0x1404ea820	0x1404eca3f	0x14164a430	variations
+dance_form	0x1404ea820	0x1404eca61	0x1415e90c8	 on the theme
+dance_form	0x1404ea820	0x1404eca6a	0x1415e90b0	 on the first theme
+dance_form	0x1404ea820	0x1404eca77	0x1415e90e0	 on the second theme
+dance_form	0x1404ea820	0x1404eca8c	0x14164a440	 of the music.  
+dance_form	0x1404ea820	0x1404ecaea	0x1415ed9bc	The 
+dance_form	0x1404ea820	0x1404ecb25	0x14164a458	 section is distinct.  
+dance_form	0x1404ea820	0x1404ecf26	0x14164a660	to the 
+dance_form	0x1404ea820	0x1404ed317	0x141662fa8	creature
+dance_form	0x1404ea820	0x1404ed397	0x14164a668	There are partner changes 
+dance_form	0x1404ea820	0x1404ed4bd	0x14164a688	There is a basic movement 
+dance_form	0x1404ea820	0x1404ed5a6	0x14164a6a4	This
+dance_form	0x1404ea820	0x1404ed5c9	0x14164a6b0	 section is
+dance_form	0x1404ea820	0x1404ed94b	0x14164a6c0	 section is punctuated by 
+written_content	0x140cc5d50	0x140cc5e0d	0x1416ef3b8	It asks the question, "What if 
+written_content	0x140cc5d50	0x140cc5e66	0x1416ef398	 had unfolded differently?"  
+written_content	0x140cc5d50	0x140cc5eb4	0x1416ef378	It concerns the lineage of 
+written_content	0x140cc5d50	0x140cc5f0d	0x1415fd968	.  
+written_content	0x140cc5d50	0x140cc5f31	0x1416ef368	It concerns 
+written_content	0x140cc5d50	0x140cc5fba	0x1415e90d8	, 
+written_content	0x140cc5d50	0x140cc5fcf	0x1415e9110	 and 
+written_content	0x140cc5d50	0x140cc600a	0x1416ef340	The work has no particular subject.  
+written_content	0x140cc5d50	0x140cc6045	0x1416ef310	The writing conveys a moral lesson regarding 
+written_content	0x140cc5d50	0x140cc60fd	0x1416f02c0	The overall text emphasizes 
+written_content	0x140cc5d50	0x140cc61b5	0x1416f0298	For lyrics, the composer has selected 
+written_content	0x140cc5d50	0x140cc626d	0x1416f0258	For musical accompaniment, the choreographer has selected 
+written_content	0x140cc5d50	0x140cc635d	0x1416f0248	The writing 
+written_content	0x140cc5d50	0x140cc6417	0x1416f0228	 and it 
+written_content	0x140cc5d50	0x140cc641e	0x1416f0238	 yet it 
+written_content	0x140cc5d50	0x140cc6497	0x1416f01f0	Overall, the information is compiled masterfully
+written_content	0x140cc5d50	0x140cc64ae	0x1416f01c0	Overall, the splendid source of information
+written_content	0x140cc5d50	0x140cc64c5	0x1416f0190	Overall, this is a great source of information
+written_content	0x140cc5d50	0x140cc64dc	0x1416f0160	Overall, this is a good source of information
+written_content	0x140cc5d50	0x140cc64f0	0x1416f0128	Overall, the information is not compiled very well
+written_content	0x140cc5d50	0x140cc6502	0x1416f00f0	Overall, this is a terrible compilation of information
+written_content	0x140cc5d50	0x140cc6520	0x1416f00c8	Overall, the poetry is masterful
+written_content	0x140cc5d50	0x140cc6537	0x1416f00a8	Overall, the poetry is inspired
+written_content	0x140cc5d50	0x140cc654e	0x1416f0088	Overall, the poetry is great
+written_content	0x140cc5d50	0x140cc6565	0x1416f0068	Overall, the poetry is passable
+written_content	0x140cc5d50	0x140cc657f	0x1416f0028	Overall, the poetry is not awful, but not very good either
+written_content	0x140cc5d50	0x140cc6591	0x1416f0000	Overall, the poetry is very, very bad
+written_content	0x140cc5d50	0x140cc65af	0x1416effd8	Overall, the composition is masterful
+written_content	0x140cc5d50	0x140cc65c6	0x1416effb0	Overall, the composition is inspired
+written_content	0x140cc5d50	0x140cc65dd	0x1416eff88	Overall, the composition is great
+written_content	0x140cc5d50	0x140cc65f4	0x1416eff60	Overall, the composition is passable
+written_content	0x140cc5d50	0x140cc660e	0x1416eff20	Overall, the composition is not awful, but not very good either
+written_content	0x140cc5d50	0x140cc6620	0x1416efef8	Overall, the composition is atrocious
+written_content	0x140cc5d50	0x140cc663e	0x1416efed0	Overall, the choreography is masterful
+written_content	0x140cc5d50	0x140cc6655	0x1416efea8	Overall, the choreography is inspired
+written_content	0x140cc5d50	0x140cc666c	0x1416efe80	Overall, the choreography is great
+written_content	0x140cc5d50	0x140cc6683	0x1416efe58	Overall, the choreography is passable
+written_content	0x140cc5d50	0x140cc669d	0x1416efe10	Overall, the choreography is not awful, but not very good either
+written_content	0x140cc5d50	0x140cc66af	0x1416efde0	Overall, the choreography is just terrible
+written_content	0x140cc5d50	0x140cc66ca	0x1416efdc0	Overall, the prose is masterful
+written_content	0x140cc5d50	0x140cc66de	0x1416efda0	Overall, the prose is splendid
+written_content	0x140cc5d50	0x140cc66f2	0x1416efd80	Overall, the prose is great
+written_content	0x140cc5d50	0x140cc6706	0x1416efd60	Overall, the prose is passable
+written_content	0x140cc5d50	0x140cc671a	0x1416efd20	Overall, the prose is not awful, but not very good either
+written_content	0x140cc5d50	0x140cc6729	0x1416efcf0	Overall, the prose is amateurish at best
+written_content	0x140cc5d50	0x140cc676e	0x1416efcc8	The work has a single chapter.  
+written_content	0x140cc5d50	0x140cc6785	0x1416efcb8	The work has 
+written_content	0x140cc5d50	0x140cc67d8	0x1416efca8	 chapters.  
+written_content	0x140cc5d50	0x140cc6861	0x1415ee548	It
+written_content	0x140cc5d50	0x140cc6875	0x1415ed9bc	The 
+written_content	0x140cc5d50	0x140cc68d4	0x1416efc98	 chapter
+written_content	0x140cc5d50	0x140cc68f3	0x1416efc88	 covers 
+story_object_detail	0x140b8eeb0	0x140b8f015	0x1416df4e4	 was a
+story_object_detail	0x140b8eeb0	0x140b8f035	0x1415e873c	 
+story_object_detail	0x140b8eeb0	0x140b8f121	0x1416df530	 was a 
+story_object_detail	0x140b8eeb0	0x140b8f18d	0x1415fd968	.  
+story_object_detail	0x140b8eeb0	0x140b8f1b2	0x1415fd258	[B]
+story_object_detail	0x140b8eeb0	0x140b8f207	0x14164a6a4	This
+story_object_detail	0x140b8eeb0	0x140b8f217	0x1416df518	 was a legendary 
+story_object_detail	0x140b8eeb0	0x140b8f24d	0x1416af42c	.[B]
+story_object_detail	0x140b8eeb0	0x140b8f2c8	0x1416df558	 could be found within 
+story_object_detail	0x140b8eeb0	0x140b8f3d7	0x1416df538	 were a population within 
+story_object_detail	0x140b8eeb0	0x140b8f436	0x1416df4d0	 civilization of 
+story_object_detail	0x140b8eeb0	0x140b8f448	0x1416df508	 religion of 
+story_object_detail	0x140b8eeb0	0x140b8f45a	0x1416df4f0	 bandit gang from 
+story_object_detail	0x140b8eeb0	0x140b8f480	0x1415ec9f0	mercenary
+story_object_detail	0x140b8eeb0	0x140b8f48e	0x1416df4a8	versatile mercenary
+story_object_detail	0x140b8eeb0	0x140b8f497	0x1416df490	shadowy military
+story_object_detail	0x140b8eeb0	0x140b8f4d9	0x1415eddcc	order
+story_object_detail	0x140b8eeb0	0x140b8f4e5	0x1416df4c8	company
+story_object_detail	0x140b8eeb0	0x140b8f4ec	0x1416df4bc	band
+story_object_detail	0x140b8eeb0	0x140b8f509	0x1416df448	 performance troupe from 
+story_object_detail	0x140b8eeb0	0x140b8f51b	0x1416df428	 collection of outcasts from 
+story_object_detail	0x140b8eeb0	0x140b8f52d	0x1416df478	 merchant company from 
+story_object_detail	0x140b8eeb0	0x140b8f5b4	0x14160028c	craft
+story_object_detail	0x140b8eeb0	0x140b8f5c4	0x141600284	 guild
+story_object_detail	0x140b8eeb0	0x140b8f5d4	0x1415ed97c	 from 
+story_object_detail	0x140b8eeb0	0x140b8f657	0x1416df468	 group from 
+story_object_detail	0x140b8eeb0	0x140b8f732	0x1416df3d8	 linked to 
+story_object_detail	0x140b8eeb0	0x140b8f774	0x1416df3c0	 devoted to worship
+story_object_detail	0x140b8eeb0	0x140b8f782	0x1416df408	 devoted to the worship of 
+story_object_detail	0x140b8eeb0	0x140b8f813	0x1415ee880	 and
+story_object_detail	0x140b8eeb0	0x140b8f823	0x1416df398	 known for 
+story_object_detail	0x140b8eeb0	0x140b8f82a	0x1416df3e8	 dedicated to the mastery of 
+story_object_detail	0x140b8eeb0	0x140b8f87d	0x1416df328	kicking
+story_object_detail	0x140b8eeb0	0x140b8f892	0x1416df3a8	striking
+story_object_detail	0x140b8eeb0	0x140b8f8a7	0x1416df3b4	biting
+story_object_detail	0x140b8eeb0	0x140b8f8bc	0x1416df388	wrestling
+story_object_detail	0x140b8eeb0	0x140b8f8da	0x1416df318	their use of 
+story_object_detail	0x140b8eeb0	0x140b8f930	0x1415e8e48	the 
+story_object_detail	0x140b8eeb0	0x140b8f965	0x1415e90d8	, 
+story_object_detail	0x140b8eeb0	0x140b8f989	0x14162853c	, and 
+story_object_detail	0x140b8eeb0	0x140b8f992	0x1415e9110	 and 
+story_object_detail	0x140b8eeb0	0x140b8f9f6	0x1416df358	 centered around the worship of various beings
+story_object_detail	0x140b8eeb0	0x140b8fa25	0x1416df330	 centered around the worship of 
+story_object_detail	0x140b8eeb0	0x140b8fa77	0x1415fd470	, a 
+story_object_detail	0x140b8eeb0	0x140b8fac6	0x141662440	goddess
+story_object_detail	0x140b8eeb0	0x140b8facf	0x141661fa0	god
+story_object_detail	0x140b8eeb0	0x140b8fad6	0x141661fa4	deity
+story_object_detail	0x140b8eeb0	0x140b8fb18	0x1415eb518	 of 
+story_object_detail	0x140b8eeb0	0x140b8fbb9	0x1416df2e8	, a force
+story_object_detail	0x140b8eeb0	0x140b8fbe4	0x141661fc0	 which permeates 
+story_object_detail	0x140b8eeb0	0x140b8fbeb	0x1416df2c8	 which was said to permeate 
+story_object_detail	0x140b8eeb0	0x140b8fcc5	0x141646cb0	 was 
+story_object_detail	0x140b8eeb0	0x140b8fcf1	0x1415ecfb4	 in 
+story_object_detail	0x140b8eeb0	0x140b90271	0x1415fe078	In 
+story_object_detail	0x140b8eeb0	0x140b902d1	0x1416df308	 was hired 
+story_object_detail	0x140b8eeb0	0x140b902f5	0x1416df290	as part of 
+story_object_detail	0x140b8eeb0	0x140b9032b	0x1416df280	to fight in 
+story_object_detail	0x140b8eeb0	0x140b90334	0x1416df2f8	as a scout
+story_object_detail	0x140b8eeb0	0x140b90371	0x141628974	 for 
+story_object_detail	0x140b8eeb0	0x140b9037a	0x1416df2b8	 fought in 
+story_object_detail	0x140b8eeb0	0x140b903ca	0x1416df258	 in defense of 
+story_object_detail	0x140b8eeb0	0x140b903d3	0x1416df2a0	, an assault on 
+story_object_detail	0x140b8eeb0	0x140b90463	0x1415e85b4	.
+story_object_detail	0x140b8eeb0	0x140b907f2	0x1416df228	[C:3:0:1]Related Historical Figures[C:7:0:0][B]
+story_object_detail	0x140b8eeb0	0x140b908bd	0x1416465b0	parent
+story_object_detail	0x140b8eeb0	0x140b908ce	0x141646634	mother
+story_object_detail	0x140b8eeb0	0x140b908fa	0x1416465a8	father
+story_object_detail	0x140b8eeb0	0x140b90917	0x141646574	spouse
+story_object_detail	0x140b8eeb0	0x140b9092c	0x14164657c	wife
+story_object_detail	0x140b8eeb0	0x140b9093d	0x141646588	husband
+story_object_detail	0x140b8eeb0	0x140b90a0b	0x141646ac0	child
+story_object_detail	0x140b8eeb0	0x140b90a48	0x1416df130	b. 
+story_object_detail	0x140b8eeb0	0x140b90a6d	0x1415fcfe8	  
+story_object_detail	0x140b8eeb0	0x140b90a89	0x1416df170	d. 
+story_object_detail	0x140b8eeb0	0x140b90aab	0x14163fca4	[R]
+story_object_detail	0x140b8eeb0	0x140b90b8c	0x1416df148	[C:1:0:1]Related Entities[C:7:0:0][B]
+story_object_detail	0x140b8eeb0	0x140b90bbc	0x141615540	 (
+story_object_detail	0x140b8eeb0	0x140b90c02	0x1416df270	object of 
+story_object_detail	0x140b8eeb0	0x140b90c27	0x1416df268	ardent 
+story_object_detail	0x140b8eeb0	0x140b90c36	0x1416df200	faithful 
+story_object_detail	0x140b8eeb0	0x140b90c52	0x1416df1f8	casual 
+story_object_detail	0x140b8eeb0	0x140b90c5b	0x1416df218	dubious 
+story_object_detail	0x140b8eeb0	0x140b90c71	0x1416df210	worship
+story_object_detail	0x140b8eeb0	0x140b90c8c	0x1416df1c4	lover
+story_object_detail	0x140b8eeb0	0x140b90ca7	0x1415eca30	prisoner
+story_object_detail	0x140b8eeb0	0x140b90cc2	0x1416df1b8	imprisoner
+story_object_detail	0x140b8eeb0	0x140b90cdd	0x14165fbb8	master
+story_object_detail	0x140b8eeb0	0x140b90cf8	0x1416df1e8	apprenticeship
+story_object_detail	0x140b8eeb0	0x140b90d13	0x1416df1d0	traveling companion
+story_object_detail	0x140b8eeb0	0x140b90d2e	0x1416df190	former master
+story_object_detail	0x140b8eeb0	0x140b90d49	0x1416df178	former apprentice
+story_object_detail	0x140b8eeb0	0x140b90d64	0x1416df1b0	owner
+story_object_detail	0x140b8eeb0	0x140b90d7f	0x1416df1a0	former spouse
+story_object_detail	0x140b8eeb0	0x140b90d9a	0x1416df138	deceased spouse
+story_object_detail	0x140b8eeb0	0x140b90fdb	0x14164b74c	-
+story_object_detail	0x140b8eeb0	0x140b90fe8	0x1416dfa68	 until 
+story_object_detail	0x140b8eeb0	0x140b911a5	0x1416dfa90	former mercenary
+story_object_detail	0x140b8eeb0	0x140b911c0	0x141675fb0	enemy
+story_object_detail	0x140b8eeb0	0x140b911db	0x141673f48	criminal
+story_object_detail	0x140b8eeb0	0x140b911f6	0x1415ec9e4	member
+story_object_detail	0x140b8eeb0	0x140b91211	0x1416dfa80	former member
+story_object_detail	0x140b8eeb0	0x140b9122c	0x1415eca28	slave
+story_object_detail	0x140b8eeb0	0x140b91247	0x1416dfa40	former slave
+story_object_detail	0x140b8eeb0	0x140b9127d	0x1416dfa30	former prisoner
+story_object_detail	0x140b8eeb0	0x140b91298	0x1416dfa60	worker
+story_object_detail	0x140b8eeb0	0x140b912b3	0x1416dfa50	former worker
+story_object_detail	0x140b8eeb0	0x140b9135b	0x1416df9e0	claim to 
+story_object_detail	0x140b8eeb0	0x140b913d1	0x1416dfa70	 to present
+story_object_detail	0x140b8eeb0	0x140b913e7	0x1416df9d4	)[R]
+story_object_detail	0x140b8eeb0	0x140b91896	0x1416dfa10	 (associated civilization)[R]
+story_object_detail	0x140b8eeb0	0x140b918bb	0x1416df9f0	 (militant worshippers)[R]
+story_object_detail	0x140b8eeb0	0x140b918da	0x1416df998	 (religious worshippers)[R]
+story_object_detail	0x140b8eeb0	0x140b919ed	0x1415eb548	legendary hero
+story_object_detail	0x140b8eeb0	0x140b91a04	0x1415eb520	famous hero
+story_object_detail	0x140b8eeb0	0x140b91a1b	0x1415eb52c	hero
+story_object_detail	0x140b8eeb0	0x140b91a36	0x1415eb590	greatly respected for heroic acts
+story_object_detail	0x140b8eeb0	0x140b91a48	0x1415eb5b8	respected for heroic acts
+story_object_detail	0x140b8eeb0	0x140b91a5f	0x1415eb5f8	legendary brawler
+story_object_detail	0x140b8eeb0	0x140b91a76	0x1415eb660	famous brawler
+story_object_detail	0x140b8eeb0	0x140b91a87	0x1415eb670	noted brawler
+story_object_detail	0x140b8eeb0	0x140b91aa2	0x1415eb640	known brawler
+story_object_detail	0x140b8eeb0	0x140b91ab4	0x1415eb650	rumored brawler
+story_object_detail	0x140b8eeb0	0x140b91acb	0x1415ec0c0	legendary intruder
+story_object_detail	0x140b8eeb0	0x140b91ae2	0x1415ec0d8	infamous intruder
+story_object_detail	0x140b8eeb0	0x140b91af9	0x1415ec160	noted intruder
+story_object_detail	0x140b8eeb0	0x140b91b14	0x1415ec170	known intruder
+story_object_detail	0x140b8eeb0	0x140b91b26	0x1415ec130	rumored intruder
+story_object_detail	0x140b8eeb0	0x140b91b3d	0x1415ebb78	legendary monster
+story_object_detail	0x140b8eeb0	0x140b91b54	0x1415ebb38	infamous monster
+story_object_detail	0x140b8eeb0	0x140b91b65	0x1415ebb50	noted monster
+story_object_detail	0x140b8eeb0	0x140b91b80	0x1415ebbc0	known monster
+story_object_detail	0x140b8eeb0	0x140b91b92	0x1415ebbd0	rumored monster
+story_object_detail	0x140b8eeb0	0x140b91ba9	0x1415eba58	legendary brigand
+story_object_detail	0x140b8eeb0	0x140b91bc0	0x1415ebab0	infamous brigand
+story_object_detail	0x140b8eeb0	0x140b91bd1	0x1415ebac8	noted brigand
+story_object_detail	0x140b8eeb0	0x140b91bec	0x1415eba90	known brigand
+story_object_detail	0x140b8eeb0	0x140b91bfe	0x1415ebaa0	rumored brigand
+story_object_detail	0x140b8eeb0	0x140b91c15	0x1415eba08	legendary bully
+story_object_detail	0x140b8eeb0	0x140b91c2c	0x1415eba18	infamous bully
+story_object_detail	0x140b8eeb0	0x140b91c43	0x1415eba70	noted bully
+story_object_detail	0x140b8eeb0	0x140b91c5e	0x1415eba80	known bully
+story_object_detail	0x140b8eeb0	0x140b91c70	0x1415eba48	rumored bully
+story_object_detail	0x140b8eeb0	0x140b91c87	0x1415eb6a0	legendary villain
+story_object_detail	0x140b8eeb0	0x140b91c9e	0x1415eb6b8	infamous villain
+story_object_detail	0x140b8eeb0	0x140b91caf	0x1415eb680	noted villain
+story_object_detail	0x140b8eeb0	0x140b91cca	0x1415eb690	known villain
+story_object_detail	0x140b8eeb0	0x140b91cdc	0x1415eb700	rumored villain
+story_object_detail	0x140b8eeb0	0x140b91cf3	0x1415ebe10	legendary hunter
+story_object_detail	0x140b8eeb0	0x140b91d0a	0x1415ebe28	great hunter
+story_object_detail	0x140b8eeb0	0x140b91d21	0x1415ebdf0	talented hunter
+story_object_detail	0x140b8eeb0	0x140b91d3c	0x1415ebe00	skilled hunter
+story_object_detail	0x140b8eeb0	0x140b91d48	0x1415ebe78	rumored hunter
+story_object_detail	0x140b8eeb0	0x140b91d5f	0x1415eb788	legendary killer
+story_object_detail	0x140b8eeb0	0x140b91d76	0x1415eb7d8	infamous killer
+story_object_detail	0x140b8eeb0	0x140b91d8d	0x1415eb7e8	noted killer
+story_object_detail	0x140b8eeb0	0x140b91da8	0x1415eb7b8	known killer
+story_object_detail	0x140b8eeb0	0x140b91dba	0x1415eb7c8	rumored killer
+story_object_detail	0x140b8eeb0	0x140b91dd1	0x1415eb818	legendary murderer
+story_object_detail	0x140b8eeb0	0x140b91de8	0x1415eb830	infamous murderer
+story_object_detail	0x140b8eeb0	0x140b91dff	0x1415eb7f8	noted murderer
+story_object_detail	0x140b8eeb0	0x140b91e1a	0x1415eb808	known murderer
+story_object_detail	0x140b8eeb0	0x140b91e2c	0x1415eb868	rumored murderer
+story_object_detail	0x140b8eeb0	0x140b91e43	0x1415eb988	legendary enemy fighter
+story_object_detail	0x140b8eeb0	0x140b91e5a	0x1415eb9a0	infamous enemy fighter
+story_object_detail	0x140b8eeb0	0x140b91e71	0x1415eb958	noted enemy fighter
+story_object_detail	0x140b8eeb0	0x140b91e8c	0x1415eb970	known enemy fighter
+story_object_detail	0x140b8eeb0	0x140b91e9e	0x1415eb9d8	rumored enemy fighter
+story_object_detail	0x140b8eeb0	0x140b91eb5	0x1415ebb08	legendary loyal soldier
+story_object_detail	0x140b8eeb0	0x140b91ecc	0x1415ebb20	famous loyal soldier
+story_object_detail	0x140b8eeb0	0x140b91ee3	0x1415ebad8	noted loyal soldier
+story_object_detail	0x140b8eeb0	0x140b91efe	0x1415ebaf0	known loyal soldier
+story_object_detail	0x140b8eeb0	0x140b91f10	0x1415ebb60	rumored loyal soldier
+story_object_detail	0x140b8eeb0	0x140b91f27	0x1415eb9f0	legendary fighter
+story_object_detail	0x140b8eeb0	0x140b91f3e	0x1415eb9b8	famous fighter
+story_object_detail	0x140b8eeb0	0x140b91f4f	0x1415eb9c8	noted fighter
+story_object_detail	0x140b8eeb0	0x140b91f6a	0x1415eba28	known fighter
+story_object_detail	0x140b8eeb0	0x140b91f7c	0x1415eba38	rumored fighter
+story_object_detail	0x140b8eeb0	0x140b91f93	0x1415ebe88	legendary protector of the weak
+story_object_detail	0x140b8eeb0	0x140b91faa	0x1415ebe38	famous protector of the weak
+story_object_detail	0x140b8eeb0	0x140b91fc1	0x1415ebe58	noted protector of the weak
+story_object_detail	0x140b8eeb0	0x140b91fdc	0x1415ebee0	known protector of the weak
+story_object_detail	0x140b8eeb0	0x140b91fee	0x1415ebf00	rumored protector of the weak
+story_object_detail	0x140b8eeb0	0x140b92005	0x1415ec098	legendary preserver of knowledge
+story_object_detail	0x140b8eeb0	0x140b9201c	0x1415ec038	famous preserver of knowledge
+story_object_detail	0x140b8eeb0	0x140b92033	0x1415ec058	noted preserver of knowledge
+story_object_detail	0x140b8eeb0	0x140b9204e	0x1415ec0f0	known preserver of knowledge
+story_object_detail	0x140b8eeb0	0x140b92060	0x1415ec110	rumored preserver of knowledge
+story_object_detail	0x140b8eeb0	0x140b92077	0x1415ebea8	legendary treasure hunter
+story_object_detail	0x140b8eeb0	0x140b9208e	0x1415ebec8	famous treasure hunter
+story_object_detail	0x140b8eeb0	0x140b920a5	0x1415ebf48	noted treasure hunter
+story_object_detail	0x140b8eeb0	0x140b920c0	0x1415ebf60	known treasure hunter
+story_object_detail	0x140b8eeb0	0x140b920cf	0x1415ebf20	rumored treasure hunter
+story_object_detail	0x140b8eeb0	0x140b920e3	0x1415ebf38	legendary thief
+story_object_detail	0x140b8eeb0	0x140b920f7	0x1415ebf98	infamous thief
+story_object_detail	0x140b8eeb0	0x140b9210b	0x1415ebfa8	noted thief
+story_object_detail	0x140b8eeb0	0x140b9211f	0x1415ebf78	known thief
+story_object_detail	0x140b8eeb0	0x140b92128	0x1415ebf88	rumored thief
+story_object_detail	0x140b8eeb0	0x140b9223e	0x1416df970	[C:6:0:1]Related Sites[C:7:0:0][B]
+story_object_detail	0x140b8eeb0	0x140b922b1	0x1416df9c8	site occ
+story_object_detail	0x140b8eeb0	0x140b922c0	0x1416df9b8	seat of power
+story_object_detail	0x140b8eeb0	0x140b922cf	0x1416df938	hangout
+story_object_detail	0x140b8eeb0	0x140b922de	0x141674758	home
+story_object_detail	0x140b8eeb0	0x140b922ed	0x1416761e0	lair
+story_object_detail	0x140b8eeb0	0x140b922fc	0x1416df930	prison
+name	0x140a946e0	0x140a948a3	0x1415e873c	 
+name	0x140a946e0	0x140a94a5d	0x1415ed9bc	The 
+name	0x140a946e0	0x140a94a78	0x1415e8e48	the 
+name	0x140a946e0	0x140a94e18	0x1416ced90	of 
+name	0x140a946e0	0x140a94e1f	0x1416cee1c	Of 
+author_name	0x140a94030	0x140a9413d	0x1415e873c	 

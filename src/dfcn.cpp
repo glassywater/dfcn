@@ -2479,11 +2479,9 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
                     (graphics->screen_color_g << 8) | graphics->screen_color_b;
             }
         }
-        // Identical Unknown captions can belong to different creatures.
-        // Freeze their typed native record with this draw, before scrolling
-        // or input can replace the menu that SDL later presents.
-        if (source == "Unknown")
-            row.performance_choice = capture_native_performance_choice(address);
+        // Freeze the native performance enum and complete caption with this
+        // draw, before scrolling or input can replace the menu entry.
+        row.performance_choice = capture_native_performance_choice(address);
         row.info_title_kind = info_title_kind;
         row.info_title_authored = info_title_authored;
         row.info_title_right = info_title_right;
@@ -7520,23 +7518,42 @@ static bool is_character_knowledge_kind(std::string_view source) {
 }
 
 static bool is_written_work_description(std::string_view source) {
+    // Performance choices introduce a work with its form, then append the
+    // same subject/quality/chapter grammar used by written-item descriptions.
+    // Those introductions have no author field.
+    static constexpr std::string_view example = " is an example of ";
+    const size_t example_at = source.find(example);
+    if (example_at != std::string_view::npos && example_at > 0) {
+        const size_t end = source.find('.', example_at + example.size());
+        if (end != std::string_view::npos && end > example_at + example.size())
+            return true;
+    }
     const size_t author = source.find(", authored by ");
-    if (author == std::string_view::npos) return false;
     // Untitled works have no book-name field. Identify their native opening
     // separately so "untitled" is not mistaken for part of the work kind.
     static constexpr std::string_view untitled = "This is an untitled ";
     if (source.starts_with(untitled)) {
-        const auto kind = source.substr(untitled.size(), author - untitled.size());
+        const size_t end = author != std::string_view::npos
+            ? author : source.find('.', untitled.size());
+        if (end == std::string_view::npos) return false;
+        const auto kind = source.substr(untitled.size(), end - untitled.size());
         return is_character_knowledge_kind(kind) &&
             !is_character_knowledge_subject(kind);
     }
-    for (const std::string_view article : {" is a ", " is an "}) {
-        const size_t identity = source.rfind(article, author);
-        if (identity == std::string_view::npos) continue;
-        const auto kind = source.substr(identity + article.size(),
-            author - identity - article.size());
-        if (is_character_knowledge_kind(kind) &&
-            !is_character_knowledge_subject(kind)) return true;
+    // The native author lookup is optional. A missing figure still produces
+    // the complete title/kind sentence, with exactly the same 26 kind values.
+    for (size_t end = author != std::string_view::npos ? author : source.find('.');
+         end != std::string_view::npos; end = source.find('.', end + 1)) {
+        for (const std::string_view article : {" is a ", " is an "}) {
+            const size_t identity = source.rfind(article, end);
+            if (identity == std::string_view::npos || identity == 0 ||
+                identity + article.size() > end) continue;
+            const auto kind = source.substr(identity + article.size(),
+                end - identity - article.size());
+            if (is_character_knowledge_kind(kind) &&
+                !is_character_knowledge_subject(kind)) return true;
+        }
+        if (author != std::string_view::npos) break;
     }
     return false;
 }
@@ -16841,7 +16858,7 @@ std::optional<std::string> Overlay::translate_dance_form_paragraph(
 
 // Individual works precede their form's description in the same knowledge
 // document. Resolve complete sentences through the reviewed prose templates:
-// title, author and form names have different typed name grammars, and the
+// title, optional author and form names have different typed name grammars, and the
 // existing subject/quality sentences live in the h namespace, not UI words.
 // Chapter ordinals and their complete historical references share the scoped
 // work-sentence grammar used by written-item descriptions.
@@ -22625,7 +22642,32 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 }
                 std::vector<int> target_colors;
                 std::optional<std::string> target;
-                if (complete_caption && !translation_source.ends_with("...")) {
+                std::optional<NativePerformanceChoice> native_choice;
+                if (!native_site) {
+                    bool top = false;
+                    cell_at(first, y, &top);
+                    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+                    const auto &draws = top ? g_native_drawn_top_text_rows : g_native_drawn_text_rows;
+                    for (const auto &draw : draws) {
+                        if (draw.x != first ||
+                            (draw.y != y && (!companion || draw.y != companion_y)) ||
+                            !draw.performance_choice) continue;
+                        // A panel or popup can expose only the beginning of
+                        // this same borrowed print_name. The native address
+                        // binds its complete entry; every exposed byte must
+                        // still agree with the draw at this exact origin.
+                        if (!draw.source.starts_with(choice.source) &&
+                            normalize_utterance(draw.source) != normalize_utterance(translation_source))
+                            continue;
+                        if (native_choice && *native_choice != *draw.performance_choice) {
+                            native_choice.reset();
+                            break;
+                        }
+                        native_choice = draw.performance_choice;
+                    }
+                }
+                if (complete_caption &&
+                        (!translation_source.ends_with("...") || native_choice)) {
                     if (native_site) {
                         // Use the shared native pronunciation vocabulary for
                         // every generated origin, without treating English
@@ -22642,23 +22684,6 @@ std::vector<Match> Overlay::find_matches(int only_y,
                                 target.reset();
                         }
                     } else {
-                        std::optional<NativePerformanceChoice> native_choice;
-                        if (translation_source == "Unknown") {
-                            bool top = false;
-                            cell_at(first, y, &top);
-                            std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-                            const auto &draws = top ? g_native_drawn_top_text_rows : g_native_drawn_text_rows;
-                            for (const auto &draw : draws) {
-                                if (draw.x != first || draw.source != translation_source ||
-                                    (draw.y != y && (!companion || draw.y != companion_y)) ||
-                                    !draw.performance_choice) continue;
-                                if (native_choice && *native_choice != *draw.performance_choice) {
-                                    native_choice.reset();
-                                    break;
-                                }
-                                native_choice = draw.performance_choice;
-                            }
-                        }
                         target = translate_adventure_action_choice(translation_source,
                             translation_colors, target_colors, native_choice ? &*native_choice : nullptr);
                     }

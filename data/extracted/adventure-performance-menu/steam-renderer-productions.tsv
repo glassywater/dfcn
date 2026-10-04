@@ -1,0 +1,59 @@
+condition	branch_or_call	production	dynamic_field_source
+state16	0x140870540	Choose a poetic form for the composition.	none
+state17	0x1408705cd	Choose a musical form for the composition.	none
+state18	0x14087065b	Choose a dance form for the choreography.	none
+state19,state20	0x1408706fb	Select memorized content or a form of prose.	none
+other_state	0x140870752	What would you like to do?	none
+button	immediate_DWORD_0x656e6f44	Done	none
+empty_state2..6	0x140870b98	You don't know anything specific about this, unfortunately.	none
+empty_state7,8,10	0x140870c51	You must compose a piece first (or learn an improvisational form).	none
+empty_state12..15	0x140870ae6	You don't believe anything relevant, unfortunately.	none
+empty_state12..15_next_line	0x140870b28	Assume an appropriate identity first if you'd like to pretend.	none
+search_empty	0x140870e4e	...	none
+search_caret	0x140870e8a	_	none
+description_clipped	0x140872ae1	(etc.)	none
+option8	0x14087116f	{site description}	STORY_SITE subject reference -> 0x140b8eeb0
+option9	0x1408712c8	{person or creature description}	subject reference -> 0x140b8eeb0
+option10	0x140871421	{civilization or organization description}	STORY_ENTITY subject reference -> 0x140b8eeb0
+option11	0x14087157a	{region description}	STORY_SUBREGION subject reference -> 0x140b8eeb0
+option12	0x1408715e7	{historical event description}	native event virtual description
+option25	0x140871052	{deity or worship-object description}	subject reference -> 0x140b8eeb0
+option13	0x140871779	{complete poetic form description}	form -> 0x140e76400
+option15	0x140871aac	{complete musical form description}	form -> 0x140dd5ce0
+option18	0x140871e92	{complete dance form description}	form -> 0x1404ea820
+option31	0x1408721ef	{complete poetic form description}	menu+0xd8 form -> 0x140e76400
+option33	0x1408722b0	{complete musical form description}	menu+0xf0 form -> 0x140dd5ce0
+option35	0x140872337	{complete dance form description}	menu+0x108 form -> 0x1404ea820
+option14_form_found	0x140871893	{title} is an example of {form}.  {content}[B]{poetic form description}	work+8, form+8 -> 0x140a946e0, content -> 0x140cc5d50, form -> 0x140e76400
+option14_form_missing	0x140871942	{title} is an example of poetry.  {content}	work+8, content -> 0x140cc5d50
+option16_form_found	0x140871c11	{title} is an example of {form}.  {content}[B]{musical form description}	work+8, form+8 -> 0x140a946e0, content -> 0x140cc5d50, form -> 0x140dd5ce0
+option16_form_missing	0x140871c86	{title} is an example of musical composition.  {content}	work+8, content -> 0x140cc5d50
+option19_form_found	0x1408720a4	{title} is an example of {form}.  {content}[B]{dance form description}	work+8, form+8 -> 0x140a946e0, content -> 0x140cc5d50, form -> 0x1404ea820
+option19_form_missing	0x1408720e8	{title} is an example of choreography.  {content}	work+8, content -> 0x140cc5d50
+option39_titled_a_named_author	0x140872455	{title} is a {genre}, authored by {author}.  {tail}	menu+0x160 work; title+8, genre+0x68, author+0xa0 -> 0x140a94030
+option39_titled_an_named_author	0x14087244c	{title} is an {genre}, authored by {author}.  {tail}	genre byte article remap 0x140872c68
+option39_untitled_named_author	0x14087245e	This is an untitled {genre}, authored by {author}.  {tail}	title length at work+0x18 is zero
+option39_titled_a_omitted_author	0x1408725c3	{title} is a {genre}.  {tail}	author ID -1 or figure lookup missing
+option39_titled_an_omitted_author	0x1408725c3	{title} is an {genre}.  {tail}	author ID -1 or figure lookup missing
+option39_untitled_omitted_author	0x1408725c3	This is an untitled {genre}.  {tail}	author ID -1 or figure lookup missing
+option39_titled_a_empty_author	0x14087264e	{title} is a {genre}, authored by .  {tail}	figure present, name helper absent or unnamed byte +0x72
+option39_titled_an_empty_author	0x14087264e	{title} is an {genre}, authored by .  {tail}	figure present, name helper absent or unnamed byte +0x72
+option39_untitled_empty_author	0x14087264e	This is an untitled {genre}, authored by .  {tail}	figure present, name helper absent or unnamed byte +0x72
+option39_genre7_form_found	0x1408728c9	It is an example of {form}.  {content}[B]{poetic form description}	work+0x6c form; content -> 0x140cc5d50; form -> 0x140e76400
+option39_genre12_form_found	0x14087280c	It is an example of {form}.  {content}[B]{musical form description}	work+0x6c form; content -> 0x140cc5d50; form -> 0x140dd5ce0
+option39_genre13_form_found	0x14087274f	It is an example of {form}.  {content}[B]{dance form description}	work+0x6c form; content -> 0x140cc5d50; form -> 0x1404ea820
+option39_other_or_missing_form	0x1408728ff	{content}	work -> 0x140cc5d50
+content_genre20_single_subject	0x140cc5e0d	It asks the question, "What if {reference} had unfolded differently?"  	work+0x30..0x38 refs; work+0x48 type0; ref virtual+0x90
+content_genre16_subject	0x140cc5eb4	It concerns the lineage of {reference}.  	reference virtual+0x90
+content_subjects	0x140cc5f31	It concerns {reference list}.  	reference type0; comma and and joiners
+content_no_subjects	0x140cc600a	The work has no particular subject.  	reference type0 count is zero
+content_moral	0x140cc6045	The writing conveys a moral lesson regarding {reference list}.  	reference category
+content_emphasis	0x140cc60fd	The overall text emphasizes {reference list}.  	reference category
+content_lyrics	0x140cc61b5	For lyrics, the composer has selected {reference list}.  	reference category
+content_accompaniment	0x140cc626d	For musical accompaniment, the choreographer has selected {reference list}.  	reference category
+content_style	0x140cc635d	The writing {style}[ and it {style} / yet it {style}].  	work style flags
+content_quality	0x140cc6497..0x140cc6729	{overall quality sentence}.  	genre and quality; 5 families x 6 alternatives in steam-unique-text.tsv
+content_single_chapter	0x140cc676e	The work has a single chapter.  	reference type5 chapter count
+content_multiple_chapters	0x140cc6785	The work has {count} chapters.  	reference type5 chapter count
+content_only_chapter_subject	0x140cc6861	It covers {reference}.  	reference type5 -> virtual+0x90
+content_numbered_chapter_subject	0x140cc6875	The {ordinal} chapter covers {reference}.  	reference type5 -> virtual+0x90

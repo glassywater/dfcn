@@ -1,0 +1,217 @@
+branch	enum	instruction	literal	source
+value	0	0x140853495	0x1415e3830	Law
+value	1	0x1408534a1	0x1415e3828	Loyalty
+value	2	0x1408534ad	0x1415e3844	Family
+value	3	0x1408534b9	0x1415e3838	Friendship
+value	4	0x1408534c5	0x1415e3854	Power
+value	5	0x1408534d1	0x1415e384c	Truth
+value	6	0x1408534dd	0x1415e3870	Cunning
+value	7	0x1408534e9	0x1415e3860	Eloquence
+value	8	0x1408534f5	0x1415e3880	Fairness
+value	9	0x140853501	0x1415e3878	Decorum
+value	10	0x14085350d	0x1415e3898	Tradition
+value	11	0x140853519	0x1415e3890	Artwork
+value	12	0x140853525	0x1415e38b8	Cooperation
+value	13	0x140853531	0x1415e38a8	Independence
+value	14	0x14085353d	0x1415e38d8	Stoicism
+value	15	0x140853549	0x1415e38c8	Introspection
+value	16	0x140853555	0x1415e38f8	Self-Control
+value	17	0x140853561	0x1415e38e8	Tranquility
+value	18	0x14085356d	0x1415e3918	Harmony
+value	19	0x140853576	0x1415e3908	Merriment
+value	20	0x14085357f	0x1415e3930	Craftsmanship
+value	21	0x140853588	0x1415e3920	Martial Prowess
+value	22	0x140853591	0x1415e394c	Skill
+value	23	0x14085359a	0x1415e3940	Hard Work
+value	24	0x1408535a3	0x1415e3968	Sacrifice
+value	25	0x1408535ac	0x1415e3958	Competition
+value	26	0x1408535b5	0x1415e3988	Perseverance
+value	27	0x1408535be	0x1415e3978	Leisure Time
+value	28	0x1408535c7	0x1415e39a0	Commerce
+value	29	0x1408535d0	0x1415e3998	Romance
+value	30	0x1408535d9	0x1415e39b4	Nature
+value	31	0x1408535e2	0x1415e39ac	Peace
+value	32	0x1408535eb	0x1415e39d8	Knowledge
+book	0	0x140855712	0x1415faa14	Manual
+book	1	0x14085571e	0x1415faa0c	Guide
+book	2	0x14085572a	0x1415fabe0	Chronicle
+book	3	0x140855736	0x1415fabd0	Short story
+book	4	0x140855742	0x1415fabc4	Novel
+book	5	0x14085574e	0x1415fabb8	Biography
+book	6	0x14085575a	0x1415faba8	Autobiography
+book	7	0x140855766	0x1415fab9c	Poem
+book	8	0x140855772	0x1415e35c8	Play
+book	9	0x14085577e	0x1415fab94	Letter
+book	10	0x14085578a	0x1415fab8c	Essay
+book	11	0x140855796	0x1415fab84	Dialog
+book	12	0x14085579f	0x1415fab70	Musical composition
+book	13	0x1408557a8	0x1415fab60	Choreography
+book	14	0x1408557b1	0x1415fab48	Comparative biography
+book	15	0x1408557ba	0x1415fab30	Biographical dictionary
+book	16	0x1408557c3	0x1415fab20	Genealogy
+book	17	0x1408557cc	0x1415fab10	Encyclopedia
+book	18	0x1408557d5	0x1415faaf8	Cultural history
+book	19	0x1408557de	0x1415fad38	Cultural comparison
+book	20	0x1408557e7	0x1415fad20	Alternate history
+book	21	0x1408557f0	0x1415facf8	Treatise on technological evolution
+book	22	0x1408557f9	0x1415face8	Dictionary
+book	23	0x140855802	0x1415facd8	Star chart
+book	24	0x14085580b	0x1415facc8	Star catalogue
+book	25	0x140855814	0x1415facbc	Atlas
+sphere	0	0x1407540d5	0x14169c320	agriculture
+sphere	1	0x1407540ea	0x14169c1f0	animals
+sphere	2	0x1407540ff	0x14169c1f8	art
+sphere	3	0x140754114	0x14169c200	balance
+sphere	4	0x140754129	0x14169c208	beauty
+sphere	5	0x14075413e	0x14169c210	birth
+sphere	6	0x140754153	0x14169c218	blight
+sphere	7	0x140754168	0x14169c220	boundaries
+sphere	8	0x14075417d	0x14169c230	caverns
+sphere	9	0x140754192	0x14169c238	chaos
+sphere	10	0x1407541a7	0x14169c240	charity
+sphere	11	0x1407541bc	0x14169c248	children
+sphere	12	0x1407541d1	0x14169c254	coasts
+sphere	13	0x1407541e6	0x14169c260	consolation
+sphere	14	0x1407541fb	0x14169c128	courage
+sphere	15	0x140754210	0x14169c130	crafts
+sphere	16	0x140754225	0x14169c138	creation
+sphere	17	0x14075423a	0x1415e8f54	dance
+sphere	18	0x14075424f	0x14169c148	darkness
+sphere	19	0x140754264	0x14166b540	dawn
+sphere	20	0x140754279	0x14166b52c	day
+sphere	21	0x14075428e	0x1415e8d48	death
+sphere	22	0x1407542a3	0x14169c158	deformity
+sphere	23	0x1407542b8	0x14169c168	depravity
+sphere	24	0x1407542cd	0x14169c178	discipline
+sphere	25	0x1407542e2	0x14169c188	disease
+sphere	26	0x1407542f7	0x14169c190	dreams
+sphere	27	0x14075430c	0x14169c198	dusk
+sphere	28	0x140754321	0x14166fcd0	duty
+sphere	29	0x140754336	0x14169c1a0	earth
+sphere	30	0x14075434b	0x14163c2ac	family
+sphere	31	0x140754360	0x14169c1a8	fame
+sphere	32	0x140754375	0x14169c1b0	fate
+sphere	33	0x14075438a	0x14169c1b8	fertility
+sphere	34	0x14075439f	0x14169c1c8	festivals
+sphere	35	0x1407543b4	0x14169c1d4	fire
+sphere	36	0x1407543c9	0x14169c0e8	fish
+sphere	37	0x1407543de	0x14169c4a8	fishing
+sphere	38	0x1407543f3	0x14169c4b0	food
+sphere	39	0x140754408	0x14169c4b8	forgiveness
+sphere	40	0x14075441d	0x14169c4c8	fortresses
+sphere	41	0x140754432	0x14169c4d8	freedom
+sphere	42	0x140754447	0x14169c0f0	gambling
+sphere	43	0x14075445c	0x14169c4e0	games
+sphere	44	0x140754471	0x14169c4e8	generosity
+sphere	45	0x140754486	0x14166ba90	happiness
+sphere	46	0x14075449b	0x14169c100	healing
+sphere	47	0x1407544b0	0x14169c4f8	hospitality
+sphere	48	0x1407544c5	0x14169c108	hunting
+sphere	49	0x1407544da	0x14169c508	inspiration
+sphere	50	0x1407544ef	0x14169c518	jealousy
+sphere	51	0x140754504	0x14169c524	jewels
+sphere	52	0x140754519	0x14169c530	justice
+sphere	53	0x14075452e	0x1415e8df8	labor
+sphere	54	0x140754543	0x14169c538	lakes
+sphere	55	0x140754558	0x14169c540	laws
+sphere	56	0x14075456d	0x14169c548	lies
+sphere	57	0x140754582	0x141670f60	light
+sphere	58	0x140754597	0x14169c550	lightning
+sphere	59	0x1407545ac	0x14169c3f0	longevity
+sphere	60	0x1407545c1	0x1415fd624	love
+sphere	61	0x1407545d6	0x14163c2b8	loyalty
+sphere	62	0x1407545eb	0x14169c3fc	luck
+sphere	63	0x140754600	0x14166b9e4	lust
+sphere	64	0x140754615	0x14169c408	marriage
+sphere	65	0x14075462a	0x14169c414	mercy
+sphere	66	0x14075463f	0x14169c41c	metals
+sphere	67	0x140754654	0x14169c428	minerals
+sphere	68	0x140754669	0x14166b9ec	misery
+sphere	69	0x14075467e	0x14169c434	mist
+sphere	70	0x140754693	0x14169c43c	moon
+sphere	71	0x1407546a8	0x141647338	mountains
+sphere	72	0x1407546bd	0x14169c444	muck
+sphere	73	0x1407546d2	0x1415e8e38	murder
+sphere	74	0x1407546e7	0x1415e64c4	music
+sphere	75	0x1407546fc	0x14163c4d0	nature
+sphere	76	0x140754711	0x14166b538	night
+sphere	77	0x140754726	0x14169c450	nightmares
+sphere	78	0x14075473b	0x14169c45c	oaths
+sphere	79	0x140754750	0x14169c464	oceans
+sphere	80	0x140754765	0x1415e8db8	order
+sphere	81	0x14075477a	0x14169c470	painting
+sphere	82	0x14075478f	0x1415e904c	peace
+sphere	83	0x1407547a4	0x14169c480	persuasion
+sphere	84	0x1407547b9	0x14169c48c	plants
+sphere	85	0x1407547ce	0x14161649c	poetry
+sphere	86	0x1407547e3	0x14169c498	pregnancy
+sphere	87	0x1407547f8	0x141646adc	rain
+sphere	88	0x14075480d	0x14169c358	rainbows
+sphere	89	0x140754822	0x14169c368	rebirth
+sphere	90	0x140754837	0x14169c370	revelry
+sphere	91	0x14075484c	0x14169c378	revenge
+sphere	92	0x140754861	0x14169c380	rivers
+sphere	93	0x140754876	0x14169c388	rulership
+sphere	94	0x14075488b	0x14169c394	rumors
+sphere	95	0x1407548a0	0x14163c568	sacrifice
+sphere	96	0x1407548b5	0x14169c39c	salt
+sphere	97	0x1407548ca	0x14169c3a8	scholarship
+sphere	98	0x1407548df	0x14169c3b8	seasons
+sphere	99	0x1407548f4	0x14169c3c0	silence
+sphere	100	0x140754909	0x1416473bc	sky
+sphere	101	0x14075491e	0x1415e44f4	song
+sphere	102	0x140754933	0x14169c3c8	speech
+sphere	103	0x140754948	0x14169c3d0	stars
+sphere	104	0x14075495d	0x14169c3d8	storms
+sphere	105	0x140754972	0x14165cfc0	strength
+sphere	106	0x140754987	0x14169c3e0	suicide
+sphere	107	0x14075499c	0x14169c3e8	sun
+sphere	108	0x1407549b1	0x1415e8e84	theft
+sphere	109	0x1407549c6	0x14169c290	thralldom
+sphere	110	0x1407549db	0x14169c2a0	thunder
+sphere	111	0x1407549f0	0x14163e450	torture
+sphere	112	0x140754a05	0x14164accc	trade
+sphere	113	0x140754a1a	0x14169c2a8	travelers
+sphere	114	0x140754a2f	0x14169c2b8	treachery
+sphere	115	0x140754a44	0x14169c2c4	trees
+sphere	116	0x140754a59	0x14169c2d0	trickery
+sphere	117	0x140754a6e	0x14163c600	truth
+sphere	118	0x140754a83	0x14169c278	twilight
+sphere	119	0x140754a98	0x14169c2dc	valor
+sphere	120	0x140754aad	0x14169c2e8	victory
+sphere	121	0x140754ac2	0x14169c2f0	volcanos
+sphere	122	0x140754ad7	0x141644b7c	war
+sphere	123	0x140754aec	0x1416467a4	water
+sphere	124	0x140754b01	0x14169c2fc	wealth
+sphere	125	0x140754b16	0x14166fd20	weather
+sphere	126	0x140754b2b	0x14169c304	wind
+sphere	127	0x140754b40	0x14169c30c	wisdom
+sphere	128	0x140754b55	0x1415e8cc0	writing
+sphere	129	0x140754b6a	0x14169c314	youth
+book-detail	0	0x14086fd23	0x1415fdc44	manual
+book-detail	1	0x14086fd2f	0x1415fdc3c	guide
+book-detail	2	0x14086fd3b	0x1415fddf8	chronicle
+book-detail	3	0x14086fd47	0x1415fdde8	short story
+book-detail	4	0x14086fd53	0x1415fdddc	novel
+book-detail	5	0x14086fd5f	0x1415fddd0	biography
+book-detail	6	0x14086fd6b	0x1415fddc0	autobiography
+book-detail	7	0x14086fd77	0x1415fddb4	poem
+book-detail	8	0x14086fd83	0x1415fddac	play
+book-detail	9	0x14086fd8f	0x1415fdda4	letter
+book-detail	10	0x14086fd9b	0x1415fdd9c	essay
+book-detail	11	0x14086fda7	0x1415fdd94	dialog
+book-detail	12	0x14086fdb0	0x1415fdd80	musical composition
+book-detail	13	0x14086fdb9	0x1415fdd70	choreography
+book-detail	14	0x14086fdc2	0x1415fdd58	comparative biography
+book-detail	15	0x14086fdcb	0x1415fdd40	biographical dictionary
+book-detail	16	0x14086fdd4	0x1415fdd30	genealogy
+book-detail	17	0x14086fddd	0x1415fdd20	encyclopedia
+book-detail	18	0x14086fde6	0x1415fdec0	cultural history
+book-detail	19	0x14086fdef	0x1415fdea8	cultural comparison
+book-detail	20	0x14086fdf8	0x1415fde90	alternate history
+book-detail	21	0x14086fe01	0x1415fde68	treatise on technological evolution
+book-detail	22	0x14086fe0a	0x1415fde58	dictionary
+book-detail	23	0x14086fe13	0x1415fde48	star chart
+book-detail	24	0x14086fe1c	0x1415fde38	star catalogue
+book-detail	25	0x14086fe25	0x1415fde30	atlas
+sphere-default	-1	0x140754b7f	0x14169c1e0	no sphere

@@ -55,9 +55,8 @@ static size_t match_native_choice_caption(const char *text, size_t length,
         std::string_view source;
         if (native_string_view(caption, &source, 65536) && !source.empty()) {
             if constexpr (AdventureAction) {
-                const auto choice = source == "Unknown"
-                    ? capture_native_performance_choice(reinterpret_cast<uintptr_t>(caption))
-                    : std::optional<NativePerformanceChoice>{};
+                const auto choice = capture_native_performance_choice(
+                    reinterpret_cast<uintptr_t>(caption));
                 if (g_overlay.translated_adventure_action_matches(
                         source, query, choice ? &*choice : nullptr)) return 0;
             } else {

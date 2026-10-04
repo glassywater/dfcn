@@ -16898,6 +16898,7 @@ A small person with the large head, round tummy, and tail of an eryops.	一种�
 A small, squat humanoid with large pointy ears and yellow glowing eyes.	一个矮胖的类人生物，有着尖尖的大耳朵和黄色发光的眼睛。	lP
 A tiny, brightly colored parrot. They are clever and learn many tricks.	一种小型的彩色鹦鹉。它们非常聪明且能学习很多把戏。	lP
 A {s} caravan from {e} has arrived. Overall trade sentiments are great.	来自{e1}的{s1}商队已抵达。总体贸易意愿很高。	hPt
+Adventure action: Give a sermon concerning a deity or object of worship	发表关于神祇或崇拜对象的布道	l
 After a long journey, you are here to meet your most trusted companion.	经过漫长的旅途，你来到这里与最信任的同伴会合。	hq
 Allies surrounding {a} raised their suspicions and the plan was foiled.	{a1}身边的盟友提出了怀疑，使计划落空。	ht
 Announcement combat boast-victim [$person,$term,$name]: {s}, {s} of {s}	{s3}的{s2}{s1}	l
@@ -18539,6 +18540,7 @@ A legless person with the head and back flippers of a leopard seal.	一种有着
 A small person somewhat like a fish and somewhat like an amphibian.	一种小型人形生物，外形介于鱼类和两栖动物之间。	lP
 A small person with the segmented body and antennae of a trilobite.	一种小型人形生物，拥有三叶虫般的分节躯体和触角。	lP
 A tiny flying insect that can be seen at night by its glowing tail.	一种在夜间可以通过发光尾巴观察到的微小飞虫。	lP
+Adventure action: Tell a story about a civilization or organization	讲述一个文明或组织的故事	l
 After enduring an interrogation by {a}, {a} was released during {e}	在{e1}期间，忍受{a1}的审讯后，{a2}被释放了	ht
 After enduring an interrogation by {a}, {a} was released within {p}	在{p1}，忍受{a1}的审讯后，{a2}被释放了	ht
 Announcement combat agreement-followup [negotiation-paragraph]: {s}	{s1}	l
@@ -18599,6 +18601,10 @@ Announcement combat visitor-statement-emotion []: feeling ferocious	心生凶意
 Announcement combat visitor-statement-emotion []: feeling gratitude	满怀感激	l
 Announcement combat visitor-statement-emotion []: feeling self-pity	心生自怜	l
 Announcement combat visitor-statement-reference []: an unknown site	未知地点	l
+Announcement distance: nearly a day's travel to the north-northeast	距此近一天路程的北东北方	l
+Announcement distance: nearly a day's travel to the north-northwest	距此近一天路程的北西北方	l
+Announcement distance: nearly a day's travel to the south-southeast	距此近一天路程的南东南方	l
+Announcement distance: nearly a day's travel to the south-southwest	距此近一天路程的南西南方	l
 Can your parameters achieve elevations between 0 and 99 frequently?	这些参数能否频繁产生 0 至 99 的海拔？	l
 Choose a stockpile to which the selected stockpile will give items.	选择当前储物堆要向其供货的储物堆。	hj
 Conversation prompt: What will you say about the failed occupation?	关于占领失败，你想说些什么？	l
@@ -19056,6 +19062,10 @@ Announcement combat visitor-statement-reference [$creature]: a {s}	一个{s1}	l
 Announcement combat work-reference [$name]: the forest retreat {s}	森林聚落{s1}	l
 Announcement combat work-reference [$name]: the mountain halls {s}	山地大厅{s1}	l
 Announcement combat work-sentence [work-reference]: It covers {s}.	内容涵盖{s1}。	l
+Announcement distance: nearly a day's travel to the east-northeast	距此近一天路程的东东北方	l
+Announcement distance: nearly a day's travel to the east-southeast	距此近一天路程的东东南方	l
+Announcement distance: nearly a day's travel to the west-northwest	距此近一天路程的西西北方	l
+Announcement distance: nearly a day's travel to the west-southwest	距此近一天路程的西西南方	l
 Announcement music passage: the exposition of the previous passage	前一乐段呈示部	w
 Cage traps capture intruders in cages. Must be loaded with a cage.	笼陷阱会将入侵者关进笼子。必须装填笼子。	hj
 Conversation prompt: How will you respond to the adoption request?	你将如何回应收养请求？	l
@@ -19485,6 +19495,10 @@ Announcement combat visitor-statement-emotion []: feeling dislike	感到不喜�
 Announcement combat visitor-statement-emotion []: feeling servile	觉得自己卑躬屈膝	l
 Announcement combat work-reference [$name]: the dark fortress {s}	黑暗要塞{s1}	l
 Announcement combat work-reference [$name]: {s} as a musical form	音乐形式{s1}	l
+Announcement distance: a half day's travel to the north-northeast	距此半天路程的北东北方	l
+Announcement distance: a half day's travel to the north-northwest	距此半天路程的北西北方	l
+Announcement distance: a half day's travel to the south-southeast	距此半天路程的南东南方	l
+Announcement distance: a half day's travel to the south-southwest	距此半天路程的南西南方	l
 As a member of {e}, you can now seek the higher mysteries of {p}.	作为{e1}的一员，你现在可以探寻{p1}更高深的奥秘。	hPt
 As a member of {e}, you can now seek the higher mysteries of {r}.	作为{e1}的一员，你现在可以探寻{r1}更高深的奥秘。	hPt
 Burrows are work and living areas where citizens can be assigned.	[C:1:0:0]活动区[C:7:0:0]是可以分配居民的工作和生活范围。	hq
@@ -19825,6 +19839,7 @@ A tiny arthropod person with the protective spines of a wiwaxia.	一种微小的
 A tiny spotted fish found in coastal rivers and temperate lakes.	一种小型斑点鱼，生活在沿海河流和温带湖泊中。	lP
 A very large aquatic reptile with four flippers and a long neck.	一种体型很大的水生爬行动物，长有四只鳍状肢和修长的颈部。	lP
 A very small flying reptile with long wings and a ferocious jaw.	一种很小的飞行爬行动物，双翼修长，颌部凶猛有力。	lP
+Adventure performance genre: Treatise on technological evolution	技术演变论著	l
 Affects ability to block melee and ranged attacks with a shield.	影响用盾牌格挡近战和远程攻击的能力。	w
 After being interrogated by {a}, {a} implicated {a} in the wilds	在荒野中，经过{a1}审讯后，{a2}供出了{a3}	ht
 After enduring an interrogation by {a}, {a} was released at {p}.	在{p1}，忍受{a1}的审讯后，{a2}被释放了。	ht
@@ -19877,6 +19892,10 @@ Announcement combat visitor-statement-emotion []: feeling caring	心怀关爱	l
 Announcement combat visitor-statement-emotion []: feeling gaiety	感到欢快	l
 Announcement combat visitor-statement-emotion []: feeling guilty	感到内疚	l
 Announcement combat work-reference [$name]: {s} as a poetic form	诗歌形式{s1}	l
+Announcement distance: a half day's travel to the east-northeast	距此半天路程的东东北方	l
+Announcement distance: a half day's travel to the east-southeast	距此半天路程的东东南方	l
+Announcement distance: a half day's travel to the west-northwest	距此半天路程的西西北方	l
+Announcement distance: a half day's travel to the west-southwest	距此半天路程的西西南方	l
 Announcement music passage: a recapitulation of the second theme	第二主题再现部	w
 Conversation prompt: How will you respond about your profession?	你将如何回答关于你职业的问题？	l
 Conversation prompt: How will you respond to the offer of peace?	你将如何回应和平提议？	l
@@ -21430,6 +21449,7 @@ A tiny reptile with a gliding membrane between its back legs.	一种微小的爬
 A tiny snake with ridged scales and a powerful venomous bite.	一种有脊状鳞片和强有力的毒咬的小蛇。	lP
 A towering herbivorous quadrupedal dinosaur with a long neck.	一种高耸如塔、颈部修长的四足食草恐龙。	lP
 A very large snake. It is amphibious and constricts its prey.	一条体型很大的蛇，能在水陆两栖生活，并会缠住猎物将其勒死。	lP
+Adventure action: Give a sermon concerning a cosmic principle	发表关于宇宙原理的布道	l
 Affects ability to spot and interpret tracks and other spoor.	影响发现和辨识足迹及其他踪迹的能力。	w
 After enduring an interrogation, {a} was released during {e}.	在{e1}期间，忍受审讯后，{a1}被释放了。	ht
 After enduring an interrogation, {a} was released within {p}.	在{p1}，忍受审讯后，{a1}被释放了。	ht
@@ -22022,6 +22042,10 @@ Announcement combat visitor-statement-emotion []: suspicious	心怀怀疑	l
 Announcement combat visitor-statement-reference [$name]: {s}	{s1}	l
 Announcement combat work-reference [$term]: the {s} language	{s1}语	l
 Announcement combat work-reference [reference-building]: {s}	{s1}	l
+Announcement distance: a day's travel to the north-northeast	距此一天路程的北东北方	l
+Announcement distance: a day's travel to the north-northwest	距此一天路程的北西北方	l
+Announcement distance: a day's travel to the south-southeast	距此一天路程的南东南方	l
+Announcement distance: a day's travel to the south-southwest	距此一天路程的南西南方	l
 Argue the worthlessness of martial prowess (not your values)	争辩武艺毫无价值（并非你的价值观）	hP
 Capture and train small animals here. Requires animal traps.	在这里捕捉和训练小动物。需要动物陷阱。	hj
 Certain Zones like Bedrooms can be placed several at a time.	[C:3:0:0]卧室[C:7:0:0]等某些[C:3:0:0]区域[C:7:0:0]可以一次划定多个。	hq
@@ -22638,6 +22662,10 @@ Announcement combat visitor-statement-emotion []: repentant	心怀忏悔	l
 Announcement combat visitor-statement-emotion []: resentful	心怀怨恨	l
 Announcement combat visitor-statement-emotion []: satisfied	感到满意	l
 Announcement combat visitor-statement-emotion []: terrified	极度恐惧	l
+Announcement distance: a day's travel to the east-northeast	距此一天路程的东东北方	l
+Announcement distance: a day's travel to the east-southeast	距此一天路程的东东南方	l
+Announcement distance: a day's travel to the west-northwest	距此一天路程的西西北方	l
+Announcement distance: a day's travel to the west-southwest	距此一天路程的西西南方	l
 Announcement distance: a half day's travel to the northeast	距此半天路程的东北方	l
 Announcement distance: a half day's travel to the northwest	距此半天路程的西北方	l
 Announcement distance: a half day's travel to the southeast	距此半天路程的东南方	l
@@ -23264,6 +23292,7 @@ A small humanoid creature with a mischievous, toothy grin.	一种人形小生物
 A small, long-armed ape. It lives in trees and eats fruit.	一种小型的长臂猩猩.它们生活在树上并且以水果为食.	lP
 A tiny pest insect. It feeds on both crops and other bugs.	一种小型的害虫。它以庄稼和其他昆虫为食。	lP
 Ability to fight with objects not covered by other skills.	使用其他技能未涵盖的物品进行战斗的能力。	w
+Adventure action: Give a sermon inveighing against a value	发表反对某种价值观的布道	l
 Adventurer log reputation: legendary protector of the weak	传奇庇护者	h
 After being interrogated by {a}, {a} implicated {a} at {p}	在{p1}，经过{a1}审讯后，{a2}供出了{a3}	ht
 After being interrogated by {a}, {a} implicated {a} in {p}	在{p1}，经过{a1}审讯后，{a2}供出了{a3}	ht
@@ -23345,6 +23374,10 @@ Announcement combat visitor-statement-emotion []: thrilled	感到兴奋	l
 Announcement combat visitor-statement-emotion []: vengeful	复仇心切	l
 Announcement combat visitor-statement-emotion []: wrathful	暴怒	l
 Announcement combat work-reference [reference-kind]: a {s}	{s1}	l
+Announcement distance: a short walk to the north-northeast	步行不远即可到达的北东北方	l
+Announcement distance: a short walk to the north-northwest	步行不远即可到达的北西北方	l
+Announcement distance: a short walk to the south-southeast	步行不远即可到达的南东南方	l
+Announcement distance: a short walk to the south-southwest	步行不远即可到达的南西南方	l
 Argue the worthlessness of craftsmanship (not your values)	争辩工艺毫无价值（并非你的价值观）	hP
 Argue the worthlessness of introspection (not your values)	争辩自省毫无价值（并非你的价值观）	hP
 Conversation keyword: exchange barter give take show offer	交换 以物易物 赠送 拿取 展示 提议	l
@@ -23971,6 +24004,7 @@ A person with the head and tail of a saltwater crocodile.	一种长着咸水鳄�
 A slender, horned man with the head and tail of a impala.	一种长着黑斑羚头和尾巴的有角的身形细长的人形生物。	lP
 A small four-eyed fish person with a pronounced back fin.	一种小型四眼鱼类人形生物，背鳍十分醒目。	lP
 A small whiskered fish found scavenging in inland waters.	一种在内陆水域觅食的带须的小鱼。	lP
+Adventure action: Tell a story about a person or creature	讲述一个人物或生物的故事	l
 Adventure item action: Path to here (no climbing/jumping)	前往此处（不攀爬或跳跃）	h
 Adventurer log reputation: rumored preserver of knowledge	传闻中的博学大师	h
 After being interrogated, {a} implicated {a} in the wilds	在荒野中，经过审讯后，{a1}供出了{a2}	ht
@@ -24066,6 +24100,10 @@ Announcement combat visitor-statement-emotion []: unhappy	感到不快乐	l
 Announcement combat visitor-statement-emotion []: worried	感到担心	l
 Announcement combat visitor-statement-emotion []: zealous	满怀热忱	l
 Announcement combat work-description [work-sentence]: {s}	{s1}	l
+Announcement distance: a short walk to the east-northeast	步行不远即可到达的东东北方	l
+Announcement distance: a short walk to the east-southeast	步行不远即可到达的东东南方	l
+Announcement distance: a short walk to the west-northwest	步行不远即可到达的西西北方	l
+Announcement distance: a short walk to the west-southwest	步行不远即可到达的西西南方	l
 Announcement distance: nearly a day's travel to the north	距此近一天路程的北方	l
 Announcement distance: nearly a day's travel to the south	距此近一天路程的南方	l
 Announcement music passage: a recapitulation of the theme	主题再现部	w
@@ -27405,6 +27443,7 @@ Fortress activity: suffix (cannot individually drill)	（无法进行个人训�
 Fortress activity: suffix (no reachable valid target)	（没有可抵达的有效目标）	li
 Fortress temple detail: Priest: {d} worshipper needed	祭司：需要{d}名信徒	wtli
 Gather fruit and vegetables from shrubs in this zone.	采集此区域灌木上的果实和蔬菜。	hj
+Give a sermon concerning a deity or object of worship	发表关于神祇或崇拜对象的布道	hP
 Go below hatch (no climbing/jumping) ({d} level down)	前往活动盖板下方（不攀爬或跳跃）（下方{d1}层）	hPt
 Go to the next zone overlapping the tile you clicked.	切换到与所点击地格重叠的下一个区域。	hj
 Guide {s} immediately when at least {d}% of any items	总装载量不低于{d1}%时，立即引导矿车向{s1}行驶	hPt
@@ -28088,6 +28127,7 @@ A tiny venomous snake found in the woods and swamps.	一种在树林和沼泽中
 Adventure item action: Go below hatch ({d} level up)	到舱盖下方（上方{d}层）	h
 Adventure item action: Path to here ({d} level down)	前往此处（下方{d}层）	h
 Adventure item action: Ride {s}, push off toward {p}	乘坐{s}，向{p}蹬离	h
+Adventure performance genre: Biographical dictionary	传记辞典	l
 Adventurer log reputation: dabbling training partner	初入门径的训练伙伴	h
 Adventurer log reputation: legendary treasure hunter	传奇寻宝者	h
 Adventurer log reputation: respected for heroic acts	因英雄之举而受人尊敬	h
@@ -30018,6 +30058,7 @@ Adventure item action: Aim carefully and shoot {n}	仔细瞄准并射击{n}	h
 Adventure item action: Heat {s} near burning trunk	在燃烧的树干旁加热{s}	h
 Adventure item action: Heat {s} near burning twigs	在燃烧的细枝旁加热{s}	h
 Adventure item action: Path to here ({d} level up)	前往此处（上方{d}层）	h
+Adventure performance genre: Comparative biography	比较传记	l
 Adventurer log reputation: famous training partner	名声显赫的训练伙伴	h
 Adventurer log reputation: legendary enemy fighter	传奇退敌斗士	h
 Adventurer log reputation: legendary loyal soldier	传奇的忠诚军人	h
@@ -31018,6 +31059,7 @@ A tiny brown bird given to singing complex songs.	一种擅长唱复杂的声乐
 A tiny predatory mollusk. It is brightly colored.	一种小型肉食软体动物。它颜色鲜艳。	lP
 A very large mammalian omnivore with a long head.	一种体型很大的哺乳类杂食动物，头部修长。	lP
 A very large woolly mammal person with two tusks.	一种体型很大的长毛哺乳类人形生物，长有两根獠牙。	lP
+Adventure action: Give a sermon promoting a value	发表宣扬某种价值观的布道	l
 Adventure item action: Continue conversation with	继续交谈	h
 Adventure item action: What will you do with {s}?	你想如何处理{s}？	h
 Adventurer log group status: Affiliated mercenary	附属佣兵	h
@@ -31103,6 +31145,10 @@ Announcement combat work-reference [$item]: a {s}	{s1}	l
 Announcement combat work-reference [$sphere]: {s}	{s1}	l
 Announcement distance: a day's travel to the east	距此一天路程的东方	l
 Announcement distance: a day's travel to the west	距此一天路程的西方	l
+Announcement distance: far to the north-northeast	远在北东北方	l
+Announcement distance: far to the north-northwest	远在北西北方	l
+Announcement distance: far to the south-southeast	远在南东南方	l
+Announcement distance: far to the south-southwest	远在南西南方	l
 Argue the value of independence (not your values)	争辩独立自主的价值（并非你的价值观）	hP
 Argue the value of leisure time (not your values)	争辩闲暇的价值（并非你的价值观）	hP
 Argue the value of perseverance (not your values)	争辩毅力的价值（并非你的价值观）	hP
@@ -32142,6 +32188,8 @@ A tiny shelled reptile that lives in the desert.	一种生活在沙漠中的小�
 A tiny, blood-sucking bug found in wooded areas.	一种发现于树木繁茂的地区的小型吸血虫。	lP
 Adventure item action: Heat {s} near burning cap	在燃烧的菌盖旁加热{s}	h
 Adventure item action: Heat {s} near magma ({p})	在岩浆旁加热{s}（{p}）	h
+Adventure performance genre: Cultural comparison	文化比较	l
+Adventure performance genre: Musical composition	乐曲	l
 Adventurer log reputation: known treasure hunter	众所周知的宝物猎人	h
 Adventurer log reputation: legendary storyteller	传奇说书人	h
 Adventurer log reputation: noted treasure hunter	著名的宝物猎人	h
@@ -32197,6 +32245,10 @@ Announcement combat visitor-statement []: will .	将……。	l
 Announcement combat work-ordinal []: seventeenth	17	l
 Announcement distance: a short walk to the north	步行不远即可到达的北方	l
 Announcement distance: a short walk to the south	步行不远即可到达的南方	l
+Announcement distance: far to the east-northeast	远在东东北方	l
+Announcement distance: far to the east-southeast	远在东东南方	l
+Announcement distance: far to the west-northwest	远在西西北方	l
+Announcement distance: far to the west-southwest	远在西西南方	l
 Argue nuances of craftsmanship (not your values)	争辩工艺的复杂之处（并非你的价值观）	hP
 Argue nuances of introspection (not your values)	争辩自省的复杂之处（并非你的价值观）	hP
 Argue the value of competition (not your values)	争辩竞争的价值（并非你的价值观）	hP
@@ -33345,6 +33397,7 @@ A tiny brown bug known for its powerful poison.	一种因其强大的毒素闻�
 Adventure item action: Drink {s} from {s} ({p})	饮用{s2}中的{s1}（{p}）	h
 Adventure item action: Heat {s} near fire ({p})	在火旁加热{s}（{p}）	h
 Adventure item action: Heat {s} near lava ({p})	在熔岩旁加热{s}（{p}）	h
+Adventure performance list continuation: (etc.)	（等）	l
 Adventurer log reputation: famous loyal soldier	名声显赫的忠诚军人	h
 Adventurer log reputation: famous trade partner	名声显赫的贸易伙伴	h
 Announcement combat ability []: Cause dizziness	引发眩晕	l
@@ -34504,6 +34557,7 @@ A tiny flying reptile with a small round head.	一种微小的飞行爬行动物
 A very large dinosaur person with a long neck.	一种体型很大、颈部修长的恐龙类人形生物。	lP
 Adventure item action: Fill {s} from {s} ({p})	用{s2}中的内容物装满{s1}（{p}）	h
 Adventure item action: Fill {s} with {s} ({p})	用{s2}装满{s1}（{p}）	h
+Adventure performance genre: Alternate history	架空历史	l
 Adventurer log group status: Aligned mercenary	立场一致的佣兵	h
 Adventurer log group status: Devoted mercenary	忠心耿耿的佣兵	h
 Adventurer log reputation: known enemy fighter	众所周知的敌方战士	h
@@ -35772,6 +35826,7 @@ A small fruit-eating ape, found in the trees.	一种吃水果的小型猿猴，�
 A small mammal resembling a large, white rat.	一个类似大白鼠的小型哺乳动物。	lP
 A very small reptile with a divided carapace.	一种很小的爬行动物，甲壳分成两部分。	lP
 A worm-like creature with the torso of a man.	一种长得像蠕虫的人形生物。	lP
+Adventure action: Tell a story about a region	讲述一个地区的故事	l
 Adventure item action: Claim {n} ({p}) as pet	认领{n}为宠物（{p}）	h
 Adventure item action: Eat {s} from {s} ({p})	食用{s2}中的{s1}（{p}）	h
 Adventure item action: Get {s} from {n} ({p})	从{n}拿取{s}（{p}）	h
@@ -35780,6 +35835,7 @@ Adventure item action: Heat {s} near campfire	在篝火旁加热{s}	h
 Adventure item action: Lower {s} bucket ({p})	降下{s}的水桶（{p}）	h
 Adventure item action: Raise {s} bucket ({p})	升起{s}的水桶（{p}）	h
 Adventure item action: Shout out to everybody	向所有人喊话	h
+Adventure performance genre: Cultural history	文化史	l
 Adventurer log group status: Affiliated slave	附属奴隶	h
 Adventurer log group status: Associated slave	有关联的奴隶	h
 Adventurer log group status: Former mercenary	前佣兵	h
@@ -35835,6 +35891,10 @@ Announcement combat shot-result []: deflected	挡开了	l
 Announcement combat trade-places [$name]: {s}	{s1}	l
 Announcement combat work-ordinal []: eleventh	11	l
 Announcement distance: inaccessible from here	此处无法到达的地方	l
+Announcement distance: to the north-northeast	在北东北方	l
+Announcement distance: to the north-northwest	在北西北方	l
+Announcement distance: to the south-southeast	在南东南方	l
+Announcement distance: to the south-southwest	在南西南方	l
 Argue nuances of friendship (not your values)	争辩友谊的复杂之处（并非你的价值观）	hP
 Argue the value of commerce (not your values)	争辩商业的价值（并非你的价值观）	hP
 Argue the value of fairness (not your values)	争辩公道的价值（并非你的价值观）	hP
@@ -37038,6 +37098,7 @@ A small, green, intelligent mountain parrot.	一种小型,绿油油的,高智商
 A very large cephalopod with a coiled shell.	一种体型很大的头足类动物，背负螺旋形外壳。	lP
 Adventure item action: Dismount to {s} ({p})	下坐骑到{s}（{p}）	h
 Adventure movement qualifier: releasing hold	，松开抓握	h
+Adventure performance value: Martial Prowess	武勇	l
 Adventurer log group status: Former prisoner	前囚犯	h
 Adventurer log group status: Loyal mercenary	忠诚的佣兵	h
 Adventurer log reputation: infamous intruder	臭名昭著的入侵者	h
@@ -37097,6 +37158,10 @@ Announcement distance: just to the northeast	就在东北方	l
 Announcement distance: just to the northwest	就在西北方	l
 Announcement distance: just to the southeast	就在东南方	l
 Announcement distance: just to the southwest	就在西南方	l
+Announcement distance: to the east-northeast	在东东北方	l
+Announcement distance: to the east-southeast	在东东南方	l
+Announcement distance: to the west-northwest	在西西北方	l
+Announcement distance: to the west-southwest	在西西南方	l
 Announcement music passage: a bridge-passage	过渡段	w
 Announcement music passage: a simple passage	简单乐段	w
 Announcement music passage: the introduction	引子	w
@@ -38378,7 +38443,9 @@ A small, flightless, brightly-colored bird.	一种无法飞行的色彩鲜艳的
 A spiny person with the head of an echidna.	一种长着豪猪的多刺的人形生物。	lP
 ABORT NOW and I'll look over my parameters.	立即中止，我要检查参数。	l
 Accept that the listener will not trade {i}	接受对方不愿交换{i1}的决定	hPt
+Adventure action: Tell a story about a site	讲述一个地点的故事	l
 Adventure item action: Quickly throw at {n}	快速投向{n}	h
+Adventure performance genre: Star catalogue	星表	l
 Adventurer log group status: Devoted member	忠心耿耿的成员	h
 Adventurer log reputation: infamous brigand	臭名昭著的强盗	h
 Adventurer log reputation: infamous monster	臭名昭著的怪物	h
@@ -38648,6 +38715,7 @@ Fortress activity: Update stockpile records	更新库存记录	li
 Fortress activity: Wait for Combat Training	等待战斗训练	li
 Fortress activity: suffix (no patrol route)	（没有巡逻路线）	li
 Fortress schedule editor: Minimum number of	执行新命令	l
+Give a sermon concerning a cosmic principle	发表关于宇宙原理的布道	hP
 Greetings. I am {p}, and I have chosen you.	你好。我是{p1}，我已选中了你。	hqt
 Guide {s} immediately always (at most 100%)	立即引导矿车向{s1}行驶（不限装载量，至多100%）	hPt
 Guide {s} in {d} day when full of any items	等待{d1}天且矿车满载时，引导矿车向{s1}行驶	hPt
@@ -39753,6 +39821,9 @@ Adventure item action: Heat {s} near magma	在岩浆旁加热{s}	h
 Adventure item action: Make Campfire ({p})	搭建篝火（{p}）	h
 Adventure item action: Pick {s} lock ({p})	撬开{s}的锁（{p}）	h
 Adventure item action: Release hold on {s}	松开抓住的{s}	h
+Adventure performance genre: Autobiography	自传	l
+Adventure performance value: Craftsmanship	工艺	l
+Adventure performance value: Introspection	自省	l
 Adventure: move view/cursor down (z), fast	冒险模式：向下移动视野/光标（z），快速	w
 Adventurer log group status: Aligned slave	立场一致的奴隶	h
 Adventurer log group status: Devoted slave	忠心耿耿的奴隶	h
@@ -41334,6 +41405,12 @@ Adventure item action: Climb to {s} ({p})	攀向{s}（{p}）	h
 Adventure item action: Drink {s} from {s}	饮用{s2}中的{s1}	h
 Adventure item action: Heat {s} near fire	在火旁加热{s}	h
 Adventure item action: Heat {s} near lava	在熔岩旁加热{s}	h
+Adventure performance genre: Choreography	编舞	l
+Adventure performance genre: Encyclopedia	百科全书	l
+Adventure performance value: Independence	独立	l
+Adventure performance value: Leisure Time	闲暇	l
+Adventure performance value: Perseverance	坚持	l
+Adventure performance value: Self-Control	自律	l
 Adventurer log group status: Former slave	前奴隶	h
 Adventurer log group status: Loyal member	忠诚的成员	h
 Adventurer log reputation: famous brawler	名声显赫的斗士	h
@@ -42743,6 +42820,7 @@ you will need to reclaim the fort to play	但你需要先收复这座要塞，	w
 {a} was wrongfully convicted in the wilds	{a1}在荒野中被错误地定罪了	ht
 {a} were hired as scouts by the attackers	进攻方雇佣{a1}担任斥候	ht
 {a} wove a masterful sewn image to a {i}.	{a1}为{i1}织出了一幅杰作级的刺绣图像。	ht
+{b} is an example of musical composition.	《{b}》是一部音乐作品。	ht
 {b} was created in {p} by {n} during {e}.	在{e1}期间，{n1}在{p1}创造了{b1}。	ht
 {b} was created in {p} by {n} within {p}.	在{p2}，{n1}在{p1}创造了{b1}。	ht
 {e} as a former member of {p} during {e}.	在{e2}期间，以{p1}前成员的身份发生的{e1}。	htEi
@@ -42859,6 +42937,10 @@ Adventure item action: Fill {s} with {s}	用{s2}装满{s1}	h
 Adventure item action: Move to {n} ({p})	移动到{n}（{p}）	h
 Adventure item action: Move to {s} ({p})	移动到{s}（{p}）	h
 Adventure item action: Quickly shoot {n}	快速射击{n}	h
+Adventure performance genre: Short story	短篇小说	l
+Adventure performance value: Competition	竞争	l
+Adventure performance value: Cooperation	合作	l
+Adventure performance value: Tranquility	宁静	l
 Adventure: move view/cursor up (z), fast	冒险模式：向上移动视野/光标（z），快速	w
 Adventurer log group status: Loyal slave	忠诚的奴隶	h
 Adventurer log reputation: famous dancer	名声显赫的舞蹈家	h
@@ -44426,6 +44508,9 @@ Adventure item action: Raise {s} bucket	升起{s}的水桶	h
 Adventure item action: Set on {s} ({p})	摆放到{s}上（{p}）	h
 Adventure item action: Stop leading {n}	停止牵领{n}	h
 Adventure item action: Topple {s} ({p})	推倒{s}（{p}）	h
+Adventure performance genre: Dictionary	词典	l
+Adventure performance genre: Star chart	星图	l
+Adventure performance value: Friendship	友谊	l
 Adventurer log group status: Affiliated	附属关系	h
 Adventurer log group status: Associated	有所关联	h
 Adventurer log reputation: great hunter	伟大的猎人	h
@@ -44453,6 +44538,10 @@ Announcement distance: far to the north	远在北方	l
 Announcement distance: far to the south	远在南方	l
 Announcement distance: just to the east	就在东方	l
 Announcement distance: just to the west	就在西方	l
+Announcement distance: to the northeast	在东北方	l
+Announcement distance: to the northwest	在西北方	l
+Announcement distance: to the southeast	在东南方	l
+Announcement distance: to the southwest	在西南方	l
 Argue the worthlessness of independence	争辩独立自主毫无价值	hP
 Argue the worthlessness of leisure time	争辩闲暇毫无价值	hP
 Argue the worthlessness of perseverance	争辩毅力毫无价值	hP
@@ -46024,6 +46113,8 @@ A section of the cavern has collapsed!	洞穴的一部分坍塌了！	hP
 A small, grey, tree-dwelling creature.	一种居住在树上的灰色小生物。	lP
 Acknowledge lack of existential crisis	表示没有存在危机	hP
 Add stockpile links for this workshop.	为此工坊添加储物堆连接。	hj
+Adventure action: Prepare choreography	编排舞蹈	l
+Adventure action: Write something down	写下内容	l
 Adventure item action: Climb {s} ({p})	攀爬{s}（{p}）	h
 Adventure item action: Dismount to {s}	下坐骑到{s}	h
 Adventure item action: Drink {s} ({p})	饮用{s}（{p}）	h
@@ -46032,6 +46123,15 @@ Adventure item action: Gain possession	取得所有权	h
 Adventure item action: Jump to the {p}	跳向{p}	h
 Adventure item action: Mount {n} ({p})	骑上{n}（{p}）	h
 Adventure item action: Push {s} to {p}	将{s}推向{p}	h
+Adventure performance genre: Biography	传记	l
+Adventure performance genre: Chronicle	编年史	l
+Adventure performance genre: Genealogy	谱系	l
+Adventure performance value: Eloquence	口才	l
+Adventure performance value: Hard Work	勤奋	l
+Adventure performance value: Knowledge	知识	l
+Adventure performance value: Merriment	欢乐	l
+Adventure performance value: Sacrifice	牺牲	l
+Adventure performance value: Tradition	传统	l
 Adventurer log reputation: famous ally	名声显赫的同盟者	h
 Adventurer log reputation: famous bard	名声显赫的吟游诗人	h
 Adventurer log reputation: famous hero	名声显赫的英雄	h
@@ -46531,6 +46631,7 @@ Then select the corners of the bridge.	然后选择桥梁的各个角。	hP
 There were {c} competitors during {e}.	在{e1}期间，共有{c1}名参赛者。	ht
 There were {c} competitors within {p}.	在{p1}，共有{c1}名参赛者。	ht
 This creature is displeased right now.	此生物目前有些不满。	hj
+This is an untitled {s}, authored by .	这是一部无题{s}，作者不详。	ht
 This storyteller is really quite good!	这位讲故事的人真的相当出色！	hP
 This storyteller? Unbelievable talent!	这位讲故事的人的天赋，简直让人不敢相信！	hP
 Travel building: Imported goods market	进口杂货市场	wi
@@ -47771,6 +47872,9 @@ Adventure item action: Pull {s} ({p})	拉动{s}（{p}）	h
 Adventure item action: Suck {n}'s {s}	吸取{n}的{s}	h
 Adventure item action: View engraving	查看雕刻	h
 Adventure movement qualifier: holding	，抓住	h
+Adventure performance value: Commerce	商业	l
+Adventure performance value: Fairness	公平	l
+Adventure performance value: Stoicism	斯多葛主义	l
 Adventurer log group status: Criminal	罪犯	h
 Adventurer log group status: Prisoner	囚犯	h
 Adventurer log reputation: known ally	众所周知的同盟者	h
@@ -49472,6 +49576,12 @@ Adventure item action: Load into {s}	装入{s}	h
 Adventure item action: Make Campfire	搭建篝火	h
 Adventure item action: Pick {s} lock	撬开{s}的锁	h
 Adventure item action: View yourself	查看自己	h
+Adventure performance value: Artwork	艺术	l
+Adventure performance value: Cunning	谋略	l
+Adventure performance value: Decorum	礼仪	l
+Adventure performance value: Harmony	和谐	l
+Adventure performance value: Loyalty	忠诚	l
+Adventure performance value: Romance	浪漫	l
 Adventure: move view/cursor down (z)	冒险模式：向下移动视野/光标（z）	w
 Adventurer log group status: Aligned	立场一致	h
 Affects maximum number of followers.	影响追随者人数上限。	w
@@ -51305,12 +51415,19 @@ Adventure item action: Combat error	战斗错误	h
 Adventure item action: Name the {s}	为{s}命名	h
 Adventure item action: Path to here	前往此处	h
 Adventure item action: Throw at {s}	投向{s}	h
+Adventure performance genre: Dialog	对话录	l
+Adventure performance genre: Letter	信	l
+Adventure performance genre: Manual	手册	l
+Adventure performance value: Family	家庭	l
+Adventure performance value: Nature	自然	l
 Agree to have {e} pay homage to {e}	同意让{e1}向{e2}称臣纳贡	hPt
 All of your progress since the last	自上次保存以来的所有进度	w
 Announce your night creature status	宣布你是夜行生物	hP
 Announcement combat ability []: Rot	引发腐烂	l
 Announcement combat decay []: fetid	恶臭的	l
 Announcement combat owner []: their	他们的	l
+Announcement distance: to the north	在北方	l
+Announcement distance: to the south	在南方	l
 Announcement music passage: a verse	主歌段	w
 Announcement unit: an unknown party	身份不明的人	l
 Are you stalking a dangerous beast?	你在追踪危险的野兽吗？	hP
@@ -53227,6 +53344,16 @@ Adventure item action: Nock in {s}	在{s}上搭箭	h
 Adventure item action: Pull it out	将其拔出	h
 Adventure movement qualifier: from	，从	h
 Adventure movement: Worst Possible	最差	l
+Adventure performance genre: Atlas	地图集	l
+Adventure performance genre: Essay	论文	l
+Adventure performance genre: Guide	指南	l
+Adventure performance genre: Novel	小说	l
+Adventure performance value: Peace	和平	l
+Adventure performance value: Power	权势	l
+Adventure performance value: Skill	技能	l
+Adventure performance value: Truth	诚实	l
+Adventure performance voice: Chant	吟唱	l
+Adventure performance voice: Speak	念白	l
 Adventure: move view/cursor up (z)	冒险模式：向上移动视野/光标（z）	w
 Adventurer log group status: Enemy	敌人	h
 Adventurer log reputation: comrade	同志	h
@@ -53238,6 +53365,8 @@ Announcement combat decay []: foul	污秽的	l
 Announcement combat layer []: part	部位	l
 Announcement combat owner []: your	你的	l
 Announcement distance: aboveground	地表	l
+Announcement distance: to the east	在东方	l
+Announcement distance: to the west	在西方	l
 Argue the value of martial prowess	争辩武艺的价值	hP
 Argue the worthlessness of artwork	争辩艺术毫无价值	hP
 Argue the worthlessness of cunning	争辩谋略毫无价值	hP
@@ -55095,6 +55224,7 @@ wove a masterful sewn image in {p}	在{p1}织出了一幅杰作级的刺绣图�
 {a} were reunited with {a} at {p}.	{a1}在{p1}与{a2}重聚了。	ht
 {a} were reunited with {a} in {p}.	{a1}在{p1}与{a2}重聚了。	ht
 {b} For The Beginning Practitioner	{b}初学者指南	hbti
+{b} is an example of choreography.	《{b}》是一部舞蹈作品。	ht
 {b} is the property of our people.	{b1}属于我们族人。	hPt
 {b} was authored by {n} during {e}	在{e1}期间，{n1}撰写了《{b1}》	ht
 {b} was authored by {n} within {p}	在{p1}，{n1}撰写了《{b1}》	ht
@@ -55246,6 +55376,9 @@ Adventure item action: Remove {s}	移除{s}	h
 Adventure item action: Set on {s}	摆放到{s}上	h
 Adventure item action: Topple {s}	推倒{s}	h
 Adventure movement: Best Possible	最佳	l
+Adventure performance genre: Play	戏剧	l
+Adventure performance genre: Poem	诗	l
+Adventure performance voice: Sing	歌唱	l
 Adventurer log reputation: polite	彬彬有礼	h
 Adventurer log tab: Organizations	组织	h
 Age of the {s} and the {s} at {p}	在{p1}，{s1}与{s2}时代	htEi
@@ -57089,6 +57222,7 @@ Acknowledge lack of hopelessness	表示没有绝望感	hP
 Acknowledge lack of restlessness	表示没有躁动不安	hP
 Acknowledge lack of satisfaction	表示没有满意	hP
 Acknowledge lack of vengefulness	表示没有复仇心	hP
+Adventure action: Compose a poem	创作诗歌	l
 Adventure item action: Climb {s}	攀爬{s}	h
 Adventure item action: Drink {s}	饮用{s}	h
 Adventure item action: Guide {s}	引导{s}	h
@@ -57101,6 +57235,7 @@ Adventure item action: {s} ({p})	{s}（{p}）	h
 Adventure movement medium: Magma	岩浆	h
 Adventure movement medium: Water	水	h
 Adventure movement: Faster Crawl	更快爬行	l
+Adventure performance value: Law	法律	l
 Adventurer, choose your destiny!	冒险者，选择你的命运！	l
 Age of {a} and {a} in the wilds.	在荒野中，{a1}与{a2}时代。	htEi
 Age of {s} and {s} in the wilds.	在荒野中，{s1}与{s2}时代。	htEi
@@ -58989,6 +59124,10 @@ Acknowledge lack of humiliation	表示没有屈辱	hP
 Acknowledge lack of nervousness	表示没有紧张	hP
 Acknowledge lack of unhappiness	表示没有不快	hP
 Acquiesce (changes your values)	默认接受（改变你的价值观）	hP
+Adventure action: Compose music	创作音乐	l
+Adventure action: Give a sermon	布道	l
+Adventure action: Perform music	演奏音乐	l
+Adventure action: Recite a poem	朗诵诗歌	l
 Adventure item action: Drop {s}	丢下{s}	h
 Adventure item action: Fell {s}	砍倒{s}	h
 Adventure item action: Heat {s}	加热{s}	h
@@ -61108,6 +61247,7 @@ Acknowledge lack of repentance	表示没有忏悔	hP
 Acknowledge lack of resentment	表示没有怨恨	hP
 Acknowledge lack of tenderness	表示没有温柔	hP
 Acknowledge lack of uneasiness	表示没有不安	hP
+Adventure action: Tell a story	讲故事	l
 Adventure item action: A ({p})	小生物（{p}）	h
 Adventure item action: Eat {s}	食用{s}	h
 Adventure item action: Get {s}	拿取{s}	h
@@ -67090,6 +67230,8 @@ wove a masterful sewn image.	织出了一幅杰作级的刺绣图像。	h
 {a} were expelled within {p}	{a1}在{p1}遭到了驱逐	ht
 {a} wounded {a} in the wilds	{a1}在荒野中击伤了{a2}	ht
 {b} In The Age of Two Powers	两强权时代的{b1}	htbi
+{b} is an example of poetry.	《{b}》是一首诗。	ht
+{b} is an {s}, authored by .	《{b}》是一部{s}，作者不详。	ht
 {b} is the symbol of the {s}	{b1}是{s1}的象征。	hPt
 {b}: Principles and Practice	{b}：原理与实践	hbti
 {d}nd Slate, mid-spring, {d}	第{d2}年，仲春，板岩月{d1}日	wti
@@ -67249,6 +67391,7 @@ Aim carefully and shoot {n}	仔细瞄准并射击{n1}	hPt
 Ambush (uninjured creature)	伏击：未受伤生物	w
 An animal has become a {s}.	一只动物成为了{s1}。	hPt
 An end and a new beginning.	一个终点，一个新的开始。	hP
+Announcement distance: here	位于此处	l
 Announcement unit: nameless	无名者	l
 Argue nuances of friendship	争辩友谊的复杂之处	hP
 Argue the value of commerce	争辩商业的价值	hP
@@ -69120,6 +69263,7 @@ wove a masterful sewn image	织出了一幅杰作级的刺绣图像	h
 {b} In The Age of Emptiness	空虚时代的{b1}	htbi
 {b} In The Age of One Power	一强权时代的{b1}	htbi
 {b} and The Coming Troubles	{b}与将至的麻烦	hbti
+{b} is a {s}, authored by .	《{b}》是一部{s}，作者不详。	ht
 {b}: Problems And Solutions	{b}：问题与解答	hbti
 {d}nd Opal, mid-winter, {d}	第{d2}年，仲冬，蛋白石月{d1}日	wti
 {d}nd Slate, midspring, {d}	第{d2}年，仲春，板岩月{d1}日	wti
@@ -72781,6 +72925,7 @@ writing of a masterpiece.	书写杰作。	hEi
 {a} withered in the wilds	{a1}在荒野中衰亡了	ht
 {b} In Age of Fairy Tales	童话时代的{b1}	htbi
 {b} In The Age of Legends	传说时代的{b1}	htbi
+{b} is an example of {p}.	《{b}》采用“{p}”的形式。	ht
 {b}: A Brief Introduction	{b}简介	hbti
 {b}: The Definitive Guide	{b}：权威指南	hbti
 {e} around {p} during {e}	在{e2}期间，发生在{p1}周边的{e1}	htEi
@@ -73473,6 +73618,7 @@ This dancer is middling.	这位舞者水平一般。	hP
 This dancer is splendid.	这位舞者很出色。	hP
 This dancer is terrible.	这位舞者很糟糕。	hP
 This is a waste of time.	看这场表演，简直浪费时间。	hP
+This is an untitled {s}.	这是一部无题{s}。	ht
 This is the life for me.	这正是我想要的生活。	hP
 This is your apprentice.	这是你的学徒。	hP
 This item feels prickly.	这件物品给人刺痛感。	h
@@ -74835,6 +74981,7 @@ Add magma to the arena.	向竞技场中添加岩浆。	hj
 Add magma to the arena.	向竞技场中添加岩浆。	l
 Add water to the arena.	向竞技场中添加水。	hj
 Add water to the arena.	向竞技场中添加水。	l
+Adventure action: Dance	跳舞	l
 Adventure movement: Jog	慢跑	l
 Adventure movement: Run	奔跑	l
 Affected by attributes:	受以下属性影响：	w
@@ -75366,6 +75513,7 @@ The party and followers	队伍与追随者	hq
 The party and followers	队伍与追随者	w
 The thread is {v}, {s}.	纺线呈{v1}，{s1}。	hHt
 The upward face is {s}.	朝上的一面是{s1}。	hHt
+The {s} of {e} are {s}.	{e1}（{s1}）：{s2}。	hPt
 This dancer is alright!	这位舞者还不错！	hP
 This dancer is alright.	这位舞者还不错。	hP
 This dancer is awesome!	这位舞者太棒了！	hP
@@ -77330,6 +77478,7 @@ The Twelfth {e} in {p}	在{p1}，第十二次{e1}	htEi
 The creature is caged.	此生物已被关入笼中。	hj
 The {s} Rampage at {p}	{p}的{s}肆虐事件	htEi
 The {s} Rampage in {p}	{p}的{s}肆虐事件	htEi
+The {s} of {e} is {s}.	{e1}（{s1}）：{s2}。	hPt
 There is no wind here.	这里没有风。	hP
 There is no wind here.	这里没有风。	hj
 This chanter is great.	这位吟唱者很棒。	hP
@@ -81410,6 +81559,7 @@ Paternal grandfather	祖父	w
 Paternal grandmother	祖母	w
 Pet loses dead owner	宠物失去已故主人	w
 Placing good/evil...	正在生成善良与邪恶区域……
+Prepare choreography	编排舞蹈	hP
 Process plant to bag	用袋子进行甩籽	wi
 Processing plants...	处理项目......	w
 Processing sounds...	处理声音......	w
@@ -81608,6 +81758,7 @@ Workers dump corpses	工人倾倒尸体	wi
 Workers save corpses	工人保留尸体	wi
 Workshop recipe: wax	蜂蜡	l
 World site: {p}, {s}	{p}（{s}）	hti
+Write something down	写下内容	hP
 X is being mutilated	X正在被肢解	wl
 X is contemplating Y	X正在思考Y	wl
 X is fighting with Y	X正在与Y战斗	wl
@@ -95793,6 +95944,7 @@ The plan failed.	计划失败了。	h
 The plan worked.	计划成功了。	h
 The rope is {s}.	绳索由{s1}制成。	hHt
 The writing {s}.	文风{s1}。	ht
+The {s} are {s}.	{s1}：{s2}。	hPt
 Think abstractly	抽象思考	w
 Third eldest son	第三个儿子	w
 This is alright!	这还不错！	hP
@@ -100283,6 +100435,7 @@ The Unknown Age	未知时代	hEi
 The Veiled Hill	面纱之丘陵	w
 The object {e}.	这件物品{e1}。	hHt
 The {s} closes.	{s1}关闭了。	hPt
+The {s} is {s}.	{s1}：{s2}。	hPt
 Thief (villain)	盗贼（反派）	w
 This is an {i}.	这是{i1}。	ht
 Thoughts on {b}	{b}感想	hbti
@@ -109569,6 +109722,7 @@ youngest child	最小的孩子	h
 {b} Questioned	质疑{b}	hbti
 {b} Understood	理解{b}	hbti
 {b} and Beyond	{b}及更远之处	hbti
+{b} is an {s}.	《{b}》是一部{s}。	ht
 {b}: The Truth	{b}：真相	hbti
 {c} Other Kill	其他击杀数：{c}	ht
 {c} {s} in {p}	在{p}的{c}只{s}	ht
@@ -109687,6 +109841,7 @@ Cloth (metal)	布匹（金属）	wi
 Clothesmaking	制衣	wi
 Clothing Shop	服装店	wi
 Collect taxes	征税	wi
+Compose music	创作音乐	hP
 Concentration	专注	wi
 Constructions	建筑物	w
 Control panel	控制面板	w
@@ -114196,6 +114351,7 @@ yellow zircon	黄锆石	wi
 {b} Explained	{b}详解	hbti
 {b} In Theory	{b}理论	hbti
 {b} Uncovered	{b}揭秘	hbti
+{b} is a {s}.	《{b}》是一部{s}。	ht
 {b}, Abridged	{b}节本	hbti
 {c} {s} horns	{c1}根{s1}角	htv
 {c} {s} tails	{c1}条{s1}尾巴	htv
@@ -129493,6 +129649,7 @@ zealous	热忱	wi
  slave	奴隶	wi
  upper	上	wi
 (NSEW)	（南北东西）	wi
+(etc.)	（等）	hP
 , year	，年份
 A Fire	火焰	wl
 A plot	一项阴谋	hP
@@ -130705,6 +130862,7 @@ Cavor	卡沃尔	wi
 Cegol	塞高尔	wi
 Cerol	塞罗尔	wi
 Chair	椅子	w
+Chant	吟唱	hP
 Chasm	裂口	wi
 Chest	箱子	w
 Child	儿童	wi
@@ -131316,6 +131474,7 @@ Sosad	索萨德	wi
 Sosas	索萨斯	wi
 South	南	hP
 South	南方	wi
+Speak	念白	hP
 Squad	分队	w
 Steam	水蒸气	wl
 Still	蒸馏工坊	w
@@ -132228,6 +132387,7 @@ Shin	辛	wi
 Shis	希斯	wi
 Shos	肖斯	wi
 Shuk	舒克	wi
+Sing	歌唱	hP
 Site	地点
 Slab	石板	wi
 Snow	降雪	w
@@ -132902,64 +133062,3 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
-The {s} of {e} is {s}.	{e1}（{s1}）：{s2}。	hPt
-The {s} of {e} are {s}.	{e1}（{s1}）：{s2}。	hPt
-The {s} is {s}.	{s1}：{s2}。	hPt
-The {s} are {s}.	{s1}：{s2}。	hPt
-Announcement distance: here	位于此处	l
-Announcement distance: far to the north-northeast	远在北东北方	l
-Announcement distance: far to the east-northeast	远在东东北方	l
-Announcement distance: far to the east-southeast	远在东东南方	l
-Announcement distance: far to the south-southeast	远在南东南方	l
-Announcement distance: far to the south-southwest	远在南西南方	l
-Announcement distance: far to the west-southwest	远在西西南方	l
-Announcement distance: far to the west-northwest	远在西西北方	l
-Announcement distance: far to the north-northwest	远在北西北方	l
-Announcement distance: a day's travel to the north-northeast	距此一天路程的北东北方	l
-Announcement distance: a day's travel to the east-northeast	距此一天路程的东东北方	l
-Announcement distance: a day's travel to the east-southeast	距此一天路程的东东南方	l
-Announcement distance: a day's travel to the south-southeast	距此一天路程的南东南方	l
-Announcement distance: a day's travel to the south-southwest	距此一天路程的南西南方	l
-Announcement distance: a day's travel to the west-southwest	距此一天路程的西西南方	l
-Announcement distance: a day's travel to the west-northwest	距此一天路程的西西北方	l
-Announcement distance: a day's travel to the north-northwest	距此一天路程的北西北方	l
-Announcement distance: nearly a day's travel to the north-northeast	距此近一天路程的北东北方	l
-Announcement distance: nearly a day's travel to the east-northeast	距此近一天路程的东东北方	l
-Announcement distance: nearly a day's travel to the east-southeast	距此近一天路程的东东南方	l
-Announcement distance: nearly a day's travel to the south-southeast	距此近一天路程的南东南方	l
-Announcement distance: nearly a day's travel to the south-southwest	距此近一天路程的南西南方	l
-Announcement distance: nearly a day's travel to the west-southwest	距此近一天路程的西西南方	l
-Announcement distance: nearly a day's travel to the west-northwest	距此近一天路程的西西北方	l
-Announcement distance: nearly a day's travel to the north-northwest	距此近一天路程的北西北方	l
-Announcement distance: a half day's travel to the north-northeast	距此半天路程的北东北方	l
-Announcement distance: a half day's travel to the east-northeast	距此半天路程的东东北方	l
-Announcement distance: a half day's travel to the east-southeast	距此半天路程的东东南方	l
-Announcement distance: a half day's travel to the south-southeast	距此半天路程的南东南方	l
-Announcement distance: a half day's travel to the south-southwest	距此半天路程的南西南方	l
-Announcement distance: a half day's travel to the west-southwest	距此半天路程的西西南方	l
-Announcement distance: a half day's travel to the west-northwest	距此半天路程的西西北方	l
-Announcement distance: a half day's travel to the north-northwest	距此半天路程的北西北方	l
-Announcement distance: a short walk to the north-northeast	步行不远即可到达的北东北方	l
-Announcement distance: a short walk to the east-northeast	步行不远即可到达的东东北方	l
-Announcement distance: a short walk to the east-southeast	步行不远即可到达的东东南方	l
-Announcement distance: a short walk to the south-southeast	步行不远即可到达的南东南方	l
-Announcement distance: a short walk to the south-southwest	步行不远即可到达的南西南方	l
-Announcement distance: a short walk to the west-southwest	步行不远即可到达的西西南方	l
-Announcement distance: a short walk to the west-northwest	步行不远即可到达的西西北方	l
-Announcement distance: a short walk to the north-northwest	步行不远即可到达的北西北方	l
-Announcement distance: to the north	在北方	l
-Announcement distance: to the north-northeast	在北东北方	l
-Announcement distance: to the northeast	在东北方	l
-Announcement distance: to the east-northeast	在东东北方	l
-Announcement distance: to the east	在东方	l
-Announcement distance: to the east-southeast	在东东南方	l
-Announcement distance: to the southeast	在东南方	l
-Announcement distance: to the south-southeast	在南东南方	l
-Announcement distance: to the south	在南方	l
-Announcement distance: to the south-southwest	在南西南方	l
-Announcement distance: to the southwest	在西南方	l
-Announcement distance: to the west-southwest	在西西南方	l
-Announcement distance: to the west	在西方	l
-Announcement distance: to the west-northwest	在西西北方	l
-Announcement distance: to the northwest	在西北方	l
-Announcement distance: to the north-northwest	在北西北方	l

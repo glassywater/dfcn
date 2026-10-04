@@ -1,0 +1,26 @@
+branch	instruction_or_range	complete_source_production
+button-immediate	0x14086dd01	Done
+heading-default	0x14086dfd2	What would you like to do?
+heading-state16	0x14086ddc0..0x14086ddec	Choose a poetic form for the composition.
+heading-state17	0x14086de4d..0x14086de7a	Choose a musical form for the composition.
+heading-state18	0x14086dedb..0x14086df07	Choose a dance form for the choreography.
+heading-state19-state20	0x14086df7b;0x14086dfa9	Select memorized content or a form of prose.
+empty-state2-state6	0x14086e418..0x14086e45a	You don't know anything specific about this, unfortunately.
+empty-state7-state8-state10	0x14086e4d1	You must compose a piece first (or learn an improvisational form).
+empty-state12-state15-first-line	0x14086e366	You don't believe anything relevant, unfortunately.
+empty-state12-state15-second-line	0x14086e3a8	Assume an appropriate identity first if you'd like to pretend.
+known-poem-form-present	0x14086f02c..0x14086f22f	[C:6:0:1]{title} is an example of {poetic-form-name}.  {whole-content}[B]{whole-poetic-form-description}
+known-poem-form-missing	0x14086f02c..0x14086f22f	[C:6:0:1]{title} is an example of poetry.  {whole-content}
+known-musical-content-form-present	0x14086f35f..0x14086f573	[C:6:0:1]{title} is an example of {musical-form-name}.  {whole-content}[B]{whole-musical-form-description}
+known-musical-content-form-missing	0x14086f506..0x14086f540	[C:6:0:1]{title} is an example of musical composition.  {whole-content}
+known-choreography-form-present	0x14086f745..0x14086fa1b	[C:6:0:1]{title} is an example of {dance-form-name}.  {whole-content}[B]{whole-dance-form-description}
+known-choreography-form-missing	0x14086f968..0x14086f99e	[C:6:0:1]{title} is an example of choreography.  {whole-content}
+memorized-titled-no-author-prefix	0x14086fc71..0x14086ff1b	[C:6:0:1]{title} is a {written-type}.  
+memorized-titled-no-author-an-prefix	0x14086fc71..0x14086ff1b	[C:6:0:1]{title} is an {written-type}.  
+memorized-titled-author-prefix	0x14086fc71..0x14086ff1b	[C:6:0:1]{title} is a {written-type}, authored by {author}.  
+memorized-titled-author-an-prefix	0x14086fc71..0x14086ff1b	[C:6:0:1]{title} is an {written-type}, authored by {author}.  
+memorized-untitled-no-author-prefix	0x14086fcde..0x14086ff1b	[C:6:0:1]This is an untitled {written-type}.  
+memorized-untitled-author-prefix	0x14086fcde..0x14086ff1b	[C:6:0:1]This is an untitled {written-type}, authored by {author}.  
+memorized-form-present-continuation	0x14086ff20..0x140870170	It is an example of {art-form-name}.  {whole-content}[B]{whole-form-description}
+memorized-form-missing-or-prose-continuation	0x140870172..0x14087017f	{whole-content}
+detail-native-clipping-suffix	0x140870361	(etc.)

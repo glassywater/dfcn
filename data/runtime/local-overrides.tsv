@@ -10890,3 +10890,102 @@ Vanilla mod description: These are the graphics for the default Dwarf Fortress i
 Vanilla mod description: These are the graphics for the default Dwarf Fortress buildings.	这些是《矮人要塞》默认建筑的图像。	l
 Vanilla mod description: These are the graphics for the default Dwarf Fortress plants and fungi.	这些是《矮人要塞》默认植物和真菌的图像。	l
 Vanilla mod description: For save compatibility.	用于保持存档兼容性。	l
+
+# Native Adventure performance chooser: every state, enum and text operand is
+# retained in data/extracted/adventure-performance-menu/ for both Windows PEs.
+# The bound native choice selects sphere/value/genre/voice semantics before
+# personal names. These keys do not replace homonymous UI words globally.
+Adventure action: Tell a story	讲故事	l
+Adventure action: Give a sermon	布道	l
+Adventure action: Recite a poem	朗诵诗歌	l
+Adventure action: Perform music	演奏音乐	l
+Adventure action: Dance	跳舞	l
+Adventure action: Prepare choreography	编排舞蹈	l
+Adventure action: Compose music	创作音乐	l
+Adventure action: Compose a poem	创作诗歌	l
+Adventure action: Write something down	写下内容	l
+Adventure action: Give a sermon concerning a deity or object of worship	发表关于神祇或崇拜对象的布道	l
+Adventure action: Give a sermon concerning a cosmic principle	发表关于宇宙原理的布道	l
+Adventure action: Give a sermon promoting a value	发表宣扬某种价值观的布道	l
+Adventure action: Give a sermon inveighing against a value	发表反对某种价值观的布道	l
+Adventure action: Tell a story about a person or creature	讲述一个人物或生物的故事	l
+Adventure action: Tell a story about a site	讲述一个地点的故事	l
+Adventure action: Tell a story about a civilization or organization	讲述一个文明或组织的故事	l
+Adventure action: Tell a story about a region	讲述一个地区的故事	l
+Adventure performance value: Law	法律	l
+Adventure performance value: Loyalty	忠诚	l
+Adventure performance value: Family	家庭	l
+Adventure performance value: Friendship	友谊	l
+Adventure performance value: Power	权势	l
+Adventure performance value: Truth	诚实	l
+Adventure performance value: Cunning	谋略	l
+Adventure performance value: Eloquence	口才	l
+Adventure performance value: Fairness	公平	l
+Adventure performance value: Decorum	礼仪	l
+Adventure performance value: Tradition	传统	l
+Adventure performance value: Artwork	艺术	l
+Adventure performance value: Cooperation	合作	l
+Adventure performance value: Independence	独立	l
+Adventure performance value: Stoicism	斯多葛主义	l
+Adventure performance value: Introspection	自省	l
+Adventure performance value: Self-Control	自律	l
+Adventure performance value: Tranquility	宁静	l
+Adventure performance value: Harmony	和谐	l
+Adventure performance value: Merriment	欢乐	l
+Adventure performance value: Craftsmanship	工艺	l
+Adventure performance value: Martial Prowess	武勇	l
+Adventure performance value: Skill	技能	l
+Adventure performance value: Hard Work	勤奋	l
+Adventure performance value: Sacrifice	牺牲	l
+Adventure performance value: Competition	竞争	l
+Adventure performance value: Perseverance	坚持	l
+Adventure performance value: Leisure Time	闲暇	l
+Adventure performance value: Commerce	商业	l
+Adventure performance value: Romance	浪漫	l
+Adventure performance value: Nature	自然	l
+Adventure performance value: Peace	和平	l
+Adventure performance value: Knowledge	知识	l
+Adventure performance genre: Manual	手册	l
+Adventure performance genre: Guide	指南	l
+Adventure performance genre: Chronicle	编年史	l
+Adventure performance genre: Short story	短篇小说	l
+Adventure performance genre: Novel	小说	l
+Adventure performance genre: Biography	传记	l
+Adventure performance genre: Autobiography	自传	l
+Adventure performance genre: Poem	诗	l
+Adventure performance genre: Play	戏剧	l
+Adventure performance genre: Letter	信	l
+Adventure performance genre: Essay	论文	l
+Adventure performance genre: Dialog	对话录	l
+Adventure performance genre: Musical composition	乐曲	l
+Adventure performance genre: Choreography	编舞	l
+Adventure performance genre: Comparative biography	比较传记	l
+Adventure performance genre: Biographical dictionary	传记辞典	l
+Adventure performance genre: Genealogy	谱系	l
+Adventure performance genre: Encyclopedia	百科全书	l
+Adventure performance genre: Cultural history	文化史	l
+Adventure performance genre: Cultural comparison	文化比较	l
+Adventure performance genre: Alternate history	架空历史	l
+Adventure performance genre: Treatise on technological evolution	技术演变论著	l
+Adventure performance genre: Dictionary	词典	l
+Adventure performance genre: Star chart	星图	l
+Adventure performance genre: Star catalogue	星表	l
+Adventure performance genre: Atlas	地图集	l
+Adventure performance voice: Sing	歌唱	l
+Adventure performance voice: Chant	吟唱	l
+Adventure performance voice: Speak	念白	l
+Adventure performance list continuation: (etc.)	（等）	l
+
+# Performance work cards omit authors when the creator id is absent or the
+# figure cannot be resolved. Their example-of opening also precedes the whole
+# work-content and artistic-form document; retain every native sentence.
+{b} is a {s}.	《{b}》是一部{s}。	ht
+{b} is an {s}.	《{b}》是一部{s}。	ht
+This is an untitled {s}.	这是一部无题{s}。	ht
+{b} is a {s}, authored by .	《{b}》是一部{s}，作者不详。	ht
+{b} is an {s}, authored by .	《{b}》是一部{s}，作者不详。	ht
+This is an untitled {s}, authored by .	这是一部无题{s}，作者不详。	ht
+{b} is an example of {p}.	《{b}》采用“{p}”的形式。	ht
+{b} is an example of poetry.	《{b}》是一首诗。	ht
+{b} is an example of musical composition.	《{b}》是一部音乐作品。	ht
+{b} is an example of choreography.	《{b}》是一部舞蹈作品。	ht

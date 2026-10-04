@@ -1,4 +1,4 @@
-// Story subjects and poetic forms put their description in a separate frame
+// Story subjects and performance forms put their description in a separate frame
 // above the action list, outside the title/list panel handled below. Route
 // each complete card to its semantic grammar before translating its rows.
         for (const auto &choice : choice_panels) {
@@ -80,28 +80,110 @@
                     })) continue;
 
             std::string source;
+            int previous_bottom = -1;
             for (const Match &row : rows) {
-                if (!source.empty()) source += ' ';
+                if (!source.empty()) source += row.y > previous_bottom + 1 ? "\n\n" : " ";
                 source += row.source;
+                previous_bottom = row.y + (row.native_split_text ? 1 : 0);
             }
             NativeParagraphViewport viewport;
-            if (const auto native = native_source_for_rows(rows, -1, nullptr, &viewport);
-                native && viewport.first_line == 0 &&
-                viewport.total_lines == static_cast<int>(rows.size())) source = *native;
-            const bool poetic = source.find(" poetic ") != std::string::npos;
-            // Biographies retain h-rule actor/species and sentence handling.
-            // Neither grammar may claim just an incomplete translated head.
-            const auto target = poetic
-                ? translate_poetic_form_description(source)
-                : translate_legends_text(source, false, false);
+            const auto native = native_source_for_rows(rows, -1, nullptr, &viewport);
+            if (native) source = *native;
+
+            // The renderer appends work identity/content, [B], then the form's
+            // complete description. Preserve those boundaries before routing;
+            // a poem parser must not discard an unrecognized work introduction.
+            std::vector<std::string> paragraphs;
+            std::string paragraph;
+            bool supported_markup = true;
+            const auto flush = [&] {
+                auto value = normalize_utterance(paragraph);
+                if (!value.empty()) paragraphs.push_back(std::move(value));
+                paragraph.clear();
+            };
+            for (size_t at = 0; at < source.size();) {
+                if (source[at] == '\n' && at + 1 < source.size() && source[at + 1] == '\n') {
+                    flush();
+                    at += 2;
+                    continue;
+                }
+                if (at + 1 < source.size() &&
+                    ((source[at] == '[' && source[at + 1] == '[') ||
+                     (source[at] == ']' && source[at + 1] == ']'))) {
+                    paragraph.push_back(source[at]);
+                    at += 2;
+                    continue;
+                }
+                if (source[at] != '[') {
+                    paragraph.push_back(source[at++]);
+                    continue;
+                }
+                const size_t end = source.find(']', at + 1);
+                if (end == std::string::npos) { supported_markup = false; break; }
+                const std::string_view tag(source.data() + at + 1, end - at - 1);
+                if (tag == "B" || tag == "P") flush();
+                else if (tag == "R") paragraph.push_back(' ');
+                else if (!(tag.starts_with("C:") && std::all_of(tag.begin() + 2, tag.end(),
+                        [](unsigned char ch) { return (ch >= '0' && ch <= '9') || ch == ':'; }))) {
+                    supported_markup = false;
+                    break;
+                }
+                at = end + 1;
+            }
+            flush();
+            if (!supported_markup || paragraphs.empty()) continue;
+
+            // Poetry's identity, rules and sections share a grammar across
+            // several native paragraphs. Music/dance consume full paragraphs.
+            // Resolve contiguous groups and publish only an entire parsed card.
+            std::vector<bool> visited(paragraphs.size(), false);
+            std::vector<std::optional<std::string>> memo(paragraphs.size());
+            std::function<std::optional<std::string>(size_t)> translate_card;
+            translate_card = [&](size_t begin) -> std::optional<std::string> {
+                if (visited[begin]) return memo[begin];
+                visited[begin] = true;
+                for (size_t end = paragraphs.size(); end > begin; --end) {
+                    std::string complete;
+                    for (size_t part = begin; part < end; ++part) {
+                        if (!complete.empty()) complete.push_back(' ');
+                        complete += paragraphs[part];
+                    }
+                    std::optional<std::string> translated;
+                    if (is_written_work_description(complete))
+                        translated = translate_written_work_paragraph(complete);
+                    else if (complete.find(" poetic ") != std::string::npos)
+                        translated = translate_poetic_form_description(complete);
+                    else {
+                        translated = translate_dance_form_paragraph(complete);
+                        if (!translated) translated = translate_musical_form_paragraph(complete);
+                    }
+                    if (!translated) translated = translate_legends_text(complete, false, false);
+                    if (!translated || translated->empty()) continue;
+                    if (end < paragraphs.size()) {
+                        const auto tail = translate_card(end);
+                        if (!tail) continue;
+                        *translated += "\n" + *tail;
+                    }
+                    memo[begin] = std::move(translated);
+                    break;
+                }
+                return memo[begin];
+            };
+            const auto target = translate_card(0);
             if (!target) continue;
+            const bool poetic = source.find(" poetic ") != std::string::npos;
+            const bool performance = poetic || is_native_knowledge_description(source);
             if (poetic) {
                 for (Match &row : rows) row.rule = kPoeticDescriptionRule;
                 for (Match &row : duplicates) row.rule = kPoeticDescriptionRule;
+            } else if (performance) {
+                for (Match &row : rows) row.rule = kMusicalDescriptionRule;
+                for (Match &row : duplicates) row.rule = kMusicalDescriptionRule;
             }
             std::vector<Match> translated;
             if (!append_bounded_paragraph(rows, *target, screen_rows, translated,
-                    only_y, right, right)) continue;
+                    only_y, right, right, {}, false, left,
+                    native ? std::optional(viewport) : std::nullopt)) continue;
             // The common paragraph layout owns every Chinese baseline,
             // including additional rows with no native source span.
             for (Match &row : duplicates) {
