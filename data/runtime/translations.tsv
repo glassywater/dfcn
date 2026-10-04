@@ -50013,6 +50013,8 @@ Native Legends war family matter {n}	{n1}的一桩家事	ht
 Native history collection {s} of {p}	{p1}的{s1}	htEi
 Native history held story {e} at {p}	在{p1}讲述了以下往事：「{e1}」	ht
 Native history held story {e} in {p}	在{p1}讲述了以下往事：「{e1}」	ht
+Nearest site: 1/2 day's travel north	最近地点：向北，约半天路程	w
+Nearest site: 1/2 day's travel south	最近地点：向南，约半天路程	w
 Nearest site: {d} day's travel north	最近地点：向北，约{d}天路程	wt
 Nearest site: {d} day's travel south	最近地点：向南，约{d}天路程	wt
 Nearest site: {d} days' travel north	最近地点：向北，约{d}天路程	wt
@@ -51772,6 +51774,8 @@ Native Legends war animal treatment	对待动物的方式	h
 Native Legends war formal agreement	正式协议	h
 Native Legends war prior aggression	敌方先前的侵略	h
 Native history collection {s} Race.	{s1}赛跑。	htEi
+Nearest site: 1/2 day's travel east	最近地点：向东，约半天路程	w
+Nearest site: 1/2 day's travel west	最近地点：向西，约半天路程	w
 Nearest site: {d} day's travel east	最近地点：向东，约{d}天路程	wt
 Nearest site: {d} day's travel west	最近地点：向西，约{d}天路程	wt
 Nearest site: {d} days' travel east	最近地点：向东，约{d}天路程	wt
@@ -55755,6 +55759,10 @@ Native history office: chieftains	酋长	h
 Native history office: commanders	指挥官	h
 Native history office: ringleader	首领	h
 Native history relation: prisoner	囚犯	h
+Nearest site: 1/2 day's travel NE	最近地点：向东北，约半天路程	w
+Nearest site: 1/2 day's travel NW	最近地点：向西北，约半天路程	w
+Nearest site: 1/2 day's travel SE	最近地点：向东南，约半天路程	w
+Nearest site: 1/2 day's travel SW	最近地点：向西南，约半天路程	w
 Nearest site: A day's travel east	最近地点：向东，约一天路程	w
 Nearest site: A day's travel west	最近地点：向西，约一天路程	w
 Nearest site: {d} day's travel NE	最近地点：向东北，约{d}天路程	wt
@@ -95576,6 +95584,7 @@ youngest daughter	最小的女儿	h
 .Serious melting	·严重熔化
 .Slight numbness	·轻微麻木
 .Strained tendon	·肌腱拉伤
+1/2 day's travel	半天路程	w
 A Priest for {e}	祭司申请：{e1}	hPt
 A small reptile.	一种小型的爬行动物。	lP
 A violent ghost.	一个暴戾的鬼魂。	lP
@@ -109994,6 +110003,7 @@ My companion.	我的伙伴。	hP
 Mythical lair	神话巢穴	wi
 Name yourself	为自己命名	w
 Named objects	被命名的物品	w
+Nearest site:	最近地点：	w
 New guildhall	新建行会大厅	wi
 No commanders	没有指挥官	wli
 No messengers	没有信使	wli

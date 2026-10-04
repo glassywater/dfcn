@@ -2453,6 +2453,16 @@ loyalty unfavorably, sees sacrifice as wasteful and foolish, respects	持负面�
 # Fortress mode: world-map embark selection
 Nearest site: {d} days' travel {s}	最近地点：约{d}天路程，向{s}	wtx
 Nearest site: Here	最近地点：此处
+Nearest site:	最近地点：	w
+1/2 day's travel	半天路程	w
+Nearest site: 1/2 day's travel north	最近地点：向北，约半天路程	w
+Nearest site: 1/2 day's travel south	最近地点：向南，约半天路程	w
+Nearest site: 1/2 day's travel east	最近地点：向东，约半天路程	w
+Nearest site: 1/2 day's travel west	最近地点：向西，约半天路程	w
+Nearest site: 1/2 day's travel NE	最近地点：向东北，约半天路程	w
+Nearest site: 1/2 day's travel NW	最近地点：向西北，约半天路程	w
+Nearest site: 1/2 day's travel SE	最近地点：向东南，约半天路程	w
+Nearest site: 1/2 day's travel SW	最近地点：向西南，约半天路程	w
 east	东	w
 north	北	w
 south	南	w
