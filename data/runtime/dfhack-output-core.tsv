@@ -2043,3 +2043,21 @@ DFHack GUI Suspendmanager state: No	否	l
 DFHack GUI Civilian alert action: Activate civilian alert	启动\n平民\n警报	l
 DFHack GUI Civilian alert action: Clear civilian alert	解除\n平民\n警报	l
 DFHack GUI Civilian alert action: Click to configure civilian alert	点击配置\n平民警报	l
+
+# gui/civ-alert.lua: configuration Window prose and complete burrow choices.
+DFHack GUI Title: Civilian alert	平民警报	l
+DFHack GUI Civilian alert prompt: Choose the burrow(s) where you want your civilians to hide during danger.	选择危险时平民躲藏的活动区。	l
+DFHack GUI Civilian alert prompt: No burrows defined. Please define one to use for the civalert.	尚未设置活动区。请先创建活动区，以供平民警报使用。	l
+DFHack GUI Civilian alert caption: Sound alarm! Citizens run to safety!	拉响警报！平民前往避难！	l
+DFHack GUI Civilian alert caption: All clear! Citizens return to normal	解除警报！平民恢复日常活动	l
+DFHack GUI Civilian alert burrow: Burrow {d}	活动区 {d}	l
+DFHack GUI Civilian alert burrow: Sand Collecting Camp	集沙营地	l
+
+# internal/notify/notifications.lua: complete strange-mood rows and save fields.
+DFHack GUI Notification banner: moody dwarf is claiming a workshop	怪异心境矮人正在占用工坊	l
+DFHack GUI Notification banner: moody dwarf can't find needed workshop!	怪异心境矮人找不到所需工坊！	l
+DFHack GUI Notification banner: moody dwarf is gathering items	怪异心境矮人正在收集材料	l
+DFHack GUI Notification banner: moody dwarf is working	怪异心境矮人正在制作	l
+DFHack GUI Notification banner: moody dwarf can't find needed item!	怪异心境矮人找不到所需材料！	l
+DFHack GUI Notification banner: Last save: 	上次保存：	l
+DFHack GUI Notification banner: {d} mins ago	{d} 分钟前	l
