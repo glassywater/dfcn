@@ -61292,6 +61292,7 @@ Native history office: warlord	军阀	h
 Native history relation: enemy	敌人	h
 Native history relation: owner	拥有者	h
 Native history relation: slave	奴隶	h
+Needs Servant's Burial Chamber	需要仆役墓室	wl
 Open the announcements screen.	打开公告界面。	hj
 Opening Ceremony in the wilds.	在荒野中，开幕仪式。	hEi
 Overthrow of {p} in the wilds.	在荒野中，{p1}政权倾覆事件。	htEi
@@ -71162,6 +71163,7 @@ Move keyboard cursor down	键盘光标下移	w
 Move keyboard cursor left	键盘光标左移	w
 Move view/cursor down (z)	向下移动视野/光标（z）	w
 Move view/cursor up, fast	向上移动视野/光标，快速	w
+Needs Opulent Throne Room	需要奢华王座厅	wl
 No interrogation reports.	没有审讯报告。	hP
 No trader needed at depot	无需交易者前往贸易站	wi
 Nobles and administrators	贵族和管理员	hq
@@ -72883,6 +72885,9 @@ Move goods to/from depot	搬运货物进出贸易站	wi
 Must remove construction	必须先拆除建筑物	wli
 Native Legends abduction	一次绑架	h
 Native Legends again {s}	{s1}，这样的时代再次到来	ht
+Needs Decent Dining Room	需要像样餐厅	wl
+Needs Meager Dining Room	需要简陋餐厅	wl
+Needs Modest Dining Room	需要普通餐厅	wl
 Needs walkable perimeter	周围需要可通行区域	wli
 No heavy attack: enraged	无法重击：怒不可遏。	hP
 No quick attack: enraged	无法快速攻击：怒不可遏。	hP
@@ -74787,6 +74792,10 @@ Move to {s} ({s}/Magma)	移动到{s1}（{s2}／岩浆）	hPt
 Move to {s} ({s}/Water)	移动到{s1}（{s2}／水）	hPt
 Move view/cursor up (z)	向上移动视野/光标（z）	w
 Must be after Dwarvemon	必须置于 Dwarvemon 之后
+Needs Grand Dining Room	需要豪华餐厅	wl
+Needs Great Dining Room	需要宽敞餐厅	wl
+Needs Royal Dining Room	需要皇家餐厅	wl
+Needs Royal Throne Room	需要皇家王座厅	wl
 Never Underestimate {b}	切勿低估{b}	hbti
 New site founded nearby	附近建立了新地点	w
 No civilized population	无文明人口	w
@@ -76750,6 +76759,7 @@ Move to {s} ({s}/Lava)	移动到{s1}（{s2}／熔岩）	hPt
 Move view/cursor right	向右移动视野/光标	w
 Multiple Constructions	多重建造	w
 Native Legends journey	一次旅程	h
+Needs Fine Dining Room	需要精致餐厅	wl
 No Suitable Vegetation	没有适合隐蔽的植被	hP
 No automatic slaughter	不自动屠宰动物	wi
 No positions available	没有可任命的职位。	hP
@@ -78752,6 +78762,11 @@ Move view/cursor left	向左移动视野/光标	w
 Musical voice (heard)	歌唱声（听到）	wl
 Nearly a day's travel	差不多一天的旅行	w
 Need soil at location	此处需要土层	wli
+Needs Decent Quarters	需要像样卧室	wl
+Needs Grand Mausoleum	需要宏伟陵寝	wl
+Needs Meager Quarters	需要简陋卧室	wl
+Needs Modest Quarters	需要普通卧室	wl
+Needs Royal Mausoleum	需要皇家陵寝	wl
 Ninth eldest daughter	第九个女儿	w
 No automatic butchery	不自动屠宰动物尸体	wi
 No carcass available.	没有可用的尸体。	hP
@@ -80947,6 +80962,8 @@ Must unretract first	必须先伸展开来	w
 Name your settlement	为你的定居点命名	w
 Native Legends purge	一次清洗	h
 Need military leader	需要军事领袖。	hP
+Needs Burial Chamber	需要墓室	wl
+Needs Splendid Study	需要华美书房	wl
 No automatic weaving	不自动纺织	wi
 No established guild	尚未成立行会	wi
 No mud/soil for farm	没有可供耕种的淤泥或土层	wli
@@ -83746,6 +83763,10 @@ Name pet (new menu)	为宠物命名（新菜单）	hP
 Name this building.	为此建筑命名。	hj
 Native Legends coup	一次政变	h
 Native Legends raid	一次袭击	h
+Needs Fine Quarters	需要舒适卧室	wl
+Needs Grand Bedroom	需要豪华卧室	wl
+Needs Great Bedroom	需要宽敞卧室	wl
+Needs Royal Bedroom	需要皇家卧室	wl
 Needs adjacent wall	需要紧邻墙壁	wli
 Nest box claimed by	巢箱占用者：	wli
 Nimbostratus (rain)	雨层云（降雨）
@@ -87018,6 +87039,7 @@ Master Blowgunners	吹管大师	wi
 Meager Dining Room	简陋餐厅	w
 Meditations on {b}	{b}沉思录	hbti
 Melee, metal armor	近战（金属甲）	wli
+Merchants from {s}	来自{s1}的商人	hPt
 Metalsmith's Forge	金属锻造坊	wi
 Mineral occurrence	矿物分布	w
 Modest Dining Room	普通餐厅	w
@@ -87033,6 +87055,9 @@ My Thoughts on {b}	我对{b}的思考	hbti
 Mysterious dungeon	神秘地牢	wi
 Nearest site: Here	最近地点：此处
 Nearest site: here	最近的位置: 这里	w
+Needs Decent Study	需要像样书房	wl
+Needs Meager Study	需要简陋书房	wl
+Needs Modest Study	需要普通书房	wl
 Nest box unclaimed	巢箱未被占用	wli
 New apprenticeship	建立新的师徒关系	w
 Ninth eldest child	第九个孩子	w
@@ -90883,6 +90908,7 @@ Move to {s} ({s})	移动到{s1}（{s2}）	hPt
 Mysterious palace	神秘宫殿	wi
 Name the identity	为身份命名	w
 Need trigger type	需要选择触发类型	wli
+Needs Throne Room	需要王座厅	wl
 New parameter set	新参数集	w
 Night is falling.	夜幕降临。	hP
 No assigned items	未指定物品	w
@@ -99718,6 +99744,8 @@ Mythical palace	神话宫殿	wi
 Name this stop.	为此站点命名。	hj
 Name your group	为你的势力命名	wi
 Natural history	自然史	w
+Needs Fine Tomb	需要华美陵墓	wl
+Needs Mausoleum	需要陵寝	wl
 News and rumors	消息和传闻	wi
 No item to drop	没有可丢下的物品	w
 No item to wear	没有可穿戴的物品	w
@@ -118181,6 +118209,7 @@ Move to {s}	移动到{s1}	hPt
 Name: "{s}"	姓名：“{s}”	wtlx
 Naturalists	博物学家	wi
 Necromancer	死灵法师	wi
+Needs Grave	需要坟墓	wl
 Negotiation	交涉	wi
 Nervousness	紧张	w
 New Arrival	刚刚抵达	wi
@@ -122063,6 +122092,7 @@ Multigrasp	多样化的	w
 Murky Pool	泥塘	wi
 Musicality	乐感	wi
 Naturalist	博物学家	wi
+Needs Tomb	需要陵墓	wl
 Negotiator	交涉者	wi
 Neighbors:	邻近文明：
 Nevermind.	算了。	hP
@@ -132437,34 +132467,3 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
-
-# Complete Character information -> Rooms requirements.
-Needs Meager Study	需要简陋书房	wl
-Needs Modest Study	需要普通书房	wl
-Needs Decent Study	需要像样书房	wl
-Needs Splendid Study	需要华美书房	wl
-Needs Throne Room	需要王座厅	wl
-Needs Opulent Throne Room	需要奢华王座厅	wl
-Needs Royal Throne Room	需要皇家王座厅	wl
-Needs Meager Quarters	需要简陋卧室	wl
-Needs Modest Quarters	需要普通卧室	wl
-Needs Decent Quarters	需要像样卧室	wl
-Needs Fine Quarters	需要舒适卧室	wl
-Needs Great Bedroom	需要宽敞卧室	wl
-Needs Grand Bedroom	需要豪华卧室	wl
-Needs Royal Bedroom	需要皇家卧室	wl
-Needs Meager Dining Room	需要简陋餐厅	wl
-Needs Modest Dining Room	需要普通餐厅	wl
-Needs Decent Dining Room	需要像样餐厅	wl
-Needs Fine Dining Room	需要精致餐厅	wl
-Needs Great Dining Room	需要宽敞餐厅	wl
-Needs Grand Dining Room	需要豪华餐厅	wl
-Needs Royal Dining Room	需要皇家餐厅	wl
-Needs Grave	需要坟墓	wl
-Needs Servant's Burial Chamber	需要仆役墓室	wl
-Needs Burial Chamber	需要墓室	wl
-Needs Tomb	需要陵墓	wl
-Needs Fine Tomb	需要华美陵墓	wl
-Needs Mausoleum	需要陵寝	wl
-Needs Grand Mausoleum	需要宏伟陵寝	wl
-Needs Royal Mausoleum	需要皇家陵寝	wl

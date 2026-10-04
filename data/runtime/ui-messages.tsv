@@ -354,6 +354,7 @@ The following fortress goods were added for the counteroffer:	下列要塞货物
 # Controls and trade summaries are separate complete native draws. The numbers
 # and currency/weight glyphs are drawn separately and retain the native format.
 Merchant from {s}	来自{s}的商人
+Merchants from {s}	来自{s}的商人
 Your fortress of {s}	你的要塞：{s}
 Mark all	全选
 Unmark all	取消全选

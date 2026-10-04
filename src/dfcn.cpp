@@ -10657,6 +10657,7 @@ std::optional<std::string> Overlay::translate_ui_catalog_capture(
     // name as one field. Reuse settlement-name transliteration, without
     // interpreting a native root as an unrelated English UI word.
     if (index == 0 && (rule.source == "Merchant from {s}" ||
+            rule.source == "Merchants from {s}" ||
             rule.source == "Your fortress of {s}")) {
         return contains_cjk_utf8(source)
             ? std::optional<std::string>(native_text_to_utf8(source))
