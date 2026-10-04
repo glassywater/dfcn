@@ -808,6 +808,7 @@ static constexpr int kSettingsKeybindingCodeRule = -149;
 static constexpr int kWorldgenParameterLabelRule = -150;
 static constexpr int kAdventureAttributeFieldRule = -151;
 static constexpr int kAdventureSkillFieldRule = -152;
+static constexpr int kEmbarkFinderFieldRule = -153;
 
 static bool is_fortress_justice_field(const Match &match) {
     return match.rule == kFortressJusticeCaseRule || match.rule == kFortressJusticeDetailRule ||
@@ -3707,17 +3708,6 @@ private:
     int settings_logged_tab_count_ = -1;
     int settings_logged_single_rows_ = -1;
     int settings_logged_range_count_ = -1;
-    // The embark-site finder is a scrolling form. Its X/Y rows establish the
-    // two text columns, but those anchors leave the viewport while the list is
-    // scrolled. Retain the proven geometry for the current logical grid so the
-    // remaining criteria do not fall back to per-English-word sizing.
-    bool embark_finder_geometry_valid_ = false;
-    int embark_finder_geometry_dimx_ = 0;
-    int embark_finder_geometry_dimy_ = 0;
-    int embark_finder_geometry_tile_x_ = 0;
-    int embark_finder_geometry_tile_y_ = 0;
-    int embark_finder_label_x_ = -1;
-    int embark_finder_value_x_ = -1;
     // Embark custom-difficulty rows keep the same table columns while their
     // scrolling viewport replaces every visible semantic anchor. Preserve the
     // learned caption/control/value geometry until the logical grid changes.
@@ -3951,6 +3941,9 @@ private:
         std::vector<std::string> &rows, std::vector<Match> &matches, int only_y) const;
     void append_embark_site_resources(NativeTextCard &card,
         std::vector<std::string> &rows, std::vector<Match> &matches, int only_y) const;
+    void append_embark_finder_fields(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y,
+        const unsigned char *screen_override) const;
     void layout_embark_site_card(SDL_Renderer *renderer);
     void layout_map_hover(SDL_Renderer *renderer);
     std::string translate_toolbar_tooltip(std::string_view source, bool catalog_only = false) const;
@@ -7204,7 +7197,6 @@ void Overlay::reset_render_state() {
     settings_announcement_name_x_ = settings_announcement_toggle_x_ = -1;
     settings_announcement_columns_valid_ = false;
     settings_announcement_column_centres_twice_.fill(0);
-    embark_finder_geometry_valid_ = false;
     custom_difficulty_geometry_valid_ = false;
     settings_video_base_matches_.clear();
     settings_video_cache_dimx_ = settings_video_cache_dimy_ = 0;
@@ -20619,6 +20611,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "operation_titles.inc"
 #include "map_hover.inc"
 #include "embark_site.inc"
+#include "embark_finder.inc"
 #include "embark_map_text.inc"
 #include "gameplay_map_text.inc"
 #include "world_site.inc"
@@ -21249,6 +21242,10 @@ std::vector<Match> Overlay::find_matches(int only_y,
     // ownership before any message template, name grammar or UTF-8 recovery
     // sees those bytes, for both immediate suppression and the final scan.
     const auto map_text_cells = capture_map_text_cells();
+    // Criteria and values are independent fields, even when a mineral name
+    // also begins a catalog action such as Lead {n}. Own both before prose.
+    std::vector<Match> embark_finder_fields;
+    append_embark_finder_fields(screen_rows, embark_finder_fields, only_y, screen_override);
     // Only the background-free, one-label startup splash uses the provisional
     // backbuffer. World loading reuses Loading... between progress stages,
     // alongside its heading and package names on the illustrated background.
@@ -21754,6 +21751,17 @@ std::vector<Match> Overlay::find_matches(int only_y,
                         name.x < match.x + match.length;
                 });
         });
+        // Raw caption recovery cannot turn these two-column controls back
+        // into a paragraph or reclaim only a translated mineral's suffix.
+        std::erase_if(result, [&](const Match &match) {
+            return std::any_of(embark_finder_fields.begin(), embark_finder_fields.end(),
+                [&](const Match &field) {
+                    return match.y == field.y && match.x < field.x + field.length &&
+                        field.x < match.x + match.length;
+                });
+        });
+        result.insert(result.end(), std::make_move_iterator(embark_finder_fields.begin()),
+            std::make_move_iterator(embark_finder_fields.end()));
         return std::move(result);
     };
 
@@ -29417,6 +29425,7 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
                      match.rule == kFortressZoneTypeRule ||
                      match.rule == kFortressStockpileSettingRule ||
                      match.rule == kFortressDepotFieldRule || match.rule == kFortressTradeFieldRule ||
+                     match.rule == kEmbarkFinderFieldRule ||
                      match.rule == kMapHoverRowRule ||
                      match.rule == kAdventureBackgroundDescriptionRule ||
                      match.rule == kWorkshopTaskRowRule || match.rule == kWorkshopRecipeRowRule ||
@@ -29476,6 +29485,7 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
                 const unsigned char top_ch = raw[tile * 8];
                 const unsigned char base_ch = gps_->screen[tile * 8];
                 if ((is_credits_row(match) || is_help_text(match) || match.rule == kCharacterRoomStatusRule ||
+                     match.rule == kEmbarkFinderFieldRule ||
                      match.rule == kSettingsAnnouncementNameRule ||
                      match.rule == kFortressLaborCaptionRule ||
                      match.rule == kDfhackStocksHintRule || match.rule == kDfhackHotkeysHintRule ||
@@ -29729,11 +29739,12 @@ void Overlay::normalize_native_split_text() {
     std::vector<Caption> captions;
     for (size_t index = 0; index < prepared_matches_.size(); ++index) {
         Match &match = prepared_matches_[index];
-        // The decompiled adventure combat and trade renderers use ordinary addst,
-        // which retains underlying half-font flags without drawing halves.
+        // The decompiled adventure combat, trade and embark finder renderers
+        // use ordinary addst, retaining old half-font flags without drawing halves.
         if (match.rule == kAdventureCombatFieldRule ||
                 match.rule == kAnnouncementListRule ||
-                match.rule == kFortressTradeFieldRule) continue;
+                match.rule == kFortressTradeFieldRule ||
+                match.rule == kEmbarkFinderFieldRule) continue;
         // Tooltip wrapping owns its physical source rows and output lines.
         // Flags retained from a covered picture caption cannot turn those
         // lines into duplicate halves or move their final Chinese baseline.
@@ -29835,6 +29846,7 @@ void Overlay::normalize_native_split_text() {
             match.rule == kFortressKitchenFoodRule ||
             match.rule == kFortressLaborCaptionRule ||
             match.rule == kFortressDepotFieldRule || match.rule == kFortressTradeFieldRule ||
+            match.rule == kEmbarkFinderFieldRule ||
             is_fortress_task_field(match);
         for (int offset = 0; offset < match.length; ++offset) {
             bool cell_top = false;
@@ -37003,6 +37015,7 @@ void Overlay::prepare_frame() {
                          match.rule == kAdventureCreationDescriptionRule ||
                          match.rule == kFortressEconomyRule ||
                          match.rule == kFortressDepotFieldRule || match.rule == kFortressTradeFieldRule ||
+                         match.rule == kEmbarkFinderFieldRule ||
                          match.rule == kFortressLocationLabelRule ||
                          match.rule == kFortressLocationValueRule ||
                          match.rule == kFortressLocationTextRule ||
@@ -42747,163 +42760,6 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
         }
     }
 
-    // The embark site finder is another scrolling two-column form. Vanilla
-    // starts every criterion at one source column and every current value in
-    // another, but the generic overlay retained each individual English span.
-    // That made labels such as
-    // Savagery, Rain and Drainage zig-zag even though the underlying controls
-    // are aligned. The X/Y rows prove the form and establish its geometry.
-    // Cache that geometry, then recognize later scroll windows by the common
-    // source start so losing X/Y does not change columns or font sizes. The
-    // lower half is data-driven and can contain arbitrary inorganic names, so
-    // it cannot be enumerated as a fixed list of English labels.
-    if (embark_finder_geometry_valid_ &&
-        (embark_finder_geometry_dimx_ != gps_->dimx ||
-         embark_finder_geometry_dimy_ != gps_->dimy ||
-         embark_finder_geometry_tile_x_ != gps_->tile_pixel_x ||
-         embark_finder_geometry_tile_y_ != gps_->tile_pixel_y)) {
-        embark_finder_geometry_valid_ = false;
-        embark_finder_label_x_ = -1;
-        embark_finder_value_x_ = -1;
-    }
-    auto collect_finder_labels = [&](int label_column, int first_row) {
-        std::vector<size_t> labels;
-        for (size_t i = 0; i < prepared_matches_.size(); ++i) {
-            const Match &match = prepared_matches_[i];
-            if (!match.target.empty() && match.y >= first_row &&
-                match.y < gps_->dimy - 4 &&
-                std::abs(match.x - label_column) <= 2) {
-                labels.push_back(i);
-            }
-        }
-        std::stable_sort(labels.begin(), labels.end(), [this](size_t a, size_t b) {
-            const Match &left = prepared_matches_[a];
-            const Match &right = prepared_matches_[b];
-            return left.y != right.y ? left.y < right.y : left.x < right.x;
-        });
-        return labels;
-    };
-    auto complete_finder_window = [&](const std::vector<size_t> &labels) {
-        int last_row = INT32_MIN;
-        int distinct_rows = 0;
-        for (size_t index : labels) {
-            const int row = prepared_matches_[index].y;
-            if (row != last_row) {
-                last_row = row;
-                ++distinct_rows;
-            }
-        }
-        return distinct_rows >= 5;
-    };
-    int finder_x_dimension = -1;
-    int finder_y_dimension = -1;
-    for (size_t i = 0; i < prepared_matches_.size(); ++i) {
-        if (prepared_matches_[i].source == "X Dimension") {
-            finder_x_dimension = static_cast<int>(i);
-        } else if (prepared_matches_[i].source == "Y Dimension") {
-            finder_y_dimension = static_cast<int>(i);
-        }
-    }
-    bool finder_active = false;
-    std::vector<size_t> finder_labels;
-    if (finder_x_dimension >= 0 && finder_y_dimension >= 0 &&
-        std::abs(prepared_matches_[finder_x_dimension].y -
-                 prepared_matches_[finder_y_dimension].y) <= 10) {
-        const int first_row = std::min(prepared_matches_[finder_x_dimension].y,
-                                       prepared_matches_[finder_y_dimension].y);
-        const int label_column = std::min(prepared_matches_[finder_x_dimension].x,
-                                          prepared_matches_[finder_y_dimension].x);
-        finder_labels = collect_finder_labels(label_column, first_row);
-        if (complete_finder_window(finder_labels)) {
-            std::vector<int> label_rows;
-            label_rows.reserve(finder_labels.size());
-            for (size_t index : finder_labels) label_rows.push_back(prepared_matches_[index].y);
-            std::sort(label_rows.begin(), label_rows.end());
-            label_rows.erase(std::unique(label_rows.begin(), label_rows.end()), label_rows.end());
-            auto is_label_row = [&label_rows](int y) {
-                return std::binary_search(label_rows.begin(), label_rows.end(), y);
-            };
-            std::vector<int> value_columns;
-            for (const Match &match : prepared_matches_) {
-                if (!match.target.empty() && is_label_row(match.y) &&
-                    match.x >= label_column + 8 && match.x < gps_->dimx - 9) {
-                    value_columns.push_back(match.x);
-                }
-            }
-            int value_column = std::max(label_column + 18, gps_->dimx / 2);
-            if (!value_columns.empty()) {
-                std::sort(value_columns.begin(), value_columns.end());
-                value_column = value_columns[value_columns.size() / 2];
-            }
-            embark_finder_geometry_valid_ = true;
-            embark_finder_geometry_dimx_ = gps_->dimx;
-            embark_finder_geometry_dimy_ = gps_->dimy;
-            embark_finder_geometry_tile_x_ = gps_->tile_pixel_x;
-            embark_finder_geometry_tile_y_ = gps_->tile_pixel_y;
-            embark_finder_label_x_ = label_column;
-            embark_finder_value_x_ = value_column;
-            finder_active = true;
-        }
-    }
-    if (!finder_active && embark_finder_geometry_valid_) {
-        finder_labels = collect_finder_labels(embark_finder_label_x_, 0);
-        finder_active = complete_finder_window(finder_labels);
-    }
-    if (finder_active) {
-        std::vector<int> label_rows;
-        label_rows.reserve(finder_labels.size());
-        for (size_t index : finder_labels) label_rows.push_back(prepared_matches_[index].y);
-        std::sort(label_rows.begin(), label_rows.end());
-        label_rows.erase(std::unique(label_rows.begin(), label_rows.end()), label_rows.end());
-        auto is_label_row = [&label_rows](int y) {
-            return std::binary_search(label_rows.begin(), label_rows.end(), y);
-        };
-        std::vector<size_t> finder_values;
-        for (size_t i = 0; i < prepared_matches_.size(); ++i) {
-            const Match &match = prepared_matches_[i];
-            if (!match.target.empty() && is_label_row(match.y) &&
-                match.x >= embark_finder_label_x_ + 8 &&
-                match.x < gps_->dimx - 9) {
-                finder_values.push_back(i);
-            }
-        }
-        const int font_pixels = std::max(
-            config_.min_font_pixels,
-            static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
-        const int visual_height = std::min(gps_->tile_pixel_y, font_pixels + 1);
-        const int label_width = std::max(
-            1, embark_finder_value_x_ - embark_finder_label_x_ - 2);
-        for (size_t index : finder_labels) {
-            Match &match = prepared_matches_[index];
-            match.layout_x = embark_finder_label_x_;
-            match.layout_length = label_width;
-            match.layout_left = true;
-            match.layout_font_pixels = font_pixels;
-            match.layout_visual_height_pixels = visual_height;
-        }
-        const int value_width = std::max(
-            1, gps_->dimx - embark_finder_value_x_ - 12);
-        for (size_t index : finder_values) {
-            Match &match = prepared_matches_[index];
-            match.layout_x = embark_finder_value_x_;
-            match.layout_length = value_width;
-            match.layout_left = true;
-            match.layout_font_pixels = font_pixels;
-            match.layout_visual_height_pixels = visual_height;
-            // In this form "Normal" is the neutral point of the
-            // Good/Normal/Evil biome-alignment scale, not a quality grade.
-            if (match.source == "Normal") {
-                const bool spirit_row = std::any_of(
-                    finder_labels.begin(), finder_labels.end(),
-                    [this, &match](size_t label_index) {
-                        const Match &label = prepared_matches_[label_index];
-                        return label.y == match.y && label.source == "Spirit";
-                    });
-                if (spirit_row) match.target = "中性";
-            }
-        }
-    }
-
     // Fortress embark's Custom settings page is a scrolling difficulty table,
     // but it is not the tabbed Settings screen handled above. Vanilla gives
     // every caption only the width of its English run. The generic centred
@@ -46118,6 +45974,7 @@ void Overlay::render(SDL_Renderer *renderer) {
     // Empty duplicate spans still own suppression, but cannot become new rows.
     if (std::any_of(prepared_matches_.begin(), prepared_matches_.end(),
             [](const Match &match) { return match.native_adventure_target_row ||
+                match.rule == kEmbarkFinderFieldRule ||
                 match.rule == kWorkshopRecipeRowRule ||
                 match.rule == kFortressUnitChooserRule ||
                 match.rule == kFortressLocationListRule ||
@@ -46147,6 +46004,7 @@ void Overlay::render(SDL_Renderer *renderer) {
     std::vector<Match> tooltip_foreground;
     const auto is_toolbar_tooltip = [](const Match &match) {
         return match.native_adventure_target_row ||
+            match.rule == kEmbarkFinderFieldRule ||
             is_credits_row(match) || match.rule == kToolbarTooltipBodyRule ||
             match.rule == kFortressUnitChooserRule ||
             match.rule == kFortressLocationListRule ||
