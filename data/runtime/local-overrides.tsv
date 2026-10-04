@@ -457,6 +457,17 @@ Skill name: Misc. Object User	杂物使用	li
 Skill name: Knapper	碎石	li
 Skill name: Climber	攀爬	li
 Skill name: Critical Thinker	批判思考	li
+# Native skill-title switch entries 137..146, also selectable by RAW weapons.
+Skill name: Skill 1	技能1	li
+Skill name: Skill 2	技能2	li
+Skill name: Skill 3	技能3	li
+Skill name: Skill 4	技能4	li
+Skill name: Skill 5	技能5	li
+Skill name: Skill 6	技能6	li
+Skill name: Skill 7	技能7	li
+Skill name: Skill 8	技能8	li
+Skill name: Skill 9	技能9	li
+Skill name: Skill 10	技能10	li
 # Shared rated-skill grammar. Preserve the established list terminology;
 # ordinary adjectives and generated names retain their separate meanings.
 Skill rating: Not	未掌握	li
@@ -2252,6 +2263,7 @@ Available Items	可用物品
 # Translate the entire category note so its centered caption also suppresses
 # the native suffix instead of overlaying Fortress alone on "mode item".
 Fortress mode item	要塞模式物品	w
+{d} pt	{d} 点	wt
 {d} pts	{d} 点	wt
 Bodywear	躯干装备	wi
 Garden Vegetables	农作物

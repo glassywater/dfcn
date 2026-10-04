@@ -1,0 +1,1027 @@
+edition	image	role	selector	enum_metadata	case_rva	instruction_rva	literal_rva	source
+reference	PE:6a70a6d9:02711000	noun	0	MINING	0x7739cd	0x7739d3	0x1604db0	Mining
+reference	PE:6a70a6d9:02711000	noun	1	WOODCUTTING	0x7739e2	0x7739e8	0x1604af8	Woodcutting
+reference	PE:6a70a6d9:02711000	noun	2	CARPENTRY	0x7739f7	0x7739fd	0x16a4fe0	Carpentry
+reference	PE:6a70a6d9:02711000	noun	3	ENGRAVE_STONE	0x773a4b	0x773a51	0x16a5020	Engraving
+reference	PE:6a70a6d9:02711000	noun	4	MASONRY	0x773a60	0x773a66	0x16a5030	Masonry
+reference	PE:6a70a6d9:02711000	noun	5	ANIMALTRAIN	0x773a75	0x773a7b	0x162fb70	Animal Training
+reference	PE:6a70a6d9:02711000	noun	6	ANIMALCARE	0x773a8a	0x773a90	0x16a5038	Animal Caretaking
+reference	PE:6a70a6d9:02711000	noun	7	DISSECT_FISH	0x773a9f	0x773aa5	0x16a5050	Fish Dissection
+reference	PE:6a70a6d9:02711000	noun	8	DISSECT_VERMIN	0x773ab4	0x773aba	0x16a5060	Animal Dissection
+reference	PE:6a70a6d9:02711000	noun	9	PROCESSFISH	0x773ac9	0x773acf	0x16a5078	Fish Cleaning
+reference	PE:6a70a6d9:02711000	noun	10	BUTCHER	0x773ade	0x773ade	0x16a5088	Butchery
+reference	PE:6a70a6d9:02711000	noun	11	TRAPPING	0x773af3	0x773af3	0x16a5098	Trapping
+reference	PE:6a70a6d9:02711000	noun	12	TANNER	0x774255	0x77425b	0x16a52e8	Tanning
+reference	PE:6a70a6d9:02711000	noun	13	WEAVING	0x7742d3	0x7742d9	0x16a51c0	Weaving
+reference	PE:6a70a6d9:02711000	noun	14	BREWING	0x7742e8	0x7742ee	0x16a51c8	Brewing
+reference	PE:6a70a6d9:02711000	noun	15	CLOTHESMAKING	0x7742fd	0x774303	0x16a51d0	Clothes Making
+reference	PE:6a70a6d9:02711000	noun	16	MILLING	0x774312	0x774318	0x16a51e0	Milling
+reference	PE:6a70a6d9:02711000	noun	17	PROCESSPLANTS	0x774327	0x77432d	0x16a51e8	Threshing
+reference	PE:6a70a6d9:02711000	noun	18	CHEESEMAKING	0x7743cf	0x7743d5	0x16a5238	Cheesemaking
+reference	PE:6a70a6d9:02711000	noun	19	MILK	0x7743e4	0x7743ea	0x16a5248	Milking
+reference	PE:6a70a6d9:02711000	noun	20	COOK	0x7743ba	0x7743c0	0x16a5230	Cooking
+reference	PE:6a70a6d9:02711000	noun	21	PLANT	0x773b08	0x773b0e	0x16a50a8	Growing
+reference	PE:6a70a6d9:02711000	noun	22	HERBALISM	0x773b1d	0x773b23	0x16a50b0	Herbalism
+reference	PE:6a70a6d9:02711000	noun	23	FISH	0x773c97	0x773c9d	0x162ba20	Fishing
+reference	PE:6a70a6d9:02711000	noun	24	SMELT	0x773cac	0x773cb2	0x16a4fa0	Furnace Operation
+reference	PE:6a70a6d9:02711000	noun	25	EXTRACT_STRAND	0x773cc1	0x773cc7	0x16a4fb8	Strand Extraction
+reference	PE:6a70a6d9:02711000	noun	26	FORGE_WEAPON	0x773d2a	0x773d30	0x16a4e18	Weaponsmithing
+reference	PE:6a70a6d9:02711000	noun	27	FORGE_ARMOR	0x773d3f	0x773d45	0x16a4e28	Armorsmithing
+reference	PE:6a70a6d9:02711000	noun	28	FORGE_FURNITURE	0x773d54	0x773d5a	0x16a4e38	Metalsmithing
+reference	PE:6a70a6d9:02711000	noun	29	CUTGEM	0x773d69	0x773d6f	0x16a4e48	Gem Cutting
+reference	PE:6a70a6d9:02711000	noun	30	ENCRUSTGEM	0x773d7e	0x773d84	0x16a4e58	Gem Setting
+reference	PE:6a70a6d9:02711000	noun	31	WOODCRAFT	0x773d93	0x773d99	0x16a4e68	Woodcrafting
+reference	PE:6a70a6d9:02711000	noun	32	STONECRAFT	0x773dfc	0x773e02	0x16a4eb0	Stone Crafting
+reference	PE:6a70a6d9:02711000	noun	33	METALCRAFT	0x773e11	0x773e17	0x16a4ec0	Metal Crafting
+reference	PE:6a70a6d9:02711000	noun	34	GLASSMAKER	0x773e26	0x773e2c	0x16a4ed0	Glassmaking
+reference	PE:6a70a6d9:02711000	noun	35	LEATHERWORK	0x774240	0x774246	0x16a52d8	Leatherworking
+reference	PE:6a70a6d9:02711000	noun	36	BONECARVE	0x7742be	0x7742c4	0x16a51b0	Bone Carving
+reference	PE:6a70a6d9:02711000	noun	37	AXE	0x77412f	0x774135	0x16a53e8	Axe
+reference	PE:6a70a6d9:02711000	noun	38	SWORD	0x774144	0x77414a	0x16a5264	Sword
+reference	PE:6a70a6d9:02711000	noun	39	DAGGER	0x774390	0x774396	0x16a521c	Knife
+reference	PE:6a70a6d9:02711000	noun	40	MACE	0x774159	0x77415f	0x16a526c	Mace
+reference	PE:6a70a6d9:02711000	noun	41	HAMMER	0x77416e	0x774174	0x16a5274	Hammer
+reference	PE:6a70a6d9:02711000	noun	42	SPEAR	0x774183	0x774189	0x16a527c	Spear
+reference	PE:6a70a6d9:02711000	noun	43	CROSSBOW	0x774198	0x774198	0x16a5288	Crossbow
+reference	PE:6a70a6d9:02711000	noun	44	SHIELD	0x7741d7	0x7741dd	0x162a9d0	Shield
+reference	PE:6a70a6d9:02711000	noun	45	ARMOR	0x7741ec	0x7741f2	0x162a038	Armor
+reference	PE:6a70a6d9:02711000	noun	46	SIEGECRAFT	0x774201	0x774207	0x16a52a0	Siege Engineering
+reference	PE:6a70a6d9:02711000	noun	47	SIEGEOPERATE	0x774216	0x77421c	0x16a52b8	Siege Operation
+reference	PE:6a70a6d9:02711000	noun	48	BOWYER	0x773a0c	0x773a12	0x16a4ff0	Bowmaking
+reference	PE:6a70a6d9:02711000	noun	49	PIKE	0x7741ad	0x7741b3	0x16a5294	Pike
+reference	PE:6a70a6d9:02711000	noun	50	WHIP	0x7743a5	0x7743ab	0x16a5224	Lash
+reference	PE:6a70a6d9:02711000	noun	51	BOW	0x7741c2	0x7741c8	0x16a529c	Bow
+reference	PE:6a70a6d9:02711000	noun	52	BLOWGUN	0x77433c	0x774342	0x16a51f8	Blowgun
+reference	PE:6a70a6d9:02711000	noun	53	THROW	0x774351	0x774351	0x16a5200	Throwing
+reference	PE:6a70a6d9:02711000	noun	54	MECHANICS	0x774366	0x77436c	0x16a5210	Machinery
+reference	PE:6a70a6d9:02711000	noun	55	MAGIC_NATURE	0x77437b	0x774381	0x15e89d8	Nature
+reference	PE:6a70a6d9:02711000	noun	56	SNEAK	0x773b32	0x773b38	0x169e328	Ambush
+reference	PE:6a70a6d9:02711000	noun	57	DRESS_WOUNDS	0x77444d	0x774453	0x16a57c0	Wound Dressing
+reference	PE:6a70a6d9:02711000	noun	58	DIAGNOSE	0x774462	0x774468	0x16a57d0	Diagnostics
+reference	PE:6a70a6d9:02711000	noun	59	SURGERY	0x774477	0x77447d	0x16a57e0	Surgery
+reference	PE:6a70a6d9:02711000	noun	60	SET_BONE	0x77448c	0x774492	0x16a57e8	Bone Setting
+reference	PE:6a70a6d9:02711000	noun	61	SUTURE	0x7744a1	0x7744a1	0x16a57f8	Suturing
+reference	PE:6a70a6d9:02711000	noun	62	CRUTCH_WALK	0x7744b6	0x7744bc	0x16a5808	Crutch-walking
+reference	PE:6a70a6d9:02711000	noun	63	WOOD_BURNING	0x773d15	0x773d1b	0x16a4e08	Wood Burning
+reference	PE:6a70a6d9:02711000	noun	64	LYE_MAKING	0x773d00	0x773d06	0x16a4df8	Lye Making
+reference	PE:6a70a6d9:02711000	noun	65	SOAP_MAKING	0x773cd6	0x773cdc	0x16a4fd0	Soap Making
+reference	PE:6a70a6d9:02711000	noun	66	POTASH_MAKING	0x773ceb	0x773cf1	0x16a4de8	Potash Making
+reference	PE:6a70a6d9:02711000	noun	67	DYER	0x77426a	0x774270	0x16a52f0	Dyeing
+reference	PE:6a70a6d9:02711000	noun	68	OPERATE_PUMP	0x77422b	0x774231	0x16a52c8	Pump Operation
+reference	PE:6a70a6d9:02711000	noun	69	SWIMMING	0x773b47	0x773b47	0x16a50c0	Swimming
+reference	PE:6a70a6d9:02711000	noun	70	PERSUASION	0x773b71	0x773b77	0x16a4ee0	Persuasion
+reference	PE:6a70a6d9:02711000	noun	71	NEGOTIATION	0x773b86	0x773b8c	0x16a4ef0	Negotiation
+reference	PE:6a70a6d9:02711000	noun	72	JUDGING_INTENT	0x773b9b	0x773ba1	0x16a4f00	Judging Intent
+reference	PE:6a70a6d9:02711000	noun	73	APPRAISAL	0x773bb0	0x773bb6	0x16a4f10	Appraisal
+reference	PE:6a70a6d9:02711000	noun	74	ORGANIZATION	0x773bc5	0x773bcb	0x16a4f20	Organization
+reference	PE:6a70a6d9:02711000	noun	75	RECORD_KEEPING	0x773bda	0x773be0	0x16a4f30	Record Keeping
+reference	PE:6a70a6d9:02711000	noun	76	LYING	0x773bef	0x773bf5	0x16a4f40	Lying
+reference	PE:6a70a6d9:02711000	noun	77	INTIMIDATION	0x773c04	0x773c0a	0x16a4f48	Intimidation
+reference	PE:6a70a6d9:02711000	noun	78	CONVERSATION	0x773c19	0x773c1f	0x169e5f0	Conversation
+reference	PE:6a70a6d9:02711000	noun	79	COMEDY	0x773c2e	0x773c34	0x16a4f58	Comedy
+reference	PE:6a70a6d9:02711000	noun	80	FLATTERY	0x773c43	0x773c43	0x16a4f60	Flattery
+reference	PE:6a70a6d9:02711000	noun	81	CONSOLE	0x773c58	0x773c5e	0x16a4f70	Consoling
+reference	PE:6a70a6d9:02711000	noun	82	PACIFY	0x773c6d	0x773c73	0x16a4f80	Pacification
+reference	PE:6a70a6d9:02711000	noun	83	TRACKING	0x773c82	0x773c82	0x16a4f90	Tracking
+reference	PE:6a70a6d9:02711000	noun	84	KNOWLEDGE_ACQUISITION	0x773e3b	0x773e3b	0x16a53f0	Studying
+reference	PE:6a70a6d9:02711000	noun	85	CONCENTRATION	0x773e50	0x773e56	0x16a5400	Concentration
+reference	PE:6a70a6d9:02711000	noun	86	DISCIPLINE	0x773e65	0x773e6b	0x16a5410	Discipline
+reference	PE:6a70a6d9:02711000	noun	87	SITUATIONAL_AWARENESS	0x773e7a	0x773e80	0x16a5420	Observation
+reference	PE:6a70a6d9:02711000	noun	88	WRITING	0x773e8f	0x773e95	0x15edca8	Writing
+reference	PE:6a70a6d9:02711000	noun	89	PROSE	0x773ea4	0x773eaa	0x16a542c	Prose
+reference	PE:6a70a6d9:02711000	noun	90	POETRY	0x773eb9	0x773ebf	0x16a5434	Poetry
+reference	PE:6a70a6d9:02711000	noun	91	READING	0x773ece	0x773ed4	0x16a5440	Reading
+reference	PE:6a70a6d9:02711000	noun	92	SPEAKING	0x773ee3	0x773ee3	0x16a5448	Speaking
+reference	PE:6a70a6d9:02711000	noun	93	COORDINATION	0x774033	0x774039	0x16a5348	Coordination
+reference	PE:6a70a6d9:02711000	noun	94	BALANCE	0x774048	0x77404e	0x16a5358	Balance
+reference	PE:6a70a6d9:02711000	noun	95	LEADERSHIP	0x77405d	0x774063	0x16a5360	Leadership
+reference	PE:6a70a6d9:02711000	noun	96	TEACHING	0x774087	0x774087	0x16a5388	Teaching
+reference	PE:6a70a6d9:02711000	noun	97	MELEE_COMBAT	0x77409c	0x77409c	0x16a5398	Fighting
+reference	PE:6a70a6d9:02711000	noun	98	RANGED_COMBAT	0x7740b1	0x7740b7	0x16a53a8	Archery
+reference	PE:6a70a6d9:02711000	noun	99	WRESTLING	0x7740c6	0x7740cc	0x16a53b0	Wrestling
+reference	PE:6a70a6d9:02711000	noun	100	BITE	0x7740db	0x7740e1	0x16a53bc	Biting
+reference	PE:6a70a6d9:02711000	noun	101	GRASP_STRIKE	0x7740f0	0x7740f0	0x16a53c8	Striking
+reference	PE:6a70a6d9:02711000	noun	102	STANCE_STRIKE	0x774105	0x77410b	0x16a53d8	Kicking
+reference	PE:6a70a6d9:02711000	noun	103	DODGING	0x77411a	0x774120	0x16a53e0	Dodging
+reference	PE:6a70a6d9:02711000	noun	104	MISC_WEAPON	0x774438	0x77443e	0x16a57b0	Misc. Object
+reference	PE:6a70a6d9:02711000	noun	105	KNAPPING	0x7744cb	0x7744cb	0x16a5818	Knapping
+reference	PE:6a70a6d9:02711000	noun	106	MILITARY_TACTICS	0x774072	0x774078	0x16a5370	Military Tactics
+reference	PE:6a70a6d9:02711000	noun	107	SHEARING	0x77440e	0x77440e	0x16a5258	Shearing
+reference	PE:6a70a6d9:02711000	noun	108	SPINNING	0x774423	0x774423	0x16a57a0	Spinning
+reference	PE:6a70a6d9:02711000	noun	109	POTTERY	0x773dd2	0x773dd8	0x16a4e98	Pottery
+reference	PE:6a70a6d9:02711000	noun	110	GLAZING	0x7742a9	0x7742af	0x16a5318	Glazing
+reference	PE:6a70a6d9:02711000	noun	111	PRESSING	0x77427f	0x77427f	0x16a52f8	Pressing
+reference	PE:6a70a6d9:02711000	noun	112	BEEKEEPING	0x774294	0x77429a	0x16a5308	Beekeeping
+reference	PE:6a70a6d9:02711000	noun	113	WAX_WORKING	0x773de7	0x773ded	0x16a4ea0	Wax Working
+reference	PE:6a70a6d9:02711000	noun	114	CLIMBING	0x7744e0	0x7744e0	0x16a5828	Climbing
+reference	PE:6a70a6d9:02711000	noun	115	GELD	0x7743f9	0x7743ff	0x16a5250	Gelding
+reference	PE:6a70a6d9:02711000	noun	116	DANCE	0x773ef8	0x773efe	0x16a5454	Dance
+reference	PE:6a70a6d9:02711000	noun	117	MAKE_MUSIC	0x773f0d	0x773f13	0x16a545c	Music
+reference	PE:6a70a6d9:02711000	noun	118	SING_MUSIC	0x773f22	0x773f28	0x16a5468	Singing
+reference	PE:6a70a6d9:02711000	noun	119	PLAY_KEYBOARD_INSTRUMENT	0x773f37	0x773f3d	0x16a5470	Keyboard Instrument
+reference	PE:6a70a6d9:02711000	noun	120	PLAY_STRINGED_INSTRUMENT	0x773f4c	0x773f52	0x16a5488	Stringed Instrument
+reference	PE:6a70a6d9:02711000	noun	121	PLAY_WIND_INSTRUMENT	0x773f61	0x773f67	0x16a54a0	Wind Instrument
+reference	PE:6a70a6d9:02711000	noun	122	PLAY_PERCUSSION_INSTRUMENT	0x773f76	0x773f7c	0x16a54b0	Percussion Instrument
+reference	PE:6a70a6d9:02711000	noun	123	CRITICAL_THINKING	0x773f8b	0x773f91	0x16a54c8	Critical Thinking
+reference	PE:6a70a6d9:02711000	noun	124	LOGIC	0x773fa0	0x773fa6	0x16a5320	Logic
+reference	PE:6a70a6d9:02711000	noun	125	MATHEMATICS	0x773fb5	0x773fbb	0x15ffa40	Mathematics
+reference	PE:6a70a6d9:02711000	noun	126	ASTRONOMY	0x773fca	0x773fd0	0x15ffa30	Astronomy
+reference	PE:6a70a6d9:02711000	noun	127	CHEMISTRY	0x773fdf	0x773fe5	0x15ffa10	Chemistry
+reference	PE:6a70a6d9:02711000	noun	128	GEOGRAPHY	0x773ff4	0x773ffa	0x15ffa00	Geography
+reference	PE:6a70a6d9:02711000	noun	129	OPTICS_ENGINEER	0x774009	0x77400f	0x16a5328	Optics Engineer
+reference	PE:6a70a6d9:02711000	noun	130	FLUID_ENGINEER	0x77401e	0x774024	0x16a5338	Fluid Engineer
+reference	PE:6a70a6d9:02711000	noun	131	PAPERMAKING	0x773da8	0x773dae	0x16a4e78	Papermaking
+reference	PE:6a70a6d9:02711000	noun	132	BOOKBINDING	0x773dbd	0x773dc3	0x16a4e88	Bookbinding
+reference	PE:6a70a6d9:02711000	noun	133	INTRIGUE	0x7744f5	0x7744f5	0x15ec248	Intrigue
+reference	PE:6a70a6d9:02711000	noun	134	RIDING	0x773b5c	0x773b62	0x16a50cc	Riding
+reference	PE:6a70a6d9:02711000	noun	135	CUT_STONE	0x773a36	0x773a3c	0x16a5010	Stonecutting
+reference	PE:6a70a6d9:02711000	noun	136	CARVE_STONE	0x773a21	0x773a27	0x16a5000	Stone Carving
+reference	PE:6a70a6d9:02711000	title	0	MINING	0x7747df	0x7747e5	0x1608940	Miner
+reference	PE:6a70a6d9:02711000	title	1	WOODCUTTING	0x7747f1	0x7747f7	0x1608960	Woodcutter
+reference	PE:6a70a6d9:02711000	title	2	CARPENTRY	0x774803	0x774809	0x162c9e0	Carpenter
+reference	PE:6a70a6d9:02711000	title	3	ENGRAVE_STONE	0x77484b	0x77484b	0x16a5858	Engraver
+reference	PE:6a70a6d9:02711000	title	4	MASONRY	0x774857	0x77485d	0x16a5864	Mason
+reference	PE:6a70a6d9:02711000	title	5	ANIMALTRAIN	0x774869	0x77486f	0x16a5870	Animal Trainer
+reference	PE:6a70a6d9:02711000	title	6	ANIMALCARE	0x77487b	0x774881	0x16a5880	Animal Caretaker
+reference	PE:6a70a6d9:02711000	title	7	DISSECT_FISH	0x77488d	0x774893	0x16a56c0	Fish Dissector
+reference	PE:6a70a6d9:02711000	title	8	DISSECT_VERMIN	0x77489f	0x7748a5	0x16a56d0	Animal Dissector
+reference	PE:6a70a6d9:02711000	title	9	PROCESSFISH	0x7748b1	0x7748b7	0x16a56e8	Fish Cleaner
+reference	PE:6a70a6d9:02711000	title	10	BUTCHER	0x7748c3	0x7748c9	0x161be28	Butcher
+reference	PE:6a70a6d9:02711000	title	11	TRAPPING	0x7748d5	0x7748db	0x16a56f8	Trapper
+reference	PE:6a70a6d9:02711000	title	12	TANNER	0x774fa2	0x774fa8	0x162cb80	Tanner
+reference	PE:6a70a6d9:02711000	title	13	WEAVING	0x77500e	0x775014	0x16a59dc	Weaver
+reference	PE:6a70a6d9:02711000	title	14	BREWING	0x775020	0x775026	0x16a59e4	Brewer
+reference	PE:6a70a6d9:02711000	title	15	CLOTHESMAKING	0x775032	0x775032	0x1651cd0	Clothier
+reference	PE:6a70a6d9:02711000	title	16	MILLING	0x77503e	0x775044	0x16a59ec	Miller
+reference	PE:6a70a6d9:02711000	title	17	PROCESSPLANTS	0x775050	0x775050	0x16a59f8	Thresher
+reference	PE:6a70a6d9:02711000	title	18	CHEESEMAKING	0x7750d4	0x7750da	0x16a58c0	Cheesemaker
+reference	PE:6a70a6d9:02711000	title	19	MILK	0x7750e6	0x7750ec	0x16a58cc	Milker
+reference	PE:6a70a6d9:02711000	title	20	COOK	0x7750c2	0x7750c8	0x163cf84	Cook
+reference	PE:6a70a6d9:02711000	title	21	PLANT	0x7748e7	0x7748ed	0x16a5700	Planter
+reference	PE:6a70a6d9:02711000	title	22	HERBALISM	0x7748f9	0x7748ff	0x16a5708	Herbalist
+reference	PE:6a70a6d9:02711000	title	23	FISH	0x774a25	0x774ac8	0x16a5618	Fisherman
+reference	PE:6a70a6d9:02711000	title	24	SMELT	0x774ad4	0x774ada	0x16a5628	Furnace Operator
+reference	PE:6a70a6d9:02711000	title	25	EXTRACT_STRAND	0x774ae6	0x774aec	0x16a5640	Strand Extractor
+reference	PE:6a70a6d9:02711000	title	26	FORGE_WEAPON	0x774b40	0x774b46	0x16a5690	Weaponsmith
+reference	PE:6a70a6d9:02711000	title	27	FORGE_ARMOR	0x774b52	0x774b58	0x16a56a0	Armorsmith
+reference	PE:6a70a6d9:02711000	title	28	FORGE_FURNITURE	0x774b64	0x774b6a	0x16a56b0	Blacksmith
+reference	PE:6a70a6d9:02711000	title	29	CUTGEM	0x774b76	0x774b7c	0x16a54e0	Gem Cutter
+reference	PE:6a70a6d9:02711000	title	30	ENCRUSTGEM	0x774b88	0x774b8e	0x16a54f0	Gem Setter
+reference	PE:6a70a6d9:02711000	title	31	WOODCRAFT	0x774b9a	0x774ba0	0x16a5500	Woodcrafter
+reference	PE:6a70a6d9:02711000	title	32	STONECRAFT	0x774bf4	0x774bfa	0x16a5548	Stone Crafter
+reference	PE:6a70a6d9:02711000	title	33	METALCRAFT	0x774c06	0x774c0c	0x16a5558	Metal Crafter
+reference	PE:6a70a6d9:02711000	title	34	GLASSMAKER	0x774c18	0x774c1e	0x16a5568	Glassmaker
+reference	PE:6a70a6d9:02711000	title	35	LEATHERWORK	0x774f90	0x774f96	0x16a59a0	Leatherworker
+reference	PE:6a70a6d9:02711000	title	36	BONECARVE	0x774ffc	0x775002	0x16a59d0	Bone Carver
+reference	PE:6a70a6d9:02711000	title	37	AXE	0x774eac	0x774eb2	0x16a5a70	Axeman
+reference	PE:6a70a6d9:02711000	title	38	SWORD	0x774ebe	0x774ec4	0x16a5a78	Swordsman
+reference	PE:6a70a6d9:02711000	title	39	DAGGER	0x77509e	0x7750a4	0x16a58a8	Knife User
+reference	PE:6a70a6d9:02711000	title	40	MACE	0x774ed0	0x774ed6	0x16a5a88	Maceman
+reference	PE:6a70a6d9:02711000	title	41	HAMMER	0x774ee2	0x774ee8	0x16a5a90	Hammerman
+reference	PE:6a70a6d9:02711000	title	42	SPEAR	0x774ef4	0x774ef4	0x16a5aa0	Spearman
+reference	PE:6a70a6d9:02711000	title	43	CROSSBOW	0x774f00	0x774f06	0x16a5ab0	Crossbowman
+reference	PE:6a70a6d9:02711000	title	44	SHIELD	0x774f36	0x774f3c	0x16a5950	Shield User
+reference	PE:6a70a6d9:02711000	title	45	ARMOR	0x774f48	0x774f4e	0x16a5960	Armor User
+reference	PE:6a70a6d9:02711000	title	46	SIEGECRAFT	0x774f5a	0x774f60	0x16a5970	Siege Engineer
+reference	PE:6a70a6d9:02711000	title	47	SIEGEOPERATE	0x774f6c	0x774f72	0x16a5980	Siege Operator
+reference	PE:6a70a6d9:02711000	title	48	BOWYER	0x774815	0x77481b	0x162c9c8	Bowyer
+reference	PE:6a70a6d9:02711000	title	49	PIKE	0x774f12	0x774f18	0x16a5ac0	Pikeman
+reference	PE:6a70a6d9:02711000	title	50	WHIP	0x7750b0	0x7750b6	0x16a58b4	Lasher
+reference	PE:6a70a6d9:02711000	title	51	BOW	0x774f24	0x774f2a	0x16a5948	Bowman
+reference	PE:6a70a6d9:02711000	title	52	BLOWGUN	0x77505c	0x775062	0x16a5a08	Blowgunner
+reference	PE:6a70a6d9:02711000	title	53	THROW	0x77506e	0x775074	0x16a5898	Thrower
+reference	PE:6a70a6d9:02711000	title	54	MECHANICS	0x775080	0x775080	0x162c948	Mechanic
+reference	PE:6a70a6d9:02711000	title	55	MAGIC_NATURE	0x77508c	0x775092	0x16a58a0	Druid
+reference	PE:6a70a6d9:02711000	title	56	SNEAK	0x77490b	0x77490b	0x16a5718	Ambusher
+reference	PE:6a70a6d9:02711000	title	57	DRESS_WOUNDS	0x775140	0x775146	0x16a5908	Wound Dresser
+reference	PE:6a70a6d9:02711000	title	58	DIAGNOSE	0x775152	0x775158	0x15ffce8	Diagnostician
+reference	PE:6a70a6d9:02711000	title	59	SURGERY	0x775164	0x77516a	0x15fff10	Surgeon
+reference	PE:6a70a6d9:02711000	title	60	SET_BONE	0x775176	0x77517c	0x162c8a8	Bone Doctor
+reference	PE:6a70a6d9:02711000	title	61	SUTURE	0x775188	0x77518e	0x16a5918	Suturer
+reference	PE:6a70a6d9:02711000	title	62	CRUTCH_WALK	0x77519a	0x7751a0	0x16a5920	Crutch-walker
+reference	PE:6a70a6d9:02711000	title	63	WOOD_BURNING	0x774b2e	0x774b34	0x16a5680	Wood Burner
+reference	PE:6a70a6d9:02711000	title	64	LYE_MAKING	0x774b1c	0x774b22	0x16a5670	Lye Maker
+reference	PE:6a70a6d9:02711000	title	65	SOAP_MAKING	0x774af8	0x774afe	0x16a5654	Soaper
+reference	PE:6a70a6d9:02711000	title	66	POTASH_MAKING	0x774b0a	0x774b10	0x16a5660	Potash Maker
+reference	PE:6a70a6d9:02711000	title	67	DYER	0x774fb4	0x774fba	0x162c910	Dyer
+reference	PE:6a70a6d9:02711000	title	68	OPERATE_PUMP	0x774f7e	0x774f84	0x16a5990	Pump Operator
+reference	PE:6a70a6d9:02711000	title	69	SWIMMING	0x774917	0x77491d	0x16a5728	Swimmer
+reference	PE:6a70a6d9:02711000	title	70	PERSUASION	0x77493b	0x774941	0x16a5738	Persuader
+reference	PE:6a70a6d9:02711000	title	71	NEGOTIATION	0x77494d	0x774953	0x16a5748	Negotiator
+reference	PE:6a70a6d9:02711000	title	72	JUDGING_INTENT	0x77495f	0x774965	0x16a5758	Judge of Intent
+reference	PE:6a70a6d9:02711000	title	73	APPRAISAL	0x774971	0x774977	0x16a5768	Appraiser
+reference	PE:6a70a6d9:02711000	title	74	ORGANIZATION	0x774983	0x774989	0x16a5778	Organizer
+reference	PE:6a70a6d9:02711000	title	75	RECORD_KEEPING	0x774995	0x77499b	0x16a5788	Record Keeper
+reference	PE:6a70a6d9:02711000	title	76	LYING	0x7749a7	0x7749ad	0x16a5798	Liar
+reference	PE:6a70a6d9:02711000	title	77	INTIMIDATION	0x7749b9	0x7749bf	0x16a55b8	Intimidator
+reference	PE:6a70a6d9:02711000	title	78	CONVERSATION	0x7749cb	0x7749d1	0x16a55c8	Conversationalist
+reference	PE:6a70a6d9:02711000	title	79	COMEDY	0x7749dd	0x7749dd	0x16a55e0	Comedian
+reference	PE:6a70a6d9:02711000	title	80	FLATTERY	0x7749e9	0x7749ef	0x15feaa0	Flatterer
+reference	PE:6a70a6d9:02711000	title	81	CONSOLE	0x7749fb	0x7749fb	0x16a55f0	Consoler
+reference	PE:6a70a6d9:02711000	title	82	PACIFY	0x774a07	0x774a07	0x16a5600	Pacifier
+reference	PE:6a70a6d9:02711000	title	83	TRACKING	0x774a13	0x774a19	0x16a5610	Tracker
+reference	PE:6a70a6d9:02711000	title	84	KNOWLEDGE_ACQUISITION	0x774c2a	0x774c30	0x16a5578	Student
+reference	PE:6a70a6d9:02711000	title	85	CONCENTRATION	0x774c3c	0x774c42	0x16a5400	Concentration
+reference	PE:6a70a6d9:02711000	title	86	DISCIPLINE	0x774c4e	0x774c54	0x16a5410	Discipline
+reference	PE:6a70a6d9:02711000	title	87	SITUATIONAL_AWARENESS	0x774c60	0x774c60	0x16a5580	Observer
+reference	PE:6a70a6d9:02711000	title	88	WRITING	0x774c6c	0x774c72	0x16a5590	Wordsmith
+reference	PE:6a70a6d9:02711000	title	89	PROSE	0x774c7e	0x774c84	0x16a559c	Writer
+reference	PE:6a70a6d9:02711000	title	90	POETRY	0x774c90	0x774c96	0x16a55a4	Poet
+reference	PE:6a70a6d9:02711000	title	91	READING	0x774ca2	0x774ca8	0x16a55ac	Reader
+reference	PE:6a70a6d9:02711000	title	92	SPEAKING	0x774cb4	0x774cba	0x16a5ac8	Speaker
+reference	PE:6a70a6d9:02711000	title	93	COORDINATION	0x774dda	0x774de0	0x16a5348	Coordination
+reference	PE:6a70a6d9:02711000	title	94	BALANCE	0x774dec	0x774df2	0x16a5358	Balance
+reference	PE:6a70a6d9:02711000	title	95	LEADERSHIP	0x774dfe	0x774e04	0x16a5bac	Leader
+reference	PE:6a70a6d9:02711000	title	96	TEACHING	0x774e22	0x774e28	0x16a5a28	Teacher
+reference	PE:6a70a6d9:02711000	title	97	MELEE_COMBAT	0x774e34	0x774e3a	0x16a5a30	Fighter
+reference	PE:6a70a6d9:02711000	title	98	RANGED_COMBAT	0x774e46	0x774e4c	0x16a5a38	Archer
+reference	PE:6a70a6d9:02711000	title	99	WRESTLING	0x774e58	0x774e58	0x16a5a40	Wrestler
+reference	PE:6a70a6d9:02711000	title	100	BITE	0x774e64	0x774e6a	0x16a5a4c	Biter
+reference	PE:6a70a6d9:02711000	title	101	GRASP_STRIKE	0x774e76	0x774e7c	0x16a5a58	Striker
+reference	PE:6a70a6d9:02711000	title	102	STANCE_STRIKE	0x774e88	0x774e8e	0x16a5a60	Kicker
+reference	PE:6a70a6d9:02711000	title	103	DODGING	0x774e9a	0x774ea0	0x16a5a68	Dodger
+reference	PE:6a70a6d9:02711000	title	104	MISC_WEAPON	0x77512e	0x775134	0x16a58f0	Misc. Object User
+reference	PE:6a70a6d9:02711000	title	105	KNAPPING	0x774cc6	0x774ccc	0x16a5ad0	Knapper
+reference	PE:6a70a6d9:02711000	title	106	MILITARY_TACTICS	0x774e10	0x774e16	0x16a5a18	Tactician
+reference	PE:6a70a6d9:02711000	title	107	SHEARING	0x77510a	0x775110	0x16a58e0	Shearer
+reference	PE:6a70a6d9:02711000	title	108	SPINNING	0x77511c	0x775122	0x16a58e8	Spinner
+reference	PE:6a70a6d9:02711000	title	109	POTTERY	0x774bd0	0x774bd6	0x16a552c	Potter
+reference	PE:6a70a6d9:02711000	title	110	GLAZING	0x774fea	0x774ff0	0x16a59c4	Glazer
+reference	PE:6a70a6d9:02711000	title	111	PRESSING	0x774fc6	0x774fcc	0x16a59b0	Presser
+reference	PE:6a70a6d9:02711000	title	112	BEEKEEPING	0x774fd8	0x774fde	0x16a59b8	Beekeeper
+reference	PE:6a70a6d9:02711000	title	113	WAX_WORKING	0x774be2	0x774be8	0x16a5538	Wax Worker
+reference	PE:6a70a6d9:02711000	title	114	CLIMBING	0x7751ac	0x7751b2	0x16a5930	Climber
+reference	PE:6a70a6d9:02711000	title	115	GELD	0x7750f8	0x7750fe	0x16a58d4	Gelder
+reference	PE:6a70a6d9:02711000	title	116	DANCE	0x774cd8	0x774cde	0x16a5ad8	Dancer
+reference	PE:6a70a6d9:02711000	title	117	MAKE_MUSIC	0x774cea	0x774cea	0x16a5ae0	Musician
+reference	PE:6a70a6d9:02711000	title	118	SING_MUSIC	0x774cf6	0x774cfc	0x16a5aec	Singer
+reference	PE:6a70a6d9:02711000	title	119	PLAY_KEYBOARD_INSTRUMENT	0x774d08	0x774d0e	0x16a5af8	Keyboardist
+reference	PE:6a70a6d9:02711000	title	120	PLAY_STRINGED_INSTRUMENT	0x774d1a	0x774d20	0x16a5b08	Stringed Instrumentalist
+reference	PE:6a70a6d9:02711000	title	121	PLAY_WIND_INSTRUMENT	0x774d2c	0x774d32	0x16a5b28	Wind Instrumentalist
+reference	PE:6a70a6d9:02711000	title	122	PLAY_PERCUSSION_INSTRUMENT	0x774d3e	0x774d44	0x16a5b40	Percussionist
+reference	PE:6a70a6d9:02711000	title	123	CRITICAL_THINKING	0x774d50	0x774d56	0x16a5b50	Critical Thinker
+reference	PE:6a70a6d9:02711000	title	124	LOGIC	0x774d62	0x774d62	0x16a5b68	Logician
+reference	PE:6a70a6d9:02711000	title	125	MATHEMATICS	0x774d6e	0x774d74	0x16a5b78	Mathematician
+reference	PE:6a70a6d9:02711000	title	126	ASTRONOMY	0x774d80	0x774d86	0x16a5b88	Astronomer
+reference	PE:6a70a6d9:02711000	title	127	CHEMISTRY	0x774d92	0x774d98	0x16a5b98	Chemist
+reference	PE:6a70a6d9:02711000	title	128	GEOGRAPHY	0x774da4	0x774daa	0x16a5ba0	Geographer
+reference	PE:6a70a6d9:02711000	title	129	OPTICS_ENGINEER	0x774db6	0x774dbc	0x16a5328	Optics Engineer
+reference	PE:6a70a6d9:02711000	title	130	FLUID_ENGINEER	0x774dc8	0x774dce	0x16a5338	Fluid Engineer
+reference	PE:6a70a6d9:02711000	title	131	PAPERMAKING	0x774bac	0x774bb2	0x16a5510	Papermaker
+reference	PE:6a70a6d9:02711000	title	132	BOOKBINDING	0x774bbe	0x774bc4	0x16a5520	Bookbinder
+reference	PE:6a70a6d9:02711000	title	133	INTRIGUE	0x7751be	0x7751c4	0x16a5938	Schemer
+reference	PE:6a70a6d9:02711000	title	134	RIDING	0x774929	0x77492f	0x16a5730	Rider
+reference	PE:6a70a6d9:02711000	title	135	CUT_STONE	0x774839	0x77483f	0x16a5848	Stonecutter
+reference	PE:6a70a6d9:02711000	title	136	CARVE_STONE	0x774827	0x77482d	0x16a5838	Stone Carver
+reference	PE:6a70a6d9:02711000	title	137	MODSKILL01	0x7751d0	0x7751d6	0x16a5940	Skill 1
+reference	PE:6a70a6d9:02711000	title	138	MODSKILL02	0x7751e2	0x7751e8	0x16a5d50	Skill 2
+reference	PE:6a70a6d9:02711000	title	139	MODSKILL03	0x7751f1	0x7751f7	0x16a5d58	Skill 3
+reference	PE:6a70a6d9:02711000	title	140	MODSKILL04	0x775200	0x775206	0x16a5d60	Skill 4
+reference	PE:6a70a6d9:02711000	title	141	MODSKILL05	0x77520f	0x775215	0x16a5d68	Skill 5
+reference	PE:6a70a6d9:02711000	title	142	MODSKILL06	0x77521e	0x775224	0x16a5d70	Skill 6
+reference	PE:6a70a6d9:02711000	title	143	MODSKILL07	0x77522d	0x775233	0x16a5d78	Skill 7
+reference	PE:6a70a6d9:02711000	title	144	MODSKILL08	0x77523c	0x775242	0x16a5d80	Skill 8
+reference	PE:6a70a6d9:02711000	title	145	MODSKILL09	0x77524b	0x775251	0x16a5d88	Skill 9
+reference	PE:6a70a6d9:02711000	title	146	MODSKILL10	0x77525a	0x77525a	0x16a5d90	Skill 10
+reference	PE:6a70a6d9:02711000	rating	0		0x7737fa	0x7737fa	0x16a50f8	Dabbling
+reference	PE:6a70a6d9:02711000	rating	1		0x77380f	0x77380f	0x16a5104	Novice
+reference	PE:6a70a6d9:02711000	rating	2		0x773824	0x773824	0x16a5110	Adequate
+reference	PE:6a70a6d9:02711000	rating	3		0x773839	0x773839	0x16a5120	Competent
+reference	PE:6a70a6d9:02711000	rating	4		0x77384e	0x77384e	0x16a5130	Skilled
+reference	PE:6a70a6d9:02711000	rating	5		0x773863	0x773863	0x16a5138	Proficient
+reference	PE:6a70a6d9:02711000	rating	6		0x773878	0x773878	0x16a5148	Talented
+reference	PE:6a70a6d9:02711000	rating	7		0x77388d	0x77388d	0x16a5154	Adept
+reference	PE:6a70a6d9:02711000	rating	8		0x7738a2	0x7738a2	0x1629e28	Expert
+reference	PE:6a70a6d9:02711000	rating	9		0x7738b7	0x7738b7	0x16a5160	Professional
+reference	PE:6a70a6d9:02711000	rating	10		0x7738cc	0x7738cc	0x16a5170	Accomplished
+reference	PE:6a70a6d9:02711000	rating	11		0x7738e1	0x7738e1	0x1646b6c	Great
+reference	PE:6a70a6d9:02711000	rating	12		0x7738f6	0x7738f6	0x16001ac	Master
+reference	PE:6a70a6d9:02711000	rating	13		0x77390b	0x77390b	0x16a5180	High Master
+reference	PE:6a70a6d9:02711000	rating	14		0x773920	0x773920	0x16a5190	Grand Master
+reference	PE:6a70a6d9:02711000	rating	15		0x773935	0x773935	0x16a51a0	Legendary
+reference	PE:6a70a6d9:02711000	description	0	MINING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	1	WOODCUTTING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	2	CARPENTRY	0x62ae6d	0x62ae6d	0x1661260	Crafting skill.
+reference	PE:6a70a6d9:02711000	description	3	ENGRAVE_STONE	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	4	MASONRY	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	5	ANIMALTRAIN	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	6	ANIMALCARE	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	7	DISSECT_FISH	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	8	DISSECT_VERMIN	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	9	PROCESSFISH	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	10	BUTCHER	0x62ae37	0x62ae37	0x1661238	Requires an item with a sharp edge.
+reference	PE:6a70a6d9:02711000	description	11	TRAPPING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	12	TANNER	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	13	WEAVING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	14	BREWING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	15	CLOTHESMAKING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	16	MILLING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	17	PROCESSPLANTS	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	18	CHEESEMAKING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	19	MILK	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	20	COOK	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	21	PLANT	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	22	HERBALISM	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	23	FISH	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	24	SMELT	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	25	EXTRACT_STRAND	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	26	FORGE_WEAPON	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	27	FORGE_ARMOR	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	28	FORGE_FURNITURE	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	29	CUTGEM	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	30	ENCRUSTGEM	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	31	WOODCRAFT	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	32	STONECRAFT	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	33	METALCRAFT	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	34	GLASSMAKER	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	35	LEATHERWORK	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	36	BONECARVE	0x62ae6d	0x62ae6d	0x1661260	Crafting skill.
+reference	PE:6a70a6d9:02711000	description	37	AXE	0x62a9c9	0x62a9c9	0x1660a80	Weapon skill.
+reference	PE:6a70a6d9:02711000	description	38	SWORD	0x62a9c9	0x62a9c9	0x1660a80	Weapon skill.
+reference	PE:6a70a6d9:02711000	description	39	DAGGER	0x62a9c9	0x62a9c9	0x1660a80	Weapon skill.
+reference	PE:6a70a6d9:02711000	description	40	MACE	0x62a9c9	0x62a9c9	0x1660a80	Weapon skill.
+reference	PE:6a70a6d9:02711000	description	41	HAMMER	0x62a9c9	0x62a9c9	0x1660a80	Weapon skill.
+reference	PE:6a70a6d9:02711000	description	42	SPEAR	0x62a9c9	0x62a9c9	0x1660a80	Weapon skill.
+reference	PE:6a70a6d9:02711000	description	43	CROSSBOW	0x62a9c9	0x62a9c9	0x1660a80	Weapon skill.
+reference	PE:6a70a6d9:02711000	description	44	SHIELD	0x62ac1b	0x62ac1b	0x1661320	Affects ability to block melee and ranged attacks with a shield.
+reference	PE:6a70a6d9:02711000	description	45	ARMOR	0x62ac51	0x62ac51	0x1661368	Affects ability to move quickly and dodge while armored.
+reference	PE:6a70a6d9:02711000	description	46	SIEGECRAFT	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	47	SIEGEOPERATE	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	48	BOWYER	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	49	PIKE	0x62a9c9	0x62a9c9	0x1660a80	Weapon skill.
+reference	PE:6a70a6d9:02711000	description	50	WHIP	0x62a9c9	0x62a9c9	0x1660a80	Weapon skill.
+reference	PE:6a70a6d9:02711000	description	51	BOW	0x62a9c9	0x62a9c9	0x1660a80	Weapon skill.
+reference	PE:6a70a6d9:02711000	description	52	BLOWGUN	0x62a9c9	0x62a9c9	0x1660a80	Weapon skill.
+reference	PE:6a70a6d9:02711000	description	53	THROW	0x62ad95	0x62ad95	0x16612f8	Ability to throw objects.
+reference	PE:6a70a6d9:02711000	description	54	MECHANICS	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	55	MAGIC_NATURE	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	56	SNEAK	0x62ab43	0x62ab43	0x1660860	Affects ability to remain hidden while sneaking.
+reference	PE:6a70a6d9:02711000	description	57	DRESS_WOUNDS	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	58	DIAGNOSE	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	59	SURGERY	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	60	SET_BONE	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	61	SUTURE	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	62	CRUTCH_WALK	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	63	WOOD_BURNING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	64	LYE_MAKING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	65	SOAP_MAKING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	66	POTASH_MAKING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	67	DYER	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	68	OPERATE_PUMP	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	69	SWIMMING	0x62aad7	0x62aad7	0x16609f8	Required to swim well without floundering.
+reference	PE:6a70a6d9:02711000	description	70	PERSUASION	0x62b053	0x62b053	0x1661700	Affects ability to state values, press arguments, and persuasion tactics in interrogation.
+reference	PE:6a70a6d9:02711000	description	71	NEGOTIATION	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	72	JUDGING_INTENT	0x62b0bf	0x62b0bf	0x1661578	Allows insight into emotional states during conversations.
+reference	PE:6a70a6d9:02711000	description	73	APPRAISAL	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	74	ORGANIZATION	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	75	RECORD_KEEPING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	76	LYING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	77	INTIMIDATION	0x62b089	0x62b089	0x1661530	Affects argument dismissal and intimidation tactics in interrogation.
+reference	PE:6a70a6d9:02711000	description	78	CONVERSATION	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	79	COMEDY	0x62b0f5	0x62b0f5	0x16615b8	Affects response to jokes.
+reference	PE:6a70a6d9:02711000	description	80	FLATTERY	0x62b12b	0x62b12b	0x16615e0	Affects response to attempts at flattery in arguments and generally.
+reference	PE:6a70a6d9:02711000	description	81	CONSOLE	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	82	PACIFY	0x62b15e	0x62b15e	0x1661460	Affects attempts to calm people or to respond passively in arguments.
+reference	PE:6a70a6d9:02711000	description	83	TRACKING	0x62ab79	0x62ab79	0x1660898	Affects ability to spot and interpret tracks and other spoor.
+reference	PE:6a70a6d9:02711000	description	84	KNOWLEDGE_ACQUISITION	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	85	CONCENTRATION	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	86	DISCIPLINE	0x62abe5	0x62abe5	0x1660928	Affects ability to withstand pain and stress.
+reference	PE:6a70a6d9:02711000	description	87	SITUATIONAL_AWARENESS	0x62aaa1	0x62aaa1	0x1660990	Affects trap detection, ambusher detection, charge defense, and provides enemy attack information.
+reference	PE:6a70a6d9:02711000	description	88	WRITING	0x62aed9	0x62aed9	0x1661140	Has a minor affect on all writing (poetry and prose.)
+reference	PE:6a70a6d9:02711000	description	89	PROSE	0x62af0f	0x62af0f	0x1661178	Affects the quality of writing aside from poetry.
+reference	PE:6a70a6d9:02711000	description	90	POETRY	0x62af45	0x62af45	0x16611b0	Affects the quality of poetry.
+reference	PE:6a70a6d9:02711000	description	91	READING	0x62aea3	0x62aea3	0x1661110	A novice level is required to read anything.
+reference	PE:6a70a6d9:02711000	description	92	SPEAKING	0x62af7b	0x62af7b	0x1661630	Affects all spoken performances, from poetry recitals to preaching to storytelling to certain musical forms.
+reference	PE:6a70a6d9:02711000	description	93	COORDINATION	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	94	BALANCE	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	95	LEADERSHIP	0x62b01d	0x62b01d	0x1660a58	Affects maximum number of followers.
+reference	PE:6a70a6d9:02711000	description	96	TEACHING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	97	MELEE_COMBAT	0x62a9ff	0x62a9ff	0x1660a90	Affects charging, your combat opportunities, and enemy combat opportunities.
+reference	PE:6a70a6d9:02711000	description	98	RANGED_COMBAT	0x62aa6b	0x62aa6b	0x1660958	Partially used in place of low ranged skills.
+reference	PE:6a70a6d9:02711000	description	99	WRESTLING	0x62acbd	0x62acbd	0x16613e0	Affects wrestling and charging.
+reference	PE:6a70a6d9:02711000	description	100	BITE	0x62ad5f	0x62ad5f	0x16612d0	Affects attacks with mouths and teeth.
+reference	PE:6a70a6d9:02711000	description	101	GRASP_STRIKE	0x62acf3	0x62acf3	0x1661270	Affects attacks with hand-like appendages.
+reference	PE:6a70a6d9:02711000	description	102	STANCE_STRIKE	0x62ad29	0x62ad29	0x16612a0	Affects attacks with foot-like appendages.
+reference	PE:6a70a6d9:02711000	description	103	DODGING	0x62ac87	0x62ac87	0x16613a8	Affects ability to dodge melee and ranged attacks.
+reference	PE:6a70a6d9:02711000	description	104	MISC_WEAPON	0x62adcb	0x62adcb	0x16611d0	Ability to fight with objects not covered by other skills.
+reference	PE:6a70a6d9:02711000	description	105	KNAPPING	0x62ae01	0x62ae01	0x1661210	Create a sharp rock with two rocks.
+reference	PE:6a70a6d9:02711000	description	106	MILITARY_TACTICS	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	107	SHEARING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	108	SPINNING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	109	POTTERY	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	110	GLAZING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	111	PRESSING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	112	BEEKEEPING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	113	WAX_WORKING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	114	CLIMBING	0x62ab0d	0x62ab0d	0x1660a28	Required to climb difficult surfaces safely.
+reference	PE:6a70a6d9:02711000	description	115	GELD	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	116	DANCE	0x62afe7	0x62afe7	0x16616e0	Performance skill.
+reference	PE:6a70a6d9:02711000	description	117	MAKE_MUSIC	0x62afb1	0x62afb1	0x16616a0	Partially used in place of low musical performance skills.
+reference	PE:6a70a6d9:02711000	description	118	SING_MUSIC	0x62afe7	0x62afe7	0x16616e0	Performance skill.
+reference	PE:6a70a6d9:02711000	description	119	PLAY_KEYBOARD_INSTRUMENT	0x62afe7	0x62afe7	0x16616e0	Performance skill.
+reference	PE:6a70a6d9:02711000	description	120	PLAY_STRINGED_INSTRUMENT	0x62afe7	0x62afe7	0x16616e0	Performance skill.
+reference	PE:6a70a6d9:02711000	description	121	PLAY_WIND_INSTRUMENT	0x62afe7	0x62afe7	0x16616e0	Performance skill.
+reference	PE:6a70a6d9:02711000	description	122	PLAY_PERCUSSION_INSTRUMENT	0x62afe7	0x62afe7	0x16616e0	Performance skill.
+reference	PE:6a70a6d9:02711000	description	123	CRITICAL_THINKING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	124	LOGIC	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	125	MATHEMATICS	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	126	ASTRONOMY	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	127	CHEMISTRY	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	128	GEOGRAPHY	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	129	OPTICS_ENGINEER	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	130	FLUID_ENGINEER	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	131	PAPERMAKING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	132	BOOKBINDING	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	133	INTRIGUE	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	134	RIDING	0x62abaf	0x62abaf	0x16608e0	Improves combat opportunities and ranged accuracy while mounted.
+reference	PE:6a70a6d9:02711000	description	135	CUT_STONE	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	136	CARVE_STONE	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	137	MODSKILL01	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	138	MODSKILL02	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	139	MODSKILL03	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	140	MODSKILL04	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	141	MODSKILL05	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	142	MODSKILL06	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	143	MODSKILL07	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	144	MODSKILL08	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	145	MODSKILL09	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	description	146	MODSKILL10	0x62b191	0x62b191	0x16614b0	Not useful unless you retire and subsequently become a resident in Fortress mode.
+reference	PE:6a70a6d9:02711000	archetype	37	AXE	0x63fad9			Axeman
+reference	PE:6a70a6d9:02711000	archetype	38	SWORD	0x63fad9			Swordsman
+reference	PE:6a70a6d9:02711000	archetype	39	DAGGER	0x63fad9			Knife User
+reference	PE:6a70a6d9:02711000	archetype	40	MACE	0x63fad9			Maceman
+reference	PE:6a70a6d9:02711000	archetype	41	HAMMER	0x63fad9			Hammerman
+reference	PE:6a70a6d9:02711000	archetype	42	SPEAR	0x63fad9			Spearman
+reference	PE:6a70a6d9:02711000	archetype	43	CROSSBOW	0x63fce2			Crossbowman
+reference	PE:6a70a6d9:02711000	archetype	49	PIKE	0x63fad9			Pikeman
+reference	PE:6a70a6d9:02711000	archetype	50	WHIP	0x63fad9			Lasher
+reference	PE:6a70a6d9:02711000	archetype	51	BOW	0x63fce2			Bowman
+reference	PE:6a70a6d9:02711000	archetype	52	BLOWGUN	0x63fce2			Blowgunner
+reference	PE:6a70a6d9:02711000	archetype	90	POETRY	0x640059			Poet
+reference	PE:6a70a6d9:02711000	archetype	92	SPEAKING	0x63fec9			Speaker
+reference	PE:6a70a6d9:02711000	archetype	99	WRESTLING	0x63fe35			Wrestler
+reference	PE:6a70a6d9:02711000	archetype	116	DANCE	0x6401ab			Dancer
+reference	PE:6a70a6d9:02711000	archetype	118	SING_MUSIC	0x640117			Singer
+reference	PE:6a70a6d9:02711000	archetype	119	PLAY_KEYBOARD_INSTRUMENT	0x640117			Keyboardist
+reference	PE:6a70a6d9:02711000	archetype	120	PLAY_STRINGED_INSTRUMENT	0x640117			Stringed Instrumentalist
+reference	PE:6a70a6d9:02711000	archetype	121	PLAY_WIND_INSTRUMENT	0x640117			Wind Instrumentalist
+reference	PE:6a70a6d9:02711000	archetype	122	PLAY_PERCUSSION_INSTRUMENT	0x640117			Percussionist
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	0	MELEE_COMBAT				Fighter
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	1	RANGED_COMBAT				Archer
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	2	SITUATIONAL_AWARENESS				Observer
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	3	SWIMMING				Swimmer
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	4	CLIMBING				Climber
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	5	SNEAK				Ambusher
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	6	TRACKING				Tracker
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	7	RIDING				Rider
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	8	DISCIPLINE				Discipline
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	9	SHIELD				Shield User
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	10	ARMOR				Armor User
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	11	DODGING				Dodger
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	12	WRESTLING				Wrestler
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	13	GRASP_STRIKE				Striker
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	14	STANCE_STRIKE				Kicker
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	15	BITE				Biter
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	16	THROW				Thrower
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	17	MISC_WEAPON				Misc. Object User
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	18	KNAPPING				Knapper
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	19	BONECARVE				Bone Carver
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	20	BUTCHER				Butcher
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	21	CARPENTRY				Carpenter
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	22	READING				Reader
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	23	WRITING				Wordsmith
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	24	PROSE				Writer
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	25	POETRY				Poet
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	26	SPEAKING				Speaker
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	27	MAKE_MUSIC				Musician
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	28	SING_MUSIC				Singer
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	29	PLAY_KEYBOARD_INSTRUMENT				Keyboardist
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	30	PLAY_STRINGED_INSTRUMENT				Stringed Instrumentalist
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	31	PLAY_WIND_INSTRUMENT				Wind Instrumentalist
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	32	PLAY_PERCUSSION_INSTRUMENT				Percussionist
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	33	DANCE				Dancer
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	34	LEADERSHIP				Leader
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	35	PERSUASION				Persuader
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	36	NEGOTIATION				Negotiator
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	37	LYING				Liar
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	38	INTIMIDATION				Intimidator
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	39	JUDGING_INTENT				Judge of Intent
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	40	CONVERSATION				Conversationalist
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	41	COMEDY				Comedian
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	42	FLATTERY				Flatterer
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	43	CONSOLE				Consoler
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	44	PACIFY				Pacifier
+reference	PE:6a70a6d9:02711000	unrestricted-fixed-skill	45	INTRIGUE				Schemer
+classic	PE:6a70b91c:0270a000	noun	0	MINING	0x7713ed	0x7713f3	0x15ffd88	Mining
+classic	PE:6a70b91c:0270a000	noun	1	WOODCUTTING	0x771402	0x771408	0x15ffda0	Woodcutting
+classic	PE:6a70b91c:0270a000	noun	2	CARPENTRY	0x771417	0x77141d	0x16a0068	Carpentry
+classic	PE:6a70b91c:0270a000	noun	3	ENGRAVE_STONE	0x77146b	0x771471	0x16a00a8	Engraving
+classic	PE:6a70b91c:0270a000	noun	4	MASONRY	0x771480	0x771486	0x16a00b8	Masonry
+classic	PE:6a70b91c:0270a000	noun	5	ANIMALTRAIN	0x771495	0x77149b	0x162a858	Animal Training
+classic	PE:6a70b91c:0270a000	noun	6	ANIMALCARE	0x7714aa	0x7714b0	0x16a00c0	Animal Caretaking
+classic	PE:6a70b91c:0270a000	noun	7	DISSECT_FISH	0x7714bf	0x7714c5	0x16a00d8	Fish Dissection
+classic	PE:6a70b91c:0270a000	noun	8	DISSECT_VERMIN	0x7714d4	0x7714da	0x16a00e8	Animal Dissection
+classic	PE:6a70b91c:0270a000	noun	9	PROCESSFISH	0x7714e9	0x7714ef	0x16a0100	Fish Cleaning
+classic	PE:6a70b91c:0270a000	noun	10	BUTCHER	0x7714fe	0x7714fe	0x16a0110	Butchery
+classic	PE:6a70b91c:0270a000	noun	11	TRAPPING	0x771513	0x771513	0x16a0120	Trapping
+classic	PE:6a70b91c:0270a000	noun	12	TANNER	0x771c75	0x771c7b	0x16a0378	Tanning
+classic	PE:6a70b91c:0270a000	noun	13	WEAVING	0x771cf3	0x771cf9	0x16a0258	Weaving
+classic	PE:6a70b91c:0270a000	noun	14	BREWING	0x771d08	0x771d0e	0x16a0260	Brewing
+classic	PE:6a70b91c:0270a000	noun	15	CLOTHESMAKING	0x771d1d	0x771d23	0x16a0268	Clothes Making
+classic	PE:6a70b91c:0270a000	noun	16	MILLING	0x771d32	0x771d38	0x16a0278	Milling
+classic	PE:6a70b91c:0270a000	noun	17	PROCESSPLANTS	0x771d47	0x771d4d	0x16a0280	Threshing
+classic	PE:6a70b91c:0270a000	noun	18	CHEESEMAKING	0x771def	0x771df5	0x16a02d0	Cheesemaking
+classic	PE:6a70b91c:0270a000	noun	19	MILK	0x771e04	0x771e0a	0x16a0138	Milking
+classic	PE:6a70b91c:0270a000	noun	20	COOK	0x771dda	0x771de0	0x16a02c8	Cooking
+classic	PE:6a70b91c:0270a000	noun	21	PLANT	0x771528	0x77152e	0x16a0130	Growing
+classic	PE:6a70b91c:0270a000	noun	22	HERBALISM	0x77153d	0x771543	0x169ff50	Herbalism
+classic	PE:6a70b91c:0270a000	noun	23	FISH	0x7716b7	0x7716bd	0x1626ad8	Fishing
+classic	PE:6a70b91c:0270a000	noun	24	SMELT	0x7716cc	0x7716d2	0x169fe48	Furnace Operation
+classic	PE:6a70b91c:0270a000	noun	25	EXTRACT_STRAND	0x7716e1	0x7716e7	0x169fe60	Strand Extraction
+classic	PE:6a70b91c:0270a000	noun	26	FORGE_WEAPON	0x77174a	0x771750	0x169feb8	Weaponsmithing
+classic	PE:6a70b91c:0270a000	noun	27	FORGE_ARMOR	0x77175f	0x771765	0x169fec8	Armorsmithing
+classic	PE:6a70b91c:0270a000	noun	28	FORGE_FURNITURE	0x771774	0x77177a	0x169fed8	Metalsmithing
+classic	PE:6a70b91c:0270a000	noun	29	CUTGEM	0x771789	0x77178f	0x169fee8	Gem Cutting
+classic	PE:6a70b91c:0270a000	noun	30	ENCRUSTGEM	0x77179e	0x7717a4	0x169fef8	Gem Setting
+classic	PE:6a70b91c:0270a000	noun	31	WOODCRAFT	0x7717b3	0x7717b9	0x169ff08	Woodcrafting
+classic	PE:6a70b91c:0270a000	noun	32	STONECRAFT	0x77181c	0x771822	0x169fd68	Stone Crafting
+classic	PE:6a70b91c:0270a000	noun	33	METALCRAFT	0x771831	0x771837	0x169fd78	Metal Crafting
+classic	PE:6a70b91c:0270a000	noun	34	GLASSMAKER	0x771846	0x77184c	0x169fd88	Glassmaking
+classic	PE:6a70b91c:0270a000	noun	35	LEATHERWORK	0x771c60	0x771c66	0x16a0368	Leatherworking
+classic	PE:6a70b91c:0270a000	noun	36	BONECARVE	0x771cde	0x771ce4	0x16a0248	Bone Carving
+classic	PE:6a70b91c:0270a000	noun	37	AXE	0x771b4f	0x771b55	0x16a02f0	Axe
+classic	PE:6a70b91c:0270a000	noun	38	SWORD	0x771b64	0x771b6a	0x16a02f4	Sword
+classic	PE:6a70b91c:0270a000	noun	39	DAGGER	0x771db0	0x771db6	0x16a02b4	Knife
+classic	PE:6a70b91c:0270a000	noun	40	MACE	0x771b79	0x771b7f	0x16a02fc	Mace
+classic	PE:6a70b91c:0270a000	noun	41	HAMMER	0x771b8e	0x771b94	0x16a0304	Hammer
+classic	PE:6a70b91c:0270a000	noun	42	SPEAR	0x771ba3	0x771ba9	0x16a030c	Spear
+classic	PE:6a70b91c:0270a000	noun	43	CROSSBOW	0x771bb8	0x771bb8	0x16a0318	Crossbow
+classic	PE:6a70b91c:0270a000	noun	44	SHIELD	0x771bf7	0x771bfd	0x1625a00	Shield
+classic	PE:6a70b91c:0270a000	noun	45	ARMOR	0x771c0c	0x771c12	0x16257b4	Armor
+classic	PE:6a70b91c:0270a000	noun	46	SIEGECRAFT	0x771c21	0x771c27	0x16a0330	Siege Engineering
+classic	PE:6a70b91c:0270a000	noun	47	SIEGEOPERATE	0x771c36	0x771c3c	0x16a0348	Siege Operation
+classic	PE:6a70b91c:0270a000	noun	48	BOWYER	0x77142c	0x771432	0x16a0078	Bowmaking
+classic	PE:6a70b91c:0270a000	noun	49	PIKE	0x771bcd	0x771bd3	0x16a0324	Pike
+classic	PE:6a70b91c:0270a000	noun	50	WHIP	0x771dc5	0x771dcb	0x16a02bc	Lash
+classic	PE:6a70b91c:0270a000	noun	51	BOW	0x771be2	0x771be8	0x16a032c	Bow
+classic	PE:6a70b91c:0270a000	noun	52	BLOWGUN	0x771d5c	0x771d62	0x16a0290	Blowgun
+classic	PE:6a70b91c:0270a000	noun	53	THROW	0x771d71	0x771d71	0x16a0298	Throwing
+classic	PE:6a70b91c:0270a000	noun	54	MECHANICS	0x771d86	0x771d8c	0x16a02a8	Machinery
+classic	PE:6a70b91c:0270a000	noun	55	MAGIC_NATURE	0x771d9b	0x771da1	0x15e39b4	Nature
+classic	PE:6a70b91c:0270a000	noun	56	SNEAK	0x771552	0x771558	0x16994c8	Ambush
+classic	PE:6a70b91c:0270a000	noun	57	DRESS_WOUNDS	0x771e6d	0x771e73	0x16a0178	Wound Dressing
+classic	PE:6a70b91c:0270a000	noun	58	DIAGNOSE	0x771e82	0x771e88	0x16a0188	Diagnostics
+classic	PE:6a70b91c:0270a000	noun	59	SURGERY	0x771e97	0x771e9d	0x16a0198	Surgery
+classic	PE:6a70b91c:0270a000	noun	60	SET_BONE	0x771eac	0x771eb2	0x16a01a0	Bone Setting
+classic	PE:6a70b91c:0270a000	noun	61	SUTURE	0x771ec1	0x771ec1	0x16a01b0	Suturing
+classic	PE:6a70b91c:0270a000	noun	62	CRUTCH_WALK	0x771ed6	0x771edc	0x16a01c0	Crutch-walking
+classic	PE:6a70b91c:0270a000	noun	63	WOOD_BURNING	0x771735	0x77173b	0x169fea8	Wood Burning
+classic	PE:6a70b91c:0270a000	noun	64	LYE_MAKING	0x771720	0x771726	0x169fe98	Lye Making
+classic	PE:6a70b91c:0270a000	noun	65	SOAP_MAKING	0x7716f6	0x7716fc	0x169fe78	Soap Making
+classic	PE:6a70b91c:0270a000	noun	66	POTASH_MAKING	0x77170b	0x771711	0x169fe88	Potash Making
+classic	PE:6a70b91c:0270a000	noun	67	DYER	0x771c8a	0x771c90	0x16a0380	Dyeing
+classic	PE:6a70b91c:0270a000	noun	68	OPERATE_PUMP	0x771c4b	0x771c51	0x16a0358	Pump Operation
+classic	PE:6a70b91c:0270a000	noun	69	SWIMMING	0x771567	0x771567	0x169ff60	Swimming
+classic	PE:6a70b91c:0270a000	noun	70	PERSUASION	0x771591	0x771597	0x169ff78	Persuasion
+classic	PE:6a70b91c:0270a000	noun	71	NEGOTIATION	0x7715a6	0x7715ac	0x169ff88	Negotiation
+classic	PE:6a70b91c:0270a000	noun	72	JUDGING_INTENT	0x7715bb	0x7715c1	0x169ff98	Judging Intent
+classic	PE:6a70b91c:0270a000	noun	73	APPRAISAL	0x7715d0	0x7715d6	0x169ffa8	Appraisal
+classic	PE:6a70b91c:0270a000	noun	74	ORGANIZATION	0x7715e5	0x7715eb	0x169ffb8	Organization
+classic	PE:6a70b91c:0270a000	noun	75	RECORD_KEEPING	0x7715fa	0x771600	0x169ffc8	Record Keeping
+classic	PE:6a70b91c:0270a000	noun	76	LYING	0x77160f	0x771615	0x169ffd8	Lying
+classic	PE:6a70b91c:0270a000	noun	77	INTIMIDATION	0x771624	0x77162a	0x169ffe0	Intimidation
+classic	PE:6a70b91c:0270a000	noun	78	CONVERSATION	0x771639	0x77163f	0x1699770	Conversation
+classic	PE:6a70b91c:0270a000	noun	79	COMEDY	0x77164e	0x771654	0x169fff0	Comedy
+classic	PE:6a70b91c:0270a000	noun	80	FLATTERY	0x771663	0x771663	0x169fff8	Flattery
+classic	PE:6a70b91c:0270a000	noun	81	CONSOLE	0x771678	0x77167e	0x16a0008	Consoling
+classic	PE:6a70b91c:0270a000	noun	82	PACIFY	0x77168d	0x771693	0x16a0018	Pacification
+classic	PE:6a70b91c:0270a000	noun	83	TRACKING	0x7716a2	0x7716a2	0x16a0028	Tracking
+classic	PE:6a70b91c:0270a000	noun	84	KNOWLEDGE_ACQUISITION	0x77185b	0x77185b	0x169fd98	Studying
+classic	PE:6a70b91c:0270a000	noun	85	CONCENTRATION	0x771870	0x771876	0x169fda8	Concentration
+classic	PE:6a70b91c:0270a000	noun	86	DISCIPLINE	0x771885	0x77188b	0x169fdb8	Discipline
+classic	PE:6a70b91c:0270a000	noun	87	SITUATIONAL_AWARENESS	0x77189a	0x7718a0	0x169fdc8	Observation
+classic	PE:6a70b91c:0270a000	noun	88	WRITING	0x7718af	0x7718b5	0x15e8cc8	Writing
+classic	PE:6a70b91c:0270a000	noun	89	PROSE	0x7718c4	0x7718ca	0x169fdd4	Prose
+classic	PE:6a70b91c:0270a000	noun	90	POETRY	0x7718d9	0x7718df	0x169fddc	Poetry
+classic	PE:6a70b91c:0270a000	noun	91	READING	0x7718ee	0x7718f4	0x169fde8	Reading
+classic	PE:6a70b91c:0270a000	noun	92	SPEAKING	0x771903	0x771903	0x169fdf0	Speaking
+classic	PE:6a70b91c:0270a000	noun	93	COORDINATION	0x771a53	0x771a59	0x16a03f0	Coordination
+classic	PE:6a70b91c:0270a000	noun	94	BALANCE	0x771a68	0x771a6e	0x16a0400	Balance
+classic	PE:6a70b91c:0270a000	noun	95	LEADERSHIP	0x771a7d	0x771a83	0x16a0408	Leadership
+classic	PE:6a70b91c:0270a000	noun	96	TEACHING	0x771aa7	0x771aa7	0x16a0430	Teaching
+classic	PE:6a70b91c:0270a000	noun	97	MELEE_COMBAT	0x771abc	0x771abc	0x16a0440	Fighting
+classic	PE:6a70b91c:0270a000	noun	98	RANGED_COMBAT	0x771ad1	0x771ad7	0x16a0450	Archery
+classic	PE:6a70b91c:0270a000	noun	99	WRESTLING	0x771ae6	0x771aec	0x16a0458	Wrestling
+classic	PE:6a70b91c:0270a000	noun	100	BITE	0x771afb	0x771b01	0x16a0464	Biting
+classic	PE:6a70b91c:0270a000	noun	101	GRASP_STRIKE	0x771b10	0x771b10	0x16a0470	Striking
+classic	PE:6a70b91c:0270a000	noun	102	STANCE_STRIKE	0x771b25	0x771b2b	0x16a02e0	Kicking
+classic	PE:6a70b91c:0270a000	noun	103	DODGING	0x771b3a	0x771b40	0x16a02e8	Dodging
+classic	PE:6a70b91c:0270a000	noun	104	MISC_WEAPON	0x771e58	0x771e5e	0x16a0168	Misc. Object
+classic	PE:6a70b91c:0270a000	noun	105	KNAPPING	0x771eeb	0x771eeb	0x16a01d0	Knapping
+classic	PE:6a70b91c:0270a000	noun	106	MILITARY_TACTICS	0x771a92	0x771a98	0x16a0418	Military Tactics
+classic	PE:6a70b91c:0270a000	noun	107	SHEARING	0x771e2e	0x771e2e	0x16a0148	Shearing
+classic	PE:6a70b91c:0270a000	noun	108	SPINNING	0x771e43	0x771e43	0x16a0158	Spinning
+classic	PE:6a70b91c:0270a000	noun	109	POTTERY	0x7717f2	0x7717f8	0x169ff38	Pottery
+classic	PE:6a70b91c:0270a000	noun	110	GLAZING	0x771cc9	0x771ccf	0x16a0240	Glazing
+classic	PE:6a70b91c:0270a000	noun	111	PRESSING	0x771c9f	0x771c9f	0x16a0220	Pressing
+classic	PE:6a70b91c:0270a000	noun	112	BEEKEEPING	0x771cb4	0x771cba	0x16a0230	Beekeeping
+classic	PE:6a70b91c:0270a000	noun	113	WAX_WORKING	0x771807	0x77180d	0x169ff40	Wax Working
+classic	PE:6a70b91c:0270a000	noun	114	CLIMBING	0x771f00	0x771f00	0x16a01e0	Climbing
+classic	PE:6a70b91c:0270a000	noun	115	GELD	0x771e19	0x771e1f	0x16a0140	Gelding
+classic	PE:6a70b91c:0270a000	noun	116	DANCE	0x771918	0x77191e	0x169fdfc	Dance
+classic	PE:6a70b91c:0270a000	noun	117	MAKE_MUSIC	0x77192d	0x771933	0x169fe04	Music
+classic	PE:6a70b91c:0270a000	noun	118	SING_MUSIC	0x771942	0x771948	0x169fe10	Singing
+classic	PE:6a70b91c:0270a000	noun	119	PLAY_KEYBOARD_INSTRUMENT	0x771957	0x77195d	0x169fe18	Keyboard Instrument
+classic	PE:6a70b91c:0270a000	noun	120	PLAY_STRINGED_INSTRUMENT	0x77196c	0x771972	0x169fe30	Stringed Instrument
+classic	PE:6a70b91c:0270a000	noun	121	PLAY_WIND_INSTRUMENT	0x771981	0x771987	0x16a0388	Wind Instrument
+classic	PE:6a70b91c:0270a000	noun	122	PLAY_PERCUSSION_INSTRUMENT	0x771996	0x77199c	0x16a0398	Percussion Instrument
+classic	PE:6a70b91c:0270a000	noun	123	CRITICAL_THINKING	0x7719ab	0x7719b1	0x16a03b0	Critical Thinking
+classic	PE:6a70b91c:0270a000	noun	124	LOGIC	0x7719c0	0x7719c6	0x16a03c4	Logic
+classic	PE:6a70b91c:0270a000	noun	125	MATHEMATICS	0x7719d5	0x7719db	0x15faab0	Mathematics
+classic	PE:6a70b91c:0270a000	noun	126	ASTRONOMY	0x7719ea	0x7719f0	0x15faaa0	Astronomy
+classic	PE:6a70b91c:0270a000	noun	127	CHEMISTRY	0x7719ff	0x771a05	0x15faa80	Chemistry
+classic	PE:6a70b91c:0270a000	noun	128	GEOGRAPHY	0x771a14	0x771a1a	0x15faa70	Geography
+classic	PE:6a70b91c:0270a000	noun	129	OPTICS_ENGINEER	0x771a29	0x771a2f	0x16a03d0	Optics Engineer
+classic	PE:6a70b91c:0270a000	noun	130	FLUID_ENGINEER	0x771a3e	0x771a44	0x16a03e0	Fluid Engineer
+classic	PE:6a70b91c:0270a000	noun	131	PAPERMAKING	0x7717c8	0x7717ce	0x169ff18	Papermaking
+classic	PE:6a70b91c:0270a000	noun	132	BOOKBINDING	0x7717dd	0x7717e3	0x169ff28	Bookbinding
+classic	PE:6a70b91c:0270a000	noun	133	INTRIGUE	0x771f15	0x771f15	0x15e71d0	Intrigue
+classic	PE:6a70b91c:0270a000	noun	134	RIDING	0x77157c	0x771582	0x169ff6c	Riding
+classic	PE:6a70b91c:0270a000	noun	135	CUT_STONE	0x771456	0x77145c	0x16a0098	Stonecutting
+classic	PE:6a70b91c:0270a000	noun	136	CARVE_STONE	0x771441	0x771447	0x16a0088	Stone Carving
+classic	PE:6a70b91c:0270a000	title	0	MINING	0x7721ff	0x772205	0x16038f0	Miner
+classic	PE:6a70b91c:0270a000	title	1	WOODCUTTING	0x772211	0x772217	0x1603910	Woodcutter
+classic	PE:6a70b91c:0270a000	title	2	CARPENTRY	0x772223	0x772229	0x1628000	Carpenter
+classic	PE:6a70b91c:0270a000	title	3	ENGRAVE_STONE	0x77226b	0x77226b	0x16a0210	Engraver
+classic	PE:6a70b91c:0270a000	title	4	MASONRY	0x772277	0x77227d	0x16a0754	Mason
+classic	PE:6a70b91c:0270a000	title	5	ANIMALTRAIN	0x772289	0x77228f	0x16a0760	Animal Trainer
+classic	PE:6a70b91c:0270a000	title	6	ANIMALCARE	0x77229b	0x7722a1	0x16a0770	Animal Caretaker
+classic	PE:6a70b91c:0270a000	title	7	DISSECT_FISH	0x7722ad	0x7722b3	0x16a0788	Fish Dissector
+classic	PE:6a70b91c:0270a000	title	8	DISSECT_VERMIN	0x7722bf	0x7722c5	0x16a0798	Animal Dissector
+classic	PE:6a70b91c:0270a000	title	9	PROCESSFISH	0x7722d1	0x7722d7	0x16a07b0	Fish Cleaner
+classic	PE:6a70b91c:0270a000	title	10	BUTCHER	0x7722e3	0x7722e9	0x1616fc8	Butcher
+classic	PE:6a70b91c:0270a000	title	11	TRAPPING	0x7722f5	0x7722fb	0x16a07c0	Trapper
+classic	PE:6a70b91c:0270a000	title	12	TANNER	0x7729c2	0x7729c8	0x1627f64	Tanner
+classic	PE:6a70b91c:0270a000	title	13	WEAVING	0x772a2e	0x772a34	0x16a0a84	Weaver
+classic	PE:6a70b91c:0270a000	title	14	BREWING	0x772a40	0x772a46	0x16a0a8c	Brewer
+classic	PE:6a70b91c:0270a000	title	15	CLOTHESMAKING	0x772a52	0x772a52	0x164cc80	Clothier
+classic	PE:6a70b91c:0270a000	title	16	MILLING	0x772a5e	0x772a64	0x16a0904	Miller
+classic	PE:6a70b91c:0270a000	title	17	PROCESSPLANTS	0x772a70	0x772a70	0x16a0910	Thresher
+classic	PE:6a70b91c:0270a000	title	18	CHEESEMAKING	0x772af4	0x772afa	0x16a0958	Cheesemaker
+classic	PE:6a70b91c:0270a000	title	19	MILK	0x772b06	0x772b0c	0x16a0964	Milker
+classic	PE:6a70b91c:0270a000	title	20	COOK	0x772ae2	0x772ae8	0x1638128	Cook
+classic	PE:6a70b91c:0270a000	title	21	PLANT	0x772307	0x77230d	0x16a07c8	Planter
+classic	PE:6a70b91c:0270a000	title	22	HERBALISM	0x772319	0x77231f	0x16a07d0	Herbalist
+classic	PE:6a70b91c:0270a000	title	23	FISH	0x772445	0x7724e8	0x16a06e0	Fisherman
+classic	PE:6a70b91c:0270a000	title	24	SMELT	0x7724f4	0x7724fa	0x16a06f0	Furnace Operator
+classic	PE:6a70b91c:0270a000	title	25	EXTRACT_STRAND	0x772506	0x77250c	0x16a0708	Strand Extractor
+classic	PE:6a70b91c:0270a000	title	26	FORGE_WEAPON	0x772560	0x772566	0x16a0568	Weaponsmith
+classic	PE:6a70b91c:0270a000	title	27	FORGE_ARMOR	0x772572	0x772578	0x16a0578	Armorsmith
+classic	PE:6a70b91c:0270a000	title	28	FORGE_FURNITURE	0x772584	0x77258a	0x16a0588	Blacksmith
+classic	PE:6a70b91c:0270a000	title	29	CUTGEM	0x772596	0x77259c	0x16a0598	Gem Cutter
+classic	PE:6a70b91c:0270a000	title	30	ENCRUSTGEM	0x7725a8	0x7725ae	0x16a05a8	Gem Setter
+classic	PE:6a70b91c:0270a000	title	31	WOODCRAFT	0x7725ba	0x7725c0	0x16a05b8	Woodcrafter
+classic	PE:6a70b91c:0270a000	title	32	STONECRAFT	0x772614	0x77261a	0x16a0600	Stone Crafter
+classic	PE:6a70b91c:0270a000	title	33	METALCRAFT	0x772626	0x77262c	0x16a0610	Metal Crafter
+classic	PE:6a70b91c:0270a000	title	34	GLASSMAKER	0x772638	0x77263e	0x16a0620	Glassmaker
+classic	PE:6a70b91c:0270a000	title	35	LEATHERWORK	0x7729b0	0x7729b6	0x16a0a48	Leatherworker
+classic	PE:6a70b91c:0270a000	title	36	BONECARVE	0x772a1c	0x772a22	0x16a0a78	Bone Carver
+classic	PE:6a70b91c:0270a000	title	37	AXE	0x7728cc	0x7728d2	0x16a0b10	Axeman
+classic	PE:6a70b91c:0270a000	title	38	SWORD	0x7728de	0x7728e4	0x16a0b18	Swordsman
+classic	PE:6a70b91c:0270a000	title	39	DAGGER	0x772abe	0x772ac4	0x16a0940	Knife User
+classic	PE:6a70b91c:0270a000	title	40	MACE	0x7728f0	0x7728f6	0x16a0b28	Maceman
+classic	PE:6a70b91c:0270a000	title	41	HAMMER	0x772902	0x772908	0x16a0b30	Hammerman
+classic	PE:6a70b91c:0270a000	title	42	SPEAR	0x772914	0x772914	0x16a09c8	Spearman
+classic	PE:6a70b91c:0270a000	title	43	CROSSBOW	0x772920	0x772926	0x16a09d8	Crossbowman
+classic	PE:6a70b91c:0270a000	title	44	SHIELD	0x772956	0x77295c	0x16a09f8	Shield User
+classic	PE:6a70b91c:0270a000	title	45	ARMOR	0x772968	0x77296e	0x16a0a08	Armor User
+classic	PE:6a70b91c:0270a000	title	46	SIEGECRAFT	0x77297a	0x772980	0x16a0a18	Siege Engineer
+classic	PE:6a70b91c:0270a000	title	47	SIEGEOPERATE	0x77298c	0x772992	0x16a0a28	Siege Operator
+classic	PE:6a70b91c:0270a000	title	48	BOWYER	0x772235	0x77223b	0x162800c	Bowyer
+classic	PE:6a70b91c:0270a000	title	49	PIKE	0x772932	0x772938	0x16a09e8	Pikeman
+classic	PE:6a70b91c:0270a000	title	50	WHIP	0x772ad0	0x772ad6	0x16a094c	Lasher
+classic	PE:6a70b91c:0270a000	title	51	BOW	0x772944	0x77294a	0x16a09f0	Bowman
+classic	PE:6a70b91c:0270a000	title	52	BLOWGUN	0x772a7c	0x772a82	0x16a0920	Blowgunner
+classic	PE:6a70b91c:0270a000	title	53	THROW	0x772a8e	0x772a94	0x16a0930	Thrower
+classic	PE:6a70b91c:0270a000	title	54	MECHANICS	0x772aa0	0x772aa0	0x1628028	Mechanic
+classic	PE:6a70b91c:0270a000	title	55	MAGIC_NATURE	0x772aac	0x772ab2	0x16a0938	Druid
+classic	PE:6a70b91c:0270a000	title	56	SNEAK	0x77232b	0x77232b	0x16a07e0	Ambusher
+classic	PE:6a70b91c:0270a000	title	57	DRESS_WOUNDS	0x772b60	0x772b66	0x16a09a0	Wound Dresser
+classic	PE:6a70b91c:0270a000	title	58	DIAGNOSE	0x772b72	0x772b78	0x15fadc8	Diagnostician
+classic	PE:6a70b91c:0270a000	title	59	SURGERY	0x772b84	0x772b8a	0x15fadc0	Surgeon
+classic	PE:6a70b91c:0270a000	title	60	SET_BONE	0x772b96	0x772b9c	0x1627938	Bone Doctor
+classic	PE:6a70b91c:0270a000	title	61	SUTURE	0x772ba8	0x772bae	0x16a09b0	Suturer
+classic	PE:6a70b91c:0270a000	title	62	CRUTCH_WALK	0x772bba	0x772bc0	0x16a09b8	Crutch-walker
+classic	PE:6a70b91c:0270a000	title	63	WOOD_BURNING	0x77254e	0x772554	0x16a0748	Wood Burner
+classic	PE:6a70b91c:0270a000	title	64	LYE_MAKING	0x77253c	0x772542	0x16a0738	Lye Maker
+classic	PE:6a70b91c:0270a000	title	65	SOAP_MAKING	0x772518	0x77251e	0x16a071c	Soaper
+classic	PE:6a70b91c:0270a000	title	66	POTASH_MAKING	0x77252a	0x772530	0x16a0728	Potash Maker
+classic	PE:6a70b91c:0270a000	title	67	DYER	0x7729d4	0x7729da	0x1627f5c	Dyer
+classic	PE:6a70b91c:0270a000	title	68	OPERATE_PUMP	0x77299e	0x7729a4	0x16a0a38	Pump Operator
+classic	PE:6a70b91c:0270a000	title	69	SWIMMING	0x772337	0x77233d	0x16a07f0	Swimmer
+classic	PE:6a70b91c:0270a000	title	70	PERSUASION	0x77235b	0x772361	0x16a0800	Persuader
+classic	PE:6a70b91c:0270a000	title	71	NEGOTIATION	0x77236d	0x772373	0x16a0810	Negotiator
+classic	PE:6a70b91c:0270a000	title	72	JUDGING_INTENT	0x77237f	0x772385	0x16a0820	Judge of Intent
+classic	PE:6a70b91c:0270a000	title	73	APPRAISAL	0x772391	0x772397	0x16a0830	Appraiser
+classic	PE:6a70b91c:0270a000	title	74	ORGANIZATION	0x7723a3	0x7723a9	0x16a0658	Organizer
+classic	PE:6a70b91c:0270a000	title	75	RECORD_KEEPING	0x7723b5	0x7723bb	0x16a0668	Record Keeper
+classic	PE:6a70b91c:0270a000	title	76	LYING	0x7723c7	0x7723cd	0x16a0678	Liar
+classic	PE:6a70b91c:0270a000	title	77	INTIMIDATION	0x7723d9	0x7723df	0x16a0680	Intimidator
+classic	PE:6a70b91c:0270a000	title	78	CONVERSATION	0x7723eb	0x7723f1	0x16a0690	Conversationalist
+classic	PE:6a70b91c:0270a000	title	79	COMEDY	0x7723fd	0x7723fd	0x16a06a8	Comedian
+classic	PE:6a70b91c:0270a000	title	80	FLATTERY	0x772409	0x77240f	0x15f9b00	Flatterer
+classic	PE:6a70b91c:0270a000	title	81	CONSOLE	0x77241b	0x77241b	0x16a06b8	Consoler
+classic	PE:6a70b91c:0270a000	title	82	PACIFY	0x772427	0x772427	0x16a06c8	Pacifier
+classic	PE:6a70b91c:0270a000	title	83	TRACKING	0x772433	0x772439	0x16a06d8	Tracker
+classic	PE:6a70b91c:0270a000	title	84	KNOWLEDGE_ACQUISITION	0x77264a	0x772650	0x16a0630	Student
+classic	PE:6a70b91c:0270a000	title	85	CONCENTRATION	0x77265c	0x772662	0x169fda8	Concentration
+classic	PE:6a70b91c:0270a000	title	86	DISCIPLINE	0x77266e	0x772674	0x169fdb8	Discipline
+classic	PE:6a70b91c:0270a000	title	87	SITUATIONAL_AWARENESS	0x772680	0x772680	0x16a0638	Observer
+classic	PE:6a70b91c:0270a000	title	88	WRITING	0x77268c	0x772692	0x16a0648	Wordsmith
+classic	PE:6a70b91c:0270a000	title	89	PROSE	0x77269e	0x7726a4	0x16a047c	Writer
+classic	PE:6a70b91c:0270a000	title	90	POETRY	0x7726b0	0x7726b6	0x16a0484	Poet
+classic	PE:6a70b91c:0270a000	title	91	READING	0x7726c2	0x7726c8	0x16a048c	Reader
+classic	PE:6a70b91c:0270a000	title	92	SPEAKING	0x7726d4	0x7726da	0x16a0498	Speaker
+classic	PE:6a70b91c:0270a000	title	93	COORDINATION	0x7727fa	0x772800	0x16a03f0	Coordination
+classic	PE:6a70b91c:0270a000	title	94	BALANCE	0x77280c	0x772812	0x16a0400	Balance
+classic	PE:6a70b91c:0270a000	title	95	LEADERSHIP	0x77281e	0x772824	0x16a0aac	Leader
+classic	PE:6a70b91c:0270a000	title	96	TEACHING	0x772842	0x772848	0x16a0ac8	Teacher
+classic	PE:6a70b91c:0270a000	title	97	MELEE_COMBAT	0x772854	0x77285a	0x16a0ad0	Fighter
+classic	PE:6a70b91c:0270a000	title	98	RANGED_COMBAT	0x772866	0x77286c	0x16a0ad8	Archer
+classic	PE:6a70b91c:0270a000	title	99	WRESTLING	0x772878	0x772878	0x16a0ae0	Wrestler
+classic	PE:6a70b91c:0270a000	title	100	BITE	0x772884	0x77288a	0x16a0aec	Biter
+classic	PE:6a70b91c:0270a000	title	101	GRASP_STRIKE	0x772896	0x77289c	0x16a0af8	Striker
+classic	PE:6a70b91c:0270a000	title	102	STANCE_STRIKE	0x7728a8	0x7728ae	0x16a0b00	Kicker
+classic	PE:6a70b91c:0270a000	title	103	DODGING	0x7728ba	0x7728c0	0x16a0b08	Dodger
+classic	PE:6a70b91c:0270a000	title	104	MISC_WEAPON	0x772b4e	0x772b54	0x16a0988	Misc. Object User
+classic	PE:6a70b91c:0270a000	title	105	KNAPPING	0x7726e6	0x7726ec	0x16a04a0	Knapper
+classic	PE:6a70b91c:0270a000	title	106	MILITARY_TACTICS	0x772830	0x772836	0x16a0ab8	Tactician
+classic	PE:6a70b91c:0270a000	title	107	SHEARING	0x772b2a	0x772b30	0x16a0978	Shearer
+classic	PE:6a70b91c:0270a000	title	108	SPINNING	0x772b3c	0x772b42	0x16a0980	Spinner
+classic	PE:6a70b91c:0270a000	title	109	POTTERY	0x7725f0	0x7725f6	0x16a05e4	Potter
+classic	PE:6a70b91c:0270a000	title	110	GLAZING	0x772a0a	0x772a10	0x16a0a6c	Glazer
+classic	PE:6a70b91c:0270a000	title	111	PRESSING	0x7729e6	0x7729ec	0x16a0a58	Presser
+classic	PE:6a70b91c:0270a000	title	112	BEEKEEPING	0x7729f8	0x7729fe	0x16a0a60	Beekeeper
+classic	PE:6a70b91c:0270a000	title	113	WAX_WORKING	0x772602	0x772608	0x16a05f0	Wax Worker
+classic	PE:6a70b91c:0270a000	title	114	CLIMBING	0x772bcc	0x772bd2	0x16a0840	Climber
+classic	PE:6a70b91c:0270a000	title	115	GELD	0x772b18	0x772b1e	0x16a096c	Gelder
+classic	PE:6a70b91c:0270a000	title	116	DANCE	0x7726f8	0x7726fe	0x16a04a8	Dancer
+classic	PE:6a70b91c:0270a000	title	117	MAKE_MUSIC	0x77270a	0x77270a	0x16a04b0	Musician
+classic	PE:6a70b91c:0270a000	title	118	SING_MUSIC	0x772716	0x77271c	0x16a04bc	Singer
+classic	PE:6a70b91c:0270a000	title	119	PLAY_KEYBOARD_INSTRUMENT	0x772728	0x77272e	0x16a04c8	Keyboardist
+classic	PE:6a70b91c:0270a000	title	120	PLAY_STRINGED_INSTRUMENT	0x77273a	0x772740	0x16a04d8	Stringed Instrumentalist
+classic	PE:6a70b91c:0270a000	title	121	PLAY_WIND_INSTRUMENT	0x77274c	0x772752	0x16a04f8	Wind Instrumentalist
+classic	PE:6a70b91c:0270a000	title	122	PLAY_PERCUSSION_INSTRUMENT	0x77275e	0x772764	0x16a0510	Percussionist
+classic	PE:6a70b91c:0270a000	title	123	CRITICAL_THINKING	0x772770	0x772776	0x16a0520	Critical Thinker
+classic	PE:6a70b91c:0270a000	title	124	LOGIC	0x772782	0x772782	0x16a0538	Logician
+classic	PE:6a70b91c:0270a000	title	125	MATHEMATICS	0x77278e	0x772794	0x16a0548	Mathematician
+classic	PE:6a70b91c:0270a000	title	126	ASTRONOMY	0x7727a0	0x7727a6	0x16a0558	Astronomer
+classic	PE:6a70b91c:0270a000	title	127	CHEMISTRY	0x7727b2	0x7727b8	0x16a0a98	Chemist
+classic	PE:6a70b91c:0270a000	title	128	GEOGRAPHY	0x7727c4	0x7727ca	0x16a0aa0	Geographer
+classic	PE:6a70b91c:0270a000	title	129	OPTICS_ENGINEER	0x7727d6	0x7727dc	0x16a03d0	Optics Engineer
+classic	PE:6a70b91c:0270a000	title	130	FLUID_ENGINEER	0x7727e8	0x7727ee	0x16a03e0	Fluid Engineer
+classic	PE:6a70b91c:0270a000	title	131	PAPERMAKING	0x7725cc	0x7725d2	0x16a05c8	Papermaker
+classic	PE:6a70b91c:0270a000	title	132	BOOKBINDING	0x7725de	0x7725e4	0x16a05d8	Bookbinder
+classic	PE:6a70b91c:0270a000	title	133	INTRIGUE	0x772bde	0x772be4	0x16a0848	Schemer
+classic	PE:6a70b91c:0270a000	title	134	RIDING	0x772349	0x77234f	0x16a07f8	Rider
+classic	PE:6a70b91c:0270a000	title	135	CUT_STONE	0x772259	0x77225f	0x16a0200	Stonecutter
+classic	PE:6a70b91c:0270a000	title	136	CARVE_STONE	0x772247	0x77224d	0x16a01f0	Stone Carver
+classic	PE:6a70b91c:0270a000	title	137	MODSKILL01	0x772bf0	0x772bf6	0x16a0850	Skill 1
+classic	PE:6a70b91c:0270a000	title	138	MODSKILL02	0x772c02	0x772c08	0x16a0858	Skill 2
+classic	PE:6a70b91c:0270a000	title	139	MODSKILL03	0x772c11	0x772c17	0x16a0860	Skill 3
+classic	PE:6a70b91c:0270a000	title	140	MODSKILL04	0x772c20	0x772c26	0x16a0868	Skill 4
+classic	PE:6a70b91c:0270a000	title	141	MODSKILL05	0x772c2f	0x772c35	0x16a0870	Skill 5
+classic	PE:6a70b91c:0270a000	title	142	MODSKILL06	0x772c3e	0x772c44	0x16a0878	Skill 6
+classic	PE:6a70b91c:0270a000	title	143	MODSKILL07	0x772c4d	0x772c53	0x16a0880	Skill 7
+classic	PE:6a70b91c:0270a000	title	144	MODSKILL08	0x772c5c	0x772c62	0x16a0888	Skill 8
+classic	PE:6a70b91c:0270a000	title	145	MODSKILL09	0x772c6b	0x772c71	0x16a0890	Skill 9
+classic	PE:6a70b91c:0270a000	title	146	MODSKILL10	0x772c7a	0x772c7a	0x16a0898	Skill 10
+classic	PE:6a70b91c:0270a000	rating	0		0x77121a	0x77121a	0x169f8e0	Dabbling
+classic	PE:6a70b91c:0270a000	rating	1		0x77122f	0x77122f	0x169f8ec	Novice
+classic	PE:6a70b91c:0270a000	rating	2		0x771244	0x771244	0x169f8f8	Adequate
+classic	PE:6a70b91c:0270a000	rating	3		0x771259	0x771259	0x169f908	Competent
+classic	PE:6a70b91c:0270a000	rating	4		0x77126e	0x77126e	0x169f918	Skilled
+classic	PE:6a70b91c:0270a000	rating	5		0x771283	0x771283	0x169f920	Proficient
+classic	PE:6a70b91c:0270a000	rating	6		0x771298	0x771298	0x169f930	Talented
+classic	PE:6a70b91c:0270a000	rating	7		0x7712ad	0x7712ad	0x169f93c	Adept
+classic	PE:6a70b91c:0270a000	rating	8		0x7712c2	0x7712c2	0x162563c	Expert
+classic	PE:6a70b91c:0270a000	rating	9		0x7712d7	0x7712d7	0x169f948	Professional
+classic	PE:6a70b91c:0270a000	rating	10		0x7712ec	0x7712ec	0x169f958	Accomplished
+classic	PE:6a70b91c:0270a000	rating	11		0x771301	0x771301	0x1641bdc	Great
+classic	PE:6a70b91c:0270a000	rating	12		0x771316	0x771316	0x15fb264	Master
+classic	PE:6a70b91c:0270a000	rating	13		0x77132b	0x77132b	0x16a0038	High Master
+classic	PE:6a70b91c:0270a000	rating	14		0x771340	0x771340	0x16a0048	Grand Master
+classic	PE:6a70b91c:0270a000	rating	15		0x771355	0x771355	0x16a0058	Legendary
+classic	PE:6a70b91c:0270a000	description	0	MINING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	1	WOODCUTTING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	2	CARPENTRY	0x62888d	0x62888d	0x165ba10	Crafting skill.
+classic	PE:6a70b91c:0270a000	description	3	ENGRAVE_STONE	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	4	MASONRY	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	5	ANIMALTRAIN	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	6	ANIMALCARE	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	7	DISSECT_FISH	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	8	DISSECT_VERMIN	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	9	PROCESSFISH	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	10	BUTCHER	0x628857	0x628857	0x165b9e8	Requires an item with a sharp edge.
+classic	PE:6a70b91c:0270a000	description	11	TRAPPING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	12	TANNER	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	13	WEAVING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	14	BREWING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	15	CLOTHESMAKING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	16	MILLING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	17	PROCESSPLANTS	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	18	CHEESEMAKING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	19	MILK	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	20	COOK	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	21	PLANT	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	22	HERBALISM	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	23	FISH	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	24	SMELT	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	25	EXTRACT_STRAND	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	26	FORGE_WEAPON	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	27	FORGE_ARMOR	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	28	FORGE_FURNITURE	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	29	CUTGEM	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	30	ENCRUSTGEM	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	31	WOODCRAFT	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	32	STONECRAFT	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	33	METALCRAFT	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	34	GLASSMAKER	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	35	LEATHERWORK	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	36	BONECARVE	0x62888d	0x62888d	0x165ba10	Crafting skill.
+classic	PE:6a70b91c:0270a000	description	37	AXE	0x6283e9	0x6283e9	0x165b7c0	Weapon skill.
+classic	PE:6a70b91c:0270a000	description	38	SWORD	0x6283e9	0x6283e9	0x165b7c0	Weapon skill.
+classic	PE:6a70b91c:0270a000	description	39	DAGGER	0x6283e9	0x6283e9	0x165b7c0	Weapon skill.
+classic	PE:6a70b91c:0270a000	description	40	MACE	0x6283e9	0x6283e9	0x165b7c0	Weapon skill.
+classic	PE:6a70b91c:0270a000	description	41	HAMMER	0x6283e9	0x6283e9	0x165b7c0	Weapon skill.
+classic	PE:6a70b91c:0270a000	description	42	SPEAR	0x6283e9	0x6283e9	0x165b7c0	Weapon skill.
+classic	PE:6a70b91c:0270a000	description	43	CROSSBOW	0x6283e9	0x6283e9	0x165b7c0	Weapon skill.
+classic	PE:6a70b91c:0270a000	description	44	SHIELD	0x62863b	0x62863b	0x165bc90	Affects ability to block melee and ranged attacks with a shield.
+classic	PE:6a70b91c:0270a000	description	45	ARMOR	0x628671	0x628671	0x165bb08	Affects ability to move quickly and dodge while armored.
+classic	PE:6a70b91c:0270a000	description	46	SIEGECRAFT	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	47	SIEGEOPERATE	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	48	BOWYER	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	49	PIKE	0x6283e9	0x6283e9	0x165b7c0	Weapon skill.
+classic	PE:6a70b91c:0270a000	description	50	WHIP	0x6283e9	0x6283e9	0x165b7c0	Weapon skill.
+classic	PE:6a70b91c:0270a000	description	51	BOW	0x6283e9	0x6283e9	0x165b7c0	Weapon skill.
+classic	PE:6a70b91c:0270a000	description	52	BLOWGUN	0x6283e9	0x6283e9	0x165b7c0	Weapon skill.
+classic	PE:6a70b91c:0270a000	description	53	THROW	0x6287b5	0x6287b5	0x165baa8	Ability to throw objects.
+classic	PE:6a70b91c:0270a000	description	54	MECHANICS	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	55	MAGIC_NATURE	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	56	SNEAK	0x628563	0x628563	0x165b788	Affects ability to remain hidden while sneaking.
+classic	PE:6a70b91c:0270a000	description	57	DRESS_WOUNDS	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	58	DIAGNOSE	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	59	SURGERY	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	60	SET_BONE	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	61	SUTURE	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	62	CRUTCH_WALK	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	63	WOOD_BURNING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	64	LYE_MAKING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	65	SOAP_MAKING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	66	POTASH_MAKING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	67	DYER	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	68	OPERATE_PUMP	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	69	SWIMMING	0x6284f7	0x6284f7	0x165b728	Required to swim well without floundering.
+classic	PE:6a70b91c:0270a000	description	70	PERSUASION	0x628a73	0x628a73	0x165c450	Affects ability to state values, press arguments, and persuasion tactics in interrogation.
+classic	PE:6a70b91c:0270a000	description	71	NEGOTIATION	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	72	JUDGING_INTENT	0x628adf	0x628adf	0x165c2f8	Allows insight into emotional states during conversations.
+classic	PE:6a70b91c:0270a000	description	73	APPRAISAL	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	74	ORGANIZATION	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	75	RECORD_KEEPING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	76	LYING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	77	INTIMIDATION	0x628aa9	0x628aa9	0x165c4b0	Affects argument dismissal and intimidation tactics in interrogation.
+classic	PE:6a70b91c:0270a000	description	78	CONVERSATION	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	79	COMEDY	0x628b15	0x628b15	0x165c338	Affects response to jokes.
+classic	PE:6a70b91c:0270a000	description	80	FLATTERY	0x628b4b	0x628b4b	0x165c360	Affects response to attempts at flattery in arguments and generally.
+classic	PE:6a70b91c:0270a000	description	81	CONSOLE	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	82	PACIFY	0x628b7e	0x628b7e	0x165c3b0	Affects attempts to calm people or to respond passively in arguments.
+classic	PE:6a70b91c:0270a000	description	83	TRACKING	0x628599	0x628599	0x165bbd0	Affects ability to spot and interpret tracks and other spoor.
+classic	PE:6a70b91c:0270a000	description	84	KNOWLEDGE_ACQUISITION	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	85	CONCENTRATION	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	86	DISCIPLINE	0x628605	0x628605	0x165bc58	Affects ability to withstand pain and stress.
+classic	PE:6a70b91c:0270a000	description	87	SITUATIONAL_AWARENESS	0x6284c1	0x6284c1	0x165b6c0	Affects trap detection, ambusher detection, charge defense, and provides enemy attack information.
+classic	PE:6a70b91c:0270a000	description	88	WRITING	0x6288f9	0x6288f9	0x165c4f8	Has a minor affect on all writing (poetry and prose.)
+classic	PE:6a70b91c:0270a000	description	89	PROSE	0x62892f	0x62892f	0x165c530	Affects the quality of writing aside from poetry.
+classic	PE:6a70b91c:0270a000	description	90	POETRY	0x628965	0x628965	0x165c568	Affects the quality of poetry.
+classic	PE:6a70b91c:0270a000	description	91	READING	0x6288c3	0x6288c3	0x165ba20	A novice level is required to read anything.
+classic	PE:6a70b91c:0270a000	description	92	SPEAKING	0x62899b	0x62899b	0x165c590	Affects all spoken performances, from poetry recitals to preaching to storytelling to certain musical forms.
+classic	PE:6a70b91c:0270a000	description	93	COORDINATION	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	94	BALANCE	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	95	LEADERSHIP	0x628a3d	0x628a3d	0x165b8d8	Affects maximum number of followers.
+classic	PE:6a70b91c:0270a000	description	96	TEACHING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	97	MELEE_COMBAT	0x62841f	0x62841f	0x165b7d0	Affects charging, your combat opportunities, and enemy combat opportunities.
+classic	PE:6a70b91c:0270a000	description	98	RANGED_COMBAT	0x62848b	0x62848b	0x165b850	Partially used in place of low ranged skills.
+classic	PE:6a70b91c:0270a000	description	99	WRESTLING	0x6286dd	0x6286dd	0x165bb80	Affects wrestling and charging.
+classic	PE:6a70b91c:0270a000	description	100	BITE	0x62877f	0x62877f	0x165ba80	Affects attacks with mouths and teeth.
+classic	PE:6a70b91c:0270a000	description	101	GRASP_STRIKE	0x628713	0x628713	0x165bba0	Affects attacks with hand-like appendages.
+classic	PE:6a70b91c:0270a000	description	102	STANCE_STRIKE	0x628749	0x628749	0x165ba50	Affects attacks with foot-like appendages.
+classic	PE:6a70b91c:0270a000	description	103	DODGING	0x6286a7	0x6286a7	0x165bb48	Affects ability to dodge melee and ranged attacks.
+classic	PE:6a70b91c:0270a000	description	104	MISC_WEAPON	0x6287eb	0x6287eb	0x165bac8	Ability to fight with objects not covered by other skills.
+classic	PE:6a70b91c:0270a000	description	105	KNAPPING	0x628821	0x628821	0x165b9c0	Create a sharp rock with two rocks.
+classic	PE:6a70b91c:0270a000	description	106	MILITARY_TACTICS	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	107	SHEARING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	108	SPINNING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	109	POTTERY	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	110	GLAZING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	111	PRESSING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	112	BEEKEEPING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	113	WAX_WORKING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	114	CLIMBING	0x62852d	0x62852d	0x165b758	Required to climb difficult surfaces safely.
+classic	PE:6a70b91c:0270a000	description	115	GELD	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	116	DANCE	0x628a07	0x628a07	0x165c438	Performance skill.
+classic	PE:6a70b91c:0270a000	description	117	MAKE_MUSIC	0x6289d1	0x6289d1	0x165c3f8	Partially used in place of low musical performance skills.
+classic	PE:6a70b91c:0270a000	description	118	SING_MUSIC	0x628a07	0x628a07	0x165c438	Performance skill.
+classic	PE:6a70b91c:0270a000	description	119	PLAY_KEYBOARD_INSTRUMENT	0x628a07	0x628a07	0x165c438	Performance skill.
+classic	PE:6a70b91c:0270a000	description	120	PLAY_STRINGED_INSTRUMENT	0x628a07	0x628a07	0x165c438	Performance skill.
+classic	PE:6a70b91c:0270a000	description	121	PLAY_WIND_INSTRUMENT	0x628a07	0x628a07	0x165c438	Performance skill.
+classic	PE:6a70b91c:0270a000	description	122	PLAY_PERCUSSION_INSTRUMENT	0x628a07	0x628a07	0x165c438	Performance skill.
+classic	PE:6a70b91c:0270a000	description	123	CRITICAL_THINKING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	124	LOGIC	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	125	MATHEMATICS	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	126	ASTRONOMY	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	127	CHEMISTRY	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	128	GEOGRAPHY	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	129	OPTICS_ENGINEER	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	130	FLUID_ENGINEER	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	131	PAPERMAKING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	132	BOOKBINDING	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	133	INTRIGUE	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	134	RIDING	0x6285cf	0x6285cf	0x165bc10	Improves combat opportunities and ranged accuracy while mounted.
+classic	PE:6a70b91c:0270a000	description	135	CUT_STONE	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	136	CARVE_STONE	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	137	MODSKILL01	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	138	MODSKILL02	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	139	MODSKILL03	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	140	MODSKILL04	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	141	MODSKILL05	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	142	MODSKILL06	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	143	MODSKILL07	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	144	MODSKILL08	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	145	MODSKILL09	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	description	146	MODSKILL10	0x628bb1	0x628bb1	0x165c260	Not useful unless you retire and subsequently become a resident in Fortress mode.
+classic	PE:6a70b91c:0270a000	archetype	37	AXE	0x63d4f9			Axeman
+classic	PE:6a70b91c:0270a000	archetype	38	SWORD	0x63d4f9			Swordsman
+classic	PE:6a70b91c:0270a000	archetype	39	DAGGER	0x63d4f9			Knife User
+classic	PE:6a70b91c:0270a000	archetype	40	MACE	0x63d4f9			Maceman
+classic	PE:6a70b91c:0270a000	archetype	41	HAMMER	0x63d4f9			Hammerman
+classic	PE:6a70b91c:0270a000	archetype	42	SPEAR	0x63d4f9			Spearman
+classic	PE:6a70b91c:0270a000	archetype	43	CROSSBOW	0x63d702			Crossbowman
+classic	PE:6a70b91c:0270a000	archetype	49	PIKE	0x63d4f9			Pikeman
+classic	PE:6a70b91c:0270a000	archetype	50	WHIP	0x63d4f9			Lasher
+classic	PE:6a70b91c:0270a000	archetype	51	BOW	0x63d702			Bowman
+classic	PE:6a70b91c:0270a000	archetype	52	BLOWGUN	0x63d702			Blowgunner
+classic	PE:6a70b91c:0270a000	archetype	90	POETRY	0x63da79			Poet
+classic	PE:6a70b91c:0270a000	archetype	92	SPEAKING	0x63d8e9			Speaker
+classic	PE:6a70b91c:0270a000	archetype	99	WRESTLING	0x63d855			Wrestler
+classic	PE:6a70b91c:0270a000	archetype	116	DANCE	0x63dbcb			Dancer
+classic	PE:6a70b91c:0270a000	archetype	118	SING_MUSIC	0x63db37			Singer
+classic	PE:6a70b91c:0270a000	archetype	119	PLAY_KEYBOARD_INSTRUMENT	0x63db37			Keyboardist
+classic	PE:6a70b91c:0270a000	archetype	120	PLAY_STRINGED_INSTRUMENT	0x63db37			Stringed Instrumentalist
+classic	PE:6a70b91c:0270a000	archetype	121	PLAY_WIND_INSTRUMENT	0x63db37			Wind Instrumentalist
+classic	PE:6a70b91c:0270a000	archetype	122	PLAY_PERCUSSION_INSTRUMENT	0x63db37			Percussionist
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	0	MELEE_COMBAT				Fighter
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	1	RANGED_COMBAT				Archer
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	2	SITUATIONAL_AWARENESS				Observer
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	3	SWIMMING				Swimmer
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	4	CLIMBING				Climber
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	5	SNEAK				Ambusher
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	6	TRACKING				Tracker
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	7	RIDING				Rider
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	8	DISCIPLINE				Discipline
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	9	SHIELD				Shield User
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	10	ARMOR				Armor User
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	11	DODGING				Dodger
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	12	WRESTLING				Wrestler
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	13	GRASP_STRIKE				Striker
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	14	STANCE_STRIKE				Kicker
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	15	BITE				Biter
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	16	THROW				Thrower
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	17	MISC_WEAPON				Misc. Object User
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	18	KNAPPING				Knapper
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	19	BONECARVE				Bone Carver
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	20	BUTCHER				Butcher
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	21	CARPENTRY				Carpenter
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	22	READING				Reader
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	23	WRITING				Wordsmith
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	24	PROSE				Writer
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	25	POETRY				Poet
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	26	SPEAKING				Speaker
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	27	MAKE_MUSIC				Musician
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	28	SING_MUSIC				Singer
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	29	PLAY_KEYBOARD_INSTRUMENT				Keyboardist
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	30	PLAY_STRINGED_INSTRUMENT				Stringed Instrumentalist
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	31	PLAY_WIND_INSTRUMENT				Wind Instrumentalist
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	32	PLAY_PERCUSSION_INSTRUMENT				Percussionist
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	33	DANCE				Dancer
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	34	LEADERSHIP				Leader
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	35	PERSUASION				Persuader
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	36	NEGOTIATION				Negotiator
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	37	LYING				Liar
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	38	INTIMIDATION				Intimidator
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	39	JUDGING_INTENT				Judge of Intent
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	40	CONVERSATION				Conversationalist
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	41	COMEDY				Comedian
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	42	FLATTERY				Flatterer
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	43	CONSOLE				Consoler
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	44	PACIFY				Pacifier
+classic	PE:6a70b91c:0270a000	unrestricted-fixed-skill	45	INTRIGUE				Schemer

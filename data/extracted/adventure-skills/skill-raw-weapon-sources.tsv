@@ -1,0 +1,57 @@
+edition	image	weapon	native_operand	skill_token	file	line	raw_token
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_WHIP	melee+0xd0	WHIP	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	8	SKILL:WHIP
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_AXE_BATTLE	melee+0xd0	AXE	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	19	SKILL:AXE
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_HAMMER_WAR	melee+0xd0	HAMMER	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	37	SKILL:HAMMER
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_SWORD_SHORT	melee+0xd0	SWORD	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	47	SKILL:SWORD
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_SPEAR	melee+0xd0	SPEAR	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	64	SKILL:SPEAR
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_MACE	melee+0xd0	MACE	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	76	SKILL:MACE
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_CROSSBOW	melee+0xd0	HAMMER	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	86	SKILL:HAMMER
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_CROSSBOW	ranged+0xd2	CROSSBOW	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	87	RANGED:CROSSBOW:BOLT
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_PICK	melee+0xd0	MINING	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	104	SKILL:MINING
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_BOW	melee+0xd0	SWORD	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	114	SKILL:SWORD
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_BOW	ranged+0xd2	BOW	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	115	RANGED:BOW:ARROW
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_BLOWGUN	melee+0xd0	SWORD	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	133	SKILL:SWORD
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_BLOWGUN	ranged+0xd2	BLOWGUN	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	134	RANGED:BLOWGUN:BLOWDART
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_PIKE	melee+0xd0	PIKE	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	152	SKILL:PIKE
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_HALBERD	melee+0xd0	AXE	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	164	SKILL:AXE
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_SWORD_2H	melee+0xd0	SWORD	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	178	SKILL:SWORD
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_SWORD_LONG	melee+0xd0	SWORD	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	194	SKILL:SWORD
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_MAUL	melee+0xd0	HAMMER	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	210	SKILL:HAMMER
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_AXE_GREAT	melee+0xd0	AXE	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	220	SKILL:AXE
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_DAGGER_LARGE	melee+0xd0	DAGGER	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	235	SKILL:DAGGER
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_SCOURGE	melee+0xd0	WHIP	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	249	SKILL:WHIP
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_FLAIL	melee+0xd0	MACE	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	260	SKILL:MACE
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_MORNINGSTAR	melee+0xd0	MACE	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	270	SKILL:MACE
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_SCIMITAR	melee+0xd0	SWORD	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	282	SKILL:SWORD
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_AXE_TRAINING	melee+0xd0	AXE	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	298	SKILL:AXE
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_SWORD_SHORT_TRAINING	melee+0xd0	SWORD	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	313	SKILL:SWORD
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_SPEAR_TRAINING	melee+0xd0	SPEAR	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	330	SKILL:SPEAR
+reference	PE:6a70a6d9:02711000	ITEM_WEAPON_PICK_GREAT	melee+0xd0	MINING	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_items\objects\item_weapon.txt	343	SKILL:MINING
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_WHIP	melee+0xd0	WHIP	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	8	SKILL:WHIP
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_AXE_BATTLE	melee+0xd0	AXE	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	19	SKILL:AXE
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_HAMMER_WAR	melee+0xd0	HAMMER	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	37	SKILL:HAMMER
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_SWORD_SHORT	melee+0xd0	SWORD	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	47	SKILL:SWORD
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_SPEAR	melee+0xd0	SPEAR	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	64	SKILL:SPEAR
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_MACE	melee+0xd0	MACE	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	76	SKILL:MACE
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_CROSSBOW	melee+0xd0	HAMMER	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	86	SKILL:HAMMER
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_CROSSBOW	ranged+0xd2	CROSSBOW	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	87	RANGED:CROSSBOW:BOLT
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_PICK	melee+0xd0	MINING	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	104	SKILL:MINING
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_BOW	melee+0xd0	SWORD	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	114	SKILL:SWORD
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_BOW	ranged+0xd2	BOW	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	115	RANGED:BOW:ARROW
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_BLOWGUN	melee+0xd0	SWORD	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	133	SKILL:SWORD
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_BLOWGUN	ranged+0xd2	BLOWGUN	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	134	RANGED:BLOWGUN:BLOWDART
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_PIKE	melee+0xd0	PIKE	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	152	SKILL:PIKE
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_HALBERD	melee+0xd0	AXE	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	164	SKILL:AXE
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_SWORD_2H	melee+0xd0	SWORD	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	178	SKILL:SWORD
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_SWORD_LONG	melee+0xd0	SWORD	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	194	SKILL:SWORD
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_MAUL	melee+0xd0	HAMMER	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	210	SKILL:HAMMER
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_AXE_GREAT	melee+0xd0	AXE	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	220	SKILL:AXE
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_DAGGER_LARGE	melee+0xd0	DAGGER	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	235	SKILL:DAGGER
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_SCOURGE	melee+0xd0	WHIP	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	249	SKILL:WHIP
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_FLAIL	melee+0xd0	MACE	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	260	SKILL:MACE
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_MORNINGSTAR	melee+0xd0	MACE	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	270	SKILL:MACE
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_SCIMITAR	melee+0xd0	SWORD	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	282	SKILL:SWORD
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_AXE_TRAINING	melee+0xd0	AXE	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	298	SKILL:AXE
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_SWORD_SHORT_TRAINING	melee+0xd0	SWORD	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	313	SKILL:SWORD
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_SPEAR_TRAINING	melee+0xd0	SPEAR	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	330	SKILL:SPEAR
+classic	PE:6a70b91c:0270a000	ITEM_WEAPON_PICK_GREAT	melee+0xd0	MINING	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_items\objects\item_weapon.txt	343	SKILL:MINING

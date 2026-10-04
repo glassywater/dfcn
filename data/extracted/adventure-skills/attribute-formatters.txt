@@ -1,0 +1,115 @@
+Native adventure-creation attribute text source inventory
+
+Inputs are the exact two PE files configured by data/runtime/native-pe-images.json:
+reference: D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+  identity PE:6a70a6d9:02711000
+classic: C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+  identity PE:6a70b91c:0270a000
+All numeric locations below and in the TSV files are RVAs, not file offsets.
+The image base for both inputs is 0x140000000.
+
+The source-extraction entry is tools/extract_adventure_skill_attributes.py.
+It reads PE code, unwind function boundaries, literal data, inline constants,
+and four decoded jump tables per edition. It does not load the executable,
+attach to the game, execute translations, generate runtime data, compile,
+deploy, or operate a desktop. The .asm and TSV files are source inventories.
+
+1. Comparison-card summary formatter
+
+reference function: 0x6410e0..0x6419f0
+classic function:   0x63eb00..0x63f410
+Disassembly stops before the embedded jump tables at 0x6419a4 / 0x63f3c4;
+all table entries and their literal references are retained in attribute-names.tsv.
+The containing creation renderer is 0x622790..0x635020 / 0x6201b0..0x632a40.
+reference calls this formatter at 0x62bba4 and 0x62bbf7 for the player's and
+the selected archetype's two independent attribute-and-skill cards.
+The corresponding classic calls are 0x6295c4 and 0x629617.
+
+The native rating values are seven entries, not eight:
+  0 Very low
+  1 Low
+  2 Below average
+  3 Average
+  4 Above average
+  5 High
+  6 Superior
+Very low and Superior are compiler-inline eight-byte constants; High is an
+inline four-byte constant. The others are copied from native literal storage.
+Both the physical and mental loops implement exactly the same seven cases.
+
+The formatter explicitly skips rating value 3 before assembly at reference
+0x641322..0x641325 and 0x641592..0x641595; classic 0x63ed42..0x63ed45 and
+0x63efb2..0x63efb5. Thus Average is a compiled branch, but ordinary comparison
+cards do not emit it. The TSV emitted column records this difference.
+
+The first jump table has six names in native order:
+  strength; agility; toughness; endurance; recuperation; disease resistance
+The second has thirteen names in native order:
+  analytical ability; focus; willpower; creativity; intuition; patience;
+  memory; linguistic ability; spatial sense; musicality; kinesthetic sense;
+  empathy; social awareness
+No name is inferred from neighbouring string storage: each comes from the
+decoded switch entry's actual append-literal instruction.
+
+Each line is assembled as rating + one ASCII space + name. The physical
+space append is 0x641476..0x641487 / 0x63ee96..0x63eea7; the mental append is
+0x6416ed..0x6416fe / 0x63f10d..0x63f11e. Each resulting complete string is
+passed to one addst call at 0x64150f and 0x641800 / 0x63ef2f and 0x63f220.
+There are no native separate "Above" and "average strength" draw fields.
+This disproves a multiple-space explanation for the screenshot's split.
+
+2. Customization attribute rows
+
+reference attribute slice: 0x628fc8..0x6294e1
+classic attribute slice:   0x6269e8..0x626f01
+The full containing function is the creation renderer named above.
+Physical and mental rating branches are independent and use Title Case:
+  0 Very Low
+  1 Low
+  2 Below Average
+  3 Average
+  4 Above Average
+  5 High
+  6 Superior
+The names use Title Case versions of the same six and thirteen names.
+Unlike comparison cards, customization rows also emit Average attributes.
+
+Physical names use jump table 0x634b8c / 0x6325ac; mental names use
+0x634ba4 / 0x6325c4. The two space appends are 0x6290aa..0x6290b8 and
+0x629194..0x6291a2 / 0x626aca..0x626ad8 and 0x626bb4..0x626bc2.
+The whole rating + one space + name is drawn at 0x6292d1 / 0x626cf1.
+
+Narrow-column variants are computed by the native clipping branch, not
+independent literals. At 0x629245..0x6292bd / 0x626c65..0x626cdd, with the
+native column-span value W in edi, source length >= W-22 is reduced to W-23
+characters. If that retained length is greater than 3, its last three
+characters are overwritten with "...". At retained lengths <= 3 the native
+output is the retained prefix. This parameterized native rule represents
+every width-dependent source variant without inventing an arbitrary list.
+
+The separate upgrade-cost field uses one of these native complete sources:
+  1 pt; 5 pts; 10 pts; 20 pts
+Rating 0/1/2 uses 1; rating 3 uses 5; rating 4 uses 10; rating 5 uses 20;
+rating 6 takes the maximum/no-upgrade-cost path. The integer formatter call
+is 0x62942a / 0x626e4a; the singular suffix selection is at 0x629436..
+0x629449 / 0x626e56..0x626e69; addst is 0x62946f / 0x626e8f.
+The increment/decrement controls are native graphic tile controls, not
+additional English text literals in this attribute-row slice.
+
+3. Inventory files and reachability
+
+attribute-ratings.tsv: 56 native rating assignments, retaining both editions,
+both formats, both physical/mental branches, literal/inline origins and reachability.
+attribute-names.tsv: 76 decoded native name branches, with switch-table,
+branch, instruction and literal RVAs.
+attribute-productions.tsv: 532 complete authored rating/name combinations.
+494 combinations are emitted by the two formats across both editions;
+38 Average comparison-card combinations are retained but marked emitted=0.
+Per edition there are 114 emitted lowercase comparison-card strings and
+133 emitted Title Case customization strings. The two editions have the
+same string productions but retain their own instruction and literal locations.
+
+"Very high" is not an attribute rating in either of these two native
+formatters. Its literals found elsewhere in the executable belong to other
+rendering branches. Existing generic dictionary vocabulary alone must not
+be used to claim that this creation screen can emit that rating.

@@ -81048,6 +81048,7 @@ Skill name: Consoler	慰藉	li
 Skill name: Flattery	奉承	li
 Skill name: Observer	观察	li
 Skill name: Pacifier	调解	li
+Skill name: Skill 10	技能10	li
 Skill rating: Expert	专家	li
 Skill rating: Master	大师	li
 Skill rating: Novice	初学	li
@@ -83872,6 +83873,15 @@ She tends not to be	她往往不会	l
 Skill name: Climber	攀爬	li
 Skill name: Knapper	碎石	li
 Skill name: Planter	播种	li
+Skill name: Skill 1	技能1	li
+Skill name: Skill 2	技能2	li
+Skill name: Skill 3	技能3	li
+Skill name: Skill 4	技能4	li
+Skill name: Skill 5	技能5	li
+Skill name: Skill 6	技能6	li
+Skill name: Skill 7	技能7	li
+Skill name: Skill 8	技能8	li
+Skill name: Skill 9	技能9	li
 Skill name: Speaker	讲述	li
 Skill name: Striker	搏击	li
 Skill name: Swimmer	游泳	li
@@ -130141,6 +130151,7 @@ wonder	惊叹	w
 wooden	木制	wi
 yellow	黄色	wi
 zoysia	结缕草	wi
+{d} pt	{d} 点	wt
 {s}, \x0B	{s}，♂	wt
 {s}, \x0C	{s}，♀	wt
 \x8Esrath	埃斯拉	wi
