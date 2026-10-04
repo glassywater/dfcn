@@ -1,3 +1,63 @@
+// The detailed form spaces parts of these labels independently. Restore each
+// complete meaning before generic words can interpret Ground as milled food.
+// Keep the physical gaps for glyph suppression and native text-half pairing.
+void Overlay::append_worldgen_parameter_labels(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const {
+    const auto label_row = [&](std::string_view source) {
+        for (size_t y = 0; y < rows.size(); ++y)
+            if (find_template_literal(rows[y], source, 0, true) != std::string::npos)
+                return static_cast<int>(y);
+        return -1;
+    };
+    const int new_set_y = label_row("New Parameter Set");
+    const int basic_y = label_row("Basic Options");
+    const int create_y = label_row("Create World");
+    if (new_set_y < 0 || basic_y <= new_set_y || create_y <= new_set_y ||
+            std::abs(basic_y - create_y) > 1) return;
+
+    static constexpr auto labels = std::to_array<std::string_view>({
+        "Z Levels Above Ground",
+        "Z Levels Above Layer 1", "Z Levels Above Layer 2",
+        "Z Levels Above Layer 3", "Z Levels Above Layer 4",
+        "Z Levels Above Layer 5",
+    });
+    for (int y = new_set_y + 1; y < std::min(basic_y, create_y); ++y) {
+        if (only_y >= 0 && y != only_y) continue;
+        auto &row = rows[static_cast<size_t>(y)];
+        const auto fields = split_text_fields(row);
+        for (size_t first = 0; first < fields.size(); ++first) {
+            if (fields[first].text != "Z" &&
+                    !fields[first].text.starts_with("Z Levels")) continue;
+            std::string source;
+            for (size_t last = first; last < fields.size() && last < first + 5; ++last) {
+                // A frame edge or control is never part of the label's gap.
+                if (last > first) {
+                    if (!std::all_of(row.begin() + fields[last - 1].end,
+                            row.begin() + fields[last].start,
+                            [](char ch) { return ch == ' '; })) break;
+                    source.push_back(' ');
+                }
+                source += fields[last].text;
+                const auto label = std::find(labels.begin(), labels.end(), source);
+                if (label != labels.end()) {
+                    const auto target = exact_literal_translation(*label);
+                    if (target) {
+                        const int left = fields[first].start;
+                        const int length = fields[last].end - left;
+                        matches.push_back({left, y, length, kWorldgenParameterLabelRule,
+                            *target, row.substr(static_cast<size_t>(left),
+                                static_cast<size_t>(length))});
+                        std::fill_n(row.begin() + left, length, ' ');
+                    }
+                    break;
+                }
+                if (std::none_of(labels.begin(), labels.end(),
+                        [&](std::string_view label) { return label.starts_with(source); })) break;
+            }
+        }
+    }
+}
+
 // Detailed parameters have their own persistent toolbar/footer identity.
 // Yes/No and Range rows are shared widgets, NOT evidence of the Game settings
 // page. Claim this form before the generic settings/prose passes can move its

@@ -805,6 +805,7 @@ static constexpr int kMainMenuCreditsRule = -146;
 static constexpr int kSettingsAnnouncementNameRule = -147;
 static constexpr int kSettingsKeybindingActionRule = -148;
 static constexpr int kSettingsKeybindingCodeRule = -149;
+static constexpr int kWorldgenParameterLabelRule = -150;
 
 static bool is_fortress_justice_field(const Match &match) {
     return match.rule == kFortressJusticeCaseRule || match.rule == kFortressJusticeDetailRule ||
@@ -4227,6 +4228,8 @@ private:
     bool layout_embark_civilizations(SDL_Renderer *renderer);
     bool layout_worldgen_setup(SDL_Renderer *renderer);
     bool layout_worldgen_parameters(SDL_Renderer *renderer);
+    void append_worldgen_parameter_labels(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const;
     bool layout_adventure_setup_selection(SDL_Renderer *renderer);
     bool layout_adventure_skills(SDL_Renderer *renderer);
     void layout_adventure_personality_needs(SDL_Renderer *renderer);
@@ -21107,6 +21110,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
         std::fill_n(row.begin() + region.x, region.w, ' ');
     }
     append_settings_announcement_names(screen_rows, result, only_y);
+    append_worldgen_parameter_labels(screen_rows, result, only_y);
     // The trade controls and totals are independent native fields. Claim
     // them before paragraph/item readers or generic word translations.
     append_fortress_trade_fields(screen_rows, result, only_y, screen_override != nullptr);
@@ -29756,6 +29760,7 @@ void Overlay::normalize_native_split_text() {
             (rules_[static_cast<size_t>(match.rule)].source == "Total Power: {d}" ||
              rules_[static_cast<size_t>(match.rule)].source == "Total Power Needed: {d}");
         const bool structured_span = match.native_adventure_target_row ||
+            match.rule == kWorldgenParameterLabelRule ||
             machine_power || is_credits_row(match) || match.rule == kSaveListCaptionRule ||
             match.rule == kSettingsAnnouncementNameRule ||
             match.rule == kColorPickerChoiceRule ||
