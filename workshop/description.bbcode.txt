@@ -4,9 +4,9 @@ DFCN 是 Byayoi 同人社区的《Dwarf Fortress（矮人要塞）》汉化作�
 
 [b]当前适配游戏版本：53.16。本工坊项目提供 Windows x64 运行文件，支持 Steam 版与官网免费版。[/b]项目同时提供 Linux 原生适配，相关说明见 GitHub。
 
-[b]当前汉化版本：53.16-20261004（2026-10-04）。[/b] 本版详细更新日志分三部分刊载于改动说明，覆盖上次发布后的全部48条提交（含两次合并）。阅读顺序为1/3、2/3、3/3，完整正文也随订阅提供在CHANGELOG.txt。
+[b]当前汉化版本：53.16-20261004.2（2026-10-04 第二版）。[/b] 更新日志见改动说明及订阅目录中的 CHANGELOG.txt。
 
-本次新增拼音搜索、可选像素字体整数倍缩放，完善交易、人物、神殿、工坊及冒险菜单翻译和排版，并合入 Linux 适配与性能优化。运行包默认 [b]font_scale=1.1、min_font_pixels=12、font_bold=true[/b]；[b]font_pixel_grid=0[/b] 保留普通字体渲染，点阵字体可设为 [b]12[/b]。
+本次完善冒险人物创建、罗盘、表演与布道菜单、公告、传说和图像编辑器翻译，修复武器选择、小队成员列表及启程选址排版，并优化界面汉化匹配性能。
 
 [url=https://github.com/pokemonchw/dfcn]GitHub 项目主页[/url]
 [url=https://github.com/pokemonchw/dfcn/releases]GitHub Releases[/url]
