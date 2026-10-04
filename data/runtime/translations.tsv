@@ -43384,6 +43384,7 @@ State the value of law (not your values)	阐述法律的价值（并非你的价
 State the worthlessness of craftsmanship	阐述工艺毫无价值	hP
 State the worthlessness of introspection	阐述自省毫无价值	hP
 Storage path decrease (seed bag combine)	存储路径减少(种子袋合并)	w
+Symbol picker entity status migrating: X	迁徙中的X	hi
 Tasks and can be given start conditions.	任务，也可以设置启动条件。	wl
 Tell the listener that they've found you	告诉对方他们已经找到你了	hP
 The Abduction of {n} at {p} in the wilds	在荒野中，{p1}绑架{n1}的事件	htEi
@@ -46598,6 +46599,8 @@ State the worthlessness of cooperation	阐述合作毫无价值	hP
 State the worthlessness of tranquility	阐述宁静毫无价值	hP
 Storage path decrease (barrel combine)	存储路径减少(桶合并)	w
 Storage path decrease (bucket combine)	存储路径减少(桶合并)	w
+Symbol picker entity status nomadic: X	游牧的X	hi
+Symbol picker entity status outcast: X	被放逐的X	hi
 Tell listener that nothing has changed	告诉对方一切如常	hP
 The Abduction of {n} at {p} during {e}	在{e1}期间，{p1}绑架{n1}的事件	htEi
 The Abduction of {n} at {p} within {p}	在{p2}，{p1}绑架{n1}的事件	htEi
@@ -50116,6 +50119,7 @@ Stream: Secretrouts the Leprosy o...	溪流:秘密鳟鱼麻风...	w
 Stream: Shriekuttered the Dismal ...	溪流:尖叫说出阴郁的...	w
 Stream: Sliverscoured the Early O...	溪流:碎片冲刷早期...	w
 Stream: The Brilliant Cloister-Louse	溪流: 辉煌的隐修院-虱子	w
+Symbol picker entity status local: X	本地X	hi
 Tell me about the army on the march.	跟我说说那支正在行军的军队。	hP
 Temperature Weighted Range ({d}-{d})	温度加权范围（{d}-{d}）	wt
 Thank you for protecting our wisdom.	感谢你守护我们的智慧。	hP
@@ -53924,6 +53928,7 @@ State the worthlessness of loyalty	阐述忠诚毫无价值	hP
 State the worthlessness of romance	阐述爱情毫无价值	hP
 Stockpile name: artifact stockpile	神器储物堆	l
 Stockpile name: clothing stockpile	服装储物堆	l
+Symbol picker sites in region: X Y	这些是位于Y的X。	hi
 Tell me about armies on the march.	跟我说说正在行军的军队。	hP
 Tell me about the brewing trouble.	跟我说说正在酝酿的麻烦。	hP
 Tell me about the skulking vermin.	跟我说说潜伏的害兽。	hP
@@ -55883,6 +55888,7 @@ State the worthlessness of family	阐述家庭毫无价值	hP
 State the worthlessness of nature	阐述自然毫无价值	hP
 Stockpile name: cages and animals	笼子与动物	l
 Storage container packing: barrel	桶装	wi
+Symbol picker site in region: X Y	这是一处位于Y的X。	hi
 Tell listener to try a shopkeeper	让对方去问问店主	hP
 Tell listener you don't work here	告诉对方你不在这里工作	hP
 Tell me about this establishment.	跟我说说这家店。	hP
@@ -61908,6 +61914,7 @@ Storage container packing: bin	箱装	wi
 Storage container packing: pot	罐装	wi
 Stream: The Garnish of Dumping	溪流:倾倒的装饰	w
 Surrender of {p} in the wilds.	在荒野中，{p1}的投降。	htEi
+Symbol picker entity race: X Y	XY	hi
 Table rejected (not enclosed.)	桌子未被选用（房间未封闭）	hP
 Tell me about the local ruler.	说说当地的统治者。	hP
 Tell me about these catacombs.	跟我说说这些地下墓穴。	hP
@@ -71804,6 +71811,7 @@ Stone material: marcasite	白铁石	wi
 Stricken by melancholy...	陷入了忧郁……	hP
 Superior social awareness	上等社交意识	wil
 Surrounded by empty space	四周均为空处	wli
+Symbol picker craft guild	工匠行会	hi
 Tell a story about a site	讲述一个地点的故事	hP
 Tell me about the beasts.	跟我说说凶兽。	hP
 Tell me about the deaths.	跟我说说那些人的死因。	hP
@@ -75475,6 +75483,7 @@ Sunk into depression...	陷入了抑郁……	hP
 Surrender of {p} at {p}	在{p2}，{p1}的投降	htEi
 Surrender of {p} in {d}	{d1}年的{p1}的投降	htEi
 Surrender of {p} in {p}	在{p2}，{p1}的投降	htEi
+Symbol picker entity: X	这是一个X。	hi
 Take out of a container	从容器中取出	w
 Tell listener about {q}	向对方讲述{q1}	hPt
 Temperate Brackish Lake	温带半咸水湖
@@ -77446,6 +77455,8 @@ Suggest talking to {p}	建议与{p1}交谈	hPt
 Superior spatial sense	上等空间感知	wil
 Supernatural vengeance	灵异复仇	w
 Surroundings: Sinister	周围环境:邪恶	w
+Symbol picker guild: X	X行会	hi
+Symbol picker sites: X	这些是X。	hi
 Tables in common area:	公共区域的桌子：	wl
 Temperate Brdlf Forest	温带阔叶林
 Temperate Conif Forest	温带针叶林
@@ -79438,6 +79449,7 @@ Stream: Tribegladness	溪流：欢欣部落
 String: Character {d}	字符串：字符 {d}	wt
 Superior recuperation	上等恢复能力	wil
 Surroundings: Haunted	周围环境:闹鬼	w
+Symbol picker site: X	这是一处X。	hi
 Take the middle path.	选择折中之道。	hP
 Temperature Mesh Size	温度网格尺寸
 Temperature: Freezing	气温：严寒

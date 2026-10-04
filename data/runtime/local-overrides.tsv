@@ -11001,3 +11001,19 @@ This is an untitled {s}, authored by .	这是一部无题{s}，作者不详。	h
 {b} is an example of poetry.	《{b}》是一首诗。	ht
 {b} is an example of musical composition.	《{b}》是一部音乐作品。	ht
 {b} is an example of choreography.	《{b}》是一部舞蹈作品。	ht
+
+# Complete site/entity footer productions from the image creator's native
+# selected-box builder. X/Y are typed fields owned by the scoped translator.
+# These keys do not match independent words in ordinary game text.
+Symbol picker site: X	这是一处X。	hi
+Symbol picker sites: X	这些是X。	hi
+Symbol picker site in region: X Y	这是一处位于Y的X。	hi
+Symbol picker sites in region: X Y	这些是位于Y的X。	hi
+Symbol picker entity: X	这是一个X。	hi
+Symbol picker entity race: X Y	XY	hi
+Symbol picker entity status local: X	本地X	hi
+Symbol picker entity status migrating: X	迁徙中的X	hi
+Symbol picker entity status nomadic: X	游牧的X	hi
+Symbol picker entity status outcast: X	被放逐的X	hi
+Symbol picker guild: X	X行会	hi
+Symbol picker craft guild	工匠行会	hi

@@ -3356,6 +3356,8 @@ private:
         std::string_view source) const;
     std::optional<std::string> translate_symbol_description_source(
         std::string_view source) const;
+    std::optional<std::string> translate_symbol_picker_description(
+        std::string_view raw_source) const;
     std::optional<std::string> translate_overview_quote(
         std::string_view source, std::vector<size_t> *origins = nullptr) const;
     std::optional<NativeOverviewQuoteDraw> current_character_overview_quote() const;
@@ -19544,6 +19546,7 @@ static std::string normalize_art_utterance(std::string_view source);
 #include "legends_books.inc"
 #include "legends_search.inc"
 #include "symbol_description.inc"
+#include "symbol_picker_descriptions.inc"
 #include "item_descriptions.inc"
 #include "health_description.inc"
 #include "character_thoughts.inc"
@@ -22999,12 +23002,6 @@ std::vector<Match> Overlay::find_matches(int only_y,
 
 
 
-    // Complete knowledge documents, save fields and Legends identities now
-    // own their spans before inferred messages. Remaining UI messages still
-    // precede ordinary word/name rules; standalone actions and full literal
-    // captions retain their existing catalog precedence.
-    context_detail.checkpoint(RenderTimingStage::UiMessages);
-#include "ui_messages.inc"
     context_detail.checkpoint(RenderTimingStage::Scenes);
 
     // The art-image editor's candidate list and footer are independent fields,
@@ -23023,8 +23020,10 @@ std::vector<Match> Overlay::find_matches(int only_y,
         }
         int creature_y = -1, number_y = -1, list_left = -1, hint_right = -1;
         int controls_right = 0;
+        int controls_left = gps_->dimx, controls_top = gps_->dimy, controls_bottom = -1;
         bool action = false, deletion = false, deleting = false;
         bool historical_figures = false, artifacts = false;
+        bool related_figure = false, related_site = false, related_group = false, existing_image = false;
         for (int y = 0; y < gps_->dimy; ++y) {
             for (const auto &field : split_text_fields(context[y])) {
                 // The symbol editor uses singular "Historical figure";
@@ -23039,10 +23038,29 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 deleting = deleting || field.text == "Stop deleting";
                 historical_figures = historical_figures || figure_category;
                 artifacts = artifacts || field.text == "Artifact" || field.text == "Artifacts";
-                if (field.text == "Creature" || field.text == "Creatures" ||
-                    figure_category ||
-                    field.text == "Action or relationship" || field.text == "Delete element")
+                related_figure = related_figure || field.text == "Related to historical figure";
+                related_site = related_site || field.text == "Related to site";
+                related_group = related_group || field.text == "Related to civilization or other group";
+                existing_image = existing_image || field.text == "Existing image";
+                const bool category_control = field.text == "Creature" || field.text == "Creatures" ||
+                    figure_category || field.text == "Plant" || field.text == "Plants" ||
+                    field.text == "Tree" || field.text == "Trees" ||
+                    field.text == "Shape" || field.text == "Shapes" ||
+                    field.text == "Object" || field.text == "Objects" ||
+                    field.text == "Artifact" || field.text == "Artifacts" ||
+                    field.text == "Action or relationship" || field.text == "Delete element" ||
+                    field.text == "Stop deleting" || field.text == "Related to historical figure" ||
+                    field.text == "Related to site" || field.text == "Related to civilization or other group" ||
+                    field.text == "Existing image" || field.text == "Specify a new image";
+                if (category_control) {
                     controls_right = std::max(controls_right, field.end);
+                    const auto button = native_button_text_rect(*gps_, field.start, field.end, y);
+                    const SDL_Rect occupied = button.value_or(
+                        SDL_Rect{field.start, y, field.end - field.start, 1});
+                    controls_left = std::min(controls_left, occupied.x);
+                    controls_top = std::min(controls_top, occupied.y);
+                    controls_bottom = std::max(controls_bottom, occupied.y + occupied.h);
+                }
             }
             const size_t number = context[y].find("Number:");
             const size_t hint = context[y].find("(0 for unnumbered plural)");
@@ -23053,6 +23071,31 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 hint_right = static_cast<int>(hint + std::string_view("(0 for unnumbered plural)").size());
             }
         }
+        const bool related_picker = related_figure && related_site && related_group && existing_image;
+        const bool image_editor = action && deletion && creature_y >= 0;
+        // Every category belongs to the same editor, while individual buttons
+        // and the right-hand list have their own frames. A rectangle spanning
+        // all category rows can only be enclosed by the editor's outer frame.
+        // Its bottom excludes all unrelated fields drawn below that frame.
+        std::optional<SDL_Rect> editor_interior;
+        if ((image_editor || related_picker) && controls_right > controls_left &&
+            controls_bottom > controls_top &&
+            (related_picker || controls_bottom > controls_top + 1)) {
+            const NativePanelBorders borders(*gps_);
+            editor_interior = native_panel_interior(borders, *gps_, SDL_Rect{
+                controls_left, controls_top, controls_right - controls_left,
+                controls_bottom - controls_top});
+        }
+        const int editor_right = editor_interior
+            ? editor_interior->x + editor_interior->w : gps_->dimx - 3;
+        const int editor_bottom = editor_interior
+            ? editor_interior->y + editor_interior->h : creature_y + 1;
+        // Related-to and existing-image pickers put their buttons across the
+        // top; the new-image editor puts its categories in a left sidebar.
+        // Their shared yellow footer retains each mode's own text origin.
+        const int footer_anchor_y = related_picker ? controls_bottom - 1 : creature_y;
+        const int footer_left = related_picker
+            ? (editor_interior ? editor_interior->x : std::max(0, controls_left)) : controls_right;
         if (action && deletion && creature_y >= 0) {
             // The preview spans the full panel ABOVE the categories, not the
             // right-hand list or its hovered-entry footer. Join every native
@@ -23106,11 +23149,12 @@ std::vector<Match> Overlay::find_matches(int only_y,
                                bool deletion_row = false)
                 -> std::optional<Match> {
             int x = left;
+            const int text_right = editor_interior ? editor_right : gps_->dimx;
             // The scan begins after the widest category caption, which may
             // still leave its ASCII button border before the picker itself.
-            while (x < gps_->dimx && (row[x] == ' ' ||
+            while (x < text_right && (row[x] == ' ' ||
                    is_cp437_box_separator(row, static_cast<size_t>(x)))) ++x;
-            if (x >= gps_->dimx) return std::nullopt;
+            if (x < 0 || x >= text_right) return std::nullopt;
             const auto first = static_cast<unsigned char>(row[x]);
             if (!((first >= 'A' && first <= 'Z') ||
                   (first >= 'a' && first <= 'z') ||
@@ -23119,18 +23163,18 @@ std::vector<Match> Overlay::find_matches(int only_y,
                   // punctuation. Candidate-name validation must not discard
                   // that row and sever the complete birth/parentage paragraph.
                   (prose_row && first >= 0x21 && first <= 0x7e) ||
-                  (element_row && ((first >= '0' && first <= '9') ||
+                  ((prose_row || element_row) && ((first >= '0' && first <= '9') ||
                                    first == '"' || first == 0x10 || first == 0x11))))
                 return std::nullopt;
             int end = x;
-            for (; end < gps_->dimx; ++end) {
+            for (; end < text_right; ++end) {
                 // Delete icons are foreground sprites (add_tile), whereas
                 // the striped row is a lower-layer background. Their cells
                 // may have no character at all, so text-only scans miss them.
                 if (deletion_row && picker_graphic_at(end, y)) break;
                 const auto ch = static_cast<unsigned char>(row[end]);
                 if (!((ch >= 0x20 && ch <= 0x7e) || ch == 0x0b || ch == 0x0c ||
-                      (element_row && (ch == 0x10 || ch == 0x11)) ||
+                      ((prose_row || element_row) && (ch == 0x10 || ch == 0x11)) ||
                       is_cp437_latin_letter_byte(ch))) break;
             }
             while (end > x && row[end - 1] == ' ') --end;
@@ -23294,8 +23338,9 @@ std::vector<Match> Overlay::find_matches(int only_y,
             // composed rows for geometry even during raw-layer suppression;
             // source ownership below still belongs to that exact raw layer.
             int left = gps_->dimx;
-            int right = gps_->dimx - 3; // leave the outer frame and scrollbar
-            for (int y = creature_y + 1; y < gps_->dimy; ++y) {
+            int right = editor_right; // leave the outer frame and scrollbar
+            const int list_bottom = editor_interior ? editor_bottom : gps_->dimy;
+            for (int y = creature_y + 1; y < list_bottom; ++y) {
                 const auto row = picker_text(context[y], y, controls_right);
                 if (!row || !identity_candidate(row->source)) continue;
                 identity_rows.push_back(y);
@@ -23317,55 +23362,144 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 identity_rows.clear();
             }
         }
-        if (numbered_list || !identity_rows.empty()) {
+        // A hovered description is a separate native paragraph. It remains
+        // valid when the search has no recognizable identity rows, and the
+        // same footer is used by every catalog category.
+        const bool catalog_page = ((image_editor && !deleting) || related_picker) && !role_prompt;
+        if (numbered_list || catalog_page) {
+            if (list_left < 0) list_left = footer_left;
+            if (hint_right < 0) hint_right = editor_right;
             auto picker_row = [&](int y) {
                 return picker_text(screen_rows[y], y, list_left);
             };
-            auto normalize_prose = [](std::string_view source) {
-                // DESCRIPTION entries are normalized by build_translations.py.
-                // RAWs commonly use TWO spaces after a sentence; native wraps
-                // introduce further row boundaries, none of them semantic.
-                std::string normalized;
-                bool space = false;
-                for (unsigned char ch : source) {
-                    if (std::isspace(ch)) {
-                        space = !normalized.empty();
-                        continue;
-                    }
-                    if (space) normalized += ' ';
-                    space = false;
-                    normalized += static_cast<char>(ch);
+            // The native renderer sets color 6 with bright=1 for the entire
+            // footer. Read the current palette instead of assuming RGB values.
+            // Candidate rows and fields outside the modal cannot lend text to
+            // this independently owned paragraph.
+            const int footer_color = (gps_->uccolor[14][0] << 16) |
+                (gps_->uccolor[14][1] << 8) | gps_->uccolor[14][2];
+            auto footer_row_color = [&](const Match &row) {
+                bool ink = false;
+                for (int byte = 0; byte < row.length; ++byte) {
+                    if (row.source[static_cast<size_t>(byte)] == ' ') continue;
+                    bool top = false;
+                    const unsigned char *cell = screen_override
+                        ? screen_override + (static_cast<size_t>(row.x + byte) * gps_->dimy + row.y) * 8
+                        : cell_at(row.x + byte, row.y, &top);
+                    if (!cell || ((cell[1] << 16) | (cell[2] << 8) | cell[3]) != footer_color)
+                        return false;
+                    ink = true;
                 }
-                return normalized;
+                return ink;
             };
-
-            // The last text block above Number (or the bottom frame for
-            // historical figures/artifacts) belongs to the hovered entry.
-            // Blank native rows separate it from the scrolling list. Use the
-            // WHOLE block, rather than translating a prefix sentence and
-            // leaving the rest to the generic word matcher.
             std::vector<Match> description;
-            const int footer_bottom = numbered_list ? number_y : gps_->dimy;
-            const int footer_floor = numbered_list ? creature_y : identity_rows.back();
-            for (int y = footer_bottom - 1; y > footer_floor; --y) {
-                auto row = picker_text(screen_rows[y], y, list_left, true);
-                if (!row) {
-                    if (!description.empty()) break;
-                    continue;
-                }
-                // Native wraps can retain leading spaces at sentence breaks.
-                // Trimmed prose rows need not start in exactly the same column;
-                // the blank separator, not x equality, ends this footer.
-                description.push_back(std::move(*row));
-            }
-            std::reverse(description.begin(), description.end());
             std::string source;
             bool native_description = false;
-            for (const Match &row : description) {
-                if (!source.empty()) source += ' ';
-                source += row.source;
+            int footer_bottom = numbered_list ? number_y : editor_bottom;
+            int footer_floor = numbered_list || identity_rows.empty()
+                ? footer_anchor_y : identity_rows.back();
+            int footer_right = editor_interior ? editor_right : hint_right;
+            uint64_t footer_sequence = 0;
+            const auto paragraphs = captured_native_paragraphs();
+            const std::array draws{captured_native_drawn_text_rows(false),
+                captured_native_drawn_text_rows(true)};
+            const uint64_t draw_epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+            std::unordered_map<uintptr_t, std::vector<const NativeDrawnTextRow *>> footer_draws;
+            for (const auto &batch : draws) {
+                for (auto at = batch.rbegin(); at != batch.rend(); ++at) {
+                    const auto &draw = *at;
+                    const auto *grid = draw.top_layer ? gps_->screen_top : gps_->screen;
+                    if (!draw.address || !draw.draw_clip || draw.foreground_rgb != footer_color ||
+                        draw.x < footer_left || draw.y <= footer_anchor_y ||
+                        draw.y < 0 || draw.y >= gps_->dimy ||
+                        draw.draw_epoch != draw_epoch || draw.draw_grid != grid ||
+                        draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                        (numbered_list && draw.y >= number_y) ||
+                        (editor_interior && draw.y >= editor_bottom)) continue;
+                    footer_draws[draw.address].push_back(&draw);
+                }
             }
-            if (!description.empty()) {
+            // Row addresses bind the original add_paragraph source to this
+            // actual draw, including a visible middle/tail slice. No selected
+            // name or similarity to another description establishes ownership.
+            for (const auto &paragraph : paragraphs) {
+                if (paragraph.source.empty() || paragraph.wrapped_lines.empty() ||
+                    paragraph.row_addresses.size() != paragraph.wrapped_lines.size() ||
+                    paragraph.sequence <= footer_sequence) continue;
+                std::vector<Match> owned;
+                int origin_x = -1, origin_y = -1;
+                size_t previous_line = SIZE_MAX;
+                int captured_bottom = footer_bottom, captured_right = footer_right;
+                bool separated = false;
+                for (size_t line = 0; line < paragraph.wrapped_lines.size(); ++line) {
+                    const auto &native = paragraph.wrapped_lines[line];
+                    const auto ink = trim_view(native);
+                    if (ink.empty()) continue;
+                    const auto candidates = footer_draws.find(paragraph.row_addresses[line]);
+                    if (candidates == footer_draws.end()) continue;
+                    std::optional<Match> row;
+                    std::optional<SDL_Rect> row_clip;
+                    for (const auto *candidate_draw : candidates->second) {
+                        const auto &draw = *candidate_draw;
+                        if (draw.source != native) continue;
+                        const int x = draw.x + static_cast<int>(ink.data() - native.data());
+                        if (x < 0 || x >= gps_->dimx || ink.size() > static_cast<size_t>(gps_->dimx - x) ||
+                            screen_rows[draw.y].compare(x, ink.size(), ink) != 0) continue;
+                        Match candidate{x, draw.y, static_cast<int>(ink.size()),
+                            kSymbolDescriptionRule, {}, std::string(ink)};
+                        if (!footer_row_color(candidate)) continue;
+                        auto clip = native_captured_text_clip(*gps_, candidate);
+                        if (!clip) continue;
+                        if (editor_interior) {
+                            SDL_Rect intersection{};
+                            if (!SDL_IntersectRect(&*clip, &*editor_interior, &intersection)) continue;
+                            clip = intersection;
+                        }
+                        if (candidate.x < clip->x || candidate.x + candidate.length > clip->x + clip->w ||
+                            candidate.y < clip->y || candidate.y >= clip->y + clip->h) continue;
+                        const int y = draw.y - static_cast<int>(line);
+                        if (!owned.empty() && (draw.x != origin_x || y != origin_y)) continue;
+                        origin_x = draw.x;
+                        origin_y = y;
+                        row = std::move(candidate);
+                        row_clip = clip;
+                        break;
+                    }
+                    if (!row) continue;
+                    if (previous_line != SIZE_MAX && line != previous_line + 1) separated = true;
+                    previous_line = line;
+                    captured_bottom = numbered_list ? number_y : row_clip->y + row_clip->h;
+                    captured_right = row_clip->x + row_clip->w;
+                    owned.push_back(std::move(*row));
+                }
+                if (owned.empty() || separated) continue;
+                description = std::move(owned);
+                source = paragraph.source;
+                native_description = true;
+                footer_sequence = paragraph.sequence;
+                footer_bottom = captured_bottom;
+                footer_right = captured_right;
+                footer_floor = std::min(footer_floor, description.front().y - 1);
+            }
+            if (description.empty() && (numbered_list || editor_interior)) {
+                // Closed-frame recovery stays inside the editor even when a
+                // complex logical layer did not expose native row identities.
+                // Its yellow paragraph is independent of all candidate names.
+                for (int y = footer_bottom - 1; y > footer_floor; --y) {
+                    auto row = picker_text(screen_rows[y], y, list_left, true);
+                    if (!row || !footer_row_color(*row)) {
+                        if (!description.empty()) break;
+                        continue;
+                    }
+                    description.push_back(std::move(*row));
+                }
+                std::reverse(description.begin(), description.end());
+                for (const Match &row : description) {
+                    if (!source.empty()) source += ' ';
+                    source += row.source;
+                }
+            }
+            if (!description.empty() && !native_description) {
                 // The picker passes the entire description to add_paragraph
                 // before drawing its fixed-height footer. The list can cover
                 // its opening rows and Number can cover its ending rows: the
@@ -23384,7 +23518,9 @@ std::vector<Match> Overlay::find_matches(int only_y,
                     native_description = true;
                 }
             }
-            source = normalize_prose(source);
+            // RAW spacing and native wraps are grammatical whitespace, while
+            // authored nicknames keep their exact internal spaces and quotes.
+            source = normalize_art_utterance(source);
             // Named-only artifact pages share the identity format with the
             // figure page. Their native item introduction distinguishes the
             // layout kind; translation still uses the same shared name parser.
@@ -23401,48 +23537,35 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 source.find("into the instrument") != std::string::npos ||
                 source.find("over the instrument") != std::string::npos ||
                 source.ends_with("the instrument.");
-            // Footer geometry plus a complete sentence/native paragraph
-            // identifies prose; character/word counts do not. A single-name
-            // kobold's entire introduction may be just "... is a kobold.".
-            // Keep unpunctuated candidate rows out when there is no footer,
-            // while accepting captured RAW descriptions without punctuation.
-            const bool prose = !source.empty() && (native_description ||
-                source.ends_with('.') || source.ends_with('!') || source.ends_with('?'));
+            // Current yellow rows inside the proven editor or a native
+            // paragraph draw identify this prose even when a RAW description
+            // has no final punctuation. Candidate-name syntax does not.
+            const bool prose = !source.empty() && !description.empty();
             // Even an untranslated footer is prose, not a set of candidate
             // names. Preserve its boundary before paragraph ownership moves.
             const int candidate_bottom_y = prose && !description.empty()
                 ? description.front().y : number_y;
             if (prose) {
-                auto target = exact_literal_translation(source);
-                if (!target) target = translate_item_description_source(source, artifact_list);
-                if (!target) target = translate_instrument_description(source);
-                // Generated creatures have no fixed DESCRIPTION dictionary
-                // entry. Reuse the scoped physical-description grammar used
-                // by biographies, after rejoining ALL native wrapped rows.
-                // The footer is prose, not a colored proper-name link: an
-                // unknown clause must not fall back to name transliteration.
-                if (!target) {
-                    const bool already_resolved = legends_translation_cache_.contains(
-                        "T:" + normalize_utterance(source));
-                    target = translate_legends_text(source, false, false);
-                    if (!target && !already_resolved) {
-                        // The ordinary collection queue only sees individual
-                        // wrapped rows (and is capped). Keep the whole failed
-                        // production for manual review, once per cache entry;
-                        // never log/render a translated prefix as a success.
-                        log_line("WARN", "Symbol description not translated: " +
-                            cp437_to_utf8(source));
-                    }
-                }
+                const bool already_resolved = legends_translation_cache_.contains(
+                    "T:" + normalize_utterance(source));
+                auto target = translate_symbol_picker_description(source);
+                if (!target && !already_resolved)
+                    log_line("WARN", "Symbol description not translated: " + cp437_to_utf8(source));
+                // An item parser can preserve unsupported sentences beside
+                // supported ones. This footer still owns its entire source;
+                // keep an unresolved paragraph original instead of presenting
+                // scattered English words as a completed translation.
+                if (!translation_complete_with_native_nicknames(target, source)) target.reset();
+                bool placed = false;
                 if (target) {
                     // The prose box extends to the count-field hint or the
                     // unnumbered picker's frame. A long native footer row can
                     // prove that this separate box is wider still.
-                    int right = hint_right;
+                    int right = footer_right;
                     for (const Match &row : description)
                         right = std::max(right, row.x + row.length);
-                    if (!append_setup_paragraph(description, *target, right, right) &&
-                        !description.empty()) {
+                    placed = append_setup_paragraph(description, *target, right, right);
+                    if (!placed && !description.empty()) {
                         // A captured paragraph can be taller than its native
                         // visible slice. Use adjacent unused footer rows before
                         // giving up, without touching candidates, controls,
@@ -23468,12 +23591,25 @@ std::vector<Match> Overlay::find_matches(int only_y,
                             return Match{left, y, right - left, kSymbolDescriptionRule, {},
                                 std::string(static_cast<size_t>(right - left), ' ')};
                         };
-                        for (int y = description.back().y + 1; empty_footer_row(y); ++y)
-                            description.push_back(blank(y));
-                        for (int y = description.front().y - 1; empty_footer_row(y); --y)
-                            description.insert(description.begin(), blank(y));
-                        for (Match &row : description) row.layout_foreground_rgb = foreground;
-                        append_setup_paragraph(std::move(description), *target, right, right);
+                        auto expanded = description;
+                        for (int y = expanded.back().y + 1; empty_footer_row(y); ++y)
+                            expanded.push_back(blank(y));
+                        for (int y = expanded.front().y - 1; empty_footer_row(y); --y)
+                            expanded.insert(expanded.begin(), blank(y));
+                        for (Match &row : expanded) row.layout_foreground_rgb = foreground;
+                        placed = append_setup_paragraph(std::move(expanded), *target, right, right);
+                    }
+                }
+                if (!placed) {
+                    // A missing production or unavailable paragraph space
+                    // leaves every original glyph visible. Reserving these
+                    // exact source spans prevents later UI/word/name readers
+                    // from turning the paragraph into mixed fragments.
+                    for (Match &row : description) {
+                        row.native_help_source_only = true;
+                        row.native_help_review_source = source;
+                        std::fill_n(screen_rows[row.y].begin() + row.x, row.length, ' ');
+                        untranslated_help_rows.push_back(std::move(row));
                     }
                 }
             }
@@ -23561,6 +23697,12 @@ std::vector<Match> Overlay::find_matches(int only_y,
             }
         }
     }
+
+    // Complete editor footers join knowledge documents, save fields and
+    // Legends identities before inferred UI messages and ordinary words.
+    context_detail.checkpoint(RenderTimingStage::UiMessages);
+#include "ui_messages.inc"
+    context_detail.checkpoint(RenderTimingStage::Scenes);
 
     // Background biographies and map tooltips are dynamic whole paragraphs.
     // The old row templates only covered a few human-hamlet wrap positions;

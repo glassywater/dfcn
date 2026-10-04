@@ -1,0 +1,336 @@
+图像／纹章编辑器选择器页脚：完整原生描述生产式
+
+资料性质
+  此文件是离线反编译的来源说明。函数名是人工语义别名。
+  没有执行游戏、读取游戏进程、操作桌面、运行翻译器、生成运行数据或构建。
+  不记录游戏内显示观察，也不是测试或检查报告。
+  所有下述地址是 RVA；两版 ImageBase 均为 0x140000000。
+  映像来自 data/runtime/native-pe-images.json：
+    reference: PE:6a70a6d9:02711000
+    classic:   PE:6a70b91c:0270a000
+
+来源目录
+  reference-artifact-source-graph.asm / classic-artifact-source-graph.asm
+    保留完整物品描述图和页脚包装器的实际指令、地址及字面量操作数。
+    原有物品来源图的 282 个函数，加上页脚包装器，为每版 283 个函数。
+    两版对应关系由真实 picker/footer 调用、实际 RTTI 虚表以及对应调用
+    指令中的目标建立，未按全局地址差值套算。
+  reference/classic-artifact-site-type.asm
+  reference/classic-artifact-guild-profession.asm
+    额外保留 Related to site/entity 页脚依赖；共 285 个正文／依赖函数。
+  artifact-functions.tsv         映像、函数范围及绑定依据。
+  artifact-literals.tsv          每一个实际 RIP／短立即数字面量操作数。
+  artifact-calls.tsv             实际直接调用和尾跳；运行库边也保留。
+  artifact-branches.tsv          条件边、目标和 fallthrough。
+  artifact-paired-edges.tsv      两版同一实际调用位置的被调函数关系。
+  artifact-virtual-subjects.tsv   全部 item 标题／冠词／图案及 general_ref
+                                主题／简称虚槽的实际 RTTI owner 与目标。
+  artifact-selectors.tsv         selector 输入、remap 索引和目标分支。
+  artifact-selector-bytes.tsv    selector 表的实际原始字节。
+  artifact-shared-source-catalog.tsv
+    复用 item-description-sources.tsv 的语义分类、完整虚槽绑定、RAW 字段、
+    来源生产式、外部子图和存储期生成器记录。当前实际 PE 函数正文另行读取
+    并保留在上述两版汇编，不能把旧目录地址当成另一版的地址。
+
+  汇编中的内嵌分发表已明确标注为 selector data，并保存原始字节；
+  不把其字节误解成指令、文本引用或调用。字面量表中的后缀切片、短字符串
+  分片、空格和 rich-text 标记不是独立 UI 句子。
+  图中运行库、资源读取、分配和创建期操作也不是可见英文描述生产式。
+
+1. 从当前选择到整段页脚
+
+  picker render:
+    reference 200070..2094c4
+    classic   200000..209454
+  selected-box builder:
+    reference 2126d0..21341c
+    classic   212660..2133ac
+  add_paragraph:
+    reference 8e7310
+    classic   8e4b80
+
+  picker.current_option  = +28
+  picker.selected_box    = +428
+  picker.last_width      = +440
+  picker.last_index      = +444
+
+  当宽度或选中索引改变，render 调 selected-box builder；builder 先清空
+  selected_box，再由 current_option 选择真实来源，最后将完整原文和 width
+  传给 add_paragraph。render 随后读取 selected_box 的换行结果，使用黄色
+  绘制页脚。它不是由每个屏幕词汇单独生成的一串片段。
+
+  主 dispatch:
+    reference table 2133bc，classic table 21334c
+    input = current_option - 1，原生有效 option 为 1..13。
+
+  option 角色                    reference branch   classic branch
+     1   RELATED_TO_HFID          21273e             2126ce
+     2   RELATED_TO_STID          21284d             2127dd
+     3   RELATED_TO_ENID          212c16             212ba6
+     4   RELATED_TO_HEID          213383             213313  [空]
+     5   EXISTING_IMAGE           212ffb             212f8b
+     6   NEW_IMAGE                213383             213313  [空]
+     7   NEW_IMAGE_ELEMENT_CREATURE 213099            213029
+     8   NEW_IMAGE_ELEMENT_HF     21273e             2126ce
+     9   NEW_IMAGE_ELEMENT_PLANT  213383             213313  [空]
+    10   NEW_IMAGE_ELEMENT_TREE   213383             213313  [空]
+    11   NEW_IMAGE_ELEMENT_SHAPE  213383             213313  [空]
+    12   NEW_IMAGE_ELEMENT_ITEM   2131fd             21318d
+    13   NEW_IMAGE_ELEMENT_ARTIFACT 2132fb            21328b
+
+  option 4/6/9/10/11 不产生 selected_box 正文。植物／树／形状候选名是
+  独立 RAW 名称或 descriptor 字段，必须走候选名翻译，不得凭空创造页脚。
+  原生没有产生正文、索引越界或记录为空时，清空后的 selected_box 保持空。
+
+2. 造物分支：共享完整物品语法
+
+  造物向量 picker+388..390，选中索引 picker+444；造物记录 +90 是 item。
+  item 为空则不产生正文。
+  reference 213361 -> c75000(item, output, 1, 1, 0, 0)
+  classic   2132f1 -> c72040(item, output, 1, 1, 0, 0)
+  reference 213374 / classic 213304 -> add_paragraph(output, width)
+
+  公共正文：reference c75000..c796aa，classic c72040..c766ea。
+  公共标题：reference c65450..c65f0a，classic c62490..c62f4a。
+  公共名词：reference a82c10..a882fc，classic a7fc90..a8537c。
+
+  这段正文可描述原生所有物品类型，并不限定为截图中的宝石封面的抄本。
+  其类型全集由 RTTI、getType 和共享名词 dispatch 决定：93 个具体物品
+  类型 0..92，以及 5 个基类；标题／冠词虚槽对全部 owner 保留。
+  装饰全集为 15 个具体 kind 0..14 和基类，书页插图 kind 10 的存储语义
+  同样保留，不能当成缺少一个普通装饰句。
+
+  正文依原生顺序组合以下文本族：
+    - This is / These are / stack / bundle / 多 bundle 的起句。
+    - 物品类型、subtype、材料、材质前缀、名字、数量、品质、磨损和抄本标题。
+    - 五档食物准备品质、五档工艺品质、masterwork maker 和 unknown artisan。
+    - 神器工艺：All + race.CRAFTSMAN 单数职业名 + ship is of the highest quality.
+    - 衣物／护甲适用种族：It is sized for + creature plural。
+    - 食物全部原料、切碎／烹煮和品质，原料的量与材料名独立。
+    - 包覆、上釉、镶嵌、环带、垂环、尖刺及各自材料／品质／制作人。
+    - 布料工艺、线和物体染色、描述颜色、无品质与五档 colored、单染／混染。
+    - 乐器部件、绳／链／卷筒／握柄、RAW 的单复数部件名和材质。
+    - 基础图像、装饰图像、缝制图像；所有元素和动作、作者及历史事件。
+    - 骰子全部 faces、series、range、上方面、数词、WORD、形状和艺术元素。
+    - 表面书写、书页内容、体裁、标题、作者、主题、风格、品质和章节。
+    - 基础线／鞣革／布料染色和未染色材质图案。
+    - 硬币身份、统治者、年份、正反面图像和对应材料。
+    - 用作染料时的颜色／图案说明。
+    - 石板、可读性、保存的铭文、著作、绑定和纪念原文。
+    - 软／硬材料磨损、污染物及 coated/spattered 数量分支。
+    - interaction source kind 10 的 item_description 神秘能力自带说明。
+    - itemdef_tool+188 和 itemdef_instrument+278 的完整 DESCRIPTION。
+
+  全部字段、selector、字面量和绑定调用见 artifact-shared-source-catalog.tsv。
+  材料状态不能合并：基础线／皮革的染料使用 POWDER；装饰染料混合分量
+  使用 POWDER，直接单染料用 SOLID。描述颜色 NAME 与材质图案独立。
+  名字、书题、原料、材质及污染的内部分隔符不能简单按屏幕空格或逗号切开。
+
+3. 书写：截图第二段的完整来源
+
+  表面书写      cc6a10..cc7020 / cc3a50..cc4060
+  书页 introduction cc7020..cc75f8 / cc4060..cc4638
+  主题／风格／品质 cc5d50..cc6a0e / cc2d90..cc3a4e
+  风格 selector cc5520..cc5d50 / cc2560..cc2d90
+
+  页面起句:
+    The written portion consists of nothing.
+    The written portion consists of a {page_count} page
+      [untitled ]{genre}[ entitled {title}][, authored by {author}].
+  表面起句:
+    There used to be writing on the item.
+    Written on the item is {a/an} [untitled ]{genre}
+      [ entitled {title}][, authored by {author}].
+  title、author、page_count、genre 是彼此独立的数据字段。
+  无标题、无作者、作者记录存在但无名字均为真实原生分支。
+
+  26 个 genre（枚举顺序）:
+    manual, guide, chronicle, short story, novel, biography, autobiography,
+    poem, play, letter, essay, dialog, musical composition, choreography,
+    comparative biography, biographical dictionary, genealogy, encyclopedia,
+    cultural history, cultural comparison, alternate history,
+    treatise on technological evolution, dictionary, star chart,
+    star catalogue, atlas。
+
+  work.reference_type 为 0 的项目构成主题集合，5 构成章节集合。
+  每一个主题通过 general_ref 的 +90 真实虚槽生成，目录保留全部 69 个
+  reference owner 的 +90 和 +98；base no-op 和未知／为空输出也保留。
+  主题叶子包括价值及强度、知识类别／flag、神灵领域、语言、体裁／作品、
+  历史事件、地区、实体、地下层、地点、建筑、人物、种族／种姓／种群、
+  死灵／幽灵状态、物品类型以及有名或未知神器。
+
+  主题组合:
+    The work has no particular subject.
+    It concerns {reference_list}.
+    genealogy 且唯一主题: It concerns the lineage of {reference}.
+    alternate history 且唯一主题:
+      It asks the question, "What if {reference} had unfolded differently?"
+  其它 role:
+    6: The writing conveys a moral lesson regarding {reference}.
+    9: The overall text emphasizes {reference}.
+    7: For lyrics, the composer has selected {reference}.
+    8: For musical accompaniment, the choreographer has selected {reference}.
+
+  18 个 style 各有 3 档 strength；其中 8 个在 quality<20 时使用额外
+  3 档负面谓词，总计 78 个谓词。选 1 个 style 生成 The writing {p}.；
+  选 2 个生成 The writing {p1} and it {p2}. 或 yet it，按原生 mood 和
+  quality<20 决定连接词。不能只为截图中的 is quite cruel 做一条特例。
+
+  质量选择有 prose / information / poetry / composition / choreography
+  5 个完整句族，各 6 档，以 quality 的 10/20/30/40/50 为边界。
+  包括原生语病 Overall, the splendid source of information.，必须保留
+  来源实际拼写并使用已有正确汉语译文，不能假装原文是另一句。
+
+  章节:
+    The work has a single chapter. / The work has {count} chapters.
+    唯一章节: It covers {reference}.
+    多章节: The {ordinal} chapter covers {reference}.
+  原生章节序号、事件年份、多个主题以及标题中的引号／句号均属于正文。
+
+  截图第二段的 actual family:
+    item title（sapphire-bound codex）
+      -> cc7020 页面起句（28 / essay / Beyond... / Ngokang...）
+      -> cc5d50 事件主题（marriage ... in 27）
+      -> cc5520 风格谓词（is quite cruel）
+      -> cc5d50 prose 质量（amateurish at best）。
+  这里只展示其字段如何组合；原生世界生成标题、人物、材料和页数不可穷举。
+
+4. 其余实际页脚来源
+
+  人物 option 1/8:
+    RELATED_TO_HFID 读 picker+158..160，NEW_IMAGE_ELEMENT_HF 读 +2e0..2e8。
+    对人物 ID 调 biography producer c2b870 / c288b0，然后 add_paragraph。
+    包括人物身份、性别、物种、最初个体、神灵及领域等；详细人物来源和
+    人工反编译见本目录 reference/classic-figure-* 文件及人物说明。
+
+  生物 option 7:
+    parallel race vector +2b0、caste vector +2c8。
+    caste != -1: 读取 world.creature_raw[race].castes[caste]+220 DESCRIPTION。
+    caste == -1: 若该 race 有 caste，读第一个 caste+220 DESCRIPTION。
+    没有 caste 则为空。正文不是 name 字段，也不是形状或材料词表。
+    静态 RAW 描述走现有完整 DESCRIPTION 翻译；程序生成生物的无字典描述
+    走既有 biography physical-description 语法，不将普通正文音译为名字。
+
+  普通物品 option 12:
+    读取 +358 的 item_type 和 +370 的 subtype。
+    type 13 INSTRUMENT: world.itemdefs.instruments[subtype]+278 DESCRIPTION。
+    type 86 TOOL:       world.itemdefs.tools[subtype]+188 DESCRIPTION。
+    字符串长度为零、subtype 无效或其它 item_type，原生页脚为空。
+    原生物品候选名仍由独立共享 item noun 生产式生成。
+
+  乐器 DESCRIPTION 不仅来自静态 RAW；其创建／存储 writer 是
+    ebe8a0..ecc30c / eb9810..ec727c。
+    音域 helper eb6fe0..eb757b / eb1f50..eb24eb。
+    全文包含空气／水驱动、弦、吹管／簧、打击结构、部件、演奏、调音、
+    音域、音色和音区。原版两个单弦分支用 assign("the") 覆盖前文，
+    可使存储正文从 the string by stopping it against the neck/body 开始；
+    这是实际 writer 行为，现有 scoped instrument grammar 已接入。
+
+  existing image option 5:
+    picker+1b8..1c0 的 art_image -> 1451b10 / 144ca80 -> add_paragraph。
+    元素、单复数、动作和历史关联共享 statue-art/history 完整子图。
+    图像显示使用实际选中图像，不能用另一图像的相似句子拼出缺失字段。
+
+  地点 option 2:
+    picker+170..178 选 world_site。
+    起句 This is a / These are，由 site 类型与 native flags 选择。
+    可选种族名来自 site 主体关联实体的 race 与 creature_raw.name。
+    site-type helper 10cbe50 / 10c6dc0：fortress、mountain halls、hillocks、
+    pits、cave、forest retreat、hamlet、town、shrine、labyrinth、lair、
+    castle、fort、monastery、tower、mysterious palace、mysterious dungeon、
+    mysterious lair、vault、tomb、monument、camp、important location、site。
+    可选 in {region-name} 由坐标 lookup 1bc1f0 / 1bc180 和 generated-name
+    a946e0 / a91760 生成；句尾点号后整段提交 add_paragraph。
+
+  实体 option 3:
+    picker+188..190 选 historical_entity。
+    This is a [outcast/nomadic/migrating/local ]{race-name} {entity-type}.
+    entity-type selector（实际表 2133f0 / 213380）包括 civilization、
+    merchant company、{profession} guild、craft guild、performance troupe、
+    government、vessel、religion、military organization、group。
+    guild profession 由 132cc10 / 1327b80 输出，保留整个 profession selector，
+    原生 race.PROFESSION_NAME override 优先于默认职业名，不能仅翻 craftsman。
+    status 仅由 entity.type+0 选择一次：type1 local、type3 migrating、
+    type4 nomadic、type7 outcast；其它 type 无 status。完整 type 对应为：
+    0 civilization、1 government、2 vessel、3/4/7 group、5 religion、
+    6 military organization、8 performance troupe、9 merchant company、10 guild。
+    type 超过 10 的实际 default branch 为 group；此时未命中四个 status，
+    可以产生没有 status 的 group，不能把它改成原生空 noun。
+    没有 race 不追加种族前缀；guild 没有有效职业引用时回退 craft guild。
+    地点和实体的 This is a 是固定起句，important location 等不会另选 an。
+
+5. 既有翻译路径与本次漏译入口
+
+  实际物品、材料、书写和图像已有整段译法：
+    src/item_descriptions.inc
+    src/fortress_item_captions.inc
+    src/legends_books.inc
+    src/symbol_description.inc
+    src/instrument_descriptions.inc
+    src/announcement_combat.inc（work-sentence / work-reference）
+    src/legends_detail.inc（人物、名字、事件、书题和正文）
+    data/runtime/item-description-translations.tsv
+    data/runtime/legends-events.tsv
+    data/runtime/announcement-combat-grammar.tsv
+    data/runtime/announcement-reference-grammar.tsv
+    data/runtime/instrument-translations.tsv
+  已有书写词表含 26 体裁、78 风格、30 质量句及书题／作者／页数全部组合。
+  {title} 按书题语法处理，{author} 按人物语法处理，材料封皮按完整 written-item
+  名词短语处理；截图正文无须世界专属完整句词条或英文逐词替换。
+
+  picker 底部正文收集位于 src/dfcn.cpp 的 symbol description footer 逻辑。
+  修复前无 Number 字段的选中页，footer_bottom 使用整块 gps.dimy。
+  用户截图中 FPS 位于原生外框下方；倒扫先收进 FPS 行，随后被其上方
+  外框／空白阻断，真正黄色 selected_box 正文没有进入上述整段译法。
+  修复应以该 picker 原生外框限定 footer 末端，同时保留完整正文、候选行
+  边界与所有现有语法；不能删除页脚或只补截图词汇。
+
+  RELATED_TO_STID / RELATED_TO_ENID 的完整页面组合与主七个元素页脚不同。
+  它们的所有原生词／分支已提取；使用这些页面时，应按上述地点／实体
+  字段类型处理整句，不能因通用词典能翻个别词就称为整段已经覆盖。
+  本轮专属整段路由及地点／实体组合实现位于 src/symbol_picker_descriptions.inc；
+  它复用各真实生成器的既有字段译法，和原生外框内的页脚收集共同处理。
+
+6. 有界常量与动态来源
+
+  可完整枚举的是原生分派、字面量、字段角色、RAW token 和当前映像
+  的生成语法；正文组合不是有限集合。新存档的名字、书题、数量、事件、
+  作者、材料及模组自由 DESCRIPTION 不可能穷举成全部完整句。
+  本来源图复用并明确连接：
+    data/extracted/item-description-sources.md / .tsv
+    data/extracted/statue-art-sources.tsv
+    data/extracted/statue-history-sources.tsv
+    data/extracted/memorial-inscription-sources.tsv
+    data/extracted/item-info-title-sources.tsv
+    data/extracted/item-raw-title-sources.tsv
+    data/extracted/map-hover-item-sources.tsv
+    data/extracted/corpse-caption-sources.tsv
+    data/extracted/adventure-performance-menu/steam-decompiled.txt
+  RAW 与 Lua 的存储期源表达式按已有目录保留，不执行生成器或重新造出
+  世界数据。文件中的字面量和源生产式是供正式翻译路径使用的原始资料，
+  不是对实机最终显示结果的声明。
+
+7. 原生读取的完整 RAW DESCRIPTION 字段
+
+  raw-description-sources.tsv 保留两版实际 RAW 的 file、line、object、
+  caste selection 和 native field：两版共 1936 个来源位置、951 条不同
+  完整描述，均为 CREATURE 的 caste+220。现有 translations.tsv 对这些
+  完整英文描述都有非空中文条目；947 条为 lP，4 条为 hP。译文没有残余
+  英文单词，P 使其进入既有完整 literal lookup。dispatcher 首先执行
+  exact_literal_translation，因此正文按整个 DESCRIPTION 匹配。
+  RAW 常见的连续空格与换行只在既有 prose normalization 中统一，不
+  将描述拆成逐词翻译，也不为两版相同描述创建重复世界专属词条。
+
+  当前两版 vanilla_items/objects 与 installed_mods 的实际文本未提供
+  静态 INSTRUMENT DESCRIPTION 或 ITEM_TOOL DESCRIPTION token。
+  此处 itemdef_instrument+278／itemdef_tool+188 的非空原生内容由已经
+  保留的存储期 writer ebe8a0／eb9810 构造。工具部件包括琴弦、琴身、
+  键盘、气泵、风箱、吹管、风箱主体、音管、气囊、旋律管、持续音管、
+  琴颈／共鸣箱、支架、鼓面、音锤／鼓棒等。完整部件描述会指明其与
+  instrument 的关系，现有 instrument-translations.tsv 的 s 句型按
+  {i}=真实命名部件解析；普通乐器的身份／结构／演奏／音域／音色正文
+  则由同表的完整 s/p/m/f/c/r/t/z/d 语法处理。selector 和原文仍见
+  artifact-literals.tsv 及两版存储期 writer 汇编。
+
+  本轮没有发现需要新增的具体有限 RAW 描述译文。没有修改任何运行
+  数据或重新生成词表；以上是实际来源字段与已有译文入口的静态定位。
