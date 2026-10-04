@@ -220,6 +220,7 @@ std::vector<Match> dfhack_auxiliary_matches;
     };
     for (const auto &window : native_dfhack_window_geometry(dfhack_context_rows)) {
         const auto *frame = &window.frame;
+#include "dfhack_civ_alert.inc"
         // Legacy InputBox is 23 columns wide. Keep the foreground
         // component's existing size and role-scoped prompt/control proof.
         if (frame->w < 23 || frame->h < 7) continue;

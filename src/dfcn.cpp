@@ -2299,6 +2299,15 @@ static std::shared_ptr<NativeTooltipPage> native_help_background_page(const grap
     auto page = tooltip_page ? std::make_shared<NativeTooltipPage>(*tooltip_page)
                              : std::make_shared<NativeTooltipPage>(gps);
     if (tooltip_page) page->compose_outside(gps, &frames);
+    // The widget snapshot predates its own foreground draw. A later help or
+    // DFHack snapshot can contain that tooltip, so it must not replace the
+    // earlier native page where their rectangles overlap.
+    const auto widget_background = [&](int x, int y) {
+        if (!tooltip_page) return false;
+        const auto &box = tooltip_page->bounds;
+        return x >= box.x && x < box.x + box.w &&
+            y >= box.y && y < box.y + box.h;
+    };
     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
     // A foreign frame may destroy a page that was already in screen_top.
     // Outside it, retain the current composed native page rather than using
@@ -2313,7 +2322,7 @@ static std::shared_ptr<NativeTooltipPage> native_help_background_page(const grap
             for (int x = std::max(0, frame.x); x < std::min(gps.dimx, frame.x + frame.w); ++x)
                 for (int y = std::max(0, frame.y); y < std::min(gps.dimy, frame.y + frame.h); ++y) {
                     const size_t at = static_cast<size_t>(x) * gps.dimy + y;
-                    if (!saved.cells[at]) continue;
+                    if (widget_background(x, y) || !saved.cells[at]) continue;
                     std::memcpy(page->screen.data() + at * 8, saved.screen.data() + at * 8, 8);
                     page->origins[at] = saved.origins[at];
                     const auto copy = [at](auto &out, const auto &in) {
@@ -2328,7 +2337,7 @@ static std::shared_ptr<NativeTooltipPage> native_help_background_page(const grap
         for (int x = frame.x; x < frame.x + frame.w; ++x)
             for (int y = frame.y; y < frame.y + frame.h; ++y) {
                 const size_t at = static_cast<size_t>(x) * gps.dimy + y;
-                if (!saved.cells[at]) continue;
+                if (widget_background(x, y) || !saved.cells[at]) continue;
                 std::memcpy(page->screen.data() + at * 8, saved.screen.data() + at * 8, 8);
                 page->origins[at] = saved.origins[at];
                 const auto copy = [at](auto &out, const auto &in) {
@@ -2348,6 +2357,7 @@ static std::shared_ptr<NativeTooltipPage> native_help_background_page(const grap
         for (int x = frame.x; x < frame.x + frame.w; ++x)
             for (int y = frame.y; y < frame.y + frame.h; ++y) {
                 const size_t at = static_cast<size_t>(x) * gps.dimy + y;
+                if (widget_background(x, y)) continue;
                 std::memcpy(page->screen.data() + at * 8, saved.screen.data() + at * 8, 8);
                 page->origins[at] = saved.origins[at];
                 const auto copy = [at](auto &out, const auto &in) {

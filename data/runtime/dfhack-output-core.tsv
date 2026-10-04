@@ -2038,3 +2038,8 @@ DFHack GUI Suspendmanager state: Enabled	已启用	l
 DFHack GUI Suspendmanager state: Disabled	已停用	l
 DFHack GUI Suspendmanager state: Yes	是	l
 DFHack GUI Suspendmanager state: No	否	l
+
+# gui/civ-alert.lua: complete fixed rows in the compact overlay buttons.
+DFHack GUI Civilian alert action: Activate civilian alert	启动\n平民\n警报	l
+DFHack GUI Civilian alert action: Clear civilian alert	解除\n平民\n警报	l
+DFHack GUI Civilian alert action: Click to configure civilian alert	点击配置\n平民警报	l
