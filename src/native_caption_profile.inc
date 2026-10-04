@@ -61,6 +61,9 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     // Both native string::resize implementations take (this, size, fill).
     profile.resize = reinterpret_cast<NativeCaptionResizeFn>(native_pe_address(profile.base, profile.resize_target));
     profile.draw = reinterpret_cast<NativeCaptionDrawFn>(native_pe_address(profile.base, profile.draw_target));
+    // Both decompiled Adventure travel structure-card branches bind every
+    // direct addst call, including their dynamic names and shrine formats.
+#include "native_travel_structures_profile.inc"
     // All 98 item classes and 57 building classes converge on these title
     // calls; the remaining three calls are the engraving/terrain sheets.
     // These are return addresses of verified E8 calls to addst, never a

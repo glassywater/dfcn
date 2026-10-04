@@ -1,0 +1,343 @@
+edition	instruction_rva	operand_kind	literal_rva	source
+reference	0x81190e	rip-relative	0x16af4d8	Sewer Access
+reference	0x811a3a	rip-relative	0x16af4c8	Tree House
+reference	0x811a70	rip-relative	0x16af4f8	The Home Tree
+reference	0x811aa6	rip-relative	0x16af4e8	Shaping Tree
+reference	0x811adc	rip-relative	0x16af350	Market Tree
+reference	0x811b12	rip-relative	0x16af340	Tavern Tree
+reference	0x811b48	rip-relative	0x16af370	Library Tree
+reference	0x811b7e	rip-relative	0x16af360	Counting Tree
+reference	0x811bb4	rip-relative	0x16af310	Guild Tree
+reference	0x811bea	rip-relative	0x16af300	Tower Tree
+reference	0x811c85	rip-relative	0x16af3d8	Drinking Mound
+reference	0x811cce	rip-relative	0x16af320	Castle Mound
+reference	0x811d17	rip-relative	0x16af330	Civic Mound
+reference	0x811e19	rip-relative	0x16525b8	Mead Hall
+reference	0x811e53	rip-relative	0x16525b8	Mead Hall
+reference	0x811e89	rip-relative	0x16525b8	Mead Hall
+reference	0x811f61	rip-relative	0x162b7d0	Temple
+reference	0x811f9b	rip-relative	0x162b7d0	Temple
+reference	0x811fd1	rip-relative	0x162b7d0	Temple
+reference	0x8120a9	rip-relative	0x16af3c8	Counting House
+reference	0x8120e3	rip-relative	0x16af3c8	Counting House
+reference	0x812119	rip-relative	0x16af3c8	Counting House
+reference	0x8121f1	rip-relative	0x16af3f0	Guildhall
+reference	0x81222b	rip-relative	0x16af3f0	Guildhall
+reference	0x812261	rip-relative	0x16af3f0	Guildhall
+reference	0x812339	rip-relative	0x16af3e8	Tower
+reference	0x812373	rip-relative	0x16af3e8	Tower
+reference	0x8123a9	rip-relative	0x16af3e8	Tower
+reference	0x812484	rip-relative	0x162b7c0	Library
+reference	0x8124be	rip-relative	0x162b7c0	Library
+reference	0x8124f4	rip-relative	0x162b7c0	Library
+reference	0x8125cc	rip-relative	0x162b7c8	Tavern
+reference	0x812606	rip-relative	0x162b7c8	Tavern
+reference	0x81263c	rip-relative	0x162b7c8	Tavern
+reference	0x8128af	rip-relative	0x16af390	Abandoned shop
+reference	0x81290d	rip-relative	0x16af380	Food imports
+reference	0x812943	rip-relative	0x16af3b0	Clothing imports
+reference	0x812979	rip-relative	0x16af3a0	General imports
+reference	0x8129af	rip-relative	0x16af210	Cloth shop
+reference	0x8129e5	rip-relative	0x16af200	Leather shop
+reference	0x812a1b	rip-relative	0x16af238	Woven clothing shop
+reference	0x812a51	rip-relative	0x16af220	Leather clothing shop
+reference	0x812a87	rip-relative	0x16af1c0	Bone carver's shop
+reference	0x812abd	rip-relative	0x16af1a8	Gem cutter's shop
+reference	0x812af3	rip-relative	0x16af1e8	Weaponsmith's shop
+reference	0x812b29	rip-relative	0x16af1d8	Bowyer's shop
+reference	0x812b5f	rip-relative	0x16af2b8	Blacksmith's shop
+reference	0x812b95	rip-relative	0x16af2a0	Armorsmith's shop
+reference	0x812bcb	rip-relative	0x16af2e8	Metal craft shop
+reference	0x812c01	rip-relative	0x16af2d0	Leather goods shop
+reference	0x812c37	rip-relative	0x16af268	Carpenter's shop
+reference	0x812c6d	rip-relative	0x16af250	Stone furniture shop
+reference	0x812ca3	rip-relative	0x16af288	Metal furniture shop
+reference	0x812d01	rip-relative	0x162b820	Dormitory
+reference	0x812d5f	rip-relative	0x16af27c	Barrow
+reference	0x812dbd	rip-relative	0x162fb40	Dining Hall
+reference	0x812e1b	rip-relative	0x16afb78	Warehouse
+reference	0x812e79	rip-relative	0x16afb60	Fortress Entrance
+reference	0x812ed8	rip-relative	0x162ccdc	Well
+reference	0x812f36	rip-relative	0x16afb98	Trenches
+reference	0x812fec	rip-relative	0x1644448	 shrine
+reference	0x813001	rip-relative	0x16afb88	Shrine to 
+reference	0x81307f	rip-relative	0x162b7d8	Shrine
+reference	0x8130ef	rip-relative	0x16afb18	Empty market
+reference	0x813151	rip-relative	0x16afb00	Imported goods market
+reference	0x813187	rip-relative	0x16afb48	Imported food market
+reference	0x8131bd	rip-relative	0x16afb28	Imported clothing market
+reference	0x8131f3	rip-relative	0x16afc20	Meat market
+reference	0x813229	rip-relative	0x16afc00	Fruit and vegetable market
+reference	0x81325c	rip-relative	0x16afc48	Cheese market
+reference	0x81328f	rip-relative	0x16afc30	Processed goods market
+reference	0x813407	rip-relative	0x16afbc0	Underground Fortress
+reference	0x81345b	rip-relative	0x16afba8	Underground Farms
+reference	0x8134c1	rip-relative	0x16afbe8	Underground Stair
+reference	0x813575	rip-relative	0x16afbd8	Hillocks
+reference	0x8135ab	rip-relative	0x16afa40	Houses
+reference	0x81361c	rip-relative	0x16afa38	Hillock
+reference	0x81364f	rip-relative	0x16afa5c	House
+reference	0x8136c4	rip-relative	0x16afa48	Abandoned hillocks
+reference	0x8136fa	rip-relative	0x16afa00	Abandoned houses
+reference	0x813768	rip-relative	0x16af9e8	Abandoned hillock
+reference	0x81379b	rip-relative	0x16afa28	Abandoned house
+reference	0x813810	rip-relative	0x16afa18	Ruined hillocks
+reference	0x813846	rip-relative	0x16afac0	Ruined houses
+reference	0x8138b4	rip-relative	0x16afab0	Ruined hillock
+reference	0x8138e7	rip-relative	0x16afaf0	Ruined house
+reference	0x813945	rip-relative	0x16afad0	No significant structures
+reference	0x813d4c	rip-relative	0x16af4d8	Sewer Access
+reference	0x813e75	rip-relative	0x16af4c8	Tree House
+reference	0x813eb6	rip-relative	0x16af4f8	The Home Tree
+reference	0x813ef7	rip-relative	0x16af4e8	Shaping Tree
+reference	0x813f38	rip-relative	0x16af350	Market Tree
+reference	0x813f79	rip-relative	0x16af340	Tavern Tree
+reference	0x813fba	rip-relative	0x16af370	Library Tree
+reference	0x813ffb	rip-relative	0x16af360	Counting Tree
+reference	0x81403c	rip-relative	0x16af310	Guild Tree
+reference	0x81407d	rip-relative	0x16af300	Tower Tree
+reference	0x814123	rip-relative	0x16af3d8	Drinking Mound
+reference	0x81416c	rip-relative	0x16af320	Castle Mound
+reference	0x8141b5	rip-relative	0x16af330	Civic Mound
+reference	0x8142d1	rip-relative	0x16525b8	Mead Hall
+reference	0x814312	rip-relative	0x16525b8	Mead Hall
+reference	0x814353	rip-relative	0x16525b8	Mead Hall
+reference	0x81443e	rip-relative	0x162b7d0	Temple
+reference	0x81447f	rip-relative	0x162b7d0	Temple
+reference	0x8144c0	rip-relative	0x162b7d0	Temple
+reference	0x8145ab	rip-relative	0x16af3c8	Counting House
+reference	0x8145ec	rip-relative	0x16af3c8	Counting House
+reference	0x81462d	rip-relative	0x16af3c8	Counting House
+reference	0x814718	rip-relative	0x16af3f0	Guildhall
+reference	0x814759	rip-relative	0x16af3f0	Guildhall
+reference	0x81479a	rip-relative	0x16af3f0	Guildhall
+reference	0x814885	rip-relative	0x16af3e8	Tower
+reference	0x8148c6	rip-relative	0x16af3e8	Tower
+reference	0x814907	rip-relative	0x16af3e8	Tower
+reference	0x8149f5	rip-relative	0x162b7c0	Library
+reference	0x814a36	rip-relative	0x162b7c0	Library
+reference	0x814a77	rip-relative	0x162b7c0	Library
+reference	0x814b62	rip-relative	0x162b7c8	Tavern
+reference	0x814ba3	rip-relative	0x162b7c8	Tavern
+reference	0x814be4	rip-relative	0x162b7c8	Tavern
+reference	0x814e62	rip-relative	0x16af390	Abandoned shop
+reference	0x814ec0	rip-relative	0x16af380	Food imports
+reference	0x814ef6	rip-relative	0x16af3b0	Clothing imports
+reference	0x814f2c	rip-relative	0x16af3a0	General imports
+reference	0x814f62	rip-relative	0x16af210	Cloth shop
+reference	0x814f98	rip-relative	0x16af200	Leather shop
+reference	0x814fce	rip-relative	0x16af238	Woven clothing shop
+reference	0x815004	rip-relative	0x16af220	Leather clothing shop
+reference	0x81503a	rip-relative	0x16af1c0	Bone carver's shop
+reference	0x815070	rip-relative	0x16af1a8	Gem cutter's shop
+reference	0x8150a6	rip-relative	0x16af1e8	Weaponsmith's shop
+reference	0x8150dc	rip-relative	0x16af1d8	Bowyer's shop
+reference	0x815112	rip-relative	0x16af2b8	Blacksmith's shop
+reference	0x815148	rip-relative	0x16af2a0	Armorsmith's shop
+reference	0x81517e	rip-relative	0x16af2e8	Metal craft shop
+reference	0x8151b4	rip-relative	0x16af2d0	Leather goods shop
+reference	0x8151ea	rip-relative	0x16af268	Carpenter's shop
+reference	0x815220	rip-relative	0x16af250	Stone furniture shop
+reference	0x815256	rip-relative	0x16af288	Metal furniture shop
+reference	0x8152b4	rip-relative	0x162b820	Dormitory
+reference	0x815319	rip-relative	0x16af27c	Barrow
+reference	0x81537e	rip-relative	0x162b7e8	Dining hall
+reference	0x8153e3	rip-relative	0x16afb78	Warehouse
+reference	0x815448	rip-relative	0x16afb60	Fortress Entrance
+reference	0x8154ae	rip-relative	0x162ccdc	Well
+reference	0x815513	rip-relative	0x16afb98	Trenches
+reference	0x8155b7	rip-relative	0x16afa80	Shrine of 
+reference	0x8155e6	rip-relative	0x16afb88	Shrine to 
+reference	0x81565f	rip-relative	0x162b7d8	Shrine
+reference	0x8156d6	rip-relative	0x16afb18	Empty market
+reference	0x815738	rip-relative	0x16afb00	Imported goods market
+reference	0x81576e	rip-relative	0x16afb48	Imported food market
+reference	0x8157a4	rip-relative	0x16afb28	Imported clothing market
+reference	0x8157da	rip-relative	0x16afc20	Meat market
+reference	0x815810	rip-relative	0x16afc00	Fruit and vegetable market
+reference	0x815843	rip-relative	0x16afc48	Cheese market
+reference	0x815876	rip-relative	0x16afc30	Processed goods market
+reference	0x81592d	rip-relative	0x16afbd8	Hillocks
+reference	0x815963	rip-relative	0x16afa40	Houses
+reference	0x8159d4	rip-relative	0x16afa38	Hillock
+reference	0x815a07	rip-relative	0x16afa5c	House
+reference	0x815a7b	rip-relative	0x16afa48	Abandoned hillocks
+reference	0x815ab1	rip-relative	0x16afa00	Abandoned houses
+reference	0x815b1f	rip-relative	0x16af9e8	Abandoned hillock
+reference	0x815b52	rip-relative	0x16afa28	Abandoned house
+reference	0x815bc5	rip-relative	0x16afa18	Ruined hillocks
+reference	0x815bfb	rip-relative	0x16afac0	Ruined houses
+reference	0x815c69	rip-relative	0x16afab0	Ruined hillock
+reference	0x815c9c	rip-relative	0x16afaf0	Ruined house
+reference	0x815d05	rip-relative	0x16afad0	No significant structures
+classic	0x80f18e	rip-relative	0x16aa440	Sewer Access
+classic	0x80f2ba	rip-relative	0x16aa430	Tree House
+classic	0x80f2f0	rip-relative	0x16aa460	The Home Tree
+classic	0x80f326	rip-relative	0x16aa450	Shaping Tree
+classic	0x80f35c	rip-relative	0x16aa400	Market Tree
+classic	0x80f392	rip-relative	0x16aa3f0	Tavern Tree
+classic	0x80f3c8	rip-relative	0x16aa420	Library Tree
+classic	0x80f3fe	rip-relative	0x16aa410	Counting Tree
+classic	0x80f434	rip-relative	0x16aa4b8	Guild Tree
+classic	0x80f46a	rip-relative	0x16aa4a8	Tower Tree
+classic	0x80f505	rip-relative	0x16aa480	Drinking Mound
+classic	0x80f54e	rip-relative	0x16aa4c8	Castle Mound
+classic	0x80f597	rip-relative	0x16aa4d8	Civic Mound
+classic	0x80f699	rip-relative	0x164d858	Mead Hall
+classic	0x80f6d3	rip-relative	0x164d858	Mead Hall
+classic	0x80f709	rip-relative	0x164d858	Mead Hall
+classic	0x80f7e1	rip-relative	0x1626f38	Temple
+classic	0x80f81b	rip-relative	0x1626f38	Temple
+classic	0x80f851	rip-relative	0x1626f38	Temple
+classic	0x80f929	rip-relative	0x16aa470	Counting House
+classic	0x80f963	rip-relative	0x16aa470	Counting House
+classic	0x80f999	rip-relative	0x16aa470	Counting House
+classic	0x80fa71	rip-relative	0x16aa498	Guildhall
+classic	0x80faab	rip-relative	0x16aa498	Guildhall
+classic	0x80fae1	rip-relative	0x16aa498	Guildhall
+classic	0x80fbb9	rip-relative	0x16aa490	Tower
+classic	0x80fbf3	rip-relative	0x16aa490	Tower
+classic	0x80fc29	rip-relative	0x16aa490	Tower
+classic	0x80fd04	rip-relative	0x1626f20	Library
+classic	0x80fd3e	rip-relative	0x1626f20	Library
+classic	0x80fd74	rip-relative	0x1626f20	Library
+classic	0x80fe4c	rip-relative	0x1626fe4	Tavern
+classic	0x80fe86	rip-relative	0x1626fe4	Tavern
+classic	0x80febc	rip-relative	0x1626fe4	Tavern
+classic	0x81012f	rip-relative	0x16aa300	Abandoned shop
+classic	0x81018d	rip-relative	0x16aa2f0	Food imports
+classic	0x8101c3	rip-relative	0x16aa320	Clothing imports
+classic	0x8101f9	rip-relative	0x16aa310	General imports
+classic	0x81022f	rip-relative	0x16aa2b0	Cloth shop
+classic	0x810265	rip-relative	0x16aa2a0	Leather shop
+classic	0x81029b	rip-relative	0x16aa2d8	Woven clothing shop
+classic	0x8102d1	rip-relative	0x16aa2c0	Leather clothing shop
+classic	0x810307	rip-relative	0x16aa3b0	Bone carver's shop
+classic	0x81033d	rip-relative	0x16aa398	Gem cutter's shop
+classic	0x810373	rip-relative	0x16aa3d8	Weaponsmith's shop
+classic	0x8103a9	rip-relative	0x16aa3c8	Bowyer's shop
+classic	0x8103df	rip-relative	0x16aa350	Blacksmith's shop
+classic	0x810415	rip-relative	0x16aa338	Armorsmith's shop
+classic	0x81044b	rip-relative	0x16aa380	Metal craft shop
+classic	0x810481	rip-relative	0x16aa368	Leather goods shop
+classic	0x8104b7	rip-relative	0x16aa1b0	Carpenter's shop
+classic	0x8104ed	rip-relative	0x16aa198	Stone furniture shop
+classic	0x810523	rip-relative	0x16aa1d0	Metal furniture shop
+classic	0x810581	rip-relative	0x1627050	Dormitory
+classic	0x8105df	rip-relative	0x16aa1c4	Barrow
+classic	0x81063d	rip-relative	0x162a868	Dining Hall
+classic	0x81069b	rip-relative	0x16aa168	Warehouse
+classic	0x8106f9	rip-relative	0x16aa150	Fortress Entrance
+classic	0x810758	rip-relative	0x16280ac	Well
+classic	0x8107b6	rip-relative	0x16aa188	Trenches
+classic	0x81086c	rip-relative	0x163f080	 shrine
+classic	0x810881	rip-relative	0x16aa178	Shrine to 
+classic	0x8108ff	rip-relative	0x1626f14	Shrine
+classic	0x81096f	rip-relative	0x16aa258	Empty market
+classic	0x8109d1	rip-relative	0x16aa240	Imported goods market
+classic	0x810a07	rip-relative	0x16aa288	Imported food market
+classic	0x810a3d	rip-relative	0x16aa268	Imported clothing market
+classic	0x810a73	rip-relative	0x16aa208	Meat market
+classic	0x810aa9	rip-relative	0x16aa1e8	Fruit and vegetable market
+classic	0x810adc	rip-relative	0x16aa230	Cheese market
+classic	0x810b0f	rip-relative	0x16aa218	Processed goods market
+classic	0x810c87	rip-relative	0x16aab60	Underground Fortress
+classic	0x810cdb	rip-relative	0x16aab48	Underground Farms
+classic	0x810d41	rip-relative	0x16aab88	Underground Stair
+classic	0x810df5	rip-relative	0x16aab78	Hillocks
+classic	0x810e2b	rip-relative	0x16aab20	Houses
+classic	0x810e9c	rip-relative	0x16aab18	Hillock
+classic	0x810ecf	rip-relative	0x16aab3c	House
+classic	0x810f44	rip-relative	0x16aab28	Abandoned hillocks
+classic	0x810f7a	rip-relative	0x16aac08	Abandoned houses
+classic	0x810fe8	rip-relative	0x16aabf0	Abandoned hillock
+classic	0x81101b	rip-relative	0x16aac30	Abandoned house
+classic	0x811090	rip-relative	0x16aac20	Ruined hillocks
+classic	0x8110c6	rip-relative	0x16aabb0	Ruined houses
+classic	0x811134	rip-relative	0x16aaba0	Ruined hillock
+classic	0x811167	rip-relative	0x16aabe0	Ruined house
+classic	0x8111c5	rip-relative	0x16aabc0	No significant structures
+classic	0x8115cc	rip-relative	0x16aa440	Sewer Access
+classic	0x8116f5	rip-relative	0x16aa430	Tree House
+classic	0x811736	rip-relative	0x16aa460	The Home Tree
+classic	0x811777	rip-relative	0x16aa450	Shaping Tree
+classic	0x8117b8	rip-relative	0x16aa400	Market Tree
+classic	0x8117f9	rip-relative	0x16aa3f0	Tavern Tree
+classic	0x81183a	rip-relative	0x16aa420	Library Tree
+classic	0x81187b	rip-relative	0x16aa410	Counting Tree
+classic	0x8118bc	rip-relative	0x16aa4b8	Guild Tree
+classic	0x8118fd	rip-relative	0x16aa4a8	Tower Tree
+classic	0x8119a3	rip-relative	0x16aa480	Drinking Mound
+classic	0x8119ec	rip-relative	0x16aa4c8	Castle Mound
+classic	0x811a35	rip-relative	0x16aa4d8	Civic Mound
+classic	0x811b51	rip-relative	0x164d858	Mead Hall
+classic	0x811b92	rip-relative	0x164d858	Mead Hall
+classic	0x811bd3	rip-relative	0x164d858	Mead Hall
+classic	0x811cbe	rip-relative	0x1626f38	Temple
+classic	0x811cff	rip-relative	0x1626f38	Temple
+classic	0x811d40	rip-relative	0x1626f38	Temple
+classic	0x811e2b	rip-relative	0x16aa470	Counting House
+classic	0x811e6c	rip-relative	0x16aa470	Counting House
+classic	0x811ead	rip-relative	0x16aa470	Counting House
+classic	0x811f98	rip-relative	0x16aa498	Guildhall
+classic	0x811fd9	rip-relative	0x16aa498	Guildhall
+classic	0x81201a	rip-relative	0x16aa498	Guildhall
+classic	0x812105	rip-relative	0x16aa490	Tower
+classic	0x812146	rip-relative	0x16aa490	Tower
+classic	0x812187	rip-relative	0x16aa490	Tower
+classic	0x812275	rip-relative	0x1626f20	Library
+classic	0x8122b6	rip-relative	0x1626f20	Library
+classic	0x8122f7	rip-relative	0x1626f20	Library
+classic	0x8123e2	rip-relative	0x1626fe4	Tavern
+classic	0x812423	rip-relative	0x1626fe4	Tavern
+classic	0x812464	rip-relative	0x1626fe4	Tavern
+classic	0x8126e2	rip-relative	0x16aa300	Abandoned shop
+classic	0x812740	rip-relative	0x16aa2f0	Food imports
+classic	0x812776	rip-relative	0x16aa320	Clothing imports
+classic	0x8127ac	rip-relative	0x16aa310	General imports
+classic	0x8127e2	rip-relative	0x16aa2b0	Cloth shop
+classic	0x812818	rip-relative	0x16aa2a0	Leather shop
+classic	0x81284e	rip-relative	0x16aa2d8	Woven clothing shop
+classic	0x812884	rip-relative	0x16aa2c0	Leather clothing shop
+classic	0x8128ba	rip-relative	0x16aa3b0	Bone carver's shop
+classic	0x8128f0	rip-relative	0x16aa398	Gem cutter's shop
+classic	0x812926	rip-relative	0x16aa3d8	Weaponsmith's shop
+classic	0x81295c	rip-relative	0x16aa3c8	Bowyer's shop
+classic	0x812992	rip-relative	0x16aa350	Blacksmith's shop
+classic	0x8129c8	rip-relative	0x16aa338	Armorsmith's shop
+classic	0x8129fe	rip-relative	0x16aa380	Metal craft shop
+classic	0x812a34	rip-relative	0x16aa368	Leather goods shop
+classic	0x812a6a	rip-relative	0x16aa1b0	Carpenter's shop
+classic	0x812aa0	rip-relative	0x16aa198	Stone furniture shop
+classic	0x812ad6	rip-relative	0x16aa1d0	Metal furniture shop
+classic	0x812b34	rip-relative	0x1627050	Dormitory
+classic	0x812b99	rip-relative	0x16aa1c4	Barrow
+classic	0x812bfe	rip-relative	0x1627020	Dining hall
+classic	0x812c63	rip-relative	0x16aa168	Warehouse
+classic	0x812cc8	rip-relative	0x16aa150	Fortress Entrance
+classic	0x812d2e	rip-relative	0x16280ac	Well
+classic	0x812d93	rip-relative	0x16aa188	Trenches
+classic	0x812e37	rip-relative	0x16aaa38	Shrine of 
+classic	0x812e66	rip-relative	0x16aa178	Shrine to 
+classic	0x812edf	rip-relative	0x1626f14	Shrine
+classic	0x812f56	rip-relative	0x16aa258	Empty market
+classic	0x812fb8	rip-relative	0x16aa240	Imported goods market
+classic	0x812fee	rip-relative	0x16aa288	Imported food market
+classic	0x813024	rip-relative	0x16aa268	Imported clothing market
+classic	0x81305a	rip-relative	0x16aa208	Meat market
+classic	0x813090	rip-relative	0x16aa1e8	Fruit and vegetable market
+classic	0x8130c3	rip-relative	0x16aa230	Cheese market
+classic	0x8130f6	rip-relative	0x16aa218	Processed goods market
+classic	0x8131ad	rip-relative	0x16aab78	Hillocks
+classic	0x8131e3	rip-relative	0x16aab20	Houses
+classic	0x813254	rip-relative	0x16aab18	Hillock
+classic	0x813287	rip-relative	0x16aab3c	House
+classic	0x8132fb	rip-relative	0x16aab28	Abandoned hillocks
+classic	0x813331	rip-relative	0x16aac08	Abandoned houses
+classic	0x81339f	rip-relative	0x16aabf0	Abandoned hillock
+classic	0x8133d2	rip-relative	0x16aac30	Abandoned house
+classic	0x813445	rip-relative	0x16aac20	Ruined hillocks
+classic	0x81347b	rip-relative	0x16aabb0	Ruined houses
+classic	0x8134e9	rip-relative	0x16aaba0	Ruined hillock
+classic	0x81351c	rip-relative	0x16aabe0	Ruined house
+classic	0x813585	rip-relative	0x16aabc0	No significant structures

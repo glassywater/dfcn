@@ -9962,9 +9962,84 @@ Conversation keyword: shaken	动摇	l
 Conversation keyword: thrill	激动	l
 Conversation keyword: angst	焦虑不安	l
 Conversation keyword: grim	冷酷	l
+# Adventure local/travel structures: complete native productions from both
+# PE 53.16 popup branches; data/extracted/travel-structures retains the source.
+# Names and shrine arguments are resolved by their typed native draw caller.
+Travel building: Sewer Access	下水道入口	wi
+Travel building: Tree House	树屋	wi
+Travel building: The Home Tree	家园树	wi
+Travel building: Shaping Tree	塑形树	wi
+Travel building: Market Tree	市场树	wi
+Travel building: Tavern Tree	酒馆树	wi
+Travel building: Library Tree	图书馆树	wi
+Travel building: Counting Tree	账房树	wi
+Travel building: Guild Tree	行会树	wi
+Travel building: Tower Tree	高塔树	wi
+Travel building: Drinking Mound	饮酒丘	wi
+Travel building: Castle Mound	城堡丘	wi
+Travel building: Civic Mound	政务丘	wi
+Travel building: Mead Hall	蜂蜜酒厅	wi
+Travel building: Temple	神庙	wi
+Travel building: Counting House	账房	wi
+Travel building: Guildhall	行会大厅	wi
+Travel building: Tower	高塔	wi
+Travel building: Library	图书馆	wi
+Travel building: Tavern	酒馆	wi
+Travel building: Abandoned shop	废弃商店	wi
+Travel building: Food imports	食品进口店	wi
+Travel building: Clothing imports	服装进口店	wi
+Travel building: General imports	杂货进口店	wi
+Travel building: Cloth shop	布料店	wi
+Travel building: Leather shop	皮革店	wi
+Travel building: Woven clothing shop	布制服装店	wi
+Travel building: Leather clothing shop	皮制服装店	wi
+Travel building: Bone carver's shop	骨雕店	wi
+Travel building: Gem cutter's shop	宝石切割店	wi
+Travel building: Weaponsmith's shop	武器锻造店	wi
+Travel building: Bowyer's shop	弓弩店	wi
+Travel building: Blacksmith's shop	铁匠铺	wi
+Travel building: Armorsmith's shop	护甲锻造店	wi
+Travel building: Metal craft shop	金属工艺品店	wi
+Travel building: Leather goods shop	皮具店	wi
+Travel building: Carpenter's shop	木匠铺	wi
+Travel building: Stone furniture shop	石制家具店	wi
+Travel building: Metal furniture shop	金属家具店	wi
 Travel building: Dormitory	宿舍	wi
+Travel building: Barrow	坟冢	wi
+Travel building: Dining Hall	餐厅	wi
 Travel building: Dining hall	餐厅	wi
 Travel building: Warehouse	仓库	wi
+Travel building: Fortress Entrance	要塞入口	wi
+Travel building: Well	水井	wi
+Travel building: Trenches	壕沟	wi
+Travel building: Shrine	神龛	wi
+Travel building: Empty market	空市场	wi
+Travel building: Imported goods market	进口杂货市场	wi
+Travel building: Imported food market	进口食品市场	wi
+Travel building: Imported clothing market	进口服装市场	wi
+Travel building: Meat market	肉类市场	wi
+Travel building: Fruit and vegetable market	果蔬市场	wi
+Travel building: Cheese market	奶酪市场	wi
+Travel building: Processed goods market	加工商品市场	wi
+Travel building: Underground Fortress	地下要塞	wi
+Travel building: Underground Farms	地下农场	wi
+Travel building: Underground Stair	地下楼梯	wi
+Travel building: Hillocks	丘堡群	wi
+Travel building: Houses	住宅群	wi
+Travel building: Hillock	丘堡	wi
+Travel building: House	住宅	wi
+Travel building: Abandoned hillocks	废弃丘堡群	wi
+Travel building: Abandoned houses	废弃住宅群	wi
+Travel building: Abandoned hillock	废弃丘堡	wi
+Travel building: Abandoned house	废弃住宅	wi
+Travel building: Ruined hillocks	丘堡群废墟	wi
+Travel building: Ruined houses	住宅群废墟	wi
+Travel building: Ruined hillock	丘堡废墟	wi
+Travel building: Ruined house	住宅废墟	wi
+Travel building: No significant structures	无重要建筑	wi
+Travel building: {p} shrine	{p1}神龛	ht
+Travel building: Shrine of {p}	{p1}神龛	ht
+Travel building: Shrine to {n}	供奉{n1}的神龛	ht
 Warehouse	仓库	wi
 gabbro Lever	辉长岩控制杆	w
 

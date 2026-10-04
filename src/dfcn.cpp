@@ -1896,6 +1896,10 @@ private:
     uintptr_t previous_caller_;
 };
 
+enum class NativeTravelBuildingField : uint8_t {
+    None, Literal, Name, Shrine,
+};
+
 struct NativeDrawnTextRow {
     int x = 0, y = 0;
     std::string source;
@@ -1941,6 +1945,9 @@ struct NativeDrawnTextRow {
     uint64_t draw_epoch = 0;
     NativeMapHoverContext map_hover{};
     bool editable_text = false;
+    // The travel renderer's verified addst caller owns each structure row.
+    // Dynamically named buildings remain distinct from fixed kind captions.
+    NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None;
 };
 static std::mutex g_native_drawn_text_mutex;
 static std::vector<NativeDrawnTextRow> g_native_drawn_text_rows;
@@ -2368,7 +2375,8 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         uint64_t original_epoch = 0, NativeMapHoverContext map_hover = {},
         NativeLocationPickerField location_picker_field = NativeLocationPickerField::None,
         std::optional<SDL_Rect> location_picker_box = std::nullopt,
-        std::optional<NativeFortressLaborCaption> fortress_labor_caption = std::nullopt) {
+        std::optional<NativeFortressLaborCaption> fortress_labor_caption = std::nullopt,
+        NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None) {
     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
     const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
     if (original_epoch && original_epoch != epoch) return;
@@ -2473,6 +2481,7 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         row.civilization_field = civilization_field;
         row.location_picker_field = location_picker_field;
         row.location_picker_box = location_picker_box;
+        row.travel_building_field = travel_building_field;
         row.fortress_labor_caption = std::move(fortress_labor_caption);
         if (row.fortress_labor_caption) row.caption_source = true;
         row.mission_title = mission_title;
@@ -2482,6 +2491,7 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         if (info_title_kind != NativeInfoTitleKind::None) row.caption_source = true;
         if (civilization_field != NativeCivilizationField::None) row.caption_source = true;
         if (location_picker_field != NativeLocationPickerField::None) row.caption_source = true;
+        if (travel_building_field != NativeTravelBuildingField::None) row.caption_source = true;
         if (mission_title) row.caption_source = true;
         if (const auto identity = native_unit_identity_source_binding(
                 complete_source.empty() ? source : complete_source, address)) {
@@ -21241,7 +21251,18 @@ std::vector<Match> Overlay::find_matches(int only_y,
     // The world map can leave the local HUD visible. Its detail popup shares
     // ordinary hover borders, but belongs to the world-page field readers.
     const bool world_map = native_world_map_screen();
-    auto map_hover = !world_map && workshop_materials.empty() &&
+    // The structures producer shares the adventure hover frame. Claim its
+    // complete typed card before that broader frame reader can treat named
+    // buildings or shrines as map items/persons. Other site cards retain the
+    // existing hover/embark precedence below, without a second capture pass.
+    std::vector<NativeTextCard> world_site_actions;
+    auto world_site = capture_world_site_card(world_site_actions);
+    const bool travel_building_card = world_site && world_site->travel_buildings &&
+        std::all_of(world_site->rows.begin(), world_site->rows.end(), [&](const auto &row) {
+            return travel_building_draw_for_row(*gps_, row,
+                world_site->interior.x + world_site->interior.w).has_value();
+        });
+    auto map_hover = !world_map && !travel_building_card && workshop_materials.empty() &&
         workshop_task_detail.empty() && !workshop_recipe
         ? capture_map_hover_card(screen_rows, screen_override) : std::optional<NativeTextCard>{};
     if (map_hover) {
@@ -21264,11 +21285,12 @@ std::vector<Match> Overlay::find_matches(int only_y,
 #include "map_announcements.inc"
         append_map_hover_phrases(*map_hover, screen_rows, result, only_y);
     }
-    auto embark_site = map_hover ? std::optional<NativeTextCard>{}
+    auto embark_site = map_hover || travel_building_card ? std::optional<NativeTextCard>{}
         : capture_embark_site_card(screen_rows);
-    std::vector<NativeTextCard> world_site_actions;
-    const auto world_site = map_hover || embark_site ? std::optional<NativeTextCard>{}
-        : capture_world_site_card(world_site_actions);
+    if (map_hover || embark_site) {
+        world_site.reset();
+        world_site_actions.clear();
+    }
     const auto civilization_details = capture_world_civilization_details(
         world_site ? &*world_site : nullptr);
     const auto civilization_trade_rows = civilization_details

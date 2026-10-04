@@ -12,6 +12,73 @@ static bool world_site_typed_heading(std::string_view source) {
         generated_title_shape(source.substr(of + 4));
 }
 
+// A name-only structure list has no dictionary caption to establish its
+// identity. Bind each row to the actual structures producer's addst call,
+// including retained frames and clipped names, before reading its frame.
+static std::optional<NativeDrawnTextRow> travel_building_draw_for_row(
+        const graphicst &gps, const NativeTextCardRow &row, int clip_right) {
+    if (row.x < 0 || row.x >= gps.dimx || row.y < 0 || row.y >= gps.dimy ||
+            row.source.empty() || row.source.size() > static_cast<size_t>(gps.dimx - row.x) ||
+            clip_right <= row.x) return std::nullopt;
+    const size_t first = static_cast<size_t>(row.x) * gps.dimy + row.y;
+    const bool read_top_layer = native_ui_top_layer_at(gps, first);
+    const auto origin = native_text_grid_origin(gps, first, read_top_layer);
+    if (!origin.grid) return std::nullopt;
+    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+    const auto &draws = origin.top_layer ? g_native_drawn_top_text_rows : g_native_drawn_text_rows;
+    for (auto it = draws.rbegin(); it != draws.rend(); ++it) {
+        const auto &draw = *it;
+        if (draw.travel_building_field == NativeTravelBuildingField::None ||
+                draw.x > row.x || draw.x < 0 || draw.top_layer != origin.top_layer ||
+                draw.draw_grid != origin.grid || draw.draw_dimx != gps.dimx ||
+                draw.draw_dimy != gps.dimy || std::abs(draw.y - row.y) > 1) continue;
+        const size_t offset = static_cast<size_t>(row.x - draw.x);
+        if (offset > draw.source.size() || std::any_of(draw.source.begin(),
+                draw.source.begin() + offset, [](unsigned char ch) { return ch != ' '; })) continue;
+        const int right = std::max(clip_right, row.x + static_cast<int>(row.source.size()));
+        const auto visible = trim_view(std::string_view(draw.source).substr(
+            offset, static_cast<size_t>(right - row.x)));
+        if (visible != row.source) continue;
+        bool current = true;
+        constexpr uint32_t halves = (1u << 3) | (1u << 4);
+        const auto *flags = read_top_layer ? gps.screentexpos_top_flag : gps.screentexpos_flag;
+        for (size_t byte = 0; byte < row.source.size(); ++byte) {
+            const size_t at = (static_cast<size_t>(row.x) + byte) * gps.dimy + row.y;
+            const bool read_top = native_ui_top_layer_at(gps, at);
+            const auto byte_origin = native_text_grid_origin(gps, at, read_top);
+            const unsigned char ch = origin.grid[at * 8];
+            if (read_top != read_top_layer || byte_origin.grid != origin.grid ||
+                    byte_origin.top_layer != origin.top_layer ||
+                    (ch ? ch : ' ') != static_cast<unsigned char>(row.source[byte])) {
+                current = false;
+                break;
+            }
+            // Native half-font captions repeat the same string on two rows.
+            // Only a complementary, current pair may borrow that one draw.
+            if (draw.y != row.y && row.source[byte] != ' ') {
+                if (!flags || draw.y < 0 || draw.y >= gps.dimy) { current = false; break; }
+                const size_t mate = (static_cast<size_t>(row.x) + byte) * gps.dimy + draw.y;
+                const uint32_t expected = row.y > draw.y ? (1u << 4) : (1u << 3);
+                const uint32_t partner = row.y > draw.y ? (1u << 3) : (1u << 4);
+                const bool mate_top = native_ui_top_layer_at(gps, mate);
+                const auto mate_origin = native_text_grid_origin(gps, mate, mate_top);
+                if ((flags[at] & halves) != expected || (flags[mate] & halves) != partner ||
+                        mate_top != read_top_layer || mate_origin.grid != origin.grid ||
+                        origin.grid[mate * 8] != ch) { current = false; break; }
+            }
+        }
+        if (current) {
+            auto captured = draw;
+            captured.x = row.x;
+            captured.y = row.y;
+            captured.source.erase(0, offset);
+            if (offset <= captured.complete_source.size()) captured.complete_source.erase(0, offset);
+            return captured;
+        }
+    }
+    return std::nullopt;
+}
+
 static bool world_civilization_relationship(std::string_view source) {
     return source == "Your site government" || source == "Peace" ||
         source == "War" || source == "Alliance" || source == "No contact" ||
@@ -293,13 +360,42 @@ std::optional<NativeTextCard> Overlay::capture_world_site_card(
             if (travel_footer >= 0) break;
         }
     }
-    // The local building list is independent of the location footer. The
-    // footer may contain multiple separately drawn names and does not form
-    // one figure record. Scope this list to the current gameplay screen and
-    // its own closed frame instead of requiring that unrelated parser.
-    // Native ELF 53.16 draws Dining Hall at 0x125cb61 and Warehouse at
-    // 0x125ce97 in the same column, incrementing the row at 0x125c9b6.
+    // The local structures producer draws fixed categories, named buildings,
+    // religion/deity shrines, or one empty-state caption in the same frame.
+    // Its actual draw owns every row, so an all-name list needs neither a
+    // particular category nor the unrelated location-footer identity.
     if (native_gameplay_map_screen()) {
+        std::vector<std::pair<int, int>> anchors;
+        {
+            std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+            for (const auto *batch : {&g_native_drawn_text_rows, &g_native_drawn_top_text_rows})
+                for (const auto &draw : *batch)
+                    if (draw.travel_building_field != NativeTravelBuildingField::None &&
+                            draw.x >= 0 && draw.x < gps_->dimx &&
+                            draw.y >= 1 && draw.y < gps_->dimy - 1)
+                        anchors.emplace_back(draw.x, draw.y);
+        }
+        for (const auto &[x, y] : anchors) {
+            const auto panel = native_panel_interior(borders, *gps_,
+                x, x + 1, y);
+            if (!panel) continue;
+            auto card = capture_panel_text_card(*panel, true);
+            if (!card) continue;
+            bool owned = true;
+            for (auto &row : card->rows) {
+                const auto source = travel_building_draw_for_row(*gps_, row,
+                    panel->x + panel->w);
+                if (!source) { owned = false; break; }
+                row.complete_source = source->complete_source.empty()
+                    ? source->source : source->complete_source;
+            }
+            if (!owned) continue;
+            card->travel_buildings = true;
+            return align_card(std::move(*card));
+        }
+        // Profiles without a producer binding keep the existing complete
+        // category fallback. A generated-name shape alone never establishes
+        // ownership of a different gameplay list or popup.
         for (int y = 1; y < gps_->dimy - 1; ++y) {
             for (const auto &field : split_text_fields(context[y])) {
                 if (!exact_literal_translation("Travel building: " + field.text)) continue;
@@ -601,11 +697,68 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
     reclaim_history = false;
 #endif
     if (card.travel_buildings) {
+        const auto shrine_figure = [&](const std::string &value) -> std::optional<std::string> {
+            if (auto actor = translate_legends_actor(value)) return actor;
+            // The shrine's nameless-figure branch can append a generated
+            // creature name after a/an + status + species/caste. The shared
+            // actor grammar owns a bare article/species; resolve this extra
+            // native name only inside this producer's complete figure slot.
+            for (const std::string_view article : {"a ", "an ", "A ", "An "}) {
+                if (!value.starts_with(article)) continue;
+                const auto body = std::string_view(value).substr(article.size());
+                for (size_t at = body.rfind(' '); at != std::string_view::npos;
+                        at = at == 0 ? std::string_view::npos : body.rfind(' ', at - 1)) {
+                    const auto creature = translate_creature_descriptor(body.substr(0, at), true);
+                    if (!creature) continue;
+                    const auto name = translate_legends_name(body.substr(at + 1), true);
+                    if (name) return *creature + "·" + *name;
+                }
+                break;
+            }
+            return std::nullopt;
+        };
+        const auto shrine = [&](const std::string &source) -> std::optional<std::string> {
+            std::string key;
+            std::string value;
+            bool figure = false;
+            if (source.starts_with("Shrine to ")) {
+                key = "Travel building: Shrine to {n}";
+                value = source.substr(10);
+                figure = true;
+            } else if (source.starts_with("Shrine of ")) {
+                key = "Travel building: Shrine of {p}";
+                value = source.substr(10);
+            } else if (source.ends_with(" shrine")) {
+                key = "Travel building: {p} shrine";
+                value = source.substr(0, source.size() - 7);
+            } else return std::nullopt;
+            if (value.empty()) return std::nullopt;
+            // The native shrine owns a historical figure or a religious
+            // entity. Its religion field is a generated organization name,
+            // not a sphere noun or a freely composable English sentence.
+            auto target = figure ? shrine_figure(value)
+                : translate_legends_name(value, false);
+            if (!target) return std::nullopt;
+            const auto grammar = history_semantic_templates_.find(key);
+            if (grammar == history_semantic_templates_.end()) return std::nullopt;
+            const Rule &rule = rules_[static_cast<size_t>(grammar->second)];
+            if (rule.template_kinds.size() != 1) return std::nullopt;
+            const std::vector<std::string> captures{value};
+            const std::vector<std::optional<std::string>> translated{std::move(target)};
+            return fill_template(rule, captures, &capture_translations_, nullptr, &translated);
+        };
         for (const auto &row : card.rows) {
             const std::string source = row.complete_source.empty()
                 ? row.source : row.complete_source;
-            const auto target = exact_literal_translation(
-                "Travel building: " + normalize_utterance(source));
+            const std::string complete = normalize_utterance(source);
+            const auto owner = travel_building_draw_for_row(*gps_, row,
+                card.interior.x + card.interior.w);
+            std::optional<std::string> target;
+            if (owner && owner->travel_building_field == NativeTravelBuildingField::Name)
+                target = translate_legends_name(complete, false);
+            else if (owner && owner->travel_building_field == NativeTravelBuildingField::Shrine)
+                target = shrine(complete);
+            else target = exact_literal_translation("Travel building: " + complete);
             Match match{row.x, row.y, static_cast<int>(row.source.size()),
                 kWorldSitePhraseRule, target ? *target : cp437_to_utf8(source), row.source};
             match.native_hover_untranslated = !target;

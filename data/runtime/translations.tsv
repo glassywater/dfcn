@@ -38562,6 +38562,7 @@ Think on what came before and what follows.	想想过去，也想想未来。	hP
 This creature is assigned to a work detail.	此生物被分配到某项劳动分组。	hj
 This engraving appears on a wall somewhere.	这幅雕刻位于某处的墙上。	hH
 This furniture is a part of multiple rooms.	此家具属于多个房间。	hP
+Travel building: Fruit and vegetable market	果蔬市场	wi
 Victory was spread among {c} winners at {p}	在{p1}，共有{c1}名参赛者共同获得了胜利	ht
 Victory was spread among {c} winners in {p}	在{p1}，共有{c1}名参赛者共同获得了胜利	ht
 Visitor overview purpose: seeking sanctuary	寻求庇护	hl
@@ -39986,6 +39987,7 @@ The {s} suspended the construction of {s}.	{s1}暂停了{s2}的建造。	hPt
 There is a shallow {s} imprint in the {s}.	{s2}中有一个{s1}留下的浅压痕。	hPt
 This is the {i} currency of {r} under {r}.	这是「{r1}」在{r2}统治时期使用的{i1}币。	hHt
 This task has been assigned and is active.	此任务已分配工人，正在执行。	hj
+Travel building: No significant structures	无重要建筑	wi
 Vanilla Extinct Creatures Graphics {d}.{d}	原版灭绝生物图像 {d}.{d}	wt
 Visitor overview purpose: asking questions	询问信息	hl
 We don't offer any specific services here.	我们这儿不提供什么专门的服务。	hP
@@ -41546,6 +41548,7 @@ Today you will have a moment of weakness.	今天你将有片刻的软弱。	hP
 Toggle the display of spoor for tracking.	切换追踪用的足迹显示。	hj
 Toggle whether the squad will sleep here.	切换此小队是否在这里睡觉。	hj
 Toggle whether the squad will train here.	切换此小队是否在这里训练。	hj
+Travel building: Imported clothing market	进口服装市场	wi
 Use Ctrl+p to play back a recorded macro.	使用 Ctrl+P 回放已录制的宏。	l
 Verbally struggle against great pessimism	说出你与强烈悲观的抗争	hP
 Visitor overview purpose separator: comma	、	hl
@@ -44558,6 +44561,7 @@ This is not that kind of establishment.	这里不是那种场所。	hP
 This recitation couldn't be much worse.	这场朗诵几乎糟到极点。	hP
 This {s} player couldn't be much worse.	这位{s1}演奏者几乎糟到极点。	hPt
 To change the camera's elevation, press	要改变视角所在的高度层，请按	hq
+Travel building: Processed goods market	加工商品市场	wi
 Vampire migrant fraction (more = safer)	吸血鬼移民比例分母（越高越安全）
 Verbally struggle against great anguish	说出你与强烈痛苦万分的抗争	hP
 Verbally struggle against great despair	说出你与强烈绝望的抗争	hP
@@ -46222,6 +46226,8 @@ There were {c} competitors within {p}.	在{p1}，共有{c1}名参赛者。	ht
 This creature is displeased right now.	此生物目前有些不满。	hj
 This storyteller is really quite good!	这位讲故事的人真的相当出色！	hP
 This storyteller? Unbelievable talent!	这位讲故事的人的天赋，简直让人不敢相信！	hP
+Travel building: Imported goods market	进口杂货市场	wi
+Travel building: Leather clothing shop	皮制服装店	wi
 Unit custom profession: Banner Captain	旗队长	l
 Unit custom profession: Dungeon Master	地牢主管	l
 Verbally struggle against great dismay	说出你与强烈沮丧的抗争	hP
@@ -47910,6 +47916,10 @@ This type is restricted from cooking.	此类型禁止用于烹饪。	hj
 This work order is ready to activate.	此工单已准备好启动。	hj
 This {s} player is really quite good!	这位{s1}演奏者真的相当出色！	hPt
 This {s} player? Unbelievable talent!	这位{s1}演奏者的天赋，简直让人不敢相信！	hPt
+Travel building: Imported food market	进口食品市场	wi
+Travel building: Metal furniture shop	金属家具店	wi
+Travel building: Stone furniture shop	石制家具店	wi
+Travel building: Underground Fortress	地下要塞	wi
 Use Ctrl+s to save a macro to a file.	使用 Ctrl+S 将宏保存到文件。	l
 Use these to make scrolls and quires.	用这些材料制作卷轴和稿纸。	hP
 Vanilla Interactions Graphics {d}.{d}	原版互动图像 {d}.{d}	wt
@@ -49707,6 +49717,7 @@ This is my Thirteenth year as a {s}.	这是我当{s1}的第13年。	hPt
 This recitation doesn't belong here.	这场朗诵不该出现在这里。	hP
 This storyteller is a waste of time.	听这人讲故事，简直浪费时间。	hP
 This {s} player doesn't belong here.	这位{s1}演奏者不该出现在这里。	hPt
+Travel building: Woven clothing shop	布制服装店	wi
 Vanilla Descriptors Graphics {d}.{d}	原版描述词图像 {d}.{d}	wt
 Verbally struggle against great fear	说出你与强烈恐惧的抗争	hP
 Victory was spread among {c} winners	共有{c1}名参赛者共同获得了胜利	ht
@@ -51476,6 +51487,10 @@ This storyteller shows such talent.	这位讲故事的人展现出非凡的才�
 This war must end with our victory.	这场战争必须以我们的胜利告终。	hP
 This {s} player is a waste of time.	看这位{s1}演奏者表演，简直浪费时间。	hPt
 Titan Attack Exported Wealth Rating	泰坦来袭出口财富阈值
+Travel building: Abandoned hillocks	废弃丘堡群	wi
+Travel building: Bone carver's shop	骨雕店	wi
+Travel building: Leather goods shop	皮具店	wi
+Travel building: Weaponsmith's shop	武器锻造店	wi
 Verbally struggle against pessimism	说出你与悲观的抗争	hP
 Verbally struggle, greatly defeated	说出内心挣扎，深感挫败	hP
 Walking spreads spatter (fort mode)	行走传播飞溅(要塞模式)	w
@@ -53482,6 +53497,13 @@ This type is allowed to be brewed.	此类型允许用于酿酒。	hj
 This type is allowed to be cooked.	此类型允许用于烹饪。	hj
 This {s} player shows such talent.	这位{s1}演奏者展现出非凡的才华。	hPt
 Titan Attack Created Wealth Rating	泰坦来袭创造财富阈值
+Travel building: Abandoned hillock	废弃丘堡	wi
+Travel building: Armorsmith's shop	护甲锻造店	wi
+Travel building: Blacksmith's shop	铁匠铺	wi
+Travel building: Fortress Entrance	要塞入口	wi
+Travel building: Gem cutter's shop	宝石切割店	wi
+Travel building: Underground Farms	地下农场	wi
+Travel building: Underground Stair	地下楼梯	wi
 Unrotten fermentable leaf or fruit	未腐烂的可发酵的叶或果实	wi
 Vanilla Buildings Graphics {d}.{d}	原版建筑图像 {d}.{d}	wt
 Vanilla Creatures Graphics {d}.{d}	原版生物图像 {d}.{d}	wt
@@ -55420,6 +55442,10 @@ This singer? Unbelievable talent!	这位歌手的天赋，简直让人不敢相�
 This storyteller could be better.	这位讲故事的人还有进步的余地。	hP
 This task came from a work order.	此任务来自工单。	hj
 This {s} player! Amazing ability.	这位{s1}演奏者的本事真让人惊叹！	hPt
+Travel building: Abandoned houses	废弃住宅群	wi
+Travel building: Carpenter's shop	木匠铺	wi
+Travel building: Clothing imports	服装进口店	wi
+Travel building: Metal craft shop	金属工艺品店	wi
 Unit profession: militia comander	军事指挥官	li
 Vanilla Extinct Creatures {d}.{d}	原版灭绝生物 {d}.{d}	wt
 Verbally struggle against anguish	说出你与痛苦万分的抗争	hP
@@ -57312,6 +57338,9 @@ This {s} player could be better.	这位{s1}演奏者还有进步的余地。	hPt
 Toggle auto-pause on new report.	切换收到新报告时是否自动暂停。	hj
 Traction benches in common area:	公共区域的牵引台：	wl
 Trade Agreement (Exports to {e})	贸易协议（向{e1}出口）	hPt
+Travel building: Abandoned house	废弃住宅	wi
+Travel building: General imports	杂货进口店	wi
+Travel building: Ruined hillocks	丘堡群废墟	wi
 Unit custom profession: Hammerer	锤刑官	l
 Unit list: Toggle specialization	单位列表：切换专业化	w
 Verbally struggle against dismay	说出你与沮丧的抗争	hP
@@ -59238,6 +59267,10 @@ This {s} player is magnificant!	这位{s1}演奏者太出色了！	hPt
 This {s} player is pretty good.	这位{s1}演奏者相当不错。	hPt
 This {s} player makes me retch.	这位{s1}演奏者让我想吐。	hPt
 Total number of each to scribe:	每部作品的抄写总数：	wl
+Travel building: Abandoned shop	废弃商店	wi
+Travel building: Counting House	账房	wi
+Travel building: Drinking Mound	饮酒丘	wi
+Travel building: Ruined hillock	丘堡废墟	wi
 Tropical Moist Broadleaf Forest	热带湿润阔叶林
 Unit custom profession: Soldier	士兵	l
 Unit nickname: the Devil-Slayer	屠魔者	l
@@ -61424,6 +61457,13 @@ This storyteller is legendary.	这位讲故事的人堪称传奇。	hP
 This visitor has come {s}. She	这位访客前来{s1}。她	hPt
 Titan Attack Population Rating	泰坦来袭人口阈值
 Today, somebody will be cruel.	今天会有人做出残酷之举。	hP
+Travel building: Bowyer's shop	弓弩店	wi
+Travel building: Cheese market	奶酪市场	wi
+Travel building: Counting Tree	账房树	wi
+Travel building: Ruined houses	住宅群废墟	wi
+Travel building: Shrine of {p}	{p1}神龛	ht
+Travel building: Shrine to {n}	供奉{n1}的神龛	ht
+Travel building: The Home Tree	家园树	wi
 Vanilla Items Graphics {d}.{d}	原版物品图像 {d}.{d}	wt
 Verbally struggle against fear	说出你与恐惧的抗争	hP
 Verbally struggle against rage	说出你与狂怒的抗争	hP
@@ -63507,6 +63547,14 @@ This {s} player is fantastic!	这位{s1}演奏者太精彩了！	hPt
 This {s} player is legendary.	这位{s1}演奏者堪称传奇。	hPt
 Toward you: Negative attitude	对你的态度：负面	hP
 Toward you: Positive attitude	对你的态度：正面	hP
+Travel building: Castle Mound	城堡丘	wi
+Travel building: Empty market	空市场	wi
+Travel building: Food imports	食品进口店	wi
+Travel building: Leather shop	皮革店	wi
+Travel building: Library Tree	图书馆树	wi
+Travel building: Ruined house	住宅废墟	wi
+Travel building: Sewer Access	下水道入口	wi
+Travel building: Shaping Tree	塑形树	wi
 Tropical Dry Broadleaf Forest	热带干燥阔叶林
 Unit lists: Sort by happiness	单位列表：按幸福度排序	w
 Unit nickname: Of Many Faiths	多信仰者	l
@@ -65483,7 +65531,11 @@ This {s} player is middling.	这位{s1}演奏者水平一般。	hPt
 This {s} player is splendid.	这位{s1}演奏者很出色。	hPt
 This {s} player is terrible.	这位{s1}演奏者很糟糕。	hPt
 Toward you: Neutral attitude	对你的态度：中立	hP
+Travel building: Civic Mound	政务丘	wi
 Travel building: Dining hall	餐厅	wi
+Travel building: Market Tree	市场树	wi
+Travel building: Meat market	肉类市场	wi
+Travel building: Tavern Tree	酒馆树	wi
 Unit lists: Open job details	单位列表：打开工作详情	w
 Unit profession: chief medic	首席医师	li
 Unnamed animal training area	未命名驯兽区	wi
@@ -67458,6 +67510,11 @@ This {s} player is alright!	这位{s1}演奏者还不错！	hPt
 This {s} player is alright.	这位{s1}演奏者还不错。	hPt
 This {s} player is awesome!	这位{s1}演奏者太棒了！	hPt
 This {s} player is no good.	这位{s1}演奏者不怎么样。	hPt
+Travel building: Cloth shop	布料店	wi
+Travel building: Guild Tree	行会树	wi
+Travel building: Tower Tree	高塔树	wi
+Travel building: Tree House	树屋	wi
+Travel building: {p} shrine	{p1}神龛	ht
 Tropical Moist Brdlf Forest	热带湿润阔叶林
 Unable to complete building	无法完成建筑	w
 Unit lists: Recenter on job	单位列表：定位到工作	w
@@ -69493,6 +69550,8 @@ This visitor has come {s}.	这位访客前来{s1}。	hPt
 This work order is active.	此工单正在执行。	hj
 This? Unbelievable talent!	这才华，简直让人不敢相信！	hP
 Travel building: Dormitory	宿舍	wi
+Travel building: Guildhall	行会大厅	wi
+Travel building: Mead Hall	蜂蜜酒厅	wi
 Travel building: Warehouse	仓库	wi
 Tropical Coniferous Forest	热带针叶林
 Tropical Moist Brdlf Forst	热带湿润阔叶林
@@ -71301,6 +71360,8 @@ This storyteller is okay.	这位讲故事的人还可以。	hP
 This was a legendary {i}.	这是一件传奇的{i1}。	ht
 This {s} player is great.	这位{s1}演奏者很棒。	hPt
 This {s} player is lousy.	这位{s1}演奏者很差劲。	hPt
+Travel building: Hillocks	丘堡群	wi
+Travel building: Trenches	壕沟	wi
 Tropical Dry Brdlf Forest	热带干燥阔叶林	l
 Tropical Freshwater Marsh	热带淡水湿地
 Tropical Freshwater River	热带淡水河
@@ -73019,6 +73080,8 @@ This {s} player is good.	这位{s1}演奏者很好。	hPt
 This {s} player is okay.	这位{s1}演奏者还可以。	hPt
 Too Large For Vegetation	体型过大，植被无法遮蔽	hP
 Trade depot broker label	交易员：	l
+Travel building: Hillock	丘堡	wi
+Travel building: Library	图书馆	wi
 Tropical Dry Brdlf Forst	热带干燥阔叶林
 Tropical Freshwater Lake	热带淡水湖
 Tropical Freshwater Pool	热带淡水池
@@ -74900,6 +74963,11 @@ This {s} player stinks!	这位{s1}演奏者糟透了！	hPt
 This {s} player? Awful.	这位{s1}演奏者？糟透了。	hPt
 Total Power Needed: {d}	总动力需求：{d}	wtl
 Track carving blueprint	轨道雕凿蓝图	wo
+Travel building: Barrow	坟冢	wi
+Travel building: Houses	住宅群	wi
+Travel building: Shrine	神龛	wi
+Travel building: Tavern	酒馆	wi
+Travel building: Temple	神庙	wi
 Trees: Heavily Forested	树木:茂密森林	w
 Tropical Brackish River	热带半咸水河
 Tropical Conifer Forest	热带针叶林
@@ -76846,6 +76914,8 @@ This preacher is fine.	这位传道者不错。	hP
 This preacher is good.	这位传道者很好。	hP
 This preacher is okay.	这位传道者还可以。	hP
 This! Amazing ability.	这本事真了不起！	hP
+Travel building: House	住宅	wi
+Travel building: Tower	高塔	wi
 Tropical Brackish Lake	热带半咸水湖
 Tropical Brackish Pool	热带半咸水池
 Twilight Age, year {d}	暮光时代，第 {d} 年	wt
@@ -78867,6 +78937,7 @@ This preacher? Awful.	这位传道者？糟透了。	hP
 This singer is great.	这位歌手很棒。	hP
 This singer is lousy.	这位歌手很差劲。	hP
 Trade or settle debts	交易或清偿债务	hP
+Travel building: Well	水井	wi
 Tropical Conif Forest	热带针叶林
 Unnamed archery range	未命名射箭场	wi
 Upper left back teeth	左上臼齿	w
