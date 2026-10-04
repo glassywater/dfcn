@@ -346,12 +346,13 @@ static NativeLocationPickerField native_location_picker_field(uintptr_t caller) 
 
 static std::optional<SDL_Rect> native_location_picker_draw_box(
         const graphicst *graphics, const NativeString *source,
-        NativeLocationPickerField field) {
+        NativeLocationPickerField field, uintptr_t caller = 0) {
     const bool faith = native_faith_picker_field(field);
+    const bool detail = native_location_detail_field(field);
     if (field == NativeLocationPickerField::None ||
             field == NativeLocationPickerField::Prompt ||
             !graphics || !graphics->screen ||
-            (!faith && !native_ui_classic().value_or(false)))
+            (!faith && !detail && !native_ui_classic().value_or(false)))
         return std::nullopt;
     const int x = graphics->screenx, y = graphics->screeny;
     if (graphics->dimx <= 0 || graphics->dimx > 1000 ||
@@ -359,6 +360,43 @@ static std::optional<SDL_Rect> native_location_picker_draw_box(
             x < 0 || x >= graphics->dimx || y < 0 || y >= graphics->dimy)
         return std::nullopt;
     NativePanelReadScope panel_scope(graphics);
+    if (detail) {
+        // Location detail writes every caption directly into its closed
+        // panel. Retain the native column and clip before later row draws;
+        // the source's English length never determines its Chinese budget.
+        int left = static_cast<int>(std::clamp<int64_t>(graphics->clipx[0], 0, graphics->dimx));
+        int right = static_cast<int>(std::clamp<int64_t>(
+            int64_t(graphics->clipx[1]) + 1, 0, graphics->dimx));
+        if (y < graphics->clipy[0] || y > graphics->clipy[1] || x < left || x >= right)
+            return std::nullopt;
+        const NativePanelBorders borders(*graphics);
+        if (const auto panel = native_panel_interior(borders, *graphics, x, x + 1, y)) {
+            left = std::max(left, panel->x);
+            right = std::min(right, panel->x + panel->w);
+        }
+        if (field == NativeLocationPickerField::DetailRole) {
+            // The shared occupation row begins at list_left+6; its native
+            // add-person button begins at list_left+24, for all ten roles
+            // and every generated entity_position title.
+            right = std::min(right, x + 18);
+        } else if (field == NativeLocationPickerField::DetailUnit) {
+#ifdef _WIN32
+            // Only the proved detail-unit draw has this caller frame.
+            // rbp+0x50 owns the name and rbp+0x00 its exclusive column end;
+            // 3b8465..3b8488 reserve three cells before native truncation.
+            const uintptr_t address = reinterpret_cast<uintptr_t>(source);
+            int32_t column_end = 0;
+            if (caller == native_pe_address(native_history_profile_base(), 0x3b84e0) &&
+                    address >= 0x50 && native_history_copy(address - 0x50, column_end) &&
+                    column_end > x + 3 && column_end <= graphics->dimx)
+                right = std::min(right, column_end - 3);
+#else
+            (void)caller;
+#endif
+        }
+        if (x >= left && right > x) return SDL_Rect{x, y, right - x, 1};
+        return std::nullopt;
+    }
     if (faith && field != NativeLocationPickerField::FaithChoice &&
             field != NativeLocationPickerField::FaithStatus) {
         // 3baddc..3bb04d draws the faith card after its complete hover frame.
@@ -1199,7 +1237,8 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         NativeCivilizationField civilization_field = NativeCivilizationField::None,
         bool mission_title = false,
         NativeMapHoverContext map_hover = {},
-        NativeLocationPickerField location_picker_field = NativeLocationPickerField::None) {
+        NativeLocationPickerField location_picker_field = NativeLocationPickerField::None,
+        uintptr_t native_caller = 0) {
     const std::array<long, 4> draw_clip = graphics
         ? std::array<long, 4>{graphics->clipx[0], graphics->clipx[1],
                               graphics->clipy[0], graphics->clipy[1]}
@@ -1237,7 +1276,8 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
     std::optional<NativeFortressLaborCaption> fortress_labor_caption;
     try {
         if (!top_layer) {
-            location_picker_box = native_location_picker_draw_box(graphics, source, location_picker_field);
+            location_picker_box = native_location_picker_draw_box(
+                graphics, source, location_picker_field, native_caller);
             fortress_labor_caption = capture_native_fortress_labor_caption(
                 reinterpret_cast<uintptr_t>(source));
         }
@@ -1433,7 +1473,7 @@ static void capture_native_clipped_draw(graphicst *graphics, const NativeString 
         if (g_native_clipped_caption_hooks.draw)
             g_native_clipped_caption_hooks.draw(graphics, source, just, width);
     }, false, kind, authored, std::move(reclaim_history), history_lock.owns_lock(),
-        civilization_field, mission_title, map_hover, location_picker_field);
+        civilization_field, mission_title, map_hover, location_picker_field, caller);
 }
 
 static void capture_native_clipped_flag_draw(graphicst *graphics, const NativeString *source,

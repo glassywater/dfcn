@@ -12218,6 +12218,7 @@ Despite the interrogation, {a} refused to reveal anything and was released durin
 Despite the interrogation, {a} refused to reveal anything and was released within {p}.	在{p1}，尽管受到了审讯，{a1}仍拒绝交代任何事情，随后被释放了。	ht
 Don't you know that {p} is a jealous deity? Why consult another? Let another day pass.	难道你不知道{p1}是位善妒的神祇吗？为什么要向别的神问卜？再等一天。	hPt
 For {u} of my years, I have been rescuing lost children and bringing them back to {e}.	我解救迷路的孩子并把他们带回{e1}，已经做了{u1}年。	hPt
+Fortress temple detail: You can recognize a high priest when this is a temple complex.	此处成为神殿建筑群后，即可认可高阶祭司。	l
 If you haven't suffered any casualties, you should have these labors assigned already.	如果尚无人员伤亡，这些工作应该已经有人负责。	hq
 Officers may opt for physical punishment if they cannot carry out custodial sentences.	如果无法执行拘禁刑罚，执法人员可能改用体罚。	hq
 Praise {p} for ignoring your hubris. Freedom is allowed even in this. Let a week pass.	赞美{p1}，宽恕了你的狂妄。即使在此事上，你也享有自由。等上一周。	hPt
@@ -13625,6 +13626,7 @@ Despite the interrogation by {a}, {a} refused to reveal anything and was release
 Despite the interrogation, {a} refused to reveal anything and was released at {p}	在{p1}，尽管受到了审讯，{a1}仍拒绝交代任何事情，随后被释放了	ht
 Despite the interrogation, {a} refused to reveal anything and was released in {p}	在{p1}，尽管受到了审讯，{a1}仍拒绝交代任何事情，随后被释放了	ht
 Don't you know that {p} is a jealous deity? Why consult another? Let a week pass.	难道你不知道{p1}是位善妒的神祇吗？为什么要向别的神问卜？等上一周。	hPt
+Fortress temple detail: Only organized religions can have recognized priesthoods.	只有有组织的宗教才能获得祭司团认可。	l
 I asked {n} to grant an important position in {e} to {n} when one came available.	我要求{n1}在职位出现空缺时，将{e1}的一个重要职位授予{n2}。	hPt
 I engaged {n} to infiltrate {e} in order to initiate sabotage and instill terror.	我雇{n1}渗透{e1}，以开展破坏活动和制造恐慌。	hPt
 I engaged {n} to infiltrate {e} in order to initiate sabotage and prepare a coup.	我雇{n1}渗透{e1}，以开展破坏活动和策划政变。	hPt
@@ -14829,6 +14831,7 @@ DFHack help: specify a material for projectiles that will trigger the command	�
 DFHack help: that describes whether or not the goal has been accomplished. Be	描述目标是否已实现。是	l
 DFHack help: transition from ``autoSyndrome`` to `modtools/reaction-trigger`.	从 ``autoSyndrome`` 过渡到 `modtools/reaction-trigger`。	l
 DFHack help: | Grey------------------+White----------------+ | D: default | |	|灰色-----------------+白色----------------+ | D：默认| |	l
+Fortress temple detail: You can recognize a priesthood once this is a temple.	此处成为神殿后，即可认可祭司团。	l
 He personally views any show of emotion as offensive and sees war as a useful	他本人认为任何情感流露都令人不快，并把战争视为一种有用的	l
 I engaged {n} to infiltrate in order to initiate sabotage and instill terror.	我雇{n1}渗透，以开展破坏活动和制造恐慌。	hPt
 I engaged {n} to infiltrate in order to initiate sabotage and prepare a coup.	我雇{n1}渗透，以开展破坏活动和策划政变。	hPt
@@ -17719,6 +17722,7 @@ DFHack help: valid list of characteristic, those characteristics will	有效的�
 DFHack hotkeys hint: Configure DFHack and manage active DFHack tools.	配置 DFHack 并管理已启用的工具。	l
 Do this by selecting the building in Workshops -> Farming -> Butcher.	[C:7:0:0]依次选择“[C:5:0:1]工坊[C:7:0:0] → [C:5:0:1]农业[C:7:0:0] → [C:5:0:1]屠夫工坊[C:7:0:0]”，放置该建筑。	hq
 Eventually the Clothing that your residents start with will rot away.	[C:7:0:0]居民启程时穿的[C:6:0:1]衣服[C:7:0:0]，最终会腐烂损坏。	hq
+Fortress temple detail: Only members can visit (if guild established)	仅成员可以到访（行会成立后）	l
 Fully randomize appearance, without respecting population information	完全随机生成外貌，不考虑人口特征	l
 I decided to frame {n} for a conspiracy to slow labor by fooling {n}.	我决定通过欺骗{n2}，诬陷{n1}犯下合谋怠工罪。	hPt
 I decided to frame {n} for production order violation by fooling {n}.	我决定通过欺骗{n2}，诬陷{n1}犯下违反生产命令罪。	hPt
@@ -21439,6 +21443,7 @@ DFHack help: trigger commands when custom reactions complete.	自定义反应完
 DFHack help: unit <UNIT ID>: The given unit will be affected.	单位<UNIT ID>：给定单位将受到影响。	l
 DFHack help: valid facet tokens can be found in the wiki page	有效的方面令牌可以在 wiki 页面中找到	l
 DFHack help: workflow count CRAFTS///LOCAL,EXCEPTIONAL 100 90	工作流程计数 CRAFTS///LOCAL,EXCEPTIONAL 100 90	l
+Fortress temple detail: Citizens and long-term residents only	仅限公民和长期居民	l
 I decided to frame {n} for disorderly conduct by fooling {n}.	我决定通过欺骗{n2}，诬陷{n1}犯下扰乱秩序罪。	hPt
 I engaged {n} to frame {n} for blood-drinking by fooling {n}.	我雇{n1}通过欺骗{n3}，诬陷{n2}犯下吸血罪。	hPt
 I have no master, but {n} sometimes has need for my services.	我没有主人，但{n1}有时需要我效劳。	hPt
@@ -22610,6 +22615,7 @@ DFHack help: tweak [list] tweak <command> [disable] [quiet]	tweak [list] tweak <
 DFHack help: unload <plugin> [<plugin> ...] unload -a|--all	unload <plugin> [<plugin> ...] unload -a|--all	l
 DFHack help: when it is discovered ("[Unit] has come! ...")	被发现时（"[单位]来了！..."）	l
 DFHack help: will be displayed if the script is successful.	。	l
+Fortress temple detail: High priest: {d} worshippers needed	高阶祭司：需要{d}名信徒	wtli
 He sometimes acts with little determination and confidence.	他有时行事缺乏决心和自信。	l
 Heavy attack: slower to strike and recover, but hits harder	重击：出手和恢复较慢，但打击更有力。	hP
 I decided to frame {n} for attempted murder by fooling {n}.	我决定通过欺骗{n2}，诬陷{n1}犯下谋杀未遂罪。	hPt
@@ -23312,6 +23318,7 @@ DFHack help: trg.target[trg_key] = not trg.target[trg_key]	trg.target[trg_key] =
 DFHack hotkeys hint: Apply layout blueprints to your fort.	将布局蓝图应用到你的要塞。	l
 Don't travel alone at night, or the bogeyman will get you.	别在夜间独自旅行，否则夜魔会抓走你。	hP
 Flashes of energy pulse across its surface intermittently.	它的体表不时闪过能量的脉动。	h
+Fortress temple detail: High priest: {d} worshipper needed	高阶祭司：需要{d}名信徒	wtli
 I am escaping from danger which threatened my former home.	我原来的家遭遇了危险，我是出来避难的。	hP
 I decided to frame {n} for attempted theft by fooling {n}.	我决定通过欺骗{n2}，诬陷{n1}犯下盗窃未遂罪。	hPt
 I engaged {n} to infiltrate in order to initiate sabotage.	我雇{n1}渗透，以开展破坏活动。	hPt
@@ -26446,6 +26453,7 @@ Desired metal cages and chains in dungeons: {d} of {d}	监牢中的金属笼子�
 Difficulty only affects starting skills and equipment.	难度仅影响初始技能和装备。	l
 ENABLE ONE! Entities in Dwarvemon use certain types of	只能启用一个！Dwarvemon 中的实体仅包含特定类型的	wl
 Fortress activity: suffix (location no longer in zone)	（地点已不在区域内）	li
+Fortress temple detail: Priest: {d} worshippers needed	祭司：需要{d}名信徒	wtli
 Go below hatch (no climbing/jumping) ({d} levels down)	前往活动盖板下方（不攀爬或跳跃）（下方{d1}层）	hPt
 I engaged {n} to frame {n} for bribery by fooling {n}.	我雇{n1}通过欺骗{n3}，诬陷{n2}犯下贿赂罪。	hPt
 I engaged {n} to frame {n} for robbery by fooling {n}.	我雇{n1}通过欺骗{n3}，诬陷{n2}犯下抢劫罪。	hPt
@@ -27223,6 +27231,7 @@ Fire in the shape of a human that can hurl fireballs.	可以投掷火球的人�
 Forgive me, but don't waste my time with this drivel.	恕我直言，别拿这些胡言乱语浪费我的时间。	hP
 Fortress activity: suffix (cannot individually drill)	（无法进行个人训练）	li
 Fortress activity: suffix (no reachable valid target)	（没有可抵达的有效目标）	li
+Fortress temple detail: Priest: {d} worshipper needed	祭司：需要{d}名信徒	wtli
 Gather fruit and vegetables from shrubs in this zone.	采集此区域灌木上的果实和蔬菜。	hj
 Go below hatch (no climbing/jumping) ({d} level down)	前往活动盖板下方（不攀爬或跳跃）（下方{d1}层）	hPt
 Go to the next zone overlapping the tile you clicked.	切换到与所点击地格重叠的下一个区域。	hj
@@ -34561,6 +34570,7 @@ Desired grid width for scaling (default = {d})	缩放的目标网格宽度 (默�
 Directly control a single individual or party.	可直接操控单个角色或是一支冒险小队。	hP
 Directly control a single individual or party.	可直接操控单个角色或是一支冒险小队。	w
 Fortress activity: suffix (activity cancelled)	（活动已取消）	li
+Fortress temple detail: Only members can visit	仅成员可以到访	l
 Greatly respected for preserving the knowledge	因博学多才而备受崇敬	w
 He can easily fall in love or develop positive	他很容易坠入爱河或产生正面	l
 Here's something you might be interested in...	有件事你也许会感兴趣……	hP

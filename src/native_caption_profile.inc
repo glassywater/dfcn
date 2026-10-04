@@ -516,6 +516,81 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     profile.inline_resizes.push_back({0x3ba6d1, {0xe8,0x5a,0x6b,0xd2,0xff}, {}, true});
     profile.inline_resizes.push_back({0x3ba91c, {0xe8,0x0f,0x69,0xd2,0xff}, {}, true});
     profile.inline_resizes.push_back({0x3baa70, {0xe8,0xbb,0x67,0xd2,0xff}, {}, true});
+    // The decompiled location-detail renderer owns complete sources at
+    // these addst calls. In particular its rank/value/threshold is ONE
+    // buffer, while the worshipper count and noun are separate draws.
+    // Use executable callers for every branch instead of guessing a title
+    // or a rank from words left in the screen grid.
+    struct NativeLocationDetailCall {
+        uintptr_t call;
+        std::array<unsigned char, 5> bytes;
+        NativeLocationPickerField field;
+    };
+    static constexpr NativeLocationDetailCall detail_sites[] = {
+        {0x3b1887, {0xe8,0xd4,0x80,0x72,0x00}, NativeLocationPickerField::DetailName},
+        {0x3b1df3, {0xe8,0x68,0x7b,0x72,0x00}, NativeLocationPickerField::DetailKind}, // Shrine
+        {0x3b1e2d, {0xe8,0x2e,0x7b,0x72,0x00}, NativeLocationPickerField::DetailKind}, // Temple
+        {0x3b1e67, {0xe8,0xf4,0x7a,0x72,0x00}, NativeLocationPickerField::DetailKind}, // Temple complex
+        // Organized-religion name, Dedicated to deity, or No particular deity.
+        {0x3b1fca, {0xe8,0x91,0x79,0x72,0x00}, NativeLocationPickerField::DetailDedication},
+        {0x3b26ee, {0xe8,0x6d,0x72,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // members, if established
+        {0x3b2720, {0xe8,0x3b,0x72,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // members
+        {0x3b276b, {0xe8,0xf0,0x71,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // all visitors
+        {0x3b27af, {0xe8,0xac,0x71,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // residents
+        {0x3b27e3, {0xe8,0x78,0x71,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // citizens
+        {0x3b6aab, {0xe8,0xb0,0x2e,0x72,0x00}, NativeLocationPickerField::DetailRank},
+        {0x3b6b56, {0xe8,0x05,0x2e,0x72,0x00}, NativeLocationPickerField::DetailCount}, // number or No
+        {0x3b6bb4, {0xe8,0xa7,0x2d,0x72,0x00}, NativeLocationPickerField::DetailCountWord}, // worshippers
+        {0x3b6bda, {0xe8,0x81,0x2d,0x72,0x00}, NativeLocationPickerField::DetailCountWord}, // worshipper
+        {0x3b702a, {0xe8,0x31,0x29,0x72,0x00}, NativeLocationPickerField::DetailRequirement},
+        {0x3b7121, {0xe8,0x3a,0x28,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // Recognize priesthood
+        {0x3b7260, {0xe8,0xfb,0x26,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // Recognize high priest
+        {0x3b72c0, {0xe8,0x9b,0x26,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // temple required
+        {0x3b732e, {0xe8,0x2d,0x26,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // temple complex required
+        {0x3b73c6, {0xe8,0x95,0x25,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // temple agreement
+        {0x3b7413, {0xe8,0x48,0x25,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // complex agreement
+        {0x3b7470, {0xe8,0xeb,0x24,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // organized religion required
+        {0x3b762b, {0xe8,0x30,0x23,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // chests label
+        {0x3b77f9, {0xe8,0x62,0x21,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // instruments label
+        {0x3b7b2a, {0xe8,0x31,0x1e,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // dance-floor label
+        {0x3b7be9, {0xe8,0x72,0x1d,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // no dance floor
+        // All ten fixed occupation branches and the entity_position title
+        // share the same list row and add-person button allocation.
+        {0x3b7efd, {0xe8,0x5e,0x1a,0x72,0x00}, NativeLocationPickerField::DetailRole}, // Tavern Keeper
+        {0x3b7feb, {0xe8,0x70,0x19,0x72,0x00}, NativeLocationPickerField::DetailRole}, // Performer
+        {0x3b8018, {0xe8,0x43,0x19,0x72,0x00}, NativeLocationPickerField::DetailRole}, // Scholar
+        {0x3b8045, {0xe8,0x16,0x19,0x72,0x00}, NativeLocationPickerField::DetailRole}, // Scribe
+        {0x3b8072, {0xe8,0xe9,0x18,0x72,0x00}, NativeLocationPickerField::DetailRole}, // Mercenary
+        {0x3b809f, {0xe8,0xbc,0x18,0x72,0x00}, NativeLocationPickerField::DetailRole}, // Monster Slayer
+        {0x3b80cc, {0xe8,0x8f,0x18,0x72,0x00}, NativeLocationPickerField::DetailRole}, // Doctor
+        {0x3b80f9, {0xe8,0x62,0x18,0x72,0x00}, NativeLocationPickerField::DetailRole}, // Diagnostician
+        {0x3b8126, {0xe8,0x35,0x18,0x72,0x00}, NativeLocationPickerField::DetailRole}, // Surgeon
+        {0x3b8153, {0xe8,0x08,0x18,0x72,0x00}, NativeLocationPickerField::DetailRole}, // Bone Doctor
+        {0x3b8199, {0xe8,0xc2,0x17,0x72,0x00}, NativeLocationPickerField::DetailRole}, // complete generated priest title
+        {0x3b84db, {0xe8,0x80,0x14,0x72,0x00}, NativeLocationPickerField::DetailUnit},
+    };
+    for (const auto &site : detail_sites) {
+        profile.location_picker_fields.push_back({native_pe_address(profile.base, site.call + 5), site.field});
+        profile.signatures.push_back({site.call,
+            std::vector<unsigned char>(site.bytes.begin(), site.bytes.end())});
+    }
+    // Existing faith-subpage callers use the same normal profile signature
+    // gate as the new detail fields, for both supported native PE editions.
+    profile.signatures.push_back({0x3ba71b, {0xe8,0x40,0xf2,0x71,0x00}});
+    profile.signatures.push_back({0x3ba968, {0xe8,0xf3,0xef,0x71,0x00}});
+    profile.signatures.push_back({0x3baabc, {0xe8,0x9f,0xee,0x71,0x00}});
+    profile.signatures.push_back({0x3bae35, {0xe8,0x26,0xeb,0x71,0x00}});
+    profile.signatures.push_back({0x3bae62, {0xe8,0xf9,0xea,0x71,0x00}});
+    profile.signatures.push_back({0x3baebb, {0xe8,0xa0,0xea,0x71,0x00}});
+    profile.signatures.push_back({0x3baf7b, {0xe8,0xe0,0xe9,0x71,0x00}});
+    profile.signatures.push_back({0x3bb04d, {0xe8,0x0e,0xe9,0x71,0x00}});
+    // The header and assigned-unit paths write dots after their native
+    // resize calls. Preserve their complete NativeString before that edit;
+    // the header's width-1 branch can grow by one zero byte.
+    profile.inline_resizes.push_back({0x3b1832, {0xe8,0xf9,0xf9,0xd2,0xff}, {}, true});
+    profile.inline_resizes.push_back({0x3b8488, {0xe8,0xa3,0x8d,0xd2,0xff}, {}, true});
+    profile.signatures.push_back({0x3b1832, {0xe8,0xf9,0xf9,0xd2,0xff}});
+    profile.signatures.push_back({0x3b8488, {0xe8,0xa3,0x8d,0xd2,0xff}});
     // Resolve the reference PE coordinates once. Shared hook installation
     // consumes only the selected executable's addresses and original bytes.
     for (auto &signature : profile.signatures) {

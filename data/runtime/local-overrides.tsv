@@ -8455,6 +8455,18 @@ Have temple complex	已有神殿建筑群	wli
 # Only the typed faith-card label uses this key. Other Worship actions keep
 # their existing activity wording; spheres use the shared semantic r glossary.
 Fortress faith picker: Worship	供奉	l
+# Native temple detail fields; complete construction and edition coordinates
+# are retained in data/extracted/fortress-location-detail/.
+Fortress temple detail: Only members can visit (if guild established)	仅成员可以到访（行会成立后）	l
+Fortress temple detail: Only members can visit	仅成员可以到访	l
+Fortress temple detail: Citizens and long-term residents only	仅限公民和长期居民	l
+Fortress temple detail: You can recognize a priesthood once this is a temple.	此处成为神殿后，即可认可祭司团。	l
+Fortress temple detail: You can recognize a high priest when this is a temple complex.	此处成为神殿建筑群后，即可认可高阶祭司。	l
+Fortress temple detail: Only organized religions can have recognized priesthoods.	只有有组织的宗教才能获得祭司团认可。	l
+Fortress temple detail: Priest: {d} worshipper needed	祭司：需要{d}名信徒	wtli
+Fortress temple detail: Priest: {d} worshippers needed	祭司：需要{d}名信徒	wtli
+Fortress temple detail: High priest: {d} worshipper needed	高阶祭司：需要{d}名信徒	wtli
+Fortress temple detail: High priest: {d} worshippers needed	高阶祭司：需要{d}名信徒	wtli
 All visitors welcome	欢迎所有访客	wi
 Citizens only	仅限公民	wi
 # Location staff positions use the established occupation name.

@@ -1845,12 +1845,19 @@ enum class NativeCivilizationField {
 
 enum class NativeLocationPickerField {
     None, Prompt, Action, Name, Faith, Guild, Kind,
-    FaithChoice, FaithStatus, FaithCount, FaithWorship, FaithDeity, FaithSphere
+    FaithChoice, FaithStatus, FaithCount, FaithWorship, FaithDeity, FaithSphere,
+    DetailName, DetailKind, DetailDedication, DetailFixed, DetailRank,
+    DetailCount, DetailCountWord, DetailRequirement, DetailRole, DetailUnit
 };
 
 static bool native_faith_picker_field(NativeLocationPickerField field) {
     return field >= NativeLocationPickerField::FaithChoice &&
         field <= NativeLocationPickerField::FaithSphere;
+}
+
+static bool native_location_detail_field(NativeLocationPickerField field) {
+    return field >= NativeLocationPickerField::DetailName &&
+        field <= NativeLocationPickerField::DetailUnit;
 }
 
 enum class NativeFortressLaborKind { DetailName, Label, Control };
@@ -21040,6 +21047,12 @@ std::vector<Match> Overlay::find_matches(int only_y,
     if (classic_location_fields || faith_picker_fields)
         append_fortress_location_list_matches(screen_rows, result, only_y,
             screen_override != nullptr, true);
+    // Proved detail callers own generated offices and full value clauses
+    // before picture captions or generic UI readers see the same cells.
+    if (std::any_of(location_draws.begin(), location_draws.end(),
+            [](const auto &draw) { return native_location_detail_field(draw.location_picker_field); }))
+        append_fortress_location_matches(screen_rows, result, only_y,
+            screen_override != nullptr);
     // A foreground document owns its ink before item/roster/map readers see
     // this work buffer. Those readers otherwise consume tooltip words using
     // the background page's grammar, leaving no body for the tooltip pass.

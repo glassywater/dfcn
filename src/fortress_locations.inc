@@ -19,6 +19,182 @@ void Overlay::append_fortress_location_matches(std::vector<std::string> &rows,
         "Stored Instruments (Desired):", "Dance floor in common area:",
         "Rented rooms (Total):",
     };
+    // These fields come from the native detail renderer, before a generic
+    // dictionary can consume the type or one word of a generated office.
+    // The rank buffer contains the currency byte and next-tier threshold;
+    // the screen's decorative glyphs are not its text grammar.
+    const auto drawn = captured_native_drawn_text_rows();
+    const auto top_drawn = captured_native_drawn_text_rows(true);
+    const auto detail_draw_end = [&](const NativeDrawnTextRow &draw) {
+        if (!draw.location_picker_box) return draw.x;
+        int right = std::min(gps_->dimx,
+            draw.location_picker_box->x + draw.location_picker_box->w);
+        if (draw.draw_clip) right = std::min(right, draw.draw_clip->x + draw.draw_clip->w);
+        return std::min(right, draw.x + static_cast<int>(draw.source.size()));
+    };
+    const auto current_draw = [&](const NativeDrawnTextRow &draw) {
+        return native_location_detail_field(draw.location_picker_field) &&
+            draw.location_picker_box && !draw.editable_text &&
+            draw.draw_grid == (draw.top_layer ? gps_->screen_top : gps_->screen) &&
+            draw.draw_dimx == gps_->dimx && draw.draw_dimy == gps_->dimy &&
+            draw.x >= 0 && draw.x < gps_->dimx && draw.y >= 0 && draw.y < gps_->dimy &&
+            !draw.source.empty() && detail_draw_end(draw) > draw.x &&
+            context[draw.y].compare(draw.x, detail_draw_end(draw) - draw.x,
+                draw.source, 0, detail_draw_end(draw) - draw.x) == 0;
+    };
+    const auto detail_identity = [&](const std::string &source) -> std::optional<std::string> {
+        if (contains_cjk_utf8(source)) return native_text_to_utf8(source);
+        auto target = translate_legends_name(source, true);
+        if (!target) target = translate_legends_name(source, false);
+        if (!target) target = translate_procedural_fragment(source, false, false, {},
+            ProceduralFragmentContext::generated_name);
+        return target;
+    };
+    const auto render_template = [&](std::string_view key, const std::string &value)
+            -> std::optional<std::string> {
+        const auto found = history_semantic_templates_.find(std::string(key));
+        if (found == history_semantic_templates_.end()) return std::nullopt;
+        bool complete = false;
+        auto target = translate_template_captures(rules_[static_cast<size_t>(found->second)],
+            {value}, &complete);
+        return complete && !target.empty() ? std::optional<std::string>(std::move(target))
+            : std::nullopt;
+    };
+    const auto detail_rank = [&](std::string_view source) -> std::optional<std::string> {
+        const auto comma = source.find(", ");
+        if (comma == std::string_view::npos) return std::nullopt;
+        const auto kind = source.substr(0, comma);
+        if (kind != "Shrine" && kind != "Temple" && kind != "Temple Complex")
+            return std::nullopt;
+        const auto title = exact_literal_translation(kind == "Temple Complex"
+            ? "Temple complex" : std::string(kind));
+        if (!title) return std::nullopt;
+        const auto value = source.substr(comma + 2);
+        constexpr std::string_view next_at = " (next at ";
+        const auto next = value.find(next_at);
+        if (next == std::string_view::npos)
+            return *title + "，" + native_text_to_utf8(std::string(value));
+        if (!value.ends_with(')')) return std::nullopt;
+        const auto threshold = value.substr(next + next_at.size(),
+            value.size() - next - next_at.size() - 1);
+        return *title + "，" + native_text_to_utf8(std::string(value.substr(0, next))) +
+            "（下一级需" + native_text_to_utf8(std::string(threshold)) + "）";
+    };
+    const auto append_detail = [&](const NativeDrawnTextRow &draw, int end, int rule,
+                                   const std::string &target, const std::string &complete) {
+        const auto &allocation = *draw.location_picker_box;
+        int left = allocation.x, right = allocation.x + allocation.w;
+        if (draw.draw_clip) {
+            left = std::max(left, draw.draw_clip->x);
+            right = std::min(right, draw.draw_clip->x + draw.draw_clip->w);
+        }
+        if (left < 0 || left > draw.x || right <= draw.x || right > gps_->dimx ||
+            end <= draw.x || end > gps_->dimx || target.empty()) return;
+        const auto source = context[draw.y].substr(draw.x, end - draw.x);
+        if (rows[draw.y].compare(draw.x, source.size(), source) == 0) {
+            if (only_y < 0 || only_y == draw.y) {
+                Match match{draw.x, draw.y, static_cast<int>(source.size()), rule, target, source};
+                match.native_picture_caption_box = SDL_Rect{left, draw.y, right - left, 1};
+                match.native_picture_caption_source = complete;
+                matches.push_back(std::move(match));
+            }
+            std::fill_n(rows[draw.y].begin() + draw.x, source.size(), ' ');
+        } else if (raw_layer) {
+            for (int offset = 0; offset < static_cast<int>(source.size());) {
+                while (offset < static_cast<int>(source.size()) &&
+                    rows[draw.y][draw.x + offset] != source[offset]) ++offset;
+                const int start = offset;
+                while (offset < static_cast<int>(source.size()) &&
+                    rows[draw.y][draw.x + offset] == source[offset]) ++offset;
+                if (offset == start) continue;
+                if (only_y < 0 || only_y == draw.y)
+                    matches.push_back({draw.x + start, draw.y, offset - start, rule, {},
+                        source.substr(start, offset - start)});
+                std::fill_n(rows[draw.y].begin() + draw.x + start, offset - start, ' ');
+            }
+        }
+    };
+    for (const auto *layer : {&drawn, &top_drawn}) {
+        for (const auto &draw : *layer) {
+            if (!current_draw(draw)) continue;
+            const auto kind = draw.location_picker_field;
+            const std::string complete = draw.complete_source.empty() ? draw.source : draw.complete_source;
+            int end = detail_draw_end(draw);
+            int rule = kFortressLocationTextRule;
+            std::optional<std::string> target;
+            std::string whole = complete;
+            switch (kind) {
+            case NativeLocationPickerField::DetailName:
+                target = detail_identity(complete);
+                break;
+            case NativeLocationPickerField::DetailKind:
+                target = exact_literal_translation(complete);
+                break;
+            case NativeLocationPickerField::DetailDedication: {
+                constexpr std::string_view prefix = "Dedicated to ";
+                if (complete.starts_with(prefix)) {
+                    if (const auto name = detail_identity(complete.substr(prefix.size())))
+                        target = "供奉" + *name;
+                } else target = complete == "No particular deity"
+                    ? exact_literal_translation(complete) : detail_identity(complete);
+                break;
+            }
+            case NativeLocationPickerField::DetailFixed: {
+                const std::string text(trim_view(complete));
+                target = exact_literal_translation("Fortress temple detail: " + text);
+                if (!target) target = exact_literal_translation(text);
+                if (std::find(std::begin(fact_labels), std::end(fact_labels), text) !=
+                        std::end(fact_labels)) rule = kFortressLocationLabelRule;
+                else if (text == "None") rule = kFortressLocationValueRule;
+                break;
+            }
+            case NativeLocationPickerField::DetailRank:
+                target = detail_rank(complete);
+                break;
+            case NativeLocationPickerField::DetailCount:
+                for (const auto &word : *layer) {
+                    if (word.location_picker_field != NativeLocationPickerField::DetailCountWord ||
+                        word.y != draw.y || word.x <= draw.x || !current_draw(word)) continue;
+                    const std::string suffix = word.complete_source.empty() ? word.source : word.complete_source;
+                    if (suffix != "worshipper" && suffix != "worshippers") continue;
+                    if (complete == "No") target = exact_literal_translation("No worshippers");
+                    else if (std::all_of(complete.begin(), complete.end(),
+                            [](unsigned char ch) { return ch >= '0' && ch <= '9'; }))
+                        target = render_template("{d} " + suffix, complete);
+                    end = detail_draw_end(word);
+                    whole += " " + suffix;
+                    break;
+                }
+                break;
+            case NativeLocationPickerField::DetailRequirement:
+                for (const std::string_view prefix : {"Priest: ", "High priest: "}) {
+                    if (!complete.starts_with(prefix)) continue;
+                    for (const std::string_view suffix : {" worshipper needed", " worshippers needed"}) {
+                        if (!complete.ends_with(suffix) || complete.size() <= prefix.size() + suffix.size())
+                            continue;
+                        const auto digits = complete.substr(prefix.size(),
+                            complete.size() - prefix.size() - suffix.size());
+                        if (std::all_of(digits.begin(), digits.end(),
+                                [](unsigned char ch) { return ch >= '0' && ch <= '9'; }))
+                            target = render_template("Fortress temple detail: " + std::string(prefix) +
+                                "{d}" + std::string(suffix), digits);
+                        break;
+                    }
+                    break;
+                }
+                break;
+            case NativeLocationPickerField::DetailRole:
+                target = translate_unit_profession(complete, true);
+                break;
+            case NativeLocationPickerField::DetailUnit:
+                target = translate_unit_identity(complete, true);
+                break;
+            default:
+                break;
+            }
+            if (target) append_detail(draw, end, rule, *target, whole);
+        }
+    }
     for (int y = 1; y + 1 < gps_->dimy && !panel; ++y) {
         for (const std::string_view anchor : fact_labels) {
             const auto x = context[y].find(anchor);
@@ -262,6 +438,14 @@ void Overlay::layout_fortress_location(SDL_Renderer *renderer) {
         match.layout_fixed_baseline = false;
         match.layout_right = false;
         match.layout_left = true;
+        if (match.native_picture_caption_box) {
+            const auto &box = *match.native_picture_caption_box;
+            layout_fortress_text_rows(renderer, {{&match}}, box.x, box.x + box.w, true);
+            match.layout_y = box.y;
+            match.layout_pixel_y = 0;
+            match.layout_fixed_baseline = true;
+            return;
+        }
         auto region = native_button_text_rect(*gps_, match.x,
             match.x + match.length, match.y);
         if (!region) region = native_panel_interior(borders, *gps_,

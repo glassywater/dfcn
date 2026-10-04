@@ -231,7 +231,8 @@ void Overlay::append_fortress_location_list_matches(std::vector<std::string> &ro
             for (const auto &draw : *layer) {
                 const auto kind = draw.location_picker_field;
                 if (kind == NativeLocationPickerField::None ||
-                    kind == NativeLocationPickerField::Prompt || !draw.location_picker_box ||
+                    kind == NativeLocationPickerField::Prompt || native_location_detail_field(kind) ||
+                    !draw.location_picker_box ||
                     (!native_ui_classic().value_or(false) && !native_faith_picker_field(kind)) ||
                     draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen) ||
                     draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
