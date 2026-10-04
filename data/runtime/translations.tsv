@@ -1630,6 +1630,7 @@ You can make a variety of objects using three different types of glass. You can 
 A caravan from {e} has arrived. Your status as a major land has attracted much more trade than usual. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are great.	来自{e1}的商队已抵达。你作为大领地的地位吸引来了比平时多得多的贸易。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿很高。	hPt
 A caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are good.	来自{e1}的商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿良好。	hPt
 Announcement combat fortress-announcement []: Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense. What are a few pesky demons after all?	祝贺你！这座要塞如今已成为山国都城，证明那些狂妄自大的指责不过是幼稚的胡言乱语。区区几个恼人的恶魔又算得了什么？	l
+DFHack GUI Journal tutorial: Here, you can jot down your travels, keep track of important places, or note anything worth remembering. The text you write here is saved together with your adventurer.	你可以在这里记录旅途、标记重要地点，或记下任何值得铭记的事情。写下的内容会随冒险者一起保存。	l
 DFHack help: "--total-quality" Only applies to "--min-quality" and "--max-quality" options. Filter items according to their total quality (to include improvements) of instead of their core quality.	"--total-quality" 仅适用于 "--min-quality" 和 "--max-quality" 选项。根据项目的总体质量（包括改进）而不是核心质量来过滤项目。	l
 DFHack help: "cprobe" Displays properties of the selected unit. It also displays the IDs of any worn items. For deeper inspection of the unit and inventory items, see gui/gm-unit and gui/gm-editor.	"cprobe" 显示所选单元的属性。它还显示所有磨损物品的 ID。有关单位和库存项目的更深入检查，请参阅 gui/gm-unit 和 gui/gm-editor.	l
 DFHack help: "dwarf-op --select names,Einstein --applytypes genius3,intuitive3,creative2,spaceaware3" Make dwarves with Einstein in their name into geniuses capable of surpassing the real Einstein.	"dwarf-op --select names,Einstein --applytypes genius3,intuitive3,creative2,spaceaware3" 让名字中带有爱因斯坦的矮人成为超越真正的爱因斯坦的天才。	l
@@ -1827,6 +1828,7 @@ DFHack help: revert: Revert a unit's needs list back to its original selection a
 Your most valuable objects can be placed for display in rooms to increase their value and to entertain passing citizens. A pedestal or display case must be made before it can be placed.	可在房间中展示最珍贵的物品，提高房间价值，并供路过的居民欣赏。须先制作基座或展示柜，才能放置。	hj
 Announcement combat rumor-event [$name,$name,rumor-person]: I hear that a group calling itself {s} moved on in search of a better future after the horrible mismanagement of {s} by {s}.	听说{s3}把{s2}治理得一团糟，一个自称{s1}的势力就离开了，另谋出路。	l
 Announcement combat site-rumor-event [$name,$name,site-rumor-person,$name]: refugees calling themselves {s} fled from the area just before an army of {s} led by {s} descended upon {s}.	自称{s1}的难民刚逃离这一带，{s3}率领的{s2}军队就袭击了{s4}。	l
+DFHack GUI Journal tutorial: Here, you can carve out notes, sketch your grand designs, or record the history of your fortress. The text you write here is saved together with your fort.	你可以在这里记笔记、勾画宏伟蓝图，或记录要塞的历史。写下的内容会随要塞一起保存。	l
 DFHack help: "--applyprofessions <profession>[,<profession>...]" Applies the listed professions to the selected dwarves. Run "dwarf-op --list professions" to see available professions.	"--applyprofessions <profession>[,<profession>...]" 将列出的职业应用于所选的矮人。运行 "dwarf-op --list professions" 查看可用的职业。	l
 DFHack help: "--marked=<flag>,<flag>,..." Only include items that have all provided flag set to true. Valid flags are: "forbid" (or "forbidden"), "dump", "hidden", "melt", and "owned".	"--marked=<flag>,<flag>,..." 仅包含所有提供的标志设置为 true 的项目。有效标志为："forbid"（或 "forbidden"）、"dump"、"hidden"、"melt" 和 "owned"。	l
 DFHack help: "flip" (default: off) Flip creature sprites horizontally according to their last horizontal movement. Items, vehicles, and designation icons keep their normal orientation.	"flip"（默认：关闭）根据生物精灵最后的水平移动水平翻转生物精灵。物品、车辆和规划标记图标保持正常方向。	l
@@ -5406,6 +5408,7 @@ Announcement combat agreement-core [agreement-party-list,agreement-party-list]: 
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} requested that {s} make an offer of service	{s1}要求{s2}表示愿意效力	l
 Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-origin]: your very own {s} all the way from {s}	专属于你的一路从{s2}运来的{s1}	l
 Announcement combat negotiation-sentence []: The task was made more difficult by the relative populations of the civilizations.	双方文明的人口差距让这项任务更困难了。	l
+DFHack GUI Journal tutorial: For guidance on navigation and hotkeys, tap the ? button in the upper right corner. Happy digging!	有关浏览方式和快捷键的说明，请点击右上角的 ? 按钮。祝你挖掘愉快！	l
 DFHack help: "-e", "--engrave" Record engravings in the "carve" phase. If this option is not specified, engravings are ignored.	"-e"、"--engrave" 记录 "carve" 阶段的雕刻。如果未指定此选项，则忽略雕刻。	l
 DFHack help: "aquifer add light 87,29,126 111,53,126" Create a 25x25 block of light aquifer tiles at the specified coordinates.	"aquifer add light 87,29,126 111,53,126" 在指定坐标处创建一个 25x25 的光块含水层瓷砖。	l
 DFHack help: "changelayer SAND_RED force" Convert the layer at the cursor position into red sand, even if it's currently stone.	"changelayer SAND_RED force" 将光标位置的图层转换为红色沙子，即使它当前是石头。	l
@@ -5516,6 +5519,7 @@ Announcement combat agreement-core [agreement-party-list,agreement-party-list,ag
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the joining of {s} with {s} to {s}	{s1}与{s2}同行，前往{s3}	l
 Announcement combat fortress-announcement [$job,$digits,$unit]: Mandate Fulfilled: Automatically queued {s} x{s} for noble {s}	法令已安排：已为贵族{s3}自动加入工单：{s1} × {s2}。	l
 Announcement combat memory-performance-core [memory-person,memory-performance-verb,memory-performance-work]: I saw {s} {s} {s}	我看{s1}{s2}{s3}	l
+DFHack GUI Journal tutorial: For guidance on navigation and hotkeys, tap the ? button in the upper right corner. Safe travels!	有关浏览方式和快捷键的说明，请点击右上角的 ? 按钮。祝你一路平安！	l
 DFHack help: "--setvalue <value>" Attempts to set the values of any printed fields. Supported types: boolean, string, integer.	"--setvalue <value>" 尝试设置任何打印字段的值。支持的类型：布尔值、字符串、整数。	l
 DFHack help: "-e", "--entity <id>" Rename the historical entity (e.g. site government, world religion, etc) with the given ID.	"-e"、"--entity <id>" 使用给定的 ID 重命名历史实体（例如站点政府、世界宗教等）。	l
 DFHack help: "-q", "--quiet" Suppress console output (final status update is still printed if at least one item was affected).	"-q"、"--quiet" 抑制控制台输出（如果至少有一项受到影响，则仍会打印最终状态更新）。	l
@@ -6878,6 +6882,7 @@ Announcement combat visitor-statement [visitor-statement-subject,visitor-stateme
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} were appearing {s}.	{s1}当时正在出现在{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} were rewarding {s}.	{s1}当时正在奖赏{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} will destroyed {s}.	{s1}将已毁灭{s2}。	l
+DFHack GUI Journal tutorial: Those headers will appear here, and you can click on them to jump to them in the text.	这些标题会显示在目录中，点击即可跳到正文中对应的位置。	l
 DFHack GUI Teleport: Draw boxes around units to select, or double click on a tile to teleport {d} selected unit(s).	用鼠标框选单位，或双击格子将已选中的 {d} 个单位传送至该处。	l
 DFHack help: "--script <script>" Selects the specified script (which must support being included with reqscript()).	"--script <script>" 选择指定的脚本（必须支持包含在 reqscript() 中）。	l
 DFHack help: "deteriorate frequency 0.5 all" Deteriorate items of the enabled categories at twice the default rate.	"deteriorate frequency 0.5 all" 以默认速率的两倍恶化启用类别的项目。	l
@@ -8936,6 +8941,7 @@ But my chosen, you are in need of sustenance and sleep! See to yourself before y
 DFHack GUI Confirmation prompt: Are you sure you want to restore Autostart defaults for bugfix tools?	确定要将漏洞修复工具的自动启动状态恢复为默认设置吗？	l
 DFHack GUI Confirmation prompt: Are you sure you want to restore Enabled defaults for gameplay tools?	确定要将玩法扩展工具的当前启用状态恢复为默认设置吗？	l
 DFHack GUI Design: Place any extra points with the mouse. Use right-click to dismiss points in order.	用鼠标放置附加点。右键可依次撤销已放置的点。	l
+DFHack GUI Journal tutorial: Start a line with # symbols and a space to create a header. For example:	在行首输入 # 和空格即可建立标题。例如：	l
 DFHack help: "--exclude <string>[,<string>...]" Exclude commands that match any of the given strings.	"--exclude <string>[,<string>...]" 排除与任何给定字符串匹配的命令。	l
 DFHack help: "--findvalue <value>" Searches the source for field values matching the specified value.	"--findvalue <value>" 在源中搜索与指定值匹配的字段值。	l
 DFHack help: "--notmarkedfor <action>" Selects units which have not been marked for the given action.	"--notmarkedfor <action>" 选择尚未标记给定操作的单位。	l
@@ -9466,6 +9472,7 @@ Announcement combat sentence [unit,owned-object,owned-object]: {s} adjusts the g
 Announcement combat sentence [unit,owned-object,owned-object]: {s} break the grip of {s} from {s}!	{s1}挣脱了{s2}对{s3}的抓握！	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} release the grip of {s} on {s}.	{s1}解除了{s2}对{s3}的抓握。	l
 As the guild grows in power they may demand a Guildhall of greater value. This can be increased by	[C:7:0:0]随着行会势力增长，他们可能要求提高[C:1:0:1]行会大厅[C:7:0:0]的价值。你可以通过	hq
+DFHack GUI Journal tutorial: Welcome to gui/journal, the adventurer's notebook for Dwarf Fortress!	欢迎使用 gui/journal，这里是《矮人要塞》的冒险笔记！	l
 DFHack GUI Notification settings: Reports missing nemesis records, indicating savegame corruption.	报告缺失的人物关联记录，提示存档可能损坏。	l
 DFHack help: "--all" Selects all units. This is the default if no selection options are specified.	"--all" 选择所有单位。如果未指定选择选项，则这是默认值。	l
 DFHack help: "-d", "--delete" Stop automatically prioritizing new jobs of the specified job types.	"-d"、"--delete" 停止自动优先指定指定作业类型的新作业。	l
@@ -10326,6 +10333,7 @@ Announcement combat visitor-statement [visitor-statement-subject]: {s} were will
 Announcement combat visitor-statement [visitor-statement-subject]: {s} were will be rewarding.	{s1}当时将正在施予奖赏。	l
 Announcement combat work-sentence [work-reference]: For lyrics, the composer has selected {s}.	作曲者选用{s1}作为歌词。	l
 Build an elaborate water-powered contraption or domesticate previously untameable wild beasts.	建造精巧的水力机械，或驯服此前无法驯服的野兽。	hq
+DFHack GUI Journal tutorial: Welcome to gui/journal, the chronicler's tool for Dwarf Fortress!	欢迎使用 gui/journal，这里是《矮人要塞》的要塞日志！	l
 DFHack GUI Notification settings: Shows a suffocation bar when you are drowning or breathless.	溺水或呼吸困难时显示剩余呼吸量。	l
 DFHack help: "--cmd [ <command> ]" Specify the command to be run when the given id is matched.	"--cmd [ <command> ]" 指定当给定的 id 匹配时要运行的命令。	l
 DFHack help: "--markedfor <action>" Selects units which have been marked for the given action.	"--markedfor <action>" 选择已标记为给定操作的单位。	l
@@ -28139,6 +28147,7 @@ DFHack GUI Control tool: gui/civ-alert.big_red_button	平民警报按钮（gui/c
 DFHack GUI Control tool: gui/mod-manager.notification	模组预设应用提示（gui/mod-manager.notification）	l
 DFHack GUI Control tool: logistics enable autoretrain	自动重新驯养（logistics enable autoretrain）	l
 DFHack GUI Control tool: machine-toggle.pressureplate	压力板设置（machine-toggle.pressureplate）	l
+DFHack GUI Journal tutorial: ## My section subheading	## 子章节标题	l
 DFHack help: "--plant" Selects the highlighted plant.	"--plant" 选择突出显示的植物。	l
 DFHack help: "--scattered" Opposite of "--stockpiled"	"--scattered" 与 "--stockpiled" 相反	l
 DFHack help: "-q", "--quiet" Suppress summary output.	"-q"、"--quiet" 抑制汇总输出。	l
@@ -32677,6 +32686,7 @@ DFHack GUI Control tool: hotkeys.newadventuremenu	新建冒险快捷菜单（hot
 DFHack GUI Control tool: orders.laborrestrictions	工坊劳动限制（orders.laborrestrictions）	l
 DFHack GUI Control tool: orders.skillrestrictions	工坊技能限制（orders.skillrestrictions）	l
 DFHack GUI Design: Last Mark ({d}): {d}, {d}, {d}	终点（{d}）：{d}, {d}, {d}	l
+DFHack GUI Journal tutorial: # My section heading	# 章节标题	l
 DFHack GUI Notification settings: missing_nemesis	人物记录缺失	l
 DFHack GUI Notification settings: suffocation_adv	呼吸余量（冒险）	l
 DFHack GUI Sitemap: to zoom and follow unit/item.	以定位并跟随生物或物品。	l
@@ -39435,6 +39445,7 @@ DFHack GUI Control tool: trackstop.trackstop	轨道停靠点设置（trackstop.t
 DFHack GUI Control tool: zone.animal_actions	驯服动物操作（zone.animal_actions）	l
 DFHack GUI Control tool: zone.retirelocation	撤销闲置场所（zone.retirelocation）	l
 DFHack GUI Design: Start placing more points	继续放置点	l
+DFHack GUI Journal: Toggle table of contents	切换目录	l
 DFHack GUI Notification settings: Toggle all	全部切换	l
 DFHack GUI Notification settings: auto_train	训练小队设置	l
 DFHack GUI Quickfort: Baseline dig priority:	基础挖掘优先级：	l
@@ -60738,6 +60749,8 @@ DFHack GUI Design: Cancel mirror	取消镜像	l
 DFHack GUI Design: Fortification	防御工事	l
 DFHack GUI Design: Priority: {d}	优先级：{d}	l
 DFHack GUI Design: Total points:	顶点数：	l
+DFHack GUI Journal: Next Section	下一节	l
+DFHack GUI Journal: Prev Section	上一节	l
 DFHack GUI Quickfort: Blueprint:	蓝图标记：	l
 DFHack GUI Quickfort: No matches	没有匹配的蓝图	l
 DFHack GUI Quickfort: Transform:	变换：	l
@@ -62776,6 +62789,7 @@ DFHack GUI Design: Designation:	指定类型：	l
 DFHack GUI Design: Inner Tiles:	内部建造：	l
 DFHack GUI Design: Outer Tiles:	外缘建造：	l
 DFHack GUI Design: Spacing: {d}	间距：{d}	l
+DFHack GUI Journal tutorial: or	或者	l
 DFHack GUI Quickfort: Damp dig:	潮湿挖掘：	l
 DFHack GUI Quickfort: Warm dig:	温热挖掘：	l
 DFHack GUI Quickfort: to apply.	应用蓝图。	l
@@ -69461,6 +69475,7 @@ DFHack GUI Design: Vertical:	纵向：	l
 DFHack GUI Sitemap: friendly	友好生物	l
 DFHack GUI Sitemap: merchant	商人	l
 DFHack GUI Sitemap: wildlife	野生动物	l
+DFHack GUI Title: DF Journal	矮人日志	l
 DFHack GUI Viewer action: Ok	确定	l
 DFHack and its capabilities.	DFHack及其功能.	w
 DFHack help: "--asexualOnly"	"--asexualOnly"	l

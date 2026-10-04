@@ -254,6 +254,7 @@ std::vector<Match> dfhack_auxiliary_matches;
             "DFHack GUI Confirmation action: " + std::string(action)).has_value();
         const bool viewer = action_x >= 0 && exact_literal_translation(
             "DFHack GUI Viewer action: " + std::string(action)).has_value();
+#include "dfhack_journal.inc"
 #include "dfhack_confirm_dialogs.inc"
 #include "dfhack_save_reminder.inc"
 #include "dfhack_input_monitor.inc"

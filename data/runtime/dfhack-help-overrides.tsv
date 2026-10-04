@@ -550,3 +550,20 @@ DFHack GUI Quickfort: Generate manager orders	生成管理者订单	l
 DFHack GUI Quickfort: Preview manager orders	预览管理者订单	l
 DFHack GUI Quickfort: Undo blueprint	撤销蓝图	l
 DFHack GUI Quickfort: Build mode blueprints will use DFHack building planner material filter settings.	建造类蓝图会采用 DFHack 建造规划器的材料筛选设置。	l
+
+# gui/journal fixed controls and complete WrappedLabel tutorials; saved journal text is native.
+DFHack GUI Title: DF Journal	矮人日志	l
+DFHack GUI Journal: Toggle table of contents	切换目录	l
+DFHack GUI Journal: Prev Section	上一节	l
+DFHack GUI Journal: Next Section	下一节	l
+DFHack GUI Journal tutorial: Welcome to gui/journal, the chronicler's tool for Dwarf Fortress!	欢迎使用 gui/journal，这里是《矮人要塞》的要塞日志！	l
+DFHack GUI Journal tutorial: Here, you can carve out notes, sketch your grand designs, or record the history of your fortress. The text you write here is saved together with your fort.	你可以在这里记笔记、勾画宏伟蓝图，或记录要塞的历史。写下的内容会随要塞一起保存。	l
+DFHack GUI Journal tutorial: For guidance on navigation and hotkeys, tap the ? button in the upper right corner. Happy digging!	有关浏览方式和快捷键的说明，请点击右上角的 ? 按钮。祝你挖掘愉快！	l
+DFHack GUI Journal tutorial: Welcome to gui/journal, the adventurer's notebook for Dwarf Fortress!	欢迎使用 gui/journal，这里是《矮人要塞》的冒险笔记！	l
+DFHack GUI Journal tutorial: Here, you can jot down your travels, keep track of important places, or note anything worth remembering. The text you write here is saved together with your adventurer.	你可以在这里记录旅途、标记重要地点，或记下任何值得铭记的事情。写下的内容会随冒险者一起保存。	l
+DFHack GUI Journal tutorial: For guidance on navigation and hotkeys, tap the ? button in the upper right corner. Safe travels!	有关浏览方式和快捷键的说明，请点击右上角的 ? 按钮。祝你一路平安！	l
+DFHack GUI Journal tutorial: Start a line with # symbols and a space to create a header. For example:	在行首输入 # 和空格即可建立标题。例如：	l
+DFHack GUI Journal tutorial: # My section heading	# 章节标题	l
+DFHack GUI Journal tutorial: or	或者	l
+DFHack GUI Journal tutorial: ## My section subheading	## 子章节标题	l
+DFHack GUI Journal tutorial: Those headers will appear here, and you can click on them to jump to them in the text.	这些标题会显示在目录中，点击即可跳到正文中对应的位置。	l
