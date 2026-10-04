@@ -9042,6 +9042,11 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     TranslationWorkFrame work_frame("generated name", screen_text);
     if (screen_text.empty()) return std::nullopt;
 
+    // DFHack also emits its brand as ordinary HUD text, outside the captured
+    // graphical logo. It is not a native-language name: the single-token
+    // phonetic fallback below would turn it into a fictitious Chinese name.
+    if (trim_view(screen_text) == "DFHack") return std::nullopt;
+
     // Typed identities and native-name fields already establish the grammar.
     // In particular, a newly visible figure must not first enumerate every
     // possible textile/material span as if its full identity were equipment.

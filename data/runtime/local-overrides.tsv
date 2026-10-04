@@ -10081,6 +10081,12 @@ Unloaded	未装填	wi
 Loading	装填中	wi
 
 # Military uniform chooser: translate each complete preset as one label.
+individual choice, weapon	自行选择武器	wli
+indiv choice, melee	自行选择近战武器	wli
+indiv choice, ranged	自行选择远程武器	wli
+# The native generic choice is also emitted separately from its item noun.
+individual choice,	自行选择	wli
+individual choice	自行选择	wli
 Melee, leather armor	近战（皮甲）	wli
 Melee, metal armor	近战（金属甲）	wli
 Crossbow, leather armor	十字弩（皮甲）	wli

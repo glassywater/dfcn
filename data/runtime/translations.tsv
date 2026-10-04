@@ -71819,6 +71819,7 @@ implicated {n} during {e}	在{e1}期间供出了{n1}	ht
 implicated {n} within {p}	在{p1}供出了{n1}	ht
 imprisoned {a} during {e}	在{e1}期间囚禁了{a1}	ht
 imprisoned {a} within {p}	在{p1}囚禁了{a1}	ht
+individual choice, weapon	自行选择武器	wli
 inherited {p} during {e}.	在{e1}期间继承了{p1}。	ht
 inherited {p} within {p}.	在{p2}继承了{p1}。	ht
 inquiry after {p} at {p}.	在{p2}，询问{p1}。	htEi
@@ -81825,6 +81826,7 @@ hunting grizzly bear	受过狩猎训练的灰熊	wi
 hunting kelenken hen	受过狩猎训练的窃鹤	wi
 hunting velociraptor	受过狩猎训练的伶盗龙	wi
 iguanodon hatchlings	禽龙幼崽	wi
+indiv choice, ranged	自行选择远程武器	wli
 inherited {p} at {p}	在{p2}继承了{p1}	ht
 inherited {p} in {p}	在{p2}继承了{p1}	ht
 is almost never sick	极少生病	wi
@@ -84712,6 +84714,7 @@ ichthyosaurus women	鱼龙人	wi
 iguanodon hatchling	禽龙幼崽	wi
 image of {a} in {i}	以{i1}制作、描绘{a1}的图像	hIit
 in unknown material	，使用未知物质制作	h
+indiv choice, melee	自行选择近战武器	wli
 inductive reasoning	归纳推理	h
 interesting fingers	有趣的手指	wi
 is abysmally clumsy	笨拙至极	wi
@@ -88123,6 +88126,7 @@ ichthyosaurus pups	鱼龙幼崽	wi
 images and symbols	图像和符号	hIi
 in the eyes of {p}	在{p1}眼中	ht
 indigo tourmalines	靛蓝碧玺	wi
+individual choice,	自行选择	wli
 industrious nature	勤劳的天性	wi
 infamous flatterer	因爱说好话而臭名昭著	h
 infamous quarreler	因爱争吵而臭名昭著	h
@@ -92216,6 +92220,7 @@ in order to drink	为了喝酒	h
 in order to relax	为了放松	h
 in order to study	为了学习	h
 indigo tourmaline	靛蓝碧玺	wi
+individual choice	自行选择	wli
 infamous intruder	臭名昭著的入侵者	h
 infamous murderer	臭名昭著的杀人犯	h
 infamous preacher	臭名昭著的传教士	h
