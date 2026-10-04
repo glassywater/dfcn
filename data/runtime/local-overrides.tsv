@@ -2479,6 +2479,72 @@ Adventure compass: W	西
 Adventure compass: WNW	西西北
 Adventure compass: NW	西北
 Adventure compass: NNW	北西北
+# Complete compass-popup productions from native Steam 0x7f5490..0x7f5837.
+# Classic emits the same productions at 0x7f2d10..0x7f30b7.
+# Reuse the existing 40 eight-bearing distance fields in announcement-world-fields.tsv.
+# These scoped fields complete all 16 bearings, five distance bands, and native
+# negative-distance/here branches without matching isolated popup fragments.
+The {s} of {e} is {s}.	{e1}（{s1}）：{s2}。	hPt
+The {s} of {e} are {s}.	{e1}（{s1}）：{s2}。	hPt
+The {s} is {s}.	{s1}：{s2}。	hPt
+The {s} are {s}.	{s1}：{s2}。	hPt
+Announcement distance: here	位于此处	l
+Announcement distance: far to the north-northeast	远在北东北方	l
+Announcement distance: far to the east-northeast	远在东东北方	l
+Announcement distance: far to the east-southeast	远在东东南方	l
+Announcement distance: far to the south-southeast	远在南东南方	l
+Announcement distance: far to the south-southwest	远在南西南方	l
+Announcement distance: far to the west-southwest	远在西西南方	l
+Announcement distance: far to the west-northwest	远在西西北方	l
+Announcement distance: far to the north-northwest	远在北西北方	l
+Announcement distance: a day's travel to the north-northeast	距此一天路程的北东北方	l
+Announcement distance: a day's travel to the east-northeast	距此一天路程的东东北方	l
+Announcement distance: a day's travel to the east-southeast	距此一天路程的东东南方	l
+Announcement distance: a day's travel to the south-southeast	距此一天路程的南东南方	l
+Announcement distance: a day's travel to the south-southwest	距此一天路程的南西南方	l
+Announcement distance: a day's travel to the west-southwest	距此一天路程的西西南方	l
+Announcement distance: a day's travel to the west-northwest	距此一天路程的西西北方	l
+Announcement distance: a day's travel to the north-northwest	距此一天路程的北西北方	l
+Announcement distance: nearly a day's travel to the north-northeast	距此近一天路程的北东北方	l
+Announcement distance: nearly a day's travel to the east-northeast	距此近一天路程的东东北方	l
+Announcement distance: nearly a day's travel to the east-southeast	距此近一天路程的东东南方	l
+Announcement distance: nearly a day's travel to the south-southeast	距此近一天路程的南东南方	l
+Announcement distance: nearly a day's travel to the south-southwest	距此近一天路程的南西南方	l
+Announcement distance: nearly a day's travel to the west-southwest	距此近一天路程的西西南方	l
+Announcement distance: nearly a day's travel to the west-northwest	距此近一天路程的西西北方	l
+Announcement distance: nearly a day's travel to the north-northwest	距此近一天路程的北西北方	l
+Announcement distance: a half day's travel to the north-northeast	距此半天路程的北东北方	l
+Announcement distance: a half day's travel to the east-northeast	距此半天路程的东东北方	l
+Announcement distance: a half day's travel to the east-southeast	距此半天路程的东东南方	l
+Announcement distance: a half day's travel to the south-southeast	距此半天路程的南东南方	l
+Announcement distance: a half day's travel to the south-southwest	距此半天路程的南西南方	l
+Announcement distance: a half day's travel to the west-southwest	距此半天路程的西西南方	l
+Announcement distance: a half day's travel to the west-northwest	距此半天路程的西西北方	l
+Announcement distance: a half day's travel to the north-northwest	距此半天路程的北西北方	l
+Announcement distance: a short walk to the north-northeast	步行不远即可到达的北东北方	l
+Announcement distance: a short walk to the east-northeast	步行不远即可到达的东东北方	l
+Announcement distance: a short walk to the east-southeast	步行不远即可到达的东东南方	l
+Announcement distance: a short walk to the south-southeast	步行不远即可到达的南东南方	l
+Announcement distance: a short walk to the south-southwest	步行不远即可到达的南西南方	l
+Announcement distance: a short walk to the west-southwest	步行不远即可到达的西西南方	l
+Announcement distance: a short walk to the west-northwest	步行不远即可到达的西西北方	l
+Announcement distance: a short walk to the north-northwest	步行不远即可到达的北西北方	l
+Announcement distance: to the north	在北方	l
+Announcement distance: to the north-northeast	在北东北方	l
+Announcement distance: to the northeast	在东北方	l
+Announcement distance: to the east-northeast	在东东北方	l
+Announcement distance: to the east	在东方	l
+Announcement distance: to the east-southeast	在东东南方	l
+Announcement distance: to the southeast	在东南方	l
+Announcement distance: to the south-southeast	在南东南方	l
+Announcement distance: to the south	在南方	l
+Announcement distance: to the south-southwest	在南西南方	l
+Announcement distance: to the southwest	在西南方	l
+Announcement distance: to the west-southwest	在西西南方	l
+Announcement distance: to the west	在西方	l
+Announcement distance: to the west-northwest	在西西北方	l
+Announcement distance: to the northwest	在西北方	l
+Announcement distance: to the north-northwest	在北西北方	l
 # The companion popup uses the same label as its help page, in ordinary UI.
 # Keep the native title and location text left-aligned with their own columns.
 Companions	同伴	wl
