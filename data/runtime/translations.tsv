@@ -35535,6 +35535,7 @@ weaving of a masterful sewn image in the wilds	在荒野中，织出杰作级的
 {p} concluded with {p} overthrown in the wilds	在荒野中，{p1}以{p2}被推翻告终	ht
 {p} crushed the insurrection in {p} during {e}	在{e1}期间，{p1}镇压了{p2}的起义	ht
 {p} crushed the insurrection in {p} within {p}	在{p3}，{p1}镇压了{p2}的起义	ht
+{p} was claimed by {a} from afar in the wilds.	在荒野中，{a1}在远方宣称拥有{p1}。	ht
 {p} was confiscated from {p} by {a} during {e}	在{e1}期间，{a1}从{p2}没收了{p1}	ht
 {p} was confiscated from {p} by {a} within {p}	在{p3}，{a1}从{p2}没收了{p1}	ht
 {p} was made a symbol of the {s} by {a} at {p}	在{p2}，{a1}将{p1}定为{s1}的象征	ht
@@ -36790,6 +36791,7 @@ wrongfully convicted {n} of {s} in the wilds.	在荒野中错误地判定{n1}犯
 {p} concluded with {p} overthrown within {p}.	在{p3}，{p1}以{p2}被推翻告终。	ht
 {p} received its name in {p} from {a} at {p}.	在{p3}，{a1}在{p2}为{p1}命名。	ht
 {p} received its name in {p} from {a} in {p}.	在{p3}，{a1}在{p2}为{p1}命名。	ht
+{p} was claimed by {a} from afar in the wilds	在荒野中，{a1}在远方宣称拥有{p1}	ht
 {p} was made a family heirloom by {a} at {p}.	在{p2}，{a1}将{p1}定为传家宝。	ht
 {p} was made a family heirloom by {a} in {p}.	在{p2}，{a1}将{p1}定为传家宝。	ht
 {p} was made a family heirloom by {n} at {p}.	在{p2}，{n1}将{p1}定为传家宝。	ht
@@ -38119,6 +38121,8 @@ wrongfully convicted {n} of {s} in the wilds	在荒野中错误地判定{n1}犯�
 {p} received its name from {a} in the wilds.	在荒野中，{a1}为{p1}命名。	ht
 {p} received its name in {p} from {a} at {p}	在{p3}，{a1}在{p2}为{p1}命名	ht
 {p} received its name in {p} from {a} in {p}	在{p3}，{a1}在{p2}为{p1}命名	ht
+{p} was claimed by {a} from afar during {e}.	在{e1}期间，{a1}在远方宣称拥有{p1}。	ht
+{p} was claimed by {a} from afar within {p}.	在{p2}，{a1}在远方宣称拥有{p1}。	ht
 {p} was looted from {p} by {a} in the wilds.	在荒野中，{a1}从{p2}掠走了{p1}。	ht
 {p} was made a family heirloom by {a} at {p}	在{p2}，{a1}将{p1}定为传家宝	ht
 {p} was made a family heirloom by {a} in {p}	在{p2}，{a1}将{p1}定为传家宝	ht
@@ -39479,6 +39483,8 @@ wrongfully convicted {n} of {s} within {p}.	在{p1}错误地判定{n1}犯有{s1}
 {p} crushed the insurrection in {p} at {p}.	在{p3}，{p1}镇压了{p2}的起义。	ht
 {p} crushed the insurrection in {p} in {p}.	在{p3}，{p1}镇压了{p2}的起义。	ht
 {p} received its name from {a} in the wilds	在荒野中，{a1}为{p1}命名	ht
+{p} was claimed by {a} from afar during {e}	在{e1}期间，{a1}在远方宣称拥有{p1}	ht
+{p} was claimed by {a} from afar within {p}	在{p2}，{a1}在远方宣称拥有{p1}	ht
 {p} was confiscated from {p} by {a} at {p}.	在{p3}，{a1}从{p2}没收了{p1}。	ht
 {p} was confiscated from {p} by {a} in {p}.	在{p3}，{a1}从{p2}没收了{p1}。	ht
 {p} was created in {p} by {n} in the wilds.	在荒野中，{n1}在{p2}创造了{p1}。	ht
@@ -44096,6 +44102,8 @@ wove a masterful sewn image in the wilds	在荒野中织出了一幅杰作级的
 {p} concluded with {p} overthrown in {p}	在{p3}，{p1}以{p2}被推翻告终	ht
 {p} could be found within {p} during {e}	在{e1}期间，{p1}位于{p2}之内	ht
 {p} could be found within {p} within {p}	在{p3}，{p1}位于{p2}之内	ht
+{p} was claimed by {a} from afar at {p}.	在{p2}，{a1}在远方宣称拥有{p1}。	ht
+{p} was claimed by {a} from afar in {p}.	在{p2}，{a1}在远方宣称拥有{p1}。	ht
 {p} was confiscated by {a} in the wilds.	在荒野中，{a1}没收了{p1}。	ht
 {p} was created in {p} by {n} during {e}	在{e1}期间，{n1}在{p2}创造了{p1}	ht
 {p} was created in {p} by {n} within {p}	在{p3}，{n1}在{p2}创造了{p1}	ht
@@ -45695,6 +45703,9 @@ wrongfully convicted {n} of {s} in {p}.	在{p1}错误地判定{n1}犯有{s1}。	
 {n} says, "We are going the wrong way."	{n1}说：“我们走错方向了。”	hPt
 {n} says: "We are going the wrong way."	{n1}说：“我们走错方向了。”	hPt
 {n} seems very happy about the trading.	{n1}似乎对这次交易十分满意。	hPt
+{p} was claimed by {a} from afar at {p}	在{p2}，{a1}在远方宣称拥有{p1}	ht
+{p} was claimed by {a} from afar in {p}	在{p2}，{a1}在远方宣称拥有{p1}	ht
+{p} was claimed from afar in the wilds.	在荒野中，有人在远方宣称拥有{p1}。	ht
 {p} was confiscated by {a} in the wilds	在荒野中，{a1}没收了{p1}	ht
 {p} was hidden in {p} by {n} during {e}	在{e1}期间，{n1}将{p1}藏在了{p2}	ht
 {p} was hidden in {p} by {n} within {p}	在{p3}，{n1}将{p1}藏在了{p2}	ht
@@ -47408,6 +47419,7 @@ wrongfully convicted {n} of {s} in {p}	在{p1}错误地判定{n1}犯有{s1}	ht
 {p} received its name from {a} at {p}.	在{p2}，{a1}为{p1}命名。	ht
 {p} received its name from {a} in {p}.	在{p2}，{a1}为{p1}命名。	ht
 {p} received its name in {p} from {a}.	{a1}在{p2}为{p1}命名。	ht
+{p} was claimed from afar in the wilds	在荒野中，有人在远方宣称拥有{p1}	ht
 {p} was confiscated by {a} during {e}.	在{e1}期间，{a1}没收了{p1}。	ht
 {p} was confiscated by {a} within {p}.	在{p2}，{a1}没收了{p1}。	ht
 {p} was destroyed by {a} in the wilds.	在荒野中，{p1}被{a1}摧毁了。	ht
@@ -49076,6 +49088,8 @@ writing of a masterpiece in the wilds	在荒野中，书写杰作	hEi
 {p} received its name from {a} in {p}	在{p2}，{a1}为{p1}命名	ht
 {p} received its name in {p} from {a}	{a1}在{p2}为{p1}命名	ht
 {p} was acquired by {a} in the wilds.	在荒野中，{a1}获得了{p1}。	ht
+{p} was claimed from afar during {e}.	在{e1}期间，有人在远方宣称拥有{p1}。	ht
+{p} was claimed from afar within {p}.	在{p2}，有人在远方宣称拥有{p1}。	ht
 {p} was confiscated by {a} during {e}	在{e1}期间，{a1}没收了{p1}	ht
 {p} was confiscated by {a} within {p}	在{p2}，{a1}没收了{p1}	ht
 {p} was created in {p} by {n} at {p}.	在{p3}，{n1}在{p2}创造了{p1}。	ht
@@ -50903,6 +50917,8 @@ you will need to unretire or recruit	但你需要让这个角色复出或将其	
 {p} crushed the insurrection in {p}.	{p1}镇压了{p2}的起义。	ht
 {p} was acquired by {a} in the wilds	在荒野中，{a1}获得了{p1}	ht
 {p} was claimed by {a} in the wilds.	在荒野中，{a1}宣称拥有{p1}。	ht
+{p} was claimed from afar during {e}	在{e1}期间，有人在远方宣称拥有{p1}	ht
+{p} was claimed from afar within {p}	在{p2}，有人在远方宣称拥有{p1}	ht
 {p} was confiscated from {p} by {a}.	{a1}从{p2}没收了{p1}。	ht
 {p} was created by {n} in the wilds.	在荒野中，{n1}创造了{p1}。	ht
 {p} was created in {p} by {n} at {p}	在{p3}，{n1}在{p2}创造了{p1}	ht
@@ -56658,7 +56674,10 @@ withdrew from society within {p}.	在{p1}退出了社会交往。	ht
 {p} received its name during {e}.	在{e1}期间，{p1}获得了自己的名字。	ht
 {p} received its name within {p}.	在{p2}，{p1}获得了自己的名字。	ht
 {p} was claimed by {a} during {e}	在{e1}期间，{a1}宣称拥有{p1}	ht
+{p} was claimed by {a} from afar.	{a1}在远方宣称拥有{p1}。	ht
 {p} was claimed by {a} within {p}	在{p2}，{a1}宣称拥有{p1}	ht
+{p} was claimed from afar at {p}.	在{p2}，有人在远方宣称拥有{p1}。	ht
+{p} was claimed from afar in {p}.	在{p2}，有人在远方宣称拥有{p1}。	ht
 {p} was confiscated by {a} at {p}	在{p2}，{a1}没收了{p1}	ht
 {p} was confiscated by {a} in {p}	在{p2}，{a1}没收了{p1}	ht
 {p} was confiscated in the wilds.	在荒野中，{p1}被没收了。	ht
@@ -58557,6 +58576,9 @@ wrongfully convicted {n} of {s}.	错误地判定{n1}犯有{s1}。	ht
 {n}'s {t} was {s} by {a} in {p}.	在{p1}，{n1}的{t1}被{a1}{s1}。	ht
 {p} received its name during {e}	在{e1}期间，{p1}获得了自己的名字	ht
 {p} received its name within {p}	在{p2}，{p1}获得了自己的名字	ht
+{p} was claimed by {a} from afar	{a1}在远方宣称拥有{p1}	ht
+{p} was claimed from afar at {p}	在{p2}，有人在远方宣称拥有{p1}	ht
+{p} was claimed from afar in {p}	在{p2}，有人在远方宣称拥有{p1}	ht
 {p} was confiscated in the wilds	在荒野中，{p1}被没收了	ht
 {p} was desecrated in the wilds.	在荒野中，{p1}遭到了亵渎。	ht
 {p} was destroyed by {a} at {p}.	在{p2}，{p1}被{a1}摧毁了。	ht
@@ -70719,6 +70741,7 @@ were expelled in the wilds	在荒野中遭到了驱逐	h
 {n} was the victor in {p}.	在{p1}，{n1}获得了胜利。	ht
 {n}'s mandates have ended.	{n1}的多项法令已结束。	hPt
 {p} was claimed during {e}	在{e1}期间，有人宣称拥有{p1}	ht
+{p} was claimed from afar.	有人在远方宣称拥有{p1}。	ht
 {p} was claimed within {p}	在{p2}，有人宣称拥有{p1}	ht
 {p} was confiscated at {p}	在{p2}，{p1}被没收了	ht
 {p} was confiscated by {a}	{a1}没收了{p1}	ht
@@ -72445,6 +72468,7 @@ writing of a masterpiece.	书写杰作。	hEi
 {n}'s {t} was {s} at {p}.	在{p1}，{n1}的{t1}被{s1}。	ht
 {n}'s {t} was {s} by {a}.	{n1}的{t1}被{a1}{s1}。	ht
 {n}'s {t} was {s} in {p}.	在{p1}，{n1}的{t1}被{s1}。	ht
+{p} was claimed from afar	有人在远方宣称拥有{p1}	ht
 {p} was desecrated at {p}	在{p2}，{p1}遭到了亵渎	ht
 {p} was desecrated in {p}	在{p2}，{p1}遭到了亵渎	ht
 {p} was destroyed at {p}.	在{p2}，{p1}被摧毁了。	ht
