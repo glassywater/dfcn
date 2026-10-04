@@ -334,6 +334,7 @@ DFHack help: Auto-load a preset based on which vanilla "Enemies" preset is activ
 DFHack help: The data layers are in "long" format (e.g. "BIRD_KEA" is a field in the "raw_id" column instead of a column header). Since these layers do not have any geometry information, they need to be joined with the "region" layer of export-world-map. The first column of each file (e.g. "geo_index" for geological layers) match as the corresponding column from the region export.	数据层采用 "long" 格式（例如，"BIRD_KEA" 是 "raw_id" 列中的字段，而不是列标题）。由于这些图层没有任何几何信息，因此需要与export-world-map的"region"图层连接。每个文件的第一列（例如地质图层的 "geo_index"）与区域导出中的相应列匹配。	l
 DFHack help: Pressing :kbd:`r` changes into the target selection mode, which works by highlighting two points with :kbd:`Enter` like all designations. When a target area is set, the engine projectiles are aimed at that area, or units within it (this doesn't actually change the original aiming code, instead the projectile trajectory parameters are rewritten as soon as it appears).	按 :kbd:`r` 会切换到目标选择模式，该模式的工作原理是使用 :kbd:`Enter` 突出显示两个点，就像所有规划标记一样。设置目标区域后，引擎射弹将瞄准该区域或其中的单位（这实际上不会改变原始瞄准代码，而是射弹轨迹参数一出现就会被重写）。	l
 DFHack help: This tool simply hides the interface layer so you can view the map unhindered or take clean fullscreen screenshots. The interface will remain hidden until you hit "Esc" or right click. You can still pause/unpause and move the map around, so this is an excellent way to sit back and observe fortress life a little without being distracted by announcements or statistics.	该工具只是隐藏了界面层，因此您可以不受阻碍地查看地图或拍摄干净的全屏屏幕截图。该界面将保持隐藏状态，直到您点击 "Esc" 或右键单击。您仍然可以 pause/unpause 并移动地图，因此这是坐下来观察要塞生活的绝佳方式，而不会被公告或统计数据分散注意力。	l
+Announcement combat fortress-announcement [$unit]: {s} is satisfied with their position here. Everything is properly royal, properly furnished. And yet? A true Mountainhome must have a true throne! And a true ruler requires seven symbols, symbols not of this world. Mere steel will not suffice. This legend does not end until we've chipped out the last treasures of the underworld!	{s1}对自己在这里的地位感到满意。一切都尽显皇家气派，陈设齐备。但这就够了吗？真正的山国都城必须有一座真正的王座！真正的统治者还需要七件象征，来自尘世之外的象征。寻常钢铁远远不够。直到挖出冥界最后的宝藏，这段传奇才会结束！	l
 DFHack help: Create plant even on tiles flagged "no_grow" and unset the flag. This flag is set on tiles that were originally boulders or pebbles, as well as on some tiles found in deserts, etc. Also allow non-"[DRY]" plants (e.g., willow) to grow away (3+ tiles) from water features (i.e., pools, brooks, and rivers), and non-"[WET]" plants (e.g., prickle berry) to grow near them.	甚至在标记为 "no_grow" 的图块上创建植物并取消设置标记。该标志设置在最初是巨石或卵石的瓷砖上，以及在沙漠等中发现的一些瓷砖上。还允许非"[DRY]"植物（例如柳树）在远离水景（即水池，小溪和河流）的地方生长（3+瓷砖），并允许非"[WET]"植物（例如刺莓）在它们附近生长。	l
 DFHack help: Generally happy dwarves have stress values in the range of 0 to 500,000. If they encounter things that stress them out, or if their needs are not being met, that value will increase. When it increases too high, your dwarves will start to have negative repercussions. This tool can magically whisk away some (or all) of their stress so they can function normally again.	一般快乐的矮人的压力值在0到500,000的范围内。如果他们遇到让他们感到压力的事情，或者他们的需求没有得到满足，那么这个价值就会增加。当它增加得太高时，您的矮人将开始产生负面影响。这个工具可以神奇地消除他们的部分（或全部）压力，使他们能够再次正常工作。	l
 DFHack help: The "preserve-rooms.reserved" overlay indicates whether a zone is disabled because it is being reserved for a unit that left the map and is expected to return. For unreserved rooms, it provides widgets to mark the zone as associated with a specific noble or administrative role. The list of roles is ordered by how valuable the rooms assigned to that role need to be.	"preserve-rooms.reserved" 叠加层指示某个区域是否被禁用，因为它是为离开地图并预计返回的单位保留的。对于未预订的房间，它提供了小部件来将区域标记为与特定贵族或管理角色关联。角色列表按照分配给该角色的房间的价值进行排序。	l
@@ -518,6 +519,7 @@ DFHack help: This tool provides a simple interface to item production constraint
 DFHack help: To apply a profession, either highlight a single dwarf or select multiple with "x", and press "p" to select the profession to apply. All labors for the selected dwarves will be reset to the labors of the chosen profession and the custom profession names for those dwarves will be set to the applied profession.	要申请职业，可以突出显示单个矮人或使用 "x" 选择多个，然后按 "p" 选择要申请的职业。所选矮人的所有劳动将重置为所选职业的劳动，并且这些矮人的自定义职业名称将设置为所应用的职业。	l
 DFHack help: When embarking or when a fort is loaded, if you click on the "Custom settings" button for game difficulty, you will see a new panel at the top. You can save the current difficulty settings and load the saved settings back. You can also toggle an option to automatically load the saved settings for new embarks.	当启程或要塞加载时，如果您点击游戏难度的"自定义设置"按钮，您将在顶部看到一个新面板。您可以保存当前的难度设置并加载保存的设置。您还可以切换一个选项来自动加载新主板的已保存设置。	l
 DFHack help: elseif trg_type == 'boolean' then if self.read_only then return end trg.target[trg_key] = not trg.target[trg_key] self:updateTarget(true) elseif trg_type == 'userdata' or trg_type == 'table' then self:pushTarget(trg.target[trg_key]) elseif trg_type == 'nil' or trg_type == 'function' then -- ignore else print(	elseif trg_type == 'boolean' then if self.read_only then return end trg.target[trg_key] = not trg.target[trg_key] self:updateTarget(true) elseif trg_type == 'userdata' or trg_type == 'table' then self:pushTarget(trg.target[trg_key]) elseif trg_type == 'nil' 或 trg_type == 'function' then -- 忽略 else print(	l
+Announcement combat fortress-announcement [$unit]: {s} is satisfied with their position here. Everything is properly royal, properly furnished. And yet? A true Mountainhome must have a true throne! And a true ruler requires seven symbols, symbols not of this world. Mere steel will not suffice. Deeper. We must dig deeper.	{s1}对自己在这里的地位感到满意。一切都尽显皇家气派，陈设齐备。但这就够了吗？真正的山国都城必须有一座真正的王座！真正的统治者还需要七件象征，来自尘世之外的象征。寻常钢铁远远不够。更深。我们必须挖得更深。	l
 DFHack help: -clear clears the list of registered buildings -checkEvery n set how often existing buildings are checked for whether they are in the appropriate location to n ticks -type [EITHER, OUTSIDE_ONLY, INSIDE_ONLY] specify what sort of restriction to put on the building -building name specify the id of the building	-clear 清除注册建筑物列表 -checkEvery n 设置检查现有建筑物是否位于适当位置的频率为 n 个刻度 -type [EITHER, OUTSIDE_ONLY, INSIDE_ONLY] 指定对建筑物施加何种限制 -building 名称指定建筑物的 ID	l
 DFHack help: A profile can describe which attributes, skills, preferences, beliefs, goals, and facets a unit will have. The script relies on the presence of the other "assign-..." modules in this collection; please refer to the other modules' documentation for more information on the kinds of characteristics you can set.	个人资料可以描述一个单位将具有哪些属性、技能、偏好、信念、目标和方面。该脚本依赖于该集合中其他 "assign-..." 模块的存在；有关您可以设置的特性类型的更多信息，请参阅其他模块的文档。	l
 DFHack help: Many plugins and scripts can be in a distinct enabled or disabled state. Some of them activate and deactivate automatically depending on the contents of the world raws. Others store their state in world data. However a number of them have to be enabled globally, and the init file is the right place to do it.	许多插件和脚本可以处于不同的启用或禁用状态。其中一些会根据世界原始内容自动激活和停用。其他人将他们的状态存储在世界数据中。然而，其中一些必须全局启用，而 init 文件是执行此操作的正确位置。	l
@@ -852,6 +854,7 @@ DFHack help: If you have trouble remembering which guildhalls and temples you've
 DFHack help: It is highly recommended that you always specify ``-outcomeListName`` when you give this command to prevent almost certain interference. If you want to trigger one of 5 outcomes three times, you might want this option even without ``-outcomeListName``.	强烈建议您在发出此命令时始终指定"`-outcomeListName`"，以防止几乎肯定的干扰。如果您想触发 5 个结果之一三次，即使没有"`-outcomeListName`"，您也可能需要此选项。	l
 DFHack help: This figure will be added to the list of people to choose from during character creation (the "Specific person" option on the race list). They can then be picked for use as a player character, the same as when regaining control of a retired adventurer.	此人物将被添加到角色创建时可供选择的人物列表中（种族列表中的"特定人物"选项）。然后可以选择他们作为玩家角色，就像重新获得对退休冒险家的控制权一样。	l
 DFHack help: You can toggle between seeing information for the UI grid tiles or the map tiles. Click on a tile to freeze the displayed information so you can scroll the information about the tile or move/resize the inspector window without changing the active tile.	您可以在查看 UI 网格图块或地图图块的信息之间切换。单击图块可冻结显示的信息，以便您可以滚动有关图块或检查器窗口的信息，而无需更改活动图块。	l
+Announcement combat fortress-announcement []: Your fortress is out of food! Consider placing a farmplot on some underground soil and planting seeds. Try building a butcher's shop and slaughtering some livestock. Perhaps you can gather plants, fruit, or go fishing.	你的要塞没有食物了！考虑在地下土壤上建造农田并播种。试着建造屠宰坊，宰杀一些牲畜。也许可以采集植物、水果，或者去捕鱼。	l
 DFHack help: "forceequip s m i bp HD" Equips the selected item onto the unit's head. Ignores all restrictions and conflicts. If you know exactly what you want to equip, and exactly where you want it to go, then this is the most straightforward and reliable option.	"forceequip s m i bp HD" 将所选项目装备到单位头上。忽略所有限制和冲突。如果您确切地知道自己想要装备什么，并且确切地知道想要它去哪里，那么这是最直接、最可靠的选择。	l
 DFHack help: "idle-crafting happy [yes|no]" If set to "no", "happy" and "ecstatic" dwarves not suffering from long-term stress will only satisfy their crafting needs when meeting the highest configured threshold (eg. "10000" at default settings). Defaults to "no".	"idle-crafting happy [yes|no]" 如果设置为"no"、"happy"和"ecstatic" 矮人，则不会遭受长期压力，只有在满足最高配置阈值（例如默认设置为"10000"）时才满足其制作需求。默认为 "no"。	l
 DFHack help: "run [frames] [--levels n] [--enable]" Run the full reproduction sequence: "status", optionally "add n" sky levels, optionally "enable infinite-sky" (reproduces the "construction monitoring" variant of the report), "tower --platform", "poke", "watch".	"运行[frames] [--levels n] [--enable]"运行完整的再现序列："status"，可选"添加n"个天空级别，可选"enable infinite-sky"（再现报告的"施工监控"变体），"塔-平台"，"poke"，"watch"。	l
@@ -877,6 +880,7 @@ DFHack help: It also supports scanning burrows and cleaning out dead units from 
 DFHack help: There are many ready-to-use blueprints in the blueprint library that is distributed with DFHack, so you can use this tool productively even if you haven't created any blueprints yourself. Additional library blueprints can be added with mods as well.	随 DFHack 分发的蓝图库中有许多现成的蓝图，因此即使您自己没有创建任何蓝图，也可以高效地使用此工具。额外的库蓝图也可以通过 mod 添加。	l
 DFHack help: ``LoadPalette(path)``: Load a color palette from the text file at "path". This file must be in the same format as "/data/init/colors.txt". If there is an error any changes will be reverted and this function will return false (returns true normally).	``LoadPalette(path)``：从 "path" 的文本文件加载调色板。该文件的格式必须与"/data/init/colors.txt"相同。如果出现错误，任何更改都将被恢复，并且此函数将返回 false（通常返回 true）。	l
 DFHack help: self.shared = { unit_ids={}, filtered_unit_ids={}, sort_stack={}, sort_order={}, -- list of indices into filtered_unit_ids (or cache.filtered_units) cache={}, -- cached pointers; reset at end of frame cursor_col=nil, set_cursor_col_fn=self:callback(	self.shared = {unit_ids={},filtered_unit_ids={},sort_stack={},sort_order={},--filtered_unit_ids（或cache.filtered_units）的索引列表cache={},--缓存的指针；在帧末尾重置cursor_col = nil，set_cursor_col_fn = self：callback（	l
+Announcement combat fortress-announcement []: Your fortress is out of food! Are your farmplots working? Make sure you are planting edible plants. Try building a butcher's shop and slaughtering some livestock. Perhaps you can gather plants, fruit, or go fishing.	你的要塞没有食物了！农田是否正常运作？务必种植可食用的植物。试着建造屠宰坊，宰杀一些牲畜。也许可以采集植物、水果，或者去捕鱼。	l
 DFHack help: "--hatecreature [ <token> [<token> ...] ]" As in "--likecreature" above, you can just list the species in the token. The creature should be a type of "HATEABLE" vermin which isn't already explicitly liked, but no check is performed to enforce this.	"--hatecreature [ <token> [<token> ...] ]" 与上面的 "--likecreature" 一样，您可以只在代币中列出物种。该生物应该是一种尚未明确喜欢的 "HATEABLE" 害虫，但没有执行任何检查来强制执行此操作。	l
 DFHack help: When choosing the type of guildhall or temple to dedicate, you can search for the relevant profession, religion, or deity by name. For temples, you can also search for the "spheres" associated with the deity or religion, such as "wealth" or "lies".	选择供奉的会馆或寺庙类型时，可以通过名称搜索相关职业、宗教或神祇。对于寺庙，您还可以搜索与神灵或宗教相关的 "spheres"，例如 "wealth" 或 "lies"。	l
 DFHack help: When teleporting, if no unit id is specified, the unit under the cursor is used. If no coordinates are specified, then the coordinates under the cursor are used. Either the unit id or the coordinates must be specified for this command to be useful.	传送时，如果没有指定单位id，则使用光标下的单位。如果未指定坐标，则使用光标下的坐标。必须指定单位 ID 或坐标才能使该命令有用。	l
@@ -1040,6 +1044,7 @@ DFHack help: Tools that are enabled on this page will be auto-run or auto-enable
 DFHack help: Use the range brush with the specified width, height, and depth. If not specified, depth is 1, meaning just the current z-level. The range starts at the position of the cursor and goes to the east, south and up (towards the sky).	使用具有指定宽度、高度和深度的范围画笔。如果未指定，深度为 1，即仅当前 Z 层。范围从光标位置开始，向东、向南和向上（朝向天空）。	l
 DFHack help: enable autobutcher autobutcher target 2 2 2 2 DOG autobutcher target 1 1 2 2 CAT autobutcher target 10 10 14 2 BIRD_GOOSE autobutcher target 2 2 4 2 ALPACA SHEEP LLAMA autobutcher target 5 5 6 2 PIG autobutcher target 0 0 0 0 new	启用自动屠夫自动屠夫目标 2 2 2 2 DOG 自动屠夫目标 1 1 2 2 CAT 自动屠夫目标 10 10 14 2 BIRD_GOOSE 自动屠夫目标 2 2 4 2 ALPACA SHEEP LLAMA 自动屠夫目标 5 5 6 2 PIG 自动屠宰目标 0 0 0 0 新	l
 DFHack help: gui/stamper =========== allows manipulation of designations by transforms such as translations, reflections, rotations, and inversion. designations can also be used as brushes to erase other designations and cancel constructions.	gui/stamper =========== 允许通过平移、反射、旋转和反转等变换来操作规划标记。规划标记也可以用作画笔来擦除其他规划标记并取消构造。	l
+Announcement combat fortress-announcement []: Your fortress is out of food! Consider placing a farmplot on some underground soil and planting seeds. Do you have any livestock to slaughter? Perhaps you can gather plants, fruit, or go fishing.	你的要塞没有食物了！考虑在地下土壤上建造农田并播种。还有可供宰杀的牲畜吗？也许可以采集植物、水果，或者去捕鱼。	l
 DFHack help: "flashstep" is a hotkey-friendly teleport that places your adventurer where your mouse cursor is. A small area around the target tile is revealed. If you take a step, then the normal vision cone area around the unit is revealed.	"flashstep" 是一个热键友好的传送工具，可将您的冒险家放置在鼠标光标所在的位置。目标图块周围的一小块区域显露出来。如果你迈出一步，那么单位周围的正常视锥区域就会显露出来。	l
 DFHack help: * "b": toggle display of backup folders, as created by DF's "AUTOBACKUP" option (see "data/init/init.txt" for a detailed explanation). This defaults to hiding backup folders, since they can take up significant space in the list.	* "b"：切换备份文件夹的显示，由 DF 的 "AUTOBACKUP" 选项创建（有关详细说明，请参阅 "data/init/init.txt"）。默认情况下会隐藏备份文件夹，因为它们会占用列表中的大量空间。	l
 DFHack help: Before you can retire the location, you have to remove all units assigned occupations for that location and you have to detach the location from any zones. Once you confirm retirement, the location will be removed from the list.	在您退役该地点之前，您必须删除为该地点分配职业的所有单位，并且必须将该地点与任何区域分离。一旦您确认退休，该地点将从列表中删除。	l
@@ -1061,6 +1066,7 @@ DFHack help: "zone nick donttouchme" Nicknames all units in the current default 
 DFHack help: Equips the selected item onto the unit's head. Ignores all restrictions and conflicts. If you know exactly what you want to equip, and exactly where you want it to go, then this is the most straightforward and reliable option.	将所选物品装备到单位头上。忽略所有限制和冲突。如果您确切地知道自己想要装备什么，并且确切地知道想要它去哪里，那么这是最直接、最可靠的选择。	l
 DFHack help: Textures are resized to the dimensions of the interface grid (8px by 12px), so map textures (nominally 32px by 32px) will be squished. If no texture is assigned to the texpos index, the window will be transparent at that spot.	纹理大小会调整为界面网格的尺寸（8 像素 x 12 像素），因此地图纹理（通常为 32 像素 x 32 像素）将被压扁。如果没有纹理分配给 texpos 索引，窗口在该位置将是透明的。	l
 How have your sturdy charges fared in your absence? Have they gone on adventures or moved on to richer delving at new frontier settlements? Perhaps they are all still here, unwilling to leave the magnificent fortress you prepared for them.	你不在的这段日子里，那些坚韧的子民过得如何？他们是否踏上冒险之旅，或已迁往新的边疆聚落，去开掘更丰饶的矿藏？也许他们全都还在这里，不愿离开你为他们建造的宏伟要塞。	hP
+Announcement combat fortress-announcement []: Your fortress is out of food! Are your farmplots working? Make sure you are planting edible plants. Do you have any livestock to slaughter? Perhaps you can gather plants, fruit, or go fishing.	你的要塞没有食物了！农田是否正常运作？务必种植可食用的植物。还有可供宰杀的牲畜吗？也许可以采集植物、水果，或者去捕鱼。	l
 DFHack help: "--reset" Reset all beliefs to a neutral level, aligned with the unit's race's cultural values. If both this option and "--beliefs" are specified, the unit's beliefs will be reset and then the listed beliefs will be modified.	"--reset" 将所有信仰重置为中立水平，与单位种族的文化价值观保持一致。如果同时指定了该选项和"--beliefs"，则该单位的信念将被重置，然后列出的信念将被修改。	l
 DFHack help: "-c", "--cursor <x>,<y>,<z>" Use the specified map coordinates instead of the current keyboard map cursor for the the blueprint start position. If this option is specified, then an active keyboard map cursor is not necessary.	"-c"、"--cursor <x>,<y>,<z>" 使用指定的地图坐标代替当前键盘地图光标作为蓝图起始位置。如果指定此选项，则不需要活动的键盘映射光标。	l
 DFHack help: "Cavern dweller scale" Each time your civilization is attacked, the number of attackers in a single cavern invasion increases by this value. The total number of attackers is still capped by "Cavern dweller maximum attackers".	"地下洞穴居民规模"每当你的文明受到攻击时，单次地下洞穴入侵中的攻击者数量就会增加这个值。攻击者总数仍受到"地下洞穴居民最大攻击者数"的限制。	l
@@ -1145,6 +1151,7 @@ DFHack help: Set the age of the selected dwarf to 18 (if they're older than 18).
 DFHack help: Then, start up gui/civ-alert and select the burrow from the list. You can activate the civ alert right away with the button in the upper right corner. You can also access this button at any time from the squads panel.	然后，启动gui/civ-alert并从列表中选择活动区。您可以使用右上角的按钮立即激活文明警报。您也可以随时从小队面板访问此按钮。	l
 DFHack help: This tool lists input items for the building that is currently being built. You must be in build mode and have a building type selected for placement. This is where the filters in "lua/dfhack/buildings.lua" come from.	该工具列出了当前正在建造的建筑物的输入项。您必须处于构建模式并选择用于放置的建筑类型。这就是"lua/dfhack/buildings.lua"中的过滤器的来源。	l
 Forge weapons and armor here, as well as most other metal objects from furniture to trap components. Magma below the forge will power tasks. You are responsible for placing the forge above the magma, but no other fuel is required.	在这里锻造武器、护甲，以及从家具到陷阱部件等大多数金属物品。下方岩浆会为作业供能。你需要将岩浆锻造坊建在岩浆上方，但无需其他燃料。	hj
+Announcement combat fortress-announcement [$unit]: {s} is satisfied with their position here. Congratulations! (You should be proud of your accomplishment. Embark in a world with the deepest cavern layers for further challenges.)	{s1}对自己在这里的地位感到满意。祝贺你！（你应当为自己的成就感到自豪。若想迎接进一步的挑战，请在拥有最深洞穴层的世界中启程。）	l
 DFHack help: "depth" Number of z-levels to translate. Positive numbers go *up* from the cursor and negative numbers go *down*. Defaults to 1 if not specified, indicating that the blueprint should only include the current z-level.	"depth" 要翻译的 Z 层的数量。正数从光标处"向上"移动，负数从光标处"向下"移动。如果不指定则默认为1，表示蓝图应该只包含当前的Z 层。	l
 DFHack help: "dwarf-op" can also be used in a mode more similar to assign-profile, where you can specify precisely what archetype you want a for given dwarf, and "dwarf-op" can generate a random dwarf that matches that archetype.	"dwarf-op" 也可以用于更类似于分配配置文件的模式，您可以在其中精确指定给定矮人所需的原型，并且 "dwarf-op" 可以生成与该原型匹配的随机矮人。	l
 DFHack help: "poke" Force the suspected trigger: set the world "process_columns" flag and mark every map block column "UPDATE_CAVE_COLUMNS", which is what the game sets when construction changes require cave-column recomputation.	"poke" 强制可疑触发器：设置世界"process_columns"标志并标记每个地图块列"UPDATE_CAVE_COLUMNS"，这是游戏在构造更改需要洞穴列重新计算时设置的。	l
@@ -1467,6 +1474,7 @@ A {s} caravan from {e} has arrived. Your status as a major land has attracted mu
 A {s} caravan from {e} has arrived. Your status as a major land has attracted much more trade than usual. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are lukewarm.	来自{e1}的{s1}商队已抵达。你作为大领地的地位吸引来了比平时多得多的贸易。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿不冷不热。	hPt
 A {s} caravan from {e} has arrived. Your status as a major land has attracted much more trade than usual. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are terrible.	来自{e1}的{s1}商队已抵达。你作为大领地的地位吸引来了比平时多得多的贸易。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿极差。	hPt
 Animals assigned to pit/pond zones are dumped in the pit, but will leave the zone afterward if possible. If the pit is designated as a pond, your citizens will attempt to fill it with water using buckets.	分配到坑洞／池塘的动物会被投入下方的坑内，但只要找到出路就可能离开。若设为池塘模式，居民会尝试用桶向下方灌水。	hj
+Announcement combat fortress-announcement []: Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense. The gods surely want you to dig deeper still!	祝贺你！这座要塞如今已成为山国都城，证明那些狂妄自大的指责不过是幼稚的胡言乱语。诸神一定希望你继续向更深处挖掘！	l
 DFHack help: "-t", "--transform <transformation>[,<transformation>...]" Applies geometric transformations to the blueprint before modifying the game map. See the Transformations section below for details.	"-t"、"--transform <transformation>[,<transformation>...]" 在修改游戏地图之前对蓝图应用几何变换。有关详细信息，请参阅下面的转换部分。	l
 DFHack help: "aquifer drain --all --skip-top 2" Drain all aquifer tiles on the map except for the top 2 levels of aquifer. This example is available as a Gameplay -> Autostart option in gui/control-panel.	"aquifer drain --all --skip-top 2" 排空地图上除含水层的前 2 层之外的所有含水层方块。此示例可作为 gui/control-panel. 中的游戏 -> 自动启动选项使用	l
 DFHack help: "entomb -u <id> -t <id> -h" Assign a tomb zone with the specified ID to the unit with the specified ID and task all its burial items for simultaneous hauling into the coffin in the tomb zone.	"entomb -u <id> -t <id> -h" 为指定ID的单位分配指定ID的墓区，并任务将其所有陪葬品同时拖入墓区的棺材中。	l
@@ -1549,6 +1557,7 @@ DFHack help: re moving off the initial buffer. save it so we can get it back. se
 A caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are fantastic.	来自{e1}的商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿极其高涨。	hPt
 A caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are very good.	来自{e1}的商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿非常良好。	hPt
 A {s} caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are great.	来自{e1}的{s1}商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿很高。	hPt
+Announcement combat fortress-announcement []: Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense. And why shouldn't you dig deeper still?!	祝贺你！这座要塞如今已成为山国都城，证明那些狂妄自大的指责不过是幼稚的胡言乱语。又有什么理由不继续向更深处挖掘呢？！	l
 DFHack help: "-n", "--name <name>" The name of the god to create. This is a required argument. The name must be unique in the world. If the name is already taken, the script will exit without action.	"-n"、"--name <name>" 创造神的名字。这是一个必需的参数。这个名字在世界上必须是独一无二的。如果该名称已被占用，脚本将退出而不执行任何操作。	l
 DFHack help: "all_layers" Change all geology layers on your map (only for the selected biome unless "all_biomes" is also specified). Candy mountain, anyone? Will make your map quite boring, but tidy.	"all_layers" 更改地图上的所有地质图层（仅适用于选定的生物群落，除非还指定了 "all_biomes"）。糖果山，有人吗？会让你的地图很无聊，但很整洁。	l
 DFHack help: Due to a bug, a unit can believe they own an item when they actually do not. Additionally, a room can remember that it is owned by a unit, but the unit can forget that they own the room.	由于一个错误，一个单位可能会相信他们拥有某个物品，但实际上他们并不拥有该物品。此外，房间可以记住它是由某个单元拥有的，但该单元可能会忘记他们拥有该房间。	l
@@ -1592,6 +1601,7 @@ This work order has not been validated by the manager. A manager can be employed
 You can make a variety of objects using three different types of glass. You can also collect sand in bags from a task originating here, if you have a sand collection zone. Glassmaking requires fuel.	可用三种不同的玻璃制作各种物品。如果设有采沙区，也可从这里发起用袋子收集沙子的任务。制作玻璃需要燃料。	hj
 A caravan from {e} has arrived. Your status as a major land has attracted much more trade than usual. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are great.	来自{e1}的商队已抵达。你作为大领地的地位吸引来了比平时多得多的贸易。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿很高。	hPt
 A caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are good.	来自{e1}的商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿良好。	hPt
+Announcement combat fortress-announcement []: Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense. What are a few pesky demons after all?	祝贺你！这座要塞如今已成为山国都城，证明那些狂妄自大的指责不过是幼稚的胡言乱语。区区几个恼人的恶魔又算得了什么？	l
 DFHack help: "--total-quality" Only applies to "--min-quality" and "--max-quality" options. Filter items according to their total quality (to include improvements) of instead of their core quality.	"--total-quality" 仅适用于 "--min-quality" 和 "--max-quality" 选项。根据项目的总体质量（包括改进）而不是核心质量来过滤项目。	l
 DFHack help: "cprobe" Displays properties of the selected unit. It also displays the IDs of any worn items. For deeper inspection of the unit and inventory items, see gui/gm-unit and gui/gm-editor.	"cprobe" 显示所选单元的属性。它还显示所有磨损物品的 ID。有关单位和库存项目的更深入检查，请参阅 gui/gm-unit 和 gui/gm-editor.	l
 DFHack help: "dwarf-op --select names,Einstein --applytypes genius3,intuitive3,creative2,spaceaware3" Make dwarves with Einstein in their name into geniuses capable of surpassing the real Einstein.	"dwarf-op --select names,Einstein --applytypes genius3,intuitive3,creative2,spaceaware3" 让名字中带有爱因斯坦的矮人成为超越真正的爱因斯坦的天才。	l
@@ -2649,6 +2659,7 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, serving in combat, slaying {d} enemies, and {d} years of membership during {e}.	{a1}在{e1}期间在{s2}方面达到足够的技艺水平、在战斗中效力、杀死{d1}名敌人及拥有{d2}年会龄后，获得了{p1}的{s1}头衔。	ht
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, serving in combat, slaying {d} enemies, and {d} years of membership within {p}.	{a1}在{p2}在{s2}方面达到足够的技艺水平、在战斗中效力、杀死{d1}名敌人及拥有{d2}年会龄后，获得了{p1}的{s1}头衔。	ht
 A {s} caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. However, overall trade sentiments are tenuous at best.	来自{e1}的{s1}商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。不过，总体贸易意愿至多只能算勉强。	hPt
+Announcement combat fortress-announcement []: Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense.	祝贺你！这座要塞如今已成为山国都城，证明那些狂妄自大的指责不过是幼稚的胡言乱语。	l
 Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense. The gods surely want you to dig deeper still!	祝贺你！这座要塞如今已成为山国都城，证明那些狂妄自大的指责不过是幼稚的胡言乱语。诸神一定希望你继续向更深处挖掘！	hP
 DFHack help: "-s", "--stockpile <name or id>" Specify a specific stockpile by name or internal ID instead of using the stockpile currently selected in the UI.	"-s"、"--stockpile <name or id>" 通过名称或内部 ID 指定特定的储物堆，而不是使用当前在 UI 中选择的储物堆。	l
 DFHack help: "gui/rename -u 123 --no-target-selector" Load the unit with id "123" for renaming and remove the widget that allows selecting a different target.	"gui/rename -u 123 --no-target-selector" 加载ID为"123"的单元进行重命名，并删除允许选择不同目标的小部件。	l
@@ -3818,6 +3829,7 @@ Announcement combat agreement-core [agreement-party-list,agreement-party-list,ag
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,agreement-item]: the request by {s} that {s} retrieve {s}	{s1}请{s2}取回{s3}的请求	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the joining of {s} with {s} to live a life of adventure	{s1}与{s2}同行，过冒险生活	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the permanent joining by {s} of {s} to the living world	{s1}帮助{s2}永远留在生者世界的仪式	l
+Announcement combat artifact-claim [artifact-pronoun,artifact-ancestor]: {s} claims it as an heirloom in the name of the family ancestor {s}.	{s1}以家族先祖{s2}之名，宣布将其作为传家宝。	l
 Announcement combat rumor-event [rumor-person,rumor-person,$name,$name]: {s} informed {s} that tribute would no longer be offered {s} to {s}.	{s1}告知{s2}，{s3}将不再向{s4}进贡。	l
 DFHack help: "channel-safely disable require-vision" Allows the plugin to read all tiles, including the ones your dwarves know nothing about.	"channel-safely disable require-vision" 允许插件读取所有图块，包括您的矮人一无所知的图块。	l
 DFHack help: "clean map mud item snow" Removes all spatter, including mud, leaves, and snow from map tiles. Farm plots will retain their mud.	"清洁地图泥项目雪"去除地图瓷砖上的所有飞溅物，包括泥土、树叶和雪。农田将保留泥土。	l
@@ -5025,6 +5037,7 @@ A {s} caravan from {e} has arrived. Trade relations remain strengthened by recen
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} joined with {s} after being compelled to serve	{s1}与{s2}同行，被迫为其效力	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the joining of {s} with {s} in bound service	{s1}与{s2}同行，被迫为其效力	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the promise by {s} to {s} to give a position	{s1}答应{s2}安排职位的承诺	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need bag containing powder suitable for cast application.	{s1}取消了{s2}：需要装有适合制作石膏绷带的粉末的袋子。	l
 Announcement combat historical-event-paragraph [$date,agreement-record,agreement-followup]: Subject revealed that in {s}, {s}. {s}	受审者交代，{s1}，{s2}。{s3}	l
 Announcement combat negotiation-response []: attempted to read their opposite's underlying motivations as well but was swept along	也试图看透对方的深层动机，却被对方牵着走	l
 Announcement combat negotiation-sentence [negotiation-speaker,negotiation-recipient,negotiation-purpose]: {s} met with {s} to {s}.	{s1}与{s2}会面，目的是{s3}。	l
@@ -5472,6 +5485,7 @@ An aquatic arthropod with a pronounced head structure and frontal appendages for
 Announcement combat agreement-core [agreement-party-list,$name,agreement-goals]: {s} plotted to infiltrate {s} in order to {s}	{s1}密谋潜入{s2}，以便{s3}	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,agreement-item]: {s} asked that {s} retrieve {s}	{s1}请{s2}取回{s3}	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the joining of {s} with {s} to {s}	{s1}与{s2}同行，前往{s3}	l
+Announcement combat fortress-announcement [$job,$digits,$unit]: Mandate Fulfilled: Automatically queued {s} x{s} for noble {s}	法令已安排：已为贵族{s3}自动加入工单：{s1} × {s2}。	l
 Announcement combat memory-performance-core [memory-person,memory-performance-verb,memory-performance-work]: I saw {s} {s} {s}	我看{s1}{s2}{s3}	l
 DFHack help: "--setvalue <value>" Attempts to set the values of any printed fields. Supported types: boolean, string, integer.	"--setvalue <value>" 尝试设置任何打印字段的值。支持的类型：布尔值、字符串、整数。	l
 DFHack help: "-e", "--entity <id>" Rename the historical entity (e.g. site government, world religion, etc) with the given ID.	"-e"、"--entity <id>" 使用给定的 ID 重命名历史实体（例如站点政府、世界宗教等）。	l
@@ -6691,6 +6705,7 @@ thrust a spire of slade up from the underworld, naming it {p}, and established a
 "Life isn't fair, and sometimes you have to do what you have to do, but working toward a balance isn't a bad thing."	“生活并不公平，有时也不得不如此，但尽力求个公道总不是坏事。”	l
 "You should think carefully before embarking on a joint enterprise, though there is some value in working together."	“合作虽有益处，但与人共事之前，还是应当仔细考虑。”	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the parley between {s} and {s}	{s1}与{s2}的谈判	l
+Announcement combat fortress-announcement [$unit,$job,$requirement]: {s} cancels {s}: Needs {s} in linked stockpile.	{s1}取消了{s2}：相连的储物堆中需要{s3}。	l
 Announcement combat justice-intrigue-factor [justice-intrigue-actor,justice-intrigue-relationship-factor]: {s}'s {s}	{s1}{s2}	l
 Announcement combat justice-intrigue-motive [justice-intrigue-place]: have law enforcement look the other way in {s}	让{s1}的执法者睁一只眼闭一只眼	l
 Announcement combat justice-intrigue-predicate [justice-intrigue-actor,justice-intrigue-actor]: {s} subordinated {s}	{s1}使{s2}成为部下	l
@@ -7102,6 +7117,8 @@ A small, brightly-colored snake. It is known for eating other snakes and being m
 A small, foreboding black bird that feeds on carrion. It is social, very intelligent, and knows how to use tools.	一种小型的不详的食腐黑鸟。它善于社交，非常聪明，知道如何使用工具。	lP
 A very small feathered bipedal dinosaur with an opposable fifth finger. It is a herbivore and has a beaked mouth.	一种很小的带羽毛双足恐龙，第五指可以与其他手指对握。它以植物为食，嘴呈喙状。	lP
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the joining of {s} with {s}	{s1}与{s2}同行	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need valid, active clay collection zone.	{s1}取消了{s2}：需要有效且启用的采黏土区。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need valid, active sand collection zone.	{s1}取消了{s2}：需要有效且启用的采砂区。	l
 Announcement combat justice-interrogation-sentence []: Attempted to build rapport in order to elicit information.	试图与受审者建立融洽关系，以获取情报。	l
 Announcement combat justice-intrigue-predicate [justice-intrigue-actor,justice-intrigue-actor]: {s} corrupted {s}	{s1}拉拢了{s2}	l
 Announcement combat memorial-death [memorial-weapon-death,memorial-weapon,memorial-weapon]: {s} with {s} from {s}	{s1}，凶器为由{s3}发射的{s2}	l
@@ -7671,6 +7688,7 @@ A small creature found in both salt and fresh water that lives in an asymmetrica
 A small forest bird known for the distinctive flaps of skin hanging from its face. It is prized for its meat.	一种小型森林鸟类，以其脸上垂下的独特皮瓣二闻名。它的肉享誉于世。	lP
 A small ground-dwelling bird. It has a featherless head and eats seeds and insects. It moves about in groups.	一种住在地上的小鸟。它有一个没有羽毛的头，吃种子和昆虫。它成群结队地活动.	lP
 Announcement combat agreement-title-core [agreement-party-list]: the embezzlement conspiracy concocted by {s}	{s1}策划的挪用资金阴谋	l
+Announcement combat fortress-announcement [$unit,$book,$item,artifact-claim]: {s} has created {s}, a {s}! {s}	{s1}创造了{s2}，一件{s3}！{s4}	l
 Announcement combat justice-interrogation-factor [$unit,justice-interrogation-relationship-factor]: {s}'s {s}	{s1}{s2}	l
 Announcement combat justice-interrogation-sentence [$person]: Subject has used "{s}" as an alias in the past.	受审者过去曾使用“{s1}”这个化名。	l
 Announcement combat justice-intrigue-relationship-factor [justice-intrigue-actor]: lack of loyalty toward {s}	对{s1}毫无忠诚	l
@@ -7831,6 +7849,7 @@ A huge, predatory reptile with pale, colorless scales and red eyes. It lives in 
 Affects all spoken performances, from poetry recitals to preaching to storytelling to certain musical forms.	影响所有口头表演，包括诗歌朗诵、布道、讲故事和某些音乐形式。	w
 An evil monster from the swamp. It resembles a knot of waterlogged weeds but will strike the unaware victim.	一个来自沼泽地的邪恶怪物。它就像一结积水的杂草，会袭击不知情的受害者。	lP
 Announcement combat agreement-title-core [agreement-party-list,agreement-item]: the plot of {s} to steal {s}	{s1}盗取{s2}的阴谋	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Bucket full of extraneous material.	{s1}取消了{s2}：桶中装满了异物。	l
 Announcement combat historical-event-paragraph [$date,agreement-record,agreement-followup]: In {s}, {s}. {s}	{s1}，{s2}。{s3}	l
 Announcement combat justice-interrogation-sentence []: Attempted to appeal to subject's belief in the truth.	试图以受审者对真相的重视为由进行劝说。	l
 Announcement combat negotiation-response []: joined the conversation and over time came around on the matter	加入了闲谈，并渐渐改变了对此事的看法	l
@@ -8697,6 +8716,8 @@ was unaffected by the comments and refused, despite the efforts of surrounding a
 A catapult fires a boulder in a fixed direction. The operator can adjust the aim freely within a cone.	投石机沿固定方向发射巨石，操作员可在锥形范围内自由调整瞄准方向。	hj
 A gigantic armored quadrupedal dinosaur with a mighty tail club. It is a herbivore and has four horns.	一种体型极其庞大的披甲四足恐龙，尾端有一枚威力惊人的骨槌。它以植物为食，另长有四根角。	lP
 A medium-sized mammalian predator. It is known by the tell-tale tufts of hair on the tips of its ears.	一种中型哺乳动物捕食者。众所周知，它的耳朵尖上有一簇簇毛发。	lP
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Experiencing emotional shock.	{s1}取消了{s2}：受到情感冲击。	l
+Announcement combat fortress-announcement [$unit]: {s} has mandated the construction of certain goods.	{s1}下令制作某些物品。	l
 Announcement combat justice-intrigue-response [justice-intrigue-actor]: accepted out of loyalty to {s}	出于对{s1}的忠诚而接受了	l
 Announcement combat negotiation-response []: negotiated with discernment in turn but was outmaneuvered	也审时度势地谈判，却被对方胜过一筹	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} places a chokehold on {s} with {s}!	{s1}用{s3}勒住了{s2}！	l
@@ -8860,6 +8881,8 @@ A ramp is a special square that can be traversed to the level above. There must 
 A relatively large lizard. It can be found in most climates, foraging for bugs during daylight hours.	一种相对较大的蜥蜴。能在大部分天气下找到，在白天寻找虫子。	lP
 A small arthropod person with pronounced eyes and two grasping appendages protruding from their face.	一种小型节肢类人形生物，眼睛突出，面部长有两条用于抓取的附肢。	lP
 Announcement combat dialogue-battle-deaths [dialogue-battle-death,dialogue-battle-death]: {s} and {s}	{s1}和{s2}	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Handling dangerous creature.	{s1}取消了{s2}：正在处理危险生物。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No available traction bench.	{s1}取消了{s2}：没有可用的牵引台。	l
 Announcement combat historical-commanded-squad [historical-squad,$unit]: {s}, brilliantly led by {s},	{s1}（由{s2}率领，指挥出色）	l
 Announcement combat historical-commanded-squad [historical-squad,$unit]: {s}, inspiringly led by {s},	{s1}（由{s2}率领，鼓舞了士气）	l
 Announcement combat justice-interrogation-relationship-factor []: lack of loyalty toward interrogator	对审讯者毫无忠诚	l
@@ -9019,6 +9042,8 @@ Although my own insignificant beliefs lie elsewhere, I confess your stunning arg
 Announcement combat agreement-title-core [agreement-party-list,$unit]: the plot of {s} to abduct {s}	{s1}绑架{s2}的阴谋	l
 Announcement combat body-result [layer-phrase]: {s} is smashed into the body, an unrecognizable mass	{s1}被砸进了身体里，变成了难以辨认的一团	l
 Announcement combat diplomacy-cause []: a dispute over the devouring of the bodies of sapient beings	对吞食智慧生物的尸体存在争议	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Getting something to drink.	{s1}取消了{s2}：正在找东西喝。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Job item lost or destroyed.	{s1}取消了{s2}：工作物品丢失或损毁。	l
 Announcement combat justice-interrogation-sentence []: Built rapport in order to elicit information.	与受审者建立融洽关系，试图获取情报。	l
 Announcement combat memory-performance-core [memory-person,memory-sermon-topic]: {s} preached on {s}	{s1}讲了关于{s2}的道理	l
 Announcement combat memory-sentence [memory-person,memory-person]: {s} demanded submission from {s}.	{s1}要{s2}服从。	l
@@ -9181,6 +9206,10 @@ Alternatively, you can reduce the number of glacial squares and regions required
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} joined with {s}	{s1}与{s2}同行	l
 Announcement combat dialogue-battle-death [dialogue-battle-person,$creature]: {s} was slainby a {s}	{s1}被一只{s2}杀死了	l
 Announcement combat dialogue-battle-deaths [dialogue-battle-death,dialogue-battle-deaths]: {s}, {s}	{s1}、{s2}	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Area became inappropriate.	{s1}取消了{s2}：区域已变得不合适。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No appropriate ammunition.	{s1}取消了{s2}：没有合适的弹药。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Not responsible for trade.	{s1}取消了{s2}：不负责贸易。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Water source contaminated.	{s1}取消了{s2}：水源受到污染。	l
 Announcement combat justice-interrogation-response []: was too ambitious to accept death and agreed	野心太大，无法接受死亡，因而答应了	l
 Announcement combat justice-interrogation-sentence []: Appealed to subject's belief in cooperation.	以受审者对合作的重视为由进行劝说。	l
 Announcement combat justice-intrigue-motive [justice-intrigue-place]: secure embezzled funds in {s}	拿到{s1}被挪用的资金	l
@@ -9381,6 +9410,10 @@ Announcement combat agreement-core [agreement-party-list,agreement-item]: {s} pl
 Announcement combat agreement-core [agreement-party-list]: {s} concocted a embezzlement conspiracy	{s1}策划了挪用资金的阴谋	l
 Announcement combat agreement-followup [negotiation-paragraph,justice-intrigue-paragraph]: {s} {s}	{s1}{s2}	l
 Announcement combat diplomacy-cause []: the adversary's inability to communicate and form treaties	对方无法沟通和缔结条约	l
+Announcement combat fortress-announcement [$unit,$job,$unit]: {s} cancels {s}: Interrupted by {s}.	{s1}取消了{s2}：被{s3}打断。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Already leading creature.	{s1}取消了{s2}：已在牵引生物。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Inappropriate dig square.	{s1}取消了{s2}：挖掘方格不合适。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No mechanism for trigger.	{s1}取消了{s2}：没有用于触发器的机件。	l
 Announcement combat justice-interrogation-relationship-factor []: lack of fear toward interrogator	不怕审讯者	l
 Announcement combat justice-interrogation-response []: felt no loyalty to interrogator and refused	对审讯者毫无忠诚，因而拒绝了	l
 Announcement combat justice-interrogation-response []: had no respect for interrogator and refused	不尊重审讯者，因而拒绝了	l
@@ -9561,6 +9594,12 @@ A small flightless green parrot. It is nocturnal and counts itself among the lon
 A small woolly insect that lives in hive colonies. It has an annoying sting which it rarely uses.	一种生活在蜂巢群落中的小毛虫。 它有一个烦人的刺，但它很少使用。	lP
 Alternatively, you can reduce the number of ocean squares and regions required by the parameters.	也可以减少参数要求的海洋方格和区域数量。	l
 Alternatively, you can reduce the number of swamp squares and regions required by the parameters.	也可以减少参数要求的沼泽方格和区域数量。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Ammunition inaccessible.	{s1}取消了{s2}：无法取得弹药。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Building site submerged.	{s1}取消了{s2}：建筑工地被淹没。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Creature occupying site.	{s1}取消了{s2}：有生物占据地点。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Hunting vermin for food.	{s1}取消了{s2}：正在捕捉害虫充饥。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No mechanism for target.	{s1}取消了{s2}：没有用于目标的机件。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No weapon for execution.	{s1}取消了{s2}：没有行刑武器。	l
 Announcement combat justice-interrogation-factor [justice-interrogation-relationship-factor]: {s}	{s1}	l
 Announcement combat justice-interrogation-relationship-factor []: lack of respect of interrogator	不尊重审讯者	l
 Announcement combat justice-interrogation-response []: was unaffected by the comments and refused	未受那些话影响，因而拒绝了	l
@@ -9757,6 +9796,8 @@ A tiny sea animal that lives in the sand just offshore. It has a flat body with 
 Announcement combat agreement-core [agreement-core,agreement-item]: {s}. The ritual involved {s}	{s1}。仪式使用了{s2}	l
 Announcement combat agreement-core [agreement-party-list]: {s} concocted a corruption conspiracy	{s1}策划了腐败的阴谋	l
 Announcement combat diplomacy-cause []: a desire to kill the living and any others in opposition	想杀死生者和所有其他反对者	l
+Announcement combat fortress-announcement [$unit,$job,$requirement]: {s} cancels {s}: Needs {s}.	{s1}取消了{s2}：需要{s3}。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Inappropriate building.	{s1}取消了{s2}：建筑不合适。	l
 Announcement combat historical-commanded-squad [historical-squad,$unit]: {s}, poorly led by {s},	{s1}（由{s2}率领，指挥不当）	l
 Announcement combat justice-interrogation-response []: lacked a desire for vengeance and refused	没有复仇的欲望，因而拒绝了	l
 Announcement combat justice-interrogation-response []: was a natural loner and refused to listen	天性孤僻，拒绝听取劝说	l
@@ -9976,6 +10017,14 @@ A large mammalian herbivore living in cold climates. It has large antlers and so
 A small oceanic eel-like creature that latches onto the side of its victim and tears into them.	一种小型海洋鳗鱼类生物，会紧紧抓住并撕咬受害者。	lP
 A tiny shelled ocean creature with many long legs. It has two large pincers on its front limbs.	一种有许多条长腿的小型带壳海洋生物.它的前肢上有两个大的螯.	lP
 Announcement combat agreement-core [agreement-party-list,$unit]: {s} plotted to assassinate {s}	{s1}密谋刺杀{s2}	l
+Announcement combat artifact-claim [artifact-pronoun,artifact-recipient]: {s} offers it to {s}.	{s1}将其献给{s2}。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Animal not restrained.	{s1}取消了{s2}：动物未被拴住。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Building inaccessible.	{s1}取消了{s2}：无法到达建筑。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Drop-off inaccessible.	{s1}取消了{s2}：无法到达交付地点。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: In existential crisis.	{s1}取消了{s2}：陷入存在危机。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Incapable of carrying.	{s1}取消了{s2}：无法搬运。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Interrupted by combat.	{s1}取消了{s2}：被战斗打断。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Water source vanished.	{s1}取消了{s2}：水源不见了。	l
 Announcement combat justice-interrogation-response []: desired vengeance and willingly complied	渴望复仇，因而自愿配合	l
 Announcement combat justice-interrogation-response []: spurning the truth and refused to listen	轻视真相，拒绝听取劝说	l
 Announcement combat justice-interrogation-response []: was too proud to accept death and agreed	太过骄傲，无法接受死亡，因而答应了	l
@@ -10218,6 +10267,7 @@ Announcement combat agreement-core [agreement-party-list,$name]: {s} plotted to 
 Announcement combat agreement-goals []: instill terror, initiate sabotage, and steal treasures	制造恐慌、展开破坏行动、盗取财宝	l
 Announcement combat agreement-goals []: prepare a coup, initiate sabotage, and steal treasures	筹备政变、展开破坏行动、盗取财宝	l
 Announcement combat diplomacy-cause []: a dispute over the display of war and hunting trophies	对展示战争和狩猎战利品存在争议	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Patient inaccessible.	{s1}取消了{s2}：无法接近病患。	l
 Announcement combat historical-commanded-squad [historical-squad,$unit]: {s}, ably led by {s},	{s1}（由{s2}率领，指挥得当）	l
 Announcement combat justice-interrogation-response []: accepted out of loyalty to interrogator	出于对审讯者的忠诚而接受了	l
 Announcement combat justice-interrogation-response []: was too vain to accept death and agreed	虚荣心太强，无法接受死亡，因而答应了	l
@@ -10404,6 +10454,16 @@ Announcement combat agreement-core [agreement-party-list]: {s} concocted a bribe
 Announcement combat agreement-goals []: prepare a coup, instill terror, and initiate sabotage	筹备政变、制造恐慌、展开破坏行动	l
 Announcement combat agreement-party-list [agreement-party,agreement-party-list]: {s}, and {s}	{s1}和{s2}	l
 Announcement combat boast-slain-clause []: who sought my praise, only to be rejected in death	对方渴求我的赞许，到死也没能如愿	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: "Farewell!" Leaving.	{s1}取消了{s2}：“再见！”正在离开。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Animal inaccessible.	{s1}取消了{s2}：无法接近动物。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Could not find path.	{s1}取消了{s2}：找不到路径。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Infant inaccessible.	{s1}取消了{s2}：无法接近婴儿。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No available colony.	{s1}取消了{s2}：没有可用的蜂巢。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No longer requested.	{s1}取消了{s2}：已不再需要。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Nothing in building.	{s1}取消了{s2}：建筑中没有东西。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Patient not resting.	{s1}取消了{s2}：病患没有休息。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Target inaccessible.	{s1}取消了{s2}：无法接近目标。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Wrong justice state.	{s1}取消了{s2}：司法状态不对。	l
 Announcement combat justice-interrogation-relationship-factor []: loyalty toward interrogator	忠于审讯者	l
 Announcement combat justice-intrigue-response [justice-intrigue-actor]: hated {s} and refused	憎恨{s1}，因而拒绝了	l
 Announcement combat memory-performance-core [memory-person,memory-poem]: I saw {s} recite {s}	我听{s1}朗诵了{s2}	l
@@ -10624,8 +10684,18 @@ A medium-sized, winged fish found in the muddy coasts of both temperate and trop
 A small marine mammal with a long body. They enjoy eating shellfish and other small animals.	一种体型较长的小型海洋哺乳动物。它们喜欢吃贝类和其他小动物。	lP
 Announcement combat agreement-core [agreement-core,$name]: {s}. The ritual took place in {s}	{s1}。仪式在{s2}举行	l
 Announcement combat agreement-party-list [agreement-party,agreement-party-list]: {s} and {s}	{s1}和{s2}	l
+Announcement combat artifact-claim [artifact-pronoun]: {s} claims it as a personal treasure.	{s1}宣布将其作为私人珍宝。	l
 Announcement combat boast-slain-clause []: who came down from the home-tree and was devoured	对方从家园树上下来，便被吞噬了	l
 Announcement combat dialogue-trouble-list [dialogue-trouble,dialogue-trouble-list]: {s}, {s}	{s1}、{s2}	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Attacking building.	{s1}取消了{s2}：正在攻击建筑。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Equipment mismatch.	{s1}取消了{s2}：装备不匹配。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Item blocking site.	{s1}取消了{s2}：有物品阻挡地点。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Job item misplaced.	{s1}取消了{s2}：工作物品放错位置。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No designated area.	{s1}取消了{s2}：没有指定的区域。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No target building.	{s1}取消了{s2}：没有目标建筑。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Removed from guard.	{s1}取消了{s2}：已被调离警卫队。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Target too injured.	{s1}取消了{s2}：目标伤势过重。	l
+Announcement combat fortress-announcement [$unit]: {s} has imposed a ban on certain exports.	{s1}禁止出口某些物品。	l
 Announcement combat justice-interrogation-response []: spurned harmony and refused to listen	轻视和谐，拒绝听取劝说	l
 Announcement combat justice-interrogation-response []: spurned the law and refused to listen	轻视法律，拒绝听取劝说	l
 Announcement combat justice-intrigue-actor [justice-intrigue-actor]: fellow order member {s}	同一教团的成员{s1}	l
@@ -10885,6 +10955,13 @@ Announcement combat agreement-goals []: prepare a coup, instill terror, and stea
 Announcement combat boast-slain-clause []: once revered by those who didn't know any better	对方曾受那些没见识的人敬仰	l
 Announcement combat boast-slain-clause []: who tunneled away from me like a frightened mole	对方像受惊的鼹鼠一样打洞逃离我	l
 Announcement combat diplomacy-cause []: a dispute over the ownership of an unknown artifact	对一件不知名造物的所有权存在争议	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Area inaccessible.	{s1}取消了{s2}：无法到达区域。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Cannot reach site.	{s1}取消了{s2}：无法到达地点。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Dangerous terrain.	{s1}取消了{s2}：地形危险。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Item inaccessible.	{s1}取消了{s2}：无法取得物品。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need empty bucket.	{s1}取消了{s2}：需要空桶。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No bucket at well.	{s1}取消了{s2}：水井没有水桶。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No food available.	{s1}取消了{s2}：没有可用的食物。	l
 Announcement combat historical-event-paragraph [$date,historical-squad-clash]: In {s}, {s}.	{s1}，{s2}。	l
 Announcement combat justice-interrogation-factor []: being unswayed by the emotional appeal	未被情感上的劝说打动	l
 Announcement combat justice-interrogation-response []: believed in the value of cooperation	相信合作的价值	l
@@ -11134,11 +11211,17 @@ Alternatively, you can reduce the number of high, medium or low rainfall squares
 Alternatively, you can reduce the number of high, medium or low savagery squares required.	也可以减少所需的高、中或低野性方格数量。	l
 Alternatively, you can reduce the number of non-mountain caves required by the parameters.	也可以减少参数要求的非山地洞穴数量。	l
 Announcement combat agreement-core [agreement-party-list,$unit]: {s} plotted to abduct {s}	{s1}密谋绑架{s2}	l
+Announcement combat artifact-claim [artifact-pronoun]: {s} claims it as a family heirloom.	{s1}宣布将其作为传家宝。	l
 Announcement combat boast-slain-clause []: a spineless slug who was crushed under my might	这个没骨气的鼻涕虫被我的力量碾碎了	l
 Announcement combat boast-slain-clause []: whom I sent back to the home-tree as fertilizer	对方被我送回家园树当肥料了	l
 Announcement combat boast-slain-clause []: whose cries for mercy went unheeded by my wrath	对方的求饶声也无法平息我的怒火	l
 Announcement combat boast-slain-clause []: whose hammer shattered on the anvil of my power	对方的锤子在我力量的铁砧上碎裂了	l
 Announcement combat dialogue-trouble-list [dialogue-trouble,dialogue-trouble]: {s} and {s}	{s1}和{s2}	l
+Announcement combat fortress-announcement [$unit,$book,$item]: {s} has created {s}, a {s}!	{s1}创造了{s2}，一件{s3}！	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Nothing to catch.	{s1}取消了{s2}：没有可捕捉的生物。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Seeking artifact.	{s1}取消了{s2}：正在寻找造物。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Throwing tantrum.	{s1}取消了{s2}：正在发脾气。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Wrong ammunition.	{s1}取消了{s2}：弹药不对。	l
 Announcement combat historical-clash-outcome [$number,$number]: slaying {s} and losing {s}	击杀对方{s1}，己方阵亡{s2}	l
 Announcement combat justice-interrogation-relationship-factor []: distrust of interrogator	不信任审讯者	l
 Announcement combat justice-interrogation-response []: distrusted interrogator and refused	不信任审讯者，因而拒绝了	l
@@ -11359,6 +11442,15 @@ Announcement combat boast-slain-clause []: who lies dead, now only an embarrassi
 Announcement combat boast-slain-clause []: who sucked plump helmets like a purring maggot	对方像呼噜蛆一样吮吸肉盔菇	l
 Announcement combat boast-slain-clause []: whom I buried alive under a mountain of hatred	对方被我活埋在山一般的仇恨之下	l
 Announcement combat dialogue-stock [dialogue-stock-item,dialogue-stock-item]: {s} and {s}	{s1}和{s2}	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Getting married.	{s1}取消了{s2}：正在结婚。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Invalid officer.	{s1}取消了{s2}：官员无效。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Mortally afraid.	{s1}取消了{s2}：极度恐惧。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need empty cage.	{s1}取消了{s2}：需要空笼。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need empty trap.	{s1}取消了{s2}：需要空陷阱。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No water source.	{s1}取消了{s2}：没有水源。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Nothing in cage.	{s1}取消了{s2}：笼中没有东西。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Nothing to cage.	{s1}取消了{s2}：没有可装入笼中的生物。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Water is frozen.	{s1}取消了{s2}：水已结冰。	l
 Announcement combat historical-commanded-squad [historical-squad,$unit]: {s}, led by {s},	{s1}（由{s2}率领）	l
 Announcement combat justice-interrogation-factor []: a belief in the value of cooperation	相信合作的价值	l
 Announcement combat justice-interrogation-factor []: being swayed by the emotional appeal	被情感上的劝说打动	l
@@ -11598,6 +11690,14 @@ After a polite discussion with local rivals, {n} has claimed the position of {s}
 Although my own insignificant beliefs lie elsewhere, I am overmastered by your presence!	虽说我有点不值一提的不同看法，但你的气势真让我服气！	hP
 Announcement combat boast-slain-clause []: whose insignificant name I struggle to recall	对方微不足道的名字，我都快想不起来了	l
 Announcement combat diplomacy-cause []: general ill feelings over past historical events	以往历史事件造成的普遍怨恨	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Bad script! #1.	{s1}取消了{s2}：脚本错误！#1。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Bad script! #2.	{s1}取消了{s2}：脚本错误！#2。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Bad script! #3.	{s1}取消了{s2}：脚本错误！#3。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Forbidden area.	{s1}取消了{s2}：禁区。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need empty bag.	{s1}取消了{s2}：需要空袋。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No floor space.	{s1}取消了{s2}：没有地面空间。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Resting injury.	{s1}取消了{s2}：正在养伤。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Seeking Infant.	{s1}取消了{s2}：正在寻找婴儿。	l
 Announcement combat head [owner,impact-part]: {s} {s} takes the full force of the impact	{s1}{s2}承受了全部冲击力	l
 Announcement combat justice-interrogation-relationship-factor []: hatred of interrogator	憎恨审讯者	l
 Announcement combat justice-interrogation-response []: respected interrogator and agreed	出于对审讯者的尊重而答应了	l
@@ -11841,6 +11941,15 @@ A very large carnivorous bipedal dinosaur with two parallel head crests and shor
 Announcement combat agreement-title [agreement-title,agreement-party-list]: {s} via {s}	经{s2}居中联络的{s1}	l
 Announcement combat agreement-title-core [agreement-party-list]: the embezzlement of{s}	{s1}进行的挪用资金	l
 Announcement combat diplomacy-cause []: the adversary's abuse of the aggressor's fallen	对方虐待进攻方的阵亡者	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Clay vanished.	{s1}取消了{s2}：黏土不见了。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Getting water.	{s1}取消了{s2}：正在取水。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No ammunition.	{s1}取消了{s2}：没有弹药。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Not appointed.	{s1}取消了{s2}：尚未任命。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Sand vanished.	{s1}取消了{s2}：砂子不见了。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Taken by mood.	{s1}取消了{s2}：陷入奇异情绪。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Too depressed.	{s1}取消了{s2}：过于抑郁。	l
+Announcement combat fortress-announcement [$unit]: The {s} has been missing for a week.	{s1}已经失踪一周。	l
+Announcement combat fortress-announcement [$unit]: {s} has altered the prices of goods.	{s1}调整了物品价格。	l
 Announcement combat historical-clash-outcome [$number]: slaying {s} and losing everyone	击杀对方{s1}，己方全军覆没	l
 Announcement combat justice-interrogation-relationship-factor []: trust of interrogator	信任审讯者	l
 Announcement combat justice-interrogation-response []: had a trusting nature and agreed	天性轻信，因而答应了	l
@@ -12068,6 +12177,9 @@ A tiny orange marine fish that lives inside the tentacles of a poisonous inverte
 Alternatively, you can reduce the number of mountain caves required by the parameters.	也可以减少参数要求的山地洞穴数量。	l
 Although my own insignificant beliefs lie elsewhere, you are so clever I must concede!	虽说我有点不值一提的不同看法，但你实在太聪明，我只能认输了！	hP
 An animal person with the head of the amphibious olm. It lives underground near water.	长着两栖洞螈头的人形生物。它生活在靠近水的地底。	lP
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Getting food.	{s1}取消了{s2}：正在取食物。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Going to bed.	{s1}取消了{s2}：正在就寝。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Path blocked.	{s1}取消了{s2}：路径受阻。	l
 Announcement combat justice-interrogation-factor []: spurning the value of cooperation	轻视合作的价值	l
 Announcement combat justice-interrogation-relationship-factor []: fear of interrogator	惧怕审讯者	l
 Announcement combat justice-interrogation-relationship-factor []: love of interrogator	爱着审讯者	l
@@ -12327,6 +12439,16 @@ A very small feathered bipedal dinosaur with a sharp scything claw on its second
 A very small reptile with a prehensile tail and giant claws on its second foredigits.	一种很小的爬行动物，长有可以卷握的尾巴，第二根前趾上生着巨大的爪。	lP
 Alternatively, you can reduce the number of civilizations required by the parameters.	也可以减少参数要求的文明数量。	l
 Announcement combat agreement-core [agreement-party-list]: {s} began embezzling funds	{s1}开始挪用资金	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need crutch.	{s1}取消了{s2}：需要拐杖。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need office.	{s1}取消了{s2}：需要办公室。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need splint.	{s1}取消了{s2}：需要夹板。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need thread.	{s1}取消了{s2}：需要线。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No building.	{s1}取消了{s2}：没有建筑。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No creature.	{s1}取消了{s2}：没有生物。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Too injured.	{s1}取消了{s2}：伤势过重。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Unconscious.	{s1}取消了{s2}：失去意识。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Unscheduled.	{s1}取消了{s2}：未排定。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Went insane.	{s1}取消了{s2}：发疯了。	l
 Announcement combat historical-event-paragraph [$date,agreement-record]: In {s}, {s}.	{s1}，{s2}。	l
 Announcement combat justice-interrogation-factor []: an unwillingness to accept death	不愿接受死亡	l
 Announcement combat justice-interrogation-factor []: being unaffected by the comments	未受那些话影响	l
@@ -12606,6 +12728,16 @@ Although my own insignificant beliefs lie elsewhere, I admire how brilliant you 
 Announcement combat boast-slain-clause []: who forged her own doom by challenging me	对方竟敢挑战我，亲手铸就了自己的末日	l
 Announcement combat boast-slain-clause []: who forged his own doom by challenging me	对方竟敢挑战我，亲手铸就了自己的末日	l
 Announcement combat boast-slain-clause []: who forged its own doom by challenging me	对方竟敢挑战我，亲手铸就了自己的末日	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Despairing.	{s1}取消了{s2}：绝望。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Distressed.	{s1}取消了{s2}：忧虑不堪。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Frightened.	{s1}取消了{s2}：惊恐。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: In Custody.	{s1}取消了{s2}：被拘押。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need cloth.	{s1}取消了{s2}：需要布。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No partner.	{s1}取消了{s2}：没有搭档。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No patient.	{s1}取消了{s2}：没有病患。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No trigger.	{s1}取消了{s2}：没有触发器。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Too insane.	{s1}取消了{s2}：神智过于失常。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Using well.	{s1}取消了{s2}：正在使用水井。	l
 Announcement combat historical-squad [$number,historical-military-creature]: {s} {s}	{s1}个{s2}	l
 Announcement combat justice-interrogation-crime []: the export prohibition violation	违反出口禁令	l
 Announcement combat justice-interrogation-unit [justice-interrogation-sentence]: {s}	{s1}	l
@@ -12873,6 +13005,19 @@ A {s} caravan from {e} has arrived. However, overall trade sentiments are cautio
 A {s} caravan from {e} has arrived. However, overall trade sentiments are lukewarm.	来自{e1}的{s1}商队已抵达。不过，总体贸易意愿不冷不热。	hPt
 A {s} caravan from {e} has arrived. However, overall trade sentiments are terrible.	来自{e1}的{s1}商队已抵达。不过，总体贸易意愿极差。	hPt
 Announcement combat agreement-goals [agreement-goals,agreement-goals]: {s}, and {s}	{s1}和{s2}	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Anguished.	{s1}取消了{s2}：痛苦不堪。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Catatonic.	{s1}取消了{s2}：陷入木僵。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Exhausted.	{s1}取消了{s2}：精疲力竭。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Horrified.	{s1}取消了{s2}：惊骇。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Lost pick.	{s1}取消了{s2}：丢失了镐。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Miserable.	{s1}取消了{s2}：悲惨不已。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Mortified.	{s1}取消了{s2}：羞愧难当。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No infant.	{s1}取消了{s2}：没有婴儿。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No target.	{s1}取消了{s2}：没有目标。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No weapon.	{s1}取消了{s2}：没有武器。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Oblivious.	{s1}取消了{s2}：浑然不觉。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Paralyzed.	{s1}取消了{s2}：麻痹。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Terrified.	{s1}取消了{s2}：极度恐惧。	l
 Announcement combat head [unit,owned-object,owned-object]: {s} pinches {s} with {s}	{s1}用{s3}掐{s2}	l
 Announcement combat historical-clash-outcome [$number]: slaying them and losing {s}	全歼对方，己方阵亡{s1}	l
 Announcement combat justice-interrogation-factor []: a lack of desire for vengeance	没有复仇的欲望	l
@@ -13135,6 +13280,13 @@ A tiny insect capable of destroying large wooden structures when in large number
 A very large dinosaur person with a tail club, an armored carapace and four horns.	一种体型很大的恐龙类人形生物，身披坚甲，长有尾槌和四根角。	lP
 Announcement combat agreement-goals [agreement-goals,agreement-goals]: {s} and {s}	{s1}和{s2}	l
 Announcement combat agreement-title-core [agreement-party-list]: the bribery of{s}	{s1}进行的受贿	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Dismayed.	{s1}取消了{s2}：沮丧。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Grieving.	{s1}取消了{s2}：悲痛中。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: In agony.	{s1}取消了{s2}：极度痛苦。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Lost axe.	{s1}取消了{s2}：丢失了斧。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No party.	{s1}取消了{s2}：没有聚会。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Relieved.	{s1}取消了{s2}：已被替换。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Well dry.	{s1}取消了{s2}：水井干涸。	l
 Announcement combat head [unit,owned-object,owned-object]: {s} gouges {s} with {s}	{s1}用{s3}挖{s2}	l
 Announcement combat journal-person []: You have known this person since her birth.	你从她出生起就认识她。	l
 Announcement combat journal-person []: You have known this person since his birth.	你从他出生起就认识他。	l
@@ -13461,6 +13613,8 @@ Announcement combat agreement-title-core []: the formation of a corrupt agreemen
 Announcement combat body-result [layer-phrase]: {s} collapses into a lump of gore	{s1}塌成了一团血肉	l
 Announcement combat dialogue-battle-death [dialogue-battle-person]: {s} was slain	{s1}被杀死了	l
 Announcement combat dialogue-stock [dialogue-stock-item,dialogue-stock]: {s}, {s}	{s1}、{s2}	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No item.	{s1}取消了{s2}：没有物品。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Too sad.	{s1}取消了{s2}：过于悲伤。	l
 Announcement combat head [unit,owned-object,owned-object]: {s} bends {s} with {s}	{s1}用{s3}弯折{s2}	l
 Announcement combat head [unit,owned-object,owned-object]: {s} gouge {s} with {s}	{s1}用{s3}挖{s2}	l
 Announcement combat head [unit,owned-object,owned-object]: {s} pinch {s} with {s}	{s1}用{s3}掐{s2}	l
@@ -13811,6 +13965,8 @@ Announcement combat diplomacy-cause [$book]: a dispute over the ownership of {s}
 Announcement combat diplomacy-cause [$item]: a dispute over the ownership of {s}	对{s1}的所有权存在争议	l
 Announcement combat diplomacy-cause []: a first contact that went horribly wrong	初次接触出了严重差错	l
 Announcement combat diplomacy-cause []: the adversary's refusal to form treaties	对方拒绝缔结条约	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Shaken.	{s1}取消了{s2}：震惊不已。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Webbed.	{s1}取消了{s2}：被蛛网缠住。	l
 Announcement combat head [unit,owned-object,owned-object]: {s} bend {s} with {s}	{s1}用{s3}弯折{s2}	l
 Announcement combat justice-interrogation-crime []: the conspiracy to slow labor	合谋怠工	l
 Announcement combat justice-interrogation-sentence []: Subject naively complied.	受审者毫无戒心地配合了审讯。	l
@@ -14082,6 +14238,8 @@ An insect many times the size of its peers. It is known for its deafening buzz.	
 Announcement combat agreement-goals [agreement-goals,agreement-goals]: {s}, {s}	{s1}、{s2}	l
 Announcement combat body-result [layer-phrase]: {s} is ripped into loose shreds	{s1}被撕得支离破碎	l
 Announcement combat diplomacy-cause []: a dispute over the treatment of animals	对待动物的方式存在争议	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Caged.	{s1}取消了{s2}：关在笼中。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Moved.	{s1}取消了{s2}：已移动。	l
 Announcement combat historical-squad [historical-military-creature]: a lone {s}	一只独行的{s1}	l
 Announcement combat justice-interrogation-factor []: being inclined to converse	天性健谈	l
 Announcement combat justice-interrogation-response []: gave in to fear of death	因惧怕死亡而屈服	l
@@ -14382,6 +14540,7 @@ A medium-sized red fish that lives in the ocean and swims up a river to breed.	�
 A small amphibian person with the wedge-shaped head and tail of a diplocaulus.	一种小型两栖人形生物，长着笠头螈般的楔形头部和尾巴。	lP
 Alternatively, you can reduce the number of rivers required by the parameters.	也可以减少参数要求的河流数量。	l
 Announcement combat diplomacy-cause []: a dispute over the treatment of plants	对待植物的方式存在争议	l
+Announcement combat fortress-announcement [$unit]: {s} has forgotten a demand.	{s1}忘记了一项要求。	l
 Announcement combat historical-event-title [agreement-title,$date]: {s} in {s}	{s2}的{s1}	l
 Announcement combat injury [injury-subject,injury-condition]: {s} has been {s}	{s1}遭到{s2}	l
 Announcement combat injury [injury-subject]: {s} has been opened by the attack	{s1}被攻击撕开了	l
@@ -14697,6 +14856,7 @@ Announcement combat agreement-goals []: initiate sabotage and steal treasures	�
 Announcement combat diplomacy-cause []: a dispute over a formalized agreement	对正式协议存在争议	l
 Announcement combat diplomacy-cause []: an incident involving a lost diplomat	一起涉及失踪外交官的事件	l
 Announcement combat diplomacy-cause []: an incident involving a trade caravan	一起涉及商队的事件	l
+Announcement combat fortress-announcement [$unit]: {s}'s mandates have ended.	{s1}的多项法令已结束。	l
 Announcement combat head [unit,unit,object]: {s} shakes {s} around by the {s}	{s1}抓着{s2}的{s3}来回甩动	l
 Announcement combat historical-clash-outcome [$number]: slaying {s} and dying	击杀对方{s1}，自身阵亡	l
 Announcement combat historical-squad-clash [historical-squad-clash-core]: {s}	{s1}	l
@@ -15363,6 +15523,9 @@ All work orders must be validated by the manager before they become active.	所�
 Announcement combat dialogue-battle-death [dialogue-battle-group]: {s} died	{s1}丧生了	l
 Announcement combat dialogue-battle-slain-list [dialogue-battle-slain]: {s}	{s1}	l
 Announcement combat dialogue-trouble []: brewing trouble with our neighbors	与邻邦日益紧张的关系	l
+Announcement combat fortress-announcement [$unit]: {s} has ended a mandate.	{s1}结束了一项法令。	l
+Announcement combat fortress-announcement [$unit]: {s}'s mandate has ended.	{s1}的一项法令已结束。	l
+Announcement combat fortress-job [memorial-subject]: {s} (engrave memorial)	{s1}（雕刻纪念铭文）	l
 Announcement combat historical-event-paragraph [negotiation-paragraph]: {s}	{s1}	l
 Announcement combat justice-interrogation-crime []: the job order violation	违反工作命令	l
 Announcement combat justice-interrogation-factor []: a desire for vengeance	渴望复仇	l
@@ -15708,6 +15871,7 @@ Announcement combat dialogue-battle-attacker [dialogue-battle-person]: {s}	{s1}	
 Announcement combat dialogue-battle-target [$creature,$name]: a {s} of {s}	{s2}的一只{s1}	l
 Announcement combat diplomacy-cause []: a disagreement over prior treaties	对以往条约的分歧	l
 Announcement combat diplomacy-cause []: a dispute over livestock ownership	牲畜所有权争议	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: .	{s1}取消了{s2}。	l
 Announcement combat historical-military-creature [$creature]: animated {s}	复活的{s1}	l
 Announcement combat justice-interrogation-factor []: an acquiescing nature	天性顺从	l
 Announcement combat justice-interrogation-factor []: being a natural loner	天性孤僻	l
@@ -16401,6 +16565,7 @@ Announcement combat attack [attack-verb,unit,object]: {s} {s} by the {s}	{s1}{s2
 Announcement combat attack [attack-verb,unit,object]: {s} {s} in the {s}	{s1}{s2}的{s3}	l
 Announcement combat damage [damage,layer]: {s} through a hole in the {s}	{s1}，穿过{s2}上的孔洞	l
 Announcement combat dialogue-battle-target [dialogue-battle-person]: {s}	{s1}	l
+Announcement combat fortress-announcement [$unit]: {s} has a new demand.	{s1}提出了一项新要求。	l
 Announcement combat historical-battle-location [$name,$name]: {s} in {s}	{s2}的{s1}	l
 Announcement combat justice-interrogation-crime []: attempted kidnapping	绑架未遂	l
 Announcement combat justice-interrogation-crime []: building destruction	破坏建筑	l
@@ -18823,10 +18988,13 @@ A very large herbivorous bipedal dinosaur with a thick domed head.	一种体型�
 A very small bipedal herbivorous dinosaur with a thick domed head.	一种很小的双足食草恐龙，头骨厚重而隆起。	lP
 Announcement combat agreement-crime []: a conspiracy to slow labor	合谋怠工	l
 Announcement combat agreement-crime []: production order violation	违反生产命令	l
+Announcement combat artifact-ancestor []: an unidentified creature	一名身份不明的生物	l
+Announcement combat artifact-recipient []: an unknown civilization	一个未知文明	l
 Announcement combat body-result [layer-phrase]: {s} splits in gore	{s1}裂开，血肉横飞	l
 Announcement combat dialogue-battle-group [$name]: a member of {s}	{s1}的一名成员	l
 Announcement combat dialogue-battle-person []: an unknown creature	不明生物	l
 Announcement combat dialogue-family-indef [dialogue-family]: a {s}	一位{s1}	l
+Announcement combat fortress-announcement []: A mandate has ended.	一项法令已结束。	l
 Announcement combat historical-clash-outcome [$number]: losing {s}	己方阵亡{s1}	l
 Announcement combat injury [injury-subject]: {s} have been severed	{s1}被切断了	l
 Announcement combat journal-person [$digits]: Died in the year {s}	卒于第{s1}年	l
@@ -21267,6 +21435,7 @@ After enduring an interrogation, {a} was released during {e}.	在{e1}期间，�
 After enduring an interrogation, {a} was released within {p}.	在{p1}，忍受审讯后，{a1}被释放了。	ht
 All available witness information is presented for each case.	每个案件都会列出所有已知的目击证词。	hq
 Announcement combat agreement-party-list []: an unknown party	身份不明的一方	l
+Announcement combat artifact-ancestor []: an unknown creature	一名未知生物	l
 Announcement combat body-result [layer-phrase]: {s} collapses	{s1}塌陷了	l
 Announcement combat dialogue-battle-target [$creature]: a {s}	一只{s1}	l
 Announcement combat dialogue-family []: fifth eldest daughter	第五个女儿	l
@@ -26452,6 +26621,7 @@ DFHack help: | 6 | Ecstatic | "=D" | COLOR_LIGHTCYAN |	| 6 |欣喜若狂| "=D" |
 Desired metal cages and chains in dungeons: {d} of {d}	监牢中的金属笼子和锁链：现有 {d1}，需要 {d2}	wtl
 Difficulty only affects starting skills and equipment.	难度仅影响初始技能和装备。	l
 ENABLE ONE! Entities in Dwarvemon use certain types of	只能启用一个！Dwarvemon 中的实体仅包含特定类型的	wl
+Fortress activity: Press plant slurry into paper sheet	将植物纸浆压成纸张	li
 Fortress activity: suffix (location no longer in zone)	（地点已不在区域内）	li
 Fortress temple detail: Priest: {d} worshippers needed	祭司：需要{d}名信徒	wtli
 Go below hatch (no climbing/jumping) ({d} levels down)	前往活动盖板下方（不攀爬或跳跃）（下方{d1}层）	hPt
@@ -27040,6 +27210,7 @@ Announcement combat diplomacy-cause []: a competition	一场比赛	l
 Announcement combat diplomacy-cause []: a performance	一场表演	l
 Announcement combat diplomacy-possessor [$unit]: {s}'	{s1}的	l
 Announcement combat evasion [unit]: {s} scramble away	{s1}连滚带爬地躲开了	l
+Announcement combat fortress-job [$unit]: Unchain {s}	解开{s1}的锁链	l
 Announcement combat guard-building []: a leather shop	皮革店	l
 Announcement combat injury-subject []: a major artery	一条主要动脉	l
 Announcement combat memorial-death []: Died in a cage	死于笼中	l
@@ -27229,6 +27400,7 @@ Do this by selecting Workshops -> Farming -> Fishery.	[C:7:0:0]依次选择“[C
 Empty jugs are required to store the liquid products.	制成的液体需要用空壶来装.	w
 Fire in the shape of a human that can hurl fireballs.	可以投掷火球的人形火焰。	lP
 Forgive me, but don't waste my time with this drivel.	恕我直言，别拿这些胡言乱语浪费我的时间。	hP
+Fortress activity: Make trifle pewter bars (use bars)	制作廉白锡锭（使用金属锭）	li
 Fortress activity: suffix (cannot individually drill)	（无法进行个人训练）	li
 Fortress activity: suffix (no reachable valid target)	（没有可抵达的有效目标）	li
 Fortress temple detail: Priest: {d} worshipper needed	祭司：需要{d}名信徒	wtli
@@ -28178,6 +28350,7 @@ DFHack help: | 5 | Happy | ":D" | COLOR_LIGHTGREEN |	| 5 |快乐| "：D" | COLOR
 Does anybody else still have a stake in these lands?	还有谁在这片土地上保有权益？	hP
 Forbid your citizens from using an item or building.	禁止居民使用某件物品或建筑。	hj
 Forbidding of death objects occurs at time of death.	尸体和遗物的禁用状态在死亡时决定。	wil
+Fortress activity: Make trifle pewter bars (use ore)	制作廉白锡锭（使用矿石）	li
 Go below hatch (no climbing/jumping) ({d} levels up)	前往活动盖板下方（不攀爬或跳跃）（上方{d1}层）	hPt
 Guide {s} immediately when at most {d}% of any items	总装载量不高于{d1}%时，立即引导矿车向{s1}行驶	hPt
 Guide {s} in {d} day when at least {d}% of any items	等待{d1}天且总装载量不低于{d2}%时，引导矿车向{s1}行驶	hPt
@@ -28913,6 +29086,7 @@ After being interrogated, {a} implicated {a} at {p}	在{p1}，经过审讯后，
 After being interrogated, {a} implicated {a} in {p}	在{p1}，经过审讯后，{a1}供出了{a2}	ht
 And remember: Losing is fun, and now it's personal!	记住：[C:2:0:1]输了才好玩，而这次轮到你亲身体验！[C:7:0:0]	hq
 Announcement combat actor [$item]: the spinning {s}	旋转着的{s1}	l
+Announcement combat artifact-recipient [$name]: {s}	{s1}	l
 Announcement combat defense-adverb []: effortlessly	毫不费力地	l
 Announcement combat dialogue-family []: grandfather	祖父或外祖父	l
 Announcement combat dialogue-family []: grandmother	祖母或外祖母	l
@@ -29112,6 +29286,8 @@ DFHack hotkeys hint: Immediately autosave the game.	立即自动保存游戏。	
 Display water and magma depth numerically (1 to 7.)	以数字显示水和岩浆深度（1 至 7）。	hj
 Display water and magma depth numerically (1 to 7.)	以数字显示水和岩浆深度（1 至 7）。	wl
 Forgive me, but nobody could possibly believe that.	恕我直言，不可能有人相信这种话。	hP
+Fortress activity: Make fine pewter bars (use bars)	制作精白锡锭（使用金属锭）	li
+Fortress activity: Make wooden training short sword	制作木制训练短剑	li
 Freely move between tiles when dodging if necessary	闪避时可按需要自由移动到其他地格。	hj
 Go below hatch (no climbing/jumping) ({d} level up)	前往活动盖板下方（不攀爬或跳跃）（上方{d1}层）	hPt
 Guide {s} in {d} day when at most {d}% of any items	等待{d1}天且总装载量不高于{d2}%时，引导矿车向{s1}行驶	hPt
@@ -29853,6 +30029,8 @@ All active/manual/autosaves there will be deleted!	该世界中的所有当前�
 An orange striped person with the head of a tiger.	一种身有橘色斑纹长着狮子头的人形生物	lP
 Announcement combat ability [$creature]: Raise {s}	复生{s1}	l
 Announcement combat agreement-crime []: kidnapping	绑架	l
+Announcement combat artifact-ancestor [$unit]: {s}	{s1}	l
+Announcement combat artifact-ancestor []: Nameless	无名者	l
 Announcement combat defense-adverb []: just barely	勉强	l
 Announcement combat dialogue-battle-attacker []: I	我	l
 Announcement combat dialogue-family []: eldest son	长子	l
@@ -30078,6 +30256,8 @@ Digging designation cancelled: damp stone located.	挖掘指定已取消：发�
 Digging designation cancelled: warm stone located.	挖掘指定已取消：发现温热的岩石。	hP
 Dwarf Fortress uses FMOD by Firelight Technologies	《矮人要塞》使用 Firelight Technologies 的 FMOD	wl
 Forgotten beast irritation minimum (less = sooner)	遗忘猛兽激怒值下限（越低越早来袭）
+Fortress activity: Make fine pewter bars (use ore)	制作精白锡锭（使用矿石）	li
+Fortress activity: Make lay pewter bars (use bars)	制作劣白锡锭（使用金属锭）	li
 Give report pertaining to service as a {s} for {e}	汇报你为{e1}担任{s1}期间的事务	hPt
 Handle charging attacks according to the opponent.	根据对手决定如何应对冲锋。	hj
 Hotkey: Building, Machine Component, Gear Assembly	热键：建筑，机械组件，齿轮组件	w
@@ -30878,6 +31058,7 @@ Announcement combat material []: unknown material	未知材料	l
 Announcement combat memorial-clause []: Slayer of	斩杀者	l
 Announcement combat memorial-death []: Solidified	凝固而亡	l
 Announcement combat memorial-death []: Suffocated	窒息而死	l
+Announcement combat memorial-subject [$unit]: {s}	{s1}	l
 Announcement combat memory-crime []: a kidnapping	绑架罪	l
 Announcement combat memory-crime []: embezzlement	侵吞公款的罪	l
 Announcement combat memory-death []: was beheaded	被斩首了	l
@@ -31094,6 +31275,7 @@ DFHack hotkeys hint: Toggles the keyboard cursor.	开启或关闭键盘光标。
 ENABLE ONE! Entities in Dwarvemon use all Pokemon	只能启用一个！Dwarvemon 的实体包含所有宝可梦	l
 Feel free to pause and check out the information.	你随时可以暂停，仔细查看信息。	hq
 Fortress activity: Carve wooden helve from branch	用树枝雕刻木制斧柄	li
+Fortress activity: Make coke from bituminous coal	使用烟煤制作焦炭	li
 Guide {s} immediately when empty of desired items	未装载所需物品时，立即引导矿车向{s1}行驶	hPt
 Guide {s} in {d} days when empty of desired items	等待{d1}天且未装载所需物品时，引导矿车向{s1}行驶	hPt
 How will you respond to the tribute cancellation?	你将如何回应停止进贡的决定？	hP
@@ -32218,6 +32400,7 @@ DFHack hotkeys hint: Quickly run saved commands.	快速执行已保存的命令�
 Designate an item for dumping in a dumping zone.	指定将物品运到物品倾倒区。	hj
 Dig a channel, making a ramp on the level below.	挖掘沟道，在下一层形成斜坡。	hj
 Forgive me, but I couldn't follow your rambling.	恕我直言，你东拉西扯的，我听不明白。	hP
+Fortress activity: Make electrum bars (use bars)	制作琥珀金锭（使用金属锭）	li
 Fortress activity: suffix (unreachable location)	（无法抵达地点）	li
 Guide {s} immediately when full of desired items	所需物品装满矿车时，立即引导矿车向{s1}行驶	hPt
 Guide {s} in {d} day when empty of desired items	等待{d1}天且未装载所需物品时，引导矿车向{s1}行驶	hPt
@@ -33358,6 +33541,7 @@ DFHack hotkeys hint: Destroy the selected item.	销毁选中的物品。	l
 DFHack hotkeys hint: Teleport or destroy items.	传送或销毁物品。	l
 Desired grid height for scaling (default = {d})	缩放的目标网格高度 (默认 = {d})	wt
 Fortress activity: Agitated Wilderness Creature	躁动的野生生物	li
+Fortress activity: Make electrum bars (use ore)	制作琥珀金锭（使用矿石）	li
 Fortress activity: suffix (cannot follow order)	（无法执行命令）	li
 Fortress activity: suffix (not following order)	（未执行命令）	li
 Give in to Starvation (holding another's goods)	任由自己饿死（持有他人物品）	w
@@ -34569,6 +34753,8 @@ Desired Good Square Count in Medium Subregions	中型子区域的善良方格目
 Desired grid width for scaling (default = {d})	缩放的目标网格宽度 (默认 = {d})	wt
 Directly control a single individual or party.	可直接操控单个角色或是一支冒险小队。	hP
 Directly control a single individual or party.	可直接操控单个角色或是一支冒险小队。	w
+Fortress activity: Make billon bars (use bars)	制作毕朗合金锭（使用金属锭）	li
+Fortress activity: Make bronze bars (use bars)	制作青铜锭（使用金属锭）	li
 Fortress activity: suffix (activity cancelled)	（活动已取消）	li
 Fortress temple detail: Only members can visit	仅成员可以到访	l
 Greatly respected for preserving the knowledge	因博学多才而备受崇敬	w
@@ -35823,7 +36009,14 @@ Fail the struggle against great mortification	没能克服强烈的羞愧难当	
 For {u} of my years, I rescued lost children.	我曾经专门救助迷路的孩子，干了{u1}年。	hPt
 Forgive me, but that isn't at all convincing.	恕我直言，这完全没有说服力。	hP
 Forgotten beast wealth divisor (more = safer)	遗忘猛兽财富除数（越高越安全）
+Fortress activity: Glaze large clay/stone pot	为黏土质/石质大罐上釉	li
 Fortress activity: Link a building to trigger	将建筑连接到触发装置	li
+Fortress activity: Make billon bars (use ore)	制作毕朗合金锭（使用矿石）	li
+Fortress activity: Make brass bars (use bars)	制作黄铜锭（使用金属锭）	li
+Fortress activity: Make bronze bars (use ore)	制作青铜锭（使用矿石）	li
+Fortress activity: Make sweet potato skin dye	制作甘薯皮染料	li
+Fortress activity: Make wooden training spear	制作木制训练矛	li
+Fortress activity: Press honey from honeycomb	从蜜脾中压出蜂蜜	li
 Fortress activity: suffix (cannot leave site)	（无法离开据点）	li
 Fortress activity: suffix (improper barracks)	（兵营不合要求）	li
 Fortress activity: suffix (improper building)	（建筑不合要求）	li
@@ -36866,6 +37059,7 @@ All craftsmanship is of the highest quality.	各处工艺均为最高品质。	h
 An honor as always. How can I be of service?	每次见到你都深感荣幸。有什么需要我效劳的？	hP
 Announcement combat ability []: Breathe fire	喷火	l
 Announcement combat ability []: Create ghoul	创造食尸鬼	l
+Announcement combat artifact-pronoun []: She	她	l
 Announcement combat attack-verb []: snatches	抓住	l
 Announcement combat attack-verb []: stabs at	戳刺	l
 Announcement combat damage-verb []: bruising	挫伤	l
@@ -37160,6 +37354,12 @@ Fail the struggle against existential crisis	没能克服存在危机	hP
 Fantastic! Please come closer and ask again.	太棒了！请靠近些再问一次。	hP
 Forbid cages from sprung traps during sieges	围城期间禁用已触发陷阱中的笼子	wi
 Fortress activity: Agitated Chained Creature	躁动的被拴生物	li
+Fortress activity: Make brass bars (use ore)	制作黄铜锭（使用矿石）	li
+Fortress activity: Make pomegranate bark dye	制作石榴树皮染料	li
+Fortress activity: Make pomegranate leaf dye	制作石榴叶染料	li
+Fortress activity: Make pomegranate rind dye	制作石榴皮染料	li
+Fortress activity: Make red spinach leaf dye	制作红菠菜叶染料	li
+Fortress activity: Make sterling silver bars	制作标准银锭	li
 Fortress activity: suffix (invalid location)	（地点无效）	li
 Fortress schedule editor: soldiers to follow	所需的最少	l
 Free captives belonging to your civilization	解救本文明的俘虏	wli
@@ -38194,6 +38394,8 @@ Adventurer log reputation: training partner	训练伙伴	h
 Announcement combat ability []: Propel away	推开	l
 Announcement combat ability []: Spray juice	喷出汁液	l
 Announcement combat ability []: Spray vapor	喷出蒸气	l
+Announcement combat artifact-pronoun []: He	他	l
+Announcement combat artifact-pronoun []: It	它	l
 Announcement combat attack-verb []: punches	拳击	l
 Announcement combat attack-verb []: scratch	抓	l
 Announcement combat attack-verb []: slashes	劈	l
@@ -38435,6 +38637,10 @@ Explore the history of The Past Dimensions.	探索“往昔维度”的历史。
 Forbid toppled building items during sieges	围城期间禁用被推倒建筑的物品	wi
 Forgotten beast sensitivity (less = sooner)	遗忘猛兽敏感度（越低越早来袭）
 Fortress activity: Carve downward staircase	挖掘下行楼梯	li
+Fortress activity: Extract from land animal	提炼陆地动物	li
+Fortress activity: Make bismuth bronze bars	制作铋青铜锭	li
+Fortress activity: Make wooden training axe	制作木制训练斧	li
+Fortress activity: Mill seeds/nuts to paste	将种子/坚果磨浆	li
 Fortress activity: Organize Combat Training	组织战斗训练	li
 Fortress activity: Pen/pasture small animal	将小型动物带入畜栏或牧场	li
 Fortress activity: Repair Compound Fracture	修复开放性骨折	li
@@ -39862,9 +40068,19 @@ For {u} of my years, I wandered the wilds.	我在荒野游历了{u1}年。	hPt
 Forbid other non-hunted dead during sieges	围城期间禁用其他尸体（猎物除外）	wi
 Fortress activity: Agitated Caged Creature	躁动的笼中生物	li
 Fortress activity: Carve up/down staircase	挖掘上下楼梯	li
+Fortress activity: Cut raw glass into gems	将粗糙玻璃切割成宝石	li
+Fortress activity: Glaze clay/stone statue	为黏土/石质雕像上釉	li
 Fortress activity: Hunt for small creature	猎捕小型生物	li
+Fortress activity: Make nickel silver bars	制作镍银锭	li
+Fortress activity: Make pineapple leaf dye	制作菠萝叶染料	li
+Fortress activity: Make wooden hatch cover	制作木制活动盖板	li
+Fortress activity: Press liquid from fruit	从果实中压出液体	li
+Fortress activity: Press liquid from paste	从浆糊中压出液体	li
+Fortress activity: Process plants (barrel)	加工植物(圆桶)	li
 Fortress activity: Store item in stockpile	将物品存入储物堆	li
 Fortress activity: Watch Sparring Practice	观看比武训练	li
+Fortress activity: Weave thread into cloth	将线织成布	li
+Fortress activity: format engrave memorial	{s}（雕刻纪念铭文）	l
 Fortress activity: suffix (does not exist)	（不存在）	li
 Fortress item claim: {n}'s family heirloom	{n}的家族传家宝	ht
 Fortress item claim: {n}'s family treasure	{n}的家族珍宝	ht
@@ -41374,10 +41590,26 @@ Diplomacy tree-fell count (untamed wilds)	外交砍树限额（蛮荒之地）
 Do this if you want to keep the old save.	若想保留旧存档，请选择此项。	w
 Five hundred or more people were expelled	至少五百人遭到驱逐	h
 Follow destiny or strike out on your own.	顺从天意，还是自己闯出一条路？	w
+Fortress activity: Brew drink from plants	用植物酿酒	li
 Fortress activity: Carve upward staircase	挖掘上行楼梯	li
+Fortress activity: Catch live land animal	捕获活的陆地动物	li
+Fortress activity: Glaze clay/stone craft	为黏土/石质工艺品上釉	li
 Fortress activity: Install colony in hive	将蜂群安置到蜂箱	li
+Fortress activity: Make adamantine wafers	制作精金薄片	li
+Fortress activity: Make bayberry leaf dye	制作杨梅叶染料	li
+Fortress activity: Make black bronze bars	制作乌青铜锭	li
+Fortress activity: Make chestnut bark dye	制作栗树树皮染料	li
+Fortress activity: Make chestnut hull dye	制作栗树外壳染料	li
+Fortress activity: Make chestnut leaf dye	制作栗树叶染料	li
+Fortress activity: Make coke from lignite	使用褐煤制作焦炭	li
+Fortress activity: Make mahogany bark dye	制作桃花心木树皮染料	li
+Fortress activity: Make mangrove bark dye	制作红树树皮染料	li
+Fortress activity: Make mangrove leaf dye	制作红树叶染料	li
+Fortress activity: Make wooden stepladder	制作木制折梯	li
+Fortress activity: Mash plant into slurry	将植物研磨成纸浆	li
 Fortress activity: Release small creature	释放小型生物	li
 Fortress activity: Store item in location	将物品存放到地点	li
+Fortress activity: Weave thread into silk	将线织成丝绸	li
 Fortress activity: suffix (invalid order)	（命令无效）	li
 Grazing coefficient (higher = less grass)	放牧系数(越高=草越少)	w
 Greatly respected for protecting the weak	极大地受人尊敬的庇护弱者之人	w
@@ -42921,13 +43153,29 @@ Do not avoid a necessary conflict today.	今天不要回避必要的冲突。	hP
 Do they have a firm grip on these lands?	他们牢牢控制着这片土地吗？	hP
 Fail the struggle against great distress	没能克服强烈的苦恼	hP
 Forbid floor/wall cleaning during sieges	围城期间禁止清洁地面和墙壁	wi
+Fortress activity: Brew drink from fruit	用果实酿酒	li
+Fortress activity: Brew drink from plant	用植物酿酒	li
 Fortress activity: Collect hive products	收集蜂箱产物	li
 Fortress activity: Engrave memorial slab	雕刻纪念石板	li
 Fortress activity: Exceptionally trained	训练出众	li
+Fortress activity: Extract from raw fish	提取生鱼汁液	li
+Fortress activity: Extract metal strands	提取金属线	li
 Fortress activity: Handle small creature	照料小型生物	li
+Fortress activity: Make almond shell dye	制作扁桃壳染料	li
+Fortress activity: Make apricot bark dye	制作杏树皮染料	li
+Fortress activity: Make avocado skin dye	制作鳄梨皮染料	li
+Fortress activity: Make cabbage leaf dye	制作卷心菜叶染料	li
+Fortress activity: Make peanut shell dye	制作花生壳染料	li
+Fortress activity: Make rhubarb leaf dye	制作大黄叶染料	li
+Fortress activity: Make sheet from plant	用植物做纸张	li
+Fortress activity: Make soap from tallow	用脂油制作肥皂	li
+Fortress activity: Make sorghum leaf dye	制作高粱叶染料	li
+Fortress activity: Make spinach leaf dye	制作菠菜叶染料	li
 Fortress activity: Pit/pond small animal	将小型动物放入坑洞或池塘	li
+Fortress activity: Process plants (vial)	加工植物(小瓶)	li
 Fortress activity: Store item in vehicle	将物品存入载具	li
 Fortress activity: Store squad equipment	存放小队装备	li
+Fortress activity: Weave yarn into cloth	将纱线织成布	li
 Fortress activity: suffix (not in squad)	（不在小队中）	li
 Game frames-per-second cap (default 100)	游戏FPS上限（默认100）	w
 Game frames-per-second cap (default {d})	游戏每秒帧数上限(默认{d})	wt
@@ -44419,7 +44667,25 @@ Equipment and pet points remaining: {d}	剩余装备与宠物点数：{d}	wt
 Fail the struggle against great anguish	没能克服强烈的痛苦万分	hP
 Fail the struggle against great despair	没能克服强烈的绝望	hP
 Fail the struggle against great sadness	没能克服强烈的悲伤	hP
+Fortress activity: Glaze clay/stone jug	为黏土/石质壶上釉	li
 Fortress activity: Lead Combat Training	主持战斗训练	li
+Fortress activity: Make acacia bark dye	制作金合欢树皮染料	li
+Fortress activity: Make banana leaf dye	制作香蕉叶染料	li
+Fortress activity: Make banana peel dye	制作香蕉皮染料	li
+Fortress activity: Make cherry bark dye	制作樱桃树皮染料	li
+Fortress activity: Make cherry leaf dye	制作樱桃叶染料	li
+Fortress activity: Make coffee bean dye	制作咖啡豆染料	li
+Fortress activity: Make ginkgo leaf dye	制作银杏叶染料	li
+Fortress activity: Make potash from ash	用灰烬制草碱	li
+Fortress activity: Make potash from lye	用碱液制草碱	li
+Fortress activity: Make potato skin dye	制作马铃薯皮染料	li
+Fortress activity: Make tomato skin dye	制作番茄皮染料	li
+Fortress activity: Make turnip skin dye	制作芜菁皮染料	li
+Fortress activity: Make willow bark dye	制作柳树树皮染料	li
+Fortress activity: Make willow leaf dye	制作柳树叶染料	li
+Fortress activity: Make wooden bookcase	制作木制书架	li
+Fortress activity: Make wooden pedestal	制作木制基座	li
+Fortress activity: Process plant to bag	用袋子进行甩籽	li
 Fortress activity: Remove Rotten Tissue	清除坏死组织	li
 Fortress activity: Store item in barrel	将物品存入圆桶	li
 Fortress activity: suffix (no activity)	（无活动）	li
@@ -46064,15 +46330,45 @@ Fail the struggle against great terror	没能克服强烈的恐惧	hP
 Finish setting plant gathering orders.	结束植物采集命令设置。	hj
 Forbid other death items during sieges	围城期间禁用其他死者遗物	wi
 Fortress activity: Bring item to depot	将物品搬到贸易站	li
+Fortress activity: Carve bone bracelet	雕刻骨制手镯	li
+Fortress activity: Carve bone cabochon	雕刻骨制弧面切工	li
+Fortress activity: Carve bone figurine	雕刻骨制小塑像	li
 Fortress activity: Carve fortification	雕凿城防垛口	li
 Fortress activity: Demand Tribute from	索取贡品	li
+Fortress activity: Extract from plants	提炼植物	li
 Fortress activity: Guard tax collector	保护税务官	li
+Fortress activity: Make alder bark dye	制作桤树树皮染料	li
+Fortress activity: Make alder cone dye	制作桤树球果染料	li
+Fortress activity: Make apple bark dye	制作苹果树皮染料	li
+Fortress activity: Make apple leaf dye	制作苹果叶染料	li
+Fortress activity: Make birch bark dye	制作桦树树皮染料	li
+Fortress activity: Make blackberry dye	制作黑莓染料	li
+Fortress activity: Make guava bark dye	制作番石榴树皮染料	li
+Fortress activity: Make guava leaf dye	制作番石榴叶染料	li
+Fortress activity: Make hazel bark dye	制作榛树皮染料	li
+Fortress activity: Make hazel leaf dye	制作榛叶染料	li
+Fortress activity: Make larch bark dye	制作落叶松树皮染料	li
+Fortress activity: Make large clay pot	制作黏土质大罐	li
+Fortress activity: Make maple bark dye	制作枫树树皮染料	li
+Fortress activity: Make olive bark dye	制作橄榄树皮染料	li
+Fortress activity: Make olive leaf dye	制作橄榄叶染料	li
+Fortress activity: Make onion skin dye	制作洋葱皮染料	li
+Fortress activity: Make peach bark dye	制作桃树皮染料	li
+Fortress activity: Make plaster powder	制作石膏粉	li
+Fortress activity: Make rose gold bars	制作玫瑰金锭	li
+Fortress activity: Make traction bench	制作牵引台	li
+Fortress activity: Make watermelon dye	制作西瓜染料	li
+Fortress activity: Make wooden buckler	制作木制小盾	li
+Fortress activity: Make wooden cabinet	制作木制橱柜	li
 Fortress activity: Masterfully trained	训练高超	li
+Fortress activity: Melt a metal object	融炼一件金属物品	li
 Fortress activity: Place track vehicle	放置轨道载具	li
+Fortress activity: Prepare lavish meal	准备奢侈食物	li
 Fortress activity: Put item on display	陈列物品	li
 Fortress activity: Remove construction	拆除构筑	li
 Fortress activity: Remove stairs/ramps	移除楼梯与坡道	li
 Fortress activity: Starting fist fight	挑起斗殴	li
+Fortress activity: Tame a small animal	驯化小型动物	li
 Fortress activity: suffix (no library)	（没有图书馆）	li
 Fortress item claim: Symbol of the {s}	{s}的象征物	ht
 Gift a (large) pet or mount (new menu)	赠送（大型）宠物或坐骑（新菜单）	hP
@@ -47737,10 +48033,31 @@ Fail the struggle against great grief	没能克服强烈的悲伤	hP
 Fail the struggle against great shock	没能克服强烈的震惊	hP
 Finish Game (holding another's goods)	结束游戏（持有他人物品）	w
 Forbid your death items during sieges	围城期间禁用己方死者遗物	wi
+Fortress activity: Assemble stone axe	组装石斧	li
 Fortress activity: Bring item to shop	将物品搬到工坊	li
+Fortress activity: Carve bone earring	雕刻骨制耳环	li
+Fortress activity: Carve bone scepter	雕刻骨制节杖	li
 Fortress activity: Construct building	建造建筑	li
+Fortress activity: Make blueberry dye	制作蓝莓染料	li
+Fortress activity: Make cranberry dye	制作蔓越莓染料	li
+Fortress activity: Make pear bark dye	制作梨树皮染料	li
+Fortress activity: Make pear leaf dye	制作梨叶染料	li
+Fortress activity: Make persimmon dye	制作柿染料	li
+Fortress activity: Make pig iron bars	制作生铁锭	li
+Fortress activity: Make pine bark dye	制作松树树皮染料	li
+Fortress activity: Make plum bark dye	制作李子树皮染料	li
+Fortress activity: Make raspberry dye	制作树莓染料	li
+Fortress activity: Make rice husk dye	制作稻米谷壳染料	li
+Fortress activity: Make soap from oil	用植物油制作肥皂	li
+Fortress activity: Make wooden barrel	制作木制圆桶	li
+Fortress activity: Make wooden bucket	制作木制提桶	li
+Fortress activity: Make wooden casket	制作木棺	li
+Fortress activity: Make wooden crutch	制作木制拐杖	li
+Fortress activity: Make wooden shield	制作木制盾牌	li
+Fortress activity: Make wooden splint	制作木制夹板	li
 Fortress activity: Manage work orders	管理工单	li
 Fortress activity: Place item in tomb	将物品放入陵墓	li
+Fortress activity: Prepare a raw fish	处理一条生鱼	li
 Fortress activity: Push track vehicle	推动轨道载具	li
 Fortress activity: Skillfully trained	训练娴熟	li
 Fortress activity: suffix (no burrow)	（没有活动区）	li
@@ -49496,14 +49813,31 @@ Fanfare follows it wherever it goes.	它所到之处都有嘹亮的号角声相�
 Filter the unit list by name or job.	按名称或工作筛选单位列表。	hj
 Finish setting tree chopping orders.	结束树木砍伐命令设置。	hj
 Forbid used ammunition during sieges	围城期间禁用已用弹药	wi
+Fortress activity: Butcher an animal	屠宰一个动物	li
 Fortress activity: Cage small animal	将小型动物关入笼子	li
+Fortress activity: Carve bone amulet	雕刻骨制护身符	li
 Fortress activity: Cause trouble for	制造麻烦	li
 Fortress activity: Fire bolt thrower	发射弩箭投射器	li
 Fortress activity: Load bolt thrower	装填弩箭投射器	li
+Fortress activity: Make ash bark dye	制作白蜡树树皮染料	li
+Fortress activity: Make bayberry dye	制作杨梅染料	li
+Fortress activity: Make bilberry dye	制作越橘染料	li
+Fortress activity: Make display case	制作展示柜	li
+Fortress activity: Make eggplant dye	制作茄子染料	li
+Fortress activity: Make milk of lime	制作石灰乳	li
+Fortress activity: Make oak bark dye	制作橡树树皮染料	li
+Fortress activity: Make tea leaf dye	制作茶叶染料	li
+Fortress activity: Make wooden chair	制作木制椅子	li
+Fortress activity: Make wooden chest	制作木制箱子	li
+Fortress activity: Make wooden grate	制作木制格栅	li
+Fortress activity: Make wooden table	制作木制桌子	li
 Fortress activity: Place in traction	进行牵引治疗	li
 Fortress activity: Play Make Believe	玩扮演游戏	li
+Fortress activity: Prepare easy meal	准备简单食物	li
+Fortress activity: Prepare fine meal	准备精美食物	li
 Fortress activity: Store item in bag	将物品存入袋子	li
 Fortress activity: Store item in bin	将物品存入储物箱	li
+Fortress activity: Weave metal cloth	织金属布	li
 Fortress item claim: Heirloom of {a}	{a}的传家宝	ht
 Fortress item claim: Treasure of {a}	{a}的珍宝	ht
 Gathering fruit and leaves blueprint	采集果实与叶片蓝图	wo
@@ -51240,6 +51574,7 @@ Engraving smoothed floors and walls	在平滑地板与墙壁上雕刻	wo
 Explore, quest, fight, and perform.	探索、执行任务、战斗并表演。
 Finish removing mining etc. orders.	结束移除挖矿等命令。	hj
 Forming lakes and minerals... ({d})	正在生成湖泊与矿物……（{d}）	wt
+Fortress activity: Carve bone crown	雕刻骨制头冠	li
 Fortress activity: Chained Prisoner	被拴住的囚犯	li
 Fortress activity: Current Resident	现居居民	li
 Fortress activity: Demand surrender	要求投降	li
@@ -51251,6 +51586,10 @@ Fortress activity: Immobilize break	固定骨折部位	li
 Fortress activity: Listen to Poetry	聆听诗歌	li
 Fortress activity: Listen to Sermon	聆听布道	li
 Fortress activity: Load weapon trap	装填武器陷阱	li
+Fortress activity: Make clay bricks	制作黏土砖	li
+Fortress activity: Make clay crafts	制作黏土工艺品	li
+Fortress activity: Make clay statue	制作黏土雕像	li
+Fortress activity: Make wooden door	制作木制门	li
 Fortress activity: Pickup equipment	拾取装备	li
 Fortress activity: Store owned item	存放私人物品	li
 Fortress activity: Training Session	训练课程	li
@@ -53256,12 +53595,21 @@ Erase a portion of this stockpile.	擦除此储物堆的一部分。	hj
 Express astonishment at seeing {p}	对见到{p1}表示惊讶	hPt
 Forbid trap cleaning during sieges	围城期间禁止清洁陷阱	wi
 Forbid trap rearming during sieges	围城期间禁止重装陷阱	wi
+Fortress activity: Carve bone ring	雕刻骨制戒指	li
+Fortress activity: Catch live fish	抓捕活鱼	li
 Fortress activity: Conduct Meeting	主持会面	li
 Fortress activity: Fertilize field	给田地施肥	li
 Fortress activity: Listen to Music	聆听音乐	li
 Fortress activity: Listen to Story	聆听故事	li
 Fortress activity: Load stone trap	装填落石陷阱	li
 Fortress activity: Make Request of	提出请求	li
+Fortress activity: Make carrot dye	制作胡萝卜染料	li
+Fortress activity: Make radish dye	制作小萝卜染料	li
+Fortress activity: Make sharp rock	制作尖石	li
+Fortress activity: Make steel bars	制作钢锭	li
+Fortress activity: Make wax crafts	制作蜂蜡工艺品	li
+Fortress activity: Make wooden bed	制作木制床	li
+Fortress activity: Make wooden bin	制作木制储物箱	li
 Fortress activity: Opposed to life	仇视生命	li
 Fortress activity: Recover wounded	救助伤员	li
 Fortress activity: Return Treasure	归还财宝	li
@@ -55208,7 +55556,12 @@ Fortress activity: Fill waterskin	灌满水袋	li
 Fortress activity: Get provisions	获取补给	li
 Fortress activity: Harvest plants	收获植物	li
 Fortress activity: Load cage trap	装填笼陷阱	li
+Fortress activity: Make clay hive	制作黏土蜂箱	li
+Fortress activity: Make grape dye	制作葡萄染料	li
+Fortress activity: Make parchment	制作羊皮纸	li
+Fortress activity: Make quicklime	制作生石灰	li
 Fortress activity: Monster Slayer	怪物猎手	li
+Fortress activity: Process plants	加工植物	li
 Fortress activity: Pull the lever	拉动控制杆	li
 Fortress activity: Serve Customer	接待顾客	li
 Fortress activity: Trade at depot	在贸易站交易	li
@@ -57128,9 +57481,13 @@ Fortress activity: Gather plants	采集植物	li
 Fortress activity: Improve trade	改善贸易关系	li
 Fortress activity: Load ballista	装填弩炮	li
 Fortress activity: Load catapult	装填投石机	li
+Fortress activity: Make charcoal	制作木炭	li
+Fortress activity: Make clay jug	制作黏土壶	li
+Fortress activity: Make pearlash	制作珍珠灰	li
 Fortress activity: Perform Dance	表演舞蹈	li
 Fortress activity: Perform Music	演奏音乐	li
 Fortress activity: Play with Toy	玩玩具	li
+Fortress activity: Polish stones	打磨石头	li
 Fortress activity: Put in chains	戴上锁链	li
 Fortress activity: Recite Poetry	朗诵诗歌	li
 Fortress activity: Seek alliance	寻求结盟	li
@@ -57376,6 +57733,7 @@ Workshop recipe: format -bearing	含{s1}的{s2}	l
 Workshop recipe: format join and	{s1}和{s2}	l
 Workshop recipe: format quantity	{d} {s}	l
 Workshop recipe: games of chance	博戏用具	l
+Workshop recipe: limb/body casts	肢体/身体石膏	l
 Workshop recipe: material gypsum	石膏	l
 Workshop recipe: material strand	丝状	l
 Workshop recipe: material tallow	脂油	l
@@ -59022,6 +59380,9 @@ Erase a portion of this burrow.	擦除此活动区的一部分。	hj
 Finalizing generated objects...	完成生成的对象......	w
 Fortification carving blueprint	城防垛口开凿蓝图	wo
 Fortress activity: Bring crutch	送来拐杖	li
+Fortress activity: Collect clay	收集黏土	li
+Fortress activity: Collect sand	收集沙	li
+Fortress activity: Collect webs	收集网	li
 Fortress activity: Detail floor	雕刻地板	li
 Fortress activity: Kill various	杀死多个目标	li
 Fortress activity: Make contact	建立联系	li
@@ -59313,6 +59674,7 @@ Workshop recipe: display object	展示用具	l
 Workshop recipe: format dye mix	{s}混合染料	l
 Workshop recipe: format join or	{s1}或{s2}	l
 Workshop recipe: kind furniture	家具	l
+Workshop recipe: limb/body cast	肢体/身体石膏	l
 Workshop recipe: liquid cooking	液体烹煮用具	l
 Workshop recipe: material glass	玻璃	l
 Workshop recipe: material glaze	釉料	l
@@ -61211,7 +61573,11 @@ Fortress activity: Declare war	宣战	li
 Fortress activity: Detail wall	雕刻墙壁	li
 Fortress activity: Dig channel	挖掘沟道	li
 Fortress activity: Dress wound	包扎伤口	li
+Fortress activity: Dye leather	染皮革	li
 Fortress activity: Go shopping	购物	li
+Fortress activity: Make cheese	制作奶酪	li
+Fortress activity: Make scroll	制作卷轴	li
+Fortress activity: Mill plants	碾磨植物	li
 Fortress activity: New Arrival	刚刚抵达	li
 Fortress activity: No activity	无活动	li
 Fortress activity: Plant seeds	播种种子	li
@@ -61220,6 +61586,7 @@ Fortress activity: Release pet	释放宠物	li
 Fortress activity: Return kill	带回猎物	li
 Fortress activity: Seek infant	寻找婴儿	li
 Fortress activity: Smooth wall	打磨墙壁	li
+Fortress activity: Spin thread	纺线	li
 Fortress activity: Squad Order	小队命令	li
 Fortress activity: Store armor	存放护甲	li
 Fortress activity: Unchain pet	解开宠物的锁链	li
@@ -61509,6 +61876,7 @@ Workshop recipe: material soap	肥皂	l
 Workshop recipe: material yarn	纱线	l
 Workshop recipe: meat cleaving	劈肉用具	l
 Workshop recipe: state dyeable	可染色	l
+Workshop recipe: state perfect	完美	l
 Workshop recipe: stone boulder	石块	l
 World site action: Need leader	需要领袖	hi
 World site action: Not trading	尚未进行贸易	hi
@@ -63280,8 +63648,13 @@ Fortress activity: Apply cast	打石膏	li
 Fortress activity: Carve ramp	挖掘斜坡	li
 Fortress activity: Clean self	清洗自身	li
 Fortress activity: Clean trap	清理陷阱	li
+Fortress activity: Dye thread	染线	li
 Fortress activity: Give water	送水	li
 Fortress activity: Make peace	议和	li
+Fortress activity: Make quire	制作稿纸	li
+Fortress activity: Make totem	制作图腾	li
+Fortress activity: Render fat	将脂肪熬制成脂油	li
+Fortress activity: Tan a hide	鞣制一张皮革	li
 Fortress activity: Tell Story	讲故事	li
 Fortress activity: Underworld	地下世界生物	li
 Future such petitions: accept	今后同类申请：接受	hP
@@ -65286,10 +65659,13 @@ Famous protector of the weak	声名显赫的庇护者	w
 Finish establishing burrows.	结束建立活动区。	hj
 Forbid other non-hunted dead	禁用其他尸体（猎物除外）	wi
 Fortress activity: (Chained)	（被拴住）	li
+Fortress activity: Bind book	装订书籍	li
 Fortress activity: Dump item	倾倒物品	li
+Fortress activity: Dye cloth	染布匹	li
 Fortress activity: Fell tree	砍倒树木	li
 Fortress activity: Fill pond	给池塘注水	li
 Fortress activity: Give food	送食物	li
+Fortress activity: Make mead	酿造蜜酒	li
 Fortress activity: Mercenary	佣兵	li
 Fortress activity: Play with	玩	li
 Fortress activity: Socialize	社交	li
@@ -65577,6 +65953,8 @@ What do you want to butcher?	你想屠宰什么？	hP
 What have you been scheming?	你在谋划什么？	hP
 Where is your identity from?	你所采用的身份来自哪里？	hP
 Workshop recipe: meat boning	剔骨用具	l
+Workshop recipe: sarcophagus	华棺	l
+Workshop recipe: small rocks	小石子	l
 Workshop recipe: state blunt	钝头	l
 Workshop recipe: state dirty	脏	l
 Workshop recipe: state edged	有刃	l
@@ -67212,8 +67590,11 @@ Finish setting wall orders.	结束墙壁作业命令设置。	hj
 Focus on living in harmony.	专注于和谐共处。	hP
 Forced wild attack: enraged	被迫使用狂野攻击：怒不可遏。	hP
 Fortress activity: Activity	活动	li
+Fortress activity: Cut gems	切割宝石	li
 Fortress activity: Diplomat	外交官	li
 Fortress activity: Friendly	友善	li
+Fortress activity: Make ash	制作灰烬	li
+Fortress activity: Make lye	制作碱液	li
 Fortress activity: Reaction	进行反应	li
 Fortress activity: Research	研究	li
 Fortress activity: Retrieve	取回造物	li
@@ -67559,6 +67940,8 @@ Workshop recipe: body parts	身体部位	l
 Workshop recipe: divination	占卜用具	l
 Workshop recipe: kind screw	螺旋	l
 Workshop recipe: milk items	奶	l
+Workshop recipe: sarcophagi	华棺	l
+Workshop recipe: small rock	小石子	l
 Workshop recipe: state dyed	已染色	l
 Workshop recipe: state hard	硬质	l
 Workshop recipe: state hive	用作蜂箱	l
@@ -71417,6 +71800,7 @@ Welcome to Dwarf Fortress	欢迎来到矮人要塞	w
 What do you want to drop?	你想丢下什么？	hP
 What do you want to know?	你想了解什么？	hP
 What do you want to wear?	你想穿戴什么？	hP
+Workshop recipe: charcoal	木炭	l
 Workshop recipe: kind dye	染料	l
 World mission: Rescue {n}	营救：{n}	ht
 World site action: At war	处于战争状态	hi
@@ -73145,6 +73529,9 @@ Which pet will you gift?	你要赠送哪只宠物？	hP
 Woodcutting ({d} of {d})	伐木 ({d} of {d})	wt
 Workers gather furniture	工人搬运家具	wi
 Workers ignore furniture	工人不搬运家具	wi
+Workshop recipe: caskets	棺	l
+Workshop recipe: coffers	保险箱	l
+Workshop recipe: coffins	灵柩	l
 Workshop recipe: dye mix	混合染料	l
 World map landform: land	之地	hi
 World mission: Seize {p}	夺取：{p}	ht
@@ -74716,6 +75103,7 @@ Fortress activity: Copy	抄写	li
 Fortress activity: Fish	捕鱼	li
 Fortress activity: Hunt	狩猎	li
 Fortress activity: Kill	杀死目标	li
+Fortress activity: Make	制作	li
 Fortress activity: Play	游玩	li
 Fortress activity: Raid	袭击	li
 Fortress activity: Raze	摧毁	li
@@ -75027,8 +75415,12 @@ Welcome home, my child.	欢迎回家，我的孩子。	hP
 What do you want to do?	你想做什么？	hP
 Workers gather minerals	工人搬运矿物	wi
 Workers ignore minerals	工人不搬运矿物	wi
+Workshop recipe: casket	棺	l
+Workshop recipe: coffer	保险箱	l
+Workshop recipe: coffin	灵柩	l
 Workshop recipe: crafts	工艺品	l
 Workshop recipe: gypsum	石膏	l
+Workshop recipe: pearls	珍珠	l
 World mission: Raid {p}	突袭：{p}	ht
 World mission: Raze {p}	夷平：{p}	ht
 World site type: castle	Castle	hi
@@ -76983,6 +77375,8 @@ Workers ignore animals	工人不搬运动物	wi
 Workshop recipe: cloth	布匹	l
 Workshop recipe: glaze	釉料	l
 Workshop recipe: items	物品	l
+Workshop recipe: pearl	珍珠	l
+Workshop recipe: rocks	石子	l
 World site type: tower	Tower	hi
 World site type: vault	Vault	hi
 World site: {s} of {p}	{p}（{s}）	hti
@@ -78999,6 +79393,7 @@ Workers ignore bodies	工人不搬运尸体	wi
 Workers ignore refuse	工人不收集垃圾	wi
 Workshop recipe: flux	熔剂	l
 Workshop recipe: item	物品	l
+Workshop recipe: rock	石子	l
 Workshop recipe: silk	丝布	l
 World site type: camp	Camp	hi
 World site type: cave	Cave	hi

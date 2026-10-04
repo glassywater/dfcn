@@ -1,0 +1,273 @@
+# edition	reason selector	block	complete reason production (terminal period appended once)
+reference	0	0x141325417	Cannot reach site
+reference	1	0x14132542f	Interrupted by {unit|combat}
+reference	2	0x1413254a5	Moved
+reference	3	0x1413254b1	Need empty bucket
+reference	4	0x1413254bd	Need empty trap
+reference	5	0x1413254c9	Need empty bag
+reference	6	0x1413254d5	Need empty cage
+reference	7	0x14132551d	Incapable of carrying
+reference	8	0x141325529	Too injured
+reference	9	0x141325535	Exhausted
+reference	10	0x14132554d	Animal inaccessible
+reference	11	0x14132557d	Item inaccessible
+reference	12	0x141325559	Patient inaccessible
+reference	13	0x141325565	Infant inaccessible
+reference	14	0x141325571	No partner
+reference	15	0x1413255ad	Nothing in cage
+reference	16	0x1413255b9	Nothing to cage
+reference	17	0x1413255c5	Nothing to catch
+reference	18	0x1413255d1	No patient
+reference	19	0x1413255dd	Patient not resting
+reference	20	0x1413255e9	No infant
+reference	21	0x1413255f5	Already leading creature
+reference	22	0x141325601	No food available
+reference	23	0x14132566d	Needs {job-item requirement}[ in linked stockpile iff reason 135]
+reference	24	0x14132580d	No item
+reference	25	0x141325801	No ammunition
+reference	26	0x141325819	No weapon
+reference	27	0x1413257e9	Wrong ammunition
+reference	28	0x1413257f5	Ammunition inaccessible
+reference	29	0x141325825	Item blocking site
+reference	30	0x14132583d	Animal not restrained
+reference	31	0x141325849	No creature
+reference	32	0x141325861	No building
+reference	33	0x141325855	Inappropriate building
+reference	34	0x141325879	No designated area
+reference	35	0x14132586d	No floor space
+reference	36	0x141325885	No party
+reference	37	0x141325891	Wrong justice state
+reference	38	0x14132589d	Nothing in building
+reference	39	0x1413258a9	Relieved
+reference	40	0x1413258b5	Water is frozen
+reference	41	0x141325981	Too insane
+reference	42	0x1413259b1	Taken by mood
+reference	43	0x1413259bd	Went insane
+reference	44	0x1413259c9	Throwing tantrum
+reference	45	0x1413259d5	Could not find path
+reference	46	0x1413259e1	Path blocked
+reference	47	0x1413259ed	Seeking artifact
+reference	48	0x1413259f9	Handling dangerous creature
+reference	49	0x141325a05	Going to bed
+reference	50	0x141325a11	Seeking Infant
+reference	51	0x141325a1d	Dangerous terrain
+reference	52	0x141325a35	Job item lost or destroyed | Job item misplaced (job wording flag)
+reference	53	0x141325a4e	Getting food
+reference	54	0x141325a5a	Getting water
+reference	55	0x141325a66	Hunting vermin for food
+reference	56	0x141325a72	Target inaccessible
+reference	57	0x141325a8a	No target
+reference	58	0x141325a96	No mechanism for target
+reference	59	0x141325aa2	No target building
+reference	60	0x141325aae	No mechanism for trigger
+reference	61	0x141325aba	No trigger
+reference	62	0x141325b74	No available traction bench
+reference	63	0x141325ac6	Attacking building
+reference	64	0x141325ad2	Lost pick
+reference	65	0x141325ade	Invalid officer
+reference	66	0x141325aea	"Farewell!"  Leaving
+reference	67	0x141325af6	Removed from guard
+reference	68	0x141325b02	Equipment mismatch
+reference	69	0x141325b0e	Unconscious
+reference	70	0x141325b1a	Webbed
+reference	71	0x141325b26	Paralyzed
+reference	72	0x141325b32	Caged
+reference	73	0x141325b4a	Getting something to drink
+reference	74	0x141325b56	Using well
+reference	75	0x141325b62	Lost axe
+reference	76	0x141325541	Resting injury
+reference	77	0x14132540b	Unscheduled
+reference	78	0x141325a29	Forbidden area
+reference	79	0x141325589	Drop-off inaccessible
+reference	80	0x141325595	Building inaccessible
+reference	81	0x1413255a1	Area inaccessible
+reference	82	0x14132560d	Water source vanished
+reference	83	0x141325619	No water source
+reference	84	0x14132563d	No bucket at well
+reference	85	0x141325649	Bucket full of extraneous material
+reference	86	0x141325655	Well dry
+reference	87	0x141325831	Building site submerged
+reference	88	0x1413254e1	Need valid, active sand collection zone
+reference	89	0x141325505	Sand vanished
+reference	90	0x141325499	Area became inappropriate
+reference	91	0x141325625	Water source contaminated
+reference	92	0x141325631	Creature occupying site
+reference	93	0x141325661	Need office
+reference	94	0x141325b6b	Not responsible for trade
+reference	95	0x14132548d	Inappropriate dig square
+reference	96	0x141325a7e	Target too injured
+reference	97	0x141325423	Getting married
+reference	98	0x141325b7d	Need splint
+reference	99	0x141325b86	Need thread
+reference	100	0x141325b8f	Need cloth
+reference	101	0x141325b98	Need crutch
+reference	102	0x141325ba1	Bad script! #1
+reference	103	0x141325baa	Bad script! #2
+reference	104	0x141325bb3	Bad script! #3
+reference	105	0x141325bbc	Need bag containing powder suitable for cast application
+reference	106	0x141325819	No weapon
+reference	107	0x141325bce	No appropriate ammunition
+reference	108	0x141325511	Clay vanished
+reference	109	0x1413254ed	Need valid, active clay collection zone
+reference	110	0x1413254f9	No available colony
+reference	111	0x141325bf0	terminal period only
+reference	112	0x141325bc5	No weapon for execution
+reference	113	0x141325bd7	Not appointed
+reference	114	0x141325be0	No longer requested
+reference	115	0x1413258cd	Mortally afraid
+reference	116	0x1413258d9	Experiencing emotional shock
+reference	117	0x1413258e5	Horrified
+reference	118	0x1413258f1	Grieving
+reference	119	0x1413258c1	Terrified
+reference	120	0x141325b3e	In Custody
+reference	121	0x14132598d	Too depressed
+reference	122	0x141325999	Oblivious
+reference	123	0x1413259a5	Catatonic
+reference	124	0x1413258fd	Too sad
+reference	125	0x141325909	In agony
+reference	126	0x141325915	Anguished
+reference	127	0x141325921	Despairing
+reference	128	0x14132592d	Dismayed
+reference	129	0x141325939	Distressed
+reference	130	0x141325945	Frightened
+reference	131	0x141325951	Miserable
+reference	132	0x14132595d	Mortified
+reference	133	0x141325969	Shaken
+reference	134	0x141325975	In existential crisis
+reference	135	0x14132566d	Needs {job-item requirement}[ in linked stockpile iff reason 135]
+classic	0	0x141320387	Cannot reach site
+classic	1	0x14132039f	Interrupted by {unit|combat}
+classic	2	0x141320415	Moved
+classic	3	0x141320421	Need empty bucket
+classic	4	0x14132042d	Need empty trap
+classic	5	0x141320439	Need empty bag
+classic	6	0x141320445	Need empty cage
+classic	7	0x14132048d	Incapable of carrying
+classic	8	0x141320499	Too injured
+classic	9	0x1413204a5	Exhausted
+classic	10	0x1413204bd	Animal inaccessible
+classic	11	0x1413204ed	Item inaccessible
+classic	12	0x1413204c9	Patient inaccessible
+classic	13	0x1413204d5	Infant inaccessible
+classic	14	0x1413204e1	No partner
+classic	15	0x14132051d	Nothing in cage
+classic	16	0x141320529	Nothing to cage
+classic	17	0x141320535	Nothing to catch
+classic	18	0x141320541	No patient
+classic	19	0x14132054d	Patient not resting
+classic	20	0x141320559	No infant
+classic	21	0x141320565	Already leading creature
+classic	22	0x141320571	No food available
+classic	23	0x1413205dd	Needs {job-item requirement}[ in linked stockpile iff reason 135]
+classic	24	0x14132077d	No item
+classic	25	0x141320771	No ammunition
+classic	26	0x141320789	No weapon
+classic	27	0x141320759	Wrong ammunition
+classic	28	0x141320765	Ammunition inaccessible
+classic	29	0x141320795	Item blocking site
+classic	30	0x1413207ad	Animal not restrained
+classic	31	0x1413207b9	No creature
+classic	32	0x1413207d1	No building
+classic	33	0x1413207c5	Inappropriate building
+classic	34	0x1413207e9	No designated area
+classic	35	0x1413207dd	No floor space
+classic	36	0x1413207f5	No party
+classic	37	0x141320801	Wrong justice state
+classic	38	0x14132080d	Nothing in building
+classic	39	0x141320819	Relieved
+classic	40	0x141320825	Water is frozen
+classic	41	0x1413208f1	Too insane
+classic	42	0x141320921	Taken by mood
+classic	43	0x14132092d	Went insane
+classic	44	0x141320939	Throwing tantrum
+classic	45	0x141320945	Could not find path
+classic	46	0x141320951	Path blocked
+classic	47	0x14132095d	Seeking artifact
+classic	48	0x141320969	Handling dangerous creature
+classic	49	0x141320975	Going to bed
+classic	50	0x141320981	Seeking Infant
+classic	51	0x14132098d	Dangerous terrain
+classic	52	0x1413209a5	Job item lost or destroyed | Job item misplaced (job wording flag)
+classic	53	0x1413209be	Getting food
+classic	54	0x1413209ca	Getting water
+classic	55	0x1413209d6	Hunting vermin for food
+classic	56	0x1413209e2	Target inaccessible
+classic	57	0x1413209fa	No target
+classic	58	0x141320a06	No mechanism for target
+classic	59	0x141320a12	No target building
+classic	60	0x141320a1e	No mechanism for trigger
+classic	61	0x141320a2a	No trigger
+classic	62	0x141320ae4	No available traction bench
+classic	63	0x141320a36	Attacking building
+classic	64	0x141320a42	Lost pick
+classic	65	0x141320a4e	Invalid officer
+classic	66	0x141320a5a	"Farewell!"  Leaving
+classic	67	0x141320a66	Removed from guard
+classic	68	0x141320a72	Equipment mismatch
+classic	69	0x141320a7e	Unconscious
+classic	70	0x141320a8a	Webbed
+classic	71	0x141320a96	Paralyzed
+classic	72	0x141320aa2	Caged
+classic	73	0x141320aba	Getting something to drink
+classic	74	0x141320ac6	Using well
+classic	75	0x141320ad2	Lost axe
+classic	76	0x1413204b1	Resting injury
+classic	77	0x14132037b	Unscheduled
+classic	78	0x141320999	Forbidden area
+classic	79	0x1413204f9	Drop-off inaccessible
+classic	80	0x141320505	Building inaccessible
+classic	81	0x141320511	Area inaccessible
+classic	82	0x14132057d	Water source vanished
+classic	83	0x141320589	No water source
+classic	84	0x1413205ad	No bucket at well
+classic	85	0x1413205b9	Bucket full of extraneous material
+classic	86	0x1413205c5	Well dry
+classic	87	0x1413207a1	Building site submerged
+classic	88	0x141320451	Need valid, active sand collection zone
+classic	89	0x141320475	Sand vanished
+classic	90	0x141320409	Area became inappropriate
+classic	91	0x141320595	Water source contaminated
+classic	92	0x1413205a1	Creature occupying site
+classic	93	0x1413205d1	Need office
+classic	94	0x141320adb	Not responsible for trade
+classic	95	0x1413203fd	Inappropriate dig square
+classic	96	0x1413209ee	Target too injured
+classic	97	0x141320393	Getting married
+classic	98	0x141320aed	Need splint
+classic	99	0x141320af6	Need thread
+classic	100	0x141320aff	Need cloth
+classic	101	0x141320b08	Need crutch
+classic	102	0x141320b11	Bad script! #1
+classic	103	0x141320b1a	Bad script! #2
+classic	104	0x141320b23	Bad script! #3
+classic	105	0x141320b2c	Need bag containing powder suitable for cast application
+classic	106	0x141320789	No weapon
+classic	107	0x141320b3e	No appropriate ammunition
+classic	108	0x141320481	Clay vanished
+classic	109	0x14132045d	Need valid, active clay collection zone
+classic	110	0x141320469	No available colony
+classic	111	0x141320b60	terminal period only
+classic	112	0x141320b35	No weapon for execution
+classic	113	0x141320b47	Not appointed
+classic	114	0x141320b50	No longer requested
+classic	115	0x14132083d	Mortally afraid
+classic	116	0x141320849	Experiencing emotional shock
+classic	117	0x141320855	Horrified
+classic	118	0x141320861	Grieving
+classic	119	0x141320831	Terrified
+classic	120	0x141320aae	In Custody
+classic	121	0x1413208fd	Too depressed
+classic	122	0x141320909	Oblivious
+classic	123	0x141320915	Catatonic
+classic	124	0x14132086d	Too sad
+classic	125	0x141320879	In agony
+classic	126	0x141320885	Anguished
+classic	127	0x141320891	Despairing
+classic	128	0x14132089d	Dismayed
+classic	129	0x1413208a9	Distressed
+classic	130	0x1413208b5	Frightened
+classic	131	0x1413208c1	Miserable
+classic	132	0x1413208cd	Mortified
+classic	133	0x1413208d9	Shaken
+classic	134	0x1413208e5	In existential crisis
+classic	135	0x1413205dd	Needs {job-item requirement}[ in linked stockpile iff reason 135]

@@ -34,6 +34,7 @@ struct NativeAnnouncementParagraph {
     std::vector<NativeAnnouncementDisplayRow> rows;
 };
 static std::vector<NativeAnnouncementParagraph> native_adventure_announcement_paragraphs();
+static std::vector<NativeAnnouncementParagraph> native_announcement_log_paragraphs();
 static bool native_announcement_history_index(std::vector<uintptr_t> &records,
     int32_t &next_id, uintptr_t &world);
 static bool native_announcement_history_row(uintptr_t record, NativeAnnouncementHistoryRow &row);
@@ -260,8 +261,19 @@ static void native_announcement_group_change(NativeAnnouncementSnapshot &snapsho
 
 static std::mutex g_native_announcement_mutex;
 static std::deque<NativeAnnouncementSource> g_native_announcement_sources;
+// The compact renderer owns this borrowed native vector for the current
+// frame. No game pointer is retained beyond its draw epoch or core shutdown.
+static uintptr_t g_native_announcement_log_owner = 0;
+static uint64_t g_native_announcement_log_epoch = 0;
 struct NativeSpeechSource { std::string rendered, original; };
 static std::deque<NativeSpeechSource> g_native_speech_sources;
+
+static void remember_native_announcement_log_owner(uintptr_t owner) {
+    std::lock_guard<std::mutex> lock(g_native_announcement_mutex);
+    g_native_announcement_log_owner = owner;
+    g_native_announcement_log_epoch = owner
+        ? g_embark_item_capture_epoch.load(std::memory_order_acquire) : 0;
+}
 
 static void remember_native_speech_source(std::string_view original, std::string_view rendered) {
     if (original.empty() || rendered.empty() || original == rendered) return;
@@ -536,6 +548,8 @@ static void clear_native_announcement_sources() {
     std::lock_guard<std::mutex> lock(g_native_announcement_mutex);
     g_native_announcement_sources.clear();
     g_native_speech_sources.clear();
+    g_native_announcement_log_owner = 0;
+    g_native_announcement_log_epoch = 0;
     g_native_announcement_history_index.clear();
     g_native_announcement_history_next_id = -1;
     g_native_announcement_history_world = 0;

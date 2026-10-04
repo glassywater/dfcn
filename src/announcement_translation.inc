@@ -18,6 +18,14 @@ std::optional<std::string> Overlay::translate_complete_announcement(
     const auto translate_block = [&](std::string_view block, const std::vector<int> &colors,
             std::vector<int> &translated_colors) -> std::optional<std::string> {
         translated_colors.clear();
+        // Native fortress constructors have typed actor/job/item fields.
+        // Resolve their entire production before the general catalogue can
+        // consume a pronoun or a later clause as a generic string field.
+        if (const auto native = translate_announcement_combat(block, "fortress-announcement")) {
+            for (unsigned char ch : *native)
+                if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
+            return native;
+        }
         if (!colors.empty() && std::all_of(colors.begin(), colors.end(),
                 [&](int color) { return color == colors.front(); })) {
             if (const auto siren = translate_dfhack_siren_announcement(block)) {

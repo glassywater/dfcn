@@ -1,0 +1,11 @@
+# edition	identity	role	start	end
+reference	PE:6a70a6d9:02711000	cancel	0x141325080	0x141328443
+reference	PE:6a70a6d9:02711000	job-wrapper	0x140d03170	0x140d0329b
+reference	PE:6a70a6d9:02711000	job-caption	0x140d032b0	0x140d082d4
+reference	PE:6a70a6d9:02711000	job-item-requirement	0x140a2adb0	0x140a2c60c
+reference	PE:6a70a6d9:02711000	requirement-item-noun	0x140a82c10	0x140a882fc
+classic	PE:6a70b91c:0270a000	cancel	0x14131fff0	0x1413233b3
+classic	PE:6a70b91c:0270a000	job-wrapper	0x140d001b0	0x140d002db
+classic	PE:6a70b91c:0270a000	job-caption	0x140d002f0	0x140d05314
+classic	PE:6a70b91c:0270a000	job-item-requirement	0x140a285e0	0x140a29e3c
+classic	PE:6a70b91c:0270a000	requirement-item-noun	0x140a7fc90	0x140a8537c

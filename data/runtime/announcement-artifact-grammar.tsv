@@ -1,0 +1,18 @@
+# Artifact-creation records from both configured Windows 53.16 PE images.
+# Complete producer and all field producers: data/extracted/fortress-announcement-artifacts/.
+# scope	source	target	semantic field scopes	native construction evidence
+fortress-announcement	{s} has created {s}, a {s}!	{s1}创造了{s2}，一件{s3}！	$unit,$book,$item	steam 0xa95780:0xa9670f..0xa967f4 -> 0xa96f15; classic 0xa92800:0xa9378f..0xa93874 -> 0xa93f95; empty claim branch when historical figure or soul is absent
+fortress-announcement	{s} has created {s}, a {s}! {s}	{s1}创造了{s2}，一件{s3}！{s4}	$unit,$book,$item,artifact-claim	steam 0xa95780:0xa9670f..0xa96e0d -> 0xa96f15; classic 0xa92800:0xa9378f..0xa93e8d -> 0xa93f95; one optional native ownership sentence, fully consumed
+artifact-claim	{s} claims it as a personal treasure.	{s1}宣布将其作为私人珍宝。	artifact-pronoun	steam 0xa9697a..0xa969d4 -> 0xa96bd5..0xa96c86; classic 0xa939fa..0xa93a54 -> 0xa93c55..0xa93d06
+artifact-claim	{s} claims it as a family heirloom.	{s1}宣布将其作为传家宝。	artifact-pronoun	steam 0xa969f1..0xa96b15 -> 0xa96b62..0xa96b85; classic 0xa93a71..0xa93b95 -> 0xa93be2..0xa93c05; artifact family ancestor equals current historical figure
+artifact-claim	{s} claims it as an heirloom in the name of the family ancestor {s}.	{s1}以家族先祖{s2}之名，宣布将其作为传家宝。	artifact-pronoun,artifact-ancestor	steam 0xa96b0f..0xa96b60 -> 0xb92f10; classic 0xa93b8f..0xa93be0 -> 0xb8ff50; distinct historical ancestor ID
+artifact-claim	{s} offers it to {s}.	{s1}将其献给{s2}。	artifact-pronoun,artifact-recipient	steam 0xa96cd7..0xa96e0d -> 0xb92900; classic 0xa93d57..0xa93e8d -> 0xb8f940; low/overridden personal ownership predicate
+artifact-pronoun	He	他		steam 0xa969be/0xa96a3a/0xa96d2b compare unit+0x12e to 1; classic 0xa93a3e/0xa93aba/0xa93dab
+artifact-pronoun	She	她		steam 0xa96a4f/0xa96bd5/0xa96d3f compare unit+0x12e to 0; classic 0xa93acf/0xa93c55/0xa93dbf
+artifact-pronoun	It	它		steam 0xa96a82/0xa96c08/0xa96d52; classic 0xa93b02/0xa93c88/0xa93dd2; all other unit sex values
+artifact-ancestor	{s}	{s1}	$unit	steam 0xa96b5b -> 0xb92f10..0xb93927; classic 0xa93bdb -> 0xb8ff50..0xb90967; entire historical figure/caste/status identity
+artifact-ancestor	Nameless	无名者		steam ancestor helper 0xb93073; classic ancestor helper 0xb900b3; name flag absent with valid figure
+artifact-ancestor	an unidentified creature	一名身份不明的生物		steam ancestor helper 0xb9310e; classic ancestor helper 0xb9014e; identification metadata fallback
+artifact-ancestor	an unknown creature	一名未知生物		steam ancestor helper 0xb938dc; classic ancestor helper 0xb9091c; invalid historical figure ID
+artifact-recipient	{s}	{s1}	$name	steam 0xa96df4 -> 0xb92900..0xb92a78; classic 0xa93e74 -> 0xb8f940..0xb8fab8; entire native entity name
+artifact-recipient	an unknown civilization	一个未知文明		steam 0xb92a4c; classic 0xb8fa8c; missing entity fallback

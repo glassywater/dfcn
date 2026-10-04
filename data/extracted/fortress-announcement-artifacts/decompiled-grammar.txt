@@ -1,0 +1,108 @@
+Native source reconstruction, offline disassembly only.
+
+Images are the exact native-pe-images.json reference and classic files.
+Steam PE:6a70a6d9:02711000, artifact producer RVA a95780..a9714e.
+Classic PE:6a70b91c:0270a000, artifact producer RVA a92800..a941ce.
+Every instruction of both producers and five invoked display field producers
+is retained in the sibling *.asm files. native-branches.tsv retains all direct
+conditional/unconditional control-flow edges in those bodies. native-fields.tsv
+retains actual call sites, and native-literals.tsv retains immediate fragments,
+RIP operands and the original whole literal for interior vector-copy operands.
+
+Source builder (Steam RVAs; Classic counterpart is generally -2f80 in this
+producer, with helper callees recorded separately rather than offset-guessed):
+
+  source = unit_display(unit, mode=0)                         a9670f
+  source += " has created "                                 a9671a
+  source += artifact_name(artifact.name)                      a9675b
+  source += ", a "                                           a9678f
+  source += item_description(item, skip_artifact_name=true)   a967b2
+  source += "!"                                              a967e6
+  hf = historical_figure_lookup(unit.c30, unit.1274)           a9680d
+  if hf is null or unit.soul(a98) is null:
+      goto submit                                           a96818/a96828
+
+  personal_value = clamp(soul.2da + optional_adjustment.12, 0, 100)
+  competing_value = clamp(soul.316 + optional_adjustment.4e, 0, 100)
+  personal = personal_value > 60 and
+             (competing_value < personal_value or
+              competing_value == personal_value and random_tie())
+  if not personal:
+      offer_to_current_entity(artifact)                      a96cec
+      source += " " + capitalize(sex_pronoun(unit.12e))
+      source += " offers it to " + entity_name(current_entity.id) + "."
+                                                            a96dcc/a96df4
+      goto submit
+
+  heirloom_eligible = hf.ancestor_id(c0) != -1 and
+                     soul_family_value_helper(soul+248, 2) > 25 and
+                     valid_unit_civilization(unit.a4) and
+                     civilization_flags[8] has bit 8 and
+                     unit.d80 == null
+  if not heirloom_eligible:
+      assign_personal_claim(artifact)                        a96986
+      source += " " + capitalize(sex_pronoun(unit.12e))
+      source += " claims it as a personal treasure."         a96c78
+      goto submit
+
+  native unit/flags predicates at a96958..a969ef can still redirect to
+  personal claim; otherwise assign family claim at a96a02.
+  source += " " + capitalize(sex_pronoun(unit.12e))
+  if hf.ancestor_id(c0) == hf.id(e0):
+      source += " claims it as a family heirloom."           a96b0f/a96b68
+  else:
+      source += " claims it as an heirloom in the name of the family ancestor "
+      source += historical_figure_display(hf.ancestor_id)    a96b1d/a96b5b
+      source += "."
+
+submit:
+  submit one complete report with announcement type 0x60056  a96ed7/a96f15
+
+The pronunciation branch is unit sex 1=He, 0=She, otherwise It. This yields
+one base-only sentence and four suffix forms for each pronoun: 13 complete
+native record forms. The new reloadable grammar factors those forms through
+typed pronoun/claim scopes. A suffix is never a new independent report in this
+constructor; all text is appended to the same rbp+180 string before a96f15.
+
+Display-field producers (full saved bodies, including every native branch):
+  creator: Steam 1330c30..13312b8, Classic 132bba0..132c228.
+    Actor identity, nickname, caste/profession and training flags are one
+    display field. Native finite status words are Trained, -Trained-,
+    +Trained+, *Trained*, Tame and Semi-Wild. Name/caste/profession values
+    come from the same existing shared identity dictionaries and RAW data.
+  artifact: Steam a94030..a946d1, Classic a910b0..a91751.
+    Name language mode chooses native compound, translated gloss, nickname
+    quoted with a backtick/apostrophe, or combined forms. Material/caste
+    word IDs are resolved through native language tables; no English suffix
+    prose occurs in the artifact title producer.
+  item: Steam c65450..c65f0a, Classic c62490..c62f4a.
+    These are two chained pdata portions of ONE function. Saving only the
+    initial unwind range loses the virtual object-description branch.
+    skip_artifact_name=true from the announcement goes to the object path,
+    avoiding substitution of its artifact title. Virtual +5f0 produces the
+    whole item/material noun and +508/+518/+5d8 choose designation marks.
+    The other helper mode contains named artifact/book branches and (copy),
+    retained in source extraction but bypassed by this caller's true flag.
+  ancestor: Steam b92f10..b93927, Classic b8ff50..b90967.
+    Known historical figure names can carry caste, ghostly/zombie status,
+    epithet and language mode. Finite missing-name/figure branches include
+    Nameless, an unidentified creature and an unknown creature. Generic
+    interrogator/subject/myself/link markup options also exist in this shared
+    helper; their call-dependent flags are recorded in its complete body.
+  recipient: Steam b92900..b92a78, Classic b8f940..b8fab8.
+    Entity lookup calls the shared generated-name field; absent entity returns
+    an unknown civilization. Optional LPAGE markup is native UI link syntax.
+
+Translation integration:
+  Import announcement-artifact-grammar.tsv using ordinary combat_entries.
+  Resolve scope fortress-announcement before the generic help/catalog parser.
+  Creator=$unit, title=$book, object=$item, ancestor=$unit, entity=$name.
+  Keep every noun field fully consumed; an item capture cannot absorb "! He".
+  artifact-claim is private to its owning complete native record, so the
+  suffix is not turned into a global standalone announcement guessing rule.
+
+The existing adventure-announcement catalog already has all 13 complete
+record templates. The visible untranslated claims/offers therefore cannot be
+fixed just by adding one screenshot phrase: the compact Announcements modal
+must first reconstruct the entire original report and all of its physical
+wrap rows, even if a prefix row already produces a generic translation.

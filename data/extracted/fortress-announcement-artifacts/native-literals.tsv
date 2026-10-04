@@ -1,0 +1,301 @@
+edition	image_identity	producer	function_rva	instruction_rva	encoding	literal_rva	operand_role	source
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa9671a	rip-relative	0x16ced80	finite-text-operand-or-substring	 has created 
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa9678f	rip-relative	0x15fd470	finite-text-operand-or-substring	, a 
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa967e6	rip-relative	0x15ee438	finite-text-operand-or-substring	!
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa9698e	rip-relative	0x15fcfe8	separator	  
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa969cd	rip-relative	0x16ceccc	finite-text-operand-or-substring	he
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96a0a	rip-relative	0x15fcfe8	separator	  
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96a46	rip-relative	0x16ceccc	finite-text-operand-or-substring	he
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96a5f	rip-relative	0x16cecc8	finite-text-operand-or-substring	she
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96a6c	rip-relative	0x16cecca	finite-text-operand-or-substring	e
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96a82	rip-relative	0x15ee4d4	finite-text-operand-or-substring	it
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96aef	rip-relative	0x15e873c	separator	 
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96b1d	rip-relative	0x16ced40	finite-text-operand-or-substring	claims it as an heirloom in the name of the family ancestor 
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96b68	rip-relative	0x16ced20	finite-text-operand-or-substring	claims it as a family heirloom
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96b77	rip-relative	0x15e85b4	finite-text-operand-or-substring	.
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96be5	rip-relative	0x16cecc8	finite-text-operand-or-substring	she
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96bf2	rip-relative	0x16cecca	finite-text-operand-or-substring	e
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96c08	rip-relative	0x15ee4d4	finite-text-operand-or-substring	it
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96c78	rip-relative	0x16cedc0	finite-text-operand-or-substring	 claims it as a personal treasure.
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96cf4	rip-relative	0x15fcfe8	separator	  
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96d36	rip-relative	0x16ceccc	finite-text-operand-or-substring	he
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96d43	rip-relative	0x16cecc8	finite-text-operand-or-substring	she
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96d52	rip-relative	0x15ee4d4	finite-text-operand-or-substring	it
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96dcc	rip-relative	0x16cedb0	finite-text-operand-or-substring	 offers it to 
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96dff	rip-relative	0x15e85b4	finite-text-operand-or-substring	.
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa9671a	whole-cstring-source	0x16ced80	source-offset=0	 has created 
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa9678f	whole-cstring-source	0x15fd470	source-offset=0	, a 
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa967e6	whole-cstring-source	0x15ee438	source-offset=0	!
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa9698e	whole-cstring-source	0x15fcfe8	source-offset=0	  
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa969cd	whole-cstring-source	0x16ceccc	source-offset=0	he
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96a0a	whole-cstring-source	0x15fcfe8	source-offset=0	  
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96a46	whole-cstring-source	0x16ceccc	source-offset=0	he
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96a5f	whole-cstring-source	0x16cecc8	source-offset=0	she
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96a6c	whole-cstring-source	0x16cecc8	source-offset=2	she
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96a82	whole-cstring-source	0x15ee4d4	source-offset=0	it
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96aef	whole-cstring-source	0x15e873c	source-offset=0	 
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96b1d	whole-cstring-source	0x16ced40	source-offset=0	claims it as an heirloom in the name of the family ancestor 
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96b68	whole-cstring-source	0x16ced20	source-offset=0	claims it as a family heirloom
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96b77	whole-cstring-source	0x15e85b4	source-offset=0	.
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96be5	whole-cstring-source	0x16cecc8	source-offset=0	she
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96bf2	whole-cstring-source	0x16cecc8	source-offset=2	she
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96c08	whole-cstring-source	0x15ee4d4	source-offset=0	it
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96c78	whole-cstring-source	0x16cedc0	source-offset=0	 claims it as a personal treasure.
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96cf4	whole-cstring-source	0x15fcfe8	source-offset=0	  
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96d36	whole-cstring-source	0x16ceccc	source-offset=0	he
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96d43	whole-cstring-source	0x16cecc8	source-offset=0	she
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96d52	whole-cstring-source	0x15ee4d4	source-offset=0	it
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96dcc	whole-cstring-source	0x16cedb0	source-offset=0	 offers it to 
+steam	PE:6a70a6d9:02711000	artifact-creation	0xa95780	0xa96dff	whole-cstring-source	0x15e85b4	source-offset=0	.
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x1330e5d	rip-relative	0x15e90d8	separator	, 
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x1330f58	rip-relative	0x15e9718	finite-text-operand-or-substring	""""
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x1330fad	rip-relative	0x15e9718	finite-text-operand-or-substring	""""
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x1330fc2	rip-relative	0x15e90d8	separator	, 
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x1331001	rip-relative	0x15e90d8	separator	, 
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x133105d	rip-relative	0x15e90d8	separator	, 
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x13310b8	rip-relative	0x1615540	separator	 (
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x13310f4	rip-relative	0x1782c58	finite-text-operand-or-substring	Trained
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x1331100	rip-relative	0x1782c78	finite-text-operand-or-substring	-Trained-
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x133110c	rip-relative	0x1782c68	finite-text-operand-or-substring	+Trained+
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x1331118	rip-relative	0x1782c90	finite-text-operand-or-substring	*Trained*
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x133114c	rip-relative	0x1782c58	finite-text-operand-or-substring	Trained
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x133119c	rip-relative	0x1782c58	finite-text-operand-or-substring	Trained
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x13311c8	rip-relative	0x1782c84	finite-text-operand-or-substring	Tame
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x13311d1	rip-relative	0x1782cb0	finite-text-operand-or-substring	Semi-Wild
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x13311e9	rip-relative	0x1615580	separator	)
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x1330e5d	whole-cstring-source	0x15e90d8	source-offset=0	, 
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x1330f58	whole-cstring-source	0x15e9718	source-offset=0	""""
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x1330fad	whole-cstring-source	0x15e9718	source-offset=0	""""
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x1330fc2	whole-cstring-source	0x15e90d8	source-offset=0	, 
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x1331001	whole-cstring-source	0x15e90d8	source-offset=0	, 
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x133105d	whole-cstring-source	0x15e90d8	source-offset=0	, 
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x13310b8	whole-cstring-source	0x1615540	source-offset=0	 (
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x13310f4	whole-cstring-source	0x1782c58	source-offset=0	Trained
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x1331100	whole-cstring-source	0x1782c78	source-offset=0	-Trained-
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x133110c	whole-cstring-source	0x1782c68	source-offset=0	+Trained+
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x1331118	whole-cstring-source	0x1782c90	source-offset=0	*Trained*
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x133114c	whole-cstring-source	0x1782c58	source-offset=0	Trained
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x133119c	whole-cstring-source	0x1782c58	source-offset=0	Trained
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x13311c8	whole-cstring-source	0x1782c84	source-offset=0	Tame
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x13311d1	whole-cstring-source	0x1782cb0	source-offset=0	Semi-Wild
+steam	PE:6a70a6d9:02711000	creator-display	0x1330c30	0x13311e9	whole-cstring-source	0x1615580	source-offset=0	)
+steam	PE:6a70a6d9:02711000	artifact-name	0xa94030	0xa9413d	rip-relative	0x15e873c	separator	 
+steam	PE:6a70a6d9:02711000	artifact-name	0xa94030	0xa942b3	rip-relative	0x15e873c	separator	 
+steam	PE:6a70a6d9:02711000	artifact-name	0xa94030	0xa9450f	rip-relative	0x15e873c	separator	 
+steam	PE:6a70a6d9:02711000	artifact-name	0xa94030	0xa9463b	rip-relative	0x15e873c	separator	 
+steam	PE:6a70a6d9:02711000	artifact-name	0xa94030	0xa9413d	whole-cstring-source	0x15e873c	source-offset=0	 
+steam	PE:6a70a6d9:02711000	artifact-name	0xa94030	0xa942b3	whole-cstring-source	0x15e873c	source-offset=0	 
+steam	PE:6a70a6d9:02711000	artifact-name	0xa94030	0xa9450f	whole-cstring-source	0x15e873c	source-offset=0	 
+steam	PE:6a70a6d9:02711000	artifact-name	0xa94030	0xa9463b	whole-cstring-source	0x15e873c	source-offset=0	 
+steam	PE:6a70a6d9:02711000	item-description	0xc65450	0xc656f4	rip-relative	0x16ee318	finite-text-operand-or-substring	 (copy)
+steam	PE:6a70a6d9:02711000	item-description	0xc65450	0xc656f4	whole-cstring-source	0x16ee318	source-offset=0	 (copy)
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb92f8a	rip-relative	0x16df900	finite-text-operand-or-substring	interrogator
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb92fa1	rip-relative	0x1674d08	finite-text-operand-or-substring	subject
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93073	rip-relative	0x16290f0	finite-text-operand-or-substring	Nameless
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb9310e	rip-relative	0x16df8e0	finite-text-operand-or-substring	an unidentified creature
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93133	rip-relative	0x15fdb08	finite-text-operand-or-substring	[LPAGE:HF:
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93153	rip-relative	0x15fd690	finite-text-operand-or-substring	]
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb9325d	rip-relative	0x1662ef8	finite-text-operand-or-substring	myself
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93266	rip-relative	0x1662efc	finite-text-operand-or-substring	lf
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb9331b	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb9333f	rip-relative	0x167db90	finite-text-operand-or-substring	zombie 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93377	rip-relative	0x15fdbb8	finite-text-operand-or-substring	ghostly 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93499	rip-relative	0x15e873c	separator	 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb934c8	rip-relative	0x15e873c	separator	 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93551	rip-relative	0x15e956c	finite-text-operand-or-substring	 the 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93575	rip-relative	0x167db90	finite-text-operand-or-substring	zombie 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb935ad	rip-relative	0x15fdbb8	finite-text-operand-or-substring	ghostly 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb936cd	rip-relative	0x15e873c	separator	 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb9374e	rip-relative	0x15ed620	finite-text-operand-or-substring	a 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93755	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb9377d	rip-relative	0x167db90	finite-text-operand-or-substring	zombie 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb937b5	rip-relative	0x15fdbb8	finite-text-operand-or-substring	ghostly 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb9381c	rip-relative	0x15e873c	separator	 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93867	rip-relative	0x15e9260	finite-text-operand-or-substring	's
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93886	rip-relative	0x15fda88	finite-text-operand-or-substring	[/LPAGE]
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb938dc	rip-relative	0x1663cd8	finite-text-operand-or-substring	an unknown creature
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb938f2	rip-relative	0x15e9260	finite-text-operand-or-substring	's
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb92f8a	whole-cstring-source	0x16df900	source-offset=0	interrogator
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb92fa1	whole-cstring-source	0x1674d08	source-offset=0	subject
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93073	whole-cstring-source	0x16290f0	source-offset=0	Nameless
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb9310e	whole-cstring-source	0x16df8e0	source-offset=0	an unidentified creature
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93133	whole-cstring-source	0x15fdb08	source-offset=0	[LPAGE:HF:
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93153	whole-cstring-source	0x15fd690	source-offset=0	]
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb9325d	whole-cstring-source	0x1662ef8	source-offset=0	myself
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93266	whole-cstring-source	0x1662ef8	source-offset=4	myself
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb9331b	whole-cstring-source	0x15e8e48	source-offset=0	the 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb9333f	whole-cstring-source	0x167db90	source-offset=0	zombie 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93377	whole-cstring-source	0x15fdbb8	source-offset=0	ghostly 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93499	whole-cstring-source	0x15e873c	source-offset=0	 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb934c8	whole-cstring-source	0x15e873c	source-offset=0	 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93551	whole-cstring-source	0x15e956c	source-offset=0	 the 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93575	whole-cstring-source	0x167db90	source-offset=0	zombie 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb935ad	whole-cstring-source	0x15fdbb8	source-offset=0	ghostly 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb936cd	whole-cstring-source	0x15e873c	source-offset=0	 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb9374e	whole-cstring-source	0x15ed620	source-offset=0	a 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93755	whole-cstring-source	0x15e8e48	source-offset=0	the 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb9377d	whole-cstring-source	0x167db90	source-offset=0	zombie 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb937b5	whole-cstring-source	0x15fdbb8	source-offset=0	ghostly 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb9381c	whole-cstring-source	0x15e873c	source-offset=0	 
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93867	whole-cstring-source	0x15e9260	source-offset=0	's
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb93886	whole-cstring-source	0x15fda88	source-offset=0	[/LPAGE]
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb938dc	whole-cstring-source	0x1663cd8	source-offset=0	an unknown creature
+steam	PE:6a70a6d9:02711000	ancestor-name	0xb92f10	0xb938f2	whole-cstring-source	0x15e9260	source-offset=0	's
+steam	PE:6a70a6d9:02711000	entity-name	0xb92900	0xb9296a	rip-relative	0x165e438	finite-text-operand-or-substring	[LPAGE:ENT:
+steam	PE:6a70a6d9:02711000	entity-name	0xb92900	0xb9298a	rip-relative	0x15fd690	finite-text-operand-or-substring	]
+steam	PE:6a70a6d9:02711000	entity-name	0xb92900	0xb929f4	rip-relative	0x15fda88	finite-text-operand-or-substring	[/LPAGE]
+steam	PE:6a70a6d9:02711000	entity-name	0xb92900	0xb92a4c	rip-relative	0x16df940	finite-text-operand-or-substring	an unknown civilization
+steam	PE:6a70a6d9:02711000	entity-name	0xb92900	0xb9296a	whole-cstring-source	0x165e438	source-offset=0	[LPAGE:ENT:
+steam	PE:6a70a6d9:02711000	entity-name	0xb92900	0xb9298a	whole-cstring-source	0x15fd690	source-offset=0	]
+steam	PE:6a70a6d9:02711000	entity-name	0xb92900	0xb929f4	whole-cstring-source	0x15fda88	source-offset=0	[/LPAGE]
+steam	PE:6a70a6d9:02711000	entity-name	0xb92900	0xb92a4c	whole-cstring-source	0x16df940	source-offset=0	an unknown civilization
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa9379a	rip-relative	0x16cb210	finite-text-operand-or-substring	 has created 
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa9380f	rip-relative	0x15f8228	finite-text-operand-or-substring	, a 
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93866	rip-relative	0x15e942c	finite-text-operand-or-substring	!
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93a0e	rip-relative	0x15f7ff8	separator	  
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93a4d	rip-relative	0x16cb15c	finite-text-operand-or-substring	he
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93a8a	rip-relative	0x15f7ff8	separator	  
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93ac6	rip-relative	0x16cb15c	finite-text-operand-or-substring	he
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93adf	rip-relative	0x16cb158	finite-text-operand-or-substring	she
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93aec	rip-relative	0x16cb15a	finite-text-operand-or-substring	e
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93b02	rip-relative	0x15e9484	finite-text-operand-or-substring	it
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93b6f	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93b9d	rip-relative	0x16cb1d0	finite-text-operand-or-substring	claims it as an heirloom in the name of the family ancestor 
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93be8	rip-relative	0x16cb1b0	finite-text-operand-or-substring	claims it as a family heirloom
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93bf7	rip-relative	0x15e3574	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93c65	rip-relative	0x16cb158	finite-text-operand-or-substring	she
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93c72	rip-relative	0x16cb15a	finite-text-operand-or-substring	e
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93c88	rip-relative	0x15e9484	finite-text-operand-or-substring	it
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93cf8	rip-relative	0x16cb250	finite-text-operand-or-substring	 claims it as a personal treasure.
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93d74	rip-relative	0x15f7ff8	separator	  
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93db6	rip-relative	0x16cb15c	finite-text-operand-or-substring	he
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93dc3	rip-relative	0x16cb158	finite-text-operand-or-substring	she
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93dd2	rip-relative	0x15e9484	finite-text-operand-or-substring	it
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93e4c	rip-relative	0x16cb240	finite-text-operand-or-substring	 offers it to 
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93e7f	rip-relative	0x15e3574	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa9379a	whole-cstring-source	0x16cb210	source-offset=0	 has created 
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa9380f	whole-cstring-source	0x15f8228	source-offset=0	, a 
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93866	whole-cstring-source	0x15e942c	source-offset=0	!
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93a0e	whole-cstring-source	0x15f7ff8	source-offset=0	  
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93a4d	whole-cstring-source	0x16cb15c	source-offset=0	he
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93a8a	whole-cstring-source	0x15f7ff8	source-offset=0	  
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93ac6	whole-cstring-source	0x16cb15c	source-offset=0	he
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93adf	whole-cstring-source	0x16cb158	source-offset=0	she
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93aec	whole-cstring-source	0x16cb158	source-offset=2	she
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93b02	whole-cstring-source	0x15e9484	source-offset=0	it
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93b6f	whole-cstring-source	0x15e3720	source-offset=0	 
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93b9d	whole-cstring-source	0x16cb1d0	source-offset=0	claims it as an heirloom in the name of the family ancestor 
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93be8	whole-cstring-source	0x16cb1b0	source-offset=0	claims it as a family heirloom
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93bf7	whole-cstring-source	0x15e3574	source-offset=0	.
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93c65	whole-cstring-source	0x16cb158	source-offset=0	she
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93c72	whole-cstring-source	0x16cb158	source-offset=2	she
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93c88	whole-cstring-source	0x15e9484	source-offset=0	it
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93cf8	whole-cstring-source	0x16cb250	source-offset=0	 claims it as a personal treasure.
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93d74	whole-cstring-source	0x15f7ff8	source-offset=0	  
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93db6	whole-cstring-source	0x16cb15c	source-offset=0	he
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93dc3	whole-cstring-source	0x16cb158	source-offset=0	she
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93dd2	whole-cstring-source	0x15e9484	source-offset=0	it
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93e4c	whole-cstring-source	0x16cb240	source-offset=0	 offers it to 
+classic	PE:6a70b91c:0270a000	artifact-creation	0xa92800	0xa93e7f	whole-cstring-source	0x15e3574	source-offset=0	.
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132bdcd	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132bec8	rip-relative	0x15e46fc	finite-text-operand-or-substring	""""
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132bf1d	rip-relative	0x15e46fc	finite-text-operand-or-substring	""""
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132bf32	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132bf71	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132bfcd	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c028	rip-relative	0x1610298	separator	 (
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c064	rip-relative	0x177ca90	finite-text-operand-or-substring	Trained
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c070	rip-relative	0x177ca80	finite-text-operand-or-substring	-Trained-
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c07c	rip-relative	0x177c9e0	finite-text-operand-or-substring	+Trained+
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c088	rip-relative	0x177c9d0	finite-text-operand-or-substring	*Trained*
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c0bc	rip-relative	0x177ca90	finite-text-operand-or-substring	Trained
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c10c	rip-relative	0x177ca90	finite-text-operand-or-substring	Trained
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c138	rip-relative	0x177c9fc	finite-text-operand-or-substring	Tame
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c141	rip-relative	0x177c9f0	finite-text-operand-or-substring	Semi-Wild
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c159	rip-relative	0x16102d8	separator	)
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132bdcd	whole-cstring-source	0x15e40c4	source-offset=0	, 
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132bec8	whole-cstring-source	0x15e46fc	source-offset=0	""""
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132bf1d	whole-cstring-source	0x15e46fc	source-offset=0	""""
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132bf32	whole-cstring-source	0x15e40c4	source-offset=0	, 
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132bf71	whole-cstring-source	0x15e40c4	source-offset=0	, 
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132bfcd	whole-cstring-source	0x15e40c4	source-offset=0	, 
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c028	whole-cstring-source	0x1610298	source-offset=0	 (
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c064	whole-cstring-source	0x177ca90	source-offset=0	Trained
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c070	whole-cstring-source	0x177ca80	source-offset=0	-Trained-
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c07c	whole-cstring-source	0x177c9e0	source-offset=0	+Trained+
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c088	whole-cstring-source	0x177c9d0	source-offset=0	*Trained*
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c0bc	whole-cstring-source	0x177ca90	source-offset=0	Trained
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c10c	whole-cstring-source	0x177ca90	source-offset=0	Trained
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c138	whole-cstring-source	0x177c9fc	source-offset=0	Tame
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c141	whole-cstring-source	0x177c9f0	source-offset=0	Semi-Wild
+classic	PE:6a70b91c:0270a000	creator-display	0x132bba0	0x132c159	whole-cstring-source	0x16102d8	source-offset=0	)
+classic	PE:6a70b91c:0270a000	artifact-name	0xa910b0	0xa911bd	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	artifact-name	0xa910b0	0xa91333	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	artifact-name	0xa910b0	0xa9158f	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	artifact-name	0xa910b0	0xa916bb	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	artifact-name	0xa910b0	0xa911bd	whole-cstring-source	0x15e3720	source-offset=0	 
+classic	PE:6a70b91c:0270a000	artifact-name	0xa910b0	0xa91333	whole-cstring-source	0x15e3720	source-offset=0	 
+classic	PE:6a70b91c:0270a000	artifact-name	0xa910b0	0xa9158f	whole-cstring-source	0x15e3720	source-offset=0	 
+classic	PE:6a70b91c:0270a000	artifact-name	0xa910b0	0xa916bb	whole-cstring-source	0x15e3720	source-offset=0	 
+classic	PE:6a70b91c:0270a000	item-description	0xc62490	0xc62734	rip-relative	0x16e8e38	finite-text-operand-or-substring	 (copy)
+classic	PE:6a70b91c:0270a000	item-description	0xc62490	0xc62734	whole-cstring-source	0x16e8e38	source-offset=0	 (copy)
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb8ffca	rip-relative	0x16da770	finite-text-operand-or-substring	interrogator
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb8ffe1	rip-relative	0x166fb90	finite-text-operand-or-substring	subject
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb900b3	rip-relative	0x1623ec0	finite-text-operand-or-substring	Nameless
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb9014e	rip-relative	0x16da750	finite-text-operand-or-substring	an unidentified creature
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb90173	rip-relative	0x15f8b40	finite-text-operand-or-substring	[LPAGE:HF:
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb90193	rip-relative	0x15f8664	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb9029d	rip-relative	0x165df6c	finite-text-operand-or-substring	myself
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb902a6	rip-relative	0x165df70	finite-text-operand-or-substring	lf
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb9035b	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb9037f	rip-relative	0x16789f8	finite-text-operand-or-substring	zombie 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb903b7	rip-relative	0x15f8b70	finite-text-operand-or-substring	ghostly 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb904d9	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb90508	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb90591	rip-relative	0x15e4548	finite-text-operand-or-substring	 the 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb905b5	rip-relative	0x16789f8	finite-text-operand-or-substring	zombie 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb905ed	rip-relative	0x15f8b70	finite-text-operand-or-substring	ghostly 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb9070d	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb9078e	rip-relative	0x15e8618	finite-text-operand-or-substring	a 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb90795	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb907bd	rip-relative	0x16789f8	finite-text-operand-or-substring	zombie 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb907f5	rip-relative	0x15f8b70	finite-text-operand-or-substring	ghostly 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb9085c	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb908a7	rip-relative	0x15e4214	finite-text-operand-or-substring	's
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb908c6	rip-relative	0x15f8b50	finite-text-operand-or-substring	[/LPAGE]
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb9091c	rip-relative	0x165ed98	finite-text-operand-or-substring	an unknown creature
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb90932	rip-relative	0x15e4214	finite-text-operand-or-substring	's
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb8ffca	whole-cstring-source	0x16da770	source-offset=0	interrogator
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb8ffe1	whole-cstring-source	0x166fb90	source-offset=0	subject
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb900b3	whole-cstring-source	0x1623ec0	source-offset=0	Nameless
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb9014e	whole-cstring-source	0x16da750	source-offset=0	an unidentified creature
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb90173	whole-cstring-source	0x15f8b40	source-offset=0	[LPAGE:HF:
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb90193	whole-cstring-source	0x15f8664	source-offset=0	]
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb9029d	whole-cstring-source	0x165df6c	source-offset=0	myself
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb902a6	whole-cstring-source	0x165df6c	source-offset=4	myself
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb9035b	whole-cstring-source	0x15e3e34	source-offset=0	the 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb9037f	whole-cstring-source	0x16789f8	source-offset=0	zombie 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb903b7	whole-cstring-source	0x15f8b70	source-offset=0	ghostly 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb904d9	whole-cstring-source	0x15e3720	source-offset=0	 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb90508	whole-cstring-source	0x15e3720	source-offset=0	 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb90591	whole-cstring-source	0x15e4548	source-offset=0	 the 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb905b5	whole-cstring-source	0x16789f8	source-offset=0	zombie 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb905ed	whole-cstring-source	0x15f8b70	source-offset=0	ghostly 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb9070d	whole-cstring-source	0x15e3720	source-offset=0	 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb9078e	whole-cstring-source	0x15e8618	source-offset=0	a 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb90795	whole-cstring-source	0x15e3e34	source-offset=0	the 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb907bd	whole-cstring-source	0x16789f8	source-offset=0	zombie 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb907f5	whole-cstring-source	0x15f8b70	source-offset=0	ghostly 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb9085c	whole-cstring-source	0x15e3720	source-offset=0	 
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb908a7	whole-cstring-source	0x15e4214	source-offset=0	's
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb908c6	whole-cstring-source	0x15f8b50	source-offset=0	[/LPAGE]
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb9091c	whole-cstring-source	0x165ed98	source-offset=0	an unknown creature
+classic	PE:6a70b91c:0270a000	ancestor-name	0xb8ff50	0xb90932	whole-cstring-source	0x15e4214	source-offset=0	's
+classic	PE:6a70b91c:0270a000	entity-name	0xb8f940	0xb8f9aa	rip-relative	0x16592f8	finite-text-operand-or-substring	[LPAGE:ENT:
+classic	PE:6a70b91c:0270a000	entity-name	0xb8f940	0xb8f9ca	rip-relative	0x15f8664	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	entity-name	0xb8f940	0xb8fa34	rip-relative	0x15f8b50	finite-text-operand-or-substring	[/LPAGE]
+classic	PE:6a70b91c:0270a000	entity-name	0xb8f940	0xb8fa8c	rip-relative	0x16da720	finite-text-operand-or-substring	an unknown civilization
+classic	PE:6a70b91c:0270a000	entity-name	0xb8f940	0xb8f9aa	whole-cstring-source	0x16592f8	source-offset=0	[LPAGE:ENT:
+classic	PE:6a70b91c:0270a000	entity-name	0xb8f940	0xb8f9ca	whole-cstring-source	0x15f8664	source-offset=0	]
+classic	PE:6a70b91c:0270a000	entity-name	0xb8f940	0xb8fa34	whole-cstring-source	0x15f8b50	source-offset=0	[/LPAGE]
+classic	PE:6a70b91c:0270a000	entity-name	0xb8f940	0xb8fa8c	whole-cstring-source	0x16da720	source-offset=0	an unknown civilization

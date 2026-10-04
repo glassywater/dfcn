@@ -130,7 +130,27 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             return finish(item_description_translation_complete(result)
                 ? std::move(result) : std::nullopt);
         }
-        if (scope == "$unit") return finish(translate_ui_message_capture(input, true));
+        if (scope == "$unit") {
+            auto result = translate_ui_message_capture(input, true);
+            if (!result && (initial_scope == "fortress-announcement" ||
+                    initial_scope == "fortress-job"))
+                result = translate_unit_identity(input, true);
+            return finish(std::move(result));
+        }
+        if (scope == "$job") {
+            // Subject-bearing jobs retain native nicknames/authored names
+            // through the typed unit field of their complete production.
+            if (auto result = translate_announcement_combat(input, "fortress-job"))
+                return finish(std::move(result));
+            auto result = translate_fortress_activity(normalize_utterance(input), true);
+            if (!result || result->empty() || result->find("[C:") != std::string::npos ||
+                    std::any_of(result->begin(), result->end(), [](unsigned char ch) {
+                        return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') ||
+                            ch == '\r' || ch == '\n';
+                    })) result.reset();
+            return finish(std::move(result));
+        }
+        if (scope == "$requirement") return finish(translate_workshop_recipe_source(input));
         if (scope == "$office") {
             // Intrigue and negotiation insert position.name directly from
             // the native position record. Resolve that complete typed title

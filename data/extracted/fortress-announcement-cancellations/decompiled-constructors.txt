@@ -1,0 +1,126 @@
+DF 53.16 native PE cancellation announcement text constructors
+
+Input images are the reference and classic paths in
+data/runtime/native-pe-images.json. They are read from disk; no game process,
+desktop, announcement renderer, or translation interpreter is executed.
+native-functions.tsv preserves PE identity and actual unwind boundaries.
+Annotated *.asm, native-literals.tsv, switch-branches.tsv and
+decompiled-job-fields.tsv retain source operands and native branch decisions.
+
+Cancellation constructor:
+  Reference 0x141325080..0x141328443
+  Classic   0x14131fff0..0x1413233b3
+
+Relevant source-equivalent text construction:
+  text = unit_identity(current_unit)
+  text += " cancels "
+  text += job_caption(current_unit.current_job)
+  text += ": "
+  switch(cancel_reason.code) { // complete selector range 0..135
+    fixed_reason:
+      text += selector_literal
+    interrupted:
+      text += "Interrupted by "
+      if(cancel_reason.interruptor_id != -1 && unit_exists(id))
+        text += unit_identity(interruptor)
+      else
+        text += "combat"
+    needs_item_or_linked_stockpile:
+      requirement = copy_all_job_item_constraints(cancel_reason)
+      text += "Needs "
+      text += describe_job_item(requirement, cancel_reason.quantity)
+      if(cancel_reason.code == 135) text += " in linked stockpile"
+    job_item_missing:
+      text += job_wording_flag ? "Job item misplaced"
+                              : "Job item lost or destroyed"
+    out_of_range:
+      // No reason text is appended.
+  }
+  text += "."
+  submit_announcement(text, current_unit_or_building_location)
+
+decompiled-reason-switch.tsv contains every reason selector, including aliases
+and both dynamic branches. announcement-cancellation-grammar.tsv gives the
+complete sentence productions and preserves every typed actor, job,
+interruptor and requirement field. It also retains the native out-of-range
+output with no reason. The announcement visibility/suppression branches occur
+before string construction and do not provide additional displayed reasons.
+
+Job wrapper:
+  Reference 0x140d03170..0x140d0329b
+  Classic   0x140d001b0..0x140d002db
+  Surgery job 169 selects Surgery, Stop Bleeding, Repair Compound Fracture or
+  Remove Rotten Tissue by surgical sub-operation. Every other job calls the
+  job-type dispatcher with material, item subtype, subject, reaction and flags.
+
+Job dispatcher:
+  Reference 0x140d032b0..0x140d082d4
+  Classic   0x140d002f0..0x140d05314
+  Main selector range is 0..247. decompiled-job-fields.tsv walks every native
+  reachable branch from each selector, recording all textual operands,
+  dynamic field-supplying calls and decisions, including shared tails.
+
+The dynamic construction families are:
+  Make/Forge/Assemble + quantity word + size + material + complete item subtype.
+  Native quantity words are three, four, five, twenty-five and pair of.
+  Native material tests also select portal/door, throne/chair, coffin/casket/
+  sarcophagus, coffer/box/chest, vial/flask/waterskin, cup/goblet/mug,
+  cage/terrarium, chain/rope, tube/pipe section and Make/Forge wording.
+  Mill/Process/Extract from + complete plant name, including vial/barrel.
+  Cut/Polish/Smelt/Mint/Decorate with/Stud with + material or resource subject.
+  Encrust + selected finished-goods/furniture/ammo target + material.
+  Dye/Tint + complete thread/cloth/leather material + color/dye.
+  Mix + complete material + material + dye input.
+  Bait trap with + native fish/meat/gem selection and optional material.
+  Milk/Shear/Geld/Slaughter/Tame/Chain/Release/Handle/Cage/Pit-pond/
+  Pen-pasture/Train/Interrogate + actual unit or species subject.
+  Train may append " to hunt" or " for war".
+  Sew + native material + image.
+  Reaction selector 209 finds the reaction by its code, copies reaction.name
+  and capitalizes its first letter; absent reaction is the fixed "Reaction".
+  RAW reaction NAME inputs from both configured editions are recorded in
+  native-literals.tsv and translated as complete scoped activity fields.
+  Generated instrument reactions remain complete named instrument or piece
+  jobs and use the established instrument-name parser.
+
+Two additional explicit native identity productions use fortress-job grammar:
+  Selector 155 at reference 0x140d04007 adds "Unchain" and, only when the
+  target reference resolves, a space plus its complete native unit identity.
+  Missing target leaves the fixed Unchain caption.
+  Selector 211 at reference 0x140d0473a finds a memorial record. A stored name
+  calls 0x140a94030; otherwise a live unit calls 0x141330c30; otherwise the
+  stored race/caste calls 0x140aa3bd0. All three successful subjects append
+  " (engrave memorial)". Missing record uses Engrave memorial slab.
+  The private memorial-subject scope therefore resolves the full native
+  unit/name/species label. Authored names remain intact inside the known job.
+
+announcement-job-fields.tsv contains complete finite native captions and
+installed reaction names. The plural "Brew drink from plants" is specifically
+attested by the user's supplied screenshot. It is retained alongside the
+current RAW singular plant and fruit names; no unobserved plural fruit variant
+is introduced. This is a field alias, never a global word replacement.
+
+Job-item requirement constructor:
+  Reference 0x140a2adb0..0x140a2c60c
+  Classic   0x140a285e0..0x140a29e3c
+  Independent constraints are appended in native order, rather than choosing
+  one mutually exclusive English adjective. decompiled-requirement-prefixes.tsv
+  records every append and its preceding native condition in both editions.
+  Flags cover state, material, category, containment, reaction class/product,
+  tool use, color, improvement/artifact restrictions, quantity and excluded bin.
+  The terminal shared item formatter is reference 0x140a82c10..0x140a882fc
+  and classic 0x140a7fc90..0x140a8537c. Its full noun, material and number
+  branches are also extracted, rather than treating the screenshot noun as
+  one independent literal.
+
+The screenshot requirement follows three independent native flags:
+  [job_item+0x0c] & 0x400  => "empty " at 0x140a2affc
+  [job_item+0x24] & 0x04  => "non-absorbent " at 0x140a2b630
+  [job_item+0x24] & 0x80  => "food storage " at 0x140a2b64c
+  shared fallback item noun => "item" at 0x140a88046
+The established Workshop recipe grammar composes all three states with the
+complete item, preserves displayed quantity, and excludes partial resolution.
+Its scoped translations are shared with workshop cards and work conditions.
+
+These files document extracted native source and authored translation grammar.
+They are not simulated game output or evidence of the final displayed result.
