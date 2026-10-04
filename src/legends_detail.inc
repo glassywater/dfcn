@@ -318,6 +318,13 @@ std::optional<std::string> Overlay::translate_legends_name(
     const bool single_person = person && name.find(' ') == std::string::npos;
     if (single_person && native_name_language_masks_.contains(lower_native_name(name)))
         return translate_procedural_fragment(name, true);
+    // Named animals can omit the given-name field and display only a native
+    // two-root surname. Require its complete same-language WORD/POS grammar
+    // before treating it as an English name gloss; otherwise that literal
+    // spelling makes the whole announcement's unit capture fail.
+    if (single_person)
+        if (auto native = translate_procedural_fragment(name, false, false, {},
+                ProceduralFragmentContext::native_name_group)) return native;
     // A site is an English generated compound, not a native personal name.
     // Quote it BEFORE the broad unquoted native-name fallback: otherwise the
     // same site is phoneticized in kills but translated in its own heading.

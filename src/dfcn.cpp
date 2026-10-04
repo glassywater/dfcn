@@ -4430,7 +4430,7 @@ private:
         std::string_view gloss;
     };
     enum class ProceduralFragmentContext {
-        general_text, generated_name, personal_name, native_item_name, book_title
+        general_text, generated_name, personal_name, native_name_group, native_item_name, book_title
     };
     std::optional<std::string> translate_procedural_fragment(
         const std::string &screen_text, bool phonetic_only = false,
@@ -9191,16 +9191,17 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     // possible textile/material span as if its full identity were equipment.
     // Keep the existing structural validators and shared name renderer below.
     const bool personal_name = context == ProceduralFragmentContext::personal_name;
-    const bool native_item_name = context == ProceduralFragmentContext::native_item_name;
+    const bool native_name_groups = context == ProceduralFragmentContext::native_item_name ||
+        context == ProceduralFragmentContext::native_name_group;
     const bool book_title = context == ProceduralFragmentContext::book_title;
-    if (!phonetic_only && !personal_name && !native_item_name &&
+    if (!phonetic_only && !personal_name && !native_name_groups &&
             trim_view(screen_text).starts_with("Unnamed "))
         if (auto figure = translate_legends_unnamed_figure(screen_text)) return figure;
-    const auto figure_record = phonetic_only || personal_name || native_item_name ? std::nullopt
+    const auto figure_record = phonetic_only || personal_name || native_name_groups ? std::nullopt
         : split_legends_figure_record(screen_text);
-    const auto generated_identity = phonetic_only || personal_name || native_item_name || figure_record ? std::nullopt
+    const auto generated_identity = phonetic_only || personal_name || native_name_groups || figure_record ? std::nullopt
         : split_generated_name_identity(screen_text);
-    const bool name_only = phonetic_only || personal_name || native_item_name || book_title ||
+    const bool name_only = phonetic_only || personal_name || native_name_groups || book_title ||
         figure_record || generated_identity;
 
     // A profession is a separate native row for long names and part of the
@@ -9779,8 +9780,9 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         }
         return best;
     };
-    if (native_item_name) {
-        // Named equipment has no personal first name. Native display joins
+    if (native_name_groups) {
+        // A surname-only person and named equipment share the native
+        // two-root group grammar. Named equipment can additionally join
         // its compound (slots 0..1), title (2..5) and OfX (6) with spaces.
         // Validate every group before rendering; the item field also contains
         // ordinary equipment, so unknown words must not become phonetics.
