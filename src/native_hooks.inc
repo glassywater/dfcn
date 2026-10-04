@@ -18,6 +18,7 @@ static bool native_history_site_type(uintptr_t site, NativeHistoryEventData &out
 static bool native_history_war_selection(uintptr_t collection, int32_t &category,
     int32_t &index, int32_t &count);
 #include "native_history_names.inc"
+#include "native_workshop_names.inc"
 #include "native_world_artifact_cache.inc"
 #include "native_announcement_history.inc"
 #include "native_history_page_adapter.inc"

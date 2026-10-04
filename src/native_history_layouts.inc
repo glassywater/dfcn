@@ -2683,6 +2683,12 @@ struct f_artifact_record {
     int32_t f_season_tick;
     int32_t f_temp_sort;
 };
+struct f_building_def {
+    virtual void native_vtable();
+    std::string f_code;
+    int32_t f_id;
+    std::string f_name;
+};
 struct f_caste_raw_f_misc {
     int16_t f_litter_size_max;
     int16_t f_litter_size_min;
@@ -9597,6 +9603,11 @@ static constexpr std::array<Field, 31> f_artifact_record_fields = {{
     {0x11c, DFCN_NATIVE_FIELD(f_artifact_record, f_year, 0x11c), 4},
     {0x120, DFCN_NATIVE_FIELD(f_artifact_record, f_season_tick, 0x120), 4},
     {0x124, DFCN_NATIVE_FIELD(f_artifact_record, f_temp_sort, 0x124), 4},
+}};
+static constexpr std::array<Field, 3> f_building_def_fields = {{
+    {0x8, DFCN_NATIVE_FIELD(f_building_def, f_code, 0x8), 32},
+    {0x28, DFCN_NATIVE_FIELD(f_building_def, f_id, 0x28), 4},
+    {0x30, DFCN_NATIVE_FIELD(f_building_def, f_name, 0x30), 32},
 }};
 static constexpr std::array<Field, 217> f_caste_raw_fields = {{
     {0x0, DFCN_NATIVE_FIELD(f_caste_raw, f_caste_id, 0x0), 32},
@@ -18394,6 +18405,7 @@ static constexpr Object objects[] = {
     {"art_image_property_intransitive_verbst", "art_image_property", DFCN_NATIVE_BINDING(0x15fdde8, 0x2038dd0), f_art_image_property_intransitive_verbst_fields.data(), std::size(f_art_image_property_intransitive_verbst_fields), f_art_image_property_intransitive_verbst_slots, std::size(f_art_image_property_intransitive_verbst_slots)},
     {"art_image_property_transitive_verbst", "art_image_property", DFCN_NATIVE_BINDING(0x15fddb0, 0x2038d88), f_art_image_property_transitive_verbst_fields.data(), std::size(f_art_image_property_transitive_verbst_fields), f_art_image_property_transitive_verbst_slots, std::size(f_art_image_property_transitive_verbst_slots)},
     {"artifact_record", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_artifact_record_fields.data(), std::size(f_artifact_record_fields), nullptr, 0},
+    {"building_def", "", DFCN_NATIVE_BINDING(0x165ddc8, 0x2042510), f_building_def_fields.data(), std::size(f_building_def_fields), nullptr, 0},
     {"caste_raw", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_caste_raw_fields.data(), std::size(f_caste_raw_fields), nullptr, 0},
     {"creature_interaction_effect_display_namest", "creature_interaction_effect", DFCN_NATIVE_BINDING(0x1715b00, 0x20463f0), f_creature_interaction_effect_display_namest_fields.data(), std::size(f_creature_interaction_effect_display_namest_fields), f_creature_interaction_effect_display_namest_slots, std::size(f_creature_interaction_effect_display_namest_slots)},
     {"creature_raw", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_creature_raw_fields.data(), std::size(f_creature_raw_fields), nullptr, 0},

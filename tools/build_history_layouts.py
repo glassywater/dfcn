@@ -53,6 +53,14 @@ class Generator:
                     if child.get('name') == 'entering_item_filter')
         for child in children[last + 1:]:
             stocks.remove(child)
+        # Workshop identity consumes only the RAW token and complete name.
+        # Later graphics, requirements and tooltip data are not borrowed.
+        building = self.types['building_def']
+        children = list(building)
+        last = next(i for i, child in enumerate(children)
+                    if child.get('name') == 'name')
+        for child in children[last + 1:]:
+            building.remove(child)
         self.lines: list[str] = []
         self.serial = 0
         symbols = ET.parse(SOURCE / 'symbols.xml').getroot()
@@ -236,7 +244,7 @@ class Generator:
                  'historical_figure_info', 'interaction_profilest', 'creature_raw', 'caste_raw',
                  'identity', 'artifact_record', 'item', 'item_toolst', 'itemdef_toolst', 'itemdef_instrumentst',
                  'itemdef_weaponst', 'entity_entity_link',
-                 'general_ref_is_artifactst', 'plant_raw', 'material', 'inorganic_raw',
+                 'general_ref_is_artifactst', 'plant_raw', 'material', 'inorganic_raw', 'building_def',
                  'viewscreen_legendsst', 'viewscreen_new_regionst',
                  'mod_headerst', 'viewscreen_titlest', 'viewscreen_new_arenast',
                  'viewscreen_dwarfmodest', 'viewscreen_dungeonmodest', 'viewscreen_worldst',

@@ -1668,6 +1668,7 @@ static std::optional<NativeOverviewQuoteDraw> g_native_overview_quote_draw;
 static std::atomic_uint64_t g_native_overview_quote_revision{1};
 static std::vector<NativeParagraphCapture> captured_native_workshop_requirements();
 static int native_workshop_recipe_paragraph_width();
+static std::shared_ptr<const std::unordered_set<std::string>> native_mod_workshop_names();
 
 struct NativeParagraphViewport {
     int first_line = -1; // Visible slice within the captured wrap output.
@@ -3974,6 +3975,7 @@ private:
     void layout_fortress_squads(SDL_Renderer *renderer);
     void layout_fortress_date(SDL_Renderer *renderer);
     void layout_fortress_build_menu(SDL_Renderer *renderer);
+    std::vector<SDL_Rect> preserve_mod_workshop_names(std::vector<std::string> &rows) const;
     void append_hover_picture_captions(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, const unsigned char *raw) const;
     void append_hover_text_captions(std::vector<std::string> &rows,
@@ -21063,6 +21065,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
     screen_rows.reserve(static_cast<size_t>(gps_->dimy));
     for (int row_y = 0; row_y < gps_->dimy; ++row_y)
         screen_rows.push_back(read_row(row_y));
+    const auto mod_workshop_names = preserve_mod_workshop_names(screen_rows);
     const auto mod_list = native_mod_list_layout(*gps_, [&](int x, int y) {
         bool top = false;
         const auto *cell = cell_at(x, y, &top);
@@ -21725,6 +21728,15 @@ std::vector<Match> Overlay::find_matches(int only_y,
             for (Match &field : mod_details_matches)
                 if (only_y < 0 || only_y == field.y) result.push_back(std::move(field));
         }
+        // Native caption recovery can bypass the reserved rows. Mod workshop
+        // names retain their original glyphs even after whole-row composition.
+        std::erase_if(result, [&](const Match &match) {
+            return std::any_of(mod_workshop_names.begin(), mod_workshop_names.end(),
+                [&](const SDL_Rect &name) {
+                    return match.y == name.y && match.x < name.x + name.w &&
+                        name.x < match.x + match.length;
+                });
+        });
         return std::move(result);
     };
 
