@@ -21823,6 +21823,10 @@ std::vector<Match> Overlay::find_matches(int only_y,
             -1, std::nullopt, word_ranges);
     };
 
+    // Native rejection dialogs include compiler-inlined paragraph wrapping.
+    // Their complete modal owns all warning branches through the same catalog.
+#include "worldgen_warnings.inc"
+
     // The chronicle shares Legends grammar and the bounded paragraph fitter,
     // but has no clickable links and stays inside its own worldgen panel.
 #include "worldgen_chronicle.inc"

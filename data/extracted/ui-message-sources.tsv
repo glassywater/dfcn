@@ -2836,3 +2836,134 @@ fortress.trade.controls	0x3893c4	Trader Profit:
 fortress.trade.controls	0x389469	Trader Loss:
 fortress.trade.controls	0x389538	Allowed Weight:
 fortress.trade.controls	0x3895b8	Excess Weight:
+
+# Complete world-generation rejection dialog, Windows 53.16.
+# The title/body switches cover rejection values 0..52, grouped into 27
+# visible warnings. There are 29 complete body variants, since mountain
+# peaks and volcanos each branch on their preset descriptor/array.
+# Each body chain records the literal/SIMD operands in native append order,
+# followed by add_paragraph calls where present. Inlined wrapping stays in
+# the same branch. Native double spaces and trailing spaces remain source.
+# Full branch catalog, enums and assembly: data/extracted/worldgen-warnings/.
+# Steam PE: image base 0x140000000; addresses below are RVAs.
+worldgen.rejection.heading	0xdfb079	LACK OF PEAKS
+worldgen.rejection.body	0xdf08de+0xdf091a+0xdf0913+0xdf0939+0xdf0958	The world generator is having trouble placing enough mountain peaks.  You might want to check your maximum elevation value and other elevation parameters.  Can the elevation 400 be placed enough times to provide space for your peaks?  Alternatively, you can reduce the number of peaks required by the parameters.
+worldgen.rejection.body	0xdf08de+0xdf090a+0xdf0903+0xdf0939+0xdf0958	The world generator is having trouble placing enough mountain peaks.  You might want to check your preset elevations for the elevation 400.  You must have at least as many of these highest elevation points as you are requiring peaks.  Alternatively, you can reduce the number of peaks required by the parameters.
+worldgen.rejection.heading	0xdfb0b3	MEDIUM ELEVATION REJECTION
+worldgen.rejection.body	0xdf09a0+0xdf09eb+0xdf0a01+0xdf0a17	The world generator is having trouble placing enough mid-level elevations.  Can your parameters achieve elevations between 100 and 299?  You might want to adjust the parameters governing elevation frequencies.  Alternatively, you can reduce the number of mid-level elevation squares required.
+worldgen.rejection.heading	0xdfb0ed	LOW ELEVATION REJECTION
+worldgen.rejection.body	0xdf0ddb+0xdf0ded+0xdf0dfe+0xdf0e0f+0xdf0e2e	The world generator is having trouble placing enough low elevations.  Can your parameters achieve elevations between 0 and 99?  You might want to adjust the parameters governing elevation frequencies.  Alternatively, you can reduce the number of mid-level elevation squares required.
+worldgen.rejection.heading	0xdfb127	HIGH ELEVATION REJECTION
+worldgen.rejection.body	0xdf0e43+0xdf0e55+0xdf0e66+0xdf0e77+0xdf0e96	The world generator is having trouble placing enough high elevations.  Can your parameters achieve elevations between 300 and 400?  You might want to adjust the parameters governing elevation frequencies.  Alternatively, you can reduce the number of mid-level elevation squares required.
+worldgen.rejection.heading	0xdfb161	LACK OF EDGE OCEANS
+worldgen.rejection.body	0xdf0eab+0xdf0ebd+0xdf0ece+0xdf0edf+0xdf0efe	The world generator is having trouble placing enough ocean squares along the edges.  Can your parameters achieve elevations between 0 and 99 frequently?  You might want to adjust the parameters governing elevation.  Alternatively, you can reduce the number of edge oceans required.
+worldgen.rejection.heading	0xdfb19b	RAINFALL REJECTION
+worldgen.rejection.body	0xdf0f13+0xdf0f25+0xdf0f36+0xdf0f55	The world generator is having trouble placing rainfall in the manner specified by the parameters.  You might want to adjust the parameters governing rainfall.  Alternatively, you can reduce the number of high, medium or low rainfall squares required.
+worldgen.rejection.heading	0xdfb1d5	DRAINAGE REJECTION
+worldgen.rejection.body	0xdf0f6a+0xdf0f7c+0xdf0f8d+0xdf0fac	The world generator is having trouble setting drainage in the manner specified by the parameters.  You might want to adjust the parameters governing drainage.  Alternatively, you can reduce the number of high, medium or low drainage squares required.
+worldgen.rejection.heading	0xdfb20f	SAVAGERY REJECTION
+worldgen.rejection.body	0xdf0fc1+0xdf0fd3+0xdf0fe4+0xdf1003	The world generator is having trouble placing savagery in the manner specified by the parameters.  You might want to adjust the parameters governing savagery.  Alternatively, you can reduce the number of high, medium or low savagery squares required.
+worldgen.rejection.heading	0xdfb249	VOLCANISM REJECTION
+worldgen.rejection.body	0xdf1018+0xdf102a+0xdf103b+0xdf105a	The world generator is having trouble setting volcanism in the manner specified by the parameters.  You might want to adjust the parameters governing volcanism.  Alternatively, you can reduce the number of high, medium or low volcanism squares required.
+worldgen.rejection.heading	0xdfb2bd	SWAMP REJECTION
+worldgen.rejection.body	0xdf10fe+0xdf1110+0xdf1121+0xdf1140	The world generator is having trouble placing swamps and marshes.  Make sure your parameters and presets can support mid-elevation, mid-to-high rainfall, low drainage, non-freezing areas.  Alternatively, you can reduce the number of swamp squares and regions required by the parameters.
+worldgen.rejection.heading	0xdfb2f7	DESERT REJECTION
+worldgen.rejection.body	0xdf1188+0xdf11d0+0xdf11e6	The world generator is having trouble placing deserts and badlands.  Make sure your parameters and presets can support mid-elevation, very low rainfall, non-freezing areas.  Alternatively, you can reduce the number of desert squares and regions required by the parameters.
+worldgen.rejection.heading	0xdfb331	FOREST REJECTION
+worldgen.rejection.body	0xdf1577+0xdf1589+0xdf159a+0xdf15b9	The world generator is having trouble placing forests.  Make sure your parameters and presets can support mid-elevation, high rainfall, high drainage, non-freezing areas.  Alternatively, you can reduce the number of forest squares and regions required by the parameters.
+worldgen.rejection.heading	0xdfb36b	MOUNTAIN REJECTION
+worldgen.rejection.body	0xdf160d+0xdf1620+0xdf1631+0xdf1650	The world generator is having trouble placing mountains.  Make sure your parameters and presets can support high elevation areas.  Alternatively, you can reduce the number of mountain squares and regions required by the parameters.
+worldgen.rejection.heading	0xdfb3a5	OCEAN REJECTION
+worldgen.rejection.body	0xdf1665+0xdf1677+0xdf168e+0xdf16ad	The world generator is having trouble placing oceans.  Make sure your parameters and presets can support low elevation areas.  Alternatively, you can reduce the number of ocean squares and regions required by the parameters.
+worldgen.rejection.heading	0xdfb3df	GLACIER REJECTION
+worldgen.rejection.body	0xdf16c2+0xdf16da+0xdf16f1+0xdf1710	The world generator is having trouble placing glaciers.  Make sure your parameters and presets can support mid-elevation, very high drainage, freezing areas.  Alternatively, you can reduce the number of glacial squares and regions required by the parameters.
+worldgen.rejection.heading	0xdfb419	TUNDRA REJECTION
+worldgen.rejection.body	0xdf175e+0xdf17b3+0xdf17ca+0xdf17e9	The world generator is having trouble placing tundra regions.  Make sure your parameters and presets can support mid-elevation, low-to-mid drainage, freezing areas.  Alternatively, you can reduce the number of tundra squares and regions required by the parameters.
+worldgen.rejection.heading	0xdfb453	GRASSLAND REJECTION
+worldgen.rejection.body	0xdf1831+0xdf187d+0xdf1893	The world generator is having trouble placing grasslands.  Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, low-to-mid drainage, non-freezing areas.  Alternatively, you can reduce the number of tundra squares and regions required by the parameters.
+worldgen.rejection.heading	0xdfb48d	HILLS REJECTION
+worldgen.rejection.body	0xdf1c58+0xdf1c96+0xdf1cac	The world generator is having trouble placing hills.  Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, high drainage, non-freezing areas.  Alternatively, you can reduce the number of tundra squares and regions required by the parameters.
+worldgen.rejection.heading	0xdfb283	LACK OF VOLCANOS
+worldgen.rejection.body	0xdf106f+0xdf10ab+0xdf10a4+0xdf10ca+0xdf10e9	The world generator is having trouble placing enough volcanos.  You might want to check your maximum volcanism value.  Can volcanism be placed at the value 100 enough times to provide space for each of your volcanos?  Alternatively, you can reduce the number of volcanos required by the parameters.
+worldgen.rejection.body	0xdf106f+0xdf109b+0xdf1094+0xdf10ca+0xdf10e9	The world generator is having trouble placing enough volcanos.  You might want to check your preset volcanism for the value 100.  You must have at least as many of these highest volcanism points as you are requiring volcanos.  Alternatively, you can reduce the number of volcanos required by the parameters.
+worldgen.rejection.heading	0xdfb4c7	LACK OF RIVERS
+worldgen.rejection.body	0xdf2045+0xdf2057+0xdf2068+0xdf2087	The world generator is having trouble placing rivers.  Make sure your parameters and presets allow as many mountain squares as you are requiring river start points.  Alternatively, you can reduce the number of rivers required by the parameters.
+worldgen.rejection.heading	0xdfb501	TOO MANY REGIONS
+worldgen.rejection.body	0xdf209c+0xdf20ae+0xdf20bf+0xdf20de	The world generator is placing too many subregions.  Make sure your parameters and presets aren't so variable that biomes change frequently.  Alternatively, you can increase the number of subregions permitted by the parameters, up to the cap.
+worldgen.rejection.heading	0xdfb53b	LACK OF MOUNTAIN CAVES
+worldgen.rejection.body	0xdf20f3+0xdf2105+0xdf2116+0xdf2135	The world generator is having trouble placing mountain caves.  Make sure your parameters and presets allow as many border mountain squares as you are requiring mountain caves.  Alternatively, you can reduce the number of mountain caves required by the parameters.
+worldgen.rejection.heading	0xdfb575	LACK OF LOW-LYING CAVES
+worldgen.rejection.body	0xdf214a+0xdf215c+0xdf216d+0xdf218c	The world generator is having trouble placing low-lying caves.  Make sure your parameters and presets allow as many mid-elevation squares as you are requiring low-lying caves.  Alternatively, you can reduce the number of non-mountain caves required by the parameters.
+worldgen.rejection.heading	0xdfb5af	UNABLE TO PLACE ENOUGH CIVILIZATIONS
+worldgen.rejection.body	0xdf21a1+0xdf21b3+0xdf21c4+0xdf21d5+0xdf21e6+0xdf2205	The world generator is having trouble placing enough civilizations.  Make sure your parameters and presets offer enough low-to-mid savagery, evil/good appropriate, biome appropriate squares to establish sites.  High savagery (66+) blocks civilization placement -- make sure your parameters and presets offer at least small pockets of low-to-mid savagery areas.  If you have very few biome types and are placing good or evil regions, they'll often crowd out the civilizations as well.  Alternatively, you can reduce the number of civilizations required by the parameters.
+worldgen.rejection.heading	0xdfb5e9	NO CIVILIZATIONS AVAILABLE
+worldgen.rejection.body	0xdf221a+0xdf222c+0xdf224b	The world generator couldn't find any civilization definitions.  This problem cannot be resolved by continuing, so you should either abort or skip all rejects for a legends-only game.  
+worldgen.rejection.heading	0xdfb620	UNABLE TO PLACE CONTROLLABLE CIVILIZATION
+worldgen.rejection.body	0xdf2260+0xdf2272+0xdf2283+0xdf2294+0xdf22b3	The world generator is having trouble placing a controllable civilization.  Dwarves, for example, require non-evil, non-good, unsavage mountain squares that aren't surrounded by the ocean.  Make sure your parameters and presets have adequate squares of this kind.  Alternatively, you can remove the requirement of a controllable civilization from the parameters, which will restrict you to adventurers (assuming an appropriate civilization is placed).
+worldgen.rejection.heading	0xdfb657	FARMING CIVILIZATION PLACED WITHOUT CROPS
+worldgen.rejection.body	0xdf22c8+0xdf22da+0xdf22eb+0xdf230a	The world generator is having trouble placing farming civilizations.  Civilizations use available plants in their surroundings as their initial crops.  Make sure your parameters and raw objects have adequate vegetation.  
+worldgen.rejection.controls	0xdfb803	CONTINUE until you give me another warning.
+worldgen.rejection.controls	0xdfb92d	ABORT NOW and I'll look over my parameters.
+worldgen.rejection.controls	0xdfba5d	ALLOW THIS REJECTION TYPE and continue reporting others.
+worldgen.rejection.controls	0xdfbb8d	ALLOW ALL REJECTS, even if I end up with a legends-only world!
+# Classic PE: image base 0x140000000; addresses below are RVAs.
+worldgen.rejection.heading	0xdf5fe9	LACK OF PEAKS
+worldgen.rejection.body	0xdeb84e+0xdeb88a+0xdeb883+0xdeb8a9+0xdeb8c8	The world generator is having trouble placing enough mountain peaks.  You might want to check your maximum elevation value and other elevation parameters.  Can the elevation 400 be placed enough times to provide space for your peaks?  Alternatively, you can reduce the number of peaks required by the parameters.
+worldgen.rejection.body	0xdeb84e+0xdeb87a+0xdeb873+0xdeb8a9+0xdeb8c8	The world generator is having trouble placing enough mountain peaks.  You might want to check your preset elevations for the elevation 400.  You must have at least as many of these highest elevation points as you are requiring peaks.  Alternatively, you can reduce the number of peaks required by the parameters.
+worldgen.rejection.heading	0xdf6023	MEDIUM ELEVATION REJECTION
+worldgen.rejection.body	0xdeb910+0xdeb95b+0xdeb971+0xdeb987	The world generator is having trouble placing enough mid-level elevations.  Can your parameters achieve elevations between 100 and 299?  You might want to adjust the parameters governing elevation frequencies.  Alternatively, you can reduce the number of mid-level elevation squares required.
+worldgen.rejection.heading	0xdf605d	LOW ELEVATION REJECTION
+worldgen.rejection.body	0xdebd4b+0xdebd5d+0xdebd6e+0xdebd7f+0xdebd9e	The world generator is having trouble placing enough low elevations.  Can your parameters achieve elevations between 0 and 99?  You might want to adjust the parameters governing elevation frequencies.  Alternatively, you can reduce the number of mid-level elevation squares required.
+worldgen.rejection.heading	0xdf6097	HIGH ELEVATION REJECTION
+worldgen.rejection.body	0xdebdb3+0xdebdc5+0xdebdd6+0xdebde7+0xdebe06	The world generator is having trouble placing enough high elevations.  Can your parameters achieve elevations between 300 and 400?  You might want to adjust the parameters governing elevation frequencies.  Alternatively, you can reduce the number of mid-level elevation squares required.
+worldgen.rejection.heading	0xdf60d1	LACK OF EDGE OCEANS
+worldgen.rejection.body	0xdebe1b+0xdebe2d+0xdebe3e+0xdebe4f+0xdebe6e	The world generator is having trouble placing enough ocean squares along the edges.  Can your parameters achieve elevations between 0 and 99 frequently?  You might want to adjust the parameters governing elevation.  Alternatively, you can reduce the number of edge oceans required.
+worldgen.rejection.heading	0xdf610b	RAINFALL REJECTION
+worldgen.rejection.body	0xdebe83+0xdebe95+0xdebea6+0xdebec5	The world generator is having trouble placing rainfall in the manner specified by the parameters.  You might want to adjust the parameters governing rainfall.  Alternatively, you can reduce the number of high, medium or low rainfall squares required.
+worldgen.rejection.heading	0xdf6145	DRAINAGE REJECTION
+worldgen.rejection.body	0xdebeda+0xdebeec+0xdebefd+0xdebf1c	The world generator is having trouble setting drainage in the manner specified by the parameters.  You might want to adjust the parameters governing drainage.  Alternatively, you can reduce the number of high, medium or low drainage squares required.
+worldgen.rejection.heading	0xdf617f	SAVAGERY REJECTION
+worldgen.rejection.body	0xdebf31+0xdebf43+0xdebf54+0xdebf73	The world generator is having trouble placing savagery in the manner specified by the parameters.  You might want to adjust the parameters governing savagery.  Alternatively, you can reduce the number of high, medium or low savagery squares required.
+worldgen.rejection.heading	0xdf61b9	VOLCANISM REJECTION
+worldgen.rejection.body	0xdebf88+0xdebf9a+0xdebfab+0xdebfca	The world generator is having trouble setting volcanism in the manner specified by the parameters.  You might want to adjust the parameters governing volcanism.  Alternatively, you can reduce the number of high, medium or low volcanism squares required.
+worldgen.rejection.heading	0xdf622d	SWAMP REJECTION
+worldgen.rejection.body	0xdec06e+0xdec080+0xdec091+0xdec0b0	The world generator is having trouble placing swamps and marshes.  Make sure your parameters and presets can support mid-elevation, mid-to-high rainfall, low drainage, non-freezing areas.  Alternatively, you can reduce the number of swamp squares and regions required by the parameters.
+worldgen.rejection.heading	0xdf6267	DESERT REJECTION
+worldgen.rejection.body	0xdec0f8+0xdec140+0xdec156	The world generator is having trouble placing deserts and badlands.  Make sure your parameters and presets can support mid-elevation, very low rainfall, non-freezing areas.  Alternatively, you can reduce the number of desert squares and regions required by the parameters.
+worldgen.rejection.heading	0xdf62a1	FOREST REJECTION
+worldgen.rejection.body	0xdec4e7+0xdec4f9+0xdec50a+0xdec529	The world generator is having trouble placing forests.  Make sure your parameters and presets can support mid-elevation, high rainfall, high drainage, non-freezing areas.  Alternatively, you can reduce the number of forest squares and regions required by the parameters.
+worldgen.rejection.heading	0xdf62db	MOUNTAIN REJECTION
+worldgen.rejection.body	0xdec57d+0xdec590+0xdec5a1+0xdec5c0	The world generator is having trouble placing mountains.  Make sure your parameters and presets can support high elevation areas.  Alternatively, you can reduce the number of mountain squares and regions required by the parameters.
+worldgen.rejection.heading	0xdf6315	OCEAN REJECTION
+worldgen.rejection.body	0xdec5d5+0xdec5e7+0xdec5fe+0xdec61d	The world generator is having trouble placing oceans.  Make sure your parameters and presets can support low elevation areas.  Alternatively, you can reduce the number of ocean squares and regions required by the parameters.
+worldgen.rejection.heading	0xdf634f	GLACIER REJECTION
+worldgen.rejection.body	0xdec632+0xdec64a+0xdec661+0xdec680	The world generator is having trouble placing glaciers.  Make sure your parameters and presets can support mid-elevation, very high drainage, freezing areas.  Alternatively, you can reduce the number of glacial squares and regions required by the parameters.
+worldgen.rejection.heading	0xdf6389	TUNDRA REJECTION
+worldgen.rejection.body	0xdec6ce+0xdec723+0xdec73a+0xdec759	The world generator is having trouble placing tundra regions.  Make sure your parameters and presets can support mid-elevation, low-to-mid drainage, freezing areas.  Alternatively, you can reduce the number of tundra squares and regions required by the parameters.
+worldgen.rejection.heading	0xdf63c3	GRASSLAND REJECTION
+worldgen.rejection.body	0xdec7a1+0xdec7ed+0xdec803	The world generator is having trouble placing grasslands.  Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, low-to-mid drainage, non-freezing areas.  Alternatively, you can reduce the number of tundra squares and regions required by the parameters.
+worldgen.rejection.heading	0xdf63fd	HILLS REJECTION
+worldgen.rejection.body	0xdecbc8+0xdecc06+0xdecc1c	The world generator is having trouble placing hills.  Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, high drainage, non-freezing areas.  Alternatively, you can reduce the number of tundra squares and regions required by the parameters.
+worldgen.rejection.heading	0xdf61f3	LACK OF VOLCANOS
+worldgen.rejection.body	0xdebfdf+0xdec01b+0xdec014+0xdec03a+0xdec059	The world generator is having trouble placing enough volcanos.  You might want to check your maximum volcanism value.  Can volcanism be placed at the value 100 enough times to provide space for each of your volcanos?  Alternatively, you can reduce the number of volcanos required by the parameters.
+worldgen.rejection.body	0xdebfdf+0xdec00b+0xdec004+0xdec03a+0xdec059	The world generator is having trouble placing enough volcanos.  You might want to check your preset volcanism for the value 100.  You must have at least as many of these highest volcanism points as you are requiring volcanos.  Alternatively, you can reduce the number of volcanos required by the parameters.
+worldgen.rejection.heading	0xdf6437	LACK OF RIVERS
+worldgen.rejection.body	0xdecfb5+0xdecfc7+0xdecfd8+0xdecff7	The world generator is having trouble placing rivers.  Make sure your parameters and presets allow as many mountain squares as you are requiring river start points.  Alternatively, you can reduce the number of rivers required by the parameters.
+worldgen.rejection.heading	0xdf6471	TOO MANY REGIONS
+worldgen.rejection.body	0xded00c+0xded01e+0xded02f+0xded04e	The world generator is placing too many subregions.  Make sure your parameters and presets aren't so variable that biomes change frequently.  Alternatively, you can increase the number of subregions permitted by the parameters, up to the cap.
+worldgen.rejection.heading	0xdf64ab	LACK OF MOUNTAIN CAVES
+worldgen.rejection.body	0xded063+0xded075+0xded086+0xded0a5	The world generator is having trouble placing mountain caves.  Make sure your parameters and presets allow as many border mountain squares as you are requiring mountain caves.  Alternatively, you can reduce the number of mountain caves required by the parameters.
+worldgen.rejection.heading	0xdf64e5	LACK OF LOW-LYING CAVES
+worldgen.rejection.body	0xded0ba+0xded0cc+0xded0dd+0xded0fc	The world generator is having trouble placing low-lying caves.  Make sure your parameters and presets allow as many mid-elevation squares as you are requiring low-lying caves.  Alternatively, you can reduce the number of non-mountain caves required by the parameters.
+worldgen.rejection.heading	0xdf651f	UNABLE TO PLACE ENOUGH CIVILIZATIONS
+worldgen.rejection.body	0xded111+0xded123+0xded134+0xded145+0xded156+0xded175	The world generator is having trouble placing enough civilizations.  Make sure your parameters and presets offer enough low-to-mid savagery, evil/good appropriate, biome appropriate squares to establish sites.  High savagery (66+) blocks civilization placement -- make sure your parameters and presets offer at least small pockets of low-to-mid savagery areas.  If you have very few biome types and are placing good or evil regions, they'll often crowd out the civilizations as well.  Alternatively, you can reduce the number of civilizations required by the parameters.
+worldgen.rejection.heading	0xdf6559	NO CIVILIZATIONS AVAILABLE
+worldgen.rejection.body	0xded18a+0xded19c+0xded1bb	The world generator couldn't find any civilization definitions.  This problem cannot be resolved by continuing, so you should either abort or skip all rejects for a legends-only game.  
+worldgen.rejection.heading	0xdf6590	UNABLE TO PLACE CONTROLLABLE CIVILIZATION
+worldgen.rejection.body	0xded1d0+0xded1e2+0xded1f3+0xded204+0xded223	The world generator is having trouble placing a controllable civilization.  Dwarves, for example, require non-evil, non-good, unsavage mountain squares that aren't surrounded by the ocean.  Make sure your parameters and presets have adequate squares of this kind.  Alternatively, you can remove the requirement of a controllable civilization from the parameters, which will restrict you to adventurers (assuming an appropriate civilization is placed).
+worldgen.rejection.heading	0xdf65c7	FARMING CIVILIZATION PLACED WITHOUT CROPS
+worldgen.rejection.body	0xded238+0xded24a+0xded25b+0xded27a	The world generator is having trouble placing farming civilizations.  Civilizations use available plants in their surroundings as their initial crops.  Make sure your parameters and raw objects have adequate vegetation.  
+worldgen.rejection.controls	0xdf6773	CONTINUE until you give me another warning.
+worldgen.rejection.controls	0xdf689d	ABORT NOW and I'll look over my parameters.
+worldgen.rejection.controls	0xdf69cd	ALLOW THIS REJECTION TYPE and continue reporting others.
+worldgen.rejection.controls	0xdf6afd	ALLOW ALL REJECTS, even if I end up with a legends-only world!

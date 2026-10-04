@@ -2743,3 +2743,70 @@ Pass this treasure into our possession, and we shall depart in peace.	把这件�
 {b} is sought by {s}, and I aim to return it home. My epic journey began {s}. I've searched nearly the whole world over. I can only rest when I've brought the prize safely to {e}.	{s1}正在寻找{b1}，而我打算将它送回故乡。我的史诗之旅始于{s2}。我几乎已经搜遍了全世界。只有将宝物安全带回{e1}，我才能安心。
 {b} is sought by {s}, and I aim to return it home. My epic journey began {s}. I've searched nearly the whole world over. I can only rest when I've brought the prize safely to {s} in {e}.	{s1}正在寻找{b1}，而我打算将它送回故乡。我的史诗之旅始于{s2}。我几乎已经搜遍了全世界。只有将宝物安全带回{e1}的{s3}，我才能安心。
 Play your role in this noble quest and become legendary!	投身这项崇高的使命，成就传奇吧！
+
+# World-generation rejection dialog, Windows 53.16 Steam and classic.
+# All 53 native rejection values dispatch to 27 headings and 29 complete
+# paragraphs. Mountain peaks and volcanos each retain both parameter/preset
+# variants. Native source spelling, double spaces and reused final sentences
+# are preserved; every paragraph owns its complete warning with hP.
+# Source branches and continuation operands: data/extracted/worldgen-warnings/.
+LACK OF PEAKS	缺少山峰
+MEDIUM ELEVATION REJECTION	中等海拔不符合要求
+LOW ELEVATION REJECTION	低海拔不符合要求
+HIGH ELEVATION REJECTION	高海拔不符合要求
+LACK OF EDGE OCEANS	缺少边缘海洋
+RAINFALL REJECTION	降雨量不符合要求
+DRAINAGE REJECTION	排水性不符合要求
+SAVAGERY REJECTION	野性不符合要求
+VOLCANISM REJECTION	火山活动度不符合要求
+SWAMP REJECTION	沼泽不符合要求
+DESERT REJECTION	沙漠不符合要求
+FOREST REJECTION	森林不符合要求
+MOUNTAIN REJECTION	山地不符合要求
+OCEAN REJECTION	海洋不符合要求
+GLACIER REJECTION	冰川不符合要求
+TUNDRA REJECTION	苔原不符合要求
+GRASSLAND REJECTION	草原不符合要求
+HILLS REJECTION	丘陵不符合要求
+LACK OF VOLCANOS	缺少火山
+LACK OF RIVERS	缺少河流
+TOO MANY REGIONS	区域过多
+LACK OF MOUNTAIN CAVES	缺少山地洞穴
+LACK OF LOW-LYING CAVES	缺少低地洞穴
+UNABLE TO PLACE ENOUGH CIVILIZATIONS	无法放置足够的文明
+NO CIVILIZATIONS AVAILABLE	没有可用的文明
+UNABLE TO PLACE CONTROLLABLE CIVILIZATION	无法放置可操控文明
+FARMING CIVILIZATION PLACED WITHOUT CROPS	已放置的农耕文明没有作物
+The world generator is having trouble placing enough mountain peaks.  You might want to check your maximum elevation value and other elevation parameters.  Can the elevation 400 be placed enough times to provide space for your peaks?  Alternatively, you can reduce the number of peaks required by the parameters.	世界生成器无法放置足够的山峰。请检查最高海拔值及其他海拔参数。海拔 400 的方格是否足以容纳所需山峰？也可以减少参数要求的山峰数量。
+The world generator is having trouble placing enough mountain peaks.  You might want to check your preset elevations for the elevation 400.  You must have at least as many of these highest elevation points as you are requiring peaks.  Alternatively, you can reduce the number of peaks required by the parameters.	世界生成器无法放置足够的山峰。请检查预设中海拔 400 的分布。最高海拔点的数量至少应与所需山峰数相同。也可以减少参数要求的山峰数量。
+The world generator is having trouble placing enough mid-level elevations.  Can your parameters achieve elevations between 100 and 299?  You might want to adjust the parameters governing elevation frequencies.  Alternatively, you can reduce the number of mid-level elevation squares required.	世界生成器无法放置足够的中等海拔方格。这些参数能否产生 100 至 299 的海拔？请调整控制海拔分布频率的参数。也可以减少所需的中等海拔方格数量。
+The world generator is having trouble placing enough low elevations.  Can your parameters achieve elevations between 0 and 99?  You might want to adjust the parameters governing elevation frequencies.  Alternatively, you can reduce the number of mid-level elevation squares required.	世界生成器无法放置足够的低海拔方格。这些参数能否产生 0 至 99 的海拔？请调整控制海拔分布频率的参数。也可以减少所需的中等海拔方格数量。
+The world generator is having trouble placing enough high elevations.  Can your parameters achieve elevations between 300 and 400?  You might want to adjust the parameters governing elevation frequencies.  Alternatively, you can reduce the number of mid-level elevation squares required.	世界生成器无法放置足够的高海拔方格。这些参数能否产生 300 至 400 的海拔？请调整控制海拔分布频率的参数。也可以减少所需的中等海拔方格数量。
+The world generator is having trouble placing enough ocean squares along the edges.  Can your parameters achieve elevations between 0 and 99 frequently?  You might want to adjust the parameters governing elevation.  Alternatively, you can reduce the number of edge oceans required.	世界生成器无法在地图边缘放置足够的海洋方格。这些参数能否频繁产生 0 至 99 的海拔？请调整控制海拔的参数。也可以减少所需的边缘海洋数量。
+The world generator is having trouble placing rainfall in the manner specified by the parameters.  You might want to adjust the parameters governing rainfall.  Alternatively, you can reduce the number of high, medium or low rainfall squares required.	世界生成器无法按参数要求分布降雨量。请调整控制降雨量的参数。也可以减少所需的高、中或低降雨量方格数量。
+The world generator is having trouble setting drainage in the manner specified by the parameters.  You might want to adjust the parameters governing drainage.  Alternatively, you can reduce the number of high, medium or low drainage squares required.	世界生成器无法按参数要求设置排水性。请调整控制排水性的参数。也可以减少所需的高、中或低排水性方格数量。
+The world generator is having trouble placing savagery in the manner specified by the parameters.  You might want to adjust the parameters governing savagery.  Alternatively, you can reduce the number of high, medium or low savagery squares required.	世界生成器无法按参数要求分布野性。请调整控制野性的参数。也可以减少所需的高、中或低野性方格数量。
+The world generator is having trouble setting volcanism in the manner specified by the parameters.  You might want to adjust the parameters governing volcanism.  Alternatively, you can reduce the number of high, medium or low volcanism squares required.	世界生成器无法按参数要求设置火山活动度。请调整控制火山活动度的参数。也可以减少所需的高、中或低火山活动度方格数量。
+The world generator is having trouble placing swamps and marshes.  Make sure your parameters and presets can support mid-elevation, mid-to-high rainfall, low drainage, non-freezing areas.  Alternatively, you can reduce the number of swamp squares and regions required by the parameters.	世界生成器无法放置沼泽和湿地。请确保参数和预设支持中等海拔、中高降雨量、低排水且不冻结的区域。也可以减少参数要求的沼泽方格和区域数量。
+The world generator is having trouble placing deserts and badlands.  Make sure your parameters and presets can support mid-elevation, very low rainfall, non-freezing areas.  Alternatively, you can reduce the number of desert squares and regions required by the parameters.	世界生成器无法放置沙漠和荒地。请确保参数和预设支持中等海拔、极低降雨量且不冻结的区域。也可以减少参数要求的沙漠方格和区域数量。
+The world generator is having trouble placing forests.  Make sure your parameters and presets can support mid-elevation, high rainfall, high drainage, non-freezing areas.  Alternatively, you can reduce the number of forest squares and regions required by the parameters.	世界生成器无法放置森林。请确保参数和预设支持中等海拔、高降雨量、高排水且不冻结的区域。也可以减少参数要求的森林方格和区域数量。
+The world generator is having trouble placing mountains.  Make sure your parameters and presets can support high elevation areas.  Alternatively, you can reduce the number of mountain squares and regions required by the parameters.	世界生成器无法放置山地。请确保参数和预设支持高海拔区域。也可以减少参数要求的山地方格和区域数量。
+The world generator is having trouble placing oceans.  Make sure your parameters and presets can support low elevation areas.  Alternatively, you can reduce the number of ocean squares and regions required by the parameters.	世界生成器无法放置海洋。请确保参数和预设支持低海拔区域。也可以减少参数要求的海洋方格和区域数量。
+The world generator is having trouble placing glaciers.  Make sure your parameters and presets can support mid-elevation, very high drainage, freezing areas.  Alternatively, you can reduce the number of glacial squares and regions required by the parameters.	世界生成器无法放置冰川。请确保参数和预设支持中等海拔、极高排水且会冻结的区域。也可以减少参数要求的冰川方格和区域数量。
+The world generator is having trouble placing tundra regions.  Make sure your parameters and presets can support mid-elevation, low-to-mid drainage, freezing areas.  Alternatively, you can reduce the number of tundra squares and regions required by the parameters.	世界生成器无法放置苔原区域。请确保参数和预设支持中等海拔、中低排水且会冻结的区域。也可以减少参数要求的苔原方格和区域数量。
+The world generator is having trouble placing grasslands.  Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, low-to-mid drainage, non-freezing areas.  Alternatively, you can reduce the number of tundra squares and regions required by the parameters.	世界生成器无法放置草原。请确保参数和预设支持中等海拔、中低降雨量、中低排水且不冻结的区域。也可以减少参数要求的苔原方格和区域数量。
+The world generator is having trouble placing hills.  Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, high drainage, non-freezing areas.  Alternatively, you can reduce the number of tundra squares and regions required by the parameters.	世界生成器无法放置丘陵。请确保参数和预设支持中等海拔、中低降雨量、高排水且不冻结的区域。也可以减少参数要求的苔原方格和区域数量。
+The world generator is having trouble placing enough volcanos.  You might want to check your maximum volcanism value.  Can volcanism be placed at the value 100 enough times to provide space for each of your volcanos?  Alternatively, you can reduce the number of volcanos required by the parameters.	世界生成器无法放置足够的火山。请检查最高火山活动度。火山活动度为 100 的方格是否足以容纳所有火山？也可以减少参数要求的火山数量。
+The world generator is having trouble placing enough volcanos.  You might want to check your preset volcanism for the value 100.  You must have at least as many of these highest volcanism points as you are requiring volcanos.  Alternatively, you can reduce the number of volcanos required by the parameters.	世界生成器无法放置足够的火山。请检查预设中火山活动度 100 的分布。最高火山活动度点的数量至少应与所需火山数相同。也可以减少参数要求的火山数量。
+The world generator is having trouble placing rivers.  Make sure your parameters and presets allow as many mountain squares as you are requiring river start points.  Alternatively, you can reduce the number of rivers required by the parameters.	世界生成器无法放置河流。请确保参数和预设提供的山地方格不少于所需河流源头数量。也可以减少参数要求的河流数量。
+The world generator is placing too many subregions.  Make sure your parameters and presets aren't so variable that biomes change frequently.  Alternatively, you can increase the number of subregions permitted by the parameters, up to the cap.	世界生成器产生了过多子区域。请避免参数和预设变化过大，以免生物群系频繁改变。也可以在上限范围内提高允许的子区域数量。
+The world generator is having trouble placing mountain caves.  Make sure your parameters and presets allow as many border mountain squares as you are requiring mountain caves.  Alternatively, you can reduce the number of mountain caves required by the parameters.	世界生成器无法放置山地洞穴。请确保参数和预设提供的边缘山地方格不少于所需山地洞穴数量。也可以减少参数要求的山地洞穴数量。
+The world generator is having trouble placing low-lying caves.  Make sure your parameters and presets allow as many mid-elevation squares as you are requiring low-lying caves.  Alternatively, you can reduce the number of non-mountain caves required by the parameters.	世界生成器无法放置低地洞穴。请确保参数和预设提供的中等海拔方格不少于所需低地洞穴数量。也可以减少参数要求的非山地洞穴数量。
+The world generator is having trouble placing enough civilizations.  Make sure your parameters and presets offer enough low-to-mid savagery, evil/good appropriate, biome appropriate squares to establish sites.  High savagery (66+) blocks civilization placement -- make sure your parameters and presets offer at least small pockets of low-to-mid savagery areas.  If you have very few biome types and are placing good or evil regions, they'll often crowd out the civilizations as well.  Alternatively, you can reduce the number of civilizations required by the parameters.	世界生成器无法放置足够的文明。请确保参数和预设提供足够的中低野性、善恶属性与生物群系均合适的方格来建立地点。高野性（66 以上）会阻止文明落位；请确保至少存在少量中低野性区域。若生物群系种类过少，善良或邪恶区域也常会挤占文明的空间。也可以减少参数要求的文明数量。
+The world generator couldn't find any civilization definitions.  This problem cannot be resolved by continuing, so you should either abort or skip all rejects for a legends-only game.  	世界生成器找不到任何文明定义。继续生成无法解决此问题；请中止，或忽略所有拒绝以生成仅限传说模式的世界。
+The world generator is having trouble placing a controllable civilization.  Dwarves, for example, require non-evil, non-good, unsavage mountain squares that aren't surrounded by the ocean.  Make sure your parameters and presets have adequate squares of this kind.  Alternatively, you can remove the requirement of a controllable civilization from the parameters, which will restrict you to adventurers (assuming an appropriate civilization is placed).	世界生成器无法放置可操控文明。例如，矮人需要既非善良也非邪恶、非野蛮且不被海洋包围的山地方格。请确保参数和预设提供足够的此类方格。也可以取消参数中的可操控文明要求；这样将只能使用冒险者，前提是存在合适的文明。
+The world generator is having trouble placing farming civilizations.  Civilizations use available plants in their surroundings as their initial crops.  Make sure your parameters and raw objects have adequate vegetation.  	世界生成器无法放置农耕文明。文明会使用周边可用植物作为初始作物。请确保参数和原始对象提供足够的植被。
+CONTINUE until you give me another warning.	继续生成，直到再次出现警告。
+ABORT NOW and I'll look over my parameters.	立即中止，我要检查参数。
+ALLOW THIS REJECTION TYPE and continue reporting others.	允许此类拒绝，并继续报告其他问题。
+ALLOW ALL REJECTS, even if I end up with a legends-only world!	允许所有拒绝，即使最终只能生成传说模式世界！

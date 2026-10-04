@@ -1,0 +1,46 @@
+{
+  "reference": [
+    {
+      "xref_va": "0x140dfb803",
+      "literal_va": "0x141720718",
+      "text": "CONTINUE until you give me another warning."
+    },
+    {
+      "xref_va": "0x140dfb92d",
+      "literal_va": "0x1417206e8",
+      "text": "ABORT NOW and I'll look over my parameters."
+    },
+    {
+      "xref_va": "0x140dfba5d",
+      "literal_va": "0x1417206a8",
+      "text": "ALLOW THIS REJECTION TYPE and continue reporting others."
+    },
+    {
+      "xref_va": "0x140dfbb8d",
+      "literal_va": "0x141720668",
+      "text": "ALLOW ALL REJECTS, even if I end up with a legends-only world!"
+    }
+  ],
+  "classic": [
+    {
+      "xref_va": "0x140df6773",
+      "literal_va": "0x14171b998",
+      "text": "CONTINUE until you give me another warning."
+    },
+    {
+      "xref_va": "0x140df689d",
+      "literal_va": "0x14171bad8",
+      "text": "ABORT NOW and I'll look over my parameters."
+    },
+    {
+      "xref_va": "0x140df69cd",
+      "literal_va": "0x14171ba98",
+      "text": "ALLOW THIS REJECTION TYPE and continue reporting others."
+    },
+    {
+      "xref_va": "0x140df6afd",
+      "literal_va": "0x14171ba58",
+      "text": "ALLOW ALL REJECTS, even if I end up with a legends-only world!"
+    }
+  ]
+}

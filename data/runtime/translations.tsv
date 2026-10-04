@@ -81,6 +81,7 @@ DFHack help: However, entering and leaving legends mode from a fort or adventure
 DFHack help: "-preserveList" is something of a beta feature, which should be avoided by users without a specific reason to use it.It is highly recommended that you always specify "-outcomeListName" when you give this command to prevent almost certain interference. If you want to trigger one of 5 outcomes three times, you might want this option even without "-outcomeListName".The list is NOT retained across game save/load, as nobody has yet had a use for this feature. Contact expwnent if you would use it; it's not that hard but if nobody wants it he won't bother.	"-preserveList" 是一个测试版功能，没有特定原因的用户应该避免使用它。强烈建议您在发出此命令时始终指定 "-outcomeListName" 以防止几乎肯定的干扰。如果您想触发 5 个结果之一三次，即使没有 "-outcomeListName"，您也可能需要此选项。该列表是 NOT 在游戏 save/load 中保留，因为还没有人使用此功能。如果您想使用它，请联系expwnent；这并不难，但如果没人想要，他就不会打扰。	l
 DFHack help: +------+---------------------+ | Tier | Description | |======|=====================| | 4 | unbelievably strong | +------+---------------------+ | 3 | mighty | +------+---------------------+ | 2 | very strong | +------+---------------------+ | 1 | strong | +------+---------------------+ | 0 | (no description) | +------+---------------------+ | -1 | weak | +------+---------------------+ | -2 | very weak | +------+---------------------+ | -3 | unquestionably weak | +------+---------------------+ | -4 | unfathomably weak | +------+---------------------+	+------+--------------------+ |等级 |描述 | |======|======================| | 4 |难以置信的强大 | +------+---------------------+ | 3 |强大| +------+---------------------+ | 2 |非常强| +------+---------------------+ | 1 |强| +------+---------------------+ | 0 | （无描述）| +------+---------------------+ | -1 |弱| +------+---------------------+ | -2 |非常弱| +------+---------------------+ | -3 |毫无疑问的弱| +------+---------------------+ | -4 |弱得难以想象| +------+---------------------+	l
 DFHack help: But sometimes the knowledge that you can just "Armok" your way out of trouble detracts from the game experience. If this is the way you feel, you can hide DFHack's god-mode tools -- they all have the tag "armok" -- from the game. Open gui/control-panel and go to the "Preferences" tab. Enable "Mortal mode" to hide all "armok" tools. You can still access them in gui/launcher if you type their names in full, but they won't show up in autocomplete lists, in the output of ls, or anywhere else. Any global hotkeys that run "armok" tools will be disabled.	不过，知道自己随时能用 Armok 的力量摆脱困难，也可能影响游戏体验。如果你有这种感受，可以隐藏所有带 armok 标签的上帝模式工具。打开 gui/control-panel，在“偏好”标签页启用“凡人模式”，即可隐藏这些工具。仍然可以在 gui/launcher 中输入完整命令名来运行它们，但它们不会出现在自动补全列表、ls 的输出或其他工具列表中。运行 armok 工具的全局快捷键也会停用。	l
+The world generator is having trouble placing enough civilizations. Make sure your parameters and presets offer enough low-to-mid savagery, evil/good appropriate, biome appropriate squares to establish sites. High savagery (66+) blocks civilization placement -- make sure your parameters and presets offer at least small pockets of low-to-mid savagery areas. If you have very few biome types and are placing good or evil regions, they'll often crowd out the civilizations as well. Alternatively, you can reduce the number of civilizations required by the parameters.	世界生成器无法放置足够的文明。请确保参数和预设提供足够的中低野性、善恶属性与生物群系均合适的方格来建立地点。高野性（66 以上）会阻止文明落位；请确保至少存在少量中低野性区域。若生物群系种类过少，善良或邪恶区域也常会挤占文明的空间。也可以减少参数要求的文明数量。	hP
 DFHack help: You can optionally enable a small monitor panel that displays the current threat rating for an upcoming attack. The chance of being attacked is shown for the surface and for the caverns as a whole (so as not to spoil exactly where the attack will happen). Moreover, to avoid spoiling when a cavern invasion has begun, the displayed threat rating for the caverns is not reset to "None" (or, more likely, "Low", since the act of fighting the invaders will have raised the cavern's irritation a bit) until you have discovered and neutralized the invaders.	您可以选择启用一个小型监控面板，显示即将发生的攻击的当前威胁评级。显示了表面和地下洞穴的整体受到攻击的可能性（以免破坏攻击发生的确切位置）。此外，为了避免在地下洞穴入侵开始时破坏内容，地下洞穴显示的威胁等级不会重置为"无"（或者更可能的是"低"，因为与入侵者作战的行为会稍微提高地下洞穴的愤怒），直到你发现并消灭了入侵者。	l
 Prepare to guide your stout charges to fortune in a world fraught with many perils. You'll begin by creating your world and watching the region's history unfold. Once this process is complete, you can prepare a group and send them out to seek wealth deep in the mountains. As you dig deeper and more citizens take up residence in your outpost, your doings will attract attention, both wanted and unwanted. Deal with challenges as they arise, and you might one day find that your humble settlement has grown to become a Mountainhome, the center of your civilization.	准备好引导你勇敢的矮人们在危机四伏的世界中走向命运吧。你将生成一个世界并观察其中的历史演变。在该过程完成后，你就可以组建一支队伍并派遣他们进入群山深处以寻求财富。随着挖掘的深入和更多的居民加入你的哨所，你的所作所为将吸引各方注意，无论你意愿如何。应对突如其来的挑战，也许某一天你会发现你那简陋的定居点已然发展为一座山地之家，并成为母文明的中心。	w
 DFHack help: When a fort is loaded, you can also go to the Labor -> Standing Orders page. You will see tow new panels. The first allows you to configure how many barrels to reserve for use by workshop jobs (instead of being claimed by stockpiles for container storage). The second panel allows you to save and restore your settings for standing orders. You can also toggle whether the saved standing orders are automatically restored when you embark on a new fort. This will toggle the relevant command in gui/control-panel on the Automation -> Autostart page.	当要塞加载后，您还可以进入劳动 ->常规订单页面。您将看到两个新面板。第一个允许您配置保留多少桶供车间作业使用（而不是由储物堆声明用于容器存储）。第二个面板允许您保存和恢复常规订单的设置。您还可以切换当您在新的要塞上进行启程时是否自动恢复保存的常规订单。这将在"自动化"->"自动启动"页面上的 gui/control-panel 中切换相关命令。	l
@@ -209,6 +210,7 @@ DFHack help: Union data structures contain fields that occupy the same memory sp
 DFHack help: "attrib_levels" Defines stat distributions for both physical and mental attributes. Each level has a probability (p-value, or p) which indicates how likely a level will be used for a particular stat, e.g. strength or spacial awareness. The levels range from incompetent to unbelievable (god-like) and are mostly in line with what the game uses already. "dwarf-op" adds one additional level to push the unbelievable even higher, though.	"attrib_levels" 定义身体和精神属性的统计分布。每个级别都有一个概率（p 值或 p），表示某个级别用于特定统计数据的可能性，例如力量或空间意识。级别范围从无能到令人难以置信（神级），并且大部分与游戏已经使用的内容一致。不过，"dwarf-op" 增加了一个额外的级别，将令人难以置信的推得更高。	l
 DFHack help: * **Unskilled job starvation.** The auction tends to starve jobs that require no skill (hauling, cleaning, lever pulling, and so on) in favor of skilled work. Labormanager maintains a laborer pool, assigned to the "auto:Laborers" work detail and restricted to unskilled labors, so there are always dwarves that *can only* take unskilled work. The pool grows and shrinks based on how many unclaimed unskilled job postings are piling up.	* **非技术性工作匮乏。** 拍卖往往会导致不需要技能的工作（运输、清洁、拉杆等）匮乏，而有利于技术性工作。 labormanager 维护一个劳动力池，分配给"auto:Laborers"劳动分组并限制为非熟练劳动，因此总有矮人 *只能*从事非熟练工作。该人才库的扩大和缩小取决于有多少无人认领的非技术职位空缺的数量。	l
 DFHack help: Windmills cycle between two graphical states to simulate movement. This is the polarity of the appearance. Each windmill also has a timer that controls when the windmill switches polarity. Each windmill's timer starts from zero at the instant that it is built, so two different windmills will rarely have exactly the same state. This tool can adjust the alignment of polarity and timers across your active windmills to your preference.	风车在两种图形状态之间循环以模拟运动。这就是外观的极性。每个风车还有一个计时器，用于控制风车何时切换极性。每个风车的计时器在建造的那一刻就从零开始，因此两个不同的风车很少会具有完全相同的状态。该工具可以根据您的喜好调整活动风车的极性和计时器的对齐方式。	l
+The world generator is having trouble placing a controllable civilization. Dwarves, for example, require non-evil, non-good, unsavage mountain squares that aren't surrounded by the ocean. Make sure your parameters and presets have adequate squares of this kind. Alternatively, you can remove the requirement of a controllable civilization from the parameters, which will restrict you to adventurers (assuming an appropriate civilization is placed).	世界生成器无法放置可操控文明。例如，矮人需要既非善良也非邪恶、非野蛮且不被海洋包围的山地方格。请确保参数和预设提供足够的此类方格。也可以取消参数中的可操控文明要求；这样将只能使用冒险者，前提是存在合适的文明。	hP
 DFHack help: * The warm/damp/aquifer status will be shown for tiles that are visible from the bottom. For example, if you dig out the layer underneath an aquifer and notice dripping, entering mining mode and looking at the tiles above will show their status, even if the tiles are otherwise unrevealed. This feature was added with the rationale that if the dwarves can see the effects of the tiles above them, the player should be able to as well.	* 对于从底部可见的图块，将显示 warm/damp/aquifer 状态。例如，如果您挖出含水层下方的层并注意到滴水，则进入挖掘模式并查看上面的图块将显示其状态，即使这些图块未显示。添加此功能的理由是，如果矮人可以看到其上方图块的效果，那么玩家也应该能够看到。	l
 DFHack help: For greater fort efficiency, you should also prioritize jobs that can block the completion of other jobs. For example, dwarves often fill a stockpile up completely, ignoring the barrels, pots, and bins that could be used to organize the items more efficiently. Prioritizing those organizational jobs can mean the difference between having space in your food stockpile for fresh meat and being forced to let it rot in the butcher shop.	为了提高要塞效率，您还应该优先考虑可能阻碍其他作业完成的作业。例如，矮人经常将储物堆完全填满，而忽略了可用于更有效地整理物品的桶、盆和垃圾箱。优先考虑这些组织工作可能意味着在你的食物中留出空间来存放新鲜的肉，还是被迫让它在肉店里腐烂。	l
 DFHack help: You can hit "Ctrl""H" or click on the help icon to show the help page for the selected tool in gui/launcher. You can also use this as shortcut to run custom commandline commands to configure that tool manually. If the tool has an associated GUI config screen, a gear icon will also appear next to the help icon. Hit "Ctrl""G", click on the gear icon, or Shift-double click the tool name to launch the relevant configuration interface.	按 Ctrl+H 或点击帮助图标，可在 gui/launcher 中打开所选工具的帮助，也可从这里输入自定义命令来手动配置工具。如果工具提供图形配置界面，帮助图标旁会显示齿轮图标。按 Ctrl+G、点击齿轮图标，或按住 Shift 双击工具名称，即可打开对应的配置界面。	l
@@ -595,6 +597,8 @@ DFHack help: The chart on the right is a plot of the last 14 days (28 half day p
 DFHack help: Adds a panel to the fort-wide work orders screen that allows access to orders plugin functionality. There are hotkeys assigned to export, import, sort, clear, and recheck conditions. You can also click on the hotkey hints as if they were buttons. Clearing will ask for confirmation before acting.	在堡垒范围的工作订单屏幕上添加一个面板，允许访问订单插件功能。有分配给导出、导入、排序、清除和重新检查条件的热键。您还可以像单击按钮一样单击热键提示。 Clearing 将在采取行动之前要求确认。	l
 DFHack help: Job specifications from the "jobs" table add these types to a dwarf to modify their stats. For the sake of randomness and individuality, each type has a probability for being additionally applied to a dwarf just by pure luck. This will bump some status up even higher than the base job calls for.	"jobs" 表中的作业规范将这些类型添加到矮人以修改其统计信息。出于随机性和个性的考虑，每种类型都有可能仅凭运气而额外应用于矮人。这将使某些地位提升甚至高于基本工作的要求。	l
 DFHack help: When choosing a unit to engrave a slab for, you can search for units by name, either in their native language or in English (though only their native name will be displayed). This overlay also adds a filter for showing only units that would need a slab in order to prevent them rising as a ghost.	选择要雕刻板的单位时，您可以按名称搜索单位，可以是其母语或英语（尽管只会显示其母语名称）。该叠加层还添加了一个过滤器，用于仅显示需要平板的单位，以防止它们像幽灵一样升起。	l
+The world generator is having trouble placing enough mountain peaks. You might want to check your maximum elevation value and other elevation parameters. Can the elevation 400 be placed enough times to provide space for your peaks? Alternatively, you can reduce the number of peaks required by the parameters.	世界生成器无法放置足够的山峰。请检查最高海拔值及其他海拔参数。海拔 400 的方格是否足以容纳所需山峰？也可以减少参数要求的山峰数量。	hP
+The world generator is having trouble placing enough mountain peaks. You might want to check your preset elevations for the elevation 400. You must have at least as many of these highest elevation points as you are requiring peaks. Alternatively, you can reduce the number of peaks required by the parameters.	世界生成器无法放置足够的山峰。请检查预设中海拔 400 的分布。最高海拔点的数量至少应与所需山峰数相同。也可以减少参数要求的山峰数量。	hP
 DFHack help: -clear unregister all reaction hooks -reactionName name specify the name of the reaction -command [ commandStrs ] specify the command to be run on the target(s) special args \\\\WORKER_ID \\\\REACTION \\\\BUILDING_ID \\\\LOCATION \\\\INPUT_ITEMS \\\\OUTPUT_ITEMS \\\\anything -> \\anything anything -> anything	-clear 取消注册所有反应钩子 -reactionName name 指定反应名称 -command [ commandStrs ] 指定要在目标上运行的命令特殊参数 \\\\\\\\WORKER_ID \\\\\\\\REACTION \\\\\\\\BUILDING_ID \\\\\\\\LOCATION \\\\\\\\INPUT_ITEMS \\\\\\\\OUTPUT_ITEMS \\\\\\\\任何东西 -> \\\\任何东西任何东西 -> 任何东西	l
 DFHack help: Displays properties of the tile highlighted with the keyboard cursor or at the specified coordinates. If you do not have a keyboard cursor visible, enter a mode that shows the keyboard cursor (like mining mode). If the keyboard cursor is still not visible, hit Alt-k to invoke toggle-kbd-cursor.	显示用键盘光标突出显示或在指定坐标处突出显示的图块的属性。如果键盘光标不可见，请输入显示键盘光标的模式（如挖掘模式）。如果键盘光标仍然不可见，请按 Alt-k 调用toggle-kbd-cursor。	l
 DFHack help: Don't designate tiles for digging or carving if they have an engraving with at least the specified quality. Value is a "df.item_quality" enum name or value, or the string "None" (or, equivalently, "-1") to indicate that no engravings should be preserved. Defaults to "df.item_quality.Masterful".	如果瓷砖的雕刻至少达到指定质量，请勿指定用于挖掘或雕刻。值是 "df.item_quality" 枚举名称或值，或字符串"None"（或等效的 "-1"），表示不应保留任何雕刻。默认为"df.item_quality.Masterful"。	l
@@ -615,6 +619,7 @@ DFHack help: The most reliable way to set up the environment for this command is
 You can make a variety of objects using three different types of glass. You can also collect sand in bags from a task originating here, if you have a sand collection zone. Magma below the furnace will power tasks. You are responsible for placing the furnace above the magma, but no other fuel is required.	可用三种不同的玻璃制作各种物品。如果设有采沙区，也可从这里发起用袋子收集沙子的任务。炉下方的岩浆会为作业供能。你需要将炉建在岩浆上方，但无需其他燃料。	hj
 DFHack help: "-l", "--haul-labor <labor>[,<labor>...]" For StoreItemInStockpile jobs, match only the specified hauling labor(s). Valid "labor" strings are: "Stone", "Wood", "Body", "Food", "Refuse", "Item", "Furniture", and "Animals". If not specified, defaults to matching all StoreItemInStockpile jobs.	"-l"、"--haul-labor <labor>[,<labor>...]" 对于 StoreItemInStockpile 作业，仅匹配指定的牵引劳动。有效的 "labor" 字符串为："Stone"、"Wood"、"Body"、"Food"、"Refuse"、"Item"、"Furniture"和"Animals"。如果未指定，则默认匹配所有 StoreItemInStockpile 作业。	l
 DFHack help: When "timestream" is active, it monitors all those counters and makes them decrement more per tick. It then balances things out by proportionally advancing the in-game calendar. Therefore, more "happens" per step, and DF has to simulate fewer "steps" for the same amount of work to get done.	当 "timestream" 处于活动状态时，它会监视所有这些计数器，并使它们在每个时钟周期内减少更多。然后，它会通过按比例提前游戏日历来平衡事情。因此，每步需要更多的 "happens"，而 DF 必须模拟更少的 "steps" 才能完成相同的工作量。	l
+The world generator is having trouble placing enough volcanos. You might want to check your preset volcanism for the value 100. You must have at least as many of these highest volcanism points as you are requiring volcanos. Alternatively, you can reduce the number of volcanos required by the parameters.	世界生成器无法放置足够的火山。请检查预设中火山活动度 100 的分布。最高火山活动度点的数量至少应与所需火山数相同。也可以减少参数要求的火山数量。	hP
 DFHack help: Only solid (wall), natural (not constructed), rough (not smooth) layer stone (not mineral vein or gem cluster) tiles can have their aquifer properties modified. When adding aquifers, walls that would immediately leak into open space will not be modified unless the override option is given.	只有实心（墙壁）、天然（非建造）、粗糙（不光滑）层石（不是矿物矿脉或宝石簇）瓷砖可以修改其含水层属性。添加含水层时，除非给出覆盖选项，否则不会修改会立即泄漏到开放空间的墙壁。	l
 DFHack help: Registers the command under the given name. This ensures you have a memorable identifier for the "--list" output so you can unregister the command if you want. It also prevents the same command from being registered twice. If not specified, it's set to the first argument after "--command".	以给定名称注册命令。这可确保您对 "--list" 输出有一个难忘的标识符，以便您可以根据需要取消注册该命令。它还可以防止同一命令被注册两次。如果未指定，则将其设置为 "--command" 之后的第一个参数。	l
 DFHack help: This tool encourages specified types of jobs to get assigned and completed as soon as possible. Finally, you can be sure your food will be hauled before it rots, your hides will be tanned before they go bad, and the corpses of your enemies will be cleared expediently from your entranceway.	该工具鼓励指定类型的作业尽快分配和完成。最后，你可以确定你的食物会在腐烂之前被拖走，你的兽皮会在变质之前被晒黑，你的敌人的尸体会从你的入口处被迅速清除。	l
@@ -657,6 +662,7 @@ DFHack help: "monitor" Display a panel on the main map showing your chances of a
 DFHack help: Improves temperature update performance by ensuring that 1 degree of item temperature is crossed in no more than 100 ticks when updating from the environment temperature. This reduces the time it takes for temperature to reach equilibrium and improves FPS when there are many items.	通过确保从环境温度更新时在不超过 100 个刻度内跨越 1 度的项目温度，提高了温度更新性能。这减少了温度达到平衡所需的时间，并在有很多物品时提高了 FPS。	l
 DFHack help: When multiple commands are bound to the same key combination, DFHack selects the first applicable one. Later "add" commands, and earlier entries within one "add" command have priority. Commands that are not specifically intended for use as a hotkey are always considered applicable.	当多个命令绑定到同一组合键时，DFHack 选择第一个适用的命令。后面的 "add" 命令和一个 "add" 命令中较早的条目具有优先权。并非专门用作热键的命令始终被认为是适用的。	l
 DFHack help: aquifer [list] [<pos> [<pos>] | <target option>] [<options>] aquifer add (light|heavy) (<pos> [<pos>] | <target option>) [<options>] aquifer drain [light|heavy] (<pos> [<pos>] | <target option>) [<options>] aquifer convert (light|heavy) (<pos> [<pos>] | <target option>) [<options>]	aquifer [list] [<pos> [<pos>] | <target option>] [<options>] aquifer add (light|heavy) (<pos> [<pos>] | <target option>) [<options>] aquifer drain [light|heavy] (<pos> [<pos>] | <target option>) [<options>] aquifer convert (light|heavy) (<pos> [<pos>] | <target option>) [<options>]	l
+The world generator is having trouble placing enough volcanos. You might want to check your maximum volcanism value. Can volcanism be placed at the value 100 enough times to provide space for each of your volcanos? Alternatively, you can reduce the number of volcanos required by the parameters.	世界生成器无法放置足够的火山。请检查最高火山活动度。火山活动度为 100 的方格是否足以容纳所有火山？也可以减少参数要求的火山数量。	hP
 DFHack help: "debugfilter header [enable] | [disable] [<element> ...]" Control which header metadata is shown along with each log message. Run it without parameters to see the list of configurable elements. Include an "enable" or "disable" keyword to change whether specific elements are shown.	"debugfilter header [enable] | [disable] [<element> ...]" 控制与每条日志消息一起显示的标头元数据。不带参数运行它以查看可配置元素的列表。包含 "enable" 或 "disable" 关键字以更改是否显示特定元素。	l
 DFHack help: If your most valuable citizens are getting old, this tool can save them. It decreases the age of the selected dwarf to the minimum adult age, or to the age specified. Age can only be increased (e.g. when this tool is run on babies or children) if the "--force" option is specified.	如果你最值钱的居民已经老了，这个工具可以拯救它们。它将所选矮人的年龄降低到最低成年年龄或指定的年龄。如果指定了 "--force" 选项，则只能增加年龄（例如，当此工具针对婴儿或儿童运行时）。	l
 DFHack help: It is called "lair" because monster lairs have similar map properties set, but this tool does not mark the site as an actual monster lair. The representation of the site on the world map won't change. Additionally, you can't restore the state of real monster lairs using this tool.	之所以称为 "lair"，是因为怪物巢穴具有类似的地图属性设置，但此工具不会将该站点标记为实际的怪物巢穴。该地点在世界地图上的表示不会改变。此外，您无法使用此工具恢复真实怪物巢穴的状态。	l
@@ -690,6 +696,7 @@ DFHack help: If the instrument named "givel" in your world has four components, 
 DFHack help: If you designate a bunch of tiles in dump mode, all the items on those tiles will be marked for dumping. Unfortunately, if there are buildings on any of those tiles, the items that were used to *build* those buildings will also be uselessly and confusingly marked for dumping.	如果您在转储模式下指定一堆图块，则这些图块上的所有项目都将被标记为转储。不幸的是，如果这些瓷砖上有建筑物，那么用于"建造"这些建筑物的物品也将被无用且令人困惑地标记为倾倒。	l
 DFHack help: Read your color scheme files from the "colorschemes" directory (a directory you created and populated with color scheme files) and load the saved default. If you have a color scheme that you always want loaded, put these commands in your "dfhack-config/init/dfhack.init" file:	从 "colorschemes" 目录（您创建并填充配色方案文件的目录）读取配色方案文件并加载保存的默认值。如果您始终想要加载配色方案，请将这些命令放入 "dfhack-config/init/dfhack.init" 文件中：	l
 DFHack help: This script displays information about past migration waves: when they arrived and which dwarves arrived in them. If you have a citizen selected in the UI or if you have passed the "--unit" option with a unit id, that citizen's name and wave will be highlighted in the output.	此脚本显示有关过去迁移波的信息：它们何时到达以及哪些矮人到达其中。如果您在 UI 中选择了居民，或者您已通过带有单位 id 的 "--unit" 选项，则居民的名称和波形将在输出中突出显示。	l
+The world generator is having trouble placing enough mid-level elevations. Can your parameters achieve elevations between 100 and 299? You might want to adjust the parameters governing elevation frequencies. Alternatively, you can reduce the number of mid-level elevation squares required.	世界生成器无法放置足够的中等海拔方格。这些参数能否产生 100 至 299 的海拔？请调整控制海拔分布频率的参数。也可以减少所需的中等海拔方格数量。	hP
 DFHack help: "forceequip" Attempts to equip all of the clothing and armor under the cursor onto the unit under the cursor, following game rules regarding which item can be equipped on which body part and only equipping 1 item onto each body part. Items owned by other dwarves are ignored.	"forceequip" 尝试将光标下的所有服装和盔甲装备到光标下的单位上，遵循关于哪个物品可以装备在哪个身体部位上的游戏规则，并且每个身体部位只装备 1 件物品。其他矮人拥有的物品将被忽略。	l
 DFHack help: If you do a full search (with the option "all") former ghosts will show up with the cursetype "unknown" because their ghostly flag is not set.If you see any living/active creatures with a cursetype of "unknown", then it is most likely a new type of curse introduced by a mod.	如果您进行全面搜索（使用选项 "all"），以前的鬼魂将显示诅咒类型 "unknown"，因为它们的幽灵标志未设置。如果您看到任何 living/active 生物的诅咒类型为 "unknown"，那么它很可能是 mod 引入的一种新型诅咒。	l
 DFHack help: Map tiles registered with this tool as a liquid source will be set to have the configured amount of liquid every 12 game ticks. A standard liquid source sets the level to "7", and a standard drain sets the level to "0", but you can set the target anywhere in between as well.	使用此工具注册为液体源的地图图块将被设置为每 12 个游戏周期具有配置的液体量。标准液体源将液位设置为"7"，标准排放装置将液位设置为"0"，但您也可以将目标设置在两者之间的任何位置。	l
@@ -717,12 +724,15 @@ DFHack help: Enables an overlay that shows the current chances of being attacked
 DFHack help: Show the in-game preview for the "dig" blueprint in the "library/aquifer_tap.csv" file. You can interactively reposition the blueprint and apply it where you like (it's intended to be applied in a light aquifer layer -- run the associated "help" blueprint for more info).	显示 "library/aquifer_tap.csv" 文件中 "dig" 蓝图的游戏内预览。您可以交互式地重新定位蓝图并将其应用到您喜欢的位置（它旨在应用在轻型含水层图层中 - 运行关联的 "help" 蓝图以获取更多信息）。	l
 DFHack help: This script makes managing how much fish you keep around automatic. It tries to maintain a configured stock level of raw and/or prepared fish, partially to keep item quantities from ballooning out of control, and partly to try and prevent collecting too many rotten fish.	该脚本可以自动管理您饲养的鱼的数量。它试图维持 and/or 生鱼的配置库存水平，部分是为了防止物品数量膨胀失控，部分是为了尝试防止收集太多腐烂的鱼。	l
 DFHack help: ``RevertBuildingChangesAdv(typ, subtyp, custom, category)``: These two functions revert changes made by "ChangeBuilding" and "ChangeBuildingAdv". Like those two functions there are two versions, a simple one that takes a string ID and one that takes a numeric ID triplet.	``RevertBuildingChangesAdv(typ, subtyp, custom, category)``：这两个函数恢复"ChangeBuilding"和"ChangeBuildingAdv"所做的更改。与这两个函数一样，有两个版本，一种是采用字符串 ID 的简单版本，一种是采用数字 ID 三元组的版本。	l
+The world generator is having trouble placing enough high elevations. Can your parameters achieve elevations between 300 and 400? You might want to adjust the parameters governing elevation frequencies. Alternatively, you can reduce the number of mid-level elevation squares required.	世界生成器无法放置足够的高海拔方格。这些参数能否产生 300 至 400 的海拔？请调整控制海拔分布频率的参数。也可以减少所需的中等海拔方格数量。	hP
+The world generator is having trouble placing swamps and marshes. Make sure your parameters and presets can support mid-elevation, mid-to-high rainfall, low drainage, non-freezing areas. Alternatively, you can reduce the number of swamp squares and regions required by the parameters.	世界生成器无法放置沼泽和湿地。请确保参数和预设支持中等海拔、中高降雨量、低排水且不冻结的区域。也可以减少参数要求的沼泽方格和区域数量。	hP
 DFHack help: "spectate set tooltip-follow-job-shortenings "Store item in stockpile" "Store"" Abbreviate the names of "Store item in stockpile" jobs to just "Store" when the job is displayed in the spectate tooltips. See the "tooltip-follow-job-shortenings" setting below for details.	"spectate set tooltip-follow-job-shortenings "Store item in 储物堆" "Store"" 当作业显示在观看工具提示中时，将"Store item in 储物堆"作业的名称缩写为"Store"。详细信息请参见下面的 "tooltip-follow-job-shortenings" 设置。	l
 DFHack help: Due to a bug in the game, a unit that is scheduled to train will not be able to practice archery at the archery range when their quiver contains only one stack of ammo item assigned for training. This is sometimes indicated on the unit by the 'Soldier (no item)' status.	由于游戏中的错误，计划训练的单位在其箭袋中仅包含一堆分配用于训练的弹药物品时将无法在射箭场练习射箭。有时，这会在单位上通过"士兵（无物品）"状态来指示。	l
 DFHack help: I am not sure how caved in tiles are handled, but after some quick testing it appears that the game creates mineral veins for them. I am not 100% sure if these functions will reliably work with all caved in tiles, but I can confirm that they do in at least some cases...	我不确定如何处理塌陷的瓷砖，但经过一些快速测试后，游戏似乎为它们创建了矿物矿脉。我不能 100% 确定这些功能是否能够可靠地适用于所有凹陷的瓷砖，但我可以确认它们至少在某些情况下可以......	l
 DFHack help: Starts to run fix/empty-wheelbarrows periodically to maintain the usability of your wheelbarrows. In the second version of this command, the number "25" is used as an example. You'll have to run "control-panel list" to see what number this command is actually listed as.	开始定期运行 fix/empty-wheelbarrows 以保持独轮车的可用性。在该命令的第二个版本中，以数字"25"为例。您必须运行 "control-panel list" 才能查看该命令实际列出的数字。	l
 DFHack help: This tool allows you to copy and paste blocks of dig designations. You can also transform what you have copied by shifting it, reflecting it, rotating it, and/or inverting it. Designations can also be used as brushes to erase other designations and cancel constructions.	该工具允许您复制和粘贴挖掘规划标记的块。您还可以通过移动、反射、旋转、and/or 反转来转换复制的内容。规划标记也可以用作画笔来擦除其他规划标记并取消构造。	l
 DFHack help: This tool mitigates Bug 9268 by generating new, randomized information for written content that do not have the start and end pages specified in their data structure. It cannot retrieve page count from written content that was already missing the page count information.	该工具通过为数据结构中没有指定起始页和结束页的书面内容生成新的随机信息来缓解 Bug 9268。它无法从已经丢失页数信息的书面内容中检索页数。	l
+The world generator is having trouble placing grasslands. Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, low-to-mid drainage, non-freezing areas. Alternatively, you can reduce the number of tundra squares and regions required by the parameters.	世界生成器无法放置草原。请确保参数和预设支持中等海拔、中低降雨量、中低排水且不冻结的区域。也可以减少参数要求的苔原方格和区域数量。	hP
 DFHack help: "RevertBuildingChangesAdv(typ, subtyp, custom, category)": These two functions revert changes made by "ChangeBuilding" and "ChangeBuildingAdv". Like those two functions there are two versions, a simple one that takes a string ID and one that takes a numeric ID triplet.	"RevertBuildingChangesAdv（typ，subtyp，custom，category）"：这两个函数恢复"ChangeBuilding"和"ChangeBuildingAdv"所做的更改。与这两个函数一样，有两个版本，一种是采用字符串 ID 的简单版本，一种是采用数字 ID 三元组的版本。	l
 DFHack help: "data" (required) A sparse map populated such that "data[z][y][x]" yields the blueprint text that should be applied to the tile at map coordinate "(x, y, z)". You can also just pass a string instead of a table and it will be interpreted as the value of "data[0][0][0]".	"data"（必需）填充的稀疏地图，使得"data[z][y][x]"生成应应用于地图坐标"(x, y, z)"处的图块的蓝图文本。您也可以只传递一个字符串而不是一个表，它将被解释为"data[0][0][0]"的值。	l
 DFHack help: "r", "range <width> <height> [<depth>]" Use the range brush with the specified width, height, and depth. If not specified, depth is 1, meaning just the current z-level. The range starts at the position of the cursor and goes to the east, south and up (towards the sky).	"r", "range <宽度> <高度> [<深度>]" 使用具有指定宽度、高度和深度的范围画笔。如果未指定，则深度为 1，即仅当前的 Z 层。范围从光标位置开始，向东、向南和向上（朝向天空）。	l
@@ -738,6 +748,7 @@ DFHack help: This plugin provides commands that clean the splatter that get scat
 DFHack help: These are the tools that can be enabled right now. Most tools can only be enabled when you have a fort loaded. Once enabled, tools will stay enabled when you save and reload your fort. If you want them to be auto-enabled for new forts, please see the "Autostart" tab.	这里列出当前可以启用的工具。大多数工具需要载入要塞后才能启用。启用状态会随要塞保存，重新载入后继续生效。若要让工具在新要塞中自动启用，请切换到“自动启动”标签页。	l
 DFHack help: This script allows you to mark specific Craftsdwarf's Workshops for use as "recreational crafting" stations. Dwarves who feel the need to craft objects will be able to go there to independently satisfy their crafting needs without manual intervention from the player.	此脚本允许您标记特定的 Craftsdwarf 工作室以用作"休闲制作"站。觉得需要制作物品的矮人将能够去那里独立满足他们的制作需求，无需玩家手动干预。	l
 DFHack help: enable autochop autochop [status] autochop (designate|undesignate) autochop target <max> [<min>] autochop (chop|nochop) <burrow>[,<burrow>...] autochop (clearcut|noclearcut) <burrow>[,<burrow>...] autochop (protect|unprotect) <type>[,<type>...] <burrow>[,<burrow>...]	启用 autochop autochop [状态] autochop (指定|未指定) autochop 目标 <max> [<min>] autochop (chop|nochop) <burrow>[,<burrow>...] autochop (clearcut|noclearcut) <burrow>[,<burrow>...] autochop (保护|取消保护) <type>[,<type>...] <burrow>[,<burrow>...]	l
+The world generator is having trouble placing enough low elevations. Can your parameters achieve elevations between 0 and 99? You might want to adjust the parameters governing elevation frequencies. Alternatively, you can reduce the number of mid-level elevation squares required.	世界生成器无法放置足够的低海拔方格。这些参数能否产生 0 至 99 的海拔？请调整控制海拔分布频率的参数。也可以减少所需的中等海拔方格数量。	hP
 DFHack help: "-s", "--stockpile <name or number>[,<name or number>...]" Causes the command to act upon stockpiles with the given names or numbers instead of the stockpile that is currently selected in the UI. Note that the numbers are the stockpile numbers, not the building ids.	"-s"、"--stockpile <name or number>[,<name or number>...]" 使命令作用于具有给定名称或编号的储物堆，而不是当前在 UI 中选择的储物堆。请注意，这些数字是储物堆数字，而不是建筑物 ID。	l
 DFHack help: "control-panel set HIDE_ARMOK_TOOLS true" Enable "mortal mode" and hide "armok" tools in the DFHack UIs. Note that this will also remove some entries from the "control-panel list" output. Run "control-panel list" to see all preference options and their descriptions.	"control-panel set HIDE_ARMOK_TOOLS true" 启用"凡人模式"并隐藏 DFHack UI 中的 "armok" 工具。请注意，这也会从 "control-panel list" 输出中删除一些条目。运行 "control-panel list" 以查看所有首选项及其描述。	l
 DFHack help: "job-material <inorganic-token>" Alters the material of the selected job (in "q" mode) or jumps to the selected material when choosing the building component of a planned building (in "b" mode). Note that this form of the command can only handle inorganic materials.	"job-material <inorganic-token>" 改变所选作业的材质（"q" 模式）或在选择规划建筑的建筑构件时跳转到所选材质（"b" 模式）。请注意，这种形式的命令只能处理无机材料。	l
@@ -753,6 +764,7 @@ DFHack help: Locations are attached to a site, so if you're in adventure mode, y
 DFHack help: Some of the options above will not show up if there is nothing of the given type to rename (e.g. you won't get the option to rename a squad if there are no squads, and you won't get an option to rename the government of the fortress if you aren't in fortress mode).	如果没有给定类型的任何内容可供重命名，则上述某些选项将不会显示（例如，如果没有小队，您将不会获得重命名小队的选项，如果您不处于要塞模式，您将不会获得重命名要塞政府的选项）。	l
 DFHack help: Sometimes if you have opened Stonesense and then resize the DF window, DF will appear to be unresponsive. This bug is graphical only and if you hit "Ctrl""Alt""S" and wait a minute or so (since you can't see when the game finishes saving) the game should quicksave.	有时，如果您打开了 Stonesense，然后调整 DF 窗口的大小，DF 会出现无响应的情况。这个错误只是图形化的，如果你点击 "Ctrl""Alt""S" 并等待一分钟左右（因为你看不到游戏何时完成保存），游戏应该快速保存。	l
 DFHack help: ``run [frames] [--levels n] [--enable]`` Run the full reproduction sequence: ``status``, optionally ``add n`` sky levels, optionally ``enable infinite-sky`` (reproduces the "construction monitoring" variant of the report), ``tower --platform``, ``poke``, ``watch``.	``run [frames] [--levels n] [--enable]`` 运行完整的再现序列：``status``，可选的``add n``天空水平，可选的``enable infinite-sky``（再现报告的"施工监控"变体），"`tower --platform`"，"`poke`"，"`watch`"。	l
+The world generator is having trouble placing enough ocean squares along the edges. Can your parameters achieve elevations between 0 and 99 frequently? You might want to adjust the parameters governing elevation. Alternatively, you can reduce the number of edge oceans required.	世界生成器无法在地图边缘放置足够的海洋方格。这些参数能否频繁产生 0 至 99 的海拔？请调整控制海拔的参数。也可以减少所需的边缘海洋数量。	hP
 DFHack help: * Citizens who crave wandering are steered toward fishing, hunting, and plant gathering; those craving excitement toward trapping and hunting; those craving creativity toward crafts. A completely unskilled citizen can be assigned a specialty purely on inclination.	* 居民渴望流浪，偏向钓鱼、打猎、采集植物；那些渴望对诱捕和狩猎感到兴奋的人；那些渴望对工艺品有创造力的人。一个完全不熟练的居民可以纯粹根据倾向被分配一个专长。	l
 DFHack help: Each seed type can be assigned a target stock amount. If the number of seeds of that type falls below that target, then the plants and seeds of that type will be protected from cookery. If the number rises above the target + 20, then cooking will be allowed again.	每种种子类型都可以分配一个目标库存量。如果该类型的种子数量低于该目标，则该类型的植物和种子将免受烹饪。如果数字超过目标 + 20，则将再次允许烹饪。	l
 DFHack help: If the "spectate.tooltip" overlay is enabled, toggle whether to show the specific happiness level (stress) of the dwarf in the hover panel. F.e. "tooltip-hover-stress-levels 2 true" would show the Displeased emoticon. See "tooltip-stress-levels" below for details.	如果启用了 "spectate.tooltip" 叠加层，则切换是否在悬停面板中显示矮人的特定幸福级别（压力）。 F.e. "tooltip-hover-stress-levels 2 true"将显示不高兴的表情符号。详情请参见下面的"tooltip-stress-levels"。	l
@@ -798,6 +810,7 @@ DFHack help: This triggers events when a unit uses an interaction on another. It
 DFHack help: Due to the way input reagent matching works in DF, you must select an item type if you select a material or the material may be matched incorrectly. If you press "m" without choosing an item type, the script will auto-choose if there is only one valid choice.	由于DF中输入试剂匹配的工作方式，如果您选择材料，则必须选择项目类型，否则材料可能会匹配错误。如果您按 "m" 而不选择项目类型，则脚本将自动选择（如果只有一个有效选择）。	l
 DFHack help: Regrass the selected block, adding all compatible grass types to block data, and "dog's tooth grass" if no compatible types exist for a tile. Refill existing grass on each tile, else select a compatible (or forced) type if depleted or previously non-existent.	重新放草所选块，将所有兼容的草类型添加到块数据中，如果图块不存在兼容的类型，则添加"狗牙草"。重新填充每个瓷砖上的现有草地，如果耗尽或以前不存在，则选择兼容（或强制）类型。	l
 DFHack help: ``status`` Print the current map z-level state: ``z_count``/``z_count_block``, the highest construction z-level, whether the top-level map blocks are allocated, and the state of the cave-column bookkeeping flags that are suspected to be involved in the issue.	``status`` 打印当前地图Z 层状态：``z_count``/``z_count_block``，最高构造Z 层，顶层地图块是否分配，以及疑似涉及问题的洞列记账标志的状态。	l
+The world generator is having trouble placing hills. Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, high drainage, non-freezing areas. Alternatively, you can reduce the number of tundra squares and regions required by the parameters.	世界生成器无法放置丘陵。请确保参数和预设支持中等海拔、中低降雨量、高排水且不冻结的区域。也可以减少参数要求的苔原方格和区域数量。	hP
 DFHack help: "dwarf-op" examines the distribution of skills and attributes across the dwarves in your fortress and can rewrite the characteristics of a dwarf (or group of dwarves) so that they are fit to excel at the jobs that your current dwarves don't adequately cover.	"dwarf-op" 检查要塞中矮人的技能和属性分布，并可以重写矮人（或矮人组）的特征，以便它们适合擅长当前矮人无法充分覆盖的工作。	l
 DFHack help: "name" Base name for blueprint files created in the "blueprints" directory. If no name is specified, "blueprint" is used by default. The string must contain some characters other than numbers so the name won't be confused with the optional "depth" parameter.	"name" 在 "blueprints" 目录中创建的蓝图文件的基本名称。如果不指定名称，则默认使用"blueprint"。该字符串必须包含数字以外的一些字符，以便名称不会与可选的 "depth" 参数混淆。	l
 DFHack help: "source add water|magma [0-7]" Add a source or drain at the selected tile position. If the target level is not specified, it defaults to "7". The cursor must be over a flow-passable tile (e.g. empty space, floor, staircase, etc.) and not too high in the sky.	"source add water|magma [0-7]" 在选定的图块位置添加源极或漏极。如果未指定目标级别，则默认为"7"。光标必须位于可流动的图块上（例如空地、地板、楼梯等），并且在天空中不要太高。	l
@@ -820,6 +833,7 @@ DFHack help: When painting burrows in the vanilla UI, a few extra mouse operatio
 DFHack help: Where the optional "<pos>" pair can be used to specify the coordinate bounds within which "dig-now" will operate. If they are not specified, "dig-now" will scan the entire map. If only one "<pos>" is specified, only the tile at that coordinate is processed.	其中可选的"<pos>"对可用于指定 "dig-now" 将运行的坐标范围。如果没有指定，"dig-now"将扫描整个地图。如果仅指定一个"<pos>"，则仅处理该坐标处的图块。	l
 DFHack help: You need to have at least one squad that is set up for training. The squad should be set to "Constant Training" in the military screen. The squad doesn't need months off. The members leave the squad once they have satisfied their need for military training.	您需要至少有一个用于训练的小队。小队应在军事屏幕中设置为"持续训练"。小队不需要几个月的休息时间。成员们在满足军事训练需要后离开小队。	l
 DFHack help: view-item-info ============== A script to extend the item or unit viewscreen with additional information including a custom description of each item (when available), and properties such as material statistics, weapon attacks, armor effectiveness, and more.	view-item-info ============== 用于扩展物品或单位视图屏幕的脚本，其中包含附加信息，包括每个物品的自定义描述（如果可用）以及材料统计、武器攻击、装甲效能等属性。	l
+The world generator is having trouble placing deserts and badlands. Make sure your parameters and presets can support mid-elevation, very low rainfall, non-freezing areas. Alternatively, you can reduce the number of desert squares and regions required by the parameters.	世界生成器无法放置沙漠和荒地。请确保参数和预设支持中等海拔、极低降雨量且不冻结的区域。也可以减少参数要求的沙漠方格和区域数量。	hP
 DFHack help: "overlay enable all" Enable all widgets. Note that they will only be displayed on the screens that they are associated with. You can see which screens a widget will be displayed on, along with whether the widget is a hotspot, by calling "overlay position".	"overlay enable all" 启用所有小部件。请注意，它们只会显示在与其关联的屏幕上。您可以通过调用 "overlay position" 查看小部件将显示在哪些屏幕上，以及该小部件是否是热点。	l
 DFHack help: "spotclean" works like "clean map snow mud", removing all contaminants from the tile under the keyboard cursor. This is ideal if you just want to clean a specific tile but don't want the clean command to remove all the glorious blood from your entranceway.	"spotclean" 的工作原理类似于"清洁地图雪泥"，清除键盘光标下图块上的所有污染物。如果您只想清洁特定的瓷砖，但不希望清洁命令清除入口处所有光荣的血液，那么这是理想的选择。	l
 DFHack help: The functionality for civilian alerts is actually already inside the vanilla game. The ability to configure civilian alerts was lost when the DF UI was updated for the v50 release. This tool simply provides an interface layer for the vanilla functionality.	民用警报功能实际上已经存在于原版游戏中。当 DF UI 更新为 v50 版本时，配置民用警报的功能丢失了。该工具只是为普通功能提供了一个接口层。	l
@@ -832,6 +846,7 @@ DFHack help: In graphics mode, solid tiles that are not adjacent to open space w
 DFHack help: Sometimes, dwarves drop buckets of water on the ground if their water hauling job is interrupted. These buckets then become unavailable for any other kind of use, such as making lye. This tool finds those discarded buckets and removes the water from them.	有时，如果矮人的运水工作中断，矮人会将一桶水掉在地上。这些桶随后将无法用于任何其他用途，例如制造碱液。该工具可以找到那些废弃的水桶并从中取出水。	l
 DFHack help: Start typing to search for a word. You can search in English, in the selected native language, or by the part of speech. Click on a word to assign it to the selected name component slot. You can also clear or randomize each individual name component slot.	开始输入内容来搜索单词。您可以用英语、所选母语或词性进行搜索。单击一个单词将其分配给选定的名称组件槽。您还可以清除或随机化每个单独的名称组件槽。	l
 DFHack help: When the overlay is enabled, a toggle for exporting extended legends data will appear below the vanilla "Export XML" button. If the toggle is enabled when the "Export XML" button is clicked, then "exportlegends" will run alongside the vanilla data export.	启用叠加后，用于导出扩展图例数据的切换将出现在普通的"导出 XML"按钮下方。如果单击"导出 XML"按钮时启用切换，则 "exportlegends" 将与普通数据导出一起运行。	l
+The world generator is having trouble placing forests. Make sure your parameters and presets can support mid-elevation, high rainfall, high drainage, non-freezing areas. Alternatively, you can reduce the number of forest squares and regions required by the parameters.	世界生成器无法放置森林。请确保参数和预设支持中等海拔、高降雨量、高排水且不冻结的区域。也可以减少参数要求的森林方格和区域数量。	hP
 DFHack help: "debugfilter category [<plugin regex>] [<category regex>]" List available debug plugin and category names. If filters aren't given then all plugins/categories are matched. This command is a good way to test regex parameters before you pass them to "set".	"debugfilter Category [<plugin regex>] [<category regex>]" 列出可用的调试插件和类别名称。如果未给出过滤器，则所有 plugins/categories 都会匹配。此命令是在将正则表达式参数传递给 "set" 之前测试它们的好方法。	l
 DFHack help: Goals are defined with the goal token and a true/false value that describes whether or not the goal has been accomplished. Be advised that this last feature has not been properly tested and might be potentially destructive: I suggest leaving it at false.	目标是通过目标标记和描述目标是否已完成的 true/false 值来定义的。请注意，最后一个功能尚未经过正确测试，并且可能具有潜在的破坏性：我建议将其保留为 false。	l
 DFHack help: Light: Sets whether the tile is exposed to light. Dark tiles increase cave adaption in dwarves that cross the tile. Light tiles that are not also outside (see Skyview below) will neither increase nor decrease cave adaption in dwarves that cross the tile.	光照：设置图块是否暴露在光照下。深色瓷砖增加了矮人中穿过瓷砖的洞穴适应性。不在外面的光瓷砖（参见下面的 Skyview）既不会增加也不会减少穿过瓷砖的矮人中的洞穴适应。	l
@@ -854,6 +869,7 @@ DFHack help: If you have trouble remembering which guildhalls and temples you've
 DFHack help: It is highly recommended that you always specify ``-outcomeListName`` when you give this command to prevent almost certain interference. If you want to trigger one of 5 outcomes three times, you might want this option even without ``-outcomeListName``.	强烈建议您在发出此命令时始终指定"`-outcomeListName`"，以防止几乎肯定的干扰。如果您想触发 5 个结果之一三次，即使没有"`-outcomeListName`"，您也可能需要此选项。	l
 DFHack help: This figure will be added to the list of people to choose from during character creation (the "Specific person" option on the race list). They can then be picked for use as a player character, the same as when regaining control of a retired adventurer.	此人物将被添加到角色创建时可供选择的人物列表中（种族列表中的"特定人物"选项）。然后可以选择他们作为玩家角色，就像重新获得对退休冒险家的控制权一样。	l
 DFHack help: You can toggle between seeing information for the UI grid tiles or the map tiles. Click on a tile to freeze the displayed information so you can scroll the information about the tile or move/resize the inspector window without changing the active tile.	您可以在查看 UI 网格图块或地图图块的信息之间切换。单击图块可冻结显示的信息，以便您可以滚动有关图块或检查器窗口的信息，而无需更改活动图块。	l
+The world generator is having trouble placing low-lying caves. Make sure your parameters and presets allow as many mid-elevation squares as you are requiring low-lying caves. Alternatively, you can reduce the number of non-mountain caves required by the parameters.	世界生成器无法放置低地洞穴。请确保参数和预设提供的中等海拔方格不少于所需低地洞穴数量。也可以减少参数要求的非山地洞穴数量。	hP
 Announcement combat fortress-announcement []: Your fortress is out of food! Consider placing a farmplot on some underground soil and planting seeds. Try building a butcher's shop and slaughtering some livestock. Perhaps you can gather plants, fruit, or go fishing.	你的要塞没有食物了！考虑在地下土壤上建造农田并播种。试着建造屠宰坊，宰杀一些牲畜。也许可以采集植物、水果，或者去捕鱼。	l
 DFHack help: "forceequip s m i bp HD" Equips the selected item onto the unit's head. Ignores all restrictions and conflicts. If you know exactly what you want to equip, and exactly where you want it to go, then this is the most straightforward and reliable option.	"forceequip s m i bp HD" 将所选项目装备到单位头上。忽略所有限制和冲突。如果您确切地知道自己想要装备什么，并且确切地知道想要它去哪里，那么这是最直接、最可靠的选择。	l
 DFHack help: "idle-crafting happy [yes|no]" If set to "no", "happy" and "ecstatic" dwarves not suffering from long-term stress will only satisfy their crafting needs when meeting the highest configured threshold (eg. "10000" at default settings). Defaults to "no".	"idle-crafting happy [yes|no]" 如果设置为"no"、"happy"和"ecstatic" 矮人，则不会遭受长期压力，只有在满足最高配置阈值（例如默认设置为"10000"）时才满足其制作需求。默认为 "no"。	l
@@ -880,10 +896,12 @@ DFHack help: It also supports scanning burrows and cleaning out dead units from 
 DFHack help: There are many ready-to-use blueprints in the blueprint library that is distributed with DFHack, so you can use this tool productively even if you haven't created any blueprints yourself. Additional library blueprints can be added with mods as well.	随 DFHack 分发的蓝图库中有许多现成的蓝图，因此即使您自己没有创建任何蓝图，也可以高效地使用此工具。额外的库蓝图也可以通过 mod 添加。	l
 DFHack help: ``LoadPalette(path)``: Load a color palette from the text file at "path". This file must be in the same format as "/data/init/colors.txt". If there is an error any changes will be reverted and this function will return false (returns true normally).	``LoadPalette(path)``：从 "path" 的文本文件加载调色板。该文件的格式必须与"/data/init/colors.txt"相同。如果出现错误，任何更改都将被恢复，并且此函数将返回 false（通常返回 true）。	l
 DFHack help: self.shared = { unit_ids={}, filtered_unit_ids={}, sort_stack={}, sort_order={}, -- list of indices into filtered_unit_ids (or cache.filtered_units) cache={}, -- cached pointers; reset at end of frame cursor_col=nil, set_cursor_col_fn=self:callback(	self.shared = {unit_ids={},filtered_unit_ids={},sort_stack={},sort_order={},--filtered_unit_ids（或cache.filtered_units）的索引列表cache={},--缓存的指针；在帧末尾重置cursor_col = nil，set_cursor_col_fn = self：callback（	l
+The world generator is having trouble placing tundra regions. Make sure your parameters and presets can support mid-elevation, low-to-mid drainage, freezing areas. Alternatively, you can reduce the number of tundra squares and regions required by the parameters.	世界生成器无法放置苔原区域。请确保参数和预设支持中等海拔、中低排水且会冻结的区域。也可以减少参数要求的苔原方格和区域数量。	hP
 Announcement combat fortress-announcement []: Your fortress is out of food! Are your farmplots working? Make sure you are planting edible plants. Try building a butcher's shop and slaughtering some livestock. Perhaps you can gather plants, fruit, or go fishing.	你的要塞没有食物了！农田是否正常运作？务必种植可食用的植物。试着建造屠宰坊，宰杀一些牲畜。也许可以采集植物、水果，或者去捕鱼。	l
 DFHack help: "--hatecreature [ <token> [<token> ...] ]" As in "--likecreature" above, you can just list the species in the token. The creature should be a type of "HATEABLE" vermin which isn't already explicitly liked, but no check is performed to enforce this.	"--hatecreature [ <token> [<token> ...] ]" 与上面的 "--likecreature" 一样，您可以只在代币中列出物种。该生物应该是一种尚未明确喜欢的 "HATEABLE" 害虫，但没有执行任何检查来强制执行此操作。	l
 DFHack help: When choosing the type of guildhall or temple to dedicate, you can search for the relevant profession, religion, or deity by name. For temples, you can also search for the "spheres" associated with the deity or religion, such as "wealth" or "lies".	选择供奉的会馆或寺庙类型时，可以通过名称搜索相关职业、宗教或神祇。对于寺庙，您还可以搜索与神灵或宗教相关的 "spheres"，例如 "wealth" 或 "lies"。	l
 DFHack help: When teleporting, if no unit id is specified, the unit under the cursor is used. If no coordinates are specified, then the coordinates under the cursor are used. Either the unit id or the coordinates must be specified for this command to be useful.	传送时，如果没有指定单位id，则使用光标下的单位。如果未指定坐标，则使用光标下的坐标。必须指定单位 ID 或坐标才能使该命令有用。	l
+The world generator is having trouble placing mountain caves. Make sure your parameters and presets allow as many border mountain squares as you are requiring mountain caves. Alternatively, you can reduce the number of mountain caves required by the parameters.	世界生成器无法放置山地洞穴。请确保参数和预设提供的边缘山地方格不少于所需山地洞穴数量。也可以减少参数要求的山地洞穴数量。	hP
 Bake clay objects here, as well as a few other useful materials. Clay can also be collected here if you have a clay collection zone. Magma below the kiln will power tasks. You are responsible for placing the kiln above the magma, but no other fuel is required.	在这里烧制黏土物品及一些其他有用材料。如果设有黏土采集区，也可从这里发起采集黏土的任务。窑下方的岩浆会为作业供能。你需要将窑建在岩浆上方，但无需其他燃料。	hj
 DFHack help: "Melee skill effectiveness", "ranged skill effectiveness", "melee combat potential", and "ranged combat potential" are explained in detail here: https://www.reddit.com/r/dwarffortress/comments/163kczo/enhancing_military_candidate_selection_part_3/	"近战技能效能"、"远程技能效能"、"近战战斗潜力"、"远程战斗潜力"详细解释在这里：https://www.reddit.com/r/dwarffortress/comments/163kczo/enhancing_military_candidate_selection_part_3/	l
 DFHack help: :WARNING: You've provided two equal arguments to initialize your sequence with. This is the mechanism used to indicate to cxxrandom.plug.dll that an empty sequence is desired. Recommendation: provide no arguments if you wish for an empty sequence.	:WARNING: You've provided two equal arguments to initialize your sequence with. This is the mechanism used to indicate to cxxrandom.plug.dll that an empty sequence is desired. Recommendation: provide no arguments if you wish for an empty sequence.	l
@@ -921,6 +939,7 @@ DFHack help: Note that in some cases, multiple issues may be present, and may on
 DFHack help: The community has assembled a good default list of job types that most players will benefit from. They have been playtested across a wide variety of forts. It is a good idea to enable prioritize with at least these defaults for all your forts.	社区已经整理了一份良好的默认工作类型列表，大多数玩家都会从中受益。它们已经在各种堡垒中进行了游戏测试。最好为所有堡垒至少启用这些默认值的优先级。	l
 DFHack help: This tool can be used to unburden a unit that has acquired too many trinkets, or simply as an alternative to "cleanowned" when cleaning up scattered owned items. It can also be used to force a unit to relinquish ownership of the selected item.	该工具可用于减轻已获得过多饰品的单位的负担，或者在清理分散的拥有物品时作为 "cleanowned" 的替代品。它还可用于强制单位放弃所选项目的所有权。	l
 DFHack help: When pop-control is disabled, the game population cap is set to the value configured for "max-pop". If you have manually adjusted the population caps outside of this tool, the value that is restored may differ from what you had originally set.	当弹出控制被禁用时，游戏人口上限设置为为 "max-pop" 配置的值。如果您在此工具之外手动调整了人口上限，则恢复的值可能与您最初设置的值不同。	l
+The world generator is having trouble placing glaciers. Make sure your parameters and presets can support mid-elevation, very high drainage, freezing areas. Alternatively, you can reduce the number of glacial squares and regions required by the parameters.	世界生成器无法放置冰川。请确保参数和预设支持中等海拔、极高排水且会冻结的区域。也可以减少参数要求的冰川方格和区域数量。	hP
 Blocks creatures but allows the passage of fluids and items. Can be built over empty spaces, stairs, ramps, or above liquids. Bars unlike grates do not have a quality and so do not enhance the value of rooms significantly. Bars can be connected to levers.	阻挡生物，但允许液体和物品通过。可建在空隙、楼梯、斜坡或液体上方。栅条与格栅不同，没有品质，因此不会显著提高房间价值。栅条可连接到控制杆。	hj
 DFHack help: "-n", "--reaction-name <name>[,<name>...]" For CustomReaction jobs, match only the specified reaction name(s). See the registry output ("-r") for the full list of reaction names. If not specified, defaults to matching all CustomReaction jobs.	"-n"、"--reaction-name <name>[,<name>...]" 对于 CustomReaction 作业，仅匹配指定的反应名称。有关反应名称的完整列表，请参阅注册表输出 ("-r")。如果未指定，则默认匹配所有 CustomReaction 作业。	l
 DFHack help: "target <max> [<min>]" Set the target range for the number of logs you want to have in stock. If a minimum amount is not specified, it defaults to 20% less than the maximum. The default target is "200" (with a corresponding minimum of "160").	"target <max> [<min>]" 设置您想要库存的原木数量的目标范围。如果未指定最小金额，则默认为比最大金额少 20%。默认目标是"200"（相应的最小值为"160"）。	l
@@ -961,6 +980,7 @@ DFHack help: For global coordinates, the Z component will only be displayed if i
 DFHack help: This plugin provides a panel that appears when you select a stockpile via an overlay widget. You can use it to easily toggle logistics plugin features like autotrade, automelt, or autotrain. There are also buttons along the top frame for:	该插件提供了一个面板，当您通过覆盖小部件选择储物堆时会出现该面板。您可以使用它轻松切换物流插件功能，例如 autotrade、automelt 或 autotrain。顶部框架上还有一些按钮，用于：	l
 DFHack help: This usually contains at least a type of alcohol. It can also be a type of meat, fish, cheese, edible plant, cookable plant/creature extract, cookable mill powder, cookable plant seed, or cookable plant leaf. Please write the full tokens.	这通常至少含有一种酒精。它还可以是一种肉、鱼、奶酪、可食用植物、可烹调plant/creature提取物、可烹调磨粉、可烹调植物种子或可烹调植物叶。请写出完整的标记。	l
 DFHack help: You can specify multiple commands to run, separated with ";", similar to multicmd. However, if the command has been run (successfully) before with "once-per-save" in the context of the current savegame, the commands will not actually run.	可以指定运行多个命令，用";"分隔，类似于multicmd。但是，如果该命令之前已在当前保存游戏的上下文中使用 "once-per-save" 运行过（成功），则该命令实际上不会运行。	l
+The world generator is having trouble setting volcanism in the manner specified by the parameters. You might want to adjust the parameters governing volcanism. Alternatively, you can reduce the number of high, medium or low volcanism squares required.	世界生成器无法按参数要求设置火山活动度。请调整控制火山活动度的参数。也可以减少所需的高、中或低火山活动度方格数量。	hP
 Chests and coffers are used in personal bedrooms for storing non-clothing objects. They are also used in some zone-based locations like taverns, hospitals, and libraries for storing useful materials. A box object must be made before it can be placed.	箱子和石箱用于在私人卧室存放非衣物物品，也用于酒馆、医院和图书馆等区域型地点，储存所需物资。须先制作箱子，才能放置。	hj
 DFHack help: "-t", "--splitby <strategy>" Split blueprints into multiple files. See the Splitting output into multiple files section below for details. If not specified, defaults to "none", which will create a standard quickfort multi-blueprint file.	"-t"、"--splitby <strategy>" 将蓝图拆分为多个文件。有关详细信息，请参阅下面的将输出拆分为多个文件部分。如果未指定，则默认为 "none"，这将创建标准的 Quickfort 多蓝图文件。	l
 DFHack help: For most JSON libraries the index starts at [0] but some languages has the index start at [1]. So to translate an actual DF map position from the JSON map, you may need to add +1 to all x/y/z coordinates to get the correct tile position.	对于大多数 JSON 库，索引从 [0] 开始，但某些语言的索引从 [1] 开始。因此，要从 JSON 地图转换实际 DF 地图位置，您可能需要向所有 x/y/z 坐标添加 +1 以获得正确的图块位置。	l
@@ -991,6 +1011,9 @@ DFHack help: This tool provides a GUI for the export-world-map plugin and a numb
 DFHack help: You can use this utility command to periodically call other DFHack commands. This is especially useful for setting up "maintenance" commands that you want called every once in a while but don't want to have to remember to run yourself.	您可以使用此实用命令定期调用其他 DFHack 命令。这对于设置您想要偶尔调用但又不想记住自己运行的 "maintenance" 命令特别有用。	l
 DFHack help: ``-file <filename>``: the json file containing the profile to apply. It's a relative path, starting from the DF root directory and ending at the json file. It must begin with a slash. Default value: "/hack/scripts/dwarf_profiles.json".	``-file <filename>``：包含要应用的配置文件的 json 文件。它是一个相对路径，从 DF 根目录开始，到 json 文件结束。它必须以斜线开头。默认值："/hack/scripts/dwarf_profiles.json"。	l
 DFHack help: gui/settings-manager save-difficulty gui/settings-manager load-difficulty gui/settings-manager save-standing-orders gui/settings-manager load-standing-orders gui/settings-manager save-work-details gui/settings-manager load-work-details	gui/settings-manager 保存难度 gui/settings-manager 加载难度 gui/settings-manager 保存常规订单 gui/settings-manager 加载常规订单 gui/settings-manager 保存工作详细信息 gui/settings-manager 加载工作详细信息	l
+The world generator is having trouble placing rainfall in the manner specified by the parameters. You might want to adjust the parameters governing rainfall. Alternatively, you can reduce the number of high, medium or low rainfall squares required.	世界生成器无法按参数要求分布降雨量。请调整控制降雨量的参数。也可以减少所需的高、中或低降雨量方格数量。	hP
+The world generator is having trouble placing savagery in the manner specified by the parameters. You might want to adjust the parameters governing savagery. Alternatively, you can reduce the number of high, medium or low savagery squares required.	世界生成器无法按参数要求分布野性。请调整控制野性的参数。也可以减少所需的高、中或低野性方格数量。	hP
+The world generator is having trouble setting drainage in the manner specified by the parameters. You might want to adjust the parameters governing drainage. Alternatively, you can reduce the number of high, medium or low drainage squares required.	世界生成器无法按参数要求设置排水性。请调整控制排水性的参数。也可以减少所需的高、中或低排水性方格数量。	hP
 DFHack help: "-s", "--shift <x>[,<y>]" Shifts the blueprint by the specified offset before modifying the game map. The values for "<x>" and "<y>" can be negative. If both "--shift" and "--transform" are specified, the shift is always applied last.	"-s", "--shift <x>[,<y>]" 在修改游戏地图之前将蓝图移动指定的偏移量。 "<x>"和"<y>"的值可以为负数。如果同时指定了 "--shift" 和 "--transform"，则始终最后应用移位。	l
 DFHack help: Cave adaptation (or adaption) increases for a unit when they spend time underground. If it reaches a high enough level, the unit will be affected when View or set the level of cavern adaptation for the selected unit or the whole fort.	当单位在地下度过一段时间时，他们的洞穴适应（或适应）就会增加。如果达到足够高的级别，则在查看或设置所选单元或整个要塞的地下洞穴适配级别时，该单元将会受到影响。	l
 DFHack help: The input stream panel shows the keybindings that are being triggered. You can resize the window to see more of the stream history. The events are also logged to the external console, if you need a more permanent record of the stream.	输入流面板显示正在触发的键绑定。您可以调整窗口大小以查看更多流历史记录。如果您需要更永久的流记录，这些事件也会记录到外部控制台。	l
@@ -1044,6 +1067,7 @@ DFHack help: Tools that are enabled on this page will be auto-run or auto-enable
 DFHack help: Use the range brush with the specified width, height, and depth. If not specified, depth is 1, meaning just the current z-level. The range starts at the position of the cursor and goes to the east, south and up (towards the sky).	使用具有指定宽度、高度和深度的范围画笔。如果未指定，深度为 1，即仅当前 Z 层。范围从光标位置开始，向东、向南和向上（朝向天空）。	l
 DFHack help: enable autobutcher autobutcher target 2 2 2 2 DOG autobutcher target 1 1 2 2 CAT autobutcher target 10 10 14 2 BIRD_GOOSE autobutcher target 2 2 4 2 ALPACA SHEEP LLAMA autobutcher target 5 5 6 2 PIG autobutcher target 0 0 0 0 new	启用自动屠夫自动屠夫目标 2 2 2 2 DOG 自动屠夫目标 1 1 2 2 CAT 自动屠夫目标 10 10 14 2 BIRD_GOOSE 自动屠夫目标 2 2 4 2 ALPACA SHEEP LLAMA 自动屠夫目标 5 5 6 2 PIG 自动屠宰目标 0 0 0 0 新	l
 DFHack help: gui/stamper =========== allows manipulation of designations by transforms such as translations, reflections, rotations, and inversion. designations can also be used as brushes to erase other designations and cancel constructions.	gui/stamper =========== 允许通过平移、反射、旋转和反转等变换来操作规划标记。规划标记也可以用作画笔来擦除其他规划标记并取消构造。	l
+The world generator is having trouble placing rivers. Make sure your parameters and presets allow as many mountain squares as you are requiring river start points. Alternatively, you can reduce the number of rivers required by the parameters.	世界生成器无法放置河流。请确保参数和预设提供的山地方格不少于所需河流源头数量。也可以减少参数要求的河流数量。	hP
 Announcement combat fortress-announcement []: Your fortress is out of food! Consider placing a farmplot on some underground soil and planting seeds. Do you have any livestock to slaughter? Perhaps you can gather plants, fruit, or go fishing.	你的要塞没有食物了！考虑在地下土壤上建造农田并播种。还有可供宰杀的牲畜吗？也许可以采集植物、水果，或者去捕鱼。	l
 DFHack help: "flashstep" is a hotkey-friendly teleport that places your adventurer where your mouse cursor is. A small area around the target tile is revealed. If you take a step, then the normal vision cone area around the unit is revealed.	"flashstep" 是一个热键友好的传送工具，可将您的冒险家放置在鼠标光标所在的位置。目标图块周围的一小块区域显露出来。如果你迈出一步，那么单位周围的正常视锥区域就会显露出来。	l
 DFHack help: * "b": toggle display of backup folders, as created by DF's "AUTOBACKUP" option (see "data/init/init.txt" for a detailed explanation). This defaults to hiding backup folders, since they can take up significant space in the list.	* "b"：切换备份文件夹的显示，由 DF 的 "AUTOBACKUP" 选项创建（有关详细说明，请参阅 "data/init/init.txt"）。默认情况下会隐藏备份文件夹，因为它们会占用列表中的大量空间。	l
@@ -1061,6 +1085,7 @@ DFHack help: * Click on a column header to sort the unit list. Left-click to sor
 DFHack help: Add a source or drain at the selected tile position. If the target level is not specified, it defaults to "7". The cursor must be over a flow-passable tile (e.g. empty space, floor, staircase, etc.) and not too high in the sky.	在选定的图块位置添加源极或漏极。如果未指定目标级别，则默认为"7"。光标必须位于可流动的图块上（例如空地、地板、楼梯等），并且在天空中不要太高。	l
 DFHack help: Like with collapse above, due to DF game limits the workshop can only immediately connect to machine components built AFTER it. This also means that engines cannot be chained without intermediate axles built after both engines.	与上面的崩溃一样，由于DF游戏限制，工坊只能立即连接到AFTER建造的机器组件。这也意味着如果两台发动机后面没有内置中间轴，则无法链接发动机。	l
 DFHack help: The tool works with a brush, a filter, and a paint specification. The brush determines the shape of the area to affect, the filter selects which tiles to affect, and the paint specification determines how to affect those tiles.	该工具与画笔、滤镜和油漆规格配合使用。画笔确定要影响的区域的形状，过滤器选择要影响的图块，而绘制规范确定如何影响这些图块。	l
+The world generator is placing too many subregions. Make sure your parameters and presets aren't so variable that biomes change frequently. Alternatively, you can increase the number of subregions permitted by the parameters, up to the cap.	世界生成器产生了过多子区域。请避免参数和预设变化过大，以免生物群系频繁改变。也可以在上限范围内提高允许的子区域数量。	hP
 You can click the indicated button or press {k} to view your log. Your character generally starts with a variety of local knowledge, including a few places to have an adventure. You can also speak to locals and inquire about their troubles.	你可以点击图示按钮，或按{k1}查看日志。角色通常一开始就掌握不少本地知识，其中包括一些适合冒险的地点。你也可以与当地人交谈，询问他们的烦恼。	hqt
 DFHack help: "zone nick donttouchme" Nicknames all units in the current default zone or cage to 'donttouchme'. This is especially useful for protecting a group of animals assigned to a pasture or cage from being "processed" by autobutcher.	"zone nick donttouchme" 将当前默认区域或笼子中的所有单位昵称为"donttouchme"。这对于保护分配到牧场或笼子的一组动物不被自动屠宰者 "processed" 特别有用。	l
 DFHack help: Equips the selected item onto the unit's head. Ignores all restrictions and conflicts. If you know exactly what you want to equip, and exactly where you want it to go, then this is the most straightforward and reliable option.	将所选物品装备到单位头上。忽略所有限制和冲突。如果您确切地知道自己想要装备什么，并且确切地知道想要它去哪里，那么这是最直接、最可靠的选择。	l
@@ -1159,6 +1184,7 @@ DFHack help: A table containing basic information about the map size for width, 
 DFHack help: Exiting from the siege engine script via :kbd:`Esc` reverts the view to the state prior to starting the script. :kbd:`Shift`:kbd:`Esc` retains the current viewport, and also exits from the :kbd:`q` mode to main menu.	通过 :kbd:`Esc` 退出攻城引擎脚本会将视图恢复到启动脚本之前的状态。 :kbd:`Shift`:kbd:`Esc` 保留当前视口，并从 :kbd:`q` 模式退出到主菜单。	l
 DFHack help: This tool can help your dwarves recover from seeing a massacre. It removes all emotions associated with seeing a dead body. If your dwarves are traumatized and despondent after seeing a dead body, this tool can help.	这个工具可以帮助你的矮人从目睹屠杀中恢复过来。它消除了与看到尸体相关的所有情绪。如果您的矮人在看到尸体后受到创伤和沮丧，这个工具可以提供帮助。	l
 DFHack help: gui/dfstatus ============ Show a quick overview of critical stock quantities, including food, drinks, wood, and various bars. Sections can be enabled/disabled/configured by editing :file:`dfhack-config/dfstatus.lua`.	gui/dfstatus ============ 显示关键库存数量的快速概览，包括食品、饮料、木材和各种酒吧。通过编辑 :file:`dfhack-config/dfstatus.lua` 可以将部分设置为 enabled/disabled/configured。	l
+The world generator is having trouble placing mountains. Make sure your parameters and presets can support high elevation areas. Alternatively, you can reduce the number of mountain squares and regions required by the parameters.	世界生成器无法放置山地。请确保参数和预设支持高海拔区域。也可以减少参数要求的山地方格和区域数量。	hP
 DFHack help: "-n", "--new" Adds all biome-compatible grass types that were not originally present in the map block. Allows regrass to work in blocks that never had any grass to begin with. Will still fail in incompatible biomes.	"-n"、"--new" 添加地图块中最初不存在的所有生物群系兼容的草类型。允许在原本没有任何草的方块中重新种植草。在不兼容的生物群系中仍然会失败。	l
 DFHack help: "save-generated-raws" Save a sample creature graphics file in the Dwarf Fortress root directory to use as a start for making a graphics set for generated creatures using the new names that they get with this plugin.	"save-generated-raws" 将示例生物图形文件保存在矮人要塞根目录中，作为使用通过此插件获得的新名称为生成的生物制作图形集的开始。	l
 DFHack help: "workflow count <constraint-spec> <target> [gap]" Set a constraint, counting every stack as 1 item. If a gap is specified, stocks are allowed to dip that many items below the target before relevant jobs are resumed.	"workflow count <constraint-spec> <target> [gap]" 设置约束，将每个堆栈计为 1 项。如果指定了缺口，则在相关工作恢复之前，库存可以下降到低于目标的许多项目。	l
@@ -1224,6 +1250,7 @@ DFHack help: Force the suspected trigger: set the world "process_columns" flag a
 DFHack help: Periodically scan your plant stocks and assign crops to your farm plots based on which plant stocks are low (as long as you have the appropriate seeds). The target threshold for each crop type is configurable.	定期扫描您的植物库存，并根据植物库存较低的情况将农作物分配到您的农田（只要您有合适的种子）。每种作物类型的目标阈值是可配置的。	l
 DFHack help: This tool is a gui for spawning water, magma, and river sources on the map, allowing you to click and paint liquid onto the map. It can optionally clean existing liquids on the map from salt or being stagnant.	这个工具是一个用于在地图上生成水、岩浆和河流源头的 GUI，允许您在地图上单击并绘制液体。它可以选择性地清除地图上现有液体中的盐分或停滞液体。	l
 DFHack help: undo: Applies the inverse of the specified blueprint. Dig tiles are undesignated, buildings are canceled or scheduled for destruction (depending on their construction status), and stockpiles/zones are removed.	撤消：应用指定蓝图的逆操作。挖掘瓦片未指定，建筑物被取消或计划销毁（取决于其施工状态），并且 stockpiles/zones 被移除。	l
+The world generator is having trouble placing oceans. Make sure your parameters and presets can support low elevation areas. Alternatively, you can reduce the number of ocean squares and regions required by the parameters.	世界生成器无法放置海洋。请确保参数和预设支持低海拔区域。也可以减少参数要求的海洋方格和区域数量。	hP
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Trade relations remain strengthened by recent negotiations. However, overall trade sentiments are tenuous at best.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。近期谈判对贸易关系的促进作用仍在持续。不过，总体贸易意愿至多只能算勉强。	hPt
 Announcement combat sentence []: You have discovered an eerie cavern. The air above the dark stone floor is alive with vortices of purple light and dark, boiling clouds. Seemingly bottomless glowing pits mark the surface.	你发现了一座诡异的洞穴。幽暗的石地上空，紫色光涡与翻腾的暗云不断涌动。地面上散布着发光的深坑，仿佛深不见底。	l
 DFHack help: "-d", "--dead" Enables user to unretire a dead historical figure to play as in adventure mode. For instance, a user may wish to unretire and then play as a particular megabeast that had died during world-gen.	"-d"、"--dead" 使用户能够取消退休已故历史人物的角色，以在冒险模式中进行游戏。例如，用户可能希望取消退休，然后扮演在世界生成期间死亡的特定巨型野兽。	l
@@ -1293,6 +1320,7 @@ DFHack help: Specify "hollow" to fill in naturally hollow veins too, but be awar
 DFHack help: The orders plugin provides several overlays managed by the overlay framework. You can toggle them via the "Overlays" tab in gui/control-panel or reposition the ones with onscreen widgets with gui/overlay.	订单插件提供了多个由覆盖框架管理的覆盖。您可以通过 gui/control-panel 中的"叠加"选项卡切换它们，或者使用 gui/overlay. 重新定位屏幕小部件	l
 DFHack help: While labormanager is enabled it will overwrite the membership of its "auto:" work details on every cycle. Player-created work details are left alone, but manual edits to the managed details will be lost.	当 labormanager 启用时，它将在每个周期覆盖其"auto:"劳动分组的成员资格。玩家创建的劳动分组会被保留，但对托管详细信息的手动编辑将会丢失。	l
 DFHack help: brainwash ========= Modify the personality traits of the selected dwarf to match an idealised personality - for example, as stable and reliable as possible to prevent tantrums even after months of misery.	brainwash ========= Modify the personality traits of the selected dwarf to match an idealised personality - for example, as stable and reliable as possible to prevent tantrums even after months of misery.	l
+The world generator is having trouble placing farming civilizations. Civilizations use available plants in their surroundings as their initial crops. Make sure your parameters and raw objects have adequate vegetation.	世界生成器无法放置农耕文明。文明会使用周边可用植物作为初始作物。请确保参数和原始对象提供足够的植被。	hP
 A caravan from {e} has arrived. Your status as a major land has attracted much more trade than usual. Trade relations remain strengthened by recent negotiations. However, overall trade sentiments are tenuous at best.	来自{e1}的商队已抵达。你作为大领地的地位吸引来了比平时多得多的贸易。近期谈判对贸易关系的促进作用仍在持续。不过，总体贸易意愿至多只能算勉强。	hPt
 Although it is a grim reminder of the winter hardships to come, the supply caravan from {e} is a welcome sight. Their eyes are alight with the anticipation of inspecting the splendid products of your industrious {s}.	虽然这也无情地提醒着你们，寒冬的艰难即将到来，但来自{e1}的补给商队仍令人欣喜。商人们的眼中闪着期待的光芒，迫不及待地想要检视你们勤劳的{s1}制作的精美商品。	hPt
 DFHack help: "-n", "--dry-run" Get a count of the items that would be modified by an operation, which will be the number returned by the "count" action minus the number of items with the desired property already set.	"-n"、"--dry-run" 获取将由操作修改的项目的计数，这将是 "count" 操作返回的数字减去已设置所需属性的项目数。	l
@@ -1842,6 +1870,7 @@ DFHack help: Record all smooth tiles in the "smooth" phase. If this parameter is
 DFHack help: Running "smooth-movement" without arguments reports the plugin status and current settings. Optional features are reset to their defaults whenever the plugin is enabled.	不带参数运行 "smooth-movement" 会报告插件状态和当前设置。每当启用插件时，可选功能都会重置为默认值。	l
 DFHack help: The tier corresponds to the text that DF will use to describe a unit with attributes in that tier's range. For example, here is the mapping for the "Strength" attribute:	该层对应于 DF 将用于描述具有该层范围内的属性的单元的文本。例如，以下是"强度"属性的映射：	l
 DFHack help: With no parameters, this command lists the seed types currently planted in your farming plots. With a seed type, the script will grow those seeds, ready to be harvested.	在没有参数的情况下，此命令会列出当前在您的农田中种植的种子类型。对于种子类型，脚本将种植这些种子，准备收获。	l
+The world generator couldn't find any civilization definitions. This problem cannot be resolved by continuing, so you should either abort or skip all rejects for a legends-only game.	世界生成器找不到任何文明定义。继续生成无法解决此问题；请中止，或忽略所有拒绝以生成仅限传说模式的世界。	hP
 This important zone is where your citizens will gather to socialize. Crucially, the meeting area is where locations such as taverns, temples, hospitals, and the like are established.	居民会聚集在这个重要区域进行社交。更重要的是，酒馆、神殿、医院等地点都在集会区建立。	hj
 You can click the indicated button or press {k} to butcher a carcass or to engage in crafting activities. Hunting is an important way to get food. The base game has limited crafting.	你可以点击图示按钮，或按{k1}屠宰尸体或进行制作。狩猎是重要的食物来源，原版游戏的制作内容则较为有限。	hqt
 A caravan from {e} has arrived. The presence of your ruler has attracted great riches. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are good.	来自{e1}的商队已抵达。你的统治者在此坐镇，吸引来了巨额财富。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿良好。	hPt
@@ -20906,6 +20935,7 @@ A tiny crested parrot. They are prized as domestic companions.	一种小型的�
 A tiny rodent that burrows by day and scurries about at night.	一种白天挖洞、晚上四处乱窜的小型啮齿动物。	lP
 A very small amphibian with a wedge-shaped head and long tail.	一种很小的两栖动物，头部呈楔形，尾巴修长。	lP
 A very small squat amphibian with a round tummy and long tail.	一种很小的矮壮两栖动物，腹部浑圆，尾巴修长。	lP
+ALLOW ALL REJECTS, even if I end up with a legends-only world!	允许所有拒绝，即使最终只能生成传说模式世界！	hP
 ALLOW ALL REJECTS, even if I end up with a legends-only world!	允许所有拒绝，即使最终只能生成传说模式世界！	l
 After being interrogated by {a}, {a} implicated {a} during {e}	在{e1}期间，经过{a1}审讯后，{a2}供出了{a3}	ht
 After being interrogated by {a}, {a} implicated {a} within {p}	在{p1}，经过{a1}审讯后，{a2}供出了{a3}	ht
@@ -25113,6 +25143,7 @@ A small spotted fish found in tropical rivers and lakes.	一种小型斑点鱼�
 A tiny colorful fish found in tropical lakes and rivers.	一种小型的，色彩斑斓的鱼，生活在热带湖泊和河流中。	lP
 A tiny insect that can be found almost anywhere outside.	一种几乎到处可以找到的小昆虫。	lP
 A tiny, aquatic, worm-like creature that feeds on blood.	一种体型微小的，形似蠕虫的，吸血的水生生物。	lP
+ALLOW THIS REJECTION TYPE and continue reporting others.	允许此类拒绝，并继续报告其他问题。	hP
 ALLOW THIS REJECTION TYPE and continue reporting others.	允许此类拒绝，并继续报告其他问题。	l
 Adventure item action: Heat {s} near burning trunk ({p})	在燃烧的树干旁加热{s}（{p}）	h
 Adventure item action: Heat {s} near burning twigs ({p})	在燃烧的细枝旁加热{s}（{p}）	h
@@ -40630,6 +40661,7 @@ A small arthropod person with a broad head.	一种头部宽阔的小型节肢类
 A small horse with three toes on each foot.	一匹小型马，每只脚都长有三趾。	lP
 A small, flightless, brightly-colored bird.	一种无法飞行的色彩鲜艳的小型鸟类。	lP
 A spiny person with the head of an echidna.	一种长着豪猪的多刺的人形生物。	lP
+ABORT NOW and I'll look over my parameters.	立即中止，我要检查参数。	hP
 ABORT NOW and I'll look over my parameters.	立即中止，我要检查参数。	l
 Accept that the listener will not trade {i}	接受对方不愿交换{i1}的决定	hPt
 Adventure action: Tell a story about a site	讲述一个地点的故事	l
@@ -40827,6 +40859,7 @@ Book title subject: the Struggle of Animals	动物的生存斗争	hi
 Book title subject: the Survival of Animals	动物生存	hi
 Bring up {e}'s march to found a site in {e}	谈起{e1}进军{e2}建立新据点这件事	hPt
 Bring up {p}'s export prohibition violation	谈起{p1}违反出口禁令这件事	hPt
+CONTINUE until you give me another warning.	继续生成，直到再次出现警告。	hP
 CONTINUE until you give me another warning.	继续生成，直到再次出现警告。	l
 Choose which squads will use this barracks.	选择使用此兵营的小队。	hj
 Click in the play area to paint the burrow.	在游戏区域中点击，涂画活动区。	hP
@@ -44210,6 +44243,7 @@ DFHack help: watch combat in slow motion.	以慢动作观看战斗。	l
 DFHack help: | -3 | unquestionably weak |	| -3 |毫无疑问的弱|	l
 Diplomacy tree-fell count (untamed wilds)	外交砍树限额（蛮荒之地）
 Do this if you want to keep the old save.	若想保留旧存档，请选择此项。	w
+FARMING CIVILIZATION PLACED WITHOUT CROPS	已放置的农耕文明没有作物	hP
 Five hundred or more people were expelled	至少五百人遭到驱逐	h
 Follow destiny or strike out on your own.	顺从天意，还是自己闯出一条路？	w
 Fortress activity: Brew drink from plants	用植物酿酒	li
@@ -44409,6 +44443,7 @@ Toggle the display of spoor for tracking.	切换追踪用的足迹显示。	hj
 Toggle whether the squad will sleep here.	切换此小队是否在这里睡觉。	hj
 Toggle whether the squad will train here.	切换此小队是否在这里训练。	hj
 Travel building: Imported clothing market	进口服装市场	wi
+UNABLE TO PLACE CONTROLLABLE CIVILIZATION	无法放置可操控文明	hP
 Use Ctrl+p to play back a recorded macro.	使用 Ctrl+P 回放已录制的宏。	l
 Verbally struggle against great pessimism	说出你与强烈悲观的抗争	hP
 Visitor overview purpose separator: comma	、	hl
@@ -53205,6 +53240,7 @@ This recitation doesn't belong here.	这场朗诵不该出现在这里。	hP
 This storyteller is a waste of time.	听这人讲故事，简直浪费时间。	hP
 This {s} player doesn't belong here.	这位{s1}演奏者不该出现在这里。	hPt
 Travel building: Woven clothing shop	布制服装店	wi
+UNABLE TO PLACE ENOUGH CIVILIZATIONS	无法放置足够的文明	hP
 Vanilla Descriptors Graphics {d}.{d}	原版描述词图像 {d}.{d}	wt
 Verbally struggle against great fear	说出你与强烈恐惧的抗争	hP
 Victory was spread among {c} winners	共有{c1}名参赛者共同获得了胜利	ht
@@ -74026,6 +74062,7 @@ Link a building to trigger	将建筑连接到触发装置	wi
 Loading divination sets...	加载预言集	w
 Loading written content...	加载书面内容......	w
 Look at the fog out there!	看看外面的浓雾！	hP
+MEDIUM ELEVATION REJECTION	中等海拔不符合要求	hP
 Main Ceremony in the wilds	在荒野中，主要仪式	hEi
 Main: Open Item/Unit sheet	主界面：打开物品/单位信息	w
 Main: Toggle fluid numbers	主界面：切换流体数值	w
@@ -74045,6 +74082,7 @@ Musical Competition in {p}	在{p1}，音乐比赛	htEi
 Musical Performance at {p}	在{p1}，音乐表演	htEi
 Musical Performance in {d}	{d1}年的音乐表演	htEi
 Musical Performance in {p}	在{p1}，音乐表演	htEi
+NO CIVILIZATIONS AVAILABLE	没有可用的文明	hP
 Native Legends part of {s}	属于{s1}的一部分。	ht
 Native Legends persecution	迫害	h
 Native Legends war torture	酷刑	h
@@ -77695,6 +77733,7 @@ Gladiatory Games at {p}.	在{p1}，角斗比赛。	htEi
 Gladiatory Games in {d}.	{d1}年的角斗比赛。	htEi
 Gladiatory Games in {p}.	在{p1}，角斗比赛。	htEi
 Grazer: requires pasture	食草动物：需要牧场	w
+HIGH ELEVATION REJECTION	高海拔不符合要求	hP
 Hang from {s} ({s}/Lava)	悬挂于{s1}（{s2}／熔岩）	hPt
 He has a tendency toward	他倾向于	l
 Her ears are free-lobed.	她的耳垂分离。	l
@@ -79642,6 +79681,8 @@ Justice person: Officer	执法人员	l
 Justice person: Witness	证人	l
 Keyboard cursor enabled	启用键盘光标	w
 LACK OF LOW-LYING CAVES	缺少低地洞穴
+LACK OF LOW-LYING CAVES	缺少低地洞穴	hP
+LOW ELEVATION REJECTION	低海拔不符合要求	hP
 Labor caption: Armoring	锻甲	wi
 Labor caption: Butchery	屠宰	wi
 Labor caption: Cleaning	清扫	wi
@@ -81619,6 +81660,7 @@ Journey of {a} in {p}.	在{p1}，{a1}的旅程。	htEi
 Joy is on the horizon.	喜悦即将到来。	hP
 Justice case: Theft of	盗窃：	l
 Justice date: Reported	报案日期	l
+LACK OF MOUNTAIN CAVES	缺少山地洞穴	hP
 Labor caption: Brewing	酿造	wi
 Labor caption: Cooking	烹饪	wi
 Labor caption: Fishing	捕鱼	wi
@@ -88622,6 +88664,7 @@ Finish setting dig 	结束挖掘设置	w
 Follow your desire.	追随你的愿望。	hP
 For the Love of {b}	为了对{b}的爱	hbti
 Fourth eldest child	第四个孩子	w
+GRASSLAND REJECTION	草原不符合要求	hP
 Gained site control	取得地点控制权	w
 Gather any products	收集任意产品	w
 General familiarity	大致掌握	w
@@ -88656,6 +88699,7 @@ Jump-dodge (strike)	跳跃闪避(打击)	w
 Justice case: Theft	盗窃	l
 Keyboard Instrument	键盘演奏	wi
 Keywords: nevermind	关键词：[C:2:0:1]算了	hP
+LACK OF EDGE OCEANS	缺少边缘海洋	hP
 Land gains a status	领地获得地位	w
 Last interlude: {s}	上一首间奏：{s}	wtl
 Lead Sound Designer	首席声音设计师	w
@@ -88900,6 +88944,7 @@ Underground regions	地下区域
 Unnamed dining hall	未命名餐厅	wi
 Unnamed pen/pasture	未命名畜栏／牧场	wi
 Use only dyed cloth	仅使用已染色的布匹	wi
+VOLCANISM REJECTION	火山活动度不符合要求	hP
 Values independence	崇尚独立	w
 Values leisure time	看重闲暇	w
 Values perseverance	看重坚韧	w
@@ -91889,6 +91934,7 @@ DFHack help: type/	类型/	l
 DFHack help: undo:	撤消：	l
 DFHack help: v = 1	v = 1	l
 DFHack help: wait:	等等：	l
+DRAINAGE REJECTION	排水性不符合要求	hP
 Dance Competition.	舞蹈比赛。	hEi
 Dance Performance.	舞蹈表演。	hEi
 Decent Dining Room	像样餐厅	w
@@ -91976,6 +92022,7 @@ Legendary murderer	传奇凶手	w
 Linguistic Ability	语言能力	wi
 Loading effects...	加载效果......	w
 Loading history...	载入历史...	w
+MOUNTAIN REJECTION	山地不符合要求	hP
 Made Great Artwork	已经创作出好作品	w
 Maelstrom follower	漩涡追随者	w
 Main: Pause/Resume	主界面：暂停/继续
@@ -92057,6 +92104,7 @@ Procession in {p}.	在{p1}，游行。	htEi
 Profession changes	职业变更	w
 Push track vehicle	推动轨道载具	wi
 Push/Haul Vehicles	推拉车辆	wi
+RAINFALL REJECTION	降雨量不符合要求	hP
 Race in the wilds.	在荒野中，赛跑。	hEi
 Raid of {p} at {p}	在{p2}，{p1}袭击事件	htEi
 Raid of {p} in {d}	{d1}年的{p1}袭击事件	htEi
@@ -92088,6 +92136,7 @@ Related Structures	相关建筑	h
 Removal suspended.	拆除暂停。	wli
 Remove this route.	移除此路线。	hj
 Repaint this zone.	重新涂画此区域。	hj
+SAVAGERY REJECTION	野性不符合要求	hP
 Salt water [{d}/7]	咸水 [{d}/7]	wtl
 Savagery Mesh Size	野蛮度网格尺寸
 Saving entities...	正在保存组织……	w
@@ -95785,6 +95834,7 @@ Fourth eldest son	第四个儿子	w
 Furnace Operation	火炉操作	wi
 Furnace Operators	火炉操作员	wi
 Furniture Hauling	搬运家具	wi
+GLACIER REJECTION	冰川不符合要求	hP
 Garden Vegetables	农作物
 Get away from me!	离我远点！	hP
 Gladiatory Games.	角斗比赛。	hEi
@@ -100023,6 +100073,7 @@ Credits: Artwork	美术	wl
 Credits: Captain	负责人	wl
 Critical Thinker	批判思考者	wi
 Cultist of chaos	混沌教徒	w
+DESERT REJECTION	沙漠不符合要求	hP
 DFHack help: "X"	"X"	l
 DFHack help: "x"	"x"	l
 DFHack help: API	API	l
@@ -100078,6 +100129,7 @@ Execute criminal	处决罪犯	wi
 Expect a change.	变化即将到来。	hP
 Exported Wealth:	出口财富：	w
 Extract (animal)	提取物（动物）	wi
+FOREST REJECTION	森林不符合要求	hP
 Farming (Fields)	耕种	wi
 Fifth eldest son	第五个儿子	w
 Fine Dining Room	精致餐厅	w
@@ -100132,6 +100184,7 @@ It is scorching.	天气酷热。	hj
 It is slavering.	它垂涎欲滴。	h
 It is top-heavy.	它的身体上重下轻。	h
 Job cancellation	工作取消	w
+LACK OF VOLCANOS	缺少火山	hP
 Learned art form	学会艺术形式	w
 Legendary hunter	传奇猎人	w
 Legendary killer	传奇杀手	w
@@ -100287,6 +100340,8 @@ Strike the earth	开山掘地！	w
 Superior agility	上等敏捷	wil
 Superior empathy	上等同理心	wil
 Surrender of {p}	{p1}的投降	htEi
+TOO MANY REGIONS	区域过多	hP
+TUNDRA REJECTION	苔原不符合要求	hP
 Temperature: Hot	温度:炎热	w
 Tenth eldest son	第十个儿子	w
 That's terrific!	那太棒了！	hP
@@ -104628,6 +104683,7 @@ Glowing Barrier	发光的屏障	wi
 Grand Mausoleum	宏伟陵寝	w
 Grand guildhall	大行会大厅	wi
 Gypsum boulders	石膏岩块	wi
+HILLS REJECTION	丘陵不符合要求	hP
 Hard difficulty	困难难度
 Hawk your wares	叫卖你的货物	hP
 High creativity	创造力高	wil
@@ -104711,6 +104767,7 @@ No item to wear	没有可穿戴的物品	w
 No work details	未分配劳动分组	wi
 Nobody assigned	尚未分配居民	w
 North and South	北极和南极
+OCEAN REJECTION	海洋不符合要求	hP
 Occasion at {p}	在{p1}，庆典	htEi
 Occasion in {d}	{d1}年的庆典	htEi
 Occasion in {p}	在{p1}，庆典	htEi
@@ -104769,6 +104826,7 @@ Rotten raw hide	腐烂生皮	wi
 Royal Mausoleum	皇家陵寝	w
 Ruined hillocks	丘堡废墟	wi
 Ruled the World	已经统治世界	w
+SWAMP REJECTION	沼泽不符合要求	hP
 Saving items...	正在保存物品……	w
 Saving units...	正在保存单位……	w
 See great beast	见到巨兽	w
@@ -109445,6 +109503,7 @@ Journey of {a}	{a1}的旅程	htEi
 Journey to {b}	{b}之旅	hbti
 Judging Intent	意图判断	wi
 Kindred spirit	同志	w
+LACK OF RIVERS	缺少河流	hP
 Late afternoon	下午晚些时候
 Lead {n} ({s})	牵上{n1}（{s1}）	hPt
 Leatherworkers	皮匠	wi
@@ -114318,6 +114377,7 @@ In Vegetation	身处植被中	hP
 Insufferable!	简直忍无可忍！	hP
 It was great.	那很棒。	hP
 Knowledgeable	相当熟悉	w
+LACK OF PEAKS	缺少山峰	hP
 Large Profile	身形较大	hP
 Leather Works	皮革工坊	wi
 Leatherworker	皮匠	wi
