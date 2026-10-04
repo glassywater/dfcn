@@ -1,6 +1,5 @@
-// unit-info-viewer's overlays are movable, unframed fields on a proved UNIT
-// sheet. Reuse the native ordered tab/frame readers, then identify only the
-// exact paired mood rows and the skill toggles' actual Ctrl-key tokens.
+// Unit-sheet overlays can move independently of the native summary grid.
+// Reuse its ordered tabs, then read each overlay's own frame/control fields.
 {
     bool unit_overview = false, unit_skills = false;
     const auto band_selected = [&](const std::vector<LogicalTextField> &fields,
@@ -111,6 +110,55 @@
         return std::nullopt;
     };
     if (unit_overview) {
+        // plugins/zone.lua's AnimalActionsWidget has a titleless 25x6 medium
+        // panel. A portrait moves the whole panel down two rows; its four
+        // controls still fill the 23x4 interior at the same native offsets.
+        for (const auto &window : native_dfhack_window_geometry(dfhack_context_rows)) {
+            const auto &frame = window.frame;
+            if (window.title_length != 0 || frame.w != 25 || frame.h != 6) continue;
+            const int left = frame.x + 1, top = frame.y + 1;
+            struct AnimalToggle {
+                std::string_view caption, padded, state;
+                char key;
+            };
+            std::array<AnimalToggle, 4> toggles{{
+                {"Butcher", "Butcher    ", {}, 'b'},
+                {"Geld", "Geld       ", {}, 'g'},
+                {"Adopt", "Adopt      ", {}, 'a'},
+                {"Has Trainer", "Has Trainer", {}, 't'},
+            }};
+            bool controls = true;
+            for (size_t i = 0; i < toggles.size(); ++i) {
+                auto &toggle = toggles[i];
+                const int y = top + static_cast<int>(i);
+                const auto band = std::string_view(dfhack_context_rows[y]).substr(left, 23);
+                std::string key(band.substr(0, 6));
+                std::replace(key.begin(), key.end(), '-', '+');
+                if (key.back() >= 'A' && key.back() <= 'Z') key.back() += 'a' - 'A';
+                const auto option = band.substr(20);
+                toggle.state = trim_view(option);
+                if (key != std::string("Ctrl+") + toggle.key || !is_keybinding_code(key) ||
+                        band.substr(6, 2) != ": " || band.substr(8, 11) != toggle.padded ||
+                        band[19] != ' ' || toggle.state.data() != option.data() ||
+                        (toggle.state != "Yes" && toggle.state != "No") ||
+                        read_row(y).compare(left, band.size(), band) != 0) {
+                    controls = false;
+                    break;
+                }
+            }
+            if (!controls) continue;
+            // Reserve the whole widget so generic profession/boolean/key
+            // matches cannot replace its controls. Keys and brand stay native.
+            dfhack_auxiliary_regions.push_back(frame);
+            for (size_t i = 0; i < toggles.size(); ++i) {
+                const auto &toggle = toggles[i];
+                const int y = top + static_cast<int>(i);
+                gui_literal(left + 8, y, toggle.caption, left + 19,
+                    "Animal actions caption");
+                gui_literal(left + 20, y, toggle.state, left + 23,
+                    "Animal actions state");
+            }
+        }
         constexpr std::string_view current = "Mood:", longterm = "Long-term mood:";
         for (int y = 0; y + 1 < gps_->dimy; ++y) {
             for (size_t at = dfhack_context_rows[y].find("Mood: "); at != std::string::npos;

@@ -40908,6 +40908,19 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
             match.target = *target;
     };
     if (character_overview_present) {
+        const auto dfhack_overview_frames = native_dfhack_text_overlay_frames(*gps_);
+        const auto is_dfhack_overview_field = [&](const Match &match) {
+            if (match.rule == kDfhackHotkeysHintRule || match.rule == kDfhackStocksHintRule)
+                return true;
+            // Foreground DFHack fields own their native positions. Recovered
+            // overview text underneath the panel still uses the summary grid.
+            return !match.native_hover_background && std::any_of(
+                dfhack_overview_frames.begin(), dfhack_overview_frames.end(),
+                [&](const SDL_Rect &frame) {
+                    return match.y >= frame.y && match.y < frame.y + frame.h &&
+                        match.x >= frame.x && match.x + match.length <= frame.x + frame.w;
+                });
+        };
         if (character_ascii_tabs || native_has_graphics_metadata(*gps_)) {
         int content_top = character_info_tabs_y + 1;
         for (const Match *tab : character_info_tab_matches) {
@@ -40985,7 +40998,7 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
             };
             std::vector<SummaryRow> rows;
             for (Match &match : prepared_matches_) {
-                if (match.target.empty() ||
+                if (match.target.empty() || is_dfhack_overview_field(match) ||
                     (match.native_split_text && match.rule != kCharacterOverviewRowRule) ||
                     match.rule == kCharacterOverviewQuoteRule ||
                     match.y < grid->top || match.y >= grid->bottom ||
@@ -41114,6 +41127,7 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
         std::array<int, 2> common_x{{gps_->dimx, gps_->dimx}};
         auto overview_column = [&](const Match &match) {
             if (match.rule == kCharacterOverviewQuoteRule ||
+                is_dfhack_overview_field(match) ||
                 match.target.empty() || match.y <= character_info_tabs_y ||
                 match.y >= action_y || match.source == "Assume Control") {
                 return -1;

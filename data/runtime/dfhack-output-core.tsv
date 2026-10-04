@@ -1910,6 +1910,14 @@ DFHack GUI Unit mood state: Ecstatic	欣喜若狂	l
 DFHack GUI Unit skill state: Yes	是	l
 DFHack GUI Unit skill state: No	否	l
 
+# zone.lua AnimalActionsWidget; action captions have their own scope instead of profession nouns.
+DFHack GUI Animal actions caption: Butcher	屠宰	l
+DFHack GUI Animal actions caption: Geld	阉割	l
+DFHack GUI Animal actions caption: Adopt	领养	l
+DFHack GUI Animal actions caption: Has Trainer	有驯兽师	l
+DFHack GUI Animal actions state: Yes	是	l
+DFHack GUI Animal actions state: No	否	l
+
 # Installed list-agreements.lua fixed local headings and empty-list statuses.
 DFHack output: Agreements for Temples:	神庙建设协议：	l
 DFHack output: Agreements for Guildhalls:	行会大厅建设协议：	l
