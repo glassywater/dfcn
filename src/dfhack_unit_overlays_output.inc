@@ -225,6 +225,9 @@
             std::string normalized(key);
             normalized.erase(std::remove(normalized.begin(), normalized.end(), ' '), normalized.end());
             std::replace(normalized.begin(), normalized.end(), '-', '+');
+            // DFHack displays these Ctrl keys in lowercase on the unit sheet.
+            if (!normalized.empty() && normalized.back() >= 'a' && normalized.back() <= 'z')
+                normalized.back() -= 'a' - 'A';
             if (normalized != std::string("Ctrl+") + terminal || !is_keybinding_code(normalized))
                 continue;
             const int left = static_cast<int>(key.data() - raw.data());
