@@ -1,0 +1,127 @@
+Native Adventure odor text grammar, configured Windows DF 53.16 images
+
+This is reconstructed native source and operand provenance for the requested
+translation work. Addresses are RVAs. The images are selected by
+data/runtime/native-pe-images.json; no running game is read or controlled.
+
+Image identities
+  Steam:   PE:6a70a6d9:02711000
+  Classic: PE:6a70b91c:0270a000
+
+Text owner / helper                  Steam                  Classic
+  Main Adventure renderer           af1190..b03c40          aee1d0..b00c80
+  Legacy Adventure renderer         80d5e0..8189ac          80ae60..81622c
+  Controlling render wrapper        7f3cb0..7f6c21          7f1530..7f44a1
+  Odor icon and hover block         af19f8..af1eee          aeea38..aeeddc
+  Main strongest-odor field         b000e7..b0022f          afd11a..afd26f
+  Legacy current odor field         81609f..8161d9          81391f..813a59
+  Legacy travel odor field          8163ef..816522          813c6f..813da2
+  Singular creature-name helper     aa3bd0..aa3d93          aa0c50..aa0e13
+  Caste lookup leaf                 bba90..bbadd            bba20..bba6d
+  First eligible letter uppercase   52d650..52d8ba          52b070..52b2da
+  Complete string -> popup wrap     8e7310..8e7431          8e4b80..8e4ca1
+  Announcement-kind caption leaf    749ee0..74bad4          747900..7494f4
+
+Native data fields
+  Steam current race/caste/death: 2643ccc / 2643cd0 / 2643cd4.
+  Steam travel race/caste/death:  2643cd8 / 2643cdc / 2643ce0.
+  Classic current fields:        263dbbc / 263dbc0 / 263dbc4.
+  Classic travel fields:         263dbc8 / 263dbcc / 263dbd0.
+  Caste ODOR_STRING is its std::string at +4270. This is a distinct RAW
+  field, not a creature name and not a fragment of an English sentence.
+
+Shared native value construction (identical branches in both images)
+  odor_value(state, absent, death):
+      if state.race == -1: return absent
+      if state.death: return death
+      caste = caste_lookup(state.race, state.caste)
+      if caste != nullptr and not caste.ODOR_STRING.empty():
+          return caste.ODOR_STRING
+      return creature_name(state.race, plural=false, caste=-1)
+
+The name helper checks negative/out-of-range race, then reads the creature's
+NAME[0] at +20. All odor call sites pass plural=false and caste=-1; its other
+caste/plural branches are retained in the complete helper assembly but never
+selected by these callers. Invalid race or an empty NAME[0] returns "".
+The actual static fallback nouns are retained with RAW file/line provenance
+in odor-raw-creature-name-sources.tsv: 767 distinct creature NAME[0] strings
+from the two configured installations. They reuse the existing full creature
+vocabulary and grammar, rather than a second species glossary.
+
+Hover paragraph
+  The renderer-local [rbp-30] branch can skip the whole icon block. Within
+  it, native mouse bounds and cache state determine whether the cached
+  popup is reused or reconstructed; they do not introduce other text.
+  if current.race == -1:
+      no paragraph is constructed
+  else:
+      value = odor_value(current, unused, "death")
+      text = "You smell " + value + "."
+      wrap(text, width=24)
+
+Death override uses lowercase "death". A nonempty ODOR_STRING is appended
+literally, without capitalization. Missing caste and empty ODOR_STRING
+select NAME[0]. Empty NAME[0] still gives the concrete native sentence
+"You smell ."; no-race is a separate no-output branch, not "You smell None.".
+The emitted complete sentence is translated before native line wrapping is
+interpreted as layout. All fixed sentences and the empty-field sentence
+live in tooltip-translations.tsv. The supported full {s} tooltip template
+supplies the NAME[0]/complete term grammar for the dynamic branch.
+
+Three strongest-odor fields
+  The main renderer's mode word and flag bit 4 gate its field. The legacy
+  renderer selects current or travel state with its native travel-mode byte.
+  Each field draws "Strongest Odor: " independently, constructs
+  odor_value(selected_state, "None", "Death"), uppercases its first eligible
+  letter, and draws the value after the label. Paint-color branches inspect
+  race == -1 but do not produce additional English strings.
+
+The native capitalization helper has chained unwind ranges: its first
+unwind record is not its complete function. Full code and extended-byte
+dispatch tables are retained. It skips bracketed markup and exits after
+the first eligible letter conversion. It leaves later words unchanged:
+"bug innards" -> "Bug innards", not a title-cased pair of words.
+
+The finite fields None/Death and all capitalized standard ODOR_STRING
+outputs have complete UI-message entries in local-overrides.tsv. The
+complete Strongest Odor: {s} UI template resolves NAME[0] through the shared
+full-term/creature grammar. The standalone label entry also covers the
+native empty-name field, for which no value is drawn.
+
+Complete finite icon/ODOR_STRING dispatch
+  A death override selects icon 5 before the icon classifier's no-race test.
+  Otherwise no-race skips its glyph block; null caste, empty ODOR_STRING and
+  an unrecognized string select icon 30. The twelve comparisons are:
+    0 blood                   6 filth
+    1 smoke                   7 soot
+    2 mud                     8 vomit
+    3 bug innards             9 soil
+    4 cooked flesh           10 freshly-baked goods
+    5 death                  11 brimstone
+  Icon 30 also follows the existing creature/material icon fallback. These
+  icon cases have no extra human-readable sentence. The ODOR_* texture
+  tokens in the source parser are internal identifiers, not UI translations.
+
+All twelve words also occur in the configured static RAW or procedural Lua
+producers. odor-raw-text-sources.tsv retains their 38 actual source locations,
+including night trolls, sphere-dependent odors and forced brimstone. Odor
+level/trigger controls are retained separately in odor-raw-control-sources.tsv.
+Fixed hover sentences and fixed strongest-odor fields are authored for all
+twelve words, even when an unrelated general word entry already exists.
+
+Related finite UI labels
+  Announcement-kind enum 206 selects exactly "Check smells" from the caption
+  leaf's 0..354 dispatch table. It labels a report kind and does not produce
+  a second odor sentence. Its existing translation is "检查气味".
+  Key metadata registers enum 357 (0x165) as A_ODOR with description
+  "Adventure: Describe Odor", and enum 358 (0x166) as A_DISPLAY_ODOR with
+  description "Adventure: Display Strongest Odor". Both visible descriptions
+  are included in the authored local overrides; symbolic A_* names remain
+  native identifiers.
+
+Source artifacts
+  Full owner assembly, selected text blocks, literal operands, calls and
+  control branches are retained as steam-* and classic-* files. The detailed
+  Classic reconstruction and its caption caller/virtual owner provenance are
+  in classic-decompiled.txt. Runtime dictionaries are edited in place from
+  these authored productions; no runtime data generator is invoked.

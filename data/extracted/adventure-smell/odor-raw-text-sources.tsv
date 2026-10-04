@@ -1,0 +1,39 @@
+image	source_kind	source_file	line	creature	caste_scope	token	english	runtime_word_zh	po_zh
+reference	raw	data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	1336	BLOOD_MAN		ODOR_STRING	blood	血液	血
+reference	raw	data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	916	IMP_FIRE		ODOR_STRING	smoke		烟雾
+reference	raw	data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1381	SNAKE_FIRE		ODOR_STRING	smoke		烟雾
+reference	raw	data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1708	ELEMENTMAN_FIRE		ODOR_STRING	smoke		烟雾
+reference	raw	data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1930	ELEMENTMAN_MUD		ODOR_STRING	mud	淤泥	泥泞
+reference	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4297			options.odor_string	soil		
+reference	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4332			options.odor_string	soot		
+reference	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4353			options.odor_string	mud	淤泥	
+reference	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4371			options.odor_string	vomit	呕吐物	
+reference	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4406			options.odor_string	filth	污垢	
+reference	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4491			options.odor_string	smoke		
+reference	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4568			options.odor_string	soot		
+reference	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4585			options.odor_string	soot		
+reference	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	283			options.forced_odor_string	brimstone	硫磺	
+reference	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	625			night_troll_smells	bug innards		
+reference	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	626			night_troll_smells	cooked flesh		
+reference	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	627			night_troll_smells	death		
+reference	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	1822			sphere.DISEASE.odor	death		
+reference	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	1835			sphere.FOOD.odor	freshly-baked goods		
+classic	raw	data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	1336	BLOOD_MAN		ODOR_STRING	blood	血液	血
+classic	raw	data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	916	IMP_FIRE		ODOR_STRING	smoke		烟雾
+classic	raw	data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1381	SNAKE_FIRE		ODOR_STRING	smoke		烟雾
+classic	raw	data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1708	ELEMENTMAN_FIRE		ODOR_STRING	smoke		烟雾
+classic	raw	data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1930	ELEMENTMAN_MUD		ODOR_STRING	mud	淤泥	泥泞
+classic	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4297			options.odor_string	soil		
+classic	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4332			options.odor_string	soot		
+classic	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4353			options.odor_string	mud	淤泥	
+classic	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4371			options.odor_string	vomit	呕吐物	
+classic	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4406			options.odor_string	filth	污垢	
+classic	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4491			options.odor_string	smoke		
+classic	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4568			options.odor_string	soot		
+classic	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4585			options.odor_string	soot		
+classic	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	283			options.forced_odor_string	brimstone	硫磺	
+classic	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	625			night_troll_smells	bug innards		
+classic	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	626			night_troll_smells	cooked flesh		
+classic	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	627			night_troll_smells	death		
+classic	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	1822			sphere.DISEASE.odor	death		
+classic	procedural-lua	data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	1835			sphere.FOOD.odor	freshly-baked goods		

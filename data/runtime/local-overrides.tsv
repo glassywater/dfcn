@@ -11018,3 +11018,25 @@ Symbol picker entity status nomadic: X	游牧的X	hi
 Symbol picker entity status outcast: X	被放逐的X	hi
 Symbol picker guild: X	X行会	hi
 Symbol picker craft guild	工匠行会	hi
+
+# Native Adventure odor productions: data/extracted/adventure-smell/.
+# Three status renderers share None/Death/ODOR_STRING/NAME[0], then capitalize.
+# Complete UI fields preserve the native separate label/value drawing.
+Strongest Odor: None	最强气味：无	hP
+Strongest Odor: Death	最强气味：死亡	hP
+Strongest Odor: Blood	最强气味：血液	hP
+Strongest Odor: Smoke	最强气味：烟雾	hP
+Strongest Odor: Mud	最强气味：淤泥	hP
+Strongest Odor: Bug innards	最强气味：昆虫内脏	hP
+Strongest Odor: Cooked flesh	最强气味：熟肉	hP
+Strongest Odor: Filth	最强气味：污垢	hP
+Strongest Odor: Soot	最强气味：烟灰	hP
+Strongest Odor: Vomit	最强气味：呕吐物	hP
+Strongest Odor: Soil	最强气味：土壤	hP
+Strongest Odor: Freshly-baked goods	最强气味：刚出炉的烘焙食品	hP
+Strongest Odor: Brimstone	最强气味：硫磺	hP
+Strongest Odor: {s}	最强气味：{s1}	hPt
+# The singular-name helper can return empty; the native label is still drawn.
+Strongest Odor:	最强气味：	wl
+Adventure: Describe Odor	冒险：描述气味	wl
+Adventure: Display Strongest Odor	冒险：显示最强气味	wl

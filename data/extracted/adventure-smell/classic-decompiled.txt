@@ -1,0 +1,135 @@
+Native Adventure odor text producers — classic PE source reconstruction
+Configured file: native-pe-images.json classic; identity PE:6a70b91c:0270a000.
+Addresses below are image RVAs. Text extraction is read-only source work.
+
+Ownership and entry points
+  viewscreen_dungeonmodest vtable 16b4e38 slot 3 -> 7f1530..7f44a1.
+  Its direct calls 7f163a, 7f168c, 7f16f3 -> modern Adventure renderer
+  aee1d0..b00c80. Mode 0x19/0x1a selects 80ae60..81622c through call
+  7f433c. Both full bodies and the complete controlling wrapper are retained.
+  Modern hover odor: aeec04..aeeddc; glyph selection: aeea38..aeec04.
+  Modern textual panel: afd11a..afd26f.
+  Legacy current panel: 81391f..813a59.
+  Legacy alternate panel: 813c6f..813da2.
+
+Native odor state
+  Current: race int32 263dbbc; caste int16 263dbc0; death bool 263dbc4.
+  Alternate: race int32 263dbc8; caste int16 263dbcc; death bool 263dbd0.
+  Caste lookup 0bba20(state.race, state.caste) returns the native caste.
+  caste+4270 is std::string ODOR_STRING. Empty predicate is 06f4b0.
+  aa0c50..aa0e13 is the entire creature-name helper used by every text path.
+  All these calls use plural=false (r8=0) and caste=-1 (r9=-1), so their
+  fallback is creature_raw[valid race]+20: NAME[0]. They never use caste
+  names or creature NAME[1]/NAME[2] for odor text.
+
+Reconstructed text-selection logic
+  odor_text(state, absent_text, death_text):
+      if state.race == -1: return absent_text
+      if state.death: return death_text
+      caste = caste_lookup(state.race, state.caste)
+      if caste != null and not empty(caste.ODOR_STRING):
+          return caste.ODOR_STRING
+      return creature_name(state.race, plural=false, caste=-1)
+
+  modern hover popup:
+      skip entire odor block when the local branch byte [rbp-30] is nonzero.
+      require mouse x within the icon's horizontal bounds and mouse y 5..7.
+      reuse nonempty cached wrapped popup unless the cache invalidation bit
+      18a3258 & 1 is set; otherwise clear cached text and clear that bit.
+      if current.race == -1: emit no text
+      else:
+          value = odor_text(current, unused, "death")
+          sentence = "You smell " + value + "."
+          wrapped_popup = wrap(sentence, 24)  // call 8e4b80
+      configure hover popup id 0x25b at the icon's coordinates.
+  Consequence: invalid race after a failed lookup can yield empty NAME[0],
+  and the native sentence is then "You smell .". It is an actual empty
+  dynamic-field branch, not a missing additional English literal.
+
+  modern strongest panel:
+      only draw when Adventure mode word 263aa60 == 0 and 263daa8 & 4.
+      label is its own draw call: "Strongest Odor: ".
+      value = odor_text(current, "None", "Death")
+      capitalize first eligible cased letter via 52b070; draw value separately.
+
+  legacy strongest panels:
+      byte 263aab4 selects the current panel when nonzero; when zero, the
+      alternate panel uses the alternate odor state. Each label is an
+      independent draw call, followed by value selected with exactly the
+      same branches as modern panel: absent "None", death "Death",
+      nonempty caste ODOR_STRING, otherwise NAME[0], including empty
+      NAME[0] for invalid race. Capitalize first eligible cased letter before drawing.
+      UI paint color also branches on race == -1 before the label, but adds
+      no source sentence. Current path jumps to shared destructor 813d9d.
+
+Complete glyph classifier (does not replace text-selection logic)
+  if current.death: glyph=5
+  else if current.race == -1: skip glyph block
+  else:
+      caste = caste_lookup(current.race, current.caste)
+      if caste == null or empty(caste.ODOR_STRING): glyph=30
+      else switch caste.ODOR_STRING:
+          "blood"               -> 0
+          "smoke"               -> 1
+          "mud"                 -> 2
+          "bug innards"         -> 3
+          "cooked flesh"        -> 4
+          "death"               -> 5
+          "filth"               -> 6
+          "soot"                -> 7
+          "vomit"               -> 8
+          "soil"                -> 9
+          "freshly-baked goods" -> 10
+          "brimstone"           -> 11
+          default               -> 30
+  Every comparison and its instruction is retained in odor-glyph-selector.asm.
+  Glyph 30 invokes a native creature/material icon path, not a new odor name.
+
+Entire creature-name helper aa0c50..aa0e13
+  out="".
+  Invalid negative/out-of-range race -> empty out.
+  plural=false:
+      if valid nonnegative caste and its +20 singular name is nonempty:
+          out=caste.NAME[0]
+      else out=creature.NAME[0] at creature+20.
+  plural=true:
+      if valid nonnegative caste and its +40 plural name is nonempty:
+          out=caste.NAME[1]
+      else out=creature.NAME[1] at creature+40.
+  Input caste=-1 skips caste lookup entirely. Empty selected caste name
+  falls back to creature name. Self-string comparisons and all bounds
+  control branches are retained in creature-name.asm.
+  Caste lookup leaf0bba20..0bba6d validates nonnegative race and caste
+  against their native vector lengths, returning nullptr on either bound
+  failure. Capitalization52b070..52b2da has chained unwind ranges; its full
+  body is retained across them. It skips bracketed markup and recognizes
+  ASCII plus extended game-codepage lowercase letters. It exits immediately
+  after uppercasing the first eligible letter, preserving remaining words.
+  Both compression and jump-table branches for its extended bytes are stored
+  in classic-capitalize-byte-switch.tsv; no English source literals occur.
+
+Related labels and key descriptions
+  announcement_caption(int16 enum, std::string& out) is a leaf jump-table
+  function 747900..7494f4; no unwind entry and no virtual slot.
+  Its table7494f4 has indices 0..0x162. Enum206 targets748963, which assigns
+  exactly "Check smells". Only direct call is235e68 in235df0..2364d2,
+  the announcement-options caption constructor. It labels an announcement
+  kind; it does not concatenate an odor name or produce another smell sentence.
+  Key-binding metadata owner is d141b0..d274c2:
+      enum357 (0x165) = A_ODOR = "Adventure: Describe Odor"
+      enum358 (0x166) = A_DISPLAY_ODOR =
+                       "Adventure: Display Strongest Odor"
+  These are key-binding descriptions registered by the same helper8edee0,
+  not standalone odor sentences. Their complete adjacent registration
+  instructions are retained in key-token.asm/key-description.asm.
+
+Translation source envelope
+  Hover: "You smell {ODOR_STRING-or-NAME[0]}.", lowercase death override,
+  and the empty dynamic-field sentence.
+  Three panels: "Strongest Odor: ", capitalized ODOR_STRING or NAME[0],
+  "None", "Death", and empty dynamic field.
+  Related finite UI text: "Check smells" and both key descriptions.
+  Finite standard ODOR_STRING vocabulary consists of the 12 glyph branches
+  above; RAW creature ODOR_STRING and NAME[0] add the actual dynamic nouns.
+  No runtime generator, translation execution, test, build, game process or
+  desktop interaction is used by this extraction.

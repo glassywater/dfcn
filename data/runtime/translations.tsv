@@ -105306,6 +105306,7 @@ You feel sick!	你感觉不适！	hP
 You jump away!	你跳开了！	hP
 You mount {n}.	你骑上了{n1}。	hPt
 You roll away!	你翻滚着躲开了！	hP
+You smell {s}.	你闻到了{s1}的气味。	hjt
 You strap item	你系上物品	w
 Younger sister	妹妹	w
 Youngest child	最小的孩子	w
@@ -133084,3 +133085,33 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
+You smell blood.	你闻到了血腥味。	hj
+You smell smoke.	你闻到了烟味。	hj
+You smell mud.	你闻到了淤泥的气味。	hj
+You smell bug innards.	你闻到了昆虫内脏的气味。	hj
+You smell cooked flesh.	你闻到了熟肉的气味。	hj
+You smell death.	你闻到了死亡的气息。	hj
+You smell filth.	你闻到了污垢的气味。	hj
+You smell soot.	你闻到了烟灰的气味。	hj
+You smell vomit.	你闻到了呕吐物的气味。	hj
+You smell soil.	你闻到了土壤的气味。	hj
+You smell freshly-baked goods.	你闻到了刚出炉的烘焙食品的气味。	hj
+You smell brimstone.	你闻到了硫磺的气味。	hj
+You smell .	你闻到了一股气味。	hj
+Strongest Odor: None	最强气味：无	hP
+Strongest Odor: Death	最强气味：死亡	hP
+Strongest Odor: Blood	最强气味：血液	hP
+Strongest Odor: Smoke	最强气味：烟雾	hP
+Strongest Odor: Mud	最强气味：淤泥	hP
+Strongest Odor: Bug innards	最强气味：昆虫内脏	hP
+Strongest Odor: Cooked flesh	最强气味：熟肉	hP
+Strongest Odor: Filth	最强气味：污垢	hP
+Strongest Odor: Soot	最强气味：烟灰	hP
+Strongest Odor: Vomit	最强气味：呕吐物	hP
+Strongest Odor: Soil	最强气味：土壤	hP
+Strongest Odor: Freshly-baked goods	最强气味：刚出炉的烘焙食品	hP
+Strongest Odor: Brimstone	最强气味：硫磺	hP
+Strongest Odor: {s}	最强气味：{s1}	hPt
+Strongest Odor:	最强气味：	wl
+Adventure: Describe Odor	冒险：描述气味	wl
+Adventure: Display Strongest Odor	冒险：显示最强气味	wl
