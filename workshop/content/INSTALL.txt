@@ -3,9 +3,9 @@ Byayoi 同人社区：https://byayoi.org/
 GitHub：https://github.com/pokemonchw/dfcn
 Releases：https://github.com/pokemonchw/dfcn/releases
 
-当前汉化版本：53.16-20261003.2（2026-10-03 第二版）。逐条更新日志见本目录 CHANGELOG.txt。
-本次完善访客求职和申请界面翻译，新增字体加粗开关，并修复知识、人格、健康和想法正文放大后的裁切。
-运行包 config.ini 默认设置 font_bold=true；false 保留原有字重，旧配置未添加此项时仍默认关闭。
+当前汉化版本：53.16-20261004（2026-10-04）。逐条更新日志见本目录 CHANGELOG.txt，包含上次发布后的全部 48 条提交（含两次合并）。
+本次新增拼音及拼音首字母搜索、可选像素字体整数倍缩放，并完善交易、人物概述、神殿、工坊、冒险菜单与设置页翻译及排版；源码同时合入 Linux 初始化、构建部署和性能优化。
+运行包默认 font_scale=1.1、min_font_pixels=12、font_bold=true；font_pixel_grid=0 保留普通字体渲染，使用点阵字体时可设为 12 启用整数倍缩放。完整设置说明见 CHANGELOG.txt。
 
 适用：Dwarf Fortress 53.16，Windows x64；支持 Steam 版与官网免费版。
 运行文件已经解压，统一放在本订阅目录的 DFCN 文件夹中。
