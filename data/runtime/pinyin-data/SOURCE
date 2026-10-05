@@ -1,0 +1,6 @@
+Project: https://github.com/mozillazg/pinyin-data
+Commit: 9193766130af24d2ac54230be979b2e98ac66223
+File: pinyin.txt (original tone-marked data, unchanged)
+Raw: https://raw.githubusercontent.com/mozillazg/pinyin-data/9193766130af24d2ac54230be979b2e98ac66223/pinyin.txt
+License: upstream MIT; LICENSE retained verbatim.
+Use: surname syllable readings; separate from the tone-stripped search table.

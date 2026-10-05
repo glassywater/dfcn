@@ -58,6 +58,7 @@
 #include "native_adventure_charge.h"
 #include "core_api.h"
 #include "runtime_paths.h"
+#include "english_character_names.h"
 
 namespace fs = std::filesystem;
 
@@ -3350,7 +3351,9 @@ private:
     std::unordered_map<std::string, int> history_semantic_templates_;
     mutable std::unordered_map<uint64_t,
         std::optional<std::vector<LegendsTextPiece>>> history_event_translation_cache_;
-    std::optional<std::string> translate_history_name(const NativeHistoryName &name) const;
+    std::optional<std::string> translate_history_name(
+        const NativeHistoryName &name, bool character = false) const;
+    std::optional<std::string> translate_english_character_name(std::string_view source) const;
     std::optional<std::vector<LegendsTextPiece>> translate_history_event(
         const NativeHistoryDocument &document) const;
     NativeHistoryViewport capture_history_viewport(
@@ -3501,6 +3504,10 @@ private:
     std::unordered_map<std::string, std::vector<ProceduralNameMeaning>>
         procedural_word_meanings_;
     std::unordered_map<std::string, std::string> procedural_word_senses_;
+    // These forms only reconstruct the game's English history references.
+    // Chinese character-name selection always receives the resulting text.
+    std::unordered_map<std::string, std::array<std::string, 9>> history_english_name_forms_;
+    EnglishCharacterNames english_character_names_;
     // The editor offers all raw forms, including those disallowed in a
     // surname compound. Keep these out of the surname segmentation grammar.
     std::unordered_map<std::string, std::vector<ProceduralNameMeaning>>
@@ -6663,6 +6670,7 @@ bool Overlay::load_procedural_name_grammar() {
     procedural_name_meanings_.clear();
     procedural_word_meanings_.clear();
     name_editor_word_forms_.clear();
+    history_english_name_forms_.clear();
     std::string path =
         "data/vanilla/vanilla_languages/objects/language_words.txt";
     std::ifstream input(path, std::ios::binary);
@@ -6687,7 +6695,7 @@ bool Overlay::load_procedural_name_grammar() {
     std::string word_id;
     std::vector<std::string> forms;
 
-    auto parse_forms = [](std::string_view line,
+    auto parse_forms = [&](std::string_view line,
                           std::string_view prefix)
             -> std::optional<std::vector<std::string>> {
         if (!line.starts_with(prefix) || !line.ends_with(']'))
@@ -6695,9 +6703,15 @@ bool Overlay::load_procedural_name_grammar() {
         line.remove_prefix(prefix.size());
         line.remove_suffix(1);
         std::vector<std::string> parsed;
+        const size_t form_offset = prefix == "[NOUN:" ? 0 :
+            prefix == "[ADJ:" ? 2 : prefix == "[PREFIX:" ? 3 : 4;
+        size_t form_index = 0;
         while (true) {
             const size_t colon = line.find(':');
             std::string form = lower(trim(std::string(line.substr(0, colon))));
+            if (!word_id.empty() && form_offset + form_index < 9)
+                history_english_name_forms_[word_id][form_offset + form_index] = form;
+            ++form_index;
             if (!form.empty()) parsed.push_back(std::move(form));
             if (colon == std::string_view::npos) break;
             line.remove_prefix(colon + 1);
@@ -6869,6 +6883,9 @@ bool Overlay::load_procedural_terms() {
     adventure_action_search_cache_.clear();
     adventure_action_search_order_.clear();
     procedural_terms_.clear();
+    if (!english_character_names_.load(runtime::data_path()))
+        log_line("ERROR", "Cannot load English character-name lexicons, overrides and Mandarin readings from " +
+            runtime::utf8(runtime::data_path()) + ": " + english_character_names_.error());
     if (!load_procedural_word_senses() || !load_procedural_name_grammar())
         log_line("ERROR", "Procedural surname semantics are incomplete");
     std::string path = runtime::utf8(runtime::data_path() / "procedural-terms.tsv");
@@ -9034,6 +9051,58 @@ std::optional<std::string> Overlay::translate_world_region_heading(std::string_v
         ProceduralFragmentContext::generated_name);
 }
 
+static std::string transliterate_native_history_name(std::string_view raw);
+
+std::optional<std::string> Overlay::translate_english_character_name(
+        std::string_view raw) const {
+    const std::string source(trim_view(raw));
+    if (source.empty()) return std::nullopt;
+    return memoize_identity_translation('E', source, [&]() {
+        const std::string display = native_text_to_utf8(source);
+        const size_t first_space = display.find(' ');
+        const std::string_view first = std::string_view(display).substr(0, first_space);
+        bool generated_suffix = false;
+        if (first_space != std::string::npos) {
+            auto suffix = trim_view(std::string_view(display).substr(first_space + 1));
+            if (suffix.starts_with('`')) {
+                const size_t close = suffix.rfind('\'');
+                if (close != std::string_view::npos) suffix = trim_view(suffix.substr(close + 1));
+            }
+            if (lower(std::string(suffix)).starts_with("the "))
+                generated_suffix = english_character_names_.title(suffix).has_value();
+            else {
+                const std::string folded_suffix = lower(std::string(suffix));
+                const size_t title_at = std::min(folded_suffix.find(" the "),
+                    folded_suffix.find(" of "));
+                generated_suffix = english_character_names_.known_component(
+                    suffix.substr(0, title_at));
+            }
+        }
+        return english_character_names_.translate(display,
+            [&](std::string_view given) -> std::optional<std::string> {
+                if (contains_cjk_utf8(given)) return native_text_to_utf8(given);
+                const auto native = utf8_to_cp437(given);
+                const std::string spelling = native ? *native : std::string(given);
+                const std::string key = lower_native_name(spelling);
+                if (!native_name_language_masks_.contains(key) &&
+                        !(generated_suffix && given == first &&
+                          !english_character_names_.known_component(given))) return std::nullopt;
+                const auto reviewed = native_name_reviewed_transliterations_.find(key);
+                if (reviewed != native_name_reviewed_transliterations_.end() &&
+                        !reviewed->second.empty()) return reviewed->second;
+                return transliterate_native_history_name(spelling);
+            },
+            [&](std::string_view nickname) {
+                auto target = exact_literal_translation(
+                    "Unit nickname: " + std::string(nickname));
+                if (!target)
+                    if (const auto native = utf8_to_cp437(nickname))
+                        target = exact_literal_translation("Unit nickname: " + *native);
+                return target ? *target : native_text_to_utf8(nickname);
+            });
+    });
+}
+
 #include "history_names.inc"
 
 // Source grammar only. Rating meanings live in the scoped glossary and are
@@ -10042,16 +10111,33 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             return std::nullopt;
         const auto given = resolve_native_given_word(given_source);
         if (!given) return std::nullopt;
+        const size_t separator = raw.find(' ');
+        if (separator != std::string_view::npos) {
+            const std::string suffix = native_text_to_utf8(trim_view(raw.substr(separator + 1)));
+            const std::string folded_suffix = lower(suffix);
+            const size_t group_at = std::min(folded_suffix.find(" the "),
+                folded_suffix.find(" of "));
+            const bool compound_groups = group_at != std::string::npos &&
+                english_character_names_.known_component(std::string_view(suffix).substr(0, group_at)) &&
+                generated_title_shape(std::string_view(suffix).substr(group_at +
+                    (folded_suffix.substr(group_at).starts_with(" the ") ? 5 : 4)));
+            const bool generated = english_character_names_.known_component(suffix) || compound_groups ||
+                ((folded_suffix.starts_with("the ") || folded_suffix.starts_with("of ")) &&
+                 generated_title_shape(std::string_view(suffix).substr(
+                     folded_suffix.starts_with("the ") ? 4 : 3)) &&
+                 english_character_names_.title(suffix));
+            if (generated)
+                if (auto name = translate_english_character_name(raw)) return name;
+        }
         if (!(input >> surname_source))
             return allow_given_only ? std::optional<std::string>(given->translated)
                                     : std::nullopt;
         if (input >> extra || !native_name_word_shape(surname_source))
             return std::nullopt;
-        // The translated display form keeps the native given name but uses
-        // an English compound surname. Its WORD/POS grammar is already used
-        // by character-name glosses; do not phoneticize that surname or split
-        // it using unrelated UI word matches.
-        const auto surname = translate_generated_surname(lower(surname_source));
+        // This proven person slot uses the same visible-English vocabulary
+        // as quoted glosses, rather than the older shared place-name grammar.
+        const auto surname = english_character_names_.compound(
+            native_text_to_utf8(surname_source));
         if (!surname) return std::nullopt;
         return given->translated + "·" + *surname;
     };
@@ -10079,9 +10165,15 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             languages = given->language_mask;
         }
         if (!after.empty()) {
-            if (!native_name_word_shape(after)) return std::nullopt;
+            const std::string english_after = native_text_to_utf8(after);
+            const std::string folded_after = lower(english_after);
+            const bool english_title = (folded_after.starts_with("the ") ||
+                folded_after.starts_with("of ")) &&
+                english_character_names_.title(english_after).has_value();
+            const bool english_surname = english_character_names_.known_component(english_after);
+            if (!english_title && !native_name_word_shape(after)) return std::nullopt;
             const auto single = resolve_native_given_word(after);
-            if (!translate_generated_surname(lower(std::string(after))) &&
+            if (!english_title && !english_surname &&
                     !resolve_native_compound_word(after, languages) &&
                     !(single && (single->language_mask & languages)))
                 return std::nullopt;
@@ -10310,7 +10402,9 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             // An epithet is itself an English generated title, including its
             // `of` clauses. Resolve the person first so a nested organization
             // title cannot absorb their identity into its ownership grammar.
-            result = *titled_person + "·" + render_name("The " + name.substr(titled + 5), false);
+            const std::string epithet = native_text_to_utf8(name.substr(titled + 5));
+            const auto title = english_character_names_.title(epithet);
+            result = *titled_person + "·" + (title ? *title : epithet);
         } else if (nested != std::string::npos) {
             const std::string owner = render_name(name.substr(nested + 4), false);
             const std::string member = render_name(name.substr(0, nested), scoped_head);
@@ -10381,11 +10475,17 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     // the same reviewed vocabulary as names in biographies, not a separate
     // direct call to the syllabic fallback.
     auto translate_name_identity = [&](std::string_view native_name,
-                                       std::string_view source_gloss)
+                                       std::string_view source_gloss,
+                                       bool character = false)
             -> std::optional<std::string> {
         const auto native = translate_procedural_fragment(
             std::string(native_name), true);
         if (!native) return std::nullopt;
+        if (character && source_gloss != native_name) {
+            const auto translated = translate_english_character_name(source_gloss);
+            return *native + "，“" + (translated ? *translated :
+                native_text_to_utf8(source_gloss)) + "”";
+        }
         std::string gloss;
         const auto given = native_name.substr(0, native_name.find(' '));
         if (source_gloss == native_name) {
@@ -10441,7 +10541,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         // separate semantic fields. Unknown mod vocabulary must never make
         // the person's name and sex disappear from the translation as well.
         const auto identity = translate_name_identity(
-            record->native_name, record->gloss);
+            record->native_name, record->gloss, !site && !building);
         if (!identity) return std::nullopt;
         std::string result = *identity + "，" +
             kind.value_or(cp437_to_utf8(record->species));
@@ -10594,6 +10694,8 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             return complete_generated_name(*native);
         if (const auto generated = translate_generated_person_name(person, true))
             return complete_generated_name(*generated);
+        if (const auto english = translate_english_character_name(person))
+            return complete_generated_name(*english);
         std::vector<std::string> words;
         std::istringstream input(trim(std::move(person)));
         std::string word;
@@ -10601,13 +10703,14 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         std::string result;
         for (size_t index = 0; index < words.size(); ++index) {
             if (!result.empty()) result += "·";
-            // DF personal names normally use a native given name followed by
-            // an English compound surname. Segment that final compound using
-            // the complete generated-name vocabulary; unknown components use
-            // the same syllabic transliterator as native names.
-            result += index + 1 == words.size() && words.size() >= 2
-                          ? translate_token(words[index], true)
-                          : render_native_word(words[index]);
+            // Proven person fields use the same imagery composer as native
+            // identities and quoted English names. Never send their surname
+            // through the ordinary place/book dictionary concatenator.
+            if (index + 1 == words.size() && words.size() >= 2) {
+                const auto surname = english_character_names_.compound(
+                    native_text_to_utf8(words[index]));
+                result += surname ? *surname : render_native_word(words[index]);
+            } else result += render_native_word(words[index]);
         }
         return complete_generated_name(std::move(result));
     };
@@ -10748,33 +10851,8 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             // but delimit the phonetic given name from the semantic surname.
             const std::string body = trim(screen_text.substr(
                 1, screen_text.size() - 2));
-            // A nickname can replace the given name or follow it, and its
-            // own spaces are not surname separators. The typed person parser
-            // already resolves those `...' fields and the generated surname
-            // separately, using the same nickname translation as the row above.
-            if (body.find('`') != std::string::npos)
-                if (auto gloss = translate_legends_name(body, true))
-                    return "“" + *gloss + "”";
-            const size_t separator = body.find(' ');
-            if (separator != std::string::npos && separator > 0 &&
-                separator + 1 < body.size() &&
-                body.find(' ', separator + 1) == std::string::npos) {
-                const std::string given_name = body.substr(0, separator);
-                const std::string surname = body.substr(separator + 1);
-                const bool surname_shape = !surname.empty() &&
-                    std::all_of(surname.begin(), surname.end(),
-                        [](unsigned char ch) {
-                            return (ch >= 'A' && ch <= 'Z') ||
-                                   (ch >= 'a' && ch <= 'z');
-                        });
-                if (surname_shape) {
-                    if (auto gloss = translate_generated_surname(
-                            lower(surname))) {
-                        return "“" + render_native_word(given_name) + "·" +
-                               *gloss + "”";
-                    }
-                }
-            }
+            const auto gloss = translate_english_character_name(body);
+            return "“" + (gloss ? *gloss : native_text_to_utf8(body)) + "”";
         }
         const std::string body = trim(screen_text.substr(
             1, screen_text.size() - 2));
@@ -10800,8 +10878,9 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         const bool compound = prefix.find(' ') == std::string_view::npos &&
             generated_title_shape(prefix) &&
             translate_generated_surname(lower(std::string(prefix))).has_value();
-        if (compound || translate_generated_person_name(prefix, true))
-            return translate_name(screen_text);
+        if (translate_generated_person_name(prefix, true))
+            if (auto character = translate_english_character_name(screen_text)) return character;
+        if (compound) return translate_name(screen_text);
     }
 
     if (screen_text.find(' ') == std::string::npos) {

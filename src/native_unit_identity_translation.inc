@@ -9,6 +9,15 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
         if (auto target = exact_literal_translation(source)) return *target;
         return native_text_to_utf8(source);
     };
+    const auto entity_name = [&](const NativeHistoryName &name) -> std::optional<std::string> {
+        // Match the old NameOnly wrapper's authored-field policy while keeping
+        // entity qualifiers outside the character-name translator.
+        if (name.language < 0 && name.nickname.empty() &&
+                std::all_of(name.words.begin(), name.words.end(),
+                    [](const auto &word) { return word.id.empty(); }))
+            return native_text_to_utf8(name.first_name);
+        return translate_history_name(name);
+    };
     if (unit.form == NativeUnitIdentityForm::Reference) {
         std::string result;
         const auto reference_role = [&](auto &&self, std::string_view raw) -> std::string {
@@ -93,20 +102,24 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
                     const size_t at = part.source.rfind(suffix);
                     const std::string role = part.source.substr(0, at) +
                         part.source.substr(at + suffix.size());
-                    NativeUnitIdentity entity;
-                    entity.form = NativeUnitIdentityForm::NameOnly;
-                    entity.name = part.entity_name;
-                    entity.native_name = part.entity_source;
-                    entity.english_name = true;
-                    const auto target = translate_native_unit_identity(entity);
+                    // Office territories are entity names, not a character's
+                    // English surname. Retain their existing name grammar.
+                    const auto target = entity_name(part.entity_name);
                     const std::string territory = target && !target->empty() ? *target :
                         part.entity_source.empty() ? "无名势力" : native_text_to_utf8(part.entity_source);
                     value = territory +
                         "的" + reference_role(reference_role, role);
                 } else value = reference_role(reference_role, part.source);
                 break;
-            case NativeUnitReferencePartKind::Name:
             case NativeUnitReferencePartKind::Title: {
+                // The native reference formatter uses this part for an
+                // entity qualifier captured separately from the unit name.
+                const auto target = entity_name(part.name);
+                value = "（" + (target && !target->empty() ? *target :
+                    part.source.empty() ? "无名势力" : native_text_to_utf8(part.source)) + "）";
+                break;
+            }
+            case NativeUnitReferencePartKind::Name: {
                 NativeUnitIdentity identity;
                 identity.form = NativeUnitIdentityForm::NameOnly;
                 identity.name = part.name;
@@ -115,11 +128,8 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
                 identity.native_name_words_valid = part.native_name_words_valid;
                 identity.english_name = part.english_name;
                 const auto name = translate_native_unit_identity(identity);
-                value = name && !name->empty() ? *name :
-                    part.kind == NativeUnitReferencePartKind::Title && part.source.empty()
-                        ? "无名势力" : native_text_to_utf8(part.source);
-                if (part.kind == NativeUnitReferencePartKind::Title) value = "（" + value + "）";
-                else if (!result.empty()) result += ' ';
+                value = name && !name->empty() ? *name : native_text_to_utf8(part.source);
+                if (!result.empty()) result += ' ';
                 break;
             }
             }
@@ -248,16 +258,17 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
     const auto name = [&]() -> std::string {
         if (unit.native_name.empty()) return {};
         std::optional<std::string> value;
+        // The English display is the translator's only input, including
+        // authored spellings that also match a registered English name.
+        if (unit.english_name)
+            value = translate_english_character_name(unit.native_name);
         // A language-less name without WORD slots is literal authored data.
-        if (unit.name.language < 0 && unit.name.nickname.empty() &&
+        else if (unit.name.language < 0 && unit.name.nickname.empty() &&
                 std::all_of(unit.name.words.begin(), unit.name.words.end(),
                     [](const auto &word) { return word.id.empty(); }))
             value = native_text_to_utf8(unit.name.first_name);
-        // The native formatter explicitly chooses original language versus
-        // English gloss. Its original-language WORD table is independent of
-        // the English POS forms used by the semantic history-name renderer.
-        else if (unit.english_name || unit.name.language < 0)
-            value = translate_history_name(unit.name);
+        else if (unit.name.language < 0)
+            value = translate_english_character_name(unit.native_name);
         else value = phonetic_name();
         std::string result = value && !value->empty() ? *value : native_text_to_utf8(unit.native_name);
         if (unit.name_quoted) result = "“" + result + "”";

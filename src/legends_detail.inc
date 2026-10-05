@@ -235,38 +235,85 @@ std::optional<std::string> Overlay::translate_legends_name(
             }
             const auto before = trim_view(std::string_view(name).substr(0, open));
             const auto after = trim_view(std::string_view(name).substr(close + 1));
+            const bool of_only = after.starts_with("of ") || after.starts_with("Of ");
             const auto given = before.empty() ? std::optional<std::string>(std::string{})
                 : translate_legends_name(before, true);
-            const auto rest = after.empty() ? std::optional<std::string>(std::string{})
-                : translate_legends_name(after, true);
+            const auto rest = [&]() -> std::optional<std::string> {
+                if (after.empty()) return std::string{};
+                if (of_only) {
+                    const auto owner = after.substr(3);
+                    if (!generated_title_shape(owner)) return std::nullopt;
+                    const auto title = english_character_names_.title(
+                        native_text_to_utf8(after));
+                    return title ? *title : native_text_to_utf8(owner) + "之";
+                }
+                // The nickname can replace the first-name group entirely,
+                // leaving an English title as its next field. Its lower-case
+                // article is a name-group separator, not ordinary prose.
+                if (after.starts_with("the ") || after.starts_with("The ")) {
+                    const auto epithet = after.substr(4);
+                    if (!generated_title_shape(epithet)) return std::nullopt;
+                    const auto title = english_character_names_.title(
+                        native_text_to_utf8(epithet));
+                    return title ? *title : native_text_to_utf8(epithet);
+                }
+                return translate_legends_name(after, true);
+            }();
             if (!given || !rest) return std::nullopt;
             const auto nickname = std::string_view(name).substr(
                 open + 1, close - open - 1);
             // Share the native identity's exact nickname overrides. Unknown
             // authored text retains its spelling even when it coincides with
             // an English term or generated epithet.
-            const auto nickname_target = exact_literal_translation(
-                "Unit nickname: " + std::string(nickname));
+            auto nickname_target = exact_literal_translation(
+                "Unit nickname: " + native_text_to_utf8(nickname));
+            if (!nickname_target)
+                nickname_target = exact_literal_translation(
+                    "Unit nickname: " + std::string(nickname));
             std::string target = *given + "“" + (nickname_target
                 ? *nickname_target : native_text_to_utf8(nickname)) + "”";
+            if (of_only) return *rest + target;
             if (!rest->empty()) target += "·" + *rest;
             return target;
         }
         // Prayer, rescue and other actor slots can carry a native personal
         // name followed by an English epithet. Keep those two semantic
         // fields separate: a native given word retains its pronunciation,
-        // while every adjective/noun and ownership clause in the title uses
-        // the shared generated-name vocabulary. The untyped general-text
-        // parser need not first recognize the entire mixed-language string.
+        // while the title uses the English character-name renderer. The
+        // untyped general-text parser need not first recognize the entire
+        // mixed-language string.
         const size_t titled = name.find(" the ");
         if (titled != std::string::npos && titled > 0) {
             const auto epithet = std::string_view(name).substr(titled + 5);
             if (generated_title_shape(epithet)) {
                 const auto actor = translate_legends_name(
                     std::string_view(name).substr(0, titled), true);
-                const auto title = translate_legends_name("The " + std::string(epithet), false);
-                if (actor && title) return *actor + "·" + *title;
+                const auto title = english_character_names_.title(
+                    native_text_to_utf8(epithet));
+                if (actor) return *actor + "·" +
+                    (title ? *title : native_text_to_utf8(epithet));
             }
+        }
+        // A surname can be the first visible group when the given name is
+        // absent. For either complete first group, an explicit OfX
+        // suffix still belongs to the English character-name renderer.
+        const size_t owned = name.find(" of ");
+        if (owned != std::string::npos && owned > 0) {
+            const auto head = std::string_view(name).substr(0, owned);
+            const auto owner = std::string_view(name).substr(owned + 4);
+            const size_t separator = head.find(' ');
+            bool english_head = separator == std::string_view::npos &&
+                !native_name_language_masks_.contains(lower_native_name(std::string(head))) &&
+                english_character_names_.english_component(native_text_to_utf8(head));
+            if (separator != std::string_view::npos) {
+                const auto given = head.substr(0, separator);
+                const auto surname = trim_view(head.substr(separator + 1));
+                english_head = native_name_language_masks_.contains(
+                        lower_native_name(std::string(given))) &&
+                    english_character_names_.english_component(native_text_to_utf8(surname));
+            }
+            if (english_head && generated_title_shape(head) && generated_title_shape(owner))
+                return translate_english_character_name(name);
         }
     }
     // Unknown places and unnamed building/location types are reviewed nouns,
@@ -325,6 +372,16 @@ std::optional<std::string> Overlay::translate_legends_name(
     if (single_person)
         if (auto native = translate_procedural_fragment(name, false, false, {},
                 ProceduralFragmentContext::native_name_group)) return native;
+    if (single_person && english_character_names_.english_component(
+            native_text_to_utf8(name)))
+        return translate_english_character_name(name);
+    if (person && (name.starts_with("The ") || name.starts_with("Of "))) {
+        const auto title = english_character_names_.title(native_text_to_utf8(name));
+        if (title) return *title;
+        return name.starts_with("Of ")
+            ? native_text_to_utf8(std::string_view(name).substr(3)) + "之"
+            : native_text_to_utf8(name);
+    }
     // A site is an English generated compound, not a native personal name.
     // Quote it BEFORE the broad unquoted native-name fallback: otherwise the
     // same site is phoneticized in kills but translated in its own heading.

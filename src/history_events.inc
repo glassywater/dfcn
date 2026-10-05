@@ -201,7 +201,8 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             // entities have label_key and use the reviewed label above;
             // failures to translate an actual name still reject the record.
             name.emplace();
-        } else name = translate_history_name(found->name);
+        } else name = translate_history_name(found->name,
+            kind == NativeHistoryObjectKind::Figure || kind == NativeHistoryObjectKind::Identity);
         if (!name) {
             failure_detail = "subject-name-untranslated; kind=" + std::to_string(static_cast<int>(kind)) +
                 "; id=" + std::to_string(id) + "; subid=" + std::to_string(subid);
