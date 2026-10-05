@@ -126,11 +126,12 @@ void Overlay::append_embark_introduction_matches(std::vector<std::string> &rows,
                     // Both residents and hungry wildlife are creature nouns.
                     target = translate_creature_descriptor(capture);
                 } else {
-                    target = exact_literal_translation(capture);
+                    if (p == 0) target = translate_civilization_reference(capture);
+                    if (!target) target = exact_literal_translation(capture);
                     if (!target && p == 2 && split_generated_name_identity(capture))
                         target = translate_procedural_fragment(capture);
-                    // The civilization and the unglossed site are native
-                    // names, not isolated English dictionary words.
+                    // Unresolved civilization names and the unglossed site
+                    // retain their native spelling rather than UI word senses.
                     if (!target) target = translate_procedural_fragment(capture, true);
                 }
                 // Unknown mod vocabulary remains one coherent field instead

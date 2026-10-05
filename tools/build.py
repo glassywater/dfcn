@@ -72,6 +72,7 @@ def deploy_runtime_data(directory: Path) -> None:
                  "dfhack-output-core.tsv", "dfhack-output-translations.tsv",
                  "dfhack-output-stonesense.tsv",
                  "procedural-terms.tsv", "procedural-word-senses.tsv",
+                 "civilization-name-terms.tsv",
                  "character-name-lexicon.tsv", "character-name-overrides.tsv",
                  "character-surname-lexicon.tsv",
                  "pinyin-data/pinyin.txt", "pinyin-data/SOURCE",

@@ -3107,10 +3107,11 @@ enum class SymbolCaptionKind { Creature, Plant, Shape, Item, Figure, Artifact, A
 
 enum class JournalSearchKind {
     Event, Agreement, Person, Site, Group, Region, Creature, Artifact,
-    Actor, Organization, Plot, PlotOrganization
+    Actor, Organization, Plot, PlotOrganization, Civilization
 };
 
 struct NativeModListLayout;
+struct CivilizationReferenceCache;
 
 class Overlay {
 public:
@@ -3362,7 +3363,8 @@ private:
         std::optional<std::vector<LegendsTextPiece>>> history_event_translation_cache_;
     std::optional<std::string> translate_history_name(
         const NativeHistoryName &name, bool character = false) const;
-    std::optional<std::string> translate_english_character_name(std::string_view source) const;
+    std::optional<std::string> translate_english_character_name(
+        std::string_view source, std::string_view native_given = {}) const;
     std::optional<std::vector<LegendsTextPiece>> translate_history_event(
         const NativeHistoryDocument &document) const;
     NativeHistoryViewport capture_history_viewport(
@@ -3513,6 +3515,10 @@ private:
     std::unordered_map<std::string, std::vector<ProceduralNameMeaning>>
         procedural_word_meanings_;
     std::unordered_map<std::string, std::string> procedural_word_senses_;
+    // Political/cultural name senses are scoped to civilization name slots.
+    std::unordered_map<std::string, std::string> civilization_name_terms_;
+    std::unordered_map<std::string, std::string> civilization_name_modifiers_;
+    mutable std::shared_ptr<CivilizationReferenceCache> civilization_reference_cache_;
     // These forms only reconstruct the game's English history references.
     // Chinese character-name selection always receives the resulting text.
     std::unordered_map<std::string, std::array<std::string, 9>> history_english_name_forms_;
@@ -3951,6 +3957,12 @@ private:
     bool load_compositional_rules();
     bool load_generated_instrument_names();
     bool load_procedural_word_senses();
+    bool load_civilization_name_terms();
+    std::optional<std::string> civilization_name_modifier(
+        std::string_view word_id, std::string_view part, size_t slot,
+        std::string_view head_id) const;
+    std::optional<std::string> translate_civilization_reference(
+        std::string_view source) const;
     bool load_procedural_name_grammar();
     bool load_procedural_terms();
     void load_name_editor_translations();
@@ -4449,7 +4461,8 @@ private:
         std::string_view gloss;
     };
     enum class ProceduralFragmentContext {
-        general_text, generated_name, personal_name, native_name_group, native_item_name, book_title
+        general_text, generated_name, personal_name, native_name_group, native_item_name, book_title,
+        civilization_name
     };
     std::optional<std::string> translate_procedural_fragment(
         const std::string &screen_text, bool phonetic_only = false,
@@ -6899,6 +6912,8 @@ bool Overlay::load_procedural_terms() {
             runtime::utf8(runtime::data_path()) + ": " + english_character_names_.error());
     if (!load_procedural_word_senses() || !load_procedural_name_grammar())
         log_line("ERROR", "Procedural surname semantics are incomplete");
+    if (!load_civilization_name_terms())
+        log_line("ERROR", "Cannot load civilization name terms");
     std::string path = runtime::utf8(runtime::data_path() / "procedural-terms.tsv");
     std::ifstream input(fs::u8path(path), std::ios::binary);
     if (!input) {
@@ -8868,7 +8883,8 @@ std::optional<std::string> Overlay::translate_adventure_origin_source(
     auto title = [&](std::string_view name) -> std::optional<std::string> {
         // The quoted-name path validates title case and connector grammar;
         // never phoneticize the distribution sentence as part of its title.
-        const auto translated = translate_procedural_fragment("\"" + std::string(name) + "\"");
+        const auto translated = translate_procedural_fragment("\"" + std::string(name) + "\"",
+            false, false, {}, ProceduralFragmentContext::civilization_name);
         if (!translated || !translated->starts_with("“") || !translated->ends_with("”"))
             return std::nullopt;
         return translated->substr(3, translated->size() - 6);
@@ -9065,10 +9081,20 @@ std::optional<std::string> Overlay::translate_world_region_heading(std::string_v
 static std::string transliterate_native_history_name(std::string_view raw);
 
 std::optional<std::string> Overlay::translate_english_character_name(
-        std::string_view raw) const {
+        std::string_view raw, std::string_view native_given) const {
     const std::string source(trim_view(raw));
     if (source.empty()) return std::nullopt;
-    return memoize_identity_translation('E', source, [&]() {
+    // A native language_name first_name or a RAW-backed actor field proves
+    // a given name even when UTTERANCES generated it without T_WORD roots.
+    // Keep that proof out of the ordinary English/name-spelling cache.
+    const std::string proven_given = native_text_to_utf8(native_given);
+    std::string cache_key = source;
+    if (!proven_given.empty()) {
+        cache_key = proven_given;
+        cache_key.push_back('\0');
+        cache_key += source;
+    }
+    return memoize_identity_translation(proven_given.empty() ? 'E' : 'G', cache_key, [&]() {
         const std::string display = native_text_to_utf8(source);
         const size_t first_space = display.find(' ');
         const std::string_view first = std::string_view(display).substr(0, first_space);
@@ -9096,6 +9122,7 @@ std::optional<std::string> Overlay::translate_english_character_name(
                 const std::string spelling = native ? *native : std::string(given);
                 const std::string key = lower_native_name(spelling);
                 if (!native_name_language_masks_.contains(key) &&
+                        (proven_given.empty() || given != proven_given) &&
                         !(generated_suffix && given == first &&
                           !english_character_names_.known_component(given))) return std::nullopt;
                 const auto reviewed = native_name_reviewed_transliterations_.find(key);
@@ -9115,6 +9142,7 @@ std::optional<std::string> Overlay::translate_english_character_name(
 }
 
 #include "history_names.inc"
+#include "civilization_name_terms.inc"
 
 // Source grammar only. Rating meanings live in the scoped glossary and are
 // shared by native lists, TOML phrases and standalone combat ratings.
@@ -9289,6 +9317,18 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     // possible textile/material span as if its full identity were equipment.
     // Keep the existing structural validators and shared name renderer below.
     const bool personal_name = context == ProceduralFragmentContext::personal_name;
+    const bool civilization_name = context == ProceduralFragmentContext::civilization_name;
+    if (civilization_name && !phonetic_only) {
+        auto source = trim_view(screen_text);
+        if (source.size() >= 2 && source.front() == '"' && source.back() == '"') {
+            source.remove_prefix(1);
+            source.remove_suffix(1);
+            if (const auto translated = translate_civilization_reference(source))
+                return "“" + *translated + "”";
+        } else if (const auto translated = translate_civilization_reference(source)) {
+            return translated;
+        }
+    }
     const bool native_name_groups = context == ProceduralFragmentContext::native_item_name ||
         context == ProceduralFragmentContext::native_name_group;
     const bool book_title = context == ProceduralFragmentContext::book_title;
@@ -9299,7 +9339,13 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         : split_legends_figure_record(screen_text);
     const auto generated_identity = phonetic_only || personal_name || native_name_groups || figure_record ? std::nullopt
         : split_generated_name_identity(screen_text);
-    const bool name_only = phonetic_only || personal_name || native_name_groups || book_title ||
+    // A complete paired identity can be a civilization on a Legends list,
+    // detail tab or world card. Resolve its actual entity before the ordinary
+    // name compositor; the containing list also holds non-civilization groups.
+    if (generated_identity && !civilization_name && !character_name_gloss)
+        if (const auto translated = translate_civilization_reference(screen_text))
+            return translated;
+    const bool name_only = phonetic_only || personal_name || native_name_groups || book_title || civilization_name ||
         figure_record || generated_identity;
 
     // A profession is a separate native row for long names and part of the
@@ -10242,7 +10288,94 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         return selected->gloss;
     };
 
+    struct CivilizationSurfaceMeaning {
+        std::string word_id;
+        std::string gloss;
+    };
+    std::string civilization_head_id;
+    auto civilization_component = [&](std::string_view source,
+            ProceduralNamePartOfSpeech expected, size_t slot)
+            -> std::optional<CivilizationSurfaceMeaning> {
+        const std::string folded = lower(std::string(source));
+        const auto forms = name_editor_word_forms_.find(folded);
+        if (forms == name_editor_word_forms_.end()) return std::nullopt;
+        std::optional<CivilizationSurfaceMeaning> selected;
+        for (const auto &meaning : forms->second) {
+            if (meaning.part_of_speech != expected) continue;
+            const auto native_forms = history_english_name_forms_.find(meaning.word_id);
+            if (native_forms == history_english_name_forms_.end()) continue;
+            const auto &raw = native_forms->second;
+            if (slot == 6 && expected == ProceduralNamePartOfSpeech::verb && raw[8] != folded)
+                continue;
+            std::string gloss;
+            if (slot == 5) {
+                const auto head = civilization_name_terms_.find(meaning.word_id);
+                if (head == civilization_name_terms_.end()) continue;
+                gloss = render_civilization_name_head(meaning.word_id, head->second,
+                    raw[1] == folded && raw[0] != folded);
+            } else {
+                const char *part = expected == ProceduralNamePartOfSpeech::adjective ? "ADJ" :
+                    expected == ProceduralNamePartOfSpeech::noun ? "NOUN" :
+                    expected == ProceduralNamePartOfSpeech::prefix ? "PREFIX" : "VERB";
+                const auto modifier = civilization_name_modifier(meaning.word_id, part,
+                    slot, civilization_head_id);
+                gloss = modifier ? *modifier : meaning.gloss;
+            }
+            if (selected && (selected->word_id != meaning.word_id || selected->gloss != gloss))
+                return std::nullopt;
+            selected = CivilizationSurfaceMeaning{meaning.word_id, std::move(gloss)};
+        }
+        return selected;
+    };
+
     auto translate_phrase = [&](std::string phrase, bool scoped_head = false) {
+        if (civilization_name && scoped_head) {
+            std::istringstream input(phrase);
+            std::vector<std::string> components;
+            for (std::string word; input >> word;) {
+                const std::string folded = lower(word);
+                if (folded != "the" && folded != "a" && folded != "an")
+                    components.push_back(std::move(word));
+            }
+            if (!components.empty()) {
+                const std::string &last = components.back();
+                const size_t hyphen = last.rfind('-');
+                const std::string_view head_source = hyphen == std::string::npos
+                    ? std::string_view(last) : std::string_view(last).substr(hyphen + 1);
+                const auto head = civilization_component(head_source,
+                    ProceduralNamePartOfSpeech::noun, 5);
+                if (head) {
+                    civilization_head_id = head->word_id;
+                    std::string adjectives;
+                    bool complete = true;
+                    for (size_t i = 0; i + 1 < components.size(); ++i) {
+                        const auto adjective = civilization_component(components[i],
+                            ProceduralNamePartOfSpeech::adjective, 2);
+                        if (adjective) adjectives += adjective->gloss;
+                        else {complete = false; break;}
+                    }
+                    if (complete && hyphen == std::string::npos)
+                        return adjectives + head->gloss;
+                    if (complete && hyphen > 0 && last.find('-') == hyphen) {
+                        const std::string_view source(last.data(), hyphen);
+                        const auto modifier = reviewed_title_component(source,
+                            ProceduralNamePartOfSpeech::noun);
+                        if (modifier) return render_procedural_hyphenated_title(
+                            adjectives, *modifier, head->gloss);
+                        for (const auto part : {ProceduralNamePartOfSpeech::adjective,
+                                ProceduralNamePartOfSpeech::prefix}) {
+                            if (const auto compound = civilization_component(source, part, 4))
+                                return adjectives + compound->gloss + head->gloss;
+                        }
+                    }
+                }
+            }
+        } else if (civilization_name && !scoped_head) {
+            if (const auto owner = civilization_component(phrase,
+                    ProceduralNamePartOfSpeech::noun, 6)) return owner->gloss;
+            if (const auto owner = civilization_component(phrase,
+                    ProceduralNamePartOfSpeech::verb, 6)) return owner->gloss;
+        }
         // Preserve the native title structure before the loose fallback
         // splits punctuation: up to two adjectives and a noun-noun head.
         // This is the text counterpart of native name slots 2/3 and 4-5.
@@ -10426,7 +10559,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             if (of != std::string::npos) {
                 const std::string head = translate_phrase(name.substr(0, of), scoped_head);
                 const std::string tail = translate_phrase(name.substr(of + 4));
-                result = tail + "之" + head;
+                result = tail + (civilization_name && scoped_head ? "" : "之") + head;
             } else {
                 result = translate_phrase(name, scoped_head);
             }
@@ -11088,6 +11221,9 @@ std::optional<std::string> Overlay::translate_ui_catalog_capture(
     if (index == 0 && (rule.source == "Merchant from {s}" ||
             rule.source == "Merchants from {s}" ||
             rule.source == "Your fortress of {s}")) {
+        if (rule.source != "Your fortress of {s}")
+            if (const auto civilization = translate_civilization_reference(source))
+                return civilization;
         return contains_cjk_utf8(source)
             ? std::optional<std::string>(native_text_to_utf8(source))
             : translate_procedural_fragment(std::string(source), true);
@@ -23347,6 +23483,63 @@ std::vector<Match> Overlay::find_matches(int only_y,
         }
     }
 
+    // A shortened entity row can end before its comma or quoted English name.
+    // Its existing native draw owns the full source and the surviving bytes;
+    // recover real civilization identities before the structural row scanner.
+    if (legends_context) {
+        const auto *identity_grid = screen_override ? screen_override : gps_->screen;
+        const bool top_layer = identity_grid == gps_->screen_top;
+        const auto draws = captured_native_drawn_text_rows(top_layer);
+        const auto claim_civilization = [&](int x, int y, std::string_view visible,
+                                            std::string_view complete, int right) {
+            if (x < 0 || y < 0 || y >= gps_->dimy || x >= gps_->dimx ||
+                    visible.empty() || visible.size() > static_cast<size_t>(gps_->dimx - x) ||
+                    right <= x || !split_generated_name_identity(complete)) return;
+            auto &row = screen_rows[static_cast<size_t>(y)];
+            if (row.compare(static_cast<size_t>(x), visible.size(), visible) != 0) return;
+            const auto target = translate_civilization_reference(complete);
+            if (!target) return;
+            const std::string source(visible);
+            std::fill_n(row.begin() + x, visible.size(), ' ');
+            if (only_y >= 0 && only_y != y) return;
+            Match match{x, y, static_cast<int>(visible.size()), kLegendsIdentityRecordRule,
+                *target, source};
+            match.layout_x = x;
+            match.layout_y = y;
+            match.layout_length = match.length;
+            match.layout_left = true;
+            match.layout_clip_right = std::min(right, gps_->dimx);
+            match.layout_font_pixels = std::max(config_.min_font_pixels,
+                static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
+            result.push_back(std::move(match));
+        };
+        for (const auto &draw : draws) {
+            if (draw.draw_grid != identity_grid || draw.top_layer != top_layer ||
+                    draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                    draw.x < 0 || draw.x >= gps_->dimx || !draw.draw_clip ||
+                    draw.y < draw.draw_clip->y ||
+                    draw.y >= draw.draw_clip->y + draw.draw_clip->h ||
+                    draw.x < draw.draw_clip->x) continue;
+            const int right = std::min(gps_->dimx, draw.draw_clip->x + draw.draw_clip->w);
+            if (right <= draw.x) continue;
+            const auto visible = std::string_view(draw.source).substr(0,
+                static_cast<size_t>(right - draw.x));
+            const auto complete = draw.complete_source.empty()
+                ? std::string_view(draw.source) : std::string_view(draw.complete_source);
+            claim_civilization(draw.x, draw.y, visible, complete, right);
+        }
+        for (const auto &caption : clipped_template_captions) {
+            if (caption.x < 0 || caption.x >= gps_->dimx || caption.y < 0 ||
+                    caption.y >= gps_->dimy || caption.visible.empty() ||
+                    caption.visible.size() > static_cast<size_t>(gps_->dimx - caption.x))
+                continue;
+            const auto button = native_button_text_rect(*gps_, caption.x,
+                caption.x + static_cast<int>(caption.visible.size()), caption.y);
+            claim_civilization(caption.x, caption.y, caption.visible, caption.complete,
+                button ? button->x + button->w : gps_->dimx - 3);
+        }
+    }
+
     // Claim complete figure and site/entity identities before literal/template
     // matches, including inferred UI messages. Entity catalogs do not enter
     // the detail/two-column list parsers above: leaving their identities for
@@ -23380,12 +23573,20 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 // Their sex and species can still occupy padded fields;
                 // resolve the whole descriptor before literal species rules.
                 const bool unnamed = legends_context && source.starts_with("Unnamed ");
+                const bool generated_identity = legends_context &&
+                    split_generated_name_identity(source).has_value();
                 if (!unnamed && !split_legends_figure_record(source) &&
-                    !(legends_context && split_generated_name_identity(source))) continue;
-                const auto translated = memoize_identity_translation('R', source, [&] {
-                    return unnamed ? translate_legends_unnamed_figure(source)
-                                   : translate_procedural_fragment(source);
-                });
+                    !generated_identity) continue;
+                // CIV identities depend on the current world and WORD slots.
+                // Consult the live identity resolver before the ordinary R
+                // cache, which only owns a source spelling and a name gloss.
+                auto translated = generated_identity
+                    ? translate_civilization_reference(source) : std::nullopt;
+                if (!translated)
+                    translated = memoize_identity_translation('R', source, [&] {
+                        return unnamed ? translate_legends_unnamed_figure(source)
+                                       : translate_procedural_fragment(source);
+                    });
                 if (!translated) {
                     // The longest candidate can include the separate birth/
                     // death column. Try the shorter identity without it.
@@ -47195,6 +47396,7 @@ extern "C" int dfcn_render_copy(SDL_Renderer *renderer, SDL_Texture *texture,
 }
 
 #include "native_hooks.inc"
+#include "civilization_names.inc"
 #include "native_graphics_toggle.inc"
 
 } // namespace dfcn

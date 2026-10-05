@@ -223,6 +223,14 @@ static std::string transliterate_native_history_name(std::string_view raw) {
     return result.empty() ? std::string("异域") : result;
 }
 
+static std::string render_civilization_name_head(
+        std::string_view word_id, std::string_view term, bool plural) {
+    // NATION is the one reviewed collective whose English plural changes
+    // the Chinese political name. Other CIV heads keep their chosen title.
+    if (word_id == "NATION" && plural) return "诸国";
+    return std::string(term);
+}
+
 std::optional<std::string> Overlay::translate_history_name(
         const NativeHistoryName &name, bool character) const {
     if (!name.has_name) return std::nullopt;
@@ -257,7 +265,7 @@ std::optional<std::string> Overlay::translate_history_name(
             }
         }
         if (nickname && name.nickname_mode == 2)
-            return translate_english_character_name(english);
+            return translate_english_character_name(english, name.first_name);
         const auto append = [&](const std::string &group) {
             if (group.empty()) return;
             if (!english.empty()) english += ' ';
@@ -285,7 +293,7 @@ std::optional<std::string> Overlay::translate_history_name(
         }
         if (!forms[6].empty())
             append((english.empty() ? "Of " : "of ") + capitalized(forms[6]));
-        return translate_english_character_name(english);
+        return translate_english_character_name(english, name.first_name);
     }
     auto given_name = [&](const std::string &value) {
         if (contains_cjk_utf8(value)) return native_text_to_utf8(value);
@@ -336,6 +344,26 @@ std::optional<std::string> Overlay::translate_history_name(
             break;
         default: return std::nullopt;
         }
+        // Civilization=2 uses a reviewed collective title only for its
+        // slot 5 noun head. The same WORD in any other position must use
+        // its own modifier sense or the ordinary WORD/POS meaning.
+        if (name.type == 2 && slot == 5 &&
+                (word.part_of_speech == 0 || word.part_of_speech == 1)) {
+            const auto civilization = civilization_name_terms_.find(word.id);
+            if (civilization != civilization_name_terms_.end() &&
+                    !civilization->second.empty()) {
+                glosses[slot] = render_civilization_name_head(
+                    word.id, civilization->second, word.part_of_speech == 1);
+                continue;
+            }
+        }
+        if (name.type == 2) {
+            if (const auto modifier = civilization_name_modifier(
+                    word.id, part, slot, name.words[5].id)) {
+                glosses[slot] = *modifier;
+                continue;
+            }
+        }
         const auto found = procedural_word_senses_.find(word.id + "\t" + part);
         // Unknown/mod-added WORD identities remain unsupported; never guess a
         // different sense by splitting the English spelling into substrings.
@@ -381,9 +409,12 @@ std::optional<std::string> Overlay::translate_history_name(
         }
     }
     if (!glosses[6].empty()) {
-        if (!title.empty()) title = glosses[6] + "之" + title;
-        else if (!compound.empty()) compound = glosses[6] + "之" + compound;
-        else title = glosses[6] + "之";
+        // CIV ownership is rendered as a Chinese name modifier. Other
+        // language_name_type values keep the existing ownership grammar.
+        const char *link = name.type == 2 ? "" : "之";
+        if (!title.empty()) title = glosses[6] + link + title;
+        else if (!compound.empty()) compound = glosses[6] + link + compound;
+        else title = glosses[6] + link;
     }
     auto append = [&](const std::string &part) {
         if (part.empty()) return;

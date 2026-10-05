@@ -931,7 +931,13 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
             // No generic Legends/name fallback here. An unknown reason is
             // retained as one original row and reported for translation.
         } else if (identity) {
-            if (split_legends_figure_record(source) || split_generated_name_identity(source))
+            // This list also contains site governments. Only a real
+            // civilization identity receives the political name vocabulary.
+            if (index + 1 < card.rows.size() && world_civilization_relationship(
+                    normalize_utterance(card.rows[index + 1].source)))
+                target = translate_civilization_reference(source);
+            if (!target && (split_legends_figure_record(source) ||
+                    split_generated_name_identity(source)))
                 target = translate_procedural_fragment(source);
         } else if (site_heading || compact_site_heading) {
             std::string heading = source;

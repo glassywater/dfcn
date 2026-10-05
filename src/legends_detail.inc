@@ -179,6 +179,9 @@ std::optional<std::string> Overlay::translate_legends_name(
     std::string name = person && raw.find('`') != std::string_view::npos
         ? std::string(trim_view(raw)) : normalize_utterance(raw);
     if (name.empty() || name.ends_with("...")) return std::nullopt;
+    if (!person)
+        if (const auto civilization = translate_civilization_reference(name))
+            return civilization;
     // Native unit names enclose a nickname in `...'. It may replace the
     // given name or follow it, while the surname/title/OfX groups remain
     // outside the quotes. Resolve those name fields separately; rejecting
@@ -732,7 +735,32 @@ std::optional<std::string> Overlay::translate_legends_nested(
                     else target = translate_legends_term(part);
                 } else target = translate_legends_term(part);
                 break;
-            case 'e': target = translate_legends_event(part, depth + 1); break;
+            case 'e': {
+                // bc57f0 inserts the native ordinal after the collection's
+                // initial The. Its nested title therefore lacks that article.
+                // Recognize only the existing complete ordinal productions;
+                // ordinary event/name captures must not gain an article.
+                const bool spelled_ordinal = field == 0 && rule.template_kinds.size() == 1 &&
+                    rule.template_literals.size() == 2 &&
+                    rule.template_literals.front().starts_with("The ") &&
+                    rule.template_literals.front().size() > 5 &&
+                    rule.template_literals.front().back() == ' ' &&
+                    rule.template_literals.front().find(' ', 4) == rule.template_literals.front().size() - 1 &&
+                    rule.target_template_literals.size() == 2 &&
+                    rule.target_template_literals.front().starts_with("第") &&
+                    rule.target_template_literals.front().ends_with("次");
+                const bool numeric_ordinal = field == 1 && rule.template_kinds.size() == 2 &&
+                    rule.template_kinds.front() == 'd' && rule.template_literals.size() == 3 &&
+                    rule.template_literals.front() == "The " &&
+                    (rule.template_literals[1] == "st " || rule.template_literals[1] == "nd " ||
+                     rule.template_literals[1] == "rd " || rule.template_literals[1] == "th ");
+                if (rule.legends_event_title && rule.template_literals.back().empty() &&
+                        (spelled_ordinal || numeric_ordinal) &&
+                        !template_literal_at(part, 0, "The ", true))
+                    target = translate_legends_event("The " + std::string(part), depth + 1);
+                if (!target) target = translate_legends_event(part, depth + 1);
+                break;
+            }
             case 'b': target = translate_legends_book(part, depth + 1); break;
             case 'i': target = translate_legends_item(part); break;
             case 't': target = translate_legends_anatomy(part); break;
@@ -898,7 +926,15 @@ std::optional<std::string> Overlay::translate_legends_actor(
         // still use the RAW-backed species and shared creature grammar.
         const auto species = translate_creature_descriptor(value.substr(0, at), true);
         if (!species) continue;
-        const auto name = translate_legends_name(value.substr(at + 1), true);
+        const auto raw_name = trim_view(value.substr(at + 1));
+        // A RAW-backed species establishes this person field. Utterance
+        // names can be one proper given name without any T_WORD roots.
+        const bool single_given = raw_name.size() >= 2 && raw_name.size() <= 192 &&
+            raw_name.find_first_of(" \t\r\n") == std::string_view::npos &&
+            !raw_name.ends_with("...") && generated_title_shape(raw_name);
+        auto name = translate_legends_name(raw_name, true);
+        if (single_given && !translation_complete_with_native_nicknames(name, raw_name))
+            name = translate_english_character_name(raw_name, raw_name);
         if (name) return *species + "·" + *name;
     }
     return translate_legends_name(value, true);
@@ -2289,7 +2325,10 @@ std::shared_ptr<LegendsTextFlow> Overlay::translate_legends_flow(
             case 'q': target = translate_legends_color(value); break;
             case 't': target = translate_legends_anatomy(value); break;
             case 'i': target = translate_legends_item(value); break;
-            case 'e': target = translate_legends_name(value, false); break;
+            case 'e':
+                target = translate_civilization_reference(value);
+                if (!target) target = translate_legends_name(value, false);
+                break;
             case 'b': target = translate_legends_book(value); break;
             case 'r': target = translate_deity_spheres(value); break;
             case 'c':

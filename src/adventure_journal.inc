@@ -334,6 +334,7 @@
                 std::optional<std::string> kind_target;
                 bool site = false;
                 bool group = false;
+                bool civilization = false;
                 bool region = false;
                 for (int y = title_y + 1; !bestiary && y < bottom; ++y) {
                     if (title_row(y)) continue;
@@ -367,6 +368,7 @@
                         kind_target = exact_literal_translation(*group_kind);
                         if (!kind_target) kind_target = cp437_to_utf8(field->source);
                         group = true;
+                        civilization = *group_kind == "Civilization";
                         break;
                     }
                     if (const auto target = translate_announcement_combat(
@@ -480,7 +482,9 @@
                         const auto complete = native_drawn_text_for_row(*title, *counter);
                         const std::string name = complete.value_or(title->source);
                         const auto title_kind = bestiary ? JournalSearchKind::Creature
-                            : site ? JournalSearchKind::Site : group ? JournalSearchKind::Group
+                            : site ? JournalSearchKind::Site
+                            : civilization ? JournalSearchKind::Civilization
+                            : group ? JournalSearchKind::Group
                             : region ? JournalSearchKind::Region : JournalSearchKind::Person;
                         auto name_target = translate_journal_title(name, title_kind);
                         // Unknown names still belong to the same field and
