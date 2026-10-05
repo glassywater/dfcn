@@ -1506,6 +1506,9 @@ private:
         if (auto p = literal(source); p.known && source.find(' ') != std::string_view::npos)
             return surname_part(source);
         if (auto the = marker(source, "the")) {
+            // A standalone generated title has no personal-name prefix.
+            // Its absent first group must not make a complete title fail.
+            if (*the == 0) return title_part(source);
             Part first = first_group(source.substr(0, *the), given);
             Part tail = title_part(source.substr(*the));
             if (!first.known && !tail.known) return original(source);
