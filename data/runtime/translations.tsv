@@ -30651,6 +30651,7 @@ The Attempted Abduction of {n} at {p} in the wilds.	在荒野中，{p1}绑架{n1
 The Attempted Abduction of {n} in {p} in the wilds.	在荒野中，{p1}绑架{n1}未遂的事件。	htEi
 The army is commanded by {n}, a seasoned commander.	这支军队的统领是{n1}，是一位久经沙场的统帅。	hPt
 The army is commanded by {n}, a talented commander.	这支军队的统领是{n1}，是一位才华出众的统帅。	hPt
+The associated zones must have enough value. ({d}\x0F)	关联区域的总价值需达到{d1}☼。	hPt
 The defenders hired {a} as scouts in {p} during {e}	在{e1}期间，防守方在{p1}雇佣{a1}担任斥候	ht
 The defenders hired {a} as scouts in {p} within {p}	在{p2}，防守方在{p1}雇佣{a1}担任斥候	ht
 The image is the symbol of {p}, a {s} civilization.	这幅图像是{s1}政权「{p1}」的象征。	hHt
@@ -44214,6 +44215,7 @@ Conversation portrait label: Relationship	与你的关系：	l
 Conversation relationship: No fear of you	不怕你	l
 Converting gathering blueprint to regular	将采集蓝图转为普通指定区域	wo
 Converting smoothing blueprint to regular	将打磨蓝图转为普通指定区域	wo
+Current top guildhall location: {e}, {d}\x0F	当前等级最高的行会大厅地点：{e1}，{d1}☼	hPt
 DFHack GUI Autodump: Clear selected items	清除已选物品	l
 DFHack GUI Control tool: gui/notify.panel	要塞通知列表（gui/notify.panel）	l
 DFHack GUI Control tool: gui/rename.world	新世界改名（gui/rename.world）	l
@@ -49242,6 +49244,7 @@ Conversation keyword: scribe join work	抄写员 加入 工作	l
 Conversation prompt: How will you ask?	你将如何提出请求？	l
 Conversation prompt: What do you want?	你想要什么？	l
 Converting mining blueprint to regular	将挖掘蓝图转为普通指定区域	wo
+Current top temple location: {e}, {d}\x0F	当前等级最高的神殿地点：{e1}，{d1}☼	hPt
 DFHack GUI Control tool: caravan.trade	交易箱内物品管理（caravan.trade）	l
 DFHack GUI Control tool: fix/blood-del	移除商队无用液体（fix/blood-del）	l
 DFHack GUI Control tool: fix/ownership	修复物品所有权（fix/ownership）	l
@@ -51054,6 +51057,7 @@ Conversation mood: Existential Crisis	存在危机	l
 Conversation relationship: Trusts you	信任你	l
 Credits: Nathan Miller aka Rainseeker	Nathan Miller aka Rainseeker	wl
 Credits: SDL port, additional changes	SDL 移植及其他改进	wl
+Current guildhall location: {e}, {d}\x0F	当前行会大厅地点：{e1}，{d1}☼	hPt
 Curse this fog! I cannot see a thing.	这该死的雾！我什么都看不见。	hP
 DFHack GUI Control tool: autoclothing	自动衣物订单（autoclothing）	l
 DFHack GUI Control tool: autotraining	自动安排训练（autotraining）	l
@@ -52725,6 +52729,22 @@ Adventure performance value: Romance	浪漫	l
 Adventure: move view/cursor down (z)	冒险模式：向下移动视野/光标（z）	w
 Adventurer log group status: Aligned	立场一致	h
 Affects maximum number of followers.	影响追随者人数上限。	w
+Agreement date: {d}nd Limestone, {d}	协议日期：第{d2}年石灰岩月{d1}日	hPt
+Agreement date: {d}nd Malachite, {d}	协议日期：第{d2}年孔雀石月{d1}日	hPt
+Agreement date: {d}nd Moonstone, {d}	协议日期：第{d2}年月光石月{d1}日	hPt
+Agreement date: {d}nd Sandstone, {d}	协议日期：第{d2}年砂岩月{d1}日	hPt
+Agreement date: {d}rd Limestone, {d}	协议日期：第{d2}年石灰岩月{d1}日	hPt
+Agreement date: {d}rd Malachite, {d}	协议日期：第{d2}年孔雀石月{d1}日	hPt
+Agreement date: {d}rd Moonstone, {d}	协议日期：第{d2}年月光石月{d1}日	hPt
+Agreement date: {d}rd Sandstone, {d}	协议日期：第{d2}年砂岩月{d1}日	hPt
+Agreement date: {d}st Limestone, {d}	协议日期：第{d2}年石灰岩月{d1}日	hPt
+Agreement date: {d}st Malachite, {d}	协议日期：第{d2}年孔雀石月{d1}日	hPt
+Agreement date: {d}st Moonstone, {d}	协议日期：第{d2}年月光石月{d1}日	hPt
+Agreement date: {d}st Sandstone, {d}	协议日期：第{d2}年砂岩月{d1}日	hPt
+Agreement date: {d}th Limestone, {d}	协议日期：第{d2}年石灰岩月{d1}日	hPt
+Agreement date: {d}th Malachite, {d}	协议日期：第{d2}年孔雀石月{d1}日	hPt
+Agreement date: {d}th Moonstone, {d}	协议日期：第{d2}年月光石月{d1}日	hPt
+Agreement date: {d}th Sandstone, {d}	协议日期：第{d2}年砂岩月{d1}日	hPt
 An animal has grown to become a {s}.	一只动物长成了{s1}。	hPt
 Announcement combat ability []: Spit	吐唾沫	l
 Announcement combat decay []: filthy	肮脏的	l
@@ -54637,6 +54657,14 @@ Adventure performance genre: Manual	手册	l
 Adventure performance value: Family	家庭	l
 Adventure performance value: Nature	自然	l
 Agree to have {e} pay homage to {e}	同意让{e1}向{e2}称臣纳贡	hPt
+Agreement date: {d}nd Hematite, {d}	协议日期：第{d2}年赤铁矿月{d1}日	hPt
+Agreement date: {d}nd Obsidian, {d}	协议日期：第{d2}年黑曜石月{d1}日	hPt
+Agreement date: {d}rd Hematite, {d}	协议日期：第{d2}年赤铁矿月{d1}日	hPt
+Agreement date: {d}rd Obsidian, {d}	协议日期：第{d2}年黑曜石月{d1}日	hPt
+Agreement date: {d}st Hematite, {d}	协议日期：第{d2}年赤铁矿月{d1}日	hPt
+Agreement date: {d}st Obsidian, {d}	协议日期：第{d2}年黑曜石月{d1}日	hPt
+Agreement date: {d}th Hematite, {d}	协议日期：第{d2}年赤铁矿月{d1}日	hPt
+Agreement date: {d}th Obsidian, {d}	协议日期：第{d2}年黑曜石月{d1}日	hPt
 All of your progress since the last	自上次保存以来的所有进度	w
 Announce your night creature status	宣布你是夜行生物	hP
 Announcement combat ability []: Rot	引发腐烂	l
@@ -56643,6 +56671,14 @@ Adventurer log reputation: comrade	同志	h
 Age of the {s} and the {s} at {p}.	在{p1}，{s1}与{s2}时代。	htEi
 Age of the {s} and the {s} in {d}.	{d1}年的{s1}与{s2}时代。	htEi
 Age of the {s} and the {s} in {p}.	在{p1}，{s1}与{s2}时代。	htEi
+Agreement date: {d}nd Felsite, {d}	协议日期：第{d2}年霏细岩月{d1}日	hPt
+Agreement date: {d}nd Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日	hPt
+Agreement date: {d}rd Felsite, {d}	协议日期：第{d2}年霏细岩月{d1}日	hPt
+Agreement date: {d}rd Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日	hPt
+Agreement date: {d}st Felsite, {d}	协议日期：第{d2}年霏细岩月{d1}日	hPt
+Agreement date: {d}st Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日	hPt
+Agreement date: {d}th Felsite, {d}	协议日期：第{d2}年霏细岩月{d1}日	hPt
+Agreement date: {d}th Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日	hPt
 Am I supposed to engage with that?	难道还要我回应那番话？	hP
 Announcement combat decay []: foul	污秽的	l
 Announcement combat layer []: part	部位	l
@@ -56781,6 +56817,7 @@ Conversation keyword: surroundings	周边	l
 Conversation keyword: troublemaker	惹事精	l
 Conversation keyword: vengefulness	复仇心	l
 Conversation relationship: Neutral	中立	l
+Current temple location: {e}, {d}\x0F	当前神殿地点：{e1}，{d1}☼	hPt
 DFHack GUI Autodump: Destroy items	销毁物品	l
 DFHack GUI Caption: Capture output	显示输出	l
 DFHack GUI Caption: Delete command	删除命令	l
@@ -58761,6 +58798,14 @@ Adventurer log tab: Organizations	组织	h
 Age of the {s} and the {s} at {p}	在{p1}，{s1}与{s2}时代	htEi
 Age of the {s} and the {s} in {d}	{d1}年的{s1}与{s2}时代	htEi
 Age of the {s} and the {s} in {p}	在{p1}，{s1}与{s2}时代	htEi
+Agreement date: {d}nd Galena, {d}	协议日期：第{d2}年方铅矿月{d1}日	hPt
+Agreement date: {d}nd Timber, {d}	协议日期：第{d2}年林木月{d1}日	hPt
+Agreement date: {d}rd Galena, {d}	协议日期：第{d2}年方铅矿月{d1}日	hPt
+Agreement date: {d}rd Timber, {d}	协议日期：第{d2}年林木月{d1}日	hPt
+Agreement date: {d}st Galena, {d}	协议日期：第{d2}年方铅矿月{d1}日	hPt
+Agreement date: {d}st Timber, {d}	协议日期：第{d2}年林木月{d1}日	hPt
+Agreement date: {d}th Galena, {d}	协议日期：第{d2}年方铅矿月{d1}日	hPt
+Agreement date: {d}th Timber, {d}	协议日期：第{d2}年林木月{d1}日	hPt
 Ambience Volume (Adventure): {d}%	环境音量(冒险):{d}%	wt
 Animal training knowledge: Expert	专家	w
 Announcement combat owner []: her	她的	l
@@ -60717,6 +60762,10 @@ Adventure performance value: Law	法律	l
 Adventurer, choose your destiny!	冒险者，选择你的命运！	l
 Age of {a} and {a} in the wilds.	在荒野中，{a1}与{a2}时代。	htEi
 Age of {s} and {s} in the wilds.	在荒野中，{s1}与{s2}时代。	htEi
+Agreement date: {d}nd Slate, {d}	协议日期：第{d2}年板岩月{d1}日	hPt
+Agreement date: {d}rd Slate, {d}	协议日期：第{d2}年板岩月{d1}日	hPt
+Agreement date: {d}st Slate, {d}	协议日期：第{d2}年板岩月{d1}日	hPt
+Agreement date: {d}th Slate, {d}	协议日期：第{d2}年板岩月{d1}日	hPt
 Ambience Volume (Fortress): {d}%	环境音量(要塞):{d}%	wt
 An obstacle will present itself.	一个障碍即将出现。	hP
 Announcement combat unit []: she	她	l
@@ -62734,6 +62783,10 @@ After enduring an interrogation	忍受审讯后	h
 Age of {a} and {a} in the wilds	在荒野中，{a1}与{a2}时代	htEi
 Age of {s} and {s} in the wilds	在荒野中，{s1}与{s2}时代	htEi
 Agreed to build grand guildhall	已同意建造大行会大厅	wi
+Agreement date: {d}nd Opal, {d}	协议日期：第{d2}年蛋白石月{d1}日	hPt
+Agreement date: {d}rd Opal, {d}	协议日期：第{d2}年蛋白石月{d1}日	hPt
+Agreement date: {d}st Opal, {d}	协议日期：第{d2}年蛋白石月{d1}日	hPt
+Agreement date: {d}th Opal, {d}	协议日期：第{d2}年蛋白石月{d1}日	hPt
 All drinks are free, of course!	当然，所有饮品都是免费的！	hP
 Ambush (incapacitated creature)	伏击：失去行动能力的生物	w
 Announce most job cancellations	通报大部分任务取消	wi
@@ -62943,6 +62996,7 @@ Conversation mood: Contemptuous	轻蔑	l
 Conversation mood: Disappointed	失望	l
 Conversation mood: Enthusiastic	热情	l
 Credits: Premium DF Playtesting	《矮人要塞》高级版试玩测试	wl
+Current top guildhall location:	当前等级最高的行会大厅地点：	hP
 Current top guildhall location:	当前等级最高的行会大厅地点：	wl
 DFHack GUI Caption: Add command	添加命令	l
 DFHack GUI Control tool: hermit	隐士挑战（hermit）	l
@@ -69734,6 +69788,7 @@ Credits: DF 2010 Playtesting	《矮人要塞》2010 年版试玩测试	wl
 Credits: Initial Playtesting	早期试玩测试	wl
 Credits: Lead Sound Designer	首席声音设计师	wl
 Credits: Tarn and Zach Adams	Tarn and Zach Adams	wl
+Current top temple location:	当前等级最高的神殿地点：	hP
 Current top temple location:	当前等级最高的神殿地点：	wl
 DFHack GUI Design: Area: N/A	范围：无	l
 DFHack GUI Design: Main Axis	主轴	l
@@ -71892,6 +71947,7 @@ Conversation mood: Vengeful	想要复仇	l
 Conversation mood: Wrathful	暴怒	l
 Create a creature to begin.	请先创建一个生物。	l
 Creating {s} ({d} rejected)	正在生成{s}（已拒绝 {d} 次）	wtl
+Current guildhall location:	当前行会大厅地点：	hP
 Current guildhall location:	当前行会大厅地点：	wl
 Customize the squad's name.	自定义小队名称。	hj
 DFHack GUI Design: Building	建造	l
@@ -77844,6 +77900,7 @@ Copy output to clipboard	复制输出到剪贴板	w
 Credits: Commmunications	社区沟通	wl
 Credits: Theodorick Grau	Theodorick Grau	wl
 Crossbows, leather armor	十字弩（皮甲）	wli
+Current temple location:	当前神殿地点：	hP
 DFHack GUI Autodump: Off	关闭	l
 DFHack GUI Design: Area:	范围：	l
 DFHack GUI Design: Floor	地板	l
@@ -92149,6 +92206,7 @@ A wide variety of 	此类别包含多种与食品和酒水相	w
 A {s} cannot jump.	{s1}无法跳跃。	hPt
 Abandoned hillocks	废弃丘堡	wi
 Accept personality	接受人格
+Accepted petition:	已批准的申请：	hP
 Act quickly today.	今天要迅速行动。	hP
 Adamantine strands	精金缕	wi
 Add a party member	添加队友

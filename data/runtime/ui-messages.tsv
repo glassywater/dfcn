@@ -235,6 +235,67 @@ You can recenter on the locations of the announcements. You may also toggle paus
 No recent announcements.	最近没有公告。
 You do not have an official capable of handling these matters.	你没有能够处理这些事务的官员。
 Do you approve this request?	是否批准此请求？
+# Accepted construction petitions: complete native detail fields. Location
+# names, wealth and agreement dates remain separate typed captures, including
+# title/value draws on consecutive rows. PE literals include the CP437 sun.
+Accepted petition:	已批准的申请：
+The associated zones must have enough value. ({d}\x0F)	关联区域的总价值需达到{d1}☼。
+Current temple location:	当前神殿地点：
+Current top temple location:	当前等级最高的神殿地点：
+Current guildhall location:	当前行会大厅地点：
+Current top guildhall location:	当前等级最高的行会大厅地点：
+Current temple location: {e}, {d}\x0F	当前神殿地点：{e1}，{d1}☼
+Current top temple location: {e}, {d}\x0F	当前等级最高的神殿地点：{e1}，{d1}☼
+Current guildhall location: {e}, {d}\x0F	当前行会大厅地点：{e1}，{d1}☼
+Current top guildhall location: {e}, {d}\x0F	当前等级最高的行会大厅地点：{e1}，{d1}☼
+Agreement date: {d}st Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日
+Agreement date: {d}nd Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日
+Agreement date: {d}rd Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日
+Agreement date: {d}th Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日
+Agreement date: {d}st Slate, {d}	协议日期：第{d2}年板岩月{d1}日
+Agreement date: {d}nd Slate, {d}	协议日期：第{d2}年板岩月{d1}日
+Agreement date: {d}rd Slate, {d}	协议日期：第{d2}年板岩月{d1}日
+Agreement date: {d}th Slate, {d}	协议日期：第{d2}年板岩月{d1}日
+Agreement date: {d}st Felsite, {d}	协议日期：第{d2}年霏细岩月{d1}日
+Agreement date: {d}nd Felsite, {d}	协议日期：第{d2}年霏细岩月{d1}日
+Agreement date: {d}rd Felsite, {d}	协议日期：第{d2}年霏细岩月{d1}日
+Agreement date: {d}th Felsite, {d}	协议日期：第{d2}年霏细岩月{d1}日
+Agreement date: {d}st Hematite, {d}	协议日期：第{d2}年赤铁矿月{d1}日
+Agreement date: {d}nd Hematite, {d}	协议日期：第{d2}年赤铁矿月{d1}日
+Agreement date: {d}rd Hematite, {d}	协议日期：第{d2}年赤铁矿月{d1}日
+Agreement date: {d}th Hematite, {d}	协议日期：第{d2}年赤铁矿月{d1}日
+Agreement date: {d}st Malachite, {d}	协议日期：第{d2}年孔雀石月{d1}日
+Agreement date: {d}nd Malachite, {d}	协议日期：第{d2}年孔雀石月{d1}日
+Agreement date: {d}rd Malachite, {d}	协议日期：第{d2}年孔雀石月{d1}日
+Agreement date: {d}th Malachite, {d}	协议日期：第{d2}年孔雀石月{d1}日
+Agreement date: {d}st Galena, {d}	协议日期：第{d2}年方铅矿月{d1}日
+Agreement date: {d}nd Galena, {d}	协议日期：第{d2}年方铅矿月{d1}日
+Agreement date: {d}rd Galena, {d}	协议日期：第{d2}年方铅矿月{d1}日
+Agreement date: {d}th Galena, {d}	协议日期：第{d2}年方铅矿月{d1}日
+Agreement date: {d}st Limestone, {d}	协议日期：第{d2}年石灰岩月{d1}日
+Agreement date: {d}nd Limestone, {d}	协议日期：第{d2}年石灰岩月{d1}日
+Agreement date: {d}rd Limestone, {d}	协议日期：第{d2}年石灰岩月{d1}日
+Agreement date: {d}th Limestone, {d}	协议日期：第{d2}年石灰岩月{d1}日
+Agreement date: {d}st Sandstone, {d}	协议日期：第{d2}年砂岩月{d1}日
+Agreement date: {d}nd Sandstone, {d}	协议日期：第{d2}年砂岩月{d1}日
+Agreement date: {d}rd Sandstone, {d}	协议日期：第{d2}年砂岩月{d1}日
+Agreement date: {d}th Sandstone, {d}	协议日期：第{d2}年砂岩月{d1}日
+Agreement date: {d}st Timber, {d}	协议日期：第{d2}年林木月{d1}日
+Agreement date: {d}nd Timber, {d}	协议日期：第{d2}年林木月{d1}日
+Agreement date: {d}rd Timber, {d}	协议日期：第{d2}年林木月{d1}日
+Agreement date: {d}th Timber, {d}	协议日期：第{d2}年林木月{d1}日
+Agreement date: {d}st Moonstone, {d}	协议日期：第{d2}年月光石月{d1}日
+Agreement date: {d}nd Moonstone, {d}	协议日期：第{d2}年月光石月{d1}日
+Agreement date: {d}rd Moonstone, {d}	协议日期：第{d2}年月光石月{d1}日
+Agreement date: {d}th Moonstone, {d}	协议日期：第{d2}年月光石月{d1}日
+Agreement date: {d}st Opal, {d}	协议日期：第{d2}年蛋白石月{d1}日
+Agreement date: {d}nd Opal, {d}	协议日期：第{d2}年蛋白石月{d1}日
+Agreement date: {d}rd Opal, {d}	协议日期：第{d2}年蛋白石月{d1}日
+Agreement date: {d}th Opal, {d}	协议日期：第{d2}年蛋白石月{d1}日
+Agreement date: {d}st Obsidian, {d}	协议日期：第{d2}年黑曜石月{d1}日
+Agreement date: {d}nd Obsidian, {d}	协议日期：第{d2}年黑曜石月{d1}日
+Agreement date: {d}rd Obsidian, {d}	协议日期：第{d2}年黑曜石月{d1}日
+Agreement date: {d}th Obsidian, {d}	协议日期：第{d2}年黑曜石月{d1}日
 # Petitions renderer: all branches from the native Windows 53.16 function,
 # including its separate addst records, not only the visitor-residency page.
 # Names stay in their existing typed grammar; guild occupations use the full
