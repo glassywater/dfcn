@@ -2521,6 +2521,10 @@ DFHack output: Are you sure you want to remove this depot? Merchants are present
 DFHack output: Delete uniform	删除军装方案	l
 DFHack output: Are you sure you want to delete this uniform?	确定要删除这套军装方案吗？	l
 
+# Installed scripts/internal/confirm/specs.lua:517-518: embark site-finder confirmation.
+DFHack output: Re-run finder	重新搜索地点	l
+DFHack output: Are you sure you want to re-run the site finder? Your current map highlights will be lost.	确定要重新搜索定居地点吗？当前地图上的高亮标记将丢失。	l
+
 # Installed scripts/warn-stranded.lua:217,233,238,245,252,260: fixed local GUI captions.
 # Unit descriptions, names, IDs, group designations, and bracketed dynamic fields are not captured here.
 DFHack output: Stranded citizen warning	受困公民警告	l
