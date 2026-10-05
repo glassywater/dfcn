@@ -129,6 +129,37 @@ static void capture_native_unit_header_english_name(const void *name,
     }
 }
 
+static void capture_native_unit_header_creation_name(const void *name, NativeString *output) {
+    NativeInputCallbackScope callback;
+    callback.call_native([&] { g_native_unit_identity_hooks.name(name, output); });
+    try {
+        if (!g_overlay.translation_enabled()) return;
+        std::string_view source;
+        if (!native_string_view(output, &source, 262144) || source.empty()) return;
+        const std::string original(source);
+        NativeUnitIdentity snapshot;
+        std::array<int32_t, 7> indices;
+        std::optional<std::string> translated;
+        // Creator of and unit+0xa08's language_name are separate draws.
+        // Capture the selected artifact roots directly, including title-only
+        // names that do not follow the two-root personal surname grammar.
+        if (capture_native_history_name(g_native_unit_identity_hooks.base,
+                reinterpret_cast<uintptr_t>(name), snapshot.name, &indices)) {
+            snapshot.native_name_words_valid = capture_native_unit_identity_name_words(
+                reinterpret_cast<uintptr_t>(name), snapshot.name,
+                snapshot.native_name_words, &indices);
+            snapshot.native_name = original;
+            snapshot.form = NativeUnitIdentityForm::NameOnly;
+            translated = g_overlay.translate_native_unit_identity(snapshot);
+        }
+        remember_native_unit_identity(reinterpret_cast<uintptr_t>(output), original,
+            translated ? *translated : native_text_to_utf8(original),
+            reinterpret_cast<uintptr_t>(name), false, true);
+    } catch (...) {
+        // Never unwind across the sheet's native name generator.
+    }
+}
+
 // The reference formatter does not call any of the five ordinary unit
 // formatters. Capture its append boundaries, where DF has already chosen the
 // complete profession, caste, curse, visible name and office territory.
@@ -579,6 +610,9 @@ static bool install_native_unit_identity_hooks() {
         {0x15c18c, 0xa946e0,
             reinterpret_cast<const void *>(&capture_native_unit_header_english_name),
             {0x4c,0x8b,0x8c,0x24,0xb0,0x00,0x00,0x00}},
+        // The artifact name follows the separately drawn Creator of prefix.
+        {0x15d415, 0xa94030,
+            reinterpret_cast<const void *>(&capture_native_unit_header_creation_name)},
         {0x1330475, 0xa946e0,
             reinterpret_cast<const void *>(&capture_native_unit_identity_english_name)},
         {0x133047c, 0xa94030,

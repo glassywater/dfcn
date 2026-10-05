@@ -1,5 +1,5 @@
-// These associations are emitted only by unit formatters after reading a
-// unit's semantic fields. Text equality binds a capture; it never determines
+// These associations are emitted by unit formatters and header name generators
+// after reading their semantic fields. Text equality binds a capture; it never determines
 // whether a field is a nickname, profession, or species.
 static std::string native_text_to_utf8(std::string_view input);
 struct NativeUnitIdentitySource {

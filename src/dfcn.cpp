@@ -9813,14 +9813,17 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             groups[count++] = std::move(group);
         }
         if (!count) return std::nullopt;
-        // Keep the existing single-group choice, including its compound POS
-        // ranking, unchanged. Multi-group names must share one language over
-        // the whole name, even when an individual root has several matches.
+        // Keep the compound POS ranking for surname-shaped groups. Artifacts
+        // may instead contain only the title slots 2..5, with no surname.
+        // Multi-group names must share one language over the whole name.
         if (count == 1) {
             if (const auto compound = resolve_native_compound_word(groups[0]))
                 return compound->translated;
             if (const auto word = resolve_native_given_word(groups[0]))
                 return word->translated;
+            if (context == ProceduralFragmentContext::native_item_name)
+                if (const auto title = resolve_native_name_group(groups[0], 0xff, 4))
+                    return title->translated;
             return std::nullopt;
         }
         for (unsigned language = 0; language < 8; ++language) {

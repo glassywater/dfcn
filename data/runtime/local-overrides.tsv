@@ -5924,10 +5924,10 @@ You are distracted by unmet needs.  View your status for more information.	需�
 
 # Character header: the native renderer draws each relation prefix and its
 # object separately on one line (data/extracted/character-header-native-sources.tsv).
-# A creation name can be empty in the original native branch: its complete
-# bare caption means 创作：未命名. Named creations retain the complete relation
-# grammar in professions.toml.
-Creator of	创作：未命名	wli
+# The prefix alone does not establish whether the creation has a name.
+# Keep it neutral when the separate name draw is not composed with the prefix.
+# Complete named relations retain the grammar in professions.toml.
+Creator of	创作者：	wli
 Pet of	宠物主人：	wli
 Somebody	某人	wl
 
