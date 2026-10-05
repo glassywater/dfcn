@@ -113,6 +113,7 @@ static std::vector<SDL_Rect> native_vertical_scrollbar_spans(
     const graphicst &gps, const SDL_Rect &panel);
 static bool capture_native_instrument_names(
     std::vector<std::pair<std::string, std::string>> &names);
+static uint64_t native_overview_event_source_revision();
 static std::shared_ptr<const NativeHistoryDocument> native_overview_event_source(
     std::string_view source);
 
@@ -6424,9 +6425,18 @@ bool Overlay::load_compositional_rules() {
             // and preserves their authored spelling. Latin letters inside a
             // valid nickname must not reject the entire material/deposit.
             if (kind == "person") return translate_legends_actor(*native);
-            if (auto target = complete(exact_literal_translation(*native))) return target;
+            if (kind == "topic") {
+                // Native knowledge references use this finite academic
+                // vocabulary, including articles such as "the ampoule".
+                // Resolve it before generic UI terms or title article removal;
+                // "exhaustion" and "powers" retain their mathematical senses.
+                if (auto target = complete(RULESETS.compose_bound_rule(
+                        "::activities::topic", lower(normalize_utterance(*native)))))
+                    return target;
+            }
             if (kind == "book" || kind == "form")
                 return complete(translate_legends_book(*native));
+            if (auto target = complete(exact_literal_translation(*native))) return target;
             if (kind == "topic") {
                 if (auto target = complete(translate_legends_term(*native))) return target;
                 return complete(translate_legends_book(*native));
@@ -9059,6 +9069,14 @@ std::optional<std::string> Overlay::translate_skill_name(
     // wording in the scoped glossary, not a global removal of Chinese 者.
     const std::string name = trim(std::string(source));
     if (const auto skill = exact_literal_translation("Skill name: " + name)) return skill;
+    if (!require_title) {
+        // The event formatter's native skill catalog includes ability aliases
+        // such as Optics Engineer. Share its complete scoped vocabulary before
+        // a generic UI literal can turn that ability into a profession.
+        std::vector<size_t> origins;
+        if (const auto skill = RULESETS.translate_with_origins(native_text_to_utf8(name),
+                "::psychology::event::things::skill", origins)) return skill;
+    }
     std::optional<std::string> role;
     if (require_title) {
         // A rating alone does not prove a skill: Great Lion / Great Hall
@@ -22050,6 +22068,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
         }
         retain_native_text_cells(context, map_text_cells);
         mask_native_knowledge(context);
+#include "adventure_conversation_portrait.inc"
         enum class ChoiceKind { Action, Conversation, NativeSite };
         struct ChoicePanel {
             SDL_Rect bounds;
@@ -22153,6 +22172,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 struct ChooserTextCache {
                     const Overlay *owner = nullptr;
                     fs::file_time_type mapping{}, names{}, instruments{};
+                    uint64_t event_source_revision = 0;
                     std::shared_ptr<const ConversationChoices> snapshot;
                     std::vector<NativeChoiceText> records;
                     std::map<std::string, std::vector<std::pair<size_t, size_t>>> lines;
@@ -22162,14 +22182,17 @@ std::vector<Match> Overlay::find_matches(int only_y,
                     std::unordered_map<std::string, std::optional<std::string>> targets;
                 };
                 auto &cache = reloadable_thread_state<ChooserTextCache, struct ConversationChooserCacheTag>();
+                const uint64_t event_source_revision = native_overview_event_source_revision();
                 if (cache.owner != this || cache.mapping != mapping_mtime_ ||
                     cache.names != name_editor_mtime_ ||
-                    cache.instruments != instrument_translations_mtime_) {
+                    cache.instruments != instrument_translations_mtime_ ||
+                    cache.event_source_revision != event_source_revision) {
                     cache = {};
                     cache.owner = this;
                     cache.mapping = mapping_mtime_;
                     cache.names = name_editor_mtime_;
                     cache.instruments = instrument_translations_mtime_;
+                    cache.event_source_revision = event_source_revision;
                 }
                 if (cache.snapshot != native_conversation_choices) {
                     cache.snapshot = native_conversation_choices;

@@ -454,6 +454,10 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
     };
     (void)story;
 #include "history_semantics_collections.inc"
+    if (event.fields.contains("conversation_collection")) {
+        const auto title = collection_title(number("conversation_collection"));
+        return title ? apply("Conversation event collection: {s}", {*title}) : std::nullopt;
+    }
     if (event.fields.contains("overview_collection")) {
         const auto title = collection_title(number("overview_collection"));
         return title ? apply("Native overview collection memory {s}", {*title}) : std::nullopt;

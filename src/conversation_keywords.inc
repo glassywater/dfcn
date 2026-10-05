@@ -14,6 +14,53 @@ std::optional<std::string> Overlay::translate_conversation_choice(
     // These are complete typed noun/event parsers. None may replace just a
     // convenient prefix of an unrecognised conversational sentence.
     if (const auto target = exact_literal_translation(source); complete(target)) return target;
+    // Native talk_choice types 66..70 (failed, breaking point, major, minor,
+    // negated) use these complete caption families over their emotion switches.
+    // The full branch/literal/append sources for both configured PE images are
+    // in data/extracted/adventure-conversation-emotions. Every constructor
+    // appends the same complete experience as thoughts and recollections.
+    // Keep its reviewed head authoritative, then consume the entire suffix
+    // through that shared event grammar, including skills and named creatures.
+    // An unknown event cannot silently disappear behind a translated head.
+    const std::string_view caption(source);
+    const bool emotion_caption = caption.starts_with("State feelings of ") ||
+        caption.starts_with("State feelings, ") ||
+        caption.starts_with("State minor feeling of ") ||
+        caption.starts_with("Verbally struggle against ") ||
+        caption.starts_with("Verbally struggle, ") ||
+        caption.starts_with("Fail the struggle against ") ||
+        caption.starts_with("Fail the internal struggle, ") ||
+        caption.starts_with("Dismiss minor feeling of ") ||
+        caption.starts_with("Dismiss minor doubts ") ||
+        caption.starts_with("Dismiss minor existential crisis ") ||
+        caption.starts_with("Acknowledge lack of ");
+    if (emotion_caption) {
+        for (size_t at = caption.rfind(' '); at != std::string_view::npos;
+                at = at == 0 ? std::string_view::npos : caption.rfind(' ', at - 1)) {
+            const auto feeling = exact_literal_translation(caption.substr(0, at));
+            if (!complete(feeling)) continue;
+            const auto event_source = caption.substr(at + 1);
+            // Circumstance 233 names a typed history-event collection. Its
+            // eighteen title families retain native participants and object
+            // roles at the constructor's own event-formatter call sites.
+            if (event_source.starts_with("during ")) {
+                if (const auto native = native_overview_event_source(event_source)) {
+                    if (const auto pieces = translate_history_event(*native)) {
+                        std::string event;
+                        for (const auto &piece : *pieces) event += piece.target;
+                        if (translation_complete_with_native_nicknames(event, event_source))
+                            return event + "，" + *feeling;
+                    }
+                }
+            }
+            std::vector<size_t> origins;
+            const auto event = RULESETS.translate_with_origins(
+                native_text_to_utf8(event_source), "::psychology::event", origins);
+            if (translation_complete_with_native_nicknames(event, event_source))
+                return *event + "，" + *feeling;
+        }
+        return std::nullopt;
+    }
     if (const auto target = translate_creature_label(source); complete(target)) return target;
     if (const auto target = translate_item_description_term(source); complete(target)) return target;
     if (const auto target = translate_legends_event(source); complete(target)) return target;
@@ -491,8 +538,118 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
             if (word_ends[end] != std::string::npos)
                 add(begin, word_ends[end], lexicon->fixed_targets[value], 30);
         });
-    // A complete fixed row never enters caption or RAW name parsing.
-    if (auto target = solve()) return remember(std::move(target));
+    const auto emotion_caption = [](std::string_view caption) {
+        return caption.starts_with("State feelings of ") ||
+            caption.starts_with("State feelings, ") ||
+            caption.starts_with("State minor feeling of ") ||
+            caption.starts_with("Verbally struggle against ") ||
+            caption.starts_with("Verbally struggle, ") ||
+            caption.starts_with("Fail the struggle against ") ||
+            caption.starts_with("Fail the internal struggle, ") ||
+            caption.starts_with("Dismiss minor feeling of ") ||
+            caption.starts_with("Dismiss minor doubts") ||
+            caption.starts_with("Dismiss minor existential crisis") ||
+            caption.starts_with("Acknowledge lack of ");
+    };
+    auto fixed_target = solve();
+    const bool bound_emotion = snapshot && std::any_of(snapshot->begin(), snapshot->end(),
+        [&](const auto &choice) {
+            return lower(normalize_utterance(choice.second)) == source &&
+                emotion_caption(normalize_utterance(choice.first));
+        });
+    // Ordinary complete fixed rows keep their reviewed vocabulary. An
+    // emotional choice must first try its bound caption: its native `great`
+    // denotes intensity, while a different conversation uses `great` = good.
+    if (fixed_target && !bound_emotion) return remember(std::move(fixed_target));
+
+    // The chooser snapshot binds this exact native keyword vector to the
+    // complete authored caption. Its event, skill, item and personal-name
+    // fields are already typed by the caption's shared grammar. Use that
+    // complete translation to represent its deduplicated search words once;
+    // never reinterpret an event word as an unrelated RAW name. Keywords
+    // outside the caption still need the scoped fixed vocabulary above.
+    std::optional<std::string> bound_target;
+    bool bound_emotion_translated = false, bound_ambiguous = false;
+    if (snapshot) for (const auto &[raw_caption, keywords] : *snapshot) {
+        if (lower(normalize_utterance(keywords)) != source) continue;
+        const std::string caption = normalize_utterance(raw_caption);
+        auto target = translate_conversation_choice(caption);
+        // A typed complete caption may preserve a player's native nickname.
+        // Only its exact same-source quoted spelling grants that exemption;
+        // fixed keyword edges still use the strict no-ASCII predicate.
+        if (!translation_complete_with_native_nicknames(target, caption) && gps_) {
+            std::vector<int> source_colors(caption.size(), 0xffffff), target_colors;
+            target = translate_help_paragraph(caption, source_colors, target_colors, true);
+        }
+        if (!translation_complete_with_native_nicknames(target, caption)) continue;
+
+        // This is the actual native search fold followed by its a-z word
+        // boundaries, including CP437 ligatures and accent collisions. The
+        // snapshot retains the original spelling needed by typed translation.
+        const std::string folded_caption = ConversationKeywordLexicon::search_spelling(caption);
+        std::unordered_set<std::string_view> caption_words;
+        for (size_t at = 0; at < folded_caption.size();) {
+            const size_t next = folded_caption.find(' ', at);
+            const size_t end = next == std::string::npos ? folded_caption.size() : next;
+            caption_words.emplace(folded_caption.data() + at, end - at);
+            at = end == folded_caption.size() ? end : end + 1;
+        }
+        std::vector<bool> owned(words.size());
+        bool represented = false;
+        for (size_t at = 0; at < words.size(); ++at) {
+            owned[at] = caption_words.contains(words[at]);
+            represented = represented || owned[at];
+        }
+        if (!represented) continue;
+
+        // A path covers every actual keyword. Caption-owned words can be
+        // represented by the whole translation; all other words must form
+        // complete fixed entries without crossing a caption field boundary.
+        std::vector<size_t> next_word(words.size() + 1, std::string::npos);
+        std::vector<const Edge *> fixed_path(words.size());
+        next_word.back() = words.size();
+        for (size_t begin = words.size(); begin-- > 0;) {
+            if (owned[begin]) {
+                if (next_word[begin + 1] != std::string::npos)
+                    next_word[begin] = begin + 1;
+                continue;
+            }
+            for (const auto &edge : edges[begin]) {
+                if (next_word[edge.end] == std::string::npos ||
+                    std::any_of(owned.begin() + begin, owned.begin() + edge.end,
+                        [](bool value) { return value; })) continue;
+                if (!fixed_path[begin] || edge.priority > fixed_path[begin]->priority ||
+                    (edge.priority == fixed_path[begin]->priority && edge.end > fixed_path[begin]->end)) {
+                    fixed_path[begin] = &edge;
+                    next_word[begin] = edge.end;
+                }
+            }
+        }
+        if (next_word.front() == std::string::npos) continue;
+        std::string result;
+        bool caption_emitted = false;
+        for (size_t at = 0; at < words.size(); at = next_word[at]) {
+            const std::string *part = nullptr;
+            if (owned[at]) {
+                if (!caption_emitted) part = &*target;
+                caption_emitted = true;
+            } else part = &fixed_path[at]->target;
+            if (!part) continue;
+            if (!result.empty()) result.push_back(' ');
+            result += *part;
+        }
+        // Equal keyword vectors can belong to distinct native choices. A
+        // differing semantic result cannot be chosen by vector iteration order.
+        if (bound_target && *bound_target != result) bound_ambiguous = true;
+        else if (!bound_target) bound_target = std::move(result);
+        bound_emotion_translated = bound_emotion_translated || emotion_caption(caption);
+    }
+    if (bound_target && (!fixed_target || bound_emotion_translated)) {
+        if (bound_ambiguous) return remember(std::nullopt);
+        return remember(std::move(bound_target));
+    }
+    if (fixed_target) return remember(std::move(fixed_target));
+
     size_t fixed_prefix_end = 0;
     while (fixed_prefix_end < words.size()) {
         size_t next = fixed_prefix_end;

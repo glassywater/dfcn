@@ -8,6 +8,7 @@ using NativeUnitIdentityFormatFn = void (*)(void *, NativeString *, bool);
 using NativeUnitIdentityNameOnlyFn = void (*)(void *, NativeString *);
 using NativeUnitIdentityNameFn = void (*)(const void *, NativeString *);
 using NativeUnitIdentityEnglishNameFn = void (*)(const void *, NativeString *, bool, bool);
+using NativeUnitIdentityCapitalizeFn = void (*)(NativeString *);
 
 struct NativeUnitIdentityCall {
     uintptr_t unit = 0;
@@ -46,6 +47,7 @@ struct NativeUnitIdentityHooks {
     NativeCallHook names;
     NativeUnitIdentityNameFn name = nullptr;
     NativeUnitIdentityEnglishNameFn english_name = nullptr;
+    NativeUnitIdentityCapitalizeFn capitalize = nullptr;
     uintptr_t base = 0;
 };
 static NativeUnitIdentityHooks g_native_unit_identity_hooks;
@@ -252,6 +254,29 @@ static void capture_native_unit_reference(void *unit, NativeString *output) {
         callback.call_native([&] { original(unit, output); });
     }
     finish_native_unit_reference_call(call, output);
+}
+
+static void capture_native_conversation_portrait_capitalization(NativeString *output) {
+    NativeInputCallbackScope callback;
+    std::optional<NativeUnitIdentitySource> identity;
+    try {
+        std::string_view source;
+        if (native_string_view(output, &source, 262144))
+            identity = native_unit_identity_source_binding(source,
+                reinterpret_cast<uintptr_t>(output));
+    } catch (...) {}
+    callback.call_native([&] { g_native_unit_identity_hooks.capitalize(output); });
+    if (!identity) return;
+    try {
+        std::string_view source;
+        if (!native_string_view(output, &source, 262144) || source.empty()) return;
+        // This exact caller capitalizes 1331500's same NativeString before
+        // drawing it. Keep its typed identity even when no info rows follow.
+        const std::string target = identity->target == native_text_to_utf8(identity->source)
+            ? native_text_to_utf8(source) : identity->target;
+        remember_native_unit_identity(reinterpret_cast<uintptr_t>(output), source, target,
+            identity->unit_owner, identity->english_name, identity->character_header);
+    } catch (...) {}
 }
 
 // 132e430 has five native arguments. Its fifth stack argument decides whether
@@ -484,6 +509,7 @@ static void uninstall_native_unit_identity_hooks() {
     if (!hooks.names.uninstall("Native unit identity name source restore")) return;
     hooks.name = nullptr;
     hooks.english_name = nullptr;
+    hooks.capitalize = nullptr;
     hooks.base = 0;
 }
 
@@ -500,6 +526,8 @@ static bool install_native_unit_identity_hooks() {
     hooks.name = reinterpret_cast<NativeUnitIdentityNameFn>(native_pe_address(hooks.base, 0xa94030));
     hooks.english_name = reinterpret_cast<NativeUnitIdentityEnglishNameFn>(
         native_pe_address(hooks.base, 0xa946e0));
+    hooks.capitalize = reinterpret_cast<NativeUnitIdentityCapitalizeFn>(
+        native_pe_address(hooks.base, 0x52d650));
     struct InstallGuard {
         bool committed = false;
         ~InstallGuard() { if (!committed) uninstall_native_unit_identity_hooks(); }
@@ -539,6 +567,10 @@ static bool install_native_unit_identity_hooks() {
     // and sheet header. Call sites leave other consumers' entry signatures
     // intact and preserve disguised/linked identity selection by the game.
     std::vector<NativeCall> names{
+        // Conversation portrait: capitalize the same captured reference.
+        // Classic CALL 0x866512 is mapped with this real supplier site.
+        {0x868c92, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
         // Sheet header: output [rsp+0x3da0] goes unchanged to addst at
         // 0x15c1f8. The quotes at 0x15c1de/0x15c209 are separate glyphs.
         // Caller [rsp+0xa8] is its unit. CALL places the return address

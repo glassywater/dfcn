@@ -1,0 +1,1815 @@
+edition	image	function	instruction	kind	operand	source
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c4da	cstring	0x14172a788	while in 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c4ef	cstring	0x1415ee048	conflict
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c504	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c519	cstring	0x14172a840	experiencing trauma
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c52e	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c543	cstring	0x14172a858	seeing 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c5a7	cstring	0x1415e8e48	the 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c5e2	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c644	cstring	0x14172a860	 die
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c659	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c6a0	cstring	0x14172a860	 die
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c6af	cstring	0x1415ed578	somebody
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c6c1	cstring	0x14172a860	 die
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c6d6	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c6eb	cstring	0x14172a858	seeing 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c74f	cstring	0x1415e8e48	the 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c78a	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c7e2	cstring	0x14172a7f0	 dead body
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c7ff	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c836	cstring	0x1415e9260	's
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c84f	cstring	0x14172a7f0	 dead body
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c866	cstring	0x14172a868	somebody's
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c872	cstring	0x14172a7f0	 dead body
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c88f	cstring	0x14172a7fc	at 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c89e	cstring	0x14172a800	the unexpected death of somebody
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c8bb	cstring	0x14172a7fc	at 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c8ca	cstring	0x14172a828	somebody's death
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c8e7	cstring	0x14172a8d8	while 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c8f6	cstring	0x14172a8e0	killing somebody
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c913	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c922	cstring	0x14172a8f8	being reunited with a loved one
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c93f	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c94e	cstring	0x14172a918	being caught sneaking
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c96b	cstring	0x14163b84c	when 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c97a	cstring	0x14172a878	joining an existing conflict
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c997	cstring	0x14172a8d8	while 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c9db	cstring	0x14172a898	giving a sermon
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2c9ef	cstring	0x141675778	performing
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ca0c	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ca50	cstring	0x14172a8a8	attending a sermon
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ca64	cstring	0x14172a8c0	watching a performance
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ca81	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ca90	cstring	0x14172a968	producing a masterwork
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2caad	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cabc	cstring	0x14172a980	creating an artifact
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cad9	cstring	0x14172a998	upon 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cae8	cstring	0x14172a9a0	improving 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cb3a	cstring	0x14172a998	upon 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cb49	cstring	0x14172a930	mastering 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cb9b	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cbaa	cstring	0x14172a940	a break up
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cbc7	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cbd6	cstring	0x14172a950	getting divorced
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cbf7	cstring	0x14172a964	as 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cc18	cstring	0x14172aa10	you were
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cc52	cstring	0x14166b404	 was
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cc6b	cstring	0x14172aa20	 caught up in 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cc7a	cstring	0x14172aa30	a new romance
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cc97	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cca6	cstring	0x14172aa40	realizing 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cd13	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cd22	cstring	0x14172a9b0	playing make believe
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cd3f	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cd4e	cstring	0x14172a9c8	playing with 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cd72	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cda4	cstring	0x1415e8cf8	a toy
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cdc1	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cdd0	cstring	0x14172a9d8	becoming a parent
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cde4	cstring	0x14172a9f0	being near to a conflict
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ce01	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ce10	cstring	0x14172aab8	an agreement was cancelled
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ce2d	cstring	0x14172a998	upon 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ce3c	cstring	0x14172aad8	joining a traveling group
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ce59	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ce68	cstring	0x14172aaf8	a site was controlled
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ce85	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ce94	cstring	0x14172ab10	a tribute cancellation
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ceb1	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cec0	cstring	0x14172aa50	an incident
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cedd	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ceec	cstring	0x14172aa60	hearing a rumor
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cf09	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cf18	cstring	0x14172aa70	leaving a performance troupe
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cf35	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cf44	cstring	0x14172aa90	being removed from a performance troupe
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cf61	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cf70	cstring	0x14172abc0	being removed from a military group
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cf84	cstring	0x14172abe8	when a stranger advanced with a weapon
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cfa1	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cfb0	cstring	0x14172ac10	seeing a stranger sneaking around
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cfcd	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2cfdc	cstring	0x14172ac38	witnessing a night creature drinking blood
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d01e	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d02d	cstring	0x14172ab28	petitioning for citizenship
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d04a	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d059	cstring	0x14172ab48	bringing up job scarcity in a meeting
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d076	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d085	cstring	0x14172ab70	making suggestions about work allocations
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d0a2	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d0b1	cstring	0x14172aba0	requesting weapon production
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d0ce	cstring	0x14172a8d8	while 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d0dd	cstring	0x14172ad18	yelling at a priest
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d0fa	cstring	0x14172a8d8	while 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d109	cstring	0x14172ad30	crying on a priest
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d126	cstring	0x14172a8d8	while 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d135	cstring	0x14172ad48	yelling at somebody in charge
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d152	cstring	0x14172a8d8	while 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d161	cstring	0x14172ad68	crying on somebody in charge
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d17e	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d18d	cstring	0x14172ac68	telling somebody about being trapped here
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d1cf	cstring	0x14172a8d8	while 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d1de	cstring	0x14172acc8	being cried on by an unhappy worshipper
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d1fb	cstring	0x14172a8d8	while 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d20a	cstring	0x14172ac98	being yelled at by an unhappy worshipper
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d227	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d236	cstring	0x141729f80	hearing somebody was being prevented from leaving
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d253	cstring	0x14172a8d8	while 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d262	cstring	0x141729f58	being cried on by an unhappy citizen
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d27f	cstring	0x14172a8d8	while 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d28e	cstring	0x14172acf0	being yelled at by an unhappy citizen
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d2ab	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d2c0	cstring	0x141729fb8	viewing 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d340	cstring	0x14166cb10	a piece
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d34f	cstring	0x14166cb18	 on display
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d356	cstring	0x141729fc8	 in a personal museum
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d384	cstring	0x141729f28	near 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d39e	cstring	0x141602db4	a
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d3c1	cstring	0x1415ee960	your
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d419	cstring	0x141729f30	 own
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d431	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d475	cstring	0x14172a050	completely sublime
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d487	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d4a5	cstring	0x14172a068	tastefully arranged 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d4e4	cstring	0x14172a040	wonderful
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d4ed	cstring	0x141729f48	splendid
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d4f6	cstring	0x141729f38	very fine
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d502	cstring	0x141668518	fine
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d517	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d526	cstring	0x14172a080	losing a pet
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d543	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d552	cstring	0x141729fe0	throwing something
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d56f	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d57e	cstring	0x141729ff8	being released from confinement
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d59b	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d5aa	cstring	0x14172a018	a miscarriage
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d5c7	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d5e8	cstring	0x1415ee960	your
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d5f7	cstring	0x14172a028	 spouse's miscarriage
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d63e	cstring	0x14172a028	 spouse's miscarriage
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d65b	cstring	0x14172a110	to be 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d66a	cstring	0x14172a118	wearing old clothing
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d687	cstring	0x14172a110	to be 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d696	cstring	0x14172a130	wearing tattered clothing
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d6b3	cstring	0x14172a150	to have 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d6c2	cstring	0x14172a090	clothes rot off of 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d6e3	cstring	0x1415ee960	your
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d6f2	cstring	0x14172a0a4	 body
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d739	cstring	0x14172a0a4	 body
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d77a	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d789	cstring	0x14172a0b0	being tormented in nightmares by a dead pet
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d7a6	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d7b5	cstring	0x14172a0e0	being tormented in nightmares by a dead spouse
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d7d2	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d7e1	cstring	0x14172a200	being tormented in nightmares by a dead lover
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d7fe	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d80d	cstring	0x14172a230	being tormented in nightmares by a dead sibling
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d82a	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d839	cstring	0x14172a260	being tormented in nightmares by 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d85a	cstring	0x1415ee960	your
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d869	cstring	0x14172a288	 own dead mother
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d8b0	cstring	0x14172a288	 own dead mother
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d8cd	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d8dc	cstring	0x14172a260	being tormented in nightmares by 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d8fd	cstring	0x1415ee960	your
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d90c	cstring	0x14172a160	 own dead father
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d953	cstring	0x14172a160	 own dead father
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d970	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d97f	cstring	0x14172a260	being tormented in nightmares by 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d9a0	cstring	0x1415ee960	your
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d9af	cstring	0x14172a178	 own dead child
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2d9f6	cstring	0x14172a178	 own dead child
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2da13	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2da22	cstring	0x14172a190	being tormented in nightmares by a dead animal training partner
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2da3f	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2da4e	cstring	0x14172a1d0	being tormented in nightmares by a dead friend
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2da6b	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2da7a	cstring	0x14172a310	being tormented in nightmares by a dead and still annoying acquaintance
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2da97	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2daa6	cstring	0x14172a358	being tormented in nightmares by the dead
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dadd	cstring	0x14166c7c8	tortured
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dae6	cstring	0x14166c3c8	possessed
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2daef	cstring	0x14166c3b8	tormented
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2daf8	cstring	0x14166c400	haunted
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2db35	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2db44	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2db5f	cstring	0x14172a390	 by a dead pet
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2db74	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2db83	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2db9e	cstring	0x14172a2a0	 by a dead spouse
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dbb3	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dbc2	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dbdd	cstring	0x14172a2b8	 by a dead lover
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dbf2	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dc01	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dc1c	cstring	0x14172a2d0	 by a dead sibling
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dc31	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dc40	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dc5b	cstring	0x1415eda08	 by 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dc7c	cstring	0x1415ee960	your
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dc8b	cstring	0x14172a288	 own dead mother
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dcca	cstring	0x14172a288	 own dead mother
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dcdf	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dcee	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dd09	cstring	0x1415eda08	 by 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dd2a	cstring	0x1415ee960	your
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dd39	cstring	0x14172a160	 own dead father
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dd78	cstring	0x14172a160	 own dead father
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dd8d	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dd9c	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ddb7	cstring	0x1415eda08	 by 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ddd8	cstring	0x1415ee960	your
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dde7	cstring	0x14172a178	 own dead child
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2de26	cstring	0x14172a178	 own dead child
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2de3b	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2de4a	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2de65	cstring	0x14172a2e8	 by a dead animal training partner
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2de7a	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2de89	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dea4	cstring	0x14172a450	 by a dead friend
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2deb6	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dec5	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dee0	cstring	0x14172a468	 by a dead and still annoying acquaintance
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2def2	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2df01	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2df1c	cstring	0x14172a498	 by the dead
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2df43	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2df52	cstring	0x14172a4a8	combat drills
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2df6f	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2df7e	cstring	0x14172a3a0	practicing at the archery target
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2df9b	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dfaa	cstring	0x14172a3c8	a sparring session
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dfec	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2dffb	cstring	0x14172a3e0	being unable to petition for citizenship
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e018	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e027	cstring	0x14172a410	being unable to find somebody to complain to about job scarcity
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e044	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e053	cstring	0x14172a560	being unable to make suggestions about work allocations
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e070	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e07f	cstring	0x14172a598	being unable to request weapon production
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e09c	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e0ab	cstring	0x14172a5c8	being unable to find a priest to complain to
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e0c8	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e0d7	cstring	0x14172a5f8	being unable to find a priest to cry on
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e0f4	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e103	cstring	0x14172a4b8	being unable to find somebody in charge to yell at
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e120	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e12f	cstring	0x14172a4f0	being unable to find somebody in charge to cry on
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e14c	cstring	0x1416d80e8	during 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e15b	cstring	0x14172a528	long patrol duty
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e178	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e187	cstring	0x14172a540	being nauseated by the sun
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e1a4	cstring	0x14172a7fc	at 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e1b3	cstring	0x14172a6c0	being out in the sunshine again
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e1d1	cstring	0x14163b84c	when 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e1da	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e1e6	cstring	0x1416d55fc	drowsy
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e204	cstring	0x14163b84c	when 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e20d	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e219	cstring	0x14172a6e0	utterly sleep-deprived
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e237	cstring	0x14163b84c	when 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e240	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e24c	cstring	0x1416d55b0	thirsty
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e26a	cstring	0x14163b84c	when 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e273	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e27f	cstring	0x1416d55d0	dehydrated
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e29d	cstring	0x14163b84c	when 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e2a6	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e2b2	cstring	0x1416d55c4	hungry
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e2d0	cstring	0x14163b84c	when 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e2d9	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e2e5	cstring	0x1416d5578	starving
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e31f	cstring	0x1417256d0	due to 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e356	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e365	cstring	0x14172a6f8	suffering a major injury
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e382	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e391	cstring	0x14172a718	suffering a minor injury
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e3c7	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e3d6	cstring	0x14172a670	loud noises made it impossible to sleep
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e3f3	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e402	cstring	0x14172a640	being disturbed during sleep by loud noises
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e41f	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e42e	cstring	0x14172a620	sleeping uneasily due to noise
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e44b	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e45a	cstring	0x14172a698	being able to rest and recuperate
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e478	cstring	0x14163b84c	when 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e481	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e48d	cstring	0x1416d5518	caught in freakish weather
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e4ab	cstring	0x14163b84c	when 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e4b4	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e4c0	cstring	0x14172b480	caught in the rain
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e4de	cstring	0x14163b84c	when 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e4e7	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e4f3	cstring	0x14172b498	caught in a snow storm
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e510	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e51f	cstring	0x14172b4b0	retching on a miasma
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e53c	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e54b	cstring	0x14172b4c8	choking on smoke underground
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e55f	cstring	0x14172b418	being near to a waterfall
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e57c	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e58b	cstring	0x14172b438	choking on dust underground
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e5a8	cstring	0x14172b458	considering 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e5b7	cstring	0x14172b468	the state of demands
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e5cb	cstring	0x14172b5a0	that a criminal could not be properly punished
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e5e9	cstring	0x14172a150	to have 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e5f2	cstring	0x14172b5d0	having
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e610	cstring	0x1415ee960	your
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e625	cstring	0x14172b5d8	 punishment reduced
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e66a	cstring	0x14172b5d8	 punishment reduced
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e680	cstring	0x14172a110	to be 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e689	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e69b	cstring	0x1416d54a8	elected
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e6b1	cstring	0x14172a110	to be 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e6ba	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e6cc	cstring	0x14172b5f0	re-elected
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e6e1	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e6f6	cstring	0x14172b4e8	the establishment of a temple for 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e728	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e73d	cstring	0x14172b510	the acceptance of a petition for a temple for 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e74f	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e764	cstring	0x14172b540	the establishment of a guildhall for 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e776	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e78b	cstring	0x14172b568	the acceptance of a petition for a guildhall for 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e7a0	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e7af	cstring	0x14172b668	being granted residency
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e7c4	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e7d3	cstring	0x14172b680	being granted citizenship
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e7f0	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e7ff	cstring	0x14172b6a0	being denied residency
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e81c	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e82b	cstring	0x14172b6b8	the rejection of a petition for a temple for 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e84b	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e857	cstring	0x14172b600	a petition for a temple for 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e87b	cstring	0x14172b620	 was ignored
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e88f	cstring	0x14172b600	a petition for a temple for 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e8b0	cstring	0x14172b630	 being ignored
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e8d0	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e8dc	cstring	0x14172b640	an agreement to construct a temple for 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e900	cstring	0x14172b778	 was abandoned
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e914	cstring	0x14172b640	an agreement to construct a temple for 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e935	cstring	0x14172b788	 being abandoned
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e952	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e961	cstring	0x14172b7a0	the rejection of a petition for a guildhall for 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e981	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e98d	cstring	0x14172b7d8	a petition for a guildhall for 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e999	cstring	0x14172b7d8	a petition for a guildhall for 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e9b1	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e9bd	cstring	0x14172b6e8	an agreement to construct a guildhall for 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e9c9	cstring	0x14172b6e8	an agreement to construct a guildhall for 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2e9ea	cstring	0x14172b788	 being abandoned
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ea07	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ea16	cstring	0x14172b718	being denied citizenship
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ea2a	cstring	0x14172b738	having a request approved
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ea3e	cstring	0x14172b758	having a request ignored
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ea52	cstring	0x14172b888	that nobody could be punished for a failure
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ea70	cstring	0x14172a150	to have 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ea79	cstring	0x14172b8b8	having 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ea97	cstring	0x1415ee960	your
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2eaa6	cstring	0x14172b8c0	 punishment delayed
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2eaed	cstring	0x14172b8c0	 punishment delayed
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2eb0a	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2eb19	cstring	0x14172b8d8	the delayed punishment of a criminal
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2eb36	cstring	0x14172b458	considering 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2eb45	cstring	0x14172b7f8	the scarcity of cages and chains
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2eb59	cstring	0x14172b820	having a mandate ignored
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2eb6d	cstring	0x14172b840	having a mandate deadline missed
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2eb8a	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2eb99	cstring	0x14172b868	the lack of work last season
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ebb6	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ebc5	cstring	0x14172b980	smashing up a building
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ebe2	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ebf1	cstring	0x14172b998	toppling something over
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ec0e	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ec1d	cstring	0x14172b9b0	receiving a higher rank of nobility
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ec3a	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ec49	cstring	0x14172b9d8	entering the nobility
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ec66	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ec75	cstring	0x14172b900	being knocked out during a cave-in
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ec93	cstring	0x14172a150	to have 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ec9c	cstring	0x14172b8b8	having 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2eca8	cstring	0x14172b928	a mandate deadline met
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ecc6	cstring	0x14163b84c	when 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2eccf	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ecdb	cstring	0x14172b940	uncovered
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ecf9	cstring	0x14172a150	to have 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ed02	cstring	0x14172b8b8	having 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ed0e	cstring	0x1416d5e30	no shirt
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ed2c	cstring	0x14172a150	to have 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ed35	cstring	0x14172b8b8	having 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ed41	cstring	0x1416d5e20	no shoes
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ed5e	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ed6d	cstring	0x14172b950	being forced to eat a treasured pet to survive
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ed8a	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ed99	cstring	0x14172ba60	being forced to eat a beloved creature to survive
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2edb6	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2edc5	cstring	0x14172ba98	being forced to eat vermin to survive
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ede2	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2edf7	cstring	0x14172bac0	starting a fist fight
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ee0c	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ee21	cstring	0x14172bad8	punishing somebody with a beating
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ee36	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ee4b	cstring	0x14172b9f0	being beaten
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ee60	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ee75	cstring	0x14172ba00	beating somebody with a hammer
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ee8a	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ee9f	cstring	0x14172ba20	being beaten with a hammer
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2eeb4	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2eec3	cstring	0x14172ba40	being unable to find a hammer
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2eed7	cstring	0x14172bb58	eating the same old food
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2eef4	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ef03	cstring	0x14172bb78	eating rotten food
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ef20	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ef2f	cstring	0x14172bb90	putting on a
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ef5f	cstring	0x14166d7c8	 truly splendid
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ef6b	cstring	0x1415f71ec	 item
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ef7f	cstring	0x14166d7f0	n exceptional
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ef8b	cstring	0x1415f71ec	 item
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ef9f	cstring	0x14166d7e0	 superior
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2efae	cstring	0x1415f71ec	 item
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2efc2	cstring	0x14166d810	 finely-crafted
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2efd1	cstring	0x1415f71ec	 item
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2efe5	cstring	0x14166d800	 well-crafted
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2eff4	cstring	0x1415f71ec	 item
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f011	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f020	cstring	0x14172bba0	eating 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f052	cstring	0x14172adf0	a legendary meal
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f066	cstring	0x14172bb40	a truly decadent dish
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f07a	cstring	0x14172bb28	a wonderful dish
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f08e	cstring	0x14172bb18	a fine dish
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f0a2	cstring	0x14172bb00	a pretty decent meal
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f0bf	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f0ce	cstring	0x14172b8b8	having 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f0fa	cstring	0x14172ae08	a drink
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f10e	cstring	0x14172ae10	a pretty decent drink
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f122	cstring	0x14172ae28	a fine drink
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f136	cstring	0x14172ad88	a wonderful drink
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f14a	cstring	0x14172ada0	a truly decadent drink
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f15e	cstring	0x14172adb8	a legendary drink
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f172	cstring	0x14172add0	not having enough chests
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f186	cstring	0x14172aea0	not having enough cabinets
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f1a0	cstring	0x14172aec0	not having enough weapon racks
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f1ac	cstring	0x14172aee0	not having enough armor stands
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f1c9	cstring	0x14172af00	by 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f1d8	cstring	0x14172ae38	a lesser's pretentious 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f1fa	cstring	0x14166d710	burial
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f203	cstring	0x14166e1f4	dining
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f20c	cstring	0x14166e200	sleeping
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f215	cstring	0x14162fa44	office
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f22a	cstring	0x14172ae50	 arrangements
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f23f	cstring	0x14172a7fc	at 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f254	cstring	0x14172ae60	the lack of dining tables
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f266	cstring	0x14172ae80	eating at a crowded table
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f272	cstring	0x14172af78	dining in 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f2a2	cstring	0x14172af88	a legendary dining room
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f2b6	cstring	0x14172afa0	a fantastic dining room
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f2ca	cstring	0x14172afb8	a great dining room
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f2de	cstring	0x14172af08	a very good dining room
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f2f2	cstring	0x14172af20	a good dining room
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f306	cstring	0x14172af38	a horribly substandard dining room
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f31a	cstring	0x14172af60	a horrible dining room
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f32e	cstring	0x14172b050	an awful dining room
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f342	cstring	0x14172b068	a very poor dining room
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f356	cstring	0x14172b080	a poor dining room
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f370	cstring	0x14172b098	eating without a proper dining room
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f385	cstring	0x14172a7fc	at 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f394	cstring	0x14172afd0	the lack of chairs
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f3b1	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f3c0	cstring	0x14172afe8	forming a bond with an animal training partner
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f3dd	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f3ec	cstring	0x14172b018	being rescued
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f409	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f418	cstring	0x14172b028	bringing somebody to rest in bed
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f45d	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f46c	cstring	0x14172b138	felling a tree
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f489	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f498	cstring	0x14172b148	slaughtering an animal
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f4b5	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f4c4	cstring	0x14172b160	caging a creature
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f4e1	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f4f0	cstring	0x14172b178	chaining up a creature
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f50d	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f51c	cstring	0x14172b0c0	gelding a creature
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f539	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f548	cstring	0x14172b0d8	putting a piece on display
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f565	cstring	0x14172a7fc	at 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f574	cstring	0x14167483c	work
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f591	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f5a6	cstring	0x14172b0f8	losing property to the tax collector's escorts
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f5bb	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f5ca	cstring	0x14172b128	being taxed
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f5de	cstring	0x14172b208	not having adequate protection
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f5fb	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f60a	cstring	0x14172b228	being unable to reach a room for tax collection
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f627	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f636	cstring	0x14172b258	being misinformed about a room for tax collection
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f64a	cstring	0x14172b290	having pleased a noble
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f667	cstring	0x14172b190	that 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f676	cstring	0x14172b198	the tax collection went smoothly
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f68a	cstring	0x14172b1c0	having disappointed a noble
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f6a7	cstring	0x14172b190	that 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f6b6	cstring	0x14172b1e0	the tax collection didn't go smoothly
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f6d3	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f6e2	cstring	0x14172b300	getting into an argument
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f6ff	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f70e	cstring	0x14172b320	making a friend
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f72b	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f73a	cstring	0x14172b330	forming a grudge
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f757	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f766	cstring	0x14172b348	being accosted by 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f7b8	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f7c7	cstring	0x14172b2a8	being near 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f819	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f828	cstring	0x14172b2b8	being pestered by 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f87a	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f889	cstring	0x14172b2d0	a satisfying acquisition
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f8a6	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f8ca	cstring	0x1416d80f0	 was given away
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f8e7	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f8f6	cstring	0x14172b2f0	acquiring 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f928	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f937	cstring	0x14172b3d8	adopting a new pet
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f954	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f963	cstring	0x14172b3f0	being confined
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f980	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f98f	cstring	0x14172b400	a bath
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f9ac	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f9bb	cstring	0x14172b408	a soapy bath
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f9d8	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2f9e7	cstring	0x14172b360	killing somebody by accident while sparring
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fa04	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fa13	cstring	0x14172b390	being attacked
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fa35	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fa44	cstring	0x14172b3a0	being attacked by the dead
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fa61	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fa70	cstring	0x14172b3c0	being attacked by 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fa91	cstring	0x1415ee960	your
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fad5	cstring	0x14172c3c8	 own dead 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fb1b	cstring	0x14172c3d8	drinking the same old booze
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fb39	cstring	0x14172a8d8	while 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fb42	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fb4e	cstring	0x14172c3f8	forced to drink bloody water
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fb6c	cstring	0x14172a8d8	while 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fb75	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fb81	cstring	0x14172c418	forced to drink slime
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fb9f	cstring	0x14172a8d8	while 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fba8	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fbb4	cstring	0x14172c350	forced to drink vomit
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fbd2	cstring	0x14172a8d8	while 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fbdb	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fbe7	cstring	0x14172c368	forced to drink gooey water
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fc05	cstring	0x14172a8d8	while 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fc0e	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fc1a	cstring	0x14172c388	forced to drink ichorous water
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fc38	cstring	0x14172a8d8	while 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fc41	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fc4d	cstring	0x14172c3a8	forced to drink purulent water
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fc61	cstring	0x14172c4a0	drinking nasty water
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fc7e	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fc8d	cstring	0x14172c4b8	drinking something spoiled
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fcaa	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fcb9	cstring	0x14172c4d8	having a drink without using a goblet, cup or mug
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fcd6	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fce5	cstring	0x14172c510	drinking water without a well
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fd02	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fd11	cstring	0x14172c430	being near to a 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fd4b	cstring	0x1416dae10	 in a cage
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fd72	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fd81	cstring	0x14172c430	being near to a 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fdbb	cstring	0x1416dae10	 in a cage
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fde2	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fdf1	cstring	0x14172c448	sleeping without a proper room
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fe0e	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fe1d	cstring	0x14172c468	sleeping in 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fe4d	cstring	0x14172c478	a bedroom like a personal palace
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fe61	cstring	0x14172c598	a fantastic bedroom
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fe75	cstring	0x14172c5b0	a great bedroom
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fe89	cstring	0x14172c5c0	a very good bedroom
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fe9d	cstring	0x14172c5d8	a good bedroom
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2feb1	cstring	0x14172c530	a horribly substandard bedroom
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fec5	cstring	0x14172c550	a horrible bedroom
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fed9	cstring	0x14172c568	an awful bedroom
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2feed	cstring	0x14172c580	a very poor bedroom
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ff01	cstring	0x14172c648	a poor bedroom
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ff1e	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ff2d	cstring	0x14172c658	sleeping on the floor
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ff4a	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ff59	cstring	0x14172c670	sleeping in the mud
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ff76	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ff85	cstring	0x14172c688	sleeping in the grass
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ffa2	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ffb1	cstring	0x14172c5e8	sleeping on a rough cave floor
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ffce	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2ffdd	cstring	0x14172c608	sleeping on rocks
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e2fffa	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30009	cstring	0x14172c620	sleeping on ice
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30026	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30035	cstring	0x14172c630	sleeping in the dirt
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30052	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30061	cstring	0x14172c6e0	sleeping on a pile of driftwood
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3007e	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3008d	cstring	0x14172c700	suffering the travesty of art defacement
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e300aa	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e300b9	cstring	0x14172c730	being evicted
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e300d6	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e300e5	cstring	0x14172c740	teaching 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30159	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30168	cstring	0x14172c740	teaching 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e301ba	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e301c9	cstring	0x14172c6a0	learning about 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3023d	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3024c	cstring	0x14172c6a0	learning about 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e302b8	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e302c7	cstring	0x14172c6b0	writing 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e302f4	cstring	0x14166eb30	an untitled composition
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30328	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30337	cstring	0x14172c6c0	reading 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30363	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30372	cstring	0x14172c6d0	learning 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30399	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e303a8	cstring	0x14172c6d0	learning 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e303e4	cstring	0x14166eae0	powerful knowledge
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3041b	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3042a	cstring	0x14172c6d0	learning 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30494	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e304a3	cstring	0x14172c6d0	learning 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3050d	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3051c	cstring	0x14172c6d0	learning 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3056c	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3057b	cstring	0x141670518	the forces of 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3059f	cstring	0x14172c7a0	 were defeated at 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e305d5	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e305e4	cstring	0x14172c7b8	making a breakthrough concerning 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30658	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30667	cstring	0x14172c7e0	being unable to advance the study of 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e306db	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e306ea	cstring	0x14172c808	discussing 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3075e	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3076d	cstring	0x14172c750	pondering 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e307e1	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e307f0	cstring	0x14172c760	giving birth to 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3085b	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3086a	cstring	0x14172a9d8	becoming a parent
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30888	cstring	0x1415eb518	 of 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e308b4	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e308cf	cstring	0x14172c788	gaining siblings
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e308e0	cstring	0x14172c8d0	gaining a sibling
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e308fa	cstring	0x14172a8d8	while 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30909	cstring	0x14172c778	getting married
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30926	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30935	cstring	0x14172c8e8	receiving water
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30952	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30961	cstring	0x14172c8f8	giving somebody water
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3097e	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3098d	cstring	0x14172c910	receiving food
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e309aa	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e309b9	cstring	0x14172c818	giving somebody food
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e309e8	cstring	0x14172c830	having an intellectual discussion with the spouse
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e309fc	cstring	0x14172c868	having an intellectual discussion with a lover
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30a10	cstring	0x14172c898	having an intellectual discussion with a sibling
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30a24	cstring	0x14172c9e0	having an intellectual discussion with mother
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30a38	cstring	0x14172ca10	having an intellectual discussion with father
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30a4c	cstring	0x14172ca40	having an intellectual discussion with a child
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30a60	cstring	0x14172ca70	having an intellectual discussion with a friend
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30a74	cstring	0x14172c920	having an intellectual discussion with an acquaintance
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30a88	cstring	0x14172c958	having an intellectual discussion with somebody
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30ab7	cstring	0x14172c988	sharing a personal insight with the spouse
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30acb	cstring	0x14172c9b8	sharing a personal insight with a lover
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30adf	cstring	0x14172bc68	sharing a personal insight with a sibling
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30af3	cstring	0x14172bc98	sharing a personal insight with mother
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30b07	cstring	0x14172bcc0	sharing a personal insight with father
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30b1b	cstring	0x14172bce8	sharing a personal insight with a child
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30b2f	cstring	0x14172bba8	sharing a personal insight with a friend
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30b43	cstring	0x14172bbd8	sharing a personal insight with an acquaintance
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30b57	cstring	0x14172bc08	sharing a personal insight with somebody
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30b86	cstring	0x14172bc38	sharing one of the spouse's personal insight
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30b9a	cstring	0x14172bdb8	sharing a lover's personal insight
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30bae	cstring	0x14172bde0	sharing a sibling's personal insight
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30bc2	cstring	0x14172be08	sharing one of mother's personal insight
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30bd6	cstring	0x14172be38	sharing one of father's personal insight
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30bea	cstring	0x14172bd10	sharing a child's personal insight
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30bfe	cstring	0x14172bd38	sharing a friend's personal insight
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30c12	cstring	0x14172bd60	sharing an acquaintance's personal insight
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30c26	cstring	0x14172bd90	sharing somebody's personal insight
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30c3a	cstring	0x14172c808	discussing 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30c5b	cstring	0x1415ee960	your
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30c9f	cstring	0x14172bed0	 problems with 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30cc9	cstring	0x14172bee0	the spouse
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30cdd	cstring	0x14172bef0	a lover
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30cf1	cstring	0x14172bef8	a sibling
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30d05	cstring	0x141646634	mother
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30d19	cstring	0x1416465a8	father
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30d2d	cstring	0x14167da88	a child
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30d41	cstring	0x14172be68	a friend
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30d55	cstring	0x14172be78	an acquaintance
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30d69	cstring	0x1415ed578	somebody
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30d98	cstring	0x14172be88	discussing the spouse's problems
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30dac	cstring	0x14172beb0	discussing a lover's problems
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30dc0	cstring	0x14172bf88	discussing a sibling's problems
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30dd4	cstring	0x14172bfa8	discussing mother's problems
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30de8	cstring	0x14172bfc8	discussing father's problems
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30dfc	cstring	0x14172bfe8	discussing a child's problems
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30e10	cstring	0x14172bf08	discussing a friend's problems
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30e24	cstring	0x14172bf28	discussing an acquaintance's problems
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30e38	cstring	0x14172bf50	discussing somebody's problems
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30e70	cstring	0x14172bf70	visiting with a pet
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30e84	cstring	0x14172c080	talking with the spouse
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30e98	cstring	0x14172c098	talking with a lover
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30eac	cstring	0x14172c0b0	talking with a sibling
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30ec0	cstring	0x14172c0c8	talking with mother
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30ed4	cstring	0x14172c008	talking with father
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30ee8	cstring	0x14172c020	talking with a child
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30efc	cstring	0x14172c038	visiting with an animal training partner
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30f10	cstring	0x14172c068	talking with a friend
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30f24	cstring	0x14172c178	talking with an acquaintance
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30f42	cstring	0x14163b84c	when 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30f4b	cstring	0x14172a384	being 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30f57	cstring	0x14172c198	forced to talk to somebody annoying
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30f6b	cstring	0x14172c1c0	talking with somebody
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30f88	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30f97	cstring	0x14172c1d8	conducting a meeting in 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30fc7	cstring	0x14166ebe0	a setting worthy of legends
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30fdb	cstring	0x14166eb98	a fantastic setting
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e30fef	cstring	0x14166ebb0	a great setting
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31003	cstring	0x14166eb70	a very good setting
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31017	cstring	0x14166eb88	a good setting
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3102b	cstring	0x14166eef8	a horribly substandard setting
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3103f	cstring	0x14166ef18	a horrible setting
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31053	cstring	0x14166eec8	an awful setting
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31067	cstring	0x14166eee0	a very poor setting
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3107b	cstring	0x14166ee88	a poor setting
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3108f	cstring	0x14172c0e0	having to conduct an official meeting in a bedroom
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e310a3	cstring	0x14172c118	having to conduct an official meeting in a dining room
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e310b7	cstring	0x14172c150	not having any rooms
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e310cb	cstring	0x14172b8b8	having 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e310fb	cstring	0x14172c168	a legendary
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3110a	cstring	0x14172c2f0	 tomb after gaining another year
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3111e	cstring	0x14172c230	a fantastic
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3112d	cstring	0x14172c2f0	 tomb after gaining another year
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31141	cstring	0x14172c240	a great
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31150	cstring	0x14172c2f0	 tomb after gaining another year
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31164	cstring	0x14172c248	a very good
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31173	cstring	0x14172c2f0	 tomb after gaining another year
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31187	cstring	0x14172c254	a good
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31196	cstring	0x14172c2f0	 tomb after gaining another year
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e311aa	cstring	0x14172c1f4	a poor
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e311b9	cstring	0x14172c2f0	 tomb after gaining another year
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e311cd	cstring	0x14172c200	a very poor
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e311dc	cstring	0x14172c2f0	 tomb after gaining another year
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e311f0	cstring	0x14172c210	an awful
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e311ff	cstring	0x14172c2f0	 tomb after gaining another year
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31213	cstring	0x14172c220	a horrible
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31222	cstring	0x14172c2f0	 tomb after gaining another year
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31236	cstring	0x14172c2d8	a horribly substandard
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31245	cstring	0x14172c2f0	 tomb after gaining another year
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31262	cstring	0x14172c314	about 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31271	cstring	0x14172c320	not having a tomb after gaining another year
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31285	cstring	0x14172c260	after talking to a pillar of society
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e312a2	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e312b1	cstring	0x14172c288	interacting with a pet
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e312ce	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e312dd	cstring	0x14172c2a0	a child was turned away from sanctuary
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e312fa	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31309	cstring	0x14172c2c8	being expelled
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31326	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31347	cstring	0x1415ee960	your
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3138b	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e313c2	cstring	0x1416dcd98	 was expelled
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e313e9	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e313f8	cstring	0x14172d148	a long-dead corpse was convicted of a crime
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31415	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31424	cstring	0x14172d178	an animal was convicted of a crime
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31441	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31450	cstring	0x14172d1a0	the bizarre conviction against all reason of the victim of a crime
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3146d	cstring	0x14172a998	upon 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3147c	cstring	0x14172d1e8	receiving justice through a criminal's conviction
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31490	cstring	0x14172d070	when a family member received justice through a criminal's conviction
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e314d1	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e314e0	cstring	0x14172d0b8	being forced to endure the decay of a pet
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e314fd	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3150c	cstring	0x14172d0e8	being forced to endure the decay of a spouse
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31529	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31538	cstring	0x14172d118	being forced to endure the decay of a lover
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31555	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31564	cstring	0x14172d308	being forced to endure the decay of a sibling
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31581	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31590	cstring	0x14172d338	being forced to endure the decay of a mother
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e315ad	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e315bc	cstring	0x14172d368	being forced to endure the decay of a father
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e315d9	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e315e8	cstring	0x14172d398	being forced to endure the decay of a child
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31605	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31614	cstring	0x14172d220	being forced to endure the decay of an animal training partner
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31631	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31640	cstring	0x14172d260	being forced to endure the decay of a friend
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3165d	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3166c	cstring	0x14172d290	being forced to endure the decay of an annoying acquaintance
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31689	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31698	cstring	0x14172d2d0	being forced to endure the decay of an acquaintance
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e316cb	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e316da	cstring	0x14172d460	being away from people for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e316f7	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31706	cstring	0x14172d488	being kept from alcohol for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31723	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31732	cstring	0x14172d4b0	being unable to pray
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3174c	cstring	0x1415ed5b4	 to 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3178e	cstring	0x14172d4c8	 for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e317ab	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e317ba	cstring	0x14172d3c8	being unoccupied for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e317d7	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e317e6	cstring	0x14172d3e8	being unable to admire art for so long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31803	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31812	cstring	0x14172d410	doing nothing creative for so long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3182f	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3183e	cstring	0x14172d438	leading an unexciting life for so long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3185b	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3186a	cstring	0x14172d580	not learning anything for so long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31887	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31896	cstring	0x14172d5a8	being away from family for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e318b3	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e318c2	cstring	0x14172d5d0	being away from friends for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e318df	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e318ee	cstring	0x14172d5f8	being unable to hear eloquent speech for so long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3190b	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3191a	cstring	0x14172d4d8	being away from traditions for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31937	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31946	cstring	0x14172d500	a lack of introspection for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31963	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31972	cstring	0x14172d528	being unable to make merry for so long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3198f	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3199e	cstring	0x14172d550	being unable to practice a craft for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e319bb	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e319ca	cstring	0x14172d6e0	being unable to practice a martial art for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e319e7	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e319f6	cstring	0x14172d718	being unable to practice a skill for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31a13	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31a22	cstring	0x14172d748	being unable to take it easy for so long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31a3f	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31a4e	cstring	0x14172d778	being unable to make romance for so long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31a6b	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31a7a	cstring	0x14172d630	being away from animals for so long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31a97	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31aa6	cstring	0x14172d658	being away from great beasts for so long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31ac3	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31ad2	cstring	0x14172d688	being unable to acquire something for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31aef	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31afe	cstring	0x14172d6b8	a lack of decent meals for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31b1b	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31b2a	cstring	0x14172d850	being unable to fight for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31b47	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31b56	cstring	0x14172d878	a lack of trouble-making for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31b73	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31b82	cstring	0x14172d8a0	being unable to argue for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31b9f	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31bae	cstring	0x14172d8c8	being unable to be extravagant for so long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31bcb	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31bda	cstring	0x14172d7a8	being unable to wander for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31bf7	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31c06	cstring	0x14172d7d0	being unable to help anybody for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31c23	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31c32	cstring	0x14172d800	a lack of abstract thinking for too long
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31c4f	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31c5e	cstring	0x14172d830	performing the rites of 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31c82	cstring	0x1416d7528	 in a dedicated temple
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31c9f	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31cae	cstring	0x14172d970	incompletely performing the rites of 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31cd2	cstring	0x1416d7560	 in an improperly dedicated temple
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31cef	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31cfe	cstring	0x14172d970	incompletely performing the rites of 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31d22	cstring	0x1416d7540	 in an undedicated temple
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31d3f	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31d4e	cstring	0x14172d998	communing with 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31d90	cstring	0x1416d7528	 in a dedicated temple
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31dad	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31dbc	cstring	0x14172d998	communing with 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31e0c	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31e21	cstring	0x14172d9a8	defeating somebody
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31e36	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31e4b	cstring	0x14172d9c0	murdering somebody
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31e60	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31e75	cstring	0x14172d8f8	abducting somebody
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31e8a	cstring	0x1416d80e8	during 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31ef2	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31f07	cstring	0x14172d910	preying on the blood of civilized creatures
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31f1d	cstring	0x1416d8040	being unnaturally ageless
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31f36	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31f4b	cstring	0x14172d940	a scholarly lecture in 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31f7d	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31f92	cstring	0x14172d958	a performance in 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31fa4	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31fb9	cstring	0x1416287c8	accepting bribes in exchange for leniency
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31fce	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31fe3	cstring	0x1416287f8	embezzling funds
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e31ff5	cstring	0x1416d8100	after 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3200a	cstring	0x14172da18	receiving a cut of corruptly-obtained funds
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3201f	cstring	0x1416d7438	from afar
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e3202d	cstring	0x14172da48	being far away
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e32044	cstring	0x1416d80e8	during 
+reference	PE:6a70a6d9:02711000	0x140e2c460	0x140e32053	cstring	0x14172da58	an infiltration mission
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2744a	cstring	0x141725168	while in 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2745f	cstring	0x1415e8fc8	conflict
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27474	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27489	cstring	0x141725178	experiencing trauma
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2749e	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e274b3	cstring	0x141725190	seeing 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27517	cstring	0x1415e3e34	the 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27552	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e275b4	cstring	0x141725198	 die
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e275c9	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27610	cstring	0x141725198	 die
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2761f	cstring	0x1415e8570	somebody
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27631	cstring	0x141725198	 die
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27646	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2765b	cstring	0x141725190	seeing 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e276bf	cstring	0x1415e3e34	the 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e276fa	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27752	cstring	0x141725130	 dead body
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2776f	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e277a6	cstring	0x1415e4214	's
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e277bf	cstring	0x141725130	 dead body
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e277d6	cstring	0x141725120	somebody's
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e277e2	cstring	0x141725130	 dead body
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e277ff	cstring	0x14172513c	at 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2780e	cstring	0x141725140	the unexpected death of somebody
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2782b	cstring	0x14172513c	at 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2783a	cstring	0x141725200	somebody's death
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27857	cstring	0x141725214	while 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27866	cstring	0x141725220	killing somebody
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27883	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27892	cstring	0x141725238	being reunited with a loved one
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e278af	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e278be	cstring	0x1417251a0	being caught sneaking
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e278db	cstring	0x1416369e4	when 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e278ea	cstring	0x1417251b8	joining an existing conflict
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27907	cstring	0x141725214	while 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2794b	cstring	0x1417251d8	giving a sermon
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2795f	cstring	0x141670608	performing
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2797c	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e279c0	cstring	0x1417251e8	attending a sermon
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e279d4	cstring	0x1417252a0	watching a performance
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e279f1	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27a00	cstring	0x1417252b8	producing a masterwork
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27a1d	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27a2c	cstring	0x1417252d0	creating an artifact
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27a49	cstring	0x1417252e8	upon 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27a58	cstring	0x141725258	improving 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27aaa	cstring	0x1417252e8	upon 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27ab9	cstring	0x141725268	mastering 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27b0b	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27b1a	cstring	0x141725278	a break up
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27b37	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27b46	cstring	0x141725288	getting divorced
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27b67	cstring	0x14172533c	as 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27b88	cstring	0x141725340	you were
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27bc2	cstring	0x141666814	 was
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27bdb	cstring	0x141725350	 caught up in 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27bea	cstring	0x141725360	a new romance
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27c07	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27c16	cstring	0x1417252f0	realizing 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27c83	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27c92	cstring	0x141725300	playing make believe
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27caf	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27cbe	cstring	0x141725318	playing with 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27ce2	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27d14	cstring	0x1415e3ca8	a toy
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27d31	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27d40	cstring	0x141725328	becoming a parent
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27d54	cstring	0x1417253c8	being near to a conflict
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27d71	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27d80	cstring	0x1417253e8	an agreement was cancelled
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27d9d	cstring	0x1417252e8	upon 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27dac	cstring	0x141725408	joining a traveling group
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27dc9	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27dd8	cstring	0x141725428	a site was controlled
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27df5	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27e04	cstring	0x141725370	a tribute cancellation
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27e21	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27e30	cstring	0x141725388	an incident
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27e4d	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27e5c	cstring	0x141725398	hearing a rumor
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27e79	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27e88	cstring	0x1417253a8	leaving a performance troupe
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27ea5	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27eb4	cstring	0x1417254e8	being removed from a performance troupe
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27ed1	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27ee0	cstring	0x141725510	being removed from a military group
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27ef4	cstring	0x141725538	when a stranger advanced with a weapon
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27f11	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27f20	cstring	0x141725560	seeing a stranger sneaking around
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27f3d	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27f4c	cstring	0x141725440	witnessing a night creature drinking blood
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27f8e	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27f9d	cstring	0x141725470	petitioning for citizenship
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27fba	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27fc9	cstring	0x141725490	bringing up job scarcity in a meeting
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27fe6	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e27ff5	cstring	0x1417254b8	making suggestions about work allocations
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28012	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28021	cstring	0x141725630	requesting weapon production
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2803e	cstring	0x141725214	while 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2804d	cstring	0x141725650	yelling at a priest
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2806a	cstring	0x141725214	while 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28079	cstring	0x141725668	crying on a priest
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28096	cstring	0x141725214	while 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e280a5	cstring	0x141725680	yelling at somebody in charge
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e280c2	cstring	0x141725214	while 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e280d1	cstring	0x141725588	crying on somebody in charge
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e280ee	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e280fd	cstring	0x1417255a8	telling somebody about being trapped here
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2813f	cstring	0x141725214	while 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2814e	cstring	0x141725608	being cried on by an unhappy worshipper
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2816b	cstring	0x141725214	while 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2817a	cstring	0x1417255d8	being yelled at by an unhappy worshipper
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28197	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e281a6	cstring	0x1417248e8	hearing somebody was being prevented from leaving
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e281c3	cstring	0x141725214	while 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e281d2	cstring	0x1417248c0	being cried on by an unhappy citizen
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e281ef	cstring	0x141725214	while 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e281fe	cstring	0x141724898	being yelled at by an unhappy citizen
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2821b	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28230	cstring	0x141724920	viewing 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e282b0	cstring	0x141667938	a piece
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e282bf	cstring	0x1416678d0	 on display
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e282c6	cstring	0x141724860	 in a personal museum
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e282f4	cstring	0x141724878	near 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2830e	cstring	0x1415fdc64	a
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28331	cstring	0x1415e9910	your
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28389	cstring	0x141724880	 own
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e283a1	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e283e5	cstring	0x1417249a8	completely sublime
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e283f7	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28415	cstring	0x1417249c0	tastefully arranged 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28454	cstring	0x141724998	wonderful
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2845d	cstring	0x141724988	splendid
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28466	cstring	0x141724888	very fine
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28472	cstring	0x141662bf4	fine
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28487	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28496	cstring	0x141724930	losing a pet
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e284b3	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e284c2	cstring	0x141724940	throwing something
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e284df	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e284ee	cstring	0x141724958	being released from confinement
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2850b	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2851a	cstring	0x141724978	a miscarriage
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28537	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28558	cstring	0x1415e9910	your
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28567	cstring	0x141724a38	 spouse's miscarriage
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e285ae	cstring	0x141724a38	 spouse's miscarriage
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e285cb	cstring	0x141724a50	to be 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e285da	cstring	0x141724a58	wearing old clothing
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e285f7	cstring	0x141724a50	to be 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28606	cstring	0x141724a70	wearing tattered clothing
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28623	cstring	0x1417249d8	to have 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28632	cstring	0x1417249e8	clothes rot off of 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28653	cstring	0x1415e9910	your
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28662	cstring	0x1417249fc	 body
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e286a9	cstring	0x1417249fc	 body
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e286ea	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e286f9	cstring	0x141724a08	being tormented in nightmares by a dead pet
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28716	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28725	cstring	0x141724b10	being tormented in nightmares by a dead spouse
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28742	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28751	cstring	0x141724b40	being tormented in nightmares by a dead lover
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2876e	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2877d	cstring	0x141724b70	being tormented in nightmares by a dead sibling
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2879a	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e287a9	cstring	0x141724ba0	being tormented in nightmares by 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e287ca	cstring	0x1415e9910	your
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e287d9	cstring	0x141724a90	 own dead mother
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28820	cstring	0x141724a90	 own dead mother
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2883d	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2884c	cstring	0x141724ba0	being tormented in nightmares by 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2886d	cstring	0x1415e9910	your
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2887c	cstring	0x141724aa8	 own dead father
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e288c3	cstring	0x141724aa8	 own dead father
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e288e0	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e288ef	cstring	0x141724ba0	being tormented in nightmares by 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28910	cstring	0x1415e9910	your
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2891f	cstring	0x141724ac0	 own dead child
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28966	cstring	0x141724ac0	 own dead child
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28983	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28992	cstring	0x141724ad0	being tormented in nightmares by a dead animal training partner
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e289af	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e289be	cstring	0x141724c20	being tormented in nightmares by a dead friend
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e289db	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e289ea	cstring	0x141724c50	being tormented in nightmares by a dead and still annoying acquaintance
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28a07	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28a16	cstring	0x141724c98	being tormented in nightmares by the dead
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28a4d	cstring	0x141667578	tortured
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28a56	cstring	0x141667568	possessed
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28a5f	cstring	0x141667590	tormented
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28a68	cstring	0x141667588	haunted
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28aa5	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28ab4	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28acf	cstring	0x141724bc8	 by a dead pet
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28ae4	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28af3	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28b0e	cstring	0x141724bd8	 by a dead spouse
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28b23	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28b32	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28b4d	cstring	0x141724bf0	 by a dead lover
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28b62	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28b71	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28b8c	cstring	0x141724c08	 by a dead sibling
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28ba1	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28bb0	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28bcb	cstring	0x1415e8a08	 by 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28bec	cstring	0x1415e9910	your
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28bfb	cstring	0x141724a90	 own dead mother
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28c3a	cstring	0x141724a90	 own dead mother
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28c4f	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28c5e	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28c79	cstring	0x1415e8a08	 by 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28c9a	cstring	0x1415e9910	your
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28ca9	cstring	0x141724aa8	 own dead father
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28ce8	cstring	0x141724aa8	 own dead father
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28cfd	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28d0c	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28d27	cstring	0x1415e8a08	 by 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28d48	cstring	0x1415e9910	your
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28d57	cstring	0x141724ac0	 own dead child
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28d96	cstring	0x141724ac0	 own dead child
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28dab	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28dba	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28dd5	cstring	0x141724d50	 by a dead animal training partner
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28dea	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28df9	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28e14	cstring	0x141724d78	 by a dead friend
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28e26	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28e35	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28e50	cstring	0x141724d90	 by a dead and still annoying acquaintance
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28e62	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28e71	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28e8c	cstring	0x141724dc0	 by the dead
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28eb3	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28ec2	cstring	0x141724cd0	combat drills
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28edf	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28eee	cstring	0x141724ce0	practicing at the archery target
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28f0b	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28f1a	cstring	0x141724d08	a sparring session
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28f5c	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28f6b	cstring	0x141724d20	being unable to petition for citizenship
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28f88	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28f97	cstring	0x141724e80	being unable to find somebody to complain to about job scarcity
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28fb4	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28fc3	cstring	0x141724ec0	being unable to make suggestions about work allocations
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28fe0	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e28fef	cstring	0x141724ef8	being unable to request weapon production
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2900c	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2901b	cstring	0x141724f28	being unable to find a priest to complain to
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29038	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29047	cstring	0x141724dd0	being unable to find a priest to cry on
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29064	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29073	cstring	0x141724df8	being unable to find somebody in charge to yell at
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29090	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2909f	cstring	0x141724e30	being unable to find somebody in charge to cry on
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e290bc	cstring	0x1416d2f40	during 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e290cb	cstring	0x141724e68	long patrol duty
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e290e8	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e290f7	cstring	0x141724ff0	being nauseated by the sun
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29114	cstring	0x14172513c	at 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29123	cstring	0x141725010	being out in the sunshine again
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29141	cstring	0x1416369e4	when 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2914a	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29156	cstring	0x1416d03e4	drowsy
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29174	cstring	0x1416369e4	when 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2917d	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29189	cstring	0x141725030	utterly sleep-deprived
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e291a7	cstring	0x1416369e4	when 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e291b0	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e291bc	cstring	0x1416d0400	thirsty
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e291da	cstring	0x1416369e4	when 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e291e3	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e291ef	cstring	0x1416d03b0	dehydrated
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2920d	cstring	0x1416369e4	when 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29216	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29222	cstring	0x1416d03a8	hungry
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29240	cstring	0x1416369e4	when 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29249	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29255	cstring	0x1416d03d8	starving
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2928f	cstring	0x1417200f0	due to 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e292c6	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e292d5	cstring	0x141725048	suffering a major injury
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e292f2	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29301	cstring	0x141724f58	suffering a minor injury
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29337	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29346	cstring	0x141724fc8	loud noises made it impossible to sleep
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29363	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29372	cstring	0x141724f98	being disturbed during sleep by loud noises
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2938f	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2939e	cstring	0x141724f78	sleeping uneasily due to noise
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e293bb	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e293ca	cstring	0x141725da0	being able to rest and recuperate
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e293e8	cstring	0x1416369e4	when 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e293f1	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e293fd	cstring	0x1416d0380	caught in freakish weather
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2941b	cstring	0x1416369e4	when 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29424	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29430	cstring	0x141725dc8	caught in the rain
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2944e	cstring	0x1416369e4	when 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29457	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29463	cstring	0x141725de0	caught in a snow storm
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29480	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2948f	cstring	0x141725df8	retching on a miasma
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e294ac	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e294bb	cstring	0x141725d30	choking on smoke underground
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e294cf	cstring	0x141725d50	being near to a waterfall
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e294ec	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e294fb	cstring	0x141725d70	choking on dust underground
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29518	cstring	0x141725d90	considering 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29527	cstring	0x141725ea0	the state of demands
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2953b	cstring	0x141725eb8	that a criminal could not be properly punished
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29559	cstring	0x1417249d8	to have 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29562	cstring	0x141725ee8	having
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29580	cstring	0x1415e9910	your
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29595	cstring	0x141725ef0	 punishment reduced
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e295da	cstring	0x141725ef0	 punishment reduced
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e295f0	cstring	0x141724a50	to be 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e295f9	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2960b	cstring	0x1416d0e28	elected
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29621	cstring	0x141724a50	to be 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2962a	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2963c	cstring	0x141725e10	re-elected
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29651	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29666	cstring	0x141725e20	the establishment of a temple for 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29698	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e296ad	cstring	0x141725e48	the acceptance of a petition for a temple for 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e296bf	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e296d4	cstring	0x141725e78	the establishment of a guildhall for 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e296e6	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e296fb	cstring	0x141725f78	the acceptance of a petition for a guildhall for 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29710	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2971f	cstring	0x141725fb0	being granted residency
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29734	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29743	cstring	0x141725fc8	being granted citizenship
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29760	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2976f	cstring	0x141725fe8	being denied residency
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2978c	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2979b	cstring	0x141725f08	the rejection of a petition for a temple for 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e297bb	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e297c7	cstring	0x141725f38	a petition for a temple for 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e297eb	cstring	0x141725f58	 was ignored
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e297ff	cstring	0x141725f38	a petition for a temple for 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29820	cstring	0x141725f68	 being ignored
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29840	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2984c	cstring	0x141726090	an agreement to construct a temple for 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29870	cstring	0x1417260b8	 was abandoned
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29884	cstring	0x141726090	an agreement to construct a temple for 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e298a5	cstring	0x1417260c8	 being abandoned
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e298c2	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e298d1	cstring	0x1417260e0	the rejection of a petition for a guildhall for 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e298f1	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e298fd	cstring	0x141726000	a petition for a guildhall for 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29909	cstring	0x141726000	a petition for a guildhall for 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29921	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2992d	cstring	0x141726020	an agreement to construct a guildhall for 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29939	cstring	0x141726020	an agreement to construct a guildhall for 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2995a	cstring	0x1417260c8	 being abandoned
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29977	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29986	cstring	0x141726050	being denied citizenship
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2999a	cstring	0x141726070	having a request approved
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e299ae	cstring	0x1417261b0	having a request ignored
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e299c2	cstring	0x1417261d0	that nobody could be punished for a failure
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e299e0	cstring	0x1417249d8	to have 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e299e9	cstring	0x141726200	having 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29a07	cstring	0x1415e9910	your
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29a16	cstring	0x141726208	 punishment delayed
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29a5d	cstring	0x141726208	 punishment delayed
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29a7a	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29a89	cstring	0x141726118	the delayed punishment of a criminal
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29aa6	cstring	0x141725d90	considering 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29ab5	cstring	0x141726140	the scarcity of cages and chains
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29ac9	cstring	0x141726168	having a mandate ignored
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29add	cstring	0x141726188	having a mandate deadline missed
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29afa	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29b09	cstring	0x141726288	the lack of work last season
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29b26	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29b35	cstring	0x1417262a8	smashing up a building
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29b52	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29b61	cstring	0x1417262c0	toppling something over
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29b7e	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29b8d	cstring	0x1417262d8	receiving a higher rank of nobility
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29baa	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29bb9	cstring	0x141726220	entering the nobility
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29bd6	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29be5	cstring	0x141726238	being knocked out during a cave-in
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29c03	cstring	0x1417249d8	to have 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29c0c	cstring	0x141726200	having 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29c18	cstring	0x141726260	a mandate deadline met
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29c36	cstring	0x1416369e4	when 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29c3f	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29c4b	cstring	0x141726278	uncovered
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29c69	cstring	0x1417249d8	to have 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29c72	cstring	0x141726200	having 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29c7e	cstring	0x1416d0cb8	no shirt
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29c9c	cstring	0x1417249d8	to have 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29ca5	cstring	0x141726200	having 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29cb1	cstring	0x1416d0ca8	no shoes
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29cce	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29cdd	cstring	0x141726378	being forced to eat a treasured pet to survive
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29cfa	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29d09	cstring	0x1417263a8	being forced to eat a beloved creature to survive
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29d26	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29d35	cstring	0x1417263e0	being forced to eat vermin to survive
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29d52	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29d67	cstring	0x141726408	starting a fist fight
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29d7c	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29d91	cstring	0x141726300	punishing somebody with a beating
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29da6	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29dbb	cstring	0x141726328	being beaten
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29dd0	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29de5	cstring	0x141726338	beating somebody with a hammer
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29dfa	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29e0f	cstring	0x141726358	being beaten with a hammer
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29e24	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29e33	cstring	0x141726468	being unable to find a hammer
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29e47	cstring	0x141726488	eating the same old food
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29e64	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29e73	cstring	0x1417264a8	eating rotten food
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29e90	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29e9f	cstring	0x1417264c0	putting on a
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29ecf	cstring	0x141668600	 truly splendid
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29edb	cstring	0x1415f2204	 item
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29eef	cstring	0x1416685f0	n exceptional
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29efb	cstring	0x1415f2204	 item
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29f0f	cstring	0x141668620	 superior
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29f1e	cstring	0x1415f2204	 item
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29f32	cstring	0x141668610	 finely-crafted
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29f41	cstring	0x1415f2204	 item
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29f55	cstring	0x141668640	 well-crafted
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29f64	cstring	0x1415f2204	 item
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29f81	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29f90	cstring	0x141726420	eating 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29fc2	cstring	0x141725710	a legendary meal
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29fd6	cstring	0x1417256f8	a truly decadent dish
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29fea	cstring	0x141726450	a wonderful dish
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e29ffe	cstring	0x141726440	a fine dish
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a012	cstring	0x141726428	a pretty decent meal
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a02f	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a03e	cstring	0x141726200	having 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a06a	cstring	0x141725728	a drink
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a07e	cstring	0x141725730	a pretty decent drink
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a092	cstring	0x1417256a0	a fine drink
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a0a6	cstring	0x1417256b0	a wonderful drink
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a0ba	cstring	0x1417256c8	a truly decadent drink
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a0ce	cstring	0x1417256e0	a legendary drink
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a0e2	cstring	0x141725798	not having enough chests
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a0f6	cstring	0x1417257b8	not having enough cabinets
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a110	cstring	0x1417257d8	not having enough weapon racks
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a11c	cstring	0x1417257f8	not having enough armor stands
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a139	cstring	0x141725748	by 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a148	cstring	0x141725750	a lesser's pretentious 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a16a	cstring	0x141668844	burial
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a173	cstring	0x14166884c	dining
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a17c	cstring	0x141668818	sleeping
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a185	cstring	0x14162aafc	office
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a19a	cstring	0x141725768	 arrangements
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a1af	cstring	0x14172513c	at 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a1c4	cstring	0x141725778	the lack of dining tables
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a1d6	cstring	0x141725888	eating at a crowded table
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a1e2	cstring	0x1417258a8	dining in 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a212	cstring	0x1417258b8	a legendary dining room
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a226	cstring	0x1417258d0	a fantastic dining room
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a23a	cstring	0x141725818	a great dining room
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a24e	cstring	0x141725830	a very good dining room
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a262	cstring	0x141725848	a good dining room
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a276	cstring	0x141725860	a horribly substandard dining room
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a28a	cstring	0x141725968	a horrible dining room
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a29e	cstring	0x141725980	an awful dining room
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a2b2	cstring	0x141725998	a very poor dining room
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a2c6	cstring	0x1417259b0	a poor dining room
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a2e0	cstring	0x1417258e8	eating without a proper dining room
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a2f5	cstring	0x14172513c	at 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a304	cstring	0x141725910	the lack of chairs
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a321	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a330	cstring	0x141725928	forming a bond with an animal training partner
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a34d	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a35c	cstring	0x141725958	being rescued
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a379	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a388	cstring	0x141725a48	bringing somebody to rest in bed
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a3cd	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a3dc	cstring	0x141725a70	felling a tree
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a3f9	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a408	cstring	0x141725a80	slaughtering an animal
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a425	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a434	cstring	0x141725a98	caging a creature
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a451	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a460	cstring	0x1417259c8	chaining up a creature
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a47d	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a48c	cstring	0x1417259e0	gelding a creature
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a4a9	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a4b8	cstring	0x1417259f8	putting a piece on display
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a4d5	cstring	0x14172513c	at 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a4e4	cstring	0x14166f0d8	work
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a501	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a516	cstring	0x141725a18	losing property to the tax collector's escorts
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a52b	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a53a	cstring	0x141725b18	being taxed
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a54e	cstring	0x141725b28	not having adequate protection
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a56b	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a57a	cstring	0x141725b48	being unable to reach a room for tax collection
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a597	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a5a6	cstring	0x141725b78	being misinformed about a room for tax collection
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a5ba	cstring	0x141725ab0	having pleased a noble
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a5d7	cstring	0x141725ac8	that 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a5e6	cstring	0x141725ad0	the tax collection went smoothly
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a5fa	cstring	0x141725af8	having disappointed a noble
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a617	cstring	0x141725ac8	that 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a626	cstring	0x141725c10	the tax collection didn't go smoothly
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a643	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a652	cstring	0x141725c38	getting into an argument
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a66f	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a67e	cstring	0x141725c58	making a friend
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a69b	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a6aa	cstring	0x141725c68	forming a grudge
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a6c7	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a6d6	cstring	0x141725bb0	being accosted by 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a728	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a737	cstring	0x141725bc8	being near 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a789	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a798	cstring	0x141725bd8	being pestered by 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a7ea	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a7f9	cstring	0x141725bf0	a satisfying acquisition
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a816	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a83a	cstring	0x1416d2e88	 was given away
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a857	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a866	cstring	0x141725cf0	acquiring 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a898	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a8a7	cstring	0x141725d00	adopting a new pet
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a8c4	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a8d3	cstring	0x141725d18	being confined
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a8f0	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a8ff	cstring	0x141725d28	a bath
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a91c	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a92b	cstring	0x141725c80	a soapy bath
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a948	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a957	cstring	0x141725c90	killing somebody by accident while sparring
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a974	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a983	cstring	0x141725cc0	being attacked
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a9a5	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a9b4	cstring	0x141725cd0	being attacked by the dead
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a9d1	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2a9e0	cstring	0x141726d00	being attacked by 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2aa01	cstring	0x1415e9910	your
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2aa45	cstring	0x141726d18	 own dead 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2aa8b	cstring	0x141726d28	drinking the same old booze
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2aaa9	cstring	0x141725214	while 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2aab2	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2aabe	cstring	0x141726d48	forced to drink bloody water
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2aadc	cstring	0x141725214	while 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2aae5	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2aaf1	cstring	0x141726c90	forced to drink slime
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ab0f	cstring	0x141725214	while 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ab18	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ab24	cstring	0x141726ca8	forced to drink vomit
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ab42	cstring	0x141725214	while 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ab4b	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ab57	cstring	0x141726cc0	forced to drink gooey water
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ab75	cstring	0x141725214	while 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ab7e	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ab8a	cstring	0x141726ce0	forced to drink ichorous water
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2aba8	cstring	0x141725214	while 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2abb1	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2abbd	cstring	0x141726dd0	forced to drink purulent water
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2abd1	cstring	0x141726df0	drinking nasty water
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2abee	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2abfd	cstring	0x141726e08	drinking something spoiled
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ac1a	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ac29	cstring	0x141726e28	having a drink without using a goblet, cup or mug
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ac46	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ac55	cstring	0x141726d68	drinking water without a well
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ac72	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ac81	cstring	0x141726d88	being near to a 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2acbb	cstring	0x1416d5bd8	 in a cage
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ace2	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2acf1	cstring	0x141726d88	being near to a 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ad2b	cstring	0x1416d5bd8	 in a cage
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ad52	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ad61	cstring	0x141726da0	sleeping without a proper room
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ad7e	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ad8d	cstring	0x141726dc0	sleeping in 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2adbd	cstring	0x141726ec0	a bedroom like a personal palace
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2add1	cstring	0x141726ee8	a fantastic bedroom
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ade5	cstring	0x141726f00	a great bedroom
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2adf9	cstring	0x141726f10	a very good bedroom
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ae0d	cstring	0x141726e60	a good bedroom
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ae21	cstring	0x141726e70	a horribly substandard bedroom
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ae35	cstring	0x141726e90	a horrible bedroom
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ae49	cstring	0x141726ea8	an awful bedroom
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ae5d	cstring	0x141726f88	a very poor bedroom
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ae71	cstring	0x141726fa0	a poor bedroom
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ae8e	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ae9d	cstring	0x141726fb0	sleeping on the floor
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2aeba	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2aec9	cstring	0x141726fc8	sleeping in the mud
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2aee6	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2aef5	cstring	0x141726f28	sleeping in the grass
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2af12	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2af21	cstring	0x141726f40	sleeping on a rough cave floor
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2af3e	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2af4d	cstring	0x141726f60	sleeping on rocks
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2af6a	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2af79	cstring	0x141726f78	sleeping on ice
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2af96	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2afa5	cstring	0x141727020	sleeping in the dirt
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2afc2	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2afd1	cstring	0x141727038	sleeping on a pile of driftwood
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2afee	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2affd	cstring	0x141727058	suffering the travesty of art defacement
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b01a	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b029	cstring	0x141727088	being evicted
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b046	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b055	cstring	0x141726fe0	teaching 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b0c9	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b0d8	cstring	0x141726fe0	teaching 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b12a	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b139	cstring	0x141726ff0	learning about 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b1ad	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b1bc	cstring	0x141726ff0	learning about 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b228	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b237	cstring	0x141727000	writing 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b264	cstring	0x141669ae0	an untitled composition
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b298	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b2a7	cstring	0x141727010	reading 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b2d3	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b2e2	cstring	0x1417270e0	learning 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b309	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b318	cstring	0x1417270e0	learning 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b354	cstring	0x141669ac8	powerful knowledge
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b38b	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b39a	cstring	0x1417270e0	learning 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b404	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b413	cstring	0x1417270e0	learning 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b47d	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b48c	cstring	0x1417270e0	learning 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b4dc	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b4eb	cstring	0x14166b890	the forces of 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b50f	cstring	0x1417270f0	 were defeated at 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b545	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b554	cstring	0x141727108	making a breakthrough concerning 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b5c8	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b5d7	cstring	0x141727130	being unable to advance the study of 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b64b	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b65a	cstring	0x141727098	discussing 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b6ce	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b6dd	cstring	0x1417270a8	pondering 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b751	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b760	cstring	0x1417270b8	giving birth to 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b7cb	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b7da	cstring	0x141725328	becoming a parent
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b7f8	cstring	0x1415e64d0	 of 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b824	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b83f	cstring	0x1417271e8	gaining siblings
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b850	cstring	0x141727200	gaining a sibling
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b86a	cstring	0x141725214	while 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b879	cstring	0x1417270d0	getting married
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b896	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b8a5	cstring	0x141727218	receiving water
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b8c2	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b8d1	cstring	0x141727228	giving somebody water
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b8ee	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b8fd	cstring	0x141727158	receiving food
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b91a	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b929	cstring	0x141727168	giving somebody food
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b958	cstring	0x141727180	having an intellectual discussion with the spouse
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b96c	cstring	0x1417271b8	having an intellectual discussion with a lover
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b980	cstring	0x141727308	having an intellectual discussion with a sibling
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b994	cstring	0x141727340	having an intellectual discussion with mother
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b9a8	cstring	0x141727370	having an intellectual discussion with father
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b9bc	cstring	0x1417273a0	having an intellectual discussion with a child
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b9d0	cstring	0x141727240	having an intellectual discussion with a friend
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b9e4	cstring	0x141727270	having an intellectual discussion with an acquaintance
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2b9f8	cstring	0x1417272a8	having an intellectual discussion with somebody
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ba27	cstring	0x1417272d8	sharing a personal insight with the spouse
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ba3b	cstring	0x141726588	sharing a personal insight with a lover
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ba4f	cstring	0x1417265b0	sharing a personal insight with a sibling
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ba63	cstring	0x1417265e0	sharing a personal insight with mother
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ba77	cstring	0x141726608	sharing a personal insight with father
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ba8b	cstring	0x1417264d0	sharing a personal insight with a child
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ba9f	cstring	0x1417264f8	sharing a personal insight with a friend
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bab3	cstring	0x141726528	sharing a personal insight with an acquaintance
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bac7	cstring	0x141726558	sharing a personal insight with somebody
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2baf6	cstring	0x1417266e0	sharing one of the spouse's personal insight
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bb0a	cstring	0x141726710	sharing a lover's personal insight
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bb1e	cstring	0x141726738	sharing a sibling's personal insight
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bb32	cstring	0x141726760	sharing one of mother's personal insight
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bb46	cstring	0x141726630	sharing one of father's personal insight
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bb5a	cstring	0x141726660	sharing a child's personal insight
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bb6e	cstring	0x141726688	sharing a friend's personal insight
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bb82	cstring	0x1417266b0	sharing an acquaintance's personal insight
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bb96	cstring	0x1417267e8	sharing somebody's personal insight
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bbaa	cstring	0x141727098	discussing 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bbcb	cstring	0x1415e9910	your
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bc0f	cstring	0x141726810	 problems with 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bc39	cstring	0x141726820	the spouse
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bc4d	cstring	0x141726830	a lover
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bc61	cstring	0x141726790	a sibling
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bc75	cstring	0x141641744	mother
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bc89	cstring	0x14164174c	father
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bc9d	cstring	0x141678cf8	a child
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bcb1	cstring	0x1417267a0	a friend
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bcc5	cstring	0x1417267b0	an acquaintance
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bcd9	cstring	0x1415e8570	somebody
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bd08	cstring	0x1417267c0	discussing the spouse's problems
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bd1c	cstring	0x1417268c0	discussing a lover's problems
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bd30	cstring	0x1417268e0	discussing a sibling's problems
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bd44	cstring	0x141726900	discussing mother's problems
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bd58	cstring	0x141726920	discussing father's problems
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bd6c	cstring	0x141726838	discussing a child's problems
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bd80	cstring	0x141726858	discussing a friend's problems
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bd94	cstring	0x141726878	discussing an acquaintance's problems
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bda8	cstring	0x1417268a0	discussing somebody's problems
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bde0	cstring	0x1417269b8	visiting with a pet
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bdf4	cstring	0x1417269d0	talking with the spouse
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2be08	cstring	0x1417269e8	talking with a lover
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2be1c	cstring	0x141726a00	talking with a sibling
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2be30	cstring	0x141726940	talking with mother
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2be44	cstring	0x141726958	talking with father
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2be58	cstring	0x141726970	talking with a child
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2be6c	cstring	0x141726988	visiting with an animal training partner
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2be80	cstring	0x141726ac0	talking with a friend
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2be94	cstring	0x141726ad8	talking with an acquaintance
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2beb2	cstring	0x1416369e4	when 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bebb	cstring	0x141724cc4	being 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bec7	cstring	0x141726af8	forced to talk to somebody annoying
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bedb	cstring	0x141726b20	talking with somebody
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bef8	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bf07	cstring	0x141726a18	conducting a meeting in 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bf37	cstring	0x14166a378	a setting worthy of legends
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bf4b	cstring	0x14166a398	a fantastic setting
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bf5f	cstring	0x141669e80	a great setting
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bf73	cstring	0x141669e90	a very good setting
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bf87	cstring	0x141669e50	a good setting
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bf9b	cstring	0x141669e60	a horribly substandard setting
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bfaf	cstring	0x141669e20	a horrible setting
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bfc3	cstring	0x141669e38	an awful setting
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bfd7	cstring	0x141669df8	a very poor setting
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bfeb	cstring	0x141669e10	a poor setting
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2bfff	cstring	0x141726a38	having to conduct an official meeting in a bedroom
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c013	cstring	0x141726a70	having to conduct an official meeting in a dining room
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c027	cstring	0x141726aa8	not having any rooms
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c03b	cstring	0x141726200	having 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c06b	cstring	0x141726b68	a legendary
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c07a	cstring	0x141726c60	 tomb after gaining another year
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c08e	cstring	0x141726b78	a fantastic
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c09d	cstring	0x141726c60	 tomb after gaining another year
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c0b1	cstring	0x141726b88	a great
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c0c0	cstring	0x141726c60	 tomb after gaining another year
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c0d4	cstring	0x141726b90	a very good
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c0e3	cstring	0x141726c60	 tomb after gaining another year
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c0f7	cstring	0x141726b38	a good
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c106	cstring	0x141726c60	 tomb after gaining another year
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c11a	cstring	0x141726b40	a poor
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c129	cstring	0x141726c60	 tomb after gaining another year
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c13d	cstring	0x141726b48	a very poor
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c14c	cstring	0x141726c60	 tomb after gaining another year
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c160	cstring	0x141726b58	an awful
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c16f	cstring	0x141726c60	 tomb after gaining another year
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c183	cstring	0x141726c38	a horrible
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c192	cstring	0x141726c60	 tomb after gaining another year
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c1a6	cstring	0x141726c48	a horribly substandard
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c1b5	cstring	0x141726c60	 tomb after gaining another year
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c1d2	cstring	0x141726c84	about 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c1e1	cstring	0x141726ba0	not having a tomb after gaining another year
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c1f5	cstring	0x141726bd0	after talking to a pillar of society
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c212	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c221	cstring	0x141726bf8	interacting with a pet
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c23e	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c24d	cstring	0x141726c10	a child was turned away from sanctuary
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c26a	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c279	cstring	0x141727a88	being expelled
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c296	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c2b7	cstring	0x1415e9910	your
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c2fb	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c332	cstring	0x1416d7b18	 was expelled
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c359	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c368	cstring	0x141727a98	a long-dead corpse was convicted of a crime
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c385	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c394	cstring	0x141727ac8	an animal was convicted of a crime
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c3b1	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c3c0	cstring	0x141727af0	the bizarre conviction against all reason of the victim of a crime
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c3dd	cstring	0x1417252e8	upon 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c3ec	cstring	0x1417279a8	receiving justice through a criminal's conviction
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c400	cstring	0x1417279e0	when a family member received justice through a criminal's conviction
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c441	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c450	cstring	0x141727a28	being forced to endure the decay of a pet
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c46d	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c47c	cstring	0x141727a58	being forced to endure the decay of a spouse
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c499	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c4a8	cstring	0x141727c18	being forced to endure the decay of a lover
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c4c5	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c4d4	cstring	0x141727c48	being forced to endure the decay of a sibling
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c4f1	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c500	cstring	0x141727c78	being forced to endure the decay of a mother
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c51d	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c52c	cstring	0x141727ca8	being forced to endure the decay of a father
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c549	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c558	cstring	0x141727b38	being forced to endure the decay of a child
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c575	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c584	cstring	0x141727b68	being forced to endure the decay of an animal training partner
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c5a1	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c5b0	cstring	0x141727ba8	being forced to endure the decay of a friend
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c5cd	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c5dc	cstring	0x141727bd8	being forced to endure the decay of an annoying acquaintance
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c5f9	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c608	cstring	0x141727d58	being forced to endure the decay of an acquaintance
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c63b	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c64a	cstring	0x141727d90	being away from people for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c667	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c676	cstring	0x141727db8	being kept from alcohol for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c693	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c6a2	cstring	0x141727de0	being unable to pray
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c6bc	cstring	0x1415e8524	 to 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c6fe	cstring	0x141727cd8	 for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c71b	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c72a	cstring	0x141727ce8	being unoccupied for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c747	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c756	cstring	0x141727d08	being unable to admire art for so long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c773	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c782	cstring	0x141727d30	doing nothing creative for so long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c79f	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c7ae	cstring	0x141727ea8	leading an unexciting life for so long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c7cb	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c7da	cstring	0x141727ed0	not learning anything for so long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c7f7	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c806	cstring	0x141727ef8	being away from family for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c823	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c832	cstring	0x141727f20	being away from friends for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c84f	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c85e	cstring	0x141727df8	being unable to hear eloquent speech for so long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c87b	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c88a	cstring	0x141727e30	being away from traditions for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c8a7	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c8b6	cstring	0x141727e58	a lack of introspection for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c8d3	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c8e2	cstring	0x141727e80	being unable to make merry for so long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c8ff	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c90e	cstring	0x141728000	being unable to practice a craft for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c92b	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c93a	cstring	0x141728030	being unable to practice a martial art for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c957	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c966	cstring	0x141728068	being unable to practice a skill for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c983	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c992	cstring	0x141728098	being unable to take it easy for so long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c9af	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c9be	cstring	0x141727f48	being unable to make romance for so long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c9db	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2c9ea	cstring	0x141727f78	being away from animals for so long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ca07	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ca16	cstring	0x141727fa0	being away from great beasts for so long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ca33	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ca42	cstring	0x141727fd0	being unable to acquire something for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ca5f	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ca6e	cstring	0x141728180	a lack of decent meals for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ca8b	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ca9a	cstring	0x1417281a8	being unable to fight for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cab7	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cac6	cstring	0x1417281d0	a lack of trouble-making for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cae3	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2caf2	cstring	0x1417281f8	being unable to argue for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cb0f	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cb1e	cstring	0x1417280c8	being unable to be extravagant for so long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cb3b	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cb4a	cstring	0x1417280f8	being unable to wander for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cb67	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cb76	cstring	0x141728120	being unable to help anybody for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cb93	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cba2	cstring	0x141728150	a lack of abstract thinking for too long
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cbbf	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cbce	cstring	0x141728298	performing the rites of 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cbf2	cstring	0x1416d23b8	 in a dedicated temple
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cc0f	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cc1e	cstring	0x1417282b8	incompletely performing the rites of 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cc42	cstring	0x1416d2300	 in an improperly dedicated temple
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cc5f	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cc6e	cstring	0x1417282b8	incompletely performing the rites of 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cc92	cstring	0x1416d22e0	 in an undedicated temple
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ccaf	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ccbe	cstring	0x1417282e0	communing with 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cd00	cstring	0x1416d23b8	 in a dedicated temple
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cd1d	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cd2c	cstring	0x1417282e0	communing with 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cd7c	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cd91	cstring	0x1417282f0	defeating somebody
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cda6	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cdbb	cstring	0x141728220	murdering somebody
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cdd0	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cde5	cstring	0x141728238	abducting somebody
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cdfa	cstring	0x1416d2f40	during 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ce62	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ce77	cstring	0x141728250	preying on the blood of civilized creatures
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ce8d	cstring	0x1416d2ea0	being unnaturally ageless
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cea6	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cebb	cstring	0x141728280	a scholarly lecture in 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2ceed	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cf02	cstring	0x141728330	a performance in 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cf14	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cf29	cstring	0x1416237d8	accepting bribes in exchange for leniency
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cf3e	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cf53	cstring	0x141623788	embezzling funds
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cf65	cstring	0x1416d2e98	after 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cf7a	cstring	0x141728348	receiving a cut of corruptly-obtained funds
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cf8f	cstring	0x1416d22b8	from afar
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cf9d	cstring	0x141728378	being far away
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cfb4	cstring	0x1416d2f40	during 
+classic	PE:6a70b91c:0270a000	0x140e273d0	0x140e2cfc3	cstring	0x141728388	an infiltration mission

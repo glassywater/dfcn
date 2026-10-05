@@ -36605,6 +36605,7 @@ Conversation keyword: crime of attempted theft	盗窃未遂罪	l
 Conversation keyword: invoke true name service	念出 真名 效力	l
 Conversation keyword: monster slayer join work	怪物猎手 加入 工作	l
 Conversation prompt: What do you want to know?	你想了解什么？	l
+Conversation relationship: Low respect for you	不太尊敬你	l
 DFHack GUI Control tool: adamantine-cloth-wear	精金衣物不磨损（adamantine-cloth-wear）	l
 DFHack GUI Control tool: advtools.conversation	对话关键词（advtools.conversation）	l
 DFHack GUI Control tool: fix/stuck-instruments	修复卡住的乐器（fix/stuck-instruments）	l
@@ -37992,6 +37993,7 @@ Conversation keyword: offer transfer position	提议 转让 职位	l
 Conversation keyword: tavern keeper join work	酒保 加入 工作	l
 Conversation prompt: Where do you want to go?	你想去哪里？	l
 Conversation prompt: Which pet will you gift?	你要赠送哪只宠物？	l
+Conversation relationship: No respect for you	不尊敬你	l
 DFHack GUI Autodump: Forbid after teleporting	传送后禁用物品	l
 DFHack GUI Control tool: buildingplan.planner	建筑规划面板（buildingplan.planner）	l
 DFHack GUI Control tool: dwarfmonitor.weather	当前天气（dwarfmonitor.weather）	l
@@ -40883,6 +40885,7 @@ Conversation keyword: goodbye bye done quit	再见 告别 完毕 结束	l
 Conversation keyword: righteous indignation	义愤	l
 Conversation keyword: sleep permission rest	留宿 许可 休息	l
 Conversation prompt: About whom do you ask?	你想打听谁？	l
+Conversation relationship: Terrified of you	极度害怕你	l
 DFHack GUI Caption: Click here to Backspace	点击此处退格	l
 DFHack GUI Control tool: burrow.designation	活动区域填充与框选（burrow.designation）	l
 DFHack GUI Control tool: exportlegends.mask	传奇导出退出保护（exportlegends.mask）	l
@@ -44084,6 +44087,9 @@ Conversation keyword: performer join work	表演者 加入 工作	l
 Conversation keyword: profession job work	职业 职务 工作	l
 Conversation keyword: profession work job	职业 工作 职务	l
 Conversation keyword: prophecy prophesize	预言 作出预言	l
+Conversation portrait label: General Mood	整体心情：	l
+Conversation portrait label: Relationship	与你的关系：	l
+Conversation relationship: No fear of you	不怕你	l
 Converting gathering blueprint to regular	将采集蓝图转为普通指定区域	wo
 Converting smoothing blueprint to regular	将打磨蓝图转为普通指定区域	wo
 DFHack GUI Autodump: Clear selected items	清除已选物品	l
@@ -44798,6 +44804,7 @@ began dreaming of falling in love at {p}.	在{p1}开始梦想坠入爱河。	ht
 began dreaming of falling in love in {p}.	在{p1}开始梦想坠入爱河。	ht
 began wandering around {p} {p} during {e}	在{e1}期间开始在{p2}的{p1}周边游荡	ht
 began wandering around {p} {p} within {p}	在{p3}开始在{p2}的{p1}周边游荡	ht
+being forced to talk to somebody annoying	被迫与令人讨厌的人交谈	wi
 being tormented in nightmares by the dead	在噩梦中被死者折磨	wi
 being unable to help anybody for too long	太久未能帮助别人	wi
 being unable to request weapon production	无法请求生产武器	wi
@@ -45717,6 +45724,8 @@ Conversation keyword: drop done stop end	作罢 完毕 停止 结束	l
 Conversation keyword: existential crisis	存在危机	l
 Conversation keyword: item suggest trade	物品 建议 交易	l
 Conversation keyword: list service order	列出 服务 订单	l
+Conversation relationship: Distrusts you	不信任你	l
+Conversation relationship: Scared of you	害怕你	l
 Converting chopping blueprint to regular	将砍伐蓝图转为普通指定区域	wo
 Create a creature to place in the arena.	创建一只生物并将其放入竞技场。	hj
 DFHack GUI Control tool: ban-cooking all	保护烹饪原料（ban-cooking all）	l
@@ -47379,6 +47388,9 @@ Conversation keyword: scholar join work	学者 加入 工作	l
 Conversation keyword: surgeon join work	外科医师 加入 工作	l
 Conversation keyword: surroundings area	周边 地区	l
 Conversation prompt: What will you say?	你想说些什么？	l
+Conversation relationship: Dislikes you	不喜欢你	l
+Conversation relationship: Highly Loyal	非常忠诚	l
+Conversation relationship: Respects you	尊敬你	l
 DFHack GUI Autodump: Undo destroy items	撤销物品销毁	l
 DFHack GUI Caption: Hit "A" to add one!	按 A 添加命令！	l
 DFHack GUI Caption: Send text to parent	将文字输入原界面	l
@@ -50916,6 +50928,8 @@ Conversation keyword: martial prowess	武艺	l
 Conversation keyword: monster slayers	怪物猎手	l
 Conversation keyword: pending service	待办 服务	l
 Conversation keyword: yield surrender	屈服 投降	l
+Conversation mood: Existential Crisis	存在危机	l
+Conversation relationship: Trusts you	信任你	l
 Credits: Nathan Miller aka Rainseeker	Nathan Miller aka Rainseeker	wl
 Credits: SDL port, additional changes	SDL 移植及其他改进	wl
 Curse this fog! I cannot see a thing.	这该死的雾！我什么都看不见。	hP
@@ -52712,6 +52726,9 @@ Conversation keyword: refuse mock no	拒绝 讥讽 否	l
 Conversation keyword: reputation who	声誉 谁	l
 Conversation keyword: revoke service	撤销 任职	l
 Conversation keyword: tavern keepers	酒保	l
+Conversation relationship: Hates you	憎恨你	l
+Conversation relationship: Likes you	喜欢你	l
+Conversation relationship: Loves you	爱你	l
 Create a tree to place in the arena.	创建一棵树并将其放入竞技场。	hj
 Create a tree to place in the arena.	创建一棵树并将其放入竞技场。	l
 DFHack GUI Control tool: autobutcher	自动屠宰（autobutcher）	l
@@ -54597,6 +54614,7 @@ Conversation keyword: mortification	羞愧难当	l
 Conversation keyword: service order	服务 订单	l
 Conversation keyword: tavern keeper	酒保	l
 Conversation keyword: worthlessness	毫无价值	l
+Conversation mood: Grimly Satisfied	冷酷的满足	l
 Create a sharp rock with two rocks.	用两块石头制作一块尖石。	w
 Cull Unimportant Historical Figures	清理不重要的历史人物
 DFHack GUI Control tool: autocheese	自动制作奶酪（autocheese）	l
@@ -56616,6 +56634,8 @@ Bring up {p}'s refusal to give {i}	谈起{p1}拒绝交出{i1}这件事	hPt
 Cannot make request without leader	没有领袖，无法提出请求。	hP
 Click a tile to position the stop.	点击格子设置停靠点的位置。	hP
 Climb to {s} ({s} holding {s}/Air)	攀向{s1}（{s2}，抓着{s3}／空气）	hPt
+Conversation demeanor: Acquiescent	顺从	l
+Conversation event collection: {s}	在{s1}期间	ht
 Conversation keyword: astonishment	惊讶	l
 Conversation keyword: being shaken	动摇	l
 Conversation keyword: bone doctors	骨科医师	l
@@ -56623,6 +56643,7 @@ Conversation keyword: embarassment	尴尬	l
 Conversation keyword: embezzlement	挪用资金	l
 Conversation keyword: exasperation	懊恼	l
 Conversation keyword: exhilaration	欢腾	l
+Conversation keyword: experiencing	经历	l
 Conversation keyword: hopelessness	绝望感	l
 Conversation keyword: independence	独立自主	l
 Conversation keyword: insurrection	起义	l
@@ -56637,6 +56658,7 @@ Conversation keyword: state values	阐述 价值观	l
 Conversation keyword: surroundings	周边	l
 Conversation keyword: troublemaker	惹事精	l
 Conversation keyword: vengefulness	复仇心	l
+Conversation relationship: Neutral	中立	l
 DFHack GUI Autodump: Destroy items	销毁物品	l
 DFHack GUI Caption: Capture output	显示输出	l
 DFHack GUI Caption: Delete command	删除命令	l
@@ -58735,6 +58757,7 @@ Click to view all news and rumors	点击查看所有消息和传闻。	hP
 Climb to {s} ({s} releasing hold)	攀向{s1}（{s2}，松开抓住的手）	hPt
 Coffin rejected (already in use.)	棺材未被选用（已被占用）	hP
 Come see me in my store sometime.	有空到我的商店来找我。	hP
+Conversation demeanor: Unassuming	谦逊	l
 Conversation keyword: aggravation	恼火	l
 Conversation keyword: ambivalence	没什么特别的感觉	l
 Conversation keyword: bone doctor	骨科医师	l
@@ -60700,6 +60723,8 @@ Civilizations and other entities	文明及其他实体
 Click a building to link to {s}.	点击一个建筑，将其连接到{s1}。	hPt
 Click an icon to add a new zone.	点击图标添加新区域。	hP
 Competing were {a} in the wilds.	在荒野中，参赛者有{a1}。	ht
+Conversation demeanor: Confident	自信	l
+Conversation demeanor: Impatient	不耐烦	l
 Conversation keyword: acceptance	接受	l
 Conversation keyword: admiration	钦佩	l
 Conversation keyword: alienation	疏离感	l
@@ -60742,6 +60767,8 @@ Conversation keyword: tenderness	温柔	l
 Conversation keyword: terrifying	骇人	l
 Conversation keyword: uneasiness	不安	l
 Conversation keyword: withdrawal	撤军	l
+Conversation mood: Disillusioned	幻灭	l
+Conversation relationship: Loyal	忠诚	l
 Converting to chopping blueprint	将砍伐指定区域转为蓝图	wo
 DFHack GUI Caption: Edit command	编辑命令	l
 DFHack GUI Caption: Name/Command	名称／命令	l
@@ -61793,6 +61820,7 @@ learned {s} from {b} during {e}.	在{e1}期间从{b1}中学会了{s1}。	ht
 learned {s} from {b} within {p}.	在{p1}从{b1}中学会了{s1}。	ht
 learned {s} from {i} during {e}.	在{e1}期间从{i1}中学会了{s1}。	ht
 learned {s} from {i} within {p}.	在{p1}从{i1}中学会了{s1}。	ht
+learning an untitled composition	学习无题作品	wi
 led the attack on {a} during {e}	在{e1}期间率领进攻了{a1}	ht
 led the attack on {a} within {p}	在{p1}率领进攻了{a1}	ht
 legendary preserver of knowledge	传奇博学大师	h
@@ -62719,6 +62747,10 @@ Comment on natural surroundings	评论周围的自然环境	hP
 Competing were {a} in the wilds	在荒野中，参赛者有{a1}	ht
 Compressed saves (recommended!)	压缩保存(推荐!)	w
 Conflicts with Dwarvemon_E_TYPE	与 Dwarvemon_E_TYPE 冲突
+Conversation demeanor: Agitated	烦躁	l
+Conversation demeanor: Animated	活跃	l
+Conversation demeanor: Inactive	消沉	l
+Conversation demeanor: Sluggish	迟缓	l
 Conversation keyword: abduction	绑架	l
 Conversation keyword: acquiesce	默认接受	l
 Conversation keyword: adoration	崇拜	l
@@ -62740,6 +62772,7 @@ Conversation keyword: diplomacy	外交	l
 Conversation keyword: dismissal	敷衍	l
 Conversation keyword: eagerness	渴望	l
 Conversation keyword: eloquence	口才	l
+Conversation keyword: emotional	情绪	l
 Conversation keyword: emptiness	空虚	l
 Conversation keyword: encourage	鼓励	l
 Conversation keyword: enjoyment	愉快	l
@@ -62749,6 +62782,7 @@ Conversation keyword: fantastic	好极了	l
 Conversation keyword: gratitude	感激	l
 Conversation keyword: happiness	快乐	l
 Conversation keyword: hard work	勤勉	l
+Conversation keyword: improving	提高	l
 Conversation keyword: isolation	孤立	l
 Conversation keyword: jolliness	开心	l
 Conversation keyword: joviality	快乐开朗	l
@@ -62772,6 +62806,7 @@ Conversation keyword: self pity	自怜	l
 Conversation keyword: self-pity	自怜	l
 Conversation keyword: servility	卑躬屈膝	l
 Conversation keyword: snatching	掳走	l
+Conversation keyword: something	一些	l
 Conversation keyword: structure	建筑	l
 Conversation keyword: surrender	投降	l
 Conversation keyword: suspicion	怀疑	l
@@ -62780,6 +62815,9 @@ Conversation keyword: tradition	传统	l
 Conversation keyword: true name	真名	l
 Conversation keyword: vandalism	蓄意破坏	l
 Conversation keyword: violation	违反	l
+Conversation mood: Contemptuous	轻蔑	l
+Conversation mood: Disappointed	失望	l
+Conversation mood: Enthusiastic	热情	l
 Credits: Premium DF Playtesting	《矮人要塞》高级版试玩测试	wl
 Current top guildhall location:	当前等级最高的行会大厅地点：	wl
 DFHack GUI Caption: Add command	添加命令	l
@@ -64969,6 +65007,7 @@ Competing were {a} during {e}.	在{e1}期间，参赛者有{a1}。	ht
 Competing were {a} within {p}.	在{p1}，参赛者有{a1}。	ht
 Conflicts with Dwarvemon_E_ALL	与 Dwarvemon_E_ALL 冲突	w
 Continue conversation with {n}	继续与{n1}交谈	hPt
+Conversation demeanor: Patient	有耐心	l
 Conversation keyword: a thrill	激动	l
 Conversation keyword: ancestor	祖先	l
 Conversation keyword: announce	宣布	l
@@ -64993,6 +65032,7 @@ Conversation keyword: fairness	公道	l
 Conversation keyword: favorite	最喜欢	l
 Conversation keyword: feelings	感受	l
 Conversation keyword: ferocity	凶狠	l
+Conversation keyword: fighting	战斗	l
 Conversation keyword: flattery	奉承	l
 Conversation keyword: fondness	喜欢	l
 Conversation keyword: founding	建立	l
@@ -65031,12 +65071,19 @@ Conversation keyword: sympathy	同情	l
 Conversation keyword: terrible	糟糕	l
 Conversation keyword: terrific	太棒了	l
 Conversation keyword: thoughts	想法	l
+Conversation keyword: tracking	追踪	l
 Conversation keyword: transfer	转让	l
 Conversation keyword: treasure	宝藏	l
 Conversation keyword: troubles	烦恼	l
 Conversation keyword: unneeded	不需要	l
+Conversation keyword: verbally	口头	l
 Conversation keyword: vigilant	警惕	l
 Conversation keyword: withdraw	撤离	l
+Conversation mood: Displeasure	不满	l
+Conversation mood: Embarrassed	尴尬	l
+Conversation mood: Exasperated	懊恼	l
+Conversation mood: Exhilarated	欢腾	l
+Conversation mood: Pessimistic	悲观	l
 Converting mining to blueprint	将挖掘指定区域转为蓝图	wo
 Credits: Lead Audio Programmer	首席音频程序员	wl
 Credits: Lots of HTML/IT stuff	大量 HTML 与信息技术工作	wl
@@ -67277,6 +67324,7 @@ Competing were {a} within {p}	在{p1}，参赛者有{a1}	ht
 Conquest of {p} in the wilds.	在荒野中，征服「{p1}」。	htEi
 Conversation keyword: absence	失踪	l
 Conversation keyword: accords	符合	l
+Conversation keyword: against	对抗	l
 Conversation keyword: anguish	痛苦万分	l
 Conversation keyword: anxiety	焦虑	l
 Conversation keyword: approve	赞同	l
@@ -67307,6 +67355,7 @@ Conversation keyword: failure	失败	l
 Conversation keyword: feeling	感受	l
 Conversation keyword: flatter	恭维	l
 Conversation keyword: freedom	自由感	l
+Conversation keyword: general	概括	l
 Conversation keyword: goodbye	再见	l
 Conversation keyword: harmony	和谐	l
 Conversation keyword: journey	旅程	l
@@ -67351,6 +67400,24 @@ Conversation keyword: village	村庄	l
 Conversation keyword: weather	天气	l
 Conversation keyword: welcome	欢迎	l
 Conversation keyword: writing	著作	l
+Conversation mood: Admiration	钦佩	l
+Conversation mood: Aggravated	恼火	l
+Conversation mood: Ambivalent	没什么特别的感觉	l
+Conversation mood: Astonished	惊讶	l
+Conversation mood: Distressed	苦恼	l
+Conversation mood: Empathetic	感同身受	l
+Conversation mood: Enraptured	陶醉	l
+Conversation mood: Frightened	惊恐	l
+Conversation mood: Frustrated	挫败	l
+Conversation mood: Humiliated	屈辱	l
+Conversation mood: In Anguish	痛苦不堪	l
+Conversation mood: Interested	感兴趣	l
+Conversation mood: Optimistic	乐观	l
+Conversation mood: Passionate	热血沸腾	l
+Conversation mood: Remorseful	懊悔	l
+Conversation mood: Suspicious	怀疑	l
+Conversation mood: Tenderness	温柔	l
+Conversation mood: Triumphant	得意	l
 Credits: Bug Tracker Managers	问题追踪系统管理员	wl
 DFHack GUI Caption: Edit name	编辑名称	l
 DFHack GUI Mass remove: Mode:	模式：	l
@@ -69450,6 +69517,7 @@ Conversation keyword: ribald	荤诗	l
 Conversation keyword: riddle	谜语	l
 Conversation keyword: scheme	阴谋	l
 Conversation keyword: scribe	抄写员	l
+Conversation keyword: seeing	目睹	l
 Conversation keyword: shaken	动摇	l
 Conversation keyword: slayer	猎手	l
 Conversation keyword: solemn	庄严	l
@@ -69457,11 +69525,34 @@ Conversation keyword: tavern	酒馆	l
 Conversation keyword: terror	恐惧	l
 Conversation keyword: thanks	感谢	l
 Conversation keyword: thrill	激动	l
+Conversation keyword: trauma	创伤	l
 Conversation keyword: travel	旅行	l
 Conversation keyword: troupe	表演团	l
 Conversation keyword: values	价值观	l
 Conversation keyword: vermin	害兽	l
 Conversation keyword: wonder	惊叹	l
+Conversation mood: Accepting	接受	l
+Conversation mood: Adoration	崇拜	l
+Conversation mood: Affection	喜爱	l
+Conversation mood: Alienated	疏离	l
+Conversation mood: Apathetic	冷漠	l
+Conversation mood: Delighted	欣喜	l
+Conversation mood: Disgusted	厌恶	l
+Conversation mood: Enjoyment	愉快	l
+Conversation mood: Expectant	期待	l
+Conversation mood: Ferocious	凶狠	l
+Conversation mood: Horrified	惊骇	l
+Conversation mood: Indignant	义愤	l
+Conversation mood: Irritated	恼怒	l
+Conversation mood: Miserable	悲惨	l
+Conversation mood: Mortified	羞愧难当	l
+Conversation mood: Nostalgic	怀旧	l
+Conversation mood: Regretful	后悔	l
+Conversation mood: Repentant	忏悔	l
+Conversation mood: Resentful	怨恨	l
+Conversation mood: Satisfied	满意	l
+Conversation mood: Self-pity	自怜	l
+Conversation mood: Terrified	极度恐惧	l
 Credits: Annie Forsman-Adams	Annie Forsman-Adams	wl
 Credits: DF 2010 Playtesting	《矮人要塞》2010 年版试玩测试	wl
 Credits: Initial Playtesting	早期试玩测试	wl
@@ -71508,7 +71599,10 @@ Closing Ceremony during {e}	在{e1}期间，闭幕仪式	htEi
 Closing Ceremony within {p}	在{p1}，闭幕仪式	htEi
 Conquest of {p} during {e}.	在{e1}期间，征服「{p1}」。	htEi
 Conquest of {p} within {p}.	在{p2}，征服「{p1}」。	htEi
+Conversation demeanor: Bold	大胆	l
+Conversation keyword: about	关于	l
 Conversation keyword: adopt	收养	l
+Conversation keyword: after	之后	l
 Conversation keyword: agony	极度痛苦	l
 Conversation keyword: agree	同意	l
 Conversation keyword: alarm	惊慌	l
@@ -71528,6 +71622,7 @@ Conversation keyword: debts	债务	l
 Conversation keyword: doubt	怀疑	l
 Conversation keyword: drink	饮用	l
 Conversation keyword: drive	驱逐	l
+Conversation keyword: dwarf	矮人	l
 Conversation keyword: enemy	敌人	l
 Conversation keyword: enjoy	享受	l
 Conversation keyword: exile	流放	l
@@ -71553,6 +71648,7 @@ Conversation keyword: laugh	大笑	l
 Conversation keyword: leave	离开	l
 Conversation keyword: light	轻快	l
 Conversation keyword: march	进军	l
+Conversation keyword: minor	些许	l
 Conversation keyword: music	音乐	l
 Conversation keyword: night	夜行	l
 Conversation keyword: offer	提议	l
@@ -71590,6 +71686,33 @@ Conversation keyword: where	哪里	l
 Conversation keyword: worry	担心	l
 Conversation keyword: wrath	暴怒	l
 Conversation keyword: yield	屈服	l
+Conversation mood: Agitated	躁动	l
+Conversation mood: Blissful	极度幸福	l
+Conversation mood: Confused	困惑	l
+Conversation mood: Defeated	挫败	l
+Conversation mood: Dejected	沮丧	l
+Conversation mood: Dismayed	沮丧	l
+Conversation mood: Eexcited	兴奋	l
+Conversation mood: Euphoric	欣快	l
+Conversation mood: Fondness	喜欢	l
+Conversation mood: Grateful	感激	l
+Conversation mood: Grieving	悲伤	l
+Conversation mood: Hopeless	绝望	l
+Conversation mood: In Agony	极度痛苦	l
+Conversation mood: Insulted	受辱	l
+Conversation mood: Isolated	孤立	l
+Conversation mood: Jubilant	欢腾	l
+Conversation mood: Loathing	憎恶	l
+Conversation mood: Outraged	愤慨	l
+Conversation mood: Panicked	惊慌失措	l
+Conversation mood: Pleasure	愉悦	l
+Conversation mood: Rejected	感到被拒绝	l
+Conversation mood: Relieved	如释重负	l
+Conversation mood: Restless	躁动不安	l
+Conversation mood: Sympathy	同情	l
+Conversation mood: Thrilled	激动	l
+Conversation mood: Vengeful	想要复仇	l
+Conversation mood: Wrathful	暴怒	l
 Create a creature to begin.	请先创建一个生物。	l
 Creating {s} ({d} rejected)	正在生成{s}（已拒绝 {d} 次）	wtl
 Current guildhall location:	当前行会大厅地点：	wl
@@ -73726,6 +73849,7 @@ Conversation keyword: lust	欲望	l
 Conversation keyword: mock	讥讽	l
 Conversation keyword: name	名字	l
 Conversation keyword: okay	还可以	l
+Conversation keyword: pike	长枪术	l
 Conversation keyword: pity	怜惜	l
 Conversation keyword: plan	计划	l
 Conversation keyword: plot	密谋	l
@@ -73748,10 +73872,33 @@ Conversation keyword: task	任务	l
 Conversation keyword: tell	讲述	l
 Conversation keyword: town	城镇	l
 Conversation keyword: true	真正的	l
+Conversation keyword: upon	之后	l
 Conversation keyword: wait	等待	l
 Conversation keyword: what	什么	l
 Conversation keyword: work	工作	l
+Conversation keyword: your	你的	l
 Conversation keyword: zeal	热忱	l
+Conversation mood: Alarmed	惊慌	l
+Conversation mood: Annoyed	烦恼	l
+Conversation mood: Anxious	焦虑	l
+Conversation mood: Aroused	兴奋	l
+Conversation mood: Ashamed	羞愧	l
+Conversation mood: Content	满足	l
+Conversation mood: Despair	绝望	l
+Conversation mood: Dislike	反感	l
+Conversation mood: Enraged	狂怒	l
+Conversation mood: Gleeful	欢喜	l
+Conversation mood: Grouchy	脾气暴躁	l
+Conversation mood: Hateful	仇恨	l
+Conversation mood: Hopeful	充满希望	l
+Conversation mood: Lustful	充满欲望	l
+Conversation mood: Nervous	紧张	l
+Conversation mood: Patient	耐心	l
+Conversation mood: Servile	卑躬屈膝	l
+Conversation mood: Shocked	震惊	l
+Conversation mood: Unhappy	不快	l
+Conversation mood: Worried	担心	l
+Conversation mood: Zealous	热忱	l
 Credits: Alexandra Orlando	Alexandra Orlando	wl
 Credits: Patrick Schroeder	Patrick Schroeder	wl
 DFHack GUI Caption: Cancel	取消	l
@@ -75713,9 +75860,29 @@ Conversation keyword: out	出去	l
 Conversation keyword: pet	宠物	l
 Conversation keyword: rob	抢夺	l
 Conversation keyword: sad	难过	l
+Conversation keyword: say	说	l
 Conversation keyword: war	战争	l
 Conversation keyword: who	谁	l
 Conversation keyword: yes	是	l
+Conversation mood: Afraid	害怕	l
+Conversation mood: Amazed	惊奇	l
+Conversation mood: Amused	愉快	l
+Conversation mood: Averse	厌恶	l
+Conversation mood: Bitter	苦涩	l
+Conversation mood: Caring	关心	l
+Conversation mood: Elated	狂喜	l
+Conversation mood: Gaiety	欢快	l
+Conversation mood: Gloomy	阴郁	l
+Conversation mood: Grumpy	闷闷不乐	l
+Conversation mood: Guilty	内疚	l
+Conversation mood: In Awe	敬畏	l
+Conversation mood: Jovial	快乐开朗	l
+Conversation mood: Joyous	喜悦	l
+Conversation mood: Lonely	孤独	l
+Conversation mood: Loving	充满爱意	l
+Conversation mood: Shaken	震惊不安	l
+Conversation mood: Uneasy	不安	l
+Conversation mood: Wonder	惊叹	l
 Corrupt Soldier Mood: {d}	异常的军人情绪：{d1}	hPt
 Corrupt Strange Mood: {d}	异常的怪异心情：{d1}	hPt
 Crawling around babbling!	胡言乱语地四处爬行！	hP
@@ -77483,6 +77650,14 @@ Confirm and save uniform	确认并保存制式服装	w
 Conflicts with Dwarvemon	与 Dwarvemon 冲突
 Conversation keyword: me	我	l
 Conversation keyword: no	否	l
+Conversation mood: Angry	愤怒	l
+Conversation mood: Bored	无聊	l
+Conversation mood: Doubt	怀疑	l
+Conversation mood: Eager	渴望	l
+Conversation mood: Empty	空虚	l
+Conversation mood: Happy	快乐	l
+Conversation mood: Jolly	开心	l
+Conversation mood: Proud	自豪	l
 Copy output to clipboard	复制输出到剪贴板	w
 Credits: Commmunications	社区沟通	wl
 Credits: Theodorick Grau	Theodorick Grau	wl
@@ -79420,6 +79595,8 @@ Conquest of {p} in {p}.	在{p2}，征服「{p1}」。	htEi
 Construction initiated.	建造已开始。	wli
 Construction suspended.	建造暂停。	wli
 Conversation (Conflict)	对话（冲突）	w
+Conversation mood: Free	自由自在	l
+Conversation mood: Glum	忧郁	l
 Copper-bearing boulders	含铜矿石	wi
 Crawling around crazed!	发疯般四处爬行！	hP
 Credits: Anthony Drawdy	Anthony Drawdy	wl
@@ -81402,6 +81579,7 @@ Conquest of {p} in {p}	在{p2}，征服「{p1}」	htEi
 Considered an intruder	被看做是一名入侵者	w
 Construction inactive.	建造任务未启动。	wli
 Construction suspended	建造暂停	w
+Conversation mood: Sad	悲伤	l
 Cook meals here.  You 	在此烹饪餐食。你也可以将脂肪	w
 Craftsdwarf's Workshop	工艺品工坊	wi
 Create a tree to place	创建一棵树，	l

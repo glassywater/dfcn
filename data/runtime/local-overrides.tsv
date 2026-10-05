@@ -9341,6 +9341,167 @@ ambivalence	没什么特别的感觉	wi
 # Conversation-only search vocabulary, shared by full keyword rows and search.
 # These lookup-only senses never replace words inside unrelated prose.
 Conversation keyword label	关键词：	l
+# Complete portrait text branches from both configured native renderers:
+# data/extracted/adventure-conversation-portrait/.
+Conversation portrait label: Relationship	与你的关系：	l
+Conversation portrait label: General Mood	整体心情：	l
+Conversation event collection: {s}	在{s1}期间	ht
+Conversation demeanor: Patient	有耐心	l
+Conversation demeanor: Impatient	不耐烦	l
+Conversation demeanor: Animated	活跃	l
+Conversation demeanor: Agitated	烦躁	l
+Conversation demeanor: Sluggish	迟缓	l
+Conversation demeanor: Inactive	消沉	l
+Conversation demeanor: Bold	大胆	l
+Conversation demeanor: Confident	自信	l
+Conversation demeanor: Acquiescent	顺从	l
+Conversation demeanor: Unassuming	谦逊	l
+Conversation relationship: Loves you	爱你	l
+Conversation relationship: Likes you	喜欢你	l
+Conversation relationship: Hates you	憎恨你	l
+Conversation relationship: Dislikes you	不喜欢你	l
+Conversation relationship: Terrified of you	极度害怕你	l
+Conversation relationship: Scared of you	害怕你	l
+Conversation relationship: No fear of you	不怕你	l
+Conversation relationship: Respects you	尊敬你	l
+Conversation relationship: No respect for you	不尊敬你	l
+Conversation relationship: Low respect for you	不太尊敬你	l
+Conversation relationship: Trusts you	信任你	l
+Conversation relationship: Distrusts you	不信任你	l
+Conversation relationship: Highly Loyal	非常忠诚	l
+Conversation relationship: Loyal	忠诚	l
+Conversation relationship: Neutral	中立	l
+# All 129 text-bearing branches of the native 0..168 mood switch.
+# Eexcited is the native spelling and must remain a source key.
+Conversation mood: Annoyed	烦恼	l
+Conversation mood: Satisfied	满意	l
+Conversation mood: Grouchy	脾气暴躁	l
+Conversation mood: Grumpy	闷闷不乐	l
+Conversation mood: Fondness	喜欢	l
+Conversation mood: Suspicious	怀疑	l
+Conversation mood: Alarmed	惊慌	l
+Conversation mood: Shocked	震惊	l
+Conversation mood: Horrified	惊骇	l
+Conversation mood: Grimly Satisfied	冷酷的满足	l
+Conversation mood: Grieving	悲伤	l
+Conversation mood: Triumphant	得意	l
+Conversation mood: Enraged	狂怒	l
+Conversation mood: Eexcited	兴奋	l
+Conversation mood: Gaiety	欢快	l
+Conversation mood: Sad	悲伤	l
+Conversation mood: Joyous	喜悦	l
+Conversation mood: Blissful	极度幸福	l
+Conversation mood: Loving	充满爱意	l
+Conversation mood: Vengeful	想要复仇	l
+Conversation mood: Accepting	接受	l
+Conversation mood: Admiration	钦佩	l
+Conversation mood: Adoration	崇拜	l
+Conversation mood: Affection	喜爱	l
+Conversation mood: Agitated	躁动	l
+Conversation mood: Aggravated	恼火	l
+Conversation mood: In Agony	极度痛苦	l
+Conversation mood: Alienated	疏离	l
+Conversation mood: Amazed	惊奇	l
+Conversation mood: Ambivalent	没什么特别的感觉	l
+Conversation mood: Amused	愉快	l
+Conversation mood: Angry	愤怒	l
+Conversation mood: In Anguish	痛苦不堪	l
+Conversation mood: Anxious	焦虑	l
+Conversation mood: Apathetic	冷漠	l
+Conversation mood: Aroused	兴奋	l
+Conversation mood: Astonished	惊讶	l
+Conversation mood: Averse	厌恶	l
+Conversation mood: In Awe	敬畏	l
+Conversation mood: Bitter	苦涩	l
+Conversation mood: Bored	无聊	l
+Conversation mood: Caring	关心	l
+Conversation mood: Confused	困惑	l
+Conversation mood: Contemptuous	轻蔑	l
+Conversation mood: Content	满足	l
+Conversation mood: Dejected	沮丧	l
+Conversation mood: Delighted	欣喜	l
+Conversation mood: Despair	绝望	l
+Conversation mood: Disappointed	失望	l
+Conversation mood: Disgusted	厌恶	l
+Conversation mood: Disillusioned	幻灭	l
+Conversation mood: Dislike	反感	l
+Conversation mood: Dismayed	沮丧	l
+Conversation mood: Displeasure	不满	l
+Conversation mood: Distressed	苦恼	l
+Conversation mood: Eager	渴望	l
+Conversation mood: Elated	狂喜	l
+Conversation mood: Embarrassed	尴尬	l
+Conversation mood: Empathetic	感同身受	l
+Conversation mood: Empty	空虚	l
+Conversation mood: Enjoyment	愉快	l
+Conversation mood: Exasperated	懊恼	l
+Conversation mood: Exhilarated	欢腾	l
+Conversation mood: Afraid	害怕	l
+Conversation mood: Ferocious	凶狠	l
+Conversation mood: Free	自由自在	l
+Conversation mood: Frightened	惊恐	l
+Conversation mood: Frustrated	挫败	l
+Conversation mood: Gleeful	欢喜	l
+Conversation mood: Gloomy	阴郁	l
+Conversation mood: Glum	忧郁	l
+Conversation mood: Grateful	感激	l
+Conversation mood: Guilty	内疚	l
+Conversation mood: Happy	快乐	l
+Conversation mood: Hateful	仇恨	l
+Conversation mood: Hopeful	充满希望	l
+Conversation mood: Hopeless	绝望	l
+Conversation mood: Humiliated	屈辱	l
+Conversation mood: Insulted	受辱	l
+Conversation mood: Interested	感兴趣	l
+Conversation mood: Irritated	恼怒	l
+Conversation mood: Isolated	孤立	l
+Conversation mood: Jolly	开心	l
+Conversation mood: Jovial	快乐开朗	l
+Conversation mood: Jubilant	欢腾	l
+Conversation mood: Loathing	憎恶	l
+Conversation mood: Lonely	孤独	l
+Conversation mood: Lustful	充满欲望	l
+Conversation mood: Miserable	悲惨	l
+Conversation mood: Mortified	羞愧难当	l
+Conversation mood: Nervous	紧张	l
+Conversation mood: Nostalgic	怀旧	l
+Conversation mood: Optimistic	乐观	l
+Conversation mood: Outraged	愤慨	l
+Conversation mood: Panicked	惊慌失措	l
+Conversation mood: Patient	耐心	l
+Conversation mood: Passionate	热血沸腾	l
+Conversation mood: Pleasure	愉悦	l
+Conversation mood: Proud	自豪	l
+Conversation mood: Enraptured	陶醉	l
+Conversation mood: Rejected	感到被拒绝	l
+Conversation mood: Relieved	如释重负	l
+Conversation mood: Regretful	后悔	l
+Conversation mood: Remorseful	懊悔	l
+Conversation mood: Repentant	忏悔	l
+Conversation mood: Resentful	怨恨	l
+Conversation mood: Restless	躁动不安	l
+Conversation mood: Indignant	义愤	l
+Conversation mood: Self-pity	自怜	l
+Conversation mood: Servile	卑躬屈膝	l
+Conversation mood: Shaken	震惊不安	l
+Conversation mood: Ashamed	羞愧	l
+Conversation mood: Sympathy	同情	l
+Conversation mood: Tenderness	温柔	l
+Conversation mood: Terrified	极度恐惧	l
+Conversation mood: Thrilled	激动	l
+Conversation mood: Uneasy	不安	l
+Conversation mood: Unhappy	不快	l
+Conversation mood: Wonder	惊叹	l
+Conversation mood: Worried	担心	l
+Conversation mood: Wrathful	暴怒	l
+Conversation mood: Zealous	热忱	l
+Conversation mood: Existential Crisis	存在危机	l
+Conversation mood: Defeated	挫败	l
+Conversation mood: Expectant	期待	l
+Conversation mood: Doubt	怀疑	l
+Conversation mood: Enthusiastic	热情	l
+Conversation mood: Pessimistic	悲观	l
+Conversation mood: Euphoric	欣快	l
 Conversation keyword: greet	问候	l
 Conversation keyword: hello	你好	l
 Conversation keyword: bypass	略过	l
@@ -9357,6 +9518,28 @@ Conversation keyword: state	阐述	l
 Conversation keyword: feeling	感受	l
 Conversation keyword: emotion	情绪	l
 Conversation keyword: express	表达	l
+# Actual chooser snapshots can include these caption words alongside the
+# fixed emotion keywords. Complete caption binding handles dynamic fields;
+# these scoped entries retain the standalone search meanings.
+Conversation keyword: minor	些许	l
+Conversation keyword: upon	之后	l
+Conversation keyword: improving	提高	l
+Conversation keyword: tracking	追踪	l
+Conversation keyword: fighting	战斗	l
+Conversation keyword: pike	长枪术	l
+Conversation keyword: verbally	口头	l
+Conversation keyword: against	对抗	l
+Conversation keyword: after	之后	l
+Conversation keyword: experiencing	经历	l
+Conversation keyword: trauma	创伤	l
+Conversation keyword: seeing	目睹	l
+Conversation keyword: dwarf	矮人	l
+Conversation keyword: say	说	l
+Conversation keyword: something	一些	l
+Conversation keyword: general	概括	l
+Conversation keyword: about	关于	l
+Conversation keyword: your	你的	l
+Conversation keyword: emotional	情绪	l
 Conversation keyword: agreement	约定	l
 Conversation keyword: journey	旅程	l
 Conversation keyword: complain	抱怨	l
