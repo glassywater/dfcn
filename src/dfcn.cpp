@@ -873,6 +873,7 @@ struct NativeTextCard {
     std::string paragraph_source{};
     bool travel_buildings = false;
     bool character_group_role = false;
+    bool character_group_civilization = false;
     std::optional<std::pair<int, int>> civilization_official_columns{};
     bool workshop_task_detail = false;
 };
@@ -4016,6 +4017,8 @@ private:
     void layout_character_header(SDL_Renderer *renderer);
     void layout_character_room_rows(SDL_Renderer *renderer);
     std::vector<NativeTextCard> capture_character_group_rows() const;
+    void append_character_group_civilization(const NativeTextCard &card,
+        std::vector<Match> &matches, int only_y) const;
     void append_character_group_role(const NativeTextCard &card,
         std::vector<Match> &matches, int only_y) const;
     void layout_character_group_rows(SDL_Renderer *renderer);
@@ -22047,6 +22050,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
         for (const auto &row : character_overview_rows)
             compose_native_text_rows(row, result, only_y, kCharacterOverviewRowRule);
         for (const auto &row : character_group_rows) {
+            append_character_group_civilization(row, result, only_y);
             append_character_group_role(row, result, only_y);
             compose_native_text_rows(row, result, only_y, kCharacterGroupRowRule);
         }
