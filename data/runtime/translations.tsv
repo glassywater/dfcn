@@ -53180,6 +53180,7 @@ Fortress activity: Prepare fine meal	准备精美食物	li
 Fortress activity: Store item in bag	将物品存入袋子	li
 Fortress activity: Store item in bin	将物品存入储物箱	li
 Fortress activity: Weave metal cloth	织金属布	li
+Fortress guild detail: Meeting place	集会所	l
 Fortress item claim: Heirloom of {a}	{a}的传家宝	ht
 Fortress item claim: Treasure of {a}	{a}的珍宝	ht
 Gathering fruit and leaves blueprint	采集果实与叶片蓝图	wo
@@ -57156,6 +57157,8 @@ Fortress activity: Recover wounded	救助伤员	li
 Fortress activity: Return Treasure	归还财宝	li
 Fortress activity: Uninvited Guest	不速之客	li
 Fortress activity: suffix /Resting	／休息中	li
+Fortress guild detail: {d} members	{d}名成员	wtli
+Fortress guild detail: {d} workers	{d}名工人	wtli
 Fortress item claim: Sacred to {p}	{p}的圣物	ht
 Fortress item claim: Symbol of {p}	{p}的象征物	ht
 Gladly. You are now one of my {s}.	我很乐意。你现在是我的{s1}之一了。	hPt
@@ -59216,6 +59219,9 @@ Fortress activity: Process plants	加工植物	li
 Fortress activity: Pull the lever	拉动控制杆	li
 Fortress activity: Serve Customer	接待顾客	li
 Fortress activity: Trade at depot	在贸易站交易	li
+Fortress guild detail: No workers	没有工人	l
+Fortress guild detail: {d} member	{d}名成员	wtli
+Fortress guild detail: {d} worker	{d}名工人	wtli
 Gather fallen fruit in this zone.	采集此区域内掉落的果实。	hj
 Greatly respected for heroic acts	为人传颂的英雄之举	w
 Greetings. It is good to see you.	你好。很高兴见到你。	hP

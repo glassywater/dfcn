@@ -531,6 +531,16 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     };
     static constexpr NativeLocationDetailCall detail_sites[] = {
         {0x3b1887, {0xe8,0xd4,0x80,0x72,0x00}, NativeLocationPickerField::DetailName},
+        // Guild detail draws its profession/type first, then a generated
+        // entity name and a separate complete member-count clause. The
+        // unestablished branch uses the same row with worker counts.
+        {0x3b1af2, {0xe8,0x69,0x7e,0x72,0x00}, NativeLocationPickerField::DetailGuildKind},
+        {0x3b1b68, {0xe8,0xf3,0x7d,0x72,0x00}, NativeLocationPickerField::DetailGuildName},
+        {0x3b1bc3, {0xe8,0x98,0x7d,0x72,0x00}, NativeLocationPickerField::DetailGuildCount}, // members
+        {0x3b1be9, {0xe8,0x72,0x7d,0x72,0x00}, NativeLocationPickerField::DetailGuildCount}, // no members
+        {0x3b1c2e, {0xe8,0x2d,0x7d,0x72,0x00}, NativeLocationPickerField::DetailGuildName}, // no established guild
+        {0x3b1c96, {0xe8,0xc5,0x7c,0x72,0x00}, NativeLocationPickerField::DetailGuildCount}, // workers
+        {0x3b1cbc, {0xe8,0x9f,0x7c,0x72,0x00}, NativeLocationPickerField::DetailGuildCount}, // no workers
         {0x3b1df3, {0xe8,0x68,0x7b,0x72,0x00}, NativeLocationPickerField::DetailKind}, // Shrine
         {0x3b1e2d, {0xe8,0x2e,0x7b,0x72,0x00}, NativeLocationPickerField::DetailKind}, // Temple
         {0x3b1e67, {0xe8,0xf4,0x7a,0x72,0x00}, NativeLocationPickerField::DetailKind}, // Temple complex
@@ -541,6 +551,9 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         {0x3b276b, {0xe8,0xf0,0x71,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // all visitors
         {0x3b27af, {0xe8,0xac,0x71,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // residents
         {0x3b27e3, {0xe8,0x78,0x71,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // citizens
+        {0x3b4cf7, {0xe8,0x64,0x4c,0x72,0x00}, NativeLocationPickerField::DetailRank}, // guild rank/value/threshold
+        {0x3b4e84, {0xe8,0xd7,0x4a,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // guildhall agreement
+        {0x3b4ecd, {0xe8,0x8e,0x4a,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // grand guildhall agreement
         {0x3b6aab, {0xe8,0xb0,0x2e,0x72,0x00}, NativeLocationPickerField::DetailRank},
         {0x3b6b56, {0xe8,0x05,0x2e,0x72,0x00}, NativeLocationPickerField::DetailCount}, // number or No
         {0x3b6bb4, {0xe8,0xa7,0x2d,0x72,0x00}, NativeLocationPickerField::DetailCountWord}, // worshippers

@@ -1864,7 +1864,8 @@ enum class NativeLocationPickerField {
     None, Prompt, Action, Name, Faith, Guild, Kind,
     FaithChoice, FaithStatus, FaithCount, FaithWorship, FaithDeity, FaithSphere,
     DetailName, DetailKind, DetailDedication, DetailFixed, DetailRank,
-    DetailCount, DetailCountWord, DetailRequirement, DetailRole, DetailUnit
+    DetailCount, DetailCountWord, DetailRequirement, DetailRole,
+    DetailGuildKind, DetailGuildName, DetailGuildCount, DetailUnit
 };
 
 static bool native_faith_picker_field(NativeLocationPickerField field) {

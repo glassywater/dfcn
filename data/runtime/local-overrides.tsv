@@ -8588,8 +8588,14 @@ Have temple complex	已有神殿建筑群	wli
 # Only the typed faith-card label uses this key. Other Worship actions keep
 # their existing activity wording; spheres use the shared semantic r glossary.
 Fortress faith picker: Worship	供奉	l
-# Native temple detail fields; complete construction and edition coordinates
+# Native location detail fields; complete construction and edition coordinates
 # are retained in data/extracted/fortress-location-detail/.
+Fortress guild detail: Meeting place	集会所	l
+Fortress guild detail: No workers	没有工人	l
+Fortress guild detail: {d} member	{d}名成员	wtli
+Fortress guild detail: {d} members	{d}名成员	wtli
+Fortress guild detail: {d} worker	{d}名工人	wtli
+Fortress guild detail: {d} workers	{d}名工人	wtli
 Fortress temple detail: Only members can visit (if guild established)	仅成员可以到访（行会成立后）	l
 Fortress temple detail: Only members can visit	仅成员可以到访	l
 Fortress temple detail: Citizens and long-term residents only	仅限公民和长期居民	l
