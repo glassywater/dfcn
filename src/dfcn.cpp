@@ -4037,6 +4037,8 @@ private:
         const std::optional<std::string> &unit_target = {}) const;
     void append_map_hover_phrases(const NativeTextCard &card,
         std::vector<std::string> &rows, std::vector<Match> &matches, int only_y) const;
+    void append_native_map_hover_phrases(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const;
     void compose_native_text_rows(const NativeTextCard &card,
         std::vector<Match> &matches, int only_y, int row_rule,
         bool preserve_word_spaces = false, bool center_vertical = false) const;
@@ -22025,6 +22027,9 @@ std::vector<Match> Overlay::find_matches(int only_y,
 #include "map_announcements.inc"
         append_map_hover_phrases(*map_hover, screen_rows, result, only_y);
     }
+    if (!world_map && !travel_building_card && workshop_materials.empty() &&
+            workshop_task_detail.empty() && !workshop_recipe)
+        append_native_map_hover_phrases(screen_rows, result, only_y);
     auto embark_site = map_hover || travel_building_card ? std::optional<NativeTextCard>{}
         : capture_embark_site_card(screen_rows);
     if (map_hover || embark_site) {

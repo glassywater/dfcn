@@ -102,18 +102,17 @@ std::optional<NativeTextCard> Overlay::capture_map_hover_card(
 
     const NativePanelBorders borders(*gps_);
     const auto ui_settings = native_ui_settings();
-    // Arena has both floating and HUD-attached cards. Require their actual
-    // hover skin for the wider search, rather than generic panel frames.
+    // Both fortress card shapes use the hover skin. Display mode only
+    // determines whether that skin is packed characters or texture IDs.
     const auto floating_border = [&](int x, int y, int part) {
-        return arena ? ui_settings && native_ui_skin_at(*gps_, x, y,
+        return arena || fortress ? ui_settings && native_ui_skin_at(*gps_, x, y,
             native_texture_hover_rectangle(*gps_)[part % 3][part / 3], ui_settings->classic)
             : borders.at(x, y, part);
     };
     int hud_right = gps_->dimx - 1;
     if (fortress) {
-        // Stocks and the calendar have three-row button frames in classic
-        // mode. Their middle right edge is not the HUD edge: only the outer
-        // panel continues vertically through all three HUD content rows.
+        // The controls' middle right edge is not the HUD edge: only the
+        // outer panel continues through all three HUD content rows.
         hud_right = stocks_x + static_cast<int>(std::string_view("Stocks").size());
         while (hud_right < gps_->dimx) {
             bool edge = true;
@@ -123,39 +122,47 @@ std::optional<NativeTextCard> Overlay::capture_map_hover_card(
             if (edge) break;
             ++hud_right;
         }
-        if (hud_right >= gps_->dimx) return std::nullopt;
+        if (hud_right >= gps_->dimx) hud_right = -1;
     }
     std::optional<SDL_Rect> interior;
-    // Fortress hover hangs below the three-row HUD and shares its right border.
+    // An attached fortress hover hangs below the HUD and shares its right border.
     // Its left edge may cross Stocks at a different UI scale/window width;
     // the actual HUD edge, not a minimum text x, identifies this attachment.
     // Its top can be open into the HUD: the HUD bottom turns down at the
     // hover's left edge, while the outer right side continues unbroken.
-    // Validate that whole connection as well as the sides/bottom. A closed
-    // horizontal edge remains valid for separate native skins. Adventure and
-    // Arena also use freestanding frames. A long item stack can extend beside the
-    // bottom HUD and have its bottom edge clipped by the viewport; the HUD is context,
+    // Validate that whole connection as well as the sides/bottom.
+    // PE 53.16's help.open + MINIMIZED branch (0x3f9356..0x3f958f)
+    // instead draws a closed hover at row 7, with its right edge 37 columns
+    // inside the HUD's right end. This occurs in either display mode.
+    // Read that skin's edges independently of the attached HUD's geometry.
+    // Adventure and Arena also use freestanding frames. A long item stack
+    // can extend beside the bottom HUD and have its bottom edge clipped by
+    // the viewport; the HUD is context,
     // not a full-width boundary. All modes share the same row composition.
     const int first_top = fortress ? header_y + 2 : arena ? 0 : 1;
-    const int last_top = fortress ? header_y + 5 : arena ? gps_->dimy - 3 : adventure_footer - 3;
+    const int last_top = fortress ? std::max(header_y + 5, 7)
+        : arena ? gps_->dimy - 3 : adventure_footer - 3;
     const int bottom_limit = gps_->dimy;
     for (int top = first_top; top <= last_top && top + 2 < bottom_limit; ++top) {
-        for (int left = 0; left + 2 <= hud_right; ++left) {
+        for (int left = 0; left + 2 < gps_->dimx; ++left) {
+            const bool closed_fortress = fortress && floating_border(left, top, 0);
+            const bool attached_fortress = fortress && !closed_fortress;
+            if (attached_fortress && (hud_right < 0 || left + 2 > hud_right)) continue;
             // The arena shares dwarfmode's 0x3f9594 hover renderer. Its
             // attached form starts with JOIN_W_S, not an ordinary NW corner;
             // requiring NW here discarded the entire card before translation.
             const bool arena_join = arena && ui_settings && native_ui_skin_at(
                 *gps_, left, top, native_texture_hover_rectangle_join_w_s(*gps_),
                 ui_settings->classic);
-            if (!fortress && !arena_join && !floating_border(left, top, 0)) continue;
-            if (!(arena ? floating_border(left, top + 1, 3)
+            if (!attached_fortress && !arena_join && !floating_border(left, top, 0)) continue;
+            if (!(arena || closed_fortress ? floating_border(left, top + 1, 3)
                     : borders.at(left, top + 1, 3, std::nullopt,
                         std::pair{left, gps_->dimx}))) continue;
-            int right = fortress ? hud_right : left + 2;
-            if (!fortress)
+            int right = attached_fortress ? hud_right : left + 2;
+            if (!attached_fortress)
                 while (right < gps_->dimx && !floating_border(right, top + 1, 5)) ++right;
             const auto border = [&](int x, int y, int part) {
-                return arena ? floating_border(x, y, part)
+                return arena || closed_fortress ? floating_border(x, y, part)
                     : borders.at(x, y, part, std::nullopt, std::pair{left, right + 1});
             };
             if (right >= gps_->dimx || !border(right, top + 1, 5)) continue;
@@ -163,7 +170,7 @@ std::optional<NativeTextCard> Overlay::capture_map_hover_card(
                 if (!native_ui_skin_at(*gps_, right, top,
                         native_texture_hover_rectangle_join_e_se(*gps_),
                         ui_settings->classic)) continue;
-            } else if (!fortress && !floating_border(right, top, 2)) continue;
+            } else if (!attached_fortress && !floating_border(right, top, 2)) continue;
             bool closed = true;
             bool fortress_join = false;
             for (int x = left + 1; x < right; ++x)
@@ -180,7 +187,7 @@ std::optional<NativeTextCard> Overlay::capture_map_hover_card(
             // dedicated join_w_s / join_e_se skins here, not ordinary NE/E.
             // In classic mode these are packed glyph+palette values; in
             // graphics mode they are texture IDs on the current UI layer.
-            if (!closed && fortress && ui_settings && top == header_y + 3 &&
+            if (!closed && attached_fortress && ui_settings && top == header_y + 3 &&
                 native_ui_skin_at(*gps_, left, top,
                     native_texture_hover_rectangle_join_w_s(*gps_), ui_settings->classic) &&
                 native_ui_skin_at(*gps_, right, top,
@@ -927,6 +934,77 @@ void Overlay::append_map_hover_phrases(const NativeTextCard &card,
         std::fill_n(rows[row.y].begin() + row.x, row.source.size(), ' ');
         if (only_y < 0 || only_y == row.y) matches.push_back(std::move(match));
     }
+}
+
+// The verified lookinfost draw already owns an entire typed caption. Keep
+// that ownership even when HUD/frame discovery cannot reconstruct the card,
+// rather than letting generic literals consume only its material/type words.
+void Overlay::append_native_map_hover_phrases(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const {
+    const auto settings = native_ui_settings();
+    const auto append = [&](const auto &draws) {
+        for (const auto &draw : draws) {
+            if (draw.map_hover.kind < NativeMapHoverKind::Item ||
+                    draw.source.empty() || draw.x < 0 || draw.y < 0 ||
+                    draw.y >= gps_->dimy || (only_y >= 0 && draw.y != only_y)) continue;
+            const auto source = trim_view(draw.source);
+            if (source.empty()) continue;
+            const int x = draw.x + static_cast<int>(source.data() - draw.source.data());
+            if (x >= gps_->dimx || source.size() > static_cast<size_t>(gps_->dimx - x) ||
+                    rows[draw.y].compare(x, source.size(), source) != 0) continue;
+            const int end = x + static_cast<int>(source.size());
+            Match physical{x, draw.y, end - x, kMapHoverPhraseRule, {}, std::string(source)};
+            // The existing reader proves the current source bytes, layer and
+            // draw grid, so a retained or covered caption cannot claim a popup.
+            const auto owned = native_map_hover_draw_for_row(*gps_, physical, end);
+            if (!owned || owned->map_hover.kind < NativeMapHoverKind::Item) continue;
+            NativeTextCard card;
+            card.interior = {x, draw.y, end - x, 1};
+            NativeTextCardRow row{x, draw.y, physical.source, {}};
+            for (int at = x; at < end; ++at) {
+                bool top = false;
+                const auto *cell = cell_at(at, draw.y, &top);
+                row.foregrounds.push_back(cell
+                    ? (cell[1] << 16) | (cell[2] << 8) | cell[3] : 0xffffff);
+            }
+            row.complete_source = owned->complete_source;
+            row.map_hover = owned->map_hover;
+            row.unit_identity_target = owned->unit_identity_target;
+            card.rows.push_back(std::move(row));
+            const size_t first = matches.size();
+            append_map_hover_phrases(card, rows, matches, only_y);
+            // The source origin remains authoritative without an outer-card
+            // layout. Expand only to its current native hover side, if present.
+            int right = end;
+            if (settings) {
+                const int limit = owned->draw_clip
+                    ? std::min(gps_->dimx, owned->draw_clip->x + owned->draw_clip->w)
+                    : gps_->dimx;
+                for (int at = end; at < limit; ++at) {
+                    if (native_ui_skin_at(*gps_, at, draw.y,
+                            native_texture_hover_rectangle(*gps_)[2][1], settings->classic)) {
+                        right = at;
+                        break;
+                    }
+                    const auto ch = visible_char_at(at, draw.y);
+                    if (ch && ch != ' ') break;
+                }
+            }
+            for (size_t at = first; at < matches.size(); ++at) {
+                auto &match = matches[at];
+                match.layout_x = x;
+                match.layout_y = draw.y;
+                match.layout_length = right - x;
+                match.layout_clip_right = right;
+                match.layout_left = true;
+                match.layout_font_pixels = std::clamp(
+                    static_cast<int>(gps_->tile_pixel_y * config_.font_scale), 1, gps_->tile_pixel_y);
+                match.layout_lock_font_pixels = true;
+            }
+        }
+    };
+    append(captured_native_drawn_text_rows());
+    append(captured_native_drawn_text_rows(true));
 }
 
 void Overlay::layout_map_hover(SDL_Renderer *renderer) {
