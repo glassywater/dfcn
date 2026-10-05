@@ -1131,6 +1131,9 @@ def parse_literal_rulesets(root: Path) -> list[Entry]:
             "health/contaminant.toml",
             "creatures/name/raw_names.toml",
             "items/wood/raw_names.toml",
+            # Grown wood resolves timber adjectives to the source plant only
+            # in that item grammar; ordinary wood keeps its material meaning.
+            "items/grown.toml",
             "materials/woven_plant.toml",
             "activities.toml",
         }:

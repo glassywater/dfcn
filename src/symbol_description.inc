@@ -180,21 +180,10 @@ std::optional<std::string> Overlay::translate_symbol_element(
         }
         // The native item formatter emits flags&4's "grown " before the
         // item-type branch (PE 53.16 0xa82d7d), hence before a trap component's
-        // comma-bearing adjective. Resolve one complete wrapped element;
-        // the shared item rule supplies its translation without admitting an
-        // arbitrary material/item list at this outer element boundary.
+        // comma-bearing adjective. The complete item grammar owns both the
+        // living source and the type, including their Chinese word order.
         if (template_literal_at(value, 0, "grown ", true)) {
-            const auto body_source = value.substr(6);
-            const auto body = self(self, body_source, depth + 1);
-            if (!body) return std::nullopt;
-            for (int index : item_description_term_rules_) {
-                const Rule &rule = rules_[static_cast<size_t>(index)];
-                if (rule.source != "grown {s}") continue;
-                const std::vector<std::string> captures{std::string(body_source)};
-                const std::vector<std::optional<std::string>> translated{body};
-                return fill_template(rule, captures, nullptr, nullptr, &translated);
-            }
-            return std::nullopt;
+            return translate_item_caption_grammar(value);
         }
         // Image prose reverses the species/name order used in Legends events:
         // "Ab Blazetongs the human". Parse the whole species, including its

@@ -41,7 +41,7 @@ term	{c} bundles of {s}	{c1}捆{s1}
 term	{c} stacks of {s}	{c1}叠{s1}
 term	{c} {s}	{c1} × {s1}
 term	{s} (copy)	{s1}（抄本）
-term	grown {s}	生长的{s1}
+term	grown {s}	长出的{s1}
 term	unglazed {s}	未上釉的{s1}
 
 # Statue and figurine captions share the artwork subject grammar, including named

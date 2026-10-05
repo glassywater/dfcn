@@ -84,8 +84,12 @@ std::optional<std::string> Overlay::translate_native_trade_item_caption(
             if (!noun && caption.type == 86) noun = translate_item_caption_grammar(caption.raw_name);
         }
         if (!noun || noun->empty()) return fallback();
-        const auto material = translate_typed_item_material_qualifier(
-            caption.material_prefix, caption.material_state);
+        const bool grown = (caption.flags2 & 4u) != 0;
+        const auto material = grown
+            ? field(lower(trim(caption.material_prefix + " " + caption.material_state)),
+                "::items::grown::material")
+            : translate_typed_item_material_qualifier(
+                caption.material_prefix, caption.material_state);
         if (!material) return fallback();
         std::optional<std::string> adjective = std::string{};
         if (!caption.raw_adjective.empty()) {
@@ -100,7 +104,8 @@ std::optional<std::string> Overlay::translate_native_trade_item_caption(
             if (!translated_size) return fallback();
             size = *translated_size;
         }
-        std::string label = size + *adjective + *material;
+        std::string label = size + *adjective;
+        if (!grown) label += *material;
         if (caption.type == 29) {
             if (caption.right) {
                 const auto right = RULESETS.compose_bound_rule("::items::gloves::^handedness", "right ");
@@ -114,10 +119,14 @@ std::optional<std::string> Overlay::translate_native_trade_item_caption(
             }
         }
         label += *noun;
-        if (caption.flags2 & 4u) {
-            const auto grown = RULESETS.compose_bound_rule("::items::^0", "grown ");
-            if (!grown) return fallback();
-            label = *grown + label;
+        if (grown) {
+            // Bind the same source/type production as complete grown names;
+            // material identifies the living source, not a timber qualifier.
+            const auto target = RULESETS.compose_bound_rule("::items::grown::body",
+                "{::items::grown::material} {::items::main}",
+                {{"::items::grown::material", *material}, {"::items::main", label}});
+            if (!target) return fallback();
+            label = *target;
         }
         // Quantities may be outside or inside quality/ownership wrappers.
         // Peel only those typed spans and retain their original nesting order.
