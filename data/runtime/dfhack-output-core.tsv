@@ -2059,5 +2059,8 @@ DFHack GUI Notification banner: moody dwarf can't find needed workshop!	怪异�
 DFHack GUI Notification banner: moody dwarf is gathering items	怪异心境矮人正在收集材料	l
 DFHack GUI Notification banner: moody dwarf is working	怪异心境矮人正在制作	l
 DFHack GUI Notification banner: moody dwarf can't find needed item!	怪异心境矮人找不到所需材料！	l
-DFHack GUI Notification banner: Last save: 	上次保存：	l
+DFHack GUI Notification banner: Last save:	上次保存：	l
 DFHack GUI Notification banner: {d} mins ago	{d} 分钟前	l
+
+# gui/sitemap.lua: complete two-row toolbar hint, separate from its hotkey.
+DFHack GUI Toolbar hint: Open the general search and zoom interface.	打开通用搜索与定位界面。	l

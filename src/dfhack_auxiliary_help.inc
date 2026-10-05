@@ -222,6 +222,28 @@ std::vector<Match> dfhack_auxiliary_matches;
         const auto *frame = &window.frame;
 #include "dfhack_civ_alert.inc"
 #include "dfhack_notification_banners.inc"
+        // Toolbar overlays use a titleless six-row Panel: two prose rows,
+        // a blank separator and an independent Hotkey Label. Resolve the
+        // whole hint before the larger dialog reader's height gate.
+        if (window.title_length == 0 && frame->h == 6) {
+            const int left = frame->x + 2, right = frame->x + frame->w - 2;
+            const int bottom = frame->y + frame->h - 1;
+            const auto hotkey_band = std::string_view(dfhack_context_rows[bottom - 1])
+                .substr(left, right - left);
+            const auto hotkey = native_hotkey_source(hotkey_band, 0);
+            const bool gap = trim_view(std::string_view(dfhack_context_rows[bottom - 2])
+                .substr(left, right - left)).empty();
+            if (gap && hotkey && trim_view(hotkey_band.substr(hotkey->size())).empty()) {
+                const auto hint = gui_prompt("Toolbar hint", left, frame->y + 1,
+                    right, bottom - 3);
+                if (hint && hint->rows.size() == 2 && hint->rows.back().y == bottom - 3) {
+                    // Preserve the separately colored native shortcut field.
+                    for (const auto &row : hint->rows)
+                        dfhack_auxiliary_regions.push_back({row.x, row.y, row.length, 1});
+                    append_gui_prompt(*hint, left, right);
+                }
+            }
+        }
         // Legacy InputBox is 23 columns wide. Keep the foreground
         // component's existing size and role-scoped prompt/control proof.
         if (frame->w < 23 || frame->h < 7) continue;

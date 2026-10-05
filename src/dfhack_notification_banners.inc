@@ -1,6 +1,7 @@
 // gui/notify.lua draws at most five unwrapped List rows under a 3-cell
 // ConfigureButton. internal/notify/notifications.lua supplies these complete
-// strange-mood messages; they must not be translated as isolated name words.
+// strange-mood messages and independent save fields; they must not be
+// translated as isolated name words.
 {
     const auto notification_banners = [&]() {
         const int right = frame->x + frame->w - 1;
@@ -30,8 +31,6 @@
             mood_rows.push_back({left + static_cast<int>(text.data() - band.data()),
                 y, text});
         }
-        if (mood_rows.empty()) return;
-
         const auto banner_match = [&](int x, int y, std::string_view source,
                 int clip_right, const std::optional<std::string> &target) {
             if (read_row(y).compare(x, source.size(), source) != 0) return;
