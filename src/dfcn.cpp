@@ -24532,7 +24532,11 @@ std::vector<Match> Overlay::find_matches(int only_y,
         for (int y = tabs_y + 2; tabs_y >= 0 && y < footer_y; ++y) {
             const auto titles = split_text_fields(background_rows[static_cast<size_t>(y - 1)]);
             for (const auto &kind : split_text_fields(background_rows[static_cast<size_t>(y)])) {
-                if ((kind.text != "Deity" && kind.text != "Religion") ||
+                // Religion cards append their temple state to the same
+                // native caption. Own that complete caption before words.
+                if ((kind.text != "Deity" && kind.text != "Religion" &&
+                        kind.text != "Religion with temple" &&
+                        kind.text != "Religion with ruined temple") ||
                     kind.start >= beliefs_x) continue;
                 const auto title = std::find_if(titles.begin(), titles.end(),
                     [&](const LogicalTextField &field) {
@@ -24584,6 +24588,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
         const auto captures = captured_native_paragraphs();
         std::vector<std::vector<bool>> owned(static_cast<size_t>(gps_->dimy),
             std::vector<bool>(static_cast<size_t>(gps_->dimx), false));
+#include "adventure_belief_description.inc"
         for (auto capture = captures.rbegin(); capture != captures.rend(); ++capture) {
             if (capture->wrapped_lines.empty() ||
                 capture->wrapped_lines.size() > static_cast<size_t>(gps_->dimy)) continue;

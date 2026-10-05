@@ -72335,6 +72335,7 @@ Really? Please come closer.	真的吗？请再靠近一点。	hP
 Refuse listener work as {s}	拒绝让对方从事{s1}工作	hPt
 Refuse to cease hostilities	拒绝停止敌对行动	hP
 Related Underground Regions	相关地下区域	h
+Religion with ruined temple	宗教（神殿已毁）	wl
 Remove hidden designations.	移除隐藏标记。	hj
 Removing fluids and spatter	正在移除流体和飞溅物	wo
 Requests (Imports from {e})	商品需求（从{e1}进口）	hPt
@@ -86452,6 +86453,7 @@ Region name: sludges	淤泥沼泽	hi
 Region name: steppes	草原	hi
 Region name: tundras	苔原	hi
 Region name: winters	冬原	hi
+Religion with temple	宗教（有神殿）	wl
 Religious persecutor	宗教迫害者	w
 Repaint this burrow.	重新涂画此活动区。	hj
 Return to title menu	返回标题菜单

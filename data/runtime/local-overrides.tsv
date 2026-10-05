@@ -1736,6 +1736,8 @@ You are a {s} of {p}	你是一名{s}，信奉{p}	atl
 {n} is the force	{n}是自然之灵	atl
 {n} is a religion	{n}是一个宗教	atl
 {n} is a religion whose adherents worship {p}	{n}是一个宗教，其信徒崇拜{p}	atl
+Religion with temple	宗教（有神殿）	wl
+Religion with ruined temple	宗教（神殿已毁）	wl
 They worship at {n}	他们在{n}礼拜	atl
 Their temple {n} is ruined	他们的神殿{n}已成为废墟	atl
 ardent worshipper	狂热信徒	wi
