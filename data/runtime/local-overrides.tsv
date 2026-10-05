@@ -5335,6 +5335,14 @@ N/A	不适用	w
 Flux Stone Layer	助熔剂石层	w
 Aquifer (Light)	含水层（轻度）	w
 Aquifer (Heavy)	含水层（重度）	w
+# Embark finder actions/status are complete fields in both idle and searching states.
+Embark finder: Begin	开始	w
+Embark finder: Stop	停止	w
+Embark finder: Clear find results	清除查找结果	w
+Embark finder: Searching	正在搜索	w
+Embark finder: No match.	没有匹配地点。	w
+Embark finder: Partial match.	部分条件匹配。	w
+Embark finder: Match found!	找到匹配地点！	w
 X Dimension	X 尺寸	w
 Y Dimension	Y 尺寸	w
 # Surface-deposit amounts share data/runtime/rulesets/zh-Hans/health/contaminant.toml and the material grammar.

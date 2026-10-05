@@ -59152,6 +59152,7 @@ Dismiss minor feeling of distress	不在意些许苦恼	hP
 Drainage Weighted Range ({d}-{d})	排水度加权范围（{d}-{d}）	wt
 Duel of {a} and {a} in the wilds.	在荒野中，{a1}与{a2}的决斗。	htEi
 Eat not the fruits of your labor.	不要享用自己劳动的成果。	hP
+Embark finder: Clear find results	清除查找结果	w
 Famous preserver of the knowledge	名声显赫的博学大师	w
 Fertilizer is not needed to farm.	[C:7:0:0]不[C:6:0:1]施肥[C:7:0:0]也可以种植。	hq
 Fortress activity: Attend Meeting	参加会面	li
@@ -67800,6 +67801,7 @@ Distrustful <->  Too trusting	多疑 ↔ 过于轻信	wl
 Don't tell me to calm myself.	别叫我冷静。	hP
 Don't walk off with anything.	别顺手拿走东西。	hP
 Dwarvemon Entity Type {d}.{d}	矮人兽实体类型 {d}.{d}	wt
+Embark finder: Partial match.	部分条件匹配。	w
 Empty unimproved glazable jug	未上釉的可上釉的空壶	wi
 Engraved on the floor is {s}.	地面上刻有{s1}。	hHt
 Erase a portion of this zone.	擦除此区域的一部分。	hj
@@ -72111,6 +72113,7 @@ Downward stair (remembered)	下行楼梯（印象中）	wl
 Duel of {a} and {a} at {p}.	在{p1}，{a1}与{a2}的决斗。	htEi
 Duel of {a} and {a} in {d}.	{d1}年的{a1}与{a2}的决斗。	htEi
 Duel of {a} and {a} in {p}.	在{p1}，{a1}与{a2}的决斗。	htEi
+Embark finder: Match found!	找到匹配地点！	w
 Embark site action: Reclaim	收复	l
 Explore the history of {s}.	探索{s}的历史。	wtl
 Express thanks for the gift	感谢对方的礼物	hP
@@ -78072,6 +78075,8 @@ Don't start any trouble.	别惹麻烦。	hP
 Doors can be used along 	门可与墙壁结合使用以封闭房间，	w
 Dwarf Fortress Adventure	矮人要塞：冒险	hq
 Dwarf Fortress Adventure	矮人要塞　冒险	w
+Embark finder: No match.	没有匹配地点。	w
+Embark finder: Searching	正在搜索	w
 Enemy moved out of range	敌人离开射程	w
 Erase a portion of this 	擦除一部分此处的储物处。	w
 Export of {s} Prohibited	禁止出口{s}	wtlx
@@ -86211,6 +86216,7 @@ Dwarvemon Entity All	Dwarvemon 全部实体
 Elevation X-Variance	海拔 X 轴差异
 Elevation Y-Variance	海拔 Y 轴差异
 Elven forest retreat	精灵森林聚落	wi
+Embark finder: Begin	开始	w
 Exotic Clothing Shop	异域服装店	wi
 Famous loyal soldier	名声显赫的忠诚军人	w
 Feared as a murderer	令人恐惧的屠夫	w
@@ -89018,6 +89024,7 @@ Drainage Y-Variance	排水度 Y 轴差异
 Duel of {a} and {a}	{a1}与{a2}的决斗	htEi
 Eighth eldest child	第八个孩子	w
 Elevation Mesh Size	海拔网格尺寸
+Embark finder: Stop	停止	w
 Emotional obsessive	感情执着	w
 Emotionally distant	感情淡漠	w
 Engraving blueprint	雕刻蓝图	wo

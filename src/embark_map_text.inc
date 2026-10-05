@@ -32,8 +32,9 @@ std::vector<uint8_t> Overlay::capture_embark_map_text_cells() const {
         std::string_view prefix, suffix;
         bool scene = true;
     };
-    constexpr std::array<Landmark, 9> landmarks = {{
-        {"Find embark location", {}}, {"Choose origin civilization", {}},
+    constexpr std::array<Landmark, 10> landmarks = {{
+        {"Find embark location", {}}, {"Clear find results", {}},
+        {"Choose origin civilization", {}},
         {"Click the map to zoom in and choose your embark location.", {}},
         {"Click \"Embark\" to place your fortress. Right click to zoom out.", {}},
         {"Click on the map to embark! Right click to abort.", {}},

@@ -5887,6 +5887,7 @@ void Overlay::build_trie() {
         // Scoped caption aliases are lookup-only metadata. The visible source
         // retains its ordinary meaning until its native widget owns it.
         if (rules_[rule_index].source.starts_with("Build menu: ") ||
+            rules_[rule_index].source.starts_with("Embark finder: ") ||
             rules_[rule_index].source.starts_with("Zone type: ") ||
             rules_[rule_index].source.starts_with("Fortress activity: ") ||
             rules_[rule_index].source.starts_with("Fortress schedule editor: ") ||
