@@ -125,6 +125,20 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         {native_pe_address(profile.base, 0x3bc0cc), NativeLocationPickerField::Kind}, // Tavern
         {native_pe_address(profile.base, 0x3bc153), NativeLocationPickerField::Kind}, // Library
         {native_pe_address(profile.base, 0x3bc1c9), NativeLocationPickerField::Kind}, // Hospital
+        // The guild subpage draws each profession plus " hall" as one
+        // caption, followed by an optional requested/existing tier row.
+        {native_pe_address(profile.base, 0x3b9863), NativeLocationPickerField::GuildChoice},
+        {native_pe_address(profile.base, 0x3b9aff), NativeLocationPickerField::GuildStatus}, // Want
+        {native_pe_address(profile.base, 0x3b9c47), NativeLocationPickerField::GuildStatus}, // Have
+        // The adjacent guild card has complete count/label/entity fields.
+        // Their original cursor and closed card own every translated row.
+        {native_pe_address(profile.base, 0x3b9fc9), NativeLocationPickerField::GuildWorkers},
+        {native_pe_address(profile.base, 0x3ba012), NativeLocationPickerField::GuildWorkers}, // None
+        {native_pe_address(profile.base, 0x3ba082), NativeLocationPickerField::GuildLabel},
+        {native_pe_address(profile.base, 0x3ba16e), NativeLocationPickerField::GuildName},
+        {native_pe_address(profile.base, 0x3ba1db), NativeLocationPickerField::GuildMembers},
+        {native_pe_address(profile.base, 0x3ba21d), NativeLocationPickerField::GuildMembers}, // None
+        {native_pe_address(profile.base, 0x3ba285), NativeLocationPickerField::GuildMissing},
         // The temple dedication subpage owns identities, all Want/Have
         // grades and the complete faith card through these separate draws.
         {native_pe_address(profile.base, 0x3ba720), NativeLocationPickerField::FaithChoice},
@@ -513,6 +527,13 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         // Codices: native title and capitalized item description.
         {0xd42094,0xd420f3,NativeFieldKind::BookTitle},
         {0xd42141,0xd42183,NativeFieldKind::BookType}};
+    // Guild rows use the same resize-and-dots path as the faith chooser.
+    // Retain each complete profession caption and requested/existing tier.
+    profile.inline_resizes.push_back({0x3b9811, {0xe8,0x1a,0x7a,0xd2,0xff}, {}, true});
+    profile.inline_resizes.push_back({0x3b9aae, {0xe8,0x7d,0x77,0xd2,0xff}, {}, true});
+    profile.inline_resizes.push_back({0x3b9bf6, {0xe8,0x35,0x76,0xd2,0xff}, {}, true});
+    // The guild card shortens the entity name to 20 bytes before drawing.
+    profile.inline_resizes.push_back({0x3ba123, {0xe8,0x08,0x71,0xd2,0xff}, {}, true});
     // The faith chooser clips at length >= width-1 and can append one zero
     // byte before replacing its last three cells with dots. Preserve the
     // complete owner through that exact native path, as for other captions.
@@ -590,8 +611,18 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         profile.signatures.push_back({site.call,
             std::vector<unsigned char>(site.bytes.begin(), site.bytes.end())});
     }
-    // Existing faith-subpage callers use the same normal profile signature
+    // Guild and faith subpage callers use the same normal profile signature
     // gate as the new detail fields, for both supported native PE editions.
+    profile.signatures.push_back({0x3b985e, {0xe8,0xfd,0x00,0x72,0x00}});
+    profile.signatures.push_back({0x3b9afa, {0xe8,0x61,0xfe,0x71,0x00}});
+    profile.signatures.push_back({0x3b9c42, {0xe8,0x19,0xfd,0x71,0x00}});
+    profile.signatures.push_back({0x3b9fc4, {0xe8,0x97,0xf9,0x71,0x00}});
+    profile.signatures.push_back({0x3ba00d, {0xe8,0x4e,0xf9,0x71,0x00}});
+    profile.signatures.push_back({0x3ba07d, {0xe8,0xde,0xf8,0x71,0x00}});
+    profile.signatures.push_back({0x3ba169, {0xe8,0xf2,0xf7,0x71,0x00}});
+    profile.signatures.push_back({0x3ba1d6, {0xe8,0x85,0xf7,0x71,0x00}});
+    profile.signatures.push_back({0x3ba218, {0xe8,0x43,0xf7,0x71,0x00}});
+    profile.signatures.push_back({0x3ba280, {0xe8,0xdb,0xf6,0x71,0x00}});
     profile.signatures.push_back({0x3ba71b, {0xe8,0x40,0xf2,0x71,0x00}});
     profile.signatures.push_back({0x3ba968, {0xe8,0xf3,0xef,0x71,0x00}});
     profile.signatures.push_back({0x3baabc, {0xe8,0x9f,0xee,0x71,0x00}});

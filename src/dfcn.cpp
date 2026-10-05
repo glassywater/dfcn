@@ -1863,6 +1863,8 @@ enum class NativeCivilizationField {
 enum class NativeLocationPickerField {
     None, Prompt, Action, Name, Faith, Guild, Kind,
     FaithChoice, FaithStatus, FaithCount, FaithWorship, FaithDeity, FaithSphere,
+    GuildChoice, GuildStatus,
+    GuildWorkers, GuildLabel, GuildName, GuildMembers, GuildMissing,
     DetailName, DetailKind, DetailDedication, DetailFixed, DetailRank,
     DetailCount, DetailCountWord, DetailRequirement, DetailRole,
     DetailGuildKind, DetailGuildName, DetailGuildCount, DetailUnit
@@ -1871,6 +1873,17 @@ enum class NativeLocationPickerField {
 static bool native_faith_picker_field(NativeLocationPickerField field) {
     return field >= NativeLocationPickerField::FaithChoice &&
         field <= NativeLocationPickerField::FaithSphere;
+}
+
+static bool native_guild_picker_card_field(NativeLocationPickerField field) {
+    return field >= NativeLocationPickerField::GuildWorkers &&
+        field <= NativeLocationPickerField::GuildMissing;
+}
+
+static bool native_location_picker_subpage_field(NativeLocationPickerField field) {
+    return native_faith_picker_field(field) ||
+        (field >= NativeLocationPickerField::GuildChoice &&
+         field <= NativeLocationPickerField::GuildMissing);
 }
 
 static bool native_location_detail_field(NativeLocationPickerField field) {
@@ -21654,9 +21667,9 @@ std::vector<Match> Overlay::find_matches(int only_y,
     // replaced the live outer frame by the time SDL presents its captions.
     const bool classic_location_fields = native_ui_classic().value_or(false);
     const auto location_draws = captured_native_drawn_text_rows();
-    const bool faith_picker_fields = std::any_of(location_draws.begin(), location_draws.end(),
-        [](const auto &draw) { return native_faith_picker_field(draw.location_picker_field); });
-    if (classic_location_fields || faith_picker_fields)
+    const bool location_subpage_fields = std::any_of(location_draws.begin(), location_draws.end(),
+        [](const auto &draw) { return native_location_picker_subpage_field(draw.location_picker_field); });
+    if (classic_location_fields || location_subpage_fields)
         append_fortress_location_list_matches(screen_rows, result, only_y,
             screen_override != nullptr, true);
     // Proved detail callers own generated offices and full value clauses
@@ -30521,6 +30534,10 @@ void Overlay::normalize_native_split_text() {
         // Flags retained from a covered picture caption cannot turn those
         // lines into duplicate halves or move their final Chinese baseline.
         if (match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule) continue;
+        // Typed guild hover rows use ordinary addst once per line. Their
+        // fixed native baselines must not inherit covered map font halves.
+        if (match.rule == kFortressLocationListRule && match.layout_fixed_baseline &&
+                !match.native_split_text) continue;
         // The overview document has already folded native text halves while
         // retaining both physical suppression spans. Its translated rows
         // have independent measured baselines and must not become captions

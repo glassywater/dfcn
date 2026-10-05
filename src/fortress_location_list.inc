@@ -161,6 +161,23 @@ void Overlay::append_fortress_location_list_matches(std::vector<std::string> &ro
             ProceduralFragmentContext::generated_name);
         return name;
     };
+    const auto translate_guild_count = [&](const std::string &source, bool workers)
+            -> std::optional<std::string> {
+        if (source == (workers ? "No workers" : "No members"))
+            return exact_literal_translation(workers
+                ? "Fortress guild detail: No workers" : "No members");
+        for (const std::string_view suffix : workers
+                ? std::array<std::string_view, 2>{" workers", " worker"}
+                : std::array<std::string_view, 2>{" members", " member"}) {
+            if (!source.ends_with(suffix)) continue;
+            const std::string digits = source.substr(0, source.size() - suffix.size());
+            if (!digits.empty() && std::all_of(digits.begin(), digits.end(),
+                    [](unsigned char ch) { return ch >= '0' && ch <= '9'; }))
+                return render_template("Fortress guild detail: {d}" + std::string(suffix), digits);
+            break;
+        }
+        return std::nullopt;
+    };
     const auto translate_description = [&](const Description &value)
             -> std::optional<std::string> {
         if (value.profession) {
@@ -184,7 +201,7 @@ void Overlay::append_fortress_location_list_matches(std::vector<std::string> &ro
         return (value.dedication ? "供奉" : "") + *name + "的" + *kind;
     };
     const auto append = [&](const Field &field, const std::optional<std::string> &translated,
-                            int left) {
+                            int left, bool ordinary_row = false) {
         const auto target = translated ? *translated : native_text_to_utf8(field.complete);
         const int length = field.end - field.x;
         if (field.y < 0 || field.y >= gps_->dimy || field.x < 0 ||
@@ -203,6 +220,9 @@ void Overlay::append_fortress_location_list_matches(std::vector<std::string> &ro
                 match.layout_length = field.right - left;
                 match.layout_clip_right = field.right;
                 match.layout_left = true;
+                // The guild hover writer emits each row once with ordinary
+                // addst, independently of font flags left by the map beneath.
+                match.layout_fixed_baseline = ordinary_row;
                 matches.push_back(std::move(match));
             }
             std::fill_n(rows[field.y].begin() + field.x, length, ' ');
@@ -223,9 +243,9 @@ void Overlay::append_fortress_location_list_matches(std::vector<std::string> &ro
     };
 
     {
-        // Typed addst callers identify the chooser and its faith subpage
+        // Typed addst callers identify the chooser and its faith/guild subpages
         // independently of the outer frame. The main chooser keeps its
-        // classic binding; faith fields own both native display modes.
+        // classic binding; subpage fields own both native display modes.
         // Each saved allocation retains its original row and clip boundary.
         for (const auto *layer : {&drawn, &top_drawn}) {
             for (const auto &draw : *layer) {
@@ -233,7 +253,7 @@ void Overlay::append_fortress_location_list_matches(std::vector<std::string> &ro
                 if (kind == NativeLocationPickerField::None ||
                     kind == NativeLocationPickerField::Prompt || native_location_detail_field(kind) ||
                     !draw.location_picker_box ||
-                    (!native_ui_classic().value_or(false) && !native_faith_picker_field(kind)) ||
+                    (!native_ui_classic().value_or(false) && !native_location_picker_subpage_field(kind)) ||
                     draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen) ||
                     draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
                     draw.source.empty() || draw.x < 0 || draw.x >= gps_->dimx ||
@@ -283,9 +303,41 @@ void Overlay::append_fortress_location_list_matches(std::vector<std::string> &ro
                     target = translate_identity(complete);
                     break;
                 case NativeLocationPickerField::FaithStatus:
+                case NativeLocationPickerField::GuildStatus:
                     // The native prefix and grade are one field. Its proven
                     // pre-resize source resolves every Want/Have state even
                     // when the final English cells end in three dots.
+                    target = exact_literal_translation(complete);
+                    break;
+                case NativeLocationPickerField::GuildChoice: {
+                    // The native profession formatter appends " hall" to
+                    // one buffer. Translate and place that complete caption,
+                    // never its profession and suffix as separate grid runs.
+                    constexpr std::string_view suffix = " hall";
+                    if (complete.ends_with(suffix) && complete.size() > suffix.size())
+                        target = translate_description(Description{"guildhall",
+                            complete.substr(0, complete.size() - suffix.size()), false, true});
+                    break;
+                }
+                case NativeLocationPickerField::GuildWorkers:
+                case NativeLocationPickerField::GuildMembers:
+                    target = translate_guild_count(complete,
+                        kind == NativeLocationPickerField::GuildWorkers);
+                    break;
+                case NativeLocationPickerField::GuildLabel:
+                    if (complete == "Guild:")
+                        target = exact_literal_translation("Fortress guild picker: Guild:");
+                    break;
+                case NativeLocationPickerField::GuildName:
+                    // This is a historical entity, not a person or profession.
+                    // Preserve the complete pre-resize identity in one row.
+                    target = contains_cjk_utf8(complete)
+                        ? std::optional<std::string>(native_text_to_utf8(complete))
+                        : translate_legends_name(complete, false);
+                    if (!target) target = translate_procedural_fragment(complete, false, false, {},
+                        ProceduralFragmentContext::generated_name);
+                    break;
+                case NativeLocationPickerField::GuildMissing:
                     target = exact_literal_translation(complete);
                     break;
                 case NativeLocationPickerField::FaithCount:
@@ -322,7 +374,8 @@ void Overlay::append_fortress_location_list_matches(std::vector<std::string> &ro
                     target = exact_literal_translation(complete);
                     break;
                 }
-                append(Field{draw.x, draw.y, end, right, draw.source, complete}, target, left);
+                append(Field{draw.x, draw.y, end, right, draw.source, complete}, target, left,
+                    native_guild_picker_card_field(kind));
             }
         }
     }
@@ -414,9 +467,13 @@ void Overlay::layout_fortress_location_list(SDL_Renderer *renderer) {
         if (match.rule != kFortressLocationListRule || match.target.empty() ||
             match.native_split_duplicate || !match.native_picture_caption_box) continue;
         const SDL_Rect &box = *match.native_picture_caption_box;
-        layout_fortress_text_rows(renderer, {{&match}}, box.x, box.x + box.w);
-        match.layout_y = box.y;
-        match.layout_pixel_y = 0;
+        // Both physical halves share the native text baseline. Establish it
+        // before fitting so the glyph destination and its clip remain equal.
+        if (!match.layout_fixed_baseline) {
+            match.layout_y = match.native_split_text ? match.native_split_top_y : box.y;
+            match.layout_pixel_y = match.native_split_text ? gps_->tile_pixel_y / 2 : 0;
+        }
         match.layout_fixed_baseline = true;
+        layout_fortress_text_rows(renderer, {{&match}}, box.x, box.x + box.w);
     }
 }

@@ -8573,9 +8573,16 @@ Craft guild	工艺行会	wi
 Guild	行会	wi
 No members	没有成员	wi
 No worshippers	没有信徒	wi
-# Fortress faith picker, complete native renderer branches rather than word
+# Fortress guild and faith pickers, complete native renderer branches rather than word
 # replacements. Source constructions and both PE editions are retained in
 # data/extracted/fortress-faith-picker/. Requested/existing tiers are 0, 1, 2.
+Want meeting place	需要集会场所	wli
+Want guildhall	需要行会大厅	wli
+Want grand guildhall	需要大行会大厅	wli
+Have meeting place	已有集会场所	wli
+Have guildhall	已有行会大厅	wli
+Have grand guildhall	已有大行会大厅	wli
+Fortress guild picker: Guild:	行会：	l
 Want shrine	需要圣地	wli
 Want temple	需要神殿	wli
 Want temple complex	需要神殿建筑群	wli

@@ -360,11 +360,12 @@ static std::optional<SDL_Rect> native_location_picker_draw_box(
         const graphicst *graphics, const NativeString *source,
         NativeLocationPickerField field, uintptr_t caller = 0) {
     const bool faith = native_faith_picker_field(field);
+    const bool subpage = native_location_picker_subpage_field(field);
     const bool detail = native_location_detail_field(field);
     if (field == NativeLocationPickerField::None ||
             field == NativeLocationPickerField::Prompt ||
             !graphics || !graphics->screen ||
-            (!faith && !detail && !native_ui_classic().value_or(false)))
+            (!subpage && !detail && !native_ui_classic().value_or(false)))
         return std::nullopt;
     const int x = graphics->screenx, y = graphics->screeny;
     if (graphics->dimx <= 0 || graphics->dimx > 1000 ||
@@ -409,11 +410,12 @@ static std::optional<SDL_Rect> native_location_picker_draw_box(
         if (x >= left && right > x) return SDL_Rect{x, y, right - x, 1};
         return std::nullopt;
     }
-    if (faith && field != NativeLocationPickerField::FaithChoice &&
-            field != NativeLocationPickerField::FaithStatus) {
-        // 3baddc..3bb04d draws the faith card after its complete hover frame.
+    if ((faith && field != NativeLocationPickerField::FaithChoice &&
+            field != NativeLocationPickerField::FaithStatus) ||
+            native_guild_picker_card_field(field)) {
+        // Guild and faith cards draw text after their complete hover frames.
         // Its 21 interior columns, rather than the outer chooser or screen,
-        // own counts, the Worship relation, deity identity and each sphere.
+        // own counts, labels and the complete guild/deity identities.
         const NativePanelBorders borders(*graphics);
         if (const auto panel = native_panel_interior(borders, *graphics, x, x + 1, y)) {
             const int right = panel->x + panel->w;
@@ -436,13 +438,14 @@ static std::optional<SDL_Rect> native_location_picker_draw_box(
         return std::nullopt;
     }
     const int middle = field == NativeLocationPickerField::Name ||
-        field == NativeLocationPickerField::FaithChoice ? y : y - 1;
+        field == NativeLocationPickerField::FaithChoice ||
+        field == NativeLocationPickerField::GuildChoice ? y : y - 1;
     if (const auto frame = native_picture_caption_rect(
             *graphics, x, middle, true, nullptr, true)) {
         // The main chooser paints main[181] after both captions. Reserve
-        // those four columns there; the faith subpage allocates the entire
+        // those four columns there; faith/guild subpages allocate the entire
         // picture strip to its name and status without that later action.
-        const int right = frame->x + frame->w - (faith ? 0 : 4);
+        const int right = frame->x + frame->w - (subpage ? 0 : 4);
         if (right > x) return SDL_Rect{x, y, right - x, 1};
     }
     return std::nullopt;

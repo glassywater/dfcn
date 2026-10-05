@@ -67886,6 +67886,7 @@ Fortress activity: Render fat	将脂肪熬制成脂油	li
 Fortress activity: Tan a hide	鞣制一张皮革	li
 Fortress activity: Tell Story	讲故事	li
 Fortress activity: Underworld	地下世界生物	li
+Fortress guild picker: Guild:	行会：	l
 Future such petitions: accept	今后同类申请：接受	hP
 Future such petitions: prompt	今后同类申请：询问	hP
 Future such petitions: reject	今后同类申请：拒绝	hP
@@ -86301,6 +86302,7 @@ Glaze clay/stone jug	为黏土/石质壶上釉	wi
 Gremlin pulled lever	小精怪拉动拉杆	w
 Happiness and stress	幸福与压力	hq
 Happiness and stress	幸福与压力	w
+Have grand guildhall	已有大行会大厅	wli
 He has a tendency to	他倾向于	l
 Heavy combat (heard)	激烈战斗声（听到）	wl
 Hold left button to 	按住左键进行绘制。	w
@@ -86597,6 +86599,7 @@ Very high musicality	乐感很高	wil
 Volcanism X-Variance	火山活动度 X 轴差异
 Volcanism Y-Variance	火山活动度 Y 轴差异
 Wallowing in misery!	沉溺于痛苦之中！	hP
+Want grand guildhall	需要大行会大厅	wli
 We'll be ready soon!	我们马上就准备好了！	hP
 What do you command?	你有何吩咐？	hP
 Where will you jump?	你要跳到哪里？	hP
@@ -92427,6 +92430,7 @@ Gargantuan Profile	身形庞大无比	hP
 Goblets (Desired):	高脚杯（期望数量）：	wl
 Good spatial sense	良好的空间感	w
 Good with language	能言善辩	w
+Have meeting place	已有集会场所	wli
 He generally finds	他通常认为
 Her hair is curly.	她的头发卷曲。	l
 Here you can turn 	在此可以将线织成布，无论是来	w
@@ -92693,6 +92697,7 @@ Very low endurance	耐力很低	wil
 Very low intuition	直觉很低	wil
 Very low toughness	韧性很低	wil
 Very low willpower	意志力很弱	wil
+Want meeting place	需要集会场所	wli
 Weapons/trap comps	武器／陷阱组件	wi
 Welcome to DFHack!	欢迎使用DFHack!	w
 Well, let's see...	嗯，让我看看……	hP
@@ -109915,6 +109920,7 @@ Greet listener	向对方问候	hP
 Greetings {p}.	你好，{p1}。	hPt
 Harvest plants	收获植物	wi
 Hauling: Route	路线	li
+Have guildhall	已有行会大厅	wli
 Hear eloquence	聆听妙语	w
 Heavy bleeding	大量出血	w
 Help! Save me!	救命！救救我！	hP
@@ -110140,6 +110146,7 @@ View stockpile	查看储物堆	wi
 View your log.	查看日志。	hj
 Vile creature!	卑劣的生物！	hP
 Walledcrests\\"	围墙顶\\"	w
+Want guildhall	需要行会大厅	wli
 Weaponsmithing	锻造武器	wi
 What happened?	发生了什么事？	hP
 When necessary	必要时	hP
