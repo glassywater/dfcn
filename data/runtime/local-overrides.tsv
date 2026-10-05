@@ -323,6 +323,7 @@ Embark site action: Unretire	结束退役	l
 # individual resident jobs or a global replacement of English name roots.
 Unit profession: resident	常驻	li
 Unit profession: general	将军	li
+Unit profession: holy shield	神圣盾	li
 Unit profession: banner captain	旗队长	li
 Unit profession: militia comander	军事指挥官	li
 Unit custom profession: Captain of the Guard	卫队统领	l
