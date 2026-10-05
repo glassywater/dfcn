@@ -21659,6 +21659,22 @@ std::vector<Match> Overlay::find_matches(int only_y,
         // readers see it. Literal Unicode drawing still uses its exact bytes.
         std::fill_n(row.begin() + region.x, region.w, ' ');
     }
+    // Structured task fields own their native rows before hover/name readers
+    // can compose the title and its separate navigation bearing as one line.
+    auto append_setup_paragraph = [&](std::vector<Match> rows,
+                                      std::string_view target,
+                                      int clip_right = -1,
+                                      int box_right = -1,
+                                      const std::vector<int> &foregrounds = std::vector<int>{},
+                                      bool clipped_start = false,
+                                      const std::vector<std::pair<size_t, size_t>> &word_ranges =
+                                          std::vector<std::pair<size_t, size_t>>{}) {
+        return append_bounded_paragraph(std::move(rows), target, screen_rows,
+            result, only_y, clip_right, box_right, foregrounds, clipped_start,
+            -1, std::nullopt, word_ranges);
+    };
+#include "adventure_quest_sidebar.inc"
+
     append_settings_announcement_names(screen_rows, result, only_y);
     append_worldgen_parameter_labels(screen_rows, result, only_y);
     // The trade controls and totals are independent native fields. Claim
@@ -21965,6 +21981,31 @@ std::vector<Match> Overlay::find_matches(int only_y,
         ? capture_map_hover_card(screen_rows, screen_override) : std::optional<NativeTextCard>{};
     if (map_hover) {
         mask_announcement_popup(screen_rows);
+        // The task renderer owns independently positioned title, bearing and
+        // body fields. Card capture restores their raw bytes, but an unknown
+        // whole-row fallback would then consume the shorter title field and
+        // collapse its separate bearing. Keep those proved source spans out
+        // of both hover phrase matching and final whole-row composition.
+        std::erase_if(map_hover->rows, [&](const NativeTextCardRow &row) {
+            const bool task_owned = std::any_of(result.begin(), result.end(),
+                [&](const Match &match) {
+                    if (match.rule != kAdventureJournalRule ||
+                            !match.layout_reflowed_paragraph || match.y != row.y ||
+                            match.length <= 0 ||
+                            match.length != static_cast<int>(match.source.size())) return false;
+                    const int first = std::max(match.x, row.x);
+                    const int last = std::min(match.x + match.length,
+                        row.x + static_cast<int>(row.source.size()));
+                    if (first >= last) return false;
+                    const auto owned = std::string_view(match.source)
+                        .substr(first - match.x, last - first);
+                    return !trim_view(owned).empty() && owned ==
+                        std::string_view(row.source).substr(first - row.x, last - first);
+                });
+            if (task_owned)
+                std::fill_n(screen_rows[row.y].begin() + row.x, row.source.size(), ' ');
+            return task_owned;
+        });
         // Card capture restores live native bytes in screen_rows. Earlier
         // address-bound reports still own those rows, including empty target
         // tails and untranslated complete records. Restore their ownership
@@ -22324,20 +22365,6 @@ std::vector<Match> Overlay::find_matches(int only_y,
     };
 
     context_detail.checkpoint(RenderTimingStage::Documents);
-    // All bounded prose shares one measured fitter and source ownership.
-    auto append_setup_paragraph = [&](std::vector<Match> rows,
-                                      std::string_view target,
-                                      int clip_right = -1,
-                                      int box_right = -1,
-                                      const std::vector<int> &foregrounds = std::vector<int>{},
-                                      bool clipped_start = false,
-                                      const std::vector<std::pair<size_t, size_t>> &word_ranges =
-                                          std::vector<std::pair<size_t, size_t>>{}) {
-        return append_bounded_paragraph(std::move(rows), target, screen_rows,
-            result, only_y, clip_right, box_right, foregrounds, clipped_start,
-            -1, std::nullopt, word_ranges);
-    };
-
 #ifdef _WIN32
     // setupadventurest redraws its retained civ_desc vector through this
     // exact addst caller, including after the hovered civilization changes.
@@ -22455,7 +22482,6 @@ std::vector<Match> Overlay::find_matches(int only_y,
 
     // Journal cards share complete event grammar and measured paragraph layout.
 #include "adventure_journal.inc"
-#include "adventure_quest_sidebar.inc"
 
     context_detail.checkpoint(RenderTimingStage::Help);
     // Help owns complete paragraphs before ordinary literal/color runs.

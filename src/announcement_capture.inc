@@ -44,6 +44,7 @@ struct NativeAnnouncementPopup {
 static std::optional<NativeAnnouncementPopup> native_announcement_popup();
 struct NativeAdventureQuestTitle {
     std::string source;
+    std::string displayed;
     int agreement_subject = -1;
     int32_t companion_reason = -1;
     bool companion_details = false;

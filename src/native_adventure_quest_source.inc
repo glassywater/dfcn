@@ -13,6 +13,7 @@ static std::optional<NativeAdventureQuestTitle> native_adventure_quest_original_
             full.size() > 65536 || full.substr(0, 58) != current) return std::nullopt;
     NativeAdventureQuestTitle result;
     result.source = std::move(full);
+    result.displayed = std::move(current);
     uintptr_t agreement = 0, details = 0, subject = 0;
     int32_t type = -1;
     if (native_history_copy(address - 0x60, agreement) && agreement &&
