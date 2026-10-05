@@ -2165,8 +2165,8 @@ duty	责任	责任		object	object		none	固定姓名用义
 dwell	居住	居住		action	intransitive	居住	none	可见动作；仅明确关系可构动宾或主谓，不自动追加者
 dwelled	居住	居住		action	intransitive	居住	none	可见过去式采用中文动作词素，不编成持名者的个人经历
 dwelled	居住	居住		state	intransitive	居住	result	完成或结果词形；只用明确登记的自然结果态，不自动添加被、曾或人物经历
-dweller	居民	居民		object	object		none	固定姓名用义
-dwellers	居民	居民		object	object		none	固定姓名用义；可见复数采用中文数中性，不编造数量
+dweller	居民	居民		agent	person	居住	none	固定姓名用义；明确居住施事，与居所物件分开
+dwellers	居民	居民		agent	person	居住	none	固定姓名用义；明确居住施事；可见复数采用中文数中性，不编造数量
 dwelling	住处	住处		object	object		none	固定姓名用义
 dwelling	居住	居住		action	intransitive	居住	process	动作过程；of补语可作动作概念，不自动补施事者
 dwellings	住处	住处		object	object		none	固定姓名用义；可见复数采用中文数中性，不编造数量
@@ -2602,8 +2602,8 @@ flay	剥皮	剥皮		action	transitive	剥皮	none	可见动作；仅明确关系
 flayed	剥皮	剥皮		quality	abstract		none	固定姓名用义
 flayed	剥皮	剥皮		action	transitive	剥皮	none	可见过去式采用中文动作词素，不编成持名者的个人经历
 flayed	剥皮	剥皮		state	transitive	剥皮	result	完成或结果词形；只用明确登记的自然结果态，不自动添加被、曾或人物经历
-flayer	剥皮者	剥皮者		object	object		none	固定姓名用义
-flayers	剥皮者	剥皮者		object	object		none	固定姓名用义；可见复数采用中文数中性，不编造数量
+flayer	剥皮者	剥皮者		agent	person	剥皮	none	固定姓名用义；明确剥皮施事，保留完整动作及身份
+flayers	剥皮者	剥皮者		agent	person	剥皮	none	固定姓名用义；明确剥皮施事；可见复数采用中文数中性，不编造数量
 flaying	剥皮	剥皮		action	transitive	剥皮	process	动作过程；of补语可作动作概念，不自动补施事者
 flays	剥皮	剥皮		action	transitive	剥皮	none	可见三单动作；保留谓词，不自动作复数名词
 flea	跳蚤	跳蚤		object	creature		none	固定姓名用义
@@ -3349,8 +3349,8 @@ hopes	希望	希望		action	emotion|intransitive	希望	none	可见三单动作�
 hoping	希望	希望		action	emotion|intransitive	希望	process	动作过程；of补语可作动作概念，不自动补施事者
 hopped	单脚跳	单脚跳		action	intransitive	单脚跳	none	可见过去式采用中文动作词素，不编成持名者的个人经历
 hopped	单脚跳	单脚跳		state	intransitive	单脚跳	result	完成或结果词形；只用明确登记的自然结果态，不自动添加被、曾或人物经历
-hopper	跃者	跃者		object	abstract		none	固定姓名用义
-hoppers	跃者	跃者		object	abstract		none	固定姓名用义；可见复数采用中文数中性，不编造数量
+hopper	跃者	跃者		agent	person	单脚跳	none	固定姓名用义；明确跃行施事，动作保留单脚跳义
+hoppers	跃者	跃者		agent	person	单脚跳	none	固定姓名用义；明确跃行施事；可见复数采用中文数中性，不编造数量
 hopping	单脚跳	单脚跳		action	intransitive	单脚跳	process	动作过程；of补语可作动作概念，不自动补施事者
 hops	单脚跳	单脚跳		object	abstract		none	固定姓名用义；可见复数采用中文数中性，不编造数量
 hops	单脚跳	单脚跳		action	intransitive	单脚跳	none	可见三单动作；保留谓词，不自动作复数名词
@@ -3554,8 +3554,8 @@ jaws	颚	颚		object	body		none	固定姓名用义；可见复数采用中文数
 jest	戏谑	戏谑		action	intransitive	戏谑	none	可见动作；仅明确关系可构动宾或主谓，不自动追加者
 jested	戏谑	戏谑		action	intransitive	戏谑	none	可见过去式采用中文动作词素，不编成持名者的个人经历
 jested	戏谑	戏谑		state	intransitive	戏谑	result	完成或结果词形；只用明确登记的自然结果态，不自动添加被、曾或人物经历
-jester	诙谐	诙谐		object	artifact		none	固定姓名用义
-jesters	诙谐	诙谐		object	artifact		none	固定姓名用义；可见复数采用中文数中性，不编造数量
+jester	戏谑者	戏谑者		agent	person	戏谑	none	固定姓名用义；明确戏谑施事，人物身份不作抽象气质或器物
+jesters	戏谑者	戏谑者		agent	person	戏谑	none	固定姓名用义；明确戏谑施事；可见复数采用中文数中性，不编造数量
 jesting	戏谑	戏谑		action	intransitive	戏谑	process	动作过程；of补语可作动作概念，不自动补施事者
 jests	戏谑	戏谑		action	intransitive	戏谑	none	可见三单动作；保留谓词，不自动作复数名词
 jewel	珠宝	珠宝		object	material		none	固定姓名用义
@@ -3902,8 +3902,8 @@ love	爱	爱		action	emotion|transitive	爱	none	可见动作；仅明确关系�
 loved	爱	爱		action	emotion|transitive	爱	none	可见过去式采用中文动作词素，不编成持名者的个人经历
 loved	受爱	受爱		state	emotion|transitive	爱	result	完成或结果词形；只用明确登记的自然结果态，不自动添加被、曾或人物经历
 lovely	可爱	可爱		quality	emotion		none	固定姓名用义
-lover	爱人	爱人		object	person		none	固定姓名用义
-lovers	爱人	爱人		object	person		none	固定姓名用义；可见复数采用中文数中性，不编造数量
+lover	爱人	爱人		agent	person	爱	none	固定姓名用义；明确爱恋施事，保留爱人完整身份
+lovers	爱人	爱人		agent	person	爱	none	固定姓名用义；明确爱恋施事；可见复数采用中文数中性，不编造数量
 loves	爱	爱		object	emotion		none	固定姓名用义；可见复数采用中文数中性，不编造数量
 loves	爱	爱		action	emotion|transitive	爱	none	可见三单动作；保留谓词，不自动作复数名词
 loving	爱	爱		action	emotion|transitive	爱	process	动作过程；of补语可作动作概念，不自动补施事者
@@ -6140,11 +6140,17 @@ splashed	溅湿	溅湿		state	transitive	溅湿	result	完成或结果词形；�
 splashes	飞溅	飞溅		object	object		none	固定姓名用义；可见复数采用中文数中性，不编造数量
 splashes	溅湿	溅湿		action	transitive	溅湿	none	可见三单动作；保留谓词，不自动作复数名词
 splashing	溅湿	溅湿		action	transitive	溅湿	process	动作过程；of补语可作动作概念，不自动补施事者
+splatter	溅痕	溅痕		object	object		none	Merriam-Webster splatter名词spatter/splash；采用飞溅所留痕迹意象；https://www.merriam-webster.com/dictionary/splatter
+splatter	飞溅	飞溅		action	intransitive	飞溅	none	Merriam-Webster splatter不及物义；液滴散落或落下；与泼溅及物义独立；https://www.merriam-webster.com/dictionary/splatter
 splatter	泼溅	泼溅		action	transitive	泼溅	none	可见动作；仅明确关系可构动宾或主谓，不自动追加者
 splattered	溅泼	溅泼		quality	abstract		none	固定姓名用义
 splattered	泼溅	泼溅		action	transitive	泼溅	none	可见过去式采用中文动作词素，不编成持名者的个人经历
+splattered	飞溅	飞溅		action	intransitive	飞溅	none	Merriam-Webster splatter不及物过去式；保留飞溅动作，不添加个人经历；https://www.merriam-webster.com/dictionary/splatter
 splattered	泼溅	泼溅		state	transitive	泼溅	result	完成或结果词形；只用明确登记的自然结果态，不自动添加被、曾或人物经历
 splattering	泼溅	泼溅		action	transitive	泼溅	process	动作过程；of补语可作动作概念，不自动补施事者
+splattering	飞溅	飞溅		action	intransitive	飞溅	process	Merriam-Webster splatter不及物进行词形；飞溅过程，不自动补施事者；https://www.merriam-webster.com/dictionary/splatter
+splatters	溅痕	溅痕		object	object		none	Merriam-Webster splatter名词复数例句paint splatters；中文数中性；https://www.merriam-webster.com/dictionary/splatter
+splatters	飞溅	飞溅		action	intransitive	飞溅	none	Merriam-Webster splatter不及物三单词形；与复数名词溅痕独立；https://www.merriam-webster.com/dictionary/splatter
 splatters	泼溅	泼溅		action	transitive	泼溅	none	可见三单动作；保留谓词，不自动作复数名词
 split	劈	劈开		quality	abstract		none	固定姓名用义
 split	分离	分离		action	transitive	分离	none	可见动作；仅明确关系可构动宾或主谓，不自动追加者
@@ -6350,8 +6356,8 @@ stoke	添火	添火		action	transitive	添火	none	可见动作；仅明确关�
 stoked	炽盛	炽盛		quality	abstract		none	固定姓名用义
 stoked	添火	添火		action	transitive	添火	none	可见过去式采用中文动作词素，不编成持名者的个人经历
 stoked	添火	添火		state	transitive	添火	result	完成或结果词形；只用明确登记的自然结果态，不自动添加被、曾或人物经历
-stoker	添火	添火		object	object		none	固定姓名用义
-stokers	添火	添火		object	object		none	固定姓名用义；可见复数采用中文数中性，不编造数量
+stoker	添火者	添火者		agent	person	添火	none	固定姓名用义；明确添火施事，人物身份与添火动作分开
+stokers	添火者	添火者		agent	person	添火	none	固定姓名用义；明确添火施事；可见复数采用中文数中性，不编造数量
 stokes	添火	添火		action	transitive	添火	none	可见三单动作；保留谓词，不自动作复数名词
 stoking	添火	添火		action	transitive	添火	process	动作过程；of补语可作动作概念，不自动补施事者
 stole	窃	偷窃		action	abstract	窃	none	可见过去式采用中文动作词素，不编成持名者的个人经历
@@ -7593,9 +7599,9 @@ zephyr	西风	西风		object	nature		none	固定姓名用义
 zephyrs	西风	西风		object	nature		none	固定姓名用义；可见复数采用中文数中性，不编造数量
 oath	誓言	誓言		object	abstract		none	通用可见英语义项；誓言名物
 oaths	誓言	誓言		object	abstract		none	通用可见英语义项；复数采用中文数中性
-runner	奔行者	奔行者		agent	person	奔行	none	通用可见英语义项；明确施事，与跑行动作分开
-runners	奔行者	奔行者		agent	person	奔行	none	通用可见英语义项；明确施事，复数采用中文数中性
-strider	阔步者	阔步者		agent	person	阔步	none	通用可见英语义项；明确迈步施事
-striders	阔步者	阔步者		agent	person	阔步	none	通用可见英语义项；明确迈步施事，复数采用中文数中性
+runner	奔行者	奔行者		agent	person	奔	none	通用可见英语义项；明确施事，与跑行动作分开
+runners	奔行者	奔行者		agent	person	奔	none	通用可见英语义项；明确施事，复数采用中文数中性
+strider	阔步者	阔步者		agent	person	迈	none	通用可见英语义项；明确迈步施事
+striders	阔步者	阔步者		agent	person	迈	none	通用可见英语义项；明确迈步施事，复数采用中文数中性
 walker	行者	行者		agent	person	行走	none	通用可见英语义项；明确行走施事
 walkers	行者	行者		agent	person	行走	none	通用可见英语义项；明确行走施事，复数采用中文数中性

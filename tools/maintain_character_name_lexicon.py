@@ -54,12 +54,14 @@ DANCE=舞
 DARK=黑暗
 DAY=白日
 DOMESTIC=家园
+DWELL=居民
 DYE=染料
 ELDER=长者
 EXECUTE=处刑
 FANG=獠牙
 FATHER=父
 FIND=寻获者
+FLAY=剥皮者
 FORTIFY=筑防
 FRUIT=果实
 GAME=游戏
@@ -70,13 +72,15 @@ HAG=丑婆
 HAMMERER=执锤者
 HEARTH=炉膛
 HIP=髋
+HOP_VERB=跃者
 HOWL=长嗥
 INK=墨
-JEST=诙谐
+JEST=戏谑者
 KNIFE=刀
 LAW=律法
 LIMB=肢
 LOOT=掠获物
+LOVER=爱人
 LUST=贪欲
 MASTER=主人
 MIGHTINESS=强盛
@@ -144,7 +148,7 @@ CHASM=深裂谷
 CAVITY=空腔
 CRATER=火山口
 SOCKET=窝孔
-STOKE=添火
+STOKE=添火者
 FEED=饲料
 DEFERENCE=敬意
 KNOW=知者
@@ -884,6 +888,12 @@ JUDGE=审
 KNOW=知
 WORSHIPPER=崇拜
 WINNOW=簸
+DWELL=居住
+FLAY=剥皮
+HOP_VERB=单脚跳
+JEST=戏谑
+LOVER=爱
+STOKE=添火
 ''')
 
 # Explicit result words avoid pretending every English participle is an agent.
@@ -1126,6 +1136,10 @@ def short(text):
     return SHORT.get(text, text)
 
 def categories(word, kind):
+    # These independently authored actor senses use the same fixed category
+    # as their runtime surname keys; imagery belongs to surname.family.
+    if kind == 'agent' and word in {'DWELL', 'FLAY', 'HOP_VERB', 'JEST', 'LOVER', 'STOKE'}:
+        return 'person'
     tags = [k for k, values in SETS.items() if word in values]
     if kind == 'action':
         if word in INTRANSITIVE: tags.append('intransitive')
@@ -1224,6 +1238,10 @@ for r in forms:
 
 # These are independent meanings of the same visible English spelling, not
 # aliases that can be randomly substituted. Category matching is deterministic.
+# Splatter noun and intransitive senses are independently registered from
+# Merriam-Webster: https://www.merriam-webster.com/dictionary/splatter
+# Its noun examples include the plural splatters; existing transitive entries
+# remain unchanged. The surname lexicon keeps matching senses independently.
 extra = [
  ('bolt','弩矢','弩箭','','object','weapon','', 'none','bolt的武器用义；门闩及闩锁动作另列'),
  ('bolt','霹雳','闪电','','object','nature|celestial','', 'none','bolt的闪电用义；保留英文同形多义候选'),
@@ -1233,12 +1251,18 @@ extra = [
  ('springs','泉','泉水','','object','landscape|nature','', 'none','spring水泉复数；中文数中性'),
  ('oath','誓言','誓言','','object','abstract','', 'none','通用可见英语义项；誓言名物'),
  ('oaths','誓言','誓言','','object','abstract','', 'none','通用可见英语义项；复数采用中文数中性'),
- ('runner','奔行者','奔行者','','agent','person','奔行', 'none','通用可见英语义项；明确施事，与跑行动作分开'),
- ('runners','奔行者','奔行者','','agent','person','奔行', 'none','通用可见英语义项；明确施事，复数采用中文数中性'),
- ('strider','阔步者','阔步者','','agent','person','阔步', 'none','通用可见英语义项；明确迈步施事'),
- ('striders','阔步者','阔步者','','agent','person','阔步', 'none','通用可见英语义项；明确迈步施事，复数采用中文数中性'),
+    ('runner','奔行者','奔行者','','agent','person','奔', 'none','通用可见英语义项；明确施事，与跑行动作分开'),
+    ('runners','奔行者','奔行者','','agent','person','奔', 'none','通用可见英语义项；明确施事，复数采用中文数中性'),
+    ('strider','阔步者','阔步者','','agent','person','迈', 'none','通用可见英语义项；明确迈步施事'),
+    ('striders','阔步者','阔步者','','agent','person','迈', 'none','通用可见英语义项；明确迈步施事，复数采用中文数中性'),
  ('walker','行者','行者','','agent','person','行走', 'none','通用可见英语义项；明确行走施事'),
  ('walkers','行者','行者','','agent','person','行走', 'none','通用可见英语义项；明确行走施事，复数采用中文数中性'),
+ ('splatter','溅痕','溅痕','','object','object','', 'none','Merriam-Webster splatter名词spatter/splash；采用飞溅所留痕迹意象；https://www.merriam-webster.com/dictionary/splatter'),
+ ('splatters','溅痕','溅痕','','object','object','', 'none','Merriam-Webster splatter名词复数例句paint splatters；中文数中性；https://www.merriam-webster.com/dictionary/splatter'),
+ ('splatter','飞溅','飞溅','','action','intransitive','飞溅', 'none','Merriam-Webster splatter不及物义；液滴散落或落下；与泼溅及物义独立；https://www.merriam-webster.com/dictionary/splatter'),
+ ('splatters','飞溅','飞溅','','action','intransitive','飞溅', 'none','Merriam-Webster splatter不及物三单词形；与复数名词溅痕独立；https://www.merriam-webster.com/dictionary/splatter'),
+ ('splattered','飞溅','飞溅','','action','intransitive','飞溅', 'none','Merriam-Webster splatter不及物过去式；保留飞溅动作，不添加个人经历；https://www.merriam-webster.com/dictionary/splatter'),
+ ('splattering','飞溅','飞溅','','action','intransitive','飞溅', 'process','Merriam-Webster splatter不及物进行词形；飞溅过程，不自动补施事者；https://www.merriam-webster.com/dictionary/splatter'),
 ]
 cols = ['english','preferred','full','alternatives','kind','category','action','state','notes']
 for values in extra:

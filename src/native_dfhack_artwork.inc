@@ -13,6 +13,9 @@ static void uninstall_native_dfhack_capture_hook();
 static bool native_dfhack_capture_hook_active();
 static bool install_native_dfhack_console_hook();
 static bool install_native_dfhack_lua_output_hook();
+static bool install_native_dfhack_sitemap_hook();
+static std::optional<std::string> lookup_native_dfhack_sitemap_text(
+    const graphicst *gps, int x, int y, std::string_view visible);
 static bool install_native_dfhack_messagebox_hook();
 static bool install_native_dfhack_prompt_hook();
 static bool install_native_dfhack_stonesense_hook();

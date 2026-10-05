@@ -76,6 +76,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_dfhack_item_print_ticket.h"
 #include "native_dfhack_console_hooks.inc"
 #include "native_dfhack_lua_output_hooks.inc"
+#include "native_dfhack_sitemap_hooks.inc"
 #include "native_dfhack_messagebox_hooks.inc"
 #include "native_dfhack_prompt_hooks.inc"
 #include "native_dfhack_stonesense_hooks.inc"
@@ -141,6 +142,7 @@ static bool install_sdl_hooks() {
     (void)install_native_dfhack_capture_hook();
     (void)install_native_dfhack_console_hook();
     (void)install_native_dfhack_lua_output_hook();
+    (void)install_native_dfhack_sitemap_hook();
     (void)install_native_dfhack_messagebox_hook();
     (void)install_native_dfhack_prompt_hook();
     (void)install_native_dfhack_stonesense_hook();
@@ -154,6 +156,7 @@ static bool install_sdl_hooks() {
 }
 
 static void uninstall_sdl_hooks() {
+    uninstall_native_dfhack_sitemap_hook();
     uninstall_native_dfhack_lua_output_hook();
     uninstall_native_dfhack_stonesense_hook();
     uninstall_native_dfhack_prompt_hook();
@@ -212,6 +215,7 @@ static bool native_hooks_detached() {
         !native_dfhack_capture_hook_active() &&
         !native_dfhack_console_hook_active() &&
         !native_dfhack_lua_output_hook_active() &&
+        !native_dfhack_sitemap_hook_active() &&
         !native_dfhack_messagebox_hook_active() &&
         !native_dfhack_prompt_hook_active() &&
         !native_dfhack_stonesense_hook_active() &&

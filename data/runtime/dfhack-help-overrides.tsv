@@ -356,6 +356,9 @@ DFHack GUI Design: Use the DFHack building planner to configure filters for the 
 
 # gui/sitemap: window title, unit disposition, empty states, and navigation help.
 DFHack GUI Title: Sitemap	据点地图	l
+DFHack GUI Sitemap: retired	已停用	l
+DFHack GUI Sitemap: no zone	未划定区域	l
+DFHack GUI Sitemap: zones	个区域	l
 DFHack GUI Sitemap: fort member	要塞居民	l
 DFHack GUI Sitemap: fort animal	要塞动物	l
 DFHack GUI Sitemap: invader	入侵者	l

@@ -46329,6 +46329,7 @@ void Overlay::render(SDL_Renderer *renderer) {
     (void)install_native_dfhack_capture_hook();
     (void)install_native_dfhack_console_hook();
     (void)install_native_dfhack_lua_output_hook();
+    (void)install_native_dfhack_sitemap_hook();
     (void)install_native_dfhack_messagebox_hook();
     (void)install_native_dfhack_prompt_hook();
     (void)install_native_dfhack_stonesense_hook();

@@ -113,13 +113,14 @@ static void capture_native_unit_header_english_name(const void *name,
         // The sheet selects the visible language_name itself and bypasses the
         // unit formatters. Capture that exact field without entering or altering
         // a unit TLS scope. Its separate addchar calls own the outer quotes.
-        if (capture_native_history_name(g_native_unit_identity_hooks.base,
-                reinterpret_cast<uintptr_t>(name), snapshot.name)) {
-            snapshot.native_name = original;
-            snapshot.form = NativeUnitIdentityForm::NameOnly;
-            snapshot.english_name = true;
-            translated = g_overlay.translate_native_unit_identity(snapshot);
-        }
+        // This dedicated formatter already proves an English character name.
+        // Optional native metadata must not block translation of that text.
+        capture_native_history_name(g_native_unit_identity_hooks.base,
+            reinterpret_cast<uintptr_t>(name), snapshot.name);
+        snapshot.native_name = original;
+        snapshot.form = NativeUnitIdentityForm::NameOnly;
+        snapshot.english_name = true;
+        translated = g_overlay.translate_native_unit_identity(snapshot);
         if (translated && translated->empty()) translated.reset();
         remember_native_unit_identity(reinterpret_cast<uintptr_t>(output), original,
             translated ? *translated : native_text_to_utf8(original),

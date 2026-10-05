@@ -71900,6 +71900,8 @@ DFHack GUI Quickfort: flipv	纵向翻转	l
 DFHack GUI Sitemap: Unknown	未知	l
 DFHack GUI Sitemap: hostile	敌对生物	l
 DFHack GUI Sitemap: invader	入侵者	l
+DFHack GUI Sitemap: no zone	未划定区域	l
+DFHack GUI Sitemap: retired	已停用	l
 DFHack GUI Sitemap: visitor	访客	l
 DFHack GUI Teleport: (wild)	（野生）	l
 DFHack GUI Title: Quickfort	Quickfort 蓝图	l
@@ -76066,6 +76068,7 @@ DFHack GUI Design: UpDown	上下楼梯	l
 DFHack GUI Quickfort: Off	关闭	l
 DFHack GUI Quickfort: ccw	逆时针旋转	l
 DFHack GUI Sitemap: caged	被囚禁的	l
+DFHack GUI Sitemap: zones	个区域	l
 DFHack GUI Title: Sitemap	据点地图	l
 DFHack GUI Title: Success	完成	l
 DFHack help: "--brewable"	"--brewable"	l
@@ -105144,7 +105147,6 @@ On this mission	已加入此任务	wli
 Open Combat Log	打开战斗日志	w
 Open the place 	打开地点信息目录。	w
 Opening file...	正在打开文件……	w
-Optics Engineer	光学工程师	wi
 Other materials	其他材料	wi
 Page {d} of {d}	页面 {d} of {d}	wt
 Parley with {e}	和谈对象：{e1}	hPt
@@ -109824,7 +109826,6 @@ Finely-crafted	精制的	wi
 Finished Goods	成品	wi
 Fish Dissector	剖鱼工	wi
 Fishery Worker	渔业工人	wi
-Fluid Engineer	流体工程师	wi
 Forest retreat	森林聚落	wi
 Fresh raw hide	新鲜生皮	wi
 Freshest track	最新踪迹	hP
@@ -131130,6 +131131,7 @@ fox woman	狐狸人	wi
 fox women	狐狸人	wi
 freed {a}	解救了{a1}	ht
 from afar	从远方	h
+from afar	身处远方	wi
 gauntlets	护手	wi
 genealogy	家谱	hv
 giant bat	蝙蝠	wi
@@ -136066,6 +136068,7 @@ Mubun	穆本	wi
 Mukar	穆卡尔	wi
 Murak	穆拉克	wi
 Musar	穆萨尔	wi
+Music	音乐演奏	wi
 Mus\x94d	穆索德	wi
 Muved	穆维德	wi
 M\x89tin	梅廷	wi
@@ -137425,7 +137428,6 @@ lady	女领主	h
 lady	女领主	wi
 lair	巢穴	hv
 lamb	羊幼崽	wi
-lash	鞭打	wi
 laws	法律	r
 leaf	叶	wi
 leek	韭葱	wi
