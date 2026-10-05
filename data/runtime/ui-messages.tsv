@@ -147,6 +147,11 @@ Assigned to {e}, position {d}	已分配至{e}，位置{d}
 # Location access, religious recognition, agreements and petitions.
 Only members can visit (if guild established)	仅成员可以到访（行会成立后）。
 Citizens and long-term residents only	仅限公民和长期居民。
+# Hospital requirement: the native renderer joins the live position title
+# into one sentence; narrow panels use the shorter complete form.
+# Sources: data/extracted/fortress-location-detail/{reference,classic}-render.asm.
+You need to assign a {s} to utilize a hospital.	你需要任命一名{s}，才能使用医院。
+You need a {s}.	你需要一名{s}。
 You can recognize a priesthood once this is a temple.	此处成为神殿后，即可认可祭司团。
 You can recognize a high priest when this is a temple complex.	此处成为神殿建筑群后，即可认可高阶祭司。
 Only organized religions can have recognized priesthoods.	只有有组织的宗教才能获得祭司团认可。

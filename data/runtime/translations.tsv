@@ -35678,6 +35678,7 @@ You have died after colliding with an obstacle.	你撞上障碍物后死了。	h
 You have selected an area with a heavy aquifer.	你选择的区域含有重度含水层。	l
 You have selected an area with a light aquifer.	你选择的区域含有浅层含水层。	l
 You may be invaded very early by powerful foes.	强大的敌人可能会在游戏初期入侵。	l
+You need to assign a {s} to utilize a hospital.	你需要任命一名{s1}，才能使用医院。	hPt
 You practice your {s} but make nothing of note.	你练习了{s1}，但没有做出什么像样的东西。	hPt
 You'll be an accomplished player at this point.	到这一步，你已经是一位出色的玩家了。	hq
 Your engraver has carved a track through a {p}!	你的雕刻师开凿的轨道穿过了一件{p1}的作品！	hPt
@@ -105365,6 +105366,7 @@ You are winded.	你气喘吁吁。	hj
 You cannot see.	你看不见。	hP
 You feel dizzy!	你感觉头晕目眩！	hP
 You must yield!	你必须投降！	hP
+You need a {s}.	你需要一名{s1}。	hPt
 You put on {s}.	你穿上了{s1}。	hPt
 You set a fire.	你点起了一把火。	hP
 You smell soil.	你闻到了土壤的气味。	hj
