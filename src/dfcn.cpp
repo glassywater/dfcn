@@ -30606,6 +30606,7 @@ void Overlay::normalize_native_split_text() {
             match.rule == kFortressStockpileSettingRule ||
             match.rule == kFortressHaulingCaptionRule ||
             match.rule == kFortressHaulingNameRule ||
+            match.rule == kFortressSquadRowRule ||
             match.rule == kFortressKitchenCaptionRule ||
             match.rule == kFortressKitchenFoodRule ||
             match.rule == kFortressLaborCaptionRule ||
