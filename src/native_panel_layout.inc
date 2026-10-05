@@ -17,6 +17,14 @@ public:
     std::vector<uint8_t> item_actions;
     std::vector<uint8_t> item_anchor_candidates;
     std::vector<std::pair<int, int>> item_anchor_positions;
+    std::optional<std::array<std::vector<int>, 256>> main_button_first_glyph;
+    struct MainButtonSpans {
+        uint64_t revision = 0;
+        const unsigned char *screen = nullptr, *screen_top = nullptr;
+        bool top_in_use = false;
+        std::vector<SDL_Rect> spans;
+    };
+    std::optional<MainButtonSpans> main_button_spans;
     std::optional<std::vector<NativeCollapsedHelpPanel>> collapsed_help_panels;
     std::optional<std::vector<SDL_Rect>> help_frames;
     std::optional<std::vector<SDL_Rect>> announcement_frames;
@@ -463,16 +471,32 @@ static bool native_main_button_at(const graphicst &gps, int x, int y, int kind,
 // skins, not translatable labels. Establish their ownership from all twelve
 // live cells; caption/rectangle buttons and actual shortcut prose remain text.
 static std::vector<SDL_Rect> native_main_button_spans(const graphicst &gps) {
-    const auto settings = native_ui_settings();
-    if (!settings || !settings->classic || !gps.screen ||
+    if (!native_ui_classic().value_or(false) || !gps.screen ||
             gps.dimx < 4 || gps.dimy < 3) return {};
-    const auto &buttons = native_texture_button_main(gps);
-    std::array<std::vector<int>, 256> by_first_glyph;
-    for (size_t kind = 0; kind < std::size(buttons); ++kind) {
-        const int32_t first = buttons[kind][0][0];
-        if (first > 0 && first <= 0x7fff && (first & 0xff))
-            by_first_glyph[first & 0xff].push_back(static_cast<int>(kind));
+    auto *cache = NativePanelReadScope::active;
+    if (cache && !cache->contains(gps, 0, 0)) cache = nullptr;
+    const uint64_t revision = NativeUiReadScope::read_revision;
+    if (cache && cache->main_button_spans) {
+        const auto &saved = *cache->main_button_spans;
+        if (saved.revision == revision && saved.screen == gps.screen &&
+                saved.screen_top == gps.screen_top && saved.top_in_use == gps.top_in_use)
+            return saved.spans;
     }
+    const auto &buttons = native_texture_button_main(gps);
+    // The atlas is fixed inside this synchronous traversal. Share only its
+    // necessary first-byte filter; every scan still proves the complete live
+    // skin, including current palette colors and visible-layer ownership.
+    std::optional<std::array<std::vector<int>, 256>> local_index;
+    auto &index = cache ? cache->main_button_first_glyph : local_index;
+    if (!index) {
+        index.emplace();
+        for (size_t kind = 0; kind < std::size(buttons); ++kind) {
+            const int32_t first = buttons[kind][0][0];
+            if (first > 0 && first <= 0x7fff && (first & 0xff))
+                (*index)[first & 0xff].push_back(static_cast<int>(kind));
+        }
+    }
+    const auto &by_first_glyph = *index;
     std::vector<SDL_Rect> spans;
     for (int x = 0; x + 4 <= gps.dimx; ++x)
         for (int top = 0; top + 3 <= gps.dimy; ++top) {
@@ -487,6 +511,10 @@ static std::vector<SDL_Rect> native_main_button_spans(const graphicst &gps) {
                 break;
             }
         }
+    // Background views and temporary grid masking invalidate read_revision.
+    // Never reuse a proof across those views or outside this panel traversal.
+    if (cache) cache->main_button_spans = NativePanelReadScope::MainButtonSpans{
+        revision, gps.screen, gps.screen_top, gps.top_in_use, spans};
     return spans;
 }
 

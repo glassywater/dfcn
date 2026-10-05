@@ -159,6 +159,15 @@ static std::vector<SDL_Rect> native_unit_chooser_overlay_frames(const graphicst 
 
 void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const {
+    const auto rated_skills = [&](std::string_view source) {
+        return FortressRosterTranslationScope::skills(source,
+            [&] { return translate_rated_skill_list(source); });
+    };
+    const auto typed_identity = [&](const std::string &source) {
+        return FortressRosterTranslationScope::text(
+            FortressRosterTranslationScope::TextKind::TypedIdentity, source,
+            [&] { return translate_unit_identity(source, true); });
+    };
     if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy)) return;
     auto context = rows;
     if (raw_layer)
@@ -252,7 +261,7 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
                 if (capture.x == x && capture.y == y && capture.visible == visible &&
                         !capture.complete.empty()) { complete = capture.complete; break; }
             const auto skills = identity || worker_controls ? std::nullopt
-                : translate_rated_skill_list(normalize_utterance(complete));
+                : rated_skills(normalize_utterance(complete));
             const bool skill = skills && skills->size() == 1;
             const bool empty_skills = !worker_controls && !identity && complete == "No relevant skills";
             if ((skill || empty_skills) && y <= record.box.y) return;
@@ -335,7 +344,7 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
                 source.empty() || context[y].compare(x, source.size(), source) != 0) return;
         for (const auto &record : records)
             if (y > record.box.y && y < record.box.y + record.box.h) return;
-        const auto skills = translate_rated_skill_list(normalize_utterance(complete));
+        const auto skills = rated_skills(normalize_utterance(complete));
         if ((!skills || skills->size() != 1) && complete != "No relevant skills") return;
         const int length = static_cast<int>(source.size());
         const auto append = [&](int offset, int count) {
@@ -412,7 +421,9 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
                     if (!profession.empty()) profession += ' ';
                     profession += normalize_utterance(identities[index]->complete);
                 }
-                const auto role = translate_unit_profession(profession, true);
+                const auto role = FortressRosterTranslationScope::text(
+                    FortressRosterTranslationScope::TextKind::TypedProfession, profession,
+                    [&] { return translate_unit_profession(profession, true); });
                 if (role) identity = identities.front()->target + "，" + *role;
             }
         }
@@ -422,10 +433,13 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
             // its separator to the common identity parser before joining it.
             std::string separated = identity_source;
             separated.insert(normalize_utterance(identities.front()->complete).size(), ",");
-            identity = translate_unit_identity(separated, true);
+            identity = typed_identity(separated);
         }
-        if (!identity) identity = translate_unit_identity(identity_source, true);
-        if (!identity || identity->empty()) identity = translate_procedural_fragment(identity_source);
+        if (!identity) identity = typed_identity(identity_source);
+        if (!identity || identity->empty())
+            identity = FortressRosterTranslationScope::text(
+                FortressRosterTranslationScope::TextKind::ProceduralIdentity, identity_source,
+                [&] { return translate_procedural_fragment(identity_source); });
         if (!identity || identity->empty()) identity = native_text_to_utf8(identity_source);
         bool first_identity = true;
         for (const auto &field : record.fields) {

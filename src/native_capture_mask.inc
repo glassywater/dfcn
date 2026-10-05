@@ -62,6 +62,46 @@ static void native_capture_append_region(std::vector<SDL_Rect> &regions,
 static std::vector<SDL_Rect> native_capture_mask_regions(const graphicst *gps);
 static bool native_capture_ignored_cell(const graphicst *gps, int x, int y);
 
+// Overlay drawing does not write the native grid. Share its already-proven
+// exclusion regions while each short mask scope still restores native cells
+// before SDL sees them. Never retain this scope across native game rendering.
+class NativeCaptureRegionReadScope {
+    const graphicst *graphics_ = nullptr;
+    const unsigned char *screen_ = nullptr, *top_ = nullptr;
+    int dimx_ = 0, dimy_ = 0;
+    bool top_in_use_ = false;
+    std::vector<SDL_Rect> regions_;
+    NativeCaptureRegionReadScope *previous_ = nullptr;
+    inline static thread_local NativeCaptureRegionReadScope *active_ = nullptr;
+public:
+    explicit NativeCaptureRegionReadScope(const graphicst *gps) {
+        if (!native_capture_grid_valid(gps)) return;
+        graphics_ = gps;
+        screen_ = gps->screen;
+        top_ = gps->screen_top;
+        dimx_ = gps->dimx;
+        dimy_ = gps->dimy;
+        top_in_use_ = gps->top_in_use;
+        regions_ = native_capture_mask_regions(gps);
+        previous_ = active_;
+        active_ = this;
+    }
+    ~NativeCaptureRegionReadScope() {
+        if (graphics_) active_ = previous_;
+    }
+    NativeCaptureRegionReadScope(const NativeCaptureRegionReadScope &) = delete;
+    NativeCaptureRegionReadScope &operator=(const NativeCaptureRegionReadScope &) = delete;
+
+    static const std::vector<SDL_Rect> *regions(const graphicst *gps) {
+        for (auto *scope = active_; scope; scope = scope->previous_)
+            if (scope->graphics_ == gps && scope->screen_ == gps->screen &&
+                    scope->top_ == gps->screen_top && scope->dimx_ == gps->dimx &&
+                    scope->dimy_ == gps->dimy && scope->top_in_use_ == gps->top_in_use)
+                return &scope->regions_;
+        return nullptr;
+    }
+};
+
 class NativeCaptureMaskScope {
     using Texture = std::remove_pointer_t<decltype(graphicst::screentexpos)>;
     struct Cell {
@@ -148,7 +188,7 @@ public:
         previous_ = active_;
         active_ = this;
         installed_ = true;
-        NativeUiReadScope::invalidate_reads();
+        if (!saved_.empty()) NativeUiReadScope::invalidate_reads();
     }
 
     ~NativeCaptureMaskScope() noexcept { reset(); }
@@ -168,7 +208,7 @@ public:
         while (*link && *link != this) link = &(*link)->previous_;
         if (*link == this) *link = previous_;
         installed_ = false;
-        NativeUiReadScope::invalidate_reads();
+        if (!saved_.empty()) NativeUiReadScope::invalidate_reads();
     }
 };
 
@@ -177,6 +217,7 @@ static std::vector<SDL_Rect> native_capture_mask_regions(const graphicst *gps) {
     if (!native_capture_grid_valid(gps)) return regions;
     for (auto *scope = NativeCaptureMaskScope::active_; scope; scope = scope->previous_)
         if (scope->graphics_ == gps && scope->compatible(gps)) return scope->regions_;
+    if (const auto *cached = NativeCaptureRegionReadScope::regions(gps)) return *cached;
     // An outer read scope has already erased the signature. Retain its region
     // for nested captures and for pixel readbacks performed in that scope.
     for (auto *scope = NativeCaptureMaskScope::active_; scope; scope = scope->previous_)

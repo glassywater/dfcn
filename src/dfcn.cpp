@@ -21578,6 +21578,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
     // source view. Reuse cell decisions only until this match pass returns;
     // view/mask revisions invalidate entries before any nested read resumes.
     CellReadCacheScope cell_reads(*this);
+    FortressRosterTranslationScope roster_translations(gps_);
     const auto tooltip_widget = captured_native_tooltip_widget(*gps_);
     auto read_row = [&](int row_y) {
         std::string rendered(static_cast<size_t>(gps_->dimx), ' ');
@@ -30133,13 +30134,17 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
         ? immediate_top_full_scan_epoch_
         : immediate_base_full_scan_epoch_;
     if (epochs[static_cast<size_t>(y)] == draw_epoch_) return true;
-    NativeCaptureMaskScope capture_mask(gps_);
     NativeHistoryFrameScope history_frame(gps_);
     const bool has_cached_row = epochs[static_cast<size_t>(y)] != 0;
     epochs[static_cast<size_t>(y)] = draw_epoch_;
 
-    if (!native_knowledge_frame_matches_)
+    if (!native_knowledge_frame_matches_) {
+        // Document ownership can read its proven base grid directly. Keep
+        // logo exclusion around that first-frame capture, not around every
+        // subsequent row hash. Ordinary composed reads exclude it in cell_at.
+        NativeCaptureMaskScope knowledge_capture_mask(gps_);
         (void)native_knowledge_matches(-1, embark_pause_menu_matches());
+    }
 
     // Legends link runs use foreground changes as semantic boundaries. Hash
     // colors as well as characters so hovering/recoloring a link cannot reuse
@@ -30152,7 +30157,27 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
         const auto *cell = cell_at(x, row, &top);
         return cell && cell[0] ? cell[0] : static_cast<unsigned char>(' ');
     });
-    const auto row_hash = [&](int hash_y) {
+    const auto grid_row_digest = [&](int context_y) {
+        uint64_t digest = 1469598103934665603ULL;
+        const auto append = [&](unsigned char value) {
+            digest ^= value;
+            digest *= 1099511628211ULL;
+        };
+        for (int x = 0; x < gps_->dimx; ++x) {
+            const size_t tile = static_cast<size_t>(x) * gps_->dimy + context_y;
+            for (int channel = 0; channel <= 3; ++channel)
+                append(raw[tile * 8 + channel]);
+            // A mirrored top row also depends on its current base byte.
+            if (top_layer && gps_->screen) append(gps_->screen[tile * 8]);
+            bool composed_top = false;
+            const unsigned char *composed = cell_at(x, context_y, &composed_top);
+            for (int channel = 0; channel <= 3; ++channel)
+                append(composed ? composed[channel] : 0);
+        }
+        return digest;
+    };
+    const auto row_hash = [&](int hash_y,
+            const std::vector<uint64_t> *grid_row_digests = nullptr) {
         uint64_t hash = 1469598103934665603ULL;
         // Footer matching depends on the whole captured quote, beyond the
         // nearby rows below. Keep that same proven owner/readiness in the key.
@@ -30212,35 +30237,15 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
         }
         for (int context_y = std::max(0, hash_y - 3);
              context_y <= std::min(gps_->dimy - 1, hash_y + 3); ++context_y) {
-            for (int x = 0; x < gps_->dimx; ++x) {
-                const size_t tile = static_cast<size_t>(x) * gps_->dimy + context_y;
-                hash ^= raw[tile * 8];
-                hash *= 1099511628211ULL;
-                for (int channel = 1; channel <= 3; ++channel) {
-                    hash ^= raw[tile * 8 + channel];
-                    hash *= 1099511628211ULL;
-                }
-                // A top-layer widget can copy unchanged glyphs from the base
-                // screen around an opaque popup.  The safe duplicate-suppression
-                // pass below therefore depends on both logical layers, not only
-                // on screen_top.  Include the base byte in the cache key so a
-                // changing settings row cannot reuse a stale top mask.
-                if (top_layer && gps_->screen) {
-                    hash ^= gps_->screen[tile * 8];
-                    hash *= 1099511628211ULL;
-                }
-                // A room's complete source can be assembled from both layers.
-                // Changing only the other layer must invalidate this mask too,
-                // including a blank top cell that owns a graphical widget.
-                bool composed_top = false;
-                const unsigned char *composed = cell_at(x, context_y, &composed_top);
-                hash ^= composed ? composed[0] : 0;
-                hash *= 1099511628211ULL;
-                for (int channel = 1; channel <= 3; ++channel) {
-                    hash ^= composed ? composed[channel] : 0;
-                    hash *= 1099511628211ULL;
-                }
-            }
+            // Local row validation always reads current neighbouring bytes.
+            // Only the hashes published together after a complete match scan
+            // share row digests, without retaining a snapshot across calls.
+            hash ^= static_cast<uint64_t>(context_y + 1);
+            hash *= 1099511628211ULL;
+            hash ^= grid_row_digests
+                ? (*grid_row_digests)[static_cast<size_t>(context_y)]
+                : grid_row_digest(context_y);
+            hash *= 1099511628211ULL;
         }
         // The exposed bytes may be unchanged while a tooltip hides a changed
         // suffix. Source ownership (including an unknown new caption) must still
@@ -30351,8 +30356,14 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
                 if (ch != 0 && ch != ' ') mask[tile] = ch;
             }
         }
+        // Read each row once when publishing the full-layer mask. Overlapping
+        // seven-row contexts then combine digests instead of rereading 7WH
+        // grid cells. The next local validation still observes live bytes.
+        std::vector<uint64_t> grid_row_digests(static_cast<size_t>(gps_->dimy));
+        for (int digest_y = 0; digest_y < gps_->dimy; ++digest_y)
+            grid_row_digests[static_cast<size_t>(digest_y)] = grid_row_digest(digest_y);
         for (int hash_y = 0; hash_y < gps_->dimy; ++hash_y)
-            hashes[static_cast<size_t>(hash_y)] = row_hash(hash_y);
+            hashes[static_cast<size_t>(hash_y)] = row_hash(hash_y, &grid_row_digests);
     }
     if (!top_layer && resolution_dropdown_active_ &&
         y >= resolution_dropdown_top_ && y <= resolution_dropdown_bottom_) {
@@ -47246,6 +47257,9 @@ void Overlay::render(SDL_Renderer *renderer) {
     layout_timing.stop();
     // Restore the native buffers before any draw call. Matching, snapshots
     // and layout above all used the same temporary capture exclusion.
+    // Keep only its region metadata through overlay drawing. Individual read
+    // scopes restore the grid independently, and native copies remain intact.
+    NativeCaptureRegionReadScope capture_regions(gps_);
     capture_mask.reset();
     RenderTimingScope draw_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Draw);
     g_drawing_overlay = true;
@@ -47327,6 +47341,7 @@ void Overlay::render(SDL_Renderer *renderer) {
         auto *background_graphics = gps_;
         NativeTooltipPageScope background_draw_view(
             background_graphics, layout_page, nullptr, false);
+        NativeCaptureRegionReadScope background_capture_regions(background_graphics);
         // Recovered native rows and reflowed Chinese need not occupy the same
         // pixels. Clear ALL exposed native spans before painting any Chinese;
         // a later continuation/half-row must never erase an earlier target.

@@ -45,8 +45,7 @@ static void retain_native_map_text_span(std::vector<uint8_t> &cells,
 std::vector<uint8_t> Overlay::capture_map_text_cells() const {
     if (!gps_ || !gps_->screen || gps_->dimx <= 0 || gps_->dimx > 1000 ||
         gps_->dimy <= 0 || gps_->dimy > 1000) return {};
-    const auto settings = native_ui_settings();
-    if (!settings || !settings->classic) return {};
+    if (!native_ui_classic().value_or(false)) return {};
 
     std::vector<uint8_t> cells;
     const size_t count = static_cast<size_t>(gps_->dimx) * gps_->dimy;
@@ -81,6 +80,9 @@ std::vector<uint8_t> Overlay::capture_map_text_cells() const {
         }
         auto chooser_rows = context;
         std::vector<Match> chooser_fields;
+        // Skill/name results share the current roster translation scope with
+        // the later reader. Keep the same complete source-ownership proof here;
+        // a failed identity translation must not authorize additional terrain.
         append_fortress_unit_chooser_rows(chooser_rows, chooser_fields, -1, false);
         for (const auto &field : chooser_fields)
             for (int x = field.x; x < field.x + field.length; ++x)

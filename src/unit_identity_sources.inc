@@ -12,6 +12,10 @@ static std::mutex g_native_unit_identity_mutex;
 static uint64_t g_native_unit_identity_epoch = 0;
 static std::unordered_map<uintptr_t, NativeUnitIdentitySource> g_native_unit_identity_owners;
 static std::unordered_map<std::string, std::optional<std::string>> g_native_unit_identity_sources;
+// Pure roster translations can reuse a source within one match pass, but a
+// formatter may change its own or a nested name's binding in the same epoch.
+// Publish every registry mutation independently of native grid read views.
+static std::atomic<uint64_t> g_native_unit_identity_revision{0};
 static bool &native_unit_identity_rendering() {
     return reloadable_thread_state<bool, struct NativeUnitIdentityRenderingTag>();
 }
@@ -21,6 +25,7 @@ static void clear_native_unit_identities() {
     g_native_unit_identity_owners.clear();
     g_native_unit_identity_sources.clear();
     g_native_unit_identity_epoch = 0;
+    g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
 }
 
 static void remember_native_unit_identity(uintptr_t owner, std::string_view source,
@@ -39,19 +44,26 @@ static void remember_native_unit_identity(uintptr_t owner, std::string_view sour
         g_native_unit_identity_owners.clear();
         g_native_unit_identity_sources.clear();
         g_native_unit_identity_epoch = epoch;
+        g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
     }
     if (g_native_unit_identity_owners.size() >= 8192 &&
         !g_native_unit_identity_owners.contains(owner)) return;
     g_native_unit_identity_owners[owner] = {
         std::string(source), resolved_target, unit_owner, english_name, character_header};
+    g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
     const auto remember_source = [&](const std::string &key) {
         if (g_native_unit_identity_sources.size() >= 16384 &&
                 !g_native_unit_identity_sources.contains(key)) return;
         const auto [entry, inserted] = g_native_unit_identity_sources.try_emplace(
             key, resolved_target);
+        if (inserted)
+            g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
         // Ambiguous spelling must not assign one unit's custom name to another
         // unit's species. Their per-draw owner bindings remain authoritative.
-        if (!inserted && entry->second && *entry->second != resolved_target) entry->second.reset();
+        if (!inserted && entry->second && *entry->second != resolved_target) {
+            entry->second.reset();
+            g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
+        }
     };
     remember_source(std::string(source));
     // Whole action templates normalize native spacing before visiting their
