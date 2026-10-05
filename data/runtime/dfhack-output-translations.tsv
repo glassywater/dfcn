@@ -281,7 +281,7 @@ DFHack output: Forbade {s} items, you can unforbid them by running `unforbid all
 DFHack output: missing event type	缺少事件类型	l
 DFHack output: unknown event type: {s}	未知事件类型：{s1}	l
 DFHack output: Event type: FeatureAttack is not currently supported	当前不支持 FeatureAttack 事件类型	l
-DFHack output: unable to find civilization: {s}	未找到文明：{s1}	l
+DFHack output: unable to find civilization: {s}	未找到政权：{s1}	l
 DFHack output: Invalid usage: No unit selected and --all argument not given.	用法无效：未选中单位，也未指定 --all 参数。	l
 # full-heal, geld, growcrops, husbandry, idle-crafting and instruments.
 DFHack output: Resurrecting {s}	正在复活 {s1}	l
@@ -669,7 +669,7 @@ DFHack output: Automatically chose first corpse at the selected location.	已自
 DFHack output: Cause of death not available	无法获取死因	l
 DFHack output: The {s} died.	这只 {s1} 已死亡。	l
 DFHack output: Please select a unit, a corpse, or a body part	需要选中单位、尸体或身体部位	l
-DFHack output: Your civilisation has no diplomatic relations! This means something is going wrong, as it should have at least a relation to itself.	你的文明没有外交关系！这表明出现了异常，因为它至少应当与自身存在关系。	l
+DFHack output: Your civilisation has no diplomatic relations! This means something is going wrong, as it should have at least a relation to itself.	你的政权没有外交关系！这表明出现了异常，因为它至少应当与自身存在关系。	l
 DFHack output: ID Relation Mutual Name	ID 关系 双方关系 名称	l
 DFHack output: Changing relation with {s} to Peace	将与 {s1} 的关系改为和平	l
 DFHack output: Changing relation with {s} to War	将与 {s1} 的关系改为战争	l
@@ -828,7 +828,7 @@ DFHack output: No loyalty cascade found.	未发现忠诚关系连锁异常。	l
 DFHack output: fix/ownership: Erasing invalid claim on item #{s} for {s}	fix/ownership：清除 {s2} 对物品 #{s1} 的无效认领	l
 DFHack output: fix/ownership: Restoring {s} ownership link for {s}	fix/ownership：为 {s2} 恢复 {s1} 所有权关联	l
 DFHack output: No active fortress.	当前没有已载入的要塞。	l
-DFHack output: Home civ notified about current population.	已向所属文明报告当前人口。	l
+DFHack output: Home civ notified about current population.	已向所属政权报告当前人口。	l
 DFHack output: fix/protect-nicks only works in fortress mode	fix/protect-nicks 只能在要塞模式使用	l
 DFHack output: Restoring and saving nicknames	正在恢复并保存昵称	l
 DFHack output: fix/protect-nicks is currently enabled	fix/protect-nicks 当前已启用	l
@@ -845,8 +845,8 @@ DFHack output: Rebalanced prayer needs for {s} units.	已重新平衡 {s1} 个�
 DFHack output: Unstuck {s} doors	已使 {s1} 扇门恢复正常	l
 DFHack output: Symbol designation removed from selected item.	已解除选中物品的贵族象征指定。	l
 DFHack output: {s} can now be re-designated as a symbol of nobility.	现在可以重新将 {s1} 指定为贵族象征。	l
-DFHack output: Selected item is not a defunct symbol of the current site's civilization.	选中的物品并非当前地点文明已失效的贵族象征。	l
-DFHack output: Selected item is not an artifact claimed by the current site's civilization.	选中的物品不是当前地点文明认领的神器。	l
+DFHack output: Selected item is not a defunct symbol of the current site's civilization.	选中的物品并非当前地点政权已失效的贵族象征。	l
+DFHack output: Selected item is not an artifact claimed by the current site's civilization.	选中的物品不是当前地点政权认领的神器。	l
 DFHack output: No stuck wildlife found	未发现卡住的野生动物	l
 DFHack output: please select a unit or pass a unit ID on the commandline	需要选中单位，或在命令行中提供单位 ID	l
 DFHack output: selected unit is not blocking new waves of wildlife; nothing to do	选中的单位未阻挡新一批野生动物；无需处理	l
@@ -869,11 +869,11 @@ DFHack output: Invalid age (must be 0 or greater): {s}	年龄无效（必须大�
 DFHack output: Invalid duration (must be a number greater than 0): {s}	时长无效（必须是大于 0 的数字）：{s1}	l
 DFHack output: Invalid entity raw name: {s}	实体原始定义名称无效：{s1}	l
 DFHack output: Invalid civId (must be a number): {s}	civId 无效（必须是数字）：{s1}	l
-DFHack output: Civilisation not found: {s}	未找到文明：{s1}	l
-DFHack output: Invalid civId (entity is not civilisation): {s}	civId 无效（该实体不是文明）：{s1}	l
+DFHack output: Civilisation not found: {s}	未找到政权：{s1}	l
+DFHack output: Invalid civId (entity is not civilisation): {s}	civId 无效（该实体不是政权）：{s1}	l
 DFHack output: Invalid groupId (must be a number): {s}	groupId 无效（必须是数字）：{s1}	l
 DFHack output: Group not found: {s}	未找到群体：{s1}	l
-DFHack output: Invalid groupId (entity is a civilisation): {s}	groupId 无效（该实体是文明）：{s1}	l
+DFHack output: Invalid groupId (entity is a civilisation): {s}	groupId 无效（该实体是政权）：{s1}	l
 DFHack output: Invalid nickname: {s}	昵称无效：{s1}	l
 DFHack output: Invalid custom profession: {s}	自定义职业无效：{s1}	l
 DFHack output: Invalid profession: {s}	职业无效：{s1}	l
@@ -890,7 +890,7 @@ DFHack output: Invalid skill level (must be a number greater than 0): {s}	技能
 DFHack output: Invalid vanish delay: {s}	消失延迟无效：{s1}	l
 DFHack output: Specify a race for the new unit.	需要为新单位指定种族。	l
 DFHack output: -locationType cannot be used without -locationRange!	-locationType 必须与 -locationRange 同时使用！	l
-DFHack output: The LOCAL civ cannot be specified outside of Fortress mode!	LOCAL 文明只能在要塞模式中指定！	l
+DFHack output: The LOCAL civ cannot be specified outside of Fortress mode!	LOCAL 政权只能在要塞模式中指定！	l
 DFHack output: The LOCAL group cannot be specified outside of Fortress mode!	LOCAL 群体只能在要塞模式中指定！	l
 DFHack output: The LOCAL entityRawName cannot be specified outside of Fortress mode!	LOCAL entityRawName 只能在要塞模式中指定！	l
 DFHack output: The world needs to be loaded to use this.	使用此功能需要先载入世界。	l
@@ -980,7 +980,7 @@ DFHack output: Reaction {s} already exists.	反应 {s1} 已存在。	l
 DFHack output: Injecting reaction {s}	正在注入反应 {s1}	l
 DFHack output: Building {s} already exists.	建筑 {s1} 已存在。	l
 DFHack output: Injecting building {s}	正在注入建筑 {s1}	l
-DFHack output: Not adding to civs.	不会添加到文明中。	l
+DFHack output: Not adding to civs.	不会添加到政权中。	l
 DFHack output: Itemdef {s} already exists.	物品定义 {s1} 已存在。	l
 DFHack output: Injecting item {s}	正在注入物品 {s1}	l
 DFHack output: Invalid option: {s}	选项无效：{s1}	l
@@ -1055,7 +1055,7 @@ DFHack output: {s}: enabled {s} seed types for cooking	{s1}：已允许烹饪 {s
 DFHack output: cannot set target for unknown plant id: {s}	无法为未知的植物 ID 设置目标：{s1}	l
 DFHack output: {s} has not been found as a material.	未找到材料 {s1}。	l
 DFHack output: tailor: cannot determine race for clothing of size {s}, skipped	tailor：无法确定尺寸为 {s1} 的衣物适用的种族，已跳过	l
-DFHack output: tailor: civilization cannot make {s}, skipped	tailor：此文明无法制作 {s1}，已跳过	l
+DFHack output: tailor: civilization cannot make {s}, skipped	tailor：此政权无法制作 {s1}，已跳过	l
 DFHack output: no extended config found in this save; initializing	此存档中未找到扩展配置；正在初始化	l
 DFHack output: found existing configuration with CONFIG_CONFISCATE unset, initializing to true	现有配置未设置 CONFIG_CONFISCATE，初始化为 true	l
 DFHack output: found existing configuration with CONFIG_AUTOMATE_DYE unset, initializing to false	现有配置未设置 CONFIG_AUTOMATE_DYE，初始化为 false	l
@@ -2312,8 +2312,8 @@ DFHack output: Fixed {d} stuck written material(s).	已修复 {d1} 件卡住的�
 DFHack output: Item {d} assigned to squad member {d} of squad {s} is of unexpected type {s}. Detection only. No action performed.	分配给小队 {s1} 成员索引 {d2} 的物品条目 {d1} 类型异常（{s2}）。仅检测，未执行操作。	l
 # Installed scripts/fix/stuck-merchants.lua:30: explicit dry-run and removal states.
 # Keep readable unit identity, unit species, civilization name, and civilization species captures original.
-DFHack output: Would remove unit {d}: {s} ({s}), civ {d} ({s}, {s})	预计移除单位 {d1}：{s1}（{s2}），文明 {d2}（{s3}，{s4}）	l
-DFHack output: Removing unit {d}: {s} ({s}), civ {d} ({s}, {s})	正在移除单位 {d1}：{s1}（{s2}），文明 {d2}（{s3}，{s4}）	l
+DFHack output: Would remove unit {d}: {s} ({s}), civ {d} ({s}, {s})	预计移除单位 {d1}：{s1}（{s2}），政权 {d2}（{s3}，{s4}）	l
+DFHack output: Removing unit {d}: {s} ({s}), civ {d} ({s}, {s})	正在移除单位 {d1}：{s1}（{s2}），政权 {d2}（{s3}，{s4}）	l
 
 # Installed scripts/fix/stuck-squad.lua:99: concrete singular/plural first line of one qerror message.
 # Preserve the actual hard newline; the following instructions are translated as their own complete line.
@@ -2506,7 +2506,7 @@ DFHack output: Are you sure you want mark all merchant goods at the depot? Your 
 DFHack output: Confirm trade	确认交易	l
 DFHack output: Are you sure you want to trade the selected goods?	确定要交易已选货物吗？	l
 DFHack output: Seize merchant goods	扣押商人货物	l
-DFHack output: Are you sure you want seize marked merchant goods? This will make the merchant unwilling to trade further and will damage relations with the merchant's civilization.	确定要扣押已勾选的商人货物吗？这会使商人不愿继续交易，并损害与其所属文明的关系。	l
+DFHack output: Are you sure you want seize marked merchant goods? This will make the merchant unwilling to trade further and will damage relations with the merchant's civilization.	确定要扣押已勾选的商人货物吗？这会使商人不愿继续交易，并损害与其所属政权的关系。	l
 DFHack output: Offer fortress goods	赠送要塞货物	l
 DFHack output: Are you sure you want to offer these goods? You will receive no payment.	确定要赠送这些货物吗？你将不会得到任何报酬。	l
 DFHack output: Cancel trade agreement	取消贸易协议	l

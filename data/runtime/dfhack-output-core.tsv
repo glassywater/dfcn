@@ -1577,13 +1577,13 @@ DFHack output: {d}/{d}/{d}/ tiletype: {s}, basemat: {d}, designation: 0x{s} ... 
 DFHack output: {s}, born in {d}, cursed in {d} to be a {s}. ({s})	{s1}，出生于 {d1} 年，于 {d2} 年被诅咒成为 {s2}。（{s3}）	l
 DFHack output: , born in {d}, cursed in {d} to be a {s}. ({s})	，出生于 {d1} 年，于 {d2} 年被诅咒成为 {s1}。（{s2}）	l
 DFHack output: Curse flags: {s}	诅咒标志：{s1}	l
-DFHack output: Embark Anyone	任意文明出发	l
-DFHack output: Select a civilization to add to the list of origin civs:	选择要添加到出发文明列表的文明：	l
-DFHack output: No additional civilizations found.	未找到其他文明。	l
-DFHack output: Unnamed {s} civilisation	未命名的{s1}文明	l
+DFHack output: Embark Anyone	任意政权出发	l
+DFHack output: Select a civilization to add to the list of origin civs:	选择要添加到出发政权列表的政权：	l
+DFHack output: No additional civilizations found.	未找到其他政权。	l
+DFHack output: Unnamed {s} civilisation	未命名的{s1}政权	l
 DFHack output: Pop: {d} Sites: {d}	人口：{d1} 地点数：{d2}	l
-DFHack GUI Title: Embark Anyone	任意文明出发	l
-DFHack GUI Viewer status: No additional civilizations found.	未找到其他文明。	l
+DFHack GUI Title: Embark Anyone	任意政权出发	l
+DFHack GUI Viewer status: No additional civilizations found.	未找到其他政权。	l
 
 # Native autolabor/legacyengine/modernengine/monitorengine, confirmed in the installed plugin.
 # Mode names, executable syntax, labor/skill IDs, and other captured identifiers stay native.
@@ -1638,7 +1638,7 @@ DFHack output: not currently watching any races. to find out how to add some, ru
 DFHack output: {s} ({s} fk={d} mk={d} fa={d} ma={d}; autobutchering is paused)	{s1}（{s2} fk={d1} mk={d2} fa={d3} ma={d4}；自动屠宰已暂停）	l
 
 # Embark Anyone list roles; names and civilization row parsing remain contextual.
-DFHack GUI List prompt: Select a civilization to add to the list of origin civs:	选择要添加到出发文明列表的文明：	l
+DFHack GUI List prompt: Select a civilization to add to the list of origin civs:	选择要添加到出发政权列表的政权：	l
 DFHack GUI List status: No matches	没有匹配项	l
 DFHack GUI List status: Dead	已消亡	l
 
@@ -2026,7 +2026,7 @@ DFHack GUI Item footer: items matched the filter options	件物品符合筛选�
 DFHack GUI Item footer: items would be modified	件物品将被修改	l
 DFHack GUI Item footer: items were modified	件物品已修改	l
 DFHack GUI Stuck merchants race: unknown race	未知物种	l
-DFHack GUI Stuck merchants civilization: unknown civ	未知文明	l
+DFHack GUI Stuck merchants civilization: unknown civ	未知政权	l
 DFHack GUI Confirmation control: Settings	设置	l
 DFHack GUI Confirmation control: Pause this confirmation	暂停此确认	l
 

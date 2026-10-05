@@ -8911,7 +8911,7 @@ std::optional<std::string> Overlay::translate_adventure_origin_source(
     // dwarven/elven adjective forms. Do not override it with local synonyms.
     const auto translated_race = translate_creature_descriptor(race, true);
     if (!translated_race) return std::nullopt;
-    std::string result = "这是一个" + *translated_race + "文明";
+    std::string result = "这是一个" + *translated_race + "政权";
     std::string_view tail(source.data() + civ_at + civilization.size(),
         source.size() - civ_at - civilization.size() - 1);
     if (tail.starts_with(" inhabiting ")) {

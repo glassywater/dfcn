@@ -330,10 +330,10 @@ sentence	The image is the symbol of {p}.	这幅图像是{p1}的象征。
 sentence	It is the symbol of {p}.	它是{p1}的象征。
 # A civilization's species is an appositive, outside its generated name.
 # Reuse the existing species vocabulary and name resolver for both articles.
-sentence	The image is the symbol of {p}, a {s} civilization.	这幅图像是{s1}文明「{p1}」的象征。
-sentence	The image is the symbol of {p}, an {s} civilization.	这幅图像是{s1}文明「{p1}」的象征。
-sentence	It is the symbol of {p}, a {s} civilization.	它是{s1}文明「{p1}」的象征。
-sentence	It is the symbol of {p}, an {s} civilization.	它是{s1}文明「{p1}」的象征。
+sentence	The image is the symbol of {p}, a {s} civilization.	这幅图像是{s1}政权「{p1}」的象征。
+sentence	The image is the symbol of {p}, an {s} civilization.	这幅图像是{s1}政权「{p1}」的象征。
+sentence	It is the symbol of {p}, a {s} civilization.	它是{s1}政权「{p1}」的象征。
+sentence	It is the symbol of {p}, an {s} civilization.	它是{s1}政权「{p1}」的象征。
 # Historical artwork subjects use Legends' shared {e} event grammar below
 # the item sentence rules; they are not quoted multi-sentence inscriptions.
 sentence	The artwork relates to the ascension of {n} to the position of {s} of {p} in {d}.	图案描绘了{n1}于第{d1}年就任「{p1}」的{s1}的情景。
@@ -354,7 +354,7 @@ term	outcast {s}	流亡的{s1}
 term	nomadic {s}	游牧的{s1}
 term	migrating {s}	迁徙中的{s1}
 term	local {s}	当地的{s1}
-term	{s} civilization	{s1}文明
+term	{s} civilization	{s1}政权
 term	{s} merchant company	{s1}商贸公司
 term	{s} craft guild	{s1}工艺行会
 term	{s} performance troupe	{s1}演出团
@@ -363,7 +363,7 @@ term	{s} vessel	{s1}船
 term	{s} religion	{s1}宗教
 term	{s} military organization	{s1}军事组织
 term	{s} group	{s1}势力
-term	civilization	文明
+term	civilization	政权
 term	merchant company	商贸公司
 term	craft guild	工艺行会
 term	performance troupe	演出团
@@ -400,8 +400,8 @@ term	superiorly designed {s}	设计出色的{s1}
 term	exceptionally designed {s}	设计卓越的{s1}
 term	masterfully designed {s}	设计精湛的{s1}
 predicate	is the symbol of {p}	是{p1}的象征
-predicate	is the symbol of {p}, a {s} civilization	是{s1}文明「{p1}」的象征
-predicate	is the symbol of {p}, an {s} civilization	是{s1}文明「{p1}」的象征
+predicate	is the symbol of {p}, a {s} civilization	是{s1}政权「{p1}」的象征
+predicate	is the symbol of {p}, an {s} civilization	是{s1}政权「{p1}」的象征
 predicate	was commissioned by {n}	由{n1}委托创作
 
 # Typed artwork/currency metadata, read directly from native source records.

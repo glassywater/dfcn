@@ -1041,7 +1041,7 @@ he	他	term
 she	她	term
 it	它	term
 they	他们	term
-an unknown civilization	未知文明	term
+an unknown civilization	未知政权	term
 an unknown site	未知地点	term
 an unknown population	未知族群	term
 an unknown building	未知建筑	term
@@ -2493,7 +2493,7 @@ the role of state bias and propaganda in sources	国家偏见与宣传对史料�
 the role of systemic bias in sources	系统性偏见对史料的影响	term
 the causes of historical events	历史事件的成因	term
 using personal interviews as sources	将个人访谈用作史料	term
-the method of accurately and comprehensively describing cultures and civilizations	准确而全面地描述文化与文明的方法	term
+the method of accurately and comprehensively describing cultures and civilizations	准确而全面地描述文化与政权的方法	term
 the compilation of many summaries into a single text	将多篇概述汇编为一部著作	term
 the role of cultural differences in source reliability and interpretation	文化差异对史料可靠性与解读的影响	term
 the method of comparing and contrasting different cultures	比较不同文化的异同的方法	term
@@ -3058,8 +3058,8 @@ devoted to worship	专心于崇拜	clause
 linked to {p}	与{p}有关联	clause
 dedicated to the mastery of {s}	致力于精通{s}	clause
 devoted to the worship of {a}	专心崇拜{a}	clause
-was a {s} civilization of {p}	曾是{p}的{s}文明	action
-was a civilization of {p}	曾是{p}的一个文明	action
+was a {s} civilization of {p}	曾是{p}的{s}政权	action
+was a civilization of {p}	曾是{p}的一个政权	action
 was a {s} collection of outcasts from {p}	曾是来自{p}的{s}流亡者势力	action
 was a collection of outcasts from {p}	曾是来自{p}的流亡者势力	action
 was a {s} performance troupe from {p}	曾是来自{p}的{s}演出团	action
@@ -3118,7 +3118,7 @@ seat of power	统治中心	term
 site occ	地点占据者	term
 religious worshippers	宗教信徒	term
 militant worshippers	武装信徒	term
-associated civilization	关联文明	term
+associated civilization	关联政权	term
 former prisoner	前囚犯	term
 former slave	前奴隶	term
 child slave	童奴	term
@@ -3917,7 +3917,7 @@ Native Legends fantastic creatures few and doubted	奇幻生物已寥寥无几�
 Native Legends final battles of ancient powers	最后的古老势力进行了它们最后的战斗	term
 Native Legends final battles of powers	最后的强大势力进行了它们最后的战斗	term
 Native Legends civilized races peopled the world	各个文明种族遍布世界	term
-Native Legends civilization crumbled completely	文明已彻底崩溃	term
+Native Legends civilization crumbled completely	政权已彻底崩溃	term
 Native Legends fantastic creatures mere travelers stories	奇幻生物已成为旅人口中虚无缥缈的故事	term
 Native Legends only simple creatures existed	世上只有简单的生物栖居	term
 Native Legends no civilized peoples existed	世上已不存在文明族群	term

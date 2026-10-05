@@ -216,7 +216,7 @@ Left click for recenter and expand options. Right click to dismiss.	左键点击
 You can learn more about this visitor after they chat with a local.	这位访客与当地居民交谈后，你就能了解更多关于他们的信息。
 You can look at trade information once you have a broker with appraisal skill.	任命一名拥有估价技能的交易员后，即可查看贸易信息。
 This land has no important leaders.	这片领地没有重要领袖。
-Cannot raid your civilization	无法突袭自己的文明。
+Cannot raid your civilization	无法突袭自己的政权。
 Cannot make request without leader	没有领袖，无法提出请求。
 No workers available	没有可用的工人。
 Click to request workers	点击请求派遣工人。
@@ -224,7 +224,7 @@ Inaccessible mission location	无法抵达任务地点。
 Cannot order mission without leader	没有领袖，无法下达任务。
 Click to explore this site (creates new mission)	点击探索此地点（创建新任务）。
 Click to contact/raid this site (creates new mission)	点击联系或突袭此地点（创建新任务）。
-Need civilization military leader	需要文明的军事领袖。
+Need civilization military leader	需要政权的军事领袖。
 Need military leader	需要军事领袖。
 No requestable workers	没有可以请求派遣的工人。
 Cannot communicate	无法联系。
@@ -2062,7 +2062,7 @@ What will you say about the end of the insurrection?	关于起义结束，你想
 What will you say about the group?	关于这个势力，你想说些什么？
 What will you say about the site's foundation?	关于此地的建立，你想说些什么？
 Tell a story about a region	讲述一个地区的故事
-Tell a story about a civilization or organization	讲述一个文明或组织的故事
+Tell a story about a civilization or organization	讲述一个政权或组织的故事
 Give a sermon concerning a deity or object of worship	发表关于神祇或崇拜对象的布道
 Give a sermon concerning a cosmic principle	发表关于宇宙原理的布道
 Give a sermon inveighing against a value	发表反对某种价值观的布道
@@ -2694,7 +2694,7 @@ Emotionally overloaded!	情绪不堪重负！
 {p}: Again on behalf of the Merchants' Guild, let me bid farewell to you and your stout dwarves.	{p}：请允许我再次代表商人行会，向你和你健壮的矮人族人道别。
 {p}: On behalf of the Merchants' Guild, let me extend greetings to your people. There is much to discuss.	{p}：请允许我代表商人行会，向你们的族人致以问候。我们有许多事要谈。
 {p}: I don't know very much about the outside world. I wish I had more to tell you.	{p}：我对外面的世界所知不多。真希望能告诉你更多消息。
-{p}: There is much to share... (Information added to Civilizations/World Info)	{p}：有许多消息要分享……（信息已添加至文明／世界信息）
+{p}: There is much to share... (Information added to Civilizations/World Info)	{p}：有许多消息要分享……（信息已添加至政权／世界信息）
 {p}: The world is the same as ever.	{p}：世界一如往常。
 {p}: Peace is calling out to us. How do you respond?	{p}：和平正在呼唤我们。你们如何回应？
 {p}: It's such a pleasant place you've carved out for yourselves...	{p}：你们开辟的这片家园真是宜人……
@@ -2775,10 +2775,10 @@ LACK OF RIVERS	缺少河流
 TOO MANY REGIONS	区域过多
 LACK OF MOUNTAIN CAVES	缺少山地洞穴
 LACK OF LOW-LYING CAVES	缺少低地洞穴
-UNABLE TO PLACE ENOUGH CIVILIZATIONS	无法放置足够的文明
-NO CIVILIZATIONS AVAILABLE	没有可用的文明
-UNABLE TO PLACE CONTROLLABLE CIVILIZATION	无法放置可操控文明
-FARMING CIVILIZATION PLACED WITHOUT CROPS	已放置的农耕文明没有作物
+UNABLE TO PLACE ENOUGH CIVILIZATIONS	无法放置足够的政权
+NO CIVILIZATIONS AVAILABLE	没有可用的政权
+UNABLE TO PLACE CONTROLLABLE CIVILIZATION	无法放置可操控政权
+FARMING CIVILIZATION PLACED WITHOUT CROPS	已放置的农耕政权没有作物
 The world generator is having trouble placing enough mountain peaks.  You might want to check your maximum elevation value and other elevation parameters.  Can the elevation 400 be placed enough times to provide space for your peaks?  Alternatively, you can reduce the number of peaks required by the parameters.	世界生成器无法放置足够的山峰。请检查最高海拔值及其他海拔参数。海拔 400 的方格是否足以容纳所需山峰？也可以减少参数要求的山峰数量。
 The world generator is having trouble placing enough mountain peaks.  You might want to check your preset elevations for the elevation 400.  You must have at least as many of these highest elevation points as you are requiring peaks.  Alternatively, you can reduce the number of peaks required by the parameters.	世界生成器无法放置足够的山峰。请检查预设中海拔 400 的分布。最高海拔点的数量至少应与所需山峰数相同。也可以减少参数要求的山峰数量。
 The world generator is having trouble placing enough mid-level elevations.  Can your parameters achieve elevations between 100 and 299?  You might want to adjust the parameters governing elevation frequencies.  Alternatively, you can reduce the number of mid-level elevation squares required.	世界生成器无法放置足够的中等海拔方格。这些参数能否产生 100 至 299 的海拔？请调整控制海拔分布频率的参数。也可以减少所需的中等海拔方格数量。
@@ -2804,10 +2804,10 @@ The world generator is having trouble placing rivers.  Make sure your parameters
 The world generator is placing too many subregions.  Make sure your parameters and presets aren't so variable that biomes change frequently.  Alternatively, you can increase the number of subregions permitted by the parameters, up to the cap.	世界生成器产生了过多子区域。请避免参数和预设变化过大，以免生物群系频繁改变。也可以在上限范围内提高允许的子区域数量。
 The world generator is having trouble placing mountain caves.  Make sure your parameters and presets allow as many border mountain squares as you are requiring mountain caves.  Alternatively, you can reduce the number of mountain caves required by the parameters.	世界生成器无法放置山地洞穴。请确保参数和预设提供的边缘山地方格不少于所需山地洞穴数量。也可以减少参数要求的山地洞穴数量。
 The world generator is having trouble placing low-lying caves.  Make sure your parameters and presets allow as many mid-elevation squares as you are requiring low-lying caves.  Alternatively, you can reduce the number of non-mountain caves required by the parameters.	世界生成器无法放置低地洞穴。请确保参数和预设提供的中等海拔方格不少于所需低地洞穴数量。也可以减少参数要求的非山地洞穴数量。
-The world generator is having trouble placing enough civilizations.  Make sure your parameters and presets offer enough low-to-mid savagery, evil/good appropriate, biome appropriate squares to establish sites.  High savagery (66+) blocks civilization placement -- make sure your parameters and presets offer at least small pockets of low-to-mid savagery areas.  If you have very few biome types and are placing good or evil regions, they'll often crowd out the civilizations as well.  Alternatively, you can reduce the number of civilizations required by the parameters.	世界生成器无法放置足够的文明。请确保参数和预设提供足够的中低野性、善恶属性与生物群系均合适的方格来建立地点。高野性（66 以上）会阻止文明落位；请确保至少存在少量中低野性区域。若生物群系种类过少，善良或邪恶区域也常会挤占文明的空间。也可以减少参数要求的文明数量。
-The world generator couldn't find any civilization definitions.  This problem cannot be resolved by continuing, so you should either abort or skip all rejects for a legends-only game.  	世界生成器找不到任何文明定义。继续生成无法解决此问题；请中止，或忽略所有拒绝以生成仅限传说模式的世界。
-The world generator is having trouble placing a controllable civilization.  Dwarves, for example, require non-evil, non-good, unsavage mountain squares that aren't surrounded by the ocean.  Make sure your parameters and presets have adequate squares of this kind.  Alternatively, you can remove the requirement of a controllable civilization from the parameters, which will restrict you to adventurers (assuming an appropriate civilization is placed).	世界生成器无法放置可操控文明。例如，矮人需要既非善良也非邪恶、非野蛮且不被海洋包围的山地方格。请确保参数和预设提供足够的此类方格。也可以取消参数中的可操控文明要求；这样将只能使用冒险者，前提是存在合适的文明。
-The world generator is having trouble placing farming civilizations.  Civilizations use available plants in their surroundings as their initial crops.  Make sure your parameters and raw objects have adequate vegetation.  	世界生成器无法放置农耕文明。文明会使用周边可用植物作为初始作物。请确保参数和原始对象提供足够的植被。
+The world generator is having trouble placing enough civilizations.  Make sure your parameters and presets offer enough low-to-mid savagery, evil/good appropriate, biome appropriate squares to establish sites.  High savagery (66+) blocks civilization placement -- make sure your parameters and presets offer at least small pockets of low-to-mid savagery areas.  If you have very few biome types and are placing good or evil regions, they'll often crowd out the civilizations as well.  Alternatively, you can reduce the number of civilizations required by the parameters.	世界生成器无法放置足够的政权。请确保参数和预设提供足够的中低野性、善恶属性与生物群系均合适的方格来建立地点。高野性（66 以上）会阻止政权落位；请确保至少存在少量中低野性区域。若生物群系种类过少，善良或邪恶区域也常会挤占政权的空间。也可以减少参数要求的政权数量。
+The world generator couldn't find any civilization definitions.  This problem cannot be resolved by continuing, so you should either abort or skip all rejects for a legends-only game.  	世界生成器找不到任何政权定义。继续生成无法解决此问题；请中止，或忽略所有拒绝以生成仅限传说模式的世界。
+The world generator is having trouble placing a controllable civilization.  Dwarves, for example, require non-evil, non-good, unsavage mountain squares that aren't surrounded by the ocean.  Make sure your parameters and presets have adequate squares of this kind.  Alternatively, you can remove the requirement of a controllable civilization from the parameters, which will restrict you to adventurers (assuming an appropriate civilization is placed).	世界生成器无法放置可操控政权。例如，矮人需要既非善良也非邪恶、非野蛮且不被海洋包围的山地方格。请确保参数和预设提供足够的此类方格。也可以取消参数中的可操控政权要求；这样将只能使用冒险者，前提是存在合适的政权。
+The world generator is having trouble placing farming civilizations.  Civilizations use available plants in their surroundings as their initial crops.  Make sure your parameters and raw objects have adequate vegetation.  	世界生成器无法放置农耕政权。政权会使用周边可用植物作为初始作物。请确保参数和原始对象提供足够的植被。
 CONTINUE until you give me another warning.	继续生成，直到再次出现警告。
 ABORT NOW and I'll look over my parameters.	立即中止，我要检查参数。
 ALLOW THIS REJECTION TYPE and continue reporting others.	允许此类拒绝，并继续报告其他问题。

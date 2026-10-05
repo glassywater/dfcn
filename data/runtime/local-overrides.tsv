@@ -1105,7 +1105,7 @@ Undo	撤销	wi
 Center on fort	定位要塞	wi
 Missions	任务	wi
 News and rumors	消息和传闻	wi
-Civilizations	文明	wi
+Civilizations	政权	wi
 Missing citizens	失踪居民	wi
 Reports	报告	wi
 # Site-action buttons reuse the full mission prompt's worker terminology
@@ -1229,7 +1229,7 @@ Demand one-time tribute	索取一次性贡品	wli
 Demand ongoing tribute	要求持续进贡	wli
 Conquer and occupy	征服并占领	wli
 Demand surrender and occupy	要求投降并占领	wli
-Free captives belonging to your civilization	解救本文明的俘虏	wli
+Free captives belonging to your civilization	解救本政权的俘虏	wli
 Release other prisoners	释放其他囚犯	wli
 Take important treasures	夺取重要珍宝	wli
 Loot other items	掠夺其他物品	wli
@@ -1250,7 +1250,7 @@ Not in contact	尚未建立联系	wli
 # Need military leader / No requestable workers / Cannot communicate reuse
 # the complete existing data/runtime/ui-messages.tsv entries rather than a second wording.
 World site action: Inaccessible	无法抵达	hi
-World site action: No civilized inhabitants	无文明居民	hi
+World site action: No civilized inhabitants	无政权居民	hi
 World site action: Need leader	需要领袖	hi
 World site action: Not trading	尚未进行贸易	hi
 World site action: Already trading	已在进行贸易	hi
@@ -1261,7 +1261,7 @@ World site action: At war	处于战争状态	hi
 World site action: Not in contact	尚未建立联系	hi
 World site action: Too hostile	敌意过强	hi
 World site action: Not under your control	不受你控制	hi
-World site action: Belongs to your civilization	属于你的文明	hi
+World site action: Belongs to your civilization	属于你的政权	hi
 # Independent accessibility status in the map information panel.
 Inaccessible from your location	无法从当前位置抵达	wli
 # LAND in world-map landform headings, including the embark card's top name block.
@@ -1424,11 +1424,11 @@ Population: ~ {d}	人口：约 {d}	wt
 Population: <{d}	人口：少于{d}	ht
 Population: ~{d}	人口：约 {d}	ht
 Population: ~ {d}	人口：约 {d}	ht
-No civilized population	无文明人口	w
+No civilized population	无政权人口	w
 Site government:	地区政府：	w
 Site government: {p}	地区政府：{p}	ht
-Civilization:	文明：	w
-Civilization: {p}	文明：{p}	ht
+Civilization:	政权：	w
+Civilization: {p}	政权：{p}	ht
 No contact	尚未建立联系	w
 Artifacts (Rumored)	造物（传闻）	w
 They offer tribute	对方进贡	w
@@ -1554,7 +1554,7 @@ Sites	地点
 Codices, scrolls, etc.	典籍、卷轴等
 Regions	区域
 Underground regions	地下区域
-Civilizations and other entities	文明及其他实体
+Civilizations and other entities	政权及其他实体
 # The category caption is separate from the deity-only lowercase art entry.
 Art	艺术	w
 Structures	建筑
@@ -1599,7 +1599,7 @@ Cave	洞穴
 Historical f...	历史人物……
 Codices, scr...	典籍、卷轴……
 Underground ...	地下区域……
-Civilization...	文明……
+Civilization...	政权……
 # Native nameless underground-region captions, shared by lists, tabs and headings.
 # Keep the existing underground / magma sea / Underworld terminology.
 Unnamed underground area	未命名地下区域	wi
@@ -2623,7 +2623,7 @@ You have selected a very large area.	你选择了一个超大型区域。	l
 Choose a smaller area if you experience lag.	如果出现卡顿，请选择更小的区域。	l
 You have selected an evil area.	你选择了一片邪恶区域。	l
 You may find very unpleasant environs here.	此地的环境可能会非常险恶。	l
-Your selected civilization is dead or dying.	你选择的文明已经灭亡或濒临灭亡。	l
+Your selected civilization is dead or dying.	你选择的政权已经灭亡或濒临灭亡。	l
 Your dwarves might assume important positions.	你的矮人可能需要担任重要职务。	l
 You have selected an area near a necromancer's tower.	你选择的区域临近死灵法师塔。	l
 You may be invaded very early by powerful foes.	强大的敌人可能会在游戏初期入侵。	l
@@ -2643,7 +2643,7 @@ Start immediately with the default skills, equipment, and animals.	使用默认�
 Economy:	经济：
 Custom settings	自定义设置
 # Fortress mode: complete custom difficulty settings
-Civilizations can attack	文明可以发动袭击
+Civilizations can attack	政权可以发动袭击
 Megabeasts can attack	巨兽可以来袭
 Werebeasts can attack	狂化生物可以来袭
 Curious wilderness creatures can come to cause trouble	好奇的荒野生物可以前来捣乱
@@ -2664,8 +2664,8 @@ Invasion difficulty (first)	入侵难度（第一轮）
 Invasion difficulty (second)	入侵难度（第二轮）
 Invasion difficulty (third)	入侵难度（第三轮）
 Invasion difficulty (fourth+ scaling)	入侵难度（第四轮起的增量）
-Minimum raids before first siege (per civ)	首次围城前的最少突袭次数（每个文明）
-Minimum raids between sieges (per civ)	两次围城间的最少突袭次数（每个文明）
+Minimum raids before first siege (per civ)	首次围城前的最少突袭次数（每个政权）
+Minimum raids between sieges (per civ)	两次围城间的最少突袭次数（每个政权）
 Siege frequency (percentage, otherwise raid)	围城概率（百分比，否则为突袭）
 Cavern dweller scale (increase per attack)	洞穴居民规模增量（每次来袭）
 Cavern dweller maximum attackers	洞穴居民来袭人数上限
@@ -2886,7 +2886,7 @@ Untamed wilds	蛮荒之地
 Any wilderness	任何荒野
 Domesticated	已驯化
 In such a young world certain game elements will not be available.	在如此年轻的世界中，某些游戏要素将无法出现。	l
-Many civilizations keep them as pets and work animals.	许多文明会把它们作为宠物和役畜饲养。	l
+Many civilizations keep them as pets and work animals.	许多政权会把它们作为宠物和役畜饲养。	l
 Creating {s} ({d} rejected)	正在创建{s}（已拒绝 {d} 次）	wtl
 In {d}, the dwarf {s} became the queen of {s}.	{d} 年，矮人{s}成为了{s}的女王。	wtl
 In {d}, the elf {s} became the druid of {s}.	{d} 年，精灵{s}成为了{s}的德鲁伊。	wtl
@@ -2928,8 +2928,8 @@ LARGE ISLAND	大型岛屿
 Custom world name	自定义世界名称
 Embark Points	出发点数
 End Year	历史终止年份
-Population Cap After Civ Creation	文明生成后的人口上限
-Site Cap After Civ Creation	文明生成后的聚落上限
+Population Cap After Civ Creation	政权生成后的人口上限
+Site Cap After Civ Creation	政权生成后的聚落上限
 Percentage Beasts Dead For Stoppage	停止历史演算所需的巨兽死亡比例
 Year to Begin Checking Megabeast Percentage	开始检查巨兽死亡比例的年份
 Cull Unimportant Historical Figures	清理不重要的历史人物
@@ -2941,7 +2941,7 @@ Do Orographic Precipitation and Rain Shadows	启用地形降水与雨影
 Cavern Layer Passage Density Min	洞穴层通道密度下限
 Cavern Layer Passage Density Max	洞穴层通道密度上限
 Allow Init Embark Options to Show Tunnels	允许初始出发选项显示隧道
-Playable Civilization Required	必须生成可玩文明
+Playable Civilization Required	必须生成可玩政权
 Minimum Number of Mid-Elevation Squares	中等海拔方格最少数量
 Minimum Number of Low-Elevation Squares	低海拔方格最少数量
 Minimum Number of High-Elevation Squares	高海拔方格最少数量
@@ -3765,19 +3765,19 @@ Alternatively, you can reduce the number of mountain caves required by the param
 The world generator is having trouble placing low-lying caves.	世界生成器无法放置低地洞穴。	l
 Make sure your parameters and presets allow as many mid-elevation squares as you are requiring low-lying caves.	请确保参数和预设提供的中等海拔方格不少于所需低地洞穴数量。	l
 Alternatively, you can reduce the number of non-mountain caves required by the parameters.	也可以减少参数要求的非山地洞穴数量。	l
-The world generator is having trouble placing enough civilizations.	世界生成器无法放置足够的文明。	l
+The world generator is having trouble placing enough civilizations.	世界生成器无法放置足够的政权。	l
 Make sure your parameters and presets offer enough low-to-mid savagery, evil/good appropriate, biome appropriate squares to establish sites.	请确保参数和预设提供足够的中低野性、善恶属性与生物群系均合适的方格来建立地点。	l
-High savagery (66+) blocks civilization placement -- make sure your parameters and presets offer at least small pockets of low-to-mid savagery areas.	高野性（66 以上）会阻止文明落位；请确保至少存在少量中低野性区域。	l
-If you have very few biome types and are placing good or evil regions, they'll often crowd out the civilizations as well.	若生物群系种类过少，善良或邪恶区域也常会挤占文明的空间。	l
-Alternatively, you can reduce the number of civilizations required by the parameters.	也可以减少参数要求的文明数量。	l
-The world generator couldn't find any civilization definitions.	世界生成器找不到任何文明定义。	l
+High savagery (66+) blocks civilization placement -- make sure your parameters and presets offer at least small pockets of low-to-mid savagery areas.	高野性（66 以上）会阻止政权落位；请确保至少存在少量中低野性区域。	l
+If you have very few biome types and are placing good or evil regions, they'll often crowd out the civilizations as well.	若生物群系种类过少，善良或邪恶区域也常会挤占政权的空间。	l
+Alternatively, you can reduce the number of civilizations required by the parameters.	也可以减少参数要求的政权数量。	l
+The world generator couldn't find any civilization definitions.	世界生成器找不到任何政权定义。	l
 This problem cannot be resolved by continuing, so you should either abort or skip all rejects for a legends-only game.	继续生成无法解决此问题；请中止，或忽略所有拒绝以生成仅限传说模式的世界。	l
-The world generator is having trouble placing a controllable civilization.	世界生成器无法放置可操控文明。	l
+The world generator is having trouble placing a controllable civilization.	世界生成器无法放置可操控政权。	l
 Dwarves, for example, require non-evil, non-good, unsavage mountain squares that aren't surrounded by the ocean.	例如，矮人需要既非善良也非邪恶、非野蛮且不被海洋包围的山地方格。	l
 Make sure your parameters and presets have adequate squares of this kind.	请确保参数和预设提供足够的此类方格。	l
-Alternatively, you can remove the requirement of a controllable civilization from the parameters, which will restrict you to adventurers (assuming an appropriate civilization is placed).	也可以取消参数中的可操控文明要求；这样将只能使用冒险者，前提是存在合适的文明。	l
-The world generator is having trouble placing farming civilizations.	世界生成器无法放置农耕文明。	l
-Civilizations use available plants in their surroundings as their initial crops.	文明会使用周边可用植物作为初始作物。	l
+Alternatively, you can remove the requirement of a controllable civilization from the parameters, which will restrict you to adventurers (assuming an appropriate civilization is placed).	也可以取消参数中的可操控政权要求；这样将只能使用冒险者，前提是存在合适的政权。	l
+The world generator is having trouble placing farming civilizations.	世界生成器无法放置农耕政权。	l
+Civilizations use available plants in their surroundings as their initial crops.	政权会使用周边可用植物作为初始作物。	l
 Make sure your parameters and raw objects have adequate vegetation.	请确保参数和原始对象提供足够的植被。	l
 
 # Remaining world-generation controls, progress text and assembled fragments
@@ -3811,17 +3811,17 @@ Verifying terrain...	正在验证地形……
 Importing wildlife...	正在导入野生动物……
 Recounting legends...	正在整理传说资料……
 Finished prehistory...	史前历史生成完毕……
-Placing civilizations... (	正在放置文明……（
-Placing civilizations... ({d})	正在放置文明……（{d}）	wt
-Making cave civilizations...	正在生成洞穴文明……
+Placing civilizations... (	正在放置政权……（
+Placing civilizations... ({d})	正在放置政权……（{d}）	wt
+Making cave civilizations...	正在生成洞穴政权……
 Making cave pops...	正在生成洞穴居民……
 Placing other beasts...	正在放置其他巨兽……
 Placing megabeasts...	正在放置巨兽……
 Placing good/evil...	正在生成善良与邪恶区域……
 Placing caves... (	正在放置洞穴……（
 Prehistory init...	正在初始化史前历史……
-Finalizing civ mats... (	正在完成文明材料……（
-Finalizing civ mats... ({d}/{d})	正在完成文明材料……（{d}/{d}）	wt
+Finalizing civ mats... (	正在完成政权材料……（
+Finalizing civ mats... ({d}/{d})	正在完成政权材料……（{d}/{d}）	wt
 Finalizing art... (	正在完成艺术内容……（
 Finalizing art... ({d}/{d})	正在完成艺术内容……（{d}/{d}）	wt
 Finalizing uniforms... (	正在完成制服……（
@@ -3973,7 +3973,7 @@ The Hill of Dye	染料之丘陵
 The Constructive Forests	开拓森林
 The Puce Land	紫褐之地
 Stream: Bridgesnuggles the Wooden...	溪流：桥拥者·木之……	l
-Neighbors:	邻近文明：
+Neighbors:	邻近政权：
 Clay	黏土	w
 More than a day's travel	路程超过一天	w
 
@@ -5486,7 +5486,7 @@ which allow creatures to do some unusual actions.	让生物能够执行一些特
 These are the default Dwarf Fortress extinct	这些是《矮人要塞》的默认灭绝	wl
 creatures.	生物。	wl
 These are the default Dwarf Fortress plants and fungi.	这些是《矮人要塞》的默认植物和真菌。	wl
-These are the default Dwarf Fortress civilizations.	这些是《矮人要塞》的默认文明。	wl
+These are the default Dwarf Fortress civilizations.	这些是《矮人要塞》的默认政权。	wl
 Sorting creature bodies...	正在整理生物身体结构……	w
 Dwarvemon Entity Type	Dwarvemon 实体类型	w
 ENABLE ONE! Entities in Dwarvemon use certain types of	只能启用一个！Dwarvemon 中的实体仅包含特定类型的	wl
@@ -11073,7 +11073,7 @@ Vanilla mod description: These are the triggers for the default Dwarf Fortress m
 Vanilla mod description: Various text strings used by the game.	游戏使用的各种文本。	l
 Vanilla mod description: The object definitions for shapes and colors.	形状和颜色的对象定义。	l
 Vanilla mod description: These are the default Dwarf Fortress generated objects.	这些是《矮人要塞》默认的程序生成对象。	l
-Vanilla mod description: These are the default Dwarf Fortress civilizations.	这些是《矮人要塞》的默认文明。	l
+Vanilla mod description: These are the default Dwarf Fortress civilizations.	这些是《矮人要塞》的默认政权。	l
 Vanilla mod description: These are the default Dwarf Fortress creatures.	这些是《矮人要塞》的默认生物。	l
 Vanilla mod description: These are the default Dwarf Fortress extinct creatures.	这些是《矮人要塞》的默认灭绝生物。	l
 Vanilla mod description: These are the default Dwarf Fortress materials.	这些是《矮人要塞》的默认材料。	l
@@ -11106,7 +11106,7 @@ Adventure action: Give a sermon promoting a value	发表宣扬某种价值观的
 Adventure action: Give a sermon inveighing against a value	发表反对某种价值观的布道	l
 Adventure action: Tell a story about a person or creature	讲述一个人物或生物的故事	l
 Adventure action: Tell a story about a site	讲述一个地点的故事	l
-Adventure action: Tell a story about a civilization or organization	讲述一个文明或组织的故事	l
+Adventure action: Tell a story about a civilization or organization	讲述一个政权或组织的故事	l
 Adventure action: Tell a story about a region	讲述一个地区的故事	l
 Adventure performance value: Law	法律	l
 Adventure performance value: Loyalty	忠诚	l
