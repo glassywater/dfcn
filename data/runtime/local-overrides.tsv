@@ -1,4 +1,8 @@
 # Local high-priority fixes. Rebuild through the host build-deploy entry.
+# Creation rows substitute the actual noble position in this whole caption.
+Squad creation: New squad	新建{position}的小队	l
+Squad creation: Existing squad	{position}的小队	l
+Squad creation: appointed by	由{position}任命	l
 # Legends nameless figures share the species grammar and existing sex symbols.
 Legends figure: Unnamed	未命名的	l
 # Native ghost family, Steam Windows PE:6a70a6d9:02711000.

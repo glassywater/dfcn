@@ -1,25 +1,45 @@
-static std::optional<std::string> fortress_squad_alias_text(std::string_view source,
-        const std::vector<std::string> &aliases) {
-    for (const auto &alias : aliases)
-        if (source == alias) return native_text_to_utf8(alias);
-    // Grid readers can trim the native margin or normalize layout spaces.
-    // Recover the authored bytes from the actual alias, never from word rules.
-    const std::string normalized = normalize_utterance(source);
-    std::optional<std::string> result;
-    for (const auto &alias : aliases) {
-        if (normalize_utterance(alias) != normalized) continue;
-        const std::string target = native_text_to_utf8(alias);
-        if (result && *result != target) return std::nullopt;
-        result = target;
-    }
-    return result;
-}
-
 std::optional<std::string> Overlay::translate_fortress_squad_name(
-        std::string_view source) const {
-    std::vector<std::string> aliases;
-    if (capture_native_fortress_squad_aliases(aliases))
-        if (auto alias = fortress_squad_alias_text(source, aliases)) return alias;
+        std::string_view source, int x, int y) const {
+    // Text-only templates have no squad object or draw coordinates. Keep
+    // their name verbatim rather than infer authorship from its spelling.
+    if (x < 0 || y < 0) return native_text_to_utf8(source);
+    for (bool top : {false, true})
+        for (const auto &draw : captured_native_drawn_text_rows(top)) {
+            if (!draw.squad_alias_target || draw.x != x ||
+                    draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                    draw.draw_grid != (top ? gps_->screen_top : gps_->screen) ||
+                    draw.source.empty() || x >= gps_->dimx || y >= gps_->dimy) continue;
+            if (draw.y != y) {
+                const auto *flags = top ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
+                if (!flags || draw.y < 0 || draw.y >= gps_->dimy) continue;
+                const auto half_at = [&](int row) {
+                    return flags[static_cast<size_t>(x) * gps_->dimy + row] &
+                        ((1u << 3) | (1u << 4));
+                };
+                const auto half = half_at(draw.y);
+                const int mate = half == (1u << 3) ? draw.y + 1
+                    : half == (1u << 4) ? draw.y - 1 : -1;
+                if (y != mate || half_at(y) !=
+                        (half == (1u << 3) ? (1u << 4) : (1u << 3))) continue;
+            }
+            int end = gps_->dimx;
+            if (draw.draw_clip) {
+                const auto &clip = *draw.draw_clip;
+                if (y < clip.y || y >= clip.y + clip.h || x < clip.x) continue;
+                end = std::min(end, clip.x + clip.w);
+            }
+            if (end <= x) continue;
+            const auto visible = source.substr(0, std::min({source.size(), draw.source.size(),
+                static_cast<size_t>(end - x)}));
+            bool current = draw.source.starts_with(visible);
+            for (size_t offset = 0; current && offset < visible.size(); ++offset) {
+                bool layer = false;
+                const auto *cell = cell_at(x + static_cast<int>(offset), y, &layer);
+                current = cell && layer == top && (cell[0] ? cell[0] : ' ') ==
+                    static_cast<unsigned char>(visible[offset]);
+            }
+            if (current) return draw.squad_alias_target;
+        }
     auto target = exact_literal_translation(source);
     if (!target) target = translate_legends_name(source, false);
     return target;
@@ -60,7 +80,8 @@ std::optional<std::string> Overlay::translate_fortress_squad_reference(
             }
     }
     const auto name = value == "None" ? exact_literal_translation(value)
-        : translate_fortress_squad_name(value);
+        : translate_fortress_squad_name(value,
+            x < 0 ? -1 : x + static_cast<int>(value.data() - source.data()), y);
     return name ? std::optional<std::string>(*label + "：" + *name) : std::nullopt;
 }
 
@@ -141,6 +162,173 @@ void Overlay::append_fortress_squad_alias_rows(std::vector<std::string> &rows,
             }
         }
     }
+}
+
+// The creator draws one complete title and one appointment/holder line in
+// each three-row button. Own both rows before ordinary word matching can
+// leave English glue around translated position names.
+void Overlay::append_fortress_squad_creation(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, bool raw_layer) const {
+    if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy)) return;
+    auto context = rows;
+    for (int y = 0; y < gps_->dimy; ++y) {
+        if (rows[y].size() != static_cast<size_t>(gps_->dimx)) return;
+        if (raw_layer)
+            for (int x = 0; x < gps_->dimx; ++x) {
+                const auto ch = visible_char_at(x, y);
+                context[y][x] = ch ? static_cast<char>(ch) : ' ';
+            }
+    }
+    const NativePanelBorders borders(*gps_);
+    constexpr std::string_view heading = "Create which squad?";
+    std::optional<SDL_Rect> panel;
+    int heading_y = -1;
+    for (int y = 0; y < gps_->dimy && !panel; ++y) {
+        const size_t at = context[y].find(heading);
+        if (at == std::string::npos) continue;
+        panel = native_panel_interior(borders, *gps_, static_cast<int>(at),
+            static_cast<int>(at + heading.size()), y);
+        if (panel) heading_y = y;
+    }
+    if (!panel) return;
+    const std::array draws{captured_native_drawn_text_rows(false),
+        captured_native_drawn_text_rows(true)};
+    const auto clipped = captured_clipped_captions();
+    struct Caption {
+        int x, y;
+        std::string visible, complete;
+        std::optional<std::string> identity;
+    };
+    const auto caption = [&](const SDL_Rect &box, int y) {
+        int first = box.x, end = box.x + box.w;
+        const std::string_view band(context[y].data() + first, end - first);
+        while (end > first && (context[y][end - 1] == ' ' ||
+                is_cp437_box_separator(band, end - box.x - 1))) --end;
+        while (first < end && (context[y][first] == ' ' ||
+                is_cp437_box_separator(band, first - box.x))) ++first;
+        Caption result{first, y, context[y].substr(first, end - first), {}, {}};
+        result.complete = result.visible;
+        for (const auto &layer : draws)
+            for (const auto &draw : layer) {
+                if (draw.x != first || draw.y != y ||
+                        draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                        draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen) ||
+                        !std::string_view(draw.source).starts_with(result.visible)) continue;
+                bool current = true;
+                for (int x = first; x < end; ++x)
+                    if (native_ui_top_layer_at(*gps_,
+                            static_cast<size_t>(x) * gps_->dimy + y) != draw.top_layer)
+                        current = false;
+                if (!current) continue;
+                result.complete = draw.complete_source.empty() ? draw.source : draw.complete_source;
+                result.identity = draw.unit_identity_target;
+            }
+        for (const auto &capture : clipped)
+            if (capture.x == first && capture.y == y && capture.visible == result.visible)
+                result.complete = capture.complete;
+        return result;
+    };
+    const auto position = [&](std::string_view source) {
+        auto target = translate_unit_profession(source, true);
+        if (!target) target = exact_literal_translation(source);
+        return target;
+    };
+    const auto compose = [&](std::string_view key, const std::optional<std::string> &role)
+            -> std::optional<std::string> {
+        if (!role) return std::nullopt;
+        auto target = exact_literal_translation(key);
+        if (!target) return std::nullopt;
+        constexpr std::string_view placeholder = "{position}";
+        const size_t at = target->find(placeholder);
+        if (at == std::string::npos) return std::nullopt;
+        target->replace(at, placeholder.size(), *role);
+        return target;
+    };
+    const auto append = [&](const Caption &text, const SDL_Rect &box,
+            const std::optional<std::string> &target) {
+        if (text.visible.empty()) return;
+        const int end = text.x + static_cast<int>(text.visible.size());
+        const auto emit = [&](int first, int last, bool complete) {
+            if (only_y < 0 || only_y == text.y) {
+                Match match{first, text.y, last - first, kFortressSquadCreationRule,
+                    complete ? target.value_or(native_text_to_utf8(text.complete)) : std::string{},
+                    context[text.y].substr(first, last - first)};
+                match.native_hover_untranslated = complete && !target;
+                match.native_picture_caption_box = box;
+                match.layout_x = box.x + 1;
+                match.layout_length = box.w - 2;
+                match.layout_clip_right = box.x + box.w - 1;
+                match.layout_y = text.y;
+                match.layout_fixed_baseline = true;
+                match.layout_left = true;
+                matches.push_back(std::move(match));
+            }
+            std::fill(rows[text.y].begin() + first, rows[text.y].begin() + last, ' ');
+        };
+        if (rows[text.y].compare(text.x, text.visible.size(), text.visible) == 0)
+            emit(text.x, end, true);
+        else if (raw_layer)
+            for (int at = text.x; at < end;) {
+                while (at < end && rows[text.y][at] != context[text.y][at]) ++at;
+                const int first = at;
+                while (at < end && rows[text.y][at] == context[text.y][at]) ++at;
+                if (at > first) emit(first, at, false);
+            }
+    };
+    constexpr std::string_view suffix = "'s squad";
+    constexpr std::string_view appointed = "appointed by ";
+    for (int y = heading_y + 1; y + 1 < panel->y + panel->h; ++y) {
+        const size_t at = context[y].find(suffix, panel->x);
+        if (at == std::string::npos || at + suffix.size() >
+                static_cast<size_t>(panel->x + panel->w)) continue;
+        const auto box = native_button_text_rect(*gps_, static_cast<int>(at),
+            static_cast<int>(at + suffix.size()), y, true);
+        if (!box || box->w <= 2 || box->y + 1 != y ||
+                box->x < panel->x || box->x + box->w > panel->x + panel->w ||
+                box->y < panel->y || box->y + box->h > panel->y + panel->h) continue;
+        const auto title = caption(*box, y), detail = caption(*box, y + 1);
+        const std::string source = normalize_utterance(title.complete);
+        if (!std::string_view(source).ends_with(suffix) || detail.visible.empty()) continue;
+        std::string_view role(source.data(), source.size() - suffix.size());
+        const bool new_position = role.starts_with("New ");
+        if (new_position) role.remove_prefix(4);
+        const auto title_target = compose(new_position ? "Squad creation: New squad"
+            : "Squad creation: Existing squad", position(trim_view(role)));
+        const std::string description = normalize_utterance(detail.complete);
+        std::optional<std::string> detail_target;
+        if (std::string_view(description).starts_with(appointed))
+            detail_target = compose("Squad creation: appointed by",
+                position(trim_view(std::string_view(description).substr(appointed.size()))));
+        else if (description == "Vacant position")
+            detail_target = exact_literal_translation(description);
+        else {
+            detail_target = detail.identity;
+            if (!detail_target) detail_target = translate_unit_identity(detail.complete, true);
+        }
+        append(title, *box, title_target);
+        append(detail, *box, detail_target);
+        ++y;
+    }
+}
+
+void Overlay::layout_fortress_squad_creation(SDL_Renderer *renderer) {
+    if (!gps_ || !renderer || !face_ || gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0)
+        return;
+    std::map<std::array<int, 4>, std::vector<std::vector<Match *>>> buttons;
+    for (Match &match : prepared_matches_) {
+        if (match.rule != kFortressSquadCreationRule || match.target.empty() ||
+                match.native_split_duplicate || !match.native_picture_caption_box) continue;
+        const auto &box = *match.native_picture_caption_box;
+        match.layout_y = match.y;
+        match.layout_pixel_y = 0;
+        match.layout_fixed_baseline = true;
+        match.layout_right = false;
+        match.layout_left = true;
+        match.layout_ellipsize = true;
+        buttons[{box.x, box.y, box.w, box.h}].push_back({&match});
+    }
+    for (auto &[box, fields] : buttons)
+        layout_fortress_text_rows(renderer, fields, box[0] + 1, box[0] + box[2] - 1, true);
 }
 
 // The squad list owns three consecutive fields: its name, current order and
@@ -241,7 +429,8 @@ void Overlay::append_fortress_squad_rows(std::vector<std::string> &rows,
                         complete = capture.complete;
                         break;
                     }
-                auto target = row == 0 ? translate_fortress_squad_name(complete)
+                auto target = row == 0 ? translate_fortress_squad_name(
+                    complete, field.start, logical.top)
                     : exact_literal_translation(complete);
                 if (!target && row == 1) target = translate_world_mission_title(complete);
                 if (!target && row == 1) target = translate_fortress_activity(complete);

@@ -1304,6 +1304,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         location_picker_field, location_picker_box, fortress_labor_caption, travel_building_field,
         native_caller);
     std::string complete;
+    std::optional<std::string> squad_alias_target;
     int x = -1, y = -1, dimx = 0, dimy = 0;
     const unsigned char *screen = nullptr;
     uint64_t epoch = 0;
@@ -1344,6 +1345,13 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
             }
         }
     } catch (...) { complete.clear(); }
+    // Freeze the memory-proven alias binding before drawing or clipping can
+    // change its visible bytes. A left-clipped suffix is still authored text.
+    try {
+        if (!complete.empty())
+            squad_alias_target = native_squad_alias_source_target(
+                complete, reinterpret_cast<uintptr_t>(source));
+    } catch (...) {}
     draw();
     if (complete.empty()) return;
     try {
@@ -1397,7 +1405,9 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
                 info_title_authored, info_title_right, civilization_field,
                 first == x && mission_title, mission_title_right, draw_clip, epoch,
                 map_hover, location_picker_field, location_picker_box, fortress_labor_caption,
-                travel_building_field, native_caller);
+                travel_building_field, native_caller,
+                first == x ? squad_alias_target : squad_alias_target
+                    ? std::optional<std::string>(native_text_to_utf8(visible)) : std::nullopt);
         if (first == x && visible != complete)
             remember_clipped_caption(x, y, visible, complete);
     } catch (...) {}

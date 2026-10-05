@@ -65693,6 +65693,7 @@ Sorry, I'm otherwise occupied.	抱歉，我正忙着别的事。	hP
 Sort units by profession name.	按职业名称对单位排序。	hj
 Sorting creature variations...	正在整理生物变体……	l
 Spread rumor of your abduction	传播你被绑架的传闻	hP
+Squad creation: Existing squad	{position}的小队	l
 State feelings of astonishment	表达惊讶	hP
 State feelings of embarassment	表达尴尬	hP
 State feelings of exasperation	表达懊恼	hP
@@ -70185,6 +70186,7 @@ She lives a fast-paced life.	她过着快节奏的生活。	l
 Skill name: Critical Thinker	批判思考	li
 Some changes are inevitable.	有些变化不可避免。	hP
 Sorting world information...	整理世界信息...	w
+Squad creation: appointed by	由{position}任命	l
 State feelings of acceptance	表达接受	hP
 State feelings of admiration	表达钦佩	hP
 State feelings of alienation	表达疏离感	hP
@@ -76401,6 +76403,7 @@ Skill rating: Legendary+4	传奇+4	li
 Skill rating: Legendary+5	传奇+5	li
 Spare me the compliments.	少来恭维我。	hP
 Spouse does the expelling	配偶负责执行驱逐	hP
+Squad creation: New squad	新建{position}的小队	l
 Staring off into space...	茫然地盯着空处……	hP
 State feelings of anxiety	表达焦虑	hP
 State feelings of arousal	表达兴奋	hP
