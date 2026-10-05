@@ -931,11 +931,23 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
             // No generic Legends/name fallback here. An unknown reason is
             // retained as one original row and reported for translation.
         } else if (identity) {
-            // This list also contains site governments. Only a real
-            // civilization identity receives the political name vocabulary.
+            // The local government keeps its ordinary name grammar. Other
+            // relationship records carry a species after the quoted gloss;
+            // resolve their name pair against the actual civilization before
+            // the figure-shaped wrapper can send it through personal names.
             if (index + 1 < card.rows.size() && world_civilization_relationship(
-                    normalize_utterance(card.rows[index + 1].source)))
-                target = translate_civilization_reference(source);
+                    normalize_utterance(card.rows[index + 1].source)) &&
+                    normalize_utterance(card.rows[index + 1].source) != "Your site government") {
+                const auto record = split_legends_figure_record(source);
+                if (record && record->sex.empty()) {
+                    const std::string reference = std::string(record->native_name) +
+                        ", \"" + std::string(record->gloss) + "\"";
+                    if (const auto name = translate_civilization_reference(reference)) {
+                        const auto species = translate_creature_descriptor(record->species);
+                        target = *name + "，" + species.value_or(cp437_to_utf8(record->species));
+                    }
+                } else target = translate_civilization_reference(source);
+            }
             if (!target && (split_legends_figure_record(source) ||
                     split_generated_name_identity(source)))
                 target = translate_procedural_fragment(source);
