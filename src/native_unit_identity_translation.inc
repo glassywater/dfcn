@@ -258,10 +258,11 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
     const auto name = [&]() -> std::string {
         if (unit.native_name.empty()) return {};
         std::optional<std::string> value;
-        // The English display is the translator's only input, including
-        // authored spellings that also match a registered English name.
+        // The English display supplies every meaning. Its captured first
+        // name only proves the given-name spelling, including authored forms
+        // that also match a registered English word.
         if (unit.english_name)
-            value = translate_english_character_name(unit.native_name);
+            value = translate_english_character_name(unit.native_name, unit.name.first_name);
         // A language-less name without WORD slots is literal authored data.
         else if (unit.name.language < 0 && unit.name.nickname.empty() &&
                 std::all_of(unit.name.words.begin(), unit.name.words.end(),

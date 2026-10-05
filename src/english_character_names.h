@@ -80,7 +80,7 @@ public:
     std::optional<std::string> title(std::string_view source) const {
         if (!loaded_) return std::nullopt;
         Part p = title_part(source);
-        if (!p.known) return std::nullopt;
+        if (!p.known || !p.complete) return std::nullopt;
         return p.text;
     }
 
@@ -1481,6 +1481,14 @@ private:
         }
         Part p = std::move(lexical);
         if (p.known) return surname_part(source);
+        // A typed name can consist only of a spaced English title, without
+        // a given name or leading article. Keep proven native given names
+        // above, then require the complete modifier/head phrase before
+        // guessing that its first word is an unknown personal given name.
+        if (source.find_first_of(" \t\r\n") != std::string_view::npos) {
+            Part title = phrase(source);
+            if (title.known && title.complete) return title;
+        }
         // An unknown given name may precede a reliably split compound surname.
         // Two ordinary separated English words do not establish this structure.
         for (std::size_t cut = 1; cut < source.size(); ++cut) {
