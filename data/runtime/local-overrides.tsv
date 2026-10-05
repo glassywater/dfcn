@@ -10667,6 +10667,9 @@ Adventure item action: Go below hatch (no climbing/jumping) ({d} levels down)	�
 Pick up how many? (0-{d})	拾取多少？（0-{d}）	hPt
 Adventure vermin: A	小生物	l
 
+# DFHack plugins/sort/world.lua: fixed search label beside the shortcut and input.
+Search:	搜索：	w
+
 # DFHack plugins/stocks.lua: action fields, separate from keys and frame brand.
 DFHack stocks hint: collapse all	全部折叠	l
 DFHack stocks hint: expand all	全部展开	l

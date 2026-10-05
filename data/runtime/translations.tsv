@@ -60842,6 +60842,7 @@ Cavern dweller maximum attackers	洞穴居民来袭人数上限
 Certainly considered an intruder	被肯定地看做是一名入侵者	w
 Chair rejected (already in use.)	椅子未被选用（已被占用）	hP
 Civilizations and other entities	政权及其他实体
+Claimed by your local government	你所在地区的政府宣称拥有	hP
 Click a building to link to {s}.	点击一个建筑，将其连接到{s1}。	hPt
 Click an icon to add a new zone.	点击图标添加新区域。	hP
 Competing were {a} in the wilds.	在荒野中，参赛者有{a1}。	ht
@@ -133898,6 +133899,7 @@ Satneng	萨特能哥	wi
 Schemer	阴谋家	wi
 Scholar	学者	wi
 Scribes	抄写员	wi
+Search:	搜索：	w
 Selsten	塞尔斯坦	wi
 Servile	卑躬屈膝	w
 Shadust	夏杜斯	wi
