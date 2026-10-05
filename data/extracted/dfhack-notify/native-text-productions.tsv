@@ -1,0 +1,7 @@
+production	native_producer	source	text_operand	branch
+job-caption	autolabor.plug.dll:0x180050fe0	dfhack.dll:0x18050d63c;attr_table=0x180aaf470;stride=72	job_type.attrs[job_type].caption	enum -1..257; all actual strings in job-type-captions.tsv
+job-enum-fallback	autolabor.plug.dll:0x180009440	dfhack.dll:key_table=0x180aaebc0	job_type[job_type]	selected when attrs caption pointer is null; invalid enum becomes ?<number>?
+custom-reaction	autolabor.plug.dll:0x1800518f0	IAT=0x1800a4778;df::reaction::get_vector()	reaction.name	when job_type==209, match reaction.code (std::string offset=0x00), return name (std::string offset=0x20); missing name falls back to enum caption
+starving-job-return	autolabor.plug.dll:0x180001c80	Lua internal/notify/notifications.lua:726	count, job-caption, ticks, x, y, z	count>0 returns 6 Lua values; otherwise returns count only
+lua-token-render	dfhack.dll:0x180407960	screen registration row=0x180a61a60;CheckPen=0x18046c360	Lua arg4 string	binding takes pen=arg1,x=arg2,y=arg3,text=arg4,to_map=arg5, then calls native Screen::paintString; no additional notification text
+native-string-render	dfhack.dll:0x1809249f0..0x180924b63	native call at 0x180407a42	submitted text bytes	paintString traverses string bytes and paints each tile; no string literals, no notification status assembly

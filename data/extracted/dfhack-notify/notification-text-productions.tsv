@@ -1,0 +1,21 @@
+notification	producer	text_production	dynamic_fields
+missing_nemesis	notifications.lua:433	(nemesis vector not sorted)|(missing {d} nemesis record)|(missing {d} nemesis records)	nemesis_next_id minus record count; signed integer
+stuck_squad	notifications.lua:500	({d} squad needs rescue)|({d} squads need rescue)	count of stuck armies
+auto_train	notifications.lua:530	autotraining: no squads selected	none
+traders_ready	notifications.lua:548	({d} trader is ready to trade)|({d} traders are ready to trade)	count of caravans ready at depot
+mandates_expiring	notifications.lua:590	({d} production mandate near deadline)|({d} production mandates near deadline)	count of production mandates near expiry
+petitions_agreed	notifications.lua:614	({d} petition outstanding)|({d} petitions outstanding)	count of unfulfilled temple and guildhall agreements
+moody_status	notifications.lua:628	moody dwarf is claiming a workshop|moody dwarf can't find needed workshop!|moody dwarf is gathering items|moody dwarf is working|moody dwarf can't find needed item!	current strange-mood job/building state
+warn_starving	notifications.lua:658	({d} starving, dehydrated, or drowsy unit)|({d} starving, dehydrated, or drowsy units)	count_units integer
+agitated_count	notifications.lua:665	({d} agitated animal)|({d} agitated animals)	count_units integer
+invader_count	notifications.lua:672	({d} invader)|({d} invaders)	count_units integer
+hostile_count	notifications.lua:679	({d} hostile)|({d} hostiles)	count_units integer
+warn_nuisance	notifications.lua:686	({d} thieving or mischievous creature)|({d} thieving or mischievous creatures)	count_units integer
+warn_stranded	notifications.lua:693	({d} group of citizens is stranded)|({d} groups of citizens are stranded)	count of stranded groups
+wildlife	notifications.lua:700; summarize_units:224	Wildlife: {d} {caste}(, {d} {caste})*	RAW caste_name[0/1]; arbitrary species list
+wildlife_adv	notifications.lua:707; summarize_units:224	Wildlife: {d} {caste}(, {d} {caste})*	RAW caste_name[0/1]; arbitrary species list
+injured	notifications.lua:714; injured_units:214	({d} injured citizen)|({d} injured citizens); optional suffix: ; no functional hospital!	count_units integer; functional-hospital state
+labor_starvation	notifications.lua:721	(task starvation: {d} unclaimed job)|(task starvation: {d} unclaimed jobs); optional suffix:  (oldest: {job}, {d} ticks)	autolabor_getStarvingJobs: count; job attrs.caption/key or reaction.name; ticks
+suffocation_adv	notifications.lua:745; get_bar:294	Air[padding to width 6][16 graphic tokens]	blood/breath fractions select ch219/ch177 and foreground color
+bleeding_adv	notifications.lua:753; get_bar:294	Blood[padding to width 6][16 graphic tokens]	blood/breath fractions select ch219/ch177 and foreground color
+save-reminder	notifications.lua:761; get_save_alert:317	Last save: |{formatted_minutes} mins ago	formatInt preserves grouping/SI/scientific notation; independent urgency color

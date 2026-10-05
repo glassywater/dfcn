@@ -96,6 +96,7 @@ struct DfhackOutputSnapshot {
     std::unordered_map<std::string, std::vector<size_t>> stonesense_words;
     std::unordered_map<std::string, std::string> human_captions;
     std::unordered_map<std::string, std::string> gui_fields;
+    std::vector<Rule> notification_templates;
     std::unordered_map<std::string, std::string> calendar_months;
     std::unordered_map<std::string, std::string> calendar_seasons;
     std::unordered_map<std::string, std::string> death_causes;
@@ -997,6 +998,17 @@ void Overlay::load_dfhack_help_catalog() {
             else if (gui_field) {
                 snapshot->gui_fields.insert_or_assign(rule.source, rule.target);
                 capture_translations_.insert_or_assign(rule.source, rule.target);
+                constexpr std::string_view notify_scope = "DFHack GUI Notification banner: ";
+                if (rule.source.starts_with(notify_scope) &&
+                        rule.source != std::string(notify_scope) + "{d} {s}" &&
+                        rule.source.find("{d}") != std::string::npos) {
+                    Rule notification = rule;
+                    notification.source.erase(0, notify_scope.size());
+                    split_template(notification.source, &notification.template_literals,
+                        &notification.template_kinds);
+                    if (compile_template_target(notification))
+                        snapshot->notification_templates.push_back(std::move(notification));
+                }
             }
             else index_dfhack_help_paragraph(rule);
         }
@@ -1540,4 +1552,3 @@ static std::optional<std::string> translate_dfhack_stonesense_text(std::string_v
     return selected && !ambiguous && contains_cjk_utf8(target)
         ? std::optional<std::string>(std::move(target)) : std::nullopt;
 }
-

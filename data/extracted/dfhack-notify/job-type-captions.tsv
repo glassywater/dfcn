@@ -1,0 +1,260 @@
+enum_value	enum_key	caption_va	caption	fallback_key_va	produced_text	source
+-1	NONE			0x180b152e0	NONE	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+0	CarveFortification	0x180af0c68	Carve Fortification	0x180aedd78	Carve Fortification	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+1	SmoothWall	0x180af0c98	Smooth Wall	0x180aedda0	Smooth Wall	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+2	SmoothFloor	0x180af0cc0	Smooth Floor	0x180aeddc0	Smooth Floor	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+3	DetailWall	0x180af0ce8	Detail Wall	0x180aede10	Detail Wall	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+4	DetailFloor	0x180af0d18	Detail Floor	0x180aede28	Detail Floor	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+5	Dig	0x180aede4c	Dig	0x180aede4c	Dig	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+6	CarveUpwardStaircase	0x180af0d48	Carve Upward Staircase	0x180aede80	Carve Upward Staircase	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+7	CarveDownwardStaircase	0x180af0d80	Carve Downward Staircase	0x180aedec8	Carve Downward Staircase	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+8	CarveUpDownStaircase	0x180af0db8	Carve Up/Down Staircase	0x180aedf18	Carve Up/Down Staircase	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+9	CarveRamp	0x180af0de0	Carve Ramp	0x180aedf70	Carve Ramp	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+10	DigChannel	0x180af0e08	Dig Channel	0x180aedf90	Dig Channel	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+11	FellTree	0x180af0e30	Fell Tree	0x180aedfb0	Fell Tree	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+12	GatherPlants	0x180af0e60	Gather Plants	0x180aedfd0	Gather Plants	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+13	RemoveConstruction	0x180af0eb0	Remove Construction	0x180aedff8	Remove Construction	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+14	CollectWebs	0x180af0ee0	Collect Webs	0x180aee040	Collect Webs	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+15	BringItemToDepot	0x180af0f10	Bring Item to Depot	0x180aee058	Bring Item to Depot	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+16	BringItemToShop	0x180af0f50	Bring Item to Shop	0x180aee078	Bring Item to Shop	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+17	Eat	0x180aee0a0	Eat	0x180aee0a0	Eat	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+18	GetProvisions	0x180af0f90	Get Provisions	0x180aee0c8	Get Provisions	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+19	Drink	0x180aee0f4	Drink	0x180aee0f4	Drink	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+20	DrinkItem	0x180aee0f4	Drink	0x180aee120	Drink	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+21	FillWaterskin	0x180af0fc8	Fill Waterskin	0x180aee140	Fill Waterskin	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+22	FillWaterskinItem	0x180af0fc8	Fill Waterskin	0x180aee160	Fill Waterskin	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+23	Sleep	0x180b39254	Sleep	0x180b39254	Sleep	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+24	CollectSand	0x180af1000	Collect Sand	0x180aee188	Collect Sand	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+25	Fish	0x180b04c94	Fish	0x180b04c94	Fish	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+26	Hunt	0x180aee1a4	Hunt	0x180aee1a4	Hunt	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+27	HuntVermin	0x180af1040	Hunt for Small Creature	0x180aee1d0	Hunt for Small Creature	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+28	Kidnap	0x180aee1ec	Kidnap	0x180aee1ec	Kidnap	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+29	BeatCriminal	0x180af1080	Beat Criminal	0x180aee208	Beat Criminal	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+30	StartingFistFight	0x180af10b0	Starting Fist Fight	0x180aee238	Starting Fist Fight	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+31	CollectTaxes	0x180af10f8	Collect Taxes	0x180aee268	Collect Taxes	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+32	GuardTaxCollector	0x180af1130	Guard Tax Collector	0x180aee290	Guard Tax Collector	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+33	CatchLiveLandAnimal	0x180af1170	Catch Live Land Animal	0x180aee2c0	Catch Live Land Animal	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+34	CatchLiveFish	0x180af11b0	Catch Live Fish	0x180aee2e8	Catch Live Fish	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+35	ReturnKill	0x180af11e0	Return Kill	0x180aee318	Return Kill	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+36	StoreOwnedItem	0x180af1210	Store Owned Item	0x180aee340	Store Owned Item	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+37	PlaceItemInTomb	0x180af1248	Place Item in Tomb	0x180aee368	Place Item in Tomb	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+38	StoreItemInStockpile	0x180af1288	Store Item in Stockpile	0x180aee390	Store Item in Stockpile	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+39	StoreItemInBag	0x180af12c8	Store Item in Bag	0x180aee3b8	Store Item in Bag	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+40	StoreItemInLocation	0x180af1300	Store Item In Location	0x180aee3d8	Store Item In Location	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+41	StoreWeapon	0x180af1340	Store Weapon	0x180aee400	Store Weapon	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+42	StoreArmor	0x180af1378	Store Armor	0x180aee430	Store Armor	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+43	StoreItemInBarrel	0x180af13b0	Store Item in Barrel	0x180aee450	Store Item in Barrel	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+44	StoreItemInBin	0x180af13e8	Store Item in Bin	0x180aee480	Store Item in Bin	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+45	SeekArtifact	0x180af1428	Seek Artifact	0x180aee4b0	Seek Artifact	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+46	SeekInfant	0x180af1460	Seek Infant	0x180aee4e8	Seek Infant	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+47	GoShopping	0x180af1498	Go Shopping	0x180aee520	Go Shopping	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+48	GoShoppingSpecific	0x180af1498	Go Shopping	0x180aee558	Go Shopping	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+49	Clean	0x180aee584	Clean	0x180aee584	Clean	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+50	Rest	0x180b3926c	Rest	0x180b3926c	Rest	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+51	PickupEquipment	0x180af14d0	Pickup Equipment	0x180aee5b0	Pickup Equipment	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+52	DumpItem	0x180af1508	Dump Item	0x180aee5d8	Dump Item	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+53	StrangeMoodCrafter	0x180af1548	Strange Mood (Crafter)	0x180aee600	Strange Mood (Crafter)	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+54	StrangeMoodJeweller	0x180af1580	Strange Mood (Jeweller)	0x180aee650	Strange Mood (Jeweller)	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+55	StrangeMoodForge	0x180af15c0	Strange Mood (Forge)	0x180aee680	Strange Mood (Forge)	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+56	StrangeMoodMagmaForge	0x180af1608	Strange Mood (Magma Forge)	0x180aee6b0	Strange Mood (Magma Forge)	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+57	StrangeMoodBrooding	0x180af1658	Strange Mood (Brooding)	0x180aee6f0	Strange Mood (Brooding)	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+58	StrangeMoodFell	0x180af16a0	Strange Mood (Fell)	0x180aee728	Strange Mood (Fell)	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+59	StrangeMoodCarpenter	0x180af16e0	Strange Mood (Carpenter)	0x180aee758	Strange Mood (Carpenter)	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+60	StrangeMoodMason	0x180af1740	Strange Mood (Mason)	0x180aee788	Strange Mood (Mason)	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+61	StrangeMoodBowyer	0x180af1770	Strange Mood (Bowyer)	0x180aee7b8	Strange Mood (Bowyer)	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+62	StrangeMoodTanner	0x180af17a0	Strange Mood (Leather)	0x180aee7e8	Strange Mood (Leather)	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+63	StrangeMoodWeaver	0x180af17d0	Strange Mood (Clothier)	0x180aee830	Strange Mood (Clothier)	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+64	StrangeMoodGlassmaker	0x180af1800	Strange Mood (Glassmaker)	0x180aee860	Strange Mood (Glassmaker)	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+65	StrangeMoodMechanics	0x180af1848	Strange Mood (Mechanics)	0x180aee890	Strange Mood (Mechanics)	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+66	ConstructBuilding	0x180af1880	Construct Building	0x180aee8d0	Construct Building	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+67	ConstructDoor	0x180af18b0	Construct Door	0x180aee910	Construct Door	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+68	ConstructFloodgate	0x180af18f0	Construct Floodgate	0x180aee938	Construct Floodgate	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+69	ConstructBed	0x180af1938	Construct Bed	0x180aee968	Construct Bed	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+70	ConstructThrone	0x180af1970	Construct Throne	0x180aee990	Construct Throne	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+71	ConstructCoffin	0x180af19b0	Construct Coffin	0x180aee9b8	Construct Coffin	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+72	ConstructTable	0x180af19e0	Construct Table	0x180aee9f0	Construct Table	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+73	ConstructChest	0x180af1a10	Construct Chest	0x180aeea18	Construct Chest	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+74	ConstructBag	0x180af1a38	Construct Bag	0x180aeea40	Construct Bag	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+75	ConstructBin	0x180af1a60	Construct Bin	0x180aeea78	Construct Bin	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+76	ConstructArmorStand	0x180af1aa8	Construct Armor Stand	0x180aeeab8	Construct Armor Stand	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+77	ConstructWeaponRack	0x180af1ad8	Construct Weapon Rack	0x180aeeae8	Construct Weapon Rack	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+78	ConstructCabinet	0x180af1b08	Construct Cabinet	0x180aeeb18	Construct Cabinet	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+79	ConstructStatue	0x180af1b60	Construct Statue	0x180aeeb48	Construct Statue	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+80	ConstructBlocks	0x180af1bb8	Construct Blocks	0x180aeeb78	Construct Blocks	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+81	MakeRawGlass	0x180af1c00	Make Raw Glass	0x180aeeba0	Make Raw Glass	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+82	MakeCrafts	0x180af1c48	Make Crafts	0x180aeebe0	Make Crafts	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+83	MintCoins	0x180af1c70	Mint Coins	0x180aeec08	Mint Coins	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+84	CutGems	0x180af1c98	Cut Gems	0x180aeec30	Cut Gems	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+85	CutGlass	0x180af1cc0	Cut Glass	0x180aeec68	Cut Glass	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+86	EncrustWithGems	0x180af1ce8	Encrust With Gems	0x180aeecb0	Encrust With Gems	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+87	EncrustWithGlass	0x180af1d40	Encrust With Glass	0x180aeecf0	Encrust With Glass	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+88	DestroyBuilding	0x180af1d70	Destroy Building	0x180aeed38	Destroy Building	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+89	SmeltOre	0x180af1da0	Smelt Ore	0x180aeed78	Smelt Ore	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+90	MeltMetalObject	0x180af1dd8	Melt a Metal Object	0x180aeedb8	Melt a Metal Object	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+91	ExtractMetalStrands	0x180af1e18	Extract Metal Strands	0x180aeee00	Extract Metal Strands	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+92	PlantSeeds	0x180af1e48	Plant Seeds	0x180aeee50	Plant Seeds	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+93	HarvestPlants	0x180af1e70	Harvest Plants	0x180aeee78	Harvest Plants	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+94	TrainHuntingAnimal	0x180af1e98	Train Hunting Animal	0x180aeeea8	Train Hunting Animal	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+95	TrainWarAnimal	0x180af1ec8	Train War Animal	0x180aeeed8	Train War Animal	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+96	MakeWeapon	0x180af1f20	Forge Weapon	0x180aeef00	Forge Weapon	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+97	ForgeAnvil	0x180af1f48	Forge Anvil	0x180aeef38	Forge Anvil	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+98	ConstructCatapultParts	0x180af1f70	Construct Catapult Parts	0x180aeef60	Construct Catapult Parts	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+99	ConstructBallistaParts	0x180af1fb0	Construct Ballista Parts	0x180aeef90	Construct Ballista Parts	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+100	MakeArmor	0x180af1ff8	Make Armor	0x180aeefc8	Make Armor	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+101	MakeHelm	0x180af2030	Forge Helm	0x180aef008	Forge Helm	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+102	MakePants	0x180af2058	Make Pants	0x180aef050	Make Pants	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+103	StudWith	0x180af2080	Stud With	0x180aef078	Stud With	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+104	ButcherAnimal	0x180af20a8	Butcher an Animal	0x180aef098	Butcher an Animal	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+105	PrepareRawFish	0x180af20d8	Prepare a Raw Fish	0x180aef0b8	Prepare a Raw Fish	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+106	MillPlants	0x180af2128	Mill Plants	0x180aef0d8	Mill Plants	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+107	BaitTrap	0x180af2150	Bait Trap	0x180aef108	Bait Trap	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+108	MilkCreature	0x180af2178	Milk Creature	0x180aef130	Milk Creature	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+109	MakeCheese	0x180af21b8	Make Cheese	0x180aef158	Make Cheese	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+110	ProcessPlants	0x180af21f0	Process Plants	0x180aef190	Process Plants	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+111	PolishStones	0x180af1c98	Cut Gems	0x180aef1c0	Cut Gems	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+112	ProcessPlantsVial	0x180af2228	Process Plants (Vial)	0x180aef1f0	Process Plants (Vial)	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+113	ProcessPlantsBarrel	0x180af2268	Process Plants (Barrel)	0x180aef228	Process Plants (Barrel)	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+114	PrepareMeal	0x180af22a8	Prepare Meal	0x180aef260	Prepare Meal	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+115	WeaveCloth	0x180af22e0	Weave Cloth	0x180aef290	Weave Cloth	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+116	MakeGloves	0x180af2308	Make Gloves	0x180aef2c0	Make Gloves	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+117	MakeShoes	0x180af2330	Make Shoes	0x180aef2f8	Make Shoes	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+118	MakeShield	0x180af2358	Make Shield	0x180aef328	Make Shield	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+119	MakeCage	0x180af2380	Make Cage	0x180aef358	Make Cage	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+120	MakeChain	0x180af23c8	Make Chain	0x180aef388	Make Chain	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+121	MakeFlask	0x180af23f0	Make Flask	0x180aef3b8	Make Flask	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+122	MakeGoblet	0x180af2418	Make Goblet	0x180aef3f0	Make Goblet	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+123	MakeToy	0x180af2450	Make Toy	0x180aef438	Make Toy	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+124	MakeAnimalTrap	0x180af2488	Make Animal Trap	0x180aef468	Make Animal Trap	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+125	MakeBarrel	0x180af24c8	Make Barrel	0x180aef4a8	Make Barrel	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+126	MakeBucket	0x180af24f0	Make Bucket	0x180aef4e8	Make Bucket	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+127	MakeWindow	0x180af2518	Make Window	0x180aef520	Make Window	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+128	MakeTotem	0x180af2540	Make Totem	0x180aef550	Make Totem	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+129	MakeAmmo	0x180af2568	Make Ammo	0x180aef570	Make Ammo	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+130	DecorateWith	0x180af25a8	Decorate With	0x180aef590	Decorate With	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+131	MakeBackpack	0x180af25d0	Make Backpack	0x180aef5b0	Make Backpack	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+132	MakeQuiver	0x180af25f8	Make Quiver	0x180aef5d0	Make Quiver	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+133	MakeBallistaArrowHead	0x180af2628	Make Ballista Arrow Head	0x180aef600	Make Ballista Arrow Head	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+134	AssembleSiegeAmmo	0x180af2670	Assemble Siege Ammo	0x180aef628	Assemble Siege Ammo	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+135	LoadCatapult	0x180af26b0	Load Catapult	0x180aef650	Load Catapult	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+136	LoadBallista	0x180af26e8	Load Ballista	0x180aef678	Load Ballista	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+137	FireCatapult	0x180af2728	Fire Catapult	0x180aef698	Fire Catapult	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+138	FireBallista	0x180af2768	Fire Ballista	0x180aef6b8	Fire Ballista	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+139	ConstructMechanisms	0x180af2790	Construct Mechanisms	0x180aef6d8	Construct Mechanisms	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+140	MakeTrapComponent	0x180aef710	MakeTrapComponent	0x180aef710	MakeTrapComponent	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+141	LoadCageTrap	0x180af27c8	Load Cage Trap	0x180aef730	Load Cage Trap	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+142	LoadStoneTrap	0x180af27f8	Load Stone Trap	0x180aef748	Load Stone Trap	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+143	LoadWeaponTrap	0x180af2820	Load Weapon Trap	0x180aef770	Load Weapon Trap	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+144	CleanTrap	0x180af2858	Clean Trap	0x180aef798	Clean Trap	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+145	EncrustWithStones	0x180af2888	Encrust With Stones	0x180aef7c0	Encrust With Stones	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+146	LinkBuildingToTrigger	0x180af28c8	Link a Building to Trigger	0x180aef7e0	Link a Building to Trigger	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+147	PullLever	0x180af2910	Pull the Lever	0x180aef800	Pull the Lever	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+148		0x180ae9650	UNUSED_04	0x0	UNUSED_04	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+149	ExtractFromPlants	0x180af2940	Extract from Plants	0x180aef818	Extract from Plants	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+150	ExtractFromRawFish	0x180af2978	Extract from Raw Fish	0x180aef838	Extract from Raw Fish	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+151	ExtractFromLandAnimal	0x180af29b0	Extract from Land Animal	0x180aef868	Extract from Land Animal	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+152	TameVermin	0x180af29f0	Tame Small Animal	0x180aef888	Tame Small Animal	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+153	TameAnimal	0x180af2a28	Tame ?something?	0x180aef8a0	Tame ?something?	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+154	ChainAnimal	0x180af2a60	Chain Animal	0x180aef8c0	Chain Animal	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+155	UnchainAnimal	0x180af2a90	Unchain Animal	0x180aef8d8	Unchain Animal	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+156	UnchainPet	0x180af2ac0	Unchain Pet	0x180aef8f0	Unchain Pet	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+157	ReleaseLargeCreature	0x180af2af8	Release Large Creature	0x180aef908	Release Large Creature	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+158	ReleasePet	0x180af2b30	Release Pet	0x180aef938	Release Pet	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+159	ReleaseSmallCreature	0x180af2b58	Release Small Creature	0x180aef968	Release Small Creature	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+160	HandleSmallCreature	0x180af2b88	Handle Small Creature	0x180aef998	Handle Small Creature	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+161	HandleLargeCreature	0x180af2bc0	Handle Large Creature	0x180aef9c0	Handle Large Creature	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+162	CageLargeCreature	0x180af2bf8	Cage Large Creature	0x180aef9e8	Cage Large Creature	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+163	CageSmallCreature	0x180af2c30	Cage Small Creature	0x180aefa10	Cage Small Creature	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+164	RecoverWounded	0x180af2c68	Recover Wounded	0x180aefa38	Recover Wounded	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+165	DiagnosePatient	0x180af2cd0	Diagnose Patient	0x180aefa60	Diagnose Patient	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+166	ImmobilizeBreak	0x180af2d08	Immobilize Break	0x180aefa90	Immobilize Break	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+167	DressWound	0x180af2d40	Dress Wound	0x180aefab8	Dress Wound	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+168	CleanPatient	0x180af2da8	Clean Patient	0x180aefad8	Clean Patient	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+169	Surgery	0x180b392a8	Surgery	0x180b392a8	Surgery	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+170	Suture	0x180aefb04	Suture	0x180aefb04	Suture	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+171	SetBone	0x180af2e10	Set Bone	0x180aefb38	Set Bone	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+172	PlaceInTraction	0x180af2e40	Place In Traction	0x180aefb60	Place In Traction	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+173	DrainAquarium	0x180af2e80	Drain Aquarium	0x180aefb98	Drain Aquarium	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+174	FillAquarium	0x180af2eb8	Fill Aquarium	0x180aefbc8	Fill Aquarium	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+175	FillPond	0x180af2ef0	Fill Pond	0x180aefbf0	Fill Pond	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+176	GiveWater	0x180af2f28	Give Water	0x180aefc18	Give Water	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+177	GiveFood	0x180af2f58	Give Food	0x180aefc40	Give Food	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+178	GiveWaterPet	0x180af2f28	Give Water	0x180aefc68	Give Water	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+179	GiveFoodPet	0x180af2f58	Give Food	0x180aefcb0	Give Food	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+180	RecoverPet	0x180af2f90	Recover Pet	0x180aefcd0	Recover Pet	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+181	PitLargeAnimal	0x180af2fd0	Pit/Pond Large Animal	0x180aefcf0	Pit/Pond Large Animal	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+182	PitSmallAnimal	0x180af3010	Pit/Pond Small Animal	0x180aefd18	Pit/Pond Small Animal	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+183	SlaughterAnimal	0x180af3058	Slaughter Animal	0x180aefd48	Slaughter Animal	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+184	MakeCharcoal	0x180af3088	Make Charcoal	0x180aefd78	Make Charcoal	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+185	MakeAsh	0x180af30b0	Make Ash	0x180aefda0	Make Ash	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+186	MakeLye	0x180af30d8	Make Lye	0x180aefdb8	Make Lye	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+187	MakePotashFromLye	0x180af3100	Make Potash From Lye	0x180aefdd0	Make Potash From Lye	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+188	FertilizeField	0x180af3140	Fertilize Field	0x180aefdf8	Fertilize Field	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+189	MakePotashFromAsh	0x180af3168	Make Potash From Ash	0x180aefe18	Make Potash From Ash	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+190	DyeThread	0x180af3198	Dye Thread	0x180aefe58	Dye Thread	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+191	DyeCloth	0x180af31d0	Dye Cloth	0x180aefe78	Dye Cloth	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+192	SewImage	0x180af31f8	Sew Image	0x180aefe98	Sew Image	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+193	MakePipeSection	0x180af3220	Make Pipe Section	0x180aefec0	Make Pipe Section	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+194	OperatePump	0x180af3250	Operate Pump	0x180aefee0	Operate Pump	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+195	ManageWorkOrders	0x180af3278	Manage Work Orders	0x180aeff08	Manage Work Orders	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+196	UpdateStockpileRecords	0x180af32b8	Update Stockpile Records	0x180aeff38	Update Stockpile Records	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+197	TradeAtDepot	0x180af32f0	Trade at Depot	0x180aeff78	Trade at Depot	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+198	ConstructHatchCover	0x180af3318	Construct Hatch Cover	0x180aeffa8	Construct Hatch Cover	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+199	ConstructGrate	0x180af3358	Construct Grate	0x180aeffd8	Construct Grate	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+200	RemoveStairs	0x180af3388	Remove Stairs/Ramps	0x180af0008	Remove Stairs/Ramps	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+201	ConstructQuern	0x180af33b8	Construct Quern	0x180af0040	Construct Quern	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+202	ConstructMillstone	0x180af33e8	Construct Millstone	0x180af0070	Construct Millstone	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+203	ConstructSplint	0x180af3418	Construct Splint	0x180af00a0	Construct Splint	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+204	ConstructCrutch	0x180af3458	Construct Crutch	0x180af00c8	Construct Crutch	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+205	ConstructTractionBench	0x180af3488	Construct Traction Bench	0x180af00f0	Construct Traction Bench	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+206	CleanSelf	0x180af34c0	Clean Self	0x180af0120	Clean Self	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+207	BringCrutch	0x180af3510	Bring Crutch	0x180af0160	Bring Crutch	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+208	ApplyCast	0x180af3568	Apply Cast	0x180af0188	Apply Cast	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+209	CustomReaction	0x180af35b8	Custom Reaction	0x180af01b0	Custom Reaction	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+210	ConstructSlab	0x180af3618	Construct Slab	0x180af01f8	Construct Slab	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+211	EngraveSlab	0x180af3668	Engrave Memorial Slab	0x180af0238	Engrave Memorial Slab	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+212	ShearCreature	0x180af36c0	Shear Creature	0x180af0278	Shear Creature	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+213	SpinThread	0x180af3710	Spin Thread	0x180af02c0	Spin Thread	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+214	PenLargeAnimal	0x180af3760	Pen/Pasture Large Animal	0x180af0308	Pen/Pasture Large Animal	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+215	PenSmallAnimal	0x180af37c8	Pen/Pasture Small Animal	0x180af0348	Pen/Pasture Small Animal	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+216	MakeTool	0x180af3830	Make Tool	0x180af0380	Make Tool	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+217	CollectClay	0x180af3878	Collect Clay	0x180af03b8	Collect Clay	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+218	InstallColonyInHive	0x180af38c8	Install Colony In Hive	0x180af03d8	Install Colony In Hive	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+219	CollectHiveProducts	0x180af3920	Collect Hive Products	0x180af0400	Collect Hive Products	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+220	CauseTrouble	0x180af3970	Cause Trouble	0x180af0428	Cause Trouble	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+221	DrinkBlood	0x180af39c0	No Job	0x180af0448	No Job	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+222	ReportCrime	0x180af3a00	Report Crime	0x180af0488	Report Crime	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+223	ExecuteCriminal	0x180af3a50	Execute Criminal	0x180af04a8	Execute Criminal	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+224	TrainAnimal	0x180af3ab0	Train Animal	0x180af04c8	Train Animal	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+225	CarveTrack	0x180af3b00	Carve Track	0x180af04f8	Carve Track	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+226	PushTrackVehicle	0x180af3b48	Push Track Vehicle	0x180af0520	Push Track Vehicle	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+227	PlaceTrackVehicle	0x180af3ba0	Place Track Vehicle	0x180af0550	Place Track Vehicle	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+228	StoreItemInVehicle	0x180af3bf8	Store Item in Vehicle	0x180af0590	Store Item in Vehicle	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+229	GeldAnimal	0x180af3c50	Geld ?something?	0x180af05c8	Geld ?something?	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+230	MakeFigurine	0x180af3cb0	Make Figurine	0x180af05f8	Make Figurine	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+231	MakeAmulet	0x180af3d00	Make Amulet	0x180af0638	Make Amulet	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+232	MakeScepter	0x180af3d48	Make Scepter	0x180af0670	Make Scepter	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+233	MakeCrown	0x180af3d90	Make Crown	0x180af06a8	Make Crown	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+234	MakeRing	0x180af3dd8	Make Ring	0x180af06e0	Make Ring	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+235	MakeEarring	0x180af3e28	Make Earring	0x180af0710	Make Earring	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+236	MakeBracelet	0x180af3e80	Make Bracelet	0x180af0740	Make Bracelet	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+237	MakeGem	0x180af3ed0	Make Large Gem	0x180af0778	Make Large Gem	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+238	PutItemOnDisplay	0x180af3f28	Put Item on Display	0x180af07a0	Put Item on Display	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+239	HeistItem	0x180af39c0	No Job	0x180af07e8	No Job	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+240	InterrogateSubject	0x180af3f80	Interrogate Subject	0x180af0818	Interrogate Subject	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+241	AcceptHeistItem	0x180af3fd8	No Activity	0x180af0858	No Activity	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+242	StoreSquadEquipmentItem	0x180af4028	Store Squad Equipment Item	0x180af0890	Store Squad Equipment Item	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+243	MixDye	0x180af4080	Mix Dye	0x180af08d4	Mix Dye	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+244	DyeLeather	0x180af40c0	Dye Leather	0x180af0910	Dye Leather	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+245	ConstructBoltThrowerParts	0x180af4110	Construct Bolt Thrower Parts	0x180af0950	Construct Bolt Thrower Parts	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+246	LoadBoltThrower	0x180af4168	Load Bolt Thrower	0x180af0998	Load Bolt Thrower	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+247	FireBoltThrower	0x180af41b8	Fire Bolt Thrower	0x180af09d0	Fire Bolt Thrower	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+248	UNUSED_31			0x180af0a08	UNUSED_31	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+249	UNUSED_32			0x180af0a38	UNUSED_32	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+250	UNUSED_33			0x180af0a68	UNUSED_33	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+251	UNUSED_34			0x180af0a90	UNUSED_34	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+252	UNUSED_35			0x180af0ab8	UNUSED_35	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+253	UNUSED_36			0x180af0ae8	UNUSED_36	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+254	UNUSED_37			0x180af0b10	UNUSED_37	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+255	UNUSED_38			0x180af0b48	UNUSED_38	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+256	UNUSED_39			0x180af0b80	UNUSED_39	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0
+257	UNUSED_40			0x180af0bb8	UNUSED_40	dfhack.dll:PE:6abbf61e:0130c000:attr_table=0x180aaf470;stride=72;key_table=0x180aaebc0;autolabor.plug.dll:0x180050fe0

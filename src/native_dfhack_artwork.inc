@@ -16,6 +16,8 @@ static bool install_native_dfhack_lua_output_hook();
 static bool install_native_dfhack_sitemap_hook();
 static std::optional<std::string> lookup_native_dfhack_sitemap_text(
     const graphicst *gps, int x, int y, std::string_view visible);
+static std::optional<std::string> lookup_native_dfhack_notification_text(
+    const graphicst *gps, int x, int y, std::string_view visible);
 static bool install_native_dfhack_messagebox_hook();
 static bool install_native_dfhack_prompt_hook();
 static bool install_native_dfhack_stonesense_hook();
@@ -97,8 +99,12 @@ static void record_native_dfhack_tile_write(const graphicst *gps,
     const bool frame_character = write.ch >= 0xb3 && write.ch <= 0xda;
     const bool configure_character = write.ch == '[' || write.ch == 0x0f ||
         write.ch == '?' || write.ch == ']';
+    // Notify's scrollbar and Air/Blood bars use textured pens whose native
+    // character bytes were cleared by paintTile, just like its frame rails.
+    const bool notification_character = write.ch == '/' || write.ch == '\\' ||
+        write.ch == 176 || write.ch == 177 || write.ch == 219;
     g_native_dfhack_border_tiles[border_at] =
-        (frame_character || configure_character) && write.texture > 0
+        (frame_character || configure_character || notification_character) && write.texture > 0
             ? write : NativeDfhackTileWrite{};
     g_native_dfhack_tile_writes[g_native_dfhack_tile_next] = write;
     g_native_dfhack_tile_next = (g_native_dfhack_tile_next + 1) %
@@ -174,7 +180,9 @@ static void retain_native_dfhack_border_chars(const graphicst &gps,
             if (!write.source_grid || write.source_grid != origin.grid ||
                     write.texture <= 0 || !textures ||
                     textures[tile] != write.texture) continue;
-            if (write.ch >= 0xb3 && write.ch <= 0xda) {
+            if ((write.ch >= 0xb3 && write.ch <= 0xda) ||
+                    write.ch == '/' || write.ch == '\\' ||
+                    write.ch == 176 || write.ch == 177 || write.ch == 219) {
                 rows[y][x] = static_cast<char>(write.ch);
                 continue;
             }
