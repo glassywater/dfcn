@@ -525,6 +525,7 @@ std::vector<Match> dfhack_auxiliary_matches;
 #include "dfhack_mass_remove.inc"
 #include "dfhack_quickfort.inc"
 #include "dfhack_teleport.inc"
+#include "dfhack_trade_goods.inc"
     // Ownership prevents generic rules from translating isolated help words
     // or key names. Unmapped source remains native until its complete entry
     // is supplied; no incomplete sentence is drawn or silently discarded.

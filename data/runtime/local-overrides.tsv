@@ -11316,3 +11316,7 @@ Uniform name: Flexible Crossbow	灵活十字弩	l
 Uniform name: Flex Crossbow	灵活十字弩	l
 Uniform name: Updated Metal Melee	改良金属甲近战	l
 
+# Counted room-creation feedback is a complete native row. Numeric templates
+# retain the count even when the popup uses a one-cell left indent.
+{d} bedrooms created.	已创建{d1}间卧室。	wtl
+{d} dormitories created.	已创建{d1}间公共宿舍。	wtl

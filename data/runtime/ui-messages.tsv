@@ -916,9 +916,10 @@ Click in the play area to paint the burrow.	在游戏区域中点击，涂画活
 Auto-dumping is not required.	不必设置自动倾倒。
 Set the draw direction below.	在下方设置升起方向。
 Select another rectangle to continue.	选择另一个矩形以继续。
-# Room creation feedback is a complete message; matching only the room name
-# leaves the success suffix in English.
+# Singular room creation feedback is a complete message; matching only the
+# room name leaves the success suffix in English.
 Bedroom created.	卧室已创建。
+Dormitory created.	公共宿舍已创建。
 # Room selection joins the furniture name to a rejection reason (Windows
 # native string data near file offset 0x162EFF3). Match the complete warning
 # before the unrelated psychological sense of "rejected".

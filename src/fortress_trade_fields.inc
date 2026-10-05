@@ -207,6 +207,7 @@ void Overlay::append_fortress_trade_fields(std::vector<std::string> &rows,
             int end = name_right;
             while (end > left && context[y][end - 1] == ' ') --end;
             std::string complete = context[y].substr(left, end - left);
+            std::optional<NativeTradeItemCaption> native_item;
             bool recovered = false;
             for (const auto &layer : draw_layers) {
                 for (const auto &draw : layer) {
@@ -216,8 +217,10 @@ void Overlay::append_fortress_trade_fields(std::vector<std::string> &rows,
                     if (!current_draw(draw, left, y, visible_end)) continue;
                     recovered = true;
                     end = visible_end;
-                    complete = draw.complete_source.empty() ? draw.source : draw.complete_source;
-                    if (draw.complete_source.empty())
+                    native_item = draw.trade_item_caption;
+                    complete = native_item ? native_item->source
+                        : draw.complete_source.empty() ? draw.source : draw.complete_source;
+                    if (!native_item && draw.complete_source.empty())
                         for (const auto &capture : clipped)
                             if (capture.x == left && capture.y == y &&
                                     capture.visible == draw.source) {
@@ -240,7 +243,8 @@ void Overlay::append_fortress_trade_fields(std::vector<std::string> &rows,
                     break;
                 }
             append(left, y, end, left, name_right - 1,
-                translate_fortress_item_caption(complete), false, std::nullopt,
+                native_item ? translate_native_trade_item_caption(*native_item)
+                    : translate_fortress_item_caption(complete), false, std::nullopt,
                 {}, complete, true);
             checkbox += 2;
         }

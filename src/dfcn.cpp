@@ -56,6 +56,7 @@
 #include "native_performance_choice.h"
 #include "native_unit_identity.h"
 #include "native_adventure_charge.h"
+#include "native_trade_item_caption.h"
 #include "core_api.h"
 #include "runtime_paths.h"
 #include "english_character_names.h"
@@ -1942,6 +1943,8 @@ struct NativeDrawnTextRow {
     // Keep a proven pre-shortening source with its actual draw. Retained
     // logical frames can outlive the clipping registry's capture epoch.
     std::string complete_source{};
+    // The trade formatter supplies the actual item, before name clipping.
+    std::optional<NativeTradeItemCaption> trade_item_caption{};
     // Bound to the formatter's actual NativeString owner before clipping.
     // This remains distinct even when a custom name equals a RAW label.
     std::optional<std::string> unit_identity_target{};
@@ -2524,7 +2527,8 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         std::optional<NativeFortressLaborCaption> fortress_labor_caption = std::nullopt,
         NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None,
         uintptr_t native_caller = 0,
-        std::optional<std::string> squad_alias_target = std::nullopt) {
+        std::optional<std::string> squad_alias_target = std::nullopt,
+        std::optional<NativeTradeItemCaption> trade_item_caption = std::nullopt) {
     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
     const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
     if (original_epoch && original_epoch != epoch) return;
@@ -2631,6 +2635,8 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         row.native_caller = native_caller;
         row.fortress_labor_caption = std::move(fortress_labor_caption);
         if (row.fortress_labor_caption) row.caption_source = true;
+        row.trade_item_caption = std::move(trade_item_caption);
+        if (row.trade_item_caption) row.caption_source = true;
         row.mission_title = mission_title;
         row.mission_title_right = mission_title_right;
         row.map_hover = map_hover;
@@ -3479,6 +3485,8 @@ private:
     std::optional<std::string> translate_fortress_item_caption(
         std::string_view source, bool relationship = false,
         bool building_material = false) const;
+    std::optional<std::string> translate_native_trade_item_caption(
+        const NativeTradeItemCaption &item) const;
     mutable std::unordered_map<std::string, std::optional<std::string>>
         fortress_item_caption_cache_;
     mutable std::deque<std::string> fortress_item_caption_order_;
@@ -21047,6 +21055,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "announcement_combat.inc"
 #include "announcement_translation.inc"
 #include "fortress_item_captions.inc"
+#include "fortress_trade_item_semantics.inc"
 #include "fortress_ammunition.inc"
 #include "fortress_schedule_editor.inc"
 #include "color_picker.inc"
@@ -30159,13 +30168,38 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
         {
             std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
             for (const auto &draw : g_native_drawn_text_rows) {
-                if (!draw.picture_frame || std::abs(draw.y - hash_y) > 3) continue;
+                if ((!draw.picture_frame && !draw.trade_item_caption) ||
+                        std::abs(draw.y - hash_y) > 3) continue;
                 for (const unsigned char ch : draw.source) {
                     hash ^= ch;
                     hash *= 1099511628211ULL;
                 }
                 hash ^= static_cast<uint64_t>(draw.x);
                 hash *= 1099511628211ULL;
+                if (draw.trade_item_caption) {
+                    const auto &item = *draw.trade_item_caption;
+                    for (const auto value : {item.id, item.type, item.subtype,
+                            item.material, item.material_index, item.count,
+                            item.quality, item.wear,
+                            static_cast<int32_t>(item.flags),
+                            static_cast<int32_t>(item.flags2),
+                            static_cast<int32_t>(item.left),
+                            static_cast<int32_t>(item.right),
+                            static_cast<int32_t>(item.semantic_name)}) {
+                        hash ^= static_cast<uint32_t>(value);
+                        hash *= 1099511628211ULL;
+                    }
+                    for (const auto *part : {&item.source, &item.raw_name,
+                            &item.raw_adjective, &item.size_adjective, &item.material_prefix,
+                            &item.material_state}) {
+                        for (const unsigned char ch : *part) {
+                            hash ^= ch;
+                            hash *= 1099511628211ULL;
+                        }
+                        hash ^= 0xff;
+                        hash *= 1099511628211ULL;
+                    }
+                }
             }
         }
         return hash;

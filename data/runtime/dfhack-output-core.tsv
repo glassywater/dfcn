@@ -2064,3 +2064,63 @@ DFHack GUI Notification banner: {d} mins ago	{d} 分钟前	l
 
 # gui/sitemap.lua: complete two-row toolbar hint, separate from its hotkey.
 DFHack GUI Toolbar hint: Open the general search and zoom interface.	打开通用搜索与定位界面。	l
+
+# internal/caravan/movegoods.lua and common.lua: authored trade-goods captions and options.
+DFHack GUI Trade goods: Move goods to/from depot	搬运货物进出贸易站	l
+DFHack GUI Trade goods: DFHack move trade goods	DFHack 搬运贸易货物	l
+DFHack GUI Trade goods: Sort by:	排序依据：	l
+DFHack GUI Trade goods: Search:	搜索：	l
+DFHack GUI Trade goods: dist	距离	l
+DFHack GUI Trade goods: value	价值	l
+DFHack GUI Trade goods: qty	数量	l
+DFHack GUI Trade goods: name	名称	l
+DFHack GUI Trade goods: depot	贸易站	l
+DFHack GUI Trade goods: Min condition:	最低完好度：	l
+DFHack GUI Trade goods: Max condition:	最高完好度：	l
+DFHack GUI Trade goods: Tattered	破烂	l
+DFHack GUI Trade goods: Frayed	破损	l
+DFHack GUI Trade goods: Worn	磨损	l
+DFHack GUI Trade goods: Pristine	完好无损	l
+DFHack GUI Trade goods: Min quality:	最低品质：	l
+DFHack GUI Trade goods: Max quality:	最高品质：	l
+DFHack GUI Trade goods: Ordinary	普通	l
+DFHack GUI Trade goods: Well Crafted	精工	l
+DFHack GUI Trade goods: Fine Crafted	精良	l
+DFHack GUI Trade goods: Superior	优质	l
+DFHack GUI Trade goods: Exceptional	杰出	l
+DFHack GUI Trade goods: Masterful	大师之作	l
+DFHack GUI Trade goods: Artifact	神器	l
+DFHack GUI Trade goods: Min value:	最低价值：	l
+DFHack GUI Trade goods: Max value:	最高价值：	l
+DFHack GUI Trade goods: Max	不限	l
+DFHack GUI Trade goods: Hide forbidden items:	隐藏禁用物品：	l
+DFHack GUI Trade goods: Item origins:	物品产地：	l
+DFHack GUI Trade goods: All	全部	l
+DFHack GUI Trade goods: Fort-made only	仅本地制造	l
+DFHack GUI Trade goods: Foreign-made only	仅外地制造	l
+DFHack GUI Trade goods: Merchant export agreements:	商队出口协议：	l
+DFHack GUI Trade goods: [details]	[详情]	l
+DFHack GUI Trade goods: Show only requested items:	仅显示协议需求物品：	l
+DFHack GUI Trade goods: Price agreement for exported items	出口物品价格协议	l
+DFHack GUI Trade goods: Merchant ethical restrictions:	商队伦理限制：	l
+DFHack GUI Trade goods: Animals, Trees	动物、树木	l
+DFHack GUI Trade goods: Animals	动物	l
+DFHack GUI Trade goods: Trees	树木	l
+DFHack GUI Trade goods: Show only ethically acceptable items	仅显示符合伦理的物品	l
+DFHack GUI Trade goods: Ignore ethical restrictions	忽略伦理限制	l
+DFHack GUI Trade goods: Show only ethically unacceptable items	仅显示违背伦理的物品	l
+DFHack GUI Trade goods: Include mixed bins	包含混装箱	l
+DFHack GUI Trade goods: Exclude mixed bins	排除混装箱	l
+DFHack GUI Trade goods: Items banned by export mandates:	禁止出口的物品：	l
+DFHack GUI Trade goods: Additional items at risk of mandates:	可能被禁运的其他物品：	l
+DFHack GUI Trade goods: Hide banned and risky items	隐藏禁运及风险物品	l
+DFHack GUI Trade goods: Hide banned items	隐藏禁运物品	l
+DFHack GUI Trade goods: Ignore mandate restrictions	忽略禁运限制	l
+DFHack GUI Trade goods: None	无	l
+DFHack GUI Trade goods: Yes	是	l
+DFHack GUI Trade goods: No	否	l
+DFHack GUI Trade goods: Total value of items marked for trade:	已标记贸易物品总价值：	l
+DFHack GUI Trade goods: Click to mark/unmark for trade. Shift click to mark/unmark a range of items.	点击标记或取消贸易物品；Shift+点击可批量标记或取消。	l
+DFHack GUI Trade goods: Select all/none	全选／全不选	l
+DFHack GUI Trade goods: Group items:	合并同类物品：	l
+DFHack GUI Trade goods: Inside containers:	显示容器内物品：	l
