@@ -165,6 +165,7 @@ std::optional<NativeTextCard> Overlay::capture_map_hover_card(
                         ui_settings->classic)) continue;
             } else if (!fortress && !floating_border(right, top, 2)) continue;
             bool closed = true;
+            bool fortress_join = false;
             for (int x = left + 1; x < right; ++x)
                 if (!border(x, top, 1) && !border(x, top, 7)) {
                     // The attached renderer leaves this band to the HUD.
@@ -198,6 +199,7 @@ std::optional<NativeTextCard> Overlay::capture_map_hover_card(
                     const unsigned char ch = visible_char_at(x, top);
                     closed = !ch || ch == ' ';
                 }
+                fortress_join = closed;
             }
             if (!closed) continue;
             // Adventure spoor appends direction/party ownership after sizing
@@ -239,17 +241,18 @@ std::optional<NativeTextCard> Overlay::capture_map_hover_card(
                 // skin, with its entire visible top and both sides intact.
                 // The generic border reader also accepts ordinary panels
                 // and classic map glyphs; those cannot prove a clipped card.
-                if (fortress || !ui_settings) continue;
+                if (!ui_settings) continue;
                 const auto &skin = native_texture_hover_rectangle(*gps_);
                 const auto hover_border = [&](int x, int y, int part) {
                     return native_ui_skin_at(*gps_, x, y,
                         skin[part % 3][part / 3], ui_settings->classic);
                 };
-                // The paired arena joins and their HUD band were established
-                // above; a clipped bottom does not turn them into NW/NE.
-                closed = arena_join ||
+                // The attached joins and their current HUD connection were
+                // established above. A long fortress item stack can clip its
+                // bottom too; it still owns complete rows at the same margin.
+                closed = arena_join || fortress_join ||
                     (hover_border(left, top, 0) && hover_border(right, top, 2));
-                for (int x = left + 1; closed && !arena_join && x < right; ++x)
+                for (int x = left + 1; closed && !arena_join && !fortress_join && x < right; ++x)
                     closed = hover_border(x, top, 1);
                 for (int y = top + 1; closed && y < bottom; ++y)
                     closed = hover_border(left, y, 3) && hover_border(right, y, 5);
