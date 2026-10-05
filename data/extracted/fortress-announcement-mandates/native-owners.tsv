@@ -1,0 +1,27 @@
+edition	image_identity	image_path	constructor	function_start	function_end	instruction	literal_address	text
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	demand-change	0x14134ac10	0x14134bb1c	0x14134ad01	0x141782568	 has forgotten a demand.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	demand-change	0x14134ac10	0x14134bb1c	0x14134b8c6	0x1417825d8	 has a new demand.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3c5cd	0x14172df90	 has ended a mandate.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3c7a6	0x14172e1c0	A mandate has ended.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	mandate-create	0x14134de20	0x14134eb2e	0x14134e751	0x141782428	 has mandated the construction of certain goods.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	mandate-create	0x14134de20	0x14134eb2e	0x14134e760	0x1417825b0	 has imposed a ban on certain exports.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	mandate-create	0x14134de20	0x14134eb2e	0x14134e9a0	0x141782400	 has altered the prices of goods.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	mandate-expire	0x1413b2a30	0x1413b2c1f	0x1413b2b09	0x141784e90	's mandate has ended.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	mandate-expire	0x1413b2a30	0x1413b2c1f	0x1413b2b29	0x141784ed0	's mandates have ended.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b596d2	0x1416d5ff8	nobody to punish for failed mandate
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59702	0x1416d5fa0	mandate ignored
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5970e	0x1416d5ef8	mandate only partially completed
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59762	0x1416d5ec8	mandate was obeyed
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	demand-change	0x141345b80	0x141346a8c	0x141345c71	0x14177d5f0	 has forgotten a demand.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	demand-change	0x141345b80	0x141346a8c	0x141346836	0x14177d5d8	 has a new demand.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	mandate-cancel	0x140e34880	0x140e3ad58	0x140e3753d	0x141729cc0	 has ended a mandate.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	mandate-cancel	0x140e34880	0x140e3ad58	0x140e37716	0x141729ef0	A mandate has ended.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	mandate-create	0x141348d90	0x141349a9e	0x1413496c1	0x14177d610	 has mandated the construction of certain goods.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	mandate-create	0x141348d90	0x141349a9e	0x1413496d0	0x14177d648	 has imposed a ban on certain exports.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	mandate-create	0x141348d90	0x141349a9e	0x141349910	0x14177d688	 has altered the prices of goods.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	mandate-expire	0x1413ad9a0	0x1413adb8f	0x1413ada79	0x14177eaf0	's mandate has ended.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	mandate-expire	0x1413ad9a0	0x1413adb8f	0x1413ada99	0x14177ead8	's mandates have ended.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56712	0x1416d0da8	nobody to punish for failed mandate
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56742	0x1416d0d38	mandate ignored
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5674e	0x1416d0d80	mandate only partially completed
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b567a2	0x1416d0c90	mandate was obeyed

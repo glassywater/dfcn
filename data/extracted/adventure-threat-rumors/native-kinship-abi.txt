@@ -1,0 +1,257 @@
+Native adventure threat kinship: owning frame and real historical figures
+=======================================================================
+
+This is a reconstruction of the already extracted native instructions, not
+a relationship rule table, test, simulated memory record or alternate
+genealogy resolver. All addresses are configured reference-image VAs.
+The source functions for both images are saved in this directory.
+
+Owning call and ABI
+------------------
+
+0x140688ee6: R8 = R12 (complete speech NativeString output)
+0x140688ee9: RDX = [R13+0x10] (target historical_figure pointer)
+0x140688eed: RCX = RDI (speaker unit pointer restored from saved original RCX)
+0x140688ef0: call 0x14065bfb0
+
+65bfb0 is details(unit *speaker, historical_figure *target, string *output).
+Its frame saves:
+    [RBP+0x10] = speaker unit       (65bfeb)
+    [RBP+0x50] = target HF          (65bfe7)
+    [RBP-0x80] = output string      (65bfe0)
+    R12 = target HF until the grouped-loss loop temporarily reuses it.
+          65d8bf restores R12 from [RBP+0x50] after that loop.
+
+With entry RSP=S, seven pushed registers give RSP=S-0x38; LEA RBP,[RSP-0x110]
+sets RBP=S-0x148; SUB RSP,0x210 gives working RSP=S-0x248. Therefore
+RBP=working RSP+0x100. A CALL-entered relay is another eight bytes below
+the working frame, while RBP remains the stable owner-frame pointer.
+
+Speaker actual HF id is int32 [speaker unit+0xc30]. Native source uses
+b530b0(world+..., speaker hfid, speaker unit+0x1274 cache) at 65cf58/65d1d4.
+Resolve that id with the existing native_history_find_subject, as the
+character sheet capture already does; do not infer a subject from a name.
+Historical figure id is int32 [HF+0xe0]. Its family links are in native
+HF+0x118, read by the existing native_character_kinship_term resolver.
+
+Native formatter ABI at 0x14075a580
+---------------------------------
+
+    ECX/CX = int16 native relationship enum
+    RDX = NativeString *output
+    R8B = bool article
+    R9B = bool plural
+
+The formatter only emits a label from the enum. The surrounding owner
+has the actual subject/relative identity needed to reuse the existing
+memory-backed social/character-sheet resolver.
+
+1. Direct named murder victim, call 0x14065d28f
+---------------------------------------------
+
+RDI is the victim historical_figure pointer. It was found by event+0x28
+victim id against the world's HF collection at 65d119..65d182. Its actual
+id is [RDI+0xe0]. Native source obtains the speaker's family vectors with
+bb37d0 at 65d1f3, then matches this victim id in the returned int32 vector.
+
+At the formatter call:
+    speaker unit = [RBP+0x10]
+    victim HF = RDI; victim id = int32 [RDI+0xe0]
+    family ids int32 vector = frame+0xc8 (begin +c8/end +d0/capacity +d8)
+    parallel family enum int16 vector = frame-0x50 (-50/-48/-40)
+    EBX = matched parallel index
+    ECX = uint16 [ enum_vector.begin + EBX*2 ]
+    RDX = frame+0xa8 temporary string
+    R8=0, R9=0 (no article, singular)
+
+An existing NativeCall relay can pass the native frame and victim in
+otherwise-zero argument registers:
+    MOV R8,RBP; MOV R9,RDI
+    bytes: 49 89 e8 49 89 f9
+The capture wrapper must call the original formatter with article=false,
+plural=false, retaining the native output/lifetime. The actual Chinese
+caption comes from the common native_character_kinship_term(subjectHF,
+victimHF, enum), with its existing shared fallback policy.
+
+2. Grouped murder losses, call 0x14065d97e
+-----------------------------------------
+
+The owner accumulates generic native enum groups from real victim event
+ids at 65d620..65d8b9. At the formatter call:
+    speaker unit = [RBP+0x10]
+    target HF = [RBP+0x50]
+    RBX = current group index, visited from the last inserted group backwards
+    R13 = group enum int16 vector begin, stored at frame-0x50
+    RDI = parallel int32 group count vector begin, stored at frame+0xc8
+    ECX = uint16 [R13+RBX*2]
+    RDX = frame+0xa8 temporary string
+    R8=0; R9B=([RDI+RBX*4] > 1)
+
+Stable frame vectors during this call:
+    frame+0x30: known murder event* vector (begin+30/end+38/capacity+40)
+    frame+0x18: speaker family HFid int32 vector (+18/+20/+28)
+    frame+0x70: parallel speaker family enum int16 vector (+70/+78/+80)
+    frame-0x50: group enum int16 vector (-50/-48/-40)
+    frame+0xc8: parallel group count int32 vector (+c8/+d0/+d8)
+
+Each known event's int32 victim HFid is at event+0x28. The original owner
+visits the known event vector in reverse, matches the id in family_ids,
+and assigns it to the corresponding parallel family enum. Thus the exact
+HF list for a selected group is recovered from these native vectors,
+without matching English names or guessing relationships from "cousins".
+Anonymous race/caste kill totals do not contribute family identities.
+
+Relay arguments may be:
+    MOV R8,RBP; MOV R9,RBX
+    bytes: 49 89 e8 49 89 d9
+The wrapper can read the group's actual count from frame+0xc8, preserve
+the original plural boolean when calling 75a580, and read all the group's
+victim HFids while the frame is alive. Each victim must separately reuse
+native_character_kinship_term(subjectHF, victimHF, native enum). One native
+generic group may contain several distinct Chinese kinship captions;
+do not assign the first victim's precise caption to every member.
+
+3. Villain who is the speaker's relative, call 0x14065dfe8
+--------------------------------------------------------
+
+65db27..65db6d matches target HF+0xe0 in the first speaker family HFid
+vector. EBX is that matching index and remains unchanged through 65dfd0.
+At the formatter call:
+    speaker unit = [RBP+0x10]
+    target HF = R12 = [RBP+0x50]
+    target id = int32 [R12+0xe0]
+    family ids int32 vector = frame+0x18 (+18/+20/+28)
+    parallel family enum int16 vector = frame+0x70 (+70/+78/+80)
+    EBX = matched target-relative index
+    ECX = uint16 [ family_enum_vector.begin + EBX*2 ]
+    RDX = frame+0xa8 temporary string
+    R8=0, R9=0 (no article, singular)
+
+Relay arguments may be:
+    MOV R8,RBP; MOV R9,R12
+    bytes: 49 89 e8 4d 89 e1
+The wrapper restores article=false/plural=false for the original call and
+uses the existing memory-backed kinship resolver on speakerHF/targetHF.
+
+Edition relocation
+------------------
+
+Configured classic mappings, from the complete extraction:
+    0x14065bfb0..0x14065e928 -> 0x1406599d0..0x14065c348
+    0x1406878f0..0x140688fa6 -> 0x140685310..0x1406869c6
+    0x14075a580..0x14075ab80 -> 0x140757fa0..0x1407585a0 (already bound)
+    direct victim call:  0x14065d28f -> 0x14065acaf
+    grouped loss call:   0x14065d97e -> 0x14065b39e
+    related fiend call:  0x14065dfe8 -> 0x14065ba08
+    details owner call:  0x140688ef0 -> 0x140686910
+
+Use native_reference_calls and the existing NativeCallHook installation
+path for reference/classic binding, capture ownership and callback lifetime.
+Do not add a separate kinship translation table or genealogy algorithm.
+
+Exact configured PE code bytes (same bytes in both editions)
+----------------------------------------------------------
+
+    details entry 65bfb0 / 6599d0: 48 89 5c 24 20
+    label entry   75a580 / 757fa0: 48 89 5c 24 08
+    call 65d28f / 65acaf: e8 ec d2 0f 00
+    call 65d97e / 65b39e: e8 fd cb 0f 00
+    call 65dfe8 / 65ba08: e8 93 c5 0f 00
+    call 688ef0 / 686910: e8 bb 30 fd ff
+
+The existing shared ChildRelation wrapper declares a void-return original
+function. Native 75a580 does not establish a dedicated return value before
+returning; callers consume the output string, not a returned pointer.
+
+Existing report metadata and non-read-only owner
+-----------------------------------------------
+
+The current generated f_report layout stores year+0x54, time+0x58,
+activity_id+0x5c, activity_event_id+0x60, speaker_id+0x64, pool_id+0x68.
+It has no unit1/unit2/target-HF field. speaker_id supplies a real speaker
+unit id, but target HF must be captured from the native speech owner or
+resolved from the actual native activity/speech ownership metadata.
+Name text, year, time or unrelated id slots cannot prove target identity.
+
+65bfb0 is not a pure formatting function suitable for a read-only replay.
+In addition to local/output writes, 65da50..65db25 visits the collected
+event objects and clears bit0 in event+0x10's pointed flag bytes using
+AND byte [flags],0xfe. Such native event writes must not be presented as
+a read-only rebuild of an old report. The material selection at
+65e2e6..65e4fd is a deterministic maximum-ratio traversal and has no direct
+RNG call, but that does not remove the owner function's event writes.
+Capture the actual original calls and their real subjects instead.
+
+Read-only native family producer for existing report ownership
+------------------------------------------------------------
+
+The full native family producer is also extracted for both images:
+    reference bb37d0..bb6b67
+    classic   bb0810..bb3ba7
+Its ABI is void(HF *subject RCX, int32-vector *ids RDX,
+                int16-vector *relations R8, MSVC-bool-vector *misc R9).
+The producer appends to those supplied containers; initialize all three
+to zero before calling. IDs and relations are ordinary 24-byte native
+vectors. The fourth is 32-byte MSVC vector<bool>: three pointers for its
+uint32 storage at +0/+8/+0x10 and a bit count at +0x18. Native insert/erase
+uses (word pointer, bit index) iterators with index>>5 and index&31.
+
+This producer reads world HF pointers/ids, parent/spouse/child link getters,
+birth/sex/race fields, and writes only the supplied output containers and
+its own temporary containers. For example bb54a1..bb554f's apparent HF
+pointer stores append to local vector collections, not to the referenced
+historical figures. bb67f5/bb6811/bb68c1/bb68dd memmoves remove elements
+from the supplied output vectors; 464320 erases the corresponding output
+bool entry. No event scratch flags or RNG are used. b98d30 is the read-only
+first matching family-link id getter; 67dc0 is the read-only HF lookup;
+e35c0 is a bounds-checked read-only RAW race/caste bit getter. Their complete
+native sources are saved beside the producer.
+
+Native cleanup:
+    6f750 (classic 6f6e0) frees native 32-bit storage using capacity-begin
+    rounded to a four-byte span and resets its three pointers to zero.
+    It is suitable for the int32 ID vector and the bool-vector's underlying
+    uint32 storage; the latter's extra bit-count field is caller-owned.
+    6f7b0 (classic 6f740) frees the int16 vector and clears its three pointers.
+Alternatively, the original owner manually calls 070790(begin,
+capacity-begin bytes) for IDs at 65d373..65d389. Use native cleanup, not an
+allocator from the injected module, on the native producer's allocations.
+
+Read-only native membership predicate for the known-victim filter
+----------------------------------------------------------------
+
+    bool bea5e0(HF *victim RCX, entity_id int32 EDX, bool R8B)
+    reference bea5e0..bea6c1; classic be7620..be7701
+
+In the threat owner, r13 is speakerHF and r14 is victimHF at 65c13f..65c19a:
+iterate speakerHF+0xe8 entity links, keep getType()==0, read entity id at
+link+8, and call bea5e0(victimHF, speakerEntityID, false). The predicate first
+calls bea470 (classic be74b0), then reads the looked-up entity's parent links
+(entity+0xb8/+0xc0, type0, parent id+4) and applies the direct predicate.
+
+bea470 reads victimHF+0xe8 entity links and victimHF+0x130 -> +0x58 known
+membership-count records. b9dc0 performs a read-only record search; babe0
+performs a read-only int32-vector search and writes only the caller's local
+optional result. Both predicate owners have no world-object writes or RNG.
+Do not reverse speaker/victim or replace the native membership semantics
+with a new independently implemented entity-membership classification.
+
+Native build coordinate discovery for the new hooks
+--------------------------------------------------
+
+tools/build.py includes every src .h/.inc/.cpp file in the normal PE-binding
+generator's inputs. A new native_announcement_kinship.inc triggers its
+needs_update path without a separate command. native_pe_coordinates.py
+collect_required_coordinates selects Windows source and recognizes:
+    native_pe_bytes(0x65bfb0,prefix): the five-byte entry prefix resource
+    native_pe_address(base,0x52e360): the cardinal entry resource
+    NativeCall {site,target,reinterpret_cast(capture_...)}:
+        five-byte sites 65d28f/65d97e/65dfe8 and target 75a580
+The ordinary generator pairs actual PE unwind ranges and complete normalized
+instruction shapes. A packed switch table can prevent a full shape match;
+pe_instruction_match then binds the unchanged instruction blocks within
+the paired real owners. It re-disassembles an owner with the fixed objdump
+when cached rows do not cover it, so adding a new source coordinate does
+not require manually deleting the image cache. Missing required continuous
+spans fail generation explicitly. No standalone generator or extra check
+is needed for these existing recognized lexical hook forms.

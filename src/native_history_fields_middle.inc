@@ -307,6 +307,9 @@ case 68: { // change_hf_body_state, RVA b76120
     captured = field("histfig", 0x28, 'n') && field("body_state", 0x2c, 0, 1) &&
         field("site", 0x30, 's') && field("structure", 0x34) &&
         field("region", 0x38, 'r') && field("layer", 0x3c, 'u');
+    // b761b4 sign-extends this byte before selecting the seven states.
+    if (captured) fields.at("body_state").front() =
+        static_cast<int8_t>(fields.at("body_state").front());
     if (captured && fields.at("site").front() >= 0 && fields.at("structure").front() >= 0)
         captured = native_history_structure_reference(result,
             fields.at("site").front(), fields.at("structure").front());

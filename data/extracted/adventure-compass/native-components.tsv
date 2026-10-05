@@ -1,0 +1,179 @@
+edition	image_identity	role	instruction_rva	literal_rva	source
+steam	PE:6a70a6d9:02711000	bearing	0x7f5762	0x163b8fc	north
+steam	PE:6a70a6d9:02711000	bearing	0x7f576e	0x16ae778	north-northeast
+steam	PE:6a70a6d9:02711000	bearing	0x7f5777	0x1646bf8	northeast
+steam	PE:6a70a6d9:02711000	bearing	0x7f5780	0x16ae768	east-northeast
+steam	PE:6a70a6d9:02711000	bearing	0x7f5789	0x163b8f4	east
+steam	PE:6a70a6d9:02711000	bearing	0x7f5792	0x16ae710	east-southeast
+steam	PE:6a70a6d9:02711000	bearing	0x7f579b	0x1646b88	southeast
+steam	PE:6a70a6d9:02711000	bearing	0x7f57a4	0x16ae700	south-southeast
+steam	PE:6a70a6d9:02711000	bearing	0x7f57ad	0x163b8ec	south
+steam	PE:6a70a6d9:02711000	bearing	0x7f57b6	0x16ae730	south-southwest
+steam	PE:6a70a6d9:02711000	bearing	0x7f57bf	0x1646b78	southwest
+steam	PE:6a70a6d9:02711000	bearing	0x7f57c8	0x16ae720	west-southwest
+steam	PE:6a70a6d9:02711000	bearing	0x7f57d1	0x163b834	west
+steam	PE:6a70a6d9:02711000	bearing	0x7f57da	0x16ae8a8	west-northwest
+steam	PE:6a70a6d9:02711000	bearing	0x7f57e3	0x1646be8	northwest
+steam	PE:6a70a6d9:02711000	bearing	0x7f57ec	0x16ae898	north-northwest
+steam	PE:6a70a6d9:02711000	site-kind	0x10cbea5	0x164c400	fortress
+steam	PE:6a70a6d9:02711000	site-kind	0x10cbebc	0x1749898	mountain halls
+steam	PE:6a70a6d9:02711000	site-kind	0x10cbed1	0x17498a8	hillocks
+steam	PE:6a70a6d9:02711000	site-kind	0x10cbf03	0x17498b4	pits
+steam	PE:6a70a6d9:02711000	site-kind	0x10cbf0d	0x164c400	fortress
+steam	PE:6a70a6d9:02711000	site-kind	0x10cbf28	0x164c3ac	cave
+steam	PE:6a70a6d9:02711000	site-kind	0x10cbf3d	0x17498c0	forest retreat
+steam	PE:6a70a6d9:02711000	site-kind	0x10cbf6f	0x17498d0	hamlet
+steam	PE:6a70a6d9:02711000	site-kind	0x10cbf79	0x1646c04	town
+steam	PE:6a70a6d9:02711000	site-kind	0x10cbfbb	0x162c6ec	shrine
+steam	PE:6a70a6d9:02711000	site-kind	0x10cbfd0	0x17498d8	labyrinth
+steam	PE:6a70a6d9:02711000	site-kind	0x10cbfe5	0x16761e0	lair
+steam	PE:6a70a6d9:02711000	site-kind	0x10cc01c	0x1749a3c	castle
+steam	PE:6a70a6d9:02711000	site-kind	0x10cc031	0x1619950	fort
+steam	PE:6a70a6d9:02711000	site-kind	0x10cc046	0x1749a30	monastery
+steam	PE:6a70a6d9:02711000	site-kind	0x10cc05b	0x1712194	tower
+steam	PE:6a70a6d9:02711000	site-kind	0x10cc09d	0x1749a48	mysterious palace
+steam	PE:6a70a6d9:02711000	site-kind	0x10cc0b7	0x1749a60	mysterious dungeon
+steam	PE:6a70a6d9:02711000	site-kind	0x10cc0cc	0x1749a78	mysterious lair
+steam	PE:6a70a6d9:02711000	site-kind	0x10cc0e1	0x1747938	vault
+steam	PE:6a70a6d9:02711000	site-kind	0x10cc0f6	0x162fa4c	tomb
+steam	PE:6a70a6d9:02711000	site-kind	0x10cc111	0x1749a88	monument
+steam	PE:6a70a6d9:02711000	site-kind	0x10cc120	0x1749a94	camp
+steam	PE:6a70a6d9:02711000	site-kind	0x10cc135	0x1749aa0	important location
+steam	PE:6a70a6d9:02711000	site-kind	0x10cc14a	0x1675868	site
+steam	PE:6a70a6d9:02711000	popup	0x7f5490	0x15ed9bc	The 
+steam	PE:6a70a6d9:02711000	popup	0x7f54cb	0x15e873c	 
+steam	PE:6a70a6d9:02711000	popup	0x7f556c	0x15eb518	 of 
+steam	PE:6a70a6d9:02711000	popup	0x7f55c2	0x15fd6a8	 are 
+steam	PE:6a70a6d9:02711000	popup	0x7f55cb	0x15f71e4	 is 
+steam	PE:6a70a6d9:02711000	popup	0x7f56cd	0x1646cc4	here
+steam	PE:6a70a6d9:02711000	popup	0x7f56ed	0x164bfbc	far
+steam	PE:6a70a6d9:02711000	popup	0x7f56fb	0x16aea18	a day's travel
+steam	PE:6a70a6d9:02711000	popup	0x7f5709	0x16aea00	nearly a day's travel
+steam	PE:6a70a6d9:02711000	popup	0x7f5717	0x16ae750	a half day's travel
+steam	PE:6a70a6d9:02711000	popup	0x7f5724	0x16ae740	a short walk
+steam	PE:6a70a6d9:02711000	popup	0x7f5734	0x16737e0	 to the 
+steam	PE:6a70a6d9:02711000	popup	0x7f5762	0x163b8fc	north
+steam	PE:6a70a6d9:02711000	popup	0x7f576e	0x16ae778	north-northeast
+steam	PE:6a70a6d9:02711000	popup	0x7f5777	0x1646bf8	northeast
+steam	PE:6a70a6d9:02711000	popup	0x7f5780	0x16ae768	east-northeast
+steam	PE:6a70a6d9:02711000	popup	0x7f5789	0x163b8f4	east
+steam	PE:6a70a6d9:02711000	popup	0x7f5792	0x16ae710	east-southeast
+steam	PE:6a70a6d9:02711000	popup	0x7f579b	0x1646b88	southeast
+steam	PE:6a70a6d9:02711000	popup	0x7f57a4	0x16ae700	south-southeast
+steam	PE:6a70a6d9:02711000	popup	0x7f57ad	0x163b8ec	south
+steam	PE:6a70a6d9:02711000	popup	0x7f57b6	0x16ae730	south-southwest
+steam	PE:6a70a6d9:02711000	popup	0x7f57bf	0x1646b78	southwest
+steam	PE:6a70a6d9:02711000	popup	0x7f57c8	0x16ae720	west-southwest
+steam	PE:6a70a6d9:02711000	popup	0x7f57d1	0x163b834	west
+steam	PE:6a70a6d9:02711000	popup	0x7f57da	0x16ae8a8	west-northwest
+steam	PE:6a70a6d9:02711000	popup	0x7f57e3	0x1646be8	northwest
+steam	PE:6a70a6d9:02711000	popup	0x7f57ec	0x16ae898	north-northwest
+steam	PE:6a70a6d9:02711000	popup	0x7f57fc	0x15e85b4	.
+steam	PE:6a70a6d9:02711000	compass-list	0xafe6b0	0x16b11dc	***
+steam	PE:6a70a6d9:02711000	compass-list	0xafe723	0x16b11d8	Gui
+steam	PE:6a70a6d9:02711000	compass-list	0xafe775	0x16b11b0	N
+steam	PE:6a70a6d9:02711000	compass-list	0xafe7ab	0x16b1144	NNE
+steam	PE:6a70a6d9:02711000	compass-list	0xafe7e1	0x169f528	NE
+steam	PE:6a70a6d9:02711000	compass-list	0xafe817	0x16b1140	ENE
+steam	PE:6a70a6d9:02711000	compass-list	0xafe84d	0x16b114c	E
+steam	PE:6a70a6d9:02711000	compass-list	0xafe883	0x16b1148	ESE
+steam	PE:6a70a6d9:02711000	compass-list	0xafe8b9	0x169f530	SE
+steam	PE:6a70a6d9:02711000	compass-list	0xafe8ef	0x16b11e4	SSE
+steam	PE:6a70a6d9:02711000	compass-list	0xafe925	0x1670cd4	S
+steam	PE:6a70a6d9:02711000	compass-list	0xafe95b	0x16b11e0	SSW
+steam	PE:6a70a6d9:02711000	compass-list	0xafe991	0x169f52c	SW
+steam	PE:6a70a6d9:02711000	compass-list	0xafe9c7	0x16b11ec	WSW
+steam	PE:6a70a6d9:02711000	compass-list	0xafe9fd	0x16b11e8	W
+steam	PE:6a70a6d9:02711000	compass-list	0xafea33	0x16b11d4	WNW
+steam	PE:6a70a6d9:02711000	compass-list	0xafea69	0x169f524	NW
+steam	PE:6a70a6d9:02711000	compass-list	0xafea9f	0x16b11d0	NNW
+steam	PE:6a70a6d9:02711000	compass-list	0xafeb0e	0x16b10c0	Qst
+classic	PE:6a70b91c:0270a000	bearing	0x7f2fe2	0x1636a3c	north
+classic	PE:6a70b91c:0270a000	bearing	0x7f2fee	0x16a9a98	north-northeast
+classic	PE:6a70b91c:0270a000	bearing	0x7f2ff7	0x1641c68	northeast
+classic	PE:6a70b91c:0270a000	bearing	0x7f3000	0x16a9a88	east-northeast
+classic	PE:6a70b91c:0270a000	bearing	0x7f3009	0x1636a2c	east
+classic	PE:6a70b91c:0270a000	bearing	0x7f3012	0x16a9ba0	east-southeast
+classic	PE:6a70b91c:0270a000	bearing	0x7f301b	0x1641bf8	southeast
+classic	PE:6a70b91c:0270a000	bearing	0x7f3024	0x16a9b90	south-southeast
+classic	PE:6a70b91c:0270a000	bearing	0x7f302d	0x1636a44	south
+classic	PE:6a70b91c:0270a000	bearing	0x7f3036	0x16a9bc0	south-southwest
+classic	PE:6a70b91c:0270a000	bearing	0x7f303f	0x1641c78	southwest
+classic	PE:6a70b91c:0270a000	bearing	0x7f3048	0x16a9bb0	west-southwest
+classic	PE:6a70b91c:0270a000	bearing	0x7f3051	0x1636a34	west
+classic	PE:6a70b91c:0270a000	bearing	0x7f305a	0x16a9b28	west-northwest
+classic	PE:6a70b91c:0270a000	bearing	0x7f3063	0x1641c58	northwest
+classic	PE:6a70b91c:0270a000	bearing	0x7f306c	0x16a9b18	north-northwest
+classic	PE:6a70b91c:0270a000	site-kind	0x10c6e15	0x1647468	fortress
+classic	PE:6a70b91c:0270a000	site-kind	0x10c6e2c	0x17441c0	mountain halls
+classic	PE:6a70b91c:0270a000	site-kind	0x10c6e41	0x1744308	hillocks
+classic	PE:6a70b91c:0270a000	site-kind	0x10c6e73	0x1744300	pits
+classic	PE:6a70b91c:0270a000	site-kind	0x10c6e7d	0x1647468	fortress
+classic	PE:6a70b91c:0270a000	site-kind	0x10c6e98	0x1647414	cave
+classic	PE:6a70b91c:0270a000	site-kind	0x10c6ead	0x17442f0	forest retreat
+classic	PE:6a70b91c:0270a000	site-kind	0x10c6edf	0x17442e4	hamlet
+classic	PE:6a70b91c:0270a000	site-kind	0x10c6ee9	0x1641918	town
+classic	PE:6a70b91c:0270a000	site-kind	0x10c6f2b	0x1627ebc	shrine
+classic	PE:6a70b91c:0270a000	site-kind	0x10c6f40	0x17442d8	labyrinth
+classic	PE:6a70b91c:0270a000	site-kind	0x10c6f55	0x1671674	lair
+classic	PE:6a70b91c:0270a000	site-kind	0x10c6f8c	0x17442bc	castle
+classic	PE:6a70b91c:0270a000	site-kind	0x10c6fa1	0x16148bc	fort
+classic	PE:6a70b91c:0270a000	site-kind	0x10c6fb6	0x17442c8	monastery
+classic	PE:6a70b91c:0270a000	site-kind	0x10c6fcb	0x170d454	tower
+classic	PE:6a70b91c:0270a000	site-kind	0x10c700d	0x17442a8	mysterious palace
+classic	PE:6a70b91c:0270a000	site-kind	0x10c7027	0x17443c0	mysterious dungeon
+classic	PE:6a70b91c:0270a000	site-kind	0x10c703c	0x17443b0	mysterious lair
+classic	PE:6a70b91c:0270a000	site-kind	0x10c7051	0x1742290	vault
+classic	PE:6a70b91c:0270a000	site-kind	0x10c7066	0x162aa88	tomb
+classic	PE:6a70b91c:0270a000	site-kind	0x10c7081	0x17443a0	monument
+classic	PE:6a70b91c:0270a000	site-kind	0x10c7090	0x1744394	camp
+classic	PE:6a70b91c:0270a000	site-kind	0x10c70a5	0x1744380	important location
+classic	PE:6a70b91c:0270a000	site-kind	0x10c70ba	0x1670168	site
+classic	PE:6a70b91c:0270a000	popup	0x7f2d10	0x15e89c4	The 
+classic	PE:6a70b91c:0270a000	popup	0x7f2d4b	0x15e3720	 
+classic	PE:6a70b91c:0270a000	popup	0x7f2dec	0x15e64d0	 of 
+classic	PE:6a70b91c:0270a000	popup	0x7f2e42	0x15f8788	 are 
+classic	PE:6a70b91c:0270a000	popup	0x7f2e4b	0x15f2120	 is 
+classic	PE:6a70b91c:0270a000	popup	0x7f2f4d	0x1641950	here
+classic	PE:6a70b91c:0270a000	popup	0x7f2f6d	0x1646aec	far
+classic	PE:6a70b91c:0270a000	popup	0x7f2f7b	0x16a9b08	a day's travel
+classic	PE:6a70b91c:0270a000	popup	0x7f2f89	0x16a9af0	nearly a day's travel
+classic	PE:6a70b91c:0270a000	popup	0x7f2f97	0x16a9a70	a half day's travel
+classic	PE:6a70b91c:0270a000	popup	0x7f2fa4	0x16a9a60	a short walk
+classic	PE:6a70b91c:0270a000	popup	0x7f2fb4	0x166def8	 to the 
+classic	PE:6a70b91c:0270a000	popup	0x7f2fe2	0x1636a3c	north
+classic	PE:6a70b91c:0270a000	popup	0x7f2fee	0x16a9a98	north-northeast
+classic	PE:6a70b91c:0270a000	popup	0x7f2ff7	0x1641c68	northeast
+classic	PE:6a70b91c:0270a000	popup	0x7f3000	0x16a9a88	east-northeast
+classic	PE:6a70b91c:0270a000	popup	0x7f3009	0x1636a2c	east
+classic	PE:6a70b91c:0270a000	popup	0x7f3012	0x16a9ba0	east-southeast
+classic	PE:6a70b91c:0270a000	popup	0x7f301b	0x1641bf8	southeast
+classic	PE:6a70b91c:0270a000	popup	0x7f3024	0x16a9b90	south-southeast
+classic	PE:6a70b91c:0270a000	popup	0x7f302d	0x1636a44	south
+classic	PE:6a70b91c:0270a000	popup	0x7f3036	0x16a9bc0	south-southwest
+classic	PE:6a70b91c:0270a000	popup	0x7f303f	0x1641c78	southwest
+classic	PE:6a70b91c:0270a000	popup	0x7f3048	0x16a9bb0	west-southwest
+classic	PE:6a70b91c:0270a000	popup	0x7f3051	0x1636a34	west
+classic	PE:6a70b91c:0270a000	popup	0x7f305a	0x16a9b28	west-northwest
+classic	PE:6a70b91c:0270a000	popup	0x7f3063	0x1641c58	northwest
+classic	PE:6a70b91c:0270a000	popup	0x7f306c	0x16a9b18	north-northwest
+classic	PE:6a70b91c:0270a000	popup	0x7f307c	0x15e3574	.
+classic	PE:6a70b91c:0270a000	compass-list	0xafb6f0	0x16ac140	***
+classic	PE:6a70b91c:0270a000	compass-list	0xafb763	0x16ac13c	Gui
+classic	PE:6a70b91c:0270a000	compass-list	0xafb7b5	0x16ac210	N
+classic	PE:6a70b91c:0270a000	compass-list	0xafb7eb	0x16ac2d8	NNE
+classic	PE:6a70b91c:0270a000	compass-list	0xafb821	0x169a660	NE
+classic	PE:6a70b91c:0270a000	compass-list	0xafb857	0x16ac2d4	ENE
+classic	PE:6a70b91c:0270a000	compass-list	0xafb88d	0x16ac2e0	E
+classic	PE:6a70b91c:0270a000	compass-list	0xafb8c3	0x16ac2dc	ESE
+classic	PE:6a70b91c:0270a000	compass-list	0xafb8f9	0x169a668	SE
+classic	PE:6a70b91c:0270a000	compass-list	0xafb92f	0x16ac2c8	SSE
+classic	PE:6a70b91c:0270a000	compass-list	0xafb965	0x166c08c	S
+classic	PE:6a70b91c:0270a000	compass-list	0xafb99b	0x16ac2c4	SSW
+classic	PE:6a70b91c:0270a000	compass-list	0xafb9d1	0x169a664	SW
+classic	PE:6a70b91c:0270a000	compass-list	0xafba07	0x16ac2d0	WSW
+classic	PE:6a70b91c:0270a000	compass-list	0xafba3d	0x16ac2cc	W
+classic	PE:6a70b91c:0270a000	compass-list	0xafba73	0x16ac138	WNW
+classic	PE:6a70b91c:0270a000	compass-list	0xafbaa9	0x169a65c	NW
+classic	PE:6a70b91c:0270a000	compass-list	0xafbadf	0x16ac134	NNW
+classic	PE:6a70b91c:0270a000	compass-list	0xafbb4e	0x16ac11c	Qst

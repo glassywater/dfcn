@@ -1,0 +1,1979 @@
+edition	role	function	instruction	kind	operand	source
+reference	person-label	0x140b92af0	0x140b92c15	cstring	0x141662ef8	myself
+reference	person-label	0x140b92af0	0x140b92c1e	cstring	0x141662efc	lf
+reference	person-label	0x140b92af0	0x140b92c34	inline	0x796d	my
+reference	person-label	0x140b92af0	0x140b92c48	inline	0x656d	me
+reference	person-label	0x140b92af0	0x140b92e8d	cstring	0x141663cd8	an unknown creature
+reference	person-label	0x140b92af0	0x140b92ea5	cstring	0x1415e9260	's
+reference	person-label	0x140b92af0	0x140b92edc	cstring	0x1415ed620	a 
+classic	person-label	0x140b8fb30	0x140b8fc55	cstring	0x14165df6c	myself
+classic	person-label	0x140b8fb30	0x140b8fc5e	cstring	0x14165df70	lf
+classic	person-label	0x140b8fb30	0x140b8fc74	inline	0x796d	my
+classic	person-label	0x140b8fb30	0x140b8fc88	inline	0x656d	me
+classic	person-label	0x140b8fb30	0x140b8fecd	cstring	0x14165ed98	an unknown creature
+classic	person-label	0x140b8fb30	0x140b8fee5	cstring	0x1415e4214	's
+classic	person-label	0x140b8fb30	0x140b8ff1c	cstring	0x1415e8618	a 
+reference	skill-label	0x140773990	0x1407739d3	cstring	0x141604db0	Mining
+reference	skill-label	0x140773990	0x1407739e8	cstring	0x141604af8	Woodcutting
+reference	skill-label	0x140773990	0x1407739fd	cstring	0x1416a4fe0	Carpentry
+reference	skill-label	0x140773990	0x140773a12	cstring	0x1416a4ff0	Bowmaking
+reference	skill-label	0x140773990	0x140773a27	cstring	0x1416a5000	Stone Carving
+reference	skill-label	0x140773990	0x140773a3c	cstring	0x1416a5010	Stonecutting
+reference	skill-label	0x140773990	0x140773a51	cstring	0x1416a5020	Engraving
+reference	skill-label	0x140773990	0x140773a66	cstring	0x1416a5030	Masonry
+reference	skill-label	0x140773990	0x140773a7b	cstring	0x14162fb70	Animal Training
+reference	skill-label	0x140773990	0x140773a90	cstring	0x1416a5038	Animal Caretaking
+reference	skill-label	0x140773990	0x140773aa5	cstring	0x1416a5050	Fish Dissection
+reference	skill-label	0x140773990	0x140773aba	cstring	0x1416a5060	Animal Dissection
+reference	skill-label	0x140773990	0x140773acf	cstring	0x1416a5078	Fish Cleaning
+reference	skill-label	0x140773990	0x140773ade	cstring	0x1416a5088	Butchery
+reference	skill-label	0x140773990	0x140773af3	cstring	0x1416a5098	Trapping
+reference	skill-label	0x140773990	0x140773b0e	cstring	0x1416a50a8	Growing
+reference	skill-label	0x140773990	0x140773b23	cstring	0x1416a50b0	Herbalism
+reference	skill-label	0x140773990	0x140773b38	cstring	0x14169e328	Ambush
+reference	skill-label	0x140773990	0x140773b47	cstring	0x1416a50c0	Swimming
+reference	skill-label	0x140773990	0x140773b62	cstring	0x1416a50cc	Riding
+reference	skill-label	0x140773990	0x140773b77	cstring	0x1416a4ee0	Persuasion
+reference	skill-label	0x140773990	0x140773b8c	cstring	0x1416a4ef0	Negotiation
+reference	skill-label	0x140773990	0x140773ba1	cstring	0x1416a4f00	Judging Intent
+reference	skill-label	0x140773990	0x140773bb6	cstring	0x1416a4f10	Appraisal
+reference	skill-label	0x140773990	0x140773bcb	cstring	0x1416a4f20	Organization
+reference	skill-label	0x140773990	0x140773be0	cstring	0x1416a4f30	Record Keeping
+reference	skill-label	0x140773990	0x140773bf5	cstring	0x1416a4f40	Lying
+reference	skill-label	0x140773990	0x140773c0a	cstring	0x1416a4f48	Intimidation
+reference	skill-label	0x140773990	0x140773c1f	cstring	0x14169e5f0	Conversation
+reference	skill-label	0x140773990	0x140773c34	cstring	0x1416a4f58	Comedy
+reference	skill-label	0x140773990	0x140773c43	cstring	0x1416a4f60	Flattery
+reference	skill-label	0x140773990	0x140773c5e	cstring	0x1416a4f70	Consoling
+reference	skill-label	0x140773990	0x140773c73	cstring	0x1416a4f80	Pacification
+reference	skill-label	0x140773990	0x140773c82	cstring	0x1416a4f90	Tracking
+reference	skill-label	0x140773990	0x140773c9d	cstring	0x14162ba20	Fishing
+reference	skill-label	0x140773990	0x140773cb2	cstring	0x1416a4fa0	Furnace Operation
+reference	skill-label	0x140773990	0x140773cc7	cstring	0x1416a4fb8	Strand Extraction
+reference	skill-label	0x140773990	0x140773cdc	cstring	0x1416a4fd0	Soap Making
+reference	skill-label	0x140773990	0x140773cf1	cstring	0x1416a4de8	Potash Making
+reference	skill-label	0x140773990	0x140773d06	cstring	0x1416a4df8	Lye Making
+reference	skill-label	0x140773990	0x140773d1b	cstring	0x1416a4e08	Wood Burning
+reference	skill-label	0x140773990	0x140773d30	cstring	0x1416a4e18	Weaponsmithing
+reference	skill-label	0x140773990	0x140773d45	cstring	0x1416a4e28	Armorsmithing
+reference	skill-label	0x140773990	0x140773d5a	cstring	0x1416a4e38	Metalsmithing
+reference	skill-label	0x140773990	0x140773d6f	cstring	0x1416a4e48	Gem Cutting
+reference	skill-label	0x140773990	0x140773d84	cstring	0x1416a4e58	Gem Setting
+reference	skill-label	0x140773990	0x140773d99	cstring	0x1416a4e68	Woodcrafting
+reference	skill-label	0x140773990	0x140773dae	cstring	0x1416a4e78	Papermaking
+reference	skill-label	0x140773990	0x140773dc3	cstring	0x1416a4e88	Bookbinding
+reference	skill-label	0x140773990	0x140773dd8	cstring	0x1416a4e98	Pottery
+reference	skill-label	0x140773990	0x140773ded	cstring	0x1416a4ea0	Wax Working
+reference	skill-label	0x140773990	0x140773e02	cstring	0x1416a4eb0	Stone Crafting
+reference	skill-label	0x140773990	0x140773e17	cstring	0x1416a4ec0	Metal Crafting
+reference	skill-label	0x140773990	0x140773e2c	cstring	0x1416a4ed0	Glassmaking
+reference	skill-label	0x140773990	0x140773e3b	cstring	0x1416a53f0	Studying
+reference	skill-label	0x140773990	0x140773e56	cstring	0x1416a5400	Concentration
+reference	skill-label	0x140773990	0x140773e6b	cstring	0x1416a5410	Discipline
+reference	skill-label	0x140773990	0x140773e80	cstring	0x1416a5420	Observation
+reference	skill-label	0x140773990	0x140773e95	cstring	0x1415edca8	Writing
+reference	skill-label	0x140773990	0x140773eaa	cstring	0x1416a542c	Prose
+reference	skill-label	0x140773990	0x140773ebf	cstring	0x1416a5434	Poetry
+reference	skill-label	0x140773990	0x140773ed4	cstring	0x1416a5440	Reading
+reference	skill-label	0x140773990	0x140773ee3	cstring	0x1416a5448	Speaking
+reference	skill-label	0x140773990	0x140773efe	cstring	0x1416a5454	Dance
+reference	skill-label	0x140773990	0x140773f13	cstring	0x1416a545c	Music
+reference	skill-label	0x140773990	0x140773f28	cstring	0x1416a5468	Singing
+reference	skill-label	0x140773990	0x140773f3d	cstring	0x1416a5470	Keyboard Instrument
+reference	skill-label	0x140773990	0x140773f52	cstring	0x1416a5488	Stringed Instrument
+reference	skill-label	0x140773990	0x140773f67	cstring	0x1416a54a0	Wind Instrument
+reference	skill-label	0x140773990	0x140773f7c	cstring	0x1416a54b0	Percussion Instrument
+reference	skill-label	0x140773990	0x140773f91	cstring	0x1416a54c8	Critical Thinking
+reference	skill-label	0x140773990	0x140773fa6	cstring	0x1416a5320	Logic
+reference	skill-label	0x140773990	0x140773fbb	cstring	0x1415ffa40	Mathematics
+reference	skill-label	0x140773990	0x140773fd0	cstring	0x1415ffa30	Astronomy
+reference	skill-label	0x140773990	0x140773fe5	cstring	0x1415ffa10	Chemistry
+reference	skill-label	0x140773990	0x140773ffa	cstring	0x1415ffa00	Geography
+reference	skill-label	0x140773990	0x14077400f	cstring	0x1416a5328	Optics Engineer
+reference	skill-label	0x140773990	0x140774024	cstring	0x1416a5338	Fluid Engineer
+reference	skill-label	0x140773990	0x140774039	cstring	0x1416a5348	Coordination
+reference	skill-label	0x140773990	0x14077404e	cstring	0x1416a5358	Balance
+reference	skill-label	0x140773990	0x140774063	cstring	0x1416a5360	Leadership
+reference	skill-label	0x140773990	0x140774078	cstring	0x1416a5370	Military Tactics
+reference	skill-label	0x140773990	0x140774087	cstring	0x1416a5388	Teaching
+reference	skill-label	0x140773990	0x14077409c	cstring	0x1416a5398	Fighting
+reference	skill-label	0x140773990	0x1407740b7	cstring	0x1416a53a8	Archery
+reference	skill-label	0x140773990	0x1407740cc	cstring	0x1416a53b0	Wrestling
+reference	skill-label	0x140773990	0x1407740e1	cstring	0x1416a53bc	Biting
+reference	skill-label	0x140773990	0x1407740f0	cstring	0x1416a53c8	Striking
+reference	skill-label	0x140773990	0x14077410b	cstring	0x1416a53d8	Kicking
+reference	skill-label	0x140773990	0x140774120	cstring	0x1416a53e0	Dodging
+reference	skill-label	0x140773990	0x140774135	cstring	0x1416a53e8	Axe
+reference	skill-label	0x140773990	0x14077414a	cstring	0x1416a5264	Sword
+reference	skill-label	0x140773990	0x14077415f	cstring	0x1416a526c	Mace
+reference	skill-label	0x140773990	0x140774174	cstring	0x1416a5274	Hammer
+reference	skill-label	0x140773990	0x140774189	cstring	0x1416a527c	Spear
+reference	skill-label	0x140773990	0x140774198	cstring	0x1416a5288	Crossbow
+reference	skill-label	0x140773990	0x1407741b3	cstring	0x1416a5294	Pike
+reference	skill-label	0x140773990	0x1407741c8	cstring	0x1416a529c	Bow
+reference	skill-label	0x140773990	0x1407741dd	cstring	0x14162a9d0	Shield
+reference	skill-label	0x140773990	0x1407741f2	cstring	0x14162a038	Armor
+reference	skill-label	0x140773990	0x140774207	cstring	0x1416a52a0	Siege Engineering
+reference	skill-label	0x140773990	0x14077421c	cstring	0x1416a52b8	Siege Operation
+reference	skill-label	0x140773990	0x140774231	cstring	0x1416a52c8	Pump Operation
+reference	skill-label	0x140773990	0x140774246	cstring	0x1416a52d8	Leatherworking
+reference	skill-label	0x140773990	0x14077425b	cstring	0x1416a52e8	Tanning
+reference	skill-label	0x140773990	0x140774270	cstring	0x1416a52f0	Dyeing
+reference	skill-label	0x140773990	0x14077427f	cstring	0x1416a52f8	Pressing
+reference	skill-label	0x140773990	0x14077429a	cstring	0x1416a5308	Beekeeping
+reference	skill-label	0x140773990	0x1407742af	cstring	0x1416a5318	Glazing
+reference	skill-label	0x140773990	0x1407742c4	cstring	0x1416a51b0	Bone Carving
+reference	skill-label	0x140773990	0x1407742d9	cstring	0x1416a51c0	Weaving
+reference	skill-label	0x140773990	0x1407742ee	cstring	0x1416a51c8	Brewing
+reference	skill-label	0x140773990	0x140774303	cstring	0x1416a51d0	Clothes Making
+reference	skill-label	0x140773990	0x140774318	cstring	0x1416a51e0	Milling
+reference	skill-label	0x140773990	0x14077432d	cstring	0x1416a51e8	Threshing
+reference	skill-label	0x140773990	0x140774342	cstring	0x1416a51f8	Blowgun
+reference	skill-label	0x140773990	0x140774351	cstring	0x1416a5200	Throwing
+reference	skill-label	0x140773990	0x14077436c	cstring	0x1416a5210	Machinery
+reference	skill-label	0x140773990	0x140774381	cstring	0x1415e89d8	Nature
+reference	skill-label	0x140773990	0x140774396	cstring	0x1416a521c	Knife
+reference	skill-label	0x140773990	0x1407743ab	cstring	0x1416a5224	Lash
+reference	skill-label	0x140773990	0x1407743c0	cstring	0x1416a5230	Cooking
+reference	skill-label	0x140773990	0x1407743d5	cstring	0x1416a5238	Cheesemaking
+reference	skill-label	0x140773990	0x1407743ea	cstring	0x1416a5248	Milking
+reference	skill-label	0x140773990	0x1407743ff	cstring	0x1416a5250	Gelding
+reference	skill-label	0x140773990	0x14077440e	cstring	0x1416a5258	Shearing
+reference	skill-label	0x140773990	0x140774423	cstring	0x1416a57a0	Spinning
+reference	skill-label	0x140773990	0x14077443e	cstring	0x1416a57b0	Misc. Object
+reference	skill-label	0x140773990	0x140774453	cstring	0x1416a57c0	Wound Dressing
+reference	skill-label	0x140773990	0x140774468	cstring	0x1416a57d0	Diagnostics
+reference	skill-label	0x140773990	0x14077447d	cstring	0x1416a57e0	Surgery
+reference	skill-label	0x140773990	0x140774492	cstring	0x1416a57e8	Bone Setting
+reference	skill-label	0x140773990	0x1407744a1	cstring	0x1416a57f8	Suturing
+reference	skill-label	0x140773990	0x1407744bc	cstring	0x1416a5808	Crutch-walking
+reference	skill-label	0x140773990	0x1407744cb	cstring	0x1416a5818	Knapping
+reference	skill-label	0x140773990	0x1407744e0	cstring	0x1416a5828	Climbing
+reference	skill-label	0x140773990	0x1407744f5	cstring	0x1415ec248	Intrigue
+classic	skill-label	0x1407713b0	0x1407713f3	cstring	0x1415ffd88	Mining
+classic	skill-label	0x1407713b0	0x140771408	cstring	0x1415ffda0	Woodcutting
+classic	skill-label	0x1407713b0	0x14077141d	cstring	0x1416a0068	Carpentry
+classic	skill-label	0x1407713b0	0x140771432	cstring	0x1416a0078	Bowmaking
+classic	skill-label	0x1407713b0	0x140771447	cstring	0x1416a0088	Stone Carving
+classic	skill-label	0x1407713b0	0x14077145c	cstring	0x1416a0098	Stonecutting
+classic	skill-label	0x1407713b0	0x140771471	cstring	0x1416a00a8	Engraving
+classic	skill-label	0x1407713b0	0x140771486	cstring	0x1416a00b8	Masonry
+classic	skill-label	0x1407713b0	0x14077149b	cstring	0x14162a858	Animal Training
+classic	skill-label	0x1407713b0	0x1407714b0	cstring	0x1416a00c0	Animal Caretaking
+classic	skill-label	0x1407713b0	0x1407714c5	cstring	0x1416a00d8	Fish Dissection
+classic	skill-label	0x1407713b0	0x1407714da	cstring	0x1416a00e8	Animal Dissection
+classic	skill-label	0x1407713b0	0x1407714ef	cstring	0x1416a0100	Fish Cleaning
+classic	skill-label	0x1407713b0	0x1407714fe	cstring	0x1416a0110	Butchery
+classic	skill-label	0x1407713b0	0x140771513	cstring	0x1416a0120	Trapping
+classic	skill-label	0x1407713b0	0x14077152e	cstring	0x1416a0130	Growing
+classic	skill-label	0x1407713b0	0x140771543	cstring	0x14169ff50	Herbalism
+classic	skill-label	0x1407713b0	0x140771558	cstring	0x1416994c8	Ambush
+classic	skill-label	0x1407713b0	0x140771567	cstring	0x14169ff60	Swimming
+classic	skill-label	0x1407713b0	0x140771582	cstring	0x14169ff6c	Riding
+classic	skill-label	0x1407713b0	0x140771597	cstring	0x14169ff78	Persuasion
+classic	skill-label	0x1407713b0	0x1407715ac	cstring	0x14169ff88	Negotiation
+classic	skill-label	0x1407713b0	0x1407715c1	cstring	0x14169ff98	Judging Intent
+classic	skill-label	0x1407713b0	0x1407715d6	cstring	0x14169ffa8	Appraisal
+classic	skill-label	0x1407713b0	0x1407715eb	cstring	0x14169ffb8	Organization
+classic	skill-label	0x1407713b0	0x140771600	cstring	0x14169ffc8	Record Keeping
+classic	skill-label	0x1407713b0	0x140771615	cstring	0x14169ffd8	Lying
+classic	skill-label	0x1407713b0	0x14077162a	cstring	0x14169ffe0	Intimidation
+classic	skill-label	0x1407713b0	0x14077163f	cstring	0x141699770	Conversation
+classic	skill-label	0x1407713b0	0x140771654	cstring	0x14169fff0	Comedy
+classic	skill-label	0x1407713b0	0x140771663	cstring	0x14169fff8	Flattery
+classic	skill-label	0x1407713b0	0x14077167e	cstring	0x1416a0008	Consoling
+classic	skill-label	0x1407713b0	0x140771693	cstring	0x1416a0018	Pacification
+classic	skill-label	0x1407713b0	0x1407716a2	cstring	0x1416a0028	Tracking
+classic	skill-label	0x1407713b0	0x1407716bd	cstring	0x141626ad8	Fishing
+classic	skill-label	0x1407713b0	0x1407716d2	cstring	0x14169fe48	Furnace Operation
+classic	skill-label	0x1407713b0	0x1407716e7	cstring	0x14169fe60	Strand Extraction
+classic	skill-label	0x1407713b0	0x1407716fc	cstring	0x14169fe78	Soap Making
+classic	skill-label	0x1407713b0	0x140771711	cstring	0x14169fe88	Potash Making
+classic	skill-label	0x1407713b0	0x140771726	cstring	0x14169fe98	Lye Making
+classic	skill-label	0x1407713b0	0x14077173b	cstring	0x14169fea8	Wood Burning
+classic	skill-label	0x1407713b0	0x140771750	cstring	0x14169feb8	Weaponsmithing
+classic	skill-label	0x1407713b0	0x140771765	cstring	0x14169fec8	Armorsmithing
+classic	skill-label	0x1407713b0	0x14077177a	cstring	0x14169fed8	Metalsmithing
+classic	skill-label	0x1407713b0	0x14077178f	cstring	0x14169fee8	Gem Cutting
+classic	skill-label	0x1407713b0	0x1407717a4	cstring	0x14169fef8	Gem Setting
+classic	skill-label	0x1407713b0	0x1407717b9	cstring	0x14169ff08	Woodcrafting
+classic	skill-label	0x1407713b0	0x1407717ce	cstring	0x14169ff18	Papermaking
+classic	skill-label	0x1407713b0	0x1407717e3	cstring	0x14169ff28	Bookbinding
+classic	skill-label	0x1407713b0	0x1407717f8	cstring	0x14169ff38	Pottery
+classic	skill-label	0x1407713b0	0x14077180d	cstring	0x14169ff40	Wax Working
+classic	skill-label	0x1407713b0	0x140771822	cstring	0x14169fd68	Stone Crafting
+classic	skill-label	0x1407713b0	0x140771837	cstring	0x14169fd78	Metal Crafting
+classic	skill-label	0x1407713b0	0x14077184c	cstring	0x14169fd88	Glassmaking
+classic	skill-label	0x1407713b0	0x14077185b	cstring	0x14169fd98	Studying
+classic	skill-label	0x1407713b0	0x140771876	cstring	0x14169fda8	Concentration
+classic	skill-label	0x1407713b0	0x14077188b	cstring	0x14169fdb8	Discipline
+classic	skill-label	0x1407713b0	0x1407718a0	cstring	0x14169fdc8	Observation
+classic	skill-label	0x1407713b0	0x1407718b5	cstring	0x1415e8cc8	Writing
+classic	skill-label	0x1407713b0	0x1407718ca	cstring	0x14169fdd4	Prose
+classic	skill-label	0x1407713b0	0x1407718df	cstring	0x14169fddc	Poetry
+classic	skill-label	0x1407713b0	0x1407718f4	cstring	0x14169fde8	Reading
+classic	skill-label	0x1407713b0	0x140771903	cstring	0x14169fdf0	Speaking
+classic	skill-label	0x1407713b0	0x14077191e	cstring	0x14169fdfc	Dance
+classic	skill-label	0x1407713b0	0x140771933	cstring	0x14169fe04	Music
+classic	skill-label	0x1407713b0	0x140771948	cstring	0x14169fe10	Singing
+classic	skill-label	0x1407713b0	0x14077195d	cstring	0x14169fe18	Keyboard Instrument
+classic	skill-label	0x1407713b0	0x140771972	cstring	0x14169fe30	Stringed Instrument
+classic	skill-label	0x1407713b0	0x140771987	cstring	0x1416a0388	Wind Instrument
+classic	skill-label	0x1407713b0	0x14077199c	cstring	0x1416a0398	Percussion Instrument
+classic	skill-label	0x1407713b0	0x1407719b1	cstring	0x1416a03b0	Critical Thinking
+classic	skill-label	0x1407713b0	0x1407719c6	cstring	0x1416a03c4	Logic
+classic	skill-label	0x1407713b0	0x1407719db	cstring	0x1415faab0	Mathematics
+classic	skill-label	0x1407713b0	0x1407719f0	cstring	0x1415faaa0	Astronomy
+classic	skill-label	0x1407713b0	0x140771a05	cstring	0x1415faa80	Chemistry
+classic	skill-label	0x1407713b0	0x140771a1a	cstring	0x1415faa70	Geography
+classic	skill-label	0x1407713b0	0x140771a2f	cstring	0x1416a03d0	Optics Engineer
+classic	skill-label	0x1407713b0	0x140771a44	cstring	0x1416a03e0	Fluid Engineer
+classic	skill-label	0x1407713b0	0x140771a59	cstring	0x1416a03f0	Coordination
+classic	skill-label	0x1407713b0	0x140771a6e	cstring	0x1416a0400	Balance
+classic	skill-label	0x1407713b0	0x140771a83	cstring	0x1416a0408	Leadership
+classic	skill-label	0x1407713b0	0x140771a98	cstring	0x1416a0418	Military Tactics
+classic	skill-label	0x1407713b0	0x140771aa7	cstring	0x1416a0430	Teaching
+classic	skill-label	0x1407713b0	0x140771abc	cstring	0x1416a0440	Fighting
+classic	skill-label	0x1407713b0	0x140771ad7	cstring	0x1416a0450	Archery
+classic	skill-label	0x1407713b0	0x140771aec	cstring	0x1416a0458	Wrestling
+classic	skill-label	0x1407713b0	0x140771b01	cstring	0x1416a0464	Biting
+classic	skill-label	0x1407713b0	0x140771b10	cstring	0x1416a0470	Striking
+classic	skill-label	0x1407713b0	0x140771b2b	cstring	0x1416a02e0	Kicking
+classic	skill-label	0x1407713b0	0x140771b40	cstring	0x1416a02e8	Dodging
+classic	skill-label	0x1407713b0	0x140771b55	cstring	0x1416a02f0	Axe
+classic	skill-label	0x1407713b0	0x140771b6a	cstring	0x1416a02f4	Sword
+classic	skill-label	0x1407713b0	0x140771b7f	cstring	0x1416a02fc	Mace
+classic	skill-label	0x1407713b0	0x140771b94	cstring	0x1416a0304	Hammer
+classic	skill-label	0x1407713b0	0x140771ba9	cstring	0x1416a030c	Spear
+classic	skill-label	0x1407713b0	0x140771bb8	cstring	0x1416a0318	Crossbow
+classic	skill-label	0x1407713b0	0x140771bd3	cstring	0x1416a0324	Pike
+classic	skill-label	0x1407713b0	0x140771be8	cstring	0x1416a032c	Bow
+classic	skill-label	0x1407713b0	0x140771bfd	cstring	0x141625a00	Shield
+classic	skill-label	0x1407713b0	0x140771c12	cstring	0x1416257b4	Armor
+classic	skill-label	0x1407713b0	0x140771c27	cstring	0x1416a0330	Siege Engineering
+classic	skill-label	0x1407713b0	0x140771c3c	cstring	0x1416a0348	Siege Operation
+classic	skill-label	0x1407713b0	0x140771c51	cstring	0x1416a0358	Pump Operation
+classic	skill-label	0x1407713b0	0x140771c66	cstring	0x1416a0368	Leatherworking
+classic	skill-label	0x1407713b0	0x140771c7b	cstring	0x1416a0378	Tanning
+classic	skill-label	0x1407713b0	0x140771c90	cstring	0x1416a0380	Dyeing
+classic	skill-label	0x1407713b0	0x140771c9f	cstring	0x1416a0220	Pressing
+classic	skill-label	0x1407713b0	0x140771cba	cstring	0x1416a0230	Beekeeping
+classic	skill-label	0x1407713b0	0x140771ccf	cstring	0x1416a0240	Glazing
+classic	skill-label	0x1407713b0	0x140771ce4	cstring	0x1416a0248	Bone Carving
+classic	skill-label	0x1407713b0	0x140771cf9	cstring	0x1416a0258	Weaving
+classic	skill-label	0x1407713b0	0x140771d0e	cstring	0x1416a0260	Brewing
+classic	skill-label	0x1407713b0	0x140771d23	cstring	0x1416a0268	Clothes Making
+classic	skill-label	0x1407713b0	0x140771d38	cstring	0x1416a0278	Milling
+classic	skill-label	0x1407713b0	0x140771d4d	cstring	0x1416a0280	Threshing
+classic	skill-label	0x1407713b0	0x140771d62	cstring	0x1416a0290	Blowgun
+classic	skill-label	0x1407713b0	0x140771d71	cstring	0x1416a0298	Throwing
+classic	skill-label	0x1407713b0	0x140771d8c	cstring	0x1416a02a8	Machinery
+classic	skill-label	0x1407713b0	0x140771da1	cstring	0x1415e39b4	Nature
+classic	skill-label	0x1407713b0	0x140771db6	cstring	0x1416a02b4	Knife
+classic	skill-label	0x1407713b0	0x140771dcb	cstring	0x1416a02bc	Lash
+classic	skill-label	0x1407713b0	0x140771de0	cstring	0x1416a02c8	Cooking
+classic	skill-label	0x1407713b0	0x140771df5	cstring	0x1416a02d0	Cheesemaking
+classic	skill-label	0x1407713b0	0x140771e0a	cstring	0x1416a0138	Milking
+classic	skill-label	0x1407713b0	0x140771e1f	cstring	0x1416a0140	Gelding
+classic	skill-label	0x1407713b0	0x140771e2e	cstring	0x1416a0148	Shearing
+classic	skill-label	0x1407713b0	0x140771e43	cstring	0x1416a0158	Spinning
+classic	skill-label	0x1407713b0	0x140771e5e	cstring	0x1416a0168	Misc. Object
+classic	skill-label	0x1407713b0	0x140771e73	cstring	0x1416a0178	Wound Dressing
+classic	skill-label	0x1407713b0	0x140771e88	cstring	0x1416a0188	Diagnostics
+classic	skill-label	0x1407713b0	0x140771e9d	cstring	0x1416a0198	Surgery
+classic	skill-label	0x1407713b0	0x140771eb2	cstring	0x1416a01a0	Bone Setting
+classic	skill-label	0x1407713b0	0x140771ec1	cstring	0x1416a01b0	Suturing
+classic	skill-label	0x1407713b0	0x140771edc	cstring	0x1416a01c0	Crutch-walking
+classic	skill-label	0x1407713b0	0x140771eeb	cstring	0x1416a01d0	Knapping
+classic	skill-label	0x1407713b0	0x140771f00	cstring	0x1416a01e0	Climbing
+classic	skill-label	0x1407713b0	0x140771f15	cstring	0x1415e71d0	Intrigue
+reference	subject-pronoun	0x140aa4730	0x140aa4746	cstring	0x1416ceccc	he
+reference	subject-pronoun	0x140aa4730	0x140aa4753	cstring	0x1416cecc8	she
+reference	subject-pronoun	0x140aa4730	0x140aa4762	cstring	0x1415ee4d4	it
+classic	subject-pronoun	0x140aa17b0	0x140aa17c6	cstring	0x1416cb15c	he
+classic	subject-pronoun	0x140aa17b0	0x140aa17d3	cstring	0x1416cb158	she
+classic	subject-pronoun	0x140aa17b0	0x140aa17e2	cstring	0x1415e9484	it
+reference	possessive-pronoun	0x140aa4850	0x140aa4866	cstring	0x1416ced18	his
+reference	possessive-pronoun	0x140aa4850	0x140aa4871	cstring	0x1416cecc0	her
+reference	possessive-pronoun	0x140aa4850	0x140aa4878	cstring	0x1415ee528	its
+classic	possessive-pronoun	0x140aa18d0	0x140aa18e6	cstring	0x1416cb1a8	his
+classic	possessive-pronoun	0x140aa18d0	0x140aa18f1	cstring	0x1416cb150	her
+classic	possessive-pronoun	0x140aa18d0	0x140aa18f8	cstring	0x1415e94d8	its
+reference	historical-figure-lookup	0x14075a580	0x14075a5e7	cstring	0x1416a1dac	an 
+reference	historical-figure-lookup	0x14075a580	0x14075a5f6	cstring	0x1415ed620	a 
+reference	historical-figure-lookup	0x14075a580	0x14075a61a	cstring	0x141646634	mother
+reference	historical-figure-lookup	0x14075a580	0x14075a62c	cstring	0x1416465a8	father
+reference	historical-figure-lookup	0x14075a580	0x14075a63e	cstring	0x1416465b0	parent
+reference	historical-figure-lookup	0x14075a580	0x14075a650	cstring	0x141646588	husband
+reference	historical-figure-lookup	0x14075a580	0x14075a665	cstring	0x14164657c	wife
+reference	historical-figure-lookup	0x14075a580	0x14075a66c	cstring	0x1416a1db0	wives
+reference	historical-figure-lookup	0x14075a580	0x14075a680	cstring	0x141646574	spouse
+reference	historical-figure-lookup	0x14075a580	0x14075a692	cstring	0x1416a1db8	eldest son
+reference	historical-figure-lookup	0x14075a580	0x14075a6a4	cstring	0x1416a1dc8	second eldest son
+reference	historical-figure-lookup	0x14075a580	0x14075a6b6	cstring	0x1416a1de0	third eldest son
+reference	historical-figure-lookup	0x14075a580	0x14075a6c8	cstring	0x1416a1df8	fourth eldest son
+reference	historical-figure-lookup	0x14075a580	0x14075a6da	cstring	0x1416a1e10	fifth eldest son
+reference	historical-figure-lookup	0x14075a580	0x14075a6ec	cstring	0x1416a1e28	sixth eldest son
+reference	historical-figure-lookup	0x14075a580	0x14075a6fe	cstring	0x1416a1b88	seventh eldest son
+reference	historical-figure-lookup	0x14075a580	0x14075a710	cstring	0x1416a1ba0	eighth eldest son
+reference	historical-figure-lookup	0x14075a580	0x14075a722	cstring	0x1416a1bb8	ninth eldest son
+reference	historical-figure-lookup	0x14075a580	0x14075a734	cstring	0x1416a1bd0	tenth eldest son
+reference	historical-figure-lookup	0x14075a580	0x14075a746	cstring	0x1416465b8	son
+reference	historical-figure-lookup	0x14075a580	0x14075a758	cstring	0x1416a1be8	youngest son
+reference	historical-figure-lookup	0x14075a580	0x14075a76a	cstring	0x1416a1bf8	only son
+reference	historical-figure-lookup	0x14075a580	0x14075a77c	cstring	0x1416a1c08	eldest daughter
+reference	historical-figure-lookup	0x14075a580	0x14075a788	cstring	0x1416a1c18	second eldest daughter
+reference	historical-figure-lookup	0x14075a580	0x14075a79a	cstring	0x1416a1c30	third eldest daughter
+reference	historical-figure-lookup	0x14075a580	0x14075a7ac	cstring	0x1416a1c48	fourth eldest daughter
+reference	historical-figure-lookup	0x14075a580	0x14075a7be	cstring	0x1416a1c60	fifth eldest daughter
+reference	historical-figure-lookup	0x14075a580	0x14075a7d0	cstring	0x1416a1c78	sixth eldest daughter
+reference	historical-figure-lookup	0x14075a580	0x14075a7e2	cstring	0x1416a1c90	seventh eldest daughter
+reference	historical-figure-lookup	0x14075a580	0x14075a7f4	cstring	0x1416a1ca8	eighth eldest daughter
+reference	historical-figure-lookup	0x14075a580	0x14075a806	cstring	0x1416a1cc0	ninth eldest daughter
+reference	historical-figure-lookup	0x14075a580	0x14075a818	cstring	0x1416a1cd8	tenth eldest daughter
+reference	historical-figure-lookup	0x14075a580	0x14075a82a	cstring	0x1416465c0	daughter
+reference	historical-figure-lookup	0x14075a580	0x14075a83c	cstring	0x1416a24f0	only daughter
+reference	historical-figure-lookup	0x14075a580	0x14075a84e	cstring	0x1416a2500	youngest daughter
+reference	historical-figure-lookup	0x14075a580	0x14075a860	cstring	0x1416a2518	eldest child
+reference	historical-figure-lookup	0x14075a580	0x14075a872	cstring	0x1416a2528	second eldest child
+reference	historical-figure-lookup	0x14075a580	0x14075a884	cstring	0x1416a2540	third eldest child
+reference	historical-figure-lookup	0x14075a580	0x14075a896	cstring	0x1416a2558	fourth eldest child
+reference	historical-figure-lookup	0x14075a580	0x14075a8a8	cstring	0x1416a2570	fifth eldest child
+reference	historical-figure-lookup	0x14075a580	0x14075a8ba	cstring	0x1416a2588	sixth eldest child
+reference	historical-figure-lookup	0x14075a580	0x14075a8cc	cstring	0x1416a25a0	seventh eldest child
+reference	historical-figure-lookup	0x14075a580	0x14075a8de	cstring	0x1416a25b8	eighth eldest child
+reference	historical-figure-lookup	0x14075a580	0x14075a8f0	cstring	0x1416a25d0	ninth eldest child
+reference	historical-figure-lookup	0x14075a580	0x14075a902	cstring	0x1416a25e8	tenth eldest child
+reference	historical-figure-lookup	0x14075a580	0x14075a914	cstring	0x141646ac0	child
+reference	historical-figure-lookup	0x14075a580	0x14075a926	cstring	0x1416a2600	youngest child
+reference	historical-figure-lookup	0x14075a580	0x14075a938	cstring	0x1416a2610	only child
+reference	historical-figure-lookup	0x14075a580	0x14075a94a	cstring	0x1416a2620	paternal grandmother
+reference	historical-figure-lookup	0x14075a580	0x14075a95c	cstring	0x1416a2638	paternal grandfather
+reference	historical-figure-lookup	0x14075a580	0x14075a96e	cstring	0x1416a23b8	maternal grandmother
+reference	historical-figure-lookup	0x14075a580	0x14075a980	cstring	0x1416a23d0	maternal grandfather
+reference	historical-figure-lookup	0x14075a580	0x14075a992	cstring	0x141646ac8	grandmother
+reference	historical-figure-lookup	0x14075a580	0x14075a9a4	cstring	0x141646ad8	grandfather
+reference	historical-figure-lookup	0x14075a580	0x14075a9b6	cstring	0x141646ae8	grandparent
+reference	historical-figure-lookup	0x14075a580	0x14075a9c8	cstring	0x1416a23e8	older brother
+reference	historical-figure-lookup	0x14075a580	0x14075a9da	cstring	0x1416a23f8	older sister
+reference	historical-figure-lookup	0x14075a580	0x14075a9ec	cstring	0x1416a2408	older sibling
+reference	historical-figure-lookup	0x14075a580	0x14075a9fe	cstring	0x1416a2418	younger brother
+reference	historical-figure-lookup	0x14075a580	0x14075aa0a	cstring	0x1416a2428	younger sister
+reference	historical-figure-lookup	0x14075a580	0x14075aa1c	cstring	0x1416a2438	younger sibling
+reference	historical-figure-lookup	0x14075a580	0x14075aa28	cstring	0x141646a58	cousin
+reference	historical-figure-lookup	0x14075a580	0x14075aa3a	cstring	0x141646a90	aunt
+reference	historical-figure-lookup	0x14075a580	0x14075aa4c	cstring	0x141646a40	uncle
+reference	historical-figure-lookup	0x14075a580	0x14075aa5e	cstring	0x141646a48	niece
+reference	historical-figure-lookup	0x14075a580	0x14075aa70	cstring	0x141646a50	nephew
+reference	historical-figure-lookup	0x14075a580	0x14075aa82	cstring	0x141646ab8	sibling
+reference	historical-figure-lookup	0x14075a580	0x14075aa94	cstring	0x141646a98	grandchild
+reference	historical-figure-lookup	0x14075a580	0x14075aaa3	cstring	0x1416a2448	older half-brother
+reference	historical-figure-lookup	0x14075a580	0x14075aab2	cstring	0x1416a2460	older half-sister
+reference	historical-figure-lookup	0x14075a580	0x14075aac1	cstring	0x1416a2478	older half-sibling
+reference	historical-figure-lookup	0x14075a580	0x14075aad0	cstring	0x1416a2490	younger half-brother
+reference	historical-figure-lookup	0x14075a580	0x14075aadf	cstring	0x1416a24a8	younger half-sister
+reference	historical-figure-lookup	0x14075a580	0x14075aaee	cstring	0x1416a24c0	younger half-sibling
+reference	historical-figure-lookup	0x14075a580	0x14075aafd	cstring	0x141646a80	half-sibling
+reference	historical-figure-lookup	0x14075a580	0x14075ab0c	cstring	0x1416a24d8	no relationship
+reference	historical-figure-lookup	0x14075a580	0x14075ab4a	cstring	0x1416a24e8	ren
+reference	historical-figure-lookup	0x14075a580	0x14075ab59	cstring	0x1415e9298	s
+classic	historical-figure-lookup	0x140757fa0	0x140758007	cstring	0x14169cf7c	an 
+classic	historical-figure-lookup	0x140757fa0	0x140758016	cstring	0x1415e8618	a 
+classic	historical-figure-lookup	0x140757fa0	0x14075803a	cstring	0x141641744	mother
+classic	historical-figure-lookup	0x140757fa0	0x14075804c	cstring	0x14164174c	father
+classic	historical-figure-lookup	0x140757fa0	0x14075805e	cstring	0x1416416e4	parent
+classic	historical-figure-lookup	0x140757fa0	0x140758070	cstring	0x141640fb0	husband
+classic	historical-figure-lookup	0x140757fa0	0x140758085	cstring	0x141640fa4	wife
+classic	historical-figure-lookup	0x140757fa0	0x14075808c	cstring	0x14169cf80	wives
+classic	historical-figure-lookup	0x140757fa0	0x1407580a0	cstring	0x141641034	spouse
+classic	historical-figure-lookup	0x140757fa0	0x1407580b2	cstring	0x14169cf88	eldest son
+classic	historical-figure-lookup	0x140757fa0	0x1407580c4	cstring	0x14169cf98	second eldest son
+classic	historical-figure-lookup	0x140757fa0	0x1407580d6	cstring	0x14169cfb0	third eldest son
+classic	historical-figure-lookup	0x140757fa0	0x1407580e8	cstring	0x14169cd18	fourth eldest son
+classic	historical-figure-lookup	0x140757fa0	0x1407580fa	cstring	0x14169cd30	fifth eldest son
+classic	historical-figure-lookup	0x140757fa0	0x14075810c	cstring	0x14169cd48	sixth eldest son
+classic	historical-figure-lookup	0x140757fa0	0x14075811e	cstring	0x14169cd60	seventh eldest son
+classic	historical-figure-lookup	0x140757fa0	0x140758130	cstring	0x14169cd78	eighth eldest son
+classic	historical-figure-lookup	0x140757fa0	0x140758142	cstring	0x14169cd90	ninth eldest son
+classic	historical-figure-lookup	0x140757fa0	0x140758154	cstring	0x14169cda8	tenth eldest son
+classic	historical-figure-lookup	0x140757fa0	0x140758166	cstring	0x1416416ec	son
+classic	historical-figure-lookup	0x140757fa0	0x140758178	cstring	0x14169cdc0	youngest son
+classic	historical-figure-lookup	0x140757fa0	0x14075818a	cstring	0x14169cdd0	only son
+classic	historical-figure-lookup	0x140757fa0	0x14075819c	cstring	0x14169cde0	eldest daughter
+classic	historical-figure-lookup	0x140757fa0	0x1407581a8	cstring	0x14169cdf0	second eldest daughter
+classic	historical-figure-lookup	0x140757fa0	0x1407581ba	cstring	0x14169ce08	third eldest daughter
+classic	historical-figure-lookup	0x140757fa0	0x1407581cc	cstring	0x14169ce20	fourth eldest daughter
+classic	historical-figure-lookup	0x140757fa0	0x1407581de	cstring	0x14169ce38	fifth eldest daughter
+classic	historical-figure-lookup	0x140757fa0	0x1407581f0	cstring	0x14169ce50	sixth eldest daughter
+classic	historical-figure-lookup	0x140757fa0	0x140758202	cstring	0x14169ce68	seventh eldest daughter
+classic	historical-figure-lookup	0x140757fa0	0x140758214	cstring	0x14169cbb0	eighth eldest daughter
+classic	historical-figure-lookup	0x140757fa0	0x140758226	cstring	0x14169cbc8	ninth eldest daughter
+classic	historical-figure-lookup	0x140757fa0	0x140758238	cstring	0x14169cbe0	tenth eldest daughter
+classic	historical-figure-lookup	0x140757fa0	0x14075824a	cstring	0x1416416f0	daughter
+classic	historical-figure-lookup	0x140757fa0	0x14075825c	cstring	0x14169cbf8	only daughter
+classic	historical-figure-lookup	0x140757fa0	0x14075826e	cstring	0x14169cc08	youngest daughter
+classic	historical-figure-lookup	0x140757fa0	0x140758280	cstring	0x14169cc20	eldest child
+classic	historical-figure-lookup	0x140757fa0	0x140758292	cstring	0x14169cc30	second eldest child
+classic	historical-figure-lookup	0x140757fa0	0x1407582a4	cstring	0x14169cc48	third eldest child
+classic	historical-figure-lookup	0x140757fa0	0x1407582b6	cstring	0x14169cc60	fourth eldest child
+classic	historical-figure-lookup	0x140757fa0	0x1407582c8	cstring	0x14169cc78	fifth eldest child
+classic	historical-figure-lookup	0x140757fa0	0x1407582da	cstring	0x14169cc90	sixth eldest child
+classic	historical-figure-lookup	0x140757fa0	0x1407582ec	cstring	0x14169cca8	seventh eldest child
+classic	historical-figure-lookup	0x140757fa0	0x1407582fe	cstring	0x14169ccc0	eighth eldest child
+classic	historical-figure-lookup	0x140757fa0	0x140758310	cstring	0x14169ccd8	ninth eldest child
+classic	historical-figure-lookup	0x140757fa0	0x140758322	cstring	0x14169ccf0	tenth eldest child
+classic	historical-figure-lookup	0x140757fa0	0x140758334	cstring	0x1416416fc	child
+classic	historical-figure-lookup	0x140757fa0	0x140758346	cstring	0x14169cd08	youngest child
+classic	historical-figure-lookup	0x140757fa0	0x140758358	cstring	0x14169d4c8	only child
+classic	historical-figure-lookup	0x140757fa0	0x14075836a	cstring	0x14169d4d8	paternal grandmother
+classic	historical-figure-lookup	0x140757fa0	0x14075837c	cstring	0x14169d4f0	paternal grandfather
+classic	historical-figure-lookup	0x140757fa0	0x14075838e	cstring	0x14169d508	maternal grandmother
+classic	historical-figure-lookup	0x140757fa0	0x1407583a0	cstring	0x14169d520	maternal grandfather
+classic	historical-figure-lookup	0x140757fa0	0x1407583b2	cstring	0x1416416a8	grandmother
+classic	historical-figure-lookup	0x140757fa0	0x1407583c4	cstring	0x1416416b8	grandfather
+classic	historical-figure-lookup	0x140757fa0	0x1407583d6	cstring	0x1416416c8	grandparent
+classic	historical-figure-lookup	0x140757fa0	0x1407583e8	cstring	0x14169d538	older brother
+classic	historical-figure-lookup	0x140757fa0	0x1407583fa	cstring	0x14169d548	older sister
+classic	historical-figure-lookup	0x140757fa0	0x14075840c	cstring	0x14169d558	older sibling
+classic	historical-figure-lookup	0x140757fa0	0x14075841e	cstring	0x14169d568	younger brother
+classic	historical-figure-lookup	0x140757fa0	0x14075842a	cstring	0x14169d578	younger sister
+classic	historical-figure-lookup	0x140757fa0	0x14075843c	cstring	0x14169d588	younger sibling
+classic	historical-figure-lookup	0x140757fa0	0x140758448	cstring	0x141641a88	cousin
+classic	historical-figure-lookup	0x140757fa0	0x14075845a	cstring	0x141641670	aunt
+classic	historical-figure-lookup	0x140757fa0	0x14075846c	cstring	0x141641678	uncle
+classic	historical-figure-lookup	0x140757fa0	0x14075847e	cstring	0x141641a78	niece
+classic	historical-figure-lookup	0x140757fa0	0x140758490	cstring	0x141641a80	nephew
+classic	historical-figure-lookup	0x140757fa0	0x1407584a2	cstring	0x141641690	sibling
+classic	historical-figure-lookup	0x140757fa0	0x1407584b4	cstring	0x1416416d8	grandchild
+classic	historical-figure-lookup	0x140757fa0	0x1407584c3	cstring	0x14169d598	older half-brother
+classic	historical-figure-lookup	0x140757fa0	0x1407584d2	cstring	0x14169d5b0	older half-sister
+classic	historical-figure-lookup	0x140757fa0	0x1407584e1	cstring	0x14169d5c8	older half-sibling
+classic	historical-figure-lookup	0x140757fa0	0x1407584f0	cstring	0x14169d5e0	younger half-brother
+classic	historical-figure-lookup	0x140757fa0	0x1407584ff	cstring	0x14169d5f8	younger half-sister
+classic	historical-figure-lookup	0x140757fa0	0x14075850e	cstring	0x14169d3a8	younger half-sibling
+classic	historical-figure-lookup	0x140757fa0	0x14075851d	cstring	0x141641660	half-sibling
+classic	historical-figure-lookup	0x140757fa0	0x14075852c	cstring	0x14169d3c0	no relationship
+classic	historical-figure-lookup	0x140757fa0	0x14075856a	cstring	0x14169d3d0	ren
+classic	historical-figure-lookup	0x140757fa0	0x140758579	cstring	0x1415e4220	s
+reference	offspring	0x1406dd860	0x1406dd8cc	cstring	0x1415ed620	a 
+reference	offspring	0x1406dd860	0x1406ddb95	cstring	0x1415ed620	a 
+reference	offspring	0x1406dd860	0x1406ddd45	cstring	0x14167da98	a girl
+reference	offspring	0x1406dd860	0x1406ddd5c	cstring	0x14167da90	a boy
+reference	offspring	0x1406dd860	0x1406ddd6e	cstring	0x14167da88	a child
+reference	offspring	0x1406dd860	0x1406ddd8b	cstring	0x14167da7c	twins
+reference	offspring	0x1406dd860	0x1406ddda2	cstring	0x14167da70	triplets
+reference	offspring	0x1406dd860	0x1406dddb3	cstring	0x14167da60	quadruplets
+reference	offspring	0x1406dd860	0x1406dddc4	cstring	0x14167da50	quintuplets
+reference	offspring	0x1406dd860	0x1406ddddb	cstring	0x14167da40	sextuplets
+reference	offspring	0x1406dd860	0x1406dddf2	cstring	0x14167da30	septuplets
+reference	offspring	0x1406dd860	0x1406dde09	cstring	0x14167dc30	octuplets
+reference	offspring	0x1406dd860	0x1406dde20	cstring	0x14167dc20	nonuplets
+reference	offspring	0x1406dd860	0x1406dde34	cstring	0x14167dc10	decaplets
+reference	offspring	0x1406dd860	0x1406dde42	cstring	0x14167dc00	undecaplets
+reference	offspring	0x1406dd860	0x1406dde56	cstring	0x14167dbf0	duodecaplets
+reference	offspring	0x1406dd860	0x1406dde6a	cstring	0x14167dbe0	tredecaplets
+reference	offspring	0x1406dd860	0x1406dde7e	cstring	0x14167dbc8	quattuordecaplets
+reference	offspring	0x1406dd860	0x1406dde92	cstring	0x14167dbb8	quindecaplets
+reference	offspring	0x1406dd860	0x1406dde9b	cstring	0x14167dba8	many babies
+classic	offspring	0x1406db280	0x1406db2ec	cstring	0x1415e8618	a 
+classic	offspring	0x1406db280	0x1406db5b5	cstring	0x1415e8618	a 
+classic	offspring	0x1406db280	0x1406db765	cstring	0x141678d08	a girl
+classic	offspring	0x1406db280	0x1406db77c	cstring	0x141678d00	a boy
+classic	offspring	0x1406db280	0x1406db78e	cstring	0x141678cf8	a child
+classic	offspring	0x1406db280	0x1406db7ab	cstring	0x141678cec	twins
+classic	offspring	0x1406db280	0x1406db7c2	cstring	0x141678ce0	triplets
+classic	offspring	0x1406db280	0x1406db7d3	cstring	0x141678ad8	quadruplets
+classic	offspring	0x1406db280	0x1406db7e4	cstring	0x141678ac8	quintuplets
+classic	offspring	0x1406db280	0x1406db7fb	cstring	0x141678ab8	sextuplets
+classic	offspring	0x1406db280	0x1406db812	cstring	0x141678aa8	septuplets
+classic	offspring	0x1406db280	0x1406db829	cstring	0x141678a98	octuplets
+classic	offspring	0x1406db280	0x1406db840	cstring	0x141678a88	nonuplets
+classic	offspring	0x1406db280	0x1406db854	cstring	0x141678a78	decaplets
+classic	offspring	0x1406db280	0x1406db862	cstring	0x141678a68	undecaplets
+classic	offspring	0x1406db280	0x1406db876	cstring	0x141678a58	duodecaplets
+classic	offspring	0x1406db280	0x1406db88a	cstring	0x141678a48	tredecaplets
+classic	offspring	0x1406db280	0x1406db89e	cstring	0x141678a30	quattuordecaplets
+classic	offspring	0x1406db280	0x1406db8b2	cstring	0x141678a20	quindecaplets
+classic	offspring	0x1406db280	0x1406db8bb	cstring	0x141678a10	many babies
+reference	deity-name	0x140b92f10	0x140b92f8a	cstring	0x1416df900	interrogator
+reference	deity-name	0x140b92f10	0x140b92fa1	cstring	0x141674d08	subject
+reference	deity-name	0x140b92f10	0x140b93073	cstring	0x1416290f0	Nameless
+reference	deity-name	0x140b92f10	0x140b9310e	cstring	0x1416df8e0	an unidentified creature
+reference	deity-name	0x140b92f10	0x140b93133	cstring	0x1415fdb08	[LPAGE:HF:
+reference	deity-name	0x140b92f10	0x140b93153	cstring	0x1415fd690	]
+reference	deity-name	0x140b92f10	0x140b9325d	cstring	0x141662ef8	myself
+reference	deity-name	0x140b92f10	0x140b93266	cstring	0x141662efc	lf
+reference	deity-name	0x140b92f10	0x140b9327e	inline	0x796d	my
+reference	deity-name	0x140b92f10	0x140b932ab	inline	0x656d	me
+reference	deity-name	0x140b92f10	0x140b9331b	cstring	0x1415e8e48	the 
+reference	deity-name	0x140b92f10	0x140b9333f	cstring	0x14167db90	zombie 
+reference	deity-name	0x140b92f10	0x140b93377	cstring	0x1415fdbb8	ghostly 
+reference	deity-name	0x140b92f10	0x140b93499	cstring	0x1415e873c	 
+reference	deity-name	0x140b92f10	0x140b934c8	cstring	0x1415e873c	 
+reference	deity-name	0x140b92f10	0x140b93551	cstring	0x1415e956c	 the 
+reference	deity-name	0x140b92f10	0x140b93575	cstring	0x14167db90	zombie 
+reference	deity-name	0x140b92f10	0x140b935ad	cstring	0x1415fdbb8	ghostly 
+reference	deity-name	0x140b92f10	0x140b936cd	cstring	0x1415e873c	 
+reference	deity-name	0x140b92f10	0x140b9374e	cstring	0x1415ed620	a 
+reference	deity-name	0x140b92f10	0x140b93755	cstring	0x1415e8e48	the 
+reference	deity-name	0x140b92f10	0x140b9377d	cstring	0x14167db90	zombie 
+reference	deity-name	0x140b92f10	0x140b937b5	cstring	0x1415fdbb8	ghostly 
+reference	deity-name	0x140b92f10	0x140b9381c	cstring	0x1415e873c	 
+reference	deity-name	0x140b92f10	0x140b93867	cstring	0x1415e9260	's
+reference	deity-name	0x140b92f10	0x140b93886	cstring	0x1415fda88	[/LPAGE]
+reference	deity-name	0x140b92f10	0x140b938dc	cstring	0x141663cd8	an unknown creature
+reference	deity-name	0x140b92f10	0x140b938f2	cstring	0x1415e9260	's
+classic	deity-name	0x140b8ff50	0x140b8ffca	cstring	0x1416da770	interrogator
+classic	deity-name	0x140b8ff50	0x140b8ffe1	cstring	0x14166fb90	subject
+classic	deity-name	0x140b8ff50	0x140b900b3	cstring	0x141623ec0	Nameless
+classic	deity-name	0x140b8ff50	0x140b9014e	cstring	0x1416da750	an unidentified creature
+classic	deity-name	0x140b8ff50	0x140b90173	cstring	0x1415f8b40	[LPAGE:HF:
+classic	deity-name	0x140b8ff50	0x140b90193	cstring	0x1415f8664	]
+classic	deity-name	0x140b8ff50	0x140b9029d	cstring	0x14165df6c	myself
+classic	deity-name	0x140b8ff50	0x140b902a6	cstring	0x14165df70	lf
+classic	deity-name	0x140b8ff50	0x140b902be	inline	0x796d	my
+classic	deity-name	0x140b8ff50	0x140b902eb	inline	0x656d	me
+classic	deity-name	0x140b8ff50	0x140b9035b	cstring	0x1415e3e34	the 
+classic	deity-name	0x140b8ff50	0x140b9037f	cstring	0x1416789f8	zombie 
+classic	deity-name	0x140b8ff50	0x140b903b7	cstring	0x1415f8b70	ghostly 
+classic	deity-name	0x140b8ff50	0x140b904d9	cstring	0x1415e3720	 
+classic	deity-name	0x140b8ff50	0x140b90508	cstring	0x1415e3720	 
+classic	deity-name	0x140b8ff50	0x140b90591	cstring	0x1415e4548	 the 
+classic	deity-name	0x140b8ff50	0x140b905b5	cstring	0x1416789f8	zombie 
+classic	deity-name	0x140b8ff50	0x140b905ed	cstring	0x1415f8b70	ghostly 
+classic	deity-name	0x140b8ff50	0x140b9070d	cstring	0x1415e3720	 
+classic	deity-name	0x140b8ff50	0x140b9078e	cstring	0x1415e8618	a 
+classic	deity-name	0x140b8ff50	0x140b90795	cstring	0x1415e3e34	the 
+classic	deity-name	0x140b8ff50	0x140b907bd	cstring	0x1416789f8	zombie 
+classic	deity-name	0x140b8ff50	0x140b907f5	cstring	0x1415f8b70	ghostly 
+classic	deity-name	0x140b8ff50	0x140b9085c	cstring	0x1415e3720	 
+classic	deity-name	0x140b8ff50	0x140b908a7	cstring	0x1415e4214	's
+classic	deity-name	0x140b8ff50	0x140b908c6	cstring	0x1415f8b50	[/LPAGE]
+classic	deity-name	0x140b8ff50	0x140b9091c	cstring	0x14165ed98	an unknown creature
+classic	deity-name	0x140b8ff50	0x140b90932	cstring	0x1415e4214	's
+reference	knowledge-summary	0x140ee0830	0x140ee08bc	cstring	0x1417376c0	discourse on ethics as it regards the benefit of the state
+reference	knowledge-summary	0x140ee0830	0x140ee08d1	cstring	0x141737640	discourse on the meaning of individual happiness
+reference	knowledge-summary	0x140ee0830	0x140ee08e6	cstring	0x141737678	discourse on medical ethics
+reference	knowledge-summary	0x140ee0830	0x140ee08fb	cstring	0x141737698	discourse on the nature of truth
+reference	knowledge-summary	0x140ee0830	0x140ee0922	cstring	0x141737598	discourse on the nature of justification
+reference	knowledge-summary	0x140ee0830	0x140ee0937	cstring	0x1417375c8	discourse on the nature of perception
+reference	knowledge-summary	0x140ee0830	0x140ee094c	cstring	0x141737618	discourse on the nature of belief
+reference	knowledge-summary	0x140ee0830	0x140ee0988	cstring	0x1417377f0	discourse on the relationship between wholes and parts
+reference	knowledge-summary	0x140ee0830	0x140ee099d	cstring	0x141737830	discourse on the relationship between objects and their properties
+reference	knowledge-summary	0x140ee0830	0x140ee09b2	cstring	0x1417377a0	discourse on the nature of mind and body
+reference	knowledge-summary	0x140ee0830	0x140ee09c7	cstring	0x1417377d0	discourse on the nature of time
+reference	knowledge-summary	0x140ee0830	0x140ee09dc	cstring	0x1417375f0	discourse on the nature of existence
+reference	knowledge-summary	0x140ee0830	0x140ee09f1	cstring	0x141737728	discourse on the nature of events
+reference	knowledge-summary	0x140ee0830	0x140ee0a39	cstring	0x141737750	discourse on ethics as applied to war
+reference	knowledge-summary	0x140ee0830	0x140ee0a4e	cstring	0x141737778	discourse on the nature of causation
+reference	knowledge-summary	0x140ee0830	0x140ee0a63	cstring	0x141737700	discourse on the nature of processes
+reference	knowledge-summary	0x140ee0830	0x140ee0a78	cstring	0x1417378f8	discourse on ethics as applied to interpersonal conduct
+reference	knowledge-summary	0x140ee0830	0x140ee0a9f	cstring	0x141737948	discourse on education
+reference	knowledge-summary	0x140ee0830	0x140ee0ab4	cstring	0x1417378e0	discourse on law
+reference	knowledge-summary	0x140ee0830	0x140ee0ac9	cstring	0x141737930	discourse on grammar
+reference	knowledge-summary	0x140ee0830	0x140ee0b05	cstring	0x141737a50	discourse on social welfare
+reference	knowledge-summary	0x140ee0830	0x140ee0b1a	cstring	0x1417378a8	discourse on economic policy
+reference	knowledge-summary	0x140ee0830	0x140ee0b2f	cstring	0x1417378c8	discourse on government
+reference	knowledge-summary	0x140ee0830	0x140ee0b44	cstring	0x141737878	discourse on diplomacy
+reference	knowledge-summary	0x140ee0830	0x140ee0b59	cstring	0x141737890	the notion of etymology
+reference	knowledge-summary	0x140ee0830	0x140ee0b80	cstring	0x141737aa8	discourse on the value of art
+reference	knowledge-summary	0x140ee0830	0x140ee0b95	cstring	0x141737a28	discourse on the nature of beauty
+reference	knowledge-summary	0x140ee0830	0x140ee0bb8	cstring	0x141737a70	the idea of using symbolic notation for addition
+reference	knowledge-summary	0x140ee0830	0x140ee0bea	cstring	0x141737b40	the notion of conflict between members of a community
+reference	knowledge-summary	0x140ee0830	0x140ee0bff	cstring	0x1417379b0	the notion of bonds between members of a community
+reference	knowledge-summary	0x140ee0830	0x140ee0c14	cstring	0x1417379e8	the notion of historical, governmental and social cycles
+reference	knowledge-summary	0x140ee0830	0x140ee0c29	cstring	0x141737960	discourse on the causes of historical events
+reference	knowledge-summary	0x140ee0830	0x140ee0c3e	cstring	0x141737990	the idea of source reliability
+reference	knowledge-summary	0x140ee0830	0x140ee0d25	cstring	0x141737b28	formal reasoning
+reference	knowledge-summary	0x140ee0830	0x140ee0d3a	cstring	0x141737b90	deductive reasoning
+reference	knowledge-summary	0x140ee0830	0x140ee0d4f	cstring	0x141737b78	syllogistic logic
+reference	knowledge-summary	0x140ee0830	0x140ee0d64	cstring	0x141737ae0	hypothetical syllogisms
+reference	knowledge-summary	0x140ee0830	0x140ee0d79	cstring	0x141737ac8	propositional logic
+reference	knowledge-summary	0x140ee0830	0x140ee0d8e	cstring	0x141737b10	dialectic reasoning
+reference	knowledge-summary	0x140ee0830	0x140ee0da3	cstring	0x141737af8	analogical inference
+reference	knowledge-summary	0x140ee0830	0x140ee0db8	cstring	0x141737c40	medical ethics
+reference	knowledge-summary	0x140ee0830	0x140ee0dcd	cstring	0x141737c18	the meaning of individual happiness
+reference	knowledge-summary	0x140ee0830	0x140ee0e04	cstring	0x141737bc8	the nature of perception
+reference	knowledge-summary	0x140ee0830	0x140ee0e19	cstring	0x141737c50	the nature of truth
+reference	knowledge-summary	0x140ee0830	0x140ee0e2e	cstring	0x141737c68	ethics as it regards the benefit of the state
+reference	knowledge-summary	0x140ee0830	0x140ee0e43	cstring	0x141737ba8	the nature of justification
+reference	knowledge-summary	0x140ee0830	0x140ee0e71	cstring	0x141737d20	the nature of time
+reference	knowledge-summary	0x140ee0830	0x140ee0e86	cstring	0x141737be8	the nature of existence
+reference	knowledge-summary	0x140ee0830	0x140ee0e9b	cstring	0x141737c00	the nature of belief
+reference	knowledge-summary	0x140ee0830	0x140ee0eb0	cstring	0x141737d00	the nature of mind and body
+reference	knowledge-summary	0x140ee0830	0x140ee0ef8	cstring	0x141737cb0	the nature of events
+reference	knowledge-summary	0x140ee0830	0x140ee0f0d	cstring	0x141737d38	the relationship between wholes and parts
+reference	knowledge-summary	0x140ee0830	0x140ee0f22	cstring	0x141737d68	the relationship between objects and their properties
+reference	knowledge-summary	0x140ee0830	0x140ee0f37	cstring	0x141737c98	the nature of processes
+reference	knowledge-summary	0x140ee0830	0x140ee0f65	cstring	0x141738c58	ethics as applied to interpersonal conduct
+reference	knowledge-summary	0x140ee0830	0x140ee0f7a	cstring	0x141737cc8	ethics as applied to war
+reference	knowledge-summary	0x140ee0830	0x140ee0f8f	cstring	0x141737ce8	the nature of causation
+reference	knowledge-summary	0x140ee0830	0x140ee0fa4	cstring	0x141738c30	law, its forms and recommendations
+reference	knowledge-summary	0x140ee0830	0x140ee0fdb	cstring	0x141738bc0	etymology
+reference	knowledge-summary	0x140ee0830	0x140ee0ff0	cstring	0x141738c88	grammar
+reference	knowledge-summary	0x140ee0830	0x140ee1005	cstring	0x141738c90	education, its forms and recommendations
+reference	knowledge-summary	0x140ee0830	0x140ee101a	cstring	0x141738b90	diplomacy, its forms and recommendations
+reference	knowledge-summary	0x140ee0830	0x140ee1048	cstring	0x141738d48	social welfare, its forms and recommendations
+reference	knowledge-summary	0x140ee0830	0x140ee105d	cstring	0x141738bd0	economic policy, its forms and recommendations
+reference	knowledge-summary	0x140ee0830	0x140ee1072	cstring	0x141738c00	government, its forms and recommendations
+reference	knowledge-summary	0x140ee0830	0x140ee10a7	cstring	0x141738cc0	dictionaries
+reference	knowledge-summary	0x140ee0830	0x140ee10bc	cstring	0x141738cd0	the value of art
+reference	knowledge-summary	0x140ee0830	0x140ee10d1	cstring	0x141738d78	the nature of beauty
+reference	knowledge-summary	0x140ee0830	0x140ee10e6	cstring	0x141738d90	direct inference
+reference	knowledge-summary	0x140ee0830	0x140ee10fb	cstring	0x141738d30	inductive reasoning
+reference	knowledge-summary	0x140ee0830	0x140ee1154	cstring	0x141738d08	the method of proof by contradiction
+reference	knowledge-summary	0x140ee0830	0x140ee1169	cstring	0x141738ce8	a symbol for nothingness
+reference	knowledge-summary	0x140ee0830	0x140ee117e	cstring	0x141738ef0	notation for negative quantities
+reference	knowledge-summary	0x140ee0830	0x140ee1193	cstring	0x141738ed0	notation for very large numbers
+reference	knowledge-summary	0x140ee0830	0x140ee11a8	cstring	0x141738f68	positional notation
+reference	knowledge-summary	0x140ee0830	0x140ee11bd	cstring	0x141738f20	geometric objects:  points, lines, circles, triangles, and so on
+reference	knowledge-summary	0x140ee0830	0x140ee11d2	cstring	0x141738de0	the method of exhaustion
+reference	knowledge-summary	0x140ee0830	0x140ee11e7	cstring	0x141738da8	the properties of similar and congruent triangles
+reference	knowledge-summary	0x140ee0830	0x140ee11fc	cstring	0x141738e40	the relationship between the length of the altitude of a right triangle and the lengths of the segments into which it divides the hypotenuse
+reference	knowledge-summary	0x140ee0830	0x140ee1233	cstring	0x1417390a0	the relationship between the lengths of the hypotenuse of a right triangle and the other two sides
+reference	knowledge-summary	0x140ee0830	0x140ee1248	cstring	0x141739110	the angles of triangles inscribed in a circle with one edge on the diameter
+reference	knowledge-summary	0x140ee0830	0x140ee125d	cstring	0x141738e00	the equality of the base angle of isosceles triangles
+reference	knowledge-summary	0x140ee0830	0x140ee1272	cstring	0x1417391e0	examples of triples of small whole numbers which, when taken together, are the lengths of the sides of a right triangle
+reference	knowledge-summary	0x140ee0830	0x140ee12a0	cstring	0x141738f80	the existence of incommensurable ratios
+reference	knowledge-summary	0x140ee0830	0x140ee12b5	cstring	0x141738fb0	examples of triples of very large whole numbers which, when taken together, are the lengths of the sides of a right triangle
+reference	knowledge-summary	0x140ee0830	0x140ee12ca	cstring	0x141739160	examples of triples of large whole numbers which, when taken together, are the lengths of the sides of a right triangle
+reference	knowledge-summary	0x140ee0830	0x140ee12df	cstring	0x141739080	axiomatic reasoning
+reference	knowledge-summary	0x140ee0830	0x140ee1327	cstring	0x1417393e0	the computation of the volume of different pyramids
+reference	knowledge-summary	0x140ee0830	0x140ee133c	cstring	0x141739420	an algorithm for computing the greatest common divisor of two numbers
+reference	knowledge-summary	0x140ee0830	0x140ee1351	cstring	0x141739030	the unique decomposition of a number into products of its prime divisors
+reference	knowledge-summary	0x140ee0830	0x140ee1366	cstring	0x141739498	the computation of the volume of a cone
+reference	knowledge-summary	0x140ee0830	0x140ee1394	cstring	0x141739260	an algorithm for dividing one number into another, possibly yielding a remainder
+reference	knowledge-summary	0x140ee0830	0x140ee13a9	cstring	0x1417392c0	an approximate value of the ratio of the circumference of a circle to its diameter, using the circumference of polygons and the method of exhaustion
+reference	knowledge-summary	0x140ee0830	0x140ee13be	cstring	0x141739468	the computation of the volume of a sphere
+reference	knowledge-summary	0x140ee0830	0x140ee13d3	cstring	0x1417393b0	a table of chord lengths indexed by angle
+reference	knowledge-summary	0x140ee0830	0x140ee140a	cstring	0x1417395a0	an approximation of the ratio of the circumference of a circle to its diameter, using the area of polygons and the method of exhaustion
+reference	knowledge-summary	0x140ee0830	0x140ee141f	cstring	0x141739630	the relationship between the area of a circle and its radius, involving the ratio of the circumference of the circle to its diameter
+reference	knowledge-summary	0x140ee0830	0x140ee1434	cstring	0x141739360	the computation of the area of a triangle from its three side lengths alone
+reference	knowledge-summary	0x140ee0830	0x140ee1449	cstring	0x141739728	the categorization and properties of conic sections
+reference	knowledge-summary	0x140ee0830	0x140ee1477	cstring	0x1417394c0	an algorithm for calculating prime numbers
+reference	knowledge-summary	0x140ee0830	0x140ee148c	cstring	0x1417394f0	the area enclosed by a parabola and a line
+reference	knowledge-summary	0x140ee0830	0x140ee14a1	cstring	0x1417396c0	an algorithm for computing a number which has given remainders when divided by several given primes
+reference	knowledge-summary	0x140ee0830	0x140ee14e9	cstring	0x141739558	an approximation for the length of the diagonal of a square
+reference	knowledge-summary	0x140ee0830	0x140ee14fe	cstring	0x141739520	a proof that there are infinitely many prime numbers
+reference	knowledge-summary	0x140ee0830	0x140ee1513	cstring	0x1417398c0	a proof that the length of the diagonal of a square is incommensurable with its edge
+reference	knowledge-summary	0x140ee0830	0x140ee1528	cstring	0x141739890	the computation of the surface area of a sphere
+reference	knowledge-summary	0x140ee0830	0x140ee153d	cstring	0x141739948	simple formulas for certain arbitrarily large sums
+reference	knowledge-summary	0x140ee0830	0x140ee1552	cstring	0x141739918	methods for solving systems of equations
+reference	knowledge-summary	0x140ee0830	0x140ee1567	cstring	0x1417397a0	the techniques of balancing and completion for solving equations
+reference	knowledge-summary	0x140ee0830	0x140ee157c	cstring	0x141739760	the solving of quadratic equations by completion of the square
+reference	knowledge-summary	0x140ee0830	0x140ee1591	cstring	0x141739860	a formula which solves quadratic equations
+reference	knowledge-summary	0x140ee0830	0x140ee15d3	cstring	0x141739b70	a triangular configuration of numbers relating to the successive powers of any sum
+reference	knowledge-summary	0x140ee0830	0x140ee15e8	cstring	0x141739a20	trigonometric identities relating to the sums and differences of angles
+reference	knowledge-summary	0x140ee0830	0x140ee15fd	cstring	0x141739a70	the relationship between the half chords of a triangle's angles, the opposite side lengths, and the diameter of the triangle's circumscribed circle
+reference	knowledge-summary	0x140ee0830	0x140ee1612	cstring	0x1417397f0	notation for abbreviating the unknown and other elements of an equation in a systematic and useful fashion
+reference	knowledge-summary	0x140ee0830	0x140ee1627	cstring	0x141739b10	methods for solving certain equations involving powers higher than the quadratic
+reference	knowledge-summary	0x140ee0830	0x140ee1655	cstring	0x1417399f8	the properties of chords
+reference	knowledge-summary	0x140ee0830	0x140ee166a	cstring	0x141739980	the divergence of the harmonic series
+reference	knowledge-summary	0x140ee0830	0x140ee167f	cstring	0x1417399a8	experiments with symbolic notation for addition
+reference	knowledge-summary	0x140ee0830	0x140ee16d4	cstring	0x141737ec0	the causes of historical events
+reference	knowledge-summary	0x140ee0830	0x140ee16e9	cstring	0x141737ee0	using personal interviews as sources
+reference	knowledge-summary	0x140ee0830	0x140ee16fe	cstring	0x141737e60	the role of state bias and propaganda in sources
+reference	knowledge-summary	0x140ee0830	0x140ee1713	cstring	0x141737e98	the role of systemic bias in sources
+reference	knowledge-summary	0x140ee0830	0x140ee1728	cstring	0x1417399d8	the reliability of sources
+reference	knowledge-summary	0x140ee0830	0x140ee173d	cstring	0x141737dc8	historical, governmental and social cycles
+reference	knowledge-summary	0x140ee0830	0x140ee176e	cstring	0x141738070	the method of compiling several biographies to compare and contrast the subjects' character and to gain insight into history
+reference	knowledge-summary	0x140ee0830	0x140ee1783	cstring	0x141737df8	the method of writing the history of a single individual
+reference	knowledge-summary	0x140ee0830	0x140ee1798	cstring	0x141737e38	conflict between members of a community
+reference	knowledge-summary	0x140ee0830	0x140ee17ad	cstring	0x141737da0	bonds between members of a community
+reference	knowledge-summary	0x140ee0830	0x140ee17c2	cstring	0x141738030	the compilation of brief biographies into one large collection
+reference	knowledge-summary	0x140ee0830	0x140ee1804	cstring	0x141737f10	the method of accurately and comprehensively describing cultures and civilizations
+reference	knowledge-summary	0x140ee0830	0x140ee1819	cstring	0x141737f68	the compilation of many summaries into a single text
+reference	knowledge-summary	0x140ee0830	0x140ee182e	cstring	0x1417380f0	the compilation of family lineages and methods of displaying them artfully
+reference	knowledge-summary	0x140ee0830	0x140ee1843	cstring	0x141738140	the method of writing a biography of oneself, particularly as it concerns a military campaign or adventure
+reference	knowledge-summary	0x140ee0830	0x140ee1858	cstring	0x141737ff0	the method of comparing and contrasting different cultures
+reference	knowledge-summary	0x140ee0830	0x140ee188d	cstring	0x141738340	the method of examining artifacts to determine how techniques have changed over time
+reference	knowledge-summary	0x140ee0830	0x140ee18a2	cstring	0x141738260	the method of collecting and evaluating artifacts to learn about history and culture
+reference	knowledge-summary	0x140ee0830	0x140ee18b7	cstring	0x1417382c0	the exploration of how history would be different if some key past events had transpired differently
+reference	knowledge-summary	0x140ee0830	0x140ee18cc	cstring	0x141737fa0	the role of cultural differences in source reliability and interpretation
+reference	knowledge-summary	0x140ee0830	0x140ee1921	cstring	0x1417381f8	the height of the tides, the moon and the sun
+reference	knowledge-summary	0x140ee0830	0x140ee1936	cstring	0x141738228	the relationship between the moon and the tides
+reference	knowledge-summary	0x140ee0830	0x140ee194b	cstring	0x1417381b0	the path of the moon
+reference	knowledge-summary	0x140ee0830	0x140ee1960	cstring	0x1417381c8	the rise of the moon according to the season
+reference	knowledge-summary	0x140ee0830	0x140ee1975	cstring	0x141738328	the phases of the moon
+reference	knowledge-summary	0x140ee0830	0x140ee1984	cstring	0x141738478	the rise of the sun according to the season
+reference	knowledge-summary	0x140ee0830	0x140ee19bb	cstring	0x1417383c0	the theory that the world moves around the sun
+reference	knowledge-summary	0x140ee0830	0x140ee19d0	cstring	0x1417384a8	the theory that the sun moves around the world
+reference	knowledge-summary	0x140ee0830	0x140ee19e5	cstring	0x1417384d8	the variation of daylight with the season
+reference	knowledge-summary	0x140ee0830	0x140ee19fa	cstring	0x141738440	the relationship between the lunar and solar year
+reference	knowledge-summary	0x140ee0830	0x140ee1a0f	cstring	0x141738398	the dates of lunar and solar eclipses
+reference	knowledge-summary	0x140ee0830	0x140ee1a51	cstring	0x1417385f0	the classification of stars according to color
+reference	knowledge-summary	0x140ee0830	0x140ee1a66	cstring	0x141738620	the precise compilation of information about stars
+reference	knowledge-summary	0x140ee0830	0x140ee1a7b	cstring	0x1417383f0	the compilation of information about stars
+reference	knowledge-summary	0x140ee0830	0x140ee1a90	cstring	0x141738420	the creation of star charts
+reference	knowledge-summary	0x140ee0830	0x140ee1aa5	cstring	0x141738670	the classification of stars according to brightness
+reference	knowledge-summary	0x140ee0830	0x140ee1ada	cstring	0x1417385a0	the method of forming precise models for the paths of astronomical objects
+reference	knowledge-summary	0x140ee0830	0x140ee1aef	cstring	0x141738508	methods of empirical observation in astronomy
+reference	knowledge-summary	0x140ee0830	0x140ee1b04	cstring	0x141738538	the precession of the equinoxes over great periods of time
+reference	knowledge-summary	0x140ee0830	0x140ee1b19	cstring	0x141738658	the shape of the world
+reference	knowledge-summary	0x140ee0830	0x140ee1b5f	cstring	0x141738578	the dissection of creatures
+reference	knowledge-summary	0x140ee0830	0x140ee1b74	cstring	0x141738790	the anatomical study of creatures
+reference	knowledge-summary	0x140ee0830	0x140ee1b89	cstring	0x141738760	the comparison of the anatomy of creatures
+reference	knowledge-summary	0x140ee0830	0x140ee1b9e	cstring	0x1417387e0	the classification of creatures by their physical features
+reference	knowledge-summary	0x140ee0830	0x140ee1bb3	cstring	0x1417387b8	the migratory patterns of creatures
+reference	knowledge-summary	0x140ee0830	0x140ee1bc8	cstring	0x1417386d8	the reproductive behavior of creatures
+reference	knowledge-summary	0x140ee0830	0x140ee1bd7	cstring	0x1417386a8	the foraging behavior and diet of creatures
+reference	knowledge-summary	0x140ee0830	0x140ee1c14	cstring	0x141738938	the diseases of creatures
+reference	knowledge-summary	0x140ee0830	0x140ee1c29	cstring	0x141738700	the social behavior of creatures
+reference	knowledge-summary	0x140ee0830	0x140ee1c3e	cstring	0x141738728	the links between the diets of different creatures
+reference	knowledge-summary	0x140ee0830	0x140ee1c53	cstring	0x1417388f0	the ways that creatures are suited to the climates in which they live
+reference	knowledge-summary	0x140ee0830	0x140ee1c7a	cstring	0x141738958	the struggle for survival among creatures
+reference	knowledge-summary	0x140ee0830	0x140ee1c8f	cstring	0x141738988	the embriological development of creatures
+reference	knowledge-summary	0x140ee0830	0x140ee1ce0	cstring	0x141738840	the classification of combustible materials
+reference	knowledge-summary	0x140ee0830	0x140ee1cfb	cstring	0x141738820	the classification of ores
+reference	knowledge-summary	0x140ee0830	0x140ee1d10	cstring	0x1417388c8	the mixture of metals to produce alloys
+reference	knowledge-summary	0x140ee0830	0x140ee1d25	cstring	0x141738870	a method of classify the hardness of materials by scratching them against each other
+reference	knowledge-summary	0x140ee0830	0x140ee1d3a	cstring	0x141738ae0	the classification of materials based on which elemental materials might form them
+reference	knowledge-summary	0x140ee0830	0x140ee1d4f	cstring	0x141738ab0	the preparation and use of adhesive materials
+reference	knowledge-summary	0x140ee0830	0x140ee1d64	cstring	0x141738b60	the construction and use of the blast furnace
+reference	knowledge-summary	0x140ee0830	0x140ee1da0	cstring	0x141738a58	the classification of alkali and acids
+reference	knowledge-summary	0x140ee0830	0x140ee1db5	cstring	0x141738a80	the theory and methods involved in evaporation
+reference	knowledge-summary	0x140ee0830	0x140ee1dca	cstring	0x1417389b8	the theory and methods involved in distillation
+reference	knowledge-summary	0x140ee0830	0x140ee1ddf	cstring	0x1417389f0	the theory and methods involved in the extraction of a constituent liquid from one solution to another
+reference	knowledge-summary	0x140ee0830	0x140ee1df4	cstring	0x141738b38	the construction and use of the alembic
+reference	knowledge-summary	0x140ee0830	0x140ee1e09	cstring	0x14173a780	methods for performing experiments systematically in the laboratory
+reference	knowledge-summary	0x140ee0830	0x140ee1e56	cstring	0x14173a6a8	the construction and use of the crucible
+reference	knowledge-summary	0x140ee0830	0x140ee1e6b	cstring	0x14173a6d8	the construction and use of the funnel
+reference	knowledge-summary	0x140ee0830	0x140ee1e80	cstring	0x14173a7c8	the construction and use of the vial
+reference	knowledge-summary	0x140ee0830	0x140ee1e95	cstring	0x14173a7f0	the construction and use of the beaker
+reference	knowledge-summary	0x140ee0830	0x140ee1eaa	cstring	0x14173a750	the construction and use of the flask
+reference	knowledge-summary	0x140ee0830	0x140ee1ebf	cstring	0x14173a728	the preparation of spirit of niter
+reference	knowledge-summary	0x140ee0830	0x140ee1efb	cstring	0x14173a8f8	the construction and use of laboratory ovens
+reference	knowledge-summary	0x140ee0830	0x140ee1f10	cstring	0x14173a928	the construction and use of the retort
+reference	knowledge-summary	0x140ee0830	0x140ee1f25	cstring	0x14173a8b0	the construction and use of the ampoule
+reference	knowledge-summary	0x140ee0830	0x140ee1f3a	cstring	0x14173a8d8	the preparation of aqua regia
+reference	knowledge-summary	0x140ee0830	0x140ee1f4f	cstring	0x14173a700	the preparation of oil of vitriol
+reference	knowledge-summary	0x140ee0830	0x140ee1fa4	cstring	0x14173aa60	surveying by triangulation for the purpose of creating maps
+reference	knowledge-summary	0x140ee0830	0x140ee1fb9	cstring	0x14173a868	surveying by triangulation
+reference	knowledge-summary	0x140ee0830	0x140ee1fce	cstring	0x14173a888	the process involved in creating maps
+reference	knowledge-summary	0x140ee0830	0x140ee1fe3	cstring	0x14173a818	the construction and use of the surveying staff
+reference	knowledge-summary	0x140ee0830	0x140ee1ff8	cstring	0x14173a848	the process of surveying land
+reference	knowledge-summary	0x140ee0830	0x140ee200d	cstring	0x14173aa20	surveying by triangulation for the purpose of allocating land
+reference	knowledge-summary	0x140ee0830	0x140ee2045	cstring	0x14173a9e8	the use of a distance scale in the creation of maps
+reference	knowledge-summary	0x140ee0830	0x140ee205a	cstring	0x14173a950	the use of a grid system in the creation of maps
+reference	knowledge-summary	0x140ee0830	0x140ee206f	cstring	0x14173a988	the placement of geological information on maps
+reference	knowledge-summary	0x140ee0830	0x140ee2084	cstring	0x14173aaa0	surveying by triangulation for engineering projects
+reference	knowledge-summary	0x140ee0830	0x140ee2099	cstring	0x14173aad8	surveying by triangulation for military purposes
+reference	knowledge-summary	0x140ee0830	0x140ee20ae	cstring	0x14173a9b8	the measurement of the heights of land features
+reference	knowledge-summary	0x140ee0830	0x140ee20fb	cstring	0x14173ab50	the forces that govern wind patterns
+reference	knowledge-summary	0x140ee0830	0x140ee2110	cstring	0x14173ac60	the process of the formation of deltas at the mouths of rivers
+reference	knowledge-summary	0x140ee0830	0x140ee2125	cstring	0x14173aca0	the collection of maps and other information into a single text
+reference	knowledge-summary	0x140ee0830	0x140ee213a	cstring	0x14173ac08	the placement of economic information on maps
+reference	knowledge-summary	0x140ee0830	0x140ee214f	cstring	0x14173ac38	the process of economic data collection
+reference	knowledge-summary	0x140ee0830	0x140ee2164	cstring	0x14173ab10	the origin of rainfall through evaporation and condensation
+reference	knowledge-summary	0x140ee0830	0x140ee2199	cstring	0x14173ad70	methods of adjusting maps to account for the shape of the world
+reference	knowledge-summary	0x140ee0830	0x140ee21ae	cstring	0x14173adb0	the creation of accurate maps
+reference	knowledge-summary	0x140ee0830	0x140ee21c3	cstring	0x14173ab78	the division of the world into climate zones
+reference	knowledge-summary	0x140ee0830	0x140ee21d8	cstring	0x14173abb0	a world-wide cycle involving precipitation, oceans, rivers and other forms of water
+reference	knowledge-summary	0x140ee0830	0x140ee2231	cstring	0x14173ae10	the connection between disease and fouled water
+reference	knowledge-summary	0x140ee0830	0x140ee2246	cstring	0x14173add0	the method of physical examination in diagnosing illness
+reference	knowledge-summary	0x140ee0830	0x140ee225b	cstring	0x14173ad20	the method of autopsy
+reference	knowledge-summary	0x140ee0830	0x140ee2270	cstring	0x14173ace0	determining the likely outcome given a patient's current status
+reference	knowledge-summary	0x140ee0830	0x140ee2285	cstring	0x14173ad58	herbal remedies
+reference	knowledge-summary	0x140ee0830	0x140ee229a	cstring	0x14173ad38	remedies prepared from animals
+reference	knowledge-summary	0x140ee0830	0x140ee22af	cstring	0x14173af10	mineral remedies
+reference	knowledge-summary	0x140ee0830	0x140ee22c4	cstring	0x14173aef0	the method of bandaging wounds
+reference	knowledge-summary	0x140ee0830	0x140ee22d9	cstring	0x14173af50	the classification of disease
+reference	knowledge-summary	0x140ee0830	0x140ee2310	cstring	0x14173ae40	the theory of endemic disease
+reference	knowledge-summary	0x140ee0830	0x140ee2325	cstring	0x14173ae60	the distinction between acute and chronic conditions
+reference	knowledge-summary	0x140ee0830	0x140ee233a	cstring	0x14173af28	the classification of toxic substances
+reference	knowledge-summary	0x140ee0830	0x140ee234f	cstring	0x14173aed0	the theory of epidemic disease
+reference	knowledge-summary	0x140ee0830	0x140ee237d	cstring	0x14173b008	the notion of relapse
+reference	knowledge-summary	0x140ee0830	0x140ee2392	cstring	0x14173b020	the notion of paroxysm
+reference	knowledge-summary	0x140ee0830	0x140ee23a7	cstring	0x14173ae98	the notion of the exacerbation of a patient's condition
+reference	knowledge-summary	0x140ee0830	0x140ee23bc	cstring	0x14173b060	the theory of convalescence
+reference	knowledge-summary	0x140ee0830	0x140ee2404	cstring	0x14173af70	the classification of fractures
+reference	knowledge-summary	0x140ee0830	0x140ee2419	cstring	0x14173af90	the treatment of fractures
+reference	knowledge-summary	0x140ee0830	0x140ee242e	cstring	0x14173b038	the treatment of traumatic injuries
+reference	knowledge-summary	0x140ee0830	0x140ee2443	cstring	0x14173afd8	the construction and use of the traction bench
+reference	knowledge-summary	0x140ee0830	0x140ee2471	cstring	0x14173b0f0	the surgical method of excision
+reference	knowledge-summary	0x140ee0830	0x140ee2480	cstring	0x14173b110	the creation and use of the orthopedic cast
+reference	knowledge-summary	0x140ee0830	0x140ee249b	cstring	0x14173afb0	the method of fracture immobilization
+reference	knowledge-summary	0x140ee0830	0x140ee24b0	cstring	0x14173b150	the surgical method of incision
+reference	knowledge-summary	0x140ee0830	0x140ee24e7	cstring	0x14173b080	the lithotomy surgery
+reference	knowledge-summary	0x140ee0830	0x140ee24fc	cstring	0x14173b098	the tracheotomy surgery
+reference	knowledge-summary	0x140ee0830	0x140ee2511	cstring	0x14173b140	hernia surgery
+reference	knowledge-summary	0x140ee0830	0x140ee2526	cstring	0x14173b0d0	the surgical method of scraping
+reference	knowledge-summary	0x140ee0830	0x140ee2554	cstring	0x141739c70	the surgical method of suturing
+reference	knowledge-summary	0x140ee0830	0x140ee2569	cstring	0x141739c90	the surgical method of probing
+reference	knowledge-summary	0x140ee0830	0x140ee257e	cstring	0x14173b0b0	the surgical method of draining
+reference	knowledge-summary	0x140ee0830	0x140ee25d7	cstring	0x141739cd8	the surgical method of ligature
+reference	knowledge-summary	0x140ee0830	0x140ee25ec	cstring	0x141739cb0	the use of practice models in surgery
+reference	knowledge-summary	0x140ee0830	0x140ee2601	cstring	0x141739bf0	the use of mud bags as surgical models
+reference	knowledge-summary	0x140ee0830	0x140ee2616	cstring	0x141739bc8	the use of plants as surgical models
+reference	knowledge-summary	0x140ee0830	0x140ee262b	cstring	0x141739c48	the use of animals as surgical models
+reference	knowledge-summary	0x140ee0830	0x140ee263a	cstring	0x141739c18	the use of specialized surgical instruments
+reference	knowledge-summary	0x140ee0830	0x140ee2655	cstring	0x141739d70	the construction and use of forceps
+reference	knowledge-summary	0x140ee0830	0x140ee266a	cstring	0x141739d48	the construction and use of the scalpel
+reference	knowledge-summary	0x140ee0830	0x140ee267f	cstring	0x141739dc8	the construction and use of surgical scissors
+reference	knowledge-summary	0x140ee0830	0x140ee26b6	cstring	0x141739cf8	cauterization
+reference	knowledge-summary	0x140ee0830	0x140ee26cb	cstring	0x141739d08	cataract surgery
+reference	knowledge-summary	0x140ee0830	0x140ee26e0	cstring	0x141739d98	the construction and use of surgical needles
+reference	knowledge-summary	0x140ee0830	0x140ee26f5	cstring	0x141739d38	anesthesia
+reference	knowledge-summary	0x140ee0830	0x140ee2723	cstring	0x141739e88	the classification of bodily fluids
+reference	knowledge-summary	0x140ee0830	0x140ee2738	cstring	0x141739eb0	anatomical studies for medical edification
+reference	knowledge-summary	0x140ee0830	0x140ee274d	cstring	0x141739d20	pulmonary medicine
+reference	knowledge-summary	0x140ee0830	0x140ee2762	cstring	0x141739f18	the anatomy of the eye
+reference	knowledge-summary	0x140ee0830	0x140ee27aa	cstring	0x141739df8	the study of reaction time
+reference	knowledge-summary	0x140ee0830	0x140ee27bf	cstring	0x141739e18	the function of the nervous system
+reference	knowledge-summary	0x140ee0830	0x140ee27d4	cstring	0x141739ee0	the distinction between motor and sensory nerves
+reference	knowledge-summary	0x140ee0830	0x140ee27e9	cstring	0x141739e58	the distinction between veins and arteries
+reference	knowledge-summary	0x140ee0830	0x140ee2817	cstring	0x141739fe0	the source of the voice
+reference	knowledge-summary	0x140ee0830	0x140ee282c	cstring	0x141739ff8	comparative anatomical studies for use in medicine
+reference	knowledge-summary	0x140ee0830	0x140ee2841	cstring	0x141739e40	pulmonary circulation
+reference	knowledge-summary	0x140ee0830	0x140ee2856	cstring	0x14173a058	the classification of muscles
+reference	knowledge-summary	0x140ee0830	0x140ee288d	cstring	0x141739f30	the preparation and use of dedicated hospitals
+reference	knowledge-summary	0x140ee0830	0x140ee28a2	cstring	0x141739f60	the treatment of mental illnesses
+reference	knowledge-summary	0x140ee0830	0x140ee28b7	cstring	0x14173a030	the classification of mental illnesses
+reference	knowledge-summary	0x140ee0830	0x140ee28cc	cstring	0x141739fb8	the use of professional hospital staff
+reference	knowledge-summary	0x140ee0830	0x140ee28fa	cstring	0x14173a178	schools of medicine
+reference	knowledge-summary	0x140ee0830	0x140ee290f	cstring	0x14173a190	the use of a laboratory for preparation of remedies in a hospital
+reference	knowledge-summary	0x140ee0830	0x140ee2924	cstring	0x141739f88	the use of specialized wards in hospitals
+reference	knowledge-summary	0x140ee0830	0x140ee2943	cstring	0x14173a208	the creation of asylums for the mentally ill
+reference	knowledge-summary	0x140ee0830	0x140ee299c	cstring	0x14173a1d8	the use of shadows to tell direction and time
+reference	knowledge-summary	0x140ee0830	0x140ee29ab	cstring	0x14173a0d0	the use of water-based devices to tell time
+reference	knowledge-summary	0x140ee0830	0x140ee29c6	cstring	0x14173a080	the use of conical shapes in water-based clocks to improve their accuracy
+reference	knowledge-summary	0x140ee0830	0x140ee29db	cstring	0x14173a130	the use of reservoirs in water-based clocks to improve their accuracy
+reference	knowledge-summary	0x140ee0830	0x140ee29f0	cstring	0x14173a100	the construction and use of the astrarium
+reference	knowledge-summary	0x140ee0830	0x140ee2a05	cstring	0x14173a328	the construction and use of the hourglass
+reference	knowledge-summary	0x140ee0830	0x140ee2a1a	cstring	0x14173a2f8	the construction and use of mechanical clocks
+reference	knowledge-summary	0x140ee0830	0x140ee2a2f	cstring	0x14173a380	the reasons why pulleys are effective
+reference	knowledge-summary	0x140ee0830	0x140ee2a44	cstring	0x14173a358	the construction and use of the pulley
+reference	knowledge-summary	0x140ee0830	0x140ee2a7b	cstring	0x14173a2b8	the reasons why the wheel-and-axle construction is effective
+reference	knowledge-summary	0x140ee0830	0x140ee2a90	cstring	0x14173a238	the construction and use of the screw
+reference	knowledge-summary	0x140ee0830	0x140ee2aa5	cstring	0x14173a260	the reasons why screws are effective
+reference	knowledge-summary	0x140ee0830	0x140ee2aba	cstring	0x14173a288	the construction and use of the windlass
+reference	knowledge-summary	0x140ee0830	0x140ee2ae8	cstring	0x14173a4e0	the construction and use of the lever
+reference	knowledge-summary	0x140ee0830	0x140ee2afd	cstring	0x14173a458	the reasons why the lever is effective
+reference	knowledge-summary	0x140ee0830	0x140ee2b12	cstring	0x14173a480	the reasons why the wedge is effective
+reference	knowledge-summary	0x140ee0830	0x140ee2b27	cstring	0x14173a4a8	the construction and use of the straight-beam balance
+reference	knowledge-summary	0x140ee0830	0x140ee2b6f	cstring	0x14173a428	the construction and use of the tumbler lock
+reference	knowledge-summary	0x140ee0830	0x140ee2b7e	cstring	0x14173a3a8	the construction and use of the warded lock
+reference	knowledge-summary	0x140ee0830	0x140ee2b99	cstring	0x14173a3d8	the reasons why gears are effective
+reference	knowledge-summary	0x140ee0830	0x140ee2bae	cstring	0x14173a400	the construction and use of the padlock
+reference	knowledge-summary	0x140ee0830	0x140ee2bdc	cstring	0x14173a670	the construction and use of the water-powered sawmill
+reference	knowledge-summary	0x140ee0830	0x140ee2bf1	cstring	0x14173a5d8	the construction and use of the crankshaft
+reference	knowledge-summary	0x140ee0830	0x140ee2c06	cstring	0x14173a608	the construction and use of the camshaft
+reference	knowledge-summary	0x140ee0830	0x140ee2c1b	cstring	0x14173a638	the construction and use of the chariot odometer
+reference	knowledge-summary	0x140ee0830	0x140ee2c52	cstring	0x14173a5a0	the construction and use of the differential gear
+reference	knowledge-summary	0x140ee0830	0x140ee2c67	cstring	0x14173a508	the construction and use of the mechanical compass
+reference	knowledge-summary	0x140ee0830	0x140ee2c7c	cstring	0x14173a540	the construction and use of chain drives
+reference	knowledge-summary	0x140ee0830	0x140ee2c91	cstring	0x14173a570	the construction and use of combination locks
+reference	knowledge-summary	0x140ee0830	0x140ee2cbf	cstring	0x14173b5c8	the action of the siphon
+reference	knowledge-summary	0x140ee0830	0x140ee2cd4	cstring	0x14173b538	the construction and use of the balance wheel
+reference	knowledge-summary	0x140ee0830	0x140ee2ce9	cstring	0x14173b568	the construction and use of the verge escapement
+reference	knowledge-summary	0x140ee0830	0x140ee2d42	cstring	0x14173b5a0	the construction and use of valves
+reference	knowledge-summary	0x140ee0830	0x140ee2d57	cstring	0x14173b498	the construction and use of the force pump
+reference	knowledge-summary	0x140ee0830	0x140ee2d6c	cstring	0x14173b468	the construction and use of the crystal lens
+reference	knowledge-summary	0x140ee0830	0x140ee2d81	cstring	0x14173b4f8	the construction and use of water-filled sphere as a lens
+reference	knowledge-summary	0x140ee0830	0x140ee2d96	cstring	0x14173b4c8	the construction and use of the glass lens
+reference	knowledge-summary	0x140ee0830	0x140ee2dab	cstring	0x14173b6c8	the construction and use of the camera obscura
+reference	knowledge-summary	0x140ee0830	0x140ee2dc0	cstring	0x14173b690	the construction and use of the parabolic mirror
+reference	knowledge-summary	0x140ee0830	0x140ee2dd5	cstring	0x14173b730	the theory of light and color
+reference	knowledge-summary	0x140ee0830	0x140ee2e0c	cstring	0x14173b5e8	the use of models and templates in engineering
+reference	knowledge-summary	0x140ee0830	0x140ee2e21	cstring	0x14173b618	the relation between refraction and the half chord
+reference	knowledge-summary	0x140ee0830	0x140ee2e36	cstring	0x14173b6f8	the appearance of rainbows based on optical theories
+reference	knowledge-summary	0x140ee0830	0x140ee2e4b	cstring	0x14173b678	the use of lamination
+reference	knowledge-summary	0x140ee0830	0x140ee2e79	cstring	0x14173b838	the construction and use of the armillary sphere
+reference	knowledge-summary	0x140ee0830	0x140ee2e8e	cstring	0x14173b870	the construction and use of the astrolabe
+reference	knowledge-summary	0x140ee0830	0x140ee2ea3	cstring	0x14173b650	the construction and use of the dioptra
+reference	knowledge-summary	0x140ee0830	0x140ee2eb8	cstring	0x14173b8d0	the construction and use of the spherical astrolabe
+reference	knowledge-summary	0x140ee0830	0x140ee2f00	cstring	0x14173b750	the construction and use of the water-powered trip hammer
+reference	knowledge-summary	0x140ee0830	0x140ee2f15	cstring	0x14173b790	the construction and use of the orrery
+reference	knowledge-summary	0x140ee0830	0x140ee2f2a	cstring	0x14173b8a0	the construction and use of mural instruments
+reference	knowledge-summary	0x140ee0830	0x140ee2f3f	cstring	0x14173b7f8	the construction and use of double-acting piston bellows
+reference	knowledge-summary	0x140ee0830	0x140ee2f6d	cstring	0x14173b9d0	a precise explanation of the cause of twilight involving atmospheric refraction
+reference	knowledge-summary	0x140ee0830	0x140ee2f82	cstring	0x14173ba20	atmospheric refraction
+reference	knowledge-summary	0x140ee0830	0x140ee2f97	cstring	0x14173b7b8	a precise description of buoyancy and water displacement
+reference	knowledge-summary	0x140ee0830	0x140ee2fac	cstring	0x14173ba60	the calculation of the height of the atmosphere based on atmospheric refraction
+reference	knowledge-summary	0x140ee0830	0x140ee2fe3	cstring	0x14173b908	the construction and use of the bellows
+reference	knowledge-summary	0x140ee0830	0x140ee2ff8	cstring	0x14173b930	the construction and use of the crank
+reference	knowledge-summary	0x140ee0830	0x140ee300d	cstring	0x14173ba38	the construction and use of the piston
+reference	knowledge-summary	0x140ee0830	0x140ee3022	cstring	0x14173b988	the construction and use of the water-powered piston bellows
+reference	knowledge-summary	0x140ee0830	0x140ee303f	cstring	0x14173bac0	the construction and use of the trip hammer
+reference	knowledge-summary	0x140ee0830	0x140ee3054	cstring	0x14173b958	the construction and use of the water wheel
+classic	knowledge-summary	0x140edb7a0	0x140edb82c	cstring	0x141732fe8	discourse on ethics as it regards the benefit of the state
+classic	knowledge-summary	0x140edb7a0	0x140edb841	cstring	0x141733028	discourse on the meaning of individual happiness
+classic	knowledge-summary	0x140edb7a0	0x140edb856	cstring	0x141732fb8	discourse on medical ethics
+classic	knowledge-summary	0x140edb7a0	0x140edb86b	cstring	0x141732f38	discourse on the nature of truth
+classic	knowledge-summary	0x140edb7a0	0x140edb892	cstring	0x141732f88	discourse on the nature of justification
+classic	knowledge-summary	0x140edb7a0	0x140edb8a7	cstring	0x141732f10	discourse on the nature of perception
+classic	knowledge-summary	0x140edb7a0	0x140edb8bc	cstring	0x141732f60	discourse on the nature of belief
+classic	knowledge-summary	0x140edb7a0	0x140edb8f8	cstring	0x141733088	discourse on the relationship between wholes and parts
+classic	knowledge-summary	0x140edb7a0	0x140edb90d	cstring	0x141733160	discourse on the relationship between objects and their properties
+classic	knowledge-summary	0x140edb7a0	0x140edb922	cstring	0x1417331a8	discourse on the nature of mind and body
+classic	knowledge-summary	0x140edb7a0	0x140edb937	cstring	0x141733110	discourse on the nature of time
+classic	knowledge-summary	0x140edb7a0	0x140edb94c	cstring	0x141733130	discourse on the nature of existence
+classic	knowledge-summary	0x140edb7a0	0x140edb961	cstring	0x141733060	discourse on the nature of events
+classic	knowledge-summary	0x140edb7a0	0x140edb9a9	cstring	0x141733270	discourse on ethics as applied to war
+classic	knowledge-summary	0x140edb7a0	0x140edb9be	cstring	0x1417330c0	discourse on the nature of causation
+classic	knowledge-summary	0x140edb7a0	0x140edb9d3	cstring	0x1417330e8	discourse on the nature of processes
+classic	knowledge-summary	0x140edb7a0	0x140edb9e8	cstring	0x141733238	discourse on ethics as applied to interpersonal conduct
+classic	knowledge-summary	0x140edb7a0	0x140edba0f	cstring	0x141733298	discourse on education
+classic	knowledge-summary	0x140edb7a0	0x140edba24	cstring	0x1417332b0	discourse on law
+classic	knowledge-summary	0x140edb7a0	0x140edba39	cstring	0x1417331f0	discourse on grammar
+classic	knowledge-summary	0x140edb7a0	0x140edba75	cstring	0x141733390	discourse on social welfare
+classic	knowledge-summary	0x140edb7a0	0x140edba8a	cstring	0x1417333b0	discourse on economic policy
+classic	knowledge-summary	0x140edb7a0	0x140edba9f	cstring	0x141733208	discourse on government
+classic	knowledge-summary	0x140edb7a0	0x140edbab4	cstring	0x141733220	discourse on diplomacy
+classic	knowledge-summary	0x140edb7a0	0x140edbac9	cstring	0x1417331d8	the notion of etymology
+classic	knowledge-summary	0x140edb7a0	0x140edbaf0	cstring	0x1417333d0	discourse on the value of art
+classic	knowledge-summary	0x140edb7a0	0x140edbb05	cstring	0x1417333f0	discourse on the nature of beauty
+classic	knowledge-summary	0x140edb7a0	0x140edbb28	cstring	0x1417332e8	the idea of using symbolic notation for addition
+classic	knowledge-summary	0x140edb7a0	0x140edbb5a	cstring	0x141733478	the notion of conflict between members of a community
+classic	knowledge-summary	0x140edb7a0	0x140edbb6f	cstring	0x1417334b0	the notion of bonds between members of a community
+classic	knowledge-summary	0x140edb7a0	0x140edbb84	cstring	0x141733320	the notion of historical, governmental and social cycles
+classic	knowledge-summary	0x140edb7a0	0x140edbb99	cstring	0x141733360	discourse on the causes of historical events
+classic	knowledge-summary	0x140edb7a0	0x140edbbae	cstring	0x1417332c8	the idea of source reliability
+classic	knowledge-summary	0x140edb7a0	0x140edbc95	cstring	0x141733500	formal reasoning
+classic	knowledge-summary	0x140edb7a0	0x140edbcaa	cstring	0x1417334e8	deductive reasoning
+classic	knowledge-summary	0x140edb7a0	0x140edbcbf	cstring	0x141733430	syllogistic logic
+classic	knowledge-summary	0x140edb7a0	0x140edbcd4	cstring	0x141733418	hypothetical syllogisms
+classic	knowledge-summary	0x140edb7a0	0x140edbce9	cstring	0x141733460	propositional logic
+classic	knowledge-summary	0x140edb7a0	0x140edbcfe	cstring	0x141733448	dialectic reasoning
+classic	knowledge-summary	0x140edb7a0	0x140edbd13	cstring	0x141733598	analogical inference
+classic	knowledge-summary	0x140edb7a0	0x140edbd28	cstring	0x141733588	medical ethics
+classic	knowledge-summary	0x140edb7a0	0x140edbd3d	cstring	0x1417335e0	the meaning of individual happiness
+classic	knowledge-summary	0x140edb7a0	0x140edbd74	cstring	0x141733518	the nature of perception
+classic	knowledge-summary	0x140edb7a0	0x140edbd89	cstring	0x141733538	the nature of truth
+classic	knowledge-summary	0x140edb7a0	0x140edbd9e	cstring	0x1417335b0	ethics as it regards the benefit of the state
+classic	knowledge-summary	0x140edb7a0	0x140edbdb3	cstring	0x141733568	the nature of justification
+classic	knowledge-summary	0x140edb7a0	0x140edbde1	cstring	0x141733680	the nature of time
+classic	knowledge-summary	0x140edb7a0	0x140edbdf6	cstring	0x141733698	the nature of existence
+classic	knowledge-summary	0x140edb7a0	0x140edbe0b	cstring	0x141733550	the nature of belief
+classic	knowledge-summary	0x140edb7a0	0x140edbe20	cstring	0x1417336e8	the nature of mind and body
+classic	knowledge-summary	0x140edb7a0	0x140edbe68	cstring	0x141733608	the nature of events
+classic	knowledge-summary	0x140edb7a0	0x140edbe7d	cstring	0x141733620	the relationship between wholes and parts
+classic	knowledge-summary	0x140edb7a0	0x140edbe92	cstring	0x1417336b0	the relationship between objects and their properties
+classic	knowledge-summary	0x140edb7a0	0x140edbea7	cstring	0x141733668	the nature of processes
+classic	knowledge-summary	0x140edb7a0	0x140edbed5	cstring	0x141733780	ethics as applied to interpersonal conduct
+classic	knowledge-summary	0x140edb7a0	0x140edbeea	cstring	0x1417337b0	ethics as applied to war
+classic	knowledge-summary	0x140edb7a0	0x140edbeff	cstring	0x141733650	the nature of causation
+classic	knowledge-summary	0x140edb7a0	0x140edbf14	cstring	0x141733800	law, its forms and recommendations
+classic	knowledge-summary	0x140edb7a0	0x140edbf4b	cstring	0x141733708	etymology
+classic	knowledge-summary	0x140edb7a0	0x140edbf60	cstring	0x141733718	grammar
+classic	knowledge-summary	0x140edb7a0	0x140edbf75	cstring	0x1417337d0	education, its forms and recommendations
+classic	knowledge-summary	0x140edb7a0	0x140edbf8a	cstring	0x141733750	diplomacy, its forms and recommendations
+classic	knowledge-summary	0x140edb7a0	0x140edbfb8	cstring	0x141731f18	social welfare, its forms and recommendations
+classic	knowledge-summary	0x140edb7a0	0x140edbfcd	cstring	0x141731f48	economic policy, its forms and recommendations
+classic	knowledge-summary	0x140edb7a0	0x140edbfe2	cstring	0x141733720	government, its forms and recommendations
+classic	knowledge-summary	0x140edb7a0	0x140edc017	cstring	0x141731f08	dictionaries
+classic	knowledge-summary	0x140edb7a0	0x140edc02c	cstring	0x141731eb0	the value of art
+classic	knowledge-summary	0x140edb7a0	0x140edc041	cstring	0x141731ec8	the nature of beauty
+classic	knowledge-summary	0x140edb7a0	0x140edc056	cstring	0x141731f78	direct inference
+classic	knowledge-summary	0x140edb7a0	0x140edc06b	cstring	0x141731f90	inductive reasoning
+classic	knowledge-summary	0x140edb7a0	0x140edc0c4	cstring	0x141731ee0	the method of proof by contradiction
+classic	knowledge-summary	0x140edb7a0	0x140edc0d9	cstring	0x141732110	a symbol for nothingness
+classic	knowledge-summary	0x140edb7a0	0x140edc0ee	cstring	0x1417320e8	notation for negative quantities
+classic	knowledge-summary	0x140edb7a0	0x140edc103	cstring	0x141732148	notation for very large numbers
+classic	knowledge-summary	0x140edb7a0	0x140edc118	cstring	0x141732130	positional notation
+classic	knowledge-summary	0x140edb7a0	0x140edc12d	cstring	0x141731fd0	geometric objects:  points, lines, circles, triangles, and so on
+classic	knowledge-summary	0x140edb7a0	0x140edc142	cstring	0x141731fa8	the method of exhaustion
+classic	knowledge-summary	0x140edb7a0	0x140edc157	cstring	0x1417320b0	the properties of similar and congruent triangles
+classic	knowledge-summary	0x140edb7a0	0x140edc16c	cstring	0x141732020	the relationship between the length of the altitude of a right triangle and the lengths of the segments into which it divides the hypotenuse
+classic	knowledge-summary	0x140edb7a0	0x140edc1a3	cstring	0x1417323c0	the relationship between the lengths of the hypotenuse of a right triangle and the other two sides
+classic	knowledge-summary	0x140edb7a0	0x140edc1b8	cstring	0x1417322b0	the angles of triangles inscribed in a circle with one edge on the diameter
+classic	knowledge-summary	0x140edb7a0	0x140edc1cd	cstring	0x141732300	the equality of the base angle of isosceles triangles
+classic	knowledge-summary	0x140edb7a0	0x140edc1e2	cstring	0x141732340	examples of triples of small whole numbers which, when taken together, are the lengths of the sides of a right triangle
+classic	knowledge-summary	0x140edb7a0	0x140edc210	cstring	0x141732280	the existence of incommensurable ratios
+classic	knowledge-summary	0x140edb7a0	0x140edc225	cstring	0x141732170	examples of triples of very large whole numbers which, when taken together, are the lengths of the sides of a right triangle
+classic	knowledge-summary	0x140edb7a0	0x140edc23a	cstring	0x1417321f0	examples of triples of large whole numbers which, when taken together, are the lengths of the sides of a right triangle
+classic	knowledge-summary	0x140edb7a0	0x140edc24f	cstring	0x141732268	axiomatic reasoning
+classic	knowledge-summary	0x140edb7a0	0x140edc297	cstring	0x141732658	the computation of the volume of different pyramids
+classic	knowledge-summary	0x140edb7a0	0x140edc2ac	cstring	0x141732590	an algorithm for computing the greatest common divisor of two numbers
+classic	knowledge-summary	0x140edb7a0	0x140edc2c1	cstring	0x1417325e0	the unique decomposition of a number into products of its prime divisors
+classic	knowledge-summary	0x140edb7a0	0x140edc2d6	cstring	0x141732630	the computation of the volume of a cone
+classic	knowledge-summary	0x140edb7a0	0x140edc304	cstring	0x141732530	an algorithm for dividing one number into another, possibly yielding a remainder
+classic	knowledge-summary	0x140edb7a0	0x140edc319	cstring	0x141732430	an approximate value of the ratio of the circumference of a circle to its diameter, using the circumference of polygons and the method of exhaustion
+classic	knowledge-summary	0x140edb7a0	0x140edc32e	cstring	0x1417324c8	the computation of the volume of a sphere
+classic	knowledge-summary	0x140edb7a0	0x140edc343	cstring	0x1417324f8	a table of chord lengths indexed by angle
+classic	knowledge-summary	0x140edb7a0	0x140edc37a	cstring	0x1417328c0	an approximation of the ratio of the circumference of a circle to its diameter, using the area of polygons and the method of exhaustion
+classic	knowledge-summary	0x140edb7a0	0x140edc38f	cstring	0x1417327a0	the relationship between the area of a circle and its radius, involving the ratio of the circumference of the circle to its diameter
+classic	knowledge-summary	0x140edb7a0	0x140edc3a4	cstring	0x141732830	the computation of the area of a triangle from its three side lengths alone
+classic	knowledge-summary	0x140edb7a0	0x140edc3b9	cstring	0x141732880	the categorization and properties of conic sections
+classic	knowledge-summary	0x140edb7a0	0x140edc3e7	cstring	0x141732768	an algorithm for calculating prime numbers
+classic	knowledge-summary	0x140edb7a0	0x140edc3fc	cstring	0x141732690	the area enclosed by a parabola and a line
+classic	knowledge-summary	0x140edb7a0	0x140edc411	cstring	0x1417326c0	an algorithm for computing a number which has given remainders when divided by several given primes
+classic	knowledge-summary	0x140edb7a0	0x140edc459	cstring	0x141732728	an approximation for the length of the diagonal of a square
+classic	knowledge-summary	0x140edb7a0	0x140edc46e	cstring	0x141732a98	a proof that there are infinitely many prime numbers
+classic	knowledge-summary	0x140edb7a0	0x140edc483	cstring	0x141732a40	a proof that the length of the diagonal of a square is incommensurable with its edge
+classic	knowledge-summary	0x140edb7a0	0x140edc498	cstring	0x141732b08	the computation of the surface area of a sphere
+classic	knowledge-summary	0x140edb7a0	0x140edc4ad	cstring	0x141732ad0	simple formulas for certain arbitrarily large sums
+classic	knowledge-summary	0x140edb7a0	0x140edc4c2	cstring	0x141732998	methods for solving systems of equations
+classic	knowledge-summary	0x140edb7a0	0x140edc4d7	cstring	0x141732950	the techniques of balancing and completion for solving equations
+classic	knowledge-summary	0x140edb7a0	0x140edc4ec	cstring	0x1417329f8	the solving of quadratic equations by completion of the square
+classic	knowledge-summary	0x140edb7a0	0x140edc501	cstring	0x1417329c8	a formula which solves quadratic equations
+classic	knowledge-summary	0x140edb7a0	0x140edc543	cstring	0x141732d20	a triangular configuration of numbers relating to the successive powers of any sum
+classic	knowledge-summary	0x140edb7a0	0x140edc558	cstring	0x141732d80	trigonometric identities relating to the sums and differences of angles
+classic	knowledge-summary	0x140edb7a0	0x140edc56d	cstring	0x141732c10	the relationship between the half chords of a triangle's angles, the opposite side lengths, and the diameter of the triangle's circumscribed circle
+classic	knowledge-summary	0x140edb7a0	0x140edc582	cstring	0x141732cb0	notation for abbreviating the unknown and other elements of an equation in a systematic and useful fashion
+classic	knowledge-summary	0x140edb7a0	0x140edc597	cstring	0x141732b70	methods for solving certain equations involving powers higher than the quadratic
+classic	knowledge-summary	0x140edb7a0	0x140edc5c5	cstring	0x141732bc8	the properties of chords
+classic	knowledge-summary	0x140edb7a0	0x140edc5da	cstring	0x141732be8	the divergence of the harmonic series
+classic	knowledge-summary	0x140edb7a0	0x140edc5ef	cstring	0x141732b38	experiments with symbolic notation for addition
+classic	knowledge-summary	0x140edb7a0	0x140edc644	cstring	0x141732df8	the causes of historical events
+classic	knowledge-summary	0x140edb7a0	0x140edc659	cstring	0x141732eb0	using personal interviews as sources
+classic	knowledge-summary	0x140edb7a0	0x140edc66e	cstring	0x141732ed8	the role of state bias and propaganda in sources
+classic	knowledge-summary	0x140edb7a0	0x140edc683	cstring	0x141732e68	the role of systemic bias in sources
+classic	knowledge-summary	0x140edb7a0	0x140edc698	cstring	0x141732e90	the reliability of sources
+classic	knowledge-summary	0x140edb7a0	0x140edc6ad	cstring	0x141732dc8	historical, governmental and social cycles
+classic	knowledge-summary	0x140edb7a0	0x140edc6de	cstring	0x1417343d0	the method of compiling several biographies to compare and contrast the subjects' character and to gain insight into history
+classic	knowledge-summary	0x140edb7a0	0x140edc6f3	cstring	0x141734450	the method of writing the history of a single individual
+classic	knowledge-summary	0x140edb7a0	0x140edc708	cstring	0x141732e18	conflict between members of a community
+classic	knowledge-summary	0x140edb7a0	0x140edc71d	cstring	0x141732e40	bonds between members of a community
+classic	knowledge-summary	0x140edb7a0	0x140edc732	cstring	0x141734500	the compilation of brief biographies into one large collection
+classic	knowledge-summary	0x140edb7a0	0x140edc774	cstring	0x141734370	the method of accurately and comprehensively describing cultures and civilizations
+classic	knowledge-summary	0x140edb7a0	0x140edc789	cstring	0x1417342a0	the compilation of many summaries into a single text
+classic	knowledge-summary	0x140edb7a0	0x140edc79e	cstring	0x1417342e0	the compilation of family lineages and methods of displaying them artfully
+classic	knowledge-summary	0x140edb7a0	0x140edc7b3	cstring	0x141734490	the method of writing a biography of oneself, particularly as it concerns a military campaign or adventure
+classic	knowledge-summary	0x140edb7a0	0x140edc7c8	cstring	0x141734330	the method of comparing and contrasting different cultures
+classic	knowledge-summary	0x140edb7a0	0x140edc7fd	cstring	0x141734690	the method of examining artifacts to determine how techniques have changed over time
+classic	knowledge-summary	0x140edb7a0	0x140edc812	cstring	0x1417346f0	the method of collecting and evaluating artifacts to learn about history and culture
+classic	knowledge-summary	0x140edb7a0	0x140edc827	cstring	0x1417345d0	the exploration of how history would be different if some key past events had transpired differently
+classic	knowledge-summary	0x140edb7a0	0x140edc83c	cstring	0x141734640	the role of cultural differences in source reliability and interpretation
+classic	knowledge-summary	0x140edb7a0	0x140edc891	cstring	0x141734820	the height of the tides, the moon and the sun
+classic	knowledge-summary	0x140edb7a0	0x140edc8a6	cstring	0x141734588	the relationship between the moon and the tides
+classic	knowledge-summary	0x140edb7a0	0x140edc8bb	cstring	0x1417345b8	the path of the moon
+classic	knowledge-summary	0x140edb7a0	0x140edc8d0	cstring	0x141734540	the rise of the moon according to the season
+classic	knowledge-summary	0x140edb7a0	0x140edc8e5	cstring	0x141734570	the phases of the moon
+classic	knowledge-summary	0x140edb7a0	0x140edc8f4	cstring	0x1417347f0	the rise of the sun according to the season
+classic	knowledge-summary	0x140edb7a0	0x140edc92b	cstring	0x141734748	the theory that the world moves around the sun
+classic	knowledge-summary	0x140edb7a0	0x140edc940	cstring	0x141734778	the theory that the sun moves around the world
+classic	knowledge-summary	0x140edb7a0	0x140edc955	cstring	0x141734850	the variation of daylight with the season
+classic	knowledge-summary	0x140edb7a0	0x140edc96a	cstring	0x141734880	the relationship between the lunar and solar year
+classic	knowledge-summary	0x140edb7a0	0x140edc97f	cstring	0x1417347c8	the dates of lunar and solar eclipses
+classic	knowledge-summary	0x140edb7a0	0x140edc9c1	cstring	0x141734a30	the classification of stars according to color
+classic	knowledge-summary	0x140edb7a0	0x140edc9d6	cstring	0x141734990	the precise compilation of information about stars
+classic	knowledge-summary	0x140edb7a0	0x140edc9eb	cstring	0x1417349c8	the compilation of information about stars
+classic	knowledge-summary	0x140edb7a0	0x140edca00	cstring	0x1417347a8	the creation of star charts
+classic	knowledge-summary	0x140edb7a0	0x140edca15	cstring	0x1417349f8	the classification of stars according to brightness
+classic	knowledge-summary	0x140edb7a0	0x140edca4a	cstring	0x141734910	the method of forming precise models for the paths of astronomical objects
+classic	knowledge-summary	0x140edb7a0	0x140edca5f	cstring	0x141734960	methods of empirical observation in astronomy
+classic	knowledge-summary	0x140edb7a0	0x140edca74	cstring	0x1417348b8	the precession of the equinoxes over great periods of time
+classic	knowledge-summary	0x140edb7a0	0x140edca89	cstring	0x1417348f8	the shape of the world
+classic	knowledge-summary	0x140edb7a0	0x140edcacf	cstring	0x141734b40	the dissection of creatures
+classic	knowledge-summary	0x140edb7a0	0x140edcae4	cstring	0x141734b18	the anatomical study of creatures
+classic	knowledge-summary	0x140edb7a0	0x140edcaf9	cstring	0x141734ba0	the comparison of the anatomy of creatures
+classic	knowledge-summary	0x140edb7a0	0x140edcb0e	cstring	0x141734b60	the classification of creatures by their physical features
+classic	knowledge-summary	0x140edb7a0	0x140edcb23	cstring	0x141734a88	the migratory patterns of creatures
+classic	knowledge-summary	0x140edb7a0	0x140edcb38	cstring	0x141734a60	the reproductive behavior of creatures
+classic	knowledge-summary	0x140edb7a0	0x140edcb47	cstring	0x141734ae8	the foraging behavior and diet of creatures
+classic	knowledge-summary	0x140edb7a0	0x140edcb84	cstring	0x141734c78	the diseases of creatures
+classic	knowledge-summary	0x140edb7a0	0x140edcb99	cstring	0x141734c98	the social behavior of creatures
+classic	knowledge-summary	0x140edb7a0	0x140edcbae	cstring	0x141734ab0	the links between the diets of different creatures
+classic	knowledge-summary	0x140edb7a0	0x140edcbc3	cstring	0x141734cf0	the ways that creatures are suited to the climates in which they live
+classic	knowledge-summary	0x140edb7a0	0x140edcbea	cstring	0x141734c00	the struggle for survival among creatures
+classic	knowledge-summary	0x140edb7a0	0x140edcbff	cstring	0x141734cc0	the embriological development of creatures
+classic	knowledge-summary	0x140edb7a0	0x140edcc50	cstring	0x141734bd0	the classification of combustible materials
+classic	knowledge-summary	0x140edb7a0	0x140edcc6b	cstring	0x141734c58	the classification of ores
+classic	knowledge-summary	0x140edb7a0	0x140edcc80	cstring	0x141734c30	the mixture of metals to produce alloys
+classic	knowledge-summary	0x140edb7a0	0x140edcc95	cstring	0x141734e90	a method of classify the hardness of materials by scratching them against each other
+classic	knowledge-summary	0x140edb7a0	0x140edccaa	cstring	0x141734e30	the classification of materials based on which elemental materials might form them
+classic	knowledge-summary	0x140edb7a0	0x140edccbf	cstring	0x141734f18	the preparation and use of adhesive materials
+classic	knowledge-summary	0x140edb7a0	0x140edccd4	cstring	0x141734ee8	the construction and use of the blast furnace
+classic	knowledge-summary	0x140edb7a0	0x140edcd10	cstring	0x141735038	the classification of alkali and acids
+classic	knowledge-summary	0x140edb7a0	0x140edcd25	cstring	0x141734dd0	the theory and methods involved in evaporation
+classic	knowledge-summary	0x140edb7a0	0x140edcd3a	cstring	0x141734e00	the theory and methods involved in distillation
+classic	knowledge-summary	0x140edb7a0	0x140edcd4f	cstring	0x141734d40	the theory and methods involved in the extraction of a constituent liquid from one solution to another
+classic	knowledge-summary	0x140edb7a0	0x140edcd64	cstring	0x141734da8	the construction and use of the alembic
+classic	knowledge-summary	0x140edb7a0	0x140edcd79	cstring	0x141734ff0	methods for performing experiments systematically in the laboratory
+classic	knowledge-summary	0x140edb7a0	0x140edcdc6	cstring	0x141734fc0	the construction and use of the crucible
+classic	knowledge-summary	0x140edb7a0	0x140edcddb	cstring	0x141734f48	the construction and use of the funnel
+classic	knowledge-summary	0x140edb7a0	0x140edcdf0	cstring	0x141734f70	the construction and use of the vial
+classic	knowledge-summary	0x140edb7a0	0x140edce05	cstring	0x141735060	the construction and use of the beaker
+classic	knowledge-summary	0x140edb7a0	0x140edce1a	cstring	0x141735088	the construction and use of the flask
+classic	knowledge-summary	0x140edb7a0	0x140edce2f	cstring	0x141734f98	the preparation of spirit of niter
+classic	knowledge-summary	0x140edb7a0	0x140edce6b	cstring	0x141733848	the construction and use of laboratory ovens
+classic	knowledge-summary	0x140edb7a0	0x140edce80	cstring	0x141733918	the construction and use of the retort
+classic	knowledge-summary	0x140edb7a0	0x140edce95	cstring	0x141733940	the construction and use of the ampoule
+classic	knowledge-summary	0x140edb7a0	0x140edceaa	cstring	0x1417338d0	the preparation of aqua regia
+classic	knowledge-summary	0x140edb7a0	0x140edcebf	cstring	0x1417338f0	the preparation of oil of vitriol
+classic	knowledge-summary	0x140edb7a0	0x140edcf14	cstring	0x141733a40	surveying by triangulation for the purpose of creating maps
+classic	knowledge-summary	0x140edb7a0	0x140edcf29	cstring	0x141733a80	surveying by triangulation
+classic	knowledge-summary	0x140edb7a0	0x140edcf3e	cstring	0x141733878	the process involved in creating maps
+classic	knowledge-summary	0x140edb7a0	0x140edcf53	cstring	0x1417338a0	the construction and use of the surveying staff
+classic	knowledge-summary	0x140edb7a0	0x140edcf68	cstring	0x141733828	the process of surveying land
+classic	knowledge-summary	0x140edb7a0	0x140edcf7d	cstring	0x141733ad8	surveying by triangulation for the purpose of allocating land
+classic	knowledge-summary	0x140edb7a0	0x140edcfb5	cstring	0x1417339d0	the use of a distance scale in the creation of maps
+classic	knowledge-summary	0x140edb7a0	0x140edcfca	cstring	0x141733a08	the use of a grid system in the creation of maps
+classic	knowledge-summary	0x140edb7a0	0x140edcfdf	cstring	0x141733968	the placement of geological information on maps
+classic	knowledge-summary	0x140edb7a0	0x140edcff4	cstring	0x141733998	surveying by triangulation for engineering projects
+classic	knowledge-summary	0x140edb7a0	0x140edd009	cstring	0x141733aa0	surveying by triangulation for military purposes
+classic	knowledge-summary	0x140edb7a0	0x140edd01e	cstring	0x141733c40	the measurement of the heights of land features
+classic	knowledge-summary	0x140edb7a0	0x140edd06b	cstring	0x141733b18	the forces that govern wind patterns
+classic	knowledge-summary	0x140edb7a0	0x140edd080	cstring	0x141733b40	the process of the formation of deltas at the mouths of rivers
+classic	knowledge-summary	0x140edb7a0	0x140edd095	cstring	0x141733c70	the collection of maps and other information into a single text
+classic	knowledge-summary	0x140edb7a0	0x140edd0aa	cstring	0x141733cb0	the placement of economic information on maps
+classic	knowledge-summary	0x140edb7a0	0x140edd0bf	cstring	0x141733c18	the process of economic data collection
+classic	knowledge-summary	0x140edb7a0	0x140edd0d4	cstring	0x141733bd8	the origin of rainfall through evaporation and condensation
+classic	knowledge-summary	0x140edb7a0	0x140edd109	cstring	0x141733e10	methods of adjusting maps to account for the shape of the world
+classic	knowledge-summary	0x140edb7a0	0x140edd11e	cstring	0x141733d90	the creation of accurate maps
+classic	knowledge-summary	0x140edb7a0	0x140edd133	cstring	0x141733db0	the division of the world into climate zones
+classic	knowledge-summary	0x140edb7a0	0x140edd148	cstring	0x141733b80	a world-wide cycle involving precipitation, oceans, rivers and other forms of water
+classic	knowledge-summary	0x140edb7a0	0x140edd1a1	cstring	0x141733de0	the connection between disease and fouled water
+classic	knowledge-summary	0x140edb7a0	0x140edd1b6	cstring	0x141733cf8	the method of physical examination in diagnosing illness
+classic	knowledge-summary	0x140edb7a0	0x140edd1cb	cstring	0x141733ce0	the method of autopsy
+classic	knowledge-summary	0x140edb7a0	0x140edd1e0	cstring	0x141733d50	determining the likely outcome given a patient's current status
+classic	knowledge-summary	0x140edb7a0	0x140edd1f5	cstring	0x141733d38	herbal remedies
+classic	knowledge-summary	0x140edb7a0	0x140edd20a	cstring	0x141733f08	remedies prepared from animals
+classic	knowledge-summary	0x140edb7a0	0x140edd21f	cstring	0x141733ef0	mineral remedies
+classic	knowledge-summary	0x140edb7a0	0x140edd234	cstring	0x141733f48	the method of bandaging wounds
+classic	knowledge-summary	0x140edb7a0	0x140edd249	cstring	0x141733f28	the classification of disease
+classic	knowledge-summary	0x140edb7a0	0x140edd280	cstring	0x141733ed0	the theory of endemic disease
+classic	knowledge-summary	0x140edb7a0	0x140edd295	cstring	0x141733e50	the distinction between acute and chronic conditions
+classic	knowledge-summary	0x140edb7a0	0x140edd2aa	cstring	0x141733e88	the classification of toxic substances
+classic	knowledge-summary	0x140edb7a0	0x140edd2bf	cstring	0x141733eb0	the theory of epidemic disease
+classic	knowledge-summary	0x140edb7a0	0x140edd2ed	cstring	0x141734070	the notion of relapse
+classic	knowledge-summary	0x140edb7a0	0x140edd302	cstring	0x141734000	the notion of paroxysm
+classic	knowledge-summary	0x140edb7a0	0x140edd317	cstring	0x141734018	the notion of the exacerbation of a patient's condition
+classic	knowledge-summary	0x140edb7a0	0x140edd32c	cstring	0x141734050	the theory of convalescence
+classic	knowledge-summary	0x140edb7a0	0x140edd374	cstring	0x141733fe0	the classification of fractures
+classic	knowledge-summary	0x140edb7a0	0x140edd389	cstring	0x141733f68	the treatment of fractures
+classic	knowledge-summary	0x140edb7a0	0x140edd39e	cstring	0x141733f88	the treatment of traumatic injuries
+classic	knowledge-summary	0x140edb7a0	0x140edd3b3	cstring	0x141733fb0	the construction and use of the traction bench
+classic	knowledge-summary	0x140edb7a0	0x140edd3e1	cstring	0x141734160	the surgical method of excision
+classic	knowledge-summary	0x140edb7a0	0x140edd3f0	cstring	0x1417340e8	the creation and use of the orthopedic cast
+classic	knowledge-summary	0x140edb7a0	0x140edd40b	cstring	0x141734118	the method of fracture immobilization
+classic	knowledge-summary	0x140edb7a0	0x140edd420	cstring	0x141734140	the surgical method of incision
+classic	knowledge-summary	0x140edb7a0	0x140edd457	cstring	0x1417340d0	the lithotomy surgery
+classic	knowledge-summary	0x140edb7a0	0x140edd46c	cstring	0x141734088	the tracheotomy surgery
+classic	knowledge-summary	0x140edb7a0	0x140edd481	cstring	0x1417340a0	hernia surgery
+classic	knowledge-summary	0x140edb7a0	0x140edd496	cstring	0x1417340b0	the surgical method of scraping
+classic	knowledge-summary	0x140edb7a0	0x140edd4c4	cstring	0x141734280	the surgical method of suturing
+classic	knowledge-summary	0x140edb7a0	0x140edd4d9	cstring	0x141734220	the surgical method of probing
+classic	knowledge-summary	0x140edb7a0	0x140edd4ee	cstring	0x141734240	the surgical method of draining
+classic	knowledge-summary	0x140edb7a0	0x140edd547	cstring	0x141734260	the surgical method of ligature
+classic	knowledge-summary	0x140edb7a0	0x140edd55c	cstring	0x1417341a8	the use of practice models in surgery
+classic	knowledge-summary	0x140edb7a0	0x140edd571	cstring	0x141734180	the use of mud bags as surgical models
+classic	knowledge-summary	0x140edb7a0	0x140edd586	cstring	0x1417341f8	the use of plants as surgical models
+classic	knowledge-summary	0x140edb7a0	0x140edd59b	cstring	0x1417341d0	the use of animals as surgical models
+classic	knowledge-summary	0x140edb7a0	0x140edd5aa	cstring	0x141735800	the use of specialized surgical instruments
+classic	knowledge-summary	0x140edb7a0	0x140edd5c5	cstring	0x1417357d8	the construction and use of forceps
+classic	knowledge-summary	0x140edb7a0	0x140edd5da	cstring	0x141735860	the construction and use of the scalpel
+classic	knowledge-summary	0x140edb7a0	0x140edd5ef	cstring	0x141735830	the construction and use of surgical scissors
+classic	knowledge-summary	0x140edb7a0	0x140edd626	cstring	0x1417357c8	cauterization
+classic	knowledge-summary	0x140edb7a0	0x140edd63b	cstring	0x141735770	cataract surgery
+classic	knowledge-summary	0x140edb7a0	0x140edd650	cstring	0x141735788	the construction and use of surgical needles
+classic	knowledge-summary	0x140edb7a0	0x140edd665	cstring	0x1417357b8	anesthesia
+classic	knowledge-summary	0x140edb7a0	0x140edd693	cstring	0x141735998	the classification of bodily fluids
+classic	knowledge-summary	0x140edb7a0	0x140edd6a8	cstring	0x141735938	anatomical studies for medical edification
+classic	knowledge-summary	0x140edb7a0	0x140edd6bd	cstring	0x141735968	pulmonary medicine
+classic	knowledge-summary	0x140edb7a0	0x140edd6d2	cstring	0x141735980	the anatomy of the eye
+classic	knowledge-summary	0x140edb7a0	0x140edd71a	cstring	0x141735918	the study of reaction time
+classic	knowledge-summary	0x140edb7a0	0x140edd72f	cstring	0x141735888	the function of the nervous system
+classic	knowledge-summary	0x140edb7a0	0x140edd744	cstring	0x1417358b0	the distinction between motor and sensory nerves
+classic	knowledge-summary	0x140edb7a0	0x140edd759	cstring	0x1417358e8	the distinction between veins and arteries
+classic	knowledge-summary	0x140edb7a0	0x140edd787	cstring	0x141735ad8	the source of the voice
+classic	knowledge-summary	0x140edb7a0	0x140edd79c	cstring	0x141735a68	comparative anatomical studies for use in medicine
+classic	knowledge-summary	0x140edb7a0	0x140edd7b1	cstring	0x141735aa0	pulmonary circulation
+classic	knowledge-summary	0x140edb7a0	0x140edd7c6	cstring	0x141735ab8	the classification of muscles
+classic	knowledge-summary	0x140edb7a0	0x140edd7fd	cstring	0x141735a38	the preparation and use of dedicated hospitals
+classic	knowledge-summary	0x140edb7a0	0x140edd812	cstring	0x1417359c0	the treatment of mental illnesses
+classic	knowledge-summary	0x140edb7a0	0x140edd827	cstring	0x1417359e8	the classification of mental illnesses
+classic	knowledge-summary	0x140edb7a0	0x140edd83c	cstring	0x141735a10	the use of professional hospital staff
+classic	knowledge-summary	0x140edb7a0	0x140edd86a	cstring	0x141735c98	schools of medicine
+classic	knowledge-summary	0x140edb7a0	0x140edd87f	cstring	0x141735bf0	the use of a laboratory for preparation of remedies in a hospital
+classic	knowledge-summary	0x140edb7a0	0x140edd894	cstring	0x141735c38	the use of specialized wards in hospitals
+classic	knowledge-summary	0x140edb7a0	0x140edd8b3	cstring	0x141735c68	the creation of asylums for the mentally ill
+classic	knowledge-summary	0x140edb7a0	0x140edd90c	cstring	0x141735b20	the use of shadows to tell direction and time
+classic	knowledge-summary	0x140edb7a0	0x140edd91b	cstring	0x141735af0	the use of water-based devices to tell time
+classic	knowledge-summary	0x140edb7a0	0x140edd936	cstring	0x141735ba0	the use of conical shapes in water-based clocks to improve their accuracy
+classic	knowledge-summary	0x140edb7a0	0x140edd94b	cstring	0x141735b50	the use of reservoirs in water-based clocks to improve their accuracy
+classic	knowledge-summary	0x140edb7a0	0x140edd960	cstring	0x141735d98	the construction and use of the astrarium
+classic	knowledge-summary	0x140edb7a0	0x140edd975	cstring	0x141735d68	the construction and use of the hourglass
+classic	knowledge-summary	0x140edb7a0	0x140edd98a	cstring	0x141735df0	the construction and use of mechanical clocks
+classic	knowledge-summary	0x140edb7a0	0x140edd99f	cstring	0x141735dc8	the reasons why pulleys are effective
+classic	knowledge-summary	0x140edb7a0	0x140edd9b4	cstring	0x141735cd8	the construction and use of the pulley
+classic	knowledge-summary	0x140edb7a0	0x140edd9eb	cstring	0x141735d00	the reasons why the wheel-and-axle construction is effective
+classic	knowledge-summary	0x140edb7a0	0x140edda00	cstring	0x141735d40	the construction and use of the screw
+classic	knowledge-summary	0x140edb7a0	0x140edda15	cstring	0x141735cb0	the reasons why screws are effective
+classic	knowledge-summary	0x140edb7a0	0x140edda2a	cstring	0x141735f08	the construction and use of the windlass
+classic	knowledge-summary	0x140edb7a0	0x140edda58	cstring	0x141735f38	the construction and use of the lever
+classic	knowledge-summary	0x140edb7a0	0x140edda6d	cstring	0x141735f60	the reasons why the lever is effective
+classic	knowledge-summary	0x140edb7a0	0x140edda82	cstring	0x141735ee0	the reasons why the wedge is effective
+classic	knowledge-summary	0x140edb7a0	0x140edda97	cstring	0x141735e48	the construction and use of the straight-beam balance
+classic	knowledge-summary	0x140edb7a0	0x140eddadf	cstring	0x141735e80	the construction and use of the tumbler lock
+classic	knowledge-summary	0x140edb7a0	0x140eddaee	cstring	0x141735eb0	the construction and use of the warded lock
+classic	knowledge-summary	0x140edb7a0	0x140eddb09	cstring	0x141735e20	the reasons why gears are effective
+classic	knowledge-summary	0x140edb7a0	0x140eddb1e	cstring	0x141736090	the construction and use of the padlock
+classic	knowledge-summary	0x140edb7a0	0x140eddb4c	cstring	0x1417360b8	the construction and use of the water-powered sawmill
+classic	knowledge-summary	0x140edb7a0	0x140eddb61	cstring	0x1417360f0	the construction and use of the crankshaft
+classic	knowledge-summary	0x140edb7a0	0x140eddb76	cstring	0x141736060	the construction and use of the camshaft
+classic	knowledge-summary	0x140edb7a0	0x140eddb8b	cstring	0x141735fb8	the construction and use of the chariot odometer
+classic	knowledge-summary	0x140edb7a0	0x140eddbc2	cstring	0x141735ff0	the construction and use of the differential gear
+classic	knowledge-summary	0x140edb7a0	0x140eddbd7	cstring	0x141736028	the construction and use of the mechanical compass
+classic	knowledge-summary	0x140edb7a0	0x140eddbec	cstring	0x141735f88	the construction and use of chain drives
+classic	knowledge-summary	0x140edb7a0	0x140eddc01	cstring	0x141736220	the construction and use of combination locks
+classic	knowledge-summary	0x140edb7a0	0x140eddc2f	cstring	0x141736250	the action of the siphon
+classic	knowledge-summary	0x140edb7a0	0x140eddc44	cstring	0x141736270	the construction and use of the balance wheel
+classic	knowledge-summary	0x140edb7a0	0x140eddc59	cstring	0x1417361e8	the construction and use of the verge escapement
+classic	knowledge-summary	0x140edb7a0	0x140eddcb2	cstring	0x141736150	the construction and use of valves
+classic	knowledge-summary	0x140edb7a0	0x140eddcc7	cstring	0x141736120	the construction and use of the force pump
+classic	knowledge-summary	0x140edb7a0	0x140eddcdc	cstring	0x1417361b8	the construction and use of the crystal lens
+classic	knowledge-summary	0x140edb7a0	0x140eddcf1	cstring	0x141736178	the construction and use of water-filled sphere as a lens
+classic	knowledge-summary	0x140edb7a0	0x140eddd06	cstring	0x141735198	the construction and use of the glass lens
+classic	knowledge-summary	0x140edb7a0	0x140eddd1b	cstring	0x141735168	the construction and use of the camera obscura
+classic	knowledge-summary	0x140edb7a0	0x140eddd30	cstring	0x1417351e8	the construction and use of the parabolic mirror
+classic	knowledge-summary	0x140edb7a0	0x140eddd45	cstring	0x1417351c8	the theory of light and color
+classic	knowledge-summary	0x140edb7a0	0x140eddd7c	cstring	0x141735138	the use of models and templates in engineering
+classic	knowledge-summary	0x140edb7a0	0x140eddd91	cstring	0x1417350b0	the relation between refraction and the half chord
+classic	knowledge-summary	0x140edb7a0	0x140eddda6	cstring	0x1417350e8	the appearance of rainbows based on optical theories
+classic	knowledge-summary	0x140edb7a0	0x140edddbb	cstring	0x141735120	the use of lamination
+classic	knowledge-summary	0x140edb7a0	0x140eddde9	cstring	0x141735388	the construction and use of the armillary sphere
+classic	knowledge-summary	0x140edb7a0	0x140edddfe	cstring	0x1417352f8	the construction and use of the astrolabe
+classic	knowledge-summary	0x140edb7a0	0x140edde13	cstring	0x141735328	the construction and use of the dioptra
+classic	knowledge-summary	0x140edb7a0	0x140edde28	cstring	0x141735350	the construction and use of the spherical astrolabe
+classic	knowledge-summary	0x140edb7a0	0x140edde70	cstring	0x1417352b8	the construction and use of the water-powered trip hammer
+classic	knowledge-summary	0x140edb7a0	0x140edde85	cstring	0x141735220	the construction and use of the orrery
+classic	knowledge-summary	0x140edb7a0	0x140edde9a	cstring	0x141735248	the construction and use of mural instruments
+classic	knowledge-summary	0x140edb7a0	0x140eddeaf	cstring	0x141735278	the construction and use of double-acting piston bellows
+classic	knowledge-summary	0x140edb7a0	0x140eddedd	cstring	0x141735520	a precise explanation of the cause of twilight involving atmospheric refraction
+classic	knowledge-summary	0x140edb7a0	0x140eddef2	cstring	0x141735478	atmospheric refraction
+classic	knowledge-summary	0x140edb7a0	0x140eddf07	cstring	0x141735490	a precise description of buoyancy and water displacement
+classic	knowledge-summary	0x140edb7a0	0x140eddf1c	cstring	0x1417354d0	the calculation of the height of the atmosphere based on atmospheric refraction
+classic	knowledge-summary	0x140edb7a0	0x140eddf53	cstring	0x141735450	the construction and use of the bellows
+classic	knowledge-summary	0x140edb7a0	0x140eddf68	cstring	0x1417353c0	the construction and use of the crank
+classic	knowledge-summary	0x140edb7a0	0x140eddf7d	cstring	0x1417353e8	the construction and use of the piston
+classic	knowledge-summary	0x140edb7a0	0x140eddf92	cstring	0x141735410	the construction and use of the water-powered piston bellows
+classic	knowledge-summary	0x140edb7a0	0x140eddfaf	cstring	0x141735588	the construction and use of the trip hammer
+classic	knowledge-summary	0x140edb7a0	0x140eddfc4	cstring	0x1417355b8	the construction and use of the water wheel
+reference	knowledge-reference	0x140ef8fb0	0x140ef901d	cstring	0x141737b28	formal reasoning
+reference	knowledge-reference	0x140ef8fb0	0x140ef9032	cstring	0x141737b90	deductive reasoning
+reference	knowledge-reference	0x140ef8fb0	0x140ef9047	cstring	0x141737b78	syllogistic logic
+reference	knowledge-reference	0x140ef8fb0	0x140ef905c	cstring	0x141737ae0	hypothetical syllogisms
+reference	knowledge-reference	0x140ef8fb0	0x140ef9071	cstring	0x141737ac8	propositional logic
+reference	knowledge-reference	0x140ef8fb0	0x140ef9086	cstring	0x141737b10	dialectic reasoning
+reference	knowledge-reference	0x140ef8fb0	0x140ef909b	cstring	0x141737af8	analogical inference
+reference	knowledge-reference	0x140ef8fb0	0x140ef90b0	cstring	0x141737c40	medical ethics
+reference	knowledge-reference	0x140ef8fb0	0x140ef90c5	cstring	0x141741578	individual happiness
+reference	knowledge-reference	0x140ef8fb0	0x140ef90fc	cstring	0x1417414f8	perception
+reference	knowledge-reference	0x140ef8fb0	0x140ef9111	cstring	0x1416415dc	truth
+reference	knowledge-reference	0x140ef8fb0	0x140ef9126	cstring	0x141741560	ethics and the state
+reference	knowledge-reference	0x140ef8fb0	0x140ef913b	cstring	0x1417414e8	justification
+reference	knowledge-reference	0x140ef8fb0	0x140ef9169	cstring	0x1416d3444	time
+reference	knowledge-reference	0x140ef8fb0	0x140ef917e	cstring	0x141741508	existence
+reference	knowledge-reference	0x140ef8fb0	0x140ef9193	cstring	0x141741514	belief
+reference	knowledge-reference	0x140ef8fb0	0x140ef91a8	cstring	0x1417415f0	mind and body
+reference	knowledge-reference	0x140ef8fb0	0x140ef91f0	cstring	0x141741600	events
+reference	knowledge-reference	0x140ef8fb0	0x140ef9205	cstring	0x141741608	wholes and parts
+reference	knowledge-reference	0x140ef8fb0	0x140ef921a	cstring	0x1417415d8	objects and properties
+reference	knowledge-reference	0x140ef8fb0	0x140ef922f	cstring	0x1417415a0	processes
+reference	knowledge-reference	0x140ef8fb0	0x140ef925d	cstring	0x1417415b0	interpersonal ethics
+reference	knowledge-reference	0x140ef8fb0	0x140ef926c	cstring	0x1417415c8	military ethics
+reference	knowledge-reference	0x140ef8fb0	0x140ef9287	cstring	0x141741590	causation
+reference	knowledge-reference	0x140ef8fb0	0x140ef929c	cstring	0x1416415b8	law
+reference	knowledge-reference	0x140ef8fb0	0x140ef92d3	cstring	0x141738bc0	etymology
+reference	knowledge-reference	0x140ef8fb0	0x140ef92e8	cstring	0x141738c88	grammar
+reference	knowledge-reference	0x140ef8fb0	0x140ef92fd	cstring	0x141741688	education
+reference	knowledge-reference	0x140ef8fb0	0x140ef9312	cstring	0x141673cb8	diplomacy
+reference	knowledge-reference	0x140ef8fb0	0x140ef9340	cstring	0x1417416b0	social welfare
+reference	knowledge-reference	0x140ef8fb0	0x140ef934f	cstring	0x141741678	economic policy
+reference	knowledge-reference	0x140ef8fb0	0x140ef936a	cstring	0x141615650	government
+reference	knowledge-reference	0x140ef8fb0	0x140ef939f	cstring	0x141738cc0	dictionaries
+reference	knowledge-reference	0x140ef8fb0	0x140ef93b4	cstring	0x1416a1258	art
+reference	knowledge-reference	0x140ef8fb0	0x140ef93c9	cstring	0x1416a1268	beauty
+reference	knowledge-reference	0x140ef8fb0	0x140ef93de	cstring	0x141738d90	direct inference
+reference	knowledge-reference	0x140ef8fb0	0x140ef93f3	cstring	0x141738d30	inductive reasoning
+reference	knowledge-reference	0x140ef8fb0	0x140ef944e	cstring	0x141741698	proof by contradiction
+reference	knowledge-reference	0x140ef8fb0	0x140ef9463	cstring	0x141741638	nothingness
+reference	knowledge-reference	0x140ef8fb0	0x140ef9478	cstring	0x141741620	negative quantities
+reference	knowledge-reference	0x140ef8fb0	0x140ef948d	cstring	0x141741660	very large numbers
+reference	knowledge-reference	0x140ef8fb0	0x140ef94a2	cstring	0x141738f68	positional notation
+reference	knowledge-reference	0x140ef8fb0	0x140ef94b7	cstring	0x141741648	geometric objects
+reference	knowledge-reference	0x140ef8fb0	0x140ef94cc	cstring	0x141741728	exhaustion
+reference	knowledge-reference	0x140ef8fb0	0x140ef94e1	cstring	0x141741710	congruent triangles
+reference	knowledge-reference	0x140ef8fb0	0x140ef9516	cstring	0x141741750	right triangles
+reference	knowledge-reference	0x140ef8fb0	0x140ef9531	cstring	0x1417416d8	inscribed triangles
+reference	knowledge-reference	0x140ef8fb0	0x140ef9546	cstring	0x141741738	isosceles triangles
+reference	knowledge-reference	0x140ef8fb0	0x140ef9574	cstring	0x1417416c0	incommensurable ratios
+reference	knowledge-reference	0x140ef8fb0	0x140ef9589	cstring	0x141739080	axiomatic reasoning
+reference	knowledge-reference	0x140ef8fb0	0x140ef95d6	cstring	0x1417417a8	pyramids
+reference	knowledge-reference	0x140ef8fb0	0x140ef95e5	cstring	0x1417416f0	common divisors
+reference	knowledge-reference	0x140ef8fb0	0x140ef9600	cstring	0x141741700	prime divisors
+reference	knowledge-reference	0x140ef8fb0	0x140ef9615	cstring	0x14174179c	cones
+reference	knowledge-reference	0x140ef8fb0	0x140ef9646	cstring	0x1417417b8	division
+reference	knowledge-reference	0x140ef8fb0	0x140ef965b	cstring	0x1416c1bc0	spheres
+reference	knowledge-reference	0x140ef8fb0	0x140ef9670	cstring	0x141741770	chord lengths
+reference	knowledge-reference	0x140ef8fb0	0x140ef96a8	cstring	0x1417417c8	circles
+reference	knowledge-reference	0x140ef8fb0	0x140ef96bd	cstring	0x141734c38	triangles
+reference	knowledge-reference	0x140ef8fb0	0x140ef96d2	cstring	0x141741760	conic sections
+reference	knowledge-reference	0x140ef8fb0	0x140ef9703	cstring	0x141741830	prime numbers
+reference	knowledge-reference	0x140ef8fb0	0x140ef9718	cstring	0x141741780	parabolas
+reference	knowledge-reference	0x140ef8fb0	0x140ef972d	cstring	0x141741790	remainders
+reference	knowledge-reference	0x140ef8fb0	0x140ef976d	cstring	0x141741820	diagonals
+reference	knowledge-reference	0x140ef8fb0	0x140ef9782	cstring	0x141741858	large sums
+reference	knowledge-reference	0x140ef8fb0	0x140ef9797	cstring	0x141741840	systems of equations
+reference	knowledge-reference	0x140ef8fb0	0x140ef97ac	cstring	0x1417417d0	quadratic equations
+reference	knowledge-reference	0x140ef8fb0	0x140ef97f2	cstring	0x1417418cc	powers
+reference	knowledge-reference	0x140ef8fb0	0x140ef9807	cstring	0x1417417f8	triangle and circles
+reference	knowledge-reference	0x140ef8fb0	0x140ef981c	cstring	0x1417417e8	equations
+reference	knowledge-reference	0x140ef8fb0	0x140ef984a	cstring	0x1417418ec	chords
+reference	knowledge-reference	0x140ef8fb0	0x140ef985f	cstring	0x1417418b8	the harmonic series
+reference	knowledge-reference	0x140ef8fb0	0x140ef9874	cstring	0x141741810	notation
+reference	knowledge-reference	0x140ef8fb0	0x140ef98c9	cstring	0x141741888	historical causation
+reference	knowledge-reference	0x140ef8fb0	0x140ef98de	cstring	0x1417418a0	personal interviews
+reference	knowledge-reference	0x140ef8fb0	0x140ef98f3	cstring	0x141741868	state bias
+reference	knowledge-reference	0x140ef8fb0	0x140ef9908	cstring	0x141741878	systemic bias
+reference	knowledge-reference	0x140ef8fb0	0x140ef991d	cstring	0x1417418d8	source reliability
+reference	knowledge-reference	0x140ef8fb0	0x140ef9932	cstring	0x141741968	cycles
+reference	knowledge-reference	0x140ef8fb0	0x140ef9963	cstring	0x141602ec8	comparative biography
+reference	knowledge-reference	0x140ef8fb0	0x140ef9978	cstring	0x141602d58	biography
+reference	knowledge-reference	0x140ef8fb0	0x140ef998d	cstring	0x141741990	community conflict
+reference	knowledge-reference	0x140ef8fb0	0x140ef999c	cstring	0x141741958	community bonds
+reference	knowledge-reference	0x140ef8fb0	0x140ef99b7	cstring	0x141741970	biographical dictionaries
+reference	knowledge-reference	0x140ef8fb0	0x140ef99f9	cstring	0x141602e78	cultural history
+reference	knowledge-reference	0x140ef8fb0	0x140ef9a0e	cstring	0x1417418f8	the encyclopedia
+reference	knowledge-reference	0x140ef8fb0	0x140ef9a23	cstring	0x141602ea0	genealogy
+reference	knowledge-reference	0x140ef8fb0	0x140ef9a38	cstring	0x141741910	autobiographical adventures
+reference	knowledge-reference	0x140ef8fb0	0x140ef9a4d	cstring	0x141602e60	cultural comparison
+reference	knowledge-reference	0x140ef8fb0	0x140ef9a82	cstring	0x141742890	technological evolution
+reference	knowledge-reference	0x140ef8fb0	0x140ef9a97	cstring	0x141741930	archaeology
+reference	knowledge-reference	0x140ef8fb0	0x140ef9aac	cstring	0x141602e48	alternate history
+reference	knowledge-reference	0x140ef8fb0	0x140ef9ac1	cstring	0x141741940	cultural differences
+reference	knowledge-reference	0x140ef8fb0	0x140ef9b16	cstring	0x141742828	tidal height
+reference	knowledge-reference	0x140ef8fb0	0x140ef9b2b	cstring	0x141742838	the moon and tides
+reference	knowledge-reference	0x140ef8fb0	0x140ef9b3a	cstring	0x1417428a8	the moon's path
+reference	knowledge-reference	0x140ef8fb0	0x140ef9b55	cstring	0x1417428b8	the moon and seasons
+reference	knowledge-reference	0x140ef8fb0	0x140ef9b6a	cstring	0x141742880	moon phases
+reference	knowledge-reference	0x140ef8fb0	0x140ef9b7f	cstring	0x141742868	the sun and seasons
+reference	knowledge-reference	0x140ef8fb0	0x140ef9bb0	cstring	0x141742968	the heliocentric model
+reference	knowledge-reference	0x140ef8fb0	0x140ef9bc5	cstring	0x141742928	the geocentric model
+reference	knowledge-reference	0x140ef8fb0	0x140ef9bda	cstring	0x141742940	daylight and seasons
+reference	knowledge-reference	0x140ef8fb0	0x140ef9bef	cstring	0x141742850	lunar and solar years
+reference	knowledge-reference	0x140ef8fb0	0x140ef9c04	cstring	0x141742958	eclipses
+reference	knowledge-reference	0x140ef8fb0	0x140ef9c46	cstring	0x1417428f0	the color of stars
+reference	knowledge-reference	0x140ef8fb0	0x140ef9c5b	cstring	0x141742908	extensive star catalogues
+reference	knowledge-reference	0x140ef8fb0	0x140ef9c6a	cstring	0x1417428d0	star catalogues
+reference	knowledge-reference	0x140ef8fb0	0x140ef9c85	cstring	0x1417428e0	star charts
+reference	knowledge-reference	0x140ef8fb0	0x140ef9c9a	cstring	0x1417429d8	the brightness of stars
+reference	knowledge-reference	0x140ef8fb0	0x140ef9ccf	cstring	0x1417429f0	astronomical models
+reference	knowledge-reference	0x140ef8fb0	0x140ef9ce4	cstring	0x141742a08	empirical observation
+reference	knowledge-reference	0x140ef8fb0	0x140ef9cf9	cstring	0x1417429c8	equinoxes
+reference	knowledge-reference	0x140ef8fb0	0x140ef9d0e	cstring	0x141738658	the shape of the world
+reference	knowledge-reference	0x140ef8fb0	0x140ef9d54	cstring	0x141742988	dissection
+reference	knowledge-reference	0x140ef8fb0	0x140ef9d69	cstring	0x141742980	anatomy
+reference	knowledge-reference	0x140ef8fb0	0x140ef9d7e	cstring	0x1417429b0	comparative anatomy
+reference	knowledge-reference	0x140ef8fb0	0x140ef9d93	cstring	0x141742998	physical features
+reference	knowledge-reference	0x140ef8fb0	0x140ef9da8	cstring	0x141742a90	migratory patterns
+reference	knowledge-reference	0x140ef8fb0	0x140ef9dbd	cstring	0x141742a78	reproductive behavior
+reference	knowledge-reference	0x140ef8fb0	0x140ef9dd2	cstring	0x141742ac0	foraging behavior
+reference	knowledge-reference	0x140ef8fb0	0x140ef9e09	cstring	0x141742a20	diseases
+reference	knowledge-reference	0x140ef8fb0	0x140ef9e18	cstring	0x141742a30	social behavior
+reference	knowledge-reference	0x140ef8fb0	0x140ef9e33	cstring	0x141742aa8	dietary relationships
+reference	knowledge-reference	0x140ef8fb0	0x140ef9e48	cstring	0x141742a60	climatic adaptation
+reference	knowledge-reference	0x140ef8fb0	0x140ef9e6f	cstring	0x141742b40	the struggle for survival
+reference	knowledge-reference	0x140ef8fb0	0x140ef9e84	cstring	0x141742a40	embriological development
+reference	knowledge-reference	0x140ef8fb0	0x140ef9edb	cstring	0x141742b28	combustible materials
+reference	knowledge-reference	0x140ef8fb0	0x140ef9ef0	cstring	0x141742b64	ores
+reference	knowledge-reference	0x140ef8fb0	0x140ef9f05	cstring	0x141742b5c	alloys
+reference	knowledge-reference	0x140ef8fb0	0x140ef9f1a	cstring	0x14172cb88	hardness
+reference	knowledge-reference	0x140ef8fb0	0x140ef9f2f	cstring	0x141742ae8	elemental materials
+reference	knowledge-reference	0x140ef8fb0	0x140ef9f44	cstring	0x141742ad8	adhesives
+reference	knowledge-reference	0x140ef8fb0	0x140ef9f59	cstring	0x141742b10	the blast furnace
+reference	knowledge-reference	0x140ef8fb0	0x140ef9f95	cstring	0x141742be0	alkali and acids
+reference	knowledge-reference	0x140ef8fb0	0x140ef9faa	cstring	0x141742bf8	evaporation
+reference	knowledge-reference	0x140ef8fb0	0x140ef9fbf	cstring	0x141742bb8	distillation
+reference	knowledge-reference	0x140ef8fb0	0x140ef9fd4	cstring	0x141742bc8	liquid extraction
+reference	knowledge-reference	0x140ef8fb0	0x140ef9fe9	cstring	0x141742b00	the alembic
+reference	knowledge-reference	0x140ef8fb0	0x140ef9ffe	cstring	0x141742b80	systematic experiments
+reference	knowledge-reference	0x140ef8fb0	0x140efa04b	cstring	0x141742c50	the crucible
+reference	knowledge-reference	0x140ef8fb0	0x140efa060	cstring	0x141742c60	the funnel
+reference	knowledge-reference	0x140ef8fb0	0x140efa075	cstring	0x141742b98	the vial
+reference	knowledge-reference	0x140ef8fb0	0x140efa08a	cstring	0x141742ba8	the beaker
+reference	knowledge-reference	0x140ef8fb0	0x140efa09f	cstring	0x141742b70	the flask
+reference	knowledge-reference	0x140ef8fb0	0x140efa0ae	cstring	0x141742c80	spirit of niter
+reference	knowledge-reference	0x140ef8fb0	0x140efa0f0	cstring	0x141742c28	laboratory ovens
+reference	knowledge-reference	0x140ef8fb0	0x140efa105	cstring	0x141742c40	the retort
+reference	knowledge-reference	0x140ef8fb0	0x140efa11a	cstring	0x141742c08	the ampoule
+reference	knowledge-reference	0x140ef8fb0	0x140efa12f	cstring	0x141742c18	aqua regia
+reference	knowledge-reference	0x140ef8fb0	0x140efa144	cstring	0x141742c70	oil of vitriol
+reference	knowledge-reference	0x140ef8fb0	0x140efa199	cstring	0x141742ca0	cartographical surveying
+reference	knowledge-reference	0x140ef8fb0	0x140efa1ae	cstring	0x141742d20	triangulation
+reference	knowledge-reference	0x140ef8fb0	0x140efa1c3	cstring	0x141742d30	cartography
+reference	knowledge-reference	0x140ef8fb0	0x140efa1d8	cstring	0x141742cf8	the surveying staff
+reference	knowledge-reference	0x140ef8fb0	0x140efa1ed	cstring	0x141742d10	surveying
+reference	knowledge-reference	0x140ef8fb0	0x140efa202	cstring	0x141742c90	land surveying
+reference	knowledge-reference	0x140ef8fb0	0x140efa234	cstring	0x1417423e0	distance scales
+reference	knowledge-reference	0x140ef8fb0	0x140efa24f	cstring	0x1417423a0	map grids
+reference	knowledge-reference	0x140ef8fb0	0x140efa264	cstring	0x1417423b0	geological cartography
+reference	knowledge-reference	0x140ef8fb0	0x140efa279	cstring	0x141742cc0	surveying for engineering
+reference	knowledge-reference	0x140ef8fb0	0x140efa28e	cstring	0x141742ce0	military surveying
+reference	knowledge-reference	0x140ef8fb0	0x140efa2a3	cstring	0x1417423c8	height measurements
+reference	knowledge-reference	0x140ef8fb0	0x140efa2f0	cstring	0x141742458	wind patterns
+reference	knowledge-reference	0x140ef8fb0	0x140efa2ff	cstring	0x141742380	delta formation
+reference	knowledge-reference	0x140ef8fb0	0x140efa31a	cstring	0x141742390	the atlas
+reference	knowledge-reference	0x140ef8fb0	0x140efa32f	cstring	0x141742358	economic cartography
+reference	knowledge-reference	0x140ef8fb0	0x140efa344	cstring	0x141742370	economic data
+reference	knowledge-reference	0x140ef8fb0	0x140efa359	cstring	0x141742448	rainfall
+reference	knowledge-reference	0x140ef8fb0	0x140efa388	cstring	0x1417423f0	map projections
+reference	knowledge-reference	0x140ef8fb0	0x140efa3a3	cstring	0x141742400	map accuracy
+reference	knowledge-reference	0x140ef8fb0	0x140efa3b8	cstring	0x141742468	climate zones
+reference	knowledge-reference	0x140ef8fb0	0x140efa3c7	cstring	0x141742478	the water cycle
+reference	knowledge-reference	0x140ef8fb0	0x140efa426	cstring	0x141742428	disease and fouled water
+reference	knowledge-reference	0x140ef8fb0	0x140efa43b	cstring	0x141742410	physical examination
+reference	knowledge-reference	0x140ef8fb0	0x140efa450	cstring	0x1417424f0	autopsy
+reference	knowledge-reference	0x140ef8fb0	0x140efa465	cstring	0x1417424e0	prognosis
+reference	knowledge-reference	0x140ef8fb0	0x140efa474	cstring	0x14173ad58	herbal remedies
+reference	knowledge-reference	0x140ef8fb0	0x140efa489	cstring	0x141742508	animal remedies
+reference	knowledge-reference	0x140ef8fb0	0x140efa4a4	cstring	0x14173af10	mineral remedies
+reference	knowledge-reference	0x140ef8fb0	0x140efa4b9	cstring	0x1417424f8	bandages
+reference	knowledge-reference	0x140ef8fb0	0x140efa4ce	cstring	0x141742498	disease classification
+reference	knowledge-reference	0x140ef8fb0	0x140efa4ff	cstring	0x1417424b0	endemic disease
+reference	knowledge-reference	0x140ef8fb0	0x140efa51a	cstring	0x1417424c0	acute and chronic conditions
+reference	knowledge-reference	0x140ef8fb0	0x140efa52f	cstring	0x141742488	toxicology
+reference	knowledge-reference	0x140ef8fb0	0x140efa544	cstring	0x141742580	epidemic disease
+reference	knowledge-reference	0x140ef8fb0	0x140efa572	cstring	0x141742598	relapse
+reference	knowledge-reference	0x140ef8fb0	0x140efa587	cstring	0x1417425a0	paroxysm
+reference	knowledge-reference	0x140ef8fb0	0x140efa59c	cstring	0x141742570	exacerbation
+reference	knowledge-reference	0x140ef8fb0	0x140efa5b1	cstring	0x141742530	convalescence
+reference	knowledge-reference	0x140ef8fb0	0x140efa5f9	cstring	0x141742540	fracture classification
+reference	knowledge-reference	0x140ef8fb0	0x140efa60e	cstring	0x141742558	fracture treatment
+reference	knowledge-reference	0x140ef8fb0	0x140efa623	cstring	0x141742518	traumatic injuries
+reference	knowledge-reference	0x140ef8fb0	0x140efa638	cstring	0x141742618	the traction bench
+reference	knowledge-reference	0x140ef8fb0	0x140efa666	cstring	0x141742630	excision
+reference	knowledge-reference	0x140ef8fb0	0x140efa67b	cstring	0x141742640	the orthopedic cast
+reference	knowledge-reference	0x140ef8fb0	0x140efa690	cstring	0x141742600	fracture immobilization
+reference	knowledge-reference	0x140ef8fb0	0x140efa6a5	cstring	0x1417425c8	incision
+reference	knowledge-reference	0x140ef8fb0	0x140efa6dc	cstring	0x1417425e8	lithotomy surgery
+reference	knowledge-reference	0x140ef8fb0	0x140efa6f1	cstring	0x1417425b0	tracheotomy surgery
+reference	knowledge-reference	0x140ef8fb0	0x140efa706	cstring	0x14173b140	hernia surgery
+reference	knowledge-reference	0x140ef8fb0	0x140efa71b	cstring	0x1417425d8	scraping
+reference	knowledge-reference	0x140ef8fb0	0x140efa749	cstring	0x1417426f0	suturing
+reference	knowledge-reference	0x140ef8fb0	0x140efa75e	cstring	0x1417426c8	probing
+reference	knowledge-reference	0x140ef8fb0	0x140efa773	cstring	0x1417426d0	draining
+reference	knowledge-reference	0x140ef8fb0	0x140efa7ce	cstring	0x1417426e0	ligature
+reference	knowledge-reference	0x140ef8fb0	0x140efa7dd	cstring	0x141742678	surgical models
+reference	knowledge-reference	0x140ef8fb0	0x140efa7f8	cstring	0x141742658	mud bags as surgical models
+reference	knowledge-reference	0x140ef8fb0	0x140efa80d	cstring	0x1417426a8	plants as surgical models
+reference	knowledge-reference	0x140ef8fb0	0x140efa822	cstring	0x141742688	animals as surgical models
+reference	knowledge-reference	0x140ef8fb0	0x140efa837	cstring	0x141742758	specialized surgical instruments
+reference	knowledge-reference	0x140ef8fb0	0x140efa84c	cstring	0x141742750	forceps
+reference	knowledge-reference	0x140ef8fb0	0x140efa861	cstring	0x141742798	the scalpel
+reference	knowledge-reference	0x140ef8fb0	0x140efa876	cstring	0x141742780	surgical scissors
+reference	knowledge-reference	0x140ef8fb0	0x140efa8b1	cstring	0x141739cf8	cauterization
+reference	knowledge-reference	0x140ef8fb0	0x140efa8c6	cstring	0x141739d08	cataract surgery
+reference	knowledge-reference	0x140ef8fb0	0x140efa8db	cstring	0x141742718	surgical needles
+reference	knowledge-reference	0x140ef8fb0	0x140efa8f0	cstring	0x141739d38	anesthesia
+reference	knowledge-reference	0x140ef8fb0	0x140efa921	cstring	0x141742740	bodily fluids
+reference	knowledge-reference	0x140ef8fb0	0x140efa936	cstring	0x141742700	anatomical studies
+reference	knowledge-reference	0x140ef8fb0	0x140efa94b	cstring	0x141739d20	pulmonary medicine
+reference	knowledge-reference	0x140ef8fb0	0x140efa960	cstring	0x141742730	eye anatomy
+reference	knowledge-reference	0x140ef8fb0	0x140efa9ad	cstring	0x141742818	reaction time
+reference	knowledge-reference	0x140ef8fb0	0x140efa9c2	cstring	0x1417427e8	the nervous system
+reference	knowledge-reference	0x140ef8fb0	0x140efa9d7	cstring	0x1417427fc	nerves
+reference	knowledge-reference	0x140ef8fb0	0x140efa9ec	cstring	0x141742808	blood vessels
+reference	knowledge-reference	0x140ef8fb0	0x140efaa21	cstring	0x1417427b0	the voice
+reference	knowledge-reference	0x140ef8fb0	0x140efaa36	cstring	0x141739e40	pulmonary circulation
+reference	knowledge-reference	0x140ef8fb0	0x140efaa4b	cstring	0x1417427a8	muscles
+reference	knowledge-reference	0x140ef8fb0	0x140efaa83	cstring	0x1417427c0	hospitals
+reference	knowledge-reference	0x140ef8fb0	0x140efaa98	cstring	0x1417427d0	mental illnesses
+reference	knowledge-reference	0x140ef8fb0	0x140efaaad	cstring	0x141742d90	hospital staff
+reference	knowledge-reference	0x140ef8fb0	0x140efaad8	cstring	0x141742da0	medical schools
+reference	knowledge-reference	0x140ef8fb0	0x140efaaf3	cstring	0x141742db0	hospital laboratories
+reference	knowledge-reference	0x140ef8fb0	0x140efab08	cstring	0x141742d80	hospital wards
+reference	knowledge-reference	0x140ef8fb0	0x140efab27	cstring	0x141742d50	asylums
+reference	knowledge-reference	0x140ef8fb0	0x140efab82	cstring	0x141742d40	shadow clocks
+reference	knowledge-reference	0x140ef8fb0	0x140efab97	cstring	0x141742d70	water clocks
+reference	knowledge-reference	0x140ef8fb0	0x140efabac	cstring	0x141742d58	conical water clocks
+reference	knowledge-reference	0x140ef8fb0	0x140efabc1	cstring	0x141742e20	water clock reservoirs
+reference	knowledge-reference	0x140ef8fb0	0x140efabd6	cstring	0x141742e10	the astrarium
+reference	knowledge-reference	0x140ef8fb0	0x140efabeb	cstring	0x141742e50	the hourglass
+reference	knowledge-reference	0x140ef8fb0	0x140efac00	cstring	0x141742e38	mechanical clocks
+reference	knowledge-reference	0x140ef8fb0	0x140efac15	cstring	0x141742dd8	the pulley
+reference	knowledge-reference	0x140ef8fb0	0x140efac4d	cstring	0x141742df8	the wheel-and-axle
+reference	knowledge-reference	0x140ef8fb0	0x140efac62	cstring	0x141742dc8	the screw
+reference	knowledge-reference	0x140ef8fb0	0x140efac77	cstring	0x141742de8	the windlass
+reference	knowledge-reference	0x140ef8fb0	0x140efaca5	cstring	0x141742ea8	the lever
+reference	knowledge-reference	0x140ef8fb0	0x140efacba	cstring	0x141742eb8	the wedge
+reference	knowledge-reference	0x140ef8fb0	0x140efaccf	cstring	0x141742ed0	the straight-beam balance
+reference	knowledge-reference	0x140ef8fb0	0x140efad1c	cstring	0x141742e60	the tumbler lock
+reference	knowledge-reference	0x140ef8fb0	0x140efad2b	cstring	0x141742e78	the warded lock
+reference	knowledge-reference	0x140ef8fb0	0x140efad46	cstring	0x141742ec4	gears
+reference	knowledge-reference	0x140ef8fb0	0x140efad5b	cstring	0x141742e98	the padlock
+reference	knowledge-reference	0x140ef8fb0	0x140efad8c	cstring	0x141742f50	the water-powered sawmill
+reference	knowledge-reference	0x140ef8fb0	0x140efada1	cstring	0x141742f70	the crankshaft
+reference	knowledge-reference	0x140ef8fb0	0x140efadb6	cstring	0x141742e88	the camshaft
+reference	knowledge-reference	0x140ef8fb0	0x140efadcb	cstring	0x141742f90	the chariot odometer
+reference	knowledge-reference	0x140ef8fb0	0x140efae06	cstring	0x141742ef0	the differential gear
+reference	knowledge-reference	0x140ef8fb0	0x140efae1b	cstring	0x141742f08	the mechanical compass
+reference	knowledge-reference	0x140ef8fb0	0x140efae30	cstring	0x141742f80	chain drives
+reference	knowledge-reference	0x140ef8fb0	0x140efae45	cstring	0x141742f38	combination locks
+reference	knowledge-reference	0x140ef8fb0	0x140efae76	cstring	0x141743000	the siphon
+reference	knowledge-reference	0x140ef8fb0	0x140efae8b	cstring	0x141743010	the balance wheel
+reference	knowledge-reference	0x140ef8fb0	0x140efaea0	cstring	0x141742f20	the verge escapement
+reference	knowledge-reference	0x140ef8fb0	0x140efaef9	cstring	0x141743038	valves
+reference	knowledge-reference	0x140ef8fb0	0x140efaf0e	cstring	0x141743028	the force pump
+reference	knowledge-reference	0x140ef8fb0	0x140efaf23	cstring	0x141742fc0	the crystal lens
+reference	knowledge-reference	0x140ef8fb0	0x140efaf38	cstring	0x141742fa8	water-filled spheres
+reference	knowledge-reference	0x140ef8fb0	0x140efaf4d	cstring	0x141742ff0	the glass lens
+reference	knowledge-reference	0x140ef8fb0	0x140efaf62	cstring	0x141742fd8	the camera obscura
+reference	knowledge-reference	0x140ef8fb0	0x140efaf77	cstring	0x141743098	the parabolic mirror
+reference	knowledge-reference	0x140ef8fb0	0x140efaf86	cstring	0x141743088	light and color
+reference	knowledge-reference	0x140ef8fb0	0x140efafc3	cstring	0x1417430b0	models and templates
+reference	knowledge-reference	0x140ef8fb0	0x140efafd8	cstring	0x1417430c8	refraction
+reference	knowledge-reference	0x140ef8fb0	0x140efafed	cstring	0x1416a1450	rainbows
+reference	knowledge-reference	0x140ef8fb0	0x140efb002	cstring	0x141743050	lamination
+reference	knowledge-reference	0x140ef8fb0	0x140efb030	cstring	0x141743060	the armillary sphere
+reference	knowledge-reference	0x140ef8fb0	0x140efb045	cstring	0x141743078	the astrolabe
+reference	knowledge-reference	0x140ef8fb0	0x140efb05a	cstring	0x141743040	the dioptra
+reference	knowledge-reference	0x140ef8fb0	0x140efb06f	cstring	0x141743158	the spherical astrolabe
+reference	knowledge-reference	0x140ef8fb0	0x140efb0b7	cstring	0x141743170	the water-powered trip hammer
+reference	knowledge-reference	0x140ef8fb0	0x140efb0cc	cstring	0x141743190	the orrery
+reference	knowledge-reference	0x140ef8fb0	0x140efb0e1	cstring	0x141743140	mural instruments
+reference	knowledge-reference	0x140ef8fb0	0x140efb0f6	cstring	0x1417430f0	double-acting piston bellows
+reference	knowledge-reference	0x140ef8fb0	0x140efb124	cstring	0x1416a12f8	twilight
+reference	knowledge-reference	0x140ef8fb0	0x140efb139	cstring	0x14173ba20	atmospheric refraction
+reference	knowledge-reference	0x140ef8fb0	0x140efb14e	cstring	0x1417430d8	water displacement
+reference	knowledge-reference	0x140ef8fb0	0x140efb163	cstring	0x141743120	the height of the atmosphere
+reference	knowledge-reference	0x140ef8fb0	0x140efb19a	cstring	0x1417431b0	the bellows
+reference	knowledge-reference	0x140ef8fb0	0x140efb1af	cstring	0x1417431c0	the crank
+reference	knowledge-reference	0x140ef8fb0	0x140efb1c4	cstring	0x141743110	the piston
+reference	knowledge-reference	0x140ef8fb0	0x140efb1d9	cstring	0x1417431e0	the water-powered piston bellows
+reference	knowledge-reference	0x140ef8fb0	0x140efb1f6	cstring	0x1417431a0	the trip hammer
+reference	knowledge-reference	0x140ef8fb0	0x140efb20b	cstring	0x1417431d0	the water wheel
+classic	knowledge-reference	0x140ef3f20	0x140ef3f8d	cstring	0x141733500	formal reasoning
+classic	knowledge-reference	0x140ef3f20	0x140ef3fa2	cstring	0x1417334e8	deductive reasoning
+classic	knowledge-reference	0x140ef3f20	0x140ef3fb7	cstring	0x141733430	syllogistic logic
+classic	knowledge-reference	0x140ef3f20	0x140ef3fcc	cstring	0x141733418	hypothetical syllogisms
+classic	knowledge-reference	0x140ef3f20	0x140ef3fe1	cstring	0x141733460	propositional logic
+classic	knowledge-reference	0x140ef3f20	0x140ef3ff6	cstring	0x141733448	dialectic reasoning
+classic	knowledge-reference	0x140ef3f20	0x140ef400b	cstring	0x141733598	analogical inference
+classic	knowledge-reference	0x140ef3f20	0x140ef4020	cstring	0x141733588	medical ethics
+classic	knowledge-reference	0x140ef3f20	0x140ef4035	cstring	0x14173bea8	individual happiness
+classic	knowledge-reference	0x140ef3f20	0x140ef406c	cstring	0x14173be10	perception
+classic	knowledge-reference	0x140ef3f20	0x140ef4081	cstring	0x14163c600	truth
+classic	knowledge-reference	0x140ef3f20	0x140ef4096	cstring	0x14173be20	ethics and the state
+classic	knowledge-reference	0x140ef3f20	0x140ef40ab	cstring	0x14173be40	justification
+classic	knowledge-reference	0x140ef3f20	0x140ef40d9	cstring	0x1416ce234	time
+classic	knowledge-reference	0x140ef3f20	0x140ef40ee	cstring	0x14173cda8	existence
+classic	knowledge-reference	0x140ef3f20	0x140ef4103	cstring	0x14173be38	belief
+classic	knowledge-reference	0x140ef3f20	0x140ef4118	cstring	0x14173cd98	mind and body
+classic	knowledge-reference	0x140ef3f20	0x140ef4160	cstring	0x14173cd6c	events
+classic	knowledge-reference	0x140ef3f20	0x140ef4175	cstring	0x14173cdb8	wholes and parts
+classic	knowledge-reference	0x140ef3f20	0x140ef418a	cstring	0x14173cdd0	objects and properties
+classic	knowledge-reference	0x140ef3f20	0x140ef419f	cstring	0x14173cd60	processes
+classic	knowledge-reference	0x140ef3f20	0x140ef41cd	cstring	0x14173ce50	interpersonal ethics
+classic	knowledge-reference	0x140ef3f20	0x140ef41dc	cstring	0x14173cd78	military ethics
+classic	knowledge-reference	0x140ef3f20	0x140ef41f7	cstring	0x14173cd88	causation
+classic	knowledge-reference	0x140ef3f20	0x140ef420c	cstring	0x14163c2c0	law
+classic	knowledge-reference	0x140ef3f20	0x140ef4243	cstring	0x141733708	etymology
+classic	knowledge-reference	0x140ef3f20	0x140ef4258	cstring	0x141733718	grammar
+classic	knowledge-reference	0x140ef3f20	0x140ef426d	cstring	0x14173ce40	education
+classic	knowledge-reference	0x140ef3f20	0x140ef4282	cstring	0x14166eb50	diplomacy
+classic	knowledge-reference	0x140ef3f20	0x140ef42b0	cstring	0x14173ce68	social welfare
+classic	knowledge-reference	0x140ef3f20	0x140ef42bf	cstring	0x14173ce78	economic policy
+classic	knowledge-reference	0x140ef3f20	0x140ef42da	cstring	0x141610788	government
+classic	knowledge-reference	0x140ef3f20	0x140ef430f	cstring	0x141731f08	dictionaries
+classic	knowledge-reference	0x140ef3f20	0x140ef4324	cstring	0x14169c1f8	art
+classic	knowledge-reference	0x140ef3f20	0x140ef4339	cstring	0x14169c208	beauty
+classic	knowledge-reference	0x140ef3f20	0x140ef434e	cstring	0x141731f78	direct inference
+classic	knowledge-reference	0x140ef3f20	0x140ef4363	cstring	0x141731f90	inductive reasoning
+classic	knowledge-reference	0x140ef3f20	0x140ef43be	cstring	0x14173cdf8	proof by contradiction
+classic	knowledge-reference	0x140ef3f20	0x140ef43d3	cstring	0x14173cde8	nothingness
+classic	knowledge-reference	0x140ef3f20	0x140ef43e8	cstring	0x14173ce28	negative quantities
+classic	knowledge-reference	0x140ef3f20	0x140ef43fd	cstring	0x14173ce10	very large numbers
+classic	knowledge-reference	0x140ef3f20	0x140ef4412	cstring	0x141732130	positional notation
+classic	knowledge-reference	0x140ef3f20	0x140ef4427	cstring	0x14173cef0	geometric objects
+classic	knowledge-reference	0x140ef3f20	0x140ef443c	cstring	0x14173cee0	exhaustion
+classic	knowledge-reference	0x140ef3f20	0x140ef4451	cstring	0x14173cf18	congruent triangles
+classic	knowledge-reference	0x140ef3f20	0x140ef4486	cstring	0x14173cf08	right triangles
+classic	knowledge-reference	0x140ef3f20	0x140ef44a1	cstring	0x14173ce88	inscribed triangles
+classic	knowledge-reference	0x140ef3f20	0x140ef44b6	cstring	0x14173cea0	isosceles triangles
+classic	knowledge-reference	0x140ef3f20	0x140ef44e4	cstring	0x14173cec8	incommensurable ratios
+classic	knowledge-reference	0x140ef3f20	0x140ef44f9	cstring	0x141732268	axiomatic reasoning
+classic	knowledge-reference	0x140ef3f20	0x140ef4546	cstring	0x14173cf70	pyramids
+classic	knowledge-reference	0x140ef3f20	0x140ef4555	cstring	0x14173cf80	common divisors
+classic	knowledge-reference	0x140ef3f20	0x140ef4570	cstring	0x14173ceb8	prime divisors
+classic	knowledge-reference	0x140ef3f20	0x140ef4585	cstring	0x14173cf98	cones
+classic	knowledge-reference	0x140ef3f20	0x140ef45b6	cstring	0x14173cf40	division
+classic	knowledge-reference	0x140ef3f20	0x140ef45cb	cstring	0x1416bcc80	spheres
+classic	knowledge-reference	0x140ef3f20	0x140ef45e0	cstring	0x14173cf30	chord lengths
+classic	knowledge-reference	0x140ef3f20	0x140ef4618	cstring	0x14173cf90	circles
+classic	knowledge-reference	0x140ef3f20	0x140ef462d	cstring	0x14172f6f8	triangles
+classic	knowledge-reference	0x140ef3f20	0x140ef4642	cstring	0x14173cf60	conic sections
+classic	knowledge-reference	0x140ef3f20	0x140ef4673	cstring	0x14173cff0	prime numbers
+classic	knowledge-reference	0x140ef3f20	0x140ef4688	cstring	0x14173d000	parabolas
+classic	knowledge-reference	0x140ef3f20	0x140ef469d	cstring	0x14173cf50	remainders
+classic	knowledge-reference	0x140ef3f20	0x140ef46dd	cstring	0x14173d020	diagonals
+classic	knowledge-reference	0x140ef3f20	0x140ef46f2	cstring	0x14173d010	large sums
+classic	knowledge-reference	0x140ef3f20	0x140ef4707	cstring	0x14173cfb0	systems of equations
+classic	knowledge-reference	0x140ef3f20	0x140ef471c	cstring	0x14173cfd8	quadratic equations
+classic	knowledge-reference	0x140ef3f20	0x140ef4762	cstring	0x14173d07c	powers
+classic	knowledge-reference	0x140ef3f20	0x140ef4777	cstring	0x14173d088	triangle and circles
+classic	knowledge-reference	0x140ef3f20	0x140ef478c	cstring	0x14173cfa0	equations
+classic	knowledge-reference	0x140ef3f20	0x140ef47ba	cstring	0x14173d0a0	chords
+classic	knowledge-reference	0x140ef3f20	0x140ef47cf	cstring	0x14173d0a8	the harmonic series
+classic	knowledge-reference	0x140ef3f20	0x140ef47e4	cstring	0x14173cfc8	notation
+classic	knowledge-reference	0x140ef3f20	0x140ef4839	cstring	0x14173d138	historical causation
+classic	knowledge-reference	0x140ef3f20	0x140ef484e	cstring	0x14173d058	personal interviews
+classic	knowledge-reference	0x140ef3f20	0x140ef4863	cstring	0x14173d070	state bias
+classic	knowledge-reference	0x140ef3f20	0x140ef4878	cstring	0x14173d030	systemic bias
+classic	knowledge-reference	0x140ef3f20	0x140ef488d	cstring	0x14173d040	source reliability
+classic	knowledge-reference	0x140ef3f20	0x140ef48a2	cstring	0x14173d12c	cycles
+classic	knowledge-reference	0x140ef3f20	0x140ef48d3	cstring	0x1415fdd58	comparative biography
+classic	knowledge-reference	0x140ef3f20	0x140ef48e8	cstring	0x1415fddd0	biography
+classic	knowledge-reference	0x140ef3f20	0x140ef48fd	cstring	0x14173d150	community conflict
+classic	knowledge-reference	0x140ef3f20	0x140ef490c	cstring	0x14173d168	community bonds
+classic	knowledge-reference	0x140ef3f20	0x140ef4927	cstring	0x14173d0e0	biographical dictionaries
+classic	knowledge-reference	0x140ef3f20	0x140ef4969	cstring	0x1415fdec0	cultural history
+classic	knowledge-reference	0x140ef3f20	0x140ef497e	cstring	0x14173d118	the encyclopedia
+classic	knowledge-reference	0x140ef3f20	0x140ef4993	cstring	0x1415fdd30	genealogy
+classic	knowledge-reference	0x140ef3f20	0x140ef49a8	cstring	0x14173d0c0	autobiographical adventures
+classic	knowledge-reference	0x140ef3f20	0x140ef49bd	cstring	0x1415fdea8	cultural comparison
+classic	knowledge-reference	0x140ef3f20	0x140ef49f2	cstring	0x14173d1c8	technological evolution
+classic	knowledge-reference	0x140ef3f20	0x140ef4a07	cstring	0x14173d1e0	archaeology
+classic	knowledge-reference	0x140ef3f20	0x140ef4a1c	cstring	0x1415fde90	alternate history
+classic	knowledge-reference	0x140ef3f20	0x140ef4a31	cstring	0x14173d100	cultural differences
+classic	knowledge-reference	0x140ef3f20	0x140ef4a86	cstring	0x14173d1b8	tidal height
+classic	knowledge-reference	0x140ef3f20	0x140ef4a9b	cstring	0x14173d178	the moon and tides
+classic	knowledge-reference	0x140ef3f20	0x140ef4aaa	cstring	0x14173d190	the moon's path
+classic	knowledge-reference	0x140ef3f20	0x140ef4ac5	cstring	0x14173d1f0	the moon and seasons
+classic	knowledge-reference	0x140ef3f20	0x140ef4ada	cstring	0x14173d208	moon phases
+classic	knowledge-reference	0x140ef3f20	0x140ef4aef	cstring	0x14173d1a0	the sun and seasons
+classic	knowledge-reference	0x140ef3f20	0x140ef4b20	cstring	0x14173c8d0	the heliocentric model
+classic	knowledge-reference	0x140ef3f20	0x140ef4b35	cstring	0x14173c8e8	the geocentric model
+classic	knowledge-reference	0x140ef3f20	0x140ef4b4a	cstring	0x14173c8a0	daylight and seasons
+classic	knowledge-reference	0x140ef3f20	0x140ef4b5f	cstring	0x14173c8b8	lunar and solar years
+classic	knowledge-reference	0x140ef3f20	0x140ef4b74	cstring	0x14173c860	eclipses
+classic	knowledge-reference	0x140ef3f20	0x140ef4bb6	cstring	0x14173c960	the color of stars
+classic	knowledge-reference	0x140ef3f20	0x140ef4bcb	cstring	0x14173c870	extensive star catalogues
+classic	knowledge-reference	0x140ef3f20	0x140ef4bda	cstring	0x14173c890	star catalogues
+classic	knowledge-reference	0x140ef3f20	0x140ef4bf5	cstring	0x14173c850	star charts
+classic	knowledge-reference	0x140ef3f20	0x140ef4c0a	cstring	0x14173c948	the brightness of stars
+classic	knowledge-reference	0x140ef3f20	0x140ef4c3f	cstring	0x14173c910	astronomical models
+classic	knowledge-reference	0x140ef3f20	0x140ef4c54	cstring	0x14173c978	empirical observation
+classic	knowledge-reference	0x140ef3f20	0x140ef4c69	cstring	0x14173c990	equinoxes
+classic	knowledge-reference	0x140ef3f20	0x140ef4c7e	cstring	0x1417348f8	the shape of the world
+classic	knowledge-reference	0x140ef3f20	0x140ef4cc4	cstring	0x14173c900	dissection
+classic	knowledge-reference	0x140ef3f20	0x140ef4cd9	cstring	0x14173c940	anatomy
+classic	knowledge-reference	0x140ef3f20	0x140ef4cee	cstring	0x14173c928	comparative anatomy
+classic	knowledge-reference	0x140ef3f20	0x140ef4d03	cstring	0x14173ca08	physical features
+classic	knowledge-reference	0x140ef3f20	0x140ef4d18	cstring	0x14173c9f0	migratory patterns
+classic	knowledge-reference	0x140ef3f20	0x140ef4d2d	cstring	0x14173ca38	reproductive behavior
+classic	knowledge-reference	0x140ef3f20	0x140ef4d42	cstring	0x14173ca20	foraging behavior
+classic	knowledge-reference	0x140ef3f20	0x140ef4d79	cstring	0x14173c9e0	diseases
+classic	knowledge-reference	0x140ef3f20	0x140ef4d88	cstring	0x14173c9a0	social behavior
+classic	knowledge-reference	0x140ef3f20	0x140ef4da3	cstring	0x14173c9b0	dietary relationships
+classic	knowledge-reference	0x140ef3f20	0x140ef4db8	cstring	0x14173c9c8	climatic adaptation
+classic	knowledge-reference	0x140ef3f20	0x140ef4ddf	cstring	0x14173ca98	the struggle for survival
+classic	knowledge-reference	0x140ef3f20	0x140ef4df4	cstring	0x14173cab8	embriological development
+classic	knowledge-reference	0x140ef3f20	0x140ef4e4b	cstring	0x14173cae0	combustible materials
+classic	knowledge-reference	0x140ef3f20	0x140ef4e60	cstring	0x14173cad4	ores
+classic	knowledge-reference	0x140ef3f20	0x140ef4e75	cstring	0x14173ca64	alloys
+classic	knowledge-reference	0x140ef3f20	0x140ef4e8a	cstring	0x1417274d0	hardness
+classic	knowledge-reference	0x140ef3f20	0x140ef4e9f	cstring	0x14173ca50	elemental materials
+classic	knowledge-reference	0x140ef3f20	0x140ef4eb4	cstring	0x14173ca88	adhesives
+classic	knowledge-reference	0x140ef3f20	0x140ef4ec9	cstring	0x14173ca70	the blast furnace
+classic	knowledge-reference	0x140ef3f20	0x140ef4f05	cstring	0x14173cb10	alkali and acids
+classic	knowledge-reference	0x140ef3f20	0x140ef4f1a	cstring	0x14173cb70	evaporation
+classic	knowledge-reference	0x140ef3f20	0x140ef4f2f	cstring	0x14173cb80	distillation
+classic	knowledge-reference	0x140ef3f20	0x140ef4f44	cstring	0x14173cb48	liquid extraction
+classic	knowledge-reference	0x140ef3f20	0x140ef4f59	cstring	0x14173cb60	the alembic
+classic	knowledge-reference	0x140ef3f20	0x140ef4f6e	cstring	0x14173caf8	systematic experiments
+classic	knowledge-reference	0x140ef3f20	0x140ef4fbb	cstring	0x14173cc00	the crucible
+classic	knowledge-reference	0x140ef3f20	0x140ef4fd0	cstring	0x14173cbd0	the funnel
+classic	knowledge-reference	0x140ef3f20	0x140ef4fe5	cstring	0x14173cbe0	the vial
+classic	knowledge-reference	0x140ef3f20	0x140ef4ffa	cstring	0x14173cb28	the beaker
+classic	knowledge-reference	0x140ef3f20	0x140ef500f	cstring	0x14173cb38	the flask
+classic	knowledge-reference	0x140ef3f20	0x140ef501e	cstring	0x14173cbf0	spirit of niter
+classic	knowledge-reference	0x140ef3f20	0x140ef5060	cstring	0x14173cc78	laboratory ovens
+classic	knowledge-reference	0x140ef3f20	0x140ef5075	cstring	0x14173cbb0	the retort
+classic	knowledge-reference	0x140ef3f20	0x140ef508a	cstring	0x14173cbc0	the ampoule
+classic	knowledge-reference	0x140ef3f20	0x140ef509f	cstring	0x14173cb90	aqua regia
+classic	knowledge-reference	0x140ef3f20	0x140ef50b4	cstring	0x14173cba0	oil of vitriol
+classic	knowledge-reference	0x140ef3f20	0x140ef5109	cstring	0x14173cc10	cartographical surveying
+classic	knowledge-reference	0x140ef3f20	0x140ef511e	cstring	0x14173cc30	triangulation
+classic	knowledge-reference	0x140ef3f20	0x140ef5133	cstring	0x14173cc90	cartography
+classic	knowledge-reference	0x140ef3f20	0x140ef5148	cstring	0x14173cca0	the surveying staff
+classic	knowledge-reference	0x140ef3f20	0x140ef515d	cstring	0x14173cc68	surveying
+classic	knowledge-reference	0x140ef3f20	0x140ef5172	cstring	0x14173cc58	land surveying
+classic	knowledge-reference	0x140ef3f20	0x140ef51a4	cstring	0x14173cd40	distance scales
+classic	knowledge-reference	0x140ef3f20	0x140ef51bf	cstring	0x14173cd50	map grids
+classic	knowledge-reference	0x140ef3f20	0x140ef51d4	cstring	0x14173cd08	geological cartography
+classic	knowledge-reference	0x140ef3f20	0x140ef51e9	cstring	0x14173cd20	surveying for engineering
+classic	knowledge-reference	0x140ef3f20	0x140ef51fe	cstring	0x14173cc40	military surveying
+classic	knowledge-reference	0x140ef3f20	0x140ef5213	cstring	0x14173ccc8	height measurements
+classic	knowledge-reference	0x140ef3f20	0x140ef5260	cstring	0x14173d6c0	wind patterns
+classic	knowledge-reference	0x140ef3f20	0x140ef526f	cstring	0x14173d6d0	delta formation
+classic	knowledge-reference	0x140ef3f20	0x140ef528a	cstring	0x14173cce0	the atlas
+classic	knowledge-reference	0x140ef3f20	0x140ef529f	cstring	0x14173ccf0	economic cartography
+classic	knowledge-reference	0x140ef3f20	0x140ef52b4	cstring	0x14173ccb8	economic data
+classic	knowledge-reference	0x140ef3f20	0x140ef52c9	cstring	0x14173d6f0	rainfall
+classic	knowledge-reference	0x140ef3f20	0x140ef52f8	cstring	0x14173d6b0	map projections
+classic	knowledge-reference	0x140ef3f20	0x140ef5313	cstring	0x14173d670	map accuracy
+classic	knowledge-reference	0x140ef3f20	0x140ef5328	cstring	0x14173d680	climate zones
+classic	knowledge-reference	0x140ef3f20	0x140ef5337	cstring	0x14173d6e0	the water cycle
+classic	knowledge-reference	0x140ef3f20	0x140ef5396	cstring	0x14173d690	disease and fouled water
+classic	knowledge-reference	0x140ef3f20	0x140ef53ab	cstring	0x14173d760	physical examination
+classic	knowledge-reference	0x140ef3f20	0x140ef53c0	cstring	0x14173d758	autopsy
+classic	knowledge-reference	0x140ef3f20	0x140ef53d5	cstring	0x14173d788	prognosis
+classic	knowledge-reference	0x140ef3f20	0x140ef53e4	cstring	0x141733d38	herbal remedies
+classic	knowledge-reference	0x140ef3f20	0x140ef53f9	cstring	0x14173d778	animal remedies
+classic	knowledge-reference	0x140ef3f20	0x140ef5414	cstring	0x141733ef0	mineral remedies
+classic	knowledge-reference	0x140ef3f20	0x140ef5429	cstring	0x14173d718	bandages
+classic	knowledge-reference	0x140ef3f20	0x140ef543e	cstring	0x14173d700	disease classification
+classic	knowledge-reference	0x140ef3f20	0x140ef546f	cstring	0x14173d7f8	endemic disease
+classic	knowledge-reference	0x140ef3f20	0x140ef548a	cstring	0x14173d728	acute and chronic conditions
+classic	knowledge-reference	0x140ef3f20	0x140ef549f	cstring	0x14173d748	toxicology
+classic	knowledge-reference	0x140ef3f20	0x140ef54b4	cstring	0x14173d7e0	epidemic disease
+classic	knowledge-reference	0x140ef3f20	0x140ef54e2	cstring	0x14173d7a8	relapse
+classic	knowledge-reference	0x140ef3f20	0x140ef54f7	cstring	0x14173d808	paroxysm
+classic	knowledge-reference	0x140ef3f20	0x140ef550c	cstring	0x14173d818	exacerbation
+classic	knowledge-reference	0x140ef3f20	0x140ef5521	cstring	0x14173d798	convalescence
+classic	knowledge-reference	0x140ef3f20	0x140ef5569	cstring	0x14173d890	fracture classification
+classic	knowledge-reference	0x140ef3f20	0x140ef557e	cstring	0x14173d7b0	fracture treatment
+classic	knowledge-reference	0x140ef3f20	0x140ef5593	cstring	0x14173d7c8	traumatic injuries
+classic	knowledge-reference	0x140ef3f20	0x140ef55a8	cstring	0x14173d878	the traction bench
+classic	knowledge-reference	0x140ef3f20	0x140ef55d6	cstring	0x14173d838	excision
+classic	knowledge-reference	0x140ef3f20	0x140ef55eb	cstring	0x14173d8a8	the orthopedic cast
+classic	knowledge-reference	0x140ef3f20	0x140ef5600	cstring	0x14173d8c0	fracture immobilization
+classic	knowledge-reference	0x140ef3f20	0x140ef5615	cstring	0x14173d828	incision
+classic	knowledge-reference	0x140ef3f20	0x140ef564c	cstring	0x14173d848	lithotomy surgery
+classic	knowledge-reference	0x140ef3f20	0x140ef5661	cstring	0x14173d860	tracheotomy surgery
+classic	knowledge-reference	0x140ef3f20	0x140ef5676	cstring	0x1417340a0	hernia surgery
+classic	knowledge-reference	0x140ef3f20	0x140ef568b	cstring	0x14173d948	scraping
+classic	knowledge-reference	0x140ef3f20	0x140ef56b9	cstring	0x14173d958	suturing
+classic	knowledge-reference	0x140ef3f20	0x140ef56ce	cstring	0x14173d968	probing
+classic	knowledge-reference	0x140ef3f20	0x140ef56e3	cstring	0x14173d938	draining
+classic	knowledge-reference	0x140ef3f20	0x140ef573e	cstring	0x14173d8e8	ligature
+classic	knowledge-reference	0x140ef3f20	0x140ef574d	cstring	0x14173d8d8	surgical models
+classic	knowledge-reference	0x140ef3f20	0x140ef5768	cstring	0x14173d918	mud bags as surgical models
+classic	knowledge-reference	0x140ef3f20	0x140ef577d	cstring	0x14173d8f8	plants as surgical models
+classic	knowledge-reference	0x140ef3f20	0x140ef5792	cstring	0x14173d9f0	animals as surgical models
+classic	knowledge-reference	0x140ef3f20	0x140ef57a7	cstring	0x14173d9c8	specialized surgical instruments
+classic	knowledge-reference	0x140ef3f20	0x140ef57bc	cstring	0x14173da20	forceps
+classic	knowledge-reference	0x140ef3f20	0x140ef57d1	cstring	0x14173da10	the scalpel
+classic	knowledge-reference	0x140ef3f20	0x140ef57e6	cstring	0x14173d988	surgical scissors
+classic	knowledge-reference	0x140ef3f20	0x140ef5821	cstring	0x1417357c8	cauterization
+classic	knowledge-reference	0x140ef3f20	0x140ef5836	cstring	0x141735770	cataract surgery
+classic	knowledge-reference	0x140ef3f20	0x140ef584b	cstring	0x14173d970	surgical needles
+classic	knowledge-reference	0x140ef3f20	0x140ef5860	cstring	0x1417357b8	anesthesia
+classic	knowledge-reference	0x140ef3f20	0x140ef5891	cstring	0x14173d9a0	bodily fluids
+classic	knowledge-reference	0x140ef3f20	0x140ef58a6	cstring	0x14173d9b0	anatomical studies
+classic	knowledge-reference	0x140ef3f20	0x140ef58bb	cstring	0x141735968	pulmonary medicine
+classic	knowledge-reference	0x140ef3f20	0x140ef58d0	cstring	0x14173da70	eye anatomy
+classic	knowledge-reference	0x140ef3f20	0x140ef591d	cstring	0x14173da80	reaction time
+classic	knowledge-reference	0x140ef3f20	0x140ef5932	cstring	0x14173da90	the nervous system
+classic	knowledge-reference	0x140ef3f20	0x140ef5947	cstring	0x14173da68	nerves
+classic	knowledge-reference	0x140ef3f20	0x140ef595c	cstring	0x14173da38	blood vessels
+classic	knowledge-reference	0x140ef3f20	0x140ef5991	cstring	0x14173da28	the voice
+classic	knowledge-reference	0x140ef3f20	0x140ef59a6	cstring	0x141735aa0	pulmonary circulation
+classic	knowledge-reference	0x140ef3f20	0x140ef59bb	cstring	0x14173da60	muscles
+classic	knowledge-reference	0x140ef3f20	0x140ef59f3	cstring	0x14173daf0	hospitals
+classic	knowledge-reference	0x140ef3f20	0x140ef5a08	cstring	0x14173da48	mental illnesses
+classic	knowledge-reference	0x140ef3f20	0x140ef5a1d	cstring	0x14173dae0	hospital staff
+classic	knowledge-reference	0x140ef3f20	0x140ef5a48	cstring	0x14173dab0	medical schools
+classic	knowledge-reference	0x140ef3f20	0x140ef5a63	cstring	0x14173db00	hospital laboratories
+classic	knowledge-reference	0x140ef3f20	0x140ef5a78	cstring	0x14173db18	hospital wards
+classic	knowledge-reference	0x140ef3f20	0x140ef5a97	cstring	0x14173daa8	asylums
+classic	knowledge-reference	0x140ef3f20	0x140ef5af2	cstring	0x14173dad0	shadow clocks
+classic	knowledge-reference	0x140ef3f20	0x140ef5b07	cstring	0x14173dac0	water clocks
+classic	knowledge-reference	0x140ef3f20	0x140ef5b1c	cstring	0x14173d280	conical water clocks
+classic	knowledge-reference	0x140ef3f20	0x140ef5b31	cstring	0x14173d268	water clock reservoirs
+classic	knowledge-reference	0x140ef3f20	0x140ef5b46	cstring	0x14173d2a8	the astrarium
+classic	knowledge-reference	0x140ef3f20	0x140ef5b5b	cstring	0x14173d298	the hourglass
+classic	knowledge-reference	0x140ef3f20	0x140ef5b70	cstring	0x14173d228	mechanical clocks
+classic	knowledge-reference	0x140ef3f20	0x140ef5b85	cstring	0x14173d218	the pulley
+classic	knowledge-reference	0x140ef3f20	0x140ef5bbd	cstring	0x14173d240	the wheel-and-axle
+classic	knowledge-reference	0x140ef3f20	0x140ef5bd2	cstring	0x14173d258	the screw
+classic	knowledge-reference	0x140ef3f20	0x140ef5be7	cstring	0x14173d308	the windlass
+classic	knowledge-reference	0x140ef3f20	0x140ef5c15	cstring	0x14173d338	the lever
+classic	knowledge-reference	0x140ef3f20	0x140ef5c2a	cstring	0x14173d2f8	the wedge
+classic	knowledge-reference	0x140ef3f20	0x140ef5c3f	cstring	0x14173d318	the straight-beam balance
+classic	knowledge-reference	0x140ef3f20	0x140ef5c8c	cstring	0x14173d2e0	the tumbler lock
+classic	knowledge-reference	0x140ef3f20	0x140ef5c9b	cstring	0x14173d2b8	the warded lock
+classic	knowledge-reference	0x140ef3f20	0x140ef5cb6	cstring	0x14173d2c8	gears
+classic	knowledge-reference	0x140ef3f20	0x140ef5ccb	cstring	0x14173d2d0	the padlock
+classic	knowledge-reference	0x140ef3f20	0x140ef5cfc	cstring	0x14173d3d8	the water-powered sawmill
+classic	knowledge-reference	0x140ef3f20	0x140ef5d11	cstring	0x14173d3a0	the crankshaft
+classic	knowledge-reference	0x140ef3f20	0x140ef5d26	cstring	0x14173d3b0	the camshaft
+classic	knowledge-reference	0x140ef3f20	0x140ef5d3b	cstring	0x14173d3c0	the chariot odometer
+classic	knowledge-reference	0x140ef3f20	0x140ef5d76	cstring	0x14173d388	the differential gear
+classic	knowledge-reference	0x140ef3f20	0x140ef5d8b	cstring	0x14173d348	the mechanical compass
+classic	knowledge-reference	0x140ef3f20	0x140ef5da0	cstring	0x14173d360	chain drives
+classic	knowledge-reference	0x140ef3f20	0x140ef5db5	cstring	0x14173d370	combination locks
+classic	knowledge-reference	0x140ef3f20	0x140ef5de6	cstring	0x14173d480	the siphon
+classic	knowledge-reference	0x140ef3f20	0x140ef5dfb	cstring	0x14173d448	the balance wheel
+classic	knowledge-reference	0x140ef3f20	0x140ef5e10	cstring	0x14173d460	the verge escapement
+classic	knowledge-reference	0x140ef3f20	0x140ef5e69	cstring	0x14173d478	valves
+classic	knowledge-reference	0x140ef3f20	0x140ef5e7e	cstring	0x14173d410	the force pump
+classic	knowledge-reference	0x140ef3f20	0x140ef5e93	cstring	0x14173d3f8	the crystal lens
+classic	knowledge-reference	0x140ef3f20	0x140ef5ea8	cstring	0x14173d430	water-filled spheres
+classic	knowledge-reference	0x140ef3f20	0x140ef5ebd	cstring	0x14173d420	the glass lens
+classic	knowledge-reference	0x140ef3f20	0x140ef5ed2	cstring	0x14173d4f0	the camera obscura
+classic	knowledge-reference	0x140ef3f20	0x140ef5ee7	cstring	0x14173d4d8	the parabolic mirror
+classic	knowledge-reference	0x140ef3f20	0x140ef5ef6	cstring	0x14173d518	light and color
+classic	knowledge-reference	0x140ef3f20	0x140ef5f33	cstring	0x14173d4a0	models and templates
+classic	knowledge-reference	0x140ef3f20	0x140ef5f48	cstring	0x14173d508	refraction
+classic	knowledge-reference	0x140ef3f20	0x140ef5f5d	cstring	0x14169c358	rainbows
+classic	knowledge-reference	0x140ef3f20	0x140ef5f72	cstring	0x14173d490	lamination
+classic	knowledge-reference	0x140ef3f20	0x140ef5fa0	cstring	0x14173d5b8	the armillary sphere
+classic	knowledge-reference	0x140ef3f20	0x140ef5fb5	cstring	0x14173d4b8	the astrolabe
+classic	knowledge-reference	0x140ef3f20	0x140ef5fca	cstring	0x14173d4c8	the dioptra
+classic	knowledge-reference	0x140ef3f20	0x140ef5fdf	cstring	0x14173d5a0	the spherical astrolabe
+classic	knowledge-reference	0x140ef3f20	0x140ef6027	cstring	0x14173d548	the water-powered trip hammer
+classic	knowledge-reference	0x140ef3f20	0x140ef603c	cstring	0x14173d5d0	the orrery
+classic	knowledge-reference	0x140ef3f20	0x140ef6051	cstring	0x14173d5e0	mural instruments
+classic	knowledge-reference	0x140ef3f20	0x140ef6066	cstring	0x14173d528	double-acting piston bellows
+classic	knowledge-reference	0x140ef3f20	0x140ef6094	cstring	0x14169c278	twilight
+classic	knowledge-reference	0x140ef3f20	0x140ef60a9	cstring	0x141735478	atmospheric refraction
+classic	knowledge-reference	0x140ef3f20	0x140ef60be	cstring	0x14173d588	water displacement
+classic	knowledge-reference	0x140ef3f20	0x140ef60d3	cstring	0x14173d568	the height of the atmosphere
+classic	knowledge-reference	0x140ef3f20	0x140ef610a	cstring	0x14173d660	the bellows
+classic	knowledge-reference	0x140ef3f20	0x140ef611f	cstring	0x14173d618	the crank
+classic	knowledge-reference	0x140ef3f20	0x140ef6134	cstring	0x14173d628	the piston
+classic	knowledge-reference	0x140ef3f20	0x140ef6149	cstring	0x14173d638	the water-powered piston bellows
+classic	knowledge-reference	0x140ef3f20	0x140ef6166	cstring	0x14173d5f8	the trip hammer
+classic	knowledge-reference	0x140ef3f20	0x140ef617b	cstring	0x14173d608	the water wheel
+reference	form-title	0x140a946e0	0x140a948a3	cstring	0x1415e873c	 
+reference	form-title	0x140a946e0	0x140a9495e	cstring	0x1415e873c	 
+reference	form-title	0x140a946e0	0x140a94a3b	cstring	0x1415e873c	 
+reference	form-title	0x140a946e0	0x140a94a5d	cstring	0x1415ed9bc	The 
+reference	form-title	0x140a946e0	0x140a94a78	cstring	0x1415e8e48	the 
+reference	form-title	0x140a946e0	0x140a94af2	cstring	0x1415e873c	 
+reference	form-title	0x140a946e0	0x140a94b11	cstring	0x1415ed9bc	The 
+reference	form-title	0x140a946e0	0x140a94b1a	cstring	0x1415e8e48	the 
+reference	form-title	0x140a946e0	0x140a94b9a	cstring	0x1415e873c	 
+reference	form-title	0x140a946e0	0x140a94bb9	cstring	0x1415ed9bc	The 
+reference	form-title	0x140a946e0	0x140a94bc2	cstring	0x1415e8e48	the 
+reference	form-title	0x140a946e0	0x140a94d1f	cstring	0x1415e873c	 
+reference	form-title	0x140a946e0	0x140a94d4b	cstring	0x1415ed9bc	The 
+reference	form-title	0x140a946e0	0x140a94d62	cstring	0x1415e8e48	the 
+reference	form-title	0x140a946e0	0x140a94e09	cstring	0x1415e873c	 
+reference	form-title	0x140a946e0	0x140a94e18	cstring	0x1416ced90	of 
+reference	form-title	0x140a946e0	0x140a94e1f	cstring	0x1416cee1c	Of 
+classic	form-title	0x140a91760	0x140a91923	cstring	0x1415e3720	 
+classic	form-title	0x140a91760	0x140a919de	cstring	0x1415e3720	 
+classic	form-title	0x140a91760	0x140a91abb	cstring	0x1415e3720	 
+classic	form-title	0x140a91760	0x140a91add	cstring	0x1415e89c4	The 
+classic	form-title	0x140a91760	0x140a91af8	cstring	0x1415e3e34	the 
+classic	form-title	0x140a91760	0x140a91b72	cstring	0x1415e3720	 
+classic	form-title	0x140a91760	0x140a91b91	cstring	0x1415e89c4	The 
+classic	form-title	0x140a91760	0x140a91b9a	cstring	0x1415e3e34	the 
+classic	form-title	0x140a91760	0x140a91c1a	cstring	0x1415e3720	 
+classic	form-title	0x140a91760	0x140a91c39	cstring	0x1415e89c4	The 
+classic	form-title	0x140a91760	0x140a91c42	cstring	0x1415e3e34	the 
+classic	form-title	0x140a91760	0x140a91d9f	cstring	0x1415e3720	 
+classic	form-title	0x140a91760	0x140a91dcb	cstring	0x1415e89c4	The 
+classic	form-title	0x140a91760	0x140a91de2	cstring	0x1415e3e34	the 
+classic	form-title	0x140a91760	0x140a91e89	cstring	0x1415e3720	 
+classic	form-title	0x140a91760	0x140a91e98	cstring	0x1416cb220	of 
+classic	form-title	0x140a91760	0x140a91e9f	cstring	0x1416cb2ac	Of 
+reference	value-reference	0x140ee0380	0x140ee0398	cstring	0x141737550	the worthlessness
+reference	value-reference	0x140ee0380	0x140ee03ac	cstring	0x141737540	the value
+reference	value-reference	0x140ee0380	0x140ee03bb	cstring	0x141670b50	nuances
+reference	value-reference	0x140ee0380	0x140ee03d6	cstring	0x1415eb518	 of 
+reference	value-reference	0x140ee0380	0x140ee040b	cstring	0x1416415b8	law
+reference	value-reference	0x140ee0380	0x140ee042a	cstring	0x1416415b0	loyalty
+reference	value-reference	0x140ee0380	0x140ee0449	cstring	0x1416415fc	family
+reference	value-reference	0x140ee0380	0x140ee0468	cstring	0x1416415f0	friendship
+reference	value-reference	0x140ee0380	0x140ee0487	cstring	0x1416415e4	power
+reference	value-reference	0x140ee0380	0x140ee04a6	cstring	0x1416415dc	truth
+reference	value-reference	0x140ee0380	0x140ee04c5	cstring	0x141641570	cunning
+reference	value-reference	0x140ee0380	0x140ee04de	cstring	0x141641560	eloquence
+reference	value-reference	0x140ee0380	0x140ee04f0	cstring	0x141641550	fairness
+reference	value-reference	0x140ee0380	0x140ee050f	cstring	0x141641548	decorum
+reference	value-reference	0x140ee0380	0x140ee0528	cstring	0x1416415a0	tradition
+reference	value-reference	0x140ee0380	0x140ee053a	cstring	0x141641598	artwork
+reference	value-reference	0x140ee0380	0x140ee0559	cstring	0x141641588	cooperation
+reference	value-reference	0x140ee0380	0x140ee0578	cstring	0x141641578	independence
+reference	value-reference	0x140ee0380	0x140ee0597	cstring	0x141641500	stoicism
+reference	value-reference	0x140ee0380	0x140ee05b6	cstring	0x1416414f0	introspection
+reference	value-reference	0x140ee0380	0x140ee05d5	cstring	0x1416414e0	self-control
+reference	value-reference	0x140ee0380	0x140ee05f4	cstring	0x1416414d0	tranquility
+reference	value-reference	0x140ee0380	0x140ee0613	cstring	0x141641540	harmony
+reference	value-reference	0x140ee0380	0x140ee062c	cstring	0x141641530	merriment
+reference	value-reference	0x140ee0380	0x140ee063e	cstring	0x141641520	craftsmanship
+reference	value-reference	0x140ee0380	0x140ee065d	cstring	0x141641510	martial prowess
+reference	value-reference	0x140ee0380	0x140ee067c	cstring	0x141641724	skill
+reference	value-reference	0x140ee0380	0x140ee0695	cstring	0x141641718	hard work
+reference	value-reference	0x140ee0380	0x140ee06a1	cstring	0x141641708	sacrifice
+reference	value-reference	0x140ee0380	0x140ee06b3	cstring	0x1416416f8	competition
+reference	value-reference	0x140ee0380	0x140ee06d2	cstring	0x141641758	perseverance
+reference	value-reference	0x140ee0380	0x140ee06f1	cstring	0x141641748	leisure time
+reference	value-reference	0x140ee0380	0x140ee0710	cstring	0x141641738	commerce
+reference	value-reference	0x140ee0380	0x140ee072f	cstring	0x141641730	romance
+reference	value-reference	0x140ee0380	0x140ee074e	cstring	0x1416416ec	nature
+reference	value-reference	0x140ee0380	0x140ee076d	cstring	0x1415ee0cc	peace
+reference	value-reference	0x140ee0380	0x140ee0786	cstring	0x1416416e0	knowledge
+classic	value-reference	0x140edb2f0	0x140edb308	cstring	0x141731e70	the worthlessness
+classic	value-reference	0x140edb2f0	0x140edb31c	cstring	0x141732fd8	the value
+classic	value-reference	0x140edb2f0	0x140edb32b	cstring	0x14166b5b0	nuances
+classic	value-reference	0x140edb2f0	0x140edb346	cstring	0x1415e64d0	 of 
+classic	value-reference	0x140edb2f0	0x140edb37b	cstring	0x14163c2c0	law
+classic	value-reference	0x140edb2f0	0x140edb39a	cstring	0x14163c2b8	loyalty
+classic	value-reference	0x140edb2f0	0x140edb3b9	cstring	0x14163c2ac	family
+classic	value-reference	0x140edb2f0	0x140edb3d8	cstring	0x14163c610	friendship
+classic	value-reference	0x140edb2f0	0x140edb3f7	cstring	0x14163c608	power
+classic	value-reference	0x140edb2f0	0x140edb416	cstring	0x14163c600	truth
+classic	value-reference	0x140edb2f0	0x140edb435	cstring	0x14163c5f8	cunning
+classic	value-reference	0x140edb2f0	0x140edb44e	cstring	0x14163c648	eloquence
+classic	value-reference	0x140edb2f0	0x140edb460	cstring	0x14163c638	fairness
+classic	value-reference	0x140edb2f0	0x140edb47f	cstring	0x14163c630	decorum
+classic	value-reference	0x140edb2f0	0x140edb498	cstring	0x14163c620	tradition
+classic	value-reference	0x140edb2f0	0x140edb4aa	cstring	0x14163c5b8	artwork
+classic	value-reference	0x140edb2f0	0x140edb4c9	cstring	0x14163c5a8	cooperation
+classic	value-reference	0x140edb2f0	0x140edb4e8	cstring	0x14163c598	independence
+classic	value-reference	0x140edb2f0	0x140edb507	cstring	0x14163c588	stoicism
+classic	value-reference	0x140edb2f0	0x140edb526	cstring	0x14163c5e8	introspection
+classic	value-reference	0x140edb2f0	0x140edb545	cstring	0x14163c5d8	self-control
+classic	value-reference	0x140edb2f0	0x140edb564	cstring	0x14163c5c8	tranquility
+classic	value-reference	0x140edb2f0	0x140edb583	cstring	0x14163c5c0	harmony
+classic	value-reference	0x140edb2f0	0x140edb59c	cstring	0x14163c538	merriment
+classic	value-reference	0x140edb2f0	0x140edb5ae	cstring	0x14163c528	craftsmanship
+classic	value-reference	0x140edb2f0	0x140edb5cd	cstring	0x14163c518	martial prowess
+classic	value-reference	0x140edb2f0	0x140edb5ec	cstring	0x14163c50c	skill
+classic	value-reference	0x140edb2f0	0x140edb605	cstring	0x14163c578	hard work
+classic	value-reference	0x140edb2f0	0x140edb611	cstring	0x14163c568	sacrifice
+classic	value-reference	0x140edb2f0	0x140edb623	cstring	0x14163c558	competition
+classic	value-reference	0x140edb2f0	0x140edb642	cstring	0x14163c548	perseverance
+classic	value-reference	0x140edb2f0	0x140edb661	cstring	0x14163c4f0	leisure time
+classic	value-reference	0x140edb2f0	0x140edb680	cstring	0x14163c4e0	commerce
+classic	value-reference	0x140edb2f0	0x140edb69f	cstring	0x14163c4d8	romance
+classic	value-reference	0x140edb2f0	0x140edb6be	cstring	0x14163c4d0	nature
+classic	value-reference	0x140edb2f0	0x140edb6dd	cstring	0x1415e904c	peace
+classic	value-reference	0x140edb2f0	0x140edb6f6	cstring	0x14163c500	knowledge
+reference	display-artifact-name	0x140a94030	0x140a9413d	cstring	0x1415e873c	 
+reference	display-artifact-name	0x140a94030	0x140a942b3	cstring	0x1415e873c	 
+reference	display-artifact-name	0x140a94030	0x140a9450f	cstring	0x1415e873c	 
+reference	display-artifact-name	0x140a94030	0x140a9463b	cstring	0x1415e873c	 
+classic	display-artifact-name	0x140a910b0	0x140a911bd	cstring	0x1415e3720	 
+classic	display-artifact-name	0x140a910b0	0x140a91333	cstring	0x1415e3720	 
+classic	display-artifact-name	0x140a910b0	0x140a9158f	cstring	0x1415e3720	 
+classic	display-artifact-name	0x140a910b0	0x140a916bb	cstring	0x1415e3720	 
+reference	item-description	0x140c65450	0x140c656f4	cstring	0x1416ee318	 (copy)
+classic	item-description	0x140c62490	0x140c62734	cstring	0x1416e8e38	 (copy)
+reference	artifact-identity	0x140b94400	0x140b944bf	cstring	0x1415fdaa8	[LPAGE:ARTIFACT:
+reference	artifact-identity	0x140b94400	0x140b944ce	cstring	0x1416df718	[LPAGE:BOOK:
+reference	artifact-identity	0x140b94400	0x140b944f3	cstring	0x1415fd690	]
+reference	artifact-identity	0x140b94400	0x140b945b0	inline	0x64656c7469746e55	Untitled
+reference	artifact-identity	0x140b94400	0x140b9460b	inline	0x64656c7469746e55	Untitled
+reference	artifact-identity	0x140b94400	0x140b94686	cstring	0x1415fda88	[/LPAGE]
+reference	artifact-identity	0x140b94400	0x140b946de	cstring	0x1416df700	an unknown artifact
+classic	artifact-identity	0x140b91440	0x140b914ff	cstring	0x1415f8a20	[LPAGE:ARTIFACT:
+classic	artifact-identity	0x140b91440	0x140b9150e	cstring	0x1416da4e8	[LPAGE:BOOK:
+classic	artifact-identity	0x140b91440	0x140b91533	cstring	0x1415f8664	]
+classic	artifact-identity	0x140b91440	0x140b915f0	inline	0x64656c7469746e55	Untitled
+classic	artifact-identity	0x140b91440	0x140b9164b	inline	0x64656c7469746e55	Untitled
+classic	artifact-identity	0x140b91440	0x140b916c6	cstring	0x1415f8b50	[/LPAGE]
+classic	artifact-identity	0x140b91440	0x140b9171e	cstring	0x1416da4d0	an unknown artifact
+reference	site-identity	0x140b93930	0x140b9397a	cstring	0x1416df920	[LPAGE:SITE:
+reference	site-identity	0x140b93930	0x140b9399d	cstring	0x1415fd690	]
+reference	site-identity	0x140b93930	0x140b93a06	cstring	0x1415fda88	[/LPAGE]
+reference	site-identity	0x140b93930	0x140b93a5e	cstring	0x1416df910	an unknown site
+classic	site-identity	0x140b90970	0x140b909ba	cstring	0x1416da6f8	[LPAGE:SITE:
+classic	site-identity	0x140b90970	0x140b909dd	cstring	0x1415f8664	]
+classic	site-identity	0x140b90970	0x140b90a46	cstring	0x1415f8b50	[/LPAGE]
+classic	site-identity	0x140b90970	0x140b90a9e	cstring	0x1416da6e8	an unknown site
+reference	entity-deity-identity	0x140b92900	0x140b9296a	cstring	0x14165e438	[LPAGE:ENT:
+reference	entity-deity-identity	0x140b92900	0x140b9298a	cstring	0x1415fd690	]
+reference	entity-deity-identity	0x140b92900	0x140b929f4	cstring	0x1415fda88	[/LPAGE]
+reference	entity-deity-identity	0x140b92900	0x140b92a4c	cstring	0x1416df940	an unknown civilization
+classic	entity-deity-identity	0x140b8f940	0x140b8f9aa	cstring	0x1416592f8	[LPAGE:ENT:
+classic	entity-deity-identity	0x140b8f940	0x140b8f9ca	cstring	0x1415f8664	]
+classic	entity-deity-identity	0x140b8f940	0x140b8fa34	cstring	0x1415f8b50	[/LPAGE]
+classic	entity-deity-identity	0x140b8f940	0x140b8fa8c	cstring	0x1416da720	an unknown civilization

@@ -1,0 +1,47 @@
+[
+  {
+    "path": "D:\\program\\steam\\steamapps\\common\\Dwarf Fortress\\data\\vanilla\\vanilla_procedural\\scripts\\generators\\interactions.lua",
+    "saved_as": "vanilla-curse-sources\\vanilla_procedural__scripts__generators__interactions.lua",
+    "sha256": "194260944c5d741904119b22d5e40c310ec819dcfb2492d9c4eadb90e57c329d"
+  },
+  {
+    "path": "D:\\program\\steam\\steamapps\\common\\Dwarf Fortress\\data\\vanilla\\vanilla_procedural\\scripts\\generators\\interactions\\secret.lua",
+    "saved_as": "vanilla-curse-sources\\vanilla_procedural__scripts__generators__interactions__secret.lua",
+    "sha256": "72a396f8e6955be81f846f792de477ade5598b6c2efe29cd34f5e0bd37a8f843"
+  },
+  {
+    "path": "D:\\program\\steam\\steamapps\\common\\Dwarf Fortress\\data\\vanilla\\vanilla_procedural\\scripts\\generators\\interactions\\curse.lua",
+    "saved_as": "vanilla-curse-sources\\vanilla_procedural__scripts__generators__interactions__curse.lua",
+    "sha256": "e810e5e7e378fea023292947c0e32e32d8228887aaef7e5cc9b4f6ccaf4bcca6"
+  },
+  {
+    "path": "D:\\program\\steam\\steamapps\\common\\Dwarf Fortress\\data\\vanilla\\vanilla_procedural\\scripts\\generators\\interactions\\disturbance.lua",
+    "saved_as": "vanilla-curse-sources\\vanilla_procedural__scripts__generators__interactions__disturbance.lua",
+    "sha256": "c228021b8e7fe6107268ca5f58555c2cc925098c41aeacd415a3200e4c646722"
+  },
+  {
+    "path": "D:\\program\\steam\\steamapps\\common\\Dwarf Fortress\\data\\vanilla\\vanilla_procedural\\scripts\\generators\\interactions\\mythical.lua",
+    "saved_as": "vanilla-curse-sources\\vanilla_procedural__scripts__generators__interactions__mythical.lua",
+    "sha256": "9520698d319990d53bd88d2e543a32d1a593143b9de695489a911ee7b37c6d87"
+  },
+  {
+    "path": "D:\\program\\steam\\steamapps\\common\\Dwarf Fortress\\data\\vanilla\\vanilla_procedural\\scripts\\generators\\evil.lua",
+    "saved_as": "vanilla-curse-sources\\vanilla_procedural__scripts__generators__evil.lua",
+    "sha256": "5da7788e431235b0b53f55fe751cda617757f05a599defcbe9428b871ffc199a"
+  },
+  {
+    "path": "D:\\program\\steam\\steamapps\\common\\Dwarf Fortress\\data\\vanilla\\interaction examples\\interaction_secret.txt",
+    "saved_as": "vanilla-curse-sources\\interaction examples__interaction_secret.txt",
+    "sha256": "ae05608a57fbce72889d6cf2d45e979d1366bd38de544fcbd56385597c961119"
+  },
+  {
+    "path": "D:\\program\\steam\\steamapps\\common\\Dwarf Fortress\\data\\vanilla\\interaction examples\\interaction_disturbance.txt",
+    "saved_as": "vanilla-curse-sources\\interaction examples__interaction_disturbance.txt",
+    "sha256": "5f86686835eedea0e81eb0193e4c9abe03954bc0fff50424d77efb0a0722413a"
+  },
+  {
+    "path": "D:\\program\\steam\\steamapps\\common\\Dwarf Fortress\\data\\vanilla\\interaction examples\\interaction_vampire.txt",
+    "saved_as": "vanilla-curse-sources\\interaction examples__interaction_vampire.txt",
+    "sha256": "a78769049211211ea3d8c39917061f74eaf79d550ee9eef9030675184e0a659e"
+  }
+]

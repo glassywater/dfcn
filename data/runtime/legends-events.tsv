@@ -743,6 +743,9 @@ with miserable outcome	结果惨不忍睹	clause
 {p} was offered to {a} by {n}	{n}将{p}献给了{a}	event
 {p} was made a family heirloom by {n}	{n}将{p}定为传家宝	event
 {p} was claimed by {a}	{a}宣称拥有{p}	event
+# A remote claim places the claimant's remoteness before the predicate.
+{p} was claimed by {a} from afar	{a}在远方宣称拥有{p}	event
+{p} was claimed from afar	有人在远方宣称拥有{p}	event
 {p} was sanctified by {a}	{a}将{p}奉为圣物	event
 {p} was created by {n}	{n}创造了{p}	event
 # Creation names the physical artifact; book titles and other artifact names

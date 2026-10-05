@@ -11,7 +11,7 @@ for (bool top_layer : {false, true}) {
                 })) continue;
         if (draw.unit_identity_header && draw.unit_identity_target &&
                 draw.x >= 0 && draw.x < gps_->dimx && draw.y >= 0 && draw.y < gps_->dimy) {
-            // The formatter already owns this gloss. Emit its current quoted
+            // The formatter already owns this header name. Emit its current
             // field here as well as reserving it: an unavailable outer frame
             // must not leave a known identity waiting for the header reader.
             // That reader can still replace this field with its shared layout.
@@ -25,7 +25,7 @@ for (bool top_layer : {false, true}) {
                         bool top = false;
                         const auto *cell = cell_at(x, row_y, &top);
                         return cell && cell[0] ? cell[0] : ' ';
-                    }, true);
+                    }, draw.unit_identity_english);
                 if (field && (!screen_override || screen_override ==
                         (top_layer ? gps_->screen_top : gps_->screen)) &&
                         row.compare(field->start, field->text.size(), field->text) == 0) {
@@ -35,9 +35,10 @@ for (bool top_layer : {false, true}) {
                             return match.y == y && match.x < field->end &&
                                 field->start < match.x + match.length;
                         });
+                        const std::string target = draw.unit_identity_english
+                            ? "“" + *draw.unit_identity_target + "”" : *draw.unit_identity_target;
                         Match match{field->start, y, field->end - field->start,
-                            kCharacterHeaderRule, "“" + *draw.unit_identity_target + "”",
-                            field->text};
+                            kCharacterHeaderRule, target, field->text};
                         match.layout_x = field->start;
                         match.layout_length = field->end - field->start;
                         match.layout_clip_right = field->end;

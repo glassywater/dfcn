@@ -1,0 +1,485 @@
+edition	image_identity	role	function_rva	instruction_rva	encoding	literal_rva	source
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f3f21	rip-relative	0x16aeaa8	 to view other pages
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f3f2b	rip-relative	0x16aeab8	ages
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4162	rip-relative	0x1605a98	 - 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f41f8	rip-relative	0x1605a98	 - 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4290	rip-relative	0x16aea9c	 -  
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f430a	rip-relative	0x1605a98	 - 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f43b6	rip-relative	0x1605a98	 - 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4440	rip-relative	0x1605a98	 - 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4488	rip-relative	0x163a188	a colony of 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4525	rip-relative	0x163a094	many 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4573	rip-relative	0x163a0a0	a swarm of 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f45f4	rip-relative	0x1605a98	 - 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4648	rip-relative	0x163a084	Miasma
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f465d	rip-relative	0x163a08c	Steam
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f466a	rip-relative	0x163a0cc	Mist
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4683	rip-relative	0x163a0cc	Mist
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f46c5	rip-relative	0x163a0b0	An Ocean Wave
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f46da	rip-relative	0x163a0c0	Sea Foam
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4716	rip-relative	0x163a038	Lava Mist
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f471d	rip-relative	0x163a028	Magma Mist
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f475e	rip-relative	0x16aead4	 Vapor
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f477f	rip-relative	0x163a020	Smoke
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4794	rip-relative	0x15f73b0	Dragonfire
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f47a9	rip-relative	0x15f739c	Fire
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f47be	rip-relative	0x163a06c	A Web
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4866	rip-relative	0x163a0d8	Item Cloud
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f48ae	rip-relative	0x1605a98	 - 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f48dc	rip-relative	0x163a438	A Fire
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f493d	rip-relative	0x1605a98	 - 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f496b	rip-relative	0x163a078	A Campfire
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f49cc	rip-relative	0x1605a98	 - 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4a1a	rip-relative	0x163a3b8	Track/Spoor: 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4a5d	rip-relative	0x163a330	unintelligible
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4b1e	rip-relative	0x15e873c	 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4b3e	rip-relative	0x163a34c	right 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4b4d	rip-relative	0x163a324	left 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4bd3	rip-relative	0x163a39c	 print
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4bdc	rip-relative	0x163a340	 imprint
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4cd7	rip-relative	0x15edb24	's 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4d78	rip-relative	0x15edb24	's 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4d82	rip-relative	0x15e873c	 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4dd8	rip-relative	0x163a39c	 print
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4de1	rip-relative	0x163a340	 imprint
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4e04	rip-relative	0x163a388	broken vegetation
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4e54	rip-relative	0x163a35c	/N
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4e5d	rip-relative	0x163a360	/S
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4e66	rip-relative	0x163a354	/E
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4e6f	rip-relative	0x163a358	/W
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4e78	rip-relative	0x163a270	/NE
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4e81	rip-relative	0x163a274	/NW
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4e8a	rip-relative	0x163a268	/SE
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4e93	rip-relative	0x163a26c	/SW
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4eb4	rip-relative	0x163a2c8	/yours or companion's
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4f10	rip-relative	0x1605a98	 - 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4f58	rip-relative	0x163a440	Stagnant salt water [
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4f8a	rip-relative	0x163a410	Stagnant water [
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4fb1	rip-relative	0x163a428	Salt water [
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f4fd4	rip-relative	0x163a378	Water [
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5033	rip-relative	0x163a380	/7]
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f509e	rip-relative	0x1605a98	 - 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f50f9	rip-relative	0x163a370	Lava [
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f511c	rip-relative	0x163a368	Magma [
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f517b	rip-relative	0x163a380	/7]
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f520d	rip-relative	0x1605a98	 - 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f52d4	rip-relative	0x163a400	A dusting of 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f52ec	rip-relative	0x163a3f0	A pool of 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f52f5	rip-relative	0x163a060	A smear of 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f52fe	rip-relative	0x163a048	A spattering of 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5316	rip-relative	0x163a3e0	A pile of 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f531f	rip-relative	0x163a3c8	A small pile of 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5328	rip-relative	0x16aeac0	A thin layer of 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5490	rip-relative	0x15ed9bc	The 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f54cb	rip-relative	0x15e873c	 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f556c	rip-relative	0x15eb518	 of 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f55c2	rip-relative	0x15fd6a8	 are 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f55cb	rip-relative	0x15f71e4	 is 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f56cd	rip-relative	0x1646cc4	here
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f56ed	rip-relative	0x164bfbc	far
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f56fb	rip-relative	0x16aea18	a day's travel
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5709	rip-relative	0x16aea00	nearly a day's travel
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5717	rip-relative	0x16ae750	a half day's travel
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5724	rip-relative	0x16ae740	a short walk
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5734	rip-relative	0x16737e0	 to the 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5762	rip-relative	0x163b8fc	north
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f576e	rip-relative	0x16ae778	north-northeast
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5777	rip-relative	0x1646bf8	northeast
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5780	rip-relative	0x16ae768	east-northeast
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5789	rip-relative	0x163b8f4	east
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5792	rip-relative	0x16ae710	east-southeast
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f579b	rip-relative	0x1646b88	southeast
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f57a4	rip-relative	0x16ae700	south-southeast
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f57ad	rip-relative	0x163b8ec	south
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f57b6	rip-relative	0x16ae730	south-southwest
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f57bf	rip-relative	0x1646b78	southwest
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f57c8	rip-relative	0x16ae720	west-southwest
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f57d1	rip-relative	0x163b834	west
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f57da	rip-relative	0x16ae8a8	west-northwest
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f57e3	rip-relative	0x1646be8	northwest
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f57ec	rip-relative	0x16ae898	north-northwest
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f57fc	rip-relative	0x15e85b4	.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5d36	inline-immediate-fragment		Hotkey: 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5f2f	rip-relative	0x16ae928	This is an unintelligible mess.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5f39	rip-relative	0x16ae938	elligible mess.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5f46	rip-relative	0x16ae940	e mess.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5f4f	rip-relative	0x16ae944	ss.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f5f5a	rip-relative	0x16ae946	.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6057	rip-relative	0x16aebfc	thick 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f606a	rip-relative	0x16aebf4	light 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f607f	rip-relative	0x16aec0c	faint 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f60d4	rip-relative	0x15e873c	 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f60f5	rip-relative	0x16aec04	deep 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6108	rip-relative	0x16ae980	shallow 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f611d	rip-relative	0x16ae978	vague 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6134	rip-relative	0x163a34c	right 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6141	rip-relative	0x163a324	left 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f61d6	rip-relative	0x163a39c	 print
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f61e7	rip-relative	0x16ae9a0	 imprint in the 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f62e2	rip-relative	0x16ae990	 is here.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f62eb	rip-relative	0x15e85b4	.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6420	rip-relative	0x15ed67c	A 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f64df	rip-relative	0x15edb24	's 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f64f9	rip-relative	0x16aebfc	thick 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6507	rip-relative	0x16aebf4	light 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6516	rip-relative	0x16aec0c	faint 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f65db	rip-relative	0x15edb24	's 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f65f1	rip-relative	0x16aec04	deep 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6603	rip-relative	0x16ae980	shallow 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6616	rip-relative	0x16ae978	vague 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6623	rip-relative	0x15e873c	 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6669	rip-relative	0x163a39c	 print
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f667a	rip-relative	0x16ae9a0	 imprint in the 
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6775	rip-relative	0x16ae990	 is here.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f677e	rip-relative	0x15e85b4	.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f67e7	rip-relative	0x16aec38	The vegetation is heavily damaged here.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6814	rip-relative	0x16aec18	The vegetation is bent here.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6843	rip-relative	0x16aec80	The vegetation has been slightly perturbed here.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6866	rip-relative	0x16aec60	The vegetation is broken here.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f68df	rip-relative	0x16ae910	The signs lead north.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6909	rip-relative	0x16ae960	The signs lead south.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6933	rip-relative	0x16ae948	The signs lead east.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f695d	rip-relative	0x16aea48	The signs lead west.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6987	rip-relative	0x16aea28	The signs lead northeast.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f69ae	rip-relative	0x16aea80	The signs lead northwest.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f69d5	rip-relative	0x16aea60	The signs lead southeast.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f69fc	rip-relative	0x16ae9e0	The signs lead southwest.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6a69	rip-relative	0x178b340	""""
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6a76	rip-relative	0x16ae9b8	They belong to you or a companion.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6a80	rip-relative	0x16ae9c8	ou or a companion.
+steam	PE:6a70a6d9:02711000	owning-adventure-renderer	0x7f3cb0	0x7f6a8b	rip-relative	0x16ae9d8	n.
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f5490	rip-relative	0x15ed9bc	The 
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f54cb	rip-relative	0x15e873c	 
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f556c	rip-relative	0x15eb518	 of 
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f55c2	rip-relative	0x15fd6a8	 are 
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f55cb	rip-relative	0x15f71e4	 is 
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f56cd	rip-relative	0x1646cc4	here
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f56ed	rip-relative	0x164bfbc	far
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f56fb	rip-relative	0x16aea18	a day's travel
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f5709	rip-relative	0x16aea00	nearly a day's travel
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f5717	rip-relative	0x16ae750	a half day's travel
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f5724	rip-relative	0x16ae740	a short walk
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f5734	rip-relative	0x16737e0	 to the 
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f5762	rip-relative	0x163b8fc	north
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f576e	rip-relative	0x16ae778	north-northeast
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f5777	rip-relative	0x1646bf8	northeast
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f5780	rip-relative	0x16ae768	east-northeast
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f5789	rip-relative	0x163b8f4	east
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f5792	rip-relative	0x16ae710	east-southeast
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f579b	rip-relative	0x1646b88	southeast
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f57a4	rip-relative	0x16ae700	south-southeast
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f57ad	rip-relative	0x163b8ec	south
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f57b6	rip-relative	0x16ae730	south-southwest
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f57bf	rip-relative	0x1646b78	southwest
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f57c8	rip-relative	0x16ae720	west-southwest
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f57d1	rip-relative	0x163b834	west
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f57da	rip-relative	0x16ae8a8	west-northwest
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f57e3	rip-relative	0x1646be8	northwest
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f57ec	rip-relative	0x16ae898	north-northwest
+steam	PE:6a70a6d9:02711000	compass-site-popup	0x7f5490	0x7f57fc	rip-relative	0x15e85b4	.
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cbea5	rip-relative	0x164c400	fortress
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cbebc	rip-relative	0x1749898	mountain halls
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cbed1	rip-relative	0x17498a8	hillocks
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cbf03	rip-relative	0x17498b4	pits
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cbf0d	rip-relative	0x164c400	fortress
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cbf28	rip-relative	0x164c3ac	cave
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cbf3d	rip-relative	0x17498c0	forest retreat
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cbf6f	rip-relative	0x17498d0	hamlet
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cbf79	rip-relative	0x1646c04	town
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cbfbb	rip-relative	0x162c6ec	shrine
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cbfd0	rip-relative	0x17498d8	labyrinth
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cbfe5	rip-relative	0x16761e0	lair
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cc01c	rip-relative	0x1749a3c	castle
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cc031	rip-relative	0x1619950	fort
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cc046	rip-relative	0x1749a30	monastery
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cc05b	rip-relative	0x1712194	tower
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cc09d	rip-relative	0x1749a48	mysterious palace
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cc0b7	rip-relative	0x1749a60	mysterious dungeon
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cc0cc	rip-relative	0x1749a78	mysterious lair
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cc0e1	rip-relative	0x1747938	vault
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cc0f6	rip-relative	0x162fa4c	tomb
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cc111	rip-relative	0x1749a88	monument
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cc120	rip-relative	0x1749a94	camp
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cc135	rip-relative	0x1749aa0	important location
+steam	PE:6a70a6d9:02711000	site-type-24-nouns	0x10cbe50	0x10cc14a	rip-relative	0x1675868	site
+steam	PE:6a70a6d9:02711000	site-dark-adjective	0x10cbe10	0x10cbe3b	rip-relative	0x16a1220	dark
+steam	PE:6a70a6d9:02711000	site-name-language-formatter	0xa946e0	0xa948a3	rip-relative	0x15e873c	 
+steam	PE:6a70a6d9:02711000	site-name-language-formatter	0xa946e0	0xa9495e	rip-relative	0x15e873c	 
+steam	PE:6a70a6d9:02711000	site-name-language-formatter	0xa946e0	0xa94a3b	rip-relative	0x15e873c	 
+steam	PE:6a70a6d9:02711000	site-name-language-formatter	0xa946e0	0xa94a5d	rip-relative	0x15ed9bc	The 
+steam	PE:6a70a6d9:02711000	site-name-language-formatter	0xa946e0	0xa94a78	rip-relative	0x15e8e48	the 
+steam	PE:6a70a6d9:02711000	site-name-language-formatter	0xa946e0	0xa94af2	rip-relative	0x15e873c	 
+steam	PE:6a70a6d9:02711000	site-name-language-formatter	0xa946e0	0xa94b11	rip-relative	0x15ed9bc	The 
+steam	PE:6a70a6d9:02711000	site-name-language-formatter	0xa946e0	0xa94b1a	rip-relative	0x15e8e48	the 
+steam	PE:6a70a6d9:02711000	site-name-language-formatter	0xa946e0	0xa94b9a	rip-relative	0x15e873c	 
+steam	PE:6a70a6d9:02711000	site-name-language-formatter	0xa946e0	0xa94bb9	rip-relative	0x15ed9bc	The 
+steam	PE:6a70a6d9:02711000	site-name-language-formatter	0xa946e0	0xa94bc2	rip-relative	0x15e8e48	the 
+steam	PE:6a70a6d9:02711000	site-name-language-formatter	0xa946e0	0xa94d1f	rip-relative	0x15e873c	 
+steam	PE:6a70a6d9:02711000	site-name-language-formatter	0xa946e0	0xa94d4b	rip-relative	0x15ed9bc	The 
+steam	PE:6a70a6d9:02711000	site-name-language-formatter	0xa946e0	0xa94d62	rip-relative	0x15e8e48	the 
+steam	PE:6a70a6d9:02711000	site-name-language-formatter	0xa946e0	0xa94e09	rip-relative	0x15e873c	 
+steam	PE:6a70a6d9:02711000	site-name-language-formatter	0xa946e0	0xa94e18	rip-relative	0x16ced90	of 
+steam	PE:6a70a6d9:02711000	site-name-language-formatter	0xa946e0	0xa94e1f	rip-relative	0x16cee1c	Of 
+steam	PE:6a70a6d9:02711000	site-bearing-16	0x1083220	0x10833ce	rip-relative	0x178ae08	z
+steam	PE:6a70a6d9:02711000	site-bearing-16	0x1083220	0x10833e6	rip-relative	0x178abe0	z
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafe6b0	rip-relative	0x16b11dc	***
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafe723	rip-relative	0x16b11d8	Gui
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafe775	rip-relative	0x16b11b0	N
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafe7ab	rip-relative	0x16b1144	NNE
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafe7e1	rip-relative	0x169f528	NE
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafe817	rip-relative	0x16b1140	ENE
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafe84d	rip-relative	0x16b114c	E
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafe883	rip-relative	0x16b1148	ESE
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafe8b9	rip-relative	0x169f530	SE
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafe8ef	rip-relative	0x16b11e4	SSE
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafe925	rip-relative	0x1670cd4	S
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafe95b	rip-relative	0x16b11e0	SSW
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafe991	rip-relative	0x169f52c	SW
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafe9c7	rip-relative	0x16b11ec	WSW
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafe9fd	rip-relative	0x16b11e8	W
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafea33	rip-relative	0x16b11d4	WNW
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafea69	rip-relative	0x169f524	NW
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafea9f	rip-relative	0x16b11d0	NNW
+steam	PE:6a70a6d9:02711000	compass-list-literals-and-site-writeback	0xafe6b0	0xafeb0e	rip-relative	0x16b10c0	Qst
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f17a1	rip-relative	0x16a8b10	 to view other pages
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f17ab	rip-relative	0x16a8b20	ages
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f19e2	rip-relative	0x1600a60	 - 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1a78	rip-relative	0x1600a60	 - 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1b10	rip-relative	0x16a8b04	 -  
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1b8a	rip-relative	0x1600a60	 - 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1c36	rip-relative	0x1600a60	 - 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1cc0	rip-relative	0x1600a60	 - 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1d08	rip-relative	0x1635148	a colony of 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1da5	rip-relative	0x1635158	many 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1df3	rip-relative	0x16351a8	a swarm of 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1e74	rip-relative	0x1600a60	 - 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1ec8	rip-relative	0x16351b4	Miasma
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1edd	rip-relative	0x1635198	Steam
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1eea	rip-relative	0x16351a0	Mist
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1f03	rip-relative	0x16351a0	Mist
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1f45	rip-relative	0x1635110	An Ocean Wave
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1f5a	rip-relative	0x16350e0	Sea Foam
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1f96	rip-relative	0x1635130	Lava Mist
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1f9d	rip-relative	0x16350f0	Magma Mist
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1fde	rip-relative	0x16a8b3c	 Vapor
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f1fff	rip-relative	0x1635120	Smoke
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2014	rip-relative	0x15f2358	Dragonfire
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2029	rip-relative	0x15f2344	Fire
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f203e	rip-relative	0x1635128	A Web
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f20e6	rip-relative	0x1635100	Item Cloud
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f212e	rip-relative	0x1600a60	 - 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f215c	rip-relative	0x16350ac	A Fire
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f21bd	rip-relative	0x1600a60	 - 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f21eb	rip-relative	0x1635078	A Campfire
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f224c	rip-relative	0x1600a60	 - 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f229a	rip-relative	0x16355c8	Track/Spoor: 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f22dd	rip-relative	0x16355f0	unintelligible
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f239e	rip-relative	0x15e3720	 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f23be	rip-relative	0x1635604	right 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f23cd	rip-relative	0x163560c	left 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2453	rip-relative	0x16355b0	 print
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f245c	rip-relative	0x16355b8	 imprint
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2557	rip-relative	0x15e8b58	's 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f25f8	rip-relative	0x15e8b58	's 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2602	rip-relative	0x15e3720	 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2658	rip-relative	0x16355b0	 print
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2661	rip-relative	0x16355b8	 imprint
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2684	rip-relative	0x16355d8	broken vegetation
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f26d4	rip-relative	0x1635600	/N
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f26dd	rip-relative	0x1635580	/S
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f26e6	rip-relative	0x1635584	/E
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f26ef	rip-relative	0x1635578	/W
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f26f8	rip-relative	0x163557c	/NE
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2701	rip-relative	0x16355a8	/NW
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f270a	rip-relative	0x16355ac	/SE
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2713	rip-relative	0x1635588	/SW
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2734	rip-relative	0x1635590	/yours or companion's
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2790	rip-relative	0x1600a60	 - 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f27d8	rip-relative	0x1635008	Stagnant salt water [
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f280a	rip-relative	0x1635020	Stagnant water [
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2831	rip-relative	0x1634ff0	Salt water [
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2854	rip-relative	0x1635000	Water [
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f28b3	rip-relative	0x163504c	/7]
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f291e	rip-relative	0x1600a60	 - 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2979	rip-relative	0x1635034	Lava [
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f299c	rip-relative	0x1635050	Magma [
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f29fb	rip-relative	0x163504c	/7]
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2a8d	rip-relative	0x1600a60	 - 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2b54	rip-relative	0x16350b8	A dusting of 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2b6c	rip-relative	0x1635068	A pool of 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2b75	rip-relative	0x1635058	A smear of 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2b7e	rip-relative	0x1635088	A spattering of 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2b96	rip-relative	0x16350a0	A pile of 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2b9f	rip-relative	0x16350c8	A small pile of 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2ba8	rip-relative	0x16a8b28	A thin layer of 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2d10	rip-relative	0x15e89c4	The 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2d4b	rip-relative	0x15e3720	 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2dec	rip-relative	0x15e64d0	 of 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2e42	rip-relative	0x15f8788	 are 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2e4b	rip-relative	0x15f2120	 is 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2f4d	rip-relative	0x1641950	here
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2f6d	rip-relative	0x1646aec	far
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2f7b	rip-relative	0x16a9b08	a day's travel
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2f89	rip-relative	0x16a9af0	nearly a day's travel
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2f97	rip-relative	0x16a9a70	a half day's travel
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2fa4	rip-relative	0x16a9a60	a short walk
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2fb4	rip-relative	0x166def8	 to the 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2fe2	rip-relative	0x1636a3c	north
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2fee	rip-relative	0x16a9a98	north-northeast
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f2ff7	rip-relative	0x1641c68	northeast
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3000	rip-relative	0x16a9a88	east-northeast
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3009	rip-relative	0x1636a2c	east
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3012	rip-relative	0x16a9ba0	east-southeast
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f301b	rip-relative	0x1641bf8	southeast
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3024	rip-relative	0x16a9b90	south-southeast
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f302d	rip-relative	0x1636a44	south
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3036	rip-relative	0x16a9bc0	south-southwest
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f303f	rip-relative	0x1641c78	southwest
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3048	rip-relative	0x16a9bb0	west-southwest
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3051	rip-relative	0x1636a34	west
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f305a	rip-relative	0x16a9b28	west-northwest
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3063	rip-relative	0x1641c58	northwest
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f306c	rip-relative	0x16a9b18	north-northwest
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f307c	rip-relative	0x15e3574	.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f35b6	inline-immediate-fragment		Hotkey: 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f37af	rip-relative	0x16a9cc0	This is an unintelligible mess.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f37b9	rip-relative	0x16a9cd0	elligible mess.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f37c6	rip-relative	0x16a9cd8	e mess.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f37cf	rip-relative	0x16a9cdc	ss.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f37da	rip-relative	0x16a9cde	.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f38d7	rip-relative	0x16a9c14	thick 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f38ea	rip-relative	0x16a9c0c	light 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f38ff	rip-relative	0x16a9c24	faint 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3954	rip-relative	0x15e3720	 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3975	rip-relative	0x16a9c1c	deep 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3988	rip-relative	0x16a9bd8	shallow 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f399d	rip-relative	0x16a9bd0	vague 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f39b4	rip-relative	0x1635604	right 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f39c1	rip-relative	0x163560c	left 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3a56	rip-relative	0x16355b0	 print
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3a67	rip-relative	0x16a9bf8	 imprint in the 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3b62	rip-relative	0x16a9be8	 is here.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3b6b	rip-relative	0x15e3574	.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3ca0	rip-relative	0x15e85e4	A 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3d5f	rip-relative	0x15e8b58	's 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3d79	rip-relative	0x16a9c14	thick 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3d87	rip-relative	0x16a9c0c	light 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3d96	rip-relative	0x16a9c24	faint 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3e5b	rip-relative	0x15e8b58	's 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3e71	rip-relative	0x16a9c1c	deep 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3e83	rip-relative	0x16a9bd8	shallow 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3e96	rip-relative	0x16a9bd0	vague 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3ea3	rip-relative	0x15e3720	 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3ee9	rip-relative	0x16355b0	 print
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3efa	rip-relative	0x16a9bf8	 imprint in the 
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3ff5	rip-relative	0x16a9be8	 is here.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f3ffe	rip-relative	0x15e3574	.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f4067	rip-relative	0x16a8a88	The vegetation is heavily damaged here.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f4094	rip-relative	0x16a8a68	The vegetation is bent here.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f40c3	rip-relative	0x16a8ad0	The vegetation has been slightly perturbed here.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f40e6	rip-relative	0x16a8ab0	The vegetation is broken here.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f415f	rip-relative	0x16a9ca8	The signs lead north.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f4189	rip-relative	0x16a9cf8	The signs lead south.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f41b3	rip-relative	0x16a9ce0	The signs lead east.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f41dd	rip-relative	0x16a9c50	The signs lead west.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f4207	rip-relative	0x16a9c30	The signs lead northeast.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f422e	rip-relative	0x16a9c88	The signs lead northwest.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f4255	rip-relative	0x16a9c68	The signs lead southeast.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f427c	rip-relative	0x16a9ad0	The signs lead southwest.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f42e9	rip-relative	0x1785c40	""""
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f42f6	rip-relative	0x16a9aa8	They belong to you or a companion.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f4300	rip-relative	0x16a9ab8	ou or a companion.
+classic	PE:6a70b91c:0270a000	owning-adventure-renderer	0x7f1530	0x7f430b	rip-relative	0x16a9ac8	n.
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f2d10	rip-relative	0x15e89c4	The 
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f2d4b	rip-relative	0x15e3720	 
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f2dec	rip-relative	0x15e64d0	 of 
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f2e42	rip-relative	0x15f8788	 are 
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f2e4b	rip-relative	0x15f2120	 is 
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f2f4d	rip-relative	0x1641950	here
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f2f6d	rip-relative	0x1646aec	far
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f2f7b	rip-relative	0x16a9b08	a day's travel
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f2f89	rip-relative	0x16a9af0	nearly a day's travel
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f2f97	rip-relative	0x16a9a70	a half day's travel
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f2fa4	rip-relative	0x16a9a60	a short walk
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f2fb4	rip-relative	0x166def8	 to the 
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f2fe2	rip-relative	0x1636a3c	north
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f2fee	rip-relative	0x16a9a98	north-northeast
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f2ff7	rip-relative	0x1641c68	northeast
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f3000	rip-relative	0x16a9a88	east-northeast
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f3009	rip-relative	0x1636a2c	east
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f3012	rip-relative	0x16a9ba0	east-southeast
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f301b	rip-relative	0x1641bf8	southeast
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f3024	rip-relative	0x16a9b90	south-southeast
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f302d	rip-relative	0x1636a44	south
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f3036	rip-relative	0x16a9bc0	south-southwest
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f303f	rip-relative	0x1641c78	southwest
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f3048	rip-relative	0x16a9bb0	west-southwest
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f3051	rip-relative	0x1636a34	west
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f305a	rip-relative	0x16a9b28	west-northwest
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f3063	rip-relative	0x1641c58	northwest
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f306c	rip-relative	0x16a9b18	north-northwest
+classic	PE:6a70b91c:0270a000	compass-site-popup	0x7f2d10	0x7f307c	rip-relative	0x15e3574	.
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c6e15	rip-relative	0x1647468	fortress
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c6e2c	rip-relative	0x17441c0	mountain halls
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c6e41	rip-relative	0x1744308	hillocks
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c6e73	rip-relative	0x1744300	pits
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c6e7d	rip-relative	0x1647468	fortress
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c6e98	rip-relative	0x1647414	cave
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c6ead	rip-relative	0x17442f0	forest retreat
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c6edf	rip-relative	0x17442e4	hamlet
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c6ee9	rip-relative	0x1641918	town
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c6f2b	rip-relative	0x1627ebc	shrine
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c6f40	rip-relative	0x17442d8	labyrinth
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c6f55	rip-relative	0x1671674	lair
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c6f8c	rip-relative	0x17442bc	castle
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c6fa1	rip-relative	0x16148bc	fort
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c6fb6	rip-relative	0x17442c8	monastery
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c6fcb	rip-relative	0x170d454	tower
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c700d	rip-relative	0x17442a8	mysterious palace
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c7027	rip-relative	0x17443c0	mysterious dungeon
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c703c	rip-relative	0x17443b0	mysterious lair
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c7051	rip-relative	0x1742290	vault
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c7066	rip-relative	0x162aa88	tomb
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c7081	rip-relative	0x17443a0	monument
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c7090	rip-relative	0x1744394	camp
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c70a5	rip-relative	0x1744380	important location
+classic	PE:6a70b91c:0270a000	site-type-24-nouns	0x10c6dc0	0x10c70ba	rip-relative	0x1670168	site
+classic	PE:6a70b91c:0270a000	site-dark-adjective	0x10c6d80	0x10c6dab	rip-relative	0x169c118	dark
+classic	PE:6a70b91c:0270a000	site-name-language-formatter	0xa91760	0xa91923	rip-relative	0x15e3720	 
+classic	PE:6a70b91c:0270a000	site-name-language-formatter	0xa91760	0xa919de	rip-relative	0x15e3720	 
+classic	PE:6a70b91c:0270a000	site-name-language-formatter	0xa91760	0xa91abb	rip-relative	0x15e3720	 
+classic	PE:6a70b91c:0270a000	site-name-language-formatter	0xa91760	0xa91add	rip-relative	0x15e89c4	The 
+classic	PE:6a70b91c:0270a000	site-name-language-formatter	0xa91760	0xa91af8	rip-relative	0x15e3e34	the 
+classic	PE:6a70b91c:0270a000	site-name-language-formatter	0xa91760	0xa91b72	rip-relative	0x15e3720	 
+classic	PE:6a70b91c:0270a000	site-name-language-formatter	0xa91760	0xa91b91	rip-relative	0x15e89c4	The 
+classic	PE:6a70b91c:0270a000	site-name-language-formatter	0xa91760	0xa91b9a	rip-relative	0x15e3e34	the 
+classic	PE:6a70b91c:0270a000	site-name-language-formatter	0xa91760	0xa91c1a	rip-relative	0x15e3720	 
+classic	PE:6a70b91c:0270a000	site-name-language-formatter	0xa91760	0xa91c39	rip-relative	0x15e89c4	The 
+classic	PE:6a70b91c:0270a000	site-name-language-formatter	0xa91760	0xa91c42	rip-relative	0x15e3e34	the 
+classic	PE:6a70b91c:0270a000	site-name-language-formatter	0xa91760	0xa91d9f	rip-relative	0x15e3720	 
+classic	PE:6a70b91c:0270a000	site-name-language-formatter	0xa91760	0xa91dcb	rip-relative	0x15e89c4	The 
+classic	PE:6a70b91c:0270a000	site-name-language-formatter	0xa91760	0xa91de2	rip-relative	0x15e3e34	the 
+classic	PE:6a70b91c:0270a000	site-name-language-formatter	0xa91760	0xa91e89	rip-relative	0x15e3720	 
+classic	PE:6a70b91c:0270a000	site-name-language-formatter	0xa91760	0xa91e98	rip-relative	0x16cb220	of 
+classic	PE:6a70b91c:0270a000	site-name-language-formatter	0xa91760	0xa91e9f	rip-relative	0x16cb2ac	Of 
+classic	PE:6a70b91c:0270a000	site-bearing-16	0x107e190	0x107e33e	rip-relative	0x1785700	z
+classic	PE:6a70b91c:0270a000	site-bearing-16	0x107e190	0x107e356	rip-relative	0x17854d8	z
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafb6f0	rip-relative	0x16ac140	***
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafb763	rip-relative	0x16ac13c	Gui
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafb7b5	rip-relative	0x16ac210	N
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafb7eb	rip-relative	0x16ac2d8	NNE
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafb821	rip-relative	0x169a660	NE
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafb857	rip-relative	0x16ac2d4	ENE
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafb88d	rip-relative	0x16ac2e0	E
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafb8c3	rip-relative	0x16ac2dc	ESE
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafb8f9	rip-relative	0x169a668	SE
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafb92f	rip-relative	0x16ac2c8	SSE
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafb965	rip-relative	0x166c08c	S
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafb99b	rip-relative	0x16ac2c4	SSW
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafb9d1	rip-relative	0x169a664	SW
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafba07	rip-relative	0x16ac2d0	WSW
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafba3d	rip-relative	0x16ac2cc	W
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafba73	rip-relative	0x16ac138	WNW
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafbaa9	rip-relative	0x169a65c	NW
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafbadf	rip-relative	0x16ac134	NNW
+classic	PE:6a70b91c:0270a000	compass-list-literals-and-site-writeback	0xafb6f0	0xafbb4e	rip-relative	0x16ac11c	Qst

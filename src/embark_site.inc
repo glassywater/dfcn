@@ -322,6 +322,20 @@ void Overlay::layout_embark_site_card(SDL_Renderer *renderer) {
         rows.push_back({&match});
     }
     if (rows.empty()) return;
+    const NativePanelBorders borders(*gps_);
+    std::optional<SDL_Rect> panel;
+    for (const auto &row : rows) {
+        const Match &match = *row.front();
+        if (match.length <= 0) continue;
+        panel = native_panel_interior(borders, *gps_, match.x, match.x + match.length, match.y);
+        if (panel) break;
+    }
+    if (!panel) return;
+    const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
+    const int origin_x = (gps_->screen_pixel_x - gps_->dimx * tile_w) / 2;
+    const int origin_y = (gps_->screen_pixel_y - gps_->dimy * tile_h) / 2;
+    const SDL_Rect card_clip{origin_x + panel->x * tile_w, origin_y + panel->y * tile_h,
+        panel->w * tile_w, panel->h * tile_h};
     const auto source_y = [](const Match &match) {
         return match.native_split_text ? match.native_split_top_y : match.y;
     };
@@ -342,7 +356,6 @@ void Overlay::layout_embark_site_card(SDL_Renderer *renderer) {
         };
         return key(*a.front()) < key(*b.front());
     });
-    layout_fortress_text_rows(renderer, rows, left, right, true, true, moving);
     // Compact unused native river slots, retaining a blank line between
     // sections. Moving backwards in source y must still advance one display
     // row; a restored site and its resource cannot occupy the same baseline.
@@ -358,8 +371,15 @@ void Overlay::layout_embark_site_card(SDL_Renderer *renderer) {
         }
         previous_height = match.native_split_text ? 2 : 1;
         match.layout_y = display_y;
+        // Commit the display baseline before the shared fitter captures its
+        // row clip. Native source rows still own suppression, not placement
+        // or the vertical clip of this compacted card.
+        match.layout_fixed_baseline = true;
+        match.layout_pixel_y = match.native_split_text ? gps_->tile_pixel_y / 2 : 0;
+        match.layout_reflowed_paragraph = true;
         previous = &match;
     }
+    layout_fortress_text_rows(renderer, rows, left, right, true, true, moving);
 
     // The four ecological label/value rows are a table, not four unrelated
     // colon strings. Split their EXISTING translated text and color vectors,
@@ -368,7 +388,6 @@ void Overlay::layout_embark_site_card(SDL_Renderer *renderer) {
     struct Field { Match *line; size_t colon; std::vector<uint32_t> text; };
     std::vector<Field> fields;
     int label_width = 0;
-    const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
     const int pixels = rows.front().front()->layout_font_pixels;
     const int padding = config_.horizontal_padding;
     for (const auto &row : rows) {
@@ -426,6 +445,15 @@ void Overlay::layout_embark_site_card(SDL_Renderer *renderer) {
         }
         prepared_matches_.insert(prepared_matches_.end(), std::make_move_iterator(values.begin()),
             std::make_move_iterator(values.end()));
+    }
+    // Recovered sites can add display rows. Keep every relocated row and
+    // ecological value inside the same current native card, including its
+    // lower edge, without reapplying the old writer's source-row clip.
+    for (Match &match : prepared_matches_) {
+        if (match.rule != kEmbarkSiteRowRule || !match.layout_native_clip) continue;
+        SDL_Rect visible{};
+        match.layout_native_clip = SDL_IntersectRect(&*match.layout_native_clip, &card_clip, &visible)
+            ? visible : SDL_Rect{};
     }
     static bool logged = false;
     if (!logged) {

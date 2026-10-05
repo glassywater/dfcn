@@ -1,0 +1,11 @@
+edition	image_identity	semantic_field	function_rva	instruction_rva	callee_rva
+steam	PE:6a70a6d9:02711000	creator-display	0xa95780	0xa9670f	0x1330c30
+steam	PE:6a70a6d9:02711000	artifact-name	0xa95780	0xa9675b	0xa94030
+steam	PE:6a70a6d9:02711000	item-description	0xa95780	0xa967b2	0xc65450
+steam	PE:6a70a6d9:02711000	ancestor-name	0xa95780	0xa96b5b	0xb92f10
+steam	PE:6a70a6d9:02711000	entity-name	0xa95780	0xa96df4	0xb92900
+classic	PE:6a70b91c:0270a000	creator-display	0xa92800	0xa9378f	0x132bba0
+classic	PE:6a70b91c:0270a000	artifact-name	0xa92800	0xa937db	0xa910b0
+classic	PE:6a70b91c:0270a000	item-description	0xa92800	0xa93832	0xc62490
+classic	PE:6a70b91c:0270a000	ancestor-name	0xa92800	0xa93bdb	0xb8ff50
+classic	PE:6a70b91c:0270a000	entity-name	0xa92800	0xa93e74	0xb8f940

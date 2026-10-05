@@ -14,6 +14,53 @@ std::optional<std::string> Overlay::translate_conversation_choice(
     // These are complete typed noun/event parsers. None may replace just a
     // convenient prefix of an unrecognised conversational sentence.
     if (const auto target = exact_literal_translation(source); complete(target)) return target;
+    // Native talk_choice types 66..70 (failed, breaking point, major, minor,
+    // negated) use these complete caption families over their emotion switches.
+    // The full branch/literal/append sources for both configured PE images are
+    // in data/extracted/adventure-conversation-emotions. Every constructor
+    // appends the same complete experience as thoughts and recollections.
+    // Keep its reviewed head authoritative, then consume the entire suffix
+    // through that shared event grammar, including skills and named creatures.
+    // An unknown event cannot silently disappear behind a translated head.
+    const std::string_view caption(source);
+    const bool emotion_caption = caption.starts_with("State feelings of ") ||
+        caption.starts_with("State feelings, ") ||
+        caption.starts_with("State minor feeling of ") ||
+        caption.starts_with("Verbally struggle against ") ||
+        caption.starts_with("Verbally struggle, ") ||
+        caption.starts_with("Fail the struggle against ") ||
+        caption.starts_with("Fail the internal struggle, ") ||
+        caption.starts_with("Dismiss minor feeling of ") ||
+        caption.starts_with("Dismiss minor doubts ") ||
+        caption.starts_with("Dismiss minor existential crisis ") ||
+        caption.starts_with("Acknowledge lack of ");
+    if (emotion_caption) {
+        for (size_t at = caption.rfind(' '); at != std::string_view::npos;
+                at = at == 0 ? std::string_view::npos : caption.rfind(' ', at - 1)) {
+            const auto feeling = exact_literal_translation(caption.substr(0, at));
+            if (!complete(feeling)) continue;
+            const auto event_source = caption.substr(at + 1);
+            // Circumstance 233 names a typed history-event collection. Its
+            // eighteen title families retain native participants and object
+            // roles at the constructor's own event-formatter call sites.
+            if (event_source.starts_with("during ")) {
+                if (const auto native = native_overview_event_source(event_source)) {
+                    if (const auto pieces = translate_history_event(*native)) {
+                        std::string event;
+                        for (const auto &piece : *pieces) event += piece.target;
+                        if (translation_complete_with_native_nicknames(event, event_source))
+                            return event + "，" + *feeling;
+                    }
+                }
+            }
+            std::vector<size_t> origins;
+            const auto event = RULESETS.translate_with_origins(
+                native_text_to_utf8(event_source), "::psychology::event", origins);
+            if (translation_complete_with_native_nicknames(event, event_source))
+                return *event + "，" + *feeling;
+        }
+        return std::nullopt;
+    }
     if (const auto target = translate_creature_label(source); complete(target)) return target;
     if (const auto target = translate_item_description_term(source); complete(target)) return target;
     if (const auto target = translate_legends_event(source); complete(target)) return target;
@@ -95,6 +142,9 @@ std::optional<std::string> Overlay::translate_adventure_action_choice(
         std::vector<int> &target_colors, const NativePerformanceChoice *native_choice) const {
     TranslationStateScope translation_scope;
     target_colors.clear();
+    // The native entry, rather than the shortened button text, establishes
+    // both the complete source and its sphere/value/name/item namespace.
+    if (native_choice && !native_choice->source.empty()) source = native_choice->source;
     const std::string normalized = normalize_utterance(source);
     if (normalized.empty() || normalized.ends_with("...") || source_colors.empty())
         return std::nullopt;
@@ -122,17 +172,87 @@ std::optional<std::string> Overlay::translate_adventure_action_choice(
             case 8: target = "未知地点"; break; // STORY_SITE
             case 10: target = "未知群体"; break; // STORY_ENTITY
             case 11: target = "未知区域"; break; // STORY_SUBREGION
+            case 25: target = "未知崇拜对象"; break; // SERMON_HFID
             default: break;
             }
         }
         return uniform_colors(std::move(target));
     }
+    if (native_choice) {
+        switch (native_choice->type) {
+        case 26: // SERMON_SPHERE: all 130 native sphere enum values.
+            return uniform_colors(translate_deity_spheres(normalized));
+        case 27: case 28: // SERMON_PROMOTE_VALUE / SERMON_REFUSE_VALUE.
+            return uniform_colors(exact_literal_translation(
+                "Adventure performance value: " + normalized));
+        case 38: // WRITE_FORM_BY_INDEX: the finite written-work genre table.
+            return uniform_colors(exact_literal_translation(
+                "Adventure performance genre: " + normalized));
+        case 17: { // MUSIC_ROLE: voice, RAW instrument, actual item or artifact.
+            if (const auto voice = exact_literal_translation(
+                    "Adventure performance voice: " + normalized))
+                return uniform_colors(voice);
+            const bool simulate = normalized.starts_with("Simulate ");
+            const bool play = normalized.starts_with("Play ");
+            if (!simulate && !play) return std::nullopt;
+            const auto instrument = std::string_view(normalized).substr(simulate ? 9 : 5);
+            std::optional<std::string> target;
+            if (simulate) {
+                // Native +0x68 is a generated instrument type, with no item
+                // material or designation marks for this branch to invent.
+                target = translate_embark_instrument_item(instrument, false, true);
+            } else {
+                // Native item virtual +0x188 and artifact formatter c65450
+                // retain the actual object's complete material/quality/name.
+                target = translate_item_description_term(instrument);
+                if (!target) target = translate_inventory_item_name(instrument, -1, -1);
+                if (!target) target = translate_legends_item(instrument);
+                if (!target) target = translate_embark_instrument_item(instrument, true, true);
+                if (!target && generated_title_shape(instrument))
+                    target = translate_legends_artifact_identity(instrument);
+            }
+            if (!target) return std::nullopt;
+            return uniform_colors((simulate ? "模仿" : "演奏") + *target +
+                (simulate ? "的演奏" : ""));
+        }
+        case 9: // STORY_HF, with any visible assumed identity preserved.
+            return uniform_colors(translate_ui_message_capture(source, true));
+        case 25: // SERMON_HFID is the historical figure's own name.
+            return uniform_colors(translate_legends_name(source, true));
+        case 8: case 10: case 11: // STORY_SITE / ENTITY / SUBREGION.
+        case 13: case 15: case 18: // POETRY / MUSIC / DANCE_FORM.
+        case 31: case 33: case 35: // COMPOSE_*_FORM_BY_INDEX.
+            return uniform_colors(translate_legends_name(source, false));
+        case 14: case 16: case 19: case 39: // Memorized written compositions.
+            return uniform_colors(translate_legends_book(source));
+        case 12: // STORY_EVENT is the complete native history-event caption.
+            return uniform_colors(translate_legends_text(source, false, false));
+        case 37: { // WRITE_TARGET: the actual writable item's designation.
+            auto target = translate_item_description_term(source);
+            if (!target) target = translate_inventory_item_name(source, -1, -1);
+            if (!target) target = translate_legends_item(source);
+            return uniform_colors(std::move(target));
+        }
+        default: break;
+        }
+    }
+    if (const auto target = exact_literal_translation("Adventure action: " + normalized))
+        return uniform_colors(target);
+    // Complete fixed menu captions precede the permissive personal-name
+    // fallback. Their authored predicates must never become invented names.
+    std::vector<int> complete_colors;
+    const std::vector<int> *caption_colors = &source_colors;
+    if (source.size() != source_colors.size()) {
+        complete_colors.assign(source.size(), source_colors.front());
+        caption_colors = &complete_colors;
+    }
+    if (const auto target = translate_help_paragraph(source, *caption_colors,
+            target_colors, true)) return target;
     // Use this exact priority for both complete native search candidates and
     // visible action buttons, including the prompt's name-only submenus.
     auto target = native_unit_identity_source_target(source);
     if (!target && !native_choice && normalized == "A")
         target = exact_literal_translation("Adventure vermin: A");
-    if (!target) target = exact_literal_translation("Adventure action: " + normalized);
     if (!target) target = translate_adventure_item_action(normalized);
     if (!target) {
         // View-contaminant's native caption has no verb. Its complete
@@ -156,8 +276,6 @@ std::optional<std::string> Overlay::translate_adventure_action_choice(
         std::string(trim_view(source)), false, false, {},
         ProceduralFragmentContext::personal_name);
     if (target) return uniform_colors(std::move(target));
-    target = translate_help_paragraph(source, source_colors, target_colors, true);
-    if (target) return target;
     target = translate_ui_message_capture(normalized, false);
     if (target) return uniform_colors(std::move(target));
     return uniform_colors(translate_conversation_choice(source));
@@ -169,8 +287,8 @@ bool Overlay::translated_adventure_action_matches(std::string_view source,
     if (!config_.enabled || source.empty() || source.size() > 65536) return false;
     if (compact_translated_search_text(query).empty()) return false;
     if (native_choice) {
-        // Several different objects can have the identical native Unknown
-        // key. Their species must never enter a cache keyed by that text alone.
+        // Equal captions can have different enums or native identities.
+        // Never cache a sphere, genre or person's translation by text alone.
         std::vector<int> source_colors(source.size(), 0xffffff), target_colors;
         const auto target = translate_adventure_action_choice(
             source, source_colors, target_colors, native_choice);
@@ -420,8 +538,118 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
             if (word_ends[end] != std::string::npos)
                 add(begin, word_ends[end], lexicon->fixed_targets[value], 30);
         });
-    // A complete fixed row never enters caption or RAW name parsing.
-    if (auto target = solve()) return remember(std::move(target));
+    const auto emotion_caption = [](std::string_view caption) {
+        return caption.starts_with("State feelings of ") ||
+            caption.starts_with("State feelings, ") ||
+            caption.starts_with("State minor feeling of ") ||
+            caption.starts_with("Verbally struggle against ") ||
+            caption.starts_with("Verbally struggle, ") ||
+            caption.starts_with("Fail the struggle against ") ||
+            caption.starts_with("Fail the internal struggle, ") ||
+            caption.starts_with("Dismiss minor feeling of ") ||
+            caption.starts_with("Dismiss minor doubts") ||
+            caption.starts_with("Dismiss minor existential crisis") ||
+            caption.starts_with("Acknowledge lack of ");
+    };
+    auto fixed_target = solve();
+    const bool bound_emotion = snapshot && std::any_of(snapshot->begin(), snapshot->end(),
+        [&](const auto &choice) {
+            return lower(normalize_utterance(choice.second)) == source &&
+                emotion_caption(normalize_utterance(choice.first));
+        });
+    // Ordinary complete fixed rows keep their reviewed vocabulary. An
+    // emotional choice must first try its bound caption: its native `great`
+    // denotes intensity, while a different conversation uses `great` = good.
+    if (fixed_target && !bound_emotion) return remember(std::move(fixed_target));
+
+    // The chooser snapshot binds this exact native keyword vector to the
+    // complete authored caption. Its event, skill, item and personal-name
+    // fields are already typed by the caption's shared grammar. Use that
+    // complete translation to represent its deduplicated search words once;
+    // never reinterpret an event word as an unrelated RAW name. Keywords
+    // outside the caption still need the scoped fixed vocabulary above.
+    std::optional<std::string> bound_target;
+    bool bound_emotion_translated = false, bound_ambiguous = false;
+    if (snapshot) for (const auto &[raw_caption, keywords] : *snapshot) {
+        if (lower(normalize_utterance(keywords)) != source) continue;
+        const std::string caption = normalize_utterance(raw_caption);
+        auto target = translate_conversation_choice(caption);
+        // A typed complete caption may preserve a player's native nickname.
+        // Only its exact same-source quoted spelling grants that exemption;
+        // fixed keyword edges still use the strict no-ASCII predicate.
+        if (!translation_complete_with_native_nicknames(target, caption) && gps_) {
+            std::vector<int> source_colors(caption.size(), 0xffffff), target_colors;
+            target = translate_help_paragraph(caption, source_colors, target_colors, true);
+        }
+        if (!translation_complete_with_native_nicknames(target, caption)) continue;
+
+        // This is the actual native search fold followed by its a-z word
+        // boundaries, including CP437 ligatures and accent collisions. The
+        // snapshot retains the original spelling needed by typed translation.
+        const std::string folded_caption = ConversationKeywordLexicon::search_spelling(caption);
+        std::unordered_set<std::string_view> caption_words;
+        for (size_t at = 0; at < folded_caption.size();) {
+            const size_t next = folded_caption.find(' ', at);
+            const size_t end = next == std::string::npos ? folded_caption.size() : next;
+            caption_words.emplace(folded_caption.data() + at, end - at);
+            at = end == folded_caption.size() ? end : end + 1;
+        }
+        std::vector<bool> owned(words.size());
+        bool represented = false;
+        for (size_t at = 0; at < words.size(); ++at) {
+            owned[at] = caption_words.contains(words[at]);
+            represented = represented || owned[at];
+        }
+        if (!represented) continue;
+
+        // A path covers every actual keyword. Caption-owned words can be
+        // represented by the whole translation; all other words must form
+        // complete fixed entries without crossing a caption field boundary.
+        std::vector<size_t> next_word(words.size() + 1, std::string::npos);
+        std::vector<const Edge *> fixed_path(words.size());
+        next_word.back() = words.size();
+        for (size_t begin = words.size(); begin-- > 0;) {
+            if (owned[begin]) {
+                if (next_word[begin + 1] != std::string::npos)
+                    next_word[begin] = begin + 1;
+                continue;
+            }
+            for (const auto &edge : edges[begin]) {
+                if (next_word[edge.end] == std::string::npos ||
+                    std::any_of(owned.begin() + begin, owned.begin() + edge.end,
+                        [](bool value) { return value; })) continue;
+                if (!fixed_path[begin] || edge.priority > fixed_path[begin]->priority ||
+                    (edge.priority == fixed_path[begin]->priority && edge.end > fixed_path[begin]->end)) {
+                    fixed_path[begin] = &edge;
+                    next_word[begin] = edge.end;
+                }
+            }
+        }
+        if (next_word.front() == std::string::npos) continue;
+        std::string result;
+        bool caption_emitted = false;
+        for (size_t at = 0; at < words.size(); at = next_word[at]) {
+            const std::string *part = nullptr;
+            if (owned[at]) {
+                if (!caption_emitted) part = &*target;
+                caption_emitted = true;
+            } else part = &fixed_path[at]->target;
+            if (!part) continue;
+            if (!result.empty()) result.push_back(' ');
+            result += *part;
+        }
+        // Equal keyword vectors can belong to distinct native choices. A
+        // differing semantic result cannot be chosen by vector iteration order.
+        if (bound_target && *bound_target != result) bound_ambiguous = true;
+        else if (!bound_target) bound_target = std::move(result);
+        bound_emotion_translated = bound_emotion_translated || emotion_caption(caption);
+    }
+    if (bound_target && (!fixed_target || bound_emotion_translated)) {
+        if (bound_ambiguous) return remember(std::nullopt);
+        return remember(std::move(bound_target));
+    }
+    if (fixed_target) return remember(std::move(fixed_target));
+
     size_t fixed_prefix_end = 0;
     while (fixed_prefix_end < words.size()) {
         size_t next = fixed_prefix_end;

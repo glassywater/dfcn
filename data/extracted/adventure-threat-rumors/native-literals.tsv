@@ -1,0 +1,1121 @@
+image	owner	instruction	kind	operand	text
+reference	threat-speech	0x140687cc2	cstring	0x1415fcfe8	  
+reference	threat-speech	0x140687db7	cstring	0x141672720	An evil lurks within.
+reference	threat-speech	0x140687dbe	cstring	0x1416726d0	A night creature has infiltrated our communities and now makes prey of us.
+reference	threat-speech	0x140687deb	cstring	0x1415fcfe8	  
+reference	threat-speech	0x140687e00	cstring	0x141672630	As you know, we are at war.  You might be able to strike our enemies where our armies cannot reach.
+reference	threat-speech	0x140687e38	cstring	0x1415fcfe8	  
+reference	threat-speech	0x140687ed0	cstring	0x141672970	Vanquishing a great beast on our behalf would bring us all much glory.
+reference	threat-speech	0x140687f4c	cstring	0x141672890	Mastering the forces of nature would glorify us in the eyes of the world.
+reference	threat-speech	0x140687f89	cstring	0x1416728e0	Demons from the underworld must not be permitted to walk freely upon the land.
+reference	threat-speech	0x140687fb2	cstring	0x141672818	Not far from here, a fearsome creature has made its home.
+reference	threat-speech	0x140687fdb	cstring	0x141672858	Terrible monstrosities live deep under the ground.
+reference	threat-speech	0x14068804e	cstring	0x1416727e8	A force of evil has arisen in the world.
+reference	threat-speech	0x140688124	cstring	0x141672078	At the end of the world dwell the fiercest beasts of legend.
+reference	threat-speech	0x14068813c	cstring	0x1416720b8	Creatures grow mighty out in the wildest regions.
+reference	threat-speech	0x140688154	cstring	0x141672000	You might win fame by putting down a wild beast of great renown.
+reference	threat-speech	0x140688165	cstring	0x141672048	Sometimes animals just get out of control.
+reference	threat-speech	0x14068817d	cstring	0x141672160	Something truly horrifying has vomited itself forth from the depths of the world.
+reference	threat-speech	0x140688198	cstring	0x1416721c0	A great monster from the underground is said to have emerged from the darkness.
+reference	threat-speech	0x1406881b1	cstring	0x1416720f0	A vile beast from the caverns now walks the land.
+reference	threat-speech	0x1406881ba	cstring	0x141672128	A lurking pest has come up from the underground.
+reference	threat-speech	0x1406881ce	cstring	0x141672790	The world is safer for travelers when night creatures no longer stalk the darkness.
+reference	threat-speech	0x1406881ea	cstring	0x1415fcfe8	  
+reference	threat-speech	0x140688282	cstring	0x141672698	A great beast threatens to bring ruin upon our people.
+reference	threat-speech	0x140688303	cstring	0x1416725b8	We have been under siege by an ancient force of nature.
+reference	threat-speech	0x14068838d	cstring	0x1416725f0	It is time to send our cursed enemy back to the underworld.
+reference	threat-speech	0x140688405	cstring	0x141672550	Our people have been tormented by a fearsome foe.
+reference	threat-speech	0x140688442	cstring	0x141672588	A beast horrible beyond imagining threatens us.
+reference	threat-speech	0x1406884b5	cstring	0x141672520	The forces of darkness have descended upon us.
+reference	threat-speech	0x140688589	cstring	0x141672a30	We are besieged by a terrifying monster from the harshest wilderness.
+reference	threat-speech	0x1406885a9	cstring	0x141672a78	A savage beast from the thick of the wilds hunts us at will.
+reference	threat-speech	0x1406885e4	cstring	0x1416729f0	A ferocious unnatural beast has become the bane of our people.
+reference	threat-speech	0x1406885eb	cstring	0x1416729b8	A ferocious wild animal has been set on us by nature.
+reference	threat-speech	0x14068860a	cstring	0x141672930	A beast from the wilds has been harassing our people.
+reference	threat-speech	0x140688627	cstring	0x141672b30	A terror most foul from the evil depths nigh the underworld plagues us.
+reference	threat-speech	0x140688644	cstring	0x141672b80	A vile monster from the bowels of the earth has been preying on our people.
+reference	threat-speech	0x14068865f	cstring	0x141672ab8	A beast from underground has been assailing us.
+reference	threat-speech	0x140688668	cstring	0x141672ae8	At times, creeping things slither out from below ground.
+reference	threat-speech	0x14068867e	cstring	0x1416724e0	A creature of the night has our people cowering in fear.
+reference	threat-speech	0x140688708	cstring	0x1415fcfe8	  
+reference	threat-speech	0x140688726	cstring	0x141671fb8	Seek this place if you wish to confront 
+reference	threat-speech	0x140688735	cstring	0x141671fe8	This insidious evil is 
+reference	threat-speech	0x14068874e	cstring	0x141671f80	Seek this place if you hunt 
+reference	threat-speech	0x14068875d	cstring	0x141671fa0	The creature is 
+reference	threat-speech	0x1406887cf	cstring	0x1415e956c	 the 
+reference	threat-speech	0x140688937	cstring	0x1415e873c	 
+reference	threat-speech	0x14068898e	cstring	0x1415e873c	 
+reference	threat-speech	0x140688b68	cstring	0x141600c30	Slave
+reference	threat-speech	0x140688bbf	cstring	0x141600c30	Slave
+reference	threat-speech	0x140688bc7	cstring	0x141600c34	e
+reference	threat-speech	0x140688caa	immediate	0x72656e6f73697250	Prisoner
+reference	threat-speech	0x140688cfa	immediate	0x72656e6f73697250	Prisoner
+reference	threat-speech	0x140688dae	cstring	0x1415e85b4	.
+reference	threat-speech	0x140688e0e	cstring	0x141671f28	  Body corrupted beyond reckoning, 
+reference	threat-speech	0x140688e45	cstring	0x1416ceccc	he
+reference	threat-speech	0x140688e52	cstring	0x1416cecc8	she
+reference	threat-speech	0x140688e60	cstring	0x1415ee4d4	it
+reference	threat-speech	0x140688e98	cstring	0x141671f50	 assumes a beastly form to terrorize us.
+reference	threat-description	0x14065c4ea	cstring	0x141663838	  Knowing no mercy, 
+reference	threat-description	0x14065c661	cstring	0x1415e873c	 
+reference	threat-description	0x14065c6af	cstring	0x141663850	devoured 
+reference	threat-description	0x14065c71b	cstring	0x1415ed620	a 
+reference	threat-description	0x14065c79e	cstring	0x141663818	devoured our livestock
+reference	threat-description	0x14065c7bf	cstring	0x1415e90d8	, 
+reference	threat-description	0x14065c7d6	cstring	0x1415e9110	 and 
+reference	threat-description	0x14065c830	cstring	0x141663830	stole 
+reference	threat-description	0x14065c89c	cstring	0x1415ed620	a 
+reference	threat-description	0x14065c99c	cstring	0x1415fda98	Untitled
+reference	threat-description	0x14065c9c1	cstring	0x1416637f0	stole our treasures
+reference	threat-description	0x14065c9dc	cstring	0x1415e90d8	, 
+reference	threat-description	0x14065c9f3	cstring	0x1415e9110	 and 
+reference	threat-description	0x14065ca6a	cstring	0x141663808	destroyed 
+reference	threat-description	0x14065caef	cstring	0x1416637c8	a counting house
+reference	threat-description	0x14065cb03	cstring	0x1416637e0	a hospital
+reference	threat-description	0x14065cb17	cstring	0x141628b50	a guildhall
+reference	threat-description	0x14065cb2b	cstring	0x141663a38	a mead hall
+reference	threat-description	0x14065cb3f	cstring	0x141663a44	a keep
+reference	threat-description	0x14065cb53	cstring	0x141628b28	a temple
+reference	threat-description	0x14065cb67	cstring	0x141663a18	a library
+reference	threat-description	0x14065cb7b	cstring	0x141663a28	a tavern
+reference	threat-description	0x14065cb8f	cstring	0x141663a08	a market
+reference	threat-description	0x14065cba3	cstring	0x1416639dc	a tomb
+reference	threat-description	0x14065cbb4	cstring	0x1416639e8	an underworld spire
+reference	threat-description	0x14065cbda	cstring	0x141663998	the catacombs
+reference	threat-description	0x14065cbeb	cstring	0x1416639d0	the sewers
+reference	threat-description	0x14065cbfc	cstring	0x1416639c0	a dungeon
+reference	threat-description	0x14065cc0d	cstring	0x141663a00	a tower
+reference	threat-description	0x14065cc24	cstring	0x1416639a8	destroyed our homes
+reference	threat-description	0x14065cc3f	cstring	0x1415e90d8	, 
+reference	threat-description	0x14065cc56	cstring	0x1415e9110	 and 
+reference	threat-description	0x14065ccd7	cstring	0x141663950	prayed inside
+reference	threat-description	0x14065cce0	cstring	0x141663988	disturbed
+reference	threat-description	0x14065cce9	cstring	0x141663978	profaned
+reference	threat-description	0x14065ccf8	cstring	0x1415e873c	 
+reference	threat-description	0x14065cd7d	cstring	0x1416637c8	a counting house
+reference	threat-description	0x14065cd91	cstring	0x1416637e0	a hospital
+reference	threat-description	0x14065cda5	cstring	0x141628b50	a guildhall
+reference	threat-description	0x14065cdb9	cstring	0x141663a38	a mead hall
+reference	threat-description	0x14065cdcd	cstring	0x141663a44	a keep
+reference	threat-description	0x14065cde1	cstring	0x141628b28	a temple
+reference	threat-description	0x14065cdf5	cstring	0x141663a18	a library
+reference	threat-description	0x14065ce09	cstring	0x141663a28	a tavern
+reference	threat-description	0x14065ce1d	cstring	0x141663a08	a market
+reference	threat-description	0x14065ce31	cstring	0x1416639dc	a tomb
+reference	threat-description	0x14065ce42	cstring	0x1416639e8	an underworld spire
+reference	threat-description	0x14065ce68	cstring	0x141663998	the catacombs
+reference	threat-description	0x14065ce79	cstring	0x1416639d0	the sewers
+reference	threat-description	0x14065ce8a	cstring	0x1416639c0	a dungeon
+reference	threat-description	0x14065ce9b	cstring	0x141663a00	a tower
+reference	threat-description	0x14065ceb2	cstring	0x141663960	profaned our homes
+reference	threat-description	0x14065ceca	cstring	0x1415e90d8	, 
+reference	threat-description	0x14065cedd	cstring	0x1415e9110	 and 
+reference	threat-description	0x14065cef2	cstring	0x1415ee438	!
+reference	threat-description	0x14065d078	cstring	0x141663670	  This vile fiend 
+reference	threat-description	0x14065d07f	cstring	0x141663650	  This bloodsucking fiend 
+reference	threat-description	0x14065d0f5	cstring	0x141663634	even 
+reference	threat-description	0x14065d10a	cstring	0x141663640	murdered 
+reference	threat-description	0x14065d268	cstring	0x141645dd8	my 
+reference	threat-description	0x14065d2a3	cstring	0x1415e873c	 
+reference	threat-description	0x14065d3d2	cstring	0x141663628	has killed 
+reference	threat-description	0x14065d3e9	cstring	0x141663610	has even killed 
+reference	threat-description	0x14065d435	cstring	0x1415ed578	somebody
+reference	threat-description	0x14065d48a	cstring	0x1415ecfb4	 in 
+reference	threat-description	0x14065d4d8	cstring	0x1416ced18	his
+reference	threat-description	0x14065d531	cstring	0x1416ced18	his
+reference	threat-description	0x14065d53a	cstring	0x1416ced1a	s
+reference	threat-description	0x14065d5b9	cstring	0x1416635e8	 lust for murder
+reference	threat-description	0x14065d691	cstring	0x1416cecc0	her
+reference	threat-description	0x14065d6ea	cstring	0x1416cecc0	her
+reference	threat-description	0x14065d6f3	cstring	0x1416cecc2	r
+reference	threat-description	0x14065d729	cstring	0x1415ee528	its
+reference	threat-description	0x14065d785	cstring	0x1415ee528	its
+reference	threat-description	0x14065d78e	cstring	0x1415ee52a	s
+reference	threat-description	0x14065d8d9	cstring	0x141663600	, among them 
+reference	threat-description	0x14065d942	cstring	0x1415eb518	 of 
+reference	threat-description	0x14065d957	cstring	0x141645dd8	my 
+reference	threat-description	0x14065d9b2	cstring	0x1415e90d8	, 
+reference	threat-description	0x14065d9fc	cstring	0x1415ee438	!
+reference	threat-description	0x14065da1b	cstring	0x1415e9110	 and 
+reference	threat-description	0x14065db79	cstring	0x1416635cc	  [
+reference	threat-description	0x14065dbef	cstring	0x1416635d0	 pauses to regain 
+reference	threat-description	0x14065dc3e	cstring	0x1416ced18	his
+reference	threat-description	0x14065dc9a	cstring	0x1416ced18	his
+reference	threat-description	0x14065dca3	cstring	0x1416ced1a	s
+reference	threat-description	0x14065dd22	cstring	0x141663588	 composure.]
+reference	threat-description	0x14065dd37	cstring	0x141663598	  It pains me all the more, for the foul villain 
+reference	threat-description	0x14065de13	cstring	0x1416cecc0	her
+reference	threat-description	0x14065de6f	cstring	0x1416cecc0	her
+reference	threat-description	0x14065de78	cstring	0x1416cecc2	r
+reference	threat-description	0x14065deae	cstring	0x1415ee528	its
+reference	threat-description	0x14065df0d	cstring	0x1415ee528	its
+reference	threat-description	0x14065df16	cstring	0x1415ee52a	s
+reference	threat-description	0x14065df96	cstring	0x141663568	was once
+reference	threat-description	0x14065dfa4	cstring	0x1415e8ca4	is
+reference	threat-description	0x14065dfc1	cstring	0x141663578	 my own 
+reference	threat-description	0x14065e08f	cstring	0x141663538	, now twisted into monstrosity
+reference	threat-description	0x14065e0c5	cstring	0x141663558	, now cursed
+reference	threat-description	0x14065e0da	cstring	0x1415e85b4	.
+reference	threat-description	0x14065e0ef	cstring	0x1416637a8	  Save us from this 
+reference	threat-description	0x14065e1a0	cstring	0x1416637c0	horror
+reference	threat-description	0x14065e1af	cstring	0x141663778	traitor
+reference	threat-description	0x14065e1c4	cstring	0x1415ee438	!
+reference	threat-description	0x14065e51f	cstring	0x141663780	  Beware!  It it said that only 
+reference	threat-description	0x14065e52e	cstring	0x141663748	  It is said that 
+reference	threat-description	0x14065e6a8	cstring	0x1415edb24	's 
+reference	threat-description	0x14065e74c	cstring	0x1415e873c	 
+reference	threat-description	0x14065e77c	cstring	0x141789108	unknown material
+reference	threat-description	0x14065e7bb	cstring	0x141663760	 harms the creature.
+reference	threat-description	0x14065e7d5	cstring	0x141663710	  Other arms may not cut so deeply.
+classic	threat-speech	0x1406856e2	cstring	0x1415f7ff8	  
+classic	threat-speech	0x1406857d7	cstring	0x14166cc80	An evil lurks within.
+classic	threat-speech	0x1406857de	cstring	0x14166cd20	A night creature has infiltrated our communities and now makes prey of us.
+classic	threat-speech	0x14068580b	cstring	0x1415f7ff8	  
+classic	threat-speech	0x140685820	cstring	0x14166cca0	As you know, we are at war.  You might be able to strike our enemies where our armies cannot reach.
+classic	threat-speech	0x140685858	cstring	0x1415f7ff8	  
+classic	threat-speech	0x1406858f0	cstring	0x14166d510	Vanquishing a great beast on our behalf would bring us all much glory.
+classic	threat-speech	0x14068596c	cstring	0x14166d560	Mastering the forces of nature would glorify us in the eyes of the world.
+classic	threat-speech	0x1406859a9	cstring	0x14166d480	Demons from the underworld must not be permitted to walk freely upon the land.
+classic	threat-speech	0x1406859d2	cstring	0x14166d4d0	Not far from here, a fearsome creature has made its home.
+classic	threat-speech	0x1406859fb	cstring	0x14166db88	Terrible monstrosities live deep under the ground.
+classic	threat-speech	0x140685a6e	cstring	0x14166daf8	A force of evil has arisen in the world.
+classic	threat-speech	0x140685b44	cstring	0x14166da30	At the end of the world dwell the fiercest beasts of legend.
+classic	threat-speech	0x140685b5c	cstring	0x14166d970	Creatures grow mighty out in the wildest regions.
+classic	threat-speech	0x140685b74	cstring	0x14166d9b0	You might win fame by putting down a wild beast of great renown.
+classic	threat-speech	0x140685b85	cstring	0x14166d910	Sometimes animals just get out of control.
+classic	threat-speech	0x140685b9d	cstring	0x14166db30	Something truly horrifying has vomited itself forth from the depths of the world.
+classic	threat-speech	0x140685bb8	cstring	0x14166da70	A great monster from the underground is said to have emerged from the darkness.
+classic	threat-speech	0x140685bd1	cstring	0x14166dac0	A vile beast from the caverns now walks the land.
+classic	threat-speech	0x140685bda	cstring	0x14166d9f8	A lurking pest has come up from the underground.
+classic	threat-speech	0x140685bee	cstring	0x14166dbc0	The world is safer for travelers when night creatures no longer stalk the darkness.
+classic	threat-speech	0x140685c0a	cstring	0x1415f7ff8	  
+classic	threat-speech	0x140685ca2	cstring	0x14166cc10	A great beast threatens to bring ruin upon our people.
+classic	threat-speech	0x140685d23	cstring	0x14166cc48	We have been under siege by an ancient force of nature.
+classic	threat-speech	0x140685dad	cstring	0x14166cb98	It is time to send our cursed enemy back to the underworld.
+classic	threat-speech	0x140685e25	cstring	0x14166cbd8	Our people have been tormented by a fearsome foe.
+classic	threat-speech	0x140685e62	cstring	0x14166d828	A beast horrible beyond imagining threatens us.
+classic	threat-speech	0x140685ed5	cstring	0x14166d7b0	The forces of darkness have descended upon us.
+classic	threat-speech	0x140685fa9	cstring	0x14166d6e0	We are besieged by a terrifying monster from the harshest wilderness.
+classic	threat-speech	0x140685fc9	cstring	0x14166d628	A savage beast from the thick of the wilds hunts us at will.
+classic	threat-speech	0x140686004	cstring	0x14166d5b0	A ferocious unnatural beast has become the bane of our people.
+classic	threat-speech	0x14068600b	cstring	0x14166d668	A ferocious wild animal has been set on us by nature.
+classic	threat-speech	0x14068602a	cstring	0x14166d5f0	A beast from the wilds has been harassing our people.
+classic	threat-speech	0x140686047	cstring	0x14166d7e0	A terror most foul from the evil depths nigh the underworld plagues us.
+classic	threat-speech	0x140686064	cstring	0x14166d730	A vile monster from the bowels of the earth has been preying on our people.
+classic	threat-speech	0x14068607f	cstring	0x14166d780	A beast from underground has been assailing us.
+classic	threat-speech	0x140686088	cstring	0x14166d6a0	At times, creeping things slither out from below ground.
+classic	threat-speech	0x14068609e	cstring	0x14166d858	A creature of the night has our people cowering in fear.
+classic	threat-speech	0x140686128	cstring	0x1415f7ff8	  
+classic	threat-speech	0x140686146	cstring	0x14166d940	Seek this place if you wish to confront 
+classic	threat-speech	0x140686155	cstring	0x14166d8d8	This insidious evil is 
+classic	threat-speech	0x14068616e	cstring	0x14166d8f0	Seek this place if you hunt 
+classic	threat-speech	0x14068617d	cstring	0x14166d898	The creature is 
+classic	threat-speech	0x1406861ef	cstring	0x1415e4548	 the 
+classic	threat-speech	0x140686357	cstring	0x1415e3720	 
+classic	threat-speech	0x1406863ae	cstring	0x1415e3720	 
+classic	threat-speech	0x140686588	cstring	0x1415fbcc8	Slave
+classic	threat-speech	0x1406865df	cstring	0x1415fbcc8	Slave
+classic	threat-speech	0x1406865e7	cstring	0x1415fbccc	e
+classic	threat-speech	0x1406866ca	immediate	0x72656e6f73697250	Prisoner
+classic	threat-speech	0x14068671a	immediate	0x72656e6f73697250	Prisoner
+classic	threat-speech	0x1406867ce	cstring	0x1415e3574	.
+classic	threat-speech	0x14068682e	cstring	0x14166d8b0	  Body corrupted beyond reckoning, 
+classic	threat-speech	0x140686865	cstring	0x1416cb15c	he
+classic	threat-speech	0x140686872	cstring	0x1416cb158	she
+classic	threat-speech	0x140686880	cstring	0x1415e9484	it
+classic	threat-speech	0x1406868b8	cstring	0x14166d268	 assumes a beastly form to terrorize us.
+classic	threat-description	0x140659f0a	cstring	0x14165e200	  Knowing no mercy, 
+classic	threat-description	0x14065a081	cstring	0x1415e3720	 
+classic	threat-description	0x14065a0cf	cstring	0x14165e1b8	devoured 
+classic	threat-description	0x14065a13b	cstring	0x1415e8618	a 
+classic	threat-description	0x14065a1be	cstring	0x14165e1c8	devoured our livestock
+classic	threat-description	0x14065a1df	cstring	0x1415e40c4	, 
+classic	threat-description	0x14065a1f6	cstring	0x1415e40bc	 and 
+classic	threat-description	0x14065a250	cstring	0x14165e194	stole 
+classic	threat-description	0x14065a2bc	cstring	0x1415e8618	a 
+classic	threat-description	0x14065a3bc	cstring	0x1415f8b60	Untitled
+classic	threat-description	0x14065a3e1	cstring	0x14165e1a0	stole our treasures
+classic	threat-description	0x14065a3fc	cstring	0x1415e40c4	, 
+classic	threat-description	0x14065a413	cstring	0x1415e40bc	 and 
+classic	threat-description	0x14065a48a	cstring	0x14165e898	destroyed 
+classic	threat-description	0x14065a50f	cstring	0x14165e8a8	a counting house
+classic	threat-description	0x14065a523	cstring	0x14165e878	a hospital
+classic	threat-description	0x14065a537	cstring	0x141623cc0	a guildhall
+classic	threat-description	0x14065a54b	cstring	0x14165e888	a mead hall
+classic	threat-description	0x14065a55f	cstring	0x14165e860	a keep
+classic	threat-description	0x14065a573	cstring	0x141623c98	a temple
+classic	threat-description	0x14065a587	cstring	0x14165e868	a library
+classic	threat-description	0x14065a59b	cstring	0x14165e848	a tavern
+classic	threat-description	0x14065a5af	cstring	0x14165e830	a market
+classic	threat-description	0x14065a5c3	cstring	0x14165e83c	a tomb
+classic	threat-description	0x14065a5d4	cstring	0x14165e808	an underworld spire
+classic	threat-description	0x14065a5fa	cstring	0x14165e7f8	the catacombs
+classic	threat-description	0x14065a60b	cstring	0x14165e7e8	the sewers
+classic	threat-description	0x14065a61c	cstring	0x14165e820	a dungeon
+classic	threat-description	0x14065a62d	cstring	0x14165e858	a tower
+classic	threat-description	0x14065a644	cstring	0x14165e7c0	destroyed our homes
+classic	threat-description	0x14065a65f	cstring	0x1415e40c4	, 
+classic	threat-description	0x14065a676	cstring	0x1415e40bc	 and 
+classic	threat-description	0x14065a6f7	cstring	0x14165ea00	prayed inside
+classic	threat-description	0x14065a700	cstring	0x14165e9f0	disturbed
+classic	threat-description	0x14065a709	cstring	0x14165e7d8	profaned
+classic	threat-description	0x14065a718	cstring	0x1415e3720	 
+classic	threat-description	0x14065a79d	cstring	0x14165e8a8	a counting house
+classic	threat-description	0x14065a7b1	cstring	0x14165e878	a hospital
+classic	threat-description	0x14065a7c5	cstring	0x141623cc0	a guildhall
+classic	threat-description	0x14065a7d9	cstring	0x14165e888	a mead hall
+classic	threat-description	0x14065a7ed	cstring	0x14165e860	a keep
+classic	threat-description	0x14065a801	cstring	0x141623c98	a temple
+classic	threat-description	0x14065a815	cstring	0x14165e868	a library
+classic	threat-description	0x14065a829	cstring	0x14165e848	a tavern
+classic	threat-description	0x14065a83d	cstring	0x14165e830	a market
+classic	threat-description	0x14065a851	cstring	0x14165e83c	a tomb
+classic	threat-description	0x14065a862	cstring	0x14165e808	an underworld spire
+classic	threat-description	0x14065a888	cstring	0x14165e7f8	the catacombs
+classic	threat-description	0x14065a899	cstring	0x14165e7e8	the sewers
+classic	threat-description	0x14065a8aa	cstring	0x14165e820	a dungeon
+classic	threat-description	0x14065a8bb	cstring	0x14165e858	a tower
+classic	threat-description	0x14065a8d2	cstring	0x14165e9b8	profaned our homes
+classic	threat-description	0x14065a8ea	cstring	0x1415e40c4	, 
+classic	threat-description	0x14065a8fd	cstring	0x1415e40bc	 and 
+classic	threat-description	0x14065a912	cstring	0x1415e942c	!
+classic	threat-description	0x14065aa98	cstring	0x14165e998	  This vile fiend 
+classic	threat-description	0x14065aa9f	cstring	0x14165e9d0	  This bloodsucking fiend 
+classic	threat-description	0x14065ab15	cstring	0x14165e9ac	even 
+classic	threat-description	0x14065ab2a	cstring	0x14165e970	murdered 
+classic	threat-description	0x14065ac88	cstring	0x141641030	my 
+classic	threat-description	0x14065acc3	cstring	0x1415e3720	 
+classic	threat-description	0x14065adf2	cstring	0x14165e948	has killed 
+classic	threat-description	0x14065ae09	cstring	0x14165e980	has even killed 
+classic	threat-description	0x14065ae55	cstring	0x1415e8570	somebody
+classic	threat-description	0x14065aeaa	cstring	0x1415e7f2c	 in 
+classic	threat-description	0x14065aef8	cstring	0x1416cb1a8	his
+classic	threat-description	0x14065af51	cstring	0x1416cb1a8	his
+classic	threat-description	0x14065af5a	cstring	0x1416cb1aa	s
+classic	threat-description	0x14065afd9	cstring	0x14165e958	 lust for murder
+classic	threat-description	0x14065b0b1	cstring	0x1416cb150	her
+classic	threat-description	0x14065b10a	cstring	0x1416cb150	her
+classic	threat-description	0x14065b113	cstring	0x1416cb152	r
+classic	threat-description	0x14065b149	cstring	0x1415e94d8	its
+classic	threat-description	0x14065b1a5	cstring	0x1415e94d8	its
+classic	threat-description	0x14065b1ae	cstring	0x1415e94da	s
+classic	threat-description	0x14065b2f9	cstring	0x14165e930	, among them 
+classic	threat-description	0x14065b362	cstring	0x1415e64d0	 of 
+classic	threat-description	0x14065b377	cstring	0x141641030	my 
+classic	threat-description	0x14065b3d2	cstring	0x1415e40c4	, 
+classic	threat-description	0x14065b41c	cstring	0x1415e942c	!
+classic	threat-description	0x14065b43b	cstring	0x1415e40bc	 and 
+classic	threat-description	0x14065b599	cstring	0x14165e940	  [
+classic	threat-description	0x14065b60f	cstring	0x14165e908	 pauses to regain 
+classic	threat-description	0x14065b65e	cstring	0x1416cb1a8	his
+classic	threat-description	0x14065b6ba	cstring	0x1416cb1a8	his
+classic	threat-description	0x14065b6c3	cstring	0x1416cb1aa	s
+classic	threat-description	0x14065b742	cstring	0x14165e920	 composure.]
+classic	threat-description	0x14065b757	cstring	0x14165e8c0	  It pains me all the more, for the foul villain 
+classic	threat-description	0x14065b833	cstring	0x1416cb150	her
+classic	threat-description	0x14065b88f	cstring	0x1416cb150	her
+classic	threat-description	0x14065b898	cstring	0x1416cb152	r
+classic	threat-description	0x14065b8ce	cstring	0x1415e94d8	its
+classic	threat-description	0x14065b92d	cstring	0x1415e94d8	its
+classic	threat-description	0x14065b936	cstring	0x1415e94da	s
+classic	threat-description	0x14065b9b6	cstring	0x14165e8f8	was once
+classic	threat-description	0x14065b9c4	cstring	0x1415e3c80	is
+classic	threat-description	0x14065b9e1	cstring	0x14165e690	 my own 
+classic	threat-description	0x14065baaf	cstring	0x14165e6a0	, now twisted into monstrosity
+classic	threat-description	0x14065bae5	cstring	0x14165e668	, now cursed
+classic	threat-description	0x14065bafa	cstring	0x1415e3574	.
+classic	threat-description	0x14065bb0f	cstring	0x14165e678	  Save us from this 
+classic	threat-description	0x14065bbc0	cstring	0x14165e654	horror
+classic	threat-description	0x14065bbcf	cstring	0x14165e660	traitor
+classic	threat-description	0x14065bbe4	cstring	0x1415e942c	!
+classic	threat-description	0x14065bf3f	cstring	0x14165e618	  Beware!  It it said that only 
+classic	threat-description	0x14065bf4e	cstring	0x14165e640	  It is said that 
+classic	threat-description	0x14065c0c8	cstring	0x1415e8b58	's 
+classic	threat-description	0x14065c16c	cstring	0x1415e3720	 
+classic	threat-description	0x14065c19c	cstring	0x141782ab0	unknown material
+classic	threat-description	0x14065c1db	cstring	0x14165e5d8	 harms the creature.
+classic	threat-description	0x14065c1f5	cstring	0x14165e5f0	  Other arms may not cut so deeply.
+reference	location-description	0x140690313	cstring	0x1415fcfe8	  
+reference	location-description	0x140690328	cstring	0x141672e10	We are in 
+reference	location-description	0x140690363	cstring	0x1415e85b4	.
+reference	location-description	0x14069040a	cstring	0x1415fcfe8	  
+reference	location-description	0x140690451	cstring	0x1415f71e4	 is 
+reference	location-description	0x14069053f	cstring	0x1415e85b4	.
+reference	location-description	0x140690554	cstring	0x141672e20	  [You receive a detailed description.]
+reference	location-description	0x1406905c8	cstring	0x1415fcfe8	  
+reference	location-description	0x14069060f	cstring	0x141671c30	 is in 
+reference	location-description	0x14069063a	cstring	0x1415fcfe8	  
+reference	location-description	0x14069064f	cstring	0x141672dd0	I've heard of a place called 
+reference	location-description	0x140690670	cstring	0x1415e85b4	.
+reference	family-relation	0x14075a5e7	cstring	0x1416a1dac	an 
+reference	family-relation	0x14075a5f6	cstring	0x1415ed620	a 
+reference	family-relation	0x14075a61a	cstring	0x141646634	mother
+reference	family-relation	0x14075a62c	cstring	0x1416465a8	father
+reference	family-relation	0x14075a63e	cstring	0x1416465b0	parent
+reference	family-relation	0x14075a650	cstring	0x141646588	husband
+reference	family-relation	0x14075a665	cstring	0x14164657c	wife
+reference	family-relation	0x14075a66c	cstring	0x1416a1db0	wives
+reference	family-relation	0x14075a680	cstring	0x141646574	spouse
+reference	family-relation	0x14075a692	cstring	0x1416a1db8	eldest son
+reference	family-relation	0x14075a6a4	cstring	0x1416a1dc8	second eldest son
+reference	family-relation	0x14075a6b6	cstring	0x1416a1de0	third eldest son
+reference	family-relation	0x14075a6c8	cstring	0x1416a1df8	fourth eldest son
+reference	family-relation	0x14075a6da	cstring	0x1416a1e10	fifth eldest son
+reference	family-relation	0x14075a6ec	cstring	0x1416a1e28	sixth eldest son
+reference	family-relation	0x14075a6fe	cstring	0x1416a1b88	seventh eldest son
+reference	family-relation	0x14075a710	cstring	0x1416a1ba0	eighth eldest son
+reference	family-relation	0x14075a722	cstring	0x1416a1bb8	ninth eldest son
+reference	family-relation	0x14075a734	cstring	0x1416a1bd0	tenth eldest son
+reference	family-relation	0x14075a746	cstring	0x1416465b8	son
+reference	family-relation	0x14075a758	cstring	0x1416a1be8	youngest son
+reference	family-relation	0x14075a76a	cstring	0x1416a1bf8	only son
+reference	family-relation	0x14075a77c	cstring	0x1416a1c08	eldest daughter
+reference	family-relation	0x14075a788	cstring	0x1416a1c18	second eldest daughter
+reference	family-relation	0x14075a79a	cstring	0x1416a1c30	third eldest daughter
+reference	family-relation	0x14075a7ac	cstring	0x1416a1c48	fourth eldest daughter
+reference	family-relation	0x14075a7be	cstring	0x1416a1c60	fifth eldest daughter
+reference	family-relation	0x14075a7d0	cstring	0x1416a1c78	sixth eldest daughter
+reference	family-relation	0x14075a7e2	cstring	0x1416a1c90	seventh eldest daughter
+reference	family-relation	0x14075a7f4	cstring	0x1416a1ca8	eighth eldest daughter
+reference	family-relation	0x14075a806	cstring	0x1416a1cc0	ninth eldest daughter
+reference	family-relation	0x14075a818	cstring	0x1416a1cd8	tenth eldest daughter
+reference	family-relation	0x14075a82a	cstring	0x1416465c0	daughter
+reference	family-relation	0x14075a83c	cstring	0x1416a24f0	only daughter
+reference	family-relation	0x14075a84e	cstring	0x1416a2500	youngest daughter
+reference	family-relation	0x14075a860	cstring	0x1416a2518	eldest child
+reference	family-relation	0x14075a872	cstring	0x1416a2528	second eldest child
+reference	family-relation	0x14075a884	cstring	0x1416a2540	third eldest child
+reference	family-relation	0x14075a896	cstring	0x1416a2558	fourth eldest child
+reference	family-relation	0x14075a8a8	cstring	0x1416a2570	fifth eldest child
+reference	family-relation	0x14075a8ba	cstring	0x1416a2588	sixth eldest child
+reference	family-relation	0x14075a8cc	cstring	0x1416a25a0	seventh eldest child
+reference	family-relation	0x14075a8de	cstring	0x1416a25b8	eighth eldest child
+reference	family-relation	0x14075a8f0	cstring	0x1416a25d0	ninth eldest child
+reference	family-relation	0x14075a902	cstring	0x1416a25e8	tenth eldest child
+reference	family-relation	0x14075a914	cstring	0x141646ac0	child
+reference	family-relation	0x14075a926	cstring	0x1416a2600	youngest child
+reference	family-relation	0x14075a938	cstring	0x1416a2610	only child
+reference	family-relation	0x14075a94a	cstring	0x1416a2620	paternal grandmother
+reference	family-relation	0x14075a95c	cstring	0x1416a2638	paternal grandfather
+reference	family-relation	0x14075a96e	cstring	0x1416a23b8	maternal grandmother
+reference	family-relation	0x14075a980	cstring	0x1416a23d0	maternal grandfather
+reference	family-relation	0x14075a992	cstring	0x141646ac8	grandmother
+reference	family-relation	0x14075a9a4	cstring	0x141646ad8	grandfather
+reference	family-relation	0x14075a9b6	cstring	0x141646ae8	grandparent
+reference	family-relation	0x14075a9c8	cstring	0x1416a23e8	older brother
+reference	family-relation	0x14075a9da	cstring	0x1416a23f8	older sister
+reference	family-relation	0x14075a9ec	cstring	0x1416a2408	older sibling
+reference	family-relation	0x14075a9fe	cstring	0x1416a2418	younger brother
+reference	family-relation	0x14075aa0a	cstring	0x1416a2428	younger sister
+reference	family-relation	0x14075aa1c	cstring	0x1416a2438	younger sibling
+reference	family-relation	0x14075aa28	cstring	0x141646a58	cousin
+reference	family-relation	0x14075aa3a	cstring	0x141646a90	aunt
+reference	family-relation	0x14075aa4c	cstring	0x141646a40	uncle
+reference	family-relation	0x14075aa5e	cstring	0x141646a48	niece
+reference	family-relation	0x14075aa70	cstring	0x141646a50	nephew
+reference	family-relation	0x14075aa82	cstring	0x141646ab8	sibling
+reference	family-relation	0x14075aa94	cstring	0x141646a98	grandchild
+reference	family-relation	0x14075aaa3	cstring	0x1416a2448	older half-brother
+reference	family-relation	0x14075aab2	cstring	0x1416a2460	older half-sister
+reference	family-relation	0x14075aac1	cstring	0x1416a2478	older half-sibling
+reference	family-relation	0x14075aad0	cstring	0x1416a2490	younger half-brother
+reference	family-relation	0x14075aadf	cstring	0x1416a24a8	younger half-sister
+reference	family-relation	0x14075aaee	cstring	0x1416a24c0	younger half-sibling
+reference	family-relation	0x14075aafd	cstring	0x141646a80	half-sibling
+reference	family-relation	0x14075ab0c	cstring	0x1416a24d8	no relationship
+reference	family-relation	0x14075ab4a	cstring	0x1416a24e8	ren
+reference	family-relation	0x14075ab59	cstring	0x1415e9298	s
+reference	cardinal-number	0x14052e3ab	cstring	0x1416516d8	negative 
+reference	cardinal-number	0x14052e3e0	cstring	0x141651730	zero
+reference	cardinal-number	0x14052e3fa	cstring	0x141651738	one
+reference	cardinal-number	0x14052e414	cstring	0x141651724	two
+reference	cardinal-number	0x14052e42e	cstring	0x141651728	three
+reference	cardinal-number	0x14052e448	cstring	0x141651714	four
+reference	cardinal-number	0x14052e462	cstring	0x14165171c	five
+reference	cardinal-number	0x14052e47c	cstring	0x141651708	six
+reference	cardinal-number	0x14052e496	cstring	0x14165170c	seven
+reference	cardinal-number	0x14052e4b0	cstring	0x141651778	eight
+reference	cardinal-number	0x14052e4ca	cstring	0x141651780	nine
+reference	cardinal-number	0x14052e4e4	cstring	0x14165176c	ten
+reference	cardinal-number	0x14052e4fe	cstring	0x141651770	eleven
+reference	cardinal-number	0x14052e518	cstring	0x141651758	twelve
+reference	cardinal-number	0x14052e532	cstring	0x141651760	thirteen
+reference	cardinal-number	0x14052e54c	cstring	0x141651740	fourteen
+reference	cardinal-number	0x14052e566	cstring	0x141651750	fifteen
+reference	cardinal-number	0x14052e580	cstring	0x1416515d8	sixteen
+reference	cardinal-number	0x14052e59a	cstring	0x1416515e0	seventeen
+reference	cardinal-number	0x14052e5b4	cstring	0x1416515b8	eighteen
+reference	cardinal-number	0x14052e5ce	cstring	0x1416515c8	nineteen
+reference	cardinal-number	0x14052e643	cstring	0x141651598	 billion
+reference	cardinal-number	0x14052e662	cstring	0x1415e873c	 
+reference	cardinal-number	0x14052e706	cstring	0x1416515a8	 million
+reference	cardinal-number	0x14052e725	cstring	0x1415e873c	 
+reference	cardinal-number	0x14052e802	cstring	0x141651578	 thousand
+reference	cardinal-number	0x14052e821	cstring	0x1415e873c	 
+reference	cardinal-number	0x14052e8f9	cstring	0x141651588	 hundred
+reference	cardinal-number	0x14052e915	cstring	0x1415e873c	 
+reference	cardinal-number	0x14052e99b	immediate	0x66666667	gfff
+reference	cardinal-number	0x14052e9c5	cstring	0x141651620	twenty
+reference	cardinal-number	0x14052e9ce	cstring	0x141651628	thirty
+reference	cardinal-number	0x14052e9dd	cstring	0x141651610	forty
+reference	cardinal-number	0x14052e9ec	cstring	0x141651618	fifty
+reference	cardinal-number	0x14052e9fb	cstring	0x1416515fc	sixty
+reference	cardinal-number	0x14052ea0a	cstring	0x141651608	seventy
+reference	cardinal-number	0x14052ea13	cstring	0x1416515ec	eighty
+reference	cardinal-number	0x14052ea1c	cstring	0x1416515f4	ninety
+reference	cardinal-number	0x14052ea44	cstring	0x14164b74c	-
+classic	location-description	0x14068dd33	cstring	0x1415f7ff8	  
+classic	location-description	0x14068dd48	cstring	0x14166dce0	We are in 
+classic	location-description	0x14068dd83	cstring	0x1415e3574	.
+classic	location-description	0x14068de2a	cstring	0x1415f7ff8	  
+classic	location-description	0x14068de71	cstring	0x1415f2120	 is 
+classic	location-description	0x14068df5f	cstring	0x1415e3574	.
+classic	location-description	0x14068df74	cstring	0x14166dc70	  [You receive a detailed description.]
+classic	location-description	0x14068dfe8	cstring	0x1415f7ff8	  
+classic	location-description	0x14068e02f	cstring	0x14166ceb0	 is in 
+classic	location-description	0x14068e05a	cstring	0x1415f7ff8	  
+classic	location-description	0x14068e06f	cstring	0x14166dc98	I've heard of a place called 
+classic	location-description	0x14068e090	cstring	0x1415e3574	.
+classic	family-relation	0x140758007	cstring	0x14169cf7c	an 
+classic	family-relation	0x140758016	cstring	0x1415e8618	a 
+classic	family-relation	0x14075803a	cstring	0x141641744	mother
+classic	family-relation	0x14075804c	cstring	0x14164174c	father
+classic	family-relation	0x14075805e	cstring	0x1416416e4	parent
+classic	family-relation	0x140758070	cstring	0x141640fb0	husband
+classic	family-relation	0x140758085	cstring	0x141640fa4	wife
+classic	family-relation	0x14075808c	cstring	0x14169cf80	wives
+classic	family-relation	0x1407580a0	cstring	0x141641034	spouse
+classic	family-relation	0x1407580b2	cstring	0x14169cf88	eldest son
+classic	family-relation	0x1407580c4	cstring	0x14169cf98	second eldest son
+classic	family-relation	0x1407580d6	cstring	0x14169cfb0	third eldest son
+classic	family-relation	0x1407580e8	cstring	0x14169cd18	fourth eldest son
+classic	family-relation	0x1407580fa	cstring	0x14169cd30	fifth eldest son
+classic	family-relation	0x14075810c	cstring	0x14169cd48	sixth eldest son
+classic	family-relation	0x14075811e	cstring	0x14169cd60	seventh eldest son
+classic	family-relation	0x140758130	cstring	0x14169cd78	eighth eldest son
+classic	family-relation	0x140758142	cstring	0x14169cd90	ninth eldest son
+classic	family-relation	0x140758154	cstring	0x14169cda8	tenth eldest son
+classic	family-relation	0x140758166	cstring	0x1416416ec	son
+classic	family-relation	0x140758178	cstring	0x14169cdc0	youngest son
+classic	family-relation	0x14075818a	cstring	0x14169cdd0	only son
+classic	family-relation	0x14075819c	cstring	0x14169cde0	eldest daughter
+classic	family-relation	0x1407581a8	cstring	0x14169cdf0	second eldest daughter
+classic	family-relation	0x1407581ba	cstring	0x14169ce08	third eldest daughter
+classic	family-relation	0x1407581cc	cstring	0x14169ce20	fourth eldest daughter
+classic	family-relation	0x1407581de	cstring	0x14169ce38	fifth eldest daughter
+classic	family-relation	0x1407581f0	cstring	0x14169ce50	sixth eldest daughter
+classic	family-relation	0x140758202	cstring	0x14169ce68	seventh eldest daughter
+classic	family-relation	0x140758214	cstring	0x14169cbb0	eighth eldest daughter
+classic	family-relation	0x140758226	cstring	0x14169cbc8	ninth eldest daughter
+classic	family-relation	0x140758238	cstring	0x14169cbe0	tenth eldest daughter
+classic	family-relation	0x14075824a	cstring	0x1416416f0	daughter
+classic	family-relation	0x14075825c	cstring	0x14169cbf8	only daughter
+classic	family-relation	0x14075826e	cstring	0x14169cc08	youngest daughter
+classic	family-relation	0x140758280	cstring	0x14169cc20	eldest child
+classic	family-relation	0x140758292	cstring	0x14169cc30	second eldest child
+classic	family-relation	0x1407582a4	cstring	0x14169cc48	third eldest child
+classic	family-relation	0x1407582b6	cstring	0x14169cc60	fourth eldest child
+classic	family-relation	0x1407582c8	cstring	0x14169cc78	fifth eldest child
+classic	family-relation	0x1407582da	cstring	0x14169cc90	sixth eldest child
+classic	family-relation	0x1407582ec	cstring	0x14169cca8	seventh eldest child
+classic	family-relation	0x1407582fe	cstring	0x14169ccc0	eighth eldest child
+classic	family-relation	0x140758310	cstring	0x14169ccd8	ninth eldest child
+classic	family-relation	0x140758322	cstring	0x14169ccf0	tenth eldest child
+classic	family-relation	0x140758334	cstring	0x1416416fc	child
+classic	family-relation	0x140758346	cstring	0x14169cd08	youngest child
+classic	family-relation	0x140758358	cstring	0x14169d4c8	only child
+classic	family-relation	0x14075836a	cstring	0x14169d4d8	paternal grandmother
+classic	family-relation	0x14075837c	cstring	0x14169d4f0	paternal grandfather
+classic	family-relation	0x14075838e	cstring	0x14169d508	maternal grandmother
+classic	family-relation	0x1407583a0	cstring	0x14169d520	maternal grandfather
+classic	family-relation	0x1407583b2	cstring	0x1416416a8	grandmother
+classic	family-relation	0x1407583c4	cstring	0x1416416b8	grandfather
+classic	family-relation	0x1407583d6	cstring	0x1416416c8	grandparent
+classic	family-relation	0x1407583e8	cstring	0x14169d538	older brother
+classic	family-relation	0x1407583fa	cstring	0x14169d548	older sister
+classic	family-relation	0x14075840c	cstring	0x14169d558	older sibling
+classic	family-relation	0x14075841e	cstring	0x14169d568	younger brother
+classic	family-relation	0x14075842a	cstring	0x14169d578	younger sister
+classic	family-relation	0x14075843c	cstring	0x14169d588	younger sibling
+classic	family-relation	0x140758448	cstring	0x141641a88	cousin
+classic	family-relation	0x14075845a	cstring	0x141641670	aunt
+classic	family-relation	0x14075846c	cstring	0x141641678	uncle
+classic	family-relation	0x14075847e	cstring	0x141641a78	niece
+classic	family-relation	0x140758490	cstring	0x141641a80	nephew
+classic	family-relation	0x1407584a2	cstring	0x141641690	sibling
+classic	family-relation	0x1407584b4	cstring	0x1416416d8	grandchild
+classic	family-relation	0x1407584c3	cstring	0x14169d598	older half-brother
+classic	family-relation	0x1407584d2	cstring	0x14169d5b0	older half-sister
+classic	family-relation	0x1407584e1	cstring	0x14169d5c8	older half-sibling
+classic	family-relation	0x1407584f0	cstring	0x14169d5e0	younger half-brother
+classic	family-relation	0x1407584ff	cstring	0x14169d5f8	younger half-sister
+classic	family-relation	0x14075850e	cstring	0x14169d3a8	younger half-sibling
+classic	family-relation	0x14075851d	cstring	0x141641660	half-sibling
+classic	family-relation	0x14075852c	cstring	0x14169d3c0	no relationship
+classic	family-relation	0x14075856a	cstring	0x14169d3d0	ren
+classic	family-relation	0x140758579	cstring	0x1415e4220	s
+classic	cardinal-number	0x14052bdcb	cstring	0x14164c5d8	negative 
+classic	cardinal-number	0x14052be00	cstring	0x14164c5c8	zero
+classic	cardinal-number	0x14052be1a	cstring	0x14164c5d0	one
+classic	cardinal-number	0x14052be34	cstring	0x14164c5bc	two
+classic	cardinal-number	0x14052be4e	cstring	0x14164c5c0	three
+classic	cardinal-number	0x14052be68	cstring	0x14164c61c	four
+classic	cardinal-number	0x14052be82	cstring	0x14164c624	five
+classic	cardinal-number	0x14052be9c	cstring	0x14164c610	six
+classic	cardinal-number	0x14052beb6	cstring	0x14164c614	seven
+classic	cardinal-number	0x14052bed0	cstring	0x14164c600	eight
+classic	cardinal-number	0x14052beea	cstring	0x14164c608	nine
+classic	cardinal-number	0x14052bf04	cstring	0x14164c5f4	ten
+classic	cardinal-number	0x14052bf1e	cstring	0x14164c5f8	eleven
+classic	cardinal-number	0x14052bf38	cstring	0x14164c680	twelve
+classic	cardinal-number	0x14052bf52	cstring	0x14164c688	thirteen
+classic	cardinal-number	0x14052bf6c	cstring	0x14164c668	fourteen
+classic	cardinal-number	0x14052bf86	cstring	0x14164c678	fifteen
+classic	cardinal-number	0x14052bfa0	cstring	0x14164c650	sixteen
+classic	cardinal-number	0x14052bfba	cstring	0x14164c658	seventeen
+classic	cardinal-number	0x14052bfd4	cstring	0x14164c630	eighteen
+classic	cardinal-number	0x14052bfee	cstring	0x14164c640	nineteen
+classic	cardinal-number	0x14052c063	cstring	0x14164c6d8	 billion
+classic	cardinal-number	0x14052c082	cstring	0x1415e3720	 
+classic	cardinal-number	0x14052c126	cstring	0x14164c6e8	 million
+classic	cardinal-number	0x14052c145	cstring	0x1415e3720	 
+classic	cardinal-number	0x14052c222	cstring	0x14164c6b8	 thousand
+classic	cardinal-number	0x14052c241	cstring	0x1415e3720	 
+classic	cardinal-number	0x14052c319	cstring	0x14164c6c8	 hundred
+classic	cardinal-number	0x14052c335	cstring	0x1415e3720	 
+classic	cardinal-number	0x14052c3bb	immediate	0x66666667	gfff
+classic	cardinal-number	0x14052c3e5	cstring	0x14164c6a4	twenty
+classic	cardinal-number	0x14052c3ee	cstring	0x14164c6ac	thirty
+classic	cardinal-number	0x14052c3fd	cstring	0x14164c694	forty
+classic	cardinal-number	0x14052c40c	cstring	0x14164c69c	fifty
+classic	cardinal-number	0x14052c41b	cstring	0x14164c4e4	sixty
+classic	cardinal-number	0x14052c42a	cstring	0x14164c4f0	seventy
+classic	cardinal-number	0x14052c433	cstring	0x14164c4d4	eighty
+classic	cardinal-number	0x14052c43c	cstring	0x14164c4dc	ninety
+classic	cardinal-number	0x14052c464	cstring	0x14164667c	-
+reference	english-name	0x140a948a3	cstring	0x1415e873c	 
+reference	english-name	0x140a9495e	cstring	0x1415e873c	 
+reference	english-name	0x140a94a3b	cstring	0x1415e873c	 
+reference	english-name	0x140a94a5d	cstring	0x1415ed9bc	The 
+reference	english-name	0x140a94a78	cstring	0x1415e8e48	the 
+reference	english-name	0x140a94af2	cstring	0x1415e873c	 
+reference	english-name	0x140a94b11	cstring	0x1415ed9bc	The 
+reference	english-name	0x140a94b1a	cstring	0x1415e8e48	the 
+reference	english-name	0x140a94b9a	cstring	0x1415e873c	 
+reference	english-name	0x140a94bb9	cstring	0x1415ed9bc	The 
+reference	english-name	0x140a94bc2	cstring	0x1415e8e48	the 
+reference	english-name	0x140a94d1f	cstring	0x1415e873c	 
+reference	english-name	0x140a94d4b	cstring	0x1415ed9bc	The 
+reference	english-name	0x140a94d62	cstring	0x1415e8e48	the 
+reference	english-name	0x140a94e09	cstring	0x1415e873c	 
+reference	english-name	0x140a94e18	cstring	0x1416ced90	of 
+reference	english-name	0x140a94e1f	cstring	0x1416cee1c	Of 
+reference	stolen-item-noun	0x140a82d27	cstring	0x141649d9c	large
+reference	stolen-item-noun	0x140a82d30	cstring	0x141649da0	e
+reference	stolen-item-noun	0x140a82d39	cstring	0x141686358	small
+reference	stolen-item-noun	0x140a82d42	cstring	0x14168635c	l
+reference	stolen-item-noun	0x140a82d8c	cstring	0x1416cbf50	grown 
+reference	stolen-item-noun	0x140a82e66	cstring	0x14167ccf0	logs
+reference	stolen-item-noun	0x140a82ed8	cstring	0x1416ce7e0	branch
+reference	stolen-item-noun	0x140a82efd	cstring	0x1416ce880	es
+reference	stolen-item-noun	0x140a82f1d	cstring	0x141601038	rough gems
+reference	stolen-item-noun	0x140a82f36	cstring	0x1416ce870	raw green glass
+reference	stolen-item-noun	0x140a82f4f	cstring	0x1416ce860	raw clear glass
+reference	stolen-item-noun	0x140a82f68	cstring	0x1416ce848	raw crystal glass
+reference	stolen-item-noun	0x140a82f8a	cstring	0x141601038	rough gems
+reference	stolen-item-noun	0x140a82fa8	cstring	0x1416cc1b0	rough 
+reference	stolen-item-noun	0x140a83047	cstring	0x1416862ac	small 
+reference	stolen-item-noun	0x140a8305e	cstring	0x1416862ac	small 
+reference	stolen-item-noun	0x140a8313e	cstring	0x1416ce7ac	rock
+reference	stolen-item-noun	0x140a8315e	cstring	0x1416ce7a0	small rock
+reference	stolen-item-noun	0x140a831b7	cstring	0x1416ce790	stone boulders
+reference	stolen-item-noun	0x140a831dd	cstring	0x1416ce780	boulders
+reference	stolen-item-noun	0x140a832ba	cstring	0x1416ce738	bars
+reference	stolen-item-noun	0x140a832d3	cstring	0x1416ce7c0	charcoal
+reference	stolen-item-noun	0x140a832e9	cstring	0x1416ce7b4	coke
+reference	stolen-item-noun	0x140a832f2	cstring	0x1416ce740	refined coal
+reference	stolen-item-noun	0x140a8330b	cstring	0x14163e59c	metal
+reference	stolen-item-noun	0x140a8331a	cstring	0x1416ce7cc	 bars
+reference	stolen-item-noun	0x140a833ca	cstring	0x1416ce7d8	 wafers
+reference	stolen-item-noun	0x140a834b8	cstring	0x1416011f0	cut gems
+reference	stolen-item-noun	0x140a834d1	cstring	0x1416ce720	cut green glass gems
+reference	stolen-item-noun	0x140a834ea	cstring	0x1416ce708	cut clear glass gems
+reference	stolen-item-noun	0x140a83500	cstring	0x1416ce768	cut crystal glass gems
+reference	stolen-item-noun	0x140a8351b	cstring	0x1416ce760	gems
+reference	stolen-item-noun	0x140a83658	cstring	0x1416ce758	blocks
+reference	stolen-item-noun	0x140a8366f	cstring	0x1416ce758	blocks
+reference	stolen-item-noun	0x140a8371d	cstring	0x1416ce6ec	door
+reference	stolen-item-noun	0x140a83724	cstring	0x1416ce750	portal
+reference	stolen-item-noun	0x140a8379a	cstring	0x1416ce6e0	floodgate
+reference	stolen-item-noun	0x140a8380a	cstring	0x1416ce6d0	hatch cover
+reference	stolen-item-noun	0x140a8387a	cstring	0x1416ce6c8	grate
+reference	stolen-item-noun	0x140a838ea	cstring	0x14162fdb4	table
+reference	stolen-item-noun	0x140a8395a	cstring	0x14163cea0	cabinet
+reference	stolen-item-noun	0x140a839ca	cstring	0x14163ce90	weapon rack
+reference	stolen-item-noun	0x140a83a3a	cstring	0x14163ce08	armor stand
+reference	stolen-item-noun	0x140a83aaa	cstring	0x1416ce704	bin
+reference	stolen-item-noun	0x140a83b51	cstring	0x1416ce700	box
+reference	stolen-item-noun	0x140a83b6a	cstring	0x1416ce6fc	e
+reference	stolen-item-noun	0x140a83b93	cstring	0x1416ce6f4	coffer
+reference	stolen-item-noun	0x140a83ba2	cstring	0x14163cea8	chest
+reference	stolen-item-noun	0x140a83bc3	cstring	0x1416ce6a0	boxe
+reference	stolen-item-noun	0x140a83bd8	cstring	0x1415e9298	s
+reference	stolen-item-noun	0x140a83bec	cstring	0x1416ce700	box
+reference	stolen-item-noun	0x140a83c64	cstring	0x1416ce69c	bag
+reference	stolen-item-noun	0x140a83cff	cstring	0x1416ce690	backpack
+reference	stolen-item-noun	0x140a83dbc	cstring	0x1416ce6c0	cast
+reference	stolen-item-noun	0x140a83dc8	cstring	0x1416ce680	limb/body 
+reference	stolen-item-noun	0x140a83dd7	cstring	0x1416ce6c0	cast
+reference	stolen-item-noun	0x140a83e37	cstring	0x1416ce680	limb/body 
+reference	stolen-item-noun	0x140a83e46	cstring	0x1416ce6c0	cast
+reference	stolen-item-noun	0x140a83eb6	cstring	0x1416ce6b8	splint
+reference	stolen-item-noun	0x140a83f20	cstring	0x1416ce6b0	crutch
+reference	stolen-item-noun	0x140a83fbb	cstring	0x1416ce6a8	quiver
+reference	stolen-item-noun	0x140a8403a	cstring	0x1416ce63c	casket
+reference	stolen-item-noun	0x140a84085	cstring	0x1416ce630	sarcophag
+reference	stolen-item-noun	0x140a84094	cstring	0x141642184	us
+reference	stolen-item-noun	0x140a8409b	cstring	0x1416c0828	i
+reference	stolen-item-noun	0x140a840b7	cstring	0x14162fe0c	coffin
+reference	stolen-item-noun	0x140a841d4	cstring	0x1416ce61c	chain
+reference	stolen-item-noun	0x140a841e8	cstring	0x1416ce624	rope
+reference	stolen-item-noun	0x140a84328	cstring	0x1416ce664	vial
+reference	stolen-item-noun	0x140a84339	cstring	0x1416ce65c	flask
+reference	stolen-item-noun	0x140a84350	cstring	0x1416ce670	waterskin
+reference	stolen-item-noun	0x140a843f9	cstring	0x1416ce648	musical instrument
+reference	stolen-item-noun	0x140a844db	cstring	0x1416ce5e8	unglazed 
+reference	stolen-item-noun	0x140a84643	cstring	0x1415e873c	 
+reference	stolen-item-noun	0x140a8465d	cstring	0x1416c1e44	tool
+reference	stolen-item-noun	0x140a846fd	cstring	0x1416c1d64	toy
+reference	stolen-item-noun	0x140a847ad	cstring	0x1416ce5e0	cup
+reference	stolen-item-noun	0x140a847e1	cstring	0x1416ce5dc	mug
+reference	stolen-item-noun	0x140a847fb	cstring	0x1416ce5d4	goblet
+reference	stolen-item-noun	0x140a8486b	cstring	0x1416ce614	window
+reference	stolen-item-noun	0x140a8491a	cstring	0x1416ce5fc	cage
+reference	stolen-item-noun	0x140a84921	cstring	0x1416ce608	terrarium
+reference	stolen-item-noun	0x140a84995	cstring	0x1416ce5f4	barrel
+reference	stolen-item-noun	0x140a84a05	cstring	0x1416cec8c	bucket
+reference	stolen-item-noun	0x140a84a75	cstring	0x1416cec80	animal trap
+reference	stolen-item-noun	0x140a84af1	cstring	0x14162fe04	chair
+reference	stolen-item-noun	0x140a84b0b	cstring	0x1416cec74	throne
+reference	stolen-item-noun	0x140a84bc1	cstring	0x1416cec70	web
+reference	stolen-item-noun	0x140a84c0c	cstring	0x1416cecb8	strands
+reference	stolen-item-noun	0x140a84c3f	cstring	0x1416158b4	yarn
+reference	stolen-item-noun	0x140a84c50	cstring	0x14161589c	thread
+reference	stolen-item-noun	0x140a84cc5	cstring	0x1416158a4	cloth
+reference	stolen-item-noun	0x140a84dcf	cstring	0x1416cecac	sheet
+reference	stolen-item-noun	0x140a84df2	cstring	0x1416ceca0	tanned hide
+reference	stolen-item-noun	0x140a84e55	cstring	0x1416cec94	totem
+reference	stolen-item-noun	0x140a84ebe	cstring	0x1416cec40	-bound 
+reference	stolen-item-noun	0x140a84eda	cstring	0x1416cec2c	codex
+reference	stolen-item-noun	0x140a84ee1	cstring	0x1416cec38	codices
+reference	stolen-item-noun	0x140a84f60	cstring	0x1416cec20	figurine
+reference	stolen-item-noun	0x140a84f7e	cstring	0x1416cec68	rotten 
+reference	stolen-item-noun	0x140a84fa3	cstring	0x14164fc00	drink
+reference	stolen-item-noun	0x140a84fe6	cstring	0x1416cec68	rotten 
+reference	stolen-item-noun	0x140a851cb	cstring	0x1416cec60	filthy 
+reference	stolen-item-noun	0x140a851e4	cstring	0x1416cec58	sticky 
+reference	stolen-item-noun	0x140a85203	cstring	0x1416cec48	vomitous 
+reference	stolen-item-noun	0x140a8521f	cstring	0x1416cebec	slimy 
+reference	stolen-item-noun	0x140a85238	cstring	0x1416b1070	stagnant 
+reference	stolen-item-noun	0x140a85254	cstring	0x1416cebe4	dirty 
+reference	stolen-item-noun	0x140a85270	cstring	0x1416cebdc	gooey 
+reference	stolen-item-noun	0x140a85289	cstring	0x1416cebd0	purulent 
+reference	stolen-item-noun	0x140a852a2	cstring	0x1416cec10	ichorous 
+reference	stolen-item-noun	0x140a852bb	cstring	0x1416cec08	bloody 
+reference	stolen-item-noun	0x140a852fa	cstring	0x1416a6358	liquid
+reference	stolen-item-noun	0x140a8543c	cstring	0x1416cebfc	 paste
+reference	stolen-item-noun	0x140a85491	cstring	0x1416cebf4	glob
+reference	stolen-item-noun	0x140a85692	cstring	0x1416ceb80	 laced with 
+reference	stolen-item-noun	0x140a85706	cstring	0x1415e90d8	, 
+reference	stolen-item-noun	0x140a85716	cstring	0x1415e9110	 and 
+reference	stolen-item-noun	0x140a8577b	cstring	0x1416cec68	rotten 
+reference	stolen-item-noun	0x140a85818	cstring	0x1416ceb70	 dye mix
+reference	stolen-item-noun	0x140a8583c	cstring	0x1416ceb64	powder
+reference	stolen-item-noun	0x140a85896	cstring	0x1416cec68	rotten 
+reference	stolen-item-noun	0x140a858b8	cstring	0x1416ceb5c	cheese
+reference	stolen-item-noun	0x140a85940	cstring	0x1416cebc0	catapult parts
+reference	stolen-item-noun	0x140a859b8	cstring	0x1416ceba8	bolt thrower parts
+reference	stolen-item-noun	0x140a85a30	cstring	0x1416ceb98	mechanisms
+reference	stolen-item-noun	0x140a85adf	cstring	0x1416ceb90	tube
+reference	stolen-item-noun	0x140a85af9	cstring	0x1416ceb10	pipe section
+reference	stolen-item-noun	0x140a85b97	cstring	0x1416ceb00	trap component
+reference	stolen-item-noun	0x140a85bc8	cstring	0x1415e873c	 
+reference	stolen-item-noun	0x140a85caa	cstring	0x1416ceaf0	ballista parts
+reference	stolen-item-noun	0x140a85d22	cstring	0x1416ceae8	anvil
+reference	stolen-item-noun	0x140a85d92	cstring	0x1416ceb54	amulet
+reference	stolen-item-noun	0x140a85e02	cstring	0x1416ceb40	ballista arrow head
+reference	stolen-item-noun	0x140a85ea9	cstring	0x1416ceb30	siege ammo
+reference	stolen-item-noun	0x140a85ff3	cstring	0x1416ceb20	ammunition
+reference	stolen-item-noun	0x140a8606b	cstring	0x1416ceaa8	scepter
+reference	stolen-item-noun	0x140a860db	cstring	0x1416cea9c	crown
+reference	stolen-item-noun	0x140a86145	cstring	0x1416cea94	coin
+reference	stolen-item-noun	0x140a86164	cstring	0x1416cea88	perfect 
+reference	stolen-item-noun	0x140a86173	cstring	0x14164a2c8	large 
+reference	stolen-item-noun	0x140a8625b	cstring	0x1416cead8	green glass 
+reference	stolen-item-noun	0x140a86271	cstring	0x1416ceac8	clear glass 
+reference	stolen-item-noun	0x140a86287	cstring	0x1416ceab8	crystal glass 
+reference	stolen-item-noun	0x140a862a3	cstring	0x1416158fc	gem
+reference	stolen-item-noun	0x140a8635b	cstring	0x1416ceab0	 gem
+reference	stolen-item-noun	0x140a86436	cstring	0x1416cea50	ring
+reference	stolen-item-noun	0x140a864a6	cstring	0x1416cea48	earring
+reference	stolen-item-noun	0x140a86516	cstring	0x1416cea38	bracelet
+reference	stolen-item-noun	0x140a86586	cstring	0x14162fdb0	bed
+reference	stolen-item-noun	0x140a865f6	cstring	0x1416cea28	traction bench
+reference	stolen-item-noun	0x140a86666	cstring	0x1416cea7c	quern
+reference	stolen-item-noun	0x140a866d6	cstring	0x1416cea70	millstone
+reference	stolen-item-noun	0x140a86746	cstring	0x1416cea64	statue
+reference	stolen-item-noun	0x140a86852	cstring	0x1416cea58	memorial
+reference	stolen-item-noun	0x140a86866	cstring	0x1416ce9a0	food imports sign
+reference	stolen-item-noun	0x140a8687a	cstring	0x1416ce988	clothing imports sign
+reference	stolen-item-noun	0x140a8688e	cstring	0x1416ce970	general imports sign
+reference	stolen-item-noun	0x140a868a2	cstring	0x1416ce960	cloth shop sign
+reference	stolen-item-noun	0x140a868b6	cstring	0x1416cea10	leather shop sign
+reference	stolen-item-noun	0x140a868ca	cstring	0x1416ce9f0	woven clothing shop sign
+reference	stolen-item-noun	0x140a868de	cstring	0x1416ce9d0	leather clothing shop sign
+reference	stolen-item-noun	0x140a868f2	cstring	0x1416ce9b8	bone carver's shop sign
+reference	stolen-item-noun	0x140a86906	cstring	0x1416cf090	gem cutter's shop sign
+reference	stolen-item-noun	0x140a8691a	cstring	0x1416cf078	weaponsmith's shop sign
+reference	stolen-item-noun	0x140a8692e	cstring	0x1416cf060	bowyer's shop sign
+reference	stolen-item-noun	0x140a86942	cstring	0x1416cf048	blacksmith's shop sign
+reference	stolen-item-noun	0x140a86956	cstring	0x1416cf0f0	armorsmith's shop sign
+reference	stolen-item-noun	0x140a8696a	cstring	0x1416cf0d8	metal craft shop sign
+reference	stolen-item-noun	0x140a8697e	cstring	0x1416cf0c0	leather goods shop sign
+reference	stolen-item-noun	0x140a86992	cstring	0x1416cf0a8	carpenter's shop sign
+reference	stolen-item-noun	0x140a869a6	cstring	0x1416ceff8	stone furniture shop sign
+reference	stolen-item-noun	0x140a869ba	cstring	0x1416cefd8	metal furniture shop sign
+reference	stolen-item-noun	0x140a869ce	cstring	0x1416cefc8	tavern sign
+reference	stolen-item-noun	0x140a869e2	cstring	0x1416cefbc	slab
+reference	stolen-item-noun	0x140a869f6	cstring	0x1416cefbc	slab
+reference	stolen-item-noun	0x140a86a14	cstring	0x1416cec68	rotten 
+reference	stolen-item-noun	0x140a86a29	cstring	0x1416cf03c	corpse
+reference	stolen-item-noun	0x140a86a47	cstring	0x1416cec68	rotten 
+reference	stolen-item-noun	0x140a86a6b	cstring	0x1416158cc	tooth
+reference	stolen-item-noun	0x140a86a7c	cstring	0x1416cf034	teeth
+reference	stolen-item-noun	0x140a86a91	cstring	0x1416158c4	bone
+reference	stolen-item-noun	0x140a86aa9	cstring	0x1416158bc	shell
+reference	stolen-item-noun	0x140a86ac1	cstring	0x1416cf028	plant part
+reference	stolen-item-noun	0x140a86ad9	cstring	0x1416cf018	silk body part
+reference	stolen-item-noun	0x140a86af1	cstring	0x1416cef70	leather body part
+reference	stolen-item-noun	0x140a86b09	cstring	0x1416cef58	wooden body part
+reference	stolen-item-noun	0x140a86b23	cstring	0x1416cef48	soap body part
+reference	stolen-item-noun	0x140a86b3d	cstring	0x1416158e4	horn
+reference	stolen-item-noun	0x140a86b57	cstring	0x1416158dc	pearl
+reference	stolen-item-noun	0x140a86b71	cstring	0x1416cef38	yarn body part
+reference	stolen-item-noun	0x140a86b89	cstring	0x1416cefa8	strand body part
+reference	stolen-item-noun	0x140a86b92	cstring	0x141681050	body part
+reference	stolen-item-noun	0x140a86bbb	cstring	0x1416cefa0	Rotten 
+reference	stolen-item-noun	0x140a86d22	cstring	0x14167f0c0	remains
+reference	stolen-item-noun	0x140a86d81	cstring	0x1416cef94	seeds
+reference	stolen-item-noun	0x140a86df2	cstring	0x1416cef88	withered 
+reference	stolen-item-noun	0x140a86e66	cstring	0x1416ceee0	leaves and fruit
+reference	stolen-item-noun	0x140a86e77	cstring	0x1416ceed0	leaf or fruit
+reference	stolen-item-noun	0x140a86eaa	cstring	0x1416cef88	withered 
+reference	stolen-item-noun	0x140a86efd	cstring	0x141614d54	plant
+reference	stolen-item-noun	0x140a86f16	cstring	0x1415e9298	s
+reference	stolen-item-noun	0x140a86f3c	cstring	0x1416cec68	rotten 
+reference	stolen-item-noun	0x140a86f54	cstring	0x1416ceec8	raw 
+reference	stolen-item-noun	0x140a870d5	cstring	0x1415e90d8	, 
+reference	stolen-item-noun	0x140a870eb	cstring	0x1415e90d8	, 
+reference	stolen-item-noun	0x140a87104	cstring	0x1416a11f0	fish
+reference	stolen-item-noun	0x140a8712a	cstring	0x1416cec68	rotten 
+reference	stolen-item-noun	0x140a87251	cstring	0x1415e873c	 
+reference	stolen-item-noun	0x140a87266	cstring	0x1416ceec4	egg
+reference	stolen-item-noun	0x140a8728c	cstring	0x1416cec68	rotten 
+reference	stolen-item-noun	0x140a8738b	cstring	0x1416a11f0	fish
+reference	stolen-item-noun	0x140a873a8	cstring	0x1416cef2c	live 
+reference	stolen-item-noun	0x140a873e1	cstring	0x1416cef18	small live animal
+reference	stolen-item-noun	0x140a873fb	cstring	0x1416cef0c	tame 
+reference	stolen-item-noun	0x140a87404	cstring	0x1416ceef8	small tame animal
+reference	stolen-item-noun	0x140a8741b	cstring	0x1416cee88	prepared meal
+reference	stolen-item-noun	0x140a87435	cstring	0x1416cec68	rotten 
+reference	stolen-item-noun	0x140a8744a	cstring	0x1416cee78	preserved 
+reference	stolen-item-noun	0x140a8750c	cstring	0x1416cee70	 chops
+reference	stolen-item-noun	0x140a8751d	cstring	0x1416cee68	 chop
+reference	stolen-item-noun	0x140a87556	cstring	0x1416ceebc	meat
+reference	stolen-item-noun	0x140a87570	cstring	0x1416ceebc	meat
+reference	stolen-item-noun	0x140a87602	cstring	0x1416c1ecc	weapon
+reference	stolen-item-noun	0x140a8763b	cstring	0x1415e873c	 
+reference	stolen-item-noun	0x140a87767	cstring	0x1416ceea8	suits of 
+reference	stolen-item-noun	0x140a87776	cstring	0x1416c1ec4	armor
+reference	stolen-item-noun	0x140a877dc	cstring	0x1415e873c	 
+reference	stolen-item-noun	0x140a87886	cstring	0x1416ceeb4	chain 
+reference	stolen-item-noun	0x140a87995	cstring	0x14163a34c	right 
+reference	stolen-item-noun	0x140a879b5	cstring	0x14163a324	left 
+reference	stolen-item-noun	0x140a879fe	cstring	0x1416ceeb4	chain 
+reference	stolen-item-noun	0x140a87a5f	cstring	0x1415e873c	 
+reference	stolen-item-noun	0x140a87a73	cstring	0x1416cee98	handwear
+reference	stolen-item-noun	0x140a87b17	cstring	0x1416c1d74	shield
+reference	stolen-item-noun	0x140a87b36	cstring	0x1416cee10	/buckler
+reference	stolen-item-noun	0x140a87b4a	cstring	0x1416cee10	/buckler
+reference	stolen-item-noun	0x140a87c87	cstring	0x1415e873c	 
+reference	stolen-item-noun	0x140a87cb7	cstring	0x1416cee00	footwear
+reference	stolen-item-noun	0x140a87da8	cstring	0x1416cedf0	headwear
+reference	stolen-item-noun	0x140a87dec	cstring	0x1415e873c	 
+reference	stolen-item-noun	0x140a87ea8	cstring	0x1416cede8	legwear
+reference	stolen-item-noun	0x140a87f2c	cstring	0x1415e873c	 
+reference	stolen-item-noun	0x140a88046	cstring	0x1415fcfe0	item
+reference	stolen-item-noun	0x140a88077	cstring	0x14161bdcc	 [
+reference	stolen-item-noun	0x140a88097	cstring	0x1415fd690	]
+classic	english-name	0x140a91923	cstring	0x1415e3720	 
+classic	english-name	0x140a919de	cstring	0x1415e3720	 
+classic	english-name	0x140a91abb	cstring	0x1415e3720	 
+classic	english-name	0x140a91add	cstring	0x1415e89c4	The 
+classic	english-name	0x140a91af8	cstring	0x1415e3e34	the 
+classic	english-name	0x140a91b72	cstring	0x1415e3720	 
+classic	english-name	0x140a91b91	cstring	0x1415e89c4	The 
+classic	english-name	0x140a91b9a	cstring	0x1415e3e34	the 
+classic	english-name	0x140a91c1a	cstring	0x1415e3720	 
+classic	english-name	0x140a91c39	cstring	0x1415e89c4	The 
+classic	english-name	0x140a91c42	cstring	0x1415e3e34	the 
+classic	english-name	0x140a91d9f	cstring	0x1415e3720	 
+classic	english-name	0x140a91dcb	cstring	0x1415e89c4	The 
+classic	english-name	0x140a91de2	cstring	0x1415e3e34	the 
+classic	english-name	0x140a91e89	cstring	0x1415e3720	 
+classic	english-name	0x140a91e98	cstring	0x1416cb220	of 
+classic	english-name	0x140a91e9f	cstring	0x1416cb2ac	Of 
+classic	stolen-item-noun	0x140a7fda7	cstring	0x14164517c	large
+classic	stolen-item-noun	0x140a7fdb0	cstring	0x141645180	e
+classic	stolen-item-noun	0x140a7fdb9	cstring	0x141681108	small
+classic	stolen-item-noun	0x140a7fdc2	cstring	0x14168110c	l
+classic	stolen-item-noun	0x140a7fe0c	cstring	0x1416c6848	grown 
+classic	stolen-item-noun	0x140a7fee6	cstring	0x141677d30	logs
+classic	stolen-item-noun	0x140a7ff58	cstring	0x1416ca230	branch
+classic	stolen-item-noun	0x140a7ff7d	cstring	0x1416ca2d0	es
+classic	stolen-item-noun	0x140a7ff9d	cstring	0x1415fc0c8	rough gems
+classic	stolen-item-noun	0x140a7ffb6	cstring	0x1416ca2c0	raw green glass
+classic	stolen-item-noun	0x140a7ffcf	cstring	0x1416ca2b0	raw clear glass
+classic	stolen-item-noun	0x140a7ffe8	cstring	0x1416ca298	raw crystal glass
+classic	stolen-item-noun	0x140a8000a	cstring	0x1415fc0c8	rough gems
+classic	stolen-item-noun	0x140a80028	cstring	0x1416c70a4	rough 
+classic	stolen-item-noun	0x140a800c7	cstring	0x141680d5c	small 
+classic	stolen-item-noun	0x140a800de	cstring	0x141680d5c	small 
+classic	stolen-item-noun	0x140a801be	cstring	0x1416ca1fc	rock
+classic	stolen-item-noun	0x140a801de	cstring	0x1416ca1f0	small rock
+classic	stolen-item-noun	0x140a80237	cstring	0x1416ca1e0	stone boulders
+classic	stolen-item-noun	0x140a8025d	cstring	0x1416ca1d0	boulders
+classic	stolen-item-noun	0x140a8033a	cstring	0x1416ca188	bars
+classic	stolen-item-noun	0x140a80353	cstring	0x1416ca210	charcoal
+classic	stolen-item-noun	0x140a80369	cstring	0x1416ca204	coke
+classic	stolen-item-noun	0x140a80372	cstring	0x1416ca190	refined coal
+classic	stolen-item-noun	0x140a8038b	cstring	0x1416396f8	metal
+classic	stolen-item-noun	0x140a8039a	cstring	0x1416ca21c	 bars
+classic	stolen-item-noun	0x140a8044a	cstring	0x1416ca228	 wafers
+classic	stolen-item-noun	0x140a80538	cstring	0x1415fc088	cut gems
+classic	stolen-item-noun	0x140a80551	cstring	0x1416ca170	cut green glass gems
+classic	stolen-item-noun	0x140a8056a	cstring	0x1416ca158	cut clear glass gems
+classic	stolen-item-noun	0x140a80580	cstring	0x1416ca1b8	cut crystal glass gems
+classic	stolen-item-noun	0x140a8059b	cstring	0x1416ca1b0	gems
+classic	stolen-item-noun	0x140a806d8	cstring	0x1416ca1a8	blocks
+classic	stolen-item-noun	0x140a806ef	cstring	0x1416ca1a8	blocks
+classic	stolen-item-noun	0x140a8079d	cstring	0x1416ca13c	door
+classic	stolen-item-noun	0x140a807a4	cstring	0x1416ca1a0	portal
+classic	stolen-item-noun	0x140a8081a	cstring	0x1416ca130	floodgate
+classic	stolen-item-noun	0x140a8088a	cstring	0x1416ca120	hatch cover
+classic	stolen-item-noun	0x140a808fa	cstring	0x1416ca118	grate
+classic	stolen-item-noun	0x140a8096a	cstring	0x14162aa9c	table
+classic	stolen-item-noun	0x140a809da	cstring	0x141637a60	cabinet
+classic	stolen-item-noun	0x140a80a4a	cstring	0x141637a50	weapon rack
+classic	stolen-item-noun	0x140a80aba	cstring	0x141637a40	armor stand
+classic	stolen-item-noun	0x140a80b2a	cstring	0x1416ca154	bin
+classic	stolen-item-noun	0x140a80bd1	cstring	0x1416ca150	box
+classic	stolen-item-noun	0x140a80bea	cstring	0x1416ca14c	e
+classic	stolen-item-noun	0x140a80c13	cstring	0x1416ca144	coffer
+classic	stolen-item-noun	0x140a80c22	cstring	0x141637a68	chest
+classic	stolen-item-noun	0x140a80c43	cstring	0x1416caa88	boxe
+classic	stolen-item-noun	0x140a80c58	cstring	0x1415e4220	s
+classic	stolen-item-noun	0x140a80c6c	cstring	0x1416ca150	box
+classic	stolen-item-noun	0x140a80ce4	cstring	0x1416caa84	bag
+classic	stolen-item-noun	0x140a80d7f	cstring	0x1416caa78	backpack
+classic	stolen-item-noun	0x140a80e3c	cstring	0x1416caaa8	cast
+classic	stolen-item-noun	0x140a80e48	cstring	0x1416caa68	limb/body 
+classic	stolen-item-noun	0x140a80e57	cstring	0x1416caaa8	cast
+classic	stolen-item-noun	0x140a80eb7	cstring	0x1416caa68	limb/body 
+classic	stolen-item-noun	0x140a80ec6	cstring	0x1416caaa8	cast
+classic	stolen-item-noun	0x140a80f36	cstring	0x1416caaa0	splint
+classic	stolen-item-noun	0x140a80fa0	cstring	0x1416caa98	crutch
+classic	stolen-item-noun	0x140a8103b	cstring	0x1416caa90	quiver
+classic	stolen-item-noun	0x140a810ba	cstring	0x1416caa24	casket
+classic	stolen-item-noun	0x140a81105	cstring	0x1416caa18	sarcophag
+classic	stolen-item-noun	0x140a81114	cstring	0x14163d170	us
+classic	stolen-item-noun	0x140a8111b	cstring	0x1416bafec	i
+classic	stolen-item-noun	0x140a81137	cstring	0x14162a9ec	coffin
+classic	stolen-item-noun	0x140a81254	cstring	0x1416caa04	chain
+classic	stolen-item-noun	0x140a81268	cstring	0x1416caa0c	rope
+classic	stolen-item-noun	0x140a813a8	cstring	0x1416caa4c	vial
+classic	stolen-item-noun	0x140a813b9	cstring	0x1416caa44	flask
+classic	stolen-item-noun	0x140a813d0	cstring	0x1416caa58	waterskin
+classic	stolen-item-noun	0x140a81479	cstring	0x1416caa30	musical instrument
+classic	stolen-item-noun	0x140a8155b	cstring	0x1416ca9d0	unglazed 
+classic	stolen-item-noun	0x140a816c3	cstring	0x1415e3720	 
+classic	stolen-item-noun	0x140a816dd	cstring	0x1416bcee4	tool
+classic	stolen-item-noun	0x140a8177d	cstring	0x1416bcefc	toy
+classic	stolen-item-noun	0x140a8182d	cstring	0x1416ca9cc	cup
+classic	stolen-item-noun	0x140a81861	cstring	0x1416ca9c8	mug
+classic	stolen-item-noun	0x140a8187b	cstring	0x1416ca9c0	goblet
+classic	stolen-item-noun	0x140a818eb	cstring	0x1416ca9fc	window
+classic	stolen-item-noun	0x140a8199a	cstring	0x1416ca9e4	cage
+classic	stolen-item-noun	0x140a819a1	cstring	0x1416ca9f0	terrarium
+classic	stolen-item-noun	0x140a81a15	cstring	0x1416ca9dc	barrel
+classic	stolen-item-noun	0x140a81a85	cstring	0x1416ca98c	bucket
+classic	stolen-item-noun	0x140a81af5	cstring	0x1416ca980	animal trap
+classic	stolen-item-noun	0x140a81b71	cstring	0x14162aaa4	chair
+classic	stolen-item-noun	0x140a81b8b	cstring	0x1416ca974	throne
+classic	stolen-item-noun	0x140a81c41	cstring	0x1416ca970	web
+classic	stolen-item-noun	0x140a81c8c	cstring	0x1416ca9b8	strands
+classic	stolen-item-noun	0x140a81cbf	cstring	0x1416106b8	yarn
+classic	stolen-item-noun	0x140a81cd0	cstring	0x1416106a0	thread
+classic	stolen-item-noun	0x140a81d45	cstring	0x1416106a8	cloth
+classic	stolen-item-noun	0x140a81e4f	cstring	0x1416ca9ac	sheet
+classic	stolen-item-noun	0x140a81e72	cstring	0x1416ca9a0	tanned hide
+classic	stolen-item-noun	0x140a81ed5	cstring	0x1416ca994	totem
+classic	stolen-item-noun	0x140a81f3e	cstring	0x1416ca940	-bound 
+classic	stolen-item-noun	0x140a81f5a	cstring	0x1416ca92c	codex
+classic	stolen-item-noun	0x140a81f61	cstring	0x1416ca938	codices
+classic	stolen-item-noun	0x140a81fe0	cstring	0x1416ca920	figurine
+classic	stolen-item-noun	0x140a81ffe	cstring	0x1416ca968	rotten 
+classic	stolen-item-noun	0x140a82023	cstring	0x14164aac0	drink
+classic	stolen-item-noun	0x140a82066	cstring	0x1416ca968	rotten 
+classic	stolen-item-noun	0x140a8224b	cstring	0x1416ca960	filthy 
+classic	stolen-item-noun	0x140a82264	cstring	0x1416ca958	sticky 
+classic	stolen-item-noun	0x140a82283	cstring	0x1416ca948	vomitous 
+classic	stolen-item-noun	0x140a8229f	cstring	0x1416ca8ec	slimy 
+classic	stolen-item-noun	0x140a822b8	cstring	0x1416ab578	stagnant 
+classic	stolen-item-noun	0x140a822d4	cstring	0x1416ca8e4	dirty 
+classic	stolen-item-noun	0x140a822f0	cstring	0x1416ca8dc	gooey 
+classic	stolen-item-noun	0x140a82309	cstring	0x1416ca8d0	purulent 
+classic	stolen-item-noun	0x140a82322	cstring	0x1416ca910	ichorous 
+classic	stolen-item-noun	0x140a8233b	cstring	0x1416ca908	bloody 
+classic	stolen-item-noun	0x140a8237a	cstring	0x1416a1240	liquid
+classic	stolen-item-noun	0x140a824bc	cstring	0x1416ca8fc	 paste
+classic	stolen-item-noun	0x140a82511	cstring	0x1416ca8f4	glob
+classic	stolen-item-noun	0x140a82712	cstring	0x1416ca880	 laced with 
+classic	stolen-item-noun	0x140a82786	cstring	0x1415e40c4	, 
+classic	stolen-item-noun	0x140a82796	cstring	0x1415e40bc	 and 
+classic	stolen-item-noun	0x140a827fb	cstring	0x1416ca968	rotten 
+classic	stolen-item-noun	0x140a82898	cstring	0x1416ca870	 dye mix
+classic	stolen-item-noun	0x140a828bc	cstring	0x1416ca864	powder
+classic	stolen-item-noun	0x140a82916	cstring	0x1416ca968	rotten 
+classic	stolen-item-noun	0x140a82938	cstring	0x1416ca85c	cheese
+classic	stolen-item-noun	0x140a829c0	cstring	0x1416ca8c0	catapult parts
+classic	stolen-item-noun	0x140a82a38	cstring	0x1416ca8a8	bolt thrower parts
+classic	stolen-item-noun	0x140a82ab0	cstring	0x1416ca898	mechanisms
+classic	stolen-item-noun	0x140a82b5f	cstring	0x1416ca890	tube
+classic	stolen-item-noun	0x140a82b79	cstring	0x1416ca810	pipe section
+classic	stolen-item-noun	0x140a82c17	cstring	0x1416ca800	trap component
+classic	stolen-item-noun	0x140a82c48	cstring	0x1415e3720	 
+classic	stolen-item-noun	0x140a82d2a	cstring	0x1416ca7f0	ballista parts
+classic	stolen-item-noun	0x140a82da2	cstring	0x1416ca7e4	anvil
+classic	stolen-item-noun	0x140a82e12	cstring	0x1416ca854	amulet
+classic	stolen-item-noun	0x140a82e82	cstring	0x1416ca840	ballista arrow head
+classic	stolen-item-noun	0x140a82f29	cstring	0x1416ca830	siege ammo
+classic	stolen-item-noun	0x140a83073	cstring	0x1416ca820	ammunition
+classic	stolen-item-noun	0x140a830eb	cstring	0x1416cae98	scepter
+classic	stolen-item-noun	0x140a8315b	cstring	0x1416cae8c	crown
+classic	stolen-item-noun	0x140a831c5	cstring	0x1416cae84	coin
+classic	stolen-item-noun	0x140a831e4	cstring	0x1416cae78	perfect 
+classic	stolen-item-noun	0x140a831f3	cstring	0x1416455a8	large 
+classic	stolen-item-noun	0x140a832db	cstring	0x1416caec8	green glass 
+classic	stolen-item-noun	0x140a832f1	cstring	0x1416caeb8	clear glass 
+classic	stolen-item-noun	0x140a83307	cstring	0x1416caea8	crystal glass 
+classic	stolen-item-noun	0x140a83323	cstring	0x1416106fc	gem
+classic	stolen-item-noun	0x140a833db	cstring	0x1416caea0	 gem
+classic	stolen-item-noun	0x140a834b6	cstring	0x1416cae40	ring
+classic	stolen-item-noun	0x140a83526	cstring	0x1416cae38	earring
+classic	stolen-item-noun	0x140a83596	cstring	0x1416cae28	bracelet
+classic	stolen-item-noun	0x140a83606	cstring	0x14162aab0	bed
+classic	stolen-item-noun	0x140a83676	cstring	0x1416cae18	traction bench
+classic	stolen-item-noun	0x140a836e6	cstring	0x1416cae6c	quern
+classic	stolen-item-noun	0x140a83756	cstring	0x1416cae60	millstone
+classic	stolen-item-noun	0x140a837c6	cstring	0x1416cae54	statue
+classic	stolen-item-noun	0x140a838d2	cstring	0x1416cae48	memorial
+classic	stolen-item-noun	0x140a838e6	cstring	0x1416cad90	food imports sign
+classic	stolen-item-noun	0x140a838fa	cstring	0x1416cad78	clothing imports sign
+classic	stolen-item-noun	0x140a8390e	cstring	0x1416cad60	general imports sign
+classic	stolen-item-noun	0x140a83922	cstring	0x1416cad50	cloth shop sign
+classic	stolen-item-noun	0x140a83936	cstring	0x1416cae00	leather shop sign
+classic	stolen-item-noun	0x140a8394a	cstring	0x1416cade0	woven clothing shop sign
+classic	stolen-item-noun	0x140a8395e	cstring	0x1416cadc0	leather clothing shop sign
+classic	stolen-item-noun	0x140a83972	cstring	0x1416cada8	bone carver's shop sign
+classic	stolen-item-noun	0x140a83986	cstring	0x1416cacd8	gem cutter's shop sign
+classic	stolen-item-noun	0x140a8399a	cstring	0x1416cacc0	weaponsmith's shop sign
+classic	stolen-item-noun	0x140a839ae	cstring	0x1416caca8	bowyer's shop sign
+classic	stolen-item-noun	0x140a839c2	cstring	0x1416cac90	blacksmith's shop sign
+classic	stolen-item-noun	0x140a839d6	cstring	0x1416cad38	armorsmith's shop sign
+classic	stolen-item-noun	0x140a839ea	cstring	0x1416cad20	metal craft shop sign
+classic	stolen-item-noun	0x140a839fe	cstring	0x1416cad08	leather goods shop sign
+classic	stolen-item-noun	0x140a83a12	cstring	0x1416cacf0	carpenter's shop sign
+classic	stolen-item-noun	0x140a83a26	cstring	0x1416cac40	stone furniture shop sign
+classic	stolen-item-noun	0x140a83a3a	cstring	0x1416cac20	metal furniture shop sign
+classic	stolen-item-noun	0x140a83a4e	cstring	0x1416cac10	tavern sign
+classic	stolen-item-noun	0x140a83a62	cstring	0x1416cac04	slab
+classic	stolen-item-noun	0x140a83a76	cstring	0x1416cac04	slab
+classic	stolen-item-noun	0x140a83a94	cstring	0x1416ca968	rotten 
+classic	stolen-item-noun	0x140a83aa9	cstring	0x1416cac84	corpse
+classic	stolen-item-noun	0x140a83ac7	cstring	0x1416ca968	rotten 
+classic	stolen-item-noun	0x140a83aeb	cstring	0x1416106d0	tooth
+classic	stolen-item-noun	0x140a83afc	cstring	0x1416cac7c	teeth
+classic	stolen-item-noun	0x140a83b11	cstring	0x1416106c8	bone
+classic	stolen-item-noun	0x140a83b29	cstring	0x1416106c0	shell
+classic	stolen-item-noun	0x140a83b41	cstring	0x1416cac70	plant part
+classic	stolen-item-noun	0x140a83b59	cstring	0x1416cac60	silk body part
+classic	stolen-item-noun	0x140a83b71	cstring	0x1416cabb8	leather body part
+classic	stolen-item-noun	0x140a83b89	cstring	0x1416caba0	wooden body part
+classic	stolen-item-noun	0x140a83ba3	cstring	0x1416cab90	soap body part
+classic	stolen-item-noun	0x140a83bbd	cstring	0x1416106e8	horn
+classic	stolen-item-noun	0x140a83bd7	cstring	0x1416106e0	pearl
+classic	stolen-item-noun	0x140a83bf1	cstring	0x1416cab80	yarn body part
+classic	stolen-item-noun	0x140a83c09	cstring	0x1416cabf0	strand body part
+classic	stolen-item-noun	0x140a83c12	cstring	0x14167bdf0	body part
+classic	stolen-item-noun	0x140a83c3b	cstring	0x1416cabe8	Rotten 
+classic	stolen-item-noun	0x140a83da2	cstring	0x141679ef8	remains
+classic	stolen-item-noun	0x140a83e01	cstring	0x1416cabdc	seeds
+classic	stolen-item-noun	0x140a83e72	cstring	0x1416cabd0	withered 
+classic	stolen-item-noun	0x140a83ee6	cstring	0x1416cab28	leaves and fruit
+classic	stolen-item-noun	0x140a83ef7	cstring	0x1416cab18	leaf or fruit
+classic	stolen-item-noun	0x140a83f2a	cstring	0x1416cabd0	withered 
+classic	stolen-item-noun	0x140a83f7d	cstring	0x14160fd14	plant
+classic	stolen-item-noun	0x140a83f96	cstring	0x1415e4220	s
+classic	stolen-item-noun	0x140a83fbc	cstring	0x1416ca968	rotten 
+classic	stolen-item-noun	0x140a83fd4	cstring	0x1416cab10	raw 
+classic	stolen-item-noun	0x140a84155	cstring	0x1415e40c4	, 
+classic	stolen-item-noun	0x140a8416b	cstring	0x1415e40c4	, 
+classic	stolen-item-noun	0x140a84184	cstring	0x14169c0e8	fish
+classic	stolen-item-noun	0x140a841aa	cstring	0x1416ca968	rotten 
+classic	stolen-item-noun	0x140a842d1	cstring	0x1415e3720	 
+classic	stolen-item-noun	0x140a842e6	cstring	0x1416cab0c	egg
+classic	stolen-item-noun	0x140a8430c	cstring	0x1416ca968	rotten 
+classic	stolen-item-noun	0x140a8440b	cstring	0x14169c0e8	fish
+classic	stolen-item-noun	0x140a84428	cstring	0x1416cab74	live 
+classic	stolen-item-noun	0x140a84461	cstring	0x1416cab60	small live animal
+classic	stolen-item-noun	0x140a8447b	cstring	0x1416cab54	tame 
+classic	stolen-item-noun	0x140a84484	cstring	0x1416cab40	small tame animal
+classic	stolen-item-noun	0x140a8449b	cstring	0x1416caad0	prepared meal
+classic	stolen-item-noun	0x140a844b5	cstring	0x1416ca968	rotten 
+classic	stolen-item-noun	0x140a844ca	cstring	0x1416caac0	preserved 
+classic	stolen-item-noun	0x140a8458c	cstring	0x1416caab8	 chops
+classic	stolen-item-noun	0x140a8459d	cstring	0x1416caab0	 chop
+classic	stolen-item-noun	0x140a845d6	cstring	0x1416cab04	meat
+classic	stolen-item-noun	0x140a845f0	cstring	0x1416cab04	meat
+classic	stolen-item-noun	0x140a84682	cstring	0x1416bce90	weapon
+classic	stolen-item-noun	0x140a846bb	cstring	0x1415e3720	 
+classic	stolen-item-noun	0x140a847e7	cstring	0x1416caaf0	suits of 
+classic	stolen-item-noun	0x140a847f6	cstring	0x1416bce88	armor
+classic	stolen-item-noun	0x140a8485c	cstring	0x1415e3720	 
+classic	stolen-item-noun	0x140a84906	cstring	0x1416caafc	chain 
+classic	stolen-item-noun	0x140a84a15	cstring	0x141635604	right 
+classic	stolen-item-noun	0x140a84a35	cstring	0x14163560c	left 
+classic	stolen-item-noun	0x140a84a7e	cstring	0x1416caafc	chain 
+classic	stolen-item-noun	0x140a84adf	cstring	0x1415e3720	 
+classic	stolen-item-noun	0x140a84af3	cstring	0x1416caae0	handwear
+classic	stolen-item-noun	0x140a84b97	cstring	0x1416bce58	shield
+classic	stolen-item-noun	0x140a84bb6	cstring	0x1416cb2a0	/buckler
+classic	stolen-item-noun	0x140a84bca	cstring	0x1416cb2a0	/buckler
+classic	stolen-item-noun	0x140a84d07	cstring	0x1415e3720	 
+classic	stolen-item-noun	0x140a84d37	cstring	0x1416cb290	footwear
+classic	stolen-item-noun	0x140a84e28	cstring	0x1416cb280	headwear
+classic	stolen-item-noun	0x140a84e6c	cstring	0x1415e3720	 
+classic	stolen-item-noun	0x140a84f28	cstring	0x1416cb278	legwear
+classic	stolen-item-noun	0x140a84fac	cstring	0x1415e3720	 
+classic	stolen-item-noun	0x140a850c6	cstring	0x1415f7fb0	item
+classic	stolen-item-noun	0x140a850f7	cstring	0x141616f6c	 [
+classic	stolen-item-noun	0x140a85117	cstring	0x1415f8664	]

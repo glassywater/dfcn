@@ -802,3 +802,24 @@ The moon is setting to the west hardly visible behind the clouds.	月亮正向�
 # Full material precipitation sentences; t marks the shared material capture.
 {s} is falling outside.	外面正有{s}落下。	t
 {s} is falling from the sky.	{s}正从天空落下。	t
+
+# Native odor hover branches and RAW/Lua operands are reconstructed in
+# data/extracted/adventure-smell/. No odor race produces no hover paragraph.
+# Death override and all twelve finite ODOR_STRING values own whole sentences.
+You smell blood.	你闻到了血腥味。
+You smell smoke.	你闻到了烟味。
+You smell mud.	你闻到了淤泥的气味。
+You smell bug innards.	你闻到了昆虫内脏的气味。
+You smell cooked flesh.	你闻到了熟肉的气味。
+You smell death.	你闻到了死亡的气息。
+You smell filth.	你闻到了污垢的气味。
+You smell soot.	你闻到了烟灰的气味。
+You smell vomit.	你闻到了呕吐物的气味。
+You smell soil.	你闻到了土壤的气味。
+You smell freshly-baked goods.	你闻到了刚出炉的烘焙食品的气味。
+You smell brimstone.	你闻到了硫磺的气味。
+# Invalid/empty native NAME[0] returns an empty string, still followed by '.'.
+You smell .	你闻到了一股气味。
+# Missing caste or empty ODOR_STRING calls the singular creature NAME[0]
+# helper, with plural=false and caste=-1, using the existing creature grammar.
+You smell {s}.	你闻到了{s}的气味。	t

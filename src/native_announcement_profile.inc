@@ -22,6 +22,20 @@ static bool resolve_native_announcement_binding(NativeAnnouncementBinding &bindi
     binding.speech_entry = base + native_pe_rva(0x67b6c0);
     binding.speech_prefix = {0x48,0x89,0x5c,0x24,0x10};
     if (!native_pe_bytes(0x67b6c0, binding.speech_prefix)) return false;
+    // Steam 883f40 / classic 8817c0 is the compact Announcements/Done
+    // renderer. Its caller at b03540..b03555 supplies RCX(owner), EDX,
+    // R8D and R9D; the complete body consumes no incoming stack arguments.
+    // 884302..88430c selects entry::str or entry.parent->report::text.
+    const unsigned char log_prologue[] = {
+        0x48,0x89,0x5c,0x24,0x10,0x55,0x56,0x57,
+        0x41,0x54,0x41,0x55,0x41,0x56,0x41,0x57};
+    const unsigned char log_parent_text[] = {
+        0x4c,0x39,0x4a,0x10,0x77,0x08,0x48,0x8b,0x52,0x20,0x48,0x83,0xc2,0x08};
+    if (!native_pe_match(profile.base, 0x883f40, log_prologue, sizeof(log_prologue)) ||
+        !native_pe_match(profile.base, 0x884302, log_parent_text, sizeof(log_parent_text))) return false;
+    binding.log_entry = base + native_pe_rva(0x883f40);
+    binding.log_prefix = {0x48,0x89,0x5c,0x24,0x10};
+    if (!native_pe_bytes(0x883f40, binding.log_prefix)) return false;
 #else
     ModuleBuildId module;
     dl_iterate_phdr(find_main_build_id, &module);

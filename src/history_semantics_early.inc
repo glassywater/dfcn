@@ -900,7 +900,15 @@ case 3: { // hist_figure_died
     }
     if (active) {
         auto actor = killer();
-        auto action = apply(active, {*victim});
+        std::string key = active;
+        std::vector<Pieces> fields{*victim};
+        if (location) {
+            key += " in {p}";
+            fields.push_back(*location);
+        }
+        // Keep the location inside the shared predicate so its Chinese
+        // order is actor + location + killing + victim, with links intact.
+        auto action = apply(key, fields);
         if (!actor || actor->empty() || !action) return std::nullopt;
         join(result, *actor);
         join(result, *action);
@@ -980,7 +988,7 @@ case 3: { // hist_figure_died
         if ((cause == 3 || cause == 4 || cause == 6 || cause == 7 || cause == 47 || cause == 49) &&
             !add_weapons()) return std::nullopt;
     }
-    if (location && (active || cause != 7)) {
+    if (location && !active && cause != 7) {
         auto place = apply("in {p}", {*location});
         if (!place) return std::nullopt;
         append_clause(result, *place);

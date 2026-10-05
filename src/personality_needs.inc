@@ -1,4 +1,5 @@
-// Creation shows each need and its strength as two separate native fields.
+// Creation and full customization show each need and its strength as two
+// separate native fields.
 // Their English spans are not column bounds: centring each Chinese caption
 // inside those spans makes both columns wander with the source word length.
 void Overlay::layout_adventure_personality_needs(SDL_Renderer *renderer) {
@@ -11,8 +12,10 @@ void Overlay::layout_adventure_personality_needs(SDL_Renderer *renderer) {
     bool personality = false;
     for (const Match &match : prepared_matches_) {
         if (match.target.empty() || match.native_split_duplicate) continue;
-        if (match.source == "Accept personality") personality = true;
+        if (match.source == "Accept personality" || match.source == "Done customizing")
+            personality = true;
         if (match.source == "Accept personality" || match.source == "Full customization" ||
+            match.source == "Done customizing" ||
             match.source == "Change dream/goal (if possible)" ||
             match.source == "Randomize personality")
             footer_y = std::min(footer_y, row(match));
@@ -22,7 +25,7 @@ void Overlay::layout_adventure_personality_needs(SDL_Renderer *renderer) {
     // These identify native fields only; translated captions and deity names
     // remain owned by the existing dictionary and template matcher.
     static constexpr std::string_view names[] = {
-        "Socialize", "Drink alcohol", "Meditate", "Stay occupied", "Be creative",
+        "Socialize", "Drink alcohol", "Meditate", "Pray/Meditate", "Stay occupied", "Be creative",
         "Admire art", "Excitement", "Learn something", "Be with family",
         "Be with friends", "Hear eloquence", "Uphold tradition", "Self-examination",
         "Make merry", "Craft object", "Martial training", "Practice skill",

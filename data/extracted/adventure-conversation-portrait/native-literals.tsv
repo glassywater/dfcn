@@ -1,0 +1,895 @@
+edition	image	owner	owner_rva	instruction_rva	operand_kind	text_rva	text_role	source_text
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86807d	rip-relative	0x15fe724	finite-text-operand-or-substring	Cancel
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x8680dc	rip-relative	0x16b19d8	finite-text-operand-or-substring	Click a creature to start a new conversation
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86873f	rip-relative	0x16aecbc	finite-text-operand-or-substring	@:
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x868ce7	rip-relative	0x16b19c8	finite-text-operand-or-substring	Toward you: 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x868d44	rip-relative	0x16b1a20	finite-text-operand-or-substring	Positive attitude
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x868df8	rip-relative	0x16b1a08	finite-text-operand-or-substring	Negative attitude
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x868e33	rip-relative	0x16b1998	finite-text-operand-or-substring	Neutral attitude
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x868e8e	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x868ee0	rip-relative	0x15fe8f8	finite-text-operand-or-substring	Patient
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x868f2b	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x868f7f	rip-relative	0x15fea20	finite-text-operand-or-substring	Impatient
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x868fd5	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869010	rip-relative	0x16b1988	finite-text-operand-or-substring	Animated
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869060	rip-relative	0x16b19b8	finite-text-operand-or-substring	Agitated
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x8690ab	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x8690ff	rip-relative	0x15ff588	finite-text-operand-or-substring	Sluggish
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869125	rip-relative	0x16015c0	finite-text-operand-or-substring	Inactive
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869177	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x8691cb	rip-relative	0x16b19ac	finite-text-operand-or-substring	Bold
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x8691f4	rip-relative	0x16b2290	finite-text-operand-or-substring	Confident
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86923b	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86928f	rip-relative	0x16b2280	finite-text-operand-or-substring	Acquiescent
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x8692b5	rip-relative	0x16b22b0	finite-text-operand-or-substring	Unassuming
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869317	rip-relative	0x16b22a0	finite-text-operand-or-substring	Relationship: 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86936b	rip-relative	0x16b2250	finite-text-operand-or-substring	Loves you
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x8693ca	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869412	rip-relative	0x16b2320	finite-text-operand-or-substring	Terrified of you
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869459	rip-relative	0x16b2240	finite-text-operand-or-substring	Likes you
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x8694a2	rip-relative	0x16b2270	finite-text-operand-or-substring	Hates you
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x8694f3	rip-relative	0x16b2260	finite-text-operand-or-substring	Dislikes you
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86954d	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869593	rip-relative	0x16b2310	finite-text-operand-or-substring	Scared of you
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x8695e2	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869628	rip-relative	0x16b2348	finite-text-operand-or-substring	No fear of you
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869681	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x8696c6	rip-relative	0x16b2338	finite-text-operand-or-substring	Respects you
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869715	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86975b	rip-relative	0x16b2338	finite-text-operand-or-substring	Respects you
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x8697aa	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x8697f2	rip-relative	0x16b22d8	finite-text-operand-or-substring	No respect for you
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869841	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869887	rip-relative	0x16b22c0	finite-text-operand-or-substring	Low respect for you
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x8698e0	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869925	rip-relative	0x16b2300	finite-text-operand-or-substring	Trusts you
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869974	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x8699ba	rip-relative	0x16b2300	finite-text-operand-or-substring	Trusts you
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869a09	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869a51	rip-relative	0x16b22f0	finite-text-operand-or-substring	Distrusts you
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869aa0	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869ae6	rip-relative	0x16b22f0	finite-text-operand-or-substring	Distrusts you
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869b3f	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869b84	rip-relative	0x16b21a8	finite-text-operand-or-substring	Highly Loyal
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869bdc	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869c22	rip-relative	0x15ec984	finite-text-operand-or-substring	Loyal
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869c6e	rip-relative	0x16b21a0	finite-text-operand-or-substring	Neutral
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869cd6	rip-relative	0x16b21c0	finite-text-operand-or-substring	General Mood: 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869d2e	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869d99	rip-relative	0x16b21b8	finite-text-operand-or-substring	Annoyed
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869dc6	rip-relative	0x16b2178	finite-text-operand-or-substring	Satisfied
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869df3	rip-relative	0x16b2170	finite-text-operand-or-substring	Grouchy
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869e20	rip-relative	0x16b2194	finite-text-operand-or-substring	Grumpy
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869e4d	rip-relative	0x16b2188	finite-text-operand-or-substring	Fondness
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869e7a	rip-relative	0x16b2218	finite-text-operand-or-substring	Suspicious
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869ea7	rip-relative	0x16b2210	finite-text-operand-or-substring	Alarmed
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869ed4	rip-relative	0x16b2238	finite-text-operand-or-substring	Shocked
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869f01	rip-relative	0x16b2228	finite-text-operand-or-substring	Horrified
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869f2e	rip-relative	0x16b21e0	finite-text-operand-or-substring	Grimly Satisfied
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869f5b	rip-relative	0x16b21d0	finite-text-operand-or-substring	Grieving
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869f88	rip-relative	0x16b2200	finite-text-operand-or-substring	Triumphant
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869fb5	rip-relative	0x16b21f8	finite-text-operand-or-substring	Enraged
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x869fe2	rip-relative	0x16b20e8	finite-text-operand-or-substring	Eexcited
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a00f	rip-relative	0x16b20dc	finite-text-operand-or-substring	Gaiety
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a03c	rip-relative	0x16b20fc	finite-text-operand-or-substring	Sad
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a069	rip-relative	0x16b20f4	finite-text-operand-or-substring	Joyous
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a096	rip-relative	0x16b20b0	finite-text-operand-or-substring	Blissful
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a0c3	rip-relative	0x16b20a4	finite-text-operand-or-substring	Loving
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a0f0	rip-relative	0x15febd0	finite-text-operand-or-substring	Vengeful
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a11d	rip-relative	0x16b20d0	finite-text-operand-or-substring	Accepting
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a14a	rip-relative	0x16b20c0	finite-text-operand-or-substring	Admiration
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a177	rip-relative	0x16b2140	finite-text-operand-or-substring	Adoration
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a1a4	rip-relative	0x16b2130	finite-text-operand-or-substring	Affection
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a1d1	rip-relative	0x16b19b8	finite-text-operand-or-substring	Agitated
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a1fe	rip-relative	0x16b2160	finite-text-operand-or-substring	Aggravated
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a22b	rip-relative	0x16b2150	finite-text-operand-or-substring	In Agony
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a258	rip-relative	0x16b2108	finite-text-operand-or-substring	Alienated
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a285	rip-relative	0x16b2100	finite-text-operand-or-substring	Amazed
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a2b2	rip-relative	0x16b2120	finite-text-operand-or-substring	Ambivalent
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a2df	rip-relative	0x16b2114	finite-text-operand-or-substring	Amused
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a30c	rip-relative	0x16b2024	finite-text-operand-or-substring	Angry
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a339	rip-relative	0x16b2018	finite-text-operand-or-substring	In Anguish
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a366	rip-relative	0x15fe938	finite-text-operand-or-substring	Anxious
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a393	rip-relative	0x16b2038	finite-text-operand-or-substring	Apathetic
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a3c0	rip-relative	0x16b2030	finite-text-operand-or-substring	Aroused
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a3ed	rip-relative	0x16b1ff8	finite-text-operand-or-substring	Astonished
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a41a	rip-relative	0x16b1fec	finite-text-operand-or-substring	Averse
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a447	rip-relative	0x16b200c	finite-text-operand-or-substring	In Awe
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a474	rip-relative	0x16b2004	finite-text-operand-or-substring	Bitter
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a4a1	rip-relative	0x16b207c	finite-text-operand-or-substring	Bored
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a4ce	rip-relative	0x16b2074	finite-text-operand-or-substring	Caring
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a4fb	rip-relative	0x16b2098	finite-text-operand-or-substring	Confused
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a528	rip-relative	0x16b2088	finite-text-operand-or-substring	Contemptuous
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a555	rip-relative	0x16b2058	finite-text-operand-or-substring	Content
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a582	rip-relative	0x16b2048	finite-text-operand-or-substring	Dejected
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a5af	rip-relative	0x16b2068	finite-text-operand-or-substring	Delighted
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a5dc	rip-relative	0x16b2060	finite-text-operand-or-substring	Despair
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a609	rip-relative	0x16b2630	finite-text-operand-or-substring	Disappointed
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a636	rip-relative	0x16b2620	finite-text-operand-or-substring	Disgusted
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a663	rip-relative	0x16b2648	finite-text-operand-or-substring	Disillusioned
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a690	rip-relative	0x16b2640	finite-text-operand-or-substring	Dislike
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a6bd	rip-relative	0x16b25f8	finite-text-operand-or-substring	Dismayed
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a6ea	rip-relative	0x16b25e8	finite-text-operand-or-substring	Displeasure
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a717	rip-relative	0x16b2610	finite-text-operand-or-substring	Distressed
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a744	rip-relative	0x16b2604	finite-text-operand-or-substring	Eager
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a771	rip-relative	0x16b269c	finite-text-operand-or-substring	Elated
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a79e	rip-relative	0x16b2690	finite-text-operand-or-substring	Embarrassed
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a7cb	rip-relative	0x16b26b0	finite-text-operand-or-substring	Empathetic
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a7f8	rip-relative	0x16b26a4	finite-text-operand-or-substring	Empty
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a825	rip-relative	0x16b2668	finite-text-operand-or-substring	Enjoyment
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a852	rip-relative	0x16b2658	finite-text-operand-or-substring	Exasperated
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a87f	rip-relative	0x16b2680	finite-text-operand-or-substring	Exhilarated
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a8ac	rip-relative	0x16b2674	finite-text-operand-or-substring	Afraid
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a8d9	rip-relative	0x16b2548	finite-text-operand-or-substring	Ferocious
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a906	rip-relative	0x16b253c	finite-text-operand-or-substring	Free
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a933	rip-relative	0x16b2568	finite-text-operand-or-substring	Frightened
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a960	rip-relative	0x16b2558	finite-text-operand-or-substring	Frustrated
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a98d	rip-relative	0x16b2520	finite-text-operand-or-substring	Gleeful
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a9ba	rip-relative	0x16b2514	finite-text-operand-or-substring	Gloomy
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86a9e7	rip-relative	0x16b2534	finite-text-operand-or-substring	Glum
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86aa14	rip-relative	0x16b2528	finite-text-operand-or-substring	Grateful
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86aa41	rip-relative	0x16b25bc	finite-text-operand-or-substring	Guilty
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86aa6e	rip-relative	0x16b25b4	finite-text-operand-or-substring	Happy
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86aa9b	rip-relative	0x15fe980	finite-text-operand-or-substring	Hateful
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86aac8	rip-relative	0x15feba8	finite-text-operand-or-substring	Hopeful
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86aaf5	rip-relative	0x16b25d8	finite-text-operand-or-substring	Hopeless
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ab22	rip-relative	0x16b25c8	finite-text-operand-or-substring	Humiliated
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ab4f	rip-relative	0x16b2588	finite-text-operand-or-substring	Insulted
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ab7c	rip-relative	0x16b2578	finite-text-operand-or-substring	Interested
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86aba9	rip-relative	0x16b25a8	finite-text-operand-or-substring	Irritated
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86abd6	rip-relative	0x16b2598	finite-text-operand-or-substring	Isolated
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ac03	rip-relative	0x16b246c	finite-text-operand-or-substring	Jolly
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ac30	rip-relative	0x16b2464	finite-text-operand-or-substring	Jovial
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ac5d	rip-relative	0x16b2488	finite-text-operand-or-substring	Jubilant
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ac8a	rip-relative	0x16b2478	finite-text-operand-or-substring	Loathing
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86acb7	rip-relative	0x16b2444	finite-text-operand-or-substring	Lonely
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ace4	rip-relative	0x15fe930	finite-text-operand-or-substring	Lustful
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ad11	rip-relative	0x16b2438	finite-text-operand-or-substring	Miserable
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ad3e	rip-relative	0x16b2458	finite-text-operand-or-substring	Mortified
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ad6b	rip-relative	0x16b2450	finite-text-operand-or-substring	Nervous
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ad98	rip-relative	0x16b24e8	finite-text-operand-or-substring	Nostalgic
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86adc5	rip-relative	0x16b24d8	finite-text-operand-or-substring	Optimistic
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86adf2	rip-relative	0x16b2508	finite-text-operand-or-substring	Outraged
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ae1f	rip-relative	0x16b24f8	finite-text-operand-or-substring	Panicked
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ae4c	rip-relative	0x15fe8f8	finite-text-operand-or-substring	Patient
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ae79	rip-relative	0x16b24a8	finite-text-operand-or-substring	Passionate
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86aea6	rip-relative	0x16b2498	finite-text-operand-or-substring	Pleasure
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86aed3	rip-relative	0x15febc8	finite-text-operand-or-substring	Proud
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86af00	rip-relative	0x16b24c8	finite-text-operand-or-substring	Enraptured
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86af2d	rip-relative	0x16b24b8	finite-text-operand-or-substring	Rejected
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86af5a	rip-relative	0x16b23a8	finite-text-operand-or-substring	Relieved
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86af87	rip-relative	0x16b2398	finite-text-operand-or-substring	Regretful
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86afb4	rip-relative	0x16b23c8	finite-text-operand-or-substring	Remorseful
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86afe1	rip-relative	0x16b23b8	finite-text-operand-or-substring	Repentant
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b00e	rip-relative	0x16b2368	finite-text-operand-or-substring	Resentful
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b03b	rip-relative	0x16b2358	finite-text-operand-or-substring	Restless
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b068	rip-relative	0x16b2388	finite-text-operand-or-substring	Indignant
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b095	rip-relative	0x16b2378	finite-text-operand-or-substring	Self-pity
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b0c2	rip-relative	0x16b2418	finite-text-operand-or-substring	Servile
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b0ef	rip-relative	0x16b240c	finite-text-operand-or-substring	Shaken
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b11c	rip-relative	0x16b2430	finite-text-operand-or-substring	Ashamed
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b149	rip-relative	0x16b2420	finite-text-operand-or-substring	Sympathy
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b176	rip-relative	0x16b23e8	finite-text-operand-or-substring	Tenderness
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b1a3	rip-relative	0x16b23d8	finite-text-operand-or-substring	Terrified
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b1d0	rip-relative	0x16b2400	finite-text-operand-or-substring	Thrilled
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b1fd	rip-relative	0x16b23f4	finite-text-operand-or-substring	Uneasy
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b22a	rip-relative	0x16b2e80	finite-text-operand-or-substring	Unhappy
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b257	rip-relative	0x16b2e74	finite-text-operand-or-substring	Wonder
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b284	rip-relative	0x16b2e98	finite-text-operand-or-substring	Worried
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b2b1	rip-relative	0x16b2e88	finite-text-operand-or-substring	Wrathful
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b2de	rip-relative	0x16b2e50	finite-text-operand-or-substring	Zealous
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b30b	rip-relative	0x16b2e38	finite-text-operand-or-substring	Existential Crisis
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b338	rip-relative	0x16b2e68	finite-text-operand-or-substring	Defeated
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b365	rip-relative	0x16b2e58	finite-text-operand-or-substring	Expectant
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b392	rip-relative	0x1660f98	finite-text-operand-or-substring	Doubt
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b3bc	rip-relative	0x16b2ef8	finite-text-operand-or-substring	Enthusiastic
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b3e6	rip-relative	0x16b2ee8	finite-text-operand-or-substring	Pessimistic
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b410	rip-relative	0x16b2f20	finite-text-operand-or-substring	Euphoric
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b6e8	rip-relative	0x15fe724	finite-text-operand-or-substring	Cancel
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b73f	rip-relative	0x16b2f08	finite-text-operand-or-substring	Choose your tone/tact
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86b9c6	rip-relative	0x16b2c18	finite-text-operand-or-substring	Intimidate: 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ba34	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86bbcb	rip-relative	0x16b2ea0	finite-text-operand-or-substring	Almost guaranteed
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86bc16	rip-relative	0x16b2ed8	finite-text-operand-or-substring	Likely success
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86bc5e	rip-relative	0x16b2ec8	finite-text-operand-or-substring	Favorable odds
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86bcaa	rip-relative	0x16b2ca0	finite-text-operand-or-substring	Impossible
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86bcf5	rip-relative	0x16b2c88	finite-text-operand-or-substring	Nearly impossible
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86bd36	rip-relative	0x16b2cc0	finite-text-operand-or-substring	Likely failure
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86bd71	rip-relative	0x16b2cb0	finite-text-operand-or-substring	Even odds
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86bda8	rip-relative	0x16b2c28	finite-text-operand-or-substring	Unfavorable odds
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86bdfc	rip-relative	0x16b2eb8	finite-text-operand-or-substring	Persuade: 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86be6a	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c001	rip-relative	0x16b2ea0	finite-text-operand-or-substring	Almost guaranteed
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c04c	rip-relative	0x16b2ed8	finite-text-operand-or-substring	Likely success
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c094	rip-relative	0x16b2ec8	finite-text-operand-or-substring	Favorable odds
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c0e0	rip-relative	0x16b2ca0	finite-text-operand-or-substring	Impossible
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c12b	rip-relative	0x16b2c88	finite-text-operand-or-substring	Nearly impossible
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c16c	rip-relative	0x16b2cc0	finite-text-operand-or-substring	Likely failure
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c1a7	rip-relative	0x16b2cb0	finite-text-operand-or-substring	Even odds
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c1de	rip-relative	0x16b2c28	finite-text-operand-or-substring	Unfavorable odds
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c4fd	rip-relative	0x16b2c70	finite-text-operand-or-substring	What will you say?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c54a	rip-relative	0x16b2c40	finite-text-operand-or-substring	What will you say about the insurrection?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c577	rip-relative	0x16b2da8	finite-text-operand-or-substring	What will you say about the end of the insurrection?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c5a4	rip-relative	0x16b2d78	finite-text-operand-or-substring	What will you say about the site reclamation?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c5d1	rip-relative	0x16b2e08	finite-text-operand-or-substring	What will you say about the site's foundation?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c5fe	rip-relative	0x16b2de0	finite-text-operand-or-substring	What will you say about the group?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c62b	rip-relative	0x16b2d00	finite-text-operand-or-substring	What will you say about the army?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c658	rip-relative	0x16b2cd0	finite-text-operand-or-substring	What will you say about the failed occupation?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c685	rip-relative	0x16b2d50	finite-text-operand-or-substring	What will you say about the abduction?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c6b2	rip-relative	0x16b2d28	finite-text-operand-or-substring	What will you say about the incident?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c6df	rip-relative	0x16b2a20	finite-text-operand-or-substring	What will you say about the occupation?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c70c	rip-relative	0x16b29f0	finite-text-operand-or-substring	What will you say about the new leadership?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c739	rip-relative	0x16b2a70	finite-text-operand-or-substring	What will you say about the beast?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c766	rip-relative	0x16b2a48	finite-text-operand-or-substring	What will you say about the trouble?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c793	rip-relative	0x16b2958	finite-text-operand-or-substring	What will you say about tribute agreement?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c7c0	rip-relative	0x16b2920	finite-text-operand-or-substring	What will you say about the refusal to accept tribute?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c7ed	rip-relative	0x16b29b8	finite-text-operand-or-substring	What will you say about the refusal to give tribute?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c81a	rip-relative	0x16b2988	finite-text-operand-or-substring	What will you say about the peace agreement?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c847	rip-relative	0x16b2b90	finite-text-operand-or-substring	What will you say about the failed peace agreement?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c874	rip-relative	0x16b2b60	finite-text-operand-or-substring	What will you say about the tribute stoppage?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c8a1	rip-relative	0x16b2bf0	finite-text-operand-or-substring	What will you say about the claim?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c8ce	rip-relative	0x16b2bc8	finite-text-operand-or-substring	What will you say about the gang?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c8fb	rip-relative	0x16b2ad0	finite-text-operand-or-substring	What will you say about the refugees?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c928	rip-relative	0x16b2a98	finite-text-operand-or-substring	What will you say about the artifact's destruction?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c955	rip-relative	0x16b2b28	finite-text-operand-or-substring	What will you say about the artifact's location?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c982	rip-relative	0x16b2c70	finite-text-operand-or-substring	What will you say?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c9af	rip-relative	0x16b2a48	finite-text-operand-or-substring	What will you say about the trouble?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86c9dc	rip-relative	0x16b2af8	finite-text-operand-or-substring	How will you respond to the offer of service?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ca09	rip-relative	0x16b2790	finite-text-operand-or-substring	What do you want to know?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ca36	rip-relative	0x162a5d8	finite-text-operand-or-substring	What do you want?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ca63	rip-relative	0x16b2770	finite-text-operand-or-substring	Which pet will you gift?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ca90	rip-relative	0x16b27d0	finite-text-operand-or-substring	About whom do you ask?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cabd	rip-relative	0x16b2790	finite-text-operand-or-substring	What do you want to know?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86caea	rip-relative	0x16b27b0	finite-text-operand-or-substring	Where do you want to go?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cb17	rip-relative	0x16b26f0	finite-text-operand-or-substring	How will you respond to the position offer?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cb44	rip-relative	0x16b26c0	finite-text-operand-or-substring	How will you respond to the adoption request?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cb71	rip-relative	0x16b2748	finite-text-operand-or-substring	What will you say about the journey?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cb9e	rip-relative	0x16b2d28	finite-text-operand-or-substring	What will you say about the incident?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cbcb	rip-relative	0x16b2720	finite-text-operand-or-substring	What will you say about the conflict?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cbf8	rip-relative	0x16b2c70	finite-text-operand-or-substring	What will you say?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cc25	rip-relative	0x16b28a0	finite-text-operand-or-substring	How will you ask?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cc52	rip-relative	0x16b2888	finite-text-operand-or-substring	How will you respond?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cc7f	rip-relative	0x16b2888	finite-text-operand-or-substring	How will you respond?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ccac	rip-relative	0x16b28f8	finite-text-operand-or-substring	What will you say about the rescue?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ccd9	rip-relative	0x16b28b8	finite-text-operand-or-substring	What will you say about the conclusion of the agreement?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cd06	rip-relative	0x16b2810	finite-text-operand-or-substring	What will you say about the agreement?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cd33	rip-relative	0x16b27e8	finite-text-operand-or-substring	What will you say about services?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cd60	rip-relative	0x16b2860	finite-text-operand-or-substring	What will you say about the request?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cd8d	rip-relative	0x16b2838	finite-text-operand-or-substring	What will you say about the trade?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cdba	rip-relative	0x16b35b0	finite-text-operand-or-substring	What will you say about the surrounding area?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cde7	rip-relative	0x16b3588	finite-text-operand-or-substring	What will you say about the site?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ce14	rip-relative	0x16b2de0	finite-text-operand-or-substring	What will you say about the group?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ce41	rip-relative	0x16b3608	finite-text-operand-or-substring	What will you say about the structure?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ce6e	rip-relative	0x16b35e0	finite-text-operand-or-substring	How will you respond to the invocation?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ce9b	rip-relative	0x16b34f8	finite-text-operand-or-substring	How will you respond to the accusation?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cec8	rip-relative	0x16b34d0	finite-text-operand-or-substring	What will you say about your master?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cef5	rip-relative	0x16b3550	finite-text-operand-or-substring	What will you say about your plots and scheming?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cf22	rip-relative	0x16b3520	finite-text-operand-or-substring	How will you respond about your profession?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cf4f	rip-relative	0x16b3718	finite-text-operand-or-substring	How will you respond to this passive reply?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cf7c	rip-relative	0x16b36f0	finite-text-operand-or-substring	How will you respond to this flattery?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cfa9	rip-relative	0x16b3780	finite-text-operand-or-substring	How will you respond to this dismissal?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86cfd6	rip-relative	0x16b3748	finite-text-operand-or-substring	How will you respond to this statement of values?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86d003	rip-relative	0x16b3658	finite-text-operand-or-substring	What will you say about how you are feeling?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86d030	rip-relative	0x16b3630	finite-text-operand-or-substring	What will you say about your family?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86d05d	rip-relative	0x16b36c0	finite-text-operand-or-substring	How will you respond to the offer of tribute?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86d08a	rip-relative	0x16b3688	finite-text-operand-or-substring	How will you respond to the tribute cancellation?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86d0b7	rip-relative	0x16b33c0	finite-text-operand-or-substring	How will you respond to the offer of peace?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86d0e4	rip-relative	0x16b3390	finite-text-operand-or-substring	How will you respond to the demand for tribute?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86d111	rip-relative	0x16b3420	finite-text-operand-or-substring	How will you respond to the request to cease hostilities?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86d13e	rip-relative	0x16b33f0	finite-text-operand-or-substring	How will you respond to the demand to yield?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86d16b	rip-relative	0x16b32f0	finite-text-operand-or-substring	How will you respond to the request for information?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86d195	rip-relative	0x16b32b8	finite-text-operand-or-substring	How will you respond to the request for directions?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86d1bf	rip-relative	0x16b3358	finite-text-operand-or-substring	How will you respond to the request for a guide?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86d1e9	rip-relative	0x16b3328	finite-text-operand-or-substring	What will you say about the missing treasure?
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86d38d	rip-relative	0x15ec860	finite-text-operand-or-substring	...
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86d3c1	rip-relative	0x15ec82c	finite-text-operand-or-substring	_
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86d77c	rip-relative	0x16b34a0	finite-text-operand-or-substring	Keywords: 
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331674	rip-relative	0x1782bf8	finite-text-operand-or-substring	the force
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331873	rip-relative	0x1782ca0	finite-text-operand-or-substring	the deity
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331b08	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331e1a	rip-relative	0x1608940	finite-text-operand-or-substring	Miner
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331e23	rip-relative	0x1608944	finite-text-operand-or-substring	r
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331e3e	rip-relative	0x1782be8	finite-text-operand-or-substring	Woodworker
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331e4b	rip-relative	0x1782bf0	finite-text-operand-or-substring	er
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331e67	rip-relative	0x162c9e0	finite-text-operand-or-substring	Carpenter
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331e74	rip-relative	0x162c9e8	finite-text-operand-or-substring	r
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331e8f	rip-relative	0x162c9c8	finite-text-operand-or-substring	Bowyer
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331e98	rip-relative	0x162c9cc	finite-text-operand-or-substring	er
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331eb4	rip-relative	0x1608960	finite-text-operand-or-substring	Woodcutter
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331ec1	rip-relative	0x1608968	finite-text-operand-or-substring	er
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331edd	rip-relative	0x162c958	finite-text-operand-or-substring	Stoneworker
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331eea	rip-relative	0x162c960	finite-text-operand-or-substring	ker
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331ef5	rip-relative	0x162c962	finite-text-operand-or-substring	r
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331f10	inline-immediate-fragment		finite-short-string-fragment	Engraver
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331f27	rip-relative	0x16a5848	finite-text-operand-or-substring	Stonecutter
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331f3c	rip-relative	0x16a5838	finite-text-operand-or-substring	Stone Carver
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331f51	rip-relative	0x16a5864	finite-text-operand-or-substring	Mason
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331f66	rip-relative	0x1782c10	finite-text-operand-or-substring	Ranger
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331f7b	rip-relative	0x16a5880	finite-text-operand-or-substring	Animal Caretaker
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331f90	rip-relative	0x16a5870	finite-text-operand-or-substring	Animal Trainer
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331fa5	rip-relative	0x1600378	finite-text-operand-or-substring	Hunter
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331fba	rip-relative	0x16a56f8	finite-text-operand-or-substring	Trapper
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331fcf	rip-relative	0x16a56d0	finite-text-operand-or-substring	Animal Dissector
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331fe4	rip-relative	0x162c938	finite-text-operand-or-substring	Metalsmith
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1331ff9	rip-relative	0x16a5628	finite-text-operand-or-substring	Furnace Operator
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133200e	rip-relative	0x16a5690	finite-text-operand-or-substring	Weaponsmith
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332023	rip-relative	0x1782c08	finite-text-operand-or-substring	Armorer
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332040	rip-relative	0x16a56b0	finite-text-operand-or-substring	Blacksmith
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133204d	rip-relative	0x16a56b8	finite-text-operand-or-substring	th
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332069	rip-relative	0x1782c28	finite-text-operand-or-substring	Metalcrafter
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332076	rip-relative	0x1782c30	finite-text-operand-or-substring	fter
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332088	rip-relative	0x162c930	finite-text-operand-or-substring	Jeweler
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133209d	rip-relative	0x16a54e0	finite-text-operand-or-substring	Gem Cutter
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13320b2	rip-relative	0x16a54f0	finite-text-operand-or-substring	Gem Setter
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13320c7	rip-relative	0x1651c38	finite-text-operand-or-substring	Craftsman
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13320dc	rip-relative	0x16a5500	finite-text-operand-or-substring	Woodcrafter
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13320f1	rip-relative	0x16a5510	finite-text-operand-or-substring	Papermaker
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332106	rip-relative	0x16a5520	finite-text-operand-or-substring	Bookbinder
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133211b	rip-relative	0x16a552c	finite-text-operand-or-substring	Potter
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332130	rip-relative	0x16a59c4	finite-text-operand-or-substring	Glazer
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332145	rip-relative	0x16a5538	finite-text-operand-or-substring	Wax Worker
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133215a	rip-relative	0x1782c18	finite-text-operand-or-substring	Stonecrafter
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133216f	rip-relative	0x16a59a0	finite-text-operand-or-substring	Leatherworker
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332184	rip-relative	0x16a59d0	finite-text-operand-or-substring	Bone Carver
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332199	rip-relative	0x16a59dc	finite-text-operand-or-substring	Weaver
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13321ae	rip-relative	0x1651cd0	finite-text-operand-or-substring	Clothier
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13321c3	rip-relative	0x16a5568	finite-text-operand-or-substring	Glassmaker
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13321d8	rip-relative	0x16a5640	finite-text-operand-or-substring	Strand Extractor
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13321ed	rip-relative	0x1782c48	finite-text-operand-or-substring	Fishery Worker
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332202	rip-relative	0x16a5618	finite-text-operand-or-substring	Fisherman
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332217	rip-relative	0x16a56c0	finite-text-operand-or-substring	Fish Dissector
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133222c	rip-relative	0x16a56e8	finite-text-operand-or-substring	Fish Cleaner
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332241	rip-relative	0x162cb88	finite-text-operand-or-substring	Farmer
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332256	rip-relative	0x16a58c0	finite-text-operand-or-substring	Cheesemaker
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133226b	rip-relative	0x16a58cc	finite-text-operand-or-substring	Milker
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332280	rip-relative	0x16a58d4	finite-text-operand-or-substring	Gelder
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332295	rip-relative	0x16a58e0	finite-text-operand-or-substring	Shearer
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13322aa	rip-relative	0x16a58e8	finite-text-operand-or-substring	Spinner
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13322bf	rip-relative	0x163cf84	finite-text-operand-or-substring	Cook
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13322d4	rip-relative	0x16a59f8	finite-text-operand-or-substring	Thresher
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13322e9	rip-relative	0x16a59ec	finite-text-operand-or-substring	Miller
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13322fe	rip-relative	0x161be28	finite-text-operand-or-substring	Butcher
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332313	rip-relative	0x162cb80	finite-text-operand-or-substring	Tanner
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332328	rip-relative	0x162c910	finite-text-operand-or-substring	Dyer
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133233d	rip-relative	0x16a59b0	finite-text-operand-or-substring	Presser
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332352	rip-relative	0x16a59b8	finite-text-operand-or-substring	Beekeeper
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332367	rip-relative	0x16a5700	finite-text-operand-or-substring	Planter
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133237c	rip-relative	0x16a5708	finite-text-operand-or-substring	Herbalist
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332391	rip-relative	0x16a59e4	finite-text-operand-or-substring	Brewer
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13323a6	rip-relative	0x1782c38	finite-text-operand-or-substring	Soap Maker
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13323bb	rip-relative	0x16a5660	finite-text-operand-or-substring	Potash Maker
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13323d0	rip-relative	0x16a5670	finite-text-operand-or-substring	Lye Maker
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13323e5	rip-relative	0x16a5680	finite-text-operand-or-substring	Wood Burner
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13323fa	rip-relative	0x1782d20	finite-text-operand-or-substring	Engineer
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133240f	rip-relative	0x162c948	finite-text-operand-or-substring	Mechanic
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332424	rip-relative	0x16a5970	finite-text-operand-or-substring	Siege Engineer
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332439	rip-relative	0x16a5980	finite-text-operand-or-substring	Siege Operator
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133244e	rip-relative	0x16a5990	finite-text-operand-or-substring	Pump Operator
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332463	rip-relative	0x1782d18	finite-text-operand-or-substring	Clerk
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332478	rip-relative	0x1782d38	finite-text-operand-or-substring	Administrator
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133248d	rip-relative	0x1782d2c	finite-text-operand-or-substring	Trader
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13324a2	rip-relative	0x16a55a4	finite-text-operand-or-substring	Poet
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13324b7	rip-relative	0x1782d50	finite-text-operand-or-substring	Bard
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13324cc	rip-relative	0x16a5ad8	finite-text-operand-or-substring	Dancer
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13324e1	rip-relative	0x15ffd30	finite-text-operand-or-substring	Performer
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13324f6	rip-relative	0x15ffd1c	finite-text-operand-or-substring	Scribe
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133250b	rip-relative	0x162c890	finite-text-operand-or-substring	Tavern Keeper
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332520	rip-relative	0x1782d48	finite-text-operand-or-substring	Sage
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332535	rip-relative	0x15ffd28	finite-text-operand-or-substring	Scholar
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133254a	rip-relative	0x1782d68	finite-text-operand-or-substring	Philosopher
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133255f	rip-relative	0x16a5b78	finite-text-operand-or-substring	Mathematician
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332574	rip-relative	0x1782d58	finite-text-operand-or-substring	Historian
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332589	rip-relative	0x16a5b88	finite-text-operand-or-substring	Astronomer
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133259e	rip-relative	0x1782cd0	finite-text-operand-or-substring	Naturalist
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13325b3	rip-relative	0x16a5b98	finite-text-operand-or-substring	Chemist
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13325c8	rip-relative	0x16a5ba0	finite-text-operand-or-substring	Geographer
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13325dd	rip-relative	0x15ffcf8	finite-text-operand-or-substring	Doctor
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13325f2	rip-relative	0x15ffce8	finite-text-operand-or-substring	Diagnostician
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332607	rip-relative	0x162c8a8	finite-text-operand-or-substring	Bone Doctor
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133261c	rip-relative	0x16a5918	finite-text-operand-or-substring	Suturer
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332631	rip-relative	0x15fff10	finite-text-operand-or-substring	Surgeon
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332646	rip-relative	0x1782cc0	finite-text-operand-or-substring	Merchant
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133265b	rip-relative	0x1782ce4	finite-text-operand-or-substring	Drunk
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332670	rip-relative	0x162c880	finite-text-operand-or-substring	Monster Slayer
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332685	rip-relative	0x1782cdc	finite-text-operand-or-substring	Scout
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133269a	rip-relative	0x1782cf8	finite-text-operand-or-substring	Beast Hunter
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13326af	rip-relative	0x169e2f0	finite-text-operand-or-substring	Snatcher
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13326c4	rip-relative	0x15ffd10	finite-text-operand-or-substring	Mercenary
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13326d9	rip-relative	0x16a5a90	finite-text-operand-or-substring	Hammerman
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13326ee	rip-relative	0x1781e48	finite-text-operand-or-substring	Hammer Lord
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332703	rip-relative	0x16a5aa0	finite-text-operand-or-substring	Spearman
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332718	rip-relative	0x1781d60	finite-text-operand-or-substring	Spearmaster
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133272d	rip-relative	0x16a5ab0	finite-text-operand-or-substring	Crossbowman
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332742	rip-relative	0x1781db8	finite-text-operand-or-substring	Elite Crossbowman
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332757	rip-relative	0x16a5a40	finite-text-operand-or-substring	Wrestler
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133276c	rip-relative	0x1781dd0	finite-text-operand-or-substring	Elite Wrestler
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332781	rip-relative	0x16a5a70	finite-text-operand-or-substring	Axeman
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332796	rip-relative	0x1781ed8	finite-text-operand-or-substring	Axe Lord
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13327ab	rip-relative	0x16a5a78	finite-text-operand-or-substring	Swordsman
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13327c0	rip-relative	0x1781ee8	finite-text-operand-or-substring	Swordmaster
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13327d5	rip-relative	0x16a5a88	finite-text-operand-or-substring	Maceman
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13327ea	rip-relative	0x1781e60	finite-text-operand-or-substring	Mace Lord
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13327ff	rip-relative	0x16a5ac0	finite-text-operand-or-substring	Pikeman
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332814	rip-relative	0x1781e70	finite-text-operand-or-substring	Pikemaster
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332829	rip-relative	0x16a5948	finite-text-operand-or-substring	Bowman
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133283e	rip-relative	0x1781e98	finite-text-operand-or-substring	Elite Bowman
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332853	rip-relative	0x16a5a08	finite-text-operand-or-substring	Blowgunner
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332868	rip-relative	0x1781f88	finite-text-operand-or-substring	Master Blowgunner
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133287d	rip-relative	0x16a58b4	finite-text-operand-or-substring	Lasher
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332892	rip-relative	0x1781fb0	finite-text-operand-or-substring	Master Lasher
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13328a7	rip-relative	0x1782cf0	finite-text-operand-or-substring	Recruit
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13328bc	rip-relative	0x15f7148	finite-text-operand-or-substring	Hunting
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13328d1	rip-relative	0x16036fc	finite-text-operand-or-substring	War
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13328e6	rip-relative	0x1781fc8	finite-text-operand-or-substring	Master Thief
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x13328fb	rip-relative	0x160032c	finite-text-operand-or-substring	Thief
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332910	rip-relative	0x15ec960	finite-text-operand-or-substring	Criminal
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332925	rip-relative	0x1782d10	finite-text-operand-or-substring	Peddler
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133293a	rip-relative	0x1782d08	finite-text-operand-or-substring	Prophet
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133294f	rip-relative	0x1782df8	finite-text-operand-or-substring	Pilgrim
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332964	rip-relative	0x1782dec	finite-text-operand-or-substring	Monk
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332979	rip-relative	0x1782e08	finite-text-operand-or-substring	Messenger
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332a17	rip-relative	0x15ffe64	finite-text-operand-or-substring	Child
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332a80	rip-relative	0x1782e00	finite-text-operand-or-substring	Baby
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332aa8	rip-relative	0x1782bc0	finite-text-operand-or-substring	Peasant
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332ab2	rip-relative	0x1782bc4	finite-text-operand-or-substring	ant
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332abd	rip-relative	0x1782bc6	finite-text-operand-or-substring	t
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332c76	rip-relative	0x1782b50	finite-text-operand-or-substring	 Slave
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332cb0	rip-relative	0x1600c30	finite-text-operand-or-substring	Slave
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332d06	rip-relative	0x1600c30	finite-text-operand-or-substring	Slave
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332d0e	rip-relative	0x1600c34	finite-text-operand-or-substring	e
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332de9	rip-relative	0x1782b70	finite-text-operand-or-substring	 Prisoner
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332e1d	inline-immediate-fragment		finite-short-string-fragment	Prisoner
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332e6c	inline-immediate-fragment		finite-short-string-fragment	Prisoner
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332ef4	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332f25	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332f8d	rip-relative	0x16bec90	finite-text-operand-or-substring	Ghost
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332f9c	rip-relative	0x1629b50	finite-text-operand-or-substring	Ghostly 
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1332fe9	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x133300c	rip-relative	0x1782e38	finite-text-operand-or-substring	One
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8658fd	rip-relative	0x15f959c	finite-text-operand-or-substring	Cancel
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86595c	rip-relative	0x16acaa0	finite-text-operand-or-substring	Click a creature to start a new conversation
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x865fbf	rip-relative	0x16a9d24	finite-text-operand-or-substring	@:
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866567	rip-relative	0x16aca90	finite-text-operand-or-substring	Toward you: 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8665c4	rip-relative	0x16acae8	finite-text-operand-or-substring	Positive attitude
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866678	rip-relative	0x16acad0	finite-text-operand-or-substring	Negative attitude
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8666b3	rip-relative	0x16ac888	finite-text-operand-or-substring	Neutral attitude
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86670e	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866760	rip-relative	0x15f9770	finite-text-operand-or-substring	Patient
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8667ab	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8667ff	rip-relative	0x15f98a0	finite-text-operand-or-substring	Impatient
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866855	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866890	rip-relative	0x16ac878	finite-text-operand-or-substring	Animated
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8668e0	rip-relative	0x16ac8a8	finite-text-operand-or-substring	Agitated
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86692b	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86697f	rip-relative	0x15fa5f0	finite-text-operand-or-substring	Sluggish
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8669a5	rip-relative	0x15fc370	finite-text-operand-or-substring	Inactive
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8669f7	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866a4b	rip-relative	0x16ac89c	finite-text-operand-or-substring	Bold
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866a74	rip-relative	0x16ac848	finite-text-operand-or-substring	Confident
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866abb	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866b0f	rip-relative	0x16ac838	finite-text-operand-or-substring	Acquiescent
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866b35	rip-relative	0x16ac868	finite-text-operand-or-substring	Unassuming
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866b97	rip-relative	0x16ac858	finite-text-operand-or-substring	Relationship: 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866beb	rip-relative	0x16ac910	finite-text-operand-or-substring	Loves you
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866c4a	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866c92	rip-relative	0x16ac8c8	finite-text-operand-or-substring	Terrified of you
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866cd9	rip-relative	0x16ac900	finite-text-operand-or-substring	Likes you
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866d22	rip-relative	0x16ac930	finite-text-operand-or-substring	Hates you
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866d73	rip-relative	0x16ac920	finite-text-operand-or-substring	Dislikes you
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866dcd	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866e13	rip-relative	0x16ac8b8	finite-text-operand-or-substring	Scared of you
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866e62	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866ea8	rip-relative	0x16ac8f0	finite-text-operand-or-substring	No fear of you
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866f01	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866f46	rip-relative	0x16ac8e0	finite-text-operand-or-substring	Respects you
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866f95	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x866fdb	rip-relative	0x16ac8e0	finite-text-operand-or-substring	Respects you
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86702a	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867072	rip-relative	0x16ad258	finite-text-operand-or-substring	No respect for you
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8670c1	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867107	rip-relative	0x16ad240	finite-text-operand-or-substring	Low respect for you
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867160	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8671a5	rip-relative	0x16ad280	finite-text-operand-or-substring	Trusts you
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8671f4	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86723a	rip-relative	0x16ad280	finite-text-operand-or-substring	Trusts you
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867289	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8672d1	rip-relative	0x16ad270	finite-text-operand-or-substring	Distrusts you
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867320	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867366	rip-relative	0x16ad270	finite-text-operand-or-substring	Distrusts you
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8673bf	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867404	rip-relative	0x16ad218	finite-text-operand-or-substring	Highly Loyal
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86745c	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8674a2	rip-relative	0x15e7974	finite-text-operand-or-substring	Loyal
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8674ee	rip-relative	0x16ad210	finite-text-operand-or-substring	Neutral
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867556	rip-relative	0x16ad230	finite-text-operand-or-substring	General Mood: 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8675ae	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867619	rip-relative	0x16ad228	finite-text-operand-or-substring	Annoyed
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867646	rip-relative	0x16ad2c8	finite-text-operand-or-substring	Satisfied
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867673	rip-relative	0x16ad2c0	finite-text-operand-or-substring	Grouchy
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8676a0	rip-relative	0x16ad2e4	finite-text-operand-or-substring	Grumpy
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8676cd	rip-relative	0x16ad2d8	finite-text-operand-or-substring	Fondness
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8676fa	rip-relative	0x16ad298	finite-text-operand-or-substring	Suspicious
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867727	rip-relative	0x16ad290	finite-text-operand-or-substring	Alarmed
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867754	rip-relative	0x16ad2b8	finite-text-operand-or-substring	Shocked
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867781	rip-relative	0x16ad2a8	finite-text-operand-or-substring	Horrified
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8677ae	rip-relative	0x16ad168	finite-text-operand-or-substring	Grimly Satisfied
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8677db	rip-relative	0x16ad158	finite-text-operand-or-substring	Grieving
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867808	rip-relative	0x16ad188	finite-text-operand-or-substring	Triumphant
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867835	rip-relative	0x16ad180	finite-text-operand-or-substring	Enraged
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867862	rip-relative	0x16ad140	finite-text-operand-or-substring	Eexcited
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86788f	rip-relative	0x16ad134	finite-text-operand-or-substring	Gaiety
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8678bc	rip-relative	0x16ad154	finite-text-operand-or-substring	Sad
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8678e9	rip-relative	0x16ad14c	finite-text-operand-or-substring	Joyous
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867916	rip-relative	0x16ad1e0	finite-text-operand-or-substring	Blissful
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867943	rip-relative	0x16ad1d4	finite-text-operand-or-substring	Loving
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867970	rip-relative	0x15f9a78	finite-text-operand-or-substring	Vengeful
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86799d	rip-relative	0x16ad200	finite-text-operand-or-substring	Accepting
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8679ca	rip-relative	0x16ad1f0	finite-text-operand-or-substring	Admiration
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8679f7	rip-relative	0x16ad1a8	finite-text-operand-or-substring	Adoration
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867a24	rip-relative	0x16ad198	finite-text-operand-or-substring	Affection
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867a51	rip-relative	0x16ac8a8	finite-text-operand-or-substring	Agitated
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867a7e	rip-relative	0x16ad1c8	finite-text-operand-or-substring	Aggravated
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867aab	rip-relative	0x16ad1b8	finite-text-operand-or-substring	In Agony
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867ad8	rip-relative	0x16ad0b8	finite-text-operand-or-substring	Alienated
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867b05	rip-relative	0x16ad0ac	finite-text-operand-or-substring	Amazed
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867b32	rip-relative	0x16ad0d0	finite-text-operand-or-substring	Ambivalent
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867b5f	rip-relative	0x16ad0c4	finite-text-operand-or-substring	Amused
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867b8c	rip-relative	0x16ad08c	finite-text-operand-or-substring	Angry
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867bb9	rip-relative	0x16ad080	finite-text-operand-or-substring	In Anguish
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867be6	rip-relative	0x15f99c8	finite-text-operand-or-substring	Anxious
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867c13	rip-relative	0x16ad0a0	finite-text-operand-or-substring	Apathetic
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867c40	rip-relative	0x16ad098	finite-text-operand-or-substring	Aroused
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867c6d	rip-relative	0x16ad118	finite-text-operand-or-substring	Astonished
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867c9a	rip-relative	0x16ad10c	finite-text-operand-or-substring	Averse
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867cc7	rip-relative	0x16ad12c	finite-text-operand-or-substring	In Awe
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867cf4	rip-relative	0x16ad124	finite-text-operand-or-substring	Bitter
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867d21	rip-relative	0x16ad0e4	finite-text-operand-or-substring	Bored
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867d4e	rip-relative	0x16ad0dc	finite-text-operand-or-substring	Caring
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867d7b	rip-relative	0x16ad100	finite-text-operand-or-substring	Confused
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867da8	rip-relative	0x16ad0f0	finite-text-operand-or-substring	Contemptuous
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867dd5	rip-relative	0x16acff8	finite-text-operand-or-substring	Content
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867e02	rip-relative	0x16acfe8	finite-text-operand-or-substring	Dejected
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867e2f	rip-relative	0x16ad008	finite-text-operand-or-substring	Delighted
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867e5c	rip-relative	0x16ad000	finite-text-operand-or-substring	Despair
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867e89	rip-relative	0x16acfc0	finite-text-operand-or-substring	Disappointed
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867eb6	rip-relative	0x16acfb0	finite-text-operand-or-substring	Disgusted
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867ee3	rip-relative	0x16acfd8	finite-text-operand-or-substring	Disillusioned
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867f10	rip-relative	0x16acfd0	finite-text-operand-or-substring	Dislike
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867f3d	rip-relative	0x16ad058	finite-text-operand-or-substring	Dismayed
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867f6a	rip-relative	0x16ad048	finite-text-operand-or-substring	Displeasure
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867f97	rip-relative	0x16ad070	finite-text-operand-or-substring	Distressed
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867fc4	rip-relative	0x16ad064	finite-text-operand-or-substring	Eager
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x867ff1	rip-relative	0x16ad024	finite-text-operand-or-substring	Elated
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86801e	rip-relative	0x16ad018	finite-text-operand-or-substring	Embarrassed
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86804b	rip-relative	0x16ad038	finite-text-operand-or-substring	Empathetic
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868078	rip-relative	0x16ad02c	finite-text-operand-or-substring	Empty
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8680a5	rip-relative	0x16ad5e8	finite-text-operand-or-substring	Enjoyment
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8680d2	rip-relative	0x16ad5d8	finite-text-operand-or-substring	Exasperated
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8680ff	rip-relative	0x16ad600	finite-text-operand-or-substring	Exhilarated
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86812c	rip-relative	0x16ad5f4	finite-text-operand-or-substring	Afraid
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868159	rip-relative	0x16ad5a8	finite-text-operand-or-substring	Ferocious
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868186	rip-relative	0x16ad59c	finite-text-operand-or-substring	Free
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8681b3	rip-relative	0x16ad5c8	finite-text-operand-or-substring	Frightened
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8681e0	rip-relative	0x16ad5b8	finite-text-operand-or-substring	Frustrated
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86820d	rip-relative	0x16ad648	finite-text-operand-or-substring	Gleeful
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86823a	rip-relative	0x16ad63c	finite-text-operand-or-substring	Gloomy
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868267	rip-relative	0x16ad65c	finite-text-operand-or-substring	Glum
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868294	rip-relative	0x16ad650	finite-text-operand-or-substring	Grateful
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8682c1	rip-relative	0x16ad614	finite-text-operand-or-substring	Guilty
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8682ee	rip-relative	0x16ad60c	finite-text-operand-or-substring	Happy
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86831b	rip-relative	0x15f9a10	finite-text-operand-or-substring	Hateful
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868348	rip-relative	0x15f9a50	finite-text-operand-or-substring	Hopeful
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868375	rip-relative	0x16ad630	finite-text-operand-or-substring	Hopeless
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8683a2	rip-relative	0x16ad620	finite-text-operand-or-substring	Humiliated
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8683cf	rip-relative	0x16ad500	finite-text-operand-or-substring	Insulted
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8683fc	rip-relative	0x16ad4f0	finite-text-operand-or-substring	Interested
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868429	rip-relative	0x16ad520	finite-text-operand-or-substring	Irritated
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868456	rip-relative	0x16ad510	finite-text-operand-or-substring	Isolated
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868483	rip-relative	0x16ad4c4	finite-text-operand-or-substring	Jolly
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8684b0	rip-relative	0x16ad4bc	finite-text-operand-or-substring	Jovial
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8684dd	rip-relative	0x16ad4e0	finite-text-operand-or-substring	Jubilant
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86850a	rip-relative	0x16ad4d0	finite-text-operand-or-substring	Loathing
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868537	rip-relative	0x16ad57c	finite-text-operand-or-substring	Lonely
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868564	rip-relative	0x15f99c0	finite-text-operand-or-substring	Lustful
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868591	rip-relative	0x16ad570	finite-text-operand-or-substring	Miserable
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8685be	rip-relative	0x16ad590	finite-text-operand-or-substring	Mortified
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8685eb	rip-relative	0x16ad588	finite-text-operand-or-substring	Nervous
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868618	rip-relative	0x16ad540	finite-text-operand-or-substring	Nostalgic
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868645	rip-relative	0x16ad530	finite-text-operand-or-substring	Optimistic
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868672	rip-relative	0x16ad560	finite-text-operand-or-substring	Outraged
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86869f	rip-relative	0x16ad550	finite-text-operand-or-substring	Panicked
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8686cc	rip-relative	0x15f9770	finite-text-operand-or-substring	Patient
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8686f9	rip-relative	0x16ad428	finite-text-operand-or-substring	Passionate
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868726	rip-relative	0x16ad418	finite-text-operand-or-substring	Pleasure
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868753	rip-relative	0x15f9a70	finite-text-operand-or-substring	Proud
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868780	rip-relative	0x16ad448	finite-text-operand-or-substring	Enraptured
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8687ad	rip-relative	0x16ad438	finite-text-operand-or-substring	Rejected
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8687da	rip-relative	0x16ad3e8	finite-text-operand-or-substring	Relieved
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868807	rip-relative	0x16ad3d8	finite-text-operand-or-substring	Regretful
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868834	rip-relative	0x16ad408	finite-text-operand-or-substring	Remorseful
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868861	rip-relative	0x16ad3f8	finite-text-operand-or-substring	Repentant
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86888e	rip-relative	0x16ad490	finite-text-operand-or-substring	Resentful
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8688bb	rip-relative	0x16ad480	finite-text-operand-or-substring	Restless
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8688e8	rip-relative	0x16ad4b0	finite-text-operand-or-substring	Indignant
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868915	rip-relative	0x16ad4a0	finite-text-operand-or-substring	Self-pity
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868942	rip-relative	0x16ad460	finite-text-operand-or-substring	Servile
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86896f	rip-relative	0x16ad454	finite-text-operand-or-substring	Shaken
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86899c	rip-relative	0x16ad478	finite-text-operand-or-substring	Ashamed
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8689c9	rip-relative	0x16ad468	finite-text-operand-or-substring	Sympathy
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8689f6	rip-relative	0x16ad328	finite-text-operand-or-substring	Tenderness
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868a23	rip-relative	0x16ad318	finite-text-operand-or-substring	Terrified
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868a50	rip-relative	0x16ad340	finite-text-operand-or-substring	Thrilled
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868a7d	rip-relative	0x16ad334	finite-text-operand-or-substring	Uneasy
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868aaa	rip-relative	0x16ad2f8	finite-text-operand-or-substring	Unhappy
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868ad7	rip-relative	0x16ad2ec	finite-text-operand-or-substring	Wonder
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868b04	rip-relative	0x16ad310	finite-text-operand-or-substring	Worried
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868b31	rip-relative	0x16ad300	finite-text-operand-or-substring	Wrathful
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868b5e	rip-relative	0x16ad3b0	finite-text-operand-or-substring	Zealous
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868b8b	rip-relative	0x16ad398	finite-text-operand-or-substring	Existential Crisis
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868bb8	rip-relative	0x16ad3c8	finite-text-operand-or-substring	Defeated
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868be5	rip-relative	0x16ad3b8	finite-text-operand-or-substring	Expectant
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868c12	rip-relative	0x165c790	finite-text-operand-or-substring	Doubt
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868c3c	rip-relative	0x16ad360	finite-text-operand-or-substring	Enthusiastic
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868c66	rip-relative	0x16ad350	finite-text-operand-or-substring	Pessimistic
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868c90	rip-relative	0x16ad388	finite-text-operand-or-substring	Euphoric
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868f68	rip-relative	0x15f959c	finite-text-operand-or-substring	Cancel
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x868fbf	rip-relative	0x16ad370	finite-text-operand-or-substring	Choose your tone/tact
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869246	rip-relative	0x16adfd0	finite-text-operand-or-substring	Intimidate: 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8692b4	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86944b	rip-relative	0x16adec8	finite-text-operand-or-substring	Almost guaranteed
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869496	rip-relative	0x16adf00	finite-text-operand-or-substring	Likely success
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8694de	rip-relative	0x16adef0	finite-text-operand-or-substring	Favorable odds
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86952a	rip-relative	0x16ade98	finite-text-operand-or-substring	Impossible
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869575	rip-relative	0x16ade80	finite-text-operand-or-substring	Nearly impossible
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8695b6	rip-relative	0x16adeb8	finite-text-operand-or-substring	Likely failure
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8695f1	rip-relative	0x16adea8	finite-text-operand-or-substring	Even odds
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869628	rip-relative	0x16adfe0	finite-text-operand-or-substring	Unfavorable odds
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86967c	rip-relative	0x16adee0	finite-text-operand-or-substring	Persuade: 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8696ea	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869881	rip-relative	0x16adec8	finite-text-operand-or-substring	Almost guaranteed
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8698cc	rip-relative	0x16adf00	finite-text-operand-or-substring	Likely success
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869914	rip-relative	0x16adef0	finite-text-operand-or-substring	Favorable odds
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869960	rip-relative	0x16ade98	finite-text-operand-or-substring	Impossible
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8699ab	rip-relative	0x16ade80	finite-text-operand-or-substring	Nearly impossible
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x8699ec	rip-relative	0x16adeb8	finite-text-operand-or-substring	Likely failure
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869a27	rip-relative	0x16adea8	finite-text-operand-or-substring	Even odds
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869a5e	rip-relative	0x16adfe0	finite-text-operand-or-substring	Unfavorable odds
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869d7d	rip-relative	0x16ae028	finite-text-operand-or-substring	What will you say?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869dca	rip-relative	0x16adff8	finite-text-operand-or-substring	What will you say about the insurrection?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869df7	rip-relative	0x16adf40	finite-text-operand-or-substring	What will you say about the end of the insurrection?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869e24	rip-relative	0x16adf10	finite-text-operand-or-substring	What will you say about the site reclamation?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869e51	rip-relative	0x16adfa0	finite-text-operand-or-substring	What will you say about the site's foundation?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869e7e	rip-relative	0x16adf78	finite-text-operand-or-substring	What will you say about the group?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869eab	rip-relative	0x16adc80	finite-text-operand-or-substring	What will you say about the army?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869ed8	rip-relative	0x16adc50	finite-text-operand-or-substring	What will you say about the failed occupation?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869f05	rip-relative	0x16adcd0	finite-text-operand-or-substring	What will you say about the abduction?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869f32	rip-relative	0x16adca8	finite-text-operand-or-substring	What will you say about the incident?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869f5f	rip-relative	0x16adbd8	finite-text-operand-or-substring	What will you say about the occupation?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869f8c	rip-relative	0x16adba8	finite-text-operand-or-substring	What will you say about the new leadership?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869fb9	rip-relative	0x16adc28	finite-text-operand-or-substring	What will you say about the beast?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x869fe6	rip-relative	0x16adc00	finite-text-operand-or-substring	What will you say about the trouble?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a013	rip-relative	0x16adde8	finite-text-operand-or-substring	What will you say about tribute agreement?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a040	rip-relative	0x16addb0	finite-text-operand-or-substring	What will you say about the refusal to accept tribute?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a06d	rip-relative	0x16ade48	finite-text-operand-or-substring	What will you say about the refusal to give tribute?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a09a	rip-relative	0x16ade18	finite-text-operand-or-substring	What will you say about the peace agreement?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a0c7	rip-relative	0x16add28	finite-text-operand-or-substring	What will you say about the failed peace agreement?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a0f4	rip-relative	0x16adcf8	finite-text-operand-or-substring	What will you say about the tribute stoppage?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a121	rip-relative	0x16add88	finite-text-operand-or-substring	What will you say about the claim?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a14e	rip-relative	0x16add60	finite-text-operand-or-substring	What will you say about the gang?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a17b	rip-relative	0x16ad9d0	finite-text-operand-or-substring	What will you say about the refugees?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a1a8	rip-relative	0x16ad998	finite-text-operand-or-substring	What will you say about the artifact's destruction?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a1d5	rip-relative	0x16ada28	finite-text-operand-or-substring	What will you say about the artifact's location?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a202	rip-relative	0x16ae028	finite-text-operand-or-substring	What will you say?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a22f	rip-relative	0x16adc00	finite-text-operand-or-substring	What will you say about the trouble?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a25c	rip-relative	0x16ad9f8	finite-text-operand-or-substring	How will you respond to the offer of service?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a289	rip-relative	0x16ad940	finite-text-operand-or-substring	What do you want to know?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a2b6	rip-relative	0x16260b8	finite-text-operand-or-substring	What do you want?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a2e3	rip-relative	0x16ad920	finite-text-operand-or-substring	Which pet will you gift?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a310	rip-relative	0x16ad980	finite-text-operand-or-substring	About whom do you ask?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a33d	rip-relative	0x16ad940	finite-text-operand-or-substring	What do you want to know?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a36a	rip-relative	0x16ad960	finite-text-operand-or-substring	Where do you want to go?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a397	rip-relative	0x16adb28	finite-text-operand-or-substring	How will you respond to the position offer?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a3c4	rip-relative	0x16adaf8	finite-text-operand-or-substring	How will you respond to the adoption request?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a3f1	rip-relative	0x16adb80	finite-text-operand-or-substring	What will you say about the journey?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a41e	rip-relative	0x16adca8	finite-text-operand-or-substring	What will you say about the incident?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a44b	rip-relative	0x16adb58	finite-text-operand-or-substring	What will you say about the conflict?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a478	rip-relative	0x16ae028	finite-text-operand-or-substring	What will you say?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a4a5	rip-relative	0x16ada78	finite-text-operand-or-substring	How will you ask?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a4d2	rip-relative	0x16ada60	finite-text-operand-or-substring	How will you respond?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a4ff	rip-relative	0x16ada60	finite-text-operand-or-substring	How will you respond?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a52c	rip-relative	0x16adad0	finite-text-operand-or-substring	What will you say about the rescue?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a559	rip-relative	0x16ada90	finite-text-operand-or-substring	What will you say about the conclusion of the agreement?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a586	rip-relative	0x16ad738	finite-text-operand-or-substring	What will you say about the agreement?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a5b3	rip-relative	0x16ad710	finite-text-operand-or-substring	What will you say about services?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a5e0	rip-relative	0x16ad788	finite-text-operand-or-substring	What will you say about the request?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a60d	rip-relative	0x16ad760	finite-text-operand-or-substring	What will you say about the trade?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a63a	rip-relative	0x16ad690	finite-text-operand-or-substring	What will you say about the surrounding area?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a667	rip-relative	0x16ad668	finite-text-operand-or-substring	What will you say about the site?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a694	rip-relative	0x16adf78	finite-text-operand-or-substring	What will you say about the group?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a6c1	rip-relative	0x16ad6e8	finite-text-operand-or-substring	What will you say about the structure?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a6ee	rip-relative	0x16ad6c0	finite-text-operand-or-substring	How will you respond to the invocation?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a71b	rip-relative	0x16ad890	finite-text-operand-or-substring	How will you respond to the accusation?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a748	rip-relative	0x16ad868	finite-text-operand-or-substring	What will you say about your master?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a775	rip-relative	0x16ad8e8	finite-text-operand-or-substring	What will you say about your plots and scheming?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a7a2	rip-relative	0x16ad8b8	finite-text-operand-or-substring	How will you respond about your profession?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a7cf	rip-relative	0x16ad7d8	finite-text-operand-or-substring	How will you respond to this passive reply?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a7fc	rip-relative	0x16ad7b0	finite-text-operand-or-substring	How will you respond to this flattery?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a829	rip-relative	0x16ad840	finite-text-operand-or-substring	How will you respond to this dismissal?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a856	rip-relative	0x16ad808	finite-text-operand-or-substring	How will you respond to this statement of values?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a883	rip-relative	0x16ae5e8	finite-text-operand-or-substring	What will you say about how you are feeling?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a8b0	rip-relative	0x16ae5c0	finite-text-operand-or-substring	What will you say about your family?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a8dd	rip-relative	0x16ae650	finite-text-operand-or-substring	How will you respond to the offer of tribute?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a90a	rip-relative	0x16ae618	finite-text-operand-or-substring	How will you respond to the tribute cancellation?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a937	rip-relative	0x16ae520	finite-text-operand-or-substring	How will you respond to the offer of peace?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a964	rip-relative	0x16ae4f0	finite-text-operand-or-substring	How will you respond to the demand for tribute?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a991	rip-relative	0x16ae580	finite-text-operand-or-substring	How will you respond to the request to cease hostilities?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a9be	rip-relative	0x16ae550	finite-text-operand-or-substring	How will you respond to the demand to yield?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86a9eb	rip-relative	0x16ae6f8	finite-text-operand-or-substring	How will you respond to the request for information?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86aa15	rip-relative	0x16ae6c0	finite-text-operand-or-substring	How will you respond to the request for directions?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86aa3f	rip-relative	0x16ae760	finite-text-operand-or-substring	How will you respond to the request for a guide?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86aa69	rip-relative	0x16ae730	finite-text-operand-or-substring	What will you say about the missing treasure?
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86ac0d	rip-relative	0x15e77d0	finite-text-operand-or-substring	...
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86ac41	rip-relative	0x15e783c	finite-text-operand-or-substring	_
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86affc	rip-relative	0x16ae690	finite-text-operand-or-substring	Keywords: 
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132c5e4	rip-relative	0x177ca08	finite-text-operand-or-substring	the force
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132c7e3	rip-relative	0x177ca18	finite-text-operand-or-substring	the deity
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132ca78	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cd8a	rip-relative	0x16038f0	finite-text-operand-or-substring	Miner
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cd93	rip-relative	0x16038f4	finite-text-operand-or-substring	r
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cdae	rip-relative	0x177ca30	finite-text-operand-or-substring	Woodworker
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cdbb	rip-relative	0x177ca38	finite-text-operand-or-substring	er
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cdd7	rip-relative	0x1628000	finite-text-operand-or-substring	Carpenter
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cde4	rip-relative	0x1628008	finite-text-operand-or-substring	r
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cdff	rip-relative	0x162800c	finite-text-operand-or-substring	Bowyer
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132ce08	rip-relative	0x1628010	finite-text-operand-or-substring	er
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132ce24	rip-relative	0x1603910	finite-text-operand-or-substring	Woodcutter
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132ce31	rip-relative	0x1603918	finite-text-operand-or-substring	er
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132ce4d	rip-relative	0x1627f98	finite-text-operand-or-substring	Stoneworker
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132ce5a	rip-relative	0x1627fa0	finite-text-operand-or-substring	ker
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132ce65	rip-relative	0x1627fa2	finite-text-operand-or-substring	r
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132ce80	inline-immediate-fragment		finite-short-string-fragment	Engraver
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132ce97	rip-relative	0x16a0200	finite-text-operand-or-substring	Stonecutter
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132ceac	rip-relative	0x16a01f0	finite-text-operand-or-substring	Stone Carver
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cec1	rip-relative	0x16a0754	finite-text-operand-or-substring	Mason
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132ced6	rip-relative	0x177ca24	finite-text-operand-or-substring	Ranger
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132ceeb	rip-relative	0x16a0770	finite-text-operand-or-substring	Animal Caretaker
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cf00	rip-relative	0x16a0760	finite-text-operand-or-substring	Animal Trainer
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cf15	rip-relative	0x15fb1e8	finite-text-operand-or-substring	Hunter
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cf2a	rip-relative	0x16a07c0	finite-text-operand-or-substring	Trapper
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cf3f	rip-relative	0x16a0798	finite-text-operand-or-substring	Animal Dissector
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cf54	rip-relative	0x1628050	finite-text-operand-or-substring	Metalsmith
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cf69	rip-relative	0x16a06f0	finite-text-operand-or-substring	Furnace Operator
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cf7e	rip-relative	0x16a0568	finite-text-operand-or-substring	Weaponsmith
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cf93	rip-relative	0x177cb08	finite-text-operand-or-substring	Armorer
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cfb0	rip-relative	0x16a0588	finite-text-operand-or-substring	Blacksmith
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cfbd	rip-relative	0x16a0590	finite-text-operand-or-substring	th
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cfd9	rip-relative	0x177caf8	finite-text-operand-or-substring	Metalcrafter
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cfe6	rip-relative	0x177cb00	finite-text-operand-or-substring	fter
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132cff8	rip-relative	0x1628018	finite-text-operand-or-substring	Jeweler
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d00d	rip-relative	0x16a0598	finite-text-operand-or-substring	Gem Cutter
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d022	rip-relative	0x16a05a8	finite-text-operand-or-substring	Gem Setter
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d037	rip-relative	0x164cbe8	finite-text-operand-or-substring	Craftsman
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d04c	rip-relative	0x16a05b8	finite-text-operand-or-substring	Woodcrafter
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d061	rip-relative	0x16a05c8	finite-text-operand-or-substring	Papermaker
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d076	rip-relative	0x16a05d8	finite-text-operand-or-substring	Bookbinder
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d08b	rip-relative	0x16a05e4	finite-text-operand-or-substring	Potter
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d0a0	rip-relative	0x16a0a6c	finite-text-operand-or-substring	Glazer
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d0b5	rip-relative	0x16a05f0	finite-text-operand-or-substring	Wax Worker
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d0ca	rip-relative	0x177cb20	finite-text-operand-or-substring	Stonecrafter
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d0df	rip-relative	0x16a0a48	finite-text-operand-or-substring	Leatherworker
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d0f4	rip-relative	0x16a0a78	finite-text-operand-or-substring	Bone Carver
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d109	rip-relative	0x16a0a84	finite-text-operand-or-substring	Weaver
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d11e	rip-relative	0x164cc80	finite-text-operand-or-substring	Clothier
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d133	rip-relative	0x16a0620	finite-text-operand-or-substring	Glassmaker
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d148	rip-relative	0x16a0708	finite-text-operand-or-substring	Strand Extractor
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d15d	rip-relative	0x177cb10	finite-text-operand-or-substring	Fishery Worker
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d172	rip-relative	0x16a06e0	finite-text-operand-or-substring	Fisherman
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d187	rip-relative	0x16a0788	finite-text-operand-or-substring	Fish Dissector
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d19c	rip-relative	0x16a07b0	finite-text-operand-or-substring	Fish Cleaner
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d1b1	rip-relative	0x1627ef0	finite-text-operand-or-substring	Farmer
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d1c6	rip-relative	0x16a0958	finite-text-operand-or-substring	Cheesemaker
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d1db	rip-relative	0x16a0964	finite-text-operand-or-substring	Milker
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d1f0	rip-relative	0x16a096c	finite-text-operand-or-substring	Gelder
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d205	rip-relative	0x16a0978	finite-text-operand-or-substring	Shearer
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d21a	rip-relative	0x16a0980	finite-text-operand-or-substring	Spinner
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d22f	rip-relative	0x1638128	finite-text-operand-or-substring	Cook
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d244	rip-relative	0x16a0910	finite-text-operand-or-substring	Thresher
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d259	rip-relative	0x16a0904	finite-text-operand-or-substring	Miller
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d26e	rip-relative	0x1616fc8	finite-text-operand-or-substring	Butcher
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d283	rip-relative	0x1627f64	finite-text-operand-or-substring	Tanner
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d298	rip-relative	0x1627f5c	finite-text-operand-or-substring	Dyer
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d2ad	rip-relative	0x16a0a58	finite-text-operand-or-substring	Presser
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d2c2	rip-relative	0x16a0a60	finite-text-operand-or-substring	Beekeeper
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d2d7	rip-relative	0x16a07c8	finite-text-operand-or-substring	Planter
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d2ec	rip-relative	0x16a07d0	finite-text-operand-or-substring	Herbalist
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d301	rip-relative	0x16a0a8c	finite-text-operand-or-substring	Brewer
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d316	rip-relative	0x177cb40	finite-text-operand-or-substring	Soap Maker
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d32b	rip-relative	0x16a0728	finite-text-operand-or-substring	Potash Maker
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d340	rip-relative	0x16a0738	finite-text-operand-or-substring	Lye Maker
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d355	rip-relative	0x16a0748	finite-text-operand-or-substring	Wood Burner
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d36a	rip-relative	0x177cb30	finite-text-operand-or-substring	Engineer
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d37f	rip-relative	0x1628028	finite-text-operand-or-substring	Mechanic
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d394	rip-relative	0x16a0a18	finite-text-operand-or-substring	Siege Engineer
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d3a9	rip-relative	0x16a0a28	finite-text-operand-or-substring	Siege Operator
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d3be	rip-relative	0x16a0a38	finite-text-operand-or-substring	Pump Operator
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d3d3	rip-relative	0x177cb60	finite-text-operand-or-substring	Clerk
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d3e8	rip-relative	0x177cb50	finite-text-operand-or-substring	Administrator
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d3fd	rip-relative	0x177caa0	finite-text-operand-or-substring	Trader
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d412	rip-relative	0x16a0484	finite-text-operand-or-substring	Poet
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d427	rip-relative	0x177ca98	finite-text-operand-or-substring	Bard
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d43c	rip-relative	0x16a04a8	finite-text-operand-or-substring	Dancer
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d451	rip-relative	0x15fae10	finite-text-operand-or-substring	Performer
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d466	rip-relative	0x15fadfc	finite-text-operand-or-substring	Scribe
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d47b	rip-relative	0x1627a38	finite-text-operand-or-substring	Tavern Keeper
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d490	rip-relative	0x177cab4	finite-text-operand-or-substring	Sage
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d4a5	rip-relative	0x15fae08	finite-text-operand-or-substring	Scholar
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d4ba	rip-relative	0x177caa8	finite-text-operand-or-substring	Philosopher
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d4cf	rip-relative	0x16a0548	finite-text-operand-or-substring	Mathematician
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d4e4	rip-relative	0x177cad0	finite-text-operand-or-substring	Historian
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d4f9	rip-relative	0x16a0558	finite-text-operand-or-substring	Astronomer
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d50e	rip-relative	0x177cac0	finite-text-operand-or-substring	Naturalist
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d523	rip-relative	0x16a0a98	finite-text-operand-or-substring	Chemist
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d538	rip-relative	0x16a0aa0	finite-text-operand-or-substring	Geographer
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d54d	rip-relative	0x15fadd8	finite-text-operand-or-substring	Doctor
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d562	rip-relative	0x15fadc8	finite-text-operand-or-substring	Diagnostician
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d577	rip-relative	0x1627938	finite-text-operand-or-substring	Bone Doctor
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d58c	rip-relative	0x16a09b0	finite-text-operand-or-substring	Suturer
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d5a1	rip-relative	0x15fadc0	finite-text-operand-or-substring	Surgeon
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d5b6	rip-relative	0x177cae8	finite-text-operand-or-substring	Merchant
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d5cb	rip-relative	0x177cadc	finite-text-operand-or-substring	Drunk
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d5e0	rip-relative	0x1627948	finite-text-operand-or-substring	Monster Slayer
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d5f5	rip-relative	0x177cc10	finite-text-operand-or-substring	Scout
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d60a	rip-relative	0x177cc00	finite-text-operand-or-substring	Beast Hunter
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d61f	rip-relative	0x1699490	finite-text-operand-or-substring	Snatcher
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d634	rip-relative	0x15fadf0	finite-text-operand-or-substring	Mercenary
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d649	rip-relative	0x16a0b30	finite-text-operand-or-substring	Hammerman
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d65e	rip-relative	0x177cd20	finite-text-operand-or-substring	Hammer Lord
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d673	rip-relative	0x16a09c8	finite-text-operand-or-substring	Spearman
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d688	rip-relative	0x177cd70	finite-text-operand-or-substring	Spearmaster
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d69d	rip-relative	0x16a09d8	finite-text-operand-or-substring	Crossbowman
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d6b2	rip-relative	0x177ce50	finite-text-operand-or-substring	Elite Crossbowman
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d6c7	rip-relative	0x16a0ae0	finite-text-operand-or-substring	Wrestler
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d6dc	rip-relative	0x177cea8	finite-text-operand-or-substring	Elite Wrestler
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d6f1	rip-relative	0x16a0b10	finite-text-operand-or-substring	Axeman
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d706	rip-relative	0x177ceb8	finite-text-operand-or-substring	Axe Lord
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d71b	rip-relative	0x16a0b18	finite-text-operand-or-substring	Swordsman
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d730	rip-relative	0x177ce18	finite-text-operand-or-substring	Swordmaster
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d745	rip-relative	0x16a0b28	finite-text-operand-or-substring	Maceman
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d75a	rip-relative	0x177ce28	finite-text-operand-or-substring	Mace Lord
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d76f	rip-relative	0x16a09e8	finite-text-operand-or-substring	Pikeman
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d784	rip-relative	0x177cf48	finite-text-operand-or-substring	Pikemaster
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d799	rip-relative	0x16a09f0	finite-text-operand-or-substring	Bowman
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d7ae	rip-relative	0x177cf80	finite-text-operand-or-substring	Elite Bowman
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d7c3	rip-relative	0x16a0920	finite-text-operand-or-substring	Blowgunner
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d7d8	rip-relative	0x177cf98	finite-text-operand-or-substring	Master Blowgunner
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d7ed	rip-relative	0x16a094c	finite-text-operand-or-substring	Lasher
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d802	rip-relative	0x177ced8	finite-text-operand-or-substring	Master Lasher
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d817	rip-relative	0x177cc20	finite-text-operand-or-substring	Recruit
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d82c	rip-relative	0x15f2160	finite-text-operand-or-substring	Hunting
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d841	rip-relative	0x15fe6cc	finite-text-operand-or-substring	War
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d856	rip-relative	0x177cef8	finite-text-operand-or-substring	Master Thief
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d86b	rip-relative	0x15fb19c	finite-text-operand-or-substring	Thief
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d880	rip-relative	0x15e7948	finite-text-operand-or-substring	Criminal
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d895	rip-relative	0x177cc18	finite-text-operand-or-substring	Peddler
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d8aa	rip-relative	0x177cc30	finite-text-operand-or-substring	Prophet
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d8bf	rip-relative	0x177cc28	finite-text-operand-or-substring	Pilgrim
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d8d4	rip-relative	0x177cc44	finite-text-operand-or-substring	Monk
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d8e9	rip-relative	0x177cc38	finite-text-operand-or-substring	Messenger
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d987	rip-relative	0x15faf04	finite-text-operand-or-substring	Child
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132d9f0	rip-relative	0x177cb6c	finite-text-operand-or-substring	Baby
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132da18	rip-relative	0x177c940	finite-text-operand-or-substring	Peasant
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132da22	rip-relative	0x177c944	finite-text-operand-or-substring	ant
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132da2d	rip-relative	0x177c946	finite-text-operand-or-substring	t
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132dbe6	rip-relative	0x177ca4c	finite-text-operand-or-substring	 Slave
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132dc20	rip-relative	0x15fbcc8	finite-text-operand-or-substring	Slave
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132dc76	rip-relative	0x15fbcc8	finite-text-operand-or-substring	Slave
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132dc7e	rip-relative	0x15fbccc	finite-text-operand-or-substring	e
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132dd59	rip-relative	0x177ca40	finite-text-operand-or-substring	 Prisoner
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132dd8d	inline-immediate-fragment		finite-short-string-fragment	Prisoner
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132dddc	inline-immediate-fragment		finite-short-string-fragment	Prisoner
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132de64	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132de95	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132defd	rip-relative	0x16b9d2c	finite-text-operand-or-substring	Ghost
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132df0c	rip-relative	0x1625190	finite-text-operand-or-substring	Ghostly 
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132df59	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132df7c	rip-relative	0x177cb68	finite-text-operand-or-substring	One

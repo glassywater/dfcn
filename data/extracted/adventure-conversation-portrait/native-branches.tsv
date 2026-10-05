@@ -1,0 +1,57 @@
+edition	image	kind	source_text	instruction_rvas	condition	palette	visibility
+reference	PE:6a70a6d9:02711000	attitude	Positive attitude	0x868d44	relationship+0x80 >= 25	2 if >=75, otherwise 7	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	attitude	Negative attitude	0x868df8	relationship+0x80 <= -25	4 if <=-75, otherwise 6	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	attitude	Neutral attitude	0x868e33	-25 < relationship+0x80 < 25	7	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	demeanor	Patient	0x868ee0,0x86ae4c	relationship+0x84 >= 25	2	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	demeanor	Impatient	0x868f7f	relationship+0x84 <= -25	4 if <=-75, otherwise 6	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	demeanor	Animated	0x869010	relationship+0x8c >= 25 and relationship+0x80 >= 0	7	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	demeanor	Agitated	0x869060,0x86a1d1	relationship+0x8c >= 25 and relationship+0x80 < 0	4 if energy>=75, otherwise 6	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	demeanor	Sluggish	0x8690ff	relationship+0x8c <= -75	7	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	demeanor	Inactive	0x869125	-75 < relationship+0x8c <= -25	7	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	demeanor	Bold	0x8691cb	relationship+0x88 >= 75	7	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	demeanor	Confident	0x8691f4	25 <= relationship+0x88 < 75	7	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	demeanor	Acquiescent	0x86928f	relationship+0x88 <= -75	7	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	demeanor	Unassuming	0x8692b5	-75 < relationship+0x88 <= -25	7	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	relationship	Loves you	0x86936b	relationship+0x60 >= 75	2	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	relationship	Likes you	0x869459	25 <= relationship+0x60 < 75	7	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	relationship	Hates you	0x8694a2	relationship+0x60 <= -75	4	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	relationship	Dislikes you	0x8694f3	-75 < relationship+0x60 <= -25	6	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	relationship	Terrified of you	0x869412	relationship+0x5c >= 75	4	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	relationship	Scared of you	0x869593	25 <= relationship+0x5c < 75	6	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	relationship	No fear of you	0x869628	relationship+0x5c <= -25	7	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	relationship	Respects you	0x8696c6,0x86975b	relationship+0x58 >= 25	2 if >=75, otherwise 7	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	relationship	No respect for you	0x8697f2	relationship+0x58 <= -75	4	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	relationship	Low respect for you	0x869887	-75 < relationship+0x58 <= -25	6	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	relationship	Trusts you	0x869925,0x8699ba	relationship+0x64 >= 25	2 if >=75, otherwise 7	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	relationship	Distrusts you	0x869a51,0x869ae6	relationship+0x64 <= -25	4 if <=-75, otherwise 6	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	relationship	Highly Loyal	0x869b84	relationship+0x54 >= 75	2	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	relationship	Loyal	0x869c22	25 <= relationship+0x54 < 75	7	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	relationship	Neutral	0x869c6e	no love/fear/respect/trust/loyalty term emitted	7	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	attitude	Positive attitude	0x8665c4	relationship+0x80 >= 25	2 if >=75, otherwise 7	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	attitude	Negative attitude	0x866678	relationship+0x80 <= -25	4 if <=-75, otherwise 6	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	attitude	Neutral attitude	0x8666b3	-25 < relationship+0x80 < 25	7	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	demeanor	Patient	0x866760,0x8686cc	relationship+0x84 >= 25	2	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	demeanor	Impatient	0x8667ff	relationship+0x84 <= -25	4 if <=-75, otherwise 6	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	demeanor	Animated	0x866890	relationship+0x8c >= 25 and relationship+0x80 >= 0	7	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	demeanor	Agitated	0x8668e0,0x867a51	relationship+0x8c >= 25 and relationship+0x80 < 0	4 if energy>=75, otherwise 6	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	demeanor	Sluggish	0x86697f	relationship+0x8c <= -75	7	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	demeanor	Inactive	0x8669a5	-75 < relationship+0x8c <= -25	7	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	demeanor	Bold	0x866a4b	relationship+0x88 >= 75	7	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	demeanor	Confident	0x866a74	25 <= relationship+0x88 < 75	7	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	demeanor	Acquiescent	0x866b0f	relationship+0x88 <= -75	7	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	demeanor	Unassuming	0x866b35	-75 < relationship+0x88 <= -25	7	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	relationship	Loves you	0x866beb	relationship+0x60 >= 75	2	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	relationship	Likes you	0x866cd9	25 <= relationship+0x60 < 75	7	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	relationship	Hates you	0x866d22	relationship+0x60 <= -75	4	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	relationship	Dislikes you	0x866d73	-75 < relationship+0x60 <= -25	6	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	relationship	Terrified of you	0x866c92	relationship+0x5c >= 75	4	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	relationship	Scared of you	0x866e13	25 <= relationship+0x5c < 75	6	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	relationship	No fear of you	0x866ea8	relationship+0x5c <= -25	7	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	relationship	Respects you	0x866f46,0x866fdb	relationship+0x58 >= 25	2 if >=75, otherwise 7	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	relationship	No respect for you	0x867072	relationship+0x58 <= -75	4	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	relationship	Low respect for you	0x867107	-75 < relationship+0x58 <= -25	6	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	relationship	Trusts you	0x8671a5,0x86723a	relationship+0x64 >= 25	2 if >=75, otherwise 7	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	relationship	Distrusts you	0x8672d1,0x867366	relationship+0x64 <= -25	4 if <=-75, otherwise 6	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	relationship	Highly Loyal	0x867404	relationship+0x54 >= 75	2	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	relationship	Loyal	0x8674a2	25 <= relationship+0x54 < 75	7	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	relationship	Neutral	0x8674ee	no love/fear/respect/trust/loyalty term emitted	7	requires selected visual relationship; relationship row also requires capacity>=2

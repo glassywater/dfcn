@@ -1,0 +1,19 @@
+edition	image	field	instruction_rva	instruction	production
+reference	PE:6a70a6d9:02711000	unit lookup	0x868a38	call   0x14067d2d0	resolves conversation+0x30 against world; no unit skips portrait fields
+reference	PE:6a70a6d9:02711000	relationship selection	0x868aea	call   0x1413b3090	unit relationship profile -> selected visual relationship for player historical figure id; null hides Toward/Relationship
+reference	PE:6a70a6d9:02711000	mood list	0x868b26	mov    rcx,QWORD PTR [r13+0xa98]	unit+0xa98 soul, soul+0x278 vector; record+0 enum and record+8 positive strength; strongest up to3, limited by 133e7a0(world,0x48) capacity
+reference	PE:6a70a6d9:02711000	portrait color	0x868c73	call   0x141333bc0	unit identity color helper(unit,false,true,false) selects native identity color
+reference	PE:6a70a6d9:02711000	caption formatter	0x868c89	call   0x141331500	1331500(unit, NativeString) exact unit-reference formatter; classic132c470
+reference	PE:6a70a6d9:02711000	caption capitalization	0x868c92	call   0x14052d650	capitalizes constructed reference immediately before addst
+reference	PE:6a70a6d9:02711000	caption draw	0x868ca8	call   0x140ad9960	caption at native y15; body strings use addst with native clipping argument
+reference	PE:6a70a6d9:02711000	relationship absent	0x868cb5	je     0x140869ca1	null selected visual relationship skips both Toward and Relationship; already drawn identity remains visible
+reference	PE:6a70a6d9:02711000	mood absent	0x869ca9	jle    0x14086b44d	nonpositive selected mood count skips General Mood; with null relationship this leaves the portrait identity as its sole textual field
+classic	PE:6a70b91c:0270a000	unit lookup	0x8662b8	call   0x14067acf0	resolves conversation+0x30 against world; no unit skips portrait fields
+classic	PE:6a70b91c:0270a000	relationship selection	0x86636a	call   0x1413ae000	unit relationship profile -> selected visual relationship for player historical figure id; null hides Toward/Relationship
+classic	PE:6a70b91c:0270a000	mood list	0x8663a6	mov    rcx,QWORD PTR [r13+0xa98]	unit+0xa98 soul, soul+0x278 vector; record+0 enum and record+8 positive strength; strongest up to3, limited by 133e7a0(world,0x48) capacity
+classic	PE:6a70b91c:0270a000	portrait color	0x8664f3	call   0x14132eb30	unit identity color helper(unit,false,true,false) selects native identity color
+classic	PE:6a70b91c:0270a000	caption formatter	0x866509	call   0x14132c470	1331500(unit, NativeString) exact unit-reference formatter; classic132c470
+classic	PE:6a70b91c:0270a000	caption capitalization	0x866512	call   0x14052b070	capitalizes constructed reference immediately before addst
+classic	PE:6a70b91c:0270a000	caption draw	0x866528	call   0x140ad69a0	caption at native y15; body strings use addst with native clipping argument
+classic	PE:6a70b91c:0270a000	relationship absent	0x866535	je     0x140867521	null selected visual relationship skips both Toward and Relationship; already drawn identity remains visible
+classic	PE:6a70b91c:0270a000	mood absent	0x867529	jle    0x140868ccd	nonpositive selected mood count skips General Mood; with null relationship this leaves the portrait identity as its sole textual field

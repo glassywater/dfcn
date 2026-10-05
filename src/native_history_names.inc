@@ -130,6 +130,28 @@ static bool capture_native_instrument_names(
     return true;
 }
 
+// A squad's alias is authored text, separate from its generated language_name.
+// Copy the current values instead of retaining borrowed pointers or inferring
+// authorship from English/Chinese spelling.
+static bool capture_native_fortress_squad_aliases(std::vector<std::string> &aliases) {
+    aliases.clear();
+    NativeBorrowedVector<uintptr_t> squads;
+    if (!native_history_read_vector(native_history_global(0x24e37c0), squads) ||
+            squads.size() > 65536) return false;
+    std::vector<std::string> copy;
+    copy.reserve(squads.size());
+    for (size_t i = 0; i < squads.size(); ++i) {
+        const uintptr_t squad = native_history_vector_at(squads, i);
+        const size_t offset = native_history_layout::squad_alias_offset;
+        std::string alias;
+        if (!squad || offset > UINTPTR_MAX - squad ||
+                !native_history_copy_string(squad + offset, alias)) return false;
+        if (!alias.empty()) copy.push_back(std::move(alias));
+    }
+    aliases = std::move(copy);
+    return true;
+}
+
 static uintptr_t native_history_find_subject(uintptr_t base,
         NativeHistoryObjectKind kind, int32_t id) {
     if (!base || id < 0) return 0;

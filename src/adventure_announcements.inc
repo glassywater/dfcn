@@ -1,11 +1,20 @@
-// A live adventure report owns its drawn rows before any item, hover, name
+// A live adventure/compact-log report owns its drawn rows before item, hover, name
 // or generic UI recognizer edits screen_rows. Its native parent and exact
 // draw addresses establish identity; inferred panel artwork only improves
 // the layout bounds and must not decide whether the report is translated.
     {
-        const auto paragraphs = native_adventure_announcement_paragraphs();
-        const auto draws = paragraphs.empty() ? std::vector<NativeDrawnTextRow>{}
+        auto paragraphs = native_adventure_announcement_paragraphs();
+        auto log_paragraphs = native_announcement_log_paragraphs();
+        paragraphs.insert(paragraphs.end(),
+            std::make_move_iterator(log_paragraphs.begin()),
+            std::make_move_iterator(log_paragraphs.end()));
+        auto draws = paragraphs.empty() ? std::vector<NativeDrawnTextRow>{}
             : captured_native_drawn_text_rows();
+        if (!paragraphs.empty()) {
+            auto top_draws = captured_native_drawn_text_rows(true);
+            draws.insert(draws.end(), std::make_move_iterator(top_draws.begin()),
+                std::make_move_iterator(top_draws.end()));
+        }
         std::unordered_multimap<uintptr_t, const NativeDrawnTextRow *> by_address;
         for (const auto &draw : draws)
             if (draw.address) by_address.emplace(draw.address, &draw);

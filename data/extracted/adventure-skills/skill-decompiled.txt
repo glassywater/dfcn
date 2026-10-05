@@ -1,0 +1,256 @@
+ADVENTURE CREATOR / SKILLS: NATIVE SKILL TEXT PRODUCERS
+
+Source images are the two paths configured by data/runtime/native-pe-images.json.
+The source extraction reads their on-disk instructions and data. It does not
+load either image into a game process. All addresses below are RVAs.
+
+reference PE:6a70a6d9:02711000
+classic   PE:6a70b91c:0270a000
+
+The following are distinct native domains, despite sharing English words:
+  * archetype labels: eligible preset.skill -> profession-style skill title;
+  * customized skill rows: a rating and profession-style title in one string;
+  * skill tooltip heading: the plain skill noun, without race/caste overrides;
+  * skill tooltip explanation: a skill-id switch in the creator renderer;
+  * attribute tooltip skill lists: the same plain skill noun;
+  * dynamic RAW profession titles: selected race/caste NativeStrings;
+  * dynamic weapon skill availability: selected RAW weapon definitions.
+
+The assembly files and skill-native-branches.tsv retain each exact selector,
+branch address, literal operand and source spelling separately for both PEs.
+The enum_metadata column names are only descriptive metadata from the existing
+df-structures source; the selector-to-branch mappings come from the PE tables.
+
+1. RATING ATOMS AND ONE-STRING SKILL ROWS
+
+rating_text(out, int level):
+  out.clear()
+  switch (uint32(level)) {
+    0: "Dabbling"
+    1: "Novice"
+    2: "Adequate"
+    3: "Competent"
+    4: "Skilled"
+    5: "Proficient"
+    6: "Talented"
+    7: "Adept"
+    8: "Expert"
+    9: "Professional"
+   10: "Accomplished"
+   11: "Great"
+   12: "Master"
+   13: "High Master"
+   14: "Grand Master"
+   default: "Legendary"
+  }
+
+reference body 7737c0..77394c, table 77394c
+classic   body 7711e0..77136c, table 77136c
+
+The customized skill row constructs its rating in a temporary NativeString,
+appends a space, obtains the title in another NativeString, and appends that
+title before the single row draw. Native zero-total handling supplies "Not"
+instead of calling rating_text. The level source is the sum of the selected
+skill's creator+0x7c+4*skill and creator+0x34c+4*skill fields. Source fragments
+are not independent messages; for example the semantic row is the whole
+"Competent Knife User", with one skill/rating result and one suppression span.
+
+reference row call 629af7 -> 7737c0; 629b66 -> 774730
+classic   corresponding row calls use 7711e0 and 772150
+
+2. PROFESSION-STYLE SKILL TITLES, INCLUDING RAW OVERRIDES
+
+skill_title(out, int16 skill, int16 race, int16 caste):
+  profession = skill_to_profession(skill)
+  if profession != -1 and has_raw_singular_profession(race, caste, profession):
+    raw_profession(out, race, caste, profession, plural=false, capitalize=true)
+    return
+  out.clear()
+  switch (uint32(skill)) {
+    0..146: native skill-specific case
+    default: return empty
+  }
+
+The complete 147-case static title inventory is in skill-native-branches.tsv
+under role=title. It includes the weapon users, arts, social skills, trades,
+medical skills and "Skill 1" through "Skill 10". The text is the title helper's
+native spelling, rather than an inferred spelling based on screenshots.
+
+reference body 774730..775284, case table 775284
+classic   body 772150..772ca4, case table 772ca4
+
+At reference 774756 / classic 772176 the helper maps the skill to a profession
+enum. The map is itself a PE selector: reference 764a70..764c74, branch table
+764c74 and byte permutation 764db0; classic 762490..762694, branch table
+762694 and byte permutation 7627d0. A mapped -1 disables the RAW override.
+
+At reference 774773 / classic 772193 the availability gate reads the selected
+race's caste vector. It tests the SINGULAR string length:
+  caste+0x1830+32*profession first, then race+0x230+32*profession.
+An unavailable/invalid caste may still use the race string.
+
+At reference 77479e / classic 7721be the successful override invokes the RAW
+title selector with plural=false and capitalize=true. In the caller those
+arguments are stack+0x28 = 0 and stack+0x30 = 1. The actual source operand is:
+  caste+0x1820+32*profession,
+  falling back to race+0x220+32*profession when the caste string is empty.
+The plural arrays at caste+0x2900 and race+0x1300 are not selected by this
+Skills title call. Capitalization only uppercases an ASCII first letter.
+
+reference availability 30cea0..30cf63; source selector 30cf70..30d0e4
+classic   availability 30aa60..30ab23; source selector 30ab30..30aca4
+
+The Fisherman fallback case additionally reads race+0x6e0 (length+0x6f0)
+before its literal "Fisherman". This is the same race singular array entry
+for profession 0x26/FISHERMAN, not another free text token.
+
+The page passes creator race+0x78 and caste+0x7a to this helper for skill rows
+and archetype labels. RAWs can therefore produce "Axedwarf", "Hammerdwarf",
+"Speardwarf", "Marksdwarf", "Swordsdwarf", "Macedwarf", "Pikedwarf" and
+"Bowdwarf" rather than the general English titles. Fresh configured-install
+source operands, exact tokens and file/line provenance are in
+skill-raw-profession-sources.tsv. Future mod RAW strings remain typed dynamic
+source operands rather than a finite PE literal enumeration.
+
+3. PLAIN SKILL NOUNS
+
+skill_noun(out, int16 skill):
+  out.clear()
+  if uint32(skill) > 136: return
+  out = native_case_table[skill]
+
+reference body 773990..77450c, table 77450c
+classic   body 7713b0..771f2c, table 771f2c
+
+All 137 noun selectors are retained under role=noun in the branch TSV.
+These are a different domain from titles: Axe/Axeman, Lash/Lasher,
+Wrestling/Wrestler, Poetry/Poet, Speaking/Speaker, Reading/Reader, etc.
+The tooltip call reference 62a975 -> 773990 does not pass race or caste and
+cannot return PROFESSION_NAME overrides. Attribute tooltips also invoke
+this same noun producer for their "Affects skills:" lists.
+
+4. ALL SKILL TOOLTIP DESCRIPTION BRANCHES
+
+description_for_skill(skill):
+  if uint32(skill - 2) <= 0x84:
+    branch = descriptions[permutation[skill - 2]]
+  else:
+    branch = default_description
+  append_wrapped_description(branch.literal, native_width=0x30)
+
+reference selector 62a99e..62a9c7; branch table 634c3c; permutation 634cd0
+classic   selector 6283be..6283e7; branch table 63265c; permutation 6326f0
+
+The TSV role=description maps every skill id through the exact native selector,
+including the fallback:
+  "Not useful unless you retire and subsequently become a resident in Fortress mode."
+This is native fallback text and remains a whole tooltip explanation.
+
+Shared branches include:
+  Weapon users -> "Weapon skill."
+  Fighting -> charging and own/enemy combat opportunities.
+  Archery -> partially replaces low ranged skills.
+  Observation -> traps, ambushers, charge defense, enemy attack information.
+  Swimming -> safe swimming without floundering.
+  Climbing -> difficult surfaces.
+  Ambush -> remaining hidden while sneaking.
+  Tracking -> tracks and spoor.
+  Riding -> mounted opportunities and ranged accuracy.
+  Discipline -> pain and stress.
+  Shield -> blocking melee and ranged attacks.
+  Armor -> movement and dodging while armored.
+  Dodging -> dodging melee and ranged attacks.
+  Wrestling -> wrestling and charging.
+  Striking/Kicking/Biting -> the corresponding appendage attacks.
+  Throwing -> throwing objects.
+  Misc. Object -> weapons outside other skill domains.
+  Knapping -> making a sharp rock using two rocks.
+  Woodcutting -> requiring an item with a sharp edge.
+  Craft skill group -> "Crafting skill."
+  Reading -> a novice level is required to read anything.
+  Writing -> minor effect on both poetry and prose.
+  Prose/Poetry -> quality of the corresponding writing form.
+  Speaking -> poetry recitals, preaching, storytelling, musical forms.
+  Music -> partially replaces low musical performance skills.
+  Dance/Singing/instrument group -> "Performance skill."
+  Leadership -> maximum number of followers.
+  Persuasion -> stating values, arguments, interrogation persuasion.
+  Intimidation -> argument dismissal and interrogation intimidation.
+  Judging Intent -> emotional states during conversations.
+  Comedy/Flattery/Consoling/Pacification -> their respective native clauses.
+
+These summaries are explanatory only. Exact native wording is in the source
+literal/branch TSVs, preserving existing spelling such as "affect" in
+"Has a minor affect on all writing (poetry and prose.)".
+
+Following the explanation, reference 62b212 / classic 628c32 obtains three
+physical attribute ids and three mental attribute ids and emits
+"Affected by attributes:" followed by their names. Id -1 is skipped. Slot zero has no
+suffix; slots one and two append " (minor)" at reference 62b2a4/62b3a7
+(classic 628cc4/628dc7). These are ordered importance slots, not numerical
+weights. Attribute tooltips reverse the relationship and emit "Affects skills:"
+or "Affects no skills.". Their dynamic list entries use skill_noun,
+not skill_title.
+
+5. ARCHETYPES: 20 ELIGIBLE SKILL PRESETS AND BLANK SLATE
+
+The builder reads the ordered creator+0x1200 vector of available skills.
+For each skill, a PE switch either builds a preset or advances without one:
+  37 38 39 40 41 42 49 50 -> melee preset
+  43 51 52                -> ranged preset
+  99                      -> wrestler preset
+  90                      -> poet preset
+  92                      -> speaker preset
+  116                     -> dancer preset
+  118 119 120 121 122     -> singing/instrument preset
+Every other available skill is skipped by this preset switch. The builder
+always appends a preset with NativeString literal "Blank slate".
+
+reference body 63fa00..641008; branch table 641008; permutation 641028
+classic   body 63d420..63ea28; branch table 63ea28; permutation 63ea48
+
+Preset+0x20 records its skill id. The row renderer obtains the preset from
+creator+0x1220; a nonnegative skill id uses skill_title with creator race/caste.
+Preset+0x20 == -1 instead copies the preset NativeString (Blank slate).
+The displayed label subsequently passes the native capitalization helper.
+Thus the total possible static preset labels are the twenty role titles plus
+Blank slate, subject to which skills the selected background makes available.
+Their actual display order follows the ordered availability vector, explaining
+why the screenshot starts Lasher rather than the ascending skill enum.
+
+6. CUSTOM SKILL AVAILABILITY AND ITS DYNAMIC RAW OPERANDS
+
+Availability preparation belongs to a different native method from rendering:
+  reference input segment 5ca198..5ca5b2
+  classic   input segment 5c7bb8..5c7fd2
+
+If creator+0x2d0 == -1 (no selected background entity):
+  clear creator+0x1200
+  for weapon in world RAW weapon definitions:
+    if weapon.ranged_skill(+0xd2) != -1:
+      append_unique(weapon.ranged_skill)
+    elif weapon.melee_skill(+0xd0) != -1:
+      append_unique(weapon.melee_skill)
+  append the explicit fixed skill sequence recorded in skill-text-productions.tsv
+  include Swimming (69) only when selected race flag0x56 is true
+  build_archetypes(creator, selected_character_type)
+
+If a background entity is selected:
+  entity = native entity lookup(creator+0x2d0)
+  entity_available_skills(entity, creator+0x1200)
+  build_archetypes(creator, selected_character_type)
+
+reference entity helper 93cef0..93deca
+classic   entity helper 93a720..93b6fa
+
+The entity helper first walks weapon ids in entity+0x148/+0x150 and reads the
+same RAW weapon fields with ranged-before-melee precedence. It then appends
+its native skill sequence and uses the entity's selected race for Swimming.
+The 0x56 flag is HAS_ANY_CAN_SWIM in the existing enum metadata.
+
+append_unique(reference 641c10..641c58; classic 63f630..63f678) compares
+int16 skill ids and preserves first occurrence order; it adds no text.
+Configured installation ITEM_WEAPON SKILL/RANGED operands, their exact RAW
+tokens and file/line sources are in skill-raw-weapon-sources.tsv. A mod can
+alter available weapon skill ids and profession title strings without adding
+new static English strings to the creator renderer.

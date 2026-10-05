@@ -1,0 +1,430 @@
+# Native title generator source catalogue; static decompilation and installed RAW sources.
+# General_ref title-subject dispatch, written_content_type branches, placeholders and dynamic fields.
+image	identity	kind	producer	function_start_rva	function_end_rva	instruction_rva	target_rva	selector	source
+reference	PE:6a70a6d9:02711000	subject-vtable	general_refst	0x72260	0x72260	0x15ea8a0	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_value_levelst	0xee5920	0xee73e4	0x15e9c88	0xee5920	virtual +0x88	finite value category and level aliases; both article-bearing and article-free forms
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_activity_eventst	0x72260	0x72260	0x15ea410	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_knowledge_scholar_flagst	0xee73f0	0xeec1e8	0x15eb010	0xee73f0	virtual +0x88	finite discipline 0..13 plus knowledge bit; random synonym selection
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_entity_art_imagest	0xef5140	0xef527f	0x1615a58	0xef5140	virtual +0x88	fixed the Art / Art
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_coinbatchst	0xef5000	0xef5138	0x165e3b0	0xef5000	virtual +0x88	fixed the Coins / Coins
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_building_well_tagst	0x72260	0x72260	0x16cb5d8	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_buildingst	0x72260	0x72260	0x16cb528	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_mapsquarest	0x72260	0x72260	0x16cc180	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_interactionst	0xeec1f0	0xeec6aa	0x16e8920	0xeec1f0	virtual +0x88	SECRET text-set template and subject independently selected; direct replacement engine
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_entityst	0xef5420	0xef6704	0x16e7640	0xef5420	virtual +0x88	generated entity language_name; sphere delegation; creature RAW singular/plural descriptor; finite entity-type aliases
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_abstract_buildingst	0xeed820	0xeedd38	0x16eb3a8	0xeed820	virtual +0x88	generated abstract-building language_name or finite building-type aliases
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_sitest	0xef19b0	0xef2d54	0x16e7590	0xef19b0	virtual +0x88	generated site language_name or finite site-type alias
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_poetic_formst	0xee49a0	0xee4c85	0x16e8870	0xee49a0	virtual +0x88	generated form language_name or finite Poetry/Verse/Words aliases
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_subregionst	0xef2ec0	0xef4348	0x16eb128	0xef2ec0	virtual +0x88	generated region language_name or finite biome/alignment aliases
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_historical_figurest	0xef0a90	0xef149d	0x16eb518	0xef0a90	virtual +0x88	actual personal language_name; RAW position gender title; sphere delegation; ghost/spirit/corpse aliases; complete caste descriptor
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_feature_layerst	0xef4510	0xef499b	0x16e98a0	0xef4510	virtual +0x88	generated layer language_name or finite layer aliases
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_written_contentst	0xee5370	0xee55fd	0x16eb078	0xee5370	virtual +0x88	existing written-content title as nested NAME and article-free clone
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_musical_formst	0xee4c90	0xee4ff1	0x16e9ee0	0xee4c90	virtual +0x88	generated form language_name or finite Voice/Rhythm/Notes/Music aliases
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_languagest	0xee5600	0xee5913	0x16e9720	0xee5600	virtual +0x88	the {capitalized lowercase language ID} Language; stripped clone supplies NO_ART_NAME
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_artifactst	0xeec930	0xeed3a5	0x16ea660	0xeec930	virtual +0x88	generated artifact language_name; finite Artifact/Treasure; complete item; complete material optionally owned by historical figure/identity
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_dance_formst	0xee5000	0xee5361	0x16e7f40	0xee5000	virtual +0x88	generated form language_name or finite Dance/Rhythm/Moves/Steps aliases
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_historical_eventst	0xeeddc0	0xef068b	0x16e8340	0xeeddc0	virtual +0x88	finite event-type alias or participant delegation; no narrative event string
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_item_typest	0xef4ec0	0xef4ff1	0x16f8d30	0xef4ec0	virtual +0x88	fixed the Treasure / Treasure
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_contains_itemst	0x72260	0x72260	0x1743ad8	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_milkeest	0x72260	0x72260	0x1744ec8	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_contains_unitst	0x72260	0x72260	0x1743978	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_nemesisst	0x72260	0x72260	0x1743298	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_building_triggertargetst	0x72260	0x72260	0x1744318	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_traineest	0x72260	0x72260	0x1743fa8	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_riderst	0x72260	0x72260	0x1743c38	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_locationst	0x72260	0x72260	0x1744c08	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_sheareest	0x72260	0x72260	0x1745188	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_entity_itemownerst	0xef5420	0xef6704	0x17447e8	0xef5420	virtual +0x88	same title producer as entity
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_building_display_furniturest	0x72260	0x72260	0x17445d8	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_projectilest	0x72260	0x72260	0x1744cb8	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_tradebringerst	0x72260	0x72260	0x1744d68	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_contained_in_itemst	0x72260	0x72260	0x17433f8	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_infantst	0x72260	0x72260	0x17441b8	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_slaughtereest	0x72260	0x72260	0x1745028	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_is_nemesisst	0x72260	0x72260	0x1744f78	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_building_civzone_assignedst	0x72260	0x72260	0x1744948	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_building_triggerst	0x72260	0x72260	0x1743348	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_building_holderst	0x72260	0x72260	0x17436b8	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_entity_stolenst	0xef5420	0xef6704	0x1743ef8	0xef5420	virtual +0x88	same title producer as entity
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_reporteest	0x72260	0x72260	0x1744058	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_interrogateest	0x72260	0x72260	0x1743e48	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_entity_popst	0xef4ac0	0xef4c06	0x17449f8	0xef4ac0	virtual +0x88	fixed the Creatures / Creatures
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_suckeest	0x72260	0x72260	0x1743d98	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_building_destinationst	0x72260	0x72260	0x1743b88	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_climberst	0x72260	0x72260	0x1745238	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_foodreceiverst	0x72260	0x72260	0x1743a28	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unitst	0x72260	0x72260	0x1744aa8	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_is_artifactst	0xeec930	0xeed3a5	0x1744898	0xeec930	virtual +0x88	same title producer as artifact
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_building_cagedst	0x72260	0x72260	0x1744b58	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_itemownerst	0x72260	0x72260	0x17438c8	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_kidnapeest	0x72260	0x72260	0x1743ce8	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_patientst	0x72260	0x72260	0x17450d8	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_workerst	0x72260	0x72260	0x1744108	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_entity_offeredst	0xef5420	0xef6704	0x1744478	0xef5420	virtual +0x88	same title producer as entity
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_building_chainst	0x72260	0x72260	0x1743558	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_geldeest	0x72260	0x72260	0x17434a8	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_creaturest	0xef4cd0	0xef4e01	0x1744688	0xef4cd0	virtual +0x88	fixed the Creature / Creature
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_beateest	0x72260	0x72260	0x1743768	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_building_nest_boxst	0x72260	0x72260	0x1744528	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_holderst	0x72260	0x72260	0x1744268	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_unit_cageest	0x72260	0x72260	0x1744e18	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_spherest	0xef14d0	0xef1763	0x1743608	0xef14d0	virtual +0x88	shared sphere label; same NAME and NO_ART_NAME
+reference	PE:6a70a6d9:02711000	subject-vtable	general_ref_itemst	0x72260	0x72260	0x1744738	0x72260	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_refst	0x721f0	0x721f0	0x15e5858	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_value_levelst	0xee0890	0xee2354	0x15e4c40	0xee0890	virtual +0x88	finite value category and level aliases; both article-bearing and article-free forms
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_activity_eventst	0x721f0	0x721f0	0x15e53c8	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_knowledge_scholar_flagst	0xee2360	0xee7158	0x15e5fc8	0xee2360	virtual +0x88	finite discipline 0..13 plus knowledge bit; random synonym selection
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_entity_art_imagest	0xef00b0	0xef01ef	0x1610a18	0xef00b0	virtual +0x88	fixed the Art / Art
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_coinbatchst	0xeeff70	0xef00a8	0x16592c8	0xeeff70	virtual +0x88	fixed the Coins / Coins
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_building_well_tagst	0x721f0	0x721f0	0x16c64b0	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_buildingst	0x721f0	0x721f0	0x16c6400	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_mapsquarest	0x721f0	0x721f0	0x16c7058	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_interactionst	0xee7160	0xee761a	0x16e36c8	0xee7160	virtual +0x88	SECRET text-set template and subject independently selected; direct replacement engine
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_entityst	0xef0390	0xef1674	0x16e26f8	0xef0390	virtual +0x88	generated entity language_name; sphere delegation; creature RAW singular/plural descriptor; finite entity-type aliases
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_abstract_buildingst	0xee8790	0xee8ca8	0x16e6060	0xee8790	virtual +0x88	generated abstract-building language_name or finite building-type aliases
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_sitest	0xeec920	0xeedcc4	0x16e2648	0xeec920	virtual +0x88	generated site language_name or finite site-type alias
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_poetic_formst	0xedf910	0xedfbf5	0x16e37a8	0xedf910	virtual +0x88	generated form language_name or finite Poetry/Verse/Words aliases
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_historical_figurest	0xeeba00	0xeec40d	0x16e63d0	0xeeba00	virtual +0x88	actual personal language_name; RAW position gender title; sphere delegation; ghost/spirit/corpse aliases; complete caste descriptor
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_subregionst	0xeede30	0xeef2b8	0x16e6230	0xeede30	virtual +0x88	generated region language_name or finite biome/alignment aliases
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_written_contentst	0xee02e0	0xee056d	0x16e6180	0xee02e0	virtual +0x88	existing written-content title as nested NAME and article-free clone
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_feature_layerst	0xeef480	0xeef90b	0x16e4868	0xeef480	virtual +0x88	generated layer language_name or finite layer aliases
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_musical_formst	0xedfc00	0xedff61	0x16e4d98	0xedfc00	virtual +0x88	generated form language_name or finite Voice/Rhythm/Notes/Music aliases
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_languagest	0xee0570	0xee0883	0x16e46e8	0xee0570	virtual +0x88	the {capitalized lowercase language ID} Language; stripped clone supplies NO_ART_NAME
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_artifactst	0xee78a0	0xee8315	0x16e54e8	0xee78a0	virtual +0x88	generated artifact language_name; finite Artifact/Treasure; complete item; complete material optionally owned by historical figure/identity
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_dance_formst	0xedff70	0xee02d1	0x16e2f08	0xedff70	virtual +0x88	generated form language_name or finite Dance/Rhythm/Moves/Steps aliases
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_historical_eventst	0xee8d30	0xeeb5fb	0x16e3298	0xee8d30	virtual +0x88	finite event-type alias or participant delegation; no narrative event string
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_item_typest	0xeefe30	0xeeff61	0x16f3430	0xeefe30	virtual +0x88	fixed the Treasure / Treasure
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_contains_itemst	0x721f0	0x721f0	0x173df28	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_building_triggertargetst	0x721f0	0x721f0	0x173ea28	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_nemesisst	0x721f0	0x721f0	0x173dbb8	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_milkeest	0x721f0	0x721f0	0x173f7e8	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_contains_unitst	0x721f0	0x721f0	0x173e1e8	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_contained_in_itemst	0x721f0	0x721f0	0x173dc68	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_locationst	0x721f0	0x721f0	0x173f5d8	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_entity_itemownerst	0xef0390	0xef1674	0x173f058	0xef0390	virtual +0x88	same title producer as entity
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_sheareest	0x721f0	0x721f0	0x173faa8	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_riderst	0x721f0	0x721f0	0x173e978	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_traineest	0x721f0	0x721f0	0x173eb88	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_building_triggerst	0x721f0	0x721f0	0x173de78	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_infantst	0x721f0	0x721f0	0x173ead8	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_building_display_furniturest	0x721f0	0x721f0	0x173f108	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_projectilest	0x721f0	0x721f0	0x173f528	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_tradebringerst	0x721f0	0x721f0	0x173f898	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_is_nemesisst	0x721f0	0x721f0	0x173f738	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_building_civzone_assignedst	0x721f0	0x721f0	0x173f268	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_slaughtereest	0x721f0	0x721f0	0x173f9f8	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_entity_stolenst	0xef0390	0xef1674	0x173e6b8	0xef0390	virtual +0x88	same title producer as entity
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_suckeest	0x721f0	0x721f0	0x173e4a8	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_building_holderst	0x721f0	0x721f0	0x173dd18	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_interrogateest	0x721f0	0x721f0	0x173e558	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_entity_popst	0xeefa30	0xeefb76	0x173f3c8	0xeefa30	virtual +0x88	fixed the Creatures / Creatures
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_climberst	0x721f0	0x721f0	0x173f948	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_reporteest	0x721f0	0x721f0	0x173e768	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_building_destinationst	0x721f0	0x721f0	0x173e8c8	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_foodreceiverst	0x721f0	0x721f0	0x173e298	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unitst	0x721f0	0x721f0	0x173f318	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_is_artifactst	0xee78a0	0xee8315	0x173f1b8	0xee78a0	virtual +0x88	same title producer as artifact
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_building_cagedst	0x721f0	0x721f0	0x173f478	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_building_nest_boxst	0x721f0	0x721f0	0x173ed98	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_patientst	0x721f0	0x721f0	0x173fb58	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_workerst	0x721f0	0x721f0	0x173e818	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_itemownerst	0x721f0	0x721f0	0x173e3f8	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_kidnapeest	0x721f0	0x721f0	0x173e608	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_geldeest	0x721f0	0x721f0	0x173ddc8	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_beateest	0x721f0	0x721f0	0x173dfd8	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_creaturest	0xeefc40	0xeefd71	0x173eef8	0xeefc40	virtual +0x88	fixed the Creature / Creature
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_holderst	0x721f0	0x721f0	0x173ee48	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_unit_cageest	0x721f0	0x721f0	0x173f688	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_spherest	0xeec440	0xeec6d3	0x173e138	0xeec440	virtual +0x88	shared sphere label; same NAME and NO_ART_NAME
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_entity_offeredst	0xef0390	0xef1674	0x173ece8	0xef0390	virtual +0x88	same title producer as entity
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_building_chainst	0x721f0	0x721f0	0x173e088	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+classic	PE:6a70b91c:0270a000	subject-vtable	general_ref_itemst	0x721f0	0x721f0	0x173efa8	0x721f0	virtual +0x88	inherits default general_ref title-subject no-op; no title source text
+reference	PE:6a70a6d9:02711000	generator-function	strip-title-article	0xede350	0xede66b	-	-	Windows x64 C++ ABI	remove the / The only when string starts with that article; then remove all exact occurrences of the same literal
+reference	PE:6a70a6d9:02711000	generator-function	replace-title-tokens	0xee35f0	0xee486c	-	-	Windows x64 C++ ABI	replace NAME, NO_ART_NAME, ANY_PRONOUN, ANY_AGE, ADJ, NOUN, PHRASE in order; final title capitalization
+reference	PE:6a70a6d9:02711000	generator-function	select-title-template	0xee4870	0xee499a	-	-	Windows x64 C++ ABI	rcx output; edx written_content_type; r8 NAME; r9 NO_ART_NAME; choose BOOK_ART/BOOK_INSTRUCTION
+reference	PE:6a70a6d9:02711000	generator-function	load-title-text-set	0x131e4c0	0x131eff8	-	-	Windows x64 C++ ABI	index 0 BOOK_INSTRUCTION; index 1 BOOK_ART; select text-set entry
+reference	PE:6a70a6d9:02711000	generator-function	written-content-generator	0xc20b70	0xc28d68	-	-	Windows x64 C++ ABI	general_ref virtual +0x88 receives written_content_type and title destination
+reference	PE:6a70a6d9:02711000	generator-function	capitalize-title	0x52d650	0x52d904	-	-	Windows x64 C++ ABI	capitalize initial char and char after space/double quote; skip bracket tokens; preserve ordinary possessive apostrophe-s
+reference	PE:6a70a6d9:02711000	written-content-type	Manual	0xee4870	0xee499a	0xee4980	-	written_content_type=0; table branch=0	BOOK_INSTRUCTION
+reference	PE:6a70a6d9:02711000	written-content-type	Guide	0xee4870	0xee499a	0xee4981	-	written_content_type=1; table branch=0	BOOK_INSTRUCTION
+reference	PE:6a70a6d9:02711000	written-content-type	Chronicle	0xee4870	0xee499a	0xee4982	-	written_content_type=2; table branch=0	BOOK_INSTRUCTION
+reference	PE:6a70a6d9:02711000	written-content-type	ShortStory	0xee4870	0xee499a	0xee4983	-	written_content_type=3; table branch=1	BOOK_ART
+reference	PE:6a70a6d9:02711000	written-content-type	Novel	0xee4870	0xee499a	0xee4984	-	written_content_type=4; table branch=1	BOOK_ART
+reference	PE:6a70a6d9:02711000	written-content-type	Biography	0xee4870	0xee499a	0xee4985	-	written_content_type=5; table branch=1	BOOK_ART
+reference	PE:6a70a6d9:02711000	written-content-type	Autobiography	0xee4870	0xee499a	0xee4986	-	written_content_type=6; table branch=1	BOOK_ART
+reference	PE:6a70a6d9:02711000	written-content-type	Poem	0xee4870	0xee499a	0xee4987	-	written_content_type=7; table branch=1	BOOK_ART
+reference	PE:6a70a6d9:02711000	written-content-type	Play	0xee4870	0xee499a	0xee4988	-	written_content_type=8; table branch=1	BOOK_ART
+reference	PE:6a70a6d9:02711000	written-content-type	Letter	0xee4870	0xee499a	0xee4989	-	written_content_type=9; table branch=2	empty template
+reference	PE:6a70a6d9:02711000	written-content-type	Essay	0xee4870	0xee499a	0xee498a	-	written_content_type=10; table branch=0	BOOK_INSTRUCTION
+reference	PE:6a70a6d9:02711000	written-content-type	Dialog	0xee4870	0xee499a	0xee498b	-	written_content_type=11; table branch=1	BOOK_ART
+reference	PE:6a70a6d9:02711000	written-content-type	MusicalComposition	0xee4870	0xee499a	0xee498c	-	written_content_type=12; table branch=1	BOOK_ART
+reference	PE:6a70a6d9:02711000	written-content-type	Choreography	0xee4870	0xee499a	0xee498d	-	written_content_type=13; table branch=1	BOOK_ART
+reference	PE:6a70a6d9:02711000	written-content-type	ComparativeBiography	0xee4870	0xee499a	0xee498e	-	written_content_type=14; table branch=1	BOOK_ART
+reference	PE:6a70a6d9:02711000	written-content-type	BiographicalDictionary	0xee4870	0xee499a	0xee498f	-	written_content_type=15; table branch=0	BOOK_INSTRUCTION
+reference	PE:6a70a6d9:02711000	written-content-type	Genealogy	0xee4870	0xee499a	0xee4990	-	written_content_type=16; table branch=0	BOOK_INSTRUCTION
+reference	PE:6a70a6d9:02711000	written-content-type	Encyclopedia	0xee4870	0xee499a	0xee4991	-	written_content_type=17; table branch=0	BOOK_INSTRUCTION
+reference	PE:6a70a6d9:02711000	written-content-type	CulturalHistory	0xee4870	0xee499a	0xee4992	-	written_content_type=18; table branch=0	BOOK_INSTRUCTION
+reference	PE:6a70a6d9:02711000	written-content-type	CulturalComparison	0xee4870	0xee499a	0xee4993	-	written_content_type=19; table branch=0	BOOK_INSTRUCTION
+reference	PE:6a70a6d9:02711000	written-content-type	AlternateHistory	0xee4870	0xee499a	0xee4994	-	written_content_type=20; table branch=1	BOOK_ART
+reference	PE:6a70a6d9:02711000	written-content-type	TreatiseOnTechnologicalEvolution	0xee4870	0xee499a	0xee4995	-	written_content_type=21; table branch=0	BOOK_INSTRUCTION
+reference	PE:6a70a6d9:02711000	written-content-type	Dictionary	0xee4870	0xee499a	0xee4996	-	written_content_type=22; table branch=0	BOOK_INSTRUCTION
+reference	PE:6a70a6d9:02711000	written-content-type	StarChart	0xee4870	0xee499a	0xee4997	-	written_content_type=23; table branch=0	BOOK_INSTRUCTION
+reference	PE:6a70a6d9:02711000	written-content-type	StarCatalogue	0xee4870	0xee499a	0xee4998	-	written_content_type=24; table branch=0	BOOK_INSTRUCTION
+reference	PE:6a70a6d9:02711000	written-content-type	Atlas	0xee4870	0xee499a	0xee4999	-	written_content_type=25; table branch=0	BOOK_INSTRUCTION
+reference	PE:6a70a6d9:02711000	generator-entry	general_ref +0x88	0xc20b70	0xc28d68	0xc2870b	-	subject exists	virtual call; edx=written_content +0x68 type; r8=written_content +0x8 title
+reference	PE:6a70a6d9:02711000	generator-entry	no subject	0xc20b70	0xc28d68	0xc28713	-	subject absent	NAME=[NOUN]; NO_ART_NAME=[NOUN]; shared dispatcher
+reference	PE:6a70a6d9:02711000	placeholder	[NAME]	0xee35f0	0xee486c	0xee3640	-	replace all	provided complete subject
+reference	PE:6a70a6d9:02711000	placeholder	[NO_ART_NAME]	0xee35f0	0xee486c	0xee36ec	-	replace all	provided article-stripped subject clone
+reference	PE:6a70a6d9:02711000	placeholder	[ANY_PRONOUN]	0xee35f0	0xee486c	0xee3832	-	random 7	He | She | I | You | We | They | It
+reference	PE:6a70a6d9:02711000	placeholder	[ANY_AGE]	0xee35f0	0xee486c	0xee3aa7	-	random history age	native age formatter; fallback the Age
+reference	PE:6a70a6d9:02711000	placeholder	[ADJ]	0xee35f0	0xee486c	0xee3cdd	-	all language_words; max100 attempts	complete nonempty English adjective +0x60; no additional flags/lists; fallback large
+reference	PE:6a70a6d9:02711000	placeholder	[NOUN]	0xee35f0	0xee486c	0xee3e7c	-	all language_words; max100 attempts	complete noun singular +0x20 or plural +0x40; chooses nonempty forms; fallback rock
+reference	PE:6a70a6d9:02711000	placeholder	[PHRASE]	0xee35f0	0xee486c	0xee403c	-	6 x 14 x 7 x 5 factors	2940 complete preset sentences; only The Sands / The Wise are plural
+reference	PE:6a70a6d9:02711000	placeholder-selection	ADJ field	0xee35f0	0xee486c	0xee3dde	-	raw word +0x60; length +0x70	complete adjective sense
+reference	PE:6a70a6d9:02711000	placeholder-selection	ADJ fallback	0xee35f0	0xee486c	0xee3d40	-	100 failed candidates	large
+reference	PE:6a70a6d9:02711000	placeholder-selection	NOUN field	0xee35f0	0xee486c	0xee3f65	-	raw word +0x20/+0x40; length +0x30/+0x50	complete singular/plural noun sense
+reference	PE:6a70a6d9:02711000	placeholder-selection	NOUN fallback	0xee35f0	0xee486c	0xee3ee6	-	100 failed candidates	rock
+reference	PE:6a70a6d9:02711000	placeholder-selection	PHRASE prefix	0xee35f0	0xee486c	0xee4159	-	optional +5 choices	none | Only | Suddenly | Surely | Then | Slowly
+reference	PE:6a70a6d9:02711000	placeholder-selection	PHRASE subject	0xee35f0	0xee486c	0xee4818	-	14 branch jump table	Time | It | The Day | The Night | The Wind | The Sea | The Sands | The Wise | The Dirt | The Fool | Nothing | Nobody | The Future | The Past
+reference	PE:6a70a6d9:02711000	placeholder-selection	PHRASE agreement	0xee35f0	0xee486c	0xee42e8	-	The Sands; plural flag true	no predicate -s
+reference	PE:6a70a6d9:02711000	placeholder-selection	PHRASE agreement	0xee35f0	0xee486c	0xee4302	-	The Wise; plural flag true	no predicate -s
+reference	PE:6a70a6d9:02711000	placeholder-selection	PHRASE predicate	0xee35f0	0xee486c	0xee4850	-	7 branch jump table	Will Tell | Foretell(s) | Can Say | Know(s) | Mourn(s) | Weep(s) | Laugh(s)
+reference	PE:6a70a6d9:02711000	placeholder-selection	PHRASE suffix	0xee35f0	0xee486c	0xee4660	-	optional +4 choices	none | In The End | Afterward | In The Beginning | There
+reference	PE:6a70a6d9:02711000	generator-call	final title capitalization	0xee35f0	0xee486c	0xee4788	0x52d650		title case changes connectors to The / Of / And
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_poetic_formst	0xee49a0	0xee4c85	0xee4a7c	-	generated form language_name	complete native name; else finite poetry aliases
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_musical_formst	0xee4c90	0xee4ff1	0xee4dea	-	generated form language_name	complete native name; else finite musical aliases
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_dance_formst	0xee5000	0xee5361	0xee515a	-	generated form language_name	complete native name; else finite dance aliases
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_written_contentst	0xee5370	0xee55fd	0xee5573	-	existing title	nested written title then BOOK wrapper
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_languagest	0xee5600	0xee5913	0xee5689	-	RAW translation ID	copy token; lowercase; cap initial char; prefix the; suffix Language
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_languagest	0xee5600	0xee5913	0xee56c2	-	suffix	 Language
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_languagest	0xee5600	0xee5913	0xee5706	-	inline fallback	Language
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_interactionst	0xeec1f0	0xeec6aa	0xeec276	-	SECRET source +0x148 book_title_idx	text-set entry is complete title template
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_interactionst	0xeec1f0	0xeec6aa	0xeec390	-	SECRET source +0x14c book_name_idx	independent text-set entry supplies NAME and stripped NO_ART_NAME
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_interactionst	0xeec1f0	0xeec6aa	0xeec570	-	direct ee35f0 call	raw template pair bypasses written_content_type template switch
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_artifactst	0xeec930	0xeed3a5	0xeed051	-	historical figure/identity material owner	{actual complete personal name}'s {complete material name}
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_artifactst	0xeec930	0xeed3a5	0xeed0e9	-	material prefix +0x520; solid name +0xb8	optional complete material prefix + space + complete state name
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_artifactst	0xeec930	0xeed3a5	0xeed110	-	material fallback	unknown material
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_artifactst	0xeec930	0xeed3a5	0xeed134	-	native item formatter branch	the {complete formatted item type/subtype/material name}
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_historical_eventst	0xeeddc0	0xef068b	0xeede4b	-	inline default	the Time
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_historical_eventst	0xeeddc0	0xef068b	0xef038c	-	finite alias path	topic alias selected by event enum; no detailed event sentence
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_historical_figurest	0xef0a90	0xef149d	0xef0be5	-	historical_figure +0x38 language_name	actual complete personal name
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_historical_figurest	0xef0a90	0xef149d	0xef0e12	-	position +0x98/+0xd8/+0x118 by sex	the {complete singular position name}; gender title falls back to generic
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_historical_figurest	0xef0a90	0xef149d	0xef12ab	-	race+caste name formatter	the {complete caste descriptor}
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_spherest	0xef14d0	0xef1763	0xef166e	-	sphere label formatter	complete sphere label; identical NAME and NO_ART_NAME
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_entityst	0xef5420	0xef6704	0xef553f	-	entity language_name	complete generated group/civilization name
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_entityst	0xef5420	0xef6704	0xef578c	-	creature RAW +0x40	the {complete species plural descriptor}
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_entityst	0xef5420	0xef6704	0xef57c4	-	creature RAW +0x20	the {complete species singular descriptor}
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_creaturest	0xef4cd0	0xef4e01	0xef4d47	-	inline NO_ART_NAME	Creature
+reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_item_typest	0xef4ec0	0xef4ff1	0xef4f37	-	inline NO_ART_NAME	Treasure
+reference	PE:6a70a6d9:02711000	event-subject-delegation	artifact	0xeeddc0	0xef068b	0xef024d	0xeec930	participant candidate	direct matching subject producer
+reference	PE:6a70a6d9:02711000	event-subject-delegation	entity	0xeeddc0	0xef068b	0xef0276	0xef5420	participant candidate	direct matching subject producer
+reference	PE:6a70a6d9:02711000	event-subject-delegation	abstract building	0xeeddc0	0xef068b	0xef02aa	0xeed820	participant candidate	direct matching subject producer
+reference	PE:6a70a6d9:02711000	event-subject-delegation	site	0xeeddc0	0xef068b	0xef02d3	0xef19b0	participant candidate	direct matching subject producer
+reference	PE:6a70a6d9:02711000	event-subject-delegation	subregion	0xeeddc0	0xef068b	0xef02fc	0xef2ec0	participant candidate	direct matching subject producer
+reference	PE:6a70a6d9:02711000	event-subject-delegation	feature layer	0xeeddc0	0xef068b	0xef0325	0xef4510	participant candidate	direct matching subject producer
+reference	PE:6a70a6d9:02711000	event-subject-delegation	historical figure	0xeeddc0	0xef068b	0xef034b	0xef0a90	participant candidate	direct matching subject producer
+reference	PE:6a70a6d9:02711000	subject-delegation	historical figure deity sphere	0xef0a90	0xef149d	0xef0f7c	0xef14d0	random sphere branch	sphere subject producer
+reference	PE:6a70a6d9:02711000	subject-delegation	historical figure race sphere	0xef0a90	0xef149d	0xef1059	0xef14d0	random sphere branch	sphere subject producer
+reference	PE:6a70a6d9:02711000	subject-delegation	entity race sphere	0xef5420	0xef6704	0xef5700	0xef14d0	random sphere branch	sphere subject producer
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xc20b70	0xc28d68	0xc28750	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xee49a0	0xee4c85	0xee4bcf	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xee4c90	0xee4ff1	0xee4f35	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xee5000	0xee5361	0xee52a5	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xee5370	0xee55fd	0xee5573	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xee5600	0xee5913	0xee5848	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xee5920	0xee73e4	0xee72a1	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xee73f0	0xeec1e8	0xeebc99	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xeec930	0xeed3a5	0xeed2dc	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xeed820	0xeedd38	0xeedc42	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xeeddc0	0xef068b	0xef038c	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xef0a90	0xef149d	0xef13c7	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xef14d0	0xef1763	0xef166e	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xef19b0	0xef2d54	0xef1c78	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xef2ec0	0xef4348	0xef3a40	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xef4510	0xef499b	0xef48e5	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xef4ac0	0xef4c06	0xef4b6d	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xef4cd0	0xef4e01	0xef4d68	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xef4ec0	0xef4ff1	0xef4f58	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xef5000	0xef5138	0xef509f	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xef5140	0xef527f	0xef51e6	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+reference	PE:6a70a6d9:02711000	generator-call	shared title template	0xef5420	0xef6704	0xef5ab4	0xee4870	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-function	strip-title-article	0xed92c0	0xed95db	-	-	Windows x64 C++ ABI	remove the / The only when string starts with that article; then remove all exact occurrences of the same literal
+classic	PE:6a70b91c:0270a000	generator-function	replace-title-tokens	0xede560	0xedf7dc	-	-	Windows x64 C++ ABI	replace NAME, NO_ART_NAME, ANY_PRONOUN, ANY_AGE, ADJ, NOUN, PHRASE in order; final title capitalization
+classic	PE:6a70b91c:0270a000	generator-function	select-title-template	0xedf7e0	0xedf90a	-	-	Windows x64 C++ ABI	rcx output; edx written_content_type; r8 NAME; r9 NO_ART_NAME; choose BOOK_ART/BOOK_INSTRUCTION
+classic	PE:6a70b91c:0270a000	generator-function	load-title-text-set	0x1319430	0x1319f68	-	-	Windows x64 C++ ABI	index 0 BOOK_INSTRUCTION; index 1 BOOK_ART; select text-set entry
+classic	PE:6a70b91c:0270a000	generator-function	written-content-generator	0xc1dbb0	0xc25da8	-	-	Windows x64 C++ ABI	general_ref virtual +0x88 receives written_content_type and title destination
+classic	PE:6a70b91c:0270a000	generator-function	capitalize-title	0x52b070	0x52b324	-	-	Windows x64 C++ ABI	capitalize initial char and char after space/double quote; skip bracket tokens; preserve ordinary possessive apostrophe-s
+classic	PE:6a70b91c:0270a000	written-content-type	Manual	0xedf7e0	0xedf90a	0xedf8f0	-	written_content_type=0; table branch=0	BOOK_INSTRUCTION
+classic	PE:6a70b91c:0270a000	written-content-type	Guide	0xedf7e0	0xedf90a	0xedf8f1	-	written_content_type=1; table branch=0	BOOK_INSTRUCTION
+classic	PE:6a70b91c:0270a000	written-content-type	Chronicle	0xedf7e0	0xedf90a	0xedf8f2	-	written_content_type=2; table branch=0	BOOK_INSTRUCTION
+classic	PE:6a70b91c:0270a000	written-content-type	ShortStory	0xedf7e0	0xedf90a	0xedf8f3	-	written_content_type=3; table branch=1	BOOK_ART
+classic	PE:6a70b91c:0270a000	written-content-type	Novel	0xedf7e0	0xedf90a	0xedf8f4	-	written_content_type=4; table branch=1	BOOK_ART
+classic	PE:6a70b91c:0270a000	written-content-type	Biography	0xedf7e0	0xedf90a	0xedf8f5	-	written_content_type=5; table branch=1	BOOK_ART
+classic	PE:6a70b91c:0270a000	written-content-type	Autobiography	0xedf7e0	0xedf90a	0xedf8f6	-	written_content_type=6; table branch=1	BOOK_ART
+classic	PE:6a70b91c:0270a000	written-content-type	Poem	0xedf7e0	0xedf90a	0xedf8f7	-	written_content_type=7; table branch=1	BOOK_ART
+classic	PE:6a70b91c:0270a000	written-content-type	Play	0xedf7e0	0xedf90a	0xedf8f8	-	written_content_type=8; table branch=1	BOOK_ART
+classic	PE:6a70b91c:0270a000	written-content-type	Letter	0xedf7e0	0xedf90a	0xedf8f9	-	written_content_type=9; table branch=2	empty template
+classic	PE:6a70b91c:0270a000	written-content-type	Essay	0xedf7e0	0xedf90a	0xedf8fa	-	written_content_type=10; table branch=0	BOOK_INSTRUCTION
+classic	PE:6a70b91c:0270a000	written-content-type	Dialog	0xedf7e0	0xedf90a	0xedf8fb	-	written_content_type=11; table branch=1	BOOK_ART
+classic	PE:6a70b91c:0270a000	written-content-type	MusicalComposition	0xedf7e0	0xedf90a	0xedf8fc	-	written_content_type=12; table branch=1	BOOK_ART
+classic	PE:6a70b91c:0270a000	written-content-type	Choreography	0xedf7e0	0xedf90a	0xedf8fd	-	written_content_type=13; table branch=1	BOOK_ART
+classic	PE:6a70b91c:0270a000	written-content-type	ComparativeBiography	0xedf7e0	0xedf90a	0xedf8fe	-	written_content_type=14; table branch=1	BOOK_ART
+classic	PE:6a70b91c:0270a000	written-content-type	BiographicalDictionary	0xedf7e0	0xedf90a	0xedf8ff	-	written_content_type=15; table branch=0	BOOK_INSTRUCTION
+classic	PE:6a70b91c:0270a000	written-content-type	Genealogy	0xedf7e0	0xedf90a	0xedf900	-	written_content_type=16; table branch=0	BOOK_INSTRUCTION
+classic	PE:6a70b91c:0270a000	written-content-type	Encyclopedia	0xedf7e0	0xedf90a	0xedf901	-	written_content_type=17; table branch=0	BOOK_INSTRUCTION
+classic	PE:6a70b91c:0270a000	written-content-type	CulturalHistory	0xedf7e0	0xedf90a	0xedf902	-	written_content_type=18; table branch=0	BOOK_INSTRUCTION
+classic	PE:6a70b91c:0270a000	written-content-type	CulturalComparison	0xedf7e0	0xedf90a	0xedf903	-	written_content_type=19; table branch=0	BOOK_INSTRUCTION
+classic	PE:6a70b91c:0270a000	written-content-type	AlternateHistory	0xedf7e0	0xedf90a	0xedf904	-	written_content_type=20; table branch=1	BOOK_ART
+classic	PE:6a70b91c:0270a000	written-content-type	TreatiseOnTechnologicalEvolution	0xedf7e0	0xedf90a	0xedf905	-	written_content_type=21; table branch=0	BOOK_INSTRUCTION
+classic	PE:6a70b91c:0270a000	written-content-type	Dictionary	0xedf7e0	0xedf90a	0xedf906	-	written_content_type=22; table branch=0	BOOK_INSTRUCTION
+classic	PE:6a70b91c:0270a000	written-content-type	StarChart	0xedf7e0	0xedf90a	0xedf907	-	written_content_type=23; table branch=0	BOOK_INSTRUCTION
+classic	PE:6a70b91c:0270a000	written-content-type	StarCatalogue	0xedf7e0	0xedf90a	0xedf908	-	written_content_type=24; table branch=0	BOOK_INSTRUCTION
+classic	PE:6a70b91c:0270a000	written-content-type	Atlas	0xedf7e0	0xedf90a	0xedf909	-	written_content_type=25; table branch=0	BOOK_INSTRUCTION
+classic	PE:6a70b91c:0270a000	generator-entry	general_ref +0x88	0xc1dbb0	0xc25da8	0xc2574b	-	subject exists	virtual call; edx=written_content +0x68 type; r8=written_content +0x8 title
+classic	PE:6a70b91c:0270a000	generator-entry	no subject	0xc1dbb0	0xc25da8	0xc25753	-	subject absent	NAME=[NOUN]; NO_ART_NAME=[NOUN]; shared dispatcher
+classic	PE:6a70b91c:0270a000	placeholder	[NAME]	0xede560	0xedf7dc	0xede5b0	-	replace all	provided complete subject
+classic	PE:6a70b91c:0270a000	placeholder	[NO_ART_NAME]	0xede560	0xedf7dc	0xede65c	-	replace all	provided article-stripped subject clone
+classic	PE:6a70b91c:0270a000	placeholder	[ANY_PRONOUN]	0xede560	0xedf7dc	0xede7a2	-	random 7	He | She | I | You | We | They | It
+classic	PE:6a70b91c:0270a000	placeholder	[ANY_AGE]	0xede560	0xedf7dc	0xedea17	-	random history age	native age formatter; fallback the Age
+classic	PE:6a70b91c:0270a000	placeholder	[ADJ]	0xede560	0xedf7dc	0xedec4d	-	all language_words; max100 attempts	complete nonempty English adjective +0x60; no additional flags/lists; fallback large
+classic	PE:6a70b91c:0270a000	placeholder	[NOUN]	0xede560	0xedf7dc	0xededec	-	all language_words; max100 attempts	complete noun singular +0x20 or plural +0x40; chooses nonempty forms; fallback rock
+classic	PE:6a70b91c:0270a000	placeholder	[PHRASE]	0xede560	0xedf7dc	0xedefac	-	6 x 14 x 7 x 5 factors	2940 complete preset sentences; only The Sands / The Wise are plural
+classic	PE:6a70b91c:0270a000	placeholder-selection	ADJ field	0xede560	0xedf7dc	0xeded4e	-	raw word +0x60; length +0x70	complete adjective sense
+classic	PE:6a70b91c:0270a000	placeholder-selection	ADJ fallback	0xede560	0xedf7dc	0xedecb0	-	100 failed candidates	large
+classic	PE:6a70b91c:0270a000	placeholder-selection	NOUN field	0xede560	0xedf7dc	0xedeed5	-	raw word +0x20/+0x40; length +0x30/+0x50	complete singular/plural noun sense
+classic	PE:6a70b91c:0270a000	placeholder-selection	NOUN fallback	0xede560	0xedf7dc	0xedee56	-	100 failed candidates	rock
+classic	PE:6a70b91c:0270a000	placeholder-selection	PHRASE prefix	0xede560	0xedf7dc	0xedf0c9	-	optional +5 choices	none | Only | Suddenly | Surely | Then | Slowly
+classic	PE:6a70b91c:0270a000	placeholder-selection	PHRASE subject	0xede560	0xedf7dc	0xedf788	-	14 branch jump table	Time | It | The Day | The Night | The Wind | The Sea | The Sands | The Wise | The Dirt | The Fool | Nothing | Nobody | The Future | The Past
+classic	PE:6a70b91c:0270a000	placeholder-selection	PHRASE agreement	0xede560	0xedf7dc	0xedf258	-	The Sands; plural flag true	no predicate -s
+classic	PE:6a70b91c:0270a000	placeholder-selection	PHRASE agreement	0xede560	0xedf7dc	0xedf272	-	The Wise; plural flag true	no predicate -s
+classic	PE:6a70b91c:0270a000	placeholder-selection	PHRASE predicate	0xede560	0xedf7dc	0xedf7c0	-	7 branch jump table	Will Tell | Foretell(s) | Can Say | Know(s) | Mourn(s) | Weep(s) | Laugh(s)
+classic	PE:6a70b91c:0270a000	placeholder-selection	PHRASE suffix	0xede560	0xedf7dc	0xedf5d0	-	optional +4 choices	none | In The End | Afterward | In The Beginning | There
+classic	PE:6a70b91c:0270a000	generator-call	final title capitalization	0xede560	0xedf7dc	0xedf6f8	0x52b070		title case changes connectors to The / Of / And
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_poetic_formst	0xedf910	0xedfbf5	0xedf9ec	-	generated form language_name	complete native name; else finite poetry aliases
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_musical_formst	0xedfc00	0xedff61	0xedfd5a	-	generated form language_name	complete native name; else finite musical aliases
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_dance_formst	0xedff70	0xee02d1	0xee00ca	-	generated form language_name	complete native name; else finite dance aliases
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_written_contentst	0xee02e0	0xee056d	0xee04e3	-	existing title	nested written title then BOOK wrapper
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_languagest	0xee0570	0xee0883	0xee05f9	-	RAW translation ID	copy token; lowercase; cap initial char; prefix the; suffix Language
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_languagest	0xee0570	0xee0883	0xee0632	-	suffix	 Language
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_languagest	0xee0570	0xee0883	0xee0676	-	inline fallback	Language
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_interactionst	0xee7160	0xee761a	0xee71e6	-	SECRET source +0x148 book_title_idx	text-set entry is complete title template
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_interactionst	0xee7160	0xee761a	0xee7300	-	SECRET source +0x14c book_name_idx	independent text-set entry supplies NAME and stripped NO_ART_NAME
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_interactionst	0xee7160	0xee761a	0xee74e0	-	direct ee35f0 call	raw template pair bypasses written_content_type template switch
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_artifactst	0xee78a0	0xee8315	0xee7fc1	-	historical figure/identity material owner	{actual complete personal name}'s {complete material name}
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_artifactst	0xee78a0	0xee8315	0xee8059	-	material prefix +0x520; solid name +0xb8	optional complete material prefix + space + complete state name
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_artifactst	0xee78a0	0xee8315	0xee8080	-	material fallback	unknown material
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_artifactst	0xee78a0	0xee8315	0xee80a4	-	native item formatter branch	the {complete formatted item type/subtype/material name}
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_historical_eventst	0xee8d30	0xeeb5fb	0xee8dbb	-	inline default	the Time
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_historical_eventst	0xee8d30	0xeeb5fb	0xeeb2fc	-	finite alias path	topic alias selected by event enum; no detailed event sentence
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_historical_figurest	0xeeba00	0xeec40d	0xeebb55	-	historical_figure +0x38 language_name	actual complete personal name
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_historical_figurest	0xeeba00	0xeec40d	0xeebd82	-	position +0x98/+0xd8/+0x118 by sex	the {complete singular position name}; gender title falls back to generic
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_historical_figurest	0xeeba00	0xeec40d	0xeec21b	-	race+caste name formatter	the {complete caste descriptor}
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_spherest	0xeec440	0xeec6d3	0xeec5de	-	sphere label formatter	complete sphere label; identical NAME and NO_ART_NAME
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_entityst	0xef0390	0xef1674	0xef04af	-	entity language_name	complete generated group/civilization name
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_entityst	0xef0390	0xef1674	0xef06fc	-	creature RAW +0x40	the {complete species plural descriptor}
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_entityst	0xef0390	0xef1674	0xef0734	-	creature RAW +0x20	the {complete species singular descriptor}
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_creaturest	0xeefc40	0xeefd71	0xeefcb7	-	inline NO_ART_NAME	Creature
+classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_item_typest	0xeefe30	0xeeff61	0xeefea7	-	inline NO_ART_NAME	Treasure
+classic	PE:6a70b91c:0270a000	event-subject-delegation	artifact	0xee8d30	0xeeb5fb	0xeeb1bd	0xee78a0	participant candidate	direct matching subject producer
+classic	PE:6a70b91c:0270a000	event-subject-delegation	entity	0xee8d30	0xeeb5fb	0xeeb1e6	0xef0390	participant candidate	direct matching subject producer
+classic	PE:6a70b91c:0270a000	event-subject-delegation	abstract building	0xee8d30	0xeeb5fb	0xeeb21a	0xee8790	participant candidate	direct matching subject producer
+classic	PE:6a70b91c:0270a000	event-subject-delegation	site	0xee8d30	0xeeb5fb	0xeeb243	0xeec920	participant candidate	direct matching subject producer
+classic	PE:6a70b91c:0270a000	event-subject-delegation	subregion	0xee8d30	0xeeb5fb	0xeeb26c	0xeede30	participant candidate	direct matching subject producer
+classic	PE:6a70b91c:0270a000	event-subject-delegation	feature layer	0xee8d30	0xeeb5fb	0xeeb295	0xeef480	participant candidate	direct matching subject producer
+classic	PE:6a70b91c:0270a000	event-subject-delegation	historical figure	0xee8d30	0xeeb5fb	0xeeb2bb	0xeeba00	participant candidate	direct matching subject producer
+classic	PE:6a70b91c:0270a000	subject-delegation	historical figure deity sphere	0xeeba00	0xeec40d	0xeebeec	0xeec440	random sphere branch	sphere subject producer
+classic	PE:6a70b91c:0270a000	subject-delegation	historical figure race sphere	0xeeba00	0xeec40d	0xeebfc9	0xeec440	random sphere branch	sphere subject producer
+classic	PE:6a70b91c:0270a000	subject-delegation	entity race sphere	0xef0390	0xef1674	0xef0670	0xeec440	random sphere branch	sphere subject producer
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xc1dbb0	0xc25da8	0xc25790	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xedf910	0xedfbf5	0xedfb3f	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xedfc00	0xedff61	0xedfea5	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xedff70	0xee02d1	0xee0215	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xee02e0	0xee056d	0xee04e3	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xee0570	0xee0883	0xee07b8	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xee0890	0xee2354	0xee2211	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xee2360	0xee7158	0xee6c09	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xee78a0	0xee8315	0xee824c	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xee8790	0xee8ca8	0xee8bb2	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xee8d30	0xeeb5fb	0xeeb2fc	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xeeba00	0xeec40d	0xeec337	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xeec440	0xeec6d3	0xeec5de	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xeec920	0xeedcc4	0xeecbe8	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xeede30	0xeef2b8	0xeee9b0	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xeef480	0xeef90b	0xeef855	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xeefa30	0xeefb76	0xeefadd	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xeefc40	0xeefd71	0xeefcd8	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xeefe30	0xeeff61	0xeefec8	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xeeff70	0xef00a8	0xef000f	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xef00b0	0xef01ef	0xef0156	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+classic	PE:6a70b91c:0270a000	generator-call	shared title template	0xef0390	0xef1674	0xef0a24	0xedf7e0	direct CALL	complete NAME plus NO_ART_NAME pair
+raw	RAW	interaction-display-name	interaction examples/interaction_secret.txt	-	-	-	-	line 7; ability display only	the secrets of life and death
+raw	RAW	interaction-template-binding	interaction examples/interaction_secret.txt	-	-	-	-	line 13	BOOK_INSTRUCTION:SECRET_DEATH
+raw	RAW	language-token	vanilla_languages/objects/language_DWARF.txt	-	-	-	-	line 5	DWARF
+raw	RAW	language-token	vanilla_languages/objects/language_ELF.txt	-	-	-	-	line 5	ELF
+raw	RAW	language-token	vanilla_languages/objects/language_GOBLIN.txt	-	-	-	-	line 5	GOBLIN
+raw	RAW	language-token	vanilla_languages/objects/language_HUMAN.txt	-	-	-	-	line 5	HUMAN
+raw	RAW	language-token	vanilla_procedural/scripts/generators/entities.lua	-	-	-	-	line 1367	GEN_DIVINE
+raw	RAW	language-token	vanilla_procedural/scripts/generators/entities.lua	-	-	-	-	line 1385	GEN_DIVINE
+raw	RAW	interaction-display-name	vanilla_procedural/scripts/generators/interactions/secret.lua	-	-	-	-	line 127; ability display only	the secrets of life and death
+raw	RAW	interaction-template-binding	vanilla_procedural/scripts/generators/interactions/secret.lua	-	-	-	-	line 134	BOOK_INSTRUCTION:SECRET_DEATH
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 7; SECRET_DEATH	Annihilation
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 8; SECRET_DEATH	Bereavement
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 9; SECRET_DEATH	Death
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 10; SECRET_DEATH	Demise
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 11; SECRET_DEATH	Departure
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 12; SECRET_DEATH	Doom
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 13; SECRET_DEATH	Dying
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 14; SECRET_DEATH	Eternal Rest
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 15; SECRET_DEATH	Expiration
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 16; SECRET_DEATH	Extinction
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 17; SECRET_DEATH	Mortality
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 18; SECRET_DEATH	Immortality
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 19; SECRET_DEATH	Loss
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 20; SECRET_DEATH	Oblivion
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 21; SECRET_DEATH	Parting
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 22; SECRET_DEATH	Ruin
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 23; SECRET_DEATH	Ruination
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 24; SECRET_DEATH	Sleep
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 25; SECRET_DEATH	the Afterlife
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 26; SECRET_DEATH	the End
+raw	RAW	interaction-book-subject	vanilla_text/objects/text_secret_death.txt	-	-	-	-	line 27; SECRET_DEATH	the Grave
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 426; ENTITY=MOUNTAIN; POSITION=MONARCH; NAME; singular	monarch
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 427; ENTITY=MOUNTAIN; POSITION=MONARCH; NAME_MALE; singular	king
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 428; ENTITY=MOUNTAIN; POSITION=MONARCH; NAME_FEMALE; singular	queen
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 464; ENTITY=MOUNTAIN; POSITION=GENERAL; NAME; singular	general
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 492; ENTITY=MOUNTAIN; POSITION=LIEUTENANT; NAME; singular	lieutenant
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 516; ENTITY=MOUNTAIN; POSITION=CAPTAIN; NAME; singular	captain
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 532; ENTITY=MOUNTAIN; POSITION=MILITIA_COMMANDER; NAME; singular	militia commander
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 544; ENTITY=MOUNTAIN; POSITION=MILITIA_CAPTAIN; NAME; singular	militia captain
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 554; ENTITY=MOUNTAIN; POSITION=SHERIFF; NAME; singular	sheriff
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 574; ENTITY=MOUNTAIN; POSITION=CAPTAIN_OF_THE_GUARD; NAME; singular	captain of the guard
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 596; ENTITY=MOUNTAIN; POSITION=EXPEDITION_LEADER; NAME; singular	expedition leader
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 609; ENTITY=MOUNTAIN; POSITION=MAYOR; NAME; singular	mayor
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 637; ENTITY=MOUNTAIN; POSITION=MANAGER; NAME; singular	manager
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 651; ENTITY=MOUNTAIN; POSITION=CHIEF_MEDICAL_DWARF; NAME; singular	chief medical dwarf
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 664; ENTITY=MOUNTAIN; POSITION=BROKER; NAME; singular	broker
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 677; ENTITY=MOUNTAIN; POSITION=BOOKKEEPER; NAME; singular	bookkeeper
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 691; ENTITY=MOUNTAIN; POSITION=OUTPOST_LIAISON; NAME; singular	outpost liaison
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 712; ENTITY=MOUNTAIN; POSITION=DIPLOMAT; NAME; singular	diplomat
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 735; ENTITY=MOUNTAIN; POSITION=DUKE; NAME_MALE; singular	duke
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 736; ENTITY=MOUNTAIN; POSITION=DUKE; NAME_FEMALE; singular	duchess
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 771; ENTITY=MOUNTAIN; POSITION=COUNT; NAME_MALE; singular	count
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 772; ENTITY=MOUNTAIN; POSITION=COUNT; NAME_FEMALE; singular	countess
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 808; ENTITY=MOUNTAIN; POSITION=BARON; NAME_MALE; singular	baron
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 809; ENTITY=MOUNTAIN; POSITION=BARON; NAME_FEMALE; singular	baroness
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 845; ENTITY=MOUNTAIN; POSITION=CHAMPION; NAME; singular	champion
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 862; ENTITY=MOUNTAIN; POSITION=HAMMERER; NAME; singular	hammerer
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 875; ENTITY=MOUNTAIN; POSITION=DUNGEON_MASTER; NAME; singular	dungeon master
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 896; ENTITY=MOUNTAIN; POSITION=FORCED_ADMINISTRATOR; NAME; singular	administrator
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 920; ENTITY=MOUNTAIN; POSITION=MESSENGER; NAME; singular	messenger
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 1166; ENTITY=FOREST; POSITION=DRUID; NAME; singular	druid
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 1184; ENTITY=FOREST; POSITION=ACOLYTE; NAME; singular	acolyte
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 1197; ENTITY=FOREST; POSITION=GENERAL; NAME; singular	princess
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 1217; ENTITY=FOREST; POSITION=LEADER; NAME; singular	queen
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 1238; ENTITY=FOREST; POSITION=DIPLOMAT; NAME; singular	diplomat
+raw	RAW	raw-position-subject	vanilla_entities/objects/entity_default.txt	-	-	-	-	line 1253; ENTITY=FOREST; POSITION=RANGER_CAPTAIN; NAME; singular	ranger captain
+raw	RAW	translation-dependency	data/runtime/legends-events.tsv	-	-	-	-	Native history office: {complete title}	historical-figure position branch uses singular/gender title semantic scope
+raw	RAW	translation-dependency	data/runtime/rulesets/zh-Hans/positions/index.toml	-	-	-	-	::positions::singular	full RAW office labels use singular position namespace
+raw	RAW	translation-dependency	data/runtime/book-title-translations.tsv	-	-	-	-	Book title subject: {complete subject}	all finite native value/knowledge/type aliases and RAW secret/language names
+raw	RAW	translation-dependency	data/runtime/book-title-phrases.tsv	-	-	-	-	Book title phrase: {complete sentence}	finite PHRASE factors; title-specific meaning
+raw	RAW	translation-dependency	data/runtime/procedural-word-senses.tsv	-	-	-	-	language_words full noun/adjective form	English RAW word meaning; complete nonempty source field

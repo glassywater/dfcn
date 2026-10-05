@@ -1,0 +1,571 @@
+edition	image_identity	image_path	producer	function_rva	end_rva	binding
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	complete-item-description-0xc75000	0xc75000	0xc796aa	anchored by actual picker/footer call
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	shared-item-noun-0xa82c10	0xa82c10	0xa882fc	anchored by actual picker/footer call
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	artifact-quality-count-identity-0xc65450	0xc65450	0xc65f0a	corresponding call in 0xc75000
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	artwork-paragraph-0x1451b10	0x1451b10	0x145312c	corresponding call in 0x2126d0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	coin-description-0x5beeb0	0x5beeb0	0x5bf94f	corresponding call in 0xc75000
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	writing-on-item-0xcc6a10	0xcc6a10	0xcc7020	corresponding call in 0xc75000
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	writing-in-pages-0xcc7020	0xcc7020	0xcc75f8	corresponding call in 0xc75000
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	writing-content-and-style-0xcc5d50	0xcc5d50	0xcc6a0e	corresponding call in 0xcc6a10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	writing-style-enum-0xcc5520	0xcc5520	0xcc5d50	corresponding call in 0xcc5d50
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	upward-die-face-0x85da20	0x85da20	0x85e1a8	corresponding call in 0xc75000
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	stored-instrument-description-writer-0xebe8a0	0xebe8a0	0xecc30c	unique native literal anchors in creation-time writer
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	instrument-range-description-0xeb6fe0	0xeb6fe0	0xeb757b	unique native literal anchors in creation-time writer
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xee0380	0xee0380	0xee082c	RTTI general_ref_value_levelst slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xee0ca0	0xee0ca0	0xee3560	RTTI general_ref_knowledge_scholar_flagst slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xef8fb0	0xef8fb0	0xefbaf0	RTTI general_ref_knowledge_scholar_flagst slot +98
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xca5bb0	0xca5bb0	0xca5d62	RTTI itemst slot +5e8
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xc653e0	0xc653e0	0xc65445	RTTI itemst slot +5f0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xca53f0	0xca53f0	0xca5ba8	RTTI item_bagst slot +5e8
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xcaeb90	0xcaeb90	0xcaeccd	RTTI item_bagst slot +6b0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xcae8d0	0xcae8d0	0xcae994	RTTI item_skin_tannedst slot +6b0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xca39f0	0xca39f0	0xca4411	RTTI item_toolst slot +5e8
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xca3500	0xca3500	0xca39e8	RTTI item_binst slot +5e8
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xca1aa0	0xca1aa0	0xca26ad	RTTI item_corpsest slot +5e8
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xca0d60	0xca0d60	0xca0e44	RTTI item_corpsest slot +5f0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xca2a80	0xca2a80	0xca2b85	RTTI item_verminst slot +5e8
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xca0d00	0xca0d00	0xca0d55	RTTI item_coinst slot +5e8
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xca2b90	0xca2b90	0xca34f7	RTTI item_barrelst slot +5e8
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xca0b40	0xca0b40	0xca0bc2	RTTI item_statuest slot +5e8
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xcae9a0	0xcae9a0	0xcaea64	RTTI item_threadst slot +6b0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xee3560	0xee3560	0xee35e6	RTTI general_ref_interactionst slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xef5280	0xef5280	0xef5420	RTTI general_ref_entityst slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xeed3b0	0xeed3b0	0xeed81c	RTTI general_ref_abstract_buildingst slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xef1770	0xef1770	0xef19a6	RTTI general_ref_sitest slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xedfd50	0xedfd50	0xedfe44	RTTI general_ref_poetic_formst slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xef2d60	0xef2d60	0xef2eb8	RTTI general_ref_subregionst slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xef0690	0xef0690	0xef0a8e	RTTI general_ref_historical_figurest slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xef4350	0xef4350	0xef4503	RTTI general_ref_feature_layerst slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xee0170	0xee0170	0xee02aa	RTTI general_ref_written_contentst slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xedfe50	0xedfe50	0xedffd1	RTTI general_ref_musical_formst slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xee02b0	0xee02b0	0xee0372	RTTI general_ref_languagest slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xeec6b0	0xeec6b0	0xeec92d	RTTI general_ref_artifactst slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xedffe0	0xedffe0	0xee0161	RTTI general_ref_dance_formst slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xeedd40	0xeedd40	0xeeddb1	RTTI general_ref_historical_eventst slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xef4e10	0xef4e10	0xef4eb3	RTTI general_ref_item_typest slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xca0bd0	0xca0bd0	0xca0cfa	RTTI item_bookst slot +5e8
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xca4420	0xca4420	0xca52e4	RTTI item_cagest slot +5e8
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xca0040	0xca0040	0xca086f	RTTI item_rockst slot +5e8
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xca27c0	0xca27c0	0xca2a7f	RTTI item_foodst slot +5e8
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xca0870	0xca0870	0xca0b3e	RTTI item_slabst slot +5e8
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xca0e50	0xca0e50	0xca10d8	RTTI item_totemst slot +5e8
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xef49a0	0xef49a0	0xef4ac0	RTTI general_ref_entity_popst slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xef4c10	0xef4c10	0xef4cc6	RTTI general_ref_creaturest slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xef14a0	0xef14a0	0xef14d0	RTTI general_ref_spherest slot +90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x52c130	0x52c130	0x52c1e3	corresponding call in 0xc75000
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xa94030	0xa94030	0xa946d1	corresponding call in 0xc75000
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1bb2e0	0x1bb2e0	0x1bb330	corresponding call in 0xc75000
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1bb330	0x1bb330	0x1bb3fc	corresponding call in 0xc75000
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xaa3bd0	0xaa3bd0	0xaa3d93	corresponding call in 0xc75000
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14e1ec0	0x14e1ec0	0x14e2a28	corresponding call in 0xc75000
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14d1920	0x14d1920	0x14d1d79	corresponding call in 0xc75000
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xcacd70	0xcacd70	0xcad269	corresponding call in 0xc75000
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xcad270	0xcad270	0xcadcac	corresponding call in 0xc75000
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xcadcb0	0xcadcb0	0xcae6ec	corresponding call in 0xc75000
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x52e360	0x52e360	0x52eb6c	corresponding call in 0xc75000
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x52c2b0	0x52c2b0	0x52c388	corresponding call in 0xc75000
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14add70	0x14add70	0x14ade9f	corresponding call in 0xc75000
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1360ec0	0x1360ec0	0x1361049	corresponding call in 0xa82c10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14d1790	0x14d1790	0x14d1911	corresponding call in 0xa82c10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14d16f0	0x14d16f0	0x14d1781	corresponding call in 0xa82c10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x145bf40	0x145bf40	0x145bf64	corresponding call in 0xa82c10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x144ea0	0x144ea0	0x144f7b	corresponding call in 0xa82c10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xa64cb0	0xa64cb0	0xa64d80	corresponding call in 0xa82c10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xa64d00	0xa64d00	0xa64d80	corresponding call in 0xa82c10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x144d90	0x144d90	0x144e4a	corresponding call in 0xa82c10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x256880	0x256880	0x256927	corresponding call in 0xa82c10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x701db0	0x701db0	0x701e6a	corresponding call in 0xa82c10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x5be970	0x5be970	0x5beea6	corresponding call in 0xca0d00
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xa946e0	0xa946e0	0xa94ea2	corresponding call in 0x2126d0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x132cc10	0x132cc10	0x132e0b4	corresponding call in 0x2126d0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x52eb70	0x52eb70	0x52f090	corresponding call in 0xcc5d50
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x52d080	0x52d080	0x52d3c0	corresponding call in 0xee02b0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xb94ed0	0xb94ed0	0xb9501c	corresponding call in 0xef0690
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x930be0	0x930be0	0x93185c	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xeb9410	0xeb9410	0xeb98fc	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xeb91f0	0xeb91f0	0xeb940b	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xeb8ff0	0xeb8ff0	0xeb91e9	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x298fd0	0x298fd0	0x298ff0	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xeb7ff0	0xeb7ff0	0xeb8760	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xeb8760	0xeb8760	0xeb8ae3	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xeb8e60	0xeb8e60	0xeb8ff0	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xeb8af0	0xeb8af0	0xeb8e5e	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xccb890	0xccb890	0xccb90c	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x52d650	0x52d650	0x52d904	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xcd6b10	0xcd6b10	0xcd89b3	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xccbe00	0xccbe00	0xccbe20	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xccbe10	0xccbe10	0xccbe20	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xcccaa0	0xcccaa0	0xccd936	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14d6e0	0x14d6e0	0x14d720	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xed0860	0xed0860	0xed1bca	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xde5f30	0xde5f30	0xde5f80	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xde5f50	0xde5f50	0xde5f80	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xed1bd0	0xed1bd0	0xed533c	corresponding call in 0xebe8a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xeb6e20	0xeb6e20	0xeb6fe0	corresponding call in 0xeb6fe0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xc738a0	0xc738a0	0xc73a78	corresponding call in 0xca53f0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xc91a90	0xc91a90	0xc91b5b	corresponding call in 0xca39f0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x2566a0	0x2566a0	0x25671f	corresponding call in 0xca39f0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xcabf80	0xcabf80	0xcac022	corresponding call in 0xca39f0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x132e430	0x132e430	0x132f971	corresponding call in 0xca1aa0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x132e0c0	0x132e0c0	0x132e428	corresponding call in 0xca1aa0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x70be40	0x70be40	0x70c0d4	corresponding call in 0xca1aa0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x10cbe50	0x10cbe50	0x10cc190	corresponding call in 0x2126d0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x52d3c0	0x52d3c0	0x52d648	corresponding call in 0xee02b0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1385b10	0x1385b10	0x1386326	corresponding call in 0xca4420
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x756690	0x756690	0x757380	corresponding call in 0xef14a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x244550	0x244550	0x2445f7	corresponding call in 0x52c2b0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x244820	0x244820	0x2448c8	corresponding call in 0x52c2b0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1f9bd0	0x1f9bd0	0x1f9c5c	corresponding call in 0x52c2b0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x244460	0x244460	0x24454b	corresponding call in 0x52c2b0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x701e70	0x701e70	0x70207e	corresponding call in 0x14add70
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x724a30	0x724a30	0x724b09	corresponding call in 0x14d1790
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xd2cb50	0xd2cb50	0xd2cc40	corresponding call in 0xa946e0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x30cea0	0x30cea0	0x30cf63	corresponding call in 0x132cc10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x30cf70	0x30cf70	0x30d0e4	corresponding call in 0x132cc10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xaa3770	0xaa3770	0xaa3868	corresponding call in 0xb94ed0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xecfda0	0xecfda0	0xecff0f	corresponding call in 0xeb7ff0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xeb79d0	0xeb79d0	0xeb7fee	corresponding call in 0xeb7ff0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xeb7580	0xeb7580	0xeb79d0	corresponding call in 0xeb7ff0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x77d570	0x77d570	0x77dbc0	corresponding call in 0xeb8760
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x77cf20	0x77cf20	0x77dbc0	corresponding call in 0xeb8af0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x15379b0	0x15379b0	0x15379d7	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x143120	0x143120	0x14328f	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14a810	0x14a810	0x14a8f9	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14ab80	0x14ab80	0x14abe2	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xa511d0	0xa511d0	0xa513dd	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x749d10	0x749d10	0x749ed8	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x725980	0x725980	0x725c64	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x4f8dd0	0x4f8dd0	0x4f8fc3	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xccebf0	0xccebf0	0xccee8d	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xcce870	0xcce870	0xcce92d	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xcd0420	0xcd0420	0xcd080b	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x6bded0	0x6bded0	0x6bdf3d	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xccb970	0xccb970	0xccb991	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x52cb10	0x52cb10	0x52cbd7	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xccb860	0xccb860	0xccb881	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xccb9a0	0xccb9a0	0xccb9c1	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xccb9d0	0xccb9d0	0xccb9f1	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xccba00	0xccba00	0xccbb4c	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xccbb50	0xccbb50	0xccbb71	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xccbb80	0xccbb80	0xccbba1	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xccbbb0	0xccbbb0	0xccbcdb	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xccbce0	0xccbce0	0xccbd01	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xccbd10	0xccbd10	0xccbd31	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xccbd40	0xccbd40	0xccbdf5	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x52c470	0x52c470	0x52c7cc	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14d5f0	0x14d5f0	0x14d6dd	corresponding call in 0xcd6b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xceab50	0xceab50	0xceb076	corresponding call in 0xcccaa0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x2841f0	0x2841f0	0x2842fa	corresponding call in 0xcccaa0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14aac0	0x14aac0	0x14ab76	corresponding call in 0xcccaa0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1410c80	0x1410c80	0x141149b	corresponding call in 0xcccaa0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14a450	0x14a450	0x14a4b9	corresponding call in 0xcccaa0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xed7230	0xed7230	0xed748f	corresponding call in 0xed0860
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xed7060	0xed7060	0xed7225	corresponding call in 0xed0860
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x52c0f0	0x52c0f0	0x52c130	corresponding call in 0xed1bd0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x778770	0x778770	0x778b90	corresponding call in 0xed1bd0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xed06f0	0xed06f0	0xed0750	corresponding call in 0xed1bd0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x8ece40	0x8ece40	0x8ecedb	corresponding call in 0xed1bd0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xed06b0	0xed06b0	0xed0750	corresponding call in 0xed1bd0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x744e80	0x744e80	0x746eaf	corresponding call in 0xed1bd0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xecff60	0xecff60	0xed00e0	corresponding call in 0xed1bd0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x746eb0	0x746eb0	0x7471bd	corresponding call in 0xed1bd0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xed0240	0xed0240	0xed03aa	corresponding call in 0xed1bd0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x73d970	0x73d970	0x73e039	corresponding call in 0xed1bd0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x73d4e0	0x73d4e0	0x73d96a	corresponding call in 0xed1bd0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xed0470	0xed0470	0xed05da	corresponding call in 0xed1bd0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x52bab0	0x52bab0	0x52bd24	corresponding call in 0xed1bd0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xd66790	0xd66790	0xd669ec	corresponding call in 0xc738a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xc91b60	0xc91b60	0xc921f3	corresponding call in 0xc91a90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xb530b0	0xb530b0	0xb5315c	corresponding call in 0x132e430
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x13cc4d0	0x13cc4d0	0x13cc609	corresponding call in 0x132e430
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xbeb620	0xbeb620	0xbeb77f	corresponding call in 0x132e430
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x9bdfb0	0x9bdfb0	0x9be0f8	corresponding call in 0x132e430
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xb973c0	0xb973c0	0xb97439	corresponding call in 0x132e430
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xb98d90	0xb98d90	0xb98e09	corresponding call in 0x132e430
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1376500	0x1376500	0x13765f0	corresponding call in 0x132e430
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x717d30	0x717d30	0x71a2b4	corresponding call in 0x132e430
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1383f50	0x1383f50	0x1384dd2	corresponding call in 0x1385b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x13243b0	0x13243b0	0x1324490	corresponding call in 0x1385b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1383b40	0x1383b40	0x1383bc0	corresponding call in 0x1385b10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x725c70	0x725c70	0x725f29	corresponding call in 0x701e70
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x15379d8	0x15379d8	0x1537a1d	corresponding call in 0x143120
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14b2b0	0x14b2b0	0x14b41c	corresponding call in 0x143120
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x143070	0x143070	0x1430a9	corresponding call in 0x143120
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x142db0	0x142db0	0x142de9	corresponding call in 0x143120
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xa4ee90	0xa4ee90	0xa4efc6	corresponding call in 0xa511d0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xa4ed60	0xa4ed60	0xa4ee86	corresponding call in 0xa511d0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x8e8db0	0x8e8db0	0x8e9075	corresponding call in 0xa511d0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1ba550	0x1ba550	0x1ba671	corresponding call in 0xa511d0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x4f0930	0x4f0930	0x4f0a2c	corresponding call in 0xa511d0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xa513e0	0xa513e0	0xa516e6	corresponding call in 0xa511d0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xa52210	0xa52210	0xa52339	corresponding call in 0x749d10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x3cb060	0x3cb060	0x3cb2db	corresponding call in 0x725980
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x2875a0	0x2875a0	0x287653	corresponding call in 0x4f8dd0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xcd1ca0	0xcd1ca0	0xcd1f72	corresponding call in 0xccb970
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xccf910	0xccf910	0xccfaa4	corresponding call in 0xccb860
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xcd3a70	0xcd3a70	0xcd3c4f	corresponding call in 0xccb9a0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xcd41c0	0xcd41c0	0xcd4398	corresponding call in 0xccb9d0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xcd4bc0	0xcd4bc0	0xcd4d60	corresponding call in 0xccbb50
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xcd51c0	0xcd51c0	0xcd5361	corresponding call in 0xccbb80
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xcd5c00	0xcd5c00	0xcd5d99	corresponding call in 0xccbce0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xcd61d0	0xcd61d0	0xcd63b0	corresponding call in 0xccbd10
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x2847e0	0x2847e0	0x28491d	corresponding call in 0x2841f0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14a9d0	0x14a9d0	0x14aab8	corresponding call in 0x14aac0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x140ec90	0x140ec90	0x140ed9f	corresponding call in 0x1410c80
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1410630	0x1410630	0x141086c	corresponding call in 0x1410c80
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14101a0	0x14101a0	0x141037c	corresponding call in 0x1410c80
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1419ec0	0x1419ec0	0x141a189	corresponding call in 0x1410c80
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x141a190	0x141a190	0x141a2be	corresponding call in 0x1410c80
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x3c8f80	0x3c8f80	0x3c91e7	corresponding call in 0x1410c80
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x3c6a90	0x3c6a90	0x3c6b83	corresponding call in 0x1410c80
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x243820	0x243820	0x24387c	corresponding call in 0x744e80
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x6b8af0	0x6b8af0	0x6b8b86	corresponding call in 0xc91b60
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xbeb780	0xbeb780	0xbeb894	corresponding call in 0xbeb620
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x13b3030	0x13b3030	0x13b3086	corresponding call in 0x717d30
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x13cac50	0x13cac50	0x13cacb0	corresponding call in 0x717d30
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x5c0950	0x5c0950	0x5c0a70	corresponding call in 0x717d30
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x70f070	0x70f070	0x7122b8	corresponding call in 0x717d30
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x716b70	0x716b70	0x717d30	corresponding call in 0x717d30
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14af80	0x14af80	0x14b078	corresponding call in 0x717d30
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x13345d0	0x13345d0	0x1334819	corresponding call in 0x717d30
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x5c0b20	0x5c0b20	0x5c0bbf	corresponding call in 0x717d30
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x13ec760	0x13ec760	0x13ecb2a	corresponding call in 0x1383f50
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x529d90	0x529d90	0x529f41	corresponding call in 0x725c70
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x143050	0x143050	0x143070	corresponding call in 0x143070
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x142cf0	0x142cf0	0x142da3	corresponding call in 0x143070
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x142c80	0x142c80	0x142ca0	corresponding call in 0x142db0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x255820	0x255820	0x25598d	corresponding call in 0xa4ee90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xa4cb70	0xa4cb70	0xa4d319	corresponding call in 0xa4ee90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x143290	0x143290	0x1433a0	corresponding call in 0x8e8db0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14a790	0x14a790	0x14a808	corresponding call in 0x8e8db0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1537eb4	0x1537eb4	0x1537f2c	corresponding call in 0x8e8db0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1537a20	0x1537a20	0x1537b41	corresponding call in 0x1ba550
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x4f0c80	0x4f0c80	0x4f0dd2	corresponding call in 0x4f0930
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xa51ae0	0xa51ae0	0xa51c10	corresponding call in 0xa513e0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xa51de0	0xa51de0	0xa521a3	corresponding call in 0xa513e0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xa52540	0xa52540	0xa5267d	corresponding call in 0xa52210
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14b080	0x14b080	0x14b12b	corresponding call in 0x2847e0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1410380	0x1410380	0x1410630	corresponding call in 0x1410630
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x140ff20	0x140ff20	0x141010f	corresponding call in 0x1419ec0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x255e70	0x255e70	0x255ff8	corresponding call in 0x141a190
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x246f30	0x246f30	0x2470b6	corresponding call in 0x3c8f80
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x3d34d0	0x3d34d0	0x3d3789	corresponding call in 0x3c6a90
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1ba140	0x1ba140	0x1ba1e8	corresponding call in 0xbeb780
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1f9b00	0x1f9b00	0x1f9b30	corresponding call in 0x70f070
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x283e40	0x283e40	0x283eb2	corresponding call in 0x70f070
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1fa250	0x1fa250	0x1fa342	corresponding call in 0x70f070
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x7122c0	0x7122c0	0x712370	corresponding call in 0x70f070
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x725940	0x725940	0x72597f	corresponding call in 0x70f070
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1ba240	0x1ba240	0x1ba2fa	corresponding call in 0x70f070
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x6ba400	0x6ba400	0x6ba5c6	corresponding call in 0x70f070
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x5c0bc0	0x5c0bc0	0x5c0c99	corresponding call in 0x70f070
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x285280	0x285280	0x285428	corresponding call in 0x255820
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1433a0	0x1433a0	0x1435cf	corresponding call in 0x255820
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1fa000	0x1fa000	0x1fa0e9	corresponding call in 0xa4cb70
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xa52470	0xa52470	0xa5253c	corresponding call in 0xa4cb70
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xa527d0	0xa527d0	0xa52931	corresponding call in 0xa4cb70
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xa52680	0xa52680	0xa527cd	corresponding call in 0xa4cb70
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14a640	0x14a640	0x14a789	corresponding call in 0xa4cb70
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14b130	0x14b130	0x14b2a3	corresponding call in 0x14a790
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x15380c4	0x15380c4	0x15383ea	corresponding call in 0x1537eb4
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x14a4c0	0x14a4c0	0x14a63c	corresponding call in 0xa51de0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xa4cad0	0xa4cad0	0xa4caf0	corresponding call in 0xa51de0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1430b0	0x1430b0	0x143112	corresponding call in 0x14b080
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x15387a4	0x15387a4	0x15387dc	corresponding call in 0x14b080
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x142af0	0x142af0	0x142b10	corresponding call in 0x14b080
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x2470c0	0x2470c0	0x24711a	corresponding call in 0x140ff20
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1412c70	0x1412c70	0x1412e5c	corresponding call in 0x255e70
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x1ba300	0x1ba300	0x1ba384	corresponding call in 0x1fa250
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x15383f8	0x15383f8	0x153844f	corresponding call in 0x15380c4
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0xa4ca80	0xa4ca80	0xa4cacc	corresponding call in 0xa4cad0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x142ac0	0x142ac0	0x142af0	corresponding call in 0x142af0
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x3ca370	0x3ca370	0x3ca3e1	corresponding call in 0x1412c70
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer-callee-0x46ab90	0x46ab90	0x46ac3d	corresponding call in 0x1412c70
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	footer-builder-0x2126d0	0x2126d0	0x21341c	anchored by actual picker/footer call
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	complete-item-description-0xc75000	0xc72040	0xc766ea	anchored by actual picker/footer call
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	shared-item-noun-0xa82c10	0xa7fc90	0xa8537c	anchored by actual picker/footer call
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	artifact-quality-count-identity-0xc65450	0xc62490	0xc62f4a	corresponding call in 0xc75000
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	artwork-paragraph-0x1451b10	0x144ca80	0x144e09c	corresponding call in 0x2126d0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	coin-description-0x5beeb0	0x5bc8d0	0x5bd36f	corresponding call in 0xc75000
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	writing-on-item-0xcc6a10	0xcc3a50	0xcc4060	corresponding call in 0xc75000
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	writing-in-pages-0xcc7020	0xcc4060	0xcc4638	corresponding call in 0xc75000
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	writing-content-and-style-0xcc5d50	0xcc2d90	0xcc3a4e	corresponding call in 0xcc6a10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	writing-style-enum-0xcc5520	0xcc2560	0xcc2d90	corresponding call in 0xcc5d50
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	upward-die-face-0x85da20	0x85b2a0	0x85ba28	corresponding call in 0xc75000
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	stored-instrument-description-writer-0xebe8a0	0xeb9810	0xec727c	unique native literal anchors in creation-time writer
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	instrument-range-description-0xeb6fe0	0xeb1f50	0xeb24eb	unique native literal anchors in creation-time writer
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xee0380	0xedb2f0	0xedb79c	RTTI general_ref_value_levelst slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xee0ca0	0xedbc10	0xede4d0	RTTI general_ref_knowledge_scholar_flagst slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xef8fb0	0xef3f20	0xef6a60	RTTI general_ref_knowledge_scholar_flagst slot +98
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xca5bb0	0xca2bf0	0xca2da2	RTTI itemst slot +5e8
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xc653e0	0xc62420	0xc62485	RTTI itemst slot +5f0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xca53f0	0xca2430	0xca2be8	RTTI item_bagst slot +5e8
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xcaeb90	0xcabbd0	0xcabd0d	RTTI item_bagst slot +6b0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xcae8d0	0xcab910	0xcab9d4	RTTI item_skin_tannedst slot +6b0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xca39f0	0xca0a30	0xca1451	RTTI item_toolst slot +5e8
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xca3500	0xca0540	0xca0a28	RTTI item_binst slot +5e8
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xca1aa0	0xc9eae0	0xc9f6ed	RTTI item_corpsest slot +5e8
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xca0d60	0xc9dda0	0xc9de84	RTTI item_corpsest slot +5f0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xca2a80	0xc9fac0	0xc9fbc5	RTTI item_verminst slot +5e8
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xca0d00	0xc9dd40	0xc9dd95	RTTI item_coinst slot +5e8
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xca2b90	0xc9fbd0	0xca0537	RTTI item_barrelst slot +5e8
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xca0b40	0xc9db80	0xc9dc02	RTTI item_statuest slot +5e8
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xcae9a0	0xcab9e0	0xcabaa4	RTTI item_threadst slot +6b0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xee3560	0xede4d0	0xede556	RTTI general_ref_interactionst slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xef5280	0xef01f0	0xef0390	RTTI general_ref_entityst slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xeed3b0	0xee8320	0xee878c	RTTI general_ref_abstract_buildingst slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xef1770	0xeec6e0	0xeec916	RTTI general_ref_sitest slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xedfd50	0xedacc0	0xedadb4	RTTI general_ref_poetic_formst slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xef2d60	0xeedcd0	0xeede28	RTTI general_ref_subregionst slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xef0690	0xeeb600	0xeeb9fe	RTTI general_ref_historical_figurest slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xef4350	0xeef2c0	0xeef473	RTTI general_ref_feature_layerst slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xee0170	0xedb0e0	0xedb21a	RTTI general_ref_written_contentst slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xedfe50	0xedadc0	0xedaf41	RTTI general_ref_musical_formst slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xee02b0	0xedb220	0xedb2e2	RTTI general_ref_languagest slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xeec6b0	0xee7620	0xee789d	RTTI general_ref_artifactst slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xedffe0	0xedaf50	0xedb0d1	RTTI general_ref_dance_formst slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xeedd40	0xee8cb0	0xee8d21	RTTI general_ref_historical_eventst slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xef4e10	0xeefd80	0xeefe23	RTTI general_ref_item_typest slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xca0bd0	0xc9dc10	0xc9dd3a	RTTI item_bookst slot +5e8
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xca4420	0xca1460	0xca2324	RTTI item_cagest slot +5e8
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xca0040	0xc9d080	0xc9d8af	RTTI item_rockst slot +5e8
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xca27c0	0xc9f800	0xc9fabf	RTTI item_foodst slot +5e8
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xca0870	0xc9d8b0	0xc9db7e	RTTI item_slabst slot +5e8
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xca0e50	0xc9de90	0xc9e118	RTTI item_totemst slot +5e8
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xef49a0	0xeef910	0xeefa30	RTTI general_ref_entity_popst slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xef4c10	0xeefb80	0xeefc36	RTTI general_ref_creaturest slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xef14a0	0xeec410	0xeec440	RTTI general_ref_spherest slot +90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x52c130	0x529cf0	0x529da3	corresponding call in 0xc75000
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xa94030	0xa910b0	0xa91751	corresponding call in 0xc75000
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1bb2e0	0x1bb270	0x1bb2c0	corresponding call in 0xc75000
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1bb330	0x1bb2c0	0x1bb38c	corresponding call in 0xc75000
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xaa3bd0	0xaa0c50	0xaa0e13	corresponding call in 0xc75000
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14e1ec0	0x14dce30	0x14dd998	corresponding call in 0xc75000
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14d1920	0x14cc890	0x14ccce9	corresponding call in 0xc75000
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xcacd70	0xca9db0	0xcaa2a9	corresponding call in 0xc75000
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xcad270	0xcaa2b0	0xcaacec	corresponding call in 0xc75000
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xcadcb0	0xcaacf0	0xcab72c	corresponding call in 0xc75000
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x52e360	0x52bd80	0x52c58c	corresponding call in 0xc75000
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x52c2b0	0x529db0	0x529e88	corresponding call in 0xc75000
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14add70	0x14a8ce0	0x14a8e0f	corresponding call in 0xc75000
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1360ec0	0x135be30	0x135bfb9	corresponding call in 0xa82c10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14d1790	0x14cc700	0x14cc881	corresponding call in 0xa82c10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14d16f0	0x14cc660	0x14cc6f1	corresponding call in 0xa82c10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x145bf40	0x1456eb0	0x1456ed4	corresponding call in 0xa82c10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x144ea0	0x144e30	0x144f0b	corresponding call in 0xa82c10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xa64cb0	0xa61de0	0xa61eb0	corresponding call in 0xa82c10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xa64d00	0xa61e30	0xa61eb0	corresponding call in 0xa82c10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x144d90	0x144d20	0x144dda	corresponding call in 0xa82c10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x256880	0x256720	0x2567c7	corresponding call in 0xa82c10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x701db0	0x6ff7d0	0x6ff88a	corresponding call in 0xa82c10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x5be970	0x5bc390	0x5bc8c6	corresponding call in 0xca0d00
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xa946e0	0xa91760	0xa91f22	corresponding call in 0x2126d0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x132cc10	0x1327b80	0x1329024	corresponding call in 0x2126d0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x52eb70	0x52c590	0x52cab0	corresponding call in 0xcc5d50
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x52d080	0x52aaa0	0x52ade0	corresponding call in 0xee02b0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xb94ed0	0xb91f10	0xb9205c	corresponding call in 0xef0690
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x930be0	0x92e410	0x92f08c	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xeb9410	0xeb4380	0xeb486c	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xeb91f0	0xeb4160	0xeb437b	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xeb8ff0	0xeb3f60	0xeb4159	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x298fd0	0x296b90	0x296bb0	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xeb7ff0	0xeb2f60	0xeb36d0	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xeb8760	0xeb36d0	0xeb3a53	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xeb8e60	0xeb3dd0	0xeb3f60	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xeb8af0	0xeb3a60	0xeb3dce	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xccb890	0xcc88d0	0xcc894c	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x52d650	0x52b070	0x52b324	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xcd6b10	0xcd3b50	0xcd59f3	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xccbe00	0xcc8e40	0xcc8e60	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xccbe10	0xcc8e50	0xcc8e60	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xcccaa0	0xcc9ae0	0xcca976	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14d6e0	0x14d670	0x14d6b0	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xed0860	0xecb7d0	0xeccb3a	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xde5f30	0xde0ea0	0xde0ef0	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xde5f50	0xde0ec0	0xde0ef0	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xed1bd0	0xeccb40	0xed02ac	corresponding call in 0xebe8a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xeb6e20	0xeb1d90	0xeb1f50	corresponding call in 0xeb6fe0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xc738a0	0xc708e0	0xc70ab8	corresponding call in 0xca53f0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xc91a90	0xc8ead0	0xc8eb9b	corresponding call in 0xca39f0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x2566a0	0x256540	0x2565bf	corresponding call in 0xca39f0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xcabf80	0xca8fc0	0xca9062	corresponding call in 0xca39f0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x132e430	0x13293a0	0x132a8e1	corresponding call in 0xca1aa0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x132e0c0	0x1329030	0x1329398	corresponding call in 0xca1aa0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x70be40	0x709860	0x709af4	corresponding call in 0xca1aa0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x10cbe50	0x10c6dc0	0x10c7100	corresponding call in 0x2126d0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x52d3c0	0x52ade0	0x52b068	corresponding call in 0xee02b0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1385b10	0x1380a80	0x1381296	corresponding call in 0xca4420
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x756690	0x7540b0	0x754da0	corresponding call in 0xef14a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x244550	0x2444e0	0x244587	corresponding call in 0x52c2b0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x244820	0x2447b0	0x244858	corresponding call in 0x52c2b0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1f9bd0	0x1f9b60	0x1f9bec	corresponding call in 0x52c2b0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x244460	0x2443f0	0x2444db	corresponding call in 0x52c2b0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x701e70	0x6ff890	0x6ffa9e	corresponding call in 0x14add70
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x724a30	0x722450	0x722529	corresponding call in 0x14d1790
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xd2cb50	0xd29b90	0xd29c80	corresponding call in 0xa946e0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x30cea0	0x30aa60	0x30ab23	corresponding call in 0x132cc10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x30cf70	0x30ab30	0x30aca4	corresponding call in 0x132cc10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xaa3770	0xaa07f0	0xaa08e8	corresponding call in 0xb94ed0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xecfda0	0xecad10	0xecae7f	corresponding call in 0xeb7ff0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xeb79d0	0xeb2940	0xeb2f5e	corresponding call in 0xeb7ff0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xeb7580	0xeb24f0	0xeb2940	corresponding call in 0xeb7ff0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x77d570	0x77af90	0x77b5e0	corresponding call in 0xeb8760
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x77cf20	0x77a940	0x77b5e0	corresponding call in 0xeb8af0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x15379b0	0x1532920	0x1532947	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x143120	0x1430b0	0x14321f	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14a810	0x14a7a0	0x14a889	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14ab80	0x14ab10	0x14ab72	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xa511d0	0xa4e300	0xa4e50d	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x749d10	0x747730	0x7478f8	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x725980	0x7233a0	0x723684	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x4f8dd0	0x4f6990	0x4f6b83	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xccebf0	0xccbc30	0xccbecd	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xcce870	0xccb8b0	0xccb96d	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xcd0420	0xccd460	0xccd84b	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x6bded0	0x6bb8f0	0x6bb95d	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xccb970	0xcc89b0	0xcc89d1	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x52cb10	0x52a530	0x52a5f7	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xccb860	0xcc88a0	0xcc88c1	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xccb9a0	0xcc89e0	0xcc8a01	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xccb9d0	0xcc8a10	0xcc8a31	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xccba00	0xcc8a40	0xcc8b8c	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xccbb50	0xcc8b90	0xcc8bb1	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xccbb80	0xcc8bc0	0xcc8be1	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xccbbb0	0xcc8bf0	0xcc8d1b	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xccbce0	0xcc8d20	0xcc8d41	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xccbd10	0xcc8d50	0xcc8d71	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xccbd40	0xcc8d80	0xcc8e35	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x52c470	0x529e90	0x52a1ec	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14d5f0	0x14d580	0x14d66d	corresponding call in 0xcd6b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xceab50	0xce7b90	0xce80b6	corresponding call in 0xcccaa0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x2841f0	0x281db0	0x281eba	corresponding call in 0xcccaa0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14aac0	0x14aa50	0x14ab06	corresponding call in 0xcccaa0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1410c80	0x140bbf0	0x140c40b	corresponding call in 0xcccaa0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14a450	0x14a3e0	0x14a449	corresponding call in 0xcccaa0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xed7230	0xed21a0	0xed23ff	corresponding call in 0xed0860
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xed7060	0xed1fd0	0xed2195	corresponding call in 0xed0860
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x52c0f0	0x529cb0	0x529cf0	corresponding call in 0xed1bd0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x778770	0x776190	0x7765b0	corresponding call in 0xed1bd0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xed06f0	0xecb660	0xecb6c0	corresponding call in 0xed1bd0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x8ece40	0x8ea670	0x8ea70b	corresponding call in 0xed1bd0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xed06b0	0xecb620	0xecb6c0	corresponding call in 0xed1bd0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x744e80	0x7428a0	0x7448cf	corresponding call in 0xed1bd0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xecff60	0xecaed0	0xecb050	corresponding call in 0xed1bd0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x746eb0	0x7448d0	0x744bdd	corresponding call in 0xed1bd0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xed0240	0xecb1b0	0xecb31a	corresponding call in 0xed1bd0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x73d970	0x73b390	0x73ba59	corresponding call in 0xed1bd0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x73d4e0	0x73af00	0x73b38a	corresponding call in 0xed1bd0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xed0470	0xecb3e0	0xecb54a	corresponding call in 0xed1bd0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x52bab0	0x529670	0x5298e4	corresponding call in 0xed1bd0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xd66790	0xd637d0	0xd63a2c	corresponding call in 0xc738a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xc91b60	0xc8eba0	0xc8f233	corresponding call in 0xc91a90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xb530b0	0xb500f0	0xb5019c	corresponding call in 0x132e430
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x13cc4d0	0x13c7440	0x13c7579	corresponding call in 0x132e430
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xbeb620	0xbe8660	0xbe87bf	corresponding call in 0x132e430
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x9bdfb0	0x9bb7e0	0x9bb928	corresponding call in 0x132e430
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xb973c0	0xb94400	0xb94479	corresponding call in 0x132e430
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xb98d90	0xb95dd0	0xb95e49	corresponding call in 0x132e430
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1376500	0x1371470	0x1371560	corresponding call in 0x132e430
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x717d30	0x715750	0x717cd4	corresponding call in 0x132e430
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1383f50	0x137eec0	0x137fd42	corresponding call in 0x1385b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x13243b0	0x131f320	0x131f400	corresponding call in 0x1385b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1383b40	0x137eab0	0x137eb30	corresponding call in 0x1385b10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x725c70	0x723690	0x723949	corresponding call in 0x701e70
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x15379d8	0x1532948	0x153298d	corresponding call in 0x143120
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14b2b0	0x14b240	0x14b3ac	corresponding call in 0x143120
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x143070	0x143000	0x143039	corresponding call in 0x143120
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x142db0	0x142d40	0x142d79	corresponding call in 0x143120
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xa4ee90	0xa4c6c0	0xa4c7f6	corresponding call in 0xa511d0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xa4ed60	0xa4c590	0xa4c6b6	corresponding call in 0xa511d0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x8e8db0	0x8e65e0	0x8e68a5	corresponding call in 0xa511d0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1ba550	0x1ba4e0	0x1ba601	corresponding call in 0xa511d0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x4f0930	0x4ee4f0	0x4ee5ec	corresponding call in 0xa511d0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xa513e0	0xa4e510	0xa4e816	corresponding call in 0xa511d0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xa52210	0xa4f340	0xa4f469	corresponding call in 0x749d10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x3cb060	0x3c8c20	0x3c8e9b	corresponding call in 0x725980
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x2875a0	0x285160	0x285213	corresponding call in 0x4f8dd0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xcd1ca0	0xccece0	0xccefb2	corresponding call in 0xccb970
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xccf910	0xccc950	0xcccae4	corresponding call in 0xccb860
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xcd3a70	0xcd0ab0	0xcd0c8f	corresponding call in 0xccb9a0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xcd41c0	0xcd1200	0xcd13d8	corresponding call in 0xccb9d0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xcd4bc0	0xcd1c00	0xcd1da0	corresponding call in 0xccbb50
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xcd51c0	0xcd2200	0xcd23a1	corresponding call in 0xccbb80
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xcd5c00	0xcd2c40	0xcd2dd9	corresponding call in 0xccbce0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xcd61d0	0xcd3210	0xcd33f0	corresponding call in 0xccbd10
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x2847e0	0x2823a0	0x2824dd	corresponding call in 0x2841f0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14a9d0	0x14a960	0x14aa48	corresponding call in 0x14aac0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x140ec90	0x1409c00	0x1409d0f	corresponding call in 0x1410c80
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1410630	0x140b5a0	0x140b7dc	corresponding call in 0x1410c80
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14101a0	0x140b110	0x140b2ec	corresponding call in 0x1410c80
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1419ec0	0x1414e30	0x14150f9	corresponding call in 0x1410c80
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x141a190	0x1415100	0x141522e	corresponding call in 0x1410c80
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x3c8f80	0x3c6b40	0x3c6da7	corresponding call in 0x1410c80
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x3c6a90	0x3c4650	0x3c4743	corresponding call in 0x1410c80
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x243820	0x2437b0	0x24380c	corresponding call in 0x744e80
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x6b8af0	0x6b6510	0x6b65a6	corresponding call in 0xc91b60
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xbeb780	0xbe87c0	0xbe88d4	corresponding call in 0xbeb620
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x13b3030	0x13adfa0	0x13adff6	corresponding call in 0x717d30
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x13cac50	0x13c5bc0	0x13c5c20	corresponding call in 0x717d30
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x5c0950	0x5be370	0x5be490	corresponding call in 0x717d30
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x70f070	0x70ca90	0x70fcd8	corresponding call in 0x717d30
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x716b70	0x714590	0x715750	corresponding call in 0x717d30
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14af80	0x14af10	0x14b008	corresponding call in 0x717d30
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x13345d0	0x132f540	0x132f789	corresponding call in 0x717d30
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x5c0b20	0x5be540	0x5be5df	corresponding call in 0x717d30
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x13ec760	0x13e76d0	0x13e7a9a	corresponding call in 0x1383f50
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x529d90	0x527950	0x527b01	corresponding call in 0x725c70
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x143050	0x142fe0	0x143000	corresponding call in 0x143070
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x142cf0	0x142c80	0x142d33	corresponding call in 0x143070
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x142c80	0x142c10	0x142c30	corresponding call in 0x142db0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x255820	0x255710	0x25587d	corresponding call in 0xa4ee90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xa4cb70	0xa4a3a0	0xa4ab49	corresponding call in 0xa4ee90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x143290	0x143220	0x143330	corresponding call in 0x8e8db0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14a790	0x14a720	0x14a798	corresponding call in 0x8e8db0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1537eb4	0x1532e24	0x1532e9c	corresponding call in 0x8e8db0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1537a20	0x1532990	0x1532ab1	corresponding call in 0x1ba550
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x4f0c80	0x4ee840	0x4ee992	corresponding call in 0x4f0930
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xa51ae0	0xa4ec10	0xa4ed40	corresponding call in 0xa513e0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xa51de0	0xa4ef10	0xa4f2d3	corresponding call in 0xa513e0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xa52540	0xa4f670	0xa4f7ad	corresponding call in 0xa52210
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14b080	0x14b010	0x14b0bb	corresponding call in 0x2847e0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1410380	0x140b2f0	0x140b5a0	corresponding call in 0x1410630
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x140ff20	0x140ae90	0x140b07f	corresponding call in 0x1419ec0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x255e70	0x255d10	0x255e98	corresponding call in 0x141a190
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x246f30	0x246ec0	0x247046	corresponding call in 0x3c8f80
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x3d34d0	0x3d1090	0x3d1349	corresponding call in 0x3c6a90
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1ba140	0x1ba0d0	0x1ba178	corresponding call in 0xbeb780
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1f9b00	0x1f9a90	0x1f9ac0	corresponding call in 0x70f070
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x283e40	0x281a00	0x281a72	corresponding call in 0x70f070
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1fa250	0x1fa1e0	0x1fa2d2	corresponding call in 0x70f070
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x7122c0	0x70fce0	0x70fd90	corresponding call in 0x70f070
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x725940	0x723360	0x72339f	corresponding call in 0x70f070
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1ba240	0x1ba1d0	0x1ba28a	corresponding call in 0x70f070
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x6ba400	0x6b7e20	0x6b7fe6	corresponding call in 0x70f070
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x5c0bc0	0x5be5e0	0x5be6b9	corresponding call in 0x70f070
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x285280	0x282e40	0x282fe8	corresponding call in 0x255820
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1433a0	0x143330	0x14355f	corresponding call in 0x255820
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1fa000	0x1f9f90	0x1fa079	corresponding call in 0xa4cb70
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xa52470	0xa4f5a0	0xa4f66c	corresponding call in 0xa4cb70
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xa527d0	0xa4f900	0xa4fa61	corresponding call in 0xa4cb70
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xa52680	0xa4f7b0	0xa4f8fd	corresponding call in 0xa4cb70
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14a640	0x14a5d0	0x14a719	corresponding call in 0xa4cb70
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14b130	0x14b0c0	0x14b233	corresponding call in 0x14a790
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x15380c4	0x1533034	0x153335a	corresponding call in 0x1537eb4
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x14a4c0	0x14a450	0x14a5cc	corresponding call in 0xa51de0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xa4cad0	0xa4a300	0xa4a320	corresponding call in 0xa51de0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1430b0	0x143040	0x1430a2	corresponding call in 0x14b080
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x15387a4	0x1533714	0x153374c	corresponding call in 0x14b080
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x142af0	0x142a80	0x142aa0	corresponding call in 0x14b080
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x2470c0	0x247050	0x2470aa	corresponding call in 0x140ff20
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1412c70	0x140dbe0	0x140ddcc	corresponding call in 0x255e70
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x1ba300	0x1ba290	0x1ba314	corresponding call in 0x1fa250
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x15383f8	0x1533368	0x15333bf	corresponding call in 0x15380c4
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0xa4ca80	0xa4a2b0	0xa4a2fc	corresponding call in 0xa4cad0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x142ac0	0x142a50	0x142a80	corresponding call in 0x142af0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x3ca370	0x3c7f30	0x3c7fa1	corresponding call in 0x1412c70
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer-callee-0x46ab90	0x468750	0x4687fd	corresponding call in 0x1412c70
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	footer-builder-0x2126d0	0x212660	0x2133ac	anchored by actual picker/footer call
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	site-type	0x10cbe50	0x10cc190	direct footer-builder call
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	guild-profession	0x132cc10	0x132e0b4	direct footer-builder call
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	site-type	0x10c6dc0	0x10c7100	direct footer-builder call
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	guild-profession	0x1327b80	0x1329024	direct footer-builder call

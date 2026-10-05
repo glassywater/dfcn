@@ -1,0 +1,15 @@
+edition	image_identity	role	source_grammar	start_rva	end_rva
+steam	PE:6a70a6d9:02711000	named-site	The {site-description} of {native-site-name}{agreement}{where}.	0x7f5490	0x7f5837
+steam	PE:6a70a6d9:02711000	unnamed-site	The {site-description}{agreement}{where}.	0x7f5490	0x7f5837
+steam	PE:6a70a6d9:02711000	site-description	{optional-dark}{optional-creature-raw-NAME-2-adjective-and-space}{site-kind}	0x7f5490	0x10cbe50
+steam	PE:6a70a6d9:02711000	agreement	 are  [site-kind=3 && site+0x34c==0] |  is  [otherwise]	0x7f5490	0x7f5837
+steam	PE:6a70a6d9:02711000	where	here | {distance} to the {bearing}	0x7f5490	0x7f5837
+steam	PE:6a70a6d9:02711000	distance	far [>100] | a day's travel [64..100] | nearly a day's travel [36..63] | a half day's travel [9..35] | a short walk [0..8] | empty [<0]	0x1083120	0x7f5837
+steam	PE:6a70a6d9:02711000	compass-list	{native-site-glyph} {bearing-abbreviation-or-***} {optional-Gui-or-Qst}	0xafe6b0	0xafeb97
+classic	PE:6a70b91c:0270a000	named-site	The {site-description} of {native-site-name}{agreement}{where}.	0x7f2d10	0x7f30b7
+classic	PE:6a70b91c:0270a000	unnamed-site	The {site-description}{agreement}{where}.	0x7f2d10	0x7f30b7
+classic	PE:6a70b91c:0270a000	site-description	{optional-dark}{optional-creature-raw-NAME-2-adjective-and-space}{site-kind}	0x7f2d10	0x10c6dc0
+classic	PE:6a70b91c:0270a000	agreement	 are  [site-kind=3 && site+0x34c==0] |  is  [otherwise]	0x7f2d10	0x7f30b7
+classic	PE:6a70b91c:0270a000	where	here | {distance} to the {bearing}	0x7f2d10	0x7f30b7
+classic	PE:6a70b91c:0270a000	distance	far [>100] | a day's travel [64..100] | nearly a day's travel [36..63] | a half day's travel [9..35] | a short walk [0..8] | empty [<0]	0x107e090	0x7f30b7
+classic	PE:6a70b91c:0270a000	compass-list	{native-site-glyph} {bearing-abbreviation-or-***} {optional-Gui-or-Qst}	0xafb6f0	0xafbbd7

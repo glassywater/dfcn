@@ -71,7 +71,12 @@ def deploy_runtime_data(directory: Path) -> None:
                  "dfhack-help-command-overrides.tsv",
                  "dfhack-output-core.tsv", "dfhack-output-translations.tsv",
                  "dfhack-output-stonesense.tsv",
-                 "procedural-terms.tsv", "procedural-word-senses.tsv"):
+                 "procedural-terms.tsv", "procedural-word-senses.tsv",
+                 "character-name-lexicon.tsv", "character-name-overrides.tsv",
+                 "character-surname-lexicon.tsv",
+                 "pinyin-data/pinyin.txt", "pinyin-data/SOURCE",
+                 "phrase-pinyin-data/large_pinyin.txt",
+                 "phrase-pinyin-data/LICENSE", "phrase-pinyin-data/SOURCE"):
         install(runtime / name, (RUNTIME / name).read_bytes())
     for name in ("dfhack-help.LICENSE", "lua-output.LICENSE", "pinyin-data/LICENSE"):
         install(runtime / name, (ROOT / "third_party" / name).read_bytes())
@@ -240,6 +245,7 @@ def generate_data(env: dict[str, str]) -> None:
     wood_names = RUNTIME / "rulesets/zh-Hans/items/wood/raw_names.toml"
     outputs = [dictionary, ROOT / "src/preference_vocabulary.inc", anatomy, creature_names, wood_names]
     inputs = [SCRIPT, ROOT / "tools/build_translations.py", ROOT / "tools/legends_grammar.py",
+              ROOT / "tools/book_title_grammar.py",
               ROOT / "tools/announcement_grammar.py",
               ROOT / "tools/magical_materials.py", ROOT / "tools/extract_tooltip_catalog.py",
               ROOT / "tools/extract_workshop_tooltip_catalog.py"]

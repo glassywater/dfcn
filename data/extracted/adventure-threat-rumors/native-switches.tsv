@@ -1,0 +1,477 @@
+image	owner	selector	index	selector_value	target	selection
+reference	family-relation	relationship	0	0	0x14075a61a	mother
+reference	family-relation	plural-suffix	0	0	0x14075ab53	s
+reference	family-relation	relationship	1	1	0x14075a62c	father
+reference	family-relation	plural-suffix	1	1	0x14075ab53	s
+reference	family-relation	relationship	2	2	0x14075a63e	parent
+reference	family-relation	plural-suffix	2	2	0x14075ab53	s
+reference	family-relation	relationship	3	3	0x14075a650	husband
+reference	family-relation	plural-suffix	3	3	0x14075ab53	s
+reference	family-relation	relationship	4	4	0x14075a662	wife
+reference	family-relation	plural-suffix	4	4	0x14075ab68	(none)
+reference	family-relation	relationship	5	5	0x14075a680	spouse
+reference	family-relation	plural-suffix	5	5	0x14075ab53	s
+reference	family-relation	relationship	6	6	0x14075a692	eldest son
+reference	family-relation	plural-suffix	6	6	0x14075ab53	s
+reference	family-relation	relationship	7	7	0x14075a6a4	second eldest son
+reference	family-relation	plural-suffix	7	7	0x14075ab53	s
+reference	family-relation	relationship	8	8	0x14075a6b6	third eldest son
+reference	family-relation	plural-suffix	8	8	0x14075ab53	s
+reference	family-relation	relationship	9	9	0x14075a6c8	fourth eldest son
+reference	family-relation	plural-suffix	9	9	0x14075ab53	s
+reference	family-relation	relationship	10	10	0x14075a6da	fifth eldest son
+reference	family-relation	plural-suffix	10	10	0x14075ab53	s
+reference	family-relation	relationship	11	11	0x14075a6ec	sixth eldest son
+reference	family-relation	plural-suffix	11	11	0x14075ab53	s
+reference	family-relation	relationship	12	12	0x14075a6fe	seventh eldest son
+reference	family-relation	plural-suffix	12	12	0x14075ab53	s
+reference	family-relation	relationship	13	13	0x14075a710	eighth eldest son
+reference	family-relation	plural-suffix	13	13	0x14075ab53	s
+reference	family-relation	relationship	14	14	0x14075a722	ninth eldest son
+reference	family-relation	plural-suffix	14	14	0x14075ab53	s
+reference	family-relation	relationship	15	15	0x14075a734	tenth eldest son
+reference	family-relation	plural-suffix	15	15	0x14075ab53	s
+reference	family-relation	relationship	16	16	0x14075a746	son
+reference	family-relation	plural-suffix	16	16	0x14075ab53	s
+reference	family-relation	relationship	17	17	0x14075a758	youngest son
+reference	family-relation	plural-suffix	17	17	0x14075ab53	s
+reference	family-relation	relationship	18	18	0x14075a76a	only son
+reference	family-relation	plural-suffix	18	18	0x14075ab53	s
+reference	family-relation	relationship	19	19	0x14075a77c	eldest daughter
+reference	family-relation	plural-suffix	19	19	0x14075ab53	s
+reference	family-relation	relationship	20	20	0x14075a788	second eldest daughter
+reference	family-relation	plural-suffix	20	20	0x14075ab53	s
+reference	family-relation	relationship	21	21	0x14075a79a	third eldest daughter
+reference	family-relation	plural-suffix	21	21	0x14075ab53	s
+reference	family-relation	relationship	22	22	0x14075a7ac	fourth eldest daughter
+reference	family-relation	plural-suffix	22	22	0x14075ab53	s
+reference	family-relation	relationship	23	23	0x14075a7be	fifth eldest daughter
+reference	family-relation	plural-suffix	23	23	0x14075ab53	s
+reference	family-relation	relationship	24	24	0x14075a7d0	sixth eldest daughter
+reference	family-relation	plural-suffix	24	24	0x14075ab53	s
+reference	family-relation	relationship	25	25	0x14075a7e2	seventh eldest daughter
+reference	family-relation	plural-suffix	25	25	0x14075ab53	s
+reference	family-relation	relationship	26	26	0x14075a7f4	eighth eldest daughter
+reference	family-relation	plural-suffix	26	26	0x14075ab53	s
+reference	family-relation	relationship	27	27	0x14075a806	ninth eldest daughter
+reference	family-relation	plural-suffix	27	27	0x14075ab53	s
+reference	family-relation	relationship	28	28	0x14075a818	tenth eldest daughter
+reference	family-relation	plural-suffix	28	28	0x14075ab53	s
+reference	family-relation	relationship	29	29	0x14075a82a	daughter
+reference	family-relation	plural-suffix	29	29	0x14075ab53	s
+reference	family-relation	relationship	30	30	0x14075a83c	only daughter
+reference	family-relation	plural-suffix	30	30	0x14075ab53	s
+reference	family-relation	relationship	31	31	0x14075a84e	youngest daughter
+reference	family-relation	plural-suffix	31	31	0x14075ab53	s
+reference	family-relation	relationship	32	32	0x14075a860	eldest child
+reference	family-relation	plural-suffix	32	32	0x14075ab44	ren
+reference	family-relation	relationship	33	33	0x14075a872	second eldest child
+reference	family-relation	plural-suffix	33	33	0x14075ab44	ren
+reference	family-relation	relationship	34	34	0x14075a884	third eldest child
+reference	family-relation	plural-suffix	34	34	0x14075ab44	ren
+reference	family-relation	relationship	35	35	0x14075a896	fourth eldest child
+reference	family-relation	plural-suffix	35	35	0x14075ab44	ren
+reference	family-relation	relationship	36	36	0x14075a8a8	fifth eldest child
+reference	family-relation	plural-suffix	36	36	0x14075ab44	ren
+reference	family-relation	relationship	37	37	0x14075a8ba	sixth eldest child
+reference	family-relation	plural-suffix	37	37	0x14075ab44	ren
+reference	family-relation	relationship	38	38	0x14075a8cc	seventh eldest child
+reference	family-relation	plural-suffix	38	38	0x14075ab44	ren
+reference	family-relation	relationship	39	39	0x14075a8de	eighth eldest child
+reference	family-relation	plural-suffix	39	39	0x14075ab44	ren
+reference	family-relation	relationship	40	40	0x14075a8f0	ninth eldest child
+reference	family-relation	plural-suffix	40	40	0x14075ab44	ren
+reference	family-relation	relationship	41	41	0x14075a902	tenth eldest child
+reference	family-relation	plural-suffix	41	41	0x14075ab44	ren
+reference	family-relation	relationship	42	42	0x14075a914	child
+reference	family-relation	plural-suffix	42	42	0x14075ab44	ren
+reference	family-relation	relationship	43	43	0x14075a926	youngest child
+reference	family-relation	plural-suffix	43	43	0x14075ab44	ren
+reference	family-relation	relationship	44	44	0x14075a938	only child
+reference	family-relation	plural-suffix	44	44	0x14075ab44	ren
+reference	family-relation	relationship	45	45	0x14075a94a	paternal grandmother
+reference	family-relation	plural-suffix	45	45	0x14075ab53	s
+reference	family-relation	relationship	46	46	0x14075a95c	paternal grandfather
+reference	family-relation	plural-suffix	46	46	0x14075ab53	s
+reference	family-relation	relationship	47	47	0x14075a96e	maternal grandmother
+reference	family-relation	plural-suffix	47	47	0x14075ab53	s
+reference	family-relation	relationship	48	48	0x14075a980	maternal grandfather
+reference	family-relation	plural-suffix	48	48	0x14075ab53	s
+reference	family-relation	relationship	49	49	0x14075a992	grandmother
+reference	family-relation	plural-suffix	49	49	0x14075ab53	s
+reference	family-relation	relationship	50	50	0x14075a9a4	grandfather
+reference	family-relation	plural-suffix	50	50	0x14075ab53	s
+reference	family-relation	relationship	51	51	0x14075a9b6	grandparent
+reference	family-relation	plural-suffix	51	51	0x14075ab53	s
+reference	family-relation	relationship	52	52	0x14075a9c8	older brother
+reference	family-relation	plural-suffix	52	52	0x14075ab53	s
+reference	family-relation	relationship	53	53	0x14075a9da	older sister
+reference	family-relation	plural-suffix	53	53	0x14075ab53	s
+reference	family-relation	relationship	54	54	0x14075a9ec	older sibling
+reference	family-relation	plural-suffix	54	54	0x14075ab53	s
+reference	family-relation	relationship	55	55	0x14075a9fe	younger brother
+reference	family-relation	plural-suffix	55	55	0x14075ab53	s
+reference	family-relation	relationship	56	56	0x14075aa0a	younger sister
+reference	family-relation	plural-suffix	56	56	0x14075ab53	s
+reference	family-relation	relationship	57	57	0x14075aa1c	younger sibling
+reference	family-relation	plural-suffix	57	57	0x14075ab53	s
+reference	family-relation	relationship	58	58	0x14075aa28	cousin
+reference	family-relation	plural-suffix	58	58	0x14075ab53	s
+reference	family-relation	relationship	59	59	0x14075aa3a	aunt
+reference	family-relation	plural-suffix	59	59	0x14075ab53	s
+reference	family-relation	relationship	60	60	0x14075aa4c	uncle
+reference	family-relation	plural-suffix	60	60	0x14075ab53	s
+reference	family-relation	relationship	61	61	0x14075aa5e	niece
+reference	family-relation	plural-suffix	61	61	0x14075ab53	s
+reference	family-relation	relationship	62	62	0x14075aa70	nephew
+reference	family-relation	plural-suffix	62	62	0x14075ab53	s
+reference	family-relation	relationship	63	63	0x14075aa82	sibling
+reference	family-relation	plural-suffix	63	63	0x14075ab53	s
+reference	family-relation	relationship	64	64	0x14075aa94	grandchild
+reference	family-relation	plural-suffix	64	64	0x14075ab44	ren
+reference	family-relation	relationship	65	65	0x14075aaa3	older half-brother
+reference	family-relation	plural-suffix	65	65	0x14075ab53	s
+reference	family-relation	relationship	66	66	0x14075aab2	older half-sister
+reference	family-relation	plural-suffix	66	66	0x14075ab53	s
+reference	family-relation	relationship	67	67	0x14075aac1	older half-sibling
+reference	family-relation	plural-suffix	67	67	0x14075ab53	s
+reference	family-relation	relationship	68	68	0x14075aad0	younger half-brother
+reference	family-relation	plural-suffix	68	68	0x14075ab53	s
+reference	family-relation	relationship	69	69	0x14075aadf	younger half-sister
+reference	family-relation	plural-suffix	69	69	0x14075ab53	s
+reference	family-relation	relationship	70	70	0x14075aaee	younger half-sibling
+reference	family-relation	plural-suffix	70	70	0x14075ab53	s
+reference	family-relation	relationship	71	71	0x14075aafd	half-sibling
+reference	family-relation	plural-suffix	71	71	0x14075ab53	s
+reference	threat-description	destroyed-building-kind	0	0	0x14065cb2b	
+reference	threat-description	destroyed-building-kind	1	1	0x14065cb3f	
+reference	threat-description	destroyed-building-kind	2	2	0x14065cb53	
+reference	threat-description	destroyed-building-kind	3	3	0x14065cc0d	
+reference	threat-description	destroyed-building-kind	4	4	0x14065cb8f	
+reference	threat-description	destroyed-building-kind	5	5	0x14065cba3	
+reference	threat-description	destroyed-building-kind	6	6	0x14065cbc5	
+reference	threat-description	destroyed-building-kind	7	7	0x14065cbb4	
+reference	threat-description	destroyed-building-kind	8	8	0x14065cb7b	
+reference	threat-description	destroyed-building-kind	9	9	0x14065cb67	
+reference	threat-description	destroyed-building-kind	10	10	0x14065caef	
+reference	threat-description	destroyed-building-kind	11	11	0x14065cb17	
+reference	threat-description	destroyed-building-kind	12	12	0x14065cc0d	
+reference	threat-description	destroyed-building-kind	13	13	0x14065cb03	
+reference	threat-description	profaned-building-kind	0	0	0x14065cdb9	
+reference	threat-description	profaned-building-kind	1	1	0x14065cdcd	
+reference	threat-description	profaned-building-kind	2	2	0x14065cde1	
+reference	threat-description	profaned-building-kind	3	3	0x14065ce9b	
+reference	threat-description	profaned-building-kind	4	4	0x14065ce1d	
+reference	threat-description	profaned-building-kind	5	5	0x14065ce31	
+reference	threat-description	profaned-building-kind	6	6	0x14065ce53	
+reference	threat-description	profaned-building-kind	7	7	0x14065ce42	
+reference	threat-description	profaned-building-kind	8	8	0x14065ce09	
+reference	threat-description	profaned-building-kind	9	9	0x14065cdf5	
+reference	threat-description	profaned-building-kind	10	10	0x14065cd7d	
+reference	threat-description	profaned-building-kind	11	11	0x14065cda5	
+reference	threat-description	profaned-building-kind	12	12	0x14065ce9b	
+reference	threat-description	profaned-building-kind	13	13	0x14065cd91	
+reference	threat-speech	creature-trait-kind-minus-37	0	37	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	1	38	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	2	39	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	3	40	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	4	41	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	5	42	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	6	43	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	7	44	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	8	45	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	9	46	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	10	47	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	11	48	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	12	49	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	13	50	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	14	51	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	15	52	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	16	53	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	17	54	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	18	55	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	19	56	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	20	57	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	21	58	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	22	59	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	23	60	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	24	61	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	25	62	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	26	63	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	27	64	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	28	65	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	29	66	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	30	67	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	31	68	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	32	69	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	33	70	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	34	71	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	35	72	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	36	73	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	37	74	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	38	75	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	39	76	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	40	77	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	41	78	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	42	79	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	43	80	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	44	81	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	45	82	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	46	83	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	47	84	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	48	85	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	49	86	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	50	87	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	51	88	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	52	89	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	53	90	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	54	91	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	55	92	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	56	93	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	57	94	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	58	95	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	59	96	0x140687b3b	skip trait
+reference	threat-speech	creature-trait-kind-minus-37	60	97	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	61	98	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	62	99	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	63	100	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	64	101	0x140687b2f	max intensity
+reference	threat-speech	creature-trait-kind-minus-37	65	102	0x140687b2f	max intensity
+classic	family-relation	relationship	0	0	0x14075803a	mother
+classic	family-relation	plural-suffix	0	0	0x140758573	s
+classic	family-relation	relationship	1	1	0x14075804c	father
+classic	family-relation	plural-suffix	1	1	0x140758573	s
+classic	family-relation	relationship	2	2	0x14075805e	parent
+classic	family-relation	plural-suffix	2	2	0x140758573	s
+classic	family-relation	relationship	3	3	0x140758070	husband
+classic	family-relation	plural-suffix	3	3	0x140758573	s
+classic	family-relation	relationship	4	4	0x140758082	wife
+classic	family-relation	plural-suffix	4	4	0x140758588	(none)
+classic	family-relation	relationship	5	5	0x1407580a0	spouse
+classic	family-relation	plural-suffix	5	5	0x140758573	s
+classic	family-relation	relationship	6	6	0x1407580b2	eldest son
+classic	family-relation	plural-suffix	6	6	0x140758573	s
+classic	family-relation	relationship	7	7	0x1407580c4	second eldest son
+classic	family-relation	plural-suffix	7	7	0x140758573	s
+classic	family-relation	relationship	8	8	0x1407580d6	third eldest son
+classic	family-relation	plural-suffix	8	8	0x140758573	s
+classic	family-relation	relationship	9	9	0x1407580e8	fourth eldest son
+classic	family-relation	plural-suffix	9	9	0x140758573	s
+classic	family-relation	relationship	10	10	0x1407580fa	fifth eldest son
+classic	family-relation	plural-suffix	10	10	0x140758573	s
+classic	family-relation	relationship	11	11	0x14075810c	sixth eldest son
+classic	family-relation	plural-suffix	11	11	0x140758573	s
+classic	family-relation	relationship	12	12	0x14075811e	seventh eldest son
+classic	family-relation	plural-suffix	12	12	0x140758573	s
+classic	family-relation	relationship	13	13	0x140758130	eighth eldest son
+classic	family-relation	plural-suffix	13	13	0x140758573	s
+classic	family-relation	relationship	14	14	0x140758142	ninth eldest son
+classic	family-relation	plural-suffix	14	14	0x140758573	s
+classic	family-relation	relationship	15	15	0x140758154	tenth eldest son
+classic	family-relation	plural-suffix	15	15	0x140758573	s
+classic	family-relation	relationship	16	16	0x140758166	son
+classic	family-relation	plural-suffix	16	16	0x140758573	s
+classic	family-relation	relationship	17	17	0x140758178	youngest son
+classic	family-relation	plural-suffix	17	17	0x140758573	s
+classic	family-relation	relationship	18	18	0x14075818a	only son
+classic	family-relation	plural-suffix	18	18	0x140758573	s
+classic	family-relation	relationship	19	19	0x14075819c	eldest daughter
+classic	family-relation	plural-suffix	19	19	0x140758573	s
+classic	family-relation	relationship	20	20	0x1407581a8	second eldest daughter
+classic	family-relation	plural-suffix	20	20	0x140758573	s
+classic	family-relation	relationship	21	21	0x1407581ba	third eldest daughter
+classic	family-relation	plural-suffix	21	21	0x140758573	s
+classic	family-relation	relationship	22	22	0x1407581cc	fourth eldest daughter
+classic	family-relation	plural-suffix	22	22	0x140758573	s
+classic	family-relation	relationship	23	23	0x1407581de	fifth eldest daughter
+classic	family-relation	plural-suffix	23	23	0x140758573	s
+classic	family-relation	relationship	24	24	0x1407581f0	sixth eldest daughter
+classic	family-relation	plural-suffix	24	24	0x140758573	s
+classic	family-relation	relationship	25	25	0x140758202	seventh eldest daughter
+classic	family-relation	plural-suffix	25	25	0x140758573	s
+classic	family-relation	relationship	26	26	0x140758214	eighth eldest daughter
+classic	family-relation	plural-suffix	26	26	0x140758573	s
+classic	family-relation	relationship	27	27	0x140758226	ninth eldest daughter
+classic	family-relation	plural-suffix	27	27	0x140758573	s
+classic	family-relation	relationship	28	28	0x140758238	tenth eldest daughter
+classic	family-relation	plural-suffix	28	28	0x140758573	s
+classic	family-relation	relationship	29	29	0x14075824a	daughter
+classic	family-relation	plural-suffix	29	29	0x140758573	s
+classic	family-relation	relationship	30	30	0x14075825c	only daughter
+classic	family-relation	plural-suffix	30	30	0x140758573	s
+classic	family-relation	relationship	31	31	0x14075826e	youngest daughter
+classic	family-relation	plural-suffix	31	31	0x140758573	s
+classic	family-relation	relationship	32	32	0x140758280	eldest child
+classic	family-relation	plural-suffix	32	32	0x140758564	ren
+classic	family-relation	relationship	33	33	0x140758292	second eldest child
+classic	family-relation	plural-suffix	33	33	0x140758564	ren
+classic	family-relation	relationship	34	34	0x1407582a4	third eldest child
+classic	family-relation	plural-suffix	34	34	0x140758564	ren
+classic	family-relation	relationship	35	35	0x1407582b6	fourth eldest child
+classic	family-relation	plural-suffix	35	35	0x140758564	ren
+classic	family-relation	relationship	36	36	0x1407582c8	fifth eldest child
+classic	family-relation	plural-suffix	36	36	0x140758564	ren
+classic	family-relation	relationship	37	37	0x1407582da	sixth eldest child
+classic	family-relation	plural-suffix	37	37	0x140758564	ren
+classic	family-relation	relationship	38	38	0x1407582ec	seventh eldest child
+classic	family-relation	plural-suffix	38	38	0x140758564	ren
+classic	family-relation	relationship	39	39	0x1407582fe	eighth eldest child
+classic	family-relation	plural-suffix	39	39	0x140758564	ren
+classic	family-relation	relationship	40	40	0x140758310	ninth eldest child
+classic	family-relation	plural-suffix	40	40	0x140758564	ren
+classic	family-relation	relationship	41	41	0x140758322	tenth eldest child
+classic	family-relation	plural-suffix	41	41	0x140758564	ren
+classic	family-relation	relationship	42	42	0x140758334	child
+classic	family-relation	plural-suffix	42	42	0x140758564	ren
+classic	family-relation	relationship	43	43	0x140758346	youngest child
+classic	family-relation	plural-suffix	43	43	0x140758564	ren
+classic	family-relation	relationship	44	44	0x140758358	only child
+classic	family-relation	plural-suffix	44	44	0x140758564	ren
+classic	family-relation	relationship	45	45	0x14075836a	paternal grandmother
+classic	family-relation	plural-suffix	45	45	0x140758573	s
+classic	family-relation	relationship	46	46	0x14075837c	paternal grandfather
+classic	family-relation	plural-suffix	46	46	0x140758573	s
+classic	family-relation	relationship	47	47	0x14075838e	maternal grandmother
+classic	family-relation	plural-suffix	47	47	0x140758573	s
+classic	family-relation	relationship	48	48	0x1407583a0	maternal grandfather
+classic	family-relation	plural-suffix	48	48	0x140758573	s
+classic	family-relation	relationship	49	49	0x1407583b2	grandmother
+classic	family-relation	plural-suffix	49	49	0x140758573	s
+classic	family-relation	relationship	50	50	0x1407583c4	grandfather
+classic	family-relation	plural-suffix	50	50	0x140758573	s
+classic	family-relation	relationship	51	51	0x1407583d6	grandparent
+classic	family-relation	plural-suffix	51	51	0x140758573	s
+classic	family-relation	relationship	52	52	0x1407583e8	older brother
+classic	family-relation	plural-suffix	52	52	0x140758573	s
+classic	family-relation	relationship	53	53	0x1407583fa	older sister
+classic	family-relation	plural-suffix	53	53	0x140758573	s
+classic	family-relation	relationship	54	54	0x14075840c	older sibling
+classic	family-relation	plural-suffix	54	54	0x140758573	s
+classic	family-relation	relationship	55	55	0x14075841e	younger brother
+classic	family-relation	plural-suffix	55	55	0x140758573	s
+classic	family-relation	relationship	56	56	0x14075842a	younger sister
+classic	family-relation	plural-suffix	56	56	0x140758573	s
+classic	family-relation	relationship	57	57	0x14075843c	younger sibling
+classic	family-relation	plural-suffix	57	57	0x140758573	s
+classic	family-relation	relationship	58	58	0x140758448	cousin
+classic	family-relation	plural-suffix	58	58	0x140758573	s
+classic	family-relation	relationship	59	59	0x14075845a	aunt
+classic	family-relation	plural-suffix	59	59	0x140758573	s
+classic	family-relation	relationship	60	60	0x14075846c	uncle
+classic	family-relation	plural-suffix	60	60	0x140758573	s
+classic	family-relation	relationship	61	61	0x14075847e	niece
+classic	family-relation	plural-suffix	61	61	0x140758573	s
+classic	family-relation	relationship	62	62	0x140758490	nephew
+classic	family-relation	plural-suffix	62	62	0x140758573	s
+classic	family-relation	relationship	63	63	0x1407584a2	sibling
+classic	family-relation	plural-suffix	63	63	0x140758573	s
+classic	family-relation	relationship	64	64	0x1407584b4	grandchild
+classic	family-relation	plural-suffix	64	64	0x140758564	ren
+classic	family-relation	relationship	65	65	0x1407584c3	older half-brother
+classic	family-relation	plural-suffix	65	65	0x140758573	s
+classic	family-relation	relationship	66	66	0x1407584d2	older half-sister
+classic	family-relation	plural-suffix	66	66	0x140758573	s
+classic	family-relation	relationship	67	67	0x1407584e1	older half-sibling
+classic	family-relation	plural-suffix	67	67	0x140758573	s
+classic	family-relation	relationship	68	68	0x1407584f0	younger half-brother
+classic	family-relation	plural-suffix	68	68	0x140758573	s
+classic	family-relation	relationship	69	69	0x1407584ff	younger half-sister
+classic	family-relation	plural-suffix	69	69	0x140758573	s
+classic	family-relation	relationship	70	70	0x14075850e	younger half-sibling
+classic	family-relation	plural-suffix	70	70	0x140758573	s
+classic	family-relation	relationship	71	71	0x14075851d	half-sibling
+classic	family-relation	plural-suffix	71	71	0x140758573	s
+classic	threat-description	destroyed-building-kind	0	0	0x14065a54b	
+classic	threat-description	destroyed-building-kind	1	1	0x14065a55f	
+classic	threat-description	destroyed-building-kind	2	2	0x14065a573	
+classic	threat-description	destroyed-building-kind	3	3	0x14065a62d	
+classic	threat-description	destroyed-building-kind	4	4	0x14065a5af	
+classic	threat-description	destroyed-building-kind	5	5	0x14065a5c3	
+classic	threat-description	destroyed-building-kind	6	6	0x14065a5e5	
+classic	threat-description	destroyed-building-kind	7	7	0x14065a5d4	
+classic	threat-description	destroyed-building-kind	8	8	0x14065a59b	
+classic	threat-description	destroyed-building-kind	9	9	0x14065a587	
+classic	threat-description	destroyed-building-kind	10	10	0x14065a50f	
+classic	threat-description	destroyed-building-kind	11	11	0x14065a537	
+classic	threat-description	destroyed-building-kind	12	12	0x14065a62d	
+classic	threat-description	destroyed-building-kind	13	13	0x14065a523	
+classic	threat-description	profaned-building-kind	0	0	0x14065a7d9	
+classic	threat-description	profaned-building-kind	1	1	0x14065a7ed	
+classic	threat-description	profaned-building-kind	2	2	0x14065a801	
+classic	threat-description	profaned-building-kind	3	3	0x14065a8bb	
+classic	threat-description	profaned-building-kind	4	4	0x14065a83d	
+classic	threat-description	profaned-building-kind	5	5	0x14065a851	
+classic	threat-description	profaned-building-kind	6	6	0x14065a873	
+classic	threat-description	profaned-building-kind	7	7	0x14065a862	
+classic	threat-description	profaned-building-kind	8	8	0x14065a829	
+classic	threat-description	profaned-building-kind	9	9	0x14065a815	
+classic	threat-description	profaned-building-kind	10	10	0x14065a79d	
+classic	threat-description	profaned-building-kind	11	11	0x14065a7c5	
+classic	threat-description	profaned-building-kind	12	12	0x14065a8bb	
+classic	threat-description	profaned-building-kind	13	13	0x14065a7b1	
+classic	threat-speech	creature-trait-kind-minus-37	0	37	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	1	38	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	2	39	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	3	40	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	4	41	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	5	42	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	6	43	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	7	44	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	8	45	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	9	46	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	10	47	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	11	48	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	12	49	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	13	50	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	14	51	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	15	52	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	16	53	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	17	54	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	18	55	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	19	56	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	20	57	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	21	58	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	22	59	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	23	60	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	24	61	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	25	62	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	26	63	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	27	64	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	28	65	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	29	66	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	30	67	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	31	68	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	32	69	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	33	70	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	34	71	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	35	72	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	36	73	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	37	74	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	38	75	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	39	76	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	40	77	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	41	78	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	42	79	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	43	80	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	44	81	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	45	82	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	46	83	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	47	84	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	48	85	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	49	86	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	50	87	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	51	88	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	52	89	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	53	90	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	54	91	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	55	92	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	56	93	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	57	94	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	58	95	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	59	96	0x14068555b	skip trait
+classic	threat-speech	creature-trait-kind-minus-37	60	97	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	61	98	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	62	99	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	63	100	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	64	101	0x14068554f	max intensity
+classic	threat-speech	creature-trait-kind-minus-37	65	102	0x14068554f	max intensity

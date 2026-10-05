@@ -946,6 +946,9 @@ std::vector<Match> Overlay::capture_inventory_rows(
     // Its lower edge carries the body part in classic mode. Read that
     // rectangle before the panel-wide fallback: the scrollbar's shading and
     // block glyphs are not box separators and must never enter the grammar.
+    const SDL_Rect deposit_panel{frame->left + 1, tabs_y + 1,
+        frame->right - frame->left - 1, frame->bottom - tabs_y - 1};
+    const auto deposit_scrollbars = native_vertical_scrollbar_spans(*gps_, deposit_panel);
     const size_t deposits_begin = matches.size();
     std::vector<Match> untranslated_deposits;
     for (int y = tabs_y + 1; y < frame->bottom; ++y) {
@@ -953,7 +956,14 @@ std::vector<Match> Overlay::capture_inventory_rows(
                 return match.y == y;
             })) continue;
         const auto &row = context_rows[y];
-        int left = frame->left + 1, end = frame->right;
+        int right = frame->right;
+        for (const auto &bar : deposit_scrollbars)
+            if (y >= bar.y && y < bar.y + bar.h)
+                right = std::min(right, bar.x);
+        // Adventure deposits have no caption box. Their bare row still
+        // ends before the live scrollbar, including when its glyphs look
+        // like text. Use that same boundary for clipped-source recovery.
+        int left = frame->left + 1, end = right;
         std::optional<SDL_Rect> deposit_box;
         if (!shortcuts) {
             for (const auto &field : split_text_fields(row)) {
@@ -1018,7 +1028,7 @@ std::vector<Match> Overlay::capture_inventory_rows(
         caption.native_hover_untranslated = !translated;
         caption.layout_x = left;
         caption.layout_clip_right = deposit_box
-            ? deposit_box->x + deposit_box->w : frame->right - 1;
+            ? deposit_box->x + deposit_box->w : right - 1;
         caption.layout_length = caption.layout_clip_right - left;
         caption.layout_left = true;
         if (deposit_box) caption.native_picture_caption_box = deposit_box;

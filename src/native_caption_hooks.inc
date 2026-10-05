@@ -1566,6 +1566,7 @@ static void reset_native_caption_capture() {
     clear_clipped_captions();
     clear_native_unit_chooser_records();
     clear_native_drawn_text_rows();
+    clear_native_squad_aliases();
     pending_native_embark() = {};
     clear_embark_item_sources();
     reset_native_origin_capture();

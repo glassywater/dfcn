@@ -4,6 +4,28 @@
 #include "native_history_entity_page.inc"
 
 static std::optional<NativeHistoryPageData> snapshot_native_history_structure_introduction(
+        int32_t site, int32_t building) {
+    // b8fcc0 and b8fcec supply the same composite reference to b94090:
+    // first its named form, then its article/type form. describe skips a
+    // missing site/building; existing buildings retain the formatter's
+    // unknown type and deliberately empty dungeon-subtype branches.
+    NativeHistorySubject structure;
+    bool found = false;
+    if (!capture_native_history_structure(native_history_profile_base(), site, building, structure, &found) || !found)
+        return std::nullopt;
+    NativeHistoryPageData page;
+    page.kind = NativeHistoryPageKind::StructureIntroduction;
+    page.data.site_id = site;
+    page.data.fields["building"] = {building};
+    page.data.texts["building.label"] = structure.label_key;
+    page.data.subjects.push_back(std::move(structure));
+    if (!populate_native_history_subjects(page.data)) return std::nullopt;
+    // The existing confidence callback records its actual argument and
+    // closes this paragraph before describe appends [B].
+    return page;
+}
+
+static std::optional<NativeHistoryPageData> snapshot_native_history_structure_introduction(
         uintptr_t context) {
     // describe selects its building branch from the site/building pair, not
     // from a name or a visible "was ... in ..." sentence (ELF a5e798..a5e89b).
@@ -16,19 +38,7 @@ static std::optional<NativeHistoryPageData> snapshot_native_history_structure_in
         if (!native_history_copy(context + offset, other) || other != -1)
             return std::nullopt;
     }
-    NativeHistorySubject structure;
-    if (!capture_native_history_structure(native_history_profile_base(), site, building, structure) ||
-        structure.native_type < 0 || structure.label_key.empty()) return std::nullopt;
-    NativeHistoryPageData page;
-    page.kind = NativeHistoryPageKind::StructureIntroduction;
-    page.data.site_id = site;
-    page.data.fields["building"] = {building};
-    page.data.texts["building.label"] = structure.label_key;
-    page.data.subjects.push_back(std::move(structure));
-    if (!populate_native_history_subjects(page.data)) return std::nullopt;
-    // The existing confidence callback owns the whole local paragraph and
-    // records its actual confidence argument, just like site introductions.
-    return page;
+    return snapshot_native_history_structure_introduction(site, building);
 }
 
 static std::optional<NativeHistoryPageData> snapshot_native_history_site_introduction(

@@ -1,5 +1,5 @@
-// gui/sitemap's unit rows contain a native identity, a quoted English
-// surname gloss and a profession. Treat those as one typed list record.
+// gui/sitemap owns three typed name lists. Resolve their complete producer
+// fields before laying the translations out inside the native list clip.
 {
     constexpr std::string_view sitemap_scope = "DFHack GUI Sitemap: ";
     constexpr std::array<std::string_view, 3> sitemap_tabs{
@@ -70,7 +70,11 @@
         const int artifact_color = rgb_at(tab_x[2], tab_y);
         const bool creatures = creature_color >= 0 && location_color >= 0 &&
             location_color == artifact_color && creature_color != location_color;
-        if (creatures) dfhack_auxiliary_regions.push_back(*frame);
+        const bool locations = location_color >= 0 && creature_color >= 0 &&
+            creature_color == artifact_color && location_color != creature_color;
+        const bool artifacts = artifact_color >= 0 && creature_color >= 0 &&
+            creature_color == location_color && artifact_color != creature_color;
+        if (creatures || locations || artifacts) dfhack_auxiliary_regions.push_back(*frame);
         gui_literal(static_cast<int>(title_at), title_y, title,
             static_cast<int>(title_at + title.size()), "Title", true);
 
@@ -138,39 +142,165 @@
             if (auto target = exact_literal_translation(std::string(sitemap_scope) + std::string(text)))
                 emit(x, y, text, target, list_right);
         }
-        if (!creatures) continue;
-
         const auto translate_name_row = [&](std::string_view raw) -> std::optional<std::string> {
-            const auto open = raw.find('"');
-            if (open == std::string_view::npos) return translate_unit_identity(raw, true);
-            const auto close = raw.find('"', open + 1);
-            if (close == std::string_view::npos) return std::nullopt;
-            const auto native = trim_view(raw.substr(0, open));
-            const auto gloss = trim_view(raw.substr(open + 1, close - open - 1));
-            auto suffix = trim_view(raw.substr(close + 1));
-            if (native.empty() || gloss.empty() || suffix.empty() || suffix.front() != ',')
-                return std::nullopt;
-            suffix = trim_view(suffix.substr(1));
-            if (suffix.empty()) return std::nullopt;
-            std::optional<std::string> name;
-            if (native.find('`') == std::string_view::npos && !contains_cjk_utf8(native))
-                name = translate_procedural_fragment(std::string(native) + ", \"" +
-                    std::string(gloss) + "\"");
-            else {
+            // Units::formatReadableName appends an English last-name gloss,
+            // then the optional profession. A nickname may contain quotes;
+            // only a complete, recognized surname field licenses this split.
+            for (size_t open = raw.rfind(" \""); open != std::string_view::npos;
+                    open = open ? raw.rfind(" \"", open - 1) : std::string_view::npos) {
+                const size_t close = raw.find('"', open + 2);
+                if (close == std::string_view::npos) continue;
+                const auto native = trim_view(raw.substr(0, open));
+                const auto gloss = trim_view(raw.substr(open + 2, close - open - 2));
+                auto suffix = trim_view(raw.substr(close + 1));
+                if (native.empty() || gloss.empty() ||
+                        (!suffix.empty() && suffix.front() != ',')) continue;
+                // A later quote in a custom profession must not swallow the
+                // real gloss into the native-name field. Only native nickname
+                // delimiters can own quotes before the surname boundary.
+                const auto nickname_open = native.find('`');
+                const auto nickname_close = native.rfind('\'');
+                std::string outside_nickname(native);
+                if (nickname_open != std::string_view::npos &&
+                        nickname_close != std::string_view::npos && nickname_close > nickname_open)
+                    outside_nickname.erase(nickname_open, nickname_close - nickname_open + 1);
+                if (outside_nickname.find('"') != std::string::npos) continue;
+                const auto meaning = translate_english_character_name(gloss);
+                if (!meaning) continue;
                 const auto person = translate_unit_identity(native, true);
-                const auto meaning = translate_legends_name(gloss, false);
-                if (person && meaning) name = *person + "，“" + *meaning + "”";
+                if (!person) return std::nullopt;
+                std::string name = *person + "，“" + *meaning + "”";
+                if (suffix.empty()) return name;
+                suffix = trim_view(suffix.substr(1));
+                if (suffix.empty()) return std::nullopt;
+                const auto profession = translate_unit_profession(normalize_utterance(suffix), true);
+                return profession ? std::optional<std::string>(name + "，" + *profession)
+                                  : std::nullopt;
             }
-            const auto profession = translate_unit_profession(normalize_utterance(suffix), true);
-            return name && profession
-                ? std::optional<std::string>(*name + "，" + *profession) : std::nullopt;
+            return raw.find('"') == std::string_view::npos
+                ? translate_unit_identity(raw, true) : std::nullopt;
         };
+
+        const auto complete_field = [&](int x, int y, std::string_view visible) {
+            return lookup_native_dfhack_sitemap_text(gps_, x, y, visible)
+                .value_or(std::string(visible));
+        };
+
+        if (locations) {
+            // Each location is a tokenized label: name, punctuation, type,
+            // punctuation, zone status. Preserve those field boundaries even
+            // when the final token is only partly visible in the native clip.
+            for (int y = top + 5; y <= bottom - 7; ++y) {
+                const auto band = std::string_view(dfhack_context_rows[y]).substr(left, list_right - left);
+                const auto text = trim_view(band);
+                if (text.empty()) continue;
+                int x = left + static_cast<int>(text.data() - band.data());
+                std::string_view remaining = text;
+                bool name_field = true;
+                while (!remaining.empty()) {
+                    const auto captured = lookup_native_dfhack_sitemap_text(gps_, x, y, remaining);
+                    if (!captured || captured->empty()) break;
+                    const size_t width = std::min(captured->size(), remaining.size());
+                    const auto visible = remaining.substr(0, width);
+                    const auto field = trim_view(*captured);
+                    std::optional<std::string> target;
+                    if (name_field) {
+                        target = translate_legends_name(field, false);
+                        if (!target) target = native_text_to_utf8(field);
+                        name_field = false;
+                    } else if (field == "(" || field == ")") {
+                        target = std::string(field);
+                    } else if (field.starts_with("Temple to ")) {
+                        auto entity = translate_legends_name(field.substr(10), true);
+                        if (!entity) entity = translate_legends_name(field.substr(10), false);
+                        const auto temple = exact_literal_translation("Temple");
+                        if (entity && temple) target = "供奉" + *entity + "的" + *temple;
+                    } else if (field.ends_with(" guildhall")) {
+                        const auto profession = translate_unit_profession(
+                            field.substr(0, field.size() - 10), true);
+                        const auto hall = exact_literal_translation("Guildhall");
+                        if (profession && hall) target = *profession + *hall;
+                    } else if (field.starts_with('[') && field.ends_with(']')) {
+                        auto status = field.substr(1, field.size() - 2);
+                        target = exact_literal_translation(std::string(sitemap_scope) + std::string(status));
+                        if (!target && status.ends_with(" zones")) {
+                            const auto number = status.substr(0, status.size() - 6);
+                            const auto zones = exact_literal_translation(std::string(sitemap_scope) + "zones");
+                            if (zones && !number.empty() && std::all_of(number.begin(), number.end(),
+                                    [](unsigned char ch) { return ch >= '0' && ch <= '9'; }))
+                                target = std::string(number) + *zones;
+                        }
+                        if (target) target = "[" + *target + "]";
+                    } else {
+                        target = exact_literal_translation(std::string(field));
+                    }
+                    emit(x, y, visible, target, std::min(list_right, x + static_cast<int>(width)));
+                    x += static_cast<int>(width);
+                    remaining.remove_prefix(width);
+                }
+            }
+            continue;
+        }
+        if (artifacts) {
+            for (int y = top + 5; y <= bottom - 7; ++y) {
+                const auto band = std::string_view(dfhack_context_rows[y]).substr(left, list_right - left);
+                const auto text = trim_view(band);
+                if (text.empty()) continue;
+                const int x = left + static_cast<int>(text.data() - band.data());
+                const std::string full = complete_field(x, y, text);
+                // ReadableDescription returns a bare book title, or a native
+                // artifact name, its English title and a parenthesized type.
+                // An occupied artifact cage appends its captive's full unit
+                // identity after that item record; keep the two name types.
+                std::string_view item = full;
+                std::optional<std::string> captive;
+                const size_t captive_at = item.rfind(" [");
+                if (captive_at != std::string_view::npos && item.ends_with(']')) {
+                    auto unit = item.substr(captive_at + 2, item.size() - captive_at - 3);
+                    constexpr std::string_view hostile = " (hostile)";
+                    const bool is_hostile = unit.ends_with(hostile);
+                    if (is_hostile) unit.remove_suffix(hostile.size());
+                    captive = translate_name_row(unit);
+                    if (captive) {
+                        if (is_hostile)
+                            if (const auto status = exact_literal_translation(
+                                    std::string(sitemap_scope) + "hostile"))
+                                *captive += "（" + *status + "）";
+                        item = item.substr(0, captive_at);
+                    }
+                }
+                std::optional<std::string> target;
+                const auto type_at = item.rfind(" (");
+                if (type_at != std::string::npos && item.ends_with(')')) {
+                    const auto type = translate_fortress_item_caption(
+                        item.substr(type_at + 2, item.size() - type_at - 3));
+                    if (type) {
+                        const auto name_source = item.substr(0, type_at);
+                        const auto comma = name_source.rfind(", ");
+                        // DFHack omits the quotes present in the ordinary
+                        // native artifact identity. Restore only that wrapper
+                        // and let the shared name resolver own both fields.
+                        const auto identity = translate_legends_artifact_identity(
+                            comma == std::string_view::npos ? std::string(name_source) :
+                                std::string(name_source.substr(0, comma)) + ", \"" +
+                                std::string(name_source.substr(comma + 2)) + "\"");
+                        if (identity) target = *identity + "（" + *type + "）";
+                    }
+                }
+                if (!target) target = translate_fortress_item_caption(item);
+                if (!target) target = translate_legends_book(item);
+                if (target && captive) *target += " [" + *captive + "]";
+                emit(x, y, text, target, list_right);
+            }
+            continue;
+        }
+        if (!creatures) continue;
         for (int y = top + 5; y <= bottom - 7; y += 2) {
             const auto band = std::string_view(dfhack_context_rows[y]).substr(left, list_right - left);
             const auto text = trim_view(band);
             if (!text.empty()) {
                 const int x = left + static_cast<int>(text.data() - band.data());
-                emit(x, y, text, translate_name_row(text), list_right);
+                emit(x, y, text, translate_name_row(complete_field(x, y, text)), list_right);
             }
             if (y + 1 > bottom - 7) continue;
             const auto status_band = std::string_view(dfhack_context_rows[y + 1]).substr(
@@ -188,15 +318,16 @@
             if (separator == std::string_view::npos) continue;
             const auto affiliation = trim_view(status.substr(separator + 2));
             if (affiliation.empty()) continue;
+            const int affiliation_x = left + static_cast<int>(affiliation.data() - status_band.data());
+            const std::string full_affiliation = complete_field(affiliation_x, y + 1, affiliation);
             std::optional<std::string> target = exact_literal_translation(
-                std::string(sitemap_scope) + std::string(affiliation));
-            const auto comma = affiliation.rfind(", ");
+                std::string(sitemap_scope) + full_affiliation);
+            const auto comma = full_affiliation.rfind(", ");
             if (!target && comma != std::string_view::npos) {
-                const auto entity = translate_legends_name(affiliation.substr(0, comma), false);
-                const auto kind = translate_legends_term(affiliation.substr(comma + 2), false);
+                const auto entity = translate_legends_name(std::string_view(full_affiliation).substr(0, comma), false);
+                const auto kind = translate_legends_term(std::string_view(full_affiliation).substr(comma + 2), false);
                 if (entity && kind) target = *entity + "，" + *kind;
             }
-            const int affiliation_x = left + static_cast<int>(affiliation.data() - status_band.data());
             emit(affiliation_x, y + 1, affiliation, target, list_right);
         }
     }

@@ -235,38 +235,85 @@ std::optional<std::string> Overlay::translate_legends_name(
             }
             const auto before = trim_view(std::string_view(name).substr(0, open));
             const auto after = trim_view(std::string_view(name).substr(close + 1));
+            const bool of_only = after.starts_with("of ") || after.starts_with("Of ");
             const auto given = before.empty() ? std::optional<std::string>(std::string{})
                 : translate_legends_name(before, true);
-            const auto rest = after.empty() ? std::optional<std::string>(std::string{})
-                : translate_legends_name(after, true);
+            const auto rest = [&]() -> std::optional<std::string> {
+                if (after.empty()) return std::string{};
+                if (of_only) {
+                    const auto owner = after.substr(3);
+                    if (!generated_title_shape(owner)) return std::nullopt;
+                    const auto title = english_character_names_.title(
+                        native_text_to_utf8(after));
+                    return title ? *title : native_text_to_utf8(owner) + "之";
+                }
+                // The nickname can replace the first-name group entirely,
+                // leaving an English title as its next field. Its lower-case
+                // article is a name-group separator, not ordinary prose.
+                if (after.starts_with("the ") || after.starts_with("The ")) {
+                    const auto epithet = after.substr(4);
+                    if (!generated_title_shape(epithet)) return std::nullopt;
+                    const auto title = english_character_names_.title(
+                        native_text_to_utf8(epithet));
+                    return title ? *title : native_text_to_utf8(epithet);
+                }
+                return translate_legends_name(after, true);
+            }();
             if (!given || !rest) return std::nullopt;
             const auto nickname = std::string_view(name).substr(
                 open + 1, close - open - 1);
             // Share the native identity's exact nickname overrides. Unknown
             // authored text retains its spelling even when it coincides with
             // an English term or generated epithet.
-            const auto nickname_target = exact_literal_translation(
-                "Unit nickname: " + std::string(nickname));
+            auto nickname_target = exact_literal_translation(
+                "Unit nickname: " + native_text_to_utf8(nickname));
+            if (!nickname_target)
+                nickname_target = exact_literal_translation(
+                    "Unit nickname: " + std::string(nickname));
             std::string target = *given + "“" + (nickname_target
                 ? *nickname_target : native_text_to_utf8(nickname)) + "”";
+            if (of_only) return *rest + target;
             if (!rest->empty()) target += "·" + *rest;
             return target;
         }
         // Prayer, rescue and other actor slots can carry a native personal
         // name followed by an English epithet. Keep those two semantic
         // fields separate: a native given word retains its pronunciation,
-        // while every adjective/noun and ownership clause in the title uses
-        // the shared generated-name vocabulary. The untyped general-text
-        // parser need not first recognize the entire mixed-language string.
+        // while the title uses the English character-name renderer. The
+        // untyped general-text parser need not first recognize the entire
+        // mixed-language string.
         const size_t titled = name.find(" the ");
         if (titled != std::string::npos && titled > 0) {
             const auto epithet = std::string_view(name).substr(titled + 5);
             if (generated_title_shape(epithet)) {
                 const auto actor = translate_legends_name(
                     std::string_view(name).substr(0, titled), true);
-                const auto title = translate_legends_name("The " + std::string(epithet), false);
-                if (actor && title) return *actor + "·" + *title;
+                const auto title = english_character_names_.title(
+                    native_text_to_utf8(epithet));
+                if (actor) return *actor + "·" +
+                    (title ? *title : native_text_to_utf8(epithet));
             }
+        }
+        // A surname can be the first visible group when the given name is
+        // absent. For either complete first group, an explicit OfX
+        // suffix still belongs to the English character-name renderer.
+        const size_t owned = name.find(" of ");
+        if (owned != std::string::npos && owned > 0) {
+            const auto head = std::string_view(name).substr(0, owned);
+            const auto owner = std::string_view(name).substr(owned + 4);
+            const size_t separator = head.find(' ');
+            bool english_head = separator == std::string_view::npos &&
+                !native_name_language_masks_.contains(lower_native_name(std::string(head))) &&
+                english_character_names_.english_component(native_text_to_utf8(head));
+            if (separator != std::string_view::npos) {
+                const auto given = head.substr(0, separator);
+                const auto surname = trim_view(head.substr(separator + 1));
+                english_head = native_name_language_masks_.contains(
+                        lower_native_name(std::string(given))) &&
+                    english_character_names_.english_component(native_text_to_utf8(surname));
+            }
+            if (english_head && generated_title_shape(head) && generated_title_shape(owner))
+                return translate_english_character_name(name);
         }
     }
     // Unknown places and unnamed building/location types are reviewed nouns,
@@ -318,6 +365,23 @@ std::optional<std::string> Overlay::translate_legends_name(
     const bool single_person = person && name.find(' ') == std::string::npos;
     if (single_person && native_name_language_masks_.contains(lower_native_name(name)))
         return translate_procedural_fragment(name, true);
+    // Named animals can omit the given-name field and display only a native
+    // two-root surname. Require its complete same-language WORD/POS grammar
+    // before treating it as an English name gloss; otherwise that literal
+    // spelling makes the whole announcement's unit capture fail.
+    if (single_person)
+        if (auto native = translate_procedural_fragment(name, false, false, {},
+                ProceduralFragmentContext::native_name_group)) return native;
+    if (single_person && english_character_names_.english_component(
+            native_text_to_utf8(name)))
+        return translate_english_character_name(name);
+    if (person && (name.starts_with("The ") || name.starts_with("Of "))) {
+        const auto title = english_character_names_.title(native_text_to_utf8(name));
+        if (title) return *title;
+        return name.starts_with("Of ")
+            ? native_text_to_utf8(std::string_view(name).substr(3)) + "之"
+            : native_text_to_utf8(name);
+    }
     // A site is an English generated compound, not a native personal name.
     // Quote it BEFORE the broad unquoted native-name fallback: otherwise the
     // same site is phoneticized in kills but translated in its own heading.
@@ -881,6 +945,61 @@ std::optional<std::string> Overlay::translate_legends_book(
     const std::string normalized = normalize_utterance(value);
     value = normalized;
     if (value.empty() || value.ends_with("...") || depth >= 8) return std::nullopt;
+    // Instructional titles have printed subject aliases in addition to the
+    // short research topics. Resolve a whole subject before the generic
+    // conjunction/colon wrappers can split it into unrelated name words.
+    std::string subject = lower(std::string(value));
+    if (const auto found = legends_terms_ci_.find("book title phrase: " + subject);
+            found != legends_terms_ci_.end()) return found->second;
+    if (const auto found = legends_terms_ci_.find("book title subject: " + subject);
+            found != legends_terms_ci_.end()) return found->second;
+    if (subject.starts_with("the ")) subject.erase(0, 4);
+    if (const auto found = legends_terms_ci_.find("book title subject: " + subject);
+            found != legends_terms_ci_.end()) return found->second;
+    if (const auto topic = RULESETS.compose_bound_rule("::activities::topic", subject))
+        return topic;
+    if (const auto found = legends_terms_ci_.find(lower(std::string(value)));
+            found != legends_terms_ci_.end()) return found->second;
+    // Historical-figure subject references can supply a caste descriptor
+    // instead of a personal name; sphere references supply one exact sphere.
+    // Both native branches retain their existing semantic dictionaries.
+    if (const auto creature = translate_creature_reference(value)) return creature;
+    if (const auto sphere = deity_sphere_translations_.find(subject);
+            sphere != deity_sphere_translations_.end()) return sphere->second;
+    auto article_free = value;
+    if (template_literal_at(article_free, 0, "the ", true))
+        article_free.remove_prefix(4);
+    // Historical-figure references can replace a name with the selected
+    // gender-specific office title from entity RAWs. Resolve that complete
+    // singular office through its existing semantic namespace.
+    const std::string noun_source = lower(std::string(article_free));
+    if (const auto office = legends_terms_.find("Native history office: " + noun_source);
+            office != legends_terms_.end()) return office->second;
+    std::vector<size_t> office_origins;
+    if (const auto office = RULESETS.translate_with_origins(
+            native_text_to_utf8(noun_source), "::positions::singular", office_origins))
+        return office;
+    // Artifact references can use their complete item description or their
+    // native solid material, including an actual owner's possessive name.
+    // Reuse those typed grammars before title wrappers split their contents.
+    if (const auto material = translate_material_name(article_free)) return material;
+    if (const auto item = translate_legends_item(value)) return item;
+    // BOOK_ART NOUN selects a complete singular/plural WORD form, without
+    // compound-name flags. Its noun sense must not inherit a homonymous
+    // adjective or verb, and a multiword form must remain one source field.
+    if (const auto found = legends_terms_ci_.find("book title noun: " + noun_source);
+            found != legends_terms_ci_.end()) return found->second;
+    if (const auto forms = name_editor_word_forms_.find(noun_source);
+            forms != name_editor_word_forms_.end()) {
+        std::optional<std::string> noun;
+        bool ambiguous = false;
+        for (const auto &meaning : forms->second) {
+            if (meaning.part_of_speech != ProceduralNamePartOfSpeech::noun) continue;
+            if (noun && *noun != meaning.gloss) { ambiguous = true; break; }
+            noun = meaning.gloss;
+        }
+        if (noun && !ambiguous) return noun;
+    }
     // BOOK_ART adds fixed phrases to generated names. Keep these phrases in
     // the scoped TSV, not in the name vocabulary: "Ever Onward" has a title
     // meaning, while the existing standalone "ever" sense must not change.
@@ -894,7 +1013,47 @@ std::optional<std::string> Overlay::translate_legends_book(
     for (int index : legends_book_rules_)
         if (auto title = translate_legends_nested(
                 rules_[static_cast<size_t>(index)], value, depth)) return title;
-    return translate_legends_name(value, false);
+    if (const auto person = translate_procedural_fragment(std::string(value), false,
+            false, {}, ProceduralFragmentContext::personal_name)) return person;
+    // BOOK_ART has both [ADJ] [NO_ART_NAME] and [NAME] [ADJ]. The same
+    // reviewed RAW adjective must precede its subject in Chinese in either
+    // production. Select its grammatical role, rather than transliterating
+    // a suffix or treating it as the noun at the end of a generated name.
+    const auto adjective = [&](std::string_view raw) -> std::optional<std::string> {
+        const std::string folded = lower(std::string(raw));
+        if (const auto found = legends_terms_ci_.find("book title adjective: " + folded);
+                found != legends_terms_ci_.end()) {
+            std::string modifier = found->second;
+            if (!modifier.ends_with("的")) modifier += "的";
+            return modifier;
+        }
+        const auto forms = name_editor_word_forms_.find(folded);
+        if (forms == name_editor_word_forms_.end()) return std::nullopt;
+        std::optional<std::string> gloss;
+        for (const auto &meaning : forms->second) {
+            if (meaning.part_of_speech != ProceduralNamePartOfSpeech::adjective) continue;
+            if (gloss && *gloss != meaning.gloss) return std::nullopt;
+            gloss = meaning.gloss;
+        }
+        if (gloss && !gloss->ends_with("的")) *gloss += "的";
+        return gloss;
+    };
+    auto base = value;
+    if (template_literal_at(base, 0, "the ", true)) base.remove_prefix(4);
+    for (size_t at = base.find(' '); at != std::string_view::npos;
+            at = base.find(' ', at + 1)) {
+        if (const auto modifier = adjective(base.substr(0, at)))
+            if (const auto title = translate_legends_book(base.substr(at + 1), depth + 1))
+                return *modifier + *title;
+    }
+    for (size_t at = value.rfind(' '); at != std::string_view::npos;
+            at = at == 0 ? std::string_view::npos : value.rfind(' ', at - 1)) {
+        if (const auto modifier = adjective(value.substr(at + 1)))
+            if (const auto title = translate_legends_book(value.substr(0, at), depth + 1))
+                return *modifier + *title;
+    }
+    return translate_procedural_fragment(std::string(value), false, false, {},
+        ProceduralFragmentContext::book_title);
 }
 
 std::optional<std::string> Overlay::translate_legends_text(
@@ -1119,6 +1278,13 @@ std::optional<std::string> Overlay::translate_legends_text(
     return result;
 }
 
+static bool legends_export_control_present(std::string_view source) {
+    // Legends remains browsable while the same export control changes
+    // its caption from Export XML to Exporting!.
+    return source.find("Export XML") != std::string_view::npos ||
+        source.find("Exporting!") != std::string_view::npos;
+}
+
 void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y,
         const unsigned char *screen_override) const {
@@ -1144,9 +1310,12 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
     int export_y = -1;
     for (int y = 0; y < static_cast<int>(rows.size()); ++y) {
         const auto &row = context[static_cast<size_t>(y)];
-        if (row.find("Export XML") != std::string::npos) { export_y = y; break; }
+        if (legends_export_control_present(row)) { export_y = y; break; }
     }
     if (export_y < 0) return;
+    const bool native_history_page = native_history_legends_page();
+    const auto native_caption = native_history_page ? native_history_legends_caption() : std::nullopt;
+    const std::string native_title = native_caption ? normalize_utterance(native_caption->source) : "";
     // Graphical captions occupy two flagged rows. Claim BOTH before the
     // generic name/figure matchers: otherwise the upper copy of a complete
     // identity becomes a page heading and is centred across the whole screen.
@@ -1156,6 +1325,66 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
         const auto &row = context[static_cast<size_t>(y)];
         if (row.find("Legends") == std::string::npos) continue;
         tab_rows.push_back(y);
+    }
+    if (native_history_page && !native_title.empty()) {
+        // The native render loop fixes tab artwork/captions at rows 4/5:
+        // PE d3f986 and d3fbc7, with flags 8/16 at d3fc6c. Classic text
+        // occupies only row 5. The pinned title has a separate producer and
+        // must not become a tab merely because its text matches the caption.
+        // This same header anchor survives removal of the Legends root tab.
+        tab_rows.clear();
+        const size_t quote = native_title.rfind('"');
+        const std::string title_caption = quote == std::string::npos
+            ? native_title : native_title.substr(0, quote + 1);
+        const auto native_tab_caption = [&](std::string_view raw) {
+            const std::string source = normalize_utterance(std::string(raw));
+            if (source == "Legends" || source == native_title || source == title_caption) return true;
+            const bool clipped = source.ends_with("...");
+            const auto prefix = std::string_view(source).substr(0,
+                source.size() - (clipped ? 3 : 0));
+            if (clipped && !prefix.empty() && native_title.starts_with(prefix)) return true;
+            return std::any_of(kLegendsCategories.begin(), kLegendsCategories.end(),
+                [&](std::string_view category) {
+                    return source == category || (clipped && !prefix.empty() &&
+                        category.starts_with(prefix));
+                });
+        };
+        for (int y : {4, 5}) {
+            if (y >= static_cast<int>(rows.size())) continue;
+            const auto &row = context[static_cast<size_t>(y)];
+            bool caption_row = false;
+            for (size_t opening = row.find('/'); opening != std::string::npos;
+                    opening = row.find('/', opening + 1)) {
+                const auto span = ascii_tab_caption_span(row, opening);
+                if (span && native_tab_caption(std::string_view(row).substr(
+                        span->first, span->second - span->first))) caption_row = true;
+            }
+            const auto cell_and_half = [&](int x) {
+                bool top = false;
+                const auto *cell = cell_at(x, y, &top);
+                const auto *flags = top ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
+                const uint32_t half = flags
+                    ? flags[static_cast<size_t>(x) * gps_->dimy + y] & ((1u << 3) | (1u << 4))
+                    : 0;
+                return std::pair{cell, half};
+            };
+            for (int x = 0; !caption_row && x < static_cast<int>(row.size());) {
+                if (row[x] == ' ' || is_cp437_box_separator(row, x)) { ++x; continue; }
+                const auto [first, half] = cell_and_half(x);
+                if (!first) { ++x; continue; }
+                const bool split = half == (1u << 3) || half == (1u << 4);
+                const int start = x;
+                for (++x; x < static_cast<int>(row.size()); ++x) {
+                    const auto [cell, next_half] = cell_and_half(x);
+                    if (!cell || (split && next_half != half) || is_cp437_box_separator(row, x) ||
+                            (row[x] != ' ' && !std::equal(first + 1, first + 4, cell + 1))) break;
+                    if (!split && row[x] == ' ' && x + 1 < static_cast<int>(row.size()) &&
+                            row[x + 1] == ' ') break;
+                }
+                caption_row = native_tab_caption(std::string_view(row).substr(start, x - start));
+            }
+            if (caption_row) tab_rows.push_back(y);
+        }
     }
     if (tab_rows.empty()) return;
     const int tabs_y = tab_rows.back();
@@ -1171,9 +1400,6 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
             std::fill_n(rows[y].begin() + bar.x, bar.w, ' ');
             std::fill_n(context[y].begin() + bar.x, bar.w, ' ');
         }
-    const bool native_history_page = native_history_legends_page();
-    const auto native_caption = native_history_page ? native_history_legends_caption() : std::nullopt;
-    const std::string native_title = native_caption ? normalize_utterance(native_caption->source) : "";
     const auto translate_heading = [&](std::string_view source) {
         if (native_caption && native_caption->region_title && source == native_title)
             if (auto target = translate_world_region_heading(source)) return target;
@@ -1261,8 +1487,11 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
         std::vector<std::pair<int, int>> caption_spans;
         const auto &tab_context = context[static_cast<size_t>(tab_y)];
         const size_t legends_start = tab_context.find("Legends");
-        const bool ascii_tabs = legends_start != std::string::npos &&
-            is_ascii_tab_caption(tab_context, legends_start, legends_start + 7);
+        const size_t ascii_opening = tab_context.find("/_");
+        const bool ascii_tabs = (legends_start != std::string::npos &&
+            is_ascii_tab_caption(tab_context, legends_start, legends_start + 7)) ||
+            (native_history_page && ascii_opening != std::string::npos &&
+                ascii_tab_caption_span(tab_context, ascii_opening).has_value());
         for (size_t opening = ascii_tabs ? tab_context.find("/_") : std::string::npos;
                 opening != std::string::npos;) {
             const auto span = ascii_tab_caption_span(tab_context, opening);
@@ -1642,7 +1871,7 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
                 for (; at < cps.size(); ++at) {
                     const Metric &m = metric(cps[at]);
                     int kern = 0;
-                    if (FT_HAS_KERNING(face_) && previous && m.index) {
+                    if (config_.font_pixel_grid == 0 && FT_HAS_KERNING(face_) && previous && m.index) {
                         FT_Vector delta{};
                         FT_Get_Kerning(face_, previous, m.index, FT_KERNING_DEFAULT, &delta);
                         kern = static_cast<int>(delta.x >> 6);
@@ -2572,10 +2801,10 @@ void Overlay::layout_legends_details(SDL_Renderer *renderer) {
         auto place_flow = [&](LegendsTextFlow &flow) {
             flow.display_pieces.clear();
             if (flow.source_rows.empty()) return false;
-            // The fixed-size translation may extend beyond the English box.
-            // Use the remaining physical width, then retain every extra row.
-            const int flow_width = std::max(width,
-                gps_->screen_pixel_x - origin_x - left * tile_w);
+            // Complete paragraphs wrap within their native text viewport.
+            // The physical screen tail also contains the scrolling control
+            // and frame; it cannot supply extra width to colored text runs.
+            const int flow_width = width;
             size_t row = 0;
             int used = 0;
             for (const auto &piece : flow.pieces) {

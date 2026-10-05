@@ -1,0 +1,2247 @@
+# edition	role	function	instruction	kind	operand	source
+reference	cancel	0x141325080	0x141325395	cstring	0x141781860	 cancels 
+reference	cancel	0x141325080	0x1413253d6	cstring	0x141603460	: 
+reference	cancel	0x141325080	0x14132540b	cstring	0x141781948	Unscheduled
+reference	cancel	0x141325080	0x141325417	cstring	0x141781930	Cannot reach site
+reference	cancel	0x141325080	0x141325423	cstring	0x141781968	Getting married
+reference	cancel	0x141325080	0x14132542f	cstring	0x141781958	Interrupted by 
+reference	cancel	0x141325080	0x141325481	cstring	0x141781994	combat
+reference	cancel	0x141325080	0x14132548d	cstring	0x141781978	Inappropriate dig square
+reference	cancel	0x141325080	0x141325499	cstring	0x1417819a8	Area became inappropriate
+reference	cancel	0x141325080	0x1413254a5	cstring	0x14178199c	Moved
+reference	cancel	0x141325080	0x1413254b1	cstring	0x141781880	Need empty bucket
+reference	cancel	0x141325080	0x1413254bd	cstring	0x141781870	Need empty trap
+reference	cancel	0x141325080	0x1413254c9	cstring	0x1417818a8	Need empty bag
+reference	cancel	0x141325080	0x1413254d5	cstring	0x141781898	Need empty cage
+reference	cancel	0x141325080	0x1413254e1	cstring	0x1417818e0	Need valid, active sand collection zone
+reference	cancel	0x141325080	0x1413254ed	cstring	0x1417818b8	Need valid, active clay collection zone
+reference	cancel	0x141325080	0x1413254f9	cstring	0x141781918	No available colony
+reference	cancel	0x141325080	0x141325505	cstring	0x141781908	Sand vanished
+reference	cancel	0x141325080	0x141325511	cstring	0x141781a88	Clay vanished
+reference	cancel	0x141325080	0x14132551d	cstring	0x141781a70	Incapable of carrying
+reference	cancel	0x141325080	0x141325529	cstring	0x141781aa8	Too injured
+reference	cancel	0x141325080	0x141325535	cstring	0x1415ff708	Exhausted
+reference	cancel	0x141325080	0x141325541	cstring	0x141781a98	Resting injury
+reference	cancel	0x141325080	0x14132554d	cstring	0x141781ad0	Animal inaccessible
+reference	cancel	0x141325080	0x141325559	cstring	0x141781ab8	Patient inaccessible
+reference	cancel	0x141325080	0x141325565	cstring	0x141781af8	Infant inaccessible
+reference	cancel	0x141325080	0x141325571	cstring	0x141781ae8	No partner
+reference	cancel	0x141325080	0x14132557d	cstring	0x1417819e0	Item inaccessible
+reference	cancel	0x141325080	0x141325589	cstring	0x1417819c8	Drop-off inaccessible
+reference	cancel	0x141325080	0x141325595	cstring	0x141781a10	Building inaccessible
+reference	cancel	0x141325080	0x1413255a1	cstring	0x1417819f8	Area inaccessible
+reference	cancel	0x141325080	0x1413255ad	cstring	0x141781a38	Nothing in cage
+reference	cancel	0x141325080	0x1413255b9	cstring	0x141781a28	Nothing to cage
+reference	cancel	0x141325080	0x1413255c5	cstring	0x141781a58	Nothing to catch
+reference	cancel	0x141325080	0x1413255d1	cstring	0x141781a48	No patient
+reference	cancel	0x141325080	0x1413255dd	cstring	0x141781bd8	Patient not resting
+reference	cancel	0x141325080	0x1413255e9	cstring	0x141781bc8	No infant
+reference	cancel	0x141325080	0x1413255f5	cstring	0x141781c08	Already leading creature
+reference	cancel	0x141325080	0x141325601	cstring	0x141781bf0	No food available
+reference	cancel	0x141325080	0x14132560d	cstring	0x141781c38	Water source vanished
+reference	cancel	0x141325080	0x141325619	cstring	0x141781c28	No water source
+reference	cancel	0x141325080	0x141325625	cstring	0x141781c68	Water source contaminated
+reference	cancel	0x141325080	0x141325631	cstring	0x141781c50	Creature occupying site
+reference	cancel	0x141325080	0x14132563d	cstring	0x141781b38	No bucket at well
+reference	cancel	0x141325080	0x141325649	cstring	0x141781b10	Bucket full of extraneous material
+reference	cancel	0x141325080	0x141325655	cstring	0x141781b60	Well dry
+reference	cancel	0x141325080	0x141325661	cstring	0x141781b50	Need office
+reference	cancel	0x141325080	0x141325795	cstring	0x1415ff7b0	Needs 
+reference	cancel	0x141325080	0x1413257ba	cstring	0x141781b80	 in linked stockpile
+reference	cancel	0x141325080	0x1413257e9	cstring	0x141781bb0	Wrong ammunition
+reference	cancel	0x141325080	0x1413257f5	cstring	0x141781b98	Ammunition inaccessible
+reference	cancel	0x141325080	0x141325801	cstring	0x141781408	No ammunition
+reference	cancel	0x141325080	0x14132580d	cstring	0x141781400	No item
+reference	cancel	0x141325080	0x141325819	cstring	0x141781b70	No weapon
+reference	cancel	0x141325080	0x141325825	cstring	0x141781430	Item blocking site
+reference	cancel	0x141325080	0x141325831	cstring	0x141781418	Building site submerged
+reference	cancel	0x141325080	0x14132583d	cstring	0x141781458	Animal not restrained
+reference	cancel	0x141325080	0x141325849	cstring	0x141781448	No creature
+reference	cancel	0x141325080	0x141325855	cstring	0x141781480	Inappropriate building
+reference	cancel	0x141325080	0x141325861	cstring	0x141781470	No building
+reference	cancel	0x141325080	0x14132586d	cstring	0x141781370	No floor space
+reference	cancel	0x141325080	0x141325879	cstring	0x141781358	No designated area
+reference	cancel	0x141325080	0x141325885	cstring	0x141781398	No party
+reference	cancel	0x141325080	0x141325891	cstring	0x141781380	Wrong justice state
+reference	cancel	0x141325080	0x14132589d	cstring	0x1417813b8	Nothing in building
+reference	cancel	0x141325080	0x1413258a9	cstring	0x1416b23a8	Relieved
+reference	cancel	0x141325080	0x1413258b5	cstring	0x1417813a8	Water is frozen
+reference	cancel	0x141325080	0x1413258c1	cstring	0x1416b23d8	Terrified
+reference	cancel	0x141325080	0x1413258cd	cstring	0x1417813f0	Mortally afraid
+reference	cancel	0x141325080	0x1413258d9	cstring	0x1417813d0	Experiencing emotional shock
+reference	cancel	0x141325080	0x1413258e5	cstring	0x1416b2228	Horrified
+reference	cancel	0x141325080	0x1413258f1	cstring	0x1416b21d0	Grieving
+reference	cancel	0x141325080	0x1413258fd	cstring	0x141781550	Too sad
+reference	cancel	0x141325080	0x141325909	cstring	0x141781540	In agony
+reference	cancel	0x141325080	0x141325915	cstring	0x141781568	Anguished
+reference	cancel	0x141325080	0x141325921	cstring	0x141781558	Despairing
+reference	cancel	0x141325080	0x14132592d	cstring	0x1416b25f8	Dismayed
+reference	cancel	0x141325080	0x141325939	cstring	0x1416b2610	Distressed
+reference	cancel	0x141325080	0x141325945	cstring	0x1416b2568	Frightened
+reference	cancel	0x141325080	0x141325951	cstring	0x1416b2438	Miserable
+reference	cancel	0x141325080	0x14132595d	cstring	0x1416b2458	Mortified
+reference	cancel	0x141325080	0x141325969	cstring	0x1416b240c	Shaken
+reference	cancel	0x141325080	0x141325975	cstring	0x141781588	In existential crisis
+reference	cancel	0x141325080	0x141325981	cstring	0x141781578	Too insane
+reference	cancel	0x141325080	0x14132598d	cstring	0x1417815b0	Too depressed
+reference	cancel	0x141325080	0x141325999	cstring	0x1417815a0	Oblivious
+reference	cancel	0x141325080	0x1413259a5	cstring	0x1417814a8	Catatonic
+reference	cancel	0x141325080	0x1413259b1	cstring	0x141781498	Taken by mood
+reference	cancel	0x141325080	0x1413259bd	cstring	0x1417814d0	Went insane
+reference	cancel	0x141325080	0x1413259c9	cstring	0x1417814b8	Throwing tantrum
+reference	cancel	0x141325080	0x1413259d5	cstring	0x1417814f0	Could not find path
+reference	cancel	0x141325080	0x1413259e1	cstring	0x1417814e0	Path blocked
+reference	cancel	0x141325080	0x1413259ed	cstring	0x141781528	Seeking artifact
+reference	cancel	0x141325080	0x1413259f9	cstring	0x141781508	Handling dangerous creature
+reference	cancel	0x141325080	0x141325a05	cstring	0x141781690	Going to bed
+reference	cancel	0x141325080	0x141325a11	cstring	0x141781680	Seeking Infant
+reference	cancel	0x141325080	0x141325a1d	cstring	0x1417816b0	Dangerous terrain
+reference	cancel	0x141325080	0x141325a29	cstring	0x1417816a0	Forbidden area
+reference	cancel	0x141325080	0x141325a35	cstring	0x1417816c8	Job item lost or destroyed
+reference	cancel	0x141325080	0x141325a3c	cstring	0x1417816e8	Job item misplaced
+reference	cancel	0x141325080	0x141325a4e	cstring	0x141781710	Getting food
+reference	cancel	0x141325080	0x141325a5a	cstring	0x141781700	Getting water
+reference	cancel	0x141325080	0x141325a66	cstring	0x1417815d8	Hunting vermin for food
+reference	cancel	0x141325080	0x141325a72	cstring	0x1417815c0	Target inaccessible
+reference	cancel	0x141325080	0x141325a7e	cstring	0x141781608	Target too injured
+reference	cancel	0x141325080	0x141325a8a	cstring	0x14163e570	No target
+reference	cancel	0x141325080	0x141325a96	cstring	0x1417815f0	No mechanism for target
+reference	cancel	0x141325080	0x141325aa2	cstring	0x141781640	No target building
+reference	cancel	0x141325080	0x141325aae	cstring	0x141781620	No mechanism for trigger
+reference	cancel	0x141325080	0x141325aba	cstring	0x141781670	No trigger
+reference	cancel	0x141325080	0x141325ac6	cstring	0x141781658	Attacking building
+reference	cancel	0x141325080	0x141325ad2	cstring	0x1417817d0	Lost pick
+reference	cancel	0x141325080	0x141325ade	cstring	0x1417817c0	Invalid officer
+reference	cancel	0x141325080	0x141325aea	cstring	0x1417817f8	"Farewell!"  Leaving
+reference	cancel	0x141325080	0x141325af6	cstring	0x1417817e0	Removed from guard
+reference	cancel	0x141325080	0x141325b02	cstring	0x141781818	Equipment mismatch
+reference	cancel	0x141325080	0x141325b0e	cstring	0x1415ff5c0	Unconscious
+reference	cancel	0x141325080	0x141325b1a	cstring	0x1415ff664	Webbed
+reference	cancel	0x141325080	0x141325b26	cstring	0x1415ff5b0	Paralyzed
+reference	cancel	0x141325080	0x141325b32	cstring	0x141781810	Caged
+reference	cancel	0x141325080	0x141325b3e	cstring	0x141781850	In Custody
+reference	cancel	0x141325080	0x141325b4a	cstring	0x141781830	Getting something to drink
+reference	cancel	0x141325080	0x141325b56	cstring	0x141781730	Using well
+reference	cancel	0x141325080	0x141325b62	cstring	0x141781720	Lost axe
+reference	cancel	0x141325080	0x141325b6b	cstring	0x141781760	Not responsible for trade
+reference	cancel	0x141325080	0x141325b74	cstring	0x141781740	No available traction bench
+reference	cancel	0x141325080	0x141325b7d	cstring	0x141781790	Need splint
+reference	cancel	0x141325080	0x141325b86	cstring	0x141781780	Need thread
+reference	cancel	0x141325080	0x141325b8f	cstring	0x1417817b0	Need cloth
+reference	cancel	0x141325080	0x141325b98	cstring	0x1417817a0	Need crutch
+reference	cancel	0x141325080	0x141325ba1	cstring	0x1417820a0	Bad script! #1
+reference	cancel	0x141325080	0x141325baa	cstring	0x141782090	Bad script! #2
+reference	cancel	0x141325080	0x141325bb3	cstring	0x1417820f0	Bad script! #3
+reference	cancel	0x141325080	0x141325bbc	cstring	0x1417820b0	Need bag containing powder suitable for cast application
+reference	cancel	0x141325080	0x141325bc5	cstring	0x141782120	No weapon for execution
+reference	cancel	0x141325080	0x141325bce	cstring	0x141782100	No appropriate ammunition
+reference	cancel	0x141325080	0x141325bd7	cstring	0x141782150	Not appointed
+reference	cancel	0x141325080	0x141325be0	cstring	0x141782138	No longer requested
+reference	cancel	0x141325080	0x141325e4d	cstring	0x1415ed9bc	The 
+reference	cancel	0x141325080	0x141325eb6	cstring	0x141782018	 suspended the construction of 
+reference	cancel	0x141325080	0x141325ef7	cstring	0x1415e85b4	.
+reference	cancel	0x141325080	0x1413260e0	cstring	0x1415ed9bc	The 
+reference	cancel	0x141325080	0x141326178	cstring	0x141781ff8	 suspended a linkage from 
+reference	cancel	0x141325080	0x1413261b9	cstring	0x1415e85b4	.
+reference	cancel	0x141325080	0x141327bf9	cstring	0x141615540	 (
+reference	cancel	0x141325080	0x141327c2b	cstring	0x141782048	) has been completed.
+reference	job-wrapper	0x140d03170	0x140d03231	cstring	0x1417050c8	Remove Rotten Tissue
+reference	job-wrapper	0x140d03170	0x140d0324d	cstring	0x1417050a8	Repair Compound Fracture
+reference	job-wrapper	0x140d03170	0x140d03269	cstring	0x141705098	Stop Bleeding
+reference	job-wrapper	0x140d03170	0x140d03285	cstring	0x1416a57e0	Surgery
+reference	job-caption	0x140d032b0	0x140d03372	cstring	0x1417050e0	Construct building
+reference	job-caption	0x140d032b0	0x140d0337e	cstring	0x1417050f8	Destroy building
+reference	job-caption	0x140d032b0	0x140d03390	cstring	0x141705110	Butcher an animal
+reference	job-caption	0x140d032b0	0x140d0339f	cstring	0x141705128	Catch live fish
+reference	job-caption	0x140d032b0	0x140d033b1	cstring	0x141705138	Catch live land animal
+reference	job-caption	0x140d032b0	0x140d033c3	cstring	0x141705150	Prepare a raw fish
+reference	job-caption	0x140d032b0	0x140d033eb	cstring	0x141705164	Mill 
+reference	job-caption	0x140d032b0	0x140d03440	cstring	0x141705170	Mill plants
+reference	job-caption	0x140d032b0	0x140d03468	cstring	0x141705180	Process 
+reference	job-caption	0x140d032b0	0x140d034bd	cstring	0x141705190	Process plants
+reference	job-caption	0x140d032b0	0x140d034cf	cstring	0x1417051a0	Milk 
+reference	job-caption	0x140d032b0	0x140d0355c	cstring	0x1416a1230	animal
+reference	job-caption	0x140d032b0	0x140d0356e	cstring	0x1417051a8	Shear 
+reference	job-caption	0x140d032b0	0x140d035fb	cstring	0x1417051b0	Spin thread
+reference	job-caption	0x140d032b0	0x140d0360d	cstring	0x1417051c0	Make cheese
+reference	job-caption	0x140d032b0	0x140d03635	cstring	0x141705180	Process 
+reference	job-caption	0x140d032b0	0x140d03674	cstring	0x1417051d0	 (vial)
+reference	job-caption	0x140d032b0	0x140d03699	cstring	0x1417051d8	Process plants (vial)
+reference	job-caption	0x140d032b0	0x140d036c1	cstring	0x141705180	Process 
+reference	job-caption	0x140d032b0	0x140d03700	cstring	0x1417051f0	 (barrel)
+reference	job-caption	0x140d032b0	0x140d03725	cstring	0x141705200	Process plants (barrel)
+reference	job-caption	0x140d032b0	0x140d03737	cstring	0x141705218	Make lye
+reference	job-caption	0x140d032b0	0x140d03749	cstring	0x141705228	Make potash from lye
+reference	job-caption	0x140d032b0	0x140d0375b	cstring	0x141705240	Make potash from ash
+reference	job-caption	0x140d032b0	0x140d03781	cstring	0x141705288	Prepare lavish meal
+reference	job-caption	0x140d032b0	0x140d03795	cstring	0x141705270	Prepare fine meal
+reference	job-caption	0x140d032b0	0x140d037a9	cstring	0x141705258	Prepare easy meal
+reference	job-caption	0x140d032b0	0x140d037d9	cstring	0x1417052a0	Extract from 
+reference	job-caption	0x140d032b0	0x140d0382e	cstring	0x1417052b0	Extract from plants
+reference	job-caption	0x140d032b0	0x140d03840	cstring	0x1417052c8	Extract from raw fish
+reference	job-caption	0x140d032b0	0x140d03852	cstring	0x1417052e0	Extract from land animal
+reference	job-caption	0x140d032b0	0x140d03864	cstring	0x141705300	Handle 
+reference	job-caption	0x140d032b0	0x140d038f4	cstring	0x141705308	a large animal
+reference	job-caption	0x140d032b0	0x140d03906	cstring	0x141705318	Unchain pet
+reference	job-caption	0x140d032b0	0x140d03918	cstring	0x141705328	Interrogate 
+reference	job-caption	0x140d032b0	0x140d039a5	cstring	0x141674d08	subject
+reference	job-caption	0x140d032b0	0x140d039b7	cstring	0x141705338	Release 
+reference	job-caption	0x140d032b0	0x140d03a50	cstring	0x141705348	Release pet
+reference	job-caption	0x140d032b0	0x140d03a62	cstring	0x141705358	Release small creature
+reference	job-caption	0x140d032b0	0x140d03a74	cstring	0x141705370	Handle small creature
+reference	job-caption	0x140d032b0	0x140d03a86	cstring	0x141705388	Recover pet
+reference	job-caption	0x140d032b0	0x140d03a98	cstring	0x141705394	Cage 
+reference	job-caption	0x140d032b0	0x140d03b2e	cstring	0x141704c78	Recover wounded
+reference	job-caption	0x140d032b0	0x140d03b3a	cstring	0x141704c88	Diagnose patient
+reference	job-caption	0x140d032b0	0x140d03b46	cstring	0x141704ca0	Immobilize break
+reference	job-caption	0x140d032b0	0x140d03b58	cstring	0x141704cb8	Apply cast
+reference	job-caption	0x140d032b0	0x140d03b6a	cstring	0x141704cc8	Bring crutch
+reference	job-caption	0x140d032b0	0x140d03b7c	cstring	0x141704cd8	Dress wound
+reference	job-caption	0x140d032b0	0x140d03b8e	cstring	0x141704ce8	Clean patient
+reference	job-caption	0x140d032b0	0x140d03ba0	cstring	0x1416a57e0	Surgery
+reference	job-caption	0x140d032b0	0x140d03bb2	cstring	0x141704cf8	Suture
+reference	job-caption	0x140d032b0	0x140d03bc4	cstring	0x141704d00	Set bone
+reference	job-caption	0x140d032b0	0x140d03bd6	cstring	0x141704d10	Place in traction
+reference	job-caption	0x140d032b0	0x140d03be8	cstring	0x141704d28	Put item on display
+reference	job-caption	0x140d032b0	0x140d03bfa	cstring	0x141704d40	Cage small animal
+reference	job-caption	0x140d032b0	0x140d03c0c	cstring	0x141704d58	Pit/pond 
+reference	job-caption	0x140d032b0	0x140d03cb8	cstring	0x141704d68	Pit/pond small animal
+reference	job-caption	0x140d032b0	0x140d03cca	cstring	0x141704d80	Pen/pasture 
+reference	job-caption	0x140d032b0	0x140d03d6f	cstring	0x141704d90	Pen/pasture small animal
+reference	job-caption	0x140d032b0	0x140d03d81	cstring	0x141704db0	Drain aquarium
+reference	job-caption	0x140d032b0	0x140d03d93	cstring	0x141704dc0	Fill aquarium
+reference	job-caption	0x140d032b0	0x140d03da5	cstring	0x141704dd0	Fill pond
+reference	job-caption	0x140d032b0	0x140d03db7	cstring	0x141704de0	Give water
+reference	job-caption	0x140d032b0	0x140d03dc9	cstring	0x141704df0	Give food
+reference	job-caption	0x140d032b0	0x140d03ddb	cstring	0x141704e00	Manage work orders
+reference	job-caption	0x140d032b0	0x140d03ded	cstring	0x141704e18	Update stockpile records
+reference	job-caption	0x140d032b0	0x140d03dff	cstring	0x141704e38	Trade at depot
+reference	job-caption	0x140d032b0	0x140d03e5a	cstring	0x141704e48	Chain 
+reference	job-caption	0x140d032b0	0x140d03eaf	cstring	0x141704e50	Put in chains
+reference	job-caption	0x140d032b0	0x140d03ec1	cstring	0x141704e60	Slaughter 
+reference	job-caption	0x140d032b0	0x140d03f68	cstring	0x141704e6c	Geld 
+reference	job-caption	0x140d032b0	0x140d0400d	cstring	0x141704e78	Unchain
+reference	job-caption	0x140d032b0	0x140d04072	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d040c7	cstring	0x141704e80	Tame 
+reference	job-caption	0x140d032b0	0x140d0416c	cstring	0x141704e88	Tame a small animal
+reference	job-caption	0x140d032b0	0x140d0417e	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d041e1	cstring	0x1416dead0	 crafts
+reference	job-caption	0x140d032b0	0x140d041f3	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d04256	cstring	0x141704ea0	 figurine
+reference	job-caption	0x140d032b0	0x140d04268	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d042cb	cstring	0x141704eb0	 amulet
+reference	job-caption	0x140d032b0	0x140d042dd	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d04340	cstring	0x141704eb8	 scepter
+reference	job-caption	0x140d032b0	0x140d04352	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d043b5	cstring	0x141704ec4	 crown
+reference	job-caption	0x140d032b0	0x140d043c7	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d0442a	cstring	0x141704ecc	 ring
+reference	job-caption	0x140d032b0	0x140d0443c	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d0449f	cstring	0x141704ed8	 earring
+reference	job-caption	0x140d032b0	0x140d044b1	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d04514	cstring	0x141704ee8	 bracelet
+reference	job-caption	0x140d032b0	0x140d04526	cstring	0x141704ef8	Make large 
+reference	job-caption	0x140d032b0	0x140d04589	cstring	0x1416ceab0	 gem
+reference	job-caption	0x140d032b0	0x140d0459b	cstring	0x141704f04	Mint 
+reference	job-caption	0x140d032b0	0x140d045fe	cstring	0x141704f0c	 coins
+reference	job-caption	0x140d032b0	0x140d0461f	cstring	0x141704f14	Cut 
+reference	job-caption	0x140d032b0	0x140d04678	cstring	0x141704f20	Cut gems
+reference	job-caption	0x140d032b0	0x140d046a2	cstring	0x141704f14	Cut 
+reference	job-caption	0x140d032b0	0x140d046f8	cstring	0x141704f30	Cut raw glass into gems
+reference	job-caption	0x140d032b0	0x140d0471f	cstring	0x141704f48	Polish 
+reference	job-caption	0x140d032b0	0x140d04728	cstring	0x141704f50	Polish stones
+reference	job-caption	0x140d032b0	0x140d0478d	cstring	0x1416bed48	Engrave memorial slab
+reference	job-caption	0x140d032b0	0x140d0486b	cstring	0x141704f60	 (engrave memorial)
+reference	job-caption	0x140d032b0	0x140d04885	cstring	0x141704f78	Decorate with 
+reference	job-caption	0x140d032b0	0x140d048a7	cstring	0x141704f88	Stud with 
+reference	job-caption	0x140d032b0	0x140d048cc	cstring	0x141704f98	Encrust 
+reference	job-caption	0x140d032b0	0x140d048ef	cstring	0x141704fa8	finished goods
+reference	job-caption	0x140d032b0	0x140d0490a	cstring	0x141704fb8	furniture
+reference	job-caption	0x140d032b0	0x140d04925	cstring	0x1416c1ebc	ammo
+reference	job-caption	0x140d032b0	0x140d0493a	cstring	0x1415ee5e0	 with 
+reference	job-caption	0x140d032b0	0x140d0495f	cstring	0x1416011f0	cut gems
+reference	job-caption	0x140d032b0	0x140d04971	cstring	0x141704f98	Encrust 
+reference	job-caption	0x140d032b0	0x140d04994	cstring	0x141704fa8	finished goods
+reference	job-caption	0x140d032b0	0x140d049af	cstring	0x141704fb8	furniture
+reference	job-caption	0x140d032b0	0x140d049ca	cstring	0x1416c1ebc	ammo
+reference	job-caption	0x140d032b0	0x140d049df	cstring	0x1415ee5e0	 with 
+reference	job-caption	0x140d032b0	0x140d04a07	cstring	0x141704fc8	cut glass
+reference	job-caption	0x140d032b0	0x140d04a19	cstring	0x141704f98	Encrust 
+reference	job-caption	0x140d032b0	0x140d04a3c	cstring	0x141704fa8	finished goods
+reference	job-caption	0x140d032b0	0x140d04a57	cstring	0x141704fb8	furniture
+reference	job-caption	0x140d032b0	0x140d04a72	cstring	0x1416c1ebc	ammo
+reference	job-caption	0x140d032b0	0x140d04a87	cstring	0x1415ee5e0	 with 
+reference	job-caption	0x140d032b0	0x140d04aac	cstring	0x141704fd8	polished stones
+reference	job-caption	0x140d032b0	0x140d04abe	cstring	0x141704fe8	Collect sand
+reference	job-caption	0x140d032b0	0x140d04ad0	cstring	0x141704ff8	Collect clay
+reference	job-caption	0x140d032b0	0x140d04ae2	cstring	0x141705008	Install colony in hive
+reference	job-caption	0x140d032b0	0x140d04af4	cstring	0x141705020	Collect hive products
+reference	job-caption	0x140d032b0	0x140d04b06	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d04b68	cstring	0x141705038	four 
+reference	job-caption	0x140d032b0	0x140d04bc2	cstring	0x141705040	 blocks
+reference	job-caption	0x140d032b0	0x140d04bd4	cstring	0x141705048	Make raw 
+reference	job-caption	0x140d032b0	0x140d04bf6	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d04c94	cstring	0x141705058	 Portal
+reference	job-caption	0x140d032b0	0x140d04ca6	cstring	0x1416c1624	 door
+reference	job-caption	0x140d032b0	0x140d04cb8	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d04d1b	cstring	0x141705060	 floodgate
+reference	job-caption	0x140d032b0	0x140d04d2d	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d04d90	cstring	0x141705070	 hatch cover
+reference	job-caption	0x140d032b0	0x140d04da2	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d04e05	cstring	0x141705804	 grate
+reference	job-caption	0x140d032b0	0x140d04e17	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d04e7a	cstring	0x14170580c	 table
+reference	job-caption	0x140d032b0	0x140d04e8c	cstring	0x141705818	Make traction bench
+reference	job-caption	0x140d032b0	0x140d04e9e	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d04f01	cstring	0x141705830	 splint
+reference	job-caption	0x140d032b0	0x140d04f13	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d04f76	cstring	0x141705838	 crutch
+reference	job-caption	0x140d032b0	0x140d04f88	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d04feb	cstring	0x141705840	 cabinet
+reference	job-caption	0x140d032b0	0x140d04ffd	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d05060	cstring	0x141705850	 weapon rack
+reference	job-caption	0x140d032b0	0x140d05072	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d050d5	cstring	0x141705860	 armor stand
+reference	job-caption	0x140d032b0	0x140d050e7	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d0514a	cstring	0x141705870	 bin
+reference	job-caption	0x140d032b0	0x140d0515c	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d051f9	cstring	0x141705878	 box
+reference	job-caption	0x140d032b0	0x140d05225	cstring	0x141705880	 coffer
+reference	job-caption	0x140d032b0	0x140d05239	cstring	0x141705888	 chest
+reference	job-caption	0x140d032b0	0x140d05253	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d052b6	cstring	0x141705890	 bag
+reference	job-caption	0x140d032b0	0x140d052c8	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d05367	cstring	0x1417058a0	 sarcophagus
+reference	job-caption	0x140d032b0	0x140d05378	cstring	0x1417058b0	 coffin
+reference	job-caption	0x140d032b0	0x140d0538f	cstring	0x141705898	 casket
+reference	job-caption	0x140d032b0	0x140d053a1	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d0541e	cstring	0x1417058c0	 throne
+reference	job-caption	0x140d032b0	0x140d05438	cstring	0x1417058b8	 chair
+reference	job-caption	0x140d032b0	0x140d0548a	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d05499	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d054ae	cstring	0x1417058d0	pair of 
+reference	job-caption	0x140d032b0	0x140d054fb	cstring	0x14164a2c8	large 
+reference	job-caption	0x140d032b0	0x140d0550c	cstring	0x1416862ac	small 
+reference	job-caption	0x140d032b0	0x140d05573	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d055b5	cstring	0x1417058e0	Make totem
+reference	job-caption	0x140d032b0	0x140d05607	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d05616	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d0562b	cstring	0x1417058d0	pair of 
+reference	job-caption	0x140d032b0	0x140d05678	cstring	0x14164a2c8	large 
+reference	job-caption	0x140d032b0	0x140d05689	cstring	0x1416862ac	small 
+reference	job-caption	0x140d032b0	0x140d056f0	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d05772	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d05781	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d057e0	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d0584f	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d0585e	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d058f5	cstring	0x1417058f0	 terrarium
+reference	job-caption	0x140d032b0	0x140d05907	cstring	0x1417058fc	 cage
+reference	job-caption	0x140d032b0	0x140d05959	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d05968	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d059cc	cstring	0x141705904	 chain
+reference	job-caption	0x140d032b0	0x140d059f9	cstring	0x141705904	 chain
+reference	job-caption	0x140d032b0	0x140d05a13	cstring	0x14170590c	 rope
+reference	job-caption	0x140d032b0	0x140d05a65	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d05a74	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d05a89	cstring	0x141705914	three 
+reference	job-caption	0x140d032b0	0x140d05aed	cstring	0x141705920	 waterskins
+reference	job-caption	0x140d032b0	0x140d05b31	cstring	0x14170592c	 vials
+reference	job-caption	0x140d032b0	0x140d05b45	cstring	0x1416deae8	 flasks
+reference	job-caption	0x140d032b0	0x140d05b9f	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d05bae	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d05bc3	cstring	0x141705914	three 
+reference	job-caption	0x140d032b0	0x140d05c5b	cstring	0x14170593c	 mugs
+reference	job-caption	0x140d032b0	0x140d05c6f	cstring	0x141705948	 goblets
+reference	job-caption	0x140d032b0	0x140d05c89	cstring	0x141705934	 cups
+reference	job-caption	0x140d032b0	0x140d05cdb	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d05cea	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d05d89	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d05d9e	cstring	0x1416c1e44	tool
+reference	job-caption	0x140d032b0	0x140d05db7	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d05ecc	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d05edb	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d05f3a	cstring	0x141705954	 toy
+reference	job-caption	0x140d032b0	0x140d05f8c	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d05f9b	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d05ffa	cstring	0x141705960	 animal trap
+reference	job-caption	0x140d032b0	0x140d0604c	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d0605b	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d060ba	cstring	0x141705970	 barrel
+reference	job-caption	0x140d032b0	0x140d0610c	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d0611b	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d061b2	cstring	0x141705978	 tube
+reference	job-caption	0x140d032b0	0x140d061c4	cstring	0x141705980	 pipe section
+reference	job-caption	0x140d032b0	0x140d06216	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d06225	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d06284	cstring	0x1416b0ce0	 bucket
+reference	job-caption	0x140d032b0	0x140d06296	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d062f9	cstring	0x141705990	 window
+reference	job-caption	0x140d032b0	0x140d0630b	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d0636e	cstring	0x141705998	 backpack
+reference	job-caption	0x140d032b0	0x140d06380	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d063e3	cstring	0x1417059a8	 quiver
+reference	job-caption	0x140d032b0	0x140d06435	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d06444	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d06491	cstring	0x14164a2c8	large 
+reference	job-caption	0x140d032b0	0x140d064a2	cstring	0x1416862ac	small 
+reference	job-caption	0x140d032b0	0x140d06509	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d06576	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d06585	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d065d2	cstring	0x14164a2c8	large 
+reference	job-caption	0x140d032b0	0x140d065e3	cstring	0x1416862ac	small 
+reference	job-caption	0x140d032b0	0x140d0664a	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d06674	cstring	0x1417059b0	Bait trap with 
+reference	job-caption	0x140d032b0	0x140d0669b	cstring	0x1416a11f0	fish
+reference	job-caption	0x140d032b0	0x140d066af	cstring	0x1416ceebc	meat
+reference	job-caption	0x140d032b0	0x140d066c3	cstring	0x1416158fc	gem
+reference	job-caption	0x140d032b0	0x140d0671d	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d0672c	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d06779	cstring	0x14164a2c8	large 
+reference	job-caption	0x140d032b0	0x140d0678a	cstring	0x1416862ac	small 
+reference	job-caption	0x140d032b0	0x140d067f1	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d0685e	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d0686d	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d068cc	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d0693b	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d0694a	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d069a9	cstring	0x1417059c0	 ballista arrow head
+reference	job-caption	0x140d032b0	0x140d069bb	cstring	0x1417059d8	Assemble 
+reference	job-caption	0x140d032b0	0x140d06a1e	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d06a8d	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d06a9c	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d06ac1	cstring	0x1417059e4	five 
+reference	job-caption	0x140d032b0	0x140d06ad0	cstring	0x1417059f0	twenty-five 
+reference	job-caption	0x140d032b0	0x140d06b27	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d06b52	cstring	0x141705a00	Make
+reference	job-caption	0x140d032b0	0x140d06b74	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d06bcf	cstring	0x141705a08	 catapult parts
+reference	job-caption	0x140d032b0	0x140d06c21	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d06c30	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d06c85	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d06ce4	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d06d0d	cstring	0x141705a00	Make
+reference	job-caption	0x140d032b0	0x140d06d22	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d06d85	cstring	0x141705a18	 mechanisms
+reference	job-caption	0x140d032b0	0x140d06d97	cstring	0x141705a00	Make
+reference	job-caption	0x140d032b0	0x140d06db9	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d06e14	cstring	0x141705a28	 ballista parts
+reference	job-caption	0x140d032b0	0x140d06e26	cstring	0x141705a00	Make
+reference	job-caption	0x140d032b0	0x140d06e48	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d06ea6	cstring	0x141705a38	 bolt thrower parts
+reference	job-caption	0x140d032b0	0x140d06eb8	cstring	0x1417058c8	Forge 
+reference	job-caption	0x140d032b0	0x140d06f1b	cstring	0x141705a4c	 anvil
+reference	job-caption	0x140d032b0	0x140d06f2d	cstring	0x141705a00	Make
+reference	job-caption	0x140d032b0	0x140d06f67	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d06fb0	cstring	0x141705a54	 bed
+reference	job-caption	0x140d032b0	0x140d06fc2	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d07025	cstring	0x141705a60	 statue
+reference	job-caption	0x140d032b0	0x140d07037	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d0709a	cstring	0x141705a68	 slab
+reference	job-caption	0x140d032b0	0x140d070ac	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d0710f	cstring	0x141705a70	 quern
+reference	job-caption	0x140d032b0	0x140d07121	cstring	0x14163ce4c	Make 
+reference	job-caption	0x140d032b0	0x140d07184	cstring	0x141705a78	 millstone
+reference	job-caption	0x140d032b0	0x140d07196	cstring	0x141705a84	Train 
+reference	job-caption	0x140d032b0	0x140d07223	cstring	0x141705a90	 to hunt
+reference	job-caption	0x140d032b0	0x140d0724a	cstring	0x141705aa0	hunting animal
+reference	job-caption	0x140d032b0	0x140d0725c	cstring	0x141705a84	Train 
+reference	job-caption	0x140d032b0	0x140d072f0	cstring	0x141705ab0	 for war
+reference	job-caption	0x140d032b0	0x140d07317	cstring	0x141705ac0	war animal
+reference	job-caption	0x140d032b0	0x140d07329	cstring	0x141705a84	Train 
+reference	job-caption	0x140d032b0	0x140d073ce	cstring	0x141705ad0	Make charcoal
+reference	job-caption	0x140d032b0	0x140d073e0	cstring	0x141705ae0	Make ash
+reference	job-caption	0x140d032b0	0x140d0745a	cstring	0x141705af0	Reaction
+reference	job-caption	0x140d032b0	0x140d074b9	cstring	0x141705afc	Smelt 
+reference	job-caption	0x140d032b0	0x140d0751c	cstring	0x14170539c	 ore
+reference	job-caption	0x140d032b0	0x140d0752e	cstring	0x1417053a8	Melt a metal object
+reference	job-caption	0x140d032b0	0x140d07540	cstring	0x1417053c0	Extract metal strands
+reference	job-caption	0x140d032b0	0x140d0756a	cstring	0x141615814	Tint 
+reference	job-caption	0x140d032b0	0x140d07590	cstring	0x1417053d8	 thread 
+reference	job-caption	0x140d032b0	0x140d075b6	cstring	0x141615840	 using 
+reference	job-caption	0x140d032b0	0x140d075dc	cstring	0x141615838	 dye
+reference	job-caption	0x140d032b0	0x140d075f6	cstring	0x1417053e8	Dye thread 
+reference	job-caption	0x140d032b0	0x140d07619	cstring	0x1417053f8	Dye thread
+reference	job-caption	0x140d032b0	0x140d0763f	cstring	0x141615814	Tint 
+reference	job-caption	0x140d032b0	0x140d07665	cstring	0x141705408	 cloth 
+reference	job-caption	0x140d032b0	0x140d07671	cstring	0x141705410	Dye cloth 
+reference	job-caption	0x140d032b0	0x140d0769c	cstring	0x141705420	Dye cloth
+reference	job-caption	0x140d032b0	0x140d076c2	cstring	0x141615814	Tint 
+reference	job-caption	0x140d032b0	0x140d076e8	cstring	0x141705430	 leather 
+reference	job-caption	0x140d032b0	0x140d076f4	cstring	0x141705440	Dye leather 
+reference	job-caption	0x140d032b0	0x140d0771d	cstring	0x141705450	Dye leather
+reference	job-caption	0x140d032b0	0x140d0772f	cstring	0x14161596c	Mix 
+reference	job-caption	0x140d032b0	0x140d0776c	cstring	0x1415e873c	 
+reference	job-caption	0x140d032b0	0x140d07781	cstring	0x14170545c	dye
+reference	job-caption	0x140d032b0	0x140d077a4	cstring	0x141615840	 using 
+reference	job-caption	0x140d032b0	0x140d077e2	cstring	0x1415e9110	 and 
+reference	job-caption	0x140d032b0	0x140d07833	cstring	0x141705460	Sew 
+reference	job-caption	0x140d032b0	0x140d07896	cstring	0x141705468	 image
+reference	job-caption	0x140d032b0	0x140d078a8	cstring	0x141705470	Collect webs
+reference	job-caption	0x140d032b0	0x140d07902	cstring	0x141705480	Weave metal cloth
+reference	job-caption	0x140d032b0	0x140d0791d	cstring	0x141705498	Weave thread into silk
+reference	job-caption	0x140d032b0	0x140d0792a	cstring	0x1417054b0	Weave yarn into cloth
+reference	job-caption	0x140d032b0	0x140d07933	cstring	0x1417054c8	Weave thread into cloth
+reference	job-caption	0x140d032b0	0x140d07955	cstring	0x1417054e0	 (dyed only)
+reference	job-caption	0x140d032b0	0x140d07967	cstring	0x1417054f0	Harvest plants
+reference	job-caption	0x140d032b0	0x140d07979	cstring	0x141705500	Plant seeds
+reference	job-caption	0x140d032b0	0x140d07988	cstring	0x141705510	Fertilize field
+reference	job-caption	0x140d032b0	0x140d0799a	cstring	0x141705520	Pull the lever
+reference	job-caption	0x140d032b0	0x140d079ac	cstring	0x141705530	Link a building to trigger
+reference	job-caption	0x140d032b0	0x140d079be	cstring	0x141705550	Carve fortification
+reference	job-caption	0x140d032b0	0x140d079d0	cstring	0x141705568	Smooth wall
+reference	job-caption	0x140d032b0	0x140d079e2	cstring	0x141705578	Smooth floor
+reference	job-caption	0x140d032b0	0x140d079f4	cstring	0x141705588	Detail wall
+reference	job-caption	0x140d032b0	0x140d07a06	cstring	0x141705598	Detail floor
+reference	job-caption	0x140d032b0	0x140d07a18	cstring	0x1417055a8	Carve track
+reference	job-caption	0x140d032b0	0x140d07a2a	cstring	0x1416a10e0	Dig
+reference	job-caption	0x140d032b0	0x140d07a3c	cstring	0x1417055b8	Remove stairs/ramps
+reference	job-caption	0x140d032b0	0x140d07a4e	cstring	0x1417055d0	Remove construction
+reference	job-caption	0x140d032b0	0x140d07a60	cstring	0x1417055e8	Carve upward staircase
+reference	job-caption	0x140d032b0	0x140d07a72	cstring	0x141705600	Carve downward staircase
+reference	job-caption	0x140d032b0	0x140d07a84	cstring	0x141705620	Carve up/down staircase
+reference	job-caption	0x140d032b0	0x140d07a96	cstring	0x141705638	Carve ramp
+reference	job-caption	0x140d032b0	0x140d07aa8	cstring	0x141705648	Dig channel
+reference	job-caption	0x140d032b0	0x140d07aba	cstring	0x141705658	Fell tree
+reference	job-caption	0x140d032b0	0x140d07acc	cstring	0x141705668	Gather plants
+reference	job-caption	0x140d032b0	0x140d07ade	cstring	0x141705678	Bring item to shop
+reference	job-caption	0x140d032b0	0x140d07af0	cstring	0x141705690	Bring item to depot
+reference	job-caption	0x140d032b0	0x140d07b02	cstring	0x14169eb10	Eat
+reference	job-caption	0x140d032b0	0x140d07b14	cstring	0x1417056a8	Get provisions
+reference	job-caption	0x140d032b0	0x140d07b26	cstring	0x1417056b8	Clean self
+reference	job-caption	0x140d032b0	0x140d07b38	cstring	0x14162fc1c	Drink
+reference	job-caption	0x140d032b0	0x140d07b4a	cstring	0x1417056c8	Fill waterskin
+reference	job-caption	0x140d032b0	0x140d07b5c	cstring	0x1417056d8	Sleep
+reference	job-caption	0x140d032b0	0x140d07b6e	cstring	0x141601d84	Fish
+reference	job-caption	0x140d032b0	0x140d07b80	cstring	0x1417056e0	Kidnap
+reference	job-caption	0x140d032b0	0x140d07b92	cstring	0x1415ff930	Cause trouble
+reference	job-caption	0x140d032b0	0x140d07ba4	cstring	0x1417056e8	No job
+reference	job-caption	0x140d032b0	0x140d07bb6	cstring	0x1417056f0	No activity
+reference	job-caption	0x140d032b0	0x140d07bc8	cstring	0x141705700	Report crime
+reference	job-caption	0x140d032b0	0x140d07bda	cstring	0x141705710	Hunt
+reference	job-caption	0x140d032b0	0x140d07bec	cstring	0x141705718	Starting fist fight
+reference	job-caption	0x140d032b0	0x140d07bfe	cstring	0x141705730	Beat criminal
+reference	job-caption	0x140d032b0	0x140d07c10	cstring	0x141705740	Place track vehicle
+reference	job-caption	0x140d032b0	0x140d07c22	cstring	0x141705758	Push track vehicle
+reference	job-caption	0x140d032b0	0x140d07c2e	cstring	0x141705770	Execute criminal
+reference	job-caption	0x140d032b0	0x140d07c40	cstring	0x141705788	Hunt for small creature
+reference	job-caption	0x140d032b0	0x140d07c52	cstring	0x1417057a0	Collect taxes
+reference	job-caption	0x140d032b0	0x140d07c64	cstring	0x1417057b0	Guard tax collector
+reference	job-caption	0x140d032b0	0x140d07c76	cstring	0x1417057c8	Return kill
+reference	job-caption	0x140d032b0	0x140d07c88	cstring	0x1417057d8	Go shopping
+reference	job-caption	0x140d032b0	0x140d07c9a	cstring	0x1417057e8	Seek artifact
+reference	job-caption	0x140d032b0	0x140d07cac	cstring	0x1417057f8	Seek infant
+reference	job-caption	0x140d032b0	0x140d07cb8	cstring	0x141705b08	Store owned item
+reference	job-caption	0x140d032b0	0x140d07cca	cstring	0x141705b20	Place item in tomb
+reference	job-caption	0x140d032b0	0x140d07cdc	cstring	0x141705b38	Store item in stockpile
+reference	job-caption	0x140d032b0	0x140d07cee	cstring	0x141705b50	Store item in bag
+reference	job-caption	0x140d032b0	0x140d07d00	cstring	0x141705b68	Store item in barrel
+reference	job-caption	0x140d032b0	0x140d07d12	cstring	0x141705b80	Store item in bin
+reference	job-caption	0x140d032b0	0x140d07d24	cstring	0x141705b98	Store item in vehicle
+reference	job-caption	0x140d032b0	0x140d07d36	cstring	0x141705bb0	Store weapon
+reference	job-caption	0x140d032b0	0x140d07d48	cstring	0x141705bc0	Store armor
+reference	job-caption	0x140d032b0	0x140d07d5a	cstring	0x141705bd0	Store item in location
+reference	job-caption	0x140d032b0	0x140d07d6c	cstring	0x141705be8	Store squad equipment
+reference	job-caption	0x140d032b0	0x140d07d7e	cstring	0x1416a033c	Clean
+reference	job-caption	0x140d032b0	0x140d07d90	cstring	0x1416a0908	Rest
+reference	job-caption	0x140d032b0	0x140d07d9c	cstring	0x141705c00	Pickup equipment
+reference	job-caption	0x140d032b0	0x140d07dae	cstring	0x141705c18	Dump item
+reference	job-caption	0x140d032b0	0x140d07dc0	cstring	0x14169dfd8	Strange mood
+reference	job-caption	0x140d032b0	0x140d07dd2	cstring	0x141705c28	Clean trap
+reference	job-caption	0x140d032b0	0x140d07de4	cstring	0x141705c38	Load catapult
+reference	job-caption	0x140d032b0	0x140d07df6	cstring	0x141705c48	Load ballista
+reference	job-caption	0x140d032b0	0x140d07e05	cstring	0x141705c58	Load bolt thrower
+reference	job-caption	0x140d032b0	0x140d07e14	cstring	0x141705c70	Fire catapult
+reference	job-caption	0x140d032b0	0x140d07e23	cstring	0x141705c80	Fire ballista
+reference	job-caption	0x140d032b0	0x140d07e32	cstring	0x141705c90	Fire bolt thrower
+reference	job-caption	0x140d032b0	0x140d07e41	cstring	0x141705ca8	Operate pump
+reference	job-caption	0x140d032b0	0x140d07e50	cstring	0x141705cb8	Load cage trap
+reference	job-caption	0x140d032b0	0x140d07e5c	cstring	0x141705cc8	Load stone trap
+reference	job-caption	0x140d032b0	0x140d07e65	cstring	0x141705cd8	Load weapon trap
+reference	job-item-requirement	0x140a2adb0	0x140a2aed6	cstring	0x1416cbbd0	unused 
+reference	job-item-requirement	0x140a2adb0	0x140a2aef1	cstring	0x1416cbbd8	improvable 
+reference	job-item-requirement	0x140a2adb0	0x140a2af0d	cstring	0x1416cbbe8	butcherable 
+reference	job-item-requirement	0x140a2adb0	0x140a2af29	cstring	0x1416cbbf8	millable 
+reference	job-item-requirement	0x140a2adb0	0x140a2af45	cstring	0x1416cbc08	possibly buriable 
+reference	job-item-requirement	0x140a2adb0	0x140a2af61	cstring	0x1416cbc20	unrotten 
+reference	job-item-requirement	0x140a2adb0	0x140a2af7d	cstring	0x1416cbc30	undisturbed 
+reference	job-item-requirement	0x140a2adb0	0x140a2af9a	cstring	0x1416cbc40	collected 
+reference	job-item-requirement	0x140a2adb0	0x140a2afbe	cstring	0x1416cbb40	sharpenable 
+reference	job-item-requirement	0x140a2adb0	0x140a2afdd	cstring	0x141663640	murdered 
+reference	job-item-requirement	0x140a2adb0	0x140a2affc	cstring	0x1416cbb50	empty 
+reference	job-item-requirement	0x140a2adb0	0x140a2b01b	cstring	0x1416cbb58	processable 
+reference	job-item-requirement	0x140a2adb0	0x140a2b03a	cstring	0x1416cbb68	cookable 
+reference	job-item-requirement	0x140a2adb0	0x140a2b059	cstring	0x1416cbb74	solid 
+reference	job-item-requirement	0x140a2adb0	0x140a2b07b	cstring	0x1416cbb80	extract-bearing plant 
+reference	job-item-requirement	0x140a2adb0	0x140a2b09a	cstring	0x1416cbb98	extract-bearing fish 
+reference	job-item-requirement	0x140a2adb0	0x140a2b0b9	cstring	0x1416cbbb0	extract-bearing small creature 
+reference	job-item-requirement	0x140a2adb0	0x140a2b0d5	cstring	0x1416cbaa8	processable (to vial) 
+reference	job-item-requirement	0x140a2adb0	0x140a2b0f4	cstring	0x1416cbac0	processable (to barrel) 
+reference	job-item-requirement	0x140a2adb0	0x140a2b113	cstring	0x1416cbae0	tameable small creature 
+reference	job-item-requirement	0x140a2adb0	0x140a2b132	cstring	0x141652818	nearby 
+reference	job-item-requirement	0x140a2adb0	0x140a2b151	cstring	0x1416cbb00	sand-bearing 
+reference	job-item-requirement	0x140a2adb0	0x140a2b170	cstring	0x1416cbb10	glass 
+reference	job-item-requirement	0x140a2adb0	0x140a2b18b	cstring	0x1416cbb18	lye-bearing 
+reference	job-item-requirement	0x140a2adb0	0x140a2b1aa	cstring	0x1416cbb28	milk 
+reference	job-item-requirement	0x140a2adb0	0x140a2b1c9	cstring	0x1416cbb30	milkable 
+reference	job-item-requirement	0x140a2adb0	0x140a2b1e8	cstring	0x1416cba40	finished good 
+reference	job-item-requirement	0x140a2adb0	0x140a2b207	cstring	0x1416cba50	ammo 
+reference	job-item-requirement	0x140a2adb0	0x140a2b226	cstring	0x1416cba58	furniture 
+reference	job-item-requirement	0x140a2adb0	0x140a2b280	cstring	0x1415e873c	 
+reference	job-item-requirement	0x140a2adb0	0x140a2b295	cstring	0x1416cba64	dye 
+reference	job-item-requirement	0x140a2adb0	0x140a2b2b1	cstring	0x1416cba70	dyeable 
+reference	job-item-requirement	0x140a2adb0	0x140a2b2d0	cstring	0x1416cba80	totemable 
+reference	job-item-requirement	0x140a2adb0	0x140a2b2ec	cstring	0x1416cba90	glass-making 
+reference	job-item-requirement	0x140a2adb0	0x140a2b308	cstring	0x1416cbaa0	dyed 
+reference	job-item-requirement	0x140a2adb0	0x140a2b327	cstring	0x1416cb9b8	melt-designated 
+reference	job-item-requirement	0x140a2adb0	0x140a2b34d	cstring	0x1416cb9d0	deep material 
+reference	job-item-requirement	0x140a2adb0	0x140a2b369	cstring	0x1416cb9e0	sewn-imageless 
+reference	job-item-requirement	0x140a2adb0	0x140a2b385	cstring	0x1416cb9f0	screw 
+reference	job-item-requirement	0x140a2adb0	0x140a2b3ac	cstring	0x1416cb9f8	fire-safe 
+reference	job-item-requirement	0x140a2adb0	0x140a2b3cb	cstring	0x1416cba08	magma-safe 
+reference	job-item-requirement	0x140a2adb0	0x140a2b3e7	cstring	0x1416cba18	building material 
+reference	job-item-requirement	0x140a2adb0	0x140a2b406	cstring	0x1416cba30	non-economic 
+reference	job-item-requirement	0x140a2adb0	0x140a2b425	cstring	0x1416cb964	plant 
+reference	job-item-requirement	0x140a2adb0	0x140a2b444	cstring	0x1416cb96c	silk 
+reference	job-item-requirement	0x140a2adb0	0x140a2b45f	cstring	0x1416cb974	yarn 
+reference	job-item-requirement	0x140a2adb0	0x140a2b47e	cstring	0x1416cb980	leather 
+reference	job-item-requirement	0x140a2adb0	0x140a2b49d	cstring	0x1416cb98c	bone 
+reference	job-item-requirement	0x140a2adb0	0x140a2b4bc	cstring	0x1416cb998	hair/wool 
+reference	job-item-requirement	0x140a2adb0	0x140a2b4db	cstring	0x1416cb9a4	shell 
+reference	job-item-requirement	0x140a2adb0	0x140a2b4fa	cstring	0x1416cb9ac	horn 
+reference	job-item-requirement	0x140a2adb0	0x140a2b519	cstring	0x1416cb8f8	pearl 
+reference	job-item-requirement	0x140a2adb0	0x140a2b538	cstring	0x1416cb900	plaster-containing 
+reference	job-item-requirement	0x140a2adb0	0x140a2b55e	cstring	0x1416cb914	soap 
+reference	job-item-requirement	0x140a2adb0	0x140a2b57d	cstring	0x1416cb920	ivory/tooth 
+reference	job-item-requirement	0x140a2adb0	0x140a2b59c	cstring	0x1416cb930	lye/milk-free 
+reference	job-item-requirement	0x140a2adb0	0x140a2b5bb	cstring	0x1416cb940	blunt 
+reference	job-item-requirement	0x140a2adb0	0x140a2b5da	cstring	0x1416cb948	unengraved 
+reference	job-item-requirement	0x140a2adb0	0x140a2b5f5	cstring	0x1416cb958	unimproved 
+reference	job-item-requirement	0x140a2adb0	0x140a2b614	cstring	0x1416cb898	written-on 
+reference	job-item-requirement	0x140a2adb0	0x140a2b630	cstring	0x1416cb8a8	non-absorbent 
+reference	job-item-requirement	0x140a2adb0	0x140a2b64c	cstring	0x1416cb8b8	food storage 
+reference	job-item-requirement	0x140a2adb0	0x140a2b668	cstring	0x1416cb8c8	non-pressed 
+reference	job-item-requirement	0x140a2adb0	0x140a2b68e	cstring	0x1416cb8d8	woven 
+reference	job-item-requirement	0x140a2adb0	0x140a2b6aa	cstring	0x1416cb8e0	hard 
+reference	job-item-requirement	0x140a2adb0	0x140a2b6c9	cstring	0x1416cb8e8	metal 
+reference	job-item-requirement	0x140a2adb0	0x140a2b6e8	cstring	0x1416cb8f0	sand 
+reference	job-item-requirement	0x140a2adb0	0x140a2b707	cstring	0x1416cbfc8	edged 
+reference	job-item-requirement	0x140a2adb0	0x140a2b726	cstring	0x1416cbfd0	on-ground 
+reference	job-item-requirement	0x140a2adb0	0x140a2b745	cstring	0x1416cbfe0	divine 
+reference	job-item-requirement	0x140a2adb0	0x140a2b764	cstring	0x1416cbfe8	artifact 
+reference	job-item-requirement	0x140a2adb0	0x140a2b783	cstring	0x1416cbff8	non-artifact 
+reference	job-item-requirement	0x140a2adb0	0x140a2b7a2	cstring	0x1416cc008	wooden 
+reference	job-item-requirement	0x140a2adb0	0x140a2b7c1	cstring	0x1416cc010	stone 
+reference	job-item-requirement	0x140a2adb0	0x140a2b7e0	cstring	0x1416cc018	gem 
+reference	job-item-requirement	0x140a2adb0	0x140a2b7ff	cstring	0x1416cbf50	grown 
+reference	job-item-requirement	0x140a2adb0	0x140a2b88c	cstring	0x1415e873c	 
+reference	job-item-requirement	0x140a2adb0	0x140a2b8b3	cstring	0x141789108	unknown material
+reference	job-item-requirement	0x140a2adb0	0x140a2b952	cstring	0x1416cbf58	-bearing 
+reference	job-item-requirement	0x140a2adb0	0x140a2b960	cstring	0x1416cbf60	 
+reference	job-item-requirement	0x140a2adb0	0x140a2ba3f	cstring	0x1416cbf68	CALCIUM_CARBONATE
+reference	job-item-requirement	0x140a2adb0	0x140a2ba55	cstring	0x1416cbf80	calcite/limestone/chalk/marble 
+reference	job-item-requirement	0x140a2adb0	0x140a2ba7b	cstring	0x1416cbfa0	CAN_GLAZE
+reference	job-item-requirement	0x140a2adb0	0x140a2ba91	cstring	0x1416cbfb0	glazable 
+reference	job-item-requirement	0x140a2adb0	0x140a2bac3	cstring	0x1416cbfbc	FAT
+reference	job-item-requirement	0x140a2adb0	0x140a2bad9	cstring	0x1416cbfc0	fat 
+reference	job-item-requirement	0x140a2adb0	0x140a2bb03	cstring	0x141629a04	FLUX
+reference	job-item-requirement	0x140a2adb0	0x140a2bb19	cstring	0x1416cbf00	flux 
+reference	job-item-requirement	0x140a2adb0	0x140a2bb4b	cstring	0x1416cbf08	GYPSUM
+reference	job-item-requirement	0x140a2adb0	0x140a2bb61	cstring	0x1416cbf10	gypsum 
+reference	job-item-requirement	0x140a2adb0	0x140a2bb8b	cstring	0x1416bef58	PAPER_PLANT
+reference	job-item-requirement	0x140a2adb0	0x140a2bba1	cstring	0x1416cbf18	paper-making 
+reference	job-item-requirement	0x140a2adb0	0x140a2bbd3	cstring	0x1416bef48	PAPER_SLURRY
+reference	job-item-requirement	0x140a2adb0	0x140a2bbe9	cstring	0x1416cbf28	paper-slurry 
+reference	job-item-requirement	0x140a2adb0	0x140a2bc13	cstring	0x1416cbf38	TALLOW
+reference	job-item-requirement	0x140a2adb0	0x140a2bc29	cstring	0x1416cbf40	tallow 
+reference	job-item-requirement	0x140a2adb0	0x140a2bc52	cstring	0x141652948	WAX
+reference	job-item-requirement	0x140a2adb0	0x140a2bc68	cstring	0x1416cbf48	wax 
+reference	job-item-requirement	0x140a2adb0	0x140a2bcd9	cstring	0x1416cbe80	BAG_ITEM
+reference	job-item-requirement	0x140a2adb0	0x140a2bcef	cstring	0x1416cbe90	bag-processable 
+reference	job-item-requirement	0x140a2adb0	0x140a2bd15	cstring	0x14163d1d0	DRINK_MAT
+reference	job-item-requirement	0x140a2adb0	0x140a2bd2e	cstring	0x1416cbea8	fermentable 
+reference	job-item-requirement	0x140a2adb0	0x140a2bd60	cstring	0x141629a60	FIRED_MAT
+reference	job-item-requirement	0x140a2adb0	0x140a2bd76	cstring	0x1416cbeb8	clay 
+reference	job-item-requirement	0x140a2adb0	0x140a2bda0	cstring	0x1416cbec0	GLAZE_MAT
+reference	job-item-requirement	0x140a2adb0	0x140a2bdb6	cstring	0x1416cbecc	glaze 
+reference	job-item-requirement	0x140a2adb0	0x140a2bde8	cstring	0x1416cbed8	HONEYCOMB_PRESS_MAT
+reference	job-item-requirement	0x140a2adb0	0x140a2bdfe	cstring	0x1416cbef0	honey-bearing 
+reference	job-item-requirement	0x140a2adb0	0x140a2be28	cstring	0x1416cbde8	PARCHMENT_MAT
+reference	job-item-requirement	0x140a2adb0	0x140a2be3e	cstring	0x1416cbdf8	parchment-producing 
+reference	job-item-requirement	0x140a2adb0	0x140a2be70	cstring	0x1416cbe10	PRESS_LIQUID_MAT
+reference	job-item-requirement	0x140a2adb0	0x140a2be86	cstring	0x1416cbe28	oil-bearing 
+reference	job-item-requirement	0x140a2adb0	0x140a2beb0	cstring	0x1416cbe38	PRESS_PAPER_MAT
+reference	job-item-requirement	0x140a2adb0	0x140a2bec6	cstring	0x1416cbe48	paper-slurryable 
+reference	job-item-requirement	0x140a2adb0	0x140a2bef8	cstring	0x1416cbe60	RENDER_MAT
+reference	job-item-requirement	0x140a2adb0	0x140a2bf0e	cstring	0x1416cbe70	renderable 
+reference	job-item-requirement	0x140a2adb0	0x140a2bf38	cstring	0x1416cbd78	SOAP_MAT
+reference	job-item-requirement	0x140a2adb0	0x140a2bf4e	cstring	0x1416cbd84	fatty 
+reference	job-item-requirement	0x140a2adb0	0x140a2bf80	cstring	0x141651c18	TAN_MAT
+reference	job-item-requirement	0x140a2adb0	0x140a2bf96	cstring	0x1416cbd90	tannable 
+reference	job-item-requirement	0x140a2adb0	0x140a2c02f	cstring	0x1416cbda0	-producing 
+reference	job-item-requirement	0x140a2adb0	0x140a2c03d	cstring	0x1416cbda8	ng 
+reference	job-item-requirement	0x140a2adb0	0x140a2c04a	cstring	0x1416cbdaa	 
+reference	job-item-requirement	0x140a2adb0	0x140a2c130	cstring	0x1416cbdb0	-containing 
+reference	job-item-requirement	0x140a2adb0	0x140a2c173	cstring	0x1416cbdc0	color 
+reference	job-item-requirement	0x140a2adb0	0x140a2c1b6	cstring	0x1415e873c	 
+reference	job-item-requirement	0x140a2adb0	0x140a2c1f6	cstring	0x1416cbdc8	liquid cooking
+reference	job-item-requirement	0x140a2adb0	0x140a2c208	cstring	0x1416cbdd8	liquid scoop
+reference	job-item-requirement	0x140a2adb0	0x140a2c21a	cstring	0x1416cbce0	powder grinding receptacle
+reference	job-item-requirement	0x140a2adb0	0x140a2c226	cstring	0x1416cbd00	powder grinding
+reference	job-item-requirement	0x140a2adb0	0x140a2c238	cstring	0x1416cbd10	meat carving
+reference	job-item-requirement	0x140a2adb0	0x140a2c24a	cstring	0x1416cbd20	meat boning
+reference	job-item-requirement	0x140a2adb0	0x140a2c25c	cstring	0x1416cbd30	meat slicing
+reference	job-item-requirement	0x140a2adb0	0x140a2c26e	cstring	0x1416cbd40	meat cleaving
+reference	job-item-requirement	0x140a2adb0	0x140a2c280	cstring	0x1416cbd50	meat-carving holder
+reference	job-item-requirement	0x140a2adb0	0x140a2c292	cstring	0x1416cbd68	meal container
+reference	job-item-requirement	0x140a2adb0	0x140a2c2a4	cstring	0x1416cbc50	liquid container
+reference	job-item-requirement	0x140a2adb0	0x140a2c2b6	cstring	0x1416cbc68	food storage
+reference	job-item-requirement	0x140a2adb0	0x140a2c2c8	cstring	0x1416cbc78	hive
+reference	job-item-requirement	0x140a2adb0	0x140a2c2da	cstring	0x1416cbc80	nest box
+reference	job-item-requirement	0x140a2adb0	0x140a2c2e9	cstring	0x1416cbc90	small object container
+reference	job-item-requirement	0x140a2adb0	0x140a2c2fb	cstring	0x1416cbca8	track cart
+reference	job-item-requirement	0x140a2adb0	0x140a2c30d	cstring	0x1416cbcb8	heavy object hauler
+reference	job-item-requirement	0x140a2adb0	0x140a2c31f	cstring	0x1416cbcd0	stand-and-work
+reference	job-item-requirement	0x140a2adb0	0x140a2c32e	cstring	0x1416cc058	sheet roller
+reference	job-item-requirement	0x140a2adb0	0x140a2c33a	cstring	0x1416cc068	folded sheet protector
+reference	job-item-requirement	0x140a2adb0	0x140a2c349	cstring	0x1416cc080	writing container
+reference	job-item-requirement	0x140a2adb0	0x140a2c358	cstring	0x1416cc098	bookcase
+reference	job-item-requirement	0x140a2adb0	0x140a2c367	cstring	0x1416cc0a8	display object
+reference	job-item-requirement	0x140a2adb0	0x140a2c376	cstring	0x1416cc0b8	offering placement
+reference	job-item-requirement	0x140a2adb0	0x140a2c385	cstring	0x1416cc0d0	divination
+reference	job-item-requirement	0x140a2adb0	0x140a2c38e	cstring	0x1416cc0e0	games of chance
+reference	job-item-requirement	0x140a2adb0	0x140a2c3be	cstring	0x1415e873c	 
+reference	job-item-requirement	0x140a2adb0	0x140a2c3d3	cstring	0x141681050	body part
+reference	job-item-requirement	0x140a2adb0	0x140a2c412	cstring	0x1415e873c	 
+reference	job-item-requirement	0x140a2adb0	0x140a2c4f4	cstring	0x1416cc020	 that isn't a bin
+reference	requirement-item-noun	0x140a82c10	0x140a82d27	cstring	0x141649d9c	large
+reference	requirement-item-noun	0x140a82c10	0x140a82d30	cstring	0x141649da0	e
+reference	requirement-item-noun	0x140a82c10	0x140a82d39	cstring	0x141686358	small
+reference	requirement-item-noun	0x140a82c10	0x140a82d42	cstring	0x14168635c	l
+reference	requirement-item-noun	0x140a82c10	0x140a82d8c	cstring	0x1416cbf50	grown 
+reference	requirement-item-noun	0x140a82c10	0x140a82e66	cstring	0x14167ccf0	logs
+reference	requirement-item-noun	0x140a82c10	0x140a82ed8	cstring	0x1416ce7e0	branch
+reference	requirement-item-noun	0x140a82c10	0x140a82efd	cstring	0x1416ce880	es
+reference	requirement-item-noun	0x140a82c10	0x140a82f1d	cstring	0x141601038	rough gems
+reference	requirement-item-noun	0x140a82c10	0x140a82f36	cstring	0x1416ce870	raw green glass
+reference	requirement-item-noun	0x140a82c10	0x140a82f4f	cstring	0x1416ce860	raw clear glass
+reference	requirement-item-noun	0x140a82c10	0x140a82f68	cstring	0x1416ce848	raw crystal glass
+reference	requirement-item-noun	0x140a82c10	0x140a82f8a	cstring	0x141601038	rough gems
+reference	requirement-item-noun	0x140a82c10	0x140a82fa8	cstring	0x1416cc1b0	rough 
+reference	requirement-item-noun	0x140a82c10	0x140a83047	cstring	0x1416862ac	small 
+reference	requirement-item-noun	0x140a82c10	0x140a8305e	cstring	0x1416862ac	small 
+reference	requirement-item-noun	0x140a82c10	0x140a8313e	cstring	0x1416ce7ac	rock
+reference	requirement-item-noun	0x140a82c10	0x140a8315e	cstring	0x1416ce7a0	small rock
+reference	requirement-item-noun	0x140a82c10	0x140a831b7	cstring	0x1416ce790	stone boulders
+reference	requirement-item-noun	0x140a82c10	0x140a831dd	cstring	0x1416ce780	boulders
+reference	requirement-item-noun	0x140a82c10	0x140a832ba	cstring	0x1416ce738	bars
+reference	requirement-item-noun	0x140a82c10	0x140a832d3	cstring	0x1416ce7c0	charcoal
+reference	requirement-item-noun	0x140a82c10	0x140a832e9	cstring	0x1416ce7b4	coke
+reference	requirement-item-noun	0x140a82c10	0x140a832f2	cstring	0x1416ce740	refined coal
+reference	requirement-item-noun	0x140a82c10	0x140a8330b	cstring	0x14163e59c	metal
+reference	requirement-item-noun	0x140a82c10	0x140a8331a	cstring	0x1416ce7cc	 bars
+reference	requirement-item-noun	0x140a82c10	0x140a833ca	cstring	0x1416ce7d8	 wafers
+reference	requirement-item-noun	0x140a82c10	0x140a834b8	cstring	0x1416011f0	cut gems
+reference	requirement-item-noun	0x140a82c10	0x140a834d1	cstring	0x1416ce720	cut green glass gems
+reference	requirement-item-noun	0x140a82c10	0x140a834ea	cstring	0x1416ce708	cut clear glass gems
+reference	requirement-item-noun	0x140a82c10	0x140a83500	cstring	0x1416ce768	cut crystal glass gems
+reference	requirement-item-noun	0x140a82c10	0x140a8351b	cstring	0x1416ce760	gems
+reference	requirement-item-noun	0x140a82c10	0x140a83658	cstring	0x1416ce758	blocks
+reference	requirement-item-noun	0x140a82c10	0x140a8366f	cstring	0x1416ce758	blocks
+reference	requirement-item-noun	0x140a82c10	0x140a8371d	cstring	0x1416ce6ec	door
+reference	requirement-item-noun	0x140a82c10	0x140a83724	cstring	0x1416ce750	portal
+reference	requirement-item-noun	0x140a82c10	0x140a8379a	cstring	0x1416ce6e0	floodgate
+reference	requirement-item-noun	0x140a82c10	0x140a8380a	cstring	0x1416ce6d0	hatch cover
+reference	requirement-item-noun	0x140a82c10	0x140a8387a	cstring	0x1416ce6c8	grate
+reference	requirement-item-noun	0x140a82c10	0x140a838ea	cstring	0x14162fdb4	table
+reference	requirement-item-noun	0x140a82c10	0x140a8395a	cstring	0x14163cea0	cabinet
+reference	requirement-item-noun	0x140a82c10	0x140a839ca	cstring	0x14163ce90	weapon rack
+reference	requirement-item-noun	0x140a82c10	0x140a83a3a	cstring	0x14163ce08	armor stand
+reference	requirement-item-noun	0x140a82c10	0x140a83aaa	cstring	0x1416ce704	bin
+reference	requirement-item-noun	0x140a82c10	0x140a83b51	cstring	0x1416ce700	box
+reference	requirement-item-noun	0x140a82c10	0x140a83b6a	cstring	0x1416ce6fc	e
+reference	requirement-item-noun	0x140a82c10	0x140a83b93	cstring	0x1416ce6f4	coffer
+reference	requirement-item-noun	0x140a82c10	0x140a83ba2	cstring	0x14163cea8	chest
+reference	requirement-item-noun	0x140a82c10	0x140a83bc3	cstring	0x1416ce6a0	boxe
+reference	requirement-item-noun	0x140a82c10	0x140a83bd8	cstring	0x1415e9298	s
+reference	requirement-item-noun	0x140a82c10	0x140a83bec	cstring	0x1416ce700	box
+reference	requirement-item-noun	0x140a82c10	0x140a83c64	cstring	0x1416ce69c	bag
+reference	requirement-item-noun	0x140a82c10	0x140a83cff	cstring	0x1416ce690	backpack
+reference	requirement-item-noun	0x140a82c10	0x140a83dbc	cstring	0x1416ce6c0	cast
+reference	requirement-item-noun	0x140a82c10	0x140a83dc8	cstring	0x1416ce680	limb/body 
+reference	requirement-item-noun	0x140a82c10	0x140a83dd7	cstring	0x1416ce6c0	cast
+reference	requirement-item-noun	0x140a82c10	0x140a83e37	cstring	0x1416ce680	limb/body 
+reference	requirement-item-noun	0x140a82c10	0x140a83e46	cstring	0x1416ce6c0	cast
+reference	requirement-item-noun	0x140a82c10	0x140a83eb6	cstring	0x1416ce6b8	splint
+reference	requirement-item-noun	0x140a82c10	0x140a83f20	cstring	0x1416ce6b0	crutch
+reference	requirement-item-noun	0x140a82c10	0x140a83fbb	cstring	0x1416ce6a8	quiver
+reference	requirement-item-noun	0x140a82c10	0x140a8403a	cstring	0x1416ce63c	casket
+reference	requirement-item-noun	0x140a82c10	0x140a84085	cstring	0x1416ce630	sarcophag
+reference	requirement-item-noun	0x140a82c10	0x140a84094	cstring	0x141642184	us
+reference	requirement-item-noun	0x140a82c10	0x140a8409b	cstring	0x1416c0828	i
+reference	requirement-item-noun	0x140a82c10	0x140a840b7	cstring	0x14162fe0c	coffin
+reference	requirement-item-noun	0x140a82c10	0x140a841d4	cstring	0x1416ce61c	chain
+reference	requirement-item-noun	0x140a82c10	0x140a841e8	cstring	0x1416ce624	rope
+reference	requirement-item-noun	0x140a82c10	0x140a84328	cstring	0x1416ce664	vial
+reference	requirement-item-noun	0x140a82c10	0x140a84339	cstring	0x1416ce65c	flask
+reference	requirement-item-noun	0x140a82c10	0x140a84350	cstring	0x1416ce670	waterskin
+reference	requirement-item-noun	0x140a82c10	0x140a843f9	cstring	0x1416ce648	musical instrument
+reference	requirement-item-noun	0x140a82c10	0x140a844db	cstring	0x1416ce5e8	unglazed 
+reference	requirement-item-noun	0x140a82c10	0x140a84643	cstring	0x1415e873c	 
+reference	requirement-item-noun	0x140a82c10	0x140a8465d	cstring	0x1416c1e44	tool
+reference	requirement-item-noun	0x140a82c10	0x140a846fd	cstring	0x1416c1d64	toy
+reference	requirement-item-noun	0x140a82c10	0x140a847ad	cstring	0x1416ce5e0	cup
+reference	requirement-item-noun	0x140a82c10	0x140a847e1	cstring	0x1416ce5dc	mug
+reference	requirement-item-noun	0x140a82c10	0x140a847fb	cstring	0x1416ce5d4	goblet
+reference	requirement-item-noun	0x140a82c10	0x140a8486b	cstring	0x1416ce614	window
+reference	requirement-item-noun	0x140a82c10	0x140a8491a	cstring	0x1416ce5fc	cage
+reference	requirement-item-noun	0x140a82c10	0x140a84921	cstring	0x1416ce608	terrarium
+reference	requirement-item-noun	0x140a82c10	0x140a84995	cstring	0x1416ce5f4	barrel
+reference	requirement-item-noun	0x140a82c10	0x140a84a05	cstring	0x1416cec8c	bucket
+reference	requirement-item-noun	0x140a82c10	0x140a84a75	cstring	0x1416cec80	animal trap
+reference	requirement-item-noun	0x140a82c10	0x140a84af1	cstring	0x14162fe04	chair
+reference	requirement-item-noun	0x140a82c10	0x140a84b0b	cstring	0x1416cec74	throne
+reference	requirement-item-noun	0x140a82c10	0x140a84bc1	cstring	0x1416cec70	web
+reference	requirement-item-noun	0x140a82c10	0x140a84c0c	cstring	0x1416cecb8	strands
+reference	requirement-item-noun	0x140a82c10	0x140a84c3f	cstring	0x1416158b4	yarn
+reference	requirement-item-noun	0x140a82c10	0x140a84c50	cstring	0x14161589c	thread
+reference	requirement-item-noun	0x140a82c10	0x140a84cc5	cstring	0x1416158a4	cloth
+reference	requirement-item-noun	0x140a82c10	0x140a84dcf	cstring	0x1416cecac	sheet
+reference	requirement-item-noun	0x140a82c10	0x140a84df2	cstring	0x1416ceca0	tanned hide
+reference	requirement-item-noun	0x140a82c10	0x140a84e55	cstring	0x1416cec94	totem
+reference	requirement-item-noun	0x140a82c10	0x140a84ebe	cstring	0x1416cec40	-bound 
+reference	requirement-item-noun	0x140a82c10	0x140a84eda	cstring	0x1416cec2c	codex
+reference	requirement-item-noun	0x140a82c10	0x140a84ee1	cstring	0x1416cec38	codices
+reference	requirement-item-noun	0x140a82c10	0x140a84f60	cstring	0x1416cec20	figurine
+reference	requirement-item-noun	0x140a82c10	0x140a84f7e	cstring	0x1416cec68	rotten 
+reference	requirement-item-noun	0x140a82c10	0x140a84fa3	cstring	0x14164fc00	drink
+reference	requirement-item-noun	0x140a82c10	0x140a84fe6	cstring	0x1416cec68	rotten 
+reference	requirement-item-noun	0x140a82c10	0x140a851cb	cstring	0x1416cec60	filthy 
+reference	requirement-item-noun	0x140a82c10	0x140a851e4	cstring	0x1416cec58	sticky 
+reference	requirement-item-noun	0x140a82c10	0x140a85203	cstring	0x1416cec48	vomitous 
+reference	requirement-item-noun	0x140a82c10	0x140a8521f	cstring	0x1416cebec	slimy 
+reference	requirement-item-noun	0x140a82c10	0x140a85238	cstring	0x1416b1070	stagnant 
+reference	requirement-item-noun	0x140a82c10	0x140a85254	cstring	0x1416cebe4	dirty 
+reference	requirement-item-noun	0x140a82c10	0x140a85270	cstring	0x1416cebdc	gooey 
+reference	requirement-item-noun	0x140a82c10	0x140a85289	cstring	0x1416cebd0	purulent 
+reference	requirement-item-noun	0x140a82c10	0x140a852a2	cstring	0x1416cec10	ichorous 
+reference	requirement-item-noun	0x140a82c10	0x140a852bb	cstring	0x1416cec08	bloody 
+reference	requirement-item-noun	0x140a82c10	0x140a852fa	cstring	0x1416a6358	liquid
+reference	requirement-item-noun	0x140a82c10	0x140a8543c	cstring	0x1416cebfc	 paste
+reference	requirement-item-noun	0x140a82c10	0x140a85491	cstring	0x1416cebf4	glob
+reference	requirement-item-noun	0x140a82c10	0x140a85692	cstring	0x1416ceb80	 laced with 
+reference	requirement-item-noun	0x140a82c10	0x140a85706	cstring	0x1415e90d8	, 
+reference	requirement-item-noun	0x140a82c10	0x140a85716	cstring	0x1415e9110	 and 
+reference	requirement-item-noun	0x140a82c10	0x140a8577b	cstring	0x1416cec68	rotten 
+reference	requirement-item-noun	0x140a82c10	0x140a85818	cstring	0x1416ceb70	 dye mix
+reference	requirement-item-noun	0x140a82c10	0x140a8583c	cstring	0x1416ceb64	powder
+reference	requirement-item-noun	0x140a82c10	0x140a85896	cstring	0x1416cec68	rotten 
+reference	requirement-item-noun	0x140a82c10	0x140a858b8	cstring	0x1416ceb5c	cheese
+reference	requirement-item-noun	0x140a82c10	0x140a85940	cstring	0x1416cebc0	catapult parts
+reference	requirement-item-noun	0x140a82c10	0x140a859b8	cstring	0x1416ceba8	bolt thrower parts
+reference	requirement-item-noun	0x140a82c10	0x140a85a30	cstring	0x1416ceb98	mechanisms
+reference	requirement-item-noun	0x140a82c10	0x140a85adf	cstring	0x1416ceb90	tube
+reference	requirement-item-noun	0x140a82c10	0x140a85af9	cstring	0x1416ceb10	pipe section
+reference	requirement-item-noun	0x140a82c10	0x140a85b97	cstring	0x1416ceb00	trap component
+reference	requirement-item-noun	0x140a82c10	0x140a85bc8	cstring	0x1415e873c	 
+reference	requirement-item-noun	0x140a82c10	0x140a85caa	cstring	0x1416ceaf0	ballista parts
+reference	requirement-item-noun	0x140a82c10	0x140a85d22	cstring	0x1416ceae8	anvil
+reference	requirement-item-noun	0x140a82c10	0x140a85d92	cstring	0x1416ceb54	amulet
+reference	requirement-item-noun	0x140a82c10	0x140a85e02	cstring	0x1416ceb40	ballista arrow head
+reference	requirement-item-noun	0x140a82c10	0x140a85ea9	cstring	0x1416ceb30	siege ammo
+reference	requirement-item-noun	0x140a82c10	0x140a85ff3	cstring	0x1416ceb20	ammunition
+reference	requirement-item-noun	0x140a82c10	0x140a8606b	cstring	0x1416ceaa8	scepter
+reference	requirement-item-noun	0x140a82c10	0x140a860db	cstring	0x1416cea9c	crown
+reference	requirement-item-noun	0x140a82c10	0x140a86145	cstring	0x1416cea94	coin
+reference	requirement-item-noun	0x140a82c10	0x140a86164	cstring	0x1416cea88	perfect 
+reference	requirement-item-noun	0x140a82c10	0x140a86173	cstring	0x14164a2c8	large 
+reference	requirement-item-noun	0x140a82c10	0x140a8625b	cstring	0x1416cead8	green glass 
+reference	requirement-item-noun	0x140a82c10	0x140a86271	cstring	0x1416ceac8	clear glass 
+reference	requirement-item-noun	0x140a82c10	0x140a86287	cstring	0x1416ceab8	crystal glass 
+reference	requirement-item-noun	0x140a82c10	0x140a862a3	cstring	0x1416158fc	gem
+reference	requirement-item-noun	0x140a82c10	0x140a8635b	cstring	0x1416ceab0	 gem
+reference	requirement-item-noun	0x140a82c10	0x140a86436	cstring	0x1416cea50	ring
+reference	requirement-item-noun	0x140a82c10	0x140a864a6	cstring	0x1416cea48	earring
+reference	requirement-item-noun	0x140a82c10	0x140a86516	cstring	0x1416cea38	bracelet
+reference	requirement-item-noun	0x140a82c10	0x140a86586	cstring	0x14162fdb0	bed
+reference	requirement-item-noun	0x140a82c10	0x140a865f6	cstring	0x1416cea28	traction bench
+reference	requirement-item-noun	0x140a82c10	0x140a86666	cstring	0x1416cea7c	quern
+reference	requirement-item-noun	0x140a82c10	0x140a866d6	cstring	0x1416cea70	millstone
+reference	requirement-item-noun	0x140a82c10	0x140a86746	cstring	0x1416cea64	statue
+reference	requirement-item-noun	0x140a82c10	0x140a86852	cstring	0x1416cea58	memorial
+reference	requirement-item-noun	0x140a82c10	0x140a86866	cstring	0x1416ce9a0	food imports sign
+reference	requirement-item-noun	0x140a82c10	0x140a8687a	cstring	0x1416ce988	clothing imports sign
+reference	requirement-item-noun	0x140a82c10	0x140a8688e	cstring	0x1416ce970	general imports sign
+reference	requirement-item-noun	0x140a82c10	0x140a868a2	cstring	0x1416ce960	cloth shop sign
+reference	requirement-item-noun	0x140a82c10	0x140a868b6	cstring	0x1416cea10	leather shop sign
+reference	requirement-item-noun	0x140a82c10	0x140a868ca	cstring	0x1416ce9f0	woven clothing shop sign
+reference	requirement-item-noun	0x140a82c10	0x140a868de	cstring	0x1416ce9d0	leather clothing shop sign
+reference	requirement-item-noun	0x140a82c10	0x140a868f2	cstring	0x1416ce9b8	bone carver's shop sign
+reference	requirement-item-noun	0x140a82c10	0x140a86906	cstring	0x1416cf090	gem cutter's shop sign
+reference	requirement-item-noun	0x140a82c10	0x140a8691a	cstring	0x1416cf078	weaponsmith's shop sign
+reference	requirement-item-noun	0x140a82c10	0x140a8692e	cstring	0x1416cf060	bowyer's shop sign
+reference	requirement-item-noun	0x140a82c10	0x140a86942	cstring	0x1416cf048	blacksmith's shop sign
+reference	requirement-item-noun	0x140a82c10	0x140a86956	cstring	0x1416cf0f0	armorsmith's shop sign
+reference	requirement-item-noun	0x140a82c10	0x140a8696a	cstring	0x1416cf0d8	metal craft shop sign
+reference	requirement-item-noun	0x140a82c10	0x140a8697e	cstring	0x1416cf0c0	leather goods shop sign
+reference	requirement-item-noun	0x140a82c10	0x140a86992	cstring	0x1416cf0a8	carpenter's shop sign
+reference	requirement-item-noun	0x140a82c10	0x140a869a6	cstring	0x1416ceff8	stone furniture shop sign
+reference	requirement-item-noun	0x140a82c10	0x140a869ba	cstring	0x1416cefd8	metal furniture shop sign
+reference	requirement-item-noun	0x140a82c10	0x140a869ce	cstring	0x1416cefc8	tavern sign
+reference	requirement-item-noun	0x140a82c10	0x140a869e2	cstring	0x1416cefbc	slab
+reference	requirement-item-noun	0x140a82c10	0x140a869f6	cstring	0x1416cefbc	slab
+reference	requirement-item-noun	0x140a82c10	0x140a86a14	cstring	0x1416cec68	rotten 
+reference	requirement-item-noun	0x140a82c10	0x140a86a29	cstring	0x1416cf03c	corpse
+reference	requirement-item-noun	0x140a82c10	0x140a86a47	cstring	0x1416cec68	rotten 
+reference	requirement-item-noun	0x140a82c10	0x140a86a6b	cstring	0x1416158cc	tooth
+reference	requirement-item-noun	0x140a82c10	0x140a86a7c	cstring	0x1416cf034	teeth
+reference	requirement-item-noun	0x140a82c10	0x140a86a91	cstring	0x1416158c4	bone
+reference	requirement-item-noun	0x140a82c10	0x140a86aa9	cstring	0x1416158bc	shell
+reference	requirement-item-noun	0x140a82c10	0x140a86ac1	cstring	0x1416cf028	plant part
+reference	requirement-item-noun	0x140a82c10	0x140a86ad9	cstring	0x1416cf018	silk body part
+reference	requirement-item-noun	0x140a82c10	0x140a86af1	cstring	0x1416cef70	leather body part
+reference	requirement-item-noun	0x140a82c10	0x140a86b09	cstring	0x1416cef58	wooden body part
+reference	requirement-item-noun	0x140a82c10	0x140a86b23	cstring	0x1416cef48	soap body part
+reference	requirement-item-noun	0x140a82c10	0x140a86b3d	cstring	0x1416158e4	horn
+reference	requirement-item-noun	0x140a82c10	0x140a86b57	cstring	0x1416158dc	pearl
+reference	requirement-item-noun	0x140a82c10	0x140a86b71	cstring	0x1416cef38	yarn body part
+reference	requirement-item-noun	0x140a82c10	0x140a86b89	cstring	0x1416cefa8	strand body part
+reference	requirement-item-noun	0x140a82c10	0x140a86b92	cstring	0x141681050	body part
+reference	requirement-item-noun	0x140a82c10	0x140a86bbb	cstring	0x1416cefa0	Rotten 
+reference	requirement-item-noun	0x140a82c10	0x140a86d22	cstring	0x14167f0c0	remains
+reference	requirement-item-noun	0x140a82c10	0x140a86d81	cstring	0x1416cef94	seeds
+reference	requirement-item-noun	0x140a82c10	0x140a86df2	cstring	0x1416cef88	withered 
+reference	requirement-item-noun	0x140a82c10	0x140a86e66	cstring	0x1416ceee0	leaves and fruit
+reference	requirement-item-noun	0x140a82c10	0x140a86e77	cstring	0x1416ceed0	leaf or fruit
+reference	requirement-item-noun	0x140a82c10	0x140a86eaa	cstring	0x1416cef88	withered 
+reference	requirement-item-noun	0x140a82c10	0x140a86efd	cstring	0x141614d54	plant
+reference	requirement-item-noun	0x140a82c10	0x140a86f16	cstring	0x1415e9298	s
+reference	requirement-item-noun	0x140a82c10	0x140a86f3c	cstring	0x1416cec68	rotten 
+reference	requirement-item-noun	0x140a82c10	0x140a86f54	cstring	0x1416ceec8	raw 
+reference	requirement-item-noun	0x140a82c10	0x140a870d5	cstring	0x1415e90d8	, 
+reference	requirement-item-noun	0x140a82c10	0x140a870eb	cstring	0x1415e90d8	, 
+reference	requirement-item-noun	0x140a82c10	0x140a87104	cstring	0x1416a11f0	fish
+reference	requirement-item-noun	0x140a82c10	0x140a8712a	cstring	0x1416cec68	rotten 
+reference	requirement-item-noun	0x140a82c10	0x140a87251	cstring	0x1415e873c	 
+reference	requirement-item-noun	0x140a82c10	0x140a87266	cstring	0x1416ceec4	egg
+reference	requirement-item-noun	0x140a82c10	0x140a8728c	cstring	0x1416cec68	rotten 
+reference	requirement-item-noun	0x140a82c10	0x140a8738b	cstring	0x1416a11f0	fish
+reference	requirement-item-noun	0x140a82c10	0x140a873a8	cstring	0x1416cef2c	live 
+reference	requirement-item-noun	0x140a82c10	0x140a873e1	cstring	0x1416cef18	small live animal
+reference	requirement-item-noun	0x140a82c10	0x140a873fb	cstring	0x1416cef0c	tame 
+reference	requirement-item-noun	0x140a82c10	0x140a87404	cstring	0x1416ceef8	small tame animal
+reference	requirement-item-noun	0x140a82c10	0x140a8741b	cstring	0x1416cee88	prepared meal
+reference	requirement-item-noun	0x140a82c10	0x140a87435	cstring	0x1416cec68	rotten 
+reference	requirement-item-noun	0x140a82c10	0x140a8744a	cstring	0x1416cee78	preserved 
+reference	requirement-item-noun	0x140a82c10	0x140a8750c	cstring	0x1416cee70	 chops
+reference	requirement-item-noun	0x140a82c10	0x140a8751d	cstring	0x1416cee68	 chop
+reference	requirement-item-noun	0x140a82c10	0x140a87556	cstring	0x1416ceebc	meat
+reference	requirement-item-noun	0x140a82c10	0x140a87570	cstring	0x1416ceebc	meat
+reference	requirement-item-noun	0x140a82c10	0x140a87602	cstring	0x1416c1ecc	weapon
+reference	requirement-item-noun	0x140a82c10	0x140a8763b	cstring	0x1415e873c	 
+reference	requirement-item-noun	0x140a82c10	0x140a87767	cstring	0x1416ceea8	suits of 
+reference	requirement-item-noun	0x140a82c10	0x140a87776	cstring	0x1416c1ec4	armor
+reference	requirement-item-noun	0x140a82c10	0x140a877dc	cstring	0x1415e873c	 
+reference	requirement-item-noun	0x140a82c10	0x140a87886	cstring	0x1416ceeb4	chain 
+reference	requirement-item-noun	0x140a82c10	0x140a87995	cstring	0x14163a34c	right 
+reference	requirement-item-noun	0x140a82c10	0x140a879b5	cstring	0x14163a324	left 
+reference	requirement-item-noun	0x140a82c10	0x140a879fe	cstring	0x1416ceeb4	chain 
+reference	requirement-item-noun	0x140a82c10	0x140a87a5f	cstring	0x1415e873c	 
+reference	requirement-item-noun	0x140a82c10	0x140a87a73	cstring	0x1416cee98	handwear
+reference	requirement-item-noun	0x140a82c10	0x140a87b17	cstring	0x1416c1d74	shield
+reference	requirement-item-noun	0x140a82c10	0x140a87b36	cstring	0x1416cee10	/buckler
+reference	requirement-item-noun	0x140a82c10	0x140a87b4a	cstring	0x1416cee10	/buckler
+reference	requirement-item-noun	0x140a82c10	0x140a87c87	cstring	0x1415e873c	 
+reference	requirement-item-noun	0x140a82c10	0x140a87cb7	cstring	0x1416cee00	footwear
+reference	requirement-item-noun	0x140a82c10	0x140a87da8	cstring	0x1416cedf0	headwear
+reference	requirement-item-noun	0x140a82c10	0x140a87dec	cstring	0x1415e873c	 
+reference	requirement-item-noun	0x140a82c10	0x140a87ea8	cstring	0x1416cede8	legwear
+reference	requirement-item-noun	0x140a82c10	0x140a87f2c	cstring	0x1415e873c	 
+reference	requirement-item-noun	0x140a82c10	0x140a88046	cstring	0x1415fcfe0	item
+reference	requirement-item-noun	0x140a82c10	0x140a88077	cstring	0x14161bdcc	 [
+reference	requirement-item-noun	0x140a82c10	0x140a88097	cstring	0x1415fd690	]
+reference	raw-reaction	MAKE WOODEN CHAIR	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:6	RAW	NAME	make wooden chair
+reference	raw-reaction	MAKE WOODEN TABLE	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:21	RAW	NAME	make wooden table
+reference	raw-reaction	MAKE WOODEN BED	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:34	RAW	NAME	make wooden bed
+reference	raw-reaction	MAKE WOODEN CHEST	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:47	RAW	NAME	make wooden chest
+reference	raw-reaction	MAKE WOODEN CABINET	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:60	RAW	NAME	make wooden cabinet
+reference	raw-reaction	MAKE WOODEN DOOR	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:73	RAW	NAME	make wooden door
+reference	raw-reaction	MAKE WOODEN BARREL	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:86	RAW	NAME	make wooden barrel
+reference	raw-reaction	MAKE WOODEN BUCKET	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:99	RAW	NAME	make wooden bucket
+reference	raw-reaction	MAKE WOODEN CASKET	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:112	RAW	NAME	make wooden casket
+reference	raw-reaction	MAKE WOODEN HATCH COVER	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:125	RAW	NAME	make wooden hatch cover
+reference	raw-reaction	MAKE WOODEN GRATE	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:138	RAW	NAME	make wooden grate
+reference	raw-reaction	MAKE WOODEN BIN	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:151	RAW	NAME	make wooden bin
+reference	raw-reaction	MAKE WOODEN STEPLADDER	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:164	RAW	NAME	make wooden stepladder
+reference	raw-reaction	MAKE WOODEN BOOKCASE	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:177	RAW	NAME	make wooden bookcase
+reference	raw-reaction	MAKE WOODEN SPLINT	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:190	RAW	NAME	make wooden splint
+reference	raw-reaction	MAKE WOODEN CRUTCH	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:203	RAW	NAME	make wooden crutch
+reference	raw-reaction	MAKE WOODEN SHIELD	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:216	RAW	NAME	make wooden shield
+reference	raw-reaction	MAKE WOODEN BUCKLER	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:229	RAW	NAME	make wooden buckler
+reference	raw-reaction	MAKE WOODEN TRAINING AXE	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:242	RAW	NAME	make wooden training axe
+reference	raw-reaction	MAKE WOODEN TRAINING SHORT SWORD	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:255	RAW	NAME	make wooden training short sword
+reference	raw-reaction	MAKE WOODEN TRAINING SPEAR	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:268	RAW	NAME	make wooden training spear
+reference	raw-reaction	MAKE WOODEN PEDESTAL	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:281	RAW	NAME	make wooden pedestal
+reference	raw-reaction	ACACIA_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:6	RAW	NAME	make acacia bark dye
+reference	raw-reaction	ALDER_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:17	RAW	NAME	make alder bark dye
+reference	raw-reaction	ALDER_CONE_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:26	RAW	NAME	make alder cone dye
+reference	raw-reaction	ALMOND_SHELL_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:36	RAW	NAME	make almond shell dye
+reference	raw-reaction	APPLE_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:46	RAW	NAME	make apple bark dye
+reference	raw-reaction	APPLE_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:55	RAW	NAME	make apple leaf dye
+reference	raw-reaction	APRICOT_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:65	RAW	NAME	make apricot bark dye
+reference	raw-reaction	ASH_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:74	RAW	NAME	make ash bark dye
+reference	raw-reaction	AVOCADO_SKIN_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:83	RAW	NAME	make avocado skin dye
+reference	raw-reaction	BANANA_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:93	RAW	NAME	make banana leaf dye
+reference	raw-reaction	BANANA_PEEL_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:103	RAW	NAME	make banana peel dye
+reference	raw-reaction	BAYBERRY_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:113	RAW	NAME	make bayberry leaf dye
+reference	raw-reaction	BAYBERRY_BERRY_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:123	RAW	NAME	make bayberry dye
+reference	raw-reaction	BIRCH_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:133	RAW	NAME	make birch bark dye
+reference	raw-reaction	CHERRY_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:142	RAW	NAME	make cherry bark dye
+reference	raw-reaction	CHERRY_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:151	RAW	NAME	make cherry leaf dye
+reference	raw-reaction	CHESTNUT_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:161	RAW	NAME	make chestnut bark dye
+reference	raw-reaction	CHESTNUT_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:170	RAW	NAME	make chestnut leaf dye
+reference	raw-reaction	CHESTNUT_HULL_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:180	RAW	NAME	make chestnut hull dye
+reference	raw-reaction	COFFEE_BEAN_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:190	RAW	NAME	make coffee bean dye
+reference	raw-reaction	GINKGO_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:200	RAW	NAME	make ginkgo leaf dye
+reference	raw-reaction	GUAVA_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:210	RAW	NAME	make guava bark dye
+reference	raw-reaction	GUAVA_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:219	RAW	NAME	make guava leaf dye
+reference	raw-reaction	HAZEL_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:229	RAW	NAME	make hazel bark dye
+reference	raw-reaction	HAZEL_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:238	RAW	NAME	make hazel leaf dye
+reference	raw-reaction	LARCH_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:248	RAW	NAME	make larch bark dye
+reference	raw-reaction	MAHOGANY_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:257	RAW	NAME	make mahogany bark dye
+reference	raw-reaction	MANGROVE_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:266	RAW	NAME	make mangrove bark dye
+reference	raw-reaction	MANGROVE_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:275	RAW	NAME	make mangrove leaf dye
+reference	raw-reaction	MAPLE_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:285	RAW	NAME	make maple bark dye
+reference	raw-reaction	OAK_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:294	RAW	NAME	make oak bark dye
+reference	raw-reaction	OLIVE_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:303	RAW	NAME	make olive bark dye
+reference	raw-reaction	OLIVE_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:312	RAW	NAME	make olive leaf dye
+reference	raw-reaction	PEACH_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:322	RAW	NAME	make peach bark dye
+reference	raw-reaction	PEAR_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:331	RAW	NAME	make pear bark dye
+reference	raw-reaction	PEAR_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:340	RAW	NAME	make pear leaf dye
+reference	raw-reaction	PERSIMMON_FRUIT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:350	RAW	NAME	make persimmon dye
+reference	raw-reaction	PINE_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:360	RAW	NAME	make pine bark dye
+reference	raw-reaction	PLUM_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:369	RAW	NAME	make plum bark dye
+reference	raw-reaction	POMEGRANATE_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:378	RAW	NAME	make pomegranate leaf dye
+reference	raw-reaction	POMEGRANATE_RIND_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:388	RAW	NAME	make pomegranate rind dye
+reference	raw-reaction	POMEGRANATE_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:398	RAW	NAME	make pomegranate bark dye
+reference	raw-reaction	TEA_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:407	RAW	NAME	make tea leaf dye
+reference	raw-reaction	WILLOW_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:417	RAW	NAME	make willow bark dye
+reference	raw-reaction	WILLOW_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:426	RAW	NAME	make willow leaf dye
+reference	raw-reaction	RED_SPINACH_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:436	RAW	NAME	make red spinach leaf dye
+reference	raw-reaction	RICE_HUSK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:446	RAW	NAME	make rice husk dye
+reference	raw-reaction	SORGHUM_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:456	RAW	NAME	make sorghum leaf dye
+reference	raw-reaction	BILBERRY_FRUIT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:466	RAW	NAME	make bilberry dye
+reference	raw-reaction	BLACKBERRY_FRUIT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:476	RAW	NAME	make blackberry dye
+reference	raw-reaction	BLUEBERRY_FRUIT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:486	RAW	NAME	make blueberry dye
+reference	raw-reaction	CABBAGE_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:496	RAW	NAME	make cabbage leaf dye
+reference	raw-reaction	CRANBERRY_FRUIT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:506	RAW	NAME	make cranberry dye
+reference	raw-reaction	EGGPLANT_FRUIT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:516	RAW	NAME	make eggplant dye
+reference	raw-reaction	GRAPE_FRUIT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:526	RAW	NAME	make grape dye
+reference	raw-reaction	ONION_SKIN_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:536	RAW	NAME	make onion skin dye
+reference	raw-reaction	PEANUT_SHELL_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:546	RAW	NAME	make peanut shell dye
+reference	raw-reaction	PINEAPPLE_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:556	RAW	NAME	make pineapple leaf dye
+reference	raw-reaction	POTATO_SKIN_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:566	RAW	NAME	make potato skin dye
+reference	raw-reaction	RADISH_ROOT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:576	RAW	NAME	make radish dye
+reference	raw-reaction	RASPBERRY_FRUIT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:586	RAW	NAME	make raspberry dye
+reference	raw-reaction	RHUBARB_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:596	RAW	NAME	make rhubarb leaf dye
+reference	raw-reaction	SPINACH_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:606	RAW	NAME	make spinach leaf dye
+reference	raw-reaction	SWEET_POTATO_SKIN_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:616	RAW	NAME	make sweet potato skin dye
+reference	raw-reaction	TOMATO_SKIN_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:626	RAW	NAME	make tomato skin dye
+reference	raw-reaction	TURNIP_SKIN_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:636	RAW	NAME	make turnip skin dye
+reference	raw-reaction	WATERMELON_FRUIT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:646	RAW	NAME	make watermelon dye
+reference	raw-reaction	WILD_CARROT_ROOT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:656	RAW	NAME	make carrot dye
+reference	raw-reaction	TAN_A_HIDE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:6	RAW	NAME	tan a hide
+reference	raw-reaction	RENDER_FAT	data/vanilla/vanilla_reactions/objects/reaction_other.txt:18	RAW	NAME	render fat
+reference	raw-reaction	MAKE_SOAP_FROM_TALLOW	data/vanilla/vanilla_reactions/objects/reaction_other.txt:27	RAW	NAME	make soap from tallow
+reference	raw-reaction	MAKE_SOAP_FROM_OIL	data/vanilla/vanilla_reactions/objects/reaction_other.txt:41	RAW	NAME	make soap from oil
+reference	raw-reaction	MAKE_PEARLASH	data/vanilla/vanilla_reactions/objects/reaction_other.txt:60	RAW	NAME	make pearlash
+reference	raw-reaction	MAKE_PLASTER_POWDER	data/vanilla/vanilla_reactions/objects/reaction_other.txt:68	RAW	NAME	make plaster powder
+reference	raw-reaction	MAKE_SHARP_ROCK	data/vanilla/vanilla_reactions/objects/reaction_other.txt:77	RAW	NAME	make sharp rock
+reference	raw-reaction	MILL_SEEDS_NUTS_TO_PASTE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:85	RAW	NAME	mill seeds/nuts to paste
+reference	raw-reaction	MAKE_CLAY_JUG	data/vanilla/vanilla_reactions/objects/reaction_other.txt:94	RAW	NAME	make clay jug
+reference	raw-reaction	MAKE_CLAY_BRICKS	data/vanilla/vanilla_reactions/objects/reaction_other.txt:103	RAW	NAME	make clay bricks
+reference	raw-reaction	MAKE_CLAY_STATUE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:112	RAW	NAME	make clay statue
+reference	raw-reaction	MAKE_LARGE_CLAY_POT	data/vanilla/vanilla_reactions/objects/reaction_other.txt:121	RAW	NAME	make large clay pot
+reference	raw-reaction	MAKE_CLAY_CRAFTS	data/vanilla/vanilla_reactions/objects/reaction_other.txt:130	RAW	NAME	make clay crafts
+reference	raw-reaction	GLAZE_JUG	data/vanilla/vanilla_reactions/objects/reaction_other.txt:139	RAW	NAME	glaze clay/stone jug
+reference	raw-reaction	GLAZE_STATUE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:158	RAW	NAME	glaze clay/stone statue
+reference	raw-reaction	GLAZE_LARGE_POT	data/vanilla/vanilla_reactions/objects/reaction_other.txt:172	RAW	NAME	glaze large clay/stone pot
+reference	raw-reaction	GLAZE_CRAFT	data/vanilla/vanilla_reactions/objects/reaction_other.txt:186	RAW	NAME	glaze clay/stone craft
+reference	raw-reaction	PRESS_OIL	data/vanilla/vanilla_reactions/objects/reaction_other.txt:200	RAW	NAME	press liquid from paste
+reference	raw-reaction	PRESS_OIL_FRUIT	data/vanilla/vanilla_reactions/objects/reaction_other.txt:216	RAW	NAME	press liquid from fruit
+reference	raw-reaction	MAKE_CLAY_HIVE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:233	RAW	NAME	make clay hive
+reference	raw-reaction	PRESS_HONEYCOMB	data/vanilla/vanilla_reactions/objects/reaction_other.txt:242	RAW	NAME	press honey from honeycomb
+reference	raw-reaction	MAKE_WAX_CRAFTS	data/vanilla/vanilla_reactions/objects/reaction_other.txt:258	RAW	NAME	make wax crafts
+reference	raw-reaction	BREW_DRINK_FROM_PLANT	data/vanilla/vanilla_reactions/objects/reaction_other.txt:266	RAW	NAME	brew drink from plant
+reference	raw-reaction	BREW_DRINK_FROM_PLANT_GROWTH	data/vanilla/vanilla_reactions/objects/reaction_other.txt:283	RAW	NAME	brew drink from fruit
+reference	raw-reaction	MAKE_MEAD	data/vanilla/vanilla_reactions/objects/reaction_other.txt:300	RAW	NAME	make mead
+reference	raw-reaction	PROCESS_PLANT_TO_BAG	data/vanilla/vanilla_reactions/objects/reaction_other.txt:319	RAW	NAME	process plant to bag
+reference	raw-reaction	MAKE_QUICKLIME	data/vanilla/vanilla_reactions/objects/reaction_other.txt:334	RAW	NAME	make quicklime
+reference	raw-reaction	MAKE_MILK_OF_LIME	data/vanilla/vanilla_reactions/objects/reaction_other.txt:343	RAW	NAME	make milk of lime
+reference	raw-reaction	MAKE_PARCHMENT	data/vanilla/vanilla_reactions/objects/reaction_other.txt:360	RAW	NAME	make parchment
+reference	raw-reaction	MAKE_SCROLL	data/vanilla/vanilla_reactions/objects/reaction_other.txt:373	RAW	NAME	make scroll
+reference	raw-reaction	MAKE_QUIRE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:383	RAW	NAME	make quire
+reference	raw-reaction	MAKE_SHEET_FROM_PLANT	data/vanilla/vanilla_reactions/objects/reaction_other.txt:390	RAW	NAME	make sheet from plant
+reference	raw-reaction	MAKE_SLURRY_FROM_PLANT	data/vanilla/vanilla_reactions/objects/reaction_other.txt:401	RAW	NAME	mash plant into slurry
+reference	raw-reaction	PRESS_PLANT_PAPER	data/vanilla/vanilla_reactions/objects/reaction_other.txt:413	RAW	NAME	press plant slurry into paper sheet
+reference	raw-reaction	BIND_BOOK	data/vanilla/vanilla_reactions/objects/reaction_other.txt:423	RAW	NAME	bind book
+reference	raw-reaction	CARVE_BONE_FIGURINE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:440	RAW	NAME	carve bone figurine
+reference	raw-reaction	CARVE_BONE_RING	data/vanilla/vanilla_reactions/objects/reaction_other.txt:454	RAW	NAME	carve bone ring
+reference	raw-reaction	CARVE_BONE_EARRING	data/vanilla/vanilla_reactions/objects/reaction_other.txt:466	RAW	NAME	carve bone earring
+reference	raw-reaction	CARVE_BONE_SCEPTER	data/vanilla/vanilla_reactions/objects/reaction_other.txt:478	RAW	NAME	carve bone scepter
+reference	raw-reaction	CARVE_BONE_AMULET	data/vanilla/vanilla_reactions/objects/reaction_other.txt:490	RAW	NAME	carve bone amulet
+reference	raw-reaction	CARVE_BONE_BRACELET	data/vanilla/vanilla_reactions/objects/reaction_other.txt:502	RAW	NAME	carve bone bracelet
+reference	raw-reaction	CARVE_BONE_CROWN	data/vanilla/vanilla_reactions/objects/reaction_other.txt:514	RAW	NAME	carve bone crown
+reference	raw-reaction	CARVE_BONE_GEM	data/vanilla/vanilla_reactions/objects/reaction_other.txt:526	RAW	NAME	carve bone cabochon
+reference	raw-reaction	CARVE_WOODEN_HELVE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:538	RAW	NAME	carve wooden helve from branch
+reference	raw-reaction	ASSEMBLE STONE AXE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:549	RAW	NAME	assemble stone axe
+reference	raw-reaction	MAKE WOODEN DISPLAY CASE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:558	RAW	NAME	make display case
+reference	raw-reaction	BITUMINOUS_COAL_TO_COKE	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:6	RAW	NAME	make coke from bituminous coal
+reference	raw-reaction	LIGNITE_TO_COKE	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:14	RAW	NAME	make coke from lignite
+reference	raw-reaction	BRASS_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:22	RAW	NAME	make brass bars (use ore)
+reference	raw-reaction	BRASS_MAKING2	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:31	RAW	NAME	make brass bars (use bars)
+reference	raw-reaction	BRONZE_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:40	RAW	NAME	make bronze bars (use ore)
+reference	raw-reaction	BRONZE_MAKING2	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:49	RAW	NAME	make bronze bars (use bars)
+reference	raw-reaction	ELECTRUM_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:58	RAW	NAME	make electrum bars (use ore)
+reference	raw-reaction	ELECTRUM_MAKING2	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:67	RAW	NAME	make electrum bars (use bars)
+reference	raw-reaction	BILLON_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:76	RAW	NAME	make billon bars (use ore)
+reference	raw-reaction	BILLON_MAKING2	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:85	RAW	NAME	make billon bars (use bars)
+reference	raw-reaction	PEWTER_FINE_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:94	RAW	NAME	make fine pewter bars (use ore)
+reference	raw-reaction	PEWTER_FINE_MAKING2	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:103	RAW	NAME	make fine pewter bars (use bars)
+reference	raw-reaction	PEWTER_TRIFLE_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:112	RAW	NAME	make trifle pewter bars (use ore)
+reference	raw-reaction	PEWTER_TRIFLE_MAKING2	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:121	RAW	NAME	make trifle pewter bars (use bars)
+reference	raw-reaction	PEWTER_LAY_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:130	RAW	NAME	make lay pewter bars (use bars)
+reference	raw-reaction	PIG_IRON_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:140	RAW	NAME	make pig iron bars
+reference	raw-reaction	STEEL_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:150	RAW	NAME	make steel bars
+reference	raw-reaction	NICKEL_SILVER_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:161	RAW	NAME	make nickel silver bars
+reference	raw-reaction	BLACK_BRONZE_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:171	RAW	NAME	make black bronze bars
+reference	raw-reaction	STERLING_SILVER_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:181	RAW	NAME	make sterling silver bars
+reference	raw-reaction	ROSE_GOLD_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:190	RAW	NAME	make rose gold bars
+reference	raw-reaction	BISMUTH_BRONZE_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:199	RAW	NAME	make bismuth bronze bars
+reference	raw-reaction	ADAMANTINE_WAFERS	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:209	RAW	NAME	make adamantine wafers
+reference	generated-prefix	generated instrument reaction NAME	Dwarf Fortress.exe:VA=0x141735ab8	RAW	NAME	assemble 
+reference	generated-prefix	generated instrument reaction NAME	Dwarf Fortress.exe:VA=0x141735e78	RAW	NAME	make 
+reference	generated-prefix	generated instrument reaction NAME	Dwarf Fortress.exe:VA=0x141735e88	RAW	NAME	forge 
+classic	cancel	0x14131fff0	0x141320305	cstring	0x14177bcc0	 cancels 
+classic	cancel	0x14131fff0	0x141320346	cstring	0x1415fe430	: 
+classic	cancel	0x14131fff0	0x14132037b	cstring	0x14177bcb0	Unscheduled
+classic	cancel	0x14131fff0	0x141320387	cstring	0x14177bce0	Cannot reach site
+classic	cancel	0x14131fff0	0x141320393	cstring	0x14177bcd0	Getting married
+classic	cancel	0x14131fff0	0x14132039f	cstring	0x14177bc20	Interrupted by 
+classic	cancel	0x14131fff0	0x1413203f1	cstring	0x14177bc14	combat
+classic	cancel	0x14131fff0	0x1413203fd	cstring	0x14177bc50	Inappropriate dig square
+classic	cancel	0x14131fff0	0x141320409	cstring	0x14177bc30	Area became inappropriate
+classic	cancel	0x14131fff0	0x141320415	cstring	0x14177bc84	Moved
+classic	cancel	0x14131fff0	0x141320421	cstring	0x14177bc70	Need empty bucket
+classic	cancel	0x14131fff0	0x14132042d	cstring	0x14177bca0	Need empty trap
+classic	cancel	0x14131fff0	0x141320439	cstring	0x14177bc90	Need empty bag
+classic	cancel	0x14131fff0	0x141320445	cstring	0x14177bdd0	Need empty cage
+classic	cancel	0x14131fff0	0x141320451	cstring	0x14177bda8	Need valid, active sand collection zone
+classic	cancel	0x14131fff0	0x14132045d	cstring	0x14177bdf8	Need valid, active clay collection zone
+classic	cancel	0x14131fff0	0x141320469	cstring	0x14177bde0	No available colony
+classic	cancel	0x14131fff0	0x141320475	cstring	0x14177be30	Sand vanished
+classic	cancel	0x14131fff0	0x141320481	cstring	0x14177be20	Clay vanished
+classic	cancel	0x14131fff0	0x14132048d	cstring	0x14177be50	Incapable of carrying
+classic	cancel	0x14131fff0	0x141320499	cstring	0x14177be40	Too injured
+classic	cancel	0x14131fff0	0x1413204a5	cstring	0x1415fa5d0	Exhausted
+classic	cancel	0x14131fff0	0x1413204b1	cstring	0x14177bd10	Resting injury
+classic	cancel	0x14131fff0	0x1413204bd	cstring	0x14177bcf8	Animal inaccessible
+classic	cancel	0x14131fff0	0x1413204c9	cstring	0x14177bd38	Patient inaccessible
+classic	cancel	0x14131fff0	0x1413204d5	cstring	0x14177bd20	Infant inaccessible
+classic	cancel	0x14131fff0	0x1413204e1	cstring	0x14177bd68	No partner
+classic	cancel	0x14131fff0	0x1413204ed	cstring	0x14177bd50	Item inaccessible
+classic	cancel	0x14131fff0	0x1413204f9	cstring	0x14177bd90	Drop-off inaccessible
+classic	cancel	0x14131fff0	0x141320505	cstring	0x14177bd78	Building inaccessible
+classic	cancel	0x14131fff0	0x141320511	cstring	0x14177bf40	Area inaccessible
+classic	cancel	0x14131fff0	0x14132051d	cstring	0x14177bf30	Nothing in cage
+classic	cancel	0x14131fff0	0x141320529	cstring	0x14177bf70	Nothing to cage
+classic	cancel	0x14131fff0	0x141320535	cstring	0x14177bf58	Nothing to catch
+classic	cancel	0x14131fff0	0x141320541	cstring	0x14177bf98	No patient
+classic	cancel	0x14131fff0	0x14132054d	cstring	0x14177bf80	Patient not resting
+classic	cancel	0x14131fff0	0x141320559	cstring	0x14177bfc8	No infant
+classic	cancel	0x14131fff0	0x141320565	cstring	0x14177bfa8	Already leading creature
+classic	cancel	0x14131fff0	0x141320571	cstring	0x14177be80	No food available
+classic	cancel	0x14131fff0	0x14132057d	cstring	0x14177be68	Water source vanished
+classic	cancel	0x14131fff0	0x141320589	cstring	0x14177beb8	No water source
+classic	cancel	0x14131fff0	0x141320595	cstring	0x14177be98	Water source contaminated
+classic	cancel	0x14131fff0	0x1413205a1	cstring	0x14177bee0	Creature occupying site
+classic	cancel	0x14131fff0	0x1413205ad	cstring	0x14177bec8	No bucket at well
+classic	cancel	0x14131fff0	0x1413205b9	cstring	0x14177bf08	Bucket full of extraneous material
+classic	cancel	0x14131fff0	0x1413205c5	cstring	0x14177bef8	Well dry
+classic	cancel	0x14131fff0	0x1413205d1	cstring	0x14177c4c8	Need office
+classic	cancel	0x14131fff0	0x141320705	cstring	0x1415fa688	Needs 
+classic	cancel	0x14131fff0	0x14132072a	cstring	0x14177c4b0	 in linked stockpile
+classic	cancel	0x14131fff0	0x141320759	cstring	0x14177c4d8	Wrong ammunition
+classic	cancel	0x14131fff0	0x141320765	cstring	0x14177c510	Ammunition inaccessible
+classic	cancel	0x14131fff0	0x141320771	cstring	0x14177c500	No ammunition
+classic	cancel	0x14131fff0	0x14132077d	cstring	0x14177c540	No item
+classic	cancel	0x14131fff0	0x141320789	cstring	0x14177c4f0	No weapon
+classic	cancel	0x14131fff0	0x141320795	cstring	0x14177c528	Item blocking site
+classic	cancel	0x14131fff0	0x1413207a1	cstring	0x14177c428	Building site submerged
+classic	cancel	0x14131fff0	0x1413207ad	cstring	0x14177c410	Animal not restrained
+classic	cancel	0x14131fff0	0x1413207b9	cstring	0x14177c458	No creature
+classic	cancel	0x14131fff0	0x1413207c5	cstring	0x14177c440	Inappropriate building
+classic	cancel	0x14131fff0	0x1413207d1	cstring	0x14177c478	No building
+classic	cancel	0x14131fff0	0x1413207dd	cstring	0x14177c468	No floor space
+classic	cancel	0x14131fff0	0x1413207e9	cstring	0x14177c498	No designated area
+classic	cancel	0x14131fff0	0x1413207f5	cstring	0x14177c488	No party
+classic	cancel	0x14131fff0	0x141320801	cstring	0x14177c5e8	Wrong justice state
+classic	cancel	0x14131fff0	0x14132080d	cstring	0x14177c5d0	Nothing in building
+classic	cancel	0x14131fff0	0x141320819	cstring	0x1416ad3e8	Relieved
+classic	cancel	0x14131fff0	0x141320825	cstring	0x14177c610	Water is frozen
+classic	cancel	0x14131fff0	0x141320831	cstring	0x1416ad318	Terrified
+classic	cancel	0x14131fff0	0x14132083d	cstring	0x14177c600	Mortally afraid
+classic	cancel	0x14131fff0	0x141320849	cstring	0x14177c628	Experiencing emotional shock
+classic	cancel	0x14131fff0	0x141320855	cstring	0x1416ad2a8	Horrified
+classic	cancel	0x14131fff0	0x141320861	cstring	0x1416ad158	Grieving
+classic	cancel	0x14131fff0	0x14132086d	cstring	0x14177c620	Too sad
+classic	cancel	0x14131fff0	0x141320879	cstring	0x14177c658	In agony
+classic	cancel	0x14131fff0	0x141320885	cstring	0x14177c648	Anguished
+classic	cancel	0x14131fff0	0x141320891	cstring	0x14177c560	Despairing
+classic	cancel	0x14131fff0	0x14132089d	cstring	0x1416ad058	Dismayed
+classic	cancel	0x14131fff0	0x1413208a9	cstring	0x1416ad070	Distressed
+classic	cancel	0x14131fff0	0x1413208b5	cstring	0x1416ad5c8	Frightened
+classic	cancel	0x14131fff0	0x1413208c1	cstring	0x1416ad570	Miserable
+classic	cancel	0x14131fff0	0x1413208cd	cstring	0x1416ad590	Mortified
+classic	cancel	0x14131fff0	0x1413208d9	cstring	0x1416ad454	Shaken
+classic	cancel	0x14131fff0	0x1413208e5	cstring	0x14177c548	In existential crisis
+classic	cancel	0x14131fff0	0x1413208f1	cstring	0x14177c580	Too insane
+classic	cancel	0x14131fff0	0x1413208fd	cstring	0x14177c570	Too depressed
+classic	cancel	0x14131fff0	0x141320909	cstring	0x14177c5a0	Oblivious
+classic	cancel	0x14131fff0	0x141320915	cstring	0x14177c590	Catatonic
+classic	cancel	0x14131fff0	0x141320921	cstring	0x14177c5c0	Taken by mood
+classic	cancel	0x14131fff0	0x14132092d	cstring	0x14177c5b0	Went insane
+classic	cancel	0x14131fff0	0x141320939	cstring	0x14177c730	Throwing tantrum
+classic	cancel	0x14131fff0	0x141320945	cstring	0x14177c718	Could not find path
+classic	cancel	0x14131fff0	0x141320951	cstring	0x14177c760	Path blocked
+classic	cancel	0x14131fff0	0x14132095d	cstring	0x14177c748	Seeking artifact
+classic	cancel	0x14131fff0	0x141320969	cstring	0x14177c780	Handling dangerous creature
+classic	cancel	0x14131fff0	0x141320975	cstring	0x14177c770	Going to bed
+classic	cancel	0x14131fff0	0x141320981	cstring	0x14177c7b8	Seeking Infant
+classic	cancel	0x14131fff0	0x14132098d	cstring	0x14177c7a0	Dangerous terrain
+classic	cancel	0x14131fff0	0x141320999	cstring	0x14177c680	Forbidden area
+classic	cancel	0x14131fff0	0x1413209a5	cstring	0x14177c6a0	Job item lost or destroyed
+classic	cancel	0x14131fff0	0x1413209ac	cstring	0x14177c668	Job item misplaced
+classic	cancel	0x14131fff0	0x1413209be	cstring	0x14177c690	Getting food
+classic	cancel	0x14131fff0	0x1413209ca	cstring	0x14177c6d8	Getting water
+classic	cancel	0x14131fff0	0x1413209d6	cstring	0x14177c6c0	Hunting vermin for food
+classic	cancel	0x14131fff0	0x1413209e2	cstring	0x14177c700	Target inaccessible
+classic	cancel	0x14131fff0	0x1413209ee	cstring	0x14177c6e8	Target too injured
+classic	cancel	0x14131fff0	0x1413209fa	cstring	0x1416390c8	No target
+classic	cancel	0x14131fff0	0x141320a06	cstring	0x14177c888	No mechanism for target
+classic	cancel	0x14131fff0	0x141320a12	cstring	0x14177c870	No target building
+classic	cancel	0x14131fff0	0x141320a1e	cstring	0x14177c8b0	No mechanism for trigger
+classic	cancel	0x14131fff0	0x141320a2a	cstring	0x14177c8a0	No trigger
+classic	cancel	0x14131fff0	0x141320a36	cstring	0x14177c8e0	Attacking building
+classic	cancel	0x14131fff0	0x141320a42	cstring	0x14177c8d0	Lost pick
+classic	cancel	0x14131fff0	0x141320a4e	cstring	0x14177c910	Invalid officer
+classic	cancel	0x14131fff0	0x141320a5a	cstring	0x14177c8f8	"Farewell!"  Leaving
+classic	cancel	0x14131fff0	0x141320a66	cstring	0x14177c7e0	Removed from guard
+classic	cancel	0x14131fff0	0x141320a72	cstring	0x14177c7c8	Equipment mismatch
+classic	cancel	0x14131fff0	0x141320a7e	cstring	0x1415fa628	Unconscious
+classic	cancel	0x14131fff0	0x141320a8a	cstring	0x1415fa6cc	Webbed
+classic	cancel	0x14131fff0	0x141320a96	cstring	0x1415fa618	Paralyzed
+classic	cancel	0x14131fff0	0x141320aa2	cstring	0x14177c804	Caged
+classic	cancel	0x14131fff0	0x141320aae	cstring	0x14177c7f8	In Custody
+classic	cancel	0x14131fff0	0x141320aba	cstring	0x14177c820	Getting something to drink
+classic	cancel	0x14131fff0	0x141320ac6	cstring	0x14177c810	Using well
+classic	cancel	0x14131fff0	0x141320ad2	cstring	0x14177c860	Lost axe
+classic	cancel	0x14131fff0	0x141320adb	cstring	0x14177c840	Not responsible for trade
+classic	cancel	0x14131fff0	0x141320ae4	cstring	0x14177c0e0	No available traction bench
+classic	cancel	0x14131fff0	0x141320aed	cstring	0x14177c0d0	Need splint
+classic	cancel	0x14131fff0	0x141320af6	cstring	0x14177c110	Need thread
+classic	cancel	0x14131fff0	0x141320aff	cstring	0x14177c100	Need cloth
+classic	cancel	0x14131fff0	0x141320b08	cstring	0x14177c130	Need crutch
+classic	cancel	0x14131fff0	0x141320b11	cstring	0x14177c120	Bad script! #1
+classic	cancel	0x14131fff0	0x141320b1a	cstring	0x14177c150	Bad script! #2
+classic	cancel	0x14131fff0	0x141320b23	cstring	0x14177c140	Bad script! #3
+classic	cancel	0x14131fff0	0x141320b2c	cstring	0x14177bff0	Need bag containing powder suitable for cast application
+classic	cancel	0x14131fff0	0x141320b35	cstring	0x14177bfd8	No weapon for execution
+classic	cancel	0x14131fff0	0x141320b3e	cstring	0x14177c040	No appropriate ammunition
+classic	cancel	0x14131fff0	0x141320b47	cstring	0x14177c030	Not appointed
+classic	cancel	0x14131fff0	0x141320b50	cstring	0x14177c080	No longer requested
+classic	cancel	0x14131fff0	0x141320dbd	cstring	0x1415e89c4	The 
+classic	cancel	0x14131fff0	0x141320e26	cstring	0x14177c060	 suspended the construction of 
+classic	cancel	0x14131fff0	0x141320e67	cstring	0x1415e3574	.
+classic	cancel	0x14131fff0	0x141321050	cstring	0x1415e89c4	The 
+classic	cancel	0x14131fff0	0x1413210e8	cstring	0x14177c0b0	 suspended a linkage from 
+classic	cancel	0x14131fff0	0x141321129	cstring	0x1415e3574	.
+classic	cancel	0x14131fff0	0x141322b69	cstring	0x141610298	 (
+classic	cancel	0x14131fff0	0x141322b9b	cstring	0x14177c098	) has been completed.
+classic	job-wrapper	0x140d001b0	0x140d00271	cstring	0x1416ffb38	Remove Rotten Tissue
+classic	job-wrapper	0x140d001b0	0x140d0028d	cstring	0x1416ffb18	Repair Compound Fracture
+classic	job-wrapper	0x140d001b0	0x140d002a9	cstring	0x1416ffb08	Stop Bleeding
+classic	job-wrapper	0x140d001b0	0x140d002c5	cstring	0x1416a0198	Surgery
+classic	job-caption	0x140d002f0	0x140d003b2	cstring	0x1416ffb50	Construct building
+classic	job-caption	0x140d002f0	0x140d003be	cstring	0x1416ffb68	Destroy building
+classic	job-caption	0x140d002f0	0x140d003d0	cstring	0x1416ffb80	Butcher an animal
+classic	job-caption	0x140d002f0	0x140d003df	cstring	0x1416ffb98	Catch live fish
+classic	job-caption	0x140d002f0	0x140d003f1	cstring	0x1416ffba8	Catch live land animal
+classic	job-caption	0x140d002f0	0x140d00403	cstring	0x1416ffbc0	Prepare a raw fish
+classic	job-caption	0x140d002f0	0x140d0042b	cstring	0x1416ffbd4	Mill 
+classic	job-caption	0x140d002f0	0x140d00480	cstring	0x1416ffbe0	Mill plants
+classic	job-caption	0x140d002f0	0x140d004a8	cstring	0x1416ffbf0	Process 
+classic	job-caption	0x140d002f0	0x140d004fd	cstring	0x1416ffc00	Process plants
+classic	job-caption	0x140d002f0	0x140d0050f	cstring	0x1416ffc10	Milk 
+classic	job-caption	0x140d002f0	0x140d0059c	cstring	0x14169bdc0	animal
+classic	job-caption	0x140d002f0	0x140d005ae	cstring	0x1416ffc18	Shear 
+classic	job-caption	0x140d002f0	0x140d0063b	cstring	0x1416ffc20	Spin thread
+classic	job-caption	0x140d002f0	0x140d0064d	cstring	0x1416ffc30	Make cheese
+classic	job-caption	0x140d002f0	0x140d00675	cstring	0x1416ffbf0	Process 
+classic	job-caption	0x140d002f0	0x140d006b4	cstring	0x1416ffc40	 (vial)
+classic	job-caption	0x140d002f0	0x140d006d9	cstring	0x1416ffc48	Process plants (vial)
+classic	job-caption	0x140d002f0	0x140d00701	cstring	0x1416ffbf0	Process 
+classic	job-caption	0x140d002f0	0x140d00740	cstring	0x1416ffc60	 (barrel)
+classic	job-caption	0x140d002f0	0x140d00765	cstring	0x1416ffc70	Process plants (barrel)
+classic	job-caption	0x140d002f0	0x140d00777	cstring	0x1416ffc88	Make lye
+classic	job-caption	0x140d002f0	0x140d00789	cstring	0x1416ffc98	Make potash from lye
+classic	job-caption	0x140d002f0	0x140d0079b	cstring	0x1416ffcb0	Make potash from ash
+classic	job-caption	0x140d002f0	0x140d007c1	cstring	0x1416ffcf8	Prepare lavish meal
+classic	job-caption	0x140d002f0	0x140d007d5	cstring	0x1416ffce0	Prepare fine meal
+classic	job-caption	0x140d002f0	0x140d007e9	cstring	0x1416ffcc8	Prepare easy meal
+classic	job-caption	0x140d002f0	0x140d00819	cstring	0x1416ffd10	Extract from 
+classic	job-caption	0x140d002f0	0x140d0086e	cstring	0x1416ffd20	Extract from plants
+classic	job-caption	0x140d002f0	0x140d00880	cstring	0x1416ffd38	Extract from raw fish
+classic	job-caption	0x140d002f0	0x140d00892	cstring	0x1416ffd50	Extract from land animal
+classic	job-caption	0x140d002f0	0x140d008a4	cstring	0x1416ffd70	Handle 
+classic	job-caption	0x140d002f0	0x140d00934	cstring	0x1416ffd78	a large animal
+classic	job-caption	0x140d002f0	0x140d00946	cstring	0x1416ffd88	Unchain pet
+classic	job-caption	0x140d002f0	0x140d00958	cstring	0x1416ffd98	Interrogate 
+classic	job-caption	0x140d002f0	0x140d009e5	cstring	0x14166fb90	subject
+classic	job-caption	0x140d002f0	0x140d009f7	cstring	0x1416ffda8	Release 
+classic	job-caption	0x140d002f0	0x140d00a90	cstring	0x1416ffdb8	Release pet
+classic	job-caption	0x140d002f0	0x140d00aa2	cstring	0x1416ffdc8	Release small creature
+classic	job-caption	0x140d002f0	0x140d00ab4	cstring	0x1416ffde0	Handle small creature
+classic	job-caption	0x140d002f0	0x140d00ac6	cstring	0x1416ffdf8	Recover pet
+classic	job-caption	0x140d002f0	0x140d00ad8	cstring	0x1416ffe04	Cage 
+classic	job-caption	0x140d002f0	0x140d00b6e	cstring	0x1416ffe10	Recover wounded
+classic	job-caption	0x140d002f0	0x140d00b7a	cstring	0x1416ffe20	Diagnose patient
+classic	job-caption	0x140d002f0	0x140d00b86	cstring	0x1416ffe38	Immobilize break
+classic	job-caption	0x140d002f0	0x140d00b98	cstring	0x1416ffe50	Apply cast
+classic	job-caption	0x140d002f0	0x140d00baa	cstring	0x1416ffe60	Bring crutch
+classic	job-caption	0x140d002f0	0x140d00bbc	cstring	0x1416ffe70	Dress wound
+classic	job-caption	0x140d002f0	0x140d00bce	cstring	0x1417001a0	Clean patient
+classic	job-caption	0x140d002f0	0x140d00be0	cstring	0x1416a0198	Surgery
+classic	job-caption	0x140d002f0	0x140d00bf2	cstring	0x1417001b0	Suture
+classic	job-caption	0x140d002f0	0x140d00c04	cstring	0x1417001b8	Set bone
+classic	job-caption	0x140d002f0	0x140d00c16	cstring	0x1417001c8	Place in traction
+classic	job-caption	0x140d002f0	0x140d00c28	cstring	0x1417001e0	Put item on display
+classic	job-caption	0x140d002f0	0x140d00c3a	cstring	0x1417001f8	Cage small animal
+classic	job-caption	0x140d002f0	0x140d00c4c	cstring	0x141700210	Pit/pond 
+classic	job-caption	0x140d002f0	0x140d00cf8	cstring	0x141700220	Pit/pond small animal
+classic	job-caption	0x140d002f0	0x140d00d0a	cstring	0x141700238	Pen/pasture 
+classic	job-caption	0x140d002f0	0x140d00daf	cstring	0x141700248	Pen/pasture small animal
+classic	job-caption	0x140d002f0	0x140d00dc1	cstring	0x141700268	Drain aquarium
+classic	job-caption	0x140d002f0	0x140d00dd3	cstring	0x141700278	Fill aquarium
+classic	job-caption	0x140d002f0	0x140d00de5	cstring	0x141700288	Fill pond
+classic	job-caption	0x140d002f0	0x140d00df7	cstring	0x141700298	Give water
+classic	job-caption	0x140d002f0	0x140d00e09	cstring	0x1417002a8	Give food
+classic	job-caption	0x140d002f0	0x140d00e1b	cstring	0x1417002b8	Manage work orders
+classic	job-caption	0x140d002f0	0x140d00e2d	cstring	0x1417002d0	Update stockpile records
+classic	job-caption	0x140d002f0	0x140d00e3f	cstring	0x1417002f0	Trade at depot
+classic	job-caption	0x140d002f0	0x140d00e9a	cstring	0x141700300	Chain 
+classic	job-caption	0x140d002f0	0x140d00eef	cstring	0x141700308	Put in chains
+classic	job-caption	0x140d002f0	0x140d00f01	cstring	0x141700318	Slaughter 
+classic	job-caption	0x140d002f0	0x140d00fa8	cstring	0x141700324	Geld 
+classic	job-caption	0x140d002f0	0x140d0104d	cstring	0x141700330	Unchain
+classic	job-caption	0x140d002f0	0x140d010b2	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d01107	cstring	0x141700338	Tame 
+classic	job-caption	0x140d002f0	0x140d011ac	cstring	0x141700340	Tame a small animal
+classic	job-caption	0x140d002f0	0x140d011be	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d01221	cstring	0x1416d98c0	 crafts
+classic	job-caption	0x140d002f0	0x140d01233	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d01296	cstring	0x141700358	 figurine
+classic	job-caption	0x140d002f0	0x140d012a8	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d0130b	cstring	0x141700368	 amulet
+classic	job-caption	0x140d002f0	0x140d0131d	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d01380	cstring	0x141700370	 scepter
+classic	job-caption	0x140d002f0	0x140d01392	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d013f5	cstring	0x14170037c	 crown
+classic	job-caption	0x140d002f0	0x140d01407	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d0146a	cstring	0x141700384	 ring
+classic	job-caption	0x140d002f0	0x140d0147c	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d014df	cstring	0x141700390	 earring
+classic	job-caption	0x140d002f0	0x140d014f1	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d01554	cstring	0x1417003a0	 bracelet
+classic	job-caption	0x140d002f0	0x140d01566	cstring	0x1417003b0	Make large 
+classic	job-caption	0x140d002f0	0x140d015c9	cstring	0x1416caea0	 gem
+classic	job-caption	0x140d002f0	0x140d015db	cstring	0x1417003bc	Mint 
+classic	job-caption	0x140d002f0	0x140d0163e	cstring	0x1417003c4	 coins
+classic	job-caption	0x140d002f0	0x140d0165f	cstring	0x1417003cc	Cut 
+classic	job-caption	0x140d002f0	0x140d016b8	cstring	0x1417003d8	Cut gems
+classic	job-caption	0x140d002f0	0x140d016e2	cstring	0x1417003cc	Cut 
+classic	job-caption	0x140d002f0	0x140d01738	cstring	0x1417003e8	Cut raw glass into gems
+classic	job-caption	0x140d002f0	0x140d0175f	cstring	0x141700400	Polish 
+classic	job-caption	0x140d002f0	0x140d01768	cstring	0x141700408	Polish stones
+classic	job-caption	0x140d002f0	0x140d017cd	cstring	0x1416b9dd8	Engrave memorial slab
+classic	job-caption	0x140d002f0	0x140d018ab	cstring	0x141700418	 (engrave memorial)
+classic	job-caption	0x140d002f0	0x140d018c5	cstring	0x141700430	Decorate with 
+classic	job-caption	0x140d002f0	0x140d018e7	cstring	0x141700440	Stud with 
+classic	job-caption	0x140d002f0	0x140d0190c	cstring	0x141700450	Encrust 
+classic	job-caption	0x140d002f0	0x140d0192f	cstring	0x141700460	finished goods
+classic	job-caption	0x140d002f0	0x140d0194a	cstring	0x141700470	furniture
+classic	job-caption	0x140d002f0	0x140d01965	cstring	0x1416bce80	ammo
+classic	job-caption	0x140d002f0	0x140d0197a	cstring	0x1415e9590	 with 
+classic	job-caption	0x140d002f0	0x140d0199f	cstring	0x1415fc088	cut gems
+classic	job-caption	0x140d002f0	0x140d019b1	cstring	0x141700450	Encrust 
+classic	job-caption	0x140d002f0	0x140d019d4	cstring	0x141700460	finished goods
+classic	job-caption	0x140d002f0	0x140d019ef	cstring	0x141700470	furniture
+classic	job-caption	0x140d002f0	0x140d01a0a	cstring	0x1416bce80	ammo
+classic	job-caption	0x140d002f0	0x140d01a1f	cstring	0x1415e9590	 with 
+classic	job-caption	0x140d002f0	0x140d01a47	cstring	0x141700480	cut glass
+classic	job-caption	0x140d002f0	0x140d01a59	cstring	0x141700450	Encrust 
+classic	job-caption	0x140d002f0	0x140d01a7c	cstring	0x141700460	finished goods
+classic	job-caption	0x140d002f0	0x140d01a97	cstring	0x141700470	furniture
+classic	job-caption	0x140d002f0	0x140d01ab2	cstring	0x1416bce80	ammo
+classic	job-caption	0x140d002f0	0x140d01ac7	cstring	0x1415e9590	 with 
+classic	job-caption	0x140d002f0	0x140d01aec	cstring	0x141700490	polished stones
+classic	job-caption	0x140d002f0	0x140d01afe	cstring	0x1417004a0	Collect sand
+classic	job-caption	0x140d002f0	0x140d01b10	cstring	0x1417004b0	Collect clay
+classic	job-caption	0x140d002f0	0x140d01b22	cstring	0x1417004c0	Install colony in hive
+classic	job-caption	0x140d002f0	0x140d01b34	cstring	0x1417004d8	Collect hive products
+classic	job-caption	0x140d002f0	0x140d01b46	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d01ba8	cstring	0x1417004f0	four 
+classic	job-caption	0x140d002f0	0x140d01c02	cstring	0x1417004f8	 blocks
+classic	job-caption	0x140d002f0	0x140d01c14	cstring	0x141700500	Make raw 
+classic	job-caption	0x140d002f0	0x140d01c36	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d01cd4	cstring	0x141700510	 Portal
+classic	job-caption	0x140d002f0	0x140d01ce6	cstring	0x1416bc560	 door
+classic	job-caption	0x140d002f0	0x140d01cf8	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d01d5b	cstring	0x141700518	 floodgate
+classic	job-caption	0x140d002f0	0x140d01d6d	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d01dd0	cstring	0x141700528	 hatch cover
+classic	job-caption	0x140d002f0	0x140d01de2	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d01e45	cstring	0x141700538	 grate
+classic	job-caption	0x140d002f0	0x140d01e57	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d01eba	cstring	0x141700540	 table
+classic	job-caption	0x140d002f0	0x140d01ecc	cstring	0x141700548	Make traction bench
+classic	job-caption	0x140d002f0	0x140d01ede	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d01f41	cstring	0x141700560	 splint
+classic	job-caption	0x140d002f0	0x140d01f53	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d01fb6	cstring	0x141700568	 crutch
+classic	job-caption	0x140d002f0	0x140d01fc8	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d0202b	cstring	0x141700570	 cabinet
+classic	job-caption	0x140d002f0	0x140d0203d	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d020a0	cstring	0x1416ffe80	 weapon rack
+classic	job-caption	0x140d002f0	0x140d020b2	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d02115	cstring	0x1416ffe90	 armor stand
+classic	job-caption	0x140d002f0	0x140d02127	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d0218a	cstring	0x1416ffea0	 bin
+classic	job-caption	0x140d002f0	0x140d0219c	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d02239	cstring	0x1416ffea8	 box
+classic	job-caption	0x140d002f0	0x140d02265	cstring	0x1416ffeb0	 coffer
+classic	job-caption	0x140d002f0	0x140d02279	cstring	0x1416ffeb8	 chest
+classic	job-caption	0x140d002f0	0x140d02293	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d022f6	cstring	0x1416ffec0	 bag
+classic	job-caption	0x140d002f0	0x140d02308	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d023a7	cstring	0x1416ffed0	 sarcophagus
+classic	job-caption	0x140d002f0	0x140d023b8	cstring	0x1416ffee0	 coffin
+classic	job-caption	0x140d002f0	0x140d023cf	cstring	0x1416ffec8	 casket
+classic	job-caption	0x140d002f0	0x140d023e1	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d0245e	cstring	0x1416ffef0	 throne
+classic	job-caption	0x140d002f0	0x140d02478	cstring	0x1416ffee8	 chair
+classic	job-caption	0x140d002f0	0x140d024ca	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d024d9	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d024ee	cstring	0x1416fff00	pair of 
+classic	job-caption	0x140d002f0	0x140d0253b	cstring	0x1416455a8	large 
+classic	job-caption	0x140d002f0	0x140d0254c	cstring	0x141680d5c	small 
+classic	job-caption	0x140d002f0	0x140d025b3	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d025f5	cstring	0x1416fff10	Make totem
+classic	job-caption	0x140d002f0	0x140d02647	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d02656	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d0266b	cstring	0x1416fff00	pair of 
+classic	job-caption	0x140d002f0	0x140d026b8	cstring	0x1416455a8	large 
+classic	job-caption	0x140d002f0	0x140d026c9	cstring	0x141680d5c	small 
+classic	job-caption	0x140d002f0	0x140d02730	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d027b2	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d027c1	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d02820	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d0288f	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d0289e	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d02935	cstring	0x1416fff20	 terrarium
+classic	job-caption	0x140d002f0	0x140d02947	cstring	0x1416fff2c	 cage
+classic	job-caption	0x140d002f0	0x140d02999	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d029a8	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d02a0c	cstring	0x1416fff34	 chain
+classic	job-caption	0x140d002f0	0x140d02a39	cstring	0x1416fff34	 chain
+classic	job-caption	0x140d002f0	0x140d02a53	cstring	0x1416fff3c	 rope
+classic	job-caption	0x140d002f0	0x140d02aa5	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d02ab4	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d02ac9	cstring	0x1416fff44	three 
+classic	job-caption	0x140d002f0	0x140d02b2d	cstring	0x1416fff50	 waterskins
+classic	job-caption	0x140d002f0	0x140d02b71	cstring	0x1416fff5c	 vials
+classic	job-caption	0x140d002f0	0x140d02b85	cstring	0x1416d9948	 flasks
+classic	job-caption	0x140d002f0	0x140d02bdf	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d02bee	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d02c03	cstring	0x1416fff44	three 
+classic	job-caption	0x140d002f0	0x140d02c9b	cstring	0x1416fff6c	 mugs
+classic	job-caption	0x140d002f0	0x140d02caf	cstring	0x1416fff78	 goblets
+classic	job-caption	0x140d002f0	0x140d02cc9	cstring	0x1416fff64	 cups
+classic	job-caption	0x140d002f0	0x140d02d1b	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d02d2a	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d02dc9	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d02dde	cstring	0x1416bcee4	tool
+classic	job-caption	0x140d002f0	0x140d02df7	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d02f0c	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d02f1b	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d02f7a	cstring	0x1416fff84	 toy
+classic	job-caption	0x140d002f0	0x140d02fcc	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d02fdb	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d0303a	cstring	0x1416fff90	 animal trap
+classic	job-caption	0x140d002f0	0x140d0308c	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d0309b	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d030fa	cstring	0x1416fffa0	 barrel
+classic	job-caption	0x140d002f0	0x140d0314c	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d0315b	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d031f2	cstring	0x1416fffa8	 tube
+classic	job-caption	0x140d002f0	0x140d03204	cstring	0x1416fffb0	 pipe section
+classic	job-caption	0x140d002f0	0x140d03256	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d03265	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d032c4	cstring	0x1416abc20	 bucket
+classic	job-caption	0x140d002f0	0x140d032d6	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d03339	cstring	0x1416fffc0	 window
+classic	job-caption	0x140d002f0	0x140d0334b	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d033ae	cstring	0x1416fffc8	 backpack
+classic	job-caption	0x140d002f0	0x140d033c0	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d03423	cstring	0x1416fffd8	 quiver
+classic	job-caption	0x140d002f0	0x140d03475	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d03484	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d034d1	cstring	0x1416455a8	large 
+classic	job-caption	0x140d002f0	0x140d034e2	cstring	0x141680d5c	small 
+classic	job-caption	0x140d002f0	0x140d03549	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d035b6	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d035c5	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d03612	cstring	0x1416455a8	large 
+classic	job-caption	0x140d002f0	0x140d03623	cstring	0x141680d5c	small 
+classic	job-caption	0x140d002f0	0x140d0368a	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d036b4	cstring	0x1416fffe0	Bait trap with 
+classic	job-caption	0x140d002f0	0x140d036db	cstring	0x14169c0e8	fish
+classic	job-caption	0x140d002f0	0x140d036ef	cstring	0x1416cab04	meat
+classic	job-caption	0x140d002f0	0x140d03703	cstring	0x1416106fc	gem
+classic	job-caption	0x140d002f0	0x140d0375d	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d0376c	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d037b9	cstring	0x1416455a8	large 
+classic	job-caption	0x140d002f0	0x140d037ca	cstring	0x141680d5c	small 
+classic	job-caption	0x140d002f0	0x140d03831	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d0389e	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d038ad	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d0390c	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d0397b	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d0398a	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d039e9	cstring	0x1416ffff0	 ballista arrow head
+classic	job-caption	0x140d002f0	0x140d039fb	cstring	0x141700008	Assemble 
+classic	job-caption	0x140d002f0	0x140d03a5e	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d03acd	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d03adc	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d03b01	cstring	0x141700014	five 
+classic	job-caption	0x140d002f0	0x140d03b10	cstring	0x141700020	twenty-five 
+classic	job-caption	0x140d002f0	0x140d03b67	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d03b92	cstring	0x141700030	Make
+classic	job-caption	0x140d002f0	0x140d03bb4	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d03c0f	cstring	0x141700038	 catapult parts
+classic	job-caption	0x140d002f0	0x140d03c61	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d03c70	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d03cc5	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d03d24	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d03d4d	cstring	0x141700030	Make
+classic	job-caption	0x140d002f0	0x140d03d62	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d03dc5	cstring	0x141700048	 mechanisms
+classic	job-caption	0x140d002f0	0x140d03dd7	cstring	0x141700030	Make
+classic	job-caption	0x140d002f0	0x140d03df9	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d03e54	cstring	0x141700058	 ballista parts
+classic	job-caption	0x140d002f0	0x140d03e66	cstring	0x141700030	Make
+classic	job-caption	0x140d002f0	0x140d03e88	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d03ee6	cstring	0x141700068	 bolt thrower parts
+classic	job-caption	0x140d002f0	0x140d03ef8	cstring	0x1416ffef8	Forge 
+classic	job-caption	0x140d002f0	0x140d03f5b	cstring	0x14170007c	 anvil
+classic	job-caption	0x140d002f0	0x140d03f6d	cstring	0x141700030	Make
+classic	job-caption	0x140d002f0	0x140d03fa7	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d03ff0	cstring	0x141700084	 bed
+classic	job-caption	0x140d002f0	0x140d04002	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d04065	cstring	0x141700090	 statue
+classic	job-caption	0x140d002f0	0x140d04077	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d040da	cstring	0x141700098	 slab
+classic	job-caption	0x140d002f0	0x140d040ec	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d0414f	cstring	0x1417000a0	 quern
+classic	job-caption	0x140d002f0	0x140d04161	cstring	0x141637a70	Make 
+classic	job-caption	0x140d002f0	0x140d041c4	cstring	0x1417000a8	 millstone
+classic	job-caption	0x140d002f0	0x140d041d6	cstring	0x1417000b4	Train 
+classic	job-caption	0x140d002f0	0x140d04263	cstring	0x1417000c0	 to hunt
+classic	job-caption	0x140d002f0	0x140d0428a	cstring	0x1417000d0	hunting animal
+classic	job-caption	0x140d002f0	0x140d0429c	cstring	0x1417000b4	Train 
+classic	job-caption	0x140d002f0	0x140d04330	cstring	0x1417000e0	 for war
+classic	job-caption	0x140d002f0	0x140d04357	cstring	0x1417000f0	war animal
+classic	job-caption	0x140d002f0	0x140d04369	cstring	0x1417000b4	Train 
+classic	job-caption	0x140d002f0	0x140d0440e	cstring	0x141700100	Make charcoal
+classic	job-caption	0x140d002f0	0x140d04420	cstring	0x141700110	Make ash
+classic	job-caption	0x140d002f0	0x140d0449a	cstring	0x141700120	Reaction
+classic	job-caption	0x140d002f0	0x140d044f9	cstring	0x14170012c	Smelt 
+classic	job-caption	0x140d002f0	0x140d0455c	cstring	0x141700134	 ore
+classic	job-caption	0x140d002f0	0x140d0456e	cstring	0x141700140	Melt a metal object
+classic	job-caption	0x140d002f0	0x140d04580	cstring	0x141700158	Extract metal strands
+classic	job-caption	0x140d002f0	0x140d045aa	cstring	0x14161092c	Tint 
+classic	job-caption	0x140d002f0	0x140d045d0	cstring	0x141700170	 thread 
+classic	job-caption	0x140d002f0	0x140d045f6	cstring	0x141610958	 using 
+classic	job-caption	0x140d002f0	0x140d0461c	cstring	0x141610950	 dye
+classic	job-caption	0x140d002f0	0x140d04636	cstring	0x141700180	Dye thread 
+classic	job-caption	0x140d002f0	0x140d04659	cstring	0x141700190	Dye thread
+classic	job-caption	0x140d002f0	0x140d0467f	cstring	0x14161092c	Tint 
+classic	job-caption	0x140d002f0	0x140d046a5	cstring	0x1417006d8	 cloth 
+classic	job-caption	0x140d002f0	0x140d046b1	cstring	0x1417006e0	Dye cloth 
+classic	job-caption	0x140d002f0	0x140d046dc	cstring	0x1417006f0	Dye cloth
+classic	job-caption	0x140d002f0	0x140d04702	cstring	0x14161092c	Tint 
+classic	job-caption	0x140d002f0	0x140d04728	cstring	0x141700700	 leather 
+classic	job-caption	0x140d002f0	0x140d04734	cstring	0x141700710	Dye leather 
+classic	job-caption	0x140d002f0	0x140d0475d	cstring	0x141700720	Dye leather
+classic	job-caption	0x140d002f0	0x140d0476f	cstring	0x14161084c	Mix 
+classic	job-caption	0x140d002f0	0x140d047ac	cstring	0x1415e3720	 
+classic	job-caption	0x140d002f0	0x140d047c1	cstring	0x14170072c	dye
+classic	job-caption	0x140d002f0	0x140d047e4	cstring	0x141610958	 using 
+classic	job-caption	0x140d002f0	0x140d04822	cstring	0x1415e40bc	 and 
+classic	job-caption	0x140d002f0	0x140d04873	cstring	0x141700730	Sew 
+classic	job-caption	0x140d002f0	0x140d048d6	cstring	0x141700738	 image
+classic	job-caption	0x140d002f0	0x140d048e8	cstring	0x141700740	Collect webs
+classic	job-caption	0x140d002f0	0x140d04942	cstring	0x141700750	Weave metal cloth
+classic	job-caption	0x140d002f0	0x140d0495d	cstring	0x141700768	Weave thread into silk
+classic	job-caption	0x140d002f0	0x140d0496a	cstring	0x141700780	Weave yarn into cloth
+classic	job-caption	0x140d002f0	0x140d04973	cstring	0x141700798	Weave thread into cloth
+classic	job-caption	0x140d002f0	0x140d04995	cstring	0x1417007b0	 (dyed only)
+classic	job-caption	0x140d002f0	0x140d049a7	cstring	0x1417007c0	Harvest plants
+classic	job-caption	0x140d002f0	0x140d049b9	cstring	0x1417007d0	Plant seeds
+classic	job-caption	0x140d002f0	0x140d049c8	cstring	0x1417007e0	Fertilize field
+classic	job-caption	0x140d002f0	0x140d049da	cstring	0x1417007f0	Pull the lever
+classic	job-caption	0x140d002f0	0x140d049ec	cstring	0x141700800	Link a building to trigger
+classic	job-caption	0x140d002f0	0x140d049fe	cstring	0x141700820	Carve fortification
+classic	job-caption	0x140d002f0	0x140d04a10	cstring	0x141700838	Smooth wall
+classic	job-caption	0x140d002f0	0x140d04a22	cstring	0x141700848	Smooth floor
+classic	job-caption	0x140d002f0	0x140d04a34	cstring	0x141700858	Detail wall
+classic	job-caption	0x140d002f0	0x140d04a46	cstring	0x141700868	Detail floor
+classic	job-caption	0x140d002f0	0x140d04a58	cstring	0x141700878	Carve track
+classic	job-caption	0x140d002f0	0x140d04a6a	cstring	0x14169b828	Dig
+classic	job-caption	0x140d002f0	0x140d04a7c	cstring	0x141700888	Remove stairs/ramps
+classic	job-caption	0x140d002f0	0x140d04a8e	cstring	0x1417008a0	Remove construction
+classic	job-caption	0x140d002f0	0x140d04aa0	cstring	0x1417008b8	Carve upward staircase
+classic	job-caption	0x140d002f0	0x140d04ab2	cstring	0x1417008d0	Carve downward staircase
+classic	job-caption	0x140d002f0	0x140d04ac4	cstring	0x1417008f0	Carve up/down staircase
+classic	job-caption	0x140d002f0	0x140d04ad6	cstring	0x141700908	Carve ramp
+classic	job-caption	0x140d002f0	0x140d04ae8	cstring	0x141700918	Dig channel
+classic	job-caption	0x140d002f0	0x140d04afa	cstring	0x141700928	Fell tree
+classic	job-caption	0x140d002f0	0x140d04b0c	cstring	0x141700938	Gather plants
+classic	job-caption	0x140d002f0	0x140d04b1e	cstring	0x141700948	Bring item to shop
+classic	job-caption	0x140d002f0	0x140d04b30	cstring	0x141700960	Bring item to depot
+classic	job-caption	0x140d002f0	0x140d04b42	cstring	0x141699cd8	Eat
+classic	job-caption	0x140d002f0	0x140d04b54	cstring	0x141700978	Get provisions
+classic	job-caption	0x140d002f0	0x140d04b66	cstring	0x141700988	Clean self
+classic	job-caption	0x140d002f0	0x140d04b78	cstring	0x14162aca0	Drink
+classic	job-caption	0x140d002f0	0x140d04b8a	cstring	0x141700998	Fill waterskin
+classic	job-caption	0x140d002f0	0x140d04b9c	cstring	0x1417009a8	Sleep
+classic	job-caption	0x140d002f0	0x140d04bae	cstring	0x1415fce5c	Fish
+classic	job-caption	0x140d002f0	0x140d04bc0	cstring	0x1417009b0	Kidnap
+classic	job-caption	0x140d002f0	0x140d04bd2	cstring	0x1415fa9b8	Cause trouble
+classic	job-caption	0x140d002f0	0x140d04be4	cstring	0x1417009b8	No job
+classic	job-caption	0x140d002f0	0x140d04bf6	cstring	0x1417009c0	No activity
+classic	job-caption	0x140d002f0	0x140d04c08	cstring	0x1417009d0	Report crime
+classic	job-caption	0x140d002f0	0x140d04c1a	cstring	0x1417009e0	Hunt
+classic	job-caption	0x140d002f0	0x140d04c2c	cstring	0x1417009e8	Starting fist fight
+classic	job-caption	0x140d002f0	0x140d04c3e	cstring	0x141700a00	Beat criminal
+classic	job-caption	0x140d002f0	0x140d04c50	cstring	0x141700a10	Place track vehicle
+classic	job-caption	0x140d002f0	0x140d04c62	cstring	0x141700a28	Push track vehicle
+classic	job-caption	0x140d002f0	0x140d04c6e	cstring	0x141700a40	Execute criminal
+classic	job-caption	0x140d002f0	0x140d04c80	cstring	0x141700a58	Hunt for small creature
+classic	job-caption	0x140d002f0	0x140d04c92	cstring	0x141700a70	Collect taxes
+classic	job-caption	0x140d002f0	0x140d04ca4	cstring	0x141700a80	Guard tax collector
+classic	job-caption	0x140d002f0	0x140d04cb6	cstring	0x141700a98	Return kill
+classic	job-caption	0x140d002f0	0x140d04cc8	cstring	0x141700aa8	Go shopping
+classic	job-caption	0x140d002f0	0x140d04cda	cstring	0x141700ab8	Seek artifact
+classic	job-caption	0x140d002f0	0x140d04cec	cstring	0x141700ac8	Seek infant
+classic	job-caption	0x140d002f0	0x140d04cf8	cstring	0x141700ad8	Store owned item
+classic	job-caption	0x140d002f0	0x140d04d0a	cstring	0x141700af0	Place item in tomb
+classic	job-caption	0x140d002f0	0x140d04d1c	cstring	0x141700b08	Store item in stockpile
+classic	job-caption	0x140d002f0	0x140d04d2e	cstring	0x141700b20	Store item in bag
+classic	job-caption	0x140d002f0	0x140d04d40	cstring	0x141700b38	Store item in barrel
+classic	job-caption	0x140d002f0	0x140d04d52	cstring	0x141700b50	Store item in bin
+classic	job-caption	0x140d002f0	0x140d04d64	cstring	0x141700580	Store item in vehicle
+classic	job-caption	0x140d002f0	0x140d04d76	cstring	0x141700598	Store weapon
+classic	job-caption	0x140d002f0	0x140d04d88	cstring	0x1417005a8	Store armor
+classic	job-caption	0x140d002f0	0x140d04d9a	cstring	0x1417005b8	Store item in location
+classic	job-caption	0x140d002f0	0x140d04dac	cstring	0x1417005d0	Store squad equipment
+classic	job-caption	0x140d002f0	0x140d04dbe	cstring	0x14169b4e4	Clean
+classic	job-caption	0x140d002f0	0x140d04dd0	cstring	0x14169b7e8	Rest
+classic	job-caption	0x140d002f0	0x140d04ddc	cstring	0x1417005e8	Pickup equipment
+classic	job-caption	0x140d002f0	0x140d04dee	cstring	0x141700600	Dump item
+classic	job-caption	0x140d002f0	0x140d04e00	cstring	0x141699178	Strange mood
+classic	job-caption	0x140d002f0	0x140d04e12	cstring	0x141700610	Clean trap
+classic	job-caption	0x140d002f0	0x140d04e24	cstring	0x141700620	Load catapult
+classic	job-caption	0x140d002f0	0x140d04e36	cstring	0x141700630	Load ballista
+classic	job-caption	0x140d002f0	0x140d04e45	cstring	0x141700640	Load bolt thrower
+classic	job-caption	0x140d002f0	0x140d04e54	cstring	0x141700658	Fire catapult
+classic	job-caption	0x140d002f0	0x140d04e63	cstring	0x141700668	Fire ballista
+classic	job-caption	0x140d002f0	0x140d04e72	cstring	0x141700678	Fire bolt thrower
+classic	job-caption	0x140d002f0	0x140d04e81	cstring	0x141700690	Operate pump
+classic	job-caption	0x140d002f0	0x140d04e90	cstring	0x1417006a0	Load cage trap
+classic	job-caption	0x140d002f0	0x140d04e9c	cstring	0x1417006b0	Load stone trap
+classic	job-caption	0x140d002f0	0x140d04ea5	cstring	0x1417006c0	Load weapon trap
+classic	job-item-requirement	0x140a285e0	0x140a28706	cstring	0x1416c65b8	unused 
+classic	job-item-requirement	0x140a285e0	0x140a28721	cstring	0x1416c65c0	improvable 
+classic	job-item-requirement	0x140a285e0	0x140a2873d	cstring	0x1416c65d0	butcherable 
+classic	job-item-requirement	0x140a285e0	0x140a28759	cstring	0x1416c65e0	millable 
+classic	job-item-requirement	0x140a285e0	0x140a28775	cstring	0x1416c65f0	possibly buriable 
+classic	job-item-requirement	0x140a285e0	0x140a28791	cstring	0x1416c64d0	unrotten 
+classic	job-item-requirement	0x140a285e0	0x140a287ad	cstring	0x1416c64e0	undisturbed 
+classic	job-item-requirement	0x140a285e0	0x140a287ca	cstring	0x1416c64f0	collected 
+classic	job-item-requirement	0x140a285e0	0x140a287ee	cstring	0x1416c6500	sharpenable 
+classic	job-item-requirement	0x140a285e0	0x140a2880d	cstring	0x14165e970	murdered 
+classic	job-item-requirement	0x140a285e0	0x140a2882c	cstring	0x1416c6510	empty 
+classic	job-item-requirement	0x140a285e0	0x140a2884b	cstring	0x1416c6518	processable 
+classic	job-item-requirement	0x140a285e0	0x140a2886a	cstring	0x1416c6528	cookable 
+classic	job-item-requirement	0x140a285e0	0x140a28889	cstring	0x1416c6534	solid 
+classic	job-item-requirement	0x140a285e0	0x140a288ab	cstring	0x1416c6b20	extract-bearing plant 
+classic	job-item-requirement	0x140a285e0	0x140a288ca	cstring	0x1416c6b38	extract-bearing fish 
+classic	job-item-requirement	0x140a285e0	0x140a288e9	cstring	0x1416c6b50	extract-bearing small creature 
+classic	job-item-requirement	0x140a285e0	0x140a28905	cstring	0x1416c6b70	processable (to vial) 
+classic	job-item-requirement	0x140a285e0	0x140a28924	cstring	0x1416c6b88	processable (to barrel) 
+classic	job-item-requirement	0x140a285e0	0x140a28943	cstring	0x1416c6ba8	tameable small creature 
+classic	job-item-requirement	0x140a285e0	0x140a28962	cstring	0x14164d6e0	nearby 
+classic	job-item-requirement	0x140a285e0	0x140a28981	cstring	0x1416c6bc8	sand-bearing 
+classic	job-item-requirement	0x140a285e0	0x140a289a0	cstring	0x1416c6bd8	glass 
+classic	job-item-requirement	0x140a285e0	0x140a289bb	cstring	0x1416c6ab8	lye-bearing 
+classic	job-item-requirement	0x140a285e0	0x140a289da	cstring	0x1416c6ac8	milk 
+classic	job-item-requirement	0x140a285e0	0x140a289f9	cstring	0x1416c6ad0	milkable 
+classic	job-item-requirement	0x140a285e0	0x140a28a18	cstring	0x1416c6ae0	finished good 
+classic	job-item-requirement	0x140a285e0	0x140a28a37	cstring	0x1416c6af0	ammo 
+classic	job-item-requirement	0x140a285e0	0x140a28a56	cstring	0x1416c6af8	furniture 
+classic	job-item-requirement	0x140a285e0	0x140a28ab0	cstring	0x1415e3720	 
+classic	job-item-requirement	0x140a285e0	0x140a28ac5	cstring	0x1416c6b04	dye 
+classic	job-item-requirement	0x140a285e0	0x140a28ae1	cstring	0x1416c6b10	dyeable 
+classic	job-item-requirement	0x140a285e0	0x140a28b00	cstring	0x1416c6a40	totemable 
+classic	job-item-requirement	0x140a285e0	0x140a28b1c	cstring	0x1416c6a50	glass-making 
+classic	job-item-requirement	0x140a285e0	0x140a28b38	cstring	0x1416c6a60	dyed 
+classic	job-item-requirement	0x140a285e0	0x140a28b57	cstring	0x1416c6a68	melt-designated 
+classic	job-item-requirement	0x140a285e0	0x140a28b7d	cstring	0x1416c6a80	deep material 
+classic	job-item-requirement	0x140a285e0	0x140a28b99	cstring	0x1416c6a90	sewn-imageless 
+classic	job-item-requirement	0x140a285e0	0x140a28bb5	cstring	0x1416c6aa0	screw 
+classic	job-item-requirement	0x140a285e0	0x140a28bdc	cstring	0x1416c6aa8	fire-safe 
+classic	job-item-requirement	0x140a285e0	0x140a28bfb	cstring	0x1416c69d8	magma-safe 
+classic	job-item-requirement	0x140a285e0	0x140a28c17	cstring	0x1416c69e8	building material 
+classic	job-item-requirement	0x140a285e0	0x140a28c36	cstring	0x1416c6a00	non-economic 
+classic	job-item-requirement	0x140a285e0	0x140a28c55	cstring	0x1416c6a10	plant 
+classic	job-item-requirement	0x140a285e0	0x140a28c74	cstring	0x1416c6a18	silk 
+classic	job-item-requirement	0x140a285e0	0x140a28c8f	cstring	0x1416c6a20	yarn 
+classic	job-item-requirement	0x140a285e0	0x140a28cae	cstring	0x1416c6a28	leather 
+classic	job-item-requirement	0x140a285e0	0x140a28ccd	cstring	0x1416c6a34	bone 
+classic	job-item-requirement	0x140a285e0	0x140a28cec	cstring	0x1416c6970	hair/wool 
+classic	job-item-requirement	0x140a285e0	0x140a28d0b	cstring	0x1416c697c	shell 
+classic	job-item-requirement	0x140a285e0	0x140a28d2a	cstring	0x1416c6984	horn 
+classic	job-item-requirement	0x140a285e0	0x140a28d49	cstring	0x1416c698c	pearl 
+classic	job-item-requirement	0x140a285e0	0x140a28d68	cstring	0x1416c6998	plaster-containing 
+classic	job-item-requirement	0x140a285e0	0x140a28d8e	cstring	0x1416c69ac	soap 
+classic	job-item-requirement	0x140a285e0	0x140a28dad	cstring	0x1416c69b8	ivory/tooth 
+classic	job-item-requirement	0x140a285e0	0x140a28dcc	cstring	0x1416c69c8	lye/milk-free 
+classic	job-item-requirement	0x140a285e0	0x140a28deb	cstring	0x1416c6900	blunt 
+classic	job-item-requirement	0x140a285e0	0x140a28e0a	cstring	0x1416c6908	unengraved 
+classic	job-item-requirement	0x140a285e0	0x140a28e25	cstring	0x1416c6918	unimproved 
+classic	job-item-requirement	0x140a285e0	0x140a28e44	cstring	0x1416c6928	written-on 
+classic	job-item-requirement	0x140a285e0	0x140a28e60	cstring	0x1416c6938	non-absorbent 
+classic	job-item-requirement	0x140a285e0	0x140a28e7c	cstring	0x1416c6948	food storage 
+classic	job-item-requirement	0x140a285e0	0x140a28e98	cstring	0x1416c6958	non-pressed 
+classic	job-item-requirement	0x140a285e0	0x140a28ebe	cstring	0x1416c6968	woven 
+classic	job-item-requirement	0x140a285e0	0x140a28eda	cstring	0x1416c68a4	hard 
+classic	job-item-requirement	0x140a285e0	0x140a28ef9	cstring	0x1416c68ac	metal 
+classic	job-item-requirement	0x140a285e0	0x140a28f18	cstring	0x1416c68b4	sand 
+classic	job-item-requirement	0x140a285e0	0x140a28f37	cstring	0x1416c68bc	edged 
+classic	job-item-requirement	0x140a285e0	0x140a28f56	cstring	0x1416c68c8	on-ground 
+classic	job-item-requirement	0x140a285e0	0x140a28f75	cstring	0x1416c68d8	divine 
+classic	job-item-requirement	0x140a285e0	0x140a28f94	cstring	0x1416c68e0	artifact 
+classic	job-item-requirement	0x140a285e0	0x140a28fb3	cstring	0x1416c68f0	non-artifact 
+classic	job-item-requirement	0x140a285e0	0x140a28fd2	cstring	0x1416c6830	wooden 
+classic	job-item-requirement	0x140a285e0	0x140a28ff1	cstring	0x1416c6838	stone 
+classic	job-item-requirement	0x140a285e0	0x140a29010	cstring	0x1416c6840	gem 
+classic	job-item-requirement	0x140a285e0	0x140a2902f	cstring	0x1416c6848	grown 
+classic	job-item-requirement	0x140a285e0	0x140a290bc	cstring	0x1415e3720	 
+classic	job-item-requirement	0x140a285e0	0x140a290e3	cstring	0x141782ab0	unknown material
+classic	job-item-requirement	0x140a285e0	0x140a29182	cstring	0x1416c6850	-bearing 
+classic	job-item-requirement	0x140a285e0	0x140a29190	cstring	0x1416c6858	 
+classic	job-item-requirement	0x140a285e0	0x140a2926f	cstring	0x1416c6860	CALCIUM_CARBONATE
+classic	job-item-requirement	0x140a285e0	0x140a29285	cstring	0x1416c6878	calcite/limestone/chalk/marble 
+classic	job-item-requirement	0x140a285e0	0x140a292ab	cstring	0x1416c6898	CAN_GLAZE
+classic	job-item-requirement	0x140a285e0	0x140a292c1	cstring	0x1416c6f78	glazable 
+classic	job-item-requirement	0x140a285e0	0x140a292f3	cstring	0x1416c6f84	FAT
+classic	job-item-requirement	0x140a285e0	0x140a29309	cstring	0x1416c6f88	fat 
+classic	job-item-requirement	0x140a285e0	0x140a29333	cstring	0x1416248ec	FLUX
+classic	job-item-requirement	0x140a285e0	0x140a29349	cstring	0x1416c6f90	flux 
+classic	job-item-requirement	0x140a285e0	0x140a2937b	cstring	0x1416c6f98	GYPSUM
+classic	job-item-requirement	0x140a285e0	0x140a29391	cstring	0x1416c6fa0	gypsum 
+classic	job-item-requirement	0x140a285e0	0x140a293bb	cstring	0x1416b9a68	PAPER_PLANT
+classic	job-item-requirement	0x140a285e0	0x140a293d1	cstring	0x1416c6fa8	paper-making 
+classic	job-item-requirement	0x140a285e0	0x140a29403	cstring	0x1416b9a58	PAPER_SLURRY
+classic	job-item-requirement	0x140a285e0	0x140a29419	cstring	0x1416c6fb8	paper-slurry 
+classic	job-item-requirement	0x140a285e0	0x140a29443	cstring	0x1416c6f10	TALLOW
+classic	job-item-requirement	0x140a285e0	0x140a29459	cstring	0x1416c6f18	tallow 
+classic	job-item-requirement	0x140a285e0	0x140a29482	cstring	0x14164d888	WAX
+classic	job-item-requirement	0x140a285e0	0x140a29498	cstring	0x1416c6f20	wax 
+classic	job-item-requirement	0x140a285e0	0x140a29509	cstring	0x1416c6f28	BAG_ITEM
+classic	job-item-requirement	0x140a285e0	0x140a2951f	cstring	0x1416c6f38	bag-processable 
+classic	job-item-requirement	0x140a285e0	0x140a29545	cstring	0x141637c68	DRINK_MAT
+classic	job-item-requirement	0x140a285e0	0x140a2955e	cstring	0x1416c6f50	fermentable 
+classic	job-item-requirement	0x140a285e0	0x140a29590	cstring	0x1416248e0	FIRED_MAT
+classic	job-item-requirement	0x140a285e0	0x140a295a6	cstring	0x1416c6f60	clay 
+classic	job-item-requirement	0x140a285e0	0x140a295d0	cstring	0x1416c6f68	GLAZE_MAT
+classic	job-item-requirement	0x140a285e0	0x140a295e6	cstring	0x1416c6e80	glaze 
+classic	job-item-requirement	0x140a285e0	0x140a29618	cstring	0x1416c6e88	HONEYCOMB_PRESS_MAT
+classic	job-item-requirement	0x140a285e0	0x140a2962e	cstring	0x1416c6ea0	honey-bearing 
+classic	job-item-requirement	0x140a285e0	0x140a29658	cstring	0x1416c6eb0	PARCHMENT_MAT
+classic	job-item-requirement	0x140a285e0	0x140a2966e	cstring	0x1416c6ec0	parchment-producing 
+classic	job-item-requirement	0x140a285e0	0x140a296a0	cstring	0x1416c6ed8	PRESS_LIQUID_MAT
+classic	job-item-requirement	0x140a285e0	0x140a296b6	cstring	0x1416c6ef0	oil-bearing 
+classic	job-item-requirement	0x140a285e0	0x140a296e0	cstring	0x1416c6f00	PRESS_PAPER_MAT
+classic	job-item-requirement	0x140a285e0	0x140a296f6	cstring	0x1416c6e00	paper-slurryable 
+classic	job-item-requirement	0x140a285e0	0x140a29728	cstring	0x1416c6e18	RENDER_MAT
+classic	job-item-requirement	0x140a285e0	0x140a2973e	cstring	0x1416c6e28	renderable 
+classic	job-item-requirement	0x140a285e0	0x140a29768	cstring	0x1416c6e38	SOAP_MAT
+classic	job-item-requirement	0x140a285e0	0x140a2977e	cstring	0x1416c6e44	fatty 
+classic	job-item-requirement	0x140a285e0	0x140a297b0	cstring	0x14164cb38	TAN_MAT
+classic	job-item-requirement	0x140a285e0	0x140a297c6	cstring	0x1416c6e50	tannable 
+classic	job-item-requirement	0x140a285e0	0x140a2985f	cstring	0x1416c6e60	-producing 
+classic	job-item-requirement	0x140a285e0	0x140a2986d	cstring	0x1416c6e68	ng 
+classic	job-item-requirement	0x140a285e0	0x140a2987a	cstring	0x1416c6e6a	 
+classic	job-item-requirement	0x140a285e0	0x140a29960	cstring	0x1416c6e70	-containing 
+classic	job-item-requirement	0x140a285e0	0x140a299a3	cstring	0x1416c6d78	color 
+classic	job-item-requirement	0x140a285e0	0x140a299e6	cstring	0x1415e3720	 
+classic	job-item-requirement	0x140a285e0	0x140a29a26	cstring	0x1416c6d80	liquid cooking
+classic	job-item-requirement	0x140a285e0	0x140a29a38	cstring	0x1416c6d90	liquid scoop
+classic	job-item-requirement	0x140a285e0	0x140a29a4a	cstring	0x1416c6da0	powder grinding receptacle
+classic	job-item-requirement	0x140a285e0	0x140a29a56	cstring	0x1416c6dc0	powder grinding
+classic	job-item-requirement	0x140a285e0	0x140a29a68	cstring	0x1416c6dd0	meat carving
+classic	job-item-requirement	0x140a285e0	0x140a29a7a	cstring	0x1416c6de0	meat boning
+classic	job-item-requirement	0x140a285e0	0x140a29a8c	cstring	0x1416c6df0	meat slicing
+classic	job-item-requirement	0x140a285e0	0x140a29a9e	cstring	0x1416c6ce8	meat cleaving
+classic	job-item-requirement	0x140a285e0	0x140a29ab0	cstring	0x1416c6cf8	meat-carving holder
+classic	job-item-requirement	0x140a285e0	0x140a29ac2	cstring	0x1416c6d10	meal container
+classic	job-item-requirement	0x140a285e0	0x140a29ad4	cstring	0x1416c6d20	liquid container
+classic	job-item-requirement	0x140a285e0	0x140a29ae6	cstring	0x1416c6d38	food storage
+classic	job-item-requirement	0x140a285e0	0x140a29af8	cstring	0x1416c6d48	hive
+classic	job-item-requirement	0x140a285e0	0x140a29b0a	cstring	0x1416c6d50	nest box
+classic	job-item-requirement	0x140a285e0	0x140a29b19	cstring	0x1416c6d60	small object container
+classic	job-item-requirement	0x140a285e0	0x140a29b2b	cstring	0x1416c6c50	track cart
+classic	job-item-requirement	0x140a285e0	0x140a29b3d	cstring	0x1416c6c60	heavy object hauler
+classic	job-item-requirement	0x140a285e0	0x140a29b4f	cstring	0x1416c6c78	stand-and-work
+classic	job-item-requirement	0x140a285e0	0x140a29b5e	cstring	0x1416c6c88	sheet roller
+classic	job-item-requirement	0x140a285e0	0x140a29b6a	cstring	0x1416c6c98	folded sheet protector
+classic	job-item-requirement	0x140a285e0	0x140a29b79	cstring	0x1416c6cb0	writing container
+classic	job-item-requirement	0x140a285e0	0x140a29b88	cstring	0x1416c6cc8	bookcase
+classic	job-item-requirement	0x140a285e0	0x140a29b97	cstring	0x1416c6cd8	display object
+classic	job-item-requirement	0x140a285e0	0x140a29ba6	cstring	0x1416c6be0	offering placement
+classic	job-item-requirement	0x140a285e0	0x140a29bb5	cstring	0x1416c6bf8	divination
+classic	job-item-requirement	0x140a285e0	0x140a29bbe	cstring	0x1416c6c08	games of chance
+classic	job-item-requirement	0x140a285e0	0x140a29bee	cstring	0x1415e3720	 
+classic	job-item-requirement	0x140a285e0	0x140a29c03	cstring	0x14167bdf0	body part
+classic	job-item-requirement	0x140a285e0	0x140a29c42	cstring	0x1415e3720	 
+classic	job-item-requirement	0x140a285e0	0x140a29d24	cstring	0x1416c6c18	 that isn't a bin
+classic	requirement-item-noun	0x140a7fc90	0x140a7fda7	cstring	0x14164517c	large
+classic	requirement-item-noun	0x140a7fc90	0x140a7fdb0	cstring	0x141645180	e
+classic	requirement-item-noun	0x140a7fc90	0x140a7fdb9	cstring	0x141681108	small
+classic	requirement-item-noun	0x140a7fc90	0x140a7fdc2	cstring	0x14168110c	l
+classic	requirement-item-noun	0x140a7fc90	0x140a7fe0c	cstring	0x1416c6848	grown 
+classic	requirement-item-noun	0x140a7fc90	0x140a7fee6	cstring	0x141677d30	logs
+classic	requirement-item-noun	0x140a7fc90	0x140a7ff58	cstring	0x1416ca230	branch
+classic	requirement-item-noun	0x140a7fc90	0x140a7ff7d	cstring	0x1416ca2d0	es
+classic	requirement-item-noun	0x140a7fc90	0x140a7ff9d	cstring	0x1415fc0c8	rough gems
+classic	requirement-item-noun	0x140a7fc90	0x140a7ffb6	cstring	0x1416ca2c0	raw green glass
+classic	requirement-item-noun	0x140a7fc90	0x140a7ffcf	cstring	0x1416ca2b0	raw clear glass
+classic	requirement-item-noun	0x140a7fc90	0x140a7ffe8	cstring	0x1416ca298	raw crystal glass
+classic	requirement-item-noun	0x140a7fc90	0x140a8000a	cstring	0x1415fc0c8	rough gems
+classic	requirement-item-noun	0x140a7fc90	0x140a80028	cstring	0x1416c70a4	rough 
+classic	requirement-item-noun	0x140a7fc90	0x140a800c7	cstring	0x141680d5c	small 
+classic	requirement-item-noun	0x140a7fc90	0x140a800de	cstring	0x141680d5c	small 
+classic	requirement-item-noun	0x140a7fc90	0x140a801be	cstring	0x1416ca1fc	rock
+classic	requirement-item-noun	0x140a7fc90	0x140a801de	cstring	0x1416ca1f0	small rock
+classic	requirement-item-noun	0x140a7fc90	0x140a80237	cstring	0x1416ca1e0	stone boulders
+classic	requirement-item-noun	0x140a7fc90	0x140a8025d	cstring	0x1416ca1d0	boulders
+classic	requirement-item-noun	0x140a7fc90	0x140a8033a	cstring	0x1416ca188	bars
+classic	requirement-item-noun	0x140a7fc90	0x140a80353	cstring	0x1416ca210	charcoal
+classic	requirement-item-noun	0x140a7fc90	0x140a80369	cstring	0x1416ca204	coke
+classic	requirement-item-noun	0x140a7fc90	0x140a80372	cstring	0x1416ca190	refined coal
+classic	requirement-item-noun	0x140a7fc90	0x140a8038b	cstring	0x1416396f8	metal
+classic	requirement-item-noun	0x140a7fc90	0x140a8039a	cstring	0x1416ca21c	 bars
+classic	requirement-item-noun	0x140a7fc90	0x140a8044a	cstring	0x1416ca228	 wafers
+classic	requirement-item-noun	0x140a7fc90	0x140a80538	cstring	0x1415fc088	cut gems
+classic	requirement-item-noun	0x140a7fc90	0x140a80551	cstring	0x1416ca170	cut green glass gems
+classic	requirement-item-noun	0x140a7fc90	0x140a8056a	cstring	0x1416ca158	cut clear glass gems
+classic	requirement-item-noun	0x140a7fc90	0x140a80580	cstring	0x1416ca1b8	cut crystal glass gems
+classic	requirement-item-noun	0x140a7fc90	0x140a8059b	cstring	0x1416ca1b0	gems
+classic	requirement-item-noun	0x140a7fc90	0x140a806d8	cstring	0x1416ca1a8	blocks
+classic	requirement-item-noun	0x140a7fc90	0x140a806ef	cstring	0x1416ca1a8	blocks
+classic	requirement-item-noun	0x140a7fc90	0x140a8079d	cstring	0x1416ca13c	door
+classic	requirement-item-noun	0x140a7fc90	0x140a807a4	cstring	0x1416ca1a0	portal
+classic	requirement-item-noun	0x140a7fc90	0x140a8081a	cstring	0x1416ca130	floodgate
+classic	requirement-item-noun	0x140a7fc90	0x140a8088a	cstring	0x1416ca120	hatch cover
+classic	requirement-item-noun	0x140a7fc90	0x140a808fa	cstring	0x1416ca118	grate
+classic	requirement-item-noun	0x140a7fc90	0x140a8096a	cstring	0x14162aa9c	table
+classic	requirement-item-noun	0x140a7fc90	0x140a809da	cstring	0x141637a60	cabinet
+classic	requirement-item-noun	0x140a7fc90	0x140a80a4a	cstring	0x141637a50	weapon rack
+classic	requirement-item-noun	0x140a7fc90	0x140a80aba	cstring	0x141637a40	armor stand
+classic	requirement-item-noun	0x140a7fc90	0x140a80b2a	cstring	0x1416ca154	bin
+classic	requirement-item-noun	0x140a7fc90	0x140a80bd1	cstring	0x1416ca150	box
+classic	requirement-item-noun	0x140a7fc90	0x140a80bea	cstring	0x1416ca14c	e
+classic	requirement-item-noun	0x140a7fc90	0x140a80c13	cstring	0x1416ca144	coffer
+classic	requirement-item-noun	0x140a7fc90	0x140a80c22	cstring	0x141637a68	chest
+classic	requirement-item-noun	0x140a7fc90	0x140a80c43	cstring	0x1416caa88	boxe
+classic	requirement-item-noun	0x140a7fc90	0x140a80c58	cstring	0x1415e4220	s
+classic	requirement-item-noun	0x140a7fc90	0x140a80c6c	cstring	0x1416ca150	box
+classic	requirement-item-noun	0x140a7fc90	0x140a80ce4	cstring	0x1416caa84	bag
+classic	requirement-item-noun	0x140a7fc90	0x140a80d7f	cstring	0x1416caa78	backpack
+classic	requirement-item-noun	0x140a7fc90	0x140a80e3c	cstring	0x1416caaa8	cast
+classic	requirement-item-noun	0x140a7fc90	0x140a80e48	cstring	0x1416caa68	limb/body 
+classic	requirement-item-noun	0x140a7fc90	0x140a80e57	cstring	0x1416caaa8	cast
+classic	requirement-item-noun	0x140a7fc90	0x140a80eb7	cstring	0x1416caa68	limb/body 
+classic	requirement-item-noun	0x140a7fc90	0x140a80ec6	cstring	0x1416caaa8	cast
+classic	requirement-item-noun	0x140a7fc90	0x140a80f36	cstring	0x1416caaa0	splint
+classic	requirement-item-noun	0x140a7fc90	0x140a80fa0	cstring	0x1416caa98	crutch
+classic	requirement-item-noun	0x140a7fc90	0x140a8103b	cstring	0x1416caa90	quiver
+classic	requirement-item-noun	0x140a7fc90	0x140a810ba	cstring	0x1416caa24	casket
+classic	requirement-item-noun	0x140a7fc90	0x140a81105	cstring	0x1416caa18	sarcophag
+classic	requirement-item-noun	0x140a7fc90	0x140a81114	cstring	0x14163d170	us
+classic	requirement-item-noun	0x140a7fc90	0x140a8111b	cstring	0x1416bafec	i
+classic	requirement-item-noun	0x140a7fc90	0x140a81137	cstring	0x14162a9ec	coffin
+classic	requirement-item-noun	0x140a7fc90	0x140a81254	cstring	0x1416caa04	chain
+classic	requirement-item-noun	0x140a7fc90	0x140a81268	cstring	0x1416caa0c	rope
+classic	requirement-item-noun	0x140a7fc90	0x140a813a8	cstring	0x1416caa4c	vial
+classic	requirement-item-noun	0x140a7fc90	0x140a813b9	cstring	0x1416caa44	flask
+classic	requirement-item-noun	0x140a7fc90	0x140a813d0	cstring	0x1416caa58	waterskin
+classic	requirement-item-noun	0x140a7fc90	0x140a81479	cstring	0x1416caa30	musical instrument
+classic	requirement-item-noun	0x140a7fc90	0x140a8155b	cstring	0x1416ca9d0	unglazed 
+classic	requirement-item-noun	0x140a7fc90	0x140a816c3	cstring	0x1415e3720	 
+classic	requirement-item-noun	0x140a7fc90	0x140a816dd	cstring	0x1416bcee4	tool
+classic	requirement-item-noun	0x140a7fc90	0x140a8177d	cstring	0x1416bcefc	toy
+classic	requirement-item-noun	0x140a7fc90	0x140a8182d	cstring	0x1416ca9cc	cup
+classic	requirement-item-noun	0x140a7fc90	0x140a81861	cstring	0x1416ca9c8	mug
+classic	requirement-item-noun	0x140a7fc90	0x140a8187b	cstring	0x1416ca9c0	goblet
+classic	requirement-item-noun	0x140a7fc90	0x140a818eb	cstring	0x1416ca9fc	window
+classic	requirement-item-noun	0x140a7fc90	0x140a8199a	cstring	0x1416ca9e4	cage
+classic	requirement-item-noun	0x140a7fc90	0x140a819a1	cstring	0x1416ca9f0	terrarium
+classic	requirement-item-noun	0x140a7fc90	0x140a81a15	cstring	0x1416ca9dc	barrel
+classic	requirement-item-noun	0x140a7fc90	0x140a81a85	cstring	0x1416ca98c	bucket
+classic	requirement-item-noun	0x140a7fc90	0x140a81af5	cstring	0x1416ca980	animal trap
+classic	requirement-item-noun	0x140a7fc90	0x140a81b71	cstring	0x14162aaa4	chair
+classic	requirement-item-noun	0x140a7fc90	0x140a81b8b	cstring	0x1416ca974	throne
+classic	requirement-item-noun	0x140a7fc90	0x140a81c41	cstring	0x1416ca970	web
+classic	requirement-item-noun	0x140a7fc90	0x140a81c8c	cstring	0x1416ca9b8	strands
+classic	requirement-item-noun	0x140a7fc90	0x140a81cbf	cstring	0x1416106b8	yarn
+classic	requirement-item-noun	0x140a7fc90	0x140a81cd0	cstring	0x1416106a0	thread
+classic	requirement-item-noun	0x140a7fc90	0x140a81d45	cstring	0x1416106a8	cloth
+classic	requirement-item-noun	0x140a7fc90	0x140a81e4f	cstring	0x1416ca9ac	sheet
+classic	requirement-item-noun	0x140a7fc90	0x140a81e72	cstring	0x1416ca9a0	tanned hide
+classic	requirement-item-noun	0x140a7fc90	0x140a81ed5	cstring	0x1416ca994	totem
+classic	requirement-item-noun	0x140a7fc90	0x140a81f3e	cstring	0x1416ca940	-bound 
+classic	requirement-item-noun	0x140a7fc90	0x140a81f5a	cstring	0x1416ca92c	codex
+classic	requirement-item-noun	0x140a7fc90	0x140a81f61	cstring	0x1416ca938	codices
+classic	requirement-item-noun	0x140a7fc90	0x140a81fe0	cstring	0x1416ca920	figurine
+classic	requirement-item-noun	0x140a7fc90	0x140a81ffe	cstring	0x1416ca968	rotten 
+classic	requirement-item-noun	0x140a7fc90	0x140a82023	cstring	0x14164aac0	drink
+classic	requirement-item-noun	0x140a7fc90	0x140a82066	cstring	0x1416ca968	rotten 
+classic	requirement-item-noun	0x140a7fc90	0x140a8224b	cstring	0x1416ca960	filthy 
+classic	requirement-item-noun	0x140a7fc90	0x140a82264	cstring	0x1416ca958	sticky 
+classic	requirement-item-noun	0x140a7fc90	0x140a82283	cstring	0x1416ca948	vomitous 
+classic	requirement-item-noun	0x140a7fc90	0x140a8229f	cstring	0x1416ca8ec	slimy 
+classic	requirement-item-noun	0x140a7fc90	0x140a822b8	cstring	0x1416ab578	stagnant 
+classic	requirement-item-noun	0x140a7fc90	0x140a822d4	cstring	0x1416ca8e4	dirty 
+classic	requirement-item-noun	0x140a7fc90	0x140a822f0	cstring	0x1416ca8dc	gooey 
+classic	requirement-item-noun	0x140a7fc90	0x140a82309	cstring	0x1416ca8d0	purulent 
+classic	requirement-item-noun	0x140a7fc90	0x140a82322	cstring	0x1416ca910	ichorous 
+classic	requirement-item-noun	0x140a7fc90	0x140a8233b	cstring	0x1416ca908	bloody 
+classic	requirement-item-noun	0x140a7fc90	0x140a8237a	cstring	0x1416a1240	liquid
+classic	requirement-item-noun	0x140a7fc90	0x140a824bc	cstring	0x1416ca8fc	 paste
+classic	requirement-item-noun	0x140a7fc90	0x140a82511	cstring	0x1416ca8f4	glob
+classic	requirement-item-noun	0x140a7fc90	0x140a82712	cstring	0x1416ca880	 laced with 
+classic	requirement-item-noun	0x140a7fc90	0x140a82786	cstring	0x1415e40c4	, 
+classic	requirement-item-noun	0x140a7fc90	0x140a82796	cstring	0x1415e40bc	 and 
+classic	requirement-item-noun	0x140a7fc90	0x140a827fb	cstring	0x1416ca968	rotten 
+classic	requirement-item-noun	0x140a7fc90	0x140a82898	cstring	0x1416ca870	 dye mix
+classic	requirement-item-noun	0x140a7fc90	0x140a828bc	cstring	0x1416ca864	powder
+classic	requirement-item-noun	0x140a7fc90	0x140a82916	cstring	0x1416ca968	rotten 
+classic	requirement-item-noun	0x140a7fc90	0x140a82938	cstring	0x1416ca85c	cheese
+classic	requirement-item-noun	0x140a7fc90	0x140a829c0	cstring	0x1416ca8c0	catapult parts
+classic	requirement-item-noun	0x140a7fc90	0x140a82a38	cstring	0x1416ca8a8	bolt thrower parts
+classic	requirement-item-noun	0x140a7fc90	0x140a82ab0	cstring	0x1416ca898	mechanisms
+classic	requirement-item-noun	0x140a7fc90	0x140a82b5f	cstring	0x1416ca890	tube
+classic	requirement-item-noun	0x140a7fc90	0x140a82b79	cstring	0x1416ca810	pipe section
+classic	requirement-item-noun	0x140a7fc90	0x140a82c17	cstring	0x1416ca800	trap component
+classic	requirement-item-noun	0x140a7fc90	0x140a82c48	cstring	0x1415e3720	 
+classic	requirement-item-noun	0x140a7fc90	0x140a82d2a	cstring	0x1416ca7f0	ballista parts
+classic	requirement-item-noun	0x140a7fc90	0x140a82da2	cstring	0x1416ca7e4	anvil
+classic	requirement-item-noun	0x140a7fc90	0x140a82e12	cstring	0x1416ca854	amulet
+classic	requirement-item-noun	0x140a7fc90	0x140a82e82	cstring	0x1416ca840	ballista arrow head
+classic	requirement-item-noun	0x140a7fc90	0x140a82f29	cstring	0x1416ca830	siege ammo
+classic	requirement-item-noun	0x140a7fc90	0x140a83073	cstring	0x1416ca820	ammunition
+classic	requirement-item-noun	0x140a7fc90	0x140a830eb	cstring	0x1416cae98	scepter
+classic	requirement-item-noun	0x140a7fc90	0x140a8315b	cstring	0x1416cae8c	crown
+classic	requirement-item-noun	0x140a7fc90	0x140a831c5	cstring	0x1416cae84	coin
+classic	requirement-item-noun	0x140a7fc90	0x140a831e4	cstring	0x1416cae78	perfect 
+classic	requirement-item-noun	0x140a7fc90	0x140a831f3	cstring	0x1416455a8	large 
+classic	requirement-item-noun	0x140a7fc90	0x140a832db	cstring	0x1416caec8	green glass 
+classic	requirement-item-noun	0x140a7fc90	0x140a832f1	cstring	0x1416caeb8	clear glass 
+classic	requirement-item-noun	0x140a7fc90	0x140a83307	cstring	0x1416caea8	crystal glass 
+classic	requirement-item-noun	0x140a7fc90	0x140a83323	cstring	0x1416106fc	gem
+classic	requirement-item-noun	0x140a7fc90	0x140a833db	cstring	0x1416caea0	 gem
+classic	requirement-item-noun	0x140a7fc90	0x140a834b6	cstring	0x1416cae40	ring
+classic	requirement-item-noun	0x140a7fc90	0x140a83526	cstring	0x1416cae38	earring
+classic	requirement-item-noun	0x140a7fc90	0x140a83596	cstring	0x1416cae28	bracelet
+classic	requirement-item-noun	0x140a7fc90	0x140a83606	cstring	0x14162aab0	bed
+classic	requirement-item-noun	0x140a7fc90	0x140a83676	cstring	0x1416cae18	traction bench
+classic	requirement-item-noun	0x140a7fc90	0x140a836e6	cstring	0x1416cae6c	quern
+classic	requirement-item-noun	0x140a7fc90	0x140a83756	cstring	0x1416cae60	millstone
+classic	requirement-item-noun	0x140a7fc90	0x140a837c6	cstring	0x1416cae54	statue
+classic	requirement-item-noun	0x140a7fc90	0x140a838d2	cstring	0x1416cae48	memorial
+classic	requirement-item-noun	0x140a7fc90	0x140a838e6	cstring	0x1416cad90	food imports sign
+classic	requirement-item-noun	0x140a7fc90	0x140a838fa	cstring	0x1416cad78	clothing imports sign
+classic	requirement-item-noun	0x140a7fc90	0x140a8390e	cstring	0x1416cad60	general imports sign
+classic	requirement-item-noun	0x140a7fc90	0x140a83922	cstring	0x1416cad50	cloth shop sign
+classic	requirement-item-noun	0x140a7fc90	0x140a83936	cstring	0x1416cae00	leather shop sign
+classic	requirement-item-noun	0x140a7fc90	0x140a8394a	cstring	0x1416cade0	woven clothing shop sign
+classic	requirement-item-noun	0x140a7fc90	0x140a8395e	cstring	0x1416cadc0	leather clothing shop sign
+classic	requirement-item-noun	0x140a7fc90	0x140a83972	cstring	0x1416cada8	bone carver's shop sign
+classic	requirement-item-noun	0x140a7fc90	0x140a83986	cstring	0x1416cacd8	gem cutter's shop sign
+classic	requirement-item-noun	0x140a7fc90	0x140a8399a	cstring	0x1416cacc0	weaponsmith's shop sign
+classic	requirement-item-noun	0x140a7fc90	0x140a839ae	cstring	0x1416caca8	bowyer's shop sign
+classic	requirement-item-noun	0x140a7fc90	0x140a839c2	cstring	0x1416cac90	blacksmith's shop sign
+classic	requirement-item-noun	0x140a7fc90	0x140a839d6	cstring	0x1416cad38	armorsmith's shop sign
+classic	requirement-item-noun	0x140a7fc90	0x140a839ea	cstring	0x1416cad20	metal craft shop sign
+classic	requirement-item-noun	0x140a7fc90	0x140a839fe	cstring	0x1416cad08	leather goods shop sign
+classic	requirement-item-noun	0x140a7fc90	0x140a83a12	cstring	0x1416cacf0	carpenter's shop sign
+classic	requirement-item-noun	0x140a7fc90	0x140a83a26	cstring	0x1416cac40	stone furniture shop sign
+classic	requirement-item-noun	0x140a7fc90	0x140a83a3a	cstring	0x1416cac20	metal furniture shop sign
+classic	requirement-item-noun	0x140a7fc90	0x140a83a4e	cstring	0x1416cac10	tavern sign
+classic	requirement-item-noun	0x140a7fc90	0x140a83a62	cstring	0x1416cac04	slab
+classic	requirement-item-noun	0x140a7fc90	0x140a83a76	cstring	0x1416cac04	slab
+classic	requirement-item-noun	0x140a7fc90	0x140a83a94	cstring	0x1416ca968	rotten 
+classic	requirement-item-noun	0x140a7fc90	0x140a83aa9	cstring	0x1416cac84	corpse
+classic	requirement-item-noun	0x140a7fc90	0x140a83ac7	cstring	0x1416ca968	rotten 
+classic	requirement-item-noun	0x140a7fc90	0x140a83aeb	cstring	0x1416106d0	tooth
+classic	requirement-item-noun	0x140a7fc90	0x140a83afc	cstring	0x1416cac7c	teeth
+classic	requirement-item-noun	0x140a7fc90	0x140a83b11	cstring	0x1416106c8	bone
+classic	requirement-item-noun	0x140a7fc90	0x140a83b29	cstring	0x1416106c0	shell
+classic	requirement-item-noun	0x140a7fc90	0x140a83b41	cstring	0x1416cac70	plant part
+classic	requirement-item-noun	0x140a7fc90	0x140a83b59	cstring	0x1416cac60	silk body part
+classic	requirement-item-noun	0x140a7fc90	0x140a83b71	cstring	0x1416cabb8	leather body part
+classic	requirement-item-noun	0x140a7fc90	0x140a83b89	cstring	0x1416caba0	wooden body part
+classic	requirement-item-noun	0x140a7fc90	0x140a83ba3	cstring	0x1416cab90	soap body part
+classic	requirement-item-noun	0x140a7fc90	0x140a83bbd	cstring	0x1416106e8	horn
+classic	requirement-item-noun	0x140a7fc90	0x140a83bd7	cstring	0x1416106e0	pearl
+classic	requirement-item-noun	0x140a7fc90	0x140a83bf1	cstring	0x1416cab80	yarn body part
+classic	requirement-item-noun	0x140a7fc90	0x140a83c09	cstring	0x1416cabf0	strand body part
+classic	requirement-item-noun	0x140a7fc90	0x140a83c12	cstring	0x14167bdf0	body part
+classic	requirement-item-noun	0x140a7fc90	0x140a83c3b	cstring	0x1416cabe8	Rotten 
+classic	requirement-item-noun	0x140a7fc90	0x140a83da2	cstring	0x141679ef8	remains
+classic	requirement-item-noun	0x140a7fc90	0x140a83e01	cstring	0x1416cabdc	seeds
+classic	requirement-item-noun	0x140a7fc90	0x140a83e72	cstring	0x1416cabd0	withered 
+classic	requirement-item-noun	0x140a7fc90	0x140a83ee6	cstring	0x1416cab28	leaves and fruit
+classic	requirement-item-noun	0x140a7fc90	0x140a83ef7	cstring	0x1416cab18	leaf or fruit
+classic	requirement-item-noun	0x140a7fc90	0x140a83f2a	cstring	0x1416cabd0	withered 
+classic	requirement-item-noun	0x140a7fc90	0x140a83f7d	cstring	0x14160fd14	plant
+classic	requirement-item-noun	0x140a7fc90	0x140a83f96	cstring	0x1415e4220	s
+classic	requirement-item-noun	0x140a7fc90	0x140a83fbc	cstring	0x1416ca968	rotten 
+classic	requirement-item-noun	0x140a7fc90	0x140a83fd4	cstring	0x1416cab10	raw 
+classic	requirement-item-noun	0x140a7fc90	0x140a84155	cstring	0x1415e40c4	, 
+classic	requirement-item-noun	0x140a7fc90	0x140a8416b	cstring	0x1415e40c4	, 
+classic	requirement-item-noun	0x140a7fc90	0x140a84184	cstring	0x14169c0e8	fish
+classic	requirement-item-noun	0x140a7fc90	0x140a841aa	cstring	0x1416ca968	rotten 
+classic	requirement-item-noun	0x140a7fc90	0x140a842d1	cstring	0x1415e3720	 
+classic	requirement-item-noun	0x140a7fc90	0x140a842e6	cstring	0x1416cab0c	egg
+classic	requirement-item-noun	0x140a7fc90	0x140a8430c	cstring	0x1416ca968	rotten 
+classic	requirement-item-noun	0x140a7fc90	0x140a8440b	cstring	0x14169c0e8	fish
+classic	requirement-item-noun	0x140a7fc90	0x140a84428	cstring	0x1416cab74	live 
+classic	requirement-item-noun	0x140a7fc90	0x140a84461	cstring	0x1416cab60	small live animal
+classic	requirement-item-noun	0x140a7fc90	0x140a8447b	cstring	0x1416cab54	tame 
+classic	requirement-item-noun	0x140a7fc90	0x140a84484	cstring	0x1416cab40	small tame animal
+classic	requirement-item-noun	0x140a7fc90	0x140a8449b	cstring	0x1416caad0	prepared meal
+classic	requirement-item-noun	0x140a7fc90	0x140a844b5	cstring	0x1416ca968	rotten 
+classic	requirement-item-noun	0x140a7fc90	0x140a844ca	cstring	0x1416caac0	preserved 
+classic	requirement-item-noun	0x140a7fc90	0x140a8458c	cstring	0x1416caab8	 chops
+classic	requirement-item-noun	0x140a7fc90	0x140a8459d	cstring	0x1416caab0	 chop
+classic	requirement-item-noun	0x140a7fc90	0x140a845d6	cstring	0x1416cab04	meat
+classic	requirement-item-noun	0x140a7fc90	0x140a845f0	cstring	0x1416cab04	meat
+classic	requirement-item-noun	0x140a7fc90	0x140a84682	cstring	0x1416bce90	weapon
+classic	requirement-item-noun	0x140a7fc90	0x140a846bb	cstring	0x1415e3720	 
+classic	requirement-item-noun	0x140a7fc90	0x140a847e7	cstring	0x1416caaf0	suits of 
+classic	requirement-item-noun	0x140a7fc90	0x140a847f6	cstring	0x1416bce88	armor
+classic	requirement-item-noun	0x140a7fc90	0x140a8485c	cstring	0x1415e3720	 
+classic	requirement-item-noun	0x140a7fc90	0x140a84906	cstring	0x1416caafc	chain 
+classic	requirement-item-noun	0x140a7fc90	0x140a84a15	cstring	0x141635604	right 
+classic	requirement-item-noun	0x140a7fc90	0x140a84a35	cstring	0x14163560c	left 
+classic	requirement-item-noun	0x140a7fc90	0x140a84a7e	cstring	0x1416caafc	chain 
+classic	requirement-item-noun	0x140a7fc90	0x140a84adf	cstring	0x1415e3720	 
+classic	requirement-item-noun	0x140a7fc90	0x140a84af3	cstring	0x1416caae0	handwear
+classic	requirement-item-noun	0x140a7fc90	0x140a84b97	cstring	0x1416bce58	shield
+classic	requirement-item-noun	0x140a7fc90	0x140a84bb6	cstring	0x1416cb2a0	/buckler
+classic	requirement-item-noun	0x140a7fc90	0x140a84bca	cstring	0x1416cb2a0	/buckler
+classic	requirement-item-noun	0x140a7fc90	0x140a84d07	cstring	0x1415e3720	 
+classic	requirement-item-noun	0x140a7fc90	0x140a84d37	cstring	0x1416cb290	footwear
+classic	requirement-item-noun	0x140a7fc90	0x140a84e28	cstring	0x1416cb280	headwear
+classic	requirement-item-noun	0x140a7fc90	0x140a84e6c	cstring	0x1415e3720	 
+classic	requirement-item-noun	0x140a7fc90	0x140a84f28	cstring	0x1416cb278	legwear
+classic	requirement-item-noun	0x140a7fc90	0x140a84fac	cstring	0x1415e3720	 
+classic	requirement-item-noun	0x140a7fc90	0x140a850c6	cstring	0x1415f7fb0	item
+classic	requirement-item-noun	0x140a7fc90	0x140a850f7	cstring	0x141616f6c	 [
+classic	requirement-item-noun	0x140a7fc90	0x140a85117	cstring	0x1415f8664	]
+classic	raw-reaction	MAKE WOODEN CHAIR	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:6	RAW	NAME	make wooden chair
+classic	raw-reaction	MAKE WOODEN TABLE	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:21	RAW	NAME	make wooden table
+classic	raw-reaction	MAKE WOODEN BED	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:34	RAW	NAME	make wooden bed
+classic	raw-reaction	MAKE WOODEN CHEST	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:47	RAW	NAME	make wooden chest
+classic	raw-reaction	MAKE WOODEN CABINET	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:60	RAW	NAME	make wooden cabinet
+classic	raw-reaction	MAKE WOODEN DOOR	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:73	RAW	NAME	make wooden door
+classic	raw-reaction	MAKE WOODEN BARREL	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:86	RAW	NAME	make wooden barrel
+classic	raw-reaction	MAKE WOODEN BUCKET	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:99	RAW	NAME	make wooden bucket
+classic	raw-reaction	MAKE WOODEN CASKET	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:112	RAW	NAME	make wooden casket
+classic	raw-reaction	MAKE WOODEN HATCH COVER	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:125	RAW	NAME	make wooden hatch cover
+classic	raw-reaction	MAKE WOODEN GRATE	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:138	RAW	NAME	make wooden grate
+classic	raw-reaction	MAKE WOODEN BIN	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:151	RAW	NAME	make wooden bin
+classic	raw-reaction	MAKE WOODEN STEPLADDER	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:164	RAW	NAME	make wooden stepladder
+classic	raw-reaction	MAKE WOODEN BOOKCASE	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:177	RAW	NAME	make wooden bookcase
+classic	raw-reaction	MAKE WOODEN SPLINT	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:190	RAW	NAME	make wooden splint
+classic	raw-reaction	MAKE WOODEN CRUTCH	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:203	RAW	NAME	make wooden crutch
+classic	raw-reaction	MAKE WOODEN SHIELD	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:216	RAW	NAME	make wooden shield
+classic	raw-reaction	MAKE WOODEN BUCKLER	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:229	RAW	NAME	make wooden buckler
+classic	raw-reaction	MAKE WOODEN TRAINING AXE	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:242	RAW	NAME	make wooden training axe
+classic	raw-reaction	MAKE WOODEN TRAINING SHORT SWORD	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:255	RAW	NAME	make wooden training short sword
+classic	raw-reaction	MAKE WOODEN TRAINING SPEAR	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:268	RAW	NAME	make wooden training spear
+classic	raw-reaction	MAKE WOODEN PEDESTAL	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt:281	RAW	NAME	make wooden pedestal
+classic	raw-reaction	ACACIA_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:6	RAW	NAME	make acacia bark dye
+classic	raw-reaction	ALDER_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:17	RAW	NAME	make alder bark dye
+classic	raw-reaction	ALDER_CONE_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:26	RAW	NAME	make alder cone dye
+classic	raw-reaction	ALMOND_SHELL_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:36	RAW	NAME	make almond shell dye
+classic	raw-reaction	APPLE_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:46	RAW	NAME	make apple bark dye
+classic	raw-reaction	APPLE_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:55	RAW	NAME	make apple leaf dye
+classic	raw-reaction	APRICOT_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:65	RAW	NAME	make apricot bark dye
+classic	raw-reaction	ASH_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:74	RAW	NAME	make ash bark dye
+classic	raw-reaction	AVOCADO_SKIN_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:83	RAW	NAME	make avocado skin dye
+classic	raw-reaction	BANANA_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:93	RAW	NAME	make banana leaf dye
+classic	raw-reaction	BANANA_PEEL_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:103	RAW	NAME	make banana peel dye
+classic	raw-reaction	BAYBERRY_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:113	RAW	NAME	make bayberry leaf dye
+classic	raw-reaction	BAYBERRY_BERRY_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:123	RAW	NAME	make bayberry dye
+classic	raw-reaction	BIRCH_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:133	RAW	NAME	make birch bark dye
+classic	raw-reaction	CHERRY_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:142	RAW	NAME	make cherry bark dye
+classic	raw-reaction	CHERRY_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:151	RAW	NAME	make cherry leaf dye
+classic	raw-reaction	CHESTNUT_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:161	RAW	NAME	make chestnut bark dye
+classic	raw-reaction	CHESTNUT_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:170	RAW	NAME	make chestnut leaf dye
+classic	raw-reaction	CHESTNUT_HULL_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:180	RAW	NAME	make chestnut hull dye
+classic	raw-reaction	COFFEE_BEAN_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:190	RAW	NAME	make coffee bean dye
+classic	raw-reaction	GINKGO_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:200	RAW	NAME	make ginkgo leaf dye
+classic	raw-reaction	GUAVA_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:210	RAW	NAME	make guava bark dye
+classic	raw-reaction	GUAVA_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:219	RAW	NAME	make guava leaf dye
+classic	raw-reaction	HAZEL_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:229	RAW	NAME	make hazel bark dye
+classic	raw-reaction	HAZEL_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:238	RAW	NAME	make hazel leaf dye
+classic	raw-reaction	LARCH_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:248	RAW	NAME	make larch bark dye
+classic	raw-reaction	MAHOGANY_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:257	RAW	NAME	make mahogany bark dye
+classic	raw-reaction	MANGROVE_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:266	RAW	NAME	make mangrove bark dye
+classic	raw-reaction	MANGROVE_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:275	RAW	NAME	make mangrove leaf dye
+classic	raw-reaction	MAPLE_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:285	RAW	NAME	make maple bark dye
+classic	raw-reaction	OAK_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:294	RAW	NAME	make oak bark dye
+classic	raw-reaction	OLIVE_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:303	RAW	NAME	make olive bark dye
+classic	raw-reaction	OLIVE_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:312	RAW	NAME	make olive leaf dye
+classic	raw-reaction	PEACH_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:322	RAW	NAME	make peach bark dye
+classic	raw-reaction	PEAR_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:331	RAW	NAME	make pear bark dye
+classic	raw-reaction	PEAR_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:340	RAW	NAME	make pear leaf dye
+classic	raw-reaction	PERSIMMON_FRUIT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:350	RAW	NAME	make persimmon dye
+classic	raw-reaction	PINE_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:360	RAW	NAME	make pine bark dye
+classic	raw-reaction	PLUM_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:369	RAW	NAME	make plum bark dye
+classic	raw-reaction	POMEGRANATE_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:378	RAW	NAME	make pomegranate leaf dye
+classic	raw-reaction	POMEGRANATE_RIND_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:388	RAW	NAME	make pomegranate rind dye
+classic	raw-reaction	POMEGRANATE_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:398	RAW	NAME	make pomegranate bark dye
+classic	raw-reaction	TEA_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:407	RAW	NAME	make tea leaf dye
+classic	raw-reaction	WILLOW_BARK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:417	RAW	NAME	make willow bark dye
+classic	raw-reaction	WILLOW_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:426	RAW	NAME	make willow leaf dye
+classic	raw-reaction	RED_SPINACH_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:436	RAW	NAME	make red spinach leaf dye
+classic	raw-reaction	RICE_HUSK_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:446	RAW	NAME	make rice husk dye
+classic	raw-reaction	SORGHUM_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:456	RAW	NAME	make sorghum leaf dye
+classic	raw-reaction	BILBERRY_FRUIT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:466	RAW	NAME	make bilberry dye
+classic	raw-reaction	BLACKBERRY_FRUIT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:476	RAW	NAME	make blackberry dye
+classic	raw-reaction	BLUEBERRY_FRUIT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:486	RAW	NAME	make blueberry dye
+classic	raw-reaction	CABBAGE_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:496	RAW	NAME	make cabbage leaf dye
+classic	raw-reaction	CRANBERRY_FRUIT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:506	RAW	NAME	make cranberry dye
+classic	raw-reaction	EGGPLANT_FRUIT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:516	RAW	NAME	make eggplant dye
+classic	raw-reaction	GRAPE_FRUIT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:526	RAW	NAME	make grape dye
+classic	raw-reaction	ONION_SKIN_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:536	RAW	NAME	make onion skin dye
+classic	raw-reaction	PEANUT_SHELL_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:546	RAW	NAME	make peanut shell dye
+classic	raw-reaction	PINEAPPLE_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:556	RAW	NAME	make pineapple leaf dye
+classic	raw-reaction	POTATO_SKIN_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:566	RAW	NAME	make potato skin dye
+classic	raw-reaction	RADISH_ROOT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:576	RAW	NAME	make radish dye
+classic	raw-reaction	RASPBERRY_FRUIT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:586	RAW	NAME	make raspberry dye
+classic	raw-reaction	RHUBARB_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:596	RAW	NAME	make rhubarb leaf dye
+classic	raw-reaction	SPINACH_LEAF_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:606	RAW	NAME	make spinach leaf dye
+classic	raw-reaction	SWEET_POTATO_SKIN_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:616	RAW	NAME	make sweet potato skin dye
+classic	raw-reaction	TOMATO_SKIN_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:626	RAW	NAME	make tomato skin dye
+classic	raw-reaction	TURNIP_SKIN_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:636	RAW	NAME	make turnip skin dye
+classic	raw-reaction	WATERMELON_FRUIT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:646	RAW	NAME	make watermelon dye
+classic	raw-reaction	WILD_CARROT_ROOT_DYE	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt:656	RAW	NAME	make carrot dye
+classic	raw-reaction	TAN_A_HIDE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:6	RAW	NAME	tan a hide
+classic	raw-reaction	RENDER_FAT	data/vanilla/vanilla_reactions/objects/reaction_other.txt:18	RAW	NAME	render fat
+classic	raw-reaction	MAKE_SOAP_FROM_TALLOW	data/vanilla/vanilla_reactions/objects/reaction_other.txt:27	RAW	NAME	make soap from tallow
+classic	raw-reaction	MAKE_SOAP_FROM_OIL	data/vanilla/vanilla_reactions/objects/reaction_other.txt:41	RAW	NAME	make soap from oil
+classic	raw-reaction	MAKE_PEARLASH	data/vanilla/vanilla_reactions/objects/reaction_other.txt:60	RAW	NAME	make pearlash
+classic	raw-reaction	MAKE_PLASTER_POWDER	data/vanilla/vanilla_reactions/objects/reaction_other.txt:68	RAW	NAME	make plaster powder
+classic	raw-reaction	MAKE_SHARP_ROCK	data/vanilla/vanilla_reactions/objects/reaction_other.txt:77	RAW	NAME	make sharp rock
+classic	raw-reaction	MILL_SEEDS_NUTS_TO_PASTE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:85	RAW	NAME	mill seeds/nuts to paste
+classic	raw-reaction	MAKE_CLAY_JUG	data/vanilla/vanilla_reactions/objects/reaction_other.txt:94	RAW	NAME	make clay jug
+classic	raw-reaction	MAKE_CLAY_BRICKS	data/vanilla/vanilla_reactions/objects/reaction_other.txt:103	RAW	NAME	make clay bricks
+classic	raw-reaction	MAKE_CLAY_STATUE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:112	RAW	NAME	make clay statue
+classic	raw-reaction	MAKE_LARGE_CLAY_POT	data/vanilla/vanilla_reactions/objects/reaction_other.txt:121	RAW	NAME	make large clay pot
+classic	raw-reaction	MAKE_CLAY_CRAFTS	data/vanilla/vanilla_reactions/objects/reaction_other.txt:130	RAW	NAME	make clay crafts
+classic	raw-reaction	GLAZE_JUG	data/vanilla/vanilla_reactions/objects/reaction_other.txt:139	RAW	NAME	glaze clay/stone jug
+classic	raw-reaction	GLAZE_STATUE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:158	RAW	NAME	glaze clay/stone statue
+classic	raw-reaction	GLAZE_LARGE_POT	data/vanilla/vanilla_reactions/objects/reaction_other.txt:172	RAW	NAME	glaze large clay/stone pot
+classic	raw-reaction	GLAZE_CRAFT	data/vanilla/vanilla_reactions/objects/reaction_other.txt:186	RAW	NAME	glaze clay/stone craft
+classic	raw-reaction	PRESS_OIL	data/vanilla/vanilla_reactions/objects/reaction_other.txt:200	RAW	NAME	press liquid from paste
+classic	raw-reaction	PRESS_OIL_FRUIT	data/vanilla/vanilla_reactions/objects/reaction_other.txt:216	RAW	NAME	press liquid from fruit
+classic	raw-reaction	MAKE_CLAY_HIVE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:233	RAW	NAME	make clay hive
+classic	raw-reaction	PRESS_HONEYCOMB	data/vanilla/vanilla_reactions/objects/reaction_other.txt:242	RAW	NAME	press honey from honeycomb
+classic	raw-reaction	MAKE_WAX_CRAFTS	data/vanilla/vanilla_reactions/objects/reaction_other.txt:258	RAW	NAME	make wax crafts
+classic	raw-reaction	BREW_DRINK_FROM_PLANT	data/vanilla/vanilla_reactions/objects/reaction_other.txt:266	RAW	NAME	brew drink from plant
+classic	raw-reaction	BREW_DRINK_FROM_PLANT_GROWTH	data/vanilla/vanilla_reactions/objects/reaction_other.txt:283	RAW	NAME	brew drink from fruit
+classic	raw-reaction	MAKE_MEAD	data/vanilla/vanilla_reactions/objects/reaction_other.txt:300	RAW	NAME	make mead
+classic	raw-reaction	PROCESS_PLANT_TO_BAG	data/vanilla/vanilla_reactions/objects/reaction_other.txt:319	RAW	NAME	process plant to bag
+classic	raw-reaction	MAKE_QUICKLIME	data/vanilla/vanilla_reactions/objects/reaction_other.txt:334	RAW	NAME	make quicklime
+classic	raw-reaction	MAKE_MILK_OF_LIME	data/vanilla/vanilla_reactions/objects/reaction_other.txt:343	RAW	NAME	make milk of lime
+classic	raw-reaction	MAKE_PARCHMENT	data/vanilla/vanilla_reactions/objects/reaction_other.txt:360	RAW	NAME	make parchment
+classic	raw-reaction	MAKE_SCROLL	data/vanilla/vanilla_reactions/objects/reaction_other.txt:373	RAW	NAME	make scroll
+classic	raw-reaction	MAKE_QUIRE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:383	RAW	NAME	make quire
+classic	raw-reaction	MAKE_SHEET_FROM_PLANT	data/vanilla/vanilla_reactions/objects/reaction_other.txt:390	RAW	NAME	make sheet from plant
+classic	raw-reaction	MAKE_SLURRY_FROM_PLANT	data/vanilla/vanilla_reactions/objects/reaction_other.txt:401	RAW	NAME	mash plant into slurry
+classic	raw-reaction	PRESS_PLANT_PAPER	data/vanilla/vanilla_reactions/objects/reaction_other.txt:413	RAW	NAME	press plant slurry into paper sheet
+classic	raw-reaction	BIND_BOOK	data/vanilla/vanilla_reactions/objects/reaction_other.txt:423	RAW	NAME	bind book
+classic	raw-reaction	CARVE_BONE_FIGURINE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:440	RAW	NAME	carve bone figurine
+classic	raw-reaction	CARVE_BONE_RING	data/vanilla/vanilla_reactions/objects/reaction_other.txt:454	RAW	NAME	carve bone ring
+classic	raw-reaction	CARVE_BONE_EARRING	data/vanilla/vanilla_reactions/objects/reaction_other.txt:466	RAW	NAME	carve bone earring
+classic	raw-reaction	CARVE_BONE_SCEPTER	data/vanilla/vanilla_reactions/objects/reaction_other.txt:478	RAW	NAME	carve bone scepter
+classic	raw-reaction	CARVE_BONE_AMULET	data/vanilla/vanilla_reactions/objects/reaction_other.txt:490	RAW	NAME	carve bone amulet
+classic	raw-reaction	CARVE_BONE_BRACELET	data/vanilla/vanilla_reactions/objects/reaction_other.txt:502	RAW	NAME	carve bone bracelet
+classic	raw-reaction	CARVE_BONE_CROWN	data/vanilla/vanilla_reactions/objects/reaction_other.txt:514	RAW	NAME	carve bone crown
+classic	raw-reaction	CARVE_BONE_GEM	data/vanilla/vanilla_reactions/objects/reaction_other.txt:526	RAW	NAME	carve bone cabochon
+classic	raw-reaction	CARVE_WOODEN_HELVE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:538	RAW	NAME	carve wooden helve from branch
+classic	raw-reaction	ASSEMBLE STONE AXE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:549	RAW	NAME	assemble stone axe
+classic	raw-reaction	MAKE WOODEN DISPLAY CASE	data/vanilla/vanilla_reactions/objects/reaction_other.txt:558	RAW	NAME	make display case
+classic	raw-reaction	BITUMINOUS_COAL_TO_COKE	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:6	RAW	NAME	make coke from bituminous coal
+classic	raw-reaction	LIGNITE_TO_COKE	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:14	RAW	NAME	make coke from lignite
+classic	raw-reaction	BRASS_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:22	RAW	NAME	make brass bars (use ore)
+classic	raw-reaction	BRASS_MAKING2	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:31	RAW	NAME	make brass bars (use bars)
+classic	raw-reaction	BRONZE_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:40	RAW	NAME	make bronze bars (use ore)
+classic	raw-reaction	BRONZE_MAKING2	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:49	RAW	NAME	make bronze bars (use bars)
+classic	raw-reaction	ELECTRUM_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:58	RAW	NAME	make electrum bars (use ore)
+classic	raw-reaction	ELECTRUM_MAKING2	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:67	RAW	NAME	make electrum bars (use bars)
+classic	raw-reaction	BILLON_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:76	RAW	NAME	make billon bars (use ore)
+classic	raw-reaction	BILLON_MAKING2	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:85	RAW	NAME	make billon bars (use bars)
+classic	raw-reaction	PEWTER_FINE_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:94	RAW	NAME	make fine pewter bars (use ore)
+classic	raw-reaction	PEWTER_FINE_MAKING2	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:103	RAW	NAME	make fine pewter bars (use bars)
+classic	raw-reaction	PEWTER_TRIFLE_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:112	RAW	NAME	make trifle pewter bars (use ore)
+classic	raw-reaction	PEWTER_TRIFLE_MAKING2	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:121	RAW	NAME	make trifle pewter bars (use bars)
+classic	raw-reaction	PEWTER_LAY_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:130	RAW	NAME	make lay pewter bars (use bars)
+classic	raw-reaction	PIG_IRON_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:140	RAW	NAME	make pig iron bars
+classic	raw-reaction	STEEL_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:150	RAW	NAME	make steel bars
+classic	raw-reaction	NICKEL_SILVER_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:161	RAW	NAME	make nickel silver bars
+classic	raw-reaction	BLACK_BRONZE_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:171	RAW	NAME	make black bronze bars
+classic	raw-reaction	STERLING_SILVER_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:181	RAW	NAME	make sterling silver bars
+classic	raw-reaction	ROSE_GOLD_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:190	RAW	NAME	make rose gold bars
+classic	raw-reaction	BISMUTH_BRONZE_MAKING	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:199	RAW	NAME	make bismuth bronze bars
+classic	raw-reaction	ADAMANTINE_WAFERS	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt:209	RAW	NAME	make adamantine wafers
+classic	generated-prefix	generated instrument reaction NAME	Dwarf Fortress.exe:VA=0x141730690	RAW	NAME	forge 
+classic	generated-prefix	generated instrument reaction NAME	Dwarf Fortress.exe:VA=0x1417306c8	RAW	NAME	make 
+classic	generated-prefix	generated instrument reaction NAME	Dwarf Fortress.exe:VA=0x141730d28	RAW	NAME	assemble 

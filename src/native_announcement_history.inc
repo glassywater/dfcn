@@ -1,5 +1,6 @@
 // Borrowed native fields only. Layouts come from the same generated ABI
 // declarations as historical records; no per-host announcement algorithm.
+static void remember_native_announcement_kinship_parent(uintptr_t parent);
 static bool native_announcement_display_tail(std::vector<uintptr_t> &records) {
     NativeBorrowedVector<uintptr_t> native;
     if (!native_history_read_vector(native_history_global(0x23d14f0 + 0x112378), native))
@@ -56,14 +57,9 @@ static bool native_announcement_history_row(uintptr_t address, NativeAnnouncemen
 // str is empty. 11b3a48..11b3b18 centers non-speech, non-continuations.
 // Follow that ownership for every report type, independently of the history
 // cache, submission time, line length, translation success or scroll position.
-static std::vector<NativeAnnouncementParagraph> native_adventure_announcement_paragraphs() {
+static std::vector<NativeAnnouncementParagraph> native_owned_announcement_paragraphs(
+        const NativeBorrowedVector<uintptr_t> &native, bool center_non_speech) {
     std::vector<NativeAnnouncementParagraph> result;
-    uint32_t flags = 0;
-    NativeBorrowedVector<uintptr_t> native;
-    if (!native_history_copy(native_history_global(0x23d14f0 + 0x116720), flags) ||
-        !(flags & 0x10) ||
-        !native_history_read_vector(native_history_global(0x23d14f0 + 0x116730), native))
-        return result;
     for (size_t index = 0; index < native.size(); ++index) {
         const uintptr_t address = native_history_vector_at(native, index);
         uintptr_t parent = 0;
@@ -78,12 +74,15 @@ static std::vector<NativeAnnouncementParagraph> native_adventure_announcement_pa
             uint8_t report_flags = 0;
             int32_t speaker = -1;
             if (!native_history_copy_string(native_history_object_field(parent,
-                    "report", 8, 32), paragraph.source) ||
-                !native_history_copy(native_history_object_field(parent,
-                    "report", 0x30), report_flags) ||
-                !native_history_copy(native_history_object_field(parent,
-                    "report", 0x64, 4), speaker)) return {};
-            paragraph.centered = !(report_flags & 1) && speaker == -1;
+                    "report", 8, 32), paragraph.source)) return {};
+            remember_native_announcement_kinship_parent(parent);
+            if (center_non_speech) {
+                if (!native_history_copy(native_history_object_field(parent,
+                        "report", 0x30), report_flags) ||
+                    !native_history_copy(native_history_object_field(parent,
+                        "report", 0x64, 4), speaker)) return {};
+                paragraph.centered = !(report_flags & 1) && speaker == -1;
+            }
             result.push_back(std::move(paragraph));
         }
         if (row.source.empty()) {
@@ -93,4 +92,40 @@ static std::vector<NativeAnnouncementParagraph> native_adventure_announcement_pa
         result.back().rows.push_back(std::move(row));
     }
     return result;
+}
+
+static std::vector<NativeAnnouncementParagraph> native_adventure_announcement_paragraphs() {
+    uint32_t flags = 0;
+    NativeBorrowedVector<uintptr_t> native;
+    if (!native_history_copy(native_history_global(0x23d14f0 + 0x116720), flags) ||
+        !(flags & 0x10) ||
+        !native_history_read_vector(native_history_global(0x23d14f0 + 0x116730), native))
+        return {};
+    return native_owned_announcement_paragraphs(native, true);
+}
+
+static std::vector<NativeAnnouncementParagraph> native_announcement_log_paragraphs() {
+#ifdef _WIN32
+    uintptr_t owner = 0;
+    uint64_t epoch = 0;
+    {
+        std::lock_guard<std::mutex> lock(g_native_announcement_mutex);
+        owner = g_native_announcement_log_owner;
+        epoch = g_native_announcement_log_epoch;
+    }
+    if (!owner || epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire))
+        return {};
+    // Steam 883fc5/8842c2 and classic 881845/881b42 use the actual
+    // modal owner's vector at +8; its entries keep their parent at +20.
+    // The shared reader copies complete report::text and every wrap row.
+    // Captured draw addresses then prove which rows are visible, including
+    // a scrolled tail or a final line clipped by the modal's lower border.
+    NativeBorrowedVector<uintptr_t> native;
+    if (!native_history_read_vector(owner + 8, native)) return {};
+    auto result = native_owned_announcement_paragraphs(native, false);
+    if (epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire)) return {};
+    return result;
+#else
+    return {};
+#endif
 }

@@ -1,0 +1,339 @@
+edition	image	selector	table_rva	branch_rva	source_text	selection
+reference	PE:6a70a6d9:02711000	0	0x86d958	0x86a11d	Accepting	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	1	0x86d958	0x86a177	Adoration	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	2	0x86d958	0x86a1a4	Affection	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	3	0x86d958	0x86a1d1	Agitated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	4	0x86d958	0x86a1fe	Aggravated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	5	0x86d958	0x86a22b	In Agony	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	6	0x86d958	0x869ea7	Alarmed	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	7	0x86d958	0x86a258	Alienated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	8	0x86d958	0x86a285	Amazed	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	9	0x86d958	0x86a2b2	Ambivalent	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	10	0x86d958	0x86a2df	Amused	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	11	0x86d958	0x86a30c	Angry	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	12	0x86d958	0x86b30b	Existential Crisis	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	13	0x86d958	0x86a339	In Anguish	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	14	0x86d958	0x869d99	Annoyed	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	15	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	16	0x86d958	0x86a366	Anxious	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	17	0x86d958	0x86a393	Apathetic	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	18	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	19	0x86d958	0x86a3c0	Aroused	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	20	0x86d958	0x86a3ed	Astonished	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	21	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	22	0x86d958	0x86a41a	Averse	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	23	0x86d958	0x86a447	In Awe	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	24	0x86d958	0x86a474	Bitter	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	25	0x86d958	0x86a096	Blissful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	26	0x86d958	0x86a4a1	Bored	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	27	0x86d958	0x86a4ce	Caring	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	28	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	29	0x86d958	0x86a4fb	Confused	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	30	0x86d958	0x86a528	Contemptuous	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	31	0x86d958	0x86a555	Content	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	32	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	33	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	34	0x86d958	0x86b338	Defeated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	35	0x86d958	0x86a582	Dejected	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	36	0x86d958	0x86a5af	Delighted	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	37	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	38	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	39	0x86d958	0x86a5dc	Despair	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	40	0x86d958	0x86a609	Disappointed	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	41	0x86d958	0x86a636	Disgusted	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	42	0x86d958	0x86a663	Disillusioned	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	43	0x86d958	0x86a690	Dislike	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	44	0x86d958	0x86a6bd	Dismayed	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	45	0x86d958	0x86a6ea	Displeasure	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	46	0x86d958	0x86a717	Distressed	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	47	0x86d958	0x86b392	Doubt	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	48	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	49	0x86d958	0x86a744	Eager	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	50	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	51	0x86d958	0x86a771	Elated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	52	0x86d958	0x86a79e	Embarrassed	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	53	0x86d958	0x86a7cb	Empathetic	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	54	0x86d958	0x86a7f8	Empty	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	55	0x86d958	0x86a825	Enjoyment	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	56	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	57	0x86d958	0x86b3bc	Enthusiastic	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	58	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	59	0x86d958	0x86b410	Euphoric	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	60	0x86d958	0x86a852	Exasperated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	61	0x86d958	0x869fe2	Eexcited	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	62	0x86d958	0x86a87f	Exhilarated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	63	0x86d958	0x86b365	Expectant	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	64	0x86d958	0x86a8ac	Afraid	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	65	0x86d958	0x86a8d9	Ferocious	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	66	0x86d958	0x869e4d	Fondness	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	67	0x86d958	0x86a906	Free	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	68	0x86d958	0x86a933	Frightened	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	69	0x86d958	0x86a960	Frustrated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	70	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	71	0x86d958	0x86a00f	Gaiety	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	72	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	73	0x86d958	0x86a98d	Gleeful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	74	0x86d958	0x86a9ba	Gloomy	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	75	0x86d958	0x86a9e7	Glum	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	76	0x86d958	0x86aa14	Grateful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	77	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	78	0x86d958	0x869f5b	Grieving	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	79	0x86d958	0x869f2e	Grimly Satisfied	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	80	0x86d958	0x869df3	Grouchy	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	81	0x86d958	0x869e20	Grumpy	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	82	0x86d958	0x86aa41	Guilty	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	83	0x86d958	0x86aa6e	Happy	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	84	0x86d958	0x86aa9b	Hateful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	85	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	86	0x86d958	0x86aac8	Hopeful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	87	0x86d958	0x86aaf5	Hopeless	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	88	0x86d958	0x869f01	Horrified	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	89	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	90	0x86d958	0x86ab22	Humiliated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	91	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	92	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	93	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	94	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	95	0x86d958	0x86ab4f	Insulted	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	96	0x86d958	0x86ab7c	Interested	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	97	0x86d958	0x86aba9	Irritated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	98	0x86d958	0x86abd6	Isolated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	99	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	100	0x86d958	0x86ac03	Jolly	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	101	0x86d958	0x86ac30	Jovial	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	102	0x86d958	0x86a069	Joyous	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	103	0x86d958	0x86ac5d	Jubilant	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	104	0x86d958	0x86ac8a	Loathing	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	105	0x86d958	0x86acb7	Lonely	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	106	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	107	0x86d958	0x86a0c3	Loving	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	108	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	109	0x86d958	0x86ace4	Lustful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	110	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	111	0x86d958	0x86ad11	Miserable	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	112	0x86d958	0x86ad3e	Mortified	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	113	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	114	0x86d958	0x86ad6b	Nervous	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	115	0x86d958	0x86ad98	Nostalgic	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	116	0x86d958	0x86adc5	Optimistic	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	117	0x86d958	0x86adf2	Outraged	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	118	0x86d958	0x86ae1f	Panicked	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	119	0x86d958	0x86ae4c	Patient	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	120	0x86d958	0x86ae79	Passionate	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	121	0x86d958	0x86b3e6	Pessimistic	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	122	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	123	0x86d958	0x86aea6	Pleasure	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	124	0x86d958	0x86aed3	Proud	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	125	0x86d958	0x869fb5	Enraged	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	126	0x86d958	0x86af00	Enraptured	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	127	0x86d958	0x86af2d	Rejected	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	128	0x86d958	0x86af5a	Relieved	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	129	0x86d958	0x86af87	Regretful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	130	0x86d958	0x86afb4	Remorseful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	131	0x86d958	0x86afe1	Repentant	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	132	0x86d958	0x86b00e	Resentful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	133	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	134	0x86d958	0x86b068	Indignant	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	135	0x86d958	0x86a03c	Sad	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	136	0x86d958	0x869dc6	Satisfied	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	137	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	138	0x86d958	0x86b095	Self-pity	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	139	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	140	0x86d958	0x86b0c2	Servile	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	141	0x86d958	0x86b0ef	Shaken	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	142	0x86d958	0x86b11c	Ashamed	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	143	0x86d958	0x869ed4	Shocked	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	144	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	145	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	146	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	147	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	148	0x86d958	0x869e7a	Suspicious	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	149	0x86d958	0x86b149	Sympathy	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	150	0x86d958	0x86b176	Tenderness	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	151	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	152	0x86d958	0x86b1a3	Terrified	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	153	0x86d958	0x86b1d0	Thrilled	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	154	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	155	0x86d958	0x869f88	Triumphant	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	156	0x86d958	0x86b1fd	Uneasy	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	157	0x86d958	0x86b22a	Unhappy	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	158	0x86d958	0x86a0f0	Vengeful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	159	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	160	0x86d958	0x86b257	Wonder	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	161	0x86d958	0x86b284	Worried	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	162	0x86d958	0x86b2b1	Wrathful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	163	0x86d958	0x86b2de	Zealous	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	164	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	165	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	166	0x86d958	0x86b441		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	167	0x86d958	0x86b03b	Restless	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+reference	PE:6a70a6d9:02711000	168	0x86d958	0x86a14a	Admiration	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	0	0x86b1d8	0x86799d	Accepting	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	1	0x86b1d8	0x8679f7	Adoration	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	2	0x86b1d8	0x867a24	Affection	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	3	0x86b1d8	0x867a51	Agitated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	4	0x86b1d8	0x867a7e	Aggravated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	5	0x86b1d8	0x867aab	In Agony	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	6	0x86b1d8	0x867727	Alarmed	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	7	0x86b1d8	0x867ad8	Alienated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	8	0x86b1d8	0x867b05	Amazed	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	9	0x86b1d8	0x867b32	Ambivalent	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	10	0x86b1d8	0x867b5f	Amused	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	11	0x86b1d8	0x867b8c	Angry	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	12	0x86b1d8	0x868b8b	Existential Crisis	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	13	0x86b1d8	0x867bb9	In Anguish	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	14	0x86b1d8	0x867619	Annoyed	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	15	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	16	0x86b1d8	0x867be6	Anxious	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	17	0x86b1d8	0x867c13	Apathetic	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	18	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	19	0x86b1d8	0x867c40	Aroused	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	20	0x86b1d8	0x867c6d	Astonished	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	21	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	22	0x86b1d8	0x867c9a	Averse	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	23	0x86b1d8	0x867cc7	In Awe	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	24	0x86b1d8	0x867cf4	Bitter	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	25	0x86b1d8	0x867916	Blissful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	26	0x86b1d8	0x867d21	Bored	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	27	0x86b1d8	0x867d4e	Caring	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	28	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	29	0x86b1d8	0x867d7b	Confused	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	30	0x86b1d8	0x867da8	Contemptuous	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	31	0x86b1d8	0x867dd5	Content	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	32	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	33	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	34	0x86b1d8	0x868bb8	Defeated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	35	0x86b1d8	0x867e02	Dejected	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	36	0x86b1d8	0x867e2f	Delighted	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	37	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	38	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	39	0x86b1d8	0x867e5c	Despair	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	40	0x86b1d8	0x867e89	Disappointed	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	41	0x86b1d8	0x867eb6	Disgusted	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	42	0x86b1d8	0x867ee3	Disillusioned	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	43	0x86b1d8	0x867f10	Dislike	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	44	0x86b1d8	0x867f3d	Dismayed	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	45	0x86b1d8	0x867f6a	Displeasure	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	46	0x86b1d8	0x867f97	Distressed	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	47	0x86b1d8	0x868c12	Doubt	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	48	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	49	0x86b1d8	0x867fc4	Eager	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	50	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	51	0x86b1d8	0x867ff1	Elated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	52	0x86b1d8	0x86801e	Embarrassed	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	53	0x86b1d8	0x86804b	Empathetic	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	54	0x86b1d8	0x868078	Empty	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	55	0x86b1d8	0x8680a5	Enjoyment	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	56	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	57	0x86b1d8	0x868c3c	Enthusiastic	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	58	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	59	0x86b1d8	0x868c90	Euphoric	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	60	0x86b1d8	0x8680d2	Exasperated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	61	0x86b1d8	0x867862	Eexcited	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	62	0x86b1d8	0x8680ff	Exhilarated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	63	0x86b1d8	0x868be5	Expectant	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	64	0x86b1d8	0x86812c	Afraid	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	65	0x86b1d8	0x868159	Ferocious	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	66	0x86b1d8	0x8676cd	Fondness	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	67	0x86b1d8	0x868186	Free	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	68	0x86b1d8	0x8681b3	Frightened	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	69	0x86b1d8	0x8681e0	Frustrated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	70	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	71	0x86b1d8	0x86788f	Gaiety	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	72	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	73	0x86b1d8	0x86820d	Gleeful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	74	0x86b1d8	0x86823a	Gloomy	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	75	0x86b1d8	0x868267	Glum	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	76	0x86b1d8	0x868294	Grateful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	77	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	78	0x86b1d8	0x8677db	Grieving	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	79	0x86b1d8	0x8677ae	Grimly Satisfied	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	80	0x86b1d8	0x867673	Grouchy	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	81	0x86b1d8	0x8676a0	Grumpy	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	82	0x86b1d8	0x8682c1	Guilty	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	83	0x86b1d8	0x8682ee	Happy	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	84	0x86b1d8	0x86831b	Hateful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	85	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	86	0x86b1d8	0x868348	Hopeful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	87	0x86b1d8	0x868375	Hopeless	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	88	0x86b1d8	0x867781	Horrified	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	89	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	90	0x86b1d8	0x8683a2	Humiliated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	91	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	92	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	93	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	94	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	95	0x86b1d8	0x8683cf	Insulted	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	96	0x86b1d8	0x8683fc	Interested	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	97	0x86b1d8	0x868429	Irritated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	98	0x86b1d8	0x868456	Isolated	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	99	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	100	0x86b1d8	0x868483	Jolly	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	101	0x86b1d8	0x8684b0	Jovial	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	102	0x86b1d8	0x8678e9	Joyous	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	103	0x86b1d8	0x8684dd	Jubilant	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	104	0x86b1d8	0x86850a	Loathing	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	105	0x86b1d8	0x868537	Lonely	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	106	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	107	0x86b1d8	0x867943	Loving	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	108	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	109	0x86b1d8	0x868564	Lustful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	110	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	111	0x86b1d8	0x868591	Miserable	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	112	0x86b1d8	0x8685be	Mortified	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	113	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	114	0x86b1d8	0x8685eb	Nervous	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	115	0x86b1d8	0x868618	Nostalgic	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	116	0x86b1d8	0x868645	Optimistic	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	117	0x86b1d8	0x868672	Outraged	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	118	0x86b1d8	0x86869f	Panicked	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	119	0x86b1d8	0x8686cc	Patient	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	120	0x86b1d8	0x8686f9	Passionate	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	121	0x86b1d8	0x868c66	Pessimistic	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	122	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	123	0x86b1d8	0x868726	Pleasure	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	124	0x86b1d8	0x868753	Proud	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	125	0x86b1d8	0x867835	Enraged	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	126	0x86b1d8	0x868780	Enraptured	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	127	0x86b1d8	0x8687ad	Rejected	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	128	0x86b1d8	0x8687da	Relieved	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	129	0x86b1d8	0x868807	Regretful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	130	0x86b1d8	0x868834	Remorseful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	131	0x86b1d8	0x868861	Repentant	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	132	0x86b1d8	0x86888e	Resentful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	133	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	134	0x86b1d8	0x8688e8	Indignant	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	135	0x86b1d8	0x8678bc	Sad	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	136	0x86b1d8	0x867646	Satisfied	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	137	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	138	0x86b1d8	0x868915	Self-pity	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	139	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	140	0x86b1d8	0x868942	Servile	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	141	0x86b1d8	0x86896f	Shaken	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	142	0x86b1d8	0x86899c	Ashamed	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	143	0x86b1d8	0x867754	Shocked	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	144	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	145	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	146	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	147	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	148	0x86b1d8	0x8676fa	Suspicious	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	149	0x86b1d8	0x8689c9	Sympathy	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	150	0x86b1d8	0x8689f6	Tenderness	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	151	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	152	0x86b1d8	0x868a23	Terrified	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	153	0x86b1d8	0x868a50	Thrilled	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	154	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	155	0x86b1d8	0x867808	Triumphant	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	156	0x86b1d8	0x868a7d	Uneasy	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	157	0x86b1d8	0x868aaa	Unhappy	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	158	0x86b1d8	0x867970	Vengeful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	159	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	160	0x86b1d8	0x868ad7	Wonder	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	161	0x86b1d8	0x868b04	Worried	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	162	0x86b1d8	0x868b31	Wrathful	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	163	0x86b1d8	0x868b5e	Zealous	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	164	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	165	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	166	0x86b1d8	0x868cc1		selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	167	0x86b1d8	0x8688bb	Restless	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity
+classic	PE:6a70b91c:0270a000	168	0x86b1d8	0x8679ca	Admiration	selected among strongest positive-strength mood records; maximum 3, further limited by native capacity

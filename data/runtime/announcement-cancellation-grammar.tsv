@@ -1,0 +1,142 @@
+# Complete cancellation constructor grammar. All reason-selector outputs, including dynamic interruption and requirement fields.
+# scope	source	target	field scopes	native provenance
+fortress-job	Unchain {s}	解开{s1}的锁链	$unit	PE reference job selector 155 0x140d04007..0x140d040b5; classic same selector; complete unit identity
+fortress-job	{s} (engrave memorial)	{s1}（雕刻纪念铭文）	memorial-subject	PE reference job selector 211 0x140d04799..0x140d04875; name/current unit/race-caste branches
+memorial-subject	{s}	{s1}	$unit	PE 0x140a94030 language name; 0x141330c30 current unit; 0x140aa3bd0 race/caste fallback
+fortress-announcement	{s} cancels {s}: Unscheduled.	{s1}取消了{s2}：未排定。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Cannot reach site.	{s1}取消了{s2}：无法到达地点。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Getting married.	{s1}取消了{s2}：正在结婚。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Inappropriate dig square.	{s1}取消了{s2}：挖掘方格不合适。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Area became inappropriate.	{s1}取消了{s2}：区域已变得不合适。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Moved.	{s1}取消了{s2}：已移动。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Need empty bucket.	{s1}取消了{s2}：需要空桶。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Need empty trap.	{s1}取消了{s2}：需要空陷阱。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Need empty bag.	{s1}取消了{s2}：需要空袋。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Need empty cage.	{s1}取消了{s2}：需要空笼。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Need valid, active sand collection zone.	{s1}取消了{s2}：需要有效且启用的采砂区。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Need valid, active clay collection zone.	{s1}取消了{s2}：需要有效且启用的采黏土区。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No available colony.	{s1}取消了{s2}：没有可用的蜂巢。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Sand vanished.	{s1}取消了{s2}：砂子不见了。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Clay vanished.	{s1}取消了{s2}：黏土不见了。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Incapable of carrying.	{s1}取消了{s2}：无法搬运。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Too injured.	{s1}取消了{s2}：伤势过重。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Exhausted.	{s1}取消了{s2}：精疲力竭。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Resting injury.	{s1}取消了{s2}：正在养伤。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Animal inaccessible.	{s1}取消了{s2}：无法接近动物。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Patient inaccessible.	{s1}取消了{s2}：无法接近病患。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Infant inaccessible.	{s1}取消了{s2}：无法接近婴儿。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No partner.	{s1}取消了{s2}：没有搭档。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Item inaccessible.	{s1}取消了{s2}：无法取得物品。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Drop-off inaccessible.	{s1}取消了{s2}：无法到达交付地点。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Building inaccessible.	{s1}取消了{s2}：无法到达建筑。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Area inaccessible.	{s1}取消了{s2}：无法到达区域。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Nothing in cage.	{s1}取消了{s2}：笼中没有东西。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Nothing to cage.	{s1}取消了{s2}：没有可装入笼中的生物。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Nothing to catch.	{s1}取消了{s2}：没有可捕捉的生物。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No patient.	{s1}取消了{s2}：没有病患。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Patient not resting.	{s1}取消了{s2}：病患没有休息。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No infant.	{s1}取消了{s2}：没有婴儿。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Already leading creature.	{s1}取消了{s2}：已在牵引生物。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No food available.	{s1}取消了{s2}：没有可用的食物。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Water source vanished.	{s1}取消了{s2}：水源不见了。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No water source.	{s1}取消了{s2}：没有水源。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Water source contaminated.	{s1}取消了{s2}：水源受到污染。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Creature occupying site.	{s1}取消了{s2}：有生物占据地点。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No bucket at well.	{s1}取消了{s2}：水井没有水桶。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Bucket full of extraneous material.	{s1}取消了{s2}：桶中装满了异物。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Well dry.	{s1}取消了{s2}：水井干涸。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Need office.	{s1}取消了{s2}：需要办公室。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Wrong ammunition.	{s1}取消了{s2}：弹药不对。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Ammunition inaccessible.	{s1}取消了{s2}：无法取得弹药。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No ammunition.	{s1}取消了{s2}：没有弹药。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No item.	{s1}取消了{s2}：没有物品。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No weapon.	{s1}取消了{s2}：没有武器。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Item blocking site.	{s1}取消了{s2}：有物品阻挡地点。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Building site submerged.	{s1}取消了{s2}：建筑工地被淹没。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Animal not restrained.	{s1}取消了{s2}：动物未被拴住。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No creature.	{s1}取消了{s2}：没有生物。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Inappropriate building.	{s1}取消了{s2}：建筑不合适。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No building.	{s1}取消了{s2}：没有建筑。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No floor space.	{s1}取消了{s2}：没有地面空间。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No designated area.	{s1}取消了{s2}：没有指定的区域。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No party.	{s1}取消了{s2}：没有聚会。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Wrong justice state.	{s1}取消了{s2}：司法状态不对。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Nothing in building.	{s1}取消了{s2}：建筑中没有东西。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Relieved.	{s1}取消了{s2}：已被替换。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Water is frozen.	{s1}取消了{s2}：水已结冰。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Terrified.	{s1}取消了{s2}：极度恐惧。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Mortally afraid.	{s1}取消了{s2}：极度恐惧。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Experiencing emotional shock.	{s1}取消了{s2}：受到情感冲击。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Horrified.	{s1}取消了{s2}：惊骇。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Grieving.	{s1}取消了{s2}：悲痛中。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Too sad.	{s1}取消了{s2}：过于悲伤。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: In agony.	{s1}取消了{s2}：极度痛苦。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Anguished.	{s1}取消了{s2}：痛苦不堪。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Despairing.	{s1}取消了{s2}：绝望。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Dismayed.	{s1}取消了{s2}：沮丧。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Distressed.	{s1}取消了{s2}：忧虑不堪。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Frightened.	{s1}取消了{s2}：惊恐。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Miserable.	{s1}取消了{s2}：悲惨不已。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Mortified.	{s1}取消了{s2}：羞愧难当。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Shaken.	{s1}取消了{s2}：震惊不已。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: In existential crisis.	{s1}取消了{s2}：陷入存在危机。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Too insane.	{s1}取消了{s2}：神智过于失常。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Too depressed.	{s1}取消了{s2}：过于抑郁。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Oblivious.	{s1}取消了{s2}：浑然不觉。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Catatonic.	{s1}取消了{s2}：陷入木僵。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Taken by mood.	{s1}取消了{s2}：陷入奇异情绪。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Went insane.	{s1}取消了{s2}：发疯了。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Throwing tantrum.	{s1}取消了{s2}：正在发脾气。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Could not find path.	{s1}取消了{s2}：找不到路径。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Path blocked.	{s1}取消了{s2}：路径受阻。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Seeking artifact.	{s1}取消了{s2}：正在寻找造物。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Handling dangerous creature.	{s1}取消了{s2}：正在处理危险生物。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Going to bed.	{s1}取消了{s2}：正在就寝。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Seeking Infant.	{s1}取消了{s2}：正在寻找婴儿。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Dangerous terrain.	{s1}取消了{s2}：地形危险。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Forbidden area.	{s1}取消了{s2}：禁区。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Job item lost or destroyed.	{s1}取消了{s2}：工作物品丢失或损毁。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Job item misplaced.	{s1}取消了{s2}：工作物品放错位置。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Getting food.	{s1}取消了{s2}：正在取食物。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Getting water.	{s1}取消了{s2}：正在取水。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Hunting vermin for food.	{s1}取消了{s2}：正在捕捉害虫充饥。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Target inaccessible.	{s1}取消了{s2}：无法接近目标。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Target too injured.	{s1}取消了{s2}：目标伤势过重。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No target.	{s1}取消了{s2}：没有目标。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No mechanism for target.	{s1}取消了{s2}：没有用于目标的机件。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No target building.	{s1}取消了{s2}：没有目标建筑。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No mechanism for trigger.	{s1}取消了{s2}：没有用于触发器的机件。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No trigger.	{s1}取消了{s2}：没有触发器。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Attacking building.	{s1}取消了{s2}：正在攻击建筑。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Lost pick.	{s1}取消了{s2}：丢失了镐。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Invalid officer.	{s1}取消了{s2}：官员无效。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: "Farewell!" Leaving.	{s1}取消了{s2}：“再见！”正在离开。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Removed from guard.	{s1}取消了{s2}：已被调离警卫队。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Equipment mismatch.	{s1}取消了{s2}：装备不匹配。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Unconscious.	{s1}取消了{s2}：失去意识。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Webbed.	{s1}取消了{s2}：被蛛网缠住。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Paralyzed.	{s1}取消了{s2}：麻痹。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Caged.	{s1}取消了{s2}：关在笼中。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: In Custody.	{s1}取消了{s2}：被拘押。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Getting something to drink.	{s1}取消了{s2}：正在找东西喝。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Using well.	{s1}取消了{s2}：正在使用水井。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Lost axe.	{s1}取消了{s2}：丢失了斧。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Not responsible for trade.	{s1}取消了{s2}：不负责贸易。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No available traction bench.	{s1}取消了{s2}：没有可用的牵引台。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Need splint.	{s1}取消了{s2}：需要夹板。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Need thread.	{s1}取消了{s2}：需要线。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Need cloth.	{s1}取消了{s2}：需要布。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Need crutch.	{s1}取消了{s2}：需要拐杖。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Bad script! #1.	{s1}取消了{s2}：脚本错误！#1。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Bad script! #2.	{s1}取消了{s2}：脚本错误！#2。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Bad script! #3.	{s1}取消了{s2}：脚本错误！#3。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Need bag containing powder suitable for cast application.	{s1}取消了{s2}：需要装有适合制作石膏绷带的粉末的袋子。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No weapon for execution.	{s1}取消了{s2}：没有行刑武器。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No appropriate ammunition.	{s1}取消了{s2}：没有合适的弹药。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Not appointed.	{s1}取消了{s2}：尚未任命。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: No longer requested.	{s1}取消了{s2}：已不再需要。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Interrupted by {s}.	{s1}取消了{s2}：被{s3}打断。	$unit,$job,$unit	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Interrupted by combat.	{s1}取消了{s2}：被战斗打断。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Needs {s}.	{s1}取消了{s2}：需要{s3}。	$unit,$job,$requirement	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Needs {s} in linked stockpile.	{s1}取消了{s2}：相连的储物堆中需要{s3}。	$unit,$job,$requirement	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: .	{s1}取消了{s2}。	$unit,$job	PE reason selector outside 0..135 appends only terminal period

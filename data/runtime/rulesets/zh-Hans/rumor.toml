@@ -10,14 +10,14 @@ base = "rumor"
 name = "A"
 [rulesets.rules]
 "you" = "你"
-"{::dwarf_language::none::prename} {::english_name::name::last}" = "{::dwarf_language::none::prename}·{::english_name::name::last}"
+"{::text::person}" = "{::text::person}"
 "a {::creatures::caste::singular}" = "一只{::creatures::caste::singular}"
 
 [[rulesets]]
 name = "B"
 [rulesets.rules]
 "you" = "你"
-"{::dwarf_language::none::prename} {::english_name::name::last}" = "{::dwarf_language::none::prename}·{::english_name::name::last}"
+"{::text::person}" = "{::text::person}"
 "a {::creatures::caste::singular}" = "一只{::creatures::caste::singular}"
 
 [[rulesets]]

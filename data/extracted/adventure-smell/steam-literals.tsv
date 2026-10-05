@@ -1,0 +1,516 @@
+role	instruction_rva	literal_rva	text
+odor-icon-and-hover	0xaf1a69	0x15edf5c	blood
+odor-icon-and-hover	0xaf1a84	0x16d12bc	smoke
+odor-icon-and-hover	0xaf1aa2	0x164b81c	mud
+odor-icon-and-hover	0xaf1ac0	0x16d12c8	bug innards
+odor-icon-and-hover	0xaf1ade	0x16d12d8	cooked flesh
+odor-icon-and-hover	0xaf1afc	0x15eddb4	death
+odor-icon-and-hover	0xaf1b1a	0x16d129c	filth
+odor-icon-and-hover	0xaf1b38	0x16d12a4	soot
+odor-icon-and-hover	0xaf1b53	0x16d12ac	vomit
+odor-icon-and-hover	0xaf1b6b	0x16d12b4	soil
+odor-icon-and-hover	0xaf1b86	0x16d1268	freshly-baked goods
+odor-icon-and-hover	0xaf1ba1	0x16d1280	brimstone
+odor-icon-and-hover	0xaf1c29	0x16d1290	You smell 
+odor-icon-and-hover	0xaf1c46	0x15eddb4	death
+odor-icon-and-hover	0xaf1d31	0x15e85b4	.
+status-modern-local	0xb0012d	0x16afa68	Strongest Odor: 
+status-modern-local	0xb00182	0x15f70e4	Death
+status-modern-local	0xb001ed	0x15ff764	None
+status-legacy-local	0x8160dd	0x16afa68	Strongest Odor: 
+status-legacy-local	0x816134	0x15f70e4	Death
+status-legacy-local	0x816198	0x15ff764	None
+status-legacy-travel	0x816426	0x16afa68	Strongest Odor: 
+status-legacy-travel	0x81647d	0x15f70e4	Death
+status-legacy-travel	0x8164e1	0x15ff764	None
+binding-identifiers	0xd18439	0x1706b2c	A_ODOR
+binding-identifiers	0xd1845e	0x1706b38	A_DISPLAY_ODOR
+binding-descriptions	0xd20ef7	0x170af28	Adventure: Describe Odor
+binding-descriptions	0xd20f1c	0x170af48	Adventure: Display Strongest Odor
+adventure-render-wrapper	0x7f3f21	0x16aeaa8	 to view other pages
+adventure-render-wrapper	0x7f3f2b	0x16aeab8	ages
+adventure-render-wrapper	0x7f4162	0x1605a98	 - 
+adventure-render-wrapper	0x7f41f8	0x1605a98	 - 
+adventure-render-wrapper	0x7f4290	0x16aea9c	 -  
+adventure-render-wrapper	0x7f430a	0x1605a98	 - 
+adventure-render-wrapper	0x7f43b6	0x1605a98	 - 
+adventure-render-wrapper	0x7f4440	0x1605a98	 - 
+adventure-render-wrapper	0x7f4488	0x163a188	a colony of 
+adventure-render-wrapper	0x7f4525	0x163a094	many 
+adventure-render-wrapper	0x7f4573	0x163a0a0	a swarm of 
+adventure-render-wrapper	0x7f45f4	0x1605a98	 - 
+adventure-render-wrapper	0x7f4648	0x163a084	Miasma
+adventure-render-wrapper	0x7f465d	0x163a08c	Steam
+adventure-render-wrapper	0x7f466a	0x163a0cc	Mist
+adventure-render-wrapper	0x7f4683	0x163a0cc	Mist
+adventure-render-wrapper	0x7f46c5	0x163a0b0	An Ocean Wave
+adventure-render-wrapper	0x7f46da	0x163a0c0	Sea Foam
+adventure-render-wrapper	0x7f4716	0x163a038	Lava Mist
+adventure-render-wrapper	0x7f471d	0x163a028	Magma Mist
+adventure-render-wrapper	0x7f475e	0x16aead4	 Vapor
+adventure-render-wrapper	0x7f477f	0x163a020	Smoke
+adventure-render-wrapper	0x7f4794	0x15f73b0	Dragonfire
+adventure-render-wrapper	0x7f47a9	0x15f739c	Fire
+adventure-render-wrapper	0x7f47be	0x163a06c	A Web
+adventure-render-wrapper	0x7f4866	0x163a0d8	Item Cloud
+adventure-render-wrapper	0x7f48ae	0x1605a98	 - 
+adventure-render-wrapper	0x7f48dc	0x163a438	A Fire
+adventure-render-wrapper	0x7f493d	0x1605a98	 - 
+adventure-render-wrapper	0x7f496b	0x163a078	A Campfire
+adventure-render-wrapper	0x7f49cc	0x1605a98	 - 
+adventure-render-wrapper	0x7f4a1a	0x163a3b8	Track/Spoor: 
+adventure-render-wrapper	0x7f4a5d	0x163a330	unintelligible
+adventure-render-wrapper	0x7f4b1e	0x15e873c	 
+adventure-render-wrapper	0x7f4b3e	0x163a34c	right 
+adventure-render-wrapper	0x7f4b4d	0x163a324	left 
+adventure-render-wrapper	0x7f4bd3	0x163a39c	 print
+adventure-render-wrapper	0x7f4bdc	0x163a340	 imprint
+adventure-render-wrapper	0x7f4cd7	0x15edb24	's 
+adventure-render-wrapper	0x7f4d78	0x15edb24	's 
+adventure-render-wrapper	0x7f4d82	0x15e873c	 
+adventure-render-wrapper	0x7f4dd8	0x163a39c	 print
+adventure-render-wrapper	0x7f4de1	0x163a340	 imprint
+adventure-render-wrapper	0x7f4e04	0x163a388	broken vegetation
+adventure-render-wrapper	0x7f4e54	0x163a35c	/N
+adventure-render-wrapper	0x7f4e5d	0x163a360	/S
+adventure-render-wrapper	0x7f4e66	0x163a354	/E
+adventure-render-wrapper	0x7f4e6f	0x163a358	/W
+adventure-render-wrapper	0x7f4e78	0x163a270	/NE
+adventure-render-wrapper	0x7f4e81	0x163a274	/NW
+adventure-render-wrapper	0x7f4e8a	0x163a268	/SE
+adventure-render-wrapper	0x7f4e93	0x163a26c	/SW
+adventure-render-wrapper	0x7f4eb4	0x163a2c8	/yours or companion's
+adventure-render-wrapper	0x7f4f10	0x1605a98	 - 
+adventure-render-wrapper	0x7f4f58	0x163a440	Stagnant salt water [
+adventure-render-wrapper	0x7f4f8a	0x163a410	Stagnant water [
+adventure-render-wrapper	0x7f4fb1	0x163a428	Salt water [
+adventure-render-wrapper	0x7f4fd4	0x163a378	Water [
+adventure-render-wrapper	0x7f5033	0x163a380	/7]
+adventure-render-wrapper	0x7f509e	0x1605a98	 - 
+adventure-render-wrapper	0x7f50f9	0x163a370	Lava [
+adventure-render-wrapper	0x7f511c	0x163a368	Magma [
+adventure-render-wrapper	0x7f517b	0x163a380	/7]
+adventure-render-wrapper	0x7f520d	0x1605a98	 - 
+adventure-render-wrapper	0x7f52d4	0x163a400	A dusting of 
+adventure-render-wrapper	0x7f52ec	0x163a3f0	A pool of 
+adventure-render-wrapper	0x7f52f5	0x163a060	A smear of 
+adventure-render-wrapper	0x7f52fe	0x163a048	A spattering of 
+adventure-render-wrapper	0x7f5316	0x163a3e0	A pile of 
+adventure-render-wrapper	0x7f531f	0x163a3c8	A small pile of 
+adventure-render-wrapper	0x7f5328	0x16aeac0	A thin layer of 
+adventure-render-wrapper	0x7f5490	0x15ed9bc	The 
+adventure-render-wrapper	0x7f54cb	0x15e873c	 
+adventure-render-wrapper	0x7f556c	0x15eb518	 of 
+adventure-render-wrapper	0x7f55c2	0x15fd6a8	 are 
+adventure-render-wrapper	0x7f55cb	0x15f71e4	 is 
+adventure-render-wrapper	0x7f56cd	0x1646cc4	here
+adventure-render-wrapper	0x7f56ed	0x164bfbc	far
+adventure-render-wrapper	0x7f56fb	0x16aea18	a day's travel
+adventure-render-wrapper	0x7f5709	0x16aea00	nearly a day's travel
+adventure-render-wrapper	0x7f5717	0x16ae750	a half day's travel
+adventure-render-wrapper	0x7f5724	0x16ae740	a short walk
+adventure-render-wrapper	0x7f5734	0x16737e0	 to the 
+adventure-render-wrapper	0x7f5762	0x163b8fc	north
+adventure-render-wrapper	0x7f576e	0x16ae778	north-northeast
+adventure-render-wrapper	0x7f5777	0x1646bf8	northeast
+adventure-render-wrapper	0x7f5780	0x16ae768	east-northeast
+adventure-render-wrapper	0x7f5789	0x163b8f4	east
+adventure-render-wrapper	0x7f5792	0x16ae710	east-southeast
+adventure-render-wrapper	0x7f579b	0x1646b88	southeast
+adventure-render-wrapper	0x7f57a4	0x16ae700	south-southeast
+adventure-render-wrapper	0x7f57ad	0x163b8ec	south
+adventure-render-wrapper	0x7f57b6	0x16ae730	south-southwest
+adventure-render-wrapper	0x7f57bf	0x1646b78	southwest
+adventure-render-wrapper	0x7f57c8	0x16ae720	west-southwest
+adventure-render-wrapper	0x7f57d1	0x163b834	west
+adventure-render-wrapper	0x7f57da	0x16ae8a8	west-northwest
+adventure-render-wrapper	0x7f57e3	0x1646be8	northwest
+adventure-render-wrapper	0x7f57ec	0x16ae898	north-northwest
+adventure-render-wrapper	0x7f57fc	0x15e85b4	.
+adventure-render-wrapper	0x7f5f2f	0x16ae928	This is an unintelligible mess.
+adventure-render-wrapper	0x7f5f39	0x16ae938	elligible mess.
+adventure-render-wrapper	0x7f5f46	0x16ae940	e mess.
+adventure-render-wrapper	0x7f5f4f	0x16ae944	ss.
+adventure-render-wrapper	0x7f5f5a	0x16ae946	.
+adventure-render-wrapper	0x7f6057	0x16aebfc	thick 
+adventure-render-wrapper	0x7f606a	0x16aebf4	light 
+adventure-render-wrapper	0x7f607f	0x16aec0c	faint 
+adventure-render-wrapper	0x7f60d4	0x15e873c	 
+adventure-render-wrapper	0x7f60f5	0x16aec04	deep 
+adventure-render-wrapper	0x7f6108	0x16ae980	shallow 
+adventure-render-wrapper	0x7f611d	0x16ae978	vague 
+adventure-render-wrapper	0x7f6134	0x163a34c	right 
+adventure-render-wrapper	0x7f6141	0x163a324	left 
+adventure-render-wrapper	0x7f61d6	0x163a39c	 print
+adventure-render-wrapper	0x7f61e7	0x16ae9a0	 imprint in the 
+adventure-render-wrapper	0x7f62e2	0x16ae990	 is here.
+adventure-render-wrapper	0x7f62eb	0x15e85b4	.
+adventure-render-wrapper	0x7f6420	0x15ed67c	A 
+adventure-render-wrapper	0x7f64df	0x15edb24	's 
+adventure-render-wrapper	0x7f64f9	0x16aebfc	thick 
+adventure-render-wrapper	0x7f6507	0x16aebf4	light 
+adventure-render-wrapper	0x7f6516	0x16aec0c	faint 
+adventure-render-wrapper	0x7f65db	0x15edb24	's 
+adventure-render-wrapper	0x7f65f1	0x16aec04	deep 
+adventure-render-wrapper	0x7f6603	0x16ae980	shallow 
+adventure-render-wrapper	0x7f6616	0x16ae978	vague 
+adventure-render-wrapper	0x7f6623	0x15e873c	 
+adventure-render-wrapper	0x7f6669	0x163a39c	 print
+adventure-render-wrapper	0x7f667a	0x16ae9a0	 imprint in the 
+adventure-render-wrapper	0x7f6775	0x16ae990	 is here.
+adventure-render-wrapper	0x7f677e	0x15e85b4	.
+adventure-render-wrapper	0x7f67e7	0x16aec38	The vegetation is heavily damaged here.
+adventure-render-wrapper	0x7f6814	0x16aec18	The vegetation is bent here.
+adventure-render-wrapper	0x7f6843	0x16aec80	The vegetation has been slightly perturbed here.
+adventure-render-wrapper	0x7f6866	0x16aec60	The vegetation is broken here.
+adventure-render-wrapper	0x7f68df	0x16ae910	The signs lead north.
+adventure-render-wrapper	0x7f6909	0x16ae960	The signs lead south.
+adventure-render-wrapper	0x7f6933	0x16ae948	The signs lead east.
+adventure-render-wrapper	0x7f695d	0x16aea48	The signs lead west.
+adventure-render-wrapper	0x7f6987	0x16aea28	The signs lead northeast.
+adventure-render-wrapper	0x7f69ae	0x16aea80	The signs lead northwest.
+adventure-render-wrapper	0x7f69d5	0x16aea60	The signs lead southeast.
+adventure-render-wrapper	0x7f69fc	0x16ae9e0	The signs lead southwest.
+adventure-render-wrapper	0x7f6a69	0x178b340	""""
+adventure-render-wrapper	0x7f6a76	0x16ae9b8	They belong to you or a companion.
+adventure-render-wrapper	0x7f6a80	0x16ae9c8	ou or a companion.
+adventure-render-wrapper	0x7f6a8b	0x16ae9d8	n.
+announcement-caption	0x749f0b	0x169dd40	Reached peak
+announcement-caption	0x749f20	0x169dd50	Era change
+announcement-caption	0x749f35	0x169dd60	Found a feature
+announcement-caption	0x749f4a	0x169dd70	Praise the miners
+announcement-caption	0x749f5f	0x169dd88	Struck mineral
+announcement-caption	0x749f74	0x169dd98	Struck economic mineral
+announcement-caption	0x749f89	0x169ddb0	Weapon twist
+announcement-caption	0x749f9e	0x169ddc0	Drop item
+announcement-caption	0x749fb3	0x169ddcc	Charge
+announcement-caption	0x749fc8	0x169ddd8	Surprised
+announcement-caption	0x749fdd	0x169dde8	Jump-dodge (proj)
+announcement-caption	0x749ff2	0x169de00	Jump-dodge (strike)
+announcement-caption	0x74a007	0x169de14	Dodge
+announcement-caption	0x74a01c	0x169de20	Counterstrike
+announcement-caption	0x74a031	0x169de30	Block
+announcement-caption	0x74a046	0x169dbb8	Parry
+announcement-caption	0x74a05b	0x169dbc0	(Charge) Collision
+announcement-caption	0x74a070	0x169dbd8	(Charge) (D) Tumble
+announcement-caption	0x74a085	0x169dbf0	(Charge) (D) Knocked over
+announcement-caption	0x74a09a	0x169dc10	(Charge) (A) Tumble
+announcement-caption	0x74a0af	0x169dc28	(Charge) (A) Bounced back
+announcement-caption	0x74a0c4	0x169dc48	(Charge) Tangle
+announcement-caption	0x74a0d9	0x169dc58	(Charge) Tangle/tumble
+announcement-caption	0x74a0ee	0x169dc70	(Wrestle) Joint lock
+announcement-caption	0x74a103	0x169dc88	(Wrestle) Chokehold
+announcement-caption	0x74a118	0x169dca0	(Wrestle) Takedown
+announcement-caption	0x74a12d	0x169dcb8	(Wrestle) Throw
+announcement-caption	0x74a142	0x169dcc8	(Wrestle) Release lock
+announcement-caption	0x74a157	0x169dce0	(Wrestle) Release choke
+announcement-caption	0x74a16c	0x169dcf8	(Wrestle) Release
+announcement-caption	0x74a181	0x169dd10	(Wrestle) Struggle
+announcement-caption	0x74a196	0x169e3a0	(Wrestle) Latch on
+announcement-caption	0x74a1ab	0x169e3b8	(Wrestle) Strangle
+announcement-caption	0x74a1c0	0x169e3d0	(Wrestle) Adjust grip
+announcement-caption	0x74a1d5	0x169e3e8	(Wrestle) Part ripped away
+announcement-caption	0x74a1ea	0x169e408	(Combat) Strike
+announcement-caption	0x74a1ff	0x169e418	(Combat) Wounds
+announcement-caption	0x74a214	0x169e428	(Combat) Enraged
+announcement-caption	0x74a229	0x169e440	(Combat) Attack stuck in
+announcement-caption	0x74a23e	0x169e460	(Combat) Natural attack latched
+announcement-caption	0x74a253	0x169e480	(Combat) Attack latched
+announcement-caption	0x74a268	0x169e498	(Combat) Propelling blow
+announcement-caption	0x74a27d	0x169e4b8	(Combat) Knocked out
+announcement-caption	0x74a292	0x169e4d0	(Combat) Stunned
+announcement-caption	0x74a2a7	0x169e4e8	(Combat) Winded
+announcement-caption	0x74a2bc	0x169e4f8	(Combat) Nauseated
+announcement-caption	0x74a2d1	0x169e510	Dig canceled (warm)
+announcement-caption	0x74a2e6	0x169e258	Dig canceled (wet)
+announcement-caption	0x74a2fb	0x169e270	Ambush (resident)
+announcement-caption	0x74a310	0x169e288	Ambush (thief)
+announcement-caption	0x74a325	0x169e298	Ambush (thief, skulking)
+announcement-caption	0x74a33a	0x169e2b8	Ambush (thief, nature)
+announcement-caption	0x74a34f	0x169e2d0	Ambush (thief, other)
+announcement-caption	0x74a364	0x169e2e8	Gremlin
+announcement-caption	0x74a379	0x169e2f0	Snatcher
+announcement-caption	0x74a38e	0x169e300	Ambush (snatcher)
+announcement-caption	0x74a3a3	0x169e318	Ambush (nature)
+announcement-caption	0x74a3b8	0x169e328	Ambush
+announcement-caption	0x74a3cd	0x169e330	Ambush (injured creature)
+announcement-caption	0x74a3e2	0x169e350	Ambush (uninjured creature)
+announcement-caption	0x74a3f7	0x169e370	Ambush (incapacitated creature)
+announcement-caption	0x74a40c	0x169e390	Caravan
+announcement-caption	0x74a421	0x169e398	Noble
+announcement-caption	0x74a436	0x169e130	Migrants
+announcement-caption	0x74a44b	0x169e140	Migrant (one)
+announcement-caption	0x74a460	0x169e150	Migrants (danger)
+announcement-caption	0x74a475	0x169e168	No migrants
+announcement-caption	0x74a48a	0x169e178	Animal trapped
+announcement-caption	0x74a49f	0x169e188	Animal trap robbed
+announcement-caption	0x74a4b4	0x169e1a0	Gremlin pulled lever
+announcement-caption	0x74a4c9	0x169e1b8	Gremlin triggered plate
+announcement-caption	0x74a4de	0x169e1d0	Gremlin opened cage
+announcement-caption	0x74a4f3	0x169e1e8	Gremlin unshackled something
+announcement-caption	0x74a508	0x169e208	Diplomat
+announcement-caption	0x74a51d	0x169e218	Liaison
+announcement-caption	0x74a532	0x169e220	Trade diplomat
+announcement-caption	0x74a547	0x169e230	Cave-in
+announcement-caption	0x74a55c	0x169e238	Citizen birth
+announcement-caption	0x74a571	0x169e248	Animal birth
+announcement-caption	0x74a586	0x169dfd8	Strange mood
+announcement-caption	0x74a59b	0x169dfe8	Artifact made
+announcement-caption	0x74a5b0	0x169dff8	Item given name
+announcement-caption	0x74a5c5	0x169e008	Attachment to item
+announcement-caption	0x74a5da	0x169e020	Vermin escaped from cage
+announcement-caption	0x74a5ef	0x169e040	Entangled in hidden web
+announcement-caption	0x74a604	0x169e058	(Strange mood) Building claimed
+announcement-caption	0x74a619	0x169e078	Artifact construction begun
+announcement-caption	0x74a62e	0x169e098	Megabeast
+announcement-caption	0x74a643	0x169e0a8	Werebeast
+announcement-caption	0x74a658	0x169e0b8	Regular beast
+announcement-caption	0x74a66d	0x169e0c8	Berserk
+announcement-caption	0x74a682	0x169e0d0	Magma defaced engraving
+announcement-caption	0x74a697	0x169e0e8	Engraving melted
+announcement-caption	0x74a6ac	0x169e100	Masterwork made
+announcement-caption	0x74a6c1	0x169e110	Masterwork architecture lost
+announcement-caption	0x74a6d6	0x169e8f0	Masterwork construction lost
+announcement-caption	0x74a6eb	0x169e910	(Adventure) Awaken
+announcement-caption	0x74a700	0x169e928	(Adventure) Sleep interrupted
+announcement-caption	0x74a715	0x169e948	Job cancellation
+announcement-caption	0x74a72a	0x169e960	(Adventure) Death
+announcement-caption	0x74a73f	0x169e978	Citizen death
+announcement-caption	0x74a754	0x169e988	Pet death
+announcement-caption	0x74a769	0x169e998	Endgame event 1
+announcement-caption	0x74a77e	0x169e9a8	Endgame event 1B
+announcement-caption	0x74a793	0x169e9c0	Endgame event 2
+announcement-caption	0x74a7a8	0x169e9d0	Fall over
+announcement-caption	0x74a7bd	0x169e9e0	Caught in flame
+announcement-caption	0x74a7d2	0x169e9f0	Caught in web
+announcement-caption	0x74a7e7	0x169ea00	Slam into an obstacle (blow apart)
+announcement-caption	0x74a7fc	0x169ea28	Slam into an obstacle
+announcement-caption	0x74a811	0x169ea40	Slam into unit
+announcement-caption	0x74a826	0x169e7b8	Vomit
+announcement-caption	0x74a83b	0x169e7c0	Lose hold of item
+announcement-caption	0x74a850	0x169e7d8	Regain consciousness
+announcement-caption	0x74a865	0x169e7f0	Free from web
+announcement-caption	0x74a87a	0x15ff5b0	Paralyzed
+announcement-caption	0x74a88f	0x169e800	Overcome paralysis
+announcement-caption	0x74a8a4	0x169e818	No longer stunned
+announcement-caption	0x74a8b9	0x15ff708	Exhausted
+announcement-caption	0x74a8ce	0x169e830	Give into pain
+announcement-caption	0x74a8e3	0x169e840	(Wrestling) Break grip
+announcement-caption	0x74a8f8	0x169e858	(Wrestling) Cannot break grip
+announcement-caption	0x74a90d	0x169e878	Block fire
+announcement-caption	0x74a922	0x169e888	Breathe fire
+announcement-caption	0x74a937	0x169e898	Shoot web
+announcement-caption	0x74a94c	0x169e8a8	Pull out and drop item
+announcement-caption	0x74a961	0x169e8c0	Stand up
+announcement-caption	0x74a976	0x169e8d0	Martial trance
+announcement-caption	0x74a98b	0x169e8e0	Breath attack
+announcement-caption	0x74a9a0	0x169e660	(Adventure) Made item
+announcement-caption	0x74a9b5	0x169e678	(Adventure) Night Creature Attack
+announcement-caption	0x74a9ca	0x169e6a0	(Adventure) Cackling fades
+announcement-caption	0x74a9df	0x169e6c0	Ghost attack
+announcement-caption	0x74a9f4	0x169e6d0	Hit by ball of flames
+announcement-caption	0x74aa09	0x169e6e8	Discovered site
+announcement-caption	0x74aa1e	0x169e6f8	Cannot travel through site
+announcement-caption	0x74aa33	0x169e714	Intro
+announcement-caption	0x74aa48	0x169e720	Creature sound
+announcement-caption	0x74aa5d	0x169e730	Creature stolen object
+announcement-caption	0x74aa72	0x169e748	Found trap
+announcement-caption	0x74aa87	0x169e758	Transformation
+announcement-caption	0x74aa9c	0x169e768	Interaction (user)
+announcement-caption	0x74aab1	0x169e780	Interaction (target)
+announcement-caption	0x74aac6	0x169e798	Undead attack
+announcement-caption	0x74aadb	0x169e7a8	Citizen missing
+announcement-caption	0x74aaf0	0x169e528	Pet missing
+announcement-caption	0x74ab05	0x169e538	Embrace
+announcement-caption	0x74ab1a	0x169e540	Weird weather
+announcement-caption	0x74ab2f	0x169e550	Evil cloud
+announcement-caption	0x74ab44	0x169e560	Animal action
+announcement-caption	0x74ab59	0x169e570	Flounder in water
+announcement-caption	0x74ab6e	0x169e588	Semi-wild
+announcement-caption	0x74ab83	0x169e598	Full reversion
+announcement-caption	0x74ab98	0x169e5a8	Gained knowledge
+announcement-caption	0x74abad	0x169e5c0	Skipped on liquid
+announcement-caption	0x74abc2	0x169e5d8	Dodge projectile
+announcement-caption	0x74abd7	0x169e5f0	Conversation
+announcement-caption	0x74abec	0x169e600	Bandit empties container
+announcement-caption	0x74ac01	0x169e620	Bandit grabs item
+announcement-caption	0x74ac16	0x169e638	Attack interrupted
+announcement-caption	0x74ac2b	0x169e650	Attack caught
+announcement-caption	0x74ac40	0x169ee08	Fail to grab hold
+announcement-caption	0x74ac55	0x169ee20	Lose hold of surface
+announcement-caption	0x74ac6a	0x169ee38	Travel complaint
+announcement-caption	0x74ac7f	0x169ee50	No longer overwhelmed
+announcement-caption	0x74ac94	0x169ee68	Reorganize possessions
+announcement-caption	0x74aca9	0x169ee80	Push item
+announcement-caption	0x74acbe	0x169ee90	Draw item
+announcement-caption	0x74acd3	0x169eea0	Strap item
+announcement-caption	0x74ace8	0x169eeb0	Gained site control
+announcement-caption	0x74acfd	0x169eec8	Conversation (Conflict)
+announcement-caption	0x74ad12	0x169eee0	Assumed position
+announcement-caption	0x74ad27	0x169eef8	Mechanism sounds
+announcement-caption	0x74ad3c	0x169ef10	Wild animal gave birth
+announcement-caption	0x74ad51	0x169ef28	Citizen overwhelmed by stress
+announcement-caption	0x74ad66	0x169ef48	Citizen lost to stress
+announcement-caption	0x74ad7b	0x169ef60	Tantrum
+announcement-caption	0x74ad90	0x169ecb8	Enemy moved out of range
+announcement-caption	0x74ada5	0x169ecd8	Cannot jump
+announcement-caption	0x74adba	0x169ece8	No tracks
+announcement-caption	0x74adcf	0x169ecf8	Already searched
+announcement-caption	0x74ade4	0x169ed10	Search found something
+announcement-caption	0x74adf9	0x169ed28	Search found nothing
+announcement-caption	0x74ae0e	0x169ed40	Nothing to interact
+announcement-caption	0x74ae23	0x169ed58	Nothing to examine
+announcement-caption	0x74ae38	0x169ed70	You yield
+announcement-caption	0x74ae4d	0x169ed80	You unyield
+announcement-caption	0x74ae62	0x169ed90	You strap item
+announcement-caption	0x74ae77	0x169eda0	You draw
+announcement-caption	0x74ae8c	0x169edb0	No grasp to draw
+announcement-caption	0x74aea1	0x169edc8	No item to strap
+announcement-caption	0x74aeb6	0x169ede0	No item to remove
+announcement-caption	0x74aecb	0x169edf8	No item to wear
+announcement-caption	0x74aee0	0x169eb78	No item to eat
+announcement-caption	0x74aef5	0x169eb88	No item to contain
+announcement-caption	0x74af0a	0x169eba0	No item to drop
+announcement-caption	0x74af1f	0x169ebb0	No item to pick up
+announcement-caption	0x74af34	0x169ebc8	No item to throw
+announcement-caption	0x74af49	0x169ebe0	Check smells
+announcement-caption	0x74af5e	0x169ebf0	Check weather
+announcement-caption	0x74af73	0x169ec00	Check temperature
+announcement-caption	0x74af88	0x169ec18	Check date
+announcement-caption	0x74af9d	0x169ec28	No hands to pick up
+announcement-caption	0x74afb2	0x169ec40	Cannot chop tree
+announcement-caption	0x74afc7	0x169ec58	Cannot climb
+announcement-caption	0x74afdc	0x169ec68	Cannot stand
+announcement-caption	0x74aff1	0x169ec78	Must unretract first
+announcement-caption	0x74b006	0x169ec90	Cannot rest
+announcement-caption	0x74b01b	0x169eca0	Cannot make campfire
+announcement-caption	0x74b030	0x169ea50	Made a campfire
+announcement-caption	0x74b045	0x169ea60	Cannot set a fire
+announcement-caption	0x74b05a	0x169ea78	Set a fire
+announcement-caption	0x74b06f	0x169ea88	Break of dawn
+announcement-caption	0x74b07e	0x15f7460	Noon
+announcement-caption	0x74b099	0x169ea98	Nightfall
+announcement-caption	0x74b0ae	0x169eaa8	Empty a container
+announcement-caption	0x74b0c3	0x169eac0	Put on item
+announcement-caption	0x74b0d8	0x169ead0	Take off item
+announcement-caption	0x74b0ed	0x169eae0	Take out of a container
+announcement-caption	0x74b102	0x169eaf8	Put into a container
+announcement-caption	0x74b117	0x169eb10	Eat
+announcement-caption	0x74b12c	0x162fc1c	Drink
+announcement-caption	0x74b141	0x169eb18	Failed to eat/drink
+announcement-caption	0x74b150	0x169eb2c	Drop
+announcement-caption	0x74b16b	0x169eb38	Pick up
+announcement-caption	0x74b180	0x169eb40	You interact with building
+announcement-caption	0x74b195	0x169eb60	You interact with item
+announcement-caption	0x74b1aa	0x169f368	You feel hot/cold
+announcement-caption	0x74b1bf	0x169f380	Profession change
+announcement-caption	0x74b1d4	0x169f398	Recruit gains skill
+announcement-caption	0x74b1e9	0x169f3b0	Soldier becomes a master
+announcement-caption	0x74b1fe	0x169f3d0	(Combat) Gain/lose possession of item
+announcement-caption	0x74b213	0x169f3f8	Cough blood
+announcement-caption	0x74b228	0x169f408	Vomit blood
+announcement-caption	0x74b23d	0x169f418	Merchants unloading
+announcement-caption	0x74b252	0x169f430	Merchants need depot
+announcement-caption	0x74b267	0x169f448	Wagons bypassed inaccessible site
+announcement-caption	0x74b27c	0x169f470	Merchants leaving soon
+announcement-caption	0x74b291	0x169f488	Merchants leaving now
+announcement-caption	0x74b2a6	0x169f4a0	Pet loses dead owner
+announcement-caption	0x74b2bb	0x169f4b8	Pet adopts owner
+announcement-caption	0x74b2d0	0x169f4d0	Vermin bite
+announcement-caption	0x74b2e5	0x169f4e0	Unable to complete building
+announcement-caption	0x74b2fa	0x169f210	Job removed from unpowered building
+announcement-caption	0x74b30f	0x169f238	Citizen kidnapped
+announcement-caption	0x74b324	0x169f250	Vermin disturbed
+announcement-caption	0x74b339	0x169f268	Land gains a status
+announcement-caption	0x74b34e	0x169f280	Land's status elevated
+announcement-caption	0x74b363	0x169f298	Masterpiece crafted
+announcement-caption	0x74b378	0x169f2b0	Masterpiece defaced
+announcement-caption	0x74b38d	0x169f2c8	Learned a power
+announcement-caption	0x74b3a2	0x169f2d8	You feed on victim
+announcement-caption	0x74b3b7	0x169f2f0	Animal trained
+announcement-caption	0x74b3cc	0x169f300	Masterful dye
+announcement-caption	0x74b3e1	0x169f310	Masterwork food
+announcement-caption	0x74b3f6	0x169f320	Mandate ends
+announcement-caption	0x74b40b	0x169f330	Diplomat bids farewell
+announcement-caption	0x74b420	0x169f348	Election
+announcement-caption	0x74b435	0x169f358	Site located
+announcement-caption	0x74b44a	0x169f090	Construction suspended
+announcement-caption	0x74b45f	0x169f0a8	Machine link suspended
+announcement-caption	0x74b474	0x169f0c0	Work order completed
+announcement-caption	0x74b489	0x169f0d8	Job overwritten
+announcement-caption	0x74b49e	0x169f0e8	No fish to catch
+announcement-caption	0x74b4b3	0x169f100	Demand forgotten
+announcement-caption	0x74b4c8	0x169f118	New demand
+announcement-caption	0x74b4dd	0x169f128	New mandate
+announcement-caption	0x74b4f2	0x169f138	Local resident creature named
+announcement-caption	0x74b507	0x169f158	Somebody grows up
+announcement-caption	0x74b51c	0x169f170	Citizen becomes soldier
+announcement-caption	0x74b531	0x169f188	Citizen becomes civilian
+announcement-caption	0x74b546	0x169f1a8	Party organized
+announcement-caption	0x74b55b	0x169f1b8	Tantrum (possessed by ghost)
+announcement-caption	0x74b570	0x169f1d8	Building toppled by ghost
+announcement-caption	0x74b585	0x169f1f8	Masterwork improvement
+announcement-caption	0x74b59a	0x169ef68	Masterwork engraving
+announcement-caption	0x74b5af	0x169ef80	Wedding
+announcement-caption	0x74b5c4	0x169ef88	Beast guzzles drink
+announcement-caption	0x74b5d9	0x169efa0	Clear weather
+announcement-caption	0x74b5e8	0x169efb0	Snow
+announcement-caption	0x74b5fd	0x169efb8	Rain
+announcement-caption	0x74b618	0x169efc0	Wet season
+announcement-caption	0x74b62d	0x169efd0	Dry season
+announcement-caption	0x74b642	0x15fd29c	Spring
+announcement-caption	0x74b657	0x15fd2a4	Summer
+announcement-caption	0x74b66c	0x15fd2ac	Autumn
+announcement-caption	0x74b681	0x15fd2b4	Winter
+announcement-caption	0x74b696	0x169efe0	Guest arrives
+announcement-caption	0x74b6ab	0x169eff0	You cannot speak
+announcement-caption	0x74b6c0	0x169f008	Research breakthrough
+announcement-caption	0x74b6d5	0x169f020	Your order delivered
+announcement-caption	0x74b6ea	0x169f038	You cannot perform
+announcement-caption	0x74b6ff	0x169f050	Begin activity
+announcement-caption	0x74b714	0x169f060	Activity ongoing
+announcement-caption	0x74b729	0x169f078	Activity section change
+announcement-caption	0x74b73e	0x169f868	Activity end
+announcement-caption	0x74b753	0x169f878	Learned written content
+announcement-caption	0x74b768	0x169f890	Learned art form
+announcement-caption	0x74b77d	0x169f8a8	Performance quality
+announcement-caption	0x74b792	0x169f8c0	Building destroyed/toppled
+announcement-caption	0x74b7a7	0x169f8e0	Cursed by deity
+announcement-caption	0x74b7bc	0x169f8f0	Composition complete
+announcement-caption	0x74b7d1	0x169f908	Composition failed
+announcement-caption	0x74b7e6	0x169f920	New apprenticeship
+announcement-caption	0x74b7fb	0x169f938	Petition ignored
+announcement-caption	0x74b810	0x169f950	Tree chopped
+announcement-caption	0x74b825	0x169f960	You cannot construct here
+announcement-caption	0x74b83a	0x169f980	Rumor spread by citizen
+announcement-caption	0x74b84f	0x169f998	Thief (villain)
+announcement-caption	0x74b864	0x169f9a8	Visitor shared rumor(s)
+announcement-caption	0x74b879	0x169f9c0	Returning soldiers bring rumor(s)
+announcement-caption	0x74b88e	0x169f6e0	New site founded nearby
+announcement-caption	0x74b8a3	0x169f6f8	Nearby site linked economically
+announcement-caption	0x74b8b8	0x169f718	You given emergency tactical control
+announcement-caption	0x74b8cd	0x169f740	Agreement satisfied
+announcement-caption	0x74b8e2	0x169f758	Priesthood needs recognized
+announcement-caption	0x74b8f7	0x169f778	Agreement abandoned
+announcement-caption	0x74b90c	0x169f790	Guild founded
+announcement-caption	0x74b921	0x169f7a0	Witnessed item handoff
+announcement-caption	0x74b936	0x169f7b8	Witnessed item stolen
+announcement-caption	0x74b94b	0x169f7d0	Witnessed item has been moved
+announcement-caption	0x74b960	0x169f7f0	Witnessed item missing
+announcement-caption	0x74b975	0x169f808	Mount
+announcement-caption	0x74b98a	0x169f810	You cannot mount
+announcement-caption	0x74b99f	0x169f828	You failed to mount
+announcement-caption	0x74b9b4	0x169f840	Dismount
+announcement-caption	0x74b9c9	0x169f850	You failed to dismount
+announcement-caption	0x74b9de	0x169f5a0	Diplomat left unhappy
+announcement-caption	0x74b9f3	0x169f5b8	Embark
+announcement-caption	0x74ba08	0x169f5c0	First caravan
+announcement-caption	0x74ba1d	0x169f5d0	Monarch arrived
+announcement-caption	0x74ba32	0x169f5e0	Monarch arrived early
+announcement-caption	0x74ba47	0x169f5f8	Satisfied monarch
+announcement-caption	0x74ba5c	0x169f610	Mountainhome achieved
+announcement-caption	0x74ba71	0x163e810	No food
+announcement-caption	0x74ba86	0x169f628	Creature stuck
+announcement-caption	0x74ba9b	0x169f638	Citizen stuck
+announcement-caption	0x74bab0	0x169f648	Tavern keeper shirking duties
+announcement-caption	0x74babf	0x15ff764	None

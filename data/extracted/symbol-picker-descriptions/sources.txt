@@ -1,0 +1,49 @@
+图像／纹章编辑器候选说明：原生文本来源
+
+这些文件是游戏映像和 RAW 的离线反编译来源，不是检查、测试、模拟结果或游戏内效果记录。
+
+映像由 data/runtime/native-pe-images.json 指定：
+reference = Steam Windows 53.16，PE:6a70a6d9:02711000。
+classic = 官网 Windows 53.16，PE:6a70b91c:0270a000。
+地址目录除特别标明 VA 的人物文件外，使用模块相对 RVA；动态名称、材料、数量、世界历史和程序生成生物保留为语法参数，不将某个存档实例当作全部可能文本。
+
+1. 实际编辑器和页脚调用链
+
+reference render 0x200070，实际指令到 ret 0x20941c；classic render 0x200000，ret 0x2093ac。
+reference footer builder 0x2126d0；classic 0x212660。
+编辑器将完整说明送入 curses_text_boxst::add_paragraph，再把 picker+0x428 的原生换行行逐行绘制。
+picker+0x440 是说明宽度，picker+0x444 是当前悬停候选索引；完整文本生成与候选名字的英译显示是两个独立字段。
+reference/classic-picker-render.asm、picker-literals.tsv、picker-calls.tsv 保存原始指令、文本引用和调用。
+picker-tables.tsv 保存 ret 后的分发表字节；这些数据不算作指令或调用。
+
+2. 全部原生说明来源
+
+历史人物（option 1、8）：历史人物完整说明函数，详见 figure-decompiled.txt。
+地点（option 2）：地点的原生完整描述。
+文明／组织（option 3）：组织的原生完整描述和类型子表。
+已有图像（option 5）：完整艺术图像描述和元素／关系生成器。
+生物（option 7）：指定 caste 的 DESCRIPTION；未指定 caste 时使用该 race 首个 caste 的 DESCRIPTION。
+物品（option 12）：INSTRUMENT 读取 RAW 乐器说明，TOOL 读取 RAW 工具说明；其他类型原生不生成这个页脚。
+造物（option 13）：完整物品正文生成器及其全部材料、类型、装饰、图像、铭文、书写和乐器子图，详见 artifact-decompiled.txt。
+历史事件（option 4）、新图像（option 6）、植物（option 9）、树（option 10）、形状（option 11）：页脚生成器的分发表直接返回，没有此处的描述文本。
+空分支是原生行为；目录并未为这些分支虚构英文或中文说明。
+
+3. 有限语法和动态叶子
+
+figure-literals.tsv 保存人物生成器全部字面量引用；figure-helper-literals.tsv、figure-enumerated-text.tsv 保存代词、亲属、出生排序、神祇领域等辅助函数及分发表。
+artifact-functions/literals/calls/branches/selectors/selector-bytes/paired-edges/virtual-subjects.tsv 保存正文及子函数、文本、调用、条件分支、分发表原字节和虚函数来源。
+reference/classic-artifact-source-graph.asm 保存两版实际映像的完整指令，包含页脚类别入口。
+raw-description-sources.tsv 从两版安装的 data/vanilla 和 data/installed_mods 的对象文件逐条提取 DESCRIPTION，保留文件、行号、对象、caste 选择和文本原字节对应的描述内容。
+程序生成生物的动态结构沿现有 data/runtime/legends-creature-descriptions.tsv 和 src/legends_detail.inc 的语法处理；世界生成乐器沿 src/instrument_descriptions.inc 及主源中的完整乐器语法处理。
+
+4. 翻译入口与截图问题
+
+全部页脚先进入 src/symbol_picker_descriptions.inc 的 translate_symbol_picker_description，再按已完整识别的原生文本族分派。
+人物完整说明沿 translate_legends_text(source, false, false) 处理名字、种族、现在／过去时、出生、亲属、首代／稀有个体、命运、神祇形体和领域。
+造物沿 translate_item_description_source(source, true) 处理完整物品和书写正文；题名、作者、内容、风格和质量复用 Legends／written-work 的类型化捕获。
+完整 RAW 描述优先使用已有整段字典，乐器复用完整乐器描述语法。
+关联地点／组织的完整句式新增专属路由：地点复用原生地点类型全集和种族前缀解析，地域仅在完整地点名词已解析后进入专名翻译；组织按实际类型、状态、种族和职业行会组合。中文整句及状态修饰由 local-overrides.tsv 的 Symbol picker 专属上下文键提供，不修改全局 outcast 等普通词义。
+截图涉及的人物和造物有限生成分支已有相应翻译生产式，不能把界面漏取文本误判成缺少截图词条。
+
+原问题是非编号人物／造物页将 footer_bottom 设为整个 gps.dimy：从屏幕底部倒扫时先选中了编辑器外框之外的 FPS 字段，再被它上方的空行／边框截断。实际黄色页脚根本没有进入完整翻译函数。
+修复以原生编辑器边界和实际段落来源确定页脚，与候选名字识别独立；整段先获得显示区域，再进行一般 UI 词条匹配。未能完整解析或排版的原文仍按整段保留，不退回名字、代词或材料的散词替换。

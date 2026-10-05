@@ -55,9 +55,8 @@ static size_t match_native_choice_caption(const char *text, size_t length,
         std::string_view source;
         if (native_string_view(caption, &source, 65536) && !source.empty()) {
             if constexpr (AdventureAction) {
-                const auto choice = source == "Unknown"
-                    ? capture_native_performance_choice(reinterpret_cast<uintptr_t>(caption))
-                    : std::optional<NativePerformanceChoice>{};
+                const auto choice = capture_native_performance_choice(
+                    reinterpret_cast<uintptr_t>(caption));
                 if (g_overlay.translated_adventure_action_matches(
                         source, query, choice ? &*choice : nullptr)) return 0;
             } else {
@@ -105,6 +104,29 @@ static bool join_native_conversation_strings(const unsigned char *entry,
     return true;
 }
 
+#ifdef _WIN32
+static bool capture_native_existing_conversation_collection(
+        const unsigned char *entry, std::string_view caption) {
+    // Both configured PE constructors store talk_choice* at outer entry+0.
+    // Its type is a DWORD at +0; emotion +18 and circumstance/data/subdata
+    // +20/+24/+28 feed the five emotion constructors' shared event formatter.
+    // Copy the actual bound object through guarded reads before using its ID.
+    uintptr_t choice = 0;
+    int32_t type = -1;
+    std::array<int32_t, 3> circumstance{};
+    if (!native_history_copy(reinterpret_cast<uintptr_t>(entry), choice) ||
+            !choice || choice > UINTPTR_MAX - 0x2c ||
+            !native_history_copy(choice, type) || type < 66 || type > 70 ||
+            !native_history_copy(choice + 0x20, circumstance) ||
+            circumstance[0] != 233 || circumstance[1] < 0) return false;
+    const std::string source = normalize_utterance(caption);
+    const size_t event = source.find(" during ");
+    if (event == std::string::npos) return false;
+    return remember_native_conversation_collection_source(
+        source.substr(event + 1), circumstance[1]);
+}
+#endif
+
 static bool capture_native_conversation_choices(void *raw_entries, size_t count) {
     const auto invalid = [] {
         g_overlay.clear_conversation_choices();
@@ -120,6 +142,7 @@ static bool capture_native_conversation_choices(void *raw_entries, size_t count)
     std::vector<std::pair<std::string, std::string>> choices;
     choices.reserve(count);
     size_t total_bytes = 0;
+    bool collection_changed = false;
     for (size_t i = 0; i < count; ++i) {
         const auto *entry = entries[i];
         if (!entry) return invalid();
@@ -128,8 +151,14 @@ static bool capture_native_conversation_choices(void *raw_entries, size_t count)
             !join_native_conversation_strings(entry, layout.keywords, 256, ' ', keywords)) return invalid();
         total_bytes += caption.size() + keywords.size();
         if (total_bytes > (1u << 22)) return invalid();
+#ifdef _WIN32
+        collection_changed |= capture_native_existing_conversation_collection(entry, caption);
+#endif
         choices.emplace_back(std::move(caption), std::move(keywords));
     }
+    // Equal displayed text can acquire a different typed collection binding.
+    // Clear the existing semantic cache before recapturing that same content.
+    if (collection_changed) g_overlay.clear_conversation_choices();
     g_overlay.capture_conversation_choices(choices);
     return true;
 }

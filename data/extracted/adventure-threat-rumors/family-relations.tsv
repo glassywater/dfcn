@@ -1,0 +1,147 @@
+image	relationship_enum	native_branch	singular	plural	article	plural_branch
+reference	0	0x14075a61a	mother	mothers	a	0x14075ab53
+reference	1	0x14075a62c	father	fathers	a	0x14075ab53
+reference	2	0x14075a63e	parent	parents	a	0x14075ab53
+reference	3	0x14075a650	husband	husbands	a	0x14075ab53
+reference	4	0x14075a662	wife	wives	a	0x14075ab68
+reference	5	0x14075a680	spouse	spouses	a	0x14075ab53
+reference	6	0x14075a692	eldest son	eldest sons	an	0x14075ab53
+reference	7	0x14075a6a4	second eldest son	second eldest sons	a	0x14075ab53
+reference	8	0x14075a6b6	third eldest son	third eldest sons	a	0x14075ab53
+reference	9	0x14075a6c8	fourth eldest son	fourth eldest sons	a	0x14075ab53
+reference	10	0x14075a6da	fifth eldest son	fifth eldest sons	a	0x14075ab53
+reference	11	0x14075a6ec	sixth eldest son	sixth eldest sons	a	0x14075ab53
+reference	12	0x14075a6fe	seventh eldest son	seventh eldest sons	a	0x14075ab53
+reference	13	0x14075a710	eighth eldest son	eighth eldest sons	a	0x14075ab53
+reference	14	0x14075a722	ninth eldest son	ninth eldest sons	a	0x14075ab53
+reference	15	0x14075a734	tenth eldest son	tenth eldest sons	a	0x14075ab53
+reference	16	0x14075a746	son	sons	a	0x14075ab53
+reference	17	0x14075a758	youngest son	youngest sons	a	0x14075ab53
+reference	18	0x14075a76a	only son	only sons	an	0x14075ab53
+reference	19	0x14075a77c	eldest daughter	eldest daughters	an	0x14075ab53
+reference	20	0x14075a788	second eldest daughter	second eldest daughters	a	0x14075ab53
+reference	21	0x14075a79a	third eldest daughter	third eldest daughters	a	0x14075ab53
+reference	22	0x14075a7ac	fourth eldest daughter	fourth eldest daughters	a	0x14075ab53
+reference	23	0x14075a7be	fifth eldest daughter	fifth eldest daughters	a	0x14075ab53
+reference	24	0x14075a7d0	sixth eldest daughter	sixth eldest daughters	a	0x14075ab53
+reference	25	0x14075a7e2	seventh eldest daughter	seventh eldest daughters	a	0x14075ab53
+reference	26	0x14075a7f4	eighth eldest daughter	eighth eldest daughters	a	0x14075ab53
+reference	27	0x14075a806	ninth eldest daughter	ninth eldest daughters	a	0x14075ab53
+reference	28	0x14075a818	tenth eldest daughter	tenth eldest daughters	a	0x14075ab53
+reference	29	0x14075a82a	daughter	daughters	a	0x14075ab53
+reference	30	0x14075a83c	only daughter	only daughters	an	0x14075ab53
+reference	31	0x14075a84e	youngest daughter	youngest daughters	a	0x14075ab53
+reference	32	0x14075a860	eldest child	eldest children	an	0x14075ab44
+reference	33	0x14075a872	second eldest child	second eldest children	a	0x14075ab44
+reference	34	0x14075a884	third eldest child	third eldest children	a	0x14075ab44
+reference	35	0x14075a896	fourth eldest child	fourth eldest children	a	0x14075ab44
+reference	36	0x14075a8a8	fifth eldest child	fifth eldest children	a	0x14075ab44
+reference	37	0x14075a8ba	sixth eldest child	sixth eldest children	a	0x14075ab44
+reference	38	0x14075a8cc	seventh eldest child	seventh eldest children	a	0x14075ab44
+reference	39	0x14075a8de	eighth eldest child	eighth eldest children	a	0x14075ab44
+reference	40	0x14075a8f0	ninth eldest child	ninth eldest children	a	0x14075ab44
+reference	41	0x14075a902	tenth eldest child	tenth eldest children	a	0x14075ab44
+reference	42	0x14075a914	child	children	a	0x14075ab44
+reference	43	0x14075a926	youngest child	youngest children	a	0x14075ab44
+reference	44	0x14075a938	only child	only children	an	0x14075ab44
+reference	45	0x14075a94a	paternal grandmother	paternal grandmothers	a	0x14075ab53
+reference	46	0x14075a95c	paternal grandfather	paternal grandfathers	a	0x14075ab53
+reference	47	0x14075a96e	maternal grandmother	maternal grandmothers	a	0x14075ab53
+reference	48	0x14075a980	maternal grandfather	maternal grandfathers	a	0x14075ab53
+reference	49	0x14075a992	grandmother	grandmothers	a	0x14075ab53
+reference	50	0x14075a9a4	grandfather	grandfathers	a	0x14075ab53
+reference	51	0x14075a9b6	grandparent	grandparents	a	0x14075ab53
+reference	52	0x14075a9c8	older brother	older brothers	an	0x14075ab53
+reference	53	0x14075a9da	older sister	older sisters	an	0x14075ab53
+reference	54	0x14075a9ec	older sibling	older siblings	an	0x14075ab53
+reference	55	0x14075a9fe	younger brother	younger brothers	a	0x14075ab53
+reference	56	0x14075aa0a	younger sister	younger sisters	a	0x14075ab53
+reference	57	0x14075aa1c	younger sibling	younger siblings	a	0x14075ab53
+reference	58	0x14075aa28	cousin	cousins	a	0x14075ab53
+reference	59	0x14075aa3a	aunt	aunts	an	0x14075ab53
+reference	60	0x14075aa4c	uncle	uncles	an	0x14075ab53
+reference	61	0x14075aa5e	niece	nieces	a	0x14075ab53
+reference	62	0x14075aa70	nephew	nephews	a	0x14075ab53
+reference	63	0x14075aa82	sibling	siblings	a	0x14075ab53
+reference	64	0x14075aa94	grandchild	grandchildren	a	0x14075ab44
+reference	65	0x14075aaa3	older half-brother	older half-brothers	an	0x14075ab53
+reference	66	0x14075aab2	older half-sister	older half-sisters	an	0x14075ab53
+reference	67	0x14075aac1	older half-sibling	older half-siblings	an	0x14075ab53
+reference	68	0x14075aad0	younger half-brother	younger half-brothers	a	0x14075ab53
+reference	69	0x14075aadf	younger half-sister	younger half-sisters	a	0x14075ab53
+reference	70	0x14075aaee	younger half-sibling	younger half-siblings	a	0x14075ab53
+reference	71	0x14075aafd	half-sibling	half-siblings	a	0x14075ab53
+reference	default (<0 or >71)	0x14075ab0c	no relationship	no relationships	a	0x14075ab53
+classic	0	0x14075803a	mother	mothers	a	0x140758573
+classic	1	0x14075804c	father	fathers	a	0x140758573
+classic	2	0x14075805e	parent	parents	a	0x140758573
+classic	3	0x140758070	husband	husbands	a	0x140758573
+classic	4	0x140758082	wife	wives	a	0x140758588
+classic	5	0x1407580a0	spouse	spouses	a	0x140758573
+classic	6	0x1407580b2	eldest son	eldest sons	an	0x140758573
+classic	7	0x1407580c4	second eldest son	second eldest sons	a	0x140758573
+classic	8	0x1407580d6	third eldest son	third eldest sons	a	0x140758573
+classic	9	0x1407580e8	fourth eldest son	fourth eldest sons	a	0x140758573
+classic	10	0x1407580fa	fifth eldest son	fifth eldest sons	a	0x140758573
+classic	11	0x14075810c	sixth eldest son	sixth eldest sons	a	0x140758573
+classic	12	0x14075811e	seventh eldest son	seventh eldest sons	a	0x140758573
+classic	13	0x140758130	eighth eldest son	eighth eldest sons	a	0x140758573
+classic	14	0x140758142	ninth eldest son	ninth eldest sons	a	0x140758573
+classic	15	0x140758154	tenth eldest son	tenth eldest sons	a	0x140758573
+classic	16	0x140758166	son	sons	a	0x140758573
+classic	17	0x140758178	youngest son	youngest sons	a	0x140758573
+classic	18	0x14075818a	only son	only sons	an	0x140758573
+classic	19	0x14075819c	eldest daughter	eldest daughters	an	0x140758573
+classic	20	0x1407581a8	second eldest daughter	second eldest daughters	a	0x140758573
+classic	21	0x1407581ba	third eldest daughter	third eldest daughters	a	0x140758573
+classic	22	0x1407581cc	fourth eldest daughter	fourth eldest daughters	a	0x140758573
+classic	23	0x1407581de	fifth eldest daughter	fifth eldest daughters	a	0x140758573
+classic	24	0x1407581f0	sixth eldest daughter	sixth eldest daughters	a	0x140758573
+classic	25	0x140758202	seventh eldest daughter	seventh eldest daughters	a	0x140758573
+classic	26	0x140758214	eighth eldest daughter	eighth eldest daughters	a	0x140758573
+classic	27	0x140758226	ninth eldest daughter	ninth eldest daughters	a	0x140758573
+classic	28	0x140758238	tenth eldest daughter	tenth eldest daughters	a	0x140758573
+classic	29	0x14075824a	daughter	daughters	a	0x140758573
+classic	30	0x14075825c	only daughter	only daughters	an	0x140758573
+classic	31	0x14075826e	youngest daughter	youngest daughters	a	0x140758573
+classic	32	0x140758280	eldest child	eldest children	an	0x140758564
+classic	33	0x140758292	second eldest child	second eldest children	a	0x140758564
+classic	34	0x1407582a4	third eldest child	third eldest children	a	0x140758564
+classic	35	0x1407582b6	fourth eldest child	fourth eldest children	a	0x140758564
+classic	36	0x1407582c8	fifth eldest child	fifth eldest children	a	0x140758564
+classic	37	0x1407582da	sixth eldest child	sixth eldest children	a	0x140758564
+classic	38	0x1407582ec	seventh eldest child	seventh eldest children	a	0x140758564
+classic	39	0x1407582fe	eighth eldest child	eighth eldest children	a	0x140758564
+classic	40	0x140758310	ninth eldest child	ninth eldest children	a	0x140758564
+classic	41	0x140758322	tenth eldest child	tenth eldest children	a	0x140758564
+classic	42	0x140758334	child	children	a	0x140758564
+classic	43	0x140758346	youngest child	youngest children	a	0x140758564
+classic	44	0x140758358	only child	only children	an	0x140758564
+classic	45	0x14075836a	paternal grandmother	paternal grandmothers	a	0x140758573
+classic	46	0x14075837c	paternal grandfather	paternal grandfathers	a	0x140758573
+classic	47	0x14075838e	maternal grandmother	maternal grandmothers	a	0x140758573
+classic	48	0x1407583a0	maternal grandfather	maternal grandfathers	a	0x140758573
+classic	49	0x1407583b2	grandmother	grandmothers	a	0x140758573
+classic	50	0x1407583c4	grandfather	grandfathers	a	0x140758573
+classic	51	0x1407583d6	grandparent	grandparents	a	0x140758573
+classic	52	0x1407583e8	older brother	older brothers	an	0x140758573
+classic	53	0x1407583fa	older sister	older sisters	an	0x140758573
+classic	54	0x14075840c	older sibling	older siblings	an	0x140758573
+classic	55	0x14075841e	younger brother	younger brothers	a	0x140758573
+classic	56	0x14075842a	younger sister	younger sisters	a	0x140758573
+classic	57	0x14075843c	younger sibling	younger siblings	a	0x140758573
+classic	58	0x140758448	cousin	cousins	a	0x140758573
+classic	59	0x14075845a	aunt	aunts	an	0x140758573
+classic	60	0x14075846c	uncle	uncles	an	0x140758573
+classic	61	0x14075847e	niece	nieces	a	0x140758573
+classic	62	0x140758490	nephew	nephews	a	0x140758573
+classic	63	0x1407584a2	sibling	siblings	a	0x140758573
+classic	64	0x1407584b4	grandchild	grandchildren	a	0x140758564
+classic	65	0x1407584c3	older half-brother	older half-brothers	an	0x140758573
+classic	66	0x1407584d2	older half-sister	older half-sisters	an	0x140758573
+classic	67	0x1407584e1	older half-sibling	older half-siblings	an	0x140758573
+classic	68	0x1407584f0	younger half-brother	younger half-brothers	a	0x140758573
+classic	69	0x1407584ff	younger half-sister	younger half-sisters	a	0x140758573
+classic	70	0x14075850e	younger half-sibling	younger half-siblings	a	0x140758573
+classic	71	0x14075851d	half-sibling	half-siblings	a	0x140758573
+classic	default (<0 or >71)	0x14075852c	no relationship	no relationships	a	0x140758573

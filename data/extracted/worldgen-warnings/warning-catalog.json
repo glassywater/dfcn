@@ -1,0 +1,2650 @@
+{
+  "reference": [
+    {
+      "group": 0,
+      "variant": "parameters",
+      "cases": [
+        0
+      ],
+      "enum_names": [
+        "NO_PEAK"
+      ],
+      "title": "LACK OF PEAKS",
+      "title_xref_va": "0x140dfb079",
+      "title_literal_va": "0x1417203d8",
+      "body_branch_va": "0x140df08de",
+      "body_branch_end_va": "0x140df096d",
+      "paragraph": "The world generator is having trouble placing enough mountain peaks.  You might want to check your maximum elevation value and other elevation parameters.  Can the elevation 400 be placed enough times to provide space for your peaks?  Alternatively, you can reduce the number of peaks required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140df08de",
+          "literal_va": "0x14171fb10",
+          "text": "The world generator is having trouble placing enough mountain peaks.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df091a",
+          "literal_va": "0x14171fab0",
+          "text": "You might want to check your maximum elevation value and other elevation parameters.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0913",
+          "literal_va": "0x14171fa60",
+          "text": "Can the elevation 400 be placed enough times to provide space for your peaks?  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0939",
+          "literal_va": "0x14171fbe0",
+          "text": "Alternatively, you can reduce the number of peaks required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "otherwise: preset pointer != 0 and qword [preset + 0x8] != 0",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df0958"
+      ]
+    },
+    {
+      "group": 0,
+      "variant": "preset",
+      "cases": [
+        0
+      ],
+      "enum_names": [
+        "NO_PEAK"
+      ],
+      "title": "LACK OF PEAKS",
+      "title_xref_va": "0x140dfb079",
+      "title_literal_va": "0x1417203d8",
+      "body_branch_va": "0x140df08de",
+      "body_branch_end_va": "0x140df096d",
+      "paragraph": "The world generator is having trouble placing enough mountain peaks.  You might want to check your preset elevations for the elevation 400.  You must have at least as many of these highest elevation points as you are requiring peaks.  Alternatively, you can reduce the number of peaks required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140df08de",
+          "literal_va": "0x14171fb10",
+          "text": "The world generator is having trouble placing enough mountain peaks.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df090a",
+          "literal_va": "0x14171fc90",
+          "text": "You might want to check your preset elevations for the elevation 400.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0903",
+          "literal_va": "0x14171fc30",
+          "text": "You must have at least as many of these highest elevation points as you are requiring peaks.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0939",
+          "literal_va": "0x14171fbe0",
+          "text": "Alternatively, you can reduce the number of peaks required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "preset pointer != 0 and qword [preset + 0x8] != 0",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df0958"
+      ]
+    },
+    {
+      "group": 1,
+      "variant": "default",
+      "cases": [
+        1,
+        2,
+        4,
+        32
+      ],
+      "enum_names": [
+        "NO_MED_ALT",
+        "NO_MED_ALT_2",
+        "NO_MED_ALT_3",
+        "MED_ALT_ERO"
+      ],
+      "title": "MEDIUM ELEVATION REJECTION",
+      "title_xref_va": "0x140dfb0b3",
+      "title_literal_va": "0x1417203b8",
+      "body_branch_va": "0x140df096d",
+      "body_branch_end_va": "0x140df0ddb",
+      "paragraph": "The world generator is having trouble placing enough mid-level elevations.  Can your parameters achieve elevations between 100 and 299?  You might want to adjust the parameters governing elevation frequencies.  Alternatively, you can reduce the number of mid-level elevation squares required.",
+      "components": [
+        {
+          "xref_va": "0x140df09a0",
+          "literal_va": "0x14171fb90",
+          "text": "The world generator is having trouble placing enough mid-level elevations.  ",
+          "operand_kind": "inline-constant"
+        },
+        {
+          "xref_va": "0x140df09eb",
+          "literal_va": "0x14171fde0",
+          "text": "Can your parameters achieve elevations between 100 and 299?  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0a01",
+          "literal_va": "0x14171fd90",
+          "text": "You might want to adjust the parameters governing elevation frequencies.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0a17",
+          "literal_va": "0x14171fd30",
+          "text": "Alternatively, you can reduce the number of mid-level elevation squares required.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "inlined add_paragraph",
+      "add_paragraph_calls": []
+    },
+    {
+      "group": 2,
+      "variant": "default",
+      "cases": [
+        3,
+        33
+      ],
+      "enum_names": [
+        "NO_LOW_ALT",
+        "LOW_ALT_ERO"
+      ],
+      "title": "LOW ELEVATION REJECTION",
+      "title_xref_va": "0x140dfb0ed",
+      "title_literal_va": "0x1417203a0",
+      "body_branch_va": "0x140df0ddb",
+      "body_branch_end_va": "0x140df0e43",
+      "paragraph": "The world generator is having trouble placing enough low elevations.  Can your parameters achieve elevations between 0 and 99?  You might want to adjust the parameters governing elevation frequencies.  Alternatively, you can reduce the number of mid-level elevation squares required.",
+      "components": [
+        {
+          "xref_va": "0x140df0ddb",
+          "literal_va": "0x14171fce0",
+          "text": "The world generator is having trouble placing enough low elevations.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0ded",
+          "literal_va": "0x14171ff08",
+          "text": "Can your parameters achieve elevations between 0 and 99?  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0dfe",
+          "literal_va": "0x14171fd90",
+          "text": "You might want to adjust the parameters governing elevation frequencies.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0e0f",
+          "literal_va": "0x14171fd30",
+          "text": "Alternatively, you can reduce the number of mid-level elevation squares required.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df0e2e"
+      ]
+    },
+    {
+      "group": 3,
+      "variant": "default",
+      "cases": [
+        5,
+        34
+      ],
+      "enum_names": [
+        "NO_HI_ALT",
+        "HI_ALT_ERO"
+      ],
+      "title": "HIGH ELEVATION REJECTION",
+      "title_xref_va": "0x140dfb127",
+      "title_literal_va": "0x141720440",
+      "body_branch_va": "0x140df0e43",
+      "body_branch_end_va": "0x140df0eab",
+      "paragraph": "The world generator is having trouble placing enough high elevations.  Can your parameters achieve elevations between 300 and 400?  You might want to adjust the parameters governing elevation frequencies.  Alternatively, you can reduce the number of mid-level elevation squares required.",
+      "components": [
+        {
+          "xref_va": "0x140df0e43",
+          "literal_va": "0x14171fec0",
+          "text": "The world generator is having trouble placing enough high elevations.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0e55",
+          "literal_va": "0x14171fe78",
+          "text": "Can your parameters achieve elevations between 300 and 400?  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0e66",
+          "literal_va": "0x14171fd90",
+          "text": "You might want to adjust the parameters governing elevation frequencies.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0e77",
+          "literal_va": "0x14171fd30",
+          "text": "Alternatively, you can reduce the number of mid-level elevation squares required.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df0e96"
+      ]
+    },
+    {
+      "group": 4,
+      "variant": "default",
+      "cases": [
+        6
+      ],
+      "enum_names": [
+        "NO_EDGE_OCEANS"
+      ],
+      "title": "LACK OF EDGE OCEANS",
+      "title_xref_va": "0x140dfb161",
+      "title_literal_va": "0x141720428",
+      "body_branch_va": "0x140df0eab",
+      "body_branch_end_va": "0x140df0f13",
+      "paragraph": "The world generator is having trouble placing enough ocean squares along the edges.  Can your parameters achieve elevations between 0 and 99 frequently?  You might want to adjust the parameters governing elevation.  Alternatively, you can reduce the number of edge oceans required.",
+      "components": [
+        {
+          "xref_va": "0x140df0eab",
+          "literal_va": "0x14171fe20",
+          "text": "The world generator is having trouble placing enough ocean squares along the edges.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0ebd",
+          "literal_va": "0x141720050",
+          "text": "Can your parameters achieve elevations between 0 and 99 frequently?  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0ece",
+          "literal_va": "0x141720008",
+          "text": "You might want to adjust the parameters governing elevation.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0edf",
+          "literal_va": "0x14171ffc0",
+          "text": "Alternatively, you can reduce the number of edge oceans required.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df0efe"
+      ]
+    },
+    {
+      "group": 5,
+      "variant": "default",
+      "cases": [
+        7
+      ],
+      "enum_names": [
+        "RAINFALL_COUNT"
+      ],
+      "title": "RAINFALL REJECTION",
+      "title_xref_va": "0x140dfb19b",
+      "title_literal_va": "0x141720410",
+      "body_branch_va": "0x140df0f13",
+      "body_branch_end_va": "0x140df0f6a",
+      "paragraph": "The world generator is having trouble placing rainfall in the manner specified by the parameters.  You might want to adjust the parameters governing rainfall.  Alternatively, you can reduce the number of high, medium or low rainfall squares required.",
+      "components": [
+        {
+          "xref_va": "0x140df0f13",
+          "literal_va": "0x14171ff50",
+          "text": "The world generator is having trouble placing rainfall in the manner specified by the parameters.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0f25",
+          "literal_va": "0x14171dfb0",
+          "text": "You might want to adjust the parameters governing rainfall.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0f36",
+          "literal_va": "0x14171df50",
+          "text": "Alternatively, you can reduce the number of high, medium or low rainfall squares required.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df0f55"
+      ]
+    },
+    {
+      "group": 6,
+      "variant": "default",
+      "cases": [
+        8
+      ],
+      "enum_names": [
+        "GEOLOGY_COUNT"
+      ],
+      "title": "DRAINAGE REJECTION",
+      "title_xref_va": "0x140dfb1d5",
+      "title_literal_va": "0x1417203f8",
+      "body_branch_va": "0x140df0f6a",
+      "body_branch_end_va": "0x140df0fc1",
+      "paragraph": "The world generator is having trouble setting drainage in the manner specified by the parameters.  You might want to adjust the parameters governing drainage.  Alternatively, you can reduce the number of high, medium or low drainage squares required.",
+      "components": [
+        {
+          "xref_va": "0x140df0f6a",
+          "literal_va": "0x14171dee0",
+          "text": "The world generator is having trouble setting drainage in the manner specified by the parameters.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0f7c",
+          "literal_va": "0x14171de98",
+          "text": "You might want to adjust the parameters governing drainage.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0f8d",
+          "literal_va": "0x14171e100",
+          "text": "Alternatively, you can reduce the number of high, medium or low drainage squares required.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df0fac"
+      ]
+    },
+    {
+      "group": 7,
+      "variant": "default",
+      "cases": [
+        9
+      ],
+      "enum_names": [
+        "SAVAGERY_COUNT"
+      ],
+      "title": "SAVAGERY REJECTION",
+      "title_xref_va": "0x140dfb20f",
+      "title_literal_va": "0x1417204a0",
+      "body_branch_va": "0x140df0fc1",
+      "body_branch_end_va": "0x140df1018",
+      "paragraph": "The world generator is having trouble placing savagery in the manner specified by the parameters.  You might want to adjust the parameters governing savagery.  Alternatively, you can reduce the number of high, medium or low savagery squares required.",
+      "components": [
+        {
+          "xref_va": "0x140df0fc1",
+          "literal_va": "0x14171e090",
+          "text": "The world generator is having trouble placing savagery in the manner specified by the parameters.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0fd3",
+          "literal_va": "0x14171e050",
+          "text": "You might want to adjust the parameters governing savagery.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df0fe4",
+          "literal_va": "0x14171dff0",
+          "text": "Alternatively, you can reduce the number of high, medium or low savagery squares required.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df1003"
+      ]
+    },
+    {
+      "group": 8,
+      "variant": "default",
+      "cases": [
+        10
+      ],
+      "enum_names": [
+        "VOLCANISM_COUNT"
+      ],
+      "title": "VOLCANISM REJECTION",
+      "title_xref_va": "0x140dfb249",
+      "title_literal_va": "0x141720488",
+      "body_branch_va": "0x140df1018",
+      "body_branch_end_va": "0x140df106f",
+      "paragraph": "The world generator is having trouble setting volcanism in the manner specified by the parameters.  You might want to adjust the parameters governing volcanism.  Alternatively, you can reduce the number of high, medium or low volcanism squares required.",
+      "components": [
+        {
+          "xref_va": "0x140df1018",
+          "literal_va": "0x14171e250",
+          "text": "The world generator is having trouble setting volcanism in the manner specified by the parameters.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df102a",
+          "literal_va": "0x14171e210",
+          "text": "You might want to adjust the parameters governing volcanism.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df103b",
+          "literal_va": "0x14171e1b0",
+          "text": "Alternatively, you can reduce the number of high, medium or low volcanism squares required.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df105a"
+      ]
+    },
+    {
+      "group": 9,
+      "variant": "default",
+      "cases": [
+        11,
+        21,
+        43
+      ],
+      "enum_names": [
+        "SWAMP_REGION_1",
+        "SWAMP_REGION_2",
+        "SWAMP_REGION_3"
+      ],
+      "title": "SWAMP REJECTION",
+      "title_xref_va": "0x140dfb2bd",
+      "title_literal_va": "0x141720460",
+      "body_branch_va": "0x140df10fe",
+      "body_branch_end_va": "0x140df1155",
+      "paragraph": "The world generator is having trouble placing swamps and marshes.  Make sure your parameters and presets can support mid-elevation, mid-to-high rainfall, low drainage, non-freezing areas.  Alternatively, you can reduce the number of swamp squares and regions required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140df10fe",
+          "literal_va": "0x14171e510",
+          "text": "The world generator is having trouble placing swamps and marshes.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df1110",
+          "literal_va": "0x14171e490",
+          "text": "Make sure your parameters and presets can support mid-elevation, mid-to-high rainfall, low drainage, non-freezing areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df1121",
+          "literal_va": "0x14171e420",
+          "text": "Alternatively, you can reduce the number of swamp squares and regions required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df1140"
+      ]
+    },
+    {
+      "group": 10,
+      "variant": "default",
+      "cases": [
+        12,
+        22,
+        44
+      ],
+      "enum_names": [
+        "DESERT_REGION_1",
+        "DESERT_REGION_2",
+        "DESERT_REGION_3"
+      ],
+      "title": "DESERT REJECTION",
+      "title_xref_va": "0x140dfb2f7",
+      "title_literal_va": "0x1417204f8",
+      "body_branch_va": "0x140df1155",
+      "body_branch_end_va": "0x140df1577",
+      "paragraph": "The world generator is having trouble placing deserts and badlands.  Make sure your parameters and presets can support mid-elevation, very low rainfall, non-freezing areas.  Alternatively, you can reduce the number of desert squares and regions required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140df1188",
+          "literal_va": "0x14171e6e0",
+          "text": "The world generator is having trouble placing deserts and badlands.  ",
+          "operand_kind": "inline-constant"
+        },
+        {
+          "xref_va": "0x140df11d0",
+          "literal_va": "0x14171e670",
+          "text": "Make sure your parameters and presets can support mid-elevation, very low rainfall, non-freezing areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df11e6",
+          "literal_va": "0x14171e600",
+          "text": "Alternatively, you can reduce the number of desert squares and regions required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "inlined add_paragraph",
+      "add_paragraph_calls": []
+    },
+    {
+      "group": 11,
+      "variant": "default",
+      "cases": [
+        13,
+        23,
+        45
+      ],
+      "enum_names": [
+        "FOREST_REGION_1",
+        "FOREST_REGION_2",
+        "FOREST_REGION_3"
+      ],
+      "title": "FOREST REJECTION",
+      "title_xref_va": "0x140dfb331",
+      "title_literal_va": "0x1417204e0",
+      "body_branch_va": "0x140df1577",
+      "body_branch_end_va": "0x140df15ce",
+      "paragraph": "The world generator is having trouble placing forests.  Make sure your parameters and presets can support mid-elevation, high rainfall, high drainage, non-freezing areas.  Alternatively, you can reduce the number of forest squares and regions required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140df1577",
+          "literal_va": "0x14171e5b8",
+          "text": "The world generator is having trouble placing forests.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df1589",
+          "literal_va": "0x14171e830",
+          "text": "Make sure your parameters and presets can support mid-elevation, high rainfall, high drainage, non-freezing areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df159a",
+          "literal_va": "0x14171e7c0",
+          "text": "Alternatively, you can reduce the number of forest squares and regions required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df15b9"
+      ]
+    },
+    {
+      "group": 12,
+      "variant": "default",
+      "cases": [
+        14,
+        24,
+        46
+      ],
+      "enum_names": [
+        "MOUNTAINS_REGION_1",
+        "MOUNTAINS_REGION_2",
+        "MOUNTAINS_REGION_3"
+      ],
+      "title": "MOUNTAIN REJECTION",
+      "title_xref_va": "0x140dfb36b",
+      "title_literal_va": "0x1417204c8",
+      "body_branch_va": "0x140df15ce",
+      "body_branch_end_va": "0x140df1665",
+      "paragraph": "The world generator is having trouble placing mountains.  Make sure your parameters and presets can support high elevation areas.  Alternatively, you can reduce the number of mountain squares and regions required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140df160d",
+          "literal_va": "0x14171e780",
+          "text": "The world generator is having trouble placing mountains.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df1620",
+          "literal_va": "0x14171e730",
+          "text": "Make sure your parameters and presets can support high elevation areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df1631",
+          "literal_va": "0x14171e9b0",
+          "text": "Alternatively, you can reduce the number of mountain squares and regions required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df1650"
+      ]
+    },
+    {
+      "group": 13,
+      "variant": "default",
+      "cases": [
+        15,
+        25,
+        47
+      ],
+      "enum_names": [
+        "OCEAN_REGION_1",
+        "OCEAN_REGION_2",
+        "OCEAN_REGION_3"
+      ],
+      "title": "OCEAN REJECTION",
+      "title_xref_va": "0x140dfb3a5",
+      "title_literal_va": "0x1417204b8",
+      "body_branch_va": "0x140df1665",
+      "body_branch_end_va": "0x140df16c2",
+      "paragraph": "The world generator is having trouble placing oceans.  Make sure your parameters and presets can support low elevation areas.  Alternatively, you can reduce the number of ocean squares and regions required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140df1665",
+          "literal_va": "0x14171e970",
+          "text": "The world generator is having trouble placing oceans.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df1677",
+          "literal_va": "0x14171e920",
+          "text": "Make sure your parameters and presets can support low elevation areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df168e",
+          "literal_va": "0x14171e8b0",
+          "text": "Alternatively, you can reduce the number of ocean squares and regions required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df16ad"
+      ]
+    },
+    {
+      "group": 14,
+      "variant": "default",
+      "cases": [
+        16,
+        26,
+        48
+      ],
+      "enum_names": [
+        "GLACIER_REGION_1",
+        "GLACIER_REGION_2",
+        "GLACIER_REGION_3"
+      ],
+      "title": "GLACIER REJECTION",
+      "title_xref_va": "0x140dfb3df",
+      "title_literal_va": "0x141720550",
+      "body_branch_va": "0x140df16c2",
+      "body_branch_end_va": "0x140df1725",
+      "paragraph": "The world generator is having trouble placing glaciers.  Make sure your parameters and presets can support mid-elevation, very high drainage, freezing areas.  Alternatively, you can reduce the number of glacial squares and regions required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140df16c2",
+          "literal_va": "0x14171eb38",
+          "text": "The world generator is having trouble placing glaciers.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df16da",
+          "literal_va": "0x14171ead0",
+          "text": "Make sure your parameters and presets can support mid-elevation, very high drainage, freezing areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df16f1",
+          "literal_va": "0x14171ea60",
+          "text": "Alternatively, you can reduce the number of glacial squares and regions required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df1710"
+      ]
+    },
+    {
+      "group": 15,
+      "variant": "default",
+      "cases": [
+        17,
+        27,
+        49
+      ],
+      "enum_names": [
+        "TUNDRA_REGION_1",
+        "TUNDRA_REGION_2",
+        "TUNDRA_REGION_3"
+      ],
+      "title": "TUNDRA REJECTION",
+      "title_xref_va": "0x140dfb419",
+      "title_literal_va": "0x141720538",
+      "body_branch_va": "0x140df1725",
+      "body_branch_end_va": "0x140df17fe",
+      "paragraph": "The world generator is having trouble placing tundra regions.  Make sure your parameters and presets can support mid-elevation, low-to-mid drainage, freezing areas.  Alternatively, you can reduce the number of tundra squares and regions required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140df175e",
+          "literal_va": "0x14171ea20",
+          "text": "The world generator is having trouble placing tundra regions.  ",
+          "operand_kind": "inline-constant"
+        },
+        {
+          "xref_va": "0x140df17b3",
+          "literal_va": "0x14171ecc0",
+          "text": "Make sure your parameters and presets can support mid-elevation, low-to-mid drainage, freezing areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df17ca",
+          "literal_va": "0x14171ec50",
+          "text": "Alternatively, you can reduce the number of tundra squares and regions required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df17e9"
+      ]
+    },
+    {
+      "group": 16,
+      "variant": "default",
+      "cases": [
+        18,
+        28,
+        50
+      ],
+      "enum_names": [
+        "GRASSLAND_REGION_1",
+        "GRASSLAND_REGION_2",
+        "GRASSLAND_REGION_3"
+      ],
+      "title": "GRASSLAND REJECTION",
+      "title_xref_va": "0x140dfb453",
+      "title_literal_va": "0x141720520",
+      "body_branch_va": "0x140df17fe",
+      "body_branch_end_va": "0x140df1c25",
+      "paragraph": "The world generator is having trouble placing grasslands.  Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, low-to-mid drainage, non-freezing areas.  Alternatively, you can reduce the number of tundra squares and regions required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140df1831",
+          "literal_va": "0x14171ec08",
+          "text": "The world generator is having trouble placing grasslands.  ",
+          "operand_kind": "inline-constant"
+        },
+        {
+          "xref_va": "0x140df187d",
+          "literal_va": "0x14171eb80",
+          "text": "Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, low-to-mid drainage, non-freezing areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df1893",
+          "literal_va": "0x14171ec50",
+          "text": "Alternatively, you can reduce the number of tundra squares and regions required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "inlined add_paragraph",
+      "add_paragraph_calls": []
+    },
+    {
+      "group": 17,
+      "variant": "default",
+      "cases": [
+        19,
+        29,
+        51
+      ],
+      "enum_names": [
+        "HILLS_REGION_1",
+        "HILLS_REGION_2",
+        "HILLS_REGION_3"
+      ],
+      "title": "HILLS REJECTION",
+      "title_xref_va": "0x140dfb48d",
+      "title_literal_va": "0x141720510",
+      "body_branch_va": "0x140df1c25",
+      "body_branch_end_va": "0x140df2045",
+      "paragraph": "The world generator is having trouble placing hills.  Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, high drainage, non-freezing areas.  Alternatively, you can reduce the number of tundra squares and regions required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140df1c58",
+          "literal_va": "0x14171ee60",
+          "text": "The world generator is having trouble placing hills.  ",
+          "operand_kind": "inline-constant"
+        },
+        {
+          "xref_va": "0x140df1c96",
+          "literal_va": "0x14171ede0",
+          "text": "Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, high drainage, non-freezing areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df1cac",
+          "literal_va": "0x14171ec50",
+          "text": "Alternatively, you can reduce the number of tundra squares and regions required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "inlined add_paragraph",
+      "add_paragraph_calls": []
+    },
+    {
+      "group": 18,
+      "variant": "parameters",
+      "cases": [
+        20
+      ],
+      "enum_names": [
+        "NO_VOLCANOS"
+      ],
+      "title": "LACK OF VOLCANOS",
+      "title_xref_va": "0x140dfb283",
+      "title_literal_va": "0x141720470",
+      "body_branch_va": "0x140df106f",
+      "body_branch_end_va": "0x140df10fe",
+      "paragraph": "The world generator is having trouble placing enough volcanos.  You might want to check your maximum volcanism value.  Can volcanism be placed at the value 100 enough times to provide space for each of your volcanos?  Alternatively, you can reduce the number of volcanos required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140df106f",
+          "literal_va": "0x14171e160",
+          "text": "The world generator is having trouble placing enough volcanos.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df10ab",
+          "literal_va": "0x14171e3e8",
+          "text": "You might want to check your maximum volcanism value.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df10a4",
+          "literal_va": "0x14171e380",
+          "text": "Can volcanism be placed at the value 100 enough times to provide space for each of your volcanos?  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df10ca",
+          "literal_va": "0x14171e560",
+          "text": "Alternatively, you can reduce the number of volcanos required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "otherwise: preset pointer != 0 and qword [preset + 0x38] != 0",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df10e9"
+      ]
+    },
+    {
+      "group": 18,
+      "variant": "preset",
+      "cases": [
+        20
+      ],
+      "enum_names": [
+        "NO_VOLCANOS"
+      ],
+      "title": "LACK OF VOLCANOS",
+      "title_xref_va": "0x140dfb283",
+      "title_literal_va": "0x141720470",
+      "body_branch_va": "0x140df106f",
+      "body_branch_end_va": "0x140df10fe",
+      "paragraph": "The world generator is having trouble placing enough volcanos.  You might want to check your preset volcanism for the value 100.  You must have at least as many of these highest volcanism points as you are requiring volcanos.  Alternatively, you can reduce the number of volcanos required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140df106f",
+          "literal_va": "0x14171e160",
+          "text": "The world generator is having trouble placing enough volcanos.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df109b",
+          "literal_va": "0x14171e330",
+          "text": "You might want to check your preset volcanism for the value 100.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df1094",
+          "literal_va": "0x14171e2c0",
+          "text": "You must have at least as many of these highest volcanism points as you are requiring volcanos.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df10ca",
+          "literal_va": "0x14171e560",
+          "text": "Alternatively, you can reduce the number of volcanos required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "preset pointer != 0 and qword [preset + 0x38] != 0",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df10e9"
+      ]
+    },
+    {
+      "group": 19,
+      "variant": "default",
+      "cases": [
+        30
+      ],
+      "enum_names": [
+        "RIVER"
+      ],
+      "title": "LACK OF RIVERS",
+      "title_xref_va": "0x140dfb4c7",
+      "title_literal_va": "0x1417205b0",
+      "body_branch_va": "0x140df2045",
+      "body_branch_end_va": "0x140df209c",
+      "paragraph": "The world generator is having trouble placing rivers.  Make sure your parameters and presets allow as many mountain squares as you are requiring river start points.  Alternatively, you can reduce the number of rivers required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140df2045",
+          "literal_va": "0x14171eda0",
+          "text": "The world generator is having trouble placing rivers.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df2057",
+          "literal_va": "0x14171ed30",
+          "text": "Make sure your parameters and presets allow as many mountain squares as you are requiring river start points.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df2068",
+          "literal_va": "0x14171efb0",
+          "text": "Alternatively, you can reduce the number of rivers required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df2087"
+      ]
+    },
+    {
+      "group": 20,
+      "variant": "default",
+      "cases": [
+        31
+      ],
+      "enum_names": [
+        "TOO_MANY_SUBS"
+      ],
+      "title": "TOO MANY REGIONS",
+      "title_xref_va": "0x140dfb501",
+      "title_literal_va": "0x141720598",
+      "body_branch_va": "0x140df209c",
+      "body_branch_end_va": "0x140df20f3",
+      "paragraph": "The world generator is placing too many subregions.  Make sure your parameters and presets aren't so variable that biomes change frequently.  Alternatively, you can increase the number of subregions permitted by the parameters, up to the cap.",
+      "components": [
+        {
+          "xref_va": "0x140df209c",
+          "literal_va": "0x14171ef70",
+          "text": "The world generator is placing too many subregions.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df20ae",
+          "literal_va": "0x14171ef10",
+          "text": "Make sure your parameters and presets aren't so variable that biomes change frequently.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df20bf",
+          "literal_va": "0x14171eea0",
+          "text": "Alternatively, you can increase the number of subregions permitted by the parameters, up to the cap.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df20de"
+      ]
+    },
+    {
+      "group": 21,
+      "variant": "default",
+      "cases": [
+        35,
+        36
+      ],
+      "enum_names": [
+        "MOUNTAIN_CAVE_1",
+        "MOUNTAIN_CAVE_2"
+      ],
+      "title": "LACK OF MOUNTAIN CAVES",
+      "title_xref_va": "0x140dfb53b",
+      "title_literal_va": "0x141720580",
+      "body_branch_va": "0x140df20f3",
+      "body_branch_end_va": "0x140df214a",
+      "paragraph": "The world generator is having trouble placing mountain caves.  Make sure your parameters and presets allow as many border mountain squares as you are requiring mountain caves.  Alternatively, you can reduce the number of mountain caves required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140df20f3",
+          "literal_va": "0x14171f130",
+          "text": "The world generator is having trouble placing mountain caves.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df2105",
+          "literal_va": "0x14171f0b0",
+          "text": "Make sure your parameters and presets allow as many border mountain squares as you are requiring mountain caves.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df2116",
+          "literal_va": "0x14171f050",
+          "text": "Alternatively, you can reduce the number of mountain caves required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df2135"
+      ]
+    },
+    {
+      "group": 22,
+      "variant": "default",
+      "cases": [
+        37,
+        38
+      ],
+      "enum_names": [
+        "NMOUNTAIN_CAVE_1",
+        "NMOUNTAIN_CAVE_2"
+      ],
+      "title": "LACK OF LOW-LYING CAVES",
+      "title_xref_va": "0x140dfb575",
+      "title_literal_va": "0x141720568",
+      "body_branch_va": "0x140df214a",
+      "body_branch_end_va": "0x140df21a1",
+      "paragraph": "The world generator is having trouble placing low-lying caves.  Make sure your parameters and presets allow as many mid-elevation squares as you are requiring low-lying caves.  Alternatively, you can reduce the number of non-mountain caves required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140df214a",
+          "literal_va": "0x14171f000",
+          "text": "The world generator is having trouble placing low-lying caves.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df215c",
+          "literal_va": "0x14171f2b0",
+          "text": "Make sure your parameters and presets allow as many mid-elevation squares as you are requiring low-lying caves.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df216d",
+          "literal_va": "0x14171f250",
+          "text": "Alternatively, you can reduce the number of non-mountain caves required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df218c"
+      ]
+    },
+    {
+      "group": 23,
+      "variant": "default",
+      "cases": [
+        39
+      ],
+      "enum_names": [
+        "NO_ENTITY_PLACE"
+      ],
+      "title": "UNABLE TO PLACE ENOUGH CIVILIZATIONS",
+      "title_xref_va": "0x140dfb5af",
+      "title_literal_va": "0x141720640",
+      "body_branch_va": "0x140df21a1",
+      "body_branch_end_va": "0x140df221a",
+      "paragraph": "The world generator is having trouble placing enough civilizations.  Make sure your parameters and presets offer enough low-to-mid savagery, evil/good appropriate, biome appropriate squares to establish sites.  High savagery (66+) blocks civilization placement -- make sure your parameters and presets offer at least small pockets of low-to-mid savagery areas.  If you have very few biome types and are placing good or evil regions, they'll often crowd out the civilizations as well.  Alternatively, you can reduce the number of civilizations required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140df21a1",
+          "literal_va": "0x14171f200",
+          "text": "The world generator is having trouble placing enough civilizations.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df21b3",
+          "literal_va": "0x14171f170",
+          "text": "Make sure your parameters and presets offer enough low-to-mid savagery, evil/good appropriate, biome appropriate squares to establish sites.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df21c4",
+          "literal_va": "0x14171f460",
+          "text": "High savagery (66+) blocks civilization placement -- make sure your parameters and presets offer at least small pockets of low-to-mid savagery areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df21d5",
+          "literal_va": "0x14171f3e0",
+          "text": "If you have very few biome types and are placing good or evil regions, they'll often crowd out the civilizations as well.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df21e6",
+          "literal_va": "0x14171f380",
+          "text": "Alternatively, you can reduce the number of civilizations required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df2205"
+      ]
+    },
+    {
+      "group": 24,
+      "variant": "default",
+      "cases": [
+        40
+      ],
+      "enum_names": [
+        "NO_ENTITY_DEF"
+      ],
+      "title": "NO CIVILIZATIONS AVAILABLE",
+      "title_xref_va": "0x140dfb5e9",
+      "title_literal_va": "0x141720620",
+      "body_branch_va": "0x140df221a",
+      "body_branch_end_va": "0x140df2260",
+      "paragraph": "The world generator couldn't find any civilization definitions.  This problem cannot be resolved by continuing, so you should either abort or skip all rejects for a legends-only game.  ",
+      "components": [
+        {
+          "xref_va": "0x140df221a",
+          "literal_va": "0x14171f330",
+          "text": "The world generator couldn't find any civilization definitions.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df222c",
+          "literal_va": "0x14171f620",
+          "text": "This problem cannot be resolved by continuing, so you should either abort or skip all rejects for a legends-only game.  ",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df224b"
+      ]
+    },
+    {
+      "group": 25,
+      "variant": "default",
+      "cases": [
+        41,
+        42
+      ],
+      "enum_names": [
+        "NO_CONTROLLABLE",
+        "DIDNT_CONTROLLABLE"
+      ],
+      "title": "UNABLE TO PLACE CONTROLLABLE CIVILIZATION",
+      "title_xref_va": "0x140dfb620",
+      "title_literal_va": "0x1417205f0",
+      "body_branch_va": "0x140df2260",
+      "body_branch_end_va": "0x140df22c8",
+      "paragraph": "The world generator is having trouble placing a controllable civilization.  Dwarves, for example, require non-evil, non-good, unsavage mountain squares that aren't surrounded by the ocean.  Make sure your parameters and presets have adequate squares of this kind.  Alternatively, you can remove the requirement of a controllable civilization from the parameters, which will restrict you to adventurers (assuming an appropriate civilization is placed).",
+      "components": [
+        {
+          "xref_va": "0x140df2260",
+          "literal_va": "0x14171f5d0",
+          "text": "The world generator is having trouble placing a controllable civilization.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df2272",
+          "literal_va": "0x14171f550",
+          "text": "Dwarves, for example, require non-evil, non-good, unsavage mountain squares that aren't surrounded by the ocean.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df2283",
+          "literal_va": "0x14171f500",
+          "text": "Make sure your parameters and presets have adequate squares of this kind.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df2294",
+          "literal_va": "0x141720850",
+          "text": "Alternatively, you can remove the requirement of a controllable civilization from the parameters, which will restrict you to adventurers (assuming an appropriate civilization is placed).",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df22b3"
+      ]
+    },
+    {
+      "group": 26,
+      "variant": "default",
+      "cases": [
+        52
+      ],
+      "enum_names": [
+        "BAD_FARMER"
+      ],
+      "title": "FARMING CIVILIZATION PLACED WITHOUT CROPS",
+      "title_xref_va": "0x140dfb657",
+      "title_literal_va": "0x1417205c0",
+      "body_branch_va": "0x140df22c8",
+      "body_branch_end_va": "0x140df2374",
+      "paragraph": "The world generator is having trouble placing farming civilizations.  Civilizations use available plants in their surroundings as their initial crops.  Make sure your parameters and raw objects have adequate vegetation.  ",
+      "components": [
+        {
+          "xref_va": "0x140df22c8",
+          "literal_va": "0x141720800",
+          "text": "The world generator is having trouble placing farming civilizations.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df22da",
+          "literal_va": "0x1417207a0",
+          "text": "Civilizations use available plants in their surroundings as their initial crops.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140df22eb",
+          "literal_va": "0x141720750",
+          "text": "Make sure your parameters and raw objects have adequate vegetation.  ",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140df230a"
+      ]
+    }
+  ],
+  "classic": [
+    {
+      "group": 0,
+      "variant": "parameters",
+      "cases": [
+        0
+      ],
+      "enum_names": [
+        "NO_PEAK"
+      ],
+      "title": "LACK OF PEAKS",
+      "title_xref_va": "0x140df5fe9",
+      "title_literal_va": "0x14171b7b8",
+      "body_branch_va": "0x140deb84e",
+      "body_branch_end_va": "0x140deb8dd",
+      "paragraph": "The world generator is having trouble placing enough mountain peaks.  You might want to check your maximum elevation value and other elevation parameters.  Can the elevation 400 be placed enough times to provide space for your peaks?  Alternatively, you can reduce the number of peaks required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140deb84e",
+          "literal_va": "0x1417186a0",
+          "text": "The world generator is having trouble placing enough mountain peaks.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140deb88a",
+          "literal_va": "0x141718640",
+          "text": "You might want to check your maximum elevation value and other elevation parameters.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140deb883",
+          "literal_va": "0x1417185f0",
+          "text": "Can the elevation 400 be placed enough times to provide space for your peaks?  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140deb8a9",
+          "literal_va": "0x141718780",
+          "text": "Alternatively, you can reduce the number of peaks required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "otherwise: preset pointer != 0 and qword [preset + 0x8] != 0",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140deb8c8"
+      ]
+    },
+    {
+      "group": 0,
+      "variant": "preset",
+      "cases": [
+        0
+      ],
+      "enum_names": [
+        "NO_PEAK"
+      ],
+      "title": "LACK OF PEAKS",
+      "title_xref_va": "0x140df5fe9",
+      "title_literal_va": "0x14171b7b8",
+      "body_branch_va": "0x140deb84e",
+      "body_branch_end_va": "0x140deb8dd",
+      "paragraph": "The world generator is having trouble placing enough mountain peaks.  You might want to check your preset elevations for the elevation 400.  You must have at least as many of these highest elevation points as you are requiring peaks.  Alternatively, you can reduce the number of peaks required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140deb84e",
+          "literal_va": "0x1417186a0",
+          "text": "The world generator is having trouble placing enough mountain peaks.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140deb87a",
+          "literal_va": "0x1417185a0",
+          "text": "You might want to check your preset elevations for the elevation 400.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140deb873",
+          "literal_va": "0x1417187d0",
+          "text": "You must have at least as many of these highest elevation points as you are requiring peaks.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140deb8a9",
+          "literal_va": "0x141718780",
+          "text": "Alternatively, you can reduce the number of peaks required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "preset pointer != 0 and qword [preset + 0x8] != 0",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140deb8c8"
+      ]
+    },
+    {
+      "group": 1,
+      "variant": "default",
+      "cases": [
+        1,
+        2,
+        4,
+        32
+      ],
+      "enum_names": [
+        "NO_MED_ALT",
+        "NO_MED_ALT_2",
+        "NO_MED_ALT_3",
+        "MED_ALT_ERO"
+      ],
+      "title": "MEDIUM ELEVATION REJECTION",
+      "title_xref_va": "0x140df6023",
+      "title_literal_va": "0x14171b798",
+      "body_branch_va": "0x140deb8dd",
+      "body_branch_end_va": "0x140debd4b",
+      "paragraph": "The world generator is having trouble placing enough mid-level elevations.  Can your parameters achieve elevations between 100 and 299?  You might want to adjust the parameters governing elevation frequencies.  Alternatively, you can reduce the number of mid-level elevation squares required.",
+      "components": [
+        {
+          "xref_va": "0x140deb910",
+          "literal_va": "0x141718730",
+          "text": "The world generator is having trouble placing enough mid-level elevations.  ",
+          "operand_kind": "inline-constant"
+        },
+        {
+          "xref_va": "0x140deb95b",
+          "literal_va": "0x1417186e8",
+          "text": "Can your parameters achieve elevations between 100 and 299?  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140deb971",
+          "literal_va": "0x141718920",
+          "text": "You might want to adjust the parameters governing elevation frequencies.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140deb987",
+          "literal_va": "0x1417188c0",
+          "text": "Alternatively, you can reduce the number of mid-level elevation squares required.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "inlined add_paragraph",
+      "add_paragraph_calls": []
+    },
+    {
+      "group": 2,
+      "variant": "default",
+      "cases": [
+        3,
+        33
+      ],
+      "enum_names": [
+        "NO_LOW_ALT",
+        "LOW_ALT_ERO"
+      ],
+      "title": "LOW ELEVATION REJECTION",
+      "title_xref_va": "0x140df605d",
+      "title_literal_va": "0x14171b780",
+      "body_branch_va": "0x140debd4b",
+      "body_branch_end_va": "0x140debdb3",
+      "paragraph": "The world generator is having trouble placing enough low elevations.  Can your parameters achieve elevations between 0 and 99?  You might want to adjust the parameters governing elevation frequencies.  Alternatively, you can reduce the number of mid-level elevation squares required.",
+      "components": [
+        {
+          "xref_va": "0x140debd4b",
+          "literal_va": "0x141718870",
+          "text": "The world generator is having trouble placing enough low elevations.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140debd5d",
+          "literal_va": "0x141718830",
+          "text": "Can your parameters achieve elevations between 0 and 99?  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140debd6e",
+          "literal_va": "0x141718920",
+          "text": "You might want to adjust the parameters governing elevation frequencies.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140debd7f",
+          "literal_va": "0x1417188c0",
+          "text": "Alternatively, you can reduce the number of mid-level elevation squares required.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140debd9e"
+      ]
+    },
+    {
+      "group": 3,
+      "variant": "default",
+      "cases": [
+        5,
+        34
+      ],
+      "enum_names": [
+        "NO_HI_ALT",
+        "HI_ALT_ERO"
+      ],
+      "title": "HIGH ELEVATION REJECTION",
+      "title_xref_va": "0x140df6097",
+      "title_literal_va": "0x14171b760",
+      "body_branch_va": "0x140debdb3",
+      "body_branch_end_va": "0x140debe1b",
+      "paragraph": "The world generator is having trouble placing enough high elevations.  Can your parameters achieve elevations between 300 and 400?  You might want to adjust the parameters governing elevation frequencies.  Alternatively, you can reduce the number of mid-level elevation squares required.",
+      "components": [
+        {
+          "xref_va": "0x140debdb3",
+          "literal_va": "0x141718a60",
+          "text": "The world generator is having trouble placing enough high elevations.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140debdc5",
+          "literal_va": "0x141718a18",
+          "text": "Can your parameters achieve elevations between 300 and 400?  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140debdd6",
+          "literal_va": "0x141718920",
+          "text": "You might want to adjust the parameters governing elevation frequencies.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140debde7",
+          "literal_va": "0x1417188c0",
+          "text": "Alternatively, you can reduce the number of mid-level elevation squares required.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140debe06"
+      ]
+    },
+    {
+      "group": 4,
+      "variant": "default",
+      "cases": [
+        6
+      ],
+      "enum_names": [
+        "NO_EDGE_OCEANS"
+      ],
+      "title": "LACK OF EDGE OCEANS",
+      "title_xref_va": "0x140df60d1",
+      "title_literal_va": "0x14171b810",
+      "body_branch_va": "0x140debe1b",
+      "body_branch_end_va": "0x140debe83",
+      "paragraph": "The world generator is having trouble placing enough ocean squares along the edges.  Can your parameters achieve elevations between 0 and 99 frequently?  You might want to adjust the parameters governing elevation.  Alternatively, you can reduce the number of edge oceans required.",
+      "components": [
+        {
+          "xref_va": "0x140debe1b",
+          "literal_va": "0x1417189c0",
+          "text": "The world generator is having trouble placing enough ocean squares along the edges.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140debe2d",
+          "literal_va": "0x141718970",
+          "text": "Can your parameters achieve elevations between 0 and 99 frequently?  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140debe3e",
+          "literal_va": "0x141718ba8",
+          "text": "You might want to adjust the parameters governing elevation.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140debe4f",
+          "literal_va": "0x141718b60",
+          "text": "Alternatively, you can reduce the number of edge oceans required.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140debe6e"
+      ]
+    },
+    {
+      "group": 5,
+      "variant": "default",
+      "cases": [
+        7
+      ],
+      "enum_names": [
+        "RAINFALL_COUNT"
+      ],
+      "title": "RAINFALL REJECTION",
+      "title_xref_va": "0x140df610b",
+      "title_literal_va": "0x14171b7f8",
+      "body_branch_va": "0x140debe83",
+      "body_branch_end_va": "0x140debeda",
+      "paragraph": "The world generator is having trouble placing rainfall in the manner specified by the parameters.  You might want to adjust the parameters governing rainfall.  Alternatively, you can reduce the number of high, medium or low rainfall squares required.",
+      "components": [
+        {
+          "xref_va": "0x140debe83",
+          "literal_va": "0x141718af0",
+          "text": "The world generator is having trouble placing rainfall in the manner specified by the parameters.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140debe95",
+          "literal_va": "0x141718aa8",
+          "text": "You might want to adjust the parameters governing rainfall.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140debea6",
+          "literal_va": "0x141718d00",
+          "text": "Alternatively, you can reduce the number of high, medium or low rainfall squares required.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140debec5"
+      ]
+    },
+    {
+      "group": 6,
+      "variant": "default",
+      "cases": [
+        8
+      ],
+      "enum_names": [
+        "GEOLOGY_COUNT"
+      ],
+      "title": "DRAINAGE REJECTION",
+      "title_xref_va": "0x140df6145",
+      "title_literal_va": "0x14171b7e0",
+      "body_branch_va": "0x140debeda",
+      "body_branch_end_va": "0x140debf31",
+      "paragraph": "The world generator is having trouble setting drainage in the manner specified by the parameters.  You might want to adjust the parameters governing drainage.  Alternatively, you can reduce the number of high, medium or low drainage squares required.",
+      "components": [
+        {
+          "xref_va": "0x140debeda",
+          "literal_va": "0x141718c90",
+          "text": "The world generator is having trouble setting drainage in the manner specified by the parameters.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140debeec",
+          "literal_va": "0x141718c50",
+          "text": "You might want to adjust the parameters governing drainage.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140debefd",
+          "literal_va": "0x141718bf0",
+          "text": "Alternatively, you can reduce the number of high, medium or low drainage squares required.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140debf1c"
+      ]
+    },
+    {
+      "group": 7,
+      "variant": "default",
+      "cases": [
+        9
+      ],
+      "enum_names": [
+        "SAVAGERY_COUNT"
+      ],
+      "title": "SAVAGERY REJECTION",
+      "title_xref_va": "0x140df617f",
+      "title_literal_va": "0x14171b7c8",
+      "body_branch_va": "0x140debf31",
+      "body_branch_end_va": "0x140debf88",
+      "paragraph": "The world generator is having trouble placing savagery in the manner specified by the parameters.  You might want to adjust the parameters governing savagery.  Alternatively, you can reduce the number of high, medium or low savagery squares required.",
+      "components": [
+        {
+          "xref_va": "0x140debf31",
+          "literal_va": "0x141718e70",
+          "text": "The world generator is having trouble placing savagery in the manner specified by the parameters.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140debf43",
+          "literal_va": "0x141718e30",
+          "text": "You might want to adjust the parameters governing savagery.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140debf54",
+          "literal_va": "0x141718dd0",
+          "text": "Alternatively, you can reduce the number of high, medium or low savagery squares required.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140debf73"
+      ]
+    },
+    {
+      "group": 8,
+      "variant": "default",
+      "cases": [
+        10
+      ],
+      "enum_names": [
+        "VOLCANISM_COUNT"
+      ],
+      "title": "VOLCANISM REJECTION",
+      "title_xref_va": "0x140df61b9",
+      "title_literal_va": "0x14171b868",
+      "body_branch_va": "0x140debf88",
+      "body_branch_end_va": "0x140debfdf",
+      "paragraph": "The world generator is having trouble setting volcanism in the manner specified by the parameters.  You might want to adjust the parameters governing volcanism.  Alternatively, you can reduce the number of high, medium or low volcanism squares required.",
+      "components": [
+        {
+          "xref_va": "0x140debf88",
+          "literal_va": "0x141718d60",
+          "text": "The world generator is having trouble setting volcanism in the manner specified by the parameters.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140debf9a",
+          "literal_va": "0x141718fc0",
+          "text": "You might want to adjust the parameters governing volcanism.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140debfab",
+          "literal_va": "0x141718f60",
+          "text": "Alternatively, you can reduce the number of high, medium or low volcanism squares required.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140debfca"
+      ]
+    },
+    {
+      "group": 9,
+      "variant": "default",
+      "cases": [
+        11,
+        21,
+        43
+      ],
+      "enum_names": [
+        "SWAMP_REGION_1",
+        "SWAMP_REGION_2",
+        "SWAMP_REGION_3"
+      ],
+      "title": "SWAMP REJECTION",
+      "title_xref_va": "0x140df622d",
+      "title_literal_va": "0x14171b840",
+      "body_branch_va": "0x140dec06e",
+      "body_branch_end_va": "0x140dec0c5",
+      "paragraph": "The world generator is having trouble placing swamps and marshes.  Make sure your parameters and presets can support mid-elevation, mid-to-high rainfall, low drainage, non-freezing areas.  Alternatively, you can reduce the number of swamp squares and regions required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140dec06e",
+          "literal_va": "0x1417192d0",
+          "text": "The world generator is having trouble placing swamps and marshes.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec080",
+          "literal_va": "0x141719250",
+          "text": "Make sure your parameters and presets can support mid-elevation, mid-to-high rainfall, low drainage, non-freezing areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec091",
+          "literal_va": "0x1417191e0",
+          "text": "Alternatively, you can reduce the number of swamp squares and regions required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140dec0b0"
+      ]
+    },
+    {
+      "group": 10,
+      "variant": "default",
+      "cases": [
+        12,
+        22,
+        44
+      ],
+      "enum_names": [
+        "DESERT_REGION_1",
+        "DESERT_REGION_2",
+        "DESERT_REGION_3"
+      ],
+      "title": "DESERT REJECTION",
+      "title_xref_va": "0x140df6267",
+      "title_literal_va": "0x14171b828",
+      "body_branch_va": "0x140dec0c5",
+      "body_branch_end_va": "0x140dec4e7",
+      "paragraph": "The world generator is having trouble placing deserts and badlands.  Make sure your parameters and presets can support mid-elevation, very low rainfall, non-freezing areas.  Alternatively, you can reduce the number of desert squares and regions required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140dec0f8",
+          "literal_va": "0x141719190",
+          "text": "The world generator is having trouble placing deserts and badlands.  ",
+          "operand_kind": "inline-constant"
+        },
+        {
+          "xref_va": "0x140dec140",
+          "literal_va": "0x14171a0b0",
+          "text": "Make sure your parameters and presets can support mid-elevation, very low rainfall, non-freezing areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec156",
+          "literal_va": "0x14171a040",
+          "text": "Alternatively, you can reduce the number of desert squares and regions required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "inlined add_paragraph",
+      "add_paragraph_calls": []
+    },
+    {
+      "group": 11,
+      "variant": "default",
+      "cases": [
+        13,
+        23,
+        45
+      ],
+      "enum_names": [
+        "FOREST_REGION_1",
+        "FOREST_REGION_2",
+        "FOREST_REGION_3"
+      ],
+      "title": "FOREST REJECTION",
+      "title_xref_va": "0x140df62a1",
+      "title_literal_va": "0x14171b8c0",
+      "body_branch_va": "0x140dec4e7",
+      "body_branch_end_va": "0x140dec53e",
+      "paragraph": "The world generator is having trouble placing forests.  Make sure your parameters and presets can support mid-elevation, high rainfall, high drainage, non-freezing areas.  Alternatively, you can reduce the number of forest squares and regions required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140dec4e7",
+          "literal_va": "0x141719ff8",
+          "text": "The world generator is having trouble placing forests.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec4f9",
+          "literal_va": "0x141719f80",
+          "text": "Make sure your parameters and presets can support mid-elevation, high rainfall, high drainage, non-freezing areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec50a",
+          "literal_va": "0x14171a220",
+          "text": "Alternatively, you can reduce the number of forest squares and regions required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140dec529"
+      ]
+    },
+    {
+      "group": 12,
+      "variant": "default",
+      "cases": [
+        14,
+        24,
+        46
+      ],
+      "enum_names": [
+        "MOUNTAINS_REGION_1",
+        "MOUNTAINS_REGION_2",
+        "MOUNTAINS_REGION_3"
+      ],
+      "title": "MOUNTAIN REJECTION",
+      "title_xref_va": "0x140df62db",
+      "title_literal_va": "0x14171b8a8",
+      "body_branch_va": "0x140dec53e",
+      "body_branch_end_va": "0x140dec5d5",
+      "paragraph": "The world generator is having trouble placing mountains.  Make sure your parameters and presets can support high elevation areas.  Alternatively, you can reduce the number of mountain squares and regions required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140dec57d",
+          "literal_va": "0x14171a1e0",
+          "text": "The world generator is having trouble placing mountains.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec590",
+          "literal_va": "0x14171a190",
+          "text": "Make sure your parameters and presets can support high elevation areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec5a1",
+          "literal_va": "0x14171a120",
+          "text": "Alternatively, you can reduce the number of mountain squares and regions required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140dec5c0"
+      ]
+    },
+    {
+      "group": 13,
+      "variant": "default",
+      "cases": [
+        15,
+        25,
+        47
+      ],
+      "enum_names": [
+        "OCEAN_REGION_1",
+        "OCEAN_REGION_2",
+        "OCEAN_REGION_3"
+      ],
+      "title": "OCEAN REJECTION",
+      "title_xref_va": "0x140df6315",
+      "title_literal_va": "0x14171b898",
+      "body_branch_va": "0x140dec5d5",
+      "body_branch_end_va": "0x140dec632",
+      "paragraph": "The world generator is having trouble placing oceans.  Make sure your parameters and presets can support low elevation areas.  Alternatively, you can reduce the number of ocean squares and regions required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140dec5d5",
+          "literal_va": "0x14171a390",
+          "text": "The world generator is having trouble placing oceans.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec5e7",
+          "literal_va": "0x14171a340",
+          "text": "Make sure your parameters and presets can support low elevation areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec5fe",
+          "literal_va": "0x14171a2d0",
+          "text": "Alternatively, you can reduce the number of ocean squares and regions required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140dec61d"
+      ]
+    },
+    {
+      "group": 14,
+      "variant": "default",
+      "cases": [
+        16,
+        26,
+        48
+      ],
+      "enum_names": [
+        "GLACIER_REGION_1",
+        "GLACIER_REGION_2",
+        "GLACIER_REGION_3"
+      ],
+      "title": "GLACIER REJECTION",
+      "title_xref_va": "0x140df634f",
+      "title_literal_va": "0x14171b880",
+      "body_branch_va": "0x140dec632",
+      "body_branch_end_va": "0x140dec695",
+      "paragraph": "The world generator is having trouble placing glaciers.  Make sure your parameters and presets can support mid-elevation, very high drainage, freezing areas.  Alternatively, you can reduce the number of glacial squares and regions required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140dec632",
+          "literal_va": "0x14171a288",
+          "text": "The world generator is having trouble placing glaciers.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec64a",
+          "literal_va": "0x14171a4f0",
+          "text": "Make sure your parameters and presets can support mid-elevation, very high drainage, freezing areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec661",
+          "literal_va": "0x14171a480",
+          "text": "Alternatively, you can reduce the number of glacial squares and regions required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140dec680"
+      ]
+    },
+    {
+      "group": 15,
+      "variant": "default",
+      "cases": [
+        17,
+        27,
+        49
+      ],
+      "enum_names": [
+        "TUNDRA_REGION_1",
+        "TUNDRA_REGION_2",
+        "TUNDRA_REGION_3"
+      ],
+      "title": "TUNDRA REJECTION",
+      "title_xref_va": "0x140df6389",
+      "title_literal_va": "0x14171b910",
+      "body_branch_va": "0x140dec695",
+      "body_branch_end_va": "0x140dec76e",
+      "paragraph": "The world generator is having trouble placing tundra regions.  Make sure your parameters and presets can support mid-elevation, low-to-mid drainage, freezing areas.  Alternatively, you can reduce the number of tundra squares and regions required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140dec6ce",
+          "literal_va": "0x14171a440",
+          "text": "The world generator is having trouble placing tundra regions.  ",
+          "operand_kind": "inline-constant"
+        },
+        {
+          "xref_va": "0x140dec723",
+          "literal_va": "0x14171a3d0",
+          "text": "Make sure your parameters and presets can support mid-elevation, low-to-mid drainage, freezing areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec73a",
+          "literal_va": "0x14171a660",
+          "text": "Alternatively, you can reduce the number of tundra squares and regions required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140dec759"
+      ]
+    },
+    {
+      "group": 16,
+      "variant": "default",
+      "cases": [
+        18,
+        28,
+        50
+      ],
+      "enum_names": [
+        "GRASSLAND_REGION_1",
+        "GRASSLAND_REGION_2",
+        "GRASSLAND_REGION_3"
+      ],
+      "title": "GRASSLAND REJECTION",
+      "title_xref_va": "0x140df63c3",
+      "title_literal_va": "0x14171b8f8",
+      "body_branch_va": "0x140dec76e",
+      "body_branch_end_va": "0x140decb95",
+      "paragraph": "The world generator is having trouble placing grasslands.  Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, low-to-mid drainage, non-freezing areas.  Alternatively, you can reduce the number of tundra squares and regions required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140dec7a1",
+          "literal_va": "0x14171a618",
+          "text": "The world generator is having trouble placing grasslands.  ",
+          "operand_kind": "inline-constant"
+        },
+        {
+          "xref_va": "0x140dec7ed",
+          "literal_va": "0x14171a590",
+          "text": "Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, low-to-mid drainage, non-freezing areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec803",
+          "literal_va": "0x14171a660",
+          "text": "Alternatively, you can reduce the number of tundra squares and regions required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "inlined add_paragraph",
+      "add_paragraph_calls": []
+    },
+    {
+      "group": 17,
+      "variant": "default",
+      "cases": [
+        19,
+        29,
+        51
+      ],
+      "enum_names": [
+        "HILLS_REGION_1",
+        "HILLS_REGION_2",
+        "HILLS_REGION_3"
+      ],
+      "title": "HILLS REJECTION",
+      "title_xref_va": "0x140df63fd",
+      "title_literal_va": "0x14171b8e8",
+      "body_branch_va": "0x140decb95",
+      "body_branch_end_va": "0x140decfb5",
+      "paragraph": "The world generator is having trouble placing hills.  Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, high drainage, non-freezing areas.  Alternatively, you can reduce the number of tundra squares and regions required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140decbc8",
+          "literal_va": "0x14171a558",
+          "text": "The world generator is having trouble placing hills.  ",
+          "operand_kind": "inline-constant"
+        },
+        {
+          "xref_va": "0x140decc06",
+          "literal_va": "0x14171a7d0",
+          "text": "Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, high drainage, non-freezing areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140decc1c",
+          "literal_va": "0x14171a660",
+          "text": "Alternatively, you can reduce the number of tundra squares and regions required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "inlined add_paragraph",
+      "add_paragraph_calls": []
+    },
+    {
+      "group": 18,
+      "variant": "parameters",
+      "cases": [
+        20
+      ],
+      "enum_names": [
+        "NO_VOLCANOS"
+      ],
+      "title": "LACK OF VOLCANOS",
+      "title_xref_va": "0x140df61f3",
+      "title_literal_va": "0x14171b850",
+      "body_branch_va": "0x140debfdf",
+      "body_branch_end_va": "0x140dec06e",
+      "paragraph": "The world generator is having trouble placing enough volcanos.  You might want to check your maximum volcanism value.  Can volcanism be placed at the value 100 enough times to provide space for each of your volcanos?  Alternatively, you can reduce the number of volcanos required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140debfdf",
+          "literal_va": "0x141718f10",
+          "text": "The world generator is having trouble placing enough volcanos.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec01b",
+          "literal_va": "0x141718ed8",
+          "text": "You might want to check your maximum volcanism value.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec014",
+          "literal_va": "0x141719120",
+          "text": "Can volcanism be placed at the value 100 enough times to provide space for each of your volcanos?  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec03a",
+          "literal_va": "0x141719000",
+          "text": "Alternatively, you can reduce the number of volcanos required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "otherwise: preset pointer != 0 and qword [preset + 0x38] != 0",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140dec059"
+      ]
+    },
+    {
+      "group": 18,
+      "variant": "preset",
+      "cases": [
+        20
+      ],
+      "enum_names": [
+        "NO_VOLCANOS"
+      ],
+      "title": "LACK OF VOLCANOS",
+      "title_xref_va": "0x140df61f3",
+      "title_literal_va": "0x14171b850",
+      "body_branch_va": "0x140debfdf",
+      "body_branch_end_va": "0x140dec06e",
+      "paragraph": "The world generator is having trouble placing enough volcanos.  You might want to check your preset volcanism for the value 100.  You must have at least as many of these highest volcanism points as you are requiring volcanos.  Alternatively, you can reduce the number of volcanos required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140debfdf",
+          "literal_va": "0x141718f10",
+          "text": "The world generator is having trouble placing enough volcanos.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec00b",
+          "literal_va": "0x1417190d0",
+          "text": "You might want to check your preset volcanism for the value 100.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec004",
+          "literal_va": "0x141719060",
+          "text": "You must have at least as many of these highest volcanism points as you are requiring volcanos.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140dec03a",
+          "literal_va": "0x141719000",
+          "text": "Alternatively, you can reduce the number of volcanos required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "preset pointer != 0 and qword [preset + 0x38] != 0",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140dec059"
+      ]
+    },
+    {
+      "group": 19,
+      "variant": "default",
+      "cases": [
+        30
+      ],
+      "enum_names": [
+        "RIVER"
+      ],
+      "title": "LACK OF RIVERS",
+      "title_xref_va": "0x140df6437",
+      "title_literal_va": "0x14171b8d8",
+      "body_branch_va": "0x140decfb5",
+      "body_branch_end_va": "0x140ded00c",
+      "paragraph": "The world generator is having trouble placing rivers.  Make sure your parameters and presets allow as many mountain squares as you are requiring river start points.  Alternatively, you can reduce the number of rivers required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140decfb5",
+          "literal_va": "0x14171a790",
+          "text": "The world generator is having trouble placing rivers.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140decfc7",
+          "literal_va": "0x14171a720",
+          "text": "Make sure your parameters and presets allow as many mountain squares as you are requiring river start points.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140decfd8",
+          "literal_va": "0x14171a6d0",
+          "text": "Alternatively, you can reduce the number of rivers required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140decff7"
+      ]
+    },
+    {
+      "group": 20,
+      "variant": "default",
+      "cases": [
+        31
+      ],
+      "enum_names": [
+        "TOO_MANY_SUBS"
+      ],
+      "title": "TOO MANY REGIONS",
+      "title_xref_va": "0x140df6471",
+      "title_literal_va": "0x14171b980",
+      "body_branch_va": "0x140ded00c",
+      "body_branch_end_va": "0x140ded063",
+      "paragraph": "The world generator is placing too many subregions.  Make sure your parameters and presets aren't so variable that biomes change frequently.  Alternatively, you can increase the number of subregions permitted by the parameters, up to the cap.",
+      "components": [
+        {
+          "xref_va": "0x140ded00c",
+          "literal_va": "0x14171a960",
+          "text": "The world generator is placing too many subregions.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140ded01e",
+          "literal_va": "0x14171a900",
+          "text": "Make sure your parameters and presets aren't so variable that biomes change frequently.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140ded02f",
+          "literal_va": "0x14171a890",
+          "text": "Alternatively, you can increase the number of subregions permitted by the parameters, up to the cap.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140ded04e"
+      ]
+    },
+    {
+      "group": 21,
+      "variant": "default",
+      "cases": [
+        35,
+        36
+      ],
+      "enum_names": [
+        "MOUNTAIN_CAVE_1",
+        "MOUNTAIN_CAVE_2"
+      ],
+      "title": "LACK OF MOUNTAIN CAVES",
+      "title_xref_va": "0x140df64ab",
+      "title_literal_va": "0x14171b968",
+      "body_branch_va": "0x140ded063",
+      "body_branch_end_va": "0x140ded0ba",
+      "paragraph": "The world generator is having trouble placing mountain caves.  Make sure your parameters and presets allow as many border mountain squares as you are requiring mountain caves.  Alternatively, you can reduce the number of mountain caves required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140ded063",
+          "literal_va": "0x14171a850",
+          "text": "The world generator is having trouble placing mountain caves.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140ded075",
+          "literal_va": "0x14171aad0",
+          "text": "Make sure your parameters and presets allow as many border mountain squares as you are requiring mountain caves.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140ded086",
+          "literal_va": "0x14171aa70",
+          "text": "Alternatively, you can reduce the number of mountain caves required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140ded0a5"
+      ]
+    },
+    {
+      "group": 22,
+      "variant": "default",
+      "cases": [
+        37,
+        38
+      ],
+      "enum_names": [
+        "NMOUNTAIN_CAVE_1",
+        "NMOUNTAIN_CAVE_2"
+      ],
+      "title": "LACK OF LOW-LYING CAVES",
+      "title_xref_va": "0x140df64e5",
+      "title_literal_va": "0x14171b950",
+      "body_branch_va": "0x140ded0ba",
+      "body_branch_end_va": "0x140ded111",
+      "paragraph": "The world generator is having trouble placing low-lying caves.  Make sure your parameters and presets allow as many mid-elevation squares as you are requiring low-lying caves.  Alternatively, you can reduce the number of non-mountain caves required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140ded0ba",
+          "literal_va": "0x14171aa20",
+          "text": "The world generator is having trouble placing low-lying caves.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140ded0cc",
+          "literal_va": "0x14171a9a0",
+          "text": "Make sure your parameters and presets allow as many mid-elevation squares as you are requiring low-lying caves.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140ded0dd",
+          "literal_va": "0x14171acd0",
+          "text": "Alternatively, you can reduce the number of non-mountain caves required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140ded0fc"
+      ]
+    },
+    {
+      "group": 23,
+      "variant": "default",
+      "cases": [
+        39
+      ],
+      "enum_names": [
+        "NO_ENTITY_PLACE"
+      ],
+      "title": "UNABLE TO PLACE ENOUGH CIVILIZATIONS",
+      "title_xref_va": "0x140df651f",
+      "title_literal_va": "0x14171b928",
+      "body_branch_va": "0x140ded111",
+      "body_branch_end_va": "0x140ded18a",
+      "paragraph": "The world generator is having trouble placing enough civilizations.  Make sure your parameters and presets offer enough low-to-mid savagery, evil/good appropriate, biome appropriate squares to establish sites.  High savagery (66+) blocks civilization placement -- make sure your parameters and presets offer at least small pockets of low-to-mid savagery areas.  If you have very few biome types and are placing good or evil regions, they'll often crowd out the civilizations as well.  Alternatively, you can reduce the number of civilizations required by the parameters.",
+      "components": [
+        {
+          "xref_va": "0x140ded111",
+          "literal_va": "0x14171ac80",
+          "text": "The world generator is having trouble placing enough civilizations.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140ded123",
+          "literal_va": "0x14171abf0",
+          "text": "Make sure your parameters and presets offer enough low-to-mid savagery, evil/good appropriate, biome appropriate squares to establish sites.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140ded134",
+          "literal_va": "0x14171ab50",
+          "text": "High savagery (66+) blocks civilization placement -- make sure your parameters and presets offer at least small pockets of low-to-mid savagery areas.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140ded145",
+          "literal_va": "0x14171ae60",
+          "text": "If you have very few biome types and are placing good or evil regions, they'll often crowd out the civilizations as well.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140ded156",
+          "literal_va": "0x14171ae00",
+          "text": "Alternatively, you can reduce the number of civilizations required by the parameters.",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140ded175"
+      ]
+    },
+    {
+      "group": 24,
+      "variant": "default",
+      "cases": [
+        40
+      ],
+      "enum_names": [
+        "NO_ENTITY_DEF"
+      ],
+      "title": "NO CIVILIZATIONS AVAILABLE",
+      "title_xref_va": "0x140df6559",
+      "title_literal_va": "0x14171ba28",
+      "body_branch_va": "0x140ded18a",
+      "body_branch_end_va": "0x140ded1d0",
+      "paragraph": "The world generator couldn't find any civilization definitions.  This problem cannot be resolved by continuing, so you should either abort or skip all rejects for a legends-only game.  ",
+      "components": [
+        {
+          "xref_va": "0x140ded18a",
+          "literal_va": "0x14171adb0",
+          "text": "The world generator couldn't find any civilization definitions.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140ded19c",
+          "literal_va": "0x14171ad30",
+          "text": "This problem cannot be resolved by continuing, so you should either abort or skip all rejects for a legends-only game.  ",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140ded1bb"
+      ]
+    },
+    {
+      "group": 25,
+      "variant": "default",
+      "cases": [
+        41,
+        42
+      ],
+      "enum_names": [
+        "NO_CONTROLLABLE",
+        "DIDNT_CONTROLLABLE"
+      ],
+      "title": "UNABLE TO PLACE CONTROLLABLE CIVILIZATION",
+      "title_xref_va": "0x140df6590",
+      "title_literal_va": "0x14171b9f8",
+      "body_branch_va": "0x140ded1d0",
+      "body_branch_end_va": "0x140ded238",
+      "paragraph": "The world generator is having trouble placing a controllable civilization.  Dwarves, for example, require non-evil, non-good, unsavage mountain squares that aren't surrounded by the ocean.  Make sure your parameters and presets have adequate squares of this kind.  Alternatively, you can remove the requirement of a controllable civilization from the parameters, which will restrict you to adventurers (assuming an appropriate civilization is placed).",
+      "components": [
+        {
+          "xref_va": "0x140ded1d0",
+          "literal_va": "0x14171b070",
+          "text": "The world generator is having trouble placing a controllable civilization.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140ded1e2",
+          "literal_va": "0x14171aff0",
+          "text": "Dwarves, for example, require non-evil, non-good, unsavage mountain squares that aren't surrounded by the ocean.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140ded1f3",
+          "literal_va": "0x14171afa0",
+          "text": "Make sure your parameters and presets have adequate squares of this kind.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140ded204",
+          "literal_va": "0x14171aee0",
+          "text": "Alternatively, you can remove the requirement of a controllable civilization from the parameters, which will restrict you to adventurers (assuming an appropriate civilization is placed).",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140ded223"
+      ]
+    },
+    {
+      "group": 26,
+      "variant": "default",
+      "cases": [
+        52
+      ],
+      "enum_names": [
+        "BAD_FARMER"
+      ],
+      "title": "FARMING CIVILIZATION PLACED WITHOUT CROPS",
+      "title_xref_va": "0x140df65c7",
+      "title_literal_va": "0x14171b9c8",
+      "body_branch_va": "0x140ded238",
+      "body_branch_end_va": "0x140ded2e4",
+      "paragraph": "The world generator is having trouble placing farming civilizations.  Civilizations use available plants in their surroundings as their initial crops.  Make sure your parameters and raw objects have adequate vegetation.  ",
+      "components": [
+        {
+          "xref_va": "0x140ded238",
+          "literal_va": "0x14171b180",
+          "text": "The world generator is having trouble placing farming civilizations.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140ded24a",
+          "literal_va": "0x14171b120",
+          "text": "Civilizations use available plants in their surroundings as their initial crops.  ",
+          "operand_kind": "lea"
+        },
+        {
+          "xref_va": "0x140ded25b",
+          "literal_va": "0x14171b0d0",
+          "text": "Make sure your parameters and raw objects have adequate vegetation.  ",
+          "operand_kind": "lea"
+        }
+      ],
+      "condition": "",
+      "wrapping_columns": 66,
+      "wrapping": "add_paragraph",
+      "add_paragraph_calls": [
+        "0x140ded27a"
+      ]
+    }
+  ]
+}

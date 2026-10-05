@@ -1910,6 +1910,14 @@ DFHack GUI Unit mood state: Ecstatic	欣喜若狂	l
 DFHack GUI Unit skill state: Yes	是	l
 DFHack GUI Unit skill state: No	否	l
 
+# zone.lua AnimalActionsWidget; action captions have their own scope instead of profession nouns.
+DFHack GUI Animal actions caption: Butcher	屠宰	l
+DFHack GUI Animal actions caption: Geld	阉割	l
+DFHack GUI Animal actions caption: Adopt	领养	l
+DFHack GUI Animal actions caption: Has Trainer	有驯兽师	l
+DFHack GUI Animal actions state: Yes	是	l
+DFHack GUI Animal actions state: No	否	l
+
 # Installed list-agreements.lua fixed local headings and empty-list statuses.
 DFHack output: Agreements for Temples:	神庙建设协议：	l
 DFHack output: Agreements for Guildhalls:	行会大厅建设协议：	l
@@ -2030,3 +2038,29 @@ DFHack GUI Suspendmanager state: Enabled	已启用	l
 DFHack GUI Suspendmanager state: Disabled	已停用	l
 DFHack GUI Suspendmanager state: Yes	是	l
 DFHack GUI Suspendmanager state: No	否	l
+
+# gui/civ-alert.lua: complete fixed rows in the compact overlay buttons.
+DFHack GUI Civilian alert action: Activate civilian alert	启动\n平民\n警报	l
+DFHack GUI Civilian alert action: Clear civilian alert	解除\n平民\n警报	l
+DFHack GUI Civilian alert action: Click to configure civilian alert	点击配置\n平民警报	l
+
+# gui/civ-alert.lua: configuration Window prose and complete burrow choices.
+DFHack GUI Title: Civilian alert	平民警报	l
+DFHack GUI Civilian alert prompt: Choose the burrow(s) where you want your civilians to hide during danger.	选择危险时平民躲藏的活动区。	l
+DFHack GUI Civilian alert prompt: No burrows defined. Please define one to use for the civalert.	尚未设置活动区。请先创建活动区，以供平民警报使用。	l
+DFHack GUI Civilian alert caption: Sound alarm! Citizens run to safety!	拉响警报！平民前往避难！	l
+DFHack GUI Civilian alert caption: All clear! Citizens return to normal	解除警报！平民恢复日常活动	l
+DFHack GUI Civilian alert burrow: Burrow {d}	活动区 {d}	l
+DFHack GUI Civilian alert burrow: Sand Collecting Camp	集沙营地	l
+
+# internal/notify/notifications.lua: complete strange-mood rows and save fields.
+DFHack GUI Notification banner: moody dwarf is claiming a workshop	怪异心境矮人正在占用工坊	l
+DFHack GUI Notification banner: moody dwarf can't find needed workshop!	怪异心境矮人找不到所需工坊！	l
+DFHack GUI Notification banner: moody dwarf is gathering items	怪异心境矮人正在收集材料	l
+DFHack GUI Notification banner: moody dwarf is working	怪异心境矮人正在制作	l
+DFHack GUI Notification banner: moody dwarf can't find needed item!	怪异心境矮人找不到所需材料！	l
+DFHack GUI Notification banner: Last save:	上次保存：	l
+DFHack GUI Notification banner: {d} mins ago	{d} 分钟前	l
+
+# gui/sitemap.lua: complete two-row toolbar hint, separate from its hotkey.
+DFHack GUI Toolbar hint: Open the general search and zoom interface.	打开通用搜索与定位界面。	l

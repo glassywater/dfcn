@@ -1,0 +1,127 @@
+edition	image_identity	owner	function_rva	instruction_rva	encoding	literal_rva	operand_role	source
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x234d63	rip-relative	0x15f7140	finite-text-operand-or-substring	Tabs
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x234dc3	rip-relative	0x1616344	finite-text-operand-or-substring	Video
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x234dcc	rip-relative	0x1616348	finite-text-operand-or-substring	o
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x234e6b	rip-relative	0x1616388	finite-text-operand-or-substring	Audio
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x234e74	rip-relative	0x161638c	finite-text-operand-or-substring	o
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x234ec5	rip-relative	0x1616390	finite-text-operand-or-substring	Game
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x234ed4	rip-relative	0x1616368	finite-text-operand-or-substring	Keybindings
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x234ee3	rip-relative	0x1616378	finite-text-operand-or-substring	Announcements
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x234f56	rip-relative	0x1615490	finite-text-operand-or-substring	Name
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x234fa8	rip-relative	0x16162e4	finite-text-operand-or-substring	Popup
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x234ffa	rip-relative	0x1616324	finite-text-operand-or-substring	Pause
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x23504c	rip-relative	0x1616330	finite-text-operand-or-substring	Recenter
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x23509e	rip-relative	0x1616318	finite-text-operand-or-substring	Adv
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x2350f0	rip-relative	0x161631c	finite-text-operand-or-substring	Fort
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235142	rip-relative	0x161634c	finite-text-operand-or-substring	Report
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x2351ef	rip-relative	0x161633c	finite-text-operand-or-substring	Alert
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x2352d0	rip-relative	0x16162e4	finite-text-operand-or-substring	Popup
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x2352d9	rip-relative	0x16162e8	finite-text-operand-or-substring	p
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235308	rip-relative	0x1616324	finite-text-operand-or-substring	Pause
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235311	rip-relative	0x1616328	finite-text-operand-or-substring	e
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235340	inline-immediate-fragment		finite-short-string-fragment	Recenter
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235373	rip-relative	0x1616318	finite-text-operand-or-substring	Adv
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x23537d	rip-relative	0x161631a	finite-text-operand-or-substring	v
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x2353ac	inline-immediate-fragment		finite-short-string-fragment	Fort
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x2353d8	rip-relative	0x161634c	finite-text-operand-or-substring	Report
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x2353e1	rip-relative	0x1616350	finite-text-operand-or-substring	rt
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235406	rip-relative	0x1616358	finite-text-operand-or-substring	Report (Active)
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235413	rip-relative	0x1616360	finite-text-operand-or-substring	Active)
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x23541c	rip-relative	0x1616364	finite-text-operand-or-substring	ve)
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235427	rip-relative	0x1616366	separator	)
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235456	rip-relative	0x161633c	finite-text-operand-or-substring	Alert
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x23545f	rip-relative	0x1616340	finite-text-operand-or-substring	t
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x2354c3	rip-relative	0x15f7154	finite-text-operand-or-substring	Combat
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x2354cd	rip-relative	0x15f7158	finite-text-operand-or-substring	at
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x23554d	rip-relative	0x178b9e0	numeric-string-layout-vector	!
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x23555d	rip-relative	0x178ba00	numeric-string-layout-vector	%
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x23556d	rip-relative	0x178ba30	numeric-string-layout-vector	)
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x23557d	rip-relative	0x178ba50	numeric-string-layout-vector	-
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x23558d	rip-relative	0x178bc30	numeric-string-layout-vector	o
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x23559d	rip-relative	0x178bc60	numeric-string-layout-vector	s
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x2355ad	rip-relative	0x178bc80	numeric-string-layout-vector	x
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x2355bd	rip-relative	0x178bc90	numeric-string-layout-vector	|
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235623	rip-relative	0x15f7154	finite-text-operand-or-substring	Combat
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x23562c	rip-relative	0x15f7158	finite-text-operand-or-substring	at
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x23566e	rip-relative	0x1616640	finite-text-operand-or-substring	Adventure
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x23567b	rip-relative	0x1616648	finite-text-operand-or-substring	e
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235697	rip-relative	0x178bbe0	numeric-string-layout-vector	@
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x2356a7	rip-relative	0x178bcc0	numeric-string-layout-vector	f
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235813	rip-relative	0x1616640	finite-text-operand-or-substring	Adventure
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235820	rip-relative	0x1616648	finite-text-operand-or-substring	e
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235861	inline-immediate-fragment		finite-short-string-fragment	Fortress
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x23596e	rip-relative	0x161664c	finite-text-operand-or-substring	Other
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235977	rip-relative	0x1616650	finite-text-operand-or-substring	r
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235aa3	rip-relative	0x161664c	finite-text-operand-or-substring	Other
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235aac	rip-relative	0x1616650	finite-text-operand-or-substring	r
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235b13	rip-relative	0x1616600	finite-text-operand-or-substring	Difficulty
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x234ad0	0x235b20	rip-relative	0x1616608	finite-text-operand-or-substring	ty
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x883f40	0x88416b	inline-immediate-fragment		finite-short-string-fragment	Done
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x883f40	0x8841fb	rip-relative	0x1616378	finite-text-operand-or-substring	Announcements
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x883f40	0x884208	rip-relative	0x1616380	finite-text-operand-or-substring	ments
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x883f40	0x884211	rip-relative	0x1616384	finite-text-operand-or-substring	s
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x883f40	0x8843f9	rip-relative	0x16af098	finite-text-operand-or-substring	No recent announcements.
+reference	PE:6a70a6d9:02711000	announcement-log-renderer	0x883f40	0x884403	rip-relative	0x16af0a8	finite-text-operand-or-substring	cements.
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x234cf3	rip-relative	0x15f2134	finite-text-operand-or-substring	Tabs
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x234d53	rip-relative	0x16115e4	finite-text-operand-or-substring	Video
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x234d5c	rip-relative	0x16115e8	finite-text-operand-or-substring	o
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x234dfb	rip-relative	0x16115ec	finite-text-operand-or-substring	Audio
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x234e04	rip-relative	0x16115f0	finite-text-operand-or-substring	o
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x234e55	rip-relative	0x16115d0	finite-text-operand-or-substring	Game
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x234e64	rip-relative	0x16115d8	finite-text-operand-or-substring	Keybindings
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x234e73	rip-relative	0x1611610	finite-text-operand-or-substring	Announcements
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x234ee6	rip-relative	0x1610408	finite-text-operand-or-substring	Name
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x234f38	rip-relative	0x1611278	finite-text-operand-or-substring	Popup
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x234f8a	rip-relative	0x1611280	finite-text-operand-or-substring	Pause
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x234fdc	rip-relative	0x1611268	finite-text-operand-or-substring	Recenter
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x23502e	rip-relative	0x1611274	finite-text-operand-or-substring	Adv
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x235080	rip-relative	0x16115c0	finite-text-operand-or-substring	Fort
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x2350d2	rip-relative	0x16115c8	finite-text-operand-or-substring	Report
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x23517f	rip-relative	0x16115b8	finite-text-operand-or-substring	Alert
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x235260	rip-relative	0x1611278	finite-text-operand-or-substring	Popup
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x235269	rip-relative	0x161127c	finite-text-operand-or-substring	p
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x235298	rip-relative	0x1611280	finite-text-operand-or-substring	Pause
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x2352a1	rip-relative	0x1611284	finite-text-operand-or-substring	e
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x2352d0	inline-immediate-fragment		finite-short-string-fragment	Recenter
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x235303	rip-relative	0x1611274	finite-text-operand-or-substring	Adv
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x23530d	rip-relative	0x1611276	finite-text-operand-or-substring	v
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x23533c	inline-immediate-fragment		finite-short-string-fragment	Fort
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x235368	rip-relative	0x16115c8	finite-text-operand-or-substring	Report
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x235371	rip-relative	0x16115cc	finite-text-operand-or-substring	rt
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x235396	rip-relative	0x16115a8	finite-text-operand-or-substring	Report (Active)
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x2353a3	rip-relative	0x16115b0	finite-text-operand-or-substring	Active)
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x2353ac	rip-relative	0x16115b4	finite-text-operand-or-substring	ve)
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x2353b7	rip-relative	0x16115b6	separator	)
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x2353e6	rip-relative	0x16115b8	finite-text-operand-or-substring	Alert
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x2353ef	rip-relative	0x16115bc	finite-text-operand-or-substring	t
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x235453	rip-relative	0x15f20d8	finite-text-operand-or-substring	Combat
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x23545d	rip-relative	0x15f20dc	finite-text-operand-or-substring	at
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x2354dd	rip-relative	0x17862e0	numeric-string-layout-vector	!
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x2354ed	rip-relative	0x1786300	numeric-string-layout-vector	%
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x2354fd	rip-relative	0x1786330	numeric-string-layout-vector	)
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x23550d	rip-relative	0x1786350	numeric-string-layout-vector	-
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x23551d	rip-relative	0x1786530	numeric-string-layout-vector	o
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x23552d	rip-relative	0x1786560	numeric-string-layout-vector	s
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x23553d	rip-relative	0x1786580	numeric-string-layout-vector	x
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x23554d	rip-relative	0x1786590	numeric-string-layout-vector	|
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x2355b3	rip-relative	0x15f20d8	finite-text-operand-or-substring	Combat
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x2355bc	rip-relative	0x15f20dc	finite-text-operand-or-substring	at
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x2355fe	rip-relative	0x1611620	finite-text-operand-or-substring	Adventure
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x23560b	rip-relative	0x1611628	finite-text-operand-or-substring	e
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x235627	rip-relative	0x17864e0	numeric-string-layout-vector	@
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x235637	rip-relative	0x17865c0	numeric-string-layout-vector	f
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x2357a3	rip-relative	0x1611620	finite-text-operand-or-substring	Adventure
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x2357b0	rip-relative	0x1611628	finite-text-operand-or-substring	e
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x2357f1	inline-immediate-fragment		finite-short-string-fragment	Fortress
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x2358fe	rip-relative	0x16115f4	finite-text-operand-or-substring	Other
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x235907	rip-relative	0x16115f8	finite-text-operand-or-substring	r
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x235a33	rip-relative	0x16115f4	finite-text-operand-or-substring	Other
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x235a3c	rip-relative	0x16115f8	finite-text-operand-or-substring	r
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x235aa3	rip-relative	0x1611600	finite-text-operand-or-substring	Difficulty
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x234a60	0x235ab0	rip-relative	0x1611608	finite-text-operand-or-substring	ty
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x8817c0	0x8819eb	inline-immediate-fragment		finite-short-string-fragment	Done
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x8817c0	0x881a7b	rip-relative	0x1611610	finite-text-operand-or-substring	Announcements
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x8817c0	0x881a88	rip-relative	0x1611618	finite-text-operand-or-substring	ments
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x8817c0	0x881a91	rip-relative	0x161161c	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x8817c0	0x881c79	rip-relative	0x16a9e60	finite-text-operand-or-substring	No recent announcements.
+classic	PE:6a70b91c:0270a000	announcement-log-renderer	0x8817c0	0x881c83	rip-relative	0x16a9e70	finite-text-operand-or-substring	cements.

@@ -1,0 +1,5 @@
+edition	image	owner	start_rva	end_rva
+reference	PE:6a70a6d9:02711000	conversation-renderer	0x867e10	0x86ddac
+reference	PE:6a70a6d9:02711000	portrait-unit-reference	0x1331500	0x1333724
+classic	PE:6a70b91c:0270a000	conversation-renderer	0x865690	0x86b62c
+classic	PE:6a70b91c:0270a000	portrait-unit-reference	0x132c470	0x132e694

@@ -1,0 +1,35 @@
+Source: configured Steam PE:6a70a6d9:02711000 and classic PE:6a70b91c:0270a000.
+Full instruction bodies and literal/call operands accompany this reconstruction.
+
+Compact Announcements/Done renderer:
+  Steam RVA 883f40..884458; classic RVA 8817c0..881cd8.
+  This modal owns a vector<adv_announcementst*> at this+8..this+10.
+  Each entry owns a native string at +0 and its parent report pointer at +20.
+  Steam 8842c2..8842e9 obtains the text color from parent+28/+2a.
+  Steam 8842f0..884310 passes entry.str to addst when its length at +10 is
+  nonzero; otherwise it passes parent.report.text at parent+8.
+  Steam 884315..884321 advances exactly one screen row for each vector entry.
+  The scroll position is this+24. It selects vector entries, not independent
+  semantic announcement sentences. Wrapped entries retain their parent.
+
+Finite renderer text branches:
+  Announcements: always rendered title, Steam 8841fb..88422d.
+  Done: always rendered button, Steam 88416b..884184 (inline immediate).
+  No recent announcements.: only when this.entries is empty,
+    Steam 8843b0..884422.
+
+Translation consequence:
+  A successfully translated physical first row does not prove the parent
+  record has ended. The renderer entry supplies the current owner; its vector
+  gives every native wrap entry's parent and complete report::text. Keep this
+  borrowed owner within the draw epoch, then match the actual string draw
+  addresses and project the complete translation through the visible rows.
+  Scrolled tails and clipped final lines retain the same complete parent.
+  Where direct ownership is unavailable, compose only rows that reproduce a
+  captured/history parent record exactly, before attempting translation.
+  Prefix-only candidates do not authorize consuming neighbouring entries.
+  The per-constructor grammar then resolves the complete typed fields.
+
+The other title owner (Steam 234ad0, classic 234a60) is the settings tab
+constructor. Its full assembly is retained to distinguish title references;
+it does not own this compact log or its announcement texts.

@@ -149,8 +149,11 @@ bool Overlay::append_legends_typed_list_matches(std::vector<std::string> &rows,
     std::vector<NativeLegendsBookField> captures;
     {
         std::lock_guard<std::mutex> lock(g_legends_book_mutex);
-        if (!structures && !ages &&
-                g_legends_book_epoch == g_embark_item_capture_epoch.load(std::memory_order_acquire))
+        // A retained native grid can be presented again after Present has
+        // advanced the capture epoch, without redrawing the list. Keep its
+        // last title/type batch: the exact surviving bytes below must still
+        // agree with the composed row, and a new native draw replaces it.
+        if (!structures && !ages)
             captures = g_legends_book_fields;
     }
     const auto clipped = captured_clipped_captions();
@@ -219,10 +222,14 @@ bool Overlay::append_legends_typed_list_matches(std::vector<std::string> &rows,
                 return std::nullopt;
             }
             if (structures) return translate_legends_structure_type(source);
-            // Captions share the full noun grammar with item descriptions:
-            // depicted subjects, sizes and material compounds stay together.
-            // Its atomic fallback uses translate_legends_item, not vice versa.
-            return translate_item_description_term(source);
+            // The native item formatter can emit a named artifact in place
+            // of its material/type description. Resolve ordinary complete
+            // nouns first, then the complete generated identity/name; never
+            // let one word from that right-hand field claim a book title.
+            if (auto item = translate_item_description_term(source)) return item;
+            if (split_generated_name_identity(source) || split_repeated_title_identity(source))
+                return translate_legends_artifact_identity(source);
+            return translate_legends_name(source, false);
         };
         bool captured_row = false;
         for (const auto &name : captures) {
@@ -293,7 +300,10 @@ bool Overlay::append_legends_typed_list_matches(std::vector<std::string> &rows,
         // rather than mixing Chinese fragments with English glyphs and dots.
         const bool named_identity = (artifacts || structures) &&
             (split_generated_name_identity(full_name) || split_repeated_title_identity(full_name));
-        if (!type_target && !type.ends_with("...") && !named_identity) continue;
+        const bool named_type = !ages && !structures &&
+            (split_generated_name_identity(full_type) || split_repeated_title_identity(full_type) ||
+             (!full_type.ends_with("...") && generated_title_shape(full_type)));
+        if (!type_target && !type.ends_with("...") && !named_identity && !named_type) continue;
         claim(left, name, kLegendsListNameRule,
             title_translation(full_name).value_or(cp437_to_utf8(full_name)));
         claim(gap_right, type, kLegendsListTypeRule,

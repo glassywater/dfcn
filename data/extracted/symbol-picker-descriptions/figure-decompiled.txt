@@ -1,0 +1,381 @@
+DF 53.16 native symbol-picker historical-figure description
+==========================================================
+
+This is a static reconstruction from the two native Windows PE images named
+in data/runtime/native-pe-images.json. The adjacent assembly and source tables
+are extracted executable source material. No game process was opened, no
+desktop interaction occurred, and no generated sample paragraphs were run.
+
+Reader: tools/native_caption_image.py / NativePE, fixed native objdump.exe at
+C:/Users/WIN11/AppData/Local/Programs/dfcn-toolchains/w64devkit-2.9.1/w64devkit/bin.
+Fixed Python supplied with this workspace was used only to read/extract data.
+The optional pefile/capstone modules are absent; this existing reader does not
+need them. No dependency installation or alternative toolchain was used.
+
+Reference identity: PE:6a70a6d9:02711000.
+Classic identity:   PE:6a70b91c:0270a000.
+
+Actual picker call chain
+------------------------
+
+render: reference 0x140200070..0x1402094c4;
+        classic   0x140200000..0x140209454.
+description dispatch: reference 0x1402126d0..0x14021341c;
+                      classic   0x140212660..0x1402133ac.
+The render calls this dispatch at multiple category/layout branches. Its
+historical-figure render paths include reference call sites 0x140201511 and
+0x140205145. Dispatch switches on pane[+0x28]. Figure options 1 and 8 resolve
+the hovered index pane[+0x444] through vectors pane[+0x158] or pane[+0x2e0].
+
+At 0x1402127c3 it constructs the default formatting context (0x140072080).
+At 0x1402127cd it takes the selected historical figure's id from [+0xe0].
+At 0x1402127ed it invokes the full historical-figure description producer:
+  history = 0x1424f9cb8
+  output  = the initially empty local std::string at [rbp+0x40]
+  figure  = the actual selected figure pointer
+  id      = figure[+0xe0]
+  context = the default context
+At 0x140212800 it sends the complete string to 0x1408e7310 for native wrapping
+into pane[+0x428], using pane[+0x440] as available width. Render draws those
+wrapped rows in yellow (0x6). This is a paragraph, not independent creature,
+pronoun, or name labels.
+
+Classic producer call is 0x14021277d, wrap call 0x140212790 -> 0x1408e4b80.
+The same producer's other direct caller is the Legends description builder:
+reference 0x140b8f0bf, classic 0x140b8c0ff. figure-callers.tsv records both
+direct callers, preserving separate picker and Legends ownership.
+
+Producer boundaries and tense
+-----------------------------
+
+reference entry / unwind range: 0x140c2b870..0x140c2ced3.
+classic entry / unwind range:   0x140c288b0..0x140c29f13.
+Equivalent main-producer instructions are reference minus 0x2fc0. This does
+not apply to unrelated functions or read-only-data addresses.
+Return at reference 0x140c2cea5 is followed by embedded jump tables; objdump's
+subsequent data disassembly is not an additional text-producing branch.
+
+Figure fields used by the prose:
+  +02 race, +04 caste, +06 sex, +10 birth year, +38 language_name,
+  +aa has_name, +c8/+d0 byte flags, +e0 id, +118 links, +130 information.
+Information +48 is the curse/animation descriptor, and information +00 holds
+the sphere vector. Its values are output in reverse vector order.
+
+The producer tests global mode 0x14189c298 against 3 for every tense-sensitive
+clause. Mode 3 uses was, past depictions and the hearsay/myth qualifiers;
+other modes use is, current depictions and the present deity/force wording.
+The screenshot's is + first-of-kind wording is the current branch of this
+same complete producer, not a different hard-coded goblin description.
+
+Complete text-producing branches
+--------------------------------
+
+1. Subject (0x140c2b9af..0x140c2b9ed)
+   Named figures use historical-figure formatter 0x140b92f10 with default
+   context and suppressed extra species noun. Nameless figures use the exact
+   literal "This nameless being". Append " is " or " was ".
+
+2. Force identity (0x140c2ba1f..0x140c2bb3e)
+   When figure flag bit 3 is set and deity bit 2 is not set:
+     subject + is/was + "a force"
+   Resolve region through 0x1405c3760 using the figure id. A known region adds:
+     current: " which permeates " + formatted region language name
+     past:    " which was said to permeate " + that same name.
+   Unknown region has no suffix. Then append ".  ".
+
+3. Deity identity (0x140c2bb43..0x140c2bc63)
+   Figure flag bit 2 has priority over bit 3 and animation identity:
+     subject + is/was + "a deity"
+   Iterate entities and find the first entity whose [+0xfc8] vector contains
+   this figure id. A known entity adds:
+     current: " of " + entity language name at [+0x20]
+     past:    " that occurs in the myths of " + that same name.
+   No matching entity means no entity suffix. Then append ".  ".
+
+4. Animated identity (0x140c2bc68..0x140c2bd62)
+   Selected only when neither deity nor force applies. Information+48 must
+   exist and its [+0x144] animation discriminator must not be -1.
+   Take its [+0x150] stored identity label. If its [+0x140] original-figure id
+   does not resolve, prefix "a "; if it resolves, append the stored label
+   directly. In either case add ", animated by unknown forces" + ".  ".
+   The label can be a generated personal identity or a complete raw noun,
+   status, caste, or supernatural identity; it is not always a person name.
+
+5. Ordinary identity and birth (0x140c2bd67..0x140c2be4d)
+   Append "a ". Add "ghostly " only when figure flag bit 7 is set and there
+   is no active named curse descriptor [+0x88]. Append caste/race singular
+   through 0x140b94ed0 -> 0x140aa3bd0. Invalid race uses "creature".
+   Active named curse adds a space plus its stored [+0x90] label.
+   If birth year >=1, add " born in " + numeric birth year (0x140b92640 with
+   tick=-1), then ".  " and the parentage branches below.
+   If birth year <1, no birth clause is emitted here. Continue with the four
+   initial/rare-individual branches below, unless the raw's flag bit 8 is set.
+   The date helper's seasonal and "a time before time" branches are retained
+   in its source assembly but cannot be selected by this caller's year/tick.
+
+6. Parentage (0x140c2be52..0x140c2c4d0)
+   Find the first links with virtual type 0 (mother) and 1 (father), taking
+   each target id from link[+8]. Subject pronouns use sex 1 -> He, 0 -> She,
+   otherwise It; possessives use his/her/its.
+   No parent ids emits: "He/She/It is/was of unknown parentage" + ".  ".
+   Resolve both parent ids against the historical-figure vector. If neither
+   resolves, raw flags 67,68,69 together permit that same unknown-parentage
+   sentence; otherwise this parentage clause is omitted.
+   With a known parent, ask 0x140bb2f30 for the child's relative rank; the
+   caller accepts relation enum 6..44 and uses "child" for other results.
+   Emit: He/She/It + " is/was the " + rank + " of " + known parent(s).
+   Both known parents are output mother then father, joined by " and ".
+   The rank helper's actual 39 labels are in figure-enumerated-text.tsv:
+     son:      eldest, second through tenth eldest, son, youngest, only
+     daughter: eldest, second through tenth eldest, daughter, only, youngest
+     child:    eldest, second through tenth eldest, child, youngest, only.
+   Helper enum order differs for only/youngest daughter; the extracted table
+   preserves each actual enum instead of inferring it from English order.
+   One known parent, raw flags 67,68,69 and the missing counterpart adds:
+     ".  The identity of " + his/her/its + " mother/father has been lost to time".
+   This sentence has no tense-dependent alternative. Append final ".  ".
+
+7. Initial / rare individuals (0x140c2c4d5..0x140c2c5e9)
+   Applicable only to ordinary figures born before year 1 whose race does not
+   have raw flag bit 8. The beginning of the function counts same-race figures
+   in history[+0x60]: same total = ebx, birth-year>=1 total = edi.
+   Append He/She/It + is/was + exactly one of:
+     edi>0 and ebx-edi<=1: " the first of " + possessive + " kind"
+     edi>0 and ebx-edi>1:  " one of the first of " + possessive + " kind"
+     edi==0 and ebx<=1:    " the only one of " + possessive + " kind"
+     edi==0 and ebx>1:     " one of the only ones of " + possessive + " kind".
+   End with ".  ". This is 4 predicates x 3 paired pronouns x 2 tenses,
+   including the exact screenshot sentence.
+
+8. Destiny (0x140c2bf48..0x140c2c663)
+   Lookup the figure's nemesis record through 0x140dde080. Require its flag
+   bit 2. In mode 3 first append:
+     "Although accounts vary, it is universally agreed that "
+   Append the figure identity again, is/was, and exactly one predicate:
+     nemesis bit 10: "chosen by fate as the vanguard of destiny.  "
+     else bit 9:    "possessed of an unusual destiny.  "
+     otherwise:     "guided by forces unknown.  ".
+   No eligible nemesis means no destiny sentence. This may follow any identity
+   branch; it is not restricted to the initial/rare-individual paragraph.
+
+9. Deity form (0x140c2c669..0x140c2ca39)
+   Only figure flag bit 2. Repeat the figure identity and append:
+     current: " most often takes the form of a "
+     past:    " was most often depicted as a ".
+   Optional prefixes occur in exactly this native order, independently:
+     flag bit 4 -> "skeletal ", bit 5 -> "rotting ", bit 7 -> "ghostly ".
+   Resolve caste singular [+0x20] and fall back to race singular [+0x20].
+   Raw flag bit 66 and a caste name that is empty or identical to the race
+   noun permits sex 0 -> "female ", sex 1 -> "male ", other -> no sex prefix.
+   These prefix and caste combinations are grammar, not a finite race list.
+   Keep this sentence open for optional sphere association below.
+
+10. Generated raw description (0x140c2ca3e..0x140c2ccee)
+    For a non-deity, valid race+caste and any caste flag bit 132,134,143,131,
+    append the complete caste DESCRIPTION string at [+0x220], then "  ".
+    This covers procedurally generated creature and supernatural descriptions,
+    rather than another biography literal. The string content is raw data and
+    follows the existing complete physical-description grammar.
+
+11. Sphere association (0x140c2ccee..0x140c2ce83)
+    Nonempty information[+0x00] sphere vector:
+      after a deity form: " and" + is/was + "associated with " + domains
+      otherwise: repeat identity + is/was + "associated with " + domains.
+    Iterate domain ids last-to-first. Use ", " between the earlier values and
+    " and " before the last value. Each uses 0x140756500, which optionally
+    prefixes "the " and delegates to 0x140756690 for enum values 0..129.
+    figure-enumerated-text.tsv preserves all 130 complete displayed domain
+    noun forms per image, including those article choices and addresses.
+    Invalid sphere enum assigns no label. The data table is a source enum
+    inventory, not a list of hypothetical generated biographies.
+    Close the deity form / association sentence with ".  ". With no domains,
+    still close an open deity-form sentence. No domains and no deity form
+    means no additional text.
+
+Dynamic name and raw fields
+---------------------------
+
+figure-helper-functions.tsv maps each reference/classic helper entry. Their
+complete assemblies and RIP-literal sources accompany the main producer:
+  historical-figure identities 0x140b92f10 / 0x140b8ff50
+  language names              0x140a946e0 / 0x140a91760
+  caste/race noun              0x140aa3bd0 / 0x140aa0c50
+  creature noun wrapper        0x140b94ed0 / 0x140b91f10
+  date                        0x140b92640 / 0x140b8f680
+  subject pronoun             0x140aa4730 / 0x140aa17b0
+  possessive pronoun          0x140aa4850 / 0x140aa18d0
+  child-rank label            0x14075a580 / 0x140757fa0
+  child-order discriminator   0x140bb2f30 / 0x140baff70
+  domain + article            0x140756500 / 0x140753f20
+  domain noun                 0x140756690 / 0x1407540b0.
+
+Both identity contexts passed from this picker are default contexts, excluding
+interrogation-only/interrogator/self-reference/link-markup cases. The full
+helper assemblies retain those other caller branches without classifying them
+as picker prose. Native names retain first/nickname/language word fields; raw
+race/caste and curse labels are dynamic data, not extra hard-coded sentences.
+No flattening of those fields into screenshot-specific person/race lists is
+needed to represent all possible descriptions.
+
+Existing full-paragraph translation consumers
+---------------------------------------------
+
+The symbol footer pipeline in src/dfcn.cpp calls the complete paragraph entry
+translate_symbol_picker_description in src/symbol_picker_descriptions.inc.
+That entry prioritizes exact_literal_translation, an item paragraph whose
+opening noun resolves as a whole, translate_instrument_description for the
+complete RAW field, translate_symbol_description_source for image prose, and
+translate_legends_text(source, false, false). It then handles the finite native
+site/entity descriptions through scoped templates and shared typed fields.
+The historical description grammar is the h namespace, separate
+from word matching. The latter consumes every source clause and requires the
+whole paragraph to resolve; individual translated goblin/pronoun words do not
+represent successful paragraph translation.
+
+The existing data/runtime/local-overrides.tsv biography entries include:
+  identity/deity/force current and past: approximately lines 7338..7393
+  first-of-kind / one-of-first: 7527..7532 and 7813..7818
+  numeric birth: 7716..7728
+  two-parent rank templates + 39 rank terms: 7736..7779
+  nameless/deity form + domains/force hearsay: 7792..7810
+  one-parent/unknown/lost parent: 7832..7846
+  animated identities: 7850..7865
+  all three destiny predicates + past qualifier: 7869..7881.
+The rows around 7527 and 7389 cover all remaining initial/rare combinations.
+Generic named creature clauses also handle a deity or force without a known
+entity/region, using the scoped creature/deity/force vocabulary.
+
+translate_legends_actor handles the nameless literal, generated names, native
+nicknames and typed creature identities. translate_legends_term and its htv
+description grammar resolve skeletal/rotting/ghostly and gender/caste forms;
+the existing creature and raw-description vocabularies own dynamic species.
+translate_deity_spheres strips native "the " per element and uses the existing
+sphere namespace, keeping every listed domain and its order.
+
+Manual source reading did not expose a finite biography production requiring
+a new dictionary entry. The screenshot's whole current biography, including
+"She is one of the first of her kind.", already has the full relevant grammar.
+The renderer's footer-region ownership must deliver the complete source to
+that grammar; a tail FPS row outside the pane is not the hovered biography.
+This source reconstruction does not claim an observed final game display.
+
+Final source-to-consumer correspondence
+--------------------------------------
+
+The following correspondence is from the actual instruction/literal sources
+above and manual reading of the final source. It records translation ownership,
+not executed paragraphs, assertions, a test result or a game-display observation.
+Addresses below are reference VAs; paired classic addresses remain in the
+adjacent extracted source files. TSV line references identify the current
+source rows, not a promise that later edits cannot move them.
+
+Entry and typed captures:
+  src/symbol_picker_descriptions.inc:4 dispatches the complete original footer;
+  its biography handoff is translate_legends_text(source, false, false).
+  src/legends_detail.inc:900 owns that complete h-namespace paragraph. Capture
+  dispatch at :971/:972/:1012/:1018 sends actual figure, place, descriptor and
+  sphere fields respectively to translate_legends_actor, translate_legends_name,
+  translate_legends_term and translate_deity_spheres. The paragraph fails as a
+  whole if a source clause remains unconsumed; it does not declare individual
+  translated words a successful biography.
+
+  0x140c2b9af..0x140c2b9ed, named/nameless subject:
+    The literal "This nameless being" is local-overrides.tsv:7802. The explicit
+    special case in src/legends_detail.inc:769 translate_legends_actor resolves
+    it inside {n}; native personal names and authored nicknames use that same
+    actor's typed name path. No placeholder name is invented for this branch.
+
+  0x140c2ba1f..0x140c2bb3e, force:
+    "a force" without a region is the ordinary {n} is/was a {s}. production,
+    with the typed creature-kind term force in src/creature_vocabulary.inc:65.
+    Known region current "which permeates" has full rules at
+    local-overrides.tsv:7384..7387. Actual past "which was said to permeate"
+    has separate full rules at :7811..7812. Region remains a {p} name field.
+
+  0x140c2bb43..0x140c2bc63, deity identity:
+    Bare "a deity" uses the same ordinary identity templates and the typed
+    deity kind (src/creature_vocabulary.inc:38). Current "a deity of" is
+    local-overrides.tsv:7379..7380; past "a deity that occurs in the myths of"
+    is :7356..7357. Those latter native strings have a separate punctuation
+    append; the h namespace also has the complete "." literal, so the full
+    sentence and its next clause remain consumable.
+
+  0x140c2bc68..0x140c2bd62, animation:
+    Actual suffix ", animated by unknown forces" is owned by
+    local-overrides.tsv:7860..7875. These include is/was, both article-bearing
+    {s} and article-free {s}, and the separate {n} animated identity. The
+    original-figure-id discriminator therefore does not force every stored
+    +150 label through a personal-name parser. Typed species/status labels
+    reuse src/creature_descriptors.inc:36 and the shared generated vocabulary.
+
+  0x140c2bd67..0x140c2be4d, ordinary identity and numeric birth:
+    {n} is/was a/an {s}. is local-overrides.tsv:7351..7354 and :7370..7373.
+    The caller's year>=1, tick=-1 "born in" fields are the numeric productions
+    at :7726..7729 and :7735..7738. "ghostly" and an active named curse are
+    part of the complete {s}; shared species grammar consumes resurrection
+    prefixes, caste names and species+display-name/status suffixes. The
+    invalid-race noun "creature" has a typed kind (:33), not a guessed name.
+    The helper's other time formats cannot be selected by this call.
+
+  0x140c2be52..0x140c2c4d0, parentage:
+    All 39 labels actually selected from relation enum 6..44 are present as
+    h terms, local-overrides.tsv:7754..7789 plus :7804..7806 for bare
+    child/son/daughter. Mother then father, their exact " and " connector,
+    and all He/She/It x is/was combinations use the two-parent productions
+    :7746..7751. The one-known-parent productions are :7842..7847. The six
+    "of unknown parentage" sentences are :7848..7853. The three possessive
+    "The identity of ... has been lost to time" templates are :7854..7856,
+    with mother/father scoped nouns at :7562..7563. Native omitted-parentage
+    cases emit no clause; they are not missing visible text.
+
+  0x140c2c4d5..0x140c2c5e9, initial/rare individuals:
+    The four exact predicates are "the first of", "one of the first of",
+    "the only one of" and "one of the only ones of". Every paired sex pronoun
+    and every tense is represented: :7823..7828, :7537..7542,
+    :7364..7369 and :7398..7403. This is the native 24-sentence finite family,
+    including "She is one of the first of her kind." at :7541.
+
+  0x140c2bf48..0x140c2c663, destiny:
+    All three actual stems, "chosen by fate as the vanguard of destiny",
+    "possessed of an unusual destiny" and "guided by forces unknown", have
+    complete named/nameless is/was rules at :7879..7890. The mode-3 qualifier
+    "Although accounts vary, it is universally agreed that" is its own h
+    literal at :7891, followed by the same typed full destiny clause.
+
+  0x140c2c669..0x140c2ca39, deity form:
+    Current "most often takes the form of a" with/without associated spheres
+    is :7388..7391; actual past "was most often depicted as a" full variants
+    are :7815..7817 (also :7361..7363 for linked clause boundaries). The
+    skeletal/rotting/ghostly prefixes are independent recursive
+    creature-status rows in data/runtime/legends-creature-descriptions.tsv.
+    src/legends_detail.inc:450 recursively consumes the complete form before
+    :393 handles female/male+species. All three native prefix flags therefore
+    retain their order and can coexist; no species-by-species list is needed.
+
+  0x140c2ccee..0x140c2ce83, sphere association:
+    Independent is/was associated-with clauses and the joined form clauses
+    are local-overrides.tsv:7358..7360, :7392..7394, :7388..7389 and
+    :7815..7816. All 130 actual labels in figure-enumerated-text.tsv have
+    their sphere senses at :1746..1875, flags r. src/dfcn.cpp:11680 handles
+    native "the" labels and complete comma/and list separators, preserving
+    the actual reverse-vector order. These noun senses do not use global
+    homonymous UI labels or phonetic proper-name fallback.
+
+  0x140c2ca3e..0x140c2ccee, appended caste DESCRIPTION:
+    This branch copies a complete +220 string; it creates no new fixed
+    English sentence in the biography producer. Static whole RAW descriptions
+    go through existing full literals; generated physical/behavior paragraphs
+    use data/runtime/legends-creature-descriptions.tsv (complete clause,
+    recursive description, color, anatomy and origin fields). The fallback
+    at src/legends_detail.inc:1081 consumes complete original sentences through
+    exact literals or the existing compositor. The byte string is never
+    interpreted as a person's name and an unsupported sentence cannot erase
+    the remaining source or silently count as a complete translation.
+
+No additional finite, text-producing branch in this biography producer was
+identified without a corresponding complete rule and typed capture consumer.
+The finite-branch finding is about this extracted native producer. Runtime
+names, custom RAW labels and stored DESCRIPTION contents are separate data
+fields; merely forwarding those fields does not prove translation of arbitrary
+new user-added English. This distinction does not remove any emitted field
+from the footer's complete-source translation path.

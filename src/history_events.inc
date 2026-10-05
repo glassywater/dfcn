@@ -186,6 +186,13 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
                 if (!name || !suffix) return std::nullopt;
                 if (!suffix->empty()) *name += "·" + *suffix;
             }
+        } else if (kind == NativeHistoryObjectKind::Building && found->native_type == 6 &&
+                found->label_key.empty() && (!prefer_name || !found->name.has_name)) {
+            // b94387..b943b5 prints no type for an unsupported dungeon
+            // subtype. Preserve that intentional empty field in every
+            // building reference, while named-mode references can still
+            // render a stored language name.
+            name.emplace();
         } else if (!found->label_key.empty() && (kind == NativeHistoryObjectKind::Artifact || !prefer_name ||
                 (!found->name.has_name && found->raw_title.empty()))) {
             const auto translated = apply(found->label_key, {});
@@ -201,7 +208,8 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             // entities have label_key and use the reviewed label above;
             // failures to translate an actual name still reject the record.
             name.emplace();
-        } else name = translate_history_name(found->name);
+        } else name = translate_history_name(found->name,
+            kind == NativeHistoryObjectKind::Figure || kind == NativeHistoryObjectKind::Identity);
         if (!name) {
             failure_detail = "subject-name-untranslated; kind=" + std::to_string(static_cast<int>(kind)) +
                 "; id=" + std::to_string(id) + "; subid=" + std::to_string(subid);
@@ -222,7 +230,9 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             const auto &token = document.tokens[index];
             if ((token.link_type == link_type ||
                     (kind == NativeHistoryObjectKind::Artifact && token.link_type == 3)) &&
-                token.link_id == id && (subid < 0 || token.link_subid == subid)) {
+                token.link_id == id &&
+                (kind == NativeHistoryObjectKind::Building ? token.link_subid == subid :
+                    (subid < 0 || token.link_subid == subid))) {
                 color = token.color;
                 last = index + 1;
                 native_link_type = token.link_type;
@@ -454,6 +464,10 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
     };
     (void)story;
 #include "history_semantics_collections.inc"
+    if (event.fields.contains("conversation_collection")) {
+        const auto title = collection_title(number("conversation_collection"));
+        return title ? apply("Conversation event collection: {s}", {*title}) : std::nullopt;
+    }
     if (event.fields.contains("overview_collection")) {
         const auto title = collection_title(number("overview_collection"));
         return title ? apply("Native overview collection memory {s}", {*title}) : std::nullopt;

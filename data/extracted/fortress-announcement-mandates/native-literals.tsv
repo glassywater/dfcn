@@ -1,0 +1,835 @@
+edition	image_identity	constructor	function_start	function_end	instruction	operand_kind	operand_address	text
+reference	PE:6a70a6d9:02711000	demand-change	0x14134ac10	0x14134bb1c	0x14134ad01	cstring	0x141782568	 has forgotten a demand.
+reference	PE:6a70a6d9:02711000	demand-change	0x14134ac10	0x14134bb1c	0x14134b8c6	cstring	0x1417825d8	 has a new demand.
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e39b38	printable-immediate		gfff
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e39bac	printable-immediate		gfff
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3a003	cstring	0x1415ed9bc	The 
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3a03b	cstring	0x14172efa0	 has been missing for a week.
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3b691	cstring	0x14172efc0	Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense. 
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3b731	cstring	0x14172f038	What are a few pesky demons after all?
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3b74a	cstring	0x14172f228	The gods surely want you to dig deeper still!
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3b753	cstring	0x14172f258	And why shouldn't you dig deeper still?!
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3b82b	cstring	0x14172f288	 is satisfied with their position here. 
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3b871	cstring	0x14172f2b8	Everything is properly royal, properly furnished.  And yet? 
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3b884	cstring	0x14172f110	A true Mountainhome must have a true throne! 
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3b897	cstring	0x14172f140	And a true ruler requires seven symbols, symbols not of this world. Mere steel will not suffice. 
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3b921	cstring	0x14172f1b0	This legend does not end until we've chipped out the last treasures of the underworld!
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3b92a	cstring	0x14172f208	Deeper. We must dig deeper.
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3b933	cstring	0x14172dfb0	Congratulations!  (You should be proud of your accomplishment.  Embark in a world with the deepest cavern layers for further challenges.)
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3ba6c	cstring	0x14172e040	Your fortress is out of food!
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3ba96	cstring	0x14172e060	  Consider placing a farmplot on some underground soil and planting seeds.
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3ba9f	cstring	0x14172e0b0	  Are your farmplots working?  Make sure you are planting edible plants.
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3bac1	cstring	0x14172dee0	  Try building a butcher's shop and slaughtering some livestock.
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3baca	cstring	0x14172df28	  Do you have any livestock to slaughter?
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3bad6	cstring	0x14172df58	  Perhaps you can gather plants, fruit, or go fishing.
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3c5cd	cstring	0x14172df90	 has ended a mandate.
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3c7a6	cstring	0x14172e1c0	A mandate has ended.
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3eb3c	printable-immediate		0u
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3ed04	printable-immediate		0u
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3ef0e	printable-immediate		0u
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3f1a1	printable-immediate		0u
+reference	PE:6a70a6d9:02711000	mandate-cancel	0x140e39910	0x140e3fde8	0x140e3f4ac	printable-immediate		0u
+reference	PE:6a70a6d9:02711000	mandate-create	0x14134de20	0x14134eb2e	0x14134e751	cstring	0x141782428	 has mandated the construction of certain goods.
+reference	PE:6a70a6d9:02711000	mandate-create	0x14134de20	0x14134eb2e	0x14134e760	cstring	0x1417825b0	 has imposed a ban on certain exports.
+reference	PE:6a70a6d9:02711000	mandate-create	0x14134de20	0x14134eb2e	0x14134e9a0	cstring	0x141782400	 has altered the prices of goods.
+reference	PE:6a70a6d9:02711000	mandate-expire	0x1413b2a30	0x1413b2c1f	0x1413b2b09	cstring	0x141784e90	's mandate has ended.
+reference	PE:6a70a6d9:02711000	mandate-expire	0x1413b2a30	0x1413b2c1f	0x1413b2b29	cstring	0x141784ed0	's mandates have ended.
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58e06	cstring	0x1416d4e80	<reason>
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58e28	cstring	0x1415ee160	insurrection
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58e34	cstring	0x141675878	adventure
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58e40	cstring	0x141602d8c	guide
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58e4c	cstring	0x1416d4e30	rescued
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58e58	cstring	0x1416d4e18	sphere alignment
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58e64	cstring	0x1416d4e60	maintain balance in universe
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58e70	cstring	0x1416d4e38	highlight boundaries between worlds
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58e7c	cstring	0x1416d4db8	sow the seeds of chaos in the world
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58e88	cstring	0x1416d4d90	provide opportunities for courage
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58e94	cstring	0x1416d4df8	bring death to the world
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58ea0	cstring	0x1416d4de0	liked appearance
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58eac	cstring	0x1416d4d50	because it was destined
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58eb8	cstring	0x1416d4d28	great fortresses built and tested
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58ec4	cstring	0x1416d4d84	whim
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58ed0	cstring	0x1416d4d68	bring misery to the world
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58edc	cstring	0x1416d4cc8	bring murder to the world
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58ee8	cstring	0x1416d4ca8	bring nightmares into reality
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58ef4	cstring	0x1416d4d08	bring thralldom to the world
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58f00	cstring	0x1416d4ce8	bring torture to the world
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58f0c	cstring	0x1416d4c58	provide opportunities for acts of valor
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58f18	cstring	0x1416d4c40	bring war to the world
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58f24	cstring	0x1416d4c98	find relative
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58f30	cstring	0x1416d4c80	offer condolences
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58f3c	cstring	0x1416d4c00	be brought to safety
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58f48	cstring	0x1416d4be8	help with rescue
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58f54	cstring	0x1416d4c28	insufficient work
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58f60	cstring	0x1416d4c18	work request
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58f6c	cstring	0x1416d4bb8	make weapon
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58f78	cstring	0x1416d4ba8	vent at priest
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58f84	cstring	0x1416d4bd8	cry on priest
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58f90	cstring	0x1416d4bc8	vent at boss
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58f9c	cstring	0x1416d4b58	cry on boss
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58fa8	cstring	0x1416d4b38	should have reached goal
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58fb4	cstring	0x1416d4b80	insufficient progress toward goal
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58fc0	cstring	0x1416d4b68	going wrong direction
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58fcc	cstring	0x1416d5428	arrived at location
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58fd8	cstring	0x1416d5410	entity no longer rules
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58fe4	cstring	0x1416d5458	left site
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58ff0	cstring	0x1416d5440	reunited with loved one
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b58ffc	cstring	0x1416d53c8	violent disagreement
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59008	cstring	0x1416d53c0	adopted
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59014	cstring	0x1416d53f8	true name invocation
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59020	cstring	0x1416d53e0	arrived at person
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5902c	cstring	0x1416d5380	eradicate beasts
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59038	cstring	0x1416d5368	entertain people
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59044	cstring	0x1416d53a0	make a living as a warrior
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59050	cstring	0x1416d5394	study
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5905c	cstring	0x1415ee134	flight
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59068	cstring	0x1416d5328	exiled after conviction
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59074	cstring	0x1416a1350	scholarship
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59080	cstring	0x1416d5318	be with master
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5908c	cstring	0x1416d5358	become citizen
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59098	cstring	0x1416d5340	prefers working alone
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b590a4	cstring	0x1416a14c0	jealousy
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b590b0	cstring	0x1416d52e0	glorify hf
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b590bc	cstring	0x1416d52c8	have not performed
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b590c8	cstring	0x1416d5300	prevented from leaving
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b590d4	cstring	0x1416d52f0	curiosity
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b590e0	cstring	0x1416d5280	hire on as mercenary
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b590ec	cstring	0x1416d5268	hire on as performer
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b590f8	cstring	0x1416d52b0	hire on as scholar
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59104	cstring	0x14164fc00	drink
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59110	cstring	0x1416d5298	admire architecture
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5911c	cstring	0x1416d5240	pray
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59128	cstring	0x1416d5238	relax
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59134	cstring	0x1416d5260	danger
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59140	cstring	0x1416d5248	cannot find artifact
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5914c	cstring	0x1416d5200	failed mood
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59158	cstring	0x1416d51f0	lack of sleep
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59164	cstring	0x1416d5228	trapped in cage
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59170	cstring	0x1416d5210	great deal of stress
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5917c	cstring	0x1416d5188	unable to leave location
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59188	cstring	0x1416d5178	sanctify hf
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59194	cstring	0x1416d51c8	artifact is heirloom of family hfid
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b591a0	cstring	0x1416d51a8	cement bonds of friendship
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b591ac	cstring	0x1416d5128	as a symbol of everlasting peace
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b591b8	cstring	0x1416d5118	on a pilgrimage
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b591c4	cstring	0x1416d5160	gather information
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b591d0	cstring	0x1416d5150	seek sanctuary
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b591dc	cstring	0x1416d50c0	part of trade negotiation
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b591e5	cstring	0x1416d5098	artifact is symbol of entity position
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b591ee	cstring	0x1416d5100	afraid of persecution
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b591f7	cstring	0x1416d50e0	smoother operation of entity
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59200	cstring	0x1416d5038	holds high value
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59209	cstring	0x1416d5018	shared interest in profession
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59212	cstring	0x1416d5078	envious of those that live on
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5921b	cstring	0x1416d5050	panicked about what happens after death
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59224	cstring	0x1416d4fc8	afraid to die
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5922d	cstring	0x1416d4fa8	not ready to face the afterlife
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59236	cstring	0x1416d4ff8	too proud to give in to death
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5923f	cstring	0x1416d4fd8	too vain to give in to death
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59248	cstring	0x1416d4f48	had ambitions for which death is only a small obstacle
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59251	cstring	0x1416d4f38	lack of funds
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5925a	cstring	0x1416d4f90	heavy losses in battle
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59269	cstring	0x1416d4f80	</reason>
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b592b3	cstring	0x1416d4ef0	<reason_id>
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b592cd	cstring	0x1416d4f00	</reason_id>
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5931d	cstring	0x1416d4f28	<circumstance>
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59342	cstring	0x1415ee048	conflict
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5934e	cstring	0x1416d4f10	death and injury
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5935a	cstring	0x1416d4ea8	witnessed death in incident
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59366	cstring	0x1416d4e90	found body in incident
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59372	cstring	0x1416d4ed8	hf died unexpectedly
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5937e	cstring	0x1416d4ec8	hf is dead
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5938a	cstring	0x1416d5988	slayer in incident
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59396	cstring	0x1416d5970	separated from hf
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b593a2	cstring	0x1416d59c0	reunited with hf
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b593ae	cstring	0x1416d59a0	jump into existing conflict
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b593ba	cstring	0x1416d5928	caught sneaking last stand
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b593c6	cstring	0x1416d5910	produced masterwork
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b593d2	cstring	0x1416d5958	produced artifact
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b593de	cstring	0x1416d5948	mastered skill
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b593ea	cstring	0x1416d58d8	broke up with lover
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b593f6	cstring	0x1416d58c8	divorced
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59402	cstring	0x1416d5900	fell in love
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5940e	cstring	0x1416d58f0	became parent
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5941a	cstring	0x1416d5880	nearby conflict
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59426	cstring	0x1416d5868	agreement cancelled
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59432	cstring	0x1416d58a8	being an agreement companion
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5943e	cstring	0x1416d5890	entity controls site
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5944a	cstring	0x1416d5810	entity cancels tribute
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59456	cstring	0x141673d90	incident
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59462	cstring	0x141673f74	rumor
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5946e	cstring	0x1416d57f8	kicked out of squad
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5947a	cstring	0x1416d5848	stranger advancing with weapon
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59486	cstring	0x1416d5828	stranger sneaking around
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59492	cstring	0x1416d57a8	witnessed blood drinking in incident
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5949e	cstring	0x1416d5798	made complaint
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b594aa	cstring	0x1416d57e0	listened to complaint
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b594b6	cstring	0x1416d57d0	admire building
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b594c2	cstring	0x1416d5740	admire owned building
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b594ce	cstring	0x1416d5720	admire arranged building
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b594da	cstring	0x1416d5778	admire owned arranged building
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b594e6	cstring	0x1416d5758	viewed item in own display
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b594f2	cstring	0x1416d56d0	viewed displayed item
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b594fe	cstring	0x1416d56c0	pet lost
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5950a	cstring	0x1416d5700	threw hauled item in tantrum
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59516	cstring	0x1416d56e8	freed from prison
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59522	cstring	0x1416d5688	had miscarriage
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5952e	cstring	0x1416d5670	spouse had miscarriage
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5953a	cstring	0x1416d56b0	old clothing
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59546	cstring	0x1416d5698	tattered clothing
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59552	cstring	0x1416d5630	clothing rots away
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5955e	cstring	0x1416d5618	haunted in dreams
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5956a	cstring	0x14166c400	haunted
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59576	cstring	0x1416d5660	good spar
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59582	cstring	0x1416d5648	complaint unregistered
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5958e	cstring	0x1416d55f0	long patrol
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5959a	cstring	0x1416d55e0	sun nauseated
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b595a6	cstring	0x1416d5608	sun irritated
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b595b2	cstring	0x1416d55fc	drowsy
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b595be	cstring	0x1416d55b8	very drowsy
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b595ca	cstring	0x1416d55b0	thirsty
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b595d6	cstring	0x1416d55d0	dehydrated
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b595e2	cstring	0x1416d55c4	hungry
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b595ee	cstring	0x1416d5578	starving
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b595fa	cstring	0x1416d5560	suffered major injury
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59606	cstring	0x1416d5598	suffered minor injury
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59612	cstring	0x1416d5588	rough sleep
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5961e	cstring	0x1416d5538	resting
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5962a	cstring	0x1416d5518	caught in freakish weather
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59636	cstring	0x1416d5550	caught in rain
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59642	cstring	0x1416d5540	caught in snow
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5964e	cstring	0x1416d54e0	caught in miasma
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5965a	cstring	0x1416d54d0	caught in smoke
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59666	cstring	0x1416d5508	waterfall mist
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59672	cstring	0x1416d54f8	caught in dust
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5967e	cstring	0x1416d5490	considering demand
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5968a	cstring	0x1416d5468	punishment of victimizer reduced
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59696	cstring	0x1416d54b0	personal punishment reduced
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b596a2	cstring	0x1416d54a8	elected
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b596ae	cstring	0x1416d5fe8	reelected
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b596ba	cstring	0x1416d5fd0	request approved
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b596c6	cstring	0x1416d6020	request ignored
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b596d2	cstring	0x1416d5ff8	nobody to punish for failed mandate
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b596de	cstring	0x1416d5f80	personal punishment delayed
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b596ea	cstring	0x1416d5f58	punishment of victimizer delayed
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b596f6	cstring	0x1416d5fb0	insufficient justice buildings
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59702	cstring	0x1416d5fa0	mandate ignored
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5970e	cstring	0x1416d5ef8	mandate only partially completed
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5971a	cstring	0x1416d4c28	insufficient work
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59726	cstring	0x1416d5ee0	destroyed building
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59732	cstring	0x1416d5f40	committed vandalism
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5973e	cstring	0x1416d5f20	land holder rank increased
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5974a	cstring	0x1416d5ea0	established as land holder
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59756	cstring	0x1416d5e88	knocked out by cavein
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59762	cstring	0x1416d5ec8	mandate was obeyed
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5976e	cstring	0x1416d5ebc	naked
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5977a	cstring	0x1416d5e30	no shirt
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59786	cstring	0x1416d5e20	no shoes
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59792	cstring	0x1416d5e68	ate own pet while starving
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5979e	cstring	0x1416d5e40	ate favorite animal while starving
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b597aa	cstring	0x1416d5dc8	ate vermin while starving
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b597b6	cstring	0x1416d5db0	beat somebody up
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b597c2	cstring	0x1416d5e00	punished somebody with beating
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b597ce	cstring	0x1416d5de8	punished by beating
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b597da	cstring	0x1416d5d60	punished somebody with tool
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b597e6	cstring	0x1416d5d48	punished by tool
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b597f2	cstring	0x1416d5d90	cannot get punishment tool
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b597fe	cstring	0x1416d5d80	tired of food
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5980a	cstring	0x1416d5d00	eaten rotten food
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59816	cstring	0x1416d5cf0	good food
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59822	cstring	0x1416d5d38	good drink
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5982e	cstring	0x1416d5d18	do not have enough chests
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5983a	cstring	0x1416d5c98	do not have enough cabinets
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59846	cstring	0x1416d5c78	do not have enough weapon racks
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59852	cstring	0x1416d5cd0	do not have enough armor stands
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5985e	cstring	0x1416d5cb8	lesser has better room
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5986a	cstring	0x1416d5c28	eating without table
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59876	cstring	0x1416d5c10	eating at crowded table
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59882	cstring	0x1416d5c60	eating in dining room
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5988e	cstring	0x1416d5c40	eating without dining room
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5989a	cstring	0x1416d5bd0	eating without chair
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b598a6	cstring	0x1416d5bb8	new bonded relationship
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b598b2	cstring	0x1416d5c00	was rescued
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b598be	cstring	0x1416d5be8	rescued somebody
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b598ca	cstring	0x1416d5b70	completed job
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b598d6	cstring	0x1416d5b50	tax escort stole property
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b598e2	cstring	0x1416d5ba0	lost property to taxes
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b598ee	cstring	0x1416d5b80	have inadequate protection
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b598fa	cstring	0x1416d5b00	taxable room inaccessible
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59906	cstring	0x1416d5ae0	misinformed about taxable room
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59912	cstring	0x1416d5b38	pleased nobility
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5991e	cstring	0x1416d5b20	tax collector succeeded
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5992a	cstring	0x1416d5aa8	disappointed nobility
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59936	cstring	0x1416d5a90	tax collector failed
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59942	cstring	0x1416d5ad0	new buddy
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5994e	cstring	0x1416d5ac0	new grudge
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5995a	cstring	0x1416d5a48	near hated vermin
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59966	cstring	0x1416d5a30	near favorite animal
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59972	cstring	0x1416d5a70	pestered by flying micro vermin
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5997e	cstring	0x1416d5a60	acquired item
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5998a	cstring	0x1416d59e8	acquired favorite animal as pet
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59996	cstring	0x1416d59d8	confined
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b599a2	cstring	0x1416d5a20	cleaned self
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b599ae	cstring	0x1416d5a08	cleaned self with soap
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b599ba	cstring	0x1416d65a0	killed somebody in training accident
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b599c6	cstring	0x1416d6590	attacked
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b599d2	cstring	0x1416d65d8	attacked by zombie possible relative
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b599de	cstring	0x1416d65c8	tired of drink
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b599ea	cstring	0x1416d6560	drinking blood
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b599f6	cstring	0x1416d6550	drinking slime
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59a02	cstring	0x1416d6580	drinking vomit
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59a0e	cstring	0x1416d6570	drinking goo
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59a1a	cstring	0x1416d6520	drinking ichor
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59a26	cstring	0x1416d6510	drinking pus
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59a32	cstring	0x1416d6540	drinking nasty
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59a3e	cstring	0x1416d6530	drinking rotten
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59a4a	cstring	0x1416d64c0	drinking without well
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59a56	cstring	0x1416d64a0	view favorite animal caged
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59a62	cstring	0x1416d64f8	view hated vermin caged
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59a6e	cstring	0x1416d64d8	slept without proper room
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59a7a	cstring	0x1416d6470	slept in room
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59a86	cstring	0x1416d6458	slept on smooth floor
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59a92	cstring	0x1416d6490	slept in mud
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59a9e	cstring	0x1416d6480	slept on grass
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59aaa	cstring	0x1416d6420	slept on rough stone
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59ab6	cstring	0x1416d6410	slept on rocks
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59ac2	cstring	0x1416d6448	slept on ice
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59ace	cstring	0x1416d6438	slept on dirt
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59ada	cstring	0x1416d63e0	slept on driftwood
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59ae6	cstring	0x1416d63d0	artwork defaced
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59af2	cstring	0x1416d6408	evicted
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59afe	cstring	0x1416d63f8	gave birth
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59b0a	cstring	0x1416d63a0	gained relative
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59b16	cstring	0x1416d6390	received water
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59b22	cstring	0x1416d63c0	gave water
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59b2e	cstring	0x1416d63b0	received food
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59b3a	cstring	0x1416d6340	gave food
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59b46	cstring	0x1416d6328	relation abstract chat
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59b52	cstring	0x1416d6370	relation gave personal chat
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59b5e	cstring	0x1416d6350	relation received personal chat
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59b6a	cstring	0x1416d62e0	relation gave stress complaint chat
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59b76	cstring	0x1416d62b8	relation received stress complaint chat
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59b82	cstring	0x1416d6318	relation chat
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59b8e	cstring	0x1416d6308	met in room
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59b9a	cstring	0x1416d6268	official meeting in bedroom
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59ba6	cstring	0x1416d6248	official meeting in dining room
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59bb2	cstring	0x1416d6298	official meeting without room
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59bbe	cstring	0x1416d6288	have tomb
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59bca	cstring	0x1416d61f8	have no tomb
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59bd6	cstring	0x1416d61d0	interacted with community pillar
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59be2	cstring	0x1416d6230	interacted with pet
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59bee	cstring	0x1416d6208	turned child away from sanctuary
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59bfa	cstring	0x1416d6190	expelled
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59c06	cstring	0x1416d6178	relative expelled
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59c12	cstring	0x1416d61b8	dead unit convicted
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59c1e	cstring	0x1416d61a0	animal convicted
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59c2a	cstring	0x1416d6120	victim convicted
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59c36	cstring	0x1416d6108	perpetrator convicted
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59c42	cstring	0x1416d6150	perpetrator against family convicted
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59c4e	cstring	0x1416d6138	body of relation rotted
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59c5a	cstring	0x1416d60c0	unmet needs
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59c66	cstring	0x1416d60b0	pray to hf
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59c72	cstring	0x1416d60f8	religion prayer
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59c7e	cstring	0x1416d60d0	religion prayer in incorrect temple
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59c8a	cstring	0x1416d6050	religion prayer in godless temple
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59c96	cstring	0x1416d6030	pray to hf in dedicated temple
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59ca2	cstring	0x1416d6098	drinking without goblet
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59cae	cstring	0x1416d6078	defended site against invaders
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59cba	cstring	0x1416d6c30	research breakthrough
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59cc6	cstring	0x1416d6c18	stuck on research topic
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59cd2	cstring	0x1416d6c60	ponder research topic
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59cde	cstring	0x1416d6c48	discuss research topic
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59cea	cstring	0x1416d6bc8	syndrome emotion
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59cf6	cstring	0x1416d6bb0	performed in incident
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59d02	cstring	0x1416d6bf8	saw performance in incident
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59d0e	cstring	0x1416d6be0	kicked out of troupe
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59d1a	cstring	0x1416d6b68	learned scholar flag
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59d26	cstring	0x1416d6b58	learned skill
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59d32	cstring	0x1416d6b98	learned written content
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59d3e	cstring	0x1416d6b80	learned interaction
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59d4a	cstring	0x1416d6b10	learned poetic form
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59d56	cstring	0x1416d6af8	learned musical form
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59d62	cstring	0x1416d6b40	learned dance form
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59d6e	cstring	0x1416d6b28	taught scholar flag
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59d7a	cstring	0x1416d6ab0	taught skill
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59d86	cstring	0x1416d6a98	read written content
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59d92	cstring	0x1416d6ae0	wrote written content
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59d9e	cstring	0x1416d6ac0	residency petition accepted
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59daa	cstring	0x1416d6a48	citizenship petition accepted
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59db6	cstring	0x1416d6a28	residency petition rejected
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59dc2	cstring	0x1416d6a78	citizenship petition rejected
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59dce	cstring	0x1416d6a68	left troupe
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59dda	cstring	0x1416d6a00	make believe
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59de6	cstring	0x1416d69f0	play with toy
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59df2	cstring	0x1416d6a18	dream about hf
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59dfe	cstring	0x1416d6a10	dream
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59e0a	cstring	0x1416d69b8	nightmare
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59e16	cstring	0x141676c50	argument
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59e22	cstring	0x1416d6998	did individual melee drills
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59e2e	cstring	0x1416d69d8	did ranged practice
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59e3a	cstring	0x1416d69c8	improved skill
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59e46	cstring	0x1416d6938	put on quality worn item
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59e52	cstring	0x1416d6918	change personality value
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59e5e	cstring	0x1416d6978	active performance preacher
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59e6a	cstring	0x1416d6958	active performance storyteller
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59e76	cstring	0x1416d68b8	active performance poem reciter
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59e82	cstring	0x1416d6890	active performance simulated instrument
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59e8e	cstring	0x1416d68f8	active performance instrument
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59e9a	cstring	0x1416d68d8	active performance singer
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59ea6	cstring	0x1416d6838	active performance chanter
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59eb2	cstring	0x1416d6818	active performance dancer
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59ebe	cstring	0x1416d6870	active sermon worship hfid
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59eca	cstring	0x1416d6858	active sermon sphere
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59ed6	cstring	0x1416d67c8	active sermon promote value
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59ee2	cstring	0x1416d67a8	active sermon refuse value
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59eee	cstring	0x1416d6800	active story event
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59efa	cstring	0x1416d67e8	active poetic form
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59f06	cstring	0x1416d6760	active musical form
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59f12	cstring	0x1416d6748	active dance form
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59f1e	cstring	0x1416d6798	defeated hf
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59f2a	cstring	0x1416d6778	item was favorite possession
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59f36	cstring	0x1416d66f8	by preserving part of body
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59f42	cstring	0x1416d66e8	abducted hf
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59f4e	cstring	0x1416d6738	murdered hf
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59f5a	cstring	0x1416d6718	historical event collection
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59f66	cstring	0x1416d6698	acquired artifact
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59f72	cstring	0x1416d6678	claimed artifact given away
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59f7e	cstring	0x1416d66c8	preying on civilized for blood
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59f8a	cstring	0x1416d66b0	unnaturally ageless
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59f96	cstring	0x1416d6618	scholarly lecture in site
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59fa2	cstring	0x1416d6600	performance in site
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59fae	cstring	0x1416d6658	accepting bribes for leniency
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59fb7	cstring	0x1416d6638	embezzling funds from position
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59fc0	cstring	0x1416d7448	cut of corrupt funds
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59fc9	cstring	0x1416d7438	from afar
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59fd2	cstring	0x1416d7480	during an infiltration mission
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59fdb	cstring	0x1416d7460	temple petition accepted
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59fe4	cstring	0x1416d73c0	temple petition rejected
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59fed	cstring	0x1416d7420	temple petition ignored
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59ff6	cstring	0x1416d7400	temple agreement abandoned
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b59fff	cstring	0x1416d7360	guildhall petition accepted
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5a008	cstring	0x1416d73e0	entity temple recognition
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5a011	cstring	0x1416d7340	guildhall petition rejected
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5a01a	cstring	0x1416d73a0	guildhall petition ignored
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5a023	cstring	0x1416d7380	guildhall agreement abandoned
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5a02c	cstring	0x1416d72f8	is entity subordinate
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5a03b	cstring	0x1416d72e8	</circumstance>
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5a089	cstring	0x1416d7310	<circumstance_id>
+reference	PE:6a70a6d9:02711000	mandate-result-labels	0x140b58db0	0x140b5a6b8	0x140b5a0a3	cstring	0x1416d7328	</circumstance_id>
+classic	PE:6a70b91c:0270a000	demand-change	0x141345b80	0x141346a8c	0x141345c71	cstring	0x14177d5f0	 has forgotten a demand.
+classic	PE:6a70b91c:0270a000	demand-change	0x141345b80	0x141346a8c	0x141346836	cstring	0x14177d5d8	 has a new demand.
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e34aa8	printable-immediate		gfff
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e34b1c	printable-immediate		gfff
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e34f73	cstring	0x1415e89c4	The 
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e34fab	cstring	0x1417298a8	 has been missing for a week.
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e36601	cstring	0x1417298d0	Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense. 
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e366a1	cstring	0x141729948	What are a few pesky demons after all?
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e366ba	cstring	0x141729b38	The gods surely want you to dig deeper still!
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e366c3	cstring	0x141729b68	And why shouldn't you dig deeper still?!
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e3679b	cstring	0x141729b98	 is satisfied with their position here. 
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e367e1	cstring	0x141729bc8	Everything is properly royal, properly furnished.  And yet? 
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e367f4	cstring	0x141729a20	A true Mountainhome must have a true throne! 
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e36807	cstring	0x141729a50	And a true ruler requires seven symbols, symbols not of this world. Mere steel will not suffice. 
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e36891	cstring	0x141729ac0	This legend does not end until we've chipped out the last treasures of the underworld!
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e3689a	cstring	0x141729b18	Deeper. We must dig deeper.
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e368a3	cstring	0x141729ce0	Congratulations!  (You should be proud of your accomplishment.  Embark in a world with the deepest cavern layers for further challenges.)
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e369dc	cstring	0x141729d70	Your fortress is out of food!
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e36a06	cstring	0x141729d90	  Consider placing a farmplot on some underground soil and planting seeds.
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e36a0f	cstring	0x141729de0	  Are your farmplots working?  Make sure you are planting edible plants.
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e36a31	cstring	0x141729c10	  Try building a butcher's shop and slaughtering some livestock.
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e36a3a	cstring	0x141729c58	  Do you have any livestock to slaughter?
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e36a46	cstring	0x141729c88	  Perhaps you can gather plants, fruit, or go fishing.
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e3753d	cstring	0x141729cc0	 has ended a mandate.
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e37716	cstring	0x141729ef0	A mandate has ended.
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e39aac	printable-immediate		0u
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e39c74	printable-immediate		0u
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e39e7e	printable-immediate		0u
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e3a111	printable-immediate		0u
+classic	PE:6a70b91c:0270a000	mandate-cancel	0x140e34880	0x140e3ad58	0x140e3a41c	printable-immediate		0u
+classic	PE:6a70b91c:0270a000	mandate-create	0x141348d90	0x141349a9e	0x1413496c1	cstring	0x14177d610	 has mandated the construction of certain goods.
+classic	PE:6a70b91c:0270a000	mandate-create	0x141348d90	0x141349a9e	0x1413496d0	cstring	0x14177d648	 has imposed a ban on certain exports.
+classic	PE:6a70b91c:0270a000	mandate-create	0x141348d90	0x141349a9e	0x141349910	cstring	0x14177d688	 has altered the prices of goods.
+classic	PE:6a70b91c:0270a000	mandate-expire	0x1413ad9a0	0x1413adb8f	0x1413ada79	cstring	0x14177eaf0	's mandate has ended.
+classic	PE:6a70b91c:0270a000	mandate-expire	0x1413ad9a0	0x1413adb8f	0x1413ada99	cstring	0x14177ead8	's mandates have ended.
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55e46	cstring	0x1416cfc90	<reason>
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55e68	cstring	0x1415e90e0	insurrection
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55e74	cstring	0x141670198	adventure
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55e80	cstring	0x1415fdc3c	guide
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55e8c	cstring	0x1416cfcb8	rescued
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55e98	cstring	0x1416cfca0	sphere alignment
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55ea4	cstring	0x1416cfc20	maintain balance in universe
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55eb0	cstring	0x1416cfbf8	highlight boundaries between worlds
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55ebc	cstring	0x1416cfc68	sow the seeds of chaos in the world
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55ec8	cstring	0x1416cfc40	provide opportunities for courage
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55ed4	cstring	0x1416cfb98	bring death to the world
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55ee0	cstring	0x1416cfb80	liked appearance
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55eec	cstring	0x1416cfbe0	because it was destined
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55ef8	cstring	0x1416cfbb8	great fortresses built and tested
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55f04	cstring	0x1416cfb34	whim
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55f10	cstring	0x1416cfb18	bring misery to the world
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55f1c	cstring	0x1416cfb60	bring murder to the world
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55f28	cstring	0x1416cfb40	bring nightmares into reality
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55f34	cstring	0x1416cfab8	bring thralldom to the world
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55f40	cstring	0x1416cfa98	bring torture to the world
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55f4c	cstring	0x1416cfaf0	provide opportunities for acts of valor
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55f58	cstring	0x1416cfad8	bring war to the world
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55f64	cstring	0x1416cfa58	find relative
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55f70	cstring	0x1416cfa40	offer condolences
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55f7c	cstring	0x1416cfa80	be brought to safety
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55f88	cstring	0x1416cfa68	help with rescue
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55f94	cstring	0x1416cfa08	insufficient work
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55fa0	cstring	0x1416cf9f8	work request
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55fac	cstring	0x1416cfa30	make weapon
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55fb8	cstring	0x1416cfa20	vent at priest
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55fc4	cstring	0x1416cf9b8	cry on priest
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55fd0	cstring	0x1416cf9a8	vent at boss
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55fdc	cstring	0x1416cf9e8	cry on boss
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55fe8	cstring	0x1416cf9c8	should have reached goal
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b55ff4	cstring	0x1416d0258	insufficient progress toward goal
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56000	cstring	0x1416d0240	going wrong direction
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5600c	cstring	0x1416d0298	arrived at location
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56018	cstring	0x1416d0280	entity no longer rules
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56024	cstring	0x1416d0210	left site
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56030	cstring	0x1416d01f8	reunited with loved one
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5603c	cstring	0x1416d0228	violent disagreement
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56048	cstring	0x1416d0220	adopted
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56054	cstring	0x1416d01b0	true name invocation
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56060	cstring	0x1416d0198	arrived at person
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5606c	cstring	0x1416d01e0	eradicate beasts
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56078	cstring	0x1416d01c8	entertain people
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56084	cstring	0x1416d0150	make a living as a warrior
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56090	cstring	0x1416d0144	study
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5609c	cstring	0x1415e90bc	flight
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b560a8	cstring	0x1416d0180	exiled after conviction
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b560b4	cstring	0x14169c3a8	scholarship
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b560c0	cstring	0x1416d0170	be with master
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b560cc	cstring	0x1416d0110	become citizen
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b560d8	cstring	0x1416d00f8	prefers working alone
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b560e4	cstring	0x14169c518	jealousy
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b560f0	cstring	0x1416d0138	glorify hf
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b560fc	cstring	0x1416d0120	have not performed
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56108	cstring	0x1416d00b0	prevented from leaving
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56114	cstring	0x1416d00a0	curiosity
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56120	cstring	0x1416d00e0	hire on as mercenary
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5612c	cstring	0x1416d00c8	hire on as performer
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56138	cstring	0x1416d0078	hire on as scholar
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56144	cstring	0x14164aac0	drink
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56150	cstring	0x1416d0060	admire architecture
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5615c	cstring	0x1416d0094	pray
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56168	cstring	0x1416d008c	relax
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56174	cstring	0x1416d0038	danger
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56180	cstring	0x1416d0020	cannot find artifact
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5618c	cstring	0x1416d0050	failed mood
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56198	cstring	0x1416d0040	lack of sleep
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b561a4	cstring	0x1416cffe0	trapped in cage
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b561b0	cstring	0x1416cffc8	great deal of stress
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b561bc	cstring	0x1416d0000	unable to leave location
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b561c8	cstring	0x1416cfff0	sanctify hf
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b561d4	cstring	0x1416cff68	artifact is heirloom of family hfid
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b561e0	cstring	0x1416cff48	cement bonds of friendship
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b561ec	cstring	0x1416cffa0	as a symbol of everlasting peace
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b561f8	cstring	0x1416cff90	on a pilgrimage
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56204	cstring	0x1416cfee8	gather information
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56210	cstring	0x1416cfed8	seek sanctuary
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5621c	cstring	0x1416cff28	part of trade negotiation
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56225	cstring	0x1416cff00	artifact is symbol of entity position
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5622e	cstring	0x1416cfe88	afraid of persecution
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56237	cstring	0x1416cfe68	smoother operation of entity
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56240	cstring	0x1416cfec0	holds high value
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56249	cstring	0x1416cfea0	shared interest in profession
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56252	cstring	0x1416cfe18	envious of those that live on
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5625b	cstring	0x1416cfdf0	panicked about what happens after death
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56264	cstring	0x1416cfe58	afraid to die
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5626d	cstring	0x1416cfe38	not ready to face the afterlife
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56276	cstring	0x1416cfd88	too proud to give in to death
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5627f	cstring	0x1416cfd68	too vain to give in to death
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56288	cstring	0x1416cfdb8	had ambitions for which death is only a small obstacle
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56291	cstring	0x1416cfda8	lack of funds
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5629a	cstring	0x1416cfd30	heavy losses in battle
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b562a9	cstring	0x1416cfd20	</reason>
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b562f3	cstring	0x1416cfd48	<reason_id>
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5630d	cstring	0x1416cfd58	</reason_id>
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5635d	cstring	0x1416cfcd8	<circumstance>
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56382	cstring	0x1415e8fc8	conflict
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5638e	cstring	0x1416cfcc0	death and injury
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5639a	cstring	0x1416cfd00	witnessed death in incident
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b563a6	cstring	0x1416cfce8	found body in incident
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b563b2	cstring	0x1416d07d8	hf died unexpectedly
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b563be	cstring	0x1416d07c8	hf is dead
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b563ca	cstring	0x1416d0808	slayer in incident
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b563d6	cstring	0x1416d07f0	separated from hf
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b563e2	cstring	0x1416d0778	reunited with hf
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b563ee	cstring	0x1416d0758	jump into existing conflict
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b563fa	cstring	0x1416d07a8	caught sneaking last stand
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56406	cstring	0x1416d0790	produced masterwork
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56412	cstring	0x1416d0718	produced artifact
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5641e	cstring	0x1416d0708	mastered skill
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5642a	cstring	0x1416d0740	broke up with lover
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56436	cstring	0x1416d0730	divorced
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56442	cstring	0x1416d06d0	fell in love
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5644e	cstring	0x1416d06c0	became parent
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5645a	cstring	0x1416d06f8	nearby conflict
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56466	cstring	0x1416d06e0	agreement cancelled
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56472	cstring	0x1416d0670	being an agreement companion
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5647e	cstring	0x1416d0658	entity controls site
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5648a	cstring	0x1416d06a8	entity cancels tribute
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56496	cstring	0x14166ee40	incident
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b564a2	cstring	0x14166ee4c	rumor
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b564ae	cstring	0x1416d0690	kicked out of squad
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b564ba	cstring	0x1416d0600	stranger advancing with weapon
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b564c6	cstring	0x1416d05e0	stranger sneaking around
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b564d2	cstring	0x1416d0630	witnessed blood drinking in incident
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b564de	cstring	0x1416d0620	made complaint
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b564ea	cstring	0x1416d0590	listened to complaint
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b564f6	cstring	0x1416d0580	admire building
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56502	cstring	0x1416d05c8	admire owned building
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5650e	cstring	0x1416d05a8	admire arranged building
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5651a	cstring	0x1416d0538	admire owned arranged building
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56526	cstring	0x1416d0518	viewed item in own display
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56532	cstring	0x1416d0568	viewed displayed item
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5653e	cstring	0x1416d0558	pet lost
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5654a	cstring	0x1416d04d0	threw hauled item in tantrum
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56556	cstring	0x1416d04b8	freed from prison
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56562	cstring	0x1416d0508	had miscarriage
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5656e	cstring	0x1416d04f0	spouse had miscarriage
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5657a	cstring	0x1416d0478	old clothing
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56586	cstring	0x1416d0460	tattered clothing
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56592	cstring	0x1416d04a0	clothing rots away
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5659e	cstring	0x1416d0488	haunted in dreams
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b565aa	cstring	0x141667588	haunted
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b565b6	cstring	0x1416d0430	good spar
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b565c2	cstring	0x1416d0418	complaint unregistered
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b565ce	cstring	0x1416d0450	long patrol
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b565da	cstring	0x1416d0440	sun nauseated
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b565e6	cstring	0x1416d03f0	sun irritated
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b565f2	cstring	0x1416d03e4	drowsy
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b565fe	cstring	0x1416d0408	very drowsy
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5660a	cstring	0x1416d0400	thirsty
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56616	cstring	0x1416d03b0	dehydrated
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56622	cstring	0x1416d03a8	hungry
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5662e	cstring	0x1416d03d8	starving
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5663a	cstring	0x1416d03c0	suffered major injury
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56646	cstring	0x1416d0368	suffered minor injury
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56652	cstring	0x1416d0358	rough sleep
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5665e	cstring	0x1416d03a0	resting
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5666a	cstring	0x1416d0380	caught in freakish weather
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56676	cstring	0x1416d0320	caught in rain
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56682	cstring	0x1416d0310	caught in snow
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5668e	cstring	0x1416d0340	caught in miasma
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5669a	cstring	0x1416d0330	caught in smoke
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b566a6	cstring	0x1416d02c0	waterfall mist
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b566b2	cstring	0x1416d02b0	caught in dust
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b566be	cstring	0x1416d02f8	considering demand
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b566ca	cstring	0x1416d02d0	punishment of victimizer reduced
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b566d6	cstring	0x1416d0e30	personal punishment reduced
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b566e2	cstring	0x1416d0e28	elected
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b566ee	cstring	0x1416d0e68	reelected
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b566fa	cstring	0x1416d0e50	request approved
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56706	cstring	0x1416d0dd0	request ignored
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56712	cstring	0x1416d0da8	nobody to punish for failed mandate
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5671e	cstring	0x1416d0e08	personal punishment delayed
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5672a	cstring	0x1416d0de0	punishment of victimizer delayed
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56736	cstring	0x1416d0d48	insufficient justice buildings
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56742	cstring	0x1416d0d38	mandate ignored
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5674e	cstring	0x1416d0d80	mandate only partially completed
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5675a	cstring	0x1416cfa08	insufficient work
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56766	cstring	0x1416d0d68	destroyed building
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56772	cstring	0x1416d0ce8	committed vandalism
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5677e	cstring	0x1416d0cc8	land holder rank increased
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5678a	cstring	0x1416d0d18	established as land holder
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56796	cstring	0x1416d0d00	knocked out by cavein
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b567a2	cstring	0x1416d0c90	mandate was obeyed
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b567ae	cstring	0x1416d0c84	naked
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b567ba	cstring	0x1416d0cb8	no shirt
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b567c6	cstring	0x1416d0ca8	no shoes
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b567d2	cstring	0x1416d0c30	ate own pet while starving
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b567de	cstring	0x1416d0c08	ate favorite animal while starving
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b567ea	cstring	0x1416d0c68	ate vermin while starving
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b567f6	cstring	0x1416d0c50	beat somebody up
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56802	cstring	0x1416d0bb0	punished somebody with beating
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5680e	cstring	0x1416d0b98	punished by beating
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5681a	cstring	0x1416d0be8	punished somebody with tool
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56826	cstring	0x1416d0bd0	punished by tool
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56832	cstring	0x1416d0b50	cannot get punishment tool
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5683e	cstring	0x1416d0b40	tired of food
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5684a	cstring	0x1416d0b80	eaten rotten food
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56856	cstring	0x1416d0b70	good food
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56862	cstring	0x1416d0af0	good drink
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5686e	cstring	0x1416d0ad0	do not have enough chests
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5687a	cstring	0x1416d0b20	do not have enough cabinets
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56886	cstring	0x1416d0b00	do not have enough weapon racks
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56892	cstring	0x1416d0a80	do not have enough armor stands
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5689e	cstring	0x1416d0a68	lesser has better room
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b568aa	cstring	0x1416d0ab8	eating without table
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b568b6	cstring	0x1416d0aa0	eating at crowded table
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b568c2	cstring	0x1416d0a20	eating in dining room
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b568ce	cstring	0x1416d0a00	eating without dining room
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b568da	cstring	0x1416d0a50	eating without chair
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b568e6	cstring	0x1416d0a38	new bonded relationship
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b568f2	cstring	0x1416d09c0	was rescued
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b568fe	cstring	0x1416d09a8	rescued somebody
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5690a	cstring	0x1416d09f0	completed job
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56916	cstring	0x1416d09d0	tax escort stole property
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56922	cstring	0x1416d0950	lost property to taxes
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5692e	cstring	0x1416d0930	have inadequate protection
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5693a	cstring	0x1416d0988	taxable room inaccessible
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56946	cstring	0x1416d0968	misinformed about taxable room
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56952	cstring	0x1416d08e8	pleased nobility
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5695e	cstring	0x1416d08d0	tax collector succeeded
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5696a	cstring	0x1416d0918	disappointed nobility
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56976	cstring	0x1416d0900	tax collector failed
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56982	cstring	0x1416d0890	new buddy
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5698e	cstring	0x1416d0880	new grudge
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5699a	cstring	0x1416d08b8	near hated vermin
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b569a6	cstring	0x1416d08a0	near favorite animal
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b569b2	cstring	0x1416d0830	pestered by flying micro vermin
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b569be	cstring	0x1416d0820	acquired item
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b569ca	cstring	0x1416d0860	acquired favorite animal as pet
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b569d6	cstring	0x1416d0850	confined
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b569e2	cstring	0x1416d13f0	cleaned self
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b569ee	cstring	0x1416d13d8	cleaned self with soap
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b569fa	cstring	0x1416d1410	killed somebody in training accident
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56a06	cstring	0x1416d1400	attacked
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56a12	cstring	0x1416d1390	attacked by zombie possible relative
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56a1e	cstring	0x1416d1380	tired of drink
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56a2a	cstring	0x1416d13c8	drinking blood
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56a36	cstring	0x1416d13b8	drinking slime
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56a42	cstring	0x1416d1350	drinking vomit
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56a4e	cstring	0x1416d1340	drinking goo
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56a5a	cstring	0x1416d1370	drinking ichor
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56a66	cstring	0x1416d1360	drinking pus
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56a72	cstring	0x1416d12f8	drinking nasty
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56a7e	cstring	0x1416d12e8	drinking rotten
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56a8a	cstring	0x1416d1328	drinking without well
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56a96	cstring	0x1416d1308	view favorite animal caged
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56aa2	cstring	0x1416d12a8	view hated vermin caged
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56aae	cstring	0x1416d1288	slept without proper room
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56aba	cstring	0x1416d12d8	slept in room
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56ac6	cstring	0x1416d12c0	slept on smooth floor
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56ad2	cstring	0x1416d1250	slept in mud
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56ade	cstring	0x1416d1240	slept on grass
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56aea	cstring	0x1416d1270	slept on rough stone
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56af6	cstring	0x1416d1260	slept on rocks
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56b02	cstring	0x1416d1208	slept on ice
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56b0e	cstring	0x1416d11f8	slept on dirt
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56b1a	cstring	0x1416d1228	slept on driftwood
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56b26	cstring	0x1416d1218	artwork defaced
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56b32	cstring	0x1416d11d0	evicted
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56b3e	cstring	0x1416d11c0	gave birth
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56b4a	cstring	0x1416d11e8	gained relative
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56b56	cstring	0x1416d11d8	received water
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56b62	cstring	0x1416d1188	gave water
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56b6e	cstring	0x1416d1178	received food
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56b7a	cstring	0x1416d11b0	gave food
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56b86	cstring	0x1416d1198	relation abstract chat
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56b92	cstring	0x1416d1108	relation gave personal chat
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56b9e	cstring	0x1416d10e8	relation received personal chat
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56baa	cstring	0x1416d1150	relation gave stress complaint chat
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56bb6	cstring	0x1416d1128	relation received stress complaint chat
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56bc2	cstring	0x1416d1098	relation chat
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56bce	cstring	0x1416d1088	met in room
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56bda	cstring	0x1416d10c8	official meeting in bedroom
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56be6	cstring	0x1416d10a8	official meeting in dining room
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56bf2	cstring	0x1416d1030	official meeting without room
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56bfe	cstring	0x1416d1020	have tomb
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56c0a	cstring	0x1416d1078	have no tomb
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56c16	cstring	0x1416d1050	interacted with community pillar
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56c22	cstring	0x1416d0fe0	interacted with pet
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56c2e	cstring	0x1416d0fb8	turned child away from sanctuary
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56c3a	cstring	0x1416d1010	expelled
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56c46	cstring	0x1416d0ff8	relative expelled
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56c52	cstring	0x1416d0f70	dead unit convicted
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56c5e	cstring	0x1416d0f58	animal convicted
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56c6a	cstring	0x1416d0fa0	victim convicted
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56c76	cstring	0x1416d0f88	perpetrator convicted
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56c82	cstring	0x1416d0f10	perpetrator against family convicted
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56c8e	cstring	0x1416d0ef8	body of relation rotted
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56c9a	cstring	0x1416d0f48	unmet needs
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56ca6	cstring	0x1416d0f38	pray to hf
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56cb2	cstring	0x1416d0ea0	religion prayer
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56cbe	cstring	0x1416d0e78	religion prayer in incorrect temple
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56cca	cstring	0x1416d0ed0	religion prayer in godless temple
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56cd6	cstring	0x1416d0eb0	pray to hf in dedicated temple
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56ce2	cstring	0x1416d1a60	drinking without goblet
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56cee	cstring	0x1416d1a40	defended site against invaders
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56cfa	cstring	0x1416d1a90	research breakthrough
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56d06	cstring	0x1416d1a78	stuck on research topic
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56d12	cstring	0x1416d19f8	ponder research topic
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56d1e	cstring	0x1416d19e0	discuss research topic
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56d2a	cstring	0x1416d1a28	syndrome emotion
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56d36	cstring	0x1416d1a10	performed in incident
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56d42	cstring	0x1416d1998	saw performance in incident
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56d4e	cstring	0x1416d1980	kicked out of troupe
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56d5a	cstring	0x1416d19c8	learned scholar flag
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56d66	cstring	0x1416d19b8	learned skill
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56d72	cstring	0x1416d1938	learned written content
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56d7e	cstring	0x1416d1920	learned interaction
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56d8a	cstring	0x1416d1968	learned poetic form
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56d96	cstring	0x1416d1950	learned musical form
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56da2	cstring	0x1416d18e0	learned dance form
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56dae	cstring	0x1416d18c8	taught scholar flag
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56dba	cstring	0x1416d1910	taught skill
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56dc6	cstring	0x1416d18f8	read written content
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56dd2	cstring	0x1416d1870	wrote written content
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56dde	cstring	0x1416d1850	residency petition accepted
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56dea	cstring	0x1416d18a8	citizenship petition accepted
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56df6	cstring	0x1416d1888	residency petition rejected
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56e02	cstring	0x1416d1810	citizenship petition rejected
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56e0e	cstring	0x1416d1800	left troupe
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56e1a	cstring	0x1416d1840	make believe
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56e26	cstring	0x1416d1830	play with toy
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56e32	cstring	0x1416d17c0	dream about hf
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56e3e	cstring	0x1416d17b4	dream
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56e4a	cstring	0x1416d17f0	nightmare
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56e56	cstring	0x141671dd0	argument
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56e62	cstring	0x1416d17d0	did individual melee drills
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56e6e	cstring	0x1416d1760	did ranged practice
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56e7a	cstring	0x1416d1750	improved skill
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56e86	cstring	0x1416d1798	put on quality worn item
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56e92	cstring	0x1416d1778	change personality value
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56e9e	cstring	0x1416d16e8	active performance preacher
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56eaa	cstring	0x1416d16c8	active performance storyteller
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56eb6	cstring	0x1416d1730	active performance poem reciter
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56ec2	cstring	0x1416d1708	active performance simulated instrument
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56ece	cstring	0x1416d1668	active performance instrument
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56eda	cstring	0x1416d1648	active performance singer
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56ee6	cstring	0x1416d16a8	active performance chanter
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56ef2	cstring	0x1416d1688	active performance dancer
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56efe	cstring	0x1416d15e8	active sermon worship hfid
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56f0a	cstring	0x1416d15d0	active sermon sphere
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56f16	cstring	0x1416d1628	active sermon promote value
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56f22	cstring	0x1416d1608	active sermon refuse value
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56f2e	cstring	0x1416d1588	active story event
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56f3a	cstring	0x1416d1570	active poetic form
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56f46	cstring	0x1416d15b8	active musical form
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56f52	cstring	0x1416d15a0	active dance form
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56f5e	cstring	0x1416d1530	defeated hf
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56f6a	cstring	0x1416d1510	item was favorite possession
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56f76	cstring	0x1416d1550	by preserving part of body
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56f82	cstring	0x1416d1540	abducted hf
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56f8e	cstring	0x1416d14c8	murdered hf
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56f9a	cstring	0x1416d14a8	historical event collection
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56fa6	cstring	0x1416d14f8	acquired artifact
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56fb2	cstring	0x1416d14d8	claimed artifact given away
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56fbe	cstring	0x1416d1450	preying on civilized for blood
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56fca	cstring	0x1416d1438	unnaturally ageless
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56fd6	cstring	0x1416d1488	scholarly lecture in site
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56fe2	cstring	0x1416d1470	performance in site
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56fee	cstring	0x1416d2298	accepting bribes for leniency
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b56ff7	cstring	0x1416d2278	embezzling funds from position
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b57000	cstring	0x1416d22c8	cut of corrupt funds
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b57009	cstring	0x1416d22b8	from afar
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b57012	cstring	0x1416d2218	during an infiltration mission
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5701b	cstring	0x1416d21f8	temple petition accepted
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b57024	cstring	0x1416d2238	temple petition rejected
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5702d	cstring	0x1416d21a0	temple petition ignored
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b57036	cstring	0x1416d2180	temple agreement abandoned
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5703f	cstring	0x1416d21d8	guildhall petition accepted
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b57048	cstring	0x1416d2258	entity temple recognition
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b57051	cstring	0x1416d21b8	guildhall petition rejected
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5705a	cstring	0x1416d2138	guildhall petition ignored
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b57063	cstring	0x1416d2118	guildhall agreement abandoned
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5706c	cstring	0x1416d2168	is entity subordinate
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b5707b	cstring	0x1416d2158	</circumstance>
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b570c9	cstring	0x1416d20c0	<circumstance_id>
+classic	PE:6a70b91c:0270a000	mandate-result-labels	0x140b55df0	0x140b576f8	0x140b570e3	cstring	0x1416d20d8	</circumstance_id>

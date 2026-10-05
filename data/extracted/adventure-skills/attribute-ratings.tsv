@@ -1,0 +1,57 @@
+edition	image_identity	formatter	group	rating_id	assignment_rva	source_location	emitted	source
+reference	PE:6a70a6d9:02711000	summary	physical	0	0x641379	inline:0x6412f0	1	Very low
+reference	PE:6a70a6d9:02711000	summary	physical	1	0x64138f	literal:0x1660bb4	1	Low
+reference	PE:6a70a6d9:02711000	summary	physical	2	0x6413b9	literal:0x1662030	1	Below average
+reference	PE:6a70a6d9:02711000	summary	physical	3	0x6413ef	literal:0x1660da0	0	Average
+reference	PE:6a70a6d9:02711000	summary	physical	4	0x641421	literal:0x1662040	1	Above average
+reference	PE:6a70a6d9:02711000	summary	physical	5	0x641454	inline:0x641454	1	High
+reference	PE:6a70a6d9:02711000	summary	physical	6	0x641466	inline:0x6412fa	1	Superior
+reference	PE:6a70a6d9:02711000	summary	mental	0	0x6415f0	inline:0x6412f0	1	Very low
+reference	PE:6a70a6d9:02711000	summary	mental	1	0x641606	literal:0x1660bb4	1	Low
+reference	PE:6a70a6d9:02711000	summary	mental	2	0x641630	literal:0x1662030	1	Below average
+reference	PE:6a70a6d9:02711000	summary	mental	3	0x641666	literal:0x1660da0	0	Average
+reference	PE:6a70a6d9:02711000	summary	mental	4	0x641698	literal:0x1662040	1	Above average
+reference	PE:6a70a6d9:02711000	summary	mental	5	0x6416cb	inline:0x6416cb	1	High
+reference	PE:6a70a6d9:02711000	summary	mental	6	0x6416dd	inline:0x6412fa	1	Superior
+reference	PE:6a70a6d9:02711000	custom	physical	0	0x629043	literal:0x1660ba8	1	Very Low
+reference	PE:6a70a6d9:02711000	custom	physical	1	0x629051	literal:0x1660bb4	1	Low
+reference	PE:6a70a6d9:02711000	custom	physical	2	0x62905f	literal:0x1660d90	1	Below Average
+reference	PE:6a70a6d9:02711000	custom	physical	3	0x62906d	literal:0x1660da0	1	Average
+reference	PE:6a70a6d9:02711000	custom	physical	4	0x62907b	literal:0x1660da8	1	Above Average
+reference	PE:6a70a6d9:02711000	custom	physical	5	0x629089	literal:0x1660db8	1	High
+reference	PE:6a70a6d9:02711000	custom	physical	6	0x629097	literal:0x1660d58	1	Superior
+reference	PE:6a70a6d9:02711000	custom	mental	0	0x62912d	literal:0x1660ba8	1	Very Low
+reference	PE:6a70a6d9:02711000	custom	mental	1	0x62913b	literal:0x1660bb4	1	Low
+reference	PE:6a70a6d9:02711000	custom	mental	2	0x629149	literal:0x1660d90	1	Below Average
+reference	PE:6a70a6d9:02711000	custom	mental	3	0x629157	literal:0x1660da0	1	Average
+reference	PE:6a70a6d9:02711000	custom	mental	4	0x629165	literal:0x1660da8	1	Above Average
+reference	PE:6a70a6d9:02711000	custom	mental	5	0x629173	literal:0x1660db8	1	High
+reference	PE:6a70a6d9:02711000	custom	mental	6	0x629181	literal:0x1660d58	1	Superior
+classic	PE:6a70b91c:0270a000	summary	physical	0	0x63ed99	inline:0x63ed10	1	Very low
+classic	PE:6a70b91c:0270a000	summary	physical	1	0x63edaf	literal:0x165bdac	1	Low
+classic	PE:6a70b91c:0270a000	summary	physical	2	0x63edd9	literal:0x165cfa0	1	Below average
+classic	PE:6a70b91c:0270a000	summary	physical	3	0x63ee0f	literal:0x165bd58	0	Average
+classic	PE:6a70b91c:0270a000	summary	physical	4	0x63ee41	literal:0x165cfb0	1	Above average
+classic	PE:6a70b91c:0270a000	summary	physical	5	0x63ee74	inline:0x63ee74	1	High
+classic	PE:6a70b91c:0270a000	summary	physical	6	0x63ee86	inline:0x63ed1a	1	Superior
+classic	PE:6a70b91c:0270a000	summary	mental	0	0x63f010	inline:0x63ed10	1	Very low
+classic	PE:6a70b91c:0270a000	summary	mental	1	0x63f026	literal:0x165bdac	1	Low
+classic	PE:6a70b91c:0270a000	summary	mental	2	0x63f050	literal:0x165cfa0	1	Below average
+classic	PE:6a70b91c:0270a000	summary	mental	3	0x63f086	literal:0x165bd58	0	Average
+classic	PE:6a70b91c:0270a000	summary	mental	4	0x63f0b8	literal:0x165cfb0	1	Above average
+classic	PE:6a70b91c:0270a000	summary	mental	5	0x63f0eb	inline:0x63f0eb	1	High
+classic	PE:6a70b91c:0270a000	summary	mental	6	0x63f0fd	inline:0x63ed1a	1	Superior
+classic	PE:6a70b91c:0270a000	custom	physical	0	0x626a63	literal:0x165bda0	1	Very Low
+classic	PE:6a70b91c:0270a000	custom	physical	1	0x626a71	literal:0x165bdac	1	Low
+classic	PE:6a70b91c:0270a000	custom	physical	2	0x626a7f	literal:0x165bdb0	1	Below Average
+classic	PE:6a70b91c:0270a000	custom	physical	3	0x626a8d	literal:0x165bd58	1	Average
+classic	PE:6a70b91c:0270a000	custom	physical	4	0x626a9b	literal:0x165bd60	1	Above Average
+classic	PE:6a70b91c:0270a000	custom	physical	5	0x626aa9	literal:0x165bd70	1	High
+classic	PE:6a70b91c:0270a000	custom	physical	6	0x626ab7	literal:0x165bd78	1	Superior
+classic	PE:6a70b91c:0270a000	custom	mental	0	0x626b4d	literal:0x165bda0	1	Very Low
+classic	PE:6a70b91c:0270a000	custom	mental	1	0x626b5b	literal:0x165bdac	1	Low
+classic	PE:6a70b91c:0270a000	custom	mental	2	0x626b69	literal:0x165bdb0	1	Below Average
+classic	PE:6a70b91c:0270a000	custom	mental	3	0x626b77	literal:0x165bd58	1	Average
+classic	PE:6a70b91c:0270a000	custom	mental	4	0x626b85	literal:0x165bd60	1	Above Average
+classic	PE:6a70b91c:0270a000	custom	mental	5	0x626b93	literal:0x165bd70	1	High
+classic	PE:6a70b91c:0270a000	custom	mental	6	0x626ba1	literal:0x165bd78	1	Superior

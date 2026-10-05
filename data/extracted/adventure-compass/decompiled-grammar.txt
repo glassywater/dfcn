@@ -1,0 +1,195 @@
+Native Adventure compass site popup text grammar (53.16 PE)
+
+Source images come from data/runtime/native-pe-images.json. This document is
+a reconstruction of native source branches requested for the translation
+task; it is not a test or a report of observed in-game output.
+
+Steam image:   PE:6a70a6d9:02711000
+Classic image: PE:6a70b91c:0270a000
+
+All addresses below are RVAs.
+
+Role                               Steam               Classic
+Owning adventure renderer          7f3cb0..7f6c21      7f1530..7f44a1
+Cached compass site popup          7f5490..7f5837      7f2d10..7f30b7
+Site kind leaf                     10cbe50..10cc160    10c6dc0..10c70d0
+Site kind 11-way table              10cc160             10c70d0
+Site dark adjective                10cbe10             10c6d80
+Creature raw NAME[2] adjective      aa3770              aa07f0
+Native language site name          a946e0              a91760
+Site squared distance              1083120             107e090
+Site bearing                       1083220             107e190
+Popup bearing 16-way table          7f6ba0              7f4420
+Complete popup string -> wrap      8e7310              8e4b80
+
+Popup producer (same branch order in both configured images)
+
+    site = lookup_site(selected_compass_site_id);
+    if (!site || !controlled_unit) leave_popup_branch;
+    text = "The ";
+    if (site.type == 1) text += "dark ";
+    if (site.type != 10) {
+        entity = governing_entity_for_site(site);
+        if (entity && !(entity.flags & 0x400)) {
+            text += creature_raw[entity.race].name[2];
+            text += ' ';
+        }
+    }
+    text += site_kind(site);
+    if (site.name.has_name) {
+        text += " of ";
+        text += native_language_name(site.name, capitalize=true,
+                                     only_first_part=false);
+    }
+    text += (site.type == 3 && site.max_depth == 0) ? " are " : " is ";
+    bearing = site_bearing(site, player_position);
+    if (bearing == -1 || currently_in_selected_site(site, player_position)) {
+        text += "here";
+    } else {
+        d = site_squared_xy_distance(site, player_position);
+        if (d > 100)     text += "far";
+        else if (d >=64) text += "a day's travel";
+        else if (d >=36) text += "nearly a day's travel";
+        else if (d >=9)  text += "a half day's travel";
+        else if (d >=0)  text += "a short walk";
+        // Signed-negative result appends no distance words.
+        text += " to the ";
+        text += compass_bearing[bearing];
+    }
+    text += ".";
+    wrap_complete_string(text, width=30);
+
+The currently_in_selected_site branch is the native conjunction recovered
+from Steam 7f5660..7f56cd / Classic 7f2ee0..7f2f4d:
+
+    current_site != null;
+    current_site has no absolute subsite coordinate
+        (subtype data absent or subtype+0x20 == 0xfff0bdc0);
+    current_site == selected_site;
+    either tile-location flags contain 0x100 or no current-site-building
+        was returned by the local-coordinate lookup.
+
+The 16 bearing outputs, ordered by both native jump tables, are exactly:
+
+    north, north-northeast, northeast, east-northeast,
+    east, east-southeast, southeast, south-southeast,
+    south, south-southwest, southwest, west-southwest,
+    west, west-northwest, northwest, north-northwest.
+
+The bearing getter's complete body returns only -1 or 0..15. It uses the
+site's absolute subsite coordinate when available and otherwise the site
+rectangle's center; coincident XY returns -1, other XY follows the native
+atan2 and 16 angular interval branches. Therefore the caller's >15 default
+does not introduce another normally reachable bearing production.
+
+The distance getter uses the same subsite-or-site-center alternatives and
+returns the sum of squared XY offsets in the native signed 32-bit result.
+Its fallback branch follows the first return and is retained in the source
+disassembly through the beginning of the adjacent bearing helper. Negative
+distance is still retained as the caller's native branch; it has no words.
+
+There are 97 finite where productions including final punctuation:
+
+    "here."
+    five distance phrases x 16 bearings
+    empty distance x 16 bearings
+
+The empty-distance forms append the literal leading space from " to the ".
+Since agreement already ends in a space, the unwrapped native sentence has
+two spaces in " is  to the " or " are  to the ". A native word-wrap boundary
+can consume one of the physical separator spaces. This is a producer branch,
+not an invented fragment for the supplied screenshot.
+
+Site-kind leaf: complete selector and subtype branches
+
+    type 0 or 3:
+        min_depth == 0 && max_depth > 0 -> "fortress"
+        min_depth > 0                 -> "mountain halls"
+        other depth values            -> "hillocks"
+    type 1:
+        IS_CITY (flags[0] & 8)        -> "fortress"
+        otherwise                     -> "pits"
+    type 2                            -> "cave"
+    type 4                            -> "forest retreat"
+    type 5:
+        IS_CITY                       -> "town"
+        otherwise                     -> "hamlet"
+    type 6                            -> "important location"
+    type 7:
+        lair subtype == 3             -> "shrine"
+        lair subtype == 2             -> "labyrinth"
+        other/missing subtype         -> "lair"
+    type 8:
+        missing subtype               -> "fortress"
+        fortress subtype == 1         -> "tower"
+        fortress subtype == 2         -> "monastery"
+        fortress subtype == 3         -> "fort"
+        other subtype                 -> "castle"
+    type 9                            -> "camp"
+    type 10:
+        monument subtype == 0         -> "tomb"
+        monument subtype == 1         -> "vault"
+        monument subtype == 2:
+            size >= 100               -> "mysterious palace"
+            15 <= size < 100           -> "mysterious dungeon"
+            size < 15                 -> "mysterious lair"
+        other/missing subtype         -> "monument"
+    other type                        -> "site"
+
+These are the same 24 distinct site nouns and dark/race composition recorded
+by data/extracted/world-site-type-sources.tsv and already handled by the
+existing world_site_type resolver. No additional site kind is inferred from
+the screenshot's word "lair".
+
+The creature field is the RAW adjective NAME[2], not the singular or plural
+species name. The popup sets caste=-1, so the helper reads creature_raw+0x60;
+the helper's optional caste fallback is retained in the disassembly but is
+not selected by this popup. The source remains a complete semantic field,
+including installed or mod-provided creature adjectives.
+
+Native site names are open data, not a finite English literal set. The saved
+language formatter includes authored first names, nickname policies, native
+language words, compound parts, articles and "of" names. It is the existing
+native site-name field handled by the name resolver; it must not be split
+into generic dictionary tokens or hardcoded to "Ashencavern".
+
+The four complete sentence shells are:
+
+    The {site-description} of {site-name} is {where}.
+    The {site-description} of {site-name} are {where}.
+    The {site-description} is {where}.
+    The {site-description} are {where}.
+
+The screenshot uses the named singular shell, the site kind "lair", native
+site name "Ashencavern", the >100 distance band and bearing case 2.
+
+Scope of the adjacent compass listing and other map cards
+
+The left compass frame is a site list, not a separate creature/quest popup.
+Its native listing literals, 16 abbreviated bearings, Gui/Qst badges and ***
+marker are also retained in the saved listing block and switch inventory.
+Gui is the category-2 guide badge; Qst is the category-1 quest badge; *** is
+the current-site/unknown-bearing marker. Each hovered list row writes that
+same site's +0x88 id to the cached popup selector. Neither badge introduces
+another right-popup prose branch.
+
+The complete owning Adventure renderer is retained, including the separate
+map look-info and Track/Spoor cards. Those are different native popup paths
+and have their existing map-hover/tracking semantic owners. In the compass
+site block, a failed site lookup leaves the branch; there is no alternative
+quest, unit, creature, location category, or warning text to enumerate there.
+
+Inventory files
+
+    native-owners.tsv: complete selected native bodies and lexical blocks
+    native-literals.tsv: exact RIP and inline operands, with instruction RVAs
+    native-calls.tsv: direct calls/tail calls from each retained body
+    native-switches.tsv: raw PE jump-table entries, not a hand-counted list
+    native-components.tsv: popup/type/list operands and bearing case sources
+    native-productions.tsv: dynamic sentence fields and finite where grammar
+    steam-producer-and-helpers.asm / classic-producer-and-helpers.asm:
+        owning renderer, popup, all semantic text helpers and listing block
+
+The extractor only reads configured image files and writes these native
+source inventories. No game UI, runtime load state, build, translation
+generator, self-test or simulated in-game display was used.

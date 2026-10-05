@@ -224,8 +224,69 @@ static std::string transliterate_native_history_name(std::string_view raw) {
 }
 
 std::optional<std::string> Overlay::translate_history_name(
-        const NativeHistoryName &name) const {
+        const NativeHistoryName &name, bool character) const {
     if (!name.has_name) return std::nullopt;
+    if (character) {
+        // Reproduce the game's English display first. WORD/POS identify only
+        // the original spelling here; the character-name translator receives
+        // that spelling and never chooses Chinese from hidden name fields.
+        std::array<std::string, 7> forms;
+        for (size_t slot = 0; slot < name.words.size(); ++slot) {
+            const auto &word = name.words[slot];
+            if (word.id.empty() || !word.has_form) continue;
+            const auto found = history_english_name_forms_.find(word.id);
+            if (found == history_english_name_forms_.end() ||
+                    word.part_of_speech < 0 || word.part_of_speech > 8)
+                return std::nullopt;
+            forms[slot] = found->second[static_cast<size_t>(word.part_of_speech)];
+        }
+        const auto capitalized = [](std::string value) {
+            if (!value.empty() && value.front() >= 'a' && value.front() <= 'z')
+                value.front() -= 'a' - 'A';
+            return value;
+        };
+        std::string english;
+        const bool nickname = !name.nickname.empty();
+        if (nickname && (name.nickname_mode == 0 || name.nickname_mode == 2))
+            english = "`" + name.nickname + "'";
+        else {
+            english = name.first_name;
+            if (nickname) {
+                if (!english.empty()) english += ' ';
+                english += "`" + name.nickname + "'";
+            }
+        }
+        if (nickname && name.nickname_mode == 2)
+            return translate_english_character_name(english);
+        const auto append = [&](const std::string &group) {
+            if (group.empty()) return;
+            if (!english.empty()) english += ' ';
+            english += group;
+        };
+        append(capitalized(forms[0] + forms[1]));
+        // a949d5 starts the title only for slots 2, 3 or 5. A lone slot 4
+        // stays invisible, including when a name was edited or inherited.
+        if (!name.words[2].id.empty() || !name.words[3].id.empty() ||
+                !name.words[5].id.empty()) {
+            std::string title;
+            const auto append_title = [&](const std::string &form) {
+                if (form.empty()) return;
+                if (!title.empty()) title += ' ';
+                title += capitalized(form);
+            };
+            append_title(forms[2]);
+            append_title(forms[3]);
+            if (!forms[4].empty()) {
+                append_title(forms[4]);
+                title += '-';
+                title += capitalized(forms[5]);
+            } else append_title(forms[5]);
+            if (!title.empty()) append((english.empty() ? "The " : "the ") + title);
+        }
+        if (!forms[6].empty())
+            append((english.empty() ? "Of " : "of ") + capitalized(forms[6]));
+        return translate_english_character_name(english);
+    }
     auto given_name = [&](const std::string &value) {
         if (contains_cjk_utf8(value)) return native_text_to_utf8(value);
         const auto reviewed = native_name_reviewed_transliterations_.find(lower_native_name(value));

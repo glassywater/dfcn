@@ -1,0 +1,77 @@
+edition	image_identity	formatter	group	attribute_id	jump_table_rva	branch_rva	reference_rva	literal_rva	source
+reference	PE:6a70a6d9:02711000	summary	physical	0	0x6419a4	0x6414a0	0x6414a6	0x1661fd8	strength
+reference	PE:6a70a6d9:02711000	summary	physical	1	0x6419a4	0x6414af	0x6414b5	0x1661fe8	agility
+reference	PE:6a70a6d9:02711000	summary	physical	2	0x6419a4	0x6414be	0x6414c4	0x1661ff0	toughness
+reference	PE:6a70a6d9:02711000	summary	physical	3	0x6419a4	0x6414cd	0x6414d3	0x1662000	endurance
+reference	PE:6a70a6d9:02711000	summary	physical	4	0x6419a4	0x6414dc	0x6414e2	0x1662668	recuperation
+reference	PE:6a70a6d9:02711000	summary	physical	5	0x6419a4	0x6414eb	0x6414f1	0x1662678	disease resistance
+reference	PE:6a70a6d9:02711000	summary	mental	0	0x6419bc	0x64171c	0x641722	0x1662690	analytical ability
+reference	PE:6a70a6d9:02711000	summary	mental	1	0x6419bc	0x64172e	0x641734	0x16626a4	focus
+reference	PE:6a70a6d9:02711000	summary	mental	2	0x6419bc	0x641740	0x641746	0x1662628	willpower
+reference	PE:6a70a6d9:02711000	summary	mental	3	0x6419bc	0x641752	0x641758	0x1662638	creativity
+reference	PE:6a70a6d9:02711000	summary	mental	4	0x6419bc	0x641764	0x64176a	0x1662648	intuition
+reference	PE:6a70a6d9:02711000	summary	mental	5	0x6419bc	0x641773	0x641779	0x1662658	patience
+reference	PE:6a70a6d9:02711000	summary	mental	6	0x6419bc	0x641782	0x641788	0x16625e4	memory
+reference	PE:6a70a6d9:02711000	summary	mental	7	0x6419bc	0x641791	0x641797	0x16625f0	linguistic ability
+reference	PE:6a70a6d9:02711000	summary	mental	8	0x6419bc	0x6417a0	0x6417a6	0x1662608	spatial sense
+reference	PE:6a70a6d9:02711000	summary	mental	9	0x6419bc	0x6417af	0x6417b5	0x1662618	musicality
+reference	PE:6a70a6d9:02711000	summary	mental	10	0x6419bc	0x6417be	0x6417c4	0x16625b8	kinesthetic sense
+reference	PE:6a70a6d9:02711000	summary	mental	11	0x6419bc	0x6417cd	0x6417d3	0x16026d8	empathy
+reference	PE:6a70a6d9:02711000	summary	mental	12	0x6419bc	0x6417dc	0x6417e2	0x16625d0	social awareness
+reference	PE:6a70a6d9:02711000	custom	physical	0	0x634b8c	0x6290dd	0x6290dd	0x1660d68	Strength
+reference	PE:6a70a6d9:02711000	custom	physical	1	0x634b8c	0x6290e9	0x6290e9	0x1660d78	Agility
+reference	PE:6a70a6d9:02711000	custom	physical	2	0x634b8c	0x6290f5	0x6290f5	0x1660d80	Toughness
+reference	PE:6a70a6d9:02711000	custom	physical	3	0x634b8c	0x629101	0x629101	0x1660d08	Endurance
+reference	PE:6a70a6d9:02711000	custom	physical	4	0x634b8c	0x62910d	0x62910d	0x1660d18	Recuperation
+reference	PE:6a70a6d9:02711000	custom	physical	5	0x634b8c	0x629119	0x629119	0x1660d28	Disease Resistance
+reference	PE:6a70a6d9:02711000	custom	mental	0	0x634ba4	0x6291c6	0x6291c6	0x1660d40	Analytical Ability
+reference	PE:6a70a6d9:02711000	custom	mental	1	0x634ba4	0x6291cf	0x6291cf	0x1660ccc	Focus
+reference	PE:6a70a6d9:02711000	custom	mental	2	0x634ba4	0x6291d8	0x6291d8	0x1660cd8	Willpower
+reference	PE:6a70a6d9:02711000	custom	mental	3	0x634ba4	0x6291e1	0x6291e1	0x1660ce8	Creativity
+reference	PE:6a70a6d9:02711000	custom	mental	4	0x634ba4	0x6291ea	0x6291ea	0x1660cf8	Intuition
+reference	PE:6a70a6d9:02711000	custom	mental	5	0x634ba4	0x6291f3	0x6291f3	0x1660820	Patience
+reference	PE:6a70a6d9:02711000	custom	mental	6	0x634ba4	0x6291fc	0x6291fc	0x166082c	Memory
+reference	PE:6a70a6d9:02711000	custom	mental	7	0x634ba4	0x629205	0x629205	0x1660838	Linguistic Ability
+reference	PE:6a70a6d9:02711000	custom	mental	8	0x634ba4	0x62920e	0x62920e	0x1660850	Spatial Sense
+reference	PE:6a70a6d9:02711000	custom	mental	9	0x634ba4	0x629217	0x629217	0x16607d8	Musicality
+reference	PE:6a70a6d9:02711000	custom	mental	10	0x634ba4	0x629220	0x629220	0x16607e8	Kinesthetic Sense
+reference	PE:6a70a6d9:02711000	custom	mental	11	0x634ba4	0x629229	0x629229	0x1660800	Empathy
+reference	PE:6a70a6d9:02711000	custom	mental	12	0x634ba4	0x629232	0x629232	0x1660808	Social Awareness
+classic	PE:6a70b91c:0270a000	summary	physical	0	0x63f3c4	0x63eec0	0x63eec6	0x165cfc0	strength
+classic	PE:6a70b91c:0270a000	summary	physical	1	0x63f3c4	0x63eecf	0x63eed5	0x165d1a8	agility
+classic	PE:6a70b91c:0270a000	summary	physical	2	0x63f3c4	0x63eede	0x63eee4	0x165d1b0	toughness
+classic	PE:6a70b91c:0270a000	summary	physical	3	0x63f3c4	0x63eeed	0x63eef3	0x165d1c0	endurance
+classic	PE:6a70b91c:0270a000	summary	physical	4	0x63f3c4	0x63eefc	0x63ef02	0x165d1d0	recuperation
+classic	PE:6a70b91c:0270a000	summary	physical	5	0x63f3c4	0x63ef0b	0x63ef11	0x165d160	disease resistance
+classic	PE:6a70b91c:0270a000	summary	mental	0	0x63f3dc	0x63f13c	0x63f142	0x165d178	analytical ability
+classic	PE:6a70b91c:0270a000	summary	mental	1	0x63f3dc	0x63f14e	0x63f154	0x165d18c	focus
+classic	PE:6a70b91c:0270a000	summary	mental	2	0x63f3dc	0x63f160	0x63f166	0x165d198	willpower
+classic	PE:6a70b91c:0270a000	summary	mental	3	0x63f3dc	0x63f172	0x63f178	0x165d128	creativity
+classic	PE:6a70b91c:0270a000	summary	mental	4	0x63f3dc	0x63f184	0x63f18a	0x165d138	intuition
+classic	PE:6a70b91c:0270a000	summary	mental	5	0x63f3dc	0x63f193	0x63f199	0x165d148	patience
+classic	PE:6a70b91c:0270a000	summary	mental	6	0x63f3dc	0x63f1a2	0x63f1a8	0x165d154	memory
+classic	PE:6a70b91c:0270a000	summary	mental	7	0x63f3dc	0x63f1b1	0x63f1b7	0x165d0d8	linguistic ability
+classic	PE:6a70b91c:0270a000	summary	mental	8	0x63f3dc	0x63f1c0	0x63f1c6	0x165d0f0	spatial sense
+classic	PE:6a70b91c:0270a000	summary	mental	9	0x63f3dc	0x63f1cf	0x63f1d5	0x165d100	musicality
+classic	PE:6a70b91c:0270a000	summary	mental	10	0x63f3dc	0x63f1de	0x63f1e4	0x165d110	kinesthetic sense
+classic	PE:6a70b91c:0270a000	summary	mental	11	0x63f3dc	0x63f1ed	0x63f1f3	0x15fd748	empathy
+classic	PE:6a70b91c:0270a000	summary	mental	12	0x63f3dc	0x63f1fc	0x63f202	0x165d578	social awareness
+classic	PE:6a70b91c:0270a000	custom	physical	0	0x6325ac	0x626afd	0x626afd	0x165bd20	Strength
+classic	PE:6a70b91c:0270a000	custom	physical	1	0x6325ac	0x626b09	0x626b09	0x165bd30	Agility
+classic	PE:6a70b91c:0270a000	custom	physical	2	0x6325ac	0x626b15	0x626b15	0x165bd38	Toughness
+classic	PE:6a70b91c:0270a000	custom	physical	3	0x6325ac	0x626b21	0x626b21	0x165bd48	Endurance
+classic	PE:6a70b91c:0270a000	custom	physical	4	0x6325ac	0x626b2d	0x626b2d	0x165bcd8	Recuperation
+classic	PE:6a70b91c:0270a000	custom	physical	5	0x6325ac	0x626b39	0x626b39	0x165bce8	Disease Resistance
+classic	PE:6a70b91c:0270a000	custom	mental	0	0x6325c4	0x626be6	0x626be6	0x165bd00	Analytical Ability
+classic	PE:6a70b91c:0270a000	custom	mental	1	0x6325c4	0x626bef	0x626bef	0x165bd14	Focus
+classic	PE:6a70b91c:0270a000	custom	mental	2	0x6325c4	0x626bf8	0x626bf8	0x165bef8	Willpower
+classic	PE:6a70b91c:0270a000	custom	mental	3	0x6325c4	0x626c01	0x626c01	0x165bf08	Creativity
+classic	PE:6a70b91c:0270a000	custom	mental	4	0x6325c4	0x626c0a	0x626c0a	0x165bf18	Intuition
+classic	PE:6a70b91c:0270a000	custom	mental	5	0x6325c4	0x626c13	0x626c13	0x165bf28	Patience
+classic	PE:6a70b91c:0270a000	custom	mental	6	0x6325c4	0x626c1c	0x626c1c	0x165beb4	Memory
+classic	PE:6a70b91c:0270a000	custom	mental	7	0x6325c4	0x626c25	0x626c25	0x165bec0	Linguistic Ability
+classic	PE:6a70b91c:0270a000	custom	mental	8	0x6325c4	0x626c2e	0x626c2e	0x165bed8	Spatial Sense
+classic	PE:6a70b91c:0270a000	custom	mental	9	0x6325c4	0x626c37	0x626c37	0x165bee8	Musicality
+classic	PE:6a70b91c:0270a000	custom	mental	10	0x6325c4	0x626c40	0x626c40	0x165be78	Kinesthetic Sense
+classic	PE:6a70b91c:0270a000	custom	mental	11	0x6325c4	0x626c49	0x626c49	0x165be90	Empathy
+classic	PE:6a70b91c:0270a000	custom	mental	12	0x6325c4	0x626c52	0x626c52	0x165be98	Social Awareness

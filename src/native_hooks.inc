@@ -18,6 +18,7 @@ static bool native_history_site_type(uintptr_t site, NativeHistoryEventData &out
 static bool native_history_war_selection(uintptr_t collection, int32_t &category,
     int32_t &index, int32_t &count);
 #include "native_history_names.inc"
+#include "native_workshop_names.inc"
 #include "native_world_artifact_cache.inc"
 #include "native_announcement_history.inc"
 #include "native_history_page_adapter.inc"
@@ -43,6 +44,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_stocks_search_hooks.inc"
 #include "native_unit_search_hooks.inc"
 #include "native_unit_identity_hooks.inc"
+#include "native_squad_name_hooks.inc"
 #include "native_adventure_charge_hooks.inc"
 #include "native_adventure_introduction.inc"
 #include "native_overview_event_hooks.inc"
@@ -74,6 +76,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_dfhack_item_print_ticket.h"
 #include "native_dfhack_console_hooks.inc"
 #include "native_dfhack_lua_output_hooks.inc"
+#include "native_dfhack_sitemap_hooks.inc"
 #include "native_dfhack_messagebox_hooks.inc"
 #include "native_dfhack_prompt_hooks.inc"
 #include "native_dfhack_stonesense_hooks.inc"
@@ -98,6 +101,7 @@ static bool install_sdl_hooks() {
         {"Translated Stocks search", install_native_stocks_search_hook},
         {"Translated unit search", install_native_unit_search_hook},
         {"Native unit identity fields", install_native_unit_identity_hooks},
+        {"Native authored squad names", install_native_squad_name_hooks},
         {"Native adventure charge fields", install_native_adventure_charge_hooks},
         {"Native adventure introduction error text", install_native_adventure_introduction_hooks},
         {"Native overview event source", install_native_overview_event_hooks},
@@ -138,6 +142,7 @@ static bool install_sdl_hooks() {
     (void)install_native_dfhack_capture_hook();
     (void)install_native_dfhack_console_hook();
     (void)install_native_dfhack_lua_output_hook();
+    (void)install_native_dfhack_sitemap_hook();
     (void)install_native_dfhack_messagebox_hook();
     (void)install_native_dfhack_prompt_hook();
     (void)install_native_dfhack_stonesense_hook();
@@ -151,6 +156,7 @@ static bool install_sdl_hooks() {
 }
 
 static void uninstall_sdl_hooks() {
+    uninstall_native_dfhack_sitemap_hook();
     uninstall_native_dfhack_lua_output_hook();
     uninstall_native_dfhack_stonesense_hook();
     uninstall_native_dfhack_prompt_hook();
@@ -192,6 +198,7 @@ static void uninstall_sdl_hooks() {
     uninstall_native_adventure_charge_hooks();
     uninstall_native_unit_identity_hooks();
     clear_native_unit_identities();
+    uninstall_native_squad_name_hooks();
     uninstall_native_stocks_search_hook();
     uninstall_native_item_search_hook();
 #ifdef _WIN32
@@ -208,6 +215,7 @@ static bool native_hooks_detached() {
         !native_dfhack_capture_hook_active() &&
         !native_dfhack_console_hook_active() &&
         !native_dfhack_lua_output_hook_active() &&
+        !native_dfhack_sitemap_hook_active() &&
         !native_dfhack_messagebox_hook_active() &&
         !native_dfhack_prompt_hook_active() &&
         !native_dfhack_stonesense_hook_active() &&
@@ -233,6 +241,7 @@ static bool native_hooks_detached() {
         !native_stocks_search_hook_active() &&
         !native_unit_search_hook_active() &&
         !native_unit_identity_hooks_active() &&
+        !native_squad_name_hooks_active() &&
         !native_adventure_charge_hooks_active() &&
         !native_adventure_introduction_hooks_active() &&
         !native_overview_event_hooks_active() &&

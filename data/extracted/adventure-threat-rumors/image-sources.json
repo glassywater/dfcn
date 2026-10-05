@@ -1,0 +1,108 @@
+[
+  {
+    "image": "reference",
+    "path": "D:\\program\\steam\\steamapps\\common\\Dwarf Fortress\\Dwarf Fortress.exe",
+    "identity": "PE:6a70a6d9:02711000",
+    "image_base": "0x140000000",
+    "functions": [
+      {
+        "role": "threat-speech",
+        "start": "0x1406878f0",
+        "end": "0x140688fa6",
+        "code_end": "0x140688f5c",
+        "packed_switch_data_start": "0x140688f5c"
+      },
+      {
+        "role": "threat-description",
+        "start": "0x14065bfb0",
+        "end": "0x14065e928",
+        "code_end": "0x14065e8b8",
+        "packed_switch_data_start": "0x14065e8b8"
+      },
+      {
+        "role": "location-description",
+        "start": "0x140690060",
+        "end": "0x140690b3a"
+      },
+      {
+        "role": "family-relation",
+        "start": "0x14075a580",
+        "end": "0x14075ad31",
+        "code_end": "0x14075ab80",
+        "packed_switch_data_start": "0x14075ab80"
+      },
+      {
+        "role": "cardinal-number",
+        "start": "0x14052e360",
+        "end": "0x14052eb6c",
+        "code_end": "0x14052eafc",
+        "packed_switch_data_start": "0x14052eafc"
+      },
+      {
+        "role": "english-name",
+        "start": "0x140a946e0",
+        "end": "0x140a94ea2"
+      },
+      {
+        "role": "stolen-item-noun",
+        "start": "0x140a82c10",
+        "end": "0x140a882fc",
+        "code_end": "0x140a880e0",
+        "packed_switch_data_start": "0x140a880e0"
+      }
+    ]
+  },
+  {
+    "image": "classic",
+    "path": "C:\\Users\\WIN11\\Downloads\\df_53_16_win\\Dwarf Fortress.exe",
+    "identity": "PE:6a70b91c:0270a000",
+    "image_base": "0x140000000",
+    "functions": [
+      {
+        "role": "threat-speech",
+        "start": "0x140685310",
+        "end": "0x1406869c6",
+        "code_end": "0x14068697c",
+        "packed_switch_data_start": "0x14068697c"
+      },
+      {
+        "role": "threat-description",
+        "start": "0x1406599d0",
+        "end": "0x14065c348",
+        "code_end": "0x14065c2d8",
+        "packed_switch_data_start": "0x14065c2d8"
+      },
+      {
+        "role": "location-description",
+        "start": "0x14068da80",
+        "end": "0x14068e55a"
+      },
+      {
+        "role": "family-relation",
+        "start": "0x140757fa0",
+        "end": "0x140758751",
+        "code_end": "0x1407585a0",
+        "packed_switch_data_start": "0x1407585a0"
+      },
+      {
+        "role": "cardinal-number",
+        "start": "0x14052bd80",
+        "end": "0x14052c58c",
+        "code_end": "0x14052c51c",
+        "packed_switch_data_start": "0x14052c51c"
+      },
+      {
+        "role": "english-name",
+        "start": "0x140a91760",
+        "end": "0x140a91f22"
+      },
+      {
+        "role": "stolen-item-noun",
+        "start": "0x140a7fc90",
+        "end": "0x140a8537c",
+        "code_end": "0x140a85160",
+        "packed_switch_data_start": "0x140a85160"
+      }
+    ]
+  }
+]

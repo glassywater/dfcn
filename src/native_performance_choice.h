@@ -9,7 +9,7 @@ namespace dfcn {
 struct NativePerformanceChoice {
     int32_t type = -1, id = -1;
     bool unnamed = false;
-    std::string species;
+    std::string source, species;
 
     bool operator==(const NativePerformanceChoice &) const = default;
 };

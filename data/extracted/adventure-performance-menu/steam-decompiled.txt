@@ -1,0 +1,222 @@
+Steam adventure performance / writing choice source reconstruction
+Image identity: PE:6a70a6d9:02711000
+Image base: 0x140000000
+This is source extraction and semantic reconstruction, not an execution result.
+Names below are descriptive aliases, not recovered native symbol names.
+Choice-ID names follow performance_menu_choice_type in
+data/upstream/df-structures/df.d_interface.xml; the native object fields and
+event-filter calls below establish the site/HF/entity/subregion distinction.
+
+Source ranges and their direct text-producing callees
+----------------------------------------------------
+menu rebuild       0x140854ec0..0x140858260
+renderer           0x140870260..0x140872cec
+option insertion   0x140858260 (caption sorting / insertion; no English literal)
+sphere caption     0x140756690..0x140757380
+poetic form        0x140e76400..0x140e7cec8
+musical form       0x140dd5ce0..0x140ddd464
+dance form         0x1404ea820..0x1404eeb08
+written content    0x140cc5d50..0x140cc6a0e
+story/object prose 0x140b8eeb0..0x140b92634
+generated name     0x140a946e0
+personal name      0x140a94030
+
+Each corresponding steam-helper-ADDRESS.asm preserves actual native instructions,
+call sites and string addresses. steam-literals.tsv retains every referenced
+ASCII string including repeated references and suffix slices produced by SIMD
+string construction. steam-unique-text.tsv groups the unique native literals by
+the enclosing text producer. Suffix slices are not separate UI sentences.
+steam-jump-tables.tsv preserves all 21 state destinations, 33 value destinations,
+26 menu genre destinations, 130 sphere destinations, empty-state destinations,
+all option IDs 8..39 renderer destinations and 26 work-description destinations.
+steam-enumerated-text.tsv pairs finite indices with their actual branch literals.
+steam-book-articles.tsv preserves the native byte remap for a/an per work genre.
+
+Menu rebuild state switch (table 0x140858120, valid state 0..20)
+--------------------------------------------------------------
+State 0, branch 0x140854f9e: main action choices.
+  ID 0 Tell a story; ID 20 Give a sermon; ID 1 Recite a poem;
+  ID 2 Perform music; ID 3 Dance; ID 34 Prepare choreography;
+  ID 32 Compose music; ID 30 Compose a poem; ID 36 Write something down.
+  Availability conditions decide which actions are inserted; the literals do
+  not change with those conditions.
+State 1, 0x1408555b3: story subject type.
+  ID 5 Tell a story about a person or creature; ID 4 Tell a story about a site;
+  ID 6 Tell a story about a civilization or organization;
+  ID 7 Tell a story about a region.
+State 2, 0x14085570b: known site name objects, ID 8 (STORY_SITE).
+  collectKnownSites source is world+0xf01de0; name helper 0x140a946e0.
+State 3, 0x140855dcd: person/creature historical figures, ID 9.
+  Figure/identity name alternatives invoke 0x140a946e0; unavailable native
+  names produce the explicit Unknown literal, not a different action caption.
+State 4, 0x14085689c: civilization/organization entities, ID 10 (STORY_ENTITY).
+  Entity name is at object+0x20 and ID at +0x3c; helper 0x140a946e0.
+State 5, 0x14085698b: region objects, ID 11 (STORY_SUBREGION).
+  Source is world+0xf01cb0, region name at object+0x78; same name helper.
+State 6, 0x140856a77: subject-related historical events, ID 12.
+  Subject kind 8/9/10/11 (site/HF/entity/subregion) selects event filters
+  through virtual slots +0x90/+0x88/+0xc0/+0xa8, respectively. Actual calls:
+  ID8 -> 0x140856dea; ID9 -> 0x140856cea;
+  ID10 -> 0x140856bea; ID11 -> 0x140856aea.
+  Accepted event captions use virtual slot +0xd8.
+State 7, 0x140856ebf: poetic forms (ID 13) and poems (ID 14).
+  Generated form name is at form+8; work title is at work+8.
+State 8, 0x140857167: musical forms (ID 15) and compositions (ID 16).
+  Same form-name / title distinction.
+State 9, 0x140857417: musical performer role (ID 17).
+  Instrument-bearing role: Play + actual item caption (virtual +0x188 or
+  native item helper 0x140c65450), or Simulate + instrument raw title (+0x68).
+  Role without instrument: flag 1 gives Sing; otherwise flag 4 gives Chant;
+  otherwise Speak. Instrument captions are generated fields, not fixed names.
+State 10, 0x140857868: dance forms (ID 18) and choreography (ID 19).
+State 11, 0x14085545b: sermon type.
+  ID 21 Give a sermon concerning a deity or object of worship
+  ID 22 Give a sermon concerning a cosmic principle
+  ID 23 Give a sermon promoting a value
+  ID 24 Give a sermon inveighing against a value
+State 12, 0x1408557fb: deity/worship historical figures, ID 25.
+  Names come from figure+0x38 through helper 0x140a946e0. Missing native name
+  uses Unknown. These are world-generated deity/object names, not a closed list.
+State 13, 0x140855b46: cosmic spheres, ID 26.
+  Loop compares index against 0x82 at 0x140855bb3: indices 0..129 inclusive.
+  Each caption invokes 0x140756690 at 0x140855b7c; its jump table is
+  0x140757174. There are 130 sphere captions. Out-of-range helper input gives
+  no sphere; that fallback is also extracted. This is not a 91-entry list.
+State 14, 0x140855bc1: belief values, ID 27 (promote).
+State 15, 0x140855bc1: same 33 belief values, ID 28 (oppose).
+  Actual value switch table is 0x140858174; Law through Knowledge are preserved
+  verbatim and indexed in steam-enumerated-text.tsv.
+State 16, 0x140857b17: available poetic forms to compose, ID 31.
+  Form pointer vector at menu+0xd8, generated name at form+8.
+State 17, 0x140857bcf: available musical forms to compose, ID 33.
+  Form pointer vector at menu+0xf0, generated name at form+8.
+State 18, 0x140857c7f: available dance forms to choreograph, ID 35.
+  Form pointer vector at menu+0x108, generated name at form+8.
+State 19, 0x140857d2f: writing medium / writable item, ID 37.
+  Object vector at menu+0x130..0x138; item caption virtual slot +0x5e8.
+  This state is not the memorized-work vector, despite the shared renderer title.
+State 20, 0x140857e19: prose genre ID 38 and memorized work ID 39.
+  Genre integer vector at menu+0x148, 26 switch literals at 0x1408581f8.
+  Memorized-work pointer vector at menu+0x160; caption is work title (+8).
+  ID 29 has no creation branch in this menu rebuild.
+
+Renderer headers and non-choice text
+------------------------------------
+state 16: Choose a poetic form for the composition.
+state 17: Choose a musical form for the composition.
+state 18: Choose a dance form for the choreography.
+states 19 AND 20: Select memorized content or a form of prose.
+all other states: What would you like to do?
+Done is constructed as immediate DWORD 0x656e6f44 rather than a literal pointer.
+Empty states 2..6: You don't know anything specific about this, unfortunately.
+Empty states 7,8,10: You must compose a piece first (or learn an improvisational form).
+Empty states 12..15: You don't believe anything relevant, unfortunately.
+  followed by: Assume an appropriate identity first if you'd like to pretend.
+The empty-state switch has no message for states 9 and 11.
+Search/control literals: ... and _; clipped description: (etc.).
+Rich text markers include [C:6:0:1] and [B]. These delimit color and paragraph
+construction; they are not visible English words.
+
+Selected option description switch (table 0x140872be0 for ID minus 8)
+--------------------------------------------------------------------
+ID 8/9/10/11: resolve selected site/person/organization/region, create subject
+  reference, then invoke story/object prose helper 0x140b8eeb0. The branch targets
+  are respectively 0x140871085/0x1408711dc/0x140871335/0x14087148e.
+ID 12: selected event description via its native virtual description method;
+  branch 0x1408715e7. It is not a fixed title-only description.
+ID 25: deity/worship subject detail, branch 0x140870f66, prose helper call
+  0x140871052 -> 0x140b8eeb0, same semantic subject-description path as stories.
+ID 13: poetic form alone, branch 0x140871698; call 0x140871779 -> 0x140e76400.
+ID 15: musical form alone, branch 0x1408719af; call 0x140871aac -> 0x140dd5ce0.
+ID 18: dance form alone, branch 0x140871dc5; call 0x140871e92 -> 0x1404ea820.
+ID 31/33/35: newly chosen form alone, branches 0x14087219b/0x14087225c/
+  0x1408722e3; calls 0x1408721ef/0x1408722b0/0x140872337 to the same helpers.
+ID 14/16/19: individual poem/composition/choreography construction below.
+ID 39: memorized written work construction below.
+Other IDs in 8..39 jump to 0x140872949 without a prose-building branch here.
+
+Individual performed works (ID 14 / ID 16 / ID 19)
+-------------------------------------------------
+work_id = selected_option.payload (+0x68)
+work = lookup corresponding global work collection by ID
+form_id = work+0x6c; form = lookup corresponding form collection
+prefix = [C:6:0:1] + work.title(+8) + " is an example of "
+if form exists:
+  prefix += generated_name(form+8, helper 0x140a946e0) + ".  "
+  prefix += written_content(work, helper 0x140cc5d50, mode 0)
+  prefix += "[B]"
+  prefix += complete_form_description(form)
+else:
+  prefix += "poetry" / "musical composition" / "choreography" + ".  "
+  prefix += written_content(work, helper 0x140cc5d50, mode 0)
+No authored-by clause is generated in these three performed-work branches.
+Poem content call 0x140871919 then [B] at 0x14087191e then helper at 0x14087193b.
+Music content call 0x140871c5d then [B] then helper at 0x140871c7f.
+Dance content call 0x14087211e then [B] then helper at 0x14087214f.
+The form helper append is the entire form document; translating only its first
+identity sentence loses native rule/section/role descriptions.
+
+Memorized work (ID 39; branch 0x1408723a4)
+----------------------------------------
+work = menu[+0x160][selected_option.payload(+0x68)]
+genre = work+0x68 (0..25); genre literal table at 0x140872c84
+if title length at work+0x18 is nonzero:
+  prefix = [C:6:0:1] + title(+8) + " is " + article(genre) + " " + genre
+else:
+  prefix = [C:6:0:1] + "This is an untitled" + " " + genre
+author_id = work+0xa0
+if author_id != -1 and historical figure lookup finds author:
+  prefix += ", authored by "
+  author_name_object = helper 0x140c0f660(author)
+  if name object exists and its named byte (+0x72) is set:
+    prefix += personal_name(author_name_object, helper 0x140a94030)
+  # If figure exists but name is unavailable, authored-by stays with empty name.
+prefix += ".  "
+if genre == 7 (poem) / 12 (musical composition) / 13 (choreography)
+  and form(work+0x6c) is found:
+  prefix += "It is an example of " + generated_name(form+8) + ".  "
+  prefix += written_content(work, mode 0) + "[B]" + complete_form_description(form)
+else:
+  prefix += written_content(work, mode 0)
+Thus titled-a, titled-an and untitled each have named-author, omitted-author,
+and empty-author constructions. Omitted/empty author does not remove content.
+
+Written content helper 0x140cc5d50
+---------------------------------
+Reference pointers: work+0x30..0x38; parallel reference-type array: work+0x48.
+Type 0 supplies subjects; type 5 supplies chapter references. Reference prose is
+generated through its virtual slot +0x90. It is not an arbitrary UI string slot.
+Subject construction:
+  genre 20 and one subject -> It asks the question, "What if {reference} had unfolded differently?"
+  genre 16 -> It concerns the lineage of {reference}.
+  ordinary subjects -> It concerns {reference list}.
+  no subjects -> The work has no particular subject.
+Additional constructions:
+  The writing conveys a moral lesson regarding {reference list}.
+  The overall text emphasizes {reference list}.
+  For lyrics, the composer has selected {reference list}.
+  For musical accompaniment, the choreographer has selected {reference list}.
+  The writing {style} [and it / yet it {style}].
+Quality branches have six literal alternatives each for information, poetry,
+composition, choreography and prose. All thirty are in the written_content
+category of steam-unique-text.tsv, including information quality such as
+"Overall, the information is compiled masterfully" and the complete negative
+alternatives. Quality is appended to the same document, not a separate menu.
+Chapter construction:
+  The work has a single chapter. / The work has {count} chapters.
+  It covers {reference}. / The {ordinal} chapter covers {reference}.
+The helper includes content, style, quality and every chapter; no prefix-only
+translation can represent its output.
+
+Shared translation route used by this source family
+--------------------------------------------------
+Written-work introductions and 0x140cc5d50 content use complete h-namespace
+legends templates with typed nested references, plus work-sentence and
+work-reference productions in announcement-combat-grammar.tsv.
+Poetic form source uses the complete poetic identity/rule/section grammar;
+musical and dance source use their existing complete semantic paragraph grammars.
+Story/object source uses the full legends description grammar and generated-name
+translation. The native [B] boundary separates work prose from form prose.
+The adventure description card now retains that boundary and the introduction,
+resolves contiguous poetic paragraphs together, and replaces the card only when
+every paragraph has a complete translation. No head-only stripping is required.

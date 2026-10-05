@@ -1,0 +1,98 @@
+Adventure creation Skills page: fixed and generated native source domains
+
+page-skills-sources.tsv is a native source/data inventory assembled from
+page-literals.tsv, the retained page disassembly, and the existing authored
+local-overrides.tsv / translations.tsv dictionaries. It is not a runtime
+result, simulated display, test case, regression fixture, or game observation.
+
+The retained instruction range is reference RVA 0x628aaf..0x62bbfc and classic
+RVA 0x6264cf..0x62961c, with the common creation header and six tabs added from
+their own instructions. The TSV keeps each edition's native instruction and
+literal RVA rather than deduplicating away provenance. It contains 310
+instruction/domain records, including both closing-quote operands and six
+generated header formatter-domain records. The PE image identities are
+PE:6a70a6d9:02711000 and PE:6a70b91c:0270a000.
+
+The selected range has 45 distinct complete hover sentences. These and the
+fixed action/headings already have authored complete Chinese translations.
+The source operands preserve native spelling errors such as "stamina recover"
+and "minor affect"; their exact authored rows translate the intended meaning.
+No complete fixed sentence in this native slice needs a new dictionary phrase.
+
+Source roles and translation ownership:
+
+* Fixed page captions and actions are complete strings: Accept attributes and
+  skills, Archetypes, Customize, Your Attributes and Skills. Name and the
+  Background / Skills / Appearance / Personality / Equipment / Mount and pets
+  captions belong to the common creation header. The TSV retains their exact
+  authored dictionary row and flags.
+
+* Attributes remaining: and Skill remaining: are native prefixes followed by
+  the separately formatted integer. They use existing complete templates
+  Attributes remaining: {d} and Skill remaining: {d}, not independently
+  translated prefix fragments. Their final values depend on the character.
+
+* Attribute rating and attribute name operands are parts of one native string,
+  assembled before drawing. The native seven-by-nineteen source productions
+  are in attribute-productions.tsv. Existing full case-insensitive wil phrases
+  cover both lowercase comparison-card and Title Case customization variants.
+  Missing standalone words such as "Above Average" do not imply a missing
+  complete translation; adding fragment rules would lose the native field's
+  semantics. The comparison formatter skips Average and the custom formatter
+  includes it, as documented in attribute-formatters.txt.
+
+* Numeric cost suffix operands " pt" and " pts" belong to the complete
+  existing {d} pt and {d} pts templates. One point takes the singular suffix;
+  other quantities take plural. Both forms are authored in the current
+  dictionary. Native integer operands are values,
+  not new English prose. Attribute costs and clipping are documented in
+  attribute-formatters.txt; skill costs are drawn independently of names too.
+
+* Not is the native zero-skill rating operand at reference 0x629afe and classic
+  0x62751e. It is joined to a space and the known skill title produced by the
+  native skill-name formatter at 0x629b66 / 0x627586. The existing scoped
+  Skill rating: Not -> 未掌握 li row supplies its meaning. The general
+  Not {s} -> 非{s} template is not the skill rating's authored translation.
+  Positive ratings and names come from the established scoped skill glossary;
+  their complete productions are generated domains, not this renderer's
+  fixed literal sentences.
+
+* Affects skills: and Affected by attributes: head variable native lists.
+  Their items come from the native skill-name or attribute-name domains.
+  The optional " (minor)" suffix marks the lower contribution branch, while
+  Affects no skills. is the complete empty-list sentence. (etc) is a native
+  continuation marker when the allotted display cannot show the entire list.
+  All these fixed operands already have reviewed Chinese translations.
+
+* Native single spaces, comma-space, and quote operands are tagged
+  dynamic-separator. They retain punctuation until the complete string owner
+  formats the target. They are not missing words and should not receive
+  dictionary replacements merely because they have no standalone target.
+
+Generated common-header values:
+
+The unit display-name formatter call is reference 0x6282dc / classic 0x625cfc.
+The quoted unit gloss formatter is 0x628331 / 0x625d51. Literal quotes are
+applied at 0x628336 and 0x628381 / 0x625d56 and 0x625da1. These values may
+contain procedural language words, given names, surnames, nicknames, authored
+names, and native creature/caste qualifiers. They are not a finite list of
+sample people to hardcode into this page's dictionary. Retain the established
+native_unit_identity formatter/capture ownership and
+src/native_unit_identity_translation.inc / src/native_unit_identity_rows.inc
+translation pipeline.
+
+The creature/caste formatter is 0x62848c / 0x625eac. The native header then
+capitalizes its result and trims the visible creature-name field to at most
+24 characters at reference 0x62849d..0x6284be / classic 0x625ebd..0x625ede.
+The comma-space operand is at 0x6284e2 / 0x625f02. Native sex branches append
+CP437 byte 0x0c for female and 0x0b for male at 0x6284f9 / 0x628502 and
+0x625f19 / 0x625f22; other native sex values add neither symbol. Species,
+caste and identity are supplied by the existing native-unit/creature grammar;
+the sex symbols remain native semantic glyphs. Arbitrary screenshots or
+sample names must not be turned into a replacement glossary.
+
+The existing_translation column records authored data and its exact location,
+not a claim that game pixels were observed or that every semantic field owner
+is correctly applied. Translation availability and native source ownership
+are distinct: this screenshot's Above + Average strength split is a matcher
+ownership bug even though the full attribute phrases already exist.

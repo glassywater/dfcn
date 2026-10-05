@@ -457,6 +457,17 @@ Skill name: Misc. Object User	杂物使用	li
 Skill name: Knapper	碎石	li
 Skill name: Climber	攀爬	li
 Skill name: Critical Thinker	批判思考	li
+# Native skill-title switch entries 137..146, also selectable by RAW weapons.
+Skill name: Skill 1	技能1	li
+Skill name: Skill 2	技能2	li
+Skill name: Skill 3	技能3	li
+Skill name: Skill 4	技能4	li
+Skill name: Skill 5	技能5	li
+Skill name: Skill 6	技能6	li
+Skill name: Skill 7	技能7	li
+Skill name: Skill 8	技能8	li
+Skill name: Skill 9	技能9	li
+Skill name: Skill 10	技能10	li
 # Shared rated-skill grammar. Preserve the established list terminology;
 # ordinary adjectives and generated names retain their separate meanings.
 Skill rating: Not	未掌握	li
@@ -611,7 +622,8 @@ crowns	头冠	wi
 bone opal	骨欧泊	wi
 bone opals	骨欧泊	wi
 Welcome to the arena!	欢迎来到竞技场！	wi
-Here you can test mods or just play around.	你可以在此测试模组，也可以随意游玩。	wi
+# Match the complete explanation in the UI-message pass before its Here caption.
+Here you can test mods or just play around.	你可以在此测试模组，也可以随意游玩。	wiP
 Small arena	小型竞技场	wi
 Forest	森林	wi
 Classic Arena	经典竞技场	wi
@@ -2252,6 +2264,7 @@ Available Items	可用物品
 # Translate the entire category note so its centered caption also suppresses
 # the native suffix instead of overlaying Fortress alone on "mode item".
 Fortress mode item	要塞模式物品	w
+{d} pt	{d} 点	wt
 {d} pts	{d} 点	wt
 Bodywear	躯干装备	wi
 Garden Vegetables	农作物
@@ -2441,6 +2454,16 @@ loyalty unfavorably, sees sacrifice as wasteful and foolish, respects	持负面�
 # Fortress mode: world-map embark selection
 Nearest site: {d} days' travel {s}	最近地点：约{d}天路程，向{s}	wtx
 Nearest site: Here	最近地点：此处
+Nearest site:	最近地点：	w
+1/2 day's travel	半天路程	w
+Nearest site: 1/2 day's travel north	最近地点：向北，约半天路程	w
+Nearest site: 1/2 day's travel south	最近地点：向南，约半天路程	w
+Nearest site: 1/2 day's travel east	最近地点：向东，约半天路程	w
+Nearest site: 1/2 day's travel west	最近地点：向西，约半天路程	w
+Nearest site: 1/2 day's travel NE	最近地点：向东北，约半天路程	w
+Nearest site: 1/2 day's travel NW	最近地点：向西北，约半天路程	w
+Nearest site: 1/2 day's travel SE	最近地点：向东南，约半天路程	w
+Nearest site: 1/2 day's travel SW	最近地点：向西南，约半天路程	w
 east	东	w
 north	北	w
 south	南	w
@@ -2467,6 +2490,72 @@ Adventure compass: W	西
 Adventure compass: WNW	西西北
 Adventure compass: NW	西北
 Adventure compass: NNW	北西北
+# Complete compass-popup productions from native Steam 0x7f5490..0x7f5837.
+# Classic emits the same productions at 0x7f2d10..0x7f30b7.
+# Reuse the existing 40 eight-bearing distance fields in announcement-world-fields.tsv.
+# These scoped fields complete all 16 bearings, five distance bands, and native
+# negative-distance/here branches without matching isolated popup fragments.
+The {s} of {e} is {s}.	{e1}（{s1}）：{s2}。	hPt
+The {s} of {e} are {s}.	{e1}（{s1}）：{s2}。	hPt
+The {s} is {s}.	{s1}：{s2}。	hPt
+The {s} are {s}.	{s1}：{s2}。	hPt
+Announcement distance: here	位于此处	l
+Announcement distance: far to the north-northeast	远在北东北方	l
+Announcement distance: far to the east-northeast	远在东东北方	l
+Announcement distance: far to the east-southeast	远在东东南方	l
+Announcement distance: far to the south-southeast	远在南东南方	l
+Announcement distance: far to the south-southwest	远在南西南方	l
+Announcement distance: far to the west-southwest	远在西西南方	l
+Announcement distance: far to the west-northwest	远在西西北方	l
+Announcement distance: far to the north-northwest	远在北西北方	l
+Announcement distance: a day's travel to the north-northeast	距此一天路程的北东北方	l
+Announcement distance: a day's travel to the east-northeast	距此一天路程的东东北方	l
+Announcement distance: a day's travel to the east-southeast	距此一天路程的东东南方	l
+Announcement distance: a day's travel to the south-southeast	距此一天路程的南东南方	l
+Announcement distance: a day's travel to the south-southwest	距此一天路程的南西南方	l
+Announcement distance: a day's travel to the west-southwest	距此一天路程的西西南方	l
+Announcement distance: a day's travel to the west-northwest	距此一天路程的西西北方	l
+Announcement distance: a day's travel to the north-northwest	距此一天路程的北西北方	l
+Announcement distance: nearly a day's travel to the north-northeast	距此近一天路程的北东北方	l
+Announcement distance: nearly a day's travel to the east-northeast	距此近一天路程的东东北方	l
+Announcement distance: nearly a day's travel to the east-southeast	距此近一天路程的东东南方	l
+Announcement distance: nearly a day's travel to the south-southeast	距此近一天路程的南东南方	l
+Announcement distance: nearly a day's travel to the south-southwest	距此近一天路程的南西南方	l
+Announcement distance: nearly a day's travel to the west-southwest	距此近一天路程的西西南方	l
+Announcement distance: nearly a day's travel to the west-northwest	距此近一天路程的西西北方	l
+Announcement distance: nearly a day's travel to the north-northwest	距此近一天路程的北西北方	l
+Announcement distance: a half day's travel to the north-northeast	距此半天路程的北东北方	l
+Announcement distance: a half day's travel to the east-northeast	距此半天路程的东东北方	l
+Announcement distance: a half day's travel to the east-southeast	距此半天路程的东东南方	l
+Announcement distance: a half day's travel to the south-southeast	距此半天路程的南东南方	l
+Announcement distance: a half day's travel to the south-southwest	距此半天路程的南西南方	l
+Announcement distance: a half day's travel to the west-southwest	距此半天路程的西西南方	l
+Announcement distance: a half day's travel to the west-northwest	距此半天路程的西西北方	l
+Announcement distance: a half day's travel to the north-northwest	距此半天路程的北西北方	l
+Announcement distance: a short walk to the north-northeast	步行不远即可到达的北东北方	l
+Announcement distance: a short walk to the east-northeast	步行不远即可到达的东东北方	l
+Announcement distance: a short walk to the east-southeast	步行不远即可到达的东东南方	l
+Announcement distance: a short walk to the south-southeast	步行不远即可到达的南东南方	l
+Announcement distance: a short walk to the south-southwest	步行不远即可到达的南西南方	l
+Announcement distance: a short walk to the west-southwest	步行不远即可到达的西西南方	l
+Announcement distance: a short walk to the west-northwest	步行不远即可到达的西西北方	l
+Announcement distance: a short walk to the north-northwest	步行不远即可到达的北西北方	l
+Announcement distance: to the north	在北方	l
+Announcement distance: to the north-northeast	在北东北方	l
+Announcement distance: to the northeast	在东北方	l
+Announcement distance: to the east-northeast	在东东北方	l
+Announcement distance: to the east	在东方	l
+Announcement distance: to the east-southeast	在东东南方	l
+Announcement distance: to the southeast	在东南方	l
+Announcement distance: to the south-southeast	在南东南方	l
+Announcement distance: to the south	在南方	l
+Announcement distance: to the south-southwest	在南西南方	l
+Announcement distance: to the southwest	在西南方	l
+Announcement distance: to the west-southwest	在西西南方	l
+Announcement distance: to the west	在西方	l
+Announcement distance: to the west-northwest	在西西北方	l
+Announcement distance: to the northwest	在西北方	l
+Announcement distance: to the north-northwest	在北西北方	l
 # The companion popup uses the same label as its help page, in ordinary UI.
 # Keep the native title and location text left-aligned with their own columns.
 Companions	同伴	wl
@@ -3832,6 +3921,8 @@ Copper	铜	wi
 Nickel	镍	wi
 Zinc	锌	wi
 Platinum	铂	wi
+Tin	锡	wi
+Lead	铅	wi
 Calm	宁静	wi
 Wilderness	荒野	wi
 Untamed Wilds	未驯服的荒野	wi
@@ -4737,6 +4828,36 @@ Fine Tomb	华美陵墓	w
 Mausoleum	陵寝	w
 Grand Mausoleum	宏伟陵寝	w
 Royal Mausoleum	皇家陵寝	w
+# Keep the complete room requirement ahead of generated personal-name matching.
+Needs Meager Study	需要简陋书房	wl
+Needs Modest Study	需要普通书房	wl
+Needs Decent Study	需要像样书房	wl
+Needs Splendid Study	需要华美书房	wl
+Needs Throne Room	需要王座厅	wl
+Needs Opulent Throne Room	需要奢华王座厅	wl
+Needs Royal Throne Room	需要皇家王座厅	wl
+Needs Meager Quarters	需要简陋卧室	wl
+Needs Modest Quarters	需要普通卧室	wl
+Needs Decent Quarters	需要像样卧室	wl
+Needs Fine Quarters	需要舒适卧室	wl
+Needs Great Bedroom	需要宽敞卧室	wl
+Needs Grand Bedroom	需要豪华卧室	wl
+Needs Royal Bedroom	需要皇家卧室	wl
+Needs Meager Dining Room	需要简陋餐厅	wl
+Needs Modest Dining Room	需要普通餐厅	wl
+Needs Decent Dining Room	需要像样餐厅	wl
+Needs Fine Dining Room	需要精致餐厅	wl
+Needs Great Dining Room	需要宽敞餐厅	wl
+Needs Grand Dining Room	需要豪华餐厅	wl
+Needs Royal Dining Room	需要皇家餐厅	wl
+Needs Grave	需要坟墓	wl
+Needs Servant's Burial Chamber	需要仆役墓室	wl
+Needs Burial Chamber	需要墓室	wl
+Needs Tomb	需要陵墓	wl
+Needs Fine Tomb	需要华美陵墓	wl
+Needs Mausoleum	需要陵寝	wl
+Needs Grand Mausoleum	需要宏伟陵寝	wl
+Needs Royal Mausoleum	需要皇家陵寝	wl
 View all alerts.	查看全部警报。	w
 Hotkey: N	快捷键：N	w
 
@@ -5803,10 +5924,10 @@ You are distracted by unmet needs.  View your status for more information.	需�
 
 # Character header: the native renderer draws each relation prefix and its
 # object separately on one line (data/extracted/character-header-native-sources.tsv).
-# A creation name can be empty in the original native branch: its complete
-# bare caption means 创作：未命名. Named creations retain the complete relation
-# grammar in professions.toml.
-Creator of	创作：未命名	wli
+# The prefix alone does not establish whether the creation has a name.
+# Keep it neutral when the separate name draw is not composed with the prefix.
+# Complete named relations retain the grammar in professions.toml.
+Creator of	创作者：	wli
 Pet of	宠物主人：	wli
 Somebody	某人	wl
 
@@ -9220,6 +9341,167 @@ ambivalence	没什么特别的感觉	wi
 # Conversation-only search vocabulary, shared by full keyword rows and search.
 # These lookup-only senses never replace words inside unrelated prose.
 Conversation keyword label	关键词：	l
+# Complete portrait text branches from both configured native renderers:
+# data/extracted/adventure-conversation-portrait/.
+Conversation portrait label: Relationship	与你的关系：	l
+Conversation portrait label: General Mood	整体心情：	l
+Conversation event collection: {s}	在{s1}期间	ht
+Conversation demeanor: Patient	有耐心	l
+Conversation demeanor: Impatient	不耐烦	l
+Conversation demeanor: Animated	活跃	l
+Conversation demeanor: Agitated	烦躁	l
+Conversation demeanor: Sluggish	迟缓	l
+Conversation demeanor: Inactive	消沉	l
+Conversation demeanor: Bold	大胆	l
+Conversation demeanor: Confident	自信	l
+Conversation demeanor: Acquiescent	顺从	l
+Conversation demeanor: Unassuming	谦逊	l
+Conversation relationship: Loves you	爱你	l
+Conversation relationship: Likes you	喜欢你	l
+Conversation relationship: Hates you	憎恨你	l
+Conversation relationship: Dislikes you	不喜欢你	l
+Conversation relationship: Terrified of you	极度害怕你	l
+Conversation relationship: Scared of you	害怕你	l
+Conversation relationship: No fear of you	不怕你	l
+Conversation relationship: Respects you	尊敬你	l
+Conversation relationship: No respect for you	不尊敬你	l
+Conversation relationship: Low respect for you	不太尊敬你	l
+Conversation relationship: Trusts you	信任你	l
+Conversation relationship: Distrusts you	不信任你	l
+Conversation relationship: Highly Loyal	非常忠诚	l
+Conversation relationship: Loyal	忠诚	l
+Conversation relationship: Neutral	中立	l
+# All 129 text-bearing branches of the native 0..168 mood switch.
+# Eexcited is the native spelling and must remain a source key.
+Conversation mood: Annoyed	烦恼	l
+Conversation mood: Satisfied	满意	l
+Conversation mood: Grouchy	脾气暴躁	l
+Conversation mood: Grumpy	闷闷不乐	l
+Conversation mood: Fondness	喜欢	l
+Conversation mood: Suspicious	怀疑	l
+Conversation mood: Alarmed	惊慌	l
+Conversation mood: Shocked	震惊	l
+Conversation mood: Horrified	惊骇	l
+Conversation mood: Grimly Satisfied	冷酷的满足	l
+Conversation mood: Grieving	悲伤	l
+Conversation mood: Triumphant	得意	l
+Conversation mood: Enraged	狂怒	l
+Conversation mood: Eexcited	兴奋	l
+Conversation mood: Gaiety	欢快	l
+Conversation mood: Sad	悲伤	l
+Conversation mood: Joyous	喜悦	l
+Conversation mood: Blissful	极度幸福	l
+Conversation mood: Loving	充满爱意	l
+Conversation mood: Vengeful	想要复仇	l
+Conversation mood: Accepting	接受	l
+Conversation mood: Admiration	钦佩	l
+Conversation mood: Adoration	崇拜	l
+Conversation mood: Affection	喜爱	l
+Conversation mood: Agitated	躁动	l
+Conversation mood: Aggravated	恼火	l
+Conversation mood: In Agony	极度痛苦	l
+Conversation mood: Alienated	疏离	l
+Conversation mood: Amazed	惊奇	l
+Conversation mood: Ambivalent	没什么特别的感觉	l
+Conversation mood: Amused	愉快	l
+Conversation mood: Angry	愤怒	l
+Conversation mood: In Anguish	痛苦不堪	l
+Conversation mood: Anxious	焦虑	l
+Conversation mood: Apathetic	冷漠	l
+Conversation mood: Aroused	兴奋	l
+Conversation mood: Astonished	惊讶	l
+Conversation mood: Averse	厌恶	l
+Conversation mood: In Awe	敬畏	l
+Conversation mood: Bitter	苦涩	l
+Conversation mood: Bored	无聊	l
+Conversation mood: Caring	关心	l
+Conversation mood: Confused	困惑	l
+Conversation mood: Contemptuous	轻蔑	l
+Conversation mood: Content	满足	l
+Conversation mood: Dejected	沮丧	l
+Conversation mood: Delighted	欣喜	l
+Conversation mood: Despair	绝望	l
+Conversation mood: Disappointed	失望	l
+Conversation mood: Disgusted	厌恶	l
+Conversation mood: Disillusioned	幻灭	l
+Conversation mood: Dislike	反感	l
+Conversation mood: Dismayed	沮丧	l
+Conversation mood: Displeasure	不满	l
+Conversation mood: Distressed	苦恼	l
+Conversation mood: Eager	渴望	l
+Conversation mood: Elated	狂喜	l
+Conversation mood: Embarrassed	尴尬	l
+Conversation mood: Empathetic	感同身受	l
+Conversation mood: Empty	空虚	l
+Conversation mood: Enjoyment	愉快	l
+Conversation mood: Exasperated	懊恼	l
+Conversation mood: Exhilarated	欢腾	l
+Conversation mood: Afraid	害怕	l
+Conversation mood: Ferocious	凶狠	l
+Conversation mood: Free	自由自在	l
+Conversation mood: Frightened	惊恐	l
+Conversation mood: Frustrated	挫败	l
+Conversation mood: Gleeful	欢喜	l
+Conversation mood: Gloomy	阴郁	l
+Conversation mood: Glum	忧郁	l
+Conversation mood: Grateful	感激	l
+Conversation mood: Guilty	内疚	l
+Conversation mood: Happy	快乐	l
+Conversation mood: Hateful	仇恨	l
+Conversation mood: Hopeful	充满希望	l
+Conversation mood: Hopeless	绝望	l
+Conversation mood: Humiliated	屈辱	l
+Conversation mood: Insulted	受辱	l
+Conversation mood: Interested	感兴趣	l
+Conversation mood: Irritated	恼怒	l
+Conversation mood: Isolated	孤立	l
+Conversation mood: Jolly	开心	l
+Conversation mood: Jovial	快乐开朗	l
+Conversation mood: Jubilant	欢腾	l
+Conversation mood: Loathing	憎恶	l
+Conversation mood: Lonely	孤独	l
+Conversation mood: Lustful	充满欲望	l
+Conversation mood: Miserable	悲惨	l
+Conversation mood: Mortified	羞愧难当	l
+Conversation mood: Nervous	紧张	l
+Conversation mood: Nostalgic	怀旧	l
+Conversation mood: Optimistic	乐观	l
+Conversation mood: Outraged	愤慨	l
+Conversation mood: Panicked	惊慌失措	l
+Conversation mood: Patient	耐心	l
+Conversation mood: Passionate	热血沸腾	l
+Conversation mood: Pleasure	愉悦	l
+Conversation mood: Proud	自豪	l
+Conversation mood: Enraptured	陶醉	l
+Conversation mood: Rejected	感到被拒绝	l
+Conversation mood: Relieved	如释重负	l
+Conversation mood: Regretful	后悔	l
+Conversation mood: Remorseful	懊悔	l
+Conversation mood: Repentant	忏悔	l
+Conversation mood: Resentful	怨恨	l
+Conversation mood: Restless	躁动不安	l
+Conversation mood: Indignant	义愤	l
+Conversation mood: Self-pity	自怜	l
+Conversation mood: Servile	卑躬屈膝	l
+Conversation mood: Shaken	震惊不安	l
+Conversation mood: Ashamed	羞愧	l
+Conversation mood: Sympathy	同情	l
+Conversation mood: Tenderness	温柔	l
+Conversation mood: Terrified	极度恐惧	l
+Conversation mood: Thrilled	激动	l
+Conversation mood: Uneasy	不安	l
+Conversation mood: Unhappy	不快	l
+Conversation mood: Wonder	惊叹	l
+Conversation mood: Worried	担心	l
+Conversation mood: Wrathful	暴怒	l
+Conversation mood: Zealous	热忱	l
+Conversation mood: Existential Crisis	存在危机	l
+Conversation mood: Defeated	挫败	l
+Conversation mood: Expectant	期待	l
+Conversation mood: Doubt	怀疑	l
+Conversation mood: Enthusiastic	热情	l
+Conversation mood: Pessimistic	悲观	l
+Conversation mood: Euphoric	欣快	l
 Conversation keyword: greet	问候	l
 Conversation keyword: hello	你好	l
 Conversation keyword: bypass	略过	l
@@ -9236,6 +9518,28 @@ Conversation keyword: state	阐述	l
 Conversation keyword: feeling	感受	l
 Conversation keyword: emotion	情绪	l
 Conversation keyword: express	表达	l
+# Actual chooser snapshots can include these caption words alongside the
+# fixed emotion keywords. Complete caption binding handles dynamic fields;
+# these scoped entries retain the standalone search meanings.
+Conversation keyword: minor	些许	l
+Conversation keyword: upon	之后	l
+Conversation keyword: improving	提高	l
+Conversation keyword: tracking	追踪	l
+Conversation keyword: fighting	战斗	l
+Conversation keyword: pike	长枪术	l
+Conversation keyword: verbally	口头	l
+Conversation keyword: against	对抗	l
+Conversation keyword: after	之后	l
+Conversation keyword: experiencing	经历	l
+Conversation keyword: trauma	创伤	l
+Conversation keyword: seeing	目睹	l
+Conversation keyword: dwarf	矮人	l
+Conversation keyword: say	说	l
+Conversation keyword: something	一些	l
+Conversation keyword: general	概括	l
+Conversation keyword: about	关于	l
+Conversation keyword: your	你的	l
+Conversation keyword: emotional	情绪	l
 Conversation keyword: agreement	约定	l
 Conversation keyword: journey	旅程	l
 Conversation keyword: complain	抱怨	l
@@ -10051,6 +10355,12 @@ Unloaded	未装填	wi
 Loading	装填中	wi
 
 # Military uniform chooser: translate each complete preset as one label.
+individual choice, weapon	自行选择武器	wli
+indiv choice, melee	自行选择近战武器	wli
+indiv choice, ranged	自行选择远程武器	wli
+# The native generic choice is also emitted separately from its item noun.
+individual choice,	自行选择	wli
+individual choice	自行选择	wli
 Melee, leather armor	近战（皮甲）	wli
 Melee, metal armor	近战（金属甲）	wli
 Crossbow, leather armor	十字弩（皮甲）	wli
@@ -10776,3 +11086,197 @@ Vanilla mod description: These are the graphics for the default Dwarf Fortress i
 Vanilla mod description: These are the graphics for the default Dwarf Fortress buildings.	这些是《矮人要塞》默认建筑的图像。	l
 Vanilla mod description: These are the graphics for the default Dwarf Fortress plants and fungi.	这些是《矮人要塞》默认植物和真菌的图像。	l
 Vanilla mod description: For save compatibility.	用于保持存档兼容性。	l
+
+# Native Adventure performance chooser: every state, enum and text operand is
+# retained in data/extracted/adventure-performance-menu/ for both Windows PEs.
+# The bound native choice selects sphere/value/genre/voice semantics before
+# personal names. These keys do not replace homonymous UI words globally.
+Adventure action: Tell a story	讲故事	l
+Adventure action: Give a sermon	布道	l
+Adventure action: Recite a poem	朗诵诗歌	l
+Adventure action: Perform music	演奏音乐	l
+Adventure action: Dance	跳舞	l
+Adventure action: Prepare choreography	编排舞蹈	l
+Adventure action: Compose music	创作音乐	l
+Adventure action: Compose a poem	创作诗歌	l
+Adventure action: Write something down	写下内容	l
+Adventure action: Give a sermon concerning a deity or object of worship	发表关于神祇或崇拜对象的布道	l
+Adventure action: Give a sermon concerning a cosmic principle	发表关于宇宙原理的布道	l
+Adventure action: Give a sermon promoting a value	发表宣扬某种价值观的布道	l
+Adventure action: Give a sermon inveighing against a value	发表反对某种价值观的布道	l
+Adventure action: Tell a story about a person or creature	讲述一个人物或生物的故事	l
+Adventure action: Tell a story about a site	讲述一个地点的故事	l
+Adventure action: Tell a story about a civilization or organization	讲述一个文明或组织的故事	l
+Adventure action: Tell a story about a region	讲述一个地区的故事	l
+Adventure performance value: Law	法律	l
+Adventure performance value: Loyalty	忠诚	l
+Adventure performance value: Family	家庭	l
+Adventure performance value: Friendship	友谊	l
+Adventure performance value: Power	权势	l
+Adventure performance value: Truth	诚实	l
+Adventure performance value: Cunning	谋略	l
+Adventure performance value: Eloquence	口才	l
+Adventure performance value: Fairness	公平	l
+Adventure performance value: Decorum	礼仪	l
+Adventure performance value: Tradition	传统	l
+Adventure performance value: Artwork	艺术	l
+Adventure performance value: Cooperation	合作	l
+Adventure performance value: Independence	独立	l
+Adventure performance value: Stoicism	斯多葛主义	l
+Adventure performance value: Introspection	自省	l
+Adventure performance value: Self-Control	自律	l
+Adventure performance value: Tranquility	宁静	l
+Adventure performance value: Harmony	和谐	l
+Adventure performance value: Merriment	欢乐	l
+Adventure performance value: Craftsmanship	工艺	l
+Adventure performance value: Martial Prowess	武勇	l
+Adventure performance value: Skill	技能	l
+Adventure performance value: Hard Work	勤奋	l
+Adventure performance value: Sacrifice	牺牲	l
+Adventure performance value: Competition	竞争	l
+Adventure performance value: Perseverance	坚持	l
+Adventure performance value: Leisure Time	闲暇	l
+Adventure performance value: Commerce	商业	l
+Adventure performance value: Romance	浪漫	l
+Adventure performance value: Nature	自然	l
+Adventure performance value: Peace	和平	l
+Adventure performance value: Knowledge	知识	l
+Adventure performance genre: Manual	手册	l
+Adventure performance genre: Guide	指南	l
+Adventure performance genre: Chronicle	编年史	l
+Adventure performance genre: Short story	短篇小说	l
+Adventure performance genre: Novel	小说	l
+Adventure performance genre: Biography	传记	l
+Adventure performance genre: Autobiography	自传	l
+Adventure performance genre: Poem	诗	l
+Adventure performance genre: Play	戏剧	l
+Adventure performance genre: Letter	信	l
+Adventure performance genre: Essay	论文	l
+Adventure performance genre: Dialog	对话录	l
+Adventure performance genre: Musical composition	乐曲	l
+Adventure performance genre: Choreography	编舞	l
+Adventure performance genre: Comparative biography	比较传记	l
+Adventure performance genre: Biographical dictionary	传记辞典	l
+Adventure performance genre: Genealogy	谱系	l
+Adventure performance genre: Encyclopedia	百科全书	l
+Adventure performance genre: Cultural history	文化史	l
+Adventure performance genre: Cultural comparison	文化比较	l
+Adventure performance genre: Alternate history	架空历史	l
+Adventure performance genre: Treatise on technological evolution	技术演变论著	l
+Adventure performance genre: Dictionary	词典	l
+Adventure performance genre: Star chart	星图	l
+Adventure performance genre: Star catalogue	星表	l
+Adventure performance genre: Atlas	地图集	l
+Adventure performance voice: Sing	歌唱	l
+Adventure performance voice: Chant	吟唱	l
+Adventure performance voice: Speak	念白	l
+Adventure performance list continuation: (etc.)	（等）	l
+
+# Performance work cards omit authors when the creator id is absent or the
+# figure cannot be resolved. Their example-of opening also precedes the whole
+# work-content and artistic-form document; retain every native sentence.
+{b} is a {s}.	《{b}》是一部{s}。	ht
+{b} is an {s}.	《{b}》是一部{s}。	ht
+This is an untitled {s}.	这是一部无题{s}。	ht
+{b} is a {s}, authored by .	《{b}》是一部{s}，作者不详。	ht
+{b} is an {s}, authored by .	《{b}》是一部{s}，作者不详。	ht
+This is an untitled {s}, authored by .	这是一部无题{s}，作者不详。	ht
+{b} is an example of {p}.	《{b}》采用“{p}”的形式。	ht
+{b} is an example of poetry.	《{b}》是一首诗。	ht
+{b} is an example of musical composition.	《{b}》是一部音乐作品。	ht
+{b} is an example of choreography.	《{b}》是一部舞蹈作品。	ht
+
+# Complete site/entity footer productions from the image creator's native
+# selected-box builder. X/Y are typed fields owned by the scoped translator.
+# These keys do not match independent words in ordinary game text.
+Symbol picker site: X	这是一处X。	hi
+Symbol picker sites: X	这些是X。	hi
+Symbol picker site in region: X Y	这是一处位于Y的X。	hi
+Symbol picker sites in region: X Y	这些是位于Y的X。	hi
+Symbol picker entity: X	这是一个X。	hi
+Symbol picker entity race: X Y	XY	hi
+Symbol picker entity status local: X	本地X	hi
+Symbol picker entity status migrating: X	迁徙中的X	hi
+Symbol picker entity status nomadic: X	游牧的X	hi
+Symbol picker entity status outcast: X	被放逐的X	hi
+Symbol picker guild: X	X行会	hi
+Symbol picker craft guild	工匠行会	hi
+
+# Native Adventure odor productions: data/extracted/adventure-smell/.
+# Three status renderers share None/Death/ODOR_STRING/NAME[0], then capitalize.
+# Complete UI fields preserve the native separate label/value drawing.
+Strongest Odor: None	最强气味：无	hP
+Strongest Odor: Death	最强气味：死亡	hP
+Strongest Odor: Blood	最强气味：血液	hP
+Strongest Odor: Smoke	最强气味：烟雾	hP
+Strongest Odor: Mud	最强气味：淤泥	hP
+Strongest Odor: Bug innards	最强气味：昆虫内脏	hP
+Strongest Odor: Cooked flesh	最强气味：熟肉	hP
+Strongest Odor: Filth	最强气味：污垢	hP
+Strongest Odor: Soot	最强气味：烟灰	hP
+Strongest Odor: Vomit	最强气味：呕吐物	hP
+Strongest Odor: Soil	最强气味：土壤	hP
+Strongest Odor: Freshly-baked goods	最强气味：刚出炉的烘焙食品	hP
+Strongest Odor: Brimstone	最强气味：硫磺	hP
+Strongest Odor: {s}	最强气味：{s1}	hPt
+# The singular-name helper can return empty; the native label is still drawn.
+Strongest Odor:	最强气味：	wl
+Adventure: Describe Odor	冒险：描述气味	wl
+Adventure: Display Strongest Odor	冒险：显示最强气味	wl
+
+# Adventure creation personality customization, native creator-page literals.
+# Fixed-width facet labels are translated as whole controls, including arrows.
+Set your values and personality here.  [C] denotes the default cultural value.	在此设置价值观与人格。[C] 表示所属文化的默认值。	wlP
+Your personality facets might be restricted based on your creature type.	人格特质可能受你的生物种类限制。	wlP
+No love   <->    Loves easily	不易动情 ↔ 容易动情	wl
+No hate   <->    Hates easily	不生怨恨 ↔ 容易记恨	wl
+No envy   <->   Envies easily	不易嫉妒 ↔ 容易嫉妒	wl
+Cheerless <-> Easily cheerful	郁郁寡欢 ↔ 容易开心	wl
+No sadness   <->   Easily sad	不易悲伤 ↔ 容易悲伤	wl
+No anger  <->  Easily angered	不易生气 ↔ 容易生气	wl
+No anxiety  <->  Very anxious	沉着冷静 ↔ 容易焦虑	wl
+No lust      <->      Lustful	欲望淡薄 ↔ 欲望强烈	wl
+     --> Vulnerable to stress	→ 不耐压力	wl
+                   --> Greedy	→ 贪财	wl
+              --> Intemperate	→ 容易放纵	wl
+Avoid fights <->  Like brawls	避免打架 ↔ 喜欢斗殴	wl
+Quits easily <-> Too stubborn	轻易放弃 ↔ 过于固执	wl
+Meanness   <->   Wastefulness	吝啬 ↔ 浪费	wl
+Harmony      <->      Discord	友善和睦 ↔ 制造不和	wl
+Quarreler    <->    Flatterer	爱争吵 ↔ 爱奉承	wl
+Rude        <->        Polite	粗鲁 ↔ 礼貌	wl
+Overreliant <> Disdain advice	过于依赖 ↔ 不听劝告	wl
+Fearful     <->      Fearless	胆小 ↔ 无畏	wl
+Pusillanimous - Overconfident	畏缩 - 过于自信	wl
+                     --> Vain	→ 虚荣	wl
+                --> Ambitious	→ 野心勃勃	wl
+       --> Sense of gratitude	→ 心怀感激	wl
+Austere    <->    Extravagant	朴素 ↔ 奢侈	wl
+Humorless      <->       Zany	缺乏幽默 ↔ 滑稽诙谐	wl
+                 --> Vengeful	→ 记仇报复	wl
+No self-esteem   <->    Proud	缺乏自尊 ↔ 自豪骄傲	wl
+Merciful - Impartial -  Cruel	仁慈 - 公正 - 残酷	wl
+Scatterbrained - Singleminded	心不在焉 - 专心致志	wl
+Despairs - Hopeful - Presumes	绝望 - 乐观 - 盲目自信	wl
+Incurious     <->     Curious	缺乏好奇 ↔ 好奇心强	wl
+Shameless     <->     Bashful	不知羞耻 ↔ 害羞	wl
+Overshares    <->     Private	过于坦露 ↔ 注重隐私	wl
+Inattentive <-> Perfectionist	漫不经心 ↔ 追求完美	wl
+Acquiescing <-> Resists ideas	易受影响 ↔ 抗拒观念	wl
+    --> Tolerates differences	→ 包容差异	wl
+    --> Emotionally obsessive	→ 感情执着	wl
+       --> Swayed by emotions	→ 感情用事	wl
+               --> Altruistic	→ 乐于助人	wl
+                  --> Dutiful	→ 尽忠职守	wl
+Too deliberate <> Thoughtless	过于深思 ↔ 鲁莽草率	wl
+Sloppy      <->       Orderly	邋遢 ↔ 整洁有序	wl
+Distrustful <->  Too trusting	多疑 ↔ 过于轻信	wl
+Loner     <->      Gregarious	离群独处 ↔ 喜爱群居	wl
+Non-assertive <-> Overbearing	缺乏主见 ↔ 强势逼人	wl
+Leisurely    <->     Frenetic	悠闲 ↔ 忙碌不休	wl
+       --> Excitement-seeking	→ 寻求刺激	wl
+Just facts - Flights of fancy	实事求是 - 爱好幻想	wl
+     --> Inclined to abstract	→ 喜爱抽象思维	wl
+   --> Inclined to create art	→ 喜爱艺术创作	wl
+Done customizing	完成自定义	w
+Personality value: N/A	中立	l

@@ -13,6 +13,9 @@ static void uninstall_native_dfhack_capture_hook();
 static bool native_dfhack_capture_hook_active();
 static bool install_native_dfhack_console_hook();
 static bool install_native_dfhack_lua_output_hook();
+static bool install_native_dfhack_sitemap_hook();
+static std::optional<std::string> lookup_native_dfhack_sitemap_text(
+    const graphicst *gps, int x, int y, std::string_view visible);
 static bool install_native_dfhack_messagebox_hook();
 static bool install_native_dfhack_prompt_hook();
 static bool install_native_dfhack_stonesense_hook();
@@ -23,6 +26,7 @@ static std::optional<std::string> lookup_dfhack_stonesense_announcement(std::str
 
 struct NativeDfhackTileWrite {
     const graphicst *graphics = nullptr;
+    const unsigned char *source_grid = nullptr;
     int x = 0, y = 0, dimx = 0, dimy = 0;
     int32_t texture = 0;
     unsigned char ch = 0;
@@ -37,8 +41,8 @@ static size_t g_native_dfhack_logo_count = 0, g_native_dfhack_logo_next = 0;
 // Empty capture queries occur for every native glyph. Avoid taking the
 // record mutex until a complete logo has actually been published.
 static std::atomic_bool g_native_dfhack_has_logos{false};
-// DFHack paints its window and divider characters as textured tiles too.
-// Keep their original CP437 identity without reviving covered old artwork.
+// DFHack paints its window, dividers and ConfigureButton as textured tiles.
+// Keep their original pen identity without reviving covered old artwork.
 static std::vector<NativeDfhackTileWrite> g_native_dfhack_border_tiles;
 static int g_native_dfhack_border_dimx = 0, g_native_dfhack_border_dimy = 0;
 
@@ -69,6 +73,10 @@ static void record_native_dfhack_tile_write(const graphicst *gps,
     write.dimx = gps->dimx;
     write.dimy = gps->dimy;
     write.top_layer = gps->top_in_use;
+    const size_t tile = static_cast<size_t>(x) * gps->dimy + y;
+    const auto origin = native_text_grid_origin(*gps, tile, write.top_layer);
+    write.source_grid = origin.grid;
+    write.top_layer = origin.top_layer;
     const auto *bytes = static_cast<const unsigned char *>(pen);
     write.ch = bytes[0];
     std::memcpy(&write.texture, bytes + 4, sizeof(write.texture));
@@ -86,8 +94,10 @@ static void record_native_dfhack_tile_write(const graphicst *gps,
     }
     const size_t border_at = (static_cast<size_t>(write.x) * write.dimy + write.y) * 2 +
         static_cast<size_t>(write.top_layer);
+    const bool frame_character = write.ch >= 0xb3 && write.ch <= 0xda;
+    const bool configure_character = write.ch == '[' || write.ch == 0x0f || write.ch == ']';
     g_native_dfhack_border_tiles[border_at] =
-        write.ch >= 0xb3 && write.ch <= 0xda && write.texture > 0
+        (frame_character || configure_character) && write.texture > 0
             ? write : NativeDfhackTileWrite{};
     g_native_dfhack_tile_writes[g_native_dfhack_tile_next] = write;
     g_native_dfhack_tile_next = (g_native_dfhack_tile_next + 1) %
@@ -154,11 +164,42 @@ static void retain_native_dfhack_border_chars(const graphicst &gps,
             if (rows[y][x] != ' ') continue;
             const size_t tile = static_cast<size_t>(x) * gps.dimy + y;
             const bool top = native_ui_top_layer_at(gps, tile);
-            const auto &write = g_native_dfhack_border_tiles[tile * 2 + top];
+            // Popup matching uses a flattened copy of graphicst. Its object
+            // address and read layer differ from the native draw, while each
+            // cell retains the original grid/layer identity in its page.
+            const auto origin = native_text_grid_origin(gps, tile, top);
+            const auto &write = g_native_dfhack_border_tiles[tile * 2 + origin.top_layer];
             const auto *textures = top ? gps.screentexpos_top : gps.screentexpos;
-            if (write.graphics == &gps && write.texture > 0 && textures &&
-                    textures[tile] == write.texture)
+            if (!write.source_grid || write.source_grid != origin.grid ||
+                    write.texture <= 0 || !textures ||
+                    textures[tile] != write.texture) continue;
+            if (write.ch >= 0xb3 && write.ch <= 0xda) {
                 rows[y][x] = static_cast<char>(write.ch);
+                continue;
+            }
+            // A graphical ConfigureButton leaves three empty character
+            // cells in the top rail. Restore only its complete live [gear]
+            // sequence, rather than treating arbitrary bracket art as text.
+            if (write.ch != '[' || x > gps.dimx - 3) continue;
+            constexpr std::array<unsigned char, 3> configure_chars{'[', 0x0f, ']'};
+            bool complete = true;
+            for (size_t part = 0; complete && part < configure_chars.size(); ++part) {
+                const int part_x = x + static_cast<int>(part);
+                const size_t part_tile = static_cast<size_t>(part_x) * gps.dimy + y;
+                const bool part_top = native_ui_top_layer_at(gps, part_tile);
+                const auto part_origin = native_text_grid_origin(gps, part_tile, part_top);
+                const auto &part_write = g_native_dfhack_border_tiles[
+                    part_tile * 2 + part_origin.top_layer];
+                const auto *part_textures = part_top ? gps.screentexpos_top : gps.screentexpos;
+                complete = rows[y][part_x] == ' ' &&
+                    part_origin.grid == origin.grid && part_origin.top_layer == origin.top_layer &&
+                    part_write.source_grid == part_origin.grid &&
+                    part_write.ch == configure_chars[part] && part_write.texture > 0 &&
+                    part_textures && part_textures[part_tile] == part_write.texture;
+            }
+            if (complete)
+                for (size_t part = 0; part < configure_chars.size(); ++part)
+                    rows[y][x + static_cast<int>(part)] = static_cast<char>(configure_chars[part]);
         }
     }
 }

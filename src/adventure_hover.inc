@@ -30,17 +30,9 @@ void Overlay::capture_adventure_background(graphicst *graphics) {
 
 // Keep source identity independent of the hover card's final composite. All
 // recovery comes from this draw epoch or the current native text layers.
-static bool adventure_skill_field(std::string_view source) {
-    if (is_ranked_skill_source(source)) return true;
-    const std::string folded = lower(std::string(source));
-    if (folded.starts_with("very low ") || folded.starts_with("low ") ||
-        folded.starts_with("below average ") || folded.starts_with("average ") ||
-        folded.starts_with("above average ") || folded.starts_with("high ") ||
-        folded.starts_with("very high ") || folded.starts_with("superior ")) return true;
-    if (!source.ends_with(" pts")) return false;
-    source.remove_suffix(4);
-    return !source.empty() && std::all_of(source.begin(), source.end(),
-        [](unsigned char ch) { return ch >= '0' && ch <= '9'; });
+static bool adventure_skill_field(const Match &match) {
+    return match.rule == kRatedSkillRule || is_ranked_skill_source(match.source) ||
+        adventure_attribute_field(match) || adventure_points_field(match.source);
 }
 
 static std::optional<std::string> adventure_native_field(
@@ -96,7 +88,7 @@ void Overlay::ensure_adventure_background_matches() {
     for (Match match : find_matches(-1, raw)) {
         if (match.source == "Accept attributes and skills")
             adventure_before_hover_footer_y_ = match.y;
-        if (!adventure_skill_field(match.source)) continue;
+        if (!adventure_skill_field(match)) continue;
         const bool fold_case = match.rule >= 0 &&
             static_cast<size_t>(match.rule) < rules_.size() && rules_[match.rule].case_insensitive;
         const auto source = adventure_native_field(*gps_, match, raw, fold_case);
@@ -204,7 +196,7 @@ void Overlay::recover_adventure_skill_rows() {
     for (const auto &[raw, flags] : layers) {
         if (!raw) continue;
         for (Match match : find_matches(-1, raw)) {
-            if (match.y >= footer_y || !adventure_skill_field(match.source)) continue;
+            if (match.y >= footer_y || !adventure_skill_field(match)) continue;
             const bool fold_case = match.rule >= 0 &&
                 static_cast<size_t>(match.rule) < rules_.size() && rules_[match.rule].case_insensitive;
             const auto source = adventure_native_field(*gps_, match, raw, fold_case);

@@ -175,30 +175,46 @@ void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_
                 std::string source = first->source;
                 auto colors = message_foregrounds(first->x, first->y, first->length);
                 std::vector<int> target_colors;
-                auto target = translate_complete_announcement(source, colors, target_colors);
                 // An original complete record proves its wrap directly.
-                // Same colors, punctuation and indent alone never merge
-                // two independent log entries.
-                while (!target && y + 1 < bottom) {
-                    const auto normalized = native_announcement_display_source(source);
-                    const auto candidate = announcements->sorted_originals.lower_bound(normalized);
-                    if (candidate == announcements->sorted_originals.end() ||
-                            !candidate->starts_with(normalized) || *candidate == normalized) break;
-                    const auto next = record_row(y + 1);
-                    if (!next || next->x != first->x) break;
-                    const auto joined = source + ' ' + next->source;
-                    const auto joined_key = native_announcement_display_source(joined);
-                    const auto complete = announcements->sorted_originals.lower_bound(joined_key);
-                    if (complete == announcements->sorted_originals.end() ||
-                            !complete->starts_with(joined_key)) break;
-                    source = joined;
-                    colors.push_back(colors.back());
-                    const auto next_colors = message_foregrounds(next->x, next->y, next->length);
-                    colors.insert(colors.end(), next_colors.begin(), next_colors.end());
-                    rows.push_back(*next);
-                    ++y;
-                    target = translate_complete_announcement(source, colors, target_colors);
+                // PE 883f40 / classic 8817c0 draws adv_announcementst::str,
+                // or its parent report::text. A translated first physical
+                // row is still a prefix when that parent owns a later tail.
+                // Recover the native record BEFORE trying any translation.
+                // Stage each candidate so clipped/unmatched continuations
+                // cannot consume another independent log entry.
+                const auto normalized = native_announcement_display_source(source);
+                bool recovered_record = false;
+                for (auto original = announcements->sorted_originals.upper_bound(normalized);
+                        original != announcements->sorted_originals.end() &&
+                            original->starts_with(normalized); ++original) {
+                    if ((*original)[normalized.size()] != ' ') continue;
+                    auto candidate_rows = rows;
+                    auto candidate_source = source;
+                    auto candidate_colors = colors;
+                    int candidate_y = y;
+                    while (candidate_y + 1 < bottom) {
+                        const auto next = record_row(candidate_y + 1);
+                        if (!next || next->x != first->x) break;
+                        candidate_source += ' ';
+                        candidate_source += next->source;
+                        const auto joined = native_announcement_display_source(candidate_source);
+                        if (!original->starts_with(joined)) break;
+                        candidate_colors.push_back(candidate_colors.back());
+                        const auto next_colors = message_foregrounds(next->x, next->y, next->length);
+                        candidate_colors.insert(candidate_colors.end(), next_colors.begin(), next_colors.end());
+                        candidate_rows.push_back(*next);
+                        ++candidate_y;
+                        if (joined != *original) continue;
+                        rows = std::move(candidate_rows);
+                        source = std::move(candidate_source);
+                        colors = std::move(candidate_colors);
+                        y = candidate_y;
+                        recovered_record = true;
+                        break;
+                    }
+                    if (recovered_record) break;
                 }
+                auto target = translate_complete_announcement(source, colors, target_colors);
                 // A visible cancellation can differ from the retained history
                 // text (for example its current name/profession formatting).
                 // Recover its wrapped reason through ONE complete catalogue

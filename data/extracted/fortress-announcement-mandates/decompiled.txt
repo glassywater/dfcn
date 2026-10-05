@@ -1,0 +1,86 @@
+Native source ownership and reconstructed text productions
+==========================================================
+
+Images are taken from data/runtime/native-pe-images.json. The extraction tool
+uses the fixed native Windows objdump and PE unwind owners, never the running
+game or a translation execution. native-owners.tsv records exact image identity,
+path, literal address, instruction address and full owner bounds. The .asm files
+retain complete owners, including every native branch/call. Printable immediate
+bytes are operand evidence; numerically encoded unrelated data is not prose.
+
+Mandate creation:
+  reference 0x14134de20..0x14134eb2e
+  classic   0x141348d90..0x141349a9e
+  The native name/profession formatter is invoked with r8d=0.
+  reference 0x14134e739 -> 0x141330c30
+  classic   0x1413496a9 -> 0x14132bba0
+  Mandate mode 1 appends " has mandated the construction of certain goods.".
+  Mandate mode 0 appends " has imposed a ban on certain exports.".
+  Price-change branch appends " has altered the prices of goods.".
+  The same identity formatter precedes all three predicates. The identity is
+  a typed unit reference, including profession/office and territorial title;
+  it is not a whole-string personal name.
+
+Demand changes:
+  reference 0x14134ac10..0x14134bb1c
+  classic   0x141345b80..0x141346a8c
+  Old demand removal appends " has forgotten a demand.".
+  New demand creation appends " has a new demand.".
+  No separately authored success announcement occurs in these owners.
+
+Mandate termination:
+  reference 0x140e39910..0x140e3fde8
+  classic   0x140e34880..0x140e3ad58
+  Existing unit: unit formatter + " has ended a mandate.".
+  Absent unit: "A mandate has ended.".
+  The complete owner also constructs the missing-unit, Mountainhome royalty,
+  and famine records. Their authored alternatives are handled as full messages
+  in announcement-mandate-grammar.tsv rather than as globally applied fragments.
+
+Bulk mandate ending (the mandate-expire.asm filename names the displayed suffix,
+not an inferred timer cause):
+  reference 0x1413b2a30..0x1413b2c1f
+  classic   0x1413ad9a0..0x1413adb8f
+  The function iterates the mandate vector and removes entries whose unit pointer
+  matches the supplied unit. Count=0 returns without an announcement. Count=1
+  appends "'s mandate has ended.". Count>1 appends "'s mandates have ended.".
+  The branch captures only the displayed typed unit field; it never infers an
+  unknown noble or translates a territory as part of a personal name.
+
+Successful/unsuccessful result labels:
+  reference 0x140b58db0..0x140b5a6b8
+  classic   0x140b55df0..0x140b576f8
+  "mandate was obeyed", "mandate only partially completed", "mandate ignored",
+  and "nobody to punish for failed mandate" are branches of the general thought
+  event label formatter. They are not fortress announcement constructor strings
+  or evidence for automatic-queue failure notifications. Their complete owner is
+  retained for source attribution; no fabricated announcement variant is added.
+
+External automatic-queue announcement:
+  The exact user screenshot attests this complete output production:
+    Mandate Fulfilled: Automatically queued <job> x<count> for noble <unit>
+  The job is typed workshop/work-order text, count is decimal digits, and noble
+  is a typed unit label which may include nickname, office and territory.
+  Native reference/classic EXEs and installed DFHack core/plugin DLLs do not
+  contain this authored literal. Installed DFHack Lua/scripts, game save Lua,
+  dfhack-config/scripts and configured additional script paths provide no source.
+  The current script-paths.txt contains only comments; scripts contains README.md.
+
+  The public author page for Sizzlin's Mandate Fulfill is a candidate producer:
+    https://steamcommunity.com/sharedfiles/filedetails/?id=3735970744
+  It describes a pure DFHack script which creates manager orders and emits a
+  green announcement only when an order is successfully queued. It describes
+  material selection, existing-order exclusion, and replacement of missing
+  orders, but exposes no Lua implementation or authored branch text. The current
+  local workshop payload does not contain that item. Steam's public published-
+  file details API returns a manifest ID and empty file_url/filename.
+  Therefore only the screenshot-attested full queue production is added. No
+  invented duplicate-order, failure, material fallback, or completion notice is
+  asserted to come from this unavailable script.
+
+Runtime integration:
+  data/runtime/announcement-mandate-grammar.tsv uses fortress-announcement scope.
+  It is intended for the shared recursive announcement parser before permissive
+  legacy catalog templates. Typed fields are $unit, $job and $digits.
+  The ordinary build entry handles its import and deployment if core changes
+  require a build. This source-extraction tool does not build or deploy anything.

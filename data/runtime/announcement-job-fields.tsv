@@ -1,0 +1,340 @@
+# Complete fixed job captions and installed RAW reaction NAME inputs from both configured PE editions.
+# Lookup-only actor/job fields; never global words. See data/extracted/fortress-announcement-cancellations/.
+# The screenshot-attested plural brew name is retained alongside current RAW singular names.
+Fortress activity: Apply cast	打石膏	li
+Fortress activity: Assemble stone axe	组装石斧	li
+Fortress activity: Beat criminal	殴打罪犯	li
+Fortress activity: Bind book	装订书籍	li
+Fortress activity: Brew drink from fruit	用果实酿酒	li
+Fortress activity: Brew drink from plant	用植物酿酒	li
+Fortress activity: Brew drink from plants	用植物酿酒	li
+Fortress activity: Bring crutch	送来拐杖	li
+Fortress activity: Bring item to depot	将物品搬到贸易站	li
+Fortress activity: Bring item to shop	将物品搬到工坊	li
+Fortress activity: Butcher an animal	屠宰一个动物	li
+Fortress activity: Cage small animal	将小型动物关入笼子	li
+Fortress activity: Carve bone amulet	雕刻骨制护身符	li
+Fortress activity: Carve bone bracelet	雕刻骨制手镯	li
+Fortress activity: Carve bone cabochon	雕刻骨制弧面切工	li
+Fortress activity: Carve bone crown	雕刻骨制头冠	li
+Fortress activity: Carve bone earring	雕刻骨制耳环	li
+Fortress activity: Carve bone figurine	雕刻骨制小塑像	li
+Fortress activity: Carve bone ring	雕刻骨制戒指	li
+Fortress activity: Carve bone scepter	雕刻骨制节杖	li
+Fortress activity: Carve downward staircase	挖掘下行楼梯	li
+Fortress activity: Carve fortification	雕凿城防垛口	li
+Fortress activity: Carve ramp	挖掘斜坡	li
+Fortress activity: Carve track	雕凿轨道	li
+Fortress activity: Carve up/down staircase	挖掘上下楼梯	li
+Fortress activity: Carve upward staircase	挖掘上行楼梯	li
+Fortress activity: Carve wooden helve from branch	用树枝雕刻木制斧柄	li
+Fortress activity: Catch live fish	抓捕活鱼	li
+Fortress activity: Catch live land animal	捕获活的陆地动物	li
+Fortress activity: Cause trouble	惹是生非	li
+Fortress activity: Clean	清洁	li
+Fortress activity: Clean patient	清洗病人	li
+Fortress activity: Clean self	清洗自身	li
+Fortress activity: Clean trap	清理陷阱	li
+Fortress activity: Collect clay	收集黏土	li
+Fortress activity: Collect hive products	收集蜂箱产物	li
+Fortress activity: Collect sand	收集沙	li
+Fortress activity: Collect taxes	征税	li
+Fortress activity: Collect webs	收集网	li
+Fortress activity: Construct building	建造建筑	li
+Fortress activity: Cut gems	切割宝石	li
+Fortress activity: Cut raw glass into gems	将粗糙玻璃切割成宝石	li
+Fortress activity: Destroy building	拆除建筑	li
+Fortress activity: Detail floor	雕刻地板	li
+Fortress activity: Detail wall	雕刻墙壁	li
+Fortress activity: Diagnose patient	诊断病人	li
+Fortress activity: Dig	挖掘	li
+Fortress activity: Dig channel	挖掘沟道	li
+Fortress activity: Drain aquarium	排空水族箱	li
+Fortress activity: Dress wound	包扎伤口	li
+Fortress activity: Drink	饮用	li
+Fortress activity: Dump item	倾倒物品	li
+Fortress activity: Dye cloth	染布匹	li
+Fortress activity: Dye leather	染皮革	li
+Fortress activity: Dye thread	染线	li
+Fortress activity: Eat	进食	li
+Fortress activity: Engrave memorial slab	雕刻纪念石板	li
+Fortress activity: Execute criminal	处决罪犯	li
+Fortress activity: Extract from land animal	提炼陆地动物	li
+Fortress activity: Extract from plants	提炼植物	li
+Fortress activity: Extract from raw fish	提取生鱼汁液	li
+Fortress activity: Extract metal strands	提取金属线	li
+Fortress activity: Fell tree	砍倒树木	li
+Fortress activity: Fertilize field	给田地施肥	li
+Fortress activity: Fill aquarium	给水族箱注水	li
+Fortress activity: Fill pond	给池塘注水	li
+Fortress activity: Fill waterskin	灌满水袋	li
+Fortress activity: Fire ballista	发射弩炮	li
+Fortress activity: Fire bolt thrower	发射弩箭投射器	li
+Fortress activity: Fire catapult	发射投石机	li
+Fortress activity: Fish	捕鱼	li
+Fortress activity: Gather plants	采集植物	li
+Fortress activity: Get provisions	获取补给	li
+Fortress activity: Give food	送食物	li
+Fortress activity: Give water	送水	li
+Fortress activity: Glaze clay/stone craft	为黏土/石质工艺品上釉	li
+Fortress activity: Glaze clay/stone jug	为黏土/石质壶上釉	li
+Fortress activity: Glaze clay/stone statue	为黏土/石质雕像上釉	li
+Fortress activity: Glaze large clay/stone pot	为黏土质/石质大罐上釉	li
+Fortress activity: Go shopping	购物	li
+Fortress activity: Guard tax collector	保护税务官	li
+Fortress activity: Handle small creature	照料小型生物	li
+Fortress activity: Harvest plants	收获植物	li
+Fortress activity: Hunt	狩猎	li
+Fortress activity: Hunt for small creature	猎捕小型生物	li
+Fortress activity: Immobilize break	固定骨折部位	li
+Fortress activity: Install colony in hive	将蜂群安置到蜂箱	li
+Fortress activity: Kidnap	绑架	li
+Fortress activity: Link a building to trigger	将建筑连接到触发装置	li
+Fortress activity: Load ballista	装填弩炮	li
+Fortress activity: Load bolt thrower	装填弩箭投射器	li
+Fortress activity: Load cage trap	装填笼陷阱	li
+Fortress activity: Load catapult	装填投石机	li
+Fortress activity: Load stone trap	装填落石陷阱	li
+Fortress activity: Load weapon trap	装填武器陷阱	li
+Fortress activity: Make	制作	li
+Fortress activity: Make acacia bark dye	制作金合欢树皮染料	li
+Fortress activity: Make adamantine wafers	制作精金薄片	li
+Fortress activity: Make alder bark dye	制作桤树树皮染料	li
+Fortress activity: Make alder cone dye	制作桤树球果染料	li
+Fortress activity: Make almond shell dye	制作扁桃壳染料	li
+Fortress activity: Make apple bark dye	制作苹果树皮染料	li
+Fortress activity: Make apple leaf dye	制作苹果叶染料	li
+Fortress activity: Make apricot bark dye	制作杏树皮染料	li
+Fortress activity: Make ash	制作灰烬	li
+Fortress activity: Make ash bark dye	制作白蜡树树皮染料	li
+Fortress activity: Make avocado skin dye	制作鳄梨皮染料	li
+Fortress activity: Make banana leaf dye	制作香蕉叶染料	li
+Fortress activity: Make banana peel dye	制作香蕉皮染料	li
+Fortress activity: Make bayberry dye	制作杨梅染料	li
+Fortress activity: Make bayberry leaf dye	制作杨梅叶染料	li
+Fortress activity: Make bilberry dye	制作越橘染料	li
+Fortress activity: Make billon bars (use bars)	制作毕朗合金锭（使用金属锭）	li
+Fortress activity: Make billon bars (use ore)	制作毕朗合金锭（使用矿石）	li
+Fortress activity: Make birch bark dye	制作桦树树皮染料	li
+Fortress activity: Make bismuth bronze bars	制作铋青铜锭	li
+Fortress activity: Make black bronze bars	制作乌青铜锭	li
+Fortress activity: Make blackberry dye	制作黑莓染料	li
+Fortress activity: Make blueberry dye	制作蓝莓染料	li
+Fortress activity: Make brass bars (use bars)	制作黄铜锭（使用金属锭）	li
+Fortress activity: Make brass bars (use ore)	制作黄铜锭（使用矿石）	li
+Fortress activity: Make bronze bars (use bars)	制作青铜锭（使用金属锭）	li
+Fortress activity: Make bronze bars (use ore)	制作青铜锭（使用矿石）	li
+Fortress activity: Make cabbage leaf dye	制作卷心菜叶染料	li
+Fortress activity: Make carrot dye	制作胡萝卜染料	li
+Fortress activity: Make charcoal	制作木炭	li
+Fortress activity: Make cheese	制作奶酪	li
+Fortress activity: Make cherry bark dye	制作樱桃树皮染料	li
+Fortress activity: Make cherry leaf dye	制作樱桃叶染料	li
+Fortress activity: Make chestnut bark dye	制作栗树树皮染料	li
+Fortress activity: Make chestnut hull dye	制作栗树外壳染料	li
+Fortress activity: Make chestnut leaf dye	制作栗树叶染料	li
+Fortress activity: Make clay bricks	制作黏土砖	li
+Fortress activity: Make clay crafts	制作黏土工艺品	li
+Fortress activity: Make clay hive	制作黏土蜂箱	li
+Fortress activity: Make clay jug	制作黏土壶	li
+Fortress activity: Make clay statue	制作黏土雕像	li
+Fortress activity: Make coffee bean dye	制作咖啡豆染料	li
+Fortress activity: Make coke from bituminous coal	使用烟煤制作焦炭	li
+Fortress activity: Make coke from lignite	使用褐煤制作焦炭	li
+Fortress activity: Make cranberry dye	制作蔓越莓染料	li
+Fortress activity: Make display case	制作展示柜	li
+Fortress activity: Make eggplant dye	制作茄子染料	li
+Fortress activity: Make electrum bars (use bars)	制作琥珀金锭（使用金属锭）	li
+Fortress activity: Make electrum bars (use ore)	制作琥珀金锭（使用矿石）	li
+Fortress activity: Make fine pewter bars (use bars)	制作精白锡锭（使用金属锭）	li
+Fortress activity: Make fine pewter bars (use ore)	制作精白锡锭（使用矿石）	li
+Fortress activity: Make ginkgo leaf dye	制作银杏叶染料	li
+Fortress activity: Make grape dye	制作葡萄染料	li
+Fortress activity: Make guava bark dye	制作番石榴树皮染料	li
+Fortress activity: Make guava leaf dye	制作番石榴叶染料	li
+Fortress activity: Make hazel bark dye	制作榛树皮染料	li
+Fortress activity: Make hazel leaf dye	制作榛叶染料	li
+Fortress activity: Make larch bark dye	制作落叶松树皮染料	li
+Fortress activity: Make large clay pot	制作黏土质大罐	li
+Fortress activity: Make lay pewter bars (use bars)	制作劣白锡锭（使用金属锭）	li
+Fortress activity: Make lye	制作碱液	li
+Fortress activity: Make mahogany bark dye	制作桃花心木树皮染料	li
+Fortress activity: Make mangrove bark dye	制作红树树皮染料	li
+Fortress activity: Make mangrove leaf dye	制作红树叶染料	li
+Fortress activity: Make maple bark dye	制作枫树树皮染料	li
+Fortress activity: Make mead	酿造蜜酒	li
+Fortress activity: Make milk of lime	制作石灰乳	li
+Fortress activity: Make nickel silver bars	制作镍银锭	li
+Fortress activity: Make oak bark dye	制作橡树树皮染料	li
+Fortress activity: Make olive bark dye	制作橄榄树皮染料	li
+Fortress activity: Make olive leaf dye	制作橄榄叶染料	li
+Fortress activity: Make onion skin dye	制作洋葱皮染料	li
+Fortress activity: Make parchment	制作羊皮纸	li
+Fortress activity: Make peach bark dye	制作桃树皮染料	li
+Fortress activity: Make peanut shell dye	制作花生壳染料	li
+Fortress activity: Make pear bark dye	制作梨树皮染料	li
+Fortress activity: Make pear leaf dye	制作梨叶染料	li
+Fortress activity: Make pearlash	制作珍珠灰	li
+Fortress activity: Make persimmon dye	制作柿染料	li
+Fortress activity: Make pig iron bars	制作生铁锭	li
+Fortress activity: Make pine bark dye	制作松树树皮染料	li
+Fortress activity: Make pineapple leaf dye	制作菠萝叶染料	li
+Fortress activity: Make plaster powder	制作石膏粉	li
+Fortress activity: Make plum bark dye	制作李子树皮染料	li
+Fortress activity: Make pomegranate bark dye	制作石榴树皮染料	li
+Fortress activity: Make pomegranate leaf dye	制作石榴叶染料	li
+Fortress activity: Make pomegranate rind dye	制作石榴皮染料	li
+Fortress activity: Make potash from ash	用灰烬制草碱	li
+Fortress activity: Make potash from lye	用碱液制草碱	li
+Fortress activity: Make potato skin dye	制作马铃薯皮染料	li
+Fortress activity: Make quicklime	制作生石灰	li
+Fortress activity: Make quire	制作稿纸	li
+Fortress activity: Make radish dye	制作小萝卜染料	li
+Fortress activity: Make raspberry dye	制作树莓染料	li
+Fortress activity: Make red spinach leaf dye	制作红菠菜叶染料	li
+Fortress activity: Make rhubarb leaf dye	制作大黄叶染料	li
+Fortress activity: Make rice husk dye	制作稻米谷壳染料	li
+Fortress activity: Make rose gold bars	制作玫瑰金锭	li
+Fortress activity: Make scroll	制作卷轴	li
+Fortress activity: Make sharp rock	制作尖石	li
+Fortress activity: Make sheet from plant	用植物做纸张	li
+Fortress activity: Make soap from oil	用植物油制作肥皂	li
+Fortress activity: Make soap from tallow	用脂油制作肥皂	li
+Fortress activity: Make sorghum leaf dye	制作高粱叶染料	li
+Fortress activity: Make spinach leaf dye	制作菠菜叶染料	li
+Fortress activity: Make steel bars	制作钢锭	li
+Fortress activity: Make sterling silver bars	制作标准银锭	li
+Fortress activity: Make sweet potato skin dye	制作甘薯皮染料	li
+Fortress activity: Make tea leaf dye	制作茶叶染料	li
+Fortress activity: Make tomato skin dye	制作番茄皮染料	li
+Fortress activity: Make totem	制作图腾	li
+Fortress activity: Make traction bench	制作牵引台	li
+Fortress activity: Make trifle pewter bars (use bars)	制作廉白锡锭（使用金属锭）	li
+Fortress activity: Make trifle pewter bars (use ore)	制作廉白锡锭（使用矿石）	li
+Fortress activity: Make turnip skin dye	制作芜菁皮染料	li
+Fortress activity: Make watermelon dye	制作西瓜染料	li
+Fortress activity: Make wax crafts	制作蜂蜡工艺品	li
+Fortress activity: Make willow bark dye	制作柳树树皮染料	li
+Fortress activity: Make willow leaf dye	制作柳树叶染料	li
+Fortress activity: Make wooden barrel	制作木制圆桶	li
+Fortress activity: Make wooden bed	制作木制床	li
+Fortress activity: Make wooden bin	制作木制储物箱	li
+Fortress activity: Make wooden bookcase	制作木制书架	li
+Fortress activity: Make wooden bucket	制作木制提桶	li
+Fortress activity: Make wooden buckler	制作木制小盾	li
+Fortress activity: Make wooden cabinet	制作木制橱柜	li
+Fortress activity: Make wooden casket	制作木棺	li
+Fortress activity: Make wooden chair	制作木制椅子	li
+Fortress activity: Make wooden chest	制作木制箱子	li
+Fortress activity: Make wooden crutch	制作木制拐杖	li
+Fortress activity: Make wooden door	制作木制门	li
+Fortress activity: Make wooden grate	制作木制格栅	li
+Fortress activity: Make wooden hatch cover	制作木制活动盖板	li
+Fortress activity: Make wooden pedestal	制作木制基座	li
+Fortress activity: Make wooden shield	制作木制盾牌	li
+Fortress activity: Make wooden splint	制作木制夹板	li
+Fortress activity: Make wooden stepladder	制作木制折梯	li
+Fortress activity: Make wooden table	制作木制桌子	li
+Fortress activity: Make wooden training axe	制作木制训练斧	li
+Fortress activity: Make wooden training short sword	制作木制训练短剑	li
+Fortress activity: Make wooden training spear	制作木制训练矛	li
+Fortress activity: Manage work orders	管理工单	li
+Fortress activity: Mash plant into slurry	将植物研磨成纸浆	li
+Fortress activity: Melt a metal object	融炼一件金属物品	li
+Fortress activity: Mill plants	碾磨植物	li
+Fortress activity: Mill seeds/nuts to paste	将种子/坚果磨浆	li
+Fortress activity: No activity	无活动	li
+Fortress activity: No job	没有工作	li
+Fortress activity: Operate pump	操作泵机	li
+Fortress activity: Pen/pasture small animal	将小型动物带入畜栏或牧场	li
+Fortress activity: Pickup equipment	拾取装备	li
+Fortress activity: Pit/pond small animal	将小型动物放入坑洞或池塘	li
+Fortress activity: Place in traction	进行牵引治疗	li
+Fortress activity: Place item in tomb	将物品放入陵墓	li
+Fortress activity: Place track vehicle	放置轨道载具	li
+Fortress activity: Plant seeds	播种种子	li
+Fortress activity: Polish stones	打磨石头	li
+Fortress activity: Prepare a raw fish	处理一条生鱼	li
+Fortress activity: Prepare easy meal	准备简单食物	li
+Fortress activity: Prepare fine meal	准备精美食物	li
+Fortress activity: Prepare lavish meal	准备奢侈食物	li
+Fortress activity: Press honey from honeycomb	从蜜脾中压出蜂蜜	li
+Fortress activity: Press liquid from fruit	从果实中压出液体	li
+Fortress activity: Press liquid from paste	从浆糊中压出液体	li
+Fortress activity: Press plant slurry into paper sheet	将植物纸浆压成纸张	li
+Fortress activity: Process plant to bag	用袋子进行甩籽	li
+Fortress activity: Process plants	加工植物	li
+Fortress activity: Process plants (barrel)	加工植物(圆桶)	li
+Fortress activity: Process plants (vial)	加工植物(小瓶)	li
+Fortress activity: Pull the lever	拉动控制杆	li
+Fortress activity: Push track vehicle	推动轨道载具	li
+Fortress activity: Put in chains	戴上锁链	li
+Fortress activity: Put item on display	陈列物品	li
+Fortress activity: Reaction	进行反应	li
+Fortress activity: Recover pet	找回宠物	li
+Fortress activity: Recover wounded	救助伤员	li
+Fortress activity: Release pet	释放宠物	li
+Fortress activity: Release small creature	释放小型生物	li
+Fortress activity: Remove Rotten Tissue	清除坏死组织	li
+Fortress activity: Remove construction	拆除构筑	li
+Fortress activity: Remove stairs/ramps	移除楼梯与坡道	li
+Fortress activity: Render fat	将脂肪熬制成脂油	li
+Fortress activity: Repair Compound Fracture	修复开放性骨折	li
+Fortress activity: Report crime	报告罪行	li
+Fortress activity: Rest	休息	li
+Fortress activity: Return kill	带回猎物	li
+Fortress activity: Seek artifact	寻找造物	li
+Fortress activity: Seek infant	寻找婴儿	li
+Fortress activity: Set bone	接骨	li
+Fortress activity: Sleep	睡觉	li
+Fortress activity: Smooth floor	打磨地板	li
+Fortress activity: Smooth wall	打磨墙壁	li
+Fortress activity: Spin thread	纺线	li
+Fortress activity: Starting fist fight	挑起斗殴	li
+Fortress activity: Stop Bleeding	止血	li
+Fortress activity: Store armor	存放护甲	li
+Fortress activity: Store item in bag	将物品存入袋子	li
+Fortress activity: Store item in barrel	将物品存入圆桶	li
+Fortress activity: Store item in bin	将物品存入储物箱	li
+Fortress activity: Store item in location	将物品存放到地点	li
+Fortress activity: Store item in stockpile	将物品存入储物堆	li
+Fortress activity: Store item in vehicle	将物品存入载具	li
+Fortress activity: Store owned item	存放私人物品	li
+Fortress activity: Store squad equipment	存放小队装备	li
+Fortress activity: Store weapon	存放武器	li
+Fortress activity: Strange mood	怪异心情	li
+Fortress activity: Surgery	外科手术	li
+Fortress activity: Suture	缝合	li
+Fortress activity: Tame a small animal	驯化小型动物	li
+Fortress activity: Tan a hide	鞣制一张皮革	li
+Fortress activity: Trade at depot	在贸易站交易	li
+Fortress activity: Unchain	解开锁链	li
+Fortress activity: Unchain pet	解开宠物的锁链	li
+Fortress activity: Update stockpile records	更新库存记录	li
+Fortress activity: Weave metal cloth	织金属布	li
+Fortress activity: Weave thread into cloth	将线织成布	li
+Fortress activity: Weave thread into silk	将线织成丝绸	li
+Fortress activity: Weave yarn into cloth	将纱线织成布	li
+
+# Complete noun branches used by the shared job-item requirement formatter.
+Workshop recipe: casket	棺	l
+Workshop recipe: caskets	棺	l
+Workshop recipe: coffer	保险箱	l
+Workshop recipe: coffers	保险箱	l
+Workshop recipe: coffin	灵柩	l
+Workshop recipe: coffins	灵柩	l
+Workshop recipe: sarcophagus	华棺	l
+Workshop recipe: sarcophagi	华棺	l
+Workshop recipe: charcoal	木炭	l
+Workshop recipe: pearl	珍珠	l
+Workshop recipe: pearls	珍珠	l
+Workshop recipe: rock	石子	l
+Workshop recipe: rocks	石子	l
+Workshop recipe: small rock	小石子	l
+Workshop recipe: small rocks	小石子	l
+Workshop recipe: limb/body cast	肢体/身体石膏	l
+Workshop recipe: limb/body casts	肢体/身体石膏	l
+Workshop recipe: state perfect	完美	l
+
+# Dynamic memorial subject wrapper, PE job selector 211.
+Fortress activity: format engrave memorial	{s}（雕刻纪念铭文）	l

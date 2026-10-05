@@ -53,6 +53,23 @@ class Generator:
                     if child.get('name') == 'entering_item_filter')
         for child in children[last + 1:]:
             stocks.remove(child)
+        # Workshop identity consumes only the RAW token and complete name.
+        # Later graphics, requirements and tooltip data are not borrowed.
+        building = self.types['building_def']
+        children = list(building)
+        last = next(i for i, child in enumerate(children)
+                    if child.get('name') == 'name')
+        for child in children[last + 1:]:
+            building.remove(child)
+        # Squad captions use the independently authored alias when present.
+        # Only this prefix is borrowed; positions, orders and schedules stay
+        # outside the name snapshot.
+        squad = self.types['squad']
+        children = list(squad)
+        last = next(i for i, child in enumerate(children)
+                    if child.get('name') == 'alias')
+        for child in children[last + 1:]:
+            squad.remove(child)
         self.lines: list[str] = []
         self.serial = 0
         symbols = ET.parse(SOURCE / 'symbols.xml').getroot()
@@ -236,11 +253,11 @@ class Generator:
                  'historical_figure_info', 'interaction_profilest', 'creature_raw', 'caste_raw',
                  'identity', 'artifact_record', 'item', 'item_toolst', 'itemdef_toolst', 'itemdef_instrumentst',
                  'itemdef_weaponst', 'entity_entity_link',
-                 'general_ref_is_artifactst', 'plant_raw', 'material', 'inorganic_raw',
+                 'general_ref_is_artifactst', 'plant_raw', 'material', 'inorganic_raw', 'building_def',
                  'viewscreen_legendsst', 'viewscreen_new_regionst',
                  'mod_headerst', 'viewscreen_titlest', 'viewscreen_new_arenast',
                  'viewscreen_dwarfmodest', 'viewscreen_dungeonmodest', 'viewscreen_worldst',
-                 'widget_textbox', 'stocks_interfacest',
+                 'widget_textbox', 'stocks_interfacest', 'squad',
                  'plotinfost', 'report',
                  'adv_announcementst',
                  'name_creator_interfacest', 'language_word', 'language_translation', 'language_name'}
@@ -305,6 +322,12 @@ class Generator:
             legacy = next(offset for offset, _, field in stocks.fields if field == path)
             lines.append(f'static constexpr size_t stocks_{label}_offset = '
                          f'DFCN_NATIVE_FIELD({stocks.cpp}, {path}, 0x{legacy:x});')
+        squad = self.cache['squad']
+        alias_path = ident('alias')
+        alias_legacy = next(offset for offset, _, field in squad.fields
+                            if field == alias_path)
+        lines.append('static constexpr size_t squad_alias_offset = '
+                     f'DFCN_NATIVE_FIELD({squad.cpp}, {alias_path}, 0x{alias_legacy:x});')
         lines.append('struct ModScreenFields { size_t active, hover_rows; std::array<size_t, 3> headers; };')
         for name, label, active, headers in (
                 ('viewscreen_titlest', 'title', 'managing_mods', ('mod',)),

@@ -1,0 +1,855 @@
+edition	role	function_va	xref_va	literal_va	literal
+reference	paragraph-producer	0x140df0660	0x140df08de	0x14171fb10	The world generator is having trouble placing enough mountain peaks.  
+reference	paragraph-producer	0x140df0660	0x140df0903	0x14171fc30	You must have at least as many of these highest elevation points as you are requiring peaks.  
+reference	paragraph-producer	0x140df0660	0x140df090a	0x14171fc90	You might want to check your preset elevations for the elevation 400.  
+reference	paragraph-producer	0x140df0660	0x140df0913	0x14171fa60	Can the elevation 400 be placed enough times to provide space for your peaks?  
+reference	paragraph-producer	0x140df0660	0x140df091a	0x14171fab0	You might want to check your maximum elevation value and other elevation parameters.  
+reference	paragraph-producer	0x140df0660	0x140df0939	0x14171fbe0	Alternatively, you can reduce the number of peaks required by the parameters.
+reference	paragraph-producer	0x140df0660	0x140df09eb	0x14171fde0	Can your parameters achieve elevations between 100 and 299?  
+reference	paragraph-producer	0x140df0660	0x140df0a01	0x14171fd90	You might want to adjust the parameters governing elevation frequencies.  
+reference	paragraph-producer	0x140df0660	0x140df0a17	0x14171fd30	Alternatively, you can reduce the number of mid-level elevation squares required.
+reference	paragraph-producer	0x140df0660	0x140df0b87	0x1415e873c	 
+reference	paragraph-producer	0x140df0660	0x140df0ddb	0x14171fce0	The world generator is having trouble placing enough low elevations.  
+reference	paragraph-producer	0x140df0660	0x140df0ded	0x14171ff08	Can your parameters achieve elevations between 0 and 99?  
+reference	paragraph-producer	0x140df0660	0x140df0dfe	0x14171fd90	You might want to adjust the parameters governing elevation frequencies.  
+reference	paragraph-producer	0x140df0660	0x140df0e0f	0x14171fd30	Alternatively, you can reduce the number of mid-level elevation squares required.
+reference	paragraph-producer	0x140df0660	0x140df0e43	0x14171fec0	The world generator is having trouble placing enough high elevations.  
+reference	paragraph-producer	0x140df0660	0x140df0e55	0x14171fe78	Can your parameters achieve elevations between 300 and 400?  
+reference	paragraph-producer	0x140df0660	0x140df0e66	0x14171fd90	You might want to adjust the parameters governing elevation frequencies.  
+reference	paragraph-producer	0x140df0660	0x140df0e77	0x14171fd30	Alternatively, you can reduce the number of mid-level elevation squares required.
+reference	paragraph-producer	0x140df0660	0x140df0eab	0x14171fe20	The world generator is having trouble placing enough ocean squares along the edges.  
+reference	paragraph-producer	0x140df0660	0x140df0ebd	0x141720050	Can your parameters achieve elevations between 0 and 99 frequently?  
+reference	paragraph-producer	0x140df0660	0x140df0ece	0x141720008	You might want to adjust the parameters governing elevation.  
+reference	paragraph-producer	0x140df0660	0x140df0edf	0x14171ffc0	Alternatively, you can reduce the number of edge oceans required.
+reference	paragraph-producer	0x140df0660	0x140df0f13	0x14171ff50	The world generator is having trouble placing rainfall in the manner specified by the parameters.  
+reference	paragraph-producer	0x140df0660	0x140df0f25	0x14171dfb0	You might want to adjust the parameters governing rainfall.  
+reference	paragraph-producer	0x140df0660	0x140df0f36	0x14171df50	Alternatively, you can reduce the number of high, medium or low rainfall squares required.
+reference	paragraph-producer	0x140df0660	0x140df0f6a	0x14171dee0	The world generator is having trouble setting drainage in the manner specified by the parameters.  
+reference	paragraph-producer	0x140df0660	0x140df0f7c	0x14171de98	You might want to adjust the parameters governing drainage.  
+reference	paragraph-producer	0x140df0660	0x140df0f8d	0x14171e100	Alternatively, you can reduce the number of high, medium or low drainage squares required.
+reference	paragraph-producer	0x140df0660	0x140df0fc1	0x14171e090	The world generator is having trouble placing savagery in the manner specified by the parameters.  
+reference	paragraph-producer	0x140df0660	0x140df0fd3	0x14171e050	You might want to adjust the parameters governing savagery.  
+reference	paragraph-producer	0x140df0660	0x140df0fe4	0x14171dff0	Alternatively, you can reduce the number of high, medium or low savagery squares required.
+reference	paragraph-producer	0x140df0660	0x140df1018	0x14171e250	The world generator is having trouble setting volcanism in the manner specified by the parameters.  
+reference	paragraph-producer	0x140df0660	0x140df102a	0x14171e210	You might want to adjust the parameters governing volcanism.  
+reference	paragraph-producer	0x140df0660	0x140df103b	0x14171e1b0	Alternatively, you can reduce the number of high, medium or low volcanism squares required.
+reference	paragraph-producer	0x140df0660	0x140df106f	0x14171e160	The world generator is having trouble placing enough volcanos.  
+reference	paragraph-producer	0x140df0660	0x140df1094	0x14171e2c0	You must have at least as many of these highest volcanism points as you are requiring volcanos.  
+reference	paragraph-producer	0x140df0660	0x140df109b	0x14171e330	You might want to check your preset volcanism for the value 100.  
+reference	paragraph-producer	0x140df0660	0x140df10a4	0x14171e380	Can volcanism be placed at the value 100 enough times to provide space for each of your volcanos?  
+reference	paragraph-producer	0x140df0660	0x140df10ab	0x14171e3e8	You might want to check your maximum volcanism value.  
+reference	paragraph-producer	0x140df0660	0x140df10ca	0x14171e560	Alternatively, you can reduce the number of volcanos required by the parameters.
+reference	paragraph-producer	0x140df0660	0x140df10fe	0x14171e510	The world generator is having trouble placing swamps and marshes.  
+reference	paragraph-producer	0x140df0660	0x140df1110	0x14171e490	Make sure your parameters and presets can support mid-elevation, mid-to-high rainfall, low drainage, non-freezing areas.  
+reference	paragraph-producer	0x140df0660	0x140df1121	0x14171e420	Alternatively, you can reduce the number of swamp squares and regions required by the parameters.
+reference	paragraph-producer	0x140df0660	0x140df11d0	0x14171e670	Make sure your parameters and presets can support mid-elevation, very low rainfall, non-freezing areas.  
+reference	paragraph-producer	0x140df0660	0x140df11e6	0x14171e600	Alternatively, you can reduce the number of desert squares and regions required by the parameters.
+reference	paragraph-producer	0x140df0660	0x140df1347	0x1415e873c	 
+reference	paragraph-producer	0x140df0660	0x140df1577	0x14171e5b8	The world generator is having trouble placing forests.  
+reference	paragraph-producer	0x140df0660	0x140df1589	0x14171e830	Make sure your parameters and presets can support mid-elevation, high rainfall, high drainage, non-freezing areas.  
+reference	paragraph-producer	0x140df0660	0x140df159a	0x14171e7c0	Alternatively, you can reduce the number of forest squares and regions required by the parameters.
+reference	paragraph-producer	0x140df0660	0x140df160d	0x14171e780	The world generator is having trouble placing mountains.  
+reference	paragraph-producer	0x140df0660	0x140df1620	0x14171e730	Make sure your parameters and presets can support high elevation areas.  
+reference	paragraph-producer	0x140df0660	0x140df1631	0x14171e9b0	Alternatively, you can reduce the number of mountain squares and regions required by the parameters.
+reference	paragraph-producer	0x140df0660	0x140df1665	0x14171e970	The world generator is having trouble placing oceans.  
+reference	paragraph-producer	0x140df0660	0x140df1677	0x14171e920	Make sure your parameters and presets can support low elevation areas.  
+reference	paragraph-producer	0x140df0660	0x140df168e	0x14171e8b0	Alternatively, you can reduce the number of ocean squares and regions required by the parameters.
+reference	paragraph-producer	0x140df0660	0x140df16c2	0x14171eb38	The world generator is having trouble placing glaciers.  
+reference	paragraph-producer	0x140df0660	0x140df16da	0x14171ead0	Make sure your parameters and presets can support mid-elevation, very high drainage, freezing areas.  
+reference	paragraph-producer	0x140df0660	0x140df16f1	0x14171ea60	Alternatively, you can reduce the number of glacial squares and regions required by the parameters.
+reference	paragraph-producer	0x140df0660	0x140df17b3	0x14171ecc0	Make sure your parameters and presets can support mid-elevation, low-to-mid drainage, freezing areas.  
+reference	paragraph-producer	0x140df0660	0x140df17ca	0x14171ec50	Alternatively, you can reduce the number of tundra squares and regions required by the parameters.
+reference	paragraph-producer	0x140df0660	0x140df187d	0x14171eb80	Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, low-to-mid drainage, non-freezing areas.  
+reference	paragraph-producer	0x140df0660	0x140df1893	0x14171ec50	Alternatively, you can reduce the number of tundra squares and regions required by the parameters.
+reference	paragraph-producer	0x140df0660	0x140df19f7	0x1415e873c	 
+reference	paragraph-producer	0x140df0660	0x140df1c96	0x14171ede0	Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, high drainage, non-freezing areas.  
+reference	paragraph-producer	0x140df0660	0x140df1cac	0x14171ec50	Alternatively, you can reduce the number of tundra squares and regions required by the parameters.
+reference	paragraph-producer	0x140df0660	0x140df1e17	0x1415e873c	 
+reference	paragraph-producer	0x140df0660	0x140df2045	0x14171eda0	The world generator is having trouble placing rivers.  
+reference	paragraph-producer	0x140df0660	0x140df2057	0x14171ed30	Make sure your parameters and presets allow as many mountain squares as you are requiring river start points.  
+reference	paragraph-producer	0x140df0660	0x140df2068	0x14171efb0	Alternatively, you can reduce the number of rivers required by the parameters.
+reference	paragraph-producer	0x140df0660	0x140df209c	0x14171ef70	The world generator is placing too many subregions.  
+reference	paragraph-producer	0x140df0660	0x140df20ae	0x14171ef10	Make sure your parameters and presets aren't so variable that biomes change frequently.  
+reference	paragraph-producer	0x140df0660	0x140df20bf	0x14171eea0	Alternatively, you can increase the number of subregions permitted by the parameters, up to the cap.
+reference	paragraph-producer	0x140df0660	0x140df20f3	0x14171f130	The world generator is having trouble placing mountain caves.  
+reference	paragraph-producer	0x140df0660	0x140df2105	0x14171f0b0	Make sure your parameters and presets allow as many border mountain squares as you are requiring mountain caves.  
+reference	paragraph-producer	0x140df0660	0x140df2116	0x14171f050	Alternatively, you can reduce the number of mountain caves required by the parameters.
+reference	paragraph-producer	0x140df0660	0x140df214a	0x14171f000	The world generator is having trouble placing low-lying caves.  
+reference	paragraph-producer	0x140df0660	0x140df215c	0x14171f2b0	Make sure your parameters and presets allow as many mid-elevation squares as you are requiring low-lying caves.  
+reference	paragraph-producer	0x140df0660	0x140df216d	0x14171f250	Alternatively, you can reduce the number of non-mountain caves required by the parameters.
+reference	paragraph-producer	0x140df0660	0x140df21a1	0x14171f200	The world generator is having trouble placing enough civilizations.  
+reference	paragraph-producer	0x140df0660	0x140df21b3	0x14171f170	Make sure your parameters and presets offer enough low-to-mid savagery, evil/good appropriate, biome appropriate squares to establish sites.  
+reference	paragraph-producer	0x140df0660	0x140df21c4	0x14171f460	High savagery (66+) blocks civilization placement -- make sure your parameters and presets offer at least small pockets of low-to-mid savagery areas.  
+reference	paragraph-producer	0x140df0660	0x140df21d5	0x14171f3e0	If you have very few biome types and are placing good or evil regions, they'll often crowd out the civilizations as well.  
+reference	paragraph-producer	0x140df0660	0x140df21e6	0x14171f380	Alternatively, you can reduce the number of civilizations required by the parameters.
+reference	paragraph-producer	0x140df0660	0x140df221a	0x14171f330	The world generator couldn't find any civilization definitions.  
+reference	paragraph-producer	0x140df0660	0x140df222c	0x14171f620	This problem cannot be resolved by continuing, so you should either abort or skip all rejects for a legends-only game.  
+reference	paragraph-producer	0x140df0660	0x140df2260	0x14171f5d0	The world generator is having trouble placing a controllable civilization.  
+reference	paragraph-producer	0x140df0660	0x140df2272	0x14171f550	Dwarves, for example, require non-evil, non-good, unsavage mountain squares that aren't surrounded by the ocean.  
+reference	paragraph-producer	0x140df0660	0x140df2283	0x14171f500	Make sure your parameters and presets have adequate squares of this kind.  
+reference	paragraph-producer	0x140df0660	0x140df2294	0x141720850	Alternatively, you can remove the requirement of a controllable civilization from the parameters, which will restrict you to adventurers (assuming an appropriate civilization is placed).
+reference	paragraph-producer	0x140df0660	0x140df22c8	0x141720800	The world generator is having trouble placing farming civilizations.  
+reference	paragraph-producer	0x140df0660	0x140df22da	0x1417207a0	Civilizations use available plants in their surroundings as their initial crops.  
+reference	paragraph-producer	0x140df0660	0x140df22eb	0x141720750	Make sure your parameters and raw objects have adequate vegetation.  
+reference	dialog-renderer	0x140df8a80	0x140df8dec	0x1417209b0	Loading data needed to create new world
+reference	dialog-renderer	0x140df8a80	0x140df8e60	0x141604568	Initializing...
+reference	dialog-renderer	0x140df8a80	0x140df8ec0	0x1416ac810	Loading object files...  
+reference	dialog-renderer	0x140df8a80	0x140df8f06	0x1416ac810	Loading object files...  
+reference	dialog-renderer	0x140df8a80	0x140df8f45	0x141720a80	Initializing music load...
+reference	dialog-renderer	0x140df8a80	0x140df8f84	0x1416ac340	Processing languages...
+reference	dialog-renderer	0x140df8a80	0x140df8fc3	0x1416ac2f0	Processing inorganics...
+reference	dialog-renderer	0x140df8a80	0x140df9002	0x1416ac310	Processing plants...
+reference	dialog-renderer	0x140df8a80	0x140df9041	0x1416ac388	Processing items...
+reference	dialog-renderer	0x140df8a80	0x140df9080	0x1416ac3a0	Processing creatures...
+reference	dialog-renderer	0x140df8a80	0x140df90bf	0x1416ac358	Processing entities...
+reference	dialog-renderer	0x140df8a80	0x140df90fe	0x1416ac370	Processing reactions...
+reference	dialog-renderer	0x140df8a80	0x140df913d	0x1416ac3f0	Processing interactions...
+reference	dialog-renderer	0x140df8a80	0x140df917c	0x1416ac410	Processing music...
+reference	dialog-renderer	0x140df8a80	0x140df91bb	0x1416ac3b8	Processing sounds...
+reference	dialog-renderer	0x140df8a80	0x140df91fa	0x141619380	Finalizing languages...
+reference	dialog-renderer	0x140df8a80	0x140df9239	0x141619398	Finalizing descriptors...
+reference	dialog-renderer	0x140df8a80	0x140df9278	0x1416193b8	Finalizing material templates...
+reference	dialog-renderer	0x140df8a80	0x140df92b7	0x141619300	Finalizing inorganics...
+reference	dialog-renderer	0x140df8a80	0x140df92f6	0x141619320	Finalizing plants...
+reference	dialog-renderer	0x140df8a80	0x140df9335	0x141619338	Finalizing tissue templates...
+reference	dialog-renderer	0x140df8a80	0x140df9374	0x141619358	Finalizing items...
+reference	dialog-renderer	0x140df8a80	0x140df93b3	0x141619450	Finalizing buildings...
+reference	dialog-renderer	0x140df8a80	0x140df93f2	0x141619468	Finalizing body detail plans...
+reference	dialog-renderer	0x140df8a80	0x140df9431	0x141619488	Finalizing creature variations...
+reference	dialog-renderer	0x140df8a80	0x140df9470	0x1416194b0	Finalizing creatures...
+reference	dialog-renderer	0x140df8a80	0x140df94af	0x1416193e0	Finalizing entities...
+reference	dialog-renderer	0x140df8a80	0x140df94ee	0x1416193f8	Finalizing reactions...
+reference	dialog-renderer	0x140df8a80	0x140df952d	0x141619410	Finalizing interactions...
+reference	dialog-renderer	0x140df8a80	0x140df956c	0x141619430	Preparing material data...
+reference	dialog-renderer	0x140df8a80	0x140df95c8	0x1416acff8	Preparing graphics...  
+reference	dialog-renderer	0x140df8a80	0x140df962f	0x1416acff8	Preparing graphics...  
+reference	dialog-renderer	0x140df8a80	0x140df966e	0x141720a70	Finalizing...
+reference	dialog-renderer	0x140df8a80	0x140df9a0c	0x141602dbc	", """
+reference	dialog-renderer	0x140df8a80	0x140df9a45	0x1415e9718	""""
+reference	dialog-renderer	0x140df8a80	0x140df9abc	0x141720098	Creating 
+reference	dialog-renderer	0x140df8a80	0x140df9b26	0x141720148	Creating the world
+reference	dialog-renderer	0x140df8a80	0x140df9b7e	0x141615540	 (
+reference	dialog-renderer	0x140df8a80	0x140df9bf2	0x141720138	 rejected)
+reference	dialog-renderer	0x140df8a80	0x140df9c60	0x141720120	Preparing elevation...
+reference	dialog-renderer	0x140df8a80	0x140df9cbb	0x141720108	Setting temperature...
+reference	dialog-renderer	0x140df8a80	0x140df9d1a	0x1417201a0	Running rivers...
+reference	dialog-renderer	0x140df8a80	0x140df9d88	0x141615540	 (
+reference	dialog-renderer	0x140df8a80	0x140df9dfc	0x141615580	)
+reference	dialog-renderer	0x140df8a80	0x140df9e7a	0x141720190	Forming lakes
+reference	dialog-renderer	0x140df8a80	0x140df9ed3	0x1415ec860	...
+reference	dialog-renderer	0x140df8a80	0x140df9f29	0x141615540	 (
+reference	dialog-renderer	0x140df8a80	0x140df9f9d	0x141615580	)
+reference	dialog-renderer	0x140df8a80	0x140df9ff3	0x141720178	 and minerals...
+reference	dialog-renderer	0x140df8a80	0x140dfa041	0x141615540	 (
+reference	dialog-renderer	0x140df8a80	0x140dfa063	0x141615580	)
+reference	dialog-renderer	0x140df8a80	0x140dfa099	0x1415ec860	...
+reference	dialog-renderer	0x140df8a80	0x140dfa12c	0x141720160	Growing vegetation...
+reference	dialog-renderer	0x140df8a80	0x140dfa1ad	0x141720200	Verifying terrain...
+reference	dialog-renderer	0x140df8a80	0x140dfa208	0x1417201e8	Importing wildlife...
+reference	dialog-renderer	0x140df8a80	0x140dfa278	0x1417201d0	Recounting legends...
+reference	dialog-renderer	0x140df8a80	0x140dfa2e6	0x1417201b8	Finished prehistory...
+reference	dialog-renderer	0x140df8a80	0x140dfa329	0x141720268	Placing civilizations... (
+reference	dialog-renderer	0x140df8a80	0x140dfa34f	0x141615580	)
+reference	dialog-renderer	0x140df8a80	0x140dfa391	0x141720248	Making cave civilizations...
+reference	dialog-renderer	0x140df8a80	0x140dfa3d4	0x141720230	Making cave pops...
+reference	dialog-renderer	0x140df8a80	0x140dfa417	0x141720218	Placing other beasts...
+reference	dialog-renderer	0x140df8a80	0x140dfa45a	0x1417202d0	Placing megabeasts...
+reference	dialog-renderer	0x140df8a80	0x140dfa49d	0x1417202b8	Placing good/evil...
+reference	dialog-renderer	0x140df8a80	0x140dfa4e0	0x1417202a0	Placing caves... (
+reference	dialog-renderer	0x140df8a80	0x140dfa50c	0x141615580	)
+reference	dialog-renderer	0x140df8a80	0x140dfa545	0x141720288	Prehistory init...
+reference	dialog-renderer	0x140df8a80	0x140dfa5bf	0x141720338	Finalizing civ mats... (
+reference	dialog-renderer	0x140df8a80	0x140dfa669	0x141615580	)
+reference	dialog-renderer	0x140df8a80	0x140dfa6bb	0x141720320	Finalizing art... (
+reference	dialog-renderer	0x140df8a80	0x140dfa765	0x141615580	)
+reference	dialog-renderer	0x140df8a80	0x140dfa7b5	0x141720300	Finalizing uniforms... (
+reference	dialog-renderer	0x140df8a80	0x140dfa85f	0x141615580	)
+reference	dialog-renderer	0x140df8a80	0x140dfa8b1	0x1417202e8	Finalizing sites... (
+reference	dialog-renderer	0x140df8a80	0x140dfa95a	0x141615580	)
+reference	dialog-renderer	0x140df8a80	0x140dfaa0d	0x141720398	, year 
+reference	dialog-renderer	0x140df8a80	0x140dfaa64	0x141720380	Historical figures: 
+reference	dialog-renderer	0x140df8a80	0x140dfab59	0x141720368	An abridged chronicle (
+reference	dialog-renderer	0x140df8a80	0x140dfabae	0x141720358	 events total):
+reference	dialog-renderer	0x140df8a80	0x140dfae7c	0x1417203e8	   Events: 
+reference	dialog-renderer	0x140df8a80	0x140dfb079	0x1417203d8	LACK OF PEAKS
+reference	dialog-renderer	0x140df8a80	0x140dfb0b3	0x1417203b8	MEDIUM ELEVATION REJECTION
+reference	dialog-renderer	0x140df8a80	0x140dfb0ed	0x1417203a0	LOW ELEVATION REJECTION
+reference	dialog-renderer	0x140df8a80	0x140dfb127	0x141720440	HIGH ELEVATION REJECTION
+reference	dialog-renderer	0x140df8a80	0x140dfb161	0x141720428	LACK OF EDGE OCEANS
+reference	dialog-renderer	0x140df8a80	0x140dfb19b	0x141720410	RAINFALL REJECTION
+reference	dialog-renderer	0x140df8a80	0x140dfb1d5	0x1417203f8	DRAINAGE REJECTION
+reference	dialog-renderer	0x140df8a80	0x140dfb20f	0x1417204a0	SAVAGERY REJECTION
+reference	dialog-renderer	0x140df8a80	0x140dfb249	0x141720488	VOLCANISM REJECTION
+reference	dialog-renderer	0x140df8a80	0x140dfb283	0x141720470	LACK OF VOLCANOS
+reference	dialog-renderer	0x140df8a80	0x140dfb2bd	0x141720460	SWAMP REJECTION
+reference	dialog-renderer	0x140df8a80	0x140dfb2f7	0x1417204f8	DESERT REJECTION
+reference	dialog-renderer	0x140df8a80	0x140dfb331	0x1417204e0	FOREST REJECTION
+reference	dialog-renderer	0x140df8a80	0x140dfb36b	0x1417204c8	MOUNTAIN REJECTION
+reference	dialog-renderer	0x140df8a80	0x140dfb3a5	0x1417204b8	OCEAN REJECTION
+reference	dialog-renderer	0x140df8a80	0x140dfb3df	0x141720550	GLACIER REJECTION
+reference	dialog-renderer	0x140df8a80	0x140dfb419	0x141720538	TUNDRA REJECTION
+reference	dialog-renderer	0x140df8a80	0x140dfb453	0x141720520	GRASSLAND REJECTION
+reference	dialog-renderer	0x140df8a80	0x140dfb48d	0x141720510	HILLS REJECTION
+reference	dialog-renderer	0x140df8a80	0x140dfb4c7	0x1417205b0	LACK OF RIVERS
+reference	dialog-renderer	0x140df8a80	0x140dfb501	0x141720598	TOO MANY REGIONS
+reference	dialog-renderer	0x140df8a80	0x140dfb53b	0x141720580	LACK OF MOUNTAIN CAVES
+reference	dialog-renderer	0x140df8a80	0x140dfb575	0x141720568	LACK OF LOW-LYING CAVES
+reference	dialog-renderer	0x140df8a80	0x140dfb5af	0x141720640	UNABLE TO PLACE ENOUGH CIVILIZATIONS
+reference	dialog-renderer	0x140df8a80	0x140dfb5e9	0x141720620	NO CIVILIZATIONS AVAILABLE
+reference	dialog-renderer	0x140df8a80	0x140dfb620	0x1417205f0	UNABLE TO PLACE CONTROLLABLE CIVILIZATION
+reference	dialog-renderer	0x140df8a80	0x140dfb657	0x1417205c0	FARMING CIVILIZATION PLACED WITHOUT CROPS
+reference	dialog-renderer	0x140df8a80	0x140dfb803	0x141720718	CONTINUE until you give me another warning.
+reference	dialog-renderer	0x140df8a80	0x140dfb92d	0x1417206e8	ABORT NOW and I'll look over my parameters.
+reference	dialog-renderer	0x140df8a80	0x140dfba5d	0x1417206a8	ALLOW THIS REJECTION TYPE and continue reporting others.
+reference	dialog-renderer	0x140df8a80	0x140dfbb8d	0x141720668	ALLOW ALL REJECTS, even if I end up with a legends-only world!
+reference	dialog-renderer	0x140df8a80	0x140dfbced	0x141721010	Play now
+reference	dialog-renderer	0x140df8a80	0x140dfbe1d	0x141720fe8	Keep world and return to main menu
+reference	dialog-renderer	0x140df8a80	0x140dfbfba	0x141720fd8	Use world now
+reference	dialog-renderer	0x140df8a80	0x140dfc12e	0x141720fc0	Continue generating
+reference	dialog-renderer	0x140df8a80	0x140dfc25d	0x141720b20	Back to main menu
+reference	dialog-renderer	0x140df8a80	0x140dfc3b9	0x141616324	Pause
+reference	dialog-renderer	0x140df8a80	0x140dfc835	0x1415eca10	Mountain
+reference	dialog-renderer	0x140df8a80	0x140dfc86f	0x1415eca20	Glacier
+reference	dialog-renderer	0x140df8a80	0x140dfc8a9	0x1415eca7c	Tundra
+reference	dialog-renderer	0x140df8a80	0x140dfc8e3	0x1415eca88	Temperate Freshwater Swamp
+reference	dialog-renderer	0x140df8a80	0x140dfc91d	0x1415eca40	Temperate Saltwater Swamp
+reference	dialog-renderer	0x140df8a80	0x140dfc957	0x1415eca60	Temperate Freshwater Marsh
+reference	dialog-renderer	0x140df8a80	0x140dfc991	0x1415ecad8	Temperate Saltwater Marsh
+reference	dialog-renderer	0x140df8a80	0x140dfc9cb	0x1415ecaf8	Tropical Freshwater Swamp
+reference	dialog-renderer	0x140df8a80	0x140dfca05	0x1415ecaa8	Tropical Saltwater Swamp
+reference	dialog-renderer	0x140df8a80	0x140dfca3f	0x1415ecac8	Mangrove Swamp
+reference	dialog-renderer	0x140df8a80	0x140dfca79	0x1415ecb40	Tropical Freshwater Marsh
+reference	dialog-renderer	0x140df8a80	0x140dfcab3	0x1415ecb60	Tropical Saltwater Marsh
+reference	dialog-renderer	0x140df8a80	0x140dfcaed	0x1415ecb14	Taiga
+reference	dialog-renderer	0x140df8a80	0x140dfcb27	0x1416aee48	Temperate Conifer Forest
+reference	dialog-renderer	0x140df8a80	0x140dfcb61	0x1415ecbc0	Temperate Broadleaf Forest
+reference	dialog-renderer	0x140df8a80	0x140dfcb9b	0x1415ecbe0	Tropical Coniferous Forest
+reference	dialog-renderer	0x140df8a80	0x140dfcbd5	0x1416aee28	Tropical Dry Brdlf Forest
+reference	dialog-renderer	0x140df8a80	0x140dfcc0f	0x1416aee78	Tropical Moist Brdlf Forst
+reference	dialog-renderer	0x140df8a80	0x140dfcc49	0x1415ecc30	Temperate Grassland
+reference	dialog-renderer	0x140df8a80	0x140dfcc83	0x1415ecc48	Temperate Savanna
+reference	dialog-renderer	0x140df8a80	0x140dfccbd	0x1415ecc00	Temperate Shrubland
+reference	dialog-renderer	0x140df8a80	0x140dfccf7	0x1415ecc18	Tropical Grassland
+reference	dialog-renderer	0x140df8a80	0x140dfcd31	0x1415ecc80	Tropical Savanna
+reference	dialog-renderer	0x140df8a80	0x140dfcd6b	0x1415ecc98	Tropical Shrubland
+reference	dialog-renderer	0x140df8a80	0x140dfcda5	0x1415ecc60	Badlands
+reference	dialog-renderer	0x140df8a80	0x140dfcddf	0x1415ecc70	Rocky Wasteland
+reference	dialog-renderer	0x140df8a80	0x140dfce19	0x1415eccd0	Sand Desert
+reference	dialog-renderer	0x140df8a80	0x140dfce53	0x1415ecce0	Tropical Ocean
+reference	dialog-renderer	0x140df8a80	0x140dfce8d	0x1415eccb0	Temperate Ocean
+reference	dialog-renderer	0x140df8a80	0x140dfcec7	0x1415eccc0	Arctic Ocean
+reference	dialog-renderer	0x140df8a80	0x140dfcf01	0x1415ecd30	Temperate Freshwater Pool
+reference	dialog-renderer	0x140df8a80	0x140dfcf3b	0x1415ecd50	Temperate Brackish Pool
+reference	dialog-renderer	0x140df8a80	0x140dfcf75	0x1415eccf0	Temperate Saltwater Pool
+reference	dialog-renderer	0x140df8a80	0x140dfcfaf	0x1415ecd10	Tropical Freshwater Pool
+reference	dialog-renderer	0x140df8a80	0x140dfcfe9	0x1415ecda0	Tropical Brackish Pool
+reference	dialog-renderer	0x140df8a80	0x140dfd023	0x1415ecdb8	Tropical Saltwater Pool
+reference	dialog-renderer	0x140df8a80	0x140dfd05d	0x1415ecd68	Temperate Freshwater Lake
+reference	dialog-renderer	0x140df8a80	0x140dfd097	0x1415ecd88	Temperate Brackish Lake
+reference	dialog-renderer	0x140df8a80	0x140dfd0d1	0x1415ece00	Temperate Saltwater Lake
+reference	dialog-renderer	0x140df8a80	0x140dfd10b	0x1415ece20	Tropical Freshwater Lake
+reference	dialog-renderer	0x140df8a80	0x140dfd145	0x1415ecdd0	Tropical Brackish Lake
+reference	dialog-renderer	0x140df8a80	0x140dfd17f	0x1415ecde8	Tropical Saltwater Lake
+reference	dialog-renderer	0x140df8a80	0x140dfd1b9	0x1415ece80	Temperate Freshwater River
+reference	dialog-renderer	0x140df8a80	0x140dfd1f3	0x1415ecea0	Temperate Brackish River
+reference	dialog-renderer	0x140df8a80	0x140dfd22d	0x1415ece40	Temperate Saltwater River
+reference	dialog-renderer	0x140df8a80	0x140dfd267	0x1415ece60	Tropical Freshwater River
+reference	dialog-renderer	0x140df8a80	0x140dfd2a1	0x1415ecef0	Tropical Brackish River
+reference	dialog-renderer	0x140df8a80	0x140dfd2db	0x1415ecf08	Tropical Saltwater River
+reference	dialog-renderer	0x140df8a80	0x140dfd315	0x1415ecec0	Subterranean Water
+reference	dialog-renderer	0x140df8a80	0x140dfd34c	0x1415eced8	Subterranean Chasm
+reference	dialog-renderer	0x140df8a80	0x140dfd383	0x1415ecf60	Subterranean Magma
+reference	dialog-renderer	0x140df8a80	0x140dfd400	0x1416aee68	Temperature: 
+reference	dialog-renderer	0x140df8a80	0x140dfd45e	0x1415f7400	Freezing
+reference	dialog-renderer	0x140df8a80	0x140dfd4ac	0x1415f7420	Cold
+reference	dialog-renderer	0x140df8a80	0x140dfd4f9	0x1415fedb0	Temperate
+reference	dialog-renderer	0x140df8a80	0x140dfd546	0x1415f7384	Warm
+reference	dialog-renderer	0x140df8a80	0x140dfd593	0x1415f738c	Hot
+reference	dialog-renderer	0x140df8a80	0x140dfd5d2	0x1415f7390	Scorching
+reference	dialog-renderer	0x140df8a80	0x140dfd637	0x1416aef28	Trees: 
+reference	dialog-renderer	0x140df8a80	0x140dfd6b4	0x1416aef1c	Scarce
+reference	dialog-renderer	0x140df8a80	0x140dfd701	0x1416aef3c	Sparse
+reference	dialog-renderer	0x140df8a80	0x140dfd74e	0x1416aef30	Woodland
+reference	dialog-renderer	0x140df8a80	0x140dfd790	0x1416aeef0	Heavily Forested
+reference	dialog-renderer	0x140df8a80	0x140dfd7de	0x1415ff764	None
+reference	dialog-renderer	0x140df8a80	0x140dfd843	0x1416aeed8	Other Vegetation: 
+reference	dialog-renderer	0x140df8a80	0x140dfd8ba	0x1416aef1c	Scarce
+reference	dialog-renderer	0x140df8a80	0x140dfd907	0x1416aef10	Moderate
+reference	dialog-renderer	0x140df8a80	0x140dfd94e	0x1416aef04	Thick
+reference	dialog-renderer	0x140df8a80	0x140dfd99c	0x1415ff764	None
+reference	dialog-renderer	0x140df8a80	0x140dfda03	0x1416af600	Surroundings: 
+reference	dialog-renderer	0x140df8a80	0x140dfda6f	0x1416af5f8	Serene
+reference	dialog-renderer	0x140df8a80	0x140dfdab9	0x1416af61c	Calm
+reference	dialog-renderer	0x140df8a80	0x140dfdafd	0x1416af610	Sinister
+reference	dialog-renderer	0x140df8a80	0x140dfdb5b	0x1416af5d0	Mirthful
+reference	dialog-renderer	0x140df8a80	0x140dfdba8	0x1416af5c0	Wilderness
+reference	dialog-renderer	0x140df8a80	0x140dfdbef	0x1416af5f0	Haunted
+reference	dialog-renderer	0x140df8a80	0x140dfdc3c	0x1416af5e0	Joyous Wilds
+reference	dialog-renderer	0x140df8a80	0x140dfdc86	0x1416af668	Untamed Wilds
+reference	dialog-renderer	0x140df8a80	0x140dfdcc7	0x1416af658	Terrifying
+reference	dialog-renderer	0x140df8a80	0x140dfdea1	0x1415e9718	""""
+reference	dialog-renderer	0x140df8a80	0x140dfdef4	0x1415e9718	""""
+reference	dialog-renderer	0x140df8a80	0x140dfdf7e	0x1415e873c	 
+reference	dialog-renderer	0x140df8a80	0x140dfe283	0x1416af688	Multiple Constructions
+reference	dialog-renderer	0x140df8a80	0x140dfe375	0x1416af678	Major River: 
+reference	dialog-renderer	0x140df8a80	0x140dfe3d0	0x1416af638	River: 
+reference	dialog-renderer	0x140df8a80	0x140dfe41f	0x1416af628	Minor River: 
+reference	dialog-renderer	0x140df8a80	0x140dfe482	0x1416af648	Stream: 
+reference	dialog-renderer	0x140df8a80	0x140dfe4c5	0x1416af640	Brook: 
+reference	dialog-renderer	0x140df8a80	0x140dfe654	0x1416af490	Volcano: 
+reference	dialog-renderer	0x140df8a80	0x140dfe67f	0x1416af480	Mountain: 
+reference	dialog-renderer	0x140df8a80	0x140dfe7a2	0x141721050	Ice
+reference	dialog-renderer	0x140df8a80	0x140dfe97b	0x141629a04	FLUX
+reference	dialog-renderer	0x140df8a80	0x140dfed1f	0x141629a60	FIRED_MAT
+reference	dialog-renderer	0x140df8a80	0x140dfeddd	0x141721040	Shallow Clay
+reference	dialog-renderer	0x140df8a80	0x140dfee19	0x14162a4f4	Clay
+reference	dialog-renderer	0x140df8a80	0x140dfeea7	0x141721030	Shallow Sand
+reference	dialog-renderer	0x140df8a80	0x140dfeede	0x14162b8a0	Sand
+reference	dialog-renderer	0x140df8a80	0x140dfef79	0x141721020	Little soil
+reference	dialog-renderer	0x140df8a80	0x140dfefb8	0x141721090	Some soil
+reference	dialog-renderer	0x140df8a80	0x140dfeff7	0x141721080	Deep soil
+reference	dialog-renderer	0x140df8a80	0x140dff033	0x141721070	Very deep soil
+reference	dialog-renderer	0x140df8a80	0x140dff06f	0x141721058	Extremely deep soil
+reference	dialog-renderer	0x140df8a80	0x140dff0f4	0x1417210d8	Varied aquifer
+reference	dialog-renderer	0x140df8a80	0x140dff133	0x1417210c8	Heavy aquifer
+reference	dialog-renderer	0x140df8a80	0x140dff1ae	0x1417210b8	Light aquifer
+reference	dialog-renderer	0x140df8a80	0x140dff496	0x1417210a0	Flux stone layer
+reference	dialog-renderer	0x140df8a80	0x140dff63a	0x141721128	To recenter, press 
+reference	dialog-renderer	0x140df8a80	0x140dff6c4	0x141721100	 or hold+drag the middle mouse button.
+reference	dialog-renderer	0x140df8a80	0x140dffcac	0x141619940	Mods
+reference	dialog-renderer	0x140df8a80	0x140dffd10	0x141720b68	Basic options
+reference	dialog-renderer	0x140df8a80	0x140dffd4a	0x141720b58	Detailed mode
+reference	dialog-renderer	0x140df8a80	0x140dffd8a	0x141720b58	Detailed mode
+reference	dialog-renderer	0x140df8a80	0x140dffdc1	0x141720b68	Basic options
+reference	dialog-renderer	0x140df8a80	0x140e000df	0x141720aa0	Create world
+reference	dialog-renderer	0x140df8a80	0x140e0013a	0x141720b20	Back to main menu
+reference	dialog-renderer	0x140df8a80	0x140e00440	0x1415e873c	 
+reference	dialog-renderer	0x140df8a80	0x140e0054d	0x1416190f8	Installed
+reference	dialog-renderer	0x140df8a80	0x140e009e6	0x1415e873c	 
+reference	dialog-renderer	0x140df8a80	0x140e00dd0	0x141618cd8	Unnamed mod
+reference	dialog-renderer	0x140df8a80	0x140e00e5a	0x141618ce8	Author: 
+reference	dialog-renderer	0x140df8a80	0x140e00ea4	0x141618d90	Unknown author
+reference	dialog-renderer	0x140df8a80	0x140e00f23	0x141618da0	Version: 
+reference	dialog-renderer	0x140df8a80	0x140e01004	0x141618d70	Earliest compatible version: 
+reference	dialog-renderer	0x140df8a80	0x140e010fa	0x141619108	Description:
+reference	dialog-renderer	0x140df8a80	0x140e012c9	0x141619068	Must be after 
+reference	dialog-renderer	0x140df8a80	0x140e01314	0x141619078	Must be before 
+reference	dialog-renderer	0x140df8a80	0x140e0134b	0x141619088	Requires 
+reference	dialog-renderer	0x140df8a80	0x140e01481	0x141618fe0	Conflicts with 
+reference	dialog-renderer	0x140df8a80	0x140e01556	0x141720af8	Click now to open to this mod folder.
+reference	dialog-renderer	0x140df8a80	0x140e01601	0x141720b48	World map size
+reference	dialog-renderer	0x140df8a80	0x140e01647	0x141720b38	History length
+reference	dialog-renderer	0x140df8a80	0x140e016b5	0x141720c10	In such a young world certain game elements will not be available.
+reference	dialog-renderer	0x140df8a80	0x140e01723	0x141720bc0	A shorter history means certain game elements might not be available.
+reference	dialog-renderer	0x140df8a80	0x140e01791	0x141720b98	This may take several minutes!
+reference	dialog-renderer	0x140df8a80	0x140e017ff	0x141720b78	This may take a long while!
+reference	dialog-renderer	0x140df8a80	0x140e01845	0x141720ca0	Number of civilizations
+reference	dialog-renderer	0x140df8a80	0x140e0188b	0x141720c88	Maximum number of sites
+reference	dialog-renderer	0x140df8a80	0x140e018d1	0x141720c70	Number of beasts
+reference	dialog-renderer	0x140df8a80	0x140e01917	0x141720c58	Natural savagery
+reference	dialog-renderer	0x140df8a80	0x140e0195d	0x141720d50	Real world extinct creatures
+reference	dialog-renderer	0x140df8a80	0x140e019cb	0x141720d28	They are extinct in this world as well.
+reference	dialog-renderer	0x140df8a80	0x140e01a39	0x141720ce8	They live only on savage islands and very small savage biomes.
+reference	dialog-renderer	0x140df8a80	0x140e01aa7	0x141720cb8	They are only found in the untamed wilds.
+reference	dialog-renderer	0x140df8a80	0x140e01b15	0x141720dc8	They can be found in any wilderness.
+reference	dialog-renderer	0x140df8a80	0x140e01b83	0x141720d90	Many civilizations keep them as pets and work animals.
+reference	dialog-renderer	0x140df8a80	0x140e01bc6	0x141720d78	Mineral occurrence
+reference	dialog-renderer	0x140df8a80	0x140e01e5b	0x141720e08	Medium
+reference	dialog-renderer	0x140df8a80	0x140e01ea0	0x1416aecb4	Small
+reference	dialog-renderer	0x140df8a80	0x140e01ee5	0x141720e10	Smaller
+reference	dialog-renderer	0x140df8a80	0x140e01f2a	0x141720d70	Pocket
+reference	dialog-renderer	0x140df8a80	0x140e01f9b	0x141720e28	500 years
+reference	dialog-renderer	0x140df8a80	0x140e01fd5	0x141720e38	250 years
+reference	dialog-renderer	0x140df8a80	0x140e0201a	0x141720e48	100 years
+reference	dialog-renderer	0x140df8a80	0x140e0205f	0x141720df0	50 years
+reference	dialog-renderer	0x140df8a80	0x140e020a4	0x141720e00	5 years
+reference	dialog-renderer	0x140df8a80	0x140e02115	0x141720e18	Very high
+reference	dialog-renderer	0x140df8a80	0x140e0214f	0x141660db8	High
+reference	dialog-renderer	0x140df8a80	0x140e02194	0x141720e08	Medium
+reference	dialog-renderer	0x140df8a80	0x140e021d9	0x141660bb4	Low
+reference	dialog-renderer	0x140df8a80	0x140e0221e	0x141662020	Very low
+reference	dialog-renderer	0x140df8a80	0x140e0228f	0x141720e18	Very high
+reference	dialog-renderer	0x140df8a80	0x140e022c9	0x141660db8	High
+reference	dialog-renderer	0x140df8a80	0x140e0230e	0x141720e08	Medium
+reference	dialog-renderer	0x140df8a80	0x140e02353	0x141660bb4	Low
+reference	dialog-renderer	0x140df8a80	0x140e02398	0x141662020	Very low
+reference	dialog-renderer	0x140df8a80	0x140e02409	0x141720e18	Very high
+reference	dialog-renderer	0x140df8a80	0x140e02443	0x141660db8	High
+reference	dialog-renderer	0x140df8a80	0x140e02488	0x141720e08	Medium
+reference	dialog-renderer	0x140df8a80	0x140e024cd	0x141660bb4	Low
+reference	dialog-renderer	0x140df8a80	0x140e02512	0x141662020	Very low
+reference	dialog-renderer	0x140df8a80	0x140e02583	0x141720e18	Very high
+reference	dialog-renderer	0x140df8a80	0x140e025bd	0x141660db8	High
+reference	dialog-renderer	0x140df8a80	0x140e02602	0x141720e08	Medium
+reference	dialog-renderer	0x140df8a80	0x140e02647	0x141660bb4	Low
+reference	dialog-renderer	0x140df8a80	0x140e0268c	0x141662020	Very low
+reference	dialog-renderer	0x140df8a80	0x140e026fd	0x141629e18	Domesticated
+reference	dialog-renderer	0x140df8a80	0x140e02737	0x14171cad0	Any wilderness
+reference	dialog-renderer	0x140df8a80	0x140e0277c	0x14171cae0	Untamed wilds
+reference	dialog-renderer	0x140df8a80	0x140e027c1	0x1416b2598	Isolated
+reference	dialog-renderer	0x140df8a80	0x140e02806	0x14171ca40	Extinct
+reference	dialog-renderer	0x140df8a80	0x140e02877	0x141720e58	Everywhere
+reference	dialog-renderer	0x140df8a80	0x140e028db	0x141720e68	Frequent
+reference	dialog-renderer	0x140df8a80	0x140e02920	0x1416aef3c	Sparse
+reference	dialog-renderer	0x140df8a80	0x140e02965	0x141720e74	Rare
+reference	dialog-renderer	0x140df8a80	0x140e029aa	0x141720e80	Very rare
+reference	dialog-renderer	0x140df8a80	0x140e029ef	0x1416af19c	Large
+reference	dialog-renderer	0x140df8a80	0x140e02aa5	0x141720f00	Parameters saved!
+reference	dialog-renderer	0x140df8a80	0x140e02af3	0x141720ee8	Parameters loaded!
+reference	dialog-renderer	0x140df8a80	0x140e02b2a	0x141720ea8	Choose or create a parameter set to make a custom world.
+reference	dialog-renderer	0x140df8a80	0x140e02c5e	0x141720e90	New parameter set
+reference	dialog-renderer	0x140df8a80	0x140e02d84	0x1416052e8	Save
+reference	dialog-renderer	0x140df8a80	0x140e02ea4	0x1416b10fc	Load
+reference	dialog-renderer	0x140df8a80	0x140e0314e	0x1415ec82c	_
+reference	dialog-renderer	0x140df8a80	0x140e03326	0x141720f40	Width
+reference	dialog-renderer	0x140df8a80	0x140e03513	0x141720f38	Height
+reference	dialog-renderer	0x140df8a80	0x140e037ad	0x1415ec82c	_
+reference	dialog-renderer	0x140df8a80	0x140e038da	0x141720f18	Random seed
+reference	dialog-renderer	0x140df8a80	0x140e03911	0x141720f28	Various seeds
+reference	dialog-renderer	0x140df8a80	0x140e03a49	0x1415e8778	Copy
+reference	dialog-renderer	0x140df8a80	0x140e03b79	0x141619224	Delete
+reference	dialog-renderer	0x140df8a80	0x140e03d5e	0x1416160a8	Range: 
+reference	dialog-renderer	0x140df8a80	0x140e03de0	0x1415ed5b4	 to 
+reference	dialog-renderer	0x140df8a80	0x140e03faf	0x1415ec82c	_
+reference	dialog-renderer	0x140df8a80	0x140e046d2	0x141720f98	Really delete this parameter set?
+reference	dialog-renderer	0x140df8a80	0x140e04809	0x141619224	Delete
+reference	dialog-renderer	0x140df8a80	0x140e04934	0x1415fe724	Cancel
+reference	dialog-renderer	0x140df8a80	0x140e04ae4	0x141720f78	Really change the dimensions?
+reference	dialog-renderer	0x140df8a80	0x140e04b31	0x141720f50	This parameter set will be reset.
+reference	dialog-renderer	0x140df8a80	0x140e04c69	0x141720f48	Change
+reference	dialog-renderer	0x140df8a80	0x140e04d94	0x1415fe724	Cancel
+reference	dialog-renderer	0x140df8a80	0x140e04f44	0x1417200e8	Are you sure you want to abort?
+reference	dialog-renderer	0x140df8a80	0x140e04f91	0x1417200c8	You haven't saved your changes.
+reference	dialog-renderer	0x140df8a80	0x140e050c9	0x14163a808	Abort
+reference	dialog-renderer	0x140df8a80	0x140e051f4	0x1415fe724	Cancel
+reference	dialog-renderer	0x140df8a80	0x140e053a4	0x1417200a8	Are you sure you want to go on?
+reference	dialog-renderer	0x140df8a80	0x140e053f1	0x1417200c8	You haven't saved your changes.
+reference	dialog-renderer	0x140df8a80	0x140e05529	0x1415f7234	Create
+reference	dialog-renderer	0x140df8a80	0x140e05654	0x1415fe724	Cancel
+classic	paragraph-producer	0x140deb5d0	0x140deb84e	0x1417186a0	The world generator is having trouble placing enough mountain peaks.  
+classic	paragraph-producer	0x140deb5d0	0x140deb873	0x1417187d0	You must have at least as many of these highest elevation points as you are requiring peaks.  
+classic	paragraph-producer	0x140deb5d0	0x140deb87a	0x1417185a0	You might want to check your preset elevations for the elevation 400.  
+classic	paragraph-producer	0x140deb5d0	0x140deb883	0x1417185f0	Can the elevation 400 be placed enough times to provide space for your peaks?  
+classic	paragraph-producer	0x140deb5d0	0x140deb88a	0x141718640	You might want to check your maximum elevation value and other elevation parameters.  
+classic	paragraph-producer	0x140deb5d0	0x140deb8a9	0x141718780	Alternatively, you can reduce the number of peaks required by the parameters.
+classic	paragraph-producer	0x140deb5d0	0x140deb95b	0x1417186e8	Can your parameters achieve elevations between 100 and 299?  
+classic	paragraph-producer	0x140deb5d0	0x140deb971	0x141718920	You might want to adjust the parameters governing elevation frequencies.  
+classic	paragraph-producer	0x140deb5d0	0x140deb987	0x1417188c0	Alternatively, you can reduce the number of mid-level elevation squares required.
+classic	paragraph-producer	0x140deb5d0	0x140debaf7	0x1415e3720	 
+classic	paragraph-producer	0x140deb5d0	0x140debd4b	0x141718870	The world generator is having trouble placing enough low elevations.  
+classic	paragraph-producer	0x140deb5d0	0x140debd5d	0x141718830	Can your parameters achieve elevations between 0 and 99?  
+classic	paragraph-producer	0x140deb5d0	0x140debd6e	0x141718920	You might want to adjust the parameters governing elevation frequencies.  
+classic	paragraph-producer	0x140deb5d0	0x140debd7f	0x1417188c0	Alternatively, you can reduce the number of mid-level elevation squares required.
+classic	paragraph-producer	0x140deb5d0	0x140debdb3	0x141718a60	The world generator is having trouble placing enough high elevations.  
+classic	paragraph-producer	0x140deb5d0	0x140debdc5	0x141718a18	Can your parameters achieve elevations between 300 and 400?  
+classic	paragraph-producer	0x140deb5d0	0x140debdd6	0x141718920	You might want to adjust the parameters governing elevation frequencies.  
+classic	paragraph-producer	0x140deb5d0	0x140debde7	0x1417188c0	Alternatively, you can reduce the number of mid-level elevation squares required.
+classic	paragraph-producer	0x140deb5d0	0x140debe1b	0x1417189c0	The world generator is having trouble placing enough ocean squares along the edges.  
+classic	paragraph-producer	0x140deb5d0	0x140debe2d	0x141718970	Can your parameters achieve elevations between 0 and 99 frequently?  
+classic	paragraph-producer	0x140deb5d0	0x140debe3e	0x141718ba8	You might want to adjust the parameters governing elevation.  
+classic	paragraph-producer	0x140deb5d0	0x140debe4f	0x141718b60	Alternatively, you can reduce the number of edge oceans required.
+classic	paragraph-producer	0x140deb5d0	0x140debe83	0x141718af0	The world generator is having trouble placing rainfall in the manner specified by the parameters.  
+classic	paragraph-producer	0x140deb5d0	0x140debe95	0x141718aa8	You might want to adjust the parameters governing rainfall.  
+classic	paragraph-producer	0x140deb5d0	0x140debea6	0x141718d00	Alternatively, you can reduce the number of high, medium or low rainfall squares required.
+classic	paragraph-producer	0x140deb5d0	0x140debeda	0x141718c90	The world generator is having trouble setting drainage in the manner specified by the parameters.  
+classic	paragraph-producer	0x140deb5d0	0x140debeec	0x141718c50	You might want to adjust the parameters governing drainage.  
+classic	paragraph-producer	0x140deb5d0	0x140debefd	0x141718bf0	Alternatively, you can reduce the number of high, medium or low drainage squares required.
+classic	paragraph-producer	0x140deb5d0	0x140debf31	0x141718e70	The world generator is having trouble placing savagery in the manner specified by the parameters.  
+classic	paragraph-producer	0x140deb5d0	0x140debf43	0x141718e30	You might want to adjust the parameters governing savagery.  
+classic	paragraph-producer	0x140deb5d0	0x140debf54	0x141718dd0	Alternatively, you can reduce the number of high, medium or low savagery squares required.
+classic	paragraph-producer	0x140deb5d0	0x140debf88	0x141718d60	The world generator is having trouble setting volcanism in the manner specified by the parameters.  
+classic	paragraph-producer	0x140deb5d0	0x140debf9a	0x141718fc0	You might want to adjust the parameters governing volcanism.  
+classic	paragraph-producer	0x140deb5d0	0x140debfab	0x141718f60	Alternatively, you can reduce the number of high, medium or low volcanism squares required.
+classic	paragraph-producer	0x140deb5d0	0x140debfdf	0x141718f10	The world generator is having trouble placing enough volcanos.  
+classic	paragraph-producer	0x140deb5d0	0x140dec004	0x141719060	You must have at least as many of these highest volcanism points as you are requiring volcanos.  
+classic	paragraph-producer	0x140deb5d0	0x140dec00b	0x1417190d0	You might want to check your preset volcanism for the value 100.  
+classic	paragraph-producer	0x140deb5d0	0x140dec014	0x141719120	Can volcanism be placed at the value 100 enough times to provide space for each of your volcanos?  
+classic	paragraph-producer	0x140deb5d0	0x140dec01b	0x141718ed8	You might want to check your maximum volcanism value.  
+classic	paragraph-producer	0x140deb5d0	0x140dec03a	0x141719000	Alternatively, you can reduce the number of volcanos required by the parameters.
+classic	paragraph-producer	0x140deb5d0	0x140dec06e	0x1417192d0	The world generator is having trouble placing swamps and marshes.  
+classic	paragraph-producer	0x140deb5d0	0x140dec080	0x141719250	Make sure your parameters and presets can support mid-elevation, mid-to-high rainfall, low drainage, non-freezing areas.  
+classic	paragraph-producer	0x140deb5d0	0x140dec091	0x1417191e0	Alternatively, you can reduce the number of swamp squares and regions required by the parameters.
+classic	paragraph-producer	0x140deb5d0	0x140dec140	0x14171a0b0	Make sure your parameters and presets can support mid-elevation, very low rainfall, non-freezing areas.  
+classic	paragraph-producer	0x140deb5d0	0x140dec156	0x14171a040	Alternatively, you can reduce the number of desert squares and regions required by the parameters.
+classic	paragraph-producer	0x140deb5d0	0x140dec2b7	0x1415e3720	 
+classic	paragraph-producer	0x140deb5d0	0x140dec4e7	0x141719ff8	The world generator is having trouble placing forests.  
+classic	paragraph-producer	0x140deb5d0	0x140dec4f9	0x141719f80	Make sure your parameters and presets can support mid-elevation, high rainfall, high drainage, non-freezing areas.  
+classic	paragraph-producer	0x140deb5d0	0x140dec50a	0x14171a220	Alternatively, you can reduce the number of forest squares and regions required by the parameters.
+classic	paragraph-producer	0x140deb5d0	0x140dec57d	0x14171a1e0	The world generator is having trouble placing mountains.  
+classic	paragraph-producer	0x140deb5d0	0x140dec590	0x14171a190	Make sure your parameters and presets can support high elevation areas.  
+classic	paragraph-producer	0x140deb5d0	0x140dec5a1	0x14171a120	Alternatively, you can reduce the number of mountain squares and regions required by the parameters.
+classic	paragraph-producer	0x140deb5d0	0x140dec5d5	0x14171a390	The world generator is having trouble placing oceans.  
+classic	paragraph-producer	0x140deb5d0	0x140dec5e7	0x14171a340	Make sure your parameters and presets can support low elevation areas.  
+classic	paragraph-producer	0x140deb5d0	0x140dec5fe	0x14171a2d0	Alternatively, you can reduce the number of ocean squares and regions required by the parameters.
+classic	paragraph-producer	0x140deb5d0	0x140dec632	0x14171a288	The world generator is having trouble placing glaciers.  
+classic	paragraph-producer	0x140deb5d0	0x140dec64a	0x14171a4f0	Make sure your parameters and presets can support mid-elevation, very high drainage, freezing areas.  
+classic	paragraph-producer	0x140deb5d0	0x140dec661	0x14171a480	Alternatively, you can reduce the number of glacial squares and regions required by the parameters.
+classic	paragraph-producer	0x140deb5d0	0x140dec723	0x14171a3d0	Make sure your parameters and presets can support mid-elevation, low-to-mid drainage, freezing areas.  
+classic	paragraph-producer	0x140deb5d0	0x140dec73a	0x14171a660	Alternatively, you can reduce the number of tundra squares and regions required by the parameters.
+classic	paragraph-producer	0x140deb5d0	0x140dec7ed	0x14171a590	Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, low-to-mid drainage, non-freezing areas.  
+classic	paragraph-producer	0x140deb5d0	0x140dec803	0x14171a660	Alternatively, you can reduce the number of tundra squares and regions required by the parameters.
+classic	paragraph-producer	0x140deb5d0	0x140dec967	0x1415e3720	 
+classic	paragraph-producer	0x140deb5d0	0x140decc06	0x14171a7d0	Make sure your parameters and presets can support mid-elevation, low-to-mid rainfall, high drainage, non-freezing areas.  
+classic	paragraph-producer	0x140deb5d0	0x140decc1c	0x14171a660	Alternatively, you can reduce the number of tundra squares and regions required by the parameters.
+classic	paragraph-producer	0x140deb5d0	0x140decd87	0x1415e3720	 
+classic	paragraph-producer	0x140deb5d0	0x140decfb5	0x14171a790	The world generator is having trouble placing rivers.  
+classic	paragraph-producer	0x140deb5d0	0x140decfc7	0x14171a720	Make sure your parameters and presets allow as many mountain squares as you are requiring river start points.  
+classic	paragraph-producer	0x140deb5d0	0x140decfd8	0x14171a6d0	Alternatively, you can reduce the number of rivers required by the parameters.
+classic	paragraph-producer	0x140deb5d0	0x140ded00c	0x14171a960	The world generator is placing too many subregions.  
+classic	paragraph-producer	0x140deb5d0	0x140ded01e	0x14171a900	Make sure your parameters and presets aren't so variable that biomes change frequently.  
+classic	paragraph-producer	0x140deb5d0	0x140ded02f	0x14171a890	Alternatively, you can increase the number of subregions permitted by the parameters, up to the cap.
+classic	paragraph-producer	0x140deb5d0	0x140ded063	0x14171a850	The world generator is having trouble placing mountain caves.  
+classic	paragraph-producer	0x140deb5d0	0x140ded075	0x14171aad0	Make sure your parameters and presets allow as many border mountain squares as you are requiring mountain caves.  
+classic	paragraph-producer	0x140deb5d0	0x140ded086	0x14171aa70	Alternatively, you can reduce the number of mountain caves required by the parameters.
+classic	paragraph-producer	0x140deb5d0	0x140ded0ba	0x14171aa20	The world generator is having trouble placing low-lying caves.  
+classic	paragraph-producer	0x140deb5d0	0x140ded0cc	0x14171a9a0	Make sure your parameters and presets allow as many mid-elevation squares as you are requiring low-lying caves.  
+classic	paragraph-producer	0x140deb5d0	0x140ded0dd	0x14171acd0	Alternatively, you can reduce the number of non-mountain caves required by the parameters.
+classic	paragraph-producer	0x140deb5d0	0x140ded111	0x14171ac80	The world generator is having trouble placing enough civilizations.  
+classic	paragraph-producer	0x140deb5d0	0x140ded123	0x14171abf0	Make sure your parameters and presets offer enough low-to-mid savagery, evil/good appropriate, biome appropriate squares to establish sites.  
+classic	paragraph-producer	0x140deb5d0	0x140ded134	0x14171ab50	High savagery (66+) blocks civilization placement -- make sure your parameters and presets offer at least small pockets of low-to-mid savagery areas.  
+classic	paragraph-producer	0x140deb5d0	0x140ded145	0x14171ae60	If you have very few biome types and are placing good or evil regions, they'll often crowd out the civilizations as well.  
+classic	paragraph-producer	0x140deb5d0	0x140ded156	0x14171ae00	Alternatively, you can reduce the number of civilizations required by the parameters.
+classic	paragraph-producer	0x140deb5d0	0x140ded18a	0x14171adb0	The world generator couldn't find any civilization definitions.  
+classic	paragraph-producer	0x140deb5d0	0x140ded19c	0x14171ad30	This problem cannot be resolved by continuing, so you should either abort or skip all rejects for a legends-only game.  
+classic	paragraph-producer	0x140deb5d0	0x140ded1d0	0x14171b070	The world generator is having trouble placing a controllable civilization.  
+classic	paragraph-producer	0x140deb5d0	0x140ded1e2	0x14171aff0	Dwarves, for example, require non-evil, non-good, unsavage mountain squares that aren't surrounded by the ocean.  
+classic	paragraph-producer	0x140deb5d0	0x140ded1f3	0x14171afa0	Make sure your parameters and presets have adequate squares of this kind.  
+classic	paragraph-producer	0x140deb5d0	0x140ded204	0x14171aee0	Alternatively, you can remove the requirement of a controllable civilization from the parameters, which will restrict you to adventurers (assuming an appropriate civilization is placed).
+classic	paragraph-producer	0x140deb5d0	0x140ded238	0x14171b180	The world generator is having trouble placing farming civilizations.  
+classic	paragraph-producer	0x140deb5d0	0x140ded24a	0x14171b120	Civilizations use available plants in their surroundings as their initial crops.  
+classic	paragraph-producer	0x140deb5d0	0x140ded25b	0x14171b0d0	Make sure your parameters and raw objects have adequate vegetation.  
+classic	dialog-renderer	0x140df39f0	0x140df3d5c	0x14171b2a8	Loading data needed to create new world
+classic	dialog-renderer	0x140df39f0	0x140df3dd0	0x1415ff538	Initializing...
+classic	dialog-renderer	0x140df39f0	0x140df3e30	0x1416a7708	Loading object files...  
+classic	dialog-renderer	0x140df39f0	0x140df3e76	0x1416a7708	Loading object files...  
+classic	dialog-renderer	0x140df39f0	0x140df3eb5	0x14171b288	Initializing music load...
+classic	dialog-renderer	0x140df39f0	0x140df3ef4	0x1416a75b0	Processing languages...
+classic	dialog-renderer	0x140df39f0	0x140df3f33	0x1416a75c8	Processing inorganics...
+classic	dialog-renderer	0x140df39f0	0x140df3f72	0x1416a7580	Processing plants...
+classic	dialog-renderer	0x140df39f0	0x140df3fb1	0x1416a7598	Processing items...
+classic	dialog-renderer	0x140df39f0	0x140df3ff0	0x1416a7620	Processing creatures...
+classic	dialog-renderer	0x140df39f0	0x140df402f	0x1416a7638	Processing entities...
+classic	dialog-renderer	0x140df39f0	0x140df406e	0x1416a75e8	Processing reactions...
+classic	dialog-renderer	0x140df39f0	0x140df40ad	0x1416a7600	Processing interactions...
+classic	dialog-renderer	0x140df39f0	0x140df40ec	0x1416a7688	Processing music...
+classic	dialog-renderer	0x140df39f0	0x140df412b	0x1416a76a0	Processing sounds...
+classic	dialog-renderer	0x140df39f0	0x140df416a	0x141614230	Finalizing languages...
+classic	dialog-renderer	0x140df39f0	0x140df41a9	0x141614248	Finalizing descriptors...
+classic	dialog-renderer	0x140df39f0	0x140df41e8	0x141614190	Finalizing material templates...
+classic	dialog-renderer	0x140df39f0	0x140df4227	0x1416141b8	Finalizing inorganics...
+classic	dialog-renderer	0x140df39f0	0x140df4266	0x1416141d8	Finalizing plants...
+classic	dialog-renderer	0x140df39f0	0x140df42a5	0x1416141f0	Finalizing tissue templates...
+classic	dialog-renderer	0x140df39f0	0x140df42e4	0x141613fa0	Finalizing items...
+classic	dialog-renderer	0x140df39f0	0x140df4323	0x141613fb8	Finalizing buildings...
+classic	dialog-renderer	0x140df39f0	0x140df4362	0x141613fd0	Finalizing body detail plans...
+classic	dialog-renderer	0x140df39f0	0x140df43a1	0x141613ff0	Finalizing creature variations...
+classic	dialog-renderer	0x140df39f0	0x140df43e0	0x141613f38	Finalizing creatures...
+classic	dialog-renderer	0x140df39f0	0x140df441f	0x141613f50	Finalizing entities...
+classic	dialog-renderer	0x140df39f0	0x140df445e	0x141613f68	Finalizing reactions...
+classic	dialog-renderer	0x140df39f0	0x140df449d	0x141613f80	Finalizing interactions...
+classic	dialog-renderer	0x140df39f0	0x140df44dc	0x141614080	Preparing material data...
+classic	dialog-renderer	0x140df39f0	0x140df4538	0x1416a73d8	Preparing graphics...  
+classic	dialog-renderer	0x140df39f0	0x140df459f	0x1416a73d8	Preparing graphics...  
+classic	dialog-renderer	0x140df39f0	0x140df45de	0x14171b360	Finalizing...
+classic	dialog-renderer	0x140df39f0	0x140df497c	0x1415fdc6c	", """
+classic	dialog-renderer	0x140df39f0	0x140df49b5	0x1415e46fc	""""
+classic	dialog-renderer	0x140df39f0	0x140df4a2c	0x141719db0	Creating 
+classic	dialog-renderer	0x140df39f0	0x140df4a96	0x141719d98	Creating the world
+classic	dialog-renderer	0x140df39f0	0x140df4aee	0x141610298	 (
+classic	dialog-renderer	0x140df39f0	0x140df4b62	0x141719e48	 rejected)
+classic	dialog-renderer	0x140df39f0	0x140df4bd0	0x141719e30	Preparing elevation...
+classic	dialog-renderer	0x140df39f0	0x140df4c2b	0x141719e18	Setting temperature...
+classic	dialog-renderer	0x140df39f0	0x140df4c8a	0x141719e00	Running rivers...
+classic	dialog-renderer	0x140df39f0	0x140df4cf8	0x141610298	 (
+classic	dialog-renderer	0x140df39f0	0x140df4d6c	0x1416102d8	)
+classic	dialog-renderer	0x140df39f0	0x140df4dea	0x141719ea0	Forming lakes
+classic	dialog-renderer	0x140df39f0	0x140df4e43	0x1415e77d0	...
+classic	dialog-renderer	0x140df39f0	0x140df4e99	0x141610298	 (
+classic	dialog-renderer	0x140df39f0	0x140df4f0d	0x1416102d8	)
+classic	dialog-renderer	0x140df39f0	0x140df4f63	0x141719e88	 and minerals...
+classic	dialog-renderer	0x140df39f0	0x140df4fb1	0x141610298	 (
+classic	dialog-renderer	0x140df39f0	0x140df4fd3	0x1416102d8	)
+classic	dialog-renderer	0x140df39f0	0x140df5009	0x1415e77d0	...
+classic	dialog-renderer	0x140df39f0	0x140df509c	0x141719e70	Growing vegetation...
+classic	dialog-renderer	0x140df39f0	0x140df511d	0x141719e58	Verifying terrain...
+classic	dialog-renderer	0x140df39f0	0x140df5178	0x141719f00	Importing wildlife...
+classic	dialog-renderer	0x140df39f0	0x140df51e8	0x141719ee8	Recounting legends...
+classic	dialog-renderer	0x140df39f0	0x140df5256	0x141719ed0	Finished prehistory...
+classic	dialog-renderer	0x140df39f0	0x140df5299	0x141719eb0	Placing civilizations... (
+classic	dialog-renderer	0x140df39f0	0x140df52bf	0x1416102d8	)
+classic	dialog-renderer	0x140df39f0	0x140df5301	0x141719f60	Making cave civilizations...
+classic	dialog-renderer	0x140df39f0	0x140df5344	0x141719f48	Making cave pops...
+classic	dialog-renderer	0x140df39f0	0x140df5387	0x141719f30	Placing other beasts...
+classic	dialog-renderer	0x140df39f0	0x140df53ca	0x141719f18	Placing megabeasts...
+classic	dialog-renderer	0x140df39f0	0x140df540d	0x14171b6a0	Placing good/evil...
+classic	dialog-renderer	0x140df39f0	0x140df5450	0x14171b688	Placing caves... (
+classic	dialog-renderer	0x140df39f0	0x140df547c	0x1416102d8	)
+classic	dialog-renderer	0x140df39f0	0x140df54b5	0x14171b670	Prehistory init...
+classic	dialog-renderer	0x140df39f0	0x140df552f	0x14171b650	Finalizing civ mats... (
+classic	dialog-renderer	0x140df39f0	0x140df55d9	0x1416102d8	)
+classic	dialog-renderer	0x140df39f0	0x140df562b	0x14171b6f8	Finalizing art... (
+classic	dialog-renderer	0x140df39f0	0x140df56d5	0x1416102d8	)
+classic	dialog-renderer	0x140df39f0	0x140df5725	0x14171b6d8	Finalizing uniforms... (
+classic	dialog-renderer	0x140df39f0	0x140df57cf	0x1416102d8	)
+classic	dialog-renderer	0x140df39f0	0x140df5821	0x14171b6c0	Finalizing sites... (
+classic	dialog-renderer	0x140df39f0	0x140df58ca	0x1416102d8	)
+classic	dialog-renderer	0x140df39f0	0x140df597d	0x14171b6b8	, year 
+classic	dialog-renderer	0x140df39f0	0x140df59d4	0x14171b748	Historical figures: 
+classic	dialog-renderer	0x140df39f0	0x140df5ac9	0x14171b730	An abridged chronicle (
+classic	dialog-renderer	0x140df39f0	0x140df5b1e	0x14171b720	 events total):
+classic	dialog-renderer	0x140df39f0	0x140df5dec	0x14171b710	   Events: 
+classic	dialog-renderer	0x140df39f0	0x140df5fe9	0x14171b7b8	LACK OF PEAKS
+classic	dialog-renderer	0x140df39f0	0x140df6023	0x14171b798	MEDIUM ELEVATION REJECTION
+classic	dialog-renderer	0x140df39f0	0x140df605d	0x14171b780	LOW ELEVATION REJECTION
+classic	dialog-renderer	0x140df39f0	0x140df6097	0x14171b760	HIGH ELEVATION REJECTION
+classic	dialog-renderer	0x140df39f0	0x140df60d1	0x14171b810	LACK OF EDGE OCEANS
+classic	dialog-renderer	0x140df39f0	0x140df610b	0x14171b7f8	RAINFALL REJECTION
+classic	dialog-renderer	0x140df39f0	0x140df6145	0x14171b7e0	DRAINAGE REJECTION
+classic	dialog-renderer	0x140df39f0	0x140df617f	0x14171b7c8	SAVAGERY REJECTION
+classic	dialog-renderer	0x140df39f0	0x140df61b9	0x14171b868	VOLCANISM REJECTION
+classic	dialog-renderer	0x140df39f0	0x140df61f3	0x14171b850	LACK OF VOLCANOS
+classic	dialog-renderer	0x140df39f0	0x140df622d	0x14171b840	SWAMP REJECTION
+classic	dialog-renderer	0x140df39f0	0x140df6267	0x14171b828	DESERT REJECTION
+classic	dialog-renderer	0x140df39f0	0x140df62a1	0x14171b8c0	FOREST REJECTION
+classic	dialog-renderer	0x140df39f0	0x140df62db	0x14171b8a8	MOUNTAIN REJECTION
+classic	dialog-renderer	0x140df39f0	0x140df6315	0x14171b898	OCEAN REJECTION
+classic	dialog-renderer	0x140df39f0	0x140df634f	0x14171b880	GLACIER REJECTION
+classic	dialog-renderer	0x140df39f0	0x140df6389	0x14171b910	TUNDRA REJECTION
+classic	dialog-renderer	0x140df39f0	0x140df63c3	0x14171b8f8	GRASSLAND REJECTION
+classic	dialog-renderer	0x140df39f0	0x140df63fd	0x14171b8e8	HILLS REJECTION
+classic	dialog-renderer	0x140df39f0	0x140df6437	0x14171b8d8	LACK OF RIVERS
+classic	dialog-renderer	0x140df39f0	0x140df6471	0x14171b980	TOO MANY REGIONS
+classic	dialog-renderer	0x140df39f0	0x140df64ab	0x14171b968	LACK OF MOUNTAIN CAVES
+classic	dialog-renderer	0x140df39f0	0x140df64e5	0x14171b950	LACK OF LOW-LYING CAVES
+classic	dialog-renderer	0x140df39f0	0x140df651f	0x14171b928	UNABLE TO PLACE ENOUGH CIVILIZATIONS
+classic	dialog-renderer	0x140df39f0	0x140df6559	0x14171ba28	NO CIVILIZATIONS AVAILABLE
+classic	dialog-renderer	0x140df39f0	0x140df6590	0x14171b9f8	UNABLE TO PLACE CONTROLLABLE CIVILIZATION
+classic	dialog-renderer	0x140df39f0	0x140df65c7	0x14171b9c8	FARMING CIVILIZATION PLACED WITHOUT CROPS
+classic	dialog-renderer	0x140df39f0	0x140df6773	0x14171b998	CONTINUE until you give me another warning.
+classic	dialog-renderer	0x140df39f0	0x140df689d	0x14171bad8	ABORT NOW and I'll look over my parameters.
+classic	dialog-renderer	0x140df39f0	0x140df69cd	0x14171ba98	ALLOW THIS REJECTION TYPE and continue reporting others.
+classic	dialog-renderer	0x140df39f0	0x140df6afd	0x14171ba58	ALLOW ALL REJECTS, even if I end up with a legends-only world!
+classic	dialog-renderer	0x140df39f0	0x140df6c5d	0x14171ba48	Play now
+classic	dialog-renderer	0x140df39f0	0x140df6d8d	0x14171bb30	Keep world and return to main menu
+classic	dialog-renderer	0x140df39f0	0x140df6f2a	0x14171bb20	Use world now
+classic	dialog-renderer	0x140df39f0	0x140df709e	0x14171bb08	Continue generating
+classic	dialog-renderer	0x140df39f0	0x140df71cd	0x14171b328	Back to main menu
+classic	dialog-renderer	0x140df39f0	0x140df7329	0x141611280	Pause
+classic	dialog-renderer	0x140df39f0	0x140df77a5	0x1415e7a08	Mountain
+classic	dialog-renderer	0x140df39f0	0x140df77df	0x1415e7a18	Glacier
+classic	dialog-renderer	0x140df39f0	0x140df7819	0x1415e79dc	Tundra
+classic	dialog-renderer	0x140df39f0	0x140df7853	0x1415e79e8	Temperate Freshwater Swamp
+classic	dialog-renderer	0x140df39f0	0x140df788d	0x1415e7a60	Temperate Saltwater Swamp
+classic	dialog-renderer	0x140df39f0	0x140df78c7	0x1415e7a80	Temperate Freshwater Marsh
+classic	dialog-renderer	0x140df39f0	0x140df7901	0x1415e7a20	Temperate Saltwater Marsh
+classic	dialog-renderer	0x140df39f0	0x140df793b	0x1415e7a40	Tropical Freshwater Swamp
+classic	dialog-renderer	0x140df39f0	0x140df7975	0x1415e7ae0	Tropical Saltwater Swamp
+classic	dialog-renderer	0x140df39f0	0x140df79af	0x1415e7b00	Mangrove Swamp
+classic	dialog-renderer	0x140df39f0	0x140df79e9	0x1415e7aa0	Tropical Freshwater Marsh
+classic	dialog-renderer	0x140df39f0	0x140df7a23	0x1415e7ac0	Tropical Saltwater Marsh
+classic	dialog-renderer	0x140df39f0	0x140df7a5d	0x1415e7b4c	Taiga
+classic	dialog-renderer	0x140df39f0	0x140df7a97	0x1416a9ef0	Temperate Conifer Forest
+classic	dialog-renderer	0x140df39f0	0x140df7ad1	0x1415e7b10	Temperate Broadleaf Forest
+classic	dialog-renderer	0x140df39f0	0x140df7b0b	0x1415e7b30	Tropical Coniferous Forest
+classic	dialog-renderer	0x140df39f0	0x140df7b45	0x1416a9ed0	Tropical Dry Brdlf Forest
+classic	dialog-renderer	0x140df39f0	0x140df7b7f	0x1416a9f20	Tropical Moist Brdlf Forst
+classic	dialog-renderer	0x140df39f0	0x140df7bb9	0x1415e7b78	Temperate Grassland
+classic	dialog-renderer	0x140df39f0	0x140df7bf3	0x1415e7b90	Temperate Savanna
+classic	dialog-renderer	0x140df39f0	0x140df7c2d	0x1415e7c18	Temperate Shrubland
+classic	dialog-renderer	0x140df39f0	0x140df7c67	0x1415e7c30	Tropical Grassland
+classic	dialog-renderer	0x140df39f0	0x140df7ca1	0x1415e7be8	Tropical Savanna
+classic	dialog-renderer	0x140df39f0	0x140df7cdb	0x1415e7c00	Tropical Shrubland
+classic	dialog-renderer	0x140df39f0	0x140df7d15	0x1415e7c68	Badlands
+classic	dialog-renderer	0x140df39f0	0x140df7d4f	0x1415e7c78	Rocky Wasteland
+classic	dialog-renderer	0x140df39f0	0x140df7d89	0x1415e7c48	Sand Desert
+classic	dialog-renderer	0x140df39f0	0x140df7dc3	0x1415e7c58	Tropical Ocean
+classic	dialog-renderer	0x140df39f0	0x140df7dfd	0x1415e7cc0	Temperate Ocean
+classic	dialog-renderer	0x140df39f0	0x140df7e37	0x1415e7cd0	Arctic Ocean
+classic	dialog-renderer	0x140df39f0	0x140df7e71	0x1415e7c88	Temperate Freshwater Pool
+classic	dialog-renderer	0x140df39f0	0x140df7eab	0x1415e7ca8	Temperate Brackish Pool
+classic	dialog-renderer	0x140df39f0	0x140df7ee5	0x1415e7d10	Temperate Saltwater Pool
+classic	dialog-renderer	0x140df39f0	0x140df7f1f	0x1415e7d30	Tropical Freshwater Pool
+classic	dialog-renderer	0x140df39f0	0x140df7f59	0x1415e7ce0	Tropical Brackish Pool
+classic	dialog-renderer	0x140df39f0	0x140df7f93	0x1415e7cf8	Tropical Saltwater Pool
+classic	dialog-renderer	0x140df39f0	0x140df7fcd	0x1415e7d90	Temperate Freshwater Lake
+classic	dialog-renderer	0x140df39f0	0x140df8007	0x1415e7db0	Temperate Brackish Lake
+classic	dialog-renderer	0x140df39f0	0x140df8041	0x1415e7d50	Temperate Saltwater Lake
+classic	dialog-renderer	0x140df39f0	0x140df807b	0x1415e7d70	Tropical Freshwater Lake
+classic	dialog-renderer	0x140df39f0	0x140df80b5	0x1415e7e08	Tropical Brackish Lake
+classic	dialog-renderer	0x140df39f0	0x140df80ef	0x1415e7e20	Tropical Saltwater Lake
+classic	dialog-renderer	0x140df39f0	0x140df8129	0x1415e7dc8	Temperate Freshwater River
+classic	dialog-renderer	0x140df39f0	0x140df8163	0x1415e7de8	Temperate Brackish River
+classic	dialog-renderer	0x140df39f0	0x140df819d	0x1415e7e70	Temperate Saltwater River
+classic	dialog-renderer	0x140df39f0	0x140df81d7	0x1415e7e90	Tropical Freshwater River
+classic	dialog-renderer	0x140df39f0	0x140df8211	0x1415e7e38	Tropical Brackish River
+classic	dialog-renderer	0x140df39f0	0x140df824b	0x1415e7e50	Tropical Saltwater River
+classic	dialog-renderer	0x140df39f0	0x140df8285	0x1415e7ef0	Subterranean Water
+classic	dialog-renderer	0x140df39f0	0x140df82bc	0x1415e7f08	Subterranean Chasm
+classic	dialog-renderer	0x140df39f0	0x140df82f3	0x1415e7eb0	Subterranean Magma
+classic	dialog-renderer	0x140df39f0	0x140df8370	0x1416a9f10	Temperature: 
+classic	dialog-renderer	0x140df39f0	0x140df83ce	0x1415f23b0	Freezing
+classic	dialog-renderer	0x140df39f0	0x140df841c	0x1415f23d0	Cold
+classic	dialog-renderer	0x140df39f0	0x140df8469	0x1415f9c20	Temperate
+classic	dialog-renderer	0x140df39f0	0x140df84b6	0x1415f23d8	Warm
+classic	dialog-renderer	0x140df39f0	0x140df8503	0x1415f23e0	Hot
+classic	dialog-renderer	0x140df39f0	0x140df8542	0x1415f2338	Scorching
+classic	dialog-renderer	0x140df39f0	0x140df85a7	0x1416a9eb0	Trees: 
+classic	dialog-renderer	0x140df39f0	0x140df8624	0x1416a9ea4	Scarce
+classic	dialog-renderer	0x140df39f0	0x140df8671	0x1416a9ec4	Sparse
+classic	dialog-renderer	0x140df39f0	0x140df86be	0x1416a9eb8	Woodland
+classic	dialog-renderer	0x140df39f0	0x140df8700	0x1416a9d70	Heavily Forested
+classic	dialog-renderer	0x140df39f0	0x140df874e	0x1415fa7dc	None
+classic	dialog-renderer	0x140df39f0	0x140df87b3	0x1416a9d58	Other Vegetation: 
+classic	dialog-renderer	0x140df39f0	0x140df882a	0x1416a9ea4	Scarce
+classic	dialog-renderer	0x140df39f0	0x140df8877	0x1416a9d90	Moderate
+classic	dialog-renderer	0x140df39f0	0x140df88be	0x1416a9d84	Thick
+classic	dialog-renderer	0x140df39f0	0x140df890c	0x1415fa7dc	None
+classic	dialog-renderer	0x140df39f0	0x140df8973	0x1416a9d30	Surroundings: 
+classic	dialog-renderer	0x140df39f0	0x140df89df	0x1416a9d28	Serene
+classic	dialog-renderer	0x140df39f0	0x140df8a29	0x1416a9d4c	Calm
+classic	dialog-renderer	0x140df39f0	0x140df8a6d	0x1416a9d40	Sinister
+classic	dialog-renderer	0x140df39f0	0x140df8acb	0x1416a9df8	Mirthful
+classic	dialog-renderer	0x140df39f0	0x140df8b18	0x1416a9de8	Wilderness
+classic	dialog-renderer	0x140df39f0	0x140df8b5f	0x1416a9e18	Haunted
+classic	dialog-renderer	0x140df39f0	0x140df8bac	0x1416a9e08	Joyous Wilds
+classic	dialog-renderer	0x140df39f0	0x140df8bf6	0x1416a9db0	Untamed Wilds
+classic	dialog-renderer	0x140df39f0	0x140df8c37	0x1416a9da0	Terrifying
+classic	dialog-renderer	0x140df39f0	0x140df8e11	0x1415e46fc	""""
+classic	dialog-renderer	0x140df39f0	0x140df8e64	0x1415e46fc	""""
+classic	dialog-renderer	0x140df39f0	0x140df8eee	0x1415e3720	 
+classic	dialog-renderer	0x140df39f0	0x140df91f3	0x1416a9dd0	Multiple Constructions
+classic	dialog-renderer	0x140df39f0	0x140df92e5	0x1416a9dc0	Major River: 
+classic	dialog-renderer	0x140df39f0	0x140df9340	0x1416aa540	River: 
+classic	dialog-renderer	0x140df39f0	0x140df938f	0x1416aa530	Minor River: 
+classic	dialog-renderer	0x140df39f0	0x140df93f2	0x1416aa550	Stream: 
+classic	dialog-renderer	0x140df39f0	0x140df9435	0x1416aa548	Brook: 
+classic	dialog-renderer	0x140df39f0	0x140df95c4	0x1416aa4f8	Volcano: 
+classic	dialog-renderer	0x140df39f0	0x140df95ef	0x1416aa4e8	Mountain: 
+classic	dialog-renderer	0x140df39f0	0x140df9712	0x14171bb04	Ice
+classic	dialog-renderer	0x140df39f0	0x140df98eb	0x1416248ec	FLUX
+classic	dialog-renderer	0x140df39f0	0x140df9c8f	0x1416248e0	FIRED_MAT
+classic	dialog-renderer	0x140df39f0	0x140df9d4d	0x14171bb88	Shallow Clay
+classic	dialog-renderer	0x140df39f0	0x140df9d89	0x141625884	Clay
+classic	dialog-renderer	0x140df39f0	0x140df9e17	0x14171bb78	Shallow Sand
+classic	dialog-renderer	0x140df39f0	0x140df9e4e	0x141626b00	Sand
+classic	dialog-renderer	0x140df39f0	0x140df9ee9	0x14171bb68	Little soil
+classic	dialog-renderer	0x140df39f0	0x140df9f28	0x14171bb58	Some soil
+classic	dialog-renderer	0x140df39f0	0x140df9f67	0x14171bbd0	Deep soil
+classic	dialog-renderer	0x140df39f0	0x140df9fa3	0x14171bbc0	Very deep soil
+classic	dialog-renderer	0x140df39f0	0x140df9fdf	0x14171bba8	Extremely deep soil
+classic	dialog-renderer	0x140df39f0	0x140dfa064	0x14171bb98	Varied aquifer
+classic	dialog-renderer	0x140df39f0	0x140dfa0a3	0x14171bc20	Heavy aquifer
+classic	dialog-renderer	0x140df39f0	0x140dfa11e	0x14171bc10	Light aquifer
+classic	dialog-renderer	0x140df39f0	0x140dfa406	0x14171bbf8	Flux stone layer
+classic	dialog-renderer	0x140df39f0	0x140dfa5aa	0x14171bbe0	To recenter, press 
+classic	dialog-renderer	0x140df39f0	0x140dfa634	0x14171bc60	 or hold+drag the middle mouse button.
+classic	dialog-renderer	0x140df39f0	0x140dfac1c	0x1416146f4	Mods
+classic	dialog-renderer	0x140df39f0	0x140dfac80	0x14171b370	Basic options
+classic	dialog-renderer	0x140df39f0	0x140dfacba	0x141719978	Detailed mode
+classic	dialog-renderer	0x140df39f0	0x140dfacfa	0x141719978	Detailed mode
+classic	dialog-renderer	0x140df39f0	0x140dfad31	0x14171b370	Basic options
+classic	dialog-renderer	0x140df39f0	0x140dfb04f	0x14171b380	Create world
+classic	dialog-renderer	0x140df39f0	0x140dfb0aa	0x14171b328	Back to main menu
+classic	dialog-renderer	0x140df39f0	0x140dfb3b0	0x1415e3720	 
+classic	dialog-renderer	0x140df39f0	0x140dfb4bd	0x141613f08	Installed
+classic	dialog-renderer	0x140df39f0	0x140dfb956	0x1415e3720	 
+classic	dialog-renderer	0x140df39f0	0x140dfbd40	0x141613f18	Unnamed mod
+classic	dialog-renderer	0x140df39f0	0x140dfbdca	0x141613f28	Author: 
+classic	dialog-renderer	0x140df39f0	0x140dfbe14	0x141613e98	Unknown author
+classic	dialog-renderer	0x140df39f0	0x140dfbe93	0x141613ea8	Version: 
+classic	dialog-renderer	0x140df39f0	0x140dfbf74	0x141613eb8	Earliest compatible version: 
+classic	dialog-renderer	0x140df39f0	0x140dfc06a	0x141613ed8	Description:
+classic	dialog-renderer	0x140df39f0	0x140dfc239	0x141613d30	Must be after 
+classic	dialog-renderer	0x140df39f0	0x140dfc284	0x141613d40	Must be before 
+classic	dialog-renderer	0x140df39f0	0x140dfc2bb	0x141613d50	Requires 
+classic	dialog-renderer	0x140df39f0	0x140dfc3f1	0x141613d60	Conflicts with 
+classic	dialog-renderer	0x140df39f0	0x140dfc4c6	0x14171b3d8	Click now to open to this mod folder.
+classic	dialog-renderer	0x140df39f0	0x140dfc571	0x141719968	World map size
+classic	dialog-renderer	0x140df39f0	0x140dfc5b7	0x141719958	History length
+classic	dialog-renderer	0x140df39f0	0x140dfc625	0x141719910	In such a young world certain game elements will not be available.
+classic	dialog-renderer	0x140df39f0	0x140dfc693	0x1417199e0	A shorter history means certain game elements might not be available.
+classic	dialog-renderer	0x140df39f0	0x140dfc701	0x1417199c0	This may take several minutes!
+classic	dialog-renderer	0x140df39f0	0x140dfc76f	0x1417199a0	This may take a long while!
+classic	dialog-renderer	0x140df39f0	0x140dfc7b5	0x141719988	Number of civilizations
+classic	dialog-renderer	0x140df39f0	0x140dfc7fb	0x141719a78	Maximum number of sites
+classic	dialog-renderer	0x140df39f0	0x140dfc841	0x141719a60	Number of beasts
+classic	dialog-renderer	0x140df39f0	0x140dfc887	0x141719a48	Natural savagery
+classic	dialog-renderer	0x140df39f0	0x140dfc8cd	0x141719a28	Real world extinct creatures
+classic	dialog-renderer	0x140df39f0	0x140dfc93b	0x141719b28	They are extinct in this world as well.
+classic	dialog-renderer	0x140df39f0	0x140dfc9a9	0x141719ae8	They live only on savage islands and very small savage biomes.
+classic	dialog-renderer	0x140df39f0	0x140dfca17	0x141719ab8	They are only found in the untamed wilds.
+classic	dialog-renderer	0x140df39f0	0x140dfca85	0x141719a90	They can be found in any wilderness.
+classic	dialog-renderer	0x140df39f0	0x140dfcaf3	0x141719b78	Many civilizations keep them as pets and work animals.
+classic	dialog-renderer	0x140df39f0	0x140dfcb36	0x141719b60	Mineral occurrence
+classic	dialog-renderer	0x140df39f0	0x140dfcdcb	0x141719bd8	Medium
+classic	dialog-renderer	0x140df39f0	0x140dfce10	0x1416a9d18	Small
+classic	dialog-renderer	0x140df39f0	0x140dfce55	0x141719b50	Smaller
+classic	dialog-renderer	0x140df39f0	0x140dfce9a	0x141719b58	Pocket
+classic	dialog-renderer	0x140df39f0	0x140dfcf0b	0x141719c00	500 years
+classic	dialog-renderer	0x140df39f0	0x140dfcf45	0x141719c10	250 years
+classic	dialog-renderer	0x140df39f0	0x140dfcf8a	0x141719bb0	100 years
+classic	dialog-renderer	0x140df39f0	0x140dfcfcf	0x141719bc0	50 years
+classic	dialog-renderer	0x140df39f0	0x140dfd014	0x141719bd0	5 years
+classic	dialog-renderer	0x140df39f0	0x140dfd085	0x141719bf0	Very high
+classic	dialog-renderer	0x140df39f0	0x140dfd0bf	0x14165bd70	High
+classic	dialog-renderer	0x140df39f0	0x140dfd104	0x141719bd8	Medium
+classic	dialog-renderer	0x140df39f0	0x140dfd149	0x14165bdac	Low
+classic	dialog-renderer	0x140df39f0	0x140dfd18e	0x14165cf90	Very low
+classic	dialog-renderer	0x140df39f0	0x140dfd1ff	0x141719bf0	Very high
+classic	dialog-renderer	0x140df39f0	0x140dfd239	0x14165bd70	High
+classic	dialog-renderer	0x140df39f0	0x140dfd27e	0x141719bd8	Medium
+classic	dialog-renderer	0x140df39f0	0x140dfd2c3	0x14165bdac	Low
+classic	dialog-renderer	0x140df39f0	0x140dfd308	0x14165cf90	Very low
+classic	dialog-renderer	0x140df39f0	0x140dfd379	0x141719bf0	Very high
+classic	dialog-renderer	0x140df39f0	0x140dfd3b3	0x14165bd70	High
+classic	dialog-renderer	0x140df39f0	0x140dfd3f8	0x141719bd8	Medium
+classic	dialog-renderer	0x140df39f0	0x140dfd43d	0x14165bdac	Low
+classic	dialog-renderer	0x140df39f0	0x140dfd482	0x14165cf90	Very low
+classic	dialog-renderer	0x140df39f0	0x140dfd4f3	0x141719bf0	Very high
+classic	dialog-renderer	0x140df39f0	0x140dfd52d	0x14165bd70	High
+classic	dialog-renderer	0x140df39f0	0x140dfd572	0x141719bd8	Medium
+classic	dialog-renderer	0x140df39f0	0x140dfd5b7	0x14165bdac	Low
+classic	dialog-renderer	0x140df39f0	0x140dfd5fc	0x14165cf90	Very low
+classic	dialog-renderer	0x140df39f0	0x140dfd66d	0x141625660	Domesticated
+classic	dialog-renderer	0x140df39f0	0x140dfd6a7	0x141717cd8	Any wilderness
+classic	dialog-renderer	0x140df39f0	0x140dfd6ec	0x141717c38	Untamed wilds
+classic	dialog-renderer	0x140df39f0	0x140dfd731	0x1416ad510	Isolated
+classic	dialog-renderer	0x140df39f0	0x140dfd776	0x141717c48	Extinct
+classic	dialog-renderer	0x140df39f0	0x140dfd7e7	0x141719c38	Everywhere
+classic	dialog-renderer	0x140df39f0	0x140dfd84b	0x141719c48	Frequent
+classic	dialog-renderer	0x140df39f0	0x140dfd890	0x1416a9ec4	Sparse
+classic	dialog-renderer	0x140df39f0	0x140dfd8d5	0x141719c54	Rare
+classic	dialog-renderer	0x140df39f0	0x140dfd91a	0x141719be0	Very rare
+classic	dialog-renderer	0x140df39f0	0x140dfd95f	0x1416a9d10	Large
+classic	dialog-renderer	0x140df39f0	0x140dfda15	0x141719c20	Parameters saved!
+classic	dialog-renderer	0x140df39f0	0x140dfda63	0x141719cc0	Parameters loaded!
+classic	dialog-renderer	0x140df39f0	0x140dfda9a	0x141719c80	Choose or create a parameter set to make a custom world.
+classic	dialog-renderer	0x140df39f0	0x140dfdbce	0x141719c68	New parameter set
+classic	dialog-renderer	0x140df39f0	0x140dfdcf4	0x1416002b8	Save
+classic	dialog-renderer	0x140df39f0	0x140dfde14	0x1416ac06c	Load
+classic	dialog-renderer	0x140df39f0	0x140dfe0be	0x1415e783c	_
+classic	dialog-renderer	0x140df39f0	0x140dfe296	0x141719c5c	Width
+classic	dialog-renderer	0x140df39f0	0x140dfe483	0x141719d20	Height
+classic	dialog-renderer	0x140df39f0	0x140dfe71d	0x1415e783c	_
+classic	dialog-renderer	0x140df39f0	0x140dfe84a	0x141719d00	Random seed
+classic	dialog-renderer	0x140df39f0	0x140dfe881	0x141719d10	Various seeds
+classic	dialog-renderer	0x140df39f0	0x140dfe9b9	0x1415e3724	Copy
+classic	dialog-renderer	0x140df39f0	0x140dfeae9	0x1416144ac	Delete
+classic	dialog-renderer	0x140df39f0	0x140dfecce	0x141611108	Range: 
+classic	dialog-renderer	0x140df39f0	0x140dfed50	0x1415e8524	 to 
+classic	dialog-renderer	0x140df39f0	0x140dfef1f	0x1415e783c	_
+classic	dialog-renderer	0x140df39f0	0x140dff642	0x141719cd8	Really delete this parameter set?
+classic	dialog-renderer	0x140df39f0	0x140dff779	0x1416144ac	Delete
+classic	dialog-renderer	0x140df39f0	0x140dff8a4	0x1415f959c	Cancel
+classic	dialog-renderer	0x140df39f0	0x140dffa54	0x141719d78	Really change the dimensions?
+classic	dialog-renderer	0x140df39f0	0x140dffaa1	0x141719d50	This parameter set will be reset.
+classic	dialog-renderer	0x140df39f0	0x140dffbd9	0x141719d48	Change
+classic	dialog-renderer	0x140df39f0	0x140dffd04	0x1415f959c	Cancel
+classic	dialog-renderer	0x140df39f0	0x140dffeb4	0x141719d28	Are you sure you want to abort?
+classic	dialog-renderer	0x140df39f0	0x140dfff01	0x141719de0	You haven't saved your changes.
+classic	dialog-renderer	0x140df39f0	0x140e00039	0x141635570	Abort
+classic	dialog-renderer	0x140df39f0	0x140e00164	0x1415f959c	Cancel
+classic	dialog-renderer	0x140df39f0	0x140e00314	0x141719dc0	Are you sure you want to go on?
+classic	dialog-renderer	0x140df39f0	0x140e00361	0x141719de0	You haven't saved your changes.
+classic	dialog-renderer	0x140df39f0	0x140e00499	0x1415f21d4	Create
+classic	dialog-renderer	0x140df39f0	0x140e005c4	0x1415f959c	Cancel

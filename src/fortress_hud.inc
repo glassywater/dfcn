@@ -1,3 +1,94 @@
+// RAW names belong to the mod that supplied them. Reserve complete native
+// fields before the word/item/generated-name readers can translate fragments.
+// Captured draws also retain the full identity of a clipped picture caption.
+std::vector<SDL_Rect> Overlay::preserve_mod_workshop_names(
+        std::vector<std::string> &rows) const {
+    std::vector<SDL_Rect> regions;
+    const auto names = native_mod_workshop_names();
+    if (!gps_ || !names || names->empty()) return regions;
+    const auto context = rows;
+    const auto known_name = [&](std::string_view source) {
+        return names->contains(lower(std::string(trim_view(source))));
+    };
+    const auto reserve = [&](int left, int right, int y) {
+        if (left >= right || y < 0 || y >= static_cast<int>(rows.size())) return;
+        const SDL_Rect region{left, y, right - left, 1};
+        if (std::any_of(regions.begin(), regions.end(), [&](const SDL_Rect &other) {
+                return other.y == y && other.x <= left && other.x + other.w >= right;
+            })) return;
+        regions.push_back(region);
+        std::fill(rows[y].begin() + left, rows[y].begin() + right, ' ');
+    };
+    for (int y = 0; y < static_cast<int>(context.size()); ++y)
+        for (const auto &field : split_text_fields(context[y]))
+            if (known_name(field.text)) reserve(field.start, field.end, y);
+
+    auto popups = native_text_overlay_frames(*gps_);
+    if (const auto popup = native_toolbar_tooltip_frame()) popups.push_back(*popup);
+    const auto covered = [&](int x, int y) {
+        return std::any_of(popups.begin(), popups.end(), [&](const SDL_Rect &popup) {
+            return x >= popup.x && x < popup.x + popup.w &&
+                y >= popup.y && y < popup.y + popup.h;
+        });
+    };
+    auto draws = captured_native_drawn_text_rows();
+    auto top_draws = captured_native_drawn_text_rows(true);
+    draws.insert(draws.end(), std::make_move_iterator(top_draws.begin()),
+        std::make_move_iterator(top_draws.end()));
+    {
+        std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+        draws.insert(draws.end(), g_native_overwritten_text_rows.begin(),
+            g_native_overwritten_text_rows.end());
+    }
+    const uint64_t epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+    for (const auto &draw : draws) {
+        if (draw.draw_epoch != epoch || draw.draw_dimx != gps_->dimx ||
+                draw.draw_dimy != gps_->dimy || draw.unit_identity_owner ||
+                draw.info_title_authored || draw.fortress_labor_caption) continue;
+        const auto source = trim_view(draw.source);
+        const auto complete = draw.complete_source.empty()
+            ? source : trim_view(draw.complete_source);
+        if (source.empty() || !known_name(complete)) continue;
+        const int first = draw.x + static_cast<int>(source.data() - draw.source.data());
+        int left = std::max(0, first);
+        int right = std::min(gps_->dimx, first + static_cast<int>(source.size()));
+        if (draw.draw_clip) {
+            const auto &clip = *draw.draw_clip;
+            if (draw.y < clip.y || draw.y >= clip.y + clip.h) continue;
+            left = std::max(left, clip.x);
+            right = std::min(right, clip.x + clip.w);
+        }
+        if (left >= right || draw.y < 0 || draw.y >= gps_->dimy) continue;
+        std::array<int, 2> physical_rows{draw.y, -1};
+        bool top = false;
+        if (cell_at(left, draw.y, &top)) {
+            const auto *flags = top ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
+            const size_t tile = static_cast<size_t>(left) * gps_->dimy + draw.y;
+            const uint32_t half = flags ? flags[tile] & ((1u << 3) | (1u << 4)) : 0;
+            if (half == (1u << 3)) physical_rows[1] = draw.y + 1;
+            if (half == (1u << 4)) physical_rows[1] = draw.y - 1;
+        }
+        for (const int y : physical_rows) {
+            if (y < 0 || y >= gps_->dimy) continue;
+            bool intact = true, ink = false;
+            for (int x = left; x < right; ++x) {
+                if (covered(x, y)) continue;
+                const char expected = source[static_cast<size_t>(x - first)];
+                if (context[y][x] != expected) { intact = false; break; }
+                ink |= expected != ' ';
+            }
+            if (!intact || !ink) continue;
+            for (int x = left; x < right;) {
+                while (x < right && covered(x, y)) ++x;
+                const int start = x;
+                while (x < right && !covered(x, y)) ++x;
+                reserve(start, x, y);
+            }
+        }
+    }
+    return regions;
+}
+
 void Overlay::layout_fortress_picture_caption(SDL_Renderer *renderer,
         const std::vector<Match *> &parts, int left, int right,
         std::string_view primary_source) {

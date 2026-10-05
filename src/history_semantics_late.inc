@@ -143,12 +143,15 @@ case 95: { // artifact_claim_formed
         key += " by {a}";
         values.push_back(*actor);
     }
+    const bool distant_claim = number("claim") == 2 && event.circumstance == 251;
+    // Remoteness modifies the claim itself, before the Chinese predicate.
+    if (distant_claim) key += " from afar";
     auto action = apply(key, values);
     auto clauses = event_clauses();
     if (!action || !clauses) return std::nullopt;
     join(result, *action);
     append_clause(result, clauses->first);
-    append_clause(result, clauses->second);
+    if (!distant_claim) append_clause(result, clauses->second);
     translated = true;
     break;
 }

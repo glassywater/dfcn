@@ -1,0 +1,5 @@
+edition	image_identity	function_rva	end_rva	title_reference_rva	source
+reference	PE:6a70a6d9:02711000	0x234ad0	0x235e59	0x234ee3	Announcements
+reference	PE:6a70a6d9:02711000	0x883f40	0x884458	0x8841fb	Announcements
+classic	PE:6a70b91c:0270a000	0x234a60	0x235de9	0x234e73	Announcements
+classic	PE:6a70b91c:0270a000	0x8817c0	0x881cd8	0x881a7b	Announcements
