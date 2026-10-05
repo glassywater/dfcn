@@ -229,7 +229,7 @@ def extract(path: Path) -> list[tuple[str, str, str]]:
     add("divine-guidance", "Greetings. I am {p}, and I have chosen you.", greeting, chosen)
     add("divine-guidance", "Greetings. I am {p}, and I have chosen you as my instrument of {r}.",
         greeting, chosen, " as my instrument of ")
-    add("divine-guidance", "The remnants of creation, {e}, belong with my followers, {e}.",
+    add("divine-guidance", "The remnants of creation, {s}, belong with my followers, {e}.",
         "The remnants of creation, ", ", belong with my followers, ")
     add("divine-guidance", "Seek out {p} in {e} and fulfill your destiny.",
         "Seek out ", " in ", ' and fulfill your destiny."')

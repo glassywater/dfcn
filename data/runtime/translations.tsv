@@ -1943,7 +1943,7 @@ DFHack help: You can toggle this default filtering by hitting "Ctrl""D" to switc
 In the beginning, you'll probably find it populated with a variety of rumors and knowledge known to everybody from your home. This could include some opportunities for adventure.	刚开始时，日志通常已有家乡人尽皆知的各种传闻和知识，其中可能藏着冒险机会。	hq
 {n} is satisfied with their position here. Congratulations! (You should be proud of your accomplishment. Embark in a world with the deepest cavern layers for further challenges.)	{n1}对自己在这里的地位感到满意。祝贺你！（你应当为自己的成就感到自豪。若想迎接进一步的挑战，请在拥有最深洞穴层的世界中启程。）	hPt
 {p}: The Mountainhomes have some need of the same goods you have requested, sadly, so there is no export agreement to be had. We will still try to fill your needs as best we can.	{p1}：遗憾的是，山国都城也需要你们所求的那些货物，因此无法达成出口协议。不过，我们仍会尽力满足你们的需求。	hPt
-"Greetings. I am {p}, and I have chosen you as my instrument of {r}. The remnants of creation, {e}, belong with my followers, {e}. Seek out {p} in {e} and fulfill your destiny."	“你好。我是{p1}，我已选中你，作为我彰显{r1}的使者。创世的遗留之物{e1}，应当归于我的信众{e2}。去{e3}寻找{p2}，完成你的天命。”	hPt
+"Greetings. I am {p}, and I have chosen you as my instrument of {r}. The remnants of creation, {s}, belong with my followers, {e}. Seek out {p} in {e} and fulfill your destiny."	“你好。我是{p1}，我已选中你，作为我彰显{r1}的使者。创世的遗留之物{s1}，应当归于我的信众{e1}。去{e2}寻找{p2}，完成你的天命。”	hPt
 A large ferocious predator found in grasslands. It lives in groups of females and one male with a large mane. They hunt together and are capable of felling extremely large prey.	一种被发现于草原的大型凶猛食肉动物。 它通常以很多雌性加一个有大鬃毛雄性的群体做为单位一起生存。 它们一起捕猎，能够讨伐极其巨大的猎物。	lP
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the agreement between {s} and {s} to work as a mercenary and become a resident of {s}	{s1}与{s2}达成的居留协议：成为{s3}的居民，以便从事雇佣兵工作	l
 DFHack help: "--command [ <commandStrs> ]" Specify the command to be executed. The following tokens can be used in the command and they will be replaced with appropriate values:	"--command [ <commandStrs> ]" 指定要执行的命令。命令中可以使用以下标记，它们将被替换为适当的值：	l
@@ -2980,7 +2980,7 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, serving in combat, slaying an enemy, and being a member for a year in {p}.	{a1}在{p2}在{s2}方面达到足够的技艺水平、在战斗中效力、杀死一名敌人及入会满一年后，获得了{p1}的{s1}头衔。	ht
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, serving in combat, slaying {d} enemies, and {d} years of membership at {p}	{a1}在{p2}在{s2}方面达到足够的技艺水平、在战斗中效力、杀死{d1}名敌人及拥有{d2}年会龄后，获得了{p1}的{s1}头衔	ht
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, serving in combat, slaying {d} enemies, and {d} years of membership in {p}	{a1}在{p2}在{s2}方面达到足够的技艺水平、在战斗中效力、杀死{d1}名敌人及拥有{d2}年会龄后，获得了{p1}的{s1}头衔	ht
-"Greetings. I am {p}, and I have chosen you. The remnants of creation, {e}, belong with my followers, {e}. Seek out {p} in {e} and fulfill your destiny."	“你好。我是{p1}，我已选中了你。创世的遗留之物{e1}，应当归于我的信众{e2}。去{e3}寻找{p2}，完成你的天命。”	hPt
+"Greetings. I am {p}, and I have chosen you. The remnants of creation, {s}, belong with my followers, {e}. Seek out {p} in {e} and fulfill your destiny."	“你好。我是{p1}，我已选中了你。创世的遗留之物{s1}，应当归于我的信众{e1}。去{e2}寻找{p2}，完成你的天命。”	hPt
 A small, spineless, eel-like fish that lives on the bottom of the ocean. It can turn the water around its body into a cloud of slime to escape predators.	一种生活在海底的、小型、无刺、类似鳗鱼的鱼。 它可以把身体周围的水变成一团粘液，以逃离捕食者。	lP
 A {s} caravan from {e} has arrived. Your status as a major land has attracted much more trade than usual. However, overall trade sentiments are cautious.	来自{e1}的{s1}商队已抵达。你作为大领地的地位吸引来了比平时多得多的贸易。不过，总体贸易意愿偏于谨慎。	hPt
 A {s} caravan from {e} has arrived. Your status as a major land has attracted much more trade than usual. However, overall trade sentiments are lukewarm.	来自{e1}的{s1}商队已抵达。你作为大领地的地位吸引来了比平时多得多的贸易。不过，总体贸易意愿不冷不热。	hPt
@@ -21840,7 +21840,7 @@ The moon is high in the eastern sky bright behind the clouds.	月亮位于东方
 The moon is high in the western sky bright behind the clouds.	月亮位于西方高空，在云后仍显明亮。	hP
 The moon is high in the western sky bright behind the clouds.	月亮位于西方高空，在云后仍显明亮。	hj
 The performers are in the middle of an improvised dance, {e}.	表演者们正在按{e1}即兴起舞。	hPt
-The remnants of creation, {e}, belong with my followers, {e}.	创世的遗留之物{e1}，应当归于我的信众{e2}。	hqt
+The remnants of creation, {s}, belong with my followers, {e}.	创世的遗留之物{s1}，应当归于我的信众{e1}。	hqt
 The squad leader is traveling or otherwise occupied off-site.	小队队长正在旅行，或因其他事务不在此地。	hj
 The track stop's vehicle will take items from this stockpile.	轨道站点的车辆会从此储物堆取货。	hj
 The world generator is having trouble placing mountain caves.	世界生成器无法放置山地洞穴。	l

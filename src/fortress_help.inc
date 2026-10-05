@@ -257,7 +257,7 @@ std::optional<std::string> Overlay::translate_help_paragraph(
                 std::vector<std::string> captures;
                 std::vector<std::pair<size_t, size_t>> ranges;
                 if (!match_catalog_template(rule, std::string_view(source).substr(0, end),
-                        at, captures, ranges, &source_foregrounds)) continue;
+                        at, captures, ranges, &source_foregrounds, true)) continue;
                 std::vector<std::string> resolved;
                 std::vector<std::vector<size_t>> key_origins(captures.size());
                 bool complete = true;
@@ -265,11 +265,12 @@ std::optional<std::string> Overlay::translate_help_paragraph(
                     std::optional<std::string> translated;
                     switch (rule.template_kinds[i]) {
                     case 'p':
-                        if (ui_message) {
+                        if (ui_message && !adventure_divine_person_template(rule)) {
                             translated = translate_legends_name(captures[i], true);
                         } else {
-                            // The adventure initializer calls the historical
-                            // figure formatter, not the bare name formatter:
+                            // The adventure initializer and divine guidance
+                            // call the historical figure formatter rather
+                            // than the bare name formatter:
                             // its person field can include an article, caste,
                             // profession, curse, nickname or unnamed identity.
                             // Prefer captured native fields, then the shared
@@ -291,6 +292,10 @@ std::optional<std::string> Overlay::translate_help_paragraph(
                         }
                         break;
                     case 'e':
+                        if (captures[i].empty() && adventure_divine_building_capture(rule, i)) {
+                            translated = std::string{};
+                            break;
+                        }
                         translated = ui_message && i == 0 &&
                             fortress_squad_reference_template(rule.source)
                             ? translate_fortress_squad_name(captures[i])
@@ -383,7 +388,7 @@ std::optional<std::string> Overlay::translate_help_paragraph(
                     case 'd': translated = captures[i]; break;
                     case 's':
                     case 'n':
-                        if (ui_message) {
+                        if (ui_message || adventure_divine_material_capture(rule, i)) {
                             // Tracking prose shares the compact spoor noun
                             // grammar. The first slot is footwear or anatomy;
                             // its surrounding depth/clarity belongs to the
@@ -409,7 +414,11 @@ std::optional<std::string> Overlay::translate_help_paragraph(
                     }
                     default: break;
                     }
-                    if (!translated || translated->empty()) { complete = false; break; }
+                    if (!translated || (translated->empty() &&
+                            !(captures[i].empty() && adventure_divine_building_capture(rule, i)))) {
+                        complete = false;
+                        break;
+                    }
                     resolved.push_back(std::move(*translated));
                 }
                 if (!complete || rule.target_capture_order.size() != captures.size()) continue;

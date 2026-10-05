@@ -550,6 +550,10 @@ struct Match {
     // Reflowed prose keeps its paragraph viewport independently of the
     // original writer's per-row clipping and caption background textures.
     bool layout_reflowed_paragraph = false;
+    // The announcement manager renders ordinary word strings once. Covered
+    // page cells can retain half-font flags, but cannot change this native
+    // paragraph's baselines or its complete body ownership.
+    bool native_announcement_popup = false;
     // A complete multiline control owns the relocated caption's vertical
     // viewport. Its original writer still bounds the horizontal column.
     bool layout_reflowed_control = false;
@@ -617,6 +621,9 @@ struct Match {
     int graphical_clear_y = -1;
     int graphical_clear_width = 0;
     int graphical_clear_height = 0;
+    // Only a proved, uniformly filled native text body owns every pixel in
+    // this box, including old target ink of any foreground colour.
+    bool graphical_clear_flat_background = false;
     bool graphical_auto_foreground = false;
     // Native TOP_OF_TEXT/BOTTOM_OF_TEXT are two halves of ONE caption,
     // not repeated text rows. Preserve that identity through page layout.
@@ -4350,7 +4357,8 @@ private:
     bool match_catalog_template(const Rule &rule, std::string_view source,
         size_t start, std::vector<std::string> &captures,
         std::vector<std::pair<size_t, size_t>> &ranges,
-        const std::vector<int> *foregrounds = nullptr) const;
+        const std::vector<int> *foregrounds = nullptr,
+        bool preserve_empty_divine_building = false) const;
     std::optional<std::string> translate_visitor_overview_purposes(
         std::string_view source) const;
     std::optional<std::string> translate_ui_catalog_capture(
@@ -11242,8 +11250,16 @@ static bool fortress_squad_reference_template(std::string_view source) {
         source == "Assigned to {e}, position {d}";
 }
 
+#include "adventure_divine_guidance.inc"
+
 std::optional<std::string> Overlay::translate_ui_catalog_capture(
         const Rule &rule, size_t index, std::string_view source) const {
+    // 7f066f / classic 7edeef calls the material noun formatter with
+    // type=0 and an inorganic index. It is never an entity-name field.
+    if (adventure_divine_material_capture(rule, index)) {
+        if (source == "unknown material") return exact_literal_translation(source);
+        return translate_material_name(source);
+    }
     // These native fields refer to squads. Their alias is authored text even
     // when it happens to be an ordinary dictionary word or generated title.
     if (index == 0 && fortress_squad_reference_template(rule.source))
@@ -11357,7 +11373,7 @@ std::optional<std::string> Overlay::translate_ui_catalog_capture(
 bool Overlay::match_catalog_template(const Rule &rule, std::string_view source,
         size_t start, std::vector<std::string> &captures,
         std::vector<std::pair<size_t, size_t>> &ranges,
-        const std::vector<int> *foregrounds) const {
+        const std::vector<int> *foregrounds, bool preserve_empty_divine_building) const {
     captures.clear();
     ranges.clear();
     if ((!rule.help_prose && !rule.ui_message && !rule.tooltip_prose) || rule.template_kinds.empty() ||
@@ -11371,6 +11387,8 @@ bool Overlay::match_catalog_template(const Rule &rule, std::string_view source,
     };
     std::unordered_set<size_t> failed;
     std::unordered_map<std::string, bool> scoped_terms;
+    const bool divine_guidance = adventure_divine_guidance_template(rule);
+    std::unordered_map<std::string, bool> divine_fields;
     const auto match_capture = [&](auto &&self, size_t index, size_t at) -> bool {
         if (index == rule.template_kinds.size())
             return trim_view(source.substr(at)).empty();
@@ -11395,6 +11413,31 @@ bool Overlay::match_catalog_template(const Rule &rule, std::string_view source,
                 rule.case_insensitive);
             if (!next) continue;
             const std::string_view value = source.substr(at, end - at);
+            if (divine_guidance) {
+                // A generated destination can itself contain " in ". Keep
+                // trying earlier boundaries when the native-typed field at
+                // this boundary cannot resolve, rather than rejecting the
+                // complete popup after a merely lexical longest match.
+                const std::string key = std::to_string(index) + '\x1f' + std::string(value);
+                const auto [field, added] = divine_fields.try_emplace(key, false);
+                if (added) {
+                    std::optional<std::string> target;
+                    switch (kind) {
+                    case 'p':
+                        target = native_unit_identity_source_target(value);
+                        if (!target) target = translate_legends_actor(value, 0, true);
+                        if (!target && contains_cjk_utf8(value))
+                            target = translate_ui_message_capture(value, true);
+                        break;
+                    case 'e': target = translate_legends_name(value, false); break;
+                    case 'r': target = translate_deity_spheres(value); break;
+                    case 's': target = translate_ui_catalog_capture(rule, index, value); break;
+                    default: break;
+                    }
+                    field->second = target && !target->empty();
+                }
+                if (!field->second) continue;
+            }
             if (catalog_scoped_term_capture(rule, index)) {
                 // Reject an office which swallowed part of its entity, then
                 // try the preceding literal boundary. A purely lexical match
@@ -11440,6 +11483,19 @@ bool Overlay::match_catalog_template(const Rule &rule, std::string_view source,
             if (self(self, index + 1, *next)) return true;
             captures.pop_back();
             ranges.pop_back();
+        }
+        // The abstract-building formatter appends nothing for an unnamed
+        // type-6 building with an unsupported subtype. Preserve that one
+        // native field in complete prose; other catalog consumers still
+        // require their usual nonempty capture spans.
+        if (preserve_empty_divine_building && adventure_divine_building_capture(rule, index)) {
+            if (const auto next = catalog_literal_end(source, at, suffix, rule.case_insensitive)) {
+                captures.emplace_back();
+                ranges.emplace_back(at, at);
+                if (self(self, index + 1, *next)) return true;
+                captures.pop_back();
+                ranges.pop_back();
+            }
         }
         failed.insert(state);
         return false;
@@ -21733,6 +21789,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
     // Custom personality labels can lose their last byte to the adjacent
     // rating slot. Claim the native fields before generic words or prose.
     append_adventure_personality_matches(screen_rows, result, only_y, screen_override);
+#include "adventure_divine_popup.inc"
 #include "adventure_announcements.inc"
 #include "world_mission_body.inc"
     append_native_message_paragraphs(screen_rows, result, untranslated_help_rows,
@@ -21904,6 +21961,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
         workshop_task_detail.empty() && !workshop_recipe
         ? capture_map_hover_card(screen_rows, screen_override) : std::optional<NativeTextCard>{};
     if (map_hover) {
+        mask_announcement_popup(screen_rows);
         // Card capture restores live native bytes in screen_rows. Earlier
         // address-bound reports still own those rows, including empty target
         // tails and untranslated complete records. Restore their ownership
@@ -22245,6 +22303,20 @@ std::vector<Match> Overlay::find_matches(int only_y,
         });
         result.insert(result.end(), std::make_move_iterator(embark_finder_fields.begin()),
             std::make_move_iterator(embark_finder_fields.end()));
+        // Raw help/card readers can rebuild already-consumed source bytes.
+        // The live announcement queue and markup own this complete body;
+        // restore its one measured paragraph after all such recoveries.
+        if (announcement_popup_region) {
+            const auto &body = *announcement_popup_region;
+            std::erase_if(result, [&](const Match &match) {
+                return match.y >= body.y && match.y < body.y + body.h &&
+                    match.x < body.x + body.w &&
+                    body.x < match.x + std::max(1, match.length);
+            });
+            result.insert(result.end(),
+                std::make_move_iterator(announcement_popup_matches.begin()),
+                std::make_move_iterator(announcement_popup_matches.end()));
+        }
         return std::move(result);
     };
 
@@ -22380,6 +22452,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
 
     // Journal cards share complete event grammar and measured paragraph layout.
 #include "adventure_journal.inc"
+#include "adventure_quest_sidebar.inc"
 
     context_detail.checkpoint(RenderTimingStage::Help);
     // Help owns complete paragraphs before ordinary literal/color runs.
@@ -30571,6 +30644,7 @@ void Overlay::normalize_native_split_text() {
     std::vector<Caption> captions;
     for (size_t index = 0; index < prepared_matches_.size(); ++index) {
         Match &match = prepared_matches_[index];
+        if (match.native_announcement_popup) continue;
         // The decompiled adventure combat, trade and embark finder renderers
         // use ordinary addst, retaining old half-font flags without drawing halves.
         if (match.rule == kAdventureCombatFieldRule ||
@@ -45679,11 +45753,10 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
     };
     if (match.graphical_clear_width > 0 &&
         match.graphical_clear_height > 0) {
-        // Read the completed tab instead of trusting its transparent logical
-        // background. The most frequent colour in the source span is the
-        // flat tab fill. Native bitmap-font antialiasing lies on the line from
-        // that fill to the logical foreground colour, so erase only pixels on
-        // that line; borders and the gold tab outline remain untouched.
+        // Read the completed widget instead of its transparent logical
+        // background. A native popup owns its whole flat body; other widgets
+        // erase only bitmap-font pixels on the background/foreground line,
+        // preserving their borders and decorative outlines.
         SDL_Rect clear_rect{
             origin_x + match.graphical_clear_x * tile_w,
             origin_y + match.graphical_clear_y * tile_h,
@@ -45767,7 +45840,17 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
                         foreground[channel] - background[channel];
                     direction_squared += direction[channel] * direction[channel];
                 }
-                if (direction_squared >= 256.0) {
+                if (match.graphical_clear_flat_background && background_count > 0) {
+                    // This native body excludes the portrait, frame and
+                    // buttons. Restore its opaque fill before the complete
+                    // paragraph, regardless of retained ink's colour.
+                    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
+                    SDL_SetRenderDrawColor(renderer,
+                        static_cast<Uint8>(background[0]),
+                        static_cast<Uint8>(background[1]),
+                        static_cast<Uint8>(background[2]), 255);
+                    SDL_RenderFillRect(renderer, &clipped);
+                } else if (direction_squared >= 256.0) {
                     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
                     SDL_SetRenderDrawColor(
                         renderer,

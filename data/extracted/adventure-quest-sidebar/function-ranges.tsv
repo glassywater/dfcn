@@ -1,0 +1,9 @@
+edition	image	role	start_rva	end_rva
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf6050	0xaf969d
+steam	PE:6a70a6d9:02711000	task-title-builder	0xcdf30	0xcdfb3
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc2110	0xca4f9
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdf540	0xe0f67
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf3090	0xaf66dd
+classic	PE:6a70b91c:0270a000	task-title-builder	0xcdec0	0xcdf43
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc20a0	0xca489
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdf4d0	0xe0ef7

@@ -328,9 +328,9 @@ You roll, testing the will of {p}.	你掷出骰子，试探{p}的意志。
 "You are close. Follow your senses to the entrance. But my chosen, you are in a state! See to yourself before you face what's ahead."	“你已经很近了。跟随感知，找到入口。但是，我的天选者，你现在的状态很糟！面对前方的挑战之前，先照顾好自己。”
 "You are close. Follow your senses to the entrance. But my chosen, you are in a state! See to yourself before you face what's ahead. Remember that ice and snow can be heated by a campfire."	“你已经很近了。跟随感知，找到入口。但是，我的天选者，你现在的状态很糟！面对前方的挑战之前，先照顾好自己。记住，可以用营火加热冰雪。”
 "Greetings. I am {p}, and I have chosen you. Seek out {p} in {e} and fulfill your destiny."	“你好。我是{p1}，我已选中了你。去{e}寻找{p2}，完成你的天命。”
-"Greetings. I am {p}, and I have chosen you. The remnants of creation, {e}, belong with my followers, {e}. Seek out {p} in {e} and fulfill your destiny."	“你好。我是{p1}，我已选中了你。创世的遗留之物{e1}，应当归于我的信众{e2}。去{e3}寻找{p2}，完成你的天命。”
+"Greetings. I am {p}, and I have chosen you. The remnants of creation, {s}, belong with my followers, {e}. Seek out {p} in {e} and fulfill your destiny."	“你好。我是{p1}，我已选中了你。创世的遗留之物{s1}，应当归于我的信众{e1}。去{e2}寻找{p2}，完成你的天命。”
 "Greetings. I am {p}, and I have chosen you as my instrument of {r}. Seek out {p} in {e} and fulfill your destiny."	“你好。我是{p1}，我已选中你，作为我彰显{r}的使者。去{e}寻找{p2}，完成你的天命。”
-"Greetings. I am {p}, and I have chosen you as my instrument of {r}. The remnants of creation, {e}, belong with my followers, {e}. Seek out {p} in {e} and fulfill your destiny."	“你好。我是{p1}，我已选中你，作为我彰显{r}的使者。创世的遗留之物{e1}，应当归于我的信众{e2}。去{e3}寻找{p2}，完成你的天命。”
+"Greetings. I am {p}, and I have chosen you as my instrument of {r}. The remnants of creation, {s}, belong with my followers, {e}. Seek out {p} in {e} and fulfill your destiny."	“你好。我是{p1}，我已选中你，作为我彰显{r}的使者。创世的遗留之物{s1}，应当归于我的信众{e1}。去{e2}寻找{p2}，完成你的天命。”
 You feed on {n}.	你吸食{n}。
 You flounder in the water!	你在水中挣扎！
 You flounder in the lava!	你在熔岩中挣扎！

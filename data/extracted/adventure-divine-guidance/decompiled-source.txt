@@ -1,0 +1,287 @@
+Divine guidance native text source and popup path
+
+Source images come from data/runtime/native-pe-images.json. Addresses below are
+RVAs, with reference first and classic second. Source extraction reads the PE
+image and uses the fixed native objdump; it does not load or attach to the game.
+The owner was located by the actual RIP operand for the greeting, and its end
+includes the PE chained unwind ranges.
+
+Producer owner: 7eed80..7f3ca2 / 7ec600..7f1522.
+The complete annotated owners, text helper bodies, literal operands, direct
+calls and conditional branches are retained in the adjacent source files.
+divine-utterance-branches.tsv reconstructs 29 divine utterance alternatives per
+edition, plus the default and RAW supplied curse description alternatives.
+It preserves the original native double spaces and quote characters. Its
+descriptive placeholders identify the actual field kind; these are source
+annotations and are not runtime translation placeholder syntax.
+
+Greeting construction at 7f04d1..7f0762 / 7edd51..7edfe2:
+
+    text = '"Greetings.  I am ' + historical_figure(deity_id)
+         + ', and I have chosen you'
+    if deity.sphere_info != null and sphere_info.spheres != null
+       and spheres.size() != 0:
+        text += ' as my instrument of ' + sphere_name(spheres[0])
+    text += '.  '
+    for index, inorganic in world.raws.inorganics:
+        if inorganic.flags.test(0x15):
+            text += 'The remnants of creation, '
+                 + material_name(type=0, index=index, flags=0,
+                                 adjective=false, state=0)
+                 + ', belong with my followers, '
+                 + entity_name(guidance.followers_entity_id, flags=0)
+                 + '.  '
+            break
+    text += 'Seek out ' + historical_figure(guidance.representative_id)
+         + ' in ' + abstract_building_name(guidance.site_id,
+                                          guidance.building_id,
+                                          prefer_name=true, flags=0)
+         + ' and fulfill your destiny."'
+
+The optional sphere clause and remnant clause are independent: all four
+combinations are reachable. The selected material is the first matching
+inorganic, not an entity name. The final field is an abstract building within a
+site, not the site name. The material, followers and building fields may each
+contain spaces; whole native fields must remain intact when translating.
+The complete text is submitted as announcement type 0x15f (351), color 7,
+bright 1, timer 2000 and portrait historical-figure ID equal to the deity ID.
+
+Further divine utterances in the same owner are: finding the representative;
+leaving the current structure before travel; sensing the representative;
+securing the treasure; finding the quest site; advising faster travel to that
+site; danger at the destination entrance; approaching the entrance; fulfilling
+the quest; following the return direction; gifting/dropping the treasure;
+giving it to other worshippers; the apostate response; and ending travel near
+the destination. Their exact complete source sentences are in
+divine-utterance-branches.tsv, with producer RVAs and native literal evidence
+in native-literals.tsv.
+
+Approaching the entrance, 7f1c76..7f1df9 / 7ef4f6..7ef679:
+
+    text = '"You are close.  Follow your senses to the entrance.'
+    if controlled_unit != null:
+        hunger = controlled_unit[0x988] >= 0xe100  (57600)
+        thirst = controlled_unit[0x98c] >= 0xe100  (57600)
+        sleep  = controlled_unit[0x990] >= 0x1c200 (115200)
+        if hunger or thirst or sleep:
+            text += '  But my chosen, you are '
+            if (hunger,thirst,sleep) == (1,1,1): text += 'in a state'
+            if (hunger,thirst,sleep) == (1,1,0): text += 'in need of drink and sustenance'
+            if (hunger,thirst,sleep) == (1,0,1): text += 'in need of sustenance and sleep'
+            if (hunger,thirst,sleep) == (1,0,0): text += 'in need of sustenance'
+            if (hunger,thirst,sleep) == (0,1,1): text += 'in need of drink and sleep'
+            if (hunger,thirst,sleep) == (0,1,0): text += 'in need of drink'
+            if (hunger,thirst,sleep) == (0,0,1): text += 'in need of sleep'
+            text += '!  See to yourself before you face what\'s ahead.'
+            if thirst:
+                position = unit_position(controlled_unit)  // 1367430
+                if position.x != -30000:
+                    temperature = world_temperature(position)  // 247cf0
+                    if unsigned_word(temperature) <= 10000:
+                        text += '  Remember that ice and snow can be heated by a campfire.'
+    text += '"'
+
+There is a plain variant, seven need variants, and four additional ice/snow
+variants for the thirst-containing states. The control flow and thresholds are
+identical in both images; these are twelve complete alternatives.
+
+After the apostate response, curse execution creates one of two different
+constructions:
+
+    if interaction_source.trigger_string_second(+0x70).empty():
+        text = 'You have been cursed by ' + deity_name + '!'
+    else:
+        text = 'You ' + interaction_source.trigger_string_second(+0x70)
+                     + ' ' + interaction_source.trigger_string(+0xb0)
+
+The RAW branch does not append ' by ', the deity name or a final exclamation
+mark. Those may only occur if they are already present in the RAW strings.
+Both versions compute the deity name before this condition, but only the
+default branch appends it. Reference 7f27b3 / classic 7f0033 branches to the
+default when trigger_string_second is empty. The RAW branch appends the two
+RAW strings at 7f27b5..7f27e9 / 7f0035..7f0069, then jumps directly to the
+announcement submission setup at 7f2835 / 7f00b5.
+
+The field identities are defined by
+data/upstream/df-structures/df.interaction.xml: interaction_source has name at
+0x10, hist_string_1 at 0x30, hist_string_2 at 0x50,
+trigger_string_second (IS_TRIGGER_STRING_SECOND) at 0x70,
+trigger_string_third at 0x90, and trigger_string (IS_TRIGGER_STRING) at 0xb0.
+The RAW suffix is the trigger text, not the history text and not a deity field.
+The non-default construction uses RAW interaction text, not finite PE literals.
+This same root owner also contains unrelated control/sleep announcements such
+as tactical control, awakening and interrupted sleep. Those operands are
+retained in the complete owner extraction rather than mislabelled divine
+dialogue. Other announcement types can share the same native popup class; the
+popup capture mechanism described below is not tied to the four greeting
+templates.
+
+Dynamic text providers
+
+historical_figure: b92f10 / b8ff50. The greeting constructs a fresh reference
+context through 72080 / 72010: flags 0, perspective pointers null, subject and
+speaker IDs -1. Both word parameters are 0,1. Valid named figures use the full
+English language name at historical_figure+0x38 via a946e0 / a91760, with English
+true and first-name-only false. An absent ID yields 'an unknown creature'. A
+valid nameless figure yields 'a ' plus optional 'zombie ' and/or 'ghostly ',
+the RAW creature/caste name, and optional generated creature text from the
+figure's generated-info object. The caste provider is aa3bd0 / aa0c50; its body
+is also extracted. The helper has additional interrogation, perspective,
+pronoun, possession and LPAGE branches, but this default context does not
+select them. The second word parameter 1 suppresses the additional named-figure
+caste descriptor path; a named divine field is its complete language name.
+
+sphere: 756690 / 7540b0. The complete 130-entry branch table maps enum 0..129 to
+bare sphere nouns. Out-of-range enum produces 'no sphere'. Every enum and actual
+literal operand is retained in finite-field-values.tsv. The native producer
+uses the first sphere only, so joins of multiple spheres cannot arise here.
+
+material: 14d1920 / 14cc890; lookup 14add70 / 14a8ce0. The actual call has material
+type 0, the selected inorganic vector index, flags 0, adjective false, state 0
+(SOLID). Lookup reads the world inorganics at world+0x11b3d8..0x11b3e0 and returns
+inorganic+0x1a8. The formatter appends the nonempty material prefix string at
+material+0x520 and one space, then the state-name string at material+0xb8 for
+SOLID. Thus the native source is the RAW material's state name (possibly with
+its native prefix). Null material yields 'unknown material'. Other formatter
+branches for cloth, wood, figure-derived materials etc are retained in the
+callee extraction, but are unreachable with the greeting's type-0 arguments.
+
+followers entity: b92900 / b8f940. Named entities use their full English language
+name at entity+0x20. Missing entity yields 'an unknown civilization'. Flags 0
+means no LPAGE wrapping.
+
+quest site in later advice: b93930 / b90970. Uses the full native site name and
+falls back to 'an unknown site'. These two later advice fields are sites; they
+are distinct from the greeting's abstract-building field.
+
+abstract building: b94090 / b910d0. The producer passes site ID and abstract
+building ID, prefer_name=true, flags=0. A valid building with a nonnull virtual
+getName() (vtable+0x10), whose language_name+0x72 has_name byte is true, uses its
+full English language name. Otherwise its native virtual type selects the
+following complete field values:
+
+    0 a mead hall; 1 a keep; 2 a temple; 3 a dark tower; 4 a market;
+    5 a tomb; 6 subtype 0 a dungeon, 1 the sewers, 2 the catacombs;
+    7 an underworld spire; 8 a tavern; 9 a library; 10 a counting house;
+    11 a guildhall; 12 a tower; 13 a hospital.
+
+Invalid type or missing site/building yields 'an unknown building'. A valid
+type-6 building with an invalid subtype appends no field text. All enum
+destinations and literal operands are retained in finite-field-values.tsv.
+The formatter's LPAGE branches are unreachable with the producer's flags 0.
+
+Procedurally generated names and RAW field strings are not a finite sentence
+catalog. Their complete native suppliers and the argument restrictions are
+the translation boundary; treating their words as unrelated literals loses
+the name or material grammar.
+
+Native popup creation, storage, layout and drawing
+
+Manager: reference global RVA 24e3850 / classic global RVA 24dd740.
+Manager fields have the same offsets in both images:
+
+    +0x30,+0x38,+0x40  popup vector begin,end,capacity (popup pointers)
+    +0x48,+0x50,+0x58  markup word vector begin,end,capacity (word pointers)
+    +0x60,+0x68,+0x70  markup link vector begin,end,capacity
+    +0x78             markup width
+    +0x7c             final native row index (layout maximum y)
+    +0x80             markup environment
+    +0x88             portrait historical-figure ID
+
+Each popup is allocated by e3880 / e3810 with size 0x28:
+
+    +0x00  MSVC std::string full original text, size+0x10, capacity+0x18
+    +0x20  color short
+    +0x22  bright byte
+    +0x24  portrait historical-figure ID int
+
+Announcement submission e3c20 / e3bb0 queues this popup at e4330 / e42c0, copies
+the complete original string at e4352 / e42e2, and stores the color/bright and
+portrait metadata. For the active first popup, it resets markup through
+e37d0 / e3760, appends the original text at e43d9 / e4369 through
+d51eb0 / d4eef0, and lays it out at e43ea / e437a through d51c80 / d4ecc0 using
+native width 50. The portrait ID is stored at e43f9 / e4389.
+
+Each markup word has size 0x38:
+
+    +0x00  MSVC std::string word or punctuation/control source
+    +0x20  red byte; +0x21 green byte; +0x22 blue byte
+    +0x24  link index
+    +0x28  native column int
+    +0x2c  native row int
+    +0x30  control flags
+
+Ordinary word storage comes from d544e0 / d51520. Control words are initialized
+with x=-1,y=-1 and empty source. The native wrap loop d51c80 / d4ecc0 skips the
+ordinary coordinate assignment for flags &1, &2 and &4, instead changing the
+current line/paragraph state. It places normal text and punctuation using the
+native word lengths and row/column positions. These coordinates describe the
+displayed paragraph even when native drawing splits one sentence into many
+calls.
+
+The actual popup renderer is e9f40..ea4c8 / e9ed0..ea458. It receives the manager
+pointer in RCX. It reads word vector manager+0x48..0x50 at ea0f9 / ea089; for each
+word it sets native RGB and screen cursor, then calls ad9960 / ad69a0 at
+ea17c / ea10c using the original word object as the std::string source. Native
+screen positions are:
+
+    left = midpoint(incoming min_x, incoming max_x) - 26
+    right = left + 53
+    height = markup.max_y + 8
+    top = midpoint(init.display.grid_y) - midpoint(height)
+    if graphics portrait enabled and portrait ID != -1:
+        height = max(height,10)
+        left -= 6
+        right += 6
+        text_x = left + 14 + word.x
+    else:
+        text_x = left + 2 + word.x
+    text_y = top + 2 + word.y
+    button_top = top + height - 4
+    body_bottom_exclusive = button_top
+
+init.display.grid_y is the init global at reference RVA 0x23cd788 and classic
+RVA 0x23c7678. It precedes world (reference 0x23d14f0), so the world-schema
+resolver native_history_global cannot resolve it and returns zero. Read it
+through the reviewed PE edition binding. The popup queue and markup remain
+world.status schema fields, unlike this independent display setting.
+
+The renderer does not read word control flags; it calls the string drawer for
+every pointer in the word vector. The drawer ad9960 / ad69a0 immediately returns
+for std::string size==0 (reference ad997d..ad9982), so empty control words draw
+nothing. Capturing visible source words should omit empty strings and invalid
+negative native coordinates. It must not require every control word to yield
+rendered cells. Valid text words retain native object addresses and coordinates
+for aligning the translated full paragraph with its original draw calls.
+
+This is ordinary full-row text, not a TOP_OF_TEXT/BOTTOM_OF_TEXT caption.
+The reference drawer calls bb190 at ad9a00. That character writer updates the
+glyph/RGB and clears the primary texture at bb31c..bb323, but does not update
+the half-font flag array. Covered page flags therefore cannot identify this
+popup's words as two halves or replace its paragraph-wide clearing geometry.
+
+The More and Okay labels are inline immediate native strings at reference
+ea42e / ea457, classic ea3be / ea3e7. More appears when the popup queue has more
+than one item. Input owner 8b91c0 / 8b6a40 removes the current first popup and,
+if another remains, resets/appends/wraps the new front text through the same
+markup helpers. Popup save owner 7aa300 / 7a7d20 is serialization, not rendering.
+
+Direct callers of the actual popup renderer are retained in
+popup-render-callers.tsv and the two popup-render-callers.asm files:
+
+    reference 3fb4ed (owner 3d6950), 7f3e2e (owner 7f3cb0),
+              810d0a (owner 80d5e0)
+    classic   3f90ad (owner 3d4510), 7f16ae (owner 7f1530),
+              80e58a (owner 80ae60)
+
+The adventure renderer call is immediately after 7f3e0c -> af1190. The caller
+then obtains x bounds via c33370 and calls the popup renderer directly. Thus
+af1190 itself need not read the popup word globals for this popup to appear.
+
+The generic paragraph producer 8e7310 is not on this source path. Merely
+changing a sentence catalog or relying on that paragraph capture leaves the
+active popup's split native word calls uncovered. Existing history markup
+hooks use the same d51eb0/d51c80/ad9960 helpers at different callsites; they do
+not establish ownership for e43d9/e43ea/ea17c. The reliable native boundary here
+is the active manager queue's full source string together with its word vector
+and coordinates, or hooks explicitly scoped to these popup callsites.
