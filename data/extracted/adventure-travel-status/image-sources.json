@@ -1,0 +1,158 @@
+[
+  {
+    "edition": "reference",
+    "path": "D:\\program\\steam\\steamapps\\common\\Dwarf Fortress\\Dwarf Fortress.exe",
+    "identity": "PE:6a70a6d9:02711000",
+    "image_base": "0x140000000",
+    "functions": [
+      {
+        "role": "environment-card",
+        "start_rva": "0x80dbba",
+        "end_rva": "0x810a88"
+      },
+      {
+        "role": "role-drive-beast-producer",
+        "start_rva": "0x80fcf8",
+        "end_rva": "0x810945"
+      },
+      {
+        "role": "figure-format-context",
+        "start_rva": "0x72080",
+        "end_rva": "0x7216d"
+      },
+      {
+        "role": "historical-figure-name",
+        "start_rva": "0xb92f10",
+        "end_rva": "0xb93927"
+      },
+      {
+        "role": "site-name",
+        "start_rva": "0xb93930",
+        "end_rva": "0xb93a8a"
+      },
+      {
+        "role": "entity-name",
+        "start_rva": "0xb92900",
+        "end_rva": "0xb92a78"
+      },
+      {
+        "role": "role-record-find",
+        "start_rva": "0x1ba140",
+        "end_rva": "0x1ba1e8"
+      },
+      {
+        "role": "known-death",
+        "start_rva": "0x6943a0",
+        "end_rva": "0x694902"
+      },
+      {
+        "role": "capitalize",
+        "start_rva": "0x52d650",
+        "end_rva": "0x52d904"
+      },
+      {
+        "role": "rich-text-width",
+        "start_rva": "0xd51c80",
+        "end_rva": "0xd51eab"
+      },
+      {
+        "role": "rich-text-append",
+        "start_rva": "0xd51eb0",
+        "end_rva": "0xd544d6"
+      },
+      {
+        "role": "rich-text-draw",
+        "start_rva": "0xad9960",
+        "end_rva": "0xad9a33"
+      },
+      {
+        "role": "english-generated-name",
+        "start_rva": "0xa946e0",
+        "end_rva": "0xa94ea2"
+      },
+      {
+        "role": "species-name",
+        "start_rva": "0xaa3bd0",
+        "end_rva": "0xaa3d93"
+      }
+    ]
+  },
+  {
+    "edition": "classic",
+    "path": "C:\\Users\\WIN11\\Downloads\\df_53_16_win\\Dwarf Fortress.exe",
+    "identity": "PE:6a70b91c:0270a000",
+    "image_base": "0x140000000",
+    "functions": [
+      {
+        "role": "environment-card",
+        "start_rva": "0x80b43a",
+        "end_rva": "0x80e308"
+      },
+      {
+        "role": "role-drive-beast-producer",
+        "start_rva": "0x80d578",
+        "end_rva": "0x80e1c5"
+      },
+      {
+        "role": "figure-format-context",
+        "start_rva": "0x72010",
+        "end_rva": "0x720fd"
+      },
+      {
+        "role": "historical-figure-name",
+        "start_rva": "0xb8ff50",
+        "end_rva": "0xb90967"
+      },
+      {
+        "role": "site-name",
+        "start_rva": "0xb90970",
+        "end_rva": "0xb90aca"
+      },
+      {
+        "role": "entity-name",
+        "start_rva": "0xb8f940",
+        "end_rva": "0xb8fab8"
+      },
+      {
+        "role": "role-record-find",
+        "start_rva": "0x1ba0d0",
+        "end_rva": "0x1ba178"
+      },
+      {
+        "role": "known-death",
+        "start_rva": "0x691dc0",
+        "end_rva": "0x692322"
+      },
+      {
+        "role": "capitalize",
+        "start_rva": "0x52b070",
+        "end_rva": "0x52b324"
+      },
+      {
+        "role": "rich-text-width",
+        "start_rva": "0xd4ecc0",
+        "end_rva": "0xd4eeeb"
+      },
+      {
+        "role": "rich-text-append",
+        "start_rva": "0xd4eef0",
+        "end_rva": "0xd51516"
+      },
+      {
+        "role": "rich-text-draw",
+        "start_rva": "0xad69a0",
+        "end_rva": "0xad6a73"
+      },
+      {
+        "role": "english-generated-name",
+        "start_rva": "0xa91760",
+        "end_rva": "0xa91f22"
+      },
+      {
+        "role": "species-name",
+        "start_rva": "0xaa0c50",
+        "end_rva": "0xaa0e13"
+      }
+    ]
+  }
+]

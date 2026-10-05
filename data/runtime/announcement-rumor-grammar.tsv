@@ -381,3 +381,42 @@ site-rumor-artifact	{s}	{s1}	$memorial-item	0x140b94400 -> 0x140c65450; shared f
 # after this caller has already appended its first " in ". Keep the intact
 # record and known artifact/site instead of requiring a nonexistent field.
 site-rumor-event	{s} was known to be in in {s}.	当时已知{s1}位于{s2}的一座建筑里。	site-rumor-artifact,$name	0x1401dac72;0x140b94090; empty native dungeon label, whitespace normalized
+
+# Adventure travel-location status box, a different producer from dated
+# site news and threat speech. Steam 53.16 0x14080fefe..0x140810935;
+# classic 53.16 0x14080d77e..0x14080e1b5. Each paragraph has one main
+# production; optional status sentences retain native order and palette.
+# Full constructor/HF/site/role evidence is in
+# data/extracted/adventure-travel-status. An existing name-less record can
+# emit an empty name; only a missing record emits the native unknown label.
+travel-role-main	You are a {s} based in {s}.	你是一名{s1}，驻地在{s2}。	travel-squad-role,$travel-site	steam 0x14080fefe..0x14080ff5e; entity position squad[0] +0x218 then b93930 site, color 3:0:1
+travel-role-main	You are a based in {s}.	你的驻地在{s1}。	$travel-site	steam 0x14080ff11; native squad[0] member-kind string is empty, normalized double space
+travel-role-main	You are a {s} based in .	你是一名{s1}，驻地为未具名地点。	travel-squad-role	steam 0x14080ff4b -> b93930 -> a946e0; existing site has no visible name
+travel-role-main	You are a based in .	你的驻地为未具名地点。		steam 0x14080ff11+0x14080ff4b; empty native title and existing name-less site
+travel-squad-role	soldier	士兵		vanilla_entities/objects/entity_default.txt:466,494,518; position SQUAD singular, existing Unit profession: soldier meaning
+travel-squad-role	militia-dwarf	民兵		vanilla_entities/objects/entity_default.txt:535,547; position SQUAD singular, existing Militia-dwarf meaning
+travel-squad-role	fortress guard	要塞守卫		vanilla_entities/objects/entity_default.txt:578; position SQUAD singular, existing fortress guard meaning
+travel-squad-role	ranger	游侠		vanilla_entities/objects/entity_default.txt:1255; position SQUAD singular, existing Ranger meaning
+travel-squad-role	{s}	{s1}	$office	complete RAW modded member-kind can reuse the typed role vocabulary; never a personal name or squad.alias
+travel-drive-main	You have been ordered to drive {s} from {s}.	你奉命将{s1}赶出{s2}。	$name,$travel-site	steam 0x140810069..0x1408100d1 and 0x140810418; native task kinds 8 and 5, b92900 entity then b93930 site, color 2:0:1
+travel-drive-main	You have been ordered to drive from {s}.	你奉命将未具名势力赶出{s1}。	$travel-site	steam 0x140810091/0x140810440 -> b92900 -> a946e0; existing entity has no visible name
+travel-drive-main	You have been ordered to drive {s} from .	你奉命将{s1}赶出未具名地点。	$name	steam 0x1408100be/0x14081046d -> b93930 -> a946e0; existing site has no visible name
+travel-drive-main	You have been ordered to drive from .	你奉命将未具名势力赶出未具名地点。		steam b92900+b93930; both existing records have no visible names
+travel-beast-main	{s} is rumored to be in {s}.	据说{s1}在{s2}。	travel-actor,$travel-site	steam 0x1408106c4..0x140810777; b92f10 contextual HF, b93930 site, color 4:0:1
+travel-beast-main	{s} is rumored to be in .	据说{s1}在一处未具名地点。	travel-actor	steam 0x14081075f -> b93930 -> a946e0; existing site has no visible name
+travel-empty-caste-actor	a	这个生物		steam b9374e + empty aa3bd0 caste/curse field; standalone normalized article, not a missing HF
+travel-empty-caste-actor	the	这个生物		steam b9331b + empty caste/curse and visible name; standalone normalized article, not a missing HF
+travel-empty-caste-actor	a zombie	活尸		steam b9377d + empty aa3bd0 caste/curse field; native animated status only
+travel-empty-caste-actor	the zombie	活尸		steam b9333f + empty aa3bd0 caste/curse and visible name; native animated status only
+travel-empty-caste-actor	a ghostly	幽灵		steam b937b5 + empty aa3bd0 caste/curse field; native ghost status only
+travel-empty-caste-actor	the ghostly	幽灵		steam b93377 + empty aa3bd0 caste/curse and visible name; native ghost status only
+travel-empty-caste-actor	a zombie ghostly	幽灵活尸		steam b9377d+b937b5; both emitted statuses, empty aa3bd0 caste/curse field
+travel-empty-caste-actor	the zombie ghostly	幽灵活尸		steam b9333f+b93377; both emitted statuses, empty aa3bd0 caste/curse and visible name
+travel-empty-caste-actor	the zombie ghostly {s}	幽灵活尸·{s1}	$travel-person	steam b9333f+b93377; empty caste/curse field followed by complete generated English name
+travel-empty-caste-actor	the zombie {s}	活尸·{s1}	$travel-person	steam b9333f; empty caste/curse field followed by complete generated English name
+travel-empty-caste-actor	the ghostly {s}	幽灵·{s1}	$travel-person	steam b93377; empty caste/curse field followed by complete generated English name
+travel-actor	{s}	{s1}	$travel-actor	steam b92f10 contextual HF; complete RAW caste/curse + name, name-only, unnamed caste or missing-HF label
+travel-common-knowledge	This is common knowledge where you are from.	这在你的家乡是常识。		steam 0x140810777..0x140810790; native rumor flag bit 1, color 7:0:0
+travel-known-dead	This creature is known to be dead.	已知这个生物已经死亡。		steam 0x140810790..0x1408107d0; native adventure-log death knowledge, color 5:0:1
+travel-kill-task	You have been ordered to kill this creature.	你奉命杀死这个生物。		steam 0x140810822..0x140810876; matching current kind-7 task target, task loop may repeat, color 2:0:1
+travel-report-task	You should report the task as complete.	你应该报告任务已完成。		steam 0x1408103a1,0x1408105b2,0x140810890; completed drive/kill task, inherits task color; each matching kill may append one

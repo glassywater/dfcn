@@ -819,7 +819,8 @@ void Overlay::append_map_hover_phrases(const NativeTextCard &card,
     // BEFORE a material or item row consumes one fragment of the sentence.
     // Blank lines, margins and the live frame bound each candidate; headings
     // and compact item/unit captions retain their ordinary row layout.
-    std::unordered_set<int> paragraph_rows;
+    std::unordered_set<int> paragraph_rows =
+        append_adventure_travel_status_paragraphs(card, rows, matches, only_y);
     const int right = card.interior.x + card.interior.w;
     // Card capture restores the active layer after the earlier document pass.
     // Keep paragraphs that pass already owns, including empty reflow tails,

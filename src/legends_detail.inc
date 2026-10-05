@@ -173,13 +173,13 @@ std::optional<std::string> Overlay::translate_legends_unnamed_figure(
 }
 
 std::optional<std::string> Overlay::translate_legends_name(
-        std::string_view raw, bool person) const {
+        std::string_view raw, bool person, bool entity_reference) const {
     // Normalization is for generated names, never the bytes inside an
     // explicitly authored nickname (including repeated spaces).
     std::string name = person && raw.find('`') != std::string_view::npos
         ? std::string(trim_view(raw)) : normalize_utterance(raw);
     if (name.empty() || name.ends_with("...")) return std::nullopt;
-    if (!person)
+    if (!person && entity_reference)
         if (const auto civilization = translate_civilization_reference(name))
             return civilization;
     // Native unit names enclose a nickname in `...'. It may replace the
@@ -391,7 +391,8 @@ std::optional<std::string> Overlay::translate_legends_name(
     if (person && !single_person)
         if (auto translated = translate_procedural_fragment(name)) return translated;
     auto quoted = translate_procedural_fragment("\"" + name + "\"", false, person, {},
-        ProceduralFragmentContext::generated_name);
+        entity_reference ? ProceduralFragmentContext::generated_name
+            : ProceduralFragmentContext::non_entity_name);
     if (quoted && quoted->starts_with("“") && quoted->ends_with("”"))
         return quoted->substr(3, quoted->size() - 6);
     return std::nullopt;

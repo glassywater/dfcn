@@ -4498,6 +4498,11 @@ private:
     std::optional<std::string> translate_announcement_items(std::string_view source) const;
     std::optional<std::string> translate_complete_announcement(std::string_view source,
         const std::vector<int> &source_colors, std::vector<int> &target_colors) const;
+    std::optional<std::string> translate_adventure_travel_status(std::string_view source,
+        const std::vector<int> &source_colors, std::vector<int> &target_colors) const;
+    std::unordered_set<int> append_adventure_travel_status_paragraphs(
+        const NativeTextCard &card, std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const;
     std::optional<std::string> translate_world_landform_heading(std::string_view source) const;
     std::optional<std::string> translate_world_region_heading(std::string_view source) const;
     std::optional<std::string> region_name_gloss(std::string_view noun) const;
@@ -4506,7 +4511,7 @@ private:
         std::string_view gloss;
     };
     enum class ProceduralFragmentContext {
-        general_text, generated_name, personal_name, native_name_group, native_item_name, book_title,
+        general_text, generated_name, non_entity_name, personal_name, native_name_group, native_item_name, book_title,
         civilization_name
     };
     std::optional<std::string> translate_procedural_fragment(
@@ -4521,7 +4526,7 @@ private:
     std::optional<std::string> translate_deity_spheres(
         std::string_view source) const;
     std::optional<std::string> translate_legends_name(
-        std::string_view source, bool person) const;
+        std::string_view source, bool person, bool entity_reference = true) const;
     std::optional<std::string> translate_legends_unnamed_figure(
         std::string_view source) const;
     std::optional<std::string> translate_journal_habitat_places(
@@ -9365,6 +9370,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     // possible textile/material span as if its full identity were equipment.
     // Keep the existing structural validators and shared name renderer below.
     const bool personal_name = context == ProceduralFragmentContext::personal_name;
+    const bool non_entity_name = context == ProceduralFragmentContext::non_entity_name;
     const bool civilization_name = context == ProceduralFragmentContext::civilization_name;
     if (civilization_name && !phonetic_only) {
         auto source = trim_view(screen_text);
@@ -9390,10 +9396,10 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     // A complete paired identity can be a civilization on a Legends list,
     // detail tab or world card. Resolve its actual entity before the ordinary
     // name compositor; the containing list also holds non-civilization groups.
-    if (generated_identity && !civilization_name && !character_name_gloss)
+    if (generated_identity && !non_entity_name && !civilization_name && !character_name_gloss)
         if (const auto translated = translate_civilization_reference(screen_text))
             return translated;
-    const bool name_only = phonetic_only || personal_name || native_name_groups || book_title || civilization_name ||
+    const bool name_only = phonetic_only || personal_name || non_entity_name || native_name_groups || book_title || civilization_name ||
         figure_record || generated_identity;
 
     // A profession is a separate native row for long names and part of the
@@ -21138,6 +21144,8 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "fortress_trade_requests.inc"
 #include "fortress_trade_fields.inc"
 #include "operation_titles.inc"
+#include "adventure_travel_status.inc"
+#include "adventure_travel_status_rows.inc"
 #include "map_hover.inc"
 #include "embark_site.inc"
 #include "embark_finder.inc"
@@ -22042,6 +22050,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
         ? capture_world_civilization_trade_rows(*civilization_details) : std::vector<NativeTextCard>{};
     if (embark_site) {
         append_embark_site_headings(*embark_site, screen_rows, result, only_y);
+        append_adventure_travel_status_paragraphs(*embark_site, screen_rows, result, only_y);
         append_embark_site_resources(*embark_site, screen_rows, result, only_y);
     }
     if (world_site) {

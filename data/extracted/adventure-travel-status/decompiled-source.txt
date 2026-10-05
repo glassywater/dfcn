@@ -1,0 +1,212 @@
+Adventure environment-card role, orders and creature-location rumors (PE 53.16)
+===============================================================================
+
+Scope and image ownership
+-------------------------
+The screenshot's location rumors belong to Steam legacy adventure renderer
+0x14080d5e0..0x1408189ac and classic 0x14080ae60..0x14081622c. The relevant
+natural-environment card source is extracted at 0x80dbba..0x810a88, classic
+0x80b43a..0x80e308. This is distinct from fortress/world site news formatter
+0x1da280 (classic 0x1da210), whose paragraphs begin "In {date},".
+
+image-sources.json identifies the configured original PE files and complete
+procedure spans. The .asm files preserve original instructions and annotate
+literal operands; native-branches.tsv contains conditional branches and
+native-switches.tsv decodes all 51 biome and 11 site-name-row selections.
+These files are original source evidence, not simulated display or tests.
+
+Card structure and complete production relationship
+--------------------------------------------------
+The border is drawn at 0x80dc00..0x80dcc5, using original glyph values through
+0x80dcaf -> 0xadaad0. The position is derived from dimensions/current pointer,
+and is not a fixed screenshot rectangle. Title row 1 uses the containing
+region's English name (a946e0) at 0x80dd5d -> 0x80de10; row 2 uses the second
+region name at 0x80de64 -> 0x80de7f. Biome classification f569d0 selects all
+0..50 native types via the 818614 table; >50 prints no biome text.
+
+Temperature (label 80eabf), Trees (80ecf2), Other Vegetation (80eee7), and
+Surroundings (80f08a) are four separate caption/value rows. Their complete
+literal families are in native-literals.tsv. Site-name rows begin at y=10:
+each visible site gives its original-language name (a94030), its English
+name in quotes (a946e0), and a type description assembled from 10cbe10,
+aa3770 and 10cbe50. The 0..10 site selector table is 8186e0; unknown types
+produce no site-name rows. If there is no site, a separate native construction
+row can appear, including "Multiple Constructions". River labels select
+Major River/River/Minor River/Stream/Brook. Mountain and Volcano headings are
+independent. The native prose production below follows these location rows.
+
+This natural-environment path has no civilization/population footer and needs
+none for identifying its frame. W/E compass characters appear in different
+later portions of the same owner (81678a..816896), not this ecology/status
+path. N/S/E/W and diagonal bearings at 815f4c..816396 belong to strongest-odor
+and local-map directions. Existing adventure-smell owner extraction preserves
+those separate paths; they are not inputs to this rumor grammar.
+
+Prose container 0x1418a8bb0 (classic 0x1418a2b80) is cached by world-map
+coordinate values at 0x1418a8ba8/bac (classic 0x1418a2b78/7c). On coordinate
+change, e37d0 clears it, then roles, drive orders and creature-location
+rumors are appended in that order. Reuse skips rebuilding and directly
+renders its retained native fragments. The append function d51eb0 parses
+[C:...] color changes and [B] paragraph breaks. d51c80 applies current native
+width to retained text. 810945..810a88 draws each rich fragment using its
+stored color (+0x20/+0x21/+0x22), position (+0x28/+0x2c), and ad9960. Text can
+be split on spaces into multiple draw calls; the main sentence and optional
+suffix can span rows, colors and fragments.
+
+Shared guards and location predicate
+------------------------------------
+Both task/role and beast blocks require native mode global == 1 and current
+adventurer index != -1. The local list at rbp+0xf0 contains eligible visible
+site IDs. Native e1420 looks up a candidate site in that list; a result -1
+suppresses its paragraph. These decisions change visibility, not wording.
+
+Task/role source resolution walks the current adventurer HF's general links
+(virtual kind 0xd), resolves its army-related record via 75500, then uses
+record+0x1c4 as entity ID and record+0x1c8 as position ID. The entity's
+positions.own vector is +0x10c0; 1ba140 selects position.id at +0x20. The
+role text is read directly from selected position+0x218. This is squad[0]:
+df.entity.xml defines six preceding two-string arrays at +0x98 (name), +0xd8
+(name_female), +0x118 (name_male), +0x158 (spouse), +0x198 (spouse_female),
++0x1d8 (spouse_male), then +0x218 (squad). The pre-existing variant-3 comment
+in native_history_positions.inc calls this a spouse field, but the actual
+structure and RAW [SQUAD] production identify it as a squad-member title.
+Native code does not select a generic/female/male fallback if this field is
+empty. Site
+membership 9364d0 must resolve and its +0x1c bit 0 must be set.
+
+1. Role paragraph
+-----------------
+For every eligible site membership, emit exactly:
+  [C:3:0:1]You are a {position+0x218} based in {site}.[B]
+
+Main literal 80fefe; dynamic role append 80ff1f; site b93930 at 80ff4b with
+r9=0; submit d51eb0 at 80ff71. There are no optional role sentence suffixes.
+Current vanilla RAW [SQUAD] singular labels are soldier, militia-dwarf,
+fortress guard and ranger. raw-role-sources.tsv retains every source line,
+entity, position and plural. Mod-added values are open-ended. These are member
+type labels, not player-customized squad.alias values. The role field and
+generated site name include their real empty-field cases; they are not finite
+English sentence alternatives.
+
+2. Drive-order paragraphs
+-------------------------
+Walk the resolved army-record task vector +0xb8. Keep tasks whose +0xc HF ID
+matches the current adventurer HF. Its virtual +0x18 type is either 8 or 5;
+every other task type adds no drive paragraph. Each task must target a site
+in the visible local site list.
+
+Both task types emit:
+  [C:2:0:1]You have been ordered to drive {entity} from {site}.
+  [optional]  You should report the task as complete.
+  [B]
+
+Type 8 main begins at 810069 and type 5 at 810418. In both, task+0x20 is
+the entity ID, supplied by b92900(r9=0), and task+0x24 is the site ID, supplied
+by b93930(r9=0). Missing entity/site can use their native unknown fallbacks.
+Type 8 completion literal is 8103a1; type 5 completion literal is 8105b2.
+Rich submit calls are 8103d5 and 8105e6. No other drive suffix exists.
+
+Type 8's completion branch: resolve entity and site; scan entity+0x1408
+population components within the site's x/y bounding rectangle, sum population
+vectors, and treat a qualifying component as still present unless its special
+type-1 flag makes it ignorable. Then walk active local units that are not
+excluded by +0x110 bit 1, have entity affiliation +0x1208, match task entity,
+and belong to the resolved site (13a5660). If neither qualifying population
+nor active unit remains, or required entity/site is missing, append completed.
+
+Type 5's completion branch: resolve entity/site and site's governing entity
+(9b4e70). Depending on the target entity type: type1 compares that governing
+entity directly; types7/4 use 6af0d0 relationship predicate; type0 scans
+its links +0xb8 for virtual kind1 matching the governing entity ID. If the
+presence/relationship predicate fails, or any required lookup fails, append
+completed. Both branches preserve the order main -> completion -> paragraph.
+
+3. Creature-location rumor paragraph
+------------------------------------
+Loop global rumor vector 0x142643d78 (classic 0x14263dc68). A record has HF ID
++0x00, site ID +0x04, and flags +0x28. A site outside the visible local list
+suppresses the whole record. Every accepted record emits:
+  [C:4:0:1]{capitalized historical_figure_name} is rumored to be in {site}.
+
+At 8106ec, 72080 initializes the HF context: flags=0, context pointers=0,
+current/replacement HF IDs=-1. At 810713, b92f10 is called with fifth=0 and
+sixth=0. 52d650 then capitalizes the complete identity before appending it.
+At 81075f, b93930 supplies site ID+0x04 with r9=0 (English name, no LPAGE).
+
+The following independent guards append suffixes in this exact order:
+  record+0x28 & 2:
+    "  [C:7:0:0]This is common knowledge where you are from."
+    literal 81077d.
+  current adventurer HF resolves and 6943a0(adventurer, rumor HF) returns true:
+    "  [C:5:0:1]This creature is known to be dead."
+    literal 8107bd. The complete known-death function (all chained unwind
+    ranges through 694902) is preserved; it resolves contextual knowledge,
+    not just the target HF's death field.
+  each matching task in army-record+0xb8: task HF+0xc matches the current
+  adventurer, virtual kind=7 and task target HF+0x20 matches record HF:
+    "  [C:2:0:1]You have been ordered to kill this creature."
+    literal 810863.
+    If that target HF resolves and its death field +0x30 != -1, append:
+      "  You should report the task as complete."
+      literal 810890. This completion suffix depends on the matching kill
+      task; it does not depend on whether the known-dead suffix was emitted.
+    Multiple matching tasks can repeat the kill/completion pair.
+  Finally append [B] (8108d4) and submit the rich paragraph (8108f5).
+
+No report-completed-only beast suffix, alternate rumor opening, finite monster
+race switch or dated-news formatter is present in this producer. Dynamic
+monster kinds, names, curse display strings and site names come from the
+suppliers below. All instruction RVAs in these three producers map to classic
+by subtracting 0x2780. Helper offsets have their own explicit original spans.
+
+4. Historical-figure identity for this actual caller
+---------------------------------------------------
+The full b92f10 procedure is preserved. Several its generic-context branches
+are unreachable for this caller's freshly initialized default context: replacing
+interrogator/subject, hidden identities, I/me/my/myself, LPAGE tags, possessive
+name forms and same-caste comparisons to supplied current/replacement figures.
+They remain in original source but must not be invented for this card.
+
+Resolve the rumor HF. A missing HF emits "an unknown creature". Otherwise,
+determine whether caste/species should precede its name. It starts true, becomes
+false for certain historical-figure flags (+0xc8 entry bits 2/3), is forced
+true by curse zombie component +0x160 or visible title byte +0x88, and is
+false if the HF race is -1. This caller's sixth argument is 0 and therefore
+does not suppress caste automatically.
+
+HF has-name (+0xaa) true:
+  caste/species enabled:
+    "the " + optional "zombie " + optional "ghostly " + caste_or_race_RAW
+    + optional " " + visible curse display-name + " " + complete English name
+  caste/species disabled:
+    complete English name
+HF has-name false:
+  "a " + optional "zombie " + optional "ghostly " + singular species_RAW
+  + optional " " + visible curse display-name
+
+zombie checks curse+0x160; ghostly checks historical-figure first +0xc8 entry
+bit7 and is suppressed when a visible curse display title exists. Caste RAW
+singular is preferred if valid and nonempty, then race RAW singular; invalid
+or empty RAW fields can contribute no species text. The unnamed branch uses
+aa3bd0 for caste/race singular; the named prefix branch reads the equivalent
+RAW fields directly. No missing-RAW label is invented. Visible curse+0x90
+is a native generated/mod-added display string and can be empty.
+
+Complete English names are supplied by a946e0(hf+0x38, English=true, other=false).
+This includes first name, compounded generated surname, and generated epithet
+with its native articles/of/possessive components. Screenshot strings such as
+Or Glimmeredfigures and Enggo Esteemedfells the Confidence of Hide are dynamic
+world names, not fixed literal operands to copy into a glossary.
+
+Site b93930 resolves the ID, calls a946e0(site name, English=true, other=false),
+then appends the complete result. Missing site emits "an unknown site". An
+existing unnamed site may contribute an empty name. Entity b92900 similarly
+supplies native complete English entity names and "an unknown civilization"
+when unresolved, despite accepting any historical entity type. Preserve those
+source roles so generated-name translation handles
+whole names without reinterpreting prose words as names.
+
+Stock curse-generation source material and identity vocabulary already reside
+in adventure-threat-rumors/vanilla-curse-fields.tsv and its copied native RAW/
+Lua sources. Those are shared dynamic title suppliers; threat-speech sentence
+branches are not additional sentences in this environment-card producer.

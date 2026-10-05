@@ -1,0 +1,23 @@
+kind	condition	steam_literal_rva	classic_literal_rva	source	dynamic_sources
+role-main	eligible site membership and position resolves	0x80fefe	0x80d77e	[C:3:0:1]You are a {squad_role} based in {site}.[B]	entity_position.squad[0] +0x218; b93930(r9=0)
+role-main-empty	selected position.squad[0] is empty	0x80fefe	0x80d77e	[C:3:0:1]You are a  based in {site}.[B]	b93930(r9=0); no role fallback
+drive-main	matching task kind 8; site in local list	0x810069	0x80d8e9	[C:2:0:1]You have been ordered to drive {entity} from {site}.	b92900(task+0x20,r9=0); b93930(task+0x24,r9=0)
+drive-main	matching task kind 5; site in local list	0x810418	0x80dc98	[C:2:0:1]You have been ordered to drive {entity} from {site}.	b92900(task+0x20,r9=0); b93930(task+0x24,r9=0)
+drive-complete	kind8 target presence predicates fail or required lookup missing	0x8103a1	0x80dc21	  You should report the task as complete.	no dynamic text
+drive-complete	kind5 governance/relationship predicates fail or required lookup missing	0x8105b2	0x80de32	  You should report the task as complete.	no dynamic text
+beast-main	record site in local list	0x810737	0x80dfb7	[C:4:0:1]{actor} is rumored to be in {site}.	b92f10(record+0,default context,0,0),capitalized; b93930(record+4,r9=0)
+beast-common	record+0x28 bit1 set	0x81077d	0x80dffd	  [C:7:0:0]This is common knowledge where you are from.	no dynamic text
+beast-known-dead	current HF resolves; known-death predicate true	0x8107bd	0x80e03d	  [C:5:0:1]This creature is known to be dead.	6943a0(current HF,record HF)
+beast-kill-order	each matching kind7 task for record HF	0x810863	0x80e0e3	  [C:2:0:1]You have been ordered to kill this creature.	repetition allowed for matching task vector entries
+beast-task-complete	matching kill task target HF resolves and HF+0x30 != -1	0x810890	0x80e110	  You should report the task as complete.	depends on matching kill task; independent of known-dead suffix
+beast-paragraph-end	after all suffix/task iteration	0x8108d4	0x80e154	[B]	rich submit d51eb0 / d4eef0
+actor-missing	rumor HF lookup fails	0xb938dc	0xb9091c	an unknown creature	b92f10 / b8ff50
+actor-name-only	has-name and caste/species suppression active	0xb93504	0xb90544	{English_generated_name}	a946e0(hf+0x38,English=true,other=false)
+actor-name-prefix	has-name and caste/species prefix enabled	0xb9331b	0xb9035b	the {optional zombie}{optional ghostly}{RAW_species}{optional curse_title} {English_generated_name}	native caste/race singular; curse+0x90; a946e0
+actor-unnamed	HF has-name false	0xb9374e	0xb9078e	a {optional zombie}{optional ghostly}{RAW_species}{optional curse_title}	aa3bd0(race,caste,singular); curse+0x90
+actor-zombie	curse+0x160 != 0	0xb9333f	0xb9037f	zombie 	dynamic curse component
+actor-ghostly	first HF info flag bit7 and no visible curse title	0xb93377	0xb903b7	ghostly 	dynamic HF info/curse
+site-missing	site ID lookup fails	0xb93a5e	0xb90a9e	an unknown site	b93930 / b90970
+site-existing	site ID resolves; native has-name can be false	0xb939d9	0xb90a19	{English_generated_site_name_or_empty}	a946e0(site name,English=true,other=false)
+entity-missing	entity ID lookup fails	0xb92a4c	0xb8fa8c	an unknown civilization	b92900 / b8f940
+entity-existing	entity ID resolves; native has-name can be false	0xb929c7	0xb8fa07	{English_generated_entity_name_or_empty}	a946e0(entity name,English=true,other=false)

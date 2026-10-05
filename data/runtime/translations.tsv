@@ -8477,6 +8477,7 @@ Announcement combat sentence [unit,owned-object,owned-object]: {s} loosens the c
 Announcement combat sentence [unit,owned-object,owned-object]: {s} loosens the joint lock of {s} on {s}.	{s1}松开了{s2}对{s3}的关节锁技。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} release the choke hold of {s} on {s}.	{s1}解除了{s2}对{s3}的勒颈控制。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} release the joint lock of {s} on {s}.	{s1}解除了{s2}对{s3}的关节锁技。	l
+Announcement combat travel-drive-main [$name,$travel-site]: You have been ordered to drive {s} from {s}.	你奉命将{s1}赶出{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-emotion]: {s} am {s}.	{s1}{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-emotion]: {s} is {s}.	{s1}{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} are {s}.	{s1}……{s2}。	l
@@ -9482,6 +9483,7 @@ Announcement combat sentence [boast-victim,boast-slain-clause]: I am the extingu
 Announcement combat sentence [unit,owned-object,owned-object]: {s} adjusts the grip of {s} on {s}.	{s1}调整了{s2}对{s3}的抓握。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} break the grip of {s} from {s}!	{s1}挣脱了{s2}对{s3}的抓握！	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} release the grip of {s} on {s}.	{s1}解除了{s2}对{s3}的抓握。	l
+Announcement combat travel-role-main [travel-squad-role,$travel-site]: You are a {s} based in {s}.	你是一名{s1}，驻地在{s2}。	l
 As the guild grows in power they may demand a Guildhall of greater value. This can be increased by	[C:7:0:0]随着行会势力增长，他们可能要求提高[C:1:0:1]行会大厅[C:7:0:0]的价值。你可以通过	hq
 DFHack GUI Journal tutorial: Welcome to gui/journal, the adventurer's notebook for Dwarf Fortress!	欢迎使用 gui/journal，这里是《矮人要塞》的冒险笔记！	l
 DFHack GUI Notification settings: Reports missing nemesis records, indicating savegame corruption.	报告缺失的人物关联记录，提示存档可能损坏。	l
@@ -10100,6 +10102,7 @@ Announcement combat sentence [$person,threat-possessive]: [{s} pauses to regain 
 Announcement combat sentence [boast-victim,boast-slain-clause]: I am the conqueror of {s}, {s}!	我就是{s1}的征服者，{s2}！	l
 Announcement combat sentence [boast-victim,boast-slain-clause]: I am the strangler of {s}, {s}!	绞杀{s1}的正是我，{s2}！	l
 Announcement combat site-rumor-event [site-rumor-person,$name]: the army of {s} marched on {s}.	{s1}的军队向{s2}进军了。	l
+Announcement combat travel-beast-main [travel-actor,$travel-site]: {s} is rumored to be in {s}.	据说{s1}在{s2}。	l
 Announcement combat visitor-statement [visitor-statement-object]: were will be speaking to {s}.	当时将正在对{s1}说话。	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} was will be destroying .	{s1}当时将正在毁灭。	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} were will be appearing .	{s1}当时将正在出现。	l
@@ -10336,6 +10339,7 @@ Announcement combat sentence [boast-victim,boast-slain-clause]: I am the murdere
 Announcement combat sentence [head]: {s} and it is mostly cut away from the rest of the torso!	{s1}，它与躯干其余部分的连接大多被切断了！	l
 Announcement combat sentence [memory-person,memory-person]: {s} escalated a conflict with {s}.	{s1}升级了与{s2}的冲突。	l
 Announcement combat site-rumor-event [$name,site-rumor-person]: was kidnapped from {s} by {s}.	{s2}从{s1}绑架了一个人。	l
+Announcement combat travel-drive-main [$travel-site]: You have been ordered to drive from {s}.	你奉命将未具名势力赶出{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: was will be speaking to {s}.	当时将正在对{s1}说话。	l
 Announcement combat visitor-statement [visitor-statement-object]: were will be destroying {s}.	当时将正在毁灭{s1}。	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} was will be appearing .	{s1}当时将正在出现。	l
@@ -10766,6 +10770,7 @@ Announcement combat sentence [boast-victim,boast-slain-clause]: I am the master 
 Announcement combat sentence [boast-victim,boast-slain-clause]: I am the slayer of {s}, {s}!	杀死{s1}的正是我，{s2}！	l
 Announcement combat sentence [object,owner]: The {s} is ripped away and remains in {s} grip!	{s1}被撕了下来，仍未脱离{s2}抓握！	l
 Announcement combat sentence [trade-places]: The villages {s} also utilize the market there.	{s1}这些村庄也去那里赶集。	l
+Announcement combat travel-common-knowledge []: This is common knowledge where you are from.	这在你的家乡是常识。	l
 Announcement combat visitor-statement [visitor-statement-object]: was will be appearing {s}.	当时将正在出现在{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: was will be rewarding {s}.	当时将正在奖赏{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: were will be flooding {s}.	当时将正在淹没{s1}。	l
@@ -11775,6 +11780,7 @@ Announcement combat negotiation-response []: negotiated with humor but was outma
 Announcement combat sentence [$item,merchant-address]: Might I interest you in {s}, {s}?	{s2}，我能让你对{s1}感兴趣吗？	l
 Announcement combat sentence [$sphere]: There is also the issue of their worship of {s}.	还有，他们崇拜{s1}，这也是个问题。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} catches {s} with {s}!	{s1}用{s3}抓住了{s2}！	l
+Announcement combat travel-drive-main [$name]: You have been ordered to drive {s} from .	你奉命将{s1}赶出未具名地点。	l
 Announcement combat visitor-statement [visitor-statement-object]: will be appearing {s}.	将正在出现在{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: will be rewarding {s}.	将正在奖赏{s1}。	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} are speaking to .	{s1}正在说话。	l
@@ -12532,6 +12538,8 @@ Announcement combat sentence [guard-building,$distance]: There are guards in {s}
 Announcement combat sentence [threat-name,threat-crimes]: Knowing no mercy, {s} {s} !	{s1}毫不留情，{s2}！	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} lock {s} with {s}!	{s1}用{s3}锁住{s2}！	l
 Announcement combat sentence [unit]: {s} are propelled away by the force of the blow!	{s1}被这一击打飞了！	l
+Announcement combat travel-empty-caste-actor [$travel-person]: the zombie ghostly {s}	幽灵活尸·{s1}	l
+Announcement combat travel-kill-task []: You have been ordered to kill this creature.	你奉命杀死这个生物。	l
 Announcement combat visitor-statement [visitor-statement-object]: am speaking to {s}.	正在对{s1}说话。	l
 Announcement combat visitor-statement [visitor-statement-object]: are destroying {s}.	正在毁灭{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: is speaking to {s}.	正在对{s1}说话。	l
@@ -13378,6 +13386,8 @@ Announcement combat sentence []: Excitement! Adventure! I am thrilled to join yo
 Announcement combat sentence [dialogue-family-indef,$person]: I had {s} named {s}.	我曾有{s1}，名叫{s2}。	l
 Announcement combat sentence [head]: {s} and the severed part sails off in an arc!	{s1}，断肢划着弧线飞了出去！	l
 Announcement combat site-rumor-event [site-rumor-person,$name]: {s} became of {s}.	{s1}在{s2}任职了。	l
+Announcement combat travel-report-task []: You should report the task as complete.	你应该报告任务已完成。	l
+Announcement combat travel-role-main [travel-squad-role]: You are a {s} based in .	你是一名{s1}，驻地为未具名地点。	l
 Announcement combat visitor-statement [visitor-statement-object]: am flooding {s}.	正在淹没{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: are burning {s}.	正在焚烧{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: is flooding {s}.	正在淹没{s1}。	l
@@ -14327,6 +14337,8 @@ Announcement combat sentence [unit,owner]: {s} scramble out of {s} flight path!	
 Announcement combat sentence [unit]: {s} slam into an obstacle and blows apart!	{s1}猛撞在障碍物上，四分五裂了！	l
 Announcement combat sentence [unit]: {s} slams into an obstacle and blow apart!	{s1}猛撞在障碍物上，四分五裂了！	l
 Announcement combat site-rumor-event [site-rumor-person]: was kidnapped by {s}.	有人被{s1}绑架了。	l
+Announcement combat travel-beast-main [travel-actor]: {s} is rumored to be in .	据说{s1}在一处未具名地点。	l
+Announcement combat travel-drive-main []: You have been ordered to drive from .	你奉命将未具名势力赶出未具名地点。	l
 Announcement combat visitor-statement [visitor-statement-emotion]: will be {s}.	将{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: appeared {s}.	曾出现在{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: destroys {s}.	毁灭{s1}。	l
@@ -14624,6 +14636,7 @@ Announcement combat sentence [head]: {s}, but the attack passes right through!	{
 Announcement combat sentence [unit]: {s} has become entangled in a hidden web!	{s1}被隐藏的蛛网缠住了！	l
 Announcement combat sentence [unit]: {s} slam into an obstacle and blow apart!	{s1}猛撞在障碍物上，四分五裂了！	l
 Announcement combat site-rumor [site-rumor-date,site-rumor-event]: In {s}, {s}	在{s1}，{s2}	l
+Announcement combat travel-empty-caste-actor [$travel-person]: the ghostly {s}	幽灵·{s1}	l
 Announcement combat visitor-statement [visitor-statement-object]: appears {s}.	出现在{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: burning {s}.	正在焚烧{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: destroy {s}.	毁灭{s1}。	l
@@ -14945,6 +14958,7 @@ Announcement combat sentence [memory-person,memory-person]: {s} attacked {s}.	{s
 Announcement combat sentence [unit,actor,equipment]: {s} blocks {s} with {s}!	{s1}用{s3}挡住了{s2}！	l
 Announcement combat sentence [unit,owned-object]: {s} latch on firmly to {s}!	{s1}牢牢咬住了{s2}！	l
 Announcement combat site-rumor-event [$name,$name]: {s} was conquered by {s}.	{s1}被{s2}征服了。	l
+Announcement combat travel-empty-caste-actor [$travel-person]: the zombie {s}	活尸·{s1}	l
 Announcement combat visitor-statement [visitor-statement-object]: appear {s}.	出现在{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: burned {s}.	曾焚烧{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: floods {s}.	淹没{s1}。	l
@@ -15299,6 +15313,8 @@ Announcement combat sentence [unit,actor,equipment]: {s} block {s} with {s}!	{s1
 Announcement combat sentence [unit,owner]: {s} jumps out of {s} flight path!	{s1}跳开，避过了{s2}飞行路线！	l
 Announcement combat sentence [unit,owner]: {s} rolls out of {s} flight path!	{s1}翻滚着避开了{s2}飞行路线！	l
 Announcement combat site-rumor-event [site-rumor-person]: {s} was kidnapped.	{s1}被绑架了。	l
+Announcement combat travel-known-dead []: This creature is known to be dead.	已知这个生物已经死亡。	l
+Announcement combat travel-role-main [$travel-site]: You are a based in {s}.	你的驻地在{s1}。	l
 Announcement combat visitor-statement [visitor-statement-emotion]: were {s}.	曾{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: burns {s}.	焚烧{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: flood {s}.	淹没{s1}。	l
@@ -18673,6 +18689,7 @@ Announcement combat site-rumor-date [$digits]: the midsummer of {s}	第{s1}年�
 Announcement combat site-rumor-date [$digits]: the midwinter of {s}	第{s1}年仲冬	l
 Announcement combat site-rumor-position [$office,$name]: {s} of {s}	{s2}的{s1}	l
 Announcement combat site-rumor-predecessor [site-rumor-person]: {s}	{s1}	l
+Announcement combat travel-empty-caste-actor []: the zombie ghostly	幽灵活尸	l
 Announcement combat visitor-statement []: was will be speaking to .	当时将正在说话。	l
 Announcement combat visitor-statement []: were will be destroying .	当时将正在毁灭。	l
 Announcement combat visitor-statement-emotion []: feeling affection	感到喜爱	l
@@ -19574,6 +19591,7 @@ Announcement combat threat-crime [threat-building]: destroyed {s}	毁坏了{s1}	
 Announcement combat threat-crime [threat-building]: disturbed {s}	扰乱了{s1}	l
 Announcement combat threat-crime [threat-livestock]: devoured {s}	吞食了{s1}	l
 Announcement combat threat-family-list [threat-family-group]: {s}	{s1}	l
+Announcement combat travel-empty-caste-actor []: a zombie ghostly	幽灵活尸	l
 Announcement combat visitor-statement []: was will be appearing .	当时将正在出现。	l
 Announcement combat visitor-statement []: was will be destroying.	当时将正在毁灭。	l
 Announcement combat visitor-statement []: was will be rewarding .	当时将正在施予奖赏。	l
@@ -21644,6 +21662,7 @@ Announcement combat shot-result [defense-adverb]: {s} parried	{s1}招架住了	l
 Announcement combat site-rumor-artifact [$memorial-item]: {s}	{s1}	l
 Announcement combat threat-material [$memorial-material]: {s}	{s1}	l
 Announcement combat threat-material [threat-material]: 's {s}	无名者的{s1}	l
+Announcement combat travel-role-main []: You are a based in .	你的驻地为未具名地点。	l
 Announcement combat visitor-statement []: will be appearing .	将正在出现。	l
 Announcement combat visitor-statement []: will be destroying.	将正在毁灭。	l
 Announcement combat visitor-statement []: will be rewarding .	将正在施予奖赏。	l
@@ -22194,6 +22213,7 @@ Announcement combat sentence [unit]: {s} has become enraged!	{s1}暴怒了！	l
 Announcement combat sentence [unit]: {s} have less swelling.	{s1}肿胀减轻了。	l
 Announcement combat site-rumor-person [$memorial-actor]: {s}	{s1}	l
 Announcement combat threat-stolen-item [$memorial-item]: {s}	{s1}	l
+Announcement combat travel-empty-caste-actor []: the ghostly	幽灵	l
 Announcement combat unit-list [unit,unit-list]: {s}, and {s}	{s1}和{s2}	l
 Announcement combat visitor-statement []: were speaking to .	当时正在说话。	l
 Announcement combat visitor-statement []: will be appearing.	将正在出现。	l
@@ -22862,6 +22882,7 @@ Announcement combat threat-building []: an underworld spire	一座地下世界�
 Announcement combat threat-crime []: devoured our livestock	吞食了我们的牲畜	l
 Announcement combat threat-crimes [threat-crime]: {s} , and	{s1}，还犯下了两项罪行（细节不明）	l
 Announcement combat trade-places [$name,$name]: {s} and {s}	{s1}与{s2}	l
+Announcement combat travel-empty-caste-actor []: the zombie	活尸	l
 Announcement combat unit-list [unit,unit-list]: {s} and {s}	{s1}和{s2}	l
 Announcement combat visitor-statement []: are speaking to .	正在说话。	l
 Announcement combat visitor-statement []: was speaking to .	当时正在说话。	l
@@ -23636,6 +23657,7 @@ Announcement combat sentence [unit]: {s} has fewer wounds.	{s1}的一些伤口�
 Announcement combat sentence [unit]: {s} looks less dizzy.	{s1}的眩晕减轻了。	l
 Announcement combat site-rumor-date []: a time before time	时间开始之前	l
 Announcement combat threat-crimes [threat-crime]: {s}, and	{s1}，还犯下了两项罪行（细节不明）	l
+Announcement combat travel-empty-caste-actor []: a ghostly	幽灵	l
 Announcement combat visitor-statement []: am speaking to .	正在说话。	l
 Announcement combat visitor-statement []: are destroying .	正在毁灭。	l
 Announcement combat visitor-statement []: is speaking to .	正在说话。	l
@@ -24425,6 +24447,7 @@ Announcement combat sentence [unit]: {s} latch on firmly!	{s1}牢牢咬住了！
 Announcement combat shot [actor,unit]: {s} strikes at {s}	{s1}向{s2}发动射击	l
 Announcement combat threat-crimes [threat-crime]: and {s}	犯下了罪行（细节不明），并{s1}	l
 Announcement combat threat-crimes [threat-crime]: {s} and	{s1}，还犯下了罪行（细节不明）	l
+Announcement combat travel-empty-caste-actor []: a zombie	活尸	l
 Announcement combat visitor-statement []: am destroying .	正在毁灭。	l
 Announcement combat visitor-statement []: are appearing .	正在出现。	l
 Announcement combat visitor-statement []: are destroying.	正在毁灭。	l
@@ -25279,6 +25302,7 @@ Announcement combat threat-crime []: destroyed our homes	毁坏了我们的家�
 Announcement combat threat-crime []: stole our treasures	偷走了我们的宝物	l
 Announcement combat threat-crimes [threat-crimes]: , {s}	犯下了罪行（细节不明）、{s1}	l
 Announcement combat threat-material []: unknown material	未知材料	l
+Announcement combat travel-squad-role []: fortress guard	要塞守卫	l
 Announcement combat unit-list [unit,unit-list]: {s}, {s}	{s1}和{s2}	l
 Announcement combat visitor-statement []: am appearing .	正在出现。	l
 Announcement combat visitor-statement []: am destroying.	正在毁灭。	l
@@ -26209,6 +26233,7 @@ Announcement combat threat-crime []: profaned our homes	亵渎了我们的家园
 Announcement combat threat-crime [threat-building]: {s}	犯下了涉及{s1}的罪行	l
 Announcement combat threat-family-group [$kinship]: {s}	{s1}	l
 Announcement combat threat-livestock [$creature]: a {s}	一只{s1}	l
+Announcement combat travel-squad-role []: militia-dwarf	民兵	l
 Announcement combat visitor-statement []: am appearing.	正在出现。	l
 Announcement combat visitor-statement []: am flooding .	正在泛滥。	l
 Announcement combat visitor-statement []: am rewarding.	正在施予奖赏。	l
@@ -28065,6 +28090,7 @@ Announcement combat sentence [$item]: Good {s} there.	那里的优质的{s1}。	
 Announcement combat sentence [equipment]: {s} breaks!	{s1}断裂了！	l
 Announcement combat threat-building []: the catacombs	地下墓穴	l
 Announcement combat threat-crimes [threat-crime]: {s}	{s1}	l
+Announcement combat travel-actor [$travel-actor]: {s}	{s1}	l
 Announcement combat visitor-statement []: am burning.	正在燃烧。	l
 Announcement combat visitor-statement []: appearing .	正在出现。	l
 Announcement combat visitor-statement []: destroyed .	曾毁灭。	l
@@ -29117,6 +29143,8 @@ Announcement combat site-rumor-artifact [$book]: {s}	{s1}	l
 Announcement combat site-rumor-artifact [$item]: {s}	{s1}	l
 Announcement combat site-rumor-building [$name]: {s}	{s1}	l
 Announcement combat threat-kill-count [$number]: {s}	{s1}人	l
+Announcement combat travel-empty-caste-actor []: the	这个生物	l
+Announcement combat travel-squad-role [$office]: {s}	{s1}	l
 Announcement combat visitor-statement []: appeared .	曾出现。	l
 Announcement combat visitor-statement []: appearing.	正在出现。	l
 Announcement combat visitor-statement []: destroyed.	曾毁灭。	l
@@ -31374,6 +31402,7 @@ Announcement combat threat-building []: a hospital	一所医院	l
 Announcement combat threat-building []: the sewers	下水道	l
 Announcement combat threat-crime []: prayed inside	在一座建筑中祈祷（名称不明）	l
 Announcement combat threat-kill-count []: somebody	一个人	l
+Announcement combat travel-empty-caste-actor []: a	这个生物	l
 Announcement combat visitor-statement []: appear .	出现。	l
 Announcement combat visitor-statement []: appears.	出现。	l
 Announcement combat visitor-statement []: burned .	曾燃烧。	l
@@ -32588,6 +32617,7 @@ Announcement combat threat-building []: a dungeon	一座地牢	l
 Announcement combat threat-building []: a library	一座图书馆	l
 Announcement combat threat-fiend []: bloodsucking	吸血的	l
 Announcement combat threat-victim [$kinship]: {s}	{s1}	l
+Announcement combat travel-squad-role []: soldier	士兵	l
 Announcement combat visitor-statement []: appear.	出现。	l
 Announcement combat visitor-statement []: burned.	曾燃烧。	l
 Announcement combat visitor-statement []: burns .	燃烧。	l
@@ -33868,6 +33898,7 @@ Announcement combat threat-building []: a market	一处市场	l
 Announcement combat threat-building []: a tavern	一间酒馆	l
 Announcement combat threat-building []: a temple	一座神殿	l
 Announcement combat threat-victim [$person]: {s}	{s1}	l
+Announcement combat travel-squad-role []: ranger	游侠	l
 Announcement combat visitor-statement []: burn .	燃烧。	l
 Announcement combat visitor-statement []: burns.	燃烧。	l
 Announcement combat visitor-statement []: flood.	泛滥。	l

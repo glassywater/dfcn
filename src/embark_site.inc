@@ -178,6 +178,12 @@ void Overlay::append_embark_site_resources(NativeTextCard &card,
     std::unordered_set<int> recovered;
     for (const auto &row : card.rows) {
         if (row.y <= ecology_bottom || row.y >= neighbors_y) continue;
+        // The same ecology frame is also used by adventure travel. Its
+        // complete task/rumor owner has already translated these rows; a
+        // generated name that resembles a metal cannot become a resource.
+        if (std::any_of(matches.begin(), matches.end(), [&](const Match &match) {
+                return match.rule == kWorldSiteHistoryRule && match.y == row.y;
+            })) continue;
         std::vector<const NativeDrawnTextRow *> current;
         for (const auto &draw : draws)
             if (draw.sequence && draw.foreground_rgb >= 0 && draw.x >= row.x && draw.x < right &&

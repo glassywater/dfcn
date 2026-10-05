@@ -1,0 +1,419 @@
+edition	role	instruction_rva	operand_rva	storage	source
+reference	environment-card	0x80def5	0x15eca10	rip	Mountain
+reference	environment-card	0x80df2f	0x15eca20	rip	Glacier
+reference	environment-card	0x80df69	0x15eca7c	rip	Tundra
+reference	environment-card	0x80dfa3	0x15eca88	rip	Temperate Freshwater Swamp
+reference	environment-card	0x80dfdd	0x15eca40	rip	Temperate Saltwater Swamp
+reference	environment-card	0x80e017	0x15eca60	rip	Temperate Freshwater Marsh
+reference	environment-card	0x80e051	0x15ecad8	rip	Temperate Saltwater Marsh
+reference	environment-card	0x80e08b	0x15ecaf8	rip	Tropical Freshwater Swamp
+reference	environment-card	0x80e0c5	0x15ecaa8	rip	Tropical Saltwater Swamp
+reference	environment-card	0x80e0ff	0x15ecac8	rip	Mangrove Swamp
+reference	environment-card	0x80e139	0x15ecb40	rip	Tropical Freshwater Marsh
+reference	environment-card	0x80e173	0x15ecb60	rip	Tropical Saltwater Marsh
+reference	environment-card	0x80e1ad	0x15ecb14	rip	Taiga
+reference	environment-card	0x80e1e7	0x16aee48	rip	Temperate Conifer Forest
+reference	environment-card	0x80e221	0x15ecbc0	rip	Temperate Broadleaf Forest
+reference	environment-card	0x80e25b	0x15ecbe0	rip	Tropical Coniferous Forest
+reference	environment-card	0x80e295	0x16aee28	rip	Tropical Dry Brdlf Forest
+reference	environment-card	0x80e2cf	0x16aee78	rip	Tropical Moist Brdlf Forst
+reference	environment-card	0x80e309	0x15ecc30	rip	Temperate Grassland
+reference	environment-card	0x80e343	0x15ecc48	rip	Temperate Savanna
+reference	environment-card	0x80e37d	0x15ecc00	rip	Temperate Shrubland
+reference	environment-card	0x80e3b7	0x15ecc18	rip	Tropical Grassland
+reference	environment-card	0x80e3f1	0x15ecc80	rip	Tropical Savanna
+reference	environment-card	0x80e42b	0x15ecc98	rip	Tropical Shrubland
+reference	environment-card	0x80e465	0x15ecc60	rip	Badlands
+reference	environment-card	0x80e49f	0x15ecc70	rip	Rocky Wasteland
+reference	environment-card	0x80e4d9	0x15eccd0	rip	Sand Desert
+reference	environment-card	0x80e513	0x15ecce0	rip	Tropical Ocean
+reference	environment-card	0x80e54d	0x15eccb0	rip	Temperate Ocean
+reference	environment-card	0x80e587	0x15eccc0	rip	Arctic Ocean
+reference	environment-card	0x80e5c1	0x15ecd30	rip	Temperate Freshwater Pool
+reference	environment-card	0x80e5fb	0x15ecd50	rip	Temperate Brackish Pool
+reference	environment-card	0x80e635	0x15eccf0	rip	Temperate Saltwater Pool
+reference	environment-card	0x80e66f	0x15ecd10	rip	Tropical Freshwater Pool
+reference	environment-card	0x80e6a9	0x15ecda0	rip	Tropical Brackish Pool
+reference	environment-card	0x80e6e3	0x15ecdb8	rip	Tropical Saltwater Pool
+reference	environment-card	0x80e71d	0x15ecd68	rip	Temperate Freshwater Lake
+reference	environment-card	0x80e757	0x15ecd88	rip	Temperate Brackish Lake
+reference	environment-card	0x80e791	0x15ece00	rip	Temperate Saltwater Lake
+reference	environment-card	0x80e7cb	0x15ece20	rip	Tropical Freshwater Lake
+reference	environment-card	0x80e805	0x15ecdd0	rip	Tropical Brackish Lake
+reference	environment-card	0x80e83f	0x15ecde8	rip	Tropical Saltwater Lake
+reference	environment-card	0x80e879	0x15ece80	rip	Temperate Freshwater River
+reference	environment-card	0x80e8b3	0x15ecea0	rip	Temperate Brackish River
+reference	environment-card	0x80e8ed	0x15ece40	rip	Temperate Saltwater River
+reference	environment-card	0x80e927	0x15ece60	rip	Tropical Freshwater River
+reference	environment-card	0x80e961	0x15ecef0	rip	Tropical Brackish River
+reference	environment-card	0x80e99b	0x15ecf08	rip	Tropical Saltwater River
+reference	environment-card	0x80e9d5	0x15ecec0	rip	Subterranean Water
+reference	environment-card	0x80ea0c	0x15eced8	rip	Subterranean Chasm
+reference	environment-card	0x80ea43	0x15ecf60	rip	Subterranean Magma
+reference	environment-card	0x80eabf	0x16aee68	rip	Temperature: 
+reference	environment-card	0x80eb19	0x15f7400	rip	Freezing
+reference	environment-card	0x80eb67	0x15f7420	rip	Cold
+reference	environment-card	0x80ebb4	0x15fedb0	rip	Temperate
+reference	environment-card	0x80ec01	0x15f7384	rip	Warm
+reference	environment-card	0x80ec4e	0x15f738c	rip	Hot
+reference	environment-card	0x80ec8d	0x15f7390	rip	Scorching
+reference	environment-card	0x80ecf2	0x16aef28	rip	Trees: 
+reference	environment-card	0x80ed72	0x16aef1c	rip	Scarce
+reference	environment-card	0x80edbb	0x16aef3c	rip	Sparse
+reference	environment-card	0x80ee04	0x16aef30	rip	Woodland
+reference	environment-card	0x80ee42	0x16aeef0	rip	Heavily Forested
+reference	environment-card	0x80ee8f	0x15ff764	rip	None
+reference	environment-card	0x80eee7	0x16aeed8	rip	Other Vegetation: 
+reference	environment-card	0x80ef51	0x16aef1c	rip	Scarce
+reference	environment-card	0x80ef97	0x16aef10	rip	Moderate
+reference	environment-card	0x80efde	0x16aef04	rip	Thick
+reference	environment-card	0x80f029	0x15ff764	rip	None
+reference	environment-card	0x80f08a	0x16af600	rip	Surroundings: 
+reference	environment-card	0x80f0ec	0x16af5f8	rip	Serene
+reference	environment-card	0x80f132	0x16af61c	rip	Calm
+reference	environment-card	0x80f172	0x16af610	rip	Sinister
+reference	environment-card	0x80f1c6	0x16af5d0	rip	Mirthful
+reference	environment-card	0x80f20d	0x16af5c0	rip	Wilderness
+reference	environment-card	0x80f250	0x16af5f0	rip	Haunted
+reference	environment-card	0x80f299	0x16af5e0	rip	Joyous Wilds
+reference	environment-card	0x80f2dc	0x16af668	rip	Untamed Wilds
+reference	environment-card	0x80f319	0x16af658	rip	Terrifying
+reference	environment-card	0x80f4db	0x15e9718	rip	""""
+reference	environment-card	0x80f526	0x15e9718	rip	""""
+reference	environment-card	0x80f5ac	0x15e873c	rip	 
+reference	environment-card	0x80f899	0x16af688	rip	Multiple Constructions
+reference	environment-card	0x80f98c	0x16af678	rip	Major River: 
+reference	environment-card	0x80f9e7	0x16af638	rip	River: 
+reference	environment-card	0x80fa36	0x16af628	rip	Minor River: 
+reference	environment-card	0x80fa96	0x16af648	rip	Stream: 
+reference	environment-card	0x80fad5	0x16af640	rip	Brook: 
+reference	environment-card	0x80fc55	0x16af490	rip	Volcano: 
+reference	environment-card	0x80fc80	0x16af480	rip	Mountain: 
+reference	environment-card	0x80fefe	0x16af4b0	rip	[C:3:0:1]You are a 
+reference	environment-card	0x80ff24	0x16af4a0	rip	 based in 
+reference	environment-card	0x80ff50	0x16af42c	rip	.[B]
+reference	environment-card	0x810069	0x16af400	rip	[C:2:0:1]You have been ordered to drive 
+reference	environment-card	0x810096	0x15ed97c	rip	 from 
+reference	environment-card	0x8100c3	0x15e85b4	rip	.
+reference	environment-card	0x8103a1	0x16af450	rip	  You should report the task as complete.
+reference	environment-card	0x8103b4	0x15fd258	rip	[B]
+reference	environment-card	0x810418	0x16af400	rip	[C:2:0:1]You have been ordered to drive 
+reference	environment-card	0x810445	0x15ed97c	rip	 from 
+reference	environment-card	0x810472	0x15e85b4	rip	.
+reference	environment-card	0x8105b2	0x16af450	rip	  You should report the task as complete.
+reference	environment-card	0x8105c5	0x15fd258	rip	[B]
+reference	environment-card	0x8106c4	0x1602568	rip	[C:4:0:1]
+reference	environment-card	0x810737	0x16af438	rip	 is rumored to be in 
+reference	environment-card	0x810764	0x15e85b4	rip	.
+reference	environment-card	0x81077d	0x16af538	rip	  [C:7:0:0]This is common knowledge where you are from.
+reference	environment-card	0x8107bd	0x16af508	rip	  [C:5:0:1]This creature is known to be dead.
+reference	environment-card	0x810863	0x16af588	rip	  [C:2:0:1]You have been ordered to kill this creature.
+reference	environment-card	0x810890	0x16af450	rip	  You should report the task as complete.
+reference	environment-card	0x8108d4	0x15fd258	rip	[B]
+reference	role-drive-beast-producer	0x80fefe	0x16af4b0	rip	[C:3:0:1]You are a 
+reference	role-drive-beast-producer	0x80ff24	0x16af4a0	rip	 based in 
+reference	role-drive-beast-producer	0x80ff50	0x16af42c	rip	.[B]
+reference	role-drive-beast-producer	0x810069	0x16af400	rip	[C:2:0:1]You have been ordered to drive 
+reference	role-drive-beast-producer	0x810096	0x15ed97c	rip	 from 
+reference	role-drive-beast-producer	0x8100c3	0x15e85b4	rip	.
+reference	role-drive-beast-producer	0x8103a1	0x16af450	rip	  You should report the task as complete.
+reference	role-drive-beast-producer	0x8103b4	0x15fd258	rip	[B]
+reference	role-drive-beast-producer	0x810418	0x16af400	rip	[C:2:0:1]You have been ordered to drive 
+reference	role-drive-beast-producer	0x810445	0x15ed97c	rip	 from 
+reference	role-drive-beast-producer	0x810472	0x15e85b4	rip	.
+reference	role-drive-beast-producer	0x8105b2	0x16af450	rip	  You should report the task as complete.
+reference	role-drive-beast-producer	0x8105c5	0x15fd258	rip	[B]
+reference	role-drive-beast-producer	0x8106c4	0x1602568	rip	[C:4:0:1]
+reference	role-drive-beast-producer	0x810737	0x16af438	rip	 is rumored to be in 
+reference	role-drive-beast-producer	0x810764	0x15e85b4	rip	.
+reference	role-drive-beast-producer	0x81077d	0x16af538	rip	  [C:7:0:0]This is common knowledge where you are from.
+reference	role-drive-beast-producer	0x8107bd	0x16af508	rip	  [C:5:0:1]This creature is known to be dead.
+reference	role-drive-beast-producer	0x810863	0x16af588	rip	  [C:2:0:1]You have been ordered to kill this creature.
+reference	role-drive-beast-producer	0x810890	0x16af450	rip	  You should report the task as complete.
+reference	role-drive-beast-producer	0x8108d4	0x15fd258	rip	[B]
+reference	historical-figure-name	0xb92f8a	0x16df900	rip	interrogator
+reference	historical-figure-name	0xb92fa1	0x1674d08	rip	subject
+reference	historical-figure-name	0xb93073	0x16290f0	rip	Nameless
+reference	historical-figure-name	0xb9310e	0x16df8e0	rip	an unidentified creature
+reference	historical-figure-name	0xb93133	0x15fdb08	rip	[LPAGE:HF:
+reference	historical-figure-name	0xb93153	0x15fd690	rip	]
+reference	historical-figure-name	0xb9325d	0x1662ef8	rip	myself
+reference	historical-figure-name	0xb93266	0x1662efc	rip	lf
+reference	historical-figure-name	0xb932cc	inline	immediate	I
+reference	historical-figure-name	0xb9331b	0x15e8e48	rip	the 
+reference	historical-figure-name	0xb9333f	0x167db90	rip	zombie 
+reference	historical-figure-name	0xb93377	0x15fdbb8	rip	ghostly 
+reference	historical-figure-name	0xb93499	0x15e873c	rip	 
+reference	historical-figure-name	0xb934c8	0x15e873c	rip	 
+reference	historical-figure-name	0xb93551	0x15e956c	rip	 the 
+reference	historical-figure-name	0xb93575	0x167db90	rip	zombie 
+reference	historical-figure-name	0xb935ad	0x15fdbb8	rip	ghostly 
+reference	historical-figure-name	0xb936cd	0x15e873c	rip	 
+reference	historical-figure-name	0xb9374e	0x15ed620	rip	a 
+reference	historical-figure-name	0xb93755	0x15e8e48	rip	the 
+reference	historical-figure-name	0xb9377d	0x167db90	rip	zombie 
+reference	historical-figure-name	0xb937b5	0x15fdbb8	rip	ghostly 
+reference	historical-figure-name	0xb9381c	0x15e873c	rip	 
+reference	historical-figure-name	0xb93867	0x15e9260	rip	's
+reference	historical-figure-name	0xb93886	0x15fda88	rip	[/LPAGE]
+reference	historical-figure-name	0xb938dc	0x1663cd8	rip	an unknown creature
+reference	historical-figure-name	0xb938f2	0x15e9260	rip	's
+reference	site-name	0xb9397a	0x16df920	rip	[LPAGE:SITE:
+reference	site-name	0xb9399d	0x15fd690	rip	]
+reference	site-name	0xb93a06	0x15fda88	rip	[/LPAGE]
+reference	site-name	0xb93a5e	0x16df910	rip	an unknown site
+reference	entity-name	0xb9296a	0x165e438	rip	[LPAGE:ENT:
+reference	entity-name	0xb9298a	0x15fd690	rip	]
+reference	entity-name	0xb929f4	0x15fda88	rip	[/LPAGE]
+reference	entity-name	0xb92a4c	0x16df940	rip	an unknown civilization
+reference	rich-text-append	0xd5247d	0x16b1efc	rip	CHAR
+reference	rich-text-append	0xd5284e	0x171287c	rip	LPAGE
+reference	rich-text-append	0xd53099	0x1660374	rip	HF
+reference	rich-text-append	0xd530bf	0x1671df4	rip	SITE
+reference	rich-text-append	0xd530ea	0x16ed490	rip	ARTIFACT
+reference	rich-text-append	0xd53115	0x169daf4	rip	BOOK
+reference	rich-text-append	0xd53140	0x1712878	rip	SR
+reference	rich-text-append	0xd5316b	0x1712888	rip	FL
+reference	rich-text-append	0xd53196	0x1660458	rip	ENT
+reference	rich-text-append	0xd531c1	0x1712884	rip	AB
+reference	rich-text-append	0xd531ec	0x1712890	rip	EPOP
+reference	rich-text-append	0xd53217	0x169c050	rip	ART_IMAGE
+reference	rich-text-append	0xd53240	0x171288c	rip	ERA
+reference	rich-text-append	0xd5326b	0x17128a0	rip	HEC
+reference	rich-text-append	0xd5365b	0x1712898	rip	/LPAGE
+reference	rich-text-append	0xd537ab	0x16ad32c	rip	C
+reference	rich-text-append	0xd53cd1	0x17128a8	rip	VAR
+reference	rich-text-append	0xd53ddc	0x17128a4	rip	KEY
+reference	rich-text-append	0xd54001	0x17128a8	rip	VAR
+reference	rich-text-append	0xd54189	0x16b1fdc	rip	P
+reference	rich-text-append	0xd5419e	0x16b1fd8	rip	R
+reference	rich-text-append	0xd541b3	0x16b1fe8	rip	B
+reference	rich-text-append	0xd541db	0x16b1fd8	rip	R
+reference	rich-text-append	0xd5421d	0x16b1fe8	rip	B
+reference	rich-text-append	0xd5425f	0x16b1fdc	rip	P
+reference	english-generated-name	0xa948a3	0x15e873c	rip	 
+reference	english-generated-name	0xa9495e	0x15e873c	rip	 
+reference	english-generated-name	0xa94a3b	0x15e873c	rip	 
+reference	english-generated-name	0xa94a5d	0x15ed9bc	rip	The 
+reference	english-generated-name	0xa94a78	0x15e8e48	rip	the 
+reference	english-generated-name	0xa94af2	0x15e873c	rip	 
+reference	english-generated-name	0xa94b11	0x15ed9bc	rip	The 
+reference	english-generated-name	0xa94b1a	0x15e8e48	rip	the 
+reference	english-generated-name	0xa94b9a	0x15e873c	rip	 
+reference	english-generated-name	0xa94bb9	0x15ed9bc	rip	The 
+reference	english-generated-name	0xa94bc2	0x15e8e48	rip	the 
+reference	english-generated-name	0xa94d1f	0x15e873c	rip	 
+reference	english-generated-name	0xa94d4b	0x15ed9bc	rip	The 
+reference	english-generated-name	0xa94d62	0x15e8e48	rip	the 
+reference	english-generated-name	0xa94e09	0x15e873c	rip	 
+reference	english-generated-name	0xa94e18	0x16ced90	rip	of 
+reference	english-generated-name	0xa94e1f	0x16cee1c	rip	Of 
+classic	environment-card	0x80b775	0x15e7a08	rip	Mountain
+classic	environment-card	0x80b7af	0x15e7a18	rip	Glacier
+classic	environment-card	0x80b7e9	0x15e79dc	rip	Tundra
+classic	environment-card	0x80b823	0x15e79e8	rip	Temperate Freshwater Swamp
+classic	environment-card	0x80b85d	0x15e7a60	rip	Temperate Saltwater Swamp
+classic	environment-card	0x80b897	0x15e7a80	rip	Temperate Freshwater Marsh
+classic	environment-card	0x80b8d1	0x15e7a20	rip	Temperate Saltwater Marsh
+classic	environment-card	0x80b90b	0x15e7a40	rip	Tropical Freshwater Swamp
+classic	environment-card	0x80b945	0x15e7ae0	rip	Tropical Saltwater Swamp
+classic	environment-card	0x80b97f	0x15e7b00	rip	Mangrove Swamp
+classic	environment-card	0x80b9b9	0x15e7aa0	rip	Tropical Freshwater Marsh
+classic	environment-card	0x80b9f3	0x15e7ac0	rip	Tropical Saltwater Marsh
+classic	environment-card	0x80ba2d	0x15e7b4c	rip	Taiga
+classic	environment-card	0x80ba67	0x16a9ef0	rip	Temperate Conifer Forest
+classic	environment-card	0x80baa1	0x15e7b10	rip	Temperate Broadleaf Forest
+classic	environment-card	0x80badb	0x15e7b30	rip	Tropical Coniferous Forest
+classic	environment-card	0x80bb15	0x16a9ed0	rip	Tropical Dry Brdlf Forest
+classic	environment-card	0x80bb4f	0x16a9f20	rip	Tropical Moist Brdlf Forst
+classic	environment-card	0x80bb89	0x15e7b78	rip	Temperate Grassland
+classic	environment-card	0x80bbc3	0x15e7b90	rip	Temperate Savanna
+classic	environment-card	0x80bbfd	0x15e7c18	rip	Temperate Shrubland
+classic	environment-card	0x80bc37	0x15e7c30	rip	Tropical Grassland
+classic	environment-card	0x80bc71	0x15e7be8	rip	Tropical Savanna
+classic	environment-card	0x80bcab	0x15e7c00	rip	Tropical Shrubland
+classic	environment-card	0x80bce5	0x15e7c68	rip	Badlands
+classic	environment-card	0x80bd1f	0x15e7c78	rip	Rocky Wasteland
+classic	environment-card	0x80bd59	0x15e7c48	rip	Sand Desert
+classic	environment-card	0x80bd93	0x15e7c58	rip	Tropical Ocean
+classic	environment-card	0x80bdcd	0x15e7cc0	rip	Temperate Ocean
+classic	environment-card	0x80be07	0x15e7cd0	rip	Arctic Ocean
+classic	environment-card	0x80be41	0x15e7c88	rip	Temperate Freshwater Pool
+classic	environment-card	0x80be7b	0x15e7ca8	rip	Temperate Brackish Pool
+classic	environment-card	0x80beb5	0x15e7d10	rip	Temperate Saltwater Pool
+classic	environment-card	0x80beef	0x15e7d30	rip	Tropical Freshwater Pool
+classic	environment-card	0x80bf29	0x15e7ce0	rip	Tropical Brackish Pool
+classic	environment-card	0x80bf63	0x15e7cf8	rip	Tropical Saltwater Pool
+classic	environment-card	0x80bf9d	0x15e7d90	rip	Temperate Freshwater Lake
+classic	environment-card	0x80bfd7	0x15e7db0	rip	Temperate Brackish Lake
+classic	environment-card	0x80c011	0x15e7d50	rip	Temperate Saltwater Lake
+classic	environment-card	0x80c04b	0x15e7d70	rip	Tropical Freshwater Lake
+classic	environment-card	0x80c085	0x15e7e08	rip	Tropical Brackish Lake
+classic	environment-card	0x80c0bf	0x15e7e20	rip	Tropical Saltwater Lake
+classic	environment-card	0x80c0f9	0x15e7dc8	rip	Temperate Freshwater River
+classic	environment-card	0x80c133	0x15e7de8	rip	Temperate Brackish River
+classic	environment-card	0x80c16d	0x15e7e70	rip	Temperate Saltwater River
+classic	environment-card	0x80c1a7	0x15e7e90	rip	Tropical Freshwater River
+classic	environment-card	0x80c1e1	0x15e7e38	rip	Tropical Brackish River
+classic	environment-card	0x80c21b	0x15e7e50	rip	Tropical Saltwater River
+classic	environment-card	0x80c255	0x15e7ef0	rip	Subterranean Water
+classic	environment-card	0x80c28c	0x15e7f08	rip	Subterranean Chasm
+classic	environment-card	0x80c2c3	0x15e7eb0	rip	Subterranean Magma
+classic	environment-card	0x80c33f	0x16a9f10	rip	Temperature: 
+classic	environment-card	0x80c399	0x15f23b0	rip	Freezing
+classic	environment-card	0x80c3e7	0x15f23d0	rip	Cold
+classic	environment-card	0x80c434	0x15f9c20	rip	Temperate
+classic	environment-card	0x80c481	0x15f23d8	rip	Warm
+classic	environment-card	0x80c4ce	0x15f23e0	rip	Hot
+classic	environment-card	0x80c50d	0x15f2338	rip	Scorching
+classic	environment-card	0x80c572	0x16a9eb0	rip	Trees: 
+classic	environment-card	0x80c5f2	0x16a9ea4	rip	Scarce
+classic	environment-card	0x80c63b	0x16a9ec4	rip	Sparse
+classic	environment-card	0x80c684	0x16a9eb8	rip	Woodland
+classic	environment-card	0x80c6c2	0x16a9d70	rip	Heavily Forested
+classic	environment-card	0x80c70f	0x15fa7dc	rip	None
+classic	environment-card	0x80c767	0x16a9d58	rip	Other Vegetation: 
+classic	environment-card	0x80c7d1	0x16a9ea4	rip	Scarce
+classic	environment-card	0x80c817	0x16a9d90	rip	Moderate
+classic	environment-card	0x80c85e	0x16a9d84	rip	Thick
+classic	environment-card	0x80c8a9	0x15fa7dc	rip	None
+classic	environment-card	0x80c90a	0x16a9d30	rip	Surroundings: 
+classic	environment-card	0x80c96c	0x16a9d28	rip	Serene
+classic	environment-card	0x80c9b2	0x16a9d4c	rip	Calm
+classic	environment-card	0x80c9f2	0x16a9d40	rip	Sinister
+classic	environment-card	0x80ca46	0x16a9df8	rip	Mirthful
+classic	environment-card	0x80ca8d	0x16a9de8	rip	Wilderness
+classic	environment-card	0x80cad0	0x16a9e18	rip	Haunted
+classic	environment-card	0x80cb19	0x16a9e08	rip	Joyous Wilds
+classic	environment-card	0x80cb5c	0x16a9db0	rip	Untamed Wilds
+classic	environment-card	0x80cb99	0x16a9da0	rip	Terrifying
+classic	environment-card	0x80cd5b	0x15e46fc	rip	""""
+classic	environment-card	0x80cda6	0x15e46fc	rip	""""
+classic	environment-card	0x80ce2c	0x15e3720	rip	 
+classic	environment-card	0x80d119	0x16a9dd0	rip	Multiple Constructions
+classic	environment-card	0x80d20c	0x16a9dc0	rip	Major River: 
+classic	environment-card	0x80d267	0x16aa540	rip	River: 
+classic	environment-card	0x80d2b6	0x16aa530	rip	Minor River: 
+classic	environment-card	0x80d316	0x16aa550	rip	Stream: 
+classic	environment-card	0x80d355	0x16aa548	rip	Brook: 
+classic	environment-card	0x80d4d5	0x16aa4f8	rip	Volcano: 
+classic	environment-card	0x80d500	0x16aa4e8	rip	Mountain: 
+classic	environment-card	0x80d77e	0x16aa518	rip	[C:3:0:1]You are a 
+classic	environment-card	0x80d7a4	0x16aa508	rip	 based in 
+classic	environment-card	0x80d7d0	0x16aa644	rip	.[B]
+classic	environment-card	0x80d8e9	0x16aa618	rip	[C:2:0:1]You have been ordered to drive 
+classic	environment-card	0x80d916	0x15e8984	rip	 from 
+classic	environment-card	0x80d943	0x15e3574	rip	.
+classic	environment-card	0x80dc21	0x16aa668	rip	  You should report the task as complete.
+classic	environment-card	0x80dc34	0x15f8388	rip	[B]
+classic	environment-card	0x80dc98	0x16aa618	rip	[C:2:0:1]You have been ordered to drive 
+classic	environment-card	0x80dcc5	0x15e8984	rip	 from 
+classic	environment-card	0x80dcf2	0x15e3574	rip	.
+classic	environment-card	0x80de32	0x16aa668	rip	  You should report the task as complete.
+classic	environment-card	0x80de45	0x15f8388	rip	[B]
+classic	environment-card	0x80df44	0x15fd440	rip	[C:4:0:1]
+classic	environment-card	0x80dfb7	0x16aa650	rip	 is rumored to be in 
+classic	environment-card	0x80dfe4	0x15e3574	rip	.
+classic	environment-card	0x80dffd	0x16aa590	rip	  [C:7:0:0]This is common knowledge where you are from.
+classic	environment-card	0x80e03d	0x16aa560	rip	  [C:5:0:1]This creature is known to be dead.
+classic	environment-card	0x80e0e3	0x16aa5e0	rip	  [C:2:0:1]You have been ordered to kill this creature.
+classic	environment-card	0x80e110	0x16aa668	rip	  You should report the task as complete.
+classic	environment-card	0x80e154	0x15f8388	rip	[B]
+classic	role-drive-beast-producer	0x80d77e	0x16aa518	rip	[C:3:0:1]You are a 
+classic	role-drive-beast-producer	0x80d7a4	0x16aa508	rip	 based in 
+classic	role-drive-beast-producer	0x80d7d0	0x16aa644	rip	.[B]
+classic	role-drive-beast-producer	0x80d8e9	0x16aa618	rip	[C:2:0:1]You have been ordered to drive 
+classic	role-drive-beast-producer	0x80d916	0x15e8984	rip	 from 
+classic	role-drive-beast-producer	0x80d943	0x15e3574	rip	.
+classic	role-drive-beast-producer	0x80dc21	0x16aa668	rip	  You should report the task as complete.
+classic	role-drive-beast-producer	0x80dc34	0x15f8388	rip	[B]
+classic	role-drive-beast-producer	0x80dc98	0x16aa618	rip	[C:2:0:1]You have been ordered to drive 
+classic	role-drive-beast-producer	0x80dcc5	0x15e8984	rip	 from 
+classic	role-drive-beast-producer	0x80dcf2	0x15e3574	rip	.
+classic	role-drive-beast-producer	0x80de32	0x16aa668	rip	  You should report the task as complete.
+classic	role-drive-beast-producer	0x80de45	0x15f8388	rip	[B]
+classic	role-drive-beast-producer	0x80df44	0x15fd440	rip	[C:4:0:1]
+classic	role-drive-beast-producer	0x80dfb7	0x16aa650	rip	 is rumored to be in 
+classic	role-drive-beast-producer	0x80dfe4	0x15e3574	rip	.
+classic	role-drive-beast-producer	0x80dffd	0x16aa590	rip	  [C:7:0:0]This is common knowledge where you are from.
+classic	role-drive-beast-producer	0x80e03d	0x16aa560	rip	  [C:5:0:1]This creature is known to be dead.
+classic	role-drive-beast-producer	0x80e0e3	0x16aa5e0	rip	  [C:2:0:1]You have been ordered to kill this creature.
+classic	role-drive-beast-producer	0x80e110	0x16aa668	rip	  You should report the task as complete.
+classic	role-drive-beast-producer	0x80e154	0x15f8388	rip	[B]
+classic	historical-figure-name	0xb8ffca	0x16da770	rip	interrogator
+classic	historical-figure-name	0xb8ffe1	0x166fb90	rip	subject
+classic	historical-figure-name	0xb900b3	0x1623ec0	rip	Nameless
+classic	historical-figure-name	0xb9014e	0x16da750	rip	an unidentified creature
+classic	historical-figure-name	0xb90173	0x15f8b40	rip	[LPAGE:HF:
+classic	historical-figure-name	0xb90193	0x15f8664	rip	]
+classic	historical-figure-name	0xb9029d	0x165df6c	rip	myself
+classic	historical-figure-name	0xb902a6	0x165df70	rip	lf
+classic	historical-figure-name	0xb9030c	inline	immediate	I
+classic	historical-figure-name	0xb9035b	0x15e3e34	rip	the 
+classic	historical-figure-name	0xb9037f	0x16789f8	rip	zombie 
+classic	historical-figure-name	0xb903b7	0x15f8b70	rip	ghostly 
+classic	historical-figure-name	0xb904d9	0x15e3720	rip	 
+classic	historical-figure-name	0xb90508	0x15e3720	rip	 
+classic	historical-figure-name	0xb90591	0x15e4548	rip	 the 
+classic	historical-figure-name	0xb905b5	0x16789f8	rip	zombie 
+classic	historical-figure-name	0xb905ed	0x15f8b70	rip	ghostly 
+classic	historical-figure-name	0xb9070d	0x15e3720	rip	 
+classic	historical-figure-name	0xb9078e	0x15e8618	rip	a 
+classic	historical-figure-name	0xb90795	0x15e3e34	rip	the 
+classic	historical-figure-name	0xb907bd	0x16789f8	rip	zombie 
+classic	historical-figure-name	0xb907f5	0x15f8b70	rip	ghostly 
+classic	historical-figure-name	0xb9085c	0x15e3720	rip	 
+classic	historical-figure-name	0xb908a7	0x15e4214	rip	's
+classic	historical-figure-name	0xb908c6	0x15f8b50	rip	[/LPAGE]
+classic	historical-figure-name	0xb9091c	0x165ed98	rip	an unknown creature
+classic	historical-figure-name	0xb90932	0x15e4214	rip	's
+classic	site-name	0xb909ba	0x16da6f8	rip	[LPAGE:SITE:
+classic	site-name	0xb909dd	0x15f8664	rip	]
+classic	site-name	0xb90a46	0x15f8b50	rip	[/LPAGE]
+classic	site-name	0xb90a9e	0x16da6e8	rip	an unknown site
+classic	entity-name	0xb8f9aa	0x16592f8	rip	[LPAGE:ENT:
+classic	entity-name	0xb8f9ca	0x15f8664	rip	]
+classic	entity-name	0xb8fa34	0x15f8b50	rip	[/LPAGE]
+classic	entity-name	0xb8fa8c	0x16da720	rip	an unknown civilization
+classic	rich-text-append	0xd4f4bd	0x16ac56c	rip	CHAR
+classic	rich-text-append	0xd4f88e	0x170d6e0	rip	LPAGE
+classic	rich-text-append	0xd500d9	0x165ace0	rip	HF
+classic	rich-text-append	0xd500ff	0x166cf7c	rip	SITE
+classic	rich-text-append	0xd5012a	0x16e7ea0	rip	ARTIFACT
+classic	rich-text-append	0xd50155	0x1698b44	rip	BOOK
+classic	rich-text-append	0xd50180	0x170d6dc	rip	SR
+classic	rich-text-append	0xd501ab	0x170d6ec	rip	FL
+classic	rich-text-append	0xd501d6	0x165ad98	rip	ENT
+classic	rich-text-append	0xd50201	0x170d6e8	rip	AB
+classic	rich-text-append	0xd5022c	0x170d6f4	rip	EPOP
+classic	rich-text-append	0xd50257	0x16970f0	rip	ART_IMAGE
+classic	rich-text-append	0xd50280	0x170d6f0	rip	ERA
+classic	rich-text-append	0xd502ab	0x170d704	rip	HEC
+classic	rich-text-append	0xd5069b	0x170d6fc	rip	/LPAGE
+classic	rich-text-append	0xd507eb	0x16a8210	rip	C
+classic	rich-text-append	0xd50d11	0x170d70c	rip	VAR
+classic	rich-text-append	0xd50e1c	0x170d708	rip	KEY
+classic	rich-text-append	0xd51041	0x170d70c	rip	VAR
+classic	rich-text-append	0xd511c9	0x16ac504	rip	P
+classic	rich-text-append	0xd511de	0x16ac500	rip	R
+classic	rich-text-append	0xd511f3	0x16ac510	rip	B
+classic	rich-text-append	0xd5121b	0x16ac500	rip	R
+classic	rich-text-append	0xd5125d	0x16ac510	rip	B
+classic	rich-text-append	0xd5129f	0x16ac504	rip	P
+classic	english-generated-name	0xa91923	0x15e3720	rip	 
+classic	english-generated-name	0xa919de	0x15e3720	rip	 
+classic	english-generated-name	0xa91abb	0x15e3720	rip	 
+classic	english-generated-name	0xa91add	0x15e89c4	rip	The 
+classic	english-generated-name	0xa91af8	0x15e3e34	rip	the 
+classic	english-generated-name	0xa91b72	0x15e3720	rip	 
+classic	english-generated-name	0xa91b91	0x15e89c4	rip	The 
+classic	english-generated-name	0xa91b9a	0x15e3e34	rip	the 
+classic	english-generated-name	0xa91c1a	0x15e3720	rip	 
+classic	english-generated-name	0xa91c39	0x15e89c4	rip	The 
+classic	english-generated-name	0xa91c42	0x15e3e34	rip	the 
+classic	english-generated-name	0xa91d9f	0x15e3720	rip	 
+classic	english-generated-name	0xa91dcb	0x15e89c4	rip	The 
+classic	english-generated-name	0xa91de2	0x15e3e34	rip	the 
+classic	english-generated-name	0xa91e89	0x15e3720	rip	 
+classic	english-generated-name	0xa91e98	0x16cb220	rip	of 
+classic	english-generated-name	0xa91e9f	0x16cb2ac	rip	Of 

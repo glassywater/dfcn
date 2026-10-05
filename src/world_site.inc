@@ -770,6 +770,8 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
         return;
     }
     bool artifacts = false;
+    const auto travel_status_rows = action_control ? std::unordered_set<int>{}
+        : append_adventure_travel_status_paragraphs(card, rows, matches, only_y);
     const auto captures = captured_clipped_captions();
     const auto reclaim_draws = reclaim_history ? captured_embark_reclaim_history_rows(*gps_)
         : std::array<std::vector<NativeDrawnTextRow>, 2>{};
@@ -780,6 +782,7 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
     bool facts = action_control || description_end != 0;
     for (size_t index = description_end; index < card.rows.size(); ++index) {
         const auto &row = card.rows[index];
+        if (travel_status_rows.contains(row.y)) continue;
         if (!action_control && (reclaim_history || normalize_utterance(row.source).starts_with("In "))) {
             // The site-news builder wraps dated events before drawing them.
             // Gather the whole live paragraph before any independent row,
