@@ -1,0 +1,350 @@
+Adventure threat rumor source reconstruction, PE 53.16
+=====================================================
+
+These are native source records extracted from the two configured executable
+images in data/runtime/native-pe-images.json. They are not simulated outputs.
+The .asm files contain the complete owning PE unwind ranges; packed trailing
+switch bytes are represented as data, with decoded selections in
+native-switches.tsv. image-sources.json identifies each image and function.
+
+reference threat speech:      0x1406878f0..0x140688fa6
+classic threat speech:        0x140685310..0x1406869c6
+reference delegated details:  0x14065bfb0..0x14065e928
+classic delegated details:    0x1406599d0..0x14065c348
+reference site location:      0x140690060..0x140690b3a
+classic site location:        0x14068da80..0x14068e55a
+reference family formatter:   0x14075a580..0x14075ad31
+classic family formatter:     0x140757fa0..0x140758751
+reference cardinal formatter: 0x14052e360..0x14052eb6c
+classic cardinal formatter:   0x14052bd80..0x14052c58c
+reference English name:       0x140a946e0..0x140a94ea2
+classic English name:         0x140a91760..0x140a91f22
+reference stolen item noun:   0x140a82c10..0x140a882fc
+classic stolen item noun:     0x140a7fc90..0x140a8537c
+
+All coordinates below use the reference image. The corresponding classic
+owners are saved in full. No game process was started, manipulated or read.
+
+1. Speech owner and delegation
+-----------------------------
+
+threat_speech(speaker, threat, output, audience/context, ...):
+    Resolve target historical figure and shared speech context.
+    Classify the figure's race/caste, traits, and relations to the speaker's
+    entity: local threat, known foe, military adversary, transformed creature,
+    nature beast, underworld beast, wilderness creature or night creature.
+    Select a complete opening sentence from the literal operands, not from
+    isolated words. All selected opening operands are in native-literals.tsv.
+    Append the identity introduction:
+        Seek this place if you wish to confront {identity}.
+        This insidious evil is {identity}.
+        Seek this place if you hunt {identity}.
+        The creature is {identity}.
+    Identity is assembled by the complete selection below; the name and
+    selected RAW fields can also be empty according to their native defaults.
+    Transformed-creature branch additionally appends:
+        Body corrupted beyond reckoning, {he|she|it} assumes a beastly form to terrorize us.
+    Call threat_details(speaker, target_historical_figure, output) at 688ef0.
+
+The delegated call is outside the pre-existing 687db7..688ea3 sentence
+inventory. Native double-space sentence separators are literal operands.
+
+1a. Full identity construction and empty fields (688775..688dae)
+-------------------------------------------------------------
+
+Initialize an empty string and call a946e0(figure+0x38, English=true,
+other-name=false) at 68879f. Append the resulting complete English name.
+The shared builder's 0x140a94723..0x140a94727 tests name+0x72 (has-name);
+when false it jumps directly to the epilogue at a94e6f, without a fallback
+or any string write. The caller initialized length=0 at 688775..688789.
+An unnamed figure therefore contributes no name text at all.
+
+If target race differs from speaker unit+0xa4, append " the " first, then:
+    valid caste with nonempty caste+0x20 name -> that singular caste string
+    otherwise valid race -> race+0x20 singular RAW string
+    invalid race or empty RAW names -> an empty string
+The caste lookup tests actual native bounds at 68881a..6888e5. It does not
+emit an invented "unknown creature" or "unnamed creature" placeholder.
+The race-different branch marks that a species field was selected even when
+its resulting string is empty.
+
+Next, select exactly one of curse display title or profession/office:
+    visible curse chain figure+0x130 -> +0x48, flag+0x88 != 0:
+        append one space if the species field was selected, otherwise " the ";
+        append the curse string at +0x90, then skip the whole office branch.
+        There is no nonempty check on curse+0x90.
+    no visible curse, profession enum 0x61 or 0x66:
+        append no role and no additional separator.
+    otherwise:
+        append one space if species was selected, otherwise " the ";
+        obtain a complete native profession/office title via 132cc10.
+        beb620 selects gender-specific or generic RAW office strings; the
+        figure/site/entity suffix is appended via 9bdfb0 when office+0x2c8>0.
+        A slave reference (kind4, reference+0x10>0) overrides title to "Slave".
+        A prisoner reference (kind6,+0x10>0 or other-reference kind7,+0xc>0)
+        overrides title to "Prisoner", including a previous slave title.
+        The native role result can be empty: the separator is already appended.
+Append the period unconditionally at 688dae.
+
+Nonempty identity productions are:
+    NAME
+    NAME the SPECIES
+    NAME the ROLE
+    NAME the SPECIES ROLE
+NAME can be empty; SPECIES/ROLE can each be empty without retracting the
+already emitted separator. Thus each of the four introductions above also
+has real default forms PREFIX '.', PREFIX ' the .', PREFIX NAME ' the .',
+and PREFIX NAME ' the SPECIES .', with their precise spaces preserved.
+
+Stock curse fields are extracted from the configured Steam installation's
+current data/vanilla, not inferred from English role names. See
+vanilla-curse-fields.tsv, vanilla-curse-sources.json and the verbatim source
+scripts in vanilla-curse-sources/:
+    fixed CE_DISPLAY_NAME: necromancer, mummy, vampire, faded hunter
+    raised undead: 33 necromancer_raise_adjectives x 8 raise singular nouns
+    contagious ghouls: 6 ghoul_adjectives x 2 ghoul singular nouns
+    evil-cloud zombies: 19 cloud_adjs x 9 cloud_names x 3 zombie singular nouns
+    mythical powers: sphere-specific prefix/suffix adjectives, followed or
+                     preceded by one of 12 rank nouns at the selected power tier
+The ghost title code is present but guarded by the source's false ghost
+option and false-and-ghost condition; it is not an active vanilla generator
+branch. Mod-added display-name values remain RAW fields, not native fixed
+English prose. The copied scripts preserve every constructor and option.
+
+2. Crime collection and narrative
+--------------------------------
+
+65c234..65c435 walks native event collections tied to the speaker's affiliated
+entities and the target historical figure. The target id is figure+0xe0.
+The finite event kind branches are:
+    kind 0x35: stole, target figure id is event+0x3c
+    kind 0x36: destroyed a building, target figure id is event+0x28
+    kind 0x37: devoured livestock, event+0x28 must be -1 and
+               target figure id is event+0x34
+    kind 0x45: profaned/disturbed/prayed in building, figure id event+0x2c
+Other event kinds contribute no crime clause.
+
+If at least one crime vector is nonempty, append at 65c4ea:
+    Knowing no mercy, {actor} {crime_list}!
+
+Actor is the capitalized first_name string at figure+0x38 when nonempty
+(65c517..65c5e6). This branch uses only that first name. With empty first_name,
+a946e0(figure+0x38, English=true) supplies a complete native figure name.
+If first_name is empty and name+0x72 is false, this fallback returns without
+writing: the literal "Knowing no mercy, " is followed by the additional
+native actor separator space at 65c65b, yielding "Knowing no mercy,  ".
+
+Crime categories are emitted in this fixed order, omitting absent categories:
+    devoured -> stole -> destroyed -> profaned/disturbed/prayed inside
+Their separators are:
+    one active category:  A
+    two:                  A and B
+    three:                A, B and C
+    four:                 A, B, C and D
+There is no Oxford comma. Category count comes from native event-vector
+presence, not from whether the category ultimately emits nonempty text.
+
+devoured (65c670..65c7ad):
+    vector size == 1, victim figure resolves: devoured {native_person_name}
+    vector size == 1, no victim figure:       devoured a {singular_RAW_creature}
+    vector size > 1:                          devoured our livestock
+    absent vector:                           omitted category
+The fallback uses aa3bd0(event race+0x2c, caste+0x30, plural=false).
+aa3bd0 has been extracted in impact-announcement-decompiled.txt; invalid race
+or an empty RAW name can yield an empty string, producing "devoured a ".
+The resolved-victim branch also calls a946e0 into an initialized empty
+buffer; an existing victim with has-name=false therefore emits "devoured "
+without a creature fallback (65c771..65c7ad).
+
+stole (65c7eb..65c9d0):
+    vector size == 1, matching written object: stole {English_written_title}
+    matching written title empty:             stole Untitled
+    vector size == 1, ordinary object:         stole a {complete_item_noun}
+    certain item kinds omit the inserted "a "; the finite mask is 0xa000c1
+    over item_type-0x30 in range 0..0x17 (65c884..65c8ab).
+    vector size > 1:                           stole our treasures
+    absent vector:                            omitted category
+Ordinary item construction delegates to a82c10 using event fields item kind
++0x28, subtype+0x2a, material type+0x2c, material index+0x30, artifact id+0x34.
+The complete a82c10 owner is saved for both images. Its unknown-kind branch
+at a88046 emits the literal "item"; written-object lookup failure falls
+through to this generic noun builder, not to an empty "stole " clause.
+The helper's 93 native type selectors and full underlying item description
+fields are already recorded in item-description-sources.tsv. No native
+lookup-failure path leaving a bare stole clause was established.
+
+destroyed (65ca02..65cc33):
+    vector size == 1 and site/building resolves:
+        append "destroyed ", then named building or finite building label.
+    vector size > 1: destroyed our homes
+    absent vector: omitted category
+    single event with missing site/building: empty category (not "destroyed")
+
+profaned (65cc65..65cec1):
+    vector size == 1 and site/building resolves:
+        event action+0x28 == 0 -> "profaned"
+        event action+0x28 == 1 -> "disturbed"
+        event action+0x28 == 2 -> "prayed inside"
+        other action -> no verb
+        append " ", then named building or finite building label.
+    vector size > 1: profaned our homes
+    absent vector: omitted category
+    single event with missing site/building: empty category
+
+Both building-kind tables are decoded in native-switches.tsv:
+    0 a mead hall; 1 a keep; 2 a temple; 3 a tower; 4 a market; 5 a tomb;
+    6 dungeon subtype; 7 an underworld spire; 8 a tavern; 9 a library;
+    10 a counting house; 11 a guildhall; 12 a tower; 13 a hospital.
+    kind outside 0..13 -> empty label.
+    dungeon subtype+0x130: 0 a dungeon; 1 the sewers; 2 the catacombs;
+    other subtype -> empty label.
+Named building text takes precedence over this kind switch.
+
+Thus empty native labels after an already appended verb are real branches:
+"destroyed ", "profaned ", "disturbed ", "prayed inside ". A missing action
+can emit a building label with no verb. Empty categories still receive the
+separator implied by their event-vector presence. A single empty category
+gives "Knowing no mercy, {actor} !" before whitespace normalization.
+
+3. Murders and kill counts
+-------------------------
+
+Known kill events are collected at 65c0b8..65c1b1 from
+figure+0x130 -> +0x30 -> event ids. Anonymous counts come from that kill-info
+object's race/caste/count vectors at +0x18, +0x30 and +0xa8, filtered with the
+native creature-flag helper 72850(..., flag=0x3a), summed at 65c1d3..65c208.
+No kill narrative is appended when both known vector and anonymous count
+are zero (65cf91..65cf9c).
+
+The subject prefix at 65d078/65d07f is:
+    This vile fiend
+    This bloodsucking fiend
+The bloodsucking selection derives from caste flags / curse flags, including
+figure+0x130 -> +0x48, and is independent of the following murder wording.
+
+When the known event vector contains exactly one entry (65d098..65d0aa):
+    This {vile|bloodsucking} fiend murdered {victim}!
+    This {vile|bloodsucking} fiend even murdered {victim}!
+"even " is emitted if any of the four crime vectors is nonempty. The direct
+murder branch only tests the known-event vector size; an additional anonymous
+kill count does not change its choice of sentence.
+Victim resolves from the event's victim id at +0x28 to a historical figure.
+    unrelated victim: {English_complete_person_name}
+    speaker-relative victim: my {singular_family_relation} {person_name}
+    missing victim figure: no victim text, yielding "murdered !" or
+                           "even murdered !" before normalization
+Family lookup uses bb37d0 and the relation term formatter 75a580.
+
+With any other known-event vector size, append (65d3d2..65d5c3):
+    This {vile|bloodsucking} fiend has killed {count} in {possessive} lust for murder{relatives_suffix}!
+    This {vile|bloodsucking} fiend has even killed {count} in {possessive} lust for murder{relatives_suffix}!
+"has even killed " is selected if any crime vector is nonempty.
+count is known-vector size plus anonymous count:
+    total == 1 -> somebody
+    other total -> 52e360 English cardinal (hyphens and magnitude words)
+Possessive follows target figure+0x6: sex 1 his; sex 0 her; other its.
+
+65d620..65d8c3 finds killed victims in the speaker's family-id list and groups
+them by family enum. If any groups exist, append:
+    , among them {relative_list}
+If there are none, append no relatives suffix.
+Each group is:
+    group count == 1 -> my {singular_family_relation}
+    group count > 1  -> {English_cardinal} of my {plural_family_relation}
+Multiple groups are emitted in reverse group insertion order with ", "
+between earlier groups and " and " before the last; one group has no joiner.
+The group count and cardinal are formatted independently of the total kills.
+All 72 finite singular/plural relation selections, plus native default,
+are recorded in family-relations.tsv. Wife uses wives without an additional
+suffix; child-ending relation kinds and grandchild append ren; all other
+kinds append s. Default is "no relationship" / "no relationships".
+
+4. A fiend who is the speaker's relative
+--------------------------------------
+
+If the target fiend is in the speaker's family-id list (65db27..65db6d):
+    [{speaker_name} pauses to regain {speaker_possessive} composure.]
+    It pains me all the more, for the foul villain {is|was once} my own {relation}{curse_suffix}.
+    Save us from this {horror|traitor}!
+
+speaker_name comes from a94030(speaker unit+0x8).
+speaker_possessive uses speaker unit+0x12e: 1 his; 0 her; other its.
+relation uses the identified family enum, with plural=false and article=false.
+Caste monster/transformation flags, curse object+0x160 or the figure's curse
+byte list (+0xc8 with count +0xd0) select "was once" or "is".
+curse_suffix is one of:
+    , now twisted into monstrosity
+    , now cursed
+    empty
+The same transformed/cursed state selects "horror"; ordinary relative
+selects "traitor". See 65dd46..65e1ce for complete conditions.
+The first sentence ends with the native sequence ".]", followed by two
+spaces and the next sentence. It must remain a complete translated clause.
+
+5. Material weakness
+--------------------
+
+65e218..65e502 selects a material pair from caste material vulnerability
+records (+0x4250..+0x4258) and curse-linked alternative caste records. Compare
+1000*numerator/denominator to the caste's base +0x508/+0x50c ratio; retain
+the selected native material type/index. If type stays -1, emit nothing.
+The vulnerability state selects one of:
+    It is said that {material} harms the creature.
+    Beware!  It it said that only {material} harms the creature.
+The second form's native typo is exactly "It it". It also appends:
+    Other arms may not cut so deeply.
+
+Material construction 65e562..65e7b0:
+    Optional historical-figure material owner: {English_person_name}'s
+    Material lookup 14add70(type,index):
+        material+0x520 prefix if nonempty, then a space,
+        material+0xb8 name string.
+    Missing material object: unknown material
+The historical-material owner range is type 0xdb..0x1a2. When owner exists
+but language-name valid flag+0x72 is false, the owner name is omitted while
+the literal "'s " is still appended (65e657..65e6b6).
+65e75f..65e78a appends material+0xb8 using its stored length, without an
+explicit nonempty guard; there is no separate native empty-material branch
+or fallback for a resolved material. The ordinary missing-object branch
+is explicitly "unknown material" at 65e776..65e783.
+
+6. Location lead-in
+-------------------
+
+690060 resolves site name with the shared English name builder, locates the
+site or related region, then chooses these mutually exclusive lead-ins:
+    current site -> We are in {site_name}.
+    known direction -> {site_name} is {distance_and_direction}.
+                       [You receive a detailed description.]
+    region available -> {site_name} is in {region_name}.
+                        region helper b94a40 includes unknown region fallback.
+    region unavailable -> I've heard of a place called .
+
+The last form is literal native control flow: 69064f appends only the prefix,
+690665 capitalizes the local site-name buffer, and 690670 appends the period.
+There is no append of that site-name buffer in this branch. Do not silently
+infer a name placeholder from the English wording. The direction branch
+uses 147c4a0, whose native distance/compass fields are already recorded in
+announcement-world-fields.tsv.
+
+With the native extra-facts flag, this owner collects eligible nearby facts
+and delegates selected facts to 68d170 at 690ae9. That separate recursive
+location-fact dispatcher is already represented in
+announcement-description-grammar.tsv (institutions, residents, evil/blessed
+places, wildlife, and complete native historical descriptions).
+
+7. Already shared versus missing source families
+-----------------------------------------------
+
+The pre-existing announcement-rumor-grammar.tsv contains the main threat
+openings, identity introductions and transformation sentence.
+announcement-description-grammar.tsv contains the ordinary site-location
+forms and separate extra-facts dispatcher. Neither file previously contained
+the delegated 65bfb0 crime, murder, grouped family loss, related-villain or
+material-vulnerability narrative. The missing location name branch above
+also differs from its pre-existing inferred production.
+
+Names, native item nouns, cardinal numbers, RAW species and material names
+are delegated complete typed fields. They are not arbitrary announcement
+prose slots. Source field selectors and every finite string-producing choice
+in the newly missing detail owner are recorded above and in its full .asm.

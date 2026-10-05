@@ -4,6 +4,20 @@ static std::optional<std::string> translate_dfhack_siren_announcement(std::strin
 std::optional<std::string> Overlay::translate_complete_announcement(
         std::string_view source, const std::vector<int> &source_colors,
         std::vector<int> &target_colors) const {
+    // Resolve native relationship fields before consulting the text cache.
+    // Two people called "cousin" can have different proven family paths.
+    // Re-enter with their private typed keys so both cache identity and
+    // grammar leaves retain the actual report's memory-derived captions.
+    std::vector<size_t> kinship_origins;
+    if (const auto native = native_announcement_kinship_source(source, &kinship_origins);
+            native && *native != source && kinship_origins.size() == native->size() &&
+            source_colors.size() == source.size() && !source.empty()) {
+        std::vector<int> native_colors;
+        native_colors.reserve(native->size());
+        for (const size_t origin : kinship_origins)
+            native_colors.push_back(source_colors[std::min(origin, source.size() - 1)]);
+        return translate_complete_announcement(*native, native_colors, target_colors);
+    }
     const std::string key(source);
     if (const auto found = announcement_translation_cache_.find(key);
             found != announcement_translation_cache_.end() &&
@@ -113,7 +127,14 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         std::vector<size_t> starts{0};
         for (size_t at = 1; at < source.size(); ++at) {
             if (!std::isspace(static_cast<unsigned char>(source[at]))) continue;
-            const char preceding = source[at - 1];
+            // Threat descriptions append a separate speaker action ending
+            // in "composure.]" before the next spoken sentence. The closing
+            // bracket belongs to that complete action; its internal period
+            // still supplies a candidate boundary. Both spans must resolve
+            // below, so punctuation inside a name cannot split a record.
+            size_t punctuation = at - 1;
+            if (source[punctuation] == ']' && punctuation) --punctuation;
+            const char preceding = source[punctuation];
             if (preceding != '.' && preceding != '!' && preceding != '?') continue;
             while (at < source.size() && std::isspace(static_cast<unsigned char>(source[at]))) ++at;
             if (at < source.size()) starts.push_back(at);

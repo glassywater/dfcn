@@ -628,7 +628,7 @@ sentence	{s} is very near.	{s1}近在咫尺。	$name	0x140690420..0x140690549 an
 sentence	{s} is {s}.	{s1}位于{s2}。	$name,$distance	0x140690420..0x140690549 and 0x140690df2..0x140690eaf; full 0x14147c4a0 direction/distance grammar from data/runtime/announcement-world-fields.tsv
 sentence	[You receive a detailed description.]	【你听到了一番详细的介绍。】		0x140690554; native bracketed notice appended after direction sentence
 sentence	{s} is in {s}.	{s1}位于{s2}。	$name,$name	0x1406905de+0x14069060f+0x140690628+0x140690670; region helper 0x140b94a40, including an unknown region
-sentence	I've heard of a place called {s}.	我听说过一个叫{s1}的地方。	$name	0x14069064f+0x140690665+0x140690670
+sentence	I've heard of a place called .	我听说过一个地方，但不知道它的名字。		0x14069062f..0x140690670; region lookup failed; only the local name buffer is capitalized, never appended; full native body in adventure-threat-rumors/reference-location-description.asm
 sentence	The surrounding area is called {s}.	周边地区叫做{s1}。	$name	0x140690d51+0x140690d81+0x140690ea5; 0x140689ce0 -> 0x140690b40
 
 # The search-location helper has one finite building-kind switch and an optional native here/there location.

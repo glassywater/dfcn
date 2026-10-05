@@ -171,6 +171,7 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         if (scope == "$name") return finish(translate_legends_name(input, false));
         if (scope == "$event") return finish(translate_legends_event(input, 0));
         if (scope == "$number") return finish(translate_announcement_number(input));
+        if (scope == "$kinship") return finish(native_announcement_kinship_target(input));
         if (scope == "$date") return finish(translate_announcement_date(input));
         if (scope == "$sphere") return finish(translate_deity_spheres(input));
         if (scope == "$distance") return finish(exact_literal_translation(

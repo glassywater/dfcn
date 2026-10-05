@@ -1,0 +1,281 @@
+family	singular_or_field	plural_or_state	placement_or_condition	source	line
+literal CE_DISPLAY_NAME	necromancer	necromancers	necromantic	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	148
+necromancer_raise_adjectives	night			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	2
+necromancer_raise_adjectives	risen			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	3
+necromancer_raise_adjectives	sunless			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	4
+necromancer_raise_adjectives	dark			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	5
+necromancer_raise_adjectives	pale			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	6
+necromancer_raise_adjectives	returned			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	7
+necromancer_raise_adjectives	hollow			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	8
+necromancer_raise_adjectives	cold			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	9
+necromancer_raise_adjectives	gaunt			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	10
+necromancer_raise_adjectives	doomed			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	11
+necromancer_raise_adjectives	death			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	12
+necromancer_raise_adjectives	empty			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	13
+necromancer_raise_adjectives	void			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	14
+necromancer_raise_adjectives	fallen			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	15
+necromancer_raise_adjectives	fell			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	16
+necromancer_raise_adjectives	cursed			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	17
+necromancer_raise_adjectives	damned			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	18
+necromancer_raise_adjectives	lost			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	19
+necromancer_raise_adjectives	ruined			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	20
+necromancer_raise_adjectives	dismal			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	21
+necromancer_raise_adjectives	fetid			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	22
+necromancer_raise_adjectives	rotten			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	23
+necromancer_raise_adjectives	putrid			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	24
+necromancer_raise_adjectives	corrupted			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	25
+necromancer_raise_adjectives	bitter			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	26
+necromancer_raise_adjectives	bleak			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	27
+necromancer_raise_adjectives	frozen			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	28
+necromancer_raise_adjectives	faded			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	29
+necromancer_raise_adjectives	faint			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	30
+necromancer_raise_adjectives	sallow			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	31
+necromancer_raise_adjectives	forlorn			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	32
+necromancer_raise_adjectives	grim			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	33
+necromancer_raise_adjectives	wasting			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	34
+necromancer_raise_nouns	one	ones		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	38
+necromancer_raise_nouns	corpse	corpses		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	39
+necromancer_raise_nouns	ghoul	ghouls		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	40
+necromancer_raise_nouns	zombie	zombies		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	41
+necromancer_raise_nouns	stalker	stalkers		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	42
+necromancer_raise_nouns	butcher	butchers		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	43
+necromancer_raise_nouns	hunter	hunters		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	44
+necromancer_raise_nouns	slayer	slayers		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	45
+ghoul_adjectives	blighted			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	49
+ghoul_adjectives	infected			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	50
+ghoul_adjectives	diseased			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	51
+ghoul_adjectives	poisoned			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	52
+ghoul_adjectives	tainted			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	53
+ghoul_adjectives	plague			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	54
+ghoul_nouns	ghoul	ghouls		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	58
+ghoul_nouns	thrall	thralls		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\secret.lua	59
+literal CE_DISPLAY_NAME	vampire	vampires	vampiric	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\curse.lua	91
+literal CE_DISPLAY_NAME	mummy	mummies	mummified	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\disturbance.lua	88
+mythical_adjectives.CAVERNS	cavern		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	3
+mythical_adjectives.CAVERNS	under		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	4
+mythical_adjectives.CAVERNS	deep		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	5
+mythical_adjectives.CAVERNS	below		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	6
+mythical_adjectives.CAVERNS	cave		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	7
+mythical_adjectives.CAVERNS	tunnel		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	8
+mythical_adjectives.CHAOS	chaos		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	11
+mythical_adjectives.CHAOS	of chaos		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	12
+mythical_adjectives.CHAOS	of change		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	13
+mythical_adjectives.CHAOS	maelstrom		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	14
+mythical_adjectives.DARKNESS	shadow		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	17
+mythical_adjectives.DARKNESS	of shadow		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	18
+mythical_adjectives.DARKNESS	dark		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	19
+mythical_adjectives.DARKNESS	of darkness		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	20
+mythical_adjectives.DEATH	death		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	23
+mythical_adjectives.DEATH	of death		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	24
+mythical_adjectives.DEATH	bone		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	25
+mythical_adjectives.DEATH	of bones		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	26
+mythical_adjectives.DEATH	grave		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	27
+mythical_adjectives.DEATH	of the grave		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	28
+mythical_adjectives.DREAMS	dream		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	31
+mythical_adjectives.DREAMS	of dreams		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	32
+mythical_adjectives.DREAMS	sleeping		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	33
+mythical_adjectives.DREAMS	of sleep		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	34
+mythical_adjectives.EARTH	earth		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	37
+mythical_adjectives.EARTH	of earth		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	38
+mythical_adjectives.EARTH	stone		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	39
+mythical_adjectives.EARTH	of stone		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	40
+mythical_adjectives.FIRE	fire		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	43
+mythical_adjectives.FIRE	of fire		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	44
+mythical_adjectives.FIRE	flame		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	45
+mythical_adjectives.FIRE	of flames		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	46
+mythical_adjectives.FIRE	inferno		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	47
+mythical_adjectives.JEWELS	gem		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	50
+mythical_adjectives.JEWELS	of gems		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	51
+mythical_adjectives.JEWELS	jewel		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	52
+mythical_adjectives.JEWELS	of jewels		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	53
+mythical_adjectives.JEWELS	crystal		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	54
+mythical_adjectives.JEWELS	of crystals		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	55
+mythical_adjectives.LIGHT	light		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	58
+mythical_adjectives.LIGHT	of light		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	59
+mythical_adjectives.LIGHT	bright		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	60
+mythical_adjectives.LIGHT	shining		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	61
+mythical_adjectives.LIGHTNING	storm		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	64
+mythical_adjectives.LIGHTNING	of storms		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	65
+mythical_adjectives.LIGHTNING	lightning		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	66
+mythical_adjectives.LIGHTNING	of lightning		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	67
+mythical_adjectives.METALS	metal		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	70
+mythical_adjectives.METALS	of metal		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	71
+mythical_adjectives.METALS	steel		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	72
+mythical_adjectives.METALS	of steel		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	73
+mythical_adjectives.METALS	iron		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	74
+mythical_adjectives.METALS	of iron		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	75
+mythical_adjectives.METALS	bronze		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	76
+mythical_adjectives.METALS	of bronze		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	77
+mythical_adjectives.METALS	golden		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	78
+mythical_adjectives.METALS	of gold		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	79
+mythical_adjectives.METALS	silver		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	80
+mythical_adjectives.METALS	of silver		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	81
+mythical_adjectives.MINERALS	crystal		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	85
+mythical_adjectives.MINERALS	of crystal		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	86
+mythical_adjectives.MINERALS	stone		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	87
+mythical_adjectives.MINERALS	of stone		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	88
+mythical_adjectives.MIST	shrouded		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	91
+mythical_adjectives.MIST	mist		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	92
+mythical_adjectives.MIST	of mist		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	93
+mythical_adjectives.MIST	fog		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	94
+mythical_adjectives.MIST	of fog		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	95
+mythical_adjectives.MIST	hidden		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	96
+mythical_adjectives.MOON	moon		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	99
+mythical_adjectives.MOON	of the moon		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	100
+mythical_adjectives.MOON	lunar		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	101
+mythical_adjectives.MOON	of the eclipse		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	102
+mythical_adjectives.MOON	crescent		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	103
+mythical_adjectives.MOUNTAINS	mountain		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	106
+mythical_adjectives.MOUNTAINS	of the mountain		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	107
+mythical_adjectives.MOUNTAINS	peak		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	108
+mythical_adjectives.MOUNTAINS	of the peak		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	109
+mythical_adjectives.MOUNTAINS	summit		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	110
+mythical_adjectives.MOUNTAINS	of the heights		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	111
+mythical_adjectives.MOUNTAINS	ridge		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	112
+mythical_adjectives.MUCK	muck		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	115
+mythical_adjectives.MUCK	mud		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	116
+mythical_adjectives.MUCK	of the mud		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	117
+mythical_adjectives.MUCK	swamp		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	118
+mythical_adjectives.MUCK	of the swamp		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	119
+mythical_adjectives.MUCK	marsh		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	120
+mythical_adjectives.MUCK	of the marsh		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	121
+mythical_adjectives.NIGHTMARES	dread		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	124
+mythical_adjectives.NIGHTMARES	of dread		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	125
+mythical_adjectives.NIGHTMARES	nightmare		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	126
+mythical_adjectives.NIGHTMARES	of nightmares		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	127
+mythical_adjectives.NIGHTMARES	fear		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	128
+mythical_adjectives.NIGHTMARES	of fear		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	129
+mythical_adjectives.NIGHTMARES	terror		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	130
+mythical_adjectives.NIGHTMARES	of terror		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	131
+mythical_adjectives.OCEANS	ocean		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	134
+mythical_adjectives.OCEANS	of the ocean		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	135
+mythical_adjectives.OCEANS	of oceans		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	136
+mythical_adjectives.OCEANS	sea		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	137
+mythical_adjectives.OCEANS	of the sea		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	138
+mythical_adjectives.OCEANS	of seas		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	139
+mythical_adjectives.OCEANS	tidal		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	140
+mythical_adjectives.OCEANS	of the tide		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	141
+mythical_adjectives.OCEANS	of tides		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	142
+mythical_adjectives.OCEANS	brine		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	143
+mythical_adjectives.OCEANS	of brine		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	144
+mythical_adjectives.OCEANS	foam		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	145
+mythical_adjectives.OCEANS	of foam		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	146
+mythical_adjectives.PLANTS	leaf		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	149
+mythical_adjectives.PLANTS	of leaves		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	150
+mythical_adjectives.PLANTS	verdant		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	151
+mythical_adjectives.PLANTS	grass		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	152
+mythical_adjectives.PLANTS	of grasses		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	153
+mythical_adjectives.SALT	salt		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	156
+mythical_adjectives.SALT	of salt		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	157
+mythical_adjectives.SKY	sky		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	160
+mythical_adjectives.SKY	of the sky		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	161
+mythical_adjectives.SKY	blue		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	162
+mythical_adjectives.SKY	cloud		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	163
+mythical_adjectives.SKY	of the clouds		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	164
+mythical_adjectives.SKY	of clouds		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	165
+mythical_adjectives.STARS	star		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	168
+mythical_adjectives.STARS	of the stars		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	169
+mythical_adjectives.STARS	of stars		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	170
+mythical_adjectives.STORMS	storm		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	173
+mythical_adjectives.STORMS	of the storm		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	174
+mythical_adjectives.STORMS	of storms		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	175
+mythical_adjectives.STORMS	tornado		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	176
+mythical_adjectives.STORMS	hurricane		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	177
+mythical_adjectives.STORMS	gale		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	178
+mythical_adjectives.STORMS	of the gale		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	179
+mythical_adjectives.STORMS	of gales		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	180
+mythical_adjectives.STORMS	rain		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	181
+mythical_adjectives.STORMS	of the rain		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	182
+mythical_adjectives.STORMS	of rains		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	183
+mythical_adjectives.SUN	sun		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	186
+mythical_adjectives.SUN	of the sun		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	187
+mythical_adjectives.SUN	day		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	188
+mythical_adjectives.SUN	bright		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	189
+mythical_adjectives.SUN	dawn		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	190
+mythical_adjectives.SUN	of the dawn		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	191
+mythical_adjectives.SUN	of dawn		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	192
+mythical_adjectives.SUN	noon		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	193
+mythical_adjectives.SUN	of the noon		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	194
+mythical_adjectives.SUN	of noon		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	195
+mythical_adjectives.SUN	morning		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	196
+mythical_adjectives.TREES	tree		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	199
+mythical_adjectives.TREES	of the trees		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	200
+mythical_adjectives.TREES	of trees		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	201
+mythical_adjectives.TREES	forest		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	202
+mythical_adjectives.TREES	of the forest		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	203
+mythical_adjectives.TREES	of forests		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	204
+mythical_adjectives.TREES	leaf		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	205
+mythical_adjectives.TREES	of leaves		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	206
+mythical_adjectives.TREES	bark		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	207
+mythical_adjectives.TREES	of bark		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	208
+mythical_adjectives.TREES	of branches		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	209
+mythical_adjectives.TREES	root		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	210
+mythical_adjectives.TREES	of root		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	211
+mythical_adjectives.VOLCANOS	volcano		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	214
+mythical_adjectives.VOLCANOS	of volcanoes		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	215
+mythical_adjectives.VOLCANOS	magma		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	216
+mythical_adjectives.VOLCANOS	of magma		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	217
+mythical_adjectives.VOLCANOS	lava		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	218
+mythical_adjectives.VOLCANOS	of lava		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	219
+mythical_adjectives.VOLCANOS	of eruptions		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	220
+mythical_adjectives.WATER	water		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	223
+mythical_adjectives.WATER	of the waters		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	224
+mythical_adjectives.WATER	of water		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	225
+mythical_adjectives.WATER	flowing		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	226
+mythical_adjectives.WATER	ice		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	227
+mythical_adjectives.WATER	of ice		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	228
+mythical_adjectives.WIND	wind		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	231
+mythical_adjectives.WIND	of the wind		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	232
+mythical_adjectives.WIND	of wind		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	233
+mythical_adjectives.WIND	tornado		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	234
+mythical_adjectives.WIND	hurricane		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	235
+mythical_adjectives.WIND	gale		prefix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	236
+mythical_adjectives.WIND	of the gale		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	237
+mythical_adjectives.WIND	of gales		suffix	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	238
+mythical_names.1	servant	servants		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	244
+mythical_names.1	follower	followers		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	245
+mythical_names.1	cultist	cultists		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	246
+mythical_names.1	worshipper	worshippers		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	247
+mythical_names.2	adept	adepts		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	250
+mythical_names.2	priest	priests		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	251
+mythical_names.2	cleric	clerics		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	252
+mythical_names.2	shaman	shamans		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	253
+mythical_names.3	lord	lords		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	256
+mythical_names.3	master	masters		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	257
+mythical_names.3	ancient	ancients		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	258
+mythical_names.3	elder	elders		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\interactions\mythical.lua	259
+cloud_adjs	cursed			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	3
+cloud_adjs	wicked			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	4
+cloud_adjs	evil			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	5
+cloud_adjs	creeping			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	6
+cloud_adjs	haunting			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	7
+cloud_adjs	abominable			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	8
+cloud_adjs	devilish			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	9
+cloud_adjs	fiendish			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	10
+cloud_adjs	foul			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	11
+cloud_adjs	heinous			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	12
+cloud_adjs	nefarious			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	13
+cloud_adjs	profane			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	14
+cloud_adjs	vile			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	15
+cloud_adjs	accursed			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	16
+cloud_adjs	blighted			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	17
+cloud_adjs	execrable			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	18
+cloud_adjs	infernal			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	19
+cloud_adjs	unholy			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	20
+cloud_adjs	eerie			D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	21
+cloud_names	mist	GAS		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	26
+cloud_names	dust	SOLID_POWDER		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	27
+cloud_names	ash	SOLID_POWDER		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	28
+cloud_names	soot	SOLID_POWDER		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	29
+cloud_names	fog	GAS		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	30
+cloud_names	gloom	GAS		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	31
+cloud_names	murk	GAS		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	32
+cloud_names	smoke	GAS		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	33
+cloud_names	vapor	LIQUID		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	34
+cloud_zombie_names	husk	husks		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	38
+cloud_zombie_names	zombie	zombies		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	39
+cloud_zombie_names	thrall	thralls		D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\evil.lua	40
+literal CE_DISPLAY_NAME	necromancer	necromancers	necromantic	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\interaction examples\interaction_secret.txt	25
+literal CE_DISPLAY_NAME	faded hunter	faded hunters	faded hunter	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\interaction examples\interaction_secret.txt	99
+literal CE_DISPLAY_NAME	mummy	mummies	mummified	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\interaction examples\interaction_disturbance.txt	22
+literal CE_DISPLAY_NAME	vampire	vampires	vampiric	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\interaction examples\interaction_vampire.txt	42

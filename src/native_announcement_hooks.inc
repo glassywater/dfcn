@@ -19,6 +19,7 @@ using NativeAnnouncementLogRenderFn = void (*)(uint64_t, uint64_t, uint64_t, uin
 static NativeEntryHook g_native_announcement_log_entry;
 static NativeAnnouncementLogRenderFn g_real_native_announcement_log = nullptr;
 static std::atomic_uint g_active_native_announcement_callbacks{0};
+#include "native_announcement_kinship.inc"
 
 static void capture_native_announcement_log(uint64_t owner, uint64_t second,
         uint64_t third, uint64_t fourth) {
@@ -89,6 +90,7 @@ static void capture_native_announcement(void *manager, const NativeString *sourc
 static bool native_announcement_hook_active() {
     return g_native_announcement_entry.active() || g_native_speech_transform_entry.active() ||
         g_native_announcement_log_entry.active() ||
+        native_announcement_kinship_hook_active() ||
         g_active_native_announcement_callbacks.load(std::memory_order_acquire) != 0;
 }
 static void uninstall_native_announcement_hook() {
@@ -96,18 +98,20 @@ static void uninstall_native_announcement_hook() {
     const bool speech = g_native_speech_transform_entry.uninstall("Native speech source capture");
     const bool announcement = g_native_announcement_entry.uninstall("Native announcement capture");
     const bool log = g_native_announcement_log_entry.uninstall("Native announcement log ownership");
+    const bool kinship = uninstall_native_announcement_kinship_hook();
     if (speech) g_real_native_speech_transform = nullptr;
     if (announcement) g_real_native_announcement = nullptr;
     if (log) {
         g_real_native_announcement_log = nullptr;
         remember_native_announcement_log_owner(0);
     }
-    if (speech && announcement && log) clear_native_announcement_sources();
+    if (speech && announcement && log && kinship) clear_native_announcement_sources();
 }
 static bool install_native_announcement_hook() {
     if (g_native_announcement_entry.installed && g_native_speech_transform_entry.installed
 #ifdef _WIN32
             && g_native_announcement_log_entry.installed
+            && g_native_threat_details_entry.installed && g_native_threat_family_calls.installed
 #endif
         ) return true;
     if (native_announcement_hook_active()) {
@@ -154,6 +158,10 @@ static bool install_native_announcement_hook() {
             uninstall_native_announcement_hook();
             return false;
         }
+    }
+    if (!install_native_announcement_kinship_hook()) {
+        uninstall_native_announcement_hook();
+        return false;
     }
     log_line("INFO", "Enabled complete native announcement source capture");
     return true;

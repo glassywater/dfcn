@@ -1,5 +1,6 @@
 // Borrowed native fields only. Layouts come from the same generated ABI
 // declarations as historical records; no per-host announcement algorithm.
+static void remember_native_announcement_kinship_parent(uintptr_t parent);
 static bool native_announcement_display_tail(std::vector<uintptr_t> &records) {
     NativeBorrowedVector<uintptr_t> native;
     if (!native_history_read_vector(native_history_global(0x23d14f0 + 0x112378), native))
@@ -74,6 +75,7 @@ static std::vector<NativeAnnouncementParagraph> native_owned_announcement_paragr
             int32_t speaker = -1;
             if (!native_history_copy_string(native_history_object_field(parent,
                     "report", 8, 32), paragraph.source)) return {};
+            remember_native_announcement_kinship_parent(parent);
             if (center_non_speech) {
                 if (!native_history_copy(native_history_object_field(parent,
                         "report", 0x30), report_flags) ||

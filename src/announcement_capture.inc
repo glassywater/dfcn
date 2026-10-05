@@ -107,20 +107,31 @@ static uint64_t g_native_announcement_history_query_epoch = 0;
 // Native rich-text controls have no visible letters. Normalize only the
 // controls understood by the game's paragraph renderer; bracketed names or
 // unknown tags remain source text. This key also joins native wrap spaces.
-static std::string native_announcement_display_source(std::string_view source) {
+static std::string native_announcement_display_source(std::string_view source,
+        std::vector<size_t> *origins = nullptr) {
     std::string result;
+    if (origins) origins->clear();
     bool pending_space = false;
-    const auto append = [&](unsigned char ch) {
-        if (std::isspace(ch)) { pending_space = !result.empty(); return; }
-        if (pending_space) result.push_back(' ');
+    size_t pending_origin = 0;
+    const auto append = [&](unsigned char ch, size_t origin) {
+        if (std::isspace(ch)) {
+            if (!pending_space) pending_origin = origin;
+            pending_space = !result.empty();
+            return;
+        }
+        if (pending_space) {
+            result.push_back(' ');
+            if (origins) origins->push_back(pending_origin);
+        }
         pending_space = false;
         result.push_back(static_cast<char>(ch));
+        if (origins) origins->push_back(origin);
     };
     for (size_t at = 0; at < source.size();) {
         if (at + 1 < source.size() &&
                 ((source[at] == '[' && source[at + 1] == '[') ||
                  (source[at] == ']' && source[at + 1] == ']'))) {
-            append(source[at]);
+            append(source[at], at);
             at += 2;
             continue;
         }
@@ -129,7 +140,7 @@ static std::string native_announcement_display_source(std::string_view source) {
             if (end != std::string_view::npos) {
                 const auto tag = source.substr(at + 1, end - at - 1);
                 if (tag == "B" || tag == "P") {
-                    append(' ');
+                    append(' ', at);
                     at = end + 1;
                     continue;
                 }
@@ -145,7 +156,8 @@ static std::string native_announcement_display_source(std::string_view source) {
                 }
             }
         }
-        append(source[at++]);
+        append(source[at], at);
+        ++at;
     }
     return result;
 }
@@ -266,6 +278,13 @@ static std::deque<NativeAnnouncementSource> g_native_announcement_sources;
 static uintptr_t g_native_announcement_log_owner = 0;
 static uint64_t g_native_announcement_log_epoch = 0;
 struct NativeSpeechSource { std::string rendered, original; };
+// Announcement kinship fields are bound to the actual speaker and relatives
+// in native memory. The adapter reuses the character sheet's relation policy
+// and returns only owned fields; its keys never enter the game-owned text.
+static std::optional<std::string> native_announcement_kinship_source(
+    std::string_view source, std::vector<size_t> *origins = nullptr);
+static std::optional<std::string> native_announcement_kinship_target(std::string_view key);
+static void remember_native_announcement_kinship_parent(uintptr_t parent);
 static std::deque<NativeSpeechSource> g_native_speech_sources;
 
 static void remember_native_announcement_log_owner(uintptr_t owner) {

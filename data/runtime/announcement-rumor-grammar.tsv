@@ -123,9 +123,43 @@ rumor-event	A vile monster from the bowels of the earth has been preying on our 
 rumor-event	A beast from underground has been assailing us.	有头野兽从地下而来，一直袭击我们。		0x14068865f
 rumor-event	At times, creeping things slither out from below ground.	时不时会有爬行的东西从地下钻出来。		0x140688668
 rumor-event	A creature of the night has our people cowering in fear.	一只夜行生物把我们的族人吓得瑟瑟发抖。		0x14068867e
-rumor-identity	{s} the {s}	{s2}{s1}	$person,$term	0x14068879f..0x140688dae
+# The target's English name is followed by an optional RAW caste and an
+# independently selected curse/occupation/office. The caste is emitted only
+# when its race differs from the speaker's; an office can own a site/entity.
+# Slave and Prisoner replace the occupation, whereas a visible curse title
+# takes precedence over that entire role selection. Empty personal names
+# retain the native "the" before whichever descriptor remains.
+rumor-identity	{s} the {s}	{s2}{s1}	$person,rumor-identity-descriptor	0x14068879f..0x140688dae; name plus independently constructed caste/role fields
+rumor-identity	the {s}	{s1}	rumor-identity-descriptor	0x14068879f;0x1406887e2/0x140688927/0x140688986; empty name plus descriptor article
 rumor-identity	{s}	{s1}	$unit	0x14068879f..0x140688dae
-rumor-identity	{s}	{s1}	$person	0x14068879f..0x140688dae
+rumor-identity	{s}	{s1}	$person	0x14068879f..0x140688dae; omitted caste and profession 97/102
+rumor-identity-descriptor	{s} {s}	{s1}{s2}	$creature,rumor-identity-role	0x1406887e2..0x1406888fa;0x140688927..0x140688d5f; different race then curse/occupation/office
+rumor-identity-descriptor	{s}	{s1}	$creature	0x1406887e2..0x1406888fa;0x14068896f..0x140688980; caste only with profession 97/102
+rumor-identity-descriptor	{s}	{s1}	rumor-identity-role	0x1406887d6..0x1406887dc;0x140688927..0x140688d5f; speaker and target share race
+rumor-identity-role	Slave	奴隶		0x140688b3a..0x140688c11; slave reference replaces occupation
+rumor-identity-role	Prisoner	囚犯		0x140688c11..0x140688d4a; prisoner reference replaces occupation including Slave
+rumor-identity-role	{s}	{s1}	$creature	0x14068891e..0x14068896a; stock CE_DISPLAY_NAME curse titles share complete undead/cloud/mythical creature grammar
+rumor-identity-role	{s}	{s1}	$office	0x1406889ef..0x140688af9; native profession, gendered office and optional site/entity territory
+rumor-identity-role	{s}	{s1}	$term	0x14068891e..0x14068896a; visible curse title bypasses profession and office selection
+# The native append keeps its separator when a RAW caste, visible curse or
+# profession/office field is empty. Own the pre-period space in the complete
+# introduction, outside its nonempty identity capture.
+rumor-event	Seek this place if you wish to confront {s} the .	想对付{s1}，就去找这个地方。	$person	0x140688726;0x1406887e2/0x140688927/0x140688986..0x140688dae; empty descriptor after named target
+rumor-event	This insidious evil is {s} the .	这个阴险的恶徒就是{s1}。	$person	0x140688735;0x1406887e2/0x140688927/0x140688986..0x140688dae; empty descriptor after named target
+rumor-event	Seek this place if you hunt {s} the .	想猎杀{s1}，就去找这个地方。	$person	0x14068874e;0x1406887e2/0x140688927/0x140688986..0x140688dae; empty descriptor after named target
+rumor-event	The creature is {s} the .	这只生物就是{s1}。	$person	0x14068875d;0x1406887e2/0x140688927/0x140688986..0x140688dae; empty descriptor after named target
+rumor-event	Seek this place if you wish to confront {s} .	想对付{s1}，就去找这个地方。	rumor-identity	0x140688726;0x140688937/0x14068898e..0x140688dae; caste followed by empty role
+rumor-event	This insidious evil is {s} .	这个阴险的恶徒就是{s1}。	rumor-identity	0x140688735;0x140688937/0x14068898e..0x140688dae; caste followed by empty role
+rumor-event	Seek this place if you hunt {s} .	想猎杀{s1}，就去找这个地方。	rumor-identity	0x14068874e;0x140688937/0x14068898e..0x140688dae; caste followed by empty role
+rumor-event	The creature is {s} .	这只生物就是{s1}。	rumor-identity	0x14068875d;0x140688937/0x14068898e..0x140688dae; caste followed by empty role
+rumor-event	Seek this place if you wish to confront the .	想对付这个身份不明的恶徒，就去找这个地方。		0x140688726;0x14068879f..0x140688dae; empty name and descriptor
+rumor-event	This insidious evil is the .	这个阴险的恶徒身份不明。		0x140688735;0x14068879f..0x140688dae; empty name and descriptor
+rumor-event	Seek this place if you hunt the .	想猎杀这只身份不明的生物，就去找这个地方。		0x14068874e;0x14068879f..0x140688dae; empty name and descriptor
+rumor-event	The creature is the .	这只生物身份不明。		0x14068875d;0x14068879f..0x140688dae; empty name and descriptor
+rumor-event	Seek this place if you wish to confront .	想对付这个身份不明的恶徒，就去找这个地方。		0x140688726;0x14068879f;0x140688976/0x140688980..0x140688dae; empty name and omitted descriptor
+rumor-event	This insidious evil is .	这个阴险的恶徒身份不明。		0x140688735;0x14068879f;0x140688976/0x140688980..0x140688dae; empty name and omitted descriptor
+rumor-event	Seek this place if you hunt .	想猎杀这只身份不明的生物，就去找这个地方。		0x14068874e;0x14068879f;0x140688976/0x140688980..0x140688dae; empty name and omitted descriptor
+rumor-event	The creature is .	这只生物身份不明。		0x14068875d;0x14068879f;0x140688976/0x140688980..0x140688dae; empty name and omitted descriptor
 rumor-event	Seek this place if you wish to confront {s}.	想对付{s1}，就去找这个地方。	rumor-identity	0x140688726..0x140688dae
 rumor-event	This insidious evil is {s}.	这个阴险的恶徒就是{s1}。	rumor-identity	0x140688735..0x140688dae
 rumor-event	Seek this place if you hunt {s}.	想猎杀{s1}，就去找这个地方。	rumor-identity	0x14068874e..0x140688dae
@@ -155,6 +189,110 @@ rumor-event	The army of {s} is marching here!	{s1}的军队正向这里进军！
 rumor-event	The army of {s} is marching here!	{s1}的军队正向这里进军！	$name	0x1406897af..0x140689887
 rumor-event	The army of {s} is marching on {s}!	{s1}的军队正向{s2}进军！	rumor-person,$name	0x1406897af..0x140689887
 rumor-event	The army of {s} is marching on {s}!	{s1}的军队正向{s2}进军！	$name,$name	0x1406897af..0x140689887
+
+# Delegated threat history: Steam 0x14065bfb0..0x14065e928 and classic
+# 0x1406599d0..0x14065c348. These clauses are appended to the same speech
+# record as the threat and location above. Full native bodies, literal
+# operands and branch targets are in data/extracted/adventure-threat-rumors.
+sentence	Knowing no mercy, {s} {s}!	{s1}毫不留情，{s2}！	threat-name,threat-crimes	0x14065c4ea..0x14065cef2
+threat-name	{s}	{s1}	$person	0x14065c4fa..0x14065c65b; native English name 0x140a946e0 or translated native name string
+threat-name	{s}	{s1}	$name	0x14065c4fa..0x14065c65b; unnamed-language English generated name
+threat-crimes	{s}, {s}	{s1}、{s2}	threat-crime,threat-crimes	0x14065c7bf/0x14065c9dc/0x14065cc3f/0x14065ceca; three or four crime categories
+threat-crimes	{s} and {s}	{s1}，还{s2}	threat-crime,threat-crime	0x14065c7d6/0x14065c9f3/0x14065cc56/0x14065cedd; final two crime categories
+threat-crimes	{s}	{s1}	threat-crime	0x14065c670..0x14065ceec; a single crime category
+threat-crime	devoured {s}	吞食了{s1}	threat-livestock	0x14065c6af..0x14065c798; single devoured creature
+threat-crime	devoured our livestock	吞食了我们的牲畜		0x14065c79e; more than one devoured creature
+threat-livestock	{s}	{s1}	$person	0x14065c6f1; identified historical figure, English name from 0x140a946e0
+threat-livestock	a {s}	一只{s1}	$creature	0x14065c71b..0x14065c783; unnamed victim, caste name from 0x140aa3bd0
+threat-crime	stole {s}	偷走了{s1}	threat-stolen-item	0x14065c830..0x14065c9bb; single item or named artifact
+threat-crime	stole our treasures	偷走了我们的宝物		0x14065c9c1; more than one stolen item
+threat-stolen-item	{s}	{s1}	$book	0x14065c98a/0x14065c99c; named artifact or Untitled written artifact
+threat-stolen-item	{s}	{s1}	$memorial-item	0x14065c89c..0x14065c91e; complete ordinary item name from 0x140a82c10
+threat-crime	destroyed {s}	毁坏了{s1}	threat-building	0x14065ca6a..0x14065cc1c; single named or unnamed building
+threat-crime	destroyed our homes	毁坏了我们的家园		0x14065cc24; more than one destroyed building
+threat-crime	profaned {s}	亵渎了{s1}	threat-building	0x14065cce9..0x14065cec1; single building, subtype 0
+threat-crime	disturbed {s}	扰乱了{s1}	threat-building	0x14065cce0..0x14065cec1; single building, subtype 1
+threat-crime	prayed inside {s}	在{s1}中祈祷	threat-building	0x14065ccd7..0x14065cec1; single building, subtype 2
+threat-crime	profaned our homes	亵渎了我们的家园		0x14065ceb2; more than one incident, all subtypes share this wording
+threat-building	{s}	{s1}	$name	0x14065caa4/0x14065cd35; complete native building name from 0x140a946e0
+threat-building	a counting house	一座账房		0x14065caef/0x14065cd7d
+threat-building	a hospital	一所医院		0x14065cb03/0x14065cd91
+threat-building	a guildhall	一座行会大厅		0x14065cb17/0x14065cda5
+threat-building	a mead hall	一座蜜酒大厅		0x14065cb2b/0x14065cdb9
+threat-building	a keep	一座城堡主楼		0x14065cb3f/0x14065cdcd
+threat-building	a temple	一座神殿		0x14065cb53/0x14065cde1
+threat-building	a library	一座图书馆		0x14065cb67/0x14065cdf5
+threat-building	a tavern	一间酒馆		0x14065cb7b/0x14065ce09
+threat-building	a market	一处市场		0x14065cb8f/0x14065ce1d
+threat-building	a tomb	一座陵墓		0x14065cba3/0x14065ce31
+threat-building	an underworld spire	一座地下世界尖塔		0x14065cbb4/0x14065ce42
+threat-building	the catacombs	地下墓穴		0x14065cbda/0x14065ce68
+threat-building	the sewers	下水道		0x14065cbeb/0x14065ce79
+threat-building	a dungeon	一座地牢		0x14065cbfc/0x14065ce8a
+threat-building	a tower	一座高塔		0x14065cc0d/0x14065ce9b
+sentence	This {s} fiend {s}!	这个{s1}恶徒{s2}！	threat-fiend,threat-killing	0x14065d078..0x14065da06; fiend type, crime and independent victim-family list
+threat-fiend	vile	卑劣的		0x14065d078
+threat-fiend	bloodsucking	吸血的		0x14065d07f; vampire flags select this wording
+threat-killing	murdered {s}	杀害了{s1}	threat-victim	0x14065d10a..0x14065d38e; a single identified victim
+threat-killing	even murdered {s}	甚至杀害了{s1}	threat-victim	0x14065d0f5..0x14065d38e; other crime categories also present
+threat-victim	my {s} {s}	我的{s1}{s2}	$kinship,$person	0x14065d268..0x14065d2e9; victim is related to the speaker
+threat-victim	{s}	{s1}	$person	0x14065d2b2..0x14065d2e9; complete native victim name from 0x140a946e0
+threat-victim	{s}	{s1}	$kinship	0x14065d268..0x14065d2e9; related unnamed victim retains the native family buffer, resolved from actual HF links
+threat-killing	has killed {s} in {s} lust for murder	{s2}嗜杀成性，已经杀害了{s1}	threat-kill-count,threat-possessive	0x14065d3d2..0x14065d5be
+threat-killing	has even killed {s} in {s} lust for murder	{s2}嗜杀成性，甚至杀害了{s1}	threat-kill-count,threat-possessive	0x14065d3e9..0x14065d5be
+threat-killing	has killed {s} in {s} lust for murder, among them {s}	{s2}嗜杀成性，已经杀害了{s1}，其中包括{s3}	threat-kill-count,threat-possessive,threat-family-list	0x14065d3d2..0x14065da2d
+threat-killing	has even killed {s} in {s} lust for murder, among them {s}	{s2}嗜杀成性，甚至杀害了{s1}，其中包括{s3}	threat-kill-count,threat-possessive,threat-family-list	0x14065d3e9..0x14065da2d
+threat-kill-count	somebody	一个人		0x14065d435; a single victim without an identifiable historical figure
+threat-kill-count	{s}	{s1}人	$number	0x14065d45a; complete English cardinal from 0x14052e360
+threat-possessive	his	他		0x14065d4d8..0x14065d53a
+threat-possessive	her	她		0x14065d691..0x14065d6f3
+threat-possessive	its	它		0x14065d729..0x14065d78e
+threat-family-list	{s}, {s}	{s1}、{s2}	threat-family-group,threat-family-list	0x14065d9b2; more than two relationship groups
+threat-family-list	{s} and {s}	{s1}和{s2}	threat-family-group,threat-family-group	0x14065da1b; final two relationship groups
+threat-family-list	{s}	{s1}	threat-family-group	0x14065d902..0x14065d9c5; a single relationship group
+threat-family-group	{s}	{s1}	$kinship	0x14065d919..0x14065d97e; actual victim HF links use the existing social kinship resolver
+# Every native relationship enum and its plural is recorded in family-relations.tsv.
+sentence	[{s} pauses to regain {s} composure.]	【{s1}稍作停顿，{s2}正努力恢复镇定。】	$person,threat-possessive	0x14065db79..0x14065dd22; complete bracketed action, period precedes closing bracket
+sentence	[ pauses to regain {s} composure.]	【{s1}稍作停顿，努力恢复镇定。】	threat-possessive	0x14065db88..0x14065dd22 ->0x140a94030; speaker name has_name=false
+sentence	It pains me all the more, for the foul villain is my own {s}.	更让我痛心的是，这个恶徒竟是我的{s1}。	$kinship	0x14065dfa4..0x14065e0da; relationship, no curse suffix
+sentence	It pains me all the more, for the foul villain was once my own {s}.	更让我痛心的是，这个恶徒曾是我的{s1}。	$kinship	0x14065df96..0x14065e0da; relationship, no curse suffix
+sentence	It pains me all the more, for the foul villain is my own {s}, now twisted into monstrosity.	更让我痛心的是，这个恶徒竟是我的{s1}，如今却已扭曲成怪物。	$kinship	0x14065dfa4..0x14065e08f
+sentence	It pains me all the more, for the foul villain was once my own {s}, now twisted into monstrosity.	更让我痛心的是，这个恶徒曾是我的{s1}，如今却已扭曲成怪物。	$kinship	0x14065df96..0x14065e08f
+sentence	It pains me all the more, for the foul villain is my own {s}, now cursed.	更让我痛心的是，这个恶徒竟是我的{s1}，如今已遭到诅咒。	$kinship	0x14065dfa4..0x14065e0c5
+sentence	It pains me all the more, for the foul villain was once my own {s}, now cursed.	更让我痛心的是，这个恶徒曾是我的{s1}，如今已遭到诅咒。	$kinship	0x14065df96..0x14065e0c5
+sentence	Save us from this horror!	救救我们，消灭这个怪物吧！		0x14065e0ef..0x14065e1a0
+sentence	Save us from this traitor!	救救我们，消灭这个叛徒吧！		0x14065e0ef..0x14065e1af
+sentence	It is said that {s} harms the creature.	据说{s1}能伤到这只生物。	threat-material	0x14065e52e..0x14065e7bb
+sentence	Beware! It it said that only {s} harms the creature.	当心！据说只有{s1}能伤到这只生物。	threat-material	0x14065e51f..0x14065e7bb; native wording contains It it
+sentence	Other arms may not cut so deeply.	其他武器可能伤不了它这么深。		0x14065e7d5
+threat-material	unknown material	未知材料		0x14065e77c; native invalid material type
+threat-material	{s}	{s1}	$memorial-material	0x14065e548..0x14065e77c; complete material name with optional historical-figure possessive
+threat-material	{s}'s {s}	{s1}的{s2}	$person,threat-material	0x14065e655..0x14065e77c; named historical-figure material owner, including unknown-material fallback
+threat-material	's {s}	无名者的{s1}	threat-material	0x14065e655..0x14065e77c; existing owner with empty native name still appends possessive
+
+# Native dangling fields and empty crime slots are actual default branches,
+# not unreviewed text. Keep them local to this complete threat construction.
+sentence	This {s} fiend murdered !	这个{s1}恶徒杀害了某个人！	threat-fiend	0x14065d182/0x14065d185 ->0x14065d9f6; missing victim
+sentence	This {s} fiend even murdered !	这个{s1}恶徒甚至杀害了某个人！	threat-fiend	0x14065d182/0x14065d185 ->0x14065d9f6; missing victim and other crimes
+sentence	Knowing no mercy, {s} {s} !	{s1}毫不留情，{s2}！	threat-name,threat-crimes	0x14065c670..0x14065cef2; final native crime has dangling field or is empty
+sentence	Knowing no mercy, {s} !	{s1}毫不留情地作恶，具体罪行不明！	threat-name	0x14065ca59/0x14065cc65/0x14065cec1; one empty building crime
+sentence	Knowing no mercy, {s}!	这个恶徒毫不留情，{s1}！	threat-crimes	0x14065c61f..0x14065cef2 ->0x140a946e0; empty first name and has_name=false
+sentence	Knowing no mercy, {s} !	这个恶徒毫不留情，{s1}！	threat-crimes	0x14065c61f..0x14065cef2; nameless actor and a dangling or empty final crime
+sentence	Knowing no mercy, !	这个恶徒毫不留情地作恶，具体罪行不明！		0x14065c61f..0x14065cef2; nameless actor and an empty building crime
+threat-crimes	{s} , {s}	{s1}、{s2}	threat-crime,threat-crimes	0x14065caf4..0x14065cec1; dangling building field before retained comma
+threat-crimes	{s} and	{s1}，还犯下了罪行（细节不明）	threat-crime	0x14065cc50..0x14065cef2; empty final building crime
+threat-crimes	{s} , and	{s1}，还犯下了两项罪行（细节不明）	threat-crime	0x14065c7bf..0x14065cef2; two empty final building crimes
+threat-crimes	{s}, and	{s1}，还犯下了两项罪行（细节不明）	threat-crime	0x14065c7bf..0x14065cef2; two empty final building crimes
+threat-crimes	, {s}	犯下了罪行（细节不明）、{s1}	threat-crimes	0x14065c7bf..0x14065cef2; empty earlier crime retains native comma
+threat-crimes	and {s}	犯下了罪行（细节不明），并{s1}	threat-crime	0x14065cc56/0x14065cedd; empty first of two remaining crimes
+threat-crimes	and	犯下了两项罪行（细节不明）		0x14065cc56/0x14065cedd; both remaining building crimes empty
+threat-crime	devoured a	吞食了一只身份不明的生物		0x14065c71b..0x14065c783; caste helper returned empty for invalid race
+threat-crime	devoured	吞食了身份不明的生物		0x14065c6f1..0x14065c796 ->0x140a946e0; historical figure exists but has_name=false
+threat-crime	destroyed	毁坏了建筑（名称不明）		0x14065cab9..0x14065cc1c; unknown building kind or dungeon subtype
+threat-crime	profaned	亵渎了建筑（名称不明）		0x14065cd5b..0x14065cec1; unknown building kind or dungeon subtype
+threat-crime	disturbed	扰乱了建筑（名称不明）		0x14065cd5b..0x14065cec1; unknown building kind or dungeon subtype
+threat-crime	prayed inside	在一座建筑中祈祷（名称不明）		0x14065cd5b..0x14065cec1; unknown building kind or dungeon subtype
+threat-crime	{s}	犯下了涉及{s1}的罪行	threat-building	0x14065ccd2..0x14065cec1; unsupported building action leaves only the building noun
 
 # World-map site history is produced by a separate rumor formatter. Its two
 # native jump tables select 13 of the 26 rumor types; speech wording above is
