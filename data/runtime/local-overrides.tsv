@@ -2480,7 +2480,7 @@ NW	西北	w
 SE	东南	w
 SW	西南	w
 # Adventure compass captions are lookup-only aliases, scoped to the native
-# bearing panel so single-letter directions never replace keyboard labels.
+# bearing panel so directions and badges never replace unrelated labels.
 Adventure compass: N	北
 Adventure compass: NNE	北东北
 Adventure compass: NE	东北
@@ -2497,6 +2497,8 @@ Adventure compass: W	西
 Adventure compass: WNW	西西北
 Adventure compass: NW	西北
 Adventure compass: NNW	北西北
+Adventure compass: Gui	向导
+Adventure compass: Qst	任务
 # Complete compass-popup productions from native Steam 0x7f5490..0x7f5837.
 # Classic emits the same productions at 0x7f2d10..0x7f30b7.
 # Reuse the existing 40 eight-bearing distance fields in announcement-world-fields.tsv.

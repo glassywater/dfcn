@@ -81765,8 +81765,10 @@ Add snow to the arena.	向竞技场中添加雪。	l
 Adventure action: Spit	吐唾沫	l
 Adventure compass: ENE	东东北
 Adventure compass: ESE	东东南
+Adventure compass: Gui	向导
 Adventure compass: NNE	北东北
 Adventure compass: NNW	北西北
+Adventure compass: Qst	任务
 Adventure compass: SSE	南东南
 Adventure compass: SSW	南西南
 Adventure compass: WNW	西西北
