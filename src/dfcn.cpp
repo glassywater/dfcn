@@ -21668,6 +21668,10 @@ std::vector<Match> Overlay::find_matches(int only_y,
     // mask can consume the title and the individual Specify captions.
     const auto workshop_task_detail = capture_workshop_material_fields(screen_rows, true);
     append_workshop_material_translations(workshop_task_detail, screen_rows, result, only_y);
+    // The selector owns its complete heading and stock-name column before
+    // item/title readers can consume a word and invalidate its live rows.
+    const auto workshop_materials = capture_workshop_material_fields(screen_rows);
+    append_workshop_material_translations(workshop_materials, screen_rows, result, only_y);
     // A floating recipe owns its complete native fields before toolbar,
     // map and item readers can consume the headings or individual nouns.
     const auto workshop_recipe = capture_workshop_recipe_card(screen_rows);
@@ -21932,8 +21936,6 @@ std::vector<Match> Overlay::find_matches(int only_y,
     append_fortress_stockpile_settings(screen_rows, result, only_y);
     const auto trade_request_rows = capture_fortress_trade_request_rows();
     const auto workshop_choices = capture_workshop_task_rows(screen_rows);
-    const auto workshop_materials = capture_workshop_material_fields(screen_rows);
-    append_workshop_material_translations(workshop_materials, screen_rows, result, only_y);
     for (const auto &choice : workshop_choices)
         append_workshop_task_translations(choice, screen_rows, result, only_y);
 
