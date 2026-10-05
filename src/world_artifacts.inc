@@ -1,7 +1,7 @@
-// World-map artifacts are two-line clickable records, not read-only site
-// facts. The first line is an item/name; the second is its last known holder
-// or location. Their closed native row skin excludes the scrollbar and owns
-// the hitbox. Physical source spans stay separate from the centered output.
+// World-map artifacts and missing citizens share two-line clickable records.
+// The first line is an item/name or figure identity; the second is its last
+// known holder or location. Their closed native row skin excludes the scrollbar
+// and owns the hitbox. Physical source spans stay separate from the output.
 static bool world_artifact_status(std::string_view source) {
     source = trim_view(source);
     return source.starts_with("Last held by ") || source.starts_with("Last in ") ||
@@ -86,6 +86,15 @@ void Overlay::append_world_artifact_rows(std::vector<std::string> &rows,
                     // Native Linux 53.16 uses resize at 0x1431cc5 followed
                     // by addst at 0x142fee6, already served by shared hooks.
                     target = translate_legends_text("World artifact: " + source, false, false);
+                } else if (const size_t species_at = source.rfind(" the ");
+                           species_at != std::string::npos && species_at > 0 &&
+                           translate_creature_descriptor(
+                               std::string_view(source).substr(species_at + 5), true)) {
+                    // Missing citizens use the same Last in/status button as
+                    // artifacts, but their title is a figure, not an item.
+                    // Resolve the complete name/epithet/species with the shared
+                    // {n} the {s} backtracking before book and item fallbacks.
+                    target = translate_legends_text(source, true, true);
                 } else if (source.starts_with("the ") || source.starts_with("a ") ||
                            source.starts_with("an ")) {
                     // This typed item parser removes the article, retains
