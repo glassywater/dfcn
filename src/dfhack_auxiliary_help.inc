@@ -511,6 +511,7 @@ std::vector<Match> dfhack_auxiliary_matches;
             gui_literal(static_cast<int>(x), footer_y, source,
                 static_cast<int>(x + source.size()), "Caption");
     }
+#include "dfhack_workshop_workers.inc"
 #include "dfhack_control_panel.inc"
 #include "dfhack_finder_output.inc"
 #include "dfhack_embark_output.inc"

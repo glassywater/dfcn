@@ -570,3 +570,11 @@ DFHack GUI Journal tutorial: # My section heading	# 章节标题	l
 DFHack GUI Journal tutorial: or	或者	l
 DFHack GUI Journal tutorial: ## My section subheading	## 子章节标题	l
 DFHack GUI Journal tutorial: Those headers will appear here, and you can click on them to jump to them in the text.	这些标题会显示在目录中，点击即可跳到正文中对应的位置。	l
+
+# plugins/orders.lua workshop Workers overlays; key tokens and labor captions keep their own fields.
+DFHack GUI Workshop workers: Permitted General Work Order Labors	允许的常规工单劳动	l
+DFHack GUI Workshop workers: Toggle all	切换全部	l
+DFHack GUI Workshop workers: Toggle selected	切换所选	l
+DFHack GUI Workshop workers: (or double click)	（或双击）	l
+DFHack GUI Workshop workers: Min skill:	最低技能：	l
+DFHack GUI Workshop workers: Max skill:	最高技能：	l

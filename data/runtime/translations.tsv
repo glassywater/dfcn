@@ -20003,6 +20003,7 @@ Conversation prompt: How will you respond to this passive reply?	你将如何回
 Conversation prompt: What will you say about the new leadership?	关于新的领导者，你想说些什么？	l
 Creating Elathu Inala, \\"The Domain of Portents\\" ({d} rejected)	创建埃拉苏·伊纳拉,"预兆之域\\"({d}个被拒绝)	wt
 DFHack GUI Mass remove: Select the second corner with the mouse.	用鼠标选择第二个角点。	l
+DFHack GUI Workshop workers: Permitted General Work Order Labors	允许的常规工单劳动	l
 DFHack help: "--alignto <value>" Specifies the alignment column.	"--alignto <value>" 指定对齐列。	l
 DFHack help: "--applyprofessions <profession>[,<profession>...]"	"--applyprofessions <profession>[,<profession>...]"	l
 DFHack help: "--unit <UNIT ID>" The given unit will be affected.	​​"--unit <UNIT ID>" 给定单位将受到影响。	l
@@ -36737,6 +36738,7 @@ DFHack GUI Design: Mirror Point: {d}, {d}, {d}	镜像点：{d}, {d}, {d}	l
 DFHack GUI Notification settings: bleeding_adv	血量余量（冒险）	l
 DFHack GUI Notification settings: moody_status	怪异心境进度	l
 DFHack GUI Notification settings: wildlife_adv	野生动物（冒险）	l
+DFHack GUI Workshop workers: (or double click)	（或双击）	l
 DFHack help: "(no)chop <burrow>[,<burrow>...]"	"（不）砍<活动区>[，<活动区>...]"	l
 DFHack help: "--preserve-engravings <quality>"	"--preserve-engravings <quality>"	l
 DFHack help: "add-thought --gui [--unit <id>]"	"add-thought --gui [--unit <id>]"	l
@@ -39574,6 +39576,7 @@ DFHack GUI Notification settings: Toggle all	全部切换	l
 DFHack GUI Notification settings: auto_train	训练小队设置	l
 DFHack GUI Quickfort: Baseline dig priority:	基础挖掘优先级：	l
 DFHack GUI Quickfort: Preview manager orders	预览管理者订单	l
+DFHack GUI Workshop workers: Toggle selected	切换所选	l
 DFHack help: "-Q", "--max-quality <integer>"	"-Q", "--max-quality <integer>"	l
 DFHack help: "-c", "--mat-category <string>"	"-c", "--mat-category <string>"	l
 DFHack help: "-f", "--freeze", "--safe-mode"	"-f"、"--freeze"、"--safe-mode"	l
@@ -47534,6 +47537,9 @@ DFHack GUI Design: Mouse: {d}, {d}, {d}	鼠标：{d}, {d}, {d}	l
 DFHack GUI Input prompt: Enter command:	输入命令：	l
 DFHack GUI Sitemap: Unknown affiliation	所属势力不明	l
 DFHack GUI Title: Notification settings	通知设置	l
+DFHack GUI Workshop workers: Max skill:	最高技能：	l
+DFHack GUI Workshop workers: Min skill:	最低技能：	l
+DFHack GUI Workshop workers: Toggle all	切换全部	l
 DFHack help: "-f", "--include-friendly"	"-f", "--include-friendly"	l
 DFHack help: "-m", "--melt-masterworks"	"-m", "--melt-masterworks"	l
 DFHack help: "-o", "--outside <burrow>"	"-o", "--outside <burrow>"	l
