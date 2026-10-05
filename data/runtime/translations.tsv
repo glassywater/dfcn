@@ -14753,6 +14753,7 @@ Overview sentence: I've been out in the sunshine again after a long time away.	�
 Overview sentence: My family received justice when the criminal was convicted.	罪犯定了罪，家里也讨回了公道。	l
 Praise {p} for ignoring your hubris. Peace is cherished. Let another day pass.	赞美{p1}，宽恕了你的狂妄。和平备受珍视。再等一天。	hPt
 Praise {p} for ignoring your hubris. {r} without bounds. Let another day pass.	赞美{p1}，宽恕了你的狂妄。无边的{r1}。再等一天。	hPt
+Set your values and personality here.  [C] denotes the default cultural value.	在此设置价值观与人格。[C] 表示所属文化的默认值。	wlP
 Stockpiles can be placed using the stockpile menu at the bottom of the screen.	可通过屏幕底部的储物堆菜单放置储物堆。	hP
 The details of its form are easily forgotten without deliberate concentration.	若不刻意集中注意力，它的外形细节很容易被遗忘。	h
 The gang has even sent some troublemakers to harass people right here in town.	这伙强盗甚至派了些暴徒，就在镇上骚扰居民。	hq
@@ -16807,6 +16808,7 @@ Wild attack: fast strike, slow recovery, hard but unbalancing/inaccurate	狂野�
 You already know the will of {p}. Do not tempt fate. Let some days pass.	你已经知晓{p1}的意志。不要试探命运。等上几天。	hPt
 You might want to adjust the parameters governing elevation frequencies.	请调整控制海拔分布频率的参数。	l
 Your most trusted companion has made the journey to meet you here today.	你最信任的同伴远道而来，今天将在这里与你会合。	hq
+Your personality facets might be restricted based on your creature type.	人格特质可能受你的生物种类限制。	wlP
 accepted in admiration of power, despite a lack of desire for vengeance.	虽然无意复仇，但崇拜权力，因此答应了。	h
 aided {a} in becoming a permanent part of the living world in the wilds.	在荒野中协助{a1}永久留在生者的世界。	ht
 and an adjacent wall with an open floor above for the ramp to be usable.	旁边还必须有一面墙，且墙上方有可站立的开放地面。	hq
@@ -67205,6 +67207,21 @@ with the hall designated for a	并将大厅指定给以下行会：	hP
 {s} was rejected by {a} in {p}	在{p1}，{a1}拒绝了{s1}	ht
 {t} was {s} by {a} during {e}.	在{e1}期间，{t1}被{a1}{s1}。	ht
 {t} was {s} by {a} within {p}.	在{p1}，{t1}被{a1}{s1}。	ht
+                     --> Vain	→ 虚荣	wl
+                   --> Greedy	→ 贪财	wl
+                  --> Dutiful	→ 尽忠职守	wl
+                 --> Vengeful	→ 记仇报复	wl
+                --> Ambitious	→ 野心勃勃	wl
+               --> Altruistic	→ 乐于助人	wl
+              --> Intemperate	→ 容易放纵	wl
+       --> Excitement-seeking	→ 寻求刺激	wl
+       --> Sense of gratitude	→ 心怀感激	wl
+       --> Swayed by emotions	→ 感情用事	wl
+     --> Inclined to abstract	→ 喜爱抽象思维	wl
+     --> Vulnerable to stress	→ 不耐压力	wl
+    --> Emotionally obsessive	→ 感情执着	wl
+    --> Tolerates differences	→ 包容差异	wl
+   --> Inclined to create art	→ 喜爱艺术创作	wl
 "I am not governed by urges."	“我不会任由冲动左右自己。”	l
 "I could really use a drink."	“我真想喝一杯。”	l
 "I get so jealous sometimes."	“有时我真是嫉妒得厉害。”	l
@@ -67242,6 +67259,7 @@ Acknowledge lack of rejection	表示没有被拒绝感	hP
 Acknowledge lack of self-pity	表示没有自怜	hP
 Acknowledge lack of servility	表示没有卑躬屈膝	hP
 Acknowledge lack of suspicion	表示没有怀疑	hP
+Acquiescing <-> Resists ideas	易受影响 ↔ 抗拒观念	wl
 Adds Pokemon related content.	添加宝可梦相关内容。	wl
 Adventure action target: item	物品	h
 Adventure action target: tree	树	h
@@ -67267,8 +67285,10 @@ Art image named creature: X Y	X「Y」	wl
 Ask about somebody (new menu)	打听某个人（新菜单）	hP
 Ask for directions (new menu)	问路（新菜单）	hP
 Assigned to {e}, position {d}	已分配至{e1}，位置{d1}	hPt
+Austere    <->    Extravagant	朴素 ↔ 奢侈	wl
 Auto-dumping is not required.	不必设置自动倾倒。	hP
 Automated vein and gem mining	自动挖掘矿脉与宝石	wo
+Avoid fights <->  Like brawls	避免打架 ↔ 喜欢斗殴	wl
 Be cautious of fatigue today.	今天要当心疲劳。	hP
 Be diligent and undistracted.	勤勉专注。	hP
 Book title noun: distractions	消遣	hi
@@ -67431,6 +67451,7 @@ Certainly feared as a monster	害怕被当作怪物	w
 Change the subject (new menu)	换个话题（新菜单）	hP
 Change to standard chop mode.	切换到普通砍伐模式。	hj
 Character overview: Flatterer	爱说好话	li
+Cheerless <-> Easily cheerful	郁郁寡欢 ↔ 容易开心	wl
 Citizen overwhelmed by stress	居民被压力压垮	w
 Citizenship petitions: accept	公民资格申请：接受	wi
 Citizenship petitions: prompt	公民资格申请：询问	wi
@@ -67769,10 +67790,12 @@ Designate, Restricted Traffic	指定：限制通行区	w
 Designating high traffic area	设置高通行区域	wo
 Designating items for dumping	指定倾倒物品	wo
 Designating items for melting	指定熔化物品	wo
+Despairs - Hopeful - Presumes	绝望 - 乐观 - 盲目自信	wl
 Destruction of {p} during {e}	在{e1}期间，{p1}毁灭事件	htEi
 Destruction of {p} within {p}	在{p2}，{p1}毁灭事件	htEi
 Dismiss minor feeling of fear	不在意些许恐惧	hP
 Dismiss minor feeling of rage	不在意些许狂怒	hP
+Distrustful <->  Too trusting	多疑 ↔ 过于轻信	wl
 Don't tell me to calm myself.	别叫我冷静。	hP
 Don't walk off with anything.	别顺手拿走东西。	hP
 Dwarvemon Entity Type {d}.{d}	矮人兽实体类型 {d}.{d}	wt
@@ -67780,6 +67803,7 @@ Empty unimproved glazable jug	未上釉的可上釉的空壶	wi
 Engraved on the floor is {s}.	地面上刻有{s1}。	hHt
 Erase a portion of this zone.	擦除此区域的一部分。	hj
 Feared for violent opposition	害怕暴力的反抗	w
+Fearful     <->      Fearless	胆小 ↔ 无畏	wl
 Finalizing sites... ({d}/{d})	正在完成地点……（{d}/{d}）	wt
 Finish setting traffic areas.	结束通行区域设置。	hj
 Fish only in designated zones	仅在指定区域捕鱼	wi
@@ -67808,6 +67832,7 @@ Greatly respected for loyalty	因忠诚受人敬仰	w
 Grovel before your new master	向你的新主人卑躬屈膝	hP
 Hang from {s} ({s}/Air/Magma)	悬挂于{s1}（{s2}／空气／岩浆）	hPt
 Hang from {s} ({s}/Air/Water)	悬挂于{s1}（{s2}／空气／水）	hPt
+Harmony      <->      Discord	友善和睦 ↔ 制造不和	wl
 He is the head of the family.	他是家族的首领。	hP
 He is the {s} of {n} and {n}.	他是{n1}与{n2}的{s}。	ht
 He was the first of his kind.	他是同类中最早的个体。	h
@@ -67830,6 +67855,7 @@ Hotkey: Building, Wksp, Mason	热键：建筑，工坊，石匠工坊	w
 Hotkey: Building, Wksp, Quern	热键：建筑，工坊，手推磨	w
 Hotkey: Building, Wksp, Siege	热键：建筑，工坊，攻城器械工坊	w
 Hotkey: Building, Wksp, Still	热键：建筑，工坊，蒸馏工坊	w
+Humorless      <->       Zany	缺乏幽默 ↔ 滑稽诙谐	wl
 I engaged {n} to infiltrate .	我雇{n1}渗透。	hPt
 I have no family to speak of.	我没什么家人。	hP
 I have nothing to say to you.	我没什么可跟你说的。	hP
@@ -67841,6 +67867,8 @@ I'm going out for some water.	我正要出去取水。	hP
 I'm returning from my patrol.	我正巡逻归来。	hP
 I've forgotten what to say...	我忘记要说什么了……	hP
 Inaccessible mission location	无法抵达任务地点。	hP
+Inattentive <-> Perfectionist	漫不经心 ↔ 追求完美	wl
+Incurious     <->     Curious	缺乏好奇 ↔ 好奇心强	wl
 Infiltrate {e}, agreed in {d}	渗透{e1}（第{d1}年商定）	hPt
 Interact with nearby objects.	与附近物品互动。	hj
 Inventory location: Sewn into	缝合于	l
@@ -67860,6 +67888,7 @@ It started at {p} during {e}.	在{e1}期间，从{p1}出发。	ht
 It started at {p} within {p}.	在{p2}，从{p1}出发。	ht
 It was the first of its kind.	它是同类中最早的个体。	h
 Joy marks its every movement.	它的一举一动都洋溢着喜悦。	h
+Just facts - Flights of fancy	实事求是 - 爱好幻想	wl
 Justice case: Attempted theft	盗窃未遂	l
 Justice detail: No witnesses.	无证人。	l
 Justice person: Injured party	受害方	l
@@ -67871,10 +67900,14 @@ Labor caption: Refuse Hauling	搬运垃圾	wi
 Labor caption: Weaponsmithing	锻造武器	wi
 Land holder trade trigger {d}	封地贵族出口财富阈值 {d}	wt
 Leave editor and discard data	退出编辑器并放弃修改	w
+Leisurely    <->     Frenetic	悠闲 ↔ 忙碌不休	wl
 Light combat (heard recently)	轻微战斗声（刚刚听到）	wl
 Local resident creature named	本地居民生物获得名称	w
+Loner     <->      Gregarious	离群独处 ↔ 喜爱群居	wl
 Mandate period (more = fewer)	法令间隔（越高越少）
 Many {s} have been disturbed.	许多{s1}受到了惊扰。	hPt
+Meanness   <->   Wastefulness	吝啬 ↔ 浪费	wl
+Merciful - Impartial -  Cruel	仁慈 - 公正 - 残酷	wl
 Monster Rampage in the wilds.	在荒野中，怪物肆虐事件。	hEi
 Most property was confiscated	大部分财产被没收	h
 Mouse double click speed (ms)	鼠标双击速度(毫秒)	w
@@ -67920,12 +67953,23 @@ Nearest site: A short trip NW	最近地点：向西北，很近	w
 Nearest site: A short trip SE	最近地点：向东南，很近	w
 Nearest site: A short trip SW	最近地点：向西南，很近	w
 Nickname position (fort mode)	昵称位置(要塞模式)	w
+No anger  <->  Easily angered	不易生气 ↔ 容易生气	wl
+No anxiety  <->  Very anxious	沉着冷静 ↔ 容易焦虑	wl
+No envy   <->   Envies easily	不易嫉妒 ↔ 容易嫉妒	wl
+No hate   <->    Hates easily	不生怨恨 ↔ 容易记恨	wl
+No love   <->    Loves easily	不易动情 ↔ 容易动情	wl
+No lust      <->      Lustful	欲望淡薄 ↔ 欲望强烈	wl
+No sadness   <->   Easily sad	不易悲伤 ↔ 容易悲伤	wl
+No self-esteem   <->    Proud	缺乏自尊 ↔ 自豪骄傲	wl
+Non-assertive <-> Overbearing	缺乏主见 ↔ 强势逼人	wl
 Non-pressed paper-slurry glob	未压制的纸浆	wi
 Number of Vampire Curse Types	吸血鬼诅咒种类数量	l
 Of course. Let's do business.	当然。我们来做生意吧。	hP
 Opening Ceremony in the wilds	在荒野中，开幕仪式	hEi
 Our family's ancestor is {p}.	我们家族的祖先是{p1}。	hPt
 Overall, the poetry is great.	总体而言，诗歌优秀。	h
+Overreliant <> Disdain advice	过于依赖 ↔ 不听劝告	wl
+Overshares    <->     Private	过于坦露 ↔ 注重隐私	wl
 Overthrow of {p} in the wilds	在荒野中，{p1}政权倾覆事件	htEi
 Overview sentence: Fantastic!	太棒了！	l
 Overview sentence: I hate it.	我讨厌这样。	l
@@ -67940,7 +67984,10 @@ Persecution of {p} within {p}	在{p2}，对{p1}的迫害	htEi
 Pillaging of {p} in the wilds	在荒野中，{p1}劫掠事件	htEi
 Poetry Competition during {e}	在{e1}期间，诗歌比赛	htEi
 Poetry Competition within {p}	在{p1}，诗歌比赛	htEi
+Pusillanimous - Overconfident	畏缩 - 过于自信	wl
 Put an item into a container.	将一件物品放入容器。	hj
+Quarreler    <->    Flatterer	爱争吵 ↔ 爱奉承	wl
+Quits easily <-> Too stubborn	轻易放弃 ↔ 过于固执	wl
 Rain Weighted Range ({d}-{d})	降雨量加权范围（{d}-{d}）	wt
 Really change the dimensions?	确定要更改尺寸吗？
 Refuse invitation to join {e}	拒绝加入{e1}的邀请	hPt
@@ -67949,19 +67996,23 @@ Removing dumping designations	移除倾倒标记	wo
 Removing melting designations	移除熔化标记	wo
 Removing traffic designations	清除通行设置	wo
 Ride {s}, push off toward {s}	乘坐{s1}，向{s2}蹬离	hPt
+Rude        <->        Polite	粗鲁 ↔ 礼貌	wl
 Save and return to title menu	保存并返回游戏主菜单	w
 Saving cultural identities...	正在保存文化身份……	w
 Saving general information...	正在保存基本信息……	w
+Scatterbrained - Singleminded	心不在焉 - 专心致志	wl
 See to your responsibilities.	履行你的责任。	hP
 Select materials for the {s}.	为{s1}选择材料。	hPt
 Set the draw direction below.	在下方设置升起方向。	hP
 Several people were expelled.	数人遭到驱逐。	h
+Shameless     <->     Bashful	不知羞耻 ↔ 害羞	wl
 She doesn't stick with things	她做事无法坚持到底，	l
 She is our family's ancestor.	她是我们家族的祖先。	hP
 She is the first of her kind.	她是同类中最早的个体。	h
 She was of unknown parentage.	她的父母身份不明。	h
 Skill name: Conversationalist	交谈	li
 Skill name: Misc. Object User	杂物使用	li
+Sloppy      <->       Orderly	邋遢 ↔ 整洁有序	wl
 Some property was confiscated	部分财产被没收	h
 Something has emptied a cage!	有什么东西清空了笼子！	hP
 Something has pulled a lever!	有什么东西拉动了拉杆！	hP
@@ -68082,6 +68133,7 @@ This visitor has come {s}. He	这位访客前来{s1}。他	hPt
 This visitor has come {s}. It	这位访客前来{s1}。它	hPt
 This {s} player is fantastic!	这位{s1}演奏者太精彩了！	hPt
 This {s} player is legendary.	这位{s1}演奏者堪称传奇。	hPt
+Too deliberate <> Thoughtless	过于深思 ↔ 鲁莽草率	wl
 Toward you: Negative attitude	对你的态度：负面	hP
 Toward you: Positive attitude	对你的态度：正面	hP
 Travel building: Castle Mound	城堡丘	wi
@@ -82048,6 +82100,7 @@ Overwhelmed by horror!	被恐怖笼罩了！	hP
 Partially constructed.	已完成部分建造。	wli
 Performance during {e}	在{e1}期间，表演	htEi
 Performance within {p}	在{p1}，表演	htEi
+Personality value: N/A	中立	l
 Placing caves... ({d})	正在放置洞穴……（{d}）	wt
 Poetry Recital at {p}.	在{p1}，诗歌朗诵。	htEi
 Poetry Recital in {d}.	{d1}年的诗歌朗诵。	htEi
@@ -100432,6 +100485,7 @@ Dodge Preference	闪避偏好	wli
 Dodge projectile	躲避投射物	w
 Don't show again	不再显示	hq
 Don't show again	不再显示	w
+Done customizing	完成自定义	w
 Doubts About {b}	对{b}的疑问	hbti
 Dwarven fortress	矮人要塞
 Dwarven hillocks	矮人丘堡	wi

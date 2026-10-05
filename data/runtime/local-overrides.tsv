@@ -11223,3 +11223,60 @@ Strongest Odor: {s}	最强气味：{s1}	hPt
 Strongest Odor:	最强气味：	wl
 Adventure: Describe Odor	冒险：描述气味	wl
 Adventure: Display Strongest Odor	冒险：显示最强气味	wl
+
+# Adventure creation personality customization, native creator-page literals.
+# Fixed-width facet labels are translated as whole controls, including arrows.
+Set your values and personality here.  [C] denotes the default cultural value.	在此设置价值观与人格。[C] 表示所属文化的默认值。	wlP
+Your personality facets might be restricted based on your creature type.	人格特质可能受你的生物种类限制。	wlP
+No love   <->    Loves easily	不易动情 ↔ 容易动情	wl
+No hate   <->    Hates easily	不生怨恨 ↔ 容易记恨	wl
+No envy   <->   Envies easily	不易嫉妒 ↔ 容易嫉妒	wl
+Cheerless <-> Easily cheerful	郁郁寡欢 ↔ 容易开心	wl
+No sadness   <->   Easily sad	不易悲伤 ↔ 容易悲伤	wl
+No anger  <->  Easily angered	不易生气 ↔ 容易生气	wl
+No anxiety  <->  Very anxious	沉着冷静 ↔ 容易焦虑	wl
+No lust      <->      Lustful	欲望淡薄 ↔ 欲望强烈	wl
+     --> Vulnerable to stress	→ 不耐压力	wl
+                   --> Greedy	→ 贪财	wl
+              --> Intemperate	→ 容易放纵	wl
+Avoid fights <->  Like brawls	避免打架 ↔ 喜欢斗殴	wl
+Quits easily <-> Too stubborn	轻易放弃 ↔ 过于固执	wl
+Meanness   <->   Wastefulness	吝啬 ↔ 浪费	wl
+Harmony      <->      Discord	友善和睦 ↔ 制造不和	wl
+Quarreler    <->    Flatterer	爱争吵 ↔ 爱奉承	wl
+Rude        <->        Polite	粗鲁 ↔ 礼貌	wl
+Overreliant <> Disdain advice	过于依赖 ↔ 不听劝告	wl
+Fearful     <->      Fearless	胆小 ↔ 无畏	wl
+Pusillanimous - Overconfident	畏缩 - 过于自信	wl
+                     --> Vain	→ 虚荣	wl
+                --> Ambitious	→ 野心勃勃	wl
+       --> Sense of gratitude	→ 心怀感激	wl
+Austere    <->    Extravagant	朴素 ↔ 奢侈	wl
+Humorless      <->       Zany	缺乏幽默 ↔ 滑稽诙谐	wl
+                 --> Vengeful	→ 记仇报复	wl
+No self-esteem   <->    Proud	缺乏自尊 ↔ 自豪骄傲	wl
+Merciful - Impartial -  Cruel	仁慈 - 公正 - 残酷	wl
+Scatterbrained - Singleminded	心不在焉 - 专心致志	wl
+Despairs - Hopeful - Presumes	绝望 - 乐观 - 盲目自信	wl
+Incurious     <->     Curious	缺乏好奇 ↔ 好奇心强	wl
+Shameless     <->     Bashful	不知羞耻 ↔ 害羞	wl
+Overshares    <->     Private	过于坦露 ↔ 注重隐私	wl
+Inattentive <-> Perfectionist	漫不经心 ↔ 追求完美	wl
+Acquiescing <-> Resists ideas	易受影响 ↔ 抗拒观念	wl
+    --> Tolerates differences	→ 包容差异	wl
+    --> Emotionally obsessive	→ 感情执着	wl
+       --> Swayed by emotions	→ 感情用事	wl
+               --> Altruistic	→ 乐于助人	wl
+                  --> Dutiful	→ 尽忠职守	wl
+Too deliberate <> Thoughtless	过于深思 ↔ 鲁莽草率	wl
+Sloppy      <->       Orderly	邋遢 ↔ 整洁有序	wl
+Distrustful <->  Too trusting	多疑 ↔ 过于轻信	wl
+Loner     <->      Gregarious	离群独处 ↔ 喜爱群居	wl
+Non-assertive <-> Overbearing	缺乏主见 ↔ 强势逼人	wl
+Leisurely    <->     Frenetic	悠闲 ↔ 忙碌不休	wl
+       --> Excitement-seeking	→ 寻求刺激	wl
+Just facts - Flights of fancy	实事求是 - 爱好幻想	wl
+     --> Inclined to abstract	→ 喜爱抽象思维	wl
+   --> Inclined to create art	→ 喜爱艺术创作	wl
+Done customizing	完成自定义	w
+Personality value: N/A	中立	l

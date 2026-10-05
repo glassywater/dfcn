@@ -531,6 +531,9 @@ struct Match {
     int layout_length = 0;
     bool layout_left = false;
     bool layout_right = false;
+    // One native field owns source clearing and the baseline. Its translated
+    // terms can occupy both edges, with equal gaps around their separators.
+    std::vector<std::string> layout_justified_parts{};
     // Native single-line fields keep their allocation and shared font size.
     // Only these explicit fields may omit a suffix and display an ellipsis.
     bool layout_ellipsize = false;
@@ -811,6 +814,7 @@ static constexpr int kWorldgenParameterLabelRule = -150;
 static constexpr int kAdventureAttributeFieldRule = -151;
 static constexpr int kAdventureSkillFieldRule = -152;
 static constexpr int kEmbarkFinderFieldRule = -153;
+static constexpr int kAdventurePersonalityFieldRule = -154;
 
 static bool is_fortress_justice_field(const Match &match) {
     return match.rule == kFortressJusticeCaseRule || match.rule == kFortressJusticeDetailRule ||
@@ -4358,6 +4362,8 @@ private:
     void append_adventure_skill_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, const unsigned char *screen_override) const;
     bool layout_adventure_skills(SDL_Renderer *renderer);
+    void append_adventure_personality_matches(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, const unsigned char *screen_override) const;
     void layout_adventure_personality_needs(SDL_Renderer *renderer);
     void layout_adventure_personality_actions(SDL_Renderer *renderer);
     void recover_adventure_skill_rows();
@@ -21542,6 +21548,9 @@ std::vector<Match> Overlay::find_matches(int only_y,
     if (gps_->display_background == -1 &&
         is_transient_startup_loading_grid(screen_rows)) return result;
     std::vector<Match> untranslated_help_rows;
+    // Custom personality labels can lose their last byte to the adjacent
+    // rating slot. Claim the native fields before generic words or prose.
+    append_adventure_personality_matches(screen_rows, result, only_y, screen_override);
 #include "adventure_announcements.inc"
 #include "world_mission_body.inc"
     append_native_message_paragraphs(screen_rows, result, untranslated_help_rows,
@@ -30255,6 +30264,7 @@ void Overlay::normalize_native_split_text() {
             match.rule == kWorldgenParameterLabelRule ||
             match.rule == kAdventureAttributeFieldRule ||
             match.rule == kAdventureSkillFieldRule ||
+            match.rule == kAdventurePersonalityFieldRule ||
             match.rule == kRatedSkillRule ||
             machine_power || is_credits_row(match) || match.rule == kSaveListCaptionRule ||
             match.rule == kSettingsAnnouncementNameRule ||
@@ -43618,6 +43628,7 @@ void Overlay::layout_multiline_matches() {
             continue;
         }
         if (match.layout_ellipsize || is_fortress_justice_field(match) ||
+            match.rule == kAdventurePersonalityFieldRule ||
             match.rule == kSettingsAnnouncementNameRule ||
             match.rule == kDfhackStocksHintRule || match.rule == kDfhackHotkeysHintRule ||
             match.rule == kCharacterHeaderRule || match.rule == kCharacterRoomStatusRule ||
@@ -45685,8 +45696,39 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
             }
         }
     }
-    GlyphTexture *glyph = get_glyph_texture(renderer, *display_text, span_width, line_height,
-        match.layout_font_pixels, match.layout_visual_height_pixels,
+    bool justified = false;
+    if (match.layout_justified_parts.size() >= 3 && foregrounds.empty()) {
+        std::vector<int> widths;
+        int total_width = 0;
+        for (const auto &part : match.layout_justified_parts) {
+            const auto *glyph = get_glyph_texture(renderer, part, span_width, line_height,
+                match.layout_font_pixels, match.layout_visual_height_pixels, true);
+            if (!glyph || !glyph->texture) break;
+            widths.push_back(glyph->width);
+            total_width += glyph->width;
+        }
+        if (widths.size() == match.layout_justified_parts.size() && total_width <= span_width) {
+            const int free_width = span_width - total_width;
+            int preceding_width = 0;
+            for (size_t index = 0; index < widths.size(); ++index) {
+                auto *glyph = get_glyph_texture(renderer, match.layout_justified_parts[index],
+                    span_width, line_height, match.layout_font_pixels,
+                    match.layout_visual_height_pixels, true);
+                if (!glyph || !glyph->texture) continue;
+                const int x = span_x + preceding_width + static_cast<int>(
+                    static_cast<int64_t>(free_width) * index / (widths.size() - 1));
+                const SDL_Rect dst = glyph->destination(
+                    {x, origin_y + text_y * tile_h + pixel_y, widths[index], line_height},
+                    true, true);
+                glyph->draw(renderer, dst, fg_r, fg_g, fg_b);
+                note_graphical_clear_write(renderer, dst);
+                preceding_width += widths[index];
+            }
+            justified = true;
+        }
+    }
+    GlyphTexture *glyph = justified ? nullptr : get_glyph_texture(renderer, *display_text,
+        span_width, line_height, match.layout_font_pixels, match.layout_visual_height_pixels,
         lock_pixel_size, foregrounds);
     texture_timing.checkpoint(RenderTimingStage::DrawCopy);
     if (glyph && glyph->texture) {
