@@ -59477,6 +59477,7 @@ Travel building: Abandoned houses	废弃住宅群	wi
 Travel building: Carpenter's shop	木匠铺	wi
 Travel building: Clothing imports	服装进口店	wi
 Travel building: Metal craft shop	金属工艺品店	wi
+Uniform name: Updated Metal Melee	改良金属甲近战	l
 Unit profession: militia comander	军事指挥官	li
 Vanilla Extinct Creatures {d}.{d}	原版灭绝生物 {d}.{d}	wt
 Verbally struggle against anguish	说出你与痛苦万分的抗争	hP
@@ -63542,6 +63543,7 @@ Travel building: Counting House	账房	wi
 Travel building: Drinking Mound	饮酒丘	wi
 Travel building: Ruined hillock	丘堡废墟	wi
 Tropical Moist Broadleaf Forest	热带湿润阔叶林
+Uniform name: Flexible Crossbow	灵活十字弩	l
 Unit custom profession: Soldier	士兵	l
 Unit nickname: the Devil-Slayer	屠魔者	l
 Unit nickname: the Fiend-Slayer	屠魔者	l
@@ -70376,6 +70378,7 @@ Travel building: Dining hall	餐厅	wi
 Travel building: Market Tree	市场树	wi
 Travel building: Meat market	肉类市场	wi
 Travel building: Tavern Tree	酒馆树	wi
+Uniform name: Flexible Melee	灵活近战	l
 Unit lists: Open job details	单位列表：打开工作详情	w
 Unit profession: chief medic	首席医师	li
 Unnamed animal training area	未命名驯兽区	wi
@@ -72519,6 +72522,7 @@ Travel building: Tree House	树屋	wi
 Travel building: {p} shrine	{p1}神龛	ht
 Tropical Moist Brdlf Forest	热带湿润阔叶林
 Unable to complete building	无法完成建筑	w
+Uniform name: Flex Crossbow	灵活十字弩	l
 Unit lists: Recenter on job	单位列表：定位到工作	w
 Unrotten paper-making plant	未腐烂的可造纸的植物	wi
 Unrotten tannable body part	未腐烂的可鞣制的身体组织	wi
@@ -78439,6 +78443,7 @@ Tropical Saltwater Marsh	热带咸水湿地
 Tropical Saltwater River	热带咸水河
 Tropical Saltwater Swamp	热带咸水沼泽
 Try to calm the listener	尝试安抚对方	hP
+Uniform name: Flex Melee	灵活近战	l
 Uninterested in an owner	不愿认主	w
 Unit lists: Sort by name	单位列表：按名称排序	w
 Unit nickname: the Idiot	愚者	l

@@ -817,6 +817,7 @@ static constexpr int kAdventureSkillFieldRule = -152;
 static constexpr int kEmbarkFinderFieldRule = -153;
 static constexpr int kAdventurePersonalityFieldRule = -154;
 static constexpr int kFortressSquadCreationRule = -155;
+static constexpr int kFortressUniformChoiceRule = -156;
 
 static bool is_fortress_justice_field(const Match &match) {
     return match.rule == kFortressJusticeCaseRule || match.rule == kFortressJusticeDetailRule ||
@@ -4137,6 +4138,9 @@ private:
         std::string_view source, int x = -1, int y = -1) const;
     void layout_fortress_squads(SDL_Renderer *renderer);
     void layout_fortress_squad_creation(SDL_Renderer *renderer);
+    void append_fortress_uniform_choices(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, bool raw_layer) const;
+    void layout_fortress_uniform_choices(SDL_Renderer *renderer);
     void layout_fortress_date(SDL_Renderer *renderer);
     void layout_fortress_build_menu(SDL_Renderer *renderer);
     std::vector<SDL_Rect> preserve_mod_workshop_names(std::vector<std::string> &rows) const;
@@ -5915,6 +5919,7 @@ void Overlay::build_trie() {
             rules_[rule_index].source.starts_with("Fortress activity: ") ||
             rules_[rule_index].source.starts_with("Fortress schedule editor: ") ||
             rules_[rule_index].source.starts_with("Squad creation: ") ||
+            rules_[rule_index].source.starts_with("Uniform name: ") ||
             rules_[rule_index].source.starts_with("Workshop recipe: ") ||
             rules_[rule_index].source.starts_with("Adventure compass: ") ||
             rules_[rule_index].source.starts_with("Adventure movement: ") ||
@@ -21023,6 +21028,8 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "adventure_combat_geometry.inc"
 #include "adventure_combat_panel.inc"
 #include "fortress_squads.inc"
+#include "fortress_uniform_geometry.inc"
+#include "fortress_uniforms.inc"
 #include "fortress_zones.inc"
 #include "fortress_stockpiles.inc"
 #include "fortress_locations.inc"
@@ -21934,6 +21941,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
     append_fortress_squad_creation(screen_rows, result, only_y, screen_override != nullptr);
     append_fortress_squad_rows(screen_rows, result, only_y, screen_override != nullptr);
     append_fortress_squad_alias_rows(screen_rows, result, only_y, screen_override);
+    append_fortress_uniform_choices(screen_rows, result, only_y, screen_override != nullptr);
     append_world_mission_titles(screen_rows, result, only_y);
     append_world_mission_reports(screen_rows, result, only_y);
     append_world_mission_members(screen_rows, result, only_y);
@@ -30634,6 +30642,7 @@ void Overlay::normalize_native_split_text() {
             match.rule == kFortressHaulingNameRule ||
             match.rule == kFortressSquadRowRule ||
             match.rule == kFortressSquadCreationRule ||
+            match.rule == kFortressUniformChoiceRule ||
             match.rule == kFortressKitchenCaptionRule ||
             match.rule == kFortressKitchenFoodRule ||
             match.rule == kFortressLaborCaptionRule ||
@@ -46946,6 +46955,7 @@ void Overlay::render(SDL_Renderer *renderer) {
         std::make_move_iterator(tooltip_foreground.begin()),
         std::make_move_iterator(tooltip_foreground.end()));
     layout_fortress_squad_creation(renderer);
+    layout_fortress_uniform_choices(renderer);
     for (Match &match : prepared_matches_) {
         if (match.rule != kHoverPictureCaptionRule || !match.native_picture_caption_box ||
             match.target.empty()) continue;
