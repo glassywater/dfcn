@@ -55,11 +55,17 @@ if (document.page) {
 #include "history_artifact_page_semantics.inc"
 #include "history_entity_page_semantics.inc"
     case NativeHistoryPageKind::StructureIntroduction: {
-        auto building = structure(event.site_id, number("building"));
-        auto type = term(text("building.label"));
+        const int32_t id = number("building");
+        const auto &label = text("building.label");
+        auto building = structure(event.site_id, id);
+        auto type = label.empty() ? std::optional<Pieces>(Pieces{}) : term(label);
         auto site = subject(NativeHistoryObjectKind::Site, event.site_id, false);
         if (!building || !type || !site) return std::nullopt;
-        auto result = apply("{p} was {s} in {p}.", {*building, *type, *site});
+        // The dungeon default has no type noun. Its existing location
+        // production also avoids leaving an article/measure word behind.
+        auto result = label.empty() ? apply("{s} in {p}", {*building, *site}) :
+            apply("{p} was {s} in {p}.", {*building, *type, *site});
+        if (result && label.empty()) result->push_back(piece("。", neutral));
         if (!result || !append_page_confidence(*result)) return std::nullopt;
         return result;
     }

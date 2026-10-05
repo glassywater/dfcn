@@ -1,0 +1,206 @@
+Native Legends Structures source reconstruction, DF 53.16 Windows x64
+
+Sources are the two configured native-pe-images.json images. RVAs below are
+reference/Steam; classic uses the matching owners in native-owners.tsv and
+event-structure-relevance.tsv. The .asm files retain decoded source instructions,
+including MSVC chained unwind extents and directly reachable leaf branch arms.
+native-switches.tsv retains indexed targets; event-finite-operands.txt retains
+all finite operands of the related native paragraph producers. Dynamic names,
+RAW labels and world IDs are fields, not sentences or translation literals.
+
+PAGE AND FOCUS
+  Structure tab producer d4e240; corresponding classic d4b280.
+  Reuse a tab when kind=8 and selected directory index matches tab+24.
+  Otherwise find site via screen+258[index], then AB via screen+270[index].
+  site.buildings=site+2b0; native ID lookup compares AB+8.
+  Missing site/AB yields the native title "Unknown structure".
+  Valid title = native language name + ', "' + translated-language name + '"'
+                + ', ' + bare structure type. Title naming calls getName+10
+  unconditionally; introduction naming separately checks has_name+72.
+  Context is fully initialized: all focus IDs -1, flags=2; set context+28=site,
+  context+38=AB, then describe(history,context,false,out) at d4e750.
+  d4e75d appends the complete source string into tab+28 richbox.
+
+DESCRIBE FOCUS SELECTOR (b8eeb0)
+  Default unset. Successive present IDs overwrite earlier selections:
+  context+20 collection -> kind13;
+  context+38 AB -> kind25, site=context+28, subid=AB;
+  otherwise context+28 site -> kind14;
+  context+18 figure -> kind15;
+  context+2c underground layer -> kind20;
+  context+30 surface region -> kind21;
+  context+34 artifact -> kind26;
+  context+68 written content -> kind27;
+  context+1c entity -> kind8 (highest priority).
+  Focus dispatch tables index kind-8. All other introduction arms are retained
+  in the complete describe source, including invalid/unset/default branches.
+
+STRUCTURE INTRODUCTION (b8fc7a..b8fd45)
+  Resolve site; resolve AB using context subid. Either missing => no intro.
+  b8fcc0: AB(site,subid,prefer_name=true,flags=context.flags)
+  append " was "
+  b8fcec: AB(site,subid,prefer_name=false,flags=0)
+  append " in "
+  b8fd10: SITE(site,flags=context.flags)
+  append ".  " at b8fd20
+  confidence = BUILDING_CONFIDENCE(AB) at b8fd28
+  append CONFIDENCE_TEXT(confidence) at b8fd35
+  append "[B]" at b8fd45
+  There is no present-tense/is alternative in this native introduction.
+
+AB FIELD GRAMMAR (b94090)
+  Missing site or missing AB => "an unknown building", without an AB link.
+  If flags&2, open "[LPAGE:AB:" + site.id + ':' + AB.id + ']'.
+  If prefer_name && getName+10 != null && language_name.has_name(+72):
+      append translated-language name via a946e0; close link if opened; return.
+  Otherwise read getType slot0 and choose the complete article-bearing term.
+  For type outside signed-short 0..13 => "an unknown building".
+  For known dungeon with subtype outside 0..2 => append no type text; the
+  optional link still closes. A valid name bypasses this empty subtype branch.
+  Base abstract_building vtable15e7be0 has getType=-1 and getName=null.
+  Named classes except temple: getName returns this+b8 (native getter67170).
+  Temple: getName returns this+c0 (native getter67550). Native subtitle/type
+  remains "a temple" regardless temple deity/entity qualification.
+
+TYPE SWITCH (formatter b943c0; bare title d4e820)
+  0  mead_hall       "a mead hall"        / "mead hall"
+  1  keep            "a keep"             / "keep"
+  2  temple          "a temple"           / "temple"
+  3  dark_tower      "a dark tower"       / "dark tower"
+  4  market          "a market"           / "market"
+  5  tomb            "a tomb"             / "tomb"
+  6  dungeon         subtype switch below
+  7  underworld_spire "an underworld spire" / "underworld spire"
+  8  inn_tavern      "a tavern"           / "tavern"
+  9  library         "a library"          / "library"
+  10 counting_house  "a counting house"   / "counting house"
+  11 guildhall       "a guildhall"        / "guildhall"
+  12 tower           "a tower"            / "tower"
+  13 hospital        "a hospital"         / "hospital"
+  dungeon subtype WORD AB+130:
+    0 "a dungeon" / "dungeon"
+    1 "the sewers" / "sewers"
+    2 "the catacombs" / "catacombs"
+    default empty type content; title keeps its name and preceding comma.
+  Title unsupported type adds no bare type; lookup failure is Unknown structure.
+  Native underworld article is "an"; article-bearing fields are indivisible.
+
+CONFIDENCE (b95170 and b95720 plus leaf branch arms)
+  Count related native events whose information flags contain bit1. Relevance
+  queries use event slot98 with AB.site_id(+98) and AB.id(+8).
+  count >=100 ->5; >=50 ->3; >=10 ->4; >=5 ->2; >=1 ->1; else0.
+  0/default: append no qualifier.
+  1: "A few issues still trouble scholars, but the picture is fairly clear.  "
+  2: "Many facts are still unclear to historians.  "
+  3: "It is still shrouded in mystery.  "
+  4: "Its nature is still an intriguing puzzle to the learned.  "
+  5: "Only the barest fragments of this amazing story have been uncovered.  It is one of the great untold tales of our times.  "
+
+STRUCTURE EVENT SELECTION (b9001b..b90089)
+  Skip event with nonempty event.information vector whose first flags have bit1.
+  Query event virtual slot98 (isRelatedToSiteStructure) with selected site and AB.
+  When true, call event slotd0/getSentence(out,context,true,false) at b90072.
+  Append one independent "[B]" after that complete event at b90089.
+  Ordinary relationship and battle-membership insertion blocks require their
+  own non-structure focus and cannot supply extra prose in Structures kind25.
+  introduction_only=true skips the entire event loop.
+  Every concrete history event was followed through its actual RTTI vtable.
+  108 classes inherit false slot67050; 25 override slot98. Of those 25,
+  agreement_formed75 and agreement_concluded77 have lookup-only predicate
+  c19420 that always returns false at c1949f; these cannot enter Structures.
+  The other 23 contain a true-capable path. All failure arms return false.
+
+TRUE-CAPABLE PREDICATES (site s, abstract building b; offsets from event)
+  19 artifact_lost: event+2c=s and +30 valid profile ID; resolve site.profiles
+     (+2d0); require profile.type(+4)=0 and profile.abstract_building_id(+8)=b.
+  20 artifact_found: same property lookup with event site+34/profile+38.
+  21 artifact_recovered,74 artifact_stored,97 hf_act_on_artifact:
+     event+34=s && event+38=b. Predicate1016c0.
+  27 entity_created,28 entity_action,36 entity_razed_building,
+  54 hf_razed_building,114 gamble:
+     event+2c=s && event+30=b. Predicate5c2010.
+  30 created_building,68 change_hf_body_state,69 hf_act_on_building:
+     event+30=s && event+34=b. Predicate5c15e0.
+  31 replaced_building: event+30=s && (event+34=b || event+38=b).
+     Both old and new buildings may own this event. Predicate8f3e30.
+  32 add_hf_site_link,33 remove_hf_site_link,118 modified_building:
+     event+28=s && event+2c=b. Predicate5c25f0.
+  53 item_stolen: event+40=s && event+44=b. Predicate103f00.
+  100 artifact_copied: (source site+34=s && source AB+3c=b) OR
+     (destination site+38=s && destination AB+40=b). Predicate8f4d70.
+  105 hist_figure_simple_action: event+48=s && event+4c=b. Predicate1023e0.
+  108 tactical_situation: event+3c=s && event+40=b. Predicate104e40.
+  109 squad_vs_squad: event+98=s && event+9c=b. Predicate105010.
+  119 building_profile_acquired: event site+28 and profile+2c valid; resolve
+     site.profiles(+2d0), require profile.type=0, event site=s, profile.AB=b.
+
+PARAGRAPH PRODUCERS
+  Every producer keeps the native date prefix and dynamic participant fields.
+  event-finite-operands.txt gives every complete prose operand at its source
+  instruction; native-literals.tsv also preserves separators and inline stores.
+  The two ASM sources preserve conditional/default arms and child calls.
+  The following is the producer map and its alternatives, not rendered examples.
+
+  19 artifact_lost b8a8c0: artifact was lost; optional property+site or site only.
+  20 artifact_found b8ada0: artifact was found; optional property+site/site and
+     optional finder introduced with "by ".
+  21 artifact_recovered b8b6b0: artifact was recovered by actor; optional AB/site
+     introduced with "from ", with additional site/location arms.
+  27 entity_created b68020: optional creator; entity formed; AB then site.
+  28 entity_action b68180: movement/criminal-organization actions selected by enum;
+     optional actor/entity/location; native default can omit the finite action.
+  30 created_building b69280: actor entity; "constructed ","rebuilt ", or
+     "thrust a spire of slade up from the underworld, naming it "; optional
+     ", and established a gateway between worlds"; AB/site fields retained.
+  31 replaced_building b69450: actor; old building then replacement and site;
+     both structure fields use native named/type fallback independently.
+  32 add_hf_site_link b77ed0: working/ruling/hanging out/residence/lair/imprisonment;
+     native residence distinguishes bare location and building; "of " entity
+     and "in " site qualifiers. Every finite link kind/default retained.
+  33 remove_hf_site_link b780b0: stopped working/ruling/hanging out, moved out,
+     escaped; same building/entity/site qualification distinction.
+  36 entity_razed_building b69590: entity razed building in site.
+  53 item_stolen b8b080..b8b3..: artifact or article+item; "was stolen", "was
+     recovered", "was looted", "was confiscated" action arms; "from "+AB/site
+     or region/layer; "by "+actor; optional "and brought to "+destination.
+  54 hf_razed_building b69670: figure razed AB; site qualifier only when both
+     site and building valid, independently from missing subject fields.
+  68 change_hf_body_state b76120: "arose from", "was discarded in", "was buried
+     in", "was entombed in"; optional "within "+AB and site/layer/region/wilds.
+  69 hf_act_on_building b69760: action0 "profaned",1 "disturbed",
+     2 "prayed inside"; default inserts no verb. Every case uses
+     prefer_name=true for AB, followed by " in "+site+'.'.
+  74 artifact_stored b87ad0: artifact "was stored"; optional AB and site clauses,
+     optional actor introduced with "by ".
+  75 agreement_formed 2aaf70,77 agreement_concluded b81f00: source bodies retained
+     because they override predicate slot98; the actual predicate is always false.
+  97 hf_act_on_artifact b698b0: actor "asked about" or "viewed" artifact;
+     unknown action leaves verb empty; optional AB/site clause.
+  100 artifact_copied b89fc0: actor "acquired a copy of " or "made a copy of the
+     original "+artifact; "from "+source; "in "/"of "+site; optional
+     ", keeping it within "+destination AB+" in "+destination site.
+  105 hist_figure_simple_action b6dcb0..b6e1dc: participants1..4 with list rules;
+     failed diplomatic meeting reasons, experiments, carousing, equipment purchase
+     with quality0..5/default; AB/site, region, layer, unknown-lands location arms.
+  108 tactical_situation b6c4a0..b6cb78: commander/force variants; matched,
+     cunning/superior/outwitted/outmaneuvered plans, actor tactical quality and
+     attacker/defender positional advantage; initial/shifted positions and place.
+  109 squad_vs_squad b6cd90: commander/force names; leadership qualifications;
+     battle circumstances selected by enums; location AB/site/region/layer/default.
+  114 gamble b84e70: "made a fortune", "did well", "lost a fortune", "did
+     poorly", "broke even" followed by "gambling"; AB/site clauses; optionally
+     "and went further into debt" or "and went into debt".
+  118 modified_building b7af80: "had a feast hall added to", "had a gated
+     courtyard added to", "had the fortifications improved of", "had a dungeon
+     constructed within"; structure/site qualifiers and native empty default.
+  119 building_profile_acquired b7b230: profile lookup subtype0/other; actor
+     "rebuilt", "inherited", "purchased"; profile/site name and optional
+     "formerly owned by "+previous entity or figure.
+
+RENDER SOURCE
+  Reference legends renderer d3e8d0; classic d3b910. Full decoded renderer retained.
+  Reference graphical tabs use caption row r15+4, tab skins row4/5, draw flags
+  8/16. Header pinned title is independent from the tab controls.
+  Active tab richbox layout d43418; transformed token draw d435e4. Native token
+  coordinate+28/+2c supplies x/y, view scroll is subtracted, and top offset added.
+  intro and events are separate native [B] paragraphs, not one source sentence.

@@ -1313,6 +1313,9 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
         if (legends_export_control_present(row)) { export_y = y; break; }
     }
     if (export_y < 0) return;
+    const bool native_history_page = native_history_legends_page();
+    const auto native_caption = native_history_page ? native_history_legends_caption() : std::nullopt;
+    const std::string native_title = native_caption ? normalize_utterance(native_caption->source) : "";
     // Graphical captions occupy two flagged rows. Claim BOTH before the
     // generic name/figure matchers: otherwise the upper copy of a complete
     // identity becomes a page heading and is centred across the whole screen.
@@ -1322,6 +1325,66 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
         const auto &row = context[static_cast<size_t>(y)];
         if (row.find("Legends") == std::string::npos) continue;
         tab_rows.push_back(y);
+    }
+    if (native_history_page && !native_title.empty()) {
+        // The native render loop fixes tab artwork/captions at rows 4/5:
+        // PE d3f986 and d3fbc7, with flags 8/16 at d3fc6c. Classic text
+        // occupies only row 5. The pinned title has a separate producer and
+        // must not become a tab merely because its text matches the caption.
+        // This same header anchor survives removal of the Legends root tab.
+        tab_rows.clear();
+        const size_t quote = native_title.rfind('"');
+        const std::string title_caption = quote == std::string::npos
+            ? native_title : native_title.substr(0, quote + 1);
+        const auto native_tab_caption = [&](std::string_view raw) {
+            const std::string source = normalize_utterance(std::string(raw));
+            if (source == "Legends" || source == native_title || source == title_caption) return true;
+            const bool clipped = source.ends_with("...");
+            const auto prefix = std::string_view(source).substr(0,
+                source.size() - (clipped ? 3 : 0));
+            if (clipped && !prefix.empty() && native_title.starts_with(prefix)) return true;
+            return std::any_of(kLegendsCategories.begin(), kLegendsCategories.end(),
+                [&](std::string_view category) {
+                    return source == category || (clipped && !prefix.empty() &&
+                        category.starts_with(prefix));
+                });
+        };
+        for (int y : {4, 5}) {
+            if (y >= static_cast<int>(rows.size())) continue;
+            const auto &row = context[static_cast<size_t>(y)];
+            bool caption_row = false;
+            for (size_t opening = row.find('/'); opening != std::string::npos;
+                    opening = row.find('/', opening + 1)) {
+                const auto span = ascii_tab_caption_span(row, opening);
+                if (span && native_tab_caption(std::string_view(row).substr(
+                        span->first, span->second - span->first))) caption_row = true;
+            }
+            const auto cell_and_half = [&](int x) {
+                bool top = false;
+                const auto *cell = cell_at(x, y, &top);
+                const auto *flags = top ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
+                const uint32_t half = flags
+                    ? flags[static_cast<size_t>(x) * gps_->dimy + y] & ((1u << 3) | (1u << 4))
+                    : 0;
+                return std::pair{cell, half};
+            };
+            for (int x = 0; !caption_row && x < static_cast<int>(row.size());) {
+                if (row[x] == ' ' || is_cp437_box_separator(row, x)) { ++x; continue; }
+                const auto [first, half] = cell_and_half(x);
+                if (!first) { ++x; continue; }
+                const bool split = half == (1u << 3) || half == (1u << 4);
+                const int start = x;
+                for (++x; x < static_cast<int>(row.size()); ++x) {
+                    const auto [cell, next_half] = cell_and_half(x);
+                    if (!cell || (split && next_half != half) || is_cp437_box_separator(row, x) ||
+                            (row[x] != ' ' && !std::equal(first + 1, first + 4, cell + 1))) break;
+                    if (!split && row[x] == ' ' && x + 1 < static_cast<int>(row.size()) &&
+                            row[x + 1] == ' ') break;
+                }
+                caption_row = native_tab_caption(std::string_view(row).substr(start, x - start));
+            }
+            if (caption_row) tab_rows.push_back(y);
+        }
     }
     if (tab_rows.empty()) return;
     const int tabs_y = tab_rows.back();
@@ -1337,9 +1400,6 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
             std::fill_n(rows[y].begin() + bar.x, bar.w, ' ');
             std::fill_n(context[y].begin() + bar.x, bar.w, ' ');
         }
-    const bool native_history_page = native_history_legends_page();
-    const auto native_caption = native_history_page ? native_history_legends_caption() : std::nullopt;
-    const std::string native_title = native_caption ? normalize_utterance(native_caption->source) : "";
     const auto translate_heading = [&](std::string_view source) {
         if (native_caption && native_caption->region_title && source == native_title)
             if (auto target = translate_world_region_heading(source)) return target;
@@ -1427,8 +1487,11 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
         std::vector<std::pair<int, int>> caption_spans;
         const auto &tab_context = context[static_cast<size_t>(tab_y)];
         const size_t legends_start = tab_context.find("Legends");
-        const bool ascii_tabs = legends_start != std::string::npos &&
-            is_ascii_tab_caption(tab_context, legends_start, legends_start + 7);
+        const size_t ascii_opening = tab_context.find("/_");
+        const bool ascii_tabs = (legends_start != std::string::npos &&
+            is_ascii_tab_caption(tab_context, legends_start, legends_start + 7)) ||
+            (native_history_page && ascii_opening != std::string::npos &&
+                ascii_tab_caption_span(tab_context, ascii_opening).has_value());
         for (size_t opening = ascii_tabs ? tab_context.find("/_") : std::string::npos;
                 opening != std::string::npos;) {
             const auto span = ascii_tab_caption_span(tab_context, opening);
@@ -2738,10 +2801,10 @@ void Overlay::layout_legends_details(SDL_Renderer *renderer) {
         auto place_flow = [&](LegendsTextFlow &flow) {
             flow.display_pieces.clear();
             if (flow.source_rows.empty()) return false;
-            // The fixed-size translation may extend beyond the English box.
-            // Use the remaining physical width, then retain every extra row.
-            const int flow_width = std::max(width,
-                gps_->screen_pixel_x - origin_x - left * tile_w);
+            // Complete paragraphs wrap within their native text viewport.
+            // The physical screen tail also contains the scrolling control
+            // and frame; it cannot supply extra width to colored text runs.
+            const int flow_width = width;
             size_t row = 0;
             int used = 0;
             for (const auto &piece : flow.pieces) {

@@ -529,8 +529,20 @@ case 88: { // hf_relationship_denied
             case 0: verb = "profaned"; break;
             case 1: verb = "disturbed"; break;
             case 2: verb = "prayed inside"; break;
-            default: return std::nullopt;
+            default: verb = {}; break;
             }
+        }
+        if (verb.empty()) {
+            // b69760's action switch recognizes only 0..2. Its default
+            // still emits the actor, named building and site, with no
+            // predicate. Keep those native fields instead of rejecting
+            // the entire historical paragraph.
+            const auto location = apply("{s} in {p}", {*building, *site});
+            if (!location) return std::nullopt;
+            join(result, *actor);
+            result.push_back(piece(" ", neutral));
+            join(result, *location);
+            break;
         }
         const auto action = apply("{a} " + std::string(verb) + " {p} in {p}",
             {*actor, *building, *site});
@@ -774,7 +786,6 @@ case 88: { // hf_relationship_denied
     }
     case 68: {
         const int32_t state = number("body_state");
-        if (state < 0 || state > 6) return std::nullopt;
         static constexpr const char *actions[] = {"arose from", "was buried in",
             "was discarded in", "was discarded in", "was discarded in",
             "was entombed in", "was discarded in"};
@@ -787,6 +798,15 @@ case 88: { // hf_relationship_denied
             if (!building) return std::nullopt;
             location = apply("{p} of {p}", {*building, *location});
             if (!location) return std::nullopt;
+        }
+        if (state < 0 || state > 6) {
+            // b761b4..b76213's signed-byte switch has an empty default;
+            // it still emits the actor and each existing location, or
+            // the wilds when all location IDs are absent.
+            join(result, *actor);
+            result.push_back(piece(" ", neutral));
+            join(result, *location);
+            break;
         }
         const auto change = apply("{a} " + std::string(actions[state]) + " {p}", {*actor, *location});
         if (!change) return std::nullopt;

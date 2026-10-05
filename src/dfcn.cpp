@@ -45204,6 +45204,13 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
         Match part = match;
         part.legends_flow.reset();
         part.legends_flow_owner = false;
+        // The source may carry native half-font caption flags. Each measured
+        // fragment owns a new baseline; retaining the source caption's top
+        // row would draw every wrapped line over the paragraph's first row.
+        part.native_split_text = false;
+        part.native_split_duplicate = false;
+        part.layout_fixed_baseline = true;
+        part.layout_pixel_y = 0;
         part.source.clear();
         part.length = 1;
         part.layout_font_pixels = flow.font_pixels;

@@ -31,7 +31,8 @@ static bool native_history_find_structure_id(uintptr_t vector, size_t id_offset,
 }
 
 static bool capture_native_history_structure(uintptr_t base, int32_t site_id,
-        int32_t building_id, NativeHistorySubject &result) {
+        int32_t building_id, NativeHistorySubject &result, bool *found = nullptr) {
+    if (found) *found = false;
     if (!base) return false;
     NativeHistorySubject copy;
     copy.kind = NativeHistoryObjectKind::Building;
@@ -44,10 +45,18 @@ static bool capture_native_history_structure(uintptr_t base, int32_t site_id,
             0x88, site_id, site) || (site && !native_history_find_structure_id(
                 site + 0x2b0, 8, building_id, building)))) return false;
     if (!building) { result = std::move(copy); return true; }
+    if (found) *found = true;
 
     // Native class identity and field placement come from the shared schema.
     const auto *layout = native_history_dynamic_layout(building);
     if (!layout) return false;
+    if (std::string_view(layout->name) == "abstract_building") {
+        // PE vtable 15e7be0: getType (66e60) returns -1 and getName
+        // (66e90) returns null. b94090 consequently uses its unknown-type
+        // branch in both named and type-only modes.
+        result = std::move(copy);
+        return true;
+    }
     const NativeHistoryStructureProfile *profile = nullptr;
     for (const auto &candidate : kNativeHistoryStructureProfiles)
         if (std::string_view(layout->name) == candidate.name) { profile = &candidate; break; }

@@ -186,6 +186,13 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
                 if (!name || !suffix) return std::nullopt;
                 if (!suffix->empty()) *name += "·" + *suffix;
             }
+        } else if (kind == NativeHistoryObjectKind::Building && found->native_type == 6 &&
+                found->label_key.empty() && (!prefer_name || !found->name.has_name)) {
+            // b94387..b943b5 prints no type for an unsupported dungeon
+            // subtype. Preserve that intentional empty field in every
+            // building reference, while named-mode references can still
+            // render a stored language name.
+            name.emplace();
         } else if (!found->label_key.empty() && (kind == NativeHistoryObjectKind::Artifact || !prefer_name ||
                 (!found->name.has_name && found->raw_title.empty()))) {
             const auto translated = apply(found->label_key, {});
@@ -223,7 +230,9 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             const auto &token = document.tokens[index];
             if ((token.link_type == link_type ||
                     (kind == NativeHistoryObjectKind::Artifact && token.link_type == 3)) &&
-                token.link_id == id && (subid < 0 || token.link_subid == subid)) {
+                token.link_id == id &&
+                (kind == NativeHistoryObjectKind::Building ? token.link_subid == subid :
+                    (subid < 0 || token.link_subid == subid))) {
                 color = token.color;
                 last = index + 1;
                 native_link_type = token.link_type;
