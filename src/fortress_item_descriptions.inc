@@ -91,11 +91,23 @@
             while (top >= 0 && borders.at(left, top, 3)) --top;
             if (top < 0 || !borders.at(left, top, 0)) return std::nullopt;
             // Item-picture tabs and scrollbar caps interrupt the right side
-            // beside the opening lines. The complete top edge establishes
-            // the sheet width even when those rows have no right-side tile.
+            // beside the opening lines. Prefer the top edge's corner when
+            // those rows have no right-side tile.
             int right = left + 1;
             while (right < gps_->dimx && borders.at(right, top, 1)) ++right;
-            if (right >= gps_->dimx || !borders.at(right, top, 2) || last > right)
+            if (right >= gps_->dimx) return std::nullopt;
+            if (!borders.at(right, top, 2)) {
+                // Selecting the first stacked item joins its picture tab to
+                // the top edge, replacing the sheet's right corner. The
+                // surviving body side supplies the content boundary instead;
+                // the Weight and item-heading/action proof below still owns
+                // this exception. Do not fall back to generic centered fields
+                // for the Uses list just because the selected tab moved.
+                right = last;
+                while (right < gps_->dimx && !borders.at(right, row, 5)) ++right;
+                if (right >= gps_->dimx) return std::nullopt;
+            }
+            if (last > right)
                 return std::nullopt;
             // Many independent fields share this same stepped-sheet probe.
             // Its heading stops before the source row, so include that row
