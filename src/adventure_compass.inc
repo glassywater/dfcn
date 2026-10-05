@@ -45,9 +45,11 @@ void Overlay::append_adventure_compass_matches(std::vector<std::string> &rows,
             if (!bearing) continue;
             const int x = panel->x + 2;
             const int length = static_cast<int>(direction.size());
-            // Raw-layer suppression may see text under a foreground widget.
-            // Only the current composed bearing may own these source cells.
-            if (rows[y].compare(panel->x, panel->w, visible) != 0) continue;
+            // Classic map filtering removes the independently drawn site
+            // glyph before this pass. It cannot invalidate the bearing's
+            // native string ownership. Raw-layer suppression still requires
+            // the current composed bearing itself to match these source cells.
+            if (rows[y].compare(x, length, direction) != 0) continue;
             const auto target = exact_literal_translation(
                 "Adventure compass: " + std::string(direction));
             if (!target || target->empty()) continue;
