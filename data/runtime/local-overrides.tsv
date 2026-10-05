@@ -11323,3 +11323,7 @@ Uniform name: Updated Metal Melee	改良金属甲近战	l
 # retain the count even when the popup uses a one-cell left indent.
 {d} bedrooms created.	已创建{d1}间卧室。	wtl
 {d} dormitories created.	已创建{d1}间公共宿舍。	wtl
+
+# internal/notify/notifications.lua: complete counted trade-ready List rows.
+{d} trader is ready to trade	{d} 位交易者已准备好贸易	wtl
+{d} traders are ready to trade	{d} 位交易者已准备好贸易	wtl
