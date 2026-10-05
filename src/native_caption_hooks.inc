@@ -1178,7 +1178,8 @@ static PendingNativeField remember_native_clipped_draw(graphicst *graphics, cons
         NativeLocationPickerField location_picker_field = NativeLocationPickerField::None,
         std::optional<SDL_Rect> location_picker_box = std::nullopt,
         std::optional<NativeFortressLaborCaption> fortress_labor_caption = std::nullopt,
-        NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None) {
+        NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None,
+        uintptr_t native_caller = 0) {
     PendingNativeField captured;
     auto &state = native_clipped_pending();
     // Both supported addst implementations draw at the current cursor and
@@ -1225,7 +1226,7 @@ static PendingNativeField remember_native_clipped_draw(graphicst *graphics, cons
                         top_layer, complete, info_title_kind, info_title_authored, info_title_right,
                         civilization_field, mission_title, mission_title_right, std::nullopt, epoch,
                         map_hover, location_picker_field, location_picker_box, fortress_labor_caption,
-                        travel_building_field);
+                        travel_building_field, native_caller);
                     if (!complete.empty())
                         remember_clipped_caption(graphics->screenx, graphics->screeny,
                             visible, complete);
@@ -1300,7 +1301,8 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
     const auto captured_source = remember_native_clipped_draw(graphics, source, just, width, top_layer,
         info_title_kind, info_title_authored, info_title_right, civilization_field,
         mission_title, mission_title_right, map_hover,
-        location_picker_field, location_picker_box, fortress_labor_caption, travel_building_field);
+        location_picker_field, location_picker_box, fortress_labor_caption, travel_building_field,
+        native_caller);
     std::string complete;
     int x = -1, y = -1, dimx = 0, dimy = 0;
     const unsigned char *screen = nullptr;
@@ -1395,7 +1397,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
                 info_title_authored, info_title_right, civilization_field,
                 first == x && mission_title, mission_title_right, draw_clip, epoch,
                 map_hover, location_picker_field, location_picker_box, fortress_labor_caption,
-                travel_building_field);
+                travel_building_field, native_caller);
         if (first == x && visible != complete)
             remember_clipped_caption(x, y, visible, complete);
     } catch (...) {}

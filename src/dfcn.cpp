@@ -68,6 +68,7 @@ namespace dfcn {
 
 static std::vector<NativeHistoryDraw> captured_native_history_draws();
 static std::vector<NativeHistoryUnboundDraw> captured_native_history_unbound_draws();
+static uintptr_t native_history_profile_base();
 static bool native_history_worldgen_page();
 static NativeModDetails native_mod_details();
 static bool native_gameplay_map_screen(bool include_world = false);
@@ -1966,6 +1967,8 @@ struct NativeDrawnTextRow {
     // The travel renderer's verified addst caller owns each structure row.
     // Dynamically named buildings remain distinct from fixed kind captions.
     NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None;
+    // The actual addst return address identifies document-specific row writers.
+    uintptr_t native_caller = 0;
 };
 static std::mutex g_native_drawn_text_mutex;
 static std::vector<NativeDrawnTextRow> g_native_drawn_text_rows;
@@ -2503,7 +2506,8 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         NativeLocationPickerField location_picker_field = NativeLocationPickerField::None,
         std::optional<SDL_Rect> location_picker_box = std::nullopt,
         std::optional<NativeFortressLaborCaption> fortress_labor_caption = std::nullopt,
-        NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None) {
+        NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None,
+        uintptr_t native_caller = 0) {
     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
     const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
     if (original_epoch && original_epoch != epoch) return;
@@ -2607,6 +2611,7 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         row.location_picker_field = location_picker_field;
         row.location_picker_box = location_picker_box;
         row.travel_building_field = travel_building_field;
+        row.native_caller = native_caller;
         row.fortress_labor_caption = std::move(fortress_labor_caption);
         if (row.fortress_labor_caption) row.caption_source = true;
         row.mission_title = mission_title;
@@ -22077,6 +22082,113 @@ std::vector<Match> Overlay::find_matches(int only_y,
             result, only_y, clip_right, box_right, foregrounds, clipped_start,
             -1, std::nullopt, word_ranges);
     };
+
+#ifdef _WIN32
+    // setupadventurest redraws its retained civ_desc vector through this
+    // exact addst caller, including after the hovered civilization changes.
+    // Graphical copy bookkeeping can hide logical bytes from visible_char_at;
+    // identify this document from its current native writes instead of the
+    // page heading, a split word or an inferred rectangle.
+    const auto origin_base = native_history_profile_base();
+    if (origin_base && gps_->tile_pixel_x > 0 && gps_->tile_pixel_y > 0 &&
+            (!screen_override || screen_override == gps_->screen)) {
+        const auto origin_return = native_pe_address(origin_base, 0x627ac2);
+        const auto draws = captured_native_drawn_text_rows();
+        std::vector<const NativeDrawnTextRow *> origin_rows;
+        for (const auto &draw : draws) {
+            if (draw.native_caller == origin_return && draw.draw_grid == gps_->screen &&
+                    draw.draw_dimx == gps_->dimx && draw.draw_dimy == gps_->dimy &&
+                    draw.x >= 0 && draw.x < gps_->dimx - 2 &&
+                    draw.y >= 0 && draw.y < gps_->dimy - 7)
+                origin_rows.push_back(&draw);
+        }
+        std::sort(origin_rows.begin(), origin_rows.end(), [](const auto *a, const auto *b) {
+            return a->y < b->y;
+        });
+        std::vector<std::vector<Match>> paragraphs;
+        std::vector<std::string> sources;
+        bool intact = !origin_rows.empty();
+        const int left = intact ? origin_rows.front()->x : 0;
+        const int right = std::min(left + 67, gps_->dimx - 2);
+        const auto epoch = intact ? origin_rows.front()->draw_epoch : 0;
+        int previous_y = -1;
+        bool paragraph_break = false;
+        for (const auto *draw : origin_rows) {
+            if (draw->x != left || draw->draw_epoch != epoch ||
+                    draw->y <= previous_y || draw->source.size() > static_cast<size_t>(right - left)) {
+                intact = false;
+                break;
+            }
+            for (size_t byte = 0; byte < draw->source.size(); ++byte) {
+                // This caller writes screen. Unrelated top artwork must not
+                // change which buffer proves its original row bytes.
+                const size_t tile = static_cast<size_t>(left + byte) * gps_->dimy + draw->y;
+                const auto ch = draw->draw_grid[tile * 8];
+                const auto current = ch ? ch : static_cast<unsigned char>(' ');
+                if (current != static_cast<unsigned char>(draw->source[byte])) {
+                    intact = false;
+                    break;
+                }
+            }
+            if (!intact) break;
+            if (trim_view(draw->source).empty()) {
+                paragraph_break = true;
+                previous_y = draw->y;
+                continue;
+            }
+            if (paragraphs.empty() || paragraph_break || draw->y > previous_y + 1) {
+                paragraphs.emplace_back();
+                sources.emplace_back();
+            }
+            paragraph_break = false;
+            if (!sources.back().empty()) sources.back() += ' ';
+            sources.back() += draw->source;
+            Match row{left, draw->y, static_cast<int>(draw->source.size()),
+                kAdventureOriginDescriptionRule, {}, draw->source};
+            row.layout_foreground_rgb = draw->foreground_rgb;
+            paragraphs.back().push_back(std::move(row));
+            previous_y = draw->y;
+        }
+        for (auto &source : sources) source = normalize_utterance(source);
+        constexpr std::string_view distribution =
+            " is settled in the indicated locations above.";
+        if (intact && sources.size() == 2 &&
+                sources.front().size() > distribution.size() &&
+                sources.front().ends_with(distribution) &&
+                sources.back().starts_with("This is a ") &&
+                sources.back().find(" civilization") != std::string::npos &&
+                sources.back().ends_with('.')) {
+            const int origin_x = (gps_->screen_pixel_x - gps_->dimx * gps_->tile_pixel_x) / 2;
+            const int origin_y = (gps_->screen_pixel_y - gps_->dimy * gps_->tile_pixel_y) / 2;
+            for (size_t paragraph = 0; paragraph < paragraphs.size(); ++paragraph) {
+                auto &rows = paragraphs[paragraph];
+                const int top = rows.front().y;
+                const int bottom = paragraph + 1 < paragraphs.size()
+                    ? paragraphs[paragraph + 1].front().y - 1 : gps_->dimy - 7;
+                const SDL_Rect clip{origin_x + left * gps_->tile_pixel_x,
+                    origin_y + top * gps_->tile_pixel_y,
+                    (right - left) * gps_->tile_pixel_x,
+                    (bottom - top) * gps_->tile_pixel_y};
+                for (auto &row : rows) row.layout_native_clip = clip;
+                // Clear all original rows before this paragraph's first
+                // Chinese row, including English missed by early suppression.
+                // Later source continuations must not erase translated ink.
+                rows.front().graphical_clear_x = left;
+                rows.front().graphical_clear_y = top;
+                rows.front().graphical_clear_width = right - left;
+                rows.front().graphical_clear_height = rows.back().y - top + 1;
+                const auto target = translate_adventure_origin_source(sources[paragraph]);
+                if (target && append_setup_paragraph(rows, *target, right, right)) continue;
+                for (auto &row : rows) {
+                    row.native_help_source_only = true;
+                    row.native_help_review_source = sources[paragraph];
+                    std::fill_n(screen_rows[row.y].begin() + row.x, row.length, ' ');
+                    untranslated_help_rows.push_back(std::move(row));
+                }
+            }
+        }
+    }
+#endif
 
     // Native rejection dialogs include compiler-inlined paragraph wrapping.
     // Their complete modal owns all warning branches through the same catalog.
