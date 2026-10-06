@@ -1468,8 +1468,13 @@ static bool native_legacy_editable_draw(uintptr_t caller) {
 static void capture_native_clipped_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width) {
     const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+    // This call inside textbox::render draws only its owned edit string's
+    // temporary copy. It remains input even when native code reaches render
+    // directly instead of dispatching through the hooked widget vtable.
+    const bool textbox_text = g_native_textbox_widget_binding.text_return_address &&
+        caller == g_native_textbox_widget_binding.text_return_address;
     NativeEditableTextScope input_scope(
-        NativeEditableTextScope::owns(caller) || native_legacy_editable_draw(caller));
+        textbox_text || NativeEditableTextScope::owns(caller) || native_legacy_editable_draw(caller));
     const auto kind = native_info_title_kind(caller);
     const bool authored = native_info_title_authored(kind, source, caller);
     const auto civilization_field = native_civilization_caption_field(caller);
