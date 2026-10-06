@@ -4345,6 +4345,8 @@ private:
     void append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void layout_fortress_unit_chooser(SDL_Renderer *renderer);
+    void append_fortress_elevation_rows(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void append_fortress_kitchen_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
     void layout_fortress_kitchen(SDL_Renderer *renderer);
@@ -21232,6 +21234,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "workshop_tooltip_rows.inc"
 #include "fortress_labor.inc"
 #include "fortress_unit_chooser.inc"
+#include "fortress_elevation.inc"
 #include "fortress_kitchen.inc"
 #include "fortress_stone.inc"
 #include "fortress_monthly_schedule.inc"
@@ -21869,6 +21872,8 @@ std::vector<Match> Overlay::find_matches(int only_y,
 #include "dfhack_hotkeys_menu.inc"
 #include "dfhack_launcher_help.inc"
 #include "dfhack_auxiliary_help.inc"
+    append_fortress_elevation_rows(screen_rows, result, only_y,
+        screen_override != nullptr);
     // Native chooser callers own these whole fields even when the map has
     // replaced the live outer frame by the time SDL presents its captions.
     const bool classic_location_fields = native_ui_classic().value_or(false);

@@ -627,6 +627,25 @@ void Overlay::layout_fortress_build_menu(SDL_Renderer *renderer) {
     if (!gps_ || !face_ || !renderer ||
         gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0) return;
 
+    // Diplomacy uses the same picture skins for candidates, but its position
+    // list and per-candidate annotations are independent native fields.
+    // Never give those rows the build menu's shared caption inset.
+    constexpr std::string_view elevation_prompt = "Elevate whom?";
+    const NativePanelBorders elevation_borders(*gps_);
+    for (int y = 0; y < gps_->dimy; ++y) {
+        std::string row(gps_->dimx, ' ');
+        for (int x = 0; x < gps_->dimx; ++x) {
+            const auto ch = visible_char_at(x, y);
+            row[x] = ch ? static_cast<char>(ch) : ' ';
+        }
+        const size_t at = row.find(elevation_prompt);
+        if (at != std::string::npos && native_panel_interior(elevation_borders, *gps_,
+                static_cast<int>(at), static_cast<int>(at + elevation_prompt.size()), y)) {
+            fortress_build_menu_geometry_ = {};
+            return;
+        }
+    }
+
     // Item pickers reuse these picture-button skins. Their item names and
     // point costs already have independent columns; packing them as a build
     // caption would override that grid with adjacent pixel boxes.
