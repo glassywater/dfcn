@@ -44135,6 +44135,7 @@ Adventurer log reputation: rumored hunter	传闻中的猎人	h
 Adventurer log reputation: rumored killer	传闻中的杀手	h
 Adventurer log reputation: skilled hunter	技巧高超的猎人	h
 Allow Init Embark Options to Show Tunnels	允许初始出发选项显示隧道
+Also export DFHack extended legends data:	同时导出 DFHack 扩展传奇数据：	wl
 An abridged chronicle ({d} events total):	简略编年史（共 {d} 个事件）：	wt
 Announcement combat ability []: Head bump	用头蹭蹭	l
 Announcement combat ability []: Raise fog	唤起浓雾	l
@@ -138096,6 +138097,7 @@ NE	东北	w
 NW	西北	hP
 NW	西北	w
 No	否	wi
+On	开启	w
 SE	东南	hP
 SE	东南	w
 SW	西南	hP

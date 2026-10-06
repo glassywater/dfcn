@@ -1556,6 +1556,9 @@ Loading artifacts...	加载造物......	w
 Saving artifacts...	正在保存造物……	w
 Export XML	导出 XML
 Exporting!	正在导出！	w
+# DFHack exportlegends banner keeps the caption and colored toggle separate.
+Also export DFHack extended legends data:	同时导出 DFHack 扩展传奇数据：	wl
+On	开启	w
 Explore the history of {s}.	探索{s}的历史。	wtl
 Explore the history of The Past Dimensions.	探索“往昔维度”的历史。	l
 Select a category below to begin.	请从下方选择一个类别开始。	l
