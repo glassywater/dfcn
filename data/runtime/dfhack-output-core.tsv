@@ -1703,6 +1703,15 @@ DFHack GUI Autotraining noble: Acolyte	侍僧	l
 DFHack GUI Autotraining noble: Leader	领袖	l
 DFHack GUI Autotraining noble: Ranger Captain	游侠队长	l
 
+# preserve-rooms uses title-cased position codes and complete promotion chains.
+# Ordinary roles resolve through the existing positions grammar in this panel.
+DFHack GUI Preserve rooms: Autoassign to holder of role:	自动分配给担任此职务者：	l
+DFHack GUI Preserve rooms: None	无	l
+DFHack GUI Preserve rooms: Forced Administrator	强派行政官	l
+DFHack GUI Preserve rooms: Leader	领袖	l
+DFHack GUI Preserve rooms: Reserved for traveling unit:	为外出单位保留：	l
+DFHack GUI Preserve rooms: Clear reservation	清除预留	l
+
 # Installed fix/stuck-instruments.lua summary and gui/autobutcher.lua console error.
 DFHack output: Found {d} stuck instrument(s).	找到 {d1} 件卡住的乐器。	l
 DFHack output: Fixed {d} stuck instrument(s).	已修复 {d1} 件卡住的乐器。	l
