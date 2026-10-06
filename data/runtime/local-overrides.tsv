@@ -10408,6 +10408,9 @@ Assign position {d}	指派第{d}名队员	wt
 # Military equipment: complete button labels take precedence over name fallback.
 Assign uniform	指定制式服装	w
 Add uniform	添加制式服装	w
+Update equipment	更新装备	w
+Detect conflicts	检测冲突	w
+No conflicts	没有冲突	w
 Supplies	补给	w
 Details	详情	w
 
