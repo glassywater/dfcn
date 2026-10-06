@@ -138015,3 +138015,11 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
+
+# Stockpile storage/tool quotas; retain fragments when native drawing splits labels.
+Storage and tools	储存与工具	wi
+Storage and	储存与	w
+Max barrels	圆桶上限	wi
+Max bins	储物箱上限	wi
+Max wheelbarrows	手推车上限	wi
+Max	上限	w

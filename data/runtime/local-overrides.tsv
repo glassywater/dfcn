@@ -2813,6 +2813,13 @@ Weapons/trap comps	武器／陷阱组件	wi
 Other materials	其他材料	wi
 Core quality	核心品质	wi
 Total quality	总品质	wi
+# Stockpile storage/tool quotas; retain fragments when native drawing splits labels.
+Storage and tools	储存与工具	wi
+Storage and	储存与	w
+Max barrels	圆桶上限	wi
+Max bins	储物箱上限	wi
+Max wheelbarrows	手推车上限	wi
+Max	上限	w
 # Stockpile type controls: whole captions, including the native two-row labels.
 # Reuse the existing item categories and Customize terminology, not name sounds.
 Bars and Blocks	锭块	wi
