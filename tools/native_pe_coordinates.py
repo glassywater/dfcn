@@ -20,6 +20,24 @@ PE_VTABLE_TYPE_ANCHORS = {
     0x163c1c0: (0x16370a0, '.?AVlabor_list_widget@@'),
 }
 
+# The native MessageBoxW patch owns these complete immutable UTF-16 literals.
+# Their exact contents provide edition-independent identities even when the
+# surrounding initializer differs and has no paired instruction reference.
+PE_READONLY_LITERAL_ANCHORS = {
+    0x16aba48: 'FATAL ERROR'.encode('utf-16-le') + b'\0\0',
+    0x16ad410: 'Could not locate adventure start square'.encode('utf-16-le') + b'\0\0',
+}
+
+# Explicit virtual slots consumed by caption widgets. Other vtables retain
+# only the extent requested by their owner; a short class must not inherit
+# another widget's larger virtual interface merely because both have RTTI.
+PE_VTABLE_CONSUMED_SLOTS = {
+    0x162dc10: 4,
+    0x1710d18: 4,
+    0x15eb4a8: 4,
+    0x15f6ee8: 5,
+}
+
 
 _TOKEN = re.compile(
     r'"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'|'
@@ -46,6 +64,9 @@ _SEARCH_ELEMENT = {
 }
 _EXCLUDED = {
     'native_ime_adapter.inc',  # The fixed image coordinates belong to SDL2.dll.
+    'native_pe_binding.h',    # Relocation interface and image metadata, not owners.
+    'native_pe_resolver.h',   # Runtime seed/cache parsing uses numeric metadata.
+    'native_pe_image.h',      # PE directory fields and SHA256, not game resources.
 }
 
 
@@ -212,6 +233,13 @@ def _file_coordinates(name: str, tokens: list[str], required: dict[int, int]) ->
     def add(rva, width=1):
         if rva is not None and 0 < rva < 0x10000000 and width and width > 0:
             required[rva] = max(required.get(rva, 0), width)
+
+    if name == 'native_adventure_introduction.inc':
+        # These UTF-16 spans pass through the local append lambda, so its
+        # numeric caller arguments are not visible at native_pe_address().
+        # Include each literal's zero terminator and the complete patch span.
+        for address, content in PE_READONLY_LITERAL_ANCHORS.items():
+            add(address, len(content))
 
     # Resolve only single-valued local assignments; a later unknown assignment
     # does not turn a structure coordinate into a game address.

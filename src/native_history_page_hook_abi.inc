@@ -11,8 +11,13 @@ static void capture_native_history_relationship(void *history, void *chunk,
 static int32_t capture_native_history_war_choice(int32_t count, void *collection,
         const void *categories, const void *indices) {
     NativeHistoryCallbackScope callback;
-    const int32_t selected = reinterpret_cast<int32_t (*)(int32_t)>(
-        native_history_profile_base() + 0x71f30)(count);
+    const auto original = reinterpret_cast<int32_t (*)(int32_t)>(
+        native_pe_address(native_history_profile_base(), 0x71f30));
+    if (!original) {
+        record_native_history_war_choice(-1, count, collection, categories, indices);
+        return 0;
+    }
+    const int32_t selected = original(count);
     record_native_history_war_choice(selected, count, collection, categories, indices);
     return selected;
 }

@@ -83,6 +83,9 @@ def deploy_runtime_data(directory: Path) -> None:
         install(runtime / name, (RUNTIME / name).read_bytes())
     for name in ("dfhack-help.LICENSE", "lua-output.LICENSE", "pinyin-data/LICENSE"):
         install(runtime / name, (ROOT / "third_party" / name).read_bytes())
+    if sys.platform == "win32":
+        name = "native-addresses/pe-seed.bin"
+        install(runtime / name, (RUNTIME / name).read_bytes())
     for source in sorted((RUNTIME / "rulesets").rglob("*.toml")):
         install(runtime / source.relative_to(RUNTIME), source.read_bytes())
 
@@ -121,7 +124,7 @@ NATIVE_ABIS = {
         "target": r"(?:mingw|windows)",
         "compile": ["-static-libgcc", "-static-libstdc++"],
         "link": ["-lgdi32", "-luser32", "-limm32", "-lkernel32"],
-        "core_link": [],
+        "core_link": ["-lbcrypt"],
         "packages": ["sdl2"],
         "sdk_versions": ["2.30.11", "2.26.2"],
     },
@@ -558,6 +561,15 @@ def main() -> int:
                 if not objdump.is_file():
                     raise RuntimeError(f"Required native disassembler is missing: {objdump}")
                 generate_pe_bindings(pe_sources["reference"], pe_sources["classic"], objdump, output)
+            from build_pe_runtime_seed import generate as generate_pe_seed
+            seed_output = RUNTIME / "native-addresses/pe-seed.bin"
+            seed_inputs = [*inputs, output, ROOT / "tools/build_pe_runtime_seed.py"]
+            if needs_update([seed_output], seed_inputs):
+                objdump = Path(compiler[0]).with_name("objdump.exe")
+                if not objdump.is_file():
+                    raise RuntimeError(f"Required native disassembler is missing: {objdump}")
+                generate_pe_seed(pe_sources["reference"], pe_sources["classic"], objdump,
+                                 output, seed_output)
         elif sys.platform == "linux" and sources.get("classic"):
             from build_native_image_bindings import (
                 Image, binding_sources, generate as generate_elf_bindings,
