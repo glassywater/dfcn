@@ -1689,7 +1689,7 @@ DFHack output: - Encased in ice	- 被冰包裹	l
 DFHack output: - WARNING: Marked for garbage collection	- 警告：已标记为待清理	l
 DFHack output: - Used for construction	- 用于建造结构	l
 DFHack output: - Used for building	- 用于建筑	l
-DFHack output: - Artifact (from strange mood)	- 神器（由怪异心情制作）	l
+DFHack output: - Artifact (from strange mood)	- 神器（在奇异心境中制作）	l
 DFHack output: - Artifact	- 神器	l
 DFHack output: - In job	- 已用于任务	l
 DFHack output: Job type: {s}	任务类型：{s1}	l

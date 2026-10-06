@@ -861,11 +861,11 @@ costumes	服装	term
 candles	蜡烛	term
 
 # Moods, resurrection, learning, dreams and career changes.
-was taken by a fey mood	陷入了神秘的情绪	action
+was taken by a fey mood	陷入了古怪心境	action
 withdrew from society	退出了社会交往	action
-was possessed	被附体了	action
-began to skulk and brood	开始阴郁地独自徘徊	action
-was taken by a fell mood	陷入了凶险的情绪	action
+was possessed	被附身了	action
+began to skulk and brood	开始鬼祟地徘徊，阴森地沉思	action
+was taken by a fell mood	陷入了残暴心境	action
 was striken by melancholy	陷入了忧郁	action
 became crazed	发疯了	action
 went berserk	陷入了狂暴	action
@@ -1971,11 +1971,11 @@ the melancholy of {a}	{a}的忧郁	title
 the catatonia of {a}	{a}对外界不再回应	title
 the catatonia {a}	{a}对外界不再回应	title
 the rampage of {a}	{a}的肆虐	title
-the possession of {a}	{a}被附体	title
+the possession of {a}	{a}被附身	title
 the withdrawal from society of {a}	{a}不再与外界来往	title
-the fell mood of {a}	{a}的凶险情绪	title
-the dark brooding of {a}	{a}的阴郁沉思	title
-the fey mood of {a}	{a}的神秘情绪	title
+the fell mood of {a}	{a}的残暴心境	title
+the dark brooding of {a}	{a}的阴森沉思	title
+the fey mood of {a}	{a}的古怪心境	title
 the denial of apprenticeship of {a} under {a}	{a1}拜{a2}为师遭拒	title
 the new dream of {a} to attain rank in society	{a}获得社会地位的新梦想	title
 the new dream of {a} to see the great natural wonders of the world	{a}见识世界自然奇观的新梦想	title

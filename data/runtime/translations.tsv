@@ -248,7 +248,7 @@ DFHack help: The same plugin binary also provides the legacy autolabor command, 
 DFHack help: "-f", "--force" Force a grass type on tiles with no compatible grass types. Unsets the "no_grow" flag on all tiles. The "--new" option takes precedence for compatible biomes, otherwise such tiles will be forced instead. By default, a single random grass type is selected from the world's raws to be the forced type for the duration of the command. The "--plant" option allows a specific grass type to be specified.	"-f"、"--force" 在没有兼容草类型的图块上强制使用草类型。取消设置所有图块上的 "no_grow" 标志。对于兼容的生物群系，"--new" 选项优先，否则将强制使用此类图块。默认情况下，会从世界的原始草中选择一种随机草类型作为命令持续时间内的强制类型。 "--plant" 选项允许指定特定的草类型。	l
 DFHack help: #### Description: This is a well-crafted chalk statue of B\x8Dlalo Bandbeach. The item is an image of B\x8Dlalo Bandbeach the elf and Lani Lyricmonks the Learned the ettin in chalk by Domas Uthmiklikot. Lani Lyricmonks the Learned is striking down B\x8Dlalo Bandbeach. The artwork relates to the killing of the elf B\x8Dlalo Bandbeach by the ettin Lani Lyricmonks the Learned with Hailbite in The Forest of Indignation in 147.	#### Description: This is a well-crafted chalk statue of Bìlalo Bandbeach. The item is an image of Bìlalo Bandbeach the elf and Lani Lyricmonks the Learned the ettin in chalk by Domas Uthmiklikot. Lani Lyricmonks the Learned is striking down Bìlalo Bandbeach. The artwork relates to the killing of the elf Bìlalo Bandbeach by the ettin Lani Lyricmonks the Learned with Hailbite in The Forest of Indignation in 147.	l
 DFHack help: Define a filter list of plant raw IDs to target, ignoring all other plant types. This applies after "--shrubs" and "--saplings" are targeted, and can't be used without one of those options. "plant_id" is not case-sensitive, but must be enclosed in quotes if spaces exist. (No unmodded shrub or sapling raw IDs have spaces.) A numerical ID can be used in place of a string. Use "plant list" for a list of valid IDs.	定义要定位的植物原始 ID 的过滤列表，忽略所有其他植物类型。这在 "--shrubs" 和 "--saplings" 成为目标之后适用，并且如果没有这些选项之一则无法使用。 "plant_id" 不区分大小写，但如果存在空格，则必须用引号引起来。 （未修改的灌木或树苗原始 ID 均不包含空格。）可以使用数字 ID 代替字符串。使用 "plant list" 获取有效 ID 的列表。	l
-DFHack help: "--skill <skill>" Force the mood to use a specific skill instead of choosing the highest moodable skill. Valid values are "miner", "carpenter", "engraver", "mason", "stonecutter", "stonecarver", "tanner", "weaver", "clothier", "weaponsmith", "armorsmith", "metalsmith", "gemcutter", "gemsetter", "woodcrafter", "stonecrafter", "metalcrafter", "glassmaker", "leatherworker", "bonecarver", "bowyer", and "mechanic".	"--skill <skill>" 强制情绪使用特定技能，而不是选择最高情绪技能。有效值为 "miner"、"carpenter"、"engraver"、"mason"、"stonecutter"、"stonecarver"、"tanner"、"weaver"、"clothier"、"weaponsmith"、"armorsmith"、"metalsmith"、"gemcutter"、 "gemsetter"、"woodcrafter"、"stonecrafter"、"metalcrafter"、"glassmaker"、"leatherworker"、"bonecarver"、"bowyer" 和 "mechanic"。	l
+DFHack help: "--skill <skill>" Force the mood to use a specific skill instead of choosing the highest moodable skill. Valid values are "miner", "carpenter", "engraver", "mason", "stonecutter", "stonecarver", "tanner", "weaver", "clothier", "weaponsmith", "armorsmith", "metalsmith", "gemcutter", "gemsetter", "woodcrafter", "stonecrafter", "metalcrafter", "glassmaker", "leatherworker", "bonecarver", "bowyer", and "mechanic".	"--skill <skill>" 指定奇异心境使用的技能，代替选择等级最高且可用于奇异心境的技能。有效值为 "miner"、"carpenter"、"engraver"、"mason"、"stonecutter"、"stonecarver"、"tanner"、"weaver"、"clothier"、"weaponsmith"、"armorsmith"、"metalsmith"、"gemcutter"、"gemsetter"、"woodcrafter"、"stonecrafter"、"metalcrafter"、"glassmaker"、"leatherworker"、"bonecarver"、"bowyer" 和 "mechanic"。	l
 DFHack help: You can click on specific materials to allow only items of those materials when building the current type of building. You can also allow or disallow entire categories of materials by clicking on the "Type" options on the left. Note that it is perfectly fine to choose materials that currently show zero quantity. buildingplan will patiently wait for items made of materials you have selected to become available.	您可以点击特定材料，在建造当前类型的建筑时仅允许使用这些材料的物品。您还可以通过单击左侧的"类型"选项来允许或禁止整个类别的材料。请注意，选择当前显示零数量的材料是完全可以的。 Buildingplan 将耐心等待由您选择的材料制成的物品可用。	l
 DFHack help: * "StartManager" (needed 1, 0) All skills not covered by the other starting professions ("Miner", "Mason", "Outdoorsdwarf", and "Farmer"), plus a few overlapping skills to assist in critical tasks at the beginning of the game. Individual labors should be turned off as migrants are assigned more specialized professions that cover them, and the StartManager dwarf can eventually convert to some other profession.	*"StartManager"（需要 1, 0）其他起始职业（"矿工"、"泥瓦匠"、"户外侏儒"和"农民"）未涵盖的所有技能，以及一些重叠技能，以协助游戏开始时的关键任务。个人劳动应该被关闭，因为移民被分配了更专业的职业来覆盖他们，并且 StartManager 矮人最终可以转换到其他职业。	l
 DFHack help: When registering job types, choose only the *most* important job types. If you add too many job types, or if there are simply too many jobs of those types in your fort, the *other* tasks in your fort can get ignored. This causes the same problem that "prioritize" is designed to solve. The script provides a good default set of job types to prioritize that have been suggested and playtested by the DF community.	注册职位类型时，仅选择*最*重要的职位类型。如果您添加太多作业类型，或者要塞中这些类型的作业太多，则要塞中的*其他*任务可能会被忽略。这会导致 "prioritize" 旨在解决的相同问题。该脚本提供了一组很好的默认工作类型，可以对 DF 社区建议和测试的工作类型进行优先排序。	l
@@ -285,7 +285,7 @@ DFHack help: "tooltip-follow-job-shortenings" (default: "Store item in stockpile
 DFHack help: Force a grass type on tiles with no compatible grass types. Unsets the "no_grow" flag on all tiles. The "--new" option takes precedence for compatible biomes, otherwise such tiles will be forced instead. By default, a single random grass type is selected from the world's raws to be the forced type for the duration of the command. The "--plant" option allows a specific grass type to be specified.	在没有兼容草类型的图块上强制使用草类型。取消设置所有图块上的 "no_grow" 标志。对于兼容的生物群落，"--new" 选项优先，否则将强制使用此类图块。默认情况下，会从世界的原始草中选择一种随机草类型作为命令持续时间内的强制类型。 "--plant" 选项允许指定特定的草类型。	l
 DFHack help: The "list" subcommand provides information on how to craft the instruments used by the player civilization. For single-piece instruments, it shows the skill and material needed to craft it. For multi-piece instruments, it displays the skill used in its assembly as well as information on how to craft the necessary pieces. It also shows whether the instrument is handheld or placed as a building.	"list" 子命令提供有关如何制作玩家政权使用的乐器的信息。对于单件乐器，它显示了制作它所需的技能和材料。对于多件乐器，它显示了组装过程中使用的技能以及如何制作必要部件的信息。它还显示仪器是手持式还是作为建筑物放置。	l
 DFHack help: This tool mitigates both issues. It records when units leave the map and reserves their assigned bedrooms, offices, etc. for them. The zones will be disabled in their absence (so other units don't steal them), and will be re-enabled and reassigned to them when they appear back on the map. If they die away from the fort (or are captured), the zone will become unreserved and available for reuse.	这个工具可以缓解这两个问题。它记录单位离开地图的时间，并为他们保留指定的卧室、办公室等。这些区域将在它们消失时被禁用（这样其他单位就不会窃取它们），并且当它们重新出现在地图上时将被重新启用并重新分配给它们。如果它们在远离要塞的地方消失（或被捕获），则该区域将变为未保留并可供重复使用。	l
-DFHack help: Force the mood to use a specific skill instead of choosing the highest moodable skill. Valid values are "miner", "carpenter", "engraver", "mason", "stonecutter", "stonecarver", "tanner", "weaver", "clothier", "weaponsmith", "armorsmith", "metalsmith", "gemcutter", "gemsetter", "woodcrafter", "stonecrafter", "metalcrafter", "glassmaker", "leatherworker", "bonecarver", "bowyer", and "mechanic".	强制情绪使用特定技能，而不是选择情绪最高的技能。有效值为 "miner"、"carpenter"、"engraver"、"mason"、"stonecutter"、"stonecarver"、"tanner"、"weaver"、"clothier"、"weaponsmith"、"armorsmith"、"metalsmith"、"gemcutter"、 "gemsetter"、"woodcrafter"、"stonecrafter"、"metalcrafter"、"glassmaker"、"leatherworker"、"bonecarver"、"bowyer" 和 "mechanic"。	l
+DFHack help: Force the mood to use a specific skill instead of choosing the highest moodable skill. Valid values are "miner", "carpenter", "engraver", "mason", "stonecutter", "stonecarver", "tanner", "weaver", "clothier", "weaponsmith", "armorsmith", "metalsmith", "gemcutter", "gemsetter", "woodcrafter", "stonecrafter", "metalcrafter", "glassmaker", "leatherworker", "bonecarver", "bowyer", and "mechanic".	指定奇异心境使用的技能，代替选择等级最高且可用于奇异心境的技能。有效值为 "miner"、"carpenter"、"engraver"、"mason"、"stonecutter"、"stonecarver"、"tanner"、"weaver"、"clothier"、"weaponsmith"、"armorsmith"、"metalsmith"、"gemcutter"、"gemsetter"、"woodcrafter"、"stonecrafter"、"metalcrafter"、"glassmaker"、"leatherworker"、"bonecarver"、"bowyer" 和 "mechanic"。	l
 DFHack help: When you modify a tile, automatically fix adjacent tiles to fit your changes. For example, when you place a ramp, it will automatically place a corresponding "ramp top" in the z-level above (which otherwise must be done manually for the ramp to be displayed correctly and function). Most players should leave this on, but you can turn this off if you need precise control over each changed tile.	修改图块时，会自动修复相邻图块以适应您的更改。例如，当您放置斜坡时，它会自动在上面的 Z 层中放置相应的"斜坡顶部"（否则必须手动完成斜坡才能正确显示和运行）。大多数玩家应该将其保留为打开状态，但如果您需要精确控制每个更改的图块，则可以将其关闭。	l
 DFHack help: You can select whether the item must be decorated, and you can drag the ends of the "Item quality" slider to set your desired quality range. Note that blocks, boulders, logs, and bars don't have a quality, and the quality options are disabled for those types. As you change the quality settings, the number of currently available matched items of each material is adjusted in the materials list.	您可以选择该物品是否必须装饰，并且可以拖动"物品质量"滑块的两端来设置您想要的质量范围。请注意，块、巨石、原木和酒吧没有质量，并且这些类型的质量选项被禁用。当您更改质量设置时，材料列表中每种材料当前可用的匹配项目的数量也会随之调整。	l
 DFHack help: "tiletypes-command f any ; f designated 1 ; p any ; p hidden 0 ; block ; run" Set the filter to match designated tiles, the paint specification to unhide them, and the brush to cover all tiles in the current block. Then run itThis is useful for unhiding tiles you wish to dig out of an aquifer so the game doesn't pause and undesignate adjacent tiles every time a new damp tile is "discovered".	"tiletypes-command f any ; f指定 1 ; p any ; p hide 0 ; block ; run" 设置过滤器以匹配指定的图块，设置油漆规范以取消隐藏它们，并设置画笔以覆盖当前块中的所有图块。然后运行它这对于取消隐藏您想要从含水层中挖掘的瓷砖非常有用，这样游戏就不会在每次新的潮湿瓷砖为 "discovered" 时暂停并取消指定相邻的瓷砖。	l
@@ -356,7 +356,7 @@ DFHack help: Clears attributes of selected dwarves, then rerolls that dwarf base
 DFHack help: If you open the quest log map and move the cursor to your target location, you can run this command to teleport straight there. This can be done both within and outside of fast travel mode, and it is possible to "questport" in situations where fast travel is normally prohibited. The quest log map must be zoomed out to the world map when running this command.	打开任务日志地图并将光标移动到目标位置，可以运行此命令直接传送到那里。这可以在快速行驶模式之内和之外完成，并且在通常禁止快速行驶的情况下可以"questport"。运行此命令时，任务日志地图必须缩小到世界地图。	l
 DFHack help: Many DFHack tools have graphical interfaces that appear in-game. You can tell which windows belong to DFHack tools because they will have the word "DFHack" printed across their bottom frame edge. DFHack provides an advanced windowing system that gives the player a lot of control over where the windows appear and whether they capture keyboard and mouse input.	许多 DFHack 工具有游戏内图形界面，窗口下边框上的 DFHack 标记可以帮助你识别它们。DFHack 的窗口系统允许自由调整窗口位置，并控制键盘和鼠标输入由窗口还是游戏接收。	l
 DFHack help: Pressing "r" changes into the target selection mode, which works by highlighting two points with "Enter" like all designations. When a target area is set, the engine projectiles are aimed at that area, or units within it (this doesn't actually change the original aiming code, instead the projectile trajectory parameters are rewritten as soon as it appears).	按 "r" 会切换到目标选择模式，该模式的工作原理是像所有规划标记一样用 "Enter" 突出显示两个点。设置目标区域后，引擎射弹将瞄准该区域或其中的单位（这实际上不会改变原始瞄准代码，而是射弹轨迹参数一出现就会被重写）。	l
-DFHack help: * **Strange-mood shaping.** Dwarves that can still have a strange mood (their race has the "STRANGE_MOODS" token and they haven't had one yet) and that have already started a moodable craft are steered toward skills a strange mood can advance -- preferably valuable ones like weaponsmithing or armorsmithing -- so a mood pays out in a useful legendary skill.	* **奇怪的情绪塑造。** 矮人仍然可以有一个奇怪的情绪（他们的种族有 "STRANGE_MOODS" 代币，但他们还没有）并且已经开始了一种情绪化的工艺，被引导到奇怪的情绪可以推进的技能 - 最好是有价值的，如武器锻造或盔甲锻造 - 所以情绪会在有用的传奇技能中得到回报。	l
+DFHack help: * **Strange-mood shaping.** Dwarves that can still have a strange mood (their race has the "STRANGE_MOODS" token and they haven't had one yet) and that have already started a moodable craft are steered toward skills a strange mood can advance -- preferably valuable ones like weaponsmithing or armorsmithing -- so a mood pays out in a useful legendary skill.	* **奇异心境技能引导。** 对于仍可触发奇异心境的矮人（其种族具有 "STRANGE_MOODS" 标记，且尚未经历过奇异心境），如果他们已经开始从事可用于奇异心境的工艺，就会引导他们发展奇异心境能够提升的技能，优先选择武器锻造或盔甲锻造等实用技能，使他们通过奇异心境掌握一项有用的传奇技能。	l
 DFHack help: A short description of the command will appear in a nearby textbox. If you'd like to see the full help text for the command or edit the command before running, you can open it for editing in gui/launcher by shift clicking on the command, left clicking on the arrow to the left of the command, or by pressing the right arrow key while the command is selected.	该命令的简短描述将出现在附近的文本框中。如果您想查看该命令的完整帮助文本或在运行之前编辑该命令，您可以在 gui/launcher 中打开该命令进行编辑，方法是按住 Shift 键单击该命令，左键单击该命令左侧的箭头，或者在选择该命令时按向右箭头键。	l
 DFHack help: It is also convenient to prioritize tasks that block you (the player) from doing other things. When you designate a group of trees for chopping, it's often because you want to *do* something with those logs and/or that free space. Prioritizing tree chopping will get your dwarves on the task and keep you from staring at the screen in annoyance for too long.	优先处理那些阻碍你（玩家）做其他事情的任务也很方便。当您指定一组树木进行砍伐时，通常是因为您想对这些可用空间的原木 and/or 进行"操作"。优先考虑砍树会让你的矮人专注于任务，并且让你不会恼怒地盯着屏幕太久。	l
 DFHack help: "repeat --name autoMilkCreature --time 14 --timeUnits days --command [ workorder "{\\"job\\":\\"MilkCreature\\",\\"item_conditions\\":[{\\"condition\\":\\"AtLeast\\",\\"value\\":5,\\"flags\\":[\\"empty\\"],\\"item_type\\":\\"BUCKET\\"}]}" ]" Automatically milk any pets that are ready to be milked (but only if there are at least 5 empty buckets available to receive the milk).	"repeat --name autoMilkCreature --time 14 --timeUnits days --command [ workorder "{\\\\"job\\\\":\\\\"MilkCreature\\\\",\\\\"item_conditions\\\\":[{\\\\"condition\\\\":\\\\"AtLeast\\\\",\\\\"value\\\\":5,\\\\"flags\\\\":[\\\\"empty\\\\"],\\\\"item_type\\\\":\\\\"BUCKET\\\\"}]}" ]" 自动给任何宠物挤奶准备挤奶（但前提是至少有 5 个空桶可用于接收牛奶）。	l
@@ -1702,7 +1702,7 @@ DFHack help: This script provides 2 overlays that are managed by the overlay fra
 DFHack help: This will reset all attributes to a neutral value and will then set the following values (the ranges will differ based on race; this example assumes a dwarf is selected in the UI):	这会将所有属性重置为中性值，然后设置以下值（范围将根据种族而有所不同；此示例假设在 UI 中选择了矮人）：	l
 A caravan from {e} has arrived. The presence of your ruler has attracted great riches. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are tenuous at best.	来自{e1}的商队已抵达。你的统治者在此坐镇，吸引来了巨额财富。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿至多只能算勉强。	hPt
 DFHack help: "(no)chop <burrow>[,<burrow>...]" Instead of choosing trees across the whole game map, restrict tree cutting to the given burrows. Burrows can be specified by name or internal ID.	"(no)chop <活动区>[,<活动区>...]" 不要在整个游戏地图上选择树木，而是将树木切割限制在给定的活动区范围内。活动区可以通过名称或内部 ID 指定。	l
-DFHack help: "--type <type>" Force the mood to be of a particular type instead of choosing randomly based on happiness. Valid values are "fey", "secretive", "possessed", "fell", and "macabre".	"--type <type>" 强制心情为特定类型，而不是根据幸福程度随机选择。有效值为 "fey"、"secretive"、"possessed"、"fell" 和 "macabre"。	l
+DFHack help: "--type <type>" Force the mood to be of a particular type instead of choosing randomly based on happiness. Valid values are "fey", "secretive", "possessed", "fell", and "macabre".	"--type <type>" 指定奇异心境类型，代替根据幸福程度随机选择。有效值为 "fey"（古怪心境）、"secretive"（诡秘心境）、"possessed"（附身心境）、"fell"（残暴心境）和 "macabre"（阴森心境）。	l
 DFHack help: "Forgotten beast irritation minimum" While a cavern's effective irritation (see "Forgotten beast wealth divisor") is below this value, no forgotten beasts will invade that cavern.	"遗忘兽刺激最小" 当地下洞穴的有效刺激（参见"遗忘兽财富除数"）低于该值时，没有遗忘兽会入侵该地下洞穴。	l
 DFHack help: "autobutcher now" Process all livestock according to the current watchlist configuration, even if the plugin is not currently enabled, and thus not doing automatic periodic scans.	"autobutcher now" 根据当前监视列表配置处理所有牲畜，即使插件当前未启用，因此不进行自动定期扫描。	l
 DFHack help: "createitem floor|item|building" Subsequently created items will be placed on the floor beneath the selected unit's, inside the selected item, or as part of the selected building.	"createitem floor|item|building" 随后创建的物品将放置在所选单元下方的地板上、所选物品内部或作为所选建筑物的一部分。	l
@@ -1880,7 +1880,7 @@ A useful workshop for pressing liquids from various sources. Some plants might n
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the agreement between {s} and {s} to entertain the citizenry and become a resident of {s}	{s1}与{s2}达成的居留协议：成为{s3}的居民，以便为居民表演	l
 Announcement combat justice-intrigue-recruitment [justice-intrigue-predicate,$name,justice-intrigue-place]: {s} as a member of {s} toward the fulfillment of plots and schemes in {s}	{s1}，让其作为{s2}的成员，在{s3}实施阴谋	l
 DFHack help: "--command [ ... ]" The "..." specifies the command to be run, just as you would write it on the commandline. Note that the command must be enclosed in square brackets.	"--command [ ... ]" "..."指定要运行的命令，就像在命令行上编写它一样。请注意，该命令必须括在方括号中。	l
-DFHack help: "--id" Make the strange mood strike the unit with the given id instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	"--id" 让奇怪的情绪袭击给定id的单位，而不是随机挑选一个。单位资格仍然有效（除非还指定了 "--force"）。	l
+DFHack help: "--id" Make the strange mood strike the unit with the given id instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	"--id" 让指定 ID 的单位进入奇异心境，代替随机挑选单位。仍须符合触发条件，除非同时指定 "--force"。	l
 DFHack help: "caravan extend 30 0 1" Extend the time that caravans 0 and 1 stay at the depot by 30 days. If the caravans have already started leaving, they will return to the depot.	"caravan extend 30 0 1" 将商队 0、1在场时间延长30天。如果商队已经开始出发，他们将返回仓库。	l
 DFHack help: "list-generated [detailed]" List the token names of all generated creatures in the loaded save. If "detailed" is specified, then also show the accompanying description.	"list- generated [detailed]" 列出加载的保存中所有生成的生物的令牌名称。如果指定了 "detailed"，则还显示随附的说明。	l
 DFHack help: After constructing the building itself, machines can be connected to the edge tiles that look like gear boxes. Their exact position is extracted from the workshop raws.	建造完建筑物本身后，机器可以连接到看起来像齿轮箱的边缘瓷砖。它们的确切位置是从车间原始数据中提取的。	l
@@ -1948,7 +1948,7 @@ A large ferocious predator found in grasslands. It lives in groups of females an
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the agreement between {s} and {s} to work as a mercenary and become a resident of {s}	{s1}与{s2}达成的居留协议：成为{s3}的居民，以便从事雇佣兵工作	l
 DFHack help: "--command [ <commandStrs> ]" Specify the command to be executed. The following tokens can be used in the command and they will be replaced with appropriate values:	"--command [ <commandStrs> ]" 指定要执行的命令。命令中可以使用以下标记，它们将被替换为适当的值：	l
 DFHack help: "--material <TOKEN>" Specify the material of the flow, if applicable. E.g. "INORGANIC:IRON", "CREATURE_MAT:DWARF:BRAIN", or "PLANT_MAT:MUSHROOM_HELMET_PLUMP:DRINK".	"--material <TOKEN>" 指定流的材质（如果适用）。例如。 "INORGANIC:IRON"、"CREATURE_MAT:DWARF:BRAIN" 或 "PLANT_MAT:MUSHROOM_HELMET_PLUMP:DRINK"。	l
-DFHack help: "strangemood --force --unit --type secretive --skill armorsmith" Trigger a strange mood for the selected unit that will cause them to become a legendary armorsmith.	"strangemood --force --unit --type secretive --skill armorsmith" 为选定的单位触发一种奇怪的情绪，使他们成为传奇的盔甲匠。	l
+DFHack help: "strangemood --force --unit --type secretive --skill armorsmith" Trigger a strange mood for the selected unit that will cause them to become a legendary armorsmith.	"strangemood --force --unit --type secretive --skill armorsmith" 为选中的单位触发奇异心境，使其成为传奇盔甲匠。	l
 DFHack help: "tooltip-hover" (default: enabled) If the "spectate.tooltip" overlay is enabled, toggle whether to show the hover popup panel when your mouse cursor is over a unit.	"tooltip-hover"（默认：启用） 如果启用了 "spectate.tooltip" 叠加层，则切换当鼠标光标悬停在单位上时是否显示悬停弹出面板。	l
 DFHack help: * suspend deconstruction jobs on machine components (gears, axles, waterwheels, etc.) whose removal would leave part of the machine without support and collapse it.	* 暂停机器部件（齿轮、车轴、水车等）的解构工作，这些部件的拆除会使机器的一部分失去支撑并导致机器倒塌。	l
 DFHack help: A button is added to the screen when you are viewing display furniture (pedestals and display cases) where you can launch a the extended DFhack item assignment GUI.	当您查看展示家具（基座和展示柜）时，屏幕上会添加一个按钮，您可以在其中启动扩展的 DFhack 项目分配 GUI。	l
@@ -1979,7 +1979,7 @@ DFHack help: :0: semi-wild :1: trained :2: well-trained :3: skillfully trained :
 DFHack help: Assign a tomb zone with the specified ID to the unit with the specified ID and task all its burial items for simultaneous hauling into the coffin in the tomb zone.	为指定ID的单位分配指定ID的墓区，并任务其所有陪葬品同时拖入墓区的棺材中。	l
 DFHack help: Change the corresponding geology layer for all biomes on your map. Be aware that the same geology layer can AND WILL be on different z-levels for different biomes.	更改地图上所有生物群落的相应地质图层。请注意，同一地质层 AND WILL 可以位于不同生物群落的不同 Z 层上。	l
 DFHack help: Clear all skills. If the script is called with both this option and "--skills", first all the unit skills will be cleared and then the listed skills will be added.	清除所有技能。如果同时使用此选项和 ​​"--skills" 调用脚本，首先将清除所有单位技能，然后添加列出的技能。	l
-DFHack help: Force the mood to be of a particular type instead of choosing randomly based on happiness. Valid values are "fey", "secretive", "possessed", "fell", and "macabre".	强制心情为特定类型，而不是根据幸福程度随机选择。有效值为 "fey"、"secretive"、"possessed"、"fell" 和 "macabre"。	l
+DFHack help: Force the mood to be of a particular type instead of choosing randomly based on happiness. Valid values are "fey", "secretive", "possessed", "fell", and "macabre".	指定奇异心境类型，代替根据幸福程度随机选择。有效值为 "fey"（古怪心境）、"secretive"（诡秘心境）、"possessed"（附身心境）、"fell"（残暴心境）和 "macabre"（阴森心境）。	l
 DFHack help: In addition to "legends_plus.xml", "exportlegends" recreates the companion files that Classic Dwarf Fortress produced with its "Export Map/Gen Information" action:	除了 "legends_plus.xml" 之外，"exportlegends" 还重新创建了 Classic 矮人要塞通过"导出地图/生成信息"操作生成的伴随文件：	l
 DFHack help: Multiple contexts can be specified by separating them with a pipe ("|") - for example, "@foo|bar|baz/foo" would match anything under "@foo", "@bar", or "@baz/foo".	可以通过用竖线（"|"）分隔来指定多个上下文 - 例如，"@foo|bar|baz/foo"将匹配"@foo"、"@bar"或"@baz/foo"下的任何内容。	l
 DFHack help: Note that changes are only saved for non-procedural sites, i.e. caves, camps, and player forts. Other sites will lose the changes you make when you leave the area.	请注意，仅针对非程序性地点（即洞穴、营地和玩家堡垒）保存更改。当您离开该区域时，其他站点将丢失您所做的更改。	l
@@ -2022,7 +2022,7 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 the bestowal of the title of {s} in {p} after attaining sufficient skill with {s}, participating in {d} battles, slaying {d} enemies, and being a member for a year within {p}.	在{p2}，在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死{d2}名敌人及入会满一年后授予{p1}的{s1}头衔。	htEi
 the bestowal of the title of {s} in {p} after attaining sufficient skill with {s}, participating in {d} battles, slaying {d} enemies, and {d} years of membership in the wilds.	在荒野中，在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死{d2}名敌人及拥有{d3}年会龄后授予{p1}的{s1}头衔。	htEi
 Announcement combat agreement-core [agreement-party-list,$office,$name,agreement-party-list]: {s} began passing a portion of corruptly-obtained funds as the {s} of {s} to {s}	{s1}以{s3}的{s2}身份开始将部分非法所得转交给{s4}	l
-DFHack help: "--unit" Make the strange mood strike the selected unit instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	"--unit" 让奇怪的情绪袭击选定的单位，而不是随机挑选一个。单位资格仍然有效（除非还指定了 "--force"）。	l
+DFHack help: "--unit" Make the strange mood strike the selected unit instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	"--unit" 让选中的单位进入奇异心境，代替随机挑选单位。仍须符合触发条件，除非同时指定 "--force"。	l
 DFHack help: "logistics add melt" Register the currently selected stockpile for automelting. Meltable items that are brought to this stockpile will be designated for melting.	"logistics add melt" 注册当前选择的储物堆进行自动熔化。被带到这个储物堆的可熔化物品将被指定用于熔化。	l
 DFHack help: "modtools/add-syndrome --target 2391 --syndrome "gila monster bite" --eraseAll" Remove all instances of the "gila monster bite" syndrome from the specified unit.	"modtools/add-syndrome --target 2391 --syndrome "吉拉怪物咬伤" --eraseAll" 从指定单位中删除所有"吉拉怪物咬伤"综合症实例。	l
 DFHack help: "region-pops incr <race> <amount>" Add the given amount to the population counts of the given race. If the amount is negative, this will decrease the population.	"region-pops incr <race> <amount>" 将指定物种的种群数量增加 amount。amount 为负时减少种群数量。	l
@@ -2031,7 +2031,7 @@ DFHack help: Add a new need to the unit. Requires a -need argument, and target. 
 DFHack help: Find and assign a free minecart to all hauling routes (or the specified hauling route). Hauling routes that already have a minecart assigned to them are skipped.	查找并分配一个空闲矿车到所有运输路线（或指定的运输路线）。已经分配了矿车的运输路线将被跳过。	l
 DFHack help: Have you ever died, but wish you hadn't? This tool can help : ) When you see the "You are deceased" message, run this command to be resurrected and fully healed.	你曾经死过，但希望没有死吗？这个工具可以提供帮助:) 当您看到"您已去世"消息时，运行此命令即可复活并完全治愈。	l
 DFHack help: List forbidden items, forbid all items on the map, or forbid unreachable items. Forbidding unreachable items checks if any of your citizens can walk to the item.	列出禁止物品，禁止地图上的所有物品，或禁止无法到达的物品。禁止无法到达的物品会检查您的居民中是否有任何人可以走到该物品处。	l
-DFHack help: Make the strange mood strike the unit with the given id instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	让奇怪的情绪袭击给定id的单位，而不是随机挑选一个。单位资格仍然有效（除非还指定了 "--force"）。	l
+DFHack help: Make the strange mood strike the unit with the given id instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	让指定 ID 的单位进入奇异心境，代替随机挑选单位。仍须符合触发条件，除非同时指定 "--force"。	l
 DFHack help: Process all livestock according to the current watchlist configuration, even if the plugin is not currently enabled, and thus not doing automatic periodic scans.	根据当前监视列表配置处理所有牲畜，即使该插件当前未启用，因此不进行自动定期扫描。	l
 DFHack help: Siege engines in DF haven't been updated since the game was 2D, and can only aim in four directions. To make them useful above-ground, this plugin allows you to:	DF 中的攻城引擎自从游戏是 2D 以来就没有更新过，并且只能瞄准四个方向。为了使它们在地面上有用，该插件允许您：	l
 DFHack help: Skills are defined by their token and their rank. You can see a list of valid skill tokens by running "devel/query --table df.job_skill" or by browsing the wiki.	技能由其代币和等级定义。您可以通过运行 "devel/query --table df.job_skill" 或浏览 wiki 来查看有效技能令牌的列表。	l
@@ -2296,7 +2296,7 @@ DFHack help: Note that this is the commandline tool. Please see gui/quickfort if
 DFHack help: Set range of dwarves assigned to a labor, optionally specifying the size of the pool of most skilled dwarves that will ever be considered for this labor.	设置该劳动的分配人数范围；还可指定候选人才数量，仅从技能最好的这些矮人中分配该劳动。	l
 DFHack help: Set the outside lighting to correspond with the specified day hour (1-24), or specify "cycle" to have the lighting follow the sun (which is the default).	将外部照明设置为与指定的白天时间 (1-24) 相对应，或指定 "cycle" 让照明跟随太阳（这是默认设置）。	l
 DFHack help: The tabs can also be navigated with the keyboard, with the "Ctrl""T" and "Ctrl""Y" hotkeys. These are the default hotkeys for navigating DFHack tab bars.	也可按 Ctrl+T 或 Ctrl+Y 切换标签页。这是 DFHack 标签栏的默认切换快捷键。	l
-DFHack help: This tool sets preferences for strange moods to include a weapon type, equipment type, and material. If you also wish to trigger a mood, see strangemood.	此工具设置奇怪情绪的偏好，包括武器类型、装备类型和材料。如果您也想触发一种情绪，请参阅"strangemood"。	l
+DFHack help: This tool sets preferences for strange moods to include a weapon type, equipment type, and material. If you also wish to trigger a mood, see strangemood.	此工具可设置奇异心境的武器类型、装备类型和材料偏好。若还需触发奇异心境，请使用 "strangemood"。	l
 DFHack help: gui/workorder-details ===================== Adjust input items, material, or traits for work orders. Actual jobs created for it will inherit the details.	gui/workorder-details ===================== 调整工作订单的输入项目、材料或特性。为其创建的实际职位将继承详细信息。	l
 Here you can interact with the objects you are carrying. Items can be dropped, worn, eaten, thrown, named, etc. The icon tooltips describe your options for each item.	这里可以操作携带的物品，例如丢弃、穿戴、食用、投掷和命名。每件物品旁图标的悬停提示会说明可用操作。	hq
 and received the title of {s} after attaining sufficient skill with {s}, participating in {d} battles, slaying {d} enemies, and being a member for a year in the wilds	并在荒野中在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死{d2}名敌人及入会满一年后，获得了{s1}头衔	ht
@@ -2330,7 +2330,7 @@ DFHack help: "region-pops list [<pattern>]" Shows race populations of the region
 DFHack help: * "-item", "-creature", "-color", "-shape", "-plant", "-poetic", "-musical", "-dance": Include one of these to describe what the id argument represents.	* "-item"、"-creature"、"-color"、"-shape"、"-plant"、"-poetic"、"-musical"、"-dance"：包括其中之一来描述 id 参数表示的内容。	l
 DFHack help: After the surface irritation counter rises above the minimum, this value represents the range over which the chance of attack increases from 0% to 100%.	当表面刺激计数器上升到最小值以上后，该值代表攻击几率从 0% 增加到 100% 的范围。	l
 DFHack help: Applies the specified blueprint data and returns processing statistics. The statistics structure is a map of stat ids to "{label=string, value=number}".	应用指定的蓝图数据并返回处理统计信息。统计结构是 stat id 到"{label=string, value=number}"的映射。	l
-DFHack help: Make the strange mood strike the selected unit instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	让奇怪的情绪袭击所选的单位，而不是随机挑选一个。单位资格仍然有效（除非还指定了 "--force"）。	l
+DFHack help: Make the strange mood strike the selected unit instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	让选中的单位进入奇异心境，代替随机挑选单位。仍须符合触发条件，除非同时指定 "--force"。	l
 DFHack help: Pardon the selected unit or the one specified by unit id (if provided). Currently only applies to prison time and doesn't cancel beatings or hammerings.	原谅所选单位或单位 ID 指定的单位（如果提供）。目前仅适用于监狱期间，并不能取消殴打或锤击。	l
 DFHack help: Run the specified commands if they haven't been run before. If "--rerun" is specified, run the commands regardless of whether they have been run before.	运行指定的命令（如果之前未运行过）。如果指定了"--rerun"，则无论之前是否运行过命令，都将执行该命令。	l
 DFHack help: Run this script after being presented with the "You are deceased." message to abandon your dead adventurer and take control of your adventurer's killer.	出现"您已去世"后运行此脚本。消息抛弃你死去的冒险家并控制你的冒险家杀手。	l
@@ -3612,7 +3612,7 @@ Announcement combat justice-intrigue-sentence [justice-intrigue-actor,justice-in
 Announcement combat justice-intrigue-sentence [justice-intrigue-actor,justice-intrigue-response,justice-intrigue-factors]: {s} {s}, despite {s}.	尽管{s3}，{s1}仍{s2}。	l
 Announcement combat rumor-event [$name,rumor-person,$name]: A bandit gang calling itself {s}, led by {s}, has been harassing people over in {s}.	有伙土匪自称{s1}，头目是{s2}，一直在{s3}那边骚扰百姓。	l
 Conversations, like movement, take place over time. If you engage in a conversation, you'll generally wait for a reply before you can act again.	与移动一样，交谈也会消耗时间。开始交谈后，通常要等到对方回复才能再次行动。	hq
-DFHack help: "--force" Ignore normal strange mood preconditions (no recent mood, minimum moodable population, artifact limit not reached, etc.).	"--force" 忽略正常的奇怪情绪前提条件（最近没有情绪、最低情绪人群、未达到神器限制等）。	l
+DFHack help: "--force" Ignore normal strange mood preconditions (no recent mood, minimum moodable population, artifact limit not reached, etc.).	"--force" 忽略触发奇异心境的常规前提（近期未发生奇异心境、符合条件的矮人数量达到最低要求、尚未达到神器数量上限等）。	l
 DFHack help: "--optimize" Performs a job search for unoptimized dwarves. Run "dwarf-op --list job_distribution" to see how jobs are distributed.	"--optimize" 对未优化的矮人执行职位搜索。运行"dwarf-op --list job_distribution"来查看作业是如何分配的。	l
 DFHack help: "-f", "--filter <search>[,<search>...]" When importing, only modify the settings that contain at least one of the given substrings.	"-f"、"--filter <search>[,<search>...]" 导入时，仅修改至少包含给定子字符串之一的设置。	l
 DFHack help: "-p", "--no-petitioners" Exclude citizens who joined via petition. That is, only show dwarves who came in an actual migration wave.	"-p"、"--no-petitioners" 排除通过请愿加入的居民。也就是说，仅显示实际迁移浪潮中出现的矮人。	l
@@ -4596,7 +4596,7 @@ DFHack help: * A generic material spec constrains the item material to one of th
 DFHack help: * The orientation can be changed by adding a main axis point using 'v' and moving this to point in the desired direction.	* 可以通过使用"v"添加主轴点并将其移动到所需方向来更改方向。	l
 DFHack help: Exported orders are saved in the "dfhack-config/orders" directory, where you can view, edit, and delete them, if desired.	导出的订单保存在"dfhack-config/orders"目录中，您可以根据需要在其中查看、编辑和删除它们。	l
 DFHack help: If specified, and if the historical figure is pregnant, terminate the pregnancy instead of killing the historical figure.	如果指定，并且历史人物怀孕了，则终止怀孕而不是杀死历史人物。	l
-DFHack help: Ignore normal strange mood preconditions (no recent mood, minimum moodable population, artifact limit not reached, etc.).	忽略正常的奇怪情绪前提条件（最近没有情绪、最低情绪人群、未达到神器限制等）。	l
+DFHack help: Ignore normal strange mood preconditions (no recent mood, minimum moodable population, artifact limit not reached, etc.).	忽略触发奇异心境的常规前提（近期未发生奇异心境、符合条件的矮人数量达到最低要求、尚未达到神器数量上限等）。	l
 DFHack help: It uses a library of profiles to define job classes, and generates dwarves with random variation so each dwarf is unique.	它使用配置文件库来定义工作类别，并生成具有随机变化的矮人，因此每个矮人都是唯一的。	l
 DFHack help: Non-entombed body parts that can be used for manufacturing, crafting, or suturing (e.g. hair, wool, skulls, horns, etc.).	可用于制造、制作或缝合的非埋藏身体部位（例如头发、羊毛、头骨、角等）。	l
 DFHack help: Only applies to the "count" action. Outputs, in addition to the total count, a table of item counts grouped by item type.	仅适用于 "count" 动作。除了总计数之外，还输出按项目类型分组的项目计数表。	l
@@ -6154,7 +6154,7 @@ Announcement combat negotiation-response []: attempted to put their opposite at 
 Announcement combat rumor-event [rumor-person,rumor-owner,$name,$name]: {s} refused {s} offer of tribute from {s} to {s}.	{s1}拒绝了{s2}进贡提议：由{s3}向{s4}纳贡。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} was will be flooding {s}.	{s1}当时将正在淹没{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} were will be burning {s}.	{s1}当时将正在焚烧{s2}。	l
-DFHack GUI Notification settings: Describes the status of the current moody dwarf: gathering materials, working, or stuck	显示处于怪异心境的矮人正在收集材料、制作，还是因缺少材料或工坊而受阻。	l
+DFHack GUI Notification settings: Describes the status of the current moody dwarf: gathering materials, working, or stuck	显示处于奇异心境的矮人正在收集材料、制作，还是因缺少材料或工坊而受阻。	l
 DFHack help: "--clean <value>" Checks for skills with a rating of "<value>" and removes them from the dwarf's skill list.	"--clean <value>" 检查评级为"<值>"的技能并将其从矮人的技能列表中删除。	l
 DFHack help: "--tile" Selects the highlighted tile's block, and then uses the tile's local position to index the 2D data.	"--tile" 选择突出显示的图块的块，然后使用图块的本地位置来索引 2D 数据。	l
 DFHack help: "-q", "--quality <num>" (default: "0", equal to "df.item_quality.Ordinary") The quality of the created item.	"-q"，"--quality <num>"（默认："0"，等于"df.item_quality.Ordinary"）创建的项目的质量。	l
@@ -6907,7 +6907,7 @@ DFHack help: Enable the "fast-heat" tweak, but don't print anything to the conso
 DFHack help: If run with parameters, it lists only the named plugins. Otherwise it will list all available plugins.	如果使用参数运行，则仅列出指定的插件。否则它将列出所有可用的插件。	l
 DFHack help: In the window that pops up when you click the hotkey hint or hit the hotkey on your keyboard, you can:	在点击热键提示或按下键盘热键时弹出的窗口中，您可以：	l
 DFHack help: Invalid arguments in normal_distribution construction. Average and standard deviation must be numbers.	normal_distribution 构造中的参数无效。平均值和标准差必须是数字。	l
-DFHack help: Known limitations: if the selected unit is currently performing a job, the mood will not be triggered.	已知限制：如果所选单位当前正在执行任务，则不会触发情绪。	l
+DFHack help: Known limitations: if the selected unit is currently performing a job, the mood will not be triggered.	已知限制：所选单位正在工作时，无法触发奇异心境。	l
 DFHack help: Note that a hauling route must have at least one stop defined before a minecart can be assigned to it.	请注意，在分配矿车之前，运输路线必须至少定义一个站点。	l
 DFHack help: Print statistics about the status of the tool and the satisfaction of "craft item" needs in your fort.	在要塞中打印有关工具状态和"工艺项目"需求满足情况的统计数据。	l
 DFHack help: Removes all spatter, including mud, leaves, and snow from map tiles. Farm plots will retain their mud.	去除地图图块上的所有飞溅物，包括泥土、树叶和雪。农田将保留泥土。	l
@@ -7359,7 +7359,7 @@ DFHack help: Show a quick overview of critical stock quantities, including food,
 DFHack help: There are two functions for dealing with constructions, one to get the material of the construction	处理建筑有两个函数，一是获取建筑材料	l
 DFHack help: This describes the type of the preference. Can be entered either using the numerical ID or text id.	这描述了首选项的类型。可以使用数字 ID 或文本 ID 输入。	l
 DFHack help: This reveals all z-layers in fort and adventure mode. The effect persists until you run "unreveal".	在要塞模式和冒险模式中揭示所有高度层。效果会持续到运行 unreveal 为止。	l
-DFHack help: Trigger a strange mood for the selected unit that will cause them to become a legendary armorsmith.	为选定的单位触发一种奇怪的情绪，使他们成为传奇的盔甲匠。	l
+DFHack help: Trigger a strange mood for the selected unit that will cause them to become a legendary armorsmith.	为选中的单位触发奇异心境，使其成为传奇盔甲匠。	l
 DFHack help: Used if producing a corpse or other creature-based item that could have a caste associated with it.	如果生产尸体或其他可能与种姓相关的基于生物的物品，则使用。	l
 DFHack help: When searching, whether to match anywhere in the text (true) or just at the start of words (false).	搜索时匹配文字中的任意位置（true），或仅匹配单词开头（false）。	l
 DFHack help: and trg.target._type._union and " [union structure]" or "" self.subviews.lbl_current_item:itemById(	和 trg.target._type._union 和"[联合结构]"或"" self.subviews.lbl_current_item:itemById(	l
@@ -12005,7 +12005,7 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Getting
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No ammunition.	{s1}取消了{s2}：没有弹药。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Not appointed.	{s1}取消了{s2}：尚未任命。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Sand vanished.	{s1}取消了{s2}：砂子不见了。	l
-Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Taken by mood.	{s1}取消了{s2}：陷入奇异情绪。	l
+Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Taken by mood.	{s1}取消了{s2}：陷入奇异心境。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Too depressed.	{s1}取消了{s2}：过于抑郁。	l
 Announcement combat fortress-announcement [$unit]: The {s} has been missing for a week.	{s1}已经失踪一周。	l
 Announcement combat fortress-announcement [$unit]: {s} has altered the prices of goods.	{s1}调整了物品价格。	l
@@ -19645,7 +19645,7 @@ DFHack help: -- TODO: get matching selected version of erase icon	-- TODO: 获�
 DFHack help: :gui/stockpiles -save: to save the current stockpile	:gui/stockpiles -save: to save the current stockpile	l
 DFHack help: <vein>,<small cluster>,<deep>", where each number is	<vein>,<small cluster>,<deep>"，其中每个数字是	l
 DFHack help: A short, sturdy creature fond of drink and industry.	一种矮小、强壮的生物，喜欢喝酒和工业。	l
-DFHack help: Allows setting useful preferences for forcing moods.	允许设置有用的偏好来强制情绪。	l
+DFHack help: Allows setting useful preferences for forcing moods.	可设置用于强制触发奇异心境的造物偏好。	l
 DFHack help: Annotates suspended buildings with a visible marker.	给暂停施工的建筑显示醒目标记。	l
 DFHack help: Auto-assign egg-laying female pets to nestbox zones.	自动将雌性产卵动物分配到巢箱区域。	l
 DFHack help: Check for attack events at least once every n ticks.	至少每 n 个周期检查一次攻击事件。	l
@@ -20090,7 +20090,7 @@ DFHack help: Show a quick overview of critical stock quantities.	显示关键库
 DFHack help: Show current configuration and relevant statistics.	显示当前配置及相关统计信息。	l
 DFHack help: Show or edit regional plant and animal populations.	显示或编辑区域植物和动物种群。	l
 DFHack help: Shows a summary of resources that exist on the map.	显示地图上的资源汇总。	l
-DFHack help: Shows all items needed for the active strange mood.	显示活跃奇怪情绪所需的所有物品。	l
+DFHack help: Shows all items needed for the active strange mood.	显示当前奇异心境所需的全部物品。	l
 DFHack help: Smoothly animate movement in the fortress viewport.	在要塞视口中平滑地制作动画。	l
 DFHack help: Solve FPS issues caused by fluctuating temperature.	解决FPS因温度波动引起的问题。	l
 DFHack help: Tags: dfhack | armok | inspection | animals | units	标签： dfhack |阿莫克 |检验|动物 |单位	l
@@ -36767,7 +36767,7 @@ DFHack GUI Control tool: suspendmanager.status	施工暂停原因（suspendmanag
 DFHack GUI Control tool: suspendmanager.toggle	智能施工暂停开关（suspendmanager.toggle）	l
 DFHack GUI Design: Mirror Point: {d}, {d}, {d}	镜像点：{d}, {d}, {d}	l
 DFHack GUI Notification settings: bleeding_adv	血量余量（冒险）	l
-DFHack GUI Notification settings: moody_status	怪异心境进度	l
+DFHack GUI Notification settings: moody_status	奇异心境进度	l
 DFHack GUI Notification settings: wildlife_adv	野生动物（冒险）	l
 DFHack GUI Workshop workers: (or double click)	（或双击）	l
 DFHack help: "(no)chop <burrow>[,<burrow>...]"	"（不）砍<活动区>[，<活动区>...]"	l
@@ -42687,7 +42687,7 @@ DFHack help: Select an artifact to rename:	选择一个神器进行重命名：	
 DFHack help: Selects the highlighted item.	选择突出显示的项目。	l
 DFHack help: Selects the highlighted unit.	选择突出显示的单位。	l
 DFHack help: Set belief to given strength.	将信念赋予给定的力量。	l
-DFHack help: Set strange mood preferences.	设置奇怪的情绪偏好。	l
+DFHack help: Set strange mood preferences.	设置奇异心境偏好。	l
 DFHack help: Setting up custom keybindings	设置自定义按键绑定	l
 DFHack help: Source options --------------	来源选项 --------------	l
 DFHack help: Spawns stuck invaders/guests.	生成卡住的 invaders/guests.	l
@@ -43062,7 +43062,7 @@ and became the spouse of the deceased {n}.	并成为了已故{n1}的配偶。	ht
 and began hunting great beasts during {e}.	并在{e1}期间开始猎杀巨兽。	ht
 and began hunting great beasts in {p} {p}.	并开始在{p2}的{p1}猎杀巨兽。	ht
 and began hunting great beasts within {p}.	并在{p1}开始猎杀巨兽。	ht
-and began to skulk and brood in the wilds.	并在荒野中开始阴郁地独自徘徊。	h
+and began to skulk and brood in the wilds.	并在荒野中开始鬼祟地徘徊，阴森地沉思。	h
 and began traveling with {n} in the wilds.	并在荒野中开始与{n1}结伴旅行。	ht
 and began wandering around {p} during {e}.	并在{e1}期间开始在{p1}周边游荡。	ht
 and began wandering around {p} within {p}.	并在{p2}开始在{p1}周边游荡。	ht
@@ -43278,7 +43278,7 @@ and was scared to death by {a} within {p}.	并在{p1}被{a1}吓死了。	ht
 and was shot and killed by {a} during {e}.	并在{e1}期间被{a1}射杀了。	ht
 and was shot and killed by {a} within {p}.	并在{p1}被{a1}射杀了。	ht
 and was striken by melancholy in the wilds	并在荒野中陷入了忧郁	h
-and was taken by a fell mood in the wilds.	并在荒野中陷入了凶险的情绪。	h
+and was taken by a fell mood in the wilds.	并在荒野中陷入了残暴心境。	h
 and was unafraid in the moment during {e}.	并在{e1}期间当时毫无畏惧。	ht
 and was unafraid in the moment within {p}.	并在{p1}当时毫无畏惧。	ht
 and was unafraid of {a} and agreed at {p}.	并在{p1}不惧怕{a1}，答应了。	ht
@@ -43724,7 +43724,7 @@ you will need to unretire the fort to play	但你需要先重新启用这座要�
 {a} began hunting great beasts during {e}.	{a1}在{e1}期间开始猎杀巨兽。	ht
 {a} began hunting great beasts in {p} {p}.	{a1}开始在{p2}的{p1}猎杀巨兽。	ht
 {a} began hunting great beasts within {p}.	{a1}在{p1}开始猎杀巨兽。	ht
-{a} began to skulk and brood in the wilds.	{a1}在荒野中开始阴郁地独自徘徊。	ht
+{a} began to skulk and brood in the wilds.	{a1}在荒野中开始鬼祟地徘徊，阴森地沉思。	ht
 {a} began traveling with {n} in the wilds.	{a1}在荒野中开始与{n1}结伴旅行。	ht
 {a} began wandering around {p} during {e}.	{a1}在{e1}期间开始在{p1}周边游荡。	ht
 {a} began wandering around {p} within {p}.	{a1}在{p2}开始在{p1}周边游荡。	ht
@@ -43936,7 +43936,7 @@ you will need to unretire the fort to play	但你需要先重新启用这座要�
 {a} was shot and killed by {a} during {e}.	{a1}在{e1}期间被{a2}射杀了。	ht
 {a} was shot and killed by {a} within {p}.	{a1}在{p1}被{a2}射杀了。	ht
 {a} was striken by melancholy in the wilds	{a1}在荒野中陷入了忧郁	ht
-{a} was taken by a fell mood in the wilds.	{a1}在荒野中陷入了凶险的情绪。	ht
+{a} was taken by a fell mood in the wilds.	{a1}在荒野中陷入了残暴心境。	ht
 {a} was unafraid in the moment during {e}.	{a1}在{e1}期间当时毫无畏惧。	ht
 {a} was unafraid in the moment within {p}.	{a1}在{p1}当时毫无畏惧。	ht
 {a} was unafraid of {a} and agreed at {p}.	{a1}在{p1}不惧怕{a2}，答应了。	ht
@@ -44731,7 +44731,7 @@ and became the spouse of the deceased {n}	并成为了已故{n1}的配偶	ht
 and began hunting great beasts during {e}	并在{e1}期间开始猎杀巨兽	ht
 and began hunting great beasts in {p} {p}	并开始在{p2}的{p1}猎杀巨兽	ht
 and began hunting great beasts within {p}	并在{p1}开始猎杀巨兽	ht
-and began to skulk and brood in the wilds	并在荒野中开始阴郁地独自徘徊	h
+and began to skulk and brood in the wilds	并在荒野中开始鬼祟地徘徊，阴森地沉思	h
 and began traveling with {n} in the wilds	并在荒野中开始与{n1}结伴旅行	ht
 and began wandering around {p} during {e}	并在{e1}期间开始在{p1}周边游荡	ht
 and began wandering around {p} within {p}	并在{p2}开始在{p1}周边游荡	ht
@@ -44938,8 +44938,8 @@ and was shot and killed by {a} during {e}	并在{e1}期间被{a1}射杀了	ht
 and was shot and killed by {a} within {p}	并在{p1}被{a1}射杀了	ht
 and was striken by melancholy during {e}.	并在{e1}期间陷入了忧郁。	ht
 and was striken by melancholy within {p}.	并在{p1}陷入了忧郁。	ht
-and was taken by a fell mood in the wilds	并在荒野中陷入了凶险的情绪	h
-and was taken by a fey mood in the wilds.	并在荒野中陷入了神秘的情绪。	h
+and was taken by a fell mood in the wilds	并在荒野中陷入了残暴心境	h
+and was taken by a fey mood in the wilds.	并在荒野中陷入了古怪心境。	h
 and was unafraid in the moment during {e}	并在{e1}期间当时毫无畏惧	ht
 and was unafraid in the moment within {p}	并在{p1}当时毫无畏惧	ht
 and was unafraid of {a} and agreed at {p}	并在{p1}不惧怕{a1}，答应了	ht
@@ -45364,7 +45364,7 @@ you will need to reclaim the fort to play	但你需要先收复这座要塞，	w
 {a} began hunting great beasts during {e}	{a1}在{e1}期间开始猎杀巨兽	ht
 {a} began hunting great beasts in {p} {p}	{a1}开始在{p2}的{p1}猎杀巨兽	ht
 {a} began hunting great beasts within {p}	{a1}在{p1}开始猎杀巨兽	ht
-{a} began to skulk and brood in the wilds	{a1}在荒野中开始阴郁地独自徘徊	ht
+{a} began to skulk and brood in the wilds	{a1}在荒野中开始鬼祟地徘徊，阴森地沉思	ht
 {a} began traveling with {n} in the wilds	{a1}在荒野中开始与{n1}结伴旅行	ht
 {a} began wandering around {p} during {e}	{a1}在{e1}期间开始在{p1}周边游荡	ht
 {a} began wandering around {p} within {p}	{a1}在{p2}开始在{p1}周边游荡	ht
@@ -45568,8 +45568,8 @@ you will need to reclaim the fort to play	但你需要先收复这座要塞，	w
 {a} was shot and killed by {a} within {p}	{a1}在{p1}被{a2}射杀了	ht
 {a} was striken by melancholy during {e}.	{a1}在{e1}期间陷入了忧郁。	ht
 {a} was striken by melancholy within {p}.	{a1}在{p1}陷入了忧郁。	ht
-{a} was taken by a fell mood in the wilds	{a1}在荒野中陷入了凶险的情绪	ht
-{a} was taken by a fey mood in the wilds.	{a1}在荒野中陷入了神秘的情绪。	ht
+{a} was taken by a fell mood in the wilds	{a1}在荒野中陷入了残暴心境	ht
+{a} was taken by a fey mood in the wilds.	{a1}在荒野中陷入了古怪心境。	ht
 {a} was unafraid in the moment during {e}	{a1}在{e1}期间当时毫无畏惧	ht
 {a} was unafraid in the moment within {p}	{a1}在{p1}当时毫无畏惧	ht
 {a} was unafraid of {a} and agreed at {p}	{a1}在{p1}不惧怕{a2}，答应了	ht
@@ -46426,8 +46426,8 @@ and became the parent of {n} during {e}.	并在{e1}期间成为了{n1}的父母�
 and became the parent of {n} within {p}.	并在{p1}成为了{n1}的父母。	ht
 and began dreaming of mastering a skill.	并开始梦想精通一门技艺。	h
 and began dreaming of starting a family.	并开始梦想组建家庭。	h
-and began to skulk and brood during {e}.	并在{e1}期间开始阴郁地独自徘徊。	ht
-and began to skulk and brood within {p}.	并在{p1}开始阴郁地独自徘徊。	ht
+and began to skulk and brood during {e}.	并在{e1}期间开始鬼祟地徘徊，阴森地沉思。	ht
+and began to skulk and brood within {p}.	并在{p1}开始鬼祟地徘徊，阴森地沉思。	ht
 and began traveling with {n} during {e}.	并在{e1}期间开始与{n1}结伴旅行。	ht
 and began traveling with {n} within {p}.	并在{p1}开始与{n1}结伴旅行。	ht
 and began wandering the area around {p}.	并开始在{p1}周边游荡。	ht
@@ -46627,9 +46627,9 @@ and was slaughtered by {a} in the wilds.	并在荒野中被{a1}屠杀了。	ht
 and was striken by melancholy during {e}	并在{e1}期间陷入了忧郁	ht
 and was striken by melancholy within {p}	并在{p1}陷入了忧郁	ht
 and was struck down by {a} in the wilds.	并在荒野中被{a1}击杀。	ht
-and was taken by a fell mood during {e}.	并在{e1}期间陷入了凶险的情绪。	ht
-and was taken by a fell mood within {p}.	并在{p1}陷入了凶险的情绪。	ht
-and was taken by a fey mood in the wilds	并在荒野中陷入了神秘的情绪	h
+and was taken by a fell mood during {e}.	并在{e1}期间陷入了残暴心境。	ht
+and was taken by a fell mood within {p}.	并在{p1}陷入了残暴心境。	ht
+and was taken by a fey mood in the wilds	并在荒野中陷入了古怪心境	h
 and was too afraid not to comply at {p}.	并在{p1}害怕得不敢违抗。	ht
 and was too afraid not to comply in {p}.	并在{p1}害怕得不敢违抗。	ht
 and was wrongfully convicted during {e}.	并在{e1}期间被错误地定罪了。	ht
@@ -47054,8 +47054,8 @@ wove a masterful sewn image in the wilds	在荒野中织出了一幅杰作级的
 {a} became the parent of {n} within {p}.	{a1}在{p1}成为了{n1}的父母。	ht
 {a} began dreaming of mastering a skill.	{a1}开始梦想精通一门技艺。	ht
 {a} began dreaming of starting a family.	{a1}开始梦想组建家庭。	ht
-{a} began to skulk and brood during {e}.	{a1}在{e1}期间开始阴郁地独自徘徊。	ht
-{a} began to skulk and brood within {p}.	{a1}在{p1}开始阴郁地独自徘徊。	ht
+{a} began to skulk and brood during {e}.	{a1}在{e1}期间开始鬼祟地徘徊，阴森地沉思。	ht
+{a} began to skulk and brood within {p}.	{a1}在{p1}开始鬼祟地徘徊，阴森地沉思。	ht
 {a} began traveling with {n} during {e}.	{a1}在{e1}期间开始与{n1}结伴旅行。	ht
 {a} began traveling with {n} within {p}.	{a1}在{p1}开始与{n1}结伴旅行。	ht
 {a} began wandering the area around {p}.	{a1}开始在{p1}周边游荡。	ht
@@ -47244,9 +47244,9 @@ wove a masterful sewn image in the wilds	在荒野中织出了一幅杰作级的
 {a} was striken by melancholy during {e}	{a1}在{e1}期间陷入了忧郁	ht
 {a} was striken by melancholy within {p}	{a1}在{p1}陷入了忧郁	ht
 {a} was struck down by {a} in the wilds.	{a1}在荒野中被{a2}击杀。	ht
-{a} was taken by a fell mood during {e}.	{a1}在{e1}期间陷入了凶险的情绪。	ht
-{a} was taken by a fell mood within {p}.	{a1}在{p1}陷入了凶险的情绪。	ht
-{a} was taken by a fey mood in the wilds	{a1}在荒野中陷入了神秘的情绪	ht
+{a} was taken by a fell mood during {e}.	{a1}在{e1}期间陷入了残暴心境。	ht
+{a} was taken by a fell mood within {p}.	{a1}在{p1}陷入了残暴心境。	ht
+{a} was taken by a fey mood in the wilds	{a1}在荒野中陷入了古怪心境	ht
 {a} was too afraid not to comply at {p}.	{a1}在{p1}害怕得不敢违抗。	ht
 {a} was too afraid not to comply in {p}.	{a1}在{p1}害怕得不敢违抗。	ht
 {a} was wrongfully convicted during {e}.	{a1}在{e1}期间被错误地定罪了。	ht
@@ -48039,8 +48039,8 @@ and became the pet of {n} in the wilds.	并在荒野中成为了{n1}的宠物。
 and became the {s} of {p} in the wilds.	并在荒野中成为了{p1}的{s1}。	ht
 and began dreaming of mastering a skill	并开始梦想精通一门技艺	h
 and began dreaming of starting a family	并开始梦想组建家庭	h
-and began to skulk and brood during {e}	并在{e1}期间开始阴郁地独自徘徊	ht
-and began to skulk and brood within {p}	并在{p1}开始阴郁地独自徘徊	ht
+and began to skulk and brood during {e}	并在{e1}期间开始鬼祟地徘徊，阴森地沉思	ht
+and began to skulk and brood within {p}	并在{p1}开始鬼祟地徘徊，阴森地沉思	ht
 and began traveling with {n} during {e}	并在{e1}期间开始与{n1}结伴旅行	ht
 and began traveling with {n} within {p}	并在{p1}开始与{n1}结伴旅行	ht
 and began wandering the area around {p}	并开始在{p1}周边游荡	ht
@@ -48265,10 +48265,10 @@ and was reunited with {a} in the wilds.	并在荒野中与{a1}重聚了。	ht
 and was slaughtered by {a} in the wilds	并在荒野中被{a1}屠杀了	ht
 and was struck down by {a} in the wilds	并在荒野中被{a1}击杀	ht
 and was swayed by the emotional appeal.	并被对方的动情劝说打动了。	h
-and was taken by a fell mood during {e}	并在{e1}期间陷入了凶险的情绪	ht
-and was taken by a fell mood within {p}	并在{p1}陷入了凶险的情绪	ht
-and was taken by a fey mood during {e}.	并在{e1}期间陷入了神秘的情绪。	ht
-and was taken by a fey mood within {p}.	并在{p1}陷入了神秘的情绪。	ht
+and was taken by a fell mood during {e}	并在{e1}期间陷入了残暴心境	ht
+and was taken by a fell mood within {p}	并在{p1}陷入了残暴心境	ht
+and was taken by a fey mood during {e}.	并在{e1}期间陷入了古怪心境。	ht
+and was taken by a fey mood within {p}.	并在{p1}陷入了古怪心境。	ht
 and was the very first to discover {s}.	并最早发现了{s1}。	ht
 and was too afraid not to comply at {p}	并在{p1}害怕得不敢违抗	ht
 and was too afraid not to comply in {p}	并在{p1}害怕得不敢违抗	ht
@@ -48746,8 +48746,8 @@ wrongfully convicted {n} of {s} in {p}.	在{p1}错误地判定{n1}犯有{s1}。	
 {a} became the {s} of {p} in the wilds.	{a1}在荒野中成为了{p1}的{s1}。	ht
 {a} began dreaming of mastering a skill	{a1}开始梦想精通一门技艺	ht
 {a} began dreaming of starting a family	{a1}开始梦想组建家庭	ht
-{a} began to skulk and brood during {e}	{a1}在{e1}期间开始阴郁地独自徘徊	ht
-{a} began to skulk and brood within {p}	{a1}在{p1}开始阴郁地独自徘徊	ht
+{a} began to skulk and brood during {e}	{a1}在{e1}期间开始鬼祟地徘徊，阴森地沉思	ht
+{a} began to skulk and brood within {p}	{a1}在{p1}开始鬼祟地徘徊，阴森地沉思	ht
 {a} began traveling with {n} during {e}	{a1}在{e1}期间开始与{n1}结伴旅行	ht
 {a} began traveling with {n} within {p}	{a1}在{p1}开始与{n1}结伴旅行	ht
 {a} began wandering the area around {p}	{a1}开始在{p1}周边游荡	ht
@@ -48967,10 +48967,10 @@ wrongfully convicted {n} of {s} in {p}.	在{p1}错误地判定{n1}犯有{s1}。	
 {a} was slaughtered by {a} in the wilds	{a1}在荒野中被{a2}屠杀了	ht
 {a} was struck down by {a} in the wilds	{a1}在荒野中被{a2}击杀	ht
 {a} was swayed by the emotional appeal.	{a1}被对方的动情劝说打动了。	ht
-{a} was taken by a fell mood during {e}	{a1}在{e1}期间陷入了凶险的情绪	ht
-{a} was taken by a fell mood within {p}	{a1}在{p1}陷入了凶险的情绪	ht
-{a} was taken by a fey mood during {e}.	{a1}在{e1}期间陷入了神秘的情绪。	ht
-{a} was taken by a fey mood within {p}.	{a1}在{p1}陷入了神秘的情绪。	ht
+{a} was taken by a fell mood during {e}	{a1}在{e1}期间陷入了残暴心境	ht
+{a} was taken by a fell mood within {p}	{a1}在{p1}陷入了残暴心境	ht
+{a} was taken by a fey mood during {e}.	{a1}在{e1}期间陷入了古怪心境。	ht
+{a} was taken by a fey mood within {p}.	{a1}在{p1}陷入了古怪心境。	ht
 {a} was the very first to discover {s}.	{a1}最早发现了{s1}。	ht
 {a} was too afraid not to comply at {p}	{a1}在{p1}害怕得不敢违抗	ht
 {a} was too afraid not to comply in {p}	{a1}在{p1}害怕得不敢违抗	ht
@@ -50115,8 +50115,8 @@ and was slaughtered by {a} within {p}.	并在{p1}被{a1}屠杀了。	ht
 and was struck down by {a} during {e}.	并在{e1}期间被{a1}击杀。	ht
 and was struck down by {a} within {p}.	并在{p1}被{a1}击杀。	ht
 and was swayed by the emotional appeal	并被对方的动情劝说打动了	h
-and was taken by a fey mood during {e}	并在{e1}期间陷入了神秘的情绪	ht
-and was taken by a fey mood within {p}	并在{p1}陷入了神秘的情绪	ht
+and was taken by a fey mood during {e}	并在{e1}期间陷入了古怪心境	ht
+and was taken by a fey mood within {p}	并在{p1}陷入了古怪心境	ht
 and was the very first to discover {s}	并最早发现了{s1}	ht
 and was unafraid in the moment at {p}.	并在{p1}当时毫无畏惧。	ht
 and was unafraid in the moment in {p}.	并在{p1}当时毫无畏惧。	ht
@@ -50153,7 +50153,7 @@ because the group travelled too slowly	因为队伍行进过慢	h
 began hunting great beasts during {e}.	在{e1}期间开始猎杀巨兽。	ht
 began hunting great beasts in {p} {p}.	开始在{p2}的{p1}猎杀巨兽。	ht
 began hunting great beasts within {p}.	在{p1}开始猎杀巨兽。	ht
-began to skulk and brood in the wilds.	在荒野中开始阴郁地独自徘徊。	h
+began to skulk and brood in the wilds.	在荒野中开始鬼祟地徘徊，阴森地沉思。	h
 began traveling with {n} in the wilds.	在荒野中开始与{n1}结伴旅行。	ht
 began wandering around {p} during {e}.	在{e1}期间开始在{p1}周边游荡。	ht
 began wandering around {p} within {p}.	在{p2}开始在{p1}周边游荡。	ht
@@ -50356,7 +50356,7 @@ the construction and use of the piston	活塞的制造与使用	h
 the construction and use of the pulley	滑轮的制造与使用	h
 the construction and use of the retort	曲颈甑的制造与使用	h
 the crushing of {a} under a drawbridge	{a1}被吊桥压死	htEi
-the dark brooding of {a} in the wilds.	在荒野中，{a1}的阴郁沉思。	htEi
+the dark brooding of {a} in the wilds.	在荒野中，{a1}的阴森沉思。	htEi
 the death of {a} in a cage during {e}.	在{e1}期间，{a1}在笼中的死亡。	htEi
 the death of {a} in a cage within {p}.	在{p1}，{a1}在笼中的死亡。	htEi
 the defeat of {a} and takeover of {p}.	「{a1}」战败，「{p1}」被占领。	htEi
@@ -50561,7 +50561,7 @@ was scared to death by {a} within {p}.	在{p1}被{a1}吓死了。	ht
 was shot and killed by {a} during {e}.	在{e1}期间被{a1}射杀了。	ht
 was shot and killed by {a} within {p}.	在{p1}被{a1}射杀了。	ht
 was striken by melancholy in the wilds	在荒野中陷入了忧郁	h
-was taken by a fell mood in the wilds.	在荒野中陷入了凶险的情绪。	h
+was taken by a fell mood in the wilds.	在荒野中陷入了残暴心境。	h
 was unafraid in the moment during {e}.	在{e1}期间当时毫无畏惧。	ht
 was unafraid in the moment within {p}.	在{p1}当时毫无畏惧。	ht
 was unafraid of {a} and agreed at {p}.	在{p1}不惧怕{a1}，答应了。	ht
@@ -50857,8 +50857,8 @@ wrongfully convicted {n} of {s} in {p}	在{p1}错误地判定{n1}犯有{s1}	ht
 {a} was struck down by {a} during {e}.	{a1}在{e1}期间被{a2}击杀。	ht
 {a} was struck down by {a} within {p}.	{a1}在{p1}被{a2}击杀。	ht
 {a} was swayed by the emotional appeal	{a1}被对方的动情劝说打动了	ht
-{a} was taken by a fey mood during {e}	{a1}在{e1}期间陷入了神秘的情绪	ht
-{a} was taken by a fey mood within {p}	{a1}在{p1}陷入了神秘的情绪	ht
+{a} was taken by a fey mood during {e}	{a1}在{e1}期间陷入了古怪心境	ht
+{a} was taken by a fey mood within {p}	{a1}在{p1}陷入了古怪心境	ht
 {a} was the very first to discover {s}	{a1}最早发现了{s1}	ht
 {a} was unafraid in the moment at {p}.	{a1}在{p1}当时毫无畏惧。	ht
 {a} was unafraid in the moment in {p}.	{a1}在{p1}当时毫无畏惧。	ht
@@ -51938,7 +51938,7 @@ became the spouse of the deceased {n}	成为了已故{n1}的配偶	ht
 began hunting great beasts during {e}	在{e1}期间开始猎杀巨兽	ht
 began hunting great beasts in {p} {p}	开始在{p2}的{p1}猎杀巨兽	ht
 began hunting great beasts within {p}	在{p1}开始猎杀巨兽	ht
-began to skulk and brood in the wilds	在荒野中开始阴郁地独自徘徊	h
+began to skulk and brood in the wilds	在荒野中开始鬼祟地徘徊，阴森地沉思	h
 began traveling with {n} in the wilds	在荒野中开始与{n1}结伴旅行	ht
 began wandering around {p} during {e}	在{e1}期间开始在{p1}周边游荡	ht
 began wandering around {p} within {p}	在{p2}开始在{p1}周边游荡	ht
@@ -52160,7 +52160,7 @@ the conviction of {a} for {s} at {p}.	在{p1}，{a1}被判犯有{s1}。	htEi
 the conviction of {a} for {s} in {d}.	{d1}年的{a1}被判犯有{s1}。	htEi
 the conviction of {a} for {s} in {p}.	在{p1}，{a1}被判犯有{s1}。	htEi
 the crushing of {a} by falling rocks.	{a1}被落石砸死。	htEi
-the dark brooding of {a} in the wilds	在荒野中，{a1}的阴郁沉思	htEi
+the dark brooding of {a} in the wilds	在荒野中，{a1}的阴森沉思	htEi
 the dates of lunar and solar eclipses	月食与日食的日期	h
 the death of {a} in a cage during {e}	在{e1}期间，{a1}在笼中的死亡	htEi
 the death of {a} in a cage within {p}	在{p1}，{a1}在笼中的死亡	htEi
@@ -52340,8 +52340,8 @@ was shot and killed by {a} during {e}	在{e1}期间被{a1}射杀了	ht
 was shot and killed by {a} within {p}	在{p1}被{a1}射杀了	ht
 was striken by melancholy during {e}.	在{e1}期间陷入了忧郁。	ht
 was striken by melancholy within {p}.	在{p1}陷入了忧郁。	ht
-was taken by a fell mood in the wilds	在荒野中陷入了凶险的情绪	h
-was taken by a fey mood in the wilds.	在荒野中陷入了神秘的情绪。	h
+was taken by a fell mood in the wilds	在荒野中陷入了残暴心境	h
+was taken by a fey mood in the wilds.	在荒野中陷入了古怪心境。	h
 was unafraid in the moment during {e}	在{e1}期间当时毫无畏惧	ht
 was unafraid in the moment within {p}	在{p1}当时毫无畏惧	ht
 was unafraid of {a} and agreed at {p}	在{p1}不惧怕{a1}，答应了	ht
@@ -53094,7 +53094,7 @@ DFHack help: The monitor ~~~~~~~~~~~	显示器~~~~~~~~~~~~	l
 DFHack help: The professions library	专业库	l
 DFHack help: The surface ~~~~~~~~~~~	表面~~~~~~~~~~~~	l
 DFHack help: Trigger a migrant wave.	引发移民潮。	l
-DFHack help: Trigger a strange mood.	引发奇怪的情绪。	l
+DFHack help: Trigger a strange mood.	触发奇异心境。	l
 DFHack help: Trigger in-game events.	触发游戏内事件。	l
 DFHack help: Undesignates all trees.	取消指定所有树。	l
 DFHack help: Usage with single units	单个装置的使用	l
@@ -53579,8 +53579,8 @@ and became the pet of {n} during {e}	并在{e1}期间成为了{n1}的宠物	ht
 and became the pet of {n} within {p}	并在{p1}成为了{n1}的宠物	ht
 and became the {s} of {p} during {e}	并在{e1}期间成为了{p1}的{s1}	ht
 and became the {s} of {p} within {p}	并在{p2}成为了{p1}的{s1}	ht
-and began to skulk and brood at {p}.	并在{p1}开始阴郁地独自徘徊。	ht
-and began to skulk and brood in {p}.	并在{p1}开始阴郁地独自徘徊。	ht
+and began to skulk and brood at {p}.	并在{p1}开始鬼祟地徘徊，阴森地沉思。	ht
+and began to skulk and brood in {p}.	并在{p1}开始鬼祟地徘徊，阴森地沉思。	ht
 and began traveling with {n} at {p}.	并在{p1}开始与{n1}结伴旅行。	ht
 and began traveling with {n} in {p}.	并在{p1}开始与{n1}结伴旅行。	ht
 and began wandering the wilds at {p}	并在{p1}开始在荒野中游荡	ht
@@ -53810,8 +53810,8 @@ and was scared to death in the wilds	并在荒野中被吓死了	h
 and was shot and killed in the wilds	并在荒野中被射杀了	h
 and was striken by melancholy at {p}	并在{p1}陷入了忧郁	ht
 and was striken by melancholy in {p}	并在{p1}陷入了忧郁	ht
-and was taken by a fell mood at {p}.	并在{p1}陷入了凶险的情绪。	ht
-and was taken by a fell mood in {p}.	并在{p1}陷入了凶险的情绪。	ht
+and was taken by a fell mood at {p}.	并在{p1}陷入了残暴心境。	ht
+and was taken by a fell mood in {p}.	并在{p1}陷入了残暴心境。	ht
 and was unafraid of {a} and refused.	并不惧怕{a1}，拒绝了对方。	ht
 and was unafraid of {a} in the wilds	并在荒野中不惧怕{a1}	ht
 and was wrongfully convicted at {p}.	并在{p1}被错误地定罪了。	ht
@@ -53848,8 +53848,8 @@ became the parent of {n} during {e}.	在{e1}期间成为了{n1}的父母。	ht
 became the parent of {n} within {p}.	在{p1}成为了{n1}的父母。	ht
 began dreaming of mastering a skill.	开始梦想精通一门技艺。	h
 began dreaming of starting a family.	开始梦想组建家庭。	h
-began to skulk and brood during {e}.	在{e1}期间开始阴郁地独自徘徊。	ht
-began to skulk and brood within {p}.	在{p1}开始阴郁地独自徘徊。	ht
+began to skulk and brood during {e}.	在{e1}期间开始鬼祟地徘徊，阴森地沉思。	ht
+began to skulk and brood within {p}.	在{p1}开始鬼祟地徘徊，阴森地沉思。	ht
 began traveling with {n} during {e}.	在{e1}期间开始与{n1}结伴旅行。	ht
 began traveling with {n} within {p}.	在{p1}开始与{n1}结伴旅行。	ht
 began wandering the area around {p}.	开始在{p1}周边游荡。	ht
@@ -54079,8 +54079,8 @@ the conviction of {a} for {s} in {p}	在{p1}，{a1}被判犯有{s1}	htEi
 the creation of the position of {s}.	设立{s1}一职。	htEi
 the crucifixion of {a} in the wilds.	在荒野中，{a1}被钉死在十字架上。	htEi
 the crushing of {a} by falling rocks	{a1}被落石砸死	htEi
-the dark brooding of {a} during {e}.	在{e1}期间，{a1}的阴郁沉思。	htEi
-the dark brooding of {a} within {p}.	在{p1}，{a1}的阴郁沉思。	htEi
+the dark brooding of {a} during {e}.	在{e1}期间，{a1}的阴森沉思。	htEi
+the dark brooding of {a} within {p}.	在{p1}，{a1}的阴森沉思。	htEi
 the death in the dark of {a} at {p}.	在{p1}，{a1}在黑暗中的死亡。	htEi
 the death in the dark of {a} in {d}.	{d1}年的{a1}在黑暗中的死亡。	htEi
 the death in the dark of {a} in {p}.	在{p1}，{a1}在黑暗中的死亡。	htEi
@@ -54268,9 +54268,9 @@ was slaughtered by {a} in the wilds.	在荒野中被{a1}屠杀了。	ht
 was striken by melancholy during {e}	在{e1}期间陷入了忧郁	ht
 was striken by melancholy within {p}	在{p1}陷入了忧郁	ht
 was struck down by {a} in the wilds.	在荒野中被{a1}击杀。	ht
-was taken by a fell mood during {e}.	在{e1}期间陷入了凶险的情绪。	ht
-was taken by a fell mood within {p}.	在{p1}陷入了凶险的情绪。	ht
-was taken by a fey mood in the wilds	在荒野中陷入了神秘的情绪	h
+was taken by a fell mood during {e}.	在{e1}期间陷入了残暴心境。	ht
+was taken by a fell mood within {p}.	在{p1}陷入了残暴心境。	ht
+was taken by a fey mood in the wilds	在荒野中陷入了古怪心境	h
 was too afraid not to comply at {p}.	在{p1}害怕得不敢违抗。	ht
 was too afraid not to comply in {p}.	在{p1}害怕得不敢违抗。	ht
 was wrongfully convicted during {e}.	在{e1}期间被错误地定罪了。	ht
@@ -54326,8 +54326,8 @@ you will need to unretire or recruit	但你需要让这个角色复出或将其	
 {a} became the pet of {n} within {p}	{a1}在{p1}成为了{n1}的宠物	ht
 {a} became the {s} of {p} during {e}	{a1}在{e1}期间成为了{p1}的{s1}	ht
 {a} became the {s} of {p} within {p}	{a1}在{p2}成为了{p1}的{s1}	ht
-{a} began to skulk and brood at {p}.	{a1}在{p1}开始阴郁地独自徘徊。	ht
-{a} began to skulk and brood in {p}.	{a1}在{p1}开始阴郁地独自徘徊。	ht
+{a} began to skulk and brood at {p}.	{a1}在{p1}开始鬼祟地徘徊，阴森地沉思。	ht
+{a} began to skulk and brood in {p}.	{a1}在{p1}开始鬼祟地徘徊，阴森地沉思。	ht
 {a} began traveling with {n} at {p}.	{a1}在{p1}开始与{n1}结伴旅行。	ht
 {a} began traveling with {n} in {p}.	{a1}在{p1}开始与{n1}结伴旅行。	ht
 {a} began wandering the wilds at {p}	{a1}在{p1}开始在荒野中游荡	ht
@@ -54553,8 +54553,8 @@ you will need to unretire or recruit	但你需要让这个角色复出或将其	
 {a} was shot and killed in the wilds	{a1}在荒野中被射杀了	ht
 {a} was striken by melancholy at {p}	{a1}在{p1}陷入了忧郁	ht
 {a} was striken by melancholy in {p}	{a1}在{p1}陷入了忧郁	ht
-{a} was taken by a fell mood at {p}.	{a1}在{p1}陷入了凶险的情绪。	ht
-{a} was taken by a fell mood in {p}.	{a1}在{p1}陷入了凶险的情绪。	ht
+{a} was taken by a fell mood at {p}.	{a1}在{p1}陷入了残暴心境。	ht
+{a} was taken by a fell mood in {p}.	{a1}在{p1}陷入了残暴心境。	ht
 {a} was unafraid of {a} and refused.	{a1}不惧怕{a2}，拒绝了对方。	ht
 {a} was unafraid of {a} in the wilds	{a1}在荒野中不惧怕{a2}	ht
 {a} was wrongfully convicted at {p}.	{a1}在{p1}被错误地定罪了。	ht
@@ -55460,8 +55460,8 @@ and became the owner of {a} in {p}.	并在{p1}成为了{a1}的主人。	ht
 and became the parent of {n} at {p}	并在{p1}成为了{n1}的父母	ht
 and became the parent of {n} in {p}	并在{p1}成为了{n1}的父母	ht
 and became {s} of {p} in the wilds.	并在荒野中成为了{p1}的{s1}。	ht
-and began to skulk and brood at {p}	并在{p1}开始阴郁地独自徘徊	ht
-and began to skulk and brood in {p}	并在{p1}开始阴郁地独自徘徊	ht
+and began to skulk and brood at {p}	并在{p1}开始鬼祟地徘徊，阴森地沉思	ht
+and began to skulk and brood in {p}	并在{p1}开始鬼祟地徘徊，阴森地沉思	ht
 and began traveling with {n} at {p}	并在{p1}开始与{n1}结伴旅行	ht
 and began traveling with {n} in {p}	并在{p1}开始与{n1}结伴旅行	ht
 and began wandering around {p} {p}.	并开始在{p2}的{p1}周边游荡。	ht
@@ -55724,10 +55724,10 @@ and was scared to death during {e}.	并在{e1}期间被吓死了。	ht
 and was scared to death within {p}.	并在{p1}被吓死了。	ht
 and was shot and killed during {e}.	并在{e1}期间被射杀了。	ht
 and was shot and killed within {p}.	并在{p1}被射杀了。	ht
-and was taken by a fell mood at {p}	并在{p1}陷入了凶险的情绪	ht
-and was taken by a fell mood in {p}	并在{p1}陷入了凶险的情绪	ht
-and was taken by a fey mood at {p}.	并在{p1}陷入了神秘的情绪。	ht
-and was taken by a fey mood in {p}.	并在{p1}陷入了神秘的情绪。	ht
+and was taken by a fell mood at {p}	并在{p1}陷入了残暴心境	ht
+and was taken by a fell mood in {p}	并在{p1}陷入了残暴心境	ht
+and was taken by a fey mood at {p}.	并在{p1}陷入了古怪心境。	ht
+and was taken by a fey mood in {p}.	并在{p1}陷入了古怪心境。	ht
 and was unafraid of {a} and agreed.	并不惧怕{a1}，答应了。	ht
 and was unafraid of {a} and refused	并不惧怕{a1}，拒绝了对方	ht
 and was unafraid of {a} during {e}.	并在{e1}期间不惧怕{a1}。	ht
@@ -55767,8 +55767,8 @@ became the {s} of {p} in the wilds.	在荒野中成为了{p1}的{s1}。	ht
 because the group went too far away	因为队伍走得太远	h
 began dreaming of mastering a skill	开始梦想精通一门技艺	h
 began dreaming of starting a family	开始梦想组建家庭	h
-began to skulk and brood during {e}	在{e1}期间开始阴郁地独自徘徊	ht
-began to skulk and brood within {p}	在{p1}开始阴郁地独自徘徊	ht
+began to skulk and brood during {e}	在{e1}期间开始鬼祟地徘徊，阴森地沉思	ht
+began to skulk and brood within {p}	在{p1}开始鬼祟地徘徊，阴森地沉思	ht
 began traveling with {n} during {e}	在{e1}期间开始与{n1}结伴旅行	ht
 began traveling with {n} within {p}	在{p1}开始与{n1}结伴旅行	ht
 began wandering the area around {p}	开始在{p1}周边游荡	ht
@@ -56018,8 +56018,8 @@ the conviction of {a} in the wilds.	在荒野中，{a1}被定罪。	htEi
 the corruption of {a} in the wilds.	在荒野中，对{a1}的拉拢。	htEi
 the creation of the position of {s}	设立{s1}一职	htEi
 the crucifixion of {a} in the wilds	在荒野中，{a1}被钉死在十字架上	htEi
-the dark brooding of {a} during {e}	在{e1}期间，{a1}的阴郁沉思	htEi
-the dark brooding of {a} within {p}	在{p1}，{a1}的阴郁沉思	htEi
+the dark brooding of {a} during {e}	在{e1}期间，{a1}的阴森沉思	htEi
+the dark brooding of {a} within {p}	在{p1}，{a1}的阴森沉思	htEi
 the death in the dark of {a} at {p}	在{p1}，{a1}在黑暗中的死亡	htEi
 the death in the dark of {a} in {d}	{d1}年的{a1}在黑暗中的死亡	htEi
 the death in the dark of {a} in {p}	在{p1}，{a1}在黑暗中的死亡	htEi
@@ -56127,7 +56127,7 @@ the peace-making of {a} during {e}.	在{e1}期间，{a1}的讲和。	htEi
 the peace-making of {a} within {p}.	在{p1}，{a1}的讲和。	htEi
 the performance of {b} in the wilds	在荒野中，《{b1}》的表演	htEi
 the persecution of {a} in the wilds	在荒野中，对{a1}的迫害	htEi
-the possession of {a} in the wilds.	在荒野中，{a1}被附体。	htEi
+the possession of {a} in the wilds.	在荒野中，{a1}被附身。	htEi
 the reasons why gears are effective	齿轮发挥作用的原理	h
 the rebuilding of {p} in the wilds.	在荒野中，重建{p1}。	htEi
 the reclamation of {p} in the wilds	在荒野中，收复{p1}	htEi
@@ -56238,10 +56238,10 @@ was reunited with {a} in the wilds.	在荒野中与{a1}重聚了。	ht
 was slaughtered by {a} in the wilds	在荒野中被{a1}屠杀了	ht
 was struck down by {a} in the wilds	在荒野中被{a1}击杀	ht
 was swayed by the emotional appeal.	被对方的动情劝说打动了。	h
-was taken by a fell mood during {e}	在{e1}期间陷入了凶险的情绪	ht
-was taken by a fell mood within {p}	在{p1}陷入了凶险的情绪	ht
-was taken by a fey mood during {e}.	在{e1}期间陷入了神秘的情绪。	ht
-was taken by a fey mood within {p}.	在{p1}陷入了神秘的情绪。	ht
+was taken by a fell mood during {e}	在{e1}期间陷入了残暴心境	ht
+was taken by a fell mood within {p}	在{p1}陷入了残暴心境	ht
+was taken by a fey mood during {e}.	在{e1}期间陷入了古怪心境。	ht
+was taken by a fey mood within {p}.	在{p1}陷入了古怪心境。	ht
 was the very first to discover {s}.	最早发现了{s1}。	ht
 was too afraid not to comply at {p}	在{p1}害怕得不敢违抗	ht
 was too afraid not to comply in {p}	在{p1}害怕得不敢违抗	ht
@@ -56295,8 +56295,8 @@ you were caught up in a new romance	你陷入新的恋情	wi
 {a} became the parent of {n} at {p}	{a1}在{p1}成为了{n1}的父母	ht
 {a} became the parent of {n} in {p}	{a1}在{p1}成为了{n1}的父母	ht
 {a} became {s} of {p} in the wilds.	{a1}在荒野中成为了{p1}的{s1}。	ht
-{a} began to skulk and brood at {p}	{a1}在{p1}开始阴郁地独自徘徊	ht
-{a} began to skulk and brood in {p}	{a1}在{p1}开始阴郁地独自徘徊	ht
+{a} began to skulk and brood at {p}	{a1}在{p1}开始鬼祟地徘徊，阴森地沉思	ht
+{a} began to skulk and brood in {p}	{a1}在{p1}开始鬼祟地徘徊，阴森地沉思	ht
 {a} began traveling with {n} at {p}	{a1}在{p1}开始与{n1}结伴旅行	ht
 {a} began traveling with {n} in {p}	{a1}在{p1}开始与{n1}结伴旅行	ht
 {a} began wandering around {p} {p}.	{a1}开始在{p2}的{p1}周边游荡。	ht
@@ -56554,10 +56554,10 @@ you were caught up in a new romance	你陷入新的恋情	wi
 {a} was scared to death within {p}.	{a1}在{p1}被吓死了。	ht
 {a} was shot and killed during {e}.	{a1}在{e1}期间被射杀了。	ht
 {a} was shot and killed within {p}.	{a1}在{p1}被射杀了。	ht
-{a} was taken by a fell mood at {p}	{a1}在{p1}陷入了凶险的情绪	ht
-{a} was taken by a fell mood in {p}	{a1}在{p1}陷入了凶险的情绪	ht
-{a} was taken by a fey mood at {p}.	{a1}在{p1}陷入了神秘的情绪。	ht
-{a} was taken by a fey mood in {p}.	{a1}在{p1}陷入了神秘的情绪。	ht
+{a} was taken by a fell mood at {p}	{a1}在{p1}陷入了残暴心境	ht
+{a} was taken by a fell mood in {p}	{a1}在{p1}陷入了残暴心境	ht
+{a} was taken by a fey mood at {p}.	{a1}在{p1}陷入了古怪心境。	ht
+{a} was taken by a fey mood in {p}.	{a1}在{p1}陷入了古怪心境。	ht
 {a} was unafraid of {a} and agreed.	{a1}不惧怕{a2}，答应了。	ht
 {a} was unafraid of {a} and refused	{a1}不惧怕{a2}，拒绝了对方	ht
 {a} was unafraid of {a} during {e}.	{a1}在{e1}期间不惧怕{a2}。	ht
@@ -57861,8 +57861,8 @@ and was slaughtered by {a} at {p}.	并在{p1}被{a1}屠杀了。	ht
 and was slaughtered by {a} in {p}.	并在{p1}被{a1}屠杀了。	ht
 and was struck down by {a} at {p}.	并在{p1}被{a1}击杀。	ht
 and was struck down by {a} in {p}.	并在{p1}被{a1}击杀。	ht
-and was taken by a fey mood at {p}	并在{p1}陷入了神秘的情绪	ht
-and was taken by a fey mood in {p}	并在{p1}陷入了神秘的情绪	ht
+and was taken by a fey mood at {p}	并在{p1}陷入了古怪心境	ht
+and was taken by a fey mood in {p}	并在{p1}陷入了古怪心境	ht
 and was unafraid of {a} and agreed	并不惧怕{a1}，答应了	ht
 and was unafraid of {a} during {e}	并在{e1}期间不惧怕{a1}	ht
 and was unafraid of {a} within {p}	并在{p1}不惧怕{a1}	ht
@@ -58183,7 +58183,7 @@ the fair conclusion of {s} at {p}.	在{p1}，{s1}的尚可结果。	htEi
 the fair conclusion of {s} in {d}.	{d1}年的{s1}的尚可结果。	htEi
 the fair conclusion of {s} in {p}.	在{p1}，{s1}的尚可结果。	htEi
 the fall of {a} into a deep chasm.	{a1}坠入深渊。	htEi
-the fell mood of {a} in the wilds.	在荒野中，{a1}的凶险情绪。	htEi
+the fell mood of {a} in the wilds.	在荒野中，{a1}的残暴心境。	htEi
 the formation of {p} in the wilds.	在荒野中，{p1}的成立。	htEi
 the foundation of {p} in the wilds	在荒野中，建立{p1}	htEi
 the function of the nervous system	神经系统的功能	h
@@ -58230,7 +58230,7 @@ the performance of {b} during {e}.	在{e1}期间，《{b1}》的表演。	htEi
 the performance of {b} within {p}.	在{p1}，《{b1}》的表演。	htEi
 the persecution of {a} during {e}.	在{e1}期间，对{a1}的迫害。	htEi
 the persecution of {a} within {p}.	在{p1}，对{a1}的迫害。	htEi
-the possession of {a} in the wilds	在荒野中，{a1}被附体	htEi
+the possession of {a} in the wilds	在荒野中，{a1}被附身	htEi
 the preparation of spirit of niter	硝酸的制备	h
 the purchased of equipment at {p}.	在{p1}，购买装备。	htEi
 the purchased of equipment by {a}.	{a1}购买装备。	htEi
@@ -58380,8 +58380,8 @@ was slaughtered by {a} within {p}.	在{p1}被{a1}屠杀了。	ht
 was struck down by {a} during {e}.	在{e1}期间被{a1}击杀。	ht
 was struck down by {a} within {p}.	在{p1}被{a1}击杀。	ht
 was swayed by the emotional appeal	被对方的动情劝说打动了	h
-was taken by a fey mood during {e}	在{e1}期间陷入了神秘的情绪	ht
-was taken by a fey mood within {p}	在{p1}陷入了神秘的情绪	ht
+was taken by a fey mood during {e}	在{e1}期间陷入了古怪心境	ht
+was taken by a fey mood within {p}	在{p1}陷入了古怪心境	ht
 was the very first to discover {s}	最早发现了{s1}	ht
 was unafraid in the moment at {p}.	在{p1}当时毫无畏惧。	ht
 was unafraid in the moment in {p}.	在{p1}当时毫无畏惧。	ht
@@ -58671,8 +58671,8 @@ wove a masterful sewn image in {p}	在{p1}织出了一幅杰作级的刺绣图�
 {a} was slaughtered by {a} in {p}.	{a1}在{p1}被{a2}屠杀了。	ht
 {a} was struck down by {a} at {p}.	{a1}在{p1}被{a2}击杀。	ht
 {a} was struck down by {a} in {p}.	{a1}在{p1}被{a2}击杀。	ht
-{a} was taken by a fey mood at {p}	{a1}在{p1}陷入了神秘的情绪	ht
-{a} was taken by a fey mood in {p}	{a1}在{p1}陷入了神秘的情绪	ht
+{a} was taken by a fey mood at {p}	{a1}在{p1}陷入了古怪心境	ht
+{a} was taken by a fey mood in {p}	{a1}在{p1}陷入了古怪心境	ht
 {a} was unafraid of {a} and agreed	{a1}不惧怕{a2}，答应了	ht
 {a} was unafraid of {a} during {e}	{a1}在{e1}期间不惧怕{a2}	ht
 {a} was unafraid of {a} within {p}	{a1}在{p1}不惧怕{a2}	ht
@@ -60194,8 +60194,8 @@ the fair conclusion of {s} at {p}	在{p1}，{s1}的尚可结果	htEi
 the fair conclusion of {s} in {d}	{d1}年的{s1}的尚可结果	htEi
 the fair conclusion of {s} in {p}	在{p1}，{s1}的尚可结果	htEi
 the fall of {a} into a deep chasm	{a1}坠入深渊	htEi
-the fell mood of {a} in the wilds	在荒野中，{a1}的凶险情绪	htEi
-the fey mood of {a} in the wilds.	在荒野中，{a1}的神秘情绪。	htEi
+the fell mood of {a} in the wilds	在荒野中，{a1}的残暴心境	htEi
+the fey mood of {a} in the wilds.	在荒野中，{a1}的古怪心境。	htEi
 the first contact of {a} and {a}.	{a1}与{a2}的首次接触。	htEi
 the formation of {p} in the wilds	在荒野中，{p1}的成立	htEi
 the foundation of {p} during {e}.	在{e1}期间，建立{p1}。	htEi
@@ -60234,8 +60234,8 @@ the performance of {b} within {p}	在{p1}，《{b1}》的表演	htEi
 the persecution of {a} during {e}	在{e1}期间，对{a1}的迫害	htEi
 the persecution of {a} within {p}	在{p1}，对{a1}的迫害	htEi
 the positive of {s} in the wilds.	在荒野中，{s1}的积极结果。	htEi
-the possession of {a} during {e}.	在{e1}期间，{a1}被附体。	htEi
-the possession of {a} within {p}.	在{p1}，{a1}被附体。	htEi
+the possession of {a} during {e}.	在{e1}期间，{a1}被附身。	htEi
+the possession of {a} within {p}.	在{p1}，{a1}被附身。	htEi
 the preparation of oil of vitriol	硫酸的制备	h
 the purchase of {p} in the wilds.	在荒野中，{p1}的购置。	htEi
 the purchased of equipment at {p}	在{p1}，购买装备	htEi
@@ -61900,8 +61900,8 @@ became the pet of {n} during {e}	在{e1}期间成为了{n1}的宠物	ht
 became the pet of {n} within {p}	在{p1}成为了{n1}的宠物	ht
 became the {s} of {p} during {e}	在{e1}期间成为了{p1}的{s1}	ht
 became the {s} of {p} within {p}	在{p2}成为了{p1}的{s1}	ht
-began to skulk and brood at {p}.	在{p1}开始阴郁地独自徘徊。	ht
-began to skulk and brood in {p}.	在{p1}开始阴郁地独自徘徊。	ht
+began to skulk and brood at {p}.	在{p1}开始鬼祟地徘徊，阴森地沉思。	ht
+began to skulk and brood in {p}.	在{p1}开始鬼祟地徘徊，阴森地沉思。	ht
 began traveling with {n} at {p}.	在{p1}开始与{n1}结伴旅行。	ht
 began traveling with {n} in {p}.	在{p1}开始与{n1}结伴旅行。	ht
 began wandering the wilds at {p}	在{p1}开始在荒野中游荡	ht
@@ -62177,9 +62177,9 @@ the conviction of {a} within {p}	在{p1}，{a1}被定罪	htEi
 the corruption of {a} during {e}	在{e1}期间，对{a1}的拉拢	htEi
 the corruption of {a} within {p}	在{p1}，对{a1}的拉拢	htEi
 the creation of {p} in the wilds	在荒野中，创造{p1}	htEi
-the dark brooding of {a} at {p}.	在{p1}，{a1}的阴郁沉思。	htEi
-the dark brooding of {a} in {d}.	{d1}年的{a1}的阴郁沉思。	htEi
-the dark brooding of {a} in {p}.	在{p1}，{a1}的阴郁沉思。	htEi
+the dark brooding of {a} at {p}.	在{p1}，{a1}的阴森沉思。	htEi
+the dark brooding of {a} in {d}.	{d1}年的{a1}的阴森沉思。	htEi
+the dark brooding of {a} in {p}.	在{p1}，{a1}的阴森沉思。	htEi
 the defeat of {a} by {a} at {p}.	在{p1}，「{a2}」击败了「{a1}」。	htEi
 the defeat of {a} by {a} in {d}.	{d1}年的「{a2}」击败了「{a1}」。	htEi
 the defeat of {a} by {a} in {p}.	在{p1}，「{a2}」击败了「{a1}」。	htEi
@@ -62212,9 +62212,9 @@ the failure of {s} in the wilds.	在荒野中，{s1}的失败。	htEi
 the fatal illness of {a} at {p}.	在{p1}，{a1}的致命疾病。	htEi
 the fatal illness of {a} in {d}.	{d1}年的{a1}的致命疾病。	htEi
 the fatal illness of {a} in {p}.	在{p1}，{a1}的致命疾病。	htEi
-the fell mood of {a} during {e}.	在{e1}期间，{a1}的凶险情绪。	htEi
-the fell mood of {a} within {p}.	在{p1}，{a1}的凶险情绪。	htEi
-the fey mood of {a} in the wilds	在荒野中，{a1}的神秘情绪	htEi
+the fell mood of {a} during {e}.	在{e1}期间，{a1}的残暴心境。	htEi
+the fell mood of {a} within {p}.	在{p1}，{a1}的残暴心境。	htEi
+the fey mood of {a} in the wilds	在荒野中，{a1}的古怪心境	htEi
 the first contact of {a} and {a}	{a1}与{a2}的首次接触	htEi
 the fleeing of {a} in the wilds.	在荒野中，{a1}的逃离。	htEi
 the formation of {p} during {e}.	在{e1}期间，{p1}的成立。	htEi
@@ -62257,8 +62257,8 @@ the overthrow of {p} within {p}.	在{p2}，{p1}政权倾覆事件。	htEi
 the passing of {a} in the wilds.	在荒野中，{a1}寿终正寝。	htEi
 the peace-making of {a} and {a}.	{a1}与{a2}的讲和。	htEi
 the positive of {s} in the wilds	在荒野中，{s1}的积极结果	htEi
-the possession of {a} during {e}	在{e1}期间，{a1}被附体	htEi
-the possession of {a} within {p}	在{p1}，{a1}被附体	htEi
+the possession of {a} during {e}	在{e1}期间，{a1}被附身	htEi
+the possession of {a} within {p}	在{p1}，{a1}被附身	htEi
 the purchase of {p} in the wilds	在荒野中，{p1}的购置	htEi
 the questionable judgment of {a}	{a1}的判断失常	htEi
 the raising of {a} in the wilds.	在荒野中，{a1}的复活。	htEi
@@ -62406,8 +62406,8 @@ was scared to death in the wilds	在荒野中被吓死了	h
 was shot and killed in the wilds	在荒野中被射杀了	h
 was striken by melancholy at {p}	在{p1}陷入了忧郁	ht
 was striken by melancholy in {p}	在{p1}陷入了忧郁	ht
-was taken by a fell mood at {p}.	在{p1}陷入了凶险的情绪。	ht
-was taken by a fell mood in {p}.	在{p1}陷入了凶险的情绪。	ht
+was taken by a fell mood at {p}.	在{p1}陷入了残暴心境。	ht
+was taken by a fell mood in {p}.	在{p1}陷入了残暴心境。	ht
 was unafraid of {a} and refused.	不惧怕{a1}，拒绝了对方。	ht
 was unafraid of {a} in the wilds	在荒野中不惧怕{a1}	ht
 was wrongfully convicted at {p}.	在{p1}被错误地定罪了。	ht
@@ -62714,7 +62714,7 @@ wrongfully convicted {n} of {s}.	错误地判定{n1}犯有{s1}。	ht
 {n} and {n} broke up during {e}.	在{e1}期间，{n1}与{n2}分手了。	ht
 {n} and {n} broke up within {p}.	在{p1}，{n1}与{n2}分手了。	ht
 {n} begins playing make believe.	{n1}开始玩扮演游戏。	hPt
-{n} begins to stalk and brood...	{n1}阴着脸来回踱步，陷入了沉思……	hPt
+{n} begins to stalk and brood...	{n1}开始阴森地踱步、沉思……	hPt
 {n} cancels {s}: Bad script! #1.	{n1}取消了{s1}：脚本错误！#1。	hPt
 {n} cancels {s}: Bad script! #2.	{n1}取消了{s1}：脚本错误！#2。	hPt
 {n} cancels {s}: Bad script! #3.	{n1}取消了{s1}：脚本错误！#3。	hPt
@@ -62789,7 +62789,7 @@ wrongfully convicted {n} of {s}.	错误地判定{n1}犯有{s1}。	ht
 "Please maintain your dignity."	“做人要守住尊严。”	l
 "You don't care, so don't ask."	“既不关心，就不必过问。”	l
 (Combat) Natural attack latched	战斗：天然攻击咬住	w
-(Strange mood) Building claimed	怪异心情：占用建筑	w
+(Strange mood) Building claimed	奇异心境：占用建筑	w
 , after the death strike by {a}	，在受到{a1}的致命一击之后	ht
 A priest must then be elevated.	随后必须擢升一名祭司。	hP
 A small mud-dwelling amphibian.	一种小型泥栖两栖动物。	lP
@@ -63317,7 +63317,7 @@ Fortress activity: Operate pump	操作泵机	li
 Fortress activity: Report crime	报告罪行	li
 Fortress activity: Smooth floor	打磨地板	li
 Fortress activity: Store weapon	存放武器	li
-Fortress activity: Strange mood	怪异心情	li
+Fortress activity: Strange mood	奇异心境	li
 Fortress activity: Well-trained	训练良好	li
 Give a sermon promoting a value	发表宣扬某种价值观的布道	hP
 Go below hatch ({d} level down)	前往活动盖板下方（下方{d1}层）	hPt
@@ -63961,7 +63961,7 @@ and was killed by falling rocks	并被落石砸死了	h
 and was murdered by {a} at {p}.	并在{p1}被{a1}谋杀了。	ht
 and was murdered by {a} in {p}.	并在{p1}被{a1}谋杀了。	ht
 and was not afraid and refused.	并毫不畏惧，拒绝了对方。	h
-and was possessed in the wilds.	并在荒野中被附体了。	h
+and was possessed in the wilds.	并在荒野中被附身了。	h
 and was put to rest during {e}.	并在{e1}期间亡魂得到了安息。	ht
 and was put to rest within {p}.	并在{p1}亡魂得到了安息。	ht
 and was recognized and arrested	并被认出并逮捕了	h
@@ -64006,8 +64006,8 @@ became the owner of {a} in {p}.	在{p1}成为了{a1}的主人。	ht
 became the parent of {n} at {p}	在{p1}成为了{n1}的父母	ht
 became the parent of {n} in {p}	在{p1}成为了{n1}的父母	ht
 became {s} of {p} in the wilds.	在荒野中成为了{p1}的{s1}。	ht
-began to skulk and brood at {p}	在{p1}开始阴郁地独自徘徊	ht
-began to skulk and brood in {p}	在{p1}开始阴郁地独自徘徊	ht
+began to skulk and brood at {p}	在{p1}开始鬼祟地徘徊，阴森地沉思	ht
+began to skulk and brood in {p}	在{p1}开始鬼祟地徘徊，阴森地沉思	ht
 began traveling with {n} at {p}	在{p1}开始与{n1}结伴旅行	ht
 began traveling with {n} in {p}	在{p1}开始与{n1}结伴旅行	ht
 began wandering around {p} {p}.	开始在{p2}的{p1}周边游荡。	ht
@@ -64310,9 +64310,9 @@ the construction of {p} in {p}.	在{p2}，建造{p1}。	htEi
 the creation of {p} during {e}.	在{e1}期间，创造{p1}。	htEi
 the creation of {p} within {p}.	在{p2}，创造{p1}。	htEi
 the crimes of {a} in the wilds.	在荒野中，{a1}的罪行。	htEi
-the dark brooding of {a} at {p}	在{p1}，{a1}的阴郁沉思	htEi
-the dark brooding of {a} in {d}	{d1}年的{a1}的阴郁沉思	htEi
-the dark brooding of {a} in {p}	在{p1}，{a1}的阴郁沉思	htEi
+the dark brooding of {a} at {p}	在{p1}，{a1}的阴森沉思	htEi
+the dark brooding of {a} in {d}	{d1}年的{a1}的阴森沉思	htEi
+the dark brooding of {a} in {p}	在{p1}，{a1}的阴森沉思	htEi
 the defeat of {a} by {a} at {p}	在{p1}，「{a2}」击败了「{a1}」	htEi
 the defeat of {a} by {a} in {d}	{d1}年的「{a2}」击败了「{a1}」	htEi
 the defeat of {a} by {a} in {p}	在{p1}，「{a2}」击败了「{a1}」	htEi
@@ -64346,10 +64346,10 @@ the failure of {s} in the wilds	在荒野中，{s1}的失败	htEi
 the fatal illness of {a} at {p}	在{p1}，{a1}的致命疾病	htEi
 the fatal illness of {a} in {d}	{d1}年的{a1}的致命疾病	htEi
 the fatal illness of {a} in {p}	在{p1}，{a1}的致命疾病	htEi
-the fell mood of {a} during {e}	在{e1}期间，{a1}的凶险情绪	htEi
-the fell mood of {a} within {p}	在{p1}，{a1}的凶险情绪	htEi
-the fey mood of {a} during {e}.	在{e1}期间，{a1}的神秘情绪。	htEi
-the fey mood of {a} within {p}.	在{p1}，{a1}的神秘情绪。	htEi
+the fell mood of {a} during {e}	在{e1}期间，{a1}的残暴心境	htEi
+the fell mood of {a} within {p}	在{p1}，{a1}的残暴心境	htEi
+the fey mood of {a} during {e}.	在{e1}期间，{a1}的古怪心境。	htEi
+the fey mood of {a} within {p}.	在{p1}，{a1}的古怪心境。	htEi
 the fleeing of {a} in the wilds	在荒野中，{a1}的逃离	htEi
 the flight of {a} in the wilds.	在荒野中，{a1}的逃亡。	htEi
 the formation of {p} during {e}	在{e1}期间，{p1}的成立	htEi
@@ -64585,10 +64585,10 @@ was scared to death during {e}.	在{e1}期间被吓死了。	ht
 was scared to death within {p}.	在{p1}被吓死了。	ht
 was shot and killed during {e}.	在{e1}期间被射杀了。	ht
 was shot and killed within {p}.	在{p1}被射杀了。	ht
-was taken by a fell mood at {p}	在{p1}陷入了凶险的情绪	ht
-was taken by a fell mood in {p}	在{p1}陷入了凶险的情绪	ht
-was taken by a fey mood at {p}.	在{p1}陷入了神秘的情绪。	ht
-was taken by a fey mood in {p}.	在{p1}陷入了神秘的情绪。	ht
+was taken by a fell mood at {p}	在{p1}陷入了残暴心境	ht
+was taken by a fell mood in {p}	在{p1}陷入了残暴心境	ht
+was taken by a fey mood at {p}.	在{p1}陷入了古怪心境。	ht
+was taken by a fey mood in {p}.	在{p1}陷入了古怪心境。	ht
 was unafraid of {a} and agreed.	不惧怕{a1}，答应了。	ht
 was unafraid of {a} and refused	不惧怕{a1}，拒绝了对方	ht
 was unafraid of {a} during {e}.	在{e1}期间不惧怕{a1}。	ht
@@ -64846,7 +64846,7 @@ wrongfully convicted {n} of {s}	错误地判定{n1}犯有{s1}	ht
 {a} was murdered by {a} at {p}.	{a1}在{p1}被{a2}谋杀了。	ht
 {a} was murdered by {a} in {p}.	{a1}在{p1}被{a2}谋杀了。	ht
 {a} was not afraid and refused.	{a1}毫不畏惧，拒绝了对方。	ht
-{a} was possessed in the wilds.	{a1}在荒野中被附体了。	ht
+{a} was possessed in the wilds.	{a1}在荒野中被附身了。	ht
 {a} was put to rest during {e}.	{a1}在{e1}期间亡魂得到了安息。	ht
 {a} was put to rest within {p}.	{a1}在{p1}亡魂得到了安息。	ht
 {a} was recognized and arrested	{a1}被认出并逮捕了	ht
@@ -64937,7 +64937,7 @@ wrongfully convicted {n} of {s}	错误地判定{n1}犯有{s1}	ht
 {n} cancels {s}: No ammunition.	{n1}取消了{s1}：没有弹药。	hPt
 {n} cancels {s}: Not appointed.	{n1}取消了{s1}：尚未任命。	hPt
 {n} cancels {s}: Sand vanished.	{n1}取消了{s1}：砂子不见了。	hPt
-{n} cancels {s}: Taken by mood.	{n1}取消了{s1}：陷入奇异情绪。	hPt
+{n} cancels {s}: Taken by mood.	{n1}取消了{s1}：陷入奇异心境。	hPt
 {n} cancels {s}: Too depressed.	{n1}取消了{s1}：过于抑郁。	hPt
 {n} charges at {n} from behind!	{n1}从背后冲向{n2}！	hPt
 {n} engaged me to assassinate .	{n1}雇我刺杀。	hPt
@@ -66303,7 +66303,7 @@ and was murdered by {a} at {p}	并在{p1}被{a1}谋杀了	ht
 and was murdered by {a} in {p}	并在{p1}被{a1}谋杀了	ht
 and was murdered in the wilds.	并在荒野中被谋杀了。	h
 and was not afraid and refused	并毫不畏惧，拒绝了对方	h
-and was possessed in the wilds	并在荒野中被附体了	h
+and was possessed in the wilds	并在荒野中被附身了	h
 and was put to rest during {e}	并在{e1}期间亡魂得到了安息	ht
 and was put to rest within {p}	并在{p1}亡魂得到了安息	ht
 and was released in the wilds.	并在荒野中被释放了。	h
@@ -66665,8 +66665,8 @@ the escape of {a} in the wilds	在荒野中，{a1}的逃脱	htEi
 the exile of {a} in the wilds.	在荒野中，{a1}的流放。	htEi
 the failure of {s} during {e}.	在{e1}期间，{s1}的失败。	htEi
 the failure of {s} within {p}.	在{p1}，{s1}的失败。	htEi
-the fey mood of {a} during {e}	在{e1}期间，{a1}的神秘情绪	htEi
-the fey mood of {a} within {p}	在{p1}，{a1}的神秘情绪	htEi
+the fey mood of {a} during {e}	在{e1}期间，{a1}的古怪心境	htEi
+the fey mood of {a} within {p}	在{p1}，{a1}的古怪心境	htEi
 the fleeing of {a} during {e}.	在{e1}期间，{a1}的逃离。	htEi
 the fleeing of {a} within {p}.	在{p1}，{a1}的逃离。	htEi
 the flight of {a} in the wilds	在荒野中，{a1}的逃亡	htEi
@@ -66902,8 +66902,8 @@ was slaughtered by {a} at {p}.	在{p1}被{a1}屠杀了。	ht
 was slaughtered by {a} in {p}.	在{p1}被{a1}屠杀了。	ht
 was struck down by {a} at {p}.	在{p1}被{a1}击杀。	ht
 was struck down by {a} in {p}.	在{p1}被{a1}击杀。	ht
-was taken by a fey mood at {p}	在{p1}陷入了神秘的情绪	ht
-was taken by a fey mood in {p}	在{p1}陷入了神秘的情绪	ht
+was taken by a fey mood at {p}	在{p1}陷入了古怪心境	ht
+was taken by a fey mood in {p}	在{p1}陷入了古怪心境	ht
 was unafraid of {a} and agreed	不惧怕{a1}，答应了	ht
 was unafraid of {a} during {e}	在{e1}期间不惧怕{a1}	ht
 was unafraid of {a} within {p}	在{p1}不惧怕{a1}	ht
@@ -67150,7 +67150,7 @@ with the hall designated for a	并将大厅指定给以下行会：	hP
 {a} was murdered by {a} in {p}	{a1}在{p1}被{a2}谋杀了	ht
 {a} was murdered in the wilds.	{a1}在荒野中被谋杀了。	ht
 {a} was not afraid and refused	{a1}毫不畏惧，拒绝了对方	ht
-{a} was possessed in the wilds	{a1}在荒野中被附体了	ht
+{a} was possessed in the wilds	{a1}在荒野中被附身了	ht
 {a} was put to rest during {e}	{a1}在{e1}期间亡魂得到了安息	ht
 {a} was put to rest within {p}	{a1}在{p1}亡魂得到了安息	ht
 {a} was released in the wilds.	{a1}在荒野中被释放了。	ht
@@ -68381,7 +68381,7 @@ and became the master of {n}.	并成为了{n1}的师傅。	ht
 and became the parent of {n}.	并成为了{n1}的父母。	ht
 and became {s} of {p} at {p}.	并在{p2}成为了{p1}的{s1}。	ht
 and became {s} of {p} in {p}.	并在{p2}成为了{p1}的{s1}。	ht
-and began to skulk and brood.	并开始阴郁地独自徘徊。	h
+and began to skulk and brood.	并开始鬼祟地徘徊，阴森地沉思。	h
 and began traveling with {n}.	并开始与{n1}结伴旅行。	ht
 and began wandering the wilds	并开始在荒野中游荡	h
 and beheaded {a} in the wilds	并在荒野中将{a1}斩首了	ht
@@ -68582,12 +68582,12 @@ and was hired to fight in {e}	并受雇参加了{e1}	ht
 and was killed by {a} at {p}.	并在{p1}被{a1}杀害了。	ht
 and was killed by {a} in {p}.	并在{p1}被{a1}杀害了。	ht
 and was murdered in the wilds	并在荒野中被谋杀了	h
-and was possessed during {e}.	并在{e1}期间被附体了。	ht
-and was possessed within {p}.	并在{p1}被附体了。	ht
+and was possessed during {e}.	并在{e1}期间被附身了。	ht
+and was possessed within {p}.	并在{p1}被附身了。	ht
 and was released in the wilds	并在荒野中被释放了	h
 and was scuttled in the wilds	并在荒野中被凿沉了	h
 and was striken by melancholy	并陷入了忧郁	h
-and was taken by a fell mood.	并陷入了凶险的情绪。	h
+and was taken by a fell mood.	并陷入了残暴心境。	h
 and was wrongfully convicted.	并被错误地定罪了。	h
 and went berserk in the wilds	并在荒野中陷入了狂暴	h
 and were expelled during {e}.	并在{e1}期间遭到了驱逐。	ht
@@ -68992,9 +68992,9 @@ the performance of {b} in {p}	在{p1}，《{b1}》的表演	htEi
 the persecution of {a} at {p}	在{p1}，对{a1}的迫害	htEi
 the persecution of {a} in {d}	{d1}年的对{a1}的迫害	htEi
 the persecution of {a} in {p}	在{p1}，对{a1}的迫害	htEi
-the possession of {a} at {p}.	在{p1}，{a1}被附体。	htEi
-the possession of {a} in {d}.	{d1}年的{a1}被附体。	htEi
-the possession of {a} in {p}.	在{p1}，{a1}被附体。	htEi
+the possession of {a} at {p}.	在{p1}，{a1}被附身。	htEi
+the possession of {a} in {d}.	{d1}年的{a1}被附身。	htEi
+the possession of {a} in {p}.	在{p1}，{a1}被附身。	htEi
 the preparation of aqua regia	王水的制备	h
 the process of surveying land	土地测量过程	h
 the raising of {a} during {e}	在{e1}期间，{a1}的复活	htEi
@@ -69161,7 +69161,7 @@ you can succumb to invasions.	入侵就可能让你覆灭。	hq
 {a} became the parent of {n}.	{a1}成为了{n1}的父母。	ht
 {a} became {s} of {p} at {p}.	{a1}在{p2}成为了{p1}的{s1}。	ht
 {a} became {s} of {p} in {p}.	{a1}在{p2}成为了{p1}的{s1}。	ht
-{a} began to skulk and brood.	{a1}开始阴郁地独自徘徊。	ht
+{a} began to skulk and brood.	{a1}开始鬼祟地徘徊，阴森地沉思。	ht
 {a} began traveling with {n}.	{a1}开始与{n1}结伴旅行。	ht
 {a} began wandering the wilds	{a1}开始在荒野中游荡	ht
 {a} beheaded {a} in the wilds	{a1}在荒野中将{a2}斩首了	ht
@@ -69358,12 +69358,12 @@ you can succumb to invasions.	入侵就可能让你覆灭。	hq
 {a} was killed by {a} at {p}.	{a1}在{p1}被{a2}杀害了。	ht
 {a} was killed by {a} in {p}.	{a1}在{p1}被{a2}杀害了。	ht
 {a} was murdered in the wilds	{a1}在荒野中被谋杀了	ht
-{a} was possessed during {e}.	{a1}在{e1}期间被附体了。	ht
-{a} was possessed within {p}.	{a1}在{p1}被附体了。	ht
+{a} was possessed during {e}.	{a1}在{e1}期间被附身了。	ht
+{a} was possessed within {p}.	{a1}在{p1}被附身了。	ht
 {a} was released in the wilds	{a1}在荒野中被释放了	ht
 {a} was scuttled in the wilds	{a1}在荒野中被凿沉了	ht
 {a} was striken by melancholy	{a1}陷入了忧郁	ht
-{a} was taken by a fell mood.	{a1}陷入了凶险的情绪。	ht
+{a} was taken by a fell mood.	{a1}陷入了残暴心境。	ht
 {a} was wrongfully convicted.	{a1}被错误地定罪了。	ht
 {a} went berserk in the wilds	{a1}在荒野中陷入了狂暴	ht
 {a} were destroyed during {e}	在{e1}期间，{a1}被摧毁了	ht
@@ -69440,7 +69440,7 @@ you can succumb to invasions.	入侵就可能让你覆灭。	hq
 {n} was the victor within {p}	在{p1}，{n1}获得了胜利	ht
 {n} withdraws from society...	{n1}开始远离人群……	hPt
 {n} works with menacing fury!	{n1}正带着骇人的狂怒工作！	hPt
-{n} works, darkly brooding...	{n1}一边阴郁地沉思，一边工作……	hPt
+{n} works, darkly brooding...	{n1}一边阴森地沉思，一边工作……	hPt
 {n}' property was confiscated	{n1}的财产被没收	ht
 {n}'s ascension to {s} of {p}	{n1}就任{p1}的{s1}	htEi
 {n}'s presence in {p} at {p}.	在{p2}，{n1}在{p1}出现。	htEi
@@ -70272,7 +70272,7 @@ Path to here ({d} levels up)	寻路至此（上方{d1}层）	hPt
 Pillaging of {p} during {e}.	在{e1}期间，{p1}劫掠事件。	htEi
 Pillaging of {p} within {p}.	在{p2}，{p1}劫掠事件。	htEi
 Poetry Recital in the wilds.	在荒野中，诗歌朗诵。	hEi
-Possessed by unknown forces!	被不明力量附身了！	hP
+Possessed by unknown forces!	被未知力量附身！	hP
 Rampage of {a} in the wilds.	在荒野中，{a1}的肆虐事件。	htEi
 Real world extinct creatures	现实世界中的灭绝生物	l
 Real-world extinct creatures	现实世界中的灭绝生物
@@ -70462,7 +70462,7 @@ You are a {s} in {s}, a {s},	你是一名{s}，身处{s}（{s}），	wtl
 You are held in high regard.	你备受尊重。	hP
 You are held in some esteem.	你受到一定的敬重。	hP
 You are in a martial trance.	你已进入战斗专注状态。	hj
-You are in a secretive mood.	你陷入了隐秘的情绪。	hj
+You are in a secretive mood.	你陷入了诡秘心境。	hj
 You are partially paralyzed!	你部分麻痹了！	hP
 You are too injured to jump.	你的伤势太重，无法跳跃。	hP
 You begin the eighth stanza.	你开始朗诵第8节诗。	hP
@@ -70548,7 +70548,7 @@ and became the owner of {a}.	并成为了{a1}的主人。	ht
 and became the parent of {n}	并成为了{n1}的父母	ht
 and became {s} of {p} at {p}	并在{p2}成为了{p1}的{s1}	ht
 and became {s} of {p} in {p}	并在{p2}成为了{p1}的{s1}	ht
-and began to skulk and brood	并开始阴郁地独自徘徊	h
+and began to skulk and brood	并开始鬼祟地徘徊，阴森地沉思	h
 and began traveling with {n}	并开始与{n1}结伴旅行	ht
 and beheaded {a} during {e}.	并在{e1}期间将{a1}斩首了。	ht
 and beheaded {a} within {p}.	并在{p1}将{a1}斩首了。	ht
@@ -70768,16 +70768,16 @@ and was killed by {a} in {p}	并在{p1}被{a1}杀害了	ht
 and was left out in the air.	并被丢在空气中窒息而死。	h
 and was murdered during {e}.	并在{e1}期间被谋杀了。	ht
 and was murdered within {p}.	并在{p1}被谋杀了。	ht
-and was possessed during {e}	并在{e1}期间被附体了	ht
-and was possessed within {p}	并在{p1}被附体了	ht
+and was possessed during {e}	并在{e1}期间被附身了	ht
+and was possessed within {p}	并在{p1}被附身了	ht
 and was released during {e}.	并在{e1}期间被释放了。	ht
 and was released within {p}.	并在{p1}被释放了。	ht
 and was scuttled during {e}.	并在{e1}期间被凿沉了。	ht
 and was scuttled within {p}.	并在{p1}被凿沉了。	ht
 and was sired by {n} at {p}.	并在{p1}的生父是{n1}。	ht
 and was sired by {n} in {p}.	并在{p1}的生父是{n1}。	ht
-and was taken by a fell mood	并陷入了凶险的情绪	h
-and was taken by a fey mood.	并陷入了神秘的情绪。	h
+and was taken by a fell mood	并陷入了残暴心境	h
+and was taken by a fey mood.	并陷入了古怪心境。	h
 and was wrongfully convicted	并被错误地定罪了	h
 and went berserk during {e}.	并在{e1}期间陷入了狂暴。	ht
 and went berserk within {p}.	并在{p1}陷入了狂暴。	ht
@@ -71117,9 +71117,9 @@ the expulsion of {a} in {p}.	在{p1}，对{a1}的驱逐。	htEi
 the failed diplomacy of {a}.	{a1}失败的外交活动。	htEi
 the fall of {a} in the wilds	在荒野中，{a1}的陨落	htEi
 the feeding of {a} to beasts	{a1}被喂给野兽	htEi
-the fell mood of {a} at {p}.	在{p1}，{a1}的凶险情绪。	htEi
-the fell mood of {a} in {d}.	{d1}年的{a1}的凶险情绪。	htEi
-the fell mood of {a} in {p}.	在{p1}，{a1}的凶险情绪。	htEi
+the fell mood of {a} at {p}.	在{p1}，{a1}的残暴心境。	htEi
+the fell mood of {a} in {d}.	{d1}年的{a1}的残暴心境。	htEi
+the fell mood of {a} in {p}.	在{p1}，{a1}的残暴心境。	htEi
 the flight of {a} during {e}	在{e1}期间，{a1}的逃亡	htEi
 the flight of {a} within {p}	在{p1}，{a1}的逃亡	htEi
 the forces were arrayed, and	双方列阵之后，	h
@@ -71161,9 +71161,9 @@ the overthrow of {p} at {p}.	在{p2}，{p1}政权倾覆事件。	htEi
 the overthrow of {p} in {d}.	{d1}年的{p1}政权倾覆事件。	htEi
 the overthrow of {p} in {p}.	在{p2}，{p1}政权倾覆事件。	htEi
 the performance in the wilds	在荒野中，表演	hEi
-the possession of {a} at {p}	在{p1}，{a1}被附体	htEi
-the possession of {a} in {d}	{d1}年的{a1}被附体	htEi
-the possession of {a} in {p}	在{p1}，{a1}被附体	htEi
+the possession of {a} at {p}	在{p1}，{a1}被附身	htEi
+the possession of {a} in {d}	{d1}年的{a1}被附身	htEi
+the possession of {a} in {p}	在{p1}，{a1}被附身	htEi
 the ransom of {a} during {e}	在{e1}期间，{a1}的赎回	htEi
 the ransom of {a} within {p}	在{p1}，{a1}的赎回	htEi
 the razing of {p} during {e}	在{e1}期间，夷平{p1}	htEi
@@ -71342,7 +71342,7 @@ wove a masterful sewn image.	织出了一幅杰作级的刺绣图像。	h
 {a} became the parent of {n}	{a1}成为了{n1}的父母	ht
 {a} became {s} of {p} at {p}	{a1}在{p2}成为了{p1}的{s1}	ht
 {a} became {s} of {p} in {p}	{a1}在{p2}成为了{p1}的{s1}	ht
-{a} began to skulk and brood	{a1}开始阴郁地独自徘徊	ht
+{a} began to skulk and brood	{a1}开始鬼祟地徘徊，阴森地沉思	ht
 {a} began traveling with {n}	{a1}开始与{n1}结伴旅行	ht
 {a} beheaded {a} during {e}.	{a1}在{e1}期间将{a2}斩首了。	ht
 {a} beheaded {a} within {p}.	{a1}在{p1}将{a2}斩首了。	ht
@@ -71558,16 +71558,16 @@ wove a masterful sewn image.	织出了一幅杰作级的刺绣图像。	h
 {a} was left out in the air.	{a1}被丢在空气中窒息而死。	ht
 {a} was murdered during {e}.	{a1}在{e1}期间被谋杀了。	ht
 {a} was murdered within {p}.	{a1}在{p1}被谋杀了。	ht
-{a} was possessed during {e}	{a1}在{e1}期间被附体了	ht
-{a} was possessed within {p}	{a1}在{p1}被附体了	ht
+{a} was possessed during {e}	{a1}在{e1}期间被附身了	ht
+{a} was possessed within {p}	{a1}在{p1}被附身了	ht
 {a} was released during {e}.	{a1}在{e1}期间被释放了。	ht
 {a} was released within {p}.	{a1}在{p1}被释放了。	ht
 {a} was scuttled during {e}.	{a1}在{e1}期间被凿沉了。	ht
 {a} was scuttled within {p}.	{a1}在{p1}被凿沉了。	ht
 {a} was sired by {n} at {p}.	{a1}在{p1}的生父是{n1}。	ht
 {a} was sired by {n} in {p}.	{a1}在{p1}的生父是{n1}。	ht
-{a} was taken by a fell mood	{a1}陷入了凶险的情绪	ht
-{a} was taken by a fey mood.	{a1}陷入了神秘的情绪。	ht
+{a} was taken by a fell mood	{a1}陷入了残暴心境	ht
+{a} was taken by a fey mood.	{a1}陷入了古怪心境。	ht
 {a} was wrongfully convicted	{a1}被错误地定罪了	ht
 {a} went berserk during {e}.	{a1}在{e1}期间陷入了狂暴。	ht
 {a} went berserk within {p}.	{a1}在{p1}陷入了狂暴。	ht
@@ -72927,7 +72927,7 @@ and was slaughtered in {p}.	并在{p1}被屠杀了。	ht
 and was struck down at {p}.	并在{p1}被击杀。	ht
 and was struck down by {a}.	并被{a1}击杀。	ht
 and was struck down in {p}.	并在{p1}被击杀。	ht
-and was taken by a fey mood	并陷入了神秘的情绪	h
+and was taken by a fey mood	并陷入了古怪心境	h
 and went berserk during {e}	并在{e1}期间陷入了狂暴	ht
 and went berserk within {p}	并在{p1}陷入了狂暴	ht
 and were reunited with {a}.	并与{a1}重聚了。	ht
@@ -73289,12 +73289,12 @@ the failed diplomacy of {a}	{a1}失败的外交活动	htEi
 the fair conclusion of {s}.	{s1}的尚可结果。	htEi
 the fall of {a} during {e}.	在{e1}期间，{a1}的陨落。	htEi
 the fall of {a} within {p}.	在{p1}，{a1}的陨落。	htEi
-the fell mood of {a} at {p}	在{p1}，{a1}的凶险情绪	htEi
-the fell mood of {a} in {d}	{d1}年的{a1}的凶险情绪	htEi
-the fell mood of {a} in {p}	在{p1}，{a1}的凶险情绪	htEi
-the fey mood of {a} at {p}.	在{p1}，{a1}的神秘情绪。	htEi
-the fey mood of {a} in {d}.	{d1}年的{a1}的神秘情绪。	htEi
-the fey mood of {a} in {p}.	在{p1}，{a1}的神秘情绪。	htEi
+the fell mood of {a} at {p}	在{p1}，{a1}的残暴心境	htEi
+the fell mood of {a} in {d}	{d1}年的{a1}的残暴心境	htEi
+the fell mood of {a} in {p}	在{p1}，{a1}的残暴心境	htEi
+the fey mood of {a} at {p}.	在{p1}，{a1}的古怪心境。	htEi
+the fey mood of {a} in {d}.	{d1}年的{a1}的古怪心境。	htEi
+the fey mood of {a} in {p}.	在{p1}，{a1}的古怪心境。	htEi
 the formation of {p} at {p}	在{p2}，{p1}的成立	htEi
 the formation of {p} in {d}	{d1}年的{p1}的成立	htEi
 the formation of {p} in {p}	在{p2}，{p1}的成立	htEi
@@ -73485,7 +73485,7 @@ was killed by falling rocks	被落石砸死了	h
 was murdered by {a} at {p}.	在{p1}被{a1}谋杀了。	ht
 was murdered by {a} in {p}.	在{p1}被{a1}谋杀了。	ht
 was not afraid and refused.	毫不畏惧，拒绝了对方。	h
-was possessed in the wilds.	在荒野中被附体了。	h
+was possessed in the wilds.	在荒野中被附身了。	h
 was put to rest during {e}.	在{e1}期间亡魂得到了安息。	ht
 was put to rest within {p}.	在{p1}亡魂得到了安息。	ht
 was recognized and arrested	被认出并逮捕了	h
@@ -73753,7 +73753,7 @@ wove a masterful sewn image	织出了一幅杰作级的刺绣图像	h
 {a} was struck down at {p}.	{a1}在{p1}被击杀。	ht
 {a} was struck down by {a}.	{a1}被{a2}击杀。	ht
 {a} was struck down in {p}.	{a1}在{p1}被击杀。	ht
-{a} was taken by a fey mood	{a1}陷入了神秘的情绪	ht
+{a} was taken by a fey mood	{a1}陷入了古怪心境	ht
 {a} went berserk during {e}	{a1}在{e1}期间陷入了狂暴	ht
 {a} went berserk within {p}	{a1}在{p1}陷入了狂暴	ht
 {a} were desecrated at {p}.	在{p1}，{a1}遭到了亵渎。	ht
@@ -73849,7 +73849,7 @@ wove a masterful sewn image	织出了一幅杰作级的刺绣图像	h
 {n} has given birth to {s}.	{n1}生下了{s1}。	hPt
 {n} is associated with {r}.	{n}与{r}有关。	ht
 {n} is partially paralyzed!	{n1}部分麻痹了！	hPt
-{n} is taken by a fey mood!	{n1}陷入了神秘的情绪！	hPt
+{n} is taken by a fey mood!	{n1}陷入了古怪心境！	hPt
 {n} of {p} constructed {p}.	{p1}的{n}建造了{p2}。	ht
 {n} seems willing to trade.	{n1}似乎愿意交易。	hPt
 {n} struck down {n} at {p}.	在{p}，{n1}击杀了{n2}。	ht
@@ -74458,7 +74458,7 @@ Glaze large clay/stone pot	为黏土质/石质大罐上釉	wi
 Grant listener work as {s}	准许对方从事{s1}工作	hPt
 Greatly feared as a killer	令人胆寒的屠夫	w
 Greetings. My name is {p}.	你好，我叫{p1}。	hPt
-Has the aspect of one fey!	显出神秘的神情！	hP
+Has the aspect of one fey!	显出古怪的神态！	hP
 High priesthood unit count	高阶祭司团人数要求
 Hotkey: Building, Bookcase	热键：建筑，书柜	w
 Hotkey: Building, Military	热键：建筑，军事	w
@@ -74781,7 +74781,7 @@ X is unnaturally contorted	X的身体扭曲得不自然	wl
 You are a newly-minted {s}	你是一名新晋的{s}	atl
 You are being incinerated!	你正被烧成灰烬！	hP
 You are freezing to death!	你快要被冻死了！	hP
-You are in a macabre mood.	你陷入了阴森心情。	hj
+You are in a macabre mood.	你陷入了阴森心境。	hj
 You are no longer stunned.	你不再眩晕了。	hP
 You begin a sermon on {n}.	你开始围绕{n1}布道。	hPt
 You begin a sermon on {r}.	你开始围绕{r1}布道。	hPt
@@ -75404,9 +75404,9 @@ the failure of {s} in {p}.	在{p1}，{s1}的失败。	htEi
 the fair conclusion of {s}	{s1}的尚可结果	htEi
 the fall of {a} during {e}	在{e1}期间，{a1}的陨落	htEi
 the fall of {a} within {p}	在{p1}，{a1}的陨落	htEi
-the fey mood of {a} at {p}	在{p1}，{a1}的神秘情绪	htEi
-the fey mood of {a} in {d}	{d1}年的{a1}的神秘情绪	htEi
-the fey mood of {a} in {p}	在{p1}，{a1}的神秘情绪	htEi
+the fey mood of {a} at {p}	在{p1}，{a1}的古怪心境	htEi
+the fey mood of {a} in {d}	{d1}年的{a1}的古怪心境	htEi
+the fey mood of {a} in {p}	在{p1}，{a1}的古怪心境	htEi
 the fleeing of {a} at {p}.	在{p1}，{a1}的逃离。	htEi
 the fleeing of {a} in {d}.	{d1}年的{a1}的逃离。	htEi
 the fleeing of {a} in {p}.	在{p1}，{a1}的逃离。	htEi
@@ -75598,7 +75598,7 @@ was murdered by {a} at {p}	在{p1}被{a1}谋杀了	ht
 was murdered by {a} in {p}	在{p1}被{a1}谋杀了	ht
 was murdered in the wilds.	在荒野中被谋杀了。	h
 was not afraid and refused	毫不畏惧，拒绝了对方	h
-was possessed in the wilds	在荒野中被附体了	h
+was possessed in the wilds	在荒野中被附身了	h
 was put to rest during {e}	在{e1}期间亡魂得到了安息	ht
 was put to rest within {p}	在{p1}亡魂得到了安息	ht
 was released in the wilds.	在荒野中被释放了。	h
@@ -76173,7 +76173,7 @@ Conversation mood: Shaken	震惊不安	l
 Conversation mood: Uneasy	不安	l
 Conversation mood: Wonder	惊叹	l
 Corrupt Soldier Mood: {d}	异常的军人情绪：{d1}	hPt
-Corrupt Strange Mood: {d}	异常的怪异心情：{d1}	hPt
+Corrupt Strange Mood: {d}	奇异心境数据异常：{d1}	hPt
 Crawling around babbling!	胡言乱语地四处爬行！	hP
 DFHack GUI Design: Rotate	旋转	l
 DFHack GUI Design: Shape:	形状：	l
@@ -76392,7 +76392,7 @@ Generate Divine Materials	生成神圣材料
 Ha ha ha... You're funny!	哈哈哈……你真有趣！	hP
 Hang from {s} ({s}/Magma)	悬挂于{s1}（{s2}／岩浆）	hPt
 Hang from {s} ({s}/Water)	悬挂于{s1}（{s2}／水）	hPt
-Has a horrible fell look!	露出可怕而凶险的神情！	hP
+Has a horrible fell look!	显出可怕而残暴的神情！	hP
 He likes to take it easy.	他喜欢轻松度日。	l
 He often feels envious of	他经常嫉妒	l
 He takes offered help and	他接受别人主动提供的帮助和	l
@@ -76925,8 +76925,8 @@ and was imprisoned by {a}	并被{a1}囚禁了	ht
 and was imprisoned in {p}	并被囚禁在{p1}	ht
 and was killed by a trap.	并死于陷阱。	h
 and was overcome by greed	并被贪欲冲昏了头脑	h
-and was possessed at {p}.	并在{p1}被附体了。	ht
-and was possessed in {p}.	并在{p1}被附体了。	ht
+and was possessed at {p}.	并在{p1}被附身了。	ht
+and was possessed in {p}.	并在{p1}被附身了。	ht
 and was reunited with {a}	并与{a1}重聚了	ht
 and was scalded to death.	并被烫死了。	h
 and were expelled at {p}.	并在{p1}遭到了驱逐。	ht
@@ -76957,7 +76957,7 @@ became the master of {n}.	成为了{n1}的师傅。	ht
 became the parent of {n}.	成为了{n1}的父母。	ht
 became {s} of {p} at {p}.	在{p2}成为了{p1}的{s1}。	ht
 became {s} of {p} in {p}.	在{p2}成为了{p1}的{s1}。	ht
-began to skulk and brood.	开始阴郁地独自徘徊。	h
+began to skulk and brood.	开始鬼祟地徘徊，阴森地沉思。	h
 began traveling with {n}.	开始与{n1}结伴旅行。	ht
 began wandering the wilds	开始在荒野中游荡	h
 beheaded {a} in the wilds	在荒野中将{a1}斩首了	ht
@@ -77322,7 +77322,7 @@ the catatonia {a} in {p}.	在{p1}，{a1}对外界不再回应。	htEi
 the crimes of {a} at {p}.	在{p1}，{a1}的罪行。	htEi
 the crimes of {a} in {d}.	{d1}年的{a1}的罪行。	htEi
 the crimes of {a} in {p}.	在{p1}，{a1}的罪行。	htEi
-the dark brooding of {a}.	{a1}的阴郁沉思。	htEi
+the dark brooding of {a}.	{a1}的阴森沉思。	htEi
 the defeat of {a} at {p}.	在{p1}，「{a1}」战败。	htEi
 the defeat of {a} by {a}.	「{a2}」击败了「{a1}」。	htEi
 the defeat of {a} in {d}.	{d1}年的「{a1}」战败。	htEi
@@ -77490,12 +77490,12 @@ was hired to fight in {e}	受雇参加了{e1}	ht
 was killed by {a} at {p}.	在{p1}被{a1}杀害了。	ht
 was killed by {a} in {p}.	在{p1}被{a1}杀害了。	ht
 was murdered in the wilds	在荒野中被谋杀了	h
-was possessed during {e}.	在{e1}期间被附体了。	ht
-was possessed within {p}.	在{p1}被附体了。	ht
+was possessed during {e}.	在{e1}期间被附身了。	ht
+was possessed within {p}.	在{p1}被附身了。	ht
 was released in the wilds	在荒野中被释放了	h
 was scuttled in the wilds	在荒野中被凿沉了	h
 was striken by melancholy	陷入了忧郁	h
-was taken by a fell mood.	陷入了凶险的情绪。	h
+was taken by a fell mood.	陷入了残暴心境。	h
 was wrongfully convicted.	被错误地定罪了。	h
 wearing tattered clothing	穿着破烂的衣服	wi
 went berserk in the wilds	在荒野中陷入了狂暴	h
@@ -77663,8 +77663,8 @@ writing of a masterpiece.	书写杰作。	hEi
 {a} was imprisoned in {p}	{a1}被囚禁在{p1}	ht
 {a} was killed by a trap.	{a1}死于陷阱。	ht
 {a} was overcome by greed	{a1}被贪欲冲昏了头脑	ht
-{a} was possessed at {p}.	{a1}在{p1}被附体了。	ht
-{a} was possessed in {p}.	{a1}在{p1}被附体了。	ht
+{a} was possessed at {p}.	{a1}在{p1}被附身了。	ht
+{a} was possessed in {p}.	{a1}在{p1}被附身了。	ht
 {a} was reunited with {a}	{a1}与{a2}重聚了	ht
 {a} was scalded to death.	{a1}被烫死了。	ht
 {a} were destroyed at {p}	在{p1}，{a1}被摧毁了	ht
@@ -78751,8 +78751,8 @@ and was killed by a trap	并死于陷阱	h
 and was murdered at {p}.	并在{p1}被谋杀了。	ht
 and was murdered by {a}.	并被{a1}谋杀了。	ht
 and was murdered in {p}.	并在{p1}被谋杀了。	ht
-and was possessed at {p}	并在{p1}被附体了	ht
-and was possessed in {p}	并在{p1}被附体了	ht
+and was possessed at {p}	并在{p1}被附身了	ht
+and was possessed in {p}	并在{p1}被附身了	ht
 and was released at {p}.	并在{p1}被释放了。	ht
 and was released in {p}.	并在{p1}被释放了。	ht
 and was scalded to death	并被烫死了	h
@@ -78802,7 +78802,7 @@ became the owner of {a}.	成为了{a1}的主人。	ht
 became the parent of {n}	成为了{n1}的父母	ht
 became {s} of {p} at {p}	在{p2}成为了{p1}的{s1}	ht
 became {s} of {p} in {p}	在{p2}成为了{p1}的{s1}	ht
-began to skulk and brood	开始阴郁地独自徘徊	h
+began to skulk and brood	开始鬼祟地徘徊，阴森地沉思	h
 began traveling with {n}	开始与{n1}结伴旅行	ht
 beheaded {a} during {e}.	在{e1}期间将{a1}斩首了。	ht
 beheaded {a} within {p}.	在{p1}将{a1}斩首了。	ht
@@ -79323,7 +79323,7 @@ the construction of {p}.	建造{p1}。	htEi
 the crimes of {a} at {p}	在{p1}，{a1}的罪行	htEi
 the crimes of {a} in {d}	{d1}年的{a1}的罪行	htEi
 the crimes of {a} in {p}	在{p1}，{a1}的罪行	htEi
-the dark brooding of {a}	{a1}的阴郁沉思	htEi
+the dark brooding of {a}	{a1}的阴森沉思	htEi
 the death of {a} at {p}.	在{p1}，{a1}的死亡。	htEi
 the death of {a} in {d}.	{d1}年的{a1}的死亡。	htEi
 the death of {a} in {p}.	在{p1}，{a1}的死亡。	htEi
@@ -79478,16 +79478,16 @@ was killed by {a} in {p}	在{p1}被{a1}杀害了	ht
 was left out in the air.	被丢在空气中窒息而死。	h
 was murdered during {e}.	在{e1}期间被谋杀了。	ht
 was murdered within {p}.	在{p1}被谋杀了。	ht
-was possessed during {e}	在{e1}期间被附体了	ht
-was possessed within {p}	在{p1}被附体了	ht
+was possessed during {e}	在{e1}期间被附身了	ht
+was possessed within {p}	在{p1}被附身了	ht
 was released during {e}.	在{e1}期间被释放了。	ht
 was released within {p}.	在{p1}被释放了。	ht
 was scuttled during {e}.	在{e1}期间被凿沉了。	ht
 was scuttled within {p}.	在{p1}被凿沉了。	ht
 was sired by {n} at {p}.	在{p1}的生父是{n1}。	ht
 was sired by {n} in {p}.	在{p1}的生父是{n1}。	ht
-was taken by a fell mood	陷入了凶险的情绪	h
-was taken by a fey mood.	陷入了神秘的情绪。	h
+was taken by a fell mood	陷入了残暴心境	h
+was taken by a fey mood.	陷入了古怪心境。	h
 was wrongfully convicted	被错误地定罪了	h
 weaponsmith's shop signs	武器匠商店招牌	wi
 went berserk during {e}.	在{e1}期间陷入了狂暴。	ht
@@ -79672,8 +79672,8 @@ writing of a masterpiece	书写杰作	hEi
 {a} was murdered at {p}.	{a1}在{p1}被谋杀了。	ht
 {a} was murdered by {a}.	{a1}被{a2}谋杀了。	ht
 {a} was murdered in {p}.	{a1}在{p1}被谋杀了。	ht
-{a} was possessed at {p}	{a1}在{p1}被附体了	ht
-{a} was possessed in {p}	{a1}在{p1}被附体了	ht
+{a} was possessed at {p}	{a1}在{p1}被附身了	ht
+{a} was possessed in {p}	{a1}在{p1}被附身了	ht
 {a} was released at {p}.	{a1}在{p1}被释放了。	ht
 {a} was released in {p}.	{a1}在{p1}被释放了。	ht
 {a} was scalded to death	{a1}被烫死了	ht
@@ -80238,7 +80238,7 @@ Overthrow of {p} at {p}	在{p2}，{p1}政权倾覆事件	htEi
 Overthrow of {p} in {d}	{d1}年的{p1}政权倾覆事件	htEi
 Overthrow of {p} in {p}	在{p2}，{p1}政权倾覆事件	htEi
 Overview sentence: Eek!	呀！	l
-Peculiarly secretive...	异常地遮遮掩掩……	hP
+Peculiarly secretive...	变得异常诡秘……	hP
 Performance during {e}.	在{e1}期间，表演。	htEi
 Performance within {p}.	在{p1}，表演。	htEi
 Pillage (openly attack)	劫掠（公开进攻）	wli
@@ -80441,7 +80441,7 @@ Writing material: linen	亚麻纸	l
 Writing material: paper	纸	l
 Writing material: ramie	苎麻纸	l
 You are a stranger here	你在这里是个陌生人	al
-You are in a fell mood.	你陷入了凶险的情绪。	hj
+You are in a fell mood.	你陷入了残暴心境。	hj
 You bash the door down!	你撞破了门！	hP
 You begin to throw {s}.	你开始投掷{s1}。	hPt
 You break the hatch in!	你砸破了舱盖！	hP
@@ -81522,7 +81522,7 @@ was slaughtered in {p}.	在{p1}被屠杀了。	ht
 was struck down at {p}.	在{p1}被击杀。	ht
 was struck down by {a}.	被{a1}击杀。	ht
 was struck down in {p}.	在{p1}被击杀。	ht
-was taken by a fey mood	陷入了神秘的情绪	h
+was taken by a fey mood	陷入了古怪心境	h
 weaponsmith's shop sign	武器匠商店招牌	wi
 went berserk during {e}	在{e1}期间陷入了狂暴	ht
 went berserk within {p}	在{p1}陷入了狂暴	ht
@@ -82418,7 +82418,7 @@ X is being flayed by Y	X正在被Y剥皮	wl
 Yell out service order	大声招呼点单	hP
 You are burning alive!	你正被活活烧死！	hP
 You are chanting well.	你吟唱得很好。	hP
-You are in a fey mood.	你陷入了神秘的情绪。	hj
+You are in a fey mood.	你陷入了古怪心境。	hj
 You begin dancing {b}.	你开始表演舞蹈《{b1}》。	hPt
 You cease nocking {s}.	你停止搭上{s1}。	hPt
 You chant beautifully.	你吟唱得优美动听。	hP
@@ -83532,7 +83532,7 @@ the performance in {p}	在{p1}，表演	htEi
 the performance of {b}	《{b1}》的表演	htEi
 the persecution of {a}	对{a1}的迫害	htEi
 the phases of the moon	月相	h
-the possession of {a}.	{a1}被附体。	htEi
+the possession of {a}.	{a1}被附身。	htEi
 the rebuilding of {p}.	重建{p1}。	htEi
 the reclamation of {p}	收复{p1}	htEi
 the recruitment of {a}	对{a1}的招募	htEi
@@ -84111,7 +84111,7 @@ Do We Understand {b}?	我们理解{b}吗？	hbti
 Do not install colony	不要安装蜂巢	wli
 Dwarvemon Entity Type	Dwarvemon 实体类型	w
 Eat or drink an item.	食用或饮用一件物品。	hj
-Enable artifact moods	启用造物情绪	w
+Enable artifact moods	启用奇异心境	w
 Enable multithreading	启用多线程	w
 Engrave memorial slab	雕刻纪念石板	wi
 Establish burrows to 	设立活动区用以在更大的要塞组	w
@@ -85851,7 +85851,7 @@ the emergence of {p}.	{p1}的出现。	htEi
 the entombment of {a}	{a1}的安葬	htEi
 the execution of {a}.	{a1}被处决。	htEi
 the expulsion of {a}.	对{a1}的驱逐。	htEi
-the fell mood of {a}.	{a1}的凶险情绪。	htEi
+the fell mood of {a}.	{a1}的残暴心境。	htEi
 the formation of {p}.	{p1}的成立。	htEi
 the foundation of {p}	建立{p1}	htEi
 the lithotomy surgery	取石手术	h
@@ -85861,7 +85861,7 @@ the minecart must be 	将这个站点链接到一个储存处。	w
 the moving out of {a}	{a1}的迁出	htEi
 the notion of relapse	复发的概念	h
 the overthrow of {p}.	{p1}政权倾覆事件。	htEi
-the possession of {a}	{a1}被附体	htEi
+the possession of {a}	{a1}被附身	htEi
 the rebuilding of {p}	重建{p1}	htEi
 the rejection of {s}.	对{s1}的拒绝。	htEi
 the residence of {a}.	{a1}的居住。	htEi
@@ -85938,8 +85938,8 @@ was imprisoned by {a}	被{a1}囚禁了	ht
 was imprisoned in {p}	被囚禁在{p1}	ht
 was killed by a trap.	死于陷阱。	h
 was overcome by greed	被贪欲冲昏了头脑	h
-was possessed at {p}.	在{p1}被附体了。	ht
-was possessed in {p}.	在{p1}被附体了。	ht
+was possessed at {p}.	在{p1}被附身了。	ht
+was possessed in {p}.	在{p1}被附身了。	ht
 was reunited with {a}	与{a1}重聚了	ht
 was scalded to death.	被烫死了。	h
 water buffalo leather	水牛皮革	wi
@@ -88586,8 +88586,8 @@ the end of work {a}.	{a1}不再工作。	htEi
 the escape from {p}.	逃出{p1}。	htEi
 the execution of {a}	{a1}被处决	htEi
 the expulsion of {a}	对{a1}的驱逐	htEi
-the fell mood of {a}	{a1}的凶险情绪	htEi
-the fey mood of {a}.	{a1}的神秘情绪。	htEi
+the fell mood of {a}	{a1}的残暴心境	htEi
+the fey mood of {a}.	{a1}的古怪心境。	htEi
 the formation of {p}	{p1}的成立	htEi
 the freezing of {a}.	{a1}的冻结。	htEi
 the insanity of {a}.	{a1}的疯狂。	htEi
@@ -88691,8 +88691,8 @@ was killed by a trap	死于陷阱	h
 was murdered at {p}.	在{p1}被谋杀了。	ht
 was murdered by {a}.	被{a1}谋杀了。	ht
 was murdered in {p}.	在{p1}被谋杀了。	ht
-was possessed at {p}	在{p1}被附体了	ht
-was possessed in {p}	在{p1}被附体了	ht
+was possessed at {p}	在{p1}被附身了	ht
+was possessed in {p}	在{p1}被附身了	ht
 was released at {p}.	在{p1}被释放了。	ht
 was released in {p}.	在{p1}被释放了。	ht
 was scalded to death	被烫死了	h
@@ -91959,7 +91959,7 @@ the election of {a}	{a1}的当选	htEi
 the end of work {a}	{a1}不再工作	htEi
 the escape from {p}	逃出{p1}	htEi
 the failure of {s}.	{s1}的失败。	htEi
-the fey mood of {a}	{a1}的神秘情绪	htEi
+the fey mood of {a}	{a1}的古怪心境	htEi
 the fleeing of {a}.	{a1}的逃离。	htEi
 the freeing of {a}.	{a1}获释。	htEi
 the freezing of {a}	{a1}的冻结	htEi
@@ -92313,7 +92313,7 @@ Blocks: stone/clay	块：石材／黏土	wi
 Break in {s} ({s})	撞破{s1}（{s2}）	hPt
 Brew alcohol from 	用植物、水果或蜂蜜酿造酒精饮	w
 Bring item to shop	将物品搬到工坊	wi
-Brooding darkly...	阴郁地沉思着……	hP
+Brooding darkly...	阴森地沉思……	hP
 Brook: Cuddledcold	溪流:拥抱寒冷	w
 Brook: Rhymerustic	小溪: 韵律乡村	w
 Brook: Suckedclasp	溪流:被吸住	w
@@ -93070,7 +93070,7 @@ and taught {a} {s}	并向{a1}传授了{s1}	ht
 and took over {p}.	并接管了{p1}。	ht
 and was convicted.	并被定罪了。	h
 and was crucified.	并被钉死在十字架上。	h
-and was possessed.	并被附体了。	h
+and was possessed.	并被附身了。	h
 and went into debt	并欠下了债务	h
 and were expelled.	并遭到了驱逐。	h
 andrewsarchus pups	安氏兽幼崽	wi
@@ -96032,7 +96032,7 @@ yellow spessartine	橙榴石	wi
 {a} took over {p}.	{a1}接管了{p1}。	ht
 {a} was convicted.	{a1}被定罪了。	ht
 {a} was crucified.	{a1}被钉死在十字架上。	ht
-{a} was possessed.	{a1}被附体了。	ht
+{a} was possessed.	{a1}被附身了。	ht
 {a} were destroyed	{a1}被摧毁了	ht
 {a} were expelled.	{a1}遭到了驱逐。	ht
 {b} In Age of Myth	神话时代的{b1}	htbi
@@ -97037,7 +97037,7 @@ and was crucified	并被钉死在十字架上	h
 and was executed.	并被处决了。	h
 and was expelled.	并被驱逐了。	h
 and was murdered.	并被谋杀了。	h
-and was possessed	并被附体了	h
+and was possessed	并被附身了	h
 and was released.	并被释放了。	h
 and was scuttled.	并被凿沉了。	h
 and went berserk.	并陷入了狂暴。	h
@@ -100408,7 +100408,7 @@ youngest daughter	最小的女儿	h
 {a} was executed.	{a1}被处决了。	ht
 {a} was expelled.	{a1}被驱逐了。	ht
 {a} was murdered.	{a1}被谋杀了。	ht
-{a} was possessed	{a1}被附体了	ht
+{a} was possessed	{a1}被附身了	ht
 {a} was released.	{a1}被释放了。	ht
 {a} was scuttled.	{a1}被凿沉了。	ht
 {a} went berserk.	{a1}陷入了狂暴。	ht
@@ -114622,7 +114622,7 @@ warthog piglet	疣猪幼崽	wi
 was called {p}	名为{p1}	htC
 was convicted.	被定罪了。	h
 was crucified.	被钉死在十字架上。	h
-was possessed.	被附体了。	h
+was possessed.	被附身了。	h
 water buffalos	水牛	wi
 weird solution	怪异溶液制	hMi
 weird solution	怪异溶液	wim
@@ -115037,7 +115037,7 @@ Stone Hauling	搬运石头	wi
 Stonecrafters	石艺师	wi
 Stonecrafting	石艺	wi
 Stop deleting	停止删除	w
-Strange moods	怪异心情	w
+Strange moods	奇异心境	w
 Swordsmasters	利剑主宰	wi
 Take off item	脱下物品	w
 Tangle/tumble	纠缠/混乱	w
@@ -119265,7 +119265,7 @@ was crucified	被钉死在十字架上	h
 was executed.	被处决了。	h
 was expelled.	被驱逐了。	h
 was murdered.	被谋杀了。	h
-was possessed	被附体了	h
+was possessed	被附身了	h
 was released.	被释放了。	h
 was scuttled.	被凿沉了。	h
 water buffalo	水牛	wi
@@ -119588,7 +119588,7 @@ Stonecutting	切石	wi
 Stoneworkers	石工	wi
 Stoneworking	石材加工	wi
 Store weapon	存放武器	wi
-Strange mood	怪异心情	w
+Strange mood	奇异心境	w
 Subterranean	地下温度
 Surroundings	周围环境	w
 Swordmasters	利剑主宰	wi

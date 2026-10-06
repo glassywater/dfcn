@@ -1546,7 +1546,7 @@ This event occurred on the	此事发生于	wl
 # moods, load/save messages and the symbol editor's singular category button.
 Artifact	造物	wi
 Artifacts	造物	wi
-Enable artifact moods	启用造物情绪	w
+Enable artifact moods	启用奇异心境	w
 Loading artifacts...	加载造物......	w
 Saving artifacts...	正在保存造物……	w
 Export XML	导出 XML
@@ -4794,7 +4794,7 @@ Trade	贸易	w
 Nobles	贵族	w
 Animal	动物	w
 Life changes	生活变化	w
-Strange moods	怪异心情	w
+Strange moods	奇异心境	w
 Curses	诅咒	w
 Combat	战斗	w
 Sparring	比武训练	w
@@ -4905,12 +4905,12 @@ Found a feature	发现地质特征	w
 Praise the miners	赞美矿工	w
 Struck mineral	发现矿脉	w
 Struck economic mineral	发现经济矿物	w
-Strange mood	怪异心情	w
+Strange mood	奇异心境	w
 Artifact made	造物制成	w
 Item given name	物品获得名称	w
 Attachment to item	对物品产生依恋	w
 Vermin escaped from cage	害虫逃出笼子	w
-(Strange mood) Building claimed	怪异心情：占用建筑	w
+(Strange mood) Building claimed	奇异心境：占用建筑	w
 Artifact construction begun	开始制作造物	w
 Megabeast	巨兽来袭	w
 Werebeast	狂化生物来袭	w
@@ -6206,7 +6206,7 @@ Fortress activity: Store item in vehicle	将物品存入载具	li
 Fortress activity: Store owned item	存放私人物品	li
 Fortress activity: Store squad equipment	存放小队装备	li
 Fortress activity: Store weapon	存放武器	li
-Fortress activity: Strange mood	怪异心情	li
+Fortress activity: Strange mood	奇异心境	li
 Fortress activity: Surgery	外科手术	li
 Fortress activity: Suture	缝合	li
 Fortress activity: Trade at depot	在贸易站交易	li

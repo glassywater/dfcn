@@ -6101,7 +6101,7 @@ DFHack help: * **Demand-weighted specialization.** Frequently-used skills are pr
 DFHack help: * **Quality skills.** Skills whose products carry skill-scaled quality (smithing, crafting, cooking, mechanics, engraving, and so on) are preferred for higher-skilled workers -- both when choosing a specialty and when deciding who to keep out of the laborer pool.	* **质量技能。** 产品具有技能规模质量的技能（锻造、手工艺、烹饪、机械、雕刻等）是高技能工人的首选--无论是在选择专业还是决定将谁排除在劳动力库之外。	l
 DFHack help: * **Assignment stickiness.** A unit assigned to a skill detail keeps the assignment while any work for that skill remains -- including claimed jobs, the fetch-materials phase, and breaks -- so jobs aren't aborted by reassignment churn. For tool-carrying labors (mining, woodcutting, hunting) this also prevents dropping and re-equipping tools between cycles. Assignments are recorded in the save data and restored on load.	* **分配粘性。** 分配给技能详细信息的单位会保留分配，而该技能的任何工作仍然存在（包括已声明的工作、获取材料阶段和休息时间），因此工作不会因重新分配搅动而中止。对于携带工具的劳动（采矿、伐木、狩猎），这还可以防止在循环之间掉落和重新装备工具。分配记录在保存数据中并在加载时恢复。	l
 DFHack help: * **Builtin tool details.** DF v50 only equips tools for members of the game's predefined work details, so mining, woodcutting, and hunting specialists are assigned to the builtin Miners, Woodcutters, and Hunters details instead of plugin-created ones. Memberships added by the plugin are tracked and removed cleanly on disable; members you assigned yourself are never touched.	* **内置工具详细信息。** DF v50 仅为游戏预定义的劳动分组成员配备工具，因此采矿、伐木和狩猎专家被分配到内置的矿工、伐木工和猎人详细信息，而不是插件创建的详细信息。插件添加的会员资格将在禁用时被跟踪并彻底删除；您自己分配的成员永远不会被触及。	l
-DFHack help: * **Strange-mood shaping.** Dwarves that can still have a strange mood (their race has the "STRANGE_MOODS" token and they haven't had one yet) and that have already started a moodable craft are steered toward skills a strange mood can advance -- preferably valuable ones like weaponsmithing or armorsmithing -- so a mood pays out in a useful legendary skill.	* **奇怪的情绪塑造。** 矮人仍然可以有一个奇怪的情绪（他们的种族有 "STRANGE_MOODS" 代币，但他们还没有）并且已经开始了一种情绪化的工艺，被引导到奇怪的情绪可以推进的技能 - 最好是有价值的，如武器锻造或盔甲锻造 - 所以情绪会在有用的传奇技能中得到回报。	l
+DFHack help: * **Strange-mood shaping.** Dwarves that can still have a strange mood (their race has the "STRANGE_MOODS" token and they haven't had one yet) and that have already started a moodable craft are steered toward skills a strange mood can advance -- preferably valuable ones like weaponsmithing or armorsmithing -- so a mood pays out in a useful legendary skill.	* **奇异心境技能引导。** 对于仍可触发奇异心境的矮人（其种族具有 "STRANGE_MOODS" 标记，且尚未经历过奇异心境），如果他们已经开始从事可用于奇异心境的工艺，就会引导他们发展奇异心境能够提升的技能，优先选择武器锻造或盔甲锻造等实用技能，使他们通过奇异心境掌握一项有用的传奇技能。	l
 DFHack help: Workshop restrictions are honored as well: when a job is posted at a workshop that has a permitted-worker list, the engine ensures at least one listed worker is assigned the job's labor, and when the workshop restricts jobs by skill level it ensures at least one worker within the allowed range holds that labor. Units on any workshop's permitted list are treated as reserved for that shop's work -- they are preferentially assigned the labors its jobs require and deprioritized for the laborer pool and unrelated specialties.	车间限制也得到遵守：当在具有允许工人列表的车间发布职位时，引擎确保至少一名列出的工人被分配该职位的劳动，并且当车间按技能级别限制职位时，它确保允许范围内至少一名工人持有劳动。任何车间允许列表上的单位都被视为为该车间的工作保留--它们被优先分配其工作所需的劳动，并且不优先考虑劳动力库和不相关的专业。	l
 DFHack help: Labormanager also reads each citizen's unmet personal needs and biases assignments toward work that satisfies them:	labormanager 还会读取每个居民未满足的个人需求，并将作业偏向于满足他们的工作：	l
 DFHack help: * Citizens desperate to stay occupied, acquire things, or help others are preferentially drafted into the laborer pool, where hauling, stockpiling, depot runs, and patient care satisfy those needs.	* 居民渴望保持忙碌、获取物品或帮助他人的人会优先被纳入劳动力库，在那里，运输、储存、仓库运行和病人护理可以满足这些需求。	l
@@ -8251,8 +8251,8 @@ DFHack help: humans and dwarves.	人类和矮人。	l
 DFHack help: prefchange ==========	prefchange ==========	l
 DFHack help: prefchange	prefchange	l
 DFHack help: Command: "prefchange"	命令："prefchange"	l
-DFHack help: Set strange mood preferences.	设置奇怪的情绪偏好。	l
-DFHack help: This tool sets preferences for strange moods to include a weapon type, equipment type, and material. If you also wish to trigger a mood, see strangemood.	此工具设置奇怪情绪的偏好，包括武器类型、装备类型和材料。如果您也想触发一种情绪，请参阅"strangemood"。	l
+DFHack help: Set strange mood preferences.	设置奇异心境偏好。	l
+DFHack help: This tool sets preferences for strange moods to include a weapon type, equipment type, and material. If you also wish to trigger a mood, see strangemood.	此工具可设置奇异心境的武器类型、装备类型和材料偏好。若还需触发奇异心境，请使用 "strangemood"。	l
 DFHack help: prefchange <command>	prefchange <command>	l
 DFHack help: Examine the preferences across all dwarves:	检查所有矮人的偏好：	l
 DFHack help: prefchange show	预更改节目	l
@@ -9136,7 +9136,7 @@ DFHack help: showmood ========	showmood ========	l
 DFHack help: showmood	showmood	l
 DFHack help: Tags: fort | armok | inspection | jobs | units	标签：要塞 |阿莫克 |检验|职位 |单位	l
 DFHack help: Command: "showmood"	命令："showmood"	l
-DFHack help: Shows all items needed for the active strange mood.	显示活跃奇怪情绪所需的所有物品。	l
+DFHack help: Shows all items needed for the active strange mood.	显示当前奇异心境所需的全部物品。	l
 DFHack help: siege-engine ============	siege-engine ============	l
 DFHack help: siege-engine	siege-engine	l
 DFHack help: Siege engines in DF haven't been updated since the game was 2D, and can only aim in four directions. To make them useful above-ground, this plugin allows you to:	DF 中的攻城引擎自从游戏是 2D 以来就没有更新过，并且只能瞄准四个方向。为了使它们在地面上有用，该插件允许您：	l
@@ -10023,22 +10023,22 @@ DFHack help: Force the owner of the selected item to relinquish ownership of sai
 DFHack help: strangemood ===========	strangemood ===========	l
 DFHack help: strangemood	strangemood	l
 DFHack help: Command: "strangemood"	命令："strangemood"	l
-DFHack help: Trigger a strange mood.	引发奇怪的情绪。	l
+DFHack help: Trigger a strange mood.	触发奇异心境。	l
 DFHack help: strangemood [<options>]	strangemood [<options>]	l
-DFHack help: "strangemood --force --unit --type secretive --skill armorsmith" Trigger a strange mood for the selected unit that will cause them to become a legendary armorsmith.	"strangemood --force --unit --type secretive --skill armorsmith" 为选定的单位触发一种奇怪的情绪，使他们成为传奇的盔甲匠。	l
+DFHack help: "strangemood --force --unit --type secretive --skill armorsmith" Trigger a strange mood for the selected unit that will cause them to become a legendary armorsmith.	"strangemood --force --unit --type secretive --skill armorsmith" 为选中的单位触发奇异心境，使其成为传奇盔甲匠。	l
 DFHack help: "strangemood --force --unit --type secretive --skill armorsmith"	"strangemood --force --unit --type secretive --skill armorsmith"	l
-DFHack help: Trigger a strange mood for the selected unit that will cause them to become a legendary armorsmith.	为选定的单位触发一种奇怪的情绪，使他们成为传奇的盔甲匠。	l
-DFHack help: "--force" Ignore normal strange mood preconditions (no recent mood, minimum moodable population, artifact limit not reached, etc.).	"--force" 忽略正常的奇怪情绪前提条件（最近没有情绪、最低情绪人群、未达到神器限制等）。	l
-DFHack help: Ignore normal strange mood preconditions (no recent mood, minimum moodable population, artifact limit not reached, etc.).	忽略正常的奇怪情绪前提条件（最近没有情绪、最低情绪人群、未达到神器限制等）。	l
-DFHack help: "--unit" Make the strange mood strike the selected unit instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	"--unit" 让奇怪的情绪袭击选定的单位，而不是随机挑选一个。单位资格仍然有效（除非还指定了 "--force"）。	l
-DFHack help: Make the strange mood strike the selected unit instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	让奇怪的情绪袭击所选的单位，而不是随机挑选一个。单位资格仍然有效（除非还指定了 "--force"）。	l
-DFHack help: "--id" Make the strange mood strike the unit with the given id instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	"--id" 让奇怪的情绪袭击给定id的单位，而不是随机挑选一个。单位资格仍然有效（除非还指定了 "--force"）。	l
-DFHack help: Make the strange mood strike the unit with the given id instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	让奇怪的情绪袭击给定id的单位，而不是随机挑选一个。单位资格仍然有效（除非还指定了 "--force"）。	l
-DFHack help: "--type <type>" Force the mood to be of a particular type instead of choosing randomly based on happiness. Valid values are "fey", "secretive", "possessed", "fell", and "macabre".	"--type <type>" 强制心情为特定类型，而不是根据幸福程度随机选择。有效值为 "fey"、"secretive"、"possessed"、"fell" 和 "macabre"。	l
-DFHack help: Force the mood to be of a particular type instead of choosing randomly based on happiness. Valid values are "fey", "secretive", "possessed", "fell", and "macabre".	强制心情为特定类型，而不是根据幸福程度随机选择。有效值为 "fey"、"secretive"、"possessed"、"fell" 和 "macabre"。	l
-DFHack help: "--skill <skill>" Force the mood to use a specific skill instead of choosing the highest moodable skill. Valid values are "miner", "carpenter", "engraver", "mason", "stonecutter", "stonecarver", "tanner", "weaver", "clothier", "weaponsmith", "armorsmith", "metalsmith", "gemcutter", "gemsetter", "woodcrafter", "stonecrafter", "metalcrafter", "glassmaker", "leatherworker", "bonecarver", "bowyer", and "mechanic".	"--skill <skill>" 强制情绪使用特定技能，而不是选择最高情绪技能。有效值为 "miner"、"carpenter"、"engraver"、"mason"、"stonecutter"、"stonecarver"、"tanner"、"weaver"、"clothier"、"weaponsmith"、"armorsmith"、"metalsmith"、"gemcutter"、 "gemsetter"、"woodcrafter"、"stonecrafter"、"metalcrafter"、"glassmaker"、"leatherworker"、"bonecarver"、"bowyer" 和 "mechanic"。	l
-DFHack help: Force the mood to use a specific skill instead of choosing the highest moodable skill. Valid values are "miner", "carpenter", "engraver", "mason", "stonecutter", "stonecarver", "tanner", "weaver", "clothier", "weaponsmith", "armorsmith", "metalsmith", "gemcutter", "gemsetter", "woodcrafter", "stonecrafter", "metalcrafter", "glassmaker", "leatherworker", "bonecarver", "bowyer", and "mechanic".	强制情绪使用特定技能，而不是选择情绪最高的技能。有效值为 "miner"、"carpenter"、"engraver"、"mason"、"stonecutter"、"stonecarver"、"tanner"、"weaver"、"clothier"、"weaponsmith"、"armorsmith"、"metalsmith"、"gemcutter"、 "gemsetter"、"woodcrafter"、"stonecrafter"、"metalcrafter"、"glassmaker"、"leatherworker"、"bonecarver"、"bowyer" 和 "mechanic"。	l
-DFHack help: Known limitations: if the selected unit is currently performing a job, the mood will not be triggered.	已知限制：如果所选单位当前正在执行任务，则不会触发情绪。	l
+DFHack help: Trigger a strange mood for the selected unit that will cause them to become a legendary armorsmith.	为选中的单位触发奇异心境，使其成为传奇盔甲匠。	l
+DFHack help: "--force" Ignore normal strange mood preconditions (no recent mood, minimum moodable population, artifact limit not reached, etc.).	"--force" 忽略触发奇异心境的常规前提（近期未发生奇异心境、符合条件的矮人数量达到最低要求、尚未达到神器数量上限等）。	l
+DFHack help: Ignore normal strange mood preconditions (no recent mood, minimum moodable population, artifact limit not reached, etc.).	忽略触发奇异心境的常规前提（近期未发生奇异心境、符合条件的矮人数量达到最低要求、尚未达到神器数量上限等）。	l
+DFHack help: "--unit" Make the strange mood strike the selected unit instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	"--unit" 让选中的单位进入奇异心境，代替随机挑选单位。仍须符合触发条件，除非同时指定 "--force"。	l
+DFHack help: Make the strange mood strike the selected unit instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	让选中的单位进入奇异心境，代替随机挑选单位。仍须符合触发条件，除非同时指定 "--force"。	l
+DFHack help: "--id" Make the strange mood strike the unit with the given id instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	"--id" 让指定 ID 的单位进入奇异心境，代替随机挑选单位。仍须符合触发条件，除非同时指定 "--force"。	l
+DFHack help: Make the strange mood strike the unit with the given id instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	让指定 ID 的单位进入奇异心境，代替随机挑选单位。仍须符合触发条件，除非同时指定 "--force"。	l
+DFHack help: "--type <type>" Force the mood to be of a particular type instead of choosing randomly based on happiness. Valid values are "fey", "secretive", "possessed", "fell", and "macabre".	"--type <type>" 指定奇异心境类型，代替根据幸福程度随机选择。有效值为 "fey"（古怪心境）、"secretive"（诡秘心境）、"possessed"（附身心境）、"fell"（残暴心境）和 "macabre"（阴森心境）。	l
+DFHack help: Force the mood to be of a particular type instead of choosing randomly based on happiness. Valid values are "fey", "secretive", "possessed", "fell", and "macabre".	指定奇异心境类型，代替根据幸福程度随机选择。有效值为 "fey"（古怪心境）、"secretive"（诡秘心境）、"possessed"（附身心境）、"fell"（残暴心境）和 "macabre"（阴森心境）。	l
+DFHack help: "--skill <skill>" Force the mood to use a specific skill instead of choosing the highest moodable skill. Valid values are "miner", "carpenter", "engraver", "mason", "stonecutter", "stonecarver", "tanner", "weaver", "clothier", "weaponsmith", "armorsmith", "metalsmith", "gemcutter", "gemsetter", "woodcrafter", "stonecrafter", "metalcrafter", "glassmaker", "leatherworker", "bonecarver", "bowyer", and "mechanic".	"--skill <skill>" 指定奇异心境使用的技能，代替选择等级最高且可用于奇异心境的技能。有效值为 "miner"、"carpenter"、"engraver"、"mason"、"stonecutter"、"stonecarver"、"tanner"、"weaver"、"clothier"、"weaponsmith"、"armorsmith"、"metalsmith"、"gemcutter"、"gemsetter"、"woodcrafter"、"stonecrafter"、"metalcrafter"、"glassmaker"、"leatherworker"、"bonecarver"、"bowyer" 和 "mechanic"。	l
+DFHack help: Force the mood to use a specific skill instead of choosing the highest moodable skill. Valid values are "miner", "carpenter", "engraver", "mason", "stonecutter", "stonecarver", "tanner", "weaver", "clothier", "weaponsmith", "armorsmith", "metalsmith", "gemcutter", "gemsetter", "woodcrafter", "stonecrafter", "metalcrafter", "glassmaker", "leatherworker", "bonecarver", "bowyer", and "mechanic".	指定奇异心境使用的技能，代替选择等级最高且可用于奇异心境的技能。有效值为 "miner"、"carpenter"、"engraver"、"mason"、"stonecutter"、"stonecarver"、"tanner"、"weaver"、"clothier"、"weaponsmith"、"armorsmith"、"metalsmith"、"gemcutter"、"gemsetter"、"woodcrafter"、"stonecrafter"、"metalcrafter"、"glassmaker"、"leatherworker"、"bonecarver"、"bowyer" 和 "mechanic"。	l
+DFHack help: Known limitations: if the selected unit is currently performing a job, the mood will not be triggered.	已知限制：所选单位正在工作时，无法触发奇异心境。	l
 DFHack help: stripcaged ==========	stripcaged ==========	l
 DFHack help: stripcaged	stripcaged	l
 DFHack help: Command: "stripcaged"	命令："stripcaged"	l
@@ -13664,7 +13664,7 @@ DFHack help: runs dfhack commands only in a newborn fortress.	仅在新生的要
 DFHack help: runs dfhack commands unless ran already in this save (world).	运行 dfhack 命令，除非已经在此保存（世界）中运行。	l
 DFHack help: open legends screen when in fortress mode.	在要塞模式下打开图例屏幕。	l
 DFHack help: Adjust all preferences of one or all dwarves in play.	调整游戏中一个或所有矮人的所有偏好。	l
-DFHack help: Allows setting useful preferences for forcing moods.	允许设置有用的偏好来强制情绪。	l
+DFHack help: Allows setting useful preferences for forcing moods.	可设置用于强制触发奇异心境的造物偏好。	l
 DFHack help: Automatically boost the priority of selected job types.	自动提升所选作业类型的优先级。	l
 DFHack help: Makes item appear on the table (just like in shops).	使物品出现在桌子上（就像在商店中一样）。	l
 DFHack help: putontable ========== Makes item appear on the table, like in adventure mode shops. Arguments:	putontable ========== Makes item appear on the table, like in adventure mode shops. Arguments:	l

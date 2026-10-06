@@ -441,8 +441,8 @@ DFHack output: Dwarf with strange mood does not have a mood type!	进入奇异�
 DFHack output: No strange moods currently active.	当前没有奇异心境。	l
 DFHack output: No unit id specified!	未指定单位 ID！	l
 DFHack output: Invalid unit id: '{s}'	无效单位 ID：“{s}”。	l
-DFHack output: No mood type specified!	未指定心境类型！	l
-DFHack output: Mood type '{s}' not recognized!	无法识别心境类型“{s}”！	l
+DFHack output: No mood type specified!	未指定奇异心境类型！	l
+DFHack output: Mood type '{s}' not recognized!	无法识别奇异心境类型“{s}”！	l
 DFHack output: No mood skill specified!	未指定奇异心境技能！	l
 DFHack output: Mood skill '{s}' not recognized!	无法识别奇异心境技能“{s}”！	l
 DFHack output: Unrecognized parameter: {s}	无法识别的参数：{s}	l
@@ -458,7 +458,7 @@ DFHack output: Fortress is not eligible for a strange mood at this time - not en
 DFHack output: Fortress is not eligible for a strange mood at this time - not enough items created	要塞当前无法触发奇异心境：制造的物品数量不足。	l
 DFHack output: No units are eligible to enter a mood!	没有符合进入奇异心境条件的单位！	l
 DFHack output: Chosen unit '{s}' has active job, cannot start mood!	选中的单位“{s}”正在工作，无法开始奇异心境！	l
-DFHack output: Invalid mood type selected?	选中的心境类型无效。	l
+DFHack output: Invalid mood type selected?	选中的奇异心境类型无效。	l
 DFHack output: work_now is actively poking idle dwarves.	work_now 正在唤醒空闲的矮人。	l
 DFHack output: work_now is not actively poking idle dwarves.	work_now 未启用空闲矮人唤醒功能。	l
 DFHack output: expected {d} elements; found {d}	需要 {d} 个元素，实际有 {d} 个。	l
@@ -1063,10 +1063,10 @@ DFHack output: {d} / {d} region map tiles loaded	已加载 {d} / {d} 个区域�
 DFHack output: is currently	当前处于	l
 DFHack output: in a macabre mood	阴森心境	l
 DFHack output: (but isn't actually in a macabre mood?)	（但实际似乎并未进入阴森心境）	l
-DFHack output: in a fell mood	邪恶心境	l
-DFHack output: (but isn't actually in a fell mood?)	（但实际似乎并未进入邪恶心境）	l
-DFHack output: in a fey mood	兴奋心境	l
-DFHack output: in a secretive mood	隐秘心境	l
+DFHack output: in a fell mood	残暴心境	l
+DFHack output: (but isn't actually in a fell mood?)	（但实际似乎并未进入残暴心境）	l
+DFHack output: in a fey mood	古怪心境	l
+DFHack output: in a secretive mood	诡秘心境	l
 DFHack output: possessed	附身心境	l
 DFHack output: with intent to	，准备	l
 DFHack output: claim a Craftsdwarf's Workshop	占用工匠工坊	l
@@ -1081,7 +1081,7 @@ DFHack output: claim a Clothier's Shop	占用制衣工坊	l
 DFHack output: claim a Glass Furnace	占用玻璃熔炉	l
 DFHack output: claim a Mechanic's Workshop	占用机械工坊	l
 DFHack output: enter a macabre mood?	进入阴森心境	l
-DFHack output: enter a fell mood?	进入邪恶心境	l
+DFHack output: enter a fell mood?	进入残暴心境	l
 DFHack output: do something else...	进行其他活动……	l
 DFHack output: and become a legendary {s}	并成为传奇{s}。	l
 DFHack output: (but not really)	（实际上并不会）	l
@@ -1160,10 +1160,10 @@ DFHack output fragment: is currently	当前处于	l
 DFHack output fragment: is currently possessed	当前处于附身心境	l
 DFHack output fragment: in a macabre mood	阴森心境	l
 DFHack output fragment: (but isn't actually in a macabre mood?)	（但实际似乎并未进入阴森心境）	l
-DFHack output fragment: in a fell mood	邪恶心境	l
-DFHack output fragment: (but isn't actually in a fell mood?)	（但实际似乎并未进入邪恶心境）	l
-DFHack output fragment: in a fey mood	兴奋心境	l
-DFHack output fragment: in a secretive mood	隐秘心境	l
+DFHack output fragment: in a fell mood	残暴心境	l
+DFHack output fragment: (but isn't actually in a fell mood?)	（但实际似乎并未进入残暴心境）	l
+DFHack output fragment: in a fey mood	古怪心境	l
+DFHack output fragment: in a secretive mood	诡秘心境	l
 DFHack output fragment: with intent to	，准备	l
 DFHack output fragment: claim a Craftsdwarf's Workshop	占用工匠工坊	l
 DFHack output fragment: claim a Jeweler's Workshop	占用珠宝工坊	l
@@ -1177,7 +1177,7 @@ DFHack output fragment: claim a Clothier's Shop	占用制衣工坊	l
 DFHack output fragment: claim a Glass Furnace	占用玻璃熔炉	l
 DFHack output fragment: claim a Mechanic's Workshop	占用机械工坊	l
 DFHack output fragment: enter a macabre mood?	进入阴森心境	l
-DFHack output fragment: enter a fell mood?	进入邪恶心境	l
+DFHack output fragment: enter a fell mood?	进入残暴心境	l
 DFHack output fragment: do something else...	进行其他活动……	l
 DFHack output fragment: and become a legendary	并成为传奇	l
 DFHack output fragment: (but not really)	（实际上并不会）	l
@@ -2081,11 +2081,11 @@ DFHack GUI Notification banner: {d} production mandate near deadline	{d} 项生�
 DFHack GUI Notification banner: {d} production mandates near deadline	{d} 项生产命令即将到期	l
 DFHack GUI Notification banner: {d} petition outstanding	{d} 项建造承诺尚未兑现	l
 DFHack GUI Notification banner: {d} petitions outstanding	{d} 项建造承诺尚未兑现	l
-DFHack GUI Notification banner: moody dwarf is claiming a workshop	怪异心境矮人正在占用工坊	l
-DFHack GUI Notification banner: moody dwarf can't find needed workshop!	怪异心境矮人找不到所需工坊！	l
-DFHack GUI Notification banner: moody dwarf is gathering items	怪异心境矮人正在收集材料	l
-DFHack GUI Notification banner: moody dwarf is working	怪异心境矮人正在制作	l
-DFHack GUI Notification banner: moody dwarf can't find needed item!	怪异心境矮人找不到所需材料！	l
+DFHack GUI Notification banner: moody dwarf is claiming a workshop	处于奇异心境的矮人正在占用工坊	l
+DFHack GUI Notification banner: moody dwarf can't find needed workshop!	处于奇异心境的矮人找不到所需工坊！	l
+DFHack GUI Notification banner: moody dwarf is gathering items	处于奇异心境的矮人正在收集材料	l
+DFHack GUI Notification banner: moody dwarf is working	处于奇异心境的矮人正在制作	l
+DFHack GUI Notification banner: moody dwarf can't find needed item!	处于奇异心境的矮人找不到所需材料！	l
 DFHack GUI Notification banner: {d} starving, dehydrated, or drowsy unit	{d} 个生物严重饥饿、缺水或困倦	l
 DFHack GUI Notification banner: {d} starving, dehydrated, or drowsy units	{d} 个生物严重饥饿、缺水或困倦	l
 DFHack GUI Notification banner: {d} agitated animal	{d} 只躁动动物	l
@@ -2230,19 +2230,19 @@ DFHack GUI Notification job: Clean	清洁	l
 DFHack GUI Notification job: Rest	休息	l
 DFHack GUI Notification job: Pickup Equipment	拾取装备	l
 DFHack GUI Notification job: Dump Item	倾倒物品	l
-DFHack GUI Notification job: Strange Mood (Crafter)	怪异心情（工艺制作）	l
-DFHack GUI Notification job: Strange Mood (Jeweller)	怪异心情（珠宝制作）	l
-DFHack GUI Notification job: Strange Mood (Forge)	怪异心情（锻造）	l
-DFHack GUI Notification job: Strange Mood (Magma Forge)	怪异心情（岩浆锻造）	l
-DFHack GUI Notification job: Strange Mood (Brooding)	怪异心情（阴郁）	l
-DFHack GUI Notification job: Strange Mood (Fell)	怪异心情（凶残）	l
-DFHack GUI Notification job: Strange Mood (Carpenter)	怪异心情（木工）	l
-DFHack GUI Notification job: Strange Mood (Mason)	怪异心情（石工）	l
-DFHack GUI Notification job: Strange Mood (Bowyer)	怪异心情（制弓）	l
-DFHack GUI Notification job: Strange Mood (Leather)	怪异心情（皮革制作）	l
-DFHack GUI Notification job: Strange Mood (Clothier)	怪异心情（制衣）	l
-DFHack GUI Notification job: Strange Mood (Glassmaker)	怪异心情（玻璃制作）	l
-DFHack GUI Notification job: Strange Mood (Mechanics)	怪异心情（机械制作）	l
+DFHack GUI Notification job: Strange Mood (Crafter)	奇异心境（工艺制作）	l
+DFHack GUI Notification job: Strange Mood (Jeweller)	奇异心境（珠宝制作）	l
+DFHack GUI Notification job: Strange Mood (Forge)	奇异心境（锻造）	l
+DFHack GUI Notification job: Strange Mood (Magma Forge)	奇异心境（岩浆锻造）	l
+DFHack GUI Notification job: Strange Mood (Brooding)	奇异心境（阴森）	l
+DFHack GUI Notification job: Strange Mood (Fell)	奇异心境（残暴）	l
+DFHack GUI Notification job: Strange Mood (Carpenter)	奇异心境（木工）	l
+DFHack GUI Notification job: Strange Mood (Mason)	奇异心境（石工）	l
+DFHack GUI Notification job: Strange Mood (Bowyer)	奇异心境（制弓）	l
+DFHack GUI Notification job: Strange Mood (Leather)	奇异心境（皮革制作）	l
+DFHack GUI Notification job: Strange Mood (Clothier)	奇异心境（制衣）	l
+DFHack GUI Notification job: Strange Mood (Glassmaker)	奇异心境（玻璃制作）	l
+DFHack GUI Notification job: Strange Mood (Mechanics)	奇异心境（机械制作）	l
 DFHack GUI Notification job: Construct Building	建造建筑	l
 DFHack GUI Notification job: Construct Door	制作门	l
 DFHack GUI Notification job: Construct Floodgate	制作闸门	l
