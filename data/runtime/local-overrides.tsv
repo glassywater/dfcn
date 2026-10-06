@@ -3,6 +3,8 @@
 Squad creation: New squad	新建{position}的小队	l
 Squad creation: Existing squad	{position}的小队	l
 Squad creation: appointed by	由{position}任命	l
+# Squad disband confirmation: this is an action button, not a generated name.
+Disband	解散	w
 # Legends nameless figures share the species grammar and existing sex symbols.
 Legends figure: Unnamed	未命名的	l
 # Native ghost family, Steam Windows PE:6a70a6d9:02711000.
