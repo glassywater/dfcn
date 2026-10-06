@@ -1420,6 +1420,14 @@ static bool native_legacy_editable_draw(uintptr_t caller) {
 #ifdef _WIN32
     const uintptr_t base = native_history_profile_base();
     if (!base) return false;
+    // The stockpile and zone name boxes draw building.name (+0xd0)
+    // directly, with separate calls while unfocused and while editing.
+    // These stored input bytes stay authored even when they spell a UI
+    // category. Empty names use different generated-caption calls.
+    if (caller == native_pe_address(base, 0x3e611c) ||
+            caller == native_pe_address(base, 0x3e6195) ||
+            caller == native_pe_address(base, 0x3e82a7) ||
+            caller == native_pe_address(base, 0x3e895e)) return true;
     uintptr_t owner = 0;
     size_t string_offset = 0, entering_offset = 0;
     bool has_open = true;
