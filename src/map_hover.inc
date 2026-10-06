@@ -282,6 +282,7 @@ std::optional<NativeTextCard> Overlay::capture_map_hover_card(
                         borders.at(x, y, 6) || borders.at(x, y, 8) ||
                         native_picture_box_right(*gps_, x, y) > x ||
                         native_item_action_at(*gps_, x, y) ||
+                        native_work_order_status_at(*gps_, x, y) ||
                         native_textbox_rect_at(*gps_, x, y)) {
                         // Building/item detail panels also attach below the
                         // HUD and share its right edge. Their picture boxes
@@ -291,6 +292,10 @@ std::optional<NativeTextCard> Overlay::capture_map_hover_card(
                         // and name fields also make a panel interactive, even
                         // with no query/results. Never move their placeholder,
                         // edited text or cursor to the outer panel's left edge.
+                        // Work-order lists use four-column status icons rather
+                        // than caption buttons. Their complete twelve-cell
+                        // skins identify an interactive list even when its
+                        // outer frame shares the map hover's rectangle skin.
                         closed = false;
                         break;
                     }
