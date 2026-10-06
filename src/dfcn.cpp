@@ -77,6 +77,7 @@ static bool capture_native_history_age_title(std::string_view base_title,
 static uint64_t native_history_entity_parent_revision(uint64_t draw_epoch);
 static bool native_history_worldgen_page();
 static NativeModDetails native_mod_details();
+static std::optional<std::string> native_main_menu_copyright();
 static bool native_gameplay_map_screen(bool include_world = false);
 static bool native_world_map_screen();
 static bool native_arena_map_screen();
@@ -27065,6 +27066,10 @@ std::vector<Match> Overlay::find_matches(int only_y,
         std::vector<std::string> captures;
         for (int rule_index : candidate_template_rules(row)) {
             const Rule &rule = rules_[static_cast<size_t>(rule_index)];
+            // FPS is a native, independently updated field. A same-text
+            // template has no translation to draw and must never suppress
+            // its glyphs or participate in another caption's font halves.
+            if (rule.source == "FPS: {d} ({d})" && rule.target == rule.source) continue;
             const std::string &prefix = rule.template_literals.front();
             size_t search = 0;
             while (search < row.size()) {
