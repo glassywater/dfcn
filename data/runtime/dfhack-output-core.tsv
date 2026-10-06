@@ -1918,6 +1918,20 @@ DFHack GUI Animal actions caption: Has Trainer	有驯兽师	l
 DFHack GUI Animal actions state: Yes	是	l
 DFHack GUI Animal actions state: No	否	l
 
+# trackstop.lua TrackStopOverlay; shortcuts, direction arrows and brand remain native.
+DFHack GUI Track stop caption: Dump	倾倒	l
+DFHack GUI Track stop caption: Friction	摩擦力	l
+DFHack GUI Track stop direction: None	无	l
+DFHack GUI Track stop direction: North	北	l
+DFHack GUI Track stop direction: East	东	l
+DFHack GUI Track stop direction: South	南	l
+DFHack GUI Track stop direction: West	西	l
+DFHack GUI Track stop friction: None	无	l
+DFHack GUI Track stop friction: Low	低	l
+DFHack GUI Track stop friction: Medium	中	l
+DFHack GUI Track stop friction: High	高	l
+DFHack GUI Track stop friction: Max	最大	l
+
 # Installed list-agreements.lua fixed local headings and empty-list statuses.
 DFHack output: Agreements for Temples:	神庙建设协议：	l
 DFHack output: Agreements for Guildhalls:	行会大厅建设协议：	l

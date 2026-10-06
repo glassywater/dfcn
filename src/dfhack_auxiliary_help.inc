@@ -520,6 +520,7 @@ std::vector<Match> dfhack_auxiliary_matches;
 #include "dfhack_autobutcher_output.inc"
 #include "dfhack_unit_info_output.inc"
 #include "dfhack_unit_overlays_output.inc"
+#include "dfhack_trackstop.inc"
 #include "dfhack_design.inc"
 #include "dfhack_sitemap.inc"
 #include "dfhack_autodump.inc"
