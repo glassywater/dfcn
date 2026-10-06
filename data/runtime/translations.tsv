@@ -31635,6 +31635,7 @@ DFHack GUI Notification settings: labor_starvation	无人接手的任务	l
 DFHack GUI Notification settings: petitions_agreed	未兑现的建造承诺	l
 DFHack help: "(no)clearcut <burrow>[,<burrow>...]"	"（无）明确 <活动区>[,<活动区>...]"	l
 DFHack help: "-g", "--gender (male|female|neuter)"	"-g", "--gender (male|female|neuter)"	l
+DFHack GUI Legends race filter: Choose race filter	选择种族筛选条件	l
 DFHack help: "catsplosion" Make all cats pregnant.	"catsplosion" 让所有的猫怀孕。	l
 DFHack help: "changeitem here m INORGANIC:GRANITE"	"changeitem here m INORGANIC:GRANITE"	l
 DFHack help: "cinematic-action" (default: enabled)	"cinematic-action"（默认：启用）	l
@@ -42619,6 +42620,7 @@ DFHack GUI Quickfort: Blueprint tiles: {d}	蓝图格数：{d}	l
 DFHack GUI Quickfort: Invalid tiles:   {d}	无效格数：{d}	l
 DFHack GUI Sitemap: Click on a name or hit	点击名称或按下	l
 DFHack GUI Sitemap: Nobody around. Spooky!	附近没有生物，令人毛骨悚然！	l
+DFHack GUI Legends race filter: No matches	无匹配项	l
 DFHack GUI Squad assignment: Hates combat:	厌恶战斗：	l
 DFHack GUI Squad assignment: Other squads:	其他小队：	l
 DFHack GUI Squad assignment: With infants:	带婴儿：	l
@@ -51190,6 +51192,7 @@ DFHack GUI Sitemap: caged fort member	被囚禁的要塞居民	l
 DFHack help: " and loaded on startup.	"并在启动时加载。	l
 DFHack help: "--checkAttackEvery <n>"	"--checkAttackEvery <n>"	l
 DFHack help: "--position <x>,<y>,<z>"	"--position <x>,<y>,<z>"	l
+DFHack GUI Legends race filter: Races	种族	l
 DFHack help: "--resetPolicy <policy>"	"--resetPolicy <policy>"	l
 DFHack help: "--syndrome <name>|<id>"	"--syndrome <name>|<id>"	l
 DFHack help: "-f", "--skip-forbidden"	"-f", "--skip-forbidden"	l
@@ -54901,6 +54904,7 @@ DFHack GUI Quickfort: Down z-levels	向下重复楼层	l
 DFHack GUI Sitemap: merchant animal	商队动物	l
 DFHack GUI Viewer status: No output	无输出	l
 DFHack help: "--markedfor <action>"	"--markedfor <action>"	l
+DFHack GUI Legends race filter: All	全部	l
 DFHack help: "--no-stringification"	"--no-stringification"	l
 DFHack help: "--no-target-selector"	"--no-target-selector"	l
 DFHack help: "--reroll [inclusive]"	"--reroll [inclusive]"	l
@@ -105243,6 +105247,7 @@ Disembowelment.	解剖.	w
 Disillusionment	幻灭	w
 Dismount to {s}	下坐骑至{s1}	hPt
 Dressing Wounds	包扎伤口	wi
+Filter by race:	按种族筛选：	wl
 Drop this item.	丢下此物品。	hj
 Dwarf, Ordinary	矮人，普通
 Dwarven hillock	矮人丘堡	wi
