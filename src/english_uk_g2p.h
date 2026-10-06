@@ -134,7 +134,7 @@ public:
     const std::string &error() const { return error_; }
 
     std::vector<std::string> pronunciation(std::string_view source) const {
-        if (start_ < 0 || source.empty() || source.size() > 512) return {};
+        if (start_ < 0 || source.empty()) return {};
         std::string word(source);
         for (auto &ch : word)
             if (ch >= 'A' && ch <= 'Z') ch += 'a' - 'A';
@@ -153,7 +153,9 @@ public:
             letters.push_back(found->second);
             offset += width;
         }
-        if (letters.size() > 128) return {};
+        // Keep the complete input. Only the packed state-offset representation
+        // bounds the size; there is no name-length or transcription-length cap.
+        if (letters.size() > std::numeric_limits<std::uint32_t>::max()) return {};
         struct Node {
             double cost = std::numeric_limits<double>::infinity();
             std::uint64_t previous = std::numeric_limits<std::uint64_t>::max();

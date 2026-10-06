@@ -9618,11 +9618,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             source.remove_suffix(1);
         }
         const auto core = [&](std::string_view english) {
-            std::string result;
-            if (auto translated = english_character_names_.entity_name(english))
-                result = *translated;
-            else result = transliterate_english_name(english);
-            return result;
+            return translate_english_site_name(english).value_or(native_text_to_utf8(english));
         };
         if (const auto pair = split_generated_name_identity(source)) {
             const std::string translated = transliterate_site_spelling(pair->native_name) +

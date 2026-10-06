@@ -1474,8 +1474,34 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
             std::fill_n(context[y].begin() + bar.x, bar.w, ' ');
         }
     const auto translate_heading = [&](std::string_view source) {
-        if (native_caption && native_caption->site_name && source == native_title)
-            if (auto target = translate_site_display(*native_caption->site_name, source)) return target;
+        if (native_caption && native_caption->site_name) {
+            const auto &site = *native_caption->site_name;
+            if (source == native_title)
+                if (auto target = translate_site_display(site, source)) return target;
+            if (const auto record = split_legends_figure_record(source);
+                    record && record->sex.empty() && world_site_type_shape(record->species)) {
+                const std::string pair = std::string(record->native_name) + ", \"" +
+                    std::string(record->gloss) + "\"";
+                const auto english = reconstruct_site_english_name(site);
+                const auto same = [](std::string_view left, std::string_view right) {
+                    return lower(native_text_to_utf8(trim_view(left))) ==
+                        lower(native_text_to_utf8(trim_view(right)));
+                };
+                // The pinned title may include the site-type field while
+                // its tab omits it. Carry WORD/POS only for that exact title
+                // or a name pair that agrees with the captured site identity.
+                if (source == native_title || pair == native_title ||
+                        (english && same(record->native_name, site.native_name) &&
+                         same(record->gloss, *english))) {
+                    if (auto target = translate_site_display(site, pair)) {
+                        auto type = translate_world_site_type(record->species);
+                        if (!type) type = exact_literal_translation(record->species);
+                        return std::optional<std::string>(*target + "，" +
+                            type.value_or(native_text_to_utf8(record->species)));
+                    }
+                }
+            }
+        }
         if (native_caption && native_caption->region_title && source == native_title)
             if (auto target = translate_world_region_heading(source)) return target;
         return native_caption && native_caption->event_title && source == native_title

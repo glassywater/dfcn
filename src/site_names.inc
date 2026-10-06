@@ -155,8 +155,8 @@ std::optional<std::string> Overlay::localize_site_name(const NativeHistoryName &
     if (name.words[2].id.empty() && name.words[3].id.empty() && name.words[5].id.empty())
         words[4] = {};
     // Share the name lexicon, grammatical relations and Mandarin scoring.
-    // The entity mode accepts only A+B/B+A in 1+1 or 2+2 form, with no
-    // personal-name particles or mechanical semantic fallback.
+    // Keep the formatter's front/title/ownership groups in entity mode;
+    // a complete multi-group site name is not a single personal surname.
     return english_character_names_.entity_name(words);
 }
 
@@ -316,25 +316,55 @@ std::string Overlay::transliterate_english_name(std::string_view english,
             !identity->nickname.empty() || lower(*captured) != lower(std::string(english)))
         return english_name_transliterator_.name(english);
 
-    // A generated compound's saved WORD boundaries take precedence over an
-    // accidental English dictionary match of its concatenated spelling.
-    // Its original POS also selects homographs such as wind and read.
-    const auto word = [&](size_t slot) {
+    // Saved WORD/POS data annotates the exact English input. It selects a
+    // homograph or supplies an unknown compound's existing roots, allowing
+    // phonetic rendering without guessing spelling boundaries.
+    using Reading = EnglishNameTransliterator::TokenReading;
+    std::vector<Reading> readings;
+    const auto word = [&](size_t slot) -> const NativeHistoryWord * {
         const auto &source = identity->words[slot];
-        return source.id.empty() || !source.has_form ? std::string{} :
-            english_name_transliterator_.word(source.english_form, source.part_of_speech);
+        return source.id.empty() || !source.has_form ? nullptr : &source;
     };
-    std::string result = word(0) + word(1);
+    const auto single_token = [](std::string_view text) {
+        const auto letter = [](char c) {
+            return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
+        };
+        return std::any_of(text.begin(), text.end(), letter) &&
+            std::all_of(text.begin(), text.end(), [&](char c) { return letter(c) || c == '\''; });
+    };
+    const auto add_word = [&](std::vector<Reading> &to, size_t slot) {
+        const auto *source = word(slot);
+        if (!source) return true;
+        // Multiword or punctuated RAW forms cannot be assigned one token's
+        // POS conservatively. Retain the original text without these hints.
+        if (!single_token(source->english_form)) return false;
+        to.push_back({source->english_form, source->part_of_speech, {}});
+        return true;
+    };
+    const auto *front = word(0), *rear = word(1);
+    if (front && rear) {
+        if (!single_token(front->english_form) || !single_token(rear->english_form))
+            return english_name_transliterator_.name(english);
+        readings.push_back({front->english_form + rear->english_form, -1,
+            {{front->english_form, front->part_of_speech},
+             {rear->english_form, rear->part_of_speech}}});
+    } else if (!add_word(readings, 0) || !add_word(readings, 1))
+        return english_name_transliterator_.name(english);
     if (!identity->words[2].id.empty() || !identity->words[3].id.empty() ||
             !identity->words[5].id.empty()) {
-        std::string title = word(2) + word(3);
-        if (!identity->words[4].english_form.empty()) title += word(4) + '-';
-        title += word(5);
-        if (!title.empty()) result += english_name_transliterator_.word("the") + title;
+        std::vector<Reading> title;
+        for (size_t slot = 2; slot <= 5; ++slot)
+            if (!add_word(title, slot)) return english_name_transliterator_.name(english);
+        if (!title.empty()) {
+            readings.push_back({"the", -1, {}});
+            readings.insert(readings.end(), title.begin(), title.end());
+        }
     }
-    if (!identity->words[6].id.empty())
-        result += english_name_transliterator_.word("of") + word(6);
-    return result.empty() ? english_name_transliterator_.name(english) : result;
+    if (word(6)) {
+        readings.push_back({"of", -1, {}});
+        if (!add_word(readings, 6)) return english_name_transliterator_.name(english);
+    }
+    return english_name_transliterator_.name(english, readings);
 }
 
 std::optional<std::string> Overlay::translate_english_site_name(
@@ -346,8 +376,8 @@ std::optional<std::string> Overlay::translate_english_site_name(
     if (english.empty()) return std::nullopt;
     if (contains_cjk_utf8(english)) return native_text_to_utf8(english);
     // Exact field identity supplies the original WORD/POS boundaries. If
-    // those slots cannot form a natural name, pronounce the entire English
-    // field; a text-only retry must not discard its grammatical evidence.
+    // those slots cannot form a natural name, use the English phonetic fallback;
+    // a text-only retry must not discard its grammatical evidence.
     if (identity && identity->site_id >= 0) {
         const auto captured = reconstruct_site_english_name(*identity);
         if (captured && lower(native_text_to_utf8(*captured)) ==

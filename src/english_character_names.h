@@ -107,7 +107,7 @@ public:
         std::vector<Part> front, title;
         if (present(0) || present(1)) {
             front = present(0) ? part(0) : part(1);
-            if (present(0) && present(1)) front = entity_join(front, part(1));
+            if (present(0) && present(1)) front = entity_phrase_join(front, part(1));
             if (front.empty()) return std::nullopt;
         }
         bool has_title = false;
@@ -115,20 +115,17 @@ public:
             if (!present(slot)) continue;
             auto current = part(slot);
             if (current.empty()) return std::nullopt;
-            title = has_title ? entity_join(current, title) : std::move(current);
+            title = has_title ? entity_phrase_join(current, title) : std::move(current);
             has_title = true;
             if (title.empty()) return std::nullopt;
         }
-        const bool has_core = !front.empty() || has_title;
-        std::vector<Part> core = front.empty() ? std::move(title) :
-            (title.empty() ? std::move(front) : entity_join(front, title));
-        if (has_core && core.empty()) return std::nullopt;
+        std::vector<Part> tail;
         if (present(6)) {
-            auto tail = part(6);
+            tail = part(6);
             if (tail.empty()) return std::nullopt;
-            core = core.empty() ? std::move(tail) : entity_join(core, tail);
         }
-        return entity_result(core);
+        return entity_result(entity_name_groups(std::move(front), std::move(title),
+            std::move(tail)));
     }
 
     std::optional<std::string> title(std::string_view source) const {
@@ -1461,6 +1458,135 @@ private:
         return out;
     }
 
+    static Part entity_composed(const Part &head, const Part &left,
+        const Part &right, std::string text, std::string english, int score) {
+        // A complete entity phrase remains a phrase on subsequent joins.
+        // Preserve its actual head's lexical sense and every constituent;
+        // personal surname widths must never reparse this text as one root.
+        Part out = head;
+        out.text = out.short_text = out.full_text = std::move(text);
+        out.english = std::move(english);
+        out.known = left.known && right.known;
+        out.complete = left.complete && right.complete;
+        out.roots = left.roots + right.roots;
+        out.root_left = left.english;
+        out.root_right = right.english;
+        out.order = left.order + '\n' + right.order;
+        out.score = score;
+        out.source_sense = out.surname_source_full = out.surname_core =
+            out.surname_modifier = out.surname_head = out.surname_agent = out.text;
+        out.surname_compact = glyph_count(out.text) == 1 ? out.text : "";
+        out.surname_balanced = glyph_count(out.text) == 2 ? out.text : "";
+        out.surname_source_action = out.action = has(out, Action) ? out.text : "";
+        out.surname_er_identity.clear();
+        return out;
+    }
+
+    static std::vector<SurnameWord> entity_phrase_words(const Part &part,
+        SurnameForm role) {
+        if (!part.known || !part.complete || part.text.empty()) return {};
+        if (part.roots > 1) return {{part.text, false, part.text}};
+        auto words = surname_words(part, role);
+        // A registered lexical word can itself exceed a personal surname's
+        // width. Keep that whole word when no surname-sized form is available.
+        if (words.empty() && !part.text.ends_with("的") &&
+            part.text.find("者") == std::string::npos)
+            words.push_back({part.text, false, part.text});
+        return words;
+    }
+
+    std::vector<Part> entity_phrase_join(const std::vector<Part> &left,
+        const std::vector<Part> &right) const {
+        auto out = entity_join(left, right);
+        if (!out.empty()) return out;
+        using Relation = MandarinNameProsody::Relation;
+        const auto physical = [](const Part &part) {
+            return family(part, {"body", "weapon", "armor", "artifact", "building"}) ||
+                category(part, "body") || category(part, "weapon") ||
+                category(part, "armor") || category(part, "artifact") ||
+                category(part, "building");
+        };
+        const auto natural = [](const Part &part) {
+            return family(part, {"nature", "weather", "celestial", "light", "shadow",
+                "landscape", "plant", "creature"});
+        };
+        const auto add = [&](const Part &first, SurnameForm first_role,
+            const Part &second, SurnameForm second_role, const Part &head,
+            Relation relation) {
+            const auto first_words = entity_phrase_words(first, first_role);
+            const auto second_words = entity_phrase_words(second, second_role);
+            for (const auto &a : first_words) for (const auto &b : second_words) {
+                if (a.actor_suffix || b.actor_suffix) continue;
+                const int pronunciation = MandarinNameProsody::rank(surname_readings_,
+                    {a.text, b.text, {}, {}, relation, false, false},
+                    first.surname_source_full, second.surname_source_full);
+                if (pronunciation < -3) continue;
+                const int fit = (first.roots > 1 ? 8 : surname_word_fit(first, first_role, a)) +
+                    (second.roots > 1 ? 8 : surname_word_fit(second, second_role, b));
+                auto composed = entity_composed(head, first, second,
+                    std::string(a.text) + std::string(b.text),
+                    first.english + ' ' + second.english,
+                    -4096 + fit * 3 + std::clamp(pronunciation, -12, 6) * 2);
+                append_entity_part(out, std::move(composed));
+            }
+        };
+        for (const auto &a : left) for (const auto &b : right) {
+            // Complete registered modifiers can attach to an existing noun
+            // phrase. Their unequal lengths do not remove the grammatical
+            // relation, and no new genitive or actor is inferred here.
+            if (has(a, Quality | State) && has(b, Object | Agent))
+                add(a, SurnameForm::Modifier, b, SurnameForm::Head, b, Relation::Attribute);
+            if (has(a, Prefix) && has(b, Object | Agent | Quality | State))
+                add(a, SurnameForm::Modifier, b, SurnameForm::Head, b, Relation::Attribute);
+            if (has(a, Object | Agent) && has(b, Quality | State))
+                add(b, SurnameForm::Modifier, a, SurnameForm::Head, a, Relation::Attribute);
+            if (has(a, Action) && category(a, "transitive") && has(b, Object | Agent))
+                add(a, SurnameForm::Action, b, SurnameForm::Head, a, Relation::VerbObject);
+            if (has(a, Object | Agent) && has(b, Action) && category(b, "intransitive"))
+                add(a, SurnameForm::Head, b, SurnameForm::Action, b, Relation::SubjectVerb);
+            if (has(a, Object) && has(b, Object) && !has(a, Agent) && !has(b, Agent)) {
+                const bool nominal =
+                    ((family(a, "material") || category(a, "material")) && physical(b)) ||
+                    (natural(a) && (physical(b) || natural(b) || family(b, "voice"))) ||
+                    (family(a, {"emotion", "virtue", "oath", "magic", "ruin", "decay", "time"}) &&
+                        (physical(b) || natural(b) || family(b, "voice"))) ||
+                    (family(a, "body") && physical(b)) ||
+                    (family(b, "voice") && !family(a, "attire"));
+                if (nominal)
+                    add(a, SurnameForm::Modifier, b, SurnameForm::Head, b, Relation::Nominal);
+            }
+        }
+        return out;
+    }
+
+    static std::vector<Part> entity_name_groups(std::vector<Part> front,
+        std::vector<Part> title, std::vector<Part> tail) {
+        // The source's actual the/of slots describe relationships between
+        // complete name groups, not more roots of a personal surname.
+        if (!tail.empty()) {
+            auto &head = title.empty() ? front : title;
+            if (head.empty()) head = std::move(tail);
+            else {
+                std::vector<Part> related;
+                for (const auto &a : head) for (const auto &b : tail) {
+                    if (!has(b, Object | Agent | Action)) continue;
+                    append_entity_part(related, entity_composed(a, a, b,
+                        b.text + "之" + a.text, a.english + " of " + b.english,
+                        a.score + b.score));
+                }
+                if (related.empty()) return {};
+                head = std::move(related);
+            }
+        }
+        if (front.empty()) return title;
+        if (title.empty()) return front;
+        std::vector<Part> out;
+        for (const auto &a : front) for (const auto &b : title)
+            append_entity_part(out, entity_composed(b, a, b, a.text + "·" + b.text,
+                a.english + " the " + b.english, a.score + b.score));
+        return out;
+    }
+
     std::vector<Part> entity_parts(std::string_view source, int16_t pos = -1) const {
         source = trim(source);
         if (source.empty()) return {};
@@ -1536,7 +1662,7 @@ private:
         if (groups.empty()) return {};
         auto result = std::move(groups.back());
         for (std::size_t index = groups.size() - 1; index > 0; --index) {
-            result = entity_join(groups[index - 1], result);
+            result = entity_phrase_join(groups[index - 1], result);
             if (result.empty()) return {};
         }
         return result;
@@ -1546,21 +1672,26 @@ private:
         source = trim(source);
         if (source.empty() || next_quote(source, 0)) return {};
         if (words_.contains(key(source))) return entity_parts(source);
+        std::vector<Part> tail;
         if (const auto of = marker(source, "of")) {
-            auto tail = entity_phrase_parts(source.substr(*of + 2));
+            tail = entity_phrase_parts(source.substr(*of + 2));
             if (tail.empty()) return {};
-            if (!*of) return tail;
-            auto head = entity_name_parts(source.substr(0, *of));
-            return entity_join(head, tail);
+            source = trim(source.substr(0, *of));
+            if (source.empty()) return entity_name_groups({}, {}, std::move(tail));
         }
         if (const auto the = marker(source, "the")) {
             auto title = entity_phrase_parts(source.substr(*the + 3));
             if (title.empty()) return {};
-            if (!*the) return title;
-            auto front = entity_phrase_parts(source.substr(0, *the));
-            return entity_join(front, title);
+            std::vector<Part> front;
+            if (*the) {
+                front = entity_phrase_parts(source.substr(0, *the));
+                if (front.empty()) return {};
+            }
+            return entity_name_groups(std::move(front), std::move(title), std::move(tail));
         }
-        return entity_phrase_parts(source);
+        auto front = entity_phrase_parts(source);
+        if (front.empty()) return {};
+        return entity_name_groups(std::move(front), {}, std::move(tail));
     }
 
     // A grammatical marker is protected when it belongs to an actual complete

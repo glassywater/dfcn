@@ -484,7 +484,8 @@ std::optional<std::string> Overlay::translate_history_name(
             if (const auto natural = english_character_names_.entity_name(fallback))
                 glosses[slot] = *natural;
             else glosses[slot] = contains_cjk_utf8(form)
-                ? native_text_to_utf8(form) : transliterate_english_name(form);
+                ? native_text_to_utf8(form)
+                : english_name_transliterator_.word(form, word.part_of_speech);
         } else glosses[slot] = found->second;
         // Region=6 and MountainPeak=19 are language_name_type values. Apply
         // each geographic NAME_* head's sense only to its region/peak kind.

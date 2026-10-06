@@ -1,7 +1,6 @@
 #pragma once
 
 #include <algorithm>
-#include <array>
 #include <charconv>
 #include <cmath>
 #include <cstddef>
@@ -9,7 +8,6 @@
 #include <filesystem>
 #include <fstream>
 #include <iterator>
-#include <limits>
 #include <mutex>
 #include <string>
 #include <string_view>
@@ -27,6 +25,18 @@ namespace dfcn {
 // Chinese transcription. There is no North American pronunciation fallback.
 class EnglishNameTransliterator {
 public:
+    // Hints describe boundaries supplied by the native English formatter.
+    // Transcription keeps source order and never guesses spelling boundaries.
+    struct WordPart {
+        std::string_view spelling;
+        int16_t part_of_speech = -1;
+    };
+    struct TokenReading {
+        std::string spelling;
+        int16_t part_of_speech = -1;
+        std::vector<WordPart> roots;
+    };
+
     bool load(const std::filesystem::path &runtime_dir) {
         error_.clear();
         { std::lock_guard lock(g2p_cache_mutex_); g2p_cache_.clear(); }
@@ -67,6 +77,8 @@ public:
     std::string word(std::string_view source, int16_t pos = -1) const {
         source = trim(source);
         if (source.empty()) return {};
+        if (const auto fixed = fixed_transcription(source); !fixed.empty())
+            return std::string(fixed);
         if (!is_word(source)) return render_tokens(source, pos);
         const auto result = EnglishHanziTranscription::render(pronunciation(lower(source), pos));
         if (result.empty() && source.find('\'') != std::string_view::npos)
@@ -74,7 +86,12 @@ public:
         return result.empty() ? std::string(source) : result;
     }
 
-    std::string name(std::string_view source) const { return render_tokens(source, -1); }
+    std::string name(std::string_view source,
+                     const std::vector<TokenReading> &readings = {}) const {
+        if (const auto fixed = fixed_transcription(trim(source)); !fixed.empty())
+            return std::string(fixed);
+        return render_tokens(source, -1, readings);
+    }
 
 private:
     using Phones = std::vector<std::string>;
@@ -132,8 +149,23 @@ private:
         const auto base = unstressed_base(phone);
         return std::find(std::begin(vowels), std::end(vowels), base) != std::end(vowels);
     }
-    static bool has_vowel(const Phones &phones) { return std::any_of(phones.begin(), phones.end(), vowel); }
     static void append(Phones &to, const Phones &from) { to.insert(to.end(), from.begin(), from.end()); }
+    static std::string_view fixed_transcription(std::string_view source) {
+        // Conventional whole transcriptions precede phone-level composition.
+        // Campbell, Panorama and Snow Hill are explicit examples supplied by
+        // the China Institute of Toponymy to UNGEGN (2011), not a syllable quota:
+        // https://unstats.un.org/unsd/geoinfo/ungegn/docs/26th-gegn-docs/WP/WP36_Brief%20Introduction%20of%20Foreign%20Geographical%20Names%20Transformed%20into%20Chinese.pdf
+        // Semantic personal-name overrides are not entries in this table.
+        static constexpr std::pair<std::string_view, std::string_view> entries[] = {
+            {"hampton", "汉普顿"}, {"field", "菲尔德"},
+            {"campbell", "坎贝尔"}, {"panorama", "帕诺拉马"},
+            {"snow hill", "斯诺希尔"}
+        };
+        const auto spelling = lower(source);
+        for (const auto &[english, chinese] : entries)
+            if (spelling == english) return chinese;
+        return {};
+    }
     static void erase_all(std::string &text, std::string_view part) {
         for (size_t at = text.find(part); at != std::string::npos; at = text.find(part, at))
             text.erase(at, part.size());
@@ -177,7 +209,7 @@ private:
             else if (token == "ɔː" || token == "ɒː") phone = "AO";
             else if (token == "ɑː" || token == "ɑ") phone = "AA";
             else if (token == "æ" || token == "a") phone = "AE";
-            else if (token == "ɐ" || token == "ʌ") { phone = "AH"; if (stress < 0) stress = 1; }
+            else if (token == "ɐ" || token == "ʌ") phone = "AH";
             else if (token == "ə") { phone = "AH"; stress = 0; }
             else if (token == "ɛ" || token == "e") phone = "EH";
             else if (token == "ɪ") phone = "IH";
@@ -218,7 +250,10 @@ private:
             else if (token == "j") phone = "Y";
             else if (token == "w") phone = "W";
             else return {};
-            if (syllabic) result.emplace_back("AH0");
+            // Syllabic consonants imply one weak nucleus, not a second schwa
+            // when the source has already supplied that same weak vowel.
+            if (syllabic && (result.empty() || result.back() != "AH0"))
+                result.emplace_back("AH0");
             if (stress >= 0 && vowel(phone)) phone += static_cast<char>('0' + stress);
             result.push_back(std::move(phone));
             // Front-vowel palatalisation supplies no extra /j/. Restore yod
@@ -331,45 +366,35 @@ private:
         }
         for (auto &[spelling, alternatives] : dictionary) {
             (void)spelling;
-            size_t complete = 0;
-            for (const auto &entry : alternatives) complete = std::max(complete, entry.phones.size());
-            // Measured alignment probabilities can favour deleted consonants.
-            // Retain complete forms before choosing among their probabilities.
+            // A fixed citation-style priority: unreduced forms, then the
+            // source probability, then original source order. Neither phone
+            // count nor the length of a Chinese rendering selects a reading.
             std::stable_sort(alternatives.begin(), alternatives.end(),
-                [complete](const Pronunciation &a, const Pronunciation &b) {
-                    const size_t pa = (complete - a.phones.size()) * 4 + a.reduced;
-                    const size_t pb = (complete - b.phones.size()) * 4 + b.reduced;
-                    return pa != pb ? pa < pb : a.probability > b.probability;
+                [](const Pronunciation &a, const Pronunciation &b) {
+                    return a.reduced != b.reduced ? a.reduced < b.reduced :
+                        a.probability > b.probability;
                 });
         }
         return true;
     }
 
-    static bool spelled_as_letters(std::string_view spelling, const Phones &phones) {
-        // Exact initialisms retain their dictionary reading, but cannot become
-        // word roots while decomposing an unknown generated compound.
-        static constexpr std::array<std::string_view, 26> alphabet = {
-            "EY", "B IY", "S IY", "D IY", "IY", "EH F", "JH IY", "EY CH", "AY", "JH EY",
-            "K EY", "EH L", "EH M", "EH N", "GOAT", "P IY", "K Y UW", "AA", "EH S", "T IY",
-            "Y UW", "V IY", "D AH B AH L Y UW", "EH K S", "W AY", "Z EH D"
-        };
-        size_t position = 0;
-        for (char c : spelling) {
-            if (c < 'a' || c > 'z') return false;
-            auto expected = alphabet[static_cast<size_t>(c - 'a')];
-            while (!expected.empty()) {
-                const size_t space = expected.find(' ');
-                if (position >= phones.size() || unstressed_base(phones[position++]) != expected.substr(0, space)) return false;
-                if (space == std::string_view::npos) break;
-                expected.remove_prefix(space + 1);
-            }
-        }
-        return !spelling.empty() && position == phones.size();
-    }
-    Phones dictionary_word(std::string_view spelling) const {
+    Phones dictionary_word(std::string_view spelling, int16_t pos = -1) const {
         const auto found = dictionary_.find(std::string(spelling));
         if (found == dictionary_.end() || found->second.empty()) return {};
-        if (auto selected = grammatical_pronunciation(spelling, -1); !selected.empty()) return selected;
+        if (auto selected = grammatical_form(spelling, pos); !selected.empty()) {
+            for (const auto &alternative : found->second) {
+                if (alternative.phones.size() != selected.size()) continue;
+                bool same = true;
+                for (size_t i = 0; i < selected.size(); ++i)
+                    if (unstressed_base(alternative.phones[i]) != unstressed_base(selected[i])) {
+                        same = false; break;
+                    }
+                if (same) return alternative.phones;
+            }
+            // The existing grammatical citations supply a homograph reading
+            // when the source lexicon lists only its other grammatical use.
+            return selected;
+        }
         return found->second.front().phones;
     }
 
@@ -378,7 +403,8 @@ private:
     // distinctions using RP citations; alternative numbering is not POS.
     // British variant vowels/stress are documented in the bundled Britfone.
     static Phones grammatical_pronunciation(std::string_view spelling, int16_t pos) {
-        const bool noun = pos < 0 || pos == 0 || pos == 1;
+        if (pos < 0) return {};
+        const bool noun = pos == 0 || pos == 1;
         const bool adjective = pos == 2;
         const bool verb = pos >= 4 && pos <= 8;
         if (spelling == "read" && verb) return ipa_sequence(pos == 6 || pos == 7 ? "ɹ ˈɛ d" : "ɹ ˈiː d");
@@ -474,36 +500,19 @@ private:
         else phones.emplace_back("D");
     }
 
-    Phones closed_compound(std::string_view spelling) const {
-        if (spelling.size() < 6 || spelling.size() > 96) return {};
-        struct Split { unsigned cost = std::numeric_limits<unsigned>::max();
-            unsigned parts = 0; size_t previous = 0; Phones phones; };
-        std::vector<Split> splits(spelling.size() + 1);
-        splits[0].cost = 0;
-        for (size_t end = 3; end <= spelling.size(); ++end) {
-            for (size_t start = 0; start + 3 <= end; ++start) {
-                if (splits[start].cost == std::numeric_limits<unsigned>::max() || splits[start].parts >= 4 ||
-                        (start == 0 && end == spelling.size())) continue;
-                const auto part = spelling.substr(start, end - start);
-                auto phones = dictionary_word(part);
-                if (phones.empty() || !has_vowel(phones) || spelled_as_letters(part, phones)) continue;
-                const unsigned size_penalty = end - start == 3 ? 30 : end - start == 4 ? 10 : 0;
-                const unsigned cost = splits[start].cost + 1000 + size_penalty;
-                if (cost >= splits[end].cost) continue;
-                splits[end] = {cost, splits[start].parts + 1, start, std::move(phones)};
-            }
+    static Phones grammatical_form(std::string_view spelling, int16_t pos) {
+        if (auto selected = grammatical_pronunciation(spelling, pos); !selected.empty())
+            return selected;
+        if ((pos == 1 || pos == 5) && spelling.ends_with('s')) {
+            auto base = grammatical_pronunciation(spelling.substr(0, spelling.size() - 1),
+                                                  pos == 1 ? 0 : 4);
+            if (!base.empty()) { plural_or_possessive(base); return base; }
         }
-        if (splits.back().cost == std::numeric_limits<unsigned>::max() || splits.back().parts < 2) return {};
-        std::vector<Phones> parts;
-        for (size_t end = spelling.size(); end > 0; end = splits[end].previous) parts.push_back(splits[end].phones);
-        Phones result;
-        for (auto part = parts.rbegin(); part != parts.rend(); ++part) append(result, *part);
-        return result;
+        return {};
     }
     Phones known_stem(std::string_view spelling, int16_t pos = -1) const {
-        if (auto grammatical = grammatical_pronunciation(spelling, pos); !grammatical.empty()) return grammatical;
-        if (auto known = dictionary_word(spelling); !known.empty() && !spelled_as_letters(spelling, known)) return known;
-        return closed_compound(spelling);
+        if (auto known = dictionary_word(spelling, pos); !known.empty()) return known;
+        return grammatical_form(spelling, pos);
     }
 
     Phones morphology(std::string_view spelling, int16_t pos) const {
@@ -513,16 +522,19 @@ private:
             plural_or_possessive(base); return base;
         }
         if (spelling.ends_with("s'")) return pronunciation(std::string(spelling.substr(0, spelling.size() - 1)), pos);
-        if (spelling.ends_with("ies") && spelling.size() > 4) {
-            auto base = known_stem(std::string(spelling.substr(0, spelling.size() - 3)) + "y", pos);
+        const bool plural = pos < 0 || pos == 1 || pos == 5;
+        const int16_t stem_pos = pos == 1 ? 0 : pos == 5 ? 4 : pos;
+        if (plural && spelling.ends_with("ies") && spelling.size() > 4) {
+            auto base = known_stem(std::string(spelling.substr(0, spelling.size() - 3)) + "y", stem_pos);
             if (!base.empty()) { plural_or_possessive(base); return base; }
         }
-        if (spelling.ends_with('s') && !spelling.ends_with("ss")) {
-            auto base = known_stem(spelling.substr(0, spelling.size() - 1), pos);
-            if (base.empty() && spelling.ends_with("es")) base = known_stem(spelling.substr(0, spelling.size() - 2), pos);
+        if (plural && spelling.ends_with('s') && !spelling.ends_with("ss")) {
+            auto base = known_stem(spelling.substr(0, spelling.size() - 1), stem_pos);
+            if (base.empty() && spelling.ends_with("es")) base = known_stem(spelling.substr(0, spelling.size() - 2), stem_pos);
             if (!base.empty()) { plural_or_possessive(base); return base; }
         }
-        const bool past = spelling.ends_with("ed"), progressive = spelling.ends_with("ing");
+        const bool past = spelling.ends_with("ed") && (pos < 0 || pos == 6 || pos == 7);
+        const bool progressive = spelling.ends_with("ing") && (pos < 0 || pos == 8);
         if (past || progressive) {
             const auto raw = spelling.substr(0, spelling.size() - (past ? 2 : 3));
             auto base = known_stem(raw, 4);
@@ -534,30 +546,8 @@ private:
                 return base;
             }
         }
-        struct Affix { std::string_view spelling, ipa; };
-        static constexpr Affix prefixes[] = {
-            {"under", "ˈʌ n d ə"}, {"over", "ˈəʊ v ə"}, {"fore", "f ˈɔː"},
-            {"out", "ˈaʊ t"}, {"non", "n ɒ n"}, {"mis", "m ɪ s"}, {"dis", "d ɪ s"},
-            {"pre", "p ɹ iː"}, {"un", "ʌ n"}, {"re", "ɹ iː"}
-        };
-        for (const auto &prefix : prefixes) {
-            if (!spelling.starts_with(prefix.spelling) || spelling.size() < prefix.spelling.size() + 3) continue;
-            auto base = known_stem(spelling.substr(prefix.spelling.size()), pos);
-            if (base.empty()) continue;
-            auto result = ipa_sequence(prefix.ipa); append(result, base); return result;
-        }
-        static constexpr Affix suffixes[] = {
-            {"less", "l ə s"}, {"ness", "n ə s"}, {"hood", "h ʊ d"}, {"ship", "ʃ ɪ p"},
-            {"ment", "m ə n t"}, {"ful", "f ə l"}, {"ly", "l i"}
-        };
-        for (const auto &suffix : suffixes) {
-            if (!spelling.ends_with(suffix.spelling) || spelling.size() < suffix.spelling.size() + 3) continue;
-            const auto stem = spelling.substr(0, spelling.size() - suffix.spelling.size());
-            auto base = known_stem(stem);
-            if (base.empty() && stem.ends_with('i')) base = known_stem(std::string(stem.substr(0, stem.size() - 1)) + "y");
-            if (base.empty()) continue;
-            append(base, ipa_sequence(suffix.ipa)); return base;
-        }
+        // Derivational prefixes and arbitrary dictionary substrings are not
+        // boundary evidence. Unresolved complete words go to British G2P.
         return {};
     }
 
@@ -570,35 +560,106 @@ private:
         std::lock_guard lock(g2p_cache_mutex_);
         return g2p_cache_.try_emplace(spelling, std::move(phones)).first->second;
     }
-    Phones pronunciation(const std::string &spelling, int16_t pos) const {
-        if (pos < 0 && spelling == "of") return ipa_sequence("ə v");
-        if (auto selected = grammatical_pronunciation(spelling, pos); !selected.empty()) return selected;
-        if ((pos == 1 || pos == 5) && spelling.ends_with('s')) {
-            auto base = grammatical_pronunciation(std::string_view(spelling).substr(0, spelling.size() - 1), pos == 1 ? 0 : 4);
-            if (!base.empty()) { plural_or_possessive(base); return base; }
-        }
-        if (auto known = dictionary_word(spelling); !known.empty()) return known;
+    Phones pronunciation(const std::string &spelling, int16_t pos,
+                         const std::vector<WordPart> &roots = {}) const {
+        if (auto known = dictionary_word(spelling, pos); !known.empty()) return known;
+        if (auto selected = grammatical_form(spelling, pos); !selected.empty()) return selected;
         if (auto inflected = morphology(spelling, pos); !inflected.empty()) return inflected;
-        if (auto compound = closed_compound(spelling); !compound.empty()) return compound;
+        if (roots.size() > 1) {
+            std::string joined;
+            for (const auto &root : roots) {
+                if (root.spelling.empty() || !is_word(root.spelling)) { joined.clear(); break; }
+                joined += lower(root.spelling);
+            }
+            if (joined == spelling) {
+                Phones compound;
+                for (const auto &root : roots) {
+                    auto part = pronunciation(lower(root.spelling), root.part_of_speech);
+                    if (part.empty()) { compound.clear(); break; }
+                    append(compound, part);
+                }
+                if (!compound.empty()) return compound;
+            }
+        }
         return g2p_word(spelling);
     }
 
-    std::string render_tokens(std::string_view source, int16_t pos) const {
-        std::string result;
+    static bool function_word(std::string_view spelling, int16_t pos) {
+        // An explicit DF content-word slot wins over a text-only inference.
+        if (pos >= 0) return false;
+        // Only conventional naming particles are omitted. Other prepositions
+        // and conjunctions can distinguish names and must not disappear just
+        // because they are short grammatical words.
+        static constexpr std::string_view words[] = {"the", "a", "an", "of"};
+        return std::find(std::begin(words), std::end(words), spelling) != std::end(words);
+    }
+
+    std::string render_tokens(std::string_view source, int16_t pos,
+                              const std::vector<TokenReading> &readings = {}) const {
+        struct Component {
+            std::string spelling;
+            int16_t pos = -1;
+            bool literal = false;
+        };
+        std::vector<Component> components;
+        const auto add = [&](std::string spelling, int16_t part_of_speech) {
+            components.push_back({std::move(spelling), part_of_speech, false});
+        };
+        size_t reading_index = 0;
         for (size_t i = 0; i < source.size();) {
             if (whitespace(source[i])) { ++i; continue; }
             if (!letter(source[i]) && !(source[i] == '\'' && i + 1 < source.size() && letter(source[i + 1]))) {
-                result.push_back(source[i++]); continue;
+                components.push_back({std::string(1, source[i++]), -1, true});
+                continue;
             }
             const size_t begin = i++;
             while (i < source.size() && (letter(source[i]) || source[i] == '\'')) ++i;
             const auto token = source.substr(begin, i - begin);
-            const auto rendered = EnglishHanziTranscription::render(pronunciation(lower(token), pos));
-            if (!rendered.empty()) result += rendered;
-            else if (const auto apostrophe = token.find('\''); apostrophe != std::string_view::npos) {
-                result += word(token.substr(0, apostrophe), pos);
-                result.push_back('\''); result += word(token.substr(apostrophe + 1), pos);
-            } else result += token;
+            const auto spelling = lower(token);
+            const TokenReading *hint = reading_index < readings.size() &&
+                lower(readings[reading_index].spelling) == spelling ? &readings[reading_index] : nullptr;
+            ++reading_index;
+            const int16_t token_pos = hint ? hint->part_of_speech : pos;
+            // An attested whole word keeps its dictionary reading. Only an
+            // unknown compound may expose the exact native WORD boundaries;
+            // no dictionary-substring or prefix guessing creates components.
+            bool split = false;
+            if (hint && hint->roots.size() > 1 &&
+                    dictionary_word(spelling, token_pos).empty() &&
+                    grammatical_form(spelling, token_pos).empty() &&
+                    morphology(spelling, token_pos).empty()) {
+                std::string joined;
+                for (const auto &root : hint->roots) {
+                    if (!is_word(root.spelling)) { joined.clear(); break; }
+                    joined += lower(root.spelling);
+                }
+                if (joined == spelling) {
+                    for (const auto &root : hint->roots)
+                        add(lower(root.spelling), root.part_of_speech);
+                    split = true;
+                }
+            }
+            if (!split) add(spelling, token_pos);
+        }
+        const bool has_content = std::any_of(components.begin(), components.end(),
+            [](const Component &component) {
+                return !component.literal &&
+                       !function_word(component.spelling, component.pos);
+            });
+        // Length follows the attested word forms and pronounceable sound
+        // groups. Neither middle words nor weak syllables are deleted to meet
+        // a target. An all-particle name keeps its complete source order.
+        std::string result;
+        for (const auto &component : components) {
+            if (component.literal) { result += component.spelling; continue; }
+            if (has_content && function_word(component.spelling, component.pos)) continue;
+            if (const auto fixed = fixed_transcription(component.spelling); !fixed.empty()) {
+                result += fixed;
+                continue;
+            }
+            const auto phones = pronunciation(component.spelling, component.pos);
+            const auto rendered = EnglishHanziTranscription::render(phones);
+            result += rendered.empty() ? component.spelling : rendered;
         }
         return result;
     }
