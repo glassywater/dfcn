@@ -189,7 +189,9 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             // b93930 supplies a whole site field, including unknown-site and
             // unnamed location labels. Do not reinterpret its generated name
             // as an organization simply because the spellings coincide.
-            auto result = translate_legends_name(input, false, false);
+            auto result = translate_legends_place(input, true);
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = exact_literal_translation(input);
             return finish(translation_complete_with_native_nicknames(result, input)
                 ? std::move(result) : std::nullopt);
         }

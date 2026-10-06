@@ -181,6 +181,37 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         return std::nullopt;
     };
     (void)scoped_apply;
+    struct SiteReferenceSource {
+        std::string source;
+        int color = 0;
+        size_t end = 0;
+        int32_t subid = -1;
+    };
+    std::unordered_map<int32_t, std::vector<SiteReferenceSource>> site_reference_sources;
+    std::unordered_map<int32_t, size_t> site_reference_source_cursors;
+    for (size_t index = 0; index < document.tokens.size();) {
+        const auto &first = document.tokens[index];
+        if (first.link_type != 1 || first.link_id < 0) { ++index; continue; }
+        SiteReferenceSource source;
+        source.color = first.color;
+        source.subid = first.link_subid;
+        size_t end = index;
+        while (end < document.tokens.size()) {
+            const auto &token = document.tokens[end];
+            if (token.link_type != 1 || token.link_id != first.link_id ||
+                    token.link_subid != first.link_subid) break;
+            // The rich-text parser stores one word per token. Only this
+            // uninterrupted native link can supply a complete name: another
+            // occurrence of the same Site ID must never be joined to it.
+            if (!source.source.empty()) source.source += ' ';
+            source.source += token.source;
+            ++end;
+        }
+        source.end = end;
+        if (!trim_view(source.source).empty())
+            site_reference_sources[first.link_id].push_back(std::move(source));
+        index = end;
+    }
     const auto subject = [&](NativeHistoryObjectKind kind, int32_t id, bool include_species = true,
                             int32_t subid = -1, bool prefer_name = true, bool polity_role = false)
             -> std::optional<Pieces> {
@@ -193,6 +224,7 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             return std::nullopt;
         }
         std::optional<std::string> name;
+        const SiteReferenceSource *site_source = nullptr;
         const bool unnamed_figure = kind == NativeHistoryObjectKind::Figure &&
             !found->name.has_name && found->label_key.empty() && !found->species.empty();
         if (unnamed_figure) {
@@ -253,6 +285,30 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             name = translate_history_entity_name(found->name, event, id,
                 document.page && document.page->kind == NativeHistoryPageKind::EntityIntroduction,
                 polity_role);
+        else if (kind == NativeHistoryObjectKind::Site) {
+            const auto sources = site_reference_sources.find(id);
+            if (sources != site_reference_sources.end() && !sources->second.empty()) {
+                const size_t occurrence = site_reference_source_cursors[id]++;
+                site_source = &sources->second[std::min(occurrence, sources->second.size() - 1)];
+                // The native displayed field decides whether this occurrence
+                // is phonetic, English, or a complete pair. A source already
+                // present in the document cannot silently become the other
+                // language's generated official name.
+                name = translate_site_display(found->name, site_source->source);
+                if (!name) {
+                    // The native rich-text parser appends unlinked . , ? !
+                    // tokens to the previous linked word. The semantic
+                    // sentence template already owns that punctuation.
+                    std::string_view source = trim_view(site_source->source);
+                    while (!source.empty() &&
+                            std::string_view(".,?!").find(source.back()) != std::string_view::npos)
+                        source.remove_suffix(1);
+                    if (source.size() != trim_view(site_source->source).size())
+                        name = translate_site_display(found->name, source);
+                }
+                if (!name) name = native_text_to_utf8(site_source->source);
+            } else name = translate_site_name(found->name);
+        }
         else name = translate_history_name(found->name,
             kind == NativeHistoryObjectKind::Figure || kind == NativeHistoryObjectKind::Identity);
         if (!name) {
@@ -271,7 +327,14 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         int color = neutral;
         size_t last = 0;
         int native_link_type = -1, native_link_id = -1, native_link_subid = -1;
-        for (size_t index = 0; index < document.tokens.size(); ++index) {
+        if (site_source) {
+            color = site_source->color;
+            last = site_source->end;
+            native_link_type = 1;
+            native_link_id = id;
+            native_link_subid = site_source->subid;
+        }
+        for (size_t index = 0; !site_source && index < document.tokens.size(); ++index) {
             const auto &token = document.tokens[index];
             if ((token.link_type == link_type ||
                     (kind == NativeHistoryObjectKind::Artifact && token.link_type == 3)) &&

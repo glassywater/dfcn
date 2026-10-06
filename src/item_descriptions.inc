@@ -623,7 +623,16 @@ std::optional<std::string> Overlay::translate_item_description_source(
                         // Holder/owner captions keep the profession with the name.
                         if (auto unit = translate_unit_identity(part, true)) return unit;
                         return translate_ui_message_capture(part, true);
-                    case 'p': return translate_legends_name(part, false);
+                    case 'p':
+                        // Only the complete placement/creation productions
+                        // own a site. Symbol owners, commissioners and image
+                        // titles use the same capture letter for other names.
+                        if (rule.source == "This engraving appears on a floor in {p}." ||
+                            rule.source == "This engraving appears on a wall in {p}." ||
+                            rule.source == "This work of art is a {i} and was crafted in {p}." ||
+                            rule.source == "This artwork appears on a {i} and was crafted in {p}.")
+                            return translate_legends_place(part);
+                        return translate_legends_name(part, false);
                     case 'r': return translate_coin_native_identity(part);
                     case 'b':
                         if (auto title = translate_legends_artifact_identity(part);
@@ -662,7 +671,7 @@ std::optional<std::string> Overlay::translate_item_description_source(
                     switch (kind) {
                     case 'a': return translate_legends_participant(part);
                     case 'n': return translate_legends_actor(part);
-                    case 'p': return translate_legends_name(part, false);
+                    case 'p': return translate_legends_place(part);
                     case 's': return translate_legends_term(part);
                     case 'q': return translate_legends_color(part);
                     case 't': return translate_legends_anatomy(part);

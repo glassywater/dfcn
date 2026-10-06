@@ -1050,6 +1050,7 @@ std::optional<std::string> Overlay::translate_legends_book(
     for (int index : legends_book_rules_)
         if (auto title = translate_legends_nested(
                 rules_[static_cast<size_t>(index)], value, depth)) return title;
+    if (const auto place = translate_book_site_subject(value)) return place;
     if (const auto person = translate_procedural_fragment(std::string(value), false,
             false, {}, ProceduralFragmentContext::personal_name)) return person;
     // BOOK_ART has both [ADJ] [NO_ART_NAME] and [NAME] [ADJ]. The same
@@ -1441,7 +1442,7 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
         }
     const auto translate_heading = [&](std::string_view source) {
         if (native_caption && native_caption->site_name && source == native_title)
-            if (auto target = translate_site_name(*native_caption->site_name)) return target;
+            if (auto target = translate_site_display(*native_caption->site_name, source)) return target;
         if (native_caption && native_caption->region_title && source == native_title)
             if (auto target = translate_world_region_heading(source)) return target;
         return native_caption && native_caption->event_title && source == native_title

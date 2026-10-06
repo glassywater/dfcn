@@ -1717,6 +1717,8 @@ DFHack help: This interface provides a list of siege engines, their ammo count, 
 DFHack help: This tool quickly and easily unforbids all items. This is especially useful after a siege to allow cleaning up the mess (or dumping of caged prisoner's equipment with stripcaged).	该工具可以快速轻松地取消禁止所有物品。这在围攻之后特别有用，可以清理混乱（或将笼中囚犯的设备与脱光笼子一起倾倒）。	l
 DFHack help: You can specify a job type (e.g. "Dig", "FellTree", etc.) to pre-select it in the "gui/advfort" UI. Otherwise you can just select the desired job type in the UI after it comes up.	您可以指定作业类型（例如"Dig"、"FellTree"等）以在 "gui/advfort" UI 中预先选择它。否则，您只需在 UI 出现后选择所需的作业类型即可。	l
 Your fortress is out of food! Are your farmplots working? Make sure you are planting edible plants. Do you have any livestock to slaughter? Perhaps you can gather plants, fruit, or go fishing.	你的要塞没有食物了！农田是否正常运作？务必种植可食用的植物。还有可供宰杀的牲畜吗？也许可以采集植物、水果，或者去捕鱼。	hP
+Announcement combat rumor-event [$name,$travel-site,rumor-person]: I hear that a group calling itself {s} moved on in search of a better future after the horrible mismanagement of {s} by {s}.	听说{s3}把{s2}治理得一团糟，一个自称{s1}的势力就离开了，另谋出路。	l
+Announcement combat site-rumor-event [$name,$name,site-rumor-person,$travel-site]: refugees calling themselves {s} fled from the area just before an army of {s} led by {s} descended upon {s}.	自称{s1}的难民刚逃离这一带，{s3}率领的{s2}军队就袭击了{s4}。	l
 DFHack help: "workflow list-commands" List active constraints as workflow commands that re-create them; this list can be copied to a file, and then reloaded using the script built-in command.	"workflow list-commands" 将活动约束列为重新创建它们的工作流命令；可以将该列表复制到文件中，然后使用脚本内置命令重新加载。	l
 DFHack help: "zone assign all own not grazer not race CAT" Assign all of your animals who are not grazers (excluding cats) to the selected pasture. " zone assign all own milkable not grazern"	"zone assign all own not grazer not race CAT" 将所有非食草动物（不包括猫）分配到所选牧场。 " zone assign all own milkable not grazern"	l
 DFHack help: * Paste Text: Use "Ctrl" + "V" to paste text from the clipboard into the editor. - replace selected text, if available - If no text is selected, paste text in the cursor position	* 粘贴文本：使用 "Ctrl" +"V"将剪贴板中的文本粘贴到编辑器中。 - 替换选定的文本（如果有） - 如果未选择文本，则将文本粘贴到光标位置	l
@@ -1826,8 +1828,6 @@ DFHack help: Whether the tile's surroundings should be autocorrected, e.g., addi
 DFHack help: You can use the probe command to discover properties of existing tiles that you'd like to copy. If you accidentally paint over a vein that you want back, fixveins may help.	您可以使用探测命令来发现您想要复制的现有图块的属性。如果您不小心在想要恢复的矿脉上涂漆，修复静脉可能会有所帮助。	l
 DFHack help: revert: Revert a unit's needs list back to its original selection and need strengths. Focus levels are preserved if the unit has a need before and after. Requires a target.	恢复：将单位的需求列表恢复为其原始选择和需求强度。如果单元前后有需要，则保留焦点级别。需要一个目标。	l
 Your most valuable objects can be placed for display in rooms to increase their value and to entertain passing citizens. A pedestal or display case must be made before it can be placed.	可在房间中展示最珍贵的物品，提高房间价值，并供路过的居民欣赏。须先制作基座或展示柜，才能放置。	hj
-Announcement combat rumor-event [$name,$name,rumor-person]: I hear that a group calling itself {s} moved on in search of a better future after the horrible mismanagement of {s} by {s}.	听说{s3}把{s2}治理得一团糟，一个自称{s1}的势力就离开了，另谋出路。	l
-Announcement combat site-rumor-event [$name,$name,site-rumor-person,$name]: refugees calling themselves {s} fled from the area just before an army of {s} led by {s} descended upon {s}.	自称{s1}的难民刚逃离这一带，{s3}率领的{s2}军队就袭击了{s4}。	l
 DFHack GUI Journal tutorial: Here, you can carve out notes, sketch your grand designs, or record the history of your fortress. The text you write here is saved together with your fort.	你可以在这里记笔记、勾画宏伟蓝图，或记录要塞的历史。写下的内容会随要塞一起保存。	l
 DFHack help: "--applyprofessions <profession>[,<profession>...]" Applies the listed professions to the selected dwarves. Run "dwarf-op --list professions" to see available professions.	"--applyprofessions <profession>[,<profession>...]" 将列出的职业应用于所选的矮人。运行 "dwarf-op --list professions" 查看可用的职业。	l
 DFHack help: "--marked=<flag>,<flag>,..." Only include items that have all provided flag set to true. Valid flags are: "forbid" (or "forbidden"), "dump", "hidden", "melt", and "owned".	"--marked=<flag>,<flag>,..." 仅包含所有提供的标志设置为 true 的项目。有效标志为："forbid"（或 "forbidden"）、"dump"、"hidden"、"melt" 和 "owned"。	l
@@ -1925,6 +1925,7 @@ Fortifications block creature movement but allow projectiles through. Soldiers n
 The view will be dark underground until you begin mining. You can move the camera to the surface with the surface button (highlighted.) The {k} hotkey will recenter on your wagon.	开始采矿之前，地下视野会是一片黑暗。点击已高亮的地表按钮可将视角移到地表。按{k1}热键可将视角重新对准货车。	hqt
 {b} is sought by {s}, and I aim to return it home. My epic journey began {s}. I've searched nearly the whole world over. I can only rest when I've brought the prize safely to {e}.	{s1}正在寻找{b1}，而我打算将它送回故乡。我的史诗之旅始于{s2}。我几乎已经搜遍了全世界。只有将宝物安全带回{e1}，我才能安心。	hPt
 {p}: You have disrespected the trees in this area, but this is what we have come to expect from your stunted kind. Further abuse cannot be tolerated. Let this be a warning to you.	{p1}：你们不敬这里的树木，不过我们早料到你们这些矮个子会这样。我们绝不会容忍进一步的摧残。好自为之。	hPt
+Announcement combat site-rumor-event [$name,site-rumor-person,$travel-site]: refugees calling themselves {s} fled from the area just before an army led by {s} descended upon {s}.	自称{s1}的难民刚逃离这一带，{s2}率领的军队就袭击了{s3}。	l
 DFHack help: "-v", "--verbose" Output extra debugging information. This is especially useful if you're trying to figure out why the blueprint isn't being applied like you expect.	"-v", "--verbose" 输出额外的调试信息。如果您试图找出为什么蓝图没有像您期望的那样应用，这尤其有用。	l
 DFHack help: "autobutcher forget all|<race> [<race> ...]" Unwatch the specified race(s) (or all races on your watchlist if "all" is given) and forget target settings for it/them.	"autobutcher forget all|<race> [<race> ...]" 取消观看指定的比赛（如果给出了 "all"，则取消观看观看列表上的所有比赛）并忘记 it/them. 的目标设置	l
 DFHack help: "deteriorate enable corpses,parts" Deteriorate corpses and body parts. This includes potentially useful parts such as hair or wool, so use them quickly or lose them!	"deteriorate enable corpses,parts" 尸体和身体部位恶化。这包括潜在有用的部分，例如头发或羊毛，因此请快速使用它们，否则就会丢失它们！	l
@@ -1946,6 +1947,7 @@ In the beginning, you'll probably find it populated with a variety of rumors and
 "Greetings. I am {p}, and I have chosen you as my instrument of {r}. The remnants of creation, {s}, belong with my followers, {e}. Seek out {p} in {e} and fulfill your destiny."	“你好。我是{p1}，我已选中你，作为我彰显{r1}的使者。创世的遗留之物{s1}，应当归于我的信众{e1}。去{e2}寻找{p2}，完成你的天命。”	hPt
 A large ferocious predator found in grasslands. It lives in groups of females and one male with a large mane. They hunt together and are capable of felling extremely large prey.	一种被发现于草原的大型凶猛食肉动物。 它通常以很多雌性加一个有大鬃毛雄性的群体做为单位一起生存。 它们一起捕猎，能够讨伐极其巨大的猎物。	lP
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the agreement between {s} and {s} to work as a mercenary and become a resident of {s}	{s1}与{s2}达成的居留协议：成为{s3}的居民，以便从事雇佣兵工作	l
+Announcement combat site-rumor-event [$name,$travel-site,$name]: a group calling itself {s} moved on in search of a better future after the horrible mismanagement of {s} by {s}.	{s3}把{s2}治理得一团糟，自称{s1}的势力于是离开了，另谋出路。	l
 DFHack help: "--command [ <commandStrs> ]" Specify the command to be executed. The following tokens can be used in the command and they will be replaced with appropriate values:	"--command [ <commandStrs> ]" 指定要执行的命令。命令中可以使用以下标记，它们将被替换为适当的值：	l
 DFHack help: "--material <TOKEN>" Specify the material of the flow, if applicable. E.g. "INORGANIC:IRON", "CREATURE_MAT:DWARF:BRAIN", or "PLANT_MAT:MUSHROOM_HELMET_PLUMP:DRINK".	"--material <TOKEN>" 指定流的材质（如果适用）。例如。 "INORGANIC:IRON"、"CREATURE_MAT:DWARF:BRAIN" 或 "PLANT_MAT:MUSHROOM_HELMET_PLUMP:DRINK"。	l
 DFHack help: "strangemood --force --unit --type secretive --skill armorsmith" Trigger a strange mood for the selected unit that will cause them to become a legendary armorsmith.	"strangemood --force --unit --type secretive --skill armorsmith" 为选中的单位触发奇异心境，使其成为传奇盔甲匠。	l
@@ -2071,6 +2073,7 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 {b} is sought by {s}, and I aim to return it home. My epic journey began {s}. I've already searched in {e}. I can only rest when I've brought the prize safely to {s} in {e}.	{s1}正在寻找{b1}，而我打算将它送回故乡。我的史诗之旅始于{s2}。我已经搜寻过{e1}。只有将宝物安全带回{e2}的{s3}，我才能安心。	hPt
 A large ape which lives in the tropical forests. It lives in complex social groups of many members. Though it is quite intelligent, it has been known for ferocious attacks.	一种体型巨大的猩猩.它们生活在热带丛林里.它们有着庞大且复杂的社会性群体. 尽管它们非常聪明, 但是它们也有着凶猛的攻击性.	lP
 Announcement combat agreement-core [agreement-party-list,$office,$name,agreement-party-list]: {s} began passing a portion of corruptly-obtained funds as a {s} of {s} to {s}	{s1}以{s3}的{s2}身份开始将部分非法所得转交给{s4}	l
+Announcement combat rumor-event [$name,rumor-person,$travel-site]: A bandit gang calling itself {s}, led by {s}, has been harassing people right here on the streets of {s}!	有伙土匪自称{s1}，头目是{s2}，就在{s3}这里的街上骚扰百姓！	l
 DFHack help: "--excludekinds [a|bces]" Excludes DF data types. Single letters correspond to (in order): (a)ll types listed here, (b)itfields, (c)lasses, (e)nums, (s)tructs.	"--excludekinds [a|bces]" 排除 DF 数据类型。单个字母对应于（按顺序）：（a）此处列出的所有类型，（b）itfields，（c）lasses，（e）nums，（s）tructs。	l
 DFHack help: "control-panel list butcher" Shows the current configuration of all commands related to autobutcher (and anything else that includes the text "butcher" in it).	"control-panel list butcher" 显示与 autobutcher 相关的所有命令的当前配置（以及其中包含文本 "butcher" 的其他任何内容）。	l
 DFHack help: * A yellow "x" means that the building is suspended and no DFHack tool is managing the suspension. You can unsuspend it manually or with the unsuspend command.	* 黄色 "x" 表示建筑物已暂停，并且没有 DFHack 工具正在管理暂停。您可以手动或使用 unsuspend 命令取消挂起。	l
@@ -2096,7 +2099,6 @@ A colorful lizard that spends its life hunting insects with its long tongue. It 
 A large quadruped with a mane circling its manlike face and hands at the end of its forelimbs. It lives underground and is fond of raiding the supplies of cavern outposts.	一种大型四足动物，鬃毛环绕着像人一样的脸，前肢末端有手。它生活在地底，喜欢掠夺洞穴前哨的补给。	lP
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name]: {s} made an agreement with {s}, becoming a resident of {s} to entertain the citizenry	{s1}与{s2}达成协议，成为{s3}的居民，以便为居民表演	l
 Announcement combat agreement-title-core [agreement-party-list,$office,$name,agreement-party-list]: the passing of corruptly-obtained funds by {s} as the {s} of {s} to {s}	{s1}以{s3}的{s2}身份进行的非法所得的转交（交给{s4}）	l
-Announcement combat site-rumor-event [$name,site-rumor-person,$name]: refugees calling themselves {s} fled from the area just before an army led by {s} descended upon {s}.	自称{s1}的难民刚逃离这一带，{s2}率领的军队就袭击了{s3}。	l
 Butchering requires a sharp-edged weapon or tool, as well as a butcherable carcass. Butchering is an excellent source of meat. The other products cannot currently be used.	屠宰需要有刃口的武器或工具，以及可以屠宰的尸体。屠宰是很好的肉食来源，但其他产物目前还无法使用。	hq
 DFHack help: "tooltip-hover-activity" (default: enabled) If the "spectate.tooltip" overlay is enabled, toggle whether to show the activity of the dwarf in the hover panel.	"tooltip-hover-activity"（默认：启用） 如果启用了 "spectate.tooltip" 叠加层，则切换是否在悬停面板中显示矮人的活动。	l
 DFHack help: ) if idx then self.target.name.first_name = translations[val].words[idx].value end for _, sync_name in ipairs(self.target.sync_names) do if type(sync_name) ==	) if idx then self.target.name.first_name = Translations[val].words[idx].value end for _,sync_name in ipairs(self.target.sync_names) do if type(sync_name) ==	l
@@ -2130,7 +2132,6 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, participating in {d} battles, slaying {d} enemies, and being a member for a year within {p}	{a1}在{p2}在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死{d2}名敌人及入会满一年后，获得了{p1}的{s1}头衔	ht
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, participating in {d} battles, slaying {d} enemies, and {d} years of membership in the wilds	{a1}在荒野中在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死{d2}名敌人及拥有{d3}年会龄后，获得了{p1}的{s1}头衔	ht
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,agreement-item,$name,$name]: the request by {s} that {s} retrieve {s} from {s} for {s}	{s1}请{s2}为{s5}从{s4}处取回{s3}的请求	l
-Announcement combat site-rumor-event [$name,$name,$name]: a group calling itself {s} moved on in search of a better future after the horrible mismanagement of {s} by {s}.	{s3}把{s2}治理得一团糟，自称{s1}的势力于是离开了，另谋出路。	l
 Change the properties of the item being checked. Many of these are obscure and rely on specific tasks, but certain properties like 'empty' can be used in many conditions.	修改要检查的物品属性。其中许多属性只适用于特定任务，含义较为生僻；但“空”等属性可用于多种条件。	hj
 DFHack help: "gui/advfort -e" Brings up the GUI for interactive job selection. Items that the adventurer's civilization can use will be available in item selection lists.	"gui/advfort -e" 调出 GUI 进行交互式作业选择。冒险家政权可以使用的物品将出现在物品选择列表中。	l
 DFHack help: "preserve-rooms now" Do an immediate update of room assignments. The plugin does this routinely in the background, but you can run it manually to update now.	"preserve-rooms now" 立即更新房间分配。该插件会在后台例行执行此操作，但您现在可以手动运行它来更新。	l
@@ -2320,7 +2321,6 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, participating in {d} battles, slaying {d} enemies, and {d} years of membership at {p}.	{a1}在{p2}在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死{d2}名敌人及拥有{d3}年会龄后，获得了{p1}的{s1}头衔。	ht
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, participating in {d} battles, slaying {d} enemies, and {d} years of membership in {p}.	{a1}在{p2}在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死{d2}名敌人及拥有{d3}年会龄后，获得了{p1}的{s1}头衔。	ht
 {b} is sought by {s}, and I aim to return it home. My epic journey began {s}. I've already searched in {e}. I can only rest when I've brought the prize safely to {e}.	{s1}正在寻找{b1}，而我打算将它送回故乡。我的史诗之旅始于{s2}。我已经搜寻过{e1}。只有将宝物安全带回{e2}，我才能安心。	hPt
-Announcement combat rumor-event [$name,rumor-person,$name]: A bandit gang calling itself {s}, led by {s}, has been harassing people right here on the streets of {s}!	有伙土匪自称{s1}，头目是{s2}，就在{s3}这里的街上骚扰百姓！	l
 DFHack help: "--list <table name>" Show the raw data tables that "dwarf-op" uses to make decisions. See the Data tables section below for which tables are available.	"--list <table name>" 显示"dwarf-op" 用于决策的原始数据表。请参阅下面的数据表部分，了解哪些表可用。	l
 DFHack help: "-o", "--aquifers-only" Don't reveal any map tiles, but continue to display markers to identify aquifers and damp tiles as per the dig.warmdamp overlay.	"-o"、"--aquifers-only" 不要显示任何地图图块，但继续显示标记以根据 dig.warmdamp 叠加层识别含水层和潮湿图块。	l
 DFHack help: "color-schemes register <directory> [-f] [-q]" Register the directory (relative to the main DF game directory) where your color scheme files are stored.	"color-schemes register <directory> [-f] [-q]" 注册存储配色方案文件的目录（相对于主 DF 游戏目录）。	l
@@ -2463,6 +2463,7 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, participating in {d} battles, slaying an enemy, and {d} years of membership at {p}.	{a1}在{p2}在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死一名敌人及拥有{d2}年会龄后，获得了{p1}的{s1}头衔。	ht
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, participating in {d} battles, slaying an enemy, and {d} years of membership in {p}.	{a1}在{p2}在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死一名敌人及拥有{d2}年会龄后，获得了{p1}的{s1}头衔。	ht
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, serving in combat, slaying {d} enemies, and being a member for a year in the wilds.	{a1}在荒野中在{s2}方面达到足够的技艺水平、在战斗中效力、杀死{d1}名敌人及入会满一年后，获得了{p1}的{s1}头衔。	ht
+Announcement combat site-rumor-event [$name,$name,$travel-site]: refugees calling themselves {s} fled from the area just before an army of {s} descended upon {s}.	自称{s1}的难民刚逃离这一带，{s2}的军队就袭击了{s3}。	l
 DFHack help: ""PLANT": {"0": "SINGLE-GRAIN_WHEAT", "1": "TWO-GRAIN_WHEAT", "2": "SOFT_WHEAT", "3": "HARD_WHEAT", "4": "SPELT", "5": "BARLEY", ..., "224": "PALM"}"	""PLANT"：{"0"："SINGLE-GRAIN_WHEAT"，"1"："TWO-GRAIN_WHEAT"，"2"："SOFT_WHEAT"，"3"："HARD_WHEAT"，"4"："SPELT"，"5"： "BARLEY"，...，"224"："PALM"}"	l
 DFHack help: "--json <file>" Loads the specified json file as a table to query. The path starts at the DF root directory, e.g. "hack/scripts/dwarf_profiles.json".	"--json <file>" 加载指定的json文件作为表进行查询。该路径从 DF 根目录开始，例如"hack/scripts/dwarf_profiles.json"。	l
 DFHack help: "--reset" Clear all goals. If both this option and "--goals" are specified, the unit's goals will be cleared and then the listed goals will be added.	"--reset" 清除所有目标。如果同时指定该选项和"--goals"，则该单位的目标将被清除，然后添加列出的目标。	l
@@ -2691,6 +2692,7 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, serving in combat, slaying {d} enemies, and {d} years of membership within {p}.	{a1}在{p2}在{s2}方面达到足够的技艺水平、在战斗中效力、杀死{d1}名敌人及拥有{d2}年会龄后，获得了{p1}的{s1}头衔。	ht
 A {s} caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. However, overall trade sentiments are tenuous at best.	来自{e1}的{s1}商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。不过，总体贸易意愿至多只能算勉强。	hPt
 Announcement combat fortress-announcement []: Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense.	祝贺你！这座要塞如今已成为山国都城，证明那些狂妄自大的指责不过是幼稚的胡言乱语。	l
+Announcement combat rumor-event [$name,$travel-site,rumor-person]: We formed {s} in order to find better lives after the horrible mismanagement of {s} by {s}.	{s3}把{s2}治理得一团糟，我们才组建了{s1}，想过上好日子。	l
 Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense. The gods surely want you to dig deeper still!	祝贺你！这座要塞如今已成为山国都城，证明那些狂妄自大的指责不过是幼稚的胡言乱语。诸神一定希望你继续向更深处挖掘！	hP
 DFHack help: "-s", "--stockpile <name or id>" Specify a specific stockpile by name or internal ID instead of using the stockpile currently selected in the UI.	"-s"、"--stockpile <name or id>" 通过名称或内部 ID 指定特定的储物堆，而不是使用当前在 UI 中选择的储物堆。	l
 DFHack help: "gui/rename -u 123 --no-target-selector" Load the unit with id "123" for renaming and remove the widget that allows selecting a different target.	"gui/rename -u 123 --no-target-selector" 加载ID为"123"的单元进行重命名，并删除允许选择不同目标的小部件。	l
@@ -2862,7 +2864,6 @@ A huge quadrupedal dinosaur with a row of spines along its back, a spiked tail, 
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,agreement-item,$name,$name]: {s} asked that {s} retrieve {s} from {s} for {s}	{s1}请{s2}为{s5}从{s4}处取回{s3}	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,agreement-item,$name]: the request by {s} that {s} retrieve {s} for {s}	{s1}请{s2}为{s4}取回{s3}的请求	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,agreement-party-list]: the promise by {s} to {s} to give {s} a position	{s1}答应{s2}、给{s3}安排职位的承诺	l
-Announcement combat site-rumor-event [$name,$name,$name]: refugees calling themselves {s} fled from the area just before an army of {s} descended upon {s}.	自称{s1}的难民刚逃离这一带，{s2}的军队就袭击了{s3}。	l
 DFHack help: "-Q", "--max-quality <integer>" Only include items whose quality level is at most "integer". Useful values are 0 (ordinary) to 5 (masterwork).	"-Q", "--max-quality <integer>" 仅包含质量等级最多为 "integer" 的物品。有用的值为 0（普通）到 5（杰作）。	l
 DFHack help: "-c", "--cursor <pos>" Indicate the starting position of the box or flood fill. If not specified, the position of the keyboard cursor is used.	"-c"、"--cursor <pos>" 表示框或洪水填充的起始位置。如果未指定，则使用键盘光标的位置。	l
 DFHack help: "a", "all [<shape>] [<material>] [<special>] [<variant>]" Set values for any or all of shape, material, special, and/or variant, in any order.	"a"，"所有 [<形状>] [<材料>] [<特殊>] [<变体>]" 以任何顺序为任何或所有形状、材料、特殊、and/or 变体设置值。	l
@@ -2920,6 +2921,7 @@ A {s} caravan from {e} has arrived. Your status as a minor land has attracted a 
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. However, overall trade sentiments are lukewarm.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。不过，总体贸易意愿不冷不热。	hPt
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. However, overall trade sentiments are terrible.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。不过，总体贸易意愿极差。	hPt
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the agreement between {s} and {s} and become a resident of {s}	{s1}与{s2}达成的居留协议：成为{s3}的居民	l
+Announcement combat rumor-event [$name,$travel-site,$name]: I hear that a group calling itself {s} founded {s} after a long journey from the lands of {s}.	听说一个自称{s1}的势力从{s3}的领地长途跋涉而来，建立了{s2}。	l
 Announcement combat rumor-event [rumor-person,rumor-owner,$name,$name]: {s} refused an offer of peace from {s} regarding the conflict between {s} and {s}.	{s1}拒绝了{s2}为平息{s3}和{s4}的冲突而提出的议和。	l
 DFHack help: "-p", "--pregnancy" If specified, and if the historical figure is pregnant, terminate the pregnancy instead of killing the historical figure.	"-p", "--pregnancy" 如果指定，并且历史人物怀孕了，则终止怀孕而不是杀死历史人物。	l
 DFHack help: "alias replace <name> <command> [arguments...]" Replaces an existing alias with a new command, or adds the alias if it does not already exist	"alias replace <name> <command> [arguments...]" 用新命令替换现有别名，或者添加别名（如果尚不存在）	l
@@ -3114,7 +3116,7 @@ A {s} caravan from {e} has arrived. Your status as a middling land has attracted
 A {s} caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. However, overall trade sentiments are lukewarm.	来自{e1}的{s1}商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。不过，总体贸易意愿不冷不热。	hPt
 A {s} caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. However, overall trade sentiments are terrible.	来自{e1}的{s1}商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。不过，总体贸易意愿极差。	hPt
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the request by {s} that {s} make an offer of service to {s}	{s1}要求{s2}向{s3}表示愿意效力的请求	l
-Announcement combat rumor-event [$name,$name,rumor-person]: We formed {s} in order to find better lives after the horrible mismanagement of {s} by {s}.	{s3}把{s2}治理得一团糟，我们才组建了{s1}，想过上好日子。	l
+Announcement combat rumor-event [$name,rumor-person,$travel-site]: A bandit gang calling itself {s}, led by {s}, has been harassing people over in {s}.	有伙土匪自称{s1}，头目是{s2}，一直在{s3}那边骚扰百姓。	l
 Announcement combat threat-killing [threat-kill-count,threat-possessive,threat-family-list]: has even killed {s} in {s} lust for murder, among them {s}	{s2}嗜杀成性，甚至杀害了{s1}，其中包括{s3}	l
 Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense. What are a few pesky demons after all?	祝贺你！这座要塞如今已成为山国都城，证明那些狂妄自大的指责不过是幼稚的胡言乱语。区区几个恼人的恶魔又算得了什么？	hP
 DFHack help: "--modify <amount>" Modify current base trait strength by given amount. Negative values need a "\\\\" before the negative symbol e.g. "\\\\-1"	"--modify <amount>" 将当前基础特质强度修改给定量。负值需要在负号前加一个"\\\\\\\\"，例如"\\\\\\\\-1"	l
@@ -3253,6 +3255,7 @@ A caravan from {e} has arrived. Your status as a major land has attracted much m
 A tiny, jolly humanoid creature that dwells in the fair mountains. They are known to enjoy drinking liquor and don't care whether it's theirs or not.	居住在美丽山脉中的一种小巧、快乐的类人生物。 众所周知，他们喜欢喝酒，不在乎酒是不是他们的。	lP
 A {s} caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. Overall trade sentiments are tenuous at best.	来自{e1}的{s1}商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。总体贸易意愿至多只能算勉强。	hPt
 Announcement combat rumor-event [rumor-person,rumor-owner,$name,$name]: {s} accepted a peace offer from {s} to stop the conflict between {s} and {s}.	{s1}接受了{s2}议和提议，要让{s3}和{s4}停止冲突。	l
+Announcement combat site-rumor-event [$name,$travel-site]: refugees calling themselves {s} fled from the area just before an army descended upon {s}.	自称{s1}的难民刚逃离这一带，一支军队就袭击了{s2}。	l
 Crafting in the base game is limited to constructing a stone axe necessary to fell trees. You can pick up few rocks and a tree branch to get started.	原版游戏的制作仅限于打造伐木所需的石斧。捡几块石头和一根树枝，就可以开始。	hq
 DFHack help: "--dorm" Task the selected owned item for storage in an appropriate storage furniture, or on the floor, in any available dormitory zone.	"--dorm" 将选定的拥有物品存储在适当的存储家具中，或地板上，任何可用的宿舍区域中。	l
 DFHack help: "-e", "--everywhere" Generate a boulder, ore, or gem for every tile that can produce one. Equivalent to "--percentages 100,100,100,100".	"-e"、"--everywhere" 为每个可以生成巨石、矿石或宝石的图块生成一块巨石、矿石或宝石。相当于"--percentages 100,100,100,100"。	l
@@ -3390,7 +3393,7 @@ A caravan from {e} has arrived. Your status as a major land has attracted much m
 A caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. However, overall trade sentiments are cautious.	来自{e1}的商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。不过，总体贸易意愿偏于谨慎。	hPt
 A caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. However, overall trade sentiments are lukewarm.	来自{e1}的商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。不过，总体贸易意愿不冷不热。	hPt
 A caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. However, overall trade sentiments are terrible.	来自{e1}的商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。不过，总体贸易意愿极差。	hPt
-Announcement combat rumor-event [$name,$name,$name]: I hear that a group calling itself {s} founded {s} after a long journey from the lands of {s}.	听说一个自称{s1}的势力从{s3}的领地长途跋涉而来，建立了{s2}。	l
+Announcement combat site-rumor-event [$name,$travel-site,$name]: a group calling itself {s} founded {s} after a long journey from the lands of {s}.	自称{s1}的势力从{s3}的领地长途跋涉而来，建立了{s2}。	l
 Any ability you possess that doesn't fit elsewhere will appear here. For instance, many creatures can spit or pet animals. Others can breathe fire.	你拥有但不属于其他分类的能力会显示在这里。例如，许多生物可以吐唾沫或抚摸动物，有些还能喷火。	hq
 DFHack help: "--age <num>" Sets the target to the age specified. If this is not set, the target age defaults to the minimum adult age for the unit.	"--age <num>" 将目标设置为指定的年龄。如果未设置，则目标年龄默认为该单位的最低成年年龄。	l
 DFHack help: "-b", "--subterranean" Whether the tile is considered underground. [boolean] (used to determine crops that can be planted underground)	"-b"、"--subterranean" 瓷砖是否被视为地下。 [boolean]（用于确定可以在地下种植的农作物）	l
@@ -3472,6 +3475,7 @@ A {s} caravan from {e} has arrived. Your status as a minor land has attracted a 
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Overall trade sentiments are very good.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。总体贸易意愿非常良好。	hPt
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name,$name]: the joining of {s} with {s} to oust {s} from {s}	{s1}与{s2}同行，将{s3}逐出{s4}	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the joining of {s} with {s} in order to be brought to safety	{s1}与{s2}同行，以便被带到安全的地方	l
+Announcement combat rumor-event [$name,$travel-site]: A bandit gang calling itself {s} has been harassing people right here on the streets of {s}!	有伙土匪自称{s1}，就在{s2}这里的街上骚扰百姓！	l
 Announcement combat threat-killing [threat-kill-count,threat-possessive,threat-family-list]: has killed {s} in {s} lust for murder, among them {s}	{s2}嗜杀成性，已经杀害了{s1}，其中包括{s3}	l
 DFHack help: "--by-type" Only applies to the "count" action. Outputs, in addition to the total count, a table of item counts grouped by item type.	"--by-type" 仅适用于 "count" 动作。除了总计数之外，还输出按项目类型分组的项目计数表。	l
 DFHack help: "--not-marked=<flag>,<flag>,..." Only include items that have all provided flag set to false. Valid flags the same as for "--marked".	"--not-marked=<flag>,<flag>,..." 仅包含所有提供的标志设置为 false 的项目。有效标志与 "--marked" 相同。	l
@@ -3610,7 +3614,6 @@ Announcement combat agreement-title-core [agreement-party-list,agreement-party-l
 Announcement combat agreement-title-core [agreement-party-list,agreement-target,$name]: the plot of {s} to sabotage the activities of {s} at {s}	{s1}破坏{s2}在{s3}活动的阴谋	l
 Announcement combat justice-intrigue-sentence [justice-intrigue-actor,justice-intrigue-actor,justice-intrigue-method]: {s} met with {s} and {s}.	{s1}与{s2}会面，并{s3}。	l
 Announcement combat justice-intrigue-sentence [justice-intrigue-actor,justice-intrigue-response,justice-intrigue-factors]: {s} {s}, despite {s}.	尽管{s3}，{s1}仍{s2}。	l
-Announcement combat rumor-event [$name,rumor-person,$name]: A bandit gang calling itself {s}, led by {s}, has been harassing people over in {s}.	有伙土匪自称{s1}，头目是{s2}，一直在{s3}那边骚扰百姓。	l
 Conversations, like movement, take place over time. If you engage in a conversation, you'll generally wait for a reply before you can act again.	与移动一样，交谈也会消耗时间。开始交谈后，通常要等到对方回复才能再次行动。	hq
 DFHack help: "--force" Ignore normal strange mood preconditions (no recent mood, minimum moodable population, artifact limit not reached, etc.).	"--force" 忽略触发奇异心境的常规前提（近期未发生奇异心境、符合条件的矮人数量达到最低要求、尚未达到神器数量上限等）。	l
 DFHack help: "--optimize" Performs a job search for unoptimized dwarves. Run "dwarf-op --list job_distribution" to see how jobs are distributed.	"--optimize" 对未优化的矮人执行职位搜索。运行"dwarf-op --list job_distribution"来查看作业是如何分配的。	l
@@ -3773,7 +3776,6 @@ Announcement combat agreement-core [agreement-party-list,$office,$name]: {s} beg
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} aided {s} in becoming a permanent part of the living world	{s1}帮助{s2}永远留在生者的世界	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} began passing a portion of corruptly-obtained funds to {s}	{s1}开始将部分非法所得转交给{s2}	l
 Announcement combat sentence []: Maybe after you've improved. Prove you have what it takes. The life of the traveling performer is a hard one.	等你的本领长进些再说吧。先证明你能胜任，巡回艺人的日子可不好过。	l
-Announcement combat site-rumor-event [$name,$name]: refugees calling themselves {s} fled from the area just before an army descended upon {s}.	自称{s1}的难民刚逃离这一带，一支军队就袭击了{s2}。	l
 DFHack help: "--applyjobs <job>[,<job>...]" Applies the listed jobs to the selected dwarves. Run "dwarf-op --list jobs" to see available jobs.	"--applyjobs <job>[,<job>...]" 将列出的作业应用于选定的矮人。运行 "dwarf-op --list jobs" 查看可用作业。	l
 DFHack help: "--severity <severity>" If the thought is the name of a syndrome, then the severity will be used as the severity of the syndrome.	"--severity <severity>" 如果思想是综合症的名称，那么严重程度将被用作综合症的严重程度。	l
 DFHack help: "-a", "--include-artifacts" Include artifacts in the item list. Regardless of this setting, artifacts are never dumped or melted.	"-a"、"--include-artifacts" 将神器包含在项目列表中。无论如何设置，神器都不会倾倒或熔化。	l
@@ -3968,7 +3970,6 @@ Announcement combat agreement-core [agreement-party-list,agreement-party-list,$n
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,agreement-item,$name]: {s} asked that {s} retrieve {s} for {s}	{s1}请{s2}为{s4}取回{s3}	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,agreement-party-list]: {s} promised {s} to give {s} a position	{s1}答应{s2}，给{s3}安排一个职位	l
 Announcement combat justice-interrogation-sentence [justice-interrogation-response,justice-interrogation-factors]: Subject {s}, despite {s}.	尽管{s2}，受审者仍{s1}。	l
-Announcement combat site-rumor-event [$name,$name,$name]: a group calling itself {s} founded {s} after a long journey from the lands of {s}.	自称{s1}的势力从{s3}的领地长途跋涉而来，建立了{s2}。	l
 Commanded by {p}, they will have no mercy. There is little time -- you must flee. Perhaps your family and friends can be convinced to leave.	他们由{p1}统领，绝不会手下留情。时间所剩无几，你必须逃离。也许还能说服家人和朋友一起离开。	hqt
 DFHack GUI Notification settings: Warns when job postings stay unclaimed for more than a day while labormanager (or monitor mode) is active.	启用 labormanager 或其监控模式后，任务超过一个游戏日仍无人接手时发出警告。	l
 DFHack help: "--likeplant [ <token> [<token> ...] ]" As in "--likecreature" above, you can just list the tree or plant species in the token.	"--likeplant [ <token> [<token> ...] ]" 与上面的 "--likecreature" 一样，您可以只在代币中列出树木或植物种类。	l
@@ -4075,7 +4076,6 @@ A {s} caravan from {e} has arrived. Your status as a middling land has attracted
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the agreement by {s} to establish a guildhall for {s}	{s1}为{s2}建造行会大厅的协议	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the passing of corruptly-obtained funds by {s} to {s}	{s1}进行的非法所得的转交（交给{s2}）	l
 Announcement combat justice-intrigue-factors [justice-intrigue-factor,justice-intrigue-factor,justice-intrigue-factor]: {s} and {s} and {s}	{s1}，且{s2}，以及{s3}	l
-Announcement combat rumor-event [$name,$name]: A bandit gang calling itself {s} has been harassing people right here on the streets of {s}!	有伙土匪自称{s1}，就在{s2}这里的街上骚扰百姓！	l
 Click on a Resident to see their needs, inventory, thoughts, relations, and more. You can also access information from the Citizens button.	点击任意一名居民，即可查看其需求、背包物品、想法、人际关系等更多信息。你也可以通过「居民」按钮来查阅相关内容。	w
 DFHack help: "--drop" Force the unit to drop conflicting worn items onto the ground, where they can then be reclaimed in the correct order.	"--drop" 强制单位将冲突的磨损物品扔到地上，然后可以按正确的顺序回收它们。	l
 DFHack help: "all" Include dead and passive cursed creatures (this can result in quite a long list after having !!FUN!! with necromancers).	"all" 包括死亡和被动的被诅咒生物（在与死灵法师一起！！FUN!!之后，这可能会导致相当长的列表）。	l
@@ -4265,6 +4265,7 @@ A caravan from {e} has arrived. Trade relations remain strengthened by recent ne
 A caravan from {e} has arrived. Your status as a major land has attracted much more trade than usual. Overall trade sentiments are great.	来自{e1}的商队已抵达。你作为大领地的地位吸引来了比平时多得多的贸易。总体贸易意愿很高。	hPt
 A caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Overall trade sentiments are good.	来自{e1}的商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。总体贸易意愿良好。	hPt
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} made an agreement with {s} to entertain the citizenry	{s1}与{s2}达成协议，以便为居民表演	l
+Announcement combat rumor-event [rumor-time,rumor-person,$travel-site,rumor-person]: I heard that {s}, {s} was kidnapped from {s} by {s}.	听说{s1}，{s4}从{s3}绑走了{s2}。	l
 Announcement combat sentence [$person]: Not that it matters, as the seat of {s} is here, and the blood-drinker allows no chattel to rise.	不过这也没什么要紧，{s1}的统治中心就在这里，那吸血者可不会让奴隶有出头之日。	l
 DFHack GUI Sitemap: Click on a name or hit Enter to zoom to the selected target. Shift-click or Shift-Enter to zoom and follow unit/item.	点击名称或按下 Enter，定位至选中的目标。按住 Shift 点击，或按下 Shift-Enter，定位并跟随生物或物品。	l
 DFHack help: "--mode <mode>" Mode can be "add" or "set", depending on whether you want to add to the existing experience/level or set it.	"--mode <mode>" 模式可以是 "add" 或 "set"，具体取决于您是否要添加到现有的 experience/level 或设置它。	l
@@ -5076,8 +5077,8 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need ba
 Announcement combat historical-event-paragraph [$date,agreement-record,agreement-followup]: Subject revealed that in {s}, {s}. {s}	受审者交代，{s1}，{s2}。{s3}	l
 Announcement combat negotiation-response []: attempted to read their opposite's underlying motivations as well but was swept along	也试图看透对方的深层动机，却被对方牵着走	l
 Announcement combat negotiation-sentence [negotiation-speaker,negotiation-recipient,negotiation-purpose]: {s} met with {s} to {s}.	{s1}与{s2}会面，目的是{s3}。	l
+Announcement combat rumor-event [$name,$travel-site,$name]: I hear that a group calling itself {s} reclaimed {s} on behalf of {s}.	听说一个自称{s1}的势力代表{s3}收复了{s2}。	l
 Announcement combat rumor-event []: A lowly group of outcasts have perpetrated enough crimes against our community to gain notice.	一群落魄的流亡者在我们的聚落作恶，犯下的罪行已让人无法忽视。	l
-Announcement combat rumor-event [rumor-time,rumor-person,$name,rumor-person]: I heard that {s}, {s} was kidnapped from {s} by {s}.	听说{s1}，{s4}从{s3}绑走了{s2}。	l
 Certain important functions in your fortress can only be performed by assigned administrators, such as the Manager and Bookkeeper.	[C:7:0:0]要塞中的某些重要事务只能由已任命的官员执行，例如[C:5:0:0]经理[C:7:0:0]和[C:5:0:0]簿记员[C:7:0:0]。	hq
 DFHack help: "--clear" Zeroes the skills and attributes of selected dwarves. No attributes, no labors. Assigns "DRUNK" profession.	"--clear" 将所选矮人的技能和属性归零。没有属性，就没有劳动。分配"DRUNK"职业。	l
 DFHack help: "-u", "--unit <id>" Rename the unit with the given ID. Renaming a unit also renames the associated historical figure.	"-u"、"--unit <id>" 使用给定 ID 重命名单元。重命名单位也会重命名相关的历史人物。	l
@@ -5412,6 +5413,7 @@ Announcement combat agreement-core [agreement-party-list,agreement-party-list]: 
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} requested that {s} make an offer of service	{s1}要求{s2}表示愿意效力	l
 Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-origin]: your very own {s} all the way from {s}	专属于你的一路从{s2}运来的{s1}	l
 Announcement combat negotiation-sentence []: The task was made more difficult by the relative populations of the civilizations.	双方政权的人口差距让这项任务更困难了。	l
+Announcement combat site-rumor-event [site-rumor-artifact,site-rumor-building,$travel-site]: {s} was known to be in {s} in {s}.	当时已知{s1}位于{s3}的{s2}。	l
 DFHack GUI Journal tutorial: For guidance on navigation and hotkeys, tap the ? button in the upper right corner. Happy digging!	有关浏览方式和快捷键的说明，请点击右上角的 ? 按钮。祝你挖掘愉快！	l
 DFHack help: "-e", "--engrave" Record engravings in the "carve" phase. If this option is not specified, engravings are ignored.	"-e"、"--engrave" 记录 "carve" 阶段的雕刻。如果未指定此选项，则忽略雕刻。	l
 DFHack help: "aquifer add light 87,29,126 111,53,126" Create a 25x25 block of light aquifer tiles at the specified coordinates.	"aquifer add light 87,29,126 111,53,126" 在指定坐标处创建一个 25x25 的光块含水层瓷砖。	l
@@ -5656,6 +5658,7 @@ A {s} caravan from {e} has arrived. The presence of your ruler has attracted gre
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the promise by {s} to {s} of a position	{s1}答应给{s2}安排职位的承诺	l
 Announcement combat justice-interrogation-sentence [$unit]: Appealed to shared worship of {s} in order to elicit information.	以共同信奉{s1}为由规劝受审者，试图获取情报。	l
 Announcement combat justice-interrogation-sentence []: Attempted to make intimidating remarks in order to elicit information.	试图以言语恐吓受审者，以获取情报。	l
+Announcement combat rumor-event [$name,$travel-site]: A bandit gang calling itself {s} has been harassing people over in {s}.	有伙土匪自称{s1}，一直在{s2}那边骚扰百姓。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} were will be speaking to {s}.	{s1}当时将正在对{s2}说话。	l
 Continue moving in the same direction to build up speed. If you or your mount are moving quickly, your attacks gain velocity.	持续朝同一方向移动可以加速。你或坐骑高速移动时，攻击也会获得额外速度。	hq
 DFHack help: "--maxlength <value>" Limits the number of items that the script will iterate through in a list (default: 2048).	"--maxlength <value>" 限制脚本将在列表中迭代的项目数（默认值：2048）。	l
@@ -5895,9 +5898,10 @@ Announcement combat boast-slain-clause []: whose tall tales of bravery were all 
 Announcement combat justice-interrogation-sentence []: Attempted to make flattering remarks in order to elicit information.	试图以奉承的话讨好受审者，以获取情报。	l
 Announcement combat justice-interrogation-sentence []: Subject revealed that being nameless is in fact an assumed identity.	受审者交代，所谓没有姓名实际上是在掩饰身份。	l
 Announcement combat negotiation-response []: replied with a grand oration of their own but ultimately the matter was agreed	也发表了一番气势恢宏的演说作为回应，不过双方最终还是达成了一致	l
-Announcement combat rumor-event [$name,$name,$name]: I hear that a group calling itself {s} reclaimed {s} on behalf of {s}.	听说一个自称{s1}的势力代表{s3}收复了{s2}。	l
 Announcement combat rumor-event [rumor-person,rumor-owner,$name,$name]: {s} agreed to {s} offer of tribute from {s} to {s}.	{s1}同意了{s2}提议，让{s3}向{s4}进贡。	l
 Announcement combat sentence [diplomacy-group]: {s} is paying us tribute, and there is no hard feeling between our peoples.	{s1}正在向我们进贡，双方百姓也没什么芥蒂。	l
+Announcement combat site-rumor-event [$name,$travel-site,$name]: a group calling itself {s} reclaimed {s} on behalf of {s}.	自称{s1}的势力代表{s3}收复了{s2}。	l
+Announcement combat site-rumor-event [site-rumor-person,$travel-site,site-rumor-person]: {s} was kidnapped from {s} by {s}.	{s3}从{s2}绑架了{s1}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} was will be destroying {s}.	{s1}当时将正在毁灭{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} were will be appearing {s}.	{s1}当时将正在出现在{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} were will be rewarding {s}.	{s1}当时将正在奖赏{s2}。	l
@@ -6275,7 +6279,6 @@ Announcement combat memory-performance-core [memory-person,memory-performance-pa
 Announcement combat negotiation-response []: joined in the discussion of history and past griefs and agreed on the issue	一起谈起了往事与旧日伤痛，并就此达成了一致	l
 Announcement combat sentence [$kinship]: It pains me all the more, for the foul villain was once my own {s}, now cursed.	更让我痛心的是，这个恶徒曾是我的{s1}，如今已遭到诅咒。	l
 Announcement combat sentence [actor,unit,$person]: {s} miss {s} badly, blocked by the divine intervention of mighty {s}!	{s1}远远偏离了{s2}，攻击被强大的{s3}以神力阻止了！	l
-Announcement combat site-rumor-event [site-rumor-artifact,site-rumor-building,$name]: {s} was known to be in {s} in {s}.	当时已知{s1}位于{s3}的{s2}。	l
 Announcement combat site-rumor-event [site-rumor-person,$name,site-rumor-predecessor]: {s} became of {s}, replacing {s}.	{s1}取代{s3}，在{s2}任职了。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} was will be burning {s}.	{s1}当时将正在焚烧{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} will be speaking to {s}.	{s1}将正在对{s2}说话。	l
@@ -6513,7 +6516,6 @@ A large ape which lives in the tropical forests. It is quite intelligent and liv
 A large bird with a featherless red head found in the sky of tropical deserts, scanning the ground for dead carcasses.	在热带沙漠的天空中可以发现的一种红色头部没有长着羽毛的大鸟，正在搜寻地面上的尸体。	lP
 A snake-like creature living deep underground. Its head is covered in armor so that is resembles the head of a dragon.	一种生活在地底深处的蛇形生物。 它的头部被盔甲覆盖，就像龙头一样	lP
 Announcement combat inscription [$person,$person]: I am {s}, {s}, once of the Underworld. I bind myself to this place.	我是{s1}，又名{s2}，曾来自地下世界。我将自身束缚于此地。	l
-Announcement combat rumor-event [$name,$name]: A bandit gang calling itself {s} has been harassing people over in {s}.	有伙土匪自称{s1}，一直在{s2}那边骚扰百姓。	l
 Announcement combat sentence [$name,dialogue-family,$unit]: I'm going to {s} to move into my new home with my {s} {s}.	我正前往{s1}，与我的{s2}{s3}搬入我们的新家。	l
 Announcement combat sentence [diplomacy-group]: {s} is paying us tribute, and there is friendship between our peoples.	{s1}正在向我们进贡，双方百姓也相处和睦。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} will be appearing {s}.	{s1}将正在出现在{s2}。	l
@@ -6640,6 +6642,9 @@ Announcement combat boast-slain-clause []: who should have stayed in the trees w
 Announcement combat justice-intrigue-motive [justice-intrigue-place]: have someone to act on plots and schemes in {s}	让对方在{s1}为自己的阴谋效力	l
 Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-origin]: try {s} all the way from {s}	来试试一路从{s2}运来的{s1}	l
 Announcement combat rumor-event []: Something truly horrifying has vomited itself forth from the depths of the world.	有个骇人至极的东西从世界深处喷涌而出。	l
+Announcement combat rumor-event [rumor-person,$travel-site]: I hear that there is an insurrection against {s} in {s}.	听说{s2}发生了反抗{s1}的叛乱。	l
+Announcement combat rumor-event [rumor-time,rumor-person,$travel-site]: I heard that {s}, {s} was kidnapped from {s}.	听说{s1}，{s2}在{s3}被人绑走了。	l
+Announcement combat rumor-flight [$travel-site,rumor-army]: from {s} just before an army {s} descended upon the place	了{s1}，随后一支军队{s2}便袭击了那里	l
 Announcement combat sentence [diplomacy-group]: {s} accepts our tribute, and there is friendship between our peoples.	{s1}接受我们的贡品，双方百姓也相处和睦。	l
 Announcement combat sentence [diplomacy-group]: {s} is not at war with us, but there is ill-will between our peoples.	{s1}没有与我们交战，可双方百姓却互有敌意。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} were speaking to {s}.	{s1}当时正在对{s2}说话。	l
@@ -6750,12 +6755,11 @@ Announcement combat justice-intrigue-predicate [justice-intrigue-actor,justice-i
 Announcement combat memory-possession-core [memory-person,memory-transfer-object,memory-person]: {s} gave {s} to {s}	{s1}把{s2}给了{s3}	l
 Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-origin]: get your {s} clear from {s}	快来买你的远从{s2}运来的{s1}	l
 Announcement combat negotiation-response []: made several jokes but came to see the seriousness of the issue at hand	讲了几个笑话，但随后意识到了当前问题的严重性	l
+Announcement combat rumor-event [$name,$travel-site]: I hear that a group from {s} left to reclaim the ruins of {s}.	听说一群来自{s1}的人出发去重建{s2}的废墟了。	l
 Announcement combat sentence [dialogue-object]: Fortune has favored you, and {s} is yours. Please consider my offer.	你走运了，{s1}归你了。请考虑我的提议。	l
 Announcement combat sentence [diplomacy-group]: {s} is paying us tribute, but there is ill-will between our peoples.	{s1}正在向我们进贡，可双方百姓却互有敌意。	l
 Announcement combat sentence [unit,$book]: {s} was spotted sneaking around! "You will not stand between me and {s}!"	发现{s1}在附近鬼鬼祟祟地活动！“你休想阻止我夺取{s2}！”	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} struggles in vain against the grip of {s} on {s}.	{s1}试图挣脱{s2}对{s3}的抓握，却徒劳无功。	l
-Announcement combat site-rumor-event [$name,$name,$name]: a group calling itself {s} reclaimed {s} on behalf of {s}.	自称{s1}的势力代表{s3}收复了{s2}。	l
-Announcement combat site-rumor-event [site-rumor-person,$name,site-rumor-person]: {s} was kidnapped from {s} by {s}.	{s3}从{s2}绑架了{s1}。	l
 Announcement combat threat-killing [threat-kill-count,threat-possessive]: has even killed {s} in {s} lust for murder	{s2}嗜杀成性，甚至杀害了{s1}	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} are speaking to {s}.	{s1}正在对{s2}说话。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} was speaking to {s}.	{s1}当时正在对{s2}说话。	l
@@ -7311,8 +7315,10 @@ Announcement combat justice-interrogation-sentence []: Unfortunately, no new per
 Announcement combat negotiation-sentence []: The enemy losses during invasions made the task seem more possible.	敌军在入侵中蒙受的损失让这项任务显得更有希望完成。	l
 Announcement combat negotiation-sentence []: The great number of lost invaders made the task seem more possible.	侵略军的大量伤亡让这项任务显得更有希望完成。	l
 Announcement combat negotiation-sentence []: The sheer number of lost invaders made the task seem more possible.	侵略军死伤之惨重让这项任务显得更有希望完成。	l
+Announcement combat rumor-event [$travel-site,$name]: We founded {s} after a long journey from the lands of {s}.	我们从{s2}的领地长途跋涉而来，建立了{s1}。	l
 Announcement combat rumor-event []: Body corrupted beyond reckoning, she assumes a beastly form to terrorize us.	她的身体已经彻底腐化，还会变成野兽来吓唬我们。	l
 Announcement combat sentence []: This place is insulated from the rest of the world, at least in terms of trade.	这里与外界没有往来，至少做买卖是如此。	l
+Announcement combat site-rumor-event [site-rumor-person,$travel-site,$name]: {s} claimed {s} in the name of {s}.	{s1}以{s3}的名义取得了{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} am flooding {s}.	{s1}正在淹没{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} are burning {s}.	{s1}正在焚烧{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} is flooding {s}.	{s1}正在淹没{s2}。	l
@@ -7458,6 +7464,7 @@ Announcement combat negotiation-sentence []: The high number of lost invaders ma
 Announcement combat rumor-event []: A vile monster from the bowels of the earth has been preying on our people.	有只恶兽来自大地深处，一直在猎杀我们的族人。	l
 Announcement combat rumor-event []: Body corrupted beyond reckoning, he assumes a beastly form to terrorize us.	他的身体已经彻底腐化，还会变成野兽来吓唬我们。	l
 Announcement combat rumor-event []: Body corrupted beyond reckoning, it assumes a beastly form to terrorize us.	它的身体已经彻底腐化，还会变成野兽来吓唬我们。	l
+Announcement combat rumor-event [rumor-person,$travel-site]: I hear that {s} waited out an insurrection in {s}.	听说{s1}在{s2}按兵不动，一直等到叛乱平息。	l
 Announcement combat sentence [$name]: The village {s} is the only other settlement to utilize the market there.	只有{s1}这座村庄也去那里赶集。	l
 Announcement combat threat-killing [threat-kill-count,threat-possessive]: has killed {s} in {s} lust for murder	{s2}嗜杀成性，已经杀害了{s1}	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} am burning {s}.	{s1}正在焚烧{s2}。	l
@@ -7598,9 +7605,6 @@ Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-
 Announcement combat merchant-hawk-origin [merchant-hawk-item,merchant-advert-origin]: {s} all the way from {s}	一路从{s2}运来的{s1}	l
 Announcement combat negotiation-response []: made a persuasive argument of their own but was ultimately swayed	也提出了有说服力的论点，但最终被说动了	l
 Announcement combat rumor-event []: A night creature has infiltrated our communities and now makes prey of us.	有只夜行生物混进了我们的聚落，如今把我们当成了猎物。	l
-Announcement combat rumor-event [rumor-person,$name]: I hear that there is an insurrection against {s} in {s}.	听说{s2}发生了反抗{s1}的叛乱。	l
-Announcement combat rumor-event [rumor-time,rumor-person,$name]: I heard that {s}, {s} was kidnapped from {s}.	听说{s1}，{s2}在{s3}被人绑走了。	l
-Announcement combat rumor-flight [$name,rumor-army]: from {s} just before an army {s} descended upon the place	了{s1}，随后一支军队{s2}便袭击了那里	l
 Announcement combat sentence [$name]: The village {s} is the only other settlement to utilize the market here.	只有{s1}这座村庄也来这里赶集。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} are unable to break the grip of {s} on {s}!	{s1}无法挣脱{s2}对{s3}的抓握！	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} appearing {s}.	{s1}正在出现在{s2}。	l
@@ -7738,7 +7742,6 @@ Announcement combat negotiation-response []: flattered their opposite in turn bu
 Announcement combat negotiation-response []: joined the conversation and skillfully shut down the proceedings	加入了闲谈，并巧妙地终止了会谈	l
 Announcement combat negotiation-response []: made light conversation and skillfully shut down the proceedings	轻松地闲谈，并巧妙地终止了会谈	l
 Announcement combat negotiation-response []: replied with a fiery speech but ultimately the matter was agreed	发表了慷慨激昂的演说作为回应，不过双方最终还是达成了一致	l
-Announcement combat rumor-event [$name,$name]: I hear that a group from {s} left to reclaim the ruins of {s}.	听说一群来自{s1}的人出发去重建{s2}的废墟了。	l
 Announcement combat rumor-event []: Mastering the forces of nature would glorify us in the eyes of the world.	要是能驾驭自然之力，世人都会敬重我们。	l
 Announcement combat sentence [diplomacy-group]: {s} is our ally, and there is friendship between our peoples.	{s1}是我们的盟友，双方百姓也相处和睦。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} is unable to break the grip of {s} on {s}!	{s1}无法挣脱{s2}对{s3}的抓握！	l
@@ -7897,6 +7900,8 @@ Announcement combat justice-interrogation-sentence []: Attempted to appeal to su
 Announcement combat negotiation-response []: joined the conversation and over time came around on the matter	加入了闲谈，并渐渐改变了对此事的看法	l
 Announcement combat negotiation-response []: made light conversation and over time came around on the matter	轻松地闲谈，并渐渐改变了对此事的看法	l
 Announcement combat rumor-event []: A small but organized military order have been causing us much hardship.	一个军事修会人数不多，却组织严密，害得我们吃尽苦头。	l
+Announcement combat rumor-event [rumor-person,$travel-site]: I hear that {s} crushed an insurrection in {s}.	听说{s1}镇压了{s2}的叛乱。	l
+Announcement combat rumor-event [rumor-person,$travel-site]: I hear that {s} lost {s} after an insurrection.	听说{s1}在一场叛乱后失去了{s2}。	l
 Announcement combat sentence [$kinship]: It pains me all the more, for the foul villain was once my own {s}.	更让我痛心的是，这个恶徒曾是我的{s1}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} appears {s}.	{s1}出现在{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} burning {s}.	{s1}正在焚烧{s2}。	l
@@ -8028,6 +8033,7 @@ Announcement combat justice-intrigue-factors [justice-intrigue-factor,justice-in
 Announcement combat rumor-event [$name,rumor-flight]: I hear that refugees calling themselves {s} fled {s}.	听说有群难民自称{s1}，逃离{s2}。	l
 Announcement combat rumor-event []: A terror most foul from the evil depths nigh the underworld plagues us.	有个极其凶恶的东西在祸害我们，它来自靠近地下世界的邪恶深渊。	l
 Announcement combat sentence [diplomacy-group]: {s} is our ally, but there is ill-will between our peoples.	{s1}是我们的盟友，可双方百姓却互有敌意。	l
+Announcement combat site-rumor-event [$name,$travel-site]: {s} was overthrown after an insurrection in {s}.	{s1}在{s2}的一场叛乱后被推翻了。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} appear {s}.	{s1}出现在{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} burned {s}.	{s1}曾焚烧{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} floods {s}.	{s1}淹没{s2}。	l
@@ -8320,13 +8326,12 @@ Announcement combat memory-performance-core [memory-person,memory-story]: I saw 
 Announcement combat memory-sentence [memory-relation,memory-person]: I got into an argument with {s} {s}.	跟{s1}{s2}吵了一架。	l
 Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-origin]: try {s} from {s}	来试试来自{s2}的{s1}	l
 Announcement combat negotiation-recipient [$unit,$office,$name,$name]: {s}, {s} of {s}, representing {s},	代表{s4}的{s3}{s2}{s1}	l
-Announcement combat rumor-event [$name,$name]: We founded {s} after a long journey from the lands of {s}.	我们从{s2}的领地长途跋涉而来，建立了{s1}。	l
+Announcement combat rumor-event [$name,$travel-site]: I hear that {s} gave up on their occupation of {s}.	听说{s1}放弃了对{s2}的占领。	l
 Announcement combat rumor-event []: A sprawling criminal organization has left our people living in fear.	一个庞大的犯罪组织闹得我们的族人惶惶不可终日。	l
 Announcement combat rumor-event []: We are besieged by a terrifying monster from the harshest wilderness.	一只来自最险恶荒野的可怕怪物正在围攻我们。	l
 Announcement combat sentence [$person]: [{s} looks around nervously and leans forward, speaking quietly.]	【{s1}紧张地四下张望，探过身来压低了声音。】	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} releases the choke hold of {s} on {s}.	{s1}解除了{s2}对{s3}的勒颈控制。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} releases the joint lock of {s} on {s}.	{s1}解除了{s2}对{s3}的关节锁技。	l
-Announcement combat site-rumor-event [site-rumor-person,$name,$name]: {s} claimed {s} in the name of {s}.	{s1}以{s3}的名义取得了{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-emotion]: {s} are {s}.	{s1}{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-emotion]: {s} was {s}.	{s1}曾{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} burn {s}.	{s1}焚烧{s2}。	l
@@ -8472,7 +8477,6 @@ Announcement combat memory-performance-core [memory-person,memory-sermon-topic]:
 Announcement combat memory-sentence [$name]: The agreement to establish a guildhall for {s} was ignored.	说好为{s1}建公会大厅，却没人管了。	l
 Announcement combat merchant-hawk-origin [merchant-hawk-item,merchant-advert-origin]: {s} clear from {s}	远从{s2}运来的{s1}	l
 Announcement combat negotiation-sentence []: The proposal was wildly successful beyond any expectations.	这项提案获得了远超所有人预期的巨大成功。	l
-Announcement combat rumor-event [rumor-person,$name]: I hear that {s} waited out an insurrection in {s}.	听说{s1}在{s2}按兵不动，一直等到叛乱平息。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} loosens the choke hold of {s} on {s}.	{s1}松开了{s2}对{s3}的勒颈控制。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} loosens the joint lock of {s} on {s}.	{s1}松开了{s2}对{s3}的关节锁技。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} release the choke hold of {s} on {s}.	{s1}解除了{s2}对{s3}的勒颈控制。	l
@@ -8610,10 +8614,12 @@ Announcement combat memory-reunion [memory-reunion-core,memory-person]: {s} and 
 Announcement combat memory-sentence [$name]: The agreement to establish a temple for {s} was abandoned.	说好为{s1}建神殿，后来却没建。	l
 Announcement combat negotiation-response []: showed empathy with their opposite and agreed on the issue	体谅了对方的处境，并就此达成了一致	l
 Announcement combat negotiation-sentence [negotiation-speaker,negotiation-recipient]: {s} met with {s}.	{s1}与{s2}会面了。	l
+Announcement combat rumor-event [$travel-site,rumor-person]: I hear that {s} has been conquered by {s}.	听说{s1}已经被{s2}征服了。	l
 Announcement combat sentence []: I would give anything to be away from here. I can't stand the boredom!	只要能离开这里，什么代价我都愿意付。我实在受不了这么无聊的日子了！	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} loosen the choke hold of {s} on {s}.	{s1}松开了{s2}对{s3}的勒颈控制。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} loosen the joint lock of {s} on {s}.	{s1}松开了{s2}对{s3}的关节锁技。	l
 Announcement combat sentence [unit]: {s} was spotted sneaking around! "I'll live to fight another day!"	发现{s1}在附近鬼鬼祟祟地活动！“我会活下来，改日再战！”	l
+Announcement combat site-rumor-event [site-rumor-artifact,$travel-site]: {s} was known to be in in {s}.	当时已知{s1}位于{s2}的一座建筑里。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} am {s}.	{s1}……{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} is {s}.	{s1}……{s2}。	l
 Certain livestock need to graze on grass. Assign these animals to a pasture zone. No fencing is needed.	某些牲畜需要吃草。可划定畜栏／牧场，将这些动物分配到有草的区域，无需建造围栏。	hj
@@ -8764,8 +8770,11 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Experie
 Announcement combat fortress-announcement [$unit]: {s} has mandated the construction of certain goods.	{s1}下令制作某些物品。	l
 Announcement combat justice-intrigue-response [justice-intrigue-actor]: accepted out of loyalty to {s}	出于对{s1}的忠诚而接受了	l
 Announcement combat negotiation-response []: negotiated with discernment in turn but was outmaneuvered	也审时度势地谈判，却被对方胜过一筹	l
+Announcement combat rumor-event [rumor-person,$travel-site,$name]: {s} claimed {s} in the name of {s}.	{s1}以{s3}的名义取得了{s2}。	l
+Announcement combat rumor-flight [$travel-site]: from {s} just before an army descended upon the place	了{s1}，随后一支军队便袭击了那里	l
 Announcement combat sentence [$kinship]: It pains me all the more, for the foul villain is my own {s}.	更让我痛心的是，这个恶徒竟是我的{s1}。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} places a chokehold on {s} with {s}!	{s1}用{s3}勒住了{s2}！	l
+Announcement combat site-rumor-event [site-rumor-person,$travel-site]: the army of {s} marched on {s}.	{s1}的军队向{s2}进军了。	l
 DFHack GUI Quickfort: Build mode blueprints will use DFHack building planner material filter settings.	建造类蓝图会采用 DFHack 建造规划器的材料筛选设置。	l
 DFHack help: "-m", "--method <method>" Specifies the "method" of killing units. See below for details.	"-m"、"--method <method>" 指定杀伤单位的"method"。详情请参阅下文。	l
 DFHack help: "adaptation set --all 0" Clear the cave adaptation levels for all citizens and residents.	"adaptation set --all 0" 清除所有居民和居民的洞穴适应级别。	l
@@ -8939,12 +8948,11 @@ Announcement combat memory-sentence [memory-person,memory-person]: {s} escalated
 Announcement combat negotiation-response []: made several jokes of their own and dismissed the matter	也讲了几个笑话，便把正事抛在一边	l
 Announcement combat rumor-event [$name]: I hear that a group from {s} left to found a new settlement.	听说一群来自{s1}的人出发去建立新的定居点了。	l
 Announcement combat rumor-event []: An organized military order have brought terror to our doorsteps.	一个组织严密的军事修会欺上门来，闹得人心惶惶。	l
-Announcement combat rumor-event [rumor-person,$name]: I hear that {s} crushed an insurrection in {s}.	听说{s1}镇压了{s2}的叛乱。	l
-Announcement combat rumor-event [rumor-person,$name]: I hear that {s} lost {s} after an insurrection.	听说{s1}在一场叛乱后失去了{s2}。	l
 Announcement combat sentence [$number,$creature,$name]: I have taken down {s} {s} while stalking {s}.	我在{s3}潜行猎杀过{s1}只{s2}。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} place a chokehold on {s} with {s}!	{s1}用{s3}勒住了{s2}！	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} releases the grip of {s} from {s}.	{s1}解除了{s2}对{s3}的抓握。	l
 Announcement combat sentence [unit,unit,object,owned-object]: {s} takes {s} down by the {s} with {s}!	{s1}用{s4}抓住{s2}的{s3}将其摔倒了！	l
+Announcement combat site-rumor-event [$travel-site,site-rumor-person]: was kidnapped from {s} by {s}.	{s2}从{s1}绑架了一个人。	l
 Announcement combat site-rumor-event [site-rumor-person,site-rumor-person]: {s} was kidnapped by {s}.	{s1}被{s2}绑架了。	l
 Announcement combat work-sentence [work-reference]: The writing conveys a moral lesson regarding {s}.	文章阐述了有关{s1}的为人处世之道。	l
 But my chosen, you are in need of drink and sustenance! See to yourself before you face what's ahead.	但是，我的天选者，你需要饮水和食物！面对前方的挑战之前，先照顾好自己。	hq
@@ -9105,7 +9113,8 @@ Announcement combat sentence []: It is I that would lead you, but I have no need
 Announcement combat sentence [threat-material]: Beware! It it said that only {s} harms the creature.	当心！据说只有{s1}能伤到这只生物。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} release the grip of {s} from {s}.	{s1}解除了{s2}对{s3}的抓握。	l
 Announcement combat sentence [unit,unit,object,owned-object]: {s} take {s} down by the {s} with {s}!	{s1}用{s4}抓住{s2}的{s3}将其摔倒了！	l
-Announcement combat site-rumor-event [$name,$name]: {s} was overthrown after an insurrection in {s}.	{s1}在{s2}的一场叛乱后被推翻了。	l
+Announcement combat site-rumor-event [$name,$travel-site]: an insurrection against {s} began in {s}.	{s2}发生了反抗{s1}的叛乱。	l
+Announcement combat site-rumor-event [site-rumor-artifact,$travel-site]: {s} was known to be in {s}.	当时已知{s1}位于{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} {s}.	{s1}……{s2}。	l
 Assign a burrow defense order. The soldiers will patrol the burrow and attack any hostile creatures.	下达活动区防卫命令。士兵会在活动区内巡逻并攻击敌对生物。	hj
 Assign a training order. The squad must be assigned to a barracks zone with the training option set.	下达训练命令。小队必须已被分配到开启训练用途的兵营区域。	hj
@@ -9476,13 +9485,14 @@ Announcement combat memory-sentence [memory-room]: Somebody has better {s} arran
 Announcement combat merchant-hawk-origin [merchant-hawk-item,merchant-advert-origin]: {s} from {s}	来自{s2}的{s1}	l
 Announcement combat negotiation-response []: negotiated persuasively in turn but was outmaneuvered	也凭说服力谈判，却被对方胜过一筹	l
 Announcement combat negotiation-response []: negotiated with empathy in turn but was outmaneuvered	也体谅对方的处境，展开谈判，却被对方胜过一筹	l
-Announcement combat rumor-event [$name,$name]: I hear that {s} gave up on their occupation of {s}.	听说{s1}放弃了对{s2}的占领。	l
 Announcement combat rumor-event []: A ferocious unnatural beast has become the bane of our people.	一头凶猛的异兽成了我们族人的大患。	l
 Announcement combat sentence [$sphere]: There is also the natural issue of their oneness with {s}.	他们与{s1}融为一体，这当然也是个问题。	l
 Announcement combat sentence [boast-victim,boast-slain-clause]: I am the extinguisher of {s}, {s}!	终结{s1}生命的正是我，{s2}！	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} adjusts the grip of {s} on {s}.	{s1}调整了{s2}对{s3}的抓握。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} break the grip of {s} from {s}!	{s1}挣脱了{s2}对{s3}的抓握！	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} release the grip of {s} on {s}.	{s1}解除了{s2}对{s3}的抓握。	l
+Announcement combat site-rumor-event [$name,$travel-site]: {s} gave up on their occupation of {s}.	{s1}放弃了对{s2}的占领。	l
+Announcement combat site-rumor-event [site-rumor-person,$travel-site]: {s} was kidnapped from {s}.	{s1}在{s2}被绑架了。	l
 Announcement combat travel-role-main [travel-squad-role,$travel-site]: You are a {s} based in {s}.	你是一名{s1}，驻地在{s2}。	l
 As the guild grows in power they may demand a Guildhall of greater value. This can be increased by	[C:7:0:0]随着行会势力增长，他们可能要求提高[C:1:0:1]行会大厅[C:7:0:0]的价值。你可以通过	hq
 DFHack GUI Journal tutorial: Welcome to gui/journal, the adventurer's notebook for Dwarf Fortress!	欢迎使用 gui/journal，这里是《矮人要塞》的冒险笔记！	l
@@ -9673,6 +9683,7 @@ Announcement combat sentence []: Surely any place is better than this. Let's set
 Announcement combat sentence [unit,owned-object,owned-object]: {s} adjust the grip of {s} on {s}.	{s1}调整了{s2}对{s3}的抓握。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} breaks the grip of {s} on {s}.	{s1}挣脱了{s2}对{s3}的抓握。	l
 Announcement combat sentence [unit,unit,object,owned-object]: {s} throws {s} by the {s} with {s}!	{s1}用{s4}抓住{s2}的{s3}将其抛了出去！	l
+Announcement combat site-rumor-event [$name,$travel-site]: {s} waited out an insurrection in {s}.	{s1}在{s2}按兵不动，一直等到叛乱平息。	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} were will be speaking to .	{s1}当时将正在说话。	l
 By now you should have a room underground where your residents can hide from the creatures above.	现在，你应该已有一间地下房间，可供居民躲避地表的生物。	hq
 Can volcanism be placed at the value 100 enough times to provide space for each of your volcanos?	火山活动度为 100 的方格是否足以容纳所有火山？	l
@@ -9863,19 +9874,18 @@ Announcement combat negotiation-response []: negotiated forcefully in turn but w
 Announcement combat negotiation-response []: negotiated persuasively in turn and had the mastery	也凭说服力谈判，并占据了上风	l
 Announcement combat negotiation-response []: negotiated with empathy in turn and had the mastery	也体谅对方的处境，展开谈判，并占据了上风	l
 Announcement combat negotiation-response []: negotiated with humor in turn but was outmaneuvered	也以幽默的方式谈判，却被对方胜过一筹	l
-Announcement combat rumor-event [$name,rumor-person]: I hear that {s} has been conquered by {s}.	听说{s1}已经被{s2}征服了。	l
 Announcement combat rumor-event [$name]: I hear that a group from {s} left to reclaim the ruins.	听说一群来自{s1}的人出发去重建废墟了。	l
 Announcement combat rumor-event [$term,$name]: They have a {s} called {s} somewhere around here.	他们在这附近的某处有一座名为{s2}的{s1}。	l
 Announcement combat rumor-event []: A highly-organized military order is threatening our people.	一个组织严密的军事修会正威胁着我们的人民。	l
 Announcement combat rumor-event []: A savage beast from the thick of the wilds hunts us at will.	一头来自荒野深处的凶猛野兽正在肆意猎杀我们。	l
 Announcement combat rumor-event []: At the end of the world dwell the fiercest beasts of legend.	世界尽头栖息着传说中最凶猛的野兽。	l
+Announcement combat rumor-event [rumor-person,$travel-site]: The army of {s} is marching on {s}!	{s1}的军队正向{s2}进军！	l
 Announcement combat sentence [$person]: Not that it matters, as {s} abides here in magnificence.	不过这也没什么要紧，{s1}正住在这里享尽荣华呢。	l
 Announcement combat sentence [$sphere]: There is also the natural issue of their worship of {s}.	他们崇拜{s1}，这当然也是个问题。	l
 Announcement combat sentence []: You have discovered an unusual volcanic wall studded with gems.	你发现了一面嵌满宝石的奇异火山岩壁。	l
 Announcement combat sentence [boast-victim,boast-slain-clause]: I am the vanquisher of {s}, {s}!	战胜{s1}的正是我，{s2}！	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} break the grip of {s} on {s}.	{s1}挣脱了{s2}对{s3}的抓握。	l
 Announcement combat sentence [unit,unit,object,owned-object]: {s} throw {s} by the {s} with {s}!	{s1}用{s4}抓住{s2}的{s3}将其抛了出去！	l
-Announcement combat site-rumor-event [site-rumor-artifact,$name]: {s} was known to be in in {s}.	当时已知{s1}位于{s2}的一座建筑里。	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} was will be speaking to .	{s1}当时将正在说话。	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} were will be destroying .	{s1}当时将正在毁灭。	l
 Archery targets, siege weapons, and some ornamental display items can be found in this category.	此类别包含射箭靶、攻城武器和一些装饰展示物品。	hj
@@ -10094,14 +10104,11 @@ Announcement combat negotiation-response []: negotiated deceptively in turn and 
 Announcement combat rumor-event [$term,$name]: There are foul goings-on over at the {s} of {s}.	{s2}的{s1}那里有人在干见不得人的勾当。	l
 Announcement combat rumor-event []: It is time to send our cursed enemy back to the underworld.	该把那个该死的敌人送回地下世界了。	l
 Announcement combat rumor-event [rumor-identity]: Seek this place if you wish to confront {s} .	想对付{s1}，就去找这个地方。	l
-Announcement combat rumor-event [rumor-person,$name,$name]: {s} claimed {s} in the name of {s}.	{s1}以{s3}的名义取得了{s2}。	l
 Announcement combat rumor-event [rumor-time,rumor-person]: I heard that {s}, {s} was kidnapped.	听说{s1}，{s2}被人绑走了。	l
-Announcement combat rumor-flight [$name]: from {s} just before an army descended upon the place	了{s1}，随后一支军队便袭击了那里	l
 Announcement combat rumor-flight [rumor-army]: just before an army {s} descended upon the place	了那里，随后一支军队{s1}便袭击了那里	l
 Announcement combat sentence [$person,threat-possessive]: [{s} pauses to regain {s} composure.]	【{s1}稍作停顿，{s2}正努力恢复镇定。】	l
 Announcement combat sentence [boast-victim,boast-slain-clause]: I am the conqueror of {s}, {s}!	我就是{s1}的征服者，{s2}！	l
 Announcement combat sentence [boast-victim,boast-slain-clause]: I am the strangler of {s}, {s}!	绞杀{s1}的正是我，{s2}！	l
-Announcement combat site-rumor-event [site-rumor-person,$name]: the army of {s} marched on {s}.	{s1}的军队向{s2}进军了。	l
 Announcement combat travel-beast-main [travel-actor,$travel-site]: {s} is rumored to be in {s}.	据说{s1}在{s2}。	l
 Announcement combat visitor-statement [visitor-statement-object]: were will be speaking to {s}.	当时将正在对{s1}说话。	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} was will be destroying .	{s1}当时将正在毁灭。	l
@@ -10338,7 +10345,7 @@ Announcement combat sentence [$creature]: ... and the {s} saw the sun and vomite
 Announcement combat sentence [boast-victim,boast-slain-clause]: I am the murderer of {s}, {s}!	谋杀{s1}的正是我，{s2}！	l
 Announcement combat sentence [head]: {s} and it is mostly cut away from the rest of the torso!	{s1}，它与躯干其余部分的连接大多被切断了！	l
 Announcement combat sentence [memory-person,memory-person]: {s} escalated a conflict with {s}.	{s1}升级了与{s2}的冲突。	l
-Announcement combat site-rumor-event [$name,site-rumor-person]: was kidnapped from {s} by {s}.	{s2}从{s1}绑架了一个人。	l
+Announcement combat site-rumor-event [$name,$travel-site]: {s} crushed an insurrection in {s}.	{s1}镇压了{s2}的一场叛乱。	l
 Announcement combat travel-drive-main [$travel-site]: You have been ordered to drive from {s}.	你奉命将未具名势力赶出{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: was will be speaking to {s}.	当时将正在对{s1}说话。	l
 Announcement combat visitor-statement [visitor-statement-object]: were will be destroying {s}.	当时将正在毁灭{s1}。	l
@@ -10523,6 +10530,7 @@ Announcement combat justice-intrigue-response [justice-intrigue-actor]: hated {s
 Announcement combat memory-performance-core [memory-person,memory-poem]: I saw {s} recite {s}	我听{s1}朗诵了{s2}	l
 Announcement combat memory-sentence [memory-person,$name]: {s} refused to give a name to {s}.	{s1}不肯向{s2}透露自己的名字。	l
 Announcement combat negotiation-response []: negotiated lightly in turn but was outmaneuvered	也轻松地谈判，却被对方胜过一筹	l
+Announcement combat rumor-event [$book,$name,$travel-site]: I hear that {s} is in {s} in {s}.	听说{s1}在{s2}的{s3}里。	l
 Announcement combat rumor-event []: Not far from here, a fearsome creature has made its home.	离这里不远，盘踞着一只可怕的生物。	l
 Announcement combat sentence [$number]: There are {s} villages which utilize the market here.	有{s1}座村庄来这里赶集。	l
 Announcement combat sentence []: I will agree to guide you if you lead me to glory and death.	只要能带我赢得荣耀、迎接死亡，我就为你带路。	l
@@ -10530,8 +10538,6 @@ Announcement combat sentence [boast-victim,boast-slain-clause]: I am the crusher
 Announcement combat sentence [boast-victim,boast-slain-clause]: I am the nemesis of {s}, {s}!	我就是{s1}的宿敌，{s2}！	l
 Announcement combat sentence [memory-person,memory-person]: {s} demanded submission from {s}.	{s1}要求{s2}臣服。	l
 Announcement combat sentence [object,owner]: The {s} is ripped away and remains in {s} mouth!	{s1}被撕了下来，仍留在{s2}口中！	l
-Announcement combat site-rumor-event [$name,$name]: an insurrection against {s} began in {s}.	{s2}发生了反抗{s1}的叛乱。	l
-Announcement combat site-rumor-event [site-rumor-artifact,$name]: {s} was known to be in {s}.	当时已知{s1}位于{s2}。	l
 Announcement combat site-rumor-event [site-rumor-person,site-rumor-position]: {s} became {s}.	{s1}成为了{s2}。	l
 Announcement combat threat-family-list [threat-family-group,threat-family-group]: {s} and {s}	{s1}和{s2}	l
 Announcement combat visitor-statement [visitor-statement-object]: was will be destroying {s}.	当时将正在毁灭{s1}。	l
@@ -11036,8 +11042,6 @@ Announcement combat sentence [boast-victim,boast-slain-clause]: I am the death o
 Announcement combat sentence [description-institution,$name]: There is {s} there named {s}.	那里有一座名为{s2}的{s1}。	l
 Announcement combat sentence [dialogue-family,$person,biography-office]: My {s} {s} is {s}.	我的{s1}{s2}担任{s3}。	l
 Announcement combat sentence [unit,object,unit]: {s} lets the {s} drop away as {s} attacks.	{s1}在{s3}攻击时放开了{s2}。	l
-Announcement combat site-rumor-event [$name,$name]: {s} gave up on their occupation of {s}.	{s1}放弃了对{s2}的占领。	l
-Announcement combat site-rumor-event [site-rumor-person,$name]: {s} was kidnapped from {s}.	{s1}在{s2}被绑架了。	l
 Announcement combat site-rumor-predecessor [dialogue-family,site-rumor-person]: her {s} {s}	她的{s1}{s2}	l
 Announcement combat site-rumor-predecessor [dialogue-family,site-rumor-person]: his {s} {s}	他的{s1}{s2}	l
 Announcement combat site-rumor-predecessor [dialogue-family,site-rumor-person]: its {s} {s}	它的{s1}{s2}	l
@@ -11304,7 +11308,7 @@ Announcement combat sentence [shot,shot-result,equipment]: {s} but the shot is {
 Announcement combat sentence [unit,actor,equipment]: {s} bats {s} out of the air with {s}!	{s1}用{s3}将{s2}从空中击落了！	l
 Announcement combat sentence [unit,object,unit]: {s} let the {s} drop away as {s} attacks.	{s1}在{s3}攻击时放开了{s2}。	l
 Announcement combat sentence [unit,object,unit]: {s} lets the {s} drop away as {s} attack.	{s1}在{s3}攻击时放开了{s2}。	l
-Announcement combat site-rumor-event [$name,$name]: {s} waited out an insurrection in {s}.	{s1}在{s2}按兵不动，一直等到叛乱平息。	l
+Announcement combat site-rumor-event [$name,$travel-site]: the army of {s} marched on {s}.	{s1}的军队向{s2}进军了。	l
 Announcement combat visitor-statement [visitor-statement-object]: was will be burning {s}.	当时将正在焚烧{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: will be speaking to {s}.	将正在对{s1}说话。	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} will be appearing .	{s1}将正在出现。	l
@@ -11522,9 +11526,9 @@ Announcement combat negotiation-response []: negotiated deceptively but was outm
 Announcement combat negotiation-response []: negotiated with flattery and had the mastery	用奉承话谈判，并占据了上风	l
 Announcement combat negotiation-response []: read their opposite's underlying motivations	看透了对方的深层动机	l
 Announcement combat rumor-event [$book,$name,$name]: I hear that {s} is not in {s}'s {s}.	听说{s1}不在{s2}的{s3}里。	l
+Announcement combat rumor-event [$name,$travel-site]: The army of {s} is marching on {s}!	{s1}的军队正向{s2}进军！	l
 Announcement combat rumor-event []: A beast from the wilds has been harassing our people.	有头野兽从荒野而来，一直侵扰我们的族人。	l
 Announcement combat rumor-event []: A ferocious wild animal has been set on us by nature.	大自然派来一头凶猛的野兽袭击我们。	l
-Announcement combat rumor-event [rumor-person,$name]: The army of {s} is marching on {s}!	{s1}的军队正向{s2}进军！	l
 Announcement combat sentence [$name,description-building]: Search first in {s}, {s} here.	先在这里的{s2}{s1}找找。	l
 Announcement combat sentence [boast-victim,boast-slain-clause]: I am the foe of {s}, {s}!	我就是{s1}的敌人，{s2}！	l
 Announcement combat sentence [unit,actor,equipment]: {s} bat {s} out of the air with {s}!	{s1}用{s3}将{s2}从空中击落了！	l
@@ -11777,6 +11781,7 @@ Announcement combat negotiation-response []: negotiated forcefully but was outma
 Announcement combat negotiation-response []: negotiated persuasively and had the mastery	凭说服力谈判，并占据了上风	l
 Announcement combat negotiation-response []: negotiated with empathy and had the mastery	体谅对方的处境，展开谈判，并占据了上风	l
 Announcement combat negotiation-response []: negotiated with humor but was outmaneuvered	以幽默的方式谈判，却被对方胜过一筹	l
+Announcement combat rumor-event [$travel-site,$name]: We reclaimed {s} on behalf of {s}.	我们代表{s2}收复了{s1}。	l
 Announcement combat sentence [$item,merchant-address]: Might I interest you in {s}, {s}?	{s2}，我能让你对{s1}感兴趣吗？	l
 Announcement combat sentence [$sphere]: There is also the issue of their worship of {s}.	还有，他们崇拜{s1}，这也是个问题。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} catches {s} with {s}!	{s1}用{s3}抓住了{s2}！	l
@@ -12028,7 +12033,6 @@ Announcement combat sentence []: It would be so great to perform and make people
 Announcement combat sentence [dialogue-trouble-list]: Well, let's see... we've got {s}.	嗯，让我想想……我们这里有{s1}。	l
 Announcement combat sentence [head,equipment]: {s}, but the attack is deflected by {s}!	{s1}，但攻击被{s2}挡开了！	l
 Announcement combat sentence [threat-material]: It is said that {s} harms the creature.	据说{s1}能伤到这只生物。	l
-Announcement combat site-rumor-event [$name,$name]: {s} crushed an insurrection in {s}.	{s1}镇压了{s2}的一场叛乱。	l
 Announcement combat visitor-statement [visitor-statement-object]: were speaking to {s}.	当时正在对{s1}说话。	l
 Announcement combat visitor-statement [visitor-statement-object]: will be flooding {s}.	将正在淹没{s1}。	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} am speaking to .	{s1}正在说话。	l
@@ -12263,7 +12267,6 @@ Announcement combat negotiation-response []: negotiated forcefully and had the m
 Announcement combat negotiation-response []: negotiated with humor and had the mastery	以幽默的方式谈判，并占据了上风	l
 Announcement combat negotiation-response []: replied with a grand oration of their own	也发表了一番气势恢宏的演说作为回应	l
 Announcement combat negotiation-sentence []: The proposal was an embarrassing failure.	这项提案失败得很难堪。	l
-Announcement combat rumor-event [$book,$name,$name]: I hear that {s} is in {s} in {s}.	听说{s1}在{s2}的{s3}里。	l
 Announcement combat rumor-event []: Terrible monstrosities live deep under the ground.	可怕的怪物栖息在地下深处。	l
 Announcement combat rumor-identity-descriptor [$creature,rumor-identity-role]: {s} {s}	{s1}{s2}	l
 Announcement combat sentence [$item,merchant-address]: Are you interested in {s}, {s}?	{s2}，你对{s1}感兴趣吗？	l
@@ -12814,12 +12817,14 @@ Announcement combat negotiation-response []: made a persuasive argument of their
 Announcement combat negotiation-response []: negotiated calmly but was outmaneuvered	冷静地谈判，却被对方胜过一筹	l
 Announcement combat negotiation-sentence []: The proposal was a spectacular failure.	这项提案以惨败告终。	l
 Announcement combat negotiation-sentence []: The proposal was a truly grand success.	这项提案取得了辉煌的成功。	l
+Announcement combat rumor-event [$book,$travel-site]: I hear that {s} is not in {s}.	听说{s1}不在{s2}。	l
 Announcement combat rumor-event []: A lurking pest has come up from the underground.	一只潜伏在地下的害兽钻出来了。	l
 Announcement combat sentence [$item,merchant-town]: {s} were made right here in {s}.	{s1}就是在{s2}制作的。	l
 Announcement combat sentence [shot,equipment]: {s} but the shot is blocked with {s}!	{s1}，但射来的攻击被{s2}挡住了！	l
 Announcement combat sentence [threat-name,threat-crimes]: Knowing no mercy, {s} {s}!	{s1}毫不留情，{s2}！	l
 Announcement combat sentence [threat-possessive]: [ pauses to regain {s} composure.]	【{s1}稍作停顿，努力恢复镇定。】	l
 Announcement combat sentence [unit]: {s} is propelled away by the force of the blow!	{s1}被这一击打飞了！	l
+Announcement combat site-rumor-event [$travel-site,$name]: {s} was conquered by {s}.	{s1}被{s2}征服了。	l
 Announcement combat visitor-statement [visitor-statement-object]: am destroying {s}.	正在毁灭{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: are appearing {s}.	正在出现在{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: are rewarding {s}.	正在奖赏{s1}。	l
@@ -13102,6 +13107,7 @@ Announcement combat negotiation-response []: negotiated in turn and had the mast
 Announcement combat negotiation-response []: negotiated lightly and had the mastery	轻松地谈判，并占据了上风	l
 Announcement combat negotiation-sentence []: The proposal was a resounding failure.	这项提案彻底失败了。	l
 Announcement combat reference-building [reference-building-type,$name]: the {s} {s}	{s1}{s2}	l
+Announcement combat rumor-event [$travel-site]: I hear that {s} has been conquered.	听说{s1}已经被征服了。	l
 Announcement combat rumor-event []: A beast from underground has been assailing us.	有头野兽从地下而来，一直袭击我们。	l
 Announcement combat rumor-event []: A beast horrible beyond imagining threatens us.	一头恐怖得难以想象的野兽正威胁着我们。	l
 Announcement combat rumor-event [rumor-identity]: Seek this place if you hunt {s} .	想猎杀{s1}，就去找这个地方。	l
@@ -13111,7 +13117,6 @@ Announcement combat sentence [$item,merchant-town]: {s} was made right here in {
 Announcement combat sentence [$item,merchant-town]: {s} were cut right here in {s}.	{s1}就是在{s2}切割的。	l
 Announcement combat sentence [dialogue-family-indef,$person]: I have {s} named {s}.	我有{s1}，名叫{s2}。	l
 Announcement combat sentence [diplomacy-cause]: The trouble started because of {s}.	最初是因为{s1}，才起了冲突。	l
-Announcement combat site-rumor-event [$name,$name]: the army of {s} marched on {s}.	{s1}的军队向{s2}进军了。	l
 Announcement combat visitor-statement [visitor-statement-object]: am appearing {s}.	正在出现在{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: am rewarding {s}.	正在奖赏{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: are flooding {s}.	正在淹没{s1}。	l
@@ -13375,7 +13380,6 @@ Announcement combat memory-sentence [$name]: There was a scholarly lecture in {s
 Announcement combat memory-sentence [memory-person,memory-person]: {s} killed {s}.	{s1}杀死了{s2}。	l
 Announcement combat negotiation-opening []: calm any misgivings about the proposal	打消对方对提案的疑虑	l
 Announcement combat negotiation-response []: negotiated calmly and had the mastery	冷静地谈判，并占据了上风	l
-Announcement combat rumor-event [$name,$name]: The army of {s} is marching on {s}!	{s1}的军队正向{s2}进军！	l
 Announcement combat rumor-event []: A marauding warband is threatening our people.	一支四处劫掠的战帮正威胁着我们的人民。	l
 Announcement combat rumor-event []: The forces of darkness have descended upon us.	黑暗势力已经杀到我们这里了。	l
 Announcement combat rumor-event [rumor-identity]: Seek this place if you hunt {s}.	想猎杀{s1}，就去找这个地方。	l
@@ -13709,7 +13713,6 @@ Announcement combat memory-sentence [memory-relation]: I am together with my {s}
 Announcement combat memory-value-insight [memory-value]: the worthlessness of {s}	{s1}毫无价值	l
 Announcement combat merchant-hawk-item [merchant-genuine-item]: your very own {s}	专属于你的{s1}	l
 Announcement combat negotiation-recipient [$unit,$office,$name]: {s}, {s} of {s},	{s3}的{s2}{s1}	l
-Announcement combat rumor-event [$name,$name]: We reclaimed {s} on behalf of {s}.	我们代表{s2}收复了{s1}。	l
 Announcement combat rumor-event []: Seek this place if you wish to confront the .	想对付这个身份不明的恶徒，就去找这个地方。	l
 Announcement combat rumor-event [rumor-person]: The army of {s} is marching here!	{s1}的军队正向这里进军！	l
 Announcement combat rumor-flight []: just before an army descended upon the place	了那里，随后一支军队便袭击了那里	l
@@ -14048,6 +14051,7 @@ Announcement combat merchant-origin [merchant-nation]: {s}, out to the northwest
 Announcement combat merchant-origin [merchant-nation]: {s}, out to the southeast	东南方的{s1}	l
 Announcement combat merchant-origin [merchant-nation]: {s}, out to the southwest	西南方的{s1}	l
 Announcement combat negotiation-sentence []: The proposal was highly successful.	这项提案相当成功。	l
+Announcement combat rumor-event [$book,$travel-site]: I hear that {s} is in {s}.	听说{s1}在{s2}。	l
 Announcement combat rumor-event [$person]: Seek this place if you hunt {s} the .	想猎杀{s1}，就去找这个地方。	l
 Announcement combat sentence [$creature]: {s} have been known to hunt out there.	听说{s1}会在那里狩猎。	l
 Announcement combat sentence [$item,merchant-address]: Excellent {s} there, {s}.	{s2}，那里的上等的{s1}。	l
@@ -14080,6 +14084,7 @@ Announcement combat visitor-statement [visitor-statement-subject]: {s} rewards .
 Announcement combat visitor-statement [visitor-statement-subject]: {s} speaking.	{s1}正在说话。	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} will be .	{s1}将……。	l
 Announcement combat visitor-statement-subject [visitor-statement-reference]: {s}	{s1}	l
+Announcement combat work-reference [reference-building,$travel-site]: {s} in {s}	{s2}的{s1}	l
 But my chosen, you are in a state! See to yourself before you face what's ahead.	但是，我的天选者，你现在的状态很糟！面对前方的挑战之前，先照顾好自己。	hq
 Chop down more trees if necessary. Unpause and wait for the Bed to be completed.	[C:7:0:0]必要时再砍一些树。解除暂停，等待[C:6:0:1]床[C:7:0:0]制作完成。	hq
 Civilizations use available plants in their surroundings as their initial crops.	政权会使用周边可用植物作为初始作物。	l
@@ -14944,7 +14949,6 @@ Announcement combat memory-sentence [memory-person]: I am separated from {s}.	�
 Announcement combat memory-sentence [memory-person]: I was reunited with {s}.	我跟{s1}重逢了。	l
 Announcement combat negotiation-response []: negotiated but was outmaneuvered	展开谈判，却被对方胜过一筹	l
 Announcement combat negotiation-sentence []: The proposal was not successful.	这项提案未能成功。	l
-Announcement combat rumor-event [$book,$name]: I hear that {s} is not in {s}.	听说{s1}不在{s2}。	l
 Announcement combat rumor-event []: Seek this place if you wish to confront .	想对付这个身份不明的恶徒，就去找这个地方。	l
 Announcement combat rumor-event [rumor-identity]: This insidious evil is {s}.	这个阴险的恶徒就是{s1}。	l
 Announcement combat sentence [$distance]: There is a long-ranging patrol {s}.	有一支远程巡逻队在{s1}。	l
@@ -14957,7 +14961,6 @@ Announcement combat sentence [dialogue-family,$person]: My {s} was named {s}.	�
 Announcement combat sentence [memory-person,memory-person]: {s} attacked {s}.	{s1}攻击了{s2}。	l
 Announcement combat sentence [unit,actor,equipment]: {s} blocks {s} with {s}!	{s1}用{s3}挡住了{s2}！	l
 Announcement combat sentence [unit,owned-object]: {s} latch on firmly to {s}!	{s1}牢牢咬住了{s2}！	l
-Announcement combat site-rumor-event [$name,$name]: {s} was conquered by {s}.	{s1}被{s2}征服了。	l
 Announcement combat travel-empty-caste-actor [$travel-person]: the zombie {s}	活尸·{s1}	l
 Announcement combat visitor-statement [visitor-statement-object]: appear {s}.	出现在{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: burned {s}.	曾焚烧{s1}。	l
@@ -15299,7 +15302,6 @@ Announcement combat merchant-origin []: the settlements out to the southwest	西
 Announcement combat merchant-origin [merchant-nation]: {s}, out to the north	北方的{s1}	l
 Announcement combat merchant-origin [merchant-nation]: {s}, out to the south	南方的{s1}	l
 Announcement combat reference-population [reference-population]: ghostly {s}	幽灵形态的{s1}	l
-Announcement combat rumor-event [$name]: I hear that {s} has been conquered.	听说{s1}已经被征服了。	l
 Announcement combat rumor-event []: A force of evil has arisen in the world.	一股邪恶势力已在世间崛起。	l
 Announcement combat sentence [$item,merchant-address]: Great {s} there, {s}.	{s2}，那里的很棒的{s1}。	l
 Announcement combat sentence [$term]: An injured {s} has sprung from ambush!	一只受伤的{s1}从埋伏中跳了出来！	l
@@ -15312,6 +15314,7 @@ Announcement combat sentence [unit,$term]: {s} are caught in a cloud of {s}!	{s1
 Announcement combat sentence [unit,actor,equipment]: {s} block {s} with {s}!	{s1}用{s3}挡住了{s2}！	l
 Announcement combat sentence [unit,owner]: {s} jumps out of {s} flight path!	{s1}跳开，避过了{s2}飞行路线！	l
 Announcement combat sentence [unit,owner]: {s} rolls out of {s} flight path!	{s1}翻滚着避开了{s2}飞行路线！	l
+Announcement combat site-rumor-event [$travel-site]: was kidnapped from {s}.	有人在{s1}被绑架了。	l
 Announcement combat site-rumor-event [site-rumor-person]: {s} was kidnapped.	{s1}被绑架了。	l
 Announcement combat travel-known-dead []: This creature is known to be dead.	已知这个生物已经死亡。	l
 Announcement combat travel-role-main [$travel-site]: You are a based in {s}.	你的驻地在{s1}。	l
@@ -15968,6 +15971,7 @@ Announcement combat memory-sentence [memory-person,memory-death]: {s} {s}.	{s1}{
 Announcement combat negotiation-purpose []: demand unconditional surrender	要求对方无条件投降	l
 Announcement combat reference-population [$creature]: animated {s} corpses	复活的{s1}尸体	l
 Announcement combat rumor-event [$name]: The army of {s} is marching here!	{s1}的军队正向这里进军！	l
+Announcement combat rumor-event [$travel-site]: We had to pull out of {s}.	我们不得不撤出{s1}。	l
 Announcement combat sentence [$distance]: There are guards patrolling {s}.	有卫兵在{s1}巡逻。	l
 Announcement combat sentence [$item,merchant-address]: Excellent {s}, {s}.	{s2}，上等的{s1}。	l
 Announcement combat sentence [$item,merchant-address]: Fantastic {s}, {s}.	{s2}，绝妙的{s1}。	l
@@ -16317,7 +16321,6 @@ Announcement combat memorial-death []: Crushed under a collapsing ceiling	被坍
 Announcement combat memory-sentence [agreement-item]: {s} was given away.	{s1}被送人了。	l
 Announcement combat memory-value-insight [memory-value]: the value of {s}	{s1}的价值	l
 Announcement combat reference-building [reference-building-type]: the {s}	{s1}	l
-Announcement combat rumor-event [$book,$name]: I hear that {s} is in {s}.	听说{s1}在{s2}。	l
 Announcement combat sentence [$item,merchant-address]: Splendid {s}, {s}.	{s2}，出色的{s1}。	l
 Announcement combat sentence [$name]: The surrounding area is called {s}.	周边地区叫做{s1}。	l
 Announcement combat sentence [ability]: You have learned the power "{s}"!	你学会了能力“{s1}”！	l
@@ -16330,7 +16333,6 @@ Announcement combat sentence [unit]: {s} is stumbling around obliviously!	{s1}�
 Announcement combat threat-crimes [threat-crime,threat-crimes]: {s} , {s}	{s1}、{s2}	l
 Announcement combat visitor-statement [visitor-statement-object]: am {s}.	……{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: is {s}.	……{s1}。	l
-Announcement combat work-reference [reference-building,$name]: {s} in {s}	{s2}的{s1}	l
 Announcement combat work-sentence [work-reference-list]: It concerns {s}.	内容涉及{s1}。	l
 As your dwarves live and work in your fortress they will generate Refuse.	[C:7:0:0]矮人在要塞中生活和工作时，会产生[C:6:0:1]垃圾[C:7:0:0]。	hq
 Assign this creature as a work animal for a specific citizen or resident.	将此生物作为工作动物，分配给指定的公民或居民。	hj
@@ -17042,6 +17044,7 @@ Announcement combat sentence [unit]: {s} has slipped into depression...	{s1}陷�
 Announcement combat sentence [unit]: {s} have been knocked unconscious!	{s1}被击昏了！	l
 Announcement combat sentence [unit]: {s} is caught in a burst of steam!	{s1}被喷涌的蒸汽笼罩了！	l
 Announcement combat sentence [unit]: {s} is struck by a ball of flames!	{s1}被一团火球击中了！	l
+Announcement combat site-rumor-event [$travel-site]: {s} was conquered.	{s1}被征服了。	l
 Announcement combat visitor-statement-emotion []: in existential crisis	陷入存在危机	l
 Announcement combat visitor-statement-reference []: an unknown creature	未知生物	l
 Choose a stockpile from which the track stop's vehicle will take items.	选择轨道站点的车辆要从其取货的储物堆。	hj
@@ -17451,6 +17454,7 @@ Announcement combat site-rumor-date [$digits]: the early autumn of {s}	第{s1}�
 Announcement combat site-rumor-date [$digits]: the early spring of {s}	第{s1}年初春	l
 Announcement combat site-rumor-date [$digits]: the early summer of {s}	第{s1}年初夏	l
 Announcement combat site-rumor-date [$digits]: the early winter of {s}	第{s1}年初冬	l
+Announcement combat site-rumor-event [$name,$travel-site]: {s} in {s}.	{s1}在{s2}。	l
 Announcement combat visitor-statement [visitor-statement-object]: {s}.	……{s1}。	l
 Announcement combat visitor-statement-reference [$memorial-actor]: {s}	{s1}	l
 Announcement combat work-reference [$name]: the important location {s}	重要地点{s1}	l
@@ -17875,7 +17879,6 @@ Announcement combat site-rumor-date [$digits]: the late autumn of {s}	第{s1}年
 Announcement combat site-rumor-date [$digits]: the late spring of {s}	第{s1}年晚春	l
 Announcement combat site-rumor-date [$digits]: the late summer of {s}	第{s1}年晚夏	l
 Announcement combat site-rumor-date [$digits]: the late winter of {s}	第{s1}年晚冬	l
-Announcement combat site-rumor-event [$name]: was kidnapped from {s}.	有人在{s1}被绑架了。	l
 Announcement combat threat-crime [threat-building]: prayed inside {s}	在{s1}中祈祷	l
 Announcement combat threat-killing [threat-victim]: even murdered {s}	甚至杀害了{s1}	l
 Announcement combat work-reference [$creature]: a animated {s} corpse	复活的{s1}尸体	l
@@ -18661,7 +18664,6 @@ Announcement combat memory-sentence [$name]: I was rejected by {s}.	{s1}拒绝�
 Announcement combat memory-sermon-topic [memory-value-insight]: {s}	{s1}	l
 Announcement combat merchant-hawk-item [merchant-genuine-item]: {s}	{s1}	l
 Announcement combat negotiation-purpose []: improve trade relations	改善贸易关系	l
-Announcement combat rumor-event [$name]: We had to pull out of {s}.	我们不得不撤出{s1}。	l
 Announcement combat sentence [$term]: A {s} has sprung from ambush!	一只{s1}从埋伏中跳了出来！	l
 Announcement combat sentence [$term]: {s} toppled by battering ram.	{s1}被攻城锤撞倒了。	l
 Announcement combat sentence []: I'd love to travel and create art.	我很想一边旅行，一边从事艺术创作。	l
@@ -19992,7 +19994,6 @@ Announcement combat sentence [unit]: {s} are no longer infected.	{s1}的感染�
 Announcement combat sentence [unit]: {s} has been stunned again!	{s1}又被击晕了！	l
 Announcement combat sentence [unit]: {s} has moved out of range!	{s1}已经离开了攻击范围！	l
 Announcement combat sentence [unit]: {s} slams into an obstacle!	{s1}猛撞在了障碍物上！	l
-Announcement combat site-rumor-event [$name]: {s} was conquered.	{s1}被征服了。	l
 Announcement combat threat-crime [threat-building]: profaned {s}	亵渎了{s1}	l
 Announcement combat threat-crime [threat-stolen-item]: stole {s}	偷走了{s1}	l
 Announcement combat threat-killing [threat-victim]: murdered {s}	杀害了{s1}	l
@@ -20496,7 +20497,6 @@ Announcement combat sentence [unit]: {s} is no longer infected.	{s1}的感染痊
 Announcement combat sentence [unit]: {s} is throwing a tantrum!	{s1}正在大发脾气！	l
 Announcement combat sentence [unit]: {s} slam into an obstacle!	{s1}猛撞在了障碍物上！	l
 Announcement combat shot-result [defense-adverb]: {s} deflected	{s1}挡开了	l
-Announcement combat site-rumor-event [$name,$name]: {s} in {s}.	{s1}在{s2}。	l
 Announcement combat trade-places [$name,trade-places]: {s}, {s}	{s1}、{s2}	l
 Announcement combat visitor-statement []: was will be burning .	当时将正在燃烧。	l
 Announcement combat visitor-statement []: was will be flooding.	当时将正在泛滥。	l

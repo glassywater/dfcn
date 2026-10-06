@@ -17,7 +17,7 @@ work-reference	a animated {s} corpse	复活的{s1}尸体	$creature	0x140ef4c10:0
 work-reference	a ghostly animated {s} corpse	幽灵形态的复活{s1}尸体	$creature	0x140ef4c59+0x140ef4c74+0x140ef4c9b+0x140ef4cac; independent ghost/corpse flags
 work-reference	an unnamed group	一个无名势力		0x140ef5280:0x140ef53f4; scoped entity description, existing Groups=势力
 work-reference	the fiery bowels of the earth	大地的炽热深处		0x140ef4350:0x140ef44af; feature-layer unnamed magma fallback
-work-reference	{s} in {s}	{s2}的{s1}	reference-building,$name	0x140eed3b0:0x140eed6ca+0x140eed743; entire building and site fields
+work-reference	{s} in {s}	{s2}的{s1}	reference-building,$travel-site	0x140eed3b0:0x140eed6ca+0x140eed743; entire building and site fields
 work-reference	{s}	{s1}	reference-building	0x140eed3b0; complete abstract building, optional name
 reference-building	a {s}	{s1}	reference-building-type	0x140eed445/0x140eed44c+0x140eed490..0x140eed57b; unnamed building
 reference-building	the {s}	{s1}	reference-building-type	0x140eed445+0x140eed490..0x140eed57b; native definite unnamed catacombs/sewers

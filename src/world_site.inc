@@ -927,7 +927,20 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
         if (!target && !action_control && !artifacts) {
             const auto site_draw = world_site_owned_draw_for_row(*gps_, row,
                 card.interior.x + card.interior.w, false, true);
-            if (site_draw) target = translate_site_name(*site_draw->site_name);
+            if (site_draw) {
+                std::string_view name_source = source;
+                if (site_heading || compact_site_heading) {
+                    const size_t type_begin = compact_site_heading ? source.rfind(", ") + 2
+                        : source.starts_with("The ") ? 4 : 0;
+                    const size_t type_end = compact_site_heading ? source.size()
+                        : lower(source).find(" of ", type_begin);
+                    if (type_end != std::string::npos && type_end > type_begin)
+                        name_source = compact_site_heading
+                            ? std::string_view(source).substr(0, type_begin - 2)
+                            : std::string_view(source).substr(type_end + 4);
+                }
+                target = translate_site_display(*site_draw->site_name, name_source);
+            }
         }
         // The first heading names the selected landform; subsequent headings
         // name its biome/region or site. Keep its LAND sense scoped to this

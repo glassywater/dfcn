@@ -44,43 +44,26 @@ static bool capture_site_reference_identity(uintptr_t base, uintptr_t site,
     copy.id = copy.name.site_id;
     copy.site = site;
     copy.native = copy.name.native_name;
-    const bool nickname_only = !copy.name.nickname.empty() && copy.name.nickname_mode == 2;
-    if (!copy.name.nickname.empty() &&
-            (copy.name.nickname_mode == 0 || copy.name.nickname_mode == 2))
-        copy.english = "`" + copy.name.nickname + "'";
-    else {
-        copy.english = copy.name.first_name;
-        if (!copy.name.nickname.empty()) {
-            if (!copy.english.empty()) copy.english += ' ';
-            copy.english += "`" + copy.name.nickname + "'";
-        }
-    }
-    const auto append = [](std::string &name, const std::string &group) {
-        if (group.empty()) return;
-        if (!name.empty()) name += ' ';
-        name += group;
-    };
-    if (!nickname_only) {
-        std::array<std::string, 7> forms;
-        for (size_t slot = 0; slot < forms.size(); ++slot)
-            if (!copy.name.words[slot].id.empty() && copy.name.words[slot].has_form)
-                forms[slot] = copy.name.words[slot].english_form;
-        append(copy.english, forms[0] + forms[1]);
-        if (!copy.name.words[2].id.empty() || !copy.name.words[3].id.empty() ||
-                !copy.name.words[5].id.empty()) {
-            std::string title;
-            append(title, forms[2]);
-            append(title, forms[3]);
-            if (!forms[4].empty()) {
-                append(title, forms[4]);
-                title += '-';
-                title += forms[5];
-            } else append(title, forms[5]);
-            if (!title.empty()) append(copy.english, "the " + title);
-        }
-        if (!forms[6].empty()) append(copy.english, "of " + forms[6]);
-    }
+    copy.english = reconstruct_site_english_name(copy.name).value_or(std::string{});
     result = std::move(copy);
+    return true;
+}
+
+bool Overlay::capture_current_fortress_site_name(NativeHistoryName &name,
+        std::string &english) const {
+    const uintptr_t base = native_history_profile_base();
+    const uintptr_t plotinfo = base ? native_reference_address(base,
+        native_history_layout::plotinfo_rva) : 0;
+    int32_t id = -1;
+    if (!plotinfo || !native_history_copy(native_history_object_field(
+            plotinfo, "plotinfost", 0x2444, sizeof(id)), id) || id < 0)
+        return false;
+    const uintptr_t site = native_history_find_subject(base, NativeHistoryObjectKind::Site, id);
+    SiteReferenceIdentity identity;
+    if (!site || !capture_site_reference_identity(base, site, identity) || identity.id != id)
+        return false;
+    name = std::move(identity.name);
+    english = std::move(identity.english);
     return true;
 }
 
@@ -242,19 +225,47 @@ static std::optional<SiteReferenceIdentity> resolve_site_reference_identity(
 std::optional<std::string> Overlay::translate_site_reference(std::string_view source) const {
     const auto identity = resolve_site_reference_identity(source, draw_epoch_,
         [&](const NativeHistoryName &name) { return site_name_search_aliases(name); });
-    return identity ? translate_site_name(identity->name) : std::nullopt;
+    return identity ? translate_site_display(identity->name, source) : std::nullopt;
 }
 
-std::optional<std::string> Overlay::translate_legends_place(std::string_view source) const {
+std::optional<std::string> Overlay::translate_book_site_subject(std::string_view source) const {
+    // The native general_ref_sitest title-subject formatter uses EnglishName.
+    // A complete title subject must match a unique real site's English field;
+    // native spellings, partial words and unrelated book topics cannot enter.
+    const auto identity = resolve_site_reference_identity(source, draw_epoch_,
+        [&](const NativeHistoryName &name) { return site_name_search_aliases(name); });
+    if (!identity || identity->english.empty() ||
+            site_reference_key(source) != site_reference_key(identity->english))
+        return std::nullopt;
+    auto translated = translate_english_site_name(identity->english, &identity->name);
+    if (translated)
+        *translated += site_name_attribute_suffix(identity->name.site_label, identity->name.site_type);
+    return translated;
+}
+
+std::optional<std::string> Overlay::translate_legends_place(
+        std::string_view source, bool english_field) const {
     source = trim_view(source);
     if (source.empty() || source.size() > 4096 || source.ends_with("...") ||
             source.find_first_of("\r\n") != std::string_view::npos) return std::nullopt;
     if (auto site = translate_site_reference(source)) return site;
-    // A place field can also refer to geography. Without an unambiguous
-    // native object, preserve its complete original spelling and do not
-    // infer a site class or turn the quoted WORD gloss into its main name.
-    if (const auto pair = split_generated_name_identity(source))
-        return native_text_to_utf8(pair->native_name);
+    // Paired native/English text proves each part's language even without
+    // a unique loaded site. Translate both parts without borrowing a site
+    // subtype from an ambiguous or unrelated native identity.
+    if (const auto pair = split_generated_name_identity(source)) {
+        const auto english = translate_english_site_name(pair->gloss);
+        return transliterate_site_spelling(pair->native_name) + "，“" +
+            english.value_or(native_text_to_utf8(pair->gloss)) + "”";
+    }
+    // Some native producers explicitly select EnglishName. That provenance
+    // permits English translation even when no unique loaded site supplies
+    // its ID or class; it never permits guessing a suffix or a native meaning.
+    if (english_field) {
+        if (const auto label = exact_literal_translation(source)) return label;
+        return translate_english_site_name(source);
+    }
+    // A standalone place field can also refer to geography. Its spelling
+    // alone cannot establish whether it is a native-language or English name.
     if (!contains_cjk_utf8(source) && !generated_title_shape(source))
         return std::nullopt;
     return native_text_to_utf8(source);
@@ -263,15 +274,29 @@ std::optional<std::string> Overlay::translate_legends_place(std::string_view sou
 std::vector<std::string> Overlay::site_reference_search_aliases(std::string_view source) const {
     const auto identity = resolve_site_reference_identity(source, draw_epoch_,
         [&](const NativeHistoryName &name) { return site_name_search_aliases(name); });
-    if (!identity) return {};
-    auto aliases = site_name_search_aliases(identity->name);
+    auto aliases = identity ? site_name_search_aliases(identity->name)
+        : std::vector<std::string>{};
     const auto append = [&](std::string value) {
         if (!value.empty() && std::find(aliases.begin(), aliases.end(), value) == aliases.end())
             aliases.push_back(std::move(value));
     };
-    append(native_text_to_utf8(identity->english));
-    if (!identity->native.empty() && !identity->english.empty())
-        append(native_text_to_utf8(identity->native) + ", \"" +
-            native_text_to_utf8(identity->english) + "\"");
+    if (identity) {
+        append(native_text_to_utf8(identity->native));
+        append(native_text_to_utf8(identity->english));
+        if (const auto display = translate_site_display(identity->name, source))
+            append(*display);
+        if (!identity->native.empty() && !identity->english.empty()) {
+            const std::string pair = identity->native + ", \"" + identity->english + "\"";
+            append(native_text_to_utf8(pair));
+            if (const auto display = translate_site_display(identity->name, pair))
+                append(*display);
+        }
+    } else if (const auto pair = split_generated_name_identity(source)) {
+        append(native_text_to_utf8(pair->native_name));
+        append(native_text_to_utf8(pair->gloss));
+        append(transliterate_site_spelling(pair->native_name));
+        if (const auto english = translate_english_site_name(pair->gloss)) append(*english);
+        if (const auto display = translate_legends_place(source)) append(*display);
+    }
     return aliases;
 }

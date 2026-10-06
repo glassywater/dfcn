@@ -92,7 +92,7 @@ bool Overlay::translated_legends_search_matches(std::string_view source,
         return true;
 
     const auto site_title = kind == LegendsSearchKind::Site
-        ? site_name ? translate_site_name(*site_name) : translate_legends_place(source)
+        ? site_name ? translate_site_display(*site_name, source) : translate_legends_place(source)
         : std::nullopt;
     if (kind == LegendsSearchKind::Site) {
         const auto aliases = site_name ? site_name_search_aliases(*site_name)

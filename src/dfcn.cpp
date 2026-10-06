@@ -828,6 +828,7 @@ static constexpr int kEmbarkFinderFieldRule = -153;
 static constexpr int kAdventurePersonalityFieldRule = -154;
 static constexpr int kFortressSquadCreationRule = -155;
 static constexpr int kFortressUniformChoiceRule = -156;
+static constexpr int kFortressSiteNameRule = -157;
 
 static bool is_fortress_justice_field(const Match &match) {
     return match.rule == kFortressJusticeCaseRule || match.rule == kFortressJusticeDetailRule ||
@@ -3477,13 +3478,19 @@ private:
         bool polity_role = false, bool government_role = false,
         const NativeSiteGovernmentContext *government_context = nullptr) const;
     std::optional<std::string> translate_site_name(const NativeHistoryName &name) const;
+    std::optional<std::string> translate_english_site_name(
+        std::string_view english, const NativeHistoryName *identity = nullptr) const;
+    std::optional<std::string> translate_site_display(
+        const NativeHistoryName &name, std::string_view source) const;
     std::string site_name_core(const NativeHistoryName &name) const;
     std::optional<std::string> localize_site_name(const NativeHistoryName &name) const;
     std::string site_name_full_transliteration(const NativeHistoryName &name) const;
     std::vector<std::string> site_name_search_aliases(const NativeHistoryName &name) const;
     std::optional<std::string> translate_site_reference(std::string_view source) const;
+    std::optional<std::string> translate_book_site_subject(std::string_view source) const;
     std::optional<std::string> translate_saved_site_name(const NativeSaveNameSource &source) const;
-    std::optional<std::string> translate_legends_place(std::string_view source) const;
+    std::optional<std::string> translate_legends_place(
+        std::string_view source, bool english_field = false) const;
     std::vector<std::string> site_reference_search_aliases(std::string_view source) const;
     std::optional<std::string> translate_english_character_name(
         std::string_view source, std::string_view native_given = {}) const;
@@ -4324,6 +4331,10 @@ private:
         const std::vector<std::string> &rows, int &tabs_y) const;
     void append_fortress_place_names(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
+    bool capture_current_fortress_site_name(NativeHistoryName &name,
+        std::string &english) const;
+    void append_fortress_site_name(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void layout_fortress_build_placement(SDL_Renderer *renderer);
     void layout_fortress_build_materials(SDL_Renderer *renderer);
     void append_fortress_machine_power_rows(std::vector<std::string> &rows,
@@ -4644,7 +4655,7 @@ private:
     };
     enum class ProceduralFragmentContext {
         general_text, generated_name, non_entity_name, personal_name, native_name_group, native_item_name, book_title,
-        civilization_name
+        civilization_name, english_site_name
     };
     std::optional<std::string> translate_procedural_fragment(
         const std::string &screen_text, bool phonetic_only = false,
@@ -9552,7 +9563,8 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     // possible textile/material span as if its full identity were equipment.
     // Keep the existing structural validators and shared name renderer below.
     const bool personal_name = context == ProceduralFragmentContext::personal_name;
-    const bool non_entity_name = context == ProceduralFragmentContext::non_entity_name;
+    const bool english_site_name = context == ProceduralFragmentContext::english_site_name;
+    const bool non_entity_name = context == ProceduralFragmentContext::non_entity_name || english_site_name;
     const bool civilization_name = context == ProceduralFragmentContext::civilization_name;
     if (civilization_name && !phonetic_only) {
         auto source = trim_view(screen_text);
@@ -10776,7 +10788,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         // phrase loses its internal grammar.
         const size_t nested = name.find(" of The ");
         const size_t titled = name.find(" the ");
-        const auto titled_person = titled == std::string::npos ? std::nullopt :
+        const auto titled_person = english_site_name || titled == std::string::npos ? std::nullopt :
             translate_generated_person_name(std::string_view(name).substr(0, titled), true);
         if (titled_person && generated_title_shape(name.substr(titled + 5))) {
             // An epithet is itself an English generated title, including its
@@ -10805,7 +10817,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
                          render_name("The " + name.substr(titled + 5), false);
             } else if (name.find(" of ") != std::string::npos) {
                 result = render_name("The " + name, scoped_head);
-            } else if (const auto person = translate_generated_person_name(name)) {
+            } else if (const auto person = english_site_name ? std::nullopt : translate_generated_person_name(name)) {
                 result = *person;
             } else {
                 result = translate_phrase(name, scoped_head);
@@ -10817,6 +10829,11 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     auto translate_name = [&](std::string name) {
         return render_name(std::move(name), true);
     };
+
+    // The caller supplies the complete English field of a place. Enter its
+    // title/compound/of grammar directly, before native or personal-name
+    // recognition can reinterpret any English component as a given name.
+    if (english_site_name) return translate_name(screen_text);
 
     if (book_title) {
         // A subject can be a historical figure: its native given name and
@@ -11300,10 +11317,10 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             });
         if ((native_ascii_name || cp437_native_name) &&
             screen_text.size() <= 48) {
-            // The fortress HUD puts the English site-name gloss on its own
-            // unquoted row, immediately below the native name. A title-cased
-            // single token is therefore not necessarily a native name:
-            // Wheelscloistered is WHEEL + CLOISTER, not phonetic syllables.
+            // Unbound generated names can also be complete English WORD
+            // compounds, such as Wheelscloistered (WHEEL + CLOISTER).
+            // The fortress HUD's owned site fields have already been claimed
+            // by the official site-name resolver before reaching this parser.
             // Require a complete, legal two-root parse from the existing
             // reviewed WORD/POS table; do not add per-save name overrides or
             // use the permissive dictionary splitter on arbitrary UI words.
@@ -22180,6 +22197,8 @@ std::vector<Match> Overlay::find_matches(int only_y,
     append_adventure_compass_matches(screen_rows, result, only_y);
     context_detail.checkpoint(RenderTimingStage::Places);
     if (!announcement_panel_only) {
+    append_fortress_site_name(screen_rows, result, only_y,
+        screen_override != nullptr);
     append_fortress_place_names(screen_rows, result, only_y,
         screen_override != nullptr);
     append_fortress_stockpile_types(screen_rows, result, only_y,
@@ -23921,7 +23940,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 ? std::string_view(draw.source) : std::string_view(draw.complete_source);
             if (draw.site_name && !visible.empty()) {
                 auto &row = screen_rows[static_cast<size_t>(draw.y)];
-                const auto target = translate_site_name(*draw.site_name);
+                const auto target = translate_site_display(*draw.site_name, complete);
                 if (target && row.compare(static_cast<size_t>(draw.x), visible.size(), visible) == 0) {
                     std::fill_n(row.begin() + draw.x, visible.size(), ' ');
                     if (only_y < 0 || only_y == draw.y) {
@@ -30623,6 +30642,7 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
                 if ((is_credits_row(match) || is_help_text(match) || match.rule == kCharacterRoomStatusRule ||
                      match.rule == kSettingsAnnouncementNameRule ||
                      match.rule == kFortressLaborCaptionRule ||
+                     match.rule == kFortressSiteNameRule ||
                      match.rule == kDfhackStocksHintRule || match.rule == kDfhackHotkeysHintRule ||
                      match.rule == kCharacterHeaderRule ||
                      match.rule == kCharacterOverviewQuoteRule ||
@@ -38229,6 +38249,7 @@ void Overlay::prepare_frame() {
                     if ((match.native_hover_background || is_help_text(match) ||
                          match.rule == kSettingsAnnouncementNameRule ||
                          match.rule == kFortressLaborCaptionRule ||
+                         match.rule == kFortressSiteNameRule ||
                          match.rule == kDfhackStocksHintRule || match.rule == kDfhackHotkeysHintRule ||
                          match.rule == kCharacterHeaderRule ||
                          match.rule == kCharacterOverviewRowRule ||
@@ -40698,19 +40719,13 @@ void Overlay::layout_fortress_header(SDL_Renderer *renderer) {
     // consecutive rows at one x, to the left of Pop. Centering Chinese inside
     // each unrelated English ink span makes the short gloss and rank drift
     // right. Recognize the field structure, never a particular saved name or
-    // screenshot coordinate. Rank strings only identify the widget; retain
-    // the existing dictionary translations for every field.
-    auto is_settlement_rank = [](std::string_view source) {
-        return source == "Outpost" || source == "Hamlet" ||
-            source == "Village" || source == "Town" || source == "City" ||
-            source == "Metropolis" || source == "Fortress" ||
-            source == "Mountainhome";
-    };
+    // screenshot coordinate. The site resolver owns the first two fields;
+    // the settlement's development rank remains an independent label.
     for (const Match &population : prepared_matches_) {
         if ((population.source != "Pop" && population.source != "Population") ||
             population.y < 0 || population.y > 2) continue;
         for (Match &rank : prepared_matches_) {
-            if (!is_settlement_rank(rank.source) || rank.target.empty() ||
+            if (!fortress_header_rank(rank.source) || rank.target.empty() ||
                 rank.y != population.y + 2 || rank.x >= population.x) continue;
 
             std::array<Match *, 3> labels{};
