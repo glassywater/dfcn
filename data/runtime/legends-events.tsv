@@ -34,6 +34,7 @@ new government was called {p}	新政府名为{p}	continuation
 {p} of {p}	{p2}的{p1}	participant
 {a} from {p}	来自{p}的{a}	participant
 {a} and {a}	{a1}与{a2}	participant
+{p} and {p}	{p1}与{p2}	participant
 {a}, and {a}	{a1}与{a2}	participant
 {a}, {a}	{a1}、{a2}	participant
 the forces of {p}	{p}的部队	participant
