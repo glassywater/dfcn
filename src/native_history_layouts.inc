@@ -19273,6 +19273,7 @@ static constexpr uintptr_t gamemode_rva = DFCN_NATIVE_BINDING(0x189c298, 0x20893
 static constexpr uintptr_t d_init_rva = DFCN_NATIVE_BINDING(0x2390ad0, 0x22bb740);
 static constexpr uintptr_t gview_rva = DFCN_NATIVE_BINDING(0x18ae1f0, 0x2b7ce60);
 static constexpr uintptr_t plotinfo_rva = DFCN_NATIVE_BINDING(0x2391230, 0x257be60);
+static constexpr uintptr_t ui_look_list_rva = DFCN_NATIVE_BINDING(0x269bc20, 0x213b710);
 } // namespace native_history_layout
 #pragma GCC diagnostic pop
 #undef DFCN_NATIVE_FIELD

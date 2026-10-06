@@ -112,6 +112,7 @@ struct NativeCaptionProfile {
     uintptr_t map_track_shorten_call = 0, map_track_shorten_target = 0;
     NativeCaptionBuildFn map_caption_build = nullptr;
     size_t map_caption_text_offset = 0;
+    uintptr_t map_hover_list = 0;
     std::vector<unsigned char> map_caption_build_prefix;
     std::vector<uintptr_t> map_hover_returns;
     NativeInfoTitleBinding info_titles;
@@ -331,6 +332,7 @@ static std::vector<NativeTravelBuildingSite> g_native_travel_building_sites;
 static std::vector<uintptr_t> g_native_mission_title_returns;
 static std::vector<uintptr_t> g_native_map_hover_returns;
 static size_t g_native_map_hover_text_offset = 0;
+static uintptr_t g_native_map_hover_list = 0;
 
 static NativeInfoTitleKind native_info_title_kind(uintptr_t caller) {
     for (const auto &site : g_native_info_title_binding.sites)
@@ -532,20 +534,34 @@ static void capture_native_textbox_widget_render(void *widget, uint32_t tick) {
 static NativeMapHoverContext native_map_hover_context(uintptr_t caller,
         const NativeString *source) {
     NativeMapHoverContext context;
-    if (std::find(g_native_map_hover_returns.begin(),
-            g_native_map_hover_returns.end(), caller) == g_native_map_hover_returns.end())
-        return context;
-    context.kind = NativeMapHoverKind::Unknown;
-    // These native map loops pass lookinfost::display_str directly.
-    // Copy its enum and union payload while that exact record owns this draw;
-    // later card routing retains values, never a borrowed native pointer.
+    const bool known_caller = std::find(g_native_map_hover_returns.begin(),
+        g_native_map_hover_returns.end(), caller) != g_native_map_hover_returns.end();
+    if (known_caller) context.kind = NativeMapHoverKind::Unknown;
     const uintptr_t address = reinterpret_cast<uintptr_t>(source);
-    if (!g_native_map_hover_text_offset || address < g_native_map_hover_text_offset)
+    if (!g_native_map_hover_text_offset || address <= g_native_map_hover_text_offset)
         return context;
-    const auto *record = reinterpret_cast<const void *>(address - g_native_map_hover_text_offset);
+    const uintptr_t record = address - g_native_map_hover_text_offset;
+    if (!known_caller) {
+        // Both native ABIs draw ui_look_list's owned display_str directly.
+        // Read the current list, including in-place changes during this draw
+        // pass; an epoch cache could retain owners from an earlier map tile.
+        constexpr size_t maximum = 4096;
+        NativeBorrowedVector<uintptr_t> owners;
+        if (!native_history_copy(g_native_map_hover_list, owners) ||
+                !owners.valid(maximum) || !owners.size()) return context;
+        static thread_local std::array<uintptr_t, maximum> records;
+        const size_t count = owners.size();
+        if (!native_history_copy_bytes(reinterpret_cast<uintptr_t>(owners.begin),
+                records.data(), count * sizeof(uintptr_t)) ||
+                std::find(records.begin(), records.begin() + count, record) ==
+                    records.begin() + count) return context;
+        context.kind = NativeMapHoverKind::Unknown;
+    }
+    // Ownership comes from a verified native caller or this exact record's
+    // membership, never from its spelling or a rectangle's border textures.
+    // Retain copied enum/payload values rather than borrowed native pointers.
     std::array<int32_t, 7> fields{};
-    if (!native_info_title_memory_readable(record, sizeof(fields))) return context;
-    std::memcpy(fields.data(), record, sizeof(fields));
+    if (!native_history_copy(record, fields)) return context;
     if (fields.front() < 0 || fields.front() > 15) return context;
     context.kind = static_cast<NativeMapHoverKind>(fields.front());
     std::copy_n(fields.begin() + 1, context.data.size(), context.data.begin());
@@ -1984,6 +2000,7 @@ static void capture_native_caption_draw(graphicst *graphics, const NativeString 
 static void reset_native_caption_capture() {
     g_native_map_hover_returns.clear();
     g_native_map_hover_text_offset = 0;
+    g_native_map_hover_list = 0;
     {
         std::lock_guard<std::mutex> lock(g_native_map_track_caption_mutex);
         g_native_map_track_captions.clear();
@@ -2130,6 +2147,7 @@ static bool install_native_caption_hooks() {
     g_native_mission_title_returns = std::move(profile.mission_title_returns);
     g_native_map_hover_returns = std::move(profile.map_hover_returns);
     g_native_map_hover_text_offset = profile.map_caption_text_offset;
+    g_native_map_hover_list = profile.map_hover_list;
     g_native_announcement_page_binding = std::move(profile.announcement_page);
     g_native_announcement_page_rows = g_native_announcement_page_binding.rows_target
         ? reinterpret_cast<NativeAnnouncementRowsFn>(profile.base +

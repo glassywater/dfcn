@@ -370,7 +370,7 @@ class Generator:
             parent = self.types[name].get('inherits-from', '')
             lines.append(f'    {{"{name}", "{parent}", DFCN_NATIVE_BINDING(0x{addresses[0]:x}, 0x{addresses[1]:x}), {ident(name)}_fields.data(), std::size({ident(name)}_fields), {slots}}},')
         lines.append('};')
-        for symbol in ('world', 'gametype', 'gamemode', 'd_init', 'gview', 'plotinfo'):
+        for symbol in ('world', 'gametype', 'gamemode', 'd_init', 'gview', 'plotinfo', 'ui_look_list'):
             addresses = []
             for table, anchor in zip(self.symbols, (0x140000000, 0x400000)):
                 node = next(n for n in table if n.tag == 'global-address' and n.get('name') == symbol)
