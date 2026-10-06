@@ -49727,6 +49727,7 @@ The victory was shared by {n} and {n}.	{n1}与{n2}共同获得了胜利。	ht
 Then select the corners of the bridge.	然后选择桥梁的各个角。	hP
 There were {c} competitors during {e}.	在{e1}期间，共有{c1}名参赛者。	ht
 There were {c} competitors within {p}.	在{p1}，共有{c1}名参赛者。	ht
+This building has been claimed by {n}.	此建筑已被{n1}占用。	hPt
 This creature is displeased right now.	此生物目前有些不满。	hj
 This is an untitled {s}, authored by .	这是一部无题{s}，作者不详。	ht
 This storyteller is really quite good!	这位讲故事的人真的相当出色！	hP
@@ -69438,6 +69439,8 @@ you can succumb to invasions.	入侵就可能让你覆灭。	hq
 {n} was the victor during {e}	在{e1}期间，{n1}获得了胜利	ht
 {n} was the victor within {p}	在{p1}，{n1}获得了胜利	ht
 {n} withdraws from society...	{n1}开始远离人群……	hPt
+{n} works with menacing fury!	{n1}正带着骇人的狂怒工作！	hPt
+{n} works, darkly brooding...	{n1}一边阴郁地沉思，一边工作……	hPt
 {n}' property was confiscated	{n1}的财产被没收	ht
 {n}'s ascension to {s} of {p}	{n1}就任{p1}的{s1}	htEi
 {n}'s presence in {p} at {p}.	在{p2}，{n1}在{p1}出现。	htEi
@@ -86075,6 +86078,7 @@ woolly rhinoceros men	披毛犀人	wi
 {n} is following {n}!	{n1}正在跟随{n2}！	hPt
 {n} is the god of {r}	{n}是掌管{r}的神祇	atl
 {n} whistles harshly.	{n1}发出刺耳的哨声。	hPt
+{n} works secretly...	{n1}正在秘密工作……	hPt
 {n}'s presence in {p}	{n1}在{p1}出现	htEi
 {n}, the force of {r}	{n}——象征{r}的自然之灵	atl
 {p} has become a {s}.	{p1}成为了{s1}。	hPt
@@ -88868,6 +88872,7 @@ yours or companion's	你或同伴留下的	h
 {n} struck down {p}.	{n1}击杀了{p}。	ht
 {n} was born in {d}.	{n}生于第{d}年。	ht
 {n} was born in {p}.	在{p}，{n}出生了。	ht
+{n} works furiously!	{n1}正在疯狂地工作！	hPt
 {n}, the {s} goddess	{n}——{s}女神	atl
 {p} constructed {p}.	{p1}建造了{p2}。	ht
 {p} of the great {n}	{p}，隶属于伟大的{n}	atl

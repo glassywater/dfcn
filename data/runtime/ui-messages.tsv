@@ -97,6 +97,14 @@ This furniture is a part of multiple rooms.	此家具属于多个房间。
 This furniture is a part of	此家具属于：
 This is the resting place of {n}.	这里是{n1}的安息之所。
 
+# Claimed workshops: the native writer splits these complete records into
+# fixed rows and draws the claimant's period separately (PE 0x181ce4).
+This building has been claimed by {n}.	此建筑已被{n1}占用。
+{n} works secretly...	{n1}正在秘密工作……
+{n} works furiously!	{n1}正在疯狂地工作！
+{n} works, darkly brooding...	{n1}一边阴郁地沉思，一边工作……
+{n} works with menacing fury!	{n1}正带着骇人的狂怒工作！
+
 # Objects: all four tabs, inventoried in data/extracted/ui-message-sources.tsv. These are
 # separate complete native draws, not fragments to merge across blank rows.
 # Artifacts.
