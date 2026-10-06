@@ -1405,6 +1405,14 @@ struct NativeUnitChooserRecord {
     SDL_Rect box{}, viewport{}, panel{};
     int skill_x = -1;
     int search_y = -1;
+    std::string squad_name_source, squad_caption_source, squad_caption_complete_source;
+    std::optional<NativeHistoryName> generated_squad_name;
+    std::optional<std::string> squad_alias;
+    int squad_position = -1;
+    int squad_caption_x = -1, squad_caption_y = -1;
+    int unit_identity_x = -1, unit_identity_y = -1;
+    std::string unit_identity_source, unit_identity_complete_source, unit_identity_split_source;
+    std::optional<std::string> unit_identity_target;
 };
 static std::mutex g_native_unit_chooser_record_mutex;
 static uint64_t g_native_unit_chooser_record_epoch = 0;

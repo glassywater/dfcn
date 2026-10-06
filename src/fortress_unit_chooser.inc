@@ -241,6 +241,7 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
     const auto top_draws = captured_native_drawn_text_rows(true);
     draws.insert(draws.end(), top_draws.begin(), top_draws.end());
     const auto clipped = captured_clipped_captions();
+    const auto native_records = captured_native_unit_chooser_records();
     const auto half_at = [&](int x, int y) {
         bool top = false;
         (void)cell_at(x, y, &top);
@@ -428,8 +429,48 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
             if (!identity_source.empty()) identity_source += ' ';
             identity_source += normalize_utterance(field.complete);
         }
+        std::optional<std::string> squad_name;
         std::optional<std::string> identity;
-        if (!identities.empty() && !identities.front()->target.empty()) {
+        for (const auto &native : native_records) {
+            if (native.box.x != record.box.x || native.box.y != record.box.y ||
+                    native.box.w != record.box.w || native.box.h != record.box.h ||
+                    native.squad_position < 0 || native.squad_name_source.empty() ||
+                    native.unit_identity_source.empty() || identities.size() < 2) continue;
+            const auto &heading = *identities.front();
+            if (heading.x != native.squad_caption_x || heading.y != native.squad_caption_y ||
+                    (normalize_utterance(heading.complete) !=
+                        normalize_utterance(native.squad_caption_source) &&
+                     normalize_utterance(heading.complete) !=
+                        normalize_utterance(native.squad_caption_complete_source))) continue;
+            std::string person;
+            for (size_t index = 1; index < identities.size(); ++index) {
+                if (!person.empty()) person += ' ';
+                person += normalize_utterance(identities[index]->complete);
+            }
+            if (person != normalize_utterance(native.unit_identity_source) &&
+                    person != normalize_utterance(native.unit_identity_complete_source) &&
+                    (native.unit_identity_split_source.empty() ||
+                     person != normalize_utterance(native.unit_identity_split_source))) continue;
+            // The native squad callback and the NAME widget own separate
+            // fields. A squad heading must never enter the person parser.
+            // Only the captured squad object establishes alias versus name.
+            if (native.squad_alias) squad_name = native_text_to_utf8(*native.squad_alias);
+            if (!squad_name && native.generated_squad_name)
+                squad_name = translate_history_name(*native.generated_squad_name);
+            if (!squad_name) squad_name = native_text_to_utf8(native.squad_name_source);
+            auto slot = exact_literal_translation("Squad assignment: Member position");
+            constexpr std::string_view placeholder = "{position}";
+            if (slot) {
+                const size_t at = slot->find(placeholder);
+                if (at != std::string::npos)
+                    slot->replace(at, placeholder.size(), std::to_string(native.squad_position + 1));
+                else slot.reset();
+            }
+            identity = slot.value_or("Pos " + std::to_string(native.squad_position) + " ") +
+                native.unit_identity_target.value_or(native_text_to_utf8(native.unit_identity_complete_source));
+            break;
+        }
+        if (!identity && !identities.empty() && !identities.front()->target.empty()) {
             if (identities.size() == 1) identity = identities.front()->target;
             else {
                 std::string profession;
@@ -461,6 +502,7 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
                 [&] { return translate_procedural_fragment(identity_source); });
         if (!identity || identity->empty()) identity = native_text_to_utf8(identity_source);
         bool first_identity = true;
+        std::optional<Match> squad_member;
         for (const auto &field : record.fields) {
             if (!field.skill && field.x >= skill_left) continue;
             const int length = static_cast<int>(field.source.size());
@@ -481,13 +523,23 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
                 bool top = false;
                 const auto *cell = cell_at(field.x, field.y, &top);
                 if (cell) match.layout_foreground_rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+                if (squad_name && !field.skill && !target.empty()) {
+                    squad_member = match;
+                    squad_member->target = *identity;
+                    squad_member->source.clear();
+                    squad_member->length = 0;
+                    squad_member->y = record.box.y + 1;
+                }
                 matches.push_back(std::move(match));
             };
             if (rows[field.y].compare(field.x, length, field.source) == 0) {
                 std::string target;
                 if (!field.duplicate) {
                     if (field.skill) target = field.target;
-                    else if (first_identity) { target = *identity; first_identity = false; }
+                    else if (first_identity) {
+                        target = squad_name ? *squad_name : *identity;
+                        first_identity = false;
+                    }
                 }
                 append(0, length, target);
                 std::fill_n(rows[field.y].begin() + field.x, length, ' ');
@@ -502,6 +554,7 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
                 }
             }
         }
+        if (squad_member) matches.push_back(std::move(*squad_member));
     }
 }
 
@@ -522,6 +575,12 @@ void Overlay::layout_fortress_unit_chooser(SDL_Renderer *renderer) {
         std::sort(fields.begin(), fields.end(), [](const Match *a, const Match *b) {
             return a->y != b->y ? a->y < b->y : a->x < b->x;
         });
+        std::vector<Match *> identity_lines;
+        for (auto *field : fields)
+            if (!field->target.empty() && !field->native_split_duplicate &&
+                    field->layout_x == box.x + 1) identity_lines.push_back(field);
+        std::stable_sort(identity_lines.begin(), identity_lines.end(),
+            [](const Match *a, const Match *b) { return !a->source.empty() && b->source.empty(); });
         for (auto *field : fields) {
             if (field->target.empty() || field->native_split_duplicate) continue;
             const bool skill = field->layout_x != box.x + 1;
@@ -543,6 +602,13 @@ void Overlay::layout_fortress_unit_chooser(SDL_Renderer *renderer) {
             field->layout_line_height_pixels = tile_h;
             field->layout_native_clip = SDL_Rect{origin_x + left * tile_w,
                 origin_y + box.y * tile_h, (right - left) * tile_w, box.h * tile_h};
+            if (!skill && identity_lines.size() == 2) {
+                // Keep the proven squad name intact on its own baseline,
+                // including authored commas, digits and Chinese spelling.
+                field->layout_y = box.y + (field == identity_lines.front() ? 0 : 1);
+                field->layout_pixel_y = tile_h / 2;
+                continue;
+            }
             if (!skill) {
                 const auto fitted = ellipsize_text(field->target,
                     (right - left) * tile_w - 2 * config_.horizontal_padding);

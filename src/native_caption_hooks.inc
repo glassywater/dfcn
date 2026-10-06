@@ -838,6 +838,145 @@ static std::optional<std::string> native_complete_map_track_caption(
     return std::nullopt;
 }
 
+#ifdef _WIN32
+static void capture_native_unit_chooser_squad(uintptr_t unit,
+        const std::array<int32_t, 4> &name_rect, int name_width,
+        bool show_gender, bool truncate_identity,
+        NativeUnitChooserRecord &record) {
+    const auto &hooks = g_native_unit_identity_hooks;
+    int32_t squad_id = -1, position = -1;
+    if (!unit || !hooks.base || !native_history_copy(unit + 0x1f0, squad_id) ||
+            !native_history_copy(unit + 0x1f4, position) || squad_id < 0 ||
+            position < 0 || position > 65535) return;
+    NativeBorrowedVector<uintptr_t> squads;
+    if (!native_history_read_vector(native_history_global(0x24e37c0), squads) ||
+            squads.size() > 65536) return;
+    uintptr_t squad = 0;
+    for (size_t index = 0; index < squads.size(); ++index) {
+        const auto candidate = native_history_vector_at(squads, index);
+        int32_t id = -1;
+        if (!candidate || !native_history_copy(candidate, id)) return;
+        if (id == squad_id) { squad = candidate; break; }
+    }
+    if (!squad) return;
+    std::string alias, source;
+    if (!native_history_copy_string(squad + native_history_layout::squad_alias_offset,
+            alias)) return;
+    std::optional<NativeHistoryName> generated;
+    NativeInputCallbackScope callback;
+    const auto destroy = reinterpret_cast<NativeSearchDestroyFn>(
+        native_pe_address(hooks.base, 0x6f850));
+    if (!destroy) return;
+    if (!alias.empty()) source = alias;
+    else {
+        if (!hooks.english_name) return;
+        NativeSearchString output(destroy);
+        callback.call_native([&] {
+            hooks.english_name(reinterpret_cast<const void *>(squad + 8),
+                &output.value, true, false);
+        });
+        std::string_view value;
+        if (!native_string_view(&output.value, &value, 65536) || value.empty()) return;
+        source.assign(value);
+        NativeHistoryName snapshot;
+        if (capture_native_history_name(hooks.base, squad + 8, snapshot))
+            generated = std::move(snapshot);
+    }
+    // The chooser's native callback 3a9380 owns a separate caption above
+    // Name: alias/name + ", Pos " + the unit's zero-based squad position.
+    // The Name widget renders the actual person one grid row below it.
+    record.squad_name_source = std::move(source);
+    record.squad_caption_complete_source = record.squad_name_source + ", Pos " +
+        std::to_string(position);
+    record.squad_caption_source = record.squad_caption_complete_source;
+    if (!alias.empty()) record.squad_alias = std::move(alias);
+    record.generated_squad_name = std::move(generated);
+    record.squad_position = position;
+    record.squad_caption_x = name_rect[0];
+    record.squad_caption_y = name_rect[1] - 2;
+    record.unit_identity_x = name_rect[0];
+    record.unit_identity_y = name_rect[1] - 1;
+    const auto abbreviate = reinterpret_cast<void (*)(NativeString *, int32_t)>(
+        native_pe_address(hooks.base, 0x52d910));
+    const auto assign = reinterpret_cast<NativeString *(*)(NativeString *, const char *, size_t)>(
+        native_pe_address(hooks.base, 0x6f8d0));
+    if (!abbreviate || !assign || name_width < 3) return;
+    if (record.squad_caption_source.size() > static_cast<size_t>(name_width)) {
+        NativeSearchString header(destroy);
+        callback.call_native([&] {
+            assign(&header.value, record.squad_caption_complete_source.data(),
+                record.squad_caption_complete_source.size());
+            abbreviate(&header.value, name_width);
+        });
+        std::string_view value;
+        if (!native_string_view(&header.value, &value, 65536)) return;
+        record.squad_caption_source.assign(value);
+    }
+    if (!hooks.entries[4].installed || !hooks.entries[4].original) return;
+    NativeSearchString output(destroy);
+    NativeUnitIdentityCall call;
+    call.unit = unit;
+    call.publish = false;
+    {
+        NativeUnitIdentityActiveScope scope(call);
+        const auto original = reinterpret_cast<NativeUnitIdentityFormatFn>(
+            hooks.entries[4].original);
+        callback.call_native([&] {
+            original(reinterpret_cast<void *>(unit), &output.value, show_gender);
+        });
+    }
+    std::string_view value;
+    if (!native_string_view(&output.value, &value, 65536) || value.empty()) return;
+    record.unit_identity_complete_source.assign(value);
+    record.unit_identity_source = record.unit_identity_complete_source;
+    record.unit_identity_target = finish_native_unit_identity_call<4>(
+        call, &output.value, show_gender);
+    if (value.size() <= static_cast<size_t>(name_width)) return;
+    const auto visible_caption = [&](NativeSearchString &caption) -> std::optional<std::string> {
+        std::string_view text;
+        if (!native_string_view(&caption.value, &text, 65536)) return std::nullopt;
+        if (text.size() > static_cast<size_t>(name_width)) {
+            callback.call_native([&] { abbreviate(&caption.value, name_width); });
+            if (!native_string_view(&caption.value, &text, 65536)) return std::nullopt;
+        }
+        std::string result(text);
+        if (result.size() > static_cast<size_t>(name_width)) {
+            result.resize(name_width);
+            result.replace(result.size() - 3, 3, "...");
+        }
+        return result;
+    };
+    if (truncate_identity) {
+        if (const auto visible = visible_caption(output)) record.unit_identity_source = *visible;
+        return;
+    }
+    if (!hooks.entries[2].installed || !hooks.entries[2].original ||
+            !hooks.entries[3].installed || !hooks.entries[3].original) return;
+    NativeSearchString name(destroy), role(destroy);
+    NativeUnitIdentityCall display_call;
+    display_call.unit = unit;
+    display_call.publish = false;
+    {
+        NativeUnitIdentityActiveScope scope(display_call);
+        callback.call_native([&] {
+            reinterpret_cast<NativeUnitIdentityNameOnlyFn>(hooks.entries[2].original)(
+                reinterpret_cast<void *>(unit), &name.value);
+            reinterpret_cast<NativeUnitIdentityFormatFn>(hooks.entries[3].original)(
+                reinterpret_cast<void *>(unit), &role.value, show_gender);
+        });
+    }
+    std::string_view full_name, full_role;
+    if (native_string_view(&name.value, &full_name, 65536) &&
+            native_string_view(&role.value, &full_role, 65536))
+        record.unit_identity_split_source = std::string(full_name) +
+            (!full_name.empty() && !full_role.empty() ? " " : "") + std::string(full_role);
+    const auto visible_name = visible_caption(name), visible_role = visible_caption(role);
+    if (visible_name && visible_role)
+        record.unit_identity_source = *visible_name +
+            (!visible_name->empty() && !visible_role->empty() ? " " : "") + *visible_role;
+}
+#endif
+
 // A text_truncated widget keeps original_str after arrange() has overwritten
 // str. Read both from the LIVE widget on every render, including pages built
 // before a hot reload. A resize-only capture cannot recover these cached rows.
@@ -917,17 +1056,33 @@ static void capture_native_unit_chooser_record(void *widget) {
 
     std::array<uintptr_t, 3> members{};
     if (!children(row, members)) return;
-    bool has_portrait = false;
+    uintptr_t portrait_unit = 0;
+    uintptr_t name_unit = 0;
+    std::optional<Widget> name_widget;
+    bool show_gender = false;
+    bool truncate_identity = false;
+    int name_width = 0;
     for (uintptr_t at = members[0]; at < members[1]; at += 16) {
         uintptr_t member = 0;
         std::memcpy(&member, reinterpret_cast<const void *>(at), sizeof(member));
-        Widget portrait;
+        Widget portrait, name;
         if (read_widget(member, 0x162e8e0, portrait) && portrait.parent == row.address) {
-            has_portrait = true;
-            break;
+            const auto *bytes = reinterpret_cast<const unsigned char *>(member);
+            if (native_info_title_memory_readable(bytes, 0x158))
+                std::memcpy(&portrait_unit, bytes + 0x150, sizeof(portrait_unit));
+        } else if (read_widget(member, 0x162eaf8, name) && name.parent == row.address) {
+            const auto *bytes = reinterpret_cast<const unsigned char *>(member);
+            if (!native_info_title_memory_readable(bytes, 0x15b) || !bytes[0x159]) continue;
+            std::memcpy(&name_unit, bytes + 0x150, sizeof(name_unit));
+            name_widget = name;
+            show_gender = bytes[0x158] != 0;
+            truncate_identity = bytes[0x15a] != 0;
+            int32_t minimum_width = 0;
+            std::memcpy(&minimum_width, bytes + 0xc4, sizeof(minimum_width));
+            name_width = std::max(name.rect[2] - name.rect[0] + 1, minimum_width);
         }
     }
-    if (!has_portrait) return;
+    if (!portrait_unit) return;
     const auto *graphics = native_graphics();
     if (!graphics || !native_info_title_memory_readable(graphics, sizeof(*graphics)) ||
             graphics->dimx <= 0 || graphics->dimx > 1000 ||
@@ -951,6 +1106,11 @@ static void capture_native_unit_chooser_record(void *widget) {
     record.panel = {list.rect[0], list.rect[1],
         list.rect[2] - list.rect[0] + 1, list.rect[3] - list.rect[1] + 1};
     record.skill_x = text.rect[0];
+    // Both direct children retain the same native unit; this establishes the
+    // source of a squad heading without inferring aliases from their spelling.
+    if (name_widget && name_unit == portrait_unit && in_grid(*name_widget))
+        capture_native_unit_chooser_squad(portrait_unit, name_widget->rect,
+            name_width, show_gender, truncate_identity, record);
     // unit_list's constructor creates a direct textbox child named
     // "Filter box" (0x1424994), then anchors its three rows at the bottom.
     std::array<uintptr_t, 3> list_members{};

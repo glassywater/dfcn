@@ -59475,6 +59475,7 @@ Some sacred sites were desecrated	一些圣地遭到亵渎	h
 Soon the world will be set right.	世界很快就会恢复正轨。	hP
 Sort units by professioncategory.	按专业类别对单位进行排序.	w
 Spread rumor of {e}'s destruction	传播{e1}被毁的传闻	hPt
+Squad assignment: Member position	第{position}名队员：	l
 State feelings of disillusionment	表达幻灭	hP
 State feelings of great adoration	表达强烈的崇拜	hP
 State feelings of great affection	表达强烈的喜爱	hP
@@ -92537,7 +92538,6 @@ Diagnosis required	需要诊断
 Dig canceled (wet)	挖掘取消（潮湿）	w
 Digging Implements	挖掘工具
 Disband the squad.	解散小队。	hj
-Disband	解散	w
 Disdains craftwork	轻视工艺	w
 Disdains eloquence	轻视口才	w
 Disdains hard work	轻视勤劳	w
@@ -133936,6 +133936,7 @@ Delight	欣喜	w
 Deshlir	德斯利尔	wi
 Despair	绝望	w
 Details	详情	w
+Disband	解散	w
 Disgust	厌恶	w
 Dislike	不喜欢	w
 Display	展示台	w
