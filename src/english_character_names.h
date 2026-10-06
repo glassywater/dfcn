@@ -1,6 +1,7 @@
 #pragma once
 
 #include <algorithm>
+#include <array>
 #include <cstdint>
 #include <filesystem>
 #include <fstream>
@@ -75,6 +76,59 @@ public:
         Part p = surname_part(source);
         if (!p.known || !p.complete) return std::nullopt;
         return p.text;
+    }
+
+    struct EntityWord {
+        std::string_view english;
+        int16_t part_of_speech = -1;
+    };
+
+    // Places and governing entities use the same authored imagery, grammar
+    // and pronunciation as surnames, but never their particles or fallback.
+    // The caller owns whole-name transliteration and the final type suffix.
+    std::optional<std::string> entity_compound(std::string_view left,
+        std::string_view right, int16_t left_pos = -1, int16_t right_pos = -1) const {
+        if (!loaded_) return std::nullopt;
+        return entity_result(entity_join(entity_parts(left, left_pos),
+            entity_parts(right, right_pos)));
+    }
+
+    std::optional<std::string> entity_name(std::string_view source) const {
+        if (!loaded_) return std::nullopt;
+        return entity_result(entity_name_parts(source));
+    }
+
+    std::optional<std::string> entity_name(const std::array<EntityWord, 7> &words) const {
+        if (!loaded_) return std::nullopt;
+        const auto present = [&](std::size_t slot) { return !trim(words[slot].english).empty(); };
+        const auto part = [&](std::size_t slot) {
+            return entity_parts(words[slot].english, words[slot].part_of_speech);
+        };
+        std::vector<Part> front, title;
+        if (present(0) || present(1)) {
+            front = present(0) ? part(0) : part(1);
+            if (present(0) && present(1)) front = entity_join(front, part(1));
+            if (front.empty()) return std::nullopt;
+        }
+        bool has_title = false;
+        for (std::size_t slot = 6; slot-- > 2;) {
+            if (!present(slot)) continue;
+            auto current = part(slot);
+            if (current.empty()) return std::nullopt;
+            title = has_title ? entity_join(current, title) : std::move(current);
+            has_title = true;
+            if (title.empty()) return std::nullopt;
+        }
+        const bool has_core = !front.empty() || has_title;
+        std::vector<Part> core = front.empty() ? std::move(title) :
+            (title.empty() ? std::move(front) : entity_join(front, title));
+        if (has_core && core.empty()) return std::nullopt;
+        if (present(6)) {
+            auto tail = part(6);
+            if (tail.empty()) return std::nullopt;
+            core = core.empty() ? std::move(tail) : entity_join(core, tail);
+        }
+        return entity_result(core);
     }
 
     std::optional<std::string> title(std::string_view source) const {
@@ -858,19 +912,20 @@ private:
         return best;
     }
 
-    Part surname_combine(const Part &left, const Part &right) const {
+    Part surname_combine(const Part &left, const Part &right, bool entity = false) const {
         using Relation = MandarinNameProsody::Relation;
         // An er surname keeps these independently parsed A/B slots intact.
         const bool left_er = er_agent(left), right_er = er_agent(right);
         const bool requires_er_actor = left_er || right_er;
         // The ordinary grammar engine may reorder nouns and predicates. An
         // er surname must leave that engine before any such transformation.
-        if (requires_er_actor) return ordered_er_pair(left, right);
+        if (requires_er_actor && !entity) return ordered_er_pair(left, right);
         struct Candidate {
             std::string text;
             MandarinNameProsody::Shape shape;
             std::string_view first_context, second_context;
             int form_score, name_style, pattern_rank;
+            const Part *head = nullptr;
         };
         std::vector<Candidate> candidates;
         Part best = original(left.english + right.english);
@@ -882,6 +937,12 @@ private:
                 (!terminal && first.text == second.text)) return;
             std::string_view first_text = first.actor_suffix ? first.full_text : first.text;
             unsigned a_width = glyph_count(first_text), b_width = glyph_count(second.text);
+            if (entity && (!link.empty() || actor_ending || first.actor_suffix ||
+                second.actor_suffix || first_text.find("者") != std::string_view::npos ||
+                second.text.find("者") != std::string_view::npos ||
+                first_text.find("之") != std::string_view::npos ||
+                second.text.find("之") != std::string_view::npos ||
+                a_width != b_width || (a_width != 1 && a_width != 2))) return;
             bool modifier_evidence = first.text == a.surname_modifier ||
                 first.text == a.source_sense || first.text == a.surname_source_full;
             if (link == "之") {
@@ -1012,6 +1073,9 @@ private:
                 surname_word_fit(b, b_role, second) >= 4;
             if (has(a, Quality | State) && !has(a, Object) && !modifier_evidence)
                 compact_relation = false;
+            // A longer surface does not make an unsupported juxtaposition
+            // natural. Both entity widths need the same licensed relation.
+            if (entity && !compact_relation) return;
             int pattern = link.empty() ?
                 (a_width == 1 ? (compact_relation ? 4 : 0) : 1) :
                 (a_width == 1 && b_width == 1 ? 3 : 2);
@@ -1036,7 +1100,7 @@ private:
                 {first_text, second.text, link, ending, relation,
                     first.actor_suffix || (a_role == SurnameForm::Agent && first_text.ends_with("者")),
                     !second.actor_suffix && b_role == SurnameForm::Agent && second.text.ends_with("者")},
-                first_context, second_context, fit, style, pattern});
+                first_context, second_context, fit, style, pattern, &b});
         };
         auto pair = [&](const Part &a, SurnameForm a_role, const Part &b, SurnameForm b_role,
             Relation relation, int naturalness, bool genitive = false, bool actor_ending = false) {
@@ -1213,7 +1277,7 @@ private:
                 b, has(b, Action) ? SurnameForm::Action : SurnameForm::Image,
                 Relation::Coordinate, 0);
         }
-        if (same_surname_sense(left, right) && a_noun && !has(left, Agent)) {
+        if (!entity && same_surname_sense(left, right) && a_noun && !has(left, Agent)) {
             std::string_view marker;
             if (family(left, {"creature", "plant", "body", "weapon", "armor", "artifact",
                 "building", "person"})) marker = "双";
@@ -1229,6 +1293,7 @@ private:
         for (const auto &candidate : candidates) {
             int pronunciation = MandarinNameProsody::rank(surname_readings_,
                 candidate.shape, candidate.first_context, candidate.second_context);
+            if (entity && pronunciation < -3) continue;
             // Construction stages survive cross-sense comparison. Sound
             // breaks ties within a stage; a genuine phonetic collision can
             // demote a compact coinage rather than being hidden by its width.
@@ -1244,6 +1309,7 @@ private:
                 std::clamp(pronunciation, -12, 6) * 2;
             if (best.known && (score < best.score ||
                 (score == best.score && particles >= best_particles))) continue;
+            if (entity && candidate.head) best = *candidate.head;
             best.text = best.short_text = best.full_text = candidate.text;
             best.known = true;
             best.complete = left.complete && right.complete;
@@ -1254,7 +1320,19 @@ private:
             best.order = left.order + '\n' + right.order;
             best.score = score;
             best_particles = particles;
+            if (entity) {
+                // Retain the chosen head's sense for later title modifiers,
+                // while every available surface retains all previous roots.
+                // A subsequent join cannot silently select the old head alone.
+                best.source_sense = best.surname_source_full = best.surname_core =
+                    best.surname_modifier = best.surname_head = best.surname_agent = best.text;
+                best.surname_compact = glyph_count(best.text) == 1 ? best.text : "";
+                best.surname_balanced = glyph_count(best.text) == 2 ? best.text : "";
+                best.surname_source_action = best.action = has(best, Action) ? best.text : "";
+                best.surname_er_identity.clear();
+            }
         }
+        if (entity) return best;
         if (!best.known && !has(left, Agent) && !has(right, Agent) &&
             same_surname_sense(left, right) && left.surname_core == right.surname_core &&
             left.surname_compact == right.surname_compact && left.kinds == right.kinds &&
@@ -1351,6 +1429,138 @@ private:
         // do not erase a known surname or publish a half-translated identity.
         if (best.known) return best;
         return surname_actor_shape(recognized.text) ? recognized : original(source);
+    }
+
+    static std::optional<std::string> entity_result(const std::vector<Part> &parts) {
+        Part best;
+        for (const auto &part : parts)
+            if (part.known && part.complete && better(part, best)) best = part;
+        return best.known ? std::optional<std::string>(std::move(best.text)) : std::nullopt;
+    }
+
+    static void append_entity_part(std::vector<Part> &parts, Part part) {
+        if (!part.known || !part.complete) return;
+        for (auto &current : parts) {
+            if (current.text == part.text && current.kinds == part.kinds &&
+                current.state == part.state && current.categories == part.categories &&
+                current.families == part.families) {
+                if (better(part, current)) current = std::move(part);
+                return;
+            }
+        }
+        parts.push_back(std::move(part));
+    }
+
+    std::vector<Part> entity_join(const std::vector<Part> &left,
+        const std::vector<Part> &right) const {
+        std::vector<Part> out;
+        for (const auto &a : left) for (const auto &b : right) {
+            append_entity_part(out, surname_combine(a, b, true));
+            append_entity_part(out, surname_combine(b, a, true));
+        }
+        return out;
+    }
+
+    std::vector<Part> entity_parts(std::string_view source, int16_t pos = -1) const {
+        source = trim(source);
+        if (source.empty()) return {};
+        std::uint32_t mask = Object | Quality | Action | State | Agent | Prefix;
+        if (pos >= 0) {
+            if (pos == 0 || pos == 1) mask = Object | Agent;
+            else if (pos == 2) mask = Quality | State;
+            else if (pos == 3) mask = Prefix;
+            else if (pos >= 4 && pos <= 8) mask = Action | State;
+            else return {};
+        }
+        std::vector<Part> out;
+        // Personal-name overrides carry no native POS evidence and cannot
+        // supply a place or government sense. Exact lexical words also protect
+        // intrinsic English hyphens and spaces before compound segmentation.
+        auto exact = surname_variants(source, true);
+        if (!exact.empty()) {
+            for (auto p : exact) {
+                p.kinds &= mask;
+                if (!p.kinds || p.text.empty() || p.text.find("之") != std::string::npos ||
+                    p.text.find("者") != std::string::npos || p.text.ends_with("的")) continue;
+                p.score = role_score(p, Role::Plain);
+                append_entity_part(out, std::move(p));
+            }
+            return out;
+        }
+        // A native WORD's resolved form is one lexical root, even when its
+        // spelling resembles a generated compound. Only text without saved
+        // POS may infer the existing English compound boundary.
+        if (pos >= 0) return {};
+        const std::string folded = key(source);
+        if (folded.size() > 512) return {};
+        for (std::size_t cut = 1; cut < folded.size(); ++cut) {
+            std::size_t right_start = cut;
+            if (folded[cut] == '-') ++right_start;
+            if (right_start >= folded.size() || space(folded[cut - 1]) ||
+                space(folded[right_start]) || folded[cut - 1] == '-') continue;
+            const auto first = surname_variants(std::string_view(folded).substr(0, cut), true);
+            const auto second = surname_variants(std::string_view(folded).substr(right_start), true);
+            if (first.empty() || second.empty()) continue;
+            for (const auto &a : first) for (const auto &b : second) {
+                append_entity_part(out, surname_combine(a, b, true));
+                append_entity_part(out, surname_combine(b, a, true));
+            }
+        }
+        return out;
+    }
+
+    std::vector<Part> entity_phrase_parts(std::string_view source) const {
+        source = trim(source);
+        if (source.empty()) return {};
+        if (words_.contains(key(source))) return entity_parts(source);
+        auto whole = entity_parts(source);
+        if (!whole.empty()) return whole;
+        std::vector<std::vector<Part>> groups;
+        std::size_t start = 0;
+        while (start < source.size()) {
+            while (start < source.size() && space(source[start])) ++start;
+            if (start == source.size()) break;
+            std::size_t first_end = start;
+            while (first_end < source.size() && !space(source[first_end])) ++first_end;
+            std::size_t chosen_end = first_end;
+            // The longest complete multiword lexeme stays one authored word.
+            for (std::size_t end = first_end; end <= source.size(); ++end) {
+                if (end < source.size() && !space(source[end])) continue;
+                if (words_.contains(key(source.substr(start, end - start)))) chosen_end = end;
+            }
+            auto current = entity_parts(source.substr(start, chosen_end - start));
+            if (current.empty()) return {};
+            groups.push_back(std::move(current));
+            start = chosen_end;
+        }
+        if (groups.empty()) return {};
+        auto result = std::move(groups.back());
+        for (std::size_t index = groups.size() - 1; index > 0; --index) {
+            result = entity_join(groups[index - 1], result);
+            if (result.empty()) return {};
+        }
+        return result;
+    }
+
+    std::vector<Part> entity_name_parts(std::string_view source) const {
+        source = trim(source);
+        if (source.empty() || next_quote(source, 0)) return {};
+        if (words_.contains(key(source))) return entity_parts(source);
+        if (const auto of = marker(source, "of")) {
+            auto tail = entity_phrase_parts(source.substr(*of + 2));
+            if (tail.empty()) return {};
+            if (!*of) return tail;
+            auto head = entity_name_parts(source.substr(0, *of));
+            return entity_join(head, tail);
+        }
+        if (const auto the = marker(source, "the")) {
+            auto title = entity_phrase_parts(source.substr(*the + 3));
+            if (title.empty()) return {};
+            if (!*the) return title;
+            auto front = entity_phrase_parts(source.substr(0, *the));
+            return entity_join(front, title);
+        }
+        return entity_phrase_parts(source);
     }
 
     // A grammatical marker is protected when it belongs to an actual complete

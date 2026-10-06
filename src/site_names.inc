@@ -99,16 +99,6 @@ static std::string site_name_attribute_suffix(std::string_view label,
     return site_type == 5 ? "聚落" : "地点";
 }
 
-static bool site_imagery_role(std::string_view roles, std::string_view role) {
-    while (!roles.empty()) {
-        const size_t separator = roles.find('|');
-        if (roles.substr(0, separator) == role) return true;
-        if (separator == std::string_view::npos) break;
-        roles.remove_prefix(separator + 1);
-    }
-    return false;
-}
-
 bool Overlay::load_site_name_imagery() {
     site_name_imagery_.clear();
     fs::path path = runtime::data_path() / "site-name-imagery.tsv";
@@ -153,157 +143,21 @@ bool Overlay::load_site_name_imagery() {
 }
 
 std::optional<std::string> Overlay::localize_site_name(const NativeHistoryName &name) const {
-    const auto english = reconstruct_site_english_name(name);
-    if (name.site_id < 0 || !english || !name.first_name.empty() ||
-            !name.nickname.empty() || contains_cjk_utf8(*english)) return std::nullopt;
-    struct Image {
-        std::string head, modifier, roles;
-        int16_t pos = -1;
-        std::string word_id;
-    };
-    const auto noun = [](int16_t pos) { return pos == 0 || pos == 1; };
-    const auto verb = [](int16_t pos) { return pos >= 4 && pos <= 8; };
-    const auto image = [&](size_t slot) -> std::optional<Image> {
+    if (name.site_id < 0 || !name.has_name || !name.first_name.empty() ||
+            !name.nickname.empty()) return std::nullopt;
+    std::array<EnglishCharacterNames::EntityWord, 7> words;
+    for (size_t slot = 0; slot < words.size(); ++slot) {
         const auto &word = name.words[slot];
-        if (word.id.empty() || !word.has_form) return std::nullopt;
-        const std::string_view part = noun(word.part_of_speech) ? "NOUN"
-            : word.part_of_speech == 2 ? "ADJ" : word.part_of_speech == 3 ? "PREFIX"
-            : verb(word.part_of_speech) ? "VERB" : "";
-        if (part.empty()) return std::nullopt;
-        const auto found = site_name_imagery_.find(word.id + '\t' + std::string(part));
-        if (found == site_name_imagery_.end()) return std::nullopt;
-        const auto &entry = found->second;
-        return Image{entry.head, entry.modifier, entry.roles, word.part_of_speech, word.id};
-    };
-    const auto any = [](const Image &value, std::initializer_list<std::string_view> roles) {
-        return std::any_of(roles.begin(), roles.end(), [&](std::string_view role) {
-            return site_imagery_role(value.roles, role);
-        });
-    };
-    const auto named = [](const Image &head, std::string spelling) {
-        return Image{std::move(spelling), {}, head.roles, 0, head.word_id};
-    };
-    const auto modifier = [&](const Image &before, const Image &head) -> std::optional<Image> {
-        if (before.modifier.empty() || head.head.empty() || !noun(head.pos)) return std::nullopt;
-        const bool concrete = any(head, {"animal", "plant", "landscape", "water", "sky",
-            "weather", "time", "material", "building", "object", "weapon", "body", "radiance"});
-        const bool nature = any(head, {"animal", "plant", "landscape", "water", "sky", "weather", "radiance"});
-        bool coherent = false;
-        if (any(before, {"pair", "group"}))
-            coherent = any(head, {"animal", "plant", "landscape", "water", "sky",
-                "building", "object", "weapon", "body"});
-        else if (any(before, {"color", "quality"})) coherent = concrete;
-        else if (any(before, {"direction"}))
-            coherent = any(head, {"landscape", "water", "sky", "building"});
-        else if (any(before, {"material"}))
-            coherent = any(head, {"building", "object", "weapon", "body", "plant", "landscape"});
-        else if (any(before, {"radiance"})) coherent = concrete;
-        else if (any(before, {"sound"}) && verb(before.pos)) {
-            coherent = any(head, {"animal", "water", "weather", "sky"});
-            if (before.word_id == "CHIRP" || before.word_id == "TWEET") {
-                static constexpr std::string_view chirping[] = {
-                    "BIRD", "LARK", "BEE", "CRICKET", "GRASSHOPPER", "WREN", "SPARROW",
-                };
-                coherent = std::find(std::begin(chirping), std::end(chirping), head.word_id) !=
-                    std::end(chirping);
-            }
-            if (coherent && before.word_id == "SING")
-                return named(head, head.head + before.head);
-        }
-        else if (any(before, {"weather", "time", "sky"}))
-            coherent = nature || any(head, {"building"}) ||
-                (any(before, {"time"}) && any(head, {"sound"}));
-        else if (noun(before.pos) && any(before, {"animal", "plant"}))
-            coherent = any(head, {"landscape", "water", "building", "object", "weapon", "body"});
-        else if (noun(before.pos) && any(before, {"water"}))
-            coherent = any(head, {"landscape", "plant", "building"});
-        else if (noun(before.pos) && any(before, {"landscape"}))
-            coherent = any(head, {"water", "building"});
-        if (!coherent) return std::nullopt;
-        if (any(before, {"radiance"}) && any(head, {"radiance"})) {
-            // Both original WORDs describe the same light image. Absorb its
-            // redundant noun rather than making 微光光 or 光光泽.
-            if (before.modifier.ends_with(head.head)) return named(head, before.modifier);
-            if (head.head.starts_with(before.modifier)) return named(head, head.head);
-        }
-        return named(head, before.modifier + head.head);
-    };
-    const auto pair = [&](size_t first, size_t second) -> std::optional<Image> {
-        const auto &a = name.words[first];
-        const auto &b = name.words[second];
-        // A whole-name relation, not a general synonym for either WORD.
-        if (a.has_form && b.has_form &&
-                ((a.id == "DREAM" && verb(a.part_of_speech) && b.id == "PRAISE" && noun(b.part_of_speech)) ||
-                 (b.id == "DREAM" && verb(b.part_of_speech) && a.id == "PRAISE" && noun(a.part_of_speech))))
-            return Image{"颂梦", {}, {}, 0, {}};
-        const auto left = image(first), right = image(second);
-        if (!left || !right) return std::nullopt;
-        if (const auto result = modifier(*left, *right)) return result;
-        // A rear adjective, quantity or a named natural state can become
-        // the Chinese modifier. Ordinary noun pairs are never reversed just
-        // because the reversed dictionary string looks shorter.
-        if (right->pos == 2 || right->pos == 3 || any(*right,
-                {"pair", "group", "color", "direction", "radiance", "weather", "time", "sky", "sound"}))
-            return modifier(*right, *left);
-        return std::nullopt;
-    };
-    const auto group = [&](size_t first, size_t second) -> std::optional<Image> {
-        const bool left = !name.words[first].id.empty(), right = !name.words[second].id.empty();
-        if (left && right) return pair(first, second);
-        if (!left && !right) return std::nullopt;
-        const auto result = image(left ? first : second);
-        return result && noun(result->pos) && !result->head.empty() ? result : std::nullopt;
-    };
-
-    const bool front_present = !name.words[0].id.empty() || !name.words[1].id.empty();
-    const bool title_present = !name.words[2].id.empty() || !name.words[3].id.empty() ||
-        !name.words[4].id.empty() || !name.words[5].id.empty();
-    std::optional<Image> front, title;
-    if (front_present && !(front = group(0, 1))) return std::nullopt;
-    if (title_present) {
-        if (name.words[5].id.empty() || !(title = group(4, 5))) return std::nullopt;
-        for (const size_t slot : {size_t{3}, size_t{2}}) {
-            if (name.words[slot].id.empty()) continue;
-            const auto adjective = image(slot);
-            if (!adjective || (adjective->pos != 2 && adjective->pos != 3)) return std::nullopt;
-            title = modifier(*adjective, *title);
-            if (!title) return std::nullopt;
-        }
+        if (word.id.empty()) continue;
+        if (!word.has_form || word.english_form.empty()) return std::nullopt;
+        words[slot] = {word.english_form, word.part_of_speech};
     }
-    std::string core = front ? front->head : std::string{};
-    if (title) {
-        if (!core.empty()) core += "·";
-        core += title->head;
-    }
-    if (core.empty()) return std::nullopt;
-    if (!name.words[6].id.empty()) {
-        const auto tail = image(6);
-        if (!tail || !noun(tail->pos) || tail->head.empty()) return std::nullopt;
-        // The captured of slot proves the name's attributive relation; it
-        // does not prove ownership, inhabitants or a historical event.
-        core = tail->head + "之" + core;
-    }
-    // Only this semantic decision proves a generic centre and its complete
-    // rendered tail. Phonetic endings and named images of another class
-    // never enter this normalization (e.g. 古塔堡 stays intact).
-    const auto &centre = title ? *title : *front;
-    static constexpr std::pair<std::string_view, std::string_view> generic_centres[] = {
-        {"TOWER", "tower"}, {"CASTLE", "castle"}, {"FORTRESS", "fortress"},
-        {"ABBEY", "monastery"}, {"CAMP", "camp"}, {"CAVE", "cave"},
-        {"CAVERN", "cave"}, {"PALACE", "mysterious palace"},
-    };
-    for (const auto &[word, label] : generic_centres) {
-        if (word != centre.word_id ||
-                site_name_attribute_suffix(label) != site_name_attribute_suffix(name.site_label, name.site_type))
-            continue;
-        const auto source = site_name_imagery_.find(centre.word_id + "\tNOUN");
-        if (source == site_name_imagery_.end() || source->second.head.empty() ||
-                !core.ends_with(source->second.head)) break;
-        if (core.size() == source->second.head.size()) return std::nullopt;
-        core.resize(core.size() - source->second.head.size());
-        break;
-    }
-    return core;
+    if (name.words[2].id.empty() && name.words[3].id.empty() && name.words[5].id.empty())
+        words[4] = {};
+    // Share the name lexicon, grammatical relations and Mandarin scoring.
+    // The entity mode accepts only A+B/B+A in 1+1 or 2+2 form, with no
+    // personal-name particles or mechanical semantic fallback.
+    return english_character_names_.entity_name(words);
 }
 
 bool Overlay::load_site_name_decisions() {
@@ -454,6 +308,35 @@ std::optional<std::string> Overlay::translate_saved_site_name(
     return transliterate_site_spelling(source.original);
 }
 
+std::string Overlay::transliterate_english_name(std::string_view english,
+        const NativeHistoryName *identity) const {
+    if (contains_cjk_utf8(english)) return native_text_to_utf8(english);
+    const auto captured = identity ? reconstruct_site_english_name(*identity) : std::nullopt;
+    if (!identity || !captured || !identity->first_name.empty() ||
+            !identity->nickname.empty() || lower(*captured) != lower(std::string(english)))
+        return english_name_transliterator_.name(english);
+
+    // A generated compound's saved WORD boundaries take precedence over an
+    // accidental English dictionary match of its concatenated spelling.
+    // Its original POS also selects homographs such as wind and read.
+    const auto word = [&](size_t slot) {
+        const auto &source = identity->words[slot];
+        return source.id.empty() || !source.has_form ? std::string{} :
+            english_name_transliterator_.word(source.english_form, source.part_of_speech);
+    };
+    std::string result = word(0) + word(1);
+    if (!identity->words[2].id.empty() || !identity->words[3].id.empty() ||
+            !identity->words[5].id.empty()) {
+        std::string title = word(2) + word(3);
+        if (!identity->words[4].english_form.empty()) title += word(4) + '-';
+        title += word(5);
+        if (!title.empty()) result += english_name_transliterator_.word("the") + title;
+    }
+    if (!identity->words[6].id.empty())
+        result += english_name_transliterator_.word("of") + word(6);
+    return result.empty() ? english_name_transliterator_.name(english) : result;
+}
+
 std::optional<std::string> Overlay::translate_english_site_name(
         std::string_view english, const NativeHistoryName *identity) const {
     english = trim_view(english);
@@ -462,52 +345,19 @@ std::optional<std::string> Overlay::translate_english_site_name(
         english = trim_view(english.substr(1, english.size() - 2));
     if (english.empty()) return std::nullopt;
     if (contains_cjk_utf8(english)) return native_text_to_utf8(english);
-    const SiteNameDecision *decision = nullptr;
-    // Hidden WORD/POS fields only identify the grammar of this exact English
-    // text. A caller with the native-language spelling cannot enter this path
-    // by supplying an unrelated site's metadata or a native fallback string.
+    // Exact field identity supplies the original WORD/POS boundaries. If
+    // those slots cannot form a natural name, pronounce the entire English
+    // field; a text-only retry must not discard its grammatical evidence.
     if (identity && identity->site_id >= 0) {
         const auto captured = reconstruct_site_english_name(*identity);
         if (captured && lower(native_text_to_utf8(*captured)) ==
                 lower(native_text_to_utf8(english))) {
-            const auto reviewed = site_name_decisions_.find(site_english_name_decision_key(
-                *captured, identity->type, identity->words));
-            if (reviewed != site_name_decisions_.end()) decision = &reviewed->second;
-            else if (auto localized = localize_site_name(*identity)) return localized;
+            if (auto localized = localize_site_name(*identity)) return localized;
+            return transliterate_english_name(english, identity);
         }
     }
-    if (!decision) {
-        // The explicit English place context selects the shared title and
-        // compound compositor without person-name recognition. Neither it nor its
-        // phonetic fallback ever receives the native-language site spelling.
-        const auto translated = translate_procedural_fragment(
-            std::string(english), false, false, {},
-            ProceduralFragmentContext::english_site_name);
-        if (translated && !translated->empty()) {
-            if (translated->starts_with("“") && translated->ends_with("”"))
-                return translated->substr(std::string("“").size(),
-                    translated->size() - std::string("“”").size());
-            return translated;
-        }
-        return transliterate_site_spelling(english);
-    }
-    std::string core = decision->core;
-    // A reviewed row may explicitly record a generic element already in its
-    // written core as "native-type-label:Chinese-tail". Only that declaration
-    // permits removing a matching tail, and only within the same real type.
-    // Phonetic endings and an unrelated named image (e.g. 古塔堡) stay intact.
-    const size_t separator = decision->embedded_attribute.find(':');
-    if (separator != std::string::npos) {
-        const std::string_view attribute(decision->embedded_attribute.data(), separator);
-        const std::string_view tail(decision->embedded_attribute.data() + separator + 1,
-            decision->embedded_attribute.size() - separator - 1);
-        const std::string declared = site_name_attribute_suffix(attribute);
-        const std::string actual = site_name_attribute_suffix(identity->site_label, identity->site_type);
-        if (!tail.empty() && declared != "地点" && declared == actual &&
-                core.size() > tail.size() && core.ends_with(tail))
-            core.resize(core.size() - tail.size());
-    }
-    return core;
+    if (auto localized = english_character_names_.entity_name(english)) return localized;
+    return transliterate_english_name(english);
 }
 
 std::string Overlay::site_name_core(const NativeHistoryName &name) const {

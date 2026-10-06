@@ -614,6 +614,7 @@ static const std::unordered_map<std::string_view, std::string_view> preference_t
     {"the color midnight blue", "午夜蓝"},
     {"the color mint green", "薄荷绿"},
     {"the color moss green", "苔藓绿"},
+    {"the color muck-brown", "污泥棕色"},
     {"the color ochre", "赭黄色"},
     {"the color olive", "橄榄色"},
     {"the color orange", "橙色"},

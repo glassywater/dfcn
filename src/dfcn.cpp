@@ -60,6 +60,7 @@
 #include "core_api.h"
 #include "runtime_paths.h"
 #include "english_character_names.h"
+#include "english_name_transliteration.h"
 
 namespace fs = std::filesystem;
 
@@ -3488,6 +3489,8 @@ private:
     std::optional<std::string> translate_site_name(const NativeHistoryName &name) const;
     std::optional<std::string> translate_english_site_name(
         std::string_view english, const NativeHistoryName *identity = nullptr) const;
+    std::string transliterate_english_name(std::string_view english,
+        const NativeHistoryName *identity = nullptr) const;
     std::optional<std::string> translate_site_display(
         const NativeHistoryName &name, std::string_view source) const;
     std::string site_name_core(const NativeHistoryName &name) const;
@@ -3684,6 +3687,7 @@ private:
     // Chinese character-name selection always receives the resulting text.
     std::unordered_map<std::string, std::array<std::string, 9>> history_english_name_forms_;
     EnglishCharacterNames english_character_names_;
+    EnglishNameTransliterator english_name_transliterator_;
     // The editor offers all raw forms, including those disallowed in a
     // surname compound. Keep these out of the surname segmentation grammar.
     std::unordered_map<std::string, std::vector<ProceduralNameMeaning>>
@@ -4121,6 +4125,8 @@ private:
     bool load_site_name_decisions();
     bool load_site_name_imagery();
     bool load_civilization_name_terms();
+    std::string civilization_name_suffix(const NativeHistoryName &name) const;
+    std::string civilization_name_suffix(std::string_view english) const;
     bool load_site_government_name_terms();
     std::optional<std::string> site_government_name_term(
         std::string_view word_id, std::string_view part, size_t slot) const;
@@ -7118,6 +7124,9 @@ bool Overlay::load_procedural_terms() {
     if (!english_character_names_.load(runtime::data_path()))
         log_line("ERROR", "Cannot load English character-name lexicons, overrides and Mandarin readings from " +
             runtime::utf8(runtime::data_path()) + ": " + english_character_names_.error());
+    if (!english_name_transliterator_.load(runtime::data_path()))
+        log_line("ERROR", "Cannot load English pronunciation dictionary from " +
+            runtime::utf8(runtime::data_path()) + ": " + english_name_transliterator_.error());
     if (!load_procedural_word_senses() || !load_procedural_name_grammar())
         log_line("ERROR", "Procedural surname semantics are incomplete");
     if (!load_civilization_name_terms())
@@ -9394,6 +9403,9 @@ std::optional<std::string> Overlay::translate_english_character_name(
     });
 }
 
+static std::optional<std::string> reconstruct_site_english_name(
+    const NativeHistoryName &name);
+
 #include "history_names.inc"
 #include "site_names.inc"
 #include "civilization_name_terms.inc"
@@ -9575,16 +9587,34 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     const bool english_site_name = context == ProceduralFragmentContext::english_site_name;
     const bool non_entity_name = context == ProceduralFragmentContext::non_entity_name || english_site_name;
     const bool civilization_name = context == ProceduralFragmentContext::civilization_name;
-    if (civilization_name && !phonetic_only) {
+    if ((civilization_name || english_site_name) && !phonetic_only) {
         auto source = trim_view(screen_text);
-        if (source.size() >= 2 && source.front() == '"' && source.back() == '"') {
+        const bool quoted = source.size() >= 2 && source.front() == '"' && source.back() == '"';
+        if (quoted) {
             source.remove_prefix(1);
             source.remove_suffix(1);
-            if (const auto translated = translate_civilization_reference(source))
-                return "“" + *translated + "”";
-        } else if (const auto translated = translate_civilization_reference(source)) {
-            return translated;
         }
+        if (civilization_name)
+            if (const auto translated = translate_civilization_reference(source, true))
+                return quoted ? "“" + *translated + "”" : *translated;
+        const auto core = [&](std::string_view english) {
+            const std::string suffix = civilization_name
+                ? civilization_name_suffix(english) : std::string{};
+            std::string result;
+            if (auto translated = english_character_names_.entity_name(english))
+                result = *translated;
+            else result = transliterate_english_name(english);
+            if (civilization_name && !result.empty())
+                result += suffix;
+            return result;
+        };
+        if (const auto pair = split_generated_name_identity(source)) {
+            const std::string translated = transliterate_site_spelling(pair->native_name) +
+                "，“" + core(pair->gloss) + "”";
+            return quoted ? "“" + translated + "”" : translated;
+        }
+        const std::string translated = core(source);
+        return quoted ? "“" + translated + "”" : translated;
     }
     const bool native_name_groups = context == ProceduralFragmentContext::native_item_name ||
         context == ProceduralFragmentContext::native_name_group;

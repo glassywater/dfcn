@@ -339,12 +339,73 @@ std::optional<std::string> Overlay::translate_history_name(
         if (!name.first_name.empty()) result = given_name(name.first_name);
         if (nickname) result += "“" + nickname_text + "”";
     }
-    if (nickname && name.nickname_mode == 2) {
-        if (site_government && !result.empty()) {
-            const std::string suffix = site_government_name_suffix(name, government_context);
-            result += name.parent_word_id.empty() ? suffix : "（" + suffix + "）";
+    // Keep the suffix chosen by the original polity/government name logic
+    // before translating the English name. Its naming imagery, not the
+    // historical_entity.type enum, selects a polity's collective title.
+    const std::string entity_suffix = site_government
+        ? site_government_name_suffix(name, government_context)
+        : polity ? civilization_name_suffix(name) : std::string{};
+    const auto finish_entity_name = [&](std::string value) -> std::optional<std::string> {
+        if (value.empty()) return std::nullopt;
+        if (site_government) {
+            if (!name.parent_word_id.empty() && (!name.first_name.empty() || nickname))
+                value += "（" + entity_suffix + "）";
+            else value += entity_suffix;
+        } else if (polity) {
+            value += entity_suffix;
         }
-        return result;
+        return value;
+    };
+    if (nickname && name.nickname_mode == 2)
+        return finish_entity_name(std::move(result));
+
+    if (polity || site_government) {
+        // The entity's real English forms and POS enter the same natural
+        // two-image computation as place names. Authored name fields above
+        // remain separate from these generated slots.
+        std::array<std::string, 7> forms;
+        for (size_t slot = 0; slot < name.words.size(); ++slot) {
+            const auto &word = name.words[slot];
+            if (word.id.empty() || !word.has_form) continue;
+            if (word.part_of_speech < 0 || word.part_of_speech > 8)
+                return std::nullopt;
+            forms[slot] = word.english_form;
+            if (forms[slot].empty()) {
+                const auto found = history_english_name_forms_.find(word.id);
+                if (found == history_english_name_forms_.end()) return std::nullopt;
+                forms[slot] = found->second[static_cast<size_t>(word.part_of_speech)];
+                if (forms[slot].empty()) return std::nullopt;
+            }
+        }
+        // The real formatter does not display a lone slot 4.
+        const bool has_title = !name.words[2].id.empty() ||
+            !name.words[3].id.empty() || !name.words[5].id.empty();
+        if (!has_title) forms[4].clear();
+        std::array<EnglishCharacterNames::EntityWord, 7> words;
+        for (size_t slot = 0; slot < words.size(); ++slot)
+            words[slot] = {forms[slot], name.words[slot].part_of_speech};
+        std::string core;
+        if (const auto natural = english_character_names_.entity_name(words)) {
+            core = *natural;
+        } else {
+            // A failed grammatical or phonetic candidate sends the complete
+            // generated English name through its English word pronunciations.
+            // Native utterances and authored nicknames were handled above.
+            NativeHistoryName generated = name;
+            generated.first_name.clear();
+            generated.nickname.clear();
+            for (size_t slot = 0; slot < forms.size(); ++slot) {
+                generated.words[slot].english_form = forms[slot];
+                generated.words[slot].has_form = !forms[slot].empty();
+            }
+            if (const auto english = reconstruct_site_english_name(generated))
+                core = transliterate_english_name(*english, &generated);
+        }
+        if (!core.empty()) {
+            if (!result.empty()) result += "·";
+            result += core;
+        }
+        return finish_entity_name(std::move(result));
     }
 
     std::array<std::string, 7> glosses;
@@ -372,40 +433,12 @@ std::optional<std::string> Overlay::translate_history_name(
             break;
         default: return std::nullopt;
         }
-        // A political entity uses a reviewed collective title only for its
-        // slot 5 noun head. The same WORD in any other position must use
-        // its own modifier sense or the ordinary WORD/POS meaning.
-        if (polity && slot == 5 &&
-                (word.part_of_speech == 0 || word.part_of_speech == 1)) {
-            const auto civilization = civilization_name_terms_.find(word.id);
-            if (civilization != civilization_name_terms_.end() &&
-                    !civilization->second.empty()) {
-                glosses[slot] = render_civilization_name_head(
-                    word.id, civilization->second, word.part_of_speech == 1);
-                continue;
-            }
-        }
-        if (site_government) {
-            if (const auto term = site_government_name_term(word.id, part, slot)) {
-                glosses[slot] = *term;
-                continue;
-            }
-        } else if (polity) {
-            if (const auto modifier = civilization_name_modifier(
-                    word.id, part, slot, name.words[5].id)) {
-                glosses[slot] = *modifier;
-                continue;
-            }
-        }
         const auto found = procedural_word_senses_.find(word.id + "\t" + part);
         // Unknown/mod-added WORD identities remain unsupported; never guess a
         // different sense by splitting the English spelling into substrings.
-        if (found == procedural_word_senses_.end() || found->second.empty()) {
-            if (!site_government || word.english_form.empty()) return std::nullopt;
-            glosses[slot] = contains_cjk_utf8(word.english_form)
-                ? native_text_to_utf8(word.english_form)
-                : transliterate_native_history_name(word.english_form);
-        } else glosses[slot] = found->second;
+        if (found == procedural_word_senses_.end() || found->second.empty())
+            return std::nullopt;
+        glosses[slot] = found->second;
         // Region=6 and MountainPeak=19 are language_name_type values. Apply
         // each geographic NAME_* head's sense only to its region/peak kind.
         // Never reinterpret slot 4 modifiers or slot 6 ownership,
@@ -445,12 +478,9 @@ std::optional<std::string> Overlay::translate_history_name(
         }
     }
     if (!glosses[6].empty()) {
-        // CIV ownership is rendered as a Chinese name modifier. Other
-        // language_name_type values keep the existing ownership grammar.
-        const char *link = site_government || polity ? "" : "之";
-        if (!title.empty()) title = glosses[6] + link + title;
-        else if (!compound.empty()) compound = glosses[6] + link + compound;
-        else title = glosses[6] + link;
+        if (!title.empty()) title = glosses[6] + "之" + title;
+        else if (!compound.empty()) compound = glosses[6] + "之" + compound;
+        else title = glosses[6] + "之";
     }
     auto append = [&](const std::string &part) {
         if (part.empty()) return;
@@ -459,11 +489,5 @@ std::optional<std::string> Overlay::translate_history_name(
     };
     append(compound);
     append(title);
-    if (site_government && !result.empty()) {
-        const std::string suffix = site_government_name_suffix(name, government_context);
-        if (!name.parent_word_id.empty() && (!name.first_name.empty() || nickname))
-            result += "（" + suffix + "）";
-        else result += suffix;
-    }
     return result.empty() ? std::nullopt : std::optional<std::string>(std::move(result));
 }
