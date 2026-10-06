@@ -815,12 +815,25 @@ std::optional<std::string> Overlay::translate_legends_event(
     // A complete reviewed title wins over a generic title production. For
     // example, Age of Myth is an era, not Age of {a} with a person named Myth.
     std::optional<std::string> result;
-    if (const auto term = legends_terms_.find(std::string(value)); term != legends_terms_.end())
-        result = term->second;
-    else if (const auto term = legends_terms_ci_.find(lower(std::string(value)));
-            term != legends_terms_ci_.end()) result = term->second;
+    const auto candidates = legends_event_anchors_.candidates(value);
+    // A literal title keeps its noun sense even when ordinary event prose
+    // registers the same spelling as an action (e.g. an added chain).
+    for (int index : candidates) {
+        const Rule &rule = rules_[static_cast<size_t>(index)];
+        if (rule.template_kinds.empty() && value.size() == rule.source.size() &&
+                template_literal_at(value, 0, rule.source, rule.case_insensitive)) {
+            result = rule.target;
+            break;
+        }
+    }
+    if (!result) {
+        if (const auto term = legends_terms_.find(std::string(value)); term != legends_terms_.end())
+            result = term->second;
+        else if (const auto term = legends_terms_ci_.find(lower(std::string(value)));
+                term != legends_terms_ci_.end()) result = term->second;
+    }
     if (!result) result = translate_announcement_combat(value, "historical-event-title");
-    for (int index : legends_event_anchors_.candidates(value)) {
+    for (int index : candidates) {
         if (result) break;
         const Rule &rule = rules_[static_cast<size_t>(index)];
         const auto &first = rule.template_kinds.empty() ? rule.source : rule.template_literals.front();

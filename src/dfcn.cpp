@@ -3478,6 +3478,7 @@ private:
     mutable std::unordered_map<std::string, std::shared_ptr<LegendsTextFlow>> legends_flow_cache_;
     std::string legends_native_capture_status_;
     std::unordered_map<std::string, int> history_semantic_templates_;
+    std::unordered_map<std::string, int> history_event_title_templates_;
     struct HistoryEventTranslation {
         std::optional<std::vector<LegendsTextPiece>> pieces;
         uint64_t parent_revision = 0;
@@ -5782,6 +5783,7 @@ void Overlay::build_trie() {
     legends_flow_cache_.clear();
     legends_native_capture_status_.clear();
     history_semantic_templates_.clear();
+    history_event_title_templates_.clear();
     history_event_translation_cache_.clear();
     history_event_translation_order_.clear();
     history_parent_context_epoch_ = 0;
@@ -5890,7 +5892,10 @@ void Overlay::build_trie() {
         // Native semantic producers already supply typed template fields.
         // Their exact-key renderer also needs shared UI templates such as
         // b. {d}/d. {d}; keep each rule's original matcher scope unchanged.
-        if (material_rule.legends_prose || material_rule.source == ".")
+        if (material_rule.legends_event_title)
+            history_event_title_templates_.insert_or_assign(material_rule.source,
+                static_cast<int>(rule_index));
+        else if (material_rule.legends_prose || material_rule.source == ".")
             history_semantic_templates_.insert_or_assign(material_rule.source,
                 static_cast<int>(rule_index));
         else if (material_rule.numeric_template || material_rule.string_template)
@@ -6076,8 +6081,9 @@ void Overlay::build_trie() {
                     ? rule.source : rule.legends_match_anchor)].push_back(static_cast<int>(rule_index));
                 if (rule.template_kinds.empty()) {
                     auto &terms = rule.case_insensitive ? legends_terms_ci_ : legends_terms_;
-                    terms.insert_or_assign(rule.case_insensitive ? lower(rule.source) : rule.source,
-                                           rule.target);
+                    const auto key = rule.case_insensitive ? lower(rule.source) : rule.source;
+                    if (rule.legends_event_title) terms.try_emplace(key, rule.target);
+                    else terms.insert_or_assign(key, rule.target);
                 }
             }
             continue;

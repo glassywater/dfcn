@@ -129,12 +129,18 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
     };
     const auto apply = [&](std::string_view key, const std::vector<Pieces> &fields)
             -> std::optional<Pieces> {
-        const auto found = history_semantic_templates_.find(std::string(key));
-        if (found == history_semantic_templates_.end()) {
-            failure_detail = "template-missing; key=" + std::string(key);
-            return std::nullopt;
-        }
-        return apply_rule(rules_[found->second], fields);
+        // An event's title and its action can have the same English words.
+        // Masterwork destruction also names its creation as a title.
+        const bool title = native_title || event.native_type == 43;
+        const auto &preferred = title ? history_event_title_templates_ : history_semantic_templates_;
+        const auto &fallback = title ? history_semantic_templates_ : history_event_title_templates_;
+        const std::string source(key);
+        if (const auto found = preferred.find(source); found != preferred.end())
+            return apply_rule(rules_[found->second], fields);
+        if (const auto found = fallback.find(source); found != fallback.end())
+            return apply_rule(rules_[found->second], fields);
+        failure_detail = "template-missing; key=" + source;
+        return std::nullopt;
     };
     const auto apply_bound_toml = [&](const std::string &scope, const std::string &pattern,
             const std::vector<std::pair<std::string, Pieces>> &fields = {})
@@ -534,8 +540,11 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             std::optional<std::string> grown = std::string{};
             if (fish[1] & 4) grown = bind("::items::^0", "grown ");
             if (!grown) return std::nullopt;
-            label = bind("::items", "{^0}{%item_designation:with_number}",
-                {{"^0", *grown}, {"%item_designation:with_number", *label}});
+            // The shared root now owns one complete designation field.
+            // Keep the native grown prefix with its typed item and count;
+            // the removed root-level ^0 production cannot bind this label.
+            label = bind("::items", "{%item_designation:with_number}",
+                {{"%item_designation:with_number", *grown + *label}});
             return label ? std::optional<Pieces>(Pieces{piece(*label, neutral)}) : std::nullopt;
         }
         if (event.fields.contains(key + ".components")) {

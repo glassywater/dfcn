@@ -1891,9 +1891,9 @@ def build(args: argparse.Namespace) -> tuple[list[Entry], collections.Counter[st
             help_entries[encoded] = entry
             continue
         if "h" in entry.flags:
-            # Description nouns, viewport-clipped continuations and historical
-            # identities are not prose clauses. Retain each runtime scope.
-            scope = next((flag for flag in ("H", "I", "J", "v", "C", "N") if flag in entry.flags), "")
+            # Description nouns, clipped continuations, identities and event
+            # titles retain their meaning beside same-spelled prose clauses.
+            scope = next((flag for flag in ("H", "I", "J", "v", "C", "N", "E") if flag in entry.flags), "")
             key = (b"\x00" + scope.encode("ascii") if scope else b"") + encoded
             previous = legends.get(key)
             if previous is None or entry.priority >= previous.priority:
