@@ -84,6 +84,7 @@ struct NativeHistoryLegendsCaption {
     std::string source;
     bool event_title = false;
     bool region_title = false;
+    std::optional<NativeHistoryName> site_name;
 };
 // Page selection belongs to the native render that produced the grid, not
 // to the simulation/input state observed later by SDL_RenderPresent.
@@ -920,6 +921,15 @@ struct NativeToolbarTooltip {
     };
     std::vector<DeityField> deity_fields;
 };
+struct NativeSaveNameSource {
+    std::string original;
+    bool authored = false;
+    int16_t game_type = -1;
+    uint32_t world_id1 = 0, world_id2 = 0;
+};
+static std::optional<NativeSaveNameSource> capture_native_save_name_source(
+    uintptr_t source, std::string_view complete);
+static bool native_save_world_is_current(const NativeSaveNameSource &source);
 static std::optional<NativeToolbarTooltip> g_native_toolbar_tooltip;
 static constexpr std::array<std::string_view, 3> embark_introduction_templates = {{
     "You have arrived. After a journey from the Mountainhomes into the forbidding wilderness beyond, your harsh trek has finally ended. Your party of seven is to make an outpost for the glory of all of {s}.",
@@ -1969,6 +1979,14 @@ struct NativeWorldSiteEntityFact {
     NativeSiteGovernmentContext government_context;
 };
 static thread_local const NativeWorldSiteEntityFact *g_native_world_site_entity_fact = nullptr;
+static thread_local const NativeHistoryName *g_native_site_name_fact = nullptr;
+class NativeSiteNameFactScope {
+    const NativeHistoryName *previous_;
+public:
+    explicit NativeSiteNameFactScope(const NativeHistoryName *name)
+        : previous_(g_native_site_name_fact) { g_native_site_name_fact = name; }
+    ~NativeSiteNameFactScope() { g_native_site_name_fact = previous_; }
+};
 class NativeWorldSiteEntityFactScope {
 public:
     explicit NativeWorldSiteEntityFactScope(const NativeWorldSiteEntityFact *fact)
@@ -2038,6 +2056,7 @@ struct NativeDrawnTextRow {
     // The government/civilization producer supplies its actual entity. Keep
     // the owned name and mother context with this draw through cached frames.
     std::shared_ptr<const NativeWorldSiteEntityFact> world_site_entity_fact{};
+    std::shared_ptr<NativeHistoryName> site_name{};
     // The actual addst return address identifies document-specific row writers.
     uintptr_t native_caller = 0;
 };
@@ -2687,6 +2706,8 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         if (g_native_world_site_entity_fact)
             row.world_site_entity_fact =
                 std::make_shared<const NativeWorldSiteEntityFact>(*g_native_world_site_entity_fact);
+        if (g_native_site_name_fact)
+            row.site_name = std::make_shared<NativeHistoryName>(*g_native_site_name_fact);
         row.native_caller = native_caller;
         row.fortress_labor_caption = std::move(fortress_labor_caption);
         if (row.fortress_labor_caption) row.caption_source = true;
@@ -2701,6 +2722,7 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         if (location_picker_field != NativeLocationPickerField::None) row.caption_source = true;
         if (travel_building_field != NativeTravelBuildingField::None) row.caption_source = true;
         if (row.world_site_entity_fact) row.caption_source = true;
+        if (row.site_name) row.caption_source = true;
         if (mission_title) row.caption_source = true;
         if (const auto identity = native_unit_identity_source_binding(
                 complete_source.empty() ? source : complete_source, address)) {
@@ -3251,7 +3273,8 @@ public:
     std::optional<std::string> translate_native_adventure_charge(
         std::string_view source, const std::vector<NativeAdventureChargePart> &parts) const;
     bool translated_legends_search_matches(std::string_view source,
-        std::string_view description, std::string_view query, LegendsSearchKind kind) const;
+        std::string_view description, std::string_view query, LegendsSearchKind kind,
+        const NativeHistoryName *site_name = nullptr) const;
     bool translated_conversation_keywords_match(std::string_view keywords,
                                                 std::string_view query) const;
     bool translated_adventure_action_matches(std::string_view source,
@@ -3453,6 +3476,15 @@ private:
         const NativeHistoryName &name, bool character = false,
         bool polity_role = false, bool government_role = false,
         const NativeSiteGovernmentContext *government_context = nullptr) const;
+    std::optional<std::string> translate_site_name(const NativeHistoryName &name) const;
+    std::string site_name_core(const NativeHistoryName &name) const;
+    std::optional<std::string> localize_site_name(const NativeHistoryName &name) const;
+    std::string site_name_full_transliteration(const NativeHistoryName &name) const;
+    std::vector<std::string> site_name_search_aliases(const NativeHistoryName &name) const;
+    std::optional<std::string> translate_site_reference(std::string_view source) const;
+    std::optional<std::string> translate_saved_site_name(const NativeSaveNameSource &source) const;
+    std::optional<std::string> translate_legends_place(std::string_view source) const;
+    std::vector<std::string> site_reference_search_aliases(std::string_view source) const;
     std::optional<std::string> translate_english_character_name(
         std::string_view source, std::string_view native_given = {}) const;
     std::optional<std::vector<LegendsTextPiece>> translate_history_event(
@@ -3607,6 +3639,17 @@ private:
     std::unordered_map<std::string, std::vector<ProceduralNameMeaning>>
         procedural_word_meanings_;
     std::unordered_map<std::string, std::string> procedural_word_senses_;
+    struct SiteNameDecision {
+        std::string core, full_transliteration, old_translation;
+        std::string policy, rewrite_notes, embedded_attribute;
+    };
+    std::unordered_map<std::string, SiteNameDecision> site_name_decisions_;
+    fs::file_time_type site_name_decisions_mtime_{};
+    struct SiteNameImagery {
+        std::string roles, head, modifier;
+    };
+    std::unordered_map<std::string, SiteNameImagery> site_name_imagery_;
+    fs::file_time_type site_name_imagery_mtime_{};
     // Political/cultural name senses are scoped to civilization name slots.
     std::unordered_map<std::string, std::string> civilization_name_terms_;
     std::unordered_map<std::string, std::string> civilization_name_modifiers_;
@@ -4060,6 +4103,8 @@ private:
     bool load_compositional_rules();
     bool load_generated_instrument_names();
     bool load_procedural_word_senses();
+    bool load_site_name_decisions();
+    bool load_site_name_imagery();
     bool load_civilization_name_terms();
     bool load_site_government_name_terms();
     std::optional<std::string> site_government_name_term(
@@ -7059,6 +7104,10 @@ bool Overlay::load_procedural_terms() {
         log_line("ERROR", "Cannot load civilization name terms");
     if (!load_site_government_name_terms())
         log_line("ERROR", "Cannot load site government name terms and parent suffixes");
+    if (!load_site_name_decisions())
+        log_line("ERROR", "Cannot load reviewed site name decisions");
+    if (!load_site_name_imagery())
+        log_line("ERROR", "Cannot load site name imagery relations");
     std::string path = runtime::utf8(runtime::data_path() / "procedural-terms.tsv");
     std::ifstream input(fs::u8path(path), std::ios::binary);
     if (!input) {
@@ -7623,6 +7672,26 @@ void Overlay::maybe_reload() {
             (!ec1 && cm != config_mtime_) || (!ec2 && mm != mapping_mtime_) ||
             (!ec3 && nm != name_editor_mtime_);
         const auto catalog_directory = fs::u8path(config_.mapping_path).parent_path();
+        {
+            std::error_code site_error;
+            auto modified = fs::last_write_time(runtime::data_path() / "site-name-decisions.tsv", site_error);
+            if (site_error) {
+                site_error.clear();
+                modified = fs::last_write_time(fs::path("data/runtime/site-name-decisions.tsv"), site_error);
+            }
+            if (site_error) modified = {};
+            if (modified != site_name_decisions_mtime_) reload = true;
+        }
+        {
+            std::error_code site_error;
+            auto modified = fs::last_write_time(runtime::data_path() / "site-name-imagery.tsv", site_error);
+            if (site_error) {
+                site_error.clear();
+                modified = fs::last_write_time(fs::path("data/runtime/site-name-imagery.tsv"), site_error);
+            }
+            if (site_error) modified = {};
+            if (modified != site_name_imagery_mtime_) reload = true;
+        }
         for (size_t index = 0; index < site_government_catalog_names_.size(); ++index) {
             fs::path path = runtime::data_path() / site_government_catalog_names_[index];
             std::error_code catalog_error;
@@ -9299,6 +9368,7 @@ std::optional<std::string> Overlay::translate_english_character_name(
 }
 
 #include "history_names.inc"
+#include "site_names.inc"
 #include "civilization_name_terms.inc"
 #include "site_government_name_terms.inc"
 
@@ -10843,7 +10913,10 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         // Sex, species, syndrome title and generated creature kind are
         // separate semantic fields. Unknown mod vocabulary must never make
         // the person's name and sex disappear from the translation as well.
-        const auto identity = translate_name_identity(
+        const std::string site_reference = site ? std::string(record->native_name) +
+            ", \"" + std::string(record->gloss) + "\"" : std::string{};
+        if (site) return translate_legends_place(site_reference);
+        auto identity = translate_name_identity(
             record->native_name, record->gloss, !site && !building);
         if (!identity) return std::nullopt;
         std::string result = *identity + "，" +
@@ -12386,6 +12459,29 @@ std::optional<std::string> Overlay::translate_adventure_background_source(
                 return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
             });
     };
+    std::vector<std::string> retained_site_names;
+    auto complete_production = [&](const std::optional<std::string> &value) {
+        if (!value || value->empty()) return false;
+        const auto latin = [](unsigned char ch) {
+            return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
+        };
+        for (size_t at = 0; at < value->size();) {
+            size_t retained_length = 0;
+            for (const auto &retained : retained_site_names) {
+                if (retained.size() <= retained_length ||
+                        !std::string_view(*value).substr(at).starts_with(retained)) continue;
+                const size_t end = at + retained.size();
+                if ((at && latin(static_cast<unsigned char>((*value)[at - 1]))) ||
+                        (end < value->size() && latin(static_cast<unsigned char>((*value)[end]))))
+                    continue;
+                retained_length = retained.size();
+            }
+            if (retained_length) at += retained_length;
+            else if (latin(static_cast<unsigned char>((*value)[at]))) return false;
+            else ++at;
+        }
+        return true;
+    };
     auto literal = [&](std::string_view value) -> std::optional<std::string> {
         auto translated = exact_literal_translation(value);
         if (complete(translated)) return translated;
@@ -12400,10 +12496,21 @@ std::optional<std::string> Overlay::translate_adventure_background_source(
         }
         return std::nullopt;
     };
-    auto name = [&](const std::string &value) -> std::optional<std::string> {
+    auto name = [&](const std::string &value, bool site) -> std::optional<std::string> {
+        if (site) {
+            // Only the hometown/destination productions prove a Site field.
+            // The shared place resolver validates a complete source before
+            // retaining an unresolved spelling, without guessing WORD senses.
+            auto translated = translate_legends_place(value);
+            if (translated && !translated->empty() && !complete(translated) &&
+                    std::find(retained_site_names.begin(), retained_site_names.end(),
+                        *translated) == retained_site_names.end())
+                retained_site_names.push_back(*translated);
+            return translated;
+        }
         if (auto translated = literal(value)) return translated;
-        // Site names use precisely the hometown-list resolver. Only a typed
-        // name slot may fall back to generated-title/native-name handling.
+        // Other {n} fields denote deities, controlling groups, religions or
+        // named temples. They retain their own existing naming grammar.
         auto translated = translate_procedural_fragment(value);
         if (complete(translated)) return translated;
         translated = translate_procedural_fragment("\"" + value + "\"");
@@ -12472,8 +12579,13 @@ std::optional<std::string> Overlay::translate_adventure_background_source(
             std::vector<std::optional<std::string>> resolved(captures.size());
             bool intact = true;
             for (size_t i = 0; i < captures.size(); ++i) {
+                const bool site_name = rule.template_kinds[i] == 'n' &&
+                    ((rule.source == "{n} is a {s}" && i == 0 && captures.size() == 2 &&
+                      world_site_type_shape(captures[1])) ||
+                     rule.template_literals[i].ends_with(" in ") ||
+                     rule.template_literals[i].ends_with(" led you to "));
                 switch (rule.template_kinds[i]) {
-                case 'n': resolved[i] = name(captures[i]); break;
+                case 'n': resolved[i] = name(captures[i], site_name); break;
                 case 's': resolved[i] = term(term, captures[i], 0); break;
                 case 'r':
                     resolved[i] = translate_deity_spheres(captures[i]);
@@ -12489,7 +12601,10 @@ std::optional<std::string> Overlay::translate_adventure_background_source(
                         ((captures[i].front() >= 'A' && captures[i].front() <= 'Z') ||
                          is_cp437_latin_letter_byte(
                              static_cast<unsigned char>(captures[i].front()))))
-                        resolved[i] = name(captures[i]);
+                    {
+                        resolved[i] = translate_world_region_heading(captures[i]);
+                        if (!complete(resolved[i])) resolved[i] = name(captures[i], false);
+                    }
                     break;
                 case 'p':
                     if (captures[i].size() < value.size())
@@ -12498,7 +12613,9 @@ std::optional<std::string> Overlay::translate_adventure_background_source(
                 case 'd': resolved[i] = captures[i]; break;
                 default: break;
                 }
-                if (!complete(resolved[i])) { intact = false; break; }
+                const bool composed_clause = rule.template_kinds[i] == 'p';
+                if (!(site_name || composed_clause ? complete_production(resolved[i])
+                        : complete(resolved[i]))) { intact = false; break; }
             }
             if (!intact) continue;
             size_t literal_bytes = 0;
@@ -12524,9 +12641,9 @@ std::optional<std::string> Overlay::translate_adventure_background_source(
         auto translated = phrase(phrase, sentence, 0);
         // Most productions omit punctuation, while fixed exclamations such
         // as `Destiny is calling!` retain it in the existing dictionary.
-        if (!complete(translated) && stop != std::string::npos)
+        if (!complete_production(translated) && stop != std::string::npos)
             translated = phrase(phrase, sentence + source[stop], 0);
-        if (!complete(translated)) return remember(std::nullopt);
+        if (!complete_production(translated)) return remember(std::nullopt);
         result += *translated;
         if (stop != std::string::npos && !result.ends_with("。") &&
             !result.ends_with("！") && !result.ends_with("？"))
@@ -23765,7 +23882,8 @@ std::vector<Match> Overlay::find_matches(int only_y,
                     right <= x || !split_generated_name_identity(complete)) return;
             auto &row = screen_rows[static_cast<size_t>(y)];
             if (row.compare(static_cast<size_t>(x), visible.size(), visible) != 0) return;
-            const auto target = translate_civilization_reference(complete);
+            auto target = translate_civilization_reference(complete);
+            if (!target) target = translate_site_reference(complete);
             if (!target) return;
             const std::string source(visible);
             std::fill_n(row.begin() + x, visible.size(), ' ');
@@ -23794,6 +23912,27 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 static_cast<size_t>(right - draw.x));
             const auto complete = draw.complete_source.empty()
                 ? std::string_view(draw.source) : std::string_view(draw.complete_source);
+            if (draw.site_name && !visible.empty()) {
+                auto &row = screen_rows[static_cast<size_t>(draw.y)];
+                const auto target = translate_site_name(*draw.site_name);
+                if (target && row.compare(static_cast<size_t>(draw.x), visible.size(), visible) == 0) {
+                    std::fill_n(row.begin() + draw.x, visible.size(), ' ');
+                    if (only_y < 0 || only_y == draw.y) {
+                        Match match{draw.x, draw.y, static_cast<int>(visible.size()),
+                            kLegendsIdentityRecordRule, *target, std::string(visible)};
+                        match.layout_x = draw.x;
+                        match.layout_y = draw.y;
+                        match.layout_length = right - draw.x;
+                        match.layout_left = true;
+                        match.layout_clip_right = right;
+                        match.layout_foreground_rgb = draw.foreground_rgb;
+                        match.layout_font_pixels = std::max(config_.min_font_pixels,
+                            static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
+                        result.push_back(std::move(match));
+                    }
+                    continue;
+                }
+            }
             claim_civilization(draw.x, draw.y, visible, complete, right);
         }
         for (const auto &caption : clipped_template_captions) {
@@ -23850,6 +23989,8 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 // cache, which only owns a source spelling and a name gloss.
                 auto translated = generated_identity
                     ? translate_civilization_reference(source) : std::nullopt;
+                if (!translated && generated_identity)
+                    translated = translate_site_reference(source);
                 if (!translated)
                     translated = memoize_identity_translation('R', source, [&] {
                         return unnamed ? translate_legends_unnamed_figure(source)
@@ -40770,10 +40911,12 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
         }
         if (right > figure_left) {
             for (Match *record : figure_records) {
+                const int record_right = record->layout_clip_right >= 0
+                    ? std::min(right, record->layout_clip_right) : right;
                 record->layout_x = figure_left;
                 record->layout_y = record->y;
-                record->layout_length = right - figure_left;
-                record->layout_clip_right = right;
+                record->layout_length = std::max(0, record_right - figure_left);
+                record->layout_clip_right = record_right;
                 record->layout_left = true;
                 record->layout_font_pixels = arena_font_pixels;
             }
@@ -47730,6 +47873,8 @@ extern "C" int dfcn_render_copy(SDL_Renderer *renderer, SDL_Texture *texture,
 
 #include "native_hooks.inc"
 #include "civilization_names.inc"
+#include "site_references.inc"
+#include "native_save_names.inc"
 #include "native_graphics_toggle.inc"
 
 } // namespace dfcn

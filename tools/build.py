@@ -72,6 +72,7 @@ def deploy_runtime_data(directory: Path) -> None:
                  "dfhack-output-core.tsv", "dfhack-output-translations.tsv",
                  "dfhack-output-stonesense.tsv",
                  "procedural-terms.tsv", "procedural-word-senses.tsv",
+                 "site-name-decisions.tsv", "site-name-imagery.tsv",
                  "civilization-name-terms.tsv",
                  "site-government-parent-suffixes.tsv", "site-government-name-terms.tsv",
                  "site-government-independent-suffixes.tsv",

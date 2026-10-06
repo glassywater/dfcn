@@ -96,7 +96,7 @@ std::optional<std::string> Overlay::translate_unit_profession(
          at = at == 0 ? std::string::npos : folded.rfind(" of ", at - 1)) {
         const auto role = translate_unit_profession(source.substr(0, at));
         if (!role) continue;
-        const auto place = translate_legends_name(source.substr(at + 4), false);
+        const auto place = translate_legends_place(source.substr(at + 4));
         if (place) return *place + "的" + *role;
     }
     constexpr std::string_view resident = "resident ";

@@ -70,7 +70,7 @@ std::optional<std::string> Overlay::translate_visitor_overview_purposes(
     const auto place_target = [&](std::string_view place) -> std::optional<std::string> {
         auto found = place_targets.find(place);
         if (found == place_targets.end())
-            found = place_targets.emplace(place, translate_legends_name(place, false)).first;
+            found = place_targets.emplace(place, translate_legends_place(place)).first;
         return found->second;
     };
     const auto item = [&](size_t begin, size_t end) -> std::optional<std::string> {

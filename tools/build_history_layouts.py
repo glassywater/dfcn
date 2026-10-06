@@ -257,7 +257,7 @@ class Generator:
                  'entity_position', 'entity_position_assignment',
                  'general_ref_is_artifactst', 'plant_raw', 'material', 'inorganic_raw', 'building_def',
                  'viewscreen_legendsst', 'viewscreen_new_regionst',
-                 'mod_headerst', 'viewscreen_titlest', 'viewscreen_new_arenast',
+                 'mod_headerst', 'savegame_headerst', 'viewscreen_titlest', 'viewscreen_new_arenast',
                  'viewscreen_dwarfmodest', 'viewscreen_dungeonmodest', 'viewscreen_worldst',
                  'widget_textbox', 'stocks_interfacest', 'squad',
                  'plotinfost', 'report',

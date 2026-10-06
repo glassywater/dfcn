@@ -5731,6 +5731,58 @@ struct f_report {
     int32_t f_speaker_id;
     size_t f_pool_id;
 };
+struct f_savegame_headerst {
+    int32_t f_max_unit_id;
+    int32_t f_max_soul_id;
+    int32_t f_max_item_id;
+    int32_t f_max_civ_id;
+    int32_t f_max_nem_id;
+    int32_t f_max_artifact_id;
+    int32_t f_max_job_id;
+    int32_t f_max_schedule_id;
+    int32_t f_max_proj_id;
+    int32_t f_max_building_id;
+    int32_t f_max_machine_id;
+    int32_t f_max_flow_guide_id;
+    int32_t f_max_histfig_id;
+    int32_t f_max_histevent_id;
+    int32_t f_max_histeventcol_id;
+    int32_t f_max_unitchunk_id;
+    int32_t f_max_art_imagechunk_id;
+    int32_t f_max_task_id;
+    int32_t f_max_squad_id;
+    int32_t f_max_formation_id;
+    int32_t f_max_activity_id;
+    int32_t f_max_interaction_instance_id;
+    int32_t f_max_written_content_id;
+    int32_t f_max_identity_id;
+    int32_t f_max_incident_id;
+    int32_t f_max_crime_id;
+    int32_t f_max_vehicle_id;
+    int32_t f_max_army_id;
+    int32_t f_max_army_controller_id;
+    int32_t f_max_army_tracking_info_id;
+    int32_t f_max_cultural_identity_id;
+    int32_t f_max_agreement_id;
+    int32_t f_max_poetic_form_id;
+    int32_t f_max_musical_form_id;
+    int32_t f_max_dance_form_id;
+    int32_t f_max_scale_id;
+    int32_t f_max_rhythm_id;
+    int32_t f_max_occupation_id;
+    int32_t f_max_belief_system_id;
+    int32_t f_max_image_set_id;
+    int32_t f_max_divination_set_id;
+    int16_t f_gametype;
+    std::string f_fort_name;
+    std::string f_world_name;
+    int32_t f_year;
+    native_history_layout::f_shared_world_headerst f_world_header;
+    std::string f_filename_noext;
+    std::filesystem::path f_full_path;
+    bool f_is_portable;
+    std::filesystem::file_time_type f_timestamp;
+};
 struct f_squad {
     int32_t f_id;
     native_history_layout::f_language_name f_name;
@@ -17447,6 +17499,67 @@ static constexpr std::array<Field, 22> f_report_fields = {{
     {0x64, DFCN_NATIVE_FIELD(f_report, f_speaker_id, 0x64), 4},
     {0x68, DFCN_NATIVE_FIELD(f_report, f_pool_id, 0x68), 8},
 }};
+static constexpr std::array<Field, 59> f_savegame_headerst_fields = {{
+    {0x0, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_unit_id, 0x0), 4},
+    {0x4, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_soul_id, 0x4), 4},
+    {0x8, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_item_id, 0x8), 4},
+    {0xc, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_civ_id, 0xc), 4},
+    {0x10, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_nem_id, 0x10), 4},
+    {0x14, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_artifact_id, 0x14), 4},
+    {0x18, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_job_id, 0x18), 4},
+    {0x1c, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_schedule_id, 0x1c), 4},
+    {0x20, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_proj_id, 0x20), 4},
+    {0x24, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_building_id, 0x24), 4},
+    {0x28, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_machine_id, 0x28), 4},
+    {0x2c, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_flow_guide_id, 0x2c), 4},
+    {0x30, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_histfig_id, 0x30), 4},
+    {0x34, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_histevent_id, 0x34), 4},
+    {0x38, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_histeventcol_id, 0x38), 4},
+    {0x3c, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_unitchunk_id, 0x3c), 4},
+    {0x40, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_art_imagechunk_id, 0x40), 4},
+    {0x44, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_task_id, 0x44), 4},
+    {0x48, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_squad_id, 0x48), 4},
+    {0x4c, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_formation_id, 0x4c), 4},
+    {0x50, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_activity_id, 0x50), 4},
+    {0x54, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_interaction_instance_id, 0x54), 4},
+    {0x58, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_written_content_id, 0x58), 4},
+    {0x5c, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_identity_id, 0x5c), 4},
+    {0x60, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_incident_id, 0x60), 4},
+    {0x64, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_crime_id, 0x64), 4},
+    {0x68, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_vehicle_id, 0x68), 4},
+    {0x6c, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_army_id, 0x6c), 4},
+    {0x70, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_army_controller_id, 0x70), 4},
+    {0x74, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_army_tracking_info_id, 0x74), 4},
+    {0x78, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_cultural_identity_id, 0x78), 4},
+    {0x7c, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_agreement_id, 0x7c), 4},
+    {0x80, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_poetic_form_id, 0x80), 4},
+    {0x84, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_musical_form_id, 0x84), 4},
+    {0x88, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_dance_form_id, 0x88), 4},
+    {0x8c, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_scale_id, 0x8c), 4},
+    {0x90, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_rhythm_id, 0x90), 4},
+    {0x94, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_occupation_id, 0x94), 4},
+    {0x98, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_belief_system_id, 0x98), 4},
+    {0x9c, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_image_set_id, 0x9c), 4},
+    {0xa0, DFCN_NATIVE_FIELD(f_savegame_headerst, f_max_divination_set_id, 0xa0), 4},
+    {0xa4, DFCN_NATIVE_FIELD(f_savegame_headerst, f_gametype, 0xa4), 2},
+    {0xa8, DFCN_NATIVE_FIELD(f_savegame_headerst, f_fort_name, 0xa8), 32},
+    {0xc8, DFCN_NATIVE_FIELD(f_savegame_headerst, f_world_name, 0xc8), 32},
+    {0xe8, DFCN_NATIVE_FIELD(f_savegame_headerst, f_year, 0xe8), 4},
+    {0xf0, DFCN_NATIVE_FIELD(f_savegame_headerst, f_world_header.f_id1, 0xf0), 4},
+    {0xf4, DFCN_NATIVE_FIELD(f_savegame_headerst, f_world_header.f_id2, 0xf4), 4},
+    {0xf8, DFCN_NATIVE_FIELD(f_savegame_headerst, f_world_header.f_world_name, 0xf8), 32},
+    {0x118, DFCN_NATIVE_FIELD(f_savegame_headerst, f_world_header.f_timeline_name, 0x118), 32},
+    {0x138, DFCN_NATIVE_FIELD(f_savegame_headerst, f_world_header.f_manual_name, 0x138), 32},
+    {0x158, DFCN_NATIVE_FIELD(f_savegame_headerst, f_world_header.f_save_type, 0x158), 4},
+    {0x15c, DFCN_NATIVE_FIELD(f_savegame_headerst, f_world_header.f_year, 0x15c), 4},
+    {0x160, DFCN_NATIVE_FIELD(f_savegame_headerst, f_world_header.f_season_count, 0x160), 4},
+    {0x164, DFCN_NATIVE_FIELD(f_savegame_headerst, f_world_header.f_forts_played, 0x164), 4},
+    {0x168, DFCN_NATIVE_FIELD(f_savegame_headerst, f_world_header.f_advs_played, 0x168), 4},
+    {0x170, DFCN_NATIVE_FIELD(f_savegame_headerst, f_filename_noext, 0x170), 32},
+    {0x190, DFCN_NATIVE_FIELD(f_savegame_headerst, f_full_path, 0x190), 32},
+    {0x1b0, DFCN_NATIVE_FIELD(f_savegame_headerst, f_is_portable, 0x1b0), 1},
+    {0x1b8, DFCN_NATIVE_FIELD(f_savegame_headerst, f_timestamp, 0x1b8), 8},
+}};
 static constexpr std::array<Field, 9> f_squad_fields = {{
     {0x0, DFCN_NATIVE_FIELD(f_squad, f_id, 0x0), 4},
     {0x8, DFCN_NATIVE_FIELD(f_squad, f_name.f_first_name, 0x8), 32},
@@ -19127,6 +19240,7 @@ static constexpr Object objects[] = {
     {"plant_raw", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_plant_raw_fields.data(), std::size(f_plant_raw_fields), nullptr, 0},
     {"plotinfost", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_plotinfost_fields.data(), std::size(f_plotinfost_fields), nullptr, 0},
     {"report", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_report_fields.data(), std::size(f_report_fields), nullptr, 0},
+    {"savegame_headerst", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_savegame_headerst_fields.data(), std::size(f_savegame_headerst_fields), nullptr, 0},
     {"squad", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_squad_fields.data(), std::size(f_squad_fields), nullptr, 0},
     {"stocks_interfacest", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_stocks_interfacest_fields.data(), std::size(f_stocks_interfacest_fields), nullptr, 0},
     {"viewscreen_dungeonmodest", "viewscreen", DFCN_NATIVE_BINDING(0x16b9f48, 0x207fb70), f_viewscreen_dungeonmodest_fields.data(), std::size(f_viewscreen_dungeonmodest_fields), f_viewscreen_dungeonmodest_slots, std::size(f_viewscreen_dungeonmodest_slots)},

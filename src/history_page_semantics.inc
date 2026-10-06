@@ -78,7 +78,12 @@ if (document.page) {
         if (number("site.site_type") == 1) key.insert(0, "dark ");
         auto type = history_reference_kind(key);
         if (!site || !type) return std::nullopt;
-        auto result = apply("{p} was a {s}.", {*site, *type});
+        // This page owns the site's captured current classification, not a
+        // dated change of type. Do not turn it into an unsupported past fact.
+        std::optional<Pieces> result = *site;
+        result->push_back(piece("是一处", neutral));
+        result->insert(result->end(), type->begin(), type->end());
+        result->push_back(piece("。", neutral));
         if (!result || !append_page_confidence(*result)) return std::nullopt;
         return result;
     }

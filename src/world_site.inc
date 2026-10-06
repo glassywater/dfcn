@@ -17,7 +17,7 @@ static bool world_site_typed_heading(std::string_view source) {
 // including retained frames and clipped names, before reading its frame.
 static std::optional<NativeDrawnTextRow> world_site_owned_draw_for_row(
         const graphicst &gps, const NativeTextCardRow &row, int clip_right,
-        bool entity_fact = false) {
+        bool entity_fact = false, bool site_name = false) {
     if (row.x < 0 || row.x >= gps.dimx || row.y < 0 || row.y >= gps.dimy ||
             row.source.empty() || row.source.size() > static_cast<size_t>(gps.dimx - row.x) ||
             clip_right <= row.x) return std::nullopt;
@@ -29,7 +29,7 @@ static std::optional<NativeDrawnTextRow> world_site_owned_draw_for_row(
     const auto &draws = origin.top_layer ? g_native_drawn_top_text_rows : g_native_drawn_text_rows;
     for (auto it = draws.rbegin(); it != draws.rend(); ++it) {
         const auto &draw = *it;
-        if ((entity_fact ? !draw.world_site_entity_fact :
+        if ((site_name ? !draw.site_name : entity_fact ? !draw.world_site_entity_fact :
                 draw.travel_building_field == NativeTravelBuildingField::None) ||
                 draw.x > row.x || draw.x < 0 || draw.top_layer != origin.top_layer ||
                 draw.draw_grid != origin.grid || draw.draw_dimx != gps.dimx ||
@@ -914,6 +914,11 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
         std::optional<std::string> target = !action_control && !artifacts
             ? translate_world_site_entity_fact(source, entity_draw
                 ? &*entity_draw->world_site_entity_fact : nullptr) : std::nullopt;
+        if (!target && !action_control && !artifacts) {
+            const auto site_draw = world_site_owned_draw_for_row(*gps_, row,
+                card.interior.x + card.interior.w, false, true);
+            if (site_draw) target = translate_site_name(*site_draw->site_name);
+        }
         // The first heading names the selected landform; subsequent headings
         // name its biome/region or site. Keep its LAND sense scoped to this
         // field, before exact world-name translations can override it. This
@@ -958,29 +963,30 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
                     }
                 } else target = translate_civilization_reference(source);
             }
+            if (!target) {
+                if (const auto record = split_legends_figure_record(source);
+                        record && record->sex.empty() && world_site_type_shape(record->species))
+                    target = translate_legends_place(std::string(record->native_name) +
+                        ", \"" + std::string(record->gloss) + "\"");
+                else if (split_generated_name_identity(source))
+                    target = translate_site_reference(source);
+            }
             if (!target && (split_legends_figure_record(source) ||
                     split_generated_name_identity(source)))
                 target = translate_procedural_fragment(source);
         } else if (!target && (site_heading || compact_site_heading)) {
-            std::string heading = source;
             const size_t type_begin = compact_site_heading ? source.rfind(", ") + 2
                 : source.starts_with("The ") ? 4 : 0;
             const size_t type_end = compact_site_heading ? source.size()
                 : lower(source).find(" of ", type_begin);
             if (type_end != std::string::npos && type_end > type_begin) {
-                // Native headings capitalize EVERY type word, while the
-                // reviewed UI terms use sentence case (Dwarven fortress,
-                // Elven forest retreat). The template's i flag applies to
-                // its literals, not to the captured type. Reuse an existing
-                // complete term before composition, without changing the
-                // spelling of the generated name or global lookup rules.
-                std::string type = lower(source.substr(type_begin, type_end - type_begin));
-                if (type.front() >= 'a' && type.front() <= 'z')
-                    type.front() -= 'a' - 'A';
-                if (exact_literal_translation(type))
-                    heading.replace(type_begin, type_end - type_begin, type);
+                const auto name = compact_site_heading
+                    ? std::string_view(source).substr(0, type_begin - 2)
+                    : std::string_view(source).substr(type_end + 4);
+                target = translate_site_reference(name);
+                if (!target) target = native_text_to_utf8(name);
             }
-            target = translate_legends_text("World site: " + heading, false, false);
+            if (!target) target = native_text_to_utf8(source);
         } else if (!target) {
             target = translate_help_paragraph(complete, foregrounds, target_colors, true);
             if (!target) {
@@ -1226,7 +1232,7 @@ std::optional<std::string> Overlay::translate_world_mission_title(
         } else if (title->starts_with("Rescue ")) {
             target = translate_legends_actor(destination);
         } else {
-            target = translate_legends_name(destination, false);
+            target = translate_legends_place(destination);
             if (!target) target = translate_legends_term(destination, false);
         }
         // An authored/modded target may have no dictionary entry. Preserve

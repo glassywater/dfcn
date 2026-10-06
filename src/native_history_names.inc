@@ -381,6 +381,66 @@ static bool capture_native_history_name(uintptr_t base, uintptr_t address,
     return true;
 }
 
+static bool native_history_site_type(uintptr_t site, NativeHistoryEventData &out,
+    const std::string &prefix);
+
+static bool capture_native_history_site_name_context(uintptr_t base, uintptr_t site,
+        NativeHistoryName &name, bool identity_validated = false) {
+    int32_t id = -1;
+    if (!base || !site || !native_history_copy(native_history_object_field(
+            site, "world_site", 0x88, sizeof(id)), id) || id < 0 ||
+            (!identity_validated &&
+                native_history_find_subject(base, NativeHistoryObjectKind::Site, id) != site))
+        return false;
+
+    // Written references, Legends introductions and name localization share
+    // the original site's formatter decision, including city/depth flags and
+    // every lair/castle/monument subtype. No name type or spelling selects it.
+    NativeHistoryEventData classified;
+    if (!native_history_site_type(site, classified, "site")) return false;
+    const auto type = classified.fields.find("site.site_type");
+    const auto subtype = classified.fields.find("site.site_subtype");
+    const auto label = classified.texts.find("site.label");
+    if (type == classified.fields.end() || type->second.size() != 1 ||
+            subtype == classified.fields.end() || subtype->second.size() != 1 ||
+            label == classified.texts.end()) return false;
+
+    std::string original;
+    if (name.has_name) {
+        // Use the same OriginalName routine as native page/list producers.
+        // Its complete language-specific output is the fallback identity;
+        // English WORD forms cannot supply the site's native pronunciation.
+#ifdef _WIN32
+        const uintptr_t formatter = native_reference_address(base, 0xa94030);
+        const uintptr_t destroy = native_reference_address(base, 0x6f850);
+        if (!formatter || !destroy) return false;
+        struct Temporary {
+            NativeString value = native_empty_string();
+            uintptr_t destroy;
+            ~Temporary() { reinterpret_cast<void (*)(NativeString *)>(destroy)(&value); }
+        } output{native_empty_string(), destroy};
+#else
+        const uintptr_t formatter = native_reference_address(base, 0x12bfe90 - 0x400000);
+        if (!formatter) return false;
+        struct Temporary { NativeString value = native_empty_string(); } output;
+#endif
+        const uintptr_t name_address = native_history_object_field(site, "world_site", 0);
+        if (!name_address) return false;
+        reinterpret_cast<void (*)(const void *, NativeString *)>(formatter)(
+            reinterpret_cast<const void *>(name_address), &output.value);
+        std::string_view rendered;
+        if (!native_string_view(&output.value, &rendered, kNativeHistoryStringLimit) ||
+                rendered.find('\0') != std::string_view::npos) return false;
+        original.assign(rendered);
+    }
+    name.site_id = id;
+    name.site_type = type->second.front();
+    name.site_subtype = subtype->second.front();
+    name.site_label = label->second;
+    name.native_name = std::move(original);
+    return true;
+}
+
 static int32_t native_history_event_entity_parent(
     const NativeHistoryEventData &event, int32_t entity_id);
 
@@ -703,6 +763,8 @@ static bool populate_native_history_subjects(NativeHistoryEventData &event, bool
             return;
         }
         if (!capture_native_history_name(base, object + name_offset, subject.name) ||
+            (kind == NativeHistoryObjectKind::Site &&
+                !capture_native_history_site_name_context(base, object, subject.name, true)) ||
             (kind == NativeHistoryObjectKind::Entity &&
                 !capture_native_history_entity_name_context(base, object, subject.name,
                     current_entities, current_entities ? nullptr : &event, true)) ||
@@ -716,6 +778,8 @@ static bool populate_native_history_subjects(NativeHistoryEventData &event, bool
         }
         if (kind == NativeHistoryObjectKind::Entity)
             subject.native_type = subject.name.entity_type;
+        else if (kind == NativeHistoryObjectKind::Site)
+            subject.native_type = subject.name.site_type;
         event.subjects.push_back(std::move(subject));
     };
     append(NativeHistoryObjectKind::Figure, event.actor_id);

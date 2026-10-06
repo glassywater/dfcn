@@ -702,7 +702,7 @@ std::optional<std::string> Overlay::translate_legends_nested(
             case 'p':
                 target = journal_habitat_rule(rule)
                     ? translate_journal_habitat_places(part)
-                    : translate_legends_name(part, false);
+                    : translate_legends_place(part);
                 break;
             case 's':
                 // The native identity can begin with a species followed by
@@ -1186,7 +1186,7 @@ std::optional<std::string> Overlay::translate_legends_text(
                                 captures[i].resize(stop);
                             }
                         }
-                        translated[i] = translate_legends_name(captures[i], false);
+                        translated[i] = translate_legends_place(captures[i]);
                         // A final name capture can share gray with the next
                         // connective or punctuation. Stop at the longest
                         // complete name, then let the scoped grammar handle
@@ -1197,8 +1197,8 @@ std::optional<std::string> Overlay::translate_legends_text(
                             for (size_t stop = value.size(); stop-- > 1;) {
                                 if (value[stop] != ' ' && value[stop] != '.' &&
                                     value[stop] != ',' && value[stop] != ';') continue;
-                                const auto name = translate_legends_name(
-                                    std::string_view(value).substr(0, stop), false);
+                                const auto name = translate_legends_place(
+                                    std::string_view(value).substr(0, stop));
                                 if (!name) continue;
                                 end -= value.size() - stop;
                                 captures[i].resize(stop);
@@ -1440,6 +1440,8 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
             std::fill_n(context[y].begin() + bar.x, bar.w, ' ');
         }
     const auto translate_heading = [&](std::string_view source) {
+        if (native_caption && native_caption->site_name && source == native_title)
+            if (auto target = translate_site_name(*native_caption->site_name)) return target;
         if (native_caption && native_caption->region_title && source == native_title)
             if (auto target = translate_world_region_heading(source)) return target;
         return native_caption && native_caption->event_title && source == native_title
@@ -1628,7 +1630,7 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
                 const std::string native = trim(source.substr(0, comma));
                 if (records == 1 && heading_native == native) {
                     identity_tab_visible = true;
-                    target = translate_procedural_fragment(heading);
+                    target = translate_heading(heading);
                 } else {
                     target = translate_procedural_fragment(source);
                 }
@@ -2323,7 +2325,7 @@ std::shared_ptr<LegendsTextFlow> Overlay::translate_legends_flow(
                 break;
             }
             case 'n': target = translate_legends_actor(value); break;
-            case 'p': target = translate_legends_name(value, false); break;
+            case 'p': target = translate_legends_place(value); break;
             case 's': target = translate_legends_term(value); break;
             case 'q': target = translate_legends_color(value); break;
             case 't': target = translate_legends_anatomy(value); break;
@@ -2860,6 +2862,16 @@ void Overlay::layout_legends_details(SDL_Renderer *renderer) {
                 }
                 size_t begin = 0;
                 while (begin < cps.size()) {
+                    // Explicit source/etymology lines own complete flow rows.
+                    // A multiline glyph texture cannot supply their scroll
+                    // positions when treated as one display fragment.
+                    if (cps[begin] == '\r') { ++begin; continue; }
+                    if (cps[begin] == '\n') {
+                        ++row;
+                        used = 0;
+                        ++begin;
+                        continue;
+                    }
                     const int available = flow_width - used - 2 * padding;
                     auto measure = [&](size_t end) {
                         return get_glyph_texture(renderer,
@@ -2871,7 +2883,8 @@ void Overlay::layout_legends_details(SDL_Renderer *renderer) {
                         // wrapping and the draw box retains the full glyph ink.
                         return glyph && glyph->texture && glyph->width <= available;
                     };
-                    size_t end = cps.size();
+                    size_t end = begin;
+                    while (end < cps.size() && cps[end] != '\n' && cps[end] != '\r') ++end;
                     const auto *glyph = measure(end);
                     if (!fits(glyph)) {
                         // Fit by UTF-8 code point, not bytes or whole grammar
@@ -2927,7 +2940,10 @@ void Overlay::layout_legends_details(SDL_Renderer *renderer) {
                     used += glyph->width;
                     flow.display_pieces.push_back(std::move(fragment));
                     begin = end;
-                    if (begin < cps.size()) { ++row; used = 0; }
+                    if (begin < cps.size() && cps[begin] != '\n' && cps[begin] != '\r') {
+                        ++row;
+                        used = 0;
+                    }
                 }
             }
             const size_t target_lines = flow.display_pieces.empty() ? 0 :

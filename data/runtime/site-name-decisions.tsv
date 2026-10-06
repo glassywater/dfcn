@@ -1,0 +1,23 @@
+# Reviewed whole-site proper names from 矮人要塞城市与据点专名本地化方案_修订版.docx, 2026-10-06.
+# Columns: native_name name_type WORD0 POS0 WORD1 POS1 WORD2 POS2 WORD3 POS3 WORD4 POS4 WORD5 POS5 WORD6 POS6 core full_transliteration old_translation policy rewrite_notes embedded_attribute
+# Tab-separated; exact complete original spelling, name.type and all seven WORD/POS slots select a row. "-" means absent WORD or metadata, never wildcard.
+# Empty vanilla WORD slots preserve the native generator's POS 0. Runtime/world site IDs and owners do not enter the reviewed name key.
+# core is the sole official name core; the native site classification supplies its current suffix independently. Old translations and full transliterations are search/source aliases only. A "-" full_transliteration uses the existing stable full-name phonetic renderer.
+# embedded_attribute is "native-type-label:Chinese-tail" only when source evidence declares an existing generic tail. "-" forbids suffix stripping, including phonetic endings.
+Lipispishab	4	PACK	0	BRISTLE	7	-	0	-	0	-	0	-	0	-	0	利皮沙布	利皮斯皮沙布	直立兽群	conventional-transcription	整名固定惯用名；压缩重复音节节奏，完整音译保留查找；不是逐音音译。	-
+Kelleru	4	FAITH	0	PEEK	6	-	0	-	0	-	0	-	0	-	0	凯勒鲁	凯勒鲁	偷看信心	transcription	信仰与偷看无可靠连贯名义关系；采用完整原语定名，不改为窥信。	-
+Ikiali	4	THORN	0	GLISTEN	4	-	0	-	0	-	0	-	0	-	0	辉棘	伊基阿利	闪亮刺	whole-name-localization	荆棘与闪光归并为整体物象；不补宗教、教团或当地植物事实。	-
+Ishesaril	4	FISSURE	0	SHIP	0	-	0	-	0	-	0	-	0	-	0	伊谢沙里尔	伊谢沙里尔	裂缝船	transcription	裂缝与船不逐词拼为主名；依据完整原语形定名。	-
+Kamcaon	37	DREAM	4	PRAISE	1	-	0	-	0	-	0	-	0	-	0	颂梦	-	梦赞美	whole-name-localization	梦与赞颂重构为完整名号；改变词序与关系，不证明祭梦典故。	-
+Iyicìale	4	WANE	7	LEAF	0	-	0	-	0	-	0	-	0	-	0	伊西阿莱	-	变小叶	conventional-transcription	固定原语惯用名；保留原始重音拼写与完整音形，不增加干枯含义。	-
+Nunerathití	4	CRY	7	LEAP	7	-	0	-	0	-	0	-	0	-	0	努内拉西蒂	努内拉西蒂	哭跳跃	transcription	完整音形近似沿已有译名固定；不以泣跃包装双动作，不宣称官方发音。	-
+Ficanithara	4	HOARY	2	FUTURE	0	-	0	-	0	-	0	-	0	-	0	菲卡尼萨拉	菲卡尼萨拉	灰白未来	transcription	完整原语定名；不加白曙、霜望等新比喻。	-
+Lecitobol	4	GLEAM	4	CLOUT	7	-	0	-	0	-	0	-	0	-	0	莱西托博尔	莱西托博尔	重击光束	conventional-transcription	固定原语惯用名；不造辉击、光锤等武器式主名。	-
+Dipanecifa	4	SKUNK	0	DISTANCE	0	-	0	-	0	-	0	-	0	-	0	迪帕内西法	迪帕内西法	臭鼬距离	transcription	无可靠名义关系，完整原语定名；distance不推导为遥远。	-
+Imerecimathi	4	RAIN	4	LIZARD	1	-	0	-	0	-	0	-	0	-	0	雨蜥	伊梅雷西玛西	雨蜥蜴	whole-name-localization	雨与蜥形成整体奇幻物象，归并动物称呼与复数负担；不证明当地气候或动物。	-
+Onadap	4	PLANT	7	WAD	0	-	0	-	0	-	0	-	0	-	0	奥纳达普	奥纳达普	种植小软团	transcription	完整原语定名；不另造育灵、圣种、绿团。	-
+Ejedesu	4	CLOBBER	4	COTTAGE	0	-	0	-	0	-	0	-	0	-	0	埃杰德苏	埃杰德苏	痛打小屋	transcription	完整原语定名；动作与房屋不拼成残句，原名不证明房屋已毁。	-
+Uhostiquo	4	ODOR	0	SPARKLE	0	-	0	-	0	-	0	-	0	-	0	乌霍斯蒂库	乌霍斯蒂库	气味闪耀	transcription	完整原语定名；跨感官词根不强译为香星、芳辉或气辉。	-
+Eceriçomo	4	FUCHSIA	2	GRASP	0	-	0	-	0	-	0	-	0	-	0	埃塞里科莫	埃塞里科莫	品红抓握	transcription	完整原语定名；颜色与握持无自然名义关系，不改为品红之握。	-
+Tiseamala	4	FIN	0	NATURE	1	-	0	-	0	-	0	-	0	-	0	蒂塞阿玛拉	蒂塞阿玛拉	鳍自然	transcription	完整原语定名；不靠复数猜自然或本性选义，不造鳍性或鳍林。	-
+Leneomo	4	SEA	0	ROAR	6	-	0	-	0	-	0	-	0	-	0	啸海	-	吼海	whole-name-localization	海与鸣吼转写为整体意象，改变词序与关系；不译海啸、不证明沿海。	-

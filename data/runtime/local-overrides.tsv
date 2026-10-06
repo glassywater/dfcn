@@ -813,6 +813,8 @@ Autosave	自动存档	wi
 Save list status: Portable	便携模式	h
 # The suffix on an individual save card names the game mode, not a site type or profession.
 Save list mode: Fortress	要塞模式	h
+Save list mode: Reclaim Fortress	收复要塞模式	h
+Save list mode: Fortress Testing	要塞测试模式	h
 Save list mode: Adventurer	冒险模式	h
 Main: One-Step	主界面：单步
 Main: Pause/Resume	主界面：暂停/继续

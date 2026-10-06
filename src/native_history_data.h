@@ -85,6 +85,15 @@ struct NativeHistoryName {
     bool entity_name_current = false;
     std::string parent_word_id;
     int16_t parent_word_pos = -1;
+    // Only a resolved world_site may populate this provenance. EntitySite
+    // language_name types are also used by non-site objects and prove no
+    // location kind. The formatter label retains the native classification.
+    int32_t site_id = -1;
+    int32_t site_type = -1;
+    int32_t site_subtype = -1;
+    std::string site_label;
+    // Complete original-language formatter output, never English WORD roots.
+    std::string native_name;
 };
 
 enum class NativeHistoryObjectKind : uint8_t {
@@ -242,7 +251,8 @@ inline bool native_history_tree_within_limits(const NativeHistoryEventData &root
             if (!string(subject.species, 2 * kNativeHistoryStringLimit + 32) ||
                 !string(subject.label_key, 128) || !string(subject.raw_title) ||
                 !string(subject.name.first_name) || !string(subject.name.nickname) ||
-                !string(subject.name.parent_word_id)) return false;
+                !string(subject.name.parent_word_id) ||
+                !string(subject.name.site_label, 128) || !string(subject.name.native_name)) return false;
             for (const auto &word : subject.name.words)
                 if (!string(word.id) || !string(word.english_form) ||
                     (!word.id.empty() && (word.part_of_speech < 0 || word.part_of_speech > 8))) return false;

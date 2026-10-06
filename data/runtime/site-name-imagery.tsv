@@ -1,0 +1,368 @@
+# Site 专用自然名号词；仅参与已解析真实地点的完整 WORD/POS 关系，不是独立名称池。
+# 来源：原游戏 language_words.txt 的 WORD 与词性；普通源义见 procedural-word-senses.tsv。
+# WORD_ID	part	roles	head	modifier	notes
+# head 是名物词形，modifier 是修饰或名词化意象；- 表示该位置不支持。
+# notes 只记录源义和局部取舍，不属于游戏界面内容。
+# 动物；区分真实 WORD，不把同形动词或泛称推断为某种动物。
+BEAST	NOUN	animal	兽	兽	野兽意象；不由地点居民种族决定。
+BEAR	NOUN	animal	熊	熊	bear 名词；与 BEAR_VERB 忍受分开。
+BEE	NOUN	animal	蜂	蜂	蜜蜂意象；名号用蜂。
+BEETLE	NOUN	animal	甲虫	甲虫	保留甲虫，不改成某种甲虫。
+BIRD	NOUN	animal	鸟	鸟	鸟类泛称，不指定鸟种。
+BOAR	NOUN	animal	公猪	公猪	boar 源名物为公猪；不额外添加野生含义。
+BUCK	NOUN	animal	雄鹿	雄鹿	保留公鹿与 DEER 鹿的区别。
+BUTTERFLY	NOUN	animal	蝶	蝶	蝴蝶意象；自然名号用蝶。
+CAT	NOUN	animal	猫	猫	猫的名物义。
+COBRA	NOUN	animal	眼镜蛇	眼镜蛇	保留蛇种，不泛化成蛇。
+CRAB	NOUN	animal	蟹	蟹	螃蟹意象；名号用蟹。
+CROW	NOUN	animal	乌鸦	乌鸦	crow 与 RAVEN 渡鸦分开。
+DEER	NOUN	animal	鹿	鹿	单复数均保留鹿意象；数量关系另处理。
+DOG	NOUN	animal	犬	犬	狗的名物义；名号用犬。
+DRAGON	NOUN	animal	龙	龙	龙是名称意象，不证明实际生物存在。
+EAGLE	NOUN	animal	雕	雕	eagle 的鹰类意象；名号用雕，不添加雄性含义。
+EEL	NOUN	animal	鳗	鳗	鳗鱼意象；名号用鳗。
+FISH_ANIMAL	NOUN	animal	鱼	鱼	fish 动物义；与 FISH_VERB 捕鱼分开。
+FROG	NOUN	animal	蛙	蛙	青蛙意象；与 TOAD 蟾蜍分开。
+GOAT	NOUN	animal	山羊	山羊	保留山羊，不泛化成羊。
+GOOSE	NOUN	animal	鹅	鹅	鹅的名物义。
+HARE	NOUN	animal	野兔	野兔	保留 hare 野兔与 RABBIT 兔的区别。
+HAWK	NOUN	animal	鹰	鹰	hawk 名物义，不臆定具体鹰种。
+HORSE	NOUN	animal	马	马	马的名物义。
+HOUND	NOUN	animal	猎犬	猎犬	保留猎犬与 DOG 犬的区别。
+JACKAL	NOUN	animal	豺	豺	jackal 名物义。
+LARK	NOUN	animal	云雀	云雀	保留鸟种；不是云与雀两个来源词。
+LEOPARD	NOUN	animal	豹	豹	leopard 名物义。
+LIZARD	NOUN	animal	蜥	蜥	蜥蜴意象；自然名号用蜥。
+LION	NOUN	animal	狮	狮	狮子意象；名号用狮。
+MOTH	NOUN	animal	蛾	蛾	蛾的名物义。
+MOUSE	NOUN	animal	小鼠	小鼠	mouse 与 RAT 鼠分开；不按居民推义。
+NEWT	NOUN	animal	水螈	水螈	保留 newt 的水螈义。
+OWL	NOUN	animal	鸮	鸮	猫头鹰意象；自然名号用鸮。
+OX	NOUN	animal	牛	牛	ox 的牛意象；不增加地域或所有者含义。
+RABBIT	NOUN	animal	兔	兔	rabbit 名物义。
+RAM	NOUN	animal	雄羊	雄羊	保留公羊，不改成撞击或冲车。
+RAT	NOUN	animal	鼠	鼠	rat 名物义。
+RAVEN	NOUN	animal	渡鸦	渡鸦	保留 raven 与 crow 的区别。
+SCORPION	NOUN	animal	蝎	蝎	蝎子意象；名号用蝎。
+SERPENT	NOUN	animal	巨蛇	巨蛇	保留 serpent 与 SNAKE 蛇的区别。
+SHARK	NOUN	animal	鲨	鲨	鲨鱼意象；名号用鲨。
+SKUNK	NOUN	animal	臭鼬	臭鼬	保留完整动物名，不改成臭气。
+SNAKE	NOUN	animal	蛇	蛇	snake 名物义。
+SPIDER	NOUN	animal	蛛	蛛	蜘蛛意象；不会自动改成蛛网。
+TOAD	NOUN	animal	蟾	蟾	蟾蜍意象；与蛙区分。
+# 植物；只取源词本身的形象，不添加不存在的树种、花种。
+APPLE	NOUN	plant	苹果	苹果	apple 果实义。
+BERRY	NOUN	plant	浆果	浆果	berry 泛称；不指定果种。
+BLOSSOM	NOUN	plant	花朵	花朵	blossom 名词；与开花动词分开。
+BUD	NOUN	plant	芽	芽	bud 名词；不混用发芽动词。
+BUSH	NOUN	plant	灌丛	灌丛	矮树丛的自然名号词。
+FERN	NOUN	plant	蕨	蕨	fern 名物义。
+FLOWER	NOUN	plant	花	花	flower 泛称；不指定花种。
+GRASS	NOUN	plant	草	草	grass 名物义。
+HEDGE	NOUN	plant|building	树篱	树篱	树篱兼具植物与围界意象。
+IVY	NOUN	plant	常春藤	常春藤	保留常春藤种类，不泛化成藤。
+LEAF	NOUN	plant	叶	叶	leaf 名词；与 leafy 形容词分开。
+MOSS	NOUN	plant	苔	苔	保留苔藓名物，不从名称颜色推义。
+MUSHROOM	NOUN	plant	蘑菇	蘑菇	名号中的菌类意象，不把其生物分类作为判据。
+NETTLE	NOUN	plant	荨麻	荨麻	保留荨麻，不泛化成刺草。
+OAK	NOUN	plant	橡树	橡	名物保留橡树；修饰位取橡意象。
+PEACH	NOUN	plant	桃	桃	桃子的名物意象。
+PINE	NOUN	plant	松	松	pine 松树义。
+PLANT	NOUN	plant	草木	草木	plant 植物泛称；与种植动词分开。
+ROOT	NOUN	plant	根	根	root 植物根义；不混用 ROOTVERB。
+ROSE	NOUN	plant	蔷薇	蔷薇	rose 名物义；与 rosy 色彩形容词分开。
+SEED	NOUN	plant	种子	种子	保留种子，不改成播种动作。
+THORN	NOUN	plant	棘	棘	thorn 刺的植物意象；不是武器。
+TREE	NOUN	plant	树	树	树木泛称，不添加树种。
+TULIP	NOUN	plant	郁金香	郁金香	保留完整花名。
+VINE	NOUN	plant	藤	藤	vine 藤的泛称。
+WHEAT	NOUN	plant	麦	麦	小麦意象；名号用麦。
+# 地形与水景；这些只构成专名意象，不决定真实地点的后缀。
+ABYSS	NOUN	landscape	深渊	深渊	abyss 名词；不是某种世界地点类型。
+BANK	NOUN	landscape|water	河岸	岸	bank 已明确为河岸义，不使用金融义。
+BOG	NOUN	landscape|water	泥沼	泥沼	bog 湿地意象；与 MARSH 芦沼分开。
+BOULDER	NOUN	landscape	巨石	巨石	保留大圆石的体量意象。
+CANYON	NOUN	landscape	峡谷	峡	canyon 的地形意象。
+CAVE	NOUN	landscape	洞	洞	洞为命名意象；不据此改真实地点分类。
+CAVERN	NOUN	landscape	巨穴	巨穴	保留 cavern 巨穴与 cave 洞的区别。
+CLEARING	NOUN	landscape	林隙	林隙	林间空地的自然名号词。
+CREEK	NOUN	water	溪	溪	小溪意象；不添加河流方向。
+DESERT	NOUN	landscape	荒漠	荒漠	desert 名词；与 DESERTVERB 放弃分开。
+DROPLET	NOUN	water	水滴	水滴	droplet 小滴意象。
+DUNE	NOUN	landscape	沙丘	沙丘	dune 地形义。
+EARTH	NOUN	landscape	大地	大地	earth 名词；不是土质形容词。
+FISSURE	NOUN	landscape	裂隙	裂	fissure 地形裂缝的名号意象。
+FOREST	NOUN	landscape|plant	林	林	森林意象；与真实 forest retreat 分类分开。
+FROTH	NOUN	water	泡沫	泡沫	froth 名词；不混用起泡动词。
+GLEN	NOUN	landscape	幽谷	幽谷	glen 为山间谷地；选幽谷名号词。
+GORGE_NOUN	NOUN	landscape	峡	峡	gorge 峡谷义；与 GORGE_VERB 暴食分开。
+GROVE	NOUN	landscape|plant	小林	小林	保留 grove 小树林的体量。
+HILL	NOUN	landscape	丘	丘	丘陵意象；不推出 hillocks 真实类型。
+ISLAND	NOUN	landscape|water	岛	岛	island 地形意象。
+JUNGLE	NOUN	landscape|plant	密林	密林	保留 jungle 丛林意象。
+LAKE	NOUN	water	湖	湖	lake 水景意象。
+LAND	NOUN	landscape	陆地	陆	land 的陆地义，不增加领土所有者。
+MARSH	NOUN	landscape|water	草沼	草沼	marsh 草本湿地意象；不指定芦苇植被。
+MEADOW	NOUN	landscape|plant	草甸	草甸	草地的自然名号词。
+MOUNTAIN	NOUN	landscape	山	山	山的命名意象；不是 mountain halls 真实分类。
+OCEAN	NOUN	water	大洋	洋	保留 ocean 与 SEA 海的词形区别。
+PEBBLE	NOUN	landscape	卵石	卵石	小圆石的自然名号词。
+PLAIN	NOUN	landscape	平原	原	plain 地形义；与 PLAINADJ 简单分开。
+PRAIRIE	NOUN	landscape|plant	草原	草原	prairie 地形意象。
+RIVER	NOUN	water	河	河	river 水景意象。
+ROCK	NOUN	landscape|material	岩	岩	rock 岩石意象；与 STONE 石分开。
+SAND	NOUN	landscape|material	沙	沙	sand 沙的名物义。
+SEA	NOUN	water	海	海	sea 水景意象。
+SHORE	NOUN	landscape|water	海岸	海岸	shore 的岸边意象；不猜实际海岸位置。
+SPRING_NOUN	NOUN	water	泉	泉	spring 泉义；与春季和跳跃分开。
+STONE	NOUN	landscape|material	石	石	stone 石头意象。
+STREAM	NOUN	water	水流	流	stream 水流义。
+SWAMP	NOUN	landscape|water	沼泽	沼泽	swamp 湿地意象。
+TUNDRA	NOUN	landscape	苔原	苔原	tundra 地形意象。
+VALLEY	NOUN	landscape	谷	谷	valley 山谷意象。
+WAVE	NOUN	water	波	波	wave 名词；不混用波动动词。
+# 天象、时序与天气；相同 WORD 的名词、形容词和动词分别限定。
+AUTUMN	NOUN	time	秋	秋	autumn 季节名物。
+AUTUMN	ADJ	time	-	秋	autumnal 季节修饰；不独立作为名物。
+BLAZE	NOUN	weather	烈焰	烈焰	blaze 火焰名物，不增加灾害事实。
+BLIZZARD	NOUN	weather	风雪	风雪	blizzard 暴风雪的名号意象。
+COMET	NOUN	sky	彗星	彗星	保留天体种类。
+DAWN	NOUN	time|sky	晓	晓	dawn 黎明名物；不混用破晓动词。
+DAY	NOUN	time	昼	昼	day 的白日意象，不表示一天的时长。
+DUSK	NOUN	time|sky	暮	暮	dusk 薄暮意象。
+FIRE	NOUN	weather	火	火	火的命名意象，不宣称当地着火。
+FIRE	ADJ	weather|quality	-	炽	fiery 炽热修饰；不当作名词火。
+FLAME	NOUN	weather	焰	焰	flame 火焰意象。
+FOG	NOUN	weather	雾	雾	fog 名物，不宣称当前天气。
+FOG	ADJ	weather	-	雾	foggy 多雾修饰。
+FROST	NOUN	weather	霜	霜	frost 霜的名物。
+FROST	ADJ	weather|quality	-	霜寒	frosty 霜冻状态修饰，不退化成温度事实。
+GLACIER	NOUN	landscape|water	冰川	冰川	glacier 名物与冰川地形意象。
+GLACIER	ADJ	weather|quality	-	冰	glacial 的冰意象修饰，区别名词冰川。
+ICE	NOUN	water|material	冰	冰	ice 冰的名物。
+ICE	ADJ	weather|quality	-	冰	icy 冰的状态修饰。
+LIGHTNING	NOUN	weather|radiance	电光	电	lightning 闪电意象；不使用电力技术含义。
+MIDNIGHT	NOUN	time	午夜	午夜	保留 midnight 与 NIGHT 夜的区别。
+MIST	NOUN	weather	薄雾	薄雾	mist 与 fog 的名号词区别。
+MIST	ADJ	weather	-	薄雾	misty 薄雾状态修饰。
+MOON	NOUN	sky	月	月	moon 天体意象。
+NIGHT	NOUN	time	夜	夜	night 时序意象。
+RAIN	NOUN	weather	雨	雨	rain 名物；不添加实际降雨事实。
+RAIN	ADJ	weather	-	雨	rainy 多雨的命名修饰。
+RAIN	VERB	weather	雨	雨	rain 动作名词化为雨意象；不接任意抽象宾语。
+SKY	NOUN	sky	天穹	天穹	sky 天空的名号意象。
+SMOKE	NOUN	weather	烟	烟	smoke 烟的景象意象。
+SPRING_SEASON	NOUN	time	春	春	spring 春季义；与泉和跳跃分开。
+STAR	NOUN	sky|radiance	星	星	star 天体意象。
+STORM	NOUN	weather	风暴	风暴	storm 暴风雨意象。
+STORM	ADJ	weather	-	风暴	stormy 状态修饰，区别名物槽。
+SUMMER	NOUN	time	夏	夏	summer 季节意象。
+SUN	NOUN	sky|radiance	日	日	sun 太阳名物，区别 sunny 晴朗。
+SUN	ADJ	weather	-	晴	sunny 晴朗修饰；不能译成太阳名物。
+TEMPEST	NOUN	weather	暴风雨	暴风雨	tempest 风暴意象；保留风与雨，不强压成短词。
+THUNDER	NOUN	weather|sound	雷	雷	thunder 雷的名物。
+THUNDER	VERB	weather|sound	雷鸣	雷鸣	thunder 打雷的景象意象。
+TWILIGHT	NOUN	time|radiance	暮光	暮光	保留 twilight 暮光。
+WINTER	NOUN	time	冬	冬	winter 季节意象。
+ZEPHYR	NOUN	weather|direction	西风	西风	zephyr 已有西风义，不泛化成任意风。
+# 材料；名词形与性质修饰分开，不因建筑材质改变真实类型。
+AMBER	NOUN	material	琥珀	琥珀	amber 琥珀材料义。
+AMBER	ADJ	color	-	琥珀色	amber 琥珀色修饰，区别材料名物。
+BRASS	NOUN	material	黄铜	黄铜	brass 材料义。
+BRASS	ADJ	color	-	黄铜色	brass 黄铜色修饰。
+BRONZE	NOUN	material	青铜	青铜	bronze 材料义。
+BRONZE	ADJ	color	-	古铜	bronze 青铜色的自然名号修饰。
+COPPER	NOUN	material	铜	铜	copper 材料义。
+COPPER	ADJ	material	-	铜	copper 材质修饰。
+CRYSTAL	NOUN	material	水晶	水晶	crystal 材料名物。
+CRYSTAL	ADJ	quality	-	晶莹	crystalline 晶莹状态，不自动改为材料名词。
+DIAMOND	NOUN	material	钻石	钻石	diamond 材料名物。
+DIAMOND	ADJ	material	-	钻石	diamond 材料修饰，不假定原物确由钻石制成。
+EMERALD	NOUN	material	翡翠	翡翠	emerald 源词表材料义。
+EMERALD	ADJ	color	-	翠	emerald 翡翠绿的名号色彩。
+GOLD	NOUN	material	金	金	gold 黄金名物。
+GOLD	ADJ	color|material	-	金	golden 金色或金质的命名修饰。
+GRANITE	NOUN	material	花岗岩	花岗岩	granite 完整岩种，不泛化成石。
+GRANITE	ADJ	material	-	花岗岩	granite 材质修饰。
+IRON	NOUN	material	铁	铁	iron 材料名物。
+IVORY	NOUN	material	象牙	象牙	ivory 名物材料；不译成白色。
+IVORY	ADJ	material	-	象牙	ivory 源形为象牙制修饰。
+JADE	NOUN	material	玉	玉	jade 玉名物。
+JADE	ADJ	color	-	碧	jade 源形为绿色；名号取碧，不冒充材料槽。
+METAL	NOUN	material	金属	金属	metal 材料泛称，不指定金属种类。
+PEARL	NOUN	material	珍珠	珠	pearl 名物保留珍珠；修饰位取珠意象。
+SILK	NOUN	material	丝	丝	silk 材料名物。
+SILK	ADJ	material	-	丝	silken 材料修饰。
+SILVER	NOUN	material	银	银	silver 材料名物。
+SILVER	ADJ	color	-	银	silvery 银色意象，不宣称银制。
+STEEL	NOUN	material	钢	钢	steel 材料名物。
+TIN	NOUN	material	锡	锡	tin 材料名物。
+TIN	ADJ	material	-	锡	tin 材质修饰。
+TURQUOISE	NOUN	material	绿松石	绿松石	turquoise 材料名物。
+TURQUOISE	ADJ	color	-	松石色	turquoise 绿松石色修饰。
+VELVET	NOUN	material	天鹅绒	天鹅绒	velvet 材料名物，不把词中天鹅拆作动物。
+VELVET	ADJ	quality	-	柔绒	velvety 柔绒状态，不宣称材料来源。
+WOOD	NOUN	material	木	木	wood 木材义，不自动改成森林。
+WOOD	ADJ	material	-	木	wooden 木制的命名修饰。
+# 常见颜色；只能使用真实色彩词性，不把同 WORD 的植物、材料或身体名词挪用。
+AQUA	ADJ	color	-	水碧	aqua 水色的自然名号修饰。
+AZURE	ADJ	color	-	蔚蓝	azure 颜色义。
+BLACK	NOUN	color	黑	黑	blackness 颜色名物。
+BLACK	ADJ	color	-	黑	black 色彩修饰。
+BLUE	NOUN	color	蓝	蓝	blueness 颜色名物。
+BLUE	ADJ	color	-	蓝	blue 色彩修饰。
+BROWN	ADJ	color	-	褐	brown 颜色义。
+CERULEAN	ADJ	color	-	天蓝	cerulean 蔚蓝色的自然名号修饰。
+CRIMSON	ADJ	color	-	殷红	crimson 深红色修饰。
+FAIR COLOR	ADJ	color	-	皓	fair 已有白皙颜色义；与公正意义分开。
+FUCHSIA	ADJ	color	-	品红	fuchsia 仅颜色形容词，不生成紫红花种。
+GOLDENROD	ADJ	color	-	金黄	goldenrod 在该 WORD/POS 为颜色，不当作植物。
+GRAY	NOUN	color	灰	灰	grayness 颜色名物；不等于灰烬。
+GRAY	ADJ	color	-	灰	gray 色彩修饰。
+GREEN	NOUN	color	绿	绿	greenness 颜色名物。
+GREEN	ADJ	color	-	青	green 色彩修饰；青为名号中的绿色意象。
+INDIGO	ADJ	color	-	靛蓝	indigo 颜色义。
+ORANGE	NOUN	color	橙	橙	该 WORD 的源名词为橙色，不推断水果。
+PINK	ADJ	color	-	粉红	pink 颜色义，不改成花。
+PURPLE	ADJ	color	-	紫	purple 颜色义。
+RED	NOUN	color	红	红	redness 颜色名物。
+RED	ADJ	color	-	赤	red 色彩修饰；名号取赤。
+SABLE COLOR	ADJ	color	-	墨黑	sable 深黑色义，不是貂。
+SCARLET	ADJ	color	-	绯红	scarlet 颜色义。
+TEAL	ADJ	color	-	青绿	teal 已有颜色义，不当作鸭种。
+VERMILION	ADJ	color	-	朱	vermilion 朱红色的名号修饰。
+VIOLET	ADJ	color	-	紫罗兰色	violet 在该 POS 为颜色，保留区别而不添加花名。
+WHITE	NOUN	color	白	白	whiteness 颜色名物。
+WHITE	ADJ	color	-	白	white 色彩修饰。
+YELLOW	NOUN	color	黄	黄	yellowness 颜色名物。
+YELLOW	ADJ	color	-	黄	yellow 色彩修饰。
+# 建筑意象；与正式地点属性独立，绝不凭名中城、塔等词改地点分类或自动剥尾。
+ABBEY	NOUN	building	修院	修院	abbey 仅名中建筑意象，真实后缀另取。
+BRIDGE	NOUN	building	桥	桥	bridge 名物；与架桥动词分开。
+CAMP	NOUN	building	营	营	camp 名物，不推出世界地点真实类型。
+CASTLE	NOUN	building	城堡	城堡	castle 名物；不能据名义推断 Castle 子类型。
+COTTAGE	NOUN	building	小屋	小屋	保留 cottage 小屋的体量。
+DOOR	NOUN	building	门	门	door 建筑部件意象。
+FORTRESS	NOUN	building	城垒	城垒	fortress 名物；与正式地点堡后缀独立。
+GATE	NOUN	building	门关	门关	gate 大门的名号词；与 DOOR 门区分。
+HALL	NOUN	building	厅堂	厅堂	hall 门厅名物，不推断山厅。
+HEARTH	NOUN	building	炉床	炉床	hearth 名物，不自动解释为家族。
+INN	NOUN	building	客栈	客栈	inn 名物，不改变真实地点类别。
+PALACE	NOUN	building	宫	宫	palace 名中意象，真实 Palace 分类另取。
+PILLAR	NOUN	building	柱	柱	pillar 柱的意象；不额外添加石质材料。
+ROAD	NOUN	building	路	路	road 道路意象，不由所在路线补义。
+SANCTUARY	NOUN	building	圣所	圣所	sanctuary 名物，不推断真实 shrine 类型。
+TEMPLE	NOUN	building	神庙	神庙	temple 建筑名物，不添加信仰对象。
+TOWER	NOUN	building	塔	塔	tower 名中意象，不能吞掉不同真实类型的后缀。
+WALL	NOUN	building	墙	墙	wall 名物，不推断城防或实际城墙状态。
+# 器物与武器；保持名物义，不把其动词形当动作。
+ANVIL	NOUN	object	铁砧	砧	anvil 名物；修饰位取砧意象。
+ARROW	NOUN	weapon	箭	箭	arrow 武器名物。
+AXE	NOUN	weapon	斧	斧	axe 武器名物。
+BELL	NOUN	object|sound	铃	铃	bell 名物，允许钟铃声的意象关系。
+BLADE	NOUN	weapon	刃	刃	blade 刀刃意象，不指定武器种类。
+BOAT	NOUN	object	小舟	舟	boat 小型船只意象，与 SHIP 航船区分。
+BOOK	NOUN	object	书	书	book 名物。
+BOW	NOUN	weapon	弓	弓	bow 弓义；与 BOW_VERB 弯曲分开。
+CROWN	NOUN	object	冠	冠	crown 王冠意象，不据此推断统治者。
+CUP	NOUN	object	杯	杯	cup 名物。
+DAGGER	NOUN	weapon	匕首	匕首	dagger 武器名物。
+FLUTE	NOUN	object|sound	笛	笛	flute 名物与声音意象。
+HAMMER	NOUN	object|weapon	锤	锤	hammer 名物，不自动添加锻造动作。
+LANTERN	NOUN	object|radiance	灯笼	灯笼	lantern 名物，不泛化成普通灯。
+MIRROR	NOUN	object	镜	镜	mirror 名物；与反映动词分开。
+ORB	NOUN	object	圆球	圆球	orb 球体意象，不自动译为天体。
+RING_OBJECT	NOUN	object	环	环	ring 物体义；与鸣响动词分开。
+SABRE	NOUN	weapon	军刀	军刀	sabre 武器名物。
+SHIELD	NOUN	weapon	盾	盾	shield 名物；与保护动词分开。
+SHIP	NOUN	object	航船	船	ship 船的名物，与 BOAT 小舟区分。
+SPEAR	NOUN	weapon	矛	矛	spear 武器名物。
+STAFF	NOUN	object	杖	杖	staff 源形为杖，不当作工作人员。
+SWORD	NOUN	weapon	剑	剑	sword 武器名物；采用通常剑义，不沿用普通词表的刀。
+THRONE	NOUN	object	王座	王座	throne 名物，不据此推断拥有者身份。
+TOME	NOUN	object	典籍	典籍	tome 名物，与 BOOK 书保留区别。
+# 身体形象；不按居民或持有者把泛称改成具体动物的部件。
+BEAK	NOUN	body	喙	喙	beak 鸟嘴的自然名号词。
+BLOOD	NOUN	body	血	血	blood 名物，不增加战争或伤亡事实。
+BONE	NOUN	body	骨	骨	bone 骨头意象。
+CLAW	NOUN	body	爪	爪	claw 身体部位，不解释为动词抓。
+EYE	NOUN	body	眼	眼	eye 名物，不自动译为洞口。
+FANG	NOUN	body	尖牙	牙	fang 尖牙意象；修饰位取牙。
+FIN	NOUN	body	鳍	鳍	fin 身体部位，不推断居民水生。
+HEART	NOUN	body	心	心	heart 名物意象，不补情绪义。
+HOOF	NOUN	body	蹄	蹄	hoof 身体部位，不指定有蹄动物。
+HORN	NOUN	body	角	角	horn 兽角义，不混用不存在的乐器形。
+JAW	NOUN	body	颚	颚	jaw 身体部位。
+MOUTH	NOUN	body	口	口	mouth 的名号形象；河口关系只由同组水景词确立。
+TAIL	NOUN	body	尾	尾	tail 身体部位。
+TOOTH	NOUN	body	齿	齿	tooth 牙齿意象，与 FANG 尖牙区分。
+WING	NOUN	body	翼	翼	wing 翅膀意象，不添加飞行动作。
+# 状态修饰；head 留空，单个状态或无法完整组名时应退回原名音形。
+ANCIENT	ADJ	quality	-	古	ancient 古老修饰；与古人名词分开。
+BIG	ADJ	quality	-	大	big 体量修饰。
+CALM	ADJ	quality	-	静	calm 平静修饰；不是平息动作。
+CHILL	NOUN	weather|quality	寒意	寒	chill 寒意名物；不混用冻结动词。
+CLEAR	ADJ	quality	-	清	clear 清澈修饰；不是清除动作。
+COLD	NOUN	weather|quality	寒	寒	coldness 寒冷名物。
+COLD	ADJ	weather|quality	-	寒	cold 寒冷状态修饰。
+DARK	NOUN	quality	幽暗	幽暗	darkness 黑暗名物，与 BLACK 黑色区分。
+DARK	ADJ	quality	-	幽暗	dark 黑暗状态；不改成纯色词黑。
+DEEP	ADJ	quality	-	深	deep 深邃修饰；不是深处名物。
+ETERNAL	ADJ	quality	-	恒	eternal 永恒修饰。
+HIGH	ADJ	quality	-	高	high 高度修饰，不推断地理海拔。
+HOARY	ADJ	color|quality	-	苍白	hoary 灰白状态，区别 WHITE 白色。
+HOLY	ADJ	quality	-	圣	holy 神圣修饰，不猜信仰对象。
+LEAF	ADJ	plant|quality	-	茂叶	leafy 源义为叶茂盛；用前置名号修饰，区别 leaf 名词。
+LIGHT	ADJ	quality	-	轻	light 在该 POS 为轻，不得借用光或辉。
+LONE	ADJ	quality	-	孤	lone 孤单修饰。
+LONG	ADJ	quality	-	长	long 长度修饰，不改成久远时序。
+LOW	ADJ	quality	-	低	low 高度修饰，区别低贱抽象义。
+LUSH	ADJ	plant|quality	-	葱郁	lush 繁茂状态的自然前置修饰。
+NEW	ADJ	quality	-	新	new 新旧状态修饰。
+OLD	ADJ	quality	-	老	old 老旧修饰；保留与 ANCIENT 古的差别。
+PALE	ADJ	color|quality	-	苍白	pale 苍白状态修饰。
+PEACE	ADJ	quality	-	宁	peaceful 平静修饰，不据此宣称和平政局。
+QUIET	ADJ	quality	-	静谧	quiet 安静状态，不混用使安静动作。
+ROUND	ADJ	quality	-	圆	round 形状修饰。
+SILENCE	ADJ	quality	-	寂	silent 沉默状态，不混用禁声动词。
+SMALL	ADJ	quality	-	小	small 体量修饰。
+SMOOTH	ADJ	quality	-	平滑	smooth 形态修饰，不泛化为宁静。
+WARM	ADJ	weather|quality	-	暖	warm 温暖状态修饰。
+# 方位修饰；只来自名称本身，不推断当前地图坐标。
+AFTER	PREFIX	direction	-	后	after 前缀的先后意象，不添加历史事件。
+EAST	ADJ	direction	-	东	east 名称方位，不根据地图坐标改名。
+ECTO	PREFIX	direction	-	外	ecto 外部意象，不推断实际建筑部位。
+NORTH	ADJ	direction	-	北	north 名称方位。
+OVER	PREFIX	direction	-	上	over 上部意象，不推断层级或所有者。
+SOUTH	ADJ	direction	-	南	south 名称方位。
+UNDER	PREFIX	direction	-	下	under 下部意象，不推断地下地点类型。
+WEST	ADJ	direction	-	西	west 名称方位。
+DISTANCE	ADJ	direction|quality	-	遥	distant 远的修饰；不将 distance 距离名词改作形容词。
+# 数量与集合；必须与同一名称内相容的名物结合，不独立生成名称。
+COUPLE	NOUN	pair	-	双	couple 一对的成对意象；不自动改成人类配偶。
+PACK	NOUN	group	-	群	pack 为兽群名词；包装动词不适用。
+# 光辉与声音；只支持景物中的诗性关系，不将任意动作改造成意译残句。
+BRIGHT	NOUN	radiance	光亮	明	brightness 光亮名物。
+BRIGHT	ADJ	radiance|quality	-	明	bright 明亮修饰。
+BRILLIANT	NOUN	radiance	光辉	辉	brilliance 光辉名物。
+BRILLIANT	ADJ	radiance|quality	-	璀璨	brilliant 璀璨修饰。
+GLEAM	NOUN	radiance	微光	微光	gleam 光束与微光意象，不混用敲击。
+GLEAM	VERB	radiance	闪	闪	gleam 闪光的景物动作意象。
+GLIMMER	NOUN	radiance	微光	微光	glimmer 名物义。
+GLISTEN	VERB	radiance	辉	辉	glisten 闪亮的名号意象；保留原动词关系。
+GLITTER	NOUN	radiance	闪光	烁	glitter 的闪光名物；相容景物关系中用烁作为名号修饰。
+GLITTER	VERB	radiance	闪光	烁	glitter 闪耀动作归并为烁的景物名号意象，不输出解释性残句。
+LIGHT	NOUN	radiance	光	光	light 光名物；绝不用于同 WORD 的轻形容词。
+RADIANCE	NOUN	radiance	光辉	辉	保留 radiance 光辉意象。
+RADIANCE	ADJ	radiance|quality	-	辉耀	radiant 发光修饰。
+SHEEN	NOUN	radiance	光泽	光泽	sheen 名物义。
+SHIMMER	VERB	radiance	流光	流光	shimmer 闪烁的流光意象，不增加水体义。
+CHIRP	VERB	sound	鸣	鸣	chirp 啁啾动作；仅与相容鸟虫或景物组名。
+HOWL	NOUN	sound	嗥声	嗥声	howl 源词只有嗥叫名物，不虚构动词形。
+ROAR	NOUN	sound	吼声	吼声	roar 声音名物。
+ROAR	VERB	sound	啸	啸	roar 吼的诗性动作名号词，不拼成长句。
+SING	NOUN	sound	歌	歌	song 名词；与 sing 动作分开。
+SING	VERB	sound	歌	吟	sing 唱的名号动作；歌作为名物中心，吟作修饰；仅与相容声音来源组名。
+TWEET	VERB	sound	鸣	鸣	tweet 啁啾归并为鸟虫鸣声意象；不推断实际社交或界面文本。
+PRAISE	NOUN	praise	赞颂	颂	praise 名物；是否采用颂需完整名称关系支持。
+PRAISE	VERB	praise	颂	颂	praise 赞颂动作；不得配任意名物强行意译。

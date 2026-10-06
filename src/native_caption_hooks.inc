@@ -1182,7 +1182,8 @@ static PendingNativeField remember_native_clipped_draw(graphicst *graphics, cons
         std::optional<SDL_Rect> location_picker_box = std::nullopt,
         std::optional<NativeFortressLaborCaption> fortress_labor_caption = std::nullopt,
         NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None,
-        uintptr_t native_caller = 0) {
+        uintptr_t native_caller = 0,
+        std::optional<std::array<long, 4>> capture_clip = std::nullopt) {
     PendingNativeField captured;
     auto &state = native_clipped_pending();
     // Both supported addst implementations draw at the current cursor and
@@ -1227,7 +1228,7 @@ static PendingNativeField remember_native_clipped_draw(graphicst *graphics, cons
                     remember_native_drawn_text_row(graphics->screenx, graphics->screeny, visible,
                         reinterpret_cast<uintptr_t>(source), graphics,
                         top_layer, complete, info_title_kind, info_title_authored, info_title_right,
-                        civilization_field, mission_title, mission_title_right, std::nullopt, epoch,
+                        civilization_field, mission_title, mission_title_right, capture_clip, epoch,
                         map_hover, location_picker_field, location_picker_box, fortress_labor_caption,
                         travel_building_field, native_caller);
                     if (!complete.empty())
@@ -1257,11 +1258,12 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         NativeMapHoverContext map_hover = {},
         NativeLocationPickerField location_picker_field = NativeLocationPickerField::None,
         NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None,
-        uintptr_t native_caller = 0) {
-    const std::array<long, 4> draw_clip = graphics
+        uintptr_t native_caller = 0,
+        std::optional<std::array<long, 4>> capture_clip = std::nullopt) {
+    const std::array<long, 4> draw_clip = capture_clip.value_or(graphics
         ? std::array<long, 4>{graphics->clipx[0], graphics->clipx[1],
                               graphics->clipy[0], graphics->clipy[1]}
-        : std::array<long, 4>{};
+        : std::array<long, 4>{});
     auto *tooltip_write = g_native_tooltip_write;
     const int tooltip_x = graphics ? graphics->screenx : -1;
     const int tooltip_y = graphics ? graphics->screeny : -1;
@@ -1305,7 +1307,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         info_title_kind, info_title_authored, info_title_right, civilization_field,
         mission_title, mission_title_right, map_hover,
         location_picker_field, location_picker_box, fortress_labor_caption, travel_building_field,
-        native_caller);
+        native_caller, capture_clip);
     std::string complete;
     std::optional<std::string> squad_alias_target;
     int x = -1, y = -1, dimx = 0, dimy = 0;
@@ -1867,6 +1869,8 @@ static void capture_native_world_site_entity_fact(graphicst *graphics,
 }
 #endif
 
+#include "native_site_name_draws.inc"
+
 static void capture_native_clipped_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width) {
     const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
@@ -2103,6 +2107,7 @@ static bool install_native_caption_hooks() {
     if (!native_reference_calls(entity_fact_calls, 0)) return false;
     calls.insert(calls.end(), entity_fact_calls.begin(), entity_fact_calls.end());
 #endif
+    if (!append_native_site_name_draw_calls(calls)) return false;
     reset_native_caption_capture();
     g_native_caption_hooks.resize = profile.resize;
     g_native_caption_hooks.draw = profile.draw;

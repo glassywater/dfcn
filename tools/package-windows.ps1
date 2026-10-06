@@ -59,6 +59,8 @@ try {
         'data/runtime/instrument-translations.tsv', 'data/runtime/procedural-terms.tsv',
         'data/runtime/procedural-word-senses.tsv', 'data/runtime/adventure-target-translations.tsv',
         'data/runtime/civilization-name-terms.tsv',
+        'data/runtime/site-name-decisions.tsv',
+        'data/runtime/site-name-imagery.tsv',
         'data/runtime/character-name-lexicon.tsv', 'data/runtime/character-name-overrides.tsv',
         'data/runtime/character-surname-lexicon.tsv',
         'data/runtime/pinyin-data/pinyin.txt', 'data/runtime/pinyin-data/SOURCE',

@@ -235,6 +235,7 @@ std::optional<std::string> Overlay::translate_history_name(
         const NativeHistoryName &name, bool character, bool polity_role,
         bool government_role, const NativeSiteGovernmentContext *government_context) const {
     if (!name.has_name) return std::nullopt;
+    if (!character && name.site_id >= 0) return translate_site_name(name);
     NativeSiteGovernmentContext identity_government_context;
     if (!character && !polity_role && !government_context &&
             name.entity_type >= 1 && name.entity_type <= 10 &&
