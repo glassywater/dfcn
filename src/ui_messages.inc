@@ -175,6 +175,63 @@
         };
         append_native_message_paragraphs(screen_rows, result, untranslated_help_rows,
             only_y, screen_override, false);
+        // Legends initialization draws its status as one addst record below
+        // Sorting, at the same native column. This is not a widget caption:
+        // half-font flags and transparent spaces must not split its age from
+        // its counters, and a covered outer rail must not cancel the record.
+        // Keep this ownership local to the complete reviewed progress grammar.
+        for (int heading_y = 0; heading_y < gps_->dimy; ++heading_y) {
+            const auto &heading = screen_rows[heading_y];
+            const size_t heading_at = heading.find("Sorting");
+            if (heading_at == std::string::npos ||
+                    !has_word_boundaries(heading, heading_at, heading_at + 7)) continue;
+            const int left = static_cast<int>(heading_at);
+            bool heading_visible = true;
+            for (int x = left; x < left + 7; ++x)
+                if (!visible_layer(x, heading_y)) heading_visible = false;
+            if (!heading_visible) continue;
+            int status_rule = -1;
+            for (int index : ui_message_template_rules_)
+                if (rules_[static_cast<size_t>(index)].source ==
+                        "{v} event sort {d}/{d} completed") {
+                    status_rule = index;
+                    break;
+                }
+            if (status_rule < 0) break;
+            for (int y = heading_y + 1; y < gps_->dimy; ++y) {
+                const auto &row = screen_rows[y];
+                if (row[left] == ' ') continue;
+                int end = left;
+                for (; end < gps_->dimx; ++end) {
+                    if (is_cp437_box_separator(row, end)) break;
+                    if (!visible_layer(end, y)) {
+                        // A top-layer space is transparent. It still belongs
+                        // inside this record when the visible base is blank;
+                        // never borrow an obscured glyph from another layer.
+                        const unsigned char visible = visible_char_at(end, y);
+                        if (row[end] != ' ' || (visible && visible != ' ')) break;
+                    }
+                }
+                const auto text = trim_view(std::string_view(row).substr(left, end - left));
+                if (text.empty() || text.data() != row.data() + left ||
+                        compact_ui_message_literal(text).find("eventsort") == std::string::npos)
+                    continue;
+                const std::string source(text);
+                Match status{left, y, static_cast<int>(text.size()),
+                    kUiMessageRule, {}, source};
+                const auto colors = message_foregrounds(left, y, status.length);
+                std::vector<int> target_colors;
+                const auto target = translate_help_paragraph(status.source,
+                    colors, target_colors, true, status_rule);
+                if (!target) continue;
+                int right = left + status.length;
+                if (const auto clip = native_captured_text_clip(*gps_, status))
+                    right = std::max(right, std::min(end, clip->x + clip->w));
+                append_message({std::move(status)}, right, *target, target_colors,
+                    std::nullopt, source, left);
+                break;
+            }
+        }
         RenderTimingScope ui_detail(render_timings_, config_.trace_render_timing, RenderTimingStage::UiDynamic);
         // Reject impossible starts before reading caption skins or rebuilding
         // a panel. These short prefixes are only necessary conditions; retain
