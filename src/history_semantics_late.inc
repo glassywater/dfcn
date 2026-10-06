@@ -52,8 +52,7 @@ case 93: { // written_content_composed
             subject(NativeHistoryObjectKind::Underground, layer_id);
         if (!location) return std::nullopt;
     }
-    // Keep author, place and work in one predicate so the Chinese place
-    // clause belongs between the author and verb, with every link retained.
+    // Keep author, place and work in one predicate, with every link retained.
     std::string key = location ? "{p} was created in {p} by {n}" : "{p} was created by {n}";
     bool title_field = true;
     if (event.native_type == 93) {
@@ -74,10 +73,20 @@ case 93: { // written_content_composed
     if (event.native_type != 93 && location) fields.push_back(*location);
     fields.push_back(*author);
     if (event.native_type == 93 && location) fields.push_back(*location);
+    const bool glorifying_work = event.native_type == 93 && event.reason == 51;
+    if (glorifying_work) {
+        // The typed motive belongs before the writing verb in Chinese.
+        // Bind its figure into the complete predicate so the template can
+        // place the location first without splitting or flattening links.
+        auto glorified = subject(NativeHistoryObjectKind::Figure, event.reason_data);
+        if (!glorified) return std::nullopt;
+        key += " in order to glorify {a}";
+        fields.push_back(*glorified);
+    }
     auto creation = apply(key, fields);
     if (!creation) return std::nullopt;
     join(result, *creation);
-    append_clause(result, context->first);
+    if (!glorifying_work) append_clause(result, context->first);
     append_clause(result, context->second);
     translated = true;
     break;

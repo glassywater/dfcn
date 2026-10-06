@@ -18858,6 +18858,7 @@ You can also click on details to customize each individual soldier.	还可以点
 You can learn more about this visitor after they chat with a local.	这位访客与当地居民交谈后，你就能了解更多关于他们的信息。	hP
 Zones can be added using the zone menu at the bottom of the screen.	可通过屏幕底部的区域菜单添加区域。	hP
 accepted out of loyalty to {a}, despite lack of loyalty toward {a}.	虽然不忠于{a2}，但忠于{a1}，因此答应了。	ht
+an untitled work was authored by {n} in {p} in order to glorify {a}	在{p1}，{n1}为了颂扬{a1}而撰写了一部无题作品	ht
 and aided {a} in becoming a permanent part of the living world {s}.	并协助{a1}永久留在生者的世界，{s1}。	ht
 and began dreaming of seeing the great natural wonders of the world	并开始梦想见识世界的自然奇观	h
 and confessed and was wrongfully convicted of {s} by {a} during {e}	并在{e1}期间认罪并被{a1}错判犯有{s1}	ht
@@ -22477,6 +22478,7 @@ accepted in admiration of power, despite feeling no avarice.	虽然没有贪念�
 accepted in admiration of power, despite feelings of vanity.	虽然有虚荣心，但崇拜权力，因此答应了。	h
 accepted in admiration of power, despite loyalty toward {a}.	虽然忠于{a1}，但崇拜权力，因此答应了。	ht
 accepted out of loyalty to {a}, despite admiration of power.	虽然崇拜权力，但忠于{a1}，因此答应了。	ht
+an untitled work was authored by {n} in order to glorify {a}	{n1}为了颂扬{a1}而撰写了一部无题作品	ht
 and began dreaming of attaining rank in society in the wilds	并在荒野中开始梦想获得社会地位	h
 and began dreaming of bringing peace to the world during {e}	并在{e1}期间开始梦想为世界带来和平	ht
 and began dreaming of bringing peace to the world within {p}	并在{p1}开始梦想为世界带来和平	ht
@@ -24794,6 +24796,7 @@ Your room is up the stairs, the {d}nd door on your right.	你的房间在楼上�
 Your room is up the stairs, the {d}rd door on your right.	你的房间在楼上右手边第{d1}扇门内。	hPt
 Your room is up the stairs, the {d}st door on your right.	你的房间在楼上右手边第{d1}扇门内。	hPt
 Your room is up the stairs, the {d}th door on your right.	你的房间在楼上右手边第{d1}扇门内。	hPt
+a work was authored by {n} in {p} in order to glorify {a}	在{p1}，{n1}为了颂扬{a1}而撰写了一部作品	ht
 accepted in admiration of power, despite distrust of {a}.	虽然不信任{a1}，但崇拜权力，因此答应了。	ht
 accepted in admiration of power, despite valuing the law.	虽然尊重法律，但崇拜权力，因此答应了。	h
 accepted out of loyalty to {a}, despite fearing of death.	虽然惧怕死亡，但忠于{a1}，因此答应了。	ht
@@ -28010,6 +28013,7 @@ were the first to reach the summit of {p} in the wilds	在荒野中率先登上�
 {a} was wrongfully convicted of {s} by {a} within {p}.	{a1}在{p1}被{a2}错判犯有{s1}。	ht
 {a} were hired as scouts by the attackers in the wilds	在荒野中，进攻方雇佣{a1}担任斥候	ht
 {a} wove a masterful sewn image to a {i} in the wilds.	{a1}在荒野中为{i1}织出了一幅杰作级的刺绣图像。	ht
+{b} was authored by {n} in {p} in order to glorify {a}	在{p1}，{n1}为了颂扬{a1}而撰写了《{b1}》	ht
 {e} must pay homage to {e} or suffer the consequences.	{e1}必须向{e2}称臣，否则后果自负。	hPt
 {i} was stolen from {p} by {a} during {e} in the wilds	在荒野中，在{e1}期间，{a1}从{p1}偷走了{i1}	ht
 {n} and {n} developed a business rivalry in the wilds.	在荒野中，{n1}与{n2}成为了商业对手。	ht
@@ -31920,6 +31924,7 @@ You must drive the skulking vermin {e} out of {e}.	你必须把{e1}这群鬼祟�
 You will learn something you did not want to know.	你将得知某件你不愿知道的事。	hP
 Your bookkeeper has done enough work to attain {s}	簿记员已完成足够的工作，达到{s}	wtl
 Your room is up the stairs, the door on your left.	你的房间在楼上左手边的门内。	hP
+a work was authored by {n} in order to glorify {a}	{n1}为了颂扬{a1}而撰写了一部作品	ht
 about not having a tomb after gaining another year	关于获得另一个生日后没有陵墓	wi
 after being exiled following a criminal conviction	在被定罪并流放后	h
 agreed for love of {a}, despite feelings of greed.	虽然有贪念，但爱着{a1}，因此答应了。	ht
@@ -36468,6 +36473,7 @@ wove a masterful sewn image to a {i} within {p}	在{p1}为{i1}织出了一幅杰
 {a} wove a masterful sewn image to a {i} in {p}	{a1}在{p1}为{i1}织出了一幅杰作级的刺绣图像	ht
 {a} wrongfully convicted {n} of {s} during {e}.	{a1}在{e1}期间错误地判定{n1}犯有{s1}。	ht
 {a} wrongfully convicted {n} of {s} within {p}.	{a1}在{p1}错误地判定{n1}犯有{s1}。	ht
+{b} was authored by {n} in order to glorify {a}	{n1}为了颂扬{a1}而撰写了《{b1}》	ht
 {e} from the position of {s} of {p} during {e}.	在{e2}期间，{e1}，离开{p1}的{s1}职位。	htEi
 {e} from the position of {s} of {p} within {p}.	在{p2}，{e1}，离开{p1}的{s1}职位。	htEi
 {e} to the position of {s} of {p} in the wilds.	在荒野中，{e1}，就任{p1}的{s1}。	htEi
