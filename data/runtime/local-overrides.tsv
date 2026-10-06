@@ -1205,9 +1205,10 @@ Done editing	完成编辑	w
 Editing routine	编辑日程：	wl
 Equip/orders only	仅执行命令时穿戴	w
 Equip/always	始终穿戴装备	w
-Sleep/room at will	随意回卧室睡觉	w
-Sleep/barracks at will	随意在军营睡觉	w
-Sleep/barracks at need	困倦时在军营睡觉	w
+# Keep complete sleep policies in the UI-message pass so Sleep cannot claim their prefix.
+Sleep/room at will	随意回卧室睡觉	wP
+Sleep/barracks at will	随意在军营睡觉	wP
+Sleep/barracks at need	困倦时在军营睡觉	wP
 Minimum number of soldiers to follow new order	执行新命令所需的最少士兵人数	wl
 # The native minimum-soldier label occupies these three consecutive rows.
 Fortress schedule editor: Minimum number of	执行新命令	l

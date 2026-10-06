@@ -82362,8 +82362,8 @@ Skill rating: Adequate	基础	li
 Skill rating: Dabbling	略懂	li
 Skill rating: Talented	出色	li
 Sleep or wait a while.	睡觉或等待一段时间。	hj
-Sleep/barracks at need	困倦时在军营睡觉	w
-Sleep/barracks at will	随意在军营睡觉	w
+Sleep/barracks at need	困倦时在军营睡觉	wP
+Sleep/barracks at will	随意在军营睡觉	wP
 Some dozens live there	那里住着数十人	al
 Somebody was expelled.	有人遭到驱逐。	h
 Stagnant water [{d}/7]	死水 [{d}/7]	wtl
@@ -92744,7 +92744,7 @@ Skill name: Reader	阅读	li
 Skill name: Shield	盾牌使用	li
 Skill name: Writer	写作	li
 Slated for removal	已指定拆除	wli
-Sleep/room at will	随意回卧室睡觉	w
+Sleep/room at will	随意回卧室睡觉	wP
 Sort units by job.	按工作对单位排序。	hj
 Splints (Desired):	夹板（期望数量）：	wl
 Spouse is nobility	配偶是贵族	hP
