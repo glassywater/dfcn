@@ -4128,8 +4128,6 @@ private:
     bool load_site_name_decisions();
     bool load_site_name_imagery();
     bool load_civilization_name_terms();
-    std::string civilization_name_suffix(const NativeHistoryName &name) const;
-    std::string civilization_name_suffix(std::string_view english) const;
     bool load_site_government_name_terms();
     std::optional<std::string> site_government_name_term(
         std::string_view word_id, std::string_view part, size_t slot) const;
@@ -9592,25 +9590,30 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     const bool english_site_name = context == ProceduralFragmentContext::english_site_name;
     const bool non_entity_name = context == ProceduralFragmentContext::non_entity_name || english_site_name;
     const bool civilization_name = context == ProceduralFragmentContext::civilization_name;
-    if ((civilization_name || english_site_name) && !phonetic_only) {
+    if (civilization_name && !phonetic_only) {
         auto source = trim_view(screen_text);
         const bool quoted = source.size() >= 2 && source.front() == '"' && source.back() == '"';
         if (quoted) {
             source.remove_prefix(1);
             source.remove_suffix(1);
         }
-        if (civilization_name)
-            if (const auto translated = translate_civilization_reference(source, true))
-                return quoted ? "“" + *translated + "”" : *translated;
+        // Real WORD/POS identities own their full political imagery. A
+        // source-only name continues to the scoped title grammar below.
+        if (const auto translated = translate_civilization_reference(source, true))
+            return quoted ? "“" + *translated + "”" : *translated;
+    }
+    if (english_site_name && !phonetic_only) {
+        auto source = trim_view(screen_text);
+        const bool quoted = source.size() >= 2 && source.front() == '"' && source.back() == '"';
+        if (quoted) {
+            source.remove_prefix(1);
+            source.remove_suffix(1);
+        }
         const auto core = [&](std::string_view english) {
-            const std::string suffix = civilization_name
-                ? civilization_name_suffix(english) : std::string{};
             std::string result;
             if (auto translated = english_character_names_.entity_name(english))
                 result = *translated;
             else result = transliterate_english_name(english);
-            if (civilization_name && !result.empty())
-                result += suffix;
             return result;
         };
         if (const auto pair = split_generated_name_identity(source)) {
@@ -10585,6 +10588,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         std::string gloss;
     };
     std::string civilization_head_id;
+    bool civilization_surface_ambiguous = false;
     auto civilization_component = [&](std::string_view source,
             ProceduralNamePartOfSpeech expected, size_t slot)
             -> std::optional<CivilizationSurfaceMeaning> {
@@ -10592,13 +10596,25 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         const auto forms = name_editor_word_forms_.find(folded);
         if (forms == name_editor_word_forms_.end()) return std::nullopt;
         std::optional<CivilizationSurfaceMeaning> selected;
+        std::string candidate_id;
         for (const auto &meaning : forms->second) {
-            if (meaning.part_of_speech != expected) continue;
+            if (slot == 6) {
+                if (meaning.part_of_speech != ProceduralNamePartOfSpeech::noun &&
+                        meaning.part_of_speech != ProceduralNamePartOfSpeech::verb) continue;
+            } else if (meaning.part_of_speech != expected) continue;
             const auto native_forms = history_english_name_forms_.find(meaning.word_id);
             if (native_forms == history_english_name_forms_.end()) continue;
             const auto &raw = native_forms->second;
-            if (slot == 6 && expected == ProceduralNamePartOfSpeech::verb && raw[8] != folded)
+            if (slot == 6 && meaning.part_of_speech == ProceduralNamePartOfSpeech::verb &&
+                    raw[8] != folded)
                 continue;
+            // A spelling shared by another legal WORD stays ambiguous even
+            // when only one of those WORDs has a reviewed political entry.
+            if (!candidate_id.empty() && candidate_id != meaning.word_id) {
+                civilization_surface_ambiguous = true;
+                return std::nullopt;
+            }
+            candidate_id = meaning.word_id;
             std::string gloss;
             if (slot == 5) {
                 const auto head = civilization_name_terms_.find(meaning.word_id);
@@ -10606,22 +10622,26 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
                 gloss = render_civilization_name_head(meaning.word_id, head->second,
                     raw[1] == folded && raw[0] != folded);
             } else {
-                const char *part = expected == ProceduralNamePartOfSpeech::adjective ? "ADJ" :
-                    expected == ProceduralNamePartOfSpeech::noun ? "NOUN" :
-                    expected == ProceduralNamePartOfSpeech::prefix ? "PREFIX" : "VERB";
+                const char *part = meaning.part_of_speech == ProceduralNamePartOfSpeech::adjective ? "ADJ" :
+                    meaning.part_of_speech == ProceduralNamePartOfSpeech::noun ? "NOUN" :
+                    meaning.part_of_speech == ProceduralNamePartOfSpeech::prefix ? "PREFIX" : "VERB";
                 const auto modifier = civilization_name_modifier(meaning.word_id, part,
                     slot, civilization_head_id);
                 gloss = modifier ? *modifier : meaning.gloss;
             }
-            if (selected && (selected->word_id != meaning.word_id || selected->gloss != gloss))
+            if (selected && (selected->word_id != meaning.word_id || selected->gloss != gloss)) {
+                civilization_surface_ambiguous = true;
                 return std::nullopt;
+            }
             selected = CivilizationSurfaceMeaning{meaning.word_id, std::move(gloss)};
         }
         return selected;
     };
 
-    auto translate_phrase = [&](std::string phrase, bool scoped_head = false) {
+    auto translate_phrase = [&](std::string phrase, bool scoped_head = false,
+            bool ownership = false) {
         if (civilization_name && scoped_head) {
+            civilization_head_id.clear();
             std::istringstream input(phrase);
             std::vector<std::string> components;
             for (std::string word; input >> word;) {
@@ -10639,16 +10659,15 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
                 if (head) {
                     civilization_head_id = head->word_id;
                     std::string adjectives;
-                    bool complete = true;
                     for (size_t i = 0; i + 1 < components.size(); ++i) {
                         const auto adjective = civilization_component(components[i],
                             ProceduralNamePartOfSpeech::adjective, 2);
                         if (adjective) adjectives += adjective->gloss;
-                        else {complete = false; break;}
+                        else adjectives += transliterate_english_name(components[i]);
                     }
-                    if (complete && hyphen == std::string::npos)
+                    if (hyphen == std::string::npos)
                         return adjectives + head->gloss;
-                    if (complete && hyphen > 0 && last.find('-') == hyphen) {
+                    if (hyphen > 0 && last.find('-') == hyphen) {
                         const std::string_view source(last.data(), hyphen);
                         const auto modifier = reviewed_title_component(source,
                             ProceduralNamePartOfSpeech::noun);
@@ -10660,13 +10679,24 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
                                 return adjectives + compound->gloss + head->gloss;
                         }
                     }
+                    // An unsupported modifier must not discard the known
+                    // political HEAD by falling into ordinary name rendering.
+                    return adjectives + transliterate_english_name(
+                        std::string_view(last).substr(0, hyphen)) + head->gloss;
                 }
             }
-        } else if (civilization_name && !scoped_head) {
+        } else if (civilization_name && ownership) {
             if (const auto owner = civilization_component(phrase,
                     ProceduralNamePartOfSpeech::noun, 6)) return owner->gloss;
-            if (const auto owner = civilization_component(phrase,
-                    ProceduralNamePartOfSpeech::verb, 6)) return owner->gloss;
+        }
+        if (civilization_name) {
+            // Only generated front-name portions use the shared natural
+            // compositor. Unsupported title/tail spellings stay phonetic;
+            // they cannot acquire a guessed political sense from a dictionary.
+            if (!scoped_head && !ownership)
+                if (const auto natural = english_character_names_.entity_name(phrase))
+                    return *natural;
+            return transliterate_english_name(phrase);
         }
         // Preserve the native title structure before the loose fallback
         // splits punctuation: up to two adjectives and a noun-noun head.
@@ -10832,7 +10862,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         // phrase loses its internal grammar.
         const size_t nested = name.find(" of The ");
         const size_t titled = name.find(" the ");
-        const auto titled_person = english_site_name || titled == std::string::npos ? std::nullopt :
+        const auto titled_person = english_site_name || civilization_name || titled == std::string::npos ? std::nullopt :
             translate_generated_person_name(std::string_view(name).substr(0, titled), true);
         if (titled_person && generated_title_shape(name.substr(titled + 5))) {
             // An epithet is itself an English generated title, including its
@@ -10850,7 +10880,8 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             const size_t of = name.find(" of ");
             if (of != std::string::npos) {
                 const std::string head = translate_phrase(name.substr(0, of), scoped_head);
-                const std::string tail = translate_phrase(name.substr(of + 4));
+                const std::string tail = translate_phrase(name.substr(of + 4), false,
+                    civilization_name);
                 result = tail + (civilization_name && scoped_head ? "" : "之") + head;
             } else {
                 result = translate_phrase(name, scoped_head);
@@ -10858,10 +10889,11 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         } else {
             if (titled != std::string::npos) {
                 result = translate_phrase(name.substr(0, titled)) + "·" +
-                         render_name("The " + name.substr(titled + 5), false);
+                         render_name("The " + name.substr(titled + 5),
+                             civilization_name && scoped_head);
             } else if (name.find(" of ") != std::string::npos) {
                 result = render_name("The " + name, scoped_head);
-            } else if (const auto person = english_site_name ? std::nullopt : translate_generated_person_name(name)) {
+            } else if (const auto person = english_site_name || civilization_name ? std::nullopt : translate_generated_person_name(name)) {
                 result = *person;
             } else {
                 result = translate_phrase(name, scoped_head);
@@ -10873,6 +10905,24 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     auto translate_name = [&](std::string name) {
         return render_name(std::move(name), true);
     };
+
+    // Political fields use their reviewed title and modifier senses before
+    // world, figure or ordinary name fallbacks can reinterpret the field.
+    if (civilization_name) {
+        auto source = trim_view(screen_text);
+        const bool quoted = source.size() >= 2 && source.front() == '"' && source.back() == '"';
+        if (quoted) {
+            source.remove_prefix(1);
+            source.remove_suffix(1);
+        }
+        std::string translated;
+        if (const auto pair = split_generated_name_identity(source)) {
+            translated = transliterate_site_spelling(pair->native_name) +
+                "，“" + translate_name(std::string(pair->gloss)) + "”";
+        } else translated = translate_name(std::string(source));
+        if (civilization_surface_ambiguous || translated.empty()) return std::nullopt;
+        return quoted ? "“" + translated + "”" : translated;
+    }
 
     // The caller supplies the complete English field of a place. Enter its
     // title/compound/of grammar directly, before native or personal-name
