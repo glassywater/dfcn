@@ -758,6 +758,9 @@ with miserable outcome	结果惨不忍睹	clause
 # Authoring for a named figure's glory keeps the motive before the verb.
 {b} was authored by {n} in order to glorify {a}	{n}为了颂扬{a}而撰写了《{b}》	clause
 {b} was authored by {n} in {p} in order to glorify {a}	在{p}，{n}为了颂扬{a}而撰写了《{b}》	clause
+# The typed {s} field retains the complete ordinary/temple prayer clause.
+{b} was authored by {n} in order to glorify {a} after {s}	{n}{s}，为了颂扬{a}而撰写了《{b}》	clause
+{b} was authored by {n} in {p} in order to glorify {a} after {s}	在{p}，{n}{s}，为了颂扬{a}而撰写了《{b}》	clause
 {p} received its name	{p}获得了自己的名字	event
 # The naming person/entity follows the optional site, before the motivation.
 # A person and entity may name it together; retain both participant links.
@@ -3490,6 +3493,10 @@ a work was authored by {n} in order to glorify {a}	{n}为了颂扬{a}而撰写�
 a work was authored by {n} in {p} in order to glorify {a}	在{p}，{n}为了颂扬{a}而撰写了一部作品	clause
 an untitled work was authored by {n} in order to glorify {a}	{n}为了颂扬{a}而撰写了一部无题作品	clause
 an untitled work was authored by {n} in {p} in order to glorify {a}	在{p}，{n}为了颂扬{a}而撰写了一部无题作品	clause
+a work was authored by {n} in order to glorify {a} after {s}	{n}{s}，为了颂扬{a}而撰写了一部作品	clause
+a work was authored by {n} in {p} in order to glorify {a} after {s}	在{p}，{n}{s}，为了颂扬{a}而撰写了一部作品	clause
+an untitled work was authored by {n} in order to glorify {a} after {s}	{n}{s}，为了颂扬{a}而撰写了一部无题作品	clause
+an untitled work was authored by {n} in {p} in order to glorify {a} after {s}	在{p}，{n}{s}，为了颂扬{a}而撰写了一部无题作品	clause
 the authoring of a work	一部作品的撰写	title
 
 # Native repeated-collection ordinal prefix, shared by all collection kinds.

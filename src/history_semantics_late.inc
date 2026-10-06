@@ -74,6 +74,8 @@ case 93: { // written_content_composed
     fields.push_back(*author);
     if (event.native_type == 93 && location) fields.push_back(*location);
     const bool glorifying_work = event.native_type == 93 && event.reason == 51;
+    const bool prayed_before_writing = glorifying_work &&
+        (event.circumstance == 181 || event.circumstance == 279);
     if (glorifying_work) {
         // The typed motive belongs before the writing verb in Chinese.
         // Bind its figure into the complete predicate so the template can
@@ -82,12 +84,19 @@ case 93: { // written_content_composed
         if (!glorified) return std::nullopt;
         key += " in order to glorify {a}";
         fields.push_back(*glorified);
+        if (prayed_before_writing) {
+            // Bind the complete reviewed prayer clause after the author.
+            // Its figure is independent of the glorified figure, and both
+            // references retain their own colors and links.
+            key += " after {s}";
+            fields.push_back(context->second);
+        }
     }
     auto creation = apply(key, fields);
     if (!creation) return std::nullopt;
     join(result, *creation);
     if (!glorifying_work) append_clause(result, context->first);
-    append_clause(result, context->second);
+    if (!prayed_before_writing) append_clause(result, context->second);
     translated = true;
     break;
 }

@@ -15122,6 +15122,7 @@ This visitor has come . She is seeking information about the location of {b}.	�
 You will need to assign a Doctor to the Hospital from the Hospital Info Menu.	[C:7:0:0]你需要在“[C:5:0:1]医院信息[C:7:0:0]”菜单中为[C:1:0:1]医院[C:7:0:0]指派[C:5:0:0]医生[C:7:0:0]。	hq
 You'll begin by creating your world and watching the region's history unfold.	你首先要创建世界，见证这片土地的历史徐徐展开。	hq
 accepted out of loyalty to {a}, despite being swayed by the emotional appeal.	虽然被动情的劝说打动，但忠于{a1}，因此答应了。	ht
+an untitled work was authored by {n} in {p} in order to glorify {a} after {s}	在{p1}，{n1}{s1}，为了颂扬{a1}而撰写了一部无题作品	ht
 and aided {a} in becoming a permanent part of the living world {s} during {e}	并在{e1}期间协助{a1}永久留在生者的世界，{s1}	ht
 and aided {a} in becoming a permanent part of the living world {s} within {p}	并在{p1}协助{a1}永久留在生者的世界，{s1}	ht
 and confessed and was convicted as a go-between in a conspiracy to commit {s}	并认罪并被判定是实施{s1}的阴谋中的中间人	ht
@@ -17628,6 +17629,7 @@ aided {a} in becoming a permanent part of the living world during {e}.	在{e1}�
 aided {a} in becoming a permanent part of the living world within {p}.	在{p1}协助{a1}永久留在生者的世界。	ht
 aided {a} in becoming a permanent part of the living world {s} at {p}.	在{p1}协助{a1}永久留在生者的世界，{s1}。	ht
 aided {a} in becoming a permanent part of the living world {s} in {p}.	在{p1}协助{a1}永久留在生者的世界，{s1}。	ht
+an untitled work was authored by {n} in order to glorify {a} after {s}	{n1}{s1}，为了颂扬{a1}而撰写了一部无题作品	ht
 and aided {a} in becoming a permanent part of the living world at {p}.	并在{p1}协助{a1}永久留在生者的世界。	ht
 and aided {a} in becoming a permanent part of the living world in {p}.	并在{p1}协助{a1}永久留在生者的世界。	ht
 and confessed and was wrongfully convicted of {s} by {a} in the wilds.	并在荒野中认罪并被{a1}错判犯有{s1}。	ht
@@ -18857,6 +18859,7 @@ This visitor has come {s}. She heard this was the place for prayer.	这位访客
 You can also click on details to customize each individual soldier.	还可以点击“详情”，分别调整每位士兵的装备。	hq
 You can learn more about this visitor after they chat with a local.	这位访客与当地居民交谈后，你就能了解更多关于他们的信息。	hP
 Zones can be added using the zone menu at the bottom of the screen.	可通过屏幕底部的区域菜单添加区域。	hP
+a work was authored by {n} in {p} in order to glorify {a} after {s}	在{p1}，{n1}{s1}，为了颂扬{a1}而撰写了一部作品	ht
 accepted out of loyalty to {a}, despite lack of loyalty toward {a}.	虽然不忠于{a2}，但忠于{a1}，因此答应了。	ht
 an untitled work was authored by {n} in {p} in order to glorify {a}	在{p1}，{n1}为了颂扬{a1}而撰写了一部无题作品	ht
 and aided {a} in becoming a permanent part of the living world {s}.	并协助{a1}永久留在生者的世界，{s1}。	ht
@@ -20433,6 +20436,7 @@ were taken by a mood to act against their better judgment at {p}	在{p1}一时�
 {a} was unswayed by the emotional appeal and refused within {p}.	{a1}在{p1}不为动情的劝说所动，拒绝了对方。	ht
 {a} was willing to accept eventual death and refused during {e}.	{a1}在{e1}期间愿意接受终有一死的命运，拒绝了对方。	ht
 {a} was willing to accept eventual death and refused within {p}.	{a1}在{p1}愿意接受终有一死的命运，拒绝了对方。	ht
+{b} was authored by {n} in {p} in order to glorify {a} after {s}	在{p1}，{n1}{s1}，为了颂扬{a1}而撰写了《{b1}》	ht
 {e} by fooling {a} with fabricated evidence in {p} in the wilds.	在荒野中，在{p1}利用伪造的证据欺骗{a1}而进行的{e1}。	htEi
 {n} engaged me to frame {n} for attempted murder by fooling {n}.	{n1}雇我通过欺骗{n3}，诬陷{n2}犯下谋杀未遂罪。	hPt
 {n} has created {b}, a {s}! He claims it as a personal treasure.	{n1}创造了{b1}，一件{s1}！他宣布将其作为私人珍宝。	hPt
@@ -22473,6 +22477,7 @@ You've found a colony of {s} and some other small creatures.	你发现了一群{
 Your room is up the stairs, the eleventh door on your right.	你的房间在楼上右手边第11扇门内。	hP
 Your room is up the stairs, the fifteenth door on your left.	你的房间在楼上左手边第15扇门内。	hP
 Your room is up the stairs, the sixteenth door on your left.	你的房间在楼上左手边第16扇门内。	hP
+a work was authored by {n} in order to glorify {a} after {s}	{n1}{s1}，为了颂扬{a1}而撰写了一部作品	ht
 accepted in admiration of power, despite disdaining the law.	虽然不把法律放在眼里，但崇拜权力，因此答应了。	h
 accepted in admiration of power, despite feeling no avarice.	虽然没有贪念，但崇拜权力，因此答应了。	h
 accepted in admiration of power, despite feelings of vanity.	虽然有虚荣心，但崇拜权力，因此答应了。	h
@@ -25208,6 +25213,7 @@ was unafraid of {a} and refused, despite valuing the law.	虽然尊重法律，�
 {a} was unafraid of {a} and refused, despite love of {a}.	{a1}虽然爱着{a3}，但不惧怕{a2}，拒绝了对方。	ht
 {a} were the first to reach the summit of {p} during {e}.	{a1}在{e1}期间率先登上了{p1}的顶峰。	ht
 {a} were the first to reach the summit of {p} within {p}.	{a1}在{p2}率先登上了{p1}的顶峰。	ht
+{b} was authored by {n} in order to glorify {a} after {s}	{n1}{s1}，为了颂扬{a1}而撰写了《{b1}》	ht
 {e} by fooling {a} with fabricated evidence in {p} at {p}	在{p2}，在{p1}利用伪造的证据欺骗{a1}而进行的{e1}	htEi
 {e} by fooling {a} with fabricated evidence in {p} in {d}	{d1}年的在{p1}利用伪造的证据欺骗{a1}而进行的{e1}	htEi
 {e} by fooling {a} with fabricated evidence in {p} in {p}	在{p2}，在{p1}利用伪造的证据欺骗{a1}而进行的{e1}	htEi
