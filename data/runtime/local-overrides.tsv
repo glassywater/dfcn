@@ -11357,3 +11357,7 @@ DFHack GUI Elevate barony preferences: {d} preferences:	{d1}项物品偏好：	l
 
 # Complete native creature color modifier; keep the saved-world spelling intact.
 muck-brown	污泥棕色	wi
+
+# Metal-bar commodity labels must win over generated-name and action grammars.
+Tin Bars	锡锭	wi
+Lead Bars	铅锭	wi

@@ -138099,3 +138099,7 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
+
+# Reviewed metal-bar commodity labels; keep in sync with local-overrides.tsv.
+Tin Bars	锡锭	wi
+Lead Bars	铅锭	wi
