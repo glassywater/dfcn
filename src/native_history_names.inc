@@ -131,7 +131,8 @@ static bool capture_native_instrument_names(
 }
 
 static uintptr_t native_history_find_subject(uintptr_t base,
-        NativeHistoryObjectKind kind, int32_t id) {
+        NativeHistoryObjectKind kind, int32_t id, bool *lookup_read_complete = nullptr) {
+    if (lookup_read_complete) *lookup_read_complete = false;
     if (!base || id < 0) return 0;
     uintptr_t vector = 0;
     size_t id_offset = 0;
@@ -157,6 +158,7 @@ static uintptr_t native_history_find_subject(uintptr_t base,
     case NativeHistoryObjectKind::World: {
         uintptr_t world_data = 0;
         if (id != 0 || !native_history_copy(native_history_global(0x24ebb58), world_data)) return 0;
+        if (lookup_read_complete) *lookup_read_complete = true;
         return world_data;
     }
     case NativeHistoryObjectKind::Artifact:
@@ -209,8 +211,12 @@ static uintptr_t native_history_find_subject(uintptr_t base,
             const uintptr_t candidate = native_history_vector_at(values, index);
             int32_t candidate_id = -1;
             if (!candidate || !native_history_copy(candidate + id_offset, candidate_id)) return 0;
-            if (candidate_id == id) return candidate;
+            if (candidate_id == id) {
+                if (lookup_read_complete) *lookup_read_complete = true;
+                return candidate;
+            }
         }
+        if (lookup_read_complete) *lookup_read_complete = true;
         return 0;
     }
     size_t begin = 0, end = values.size();
@@ -219,11 +225,92 @@ static uintptr_t native_history_find_subject(uintptr_t base,
         const uintptr_t candidate = native_history_vector_at(values, middle);
         int32_t candidate_id = -1;
         if (!candidate || !native_history_copy(candidate + id_offset, candidate_id)) return 0;
-        if (candidate_id == id) return candidate;
+        if (candidate_id == id) {
+            if (lookup_read_complete) *lookup_read_complete = true;
+            return candidate;
+        }
         if (candidate_id < id) begin = middle + 1;
         else end = middle;
     }
+    if (lookup_read_complete) *lookup_read_complete = true;
     return 0;
+}
+
+struct NativeHistoryEntityUmbrella {
+    uintptr_t entity = 0;
+    int32_t id = -1;
+    bool relation_known = false;
+    bool has_external_parent = false;
+};
+
+static NativeHistoryEntityUmbrella native_history_resolve_current_entity_umbrella(
+        uintptr_t base, uintptr_t entity) {
+    NativeHistoryEntityUmbrella result;
+    if (!base || !entity) return result;
+    constexpr size_t maximum_depth = 32, maximum_links = 4096;
+    std::array<uintptr_t, maximum_depth> visited_entities{};
+    std::array<int32_t, maximum_depth> visited_ids{};
+    for (size_t depth = 0; depth < maximum_depth; ++depth) {
+        int16_t type = -1;
+        int32_t id = -1;
+        if (!native_history_copy(native_history_object_field(
+                entity, "historical_entity", 0, sizeof(type)), type) ||
+                type < 0 || type > 10 ||
+                !native_history_copy(native_history_object_field(
+                    entity, "historical_entity", 4, sizeof(id)), id) || id < 0)
+            return result;
+        for (size_t prior = 0; prior < depth; ++prior)
+            if (visited_entities[prior] == entity || visited_ids[prior] == id)
+                return result;
+        visited_entities[depth] = entity;
+        visited_ids[depth] = id;
+        result.entity = entity;
+        result.id = id;
+        // RVA 93ce30 stops at a Civilization even if its association list
+        // contains another parent. Every other real entity kind can be an
+        // umbrella when reached through the proved governing role.
+        if (type == 0) {
+            result.relation_known = true;
+            return result;
+        }
+        NativeBorrowedVector<uintptr_t> links;
+        if (!native_history_read_vector(native_history_object_field(
+                entity, "historical_entity", 0xb8, sizeof(links)), links) ||
+                links.size() > maximum_links) return result;
+        std::vector<uintptr_t> link_addresses(links.size());
+        if (!link_addresses.empty() && !native_history_copy_bytes(
+                reinterpret_cast<uintptr_t>(links.begin), link_addresses.data(),
+                link_addresses.size() * sizeof(uintptr_t))) return result;
+        bool saw_parent = false;
+        uintptr_t parent = 0;
+        for (const uintptr_t link : link_addresses) {
+            int16_t link_type = -1;
+            if (!link || !native_history_copy(native_history_object_field(
+                    link, "entity_entity_link", 0, sizeof(link_type)), link_type))
+                return result;
+            if (link_type != 0) continue; // ID_IS_UMBRELLA_CIV.
+            saw_parent = true;
+            int32_t target_id = -1;
+            if (!native_history_copy(native_history_object_field(
+                    link, "entity_entity_link", 4, sizeof(target_id)), target_id))
+                return result;
+            if (target_id < 0) continue;
+            bool lookup_read_complete = false;
+            parent = native_history_find_subject(base, NativeHistoryObjectKind::Entity,
+                target_id, &lookup_read_complete);
+            if (!lookup_read_complete) return result;
+            if (parent) break; // The native routine takes the first resolvable parent.
+        }
+        if (!parent) {
+            // Only a completely read list without PARENT proves root-self.
+            // A broken PARENT target must not acquire an independent label.
+            result.relation_known = !saw_parent;
+            return result;
+        }
+        result.has_external_parent = true;
+        entity = parent;
+    }
+    return result; // A longer chain remains unknown rather than being truncated.
 }
 
 static bool capture_native_history_name(uintptr_t base, uintptr_t address,
@@ -288,9 +375,217 @@ static bool capture_native_history_name(uintptr_t base, uintptr_t address,
         if (!native_history_copy_string(raw + 0x20 + size_t(word.part_of_speech) * 0x20,
                 form)) return false;
         word.has_form = !form.empty();
+        word.english_form = std::move(form);
     }
     result = std::move(copy);
     return true;
+}
+
+static int32_t native_history_event_entity_parent(
+    const NativeHistoryEventData &event, int32_t entity_id);
+
+struct NativeHistoryEntityParentWord {
+    std::string id;
+    int16_t part_of_speech = -1;
+};
+
+static bool native_history_parent_polity_type(int16_t type) {
+    // The proved upstream governing role, rather than an organization type
+    // or its spelling, admits every real native entity kind as the umbrella.
+    return type >= 0 && type <= 10;
+}
+
+static NativeHistoryEntityParentWord capture_native_history_entity_parent_word(
+        uintptr_t base, int32_t parent_id, uintptr_t validated_parent = 0) {
+    struct Stamp {
+        uintptr_t parent = 0;
+        int32_t index = -1;
+        int16_t entity_type = -1, name_type = -1, pos = -1;
+        uint8_t has_name = 0;
+        bool operator==(const Stamp &) const = default;
+    };
+    struct Entry {
+        Stamp stamp;
+        NativeHistoryEntityParentWord head;
+        uintptr_t entities_begin = 0, entities_end = 0;
+    };
+    uintptr_t world_data = 0;
+    NativeBorrowedVector<uintptr_t> entities, definitions;
+    if (!native_history_copy(native_history_global(0x24ebb58), world_data) || !world_data ||
+            !native_history_read_vector(native_history_global(0x23d17f8), entities) ||
+            !native_history_read_vector(native_history_global(0x24ed770), definitions)) return {};
+    const std::array<uintptr_t, 3> world{world_data,
+        entities.size() ? native_history_vector_at(entities, 0) : 0,
+        reinterpret_cast<uintptr_t>(definitions.begin)};
+    static std::mutex mutex;
+    static std::array<uintptr_t, 3> cached_world{};
+    static std::unordered_map<int32_t, Entry> words;
+    std::lock_guard<std::mutex> lock(mutex);
+    if (cached_world != world) {
+        words.clear();
+        cached_world = world;
+    }
+    Stamp stamp;
+    stamp.parent = validated_parent;
+    if (!stamp.parent) {
+        const auto found = words.find(parent_id);
+        int32_t cached_id = -1;
+        if (found != words.end() && found->second.stamp.parent &&
+                found->second.entities_begin == reinterpret_cast<uintptr_t>(entities.begin) &&
+                found->second.entities_end == reinterpret_cast<uintptr_t>(entities.end) &&
+                native_history_copy(native_history_object_field(found->second.stamp.parent,
+                    "historical_entity", 4, sizeof(cached_id)), cached_id) && cached_id == parent_id)
+            stamp.parent = found->second.stamp.parent;
+        else stamp.parent = native_history_find_subject(base, NativeHistoryObjectKind::Entity, parent_id);
+    }
+    if (stamp.parent && !native_history_copy(native_history_object_field(
+            stamp.parent, "historical_entity", 0, sizeof(stamp.entity_type)),
+            stamp.entity_type)) return {};
+    if (stamp.parent && native_history_parent_polity_type(stamp.entity_type)) {
+        const uintptr_t address = native_history_object_field(stamp.parent, "historical_entity", 0x20);
+        constexpr auto &fields = native_history_layout::f_language_name_fields;
+        constexpr size_t head_index = fields[2].native + 5 * sizeof(int32_t);
+        constexpr size_t head_pos = fields[3].native + 5 * sizeof(int16_t);
+        constexpr size_t snapshot_end = fields[6].native + sizeof(uint8_t);
+        std::array<unsigned char, snapshot_end - head_index> snapshot{};
+        // Copy only the head slot and the following scalar name fields.
+        // Their offsets come from the same bindings as full name capture.
+        if (!address || address > UINTPTR_MAX - head_index ||
+                !native_history_copy_bytes(address + head_index,
+                    snapshot.data(), snapshot.size())) return {};
+        std::memcpy(&stamp.has_name, snapshot.data() + fields[6].native - head_index,
+            sizeof(stamp.has_name));
+        std::memcpy(&stamp.name_type, snapshot.data() + fields[5].native - head_index,
+            sizeof(stamp.name_type));
+        std::memcpy(&stamp.index, snapshot.data(), sizeof(stamp.index));
+        std::memcpy(&stamp.pos, snapshot.data() + head_pos - head_index, sizeof(stamp.pos));
+    }
+    if (const auto found = words.find(parent_id);
+            found != words.end() && found->second.stamp == stamp) {
+        found->second.entities_begin = reinterpret_cast<uintptr_t>(entities.begin);
+        found->second.entities_end = reinterpret_cast<uintptr_t>(entities.end);
+        return found->second.head;
+    }
+    const auto read = [&]() -> NativeHistoryEntityParentWord {
+        // The proved upstream role selects the polity sense. Its actual
+        // language_name type can be Squad=3 even for a governing entity.
+        if (!stamp.parent || !native_history_parent_polity_type(stamp.entity_type) ||
+                stamp.has_name != 1 || stamp.index < 0 ||
+                (stamp.pos != 0 && stamp.pos != 1)) return {};
+        const uintptr_t raw = native_history_vector_at(definitions, static_cast<size_t>(stamp.index));
+        NativeHistoryEntityParentWord head;
+        std::string form;
+        if (!raw || !native_history_copy_string(native_history_object_field(
+                raw, "language_word", 0, 32), head.id) || head.id.empty() ||
+                !native_history_copy_string(native_history_object_field(
+                    raw, "language_word", 0x20 + size_t(stamp.pos) * 0x20, 32), form) ||
+                form.empty()) return {};
+        head.part_of_speech = stamp.pos;
+        return head;
+    };
+    auto head = read();
+    // Both positive and negative heads follow the actual world/object/name
+    // stamp. Resolving a current name never initializes the history index.
+    if (!words.contains(parent_id) && words.size() >= 512) words.erase(words.begin());
+    words.insert_or_assign(parent_id, Entry{stamp, head,
+        reinterpret_cast<uintptr_t>(entities.begin), reinterpret_cast<uintptr_t>(entities.end)});
+    return head;
+}
+
+static bool capture_native_history_entity_name_context(uintptr_t base, uintptr_t entity,
+        NativeHistoryName &name, bool current = true,
+        const NativeHistoryEventData *historical_event = nullptr,
+        bool identity_validated = false, bool government_role = false) {
+    name.entity_type = -1;
+    name.entity_id = -1;
+    name.entity_name_current = false;
+    name.parent_word_id.clear();
+    name.parent_word_pos = -1;
+    int16_t type = -1;
+    int32_t id = -1;
+    if (!entity || !native_history_copy(native_history_object_field(
+            entity, "historical_entity", 0, sizeof(type)), type) || type < 0 ||
+            !native_history_copy(native_history_object_field(
+                entity, "historical_entity", 4, sizeof(id)), id) || id < 0 ||
+            (!identity_validated &&
+                native_history_find_subject(base, NativeHistoryObjectKind::Entity, id) != entity))
+        return false;
+    name.entity_type = type;
+    name.entity_id = id;
+    name.entity_name_current = current;
+    // The Site government field can name any organization selected by the
+    // native site's governing relationship, independent of its real kind.
+    // Keep its real type while capturing the field's parent role.
+    if (type != 1 && !(government_role && type >= 0 && type <= 10)) return true;
+
+    int32_t parent_id = -1;
+    uintptr_t parent_address = 0;
+    if (!current && historical_event)
+        parent_id = native_history_event_entity_parent(*historical_event, id);
+    if (current) {
+        const auto umbrella = native_history_resolve_current_entity_umbrella(base, entity);
+        if (!umbrella.relation_known || !umbrella.has_external_parent) return true;
+        parent_id = umbrella.id;
+        parent_address = umbrella.entity;
+    }
+    if (parent_id < 0) return true;
+    const auto head = capture_native_history_entity_parent_word(base, parent_id, parent_address);
+    if (head.id.empty()) return true;
+    name.parent_word_id = head.id;
+    name.parent_word_pos = head.part_of_speech;
+    return true;
+}
+
+// The identity implementation follows this shared adapter in event.inc.
+static bool capture_native_history_event_identity(const void *event, int32_t &native_type);
+#include "native_history_entity_parent.inc"
+
+static int32_t native_history_event_entity_parent(
+        const NativeHistoryEventData &event, int32_t entity_id) {
+    if (entity_id < 0) return -1;
+    const auto number = [&](std::string_view key) {
+        const auto found = event.fields.find(key);
+        return found != event.fields.end() && found->second.size() == 1
+            ? found->second.front() : int32_t{-1};
+    };
+    int32_t parent = -1;
+    bool conflicting = false, paired = false;
+    const auto pair = [&](std::string_view local_key, std::string_view parent_key) {
+        const int32_t local = number(local_key), candidate = number(parent_key);
+        if (local != entity_id) return;
+        paired = true;
+        if (candidate < 0 || candidate == local) { conflicting = true; return; }
+        if (parent >= 0 && parent != candidate) conflicting = true;
+        parent = candidate;
+    };
+    switch (event.native_type) {
+    case 2: // created_site
+    case 23: // reclaim_site
+    case 25: // site_died
+    case 26: // site_retired
+        pair("site_civ", "civ");
+        break;
+    case 0: // war_attacked_site
+    case 1: // war_destroyed_site
+    case 24: // hf_destroyed_site
+    case 47: // war_plundered_site
+    case 49: // war_site_tribute_forced
+    case 80: // hf_attacked_site
+    case 101: // sneak_into_site
+    case 110: // site_surrendered
+        pair("site_civ", "defender_civ");
+        break;
+    case 48: // war_site_new_leader
+    case 50: // war_site_taken_over
+        pair("site_civ", "defender_civ");
+        pair("new_site_civ", "attacker_civ");
+        break;
+    default:
+        // Shared field spellings alone do not establish a historical parent.
+        break;
+    }
+    if (paired) return conflicting ? -1 : parent;
+    return native_history_historical_entity_parent(event, entity_id);
 }
 
 static bool capture_native_history_species(uintptr_t base, uintptr_t figure,
@@ -354,10 +649,13 @@ static bool capture_native_history_species(uintptr_t base, uintptr_t figure,
 static bool capture_native_history_artifact_subject(uintptr_t base, uintptr_t artifact,
         NativeHistorySubject &subject);
 
-static bool populate_native_history_subjects(NativeHistoryEventData &event) {
+static bool populate_native_history_subjects(NativeHistoryEventData &event, bool current = false) {
     const uintptr_t base = native_history_profile_base();
     if (!base) return false;
     bool complete = true;
+    // Relationship pages can store dates in separate fields. Missing event
+    // dates do not prove a current context; callers must identify it explicitly.
+    const bool current_entities = current;
     auto append = [&](NativeHistoryObjectKind kind, int32_t id) {
         if (id < 0) return;
         if (std::any_of(event.subjects.begin(), event.subjects.end(),
@@ -405,6 +703,9 @@ static bool populate_native_history_subjects(NativeHistoryEventData &event) {
             return;
         }
         if (!capture_native_history_name(base, object + name_offset, subject.name) ||
+            (kind == NativeHistoryObjectKind::Entity &&
+                !capture_native_history_entity_name_context(base, object, subject.name,
+                    current_entities, current_entities ? nullptr : &event, true)) ||
             (kind == NativeHistoryObjectKind::Figure &&
                 !capture_native_history_species(base, object, subject.species)) ||
             (kind == NativeHistoryObjectKind::Artifact &&
@@ -413,6 +714,8 @@ static bool populate_native_history_subjects(NativeHistoryEventData &event) {
             complete = false;
             return;
         }
+        if (kind == NativeHistoryObjectKind::Entity)
+            subject.native_type = subject.name.entity_type;
         event.subjects.push_back(std::move(subject));
     };
     append(NativeHistoryObjectKind::Figure, event.actor_id);

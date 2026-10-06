@@ -1,0 +1,67 @@
+# 来源：用户授权的地方治理名称研究定稿，2026年10月6日。
+# entity_type	race_raw_id	culture_raw_id	governance_kind	site_kind	suffix
+# *为通配；种族与文化均为真实RAW ID，site_kind使用native_history_site_type的原生英语key。
+# 每行suffix是完整定稿后缀；不输出种族或组织元数据，不设SITE行，不使用{site}，不再追加“领”。
+# 仅供已确证治理身份的实体名称使用；自治类要求当前无父，洞穴等中性称谓可用于已记录的旧治理地点或纯音译上级。关系不明仍用“治所”。
+# 普通地方政府的“自治”采用自行管理本地事务的文学义；狗头人据点按用户定稿使用洞穴、营地、山寨，不声明现实宪制、酋长制或封爵制度。
+# 地点本身不能证明宗教或军政身份；religion、military、bandit等治理分类须由真实当前元数据先行确认。
+# 普通地方治理：按实际地点选择闭合称谓；未知或其他地点使用自治领。
+1	*	*	civilian	*	自治领
+1	*	*	civilian	town	自治市
+1	*	*	civilian	hamlet	自治乡
+1	*	*	civilian	fortress	自治堡
+1	*	*	civilian	castle	自治堡
+1	*	*	civilian	fort	自治堡
+1	*	*	civilian	mountain halls	山厅领
+1	*	*	civilian	hillocks	丘堡领
+1	*	*	civilian	forest retreat	林地领
+1	*	*	civilian	pits	自治寨
+1	*	*	civilian	cave	自治穴
+1	*	*	civilian	camp	自治营
+1	*	*	civilian	tower	塔领
+# 文化细化需同时命中实际种族及文化RAW，不能仅凭种族补造政治制度。
+1	GOBLIN	EVIL	civilian	fortress	自治寨
+1	DWARF	MOUNTAIN	civilian	fortress	自治堡
+1	DWARF	MOUNTAIN	civilian	castle	自治堡
+1	DWARF	MOUNTAIN	civilian	fort	自治堡
+1	ELF	FOREST	civilian	forest retreat	林地领
+# 狗头人：type1或4、KOBOLD/SKULKING的已确认治理身份使用洞穴、营地、山寨；纯音译上级不阻断这些中性后缀。
+1	KOBOLD	SKULKING	kobold_tribal	*	山寨
+1	KOBOLD	SKULKING	kobold_tribal	cave	洞穴
+1	KOBOLD	SKULKING	kobold_tribal	camp	营地
+1	KOBOLD	SKULKING	kobold_tribal	fortress	山寨
+1	KOBOLD	SKULKING	kobold_tribal	castle	山寨
+1	KOBOLD	SKULKING	kobold_tribal	fort	山寨
+1	KOBOLD	SKULKING	kobold_tribal	pits	山寨
+4	KOBOLD	SKULKING	kobold_tribal	*	山寨
+4	KOBOLD	SKULKING	kobold_tribal	cave	洞穴
+4	KOBOLD	SKULKING	kobold_tribal	camp	营地
+4	KOBOLD	SKULKING	kobold_tribal	fortress	山寨
+4	KOBOLD	SKULKING	kobold_tribal	castle	山寨
+4	KOBOLD	SKULKING	kobold_tribal	fort	山寨
+4	KOBOLD	SKULKING	kobold_tribal	pits	山寨
+# 匪徒治理可出现在不同实体类别；只有已确认bandit身份才命中，不将全部type4或type7视为匪帮。
+*	*	*	bandit	*	寨领
+*	*	*	bandit	cave	穴寨
+*	*	*	bandit	camp	营寨
+*	*	*	bandit	fortress	堡寨
+*	*	*	bandit	castle	堡寨
+*	*	*	bandit	fort	堡寨
+*	*	*	bandit	pits	堡寨
+# 宗教治理：真实宗教实体或已确认宗教身份的地区政府；普通monastery地点不自动使用修院领。
+*	*	*	religion	*	教领
+*	*	*	religion	monastery	修院领
+# 军事组织实际治理，使用军堡或军辖领；不根据堡垒建筑推断军政。
+6	*	*	military	*	军辖领
+6	*	*	military	fortress	军堡
+6	*	*	military	castle	军堡
+6	*	*	military	fort	军堡
+# 其他已确认治理身份：保留功能差异，不推断自由邦、圣领或特定宪制。
+2	*	*	crew	*	驻地
+3	*	*	migrating	*	迁民领
+3	*	*	migrating	camp	迁民营
+7	*	*	outcast	*	流亡领
+8	*	*	performance	*	艺团驻地
+9	*	*	merchant	*	商治领
+10	*	*	guild	*	行会领
+4	*	*	nomadic	*	据地

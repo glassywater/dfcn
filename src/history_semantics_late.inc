@@ -335,20 +335,19 @@ case 100: { // artifact_copied
     source = apply("{p} of {p}", {*source_building, *source});
     auto destination = apply("{p} of {p}", {*destination_building, *destination_site});
     if (!source || !destination) return std::nullopt;
-    auto action = apply((number("copy_flags") & 1) ? "made a copy of the original {p}" :
-        "acquired a copy of {p}", {*artifact});
-    auto origin = apply("from {p}", {*source});
-    auto keeping = apply(", keeping it within {p}", {*destination});
-    if (!action || !origin || !keeping) return std::nullopt;
-    join(result, *actor);
+    // Source ownership qualifies the copy, so compose it with the actor
+    // and storage destination in one template instead of trailing clauses.
+    auto action = apply((number("copy_flags") & 1) ?
+        "{a} made a copy of the original {p} from {p}, keeping it within {p}" :
+        "{a} acquired a copy of {p} from {p}, keeping it within {p}",
+        {*actor, *artifact, *source, *destination});
+    if (!action) return std::nullopt;
     join(result, *action);
-    append_clause(result, *origin);
-    append_clause(result, *keeping);
     translated = true;
     break;
 }
 case 101: { // sneak_into_site
-    auto attacker = subject(NativeHistoryObjectKind::Entity, number("attacker_civ"));
+    auto attacker = polity_subject(number("attacker_civ"));
     auto site = subject(NativeHistoryObjectKind::Site, number("site"));
     if (!attacker || !site) return std::nullopt;
     auto action = apply("slipped into {p}", {*site});
@@ -360,7 +359,7 @@ case 101: { // sneak_into_site
         auto defender = subject(NativeHistoryObjectKind::Entity, site_civ_id);
         if (!defender) return std::nullopt;
         if (site_civ_id != number("defender_civ")) {
-            auto civ = subject(NativeHistoryObjectKind::Entity, number("defender_civ"));
+            auto civ = polity_subject(number("defender_civ"));
             if (!civ) return std::nullopt;
             defender = apply("{p} of {p}", {*defender, *civ});
             if (!defender) return std::nullopt;
@@ -519,7 +518,7 @@ case 104: { // hf_freed
             auto entity = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
             if (!entity) return std::nullopt;
             if (number("holding_civ") != -1) {
-                auto owner = subject(NativeHistoryObjectKind::Entity, number("holding_civ"));
+                auto owner = polity_subject(number("holding_civ"));
                 if (!owner) return std::nullopt;
                 entity = apply("{p} of {p}", {*entity, *owner});
                 if (!entity) return std::nullopt;
@@ -609,11 +608,11 @@ case 109: { // squad_vs_squad
 case 110: { // site_surrendered
     const int32_t site_civ_id = number("site_civ");
     auto actor = subject(NativeHistoryObjectKind::Entity, site_civ_id);
-    auto attacker = subject(NativeHistoryObjectKind::Entity, number("attacker_civ"));
+    auto attacker = polity_subject(number("attacker_civ"));
     auto site = subject(NativeHistoryObjectKind::Site, number("site"));
     if (!actor || !attacker || !site) return std::nullopt;
     if (site_civ_id != number("defender_civ")) {
-        auto civ = subject(NativeHistoryObjectKind::Entity, number("defender_civ"));
+        auto civ = polity_subject(number("defender_civ"));
         if (!civ) return std::nullopt;
         actor = apply("{p} of {p}", {*actor, *civ});
         if (!actor) return std::nullopt;
@@ -949,7 +948,7 @@ case 122: { // entity_breach_feature_layer
     if (!actor || !site || !layer) return std::nullopt;
     // This formatter tests only the sentinel; equal IDs still show ownership.
     if (number("civ") != -1) {
-        auto civ = subject(NativeHistoryObjectKind::Entity, number("civ"));
+        auto civ = polity_subject(number("civ"));
         if (!civ) return std::nullopt;
         actor = apply("{p} of {p}", {*actor, *civ});
         if (!actor) return std::nullopt;

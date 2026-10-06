@@ -19033,6 +19033,7 @@ worthless, finds those that develop skill with weapons and fighting	毫无价值
 {a} lacked a desire for vengeance and refused, despite love of {a}.	{a1}虽然爱着{a2}，但无意复仇，拒绝了对方。	ht
 {a} led the attack, and the defenders were led by {a} in the wilds.	在荒野中，{a1}率领进攻，{a2}率领防守。	ht
 {a} loathed abuses of power and refused, despite feelings of greed.	{a1}虽然有贪念，但厌恶滥用权力，拒绝了对方。	ht
+{a} made a copy of the original {p} from {p}, keeping it within {p}	来自{p2}的{p1}的原本，被{a1}抄写并放在了{p3}	ht
 {a} received the title of {s} after serving in combat in the wilds.	{a1}在荒野中在战斗中效力后，获得了{s1}头衔。	ht
 {a} received the title of {s} after slaying {d} enemies during {e}.	{a1}在{e1}期间杀死{d1}名敌人后，获得了{s1}头衔。	ht
 {a} received the title of {s} after slaying {d} enemies within {p}.	{a1}在{p1}杀死{d1}名敌人后，获得了{s1}头衔。	ht
@@ -24240,6 +24241,7 @@ was unafraid of {a} and refused, despite fearing of death.	虽然惧怕死亡，
 {a} accepted in admiration of power, despite being afraid.	{a1}虽然心有畏惧，但崇拜权力，因此答应了。	ht
 {a} accepted in admiration of power, despite trust of {a}.	{a1}虽然信任{a2}，但崇拜权力，因此答应了。	ht
 {a} accepted out of loyalty to {a}, despite hatred of {a}.	{a1}虽然憎恨{a3}，但忠于{a2}，因此答应了。	ht
+{a} acquired a copy of {p} from {p}, keeping it within {p}	来自{p2}的{p1}的抄本，被{a1}获得并放在了{p3}	ht
 {a} agreed for love of {a}, despite loathing the powerful.	{a1}虽然厌恶权贵，但爱着{a2}，因此答应了。	ht
 {a} attached a masterful instrument piece to a {i} at {p}.	{a1}在{p1}为{i1}安装了杰作级的乐器部件。	ht
 {a} attached a masterful instrument piece to a {i} in {p}.	{a1}在{p1}为{i1}安装了杰作级的乐器部件。	ht
@@ -36952,6 +36954,7 @@ Native history collection title of {p} in {d}.	{d1}年的{p1}。	htEi
 Native history collection title of {p} in {p}.	在{p2}，{p1}。	htEi
 Native history collection {s} Race during {e}.	在{e1}期间，{s1}赛跑。	htEi
 Native history collection {s} Race within {p}.	在{p1}，{s1}赛跑。	htEi
+Native history occasion {a} {s} as part of {e}	{a1}为了{e1}，{s1}	ht
 Nearby vegetation seem to shrink away from it.	附近的草木似乎都在退缩，躲避它。	h
 Office to work in, numbers may be approximate.	办公室可供工作，数量可能只是估算值。	wl
 Overall, this is a good source of information.	总体而言，这是良好的资料来源。	h
@@ -42840,6 +42843,7 @@ Native history collection {s} Race at {p}.	在{p1}，{s1}赛跑。	htEi
 Native history collection {s} Race in {d}.	{d1}年的{s1}赛跑。	htEi
 Native history collection {s} Race in {p}.	在{p1}，{s1}赛跑。	htEi
 Native history held story {e} in the wilds	在荒野中讲述了以下往事：「{e1}」	ht
+Native history occasion {s} as part of {e}	为了{e1}，{s1}	ht
 On the coin's back is an {s} image of {a}.	硬币背面图案{s1}，描绘了{a1}。	hHt
 Overview sentence: Death is all around us.	到处都有人死去。	l
 Overview sentence: Grief?  I feel nothing.	难过？我什么感觉也没有。	l
@@ -70422,6 +70426,7 @@ Travel building: Tavern Tree	酒馆树	wi
 Uniform name: Flexible Melee	灵活近战	l
 Unit lists: Open job details	单位列表：打开工作详情	w
 Unit profession: chief medic	首席医师	li
+Unit profession: holy shield	神圣盾	li
 Unnamed animal training area	未命名驯兽区	wi
 Unnamed clay collection area	未命名黏土采集区	wi
 Unnamed plant gathering area	未命名植物采集区	wi
@@ -78492,7 +78497,6 @@ Unit nickname: the Idiot	愚者	l
 Unit nickname: the elder	年长者	l
 Unit nickname: the older	年长者	l
 Unit profession: general	将军	li
-Unit profession: holy shield	神圣盾	li
 Unit profession: soldier	士兵	li
 Unnamed sculpture garden	未命名雕塑园	wi
 Unnamed underground area	未命名地下区域	wi
@@ -92717,7 +92721,7 @@ The Thirteenth {e}	第十三次{e1}	htEi
 The Unabridged {b}	{b}全本	hbti
 The Vanished Dunes	消逝沙丘
 The Walled Forests	壁垒森林
-The event featured	活动内容包括：	h
+The event featured	活动内容包括	h
 The object is {v}.	这件物品呈{v1}。	hHt
 The stars are out.	繁星已现。	hP
 The stars are out.	繁星已现。	hj
@@ -96518,6 +96522,7 @@ Sorting plants...	正在整理植物……
 Spouse is elected	配偶担任民选职位	hP
 Stable Foundation	地基稳固	wl
 Stop and reflect.	停下来反思一下。	hP
+Storage and tools	储存与工具	wi
 Store item in bag	将物品存入袋子	wi
 Store item in bin	将物品存入储物箱	wi
 Strand Extraction	缕丝提取	wi
@@ -100720,6 +100725,7 @@ Making furniture	制作家具	wl
 Manager's Office	经理办公室	wli
 Martial training	武艺训练	w
 Mastered a Skill	已经掌握一门技能	w
+Max wheelbarrows	手推车上限	wi
 Maximum Drainage	最高排水度
 Maximum Rainfall	最高降雨量
 Maximum Savagery	最高野蛮度
@@ -123744,6 +123750,7 @@ Make scroll	制作卷轴	wi
 Manual save	手动存档	wi
 Mass Remove	批量移除	w
 Mathematics	数学	wi
+Max barrels	圆桶上限	wi
 Mercenaries	佣兵	wi
 Metalsmiths	金工	wi
 Milk animal	为动物挤奶	wi
@@ -123851,6 +123858,7 @@ Squad: None	队伍：无	w
 Stonecutter	切石师	wi
 Stoneworker	石工	wi
 Stop action	停止行动	wl
+Storage and	储存与	w
 Store armor	存放护甲	wi
 Strange {b}	奇异的{b}	hbti
 Stream: {s}	溪流：{s}	wt
@@ -132844,6 +132852,7 @@ Make ash	制作灰烬	wi
 Make dye	制作染料	wi
 Make lye	制作碱液	wi
 Mark all	全选	hP
+Max bins	储物箱上限	wi
 Mechanic	机械师	wi
 Meditate	冥想	w
 Memories	记忆	w
@@ -137833,6 +137842,7 @@ L\x95r	洛尔	wi
 L\x96k	卢克	wi
 Mas	玛斯	wi
 Mat	材料	w
+Max	上限	w
 Meb	梅布	wi
 Med	梅德	wi
 Mer	梅尔	wi
@@ -138021,11 +138031,3 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
-
-# Stockpile storage/tool quotas; retain fragments when native drawing splits labels.
-Storage and tools	储存与工具	wi
-Storage and	储存与	w
-Max barrels	圆桶上限	wi
-Max bins	储物箱上限	wi
-Max wheelbarrows	手推车上限	wi
-Max	上限	w

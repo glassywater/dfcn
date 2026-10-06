@@ -67,6 +67,7 @@ struct NativeHistoryWord {
     std::string id;
     int16_t part_of_speech = -1;
     bool has_form = true;
+    std::string english_form;
 };
 
 struct NativeHistoryName {
@@ -77,6 +78,13 @@ struct NativeHistoryName {
     int32_t nickname_mode = 1;
     int16_t type = -1;
     bool has_name = false;
+    // Object provenance is separate from language_name_type: migrating
+    // groups also use EntitySite names, while utterance names have no type.
+    int16_t entity_type = -1;
+    int32_t entity_id = -1;
+    bool entity_name_current = false;
+    std::string parent_word_id;
+    int16_t parent_word_pos = -1;
 };
 
 enum class NativeHistoryObjectKind : uint8_t {
@@ -233,9 +241,11 @@ inline bool native_history_tree_within_limits(const NativeHistoryEventData &root
                 subject.name.nickname_mode < 0 || subject.name.nickname_mode > 2) return false;
             if (!string(subject.species, 2 * kNativeHistoryStringLimit + 32) ||
                 !string(subject.label_key, 128) || !string(subject.raw_title) ||
-                !string(subject.name.first_name) || !string(subject.name.nickname)) return false;
+                !string(subject.name.first_name) || !string(subject.name.nickname) ||
+                !string(subject.name.parent_word_id)) return false;
             for (const auto &word : subject.name.words)
-                if (!string(word.id) || (!word.id.empty() && (word.part_of_speech < 0 || word.part_of_speech > 8))) return false;
+                if (!string(word.id) || !string(word.english_form) ||
+                    (!word.id.empty() && (word.part_of_speech < 0 || word.part_of_speech > 8))) return false;
         }
         if (event.children.size() > budget.nodes) return false;
         for (const auto &[id, child] : event.children)

@@ -1097,6 +1097,8 @@ std::optional<std::string> Overlay::translate_legends_text(
         std::string_view raw, bool link, bool person) const {
     TranslationWorkFrame work_frame;
     const std::string source = normalize_utterance(raw);
+    if (!link)
+        if (const auto fact = translate_world_site_entity_fact(source)) return fact;
     const std::string key = std::string(link ? (person ? "P:" : "L:") : "T:") + source;
     if (const auto found = legends_translation_cache_.find(key);
         found != legends_translation_cache_.end()) return found->second;

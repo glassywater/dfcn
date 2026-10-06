@@ -88,12 +88,20 @@ bool Overlay::translated_legends_search_matches(std::string_view source,
         translated_search_text_matches(native_text_to_utf8(description), query))
         return true;
 
+    // Entity titles can keep the same native spelling when their current
+    // parent changes. Bind the search entry to the resolved display name.
+    const auto entity_title = kind == LegendsSearchKind::Entity || kind == LegendsSearchKind::Population
+        ? translate_civilization_reference(source) : std::nullopt;
     std::string key(1, static_cast<char>(kind));
     key.append(source).push_back('\0');
     key.append(description);
+    if (entity_title) {
+        key.push_back('\0');
+        key.append(*entity_title);
+    }
     auto cached = legends_search_translation_cache_.find(key);
     if (cached == legends_search_translation_cache_.end()) {
-        std::optional<std::string> title;
+        std::optional<std::string> title = entity_title;
         bool description_in_title = false;
         const bool written = kind == LegendsSearchKind::Artifact ||
                              kind == LegendsSearchKind::WrittenContent;

@@ -820,12 +820,16 @@ It started at {p}	从{p}出发	event
 It ended at {p}	在{p}结束	event
 as part of {e}	作为{e}的一部分	clause
 as part of {e}.	作为{e}的一部分。	clause
+# Typed occasion events qualify the location by its host and place the
+# occasion name before the existing activity predicate, without a suffix.
+Native history occasion {a} {s} as part of {e}	{a}为了{e}，{s}	clause
+Native history occasion {s} as part of {e}	为了{e}，{s}	clause
 
 # Site ceremonies append a second sentence containing a variable feature
 # list. Keep each program item independent of order/count and each story's
 # person, office, entity and year in typed fields across colored links/rows.
 # Fixed feature catalogue: installed dwarfort .rodata 0x1de29d0 onward.
-The event featured	活动内容包括：	clause
+The event featured	活动内容包括	clause
 # Windows feature formatter 0x140d3bea0 also references strings outside the
 # Legends event block. Raw animals have no prefix; the shared parser admits
 # their complete species/caste term only at a feature-list item boundary.
@@ -3829,6 +3833,10 @@ in fulfillment of a promise to {a}	以履行对{a1}的承诺	clause
 the area around {p}	{p}周边	participant
 made a copy of the original {p}	抄写了{p}的原本	action
 acquired a copy of {p}	获得了{p}的抄本	action
+# Artifact-copy events keep provenance attached to the original/copy,
+# followed by its recipient and complete storage location.
+{a} made a copy of the original {p} from {p}, keeping it within {p}	来自{p2}的{p1}的原本，被{a}抄写并放在了{p3}	clause
+{a} acquired a copy of {p} from {p}, keeping it within {p}	来自{p2}的{p1}的抄本，被{a}获得并放在了{p3}	clause
 {p} was recovered by {a} from {p} in {p}	{a1}从{p3}的{p2}找回了{p1}	clause
 with {i}	使用{i}	clause
 with {i} from {i}	使用由{i2}发射的{i1}	clause

@@ -3023,6 +3023,201 @@ struct f_entity_entity_link {
     int32_t f_target;
     int16_t f_strength;
 };
+struct f_entity_position {
+    std::string f_code;
+    int32_t f_id;
+    Flags f_flags;
+    Vector f_allowed_creature;
+    Vector f_allowed_class;
+    Vector f_rejected_creature;
+    Vector f_rejected_class;
+    std::array<std::string, 2> f_name;
+    std::array<std::string, 2> f_name_female;
+    std::array<std::string, 2> f_name_male;
+    std::array<std::string, 2> f_spouse;
+    std::array<std::string, 2> f_spouse_female;
+    std::array<std::string, 2> f_spouse_male;
+    std::array<std::string, 2> f_squad;
+    std::string f_land_name;
+    int16_t f_squad_size;
+    Vector f_commander_id;
+    Vector f_commander_civ;
+    Vector f_commander_types;
+    int16_t f_land_holder;
+    int16_t f_requires_population;
+    int16_t f_execution_skill;
+    int32_t f_precedence;
+    int32_t f_replaced_by;
+    int16_t f_number;
+    Vector f_appointed_by;
+    Vector f_appointed_by_civ;
+    Vector f_succession_by_position;
+    std::array<bool, 43> f_responsibilities;
+    std::string f_description;
+    std::array<int16_t, 3> f_color;
+    int32_t f_required_boxes;
+    int32_t f_required_cabinets;
+    int32_t f_required_racks;
+    int32_t f_required_stands;
+    int32_t f_required_office;
+    int32_t f_required_bedroom;
+    int32_t f_required_dining;
+    int32_t f_required_tomb;
+    int32_t f_mandate_max;
+    int32_t f_demand_max;
+    int32_t f_best_appointment_precedence;
+};
+struct f_entity_position_assignment {
+    int32_t f_id;
+    int32_t f_histfig;
+    int32_t f_histfig2;
+    int32_t f_position_id;
+    int32_t f_position_vector_idx;
+    Flags f_flags;
+    int32_t f_squad_id;
+    int32_t f_st_id;
+    int32_t f_ab_id;
+    int32_t f_vassal_of_entity_id;
+    int32_t f_vassal_of_position_profile_id;
+    Vector f_claim;
+    int32_t f_assigned_army_controller_id;
+    int32_t f_temp;
+};
+struct f_entity_raw_f_equipment {
+    Vector f_digger_id;
+    Vector f_weapon_id;
+    Vector f_armor_id;
+    Vector f_ammo_id;
+    Vector f_helm_id;
+    Vector f_gloves_id;
+    Vector f_shoes_id;
+    Vector f_pants_id;
+    Vector f_shield_id;
+    Vector f_trapcomp_id;
+    Vector f_toy_id;
+    Vector f_instrument_id;
+    Vector f_tool_id;
+    Vector f_siegeammo_id;
+    Vector f_armor_rarity;
+    Vector f_helm_rarity;
+    Vector f_gloves_rarity;
+    Vector f_shoes_rarity;
+    Vector f_pants_rarity;
+    Vector f_digger_str;
+    Vector f_weapon_str;
+    Vector f_armor_str;
+    Vector f_ammo_str;
+    Vector f_helm_str;
+    Vector f_gloves_str;
+    Vector f_shoes_str;
+    Vector f_pants_str;
+    Vector f_shield_str;
+    Vector f_trapcomp_str;
+    Vector f_toy_str;
+    Vector f_instrument_str;
+    Vector f_siegeammo_str;
+    Vector f_tool_str;
+};
+struct f_entity_raw_f_symbols {
+    std::array<native_history_layout::f_language_word_table, 19> f_symbols_major;
+    std::array<native_history_layout::f_language_word_table, 19> f_symbols_minor;
+    std::array<Vector, 19> f_select_symbol;
+    std::array<Vector, 19> f_subselect_symbol;
+    std::array<Vector, 19> f_cull_symbol;
+};
+struct f_entity_raw_f_progress_trigger {
+    int16_t f_population;
+    int16_t f_production;
+    int16_t f_trade;
+    int16_t f_pop_siege;
+    int16_t f_prod_siege;
+    int16_t f_trade_siege;
+};
+struct f_entity_raw_f_jobs {
+    std::array<bool, 135> f_permitted_job;
+    std::array<int8_t, 94> f_permitted_labor;
+    std::array<bool, 4> f_world_construction;
+};
+struct f_entity_raw_f_workshops {
+    Vector f_permitted_building_str;
+    Vector f_permitted_building_id;
+    Vector f_permitted_reaction_str;
+    Vector f_permitted_reaction_id;
+};
+struct f_entity_raw {
+    std::string f_code;
+    int32_t f_index;
+    Vector f_raws;
+    Vector f_creature_ids;
+    Vector f_creatures;
+    native_history_layout::f_entity_raw_f_equipment f_equipment;
+    Vector f_currency_value;
+    Flags f_flags;
+    std::string f_translation;
+    native_history_layout::f_entity_raw_f_symbols f_symbols;
+    std::array<int32_t, 130> f_sphere_alignment;
+    std::array<int32_t, 4> f_art_facet_modifier;
+    std::array<int32_t, 5> f_art_image_element_modifier;
+    std::array<int32_t, 15> f_item_improvement_modifier;
+    std::array<int16_t, 3> f_friendly_color;
+    int32_t f_default_site_type;
+    std::array<bool, 11> f_likes_site;
+    std::array<bool, 11> f_tolerates_site;
+    std::array<int32_t, 51> f_biome_support;
+    std::array<bool, 51> f_start_biome;
+    std::array<bool, 51> f_settlement_biome;
+    std::array<bool, 4> f_active_season;
+    native_history_layout::f_entity_raw_f_progress_trigger f_progress_trigger;
+    std::array<int16_t, 22> f_ethic;
+    std::array<int32_t, 64> f_values;
+    std::array<int32_t, 64> f_variable_value_min;
+    std::array<int32_t, 64> f_variable_value_max;
+    uint32_t f_scholar;
+    int32_t f_max_site_pop_number;
+    int32_t f_max_pop_number;
+    int32_t f_max_starting_civ_number;
+    Vector f_religion;
+    Vector f_religion_sphere;
+    native_history_layout::f_entity_raw_f_jobs f_jobs;
+    Vector f_positions;
+    std::array<int8_t, 43> f_variable_positions;
+    std::array<int8_t, 43> f_site_variable_positions;
+    Vector f_tissue_styles;
+    native_history_layout::f_entity_raw_f_workshops f_workshops;
+    int32_t f_banditry;
+    Vector f_gem_shapes_str;
+    Vector f_stone_shapes_str;
+    Vector f_gem_shapes;
+    Vector f_stone_shapes;
+    int32_t f_source_hfid;
+    int32_t f_source_enid;
+    Vector f_animal;
+    Vector f_currency_str1;
+    Vector f_currency_str2;
+};
+struct f_entity_site_ab_profilest {
+    int32_t f_id;
+    uint32_t f_purpose_flag;
+};
+struct f_entity_site_link {
+    int32_t f_target;
+    int32_t f_entity_id;
+    int32_t f_entity_cache_index;
+    int32_t f_position_profile_id;
+    int32_t f_type;
+    int32_t f_start_hr;
+    int32_t f_end_hr;
+    uint32_t f_flags;
+    uint32_t f_former_flag;
+    int32_t f_link_strength;
+    int32_t f_initial_controlling_population;
+    int32_t f_last_check_controlling_population;
+    Vector f_ab_profile;
+    int32_t f_target_site_x;
+    int32_t f_target_site_y;
+    int32_t f_last_checked_army_year;
+    int32_t f_last_checked_army_year_tick;
+};
 struct f_general_ref {
     virtual void native_vtable();
 };
@@ -9911,6 +10106,186 @@ static constexpr std::array<Field, 3> f_entity_entity_link_fields = {{
     {0x0, DFCN_NATIVE_FIELD(f_entity_entity_link, f_type, 0x0), 2},
     {0x4, DFCN_NATIVE_FIELD(f_entity_entity_link, f_target, 0x4), 4},
     {0x8, DFCN_NATIVE_FIELD(f_entity_entity_link, f_strength, 0x8), 2},
+}};
+static constexpr std::array<Field, 42> f_entity_position_fields = {{
+    {0x0, DFCN_NATIVE_FIELD(f_entity_position, f_code, 0x0), 32},
+    {0x20, DFCN_NATIVE_FIELD(f_entity_position, f_id, 0x20), 4},
+    {0x28, DFCN_NATIVE_FIELD(f_entity_position, f_flags, 0x28), 16},
+    {0x38, DFCN_NATIVE_FIELD(f_entity_position, f_allowed_creature, 0x38), 24},
+    {0x50, DFCN_NATIVE_FIELD(f_entity_position, f_allowed_class, 0x50), 24},
+    {0x68, DFCN_NATIVE_FIELD(f_entity_position, f_rejected_creature, 0x68), 24},
+    {0x80, DFCN_NATIVE_FIELD(f_entity_position, f_rejected_class, 0x80), 24},
+    {0x98, DFCN_NATIVE_FIELD(f_entity_position, f_name, 0x98), 64},
+    {0xd8, DFCN_NATIVE_FIELD(f_entity_position, f_name_female, 0xd8), 64},
+    {0x118, DFCN_NATIVE_FIELD(f_entity_position, f_name_male, 0x118), 64},
+    {0x158, DFCN_NATIVE_FIELD(f_entity_position, f_spouse, 0x158), 64},
+    {0x198, DFCN_NATIVE_FIELD(f_entity_position, f_spouse_female, 0x198), 64},
+    {0x1d8, DFCN_NATIVE_FIELD(f_entity_position, f_spouse_male, 0x1d8), 64},
+    {0x218, DFCN_NATIVE_FIELD(f_entity_position, f_squad, 0x218), 64},
+    {0x258, DFCN_NATIVE_FIELD(f_entity_position, f_land_name, 0x258), 32},
+    {0x278, DFCN_NATIVE_FIELD(f_entity_position, f_squad_size, 0x278), 2},
+    {0x280, DFCN_NATIVE_FIELD(f_entity_position, f_commander_id, 0x280), 24},
+    {0x298, DFCN_NATIVE_FIELD(f_entity_position, f_commander_civ, 0x298), 24},
+    {0x2b0, DFCN_NATIVE_FIELD(f_entity_position, f_commander_types, 0x2b0), 24},
+    {0x2c8, DFCN_NATIVE_FIELD(f_entity_position, f_land_holder, 0x2c8), 2},
+    {0x2ca, DFCN_NATIVE_FIELD(f_entity_position, f_requires_population, 0x2ca), 2},
+    {0x2cc, DFCN_NATIVE_FIELD(f_entity_position, f_execution_skill, 0x2cc), 2},
+    {0x2d0, DFCN_NATIVE_FIELD(f_entity_position, f_precedence, 0x2d0), 4},
+    {0x2d4, DFCN_NATIVE_FIELD(f_entity_position, f_replaced_by, 0x2d4), 4},
+    {0x2d8, DFCN_NATIVE_FIELD(f_entity_position, f_number, 0x2d8), 2},
+    {0x2e0, DFCN_NATIVE_FIELD(f_entity_position, f_appointed_by, 0x2e0), 24},
+    {0x2f8, DFCN_NATIVE_FIELD(f_entity_position, f_appointed_by_civ, 0x2f8), 24},
+    {0x310, DFCN_NATIVE_FIELD(f_entity_position, f_succession_by_position, 0x310), 24},
+    {0x328, DFCN_NATIVE_FIELD(f_entity_position, f_responsibilities, 0x328), 43},
+    {0x358, DFCN_NATIVE_FIELD(f_entity_position, f_description, 0x358), 32},
+    {0x378, DFCN_NATIVE_FIELD(f_entity_position, f_color, 0x378), 6},
+    {0x380, DFCN_NATIVE_FIELD(f_entity_position, f_required_boxes, 0x380), 4},
+    {0x384, DFCN_NATIVE_FIELD(f_entity_position, f_required_cabinets, 0x384), 4},
+    {0x388, DFCN_NATIVE_FIELD(f_entity_position, f_required_racks, 0x388), 4},
+    {0x38c, DFCN_NATIVE_FIELD(f_entity_position, f_required_stands, 0x38c), 4},
+    {0x390, DFCN_NATIVE_FIELD(f_entity_position, f_required_office, 0x390), 4},
+    {0x394, DFCN_NATIVE_FIELD(f_entity_position, f_required_bedroom, 0x394), 4},
+    {0x398, DFCN_NATIVE_FIELD(f_entity_position, f_required_dining, 0x398), 4},
+    {0x39c, DFCN_NATIVE_FIELD(f_entity_position, f_required_tomb, 0x39c), 4},
+    {0x3a0, DFCN_NATIVE_FIELD(f_entity_position, f_mandate_max, 0x3a0), 4},
+    {0x3a4, DFCN_NATIVE_FIELD(f_entity_position, f_demand_max, 0x3a4), 4},
+    {0x3a8, DFCN_NATIVE_FIELD(f_entity_position, f_best_appointment_precedence, 0x3a8), 4},
+}};
+static constexpr std::array<Field, 14> f_entity_position_assignment_fields = {{
+    {0x0, DFCN_NATIVE_FIELD(f_entity_position_assignment, f_id, 0x0), 4},
+    {0x4, DFCN_NATIVE_FIELD(f_entity_position_assignment, f_histfig, 0x4), 4},
+    {0x8, DFCN_NATIVE_FIELD(f_entity_position_assignment, f_histfig2, 0x8), 4},
+    {0xc, DFCN_NATIVE_FIELD(f_entity_position_assignment, f_position_id, 0xc), 4},
+    {0x10, DFCN_NATIVE_FIELD(f_entity_position_assignment, f_position_vector_idx, 0x10), 4},
+    {0x18, DFCN_NATIVE_FIELD(f_entity_position_assignment, f_flags, 0x18), 16},
+    {0x28, DFCN_NATIVE_FIELD(f_entity_position_assignment, f_squad_id, 0x28), 4},
+    {0x2c, DFCN_NATIVE_FIELD(f_entity_position_assignment, f_st_id, 0x2c), 4},
+    {0x30, DFCN_NATIVE_FIELD(f_entity_position_assignment, f_ab_id, 0x30), 4},
+    {0x34, DFCN_NATIVE_FIELD(f_entity_position_assignment, f_vassal_of_entity_id, 0x34), 4},
+    {0x38, DFCN_NATIVE_FIELD(f_entity_position_assignment, f_vassal_of_position_profile_id, 0x38), 4},
+    {0x40, DFCN_NATIVE_FIELD(f_entity_position_assignment, f_claim, 0x40), 24},
+    {0x58, DFCN_NATIVE_FIELD(f_entity_position_assignment, f_assigned_army_controller_id, 0x58), 4},
+    {0x5c, DFCN_NATIVE_FIELD(f_entity_position_assignment, f_temp, 0x5c), 4},
+}};
+static constexpr std::array<Field, 95> f_entity_raw_fields = {{
+    {0x0, DFCN_NATIVE_FIELD(f_entity_raw, f_code, 0x0), 32},
+    {0x20, DFCN_NATIVE_FIELD(f_entity_raw, f_index, 0x20), 4},
+    {0x28, DFCN_NATIVE_FIELD(f_entity_raw, f_raws, 0x28), 24},
+    {0x40, DFCN_NATIVE_FIELD(f_entity_raw, f_creature_ids, 0x40), 24},
+    {0x58, DFCN_NATIVE_FIELD(f_entity_raw, f_creatures, 0x58), 24},
+    {0x70, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_digger_id, 0x70), 24},
+    {0x88, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_weapon_id, 0x88), 24},
+    {0xa0, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_armor_id, 0xa0), 24},
+    {0xb8, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_ammo_id, 0xb8), 24},
+    {0xd0, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_helm_id, 0xd0), 24},
+    {0xe8, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_gloves_id, 0xe8), 24},
+    {0x100, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_shoes_id, 0x100), 24},
+    {0x118, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_pants_id, 0x118), 24},
+    {0x130, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_shield_id, 0x130), 24},
+    {0x148, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_trapcomp_id, 0x148), 24},
+    {0x160, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_toy_id, 0x160), 24},
+    {0x178, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_instrument_id, 0x178), 24},
+    {0x190, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_tool_id, 0x190), 24},
+    {0x1a8, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_siegeammo_id, 0x1a8), 24},
+    {0x1c0, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_armor_rarity, 0x1c0), 24},
+    {0x1d8, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_helm_rarity, 0x1d8), 24},
+    {0x1f0, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_gloves_rarity, 0x1f0), 24},
+    {0x208, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_shoes_rarity, 0x208), 24},
+    {0x220, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_pants_rarity, 0x220), 24},
+    {0x238, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_digger_str, 0x238), 24},
+    {0x250, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_weapon_str, 0x250), 24},
+    {0x268, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_armor_str, 0x268), 24},
+    {0x280, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_ammo_str, 0x280), 24},
+    {0x298, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_helm_str, 0x298), 24},
+    {0x2b0, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_gloves_str, 0x2b0), 24},
+    {0x2c8, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_shoes_str, 0x2c8), 24},
+    {0x2e0, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_pants_str, 0x2e0), 24},
+    {0x2f8, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_shield_str, 0x2f8), 24},
+    {0x310, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_trapcomp_str, 0x310), 24},
+    {0x328, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_toy_str, 0x328), 24},
+    {0x340, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_instrument_str, 0x340), 24},
+    {0x358, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_siegeammo_str, 0x358), 24},
+    {0x370, DFCN_NATIVE_FIELD(f_entity_raw, f_equipment.f_tool_str, 0x370), 24},
+    {0x388, DFCN_NATIVE_FIELD(f_entity_raw, f_currency_value, 0x388), 24},
+    {0x3a0, DFCN_NATIVE_FIELD(f_entity_raw, f_flags, 0x3a0), 16},
+    {0x3b0, DFCN_NATIVE_FIELD(f_entity_raw, f_translation, 0x3b0), 32},
+    {0x3d0, DFCN_NATIVE_FIELD(f_entity_raw, f_symbols.f_symbols_major, 0x3d0), 5472},
+    {0x1930, DFCN_NATIVE_FIELD(f_entity_raw, f_symbols.f_symbols_minor, 0x1930), 5472},
+    {0x2e90, DFCN_NATIVE_FIELD(f_entity_raw, f_symbols.f_select_symbol, 0x2e90), 456},
+    {0x3058, DFCN_NATIVE_FIELD(f_entity_raw, f_symbols.f_subselect_symbol, 0x3058), 456},
+    {0x3220, DFCN_NATIVE_FIELD(f_entity_raw, f_symbols.f_cull_symbol, 0x3220), 456},
+    {0x33e8, DFCN_NATIVE_FIELD(f_entity_raw, f_sphere_alignment, 0x33e8), 520},
+    {0x35f0, DFCN_NATIVE_FIELD(f_entity_raw, f_art_facet_modifier, 0x35f0), 16},
+    {0x3600, DFCN_NATIVE_FIELD(f_entity_raw, f_art_image_element_modifier, 0x3600), 20},
+    {0x3614, DFCN_NATIVE_FIELD(f_entity_raw, f_item_improvement_modifier, 0x3614), 60},
+    {0x3650, DFCN_NATIVE_FIELD(f_entity_raw, f_friendly_color, 0x3650), 6},
+    {0x3658, DFCN_NATIVE_FIELD(f_entity_raw, f_default_site_type, 0x3658), 4},
+    {0x365c, DFCN_NATIVE_FIELD(f_entity_raw, f_likes_site, 0x365c), 11},
+    {0x3667, DFCN_NATIVE_FIELD(f_entity_raw, f_tolerates_site, 0x3667), 11},
+    {0x3674, DFCN_NATIVE_FIELD(f_entity_raw, f_biome_support, 0x3674), 204},
+    {0x3740, DFCN_NATIVE_FIELD(f_entity_raw, f_start_biome, 0x3740), 51},
+    {0x3773, DFCN_NATIVE_FIELD(f_entity_raw, f_settlement_biome, 0x3773), 51},
+    {0x37a6, DFCN_NATIVE_FIELD(f_entity_raw, f_active_season, 0x37a6), 4},
+    {0x37aa, DFCN_NATIVE_FIELD(f_entity_raw, f_progress_trigger.f_population, 0x37aa), 2},
+    {0x37ac, DFCN_NATIVE_FIELD(f_entity_raw, f_progress_trigger.f_production, 0x37ac), 2},
+    {0x37ae, DFCN_NATIVE_FIELD(f_entity_raw, f_progress_trigger.f_trade, 0x37ae), 2},
+    {0x37b0, DFCN_NATIVE_FIELD(f_entity_raw, f_progress_trigger.f_pop_siege, 0x37b0), 2},
+    {0x37b2, DFCN_NATIVE_FIELD(f_entity_raw, f_progress_trigger.f_prod_siege, 0x37b2), 2},
+    {0x37b4, DFCN_NATIVE_FIELD(f_entity_raw, f_progress_trigger.f_trade_siege, 0x37b4), 2},
+    {0x37b6, DFCN_NATIVE_FIELD(f_entity_raw, f_ethic, 0x37b6), 44},
+    {0x37e4, DFCN_NATIVE_FIELD(f_entity_raw, f_values, 0x37e4), 256},
+    {0x38e4, DFCN_NATIVE_FIELD(f_entity_raw, f_variable_value_min, 0x38e4), 256},
+    {0x39e4, DFCN_NATIVE_FIELD(f_entity_raw, f_variable_value_max, 0x39e4), 256},
+    {0x3ae4, DFCN_NATIVE_FIELD(f_entity_raw, f_scholar, 0x3ae4), 4},
+    {0x3ae8, DFCN_NATIVE_FIELD(f_entity_raw, f_max_site_pop_number, 0x3ae8), 4},
+    {0x3aec, DFCN_NATIVE_FIELD(f_entity_raw, f_max_pop_number, 0x3aec), 4},
+    {0x3af0, DFCN_NATIVE_FIELD(f_entity_raw, f_max_starting_civ_number, 0x3af0), 4},
+    {0x3af8, DFCN_NATIVE_FIELD(f_entity_raw, f_religion, 0x3af8), 24},
+    {0x3b10, DFCN_NATIVE_FIELD(f_entity_raw, f_religion_sphere, 0x3b10), 24},
+    {0x3b28, DFCN_NATIVE_FIELD(f_entity_raw, f_jobs.f_permitted_job, 0x3b28), 135},
+    {0x3baf, DFCN_NATIVE_FIELD(f_entity_raw, f_jobs.f_permitted_labor, 0x3baf), 94},
+    {0x3c0d, DFCN_NATIVE_FIELD(f_entity_raw, f_jobs.f_world_construction, 0x3c0d), 4},
+    {0x3c18, DFCN_NATIVE_FIELD(f_entity_raw, f_positions, 0x3c18), 24},
+    {0x3c30, DFCN_NATIVE_FIELD(f_entity_raw, f_variable_positions, 0x3c30), 43},
+    {0x3c5b, DFCN_NATIVE_FIELD(f_entity_raw, f_site_variable_positions, 0x3c5b), 43},
+    {0x3c88, DFCN_NATIVE_FIELD(f_entity_raw, f_tissue_styles, 0x3c88), 24},
+    {0x3ca0, DFCN_NATIVE_FIELD(f_entity_raw, f_workshops.f_permitted_building_str, 0x3ca0), 24},
+    {0x3cb8, DFCN_NATIVE_FIELD(f_entity_raw, f_workshops.f_permitted_building_id, 0x3cb8), 24},
+    {0x3cd0, DFCN_NATIVE_FIELD(f_entity_raw, f_workshops.f_permitted_reaction_str, 0x3cd0), 24},
+    {0x3ce8, DFCN_NATIVE_FIELD(f_entity_raw, f_workshops.f_permitted_reaction_id, 0x3ce8), 24},
+    {0x3d00, DFCN_NATIVE_FIELD(f_entity_raw, f_banditry, 0x3d00), 4},
+    {0x3d08, DFCN_NATIVE_FIELD(f_entity_raw, f_gem_shapes_str, 0x3d08), 24},
+    {0x3d20, DFCN_NATIVE_FIELD(f_entity_raw, f_stone_shapes_str, 0x3d20), 24},
+    {0x3d38, DFCN_NATIVE_FIELD(f_entity_raw, f_gem_shapes, 0x3d38), 24},
+    {0x3d50, DFCN_NATIVE_FIELD(f_entity_raw, f_stone_shapes, 0x3d50), 24},
+    {0x3d68, DFCN_NATIVE_FIELD(f_entity_raw, f_source_hfid, 0x3d68), 4},
+    {0x3d6c, DFCN_NATIVE_FIELD(f_entity_raw, f_source_enid, 0x3d6c), 4},
+    {0x3d70, DFCN_NATIVE_FIELD(f_entity_raw, f_animal, 0x3d70), 24},
+    {0x3d88, DFCN_NATIVE_FIELD(f_entity_raw, f_currency_str1, 0x3d88), 24},
+    {0x3da0, DFCN_NATIVE_FIELD(f_entity_raw, f_currency_str2, 0x3da0), 24},
+}};
+static constexpr std::array<Field, 2> f_entity_site_ab_profilest_fields = {{
+    {0x0, DFCN_NATIVE_FIELD(f_entity_site_ab_profilest, f_id, 0x0), 4},
+    {0x4, DFCN_NATIVE_FIELD(f_entity_site_ab_profilest, f_purpose_flag, 0x4), 4},
+}};
+static constexpr std::array<Field, 17> f_entity_site_link_fields = {{
+    {0x0, DFCN_NATIVE_FIELD(f_entity_site_link, f_target, 0x0), 4},
+    {0x4, DFCN_NATIVE_FIELD(f_entity_site_link, f_entity_id, 0x4), 4},
+    {0x8, DFCN_NATIVE_FIELD(f_entity_site_link, f_entity_cache_index, 0x8), 4},
+    {0xc, DFCN_NATIVE_FIELD(f_entity_site_link, f_position_profile_id, 0xc), 4},
+    {0x10, DFCN_NATIVE_FIELD(f_entity_site_link, f_type, 0x10), 4},
+    {0x14, DFCN_NATIVE_FIELD(f_entity_site_link, f_start_hr, 0x14), 4},
+    {0x18, DFCN_NATIVE_FIELD(f_entity_site_link, f_end_hr, 0x18), 4},
+    {0x1c, DFCN_NATIVE_FIELD(f_entity_site_link, f_flags, 0x1c), 4},
+    {0x20, DFCN_NATIVE_FIELD(f_entity_site_link, f_former_flag, 0x20), 4},
+    {0x24, DFCN_NATIVE_FIELD(f_entity_site_link, f_link_strength, 0x24), 4},
+    {0x28, DFCN_NATIVE_FIELD(f_entity_site_link, f_initial_controlling_population, 0x28), 4},
+    {0x2c, DFCN_NATIVE_FIELD(f_entity_site_link, f_last_check_controlling_population, 0x2c), 4},
+    {0x30, DFCN_NATIVE_FIELD(f_entity_site_link, f_ab_profile, 0x30), 24},
+    {0x48, DFCN_NATIVE_FIELD(f_entity_site_link, f_target_site_x, 0x48), 4},
+    {0x4c, DFCN_NATIVE_FIELD(f_entity_site_link, f_target_site_y, 0x4c), 4},
+    {0x50, DFCN_NATIVE_FIELD(f_entity_site_link, f_last_checked_army_year, 0x50), 4},
+    {0x54, DFCN_NATIVE_FIELD(f_entity_site_link, f_last_checked_army_year_tick, 0x54), 4},
 }};
 static constexpr std::array<Field, 0> f_general_ref_fields = {{
 }};
@@ -18427,6 +18802,11 @@ static constexpr Object objects[] = {
     {"creature_interaction_effect_display_namest", "creature_interaction_effect", DFCN_NATIVE_BINDING(0x1715b00, 0x20463f0), f_creature_interaction_effect_display_namest_fields.data(), std::size(f_creature_interaction_effect_display_namest_fields), f_creature_interaction_effect_display_namest_slots, std::size(f_creature_interaction_effect_display_namest_slots)},
     {"creature_raw", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_creature_raw_fields.data(), std::size(f_creature_raw_fields), nullptr, 0},
     {"entity_entity_link", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_entity_entity_link_fields.data(), std::size(f_entity_entity_link_fields), nullptr, 0},
+    {"entity_position", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_entity_position_fields.data(), std::size(f_entity_position_fields), nullptr, 0},
+    {"entity_position_assignment", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_entity_position_assignment_fields.data(), std::size(f_entity_position_assignment_fields), nullptr, 0},
+    {"entity_raw", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_entity_raw_fields.data(), std::size(f_entity_raw_fields), nullptr, 0},
+    {"entity_site_ab_profilest", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_entity_site_ab_profilest_fields.data(), std::size(f_entity_site_ab_profilest_fields), nullptr, 0},
+    {"entity_site_link", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_entity_site_link_fields.data(), std::size(f_entity_site_link_fields), nullptr, 0},
     {"general_ref", "", DFCN_NATIVE_BINDING(0x15ea818, 0x0), f_general_ref_fields.data(), std::size(f_general_ref_fields), f_general_ref_slots, std::size(f_general_ref_slots)},
     {"general_ref_abstract_buildingst", "general_ref", DFCN_NATIVE_BINDING(0x16eb320, 0x2049d08), f_general_ref_abstract_buildingst_fields.data(), std::size(f_general_ref_abstract_buildingst_fields), f_general_ref_abstract_buildingst_slots, std::size(f_general_ref_abstract_buildingst_slots)},
     {"general_ref_activity_eventst", "general_ref", DFCN_NATIVE_BINDING(0x15ea388, 0x2049648), f_general_ref_activity_eventst_fields.data(), std::size(f_general_ref_activity_eventst_fields), f_general_ref_activity_eventst_slots, std::size(f_general_ref_activity_eventst_slots)},

@@ -70,6 +70,7 @@ namespace dfcn {
 static std::vector<NativeHistoryDraw> captured_native_history_draws();
 static std::vector<NativeHistoryUnboundDraw> captured_native_history_unbound_draws();
 static uintptr_t native_history_profile_base();
+static uint64_t native_history_entity_parent_revision(uint64_t draw_epoch);
 static bool native_history_worldgen_page();
 static NativeModDetails native_mod_details();
 static bool native_gameplay_map_screen(bool include_world = false);
@@ -1940,6 +1941,47 @@ enum class NativeTravelBuildingField : uint8_t {
     None, Literal, Name, Shrine,
 };
 
+enum class NativeWorldSiteEntityFactKind : uint8_t {
+    SiteGovernment, Civilization,
+};
+struct NativeSiteGovernmentContext {
+    int16_t race = -1;
+    std::string race_raw_id;
+    std::string culture_raw_id;
+    bool non_racial = false;
+    bool skulking = false;
+    bool bandit_governance = false;
+    bool religious_governance = false;
+    bool parent_known = false;
+    bool has_external_parent = false;
+    bool is_current = false;
+    bool governing_role = false;
+    bool former_governance = false;
+    bool name_site_shape_known = false;
+    int32_t site_id = -1;
+    int16_t site_type = -1;
+    int16_t site_subtype = -1;
+    std::string site_kind;
+};
+struct NativeWorldSiteEntityFact {
+    NativeWorldSiteEntityFactKind kind = NativeWorldSiteEntityFactKind::SiteGovernment;
+    NativeHistoryName name;
+    NativeSiteGovernmentContext government_context;
+};
+static thread_local const NativeWorldSiteEntityFact *g_native_world_site_entity_fact = nullptr;
+class NativeWorldSiteEntityFactScope {
+public:
+    explicit NativeWorldSiteEntityFactScope(const NativeWorldSiteEntityFact *fact)
+        : previous_(g_native_world_site_entity_fact) {
+        g_native_world_site_entity_fact = fact;
+    }
+    ~NativeWorldSiteEntityFactScope() { g_native_world_site_entity_fact = previous_; }
+    NativeWorldSiteEntityFactScope(const NativeWorldSiteEntityFactScope &) = delete;
+    NativeWorldSiteEntityFactScope &operator=(const NativeWorldSiteEntityFactScope &) = delete;
+private:
+    const NativeWorldSiteEntityFact *previous_;
+};
+
 struct NativeDrawnTextRow {
     int x = 0, y = 0;
     std::string source;
@@ -1993,6 +2035,9 @@ struct NativeDrawnTextRow {
     // The travel renderer's verified addst caller owns each structure row.
     // Dynamically named buildings remain distinct from fixed kind captions.
     NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None;
+    // The government/civilization producer supplies its actual entity. Keep
+    // the owned name and mother context with this draw through cached frames.
+    std::shared_ptr<const NativeWorldSiteEntityFact> world_site_entity_fact{};
     // The actual addst return address identifies document-specific row writers.
     uintptr_t native_caller = 0;
 };
@@ -2639,6 +2684,9 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         row.location_picker_field = location_picker_field;
         row.location_picker_box = location_picker_box;
         row.travel_building_field = travel_building_field;
+        if (g_native_world_site_entity_fact)
+            row.world_site_entity_fact =
+                std::make_shared<const NativeWorldSiteEntityFact>(*g_native_world_site_entity_fact);
         row.native_caller = native_caller;
         row.fortress_labor_caption = std::move(fortress_labor_caption);
         if (row.fortress_labor_caption) row.caption_source = true;
@@ -2652,6 +2700,7 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         if (civilization_field != NativeCivilizationField::None) row.caption_source = true;
         if (location_picker_field != NativeLocationPickerField::None) row.caption_source = true;
         if (travel_building_field != NativeTravelBuildingField::None) row.caption_source = true;
+        if (row.world_site_entity_fact) row.caption_source = true;
         if (mission_title) row.caption_source = true;
         if (const auto identity = native_unit_identity_source_binding(
                 complete_source.empty() ? source : complete_source, address)) {
@@ -3390,10 +3439,20 @@ private:
     mutable std::unordered_map<std::string, std::shared_ptr<LegendsTextFlow>> legends_flow_cache_;
     std::string legends_native_capture_status_;
     std::unordered_map<std::string, int> history_semantic_templates_;
-    mutable std::unordered_map<uint64_t,
-        std::optional<std::vector<LegendsTextPiece>>> history_event_translation_cache_;
+    struct HistoryEventTranslation {
+        std::optional<std::vector<LegendsTextPiece>> pieces;
+        uint64_t parent_revision = 0;
+        std::list<uint64_t>::iterator recency;
+    };
+    mutable std::unordered_map<uint64_t, HistoryEventTranslation> history_event_translation_cache_;
+    mutable std::list<uint64_t> history_event_translation_order_;
+    mutable uint64_t history_parent_context_epoch_ = 0;
+    mutable uint64_t history_parent_context_revision_ = 0;
+    uint64_t history_parent_context_revision() const;
     std::optional<std::string> translate_history_name(
-        const NativeHistoryName &name, bool character = false) const;
+        const NativeHistoryName &name, bool character = false,
+        bool polity_role = false, bool government_role = false,
+        const NativeSiteGovernmentContext *government_context = nullptr) const;
     std::optional<std::string> translate_english_character_name(
         std::string_view source, std::string_view native_given = {}) const;
     std::optional<std::vector<LegendsTextPiece>> translate_history_event(
@@ -3552,6 +3611,17 @@ private:
     std::unordered_map<std::string, std::string> civilization_name_terms_;
     std::unordered_map<std::string, std::string> civilization_name_modifiers_;
     mutable std::shared_ptr<CivilizationReferenceCache> civilization_reference_cache_;
+    std::unordered_map<std::string, std::string> site_government_parent_suffixes_;
+    std::unordered_map<std::string, std::string> site_government_name_terms_;
+    struct IndependentGovernmentSuffixRule {
+        int16_t entity_type = -1;
+        std::string race_raw_id, culture_raw_id, governance_kind, site_kind, suffix;
+    };
+    std::vector<IndependentGovernmentSuffixRule> site_government_independent_suffixes_;
+    static constexpr std::array<const char *, 3> site_government_catalog_names_{
+        "site-government-parent-suffixes.tsv", "site-government-name-terms.tsv",
+        "site-government-independent-suffixes.tsv"};
+    std::array<fs::file_time_type, 3> site_government_catalog_mtimes_{};
     // These forms only reconstruct the game's English history references.
     // Chinese character-name selection always receives the resulting text.
     std::unordered_map<std::string, std::array<std::string, 9>> history_english_name_forms_;
@@ -3991,11 +4061,26 @@ private:
     bool load_generated_instrument_names();
     bool load_procedural_word_senses();
     bool load_civilization_name_terms();
+    bool load_site_government_name_terms();
+    std::optional<std::string> site_government_name_term(
+        std::string_view word_id, std::string_view part, size_t slot) const;
+    std::string site_government_name_suffix(const NativeHistoryName &name,
+        const NativeSiteGovernmentContext *context = nullptr) const;
+    void capture_entity_government_name_context(const NativeHistoryName &name,
+        NativeSiteGovernmentContext &context) const;
+    std::string independent_site_government_suffix(const NativeHistoryName &name,
+        const NativeSiteGovernmentContext *context) const;
+    std::optional<std::string> translate_history_entity_name(
+        const NativeHistoryName &name, const NativeHistoryEventData &event,
+        int32_t id, bool current, bool polity_role = false) const;
     std::optional<std::string> civilization_name_modifier(
         std::string_view word_id, std::string_view part, size_t slot,
         std::string_view head_id) const;
     std::optional<std::string> translate_civilization_reference(
-        std::string_view source) const;
+        std::string_view source, bool polity_role = false,
+        bool government_field = false) const;
+    std::optional<std::string> translate_world_site_entity_fact(
+        std::string_view source, const NativeWorldSiteEntityFact *fact = nullptr) const;
     bool load_procedural_name_grammar();
     bool load_procedural_terms();
     void load_name_editor_translations();
@@ -5611,6 +5696,9 @@ void Overlay::build_trie() {
     legends_native_capture_status_.clear();
     history_semantic_templates_.clear();
     history_event_translation_cache_.clear();
+    history_event_translation_order_.clear();
+    history_parent_context_epoch_ = 0;
+    history_parent_context_revision_ = 0;
     legends_work_limit_cache_.clear();
     legends_work_limit_order_.clear();
     legends_continuation_cache_.clear();
@@ -6967,6 +7055,8 @@ bool Overlay::load_procedural_terms() {
         log_line("ERROR", "Procedural surname semantics are incomplete");
     if (!load_civilization_name_terms())
         log_line("ERROR", "Cannot load civilization name terms");
+    if (!load_site_government_name_terms())
+        log_line("ERROR", "Cannot load site government name terms and parent suffixes");
     std::string path = runtime::utf8(runtime::data_path() / "procedural-terms.tsv");
     std::ifstream input(fs::u8path(path), std::ios::binary);
     if (!input) {
@@ -7531,6 +7621,18 @@ void Overlay::maybe_reload() {
             (!ec1 && cm != config_mtime_) || (!ec2 && mm != mapping_mtime_) ||
             (!ec3 && nm != name_editor_mtime_);
         const auto catalog_directory = fs::u8path(config_.mapping_path).parent_path();
+        for (size_t index = 0; index < site_government_catalog_names_.size(); ++index) {
+            fs::path path = runtime::data_path() / site_government_catalog_names_[index];
+            std::error_code catalog_error;
+            auto modified = fs::last_write_time(path, catalog_error);
+            if (catalog_error) {
+                catalog_error.clear();
+                modified = fs::last_write_time(fs::path("data/runtime") /
+                    site_government_catalog_names_[index], catalog_error);
+            }
+            if (catalog_error) modified = {};
+            if (modified != site_government_catalog_mtimes_[index]) reload = true;
+        }
         for (size_t index = 0; index < dfhack_catalog_names_.size(); ++index) {
             std::error_code catalog_error;
             auto modified = fs::last_write_time(catalog_directory / dfhack_catalog_names_[index], catalog_error);
@@ -9196,6 +9298,7 @@ std::optional<std::string> Overlay::translate_english_character_name(
 
 #include "history_names.inc"
 #include "civilization_name_terms.inc"
+#include "site_government_name_terms.inc"
 
 // Source grammar only. Rating meanings live in the scoped glossary and are
 // shared by native lists, TOML phrases and standalone combat ratings.
@@ -21983,7 +22086,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
     auto world_site = capture_world_site_card(world_site_actions);
     const bool travel_building_card = world_site && world_site->travel_buildings &&
         std::all_of(world_site->rows.begin(), world_site->rows.end(), [&](const auto &row) {
-            return travel_building_draw_for_row(*gps_, row,
+            return world_site_owned_draw_for_row(*gps_, row,
                 world_site->interior.x + world_site->interior.w).has_value();
         });
     auto map_hover = !world_map && !travel_building_card && workshop_materials.empty() &&

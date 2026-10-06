@@ -79,9 +79,10 @@ static constexpr size_t kHistoryCaptureSubjects = kNativeHistoryNodeSubjects;
 static constexpr size_t kHistoryCaptureFields = kNativeHistoryNodeFields;
 static constexpr size_t kHistoryCaptureFieldValues = kNativeHistoryNodeValues;
 static constexpr size_t kHistoryCaptureString = kNativeHistoryStringLimit;
-// Legacy events start with kind 0..3. This discriminator preserves the old
-// no-children format while making every new event's tree layout explicit.
-static constexpr uint64_t kHistoryCaptureEventTreeFormat = 0x4446434e48495302ULL;
+// Legacy events start with kind 0..3. Tree version 3 adds owned English WORD
+// forms and entity-name context; older formats restore without those fields.
+static constexpr uint64_t kHistoryCaptureEventTreeFormatV2 = 0x4446434e48495302ULL;
+static constexpr uint64_t kHistoryCaptureEventTreeFormat = 0x4446434e48495303ULL;
 // Optional tail: old cores saved no native producer-region registry. The new
 // reader accepts those snapshots and lets native page recovery rebuild it.
 static constexpr uint64_t kHistoryCaptureRegionsFormat = 0x4446434e52454701ULL;
@@ -104,10 +105,17 @@ static void save_history_name(CaptureWriter &out, const NativeHistoryName &name)
         out.string(word.id);
         out.signed32(word.part_of_speech);
         out.number(word.has_form);
+        out.string(word.english_form);
     }
+    out.signed32(name.entity_type);
+    out.signed32(name.entity_id);
+    out.string(name.parent_word_id);
+    out.signed32(name.parent_word_pos);
+    out.number(name.entity_name_current);
 }
 
-static NativeHistoryName restore_history_name(CaptureReader &in, NativeHistoryTreeBudget &budget) {
+static NativeHistoryName restore_history_name(CaptureReader &in, NativeHistoryTreeBudget &budget,
+        bool has_entity_context) {
     NativeHistoryName name;
     name.has_name = in.count(1) != 0;
     name.language = in.signed32();
@@ -121,10 +129,23 @@ static NativeHistoryName restore_history_name(CaptureReader &in, NativeHistoryTr
         word.id = restore_history_string(in, budget);
         word.part_of_speech = in.signed16();
         word.has_form = in.count(1) != 0;
+        if (has_entity_context) word.english_form = restore_history_string(in, budget);
         // An absent WORD slot retains its native unused POS value. Only a
         // populated WORD is required to index one of the nine language forms.
         if (!word.id.empty() && (word.part_of_speech < 0 || word.part_of_speech > 8))
             throw std::runtime_error("Invalid history word form");
+    }
+    if (has_entity_context) {
+        name.entity_type = in.signed16();
+        name.entity_id = in.signed32();
+        name.parent_word_id = restore_history_string(in, budget);
+        name.parent_word_pos = in.signed16();
+        name.entity_name_current = in.count(1) != 0;
+        if (name.entity_type < -1 || name.entity_id < -1 ||
+                (!name.parent_word_id.empty() &&
+                    (name.entity_type != 1 || name.parent_word_pos < 0 ||
+                        name.parent_word_pos > 1)))
+            throw std::runtime_error("Invalid history entity name context");
     }
     return name;
 }
@@ -186,7 +207,8 @@ static NativeHistoryEventData restore_history_event_node(CaptureReader &in,
         throw std::runtime_error("History capture tree too deep or large");
     NativeHistoryEventData event;
     const uint64_t discriminator = in.number();
-    const bool has_children = discriminator == kHistoryCaptureEventTreeFormat;
+    const bool has_entity_context = discriminator == kHistoryCaptureEventTreeFormat;
+    const bool has_children = has_entity_context || discriminator == kHistoryCaptureEventTreeFormatV2;
     const uint64_t kind = has_children ? in.number() : discriminator;
     if (kind > static_cast<uint8_t>(NativeHistoryEventKind::PackedRelationship))
         throw std::runtime_error("Invalid history event kind");
@@ -249,7 +271,7 @@ static NativeHistoryEventData restore_history_event_node(CaptureReader &in,
         const auto identity = std::tuple{static_cast<uint8_t>(subject.kind), subject.id, subject.subid};
         if (subject.id < -1 || !identities.insert(identity).second)
             throw std::runtime_error("Invalid history subject identity");
-        subject.name = restore_history_name(in, budget);
+        subject.name = restore_history_name(in, budget, has_entity_context);
         // A creature label can include both the original singular race and
         // its native curse suffix, each copied with the normal string bound.
         subject.species = restore_history_string(in, budget, 2 * kHistoryCaptureString + 32);
@@ -439,12 +461,14 @@ static bool save_reload_captures(DfcnStateSink sink, void *context) {
 }
 
 static bool restore_reload_captures(const void *data, size_t size) {
+    const char *stage = "capture header";
     try {
         if (!data || !size) return false;
         CaptureReader in(data, size);
         if (in.number() != DFCN_CORE_ABI) return false;
         const uint64_t sequence = in.number();
         decltype(g_native_paragraph_captures) paragraphs;
+        stage = "paragraph captures";
         const size_t paragraph_count = in.count(4096);
         for (size_t i = 0; i < paragraph_count; ++i) {
             NativeParagraphCapture capture;
@@ -461,6 +485,7 @@ static bool restore_reload_captures(const void *data, size_t size) {
         decltype(g_native_knowledge_documents) documents;
         decltype(g_native_knowledge_document_order) order;
         decltype(g_native_knowledge_row_owners) rows;
+        stage = "knowledge documents";
         const size_t document_count = in.count(512);
         for (size_t i = 0; i < document_count; ++i) {
             const uintptr_t owner = in.number();
@@ -499,6 +524,7 @@ static bool restore_reload_captures(const void *data, size_t size) {
             if (!documents.emplace(owner, std::move(document)).second) return false;
             order.push_back(owner);
         }
+        stage = "knowledge row ownership";
         const size_t row_count = in.count(512 * 16384);
         for (size_t i = 0; i < row_count; ++i) {
             const uintptr_t address = in.number();
@@ -509,43 +535,65 @@ static bool restore_reload_captures(const void *data, size_t size) {
                 found->second->row_addresses[line] != address) return false;
             rows.emplace(address, std::make_pair(owner, static_cast<int>(line)));
         }
-        const uint64_t history_sequence = in.number();
+        uint64_t history_sequence = 0;
         decltype(g_native_history_documents) history;
-        const size_t history_count = in.count(kHistoryCaptureDocuments);
-        history.reserve(history_count);
-        size_t remaining_tokens = kHistoryCaptureTokens;
-        std::unordered_set<uintptr_t> history_token_ids;
-        for (size_t i = 0; i < history_count; ++i) {
-            auto document = restore_history_document(in, remaining_tokens);
-            for (const auto &token : document->tokens)
-                if (!history_token_ids.insert(token.identity).second) return false;
-            history.push_back(std::move(document));
-        }
-        if (!history.empty() && !history_sequence) return false;
         decltype(g_native_history_regions) history_regions;
-        if (!in.done()) {
-            if (in.number() != kHistoryCaptureRegionsFormat) return false;
-            const size_t region_count = in.count(kHistoryCaptureTokens);
-            remaining_tokens = kHistoryCaptureTokens;
-            history_regions.reserve(region_count);
-            for (size_t i = 0; i < region_count; ++i) {
-                auto region = std::make_shared<NativeHistoryRegion>();
-                region->owner = in.count(UINTPTR_MAX);
-                const size_t token_count = in.count(remaining_tokens);
-                if (!region->owner || !token_count) return false;
-                remaining_tokens -= token_count;
-                region->tokens.reserve(token_count);
-                for (size_t j = 0; j < token_count; ++j) {
-                    NativeHistoryToken token;
-                    token.identity = in.count(UINTPTR_MAX);
-                    token.source = in.string(kHistoryCaptureString);
-                    region->tokens.push_back(std::move(token));
-                }
-                history_regions.push_back(std::move(region));
+        decltype(g_native_history_region_owners) history_region_owners;
+        try {
+            stage = "history documents";
+            history_sequence = in.number();
+            const size_t history_count = in.count(kHistoryCaptureDocuments);
+            history.reserve(history_count);
+            size_t remaining_tokens = kHistoryCaptureTokens;
+            std::unordered_set<uintptr_t> history_token_ids;
+            for (size_t i = 0; i < history_count; ++i) {
+                auto document = restore_history_document(in, remaining_tokens);
+                for (const auto &token : document->tokens)
+                    if (!history_token_ids.insert(token.identity).second)
+                        throw std::runtime_error("Duplicate restored history token identity");
+                history.push_back(std::move(document));
             }
+            if (!history.empty() && !history_sequence)
+                throw std::runtime_error("Missing restored history sequence");
+            stage = "history regions";
+            if (!in.done()) {
+                if (in.number() != kHistoryCaptureRegionsFormat)
+                    throw std::runtime_error("Unsupported history region capture format");
+                const size_t region_count = in.count(kHistoryCaptureTokens);
+                remaining_tokens = kHistoryCaptureTokens;
+                history_regions.reserve(region_count);
+                for (size_t i = 0; i < region_count; ++i) {
+                    auto region = std::make_shared<NativeHistoryRegion>();
+                    region->owner = in.count(UINTPTR_MAX);
+                    const size_t token_count = in.count(remaining_tokens);
+                    if (!region->owner || !token_count)
+                        throw std::runtime_error("Invalid restored history region identity");
+                    remaining_tokens -= token_count;
+                    region->tokens.reserve(token_count);
+                    for (size_t j = 0; j < token_count; ++j) {
+                        NativeHistoryToken token;
+                        token.identity = in.count(UINTPTR_MAX);
+                        token.source = in.string(kHistoryCaptureString);
+                        region->tokens.push_back(std::move(token));
+                    }
+                    history_regions.push_back(std::move(region));
+                }
+            }
+            if (!in.done()) throw std::runtime_error("Trailing history capture data");
+            stage = "history region index";
+            history_region_owners = index_native_history_regions(history_regions);
+        } catch (const std::runtime_error &error) {
+            // These are regenerable semantic caches. The game's live original
+            // text and tokens remain untouched; existing native recovery can
+            // bind them again. Never publish a partially restored history.
+            history.clear();
+            history_regions.clear();
+            history_region_owners.clear();
+            history_sequence = 0;
+            log_line("WARN", "Discarded incompatible native history cache at " +
+                std::string(stage) + ": " + error.what());
         }
-        if (!in.done()) return false;
-        auto history_region_owners = index_native_history_regions(history_regions);
+        stage = "paragraph indexes";
         NativeParagraphIndex paragraph_index;
         decltype(g_native_paragraph_row_index) paragraph_row_index;
         decltype(g_native_paragraph_prefix_index) paragraph_prefix_index;
@@ -566,6 +614,7 @@ static bool restore_reload_captures(const void *data, size_t size) {
         auto &history_pending = pending_native_history();
         // Only commit fully parsed captures. Saved game addresses are identity
         // keys, never dereferenced here; the existing draw hooks match text too.
+        stage = "capture commit";
         std::scoped_lock lock(g_native_paragraph_mutex, g_native_knowledge_mutex, g_native_history_mutex);
         // Index construction is the final allocating operation. The remaining
         // swaps and scalar assignments cannot leave only some registries restored.
@@ -592,8 +641,12 @@ static bool restore_reload_captures(const void *data, size_t size) {
         history_pending = {};
         g_native_history_capture_generation.fetch_add(1, std::memory_order_acq_rel);
         return true;
+    } catch (const std::exception &error) {
+        log_line("ERROR", "Cannot restore native text for core reload at " +
+            std::string(stage) + ": " + error.what());
+        return false;
     } catch (...) {
-        log_line("ERROR", "Cannot restore native text for core reload");
+        log_line("ERROR", "Cannot restore native text for core reload at " + std::string(stage));
         return false;
     }
 }
