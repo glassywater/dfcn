@@ -914,6 +914,16 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
         std::optional<std::string> target = !action_control && !artifacts
             ? translate_world_site_entity_fact(source, entity_draw
                 ? &*entity_draw->world_site_entity_fact : nullptr) : std::nullopt;
+        if (!action_control && artifacts &&
+                source != "Artifacts (Rumored)" && source != "Artifacts") {
+            // Rumored treasures include written works. Resolve the complete
+            // title before prose/name ownership can claim its `of` clause or
+            // reject its punctuation, using the same grammar as the item list.
+            if (split_generated_name_identity(source) || split_repeated_title_identity(source))
+                target = translate_legends_artifact_identity(source);
+            if (!target) target = translate_legends_book(source);
+            if (!target) target = translate_legends_item(source);
+        }
         if (!target && !action_control && !artifacts) {
             const auto site_draw = world_site_owned_draw_for_row(*gps_, row,
                 card.interior.x + card.interior.w, false, true);

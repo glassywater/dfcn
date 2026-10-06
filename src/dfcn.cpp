@@ -9220,21 +9220,28 @@ std::optional<std::string> Overlay::translate_world_landform_heading(std::string
     const std::string folded = lower(name.substr(4));
     const std::string_view head = trim_view(
         std::string_view(folded).substr(0, folded.find(" of ")));
-    if (head != "land" && head != "lands" &&
-        !head.ends_with(" land") && !head.ends_with(" lands") &&
-        !head.ends_with("-land") && !head.ends_with("-lands")) return std::nullopt;
-    const auto term = legends_terms_ci_.find("world map landform: land");
-    if (term == legends_terms_ci_.end()) return std::nullopt;
     const size_t separator = head.find_last_of(" -");
     const auto noun = head.substr(separator == std::string_view::npos ? 0 : separator + 1);
-    auto target = translate_procedural_fragment(name, false, false, {noun, term->second});
+    std::optional<std::string> gloss;
+    if (noun == "land" || noun == "lands") {
+        const auto term = legends_terms_ci_.find("world map landform: land");
+        if (term != legends_terms_ci_.end()) gloss = term->second;
+    } else if (noun == "continent" || noun == "continents") {
+        // The complete generated landform must precede ordinary place/prose
+        // parsing, which preserves an unbound `of` complement as a site name.
+        const auto term = procedural_terms_.find("continent");
+        if (term != procedural_terms_.end()) gloss = term->second;
+    }
+    if (!gloss) return std::nullopt;
+    auto target = translate_procedural_fragment(name, false, false, {noun, *gloss},
+        ProceduralFragmentContext::generated_name);
     // The reviewed noun can already begin with the name grammar's particle.
     // Collapse only its duplicated boundary (including of/hyphen compounds),
     // not repeated name roots or particles elsewhere in the complete title.
     // Both map details and embark cards use this one scoped composition step.
     constexpr std::string_view particle = "之";
-    if (target && term->second.starts_with(particle)) {
-        const std::string duplicate = std::string(particle) + term->second;
+    if (target && gloss->starts_with(particle)) {
+        const std::string duplicate = std::string(particle) + *gloss;
         for (size_t at = target->find(duplicate); at != std::string::npos;
                 at = target->find(duplicate))
             target->erase(at, particle.size());
