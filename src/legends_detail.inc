@@ -672,6 +672,25 @@ std::optional<std::string> Overlay::translate_legends_nested(
         return std::nullopt;
     std::vector<std::string> captures(rule.template_kinds.size());
     std::vector<std::optional<std::string>> translated(captures.size());
+    // The native collection formatter inserts the ordinal after The, leaving
+    // the nested title without its article. Keep this grammar shared by the
+    // nested-title resolver and the era-specific word order below.
+    const bool spelled_ordinal = rule.legends_event_title &&
+        rule.template_kinds.size() == 1 && rule.template_kinds.front() == 'e' &&
+        rule.template_literals.size() == 2 &&
+        rule.template_literals.front().starts_with("The ") &&
+        rule.template_literals.front().size() > 5 &&
+        rule.template_literals.front().back() == ' ' &&
+        rule.template_literals.front().find(' ', 4) == rule.template_literals.front().size() - 1 &&
+        rule.target_template_literals.size() == 2 &&
+        rule.target_template_literals.front().starts_with("第") &&
+        rule.target_template_literals.front().ends_with("次");
+    const bool numeric_ordinal = rule.legends_event_title &&
+        rule.template_kinds.size() == 2 && rule.template_kinds.front() == 'd' &&
+        rule.template_kinds.back() == 'e' && rule.template_literals.size() == 3 &&
+        rule.template_literals.front() == "The " &&
+        (rule.template_literals[1] == "st " || rule.template_literals[1] == "nd " ||
+         rule.template_literals[1] == "rd " || rule.template_literals[1] == "th ");
     // Name connectors can also delimit typed fields. Backtrack within this
     // one reviewed grammar until every field AND the entire suffix resolve.
     std::function<bool(size_t, size_t)> consume = [&](size_t field, size_t at) {
@@ -737,25 +756,9 @@ std::optional<std::string> Overlay::translate_legends_nested(
                 } else target = translate_legends_term(part);
                 break;
             case 'e': {
-                // bc57f0 inserts the native ordinal after the collection's
-                // initial The. Its nested title therefore lacks that article.
-                // Recognize only the existing complete ordinal productions;
-                // ordinary event/name captures must not gain an article.
-                const bool spelled_ordinal = field == 0 && rule.template_kinds.size() == 1 &&
-                    rule.template_literals.size() == 2 &&
-                    rule.template_literals.front().starts_with("The ") &&
-                    rule.template_literals.front().size() > 5 &&
-                    rule.template_literals.front().back() == ' ' &&
-                    rule.template_literals.front().find(' ', 4) == rule.template_literals.front().size() - 1 &&
-                    rule.target_template_literals.size() == 2 &&
-                    rule.target_template_literals.front().starts_with("第") &&
-                    rule.target_template_literals.front().ends_with("次");
-                const bool numeric_ordinal = field == 1 && rule.template_kinds.size() == 2 &&
-                    rule.template_kinds.front() == 'd' && rule.template_literals.size() == 3 &&
-                    rule.template_literals.front() == "The " &&
-                    (rule.template_literals[1] == "st " || rule.template_literals[1] == "nd " ||
-                     rule.template_literals[1] == "rd " || rule.template_literals[1] == "th ");
-                if (rule.legends_event_title && rule.template_literals.back().empty() &&
+                // Only complete ordinal productions may restore the article;
+                // ordinary event/name captures retain their original grammar.
+                if (rule.template_literals.back().empty() &&
                         (spelled_ordinal || numeric_ordinal) &&
                         !template_literal_at(part, 0, "The ", true))
                     target = translate_legends_event("The " + std::string(part), depth + 1);
@@ -793,6 +796,30 @@ std::optional<std::string> Overlay::translate_legends_nested(
     };
     if (!consume(0, first.size())) return std::nullopt;
     auto target = fill_template(rule, captures, &capture_translations_, nullptr, &translated);
+    if ((spelled_ordinal || numeric_ordinal) && rule.template_literals.back().empty()) {
+        // Eras use the same native ordinal formatter as repeated events, but
+        // their ordinal names a numbered epoch rather than an occurrence.
+        // Reuse both the reviewed age vocabulary and the parsed ordinal; do
+        // not add global First/Age translations or enumerate a world's eras.
+        static constexpr std::array<std::string_view, 13> named_ages = {{
+            "unknown age", "age of civilization", "age of death", "age of emptiness",
+            "age of fairy tales", "twilight age", "golden age", "age of heroes",
+            "age of one power", "age of two powers", "age of three powers",
+            "age of legends", "age of myth",
+        }};
+        std::string age_source = lower(captures.back());
+        if (age_source.starts_with("the ")) age_source.erase(0, 4);
+        const auto &age = translated.back();
+        if (std::find(named_ages.begin(), named_ages.end(), age_source) != named_ages.end() &&
+                age && age->ends_with("时代") && target.ends_with(*age)) {
+            std::string ordinal = target.substr(0, target.size() - age->size());
+            if (ordinal.starts_with("第") && ordinal.ends_with("次")) {
+                ordinal.resize(ordinal.size() - std::string_view("次").size());
+                target = age->substr(0, age->size() - std::string_view("时代").size()) +
+                    ordinal + "纪元";
+            }
+        }
+    }
     return translation_complete_with_native_nicknames(target, value)
         ? std::optional<std::string>(std::move(target)) : std::nullopt;
 }

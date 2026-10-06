@@ -2193,6 +2193,11 @@ static std::vector<SDL_Rect> native_text_overlay_frames(const graphicst &gps) {
     frames.insert(frames.end(), choosers.begin(), choosers.end());
     const auto dfhack = native_dfhack_text_overlay_frames(gps);
     frames.insert(frames.end(), dfhack.begin(), dfhack.end());
+    // The verified DFHack logo can cover the outer panel's top rail.
+    // Keep its exact live artwork bounds so the enclosing frame can still
+    // establish the first native text field without inventing a margin.
+    const auto logos = native_dfhack_logo_regions(&gps);
+    frames.insert(frames.end(), logos.begin(), logos.end());
     if (const auto widget = captured_native_tooltip_widget(gps)) frames.push_back(widget->bounds);
     // HOVER_RECTANGLE is also used for ordinary floating panels. Its skin
     // alone does not establish an occluder or authorize clipping page text.
