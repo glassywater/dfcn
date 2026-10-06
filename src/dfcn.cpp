@@ -4354,6 +4354,9 @@ private:
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void layout_fortress_build_placement(SDL_Renderer *renderer);
     void layout_fortress_build_materials(SDL_Renderer *renderer);
+    void append_fortress_remembered_material(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y,
+        const unsigned char *screen_override) const;
     void append_fortress_machine_power_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
     void append_native_split_ui_messages(std::vector<std::string> &rows,
@@ -22450,6 +22453,8 @@ std::vector<Match> Overlay::find_matches(int only_y,
     append_fortress_justice_rows(screen_rows, result, only_y);
     }
     context_detail.checkpoint(RenderTimingStage::ItemCaptions);
+    if (!announcement_panel_only)
+        append_fortress_remembered_material(screen_rows, result, only_y, screen_override);
     if (!announcement_panel_only) append_fortress_item_captions(screen_rows, result, only_y);
     context_detail.checkpoint(RenderTimingStage::Ammunition);
     if (!announcement_panel_only) {
