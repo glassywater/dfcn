@@ -1,0 +1,48 @@
+DFHack screen-string boundary: manually reconstructed from the installed PE instructions.
+Lua wrapper RVA 0x407960..0x407ace reads Pen,x,y,text,to_map from arguments,
+constructs a native string, calls Screen::paintString at RVA 0x9249f0,
+and returns the native boolean. It contains no alternative UI caption literals.
+
+Screen::paintString RVA 0x9249f0..0x924b63:
+  if !gps or y<0 or y>=gps.dimy: return false;
+  first=max(0,-x);
+  for i from first to text.size, stopping at x+i>=gps.dimx:
+    copy the supplied Pen;
+    copied.ch=unsigned_byte(text[i]);
+    copied.tile=Pen.tile ? Pen.tile+unsigned_byte(text[i]) : 0;
+    if gps exists and copied.tile>=0:
+      call the current Screen::Hooks::set_tile chain with copied,x+i,y,to_map,-1;
+    retain whether the loop reached a source character;
+  return that boolean.
+
+Screen::getKeyDisplay RVA 0x922750..0x9227fa:
+  for the native character-key range return its byte, with the gap adjustment;
+  for CUSTOM_A..CUSTOM_Z return uppercase A..Z;
+  otherwise delegate the entire key enum to enabler's virtual key-display method.
+The current key display belongs to the caller and is not translation text.
+
+The same boundary draws every provider's text. Installed Lua render_text supplies
+independent pens for keys, captions and options; hover/disabled branches alter
+pens only. Painter:string applies its native clipping before calling this wrapper.
+This is disassembly-derived pseudocode, not recovered upstream C++ source.
+
+Screen::paintTile and set_tile half-font text branch, manually reconstructed from installed DFHack/hack/dfhack.dll PE:6abbf61e:0130c000.
+Export paintTile RVA 0x924b70..0x924be5 calls the current Screen::Hooks::set_tile callback with the original Pen. The exported hook object is RVA 0x1168098; its on-disk base callback VA 0x180920e20 (RVA 0x920e20). This callback uses the map texture path only for map && graphics mode; non-map UI writes jump to RVA 0x920a70.
+
+UI set_tile RVA 0x920a70..0x920e1f:
+  validate x/y against gps dimensions, then select the active native UI layer;
+  initially clear that cell's ch at RVA 0x920b1a (base) / 0x920b7d (top);
+  Pen.write_to_lower is native byte +0x0e. It chooses the lower texture array at RVA 0x920c26..0x920c30; otherwise the primary texture array is used.
+  if Pen.tile != 0 && graphics mode:
+    write the exact Pen.tile texture;
+    if Pen.top_of_text (+0x10) || Pen.bottom_of_text (+0x11):
+      restore cell.ch = Pen.ch at RVA 0x920c42..0x920c46;
+      clear half flags 0x18 at RVA 0x920c48..0x920c4d;
+      set top flag 0x08 iff Pen.top_of_text at RVA 0x920c4f..0x920c59;
+      set bottom flag 0x10 iff Pen.bottom_of_text at RVA 0x920c5b..0x920c65;
+  else if Pen.ch != 0:
+    retain ordinary source ch via RVA 0x920c69..0x920c73.
+
+Reachable TabBar source contract: hack/lua/gui/widgets/tab_bar.lua:29,34,44,49 supplies write_to_lower=true and exactly one half flag for every actual label character. :101..129 draws self.label one character at a time at x=2 on both rows. Thus its graphical paintTile path initially clears but then restores ASCII cell[0]; TabBar is not an artwork-only byte-zero branch.
+
+Current source-read path: dfcn.cpp Overlay::visible_char_at returns the selected cell[0] after current composite/occlusion handling; find_matches read_row uses visible_char_at (or the explicitly selected screen_override[8*tile]); dfhack_launcher_help.inc builds dfhack_context_rows from selected cell[0]. Both receive current TabBar source letters directly. native_dfhack_artwork.inc intentionally records frame/configuration/notification artwork characters only; lack of an ASCII tab artwork record is harmless because no such restoration is needed for the half-font branch. Overlay::normalize_native_split_text folds the actual 0x08/0x10 rows using the established half-font contract. No artwork.inc/frame_geometry.inc source change is required or made.

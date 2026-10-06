@@ -24,6 +24,19 @@ struct NativeDfhackNotificationText {
 };
 static std::vector<NativeDfhackNotificationText> native_dfhack_notification_texts(
     const graphicst *gps);
+enum class NativeDfhackOverlayTextRole : unsigned char { Text, Option, Key };
+struct NativeDfhackOverlayText {
+    int x = 0, y = 0, full_x = 0, visible_offset = 0;
+    std::string full, visible;
+    NativeDfhackOverlayTextRole role = NativeDfhackOverlayTextRole::Text;
+    // These describe the actual selected options entry, never its spelling.
+    bool option_dynamic = false, option_name = false;
+    int option_idx = 0;
+    uintptr_t widget_id = 0;
+    std::string overlay_name, view_id, caption;
+};
+static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
+    const graphicst *gps);
 static std::optional<std::string> lookup_native_dfhack_animal_assignment_text(
     const graphicst *gps, int x, int y, std::string_view visible);
 static bool install_native_dfhack_messagebox_hook();

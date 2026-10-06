@@ -1,0 +1,22 @@
+rating	enum_key	caption	caption_rva	attribute_entry_rva	orders_skill_option
+0	Dabbling	Dabbling	0xb3e378	0xa704f0	true
+1	Novice	Novice	0xb3e3ac	0xa70500	true
+2	Adequate	Adequate	0xb3e3d0	0xa70510	false
+3	Competent	Competent	0xb3e408	0xa70520	true
+4	Skilled	Skilled	0xb3e440	0xa70530	false
+5	Proficient	Proficient	0xb3e470	0xa70540	true
+6	Talented	Talented	0xb3e490	0xa70550	true
+7	Adept	Adept	0xb3e4b0	0xa70560	false
+8	Expert	Expert	0xb3e4c4	0xa70570	true
+9	Professional	Professional	0xb3e4e0	0xa70580	false
+10	Accomplished	Accomplished	0xb3e510	0xa70590	true
+11	Great	Great	0xaf9b48	0xa705a0	false
+12	Master	Master	0xb2c9bc	0xa705b0	true
+13	HighMaster	High Master	0xb3e678	0xa705c0	false
+14	GrandMaster	Grand Master	0xb3e698	0xa705d0	true
+15	Legendary	Legendary	0xb3e578	0xa705e0	true
+16	Legendary1	Legendary+1	0xb3e6b8	0xa705f0	false
+17	Legendary2	Legendary+2	0xb3e700	0xa70600	false
+18	Legendary3	Legendary+3	0xb3e720	0xa70610	false
+19	Legendary4	Legendary+4	0xb3e740	0xa70620	false
+20	Legendary5	Legendary+5	0xb3e760	0xa70630	false

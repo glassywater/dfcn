@@ -3823,10 +3823,11 @@ private:
     std::atomic<bool> dump_requested_{false};
     fs::file_time_type config_mtime_{};
     fs::file_time_type mapping_mtime_{};
-    static constexpr std::array<const char *, 6> dfhack_catalog_names_{
+    static constexpr std::array<const char *, 8> dfhack_catalog_names_{
         "dfhack-help-translations.tsv", "dfhack-help-overrides.tsv",
         "dfhack-help-command-overrides.tsv", "dfhack-output-core.tsv",
-        "dfhack-output-translations.tsv", "dfhack-output-stonesense.tsv"};
+        "dfhack-output-translations.tsv", "dfhack-output-stonesense.tsv",
+        "dfhack-overlay-plugin-controls.tsv", "dfhack-overlay-script-controls.tsv"};
     std::array<fs::file_time_type, dfhack_catalog_names_.size()> dfhack_help_mtimes_{};
     std::chrono::steady_clock::time_point last_reload_check_{};
     std::chrono::steady_clock::time_point last_untranslated_collect_{};

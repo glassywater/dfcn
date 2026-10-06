@@ -1,0 +1,262 @@
+string_rva	text
+0x2f540	design_draw_shape
+0x2f558	design_draw_points
+0x2f570	design_clear_shape
+0x2f584	design
+0x2f590	window_x
+0x2f5a0	window_y
+0x2f5ac	world
+0x2f5b8	plotinfo
+0x2f5e0	Unknown exception
+0x2f628	bad array new length
+0x2f640	string too long
+0x2f650	map/set too long
+0x2f678	ACTIVITY_ZONES
+0x2f688	CURSORS
+0x2f6b8	invalid map<K, T> key
+0x2f6d0	vector too long
+0x2f730	53.16-r2
+0x2f73c	53.16
+0x2f748	https://github.com/DFHack/dfhack/actions/runs/36605190931
+0x2f788	53.16-r2-0-g02e77acf
+0x2f7a0	02e77acf13049f5661a4da0aa3d876bf95b74903
+0x2f7d0	63efa5f44c5fd00ded98a2034f5d6069fd94f7a4
+0x2f800	bad allocation
+0x2f810	invalid format specifier for char
+0x2f8c0	generic
+0x2f900	00010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899
+0x2f9ca	00010203  0405060707080910  1112131414151617  18192021  222324  25262728  2930313232333435  3637383939404142  43444546  474849  50515253  5455565757585960  6162636464656667  68697071  727374  75767778  7980818282838485  8687888989909192  93949596  979899  
+0x2fcc0	number is too big
+0x2fd20	bad cast
+0x2fd2c	false
+0x2fd34	true
+0x2fdd0	%s:%d: assertion failed: %s
+0x2fdf0	error 
+0x2fdf8	unmatched '}' in format string
+0x2fe18	invalid format string
+0x2fe30	missing '}' in format string
+0x2fe50	unknown format specifier
+0x2fe70	argument not found
+0x2fe88	cannot switch from manual to automatic argument indexing
+0x2fec4	{}{}
+0x2fed0	cannot write to file
+0x31bd1	A]DG
+0x32920	invalid format specifier
+0x32940	format specifier requires numeric argument
+0x32970	invalid fill character '{'
+0x32990	invalid utf8
+0x32f18	invalid precision
+0x32f30	string pointer is null
+0x32f48	width/precision is not integer
+0x32f70	cannot switch from automatic to manual argument indexing
+0x32fc0	width/precision is out of range
+0x32ff0	0123456789ABCDEF
+0x33008	0123456789abcdef
+0x33fb8	D:\a\dfhack\dfhack\build\plugins\design.pdb
+0x34004	.text$di
+0x34018	.text$mn
+0x3402c	.text$mn$00
+0x34040	.text$x
+0x34050	.text$yd
+0x34064	.idata$5
+0x34078	.00cfg
+0x34088	.CRT$XCA
+0x3409c	.CRT$XCL
+0x340b0	.CRT$XCU
+0x340c4	.CRT$XCZ
+0x340d8	.CRT$XIA
+0x340ec	.CRT$XIZ
+0x34100	.CRT$XLA
+0x34114	.CRT$XLZ
+0x34128	.CRT$XPA
+0x3413c	.CRT$XPZ
+0x34150	.CRT$XTA
+0x34164	.CRT$XTZ
+0x34178	.rdata
+0x34188	.rdata$CastGuardVftablesA
+0x341ac	.rdata$CastGuardVftablesC
+0x341d0	.rdata$T
+0x341e4	.rdata$r
+0x341f8	.rdata$voltmd
+0x34210	.rdata$zzzdbg
+0x34228	.rtc$IAA
+0x3423c	.rtc$IZZ
+0x34250	.rtc$TAA
+0x34264	.rtc$TZZ
+0x34278	.tls
+0x34288	.tls$
+0x34298	.tls$ZZZ
+0x342ac	.xdata
+0x342bc	.xdata$x
+0x342d0	.edata
+0x342e0	.idata$2
+0x342f4	.idata$3
+0x34308	.idata$4
+0x3431c	.idata$6
+0x34330	.data
+0x34340	.data$r
+0x34350	.data$rs
+0x34364	.bss
+0x34374	.pdata
+0x34384	.rsrc$01
+0x34398	.rsrc$02
+0x39186	design.plug.dll
+0x39196	plugin_abi_version
+0x391a9	plugin_dev
+0x391b4	plugin_git_description
+0x391cb	plugin_globals
+0x391da	plugin_init
+0x391e6	plugin_load_world_data
+0x391fd	plugin_lua_commands
+0x39211	plugin_name
+0x3921d	plugin_onstatechange
+0x39232	plugin_self
+0x3923e	plugin_version
+0x39779	g?flush_buffer@color_ostream@DFHack@@AEAAX_N@Z
+0x397a9	v?isEnabled@DebugCategory@DFHack@@QEBA_NW4level@12@@Z
+0x397e1	H??_Dostream_proxy_prefix@DebugCategory@DFHack@@QEAAXXZ
+0x3981b	n?getStream@DebugCategory@DFHack@@QEBA?AUostream_proxy_prefix@12@W4level@12@AEAVcolor_ostream@2@@Z
+0x39880	??0DebugRegisterBase@DFHack@@IEAA@PEAVDebugCategory@1@@Z
+0x398bc	?unregister@DebugRegisterBase@DFHack@@IEAAXPEAVDebugCategory@2@@Z
+0x398ff	n?getMousePos@Gui@DFHack@@YA?AU?$Coord3d@F$0?HFDA@@2@_N@Z
+0x3993b	u?inGraphicsMode@Screen@DFHack@@YA_NXZ
+0x39964	?paintTile@Screen@DFHack@@YA_NAEBUPen@12@HH_NPEQgraphic_viewportst@df@@PEAH@Z
+0x399b2	Ib?findGraphicsTile@Screen@DFHack@@YA_NAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHPEAH1@Z
+0x39a26	?window_x@global@df@@3PEAHEA
+0x39a46	?window_y@global@df@@3PEAHEA
+0x39a64	dfhack.dll
+0x39a72	?lua_settop@@YAXPEAUlua_State@@H@Z
+0x39a98	?lua_type@@YAHPEAUlua_State@@H@Z
+0x39abc	?lua_tointegerx@@YA_JPEAUlua_State@@HPEAH@Z
+0x39aea	?lua_toboolean@@YAHPEAUlua_State@@H@Z
+0x39b12	?lua_tolstring@@YAPEBDPEAUlua_State@@HPEA_K@Z
+0x39b42	?lua_pushnil@@YAXPEAUlua_State@@@Z
+0x39b68	?lua_getfield@@YAHPEAUlua_State@@HPEBD@Z
+0x39b94	?lua_rawgeti@@YAHPEAUlua_State@@H_J@Z
+0x39bbc	?lua_next@@YAHPEAUlua_State@@H@Z
+0x39be0	?luaL_len@@YA_JPEAUlua_State@@H@Z
+0x39c02	lua53.dll
+0x39c0e	WriteConsoleW
+0x39c1c	KERNEL32.dll
+0x39c2c	?_Xbad_alloc@std@@YAXXZ
+0x39c46	?_Xlength_error@std@@YAXPEBD@Z
+0x39c68	?_Xout_of_range@std@@YAXPEBD@Z
+0x39c8a	?_Getcvt@_Locinfo@std@@QEBA?AU_Cvtvec@@XZ
+0x39cb6	?_W_Getdays@_Locinfo@std@@QEBAPEBGXZ
+0x39cde	?_W_Getmonths@_Locinfo@std@@QEBAPEBGXZ
+0x39d08	??0_Lockit@std@@QEAA@H@Z
+0x39d24	??1_Lockit@std@@QEAA@XZ
+0x39d3e	?_Syserror_map@std@@YAPEBDH@Z
+0x39d5e	_Mbrtowc
+0x39d6a	??0_Locinfo@std@@QEAA@PEBD@Z
+0x39d8a	??1_Locinfo@std@@QEAA@XZ
+0x39da6	?_Getfalse@_Locinfo@std@@QEBAPEBDXZ
+0x39dcc	?_Gettrue@_Locinfo@std@@QEBAPEBDXZ
+0x39df2	?c_str@?$_Yarn@D@std@@QEBAPEBDXZ
+0x39e16	??0facet@locale@std@@IEAA@_K@Z
+0x39e38	??1facet@locale@std@@MEAA@XZ
+0x39e58	?_Init@locale@std@@CAPEAV_Locimp@12@_N@Z
+0x39e84	?_Getgloballocale@locale@std@@CAPEAV_Locimp@12@XZ
+0x39eb8	?_Incref@facet@locale@std@@UEAAXXZ
+0x39ede	?_Decref@facet@locale@std@@UEAAPEAV_Facet_base@3@XZ
+0x39f14	?_Id_cnt@id@locale@std@@0HA
+0x39f32	?id@?$numpunct@D@std@@2V0locale@2@A
+0x39f58	?id@?$numpunct@_W@std@@2V0locale@2@A
+0x39f7e	MSVCP140.dll
+0x39f8e	__std_terminate
+0x39fa0	__std_exception_copy
+0x39fb8	__std_exception_destroy
+0x39fd2	_CxxThrowException
+0x39fe8	__CxxFrameHandler4
+0x39ffe	memcmp
+0x3a008	memcpy
+0x3a012	memmove
+0x3a01c	memset
+0x3a026	__C_specific_handler
+0x3a03e	__current_exception
+0x3a054	__current_exception_context
+0x3a072	__std_type_info_destroy_list
+0x3a090	VCRUNTIME140.dll
+0x3a0a2	VCRUNTIME140_1.dll
+0x3a0b8	_invoke_watson
+0x3a0ca	calloc
+0x3a0d4	strlen
+0x3a0de	wcslen
+0x3a0e8	_errno
+0x3a0f2	_dsign
+0x3a0fc	free
+0x3a104	malloc
+0x3a10e	abort
+0x3a116	__acrt_iob_func
+0x3a128	fflush
+0x3a132	_fileno
+0x3a13c	fputc
+0x3a144	fwrite
+0x3a14e	_lock_file
+0x3a15c	_unlock_file
+0x3a16c	__stdio_common_vfprintf
+0x3a186	_get_osfhandle
+0x3a198	_isatty
+0x3a1a2	localeconv
+0x3a1b0	_dclass
+0x3a1ba	_fdclass
+0x3a1c6	_ldclass
+0x3a1d2	_callnewh
+0x3a1de	_seh_filter_dll
+0x3a1f0	_configure_narrow_argv
+0x3a20a	_initialize_narrow_environment
+0x3a22c	_initialize_onexit_table
+0x3a248	_register_onexit_function
+0x3a264	_execute_onexit_table
+0x3a27c	_crt_atexit
+0x3a28a	_crt_at_quick_exit
+0x3a2a0	_cexit
+0x3a2aa	_initterm
+0x3a2b6	_initterm_e
+0x3a2c4	terminate
+0x3a2ce	api-ms-win-crt-runtime-l1-1-0.dll
+0x3a2f0	api-ms-win-crt-heap-l1-1-0.dll
+0x3a310	api-ms-win-crt-string-l1-1-0.dll
+0x3a332	api-ms-win-crt-math-l1-1-0.dll
+0x3a352	api-ms-win-crt-stdio-l1-1-0.dll
+0x3a372	api-ms-win-crt-filesystem-l1-1-0.dll
+0x3a398	api-ms-win-crt-locale-l1-1-0.dll
+0x3a3bc	ReleaseSRWLockExclusive
+0x3a3d6	AcquireSRWLockExclusive
+0x3a3f0	WakeAllConditionVariable
+0x3a40c	SleepConditionVariableSRW
+0x3a428	RtlCaptureContext
+0x3a43c	RtlLookupFunctionEntry
+0x3a456	RtlVirtualUnwind
+0x3a46a	IsDebuggerPresent
+0x3a47e	UnhandledExceptionFilter
+0x3a49a	SetUnhandledExceptionFilter
+0x3a4b8	GetStartupInfoW
+0x3a4ca	IsProcessorFeaturePresent
+0x3a4e6	GetModuleHandleW
+0x3a4fa	GetCurrentProcess
+0x3a50e	TerminateProcess
+0x3a522	QueryPerformanceCounter
+0x3a53c	GetCurrentProcessId
+0x3a552	GetCurrentThreadId
+0x3a568	GetSystemTimeAsFileTime
+0x3a582	DisableThreadLibraryCalls
+0x3a59e	InitializeSListHead
+0x3b028	02e77ac
+0x3b108	.?AVexception@std@@
+0x3b130	.?AVbad_array_new_length@std@@
+0x3b160	.?AVbad_alloc@std@@
+0x3b188	.?AVruntime_error@std@@
+0x3b1b0	.?AVsystem_error@std@@
+0x3b1d8	.?AV_System_error@std@@
+0x3b200	.?AVformat_error@v12@fmt@@
+0x3b230	.?AVbad_cast@std@@
+0x3b258	.?AVerror_category@std@@
+0x3b288	.?AV_Generic_error_category@std@@
+0x3b2c0	.?AVfacet@locale@std@@
+0x3b2e8	.?AV_Facet_base@std@@
+0x3b310	.?AU_Crt_new_delete@std@@
+0x3b340	.?AV?$numpunct@D@std@@
+0x3b368	.?AV?$numpunct@_W@std@@
+0x3b390	.?AV?$format_facet@Vlocale@std@@@v12@fmt@@
+0x3b3d0	.?AVtype_info@@

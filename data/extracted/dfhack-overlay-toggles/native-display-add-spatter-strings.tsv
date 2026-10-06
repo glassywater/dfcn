@@ -1,0 +1,266 @@
+string_rva	text
+0x2f530	item_hook::isImprovable
+0x2f548	product_hook::produce
+0x2f560	add-spatter
+0x2f588	Unknown exception
+0x2f5d0	bad array new length
+0x2f5e8	string too long
+0x2f5f8	map/set too long
+0x2f6b0	vector too long
+0x2f6c7	?53.16-r2
+0x2f6d4	53.16
+0x2f6e0	https://github.com/DFHack/dfhack/actions/runs/36605190931
+0x2f720	53.16-r2-0-g02e77acf
+0x2f738	02e77acf13049f5661a4da0aa3d876bf95b74903
+0x2f768	63efa5f44c5fd00ded98a2034f5d6069fd94f7a4
+0x2f7b0	bad allocation
+0x2f7c0	invalid format specifier for char
+0x2f870	generic
+0x2f8b0	00010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899
+0x2f97a	00010203  0405060707080910  1112131414151617  18192021  222324  25262728  2930313232333435  3637383939404142  43444546  474849  50515253  5455565757585960  6162636464656667  68697071  727374  75767778  7980818282838485  8687888989909192  93949596  979899  
+0x2fc70	number is too big
+0x2fcd0	bad cast
+0x2fcdc	false
+0x2fce4	true
+0x2fd80	%s:%d: assertion failed: %s
+0x2fda0	error 
+0x2fda8	unmatched '}' in format string
+0x2fdc8	invalid format string
+0x2fde0	missing '}' in format string
+0x2fe00	unknown format specifier
+0x2fe20	argument not found
+0x2fe38	cannot switch from manual to automatic argument indexing
+0x2fe74	{}{}
+0x2fe80	cannot write to file
+0x31b81	A]DG
+0x328d0	invalid format specifier
+0x328f0	format specifier requires numeric argument
+0x32920	invalid fill character '{'
+0x32940	invalid utf8
+0x32ec8	invalid precision
+0x32ee0	string pointer is null
+0x32ef8	width/precision is not integer
+0x32f20	cannot switch from automatic to manual argument indexing
+0x32f70	width/precision is out of range
+0x32fa0	0123456789ABCDEF
+0x32fb8	0123456789abcdef
+0x33f3c	D:\a\dfhack\dfhack\build\plugins\add-spatter.pdb
+0x33f90	.text$di
+0x33fa4	.text$mn
+0x33fb8	.text$mn$00
+0x33fcc	.text$x
+0x33fdc	.text$yd
+0x33ff0	.idata$5
+0x34004	.00cfg
+0x34014	.CRT$XCA
+0x34028	.CRT$XCL
+0x3403c	.CRT$XCU
+0x34050	.CRT$XCZ
+0x34064	.CRT$XIA
+0x34078	.CRT$XIZ
+0x3408c	.CRT$XLA
+0x340a0	.CRT$XLZ
+0x340b4	.CRT$XPA
+0x340c8	.CRT$XPZ
+0x340dc	.CRT$XTA
+0x340f0	.CRT$XTZ
+0x34104	.rdata
+0x34114	.rdata$CastGuardVftablesA
+0x34138	.rdata$CastGuardVftablesC
+0x3415c	.rdata$T
+0x34170	.rdata$r
+0x34184	.rdata$voltmd
+0x3419c	.rdata$zzzdbg
+0x341b4	.rtc$IAA
+0x341c8	.rtc$IZZ
+0x341dc	.rtc$TAA
+0x341f0	.rtc$TZZ
+0x34204	.tls
+0x34214	.tls$
+0x34224	.tls$ZZZ
+0x34238	.xdata
+0x34248	.xdata$x
+0x3425c	.edata
+0x3426c	.idata$2
+0x34280	.idata$3
+0x34294	.idata$4
+0x342a8	.idata$6
+0x342bc	.data
+0x342cc	.data$r
+0x342dc	.data$rs
+0x342f0	.bss
+0x34300	.pdata
+0x34310	.rsrc$01
+0x34324	.rsrc$02
+0x349f7	P2pM
+0x349fd	pbpM
+0x39170	add-spatter.plug.dll
+0x39185	plugin_abi_version
+0x39198	plugin_dev
+0x391a3	plugin_git_description
+0x391ba	plugin_globals
+0x391c9	plugin_init
+0x391d5	plugin_is_enabled
+0x391e7	plugin_load_world_data
+0x391fe	plugin_name
+0x3920a	plugin_onstatechange
+0x3921f	plugin_self
+0x3922b	plugin_shutdown
+0x3923b	plugin_version
+0x397a9	g?flush_buffer@color_ostream@DFHack@@AEAAX_N@Z
+0x397da	??0color_ostream_proxy@DFHack@@QEAA@AEAVcolor_ostream@1@@Z
+0x39816	}H??_Dcolor_ostream_proxy@DFHack@@QEAAXXZ
+0x39841	m?getInstance@Core@DFHack@@SAAEAV12@XZ
+0x39869	y?is_direct_instance@virtual_identity@DFHack@@QEBA_NPEAX@Z
+0x398a6	?vmethod_pointer_to_idx_@DFHack@@YAHPEAX@Z
+0x398d4	?method_pointer_to_addr_@DFHack@@YAPEAXPEAX@Z
+0x39904	??0VMethodInterposeLinkBase@DFHack@@QEAA@PEBVvirtual_identity@1@HPEAX1HPEBD@Z
+0x39954	??1VMethodInterposeLinkBase@DFHack@@QEAA@XZ
+0x39980	hY?apply@VMethodInterposeLinkBase@DFHack@@QEAA_N_N@Z
+0x399b7	`?decode@MaterialInfo@DFHack@@QEAA_NPEAUitem@df@@@Z
+0x399ec	Pb?findProduct@MaterialInfo@DFHack@@QEAA_NPEAUmaterial@df@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z
+0x39a6c	Rm?getContainedItems@Items@DFHack@@YAXPEAUitem@df@@PEAV?$vector@PEAUitem@df@@V?$allocator@PEAUitem@df@@@std@@@std@@@Z
+0x39ae3	m?getEffectiveSkill@Units@DFHack@@YAHPEAUunit@df@@W4job_skill@5enums@4@@Z
+0x39b2f	o?get_vector@reaction@df@@SAAEAV?$vector@PEAUreaction@df@@V?$allocator@PEAUreaction@df@@@std@@@std@@XZ
+0x39b98	?log_errors_to_stderr@color_ostream@DFHack@@2_NA
+0x39bca	CU?_identity@item_constructed@df@@2Vvirtual_identity@DFHack@@B
+0x39c0b	V?_identity@reaction_reagent_itemst@df@@2Vvirtual_identity@DFHack@@B
+0x39c51	V?_identity@reaction_product_item_improvementst@df@@2Vvirtual_identity@DFHack@@B
+0x39ca2	dfhack.dll
+0x39cb0	WriteConsoleW
+0x39cbe	KERNEL32.dll
+0x39cce	?uncaught_exceptions@std@@YAHXZ
+0x39cf0	?_Xbad_alloc@std@@YAXXZ
+0x39d0a	?_Xlength_error@std@@YAXPEBD@Z
+0x39d2c	?_Getcvt@_Locinfo@std@@QEBA?AU_Cvtvec@@XZ
+0x39d58	?_W_Getdays@_Locinfo@std@@QEBAPEBGXZ
+0x39d80	?_W_Getmonths@_Locinfo@std@@QEBAPEBGXZ
+0x39daa	?good@ios_base@std@@QEBA_NXZ
+0x39dca	?flags@ios_base@std@@QEBAHXZ
+0x39dea	?width@ios_base@std@@QEBA_JXZ
+0x39e0a	?width@ios_base@std@@QEAA_J_J@Z
+0x39e2c	?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAAHD@Z
+0x39e6e	?sputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAA_JPEBD_J@Z
+0x39eb6	?setstate@?$basic_ios@DU?$char_traits@D@std@@@std@@QEAAXH_N@Z
+0x39ef6	?tie@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBAPEAV?$basic_ostream@DU?$char_traits@D@std@@@2@XZ
+0x39f5c	?rdbuf@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBAPEAV?$basic_streambuf@DU?$char_traits@D@std@@@2@XZ
+0x39fc6	?fill@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBADXZ
+0x3a000	?_Osfx@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAXXZ
+0x3a03e	?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@XZ
+0x3a082	?cerr@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
+0x3a0be	??0_Lockit@std@@QEAA@H@Z
+0x3a0da	??1_Lockit@std@@QEAA@XZ
+0x3a0f4	?_Syserror_map@std@@YAPEBDH@Z
+0x3a114	_Mbrtowc
+0x3a120	??0_Locinfo@std@@QEAA@PEBD@Z
+0x3a140	??1_Locinfo@std@@QEAA@XZ
+0x3a15c	?_Getfalse@_Locinfo@std@@QEBAPEBDXZ
+0x3a182	?_Gettrue@_Locinfo@std@@QEBAPEBDXZ
+0x3a1a8	?c_str@?$_Yarn@D@std@@QEBAPEBDXZ
+0x3a1cc	??0facet@locale@std@@IEAA@_K@Z
+0x3a1ee	??1facet@locale@std@@MEAA@XZ
+0x3a20e	?_Init@locale@std@@CAPEAV_Locimp@12@_N@Z
+0x3a23a	?_Getgloballocale@locale@std@@CAPEAV_Locimp@12@XZ
+0x3a26e	?_Incref@facet@locale@std@@UEAAXXZ
+0x3a294	?_Decref@facet@locale@std@@UEAAPEAV_Facet_base@3@XZ
+0x3a2ca	?_Id_cnt@id@locale@std@@0HA
+0x3a2e8	?id@?$numpunct@D@std@@2V0locale@2@A
+0x3a30e	?id@?$numpunct@_W@std@@2V0locale@2@A
+0x3a334	MSVCP140.dll
+0x3a344	__std_terminate
+0x3a356	__std_exception_copy
+0x3a36e	__std_exception_destroy
+0x3a388	_CxxThrowException
+0x3a39e	__CxxFrameHandler4
+0x3a3b4	memcmp
+0x3a3be	memcpy
+0x3a3c8	memmove
+0x3a3d2	memset
+0x3a3dc	__C_specific_handler
+0x3a3f4	__current_exception
+0x3a40a	__current_exception_context
+0x3a428	__std_type_info_destroy_list
+0x3a446	VCRUNTIME140.dll
+0x3a458	VCRUNTIME140_1.dll
+0x3a46e	_invoke_watson
+0x3a480	calloc
+0x3a48a	wcslen
+0x3a494	_errno
+0x3a49e	_dsign
+0x3a4a8	free
+0x3a4b0	malloc
+0x3a4ba	abort
+0x3a4c2	__acrt_iob_func
+0x3a4d4	fflush
+0x3a4de	_fileno
+0x3a4e8	fputc
+0x3a4f0	fwrite
+0x3a4fa	_lock_file
+0x3a508	_unlock_file
+0x3a518	__stdio_common_vfprintf
+0x3a532	_get_osfhandle
+0x3a544	_isatty
+0x3a54e	localeconv
+0x3a55c	_dclass
+0x3a566	_fdclass
+0x3a572	_ldclass
+0x3a57e	strlen
+0x3a588	_callnewh
+0x3a594	_seh_filter_dll
+0x3a5a6	_configure_narrow_argv
+0x3a5c0	_initialize_narrow_environment
+0x3a5e2	_initialize_onexit_table
+0x3a5fe	_register_onexit_function
+0x3a61a	_execute_onexit_table
+0x3a632	_crt_atexit
+0x3a640	_crt_at_quick_exit
+0x3a656	_cexit
+0x3a660	_initterm
+0x3a66c	_initterm_e
+0x3a67a	terminate
+0x3a684	api-ms-win-crt-runtime-l1-1-0.dll
+0x3a6a6	api-ms-win-crt-heap-l1-1-0.dll
+0x3a6c6	api-ms-win-crt-string-l1-1-0.dll
+0x3a6e8	api-ms-win-crt-math-l1-1-0.dll
+0x3a708	api-ms-win-crt-stdio-l1-1-0.dll
+0x3a728	api-ms-win-crt-filesystem-l1-1-0.dll
+0x3a74e	api-ms-win-crt-locale-l1-1-0.dll
+0x3a772	ReleaseSRWLockExclusive
+0x3a78c	AcquireSRWLockExclusive
+0x3a7a6	WakeAllConditionVariable
+0x3a7c2	SleepConditionVariableSRW
+0x3a7de	RtlCaptureContext
+0x3a7f2	RtlLookupFunctionEntry
+0x3a80c	RtlVirtualUnwind
+0x3a820	IsDebuggerPresent
+0x3a834	UnhandledExceptionFilter
+0x3a850	SetUnhandledExceptionFilter
+0x3a86e	GetStartupInfoW
+0x3a880	IsProcessorFeaturePresent
+0x3a89c	GetModuleHandleW
+0x3a8b0	GetCurrentProcess
+0x3a8c4	TerminateProcess
+0x3a8d8	QueryPerformanceCounter
+0x3a8f2	GetCurrentProcessId
+0x3a908	GetCurrentThreadId
+0x3a91e	GetSystemTimeAsFileTime
+0x3a938	DisableThreadLibraryCalls
+0x3a954	InitializeSListHead
+0x3b018	02e77ac
+0x3b108	.?AVexception@std@@
+0x3b130	.?AVbad_array_new_length@std@@
+0x3b160	.?AVbad_alloc@std@@
+0x3b188	.?AVruntime_error@std@@
+0x3b1b0	.?AVsystem_error@std@@
+0x3b1d8	.?AV_System_error@std@@
+0x3b200	.?AVformat_error@v12@fmt@@
+0x3b230	.?AVbad_cast@std@@
+0x3b258	.?AVerror_category@std@@
+0x3b288	.?AV_Generic_error_category@std@@
+0x3b2c0	.?AVfacet@locale@std@@
+0x3b2e8	.?AV_Facet_base@std@@
+0x3b310	.?AU_Crt_new_delete@std@@
+0x3b340	.?AV?$numpunct@D@std@@
+0x3b368	.?AV?$numpunct@_W@std@@
+0x3b390	.?AV?$format_facet@Vlocale@std@@@v12@fmt@@
+0x3b3d0	.?AVtype_info@@

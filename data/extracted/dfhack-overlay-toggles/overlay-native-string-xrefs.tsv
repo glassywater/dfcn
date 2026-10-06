@@ -1,0 +1,530 @@
+string_rva	text	xrefs_instruction_rva:function_rva:offset
+0x44820	export_region_overlay::feed	0x142e:0x13c0:0
+0x44840	export_region_overlay::render	0x2f2e:0x2ec0:0
+0x44860	game_cleaner_overlay::logic	0x226e:0x2200:0
+0x44880	game_cleaner_overlay::feed	0x14ee:0x1480:0
+0x448a0	game_cleaner_overlay::render	0x2fee:0x2f80:0
+0x448c0	initial_prep_overlay::logic	0x232e:0x22c0:0
+0x448e0	initial_prep_overlay::feed	0x15ae:0x1540:0
+0x44900	initial_prep_overlay::render	0x30ae:0x3040:0
+0x44920	legends_overlay::logic	0x23ee:0x2380:0
+0x44938	legends_overlay::feed	0x166e:0x1600:0
+0x44950	legends_overlay::render	0x316e:0x3100:0
+0x44968	loadgame_overlay::logic	0x24ae:0x2440:0
+0x44980	loadgame_overlay::feed	0x172e:0x16c0:0
+0x44998	loadgame_overlay::render	0x322e:0x31c0:0
+0x449b8	new_arena_overlay::logic	0x256e:0x2500:0
+0x449d8	new_arena_overlay::feed	0x17ee:0x1780:0
+0x449f0	new_arena_overlay::render	0x32ee:0x3280:0
+0x44a10	new_region_overlay::logic	0x262e:0x25c0:0
+0x44a30	new_region_overlay::feed	0x18ae:0x1840:0
+0x44a50	new_region_overlay::render	0x33ae:0x3340:0
+0x44a70	savegame_overlay::logic	0x26ee:0x2680:0
+0x44a88	savegame_overlay::feed	0x196e:0x1900:0
+0x44aa0	savegame_overlay::render	0x346e:0x3400:0
+0x44ac0	setupadventure_overlay::logic	0x27ae:0x2740:0
+0x44ae0	setupadventure_overlay::feed	0x1a2e:0x19c0:0
+0x44b00	setupadventure_overlay::render	0x352e:0x34c0:0
+0x44b20	setupdwarfgame_overlay::logic	0x286e:0x2800:0
+0x44b40	setupdwarfgame_overlay::feed	0x1aee:0x1a80:0
+0x44b60	setupdwarfgame_overlay::render	0x35ee:0x3580:0
+0x44b80	title_overlay::logic	0x292e:0x28c0:0
+0x44b98	title_overlay::feed	0x1bae:0x1b40:0
+0x44bb0	title_overlay::render	0x36ae:0x3640:0
+0x44bc8	update_region_overlay::logic	0x29ee:0x2980:0
+0x44be8	update_region_overlay::feed	0x1c6e:0x1c00:0
+0x44c08	update_region_overlay::render	0x376e:0x3700:0
+0x44c28	world_overlay::logic	0x2aae:0x2a40:0
+0x44c40	world_overlay::feed	0x1d2e:0x1cc0:0
+0x44c58	world_overlay::render	0x382e:0x37c0:0
+0x44c70	record_widget_runtime	0x3934:0x38d0:0
+0x44c88	overlay	0x1dd9f:0x1dd60:0
+0x44c90	world	0x3a39:0x3a10:0,0x3a43:0x3a10:4
+0x44c98	enabler	0x3af9:0x3ad0:0,0x3b04:0x3ad0:4,0x3b10:0x3ad0:6
+0x44ca0	init	
+0x44ca8	control	
+0x44cb0	event	
+0x44cb8	adopt_region_overlay::logic	0x1dee:0x1d80:0
+0x44cd8	adopt_region_overlay::feed	0x106e:0x1000:0
+0x44cf8	adopt_region_overlay::render	0x2b6e:0x2b00:0
+0x44d18	choose_game_type_overlay::logic	0x1eae:0x1e40:0
+0x44d38	choose_game_type_overlay::feed	0x112e:0x10c0:0
+0x44d58	choose_game_type_overlay::render	0x2c2e:0x2bc0:0
+0x44d80	choose_start_site_overlay::logic	0x1f6e:0x1f00:0
+0x44da8	choose_start_site_overlay::feed	0x11ee:0x1180:0
+0x44dc8	choose_start_site_overlay::render	0x2cee:0x2c80:0
+0x44df0	dungeonmode_overlay::logic	0x202e:0x1fc0:0
+0x44e10	dungeonmode_overlay::feed	0x12ae:0x1240:0
+0x44e30	dungeonmode_overlay::render	0x2dae:0x2d40:0
+0x44e50	dwarfmode_overlay::logic	0x20ee:0x2080:0
+0x44e70	dwarfmode_overlay::feed	0x136e:0x1300:0
+0x44e88	dwarfmode_overlay::render	0x2e6e:0x2e00:0
+0x44ea8	export_region_overlay::logic	0x21ae:0x2140:0
+0x44ee0	Unknown exception	0x1d5b4:0x1d539:0
+0x44f28	bad array new length	0x10980:0x1097c:0
+0x44f40	string too long	0x18bd4:0x18bd0:0
+0x44f80	plugins.overlay	0x1d0f2:0x1cfb0:0,0x1d398:0x1d200:0,0x1d670:0x1d5d0:0,0x1deca:0x1de10:0,0x1df72:0x1de10:0
+0x44f90	rescan	0x1d65d:0x1d5d0:0
+0x44f98	enabl	0x1d738:0x1d5d0:0
+0x44fa0	disabl	0x1d73f:0x1d5d0:0
+0x44fc0	overlay_command	0x1d0eb:0x1cfb0:0
+0x44fd0	Manage onscreen widgets.	0x1dd98:0x1dd60:0
+0x44ff0	reposition_widgets	0x1deb2:0x1de10:0
+0x45008	update_hotspot_widgets	0x1df5c:0x1de10:0
+0x450c0	render_viewscreen_widgets	0x1bcc9:0x1bc50:0,0x1bdb9:0x1bd40:0,0x1bea9:0x1be30:0,0x1bf99:0x1bf20:0,0x1c089:0x1c010:0,0x1c179:0x1c100:0,0x1c269:0x1c1f0:0,0x1c359:0x1c2e0:0,0x1c449:0x1c3d0:0,0x1c539:0x1c4c0:0,0x1c629:0x1c5b0:0,0x1c719:0x1c6a0:0,0x1c809:0x1c790:0,0x1c8f9:0x1c880:0,0x1c9e9:0x1c970:0,0x1cad9:0x1ca60:0,0x1cbc9:0x1cb50:0,0x1ccb9:0x1cc40:0
+0x450e0	feed_viewscreen_widgets	0x19598:0x194f0:0,0x196d8:0x19630:0,0x19818:0x19770:0,0x19958:0x198b0:0,0x19a98:0x199f0:0,0x19bd8:0x19b30:0,0x19d18:0x19c70:0,0x19e58:0x19db0:0,0x19f98:0x19ef0:0,0x1a0d8:0x1a030:0,0x1a218:0x1a170:0,0x1a358:0x1a2b0:0,0x1a498:0x1a3f0:0,0x1a5d8:0x1a530:0,0x1a718:0x1a670:0,0x1a858:0x1a7b0:0,0x1a998:0x1a8f0:0,0x1aad8:0x1aa30:0
+0x450f8	update_viewscreen_widgets	0x1abe9:0x1ab70:0,0x1acd9:0x1ac60:0,0x1adc9:0x1ad50:0,0x1aeb9:0x1ae40:0,0x1afa9:0x1af30:0,0x1b099:0x1b020:0,0x1b189:0x1b110:0,0x1b279:0x1b200:0,0x1b369:0x1b2f0:0,0x1b459:0x1b3e0:0,0x1b549:0x1b4d0:0,0x1b639:0x1b5c0:0,0x1b729:0x1b6b0:0,0x1b819:0x1b7a0:0,0x1b909:0x1b890:0,0x1b9f9:0x1b980:0,0x1bae9:0x1ba70:0,0x1bbd9:0x1bb60:0
+0x45188	vector too long	0x18bf4:0x18bf0:0,0x18c14:0x18c10:0
+0x461d0	unordered_map/set too long	0xb55b:0xb290:0,0x13c09:0x13bf0:0
+0x461f0	invalid hash bucket count	0x17033:0x17033:0
+0x46250	53.16-r2	0x1e170:0x1dffd:0
+0x4625c	53.16	0x1e120:0x1dffd:0
+0x46268	https://github.com/DFHack/dfhack/actions/runs/36605190931	0x1e160:0x1dffd:0
+0x462a8	53.16-r2-0-g02e77acf	0x1e210:0x1e209:0
+0x462c0	02e77acf13049f5661a4da0aa3d876bf95b74903	0x1e1cd:0x1e180:0
+0x462f0	63efa5f44c5fd00ded98a2034f5d6069fd94f7a4	0x1e220:0x1e209:0,0x1e230:0x1e209:0
+0x46320	bad allocation	0x346a0:0x3468d:0
+0x46330	invalid format specifier for char	0x1e803:0x1e790:0,0x2798a:0x2795d:0,0x2883a:0x287bc:0,0x3a35e:0x3a320:0
+0x463e0	generic	0x3d6c0:0x3d6b5:0
+0x46420	00010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899	0x20f62:0x20f60:0,0x23310:0x232a0:0,0x280d0:0x280c4:0,0x2b996:0x2b900:0,0x2b9e8:0x2b900:0,0x2ba3a:0x2b900:0,0x31ca6:0x31c50:0,0x3257b:0x32567:0,0x32c03:0x32bfe:0,0x32d26:0x32d21:0,0x376d3:0x376c4:0,0x3aae0:0x3aa22:0
+0x464ea	00010203  0405060707080910  1112131414151617  18192021  222324  25262728  2930313232333435  3637383939404142  43444546  474849  50515253  5455565757585960  6162636464656667  68697071  727374  75767778  7980818282838485  8687888989909192  93949596  979899  	0x280e0:0x280c4:0,0x3aaf0:0x3aa22:0
+0x467e0	number is too big	0x23947:0x23933:0,0x24f7e:0x24e10:0,0x2923a:0x28f20:0,0x298ed:0x295d0:0,0x29f9d:0x29c80:0,0x399ea:0x399d0:0,0x3c6dd:0x3b470:0
+0x46840	bad cast	0x34710:0x3470c:0
+0x4684c	false	0x1f800:0x1f760:0,0x27c14:0x279f0:0,0x2a24e:0x2a235:0
+0x46854	true	0x1f7f9:0x1f760:0,0x27c0d:0x279f0:0,0x2a23a:0x2a235:0
+0x468f0	%s:%d: assertion failed: %s	0x39e6d:0x39e40:0
+0x46910	error 	0x3c7ea:0x3c700:0
+0x46918	unmatched '}' in format string	0x25b22:0x259c0:0
+0x46938	invalid format string	0x24bdb:0x24bd6:0,0x24c35:0x24bd6:0,0x24d80:0x24c60:0,0x24dad:0x24c60:0,0x24fab:0x24e10:0,0x25b4f:0x259c0:0,0x25e39:0x25d20:0
+0x46950	missing '}' in format string	0x25b7c:0x259c0:0,0x25e66:0x25d20:0
+0x46970	unknown format specifier	0x25bd6:0x259c0:0,0x25e0c:0x25d20:0
+0x46990	argument not found	0x24328:0x242da:0,0x24bae:0x24ba9:0,0x27dc9:0x279f0:0,0x389c9:0x389c0:0,0x3d85f:0x3d830:0,0x3daac:0x3d910:0,0x3dbeb:0x3dbb0:0
+0x469a8	cannot switch from manual to automatic argument indexing	0x25ba9:0x259c0:0,0x25e93:0x25d20:0,0x3d78e:0x3d770:0,0x3d8ae:0x3d890:0
+0x469e4	{}{}	0x3c77b:0x3c700:0
+0x469f0	cannot write to file	0x3caeb:0x3cac0:0,0x3de2f:0x3dde0:0,0x3f3ac:0x3f1a0:0
+0x486f1	A]DG	
+0x49440	invalid format specifier	0x254ec:0x254e8:0,0x25515:0x254e8:0,0x2553e:0x254e8:0,0x25567:0x254e8:0,0x25590:0x254e8:0,0x255b9:0x254e8:0,0x255e2:0x254e8:0,0x2560b:0x254e8:0,0x25634:0x254e8:0,0x2565d:0x254e8:0,0x256af:0x254e8:0,0x256d8:0x254e8:0,0x2572a:0x254e8:0,0x25753:0x254e8:0,0x2577c:0x254e8:0,0x257a5:0x254e8:0,0x257ce:0x254e8:0,0x257f7:0x254e8:0,0x25820:0x254e8:0,0x25849:0x254e8:0,0x25872:0x254e8:0,0x2589b:0x254e8:0,0x38919:0x38900:0,0x38988:0x38950:0
+0x49460	format specifier requires numeric argument	0x25686:0x254e8:0
+0x49490	invalid fill character '{'	0x258c4:0x254e8:0
+0x494b0	invalid utf8	0x36162:0x36162:0,0x36bb6:0x36bb6:0
+0x49a38	invalid precision	0x25701:0x254e8:0,0x25cef:0x25c90:0
+0x49a50	string pointer is null	0x1ef63:0x1eef0:0,0x1efbe:0x1ef90:0,0x27961:0x2795d:0,0x27da0:0x279f0:0,0x288be:0x28870:0,0x28954:0x288f0:0,0x3ca2e:0x3c870:0
+0x49a68	width/precision is not integer	0x1e8a9:0x1e8a0:0,0x1ed59:0x1ed50:0,0x1ee09:0x1ee00:0,0x1eeb9:0x1eeb0:0,0x1f009:0x1f000:0,0x1f0d9:0x1f0d0:0,0x1f139:0x1f130:0,0x1f1d9:0x1f1d0:0,0x1f229:0x1f220:0,0x1f879:0x1f870:0,0x27ec8:0x27e40:0,0x27ef5:0x27e40:0,0x27f22:0x27e40:0,0x27f4f:0x27e40:0,0x27f7c:0x27e40:0,0x27fa9:0x27e40:0,0x27fd6:0x27e40:0,0x28003:0x27e40:0,0x28030:0x27e40:0,0x2805d:0x27e40:0,0x3a3b9:0x3a390:0
+0x49a90	cannot switch from automatic to manual argument indexing	0x24c08:0x24bd6:0,0x24dda:0x24c60:0,0x3a2db:0x3a2c0:0,0x3d7fd:0x3d7e0:0,0x3db18:0x3dae0:0,0x3db61:0x3db40:0
+0x49ae0	width/precision is out of range	0x242ff:0x242da:0
+0x49b10	0123456789ABCDEF	0x20ddb:0x20dd0:0,0x20e4f:0x20e40:0,0x230e6:0x23040:0,0x23a2d:0x23970:0,0x2d2f3:0x2d2a0:0,0x2d5b0:0x2d560:0
+0x49b28	0123456789abcdef	0x20e14:0x20dd0:0,0x20e83:0x20e40:0,0x23105:0x23040:0,0x23a3c:0x23970:0,0x2a7d6:0x2a720:0,0x2a8de:0x2a880:0,0x2aa15:0x2a960:0,0x2ab1e:0x2aac0:0,0x2ac53:0x2aba0:0,0x2ad9c:0x2ad10:0,0x2d2fd:0x2d2a0:0,0x2d5ba:0x2d560:0
+0x4d238	D:\a\dfhack\dfhack\build\plugins\overlay.pdb	
+0x4d288	.text$di	
+0x4d29c	.text$mn	
+0x4d2b0	.text$mn$00	
+0x4d2c4	.text$x	
+0x4d2d4	.text$yd	
+0x4d2e8	.idata$5	
+0x4d2fc	.00cfg	
+0x4d30c	.CRT$XCA	
+0x4d320	.CRT$XCL	
+0x4d334	.CRT$XCU	
+0x4d348	.CRT$XCZ	
+0x4d35c	.CRT$XIA	
+0x4d370	.CRT$XIZ	
+0x4d384	.CRT$XLA	
+0x4d398	.CRT$XLZ	
+0x4d3ac	.CRT$XPA	
+0x4d3c0	.CRT$XPZ	
+0x4d3d4	.CRT$XTA	
+0x4d3e8	.CRT$XTZ	
+0x4d3fc	.rdata	
+0x4d40c	.rdata$CastGuardVftablesA	
+0x4d430	.rdata$CastGuardVftablesC	
+0x4d454	.rdata$T	
+0x4d468	.rdata$r	
+0x4d47c	.rdata$voltmd	
+0x4d494	.rdata$zzzdbg	
+0x4d4ac	.rtc$IAA	
+0x4d4c0	.rtc$IZZ	
+0x4d4d4	.rtc$TAA	
+0x4d4e8	.rtc$TZZ	
+0x4d4fc	.tls	
+0x4d50c	.tls$	
+0x4d51c	.tls$ZZZ	
+0x4d530	.xdata	
+0x4d540	.xdata$x	
+0x4d554	.edata	
+0x4d564	.idata$2	
+0x4d578	.idata$3	
+0x4d58c	.idata$4	
+0x4d5a0	.idata$6	
+0x4d5b4	.data	
+0x4d5c4	.data$r	
+0x4d5d4	.data$rs	
+0x4d5e8	.bss	
+0x4d5f8	.pdata	
+0x4d608	.rsrc$01	
+0x4d61c	.rsrc$02	
+0x54a5a	overlay.plug.dll	
+0x54a6b	plugin_abi_version	
+0x54a7e	plugin_dev	
+0x54a89	plugin_enable	
+0x54a97	plugin_git_description	
+0x54aae	plugin_globals	
+0x54abd	plugin_init	
+0x54ac9	plugin_is_enabled	
+0x54adb	plugin_lua_functions	
+0x54af0	plugin_name	
+0x54afc	plugin_onupdate	
+0x54b0c	plugin_self	
+0x54b18	plugin_shutdown	
+0x54b28	plugin_version	
+0x551e1	g?flush_buffer@color_ostream@DFHack@@AEAAX_N@Z	
+0x55212	?notify_deprecated@LuaWrapper@DFHack@@YAXPEAUlua_State@@V?$basic_string_view@DU?$char_traits@D@std@@@std@@1@Z	
+0x55282	??0function_identity_base@DFHack@@QEAA@H_N@Z	
+0x552b2	??1function_identity_base@DFHack@@UEAA@XZ	
+0x552dd	g?get@?$identity_traits@I@df@@SAPEBVinteger_identity_base@2@XZ	
+0x5531c	Hj?get@?$identity_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@df@@SAPEBVstl_string_identity@2@XZ	
+0x55399	u?incCounter@PerfCounters@DFHack@@QEAAXAEAII@Z	
+0x553c9	m?getInstance@Core@DFHack@@SAAEAV12@XZ	
+0x553f1	v?isEnabled@DebugCategory@DFHack@@QEBA_NW4level@12@@Z	
+0x55429	H??_Dostream_proxy_prefix@DebugCategory@DFHack@@QEAAXXZ	
+0x55463	n?getStream@DebugCategory@DFHack@@QEBA?AUostream_proxy_prefix@12@W4level@12@@Z	
+0x554b4	??0DebugRegisterBase@DFHack@@IEAA@PEAVDebugCategory@1@@Z	
+0x554f0	?unregister@DebugRegisterBase@DFHack@@IEAAXPEAVDebugCategory@2@@Z	
+0x55533	N?PushDFObject@Lua@DFHack@@YAXPEAUlua_State@@PEBVtype_identity@2@PEAX@Z	
+0x5557d	L?CallLuaModuleFunction@Lua@DFHack@@YA_NAEAVcolor_ostream@2@PEAUlua_State@@PEBD2HH$$QEAV?$function@$$A6AXPEAUlua_State@@@Z@std@@3_N@Z	
+0x55605	N?PushInterfaceKeys@Lua@DFHack@@YAXPEAUlua_State@@AEBV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z	
+0x556bb	n?getTickCount@Process@DFHack@@QEAAIXZ	
+0x556e4	??0PluginCommand@DFHack@@QEAA@PEBD0P6A?AW4command_result@1@AEAVcolor_ostream@1@AEAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@ZP6A_NPEAUviewscreen@df@@@Z0@Z	
+0x557f4	??1PluginCommand@DFHack@@QEAA@XZ	
+0x55818	??0PluginCommand@DFHack@@QEAA@AEBU01@@Z	
+0x55842	??0PluginCommand@DFHack@@QEAA@$$QEAU01@@Z	
+0x5586c	gY?anywhere_hotkey@Gui@DFHack@@YA_NPEAUviewscreen@df@@@Z	
+0x558a8	?vmethod_pointer_to_idx_@DFHack@@YAHPEAX@Z	
+0x558d6	?method_pointer_to_addr_@DFHack@@YAPEAXPEAX@Z	
+0x55906	??0VMethodInterposeLinkBase@DFHack@@QEAA@PEBVvirtual_identity@1@HPEAX1HPEBD@Z	
+0x55956	??1VMethodInterposeLinkBase@DFHack@@QEAA@XZ	
+0x55982	hY?apply@VMethodInterposeLinkBase@DFHack@@QEAA_N_N@Z	
+0x559b9	o?getWindowSize@Screen@DFHack@@YA?AU?$Coord2d@F$0?HFDA@@2@XZ	
+0x559f8	?normalize_text_keys@Screen@DFHack@@YA?AV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@AEBV34@@Z	
+0x55aa8	?markInputAsHandled@dfhack_lua_viewscreen@DFHack@@SAXXZ	
+0x55ae1	_?can_allocate@type_identity@DFHack@@MEBA_NXZ	
+0x55b10	ta?do_allocate@type_identity@DFHack@@MEBAPEAXXZ	
+0x55b40	za?do_copy@type_identity@DFHack@@MEBA_NPEAXPEBX@Z	
+0x55b73	a?do_destroy@type_identity@DFHack@@MEBA_NPEAX@Z	
+0x55ba5	^?byte_size@type_identity@DFHack@@UEBA_KXZ	
+0x55bd1	v?isPrimitive@type_identity@DFHack@@UEBA_NXZ	
+0x55bfe	av?isConstructed@type_identity@DFHack@@UEBA_NXZ	
+0x55c2e	cv?isContainer@type_identity@DFHack@@UEBA_NXZ	
+0x55c5e	?type@function_identity_base@DFHack@@UEBA?AW4identity_type@2@XZ	
+0x55c9f	m?getFullName@function_identity_base@DFHack@@UEBA?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	
+0x55d15	^?build_metatable@type_identity@DFHack@@UEBAXPEAUlua_State@@@Z	
+0x55d56	?lua_read@function_identity_base@DFHack@@UEBAXPEAUlua_State@@HPEAX@Z	
+0x55d9e	?lua_write@function_identity_base@DFHack@@UEBAXPEAUlua_State@@HPEAXH@Z	
+0x55de6	TX?_identity@viewscreen_adopt_regionst@df@@2Vvirtual_identity@DFHack@@B	
+0x55e2e	WX?_identity@viewscreen_choose_game_typest@df@@2Vvirtual_identity@DFHack@@B	
+0x55e7a	XX?_identity@viewscreen_choose_start_sitest@df@@2Vvirtual_identity@DFHack@@B	
+0x55ec8	ZX?_identity@viewscreen_dungeonmodest@df@@2Vvirtual_identity@DFHack@@B	
+0x55f10	[X?_identity@viewscreen_dwarfmodest@df@@2Vvirtual_identity@DFHack@@B	
+0x55f56	\X?_identity@viewscreen_export_regionst@df@@2Vvirtual_identity@DFHack@@B	
+0x55fa0	]X?_identity@viewscreen_game_cleanerst@df@@2Vvirtual_identity@DFHack@@B	
+0x55fe8	^X?_identity@viewscreen_initial_prepst@df@@2Vvirtual_identity@DFHack@@B	
+0x56030	aX?_identity@viewscreen_legendsst@df@@2Vvirtual_identity@DFHack@@B	
+0x56074	bX?_identity@viewscreen_loadgamest@df@@2Vvirtual_identity@DFHack@@B	
+0x560b8	cX?_identity@viewscreen_new_arenast@df@@2Vvirtual_identity@DFHack@@B	
+0x560fe	dX?_identity@viewscreen_new_regionst@df@@2Vvirtual_identity@DFHack@@B	
+0x56144	eX?_identity@viewscreen_savegamest@df@@2Vvirtual_identity@DFHack@@B	
+0x56188	fX?_identity@viewscreen_setupadventurest@df@@2Vvirtual_identity@DFHack@@B	
+0x561d2	gX?_identity@viewscreen_setupdwarfgamest@df@@2Vvirtual_identity@DFHack@@B	
+0x5621c	hX?_identity@viewscreen_titlest@df@@2Vvirtual_identity@DFHack@@B	
+0x5625e	iX?_identity@viewscreen_update_regionst@df@@2Vvirtual_identity@DFHack@@B	
+0x562a8	jX?_identity@viewscreen_worldst@df@@2Vvirtual_identity@DFHack@@B	
+0x562eb	v?init@global@df@@3PEAU02@EA	
+0x5630a	?world@global@df@@3PEAU02@EA	
+0x56328	dfhack.dll	
+0x56336	?lua_toboolean@@YAHPEAUlua_State@@H@Z	
+0x5635e	?lua_pushnil@@YAXPEAUlua_State@@@Z	
+0x56384	?lua_pushinteger@@YAXPEAUlua_State@@_J@Z	
+0x563b0	?lua_pushlstring@@YAPEBDPEAUlua_State@@PEBD_K@Z	
+0x563e2	?lua_createtable@@YAXPEAUlua_State@@HH@Z	
+0x5640e	?lua_setfield@@YAXPEAUlua_State@@HPEBD@Z	
+0x5643a	?lua_rawseti@@YAXPEAUlua_State@@H_J@Z	
+0x56460	lua53.dll	
+0x5646c	WriteConsoleW	
+0x5647a	KERNEL32.dll	
+0x5648a	?_Xbad_alloc@std@@YAXXZ	
+0x564a4	?_Xlength_error@std@@YAXPEBD@Z	
+0x564c6	?_Getcvt@_Locinfo@std@@QEBA?AU_Cvtvec@@XZ	
+0x564f2	?_W_Getdays@_Locinfo@std@@QEBAPEBGXZ	
+0x5651a	?_W_Getmonths@_Locinfo@std@@QEBAPEBGXZ	
+0x56544	??0_Lockit@std@@QEAA@H@Z	
+0x56560	??1_Lockit@std@@QEAA@XZ	
+0x5657a	?_Syserror_map@std@@YAPEBDH@Z	
+0x5659a	_Mbrtowc	
+0x565a6	??0_Locinfo@std@@QEAA@PEBD@Z	
+0x565c6	??1_Locinfo@std@@QEAA@XZ	
+0x565e2	?_Getfalse@_Locinfo@std@@QEBAPEBDXZ	
+0x56608	?_Gettrue@_Locinfo@std@@QEBAPEBDXZ	
+0x5662e	?c_str@?$_Yarn@D@std@@QEBAPEBDXZ	
+0x56652	??0facet@locale@std@@IEAA@_K@Z	
+0x56674	??1facet@locale@std@@MEAA@XZ	
+0x56694	?_Init@locale@std@@CAPEAV_Locimp@12@_N@Z	
+0x566c0	?_Getgloballocale@locale@std@@CAPEAV_Locimp@12@XZ	
+0x566f4	?_Incref@facet@locale@std@@UEAAXXZ	
+0x5671a	?_Decref@facet@locale@std@@UEAAPEAV_Facet_base@3@XZ	
+0x56750	?_Id_cnt@id@locale@std@@0HA	
+0x5676e	?id@?$numpunct@D@std@@2V0locale@2@A	
+0x56794	?id@?$numpunct@_W@std@@2V0locale@2@A	
+0x567ba	MSVCP140.dll	
+0x567ca	__std_terminate	
+0x567dc	__std_exception_copy	
+0x567f4	__std_exception_destroy	
+0x5680e	_CxxThrowException	
+0x56824	__CxxFrameHandler4	
+0x5683a	memcmp	
+0x56844	memcpy	
+0x5684e	memmove	
+0x56858	memset	
+0x56862	__C_specific_handler	
+0x5687a	__current_exception	
+0x56890	__current_exception_context	
+0x568ae	__std_type_info_destroy_list	
+0x568cc	VCRUNTIME140.dll	
+0x568de	VCRUNTIME140_1.dll	
+0x568f4	_invoke_watson	
+0x56906	calloc	
+0x56910	ceilf	
+0x56918	strlen	
+0x56922	wcslen	
+0x5692c	_errno	
+0x56936	_dsign	
+0x56940	free	
+0x56948	malloc	
+0x56952	abort	
+0x5695a	__acrt_iob_func	
+0x5696c	fflush	
+0x56976	_fileno	
+0x56980	fputc	
+0x56988	fwrite	
+0x56992	_lock_file	
+0x569a0	_unlock_file	
+0x569b0	__stdio_common_vfprintf	
+0x569ca	_get_osfhandle	
+0x569dc	_isatty	
+0x569e6	localeconv	
+0x569f4	_dclass	
+0x569fe	_fdclass	
+0x56a0a	_ldclass	
+0x56a16	_callnewh	
+0x56a22	_seh_filter_dll	
+0x56a34	_configure_narrow_argv	
+0x56a4e	_initialize_narrow_environment	
+0x56a70	_initialize_onexit_table	
+0x56a8c	_register_onexit_function	
+0x56aa8	_execute_onexit_table	
+0x56ac0	_crt_atexit	
+0x56ace	_crt_at_quick_exit	
+0x56ae4	_cexit	
+0x56aee	_initterm	
+0x56afa	_initterm_e	
+0x56b08	terminate	
+0x56b12	api-ms-win-crt-runtime-l1-1-0.dll	
+0x56b34	api-ms-win-crt-heap-l1-1-0.dll	
+0x56b54	api-ms-win-crt-math-l1-1-0.dll	
+0x56b74	api-ms-win-crt-string-l1-1-0.dll	
+0x56b96	api-ms-win-crt-stdio-l1-1-0.dll	
+0x56bb6	api-ms-win-crt-filesystem-l1-1-0.dll	
+0x56bdc	api-ms-win-crt-locale-l1-1-0.dll	
+0x56c00	ReleaseSRWLockExclusive	
+0x56c1a	AcquireSRWLockExclusive	
+0x56c34	WakeAllConditionVariable	
+0x56c50	SleepConditionVariableSRW	
+0x56c6c	RtlCaptureContext	
+0x56c80	RtlLookupFunctionEntry	
+0x56c9a	RtlVirtualUnwind	
+0x56cae	IsDebuggerPresent	
+0x56cc2	UnhandledExceptionFilter	
+0x56cde	SetUnhandledExceptionFilter	
+0x56cfc	GetStartupInfoW	
+0x56d0e	IsProcessorFeaturePresent	
+0x56d2a	GetModuleHandleW	
+0x56d3e	GetCurrentProcess	
+0x56d52	TerminateProcess	
+0x56d66	QueryPerformanceCounter	
+0x56d80	GetCurrentProcessId	
+0x56d96	GetCurrentThreadId	
+0x56dac	GetSystemTimeAsFileTime	
+0x56dc6	DisableThreadLibraryCalls	
+0x56de2	InitializeSListHead	
+0x57070	02e77ac	0x1e1b8:0x1e180:0,0x1e1bf:0x1e180:0,0x43291:0x43280:0,0x432eb:0x43280:0
+0x57150	.?AVexception@std@@	
+0x57178	.?AVbad_array_new_length@std@@	
+0x571a8	.?AVbad_alloc@std@@	
+0x571d0	.?AV<lambda_1>@?1??overlay_cmd@@YA?AW4command_result@DFHack@@AEAVcolor_ostream@3@AEAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@Z@	
+0x572d8	.?AV<lambda_2>@Lua@DFHack@@	
+0x57310	.?AV<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_adopt_regionst@df@@@@QEAAXXZ@	
+0x57390	.?AV<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_adopt_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x57490	.?AV<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_adopt_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x57590	.?AV<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_adopt_regionst@df@@@@QEAAXI@Z@	
+0x57610	.?AV<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_choose_game_typest@df@@@@QEAAXXZ@	
+0x57690	.?AV<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_choose_game_typest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x57790	.?AV<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_choose_game_typest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x57890	.?AV<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_choose_game_typest@df@@@@QEAAXI@Z@	
+0x57910	.?AV<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_choose_start_sitest@df@@@@QEAAXXZ@	
+0x57990	.?AV<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_choose_start_sitest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x57a90	.?AV<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_choose_start_sitest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x57b90	.?AV<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_choose_start_sitest@df@@@@QEAAXI@Z@	
+0x57c10	.?AV<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_dungeonmodest@df@@@@QEAAXXZ@	
+0x57c90	.?AV<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_dungeonmodest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x57d90	.?AV<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_dungeonmodest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x57e90	.?AV<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_dungeonmodest@df@@@@QEAAXI@Z@	
+0x57f10	.?AV<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_dwarfmodest@df@@@@QEAAXXZ@	
+0x57f90	.?AV<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_dwarfmodest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x58080	.?AV<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_dwarfmodest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x58170	.?AV<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_dwarfmodest@df@@@@QEAAXI@Z@	
+0x581f0	.?AV<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_export_regionst@df@@@@QEAAXXZ@	
+0x58270	.?AV<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_export_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x58370	.?AV<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_export_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x58470	.?AV<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_export_regionst@df@@@@QEAAXI@Z@	
+0x584f0	.?AV<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_game_cleanerst@df@@@@QEAAXXZ@	
+0x58570	.?AV<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_game_cleanerst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x58670	.?AV<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_game_cleanerst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x58770	.?AV<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_game_cleanerst@df@@@@QEAAXI@Z@	
+0x587f0	.?AV<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_initial_prepst@df@@@@QEAAXXZ@	
+0x58870	.?AV<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_initial_prepst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x58970	.?AV<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_initial_prepst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x58a70	.?AV<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_initial_prepst@df@@@@QEAAXI@Z@	
+0x58af0	.?AV<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_legendsst@df@@@@QEAAXXZ@	
+0x58b60	.?AV<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_legendsst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x58c50	.?AV<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_legendsst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x58d40	.?AV<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_legendsst@df@@@@QEAAXI@Z@	
+0x58dc0	.?AV<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_loadgamest@df@@@@QEAAXXZ@	
+0x58e40	.?AV<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_loadgamest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x58f30	.?AV<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_loadgamest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x59020	.?AV<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_loadgamest@df@@@@QEAAXI@Z@	
+0x590a0	.?AV<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_new_arenast@df@@@@QEAAXXZ@	
+0x59120	.?AV<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_new_arenast@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x59210	.?AV<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_new_arenast@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x59300	.?AV<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_new_arenast@df@@@@QEAAXI@Z@	
+0x59380	.?AV<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_new_regionst@df@@@@QEAAXXZ@	
+0x59400	.?AV<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_new_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x59500	.?AV<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_new_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x59600	.?AV<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_new_regionst@df@@@@QEAAXI@Z@	
+0x59680	.?AV<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_savegamest@df@@@@QEAAXXZ@	
+0x59700	.?AV<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_savegamest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x597f0	.?AV<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_savegamest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x598e0	.?AV<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_savegamest@df@@@@QEAAXI@Z@	
+0x59960	.?AV<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_setupadventurest@df@@@@QEAAXXZ@	
+0x599e0	.?AV<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_setupadventurest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x59ae0	.?AV<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_setupadventurest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x59be0	.?AV<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_setupadventurest@df@@@@QEAAXI@Z@	
+0x59c60	.?AV<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_setupdwarfgamest@df@@@@QEAAXXZ@	
+0x59ce0	.?AV<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_setupdwarfgamest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x59de0	.?AV<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_setupdwarfgamest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x59ee0	.?AV<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_setupdwarfgamest@df@@@@QEAAXI@Z@	
+0x59f60	.?AV<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_titlest@df@@@@QEAAXXZ@	
+0x59fd0	.?AV<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_titlest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x5a0c0	.?AV<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_titlest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x5a1b0	.?AV<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_titlest@df@@@@QEAAXI@Z@	
+0x5a220	.?AV<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_update_regionst@df@@@@QEAAXXZ@	
+0x5a2a0	.?AV<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_update_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x5a3a0	.?AV<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_update_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x5a4a0	.?AV<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_update_regionst@df@@@@QEAAXI@Z@	
+0x5a520	.?AV<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_worldst@df@@@@QEAAXXZ@	
+0x5a590	.?AV<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_worldst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x5a680	.?AV<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_worldst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@	
+0x5a770	.?AV<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_worldst@df@@@@QEAAXI@Z@	
+0x5a7e0	.?AV<lambda_1>@?1???$CallLuaModuleFunction@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@Lua@DFHack@@YA_NAEAVcolor_ostream@2@PEBD1$$QEAV?$tuple@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@std@@_K$$QEAV?$function@$$A6AXPEAUlua_State@@@Z@5@@Z@	
+0x5a9d0	.?AV<lambda_1>@?1???$CallLuaModuleFunction@$$V@Lua@DFHack@@YA_NAEAVcolor_ostream@2@PEBD1$$QEAV?$tuple@$$V@std@@_K$$QEAV?$function@$$A6AXPEAUlua_State@@@Z@5@@Z@	
+0x5aa80	.?AVruntime_error@std@@	
+0x5aaa8	.?AVsystem_error@std@@	
+0x5aad0	.?AV_System_error@std@@	
+0x5aaf8	.?AVformat_error@v12@fmt@@	
+0x5ab28	.?AVbad_cast@std@@	
+0x5ab50	.?AV?$_Func_base@XPEAUlua_State@@@std@@	
+0x5ab90	.?AV?$function_identity@P6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z@df@@	
+0x5ac08	.?AVfunction_identity_base@DFHack@@	
+0x5ac40	.?AVtype_identity@DFHack@@	
+0x5ac70	.?AV?$_Func_impl_no_alloc@V<lambda_2>@Lua@DFHack@@XPEAUlua_State@@@std@@	
+0x5acd0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??overlay_cmd@@YA?AW4command_result@DFHack@@AEAVcolor_ostream@4@AEAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5ae10	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1???$CallLuaModuleFunction@$$V@Lua@DFHack@@YA_NAEAVcolor_ostream@3@PEBD1$$QEAV?$tuple@$$V@std@@_K$$QEAV?$function@$$A6AXPEAUlua_State@@@Z@6@@Z@XPEAUlua_State@@@std@@	
+0x5aef0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1???$CallLuaModuleFunction@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@Lua@DFHack@@YA_NAEAVcolor_ostream@3@PEBD1$$QEAV?$tuple@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@std@@_K$$QEAV?$function@$$A6AXPEAUlua_State@@@Z@6@@Z@XPEAUlua_State@@@std@@	
+0x5b100	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_worldst@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@	
+0x5b1a0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_worldst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5b2c0	.?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_worldst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5b3e0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_worldst@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@	
+0x5b480	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_update_regionst@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@	
+0x5b530	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_update_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5b660	.?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_update_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5b790	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_update_regionst@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@	
+0x5b840	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_titlest@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@	
+0x5b8e0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_titlest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5ba00	.?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_titlest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5bb20	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_titlest@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@	
+0x5bbc0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_setupdwarfgamest@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@	
+0x5bc70	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_setupdwarfgamest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5bda0	.?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_setupdwarfgamest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5bed0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_setupdwarfgamest@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@	
+0x5bf80	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_setupadventurest@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@	
+0x5c030	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_setupadventurest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5c160	.?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_setupadventurest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5c290	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_setupadventurest@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@	
+0x5c340	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_savegamest@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@	
+0x5c3e0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_savegamest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5c500	.?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_savegamest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5c620	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_savegamest@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@	
+0x5c6c0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_new_regionst@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@	
+0x5c770	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_new_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5c890	.?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_new_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5c9b0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_new_regionst@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@	
+0x5ca50	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_new_arenast@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@	
+0x5cb00	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_new_arenast@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5cc20	.?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_new_arenast@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5cd40	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_new_arenast@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@	
+0x5cde0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_loadgamest@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@	
+0x5ce80	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_loadgamest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5cfa0	.?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_loadgamest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5d0c0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_loadgamest@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@	
+0x5d160	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_legendsst@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@	
+0x5d200	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_legendsst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5d320	.?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_legendsst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5d440	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_legendsst@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@	
+0x5d4e0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_initial_prepst@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@	
+0x5d590	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_initial_prepst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5d6b0	.?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_initial_prepst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5d7d0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_initial_prepst@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@	
+0x5d880	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_game_cleanerst@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@	
+0x5d930	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_game_cleanerst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5da50	.?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_game_cleanerst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5db70	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_game_cleanerst@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@	
+0x5dc20	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_export_regionst@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@	
+0x5dcd0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_export_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5de00	.?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_export_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5df30	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_export_regionst@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@	
+0x5dfe0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_dwarfmodest@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@	
+0x5e090	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_dwarfmodest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5e1b0	.?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_dwarfmodest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5e2d0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_dwarfmodest@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@	
+0x5e370	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_dungeonmodest@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@	
+0x5e420	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_dungeonmodest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5e540	.?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_dungeonmodest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5e660	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_dungeonmodest@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@	
+0x5e710	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_choose_start_sitest@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@	
+0x5e7c0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_choose_start_sitest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5e8f0	.?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_choose_start_sitest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5ea20	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_choose_start_sitest@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@	
+0x5ead0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_choose_game_typest@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@	
+0x5eb80	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_choose_game_typest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5ecb0	.?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_choose_game_typest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5ede0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_choose_game_typest@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@	
+0x5ee90	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_adopt_regionst@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@	
+0x5ef40	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_adopt_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5f060	.?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_adopt_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@	
+0x5f180	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_adopt_regionst@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@	
+0x5f228	.?AVerror_category@std@@	
+0x5f258	.?AV_Generic_error_category@std@@	
+0x5f290	.?AVfacet@locale@std@@	
+0x5f2b8	.?AV_Facet_base@std@@	
+0x5f2e0	.?AU_Crt_new_delete@std@@	
+0x5f310	.?AV?$numpunct@D@std@@	
+0x5f338	.?AV?$numpunct@_W@std@@	
+0x5f360	.?AV?$format_facet@Vlocale@std@@@v12@fmt@@	
+0x5f3a0	.?AVtype_info@@	

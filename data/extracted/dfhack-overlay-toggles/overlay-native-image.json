@@ -1,0 +1,833 @@
+{
+  "binary": "D:\\program\\steam\\steamapps\\common\\DFHack\\hack\\plugins\\overlay.plug.dll",
+  "sha256": "db0a9e5ed6fa42f324a781c08896b2633ef9ce6c4f2d91c8c816200526ad0dbf",
+  "image_base": "0x180000000",
+  "image_size": "0x68000",
+  "imports": [
+    {
+      "library": "dfhack.dll",
+      "symbol": "?_identity@viewscreen_loadgamest@df@@2Vvirtual_identity@DFHack@@B",
+      "iat_rva": "0x44350"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?_identity@viewscreen_legendsst@df@@2Vvirtual_identity@DFHack@@B",
+      "iat_rva": "0x44358"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?_identity@viewscreen_initial_prepst@df@@2Vvirtual_identity@DFHack@@B",
+      "iat_rva": "0x44360"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "??_Dostream_proxy_prefix@DebugCategory@DFHack@@QEAAXXZ",
+      "iat_rva": "0x44368"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?_identity@viewscreen_new_arenast@df@@2Vvirtual_identity@DFHack@@B",
+      "iat_rva": "0x44370"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?_identity@viewscreen_dwarfmodest@df@@2Vvirtual_identity@DFHack@@B",
+      "iat_rva": "0x44378"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?_identity@viewscreen_dungeonmodest@df@@2Vvirtual_identity@DFHack@@B",
+      "iat_rva": "0x44380"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?_identity@viewscreen_setupadventurest@df@@2Vvirtual_identity@DFHack@@B",
+      "iat_rva": "0x44388"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?isEnabled@DebugCategory@DFHack@@QEBA_NW4level@12@@Z",
+      "iat_rva": "0x44390"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?_identity@viewscreen_setupdwarfgamest@df@@2Vvirtual_identity@DFHack@@B",
+      "iat_rva": "0x44398"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?_identity@viewscreen_new_regionst@df@@2Vvirtual_identity@DFHack@@B",
+      "iat_rva": "0x443a0"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?_identity@viewscreen_export_regionst@df@@2Vvirtual_identity@DFHack@@B",
+      "iat_rva": "0x443a8"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?_identity@viewscreen_titlest@df@@2Vvirtual_identity@DFHack@@B",
+      "iat_rva": "0x443b0"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?_identity@viewscreen_update_regionst@df@@2Vvirtual_identity@DFHack@@B",
+      "iat_rva": "0x443b8"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?getInstance@Core@DFHack@@SAAEAV12@XZ",
+      "iat_rva": "0x443c0"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?incCounter@PerfCounters@DFHack@@QEAAXAEAII@Z",
+      "iat_rva": "0x443c8"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?_identity@viewscreen_worldst@df@@2Vvirtual_identity@DFHack@@B",
+      "iat_rva": "0x443d0"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?init@global@df@@3PEAU02@EA",
+      "iat_rva": "0x443d8"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?anywhere_hotkey@Gui@DFHack@@YA_NPEAUviewscreen@df@@@Z",
+      "iat_rva": "0x443e0"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?vmethod_pointer_to_idx_@DFHack@@YAHPEAX@Z",
+      "iat_rva": "0x443e8"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?method_pointer_to_addr_@DFHack@@YAPEAXPEAX@Z",
+      "iat_rva": "0x443f0"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "??0VMethodInterposeLinkBase@DFHack@@QEAA@PEBVvirtual_identity@1@HPEAX1HPEBD@Z",
+      "iat_rva": "0x443f8"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?get@?$identity_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@df@@SAPEBVstl_string_identity@2@XZ",
+      "iat_rva": "0x44400"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?get@?$identity_traits@I@df@@SAPEBVinteger_identity_base@2@XZ",
+      "iat_rva": "0x44408"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "??1VMethodInterposeLinkBase@DFHack@@QEAA@XZ",
+      "iat_rva": "0x44410"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?apply@VMethodInterposeLinkBase@DFHack@@QEAA_N_N@Z",
+      "iat_rva": "0x44418"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?getWindowSize@Screen@DFHack@@YA?AU?$Coord2d@F$0?HFDA@@2@XZ",
+      "iat_rva": "0x44420"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "??1function_identity_base@DFHack@@UEAA@XZ",
+      "iat_rva": "0x44428"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?normalize_text_keys@Screen@DFHack@@YA?AV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@AEBV34@@Z",
+      "iat_rva": "0x44430"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?markInputAsHandled@dfhack_lua_viewscreen@DFHack@@SAXXZ",
+      "iat_rva": "0x44438"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?can_allocate@type_identity@DFHack@@MEBA_NXZ",
+      "iat_rva": "0x44440"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "??0function_identity_base@DFHack@@QEAA@H_N@Z",
+      "iat_rva": "0x44448"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?do_allocate@type_identity@DFHack@@MEBAPEAXXZ",
+      "iat_rva": "0x44450"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?do_copy@type_identity@DFHack@@MEBA_NPEAXPEBX@Z",
+      "iat_rva": "0x44458"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?do_destroy@type_identity@DFHack@@MEBA_NPEAX@Z",
+      "iat_rva": "0x44460"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?byte_size@type_identity@DFHack@@UEBA_KXZ",
+      "iat_rva": "0x44468"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?isPrimitive@type_identity@DFHack@@UEBA_NXZ",
+      "iat_rva": "0x44470"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?isConstructed@type_identity@DFHack@@UEBA_NXZ",
+      "iat_rva": "0x44478"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?isContainer@type_identity@DFHack@@UEBA_NXZ",
+      "iat_rva": "0x44480"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?type@function_identity_base@DFHack@@UEBA?AW4identity_type@2@XZ",
+      "iat_rva": "0x44488"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?getFullName@function_identity_base@DFHack@@UEBA?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "iat_rva": "0x44490"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?build_metatable@type_identity@DFHack@@UEBAXPEAUlua_State@@@Z",
+      "iat_rva": "0x44498"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?lua_read@function_identity_base@DFHack@@UEBAXPEAUlua_State@@HPEAX@Z",
+      "iat_rva": "0x444a0"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?lua_write@function_identity_base@DFHack@@UEBAXPEAUlua_State@@HPEAXH@Z",
+      "iat_rva": "0x444a8"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?_identity@viewscreen_adopt_regionst@df@@2Vvirtual_identity@DFHack@@B",
+      "iat_rva": "0x444b0"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?notify_deprecated@LuaWrapper@DFHack@@YAXPEAUlua_State@@V?$basic_string_view@DU?$char_traits@D@std@@@std@@1@Z",
+      "iat_rva": "0x444b8"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?_identity@viewscreen_choose_game_typest@df@@2Vvirtual_identity@DFHack@@B",
+      "iat_rva": "0x444c0"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?_identity@viewscreen_savegamest@df@@2Vvirtual_identity@DFHack@@B",
+      "iat_rva": "0x444c8"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?_identity@viewscreen_choose_start_sitest@df@@2Vvirtual_identity@DFHack@@B",
+      "iat_rva": "0x444d0"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?_identity@viewscreen_game_cleanerst@df@@2Vvirtual_identity@DFHack@@B",
+      "iat_rva": "0x444d8"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?world@global@df@@3PEAU02@EA",
+      "iat_rva": "0x444e0"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "??0PluginCommand@DFHack@@QEAA@$$QEAU01@@Z",
+      "iat_rva": "0x444e8"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "??0PluginCommand@DFHack@@QEAA@AEBU01@@Z",
+      "iat_rva": "0x444f0"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "??1PluginCommand@DFHack@@QEAA@XZ",
+      "iat_rva": "0x444f8"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "??0PluginCommand@DFHack@@QEAA@PEBD0P6A?AW4command_result@1@AEAVcolor_ostream@1@AEAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@ZP6A_NPEAUviewscreen@df@@@Z0@Z",
+      "iat_rva": "0x44500"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?getTickCount@Process@DFHack@@QEAAIXZ",
+      "iat_rva": "0x44508"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?PushInterfaceKeys@Lua@DFHack@@YAXPEAUlua_State@@AEBV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z",
+      "iat_rva": "0x44510"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?CallLuaModuleFunction@Lua@DFHack@@YA_NAEAVcolor_ostream@2@PEAUlua_State@@PEBD2HH$$QEAV?$function@$$A6AXPEAUlua_State@@@Z@std@@3_N@Z",
+      "iat_rva": "0x44518"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?PushDFObject@Lua@DFHack@@YAXPEAUlua_State@@PEBVtype_identity@2@PEAX@Z",
+      "iat_rva": "0x44520"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?unregister@DebugRegisterBase@DFHack@@IEAAXPEAVDebugCategory@2@@Z",
+      "iat_rva": "0x44528"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "??0DebugRegisterBase@DFHack@@IEAA@PEAVDebugCategory@1@@Z",
+      "iat_rva": "0x44530"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?getStream@DebugCategory@DFHack@@QEBA?AUostream_proxy_prefix@12@W4level@12@@Z",
+      "iat_rva": "0x44538"
+    },
+    {
+      "library": "dfhack.dll",
+      "symbol": "?flush_buffer@color_ostream@DFHack@@AEAAX_N@Z",
+      "iat_rva": "0x44540"
+    },
+    {
+      "library": "lua53.dll",
+      "symbol": "?lua_createtable@@YAXPEAUlua_State@@HH@Z",
+      "iat_rva": "0x44550"
+    },
+    {
+      "library": "lua53.dll",
+      "symbol": "?lua_rawseti@@YAXPEAUlua_State@@H_J@Z",
+      "iat_rva": "0x44558"
+    },
+    {
+      "library": "lua53.dll",
+      "symbol": "?lua_pushinteger@@YAXPEAUlua_State@@_J@Z",
+      "iat_rva": "0x44560"
+    },
+    {
+      "library": "lua53.dll",
+      "symbol": "?lua_pushnil@@YAXPEAUlua_State@@@Z",
+      "iat_rva": "0x44568"
+    },
+    {
+      "library": "lua53.dll",
+      "symbol": "?lua_toboolean@@YAHPEAUlua_State@@H@Z",
+      "iat_rva": "0x44570"
+    },
+    {
+      "library": "lua53.dll",
+      "symbol": "?lua_pushlstring@@YAPEBDPEAUlua_State@@PEBD_K@Z",
+      "iat_rva": "0x44578"
+    },
+    {
+      "library": "lua53.dll",
+      "symbol": "?lua_setfield@@YAXPEAUlua_State@@HPEBD@Z",
+      "iat_rva": "0x44580"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "InitializeSListHead",
+      "iat_rva": "0x44000"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "DisableThreadLibraryCalls",
+      "iat_rva": "0x44008"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "GetSystemTimeAsFileTime",
+      "iat_rva": "0x44010"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "GetCurrentThreadId",
+      "iat_rva": "0x44018"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "GetCurrentProcessId",
+      "iat_rva": "0x44020"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "QueryPerformanceCounter",
+      "iat_rva": "0x44028"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "TerminateProcess",
+      "iat_rva": "0x44030"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "GetCurrentProcess",
+      "iat_rva": "0x44038"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "GetModuleHandleW",
+      "iat_rva": "0x44040"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "IsProcessorFeaturePresent",
+      "iat_rva": "0x44048"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "GetStartupInfoW",
+      "iat_rva": "0x44050"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "SetUnhandledExceptionFilter",
+      "iat_rva": "0x44058"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "UnhandledExceptionFilter",
+      "iat_rva": "0x44060"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "IsDebuggerPresent",
+      "iat_rva": "0x44068"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "RtlVirtualUnwind",
+      "iat_rva": "0x44070"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "RtlLookupFunctionEntry",
+      "iat_rva": "0x44078"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "RtlCaptureContext",
+      "iat_rva": "0x44080"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "SleepConditionVariableSRW",
+      "iat_rva": "0x44088"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "WakeAllConditionVariable",
+      "iat_rva": "0x44090"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "AcquireSRWLockExclusive",
+      "iat_rva": "0x44098"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "ReleaseSRWLockExclusive",
+      "iat_rva": "0x440a0"
+    },
+    {
+      "library": "kernel32.dll",
+      "symbol": "WriteConsoleW",
+      "iat_rva": "0x440a8"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "?id@?$numpunct@_W@std@@2V0locale@2@A",
+      "iat_rva": "0x440b8"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "?_Decref@facet@locale@std@@UEAAPEAV_Facet_base@3@XZ",
+      "iat_rva": "0x440c0"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "?_Incref@facet@locale@std@@UEAAXXZ",
+      "iat_rva": "0x440c8"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "?_Getgloballocale@locale@std@@CAPEAV_Locimp@12@XZ",
+      "iat_rva": "0x440d0"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "?_Init@locale@std@@CAPEAV_Locimp@12@_N@Z",
+      "iat_rva": "0x440d8"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "??1facet@locale@std@@MEAA@XZ",
+      "iat_rva": "0x440e0"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "??0facet@locale@std@@IEAA@_K@Z",
+      "iat_rva": "0x440e8"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "?c_str@?$_Yarn@D@std@@QEBAPEBDXZ",
+      "iat_rva": "0x440f0"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "?_Gettrue@_Locinfo@std@@QEBAPEBDXZ",
+      "iat_rva": "0x440f8"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "?_Getfalse@_Locinfo@std@@QEBAPEBDXZ",
+      "iat_rva": "0x44100"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "??1_Locinfo@std@@QEAA@XZ",
+      "iat_rva": "0x44108"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "??0_Locinfo@std@@QEAA@PEBD@Z",
+      "iat_rva": "0x44110"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "_Mbrtowc",
+      "iat_rva": "0x44118"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "?_Syserror_map@std@@YAPEBDH@Z",
+      "iat_rva": "0x44120"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "??1_Lockit@std@@QEAA@XZ",
+      "iat_rva": "0x44128"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "??0_Lockit@std@@QEAA@H@Z",
+      "iat_rva": "0x44130"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "?_W_Getmonths@_Locinfo@std@@QEBAPEBGXZ",
+      "iat_rva": "0x44138"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "?_W_Getdays@_Locinfo@std@@QEBAPEBGXZ",
+      "iat_rva": "0x44140"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "?_Getcvt@_Locinfo@std@@QEBA?AU_Cvtvec@@XZ",
+      "iat_rva": "0x44148"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "?_Xlength_error@std@@YAXPEBD@Z",
+      "iat_rva": "0x44150"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "?_Xbad_alloc@std@@YAXXZ",
+      "iat_rva": "0x44158"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "?id@?$numpunct@D@std@@2V0locale@2@A",
+      "iat_rva": "0x44160"
+    },
+    {
+      "library": "msvcp140.dll",
+      "symbol": "?_Id_cnt@id@locale@std@@0HA",
+      "iat_rva": "0x44168"
+    },
+    {
+      "library": "vcruntime140.dll",
+      "symbol": "__std_terminate",
+      "iat_rva": "0x44178"
+    },
+    {
+      "library": "vcruntime140.dll",
+      "symbol": "__std_type_info_destroy_list",
+      "iat_rva": "0x44180"
+    },
+    {
+      "library": "vcruntime140.dll",
+      "symbol": "__current_exception_context",
+      "iat_rva": "0x44188"
+    },
+    {
+      "library": "vcruntime140.dll",
+      "symbol": "__current_exception",
+      "iat_rva": "0x44190"
+    },
+    {
+      "library": "vcruntime140.dll",
+      "symbol": "__C_specific_handler",
+      "iat_rva": "0x44198"
+    },
+    {
+      "library": "vcruntime140.dll",
+      "symbol": "memset",
+      "iat_rva": "0x441a0"
+    },
+    {
+      "library": "vcruntime140.dll",
+      "symbol": "memmove",
+      "iat_rva": "0x441a8"
+    },
+    {
+      "library": "vcruntime140.dll",
+      "symbol": "memcpy",
+      "iat_rva": "0x441b0"
+    },
+    {
+      "library": "vcruntime140.dll",
+      "symbol": "memcmp",
+      "iat_rva": "0x441b8"
+    },
+    {
+      "library": "vcruntime140.dll",
+      "symbol": "__std_exception_copy",
+      "iat_rva": "0x441c0"
+    },
+    {
+      "library": "vcruntime140.dll",
+      "symbol": "__std_exception_destroy",
+      "iat_rva": "0x441c8"
+    },
+    {
+      "library": "vcruntime140.dll",
+      "symbol": "_CxxThrowException",
+      "iat_rva": "0x441d0"
+    },
+    {
+      "library": "vcruntime140_1.dll",
+      "symbol": "__CxxFrameHandler4",
+      "iat_rva": "0x441e0"
+    },
+    {
+      "library": "api-ms-win-crt-runtime-l1-1-0.dll",
+      "symbol": "_cexit",
+      "iat_rva": "0x44270"
+    },
+    {
+      "library": "api-ms-win-crt-runtime-l1-1-0.dll",
+      "symbol": "_crt_at_quick_exit",
+      "iat_rva": "0x44278"
+    },
+    {
+      "library": "api-ms-win-crt-runtime-l1-1-0.dll",
+      "symbol": "_crt_atexit",
+      "iat_rva": "0x44280"
+    },
+    {
+      "library": "api-ms-win-crt-runtime-l1-1-0.dll",
+      "symbol": "_execute_onexit_table",
+      "iat_rva": "0x44288"
+    },
+    {
+      "library": "api-ms-win-crt-runtime-l1-1-0.dll",
+      "symbol": "_register_onexit_function",
+      "iat_rva": "0x44290"
+    },
+    {
+      "library": "api-ms-win-crt-runtime-l1-1-0.dll",
+      "symbol": "_initialize_onexit_table",
+      "iat_rva": "0x44298"
+    },
+    {
+      "library": "api-ms-win-crt-runtime-l1-1-0.dll",
+      "symbol": "_initialize_narrow_environment",
+      "iat_rva": "0x442a0"
+    },
+    {
+      "library": "api-ms-win-crt-runtime-l1-1-0.dll",
+      "symbol": "_configure_narrow_argv",
+      "iat_rva": "0x442a8"
+    },
+    {
+      "library": "api-ms-win-crt-runtime-l1-1-0.dll",
+      "symbol": "_seh_filter_dll",
+      "iat_rva": "0x442b0"
+    },
+    {
+      "library": "api-ms-win-crt-runtime-l1-1-0.dll",
+      "symbol": "_initterm_e",
+      "iat_rva": "0x442b8"
+    },
+    {
+      "library": "api-ms-win-crt-runtime-l1-1-0.dll",
+      "symbol": "terminate",
+      "iat_rva": "0x442c0"
+    },
+    {
+      "library": "api-ms-win-crt-runtime-l1-1-0.dll",
+      "symbol": "_invoke_watson",
+      "iat_rva": "0x442c8"
+    },
+    {
+      "library": "api-ms-win-crt-runtime-l1-1-0.dll",
+      "symbol": "_errno",
+      "iat_rva": "0x442d0"
+    },
+    {
+      "library": "api-ms-win-crt-runtime-l1-1-0.dll",
+      "symbol": "_initterm",
+      "iat_rva": "0x442d8"
+    },
+    {
+      "library": "api-ms-win-crt-runtime-l1-1-0.dll",
+      "symbol": "abort",
+      "iat_rva": "0x442e0"
+    },
+    {
+      "library": "api-ms-win-crt-heap-l1-1-0.dll",
+      "symbol": "_callnewh",
+      "iat_rva": "0x44208"
+    },
+    {
+      "library": "api-ms-win-crt-heap-l1-1-0.dll",
+      "symbol": "free",
+      "iat_rva": "0x44210"
+    },
+    {
+      "library": "api-ms-win-crt-heap-l1-1-0.dll",
+      "symbol": "malloc",
+      "iat_rva": "0x44218"
+    },
+    {
+      "library": "api-ms-win-crt-heap-l1-1-0.dll",
+      "symbol": "calloc",
+      "iat_rva": "0x44220"
+    },
+    {
+      "library": "api-ms-win-crt-math-l1-1-0.dll",
+      "symbol": "_ldclass",
+      "iat_rva": "0x44240"
+    },
+    {
+      "library": "api-ms-win-crt-math-l1-1-0.dll",
+      "symbol": "_dsign",
+      "iat_rva": "0x44248"
+    },
+    {
+      "library": "api-ms-win-crt-math-l1-1-0.dll",
+      "symbol": "_dclass",
+      "iat_rva": "0x44250"
+    },
+    {
+      "library": "api-ms-win-crt-math-l1-1-0.dll",
+      "symbol": "_fdclass",
+      "iat_rva": "0x44258"
+    },
+    {
+      "library": "api-ms-win-crt-math-l1-1-0.dll",
+      "symbol": "ceilf",
+      "iat_rva": "0x44260"
+    },
+    {
+      "library": "api-ms-win-crt-string-l1-1-0.dll",
+      "symbol": "strlen",
+      "iat_rva": "0x44338"
+    },
+    {
+      "library": "api-ms-win-crt-string-l1-1-0.dll",
+      "symbol": "wcslen",
+      "iat_rva": "0x44340"
+    },
+    {
+      "library": "api-ms-win-crt-stdio-l1-1-0.dll",
+      "symbol": "fputc",
+      "iat_rva": "0x442f0"
+    },
+    {
+      "library": "api-ms-win-crt-stdio-l1-1-0.dll",
+      "symbol": "_fileno",
+      "iat_rva": "0x442f8"
+    },
+    {
+      "library": "api-ms-win-crt-stdio-l1-1-0.dll",
+      "symbol": "fflush",
+      "iat_rva": "0x44300"
+    },
+    {
+      "library": "api-ms-win-crt-stdio-l1-1-0.dll",
+      "symbol": "__acrt_iob_func",
+      "iat_rva": "0x44308"
+    },
+    {
+      "library": "api-ms-win-crt-stdio-l1-1-0.dll",
+      "symbol": "__stdio_common_vfprintf",
+      "iat_rva": "0x44310"
+    },
+    {
+      "library": "api-ms-win-crt-stdio-l1-1-0.dll",
+      "symbol": "_get_osfhandle",
+      "iat_rva": "0x44318"
+    },
+    {
+      "library": "api-ms-win-crt-stdio-l1-1-0.dll",
+      "symbol": "_isatty",
+      "iat_rva": "0x44320"
+    },
+    {
+      "library": "api-ms-win-crt-stdio-l1-1-0.dll",
+      "symbol": "fwrite",
+      "iat_rva": "0x44328"
+    },
+    {
+      "library": "api-ms-win-crt-filesystem-l1-1-0.dll",
+      "symbol": "_lock_file",
+      "iat_rva": "0x441f0"
+    },
+    {
+      "library": "api-ms-win-crt-filesystem-l1-1-0.dll",
+      "symbol": "_unlock_file",
+      "iat_rva": "0x441f8"
+    },
+    {
+      "library": "api-ms-win-crt-locale-l1-1-0.dll",
+      "symbol": "localeconv",
+      "iat_rva": "0x44230"
+    }
+  ]
+}

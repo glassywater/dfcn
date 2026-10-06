@@ -2603,3 +2603,17 @@ DFHack GUI Notification job: press plant slurry into paper sheet	将植物纸浆
 DFHack GUI Notification job: process plant to bag	用袋子进行甩籽	l
 DFHack GUI Notification job: render fat	将脂肪熬制成脂油	l
 DFHack GUI Notification job: tan a hide	鞣制一张皮革	l
+
+# Native suspendmanager_suspensionDescription: every return branch, extracted
+# from the installed PE in dfhack-overlay-toggles/native-suspendmanager-reasons.tsv.
+DFHack GUI Overlay suspension reason: Jobsite is submerged	施工地点被水淹没	l
+DFHack GUI Overlay suspension reason: Managed by buildingplan	由建筑规划器管理	l
+DFHack GUI Overlay suspension reason: May block another build job	可能阻挡其他建造任务	l
+DFHack GUI Overlay suspension reason: Waiting for carve/smooth/engrave	等待雕刻、打磨或刻绘完成	l
+DFHack GUI Overlay suspension reason: Blocks another build job	阻挡其他建造任务	l
+DFHack GUI Overlay suspension reason: Would collapse immediately	建成后会立即坍塌	l
+DFHack GUI Overlay suspension reason: Blocked by an unmovable item	被无法移动的物品挡住	l
+DFHack GUI Overlay suspension reason: Would collapse machinery	会导致机械坍塌	l
+DFHack GUI Overlay suspension reason: External reason	其他原因	l
+DFHack GUI Overlay suspension reason: not suspended by suspendmanager	未由施工暂停管理器暂停	l
+DFHack GUI Overlay suspension reason: suspendmanager disabled	施工暂停管理器已停用	l

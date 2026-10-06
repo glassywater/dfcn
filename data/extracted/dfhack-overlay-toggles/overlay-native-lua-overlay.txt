@@ -1,0 +1,371 @@
+Source: D:\program\steam\steamapps\common\DFHack\hack\lua\plugins\overlay.lua
+
+1: local _ENV = mkmodule('plugins.overlay')
+2: 
+3: local gui = require('gui')
+4: local json = require('json')
+5: local scriptmanager = require('script-manager')
+6: local utils = require('utils')
+7: local widgets = require('gui.widgets')
+8: 
+9: local OVERLAY_CONFIG_FILE = dfhack.getConfigPath() .. '/overlay.json'
+10: local OVERLAY_WIDGETS_VAR = 'OVERLAY_WIDGETS'
+11: local GLOBAL_KEY = 'OVERLAY'
+12: 
+13: local DEFAULT_X_POS, DEFAULT_Y_POS = -2, -2
+14: 
+15: -- ---------------- --
+16: -- state and config --
+17: -- ---------------- --
+18: 
+19: local trigger_lock_holder_description = nil
+20: local trigger_lock_holder_screen = nil -- if non-nil, no triggering allowed
+21: local widget_db = {} -- map of widget name to ephermeral state
+22: local widget_index = {} -- ordered list of widget names
+23: local overlay_config = {} -- map of widget name to persisted state
+24: local active_hotspot_widgets = {} -- map of widget names to the db entry
+25: local active_viewscreen_widgets = {} -- map of vs_name to map of w.names -> db
+26: 
+27: -- for use by gui/overlay
+28: function get_state()
+29:     return {index=widget_index, config=overlay_config, db=widget_db}
+
+92: local function normalize_viewscreen_name(vs_name)
+93:     if vs_name == 'all' or vs_name:match('^viewscreen_.*st') then
+94:         return vs_name:match('^[^/]+')
+95:     end
+96:     return 'viewscreen_' .. vs_name:match('^[^/]+') .. 'st'
+97: end
+98: 
+99: -- reduce "long form" viewscreen names to "short form"; keep focus
+100: function simplify_viewscreen_name(vs_name)
+101:     local short_name = vs_name:match('^viewscreen_([^/]+)st')
+102:     return short_name or vs_name
+103: end
+104: 
+105: local function is_empty(tbl)
+
+163: 
+164: local function do_enable(args, quiet, skip_save)
+165:     local enable_fn = function(name, db_entry)
+166:         overlay_config[name].enabled = true
+167:         if db_entry.widget.hotspot then
+168:             active_hotspot_widgets[name] = db_entry
+169:         end
+170:         for _,vs_name in ipairs(normalize_list(db_entry.widget.viewscreens)) do
+171:             vs_name = normalize_viewscreen_name(vs_name)
+172:             ensure_key(active_viewscreen_widgets, vs_name)[name] = db_entry
+173:         end
+174:         if db_entry.widget.overlay_onenable then
+175:             db_entry.widget.overlay_onenable()
+176:         end
+177:         if not quiet then
+178:             print(('enabled widget %s'):format(name))
+179:         end
+180:     end
+181:     if args[1] == 'all' then
+182:         for name,db_entry in pairs(widget_db) do
+183:             if not overlay_config[name].enabled then
+184:                 enable_fn(name, db_entry)
+185:             end
+186:         end
+187:     else
+188:         do_by_names_or_numbers(args, enable_fn)
+189:     end
+190:     if not skip_save then
+191:         save_config()
+192:     end
+193: end
+194: 
+195: local function do_disable(args, quiet)
+196:     local disable_fn = function(name, db_entry)
+197:         overlay_config[name].enabled = false
+198:         if db_entry.widget.hotspot then
+199:             active_hotspot_widgets[name] = nil
+200:         end
+201:         for _,vs_name in ipairs(normalize_list(db_entry.widget.viewscreens)) do
+202:             vs_name = normalize_viewscreen_name(vs_name)
+203:             ensure_key(active_viewscreen_widgets, vs_name)[name] = nil
+204:             if is_empty(active_viewscreen_widgets[vs_name]) then
+205:                 active_viewscreen_widgets[vs_name] = nil
+206:             end
+207:         end
+208:         if db_entry.widget.overlay_ondisable then
+209:             db_entry.widget.overlay_ondisable()
+210:         end
+211:         if not quiet then
+212:             print(('disabled widget %s'):format(name))
+213:         end
+214:     end
+215:     if args[1] == 'all' then
+216:         for name,db_entry in pairs(widget_db) do
+217:             if overlay_config[name].enabled then
+218:                 disable_fn(name, db_entry)
+219:             end
+220:         end
+
+260:         if vs:match('/') then
+261:             focus_strings = focus_strings or {}
+262:             vs = simplify_viewscreen_name(vs)
+263:             table.insert(focus_strings, vs)
+264:         end
+265:     end
+266:     return focus_strings
+267: end
+268: 
+269: local function load_widget(name, widget_class)
+270:     local widget = widget_class{name=name}
+271:     widget_db[name] = {
+272:         widget=widget,
+273:         focus_strings=get_focus_strings(normalize_list(widget.viewscreens)),
+274:         next_update_ms=widget.overlay_onupdate and 0 or math.huge,
+275:     }
+276:     if not overlay_config[name] then overlay_config[name] = {} end
+277:     if widget.version ~= overlay_config[name].version then
+278:         overlay_config[name] = {}
+279:     end
+280:     local config = overlay_config[name]
+281:     config.version = widget.version
+282:     if config.enabled == nil then
+283:         config.enabled = widget.default_enabled
+284:     end
+285:     config.pos = sanitize_pos(config.pos or widget.default_pos)
+286:     widget.frame = make_frame(config.pos, widget.frame)
+287:     if config.enabled then
+288:         do_enable(name, true, true)
+289:     else
+290:         config.enabled = false
+291:     end
+292: end
+293: 
+294: local function load_widgets(env_name, env)
+295:     local overlay_widgets = env[OVERLAY_WIDGETS_VAR]
+296:     if not overlay_widgets then return end
+297:     if type(overlay_widgets) ~= 'table' then
+298:         dfhack.printerr(
+299:                 ('error loading overlay widgets from "%s": %s map is malformed')
+300:                 :format(env_name, OVERLAY_WIDGETS_VAR))
+301:         return
+302:     end
+303:     for widget_name,widget_class in pairs(overlay_widgets) do
+304:         local name = env_name .. '.' .. widget_name
+305:         if not safecall(load_widget, name, widget_class) then
+306:             dfhack.printerr(('error loading overlay widget "%s"'):format(name))
+307:         end
+308:     end
+309: end
+310: 
+311: -- called directly from cpp on plugin enable
+312: function rescan()
+313:     reset()
+314: 
+315:     for _,plugin in ipairs(dfhack.internal.listPlugins()) do
+316:         local env_name = 'plugins.' .. plugin
+317:         local ok, plugin_env = pcall(require, env_name)
+318:         if ok then
+319:             load_widgets(plugin, plugin_env)
+320:         end
+321:     end
+322:     scriptmanager.foreach_module_script(load_widgets)
+323: 
+324:     for name in pairs(widget_db) do
+325:         table.insert(widget_index, name)
+326:     end
+327:     table.sort(widget_index)
+328: 
+329:     reposition_widgets()
+330: end
+331: 
+332: dfhack.onStateChange[GLOBAL_KEY] = function(sc)
+333:     if sc ~= SC_WORLD_LOADED then
+334:         return
+335:     end
+336:     -- pick up widgets from active mods
+337:     rescan()
+338: end
+339: 
+340: local function dump_widget_config(name, widget)
+341:     local pos = overlay_config[name].pos
+342:     print(('widget %s is positioned at x=%d, y=%d'):format(name, pos.x, pos.y))
+
+445:     if freq_s == 0 then
+446:         return now_ms
+447:     end
+448:     local freq_ms = math.floor(freq_s * 1000)
+449:     local jitter = math.random(0, freq_ms // 8) -- up to ~12% jitter
+450:     return now_ms + freq_ms - jitter
+451: end
+452: 
+453: -- reduces the next call by a small random amount to introduce jitter into the
+454: -- widget processing timings
+455: local function do_update(name, db_entry, now_ms, vs)
+456:     local w = db_entry.widget
+457:     if w.overlay_onupdate_max_freq_seconds ~= 0 and
+458:         db_entry.next_update_ms > now_ms
+459:     then
+460:         return
+461:     end
+462:     if not utils.getval(w.active) then return end
+463:     db_entry.next_update_ms = get_next_onupdate_timestamp(now_ms, w)
+464:     if detect_frame_change(w, function() return w:overlay_onupdate(vs) end) then
+465:         if register_trigger_lock_screen(w:overlay_trigger(), name) then
+466:             return true
+467:         end
+468:     end
+469: end
+470: 
+471: function update_hotspot_widgets()
+472:     if triggered_screen_has_lock() then return end
+473:     local now_ms = dfhack.getTickCount()
+474:     for name,db_entry in pairs(active_hotspot_widgets) do
+475:         if do_update(name, db_entry, now_ms) then return end
+476:     end
+477: end
+478: 
+479: local function matches_focus_strings(db_entry, vs_name, vs)
+480:     if not db_entry.focus_strings then return true end
+481:     local matched = true
+482:     local simple_vs_name = simplify_viewscreen_name(vs_name)
+483:     for _,fs in ipairs(db_entry.focus_strings) do
+484:         if fs:startswith(simple_vs_name) then
+485:             matched = false
+486:             if dfhack.gui.matchFocusString(fs, vs) then
+487:                 return true
+488:             end
+489:             local lua_focus = fs:match('^[^/]+/(dfhack/lua/.*)$')
+490:             if lua_focus and dfhack.gui.matchFocusString(lua_focus) then
+491:                 return true
+492:             end
+493:         end
+494:     end
+495:     return matched
+496: end
+497: 
+498: local function _update_viewscreen_widgets(vs_name, vs, now_ms)
+499:     local vs_widgets = active_viewscreen_widgets[vs_name]
+500:     if not vs_widgets then return end
+501:     local is_all = vs_name == 'all'
+502:     now_ms = now_ms or dfhack.getTickCount()
+503:     for name,db_entry in pairs(vs_widgets) do
+504:         if (is_all or matches_focus_strings(db_entry, vs_name, vs)) and
+505:                 do_update(name, db_entry, now_ms, vs) then
+506:             return
+507:         end
+508:     end
+509:     return now_ms
+510: end
+511: 
+512: function update_viewscreen_widgets(vs_name, vs)
+513:     if triggered_screen_has_lock() then return end
+514:     local now_ms = _update_viewscreen_widgets(vs_name, vs, nil)
+515:     if now_ms then
+516:         _update_viewscreen_widgets('all', vs, now_ms)
+517:     end
+518: end
+519: 
+520: local function _feed_viewscreen_widgets(vs_name, vs, keys)
+521:     local vs_widgets = active_viewscreen_widgets[vs_name]
+522:     if not vs_widgets then return false end
+523:     for _,db_entry in pairs(vs_widgets) do
+524:         local w = db_entry.widget
+525:         if (not vs or matches_focus_strings(db_entry, vs_name, vs)) and
+526:             utils.getval(w.active) and
+527:             utils.getval(w.visible) and
+528:             detect_frame_change(w, function() return w:onInput(keys) end)
+529:         then
+530:             --print('widget handled input:', w.name)
+531:             return true
+532:         end
+533:     end
+534:     return false
+535: end
+536: 
+537: -- when the native UI is capturing text input (renaming a building, editing a
+538: -- workshop job filter, etc.), overlay widgets must not consume keys, since
+539: -- their bound hotkeys would otherwise steal typed characters (#5764)
+540: local function is_native_text_entry_active()
+541:     local mi = df.global.game.main_interface
+542:     local vs = mi.view_sheets
+543:     return mi.entering_building_name or
+544:         vs.building_entering_nickname or
+545:         vs.unit_overview_entering_nickname or
+546:         vs.unit_overview_entering_profession_nickname or
+547:         vs.entering_building_job_filter or
+548:         vs.entering_gen_work_order_num or
+549:         vs.entering_wq_number
+550: end
+551: 
+552: function feed_viewscreen_widgets(vs_name, vs, keys)
+553:     if is_native_text_entry_active() then
+554:         return false
+555:     end
+556:     if not _feed_viewscreen_widgets(vs_name, vs, keys) and
+557:             not _feed_viewscreen_widgets('all', nil, keys) then
+558:         return false
+559:     end
+560:     return true
+561: end
+562: 
+563: local function _render_viewscreen_widgets(vs_name, vs)
+564:     local vs_widgets = active_viewscreen_widgets[vs_name]
+565:     if not vs_widgets then return end
+566:     local full, scaled = get_interface_rects()
+567:     for _,db_entry in pairs(vs_widgets) do
+568:         local w = db_entry.widget
+569:         if (not vs or matches_focus_strings(db_entry, vs_name, vs)) and utils.getval(w.visible) then
+570:             detect_frame_change(w, function()
+571:                 w:render(w.fullscreen and gui.Painter.new(full) or gui.Painter.new(scaled))
+572:             end)
+573:         end
+574:     end
+575:     return full_dc, scaled_dc
+576: end
+577: 
+578: local force_refresh
+579: 
+580: function render_viewscreen_widgets(vs_name, vs)
+581:     _render_viewscreen_widgets(vs_name, vs)
+582:     _render_viewscreen_widgets('all', nil)
+583:     if force_refresh then
+584:         force_refresh = nil
+585:         df.global.gps.force_full_display_count = 1
+586:     end
+587: end
+588: 
+589: -- called when the DF window is resized
+590: function reposition_widgets()
+591:     local full, scaled = get_interface_rects()
+592:     for _,db_entry in pairs(widget_db) do
+593:         local widget = db_entry.widget
+594:         widget:updateLayout(widget.fullscreen and full or scaled)
+595:     end
+596:     force_refresh = true
+597: end
+598: 
+599: -- ------------------------------------------------- --
+600: -- OverlayWidget (base class of all overlay widgets) --
+601: -- ------------------------------------------------- --
+602: 
+603: OverlayWidget = defclass(OverlayWidget, widgets.Panel)
+604: OverlayWidget.ATTRS{
+605:     name=DEFAULT_NIL, -- this is set by the framework to the widget name
+606:     desc=DEFAULT_NIL, -- add a short description (<100 chars); displays in control panel
+607:     default_pos={x=DEFAULT_X_POS, y=DEFAULT_Y_POS}, -- 1-based widget screen pos
+608:     default_enabled=false, -- initial enabled state if not in config
+609:     fullscreen=false, -- true if widget covers entire screen
+610:     full_interface=false, -- true if widget covers entire interface area
+611:     hotspot=false, -- whether to call overlay_onupdate on all screens
+612:     viewscreens={}, -- override with associated viewscreen or list of viewscrens
+613:     overlay_onupdate_max_freq_seconds=5, -- throttle calls to overlay_onupdate
+614: }
+615: 
+616: function OverlayWidget:init()
+617:     if self.overlay_onupdate_max_freq_seconds < 0 then
+618:         error(('overlay_onupdate_max_freq_seconds must be >= 0: %s')
+619:               :format(tostring(self.overlay_onupdate_max_freq_seconds)))
+620:     end
+621: 
+622:     -- set defaults for frame. the widget is expected to keep these up to date
+623:     -- when display contents change so the widget position can shift if the
+624:     -- frame is relative to the right or bottom edges.
+625:     self.frame = self.frame or {}

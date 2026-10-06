@@ -1,0 +1,619 @@
+# Installed DFHack plugin overlay controls and reachable helper panels.
+# Each source retains caption padding, option case, spacing, and rendering geometry.
+# I=inline; B=label_below; keyed uses the dynamic interface-key display.
+# User squad aliases, room/role/material names use * and are preserved verbatim.
+# Lua source evidence: data/extracted/dfhack-overlay-toggles/plugin-render-branches.txt
+# Options with the same caption/label and different colors share one text row.
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:78-88 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Sort by:|available|I|1|-1|1	排序依据：|可用数量	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:78-88 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Sort by:|name|I|1|-1|1	排序依据：|名称	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:89-99 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Hide unavailable:|On|I|1|-1|1	隐藏不可用项：|开启	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:89-99 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Hide unavailable:|Off|I|1|-1|1	隐藏不可用项：|关闭	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:149-160 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Decorated only:|No|I|1|-1|1	仅装饰物品：|否	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:149-160 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Decorated only:|Yes|I|1|-1|1	仅装饰物品：|是	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:161-179 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Min quality:|Ordinary|B|4|-1|1	最低品质：|普通	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:161-179 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Min quality:|Well Crafted|B|4|-1|1	最低品质：|精制	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:161-179 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Min quality:|Finely Crafted|B|4|-1|1	最低品质：|精良	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:161-179 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Min quality:|Superior|B|4|-1|1	最低品质：|卓越	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:161-179 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Min quality:|Exceptional|B|4|-1|1	最低品质：|非凡	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:161-179 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Min quality:|Masterful|B|4|-1|1	最低品质：|大师之作	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:161-179 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Min quality:|Artifact|B|4|-1|1	最低品质：|神器	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:180-198 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Max quality:|Ordinary|B|4|-1|1	最高品质：|普通	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:180-198 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Max quality:|Well Crafted|B|4|-1|1	最高品质：|精制	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:180-198 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Max quality:|Finely Crafted|B|4|-1|1	最高品质：|精良	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:180-198 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Max quality:|Superior|B|4|-1|1	最高品质：|卓越	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:180-198 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Max quality:|Exceptional|B|4|-1|1	最高品质：|非凡	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:180-198 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Max quality:|Masterful|B|4|-1|1	最高品质：|大师之作	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:180-198 [QualityAndMaterialsPage]
+DFHack GUI Overlay control: Max quality:|Artifact|B|4|-1|1	最高品质：|神器	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:472-479 [GlobalSettingsPage]
+DFHack GUI Overlay control: Blocks|On|I|1|8|1	石块|开启	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:472-479 [GlobalSettingsPage]
+DFHack GUI Overlay control: Blocks|Off|I|1|8|1	石块|关闭	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:480-487 [GlobalSettingsPage]
+DFHack GUI Overlay control: Logs|On|I|1|8|1	原木|开启	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:480-487 [GlobalSettingsPage]
+DFHack GUI Overlay control: Logs|Off|I|1|8|1	原木|关闭	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:488-495 [GlobalSettingsPage]
+DFHack GUI Overlay control: Boulders|On|I|1|8|1	巨石|开启	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:488-495 [GlobalSettingsPage]
+DFHack GUI Overlay control: Boulders|Off|I|1|8|1	巨石|关闭	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:496-503 [GlobalSettingsPage]
+DFHack GUI Overlay control: Bars|On|I|1|8|1	金属锭|开启	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:496-503 [GlobalSettingsPage]
+DFHack GUI Overlay control: Bars|Off|I|1|8|1	金属锭|关闭	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:507-513 [GlobalSettingsPage]
+DFHack GUI Overlay control: Multi-rebuild|On|I|1|-1|1	批量重建|开启	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:507-513 [GlobalSettingsPage]
+DFHack GUI Overlay control: Multi-rebuild|Off|I|1|-1|1	批量重建|关闭	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/itemselection.lua:155-166 [ItemSelection]
+DFHack GUI Overlay control: Sort by:|Recently used|I|1|-1|1	排序依据：|最近使用	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/itemselection.lua:155-166 [ItemSelection]
+DFHack GUI Overlay control: Sort by:|Amount|I|1|-1|1	排序依据：|数量	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/itemselection.lua:155-166 [ItemSelection]
+DFHack GUI Overlay control: Sort by:|Value|I|1|-1|1	排序依据：|价值	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/itemselection.lua:155-166 [ItemSelection]
+DFHack GUI Overlay control: Sort by:|Name|I|1|-1|1	排序依据：|名称	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/mechanisms.lua:42-54 [buildingplan.mechanisms]
+DFHack GUI Overlay control: Plate:|Any|I|1|-1|1	压力板：|任意	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/mechanisms.lua:42-54 [buildingplan.mechanisms]
+DFHack GUI Overlay control: Plate:|Magma|I|1|-1|1	压力板：|岩浆安全	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/mechanisms.lua:42-54 [buildingplan.mechanisms]
+DFHack GUI Overlay control: Plate:|Fire|I|1|-1|1	压力板：|防火	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/mechanisms.lua:42-54 [buildingplan.mechanisms]
+DFHack GUI Overlay control: Lever:|Any|I|1|-1|1	拉杆：|任意	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/mechanisms.lua:42-54 [buildingplan.mechanisms]
+DFHack GUI Overlay control: Lever:|Magma|I|1|-1|1	拉杆：|岩浆安全	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/mechanisms.lua:42-54 [buildingplan.mechanisms]
+DFHack GUI Overlay control: Lever:|Fire|I|1|-1|1	拉杆：|防火	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/mechanisms.lua:55-67 [buildingplan.mechanisms]
+DFHack GUI Overlay control: Target:|Any|I|1|-1|1	目标：|任意	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/mechanisms.lua:55-67 [buildingplan.mechanisms]
+DFHack GUI Overlay control: Target:|Magma|I|1|-1|1	目标：|岩浆安全	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/mechanisms.lua:55-67 [buildingplan.mechanisms]
+DFHack GUI Overlay control: Target:|Fire|I|1|-1|1	目标：|防火	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:702-713 [buildingplan.planner]
+DFHack GUI Overlay control: Number of weapons:|({d})|I|1|-1|1	武器数量：|({d})	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:751-761 [buildingplan.planner]
+DFHack GUI Overlay control: Hollow area:|No|I|1|-1|1	中空区域：|否	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:751-761 [buildingplan.planner]
+DFHack GUI Overlay control: Hollow area:|Yes|I|1|-1|1	中空区域：|是	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:762-773 [buildingplan.planner]
+DFHack GUI Overlay control: Top stair type:   |Auto|I|1|-1|1	顶部楼梯：   |自动	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:762-773 [buildingplan.planner]
+DFHack GUI Overlay control: Top stair type:   |UpDown|I|1|-1|1	顶部楼梯：   |上下楼梯	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:762-773 [buildingplan.planner]
+DFHack GUI Overlay control: Top stair type:   |Down|I|1|-1|1	顶部楼梯：   |下行楼梯	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:774-785 [buildingplan.planner]
+DFHack GUI Overlay control: Bottom Stair Type:|Auto|I|1|-1|1	底部楼梯：|自动	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:774-785 [buildingplan.planner]
+DFHack GUI Overlay control: Bottom Stair Type:|UpDown|I|1|-1|1	底部楼梯：|上下楼梯	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:774-785 [buildingplan.planner]
+DFHack GUI Overlay control: Bottom Stair Type:|Up|I|1|-1|1	底部楼梯：|上行楼梯	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:786-797 [buildingplan.planner]
+DFHack GUI Overlay control: Single level stair:|Up|I|1|-1|1	单层楼梯：|上行楼梯	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:786-797 [buildingplan.planner]
+DFHack GUI Overlay control: Single level stair:|UpDown|I|1|-1|1	单层楼梯：|上下楼梯	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:786-797 [buildingplan.planner]
+DFHack GUI Overlay control: Single level stair:|Down|I|1|-1|1	单层楼梯：|下行楼梯	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:801-810 [buildingplan.planner]
+DFHack GUI Overlay control: Engraved only:|On|I|1|-1|1	仅雕刻物品：|开启	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:801-810 [buildingplan.planner]
+DFHack GUI Overlay control: Engraved only:|Off|I|1|-1|1	仅雕刻物品：|关闭	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:811-820 [buildingplan.planner]
+DFHack GUI Overlay control: Empty only:|On|I|1|-1|1	仅空物品：|开启	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:811-820 [buildingplan.planner]
+DFHack GUI Overlay control: Empty only:|Off|I|1|-1|1	仅空物品：|关闭	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:821-833 [buildingplan.planner]
+DFHack GUI Overlay control: Do now:|On|I|1|-1|1	优先执行：|开启	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:821-833 [buildingplan.planner]
+DFHack GUI Overlay control: Do now:|Off|I|1|-1|1	优先执行：|关闭	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:865-877 [buildingplan.planner]
+DFHack GUI Overlay control: |Show favorites|I|0|-1|1	|显示收藏	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:865-877 [buildingplan.planner]
+DFHack GUI Overlay control: |Hide favorites|I|0|-1|1	|隐藏收藏	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:878-899 [buildingplan.planner]
+DFHack GUI Overlay control: Choose items:|With filters|B|3|-1|1	选择物品：|使用筛选	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:878-899 [buildingplan.planner]
+DFHack GUI Overlay control: Choose items:|Last used (pick manually)|B|3|-1|1	选择物品：|上次使用（手动选择）	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:878-899 [buildingplan.planner]
+DFHack GUI Overlay control: Choose items:|Last used ({material})|B|3|-1|1	选择物品：|上次使用（{material}）	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:878-899 [buildingplan.planner]
+DFHack GUI Overlay control: Choose items:|Manually|B|3|-1|1	选择物品：|手动选择	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:900-914 [buildingplan.planner]
+DFHack GUI Overlay control: Building safety:|Any|I|1|-1|1	建筑安全：|任意	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:900-914 [buildingplan.planner]
+DFHack GUI Overlay control: Building safety:|Magma|I|1|-1|1	建筑安全：|岩浆安全	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:900-914 [buildingplan.planner]
+DFHack GUI Overlay control: Building safety:|Fire|I|1|-1|1	建筑安全：|防火	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:1024-1034 [buildingplan.planner]
+DFHack GUI Overlay control: next/previous slot||I|1|-1|1	下一格／上一格|	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/unlink_mechanisms.lua:203-216 [buildingplan.mechanism_unlink]
+DFHack GUI Overlay control: Unlink mode|Don't auto free|I|1|-1|1	断开连接方式|不自动释放	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/unlink_mechanisms.lua:203-216 [buildingplan.mechanism_unlink]
+DFHack GUI Overlay control: Unlink mode|Free local mechanism|I|1|-1|1	断开连接方式|释放本地机件	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/unlink_mechanisms.lua:203-216 [buildingplan.mechanism_unlink]
+DFHack GUI Overlay control: Unlink mode|Free target mechanism|I|1|-1|1	断开连接方式|释放目标机件	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/unlink_mechanisms.lua:203-216 [buildingplan.mechanism_unlink]
+DFHack GUI Overlay control: Unlink mode|Free local and target|I|1|-1|1	断开连接方式|释放双方机件	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/burrow.lua:67-77 [burrow.designation]
+DFHack GUI Overlay control: Flood fill on double click:|Off|I|1|-1|1	双击填充：|关闭	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/burrow.lua:67-77 [burrow.designation]
+DFHack GUI Overlay control: Flood fill on double click:|2D fill enabled|I|1|-1|1	双击填充：|启用平面填充	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/burrow.lua:67-77 [burrow.designation]
+DFHack GUI Overlay control: Flood fill on double click:|3D fill enabled|I|1|-1|1	双击填充：|启用立体填充	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/dig.lua:47-53 [WarmDampDigConfig]
+DFHack GUI Overlay control: Damp dig:|On|I|1|-1|1	潮湿处挖掘：|开启	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/dig.lua:47-53 [WarmDampDigConfig]
+DFHack GUI Overlay control: Damp dig:|Off|I|1|-1|1	潮湿处挖掘：|关闭	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/dig.lua:54-60 [WarmDampDigConfig]
+DFHack GUI Overlay control: Warm dig:|On|I|1|-1|1	高温处挖掘：|开启	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/dig.lua:54-60 [WarmDampDigConfig]
+DFHack GUI Overlay control: Warm dig:|Off|I|1|-1|1	高温处挖掘：|关闭	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/logistics.lua:298-306 [logistics.autoretrain]
+DFHack GUI Overlay control: Autoretrain livestock:|On|I|1|-1|1	自动重新驯养牲畜：|开启	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/logistics.lua:298-306 [logistics.autoretrain]
+DFHack GUI Overlay control: Autoretrain livestock:|Off|I|1|-1|1	自动重新驯养牲畜：|关闭	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/orders.lua:335-352 [orders.skillrestrictions]
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Min skill:|Dabbling|B|4|-1|1	最低技能：|略懂	l
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Min skill:|Novice|B|4|-1|1	最低技能：|初学	l
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Min skill:|Competent|B|4|-1|1	最低技能：|合格	l
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Min skill:|Proficient|B|4|-1|1	最低技能：|精通	l
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Min skill:|Talented|B|4|-1|1	最低技能：|出色	l
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Min skill:|Expert|B|4|-1|1	最低技能：|专家	l
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Min skill:|Accomplished|B|4|-1|1	最低技能：|高超	l
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Min skill:|Master|B|4|-1|1	最低技能：|大师	l
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Min skill:|Grand Master|B|4|-1|1	最低技能：|大宗师	l
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Min skill:|Legendary|B|4|-1|1	最低技能：|传奇	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/orders.lua:353-370 [orders.skillrestrictions]
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Max skill:|Dabbling|B|4|-1|1	最高技能：|略懂	l
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Max skill:|Novice|B|4|-1|1	最高技能：|初学	l
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Max skill:|Competent|B|4|-1|1	最高技能：|合格	l
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Max skill:|Proficient|B|4|-1|1	最高技能：|精通	l
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Max skill:|Talented|B|4|-1|1	最高技能：|出色	l
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Max skill:|Expert|B|4|-1|1	最高技能：|专家	l
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Max skill:|Accomplished|B|4|-1|1	最高技能：|高超	l
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Max skill:|Master|B|4|-1|1	最高技能：|大师	l
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Max skill:|Grand Master|B|4|-1|1	最高技能：|大宗师	l
+# Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
+DFHack GUI Overlay control: Max skill:|Legendary|B|4|-1|1	最高技能：|传奇	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/preserve-rooms.lua:149-161 [preserve-rooms.reserved]
+DFHack GUI Overlay control: Autoassign to holder of role:|None|B|3|-1|1	自动分配给职位持有者：|无	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/preserve-rooms.lua:149-161 [preserve-rooms.reserved]
+DFHack GUI Overlay control: Autoassign to holder of role:|*|B|3|-1|1	自动分配给职位持有者：|*	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:195-222 [sort.info] ; D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:638-654 [sort.conviction;sort.interrogation]
+DFHack GUI Overlay control: Show:|All|I|1|-1|1	显示：|全部	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:195-222 [sort.info]
+DFHack GUI Overlay control: Show:|Military|I|1|-1|1	显示：|军人	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:195-222 [sort.info]
+DFHack GUI Overlay control: Show:|Civilians|I|1|-1|1	显示：|平民	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:195-222 [sort.info]
+DFHack GUI Overlay control: Show:|Burrowed|I|1|-1|1	显示：|所属洞穴	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:233-243 [sort.info]
+DFHack GUI Overlay control: Squad:|Any|I|1|-1|1	小队：|任意	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:233-243 [sort.info]
+DFHack GUI Overlay control: Squad:|*|I|1|-1|1	小队：|*	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:244-254 [sort.info] ; D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:584-594 [sort.workanimals_filter]
+DFHack GUI Overlay control: Burrow:|Any|I|1|-1|1	洞穴：|任意	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:244-254 [sort.info] ; D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:584-594 [sort.workanimals_filter]
+DFHack GUI Overlay control: Burrow:|Unburrowed|I|1|-1|1	洞穴：|无所属洞穴	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:244-254 [sort.info] ; D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:584-594 [sort.workanimals_filter]
+DFHack GUI Overlay control: Burrow:|*|I|1|-1|1	洞穴：|*	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:542-572 [sort.workanimals_filter]
+DFHack GUI Overlay control:   Show:|All|I|1|-1|1	  显示：|全部	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:542-572 [sort.workanimals_filter]
+DFHack GUI Overlay control:   Show:|Military|I|1|-1|1	  显示：|军人	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:542-572 [sort.workanimals_filter]
+DFHack GUI Overlay control:   Show:|Civilians|I|1|-1|1	  显示：|平民	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:542-572 [sort.workanimals_filter]
+DFHack GUI Overlay control:   Show:|Burrowed|I|1|-1|1	  显示：|所属洞穴	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:573-583 [sort.workanimals_filter]
+DFHack GUI Overlay control:  Squad:|Any|I|1|-1|1	 小队：|任意	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:573-583 [sort.workanimals_filter]
+DFHack GUI Overlay control:  Squad:|*|I|1|-1|1	 小队：|*	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:638-654 [sort.conviction;sort.interrogation]
+DFHack GUI Overlay control: Show:|Risky visitors|I|1|-1|1	显示：|危险访客	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:638-654 [sort.conviction;sort.interrogation]
+DFHack GUI Overlay control: Show:|Other visitors|I|1|-1|1	显示：|其他访客	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:638-654 [sort.conviction;sort.interrogation]
+DFHack GUI Overlay control: Show:|Residents|I|1|-1|1	显示：|居民	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:638-654 [sort.conviction;sort.interrogation]
+DFHack GUI Overlay control: Show:|Citizens|I|1|-1|1	显示：|公民	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:638-654 [sort.conviction;sort.interrogation]
+DFHack GUI Overlay control: Show:|Animals|I|1|-1|1	显示：|动物	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:638-654 [sort.conviction;sort.interrogation]
+DFHack GUI Overlay control: Show:|Deceased or missing|I|1|-1|1	显示：|死亡或失踪	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:638-654 [sort.conviction;sort.interrogation]
+DFHack GUI Overlay control: Show:|Others|I|1|-1|1	显示：|其他	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:697-707 [sort.interrogation]
+DFHack GUI Overlay control: Interviewed:|Include|I|1|-1|1	已问询者：|包含	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:697-707 [sort.interrogation]
+DFHack GUI Overlay control: Interviewed:|Exclude|I|1|-1|1	已问询者：|排除	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/locationselector.lua:80-87 [sort.location_selector]
+DFHack GUI Overlay control: Hide established:|On|I|1|-1|1	隐藏现有场所：|开启	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/locationselector.lua:80-87 [sort.location_selector]
+DFHack GUI Overlay control: Hide established:|Off|I|1|-1|1	隐藏现有场所：|关闭	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/slab.lua:42-49 [sort.slab]
+DFHack GUI Overlay control: Show only citizens who need a slab:|On|I|1|-1|1	仅显示需要纪念碑的公民：|开启	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/slab.lua:42-49 [sort.slab]
+DFHack GUI Overlay control: Show only citizens who need a slab:|Off|I|1|-1|1	仅显示需要纪念碑的公民：|关闭	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:777-785 [sort.squad_annotation]
+DFHack GUI Overlay control: Show:|melee effectiveness|I|1|-1|1	显示：|近战效能	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:777-785 [sort.squad_annotation]
+DFHack GUI Overlay control: Show:|ranged effectiveness|I|1|-1|1	显示：|远程效能	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:777-785 [sort.squad_annotation]
+DFHack GUI Overlay control: Show:|teacher skill|I|1|-1|1	显示：|教学技能	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:777-785 [sort.squad_annotation]
+DFHack GUI Overlay control: Show:|stress level|I|1|-1|1	显示：|压力程度	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:777-785 [sort.squad_annotation]
+DFHack GUI Overlay control: Show:|arrival order|I|1|-1|1	显示：|到达顺序	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:777-785 [sort.squad_annotation]
+DFHack GUI Overlay control: Show:|tactics skill|I|1|-1|1	显示：|战术技能	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:777-785 [sort.squad_annotation]
+DFHack GUI Overlay control: Show:|ambusher skill|I|1|-1|1	显示：|潜行技能	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:777-785 [sort.squad_annotation]
+DFHack GUI Overlay control: Show:|need for training|I|1|-1|1	显示：|训练需求	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:777-785 [sort.squad_annotation]
+DFHack GUI Overlay control: Show:|pick (mining) skill|I|1|-1|1	显示：|镐（采矿）技能	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:777-785 [sort.squad_annotation]
+DFHack GUI Overlay control: Show:|axe skill|I|1|-1|1	显示：|斧技能	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:777-785 [sort.squad_annotation]
+DFHack GUI Overlay control: Show:|sword skill|I|1|-1|1	显示：|剑技能	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:777-785 [sort.squad_annotation]
+DFHack GUI Overlay control: Show:|mace skill|I|1|-1|1	显示：|钉头锤技能	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:777-785 [sort.squad_annotation]
+DFHack GUI Overlay control: Show:|hammer skill|I|1|-1|1	显示：|战锤技能	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:777-785 [sort.squad_annotation]
+DFHack GUI Overlay control: Show:|spear skill|I|1|-1|1	显示：|矛技能	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:777-785 [sort.squad_annotation]
+DFHack GUI Overlay control: Show:|crossbow skill|I|1|-1|1	显示：|弩技能	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:777-785 [sort.squad_annotation]
+DFHack GUI Overlay control: Show:|melee potential|I|1|-1|1	显示：|近战潜力	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:777-785 [sort.squad_annotation]
+DFHack GUI Overlay control: Show:|ranged potential|I|1|-1|1	显示：|远程潜力	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:802-809 [sort.squad_annotation]
+DFHack GUI Overlay control: |melee effect.|I|0|-1|0	|近战效能	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:810-816 [sort.squad_annotation]
+DFHack GUI Overlay control: |ranged effect.|I|0|-1|0	|远程效能	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:817-823 [sort.squad_annotation]
+DFHack GUI Overlay control: |teacher|I|0|-1|0	|教学	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:824-830 [sort.squad_annotation]
+DFHack GUI Overlay control: |stress|I|0|-1|0	|压力	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:831-837 [sort.squad_annotation]
+DFHack GUI Overlay control: |arrival order|I|0|-1|0	|到达顺序	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:838-844 [sort.squad_annotation]
+DFHack GUI Overlay control: |tactics|I|0|-1|0	|战术	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:845-851 [sort.squad_annotation]
+DFHack GUI Overlay control: |ambusher|I|0|-1|0	|潜行	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:852-858 [sort.squad_annotation]
+DFHack GUI Overlay control: |train. need|I|0|-1|0	|训练需求	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:859-865 [sort.squad_annotation]
+DFHack GUI Overlay control: |pick|I|0|-1|0	|镐	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:866-872 [sort.squad_annotation]
+DFHack GUI Overlay control: |axe|I|0|-1|0	|斧	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:873-879 [sort.squad_annotation]
+DFHack GUI Overlay control: |sword|I|0|-1|0	|剑	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:880-886 [sort.squad_annotation]
+DFHack GUI Overlay control: |mace|I|0|-1|0	|钉头锤	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:887-893 [sort.squad_annotation]
+DFHack GUI Overlay control: |hammer|I|0|-1|0	|战锤	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:894-900 [sort.squad_annotation]
+DFHack GUI Overlay control: |spear|I|0|-1|0	|矛	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:901-907 [sort.squad_annotation]
+DFHack GUI Overlay control: |crossbow|I|0|-1|0	|弩	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:908-914 [sort.squad_annotation]
+DFHack GUI Overlay control: |melee poten.|I|0|-1|0	|近战潜力	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:915-921 [sort.squad_annotation]
+DFHack GUI Overlay control: |ranged poten.|I|0|-1|0	|远程潜力	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1052-1064 [sort.squad_filter]
+DFHack GUI Overlay control: Other squads:|Include|I|1|-1|1	其他小队：|包含	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1052-1064 [sort.squad_filter]
+DFHack GUI Overlay control: Other squads:|Only|I|1|-1|1	其他小队：|仅此类	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1052-1064 [sort.squad_filter]
+DFHack GUI Overlay control: Other squads:|Exclude|I|1|-1|1	其他小队：|排除	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1065-1077 [sort.squad_filter]
+DFHack GUI Overlay control:    Officials:|Include|I|1|-1|1	   官员：|包含	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1065-1077 [sort.squad_filter]
+DFHack GUI Overlay control:    Officials:|Only|I|1|-1|1	   官员：|仅此类	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1065-1077 [sort.squad_filter]
+DFHack GUI Overlay control:    Officials:|Exclude|I|1|-1|1	   官员：|排除	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1078-1090 [sort.squad_filter]
+DFHack GUI Overlay control:     Nobility:|Include|I|1|-1|1	    贵族：|包含	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1078-1090 [sort.squad_filter]
+DFHack GUI Overlay control:     Nobility:|Only|I|1|-1|1	    贵族：|仅此类	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1078-1090 [sort.squad_filter]
+DFHack GUI Overlay control:     Nobility:|Exclude|I|1|-1|1	    贵族：|排除	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1099-1111 [sort.squad_filter]
+DFHack GUI Overlay control:    Uniformed:|Include|I|1|-1|1	   工作服冲突：|包含	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1099-1111 [sort.squad_filter]
+DFHack GUI Overlay control:    Uniformed:|Only|I|1|-1|1	   工作服冲突：|仅此类	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1099-1111 [sort.squad_filter]
+DFHack GUI Overlay control:    Uniformed:|Exclude|I|1|-1|1	   工作服冲突：|排除	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1112-1124 [sort.squad_filter]
+DFHack GUI Overlay control: With infants:|Include|I|1|-1|1	携带婴儿：|包含	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1112-1124 [sort.squad_filter]
+DFHack GUI Overlay control: With infants:|Only|I|1|-1|1	携带婴儿：|仅此类	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1112-1124 [sort.squad_filter]
+DFHack GUI Overlay control: With infants:|Exclude|I|1|-1|1	携带婴儿：|排除	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1125-1137 [sort.squad_filter]
+DFHack GUI Overlay control: Hates combat:|Include|I|1|-1|1	厌恶战斗：|包含	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1125-1137 [sort.squad_filter]
+DFHack GUI Overlay control: Hates combat:|Only|I|1|-1|1	厌恶战斗：|仅此类	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1125-1137 [sort.squad_filter]
+DFHack GUI Overlay control: Hates combat:|Exclude|I|1|-1|1	厌恶战斗：|排除	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1138-1150 [sort.squad_filter]
+DFHack GUI Overlay control:       Maimed:|Include|I|1|-1|1	      残疾：|包含	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1138-1150 [sort.squad_filter]
+DFHack GUI Overlay control:       Maimed:|Only|I|1|-1|1	      残疾：|仅此类	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort.lua:1138-1150 [sort.squad_filter]
+DFHack GUI Overlay control:       Maimed:|Exclude|I|1|-1|1	      残疾：|排除	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockpiles.lua:337-343 [ConfigModal]
+DFHack GUI Overlay control: Melt masterworks|On|I|1|-1|1	熔炼大师作品|开启	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockpiles.lua:337-343 [ConfigModal]
+DFHack GUI Overlay control: Melt masterworks|Off|I|1|-1|1	熔炼大师作品|关闭	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockpiles.lua:488-498 [stockpiles.overlay] ; D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockpiles.lua:488-498 [stockpiles.overlay]
+DFHack GUI Overlay control: |Melting|I|-1|-1|1	|熔炼	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockpiles.lua:498-508 [stockpiles.overlay] ; D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockpiles.lua:498-508 [stockpiles.overlay]
+DFHack GUI Overlay control: |Trading|I|-1|-1|1	|交易	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockpiles.lua:508-518 [stockpiles.overlay] ; D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockpiles.lua:508-518 [stockpiles.overlay]
+DFHack GUI Overlay control: |Dumping|I|-1|-1|1	|倾倒	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockpiles.lua:518-528 [stockpiles.overlay] ; D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockpiles.lua:518-528 [stockpiles.overlay]
+DFHack GUI Overlay control: |Training|I|-1|-1|1	|驯养	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockpiles.lua:528-538 [stockpiles.overlay] ; D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockpiles.lua:528-538 [stockpiles.overlay]
+DFHack GUI Overlay control: |Forbid|I|-1|-1|1	|禁止使用	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockpiles.lua:528-538 [stockpiles.overlay]
+DFHack GUI Overlay control: |Claim|I|-1|-1|1	|解除禁用	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/suspendmanager.lua:123-132 [suspendmanager.toggle]
+DFHack GUI Overlay control: Suspendmanager is|Enabled|I|1|-1|1	暂停管理器状态|已启用	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/suspendmanager.lua:123-132 [suspendmanager.toggle]
+DFHack GUI Overlay control: Suspendmanager is|Disabled|I|1|-1|1	暂停管理器状态|已禁用	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:172-193 [AssignAnimal]
+DFHack GUI Overlay control: Sort by:|status\x1f|I|1|-1|1	排序依据：|安置状态↓	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:172-193 [AssignAnimal]
+DFHack GUI Overlay control: Sort by:|status\x1e|I|1|-1|1	排序依据：|安置状态↑	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:172-193 [AssignAnimal]
+DFHack GUI Overlay control: Sort by:|dist\x1f|I|1|-1|1	排序依据：|距离↓	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:172-193 [AssignAnimal]
+DFHack GUI Overlay control: Sort by:|dist\x1e|I|1|-1|1	排序依据：|距离↑	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:172-193 [AssignAnimal]
+DFHack GUI Overlay control: Sort by:|disposition\x1f|I|1|-1|1	排序依据：|驯服状态↓	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:172-193 [AssignAnimal]
+DFHack GUI Overlay control: Sort by:|disposition\x1e|I|1|-1|1	排序依据：|驯服状态↑	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:172-193 [AssignAnimal]
+DFHack GUI Overlay control: Sort by:|gender\x1f|I|1|-1|1	排序依据：|性别↓	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:172-193 [AssignAnimal]
+DFHack GUI Overlay control: Sort by:|gender\x1e|I|1|-1|1	排序依据：|性别↑	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:172-193 [AssignAnimal]
+DFHack GUI Overlay control: Sort by:|name\x1f|I|1|-1|1	排序依据：|名称↓	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:172-193 [AssignAnimal]
+DFHack GUI Overlay control: Sort by:|name\x1e|I|1|-1|1	排序依据：|名称↑	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:172-193 [AssignAnimal]
+DFHack GUI Overlay control: Sort by:|race\x1f|I|1|-1|1	排序依据：|物种↓	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:172-193 [AssignAnimal]
+DFHack GUI Overlay control: Sort by:|race\x1e|I|1|-1|1	排序依据：|物种↑	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:203-218 [AssignAnimal]
+DFHack GUI Overlay control: Min status:|Unknown|B|4|-1|1	最低安置状态：|未知	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:203-218 [AssignAnimal]
+DFHack GUI Overlay control: Min status:|Assigned here|B|4|-1|1	最低安置状态：|分配至此	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:203-218 [AssignAnimal]
+DFHack GUI Overlay control: Min status:|In other pasture|B|4|-1|1	最低安置状态：|其他牧场	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:203-218 [AssignAnimal]
+DFHack GUI Overlay control: Min status:|In other pit/pond|B|4|-1|1	最低安置状态：|其他坑池	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:203-218 [AssignAnimal]
+DFHack GUI Overlay control: Min status:|On restraint|B|4|-1|1	最低安置状态：|被拴住	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:203-218 [AssignAnimal]
+DFHack GUI Overlay control: Min status:|In built cage|B|4|-1|1	最低安置状态：|已安装笼中	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:203-218 [AssignAnimal]
+DFHack GUI Overlay control: Min status:|In loose cage|B|4|-1|1	最低安置状态：|散放笼中	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:203-218 [AssignAnimal]
+DFHack GUI Overlay control: Min status:|Roaming|B|4|-1|1	最低安置状态：|游荡	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:203-218 [AssignAnimal]
+DFHack GUI Overlay control: Min status:|In pasture|B|4|-1|1	最低安置状态：|牧场中	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:203-218 [AssignAnimal]
+DFHack GUI Overlay control: Min status:|In pit/pond|B|4|-1|1	最低安置状态：|坑池中	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:203-218 [AssignAnimal]
+DFHack GUI Overlay control: Min status:|In stockpiled cage|B|4|-1|1	最低安置状态：|储物笼中	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:219-234 [AssignAnimal]
+DFHack GUI Overlay control: Max status:|Unknown|B|4|-1|1	最高安置状态：|未知	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:219-234 [AssignAnimal]
+DFHack GUI Overlay control: Max status:|Assigned here|B|4|-1|1	最高安置状态：|分配至此	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:219-234 [AssignAnimal]
+DFHack GUI Overlay control: Max status:|In other pasture|B|4|-1|1	最高安置状态：|其他牧场	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:219-234 [AssignAnimal]
+DFHack GUI Overlay control: Max status:|In other pit/pond|B|4|-1|1	最高安置状态：|其他坑池	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:219-234 [AssignAnimal]
+DFHack GUI Overlay control: Max status:|On restraint|B|4|-1|1	最高安置状态：|被拴住	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:219-234 [AssignAnimal]
+DFHack GUI Overlay control: Max status:|In built cage|B|4|-1|1	最高安置状态：|已安装笼中	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:219-234 [AssignAnimal]
+DFHack GUI Overlay control: Max status:|In loose cage|B|4|-1|1	最高安置状态：|散放笼中	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:219-234 [AssignAnimal]
+DFHack GUI Overlay control: Max status:|Roaming|B|4|-1|1	最高安置状态：|游荡	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:219-234 [AssignAnimal]
+DFHack GUI Overlay control: Max status:|In pasture|B|4|-1|1	最高安置状态：|牧场中	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:219-234 [AssignAnimal]
+DFHack GUI Overlay control: Max status:|In pit/pond|B|4|-1|1	最高安置状态：|坑池中	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:219-234 [AssignAnimal]
+DFHack GUI Overlay control: Max status:|In stockpiled cage|B|4|-1|1	最高安置状态：|储物笼中	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:252-267 [AssignAnimal]
+DFHack GUI Overlay control: Min disposition:|Unknown|B|4|-1|1	最低驯服状态：|未知	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:252-267 [AssignAnimal]
+DFHack GUI Overlay control: Min disposition:|Pet|B|4|-1|1	最低驯服状态：|宠物	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:252-267 [AssignAnimal]
+DFHack GUI Overlay control: Min disposition:|Domesticated|B|4|-1|1	最低驯服状态：|已驯服	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:252-267 [AssignAnimal]
+DFHack GUI Overlay control: Min disposition:|Partially trained|B|4|-1|1	最低驯服状态：|部分驯服	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:252-267 [AssignAnimal]
+DFHack GUI Overlay control: Min disposition:|Wild (trainable)|B|4|-1|1	最低驯服状态：|野生（可驯服）	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:252-267 [AssignAnimal]
+DFHack GUI Overlay control: Min disposition:|Untrainable|B|4|-1|1	最低驯服状态：|不可驯服	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:252-267 [AssignAnimal]
+DFHack GUI Overlay control: Min disposition:|Hostile|B|4|-1|1	最低驯服状态：|敌对	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:268-283 [AssignAnimal]
+DFHack GUI Overlay control: Max disposition:|Unknown|B|4|-1|1	最高驯服状态：|未知	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:268-283 [AssignAnimal]
+DFHack GUI Overlay control: Max disposition:|Pet|B|4|-1|1	最高驯服状态：|宠物	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:268-283 [AssignAnimal]
+DFHack GUI Overlay control: Max disposition:|Domesticated|B|4|-1|1	最高驯服状态：|已驯服	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:268-283 [AssignAnimal]
+DFHack GUI Overlay control: Max disposition:|Partially trained|B|4|-1|1	最高驯服状态：|部分驯服	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:268-283 [AssignAnimal]
+DFHack GUI Overlay control: Max disposition:|Wild (trainable)|B|4|-1|1	最高驯服状态：|野生（可驯服）	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:268-283 [AssignAnimal]
+DFHack GUI Overlay control: Max disposition:|Untrainable|B|4|-1|1	最高驯服状态：|不可驯服	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:268-283 [AssignAnimal]
+DFHack GUI Overlay control: Max disposition:|Hostile|B|4|-1|1	最高驯服状态：|敌对	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:301-314 [AssignAnimal]
+DFHack GUI Overlay control: Egg layers:|Include|I|1|-1|1	产蛋动物：|包含	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:301-314 [AssignAnimal]
+DFHack GUI Overlay control: Egg layers:|Only|I|1|-1|1	产蛋动物：|仅此类	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:301-314 [AssignAnimal]
+DFHack GUI Overlay control: Egg layers:|Exclude|I|1|-1|1	产蛋动物：|排除	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:315-328 [AssignAnimal]
+DFHack GUI Overlay control: Grazers:|Include|I|1|-1|1	食草动物：|包含	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:315-328 [AssignAnimal]
+DFHack GUI Overlay control: Grazers:|Only|I|1|-1|1	食草动物：|仅此类	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:315-328 [AssignAnimal]
+DFHack GUI Overlay control: Grazers:|Exclude|I|1|-1|1	食草动物：|排除	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:329-342 [AssignAnimal]
+DFHack GUI Overlay control: Juveniles:|Include|I|1|-1|1	幼年动物：|包含	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:329-342 [AssignAnimal]
+DFHack GUI Overlay control: Juveniles:|Only|I|1|-1|1	幼年动物：|仅此类	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:329-342 [AssignAnimal]
+DFHack GUI Overlay control: Juveniles:|Exclude|I|1|-1|1	幼年动物：|排除	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:349-360 [AssignAnimal]
+DFHack GUI Overlay control: |status|I|0|-1|0	|安置状态	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:349-360 [AssignAnimal]
+DFHack GUI Overlay control: |status\x1f|I|0|-1|0	|安置状态↓	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:349-360 [AssignAnimal]
+DFHack GUI Overlay control: |status\x1e|I|0|-1|0	|安置状态↑	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:361-371 [AssignAnimal]
+DFHack GUI Overlay control: |dist|I|0|-1|0	|距离	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:361-371 [AssignAnimal]
+DFHack GUI Overlay control: |dist\x1f|I|0|-1|0	|距离↓	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:361-371 [AssignAnimal]
+DFHack GUI Overlay control: |dist\x1e|I|0|-1|0	|距离↑	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:372-382 [AssignAnimal]
+DFHack GUI Overlay control: |disposition|I|0|-1|0	|驯服状态	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:372-382 [AssignAnimal]
+DFHack GUI Overlay control: |disposition\x1f|I|0|-1|0	|驯服状态↓	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:372-382 [AssignAnimal]
+DFHack GUI Overlay control: |disposition\x1e|I|0|-1|0	|驯服状态↑	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:383-393 [AssignAnimal]
+DFHack GUI Overlay control: |gender|I|0|-1|0	|性别	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:383-393 [AssignAnimal]
+DFHack GUI Overlay control: |gender\x1f|I|0|-1|0	|性别↓	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:383-393 [AssignAnimal]
+DFHack GUI Overlay control: |gender\x1e|I|0|-1|0	|性别↑	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:394-404 [AssignAnimal]
+DFHack GUI Overlay control: |name|I|0|-1|0	|名称	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:394-404 [AssignAnimal]
+DFHack GUI Overlay control: |name\x1f|I|0|-1|0	|名称↓	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:394-404 [AssignAnimal]
+DFHack GUI Overlay control: |name\x1e|I|0|-1|0	|名称↑	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:405-415 [AssignAnimal]
+DFHack GUI Overlay control: |race|I|0|-1|0	|物种	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:405-415 [AssignAnimal]
+DFHack GUI Overlay control: |race\x1f|I|0|-1|0	|物种↓	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:405-415 [AssignAnimal]
+DFHack GUI Overlay control: |race\x1e|I|0|-1|0	|物种↑	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:1454-1465 [zone.animal_actions]
+DFHack GUI Overlay control: Butcher    |No|I|1|-1|1	屠宰    |否	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:1454-1465 [zone.animal_actions]
+DFHack GUI Overlay control: Butcher    |Yes|I|1|-1|1	屠宰    |是	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:1466-1477 [zone.animal_actions]
+DFHack GUI Overlay control: Geld       |No|I|1|-1|1	阉割       |否	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:1466-1477 [zone.animal_actions]
+DFHack GUI Overlay control: Geld       |Yes|I|1|-1|1	阉割       |是	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:1478-1489 [zone.animal_actions]
+DFHack GUI Overlay control: Adopt      |No|I|1|-1|1	领养      |否	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:1478-1489 [zone.animal_actions]
+DFHack GUI Overlay control: Adopt      |Yes|I|1|-1|1	领养      |是	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:1490-1501 [zone.animal_actions]
+DFHack GUI Overlay control: Has Trainer|No|I|1|-1|1	指定训练员|否	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/zone.lua:1490-1501 [zone.animal_actions]
+DFHack GUI Overlay control: Has Trainer|Yes|I|1|-1|1	指定训练员|是	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/spectate.lua:654-662 [spectate.followpanel normal Label]
+DFHack GUI Overlay control:  spectate:| on |I|0|-1|0	 观察：| 开启 	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/spectate.lua:654-662 [spectate.followpanel normal Label]
+DFHack GUI Overlay control:  spectate:|off |I|0|-1|0	 观察：|关闭 	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stocks.lua:83-89 [stocks.overlay conditional HotkeyLabel]
+DFHack GUI Overlay control: expand all||I|0|-1|1	展开全部|	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stocks.lua:83-89 [stocks.overlay conditional HotkeyLabel]
+DFHack GUI Overlay control: collapse all||I|0|-1|1	折叠全部|	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:847-854 [buildingplan.planner conditional HotkeyLabel]
+DFHack GUI Overlay control: Set filter||I|0|-1|1	设置筛选|	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:847-854 [buildingplan.planner conditional HotkeyLabel]
+DFHack GUI Overlay control: Edit filter||I|0|-1|1	编辑筛选|	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockflow.lua:1250-1262 [stockflow.stockflow conditional HotkeyLabel]
+DFHack GUI Overlay control: Order: |No job selected|I|0|-1|1	订单： |未选择任务	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockflow.lua:1250-1262 [stockflow.stockflow conditional HotkeyLabel]
+DFHack GUI Overlay control: Order: |{job}|I|0|-1|1	订单： |{job}	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockflow.lua:29-38,1263-1277 [stockflow.stockflow conditional HotkeyLabel]
+DFHack GUI Overlay control: Trigger: |Never|I|0|-1|1	触发条件： |从不	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockflow.lua:29-38,1263-1277 [stockflow.stockflow conditional HotkeyLabel]
+DFHack GUI Overlay control: Trigger: |Per empty space|I|0|-1|1	触发条件： |每个空位	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockflow.lua:29-38,1263-1277 [stockflow.stockflow conditional HotkeyLabel]
+DFHack GUI Overlay control: Trigger: |Per stored item|I|0|-1|1	触发条件： |每个存储物品	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockflow.lua:29-38,1263-1277 [stockflow.stockflow conditional HotkeyLabel]
+DFHack GUI Overlay control: Trigger: |Per two empty spaces|I|0|-1|1	触发条件： |每两个空位	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockflow.lua:29-38,1263-1277 [stockflow.stockflow conditional HotkeyLabel]
+DFHack GUI Overlay control: Trigger: |Per two stored items|I|0|-1|1	触发条件： |每两个存储物品	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockflow.lua:29-38,1263-1277 [stockflow.stockflow conditional HotkeyLabel]
+DFHack GUI Overlay control: Trigger: |Per three empty spaces|I|0|-1|1	触发条件： |每三个空位	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockflow.lua:29-38,1263-1277 [stockflow.stockflow conditional HotkeyLabel]
+DFHack GUI Overlay control: Trigger: |Per three stored items|I|0|-1|1	触发条件： |每三个存储物品	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockflow.lua:29-38,1263-1277 [stockflow.stockflow conditional HotkeyLabel]
+DFHack GUI Overlay control: Trigger: |Per four empty spaces|I|0|-1|1	触发条件： |每四个空位	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockflow.lua:29-38,1263-1277 [stockflow.stockflow conditional HotkeyLabel]
+DFHack GUI Overlay control: Trigger: |Per four stored items|I|0|-1|1	触发条件： |每四个存储物品	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/suspendmanager.lua:92-98 [suspendmanager.status normal Label]
+DFHack GUI Overlay control: Not suspended.||I|0|-1|0	未暂停。|	l
+
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/suspendmanager.lua:92-98; native-suspendmanager-reasons.tsv
+DFHack GUI Overlay control: Suspended because: |{suspension}.|I|0|-1|0	暂停原因： |{suspension}。	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:649-659
+DFHack GUI Overlay control:  show Planner |[\x1f]|I|0|-1|0	 显示规划器 |[↓]	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:661-668
+DFHack GUI Overlay control:  hide Planner |[\x1e]|I|0|-1|0	 隐藏规划器 |[↑]	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockpiles.lua:357-414 [MinimizeButton visible hover label]
+DFHack GUI Overlay control:  minimize ||I|0|-1|0	 最小化 |	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockpiles.lua:357-414 [MinimizeButton visible hover label]
+DFHack GUI Overlay control:  restore ||I|0|-1|0	 恢复 |	l

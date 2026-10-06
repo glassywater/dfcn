@@ -1,0 +1,131 @@
+DFHack logistics.autoretrain：安装版 Lua 绘制链与可见文本提取
+
+材料性质
+本文件来自安装版可读 Lua 原文，不是 Lua 字节码反编译，也不替代原生
+logistics.plug.dll / dfhack.dll 的反编译。原生状态函数的结果进入下述
+Lua 绘制链；原生反编译材料由同目录的配套材料另行记录。
+这是来源提取材料，不是测试、检查报告或游戏内效果记录。
+
+来源根目录
+D:/program/steam/steamapps/common/DFHack/hack/lua/
+以下行号均为该安装目录中当前可读源码的一基行号。
+
+组件、注册与显示范围
+1. plugins/logistics.lua:1：local _ENV = mkmodule('plugins.logistics')。
+2. plugins/logistics.lua:274-282：AutoretrainOverlay 继承 overlay.OverlayWidget；
+   desc='Adds toggle to pets screen for autoretraining partially trained pets.'；
+   default_pos={x=51, y=-4}；default_enabled=true；
+   viewscreens='dwarfmode/Info/CREATURES/PET'；frame={w=36,h=5}；
+   frame_inset={l=0,r=0,t=2,b=0}。
+3. plugins/logistics.lua:324：OVERLAY_WIDGETS = {autoretrain=AutoretrainOverlay}。
+   本模块的注册集合只有 autoretrain，没有同框替换成其他组件的分支。
+4. plugins/overlay.lua:294-308：load_widgets 读取 OVERLAY_WIDGETS；303-305 行
+   以 env_name .. '.' .. widget_name 拼出实例名，因此实例为
+   logistics.autoretrain。
+5. plugins/overlay.lua:311-322：C++ 调用 rescan；315-319 行遍历已知插件，
+   require('plugins.' .. plugin)，将插件名和模块环境交给 load_widgets；
+   322 行同样扫描脚本模块。
+6. plugins/overlay.lua:269-290：load_widget 取视图范围；未指定配置状态时
+   使用 default_enabled，未指定位置时使用 default_pos，再建立 frame。
+   以上坐标是安装源码的默认位置，不声称读取过正在运行的窗口位置。
+7. 对安装版 hack/lua/plugins 和 hack/scripts 中 viewscreens、
+   CREATURES/PET、Pets/Livestock 及默认 y=-4 的来源追溯，只有上述
+   AutoretrainOverlay 同时绑定 CREATURES/PET 并声明默认位置 {51,-4}。
+   sort/info.lua:438、526 绑定的是 CREATURES/AssignWorkAnimal，
+   sort/info.lua:471 的 Pets/Livestock 路径用于工作动物分配列表，
+   不构成此框的另一种标签。全局 dwarfmode overlays 可以同屏，
+   用户位置配置也可能移动其他组件；它们不是此组件的文本分支。
+
+文本生成链
+1. plugins/logistics.lua:292-312 构造一个 medium 边框 Panel 和 HelpButton。
+   Panel: frame={t=0,h=3}，frame_style=gui.FRAME_MEDIUM，
+   frame_background=gui.CLEAR_PEN。
+2. plugins/logistics.lua:298-305 构造 widgets.ToggleHotkeyLabel：
+   view_id='toggle'；key='CUSTOM_CTRL_A'；label='Autoretrain livestock:'；
+   on_change 调用 logistics_setFeature(val,'autoretrain')。
+   没有传入 options、key_back、label_width 或 label_below。
+3. gui/widgets/labels/toggle_hotkey_label.lua:9-13：继承 CycleHotkeyLabel；
+   options={{label='On',value=true,pen=COLOR_GREEN},
+            {label='Off',value=false}}。
+   本框所有状态标签只有 On、Off。未设置第三选项，也没有按宠物种类、
+   训练程度、世界状态或其他物流功能改写 label 的分支。
+4. gui/widgets/labels/cycle_hotkey_label.lua:35-45：key_sep=': '、option_gap=1、
+   label_below=false、initial_option=1。
+   48-61 行创建文本 token：按键 token 与固定标签，然后一格 gap，
+   然后 getOptionLabel() 返回的动态状态标签。
+5. gui/widgets/labels/label.lua:136-138、179-199：对文本 token 求值；
+   gui.getKeyDisplay(token.key) 产生动态按键显示，接 token.key_sep，
+   接固定标签。gui.lua:219-223 将字符串键名映射为 df.interface_key，
+   然后调用原生 dscreen.getKeyDisplay。
+   截图中显示 Ctrl+a，但源码通过 CUSTOM_CTRL_A 动态读取键名显示；
+   Ctrl+a 不是本组件另一个待译词条，不能把截图按键绑定写死成标签。
+
+完整语义分支
+开启：plugins/logistics.lua:315-317 每帧调用
+      self.subviews.toggle:setOption(logistics_getFeature('autoretrain'))。
+      返回 true 时选 On，pen=COLOR_GREEN。
+      标准按键显示下形成 Ctrl+a: Autoretrain livestock: On。
+关闭：同一调用返回 false 时选 Off，使用默认文本 pen。
+      标准按键显示下形成 Ctrl+a: Autoretrain livestock: Off。
+选项解析：gui/widgets/labels/cycle_hotkey_label.lua:86-107 根据选项 value
+          查找对应 index；未匹配才按 index 查找，仍未匹配回到第1项。
+          所有路径仍只能选 On/Off，不产生其他英文文本。
+状态文字读取：同文件 110-120 返回所选 option.label，123-124 返回 value。
+前向切换：同文件 71-83 在两项间循环，末项回到首项，调用 on_change。
+鼠标点击：同文件 133-141，先交给父类按键处理；左键命中且可用时 cycle。
+          此组件没有 key_back，所以没有后向快捷键及额外按键文字。
+
+布局和绘制分支（不增加语义文字）
+宽屏：plugins/logistics.lua:320-321，parent_rect.width >= 143 时
+      self.frame_inset.t=0。
+窄屏：同一条件否则 self.frame_inset.t=2。
+      两种布局采用相同固定标签、相同二选状态和同一帮助按钮。
+悬停：gui/widgets/labels/cycle_hotkey_label.lua:65-68，shouldHover() 总为 true；
+      gui/widgets/labels/label.lua:342-349 使用鼠标命中结果传给 render_text；
+      73-89、140-159 的 hover 分支改变 pen/前背景颜色，136-138 的文本
+      求值没有按 hover 改写内容；因此没有悬停附加文字或 tooltip。
+状态颜色：On 的选项显式 COLOR_GREEN，Off 未设置 pen；
+          hover/disabled 的通用绘制分支改变 pen，不添加第三个状态词。
+
+切换行为分支（不增加本框文本）
+plugins/logistics.lua:302-304：无论 true/false，先
+logistics_setFeature(val,'autoretrain')；只有 val=true 才调用 refresh_list。
+plugins/logistics.lua:284-289：refresh_list 通过
+dfhack.gui.getWidget(df.global.game.main_interface.info.creatures,
+                     'Tabs','Pets/Livestock',0,0) 获取列表；
+取到 pet_list 才将 pet_list.sort_flags.NEEDS_RESORTED=true，取不到不处理。
+'Tabs' 与 'Pets/Livestock' 是原生 widget 定位名，不在本框绘制。
+false 分支、列表存在/不存在分支均没有新增可见字符串。
+
+边框品牌和帮助按钮
+品牌：gui.lua:1278-1279 返回 medium frame；1309-1324 绘制边框，
+      signature_pen ~= false 时在右下绘制字面量 "DFHack"。
+      logistics 的 Panel 没有禁用该签名，因此与截图一致。
+      DFHack 为品牌，保留原文；不是未翻译的状态标签。
+帮助：plugins/logistics.lua:311，widgets.HelpButton{command='logistics'}。
+      gui/widgets/buttons/help_button.lua:6-7 创建中心 pen：
+      贴图 textures.tp_control_panel 的第9项，字符回退 string.byte('?')；
+      24-28 行 frame={t=0,r=1,w=3,h=1}，pen_center=help_pen_center。
+      gui/widgets/buttons/configure_button.lua:9-14 定义左右贴图及
+      '['、']' 字符回退；42-57、60-68 绘制三个 tile token。
+      图形/字符路径显示同一帮助图标；问号和括号是符号，不翻译。
+帮助点击：help_button.lua:30-32 先 command=self.command .. ' '，
+          点击时 dfhack.run_command('gui/launcher',command)，即另开
+          gui/launcher 的 logistics 帮助；不是在本框显示第三种内容。
+          该组件没有定义 tooltip 文案。
+
+不属于截图框的字符串
+plugins/logistics.lua:276 的 desc 是控制面板介绍；
+logistics.lua:9-268 的 console status/参数/命令输出不由此 Panel 绘制。
+gui.lua:1327-1335 的可选 frame_title 及 1337-1343 的 PAUSE FORCED
+是通用边框能力；本 Panel 未传 frame_title，Panel 的 parent 是
+AutoretrainOverlay，后者未设置 force_pause，因此它们不构成本组件
+此处的可见分支。gui/widgets/containers/panel.lua:49-67、495-502
+记录上述属性及父级 force_pause 的读取。
+
+待汉化字段边界
+固定语义标签：Autoretrain livestock:
+布尔状态字段：On、Off
+控制面板元数据：Adds toggle to pets screen for autoretraining partially trained pets.
+保持动态或原样：CUSTOM_CTRL_A 的按键显示、': '、单格 gap、DFHack、?、[、]。
+以上提取不声称观察过修改后的游戏内显示。

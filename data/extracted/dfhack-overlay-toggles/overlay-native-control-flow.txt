@@ -1,0 +1,233 @@
+DFHack native overlay bridge: recovered control flow
+
+Image: D:\program\steam\steamapps\common\DFHack\hack\plugins\overlay.plug.dll
+Preferred image base: 0x180000000. All coordinates below are RVAs.
+Binary SHA-256: db0a9e5ed6fa42f324a781c08896b2633ef9ce6c4f2d91c8c816200526ad0dbf
+Embedded version: 53.16-r2; git: 02e77acf13049f5661a4da0aa3d876bf95b74903.
+The raw PE, import table, literal xrefs, full disassembly, annotated dispatch
+functions and all screen hook/lambda coordinates are retained alongside this file.
+
+1. Native enable and dispatch entry points
+
+plugin_enable, RVA 0x1d5d0:
+  if current plugin_is_enabled equals requested enable: return CR_OK;
+  if requested enable:
+    remember current window dimensions;
+    CallLuaModuleFunction("plugins.overlay", "rescan", nargs=0, nresults=0);
+  for each of 54 viewscreen method interposes:
+    if !link.apply(requested enable): return CR_FAILURE;
+  plugin_is_enabled = requested enable;
+  return CR_OK.
+
+The 54 links are 18 screens multiplied by feed, logic, and render.
+Recovered screens: adopt_region, choose_game_type, choose_start_site,
+dungeonmode, dwarfmode, export_region, game_cleaner, initial_prep, legends,
+loadgame, new_arena, new_region, savegame, setupadventure, setupdwarfgame,
+title, update_region, world.
+See overlay-native-viewscreen-dispatch.tsv/json for exact RVAs and RTTI types.
+
+plugin_shutdown, RVA 0x1e000:
+  return plugin_enable(out, false).
+
+plugin_onupdate, RVA 0x1de10:
+  if width or height or df::global::init field at offset 0x3c changed:
+    CallLuaModuleFunction("plugins.overlay", "reposition_widgets", 0, 0);
+    remember dimensions and that init field;
+  CallLuaModuleFunction("plugins.overlay", "update_hotspot_widgets", 0, 0);
+  return CR_OK.
+The numeric init field is left unnamed because the assembly establishes the
+coordinate, not the semantic field name.
+
+Common bridge, RVA 0x1d200:
+  CallLuaModuleFunction(out, core.lua_state, "plugins.overlay", function_name,
+                        supplied_nargs, supplied_nresults,
+                        argument_lambda, result_lambda, true);
+  native event timing bookkeeping surrounds the call.
+
+2. Fortress-mode method hooks and their branches
+
+render: RVA 0x1c010
+  original_render(mode);
+  push arguments via lambda RVA 0x15450:
+    Lua argument 1 = viewscreen_dwarfmodest identity's name;
+    Lua argument 2 = PushDFObject(viewscreen_dwarfmodest identity, this);
+  bridge("render_viewscreen_widgets", 2, 0).
+There is no plugin-specific text or toggle branch in this native render hook.
+
+logic: RVA 0x1af30
+  original_logic();
+  bridge("update_viewscreen_widgets", 2, 0), using lambda RVA 0x14d90.
+
+feed: RVA 0x199f0
+  handled = false;
+  if byte length between world fields at offsets 0x112390 and 0x112398 >= 8:
+    original_feed(keys); return;
+  push arguments via lambda RVA 0x15d00:
+    viewscreen class name, PushDFObject(this),
+    PushInterfaceKeys(normalize_text_keys(keys));
+  bridge("feed_viewscreen_widgets", 3, 1);
+  result lambda RVA 0x16920 obtains lua_toboolean(state, -1);
+  if handled: markInputAsHandled();
+  else: original_feed(keys).
+The world fields are left unnamed for the same reason as the init field above.
+This native branch gates input dispatch, not overlay text rendering.
+
+The import table has no Screen::paintString/paintTile renderer. The recovered
+render wrappers contain only original-render dispatch, argument closure setup,
+the shared Lua bridge, and C++ closure/security bookkeeping. Text and toggle
+branches of the overlay framework's providers are consequently in their Lua
+render/widget definitions, not literal switches inside this overlay DLL.
+This conclusion concerns overlay.plug.dll; independent render hooks in other
+native plugins must be traced separately.
+
+3. Lua provider enumeration reached by the native rescan call
+
+Installed source: DFHack\hack\lua\plugins\overlay.lua
+load_widget, lines 269-292:
+  instantiate widget_class{name=env_name .. '.' .. widget_name};
+  capture focus strings from widget.viewscreens;
+  retain/reset per-widget config depending on widget.version;
+  if config.enabled is nil: use widget.default_enabled;
+  sanitize configured/default position and convert to widget.frame;
+  if config.enabled: do_enable(name, quiet=true, skip_save=true).
+
+load_widgets, lines 294-309:
+  read env.OVERLAY_WIDGETS;
+  no map: return; non-table map: print error and return;
+  for every widget_name,widget_class pair:
+    safecall(load_widget, env_name .. '.' .. widget_name, widget_class).
+
+rescan, lines 312-330:
+  reset widget database and load overlay.json;
+  for every plugin from dfhack.internal.listPlugins():
+    pcall(require, 'plugins.' .. plugin);
+    if successful: load_widgets(plugin, plugin_environment);
+  scriptmanager.foreach_module_script(load_widgets);
+  index and sort all loaded widgets;
+  reposition_widgets().
+
+State callback, lines 332-338:
+  SC_WORLD_LOADED -> rescan(), explicitly to pick up active mod widgets.
+
+Installed source: DFHack\hack\lua\script-manager.lua
+foreach_module_script, lines 9-34:
+  for every path returned by dfhack.internal.getScriptPaths():
+    listdir_recursive(path, nil, false);
+    skip directories and non-.lua files;
+    skip paths beginning .git, test/, internal/;
+    optionally preprocess;
+    derive module/script name by removing .lua;
+    pcall(reqscript, module_name);
+    if successful: invoke callback(module_name, script_environment).
+Thus native plugin modules, ordinary module scripts, enabled custom script
+paths, and active mod script paths are in the enumeration domain. The bridge
+contains no logistics-only provider filter.
+
+Installed extra-script source boundary (local configuration and source paths):
+  Dwarf Fortress\dfhack-config\script-paths.txt has only four comment lines,
+  so it adds no + or - custom search path. dfhack-config\scripts has only
+  README.md; save\current\scripts is absent; mods has no Lua; the actual
+  data\installed_mods directory is empty.
+  script-manager.lua lines 80-87 sets the mod roots to
+  ../../workshop/content/975370/, mods/, and data/installed_mods/.
+  Lines 147-193 select active installed versions, then the highest installed
+  version of each other mod; lines 231-237 return scripts_modinstalled for
+  those installed mods and scripts_modactive only for active installed mods.
+  The actual Workshop root is D:\program\steam\steamapps\workshop\content\975370.
+  Its nine installed item directories contain Lua only in item 3752219300.
+  That item's scripts_modinstalled\gui\codex-narrator.lua lines 454-480 exports
+  OVERLAY_WIDGETS={narrator=NarratorOverlay}; its module id is
+  gui/codex-narrator.narrator. This source is therefore enumerated even when
+  that mod is not a member of the loaded world's active mod list.
+  Its sole fixed Overlay label is Read Story [Ctrl+N], with CUSTOM_CTRL_N
+  also rendered by its internal HotkeyLabel. Its reachable reader's finite
+  labels and Reading: + Untitled/original-title branches are recorded in
+  script-fields.tsv and script-render-branches.txt and translated by
+  dfhack-overlay-script-controls.tsv. Stored/generated story prose and
+  nonempty written_content.title remain original dynamic fields; they are
+  not a finite toggle-option domain. These configured disk roots reveal no
+  additional installed OVERLAY_WIDGETS registrant beyond that Workshop one.
+
+4. Lua enable, focus, visible, active and position conditions
+
+do_enable, lines 164-193:
+  config.enabled = true;
+  if widget.hotspot: insert in active_hotspot_widgets;
+  for every widget.viewscreens entry:
+    normalize long/short viewscreen name, discard focus suffix;
+    insert in active_viewscreen_widgets[normalized_name];
+  invoke overlay_onenable when supplied.
+do_disable removes the same entries and invokes overlay_ondisable.
+
+matches_focus_strings, lines 479-496:
+  no focus strings -> true;
+  examine focus strings for current simplified viewscreen;
+  accept dfhack.gui.matchFocusString(full_focus, vs);
+  also accept corresponding dfhack/lua focus against current screen;
+  return false if this viewscreen had focus restrictions but none matched.
+
+_render_viewscreen_widgets, lines 563-576:
+  for every enabled widget attached to the supplied viewscreen:
+    require no concrete vs OR matching focus strings;
+    require utils.getval(widget.visible);
+    render through full-window painter when fullscreen,
+    otherwise through scaled-interface painter.
+  Render does not additionally require widget.active.
+
+render_viewscreen_widgets, lines 580-587:
+  _render_viewscreen_widgets(vs_name, vs);
+  _render_viewscreen_widgets('all', nil);
+  pending force_refresh -> request one full display refresh.
+
+Input path, lines 520-560:
+  native text-entry active -> return false;
+  otherwise current-screen widgets, then 'all' widgets;
+  each requires focus, active, visible, and successful onInput(keys).
+
+OverlayWidget defaults, lines 604-615:
+  default_pos = {-2, -2}; default_enabled=false;
+  fullscreen=false; hotspot=false; viewscreens={}.
+Per-widget default_pos and persisted overlay.json positions can override this.
+The screenshot coordinates are therefore not a fixed provider slot. All
+providers able to attach to the current screen or 'all', including their
+dynamic subviews and text-option branches, are relevant to the same area.
+
+5. Native providers that return visible text through Lua
+
+The installation-wide PE source inventory is native-display-sources.tsv/json:
+78 installed *.plug.dll images with complete import/export coordinates and
+content hashes. Import-call source material is native-display-call-sites.tsv
+and native-display-call-sites.asm. This inventory distinguishes native drawing
+from native functions that return strings to a Lua Label; absence of a native
+text-drawing import does not imply absence of returned display text.
+
+suspendmanager_suspensionDescription(job), RVA 0x16c30 in suspendmanager:
+  eight explicit reason-code branches plus default "External reason";
+  job id absent from manager map -> "not suspended by suspendmanager";
+  disabled plugin -> "suspendmanager disabled";
+  enabled plugin with null manager -> assertion/error, not a display reason.
+  Lua wraps the return as "Suspended because: " + reason + ".".
+  No selected job -> Lua getter "Not suspended."; its render suppresses output.
+The exact reason strings, code/literal RVAs and complete composed sentences
+are native-suspendmanager-reasons.tsv/json/asm.
+
+autolabor_getBalanceStops, Lua wrapper RVA 0x1bc0 in autolabor:
+  returns five strings: staffing, lean-staffing, balanced, lean-skills, skills.
+  Native balance getter range is 0..4, absent/invalid setting defaults to 2.
+  Lua appends "  (staffing <-> skills)".
+autolabor_getStatus, Lua wrapper RVA 0x1970:
+  disabled or engine other than modern -> empty string;
+  modern status implementation RVA 0x55a20 returns:
+    "{laborers} laborers, {specialists} specialists, {generalists} generalists";
+  if guild_rest > 0, inserts " ({guild_rest} on guild rest)" after specialists.
+  Monitor role count uses a separate Lua "{n} starving job{plural_s}" branch.
+Exact source tables, literals and control flow are native-autolabor-overlay-text.*.
+
+df.skill_rating.attrs.caption is actual native enum metadata in dfhack.dll:
+  exported attrs function RVA 0x50d784;
+  attribute table RVA 0xa704f0; stride 16 bytes; caption pointer at offset 8;
+  enum range 0..20; invalid values return separate fallback entry 0xa70640.
+  All 21 enum keys and actual caption strings are native-skill-rating-captions.*.
+  Applying plugins/orders.lua SKIP_RATINGS yields ten displayed options:
+  Dabbling, Novice, Competent, Proficient, Talented, Expert, Accomplished,
+  Master, Grand Master, Legendary.

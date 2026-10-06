@@ -1,0 +1,313 @@
+# Installed DFHack hack/scripts registered Overlay controls. Extracted source/state branches: data/extracted/dfhack-overlay-toggles/script-fields.tsv and script-render-branches.txt.
+# Fields: source category + caption|option|I/B|gap|label_width|keyed<TAB>translated caption|translated option<TAB>l. Original English case/padding is retained in source.
+# Default ToggleHotkeyLabel branch options are On/Off in hack/lua/gui/widgets/labels/toggle_hotkey_label.lua. Non-overlay standalone GUI controls are retained in extraction scope, not this runtime catalog.
+
+# gui/settings-manager.lua:99 DifficultyEmbarkOverlay + DifficultySettingsOverlay; :285 StandingOrdersOverlay inherited (all registered)
+DFHack GUI Overlay control: Apply saved settings for new embarks:|On|I|1|-1|1	新开局应用已保存设置：|开启	l
+DFHack GUI Overlay control: Apply saved settings for new embarks:|Off|I|1|-1|1	新开局应用已保存设置：|关闭	l
+
+# gui/settings-manager.lua:285 WorkDetailsOverlay inherits ImportExportAutoOverlay
+DFHack GUI Overlay control: Load for new embarks:|On|I|1|-1|1	新开局载入：|开启	l
+DFHack GUI Overlay control: Load for new embarks:|Off|I|1|-1|1	新开局载入：|关闭	l
+
+# gui/settings-manager.lua:652 WorkDetailsOverlay labor_mode native MODE_OFF/LEGACY/MODERN/MONITOR
+DFHack GUI Overlay control: Labor automation:|off|I|1|-1|1	劳动自动分配：|关闭	l
+DFHack GUI Overlay control: Labor automation:|legacy (autolabor)|I|1|-1|1	劳动自动分配：|旧模式（autolabor）	l
+DFHack GUI Overlay control: Labor automation:|modern (labormanager)|I|1|-1|1	劳动自动分配：|现代模式（labormanager）	l
+DFHack GUI Overlay control: Labor automation:|monitor (warnings only)|I|1|-1|1	劳动自动分配：|监控模式（仅警告）	l
+
+# idle-crafting.lua:646 IdleCraftingOverlay; plugin orders.can_set_labors controls visibility
+DFHack GUI Overlay control: Allow idle dwarves to satisfy crafting needs:|yes|I|1|-1|1	允许闲暇矮人满足制作需求：|是	l
+DFHack GUI Overlay control: Allow idle dwarves to satisfy crafting needs:|no|I|1|-1|1	允许闲暇矮人满足制作需求：|否	l
+
+# internal/exportlegends/asyncexport.lua:41 LegendsOverlay
+DFHack GUI Overlay control: Also export DFHack extended legends data:|On|I|1|-1|1	同时导出 DFHack 扩展传奇数据：|开启	l
+DFHack GUI Overlay control: Also export DFHack extended legends data:|Off|I|1|-1|1	同时导出 DFHack 扩展传奇数据：|关闭	l
+
+# internal/unit-info-viewer/skills-progress.lua:50 SkillProgressOverlay
+DFHack GUI Overlay control: Progress Bar:|No|I|1|-1|1	进度条：|否	l
+DFHack GUI Overlay control: Progress Bar:|Yes|I|1|-1|1	进度条：|是	l
+
+# internal/unit-info-viewer/skills-progress.lua:61 SkillProgressOverlay
+DFHack GUI Overlay control: Experience:|No|I|1|-1|1	经验：|否	l
+DFHack GUI Overlay control: Experience:|Yes|I|1|-1|1	经验：|是	l
+
+# machine-toggle.lua:210 PlateOverlay fluid_toggle Water/Magma tabs
+DFHack GUI Overlay control: Water:|On|I|1|-1|1	水：|开启	l
+DFHack GUI Overlay control: Water:|Off|I|1|-1|1	水：|关闭	l
+DFHack GUI Overlay control: Magma:|On|I|1|-1|1	岩浆：|开启	l
+DFHack GUI Overlay control: Magma:|Off|I|1|-1|1	岩浆：|关闭	l
+
+# machine-toggle.lua:252/284/295 PlateOverlay Track/Creatures flags
+DFHack GUI Overlay control: Minecarts:|On|I|1|-1|1	矿车：|开启	l
+DFHack GUI Overlay control: Minecarts:|Off|I|1|-1|1	矿车：|关闭	l
+DFHack GUI Overlay control: Creatures:|On|I|1|-1|1	生物：|开启	l
+DFHack GUI Overlay control: Creatures:|Off|I|1|-1|1	生物：|关闭	l
+DFHack GUI Overlay control: Citizens:|On|I|1|-1|1	居民：|开启	l
+DFHack GUI Overlay control: Citizens:|Off|I|1|-1|1	居民：|关闭	l
+
+# machine-toggle.lua:222/232 PlateOverlay FLUID_DEPTHS 0..7
+DFHack GUI Overlay control: Min Depth:|{d}|I|1|-1|1	最小深度：|{d}	l
+DFHack GUI Overlay control: Max Depth:|{d}|I|1|-1|1	最大深度：|{d}	l
+
+# machine-toggle.lua:306/316 PlateOverlay UNIT_WEIGHTS (1000)..(200000)
+DFHack GUI Overlay control: Min Weight:|({d})|I|1|-1|1	最小重量：|({d})	l
+DFHack GUI Overlay control: Max Weight:|({d})|I|1|-1|1	最大重量：|({d})	l
+
+# machine-toggle.lua:363 GearOverlay gear_flags.disengaged inverse
+DFHack GUI Overlay control: State:|On|I|1|-1|1	状态：|开启	l
+DFHack GUI Overlay control: State:|Off|I|1|-1|1	状态：|关闭	l
+
+# prioritize.lua:868 EnRouteOverlay; job.flags.do_now
+DFHack GUI Overlay control: Make top priority:|On|I|1|-1|1	设为最高优先级：|开启	l
+DFHack GUI Overlay control: Make top priority:|Off|I|1|-1|1	设为最高优先级：|关闭	l
+
+# trackstop.lua:140 TrackStopOverlay FRICTION_MAP
+DFHack GUI Overlay control: Friction|None|I|1|-1|1	摩擦力|无	l
+DFHack GUI Overlay control: Friction|Low|I|1|-1|1	摩擦力|低	l
+DFHack GUI Overlay control: Friction|Medium|I|1|-1|1	摩擦力|中	l
+DFHack GUI Overlay control: Friction|High|I|1|-1|1	摩擦力|高	l
+DFHack GUI Overlay control: Friction|Max|I|1|-1|1	摩擦力|最大	l
+
+# trackstop.lua:195 RollerOverlay SPEED_MAP
+DFHack GUI Overlay control: Speed|Low|I|1|-1|1	速度|低	l
+DFHack GUI Overlay control: Speed|Medium|I|1|-1|1	速度|中	l
+DFHack GUI Overlay control: Speed|High|I|1|-1|1	速度|高	l
+DFHack GUI Overlay control: Speed|Higher|I|1|-1|1	速度|较高	l
+DFHack GUI Overlay control: Speed|Max|I|1|-1|1	速度|最大	l
+
+# trackstop.lua:126 TrackStopOverlay dump_direction; native use_dump=false
+DFHack GUI Overlay control: Dump|None|I|1|-1|1	倾倒|无	l
+
+# gui/settings-manager.lua:70/84 inherited Difficulty overlays
+DFHack GUI Overlay control: Save settings||I|0|-1|1	保存设置|	l
+DFHack GUI Overlay control: Load saved settings||I|0|-1|1	载入已保存设置|	l
+
+# gui/settings-manager.lua:256/270 StandingOrdersOverlay inherited
+DFHack GUI Overlay control: Save standing orders (all tabs)||I|0|-1|1	保存常驻命令（所有页签）|	l
+DFHack GUI Overlay control: Load saved standing orders||I|0|-1|1	载入已保存常驻命令|	l
+
+# gui/settings-manager.lua:256/270 WorkDetailsOverlay inherited
+DFHack GUI Overlay control: Save work details||I|0|-1|1	保存工作安排|	l
+DFHack GUI Overlay control: Load work details||I|0|-1|1	载入工作安排|	l
+
+# gui/settings-manager.lua:461 ReservedBarrelsOverlay
+DFHack GUI Overlay control: Set num reserved||I|0|-1|1	设置预留数量|	l
+
+# gui/mod-manager.lua:747 ModmanageOverlay
+DFHack GUI Overlay control: Mod Manager||I|0|-1|1	模组管理器|	l
+
+# gui/rename.lua:958 WorldRenameOverlay
+DFHack GUI Overlay control: Rename world||I|0|-1|1	重命名世界|	l
+
+# internal/caravan/movegoods.lua:861/907 MoveGoodsOverlay + AssignTradeOverlay
+DFHack GUI Overlay control: DFHack move trade goods||I|0|-1|1	DFHack 搬运贸易物品|	l
+
+# internal/caravan/pedestal.lua:728 PedestalOverlay
+DFHack GUI Overlay control: DFHack assign||I|0|-1|1	DFHack 分配|	l
+
+# internal/caravan/trade.lua:717 TradeOverlay
+DFHack GUI Overlay control: collapse bins||I|0|-1|1	折叠箱子|	l
+
+# internal/caravan/trade.lua:723 TradeOverlay
+DFHack GUI Overlay control: collapse all||I|0|-1|1	全部折叠|	l
+
+# internal/caravan/trade.lua:785 TradeBannerOverlay; unloading/talker enabled condition
+DFHack GUI Overlay control: DFHack trade UI||I|0|-1|1	DFHack 贸易界面|	l
+
+# internal/caravan/tradeagreement.lua:85 TradeAgreementOverlay
+DFHack GUI Overlay control: Select all/none||I|0|-1|1	全选／全不选|	l
+
+# internal/caravan/tradeagreement.lua:93 TradeAgreementOverlay; category map enabled condition
+DFHack GUI Overlay control: Select by value||I|0|-1|1	按价值选择|	l
+
+# internal/exportlegends/racefilter.lua:36 RaceFilterOverlay
+DFHack GUI Overlay control: Filter by race:||I|0|-1|1	按种族筛选：|	l
+
+# uniform-unstick.lua:395 EquipOverlay initial + conflict result
+DFHack GUI Overlay control: Detect conflicts||I|0|-1|1	检测冲突|	l
+
+# uniform-unstick.lua:402 EquipOverlay successful no-conflict result for 5 seconds
+DFHack GUI Overlay control:   No conflicts  ||I|0|-1|1	  没有冲突  |	l
+
+# gui/settings-manager.lua:77/92/263/278 inherited overlays five-second Saved/Loaded flash
+DFHack GUI Overlay control: Saved||I|0|-1|0	已保存|	l
+DFHack GUI Overlay control: Loaded||I|0|-1|0	已载入|	l
+
+# gui/settings-manager.lua:675/689/695 WorkDetailsOverlay native state drives these Lua branches
+DFHack GUI Overlay control: Labor automation is off.||I|0|-1|0	劳动自动分配已关闭。|	l
+DFHack GUI Overlay control: Legacy mode: edits here have no effect.||I|0|-1|0	旧模式：在此编辑不会生效。|	l
+DFHack GUI Overlay control: Monitor mode: no labor management.||I|0|-1|0	监控模式：不管理劳动。|	l
+DFHack GUI Overlay control: Modern mode: 'auto:' details are managed.||I|0|-1|0	现代模式：管理“auto:”工作安排。|	l
+DFHack GUI Overlay control: Manual edits will be overwritten.||I|0|-1|0	手动修改将被覆盖。|	l
+DFHack GUI Overlay control: Priority:||I|0|-1|0	优先级：|	l
+
+# gui/settings-manager.lua:719 WorkDetailsOverlay monitor role_counts n=1 vs n!=1
+DFHack GUI Overlay control: |{d} starving job|I|0|-1|0	|{d} 个缺人任务	l
+DFHack GUI Overlay control: |{d} starving jobs|I|0|-1|0	|{d} 个缺人任务	l
+
+# prioritize.lua:860 EnRouteOverlay clickable name from get_builder_name; custom unit names remain verbatim
+DFHack GUI Overlay control: Job taken by:|*|I|1|-1|0	任务执行者：|*	l
+
+# gui/civ-alert.lua:80/93 shared BigRedButton activate/clear state plus :181 configure branch; exact source row padding
+DFHack GUI Overlay control:  Activate ||I|0|-1|0	   启动   |	l
+DFHack GUI Overlay control:   Clear   ||I|0|-1|0	   解除   |	l
+DFHack GUI Overlay control:  civilian ||I|0|-1|0	   平民   |	l
+DFHack GUI Overlay control:   alert   ||I|0|-1|0	   警报   |	l
+DFHack GUI Overlay control: Click to configure||I|0|-1|0	点击配置|	l
+DFHack GUI Overlay control:   civilian alert  ||I|0|-1|0	    平民警报    |	l
+
+# internal/caravan/trade.lua:976 TradeEthicsWarningOverlay clickable two-row warning
+DFHack GUI Overlay control: Ethics||I|0|-1|0	伦理|	l
+DFHack GUI Overlay control: warning||I|0|-1|0	警告|	l
+
+# internal/exportlegends/racefilter.lua:11/43 default/all-races label; raw creature IDs stay variable
+DFHack GUI Overlay control: All||I|0|-1|0	全部|	l
+
+
+# machine-toggle.lua:263/273 TRACK_WEIGHTS 1,50..2000 uses literal byte 226 (source \xE2 unescaped by reader)
+DFHack GUI Overlay control: Min Weight:|{d}\xE2|I|1|-1|1	最小重量：|{d}Γ	l
+
+# machine-toggle.lua:263/273 TRACK_WEIGHTS final 2000 option appends /Any
+DFHack GUI Overlay control: Min Weight:|{d}\xE2/Any|I|1|-1|1	最小重量：|{d}Γ/任意	l
+
+# machine-toggle.lua:263/273 TRACK_WEIGHTS 1,50..2000 uses literal byte 226 (source \xE2 unescaped by reader)
+DFHack GUI Overlay control: Max Weight:|{d}\xE2|I|1|-1|1	最大重量：|{d}Γ	l
+
+# machine-toggle.lua:263/273 TRACK_WEIGHTS final 2000 option appends /Any
+DFHack GUI Overlay control: Max Weight:|{d}\xE2/Any|I|1|-1|1	最大重量：|{d}Γ/任意	l
+
+# trackstop.lua:126/187 DIRECTION_MAP; string.char(24/26/25/27) preserved as UTF-8 target arrows
+DFHack GUI Overlay control: Dump|North \x18|I|1|-1|1	倾倒|北 ↑	l
+DFHack GUI Overlay control: Dump|East \x1A|I|1|-1|1	倾倒|东 →	l
+DFHack GUI Overlay control: Dump|South \x19|I|1|-1|1	倾倒|南 ↓	l
+DFHack GUI Overlay control: Dump|West \x1B|I|1|-1|1	倾倒|西 ←	l
+DFHack GUI Overlay control: Direction|North \x18|I|1|-1|1	方向|北 ↑	l
+DFHack GUI Overlay control: Direction|East \x1A|I|1|-1|1	方向|东 →	l
+DFHack GUI Overlay control: Direction|South \x19|I|1|-1|1	方向|南 ↓	l
+DFHack GUI Overlay control: Direction|West \x1B|I|1|-1|1	方向|西 ←	l
+
+# agitation-rebalance.lua:502 obfuscate_chance: <1/<33/<51/else; :534/542 IrritationOverlay normal panel
+DFHack GUI Overlay control: Surface:|None|I|1|-1|0	地表：|无	l
+DFHack GUI Overlay control: Surface:|Low|I|1|-1|0	地表：|低	l
+DFHack GUI Overlay control: Surface:|Med|I|1|-1|0	地表：|中	l
+DFHack GUI Overlay control: Surface:|High|I|1|-1|0	地表：|高	l
+DFHack GUI Overlay control: Caverns:|None|I|1|-1|0	洞穴：|无	l
+DFHack GUI Overlay control: Caverns:|Low|I|1|-1|0	洞穴：|低	l
+DFHack GUI Overlay control: Caverns:|Med|I|1|-1|0	洞穴：|中	l
+DFHack GUI Overlay control: Caverns:|High|I|1|-1|0	洞穴：|高	l
+
+# agitation-rebalance.lua:562/668/675/682/689 monitor_debug panel count/chance
+DFHack GUI Overlay control:  Surface:|{d}%|I|1|-1|0	 地表：|{d}%	l
+DFHack GUI Overlay control: Surface attacks:|{d}|I|1|-1|0	地表袭击：|{d}	l
+DFHack GUI Overlay control:  Cavern attacks:|{d}|I|1|-1|0	 洞穴袭击：|{d}	l
+DFHack GUI Overlay control: Invasions erased:|{d}|I|1|-1|0	已清除入侵：|{d}	l
+DFHack GUI Overlay control: Invaders culled:|{d}|I|1|-1|0	已消灭入侵者：|{d}	l
+
+# agitation-rebalance.lua:658 IrritationOverlay two integer fields total/current; source combined count branch
+DFHack GUI Overlay control: Invaders:|{d}/{d}|I|1|-1|0	入侵者：|{d1}/{d2}	l
+
+# agitation-rebalance.lua:529/558/571/629/658 fixed panel text
+DFHack GUI Overlay control: Irrit. Threat||I|0|-1|0	激怒威胁|	l
+DFHack GUI Overlay control: Attack chance||I|0|-1|0	袭击几率|	l
+DFHack GUI Overlay control: FBs:||I|0|-1|0	遗忘兽：|	l
+DFHack GUI Overlay control: Irrit||I|0|-1|0	激怒|	l
+DFHack GUI Overlay control: Invaders:||I|0|-1|0	入侵者：|	l
+
+# Registered Overlay fixed text: mass-remove/sitemap/settings-manager/trade/asyncexport; exact original padding/key hint words
+DFHack GUI Overlay control: Open mass removal||I|0|-1|0	打开批量删除|	l
+DFHack GUI Overlay control: interface.||I|0|-1|0	界面。|	l
+DFHack GUI Overlay control: Hotkey: ||I|0|-1|0	快捷键：|	l
+DFHack GUI Overlay control: Open the general search||I|0|-1|0	打开通用搜索|	l
+DFHack GUI Overlay control: and zoom interface.||I|0|-1|0	与定位界面。|	l
+DFHack GUI Overlay control: Saved settings restored||I|0|-1|0	已恢复保存的设置|	l
+DFHack GUI Overlay control: Barrels reserved for use||I|0|-1|0	预留木桶供|	l
+DFHack GUI Overlay control: by workshop jobs: ||I|0|-1|0	作坊任务使用：|	l
+DFHack GUI Overlay control: Shift+Click checkbox||I|0|-1|0	Shift+点击复选框|	l
+DFHack GUI Overlay control:   select items inside bin||I|0|-1|0	  选择箱内物品|	l
+DFHack GUI Overlay control: Ctrl+Click checkbox||I|0|-1|0	Ctrl+点击复选框|	l
+DFHack GUI Overlay control:   collapse/expand bin||I|0|-1|0	  折叠／展开箱子|	l
+DFHack GUI Overlay control: Shift+Scroll||I|0|-1|0	Shift+滚轮|	l
+DFHack GUI Overlay control: : fast scroll||I|0|-1|0	：快速滚动|	l
+DFHack GUI Overlay control: Exporting ||I|0|-1|0	正在导出 |	l
+DFHack GUI Overlay control: % complete||I|0|-1|0	% 完成|	l
+
+# gui/settings-manager.lua:450 ReservedBarrelsOverlay second row workshop reserved count
+DFHack GUI Overlay control: by workshop jobs: |{d}|I|0|-1|0	作坊任务使用：|{d}	l
+
+# gui/mod-manager.lua:811 NotificationOverlay automatically loaded preset; custom preset name remains verbatim
+DFHack GUI Overlay control: *** Loaded mod list '|*'!|I|0|-1|0	*** 已载入模组列表“|*”！	l
+
+# internal/unit-info-viewer/overall-mood.lua:32 STRESS_LEVELS seven branches; :78/80 render current and long-term
+DFHack GUI Overlay control: Mood: |Miserable|I|0|-1|0	心情：|痛苦	l
+DFHack GUI Overlay control: Mood: |Unhappy|I|0|-1|0	心情：|不开心	l
+DFHack GUI Overlay control: Mood: |Displeased|I|0|-1|0	心情：|不满	l
+DFHack GUI Overlay control: Mood: |Content|I|0|-1|0	心情：|平静	l
+DFHack GUI Overlay control: Mood: |Pleased|I|0|-1|0	心情：|愉快	l
+DFHack GUI Overlay control: Mood: |Happy|I|0|-1|0	心情：|开心	l
+DFHack GUI Overlay control: Mood: |Ecstatic|I|0|-1|0	心情：|狂喜	l
+DFHack GUI Overlay control: Long-term mood: |Miserable|I|0|-1|0	长期心情：|痛苦	l
+DFHack GUI Overlay control: Long-term mood: |Unhappy|I|0|-1|0	长期心情：|不开心	l
+DFHack GUI Overlay control: Long-term mood: |Displeased|I|0|-1|0	长期心情：|不满	l
+DFHack GUI Overlay control: Long-term mood: |Content|I|0|-1|0	长期心情：|平静	l
+DFHack GUI Overlay control: Long-term mood: |Pleased|I|0|-1|0	长期心情：|愉快	l
+DFHack GUI Overlay control: Long-term mood: |Happy|I|0|-1|0	长期心情：|开心	l
+DFHack GUI Overlay control: Long-term mood: |Ecstatic|I|0|-1|0	长期心情：|狂喜	l
+
+# gui/settings-manager.lua:709 WorkDetailsOverlay balance_name. Native autolabor_getBalanceStops(): staffing/lean-staffing/balanced/lean-skills/skills, indexes 0..4; missing or invalid persistent balance defaults to 2 (balanced). The two spaces and the whole native-name + Lua suffix are source literals.
+DFHack GUI Overlay control: |staffing  (staffing <-> skills)|I|0|-1|0	|人员配置  （人员配置 <-> 技能）	l
+DFHack GUI Overlay control: |lean-staffing  (staffing <-> skills)|I|0|-1|0	|偏重人员配置  （人员配置 <-> 技能）	l
+DFHack GUI Overlay control: |balanced  (staffing <-> skills)|I|0|-1|0	|均衡  （人员配置 <-> 技能）	l
+DFHack GUI Overlay control: |lean-skills  (staffing <-> skills)|I|0|-1|0	|偏重技能  （人员配置 <-> 技能）	l
+DFHack GUI Overlay control: |skills  (staffing <-> skills)|I|0|-1|0	|技能  （人员配置 <-> 技能）	l
+
+# gui/settings-manager.lua:719 WorkDetailsOverlay modern role_counts. Native autolabor_getStatus returns empty unless the plugin is enabled and its engine is modern. Otherwise laborers/specialists/generalists are captured in that order; guild_rest>0 inserts the rest count after specialists and before generalists. Monitor mode uses the separate Lua starving-job rows above.
+DFHack GUI Overlay control: |{d} laborers, {d} specialists, {d} generalists|I|0|-1|0	|{d1} 名劳动者，{d2} 名专业劳动者，{d3} 名通才	l
+DFHack GUI Overlay control: |{d} laborers, {d} specialists ({d} on guild rest), {d} generalists|I|0|-1|0	|{d1} 名劳动者，{d2} 名专业劳动者（{d3} 名正在公会休息），{d4} 名通才	l
+
+# Workshop 975370/3752219300/scripts_modinstalled/gui/codex-narrator.lua:469-474 NarratorOverlay. TextButton creates an internal keyed HotkeyLabel with key_sep=': '. Its full source label is 'Read Story [Ctrl+N]'; the 24-cell banner reserves one cell on each side, so translate the fixed phrase and preserve the literal shortcut suffix even when that suffix is clipped by Painter:string. Module registration is gui/codex-narrator.narrator; scripts_modinstalled is scanned regardless of active-world membership.
+DFHack GUI Overlay control: Read Story [Ctrl+N]||I|0|-1|1	阅读故事 [Ctrl+N]|	l
+DFHack GUI Overlay control: Read Story||I|0|-1|1	阅读故事|	l
+
+# Same registered Overlay's reachable NarratorWindow/NarratorScreen helper, source :120-153/:224-230/:239-250. Successful Copy text activation swaps to Copied! for 2000 ms; a clipboard exception keeps the former label and paints no error. No content. is the nil narrative fallback. Reading: appends a whole original written_content title; its only finite fallback is Untitled. Cached/generated narrative prose remains original.
+DFHack GUI Overlay control: Copy text||I|0|-1|1	复制文本|	l
+DFHack GUI Overlay control: Copied!||I|0|-1|0	已复制！|	l
+DFHack GUI Overlay control: No content.||I|0|-1|0	没有内容。|	l
+DFHack GUI Overlay control: Codex Narrator||I|0|-1|0	故事叙述器|	l
+# NarratorScreen retains only the composed frame title, not the book source.
+# A real book can itself be named Untitled; preserve this entire name field.
+DFHack GUI Overlay control: Reading:|Untitled|I|1|-1|0	阅读：|Untitled	l
+DFHack GUI Overlay control: Reading:|*|I|1|-1|0	阅读：|*	l
+
+# machine-toggle.lua:198-207 PlateOverlay TabBar labels; shared hack/lua/gui/widgets/tab_bar.lua:101-129 draws every label twice with Painter:char in graphics mode, once with Painter:string in text mode. Tab index 1..4 selects Water/Magma/Track/Creatures. Generic Water/Magma dictionary spellings are retained in this source-owned catalog.
+DFHack GUI Overlay control: Water||I|0|-1|0	水|	l
+DFHack GUI Overlay control: Magma||I|0|-1|0	岩浆|	l
+DFHack GUI Overlay control: Track||I|0|-1|0	轨道|	l
+DFHack GUI Overlay control: Creatures||I|0|-1|0	生物|	l
+# prioritize.lua:881 EnRouteOverlay get_builder_name(): no assigned builder returns fixed N/A; assigned builder returns a readable/custom name protected by the existing * branch.
+DFHack GUI Overlay control: Job taken by:|N/A|I|1|-1|0	任务执行者：|未分配	l
+# internal/unit-info-viewer/skills-progress.lua:138-151 SkillProgressOverlay annotations: max(0,rating-rusty)<100 renders Lv plus an integer; >=100 renders Lv++. The next experience/threshold numeric field is independent, and all numbers/progress glyphs remain unchanged.
+DFHack GUI Overlay control: Lv|{d}|I|0|-1|0	等级|{d}	l
+DFHack GUI Overlay control: Lv|++|I|0|-1|0	等级|++	l
+# internal/exportlegends/asyncexport.lua:48-57 LegendsOverlay progress; exportlegends.lua:61-77 sets progress_item from the complete per-vector descriptors below, and :1296 starts with basic info. The descriptor token has width=27 (right padding, truncation beyond 27); percentage uses %.2f and retains its exact number. The two relationship descriptors share a visible 27-byte prefix but retain their complete source branches here.
+DFHack GUI Overlay control: Exporting |basic info|I|0|-1|0	正在导出 |基本信息	l
+DFHack GUI Overlay control: Exporting |landmasses|I|0|-1|0	正在导出 |大陆	l
+DFHack GUI Overlay control: Exporting |mountains|I|0|-1|0	正在导出 |山脉	l
+DFHack GUI Overlay control: Exporting |regions|I|0|-1|0	正在导出 |地表区域	l
+DFHack GUI Overlay control: Exporting |underground region|I|0|-1|0	正在导出 |地下区域	l
+DFHack GUI Overlay control: Exporting |rivers|I|0|-1|0	正在导出 |河流	l
+DFHack GUI Overlay control: Exporting |river section|I|0|-1|0	正在导出 |河流分段	l
+DFHack GUI Overlay control: Exporting |sites|I|0|-1|0	正在导出 |地点	l
+DFHack GUI Overlay control: Exporting |constructions|I|0|-1|0	正在导出 |世界建筑	l
+DFHack GUI Overlay control: Exporting |artifacts|I|0|-1|0	正在导出 |神器	l
+DFHack GUI Overlay control: Exporting |historical figures|I|0|-1|0	正在导出 |历史人物	l
+DFHack GUI Overlay control: Exporting |identities|I|0|-1|0	正在导出 |身份	l
+DFHack GUI Overlay control: Exporting |entity populations|I|0|-1|0	正在导出 |组织人口	l
+DFHack GUI Overlay control: Exporting |entities|I|0|-1|0	正在导出 |组织	l
+DFHack GUI Overlay control: Exporting |historical events|I|0|-1|0	正在导出 |历史事件	l
+DFHack GUI Overlay control: Exporting |historical event relationships|I|0|-1|0	正在导出 |历史事件关系	l
+DFHack GUI Overlay control: Exporting |historical event relationship supplements|I|0|-1|0	正在导出 |历史事件关系补充	l
+DFHack GUI Overlay control: Exporting |written contents|I|0|-1|0	正在导出 |著作	l
+DFHack GUI Overlay control: Exporting |poetic forms|I|0|-1|0	正在导出 |诗歌形式	l
+DFHack GUI Overlay control: Exporting |musical forms|I|0|-1|0	正在导出 |音乐形式	l
+DFHack GUI Overlay control: Exporting |dance forms|I|0|-1|0	正在导出 |舞蹈形式	l

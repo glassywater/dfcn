@@ -71,6 +71,7 @@ def deploy_runtime_data(directory: Path) -> None:
                  "dfhack-help-command-overrides.tsv",
                  "dfhack-output-core.tsv", "dfhack-output-translations.tsv",
                  "dfhack-output-stonesense.tsv",
+                 "dfhack-overlay-plugin-controls.tsv", "dfhack-overlay-script-controls.tsv",
                  "procedural-terms.tsv", "procedural-word-senses.tsv",
                  "site-name-decisions.tsv", "site-name-imagery.tsv",
                  "civilization-name-terms.tsv",

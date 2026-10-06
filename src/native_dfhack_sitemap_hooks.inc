@@ -1,22 +1,29 @@
 // Painter:string clips its argument before screen.paintString sees it. The
 // exported CheckPen boundary still owns that Lua call and its complete text.
-// Observe only the installed Sitemap, NotifyOverlay and AssignAnimal List renderers, and copy all strings
-// before returning to DFHack. The native Lua tables and draw remain untouched.
+// Observe the installed Sitemap, NotifyOverlay and AssignAnimal List renderers
+// and actual Label controls. Copy strings before returning to DFHack; no Lua
+// state, widget, callback, or table reference leaves this call.
 #ifdef _WIN32
 struct NativeDfhackSitemapLuaApi {
     NativeDfhackLuaOutputApi stack;
     const char *(*pushstring)(NativeDfhackLuaState *, const char *) = nullptr;
     int (*rawget)(NativeDfhackLuaState *, int) = nullptr;
+    int (*rawgeti)(NativeDfhackLuaState *, int, int64_t) = nullptr;
+    int (*getmetatable)(NativeDfhackLuaState *, int) = nullptr;
+    const void *(*topointer)(NativeDfhackLuaState *, int) = nullptr;
     int (*rawequal)(NativeDfhackLuaState *, int, int) = nullptr;
     int (*toboolean)(NativeDfhackLuaState *, int) = nullptr;
     const char *(*getupvalue)(NativeDfhackLuaState *, int, int) = nullptr;
     NativeDfhackLuaCFunction paint_string = nullptr;
     std::string painter_source, list_source, filtered_source, sitemap_source, notify_source, zone_source;
+    std::string label_source, cycle_source, overlay_source, asyncexport_source, prioritize_source;
 };
 static NativeDfhackSitemapLuaApi g_native_dfhack_sitemap_lua_api;
 static std::atomic_bool g_native_dfhack_sitemap_lua_bound{false};
 
-enum class NativeDfhackChoiceTextOwner : unsigned char { Sitemap, Notification, AnimalAssignment };
+enum class NativeDfhackChoiceTextOwner : unsigned char {
+    Sitemap, Notification, AnimalAssignment, OverlayLabel
+};
 
 struct NativeDfhackSitemapText {
     const unsigned char *grid = nullptr;
@@ -26,6 +33,7 @@ struct NativeDfhackSitemapText {
     NativeDfhackChoiceTextOwner owner = NativeDfhackChoiceTextOwner::Sitemap;
     std::string notification_name;
     std::string full, visible;
+    NativeDfhackOverlayText overlay;
 };
 static std::mutex g_native_dfhack_sitemap_text_mutex;
 static std::vector<NativeDfhackSitemapText> g_native_dfhack_sitemap_text;
@@ -134,6 +142,37 @@ static std::vector<NativeDfhackNotificationText> native_dfhack_notification_text
     return result;
 }
 
+static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
+        const graphicst *gps) {
+    std::vector<NativeDfhackOverlayText> result;
+    if (!native_dfhack_logo_grid_valid(gps)) return result;
+    const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+    std::lock_guard<std::mutex> lock(g_native_dfhack_sitemap_text_mutex);
+    if (epoch != g_native_dfhack_sitemap_text_epoch) return result;
+    for (const auto &text : g_native_dfhack_sitemap_text) {
+        if (text.owner != NativeDfhackChoiceTextOwner::OverlayLabel ||
+                text.epoch != epoch || text.dimx != gps->dimx || text.dimy != gps->dimy ||
+                text.x < 0 || text.y < 0 || text.y >= gps->dimy || text.visible.empty() ||
+                text.visible.size() > static_cast<size_t>(gps->dimx) ||
+                text.x > gps->dimx - static_cast<int>(text.visible.size())) continue;
+        bool current = true;
+        for (size_t at = 0; at < text.visible.size(); ++at) {
+            const size_t tile = static_cast<size_t>(text.x + static_cast<int>(at)) *
+                gps->dimy + text.y;
+            const auto origin = native_text_grid_origin(*gps, tile,
+                native_ui_top_layer_at(*gps, tile));
+            if (!origin.grid || origin.grid != text.grid ||
+                    origin.top_layer != text.top_layer ||
+                    origin.grid[tile * 8] != static_cast<unsigned char>(text.visible[at])) {
+                current = false;
+                break;
+            }
+        }
+        if (current) result.push_back(text.overlay);
+    }
+    return result;
+}
+
 static std::optional<std::string> lookup_native_dfhack_animal_assignment_text(
         const graphicst *gps, int x, int y, std::string_view visible) {
     return lookup_native_dfhack_choice_text(gps, x, y, visible,
@@ -160,6 +199,310 @@ static bool native_dfhack_sitemap_raw_field(NativeDfhackLuaState *state,
     api.pushstring(state, key);
     api.rawget(state, absolute);
     return true;
+}
+
+struct NativeDfhackOverlayLuaStackRestore {
+    NativeDfhackLuaState *state;
+    int top;
+    ~NativeDfhackOverlayLuaStackRestore() {
+        g_native_dfhack_sitemap_lua_api.stack.settop(state, top);
+    }
+};
+
+static std::optional<std::string> native_dfhack_overlay_lua_string(
+        NativeDfhackLuaState *state, int index) {
+    const auto &stack = g_native_dfhack_sitemap_lua_api.stack;
+    if (stack.type(state, index) != 4) return std::nullopt;
+    size_t length = 0;
+    const char *bytes = stack.tolstring(state, index, &length);
+    if (!bytes || length > 65536) return std::nullopt;
+    return std::string(bytes, length);
+}
+
+static bool native_dfhack_overlay_local(NativeDfhackLuaState *state,
+        const NativeDfhackLuaDebug &frame, const char *wanted) {
+    const auto &stack = g_native_dfhack_sitemap_lua_api.stack;
+    const int top = stack.gettop(state);
+    for (int slot = 1; slot <= 64; ++slot) {
+        const char *name = stack.getlocal(state, &frame, slot);
+        if (!name) break;
+        if (!std::strcmp(name, wanted)) return true;
+        stack.settop(state, top);
+    }
+    stack.settop(state, top);
+    return false;
+}
+
+static bool native_dfhack_overlay_class_method(NativeDfhackLuaState *state,
+        int object, const char *method, const std::string &source, int line) {
+    const auto &api = g_native_dfhack_sitemap_lua_api;
+    const auto &stack = api.stack;
+    NativeDfhackOverlayLuaStackRestore restore{state, stack.gettop(state)};
+    if (stack.type(state, object) != 5 || !api.getmetatable(state, object)) return false;
+    int klass = stack.gettop(state);
+    for (int depth = 0; depth < 16; ++depth) {
+        if (!native_dfhack_sitemap_raw_field(state, klass, method)) return false;
+        if (stack.type(state, -1) == 6) {
+            NativeDfhackLuaDebug producer{};
+            if (stack.getinfo(state, ">Su", &producer)) {
+                const auto path = native_dfhack_lua_text(producer.source, 32768);
+                if (path && native_dfhack_lua_source_key(*path) == source &&
+                        producer.linedefined == line) return true;
+            }
+        }
+        stack.settop(state, klass);
+        // class.lua puts the concrete class in an instance's metatable and
+        // stores its parent in raw super. Never execute __index here.
+        if (!native_dfhack_sitemap_raw_field(state, klass, "super") ||
+                stack.type(state, -1) != 5) return false;
+        klass = stack.gettop(state);
+    }
+    return false;
+}
+
+static bool native_dfhack_overlay_option_callback(NativeDfhackLuaState *state,
+        int token, int widget) {
+    const auto &api = g_native_dfhack_sitemap_lua_api;
+    const auto &stack = api.stack;
+    NativeDfhackOverlayLuaStackRestore restore{state, stack.gettop(state)};
+    if (!native_dfhack_sitemap_raw_field(state, token, "text") ||
+            stack.type(state, -1) != 6 || !stack.tocfunction(state, -1)) return false;
+    const int curried = stack.gettop(state);
+    // DFHack curry records the argument count, authored method, and bound
+    // self. Require that self to be this very Label, not a text match.
+    if (!api.getupvalue(state, curried, 1) || !stack.isinteger(state, -1)) return false;
+    int valid = 0;
+    if (stack.tointegerx(state, -1, &valid) != 2 || !valid) return false;
+    stack.settop(state, curried);
+    NativeDfhackLuaDebug producer{};
+    if (!api.getupvalue(state, curried, 2) || stack.type(state, -1) != 6 ||
+            !stack.getinfo(state, ">Su", &producer) || producer.linedefined != 119 ||
+            producer.lastlinedefined != 121 || producer.nparams != 2 || producer.isvararg)
+        return false;
+    const auto source = native_dfhack_lua_text(producer.source, 32768);
+    if (!source || native_dfhack_lua_source_key(*source) != api.cycle_source) return false;
+    stack.settop(state, curried);
+    if (!api.getupvalue(state, curried, 3) || stack.type(state, -1) != 5 ||
+            !api.rawequal(state, -1, widget) || api.getupvalue(state, curried, 4)) return false;
+    return true;
+}
+
+static std::optional<std::string> native_dfhack_overlay_dynamic_text(
+        NativeDfhackLuaState *state, int token, std::string_view overlay_name,
+        std::string_view painted_full) {
+    const auto &api = g_native_dfhack_sitemap_lua_api;
+    const auto &stack = api.stack;
+    NativeDfhackOverlayLuaStackRestore restore{state, stack.gettop(state)};
+    if (overlay_name != "exportlegends.export" ||
+            !native_dfhack_sitemap_raw_field(state, token, "width") ||
+            !stack.isinteger(state, -1)) return std::nullopt;
+    int valid = 0;
+    if (stack.tointegerx(state, -1, &valid) != 27 || !valid) return std::nullopt;
+    stack.settop(state, restore.top);
+    if (!native_dfhack_sitemap_raw_field(state, token, "text") ||
+            stack.type(state, -1) != 6 || stack.tocfunction(state, -1)) return std::nullopt;
+    NativeDfhackLuaDebug producer{};
+    if (!stack.getinfo(state, ">Su", &producer) || producer.linedefined != 52 ||
+            producer.lastlinedefined != 52 || producer.nparams != 0 ||
+            producer.isvararg || producer.nups != 1) return std::nullopt;
+    const auto source = native_dfhack_lua_text(producer.source, 32768);
+    if (!source || native_dfhack_lua_source_key(*source) != api.asyncexport_source)
+        return std::nullopt;
+    stack.settop(state, restore.top);
+    if (!native_dfhack_sitemap_raw_field(state, token, "text")) return std::nullopt;
+    const int function = stack.gettop(state);
+    const char *upvalue = api.getupvalue(state, function, 1);
+    if (!upvalue || std::strcmp(upvalue, "_ENV") || stack.type(state, -1) != 5 ||
+            !native_dfhack_sitemap_raw_field(state, -1, "progress_item")) return std::nullopt;
+    // This exact authored closure is function() return progress_item end.
+    // render_text overwrites its evaluated result at width=27. Read its
+    // actual module environment instead of invoking it or guessing between
+    // the two relationship descriptors that share that visible prefix.
+    auto complete = native_dfhack_overlay_lua_string(state, -1);
+    if (!complete || !complete->starts_with(painted_full) ||
+            complete->find_first_of("\r\n") != std::string::npos) return std::nullopt;
+    return complete;
+}
+
+static bool native_dfhack_overlay_builder_name(NativeDfhackLuaState *state,
+        int token, int widget, std::string_view overlay_name) {
+    const auto &api = g_native_dfhack_sitemap_lua_api;
+    const auto &stack = api.stack;
+    NativeDfhackOverlayLuaStackRestore restore{state, stack.gettop(state)};
+    if (overlay_name != "prioritize.enroute" ||
+            !native_dfhack_sitemap_raw_field(state, widget, "parent_view") ||
+            stack.type(state, -1) != 5) return false;
+    const int parent = stack.gettop(state);
+    if (!native_dfhack_sitemap_raw_field(state, parent, "name") ||
+            native_dfhack_overlay_lua_string(state, -1) !=
+                std::optional<std::string>("prioritize.enroute")) return false;
+    stack.settop(state, parent);
+    if (!native_dfhack_sitemap_raw_field(state, parent, "builder") ||
+            stack.type(state, -1) == 0) return false;
+    stack.settop(state, parent);
+    if (!native_dfhack_sitemap_raw_field(state, token, "text") ||
+            stack.type(state, -1) != 6 || !stack.tocfunction(state, -1)) return false;
+    const int curried = stack.gettop(state);
+    if (!api.getupvalue(state, curried, 1) || !stack.isinteger(state, -1)) return false;
+    int valid = 0;
+    if (stack.tointegerx(state, -1, &valid) != 2 || !valid) return false;
+    stack.settop(state, curried);
+    NativeDfhackLuaDebug producer{};
+    if (!api.getupvalue(state, curried, 2) || stack.type(state, -1) != 6 ||
+            !stack.getinfo(state, ">Su", &producer) || producer.nparams != 1 ||
+            producer.isvararg) return false;
+    const auto source = native_dfhack_lua_text(producer.source, 32768);
+    if (!source || native_dfhack_lua_source_key(*source) != api.prioritize_source) return false;
+    stack.settop(state, curried);
+    if (!api.getupvalue(state, curried, 2)) return false;
+    const int method = stack.gettop(state);
+    if (!api.getupvalue(state, curried, 3) || stack.type(state, -1) != 5 ||
+            !api.rawequal(state, -1, parent) || api.getupvalue(state, curried, 4)) return false;
+    stack.settop(state, method);
+    if (!api.getmetatable(state, parent)) return false;
+    int klass = stack.gettop(state);
+    for (int depth = 0; depth < 16; ++depth) {
+        if (!native_dfhack_sitemap_raw_field(state, klass, "get_builder_name")) return false;
+        if (stack.type(state, -1) == 6 && api.rawequal(state, -1, method)) {
+            // EnRouteOverlay:render holds the actual worker in builder only
+            // while rendering its subviews. Its authored getter returns N/A
+            // only without that worker. A readable name with that spelling
+            // is therefore still a name, independent of caption matching.
+            return true;
+        }
+        stack.settop(state, klass);
+        if (!native_dfhack_sitemap_raw_field(state, klass, "super") ||
+                stack.type(state, -1) != 5) return false;
+        klass = stack.gettop(state);
+    }
+    return false;
+}
+
+static std::optional<NativeDfhackOverlayText> native_dfhack_overlay_label_text(
+        NativeDfhackLuaState *state, std::string_view painted_full) {
+    const auto &api = g_native_dfhack_sitemap_lua_api;
+    const auto &stack = api.stack;
+    NativeDfhackOverlayLuaStackRestore restore{state, stack.gettop(state)};
+    NativeDfhackLuaDebug render{}, body{};
+    if (!stack.getstack(state, 2, &render) || !stack.getinfo(state, "Slu", &render) ||
+            render.linedefined != 101 || render.lastlinedefined != 217 || render.nparams != 9 ||
+            render.isvararg || !stack.getstack(state, 3, &body) ||
+            !stack.getinfo(state, "Slu", &body) || body.linedefined != 346 ||
+            body.lastlinedefined != 350 || body.nparams != 2 || body.isvararg) return std::nullopt;
+    const auto render_source = native_dfhack_lua_text(render.source, 32768);
+    const auto body_source = native_dfhack_lua_text(body.source, 32768);
+    if (!render_source || !body_source ||
+            native_dfhack_lua_source_key(*render_source) != api.label_source ||
+            native_dfhack_lua_source_key(*body_source) != api.label_source) return std::nullopt;
+    if (!native_dfhack_overlay_local(state, render, "obj") || stack.type(state, -1) != 5)
+        return std::nullopt;
+    const int widget = stack.gettop(state);
+    if (!native_dfhack_overlay_local(state, body, "self") || stack.type(state, -1) != 5 ||
+            !api.rawequal(state, -1, widget)) return std::nullopt;
+    stack.settop(state, widget);
+    // List invokes render_text on synthetic rows. Requiring the installed
+    // Label:onRenderBody caller, its same self, and Label class ancestry
+    // excludes those rows even when they happen to contain a catalog label.
+    if (!native_dfhack_overlay_class_method(state, widget, "onRenderBody", api.label_source, 346) ||
+            !native_dfhack_overlay_local(state, render, "token") || stack.type(state, -1) != 5)
+        return std::nullopt;
+    const int token = stack.gettop(state);
+    NativeDfhackOverlayText result;
+    result.full = painted_full;
+    result.widget_id = reinterpret_cast<uintptr_t>(api.topointer(state, widget));
+    const auto string_field = [&](int object, const char *field) -> std::string {
+        const int top = stack.gettop(state);
+        std::optional<std::string> value;
+        if (native_dfhack_sitemap_raw_field(state, object, field))
+            value = native_dfhack_overlay_lua_string(state, -1);
+        stack.settop(state, top);
+        return value ? std::move(*value) : std::string{};
+    };
+    result.view_id = string_field(widget, "view_id");
+    result.caption = string_field(widget, "label");
+    int parent = widget;
+    for (int depth = 0; depth < 16; ++depth) {
+        if (native_dfhack_overlay_class_method(state, parent, "init", api.overlay_source, 616)) {
+            result.overlay_name = string_field(parent, "name");
+            break;
+        }
+        if (!native_dfhack_sitemap_raw_field(state, parent, "parent_view") ||
+                stack.type(state, -1) != 5) break;
+        parent = stack.gettop(state);
+    }
+    stack.settop(state, token);
+    bool text_draw = render.currentline == 190 || render.currentline == 197 ||
+        render.currentline == 203;
+    if (text_draw) {
+        text_draw = native_dfhack_overlay_local(state, render, "text") &&
+            native_dfhack_overlay_lua_string(state, -1) ==
+                std::optional<std::string>(std::string(painted_full));
+        stack.settop(state, token);
+        // On the chained key/sep/text line only the key receives an explicit
+        // Painter pen. A caption spelling identical to its shortcut is still
+        // a caption only on the final string call.
+        if (text_draw) {
+            NativeDfhackLuaDebug painter{};
+            if (!stack.getstack(state, 1, &painter) ||
+                    !native_dfhack_overlay_local(state, painter, "pen") ||
+                    stack.type(state, -1) != 0) text_draw = false;
+            stack.settop(state, token);
+        }
+    }
+    if (!text_draw) {
+        result.role = NativeDfhackOverlayTextRole::Key;
+        return result;
+    }
+    if (native_dfhack_sitemap_raw_field(state, token, "text")) {
+        result.option_dynamic = stack.type(state, -1) == 6;
+        if (auto complete = native_dfhack_overlay_lua_string(state, -1);
+                complete && complete->starts_with(painted_full)) result.full = std::move(*complete);
+    }
+    stack.settop(state, token);
+    if (result.option_dynamic) {
+        if (auto complete = native_dfhack_overlay_dynamic_text(state, token,
+                result.overlay_name, painted_full)) result.full = std::move(*complete);
+        result.option_name = native_dfhack_overlay_builder_name(state, token, widget,
+            result.overlay_name);
+    }
+    if (!native_dfhack_overlay_option_callback(state, token, widget)) return result;
+    result.role = NativeDfhackOverlayTextRole::Option;
+    if (!native_dfhack_sitemap_raw_field(state, widget, "option_idx") ||
+            !stack.isinteger(state, -1)) return std::nullopt;
+    int valid = 0;
+    const int64_t option_idx = stack.tointegerx(state, -1, &valid);
+    if (!valid || option_idx < 1 || option_idx > 65536) return std::nullopt;
+    result.option_idx = static_cast<int>(option_idx);
+    stack.settop(state, token);
+    if (!native_dfhack_sitemap_raw_field(state, widget, "options") ||
+            stack.type(state, -1) != 5) return std::nullopt;
+    api.rawgeti(state, -1, option_idx);
+    const int option = stack.gettop(state);
+    const bool option_table = stack.type(state, option) == 5;
+    if (option_table && !native_dfhack_sitemap_raw_field(state, option, "label")) return std::nullopt;
+    result.option_dynamic = stack.type(state, -1) == 6;
+    if (auto complete = native_dfhack_overlay_lua_string(state, -1);
+            complete && complete->starts_with(painted_full)) result.full = std::move(*complete);
+    stack.settop(state, option);
+    if (option_table && native_dfhack_sitemap_raw_field(state, option, "value")) {
+        const bool sort_owner = result.overlay_name == "sort.info" ||
+            result.overlay_name == "sort.workanimals_filter";
+        const bool named_filter = (result.view_id == "squad" &&
+                (result.caption == "Squad:" || result.caption == " Squad:")) ||
+            (result.view_id == "burrow" && result.caption == "Burrow:");
+        // sort/info.lua:get_squad_options/get_burrow_options compute strings
+        // for numeric entity IDs. all/none sentinels use string values.
+        // A user alias literally named Any must therefore remain untouched.
+        result.option_name = sort_owner && named_filter && stack.isinteger(state, -1);
+        if (result.overlay_name == "preserve-rooms.reserved" && result.view_id == "role" &&
+                stack.type(state, -1) == 5) {
+            api.rawgeti(state, -1, 1);
+            const auto code = native_dfhack_overlay_lua_string(state, -1);
+            result.option_name = code && !code->empty();
+        }
+        result.option_dynamic = result.option_dynamic || result.option_name;
+    }
+    return result;
 }
 
 static std::optional<NativeDfhackChoiceTextOwner> native_dfhack_filtered_list_owner(NativeDfhackLuaState *state,
@@ -342,7 +685,7 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
         const int top = stack.gettop(state);
         if (top != 5 || stack.type(state, 4) != 4 || api.toboolean(state, 5) ||
                 !stack.isinteger(state, 2) || !stack.isinteger(state, 3) ||
-                !stack.checkstack(state, 32)) return;
+                !stack.checkstack(state, 96)) return;
         struct RestoreStack {
             NativeDfhackLuaState *state;
             int top;
@@ -360,12 +703,32 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
         const auto painter_source = native_dfhack_lua_text(painter.source, 32768);
         if (!painter_source || native_dfhack_lua_source_key(*painter_source) != api.painter_source)
             return;
-        // Only List's Label.render_text call owns selectable choice text.
-        // Icon/key draws and standalone Labels never acquire a name ticket.
-        bool owned = false;
+        const char *name = stack.getlocal(state, &painter, 2);
+        if (!name || std::strcmp(name, "text") || stack.type(state, -1) != 4) return;
+        size_t full_length = 0, visible_length = 0;
+        const char *full = stack.tolstring(state, -1, &full_length);
+        const char *visible = stack.tolstring(state, 4, &visible_length);
+        if (!full || !visible || !full_length || full_length > 65536 || !visible_length ||
+                visible_length > 1000 || std::memchr(full, '\n', full_length) ||
+                std::memchr(full, '\r', full_length)) return;
+        stack.settop(state, top);
+        if (!native_dfhack_overlay_local(state, painter, "dx") ||
+                !stack.isinteger(state, -1)) return;
+        int valid_dx = 0;
+        const int64_t dx = stack.tointegerx(state, -1, &valid_dx);
+        if (!valid_dx || dx < 0 || dx > static_cast<int64_t>(full_length) ||
+                visible_length > full_length - static_cast<size_t>(dx) ||
+                std::memcmp(full + dx, visible, visible_length)) return;
+        stack.settop(state, top);
+        auto overlay = native_dfhack_overlay_label_text(state, std::string_view(full, full_length));
+        bool owned = overlay.has_value();
         NativeDfhackChoiceTextOwner owner = NativeDfhackChoiceTextOwner::Sitemap;
+        if (owned) owner = NativeDfhackChoiceTextOwner::OverlayLabel;
         std::string notification_name;
-        for (int level = 2; level <= 5; ++level) {
+        // List rows still require their original authored submit provenance.
+        // Actual Labels use their own onRenderBody/render_text source above;
+        // helper windows need no inferred caption or copied callback owner.
+        for (int level = 2; !owned && level <= 5; ++level) {
             if (!stack.getstack(state, level, &list) || !stack.getinfo(state, "Slu", &list)) break;
             const auto list_source = native_dfhack_lua_text(list.source, 32768);
             if (!list_source || native_dfhack_lua_source_key(*list_source) != api.list_source ||
@@ -383,16 +746,7 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
             }
             break;
         }
-        if (!owned) return;
-        const char *name = stack.getlocal(state, &painter, 2);
-        if (!name || std::strcmp(name, "text") || stack.type(state, -1) != 4) return;
-        size_t full_length = 0, visible_length = 0;
-        const char *full = stack.tolstring(state, -1, &full_length);
-        const char *visible = stack.tolstring(state, 4, &visible_length);
-        if (!full || !visible || !full_length || full_length > 65536 || !visible_length ||
-                visible_length > 1000 || full_length < visible_length ||
-                std::memcmp(full, visible, visible_length) ||
-                std::memchr(full, '\n', full_length) || std::memchr(full, '\r', full_length)) return;
+        if (!owned || (!overlay && dx != 0)) return;
         int valid_x = 0, valid_y = 0;
         const int64_t x = stack.tointegerx(state, 2, &valid_x);
         const int64_t y = stack.tointegerx(state, 3, &valid_y);
@@ -412,6 +766,14 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
         text.notification_name = std::move(notification_name);
         text.full.assign(full, full_length);
         text.visible.assign(visible, visible_length);
+        if (overlay) {
+            overlay->x = text.x;
+            overlay->y = text.y;
+            overlay->full_x = text.x - static_cast<int>(dx);
+            overlay->visible_offset = static_cast<int>(dx);
+            overlay->visible = text.visible;
+            text.overlay = std::move(*overlay);
+        }
         std::lock_guard<std::mutex> lock(g_native_dfhack_sitemap_text_mutex);
         if (text.epoch != g_native_dfhack_sitemap_text_epoch) {
             g_native_dfhack_sitemap_text.clear();
@@ -421,7 +783,7 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
             return previous.x == text.x && previous.y == text.y &&
                 previous.top_layer == text.top_layer;
         });
-        if (g_native_dfhack_sitemap_text.size() < 1024)
+        if (g_native_dfhack_sitemap_text.size() < 4096)
             g_native_dfhack_sitemap_text.push_back(std::move(text));
     } catch (...) {
         // An optional full-text capture must not alter CheckPen's native call.
@@ -460,6 +822,12 @@ static bool bind_native_dfhack_sitemap_lua(HMODULE module) {
         "?lua_pushstring@@YAPEBDPEAUlua_State@@PEBD@Z"));
     api.rawget = reinterpret_cast<decltype(api.rawget)>(GetProcAddress(lua,
         "?lua_rawget@@YAHPEAUlua_State@@H@Z"));
+    api.rawgeti = reinterpret_cast<decltype(api.rawgeti)>(GetProcAddress(lua,
+        "?lua_rawgeti@@YAHPEAUlua_State@@H_J@Z"));
+    api.getmetatable = reinterpret_cast<decltype(api.getmetatable)>(GetProcAddress(lua,
+        "?lua_getmetatable@@YAHPEAUlua_State@@H@Z"));
+    api.topointer = reinterpret_cast<decltype(api.topointer)>(GetProcAddress(lua,
+        "?lua_topointer@@YAPEBXPEAUlua_State@@H@Z"));
     api.rawequal = reinterpret_cast<decltype(api.rawequal)>(GetProcAddress(lua,
         "?lua_rawequal@@YAHPEAUlua_State@@HH@Z"));
     api.toboolean = reinterpret_cast<decltype(api.toboolean)>(GetProcAddress(lua,
@@ -469,7 +837,8 @@ static bool bind_native_dfhack_sitemap_lua(HMODULE module) {
     if (!stack.gettop || !stack.settop || !stack.checkstack || !stack.type ||
             !stack.isinteger || !stack.tointegerx || !stack.tolstring || !stack.tocfunction ||
             !stack.getstack || !stack.getinfo || !stack.getlocal || !api.pushstring ||
-            !api.rawget || !api.rawequal || !api.toboolean || !api.getupvalue) return false;
+            !api.rawget || !api.rawgeti || !api.getmetatable || !api.topointer ||
+            !api.rawequal || !api.toboolean || !api.getupvalue) return false;
     // Bind the native C function through its immutable 53.16-r2 LuaApi.cpp
     // registration, not the script-replaceable dfhack.screen Lua table.
     const auto *base = reinterpret_cast<const unsigned char *>(module);
@@ -511,6 +880,11 @@ static bool bind_native_dfhack_sitemap_lua(HMODULE module) {
     api.sitemap_source = key(hack / L"scripts" / L"gui" / L"sitemap.lua");
     api.notify_source = key(hack / L"scripts" / L"gui" / L"notify.lua");
     api.zone_source = key(hack / L"lua" / L"plugins" / L"zone.lua");
+    api.label_source = key(hack / L"lua" / L"gui" / L"widgets" / L"labels" / L"label.lua");
+    api.cycle_source = key(hack / L"lua" / L"gui" / L"widgets" / L"labels" / L"cycle_hotkey_label.lua");
+    api.overlay_source = key(hack / L"lua" / L"plugins" / L"overlay.lua");
+    api.asyncexport_source = key(hack / L"scripts" / L"internal" / L"exportlegends" / L"asyncexport.lua");
+    api.prioritize_source = key(hack / L"scripts" / L"prioritize.lua");
     g_native_dfhack_sitemap_lua_api = std::move(api);
     g_native_dfhack_sitemap_lua_bound.store(true, std::memory_order_release);
     return true;
@@ -672,6 +1046,8 @@ static std::optional<std::string> lookup_native_dfhack_sitemap_text(
 static std::optional<std::string> lookup_native_dfhack_notification_text(
         const graphicst *, int, int, std::string_view) { return std::nullopt; }
 static std::vector<NativeDfhackNotificationText> native_dfhack_notification_texts(
+        const graphicst *) { return {}; }
+static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
         const graphicst *) { return {}; }
 static std::optional<std::string> lookup_native_dfhack_animal_assignment_text(
         const graphicst *, int, int, std::string_view) { return std::nullopt; }

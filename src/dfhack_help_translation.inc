@@ -86,6 +86,49 @@ using DfhackRawCreatureLabels = std::unordered_map<std::string, std::string>;
 static std::shared_ptr<const DfhackRawCreatureLabels> native_dfhack_raw_creature_labels();
 static std::shared_ptr<const DfhackRawCreatureLabels> native_dfhack_raw_creature_adjectives();
 
+// Captions and options are separate native pens. Keep their source layout
+// and pairing, including captionless and label_below controls, in the catalog.
+struct DfhackOverlayControl {
+    std::string caption, option, caption_target, option_target;
+    int gap = 1, label_width = -1;
+    bool below = false, keyed = true;
+};
+
+static std::optional<DfhackOverlayControl> dfhack_overlay_control(const Rule &rule) {
+    constexpr std::string_view prefix = "DFHack GUI Overlay control: ";
+    if (!rule.source.starts_with(prefix)) return std::nullopt;
+    std::array<std::string, 6> fields;
+    std::string_view tail(rule.source.data() + prefix.size(), rule.source.size() - prefix.size());
+    for (size_t index = 0; index < fields.size(); ++index) {
+        const size_t separator = tail.find('|');
+        if ((index + 1 < fields.size()) != (separator != std::string_view::npos))
+            return std::nullopt;
+        fields[index] = tail.substr(0, separator);
+        if (separator != std::string_view::npos) tail.remove_prefix(separator + 1);
+    }
+    const size_t separator = rule.target.find('|');
+    if (separator == std::string::npos || rule.target.find('|', separator + 1) != std::string::npos ||
+            (fields[0].empty() && fields[1].empty()) ||
+            (fields[2] != "I" && fields[2] != "B") ||
+            (fields[5] != "0" && fields[5] != "1")) return std::nullopt;
+    DfhackOverlayControl control;
+    control.caption = std::move(fields[0]);
+    control.option = std::move(fields[1]);
+    control.caption_target = rule.target.substr(0, separator);
+    control.option_target = rule.target.substr(separator + 1);
+    control.below = fields[2] == "B";
+    control.keyed = fields[5] == "1";
+    try {
+        size_t gap_end = 0, width_end = 0;
+        control.gap = std::stoi(fields[3], &gap_end);
+        control.label_width = std::stoi(fields[4], &width_end);
+        if (gap_end != fields[3].size() || width_end != fields[4].size() ||
+                control.gap < -1 || control.gap > 1000 ||
+                control.label_width < -1 || control.label_width > 1000) return std::nullopt;
+    } catch (...) { return std::nullopt; }
+    return control;
+}
+
 struct DfhackOutputSnapshot {
     std::unordered_map<std::string, std::string> literals, help, values;
     std::vector<Rule> templates;
@@ -96,6 +139,7 @@ struct DfhackOutputSnapshot {
     std::unordered_map<std::string, std::vector<size_t>> stonesense_words;
     std::unordered_map<std::string, std::string> human_captions;
     std::unordered_map<std::string, std::string> gui_fields;
+    std::vector<DfhackOverlayControl> overlay_controls;
     std::vector<Rule> notification_templates;
     std::unordered_map<std::string, std::string> calendar_months;
     std::unordered_map<std::string, std::string> calendar_seasons;
@@ -998,6 +1042,8 @@ void Overlay::load_dfhack_help_catalog() {
             else if (gui_field) {
                 snapshot->gui_fields.insert_or_assign(rule.source, rule.target);
                 capture_translations_.insert_or_assign(rule.source, rule.target);
+                if (auto control = dfhack_overlay_control(rule))
+                    snapshot->overlay_controls.push_back(std::move(*control));
                 constexpr std::string_view notify_scope = "DFHack GUI Notification banner: ";
                 if (rule.source.starts_with(notify_scope) &&
                         rule.source != std::string(notify_scope) + "{d} {s}" &&
@@ -1013,6 +1059,13 @@ void Overlay::load_dfhack_help_catalog() {
             else index_dfhack_help_paragraph(rule);
         }
     }
+    // Match complete fixed options before a dynamic fallback for the same
+    // caption. Registration order and plugin iteration cannot change text.
+    std::stable_sort(snapshot->overlay_controls.begin(), snapshot->overlay_controls.end(),
+        [](const auto &first, const auto &second) {
+            return first.caption.size() + first.option.size() >
+                second.caption.size() + second.option.size();
+        });
     for (const auto &paragraph : dfhack_output_paragraphs_)
         snapshot->literals.emplace(paragraph.source, paragraph.target);
     for (const auto &paragraph : dfhack_help_paragraphs_)
