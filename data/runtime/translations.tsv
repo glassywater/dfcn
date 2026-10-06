@@ -49780,6 +49780,7 @@ Overview sentence: This is mortifying.	真丢人，往哪儿躲才好。	l
 Overview sentence: You have my thanks.	多谢你了。	l
 Preparing for the Caravan ({d} of {d})	为商队的到来做好准备 ({d} of {d})	wt
 Provide the location of specific place	告知某个具体地点的位置	hP
+Related to civilization or other group	与文明或其他团体有关	w
 Respected for preserving the knowledge	因博学多才而受人尊敬	w
 Restarts if completed, checked monthly	完成后重新开始，每月检查。	hP
 Seems a pleasant enough day out there.	看起来外头的天气挺舒适。	hP
@@ -70417,6 +70418,7 @@ Rampage of {a} in the wilds.	在荒野中，{a1}的肆虐事件。	htEi
 Real world extinct creatures	现实世界中的灭绝生物	l
 Real-world extinct creatures	现实世界中的灭绝生物
 Refuse to comply with demand	拒绝服从要求	hP
+Related to historical figure	与历史人物有关	w
 Remove dumping designations.	移除倾倒标记。	hj
 Remove melting designations.	移除熔化标记。	hj
 Reveal All Historical Events	显示全部历史事件
@@ -81947,6 +81949,7 @@ Age of {s} within {p}.	在{p1}，{s1}时代。	htEi
 Agreed to build temple	已同意建造神殿	wi
 Air Race in the wilds.	在荒野中，飞行竞赛。	hEi
 Allow Mythical Healing	允许神话治疗
+Allow artist to choose	让艺术家自行选择	w
 Allow non-plant/animal	允许非动植物制品	wi
 Ambush (thief, nature)	伏击：荒野盗贼	w
 An Introduction to {b}	{b}入门	hbti
@@ -84278,6 +84281,7 @@ I visited {e} in {f}.	我于{f1}到访了{e1}。	hPt
 I will fight no more.	我不会再战斗了。	hP
 I'm traveling to {e}.	我正在前往{e1}。	hPt
 I'm with you on this.	这件事我支持你。	hP
+Image information for	图像信息：	wl
 Importing wildlife...	正在导入野生动物……
 It Must Have Been {b}	一定是{b}	hbti
 It giggles at random.	它不时无缘无故地咯咯笑。	h
@@ -89493,6 +89497,7 @@ Skill rating: Great	卓越	li
 Skill status: Rusty	生疏	li
 Smoothing blueprint	打磨蓝图	wo
 Sort units by name.	按名称对单位排序。	hj
+Specify a new image	指定新图像	w
 Spread rumor of {v}	传播{v1}的传闻	hPt
 Spring has arrived!	春季来临了！	hP
 Stagnant salt water	咸死水	wl
@@ -105432,6 +105437,7 @@ Refuse to yield	拒绝投降	hP
 Reinforced Wall	加固墙体	wi
 Reject the joke	不接受这个笑话	hP
 Related Regions	相关区域	h
+Related to site	与地点有关	w
 Remove an item.	脱下一件物品。	hj
 Remove building	拆除建筑	wli
 Remove dumping 	移除倾倒指定。	w
@@ -110067,6 +110073,7 @@ Elite Wrestler	精英摔跤手	wi
 Enable caveins	启用塌方	w
 Enable weather	启用天气	w
 Excess Weight:	超出载重：	hP
+Existing image	现有图像	w
 Explore today.	今天去探索一番。	hP
 FPS: {d} ({d})	FPS: {d} ({d})	wt
 Famous brawler	名声显赫的斗士	w
