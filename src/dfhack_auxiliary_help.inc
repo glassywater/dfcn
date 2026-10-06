@@ -283,6 +283,7 @@ std::vector<Match> dfhack_auxiliary_matches;
 #include "dfhack_save_reminder.inc"
 #include "dfhack_input_monitor.inc"
 #include "dfhack_warn_stranded.inc"
+#include "dfhack_uniform_unstick.inc"
 #include "dfhack_unretire_anyone.inc"
 #include "dfhack_tile_browser.inc"
 #include "dfhack_suspendmanager.inc"
