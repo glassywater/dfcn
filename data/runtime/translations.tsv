@@ -35618,7 +35618,7 @@ It started at {p} and ended at {p} in the wilds	在荒野中，从{p1}出发，�
 Its outer surface seems to flow about its body.	它的外表似乎在绕着身体流动。	h
 Leave this menu and view this creature's sheet.	离开此菜单，并查看此生物的详情页。	hj
 Leave this menu and view this creature's sheet.	离开该菜单并查看这个生物的列表.	w
-Native Legends civilization crumbled completely	政权已彻底崩溃	h
+Native Legends civilization crumbled completely	文明已彻底崩溃	h
 Native Legends living gods and beasts held sway	活着的神灵与强大的野兽主宰着世界	h
 Native history collection {s} Race in the wilds	在荒野中，{s1}赛跑	htEi
 Native history collection {s} of {p} during {e}	在{e1}期间，{p1}的{s1}	htEi
@@ -36984,7 +36984,7 @@ Leave this menu and recenter on this creature.	离开该菜单并重定位至该
 Milliseconds interface shutdown after recenter	重新定位后接口关闭毫秒数	w
 Minimum number of soldiers to follow new order	执行新命令所需的最少士兵人数	wl
 Mod details label: Earliest compatible version	最早兼容版本：	l
-Native Legends final battles of ancient powers	最后的古老势力进行了它们最后的战斗	h
+Native Legends final battles of ancient powers	最后的古老权能强者展开了最后的战斗	h
 Native Legends war natural association {n} {s}	{n1}天生厌恶敌方与{s1}的内在联系	ht
 Native history collection title of {p} at {p}.	在{p2}，{p1}。	htEi
 Native history collection title of {p} in {d}.	{d1}年的{p1}。	htEi
@@ -44544,7 +44544,7 @@ Land holder production trigger {d} (mods)	封地贵族创造财富阈值 {d}（�
 Move keyboard cursor down and right, fast	向右下移动键盘光标，快速	w
 Native Legends commemorative festival {e}	举行了纪念“{e1}”的节庆	ht
 Native Legends fearsome beast attacks {s}	一只可怕的{s1}来袭！	ht
-Native Legends great powers still existed	世上仍存在强大的势力	h
+Native Legends great powers still existed	世上仍存在权能强者	h
 Native Legends war artifact ownership {i}	关于{i1}归属的争端	ht
 Native Legends war disturbed eternal rest	原本永恒的安息受到打扰	h
 Native history collection {s} Race at {p}	在{p1}，{s1}赛跑	htEi
@@ -45789,7 +45789,7 @@ Adventurer log reputation: rumored enemy	传闻中的敌人	h
 Adventurer log reputation: rumored thief	传闻中的盗贼	h
 Adventurer log reputation: trade partner	贸易伙伴	h
 Affects healing rate of damaged tissues.	影响受损组织的愈合速度。	w
-Age of the {s} and the {s} in the wilds.	在荒野中，{s1}与{s2}时代。	htEi
+Age of the {s} and the {s} in the wilds.	在荒野中，{s1}与{s2}的时代。	htEi
 Agree to have {e} accept homage from {e}	同意让{e1}接受{e2}的臣服	hPt
 Announcement combat ability []: Paralyze	引发麻痹	l
 Announcement combat attack-verb []: bash	猛击	l
@@ -46242,7 +46242,7 @@ Minimum Number of High-Elevation Squares	高海拔方格最少数量
 Minimum Number of High-Volcanism Squares	高火山活动度方格最少数量
 Move keyboard cursor down and left, fast	向左下移动键盘光标，快速	w
 My apologies, but we're still unloading.	抱歉，我们还在卸货。	hP
-Native Legends great powers had returned	强大的势力已重返世界	h
+Native Legends great powers had returned	权能强者已重返世界	h
 Native Legends significant war cause {s}	这场冲突最重要的起因是{s1}。	ht
 Native history held story {e} during {e}	在{e2}期间讲述了以下往事：「{e1}」	ht
 Native history held story {e} within {p}	在{p1}讲述了以下往事：「{e1}」	ht
@@ -47472,7 +47472,7 @@ Adventurer log reputation: noted killer	著名杀手	h
 Adventurer log reputation: rumored ally	传闻中的同盟者	h
 Adventurer log reputation: rumored bard	传闻中的吟游诗人	h
 Adventurer log reputation: rumored poet	传闻中的诗人	h
-Age of the {s} and the {s} in the wilds	在荒野中，{s1}与{s2}时代	htEi
+Age of the {s} and the {s} in the wilds	在荒野中，{s1}与{s2}的时代	htEi
 Agree to make peace between {e} and {e}	同意让{e1}与{e2}停战	hPt
 Announcement combat ability []: Blister	引发水疱	l
 Announcement combat attack-verb []: saw	锯割	l
@@ -47884,7 +47884,7 @@ Mining continues through new warm stone	发现新的温暖岩石时继续挖掘	
 Move keyboard cursor up and right, fast	向右上移动键盘光标，快速	w
 Native Legends attacker forces {s}: {s}	进攻方：{s1}，{s2}。	ht
 Native Legends defender forces {s}: {s}	防守方：{s1}，{s2}。	ht
-Native Legends great powers were fading	世上的强大势力正逐渐衰落	h
+Native Legends great powers were fading	世上的权能强者正逐渐消亡	h
 Native Legends war failed first contact	一场结果极糟的首次接触	h
 Native history collection title of {p}.	{p1}。	htEi
 Nearest site: {d}/{d} day's travel east	最近地点：向东，约{d}/{d}天路程	wt
@@ -49208,8 +49208,8 @@ Adventurer log reputation: noted enemy	著名的敌人	h
 Adventurer log reputation: noted thief	著名的盗贼	h
 Adventurer log reputation: reputation:	声望：	h
 Affects attacks with mouths and teeth.	影响使用嘴和牙齿的攻击。	w
-Age of the {s} and the {s} during {e}.	在{e1}期间，{s1}与{s2}时代。	htEi
-Age of the {s} and the {s} within {p}.	在{p1}，{s1}与{s2}时代。	htEi
+Age of the {s} and the {s} during {e}.	在{e1}期间，{s1}与{s2}的时代。	htEi
+Age of the {s} and the {s} within {p}.	在{p1}，{s1}与{s2}的时代。	htEi
 All {o}ship is of the highest quality.	各处{o1}均为最高品质。	hHt
 Announcement combat ability []: Sicken	致病	l
 Announcement combat ability []: Vanish	隐身	l
@@ -49696,7 +49696,7 @@ Move keyboard cursor up and left, fast	键盘光标向上和向左移动,快速	
 Multiple copies of the timeline found.	发现此时间线的多个副本。	w
 Native Legends age was a time {s}: {s}	{s1}是这样一个时代：{s2}。	ht
 Native Legends collection occurred {s}	发生了{s1}。	ht
-Native Legends final battles of powers	最后的强大势力进行了它们最后的战斗	h
+Native Legends final battles of powers	最后的权能强者展开了最后的战斗	h
 Native Legends war livestock ownership	牲畜归属	h
 Native Legends war treaty disagreement	对先前条约的分歧	h
 Native history collection title of {p}	{p1}	htEi
@@ -51065,8 +51065,8 @@ Adventurer log reputation: known poet	众所周知的诗人	h
 Adventurer log reputation: noted ally	著名的同盟者	h
 Adventurer log reputation: noted bard	著名的吟游诗人	h
 Adventurer log reputation: noted poet	著名的诗人	h
-Age of the {s} and the {s} during {e}	在{e1}期间，{s1}与{s2}时代	htEi
-Age of the {s} and the {s} within {p}	在{p1}，{s1}与{s2}时代	htEi
+Age of the {s} and the {s} during {e}	在{e1}期间，{s1}与{s2}的时代	htEi
+Age of the {s} and the {s} within {p}	在{p1}，{s1}与{s2}的时代	htEi
 Announcement combat ability []: Blind	致盲	l
 Announcement combat ability []: Clean	清洁	l
 Announcement combat ability []: Curse	诅咒	l
@@ -53370,8 +53370,8 @@ Mining cancelled near new warm stone	发现新的温暖岩石时停止附近挖�
 Mod dependency label: Conflicts with	冲突：	l
 Mod dependency label: Must be before	需先于：	l
 Native Legends beasts attack {d} {s}	{d1}只{s1}来袭！	ht
-Native Legends numbered age {d}: {s}	第{d1}个{s1}	ht
-Native Legends only great powers {a}	{a1}是世上仅有的强大势力	ht
+Native Legends numbered age {d}: {s}	第{d1}{s1}	ht
+Native Legends only great powers {a}	{a1}是世上仅有的权能强者	ht
 Native Legends previous insurrection	先前的一场叛乱	h
 Native Legends war family matter {n}	{n1}的一桩家事	ht
 Native history collection {s} of {p}	{p1}的{s1}	htEi
@@ -55209,7 +55209,7 @@ Move keyboard cursor down and right	键盘光标向下和向右移动	w
 Native Legends attacker uncontested	进攻方未遭抵抗。	h
 Native Legends collection began {s}	{s1}开始了。	ht
 Native Legends collection ended {s}	{s1}结束了。	ht
-Native Legends only great power {a}	{a1}是世上唯一的强大势力	ht
+Native Legends only great power {a}	{a1}是世上唯一的权能强者	ht
 Native Legends war animal treatment	对待动物的方式	h
 Native Legends war formal agreement	正式协议	h
 Native Legends war prior aggression	敌方先前的侵略	h
@@ -56802,9 +56802,9 @@ Adventure performance voice: Speak	念白	l
 Adventure: move view/cursor up (z)	冒险模式：向上移动视野/光标（z）	w
 Adventurer log group status: Enemy	敌人	h
 Adventurer log reputation: comrade	同志	h
-Age of the {s} and the {s} at {p}.	在{p1}，{s1}与{s2}时代。	htEi
-Age of the {s} and the {s} in {d}.	{d1}年的{s1}与{s2}时代。	htEi
-Age of the {s} and the {s} in {p}.	在{p1}，{s1}与{s2}时代。	htEi
+Age of the {s} and the {s} at {p}.	在{p1}，{s1}与{s2}的时代。	htEi
+Age of the {s} and the {s} in {d}.	{d1}年的{s1}与{s2}的时代。	htEi
+Age of the {s} and the {s} in {p}.	在{p1}，{s1}与{s2}的时代。	htEi
 Agreement date: {d}nd Felsite, {d}	协议日期：第{d2}年霏细岩月{d1}日	hPt
 Agreement date: {d}nd Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日	hPt
 Agreement date: {d}rd Felsite, {d}	协议日期：第{d2}年霏细岩月{d1}日	hPt
@@ -58932,9 +58932,9 @@ Adventure performance voice: Sing	歌唱	l
 Adventure: Display Strongest Odor	冒险：显示最强气味	wl
 Adventurer log reputation: polite	彬彬有礼	h
 Adventurer log tab: Organizations	组织	h
-Age of the {s} and the {s} at {p}	在{p1}，{s1}与{s2}时代	htEi
-Age of the {s} and the {s} in {d}	{d1}年的{s1}与{s2}时代	htEi
-Age of the {s} and the {s} in {p}	在{p1}，{s1}与{s2}时代	htEi
+Age of the {s} and the {s} at {p}	在{p1}，{s1}与{s2}的时代	htEi
+Age of the {s} and the {s} in {d}	{d1}年的{s1}与{s2}的时代	htEi
+Age of the {s} and the {s} in {p}	在{p1}，{s1}与{s2}的时代	htEi
 Agreement date: {d}nd Galena, {d}	协议日期：第{d2}年方铅矿月{d1}日	hPt
 Agreement date: {d}nd Timber, {d}	协议日期：第{d2}年林木月{d1}日	hPt
 Agreement date: {d}rd Galena, {d}	协议日期：第{d2}年方铅矿月{d1}日	hPt
@@ -60903,8 +60903,8 @@ Adventure movement medium: Water	水	h
 Adventure movement: Faster Crawl	更快爬行	l
 Adventure performance value: Law	法律	l
 Adventurer, choose your destiny!	冒险者，选择你的命运！	l
-Age of {a} and {a} in the wilds.	在荒野中，{a1}与{a2}时代。	htEi
-Age of {s} and {s} in the wilds.	在荒野中，{s1}与{s2}时代。	htEi
+Age of {a} and {a} in the wilds.	在荒野中，{a1}与{a2}的时代。	htEi
+Age of {s} and {s} in the wilds.	在荒野中，{s1}与{s2}的时代。	htEi
 Agreement date: {d}nd Slate, {d}	协议日期：第{d2}年板岩月{d1}日	hPt
 Agreement date: {d}rd Slate, {d}	协议日期：第{d2}年板岩月{d1}日	hPt
 Agreement date: {d}st Slate, {d}	协议日期：第{d2}年板岩月{d1}日	hPt
@@ -62925,8 +62925,8 @@ Adventure movement medium: Lava	熔岩	h
 Adventurer log reputation: hero	英雄	h
 Affects wrestling and charging.	影响摔跤和冲锋。	w
 After enduring an interrogation	忍受审讯后	h
-Age of {a} and {a} in the wilds	在荒野中，{a1}与{a2}时代	htEi
-Age of {s} and {s} in the wilds	在荒野中，{s1}与{s2}时代	htEi
+Age of {a} and {a} in the wilds	在荒野中，{a1}与{a2}的时代	htEi
+Age of {s} and {s} in the wilds	在荒野中，{s1}与{s2}的时代	htEi
 Agreed to build grand guildhall	已同意建造大行会大厅	wi
 Agreement date: {d}nd Opal, {d}	协议日期：第{d2}年蛋白石月{d1}日	hPt
 Agreement date: {d}rd Opal, {d}	协议日期：第{d2}年蛋白石月{d1}日	hPt
@@ -65145,10 +65145,10 @@ Adventure movement: Fast Crawl	快速爬行	l
 Adventure movement: Slow Crawl	慢爬	l
 Adventurer log date: {s} / {s}	{s2}{s1}发生了这件事。	wtl
 Affects the quality of poetry.	影响诗歌质量。	w
-Age of {a} and {a} during {e}.	在{e1}期间，{a1}与{a2}时代。	htEi
-Age of {a} and {a} within {p}.	在{p1}，{a1}与{a2}时代。	htEi
-Age of {s} and {s} during {e}.	在{e1}期间，{s1}与{s2}时代。	htEi
-Age of {s} and {s} within {p}.	在{p1}，{s1}与{s2}时代。	htEi
+Age of {a} and {a} during {e}.	在{e1}期间，{a1}与{a2}的时代。	htEi
+Age of {a} and {a} within {p}.	在{p1}，{a1}与{a2}的时代。	htEi
+Age of {s} and {s} during {e}.	在{e1}期间，{s1}与{s2}的时代。	htEi
+Age of {s} and {s} within {p}.	在{p1}，{s1}与{s2}的时代。	htEi
 Agreed to build temple complex	已同意建造神殿建筑群	wi
 Aim carefully and throw at {n}	仔细瞄准并向{n1}投掷	hPt
 All drinks cost {d} for a mug.	所有饮品都是每杯{d1}。	hPt
@@ -67276,8 +67276,6 @@ with the hall designated for a	并将大厅指定给以下行会：	hP
 {a} were destroyed during {e}.	在{e1}期间，{a1}被摧毁了。	ht
 {a} were destroyed within {p}.	在{p1}，{a1}被摧毁了。	ht
 {a} were expelled in the wilds	{a1}在荒野中遭到了驱逐	ht
-{b} In The Age of Civilization	文明时代的{b1}	htbi
-{b} In The Age of Three Powers	三强权时代的{b1}	htbi
 {b} is a {s}, authored by {n}.	《{b}》是{n}创作的{s}。	ht
 {b} was authored by {n} at {p}	在{p1}，{n1}撰写了《{b1}》	ht
 {b} was authored by {n} in {p}	{n1}在{p1}撰写了《{b1}》	ht
@@ -67469,10 +67467,10 @@ Adventure action target: tree	树	h
 Adventure item action: Ignite	点火	h
 Adventure movement: Excellent	极好	l
 Adventure movement: Low Light	光线昏暗	l
-Age of {a} and {a} during {e}	在{e1}期间，{a1}与{a2}时代	htEi
-Age of {a} and {a} within {p}	在{p1}，{a1}与{a2}时代	htEi
-Age of {s} and {s} during {e}	在{e1}期间，{s1}与{s2}时代	htEi
-Age of {s} and {s} within {p}	在{p1}，{s1}与{s2}时代	htEi
+Age of {a} and {a} during {e}	在{e1}期间，{a1}与{a2}的时代	htEi
+Age of {a} and {a} within {p}	在{p1}，{a1}与{a2}的时代	htEi
+Age of {s} and {s} during {e}	在{e1}期间，{s1}与{s2}的时代	htEi
+Age of {s} and {s} within {p}	在{p1}，{s1}与{s2}的时代	htEi
 Allow Necromancer Experiments	允许死灵法师实验
 Allow Necromancer Lieutenants	允许死灵法师副手
 And what exactly do you want?	你到底想要什么？	hP
@@ -68122,7 +68120,7 @@ Move view/cursor up (z), fast	向上移动视野/光标（z），快速	w
 Music Volume (Fortress): {d}%	音乐音量(要塞):{d}%	wt
 Must span multiple elevations	必须跨越多个高度层。	hP
 Native Legends no forces lost	没有损失	h
-Native Legends once again {s}	{s1}，如此循环往复	ht
+Native Legends once again {s}	{s1}，这一情形又一次出现	ht
 Native history held story {e}	讲述了以下往事：「{e1}」	ht
 Native history office: bosses	首领	h
 Native history office: chiefs	酋长	h
@@ -69470,7 +69468,6 @@ you can succumb to invasions.	入侵就可能让你覆灭。	hq
 {a} were expelled during {e}.	{a1}在{e1}期间遭到了驱逐。	ht
 {a} were expelled within {p}.	{a1}在{p1}遭到了驱逐。	ht
 {a} wounded {a} in the wilds.	{a1}在荒野中击伤了{a2}。	ht
-{b} In The Age of Fairy Tales	童话时代的{b1}	htbi
 {b} was created in {p} by {n}	{n1}在{p1}创造了{b1}	ht
 {b}: Natural or Supernatural?	{b}：自然还是超自然？	hbti
 {e} against {a} in the wilds.	在荒野中，针对{a1}的{e1}。	htEi
@@ -69633,8 +69630,7 @@ Adventure item action: Climb	攀爬	h
 Adventure movement: Darkness	黑暗	l
 Adventure movement: Scramble	突进	l
 Adventure movement: Terrible	极差	l
-Age of Fairy Tales, year {d}	童话时代，第 {d} 年	wt
-Age of Two {s} in the wilds.	在荒野中，两{s1}时代。	htEi
+Age of Two {s} in the wilds.	在荒野中，双{s1}时代。	htEi
 Age of the {a} in the wilds.	在荒野中，{a1}时代。	htEi
 Age of the {s} in the wilds.	在荒野中，{s1}时代。	htEi
 Air swirls around this item.	气流在这件物品周围盘旋。	h
@@ -71674,7 +71670,6 @@ wove a masterful sewn image.	织出了一幅杰作级的刺绣图像。	h
 {a} were expelled during {e}	{a1}在{e1}期间遭到了驱逐	ht
 {a} were expelled within {p}	{a1}在{p1}遭到了驱逐	ht
 {a} wounded {a} in the wilds	{a1}在荒野中击伤了{a2}	ht
-{b} In The Age of Two Powers	两强权时代的{b1}	htbi
 {b} is an example of poetry.	《{b}》是一首诗。	ht
 {b} is an {s}, authored by .	《{b}》是一部{s}，作者不详。	ht
 {b} is the symbol of the {s}	{b1}是{s1}的象征。	hPt
@@ -71826,10 +71821,9 @@ Add/edit routines (columns)	添加/编辑日程（列）	w
 Adventure item action: Read	阅读	h
 Adventure item action: Roll	掷骰	h
 Adventure movement: Average	一般	l
-Age of Two Powers, year {d}	两强权时代，第 {d} 年	wt
-Age of Two {s} in the wilds	在荒野中，两{s1}时代	htEi
+Age of Two {s} in the wilds	在荒野中，双{s1}时代	htEi
 Age of the {a} in the wilds	在荒野中，{a1}时代	htEi
-Age of the {s} and the {s}.	{s1}与{s2}时代。	htEi
+Age of the {s} and the {s}.	{s1}与{s2}的时代。	htEi
 Age of the {s} in the wilds	在荒野中，{s1}时代	htEi
 Agree to comply with demand	同意服从要求	hP
 Aim carefully and shoot {n}	仔细瞄准并射击{n1}	hPt
@@ -73861,8 +73855,6 @@ wove a masterful sewn image	织出了一幅杰作级的刺绣图像	h
 {a} were reunited with {a}.	{a1}与{a2}重聚了。	ht
 {a} wounded {a} during {e}.	{a1}在{e1}期间击伤了{a2}。	ht
 {a} wounded {a} within {p}.	{a1}在{p1}击伤了{a2}。	ht
-{b} In The Age of Emptiness	空虚时代的{b1}	htbi
-{b} In The Age of One Power	一强权时代的{b1}	htbi
 {b} and The Coming Troubles	{b}与将至的麻烦	hbti
 {b} is a {s}, authored by .	《{b}》是一部{s}，作者不详。	ht
 {b}: Problems And Solutions	{b}：问题与解答	hbti
@@ -74018,20 +74010,19 @@ Adventure movement: Sprint	冲刺	l
 Adventure movement: Stroll	散步	l
 Adventurer log tab: Actors	人物	h
 Affects response to jokes.	影响对笑话的反应。	w
-Age of One Power, year {d}	一强权时代，第 {d} 年	wt
-Age of Two {s} during {e}.	在{e1}期间，两{s1}时代。	htEi
-Age of Two {s} within {p}.	在{p1}，两{s1}时代。	htEi
+Age of Two {s} during {e}.	在{e1}期间，双{s1}时代。	htEi
+Age of Two {s} within {p}.	在{p1}，双{s1}时代。	htEi
 Age of the {a} during {e}.	在{e1}期间，{a1}时代。	htEi
 Age of the {a} within {p}.	在{p1}，{a1}时代。	htEi
-Age of the {s} and the {s}	{s1}与{s2}时代	htEi
+Age of the {s} and the {s}	{s1}与{s2}的时代	htEi
 Age of the {s} during {e}.	在{e1}期间，{s1}时代。	htEi
 Age of the {s} within {p}.	在{p1}，{s1}时代。	htEi
-Age of {a} and {a} at {p}.	在{p1}，{a1}与{a2}时代。	htEi
-Age of {a} and {a} in {d}.	{d1}年的{a1}与{a2}时代。	htEi
-Age of {a} and {a} in {p}.	在{p1}，{a1}与{a2}时代。	htEi
-Age of {s} and {s} at {p}.	在{p1}，{s1}与{s2}时代。	htEi
-Age of {s} and {s} in {d}.	{d1}年的{s1}与{s2}时代。	htEi
-Age of {s} and {s} in {p}.	在{p1}，{s1}与{s2}时代。	htEi
+Age of {a} and {a} at {p}.	在{p1}，{a1}与{a2}的时代。	htEi
+Age of {a} and {a} in {d}.	{d1}年的{a1}与{a2}的时代。	htEi
+Age of {a} and {a} in {p}.	在{p1}，{a1}与{a2}的时代。	htEi
+Age of {s} and {s} at {p}.	在{p1}，{s1}与{s2}的时代。	htEi
+Age of {s} and {s} in {d}.	{d1}年的{s1}与{s2}的时代。	htEi
+Age of {s} and {s} in {p}.	在{p1}，{s1}与{s2}的时代。	htEi
 Agree to cease hostilities	同意停止敌对行动	hP
 Agree to drop the argument	同意停止争论	hP
 Analytical Ability (minor)	分析能力（次要）	wi
@@ -75917,8 +75908,6 @@ were expelled in the wilds	在荒野中遭到了驱逐	h
 {a} withered in the wilds.	{a1}在荒野中衰亡了。	ht
 {a} wounded {a} during {e}	{a1}在{e1}期间击伤了{a2}	ht
 {a} wounded {a} within {p}	{a1}在{p1}击伤了{a2}	ht
-{b} In Age of Civilization	文明时代的{b1}	htbi
-{b} In Age of Three Powers	三强权时代的{b1}	htbi
 {d}nd Opal, midwinter, {d}	第{d2}年，仲冬，蛋白石月{d1}日	wti
 {d}rd Opal, midwinter, {d}	第{d2}年，仲冬，蛋白石月{d1}日	wti
 {d}st Opal, midwinter, {d}	第{d2}年，仲冬，蛋白石月{d1}日	wti
@@ -76080,18 +76069,18 @@ Adventure movement: Creep	爬行	l
 Adventure movement: Great	很好	l
 Adventure movement: Light	光线明亮	l
 Adventurer log tab: Plots	阴谋	h
-Age of Two {s} during {e}	在{e1}期间，两{s1}时代	htEi
-Age of Two {s} within {p}	在{p1}，两{s1}时代	htEi
+Age of Two {s} during {e}	在{e1}期间，双{s1}时代	htEi
+Age of Two {s} within {p}	在{p1}，双{s1}时代	htEi
 Age of the {a} during {e}	在{e1}期间，{a1}时代	htEi
 Age of the {a} within {p}	在{p1}，{a1}时代	htEi
 Age of the {s} during {e}	在{e1}期间，{s1}时代	htEi
 Age of the {s} within {p}	在{p1}，{s1}时代	htEi
-Age of {a} and {a} at {p}	在{p1}，{a1}与{a2}时代	htEi
-Age of {a} and {a} in {d}	{d1}年的{a1}与{a2}时代	htEi
-Age of {a} and {a} in {p}	在{p1}，{a1}与{a2}时代	htEi
-Age of {s} and {s} at {p}	在{p1}，{s1}与{s2}时代	htEi
-Age of {s} and {s} in {d}	{d1}年的{s1}与{s2}时代	htEi
-Age of {s} and {s} in {p}	在{p1}，{s1}与{s2}时代	htEi
+Age of {a} and {a} at {p}	在{p1}，{a1}与{a2}的时代	htEi
+Age of {a} and {a} in {d}	{d1}年的{a1}与{a2}的时代	htEi
+Age of {a} and {a} in {p}	在{p1}，{a1}与{a2}的时代	htEi
+Age of {s} and {s} at {p}	在{p1}，{s1}与{s2}的时代	htEi
+Age of {s} and {s} in {d}	{d1}年的{s1}与{s2}的时代	htEi
+Age of {s} and {s} in {p}	在{p1}，{s1}与{s2}的时代	htEi
 Agreed to build guildhall	已同意建造行会大厅	wi
 Allow Demonic Experiments	允许恶魔实验
 Allow Necromancer Summons	允许死灵法师召唤物
@@ -77773,8 +77762,6 @@ writing of a masterpiece.	书写杰作。	hEi
 {a} were expelled in {p}.	{a1}在{p1}遭到了驱逐。	ht
 {a} withdrew from society	{a1}退出了社会交往	ht
 {a} withered in the wilds	{a1}在荒野中衰亡了	ht
-{b} In Age of Fairy Tales	童话时代的{b1}	htbi
-{b} In The Age of Legends	传说时代的{b1}	htbi
 {b} is an example of {p}.	《{b}》采用“{p}”的形式。	ht
 {b}: A Brief Introduction	{b}简介	hbti
 {b}: The Definitive Guide	{b}：权威指南	hbti
@@ -77917,7 +77904,6 @@ Adventure movement: Poor	较差	l
 Adventure movement: Walk	行走	l
 Adventure: Describe Odor	冒险：描述气味	wl
 After being interrogated	经过审讯后	h
-Age of Legends, year {d}	传说时代，第 {d} 年	wt
 Age of {a} in the wilds.	在荒野中，{a1}时代。	htEi
 Age of {s} in the wilds.	在荒野中，{s1}时代。	htEi
 Allow Necromancer Ghouls	允许死灵法师食尸鬼
@@ -78374,7 +78360,7 @@ Mountain name: mountains	山脉	hi
 Move goods to/from depot	搬运货物进出贸易站	wi
 Must remove construction	必须先拆除建筑物	wli
 Native Legends abduction	一次绑架	h
-Native Legends again {s}	{s1}，这样的时代再次到来	ht
+Native Legends again {s}	{s1}，这一情形再次出现	ht
 Needs Decent Dining Room	需要像样餐厅	wl
 Needs Meager Dining Room	需要简陋餐厅	wl
 Needs Modest Dining Room	需要普通餐厅	wl
@@ -79787,8 +79773,6 @@ writing of a masterpiece	书写杰作	hEi
 {a} were expelled in {p}	{a1}在{p1}遭到了驱逐	ht
 {a} withered during {e}.	{a1}在{e1}期间衰亡了。	ht
 {a} withered within {p}.	{a1}在{p1}衰亡了。	ht
-{b} In Age of Two Powers	两强权时代的{b1}	htbi
-{b} In The Age of Heroes	英雄时代的{b1}	htbi
 {b} and Other Travesties	{b}与其他荒诞之事	hbti
 {b} was a legendary {i}.	《{b1}》是一件传奇的{i1}。	ht
 {b} was authored by {n}.	{n}撰写了《{b}》。	ht
@@ -80436,7 +80420,7 @@ That is wonderful news.	这是个极好的消息。	hP
 That was a worthy hunt.	那场狩猎很值得。	hP
 That was hunter's work.	那是猎人该干的事。	hP
 The Age of Civilization	文明时代	hEi
-The Age of Three Powers	三强权时代	hEi
+The Age of Three Powers	三权时代	hEi
 The Destined Continents	命定大陆
 The Destruction of {p}.	{p1}毁灭事件。	htEi
 The Duel of {n} and {n}	{n1}与{n2}的决斗	htEi
@@ -81775,10 +81759,6 @@ wounded {a} within {p}.	在{p1}击伤了{a1}。	ht
 {a} withered within {p}	{a1}在{p1}衰亡了	ht
 {a} wounded {a} at {p}.	{a1}在{p1}击伤了{a2}。	ht
 {a} wounded {a} in {p}.	{a1}在{p1}击伤了{a2}。	ht
-{b} In Age of Emptiness	空虚时代的{b1}	htbi
-{b} In Age of One Power	一强权时代的{b1}	htbi
-{b} In The Age of Death	死亡时代的{b1}	htbi
-{b} In The Twilight Age	暮光时代的{b1}	htbi
 {b} was authored by {n}	{n1}撰写了《{b1}》	ht
 {d} years of membership	拥有{d1}年会龄	ht
 {e} against {a} at {p}.	在{p1}，针对{a1}的{e1}。	htEi
@@ -81906,9 +81886,9 @@ Adventure compass: SSE	南东南
 Adventure compass: SSW	南西南
 Adventure compass: WNW	西西北
 Adventure compass: WSW	西西南
-Age of Two {s} at {p}.	在{p1}，两{s1}时代。	htEi
-Age of Two {s} in {d}.	{d1}年的两{s1}时代。	htEi
-Age of Two {s} in {p}.	在{p1}，两{s1}时代。	htEi
+Age of Two {s} at {p}.	在{p1}，双{s1}时代。	htEi
+Age of Two {s} in {d}.	{d1}年的双{s1}时代。	htEi
+Age of Two {s} in {p}.	在{p1}，双{s1}时代。	htEi
 Age of the {a} at {p}.	在{p1}，{a1}时代。	htEi
 Age of the {a} in {d}.	{d1}年的{a1}时代。	htEi
 Age of the {a} in {p}.	在{p1}，{a1}时代。	htEi
@@ -82475,7 +82455,6 @@ Travel building: House	住宅	wi
 Travel building: Tower	高塔	wi
 Tropical Brackish Lake	热带半咸水湖
 Tropical Brackish Pool	热带半咸水池
-Twilight Age, year {d}	暮光时代，第 {d} 年	wt
 Unit profession: medic	医护员	li
 Unnamed magma sea area	未命名岩浆海区域	wi
 Upper right back teeth	右上臼齿	w
@@ -83807,8 +83786,6 @@ wounded {a} within {p}	在{p1}击伤了{a1}	ht
 {a} was killed by {a}.	{a1}被{a2}杀害了。	ht
 {a} wounded {a} at {p}	{a1}在{p1}击伤了{a2}	ht
 {a} wounded {a} in {p}	{a1}在{p1}击伤了{a2}	ht
-{b} In The Age of Myth	神话时代的{b1}	htbi
-{b} In The Unknown Age	未知时代的{b1}	htbi
 {c} images and symbols	共{c1}个图像和符号	hIit
 {d} plump helmet spawn	{d} 份肉盔菇菌种	wtl
 {e} against {a} at {p}	在{p1}，针对{a1}的{e1}	htEi
@@ -83942,10 +83919,9 @@ Adventure compass: NE	东北
 Adventure compass: NW	西北
 Adventure compass: SE	东南
 Adventure compass: SW	西南
-Age of Myth, year {d}	神话时代，第 {d} 年	wt
-Age of Two {s} at {p}	在{p1}，两{s1}时代	htEi
-Age of Two {s} in {d}	{d1}年的两{s1}时代	htEi
-Age of Two {s} in {p}	在{p1}，两{s1}时代	htEi
+Age of Two {s} at {p}	在{p1}，双{s1}时代	htEi
+Age of Two {s} in {d}	{d1}年的双{s1}时代	htEi
+Age of Two {s} in {p}	在{p1}，双{s1}时代	htEi
 Age of the {a} at {p}	在{p1}，{a1}时代	htEi
 Age of the {a} in {d}	{d1}年的{a1}时代	htEi
 Age of the {a} in {p}	在{p1}，{a1}时代	htEi
@@ -84433,7 +84409,7 @@ Temperature: Freezing	气温：严寒
 Tenth eldest daughter	第十个女儿	w
 The Abduction at {p}.	{p1}的绑架事件。	htEi
 The Abduction in {p}.	{p1}的绑架事件。	htEi
-The Age of Two Powers	两强权时代	hEi
+The Age of Two Powers	双权时代	hEi
 The Crystalline Water	水晶之水	w
 The Delightful Plains	令人愉悦的平原	w
 The Desert of Portals	传送门沙漠
@@ -86132,8 +86108,6 @@ woolly rhinoceros men	披毛犀人	wi
 {a} was hired by {a}.	{a1}受雇于{a2}。	ht
 {a} was killed by {a}	{a1}被{a2}杀害了	ht
 {a} was sired by {n}.	{a1}的生父是{n1}。	ht
-{b} In Age of Legends	传说时代的{b1}	htbi
-{b} In The Golden Age	黄金时代的{b1}	htbi
 {b} In The Modern Era	现代的{b}	hbti
 {b}: Before and After	{b}：前后对比	hbti
 {b}: Fact or Fiction?	{b}：事实还是虚构？	hbti
@@ -86196,7 +86170,7 @@ woolly rhinoceros men	披毛犀人	wi
 {p} was stored at {p}	在{p2}，{p1}被存放了	ht
 {p} was stored by {a}	{a1}存放了{p1}	ht
 {p} was stored in {p}	{p1}被存放在{p2}	ht
-{s} Age in the wilds.	在荒野中，{s1}时代。	htEi
+{s} Age in the wilds.	在荒野中，{s1}的时代。	htEi
 {s} Race in the wilds	在荒野中，{s1}赛跑	htEi
 {s} destroyed by {n}.	{s1}被{n1}摧毁了。	hPt
 {s} eyebrows are {s}.	{s}的眉毛{s}。	wtlx
@@ -86644,7 +86618,7 @@ That was compelling!	这番话很有说服力！	hP
 The Abduction at {p}	{p1}的绑架事件	htEi
 The Abduction in {p}	{p1}的绑架事件	htEi
 The Age of Emptiness	空虚时代	hEi
-The Age of One Power	一强权时代	hEi
+The Age of One Power	一权时代	hEi
 The Cavernous Jungle	洞窟丛林
 The Conquest of {p}.	征服「{p1}」。	htEi
 The Considerate Hill	体贴之丘陵	w
@@ -88894,7 +88868,6 @@ yours or companion's	你或同伴留下的	h
 {a} withered at {p}.	{a1}在{p1}衰亡了。	ht
 {a} withered in {p}.	{a1}在{p1}衰亡了。	ht
 {b} Came Full Circle	{b}回归原点	hbti
-{b} In Age of Heroes	英雄时代的{b1}	htbi
 {b} and Nothing More	{b}，仅此而已	hbti
 {b} and Other Topics	{b}与其他话题	hbti
 {b} and The Universe	{b}与宇宙	hbti
@@ -88981,7 +88954,7 @@ yours or companion's	你或同伴留下的	h
 {p} was found in {p}	在{p2}，{p1}被找到了	ht
 {p} was lost at {p}.	在{p2}，{p1}遗失了。	ht
 {p} was lost in {p}.	在{p2}，{p1}遗失了。	ht
-{s} Age in the wilds	在荒野中，{s1}时代	htEi
+{s} Age in the wilds	在荒野中，{s1}的时代	htEi
 {s} Race during {e}.	在{e1}期间，{s1}赛跑。	htEi
 {s} Race within {p}.	在{p1}，{s1}赛跑。	htEi
 {s} in humanoid form	呈人形的{s1}	htv
@@ -89028,9 +89001,9 @@ Accept the position	接受职位	hP
 Add new work detail	添加劳动分组	wi
 Adventure vermin: A	小生物	l
 Age of Civilization	文明时代	h
-Age of Three Powers	三强权时代	h
-Age of {a} and {a}.	{a1}与{a2}时代。	htEi
-Age of {s} and {s}.	{s1}与{s2}时代。	htEi
+Age of Three Powers	三权时代	h
+Age of {a} and {a}.	{a1}与{a2}的时代。	htEi
+Age of {s} and {s}.	{s1}与{s2}的时代。	htEi
 Agreement abandoned	协议已放弃	w
 Agreement satisfied	协议已履行	w
 Ah, hello. I'm {p}.	啊，你好。我叫{p1}。	hPt
@@ -92247,8 +92220,6 @@ younger half-sister	同父异母或同母异父的妹妹	wi
 {a} were destroyed.	{a1}被摧毁了。	ht
 {a} withered at {p}	{a1}在{p1}衰亡了	ht
 {a} withered in {p}	{a1}在{p1}衰亡了	ht
-{b} In Age of Death	死亡时代的{b1}	htbi
-{b} In Twilight Age	暮光时代的{b1}	htbi
 {b}: A New Approach	{b}：新方法	hbti
 {d} skill pick left	剩余 {d} 个技能选择点	wt
 {d} squads assigned	已分配{d}个分队	wtl
@@ -92320,8 +92291,8 @@ younger half-sister	同父异母或同母异父的妹妹	wi
 {p} was made by {a}	{a1}制成了{p1}	ht
 {p} was sanctified.	{p1}被奉为圣物。	ht
 {p} was {s} in {p}.	{p1}是{p2}的一座{s1}。	ht
-{s} Age during {e}.	在{e1}期间，{s1}时代。	htEi
-{s} Age within {p}.	在{p1}，{s1}时代。	htEi
+{s} Age during {e}.	在{e1}期间，{s1}的时代。	htEi
+{s} Age within {p}.	在{p1}，{s1}的时代。	htEi
 {s} Race during {e}	在{e1}期间，{s1}赛跑	htEi
 {s} Race within {p}	在{p1}，{s1}赛跑	htEi
 {s} Rampage at {p}.	在{p1}，{s1}肆虐事件。	htEi
@@ -92376,11 +92347,11 @@ Add a party member	添加队友
 Additional options	附加选项	wi
 Affects no skills.	不影响任何技能。	w
 Age of Fairy Tales	童话时代	h
-Age of {a} and {a}	{a1}与{a2}时代	htEi
+Age of {a} and {a}	{a1}与{a2}的时代	htEi
 Age of {a} at {p}.	在{p1}，{a1}时代。	htEi
 Age of {a} in {d}.	{d1}年的{a1}时代。	htEi
 Age of {a} in {p}.	在{p1}，{a1}时代。	htEi
-Age of {s} and {s}	{s1}与{s2}时代	htEi
+Age of {s} and {s}	{s1}与{s2}的时代	htEi
 Age of {s} at {p}.	在{p1}，{s1}时代。	htEi
 Age of {s} in {d}.	{d1}年的{s1}时代。	htEi
 Age of {s} in {p}.	在{p1}，{s1}时代。	htEi
@@ -96134,8 +96105,6 @@ yellow spessartine	橙榴石	wi
 {a} was possessed.	{a1}被附身了。	ht
 {a} were destroyed	{a1}被摧毁了	ht
 {a} were expelled.	{a1}遭到了驱逐。	ht
-{b} In Age of Myth	神话时代的{b1}	htbi
-{b} In Unknown Age	未知时代的{b1}	htbi
 {b} When It Counts	关键时刻的{b}	hbti
 {b} Without Limits	无界的{b}	hbti
 {c} bundles of {s}	{c1}捆{s1}	hIit
@@ -96211,8 +96180,8 @@ yellow spessartine	橙榴石	wi
 {p} was inherited.	{p1}被继承了。	ht
 {p} was recovered.	{p1}被找回了。	ht
 {p} was sanctified	{p1}被奉为圣物	ht
-{s} Age during {e}	在{e1}期间，{s1}时代	htEi
-{s} Age within {p}	在{p1}，{s1}时代	htEi
+{s} Age during {e}	在{e1}期间，{s1}的时代	htEi
+{s} Age within {p}	在{p1}，{s1}的时代	htEi
 {s} Rampage at {p}	在{p1}，{s1}肆虐事件	htEi
 {s} Rampage in {d}	{d1}年的{s1}肆虐事件	htEi
 {s} Rampage in {p}	在{p1}，{s1}肆虐事件	htEi
@@ -96250,7 +96219,7 @@ Abduction of {a}.	对{a1}的绑架。	htEi
 Accept appearance	接受外貌
 Accept background	接受背景
 Accepting tribute	对方接受贡品	w
-Age of Two Powers	两强权时代	h
+Age of Two Powers	双权时代	h
 Age of {a} at {p}	在{p1}，{a1}时代	htEi
 Age of {a} in {d}	{d1}年的{a1}时代	htEi
 Age of {a} in {p}	在{p1}，{a1}时代	htEi
@@ -100514,7 +100483,6 @@ youngest daughter	最小的女儿	h
 {a} went berserk.	{a1}陷入了狂暴。	ht
 {a} were expelled	{a1}遭到了驱逐	ht
 {b} After The End	终结之后的{b}	hbti
-{b} In Golden Age	黄金时代的{b1}	htbi
 {b} Within Reason	理性范围内的{b}	hbti
 {c} Notable Kills	知名人物击杀数：{c}	ht
 {c} stacks of {s}	{c1}叠{s1}	hIit
@@ -100613,7 +100581,7 @@ Adopted somebody	已认主	wi
 Adventure awaits	冒险正在召唤
 Adventurer's log	冒险者日志	hq
 Age of Emptiness	空虚时代	h
-Age of One Power	一强权时代	h
+Age of One Power	一权时代	h
 Agree completely	完全同意	hP
 Air Race at {p}.	在{p1}，飞行竞赛。	htEi
 Air Race in {d}.	{d1}年的飞行竞赛。	htEi
@@ -105164,7 +105132,7 @@ Accept into {e}	接纳加入{e1}	hPt
 Adept of change	变革行家	w
 Affects breath.	影响憋气能力。	w
 Affects skills:	影响以下技能：	w
-Age of Two {s}.	两{s1}时代。	htEi
+Age of Two {s}.	双{s1}时代。	htEi
 Age of the {a}.	{a1}时代。	htEi
 Age of the {s}.	{s1}时代。	htEi
 Agility (minor)	敏捷（次要）	wi
@@ -109935,9 +109903,9 @@ younger sibling	弟妹	wi
 {p} was offered	{p1}被献出了	ht
 {p} was stolen.	{p1}被偷走了。	ht
 {p} was stored.	{p1}被存放了。	ht
-{s} Age at {p}.	在{p1}，{s1}时代。	htEi
-{s} Age in {d}.	{d1}年的{s1}时代。	htEi
-{s} Age in {p}.	在{p1}，{s1}时代。	htEi
+{s} Age at {p}.	在{p1}，{s1}的时代。	htEi
+{s} Age in {d}.	{d1}年的{s1}的时代。	htEi
+{s} Age in {p}.	在{p1}，{s1}的时代。	htEi
 {s} Race at {p}	在{p1}，{s1}赛跑	htEi
 {s} Race in {d}	{d1}年的{s1}赛跑	htEi
 {s} Race in {p}	在{p1}，{s1}赛跑	htEi
@@ -109974,7 +109942,7 @@ Administrators	管理员	wi
 Adventure mode	冒险模式
 Adventure mode	冒险模式	hq
 Age of Legends	传说时代	h
-Age of Two {s}	两{s1}时代	htEi
+Age of Two {s}	双{s1}时代	htEi
 Age of the {a}	{a1}时代	htEi
 Age of the {s}	{s1}时代	htEi
 Ambush (thief)	伏击：盗贼	w
@@ -110256,7 +110224,7 @@ The Fair Crest	公正山巅
 The Fifth {e}.	第五次{e1}。	htEi
 The First {e}.	第一次{e1}。	htEi
 The Fourth {e}	第四次{e1}	htEi
-The Golden Age	黄金时代	hEi
+The Golden Age	辉煌时代	hEi
 The Ninth {e}.	第九次{e1}。	htEi
 The Second {e}	第二次{e1}	htEi
 The Sixth {e}.	第六次{e1}。	htEi
@@ -114815,9 +114783,9 @@ youngest child	最小的孩子	h
 {p} was looted	{p1}被劫走了	ht
 {p} was stolen	{p1}被偷走了	ht
 {p} was stored	{p1}被存放了	ht
-{s} Age at {p}	在{p1}，{s1}时代	htEi
-{s} Age in {d}	{d1}年的{s1}时代	htEi
-{s} Age in {p}	在{p1}，{s1}时代	htEi
+{s} Age at {p}	在{p1}，{s1}的时代	htEi
+{s} Age in {d}	{d1}年的{s1}的时代	htEi
+{s} Age in {p}	在{p1}，{s1}的时代	htEi
 {s} adventurer	{s} 名冒险者	wtix
 {s} during {s}	{s1}（发生于{s2}期间）	hIit
 {s} government	{s1}政府	hIit
@@ -127684,7 +127652,7 @@ Geographer	地理学家	wi
 Give water	送水	wi
 Glassmaker	玻璃匠	wi
 Go upward.	向上。	hj
-Golden Age	黄金时代	h
+Golden Age	辉煌时代	h
 Good focus	不错的专注力	w
 Greetings.	你好。	hP
 Gregarious	合群	w
@@ -133854,7 +133822,7 @@ yourself	你自己	wi
 {d} year	{d} 年	wt
 {e}, {e}	{e1}，{e2}	hJt
 {p}, {s}	{p1}（{s1}）	htu
-{s} Age.	{s1}时代。	htEi
+{s} Age.	{s1}的时代。	htEi
 {s} Race	{s1}赛跑	htEi
 {s} fort	{s} 座要塞	wtix
 {s} save	{s} 个存档	wtix
@@ -134706,7 +134674,7 @@ zealous	热忱	wi
 {c} {s}	{c1}{s1}	htu
 {d} day	{d}天	wt
 {d} pts	{d} 点	wt
-{s} Age	{s1}时代	htEi
+{s} Age	{s1}的时代	htEi
  block	方块	wi
  cloth	布	wi
  lower	下	wi

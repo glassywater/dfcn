@@ -1,0 +1,199 @@
+Native era-selection reconstruction, DF 53.16 Windows
+===================================================
+
+These are source-inspection notes, not executable code or a test. Function and
+field names are reconstructed with data/upstream/df-structures/df.history.xml,
+df.history_figure.xml, df.creature.xml, and df.region.xml. The original game is
+closed source; the stored .asm files are the actual static PE disassembly.
+
+Images inspected:
+reference: D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+           PE:6a70a6d9:02711000
+classic:   C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+           PE:6a70b91c:0270a000
+Image base: 0x140000000 for both. Addresses below are RVAs.
+
+Role                        reference range       classic range
+build era determiner        bb7060..bb74ff         bb40a0..bb453f
+choose era type             bb7500..bb7799         bb4540..bb47d9
+create initial era          bb77a0..bb7b75         bb47e0..bb4bb5
+update era and ordinals     bb8910..bb8e02         bb5950..bb5e42
+
+Era enum, signed int16_t:
+  -1 NONE; 0 ThreePowers; 1 TwoPowers; 2 OnePower; 3 Myth; 4 Legends;
+   5 Twilight; 6 FairyTales; 7 Race (RACE_DOMINANT); 8 Heroes;
+   9 Golden; 10 Death; 11 Civilization; 12 Emptiness.
+
+Determiner offsets:
+  +00 living_powers; +04 living_megabeasts; +08 living_semimegabeasts
+  +0c/+10/+14 first three POWER/MEGABEAST/TITAN historical-figure IDs
+  +18 vector<int32> civilized counts by creature race
+  +30 civilized_total; +34 civilized_mundane
+
+Title offsets (era_infost):
+  +00 type; +04/+08 histfig IDs or dominant race index; +0c ordinal
+  +10 translated_name (string); +30 percent
+
+Build determiner (reference bb7060):
+  zero counts; initialize power_hf[0..2] to -1
+  for hf in world.history.figures:
+    if hf.flags.DEITY or hf.flags.FORCE: continue
+    if hf.died_year != -1: continue
+    if hf.caste.flags.POWER:
+      ++living_powers; store hf.id if fewer than three IDs stored
+    else if hf.caste.flags.MEGABEAST or hf.caste.flags.TITAN:
+      ++living_megabeasts; store hf.id if fewer than three IDs stored
+    else if hf.caste.flags.SEMIMEGABEAST:
+      ++living_semimegabeasts
+    if hf.civ_id != -1 and hf.race is a valid race index:
+      ++civilized_races[hf.race]; ++civilized_total
+      if hf.race.flags.MUNDANE: ++civilized_mundane
+  for pop in world.entity_populations:
+    if not pop.flags.all_local_links: continue
+    for paired (race, count) in pop.races/pop.counts:
+      if race is valid:
+        civilized_races[race] += count; civilized_total += count
+        if race.flags.MUNDANE: civilized_mundane += count
+
+Flag mappings from current df-structures, matched to native flag tests:
+  caste POWER=124 (byte15 bit4), MEGABEAST=110 (byte13 bit6),
+  SEMIMEGABEAST=111 (byte13 bit7), TITAN=132 (byte16 bit4).
+  FEATURE_BEAST=131, UNIQUE_DEMON=133, DEMON=134 are not separately counted
+  in this routine; a creature can qualify through the counted flags above.
+  creature MUNDANE=2 (byte0 bit2).
+  historical-figure DEITY=2/FORCE=3 are skipped; died_year is hf+30.
+  entity_population all_local_links=bit0, read from pop+e4.
+
+Initial-era routine (reference bb77a0):
+  initial_mega_power_sum is calculated as the number of living historical
+  figures whose caste has POWER or MEGABEAST or TITAN; skips DEITY/FORCE.
+  Its address in this reference PE is 0x1424f9f44.
+  It creates an era with start_year=-1, computes a determiner, calls the
+  selector and the separate title formatter, and appends it to history.eras.
+
+Choose era (reference bb7500):
+  out = {NONE, index1=-1, index2=-1, ordinal=0, name="", percent=0}
+  G = living_powers + living_megabeasts
+  B = world.history.initial_mega_power_sum
+
+  if B <= 3:
+    if G > 3: return Myth
+    if G == 3: return ThreePowers
+    if G == 2 and power_hf[0] != -1 and power_hf[1] != -1:
+      return TwoPowers, index1=power_hf[0], index2=power_hf[1]
+    if G == 1 and power_hf[0] != -1:
+      return OnePower, index1=power_hf[0]
+  else:
+    if G >= integer_truncate((2 * B) / 3): return Myth
+    if G >= integer_truncate(B / 3): return Legends
+    if G > 0: return Heroes
+
+  max_race_count, max_race = maximum positive civilized_races element
+  if max_race valid and max_race_count > 0 and civilized_total > 0:
+    mundane_percent = integer_truncate(100 * civilized_mundane / civilized_total)
+    if mundane_percent >= 50:
+      out.percent = mundane_percent
+      if mundane_percent < 90: return Twilight
+      if living_powers + living_megabeasts + living_semimegabeasts == 0
+          and civilized_mundane == civilized_total:
+        return Civilization
+      return FairyTales
+    dominant_percent = integer_truncate(100 * max_race_count / civilized_total)
+    if dominant_percent >= 50:
+      return Race, index1=max_race, percent=dominant_percent
+    return Golden
+
+  for old_era in history.eras, newest first:
+    if old_era.type in {Twilight, FairyTales, Race, Golden, Civilization}:
+      return Death
+  return Emptiness
+
+Important source distinctions:
+  * Heroes has no G>3 condition when B>3. It is the remaining positive range
+    below integer_truncate(B/3), so the common wiki >3 simplification is not
+    the exact condition in these installed images.
+  * Three/Two/OnePowers branches are selected only when B<=3 (with the G>3
+    fallback to Myth). They are not universal later phases of a large world.
+  * MUNDANE is an explicit creature flag. The percentage is not population
+    of all civilization races, and not a technological progress measurement.
+  * Golden is a demographics fallback. The selector does not count peace,
+    prosperity, wealth, happiness, or legendary heroes.
+  * Death remembers that a demographic civilization-era once existed.
+    Emptiness uses the same current absence of counted civilization when
+    no prior era in that set exists. Neither means no animal life remains.
+
+Era update (reference bb8910):
+  if history.eras empty: create initial era; return
+  current = history.eras.back()
+  candidate = choose_era(build_determiner())
+  same_key(a,b) = a.type==b.type and a.index1==b.index1 and a.index2==b.index2
+
+  if candidate.type in {Twilight, FairyTales, Race, Civilization}
+      and not same_key(current,candidate) and candidate.percent < 60:
+    candidate.type = Golden
+    candidate.index1 = candidate.index2 = -1
+  if same_key(current,candidate): return
+
+  append new era at current game year, including full determiner and title info
+  occurrence_count = 0
+  for old_era before this newly appended era, chronological order:
+    if same_key(old_era,candidate):
+      ++occurrence_count
+      old_era.ordinal = occurrence_count
+      if occurrence_count == 1:
+        new_era.translated_name = old_era.translated_name
+  if occurrence_count > 0:
+    new_era.ordinal = occurrence_count + 1
+  else:
+    format new era base title
+
+The 60% update gate means an existing Twilight/Race era can continue at
+50..59%, while a different Twilight/Race key needs 60% to begin; the initial
+era bypasses this update gate. FairyTales (>=90%) and Civilization (=100%)
+already exceed it. Ordinals count recurrence of the same type and both title
+indices, not the world's overall era index; prior first occurrences become
+numbered retroactively. The separate display routine adds ordinal wording.
+
+Golden must therefore be described with both routes: the selector's no-dominant
+race demographic fallback, and the updater's below-60% new-Twilight/new-Race
+fallback. Describing Golden only as MUNDANE<50% and no race>=50% would omit the
+second route, including cases where MUNDANE or a dominant race is at 50..59%.
+
+Monster / Rampage belong to a historical-event collection title
+------------------------------------------------------------
+
+Static reads from the same current reference PE:
+  beast-attack collection vtable RVA 1626180, slot +00 -> RVA 67b90
+  RVA 67b90: mov eax,6; ret
+  same vtable, slot +30 (getName) -> RVA bc6880
+  title formatter function RVA bc6880..bc6b9c
+  at RVA bc6a67: literal RVA 16c2058, "Monster"
+  at RVA bc6a8e: literal RVA 16dfad0, "Rampage"
+  complete annotated source: reference-beast-attack-collection-title.asm
+
+The mapping to history_event_collection_beast_attackst is corroborated by
+data/extracted/statue-history-sources.tsv rows concrete_rtti/root for that
+class and by data/upstream/df-structures/df.history_collection.xml:
+  history_event_collection_type: NONE=-1, WAR=0 ... BEAST_ATTACK=6 ...
+  ENTITY_OVERTHROWN=17 (18 actual collection types).
+  beast attack fields include parent collection, region/layer/site,
+  defender civilization, attacker historical-figure list, and ordinal.
+
+Native title reconstruction:
+  "The " + optional collection ordinal + " "
+  if attacker_hf.size() > 1:
+    race = common_attacker_race(collection)  // helper RVA bc6780
+    if race == -1: append "Monster"
+    else: append capitalized creature_raw.name[2] (adjective at +60)
+    append " "
+  append "Rampage"
+  if attacker_hf.size() == 1: append " of " + historical-figure name
+  append " in " + site, region, or "the Wilds"
+
+Thus "The [ordinal] Monster Rampage in ..." and "The [ordinal] Rampage of ..."
+are names of beast-attack historical-event collections, not era names. This
+conclusion does not rely on mere string proximity: the PE vtable getType=6,
+getName slot, title body, and separate collection enum establish the owner.
+The era selector and era title switch use the 13 era_type values 0..12; their
+Powers variants are a different naming family. Shared ordinal wording must
+not cause these families to be conflated.

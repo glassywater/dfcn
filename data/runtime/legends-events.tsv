@@ -3168,17 +3168,17 @@ Age of Death	死亡时代	age
 Age of Emptiness	空虚时代	age
 Age of Fairy Tales	童话时代	age
 Twilight Age	暮光时代	age
-Golden Age	黄金时代	age
+Golden Age	辉煌时代	age
 Age of Heroes	英雄时代	age
-Age of One Power	一强权时代	age
-Age of Two Powers	两强权时代	age
-Age of Three Powers	三强权时代	age
+Age of One Power	一权时代	age
+Age of Two Powers	双权时代	age
+Age of Three Powers	三权时代	age
 Age of Legends	传说时代	age
 Age of Myth	神话时代	age
 Age of {a}	{a}时代	title
 Age of the {a}	{a}时代	title
-Age of Two {s}	两{s}时代	title
-{s} Age	{s}时代	title
+Age of Two {s}	双{s}时代	title
+{s} Age	{s}的时代	title
 The world has passed into {e}	世界已进入{e}	event
 The world has passed into {s}	世界已进入{s}	event
 In a time before time,	在时间开始之前，	clause
@@ -3387,8 +3387,8 @@ their use of the {i}	他们运用{i}的技艺	clause
 (claim to {s}, {d} to present)	（宣称拥有{s}职位，{d}年至今）	clause
 Age of {s}	{s}时代	title
 Age of the {s}	{s}时代	title
-Age of {a} and {a}	{a1}与{a2}时代	title
-Age of {s} and {s}	{s1}与{s2}时代	title
+Age of {a} and {a}	{a1}与{a2}的时代	title
+Age of {s} and {s}	{s1}与{s2}的时代	title
 
 # Shared neutral lists in organization descriptions; do not interpret
 # their weapon/skill nouns as personal names or flatten deity links.
@@ -3466,7 +3466,7 @@ profitable visit of merchants	获利丰厚的商人来访	title
 tragic visit of merchants	酿成悲剧的商人来访	title
 ill-fated visit of merchants	遭遇厄运的商人来访	title
 unfortunate visit of merchants	不幸的商人来访	title
-Age of the {s} and the {s}	{s1}与{s2}时代	title
+Age of the {s} and the {s}	{s1}与{s2}的时代	title
 
 # Anonymous stolen goods use the same item field as named artifacts use p.
 the theft of {i}	对{i}的盗窃	title
@@ -3929,27 +3929,27 @@ Native history office: representative	代表	term
 Native history office: representatives	代表	term
 {p} was made by {a} in {p}	{a}在{p2}制成了{p1}	clause
 {p} was made from {p} by {a} in {p}	{a}在{p3}用{p2}制成了{p1}	clause
-Native Legends numbered age {d}: {s}	第{d}个{s}	clause
+Native Legends numbered age {d}: {s}	第{d}{s}	clause
 Native Legends age was a time {s}: {s}	{s1}是这样一个时代：{s2}。	clause
-Native Legends only great power {a}	{a}是世上唯一的强大势力	clause
-Native Legends only great powers {a}	{a}是世上仅有的强大势力	clause
+Native Legends only great power {a}	{a}是世上唯一的权能强者	clause
+Native Legends only great powers {a}	{a}是世上仅有的权能强者	clause
 Native Legends creatures ruled the world {s}	{s}统治着世界	clause
 Native Legends living gods and beasts held sway	活着的神灵与强大的野兽主宰着世界	term
 Native Legends living gods and beasts still held sway	活着的神灵与强大的野兽仍主宰着世界	term
-Native Legends great powers still existed	世上仍存在强大的势力	term
-Native Legends great powers were fading	世上的强大势力正逐渐衰落	term
-Native Legends great powers had returned	强大的势力已重返世界	term
+Native Legends great powers still existed	世上仍存在权能强者	term
+Native Legends great powers were fading	世上的权能强者正逐渐消亡	term
+Native Legends great powers had returned	权能强者已重返世界	term
 Native Legends fantastic creatures no longer numerous	奇幻生物已不再大量存在	term
 Native Legends fantastic creatures few and doubted	奇幻生物已寥寥无几，有些人甚至怀疑它们是否存在	term
-Native Legends final battles of ancient powers	最后的古老势力进行了它们最后的战斗	term
-Native Legends final battles of powers	最后的强大势力进行了它们最后的战斗	term
+Native Legends final battles of ancient powers	最后的古老权能强者展开了最后的战斗	term
+Native Legends final battles of powers	最后的权能强者展开了最后的战斗	term
 Native Legends civilized races peopled the world	各个文明种族遍布世界	term
-Native Legends civilization crumbled completely	政权已彻底崩溃	term
+Native Legends civilization crumbled completely	文明已彻底崩溃	term
 Native Legends fantastic creatures mere travelers stories	奇幻生物已成为旅人口中虚无缥缈的故事	term
 Native Legends only simple creatures existed	世上只有简单的生物栖居	term
 Native Legends no civilized peoples existed	世上已不存在文明族群	term
-Native Legends once again {s}	{s}，如此循环往复	clause
-Native Legends again {s}	{s}，这样的时代再次到来	clause
+Native Legends once again {s}	{s}，这一情形又一次出现	clause
+Native Legends again {s}	{s}，这一情形再次出现	clause
 Native Legends part of {s}	属于{s}的一部分。	clause
 Native Legends collection ended {s}	{s}结束了。	clause
 Native Legends collection occurred {s}	发生了{s}。	clause

@@ -2,17 +2,10 @@
 // names and RAW species labels keep the same reviewed vocabulary as events.
 if (document.page && document.page->kind == NativeHistoryPageKind::AgeIntroduction) {
     const int32_t type = number("type"), ordinal = number("ordinal");
-    auto title = term(text("age_title").empty() ? "Unknown Age" : text("age_title"));
-    if (!title) {
-        const auto translated = translate_legends_book(text("age_title"));
-        if (translated) title = Pieces{piece(*translated, neutral)};
-    }
-    if (!title) return std::nullopt;
-    if (ordinal > 0) {
-        title = apply("Native Legends numbered age {d}: {s}",
-            {Pieces{piece(std::to_string(ordinal), neutral)}, *title});
-        if (!title) return std::nullopt;
-    }
+    const auto translated_title = translate_world_age(
+        text("age_title").empty() ? "Unknown Age" : text("age_title"), 0, &event);
+    if (!translated_title) return std::nullopt;
+    const Pieces title{piece(*translated_title, neutral)};
     std::optional<Pieces> predicate;
     if (type <= 2) {
         const size_t count = type == 0 ? 3 : type == 1 ? 2 : 1;
@@ -56,7 +49,7 @@ if (document.page && document.page->kind == NativeHistoryPageKind::AgeIntroducti
         predicate = apply(ordinal >= 3 ? "Native Legends once again {s}" : "Native Legends again {s}", {*predicate});
         if (!predicate) return std::nullopt;
     }
-    return apply("Native Legends age was a time {s}: {s}", {*title, *predicate});
+    return apply("Native Legends age was a time {s}: {s}", {title, *predicate});
 }
 if (document.page && document.page->kind == NativeHistoryPageKind::CollectionIntroduction) {
     const int32_t marker = number("marker");

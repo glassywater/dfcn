@@ -144,7 +144,7 @@ reference	PE:6a70a6d9:02711000	generator-function	replace-title-tokens	0xee35f0	
 reference	PE:6a70a6d9:02711000	generator-function	select-title-template	0xee4870	0xee499a	-	-	Windows x64 C++ ABI	rcx output; edx written_content_type; r8 NAME; r9 NO_ART_NAME; choose BOOK_ART/BOOK_INSTRUCTION
 reference	PE:6a70a6d9:02711000	generator-function	load-title-text-set	0x131e4c0	0x131eff8	-	-	Windows x64 C++ ABI	index 0 BOOK_INSTRUCTION; index 1 BOOK_ART; select text-set entry
 reference	PE:6a70a6d9:02711000	generator-function	written-content-generator	0xc20b70	0xc28d68	-	-	Windows x64 C++ ABI	general_ref virtual +0x88 receives written_content_type and title destination
-reference	PE:6a70a6d9:02711000	generator-function	capitalize-title	0x52d650	0x52d904	-	-	Windows x64 C++ ABI	capitalize initial char and char after space/double quote; skip bracket tokens; preserve ordinary possessive apostrophe-s
+reference	PE:6a70a6d9:02711000	generator-function	capitalize-title	0x52d650	0x52d904	-	-	Windows x64 C++ ABI	capitalize only the first eligible visible character; skip bracket tokens; return after the first ordinary character; preserve internal word casing
 reference	PE:6a70a6d9:02711000	written-content-type	Manual	0xee4870	0xee499a	0xee4980	-	written_content_type=0; table branch=0	BOOK_INSTRUCTION
 reference	PE:6a70a6d9:02711000	written-content-type	Guide	0xee4870	0xee499a	0xee4981	-	written_content_type=1; table branch=0	BOOK_INSTRUCTION
 reference	PE:6a70a6d9:02711000	written-content-type	Chronicle	0xee4870	0xee499a	0xee4982	-	written_content_type=2; table branch=0	BOOK_INSTRUCTION
@@ -190,7 +190,7 @@ reference	PE:6a70a6d9:02711000	placeholder-selection	PHRASE agreement	0xee35f0	0
 reference	PE:6a70a6d9:02711000	placeholder-selection	PHRASE agreement	0xee35f0	0xee486c	0xee4302	-	The Wise; plural flag true	no predicate -s
 reference	PE:6a70a6d9:02711000	placeholder-selection	PHRASE predicate	0xee35f0	0xee486c	0xee4850	-	7 branch jump table	Will Tell | Foretell(s) | Can Say | Know(s) | Mourn(s) | Weep(s) | Laugh(s)
 reference	PE:6a70a6d9:02711000	placeholder-selection	PHRASE suffix	0xee35f0	0xee486c	0xee4660	-	optional +4 choices	none | In The End | Afterward | In The Beginning | There
-reference	PE:6a70a6d9:02711000	generator-call	final title capitalization	0xee35f0	0xee486c	0xee4788	0x52d650		title case changes connectors to The / Of / And
+reference	PE:6a70a6d9:02711000	generator-call	final title capitalization	0xee35f0	0xee486c	0xee4788	0x52d650		capitalize first eligible visible character only; ANY_AGE retains internal of/the/and casing
 reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_poetic_formst	0xee49a0	0xee4c85	0xee4a7c	-	generated form language_name	complete native name; else finite poetry aliases
 reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_musical_formst	0xee4c90	0xee4ff1	0xee4dea	-	generated form language_name	complete native name; else finite musical aliases
 reference	PE:6a70a6d9:02711000	dynamic-subject	general_ref_dance_formst	0xee5000	0xee5361	0xee515a	-	generated form language_name	complete native name; else finite dance aliases
@@ -253,7 +253,7 @@ classic	PE:6a70b91c:0270a000	generator-function	replace-title-tokens	0xede560	0x
 classic	PE:6a70b91c:0270a000	generator-function	select-title-template	0xedf7e0	0xedf90a	-	-	Windows x64 C++ ABI	rcx output; edx written_content_type; r8 NAME; r9 NO_ART_NAME; choose BOOK_ART/BOOK_INSTRUCTION
 classic	PE:6a70b91c:0270a000	generator-function	load-title-text-set	0x1319430	0x1319f68	-	-	Windows x64 C++ ABI	index 0 BOOK_INSTRUCTION; index 1 BOOK_ART; select text-set entry
 classic	PE:6a70b91c:0270a000	generator-function	written-content-generator	0xc1dbb0	0xc25da8	-	-	Windows x64 C++ ABI	general_ref virtual +0x88 receives written_content_type and title destination
-classic	PE:6a70b91c:0270a000	generator-function	capitalize-title	0x52b070	0x52b324	-	-	Windows x64 C++ ABI	capitalize initial char and char after space/double quote; skip bracket tokens; preserve ordinary possessive apostrophe-s
+classic	PE:6a70b91c:0270a000	generator-function	capitalize-title	0x52b070	0x52b324	-	-	Windows x64 C++ ABI	capitalize only the first eligible visible character; skip bracket tokens; return after the first ordinary character; preserve internal word casing
 classic	PE:6a70b91c:0270a000	written-content-type	Manual	0xedf7e0	0xedf90a	0xedf8f0	-	written_content_type=0; table branch=0	BOOK_INSTRUCTION
 classic	PE:6a70b91c:0270a000	written-content-type	Guide	0xedf7e0	0xedf90a	0xedf8f1	-	written_content_type=1; table branch=0	BOOK_INSTRUCTION
 classic	PE:6a70b91c:0270a000	written-content-type	Chronicle	0xedf7e0	0xedf90a	0xedf8f2	-	written_content_type=2; table branch=0	BOOK_INSTRUCTION
@@ -299,7 +299,7 @@ classic	PE:6a70b91c:0270a000	placeholder-selection	PHRASE agreement	0xede560	0xe
 classic	PE:6a70b91c:0270a000	placeholder-selection	PHRASE agreement	0xede560	0xedf7dc	0xedf272	-	The Wise; plural flag true	no predicate -s
 classic	PE:6a70b91c:0270a000	placeholder-selection	PHRASE predicate	0xede560	0xedf7dc	0xedf7c0	-	7 branch jump table	Will Tell | Foretell(s) | Can Say | Know(s) | Mourn(s) | Weep(s) | Laugh(s)
 classic	PE:6a70b91c:0270a000	placeholder-selection	PHRASE suffix	0xede560	0xedf7dc	0xedf5d0	-	optional +4 choices	none | In The End | Afterward | In The Beginning | There
-classic	PE:6a70b91c:0270a000	generator-call	final title capitalization	0xede560	0xedf7dc	0xedf6f8	0x52b070		title case changes connectors to The / Of / And
+classic	PE:6a70b91c:0270a000	generator-call	final title capitalization	0xede560	0xedf7dc	0xedf6f8	0x52b070		capitalize first eligible visible character only; ANY_AGE retains internal of/the/and casing
 classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_poetic_formst	0xedf910	0xedfbf5	0xedf9ec	-	generated form language_name	complete native name; else finite poetry aliases
 classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_musical_formst	0xedfc00	0xedff61	0xedfd5a	-	generated form language_name	complete native name; else finite musical aliases
 classic	PE:6a70b91c:0270a000	dynamic-subject	general_ref_dance_formst	0xedff70	0xee02d1	0xee00ca	-	generated form language_name	complete native name; else finite dance aliases

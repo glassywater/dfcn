@@ -3865,12 +3865,7 @@ Use world now	立即使用世界
 Play now	立即开始游戏
 Play now!	立即开始游戏！
 Continue generating	继续生成
-Age of Myth, year {d}	神话时代，第 {d} 年	wt
-Age of Legends, year {d}	传说时代，第 {d} 年	wt
-Age of One Power, year {d}	一强权时代，第 {d} 年	wt
-Age of Two Powers, year {d}	两强权时代，第 {d} 年	wt
-Twilight Age, year {d}	暮光时代，第 {d} 年	wt
-Age of Fairy Tales, year {d}	童话时代，第 {d} 年	wt
+# World-generation year titles use the shared native era parser; canonical age terms are in legends-events.tsv.
 # Calendar fields: translate seasons as complete terms, not Early + spring.
 # The builder reuses these fields for every ordinal suffix and full date.
 # Match the complete date label, including its colon, before the fruit noun.
@@ -8087,8 +8082,8 @@ Victory By {b}	凭借{b}获胜	hbti
 {b} In The Modern Era	现代的{b}	hbti
 {b} In The Time of My Ancestors	我祖先时代的{b}	hbti
 {b} In Theory	{b}理论	hbti
-# [NAME] In [ANY_AGE] is generated from the shared age entries in
-# data/runtime/legends-events.tsv, not from an unrestricted second book/name capture.
+# [NAME] In [ANY_AGE] uses the shared native era-title resolver; fixed labels
+# come from legends-events.tsv, while dynamic labels retain figure/RAW provenance.
 {b} Interpreted	{b}解读	hbti
 {b} Might Help	{b}或许有用	hbti
 {b} Questioned	质疑{b}	hbti

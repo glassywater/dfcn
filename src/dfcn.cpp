@@ -71,6 +71,9 @@ namespace dfcn {
 static std::vector<NativeHistoryDraw> captured_native_history_draws();
 static std::vector<NativeHistoryUnboundDraw> captured_native_history_unbound_draws();
 static uintptr_t native_history_profile_base();
+static bool capture_native_history_age_title(std::string_view base_title,
+    NativeHistoryEventData &out, int32_t requested_ordinal = -1,
+    bool *matched = nullptr);
 static uint64_t native_history_entity_parent_revision(uint64_t draw_epoch);
 static bool native_history_worldgen_page();
 static NativeModDetails native_mod_details();
@@ -4696,6 +4699,8 @@ private:
     std::optional<std::string> translate_legends_anatomy(std::string_view value) const;
     std::vector<int> matching_legends_rules(std::string_view source) const;
     std::optional<std::string> translate_legends_item(std::string_view value) const;
+    std::optional<std::string> translate_world_age(std::string_view value,
+        unsigned depth = 0, const NativeHistoryEventData *context = nullptr) const;
     std::optional<std::string> translate_legends_event(std::string_view value, unsigned depth = 0) const;
     std::optional<std::string> translate_legends_nested(
         const Rule &rule, std::string_view value, unsigned depth) const;
@@ -11082,6 +11087,9 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         }
     }
 
+    // Age titles share their native type/name grammar with Legends and books.
+    if (auto age = translate_world_age(screen_text)) return age;
+
     // The completed-world summary renders the age label and `, year N` with
     // separate addst() calls. Depending on justification and resolution this
     // can leave several logical spaces between them, so ordinary literal
@@ -11095,36 +11103,10 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             const bool numeric_year = std::all_of(year.begin(), year.end(), [](unsigned char ch) {
                 return ch >= '0' && ch <= '9';
             });
-            const std::string label = trim(screen_text.substr(0, year_at));
-            static const std::unordered_map<std::string, std::string> named_ages = {
-                {"Age of One Power", "一强权时代"},
-                {"Age of Two Powers", "两强权时代"},
-                {"Age of Three Powers", "三强权时代"},
-                {"Age of Myth", "神话时代"},
-                {"Age of Legends", "传说时代"},
-                {"Twilight Age", "暮光时代"},
-                {"Age of Fairy Tales", "童话时代"},
-                {"Age of Heroes", "英雄时代"},
-                {"Golden Age", "黄金时代"},
-                {"Age of Death", "死亡时代"},
-                {"Age of Civilization", "文明时代"},
-                {"Age of Emptiness", "空无时代"},
-            };
-            std::string translated_age;
-            if (auto found = named_ages.find(label); found != named_ages.end()) {
-                translated_age = found->second;
-            } else if (label.starts_with("The Second Age of ")) {
-                translated_age = translate_phrase(label.substr(18)) + "第二纪元";
-            } else if (label.starts_with("The Age of ")) {
-                translated_age = translate_phrase(label.substr(11)) + "时代";
-            } else if (label.starts_with("Age of ")) {
-                translated_age = translate_phrase(label.substr(7)) + "时代";
-            } else if (label.ends_with(" Age") && label.size() > 4) {
-                translated_age = translate_phrase(label.substr(0, label.size() - 4)) + "时代";
-            }
-            if (numeric_year && !translated_age.empty()) {
-                return translated_age + "，第 " + year + " 年";
-            }
+            if (numeric_year)
+                if (auto age = translate_world_age(trim_view(
+                        std::string_view(screen_text).substr(0, year_at))))
+                    return *age + "，第 " + year + " 年";
         }
     }
 
@@ -20384,6 +20366,7 @@ std::optional<std::string> Overlay::translate_character_need_sentence(
 static bool item_description_translation_complete(
     const std::optional<std::string> &target);
 static std::string normalize_art_utterance(std::string_view source);
+#include "world_ages.inc"
 #include "legends_detail.inc"
 #include "history_events.inc"
 #include "legends_books.inc"
@@ -27928,11 +27911,8 @@ std::vector<Match> Overlay::find_matches(int only_y,
                     collapsed.push_back(row[static_cast<size_t>(x)]);
                 }
                 const size_t year_at = collapsed.rfind(", year ");
-                const bool age_shape = collapsed.starts_with("Age of ") ||
-                    collapsed.starts_with("The Age of ") ||
-                    collapsed.starts_with("The Second Age of ") ||
-                    collapsed.starts_with("Twilight Age") ||
-                    collapsed.starts_with("Golden Age");
+                const bool age_shape = year_at != std::string::npos &&
+                    world_age_source_shape(std::string_view(collapsed).substr(0, year_at));
                 if (age_shape && year_at != std::string::npos) {
                     if (auto translated = translate_procedural_fragment(collapsed)) {
                         candidates.push_back({row_start, y, row_end - row_start, -4,

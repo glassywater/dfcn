@@ -180,7 +180,8 @@ def extract(image: CaptionImage, native: NativeImage, host: str):
         # NAME and NO_ART_NAME are produced together by ee4870. The reviewed
         # ede350 helper first requires an initial the/The, then removes every
         # same-case occurrence, including inner articles in e.g. Anatomy of
-        # the Eye. Title casing is applied later by ee35f0 -> 52d650.
+        # the Eye. ee35f0 -> 52d650 later capitalizes only the first eligible
+        # visible character; it does not title-case inner of/the/and fragments.
         originals = [row for row in rows if row[0] == host and row[2] == owner
                      and row[3] in ("literal", "inline-literal")]
         for row in originals:

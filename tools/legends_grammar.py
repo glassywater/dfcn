@@ -13,8 +13,9 @@ with a comma, not the noun-list connector or a shared-subject action prefix.
 `interaction-action` is a reviewed procedural IS_HIST_STRING pair. It supplies
 the ordinary action and its native "the moment when ..." event summary from
 the same predicate, retaining both participants and the complete interaction.
-`age` is a named historical era, shared by event terms and BOOK_INSTRUCTION's
-`[NAME] In [ANY_AGE]` titles, with optional article and title-case spelling.
+`age` is a named historical era term with its complete native heading.
+BOOK_INSTRUCTION's `[NAME] In [ANY_AGE]` uses the shared runtime era grammar,
+including generated titles and recurring ordinals, without per-era templates.
 `description` is a recursive physical-description noun phrase, not prose.
 `identity` is a quoted or unnamed historical identity; it never enters the
 prose or participant grammars and preserves a complete person's link.
@@ -234,14 +235,11 @@ def compile_events(path: Path) -> list[tuple[str, str, str]]:
         elif mode in ("clause", "term"):
             emit(source, target)
         elif mode == "age":
-            # Reuse the era's reviewed term instead of treating Age as a
-            # person's age or phoneticizing In/Of in a book's title. These
-            # terms also own the complete native heading, whose article
-            # must not route it through a generic generated-name grammar.
+            # These terms own the complete native heading. The runtime
+            # shared era grammar also resolves ANY_AGE book-title slots,
+            # including dynamic creature/figure names and recurring eras.
             emit(source, target)
             emit("The " + source, target, namespace="Ei")
-            for article in ("", "The "):
-                emit("{b} In " + article + source, target + "的{b}", namespace="bi")
         elif mode == "statement":
             # Native aftermath branches can switch Some/Several to lowercase
             # after "and", or keep the original heading case for other clauses.

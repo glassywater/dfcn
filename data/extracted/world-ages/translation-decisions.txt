@@ -1,0 +1,121 @@
+纪元原文、实际含义与译名研究（DF 53.16 Windows）
+=================================================
+
+本轮先完成用户要求的 Wiki 研究、原生程序静态提取及译名确定，随后用户
+授权按研究结果实施。已保留本目录的来源资料和分析清单，并修改共享运行
+代码、时代译名和简介词条。已使用根目录 build-deploy.ps1 完成正常数据
+生成、编译和部署，退出码为0；Steam版及配置中的官网版目录均已部署，
+本次临时文件清理完成。没有单独运行生成器、添加测试或操作游戏窗口；
+尚未观察到游戏内最终显示。
+
+来源优先级
+----------
+实际类型、条件、名称组成和重复编号：本机 Steam/官网版 PE 静态反汇编。
+结构及字段含义：项目已有 DFHack df-structures XML，与指令偏移对应。
+语义说明：游戏 Legends 原文分支，再与 Bay 12 开发日志及 Wiki 交叉阅读。
+中文词根和标题句式：中文 Wiki 专门标准译名表及日历。
+本目录的 .asm 是实际反汇编，decompiled-era-selection.txt 是人工还原伪代码，
+不能说成游戏公开源码。原生函数来自游戏映像，未执行或注入游戏。
+
+网页来源（2026-10-06 阅读）
+------------------------
+https://www.dwarffortresswiki.org/index.php/Calendar#Ages
+https://dfzh.huijiwiki.com/wiki/Project%3A%E8%AF%91%E5%90%8D%E8%A1%A8
+https://dfzh.huijiwiki.com/wiki/%E6%97%A5%E5%8E%86
+https://dfzh.huijiwiki.com/wiki/MediaWiki%3AHuiji-translation-pairs
+https://bay12games.com/dwarves/dev_2008.html
+https://github.com/DFHack/df-structures/blob/master/df.history.xml
+
+中文 Wiki 页面直接打开返回 403；搜索索引取得了标准译名表的时间节完整表格
+及日历的时代节正文。下面的既成译名由该内容支持，不把自行补齐词条说成
+Wiki 标准。开发日志是历史语义依据，数值条件仍以本机 53.16 程序为准。
+
+译名决定
+--------
+采用“时代”作为 Age 的统一标题后缀。中文 Wiki 的专门译名表、各类标题和
+重复名称示例都使用时代；纪元是概念说明用词。上次无依据将重复标题改为
+“传说第六纪元”的命名结论及实现已撤销。截图标题应为“第六传说时代，第213年”。
+
+沿用既成词根：神话、传说、英雄、三权、辉煌、暮光、童话、文明、死亡、
+空虚；未知时代是缺失基本名称时的文案兜底，不是额外时代类型。
+
+三权中的“权”按该语境理解为权能。原生统计的是具有 POWER、MEGABEAST、
+TITAN 标记的存活历史人物，排除 DEITY/FORCE；译为政治强权或强大势力容易
+让人误以为国家或政权。简介可称“执掌权能的强者”，具体人物和物种仍逐一
+按原生身份翻译，不把这个术语应用到普通政治或能力字段。
+
+正常 OnePower/TwoPowers 标题优先按实际人物、物种命名：双（物种）时代、
+（物种1）与（物种2）的时代、（人物名/物种）时代、（物种）的时代。
+程序另有 Age of One Power、Age of Two Powers 两个缺资料兜底；中文 Wiki
+已取得表格没有独立收录这两项。本次按三权体系补齐为“一权时代”和
+“双权时代”，仅用于这两个兜底，不覆盖已有具体人物或物种名称。
+
+Golden 沿用辉煌时代，而不是另造一个经济盛世类标题。原文说明为多种文明
+种族共居，选择器没有财富、和平、幸福或繁荣量。初始选择里是人口回退项，
+更新时还会接纳未达到60%转入门槛的候选时代。因此不能将它严格等同于
+MUNDANE人口不足50%、所有种族皆不足50%的唯一状态。
+
+Emptiness 沿用空虚时代，不另造空无、空寂或死寂。其叙事对象是文明的缺席，
+不是物理世界空无一物，也不是所有生命灭绝。它允许文明曾存在、但在进入
+人口时代前消亡；英文简介中的no civilized peoples existed不应强行增加
+“从未”这一完整历史判断。
+
+Race 时代是文明人口主导。2008-05-26 官方日志中，精灵即使没有自有据点，
+仍因人口最多出现精灵时代，所以不应按国力或政治统治解释。MUNDANE是
+creature RAW标签，指现实常见生物一类，不是所有会死亡的凡人；矮人、精灵
+等奇幻种族不能因为是文明人口就归为MUNDANE。
+
+编号与边界
+----------
+B = 初始POWER+MEGABEAST/TITAN总数。
+G = 当前计入统计的存活POWER+MEGABEAST/TITAN总数。
+M = 带MUNDANE标签的文明人口占比，以整数除法截断。
+R = 最多种族在文明人口中的占比，以整数除法截断。
+era-catalog.tsv逐项列出完整类别、标题、意义、选择条件及更新的补充规则。
+
+重复判断键是(type,index1,index2)，不是整个世界的时代列表序号。
+同一键第二次出现后，第一次会被追记为First，第二次为Second；后续依次。
+One/Two的索引是人物ID；Race的索引是种族；固定类型的名称索引通常为-1。
+同名类别可以中断后再度出现；全部13类不构成一条固定的文明进化阶梯。
+当前截图中的Legends没有不同人物/种族索引，Sixth就是第六次传说时代。
+
+原生完整标题在ordinal=0时只显示The+基本标题。ordinal非零时调用公共
+序数函数；1..19用First..Nineteenth，20以上用数字与st/nd/rd/th后缀。
+公共函数有Zeroth分支，但时代标题在ordinal=0时跳过调用，不能生成第零时代。
+
+本机Heroes条件：B>3且0<G<floor(B/3)。当前英文/中文Wiki的G>3简述不精确。
+Three/Two/One分支仅在B<=3时选择；大型世界后期只剩三位并不自动改为三权。
+初始人口选择50%为边界；更新进入不同Twilight/Race键需60%，以防来回切换。
+FairyTales含90%边界；100%MUNDANE但仍有半巨兽时仍可能为童话时代。
+
+Wiki 字符串转储中相邻的 Monster/Rampage 并非额外纪元。当前游戏的
+history_event_collection_beast_attackst 虚表 RVA1626180，类型函数67b90
+直接返回BEAST_ATTACK=6，getName槽指向bc6880。该标题函数引用Monster
+和Rampage；这属于历史事件集合的巨兽袭击名称，使用自己的事件集合编号。
+实际来源保存在reference-beast-attack-collection-title.asm。
+
+本轮已实施的共享纪元处理
+----------------------
+src/world_ages.inc 统一处理固定类型、动态人物名、物种、物种形容词、Two数量
+和重复序数。src/native_history_ages.inc 从原生历史时代取得类型、人物/种族
+索引及名称元数据，为共享解析提供实际身份，不以Dragon等拼写推断身份。
+
+三个入口已接入共享解析：src/dfcn.cpp 的世界生成标题、src/legends_detail.inc
+的Legends标题及书名时代主题、src/history_collection_page_semantics.inc 的
+时代简介标题。固定时代、Race及具象Powers标题统一把序数放在整个时代名称前，
+不再改为“词根第N纪元”，也不添加“个”。时代名称不再因动态解析失败而
+落入普通人物槽或通用书名槽；其他上下文的Age词义不在本次修改范围。
+
+canonical时代词根由data/runtime/legends-events.tsv统一维护，已沿用中文
+Wiki既成时代名称，并补齐一权/双权兜底；动态Two采用“双（物种）时代”，
+物种形容词和并列物种采用Wiki句式。data/runtime/local-overrides.tsv中
+六条重复的世界生成“, year {d}”专项时代译名已移除，年份标题使用共享
+原生时代解析和上述词根，避免多个入口分别保存中文时代名称。
+
+简介中的政治“势力”已改为具体“权能强者”；civilization crumbled
+completely已表达文明崩溃，不缩窄成政权；again/once again只表达再次或
+又一次出现，不增译成无限循环。本轮未改全局通用power及非时代条目。
+
+本次实施已通过Windows根目录build-deploy.ps1入口编译部署，退出码为0，
+未观察到游戏内最终显示。后续确需构建代码时仍只能使用同一入口，不单独
+生成数据或复制产物；本研究记录的状态更新不触发另一次构建。

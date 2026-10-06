@@ -659,6 +659,8 @@ std::optional<std::string> Overlay::translate_legends_nested(
         const Rule &rule, std::string_view value, unsigned depth) const {
     TranslationWorkFrame work_frame("historical template", rule.source);
     if (depth >= 12 || value.empty() || value.size() > 2048) return std::nullopt;
+    if (rule.legends_event_title && world_age_source_shape(value))
+        return translate_world_age(value, depth);
     if (rule.template_kinds.empty())
         return value.size() == rule.source.size() &&
             template_literal_at(value, 0, rule.source, rule.case_insensitive)
@@ -674,7 +676,7 @@ std::optional<std::string> Overlay::translate_legends_nested(
     std::vector<std::optional<std::string>> translated(captures.size());
     // The native collection formatter inserts the ordinal after The, leaving
     // the nested title without its article. Keep this grammar shared by the
-    // nested-title resolver and the era-specific word order below.
+    // nested-title resolver. Era titles use their separate shared grammar.
     const bool spelled_ordinal = rule.legends_event_title &&
         rule.template_kinds.size() == 1 && rule.template_kinds.front() == 'e' &&
         rule.template_literals.size() == 2 &&
@@ -796,30 +798,6 @@ std::optional<std::string> Overlay::translate_legends_nested(
     };
     if (!consume(0, first.size())) return std::nullopt;
     auto target = fill_template(rule, captures, &capture_translations_, nullptr, &translated);
-    if ((spelled_ordinal || numeric_ordinal) && rule.template_literals.back().empty()) {
-        // Eras use the same native ordinal formatter as repeated events, but
-        // their ordinal names a numbered epoch rather than an occurrence.
-        // Reuse both the reviewed age vocabulary and the parsed ordinal; do
-        // not add global First/Age translations or enumerate a world's eras.
-        static constexpr std::array<std::string_view, 13> named_ages = {{
-            "unknown age", "age of civilization", "age of death", "age of emptiness",
-            "age of fairy tales", "twilight age", "golden age", "age of heroes",
-            "age of one power", "age of two powers", "age of three powers",
-            "age of legends", "age of myth",
-        }};
-        std::string age_source = lower(captures.back());
-        if (age_source.starts_with("the ")) age_source.erase(0, 4);
-        const auto &age = translated.back();
-        if (std::find(named_ages.begin(), named_ages.end(), age_source) != named_ages.end() &&
-                age && age->ends_with("时代") && target.ends_with(*age)) {
-            std::string ordinal = target.substr(0, target.size() - age->size());
-            if (ordinal.starts_with("第") && ordinal.ends_with("次")) {
-                ordinal.resize(ordinal.size() - std::string_view("次").size());
-                target = age->substr(0, age->size() - std::string_view("时代").size()) +
-                    ordinal + "纪元";
-            }
-        }
-    }
     return translation_complete_with_native_nicknames(target, value)
         ? std::optional<std::string>(std::move(target)) : std::nullopt;
 }
@@ -828,6 +806,9 @@ std::optional<std::string> Overlay::translate_legends_event(
         std::string_view value, unsigned depth) const {
     value = trim_view(value);
     if (depth >= 12) return std::nullopt;
+    // Do not let an unresolved native era fall through to an ordinary
+    // person/name template: Dragon can be both a species and a name word.
+    if (world_age_source_shape(value)) return translate_world_age(value, depth);
     const std::string key = "E:" + std::to_string(depth) + ":" + std::string(value);
     if (const auto it = legends_nested_cache_.find(key); it != legends_nested_cache_.end())
         return it->second;
@@ -1009,10 +990,35 @@ std::optional<std::string> Overlay::translate_legends_book(
     const std::string normalized = normalize_utterance(value);
     value = normalized;
     if (value.empty() || value.ends_with("...") || depth >= 8) return std::nullopt;
+    // ANY_AGE contains a historical era title, including recurring ordinals
+    // and generated creature/figure names. Keep it on the shared era grammar
+    // before a generic book wrapper or personal-name fallback splits it.
+    if (const auto age = translate_world_age(value, depth)) return age;
+    std::string subject = lower(std::string(value));
+    // Native BOOK_INSTRUCTION: [NAME] In [ANY_AGE]. Try complete era suffixes
+    // from the right because NAME can contain its own In/And/Of fragments.
+    // Only the NAME slot recurses through the ordinary book subject grammar.
+    for (size_t at = subject.rfind(" in "); at != std::string::npos;
+            at = at == 0 ? std::string::npos : subject.rfind(" in ", at - 1)) {
+        if (at == 0 || at + 4 >= value.size()) continue;
+        const auto era_source = value.substr(at + 4);
+        if (!world_age_source_shape(era_source)) continue;
+        const auto age = translate_world_age(era_source, depth + 1);
+        if (!age) return std::nullopt;
+        if (const auto title = translate_legends_book(
+                trim_view(value.substr(0, at)), depth + 1))
+            return *age + "的" + *title;
+        return std::nullopt;
+    }
+    // A complete era may contain In inside its generated name, so try its
+    // native identity before the wrapper above. A book ending in Golden Age
+    // also has this broad shape; reject unresolved eras only after wrappers.
+    if (world_age_source_shape(value)) return std::nullopt;
+    // The Age is the native empty-history fallback, without a named era's
+    // shape. Its reviewed book template continues through the normal path.
     // Instructional titles have printed subject aliases in addition to the
     // short research topics. Resolve a whole subject before the generic
     // conjunction/colon wrappers can split it into unrelated name words.
-    std::string subject = lower(std::string(value));
     if (const auto found = legends_terms_ci_.find("book title phrase: " + subject);
             found != legends_terms_ci_.end()) return found->second;
     if (const auto found = legends_terms_ci_.find("book title subject: " + subject);
