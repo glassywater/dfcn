@@ -4354,6 +4354,8 @@ private:
         std::string &english) const;
     void append_fortress_site_name(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
+    void append_fortress_petition_site_names(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void layout_fortress_build_placement(SDL_Renderer *renderer);
     void layout_fortress_build_materials(SDL_Renderer *renderer);
     void append_fortress_remembered_material(std::vector<std::string> &rows,
@@ -21451,6 +21453,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 
 #include "embark_introduction.inc"
 #include "fortress_hud.inc"
+#include "fortress_petitions.inc"
 #include "adventure_target_rows.inc"
 #include "adventure_combat_geometry.inc"
 #include "adventure_combat_panel.inc"
@@ -22317,6 +22320,8 @@ std::vector<Match> Overlay::find_matches(int only_y,
     context_detail.checkpoint(RenderTimingStage::Places);
     if (!announcement_panel_only) {
     append_fortress_site_name(screen_rows, result, only_y,
+        screen_override != nullptr);
+    append_fortress_petition_site_names(screen_rows, result, only_y,
         screen_override != nullptr);
     append_fortress_place_names(screen_rows, result, only_y,
         screen_override != nullptr);

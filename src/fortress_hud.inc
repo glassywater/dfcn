@@ -9,18 +9,19 @@ static bool fortress_header_rank(std::string_view source) {
 // row phonetic, and send the English-name row through the site translator
 // before generic personal-name/compound rules can consume either field.
 void Overlay::append_fortress_site_name(std::vector<std::string> &rows,
-        std::vector<Match> &matches, int only_y, bool raw_layer) const {
+        std::vector<Match> &matches, int only_y, bool /*raw_layer*/) const {
     if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy) ||
             (only_y >= 0 && only_y > 3)) return;
     const int header_rows = std::min(5, gps_->dimy);
     std::vector<std::string> context(rows.begin(), rows.begin() + header_rows);
-    if (raw_layer) {
-        for (int y = 0; y < header_rows; ++y)
-            for (int x = 0; x < gps_->dimx; ++x) {
-                const auto ch = visible_char_at(x, y);
-                context[y][x] = ch ? static_cast<char>(ch) : ' ';
-            }
-    }
+    // Earlier readers may have claimed a rank or part of the native row.
+    // The composed HUD supplies context; each raw layer still owns only
+    // its exact surviving source bytes below.
+    for (int y = 0; y < header_rows; ++y)
+        for (int x = 0; x < gps_->dimx; ++x) {
+            const auto ch = visible_char_at(x, y);
+            context[y][x] = ch ? static_cast<char>(ch) : ' ';
+        }
     for (int y = 0; y <= 2 && y + 2 < gps_->dimy; ++y) {
         std::vector<int> populations;
         for (const std::string_view label : {"Pop", "Population"})
@@ -46,29 +47,16 @@ void Overlay::append_fortress_site_name(std::vector<std::string> &rows,
                     english.replace(15, 3, "...");
                 }
                 const std::array<std::string, 2> sources{name.native_name, english};
-                std::array<int, 2> lengths{};
-                bool owned = true;
-                for (size_t field = 0; field < sources.size(); ++field) {
-                    const auto &source = sources[field];
-                    const int length = std::min<int>(source.size(), right - left);
-                    const auto visible = std::string_view(context[y + field]).substr(left, length);
-                    if (length <= 0 || lower_native_name(std::string(visible)) !=
-                            lower_native_name(source.substr(0, length))) {
-                        owned = false;
-                        break;
-                    }
-                    lengths[field] = length;
-                }
-                if (!owned) continue;
                 auto place = translate_english_site_name(full_english, &name);
-                if (!place) return;
-                *place += site_name_attribute_suffix(name.site_label, name.site_type);
+                if (place) *place += site_name_attribute_suffix(name.site_label, name.site_type);
                 const std::array<std::string, 2> targets{
-                    site_name_full_transliteration(name), *place};
-                if (targets[0].empty()) return;
+                    site_name_full_transliteration(name), place.value_or(std::string{})};
                 for (size_t field = 0; field < sources.size(); ++field) {
                     const int row_y = y + static_cast<int>(field);
-                    const int length = lengths[field];
+                    const int length = std::min<int>(sources[field].size(), right - left);
+                    if (length <= 0 || targets[field].empty() ||
+                            lower_native_name(context[row_y].substr(left, length)) !=
+                            lower_native_name(sources[field].substr(0, length))) continue;
                     const std::string source = context[row_y].substr(left, length);
                     // Raw-layer suppression must own only this layer's same
                     // source bytes, never a popup that covers the HUD.

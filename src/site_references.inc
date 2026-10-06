@@ -52,16 +52,27 @@ static bool capture_site_reference_identity(uintptr_t base, uintptr_t site,
 bool Overlay::capture_current_fortress_site_name(NativeHistoryName &name,
         std::string &english) const {
     const uintptr_t base = native_history_profile_base();
+    uintptr_t site = 0;
+#ifdef _WIN32
+    // The two HUD producers (3f3033/3f30ab) read main.fortress_site,
+    // not the independently retained plotinfo.site_id. Use their owner.
+    if (!base || !native_history_copy(native_reference_address(base,
+            0x239a1f0), site) || !site) return false;
+#else
     const uintptr_t plotinfo = base ? native_reference_address(base,
         native_history_layout::plotinfo_rva) : 0;
     int32_t id = -1;
     if (!plotinfo || !native_history_copy(native_history_object_field(
             plotinfo, "plotinfost", 0x2444, sizeof(id)), id) || id < 0)
         return false;
-    const uintptr_t site = native_history_find_subject(base, NativeHistoryObjectKind::Site, id);
+    site = native_history_find_subject(base, NativeHistoryObjectKind::Site, id);
+#endif
     SiteReferenceIdentity identity;
-    if (!site || !capture_site_reference_identity(base, site, identity) || identity.id != id)
+    if (!site || !capture_site_reference_identity(base, site, identity))
         return false;
+#ifndef _WIN32
+    if (identity.id != id) return false;
+#endif
     name = std::move(identity.name);
     english = std::move(identity.english);
     return true;
