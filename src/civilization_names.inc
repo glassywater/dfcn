@@ -409,6 +409,18 @@ uint64_t Overlay::history_parent_context_revision() const {
 std::optional<std::string> Overlay::translate_history_entity_name(
         const NativeHistoryName &name, const NativeHistoryEventData &event,
         int32_t id, bool current, bool polity_role) const {
+    // Undated entity references name the current identity. Retained page
+    // snapshots may still carry the old historical flag and an empty parent;
+    // refresh that provenance before choosing a local-government suffix.
+    if (current && !name.entity_name_current) {
+        NativeHistoryName contextual = name;
+        const uintptr_t base = native_history_profile_base();
+        const uintptr_t entity = native_history_find_subject(base,
+            NativeHistoryObjectKind::Entity, id);
+        if (!capture_native_history_entity_name_context(base, entity, contextual,
+                true, nullptr, true)) return translate_history_name(name, false, polity_role);
+        return translate_history_name(contextual, false, polity_role);
+    }
     if (!current && !polity_role && name.entity_type >= 1 && name.entity_type <= 10 &&
             (name.entity_type != 1 || name.parent_word_id.empty() ||
                 (name.parent_word_pos != 0 && name.parent_word_pos != 1))) {

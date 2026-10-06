@@ -15,7 +15,8 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
     }
     const auto &name_context = document.page ? document.page->data : document.event;
     const bool current_entities = document.page &&
-        document.page->kind == NativeHistoryPageKind::EntityIntroduction;
+        (document.page->kind == NativeHistoryPageKind::EntityIntroduction ||
+         document.page->kind == NativeHistoryPageKind::RelatedEntity);
     // Historical snapshots are immutable, but an unresolved parent can gain
     // evidence as history grows. Cache both resolutions and generic fallbacks
     // until that evidence changes; current PARENT links stay live.
@@ -27,7 +28,7 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             if (subject.kind != NativeHistoryObjectKind::Entity || !subject.name.has_name) continue;
             const auto &name = subject.name;
             if ((name.entity_type >= 1 && name.entity_type <= 10 &&
-                    name.entity_name_current) ||
+                    (name.entity_name_current || current_entities)) ||
                     (name.entity_type < 0 && current_entities)) dependencies |= 2;
             else if (name.entity_type < 0 || (name.entity_type == 1 &&
                     (name.parent_word_id.empty() ||
@@ -283,8 +284,7 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             name.emplace();
         } else if (kind == NativeHistoryObjectKind::Entity)
             name = translate_history_entity_name(found->name, event, id,
-                document.page && document.page->kind == NativeHistoryPageKind::EntityIntroduction,
-                polity_role);
+                current_entities, polity_role);
         else if (kind == NativeHistoryObjectKind::Site) {
             const auto sources = site_reference_sources.find(id);
             if (sources != site_reference_sources.end() && !sources->second.empty()) {
