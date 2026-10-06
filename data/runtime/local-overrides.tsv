@@ -10415,6 +10415,7 @@ No uniform	无制式服装	wli
 # Military squad roster: window title, navigation and numbered member slots.
 Squads	小队	w
 Back to squads	返回小队	w
+Assign leader	指派队长	w
 Assign position {d}	指派第{d}名队员	wt
 
 # Military equipment: complete button labels take precedence over name fallback.
