@@ -12718,6 +12718,37 @@ std::optional<std::string> Overlay::translate_adventure_background_source(
         std::optional<std::string>(std::move(result)));
 }
 
+// The native footer may justify the FPS label and values separately. Keep
+// the complete counter on the game's renderer, including any padded gap;
+// its changing numbers are neither list types nor item quantities.
+static std::optional<std::pair<size_t, size_t>> native_fps_counter_span(
+        std::string_view row) {
+    constexpr std::string_view label = "FPS:";
+    for (size_t start = row.find(label); start != std::string_view::npos;
+            start = row.find(label, start + label.size())) {
+        size_t cursor = start + label.size();
+        const auto spaces = [&] {
+            while (cursor < row.size() && row[cursor] == ' ') ++cursor;
+        };
+        const auto number = [&] {
+            const size_t begin = cursor;
+            while (cursor < row.size() && row[cursor] >= '0' && row[cursor] <= '9')
+                ++cursor;
+            return cursor > begin;
+        };
+        spaces();
+        if (!number()) continue;
+        spaces();
+        if (cursor >= row.size() || row[cursor++] != '(') continue;
+        spaces();
+        if (!number()) continue;
+        spaces();
+        if (cursor >= row.size() || row[cursor++] != ')') continue;
+        return std::pair{start, cursor};
+    }
+    return std::nullopt;
+}
+
 static std::optional<std::pair<int, int>> find_resolution_span(
     std::string_view row);
 static bool is_standalone_resolution_value(std::string_view text);
@@ -21892,6 +21923,14 @@ std::vector<Match> Overlay::find_matches(int only_y,
             if (row_y >= box.y && row_y < box.y + box.h)
                 rendered.replace(box.x, box.w, tooltip_widget->rows[row_y - box.y]);
         }
+        // Exclude both possible physical footer halves before any semantic
+        // owner sees them. Legends' two-column fallback otherwise treats a
+        // padded FPS value as a material and moves every type to its X.
+        // Only this matching copy changes; native glyphs and values stay live.
+        if (row_y >= gps_->dimy - 2)
+            if (const auto fps = native_fps_counter_span(rendered))
+                std::fill(rendered.begin() + fps->first,
+                    rendered.begin() + fps->second, ' ');
         return rendered;
     };
     auto text_bounds = [](const std::string &rendered) {
