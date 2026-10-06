@@ -79,6 +79,20 @@ DFCN 的原创内容采用知识共享署名—非商业性使用—相同方式
    - 许可：MIT；许可文本见 `third_party/pinyin-data/LICENSE`，随运行文件部署及打包。
    - 著作权：Copyright (c) 2016 mozillazg
 
+10. **phrase-pinyin-data 中文短语读音数据**
+    - 项目：https://github.com/mozillazg/phrase-pinyin-data
+    - 本地文件：`data/runtime/phrase-pinyin-data/large_pinyin.txt`
+    - 用途：中文名称的短语读音选择；保留上游原始数据、来源和许可文件。
+    - 许可：MIT；许可文本见 `data/runtime/phrase-pinyin-data/LICENSE`。
+
+11. **Britfone 3.0.1 与 Montreal Forced Aligner 英国英语读音资源**
+    - Britfone 项目：https://github.com/JoseLlarena/Britfone
+    - Britfone 作者：Jose Llarena；许可：MIT，见 `data/runtime/english-pronunciation/britfone.LICENSE`。
+    - MFA 项目：https://github.com/MontrealCorpusTools/mfa-models
+    - MFA 英国英语词典 v3.1.0 与 G2P 模型 v3.0.0，作者：Michael McAuliffe、Morgan Sonderegger；许可：CC BY 4.0，见 `data/runtime/english-pronunciation/MFA-LICENSE.txt`。
+    - 用途：英文名称的传统英式 RP 读音及音译回退。词典、模型、符号表和元数据保留原始内容；DFCN 的读音归一化与中文转写属于本项目实现。
+    - 本地资源、来源及版本说明：`data/runtime/english-pronunciation/`，其中 `SOURCE` 保留各资源的详细出处，Britfone 原始 README 同时随包提供。
+
 完整许可文本分别保存在 `data/upstream/licenses/dfi18n-data.LICENSE.md` 和
 `data/upstream/licenses/dfzh-data.LICENSE.md`。DFCN 对数据做了格式转换、冲突过滤、数字模板转换、
 RAW 空白归一化和 CP437 屏幕编码转换；本地 dfzh 词表另按项目约定将居民管理
