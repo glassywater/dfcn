@@ -4146,7 +4146,8 @@ private:
         std::string_view native_word, ProceduralNamePartOfSpeech part,
         std::string_view word_id = {}) const;
     bool append_name_editor_matches(std::vector<std::string> &rows,
-        std::vector<Match> &matches, int only_y, const unsigned char *raw_layer) const;
+        std::vector<Match> &matches, int only_y, const unsigned char *raw_layer,
+        std::vector<SDL_Rect> *owned_regions = nullptr) const;
     bool layout_name_editor(SDL_Renderer *renderer);
     void append_embark_introduction_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer = false) const;
@@ -21903,6 +21904,8 @@ std::vector<Match> Overlay::find_matches(int only_y,
     }
     const auto text_input_regions = native_text_input_regions(*gps_, screen_rows, screen_override);
     std::vector<Match> text_input_utf8;
+    std::vector<Match> name_editor_matches;
+    std::vector<SDL_Rect> name_editor_regions;
     for (const auto &region : text_input_regions) {
         auto &row = screen_rows[region.y];
         if (only_y < 0 || only_y == region.y) {
@@ -22564,6 +22567,17 @@ std::vector<Match> Overlay::find_matches(int only_y,
             std::make_move_iterator(dfhack_launcher_matches.end()));
         result.insert(result.end(), std::make_move_iterator(dfhack_auxiliary_matches.begin()),
             std::make_move_iterator(dfhack_auxiliary_matches.end()));
+        // Raw caption recovery must not reinterpret editor words or previews
+        // after their typed reader has reserved the editor's own frame.
+        std::erase_if(result, [&](const Match &match) {
+            return std::any_of(name_editor_regions.begin(), name_editor_regions.end(),
+                [&](const SDL_Rect &region) {
+                    return match.y >= region.y && match.y < region.y + region.h &&
+                        match.x < region.x + region.w && region.x < match.x + match.length;
+                });
+        });
+        result.insert(result.end(), std::make_move_iterator(name_editor_matches.begin()),
+            std::make_move_iterator(name_editor_matches.end()));
         // Independent caption readers can restore raw cells after the work
         // buffer was masked. Input ownership also wins over those recoveries
         // and row composition; only its original Unicode glyphs need overlay.
@@ -22756,39 +22770,8 @@ std::vector<Match> Overlay::find_matches(int only_y,
     // A typed naming table must own its complete fields before generic UI
     // words, prose reflow or proper-name heuristics see them. This also runs
     // for immediate glyph suppression, not just the final overlay pass.
-    if (append_name_editor_matches(screen_rows, result, only_y, screen_override)) {
-        for (size_t y = 0; y < screen_rows.size(); ++y) {
-            if (only_y >= 0 && static_cast<int>(y) != only_y) continue;
-            auto &row = screen_rows[y];
-            // The naming table owns its page, but embark retains the complete
-            // journey heading above it. Resolve that authored template before
-            // this early return, through the same native-name capture path as
-            // the ordinary embark page. Never feed table cells or input text
-            // to the generic word matcher merely to recover this heading.
-            for (const LogicalTextField &field : split_text_fields(row)) {
-                for (int index : candidate_template_rules(field.text)) {
-                    const Rule &rule = rules_[static_cast<size_t>(index)];
-                    if (rule.source != "Prepare for the Journey to {s}") continue;
-                    size_t end = 0;
-                    std::vector<std::string> captures;
-                    if (!match_template(rule, field.text, 0, &end, &captures) ||
-                        end != field.text.size()) continue;
-                    bool complete = false;
-                    auto target = translate_template_captures(rule, captures, &complete);
-                    if (!complete || target.empty()) continue;
-                    result.push_back({field.start, static_cast<int>(y),
-                        field.end - field.start, index, std::move(target), field.text});
-                    // A Chinese settlement name is already part of this
-                    // complete title; the literal UTF-8 pass must not draw it
-                    // again over the translated heading.
-                    std::fill(row.begin() + field.start, row.begin() + field.end, ' ');
-                    break;
-                }
-            }
-            append_direct_utf8_matches(row, static_cast<int>(y), result);
-        }
-        return finish_matches();
-    }
+    append_name_editor_matches(screen_rows, name_editor_matches, only_y,
+        screen_override, &name_editor_regions);
 
     context_detail.checkpoint(RenderTimingStage::Tooltips);
     append_embark_introduction_matches(screen_rows, result, only_y, screen_override != nullptr);
