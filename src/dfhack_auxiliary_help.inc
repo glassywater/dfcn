@@ -513,6 +513,7 @@ std::vector<Match> dfhack_auxiliary_matches;
                 static_cast<int>(x + source.size()), "Caption");
     }
 #include "dfhack_workshop_workers.inc"
+#include "dfhack_squad_assignment.inc"
 #include "dfhack_control_panel.inc"
 #include "dfhack_finder_output.inc"
 #include "dfhack_embark_output.inc"

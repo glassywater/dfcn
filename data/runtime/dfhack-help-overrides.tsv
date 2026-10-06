@@ -578,3 +578,34 @@ DFHack GUI Workshop workers: Toggle selected	切换所选	l
 DFHack GUI Workshop workers: (or double click)	（或双击）	l
 DFHack GUI Workshop workers: Min skill:	最低技能：	l
 DFHack GUI Workshop workers: Max skill:	最高技能：	l
+
+# plugins/sort.lua squad assignment controls; hotkeys and values retain native fields.
+DFHack GUI Squad assignment: Show:	显示：	l
+DFHack GUI Squad assignment: melee effectiveness	近战效能	l
+DFHack GUI Squad assignment: ranged effectiveness	远程效能	l
+DFHack GUI Squad assignment: teacher skill	教学技能	l
+DFHack GUI Squad assignment: stress level	压力程度	l
+DFHack GUI Squad assignment: arrival order	抵达顺序	l
+DFHack GUI Squad assignment: tactics skill	战术技能	l
+DFHack GUI Squad assignment: ambusher skill	伏击技能	l
+DFHack GUI Squad assignment: need for training	训练需求	l
+DFHack GUI Squad assignment: pick (mining) skill	采掘技能	l
+DFHack GUI Squad assignment: axe skill	战斧技能	l
+DFHack GUI Squad assignment: sword skill	剑术技能	l
+DFHack GUI Squad assignment: mace skill	钉锤技能	l
+DFHack GUI Squad assignment: hammer skill	战锤技能	l
+DFHack GUI Squad assignment: spear skill	长矛技能	l
+DFHack GUI Squad assignment: crossbow skill	弩术技能	l
+DFHack GUI Squad assignment: melee potential	近战潜力	l
+DFHack GUI Squad assignment: ranged potential	远程潜力	l
+DFHack GUI Squad assignment: Toggle all	切换全部	l
+DFHack GUI Squad assignment: Other squads:	其他小队：	l
+DFHack GUI Squad assignment: Officials:	官员：	l
+DFHack GUI Squad assignment: Nobility:	贵族：	l
+DFHack GUI Squad assignment: Uniformed:	穿制服：	l
+DFHack GUI Squad assignment: With infants:	带婴儿：	l
+DFHack GUI Squad assignment: Hates combat:	厌恶战斗：	l
+DFHack GUI Squad assignment: Maimed:	残疾：	l
+DFHack GUI Squad assignment: Include	包含	l
+DFHack GUI Squad assignment: Only	仅限	l
+DFHack GUI Squad assignment: Exclude	排除	l

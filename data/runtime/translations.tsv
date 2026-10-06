@@ -32826,6 +32826,7 @@ DFHack GUI Journal tutorial: # My section heading	# 章节标题	l
 DFHack GUI Notification settings: missing_nemesis	人物记录缺失	l
 DFHack GUI Notification settings: suffocation_adv	呼吸余量（冒险）	l
 DFHack GUI Sitemap: to zoom and follow unit/item.	以定位并跟随生物或物品。	l
+DFHack GUI Squad assignment: ranged effectiveness	远程效能	l
 DFHack help: "--include-pets", "--include-vermin"	"--include-pets", "--include-vermin"	l
 DFHack help: "--job" Selects the highlighted job.	"--job" 选择突出显示的作业。	l
 DFHack help: "--race <race>" Set the target race.	"--race <race>" 设置目标比赛。	l
@@ -34113,6 +34114,8 @@ DFHack GUI Mass remove: Affect built and planned	处理已建成及规划中	l
 DFHack GUI Notification settings: agitated_count	躁动动物	l
 DFHack GUI Quickfort: Blueprint shows help text.	此蓝图显示帮助说明。	l
 DFHack GUI Quickfort: Reposition with the mouse.	用鼠标调整蓝图位置。	l
+DFHack GUI Squad assignment: melee effectiveness	近战效能	l
+DFHack GUI Squad assignment: pick (mining) skill	采掘技能	l
 DFHack help: "-i", "--item <itemdef>" (required)	"-i"、"--item <itemdef>"（必填）	l
 DFHack help: "-m", "--marker <type>[,<type>...]"	"-m", "--marker <type>[,<type>...]"	l
 DFHack help: "-m", "--mode (set|enable|disable)"	"-m", "--mode (set|enable|disable)"	l
@@ -36771,6 +36774,7 @@ DFHack GUI Design: Mirror Point: {d}, {d}, {d}	镜像点：{d}, {d}, {d}	l
 DFHack GUI Notification settings: bleeding_adv	血量余量（冒险）	l
 DFHack GUI Notification settings: moody_status	奇异心境进度	l
 DFHack GUI Notification settings: wildlife_adv	野生动物（冒险）	l
+DFHack GUI Squad assignment: need for training	训练需求	l
 DFHack GUI Workshop workers: (or double click)	（或双击）	l
 DFHack help: "(no)chop <burrow>[,<burrow>...]"	"（不）砍<活动区>[，<活动区>...]"	l
 DFHack help: "--preserve-engravings <quality>"	"--preserve-engravings <quality>"	l
@@ -38162,6 +38166,7 @@ DFHack GUI Quickfort: Load selected blueprint	加载选中蓝图	l
 DFHack GUI Quickfort: Lock blueprint position	锁定蓝图位置	l
 DFHack GUI Quickfort: Zoom to locked position	定位到锁定位置	l
 DFHack GUI Sitemap: No artifacts around here.	附近没有造物。	l
+DFHack GUI Squad assignment: ranged potential	远程潜力	l
 DFHack help: "--female" Selects female units.	"--female" 选择女性单位。	l
 DFHack help: "--not-marked=<flag>,<flag>,..."	"--not-marked=<flag>,<flag>,..."	l
 DFHack help: "--search <pattern> [<pattern>]"	"--search <pattern> [<pattern>]"	l
@@ -39610,6 +39615,7 @@ DFHack GUI Notification settings: Toggle all	全部切换	l
 DFHack GUI Notification settings: auto_train	训练小队设置	l
 DFHack GUI Quickfort: Baseline dig priority:	基础挖掘优先级：	l
 DFHack GUI Quickfort: Preview manager orders	预览管理者订单	l
+DFHack GUI Squad assignment: melee potential	近战潜力	l
 DFHack GUI Workshop workers: Toggle selected	切换所选	l
 DFHack help: "-Q", "--max-quality <integer>"	"-Q", "--max-quality <integer>"	l
 DFHack help: "-c", "--mat-category <string>"	"-c", "--mat-category <string>"	l
@@ -41056,6 +41062,8 @@ DFHack GUI Control tool: startdwarf.overlay	初始矮人列表滚动（startdwar
 DFHack GUI Control tool: stockpiles.hauling	矿车站点条件（stockpiles.hauling）	l
 DFHack GUI Control tool: stockpiles.overlay	储物区自动化（stockpiles.overlay）	l
 DFHack GUI Input prompt: Enter new command:	输入新命令：	l
+DFHack GUI Squad assignment: ambusher skill	伏击技能	l
+DFHack GUI Squad assignment: crossbow skill	弩术技能	l
 DFHack GUI Teleport: Include friendly units	包含友好单位	l
 DFHack help: "--applyjobs <job>[,<job>...]"	"--applyjobs <job>[,<job>...]"	l
 DFHack help: "-e [NAME]", "--entity [NAME]"	"-e [NAME]", "--entity [NAME]"	l
@@ -42580,6 +42588,12 @@ DFHack GUI Quickfort: Blueprint tiles: {d}	蓝图格数：{d}	l
 DFHack GUI Quickfort: Invalid tiles:   {d}	无效格数：{d}	l
 DFHack GUI Sitemap: Click on a name or hit	点击名称或按下	l
 DFHack GUI Sitemap: Nobody around. Spooky!	附近没有生物，令人毛骨悚然！	l
+DFHack GUI Squad assignment: Hates combat:	厌恶战斗：	l
+DFHack GUI Squad assignment: Other squads:	其他小队：	l
+DFHack GUI Squad assignment: With infants:	带婴儿：	l
+DFHack GUI Squad assignment: arrival order	抵达顺序	l
+DFHack GUI Squad assignment: tactics skill	战术技能	l
+DFHack GUI Squad assignment: teacher skill	教学技能	l
 DFHack GUI Teleport: Include citizen units	包含公民单位	l
 DFHack GUI Teleport: Include hostile units	包含敌对单位	l
 DFHack GUI Title: Load quickfort blueprint	加载 Quickfort 蓝图	l
@@ -44267,6 +44281,8 @@ DFHack GUI Notification settings: Enabled	启用	l
 DFHack GUI Notification settings: injured	受伤居民	l
 DFHack GUI Quickfort: No blueprint loaded	尚未加载蓝图	l
 DFHack GUI Sitemap: caged merchant animal	被囚禁的商队动物	l
+DFHack GUI Squad assignment: hammer skill	战锤技能	l
+DFHack GUI Squad assignment: stress level	压力程度	l
 DFHack help: "--death-threshold <months>"	"--death-threshold <months>"	l
 DFHack help: "--excludetypes [a|bfnstu0]"	"--excludetypes [a|bfnstu0]"	l
 DFHack help: "--location [ <x> <y> <z> ]"	"--location [ <x> <y> <z> ]"	l
@@ -45905,6 +45921,8 @@ DFHack GUI Notification settings: Toggle	切换	l
 DFHack GUI Quickfort: Current blueprint:	当前蓝图：	l
 DFHack GUI Quickfort: Load new blueprint	加载新蓝图	l
 DFHack GUI Sitemap: the selected target.	选中的目标。	l
+DFHack GUI Squad assignment: spear skill	长矛技能	l
+DFHack GUI Squad assignment: sword skill	剑术技能	l
 DFHack help: "--checkInventoryEvery <n>"	"--checkInventoryEvery <n>"	l
 DFHack help: "-a", "--include-artifacts"	"-a", "--include-artifacts"	l
 DFHack help: "-m", "--material <string>"	"-m", "--material <string>"	l
@@ -47571,6 +47589,10 @@ DFHack GUI Design: Clear entire z-level	清除本层全部指定	l
 DFHack GUI Design: Mouse: {d}, {d}, {d}	鼠标：{d}, {d}, {d}	l
 DFHack GUI Input prompt: Enter command:	输入命令：	l
 DFHack GUI Sitemap: Unknown affiliation	所属势力不明	l
+DFHack GUI Squad assignment: Officials:	官员：	l
+DFHack GUI Squad assignment: Toggle all	切换全部	l
+DFHack GUI Squad assignment: Uniformed:	穿制服：	l
+DFHack GUI Squad assignment: mace skill	钉锤技能	l
 DFHack GUI Title: Notification settings	通知设置	l
 DFHack GUI Workshop workers: Max skill:	最高技能：	l
 DFHack GUI Workshop workers: Min skill:	最低技能：	l
@@ -49299,6 +49321,8 @@ DFHack GUI Design: Stop placing points	停止放置点	l
 DFHack GUI Mass remove: Affect planned	处理规划中	l
 DFHack GUI Mass remove: Cancel removal	取消移除	l
 DFHack GUI Mass remove: Constructions:	构筑物：	l
+DFHack GUI Squad assignment: Nobility:	贵族：	l
+DFHack GUI Squad assignment: axe skill	战斧技能	l
 DFHack GUI Teleport: Click name or hit	点击名称或按	l
 DFHack GUI Teleport: No selected units	未选择单位	l
 DFHack GUI Title: DFHack Control Panel	DFHack 控制面板	l
@@ -52928,6 +52952,9 @@ DFHack GUI Mass remove: Affect built	处理已建成	l
 DFHack GUI Quickfort: No description	没有描述	l
 DFHack GUI Quickfort: Shift click or	Shift 点击或	l
 DFHack GUI Quickfort: Undo blueprint	撤销蓝图	l
+DFHack GUI Squad assignment: Exclude	排除	l
+DFHack GUI Squad assignment: Include	包含	l
+DFHack GUI Squad assignment: Maimed:	残疾：	l
 DFHack GUI Teleport: Selected units:	已选单位：	l
 DFHack GUI Teleport: to zoom to unit	定位至该单位	l
 DFHack help: "--opposite <INTEREST>"	"--opposite <INTEREST>"	l
@@ -56884,6 +56911,7 @@ DFHack GUI Sitemap: Shift-click or	按住 Shift 点击，或按下	l
 DFHack GUI Sitemap: caged friendly	被囚禁的友好生物	l
 DFHack GUI Sitemap: caged merchant	被囚禁的商人	l
 DFHack GUI Sitemap: caged wildlife	被囚禁的野生动物	l
+DFHack GUI Squad assignment: Show:	显示：	l
 DFHack GUI Teleport: Deselect unit	取消选择该单位	l
 DFHack help: "--cmd [ <command> ]"	"--cmd [ <command> ]"	l
 DFHack help: "--contaminant <mat>"	"--contaminant <mat>"	l
@@ -59015,6 +59043,7 @@ DFHack GUI Quickfort: Up z-levels	向上重复楼层	l
 DFHack GUI Sitemap: caged hostile	被囚禁的敌对生物	l
 DFHack GUI Sitemap: caged invader	被囚禁的入侵者	l
 DFHack GUI Sitemap: caged visitor	被囚禁的访客	l
+DFHack GUI Squad assignment: Only	仅限	l
 DFHack help: "--duration <ticks>"	"--duration <ticks>"	l
 DFHack help: "--getfield <field>"	"--getfield <field>"	l
 DFHack help: "--markfor <action>"	"--markfor <action>"	l
