@@ -24796,6 +24796,7 @@ Your room is up the stairs, the {d}th door on your right.	你的房间在楼上�
 accepted in admiration of power, despite distrust of {a}.	虽然不信任{a1}，但崇拜权力，因此答应了。	ht
 accepted in admiration of power, despite valuing the law.	虽然尊重法律，但崇拜权力，因此答应了。	h
 accepted out of loyalty to {a}, despite fearing of death.	虽然惧怕死亡，但忠于{a1}，因此答应了。	ht
+an untitled work was authored by {n} in {p} in the wilds.	在荒野中，{n1}在{p1}撰写了一部无题作品。	ht
 and attached a masterful instrument piece to a {i} at {p}	并在{p1}为{i1}安装了杰作级的乐器部件	ht
 and attached a masterful instrument piece to a {i} in {p}	并在{p1}为{i1}安装了杰作级的乐器部件	ht
 and became obsessed with an inscrutable goal in the wilds	并在荒野中开始执着于一个难以理解的目标	h
@@ -25714,6 +25715,7 @@ accepted out of loyalty to {a}, despite distrust of {a}.	虽然不信任{a2}，�
 accepted out of loyalty to {a}, despite valuing the law.	虽然尊重法律，但忠于{a1}，因此答应了。	ht
 agreed for love of {a}, despite being unafraid of death.	虽然不惧死亡，但爱着{a1}，因此答应了。	ht
 agreed for love of {a}, despite lack of fear toward {a}.	虽然不惧怕{a2}，但爱着{a1}，因此答应了。	ht
+an untitled work was authored by {n} in {p} in the wilds	在荒野中，{n1}在{p1}撰写了一部无题作品	ht
 and became embroiled in a dispute over {s} in the wilds.	并在荒野中卷入了关于{s1}的争端。	ht
 and became obsessed with an inscrutable goal during {e}.	并在{e1}期间开始执着于一个难以理解的目标。	ht
 and became obsessed with an inscrutable goal within {p}.	并在{p1}开始执着于一个难以理解的目标。	ht
@@ -26608,6 +26610,8 @@ accepted out of loyalty to {a}, despite respect of {a}.	虽然尊重{a2}，但�
 after performing the rites of {n} in a dedicated temple	在专门供奉的神殿内为{n1}举行仪式后	ht
 agreed for love of {a}, despite a desire for vengeance.	虽然渴望复仇，但爱着{a1}，因此答应了。	ht
 agreed for love of {a}, despite lack of respect of {a}.	虽然不尊重{a2}，但爱着{a1}，因此答应了。	ht
+an untitled work was authored by {n} in {p} during {e}.	在{e1}期间，{n1}在{p1}撰写了一部无题作品。	ht
+an untitled work was authored by {n} in {p} within {p}.	在{p2}，{n1}在{p1}撰写了一部无题作品。	ht
 and attached a masterful instrument piece in the wilds.	并在荒野中安装了杰作级的乐器部件。	h
 and became embroiled in a dispute over {s} in the wilds	并在荒野中卷入了关于{s1}的争端	ht
 and became obsessed with an inscrutable goal during {e}	并在{e1}期间开始执着于一个难以理解的目标	ht
@@ -27541,6 +27545,8 @@ accepted out of loyalty to {a}, despite hatred of {a}.	虽然憎恨{a2}，但忠
 addition of a masterful instrument piece in the wilds.	在荒野中，安装杰作级的乐器部件。	hEi
 agreed for love of {a}, despite loathing the powerful.	虽然厌恶权贵，但爱着{a1}，因此答应了。	ht
 an insurrection against {p} began in {p} in the wilds.	在荒野中，{p2}爆发了反抗{p1}的起义。	ht
+an untitled work was authored by {n} in {p} during {e}	在{e1}期间，{n1}在{p1}撰写了一部无题作品	ht
+an untitled work was authored by {n} in {p} within {p}	在{p2}，{n1}在{p1}撰写了一部无题作品	ht
 and attached a masterful instrument piece in the wilds	并在荒野中安装了杰作级的乐器部件	h
 and became a criminal in the eyes of {p} in the wilds.	并在荒野中被{p1}视为了罪犯。	ht
 and became embroiled in a dispute over {s} during {e}.	并在{e1}期间卷入了关于{s1}的争端。	ht
@@ -30752,6 +30758,8 @@ agreed for love of {a}, despite feelings of vanity.	虽然有虚荣心，但爱�
 agreed for love of {a}, despite loyalty toward {a}.	虽然忠于{a2}，但爱着{a1}，因此答应了。	ht
 an insurrection against {p} began in {p} during {e}	在{e1}期间，{p2}爆发了反抗{p1}的起义	ht
 an insurrection against {p} began in {p} within {p}	在{p3}，{p2}爆发了反抗{p1}的起义	ht
+an untitled work was authored by {n} in {p} at {p}.	在{p2}，{n1}在{p1}撰写了一部无题作品。	ht
+an untitled work was authored by {n} in {p} in {p}.	在{p2}，{n1}在{p1}撰写了一部无题作品。	ht
 and accepted an offer of peace from {p} during {e}.	并在{e1}期间接受了{p1}的和平提议。	ht
 and accepted an offer of peace from {p} within {p}.	并在{p2}接受了{p1}的和平提议。	ht
 and added a masterful covering to a {i} during {e}.	并在{e1}期间为{i1}添加了杰作级的覆盖层。	ht
@@ -31912,6 +31920,9 @@ about not having a tomb after gaining another year	关于获得另一个生日�
 after being exiled following a criminal conviction	在被定罪并流放后	h
 agreed for love of {a}, despite feelings of greed.	虽然有贪念，但爱着{a1}，因此答应了。	ht
 an agreement to retrieve {p} for {a} in the wilds.	在荒野中，为{a1}找回{p1}的协议。	htEi
+an untitled work was authored by {n} in the wilds.	在荒野中，{n1}撰写了一部无题作品。	ht
+an untitled work was authored by {n} in {p} at {p}	在{p2}，{n1}在{p1}撰写了一部无题作品	ht
+an untitled work was authored by {n} in {p} in {p}	在{p2}，{n1}在{p1}撰写了一部无题作品	ht
 and a sheen around it always seems to rise upward.	，它周围的光辉似乎总在向上升腾。	h
 and accepted an offer of peace from {p} during {e}	并在{e1}期间接受了{p1}的和平提议	ht
 and accepted an offer of peace from {p} within {p}	并在{p2}接受了{p1}的和平提议	ht
@@ -33101,6 +33112,7 @@ after preying on the blood of civilized creatures	在吸食文明生物的血液
 after receiving a cut of corruptly-obtained funds	在分得赃款后	h
 agreed for love of {a}, despite fearing of death.	虽然惧怕死亡，但爱着{a1}，因此答应了。	ht
 an agreement to retrieve {p} for {a} in the wilds	在荒野中，为{a1}找回{p1}的协议	htEi
+an untitled work was authored by {n} in the wilds	在荒野中，{n1}撰写了一部无题作品	ht
 and abandoned the settlement of {p} in the wilds.	并在荒野中放弃了{p1}聚落。	ht
 and accepted in admiration of power in the wilds.	并在荒野中崇拜权力，因此答应了。	h
 and added a masterful chain to a {i} in the wilds	并在荒野中为{i1}添加了杰作级的链条	ht
@@ -34468,6 +34480,8 @@ an agreement to retrieve {p} for {a} during {e}.	在{e1}期间，为{a1}找回{p
 an agreement to retrieve {p} for {a} within {p}.	在{p2}，为{a1}找回{p1}的协议。	htEi
 an insurrection against {p} began in {p} at {p}.	在{p3}，{p2}爆发了反抗{p1}的起义。	ht
 an insurrection against {p} began in {p} in {p}.	在{p3}，{p2}爆发了反抗{p1}的起义。	ht
+an untitled work was authored by {n} during {e}.	在{e1}期间，{n1}撰写了一部无题作品。	ht
+an untitled work was authored by {n} within {p}.	在{p1}，{n1}撰写了一部无题作品。	ht
 and abandoned the settlement of {p} in the wilds	并在荒野中放弃了{p1}聚落	ht
 and accepted in admiration of power in the wilds	并在荒野中崇拜权力，因此答应了	h
 and accepted out of loyalty to {a} in the wilds.	并在荒野中忠于{a1}，因此答应了。	ht
@@ -35719,6 +35733,7 @@ You need to assign a {s} to utilize a hospital.	你需要任命一名{s1}，才�
 You practice your {s} but make nothing of note.	你练习了{s1}，但没有做出什么像样的东西。	hPt
 You'll be an accomplished player at this point.	到这一步，你已经是一位出色的玩家了。	hq
 Your engraver has carved a track through a {p}!	你的雕刻师开凿的轨道穿过了一件{p1}的作品！	hPt
+a work was authored by {n} in {p} in the wilds.	在荒野中，{n1}在{p1}撰写了一部作品。	ht
 ability to make one afraid to go into the water	使人恐惧入水的能力	wi
 accepted an offer of peace from {p} during {e}.	在{e1}期间接受了{p1}的和平提议。	ht
 accepted an offer of peace from {p} within {p}.	在{p2}接受了{p1}的和平提议。	ht
@@ -35738,6 +35753,8 @@ an agreement to retrieve {p} for {a} during {e}	在{e1}期间，为{a1}找回{p1
 an agreement to retrieve {p} for {a} within {p}	在{p2}，为{a1}找回{p1}的协议	htEi
 an insurrection against {p} began in {p} at {p}	在{p3}，{p2}爆发了反抗{p1}的起义	ht
 an insurrection against {p} began in {p} in {p}	在{p3}，{p2}爆发了反抗{p1}的起义	ht
+an untitled work was authored by {n} during {e}	在{e1}期间，{n1}撰写了一部无题作品	ht
+an untitled work was authored by {n} within {p}	在{p1}，{n1}撰写了一部无题作品	ht
 and Native history held story {e} in the wilds.	并在荒野中讲述了以下往事：「{e1}」。	ht
 and abandoned the settlement of {p} during {e}.	并在{e1}期间放弃了{p1}聚落。	ht
 and abandoned the settlement of {p} within {p}.	并在{p2}放弃了{p1}聚落。	ht
@@ -37070,6 +37087,7 @@ You have been blessed with improved equipment!	你受到祝福，装备得到了
 You vomit and bits of it get stuck in the web.	你呕吐了，一些呕吐物粘在了网上。	hP
 You'll get nothing from me with your flattery.	再怎么奉承，你也休想从我这里捞到好处。	hP
 Your dwarves might assume important positions.	你的矮人可能需要担任重要职务。	l
+a work was authored by {n} in {p} in the wilds	在荒野中，{n1}在{p1}撰写了一部作品	ht
 accepted an offer of peace from {p} during {e}	在{e1}期间接受了{p1}的和平提议	ht
 accepted an offer of peace from {p} within {p}	在{p2}接受了{p1}的和平提议	ht
 added a masterful chain to a {i} in the wilds.	在荒野中为{i1}添加了杰作级的链条。	ht
@@ -38469,6 +38487,8 @@ You cannot compose until you leave this site.	你必须先离开此地点，才�
 You have selected the smallest possible area.	你选择了最小尺寸的区域。	l
 Your ruler has arrived, dressed as a peasant!	你的统治者乔装成农民抵达了！	hP
 Your selfless dedication is appreciated here.	这里的人都感激你的无私奉献。	hP
+a work was authored by {n} in {p} during {e}.	在{e1}期间，{n1}在{p1}撰写了一部作品。	ht
+a work was authored by {n} in {p} within {p}.	在{p2}，{n1}在{p1}撰写了一部作品。	ht
 abandoned the settlement of {p} in the wilds.	在荒野中放弃了{p1}聚落。	ht
 accepted in admiration of power in the wilds.	在荒野中崇拜权力，因此答应了。	h
 added a masterful chain to a {i} in the wilds	在荒野中为{i1}添加了杰作级的链条	ht
@@ -39989,6 +40009,8 @@ You have selected the largest possible area.	你已选中允许的最大区域�
 You receive {i} to conclude the transaction.	你收到了{i1}，完成了交易。	hPt
 You will best serve by finishing your quest.	完成你的任务，就是你能尽的最大一份力。	hP
 Your selected civilization is dead or dying.	你选择的政权已经灭亡或濒临灭亡。	l
+a work was authored by {n} in {p} during {e}	在{e1}期间，{n1}在{p1}撰写了一部作品	ht
+a work was authored by {n} in {p} within {p}	在{p2}，{n1}在{p1}撰写了一部作品	ht
 abandoned the settlement of {p} in the wilds	在荒野中放弃了{p1}聚落	ht
 accepted in admiration of power in the wilds	在荒野中崇拜权力，因此答应了	h
 accepted out of loyalty to {a} in the wilds.	在荒野中忠于{a1}，因此答应了。	ht
@@ -40018,6 +40040,8 @@ agreed for love of {a}, despite love of {a}.	虽然爱着{a2}，但爱着{a1}，
 an agreement to retrieve {p} for {a} at {p}.	在{p2}，为{a1}找回{p1}的协议。	htEi
 an agreement to retrieve {p} for {a} in {d}.	{d1}年的为{a1}找回{p1}的协议。	htEi
 an agreement to retrieve {p} for {a} in {p}.	在{p2}，为{a1}找回{p1}的协议。	htEi
+an untitled work was authored by {n} at {p}.	在{p1}，{n1}撰写了一部无题作品。	ht
+an untitled work was authored by {n} in {p}.	{n1}在{p1}撰写了一部无题作品。	ht
 and A thousand or more people were expelled.	，至少一千人遭到驱逐。	h
 and Native history held story {e} during {e}	并在{e2}期间讲述了以下往事：「{e1}」	ht
 and Native history held story {e} within {p}	并在{p1}讲述了以下往事：「{e1}」	ht
@@ -40747,6 +40771,7 @@ wrongfully convicted {n} of {s} in the wilds	在荒野中错误地判定{n1}犯�
 {a} were a population within {p} within {p}.	{a1}在{p2}是生活在{p1}的族群。	ht
 {a} were hired by the attackers in the wilds	在荒野中，进攻方雇佣了{a1}	ht
 {a} wove a masterful sewn image in the wilds	{a1}在荒野中织出了一幅杰作级的刺绣图像	ht
+{b} was authored by {n} in {p} in the wilds.	在荒野中，{n1}在{p1}撰写了《{b1}》。	ht
 {d} commander here, {d} commanders traveling	{d1}名指挥官在此，{d2}名指挥官在途	wtli
 {d} commanders here, no commanders traveling	{d}名指挥官在此，无指挥官在途	wtli
 {d} commanders here, {d} commander traveling	{d1}名指挥官在此，{d2}名指挥官在途	wtli
@@ -41439,6 +41464,8 @@ addition of masterful rollers in the wilds.	在荒野中，添加杰作级的滚
 an agreement to retrieve {p} for {a} at {p}	在{p2}，为{a1}找回{p1}的协议	htEi
 an agreement to retrieve {p} for {a} in {d}	{d1}年的为{a1}找回{p1}的协议	htEi
 an agreement to retrieve {p} for {a} in {p}	在{p2}，为{a1}找回{p1}的协议	htEi
+an untitled work was authored by {n} at {p}	在{p1}，{n1}撰写了一部无题作品	ht
+an untitled work was authored by {n} in {p}	{n1}在{p1}撰写了一部无题作品	ht
 and A hundred or more people were expelled.	，至少一百人遭到驱逐。	h
 and A thousand or more people were expelled	，至少一千人遭到驱逐	h
 and Several major structures were destroyed	，数座主要建筑被摧毁	h
@@ -42249,6 +42276,7 @@ wrongfully convicted {n} of {s} within {p}.	在{p1}错误地判定{n1}犯有{s1}
 {a} wove a masterful sewn image within {p}.	{a1}在{p1}织出了一幅杰作级的刺绣图像。	ht
 {a} wrongfully convicted {n} of {s} at {p}.	{a1}在{p1}错误地判定{n1}犯有{s1}。	ht
 {a} wrongfully convicted {n} of {s} in {p}.	{a1}在{p1}错误地判定{n1}犯有{s1}。	ht
+{b} was authored by {n} in {p} in the wilds	在荒野中，{n1}在{p1}撰写了《{b1}》	ht
 {b} was created in {p} by {n} in the wilds.	在荒野中，{n1}在{p1}创造了{b1}。	ht
 {d} commander here, no commanders traveling	{d}名指挥官在此，无指挥官在途	wtli
 {d} commander here, {d} commander traveling	{d1}名指挥官在此，{d2}名指挥官在途	wtli
@@ -43974,6 +44002,8 @@ you will need to unretire the fort to play	但你需要先重新启用这座要�
 {a} wove a masterful sewn image within {p}	{a1}在{p1}织出了一幅杰作级的刺绣图像	ht
 {a} wrongfully convicted {n} of {s} at {p}	{a1}在{p1}错误地判定{n1}犯有{s1}	ht
 {a} wrongfully convicted {n} of {s} in {p}	{a1}在{p1}错误地判定{n1}犯有{s1}	ht
+{b} was authored by {n} in {p} during {e}.	在{e1}期间，{n1}在{p1}撰写了《{b1}》。	ht
+{b} was authored by {n} in {p} within {p}.	在{p2}，{n1}在{p1}撰写了《{b1}》。	ht
 {b} was created in {p} by {n} in the wilds	在荒野中，{n1}在{p1}创造了{b1}	ht
 {e} as a former member of {p} in the wilds	在荒野中，以{p1}前成员的身份发生的{e1}	htEi
 {e} as a former prisoner of {p} during {e}	在{e2}期间，以{p1}前囚犯的身份发生的{e1}	htEi
@@ -44677,6 +44707,8 @@ a competition involving {b} in the wilds.	在荒野中，以《{b1}》为内容�
 a scuffle between {a} and {a} during {e}.	在{e1}期间，{a1}与{a2}的扭打。	htEi
 a scuffle between {a} and {a} within {p}.	在{p1}，{a1}与{a2}的扭打。	htEi
 a table of chord lengths indexed by angle	按角度编排的弦长表	h
+a work was authored by {n} in {p} at {p}.	在{p2}，{n1}在{p1}撰写了一部作品。	ht
+a work was authored by {n} in {p} in {p}.	在{p2}，{n1}在{p1}撰写了一部作品。	ht
 accepted out of loyalty to {a} during {e}	在{e1}期间忠于{a1}，因此答应了	ht
 accepted out of loyalty to {a} within {p}	在{p1}忠于{a1}，因此答应了	ht
 accepting bribes in exchange for leniency	收受贿赂以换取从轻处置	wi
@@ -45598,6 +45630,8 @@ you will need to reclaim the fort to play	但你需要先收复这座要塞，	w
 {a} were hired as scouts by the attackers	进攻方雇佣{a1}担任斥候	ht
 {a} wove a masterful sewn image to a {i}.	{a1}为{i1}织出了一幅杰作级的刺绣图像。	ht
 {b} is an example of musical composition.	《{b}》是一部音乐作品。	ht
+{b} was authored by {n} in {p} during {e}	在{e1}期间，{n1}在{p1}撰写了《{b1}》	ht
+{b} was authored by {n} in {p} within {p}	在{p2}，{n1}在{p1}撰写了《{b1}》	ht
 {b} was created in {p} by {n} during {e}.	在{e1}期间，{n1}在{p1}创造了{b1}。	ht
 {b} was created in {p} by {n} within {p}.	在{p2}，{n1}在{p1}创造了{b1}。	ht
 {e} as a former member of {p} during {e}.	在{e2}期间，以{p1}前成员的身份发生的{e1}。	htEi
@@ -46369,6 +46403,8 @@ a scuffle between {a} and {a} during {e}	在{e1}期间，{a1}与{a2}的扭打	ht
 a scuffle between {a} and {a} within {p}	在{p1}，{a1}与{a2}的扭打	htEi
 a thousand or more people were expelled.	至少一千人遭到驱逐。	h
 a work was authored by {n} in the wilds.	在荒野中，{n1}撰写了一部作品。	ht
+a work was authored by {n} in {p} at {p}	在{p2}，{n1}在{p1}撰写了一部作品	ht
+a work was authored by {n} in {p} in {p}	在{p2}，{n1}在{p1}撰写了一部作品	ht
 a {i} throwing competition in the wilds.	在荒野中，{i1}投掷比赛。	htEi
 added a masterful chain to a {i} at {p}.	在{p1}为{i1}添加了杰作级的链条。	ht
 added a masterful chain to a {i} in {p}.	在{p1}为{i1}添加了杰作级的链条。	ht
@@ -50897,6 +50933,8 @@ wrongfully convicted {n} of {s} in {p}	在{p1}错误地判定{n1}犯有{s1}	ht
 {a} withdrew from society in the wilds	{a1}在荒野中退出了社会交往	ht
 {a} wove a masterful sewn image at {p}	{a1}在{p1}织出了一幅杰作级的刺绣图像	ht
 {a} wove a masterful sewn image in {p}	{a1}在{p1}织出了一幅杰作级的刺绣图像	ht
+{b} was authored by {n} in {p} at {p}.	在{p2}，{n1}在{p1}撰写了《{b1}》。	ht
+{b} was authored by {n} in {p} in {p}.	在{p2}，{n1}在{p1}撰写了《{b1}》。	ht
 {e} after an attack by {a} during {e}.	在{e2}期间，在遭到{a1}袭击之后发生的{e1}。	htEi
 {e} after an attack by {a} within {p}.	在{p1}，在遭到{a1}袭击之后发生的{e1}。	htEi
 {e} and destruction of {p} during {e}.	在{e2}期间，{e1}及{p1}的毁灭。	htEi
@@ -51652,6 +51690,7 @@ addition of masterful rollers in {p}.	在{p1}，添加杰作级的滚轮。	htEi
 after being reunited with a loved one	在与挚爱之人重聚后	h
 an agreement to establish a guildhall	建立行会大厅的协议	h
 an agreement to retrieve {p} for {a}.	为{a1}找回{p1}的协议。	htEi
+an untitled work was authored by {n}.	{n1}撰写了一部无题作品。	ht
 and Some sacred sites were desecrated	，一些圣地遭到亵渎	h
 and abducted {a} from {p} during {e}.	并在{e1}期间从{p1}绑架了{a1}。	ht
 and abducted {a} from {p} within {p}.	并在{p2}从{p1}绑架了{a1}。	ht
@@ -52652,6 +52691,8 @@ writing of a masterpiece in the wilds	在荒野中，书写杰作	hEi
 {a} withdrew from society during {e}.	{a1}在{e1}期间退出了社会交往。	ht
 {a} withdrew from society within {p}.	{a1}在{p1}退出了社会交往。	ht
 {b} was authored by {n} in the wilds.	在荒野中，{n1}撰写了《{b1}》。	ht
+{b} was authored by {n} in {p} at {p}	在{p2}，{n1}在{p1}撰写了《{b1}》	ht
+{b} was authored by {n} in {p} in {p}	在{p2}，{n1}在{p1}撰写了《{b1}》	ht
 {b} was created in {p} by {n} at {p}.	在{p2}，{n1}在{p1}创造了{b1}。	ht
 {b} was created in {p} by {n} in {p}.	在{p2}，{n1}在{p1}创造了{b1}。	ht
 {e} after an attack by {a} during {e}	在{e2}期间，在遭到{a1}袭击之后发生的{e1}	htEi
@@ -53571,6 +53612,7 @@ an agreement to retrieve {p} in {d}.	{d1}年的找回{p1}的协议。	htEi
 an agreement to retrieve {p} in {p}.	在{p2}，找回{p1}的协议。	htEi
 an insurrection began in {p} at {p}.	在{p2}，{p1}爆发了起义。	ht
 an insurrection began in {p} in {p}.	在{p2}，{p1}爆发了起义。	ht
+an untitled work was authored by {n}	{n1}撰写了一部无题作品	ht
 and abandoned the settlement of {p}.	并放弃了{p1}聚落。	ht
 and abducted {a} from {p} during {e}	并在{e1}期间从{p1}绑架了{a1}	ht
 and abducted {a} from {p} within {p}	并在{p2}从{p1}绑架了{a1}	ht
@@ -57550,7 +57592,7 @@ a performance of {b} in the wilds.	在荒野中，《{b1}》的表演。	htEi
 a poetry competition in the wilds.	在荒野中，诗歌比赛。	hEi
 a tactical situation in the wilds.	在荒野中，一次战术态势。	hEi
 a work was authored by {n} at {p}.	在{p1}，{n1}撰写了一部作品。	ht
-a work was authored by {n} in {p}.	在{p1}，{n1}撰写了一部作品。	ht
+a work was authored by {n} in {p}.	{n1}在{p1}撰写了一部作品。	ht
 a wrestling competition during {e}	在{e1}期间，摔跤比赛	htEi
 a wrestling competition within {p}	在{p1}，摔跤比赛	htEi
 a {i} throwing competition at {p}.	在{p1}，{i1}投掷比赛。	htEi
@@ -59611,7 +59653,7 @@ a poetry competition in the wilds	在荒野中，诗歌比赛	hEi
 a stranger advanced with a weapon	陌生人持武器逼近	wi
 a tactical situation in the wilds	在荒野中，一次战术态势	hEi
 a work was authored by {n} at {p}	在{p1}，{n1}撰写了一部作品	ht
-a work was authored by {n} in {p}	在{p1}，{n1}撰写了一部作品	ht
+a work was authored by {n} in {p}	{n1}在{p1}撰写了一部作品	ht
 a {i} throwing competition at {p}	在{p1}，{i1}投掷比赛	htEi
 a {i} throwing competition in {d}	{d1}年的{i1}投掷比赛	htEi
 a {i} throwing competition in {p}	在{p1}，{i1}投掷比赛	htEi
@@ -67214,7 +67256,7 @@ with the hall designated for a	并将大厅指定给以下行会：	hP
 {b} In The Age of Three Powers	三强权时代的{b1}	htbi
 {b} is a {s}, authored by {n}.	《{b}》是{n}创作的{s}。	ht
 {b} was authored by {n} at {p}	在{p1}，{n1}撰写了《{b1}》	ht
-{b} was authored by {n} in {p}	在{p1}，{n1}撰写了《{b1}》	ht
+{b} was authored by {n} in {p}	{n1}在{p1}撰写了《{b1}》	ht
 {b} was created in {p} by {n}.	{n1}在{p1}创造了{b1}。	ht
 {d}nd Galena, late summer, {d}	第{d2}年，晚夏，方铅矿月{d1}日	wti
 {d}nd Timber, late autumn, {d}	第{d2}年，晚秋，林木月{d1}日	wti

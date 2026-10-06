@@ -754,6 +754,7 @@ with miserable outcome	结果惨不忍睹	clause
 {b} was created in {p} by {n}	{n}在{p}创造了{b}	event
 {p} was created in {p} by {n}	{n}在{p2}创造了{p1}	event
 {b} was authored by {n}	{n}撰写了《{b}》	event
+{b} was authored by {n} in {p}	{n}在{p}撰写了《{b}》	event
 {p} received its name	{p}获得了自己的名字	event
 # The naming person/entity follows the optional site, before the motivation.
 # A person and entity may name it together; retain both participant links.
@@ -3479,6 +3480,9 @@ the looting of {i}	劫掠{i}	title
 {i} was recovered by {a}	{a}找回了{i}	event
 {i} was recovered	{i}被找回了	event
 a work was authored by {n}	{n}撰写了一部作品	event
+a work was authored by {n} in {p}	{n}在{p}撰写了一部作品	event
+an untitled work was authored by {n}	{n}撰写了一部无题作品	event
+an untitled work was authored by {n} in {p}	{n}在{p}撰写了一部无题作品	event
 the authoring of a work	一部作品的撰写	title
 
 # Native repeated-collection ordinal prefix, shared by all collection kinds.

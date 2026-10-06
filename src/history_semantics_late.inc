@@ -37,31 +37,44 @@ case 93: { // written_content_composed
     const NativeHistoryObjectKind kind = event.native_type == 90 ? NativeHistoryObjectKind::Poem :
         event.native_type == 91 ? NativeHistoryObjectKind::Music :
         event.native_type == 92 ? NativeHistoryObjectKind::Dance : NativeHistoryObjectKind::WrittenContent;
-    auto form = subject(kind, number("form"));
+    const int32_t form_id = number("form");
+    auto form = subject(kind, form_id);
     auto author = subject(NativeHistoryObjectKind::Figure, number("creator"));
     const auto context = event_clauses();
     if (!form || !author || !context) return std::nullopt;
     // These four formatters prefer site, then surface region, then layer;
     // with no location they omit the entire location clause.
     const int32_t site_id = number("site"), region_id = number("region"), layer_id = number("layer");
+    std::optional<Pieces> location;
     if (site_id != -1 || region_id != -1 || layer_id != -1) {
-        auto location = site_id != -1 ? subject(NativeHistoryObjectKind::Site, site_id) :
+        location = site_id != -1 ? subject(NativeHistoryObjectKind::Site, site_id) :
             region_id != -1 ? subject(NativeHistoryObjectKind::Region, region_id) :
             subject(NativeHistoryObjectKind::Underground, layer_id);
         if (!location) return std::nullopt;
-        auto place = apply("in {p}", {*location});
-        if (!place) return std::nullopt;
-        join(result, *place);
     }
-    std::string key = "{p} was created by {n}";
+    // Keep author, place and work in one predicate so the Chinese place
+    // clause belongs between the author and verb, with every link retained.
+    std::string key = location ? "{p} was created in {p} by {n}" : "{p} was created by {n}";
+    bool title_field = true;
     if (event.native_type == 93) {
         const auto entry = std::find_if(event.subjects.begin(), event.subjects.end(),
-            [&](const auto &value) { return value.kind == kind && value.id == number("form"); });
+            [&](const auto &value) { return value.kind == kind && value.id == form_id; });
         if (entry == event.subjects.end()) return std::nullopt;
-        key = entry->label_key == "a work" ? "a work was authored by {n}" : "{b} was authored by {n}";
+        if (entry->label_key == "a work") {
+            title_field = false;
+            key = location ? "a work was authored by {n} in {p}" : "a work was authored by {n}";
+        } else if (entry->raw_title.empty()) {
+            title_field = false;
+            key = location ? "an untitled work was authored by {n} in {p}" :
+                "an untitled work was authored by {n}";
+        } else key = location ? "{b} was authored by {n} in {p}" : "{b} was authored by {n}";
     }
-    auto creation = key == "a work was authored by {n}" ? apply(key, {*author}) :
-        apply(key, {*form, *author});
+    std::vector<Pieces> fields;
+    if (title_field) fields.push_back(*form);
+    if (event.native_type != 93 && location) fields.push_back(*location);
+    fields.push_back(*author);
+    if (event.native_type == 93 && location) fields.push_back(*location);
+    auto creation = apply(key, fields);
     if (!creation) return std::nullopt;
     join(result, *creation);
     append_clause(result, context->first);

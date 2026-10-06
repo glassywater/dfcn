@@ -237,6 +237,10 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
                 name.emplace();
                 for (const auto &part : *translated) *name += part.target;
             }
+        } else if (kind == NativeHistoryObjectKind::WrittenContent && found->raw_title.empty()) {
+            // An existing written work may have no title. Missing works
+            // already use label_key above; a blank title is not a failed name.
+            name = translate_legends_term("Untitled");
         } else if (!found->raw_title.empty()) name = translate_legends_book(found->raw_title);
         else if (kind == NativeHistoryObjectKind::Entity && !found->name.has_name) {
             // EntityName emits no name for an existing unnamed entity. This
