@@ -11369,3 +11369,40 @@ muck-brown	污泥棕色	wi
 # Metal-bar commodity labels must win over generated-name and action grammars.
 Tin Bars	锡锭	wi
 Lead Bars	铅锭	wi
+
+# Claimed-workshop material requests, resolved only by the native mood writer.
+Workshop mood requirement: "{s}" needs	“{s}”需要：	l
+Workshop mood working artifact: {s}...	{s}……	l
+Workshop mood material: ..."	……	l
+Workshop mood material: bones...  yes..."	骨头……没错……	l
+Workshop mood material: a shell..."	甲壳……	l
+Workshop mood material: a corpse..."	尸体……	l
+Workshop mood material: tree... life..."	树木……生命……	l
+Workshop mood material: raw... green..."	粗坯……绿色……	l
+Workshop mood material: raw... clear..."	粗坯……透明……	l
+Workshop mood material: raw... crystal..."	粗坯……水晶……	l
+Workshop mood material: rough... color..."	粗糙……色彩……	l
+Workshop mood material: stone... rock..."	石材……岩石……	l
+Workshop mood material: bars... metal..."	锭条……金属……	l
+Workshop mood material: gems... shining..."	宝石……闪耀……	l
+Workshop mood material: blocks... bricks......"	砖块……砌块……	l
+Workshop mood material: leather... skin..."	皮革……兽皮……	l
+Workshop mood material: cloth... thread..."	布料……线……	l
+Workshop mood demand: "I must have {s}!"	“我必须得到{s}！”	l
+Workshop mood brood: "Yes.  I need {s}."	“对。我需要{s}。”	l
+Workshop mood brood: "Leave me.  I need... things...  certain things."	“别烦我。我需要……东西……某些东西。”	l
+Workshop mood sketch: pictures of skeletons.	画着骷髅。	l
+Workshop mood sketch: pictures of .	图画。	l
+Workshop mood sketch: pictures of shells.	画着甲壳。	l
+Workshop mood sketch: pictures of death.	画着死亡。	l
+Workshop mood sketch: pictures of a forest.	画着森林。	l
+Workshop mood sketch: pictures of glass.	画着玻璃。	l
+Workshop mood sketch: pictures of glass and burning wood.	画着玻璃和燃烧的木头。	l
+Workshop mood sketch: pictures of rough gems and glass.	画着粗糙宝石和玻璃。	l
+Workshop mood sketch: pictures of rough gems.	画着粗糙宝石。	l
+Workshop mood sketch: pictures of a quarry.	画着采石场。	l
+Workshop mood sketch: pictures of shining bars of metal.	画着闪耀的金属锭。	l
+Workshop mood sketch: pictures of cut gems.	画着切割宝石。	l
+Workshop mood sketch: pictures of square blocks.	画着方形砌块。	l
+Workshop mood sketch: pictures of stacked leather.	画着堆叠的皮革。	l
+Workshop mood sketch: pictures of stacked cloth.	画着堆叠的布料。	l

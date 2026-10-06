@@ -1,0 +1,267 @@
+edition	role	supplier_rva	instruction_rva	literal_rva	text	operand
+reference	job-item-description	0xa82c10	0xa82d27	0x1649d9c	large	mov    eax,DWORD PTR [rip+0xbc706f]        # 0x141649d9c
+reference	job-item-description	0xa82c10	0xa82d30	0x1649da0	e	movzx  eax,BYTE PTR [rip+0xbc7069]        # 0x141649da0
+reference	job-item-description	0xa82c10	0xa82d39	0x1686358	small	mov    eax,DWORD PTR [rip+0xc03619]        # 0x141686358
+reference	job-item-description	0xa82c10	0xa82d42	0x168635c	l	movzx  eax,BYTE PTR [rip+0xc03613]        # 0x14168635c
+reference	job-item-description	0xa82c10	0xa82d8c	0x16cbf50	grown 	lea    rdx,[rip+0xc491bd]        # 0x1416cbf50
+reference	job-item-description	0xa82c10	0xa82e66	0x167ccf0	logs	lea    rdx,[rip+0xbf9e83]        # 0x14167ccf0
+reference	job-item-description	0xa82c10	0xa82ed8	0x16ce7e0	branch	lea    rdx,[rip+0xc4b901]        # 0x1416ce7e0
+reference	job-item-description	0xa82c10	0xa82efd	0x16ce880	es	lea    rdx,[rip+0xc4b97c]        # 0x1416ce880
+reference	job-item-description	0xa82c10	0xa82f1d	0x1601038	rough gems	lea    rdx,[rip+0xb7e114]        # 0x141601038
+reference	job-item-description	0xa82c10	0xa82f36	0x16ce870	raw green glass	lea    rdx,[rip+0xc4b933]        # 0x1416ce870
+reference	job-item-description	0xa82c10	0xa82f4f	0x16ce860	raw clear glass	lea    rdx,[rip+0xc4b90a]        # 0x1416ce860
+reference	job-item-description	0xa82c10	0xa82f68	0x16ce848	raw crystal glass	lea    rdx,[rip+0xc4b8d9]        # 0x1416ce848
+reference	job-item-description	0xa82c10	0xa82f8a	0x1601038	rough gems	lea    rdx,[rip+0xb7e0a7]        # 0x141601038
+reference	job-item-description	0xa82c10	0xa82fa8	0x16cc1b0	rough 	lea    rdx,[rip+0xc49201]        # 0x1416cc1b0
+reference	job-item-description	0xa82c10	0xa83047	0x16862ac	small 	lea    rdx,[rip+0xc0325e]        # 0x1416862ac
+reference	job-item-description	0xa82c10	0xa8305e	0x16862ac	small 	lea    rdx,[rip+0xc03247]        # 0x1416862ac
+reference	job-item-description	0xa82c10	0xa8313e	0x16ce7ac	rock	lea    rdx,[rip+0xc4b667]        # 0x1416ce7ac
+reference	job-item-description	0xa82c10	0xa8315e	0x16ce7a0	small rock	lea    rdx,[rip+0xc4b63b]        # 0x1416ce7a0
+reference	job-item-description	0xa82c10	0xa831b7	0x16ce790	stone boulders	lea    rdx,[rip+0xc4b5d2]        # 0x1416ce790
+reference	job-item-description	0xa82c10	0xa831dd	0x16ce780	boulders	lea    rdx,[rip+0xc4b59c]        # 0x1416ce780
+reference	job-item-description	0xa82c10	0xa832ba	0x16ce738	bars	lea    rdx,[rip+0xc4b477]        # 0x1416ce738
+reference	job-item-description	0xa82c10	0xa832d3	0x16ce7c0	charcoal	lea    rdx,[rip+0xc4b4e6]        # 0x1416ce7c0
+reference	job-item-description	0xa82c10	0xa832e9	0x16ce7b4	coke	lea    rdx,[rip+0xc4b4c4]        # 0x1416ce7b4
+reference	job-item-description	0xa82c10	0xa832f2	0x16ce740	refined coal	lea    rdx,[rip+0xc4b447]        # 0x1416ce740
+reference	job-item-description	0xa82c10	0xa8330b	0x163e59c	metal	lea    rdx,[rip+0xbbb28a]        # 0x14163e59c
+reference	job-item-description	0xa82c10	0xa8331a	0x16ce7cc	 bars	lea    rdx,[rip+0xc4b4ab]        # 0x1416ce7cc
+reference	job-item-description	0xa82c10	0xa833ca	0x16ce7d8	 wafers	lea    rdx,[rip+0xc4b407]        # 0x1416ce7d8
+reference	job-item-description	0xa82c10	0xa834b8	0x16011f0	cut gems	lea    rdx,[rip+0xb7dd31]        # 0x1416011f0
+reference	job-item-description	0xa82c10	0xa834d1	0x16ce720	cut green glass gems	lea    rdx,[rip+0xc4b248]        # 0x1416ce720
+reference	job-item-description	0xa82c10	0xa834ea	0x16ce708	cut clear glass gems	lea    rdx,[rip+0xc4b217]        # 0x1416ce708
+reference	job-item-description	0xa82c10	0xa83500	0x16ce768	cut crystal glass gems	lea    rdx,[rip+0xc4b261]        # 0x1416ce768
+reference	job-item-description	0xa82c10	0xa8351b	0x16ce760	gems	lea    rdx,[rip+0xc4b23e]        # 0x1416ce760
+reference	job-item-description	0xa82c10	0xa83658	0x16ce758	blocks	lea    rdx,[rip+0xc4b0f9]        # 0x1416ce758
+reference	job-item-description	0xa82c10	0xa8366f	0x16ce758	blocks	lea    rdx,[rip+0xc4b0e2]        # 0x1416ce758
+reference	job-item-description	0xa82c10	0xa8371d	0x16ce6ec	door	lea    rcx,[rip+0xc4afc8]        # 0x1416ce6ec
+reference	job-item-description	0xa82c10	0xa83724	0x16ce750	portal	lea    rdx,[rip+0xc4b025]        # 0x1416ce750
+reference	job-item-description	0xa82c10	0xa8379a	0x16ce6e0	floodgate	lea    rdx,[rip+0xc4af3f]        # 0x1416ce6e0
+reference	job-item-description	0xa82c10	0xa8380a	0x16ce6d0	hatch cover	lea    rdx,[rip+0xc4aebf]        # 0x1416ce6d0
+reference	job-item-description	0xa82c10	0xa8387a	0x16ce6c8	grate	lea    rdx,[rip+0xc4ae47]        # 0x1416ce6c8
+reference	job-item-description	0xa82c10	0xa838ea	0x162fdb4	table	lea    rdx,[rip+0xbac4c3]        # 0x14162fdb4
+reference	job-item-description	0xa82c10	0xa8395a	0x163cea0	cabinet	lea    rdx,[rip+0xbb953f]        # 0x14163cea0
+reference	job-item-description	0xa82c10	0xa839ca	0x163ce90	weapon rack	lea    rdx,[rip+0xbb94bf]        # 0x14163ce90
+reference	job-item-description	0xa82c10	0xa83a3a	0x163ce08	armor stand	lea    rdx,[rip+0xbb93c7]        # 0x14163ce08
+reference	job-item-description	0xa82c10	0xa83aaa	0x16ce704	bin	lea    rdx,[rip+0xc4ac53]        # 0x1416ce704
+reference	job-item-description	0xa82c10	0xa83b51	0x16ce700	box	lea    rdx,[rip+0xc4aba8]        # 0x1416ce700
+reference	job-item-description	0xa82c10	0xa83b6a	0x16ce6fc	e	lea    rdx,[rip+0xc4ab8b]        # 0x1416ce6fc
+reference	job-item-description	0xa82c10	0xa83b93	0x16ce6f4	coffer	lea    rdx,[rip+0xc4ab5a]        # 0x1416ce6f4
+reference	job-item-description	0xa82c10	0xa83ba2	0x163cea8	chest	lea    rdx,[rip+0xbb92ff]        # 0x14163cea8
+reference	job-item-description	0xa82c10	0xa83bc3	0x16ce6a0	boxe	lea    rdx,[rip+0xc4aad6]        # 0x1416ce6a0
+reference	job-item-description	0xa82c10	0xa83bd8	0x15e9298	s	lea    rdx,[rip+0xb656b9]        # 0x1415e9298
+reference	job-item-description	0xa82c10	0xa83bec	0x16ce700	box	lea    rdx,[rip+0xc4ab0d]        # 0x1416ce700
+reference	job-item-description	0xa82c10	0xa83c64	0x16ce69c	bag	lea    rdx,[rip+0xc4aa31]        # 0x1416ce69c
+reference	job-item-description	0xa82c10	0xa83cff	0x16ce690	backpack	lea    rdx,[rip+0xc4a98a]        # 0x1416ce690
+reference	job-item-description	0xa82c10	0xa83dbc	0x16ce6c0	cast	lea    rdx,[rip+0xc4a8fd]        # 0x1416ce6c0
+reference	job-item-description	0xa82c10	0xa83dc8	0x16ce680	limb/body 	lea    rdx,[rip+0xc4a8b1]        # 0x1416ce680
+reference	job-item-description	0xa82c10	0xa83dd7	0x16ce6c0	cast	lea    rdx,[rip+0xc4a8e2]        # 0x1416ce6c0
+reference	job-item-description	0xa82c10	0xa83e37	0x16ce680	limb/body 	lea    rdx,[rip+0xc4a842]        # 0x1416ce680
+reference	job-item-description	0xa82c10	0xa83e46	0x16ce6c0	cast	lea    rdx,[rip+0xc4a873]        # 0x1416ce6c0
+reference	job-item-description	0xa82c10	0xa83eb6	0x16ce6b8	splint	lea    rdx,[rip+0xc4a7fb]        # 0x1416ce6b8
+reference	job-item-description	0xa82c10	0xa83f20	0x16ce6b0	crutch	lea    rdx,[rip+0xc4a789]        # 0x1416ce6b0
+reference	job-item-description	0xa82c10	0xa83fbb	0x16ce6a8	quiver	lea    rdx,[rip+0xc4a6e6]        # 0x1416ce6a8
+reference	job-item-description	0xa82c10	0xa8403a	0x16ce63c	casket	lea    rdx,[rip+0xc4a5fb]        # 0x1416ce63c
+reference	job-item-description	0xa82c10	0xa84085	0x16ce630	sarcophag	lea    rdx,[rip+0xc4a5a4]        # 0x1416ce630
+reference	job-item-description	0xa82c10	0xa84094	0x1642184	us	lea    rax,[rip+0xbbe0e9]        # 0x141642184
+reference	job-item-description	0xa82c10	0xa8409b	0x16c0828	i	lea    rdx,[rip+0xc3c786]        # 0x1416c0828
+reference	job-item-description	0xa82c10	0xa840b7	0x162fe0c	coffin	lea    rdx,[rip+0xbabd4e]        # 0x14162fe0c
+reference	job-item-description	0xa82c10	0xa841d4	0x16ce61c	chain	lea    rdx,[rip+0xc4a441]        # 0x1416ce61c
+reference	job-item-description	0xa82c10	0xa841e8	0x16ce624	rope	lea    rdx,[rip+0xc4a435]        # 0x1416ce624
+reference	job-item-description	0xa82c10	0xa84328	0x16ce664	vial	lea    rdx,[rip+0xc4a335]        # 0x1416ce664
+reference	job-item-description	0xa82c10	0xa84339	0x16ce65c	flask	lea    rdx,[rip+0xc4a31c]        # 0x1416ce65c
+reference	job-item-description	0xa82c10	0xa84350	0x16ce670	waterskin	lea    rdx,[rip+0xc4a319]        # 0x1416ce670
+reference	job-item-description	0xa82c10	0xa843f9	0x16ce648	musical instrument	lea    rdx,[rip+0xc4a248]        # 0x1416ce648
+reference	job-item-description	0xa82c10	0xa844db	0x16ce5e8	unglazed 	lea    rdx,[rip+0xc4a106]        # 0x1416ce5e8
+reference	job-item-description	0xa82c10	0xa84643	0x15e873c	 	lea    rdx,[rip+0xb640f2]        # 0x1415e873c
+reference	job-item-description	0xa82c10	0xa8465d	0x16c1e44	tool	lea    rdx,[rip+0xc3d7e0]        # 0x1416c1e44
+reference	job-item-description	0xa82c10	0xa846fd	0x16c1d64	toy	lea    rdx,[rip+0xc3d660]        # 0x1416c1d64
+reference	job-item-description	0xa82c10	0xa847ad	0x16ce5e0	cup	lea    rdx,[rip+0xc49e2c]        # 0x1416ce5e0
+reference	job-item-description	0xa82c10	0xa847e1	0x16ce5dc	mug	lea    rdx,[rip+0xc49df4]        # 0x1416ce5dc
+reference	job-item-description	0xa82c10	0xa847fb	0x16ce5d4	goblet	lea    rdx,[rip+0xc49dd2]        # 0x1416ce5d4
+reference	job-item-description	0xa82c10	0xa8486b	0x16ce614	window	lea    rdx,[rip+0xc49da2]        # 0x1416ce614
+reference	job-item-description	0xa82c10	0xa8491a	0x16ce5fc	cage	lea    rcx,[rip+0xc49cdb]        # 0x1416ce5fc
+reference	job-item-description	0xa82c10	0xa84921	0x16ce608	terrarium	lea    rdx,[rip+0xc49ce0]        # 0x1416ce608
+reference	job-item-description	0xa82c10	0xa84995	0x16ce5f4	barrel	lea    rdx,[rip+0xc49c58]        # 0x1416ce5f4
+reference	job-item-description	0xa82c10	0xa84a05	0x16cec8c	bucket	lea    rdx,[rip+0xc4a280]        # 0x1416cec8c
+reference	job-item-description	0xa82c10	0xa84a75	0x16cec80	animal trap	lea    rdx,[rip+0xc4a204]        # 0x1416cec80
+reference	job-item-description	0xa82c10	0xa84af1	0x162fe04	chair	lea    rdx,[rip+0xbab30c]        # 0x14162fe04
+reference	job-item-description	0xa82c10	0xa84b0b	0x16cec74	throne	lea    rdx,[rip+0xc4a162]        # 0x1416cec74
+reference	job-item-description	0xa82c10	0xa84bc1	0x16cec70	web	lea    rdx,[rip+0xc4a0a8]        # 0x1416cec70
+reference	job-item-description	0xa82c10	0xa84c0c	0x16cecb8	strands	lea    rdx,[rip+0xc4a0a5]        # 0x1416cecb8
+reference	job-item-description	0xa82c10	0xa84c3f	0x16158b4	yarn	lea    rdx,[rip+0xb90c6e]        # 0x1416158b4
+reference	job-item-description	0xa82c10	0xa84c50	0x161589c	thread	lea    rdx,[rip+0xb90c45]        # 0x14161589c
+reference	job-item-description	0xa82c10	0xa84cc5	0x16158a4	cloth	lea    rdx,[rip+0xb90bd8]        # 0x1416158a4
+reference	job-item-description	0xa82c10	0xa84dcf	0x16cecac	sheet	lea    rdx,[rip+0xc49ed6]        # 0x1416cecac
+reference	job-item-description	0xa82c10	0xa84df2	0x16ceca0	tanned hide	lea    rdx,[rip+0xc49ea7]        # 0x1416ceca0
+reference	job-item-description	0xa82c10	0xa84e55	0x16cec94	totem	lea    rdx,[rip+0xc49e38]        # 0x1416cec94
+reference	job-item-description	0xa82c10	0xa84ebe	0x16cec40	-bound 	lea    rdx,[rip+0xc49d7b]        # 0x1416cec40
+reference	job-item-description	0xa82c10	0xa84eda	0x16cec2c	codex	lea    rax,[rip+0xc49d4b]        # 0x1416cec2c
+reference	job-item-description	0xa82c10	0xa84ee1	0x16cec38	codices	lea    rdx,[rip+0xc49d50]        # 0x1416cec38
+reference	job-item-description	0xa82c10	0xa84f60	0x16cec20	figurine	lea    rdx,[rip+0xc49cb9]        # 0x1416cec20
+reference	job-item-description	0xa82c10	0xa84f7e	0x16cec68	rotten 	lea    rdx,[rip+0xc49ce3]        # 0x1416cec68
+reference	job-item-description	0xa82c10	0xa84fa3	0x164fc00	drink	lea    rdx,[rip+0xbcac56]        # 0x14164fc00
+reference	job-item-description	0xa82c10	0xa84fe6	0x16cec68	rotten 	lea    rdx,[rip+0xc49c7b]        # 0x1416cec68
+reference	job-item-description	0xa82c10	0xa851cb	0x16cec60	filthy 	lea    rdx,[rip+0xc49a8e]        # 0x1416cec60
+reference	job-item-description	0xa82c10	0xa851e4	0x16cec58	sticky 	lea    rdx,[rip+0xc49a6d]        # 0x1416cec58
+reference	job-item-description	0xa82c10	0xa85203	0x16cec48	vomitous 	lea    rdx,[rip+0xc49a3e]        # 0x1416cec48
+reference	job-item-description	0xa82c10	0xa8521f	0x16cebec	slimy 	lea    rdx,[rip+0xc499c6]        # 0x1416cebec
+reference	job-item-description	0xa82c10	0xa85238	0x16b1070	stagnant 	lea    rdx,[rip+0xc2be31]        # 0x1416b1070
+reference	job-item-description	0xa82c10	0xa85254	0x16cebe4	dirty 	lea    rdx,[rip+0xc49989]        # 0x1416cebe4
+reference	job-item-description	0xa82c10	0xa85270	0x16cebdc	gooey 	lea    rdx,[rip+0xc49965]        # 0x1416cebdc
+reference	job-item-description	0xa82c10	0xa85289	0x16cebd0	purulent 	lea    rdx,[rip+0xc49940]        # 0x1416cebd0
+reference	job-item-description	0xa82c10	0xa852a2	0x16cec10	ichorous 	lea    rdx,[rip+0xc49967]        # 0x1416cec10
+reference	job-item-description	0xa82c10	0xa852bb	0x16cec08	bloody 	lea    rdx,[rip+0xc49946]        # 0x1416cec08
+reference	job-item-description	0xa82c10	0xa852fa	0x16a6358	liquid	lea    rdx,[rip+0xc21057]        # 0x1416a6358
+reference	job-item-description	0xa82c10	0xa8543c	0x16cebfc	 paste	lea    rdx,[rip+0xc497b9]        # 0x1416cebfc
+reference	job-item-description	0xa82c10	0xa85491	0x16cebf4	glob	lea    rdx,[rip+0xc4975c]        # 0x1416cebf4
+reference	job-item-description	0xa82c10	0xa85692	0x16ceb80	 laced with 	lea    rdx,[rip+0xc494e7]        # 0x1416ceb80
+reference	job-item-description	0xa82c10	0xa85706	0x15e90d8	, 	lea    rdx,[rip+0xb639cb]        # 0x1415e90d8
+reference	job-item-description	0xa82c10	0xa85716	0x15e9110	 and 	lea    rdx,[rip+0xb639f3]        # 0x1415e9110
+reference	job-item-description	0xa82c10	0xa8577b	0x16cec68	rotten 	lea    rdx,[rip+0xc494e6]        # 0x1416cec68
+reference	job-item-description	0xa82c10	0xa85818	0x16ceb70	 dye mix	lea    rdx,[rip+0xc49351]        # 0x1416ceb70
+reference	job-item-description	0xa82c10	0xa8583c	0x16ceb64	powder	lea    rdx,[rip+0xc49321]        # 0x1416ceb64
+reference	job-item-description	0xa82c10	0xa85896	0x16cec68	rotten 	lea    rdx,[rip+0xc493cb]        # 0x1416cec68
+reference	job-item-description	0xa82c10	0xa858b8	0x16ceb5c	cheese	lea    rdx,[rip+0xc4929d]        # 0x1416ceb5c
+reference	job-item-description	0xa82c10	0xa85940	0x16cebc0	catapult parts	lea    rdx,[rip+0xc49279]        # 0x1416cebc0
+reference	job-item-description	0xa82c10	0xa859b8	0x16ceba8	bolt thrower parts	lea    rdx,[rip+0xc491e9]        # 0x1416ceba8
+reference	job-item-description	0xa82c10	0xa85a30	0x16ceb98	mechanisms	lea    rdx,[rip+0xc49161]        # 0x1416ceb98
+reference	job-item-description	0xa82c10	0xa85adf	0x16ceb90	tube	lea    rdx,[rip+0xc490aa]        # 0x1416ceb90
+reference	job-item-description	0xa82c10	0xa85af9	0x16ceb10	pipe section	lea    rdx,[rip+0xc49010]        # 0x1416ceb10
+reference	job-item-description	0xa82c10	0xa85b97	0x16ceb00	trap component	lea    rdx,[rip+0xc48f62]        # 0x1416ceb00
+reference	job-item-description	0xa82c10	0xa85bc8	0x15e873c	 	lea    rdx,[rip+0xb62b6d]        # 0x1415e873c
+reference	job-item-description	0xa82c10	0xa85caa	0x16ceaf0	ballista parts	lea    rdx,[rip+0xc48e3f]        # 0x1416ceaf0
+reference	job-item-description	0xa82c10	0xa85d22	0x16ceae8	anvil	lea    rdx,[rip+0xc48dbf]        # 0x1416ceae8
+reference	job-item-description	0xa82c10	0xa85d92	0x16ceb54	amulet	lea    rdx,[rip+0xc48dbb]        # 0x1416ceb54
+reference	job-item-description	0xa82c10	0xa85e02	0x16ceb40	ballista arrow head	lea    rdx,[rip+0xc48d37]        # 0x1416ceb40
+reference	job-item-description	0xa82c10	0xa85ea9	0x16ceb30	siege ammo	lea    rdx,[rip+0xc48c80]        # 0x1416ceb30
+reference	job-item-description	0xa82c10	0xa85ff3	0x16ceb20	ammunition	lea    rdx,[rip+0xc48b26]        # 0x1416ceb20
+reference	job-item-description	0xa82c10	0xa8606b	0x16ceaa8	scepter	lea    rdx,[rip+0xc48a36]        # 0x1416ceaa8
+reference	job-item-description	0xa82c10	0xa860db	0x16cea9c	crown	lea    rdx,[rip+0xc489ba]        # 0x1416cea9c
+reference	job-item-description	0xa82c10	0xa86145	0x16cea94	coin	lea    rdx,[rip+0xc48948]        # 0x1416cea94
+reference	job-item-description	0xa82c10	0xa86164	0x16cea88	perfect 	lea    rdx,[rip+0xc4891d]        # 0x1416cea88
+reference	job-item-description	0xa82c10	0xa86173	0x164a2c8	large 	lea    rdx,[rip+0xbc414e]        # 0x14164a2c8
+reference	job-item-description	0xa82c10	0xa8625b	0x16cead8	green glass 	lea    rdx,[rip+0xc48876]        # 0x1416cead8
+reference	job-item-description	0xa82c10	0xa86271	0x16ceac8	clear glass 	lea    rdx,[rip+0xc48850]        # 0x1416ceac8
+reference	job-item-description	0xa82c10	0xa86287	0x16ceab8	crystal glass 	lea    rdx,[rip+0xc4882a]        # 0x1416ceab8
+reference	job-item-description	0xa82c10	0xa862a3	0x16158fc	gem	lea    rdx,[rip+0xb8f652]        # 0x1416158fc
+reference	job-item-description	0xa82c10	0xa8635b	0x16ceab0	 gem	lea    rdx,[rip+0xc4874e]        # 0x1416ceab0
+reference	job-item-description	0xa82c10	0xa86436	0x16cea50	ring	lea    rdx,[rip+0xc48613]        # 0x1416cea50
+reference	job-item-description	0xa82c10	0xa864a6	0x16cea48	earring	lea    rdx,[rip+0xc4859b]        # 0x1416cea48
+reference	job-item-description	0xa82c10	0xa86516	0x16cea38	bracelet	lea    rdx,[rip+0xc4851b]        # 0x1416cea38
+reference	job-item-description	0xa82c10	0xa86586	0x162fdb0	bed	lea    rdx,[rip+0xba9823]        # 0x14162fdb0
+reference	job-item-description	0xa82c10	0xa865f6	0x16cea28	traction bench	lea    rdx,[rip+0xc4842b]        # 0x1416cea28
+reference	job-item-description	0xa82c10	0xa86666	0x16cea7c	quern	lea    rdx,[rip+0xc4840f]        # 0x1416cea7c
+reference	job-item-description	0xa82c10	0xa866d6	0x16cea70	millstone	lea    rdx,[rip+0xc48393]        # 0x1416cea70
+reference	job-item-description	0xa82c10	0xa86746	0x16cea64	statue	lea    rdx,[rip+0xc48317]        # 0x1416cea64
+reference	job-item-description	0xa82c10	0xa86852	0x16cea58	memorial	lea    rdx,[rip+0xc481ff]        # 0x1416cea58
+reference	job-item-description	0xa82c10	0xa86866	0x16ce9a0	food imports sign	lea    rdx,[rip+0xc48133]        # 0x1416ce9a0
+reference	job-item-description	0xa82c10	0xa8687a	0x16ce988	clothing imports sign	lea    rdx,[rip+0xc48107]        # 0x1416ce988
+reference	job-item-description	0xa82c10	0xa8688e	0x16ce970	general imports sign	lea    rdx,[rip+0xc480db]        # 0x1416ce970
+reference	job-item-description	0xa82c10	0xa868a2	0x16ce960	cloth shop sign	lea    rdx,[rip+0xc480b7]        # 0x1416ce960
+reference	job-item-description	0xa82c10	0xa868b6	0x16cea10	leather shop sign	lea    rdx,[rip+0xc48153]        # 0x1416cea10
+reference	job-item-description	0xa82c10	0xa868ca	0x16ce9f0	woven clothing shop sign	lea    rdx,[rip+0xc4811f]        # 0x1416ce9f0
+reference	job-item-description	0xa82c10	0xa868de	0x16ce9d0	leather clothing shop sign	lea    rdx,[rip+0xc480eb]        # 0x1416ce9d0
+reference	job-item-description	0xa82c10	0xa868f2	0x16ce9b8	bone carver's shop sign	lea    rdx,[rip+0xc480bf]        # 0x1416ce9b8
+reference	job-item-description	0xa82c10	0xa86906	0x16cf090	gem cutter's shop sign	lea    rdx,[rip+0xc48783]        # 0x1416cf090
+reference	job-item-description	0xa82c10	0xa8691a	0x16cf078	weaponsmith's shop sign	lea    rdx,[rip+0xc48757]        # 0x1416cf078
+reference	job-item-description	0xa82c10	0xa8692e	0x16cf060	bowyer's shop sign	lea    rdx,[rip+0xc4872b]        # 0x1416cf060
+reference	job-item-description	0xa82c10	0xa86942	0x16cf048	blacksmith's shop sign	lea    rdx,[rip+0xc486ff]        # 0x1416cf048
+reference	job-item-description	0xa82c10	0xa86956	0x16cf0f0	armorsmith's shop sign	lea    rdx,[rip+0xc48793]        # 0x1416cf0f0
+reference	job-item-description	0xa82c10	0xa8696a	0x16cf0d8	metal craft shop sign	lea    rdx,[rip+0xc48767]        # 0x1416cf0d8
+reference	job-item-description	0xa82c10	0xa8697e	0x16cf0c0	leather goods shop sign	lea    rdx,[rip+0xc4873b]        # 0x1416cf0c0
+reference	job-item-description	0xa82c10	0xa86992	0x16cf0a8	carpenter's shop sign	lea    rdx,[rip+0xc4870f]        # 0x1416cf0a8
+reference	job-item-description	0xa82c10	0xa869a6	0x16ceff8	stone furniture shop sign	lea    rdx,[rip+0xc4864b]        # 0x1416ceff8
+reference	job-item-description	0xa82c10	0xa869ba	0x16cefd8	metal furniture shop sign	lea    rdx,[rip+0xc48617]        # 0x1416cefd8
+reference	job-item-description	0xa82c10	0xa869ce	0x16cefc8	tavern sign	lea    rdx,[rip+0xc485f3]        # 0x1416cefc8
+reference	job-item-description	0xa82c10	0xa869e2	0x16cefbc	slab	lea    rdx,[rip+0xc485d3]        # 0x1416cefbc
+reference	job-item-description	0xa82c10	0xa869f6	0x16cefbc	slab	lea    rdx,[rip+0xc485bf]        # 0x1416cefbc
+reference	job-item-description	0xa82c10	0xa86a14	0x16cec68	rotten 	lea    rdx,[rip+0xc4824d]        # 0x1416cec68
+reference	job-item-description	0xa82c10	0xa86a29	0x16cf03c	corpse	lea    rdx,[rip+0xc4860c]        # 0x1416cf03c
+reference	job-item-description	0xa82c10	0xa86a47	0x16cec68	rotten 	lea    rdx,[rip+0xc4821a]        # 0x1416cec68
+reference	job-item-description	0xa82c10	0xa86a6b	0x16158cc	tooth	lea    rdx,[rip+0xb8ee5a]        # 0x1416158cc
+reference	job-item-description	0xa82c10	0xa86a7c	0x16cf034	teeth	lea    rdx,[rip+0xc485b1]        # 0x1416cf034
+reference	job-item-description	0xa82c10	0xa86a91	0x16158c4	bone	lea    rdx,[rip+0xb8ee2c]        # 0x1416158c4
+reference	job-item-description	0xa82c10	0xa86aa9	0x16158bc	shell	lea    rdx,[rip+0xb8ee0c]        # 0x1416158bc
+reference	job-item-description	0xa82c10	0xa86ac1	0x16cf028	plant part	lea    rdx,[rip+0xc48560]        # 0x1416cf028
+reference	job-item-description	0xa82c10	0xa86ad9	0x16cf018	silk body part	lea    rdx,[rip+0xc48538]        # 0x1416cf018
+reference	job-item-description	0xa82c10	0xa86af1	0x16cef70	leather body part	lea    rdx,[rip+0xc48478]        # 0x1416cef70
+reference	job-item-description	0xa82c10	0xa86b09	0x16cef58	wooden body part	lea    rdx,[rip+0xc48448]        # 0x1416cef58
+reference	job-item-description	0xa82c10	0xa86b23	0x16cef48	soap body part	lea    rdx,[rip+0xc4841e]        # 0x1416cef48
+reference	job-item-description	0xa82c10	0xa86b3d	0x16158e4	horn	lea    rdx,[rip+0xb8eda0]        # 0x1416158e4
+reference	job-item-description	0xa82c10	0xa86b57	0x16158dc	pearl	lea    rdx,[rip+0xb8ed7e]        # 0x1416158dc
+reference	job-item-description	0xa82c10	0xa86b71	0x16cef38	yarn body part	lea    rdx,[rip+0xc483c0]        # 0x1416cef38
+reference	job-item-description	0xa82c10	0xa86b89	0x16cefa8	strand body part	lea    rdx,[rip+0xc48418]        # 0x1416cefa8
+reference	job-item-description	0xa82c10	0xa86b92	0x1681050	body part	lea    rdx,[rip+0xbfa4b7]        # 0x141681050
+reference	job-item-description	0xa82c10	0xa86bbb	0x16cefa0	Rotten 	lea    rdx,[rip+0xc483de]        # 0x1416cefa0
+reference	job-item-description	0xa82c10	0xa86d22	0x167f0c0	remains	lea    rdx,[rip+0xbf8397]        # 0x14167f0c0
+reference	job-item-description	0xa82c10	0xa86d81	0x16cef94	seeds	lea    rdx,[rip+0xc4820c]        # 0x1416cef94
+reference	job-item-description	0xa82c10	0xa86df2	0x16cef88	withered 	lea    rdx,[rip+0xc4818f]        # 0x1416cef88
+reference	job-item-description	0xa82c10	0xa86e66	0x16ceee0	leaves and fruit	lea    rdx,[rip+0xc48073]        # 0x1416ceee0
+reference	job-item-description	0xa82c10	0xa86e77	0x16ceed0	leaf or fruit	lea    rdx,[rip+0xc48052]        # 0x1416ceed0
+reference	job-item-description	0xa82c10	0xa86eaa	0x16cef88	withered 	lea    rdx,[rip+0xc480d7]        # 0x1416cef88
+reference	job-item-description	0xa82c10	0xa86efd	0x1614d54	plant	lea    rdx,[rip+0xb8de50]        # 0x141614d54
+reference	job-item-description	0xa82c10	0xa86f16	0x15e9298	s	lea    rdx,[rip+0xb6237b]        # 0x1415e9298
+reference	job-item-description	0xa82c10	0xa86f3c	0x16cec68	rotten 	lea    rdx,[rip+0xc47d25]        # 0x1416cec68
+reference	job-item-description	0xa82c10	0xa86f54	0x16ceec8	raw 	lea    rdx,[rip+0xc47f6d]        # 0x1416ceec8
+reference	job-item-description	0xa82c10	0xa870d5	0x15e90d8	, 	lea    rdx,[rip+0xb61ffc]        # 0x1415e90d8
+reference	job-item-description	0xa82c10	0xa870eb	0x15e90d8	, 	lea    rdx,[rip+0xb61fe6]        # 0x1415e90d8
+reference	job-item-description	0xa82c10	0xa87104	0x16a11f0	fish	lea    rdx,[rip+0xc1a0e5]        # 0x1416a11f0
+reference	job-item-description	0xa82c10	0xa8712a	0x16cec68	rotten 	lea    rdx,[rip+0xc47b37]        # 0x1416cec68
+reference	job-item-description	0xa82c10	0xa87251	0x15e873c	 	lea    rdx,[rip+0xb614e4]        # 0x1415e873c
+reference	job-item-description	0xa82c10	0xa87266	0x16ceec4	egg	lea    rdx,[rip+0xc47c57]        # 0x1416ceec4
+reference	job-item-description	0xa82c10	0xa8728c	0x16cec68	rotten 	lea    rdx,[rip+0xc479d5]        # 0x1416cec68
+reference	job-item-description	0xa82c10	0xa8738b	0x16a11f0	fish	lea    rdx,[rip+0xc19e5e]        # 0x1416a11f0
+reference	job-item-description	0xa82c10	0xa873a8	0x16cef2c	live 	lea    rdx,[rip+0xc47b7d]        # 0x1416cef2c
+reference	job-item-description	0xa82c10	0xa873e1	0x16cef18	small live animal	lea    rdx,[rip+0xc47b30]        # 0x1416cef18
+reference	job-item-description	0xa82c10	0xa873fb	0x16cef0c	tame 	lea    rdx,[rip+0xc47b0a]        # 0x1416cef0c
+reference	job-item-description	0xa82c10	0xa87404	0x16ceef8	small tame animal	lea    rdx,[rip+0xc47aed]        # 0x1416ceef8
+reference	job-item-description	0xa82c10	0xa8741b	0x16cee88	prepared meal	lea    rdx,[rip+0xc47a66]        # 0x1416cee88
+reference	job-item-description	0xa82c10	0xa87435	0x16cec68	rotten 	lea    rdx,[rip+0xc4782c]        # 0x1416cec68
+reference	job-item-description	0xa82c10	0xa8744a	0x16cee78	preserved 	lea    rdx,[rip+0xc47a27]        # 0x1416cee78
+reference	job-item-description	0xa82c10	0xa8750c	0x16cee70	 chops	lea    rdx,[rip+0xc4795d]        # 0x1416cee70
+reference	job-item-description	0xa82c10	0xa8751d	0x16cee68	 chop	lea    rdx,[rip+0xc47944]        # 0x1416cee68
+reference	job-item-description	0xa82c10	0xa87556	0x16ceebc	meat	lea    rdx,[rip+0xc4795f]        # 0x1416ceebc
+reference	job-item-description	0xa82c10	0xa87570	0x16ceebc	meat	lea    rdx,[rip+0xc47945]        # 0x1416ceebc
+reference	job-item-description	0xa82c10	0xa87602	0x16c1ecc	weapon	lea    rdx,[rip+0xc3a8c3]        # 0x1416c1ecc
+reference	job-item-description	0xa82c10	0xa8763b	0x15e873c	 	lea    rdx,[rip+0xb610fa]        # 0x1415e873c
+reference	job-item-description	0xa82c10	0xa87767	0x16ceea8	suits of 	lea    rdx,[rip+0xc4773a]        # 0x1416ceea8
+reference	job-item-description	0xa82c10	0xa87776	0x16c1ec4	armor	lea    rdx,[rip+0xc3a747]        # 0x1416c1ec4
+reference	job-item-description	0xa82c10	0xa877dc	0x15e873c	 	lea    rdx,[rip+0xb60f59]        # 0x1415e873c
+reference	job-item-description	0xa82c10	0xa87886	0x16ceeb4	chain 	lea    rdx,[rip+0xc47627]        # 0x1416ceeb4
+reference	job-item-description	0xa82c10	0xa87995	0x163a34c	right 	lea    rdx,[rip+0xbb29b0]        # 0x14163a34c
+reference	job-item-description	0xa82c10	0xa879b5	0x163a324	left 	lea    rdx,[rip+0xbb2968]        # 0x14163a324
+reference	job-item-description	0xa82c10	0xa879fe	0x16ceeb4	chain 	lea    rdx,[rip+0xc474af]        # 0x1416ceeb4
+reference	job-item-description	0xa82c10	0xa87a5f	0x15e873c	 	lea    rdx,[rip+0xb60cd6]        # 0x1415e873c
+reference	job-item-description	0xa82c10	0xa87a73	0x16cee98	handwear	lea    rdx,[rip+0xc4741e]        # 0x1416cee98
+reference	job-item-description	0xa82c10	0xa87b17	0x16c1d74	shield	lea    rdx,[rip+0xc3a256]        # 0x1416c1d74
+reference	job-item-description	0xa82c10	0xa87b36	0x16cee10	/buckler	lea    rdx,[rip+0xc472d3]        # 0x1416cee10
+reference	job-item-description	0xa82c10	0xa87b4a	0x16cee10	/buckler	lea    rdx,[rip+0xc472bf]        # 0x1416cee10
+reference	job-item-description	0xa82c10	0xa87c87	0x15e873c	 	lea    rdx,[rip+0xb60aae]        # 0x1415e873c
+reference	job-item-description	0xa82c10	0xa87cb7	0x16cee00	footwear	lea    rdx,[rip+0xc47142]        # 0x1416cee00
+reference	job-item-description	0xa82c10	0xa87da8	0x16cedf0	headwear	lea    rdx,[rip+0xc47041]        # 0x1416cedf0
+reference	job-item-description	0xa82c10	0xa87dec	0x15e873c	 	lea    rdx,[rip+0xb60949]        # 0x1415e873c
+reference	job-item-description	0xa82c10	0xa87ea8	0x16cede8	legwear	lea    rdx,[rip+0xc46f39]        # 0x1416cede8
+reference	job-item-description	0xa82c10	0xa87f2c	0x15e873c	 	lea    rdx,[rip+0xb60809]        # 0x1415e873c
+reference	job-item-description	0xa82c10	0xa88046	0x15fcfe0	item	lea    rdx,[rip+0xb74f93]        # 0x1415fcfe0
+reference	job-item-description	0xa82c10	0xa88077	0x161bdcc	 [	lea    rdx,[rip+0xb93d4e]        # 0x14161bdcc
+reference	job-item-description	0xa82c10	0xa88097	0x15fd690	]	lea    rdx,[rip+0xb755f2]        # 0x1415fd690
+reference	language-name	0xa94030	0xa9413d	0x15e873c	 	lea    rdx,[rip+0xb545f8]        # 0x1415e873c
+reference	language-name	0xa94030	0xa942b3	0x15e873c	 	lea    rdx,[rip+0xb54482]        # 0x1415e873c
+reference	language-name	0xa94030	0xa9450f	0x15e873c	 	lea    rdx,[rip+0xb54226]        # 0x1415e873c
+reference	language-name	0xa94030	0xa9463b	0x15e873c	 	lea    rdx,[rip+0xb540fa]        # 0x1415e873c
+reference	unit-identity	0x1330c30	0x1330e5d	0x15e90d8	, 	lea    rdx,[rip+0x2b8274]        # 0x1415e90d8
+reference	unit-identity	0x1330c30	0x1330f58	0x15e9718	""""	lea    rdx,[rip+0x2b87b9]        # 0x1415e9718
+reference	unit-identity	0x1330c30	0x1330fad	0x15e9718	""""	lea    rdx,[rip+0x2b8764]        # 0x1415e9718
+reference	unit-identity	0x1330c30	0x1330fc2	0x15e90d8	, 	lea    rdx,[rip+0x2b810f]        # 0x1415e90d8
+reference	unit-identity	0x1330c30	0x1331001	0x15e90d8	, 	lea    rdx,[rip+0x2b80d0]        # 0x1415e90d8
+reference	unit-identity	0x1330c30	0x133105d	0x15e90d8	, 	lea    rdx,[rip+0x2b8074]        # 0x1415e90d8
+reference	unit-identity	0x1330c30	0x13310b8	0x1615540	 (	lea    rdx,[rip+0x2e4481]        # 0x141615540
+reference	unit-identity	0x1330c30	0x13310f4	0x1782c58	Trained	lea    rdx,[rip+0x451b5d]        # 0x141782c58
+reference	unit-identity	0x1330c30	0x1331100	0x1782c78	-Trained-	lea    rdx,[rip+0x451b71]        # 0x141782c78
+reference	unit-identity	0x1330c30	0x133110c	0x1782c68	+Trained+	lea    rdx,[rip+0x451b55]        # 0x141782c68
+reference	unit-identity	0x1330c30	0x1331118	0x1782c90	*Trained*	lea    rdx,[rip+0x451b71]        # 0x141782c90
+reference	unit-identity	0x1330c30	0x133114c	0x1782c58	Trained	lea    rdx,[rip+0x451b05]        # 0x141782c58
+reference	unit-identity	0x1330c30	0x133119c	0x1782c58	Trained	lea    rdx,[rip+0x451ab5]        # 0x141782c58
+reference	unit-identity	0x1330c30	0x13311c8	0x1782c84	Tame	lea    rdx,[rip+0x451ab5]        # 0x141782c84
+reference	unit-identity	0x1330c30	0x13311d1	0x1782cb0	Semi-Wild	lea    rdx,[rip+0x451ad8]        # 0x141782cb0
+reference	unit-identity	0x1330c30	0x13311e9	0x1615580	)	lea    rdx,[rip+0x2e4390]        # 0x141615580

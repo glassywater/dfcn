@@ -17625,6 +17625,7 @@ Toggle the dump status of the item. Items are dumped in dumping zones.	切换物
 Toggle whether workshops can source materials from outside the burrow.	切换工坊是否可以从活动区外获取材料。	hj
 Vanilla mod description: The object definitions for shapes and colors.	形状和颜色的对象定义。	l
 We have a free room. Let me know and you can stay as long as you like.	我们有一间免费的客房。告诉我一声，你想住多久都行。	hP
+Workshop mood brood: "Leave me.  I need... things...  certain things."	“别烦我。我需要……东西……某些东西。”	l
 You emerged from the wilds and managed to prove yourself to the locals	你走出荒野，并成功向当地人证明了自己	al
 You have are seriously injured. View your status for more information.	你受了重伤。打开状态页查看详情。	hj
 Your industrious citizens will perform any task added to the Workshop.	[C:7:0:0]勤劳的居民会执行你添加到[C:6:0:0]工坊[C:7:0:0]中的各项任务。	hq
@@ -24786,6 +24787,7 @@ This task is highest priority among all tasks everywhere.	此任务在所有地�
 Traveling alone in the wilds?! You know better than that.	独自在荒野旅行？！你应该知道这有多危险。	hP
 Use minecart tracks in conjunction with the hauling menu.	矿车轨道须配合搬运菜单使用。	hj
 We have many drinks to choose from. [You receive a list.]	我们这儿酒水种类很多，你尽管挑。[你收到了一份清单。]	hP
+Workshop mood sketch: pictures of glass and burning wood.	画着玻璃和燃烧的木头。	l
 You are a newly-minted {s} of the great {n} in {n}, a {s}	你是一名新晋的{s}，隶属于伟大的{n}，居住在{n}（{s}）	atl
 You bring the poem to life with this flawless recitation.	你用完美无瑕的朗诵赋予了这首诗生命。	hP
 You can also access information from the Citizens button.	[C:7:0:0]也可以通过“[C:5:0:1]居民[C:7:0:0]”按钮查看这些信息。	hq
@@ -25703,6 +25705,7 @@ This event occurred on the {d}th Galena in the year {d}.	第{d2}年方铅矿月{
 This event occurred on the {d}th Timber in the year {d}.	第{d2}年林木月{d1}日发生了这件事。	wtl
 This work order is waiting for its next scheduled check.	此工单正在等待下一次定期检查。	hj
 What will you say about the conclusion of the agreement?	关于约定的结束，你想说些什么？	hP
+Workshop mood sketch: pictures of shining bars of metal.	画着闪耀的金属锭。	l
 Workshop recipe: material calcite/limestone/chalk/marble	方解石/石灰岩/白垩岩/大理石	l
 Written on the item is an untitled {s}, authored by {n}.	物品上写有{n1}撰写的无题{s1}。	ht
 You are hereby charged to retrieve {b} from {e} for {e}.	现命你为{e2}从{e1}取回{b1}。	hPt
@@ -26609,6 +26612,7 @@ This event occurred on the {d}st Slate in the year {d}.	第{d2}年板岩月{d1}�
 This event occurred on the {d}th Slate in the year {d}.	第{d2}年板岩月{d1}日发生了这件事。	wtl
 To change the camera's elevation, roll the mouse wheel.	[C:2:0:1]滚动鼠标滚轮[C:7:0:0]，可以改变视角所在的高度层。	hq
 To change the camera's elevation, roll the mouse wheel.	滚动鼠标滚轮可改变镜头的高度层。	l
+Workshop mood sketch: pictures of rough gems and glass.	画着粗糙宝石和玻璃。	l
 You already know the will of {p}. Let another day pass.	你已经知晓{p1}的意志。再等一天。	hPt
 You can limit work orders to a number of Workshops. You	你可以限定工作命令适用的工坊数量，也	wl
 You can't build a fire because you are dying of thirst.	你快渴死了，无法生火。	hP
@@ -31915,6 +31919,7 @@ This visitor has come . She was curious about {e}.	这位访客已经到来。�
 This work order has been validated by the manager.	此工单已由经理人批准。	hj
 Victory was spread among {c} winners in the wilds.	在荒野中，共有{c1}名参赛者共同获得了胜利。	ht
 Water might need to be pumped out or carried away.	可能需要把水抽出或运走。	l
+Workshop mood sketch: pictures of stacked leather.	画着堆叠的皮革。	l
 You already know the will of {p}. Let a week pass.	你已经知晓{p1}的意志。等上一周。	hPt
 You are a newly-minted {s} of the great {n} in {n}	你是一名新晋的{s}，隶属于伟大的{n}，居住在{n}	atl
 You are close. Follow your senses to the entrance.	你已经很近了。跟随感知，找到入口。	hq
@@ -34477,6 +34482,8 @@ Victory was spread among {c} winners within {p}.	在{p1}，共有{c1}名参赛�
 What will you say about the artifact's location?	关于造物的下落，你想说些什么？	hP
 What will you say about your plots and scheming?	关于你的阴谋与谋划，你想说些什么？	hP
 Work orders cannot be assigned to this building.	无法为此建筑分配工单。	hP
+Workshop mood sketch: pictures of square blocks.	画着方形砌块。	l
+Workshop mood sketch: pictures of stacked cloth.	画着堆叠的布料。	l
 World civilization trade status: Petty Annoyance	小小骚扰	l
 Would you please adopt this poor nameless child?	你愿意收养这个可怜的无名孩子吗？	hP
 You are hereby charged to retrieve {b} from {e}.	现命你从{e1}取回{b1}。	hPt
@@ -35743,6 +35750,7 @@ This dancer. How can I even describe the skill?	这位舞者的技艺，我简�
 This singer. How can I even describe the skill?	这位歌手的技艺，我简直不知该如何形容！	hP
 Victory was spread among {c} winners during {e}	在{e1}期间，共有{c1}名参赛者共同获得了胜利	ht
 Victory was spread among {c} winners within {p}	在{p1}，共有{c1}名参赛者共同获得了胜利	ht
+Workshop mood material: blocks... bricks......"	砖块……砌块……	l
 World site action: Belongs to your civilization	属于你的政权	hi
 You are hereby charged to retrieve {b} for {e}.	现命你为{e1}取回{b1}。	hPt
 You are in the middle of improvised music, {e}.	你正在以{e1}的形式即兴演奏。	hPt
@@ -38505,6 +38513,7 @@ While defeated, the former escaped unscathed.	前者虽被击败，却毫发无�
 While defeated, the latter escaped unscathed.	后者虽被击败，却毫发无伤地逃脱了。	h
 Wilderness irritation minimum (less = sooner)	荒野激怒值下限（越低越早来袭）
 Window is resizable (takes effect on restart)	窗口可调整大小 (重启后生效)	w
+Workshop mood sketch: pictures of rough gems.	画着粗糙宝石。	l
 Workshop recipe: kind tameable small creature	小型生物	l
 Workshop recipe: state folded sheet protector	用于保护折叠纸张	l
 Workshop recipe: state small object container	用于盛装小件物品	l
@@ -40027,6 +40036,7 @@ What will you say about how you are feeling?	关于你的感受，你想说些�
 What will you say about the peace agreement?	关于和平协议，你想说些什么？	hP
 While defeated, the latter escaped unscathed	后者虽被击败，却毫发无伤地逃脱了	h
 Workers cannot be assigned to this building.	无法为此建筑分配工人。	hP
+Workshop mood sketch: pictures of skeletons.	画着骷髅。	l
 Workshop recipe: format body substance state	由{s}构成	l
 Workshop recipe: state extract-bearing plant	含可提取物	l
 Workshop recipe: state processable (to vial)	可加工并装入小瓶	l
@@ -41438,6 +41448,12 @@ Victory was spread among {c} winners at {p}	在{p1}，共有{c1}名参赛者共�
 Victory was spread among {c} winners in {p}	在{p1}，共有{c1}名参赛者共同获得了胜利	ht
 Visitor overview purpose: seeking sanctuary	寻求庇护	hl
 What will you say about the new leadership?	关于新的领导者，你想说些什么？	hP
+Workshop mood material: cloth... thread..."	布料……线……	l
+Workshop mood material: gems... shining..."	宝石……闪耀……	l
+Workshop mood material: leather... skin..."	皮革……兽皮……	l
+Workshop mood sketch: pictures of a forest.	画着森林。	l
+Workshop mood sketch: pictures of a quarry.	画着采石场。	l
+Workshop mood sketch: pictures of cut gems.	画着切割宝石。	l
 Workshop recipe: kind extract-bearing plant	植物	l
 Workshop recipe: powder grinding receptacle	粉末研磨容器	l
 Workshop recipe: state extract-bearing fish	含可提取物	l
@@ -43023,6 +43039,8 @@ What would you like to name this timeline?	你想将这条时间线命名为什�
 Whatever happens, it will be for the best.	无论发生什么，都会是最好的安排。	hP
 Wilderness irritation decay (more = safer)	荒野激怒值衰减（越高越安全）
 With them comes a {s} from the {s} of {e}!	随军而来的还有一只{s1}，来自{e1}的{s2}！	hPt
+Workshop mood material: raw... crystal..."	粗坯……水晶……	l
+Workshop mood material: rough... color..."	粗糙……色彩……	l
 Workshop recipe: format material body part	由{s}构成的身体部位	l
 Workshop recipe: format quantity with unit	{d}{u}{s}	l
 Workshop recipe: kind extract-bearing fish	鱼	l
@@ -44722,6 +44740,10 @@ Visitor overview purpose separator: comma	、	hl
 What will you say about the insurrection?	关于这场起义，你想说些什么？	hP
 Who dares to enter my house? I curse you!	谁敢闯入我的居所？我诅咒你！	hP
 With them come monstrous siege engineers!	可怕的攻城巨兽也随军而来！	hP
+Workshop mood material: bars... metal..."	锭条……金属……	l
+Workshop mood material: bones...  yes..."	骨头……没错……	l
+Workshop mood material: stone... rock..."	石材……岩石……	l
+Workshop mood sketch: pictures of shells.	画着甲壳。	l
 Workshop recipe: body capability tannable	生皮	l
 Workshop recipe: format state -containing	装有{s}	l
 Workshop recipe: state offering placement	用于摆放供品	l
@@ -46418,6 +46440,13 @@ This. How can I even describe the skill?	这番技艺，叫我怎么形容才好
 Unit custom profession: Militia Comander	军事指挥官	l
 Verbally struggle against great distress	说出你与强烈苦恼的抗争	hP
 Visitor overview purpose: to slay beasts	猎杀野兽	hl
+Workshop mood brood: "Yes.  I need {s}."	“对。我需要{s}。”	l
+Workshop mood demand: "I must have {s}!"	“我必须得到{s}！”	l
+Workshop mood material: raw... clear..."	粗坯……透明……	l
+Workshop mood material: raw... green..."	粗坯……绿色……	l
+Workshop mood material: tree... life..."	树木……生命……	l
+Workshop mood sketch: pictures of death.	画着死亡。	l
+Workshop mood sketch: pictures of glass.	画着玻璃。	l
 Workshop recipe: format state -producing	可产出{s}	l
 Workshop recipe: state possibly buriable	可能可安葬	l
 Workshop recipe: state writing container	用于存放文字内容	l
@@ -49863,6 +49892,8 @@ What will you say about the abduction?	关于这次绑架，你想说些什么�
 What will you say about the agreement?	关于这项约定，你想说些什么？	hP
 What will you say about the structure?	关于这座建筑，你想说些什么？	hP
 Wilderness sensitivity (less = sooner)	荒野敏感度（越低越早来袭）
+Workshop mood requirement: "{s}" needs	“{s}”需要：	l
+Workshop mood working artifact: {s}...	{s}……	l
 Workshop recipe: body noun ivory/tooth	长牙或牙齿	l
 Workshop recipe: body substance strand	丝	l
 Workshop recipe: body substance wooden	木头	l
@@ -53601,6 +53632,7 @@ What will you say about your family?	关于你的家人，你想说些什么？	
 What will you say about your master?	关于你的师父，你想说些什么？	hP
 When used as a dye, it produces {v}.	用作染料时，它会染出{v1}。	hHt
 Who or what would you like to shoot?	你想射击谁或什么目标？	hP
+Workshop mood material: a corpse..."	尸体……	l
 Workshop recipe: body noun hair/wool	毛发或羊毛	l
 Workshop recipe: body substance silk	丝绸	l
 Workshop recipe: body substance yarn	纱线	l
@@ -55458,6 +55490,8 @@ We rent out a room for {d} a night.	我们有一间房出租，每晚{d1}。	hPt
 What is your identity's profession?	你所采用的身份从事什么职业？	wl
 What will you say about the rescue?	关于这次营救，你想说些什么？	hP
 Winter has arrived on the calendar.	按历法，已到冬季。	hP
+Workshop mood material: a shell..."	甲壳……	l
+Workshop mood sketch: pictures of .	图画。	l
 Workshop recipe: format -containing	装有{s1}的{s2}	l
 Workshop recipe: format exclude bin	{s}（不含储物箱）	l
 Workshop recipe: format join states	{s1}且{s2}	l
@@ -70580,6 +70614,7 @@ What do you want to aim for?	你想瞄准哪个部位？	hP
 What do you want to butcher?	你想屠宰什么？	hP
 What have you been scheming?	你在谋划什么？	hP
 Where is your identity from?	你所采用的身份来自哪里？	hP
+Workshop mood material: ..."	……	l
 Workshop recipe: meat boning	剔骨用具	l
 Workshop recipe: sarcophagus	华棺	l
 Workshop recipe: small rocks	小石子	l
@@ -92323,6 +92358,7 @@ younger half-sister	同父异母或同母异父的妹妹	wi
 {n} head-bumps {n}.	{n1}用头蹭了蹭{n2}。	hPt
 {n} imprisoned {n}.	{n1}囚禁了{n2}。	ht
 {n} imprisoned {p}.	{n1}囚禁了{p}。	ht
+{n} keeps muttering	{n1}不停地喃喃自语：	hPt
 {n} led the attack.	{n}率领进攻。	ht
 {n} looks horrible!	{n1}看起来糟透了！	hPt
 {n} ruled from {p}.	{n}以{p}为统治中心。	ht
@@ -123686,6 +123722,7 @@ youngest son	最小的儿子	h
 {n} is dead!	{n1}死了！	hPt
 {n} is dead.	{n1}已经死了。	hPt
 {n} retches.	{n1}干呕起来。	hPt
+{n} sketches	{n1}画着草图：	hPt
 {n} the {s},	{n}（{s}），	ht
 {n} unrolls.	{n1}舒展开身体。	hPt
 {n}, the god	{n}——神祇	atl
@@ -127550,9 +127587,11 @@ zesty green	鲜柠檬绿	wi
 {n} chings.	{n1}发出金属般的叮当声。	hPt
 {n} clicks.	{n1}发出咔哒声。	hPt
 {n} grunts.	{n1}哼叫。	hPt
+{n} mutters	{n1}喃喃自语：	hPt
 {n} pauses!	{n1}停顿了一下！	hPt
 {n} points!	{n1}伸手一指！	hPt
 {n} points.	{n1}伸手一指。	hPt
+{n} screams	{n1}尖叫：	hPt
 {n} the {s}	{n}（{s}）	ht
 {n} vomits.	{n1}呕吐了。	hPt
 {p} (enemy)	{p}（敌人）	ht
@@ -130750,6 +130789,7 @@ zombie {s}	僵尸{s1}	htv
 {e} to {p}	前往{p1}的{e1}	htEi
 {n} barks.	{n1}吠叫。	hPt
 {n} booms.	{n1}发出低沉的轰鸣声。	hPt
+{n} broods	{n1}阴沉地沉思：	hPt
 {n} of {p}	{p1}的{n1}	htN
 {n} purrs.	{n1}发出呼噜声。	hPt
 {n} routed	{n}击溃了	ht

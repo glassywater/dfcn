@@ -1,0 +1,339 @@
+producer	instruction_rva	literal_rva	source
+workshop-mood	0x181c74	0x15fbf50	This building has
+workshop-mood	0x181cd3	0x15fbf40	been claimed by
+workshop-mood	0x181d4c	0x15e3574	.
+workshop-mood	0x181f54	0x15fbf28	works furiously!
+workshop-mood	0x181fc2	0x15fbf18	keeps muttering
+workshop-mood	0x182064	0x15e77d0	...
+workshop-mood	0x1820d2	0x15fbf00	works secretly...
+workshop-mood	0x182140	0x15fbee0	works, darkly brooding...
+workshop-mood	0x1821ab	0x15fbec0	works with menacing fury!
+workshop-mood	0x1825c2	0x15e3720	 
+workshop-mood	0x18264e	0x15fbeb8	broods
+workshop-mood	0x1826e6	0x15fbea8	"""Yes.  I need "
+workshop-mood	0x182754	0x15fbe90	"""Leave me.  I need... "
+workshop-mood	0x1827bd	0x15fbe70	things...  certain things
+workshop-mood	0x1828bf	0x15fbe68	"."""
+workshop-mood	0x182902	0x15fbe60	screams
+workshop-mood	0x18296b	0x15fbe50	"""I must have "
+workshop-mood	0x182a4a	0x15fbe4c	"!"""
+workshop-mood	0x182aa9	0x15fc060	mutters
+workshop-mood	0x182b12	0x15e46fc	""""
+workshop-mood	0x182b89	0x15fc058	 needs
+workshop-mood	0x182c16	0x15fc048	bones...  yes
+workshop-mood	0x182c69	0x15fc040	a shell
+workshop-mood	0x182ca9	0x15fc030	a corpse
+workshop-mood	0x182d2c	0x15fc020	tree... life
+workshop-mood	0x182da9	0x15fc010	raw... green
+workshop-mood	0x182dec	0x15fc000	raw... clear
+workshop-mood	0x182e2c	0x15fbff0	raw... crystal
+workshop-mood	0x182e6c	0x15fbfe0	rough... color
+workshop-mood	0x182eaf	0x15fbfd0	stone... rock
+workshop-mood	0x182ef2	0x15fbfc0	bars... metal
+workshop-mood	0x182f35	0x15fbfb0	gems... shining
+workshop-mood	0x182f78	0x15fbf98	blocks... bricks...
+workshop-mood	0x182fb8	0x15fbf88	leather... skin
+workshop-mood	0x182ff8	0x15fbf78	cloth... thread
+workshop-mood	0x183036	0x15fc154	"..."""
+workshop-mood	0x183079	0x15fc148	sketches
+workshop-mood	0x1830e2	0x15fc138	pictures of 
+workshop-mood	0x183144	0x15fc128	skeletons
+workshop-mood	0x183197	0x15fc11c	shells
+workshop-mood	0x1831d7	0x15e8d48	death
+workshop-mood	0x18325a	0x15fc110	a forest
+workshop-mood	0x1832d7	0x15fc108	glass
+workshop-mood	0x18331a	0x15fc0f0	glass and burning wood
+workshop-mood	0x18335a	0x15fc0d8	rough gems and glass
+workshop-mood	0x18339a	0x15fc0c8	rough gems
+workshop-mood	0x1833dd	0x15fc0b8	a quarry
+workshop-mood	0x183420	0x15fc0a8	shining bars
+workshop-mood	0x183489	0x15fc098	of metal
+workshop-mood	0x1834cc	0x15fc088	cut gems
+workshop-mood	0x18350f	0x15fc078	square blocks
+workshop-mood	0x18354f	0x15fc068	stacked leather
+workshop-mood	0x18358f	0x15fc300	stacked cloth
+workshop-mood	0x1835cd	0x15e3574	.
+unit-identity-caption	0x132bdcd	0x15e40c4	, 
+unit-identity-caption	0x132bec8	0x15e46fc	""""
+unit-identity-caption	0x132bf1d	0x15e46fc	""""
+unit-identity-caption	0x132bf32	0x15e40c4	, 
+unit-identity-caption	0x132bf71	0x15e40c4	, 
+unit-identity-caption	0x132bfcd	0x15e40c4	, 
+unit-identity-caption	0x132c028	0x1610298	 (
+unit-identity-caption	0x132c064	0x177ca90	Trained
+unit-identity-caption	0x132c070	0x177ca80	-Trained-
+unit-identity-caption	0x132c07c	0x177c9e0	+Trained+
+unit-identity-caption	0x132c088	0x177c9d0	*Trained*
+unit-identity-caption	0x132c0bc	0x177ca90	Trained
+unit-identity-caption	0x132c10c	0x177ca90	Trained
+unit-identity-caption	0x132c138	0x177c9fc	Tame
+unit-identity-caption	0x132c141	0x177c9f0	Semi-Wild
+unit-identity-caption	0x132c159	0x16102d8	)
+language-name	0xa911bd	0x15e3720	 
+language-name	0xa91333	0x15e3720	 
+language-name	0xa9158f	0x15e3720	 
+language-name	0xa916bb	0x15e3720	 
+job-item-description	0xa7fda7	0x164517c	large
+job-item-description	0xa7fdb0	0x1645180	e
+job-item-description	0xa7fdb9	0x1681108	small
+job-item-description	0xa7fdc2	0x168110c	l
+job-item-description	0xa7fe0c	0x16c6848	grown 
+job-item-description	0xa7fee6	0x1677d30	logs
+job-item-description	0xa7ff58	0x16ca230	branch
+job-item-description	0xa7ff7d	0x16ca2d0	es
+job-item-description	0xa7ff9d	0x15fc0c8	rough gems
+job-item-description	0xa7ffb6	0x16ca2c0	raw green glass
+job-item-description	0xa7ffcf	0x16ca2b0	raw clear glass
+job-item-description	0xa7ffe8	0x16ca298	raw crystal glass
+job-item-description	0xa8000a	0x15fc0c8	rough gems
+job-item-description	0xa80028	0x16c70a4	rough 
+job-item-description	0xa800c7	0x1680d5c	small 
+job-item-description	0xa800de	0x1680d5c	small 
+job-item-description	0xa801be	0x16ca1fc	rock
+job-item-description	0xa801de	0x16ca1f0	small rock
+job-item-description	0xa80237	0x16ca1e0	stone boulders
+job-item-description	0xa8025d	0x16ca1d0	boulders
+job-item-description	0xa8033a	0x16ca188	bars
+job-item-description	0xa80353	0x16ca210	charcoal
+job-item-description	0xa80369	0x16ca204	coke
+job-item-description	0xa80372	0x16ca190	refined coal
+job-item-description	0xa8038b	0x16396f8	metal
+job-item-description	0xa8039a	0x16ca21c	 bars
+job-item-description	0xa8044a	0x16ca228	 wafers
+job-item-description	0xa80538	0x15fc088	cut gems
+job-item-description	0xa80551	0x16ca170	cut green glass gems
+job-item-description	0xa8056a	0x16ca158	cut clear glass gems
+job-item-description	0xa80580	0x16ca1b8	cut crystal glass gems
+job-item-description	0xa8059b	0x16ca1b0	gems
+job-item-description	0xa806d8	0x16ca1a8	blocks
+job-item-description	0xa806ef	0x16ca1a8	blocks
+job-item-description	0xa8079d	0x16ca13c	door
+job-item-description	0xa807a4	0x16ca1a0	portal
+job-item-description	0xa8081a	0x16ca130	floodgate
+job-item-description	0xa8088a	0x16ca120	hatch cover
+job-item-description	0xa808fa	0x16ca118	grate
+job-item-description	0xa8096a	0x162aa9c	table
+job-item-description	0xa809da	0x1637a60	cabinet
+job-item-description	0xa80a4a	0x1637a50	weapon rack
+job-item-description	0xa80aba	0x1637a40	armor stand
+job-item-description	0xa80b2a	0x16ca154	bin
+job-item-description	0xa80bd1	0x16ca150	box
+job-item-description	0xa80bea	0x16ca14c	e
+job-item-description	0xa80c13	0x16ca144	coffer
+job-item-description	0xa80c22	0x1637a68	chest
+job-item-description	0xa80c43	0x16caa88	boxe
+job-item-description	0xa80c58	0x15e4220	s
+job-item-description	0xa80c6c	0x16ca150	box
+job-item-description	0xa80ce4	0x16caa84	bag
+job-item-description	0xa80d7f	0x16caa78	backpack
+job-item-description	0xa80e3c	0x16caaa8	cast
+job-item-description	0xa80e48	0x16caa68	limb/body 
+job-item-description	0xa80e57	0x16caaa8	cast
+job-item-description	0xa80eb7	0x16caa68	limb/body 
+job-item-description	0xa80ec6	0x16caaa8	cast
+job-item-description	0xa80f36	0x16caaa0	splint
+job-item-description	0xa80fa0	0x16caa98	crutch
+job-item-description	0xa8103b	0x16caa90	quiver
+job-item-description	0xa810ba	0x16caa24	casket
+job-item-description	0xa81105	0x16caa18	sarcophag
+job-item-description	0xa81114	0x163d170	us
+job-item-description	0xa8111b	0x16bafec	i
+job-item-description	0xa81137	0x162a9ec	coffin
+job-item-description	0xa81254	0x16caa04	chain
+job-item-description	0xa81268	0x16caa0c	rope
+job-item-description	0xa813a8	0x16caa4c	vial
+job-item-description	0xa813b9	0x16caa44	flask
+job-item-description	0xa813d0	0x16caa58	waterskin
+job-item-description	0xa81479	0x16caa30	musical instrument
+job-item-description	0xa8155b	0x16ca9d0	unglazed 
+job-item-description	0xa816c3	0x15e3720	 
+job-item-description	0xa816dd	0x16bcee4	tool
+job-item-description	0xa8177d	0x16bcefc	toy
+job-item-description	0xa8182d	0x16ca9cc	cup
+job-item-description	0xa81861	0x16ca9c8	mug
+job-item-description	0xa8187b	0x16ca9c0	goblet
+job-item-description	0xa818eb	0x16ca9fc	window
+job-item-description	0xa8199a	0x16ca9e4	cage
+job-item-description	0xa819a1	0x16ca9f0	terrarium
+job-item-description	0xa81a15	0x16ca9dc	barrel
+job-item-description	0xa81a85	0x16ca98c	bucket
+job-item-description	0xa81af5	0x16ca980	animal trap
+job-item-description	0xa81b71	0x162aaa4	chair
+job-item-description	0xa81b8b	0x16ca974	throne
+job-item-description	0xa81c41	0x16ca970	web
+job-item-description	0xa81c8c	0x16ca9b8	strands
+job-item-description	0xa81cbf	0x16106b8	yarn
+job-item-description	0xa81cd0	0x16106a0	thread
+job-item-description	0xa81d45	0x16106a8	cloth
+job-item-description	0xa81e4f	0x16ca9ac	sheet
+job-item-description	0xa81e72	0x16ca9a0	tanned hide
+job-item-description	0xa81ed5	0x16ca994	totem
+job-item-description	0xa81f3e	0x16ca940	-bound 
+job-item-description	0xa81f5a	0x16ca92c	codex
+job-item-description	0xa81f61	0x16ca938	codices
+job-item-description	0xa81fe0	0x16ca920	figurine
+job-item-description	0xa81ffe	0x16ca968	rotten 
+job-item-description	0xa82023	0x164aac0	drink
+job-item-description	0xa82066	0x16ca968	rotten 
+job-item-description	0xa8224b	0x16ca960	filthy 
+job-item-description	0xa82264	0x16ca958	sticky 
+job-item-description	0xa82283	0x16ca948	vomitous 
+job-item-description	0xa8229f	0x16ca8ec	slimy 
+job-item-description	0xa822b8	0x16ab578	stagnant 
+job-item-description	0xa822d4	0x16ca8e4	dirty 
+job-item-description	0xa822f0	0x16ca8dc	gooey 
+job-item-description	0xa82309	0x16ca8d0	purulent 
+job-item-description	0xa82322	0x16ca910	ichorous 
+job-item-description	0xa8233b	0x16ca908	bloody 
+job-item-description	0xa8237a	0x16a1240	liquid
+job-item-description	0xa824bc	0x16ca8fc	 paste
+job-item-description	0xa82511	0x16ca8f4	glob
+job-item-description	0xa82712	0x16ca880	 laced with 
+job-item-description	0xa82786	0x15e40c4	, 
+job-item-description	0xa82796	0x15e40bc	 and 
+job-item-description	0xa827fb	0x16ca968	rotten 
+job-item-description	0xa82898	0x16ca870	 dye mix
+job-item-description	0xa828bc	0x16ca864	powder
+job-item-description	0xa82916	0x16ca968	rotten 
+job-item-description	0xa82938	0x16ca85c	cheese
+job-item-description	0xa829c0	0x16ca8c0	catapult parts
+job-item-description	0xa82a38	0x16ca8a8	bolt thrower parts
+job-item-description	0xa82ab0	0x16ca898	mechanisms
+job-item-description	0xa82b5f	0x16ca890	tube
+job-item-description	0xa82b79	0x16ca810	pipe section
+job-item-description	0xa82c17	0x16ca800	trap component
+job-item-description	0xa82c48	0x15e3720	 
+job-item-description	0xa82d2a	0x16ca7f0	ballista parts
+job-item-description	0xa82da2	0x16ca7e4	anvil
+job-item-description	0xa82e12	0x16ca854	amulet
+job-item-description	0xa82e82	0x16ca840	ballista arrow head
+job-item-description	0xa82f29	0x16ca830	siege ammo
+job-item-description	0xa83073	0x16ca820	ammunition
+job-item-description	0xa830eb	0x16cae98	scepter
+job-item-description	0xa8315b	0x16cae8c	crown
+job-item-description	0xa831c5	0x16cae84	coin
+job-item-description	0xa831e4	0x16cae78	perfect 
+job-item-description	0xa831f3	0x16455a8	large 
+job-item-description	0xa832db	0x16caec8	green glass 
+job-item-description	0xa832f1	0x16caeb8	clear glass 
+job-item-description	0xa83307	0x16caea8	crystal glass 
+job-item-description	0xa83323	0x16106fc	gem
+job-item-description	0xa833db	0x16caea0	 gem
+job-item-description	0xa834b6	0x16cae40	ring
+job-item-description	0xa83526	0x16cae38	earring
+job-item-description	0xa83596	0x16cae28	bracelet
+job-item-description	0xa83606	0x162aab0	bed
+job-item-description	0xa83676	0x16cae18	traction bench
+job-item-description	0xa836e6	0x16cae6c	quern
+job-item-description	0xa83756	0x16cae60	millstone
+job-item-description	0xa837c6	0x16cae54	statue
+job-item-description	0xa838d2	0x16cae48	memorial
+job-item-description	0xa838e6	0x16cad90	food imports sign
+job-item-description	0xa838fa	0x16cad78	clothing imports sign
+job-item-description	0xa8390e	0x16cad60	general imports sign
+job-item-description	0xa83922	0x16cad50	cloth shop sign
+job-item-description	0xa83936	0x16cae00	leather shop sign
+job-item-description	0xa8394a	0x16cade0	woven clothing shop sign
+job-item-description	0xa8395e	0x16cadc0	leather clothing shop sign
+job-item-description	0xa83972	0x16cada8	bone carver's shop sign
+job-item-description	0xa83986	0x16cacd8	gem cutter's shop sign
+job-item-description	0xa8399a	0x16cacc0	weaponsmith's shop sign
+job-item-description	0xa839ae	0x16caca8	bowyer's shop sign
+job-item-description	0xa839c2	0x16cac90	blacksmith's shop sign
+job-item-description	0xa839d6	0x16cad38	armorsmith's shop sign
+job-item-description	0xa839ea	0x16cad20	metal craft shop sign
+job-item-description	0xa839fe	0x16cad08	leather goods shop sign
+job-item-description	0xa83a12	0x16cacf0	carpenter's shop sign
+job-item-description	0xa83a26	0x16cac40	stone furniture shop sign
+job-item-description	0xa83a3a	0x16cac20	metal furniture shop sign
+job-item-description	0xa83a4e	0x16cac10	tavern sign
+job-item-description	0xa83a62	0x16cac04	slab
+job-item-description	0xa83a76	0x16cac04	slab
+job-item-description	0xa83a94	0x16ca968	rotten 
+job-item-description	0xa83aa9	0x16cac84	corpse
+job-item-description	0xa83ac7	0x16ca968	rotten 
+job-item-description	0xa83aeb	0x16106d0	tooth
+job-item-description	0xa83afc	0x16cac7c	teeth
+job-item-description	0xa83b11	0x16106c8	bone
+job-item-description	0xa83b29	0x16106c0	shell
+job-item-description	0xa83b41	0x16cac70	plant part
+job-item-description	0xa83b59	0x16cac60	silk body part
+job-item-description	0xa83b71	0x16cabb8	leather body part
+job-item-description	0xa83b89	0x16caba0	wooden body part
+job-item-description	0xa83ba3	0x16cab90	soap body part
+job-item-description	0xa83bbd	0x16106e8	horn
+job-item-description	0xa83bd7	0x16106e0	pearl
+job-item-description	0xa83bf1	0x16cab80	yarn body part
+job-item-description	0xa83c09	0x16cabf0	strand body part
+job-item-description	0xa83c12	0x167bdf0	body part
+job-item-description	0xa83c3b	0x16cabe8	Rotten 
+job-item-description	0xa83da2	0x1679ef8	remains
+job-item-description	0xa83e01	0x16cabdc	seeds
+job-item-description	0xa83e72	0x16cabd0	withered 
+job-item-description	0xa83ee6	0x16cab28	leaves and fruit
+job-item-description	0xa83ef7	0x16cab18	leaf or fruit
+job-item-description	0xa83f2a	0x16cabd0	withered 
+job-item-description	0xa83f7d	0x160fd14	plant
+job-item-description	0xa83f96	0x15e4220	s
+job-item-description	0xa83fbc	0x16ca968	rotten 
+job-item-description	0xa83fd4	0x16cab10	raw 
+job-item-description	0xa84155	0x15e40c4	, 
+job-item-description	0xa8416b	0x15e40c4	, 
+job-item-description	0xa84184	0x169c0e8	fish
+job-item-description	0xa841aa	0x16ca968	rotten 
+job-item-description	0xa842d1	0x15e3720	 
+job-item-description	0xa842e6	0x16cab0c	egg
+job-item-description	0xa8430c	0x16ca968	rotten 
+job-item-description	0xa8440b	0x169c0e8	fish
+job-item-description	0xa84428	0x16cab74	live 
+job-item-description	0xa84461	0x16cab60	small live animal
+job-item-description	0xa8447b	0x16cab54	tame 
+job-item-description	0xa84484	0x16cab40	small tame animal
+job-item-description	0xa8449b	0x16caad0	prepared meal
+job-item-description	0xa844b5	0x16ca968	rotten 
+job-item-description	0xa844ca	0x16caac0	preserved 
+job-item-description	0xa8458c	0x16caab8	 chops
+job-item-description	0xa8459d	0x16caab0	 chop
+job-item-description	0xa845d6	0x16cab04	meat
+job-item-description	0xa845f0	0x16cab04	meat
+job-item-description	0xa84682	0x16bce90	weapon
+job-item-description	0xa846bb	0x15e3720	 
+job-item-description	0xa847e7	0x16caaf0	suits of 
+job-item-description	0xa847f6	0x16bce88	armor
+job-item-description	0xa8485c	0x15e3720	 
+job-item-description	0xa84906	0x16caafc	chain 
+job-item-description	0xa84a15	0x1635604	right 
+job-item-description	0xa84a35	0x163560c	left 
+job-item-description	0xa84a7e	0x16caafc	chain 
+job-item-description	0xa84adf	0x15e3720	 
+job-item-description	0xa84af3	0x16caae0	handwear
+job-item-description	0xa84b97	0x16bce58	shield
+job-item-description	0xa84bb6	0x16cb2a0	/buckler
+job-item-description	0xa84bca	0x16cb2a0	/buckler
+job-item-description	0xa84d07	0x15e3720	 
+job-item-description	0xa84d37	0x16cb290	footwear
+job-item-description	0xa84e28	0x16cb280	headwear
+job-item-description	0xa84e6c	0x15e3720	 
+job-item-description	0xa84f28	0x16cb278	legwear
+job-item-description	0xa84fac	0x15e3720	 
+job-item-description	0xa850c6	0x15f7fb0	item
+job-item-description	0xa850f7	0x1616f6c	 [
+job-item-description	0xa85117	0x15f8664	]
+material-name	0x14cc8f7	0x160fd14	plant
+material-name	0x14cc919	0x16106b8	yarn
+material-name	0x14cc941	0x16106a8	cloth
+material-name	0x14cc961	0x16106b0	silk
+material-name	0x14cc981	0x16106c8	bone
+material-name	0x14cc9a1	0x1610690	leather
+material-name	0x14cc9c1	0x16106c0	shell
+material-name	0x14cc9e3	0x16106d8	soap
+material-name	0x14cca05	0x1782aa0	ivory/tooth
+material-name	0x14cca27	0x16106e8	horn
+material-name	0x14cca49	0x16106e0	pearl
+material-name	0x14cca78	0x1610698	wood
+material-name	0x14cca7f	0x169c26c	wooden
+material-name	0x14ccbd5	0x15e8b58	's 
+material-name	0x14ccc69	0x15e3720	 
+material-name	0x14cccba	0x1782ab0	unknown material
+material-capitalized-name	0x14cc778	0x1677310	NP
+material-capitalized-name	0x14cc7c2	0x167730c	STP

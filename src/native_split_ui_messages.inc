@@ -122,9 +122,246 @@ void Overlay::append_native_split_ui_messages(std::vector<std::string> &screen_r
             return append_bounded_paragraph(std::move(rows), *target,
                 screen_rows, result, only_y, right, right, target_colors, false, left);
         };
+        // The complete decompiled mood producer has five working branches
+        // and four waiting branches. Its addst calls split names, quotes,
+        // material hints and punctuation, with metal sketches and corpse
+        // brooding using an extra row. Own each complete production before
+        // generic words or identities can claim one of those fragments.
+        const auto append_workshop_mood = [&](const NativeDrawnTextRow &first) {
+            const auto at = [&](int x, int y) -> const NativeDrawnTextRow * {
+                const auto found = positions.find({x, y});
+                return found == positions.end() ? nullptr : found->second;
+            };
+            struct MoodStatus {
+                std::string_view source;
+                uintptr_t writer = 0;
+            };
+            std::array<MoodStatus, 5> working{{
+                {"works furiously!"}, {"works secretly..."}, {"keeps muttering"},
+                {"works, darkly brooding..."}, {"works with menacing fury!"}}};
+            std::array<MoodStatus, 4> waiting{{
+                {"screams"}, {"sketches"}, {"mutters"}, {"broods"}}};
+            uintptr_t working_person = 0, waiting_person = 0;
+#ifdef _WIN32
+            const uintptr_t base = native_history_profile_base();
+            if (!base) return false;
+            // Return addresses of the original addst calls; the native PE
+            // profile maps these same producers for Steam and Classic.
+            working_person = native_pe_address(base, 0x181f40);
+            waiting_person = native_pe_address(base, 0x182631);
+            working[0].writer = native_pe_address(base, 0x181ff3);
+            working[1].writer = native_pe_address(base, 0x182171);
+            working[2].writer = native_pe_address(base, 0x182061);
+            working[3].writer = native_pe_address(base, 0x1821df);
+            working[4].writer = native_pe_address(base, 0x18224a);
+            waiting[0].writer = native_pe_address(base, 0x1829a1);
+            waiting[1].writer = native_pe_address(base, 0x183118);
+            waiting[2].writer = native_pe_address(base, 0x182b48);
+            waiting[3].writer = native_pe_address(base, 0x1826ed);
+#endif
+            const auto owned_by = [](const NativeDrawnTextRow &draw, uintptr_t writer) {
+#ifdef _WIN32
+                return writer && draw.native_caller == writer;
+#else
+                return !writer || draw.native_caller == writer;
+#endif
+            };
+            const NativeDrawnTextRow *person = at(first.x, first.y + 5);
+            const NativeDrawnTextRow *status = person ? at(person->x +
+                static_cast<int>(person->source.size()) + 1, person->y) : nullptr;
+            bool is_working = false;
+            const MoodStatus *branch = nullptr;
+            if (person && status && owned_by(*person, waiting_person))
+                for (const auto &candidate : waiting)
+                    if (trim_view(status->source) == candidate.source &&
+                            owned_by(*status, candidate.writer)) branch = &candidate;
+            if (!branch) {
+                person = at(first.x + 2, first.y + 5);
+                status = at(first.x, first.y + 6);
+                if (person && status && owned_by(*person, working_person))
+                    for (const auto &candidate : working)
+                        if (trim_view(status->source) == candidate.source &&
+                                owned_by(*status, candidate.writer)) branch = &candidate;
+                is_working = true;
+            }
+            if (!branch) return false;
+
+            std::vector<Match> rows;
+            const auto append_draw = [&](const NativeDrawnTextRow *draw) {
+                if (!draw) return false;
+                auto part = current_draw(*draw);
+                if (!part) return false;
+                if (!rows.empty() && rows.back().y == part->y) {
+                    auto &row = rows.back();
+                    const int end = row.x + row.length;
+                    if (part->x < end || !trim_view(std::string_view(screen_rows[row.y])
+                            .substr(end, part->x - end)).empty()) return false;
+                    row.length = part->x + part->length - row.x;
+                    row.source = screen_rows[row.y].substr(row.x, row.length);
+                } else {
+                    if (!rows.empty() && part->y != rows.back().y + 1) return false;
+                    rows.push_back(std::move(*part));
+                }
+                return true;
+            };
+            const auto append_literal = [&](int x, int y, std::string_view source) {
+                const auto *draw = at(x, y);
+                return draw && draw->source == source && append_draw(draw);
+            };
+            if (!append_draw(person) || !append_draw(status)) return false;
+            if (!is_working && screen_rows[person->y][person->x + person->source.size()] != ' ')
+                return false;
+            int rule_index = -1;
+            for (int probe_index : ui_message_anchors_.candidates(
+                    compact_ui_message_literal(status->source))) {
+                const auto &probe = ui_message_template_probes_[probe_index];
+                if (rules_[static_cast<size_t>(probe.index)].source ==
+                        "{n} " + std::string(branch->source)) {
+                    rule_index = probe.index;
+                    break;
+                }
+            }
+            if (rule_index < 0) return false;
+            auto unit = person->unit_identity_target;
+            if (!unit || unit->empty()) unit = translate_ui_message_capture(person->source, true);
+            if (!unit || unit->empty()) return false;
+            const std::vector<std::string> captures{person->source};
+            const std::vector<std::optional<std::string>> resolved{unit};
+            const std::string speaker = fill_template(rules_[static_cast<size_t>(rule_index)],
+                captures, nullptr, nullptr, &resolved);
+            if (speaker.empty()) return false;
+            std::string target = speaker;
+            std::vector<std::pair<std::string, int>> body;
+            const auto translated_template = [&](std::string_view key, std::string_view value)
+                    -> std::optional<std::string> {
+                auto text = exact_literal_translation(key);
+                if (!text) return std::nullopt;
+                const size_t placeholder = text->find("{s}");
+                if (placeholder == std::string::npos ||
+                        text->find("{s}", placeholder + 3) != std::string::npos)
+                    return std::nullopt;
+                text->replace(placeholder, 3, value);
+                return text;
+            };
+            const auto append_body = [&](const std::optional<std::string> &text,
+                    const NativeDrawnTextRow &color_draw) {
+                if (!text || text->empty()) return false;
+                const auto part = current_draw(color_draw);
+                if (!part) return false;
+                body.emplace_back(*text, foregrounds(*part).front());
+                target += '\n' + *text;
+                return true;
+            };
+            const int body_y = first.y + (is_working ? 7 : 6);
+            if (is_working) {
+                if (branch->source == "keeps muttering") {
+                    const auto *artifact = at(first.x, body_y);
+                    if (!append_draw(artifact) || !append_literal(first.x +
+                            static_cast<int>(artifact->source.size()), body_y, "...")) return false;
+                    const auto creation = translate_legends_artifact_identity(artifact->source);
+                    if (!creation || !append_body(translated_template(
+                            "Workshop mood working artifact: {s}...", *creation), *artifact)) return false;
+                }
+            } else if (branch->source == "screams" || branch->source == "broods") {
+                const auto *quote = at(first.x, body_y);
+                if (!quote) return false;
+                if (branch->source == "broods" && quote->source == "\"Leave me.  I need... ") {
+                    constexpr std::string_view continuation = "things...  certain things";
+                    if (!append_draw(quote) || !append_literal(first.x, body_y + 1, continuation) ||
+                            !append_literal(first.x + static_cast<int>(continuation.size()),
+                                body_y + 1, ".\"")) return false;
+                    if (!append_body(exact_literal_translation(
+                            "Workshop mood brood: \"Leave me.  I need... things...  certain things.\""),
+                            *quote)) return false;
+                } else {
+                    const bool screams = branch->source == "screams";
+                    const std::string_view prefix = screams ? "\"I must have " : "\"Yes.  I need ";
+                    const std::string_view suffix = screams ? "!\"" : ".\"";
+                    if (quote->source != prefix || !append_draw(quote)) return false;
+                    const auto *item = at(first.x + static_cast<int>(prefix.size()), body_y);
+                    if (!append_draw(item) || !append_literal(item->x +
+                            static_cast<int>(item->source.size()), body_y, suffix)) return false;
+                    // Both branches call the native job-item formatter,
+                    // also used for recipe and work-order requirements.
+                    const auto requirement = translate_workshop_recipe_source(item->source);
+                    if (!requirement || !append_body(translated_template(screams
+                            ? "Workshop mood demand: \"I must have {s}!\""
+                            : "Workshop mood brood: \"Yes.  I need {s}.\"", *requirement), *item))
+                        return false;
+                }
+            } else if (branch->source == "mutters") {
+                const auto *artifact = at(first.x + 1, body_y);
+                if (!append_literal(first.x, body_y, "\"") || !append_draw(artifact) ||
+                        !append_literal(artifact->x + static_cast<int>(artifact->source.size()),
+                            body_y, " needs")) return false;
+                const auto creation = translate_legends_artifact_identity(artifact->source);
+                if (!creation || !append_body(translated_template(
+                        "Workshop mood requirement: \"{s}\" needs", *creation), *artifact)) return false;
+                const auto *material = at(first.x, body_y + 1);
+                if (!material || !append_draw(material)) return false;
+                std::string hint = material->source;
+                // The default switch branch draws only the closing quote.
+                if (hint != "...\"") {
+                    if (!append_literal(first.x + static_cast<int>(hint.size()),
+                            body_y + 1, "...\"")) return false;
+                    hint += "...\"";
+                }
+                if (!append_body(exact_literal_translation("Workshop mood material: " + hint),
+                        *material)) return false;
+            } else if (branch->source == "sketches") {
+                constexpr std::string_view prefix = "pictures of ";
+                if (!append_literal(first.x, body_y, prefix)) return false;
+                const auto *hint = at(first.x + static_cast<int>(prefix.size()), body_y);
+                if (!hint || !append_draw(hint)) return false;
+                std::string source(prefix);
+                source += hint->source;
+                if (hint->source == "shining bars") {
+                    constexpr std::string_view continuation = "of metal";
+                    if (!append_literal(first.x, body_y + 1, continuation) ||
+                            !append_literal(first.x + static_cast<int>(continuation.size()),
+                                body_y + 1, ".")) return false;
+                    source += " of metal.";
+                } else if (hint->source != ".") {
+                    if (!append_literal(hint->x + static_cast<int>(hint->source.size()),
+                            body_y, ".")) return false;
+                    source += '.';
+                }
+                if (!append_body(exact_literal_translation("Workshop mood sketch: " + source),
+                        *hint)) return false;
+            }
+            int right = first.x;
+            for (const auto &row : rows) right = std::max(right, row.x + row.length);
+            const NativePanelBorders borders(*gps_);
+            const SDL_Rect source_box{first.x, rows.front().y,
+                right - first.x, rows.back().y - rows.front().y + 1};
+            if (const auto panel = native_building_record_panel(borders, *gps_, source_box))
+                right = std::max(right, panel->x + panel->w - (first.x - panel->x));
+            std::vector<int> target_colors;
+            const auto color_text = [&](std::string_view text, int color) {
+                std::vector<uint32_t> codepoints;
+                if (decode_utf8(std::string(text), codepoints))
+                    target_colors.insert(target_colors.end(), codepoints.size(), color);
+            };
+            const auto &speaker_rule = rules_[static_cast<size_t>(rule_index)];
+            const int person_color = foregrounds(*current_draw(*person)).front();
+            const int status_color = foregrounds(*current_draw(*status)).front();
+            if (speaker_rule.target_template_literals.size() == 2 &&
+                    speaker_rule.target_capture_order.size() == 1 &&
+                    speaker_rule.target_capture_order.front() == 0) {
+                color_text(speaker_rule.target_template_literals.front(), status_color);
+                color_text(*unit, person_color);
+                color_text(speaker_rule.target_template_literals.back(), status_color);
+            } else {
+                color_text(speaker, person_color);
+            }
+            for (const auto &[text, color] : body) color_text('\n' + text, color);
+            return append_bounded_paragraph(std::move(rows), target,
+                screen_rows, result, only_y, right, right, target_colors, false, first.x);
+        };
         // The workshop's mood branch uses fixed addst rows, not a wrapped
         // paragraph: introduction at y/y+2, full unit identity at y+3,
-        // then its short name at x+2/y+5 and work status at x/y+6.
+        // then its working name at x+2/y+5 and status at x/y+6, or its
+        // waiting name and verb together at x/y+5 with the demand below.
         // These offsets belong to the native writer (53.16 PE 0x181ce4;
         // classic 0x181c74), independently of the translated name's width.
         // Own both complete records before the ordinary identity reader can
@@ -153,22 +390,7 @@ void Overlay::append_native_split_ui_messages(std::vector<std::string> &screen_r
             for (int index : rules->second)
                 if (append_workshop_record({*heading, *bridge, body}, person, index, heading->x)) break;
 
-            const auto worker_at = positions.find({first.x + 2, first.y + 5});
-            const auto status_at = positions.find({first.x, first.y + 6});
-            if (worker_at == positions.end() || status_at == positions.end()) continue;
-            const auto worker = current_draw(*worker_at->second);
-            const auto status = current_draw(*status_at->second);
-            if (!worker || !status) continue;
-            const auto compact = compact_ui_message_literal(status->source);
-            for (int probe_index : ui_message_anchors_.candidates(compact)) {
-                const auto &probe = ui_message_template_probes_[probe_index];
-                const Rule &rule = rules_[static_cast<size_t>(probe.index)];
-                if (rule.template_kinds.size() != 1 || rule.template_kinds.front() != 'n' ||
-                        rule.template_literals.size() != 2 || !probe.prefix.empty() ||
-                        probe.suffix != compact) continue;
-                if (append_workshop_record({*worker, *status}, *worker_at->second,
-                        probe.index, heading->x)) break;
-            }
+            append_workshop_mood(first);
         }
         for (const auto &first : draws) {
             const auto rules = prefixes.find(std::string(trim_view(first.source)));
