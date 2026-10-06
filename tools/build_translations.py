@@ -383,13 +383,18 @@ def parse_help_documents(path: Path, inventory: Path) -> list[Entry]:
         visible_target = re.sub(r"\[C:[0-7]:[0-7]:[01]\]", "", target)
         if "[C:" in visible_target or not visible_target.strip():
             raise ValueError(f"{path}:{line_no}: invalid help color tag or empty visible translation")
-        template = bool(re.search(r"\{[perdk]\}", source))
+        # This native divine production inserts an inorganic material noun,
+        # not a place/entity name. Its runtime resolver owns this one s slot.
+        kinds = "persdk" if source == (
+            "The remnants of creation, {s}, belong with my followers, {e}."
+        ) else "perdk"
+        template = bool(re.search(rf"\{{[{kinds}]\}}", source))
         if len(fields) == 3 and not template:
             raise ValueError(f"{path}:{line_no}: help template flag without captures")
         if "{" in source or "}" in source or "{" in target or "}" in target:
-            if not template or re.search(r"[{}]", re.sub(r"\{[perdk]\}", "", source)):
+            if not template or re.search(r"[{}]", re.sub(rf"\{{[{kinds}]\}}", "", source)):
                 raise ValueError(f"{path}:{line_no}: invalid help name/place template: {source!r}")
-            if re.search(r"[{}]", re.sub(r"\{[perdk](?:[1-9][0-9]*)?\}", "", target)):
+            if re.search(r"[{}]", re.sub(rf"\{{[{kinds}](?:[1-9][0-9]*)?\}}", "", target)):
                 raise ValueError(f"{path}:{line_no}: invalid help target captures: {target!r}")
             # Reuse shared capture indexing: every dynamic person/place must
             # survive Chinese word reordering exactly once.
@@ -1131,6 +1136,9 @@ def parse_literal_rulesets(root: Path) -> list[Entry]:
             "health/contaminant.toml",
             "creatures/name/raw_names.toml",
             "items/wood/raw_names.toml",
+            # Grown wood resolves timber adjectives to the source plant only
+            # in that item grammar; ordinary wood keeps its material meaning.
+            "items/grown.toml",
             "materials/woven_plant.toml",
             "activities.toml",
         }:

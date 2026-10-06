@@ -15,6 +15,10 @@
                 const auto *cell = cell_at(x, y, &top);
                 help_rows[y][x] = cell && cell[0] ? static_cast<char>(cell[0]) : ' ';
             }
+        // Okay modals also admit complete quoted divine guidance. This raw
+        // read must keep the live markup popup's prior ownership; otherwise
+        // its help fragments produce a second, differently inset paragraph.
+        mask_announcement_popup(help_rows);
         const auto claim_source = [&](int x, int y, int length) {
             std::fill_n(help_rows[y].begin() + x, length, ' ');
             std::fill_n(screen_rows[y].begin() + x, length, ' ');

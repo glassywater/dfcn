@@ -1,11 +1,11 @@
 // Native IDs and flag bits select these templates; no displayed text is read.
 case 0: { // war_attacked_site, including both generals and mercenary clauses
-    auto attacker = subject(NativeHistoryObjectKind::Entity, number("attacker"));
+    auto attacker = polity_subject(number("attacker"));
     auto defender = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
     auto site = subject(NativeHistoryObjectKind::Site, number("site"));
     if (!attacker || !defender || !site) return std::nullopt;
     if (number("site_civ") != number("defender_civ")) {
-        auto civ = subject(NativeHistoryObjectKind::Entity, number("defender_civ"));
+        auto civ = polity_subject(number("defender_civ"));
         if (!civ) return std::nullopt;
         defender = apply("{p} of {p}", {*defender, *civ});
         if (!defender) return std::nullopt;
@@ -55,11 +55,11 @@ case 2: { // created_site
         builder = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
         if (!builder) return std::nullopt;
         if (number("civ") != -1) {
-            auto civ = subject(NativeHistoryObjectKind::Entity, number("civ"));
+            auto civ = polity_subject(number("civ"));
             if (!civ) return std::nullopt;
             builder = apply("{p} of {p}", {*builder, *civ});
         }
-    } else builder = subject(NativeHistoryObjectKind::Entity, number("civ"));
+    } else builder = polity_subject(number("civ"));
     if (!builder) return std::nullopt;
     std::string key;
     if (number("site_type") == 10 && number("site_subtype") == 1)
@@ -82,9 +82,8 @@ case 2: { // created_site
 }
 case 1: // war_destroyed_site
 case 24: { // hf_destroyed_site
-    auto attacker = subject(event.native_type == 1 ?
-        NativeHistoryObjectKind::Entity : NativeHistoryObjectKind::Figure,
-        number("attacker"));
+    auto attacker = event.native_type == 1 ? polity_subject(number("attacker")) :
+        subject(NativeHistoryObjectKind::Figure, number("attacker"));
     auto site = subject(NativeHistoryObjectKind::Site, number("site"));
     if (!attacker || !site) return std::nullopt;
     std::optional<Pieces> action;
@@ -95,7 +94,7 @@ case 24: { // hf_destroyed_site
         auto defender = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
         if (!defender) return std::nullopt;
         if (number("site_civ") != number("defender_civ")) {
-            auto civ = subject(NativeHistoryObjectKind::Entity, number("defender_civ"));
+            auto civ = polity_subject(number("defender_civ"));
             if (!civ) return std::nullopt;
             defender = apply("{p} of {p}", {*defender, *civ});
             if (!defender) return std::nullopt;
@@ -323,11 +322,11 @@ case 23: { // reclaim_site
         actor = subject(NativeHistoryObjectKind::Entity, site_civ_id);
         if (!actor) return std::nullopt;
         if (civ_id != -1) {
-            auto civ = subject(NativeHistoryObjectKind::Entity, civ_id);
+            auto civ = polity_subject(civ_id);
             if (!civ) return std::nullopt;
             actor = apply("{p} of {p}", {*actor, *civ});
         }
-    } else actor = subject(NativeHistoryObjectKind::Entity, civ_id);
+    } else actor = polity_subject(civ_id);
     if (!actor) return std::nullopt;
     // IS_UNRETIRE is the questionable-judgment branch, not an expedition.
     auto action = apply((number("flags") & 1) != 0 ?
@@ -348,7 +347,7 @@ case 25: { // site_died
     } else if (number("civ") == number("site_civ")) {
         action = apply("{a} and their settlement of {p} withered", {*entity, *site});
     } else {
-        auto civ = subject(NativeHistoryObjectKind::Entity, number("civ"));
+        auto civ = polity_subject(number("civ"));
         if (!civ) return std::nullopt;
         action = apply("{a} and {a} settlement of {p} withered", {*entity, *civ, *site});
     }
@@ -359,7 +358,7 @@ case 25: { // site_died
 }
 case 26: { // site_retired
     auto entity = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
-    auto civ = subject(NativeHistoryObjectKind::Entity, number("civ"));
+    auto civ = polity_subject(number("civ"));
     auto site = subject(NativeHistoryObjectKind::Site, number("site"));
     if (!entity || !civ || !site) return std::nullopt;
     // This formatter always includes both entity names, even if equal.
@@ -691,11 +690,11 @@ case 31: { // replaced_building
         actor = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
         if (!actor) return std::nullopt;
         if (number("civ") != -1) {
-            auto civ = subject(NativeHistoryObjectKind::Entity, number("civ"));
+            auto civ = polity_subject(number("civ"));
             if (!civ) return std::nullopt;
             actor = apply("{p} of {p}", {*actor, *civ});
         }
-    } else actor = subject(NativeHistoryObjectKind::Entity, number("civ"));
+    } else actor = polity_subject(number("civ"));
     auto former = structure(number("site"), number("old_structure"));
     auto replacement = structure(number("site"), number("new_structure"));
     auto site = subject(NativeHistoryObjectKind::Site, number("site"));
@@ -767,23 +766,31 @@ case 30: { // created_building
         actor = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
         if (!actor) return std::nullopt;
         if (number("civ") != -1) {
-            auto civ = subject(NativeHistoryObjectKind::Entity, number("civ"));
+            auto civ = polity_subject(number("civ"));
             if (!civ) return std::nullopt;
             actor = apply("{p} of {p}", {*actor, *civ});
         }
-    } else actor = subject(NativeHistoryObjectKind::Entity, number("civ"));
+    } else actor = polity_subject(number("civ"));
     auto building = structure(number("site"), number("structure"));
     auto site = subject(NativeHistoryObjectKind::Site, number("site"));
     if (!actor || !building || !site) return std::nullopt;
-    const char *key = structure_type(number("site"), number("structure")) == 7 ?
+    const bool underworld_spire = structure_type(number("site"), number("structure")) == 7;
+    const char *key = underworld_spire ?
         "thrust a spire of slade up from the underworld, naming it {p}, and established a gateway between worlds" :
-        (number("flags") & 1) ? "rebuilt {p}" : "constructed {p}";
-    auto creation = apply(key, {*building});
-    auto place = apply("in {p}", {*site});
-    if (!creation || !place) return std::nullopt;
+        (number("flags") & 1) ? "rebuilt {p} in {p}" : "constructed {p} in {p}";
+    // Keep the location inside the predicate so the Chinese template can
+    // place it before the verb while retaining the building/site links.
+    std::vector<Pieces> arguments{*building};
+    if (!underworld_spire) arguments.push_back(*site);
+    auto creation = apply(key, arguments);
+    if (!creation) return std::nullopt;
     join(result, *actor);
     join(result, *creation);
-    append_clause(result, *place);
+    if (underworld_spire) {
+        auto place = apply("in {p}", {*site});
+        if (!place) return std::nullopt;
+        append_clause(result, *place);
+    }
     translated = true;
     break;
 }

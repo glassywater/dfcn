@@ -180,9 +180,14 @@ void Overlay::append_embark_civilization_rows(std::vector<std::string> &rows,
                 break;
             }
         } else if (!memory_source_only || original) {
-            target = exact_literal_translation(source);
+            const bool civilization_name = rule == kEmbarkCivilizationNameRule && !site_gloss;
+            if (civilization_name || rule == kEmbarkCivilizationDetailRule)
+                target = translate_civilization_reference(source);
+            if (!target) target = exact_literal_translation(source);
             if (!target && site_gloss) target = translate_legends_name(source, false);
-            if (!target) target = translate_procedural_fragment(source);
+            if (!target) target = translate_procedural_fragment(source, false, false, {},
+                civilization_name ? ProceduralFragmentContext::civilization_name
+                                  : ProceduralFragmentContext::general_text);
             if (!target && config_.compositional_rules) target = translate_compositional(source);
         }
         if (target && (target->empty() || target->find("[C:") != std::string::npos ||

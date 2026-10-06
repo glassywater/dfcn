@@ -1,3 +1,94 @@
+// Classic map authorization and the later roster reader ask the same grammar
+// about complete skills and identities. Reuse only those translation results
+// within one matching pass; every reader still proves its current source bytes,
+// layer, portrait and column bounds independently.
+class FortressRosterTranslationScope {
+    struct View {
+        const graphicst *graphics;
+        const unsigned char *screen, *screen_top;
+        int dimx, dimy;
+        bool top_in_use;
+        uint64_t read_revision, capture_epoch, identity_revision;
+        bool operator==(const View &) const = default;
+    };
+    const graphicst *graphics_;
+    FortressRosterTranslationScope *previous_;
+    bool enabled_ = false;
+    std::optional<View> view_;
+    std::unordered_map<std::string, std::optional<std::vector<RatedSkillSpan>>> skills_;
+    std::unordered_map<std::string, std::optional<std::string>> text_;
+    // The stack owns all nontrivial storage, so this TLS pointer cannot pin
+    // the reloadable core after a completed match pass.
+    inline static thread_local FortressRosterTranslationScope *active_ = nullptr;
+
+    View current_view() const {
+        return {graphics_, graphics_->screen, graphics_->screen_top,
+            graphics_->dimx, graphics_->dimy, bool(graphics_->top_in_use),
+            NativeUiReadScope::read_revision,
+            g_embark_item_capture_epoch.load(std::memory_order_acquire),
+            g_native_unit_identity_revision.load(std::memory_order_acquire)};
+    }
+    View refresh() {
+        const View current = current_view();
+        if (!view_ || *view_ != current) {
+            skills_.clear();
+            text_.clear();
+            view_ = current;
+        }
+        return current;
+    }
+public:
+    enum class TextKind : char {
+        Profession, TypedProfession, TypedIdentity, ProceduralIdentity
+    };
+    explicit FortressRosterTranslationScope(const graphicst *graphics)
+        : graphics_(graphics), previous_(active_) {
+        enabled_ = graphics && native_ui_classic().value_or(false);
+        active_ = this;
+    }
+    ~FortressRosterTranslationScope() { active_ = previous_; }
+    FortressRosterTranslationScope(const FortressRosterTranslationScope &) = delete;
+    FortressRosterTranslationScope &operator=(const FortressRosterTranslationScope &) = delete;
+
+    template <typename Translate>
+    static std::optional<std::vector<RatedSkillSpan>> skills(
+            std::string_view source, Translate &&translate) {
+        auto *scope = active_;
+        // Budgeted native callbacks retain their own work accounting and must
+        // not publish a deadline-dependent miss into this pure-result cache.
+        if (!scope || !scope->enabled_ || active_translation_work) return translate();
+        const View view = scope->refresh();
+        const std::string key(source);
+        if (const auto found = scope->skills_.find(key); found != scope->skills_.end())
+            return found->second;
+        auto result = translate();
+        if (scope == active_ && view == scope->current_view())
+            scope->skills_.emplace(key, result);
+        return result;
+    }
+    template <typename Translate>
+    static std::optional<std::string> text(TextKind kind,
+            std::string_view source, Translate &&translate) {
+        auto *scope = active_;
+        if (!scope || !scope->enabled_ || active_translation_work) return translate();
+        const View view = scope->refresh();
+        // The view's registry revision includes complete and nested authored
+        // name bindings. Separate the native formatter's rendering context
+        // too; no spelling guess or cached Match owner supplies this key.
+        std::string key(1, static_cast<char>(kind));
+        key.push_back(native_unit_identity_rendering() ? '\1' : '\0');
+        const size_t length = source.size();
+        key.append(reinterpret_cast<const char *>(&length), sizeof(length));
+        key.append(source);
+        if (const auto found = scope->text_.find(key); found != scope->text_.end())
+            return found->second;
+        auto result = translate();
+        if (scope == active_ && view == scope->current_view())
+            scope->text_.emplace(std::move(key), result);
+        return result;
+    }
+};
+
 // The fortress-wide resident table uses its complete four-tab band.
 // Work-detail captions retain their own typed widget/object ownership.
 struct FortressLaborBand {
@@ -67,8 +158,7 @@ static std::optional<std::pair<int, int>> fortress_standing_order_text_span(
         const graphicst &gps, int first, int last, int y) {
     if (const auto button = native_button_text_span(gps, first, last, y))
         return button;
-    const auto settings = native_ui_settings();
-    const bool classic = settings && settings->classic;
+    const bool classic = native_ui_classic().value_or(false);
     const auto &buttons = native_texture_button_main(gps);
     const int32_t (*skins[])[3] = {
         native_texture_button_rectangle(gps),
@@ -195,8 +285,16 @@ static std::optional<int32_t> fortress_labor_classic_caption_skin(
 
 void Overlay::append_fortress_labor_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
-    const auto settings = native_ui_settings();
-    const bool classic = settings && settings->classic;
+    const auto rated_skills = [&](std::string_view source) {
+        return FortressRosterTranslationScope::skills(source,
+            [&] { return translate_rated_skill_list(source); });
+    };
+    const auto procedural_identity = [&](const std::string &source) {
+        return FortressRosterTranslationScope::text(
+            FortressRosterTranslationScope::TextKind::ProceduralIdentity, source,
+            [&] { return translate_procedural_fragment(source); });
+    };
+    const bool classic = native_ui_classic().value_or(false);
     const auto captures = captured_clipped_captions();
     const auto draws = captured_native_drawn_text_rows();
     const auto top_draws = captured_native_drawn_text_rows(true);
@@ -582,7 +680,7 @@ void Overlay::append_fortress_labor_rows(std::vector<std::string> &rows,
                     break;
                 }
             const std::string normalized = normalize_utterance(source);
-            const auto skill = translate_rated_skill_list(normalized);
+            const auto skill = rated_skills(normalized);
             if (!skill || skill->size() != 1) continue;
             int end = std::min(right, draw.x + static_cast<int>(draw.source.size()));
             if (draw.draw_clip) {
@@ -670,7 +768,7 @@ void Overlay::append_fortress_labor_rows(std::vector<std::string> &rows,
             }
             field.normalized = normalize_utterance(source);
             if (field.x > left) {
-                const auto skill = translate_rated_skill_list(field.normalized);
+                const auto skill = rated_skills(field.normalized);
                 if (skill && skill->size() == 1) {
                     field.skill = true;
                     field.target = skill->front().target;
@@ -732,21 +830,23 @@ void Overlay::append_fortress_labor_rows(std::vector<std::string> &rows,
                     const auto role = identity_fields.size() == 2 &&
                         identity_fields.back()->identity_target
                         ? identity_fields.back()->identity_target
-                        : translate_unit_profession(profession);
+                        : FortressRosterTranslationScope::text(
+                            FortressRosterTranslationScope::TextKind::Profession, profession,
+                            [&] { return translate_unit_profession(profession); });
                     if (role)
                         target = *first_field->identity_target + "，" + *role;
                 }
             }
         }
         if (!target && !complete.empty())
-            target = translate_procedural_fragment(complete);
+            target = procedural_identity(complete);
         if (!target && sources.size() >= 2 && sources[0].find(',') == std::string::npos) {
             // The narrow native roster puts the profession on the next row
             // without an inline comma. Only identity fields participate;
             // skills remain in their own native column and rows.
             std::string separated = complete;
             separated.insert(sources[0].size(), ",");
-            target = translate_procedural_fragment(separated);
+            target = procedural_identity(separated);
         }
         const bool translated_identity = target && contains_cjk_utf8(*target);
         bool first_identity = true;

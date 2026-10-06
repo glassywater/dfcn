@@ -335,6 +335,12 @@ std::optional<std::string> Overlay::translate_item_description_term(
                         designation.prefix + *item + designation.suffix) : std::nullopt;
                 }
             }
+            // Grown wood names identify their plant before the object. Resolve
+            // those two typed slots before the generic grown-{s} prose wrapper
+            // can prepend its adjective to an already translated timber name.
+            if (!predicate && template_literal_at(value, 0, "grown ", true))
+                if (auto target = translate_item_caption_grammar(value);
+                    translation_complete_with_native_nicknames(target, value)) return target;
             // The native copy branch (PE 53.16 0xc656d3..0xc6570a) emits a
             // complete written title followed by this annotation, then returns
             // before material/type description. Establish its book semantics

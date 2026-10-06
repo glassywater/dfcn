@@ -80,7 +80,7 @@ public:
     std::optional<std::string> title(std::string_view source) const {
         if (!loaded_) return std::nullopt;
         Part p = title_part(source);
-        if (!p.known) return std::nullopt;
+        if (!p.known || !p.complete) return std::nullopt;
         return p.text;
     }
 
@@ -333,6 +333,8 @@ private:
         std::string line;
         bool header = false;
         std::size_t number = 0;
+        std::unordered_map<std::string, std::size_t> columns;
+        std::size_t column_count = 0;
         while (std::getline(in, line)) {
             ++number;
             if (!line.empty() && line.back() == '\r') line.pop_back();
@@ -340,25 +342,46 @@ private:
             if (trim(line).empty() || trim(line).front() == '#') continue;
             auto row = fields(line);
             if (!header) {
-                const std::vector<std::string> expected = {"english", "kind", "category",
-                    "state", "sense", "family", "core", "modifier", "head", "action", "agent",
-                    "compact", "balanced", "notes"};
-                if (row != expected) {
-                    error_ = "Invalid character-surname-lexicon.tsv header";
-                    return false;
+                // Name senses keep their original columns when optional
+                // authored forms or metadata are added. Resolve by column
+                // name so that schema evolution cannot disable every actor
+                // name and consequently retain entire historical events.
+                for (std::size_t index = 0; index < row.size(); ++index) {
+                    const std::string column(key(row[index]));
+                    if (column.empty() || !columns.emplace(column, index).second) {
+                        error_ = "Invalid character-surname-lexicon.tsv header";
+                        return false;
+                    }
                 }
+                for (const auto *required : {"english", "kind", "category", "state", "sense",
+                        "family", "core", "modifier", "head", "action", "agent"}) {
+                    if (!columns.contains(required)) {
+                        error_ = "Missing character-surname-lexicon.tsv column: " +
+                            std::string(required);
+                        return false;
+                    }
+                }
+                column_count = row.size();
                 header = true;
                 continue;
             }
-            if (row.size() < 14 || key(row[0]).empty() || trim(row[4]).empty() || trim(row[6]).empty()) {
+            if (row.size() < column_count) {
                 error_ = "Invalid character-surname-lexicon.tsv row " + std::to_string(number);
                 return false;
             }
-            std::string sense = sense_key(key(row[0]), kinds(labels(row[1])), labels(row[2]),
-                key(row[3]), trim(row[4]));
-            SurnameEntry entry{std::string(trim(row[6])), std::string(trim(row[7])),
-                std::string(trim(row[8])), std::string(trim(row[9])), std::string(trim(row[10])),
-                std::string(trim(row[11])), std::string(trim(row[12])), labels(row[5])};
+            const auto value = [&](const char *column) -> std::string_view {
+                const auto found = columns.find(column);
+                return found == columns.end() ? std::string_view{} : trim(row[found->second]);
+            };
+            if (key(value("english")).empty() || value("sense").empty() || value("core").empty()) {
+                error_ = "Invalid character-surname-lexicon.tsv row " + std::to_string(number);
+                return false;
+            }
+            std::string sense = sense_key(key(value("english")), kinds(labels(value("kind"))),
+                labels(value("category")), key(value("state")), value("sense"));
+            SurnameEntry entry{std::string(value("core")), std::string(value("modifier")),
+                std::string(value("head")), std::string(value("action")), std::string(value("agent")),
+                std::string(value("compact")), std::string(value("balanced")), labels(value("family"))};
             auto found = out.find(sense);
             if (found == out.end()) out.emplace(std::move(sense), std::move(entry));
             else if (std::tie(entry.core, entry.modifier, entry.head, entry.action, entry.agent,
@@ -1481,6 +1504,14 @@ private:
         }
         Part p = std::move(lexical);
         if (p.known) return surname_part(source);
+        // A typed name can consist only of a spaced English title, without
+        // a given name or leading article. Keep proven native given names
+        // above, then require the complete modifier/head phrase before
+        // guessing that its first word is an unknown personal given name.
+        if (source.find_first_of(" \t\r\n") != std::string_view::npos) {
+            Part title = phrase(source);
+            if (title.known && title.complete) return title;
+        }
         // An unknown given name may precede a reliably split compound surname.
         // Two ordinary separated English words do not establish this structure.
         for (std::size_t cut = 1; cut < source.size(); ++cut) {

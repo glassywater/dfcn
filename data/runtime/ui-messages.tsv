@@ -97,6 +97,14 @@ This furniture is a part of multiple rooms.	此家具属于多个房间。
 This furniture is a part of	此家具属于：
 This is the resting place of {n}.	这里是{n1}的安息之所。
 
+# Claimed workshops: the native writer splits these complete records into
+# fixed rows and draws the claimant's period separately (PE 0x181ce4).
+This building has been claimed by {n}.	此建筑已被{n1}占用。
+{n} works secretly...	{n1}正在秘密工作……
+{n} works furiously!	{n1}正在疯狂地工作！
+{n} works, darkly brooding...	{n1}一边阴森地沉思，一边工作……
+{n} works with menacing fury!	{n1}正带着骇人的狂怒工作！
+
 # Objects: all four tabs, inventoried in data/extracted/ui-message-sources.tsv. These are
 # separate complete native draws, not fragments to merge across blank rows.
 # Artifacts.
@@ -147,6 +155,11 @@ Assigned to {e}, position {d}	已分配至{e}，位置{d}
 # Location access, religious recognition, agreements and petitions.
 Only members can visit (if guild established)	仅成员可以到访（行会成立后）。
 Citizens and long-term residents only	仅限公民和长期居民。
+# Hospital requirement: the native renderer joins the live position title
+# into one sentence; narrow panels use the shorter complete form.
+# Sources: data/extracted/fortress-location-detail/{reference,classic}-render.asm.
+You need to assign a {s} to utilize a hospital.	你需要任命一名{s}，才能使用医院。
+You need a {s}.	你需要一名{s}。
 You can recognize a priesthood once this is a temple.	此处成为神殿后，即可认可祭司团。
 You can recognize a high priest when this is a temple complex.	此处成为神殿建筑群后，即可认可高阶祭司。
 Only organized religions can have recognized priesthoods.	只有有组织的宗教才能获得祭司团认可。
@@ -216,7 +229,7 @@ Left click for recenter and expand options. Right click to dismiss.	左键点击
 You can learn more about this visitor after they chat with a local.	这位访客与当地居民交谈后，你就能了解更多关于他们的信息。
 You can look at trade information once you have a broker with appraisal skill.	任命一名拥有估价技能的交易员后，即可查看贸易信息。
 This land has no important leaders.	这片领地没有重要领袖。
-Cannot raid your civilization	无法突袭自己的文明。
+Cannot raid your civilization	无法突袭自己的政权。
 Cannot make request without leader	没有领袖，无法提出请求。
 No workers available	没有可用的工人。
 Click to request workers	点击请求派遣工人。
@@ -224,7 +237,7 @@ Inaccessible mission location	无法抵达任务地点。
 Cannot order mission without leader	没有领袖，无法下达任务。
 Click to explore this site (creates new mission)	点击探索此地点（创建新任务）。
 Click to contact/raid this site (creates new mission)	点击联系或突袭此地点（创建新任务）。
-Need civilization military leader	需要文明的军事领袖。
+Need civilization military leader	需要政权的军事领袖。
 Need military leader	需要军事领袖。
 No requestable workers	没有可以请求派遣的工人。
 Cannot communicate	无法联系。
@@ -235,6 +248,67 @@ You can recenter on the locations of the announcements. You may also toggle paus
 No recent announcements.	最近没有公告。
 You do not have an official capable of handling these matters.	你没有能够处理这些事务的官员。
 Do you approve this request?	是否批准此请求？
+# Accepted construction petitions: complete native detail fields. Location
+# names, wealth and agreement dates remain separate typed captures, including
+# title/value draws on consecutive rows. PE literals include the CP437 sun.
+Accepted petition:	已批准的申请：
+The associated zones must have enough value. ({d}\x0F)	关联区域的总价值需达到{d1}☼。
+Current temple location:	当前神殿地点：
+Current top temple location:	当前等级最高的神殿地点：
+Current guildhall location:	当前行会大厅地点：
+Current top guildhall location:	当前等级最高的行会大厅地点：
+Current temple location: {e}, {d}\x0F	当前神殿地点：{e1}，{d1}☼
+Current top temple location: {e}, {d}\x0F	当前等级最高的神殿地点：{e1}，{d1}☼
+Current guildhall location: {e}, {d}\x0F	当前行会大厅地点：{e1}，{d1}☼
+Current top guildhall location: {e}, {d}\x0F	当前等级最高的行会大厅地点：{e1}，{d1}☼
+Agreement date: {d}st Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日
+Agreement date: {d}nd Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日
+Agreement date: {d}rd Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日
+Agreement date: {d}th Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日
+Agreement date: {d}st Slate, {d}	协议日期：第{d2}年板岩月{d1}日
+Agreement date: {d}nd Slate, {d}	协议日期：第{d2}年板岩月{d1}日
+Agreement date: {d}rd Slate, {d}	协议日期：第{d2}年板岩月{d1}日
+Agreement date: {d}th Slate, {d}	协议日期：第{d2}年板岩月{d1}日
+Agreement date: {d}st Felsite, {d}	协议日期：第{d2}年霏细岩月{d1}日
+Agreement date: {d}nd Felsite, {d}	协议日期：第{d2}年霏细岩月{d1}日
+Agreement date: {d}rd Felsite, {d}	协议日期：第{d2}年霏细岩月{d1}日
+Agreement date: {d}th Felsite, {d}	协议日期：第{d2}年霏细岩月{d1}日
+Agreement date: {d}st Hematite, {d}	协议日期：第{d2}年赤铁矿月{d1}日
+Agreement date: {d}nd Hematite, {d}	协议日期：第{d2}年赤铁矿月{d1}日
+Agreement date: {d}rd Hematite, {d}	协议日期：第{d2}年赤铁矿月{d1}日
+Agreement date: {d}th Hematite, {d}	协议日期：第{d2}年赤铁矿月{d1}日
+Agreement date: {d}st Malachite, {d}	协议日期：第{d2}年孔雀石月{d1}日
+Agreement date: {d}nd Malachite, {d}	协议日期：第{d2}年孔雀石月{d1}日
+Agreement date: {d}rd Malachite, {d}	协议日期：第{d2}年孔雀石月{d1}日
+Agreement date: {d}th Malachite, {d}	协议日期：第{d2}年孔雀石月{d1}日
+Agreement date: {d}st Galena, {d}	协议日期：第{d2}年方铅矿月{d1}日
+Agreement date: {d}nd Galena, {d}	协议日期：第{d2}年方铅矿月{d1}日
+Agreement date: {d}rd Galena, {d}	协议日期：第{d2}年方铅矿月{d1}日
+Agreement date: {d}th Galena, {d}	协议日期：第{d2}年方铅矿月{d1}日
+Agreement date: {d}st Limestone, {d}	协议日期：第{d2}年石灰岩月{d1}日
+Agreement date: {d}nd Limestone, {d}	协议日期：第{d2}年石灰岩月{d1}日
+Agreement date: {d}rd Limestone, {d}	协议日期：第{d2}年石灰岩月{d1}日
+Agreement date: {d}th Limestone, {d}	协议日期：第{d2}年石灰岩月{d1}日
+Agreement date: {d}st Sandstone, {d}	协议日期：第{d2}年砂岩月{d1}日
+Agreement date: {d}nd Sandstone, {d}	协议日期：第{d2}年砂岩月{d1}日
+Agreement date: {d}rd Sandstone, {d}	协议日期：第{d2}年砂岩月{d1}日
+Agreement date: {d}th Sandstone, {d}	协议日期：第{d2}年砂岩月{d1}日
+Agreement date: {d}st Timber, {d}	协议日期：第{d2}年林木月{d1}日
+Agreement date: {d}nd Timber, {d}	协议日期：第{d2}年林木月{d1}日
+Agreement date: {d}rd Timber, {d}	协议日期：第{d2}年林木月{d1}日
+Agreement date: {d}th Timber, {d}	协议日期：第{d2}年林木月{d1}日
+Agreement date: {d}st Moonstone, {d}	协议日期：第{d2}年月光石月{d1}日
+Agreement date: {d}nd Moonstone, {d}	协议日期：第{d2}年月光石月{d1}日
+Agreement date: {d}rd Moonstone, {d}	协议日期：第{d2}年月光石月{d1}日
+Agreement date: {d}th Moonstone, {d}	协议日期：第{d2}年月光石月{d1}日
+Agreement date: {d}st Opal, {d}	协议日期：第{d2}年蛋白石月{d1}日
+Agreement date: {d}nd Opal, {d}	协议日期：第{d2}年蛋白石月{d1}日
+Agreement date: {d}rd Opal, {d}	协议日期：第{d2}年蛋白石月{d1}日
+Agreement date: {d}th Opal, {d}	协议日期：第{d2}年蛋白石月{d1}日
+Agreement date: {d}st Obsidian, {d}	协议日期：第{d2}年黑曜石月{d1}日
+Agreement date: {d}nd Obsidian, {d}	协议日期：第{d2}年黑曜石月{d1}日
+Agreement date: {d}rd Obsidian, {d}	协议日期：第{d2}年黑曜石月{d1}日
+Agreement date: {d}th Obsidian, {d}	协议日期：第{d2}年黑曜石月{d1}日
 # Petitions renderer: all branches from the native Windows 53.16 function,
 # including its separate addst records, not only the visitor-residency page.
 # Names stay in their existing typed grammar; guild occupations use the full
@@ -806,6 +880,7 @@ Click to view all news and rumors	点击查看所有消息和传闻。
 No reports available	没有可查看的报告。
 Click to rescue (creates new mission)	点击营救（创建新任务）。
 Click to recover (creates new mission)	点击取回（创建新任务）。
+Claimed by your local government	你所在地区的政府宣称拥有
 Claimed by local family	当地家族宣称拥有
 No fullscreen resolutions detected.	未检测到可用的全屏分辨率。
 There is no specific information for this activity.	此活动没有具体信息。
@@ -849,9 +924,10 @@ Click in the play area to paint the burrow.	在游戏区域中点击，涂画活
 Auto-dumping is not required.	不必设置自动倾倒。
 Set the draw direction below.	在下方设置升起方向。
 Select another rectangle to continue.	选择另一个矩形以继续。
-# Room creation feedback is a complete message; matching only the room name
-# leaves the success suffix in English.
+# Singular room creation feedback is a complete message; matching only the
+# room name leaves the success suffix in English.
 Bedroom created.	卧室已创建。
+Dormitory created.	公共宿舍已创建。
 # Room selection joins the furniture name to a rejection reason (Windows
 # native string data near file offset 0x162EFF3). Match the complete warning
 # before the unrelated psychological sense of "rejected".
@@ -2062,7 +2138,7 @@ What will you say about the end of the insurrection?	关于起义结束，你想
 What will you say about the group?	关于这个势力，你想说些什么？
 What will you say about the site's foundation?	关于此地的建立，你想说些什么？
 Tell a story about a region	讲述一个地区的故事
-Tell a story about a civilization or organization	讲述一个文明或组织的故事
+Tell a story about a civilization or organization	讲述一个政权或组织的故事
 Give a sermon concerning a deity or object of worship	发表关于神祇或崇拜对象的布道
 Give a sermon concerning a cosmic principle	发表关于宇宙原理的布道
 Give a sermon inveighing against a value	发表反对某种价值观的布道
@@ -2643,11 +2719,11 @@ Throwing a tantrum!	正在大发脾气！
 Sunk into depression...	陷入了抑郁……
 Stumbling obliviously!	浑浑噩噩地踉跄而行！
 Corrupt Soldier Mood: {d}	异常的军人情绪：{d}
-Has a horrible fell look!	露出可怕而凶险的神情！
-Brooding darkly...	阴郁地沉思着……
-Has the aspect of one fey!	显出神秘的神情！
-Peculiarly secretive...	异常地遮遮掩掩……
-Possessed by unknown forces!	被不明力量附身了！
+Has a horrible fell look!	显出可怕而残暴的神情！
+Brooding darkly...	阴森地沉思……
+Has the aspect of one fey!	显出古怪的神态！
+Peculiarly secretive...	变得异常诡秘……
+Possessed by unknown forces!	被未知力量附身！
 Stricken by melancholy...	陷入了忧郁……
 Crawling around babbling!	胡言乱语地四处爬行！
 Running around babbling!	胡言乱语地四处奔跑！
@@ -2655,7 +2731,7 @@ Crawling around crazed!	发疯般四处爬行！
 Running around crazed!	发疯般四处奔跑！
 In a berserk rage!	陷入了狂暴！
 Staring off into space...	茫然地盯着空处……
-Corrupt Strange Mood: {d}	异常的怪异心情：{d}
+Corrupt Strange Mood: {d}	奇异心境数据异常：{d}
 Overcome by terror!	被恐惧压垮了！
 In emotional shock!	受到了强烈的情绪冲击！
 Overwhelmed by horror!	被恐怖笼罩了！
@@ -2694,7 +2770,7 @@ Emotionally overloaded!	情绪不堪重负！
 {p}: Again on behalf of the Merchants' Guild, let me bid farewell to you and your stout dwarves.	{p}：请允许我再次代表商人行会，向你和你健壮的矮人族人道别。
 {p}: On behalf of the Merchants' Guild, let me extend greetings to your people. There is much to discuss.	{p}：请允许我代表商人行会，向你们的族人致以问候。我们有许多事要谈。
 {p}: I don't know very much about the outside world. I wish I had more to tell you.	{p}：我对外面的世界所知不多。真希望能告诉你更多消息。
-{p}: There is much to share... (Information added to Civilizations/World Info)	{p}：有许多消息要分享……（信息已添加至文明／世界信息）
+{p}: There is much to share... (Information added to Civilizations/World Info)	{p}：有许多消息要分享……（信息已添加至政权／世界信息）
 {p}: The world is the same as ever.	{p}：世界一如往常。
 {p}: Peace is calling out to us. How do you respond?	{p}：和平正在呼唤我们。你们如何回应？
 {p}: It's such a pleasant place you've carved out for yourselves...	{p}：你们开辟的这片家园真是宜人……
@@ -2775,10 +2851,10 @@ LACK OF RIVERS	缺少河流
 TOO MANY REGIONS	区域过多
 LACK OF MOUNTAIN CAVES	缺少山地洞穴
 LACK OF LOW-LYING CAVES	缺少低地洞穴
-UNABLE TO PLACE ENOUGH CIVILIZATIONS	无法放置足够的文明
-NO CIVILIZATIONS AVAILABLE	没有可用的文明
-UNABLE TO PLACE CONTROLLABLE CIVILIZATION	无法放置可操控文明
-FARMING CIVILIZATION PLACED WITHOUT CROPS	已放置的农耕文明没有作物
+UNABLE TO PLACE ENOUGH CIVILIZATIONS	无法放置足够的政权
+NO CIVILIZATIONS AVAILABLE	没有可用的政权
+UNABLE TO PLACE CONTROLLABLE CIVILIZATION	无法放置可操控政权
+FARMING CIVILIZATION PLACED WITHOUT CROPS	已放置的农耕政权没有作物
 The world generator is having trouble placing enough mountain peaks.  You might want to check your maximum elevation value and other elevation parameters.  Can the elevation 400 be placed enough times to provide space for your peaks?  Alternatively, you can reduce the number of peaks required by the parameters.	世界生成器无法放置足够的山峰。请检查最高海拔值及其他海拔参数。海拔 400 的方格是否足以容纳所需山峰？也可以减少参数要求的山峰数量。
 The world generator is having trouble placing enough mountain peaks.  You might want to check your preset elevations for the elevation 400.  You must have at least as many of these highest elevation points as you are requiring peaks.  Alternatively, you can reduce the number of peaks required by the parameters.	世界生成器无法放置足够的山峰。请检查预设中海拔 400 的分布。最高海拔点的数量至少应与所需山峰数相同。也可以减少参数要求的山峰数量。
 The world generator is having trouble placing enough mid-level elevations.  Can your parameters achieve elevations between 100 and 299?  You might want to adjust the parameters governing elevation frequencies.  Alternatively, you can reduce the number of mid-level elevation squares required.	世界生成器无法放置足够的中等海拔方格。这些参数能否产生 100 至 299 的海拔？请调整控制海拔分布频率的参数。也可以减少所需的中等海拔方格数量。
@@ -2804,10 +2880,10 @@ The world generator is having trouble placing rivers.  Make sure your parameters
 The world generator is placing too many subregions.  Make sure your parameters and presets aren't so variable that biomes change frequently.  Alternatively, you can increase the number of subregions permitted by the parameters, up to the cap.	世界生成器产生了过多子区域。请避免参数和预设变化过大，以免生物群系频繁改变。也可以在上限范围内提高允许的子区域数量。
 The world generator is having trouble placing mountain caves.  Make sure your parameters and presets allow as many border mountain squares as you are requiring mountain caves.  Alternatively, you can reduce the number of mountain caves required by the parameters.	世界生成器无法放置山地洞穴。请确保参数和预设提供的边缘山地方格不少于所需山地洞穴数量。也可以减少参数要求的山地洞穴数量。
 The world generator is having trouble placing low-lying caves.  Make sure your parameters and presets allow as many mid-elevation squares as you are requiring low-lying caves.  Alternatively, you can reduce the number of non-mountain caves required by the parameters.	世界生成器无法放置低地洞穴。请确保参数和预设提供的中等海拔方格不少于所需低地洞穴数量。也可以减少参数要求的非山地洞穴数量。
-The world generator is having trouble placing enough civilizations.  Make sure your parameters and presets offer enough low-to-mid savagery, evil/good appropriate, biome appropriate squares to establish sites.  High savagery (66+) blocks civilization placement -- make sure your parameters and presets offer at least small pockets of low-to-mid savagery areas.  If you have very few biome types and are placing good or evil regions, they'll often crowd out the civilizations as well.  Alternatively, you can reduce the number of civilizations required by the parameters.	世界生成器无法放置足够的文明。请确保参数和预设提供足够的中低野性、善恶属性与生物群系均合适的方格来建立地点。高野性（66 以上）会阻止文明落位；请确保至少存在少量中低野性区域。若生物群系种类过少，善良或邪恶区域也常会挤占文明的空间。也可以减少参数要求的文明数量。
-The world generator couldn't find any civilization definitions.  This problem cannot be resolved by continuing, so you should either abort or skip all rejects for a legends-only game.  	世界生成器找不到任何文明定义。继续生成无法解决此问题；请中止，或忽略所有拒绝以生成仅限传说模式的世界。
-The world generator is having trouble placing a controllable civilization.  Dwarves, for example, require non-evil, non-good, unsavage mountain squares that aren't surrounded by the ocean.  Make sure your parameters and presets have adequate squares of this kind.  Alternatively, you can remove the requirement of a controllable civilization from the parameters, which will restrict you to adventurers (assuming an appropriate civilization is placed).	世界生成器无法放置可操控文明。例如，矮人需要既非善良也非邪恶、非野蛮且不被海洋包围的山地方格。请确保参数和预设提供足够的此类方格。也可以取消参数中的可操控文明要求；这样将只能使用冒险者，前提是存在合适的文明。
-The world generator is having trouble placing farming civilizations.  Civilizations use available plants in their surroundings as their initial crops.  Make sure your parameters and raw objects have adequate vegetation.  	世界生成器无法放置农耕文明。文明会使用周边可用植物作为初始作物。请确保参数和原始对象提供足够的植被。
+The world generator is having trouble placing enough civilizations.  Make sure your parameters and presets offer enough low-to-mid savagery, evil/good appropriate, biome appropriate squares to establish sites.  High savagery (66+) blocks civilization placement -- make sure your parameters and presets offer at least small pockets of low-to-mid savagery areas.  If you have very few biome types and are placing good or evil regions, they'll often crowd out the civilizations as well.  Alternatively, you can reduce the number of civilizations required by the parameters.	世界生成器无法放置足够的政权。请确保参数和预设提供足够的中低野性、善恶属性与生物群系均合适的方格来建立地点。高野性（66 以上）会阻止政权落位；请确保至少存在少量中低野性区域。若生物群系种类过少，善良或邪恶区域也常会挤占政权的空间。也可以减少参数要求的政权数量。
+The world generator couldn't find any civilization definitions.  This problem cannot be resolved by continuing, so you should either abort or skip all rejects for a legends-only game.  	世界生成器找不到任何政权定义。继续生成无法解决此问题；请中止，或忽略所有拒绝以生成仅限传说模式的世界。
+The world generator is having trouble placing a controllable civilization.  Dwarves, for example, require non-evil, non-good, unsavage mountain squares that aren't surrounded by the ocean.  Make sure your parameters and presets have adequate squares of this kind.  Alternatively, you can remove the requirement of a controllable civilization from the parameters, which will restrict you to adventurers (assuming an appropriate civilization is placed).	世界生成器无法放置可操控政权。例如，矮人需要既非善良也非邪恶、非野蛮且不被海洋包围的山地方格。请确保参数和预设提供足够的此类方格。也可以取消参数中的可操控政权要求；这样将只能使用冒险者，前提是存在合适的政权。
+The world generator is having trouble placing farming civilizations.  Civilizations use available plants in their surroundings as their initial crops.  Make sure your parameters and raw objects have adequate vegetation.  	世界生成器无法放置农耕政权。政权会使用周边可用植物作为初始作物。请确保参数和原始对象提供足够的植被。
 CONTINUE until you give me another warning.	继续生成，直到再次出现警告。
 ABORT NOW and I'll look over my parameters.	立即中止，我要检查参数。
 ALLOW THIS REJECTION TYPE and continue reporting others.	允许此类拒绝，并继续报告其他问题。

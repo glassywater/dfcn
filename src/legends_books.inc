@@ -99,6 +99,8 @@ std::optional<LegendsWrittenHeading> Overlay::resolve_legends_written_heading(
 
 std::optional<std::string> Overlay::translate_legends_detail_heading(
         std::string_view source) const {
+    if (auto civilization = translate_civilization_reference(source))
+        return civilization;
     if (auto figure = translate_legends_unnamed_figure(source)) return figure;
     if (legends_unnamed_region_heading(source))
         return exact_literal_translation(source);

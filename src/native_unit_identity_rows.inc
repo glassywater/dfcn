@@ -16,8 +16,7 @@ for (bool top_layer : {false, true}) {
             // must not leave a known identity waiting for the header reader.
             // That reader can still replace this field with its shared layout.
             const auto reserve = [&](int y) {
-                if (y < 0 || y >= gps_->dimy) return;
-                native_unit_header_captions.emplace(draw.x, y);
+                if (y < 0 || y >= gps_->dimy || (only_y >= 0 && only_y != y)) return;
                 auto &row = screen_rows[y];
                 const auto field = character_header_bound_identity_field(*gps_, draw,
                     top_layer, y, clipped_template_captions,
@@ -29,30 +28,24 @@ for (bool top_layer : {false, true}) {
                 if (field && (!screen_override || screen_override ==
                         (top_layer ? gps_->screen_top : gps_->screen)) &&
                         row.compare(field->start, field->text.size(), field->text) == 0) {
+                    std::erase_if(result, [&](const Match &match) {
+                        return match.y == y && match.x < field->end &&
+                            field->start < match.x + match.length;
+                    });
+                    const std::string target = draw.unit_identity_english
+                        ? "“" + *draw.unit_identity_target + "”" : *draw.unit_identity_target;
+                    Match match{field->start, y, field->end - field->start,
+                        kCharacterHeaderRule, target, field->text};
+                    match.layout_x = field->start;
+                    match.layout_length = field->end - field->start;
+                    match.layout_clip_right = field->end;
+                    match.layout_left = true;
+                    result.push_back(std::move(match));
+                    native_unit_header_captions.emplace(draw.x, y);
                     std::fill(row.begin() + field->start, row.begin() + field->end, ' ');
-                    if (only_y < 0 || only_y == y) {
-                        std::erase_if(result, [&](const Match &match) {
-                            return match.y == y && match.x < field->end &&
-                                field->start < match.x + match.length;
-                        });
-                        const std::string target = draw.unit_identity_english
-                            ? "“" + *draw.unit_identity_target + "”" : *draw.unit_identity_target;
-                        Match match{field->start, y, field->end - field->start,
-                            kCharacterHeaderRule, target, field->text};
-                        match.layout_x = field->start;
-                        match.layout_length = field->end - field->start;
-                        match.layout_clip_right = field->end;
-                        match.layout_left = true;
-                        result.push_back(std::move(match));
-                    }
-                    return;
                 }
-                const size_t available = std::min(draw.source.size(),
-                    static_cast<size_t>(gps_->dimx - draw.x));
-                size_t length = 0;
-                while (length < available && row[draw.x + length] == draw.source[length])
-                    ++length;
-                std::fill_n(row.begin() + draw.x, length, ' ');
+                // A failed quote/layer binding has no emitted owner. Leave
+                // its visible body available to the ordinary name readers.
             };
             reserve(draw.y);
             const auto *flags = top_layer ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;

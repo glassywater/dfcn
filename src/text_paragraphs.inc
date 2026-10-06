@@ -335,6 +335,7 @@ bool Overlay::append_bounded_paragraph(std::vector<Match> rows,
     continuation.native_help_review_source.clear();
     continuation.layout_glyph_foreground_rgb.clear();
     continuation.graphical_clear_width = continuation.graphical_clear_height = 0;
+    continuation.graphical_clear_flat_background = false;
     continuation.native_split_text = continuation.native_split_duplicate = false;
     continuation.legends_flow.reset();
     continuation.legends_flow_owner = false;

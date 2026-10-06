@@ -470,12 +470,12 @@ case 88: { // hf_relationship_denied
         break;
     }
     case 48: {
-        const auto attacker = subject(NativeHistoryObjectKind::Entity, number("attacker_civ"));
+        const auto attacker = polity_subject(number("attacker_civ"));
         auto defender = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
         const auto site = subject(NativeHistoryObjectKind::Site, number("site"));
         if (!attacker || !defender || !site) return std::nullopt;
         if (number("site_civ") != number("defender_civ")) {
-            const auto civilization = subject(NativeHistoryObjectKind::Entity, number("defender_civ"));
+            const auto civilization = polity_subject(number("defender_civ"));
             if (!civilization) return std::nullopt;
             defender = apply("{a} of {a}", {*defender, *civilization});
             if (!defender) return std::nullopt;
@@ -962,13 +962,13 @@ case 50: // war_site_taken_over
 case 80: { // hf_attacked_site
     const auto attacker = event.native_type == 80
         ? subject(NativeHistoryObjectKind::Figure, number("attacker_hf"))
-        : subject(NativeHistoryObjectKind::Entity, number("attacker_civ"));
+        : polity_subject(number("attacker_civ"));
     if (!attacker) return std::nullopt;
     const auto defending_entity = [&]() -> std::optional<Pieces> {
         auto defender = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
         if (!defender) return std::nullopt;
         if (number("site_civ") != number("defender_civ")) {
-            const auto civilization = subject(NativeHistoryObjectKind::Entity, number("defender_civ"));
+            const auto civilization = polity_subject(number("defender_civ"));
             if (!civilization) return std::nullopt;
             defender = apply("{a} of {a}", {*defender, *civilization});
         }

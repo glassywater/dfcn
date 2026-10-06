@@ -35,6 +35,23 @@ struct NativeAnnouncementParagraph {
 };
 static std::vector<NativeAnnouncementParagraph> native_adventure_announcement_paragraphs();
 static std::vector<NativeAnnouncementParagraph> native_announcement_log_paragraphs();
+struct NativeAnnouncementPopup {
+    std::string source;
+    int width = 0, max_y = 0, grid_height = 0;
+    bool portrait = false;
+    std::vector<NativeHistoryToken> words;
+};
+static std::optional<NativeAnnouncementPopup> native_announcement_popup();
+struct NativeAdventureQuestTitle {
+    std::string source;
+    std::string displayed;
+    int agreement_subject = -1;
+    int32_t companion_reason = -1;
+    bool companion_details = false;
+    bool companion_completed = false;
+};
+static std::optional<NativeAdventureQuestTitle> native_adventure_quest_original_title(
+    uintptr_t address, std::string_view displayed, uintptr_t caller);
 static bool native_announcement_history_index(std::vector<uintptr_t> &records,
     int32_t &next_id, uintptr_t &world);
 static bool native_announcement_history_row(uintptr_t record, NativeAnnouncementHistoryRow &row);

@@ -441,8 +441,8 @@ DFHack output: Dwarf with strange mood does not have a mood type!	进入奇异�
 DFHack output: No strange moods currently active.	当前没有奇异心境。	l
 DFHack output: No unit id specified!	未指定单位 ID！	l
 DFHack output: Invalid unit id: '{s}'	无效单位 ID：“{s}”。	l
-DFHack output: No mood type specified!	未指定心境类型！	l
-DFHack output: Mood type '{s}' not recognized!	无法识别心境类型“{s}”！	l
+DFHack output: No mood type specified!	未指定奇异心境类型！	l
+DFHack output: Mood type '{s}' not recognized!	无法识别奇异心境类型“{s}”！	l
 DFHack output: No mood skill specified!	未指定奇异心境技能！	l
 DFHack output: Mood skill '{s}' not recognized!	无法识别奇异心境技能“{s}”！	l
 DFHack output: Unrecognized parameter: {s}	无法识别的参数：{s}	l
@@ -458,7 +458,7 @@ DFHack output: Fortress is not eligible for a strange mood at this time - not en
 DFHack output: Fortress is not eligible for a strange mood at this time - not enough items created	要塞当前无法触发奇异心境：制造的物品数量不足。	l
 DFHack output: No units are eligible to enter a mood!	没有符合进入奇异心境条件的单位！	l
 DFHack output: Chosen unit '{s}' has active job, cannot start mood!	选中的单位“{s}”正在工作，无法开始奇异心境！	l
-DFHack output: Invalid mood type selected?	选中的心境类型无效。	l
+DFHack output: Invalid mood type selected?	选中的奇异心境类型无效。	l
 DFHack output: work_now is actively poking idle dwarves.	work_now 正在唤醒空闲的矮人。	l
 DFHack output: work_now is not actively poking idle dwarves.	work_now 未启用空闲矮人唤醒功能。	l
 DFHack output: expected {d} elements; found {d}	需要 {d} 个元素，实际有 {d} 个。	l
@@ -1063,10 +1063,10 @@ DFHack output: {d} / {d} region map tiles loaded	已加载 {d} / {d} 个区域�
 DFHack output: is currently	当前处于	l
 DFHack output: in a macabre mood	阴森心境	l
 DFHack output: (but isn't actually in a macabre mood?)	（但实际似乎并未进入阴森心境）	l
-DFHack output: in a fell mood	邪恶心境	l
-DFHack output: (but isn't actually in a fell mood?)	（但实际似乎并未进入邪恶心境）	l
-DFHack output: in a fey mood	兴奋心境	l
-DFHack output: in a secretive mood	隐秘心境	l
+DFHack output: in a fell mood	残暴心境	l
+DFHack output: (but isn't actually in a fell mood?)	（但实际似乎并未进入残暴心境）	l
+DFHack output: in a fey mood	古怪心境	l
+DFHack output: in a secretive mood	诡秘心境	l
 DFHack output: possessed	附身心境	l
 DFHack output: with intent to	，准备	l
 DFHack output: claim a Craftsdwarf's Workshop	占用工匠工坊	l
@@ -1081,7 +1081,7 @@ DFHack output: claim a Clothier's Shop	占用制衣工坊	l
 DFHack output: claim a Glass Furnace	占用玻璃熔炉	l
 DFHack output: claim a Mechanic's Workshop	占用机械工坊	l
 DFHack output: enter a macabre mood?	进入阴森心境	l
-DFHack output: enter a fell mood?	进入邪恶心境	l
+DFHack output: enter a fell mood?	进入残暴心境	l
 DFHack output: do something else...	进行其他活动……	l
 DFHack output: and become a legendary {s}	并成为传奇{s}。	l
 DFHack output: (but not really)	（实际上并不会）	l
@@ -1160,10 +1160,10 @@ DFHack output fragment: is currently	当前处于	l
 DFHack output fragment: is currently possessed	当前处于附身心境	l
 DFHack output fragment: in a macabre mood	阴森心境	l
 DFHack output fragment: (but isn't actually in a macabre mood?)	（但实际似乎并未进入阴森心境）	l
-DFHack output fragment: in a fell mood	邪恶心境	l
-DFHack output fragment: (but isn't actually in a fell mood?)	（但实际似乎并未进入邪恶心境）	l
-DFHack output fragment: in a fey mood	兴奋心境	l
-DFHack output fragment: in a secretive mood	隐秘心境	l
+DFHack output fragment: in a fell mood	残暴心境	l
+DFHack output fragment: (but isn't actually in a fell mood?)	（但实际似乎并未进入残暴心境）	l
+DFHack output fragment: in a fey mood	古怪心境	l
+DFHack output fragment: in a secretive mood	诡秘心境	l
 DFHack output fragment: with intent to	，准备	l
 DFHack output fragment: claim a Craftsdwarf's Workshop	占用工匠工坊	l
 DFHack output fragment: claim a Jeweler's Workshop	占用珠宝工坊	l
@@ -1177,7 +1177,7 @@ DFHack output fragment: claim a Clothier's Shop	占用制衣工坊	l
 DFHack output fragment: claim a Glass Furnace	占用玻璃熔炉	l
 DFHack output fragment: claim a Mechanic's Workshop	占用机械工坊	l
 DFHack output fragment: enter a macabre mood?	进入阴森心境	l
-DFHack output fragment: enter a fell mood?	进入邪恶心境	l
+DFHack output fragment: enter a fell mood?	进入残暴心境	l
 DFHack output fragment: do something else...	进行其他活动……	l
 DFHack output fragment: and become a legendary	并成为传奇	l
 DFHack output fragment: (but not really)	（实际上并不会）	l
@@ -1577,13 +1577,13 @@ DFHack output: {d}/{d}/{d}/ tiletype: {s}, basemat: {d}, designation: 0x{s} ... 
 DFHack output: {s}, born in {d}, cursed in {d} to be a {s}. ({s})	{s1}，出生于 {d1} 年，于 {d2} 年被诅咒成为 {s2}。（{s3}）	l
 DFHack output: , born in {d}, cursed in {d} to be a {s}. ({s})	，出生于 {d1} 年，于 {d2} 年被诅咒成为 {s1}。（{s2}）	l
 DFHack output: Curse flags: {s}	诅咒标志：{s1}	l
-DFHack output: Embark Anyone	任意文明出发	l
-DFHack output: Select a civilization to add to the list of origin civs:	选择要添加到出发文明列表的文明：	l
-DFHack output: No additional civilizations found.	未找到其他文明。	l
-DFHack output: Unnamed {s} civilisation	未命名的{s1}文明	l
+DFHack output: Embark Anyone	任意政权出发	l
+DFHack output: Select a civilization to add to the list of origin civs:	选择要添加到出发政权列表的政权：	l
+DFHack output: No additional civilizations found.	未找到其他政权。	l
+DFHack output: Unnamed {s} civilisation	未命名的{s1}政权	l
 DFHack output: Pop: {d} Sites: {d}	人口：{d1} 地点数：{d2}	l
-DFHack GUI Title: Embark Anyone	任意文明出发	l
-DFHack GUI Viewer status: No additional civilizations found.	未找到其他文明。	l
+DFHack GUI Title: Embark Anyone	任意政权出发	l
+DFHack GUI Viewer status: No additional civilizations found.	未找到其他政权。	l
 
 # Native autolabor/legacyengine/modernengine/monitorengine, confirmed in the installed plugin.
 # Mode names, executable syntax, labor/skill IDs, and other captured identifiers stay native.
@@ -1638,7 +1638,7 @@ DFHack output: not currently watching any races. to find out how to add some, ru
 DFHack output: {s} ({s} fk={d} mk={d} fa={d} ma={d}; autobutchering is paused)	{s1}（{s2} fk={d1} mk={d2} fa={d3} ma={d4}；自动屠宰已暂停）	l
 
 # Embark Anyone list roles; names and civilization row parsing remain contextual.
-DFHack GUI List prompt: Select a civilization to add to the list of origin civs:	选择要添加到出发文明列表的文明：	l
+DFHack GUI List prompt: Select a civilization to add to the list of origin civs:	选择要添加到出发政权列表的政权：	l
 DFHack GUI List status: No matches	没有匹配项	l
 DFHack GUI List status: Dead	已消亡	l
 
@@ -1918,6 +1918,20 @@ DFHack GUI Animal actions caption: Has Trainer	有驯兽师	l
 DFHack GUI Animal actions state: Yes	是	l
 DFHack GUI Animal actions state: No	否	l
 
+# trackstop.lua TrackStopOverlay; shortcuts, direction arrows and brand remain native.
+DFHack GUI Track stop caption: Dump	倾倒	l
+DFHack GUI Track stop caption: Friction	摩擦力	l
+DFHack GUI Track stop direction: None	无	l
+DFHack GUI Track stop direction: North	北	l
+DFHack GUI Track stop direction: East	东	l
+DFHack GUI Track stop direction: South	南	l
+DFHack GUI Track stop direction: West	西	l
+DFHack GUI Track stop friction: None	无	l
+DFHack GUI Track stop friction: Low	低	l
+DFHack GUI Track stop friction: Medium	中	l
+DFHack GUI Track stop friction: High	高	l
+DFHack GUI Track stop friction: Max	最大	l
+
 # Installed list-agreements.lua fixed local headings and empty-list statuses.
 DFHack output: Agreements for Temples:	神庙建设协议：	l
 DFHack output: Agreements for Guildhalls:	行会大厅建设协议：	l
@@ -2026,7 +2040,7 @@ DFHack GUI Item footer: items matched the filter options	件物品符合筛选�
 DFHack GUI Item footer: items would be modified	件物品将被修改	l
 DFHack GUI Item footer: items were modified	件物品已修改	l
 DFHack GUI Stuck merchants race: unknown race	未知物种	l
-DFHack GUI Stuck merchants civilization: unknown civ	未知文明	l
+DFHack GUI Stuck merchants civilization: unknown civ	未知政权	l
 DFHack GUI Confirmation control: Settings	设置	l
 DFHack GUI Confirmation control: Pause this confirmation	暂停此确认	l
 
@@ -2053,14 +2067,530 @@ DFHack GUI Civilian alert caption: All clear! Citizens return to normal	解除�
 DFHack GUI Civilian alert burrow: Burrow {d}	活动区 {d}	l
 DFHack GUI Civilian alert burrow: Sand Collecting Camp	集沙营地	l
 
-# internal/notify/notifications.lua: complete strange-mood rows and save fields.
-DFHack GUI Notification banner: moody dwarf is claiming a workshop	怪异心境矮人正在占用工坊	l
-DFHack GUI Notification banner: moody dwarf can't find needed workshop!	怪异心境矮人找不到所需工坊！	l
-DFHack GUI Notification banner: moody dwarf is gathering items	怪异心境矮人正在收集材料	l
-DFHack GUI Notification banner: moody dwarf is working	怪异心境矮人正在制作	l
-DFHack GUI Notification banner: moody dwarf can't find needed item!	怪异心境矮人找不到所需材料！	l
+# internal/notify/notifications.lua: all 20 notification producers, including
+# singular/plural counts, optional hospital/job details, caste lists and bars.
+DFHack GUI Notification banner: nemesis vector not sorted	人物关联记录未排序	l
+DFHack GUI Notification banner: autotraining: no squads selected	自动训练：尚未选择小队	l
+DFHack GUI Notification banner: missing {d} nemesis record	缺少 {d} 条人物关联记录	l
+DFHack GUI Notification banner: missing {d} nemesis records	缺少 {d} 条人物关联记录	l
+DFHack GUI Notification banner: {d} squad needs rescue	{d} 支小队需要救援	l
+DFHack GUI Notification banner: {d} squads need rescue	{d} 支小队需要救援	l
+DFHack GUI Notification banner: {d} trader is ready to trade	{d} 位交易者已准备好贸易	l
+DFHack GUI Notification banner: {d} traders are ready to trade	{d} 位交易者已准备好贸易	l
+DFHack GUI Notification banner: {d} production mandate near deadline	{d} 项生产命令即将到期	l
+DFHack GUI Notification banner: {d} production mandates near deadline	{d} 项生产命令即将到期	l
+DFHack GUI Notification banner: {d} petition outstanding	{d} 项建造承诺尚未兑现	l
+DFHack GUI Notification banner: {d} petitions outstanding	{d} 项建造承诺尚未兑现	l
+DFHack GUI Notification banner: moody dwarf is claiming a workshop	处于奇异心境的矮人正在占用工坊	l
+DFHack GUI Notification banner: moody dwarf can't find needed workshop!	处于奇异心境的矮人找不到所需工坊！	l
+DFHack GUI Notification banner: moody dwarf is gathering items	处于奇异心境的矮人正在收集材料	l
+DFHack GUI Notification banner: moody dwarf is working	处于奇异心境的矮人正在制作	l
+DFHack GUI Notification banner: moody dwarf can't find needed item!	处于奇异心境的矮人找不到所需材料！	l
+DFHack GUI Notification banner: {d} starving, dehydrated, or drowsy unit	{d} 个生物严重饥饿、缺水或困倦	l
+DFHack GUI Notification banner: {d} starving, dehydrated, or drowsy units	{d} 个生物严重饥饿、缺水或困倦	l
+DFHack GUI Notification banner: {d} agitated animal	{d} 只躁动动物	l
+DFHack GUI Notification banner: {d} agitated animals	{d} 只躁动动物	l
+DFHack GUI Notification banner: {d} invader	{d} 个入侵者	l
+DFHack GUI Notification banner: {d} invaders	{d} 个入侵者	l
+DFHack GUI Notification banner: {d} hostile	{d} 个敌对生物	l
+DFHack GUI Notification banner: {d} hostiles	{d} 个敌对生物	l
+DFHack GUI Notification banner: {d} thieving or mischievous creature	{d} 个偷窃或捣乱的生物	l
+DFHack GUI Notification banner: {d} thieving or mischievous creatures	{d} 个偷窃或捣乱的生物	l
+DFHack GUI Notification banner: {d} group of citizens is stranded	{d} 群居民受困	l
+DFHack GUI Notification banner: {d} groups of citizens are stranded	{d} 群居民受困	l
+DFHack GUI Notification banner: {d} injured citizen	{d} 位居民受伤	l
+DFHack GUI Notification banner: {d} injured citizens	{d} 位居民受伤	l
+DFHack GUI Notification banner: {d} injured citizen; no functional hospital!	{d} 位居民受伤；没有可正常运作的医院！	l
+DFHack GUI Notification banner: {d} injured citizens; no functional hospital!	{d} 位居民受伤；没有可正常运作的医院！	l
+DFHack GUI Notification banner: task starvation: {d} unclaimed job	无人接手：{d} 项任务	l
+DFHack GUI Notification banner: task starvation: {d} unclaimed jobs	无人接手：{d} 项任务	l
+DFHack GUI Notification banner: task starvation: {d} unclaimed job (oldest: {s}, {d} ticks)	无人接手：{d1} 项任务（最久：{s1}，{d2} 刻）	l
+DFHack GUI Notification banner: task starvation: {d} unclaimed jobs (oldest: {s}, {d} ticks)	无人接手：{d1} 项任务（最久：{s1}，{d2} 刻）	l
+DFHack GUI Notification banner: Wildlife: {s}	野生动物：{s}	l
+DFHack GUI Notification banner: {d} {s}	{d} 只{s}	l
+DFHack GUI Notification banner: Air	呼吸	l
+DFHack GUI Notification banner: Blood	血量	l
 DFHack GUI Notification banner: Last save:	上次保存：	l
 DFHack GUI Notification banner: {d} mins ago	{d} 分钟前	l
 
 # gui/sitemap.lua: complete two-row toolbar hint, separate from its hotkey.
 DFHack GUI Toolbar hint: Open the general search and zoom interface.	打开通用搜索与定位界面。	l
+
+# internal/caravan/movegoods.lua and common.lua: authored trade-goods captions and options.
+DFHack GUI Trade goods: Move goods to/from depot	搬运货物进出贸易站	l
+DFHack GUI Trade goods: DFHack move trade goods	DFHack 搬运贸易货物	l
+DFHack GUI Trade goods: Sort by:	排序依据：	l
+DFHack GUI Trade goods: Search:	搜索：	l
+DFHack GUI Trade goods: dist	距离	l
+DFHack GUI Trade goods: value	价值	l
+DFHack GUI Trade goods: qty	数量	l
+DFHack GUI Trade goods: name	名称	l
+DFHack GUI Trade goods: depot	贸易站	l
+DFHack GUI Trade goods: Min condition:	最低完好度：	l
+DFHack GUI Trade goods: Max condition:	最高完好度：	l
+DFHack GUI Trade goods: Tattered	破烂	l
+DFHack GUI Trade goods: Frayed	破损	l
+DFHack GUI Trade goods: Worn	磨损	l
+DFHack GUI Trade goods: Pristine	完好无损	l
+DFHack GUI Trade goods: Min quality:	最低品质：	l
+DFHack GUI Trade goods: Max quality:	最高品质：	l
+DFHack GUI Trade goods: Ordinary	普通	l
+DFHack GUI Trade goods: Well Crafted	精工	l
+DFHack GUI Trade goods: Fine Crafted	精良	l
+DFHack GUI Trade goods: Superior	优质	l
+DFHack GUI Trade goods: Exceptional	杰出	l
+DFHack GUI Trade goods: Masterful	大师之作	l
+DFHack GUI Trade goods: Artifact	神器	l
+DFHack GUI Trade goods: Min value:	最低价值：	l
+DFHack GUI Trade goods: Max value:	最高价值：	l
+DFHack GUI Trade goods: Max	不限	l
+DFHack GUI Trade goods: Hide forbidden items:	隐藏禁用物品：	l
+DFHack GUI Trade goods: Item origins:	物品产地：	l
+DFHack GUI Trade goods: All	全部	l
+DFHack GUI Trade goods: Fort-made only	仅本地制造	l
+DFHack GUI Trade goods: Foreign-made only	仅外地制造	l
+DFHack GUI Trade goods: Merchant export agreements:	商队出口协议：	l
+DFHack GUI Trade goods: [details]	[详情]	l
+DFHack GUI Trade goods: Show only requested items:	仅显示协议需求物品：	l
+DFHack GUI Trade goods: Price agreement for exported items	出口物品价格协议	l
+DFHack GUI Trade goods: Merchant ethical restrictions:	商队伦理限制：	l
+DFHack GUI Trade goods: Animals, Trees	动物、树木	l
+DFHack GUI Trade goods: Animals	动物	l
+DFHack GUI Trade goods: Trees	树木	l
+DFHack GUI Trade goods: Show only ethically acceptable items	仅显示符合伦理的物品	l
+DFHack GUI Trade goods: Ignore ethical restrictions	忽略伦理限制	l
+DFHack GUI Trade goods: Show only ethically unacceptable items	仅显示违背伦理的物品	l
+DFHack GUI Trade goods: Include mixed bins	包含混装箱	l
+DFHack GUI Trade goods: Exclude mixed bins	排除混装箱	l
+DFHack GUI Trade goods: Items banned by export mandates:	禁止出口的物品：	l
+DFHack GUI Trade goods: Additional items at risk of mandates:	可能被禁运的其他物品：	l
+DFHack GUI Trade goods: Hide banned and risky items	隐藏禁运及风险物品	l
+DFHack GUI Trade goods: Hide banned items	隐藏禁运物品	l
+DFHack GUI Trade goods: Ignore mandate restrictions	忽略禁运限制	l
+DFHack GUI Trade goods: None	无	l
+DFHack GUI Trade goods: Yes	是	l
+DFHack GUI Trade goods: No	否	l
+DFHack GUI Trade goods: Total value of items marked for trade:	已标记贸易物品总价值：	l
+DFHack GUI Trade goods: Click to mark/unmark for trade. Shift click to mark/unmark a range of items.	点击标记或取消贸易物品；Shift+点击可批量标记或取消。	l
+DFHack GUI Trade goods: Select all/none	全选／全不选	l
+DFHack GUI Trade goods: Group items:	合并同类物品：	l
+DFHack GUI Trade goods: Inside containers:	显示容器内物品：	l
+
+# internal/notify/notifications.lua labor_starvation: native ENUM_ATTR(job_type, caption)
+# and enum-key fallbacks from data/extracted/dfhack-notify/job-type-captions.tsv.
+# Keep the original produced text exact; repeated captions share one scoped entry.
+DFHack GUI Notification job: NONE	无	l
+DFHack GUI Notification job: Carve Fortification	雕凿城防垛口	l
+DFHack GUI Notification job: Smooth Wall	打磨墙壁	l
+DFHack GUI Notification job: Smooth Floor	打磨地板	l
+DFHack GUI Notification job: Detail Wall	雕刻墙壁	l
+DFHack GUI Notification job: Detail Floor	雕刻地板	l
+DFHack GUI Notification job: Dig	挖掘	l
+DFHack GUI Notification job: Carve Upward Staircase	挖掘上行楼梯	l
+DFHack GUI Notification job: Carve Downward Staircase	挖掘下行楼梯	l
+DFHack GUI Notification job: Carve Up/Down Staircase	挖掘上下楼梯	l
+DFHack GUI Notification job: Carve Ramp	挖掘斜坡	l
+DFHack GUI Notification job: Dig Channel	挖掘沟道	l
+DFHack GUI Notification job: Fell Tree	砍倒树木	l
+DFHack GUI Notification job: Gather Plants	采集植物	l
+DFHack GUI Notification job: Remove Construction	拆除构筑	l
+DFHack GUI Notification job: Collect Webs	收集网	l
+DFHack GUI Notification job: Bring Item to Depot	将物品搬到贸易站	l
+DFHack GUI Notification job: Bring Item to Shop	将物品搬到工坊	l
+DFHack GUI Notification job: Eat	进食	l
+DFHack GUI Notification job: Get Provisions	获取补给	l
+DFHack GUI Notification job: Drink	饮用	l
+DFHack GUI Notification job: Fill Waterskin	灌满水袋	l
+DFHack GUI Notification job: Sleep	睡觉	l
+DFHack GUI Notification job: Collect Sand	收集沙	l
+DFHack GUI Notification job: Fish	捕鱼	l
+DFHack GUI Notification job: Hunt	狩猎	l
+DFHack GUI Notification job: Hunt for Small Creature	猎捕小型生物	l
+DFHack GUI Notification job: Kidnap	绑架	l
+DFHack GUI Notification job: Beat Criminal	殴打罪犯	l
+DFHack GUI Notification job: Starting Fist Fight	挑起斗殴	l
+DFHack GUI Notification job: Collect Taxes	征税	l
+DFHack GUI Notification job: Guard Tax Collector	保护税务官	l
+DFHack GUI Notification job: Catch Live Land Animal	捕获活的陆地动物	l
+DFHack GUI Notification job: Catch Live Fish	抓捕活鱼	l
+DFHack GUI Notification job: Return Kill	带回猎物	l
+DFHack GUI Notification job: Store Owned Item	存放私人物品	l
+DFHack GUI Notification job: Place Item in Tomb	将物品放入陵墓	l
+DFHack GUI Notification job: Store Item in Stockpile	将物品存入储物堆	l
+DFHack GUI Notification job: Store Item in Bag	将物品存入袋子	l
+DFHack GUI Notification job: Store Item In Location	将物品存放到地点	l
+DFHack GUI Notification job: Store Weapon	存放武器	l
+DFHack GUI Notification job: Store Armor	存放护甲	l
+DFHack GUI Notification job: Store Item in Barrel	将物品存入圆桶	l
+DFHack GUI Notification job: Store Item in Bin	将物品存入储物箱	l
+DFHack GUI Notification job: Seek Artifact	寻找造物	l
+DFHack GUI Notification job: Seek Infant	寻找婴儿	l
+DFHack GUI Notification job: Go Shopping	购物	l
+DFHack GUI Notification job: Clean	清洁	l
+DFHack GUI Notification job: Rest	休息	l
+DFHack GUI Notification job: Pickup Equipment	拾取装备	l
+DFHack GUI Notification job: Dump Item	倾倒物品	l
+DFHack GUI Notification job: Strange Mood (Crafter)	奇异心境（工艺制作）	l
+DFHack GUI Notification job: Strange Mood (Jeweller)	奇异心境（珠宝制作）	l
+DFHack GUI Notification job: Strange Mood (Forge)	奇异心境（锻造）	l
+DFHack GUI Notification job: Strange Mood (Magma Forge)	奇异心境（岩浆锻造）	l
+DFHack GUI Notification job: Strange Mood (Brooding)	奇异心境（阴森）	l
+DFHack GUI Notification job: Strange Mood (Fell)	奇异心境（残暴）	l
+DFHack GUI Notification job: Strange Mood (Carpenter)	奇异心境（木工）	l
+DFHack GUI Notification job: Strange Mood (Mason)	奇异心境（石工）	l
+DFHack GUI Notification job: Strange Mood (Bowyer)	奇异心境（制弓）	l
+DFHack GUI Notification job: Strange Mood (Leather)	奇异心境（皮革制作）	l
+DFHack GUI Notification job: Strange Mood (Clothier)	奇异心境（制衣）	l
+DFHack GUI Notification job: Strange Mood (Glassmaker)	奇异心境（玻璃制作）	l
+DFHack GUI Notification job: Strange Mood (Mechanics)	奇异心境（机械制作）	l
+DFHack GUI Notification job: Construct Building	建造建筑	l
+DFHack GUI Notification job: Construct Door	制作门	l
+DFHack GUI Notification job: Construct Floodgate	制作闸门	l
+DFHack GUI Notification job: Construct Bed	制作床	l
+DFHack GUI Notification job: Construct Throne	制作宝座	l
+DFHack GUI Notification job: Construct Coffin	制作棺材	l
+DFHack GUI Notification job: Construct Table	制作桌子	l
+DFHack GUI Notification job: Construct Chest	制作箱柜	l
+DFHack GUI Notification job: Construct Bag	制作袋子	l
+DFHack GUI Notification job: Construct Bin	制作储物箱	l
+DFHack GUI Notification job: Construct Armor Stand	制作护甲架	l
+DFHack GUI Notification job: Construct Weapon Rack	制作武器架	l
+DFHack GUI Notification job: Construct Cabinet	制作橱柜	l
+DFHack GUI Notification job: Construct Statue	制作雕像	l
+DFHack GUI Notification job: Construct Blocks	制作建材块	l
+DFHack GUI Notification job: Make Raw Glass	制作粗玻璃	l
+DFHack GUI Notification job: Make Crafts	制作工艺品	l
+DFHack GUI Notification job: Mint Coins	铸造钱币	l
+DFHack GUI Notification job: Cut Gems	切割宝石	l
+DFHack GUI Notification job: Cut Glass	切割玻璃	l
+DFHack GUI Notification job: Encrust With Gems	镶嵌宝石	l
+DFHack GUI Notification job: Encrust With Glass	镶嵌玻璃	l
+DFHack GUI Notification job: Destroy Building	拆除建筑	l
+DFHack GUI Notification job: Smelt Ore	冶炼矿石	l
+DFHack GUI Notification job: Melt a Metal Object	融炼一件金属物品	l
+DFHack GUI Notification job: Extract Metal Strands	提取金属线	l
+DFHack GUI Notification job: Plant Seeds	播种种子	l
+DFHack GUI Notification job: Harvest Plants	收获植物	l
+DFHack GUI Notification job: Train Hunting Animal	训练狩猎动物	l
+DFHack GUI Notification job: Train War Animal	训练战斗动物	l
+DFHack GUI Notification job: Forge Weapon	锻造武器	l
+DFHack GUI Notification job: Forge Anvil	锻造铁砧	l
+DFHack GUI Notification job: Construct Catapult Parts	制作投石机部件	l
+DFHack GUI Notification job: Construct Ballista Parts	制作弩炮部件	l
+DFHack GUI Notification job: Make Armor	制作护甲	l
+DFHack GUI Notification job: Forge Helm	锻造头盔	l
+DFHack GUI Notification job: Make Pants	制作裤子	l
+DFHack GUI Notification job: Stud With	镶嵌	l
+DFHack GUI Notification job: Butcher an Animal	屠宰一个动物	l
+DFHack GUI Notification job: Prepare a Raw Fish	处理一条生鱼	l
+DFHack GUI Notification job: Mill Plants	碾磨植物	l
+DFHack GUI Notification job: Bait Trap	为陷阱放置诱饵	l
+DFHack GUI Notification job: Milk Creature	挤奶	l
+DFHack GUI Notification job: Make Cheese	制作奶酪	l
+DFHack GUI Notification job: Process Plants	加工植物	l
+DFHack GUI Notification job: Process Plants (Vial)	加工植物（小瓶）	l
+DFHack GUI Notification job: Process Plants (Barrel)	加工植物（圆桶）	l
+DFHack GUI Notification job: Prepare Meal	烹饪餐食	l
+DFHack GUI Notification job: Weave Cloth	织布	l
+DFHack GUI Notification job: Make Gloves	制作手套	l
+DFHack GUI Notification job: Make Shoes	制作鞋子	l
+DFHack GUI Notification job: Make Shield	制作盾牌	l
+DFHack GUI Notification job: Make Cage	制作笼子	l
+DFHack GUI Notification job: Make Chain	制作锁链	l
+DFHack GUI Notification job: Make Flask	制作水壶	l
+DFHack GUI Notification job: Make Goblet	制作高脚杯	l
+DFHack GUI Notification job: Make Toy	制作玩具	l
+DFHack GUI Notification job: Make Animal Trap	制作动物陷阱	l
+DFHack GUI Notification job: Make Barrel	制作圆桶	l
+DFHack GUI Notification job: Make Bucket	制作提桶	l
+DFHack GUI Notification job: Make Window	制作窗户	l
+DFHack GUI Notification job: Make Totem	制作图腾	l
+DFHack GUI Notification job: Make Ammo	制作弹药	l
+DFHack GUI Notification job: Decorate With	装饰	l
+DFHack GUI Notification job: Make Backpack	制作背包	l
+DFHack GUI Notification job: Make Quiver	制作箭袋	l
+DFHack GUI Notification job: Make Ballista Arrow Head	制作弩炮箭头	l
+DFHack GUI Notification job: Assemble Siege Ammo	组装攻城弹药	l
+DFHack GUI Notification job: Load Catapult	装填投石机	l
+DFHack GUI Notification job: Load Ballista	装填弩炮	l
+DFHack GUI Notification job: Fire Catapult	发射投石机	l
+DFHack GUI Notification job: Fire Ballista	发射弩炮	l
+DFHack GUI Notification job: Construct Mechanisms	制作机械装置	l
+DFHack GUI Notification job: MakeTrapComponent	制作陷阱组件	l
+DFHack GUI Notification job: Load Cage Trap	装填笼陷阱	l
+DFHack GUI Notification job: Load Stone Trap	装填落石陷阱	l
+DFHack GUI Notification job: Load Weapon Trap	装填武器陷阱	l
+DFHack GUI Notification job: Clean Trap	清理陷阱	l
+DFHack GUI Notification job: Encrust With Stones	镶嵌石材	l
+DFHack GUI Notification job: Link a Building to Trigger	将建筑连接到触发装置	l
+DFHack GUI Notification job: Pull the Lever	拉动控制杆	l
+DFHack GUI Notification job: UNUSED_04	未使用（04）	l
+DFHack GUI Notification job: Extract from Plants	提炼植物	l
+DFHack GUI Notification job: Extract from Raw Fish	提取生鱼汁液	l
+DFHack GUI Notification job: Extract from Land Animal	提炼陆地动物	l
+DFHack GUI Notification job: Tame Small Animal	驯化小型动物	l
+DFHack GUI Notification job: Tame ?something?	驯服?某种生物?	l
+DFHack GUI Notification job: Chain Animal	用锁链拴住动物	l
+DFHack GUI Notification job: Unchain Animal	解开动物的锁链	l
+DFHack GUI Notification job: Unchain Pet	解开宠物的锁链	l
+DFHack GUI Notification job: Release Large Creature	释放大型生物	l
+DFHack GUI Notification job: Release Pet	释放宠物	l
+DFHack GUI Notification job: Release Small Creature	释放小型生物	l
+DFHack GUI Notification job: Handle Small Creature	照料小型生物	l
+DFHack GUI Notification job: Handle Large Creature	照料大型生物	l
+DFHack GUI Notification job: Cage Large Creature	将大型生物关入笼子	l
+DFHack GUI Notification job: Cage Small Creature	将小型生物关入笼子	l
+DFHack GUI Notification job: Recover Wounded	救助伤员	l
+DFHack GUI Notification job: Diagnose Patient	诊断病人	l
+DFHack GUI Notification job: Immobilize Break	固定骨折部位	l
+DFHack GUI Notification job: Dress Wound	包扎伤口	l
+DFHack GUI Notification job: Clean Patient	清洗病人	l
+DFHack GUI Notification job: Surgery	外科手术	l
+DFHack GUI Notification job: Suture	缝合	l
+DFHack GUI Notification job: Set Bone	接骨	l
+DFHack GUI Notification job: Place In Traction	进行牵引治疗	l
+DFHack GUI Notification job: Drain Aquarium	排空水族箱	l
+DFHack GUI Notification job: Fill Aquarium	给水族箱注水	l
+DFHack GUI Notification job: Fill Pond	给池塘注水	l
+DFHack GUI Notification job: Give Water	送水	l
+DFHack GUI Notification job: Give Food	送食物	l
+DFHack GUI Notification job: Recover Pet	找回宠物	l
+DFHack GUI Notification job: Pit/Pond Large Animal	将大型动物放入坑洞或池塘	l
+DFHack GUI Notification job: Pit/Pond Small Animal	将小型动物放入坑洞或池塘	l
+DFHack GUI Notification job: Slaughter Animal	屠宰动物	l
+DFHack GUI Notification job: Make Charcoal	制作木炭	l
+DFHack GUI Notification job: Make Ash	制作灰烬	l
+DFHack GUI Notification job: Make Lye	制作碱液	l
+DFHack GUI Notification job: Make Potash From Lye	用碱液制草碱	l
+DFHack GUI Notification job: Fertilize Field	给田地施肥	l
+DFHack GUI Notification job: Make Potash From Ash	用灰烬制草碱	l
+DFHack GUI Notification job: Dye Thread	染线	l
+DFHack GUI Notification job: Dye Cloth	染布匹	l
+DFHack GUI Notification job: Sew Image	刺绣图案	l
+DFHack GUI Notification job: Make Pipe Section	制作管段	l
+DFHack GUI Notification job: Operate Pump	操作泵机	l
+DFHack GUI Notification job: Manage Work Orders	管理工单	l
+DFHack GUI Notification job: Update Stockpile Records	更新库存记录	l
+DFHack GUI Notification job: Trade at Depot	在贸易站交易	l
+DFHack GUI Notification job: Construct Hatch Cover	制作舱盖	l
+DFHack GUI Notification job: Construct Grate	制作格栅	l
+DFHack GUI Notification job: Remove Stairs/Ramps	移除楼梯与坡道	l
+DFHack GUI Notification job: Construct Quern	制作手磨	l
+DFHack GUI Notification job: Construct Millstone	制作磨石	l
+DFHack GUI Notification job: Construct Splint	制作夹板	l
+DFHack GUI Notification job: Construct Crutch	制作拐杖	l
+DFHack GUI Notification job: Construct Traction Bench	制作牵引台	l
+DFHack GUI Notification job: Clean Self	清洗自身	l
+DFHack GUI Notification job: Bring Crutch	送来拐杖	l
+DFHack GUI Notification job: Apply Cast	打石膏	l
+DFHack GUI Notification job: Custom Reaction	进行自定义反应	l
+DFHack GUI Notification job: Construct Slab	制作石板	l
+DFHack GUI Notification job: Engrave Memorial Slab	雕刻纪念石板	l
+DFHack GUI Notification job: Shear Creature	剪毛	l
+DFHack GUI Notification job: Spin Thread	纺线	l
+DFHack GUI Notification job: Pen/Pasture Large Animal	将大型动物带入畜栏或牧场	l
+DFHack GUI Notification job: Pen/Pasture Small Animal	将小型动物带入畜栏或牧场	l
+DFHack GUI Notification job: Make Tool	制作工具	l
+DFHack GUI Notification job: Collect Clay	收集黏土	l
+DFHack GUI Notification job: Install Colony In Hive	将蜂群安置到蜂箱	l
+DFHack GUI Notification job: Collect Hive Products	收集蜂箱产物	l
+DFHack GUI Notification job: Cause Trouble	惹是生非	l
+DFHack GUI Notification job: No Job	没有工作	l
+DFHack GUI Notification job: Report Crime	报告罪行	l
+DFHack GUI Notification job: Execute Criminal	处决罪犯	l
+DFHack GUI Notification job: Train Animal	训练动物	l
+DFHack GUI Notification job: Carve Track	雕凿轨道	l
+DFHack GUI Notification job: Push Track Vehicle	推动轨道载具	l
+DFHack GUI Notification job: Place Track Vehicle	放置轨道载具	l
+DFHack GUI Notification job: Store Item in Vehicle	将物品存入载具	l
+DFHack GUI Notification job: Geld ?something?	阉割?某种生物?	l
+DFHack GUI Notification job: Make Figurine	制作小雕像	l
+DFHack GUI Notification job: Make Amulet	制作护身符	l
+DFHack GUI Notification job: Make Scepter	制作权杖	l
+DFHack GUI Notification job: Make Crown	制作王冠	l
+DFHack GUI Notification job: Make Ring	制作戒指	l
+DFHack GUI Notification job: Make Earring	制作耳环	l
+DFHack GUI Notification job: Make Bracelet	制作手镯	l
+DFHack GUI Notification job: Make Large Gem	制作大宝石	l
+DFHack GUI Notification job: Put Item on Display	陈列物品	l
+DFHack GUI Notification job: Interrogate Subject	审讯对象	l
+DFHack GUI Notification job: No Activity	无活动	l
+DFHack GUI Notification job: Store Squad Equipment Item	存放小队装备	l
+DFHack GUI Notification job: Mix Dye	混合染料	l
+DFHack GUI Notification job: Dye Leather	染皮革	l
+DFHack GUI Notification job: Construct Bolt Thrower Parts	制作弩箭投射器部件	l
+DFHack GUI Notification job: Load Bolt Thrower	装填弩箭投射器	l
+DFHack GUI Notification job: Fire Bolt Thrower	发射弩箭投射器	l
+DFHack GUI Notification job: UNUSED_31	未使用（31）	l
+DFHack GUI Notification job: UNUSED_32	未使用（32）	l
+DFHack GUI Notification job: UNUSED_33	未使用（33）	l
+DFHack GUI Notification job: UNUSED_34	未使用（34）	l
+DFHack GUI Notification job: UNUSED_35	未使用（35）	l
+DFHack GUI Notification job: UNUSED_36	未使用（36）	l
+DFHack GUI Notification job: UNUSED_37	未使用（37）	l
+DFHack GUI Notification job: UNUSED_38	未使用（38）	l
+DFHack GUI Notification job: UNUSED_39	未使用（39）	l
+DFHack GUI Notification job: UNUSED_40	未使用（40）	l
+
+# CustomReaction uses the loaded RAW reaction.name instead of the generic caption.
+# Actual objects/ NAME fields in both configured game editions are traced in
+# data/extracted/dfhack-notify/reaction-name-sources.tsv; examples are not loaded RAWs.
+DFHack GUI Notification job: assemble stone axe	组装石斧	l
+DFHack GUI Notification job: bind book	装订书籍	l
+DFHack GUI Notification job: brew drink from fruit	用果实酿酒	l
+DFHack GUI Notification job: brew drink from plant	用植物酿酒	l
+DFHack GUI Notification job: carve bone amulet	雕刻骨制护身符	l
+DFHack GUI Notification job: carve bone bracelet	雕刻骨制手镯	l
+DFHack GUI Notification job: carve bone cabochon	雕刻骨制弧面切工	l
+DFHack GUI Notification job: carve bone crown	雕刻骨制头冠	l
+DFHack GUI Notification job: carve bone earring	雕刻骨制耳环	l
+DFHack GUI Notification job: carve bone figurine	雕刻骨制小塑像	l
+DFHack GUI Notification job: carve bone ring	雕刻骨制戒指	l
+DFHack GUI Notification job: carve bone scepter	雕刻骨制节杖	l
+DFHack GUI Notification job: carve wooden helve from branch	用树枝雕刻木制斧柄	l
+DFHack GUI Notification job: glaze clay/stone craft	为黏土/石质工艺品上釉	l
+DFHack GUI Notification job: glaze clay/stone jug	为黏土/石质壶上釉	l
+DFHack GUI Notification job: glaze clay/stone statue	为黏土/石质雕像上釉	l
+DFHack GUI Notification job: glaze large clay/stone pot	为黏土质/石质大罐上釉	l
+DFHack GUI Notification job: make acacia bark dye	制作金合欢树皮染料	l
+DFHack GUI Notification job: make adamantine wafers	制作精金薄片	l
+DFHack GUI Notification job: make alder bark dye	制作桤树树皮染料	l
+DFHack GUI Notification job: make alder cone dye	制作桤树球果染料	l
+DFHack GUI Notification job: make almond shell dye	制作扁桃壳染料	l
+DFHack GUI Notification job: make apple bark dye	制作苹果树皮染料	l
+DFHack GUI Notification job: make apple leaf dye	制作苹果叶染料	l
+DFHack GUI Notification job: make apricot bark dye	制作杏树皮染料	l
+DFHack GUI Notification job: make ash bark dye	制作白蜡树树皮染料	l
+DFHack GUI Notification job: make avocado skin dye	制作鳄梨皮染料	l
+DFHack GUI Notification job: make banana leaf dye	制作香蕉叶染料	l
+DFHack GUI Notification job: make banana peel dye	制作香蕉皮染料	l
+DFHack GUI Notification job: make bayberry dye	制作杨梅染料	l
+DFHack GUI Notification job: make bayberry leaf dye	制作杨梅叶染料	l
+DFHack GUI Notification job: make bilberry dye	制作越橘染料	l
+DFHack GUI Notification job: make billon bars (use bars)	制作毕朗合金锭（使用金属锭）	l
+DFHack GUI Notification job: make billon bars (use ore)	制作毕朗合金锭（使用矿石）	l
+DFHack GUI Notification job: make birch bark dye	制作桦树树皮染料	l
+DFHack GUI Notification job: make bismuth bronze bars	制作铋青铜锭	l
+DFHack GUI Notification job: make black bronze bars	制作乌青铜锭	l
+DFHack GUI Notification job: make blackberry dye	制作黑莓染料	l
+DFHack GUI Notification job: make blueberry dye	制作蓝莓染料	l
+DFHack GUI Notification job: make brass bars (use bars)	制作黄铜锭（使用金属锭）	l
+DFHack GUI Notification job: make brass bars (use ore)	制作黄铜锭（使用矿石）	l
+DFHack GUI Notification job: make bronze bars (use bars)	制作青铜锭（使用金属锭）	l
+DFHack GUI Notification job: make bronze bars (use ore)	制作青铜锭（使用矿石）	l
+DFHack GUI Notification job: make cabbage leaf dye	制作卷心菜叶染料	l
+DFHack GUI Notification job: make carrot dye	制作胡萝卜染料	l
+DFHack GUI Notification job: make cherry bark dye	制作樱桃树皮染料	l
+DFHack GUI Notification job: make cherry leaf dye	制作樱桃叶染料	l
+DFHack GUI Notification job: make chestnut bark dye	制作栗树树皮染料	l
+DFHack GUI Notification job: make chestnut hull dye	制作栗树外壳染料	l
+DFHack GUI Notification job: make chestnut leaf dye	制作栗树叶染料	l
+DFHack GUI Notification job: make clay bricks	制作黏土砖	l
+DFHack GUI Notification job: make clay crafts	制作黏土工艺品	l
+DFHack GUI Notification job: make clay hive	制作黏土蜂箱	l
+DFHack GUI Notification job: make clay jug	制作黏土壶	l
+DFHack GUI Notification job: make clay statue	制作黏土雕像	l
+DFHack GUI Notification job: make coffee bean dye	制作咖啡豆染料	l
+DFHack GUI Notification job: make coke from bituminous coal	使用烟煤制作焦炭	l
+DFHack GUI Notification job: make coke from lignite	使用褐煤制作焦炭	l
+DFHack GUI Notification job: make cranberry dye	制作蔓越莓染料	l
+DFHack GUI Notification job: make display case	制作展示柜	l
+DFHack GUI Notification job: make eggplant dye	制作茄子染料	l
+DFHack GUI Notification job: make electrum bars (use bars)	制作琥珀金锭（使用金属锭）	l
+DFHack GUI Notification job: make electrum bars (use ore)	制作琥珀金锭（使用矿石）	l
+DFHack GUI Notification job: make fine pewter bars (use bars)	制作精白锡锭（使用金属锭）	l
+DFHack GUI Notification job: make fine pewter bars (use ore)	制作精白锡锭（使用矿石）	l
+DFHack GUI Notification job: make ginkgo leaf dye	制作银杏叶染料	l
+DFHack GUI Notification job: make grape dye	制作葡萄染料	l
+DFHack GUI Notification job: make guava bark dye	制作番石榴树皮染料	l
+DFHack GUI Notification job: make guava leaf dye	制作番石榴叶染料	l
+DFHack GUI Notification job: make hazel bark dye	制作榛树皮染料	l
+DFHack GUI Notification job: make hazel leaf dye	制作榛叶染料	l
+DFHack GUI Notification job: make larch bark dye	制作落叶松树皮染料	l
+DFHack GUI Notification job: make large clay pot	制作黏土质大罐	l
+DFHack GUI Notification job: make lay pewter bars (use bars)	制作劣白锡锭（使用金属锭）	l
+DFHack GUI Notification job: make mahogany bark dye	制作桃花心木树皮染料	l
+DFHack GUI Notification job: make mangrove bark dye	制作红树树皮染料	l
+DFHack GUI Notification job: make mangrove leaf dye	制作红树叶染料	l
+DFHack GUI Notification job: make maple bark dye	制作枫树树皮染料	l
+DFHack GUI Notification job: make mead	酿造蜜酒	l
+DFHack GUI Notification job: make milk of lime	制作石灰乳	l
+DFHack GUI Notification job: make nickel silver bars	制作镍银锭	l
+DFHack GUI Notification job: make oak bark dye	制作橡树树皮染料	l
+DFHack GUI Notification job: make olive bark dye	制作橄榄树皮染料	l
+DFHack GUI Notification job: make olive leaf dye	制作橄榄叶染料	l
+DFHack GUI Notification job: make onion skin dye	制作洋葱皮染料	l
+DFHack GUI Notification job: make parchment	制作羊皮纸	l
+DFHack GUI Notification job: make peach bark dye	制作桃树皮染料	l
+DFHack GUI Notification job: make peanut shell dye	制作花生壳染料	l
+DFHack GUI Notification job: make pear bark dye	制作梨树皮染料	l
+DFHack GUI Notification job: make pear leaf dye	制作梨叶染料	l
+DFHack GUI Notification job: make pearlash	制作珍珠灰	l
+DFHack GUI Notification job: make persimmon dye	制作柿染料	l
+DFHack GUI Notification job: make pig iron bars	制作生铁锭	l
+DFHack GUI Notification job: make pine bark dye	制作松树树皮染料	l
+DFHack GUI Notification job: make pineapple leaf dye	制作菠萝叶染料	l
+DFHack GUI Notification job: make plaster powder	制作石膏粉	l
+DFHack GUI Notification job: make plum bark dye	制作李子树皮染料	l
+DFHack GUI Notification job: make pomegranate bark dye	制作石榴树皮染料	l
+DFHack GUI Notification job: make pomegranate leaf dye	制作石榴叶染料	l
+DFHack GUI Notification job: make pomegranate rind dye	制作石榴皮染料	l
+DFHack GUI Notification job: make potato skin dye	制作马铃薯皮染料	l
+DFHack GUI Notification job: make quicklime	制作生石灰	l
+DFHack GUI Notification job: make quire	制作稿纸	l
+DFHack GUI Notification job: make radish dye	制作小萝卜染料	l
+DFHack GUI Notification job: make raspberry dye	制作树莓染料	l
+DFHack GUI Notification job: make red spinach leaf dye	制作红菠菜叶染料	l
+DFHack GUI Notification job: make rhubarb leaf dye	制作大黄叶染料	l
+DFHack GUI Notification job: make rice husk dye	制作稻米谷壳染料	l
+DFHack GUI Notification job: make rose gold bars	制作玫瑰金锭	l
+DFHack GUI Notification job: make scroll	制作卷轴	l
+DFHack GUI Notification job: make sharp rock	制作尖石	l
+DFHack GUI Notification job: make sheet from plant	用植物做纸张	l
+DFHack GUI Notification job: make soap from oil	用植物油制作肥皂	l
+DFHack GUI Notification job: make soap from tallow	用脂油制作肥皂	l
+DFHack GUI Notification job: make sorghum leaf dye	制作高粱叶染料	l
+DFHack GUI Notification job: make spinach leaf dye	制作菠菜叶染料	l
+DFHack GUI Notification job: make steel bars	制作钢锭	l
+DFHack GUI Notification job: make sterling silver bars	制作标准银锭	l
+DFHack GUI Notification job: make sweet potato skin dye	制作甘薯皮染料	l
+DFHack GUI Notification job: make tea leaf dye	制作茶叶染料	l
+DFHack GUI Notification job: make tomato skin dye	制作番茄皮染料	l
+DFHack GUI Notification job: make trifle pewter bars (use bars)	制作廉白锡锭（使用金属锭）	l
+DFHack GUI Notification job: make trifle pewter bars (use ore)	制作廉白锡锭（使用矿石）	l
+DFHack GUI Notification job: make turnip skin dye	制作芜菁皮染料	l
+DFHack GUI Notification job: make watermelon dye	制作西瓜染料	l
+DFHack GUI Notification job: make wax crafts	制作蜂蜡工艺品	l
+DFHack GUI Notification job: make willow bark dye	制作柳树树皮染料	l
+DFHack GUI Notification job: make willow leaf dye	制作柳树叶染料	l
+DFHack GUI Notification job: make wooden barrel	制作木制圆桶	l
+DFHack GUI Notification job: make wooden bed	制作木制床	l
+DFHack GUI Notification job: make wooden bin	制作木制储物箱	l
+DFHack GUI Notification job: make wooden bookcase	制作木制书架	l
+DFHack GUI Notification job: make wooden bucket	制作木制提桶	l
+DFHack GUI Notification job: make wooden buckler	制作木制小盾	l
+DFHack GUI Notification job: make wooden cabinet	制作木制橱柜	l
+DFHack GUI Notification job: make wooden casket	制作木棺	l
+DFHack GUI Notification job: make wooden chair	制作木制椅子	l
+DFHack GUI Notification job: make wooden chest	制作木制箱子	l
+DFHack GUI Notification job: make wooden crutch	制作木制拐杖	l
+DFHack GUI Notification job: make wooden door	制作木制门	l
+DFHack GUI Notification job: make wooden grate	制作木制格栅	l
+DFHack GUI Notification job: make wooden hatch cover	制作木制活动盖板	l
+DFHack GUI Notification job: make wooden pedestal	制作木制基座	l
+DFHack GUI Notification job: make wooden shield	制作木制盾牌	l
+DFHack GUI Notification job: make wooden splint	制作木制夹板	l
+DFHack GUI Notification job: make wooden stepladder	制作木制折梯	l
+DFHack GUI Notification job: make wooden table	制作木制桌子	l
+DFHack GUI Notification job: make wooden training axe	制作木制训练斧	l
+DFHack GUI Notification job: make wooden training short sword	制作木制训练短剑	l
+DFHack GUI Notification job: make wooden training spear	制作木制训练矛	l
+DFHack GUI Notification job: mash plant into slurry	将植物研磨成纸浆	l
+DFHack GUI Notification job: mill seeds/nuts to paste	将种子/坚果磨浆	l
+DFHack GUI Notification job: press honey from honeycomb	从蜜脾中压出蜂蜜	l
+DFHack GUI Notification job: press liquid from fruit	从果实中压出液体	l
+DFHack GUI Notification job: press liquid from paste	从浆糊中压出液体	l
+DFHack GUI Notification job: press plant slurry into paper sheet	将植物纸浆压成纸张	l
+DFHack GUI Notification job: process plant to bag	用袋子进行甩籽	l
+DFHack GUI Notification job: render fat	将脂肪熬制成脂油	l
+DFHack GUI Notification job: tan a hide	鞣制一张皮革	l

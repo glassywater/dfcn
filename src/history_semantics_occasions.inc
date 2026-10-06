@@ -53,8 +53,7 @@ case 84: {
     } else key = "there was a " + key;
     auto action = apply(key, fields);
     if (!action) return std::nullopt;
-    if (host) join(result, *host);
-    join(result, *action);
+    std::optional<Pieces> place;
     // All four formatters select site, otherwise region, otherwise layer.
     // Their jumps after a match skip the remaining location branches.
     for (const auto &[field, kind] : {
@@ -62,17 +61,32 @@ case 84: {
             std::pair{"region", NativeHistoryObjectKind::Region},
             std::pair{"layer", NativeHistoryObjectKind::Underground}}) {
         if (number(field) == -1) continue;
-        auto place = subject(kind, number(field));
-        auto where = place ? apply("in {p}", {*place}) : std::nullopt;
-        if (!where) return std::nullopt;
-        append_clause(result, *where);
+        place = subject(kind, number(field));
+        if (!place) return std::nullopt;
         break;
+    }
+    if (host && place) {
+        host = apply("{p} of {p}", {*place, *host});
+        if (!host) return std::nullopt;
     }
     if (number("occasion_named")) {
         auto occasion = subject(NativeHistoryObjectKind::Occasion, number("entity"), false, number("occasion"));
-        auto part = occasion ? apply("as part of {e}", {*occasion}) : std::nullopt;
-        if (!part) return std::nullopt;
-        append_clause(result, *part);
+        if (!occasion) return std::nullopt;
+        // Keep the named occasion before the activity without adding words
+        // to its generated name; the wrapper retains every action link.
+        auto activity = host ?
+            apply("Native history occasion {a} {s} as part of {e}", {*host, *action, *occasion}) :
+            apply("Native history occasion {s} as part of {e}", {*action, *occasion});
+        if (!activity) return std::nullopt;
+        join(result, *activity);
+    } else {
+        if (host) join(result, *host);
+        join(result, *action);
+    }
+    if (!host && place) {
+        auto where = apply("in {p}", {*place});
+        if (!where) return std::nullopt;
+        append_clause(result, *where);
     }
     result.push_back(piece("。", neutral));
     if (!native_title && scheduled && event.native_type == 83 && number("route_present")) {

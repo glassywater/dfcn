@@ -1,7 +1,7 @@
 // Building detail sheets can reach the viewport bottom or step outward at
-// their scroll gutter. Only the resting-place record uses this fallback;
+// their scroll gutter. Fixed building records use this fallback;
 // ordinary panels continue to require a closed frame.
-static std::optional<SDL_Rect> native_resting_place_panel(
+static std::optional<SDL_Rect> native_building_record_panel(
         const NativePanelBorders &borders, const graphicst &gps,
         const SDL_Rect &source) {
     if (const auto panel = native_panel_interior(borders, gps, source)) return panel;
@@ -75,6 +75,101 @@ void Overlay::append_native_split_ui_messages(std::vector<std::string> &screen_r
             }
             return colors;
         };
+        const auto append_workshop_record = [&](std::vector<Match> rows,
+                const NativeDrawnTextRow &person, int index, int left) {
+            const Rule &rule = rules_[static_cast<size_t>(index)];
+            std::string source;
+            std::vector<int> source_colors;
+            int source_right = left;
+            for (const Match &row : rows) {
+                if (!source.empty()) {
+                    source.push_back(' ');
+                    source_colors.push_back(source_colors.back());
+                }
+                source += row.source;
+                const auto colors = foregrounds(row);
+                source_colors.insert(source_colors.end(), colors.begin(), colors.end());
+                source_right = std::max(source_right, row.x + row.length);
+            }
+            std::vector<int> target_colors;
+            std::optional<std::string> target;
+            if (person.unit_identity_target && !person.unit_identity_target->empty()) {
+                const std::vector<std::string> captures{std::string(trim_view(person.source))};
+                const std::vector<std::optional<std::string>> resolved{person.unit_identity_target};
+                target = fill_template(rule, captures, nullptr, nullptr, &resolved);
+                const auto color_text = [&](std::string_view text, int color) {
+                    std::vector<uint32_t> codepoints;
+                    if (decode_utf8(std::string(text), codepoints))
+                        target_colors.insert(target_colors.end(), codepoints.size(), color);
+                };
+                const auto *cell = layer +
+                    (static_cast<size_t>(person.x) * gps_->dimy + person.y) * 8;
+                const int person_color = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+                color_text(rule.target_template_literals.front(), source_colors.front());
+                color_text(*person.unit_identity_target, person_color);
+                color_text(rule.target_template_literals.back(), source_colors.back());
+            } else {
+                target = translate_help_paragraph(source, source_colors, target_colors, true, index);
+            }
+            if (!target || target->empty()) return false;
+            const NativePanelBorders borders(*gps_);
+            const SDL_Rect source_box{left, rows.front().y,
+                source_right - left, rows.back().y - rows.front().y + 1};
+            const auto panel = native_building_record_panel(borders, *gps_, source_box);
+            int right = source_right;
+            if (panel)
+                right = std::max(source_right, panel->x + panel->w - (left - panel->x));
+            return append_bounded_paragraph(std::move(rows), *target,
+                screen_rows, result, only_y, right, right, target_colors, false, left);
+        };
+        // The workshop's mood branch uses fixed addst rows, not a wrapped
+        // paragraph: introduction at y/y+2, full unit identity at y+3,
+        // then its short name at x+2/y+5 and work status at x/y+6.
+        // These offsets belong to the native writer (53.16 PE 0x181ce4;
+        // classic 0x181c74), independently of the translated name's width.
+        // Own both complete records before the ordinary identity reader can
+        // centre either name on its own English span.
+        for (const auto &first : draws) {
+            if (trim_view(first.source) != "This building has") continue;
+            const auto heading = current_draw(first);
+            const auto bridge_at = positions.find({first.x, first.y + 2});
+            const auto person_at = positions.find({first.x, first.y + 3});
+            if (!heading || bridge_at == positions.end() || person_at == positions.end() ||
+                    trim_view(bridge_at->second->source) != "been claimed by") continue;
+            const auto bridge = current_draw(*bridge_at->second);
+            const auto &person = *person_at->second;
+            const auto identity = current_draw(person);
+            if (!bridge || !identity) continue;
+            const auto period_at = positions.find({person.x + static_cast<int>(person.source.size()),
+                person.y});
+            if (period_at == positions.end() || trim_view(period_at->second->source) != ".") continue;
+            const auto period = current_draw(*period_at->second);
+            if (!period) continue;
+            const auto rules = prefixes.find(heading->source + ' ' + bridge->source);
+            if (rules == prefixes.end()) continue;
+            Match body = *identity;
+            body.length = period->x + period->length - body.x;
+            body.source = screen_rows[body.y].substr(body.x, body.length);
+            for (int index : rules->second)
+                if (append_workshop_record({*heading, *bridge, body}, person, index, heading->x)) break;
+
+            const auto worker_at = positions.find({first.x + 2, first.y + 5});
+            const auto status_at = positions.find({first.x, first.y + 6});
+            if (worker_at == positions.end() || status_at == positions.end()) continue;
+            const auto worker = current_draw(*worker_at->second);
+            const auto status = current_draw(*status_at->second);
+            if (!worker || !status) continue;
+            const auto compact = compact_ui_message_literal(status->source);
+            for (int probe_index : ui_message_anchors_.candidates(compact)) {
+                const auto &probe = ui_message_template_probes_[probe_index];
+                const Rule &rule = rules_[static_cast<size_t>(probe.index)];
+                if (rule.template_kinds.size() != 1 || rule.template_kinds.front() != 'n' ||
+                        rule.template_literals.size() != 2 || !probe.prefix.empty() ||
+                        probe.suffix != compact) continue;
+                if (append_workshop_record({*worker, *status}, *worker_at->second,
+                        probe.index, heading->x)) break;
+            }
+        }
         for (const auto &first : draws) {
             const auto rules = prefixes.find(std::string(trim_view(first.source)));
             if (rules == prefixes.end()) continue;
@@ -145,7 +240,7 @@ void Overlay::append_native_split_ui_messages(std::vector<std::string> &screen_r
                 const SDL_Rect source_box{heading->x, heading->y,
                     source_right - heading->x, body.y - heading->y + 1};
                 const auto panel = heading->source == "This is the resting place of"
-                    ? native_resting_place_panel(borders, *gps_, source_box)
+                    ? native_building_record_panel(borders, *gps_, source_box)
                     : native_panel_interior(borders, *gps_, source_box);
                 if (panel) {
                     // These fixed draws have no native paragraph width. Their
@@ -198,7 +293,7 @@ void Overlay::layout_resting_place_details(SDL_Renderer *renderer) {
     for (const Match &introduction : prepared_matches_) {
         if (introduction.rule != kUiMessageRule ||
                 introduction.source != "This is the resting place of") continue;
-        const auto panel = native_resting_place_panel(borders, *gps_,
+        const auto panel = native_building_record_panel(borders, *gps_,
             SDL_Rect{introduction.x, introduction.y, introduction.length, 2});
         if (!panel) continue;
         const int panel_right = panel->x + panel->w;

@@ -6,6 +6,7 @@ struct FortressUnitChooser {
     SDL_Rect panel{}, viewport{};
     int header_y = -1, name_x = -1, search_y = -1;
     std::vector<SDL_Rect> native_records;
+    int skill_x = -1;
 };
 
 static std::optional<FortressUnitChooser> fortress_unit_chooser(
@@ -33,6 +34,7 @@ static std::optional<FortressUnitChooser> fortress_unit_chooser(
                     viewport.y + viewport.h > panel.y + panel.h) continue;
             std::vector<SDL_Rect> records;
             int text_right = panel.x + panel.w;
+            int skill_x = text_right;
             for (const auto &row : captures) {
                 if (!same_rect(row.panel, panel) || !same_rect(row.viewport, viewport) ||
                         row.box.x < viewport.x || row.box.y < viewport.y ||
@@ -44,6 +46,8 @@ static std::optional<FortressUnitChooser> fortress_unit_chooser(
                     })) continue;
                 records.push_back(row.box);
                 text_right = std::min(text_right, row.box.x + row.box.w);
+                if (row.skill_x >= row.box.x && row.skill_x < row.box.x + row.box.w)
+                    skill_x = std::min(skill_x, row.skill_x);
             }
             if (records.empty() || text_right <= panel.x) continue;
             std::sort(records.begin(), records.end(), [](const SDL_Rect &a, const SDL_Rect &b) {
@@ -74,7 +78,8 @@ static std::optional<FortressUnitChooser> fortress_unit_chooser(
             // edge, independently of the row's measured text width.
             return FortressUnitChooser{panel,
                 {panel.x, viewport.y, text_right - panel.x, viewport.h},
-                -1, records.front().x, search_y, std::move(records)};
+                -1, records.front().x, search_y, std::move(records),
+                skill_x < text_right ? skill_x : -1};
         }
     }
     const NativePanelBorders borders(gps);
@@ -159,6 +164,15 @@ static std::vector<SDL_Rect> native_unit_chooser_overlay_frames(const graphicst 
 
 void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const {
+    const auto rated_skills = [&](std::string_view source) {
+        return FortressRosterTranslationScope::skills(source,
+            [&] { return translate_rated_skill_list(source); });
+    };
+    const auto typed_identity = [&](const std::string &source) {
+        return FortressRosterTranslationScope::text(
+            FortressRosterTranslationScope::TextKind::TypedIdentity, source,
+            [&] { return translate_unit_identity(source, true); });
+    };
     if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy)) return;
     auto context = rows;
     if (raw_layer)
@@ -251,11 +265,20 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
             for (const auto &capture : clipped)
                 if (capture.x == x && capture.y == y && capture.visible == visible &&
                         !capture.complete.empty()) { complete = capture.complete; break; }
-            const auto skills = identity || worker_controls ? std::nullopt
-                : translate_rated_skill_list(normalize_utterance(complete));
-            const bool skill = skills && skills->size() == 1;
-            const bool empty_skills = !worker_controls && !identity && complete == "No relevant skills";
-            if ((skill || empty_skills) && y <= record.box.y) return;
+            // Squad assignment has the same work-policy toggle as workshop
+            // workers, but also draws a separate military-skill column. Its
+            // live SKILLS widget and complete rated captions retain that
+            // ownership regardless of the record's other controls.
+            const bool native_skill = !identity && chooser->skill_x >= 0 &&
+                x >= chooser->skill_x;
+            // A rated-looking authored name at the identity cursor remains
+            // a name; grammar only recovers a separate column to its right.
+            const bool skill_candidate = !identity && (native_skill ||
+                (chooser->skill_x < 0 && x > record.box.x + 1));
+            const auto skills = !skill_candidate ? std::nullopt
+                : rated_skills(normalize_utterance(complete));
+            const bool skill = native_skill || (skills && skills->size() == 1);
+            const bool empty_skills = skill_candidate && complete == "No relevant skills";
             std::string source = visible;
             // The widget's saved clip can be narrower than its surviving
             // native text. Own the full skill only when every source byte
@@ -267,11 +290,13 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
             for (const auto &field : record.fields)
                 if (field.y == y && field.x < x + static_cast<int>(source.size()) &&
                         x < field.x + static_cast<int>(field.source.size())) return;
-            std::string target = skill ? skills->front().target : identity.value_or("");
+            std::string target = skill ? (skills && skills->size() == 1
+                ? skills->front().target : native_text_to_utf8(complete)) : identity.value_or("");
             if (empty_skills) target = exact_literal_translation(complete).value_or(complete);
             record.fields.push_back({x, y, std::move(source), std::move(complete), std::move(target),
                 skill || empty_skills});
-            if (skill || empty_skills) skill_left = std::min(skill_left, x);
+            if (skill || empty_skills) skill_left = std::min(skill_left,
+                native_skill ? chooser->skill_x : x);
         };
         for (const auto &draw : draws) {
             if (draw.y < record.box.y || draw.y >= bottom || draw.x >= right ||
@@ -323,7 +348,7 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
     // budget. Short English names must not change the left edge or font size.
     if (skill_left == gps_->dimx && !worker_controls) return;
     int identity_right = skill_left - 1;
-    if (worker_controls) {
+    if (worker_controls && skill_left == gps_->dimx) {
         identity_right = gps_->dimx;
         for (const auto &record : records)
             identity_right = std::min(identity_right, record.box.x + record.box.w);
@@ -334,8 +359,8 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
                 x + static_cast<int>(source.size()) > chooser->viewport.x + chooser->viewport.w ||
                 source.empty() || context[y].compare(x, source.size(), source) != 0) return;
         for (const auto &record : records)
-            if (y > record.box.y && y < record.box.y + record.box.h) return;
-        const auto skills = translate_rated_skill_list(normalize_utterance(complete));
+            if (y >= record.box.y && y < record.box.y + record.box.h) return;
+        const auto skills = rated_skills(normalize_utterance(complete));
         if ((!skills || skills->size() != 1) && complete != "No relevant skills") return;
         const int length = static_cast<int>(source.size());
         const auto append = [&](int offset, int count) {
@@ -412,8 +437,13 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
                     if (!profession.empty()) profession += ' ';
                     profession += normalize_utterance(identities[index]->complete);
                 }
-                const auto role = translate_unit_profession(profession, true);
-                if (role) identity = identities.front()->target + "，" + *role;
+                std::string_view role_source(profession);
+                const std::string sex = take_unit_sex_suffix(role_source);
+                const auto role = FortressRosterTranslationScope::text(
+                    FortressRosterTranslationScope::TextKind::TypedProfession,
+                    std::string(role_source),
+                    [&] { return translate_unit_profession(role_source, true); });
+                if (role) identity = identities.front()->target + "，" + *role + sex;
             }
         }
         if (!identity && identities.size() > 1 &&
@@ -422,10 +452,13 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
             // its separator to the common identity parser before joining it.
             std::string separated = identity_source;
             separated.insert(normalize_utterance(identities.front()->complete).size(), ",");
-            identity = translate_unit_identity(separated, true);
+            identity = typed_identity(separated);
         }
-        if (!identity) identity = translate_unit_identity(identity_source, true);
-        if (!identity || identity->empty()) identity = translate_procedural_fragment(identity_source);
+        if (!identity) identity = typed_identity(identity_source);
+        if (!identity || identity->empty())
+            identity = FortressRosterTranslationScope::text(
+                FortressRosterTranslationScope::TextKind::ProceduralIdentity, identity_source,
+                [&] { return translate_procedural_fragment(identity_source); });
         if (!identity || identity->empty()) identity = native_text_to_utf8(identity_source);
         bool first_identity = true;
         for (const auto &field : record.fields) {
@@ -496,9 +529,11 @@ void Overlay::layout_fortress_unit_chooser(SDL_Renderer *renderer) {
             if (left >= right) continue;
             field->layout_box_pixel_x = -1;
             field->layout_box_pixel_width = 0;
-            field->layout_y = skill ? field->y : box.y + 1;
-            field->layout_pixel_y = 0;
-            field->layout_fixed_baseline = true;
+            const bool skill_half = skill && field->native_split_text;
+            field->layout_y = skill ? (skill_half ? field->native_split_top_y : field->y)
+                : box.y + 1;
+            field->layout_pixel_y = skill_half ? tile_h / 2 : 0;
+            field->layout_fixed_baseline = !skill_half;
             field->layout_right = false;
             field->layout_ellipsize = true;
             field->layout_left = true;

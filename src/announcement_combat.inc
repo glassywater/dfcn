@@ -163,6 +163,36 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                 }))) result.reset();
             return finish(std::move(result));
         }
+        if (scope == "$travel-actor") {
+            // The travel-location builder passes the complete contextual HF
+            // caption from b92f10, with species, curse/status and the English
+            // name enabled. Its RAW-backed prefix proves the personal slot;
+            // a site name or an ordinary prose fragment cannot enter it.
+            auto result = translate_legends_actor(input, 0, true);
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = translate_announcement_combat(input, "travel-empty-caste-actor");
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
+        if (scope == "$travel-person") {
+            // The empty-caste HF branch still owns a complete generated
+            // English name. Keep its given-name transliteration and title
+            // grammar, rejecting an unsupported English remainder.
+            auto result = translate_legends_name(input, true);
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = translate_english_character_name(input,
+                    input.substr(0, input.find(' ')));
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
+        if (scope == "$travel-site") {
+            // b93930 supplies a whole site field, including unknown-site and
+            // unnamed location labels. Do not reinterpret its generated name
+            // as an organization simply because the spellings coincide.
+            auto result = translate_legends_name(input, false, false);
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
         if (scope == "$item") return finish(translate_legends_item(input));
         if (scope == "$body") return finish(translate_legends_anatomy(input));
         if (scope == "$creature") return finish(translate_creature_reference(input));

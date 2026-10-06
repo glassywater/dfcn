@@ -75,16 +75,30 @@ static std::optional<LogicalTextField> character_header_bound_identity_field(
     int first = draw.x, last = draw.x + static_cast<int>(length);
     std::string physical(source);
     if (quoted) {
-        if (!layer_matches(first - 1, y) || read_char(first - 1, y) != '"')
+        // The sheet draws its quote decorations independently of addst's
+        // name body. Native padding belongs to this same quoted field.
+        int opening = first - 1;
+        while (opening >= 0 && layer_matches(opening, y) &&
+                read_char(opening, y) == ' ') --opening;
+        if (opening < 0 || !layer_matches(opening, y) ||
+                read_char(opening, y) != '"')
             return std::nullopt;
-        --first;
+        physical.insert(0, static_cast<size_t>(first - opening - 1), ' ');
         physical.insert(physical.begin(), '"');
+        first = opening;
         // addchar draws the closing quote after the entire captured body.
         // Use that boundary, never the first quote inside authored text.
-        const bool closing = last < gps.dimx && layer_matches(last, y) &&
-            read_char(last, y) == '"';
+        int closing_at = last;
+        while (!shortened && closing_at < gps.dimx && layer_matches(closing_at, y) &&
+                read_char(closing_at, y) == ' ') ++closing_at;
+        const bool closing = closing_at < gps.dimx && layer_matches(closing_at, y) &&
+            read_char(closing_at, y) == '"';
         if (!closing && !shortened) return std::nullopt;
-        if (closing) { ++last; physical += '"'; }
+        if (closing) {
+            physical.append(static_cast<size_t>(closing_at - last), ' ');
+            physical += '"';
+            last = closing_at + 1;
+        }
     }
     return LogicalTextField{first, last, std::move(physical)};
 }

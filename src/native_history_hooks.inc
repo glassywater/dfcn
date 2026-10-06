@@ -75,8 +75,31 @@ static std::vector<SDL_Rect> native_text_input_regions(const graphicst &gps,
                 const size_t tile = static_cast<size_t>(x) * gps.dimy + draw.y;
                 if (!screen_override && draw.draw_grid !=
                         (native_ui_top_layer_at(gps, tile) ? gps.screen_top : gps.screen)) continue;
-                if (rows[draw.y][x] == draw.source[static_cast<size_t>(x - draw.x)])
-                    input[tile] = draw.editable_text;
+                const char source = draw.source[static_cast<size_t>(x - draw.x)];
+                if (rows[draw.y][x] != source) continue;
+                input[tile] = draw.editable_text;
+                if (!draw.editable_text) continue;
+                // Large native text can paint two grid rows from one addst.
+                // Reserve its other half too, before words on that row can
+                // become a translated caption covering the whole input.
+                // Flags alone can survive an ordinary later draw: require
+                // the same current bytes, layer and complementary half.
+                const auto *flags = draw.top_layer
+                    ? gps.screentexpos_top_flag : gps.screentexpos_flag;
+                constexpr uint32_t upper = 1u << 3, lower_half = 1u << 4;
+                const uint32_t half = flags ? flags[tile] & (upper | lower_half) : 0;
+                const int mate = half == upper ? draw.y + 1
+                    : half == lower_half ? draw.y - 1 : -1;
+                if (mate < 0 || mate >= gps.dimy || !flags ||
+                        rows[mate][x] != source ||
+                        (draw.draw_clip && (mate < draw.draw_clip->y ||
+                            mate >= draw.draw_clip->y + draw.draw_clip->h))) continue;
+                const size_t mate_tile = static_cast<size_t>(x) * gps.dimy + mate;
+                if ((!screen_override && draw.draw_grid !=
+                        (native_ui_top_layer_at(gps, mate_tile) ? gps.screen_top : gps.screen)) ||
+                        (flags[mate_tile] & (upper | lower_half)) !=
+                            (half == upper ? lower_half : upper)) continue;
+                input[mate_tile] = draw.editable_text;
             }
         }
     };

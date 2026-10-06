@@ -1,0 +1,539 @@
+edition	image	role	instruction_rva	operand_rva	source
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf6436	0x16d1bd8	Bring
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf650a	0x15ec5a8	to
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf68bb	0x16b11dc	***
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf6925	0x16b11ec	WSW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf6961	0x169f52c	SW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf699e	0x16b11e0	SSW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf69db	0x1670cd4	S
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf6a18	0x16b11e4	SSE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf6a55	0x169f530	SE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf6a92	0x16b1148	ESE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf6acf	0x16b114c	E
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf6b0c	0x16b1140	ENE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf6b49	0x169f528	NE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf6b8d	0x16b1144	NNE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf6bd1	0x16b11b0	N
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf6c15	0x16b11d0	NNW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf6c59	0x169f524	NW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf6c9a	0x16b11d4	WNW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf6ccd	0x16b11e8	W
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf6d99	0x15ec730	An order from
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf6e82	0x15ec770	Finish reporting in
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf73da	0x16b11b0	N
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf7415	0x16b1144	NNE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf7450	0x169f528	NE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf748b	0x16b1140	ENE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf74c6	0x16b114c	E
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf7501	0x16b1148	ESE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf753c	0x169f530	SE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf7577	0x16b11e4	SSE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf75b2	0x1670cd4	S
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf75ed	0x16b11e0	SSW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf7628	0x169f52c	SW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf7663	0x16b11ec	WSW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf769e	0x16b11e8	W
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf76d9	0x16b11d4	WNW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf7714	0x169f524	NW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf774f	0x16b11d0	NNW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf778a	0x16b11dc	***
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf77f9	0x15e8ca0	You
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf78a1	0x16d1bc8	asked that you
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf78f9	0x15ec6b0	retrieve
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf7d26	0x16b11dc	***
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf7d97	0x16b11ec	WSW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf7dda	0x169f52c	SW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf7e1e	0x16b11e0	SSW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf7e62	0x1670cd4	S
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf7ea6	0x16b11e4	SSE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf7eea	0x169f530	SE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf7f2e	0x16b1148	ESE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf7f72	0x16b114c	E
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf7fb6	0x16b1140	ENE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf7ffa	0x169f528	NE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf8045	0x16b1144	NNE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf8090	0x16b11b0	N
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf80db	0x16b11d0	NNW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf8126	0x169f524	NW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf8171	0x16b11d4	WNW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf81ab	0x16b11e8	W
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf835a	0x16d1c68	requested that you
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf83b2	0x16d1bb0	offer your services to
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf877d	0x16b11dc	***
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf87e7	0x16b11ec	WSW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf8823	0x169f52c	SW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf8860	0x16b11e0	SSW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf889d	0x1670cd4	S
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf88da	0x16b11e4	SSE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf8917	0x169f530	SE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf8954	0x16b1148	ESE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf8991	0x16b114c	E
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf89ce	0x16b1140	ENE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf8a0b	0x169f528	NE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf8a4f	0x16b1144	NNE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf8a93	0x16b11b0	N
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf8ad7	0x16b11d0	NNW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf8b1b	0x169f524	NW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf8b5c	0x16b11d4	WNW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf8b8f	0x16b11e8	W
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf912a	0x16b11b0	N
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf9165	0x16b1144	NNE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf91a0	0x169f528	NE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf91db	0x16b1140	ENE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf9216	0x16b114c	E
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf9251	0x16b1148	ESE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf928c	0x169f530	SE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf92c7	0x16b11e4	SSE
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf9302	0x1670cd4	S
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf933d	0x16b11e0	SSW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf9378	0x169f52c	SW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf93b3	0x16b11ec	WSW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf93ee	0x16b11e8	W
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf9429	0x16b11d4	WNW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf9464	0x169f524	NW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf949c	0x16b11d0	NNW
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf94d4	0x16b11dc	***
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf9568	0x15ec638	Agreement concluded
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf95d7	0x15ec788	Complete: report back
+steam	PE:6a70a6d9:02711000	task-renderer	0xaf962b	0x15ec750	Not yet completed
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc2999	0x15ec1e8	Agreements
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc29cb	0x15ec1d0	Events
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc29fd	0x15ec1d8	People
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc2a2f	0x15ec20c	Sites
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc2a61	0x15ec214	Groups
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc2a93	0x15ec1f8	Regions
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc2ac5	0x15ec200	Bestiary
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc2af4	0x15ec238	Artifacts
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc2b23	0x15ec248	Intrigue
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc2e66	0x15ec288	Plots
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc2e94	0x15ec228	Organizations
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc2ec2	0x15ec21c	Actors
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc320e	0x15eb514	/
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc34d8	0x15ec270	Centered on first heard
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3546	0x15ec258	Centered on last heard
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc35b1	0x15ec290	Centered on location
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3808	0x15ec2e8	 Showing type,date
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3832	0x15ec2d0	 Showing pin,last
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc39fb	0x15eb514	/
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3b8b	0x15ec2a8	Overthrow Agreement
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3b97	0x15ec2c0	Guide Agreement
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3ba3	0x15ec328	Rescue Agreement
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3baf	0x15ec340	Aid Rescue Agreement
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3bbb	0x15ec300	Adventuring Agreement
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3bc7	0x15ec318	Bound Servitude
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3bd3	0x15ec388	Entertainment Agreement
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3bdf	0x15ec3a0	World Joining Agreement
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3beb	0x15ec358	Residency Agreement
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3bf7	0x15ec370	Grant of Citizenship
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3c03	0x15ec3e0	Parley Arrangement
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3c0f	0x15ec3f8	Corruption
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3c1b	0x15ec3b8	Artifact Theft
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3c27	0x15ec3c8	Promise of Position
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3c33	0x15ec430	Assassination Plot
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3c3f	0x15ec448	Abduction Plot
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3c48	0x15ec408	Sabotage Plot
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3c51	0x15ec418	Infiltration Plot
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3c5a	0x15ec498	Framing Plot
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3c63	0x15ec4a8	War Starting Plot
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3c90	0x15ec4e8	Foiled Embezzlement Conspiracy
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3c99	0x15ec478	Foiled Corruption Conspiracy
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3ca2	0x15ec458	Foiled Bribery Conspiracy
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3cab	0x15ec508	Build Structure
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3cb4	0x15ec4c0	Offer Service
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3cbd	0x15ec4d0	Retrieve Artifact
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3e17	0x15e8ca0	You
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3ec4	0x15ec6a0	asked that
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3f25	0x15ec550	you
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc3fcc	0x15ec6b0	retrieve
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc40c2	0x15ec70c	from
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc41be	0x15ec714	for
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc4311	0x15ec6f8	Drive members of
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc43d4	0x15ec740	out of
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc456a	0x15e8ca0	You
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc4617	0x15ec6c0	requested that
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc4678	0x15ec550	you
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc471b	0x15ec6d0	make an offer of service to
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc490c	0x15e8ca0	You
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc49b9	0x15ec540	agreed to join
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc4a1a	0x15ec550	you
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc4abf	0x15ec518	in insurrection against
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc4b97	0x15ec530	thereby freeing
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc4c88	0x15e8ca0	You
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc4d35	0x15ec598	agreed to guide
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc4d96	0x15ec550	you
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc4e3b	0x15ec5a8	to
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5043	0x15ec558	somebody unknown
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc50b8	0x15e8ca0	You
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5165	0x15ec540	agreed to join
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc51c6	0x15ec550	you
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5267	0x15ec570	in order to be brought safely away from
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc535c	0x15e8ca0	You
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5409	0x15ec540	agreed to join
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc546a	0x15ec550	you
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc550b	0x15ec5e8	in order to rescue
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5686	0x15ec558	somebody unknown
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc56fb	0x15e8ca0	You
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc57a8	0x15ec600	agreed to adventure with
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5809	0x15ec550	you
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc58aa	0x15ec5b0	wherever the journey might lead
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5919	0x15e8ca0	You
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc59c6	0x15ec5d0	was bound to serve
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5a27	0x15ec550	you
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5ac8	0x15ec650	by invocation of True Name
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5b37	0x15e8ca0	You
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5be4	0x15ec670	agreed to entertain people with
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5c45	0x15ec550	you
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5ce6	0x15ec620	throughout the world
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5d6d	0x15ec638	Agreement concluded
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5e40	0x15ec698	st
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5e49	0x15ec69c	nd
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5e52	0x15ec690	rd
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5e5b	0x15ec694	th
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5e6b	0x15e873c	 
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5e9d	0x15e90d8	, 
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc5f25	0x15ec6ec	Kill
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc6006	0x15ec718	Cause trouble for
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc60ca	0x15ec748	Drive
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc618d	0x15ec70c	from
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc6253	0x15ec730	An order from
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc633d	0x15ec770	Finish reporting in
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc63ae	0x15ec788	Complete: report back
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc63fb	0x15ec750	Not yet completed
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc6574	0x15e8ca0	You
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc6621	0x15ec6a0	asked that
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc6682	0x15ec550	you
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc6725	0x15ec7c8	retrieve 
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc68bf	0x15e8ca0	You
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc696c	0x15ec6c0	requested that
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc69cd	0x15ec550	you
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc6a70	0x15ec764	serve 
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc6b55	0x15ec638	Agreement concluded
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc6bf6	0x15ec730	An order from
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc6cdd	0x15ec770	Finish reporting in
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc6d4b	0x15ec788	Complete: report back
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc6d95	0x15ec750	Not yet completed
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc6f67	0x15ec7d8	Centered on commander
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc6fd1	0x15ec7a0	Centered on target
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc7251	0x15ec824	Org: 
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc72db	0x15eb514	/
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc7542	0x15eb514	/
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc7f39	0x15ec7b8	One member
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc7f85	0x15ec818	 members
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc8275	0x15eb514	/
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc8660	0x15eb514	/
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc8a50	0x15eb514	/
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc8d9c	0x15ec7f0	 Showing important
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc8dd7	0x15ec808	 Showing all
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc8fa2	0x15eb514	/
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc92ec	0x15ec7f0	 Showing important
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc9327	0x15ec808	 Showing all
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc94e0	0x15eb514	/
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc982c	0x15ec7f0	 Showing important
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc9867	0x15ec808	 Showing all
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc9a20	0x15eb514	/
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xc9e10	0x15eb514	/
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xca12c	0x15ec850	: Toggle line
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xca286	0x15ec860	...
+steam	PE:6a70a6d9:02711000	title-source-c2110	0xca2ca	0x15ec82c	_
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdf9e2	0x15ee2f0	Done: 
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfb92	0x15ee2b8	Insurrection with 
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfb9b	0x15ee2d0	Guided by 
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfba4	0x15ee320	Rescue 
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfbad	0x15ee328	Aid rescue with 
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfbb6	0x15ee2f8	Adventure with 
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfbbf	0x15ee308	The bound service of
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfbc8	0x15ee378	Entertain people with 
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfc84	0x15ec3a0	World Joining Agreement
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfc96	0x15ec358	Residency Agreement
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfca8	0x15ec370	Grant of Citizenship
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfcba	0x15ec3e0	Parley Arrangement
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfccc	0x15ec3f8	Corruption
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfcde	0x15ec3b8	Artifact Theft
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfcf0	0x15ec3c8	Promise of Position
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfd02	0x15ec430	Assassination Plot
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfd14	0x15ec448	Abduction Plot
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfd26	0x15ec408	Sabotage Plot
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfd32	0x15ec418	Infiltration Plot
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfd41	0x15ec498	Framing Plot
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfd4a	0x15ec4a8	War Starting Plot
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfd6e	0x15ec4e8	Foiled Embezzlement Conspiracy
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfd7d	0x15ec478	Foiled Corruption Conspiracy
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfd8c	0x15ec458	Foiled Bribery Conspiracy
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfd9b	0x15ec508	Build Structure
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfdaa	0x15ec4c0	Offer Service
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdfdb3	0x15ec4d0	Retrieve Artifact
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdff5b	0x15ee340	Order: Drive off 
+steam	PE:6a70a6d9:02711000	title-source-df540	0xdff88	0x15ed97c	 from 
+steam	PE:6a70a6d9:02711000	title-source-df540	0xe0185	0x15ee390	Order: Kill 
+steam	PE:6a70a6d9:02711000	title-source-df540	0xe03ba	0x15ee358	Order: Cause trouble for 
+steam	PE:6a70a6d9:02711000	title-source-df540	0xe0ccc	0x15ee340	Order: Drive off 
+steam	PE:6a70a6d9:02711000	title-source-df540	0xe0cf4	0x15ed97c	 from 
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf3476	0x16ccba0	Bring
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf354a	0x15e74f8	to
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf38fb	0x16ac140	***
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf3965	0x16ac2d0	WSW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf39a1	0x169a664	SW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf39de	0x16ac2c4	SSW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf3a1b	0x166c08c	S
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf3a58	0x16ac2c8	SSE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf3a95	0x169a668	SE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf3ad2	0x16ac2dc	ESE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf3b0f	0x16ac2e0	E
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf3b4c	0x16ac2d4	ENE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf3b89	0x169a660	NE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf3bcd	0x16ac2d8	NNE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf3c11	0x16ac210	N
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf3c55	0x16ac134	NNW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf3c99	0x169a65c	NW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf3cda	0x16ac138	WNW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf3d0d	0x16ac2cc	W
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf3dd9	0x15e7728	An order from
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf3ec2	0x15e76e0	Finish reporting in
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf441a	0x16ac210	N
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4455	0x16ac2d8	NNE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4490	0x169a660	NE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf44cb	0x16ac2d4	ENE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4506	0x16ac2e0	E
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4541	0x16ac2dc	ESE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf457c	0x169a668	SE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf45b7	0x16ac2c8	SSE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf45f2	0x166c08c	S
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf462d	0x16ac2c4	SSW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4668	0x169a664	SW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf46a3	0x16ac2d0	WSW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf46de	0x16ac2cc	W
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4719	0x16ac138	WNW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4754	0x169a65c	NW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf478f	0x16ac134	NNW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf47ca	0x16ac140	***
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4839	0x15e3c40	You
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf48e1	0x16ccb90	asked that you
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4939	0x15e76a0	retrieve
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4d66	0x16ac140	***
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4dd7	0x16ac2d0	WSW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4e1a	0x169a664	SW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4e5e	0x16ac2c4	SSW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4ea2	0x166c08c	S
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4ee6	0x16ac2c8	SSE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4f2a	0x169a668	SE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4f6e	0x16ac2dc	ESE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4fb2	0x16ac2e0	E
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf4ff6	0x16ac2d4	ENE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf503a	0x169a660	NE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf5085	0x16ac2d8	NNE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf50d0	0x16ac210	N
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf511b	0x16ac134	NNW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf5166	0x169a65c	NW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf51b1	0x16ac138	WNW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf51eb	0x16ac2cc	W
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf539a	0x16cc3a0	requested that you
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf53f2	0x16ccb78	offer your services to
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf57bd	0x16ac140	***
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf5827	0x16ac2d0	WSW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf5863	0x169a664	SW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf58a0	0x16ac2c4	SSW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf58dd	0x166c08c	S
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf591a	0x16ac2c8	SSE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf5957	0x169a668	SE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf5994	0x16ac2dc	ESE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf59d1	0x16ac2e0	E
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf5a0e	0x16ac2d4	ENE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf5a4b	0x169a660	NE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf5a8f	0x16ac2d8	NNE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf5ad3	0x16ac210	N
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf5b17	0x16ac134	NNW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf5b5b	0x169a65c	NW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf5b9c	0x16ac138	WNW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf5bcf	0x16ac2cc	W
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf616a	0x16ac210	N
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf61a5	0x16ac2d8	NNE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf61e0	0x169a660	NE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf621b	0x16ac2d4	ENE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf6256	0x16ac2e0	E
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf6291	0x16ac2dc	ESE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf62cc	0x169a668	SE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf6307	0x16ac2c8	SSE
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf6342	0x166c08c	S
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf637d	0x16ac2c4	SSW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf63b8	0x169a664	SW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf63f3	0x16ac2d0	WSW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf642e	0x16ac2cc	W
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf6469	0x16ac138	WNW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf64a4	0x169a65c	NW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf64dc	0x16ac134	NNW
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf6514	0x16ac140	***
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf65a8	0x15e7638	Agreement concluded
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf6617	0x15e76f8	Complete: report back
+classic	PE:6a70b91c:0270a000	task-renderer	0xaf666b	0x15e7760	Not yet completed
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc2929	0x15e7168	Agreements
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc295b	0x15e71ac	Events
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc298d	0x15e71b4	People
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc29bf	0x15e719c	Sites
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc29f1	0x15e71a4	Groups
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc2a23	0x15e71e0	Regions
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc2a55	0x15e71e8	Bestiary
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc2a84	0x15e71c0	Artifacts
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc2ab3	0x15e71d0	Intrigue
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc2df6	0x15e71f4	Plots
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc2e24	0x15e7220	Organizations
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc2e52	0x15e7218	Actors
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc319e	0x15e64cc	/
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3468	0x15e7278	Centered on first heard
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc34d6	0x15e7260	Centered on last heard
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3541	0x15e7200	Centered on location
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3798	0x15e7248	 Showing type,date
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc37c2	0x15e7230	 Showing pin,last
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc398b	0x15e64cc	/
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3b1b	0x15e72c0	Overthrow Agreement
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3b27	0x15e72d8	Guide Agreement
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3b33	0x15e7290	Rescue Agreement
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3b3f	0x15e72a8	Aid Rescue Agreement
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3b4b	0x15e7318	Adventuring Agreement
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3b57	0x15e7330	Bound Servitude
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3b63	0x15e72e8	Entertainment Agreement
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3b6f	0x15e7300	World Joining Agreement
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3b7b	0x15e7368	Residency Agreement
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3b87	0x15e7380	Grant of Citizenship
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3b93	0x15e7340	Parley Arrangement
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3b9f	0x15e7358	Corruption
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3bab	0x15e73c0	Artifact Theft
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3bb7	0x15e73d0	Promise of Position
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3bc3	0x15e7398	Assassination Plot
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3bcf	0x15e73b0	Abduction Plot
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3bd8	0x15e7410	Sabotage Plot
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3be1	0x15e7420	Infiltration Plot
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3bea	0x15e73e8	Framing Plot
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3bf3	0x15e73f8	War Starting Plot
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3c20	0x15e7438	Foiled Embezzlement Conspiracy
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3c29	0x15e7488	Foiled Corruption Conspiracy
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3c32	0x15e7468	Foiled Bribery Conspiracy
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3c3b	0x15e7458	Build Structure
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3c44	0x15e74c0	Offer Service
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3c4d	0x15e74d0	Retrieve Artifact
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3da7	0x15e3c40	You
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3e54	0x15e7690	asked that
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3eb5	0x15e74b8	you
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc3f5c	0x15e76a0	retrieve
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc4052	0x15e7684	from
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc414e	0x15e768c	for
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc42a1	0x15e76c8	Drive members of
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc4364	0x15e76ac	out of
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc44fa	0x15e3c40	You
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc45a7	0x15e7650	requested that
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc4608	0x15e74b8	you
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc46ab	0x15e7660	make an offer of service to
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc489c	0x15e3c40	You
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc4949	0x15e74a8	agreed to join
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc49aa	0x15e74b8	you
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc4a4f	0x15e7500	in insurrection against
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc4b27	0x15e7518	thereby freeing
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc4c18	0x15e3c40	You
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc4cc5	0x15e74e8	agreed to guide
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc4d26	0x15e74b8	you
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc4dcb	0x15e74f8	to
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc4fd3	0x15e7560	somebody unknown
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5048	0x15e3c40	You
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc50f5	0x15e74a8	agreed to join
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5156	0x15e74b8	you
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc51f7	0x15e7578	in order to be brought safely away from
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc52ec	0x15e3c40	You
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5399	0x15e74a8	agreed to join
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc53fa	0x15e74b8	you
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc549b	0x15e7528	in order to rescue
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5616	0x15e7560	somebody unknown
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc568b	0x15e3c40	You
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5738	0x15e7540	agreed to adventure with
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5799	0x15e74b8	you
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc583a	0x15e75e0	wherever the journey might lead
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc58a9	0x15e3c40	You
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5956	0x15e7600	was bound to serve
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc59b7	0x15e74b8	you
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5a58	0x15e75a0	by invocation of True Name
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5ac7	0x15e3c40	You
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5b74	0x15e75c0	agreed to entertain people with
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5bd5	0x15e74b8	you
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5c76	0x15e7620	throughout the world
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5cfd	0x15e7638	Agreement concluded
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5dd0	0x15e7614	st
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5dd9	0x15e7618	nd
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5de2	0x15e767c	rd
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5deb	0x15e7680	th
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5dfb	0x15e3720	 
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5e2d	0x15e40c4	, 
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5eb5	0x15e76bc	Kill
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc5f96	0x15e7710	Cause trouble for
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc605a	0x15e76b4	Drive
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc611d	0x15e7684	from
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc61e3	0x15e7728	An order from
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc62cd	0x15e76e0	Finish reporting in
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc633e	0x15e76f8	Complete: report back
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc638b	0x15e7760	Not yet completed
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc6504	0x15e3c40	You
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc65b1	0x15e7690	asked that
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc6612	0x15e74b8	you
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc66b5	0x15e7738	retrieve 
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc684f	0x15e3c40	You
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc68fc	0x15e7650	requested that
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc695d	0x15e74b8	you
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc6a00	0x15e7774	serve 
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc6ae5	0x15e7638	Agreement concluded
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc6b86	0x15e7728	An order from
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc6c6d	0x15e76e0	Finish reporting in
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc6cdb	0x15e76f8	Complete: report back
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc6d25	0x15e7760	Not yet completed
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc6ef7	0x15e7748	Centered on commander
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc6f61	0x15e7798	Centered on target
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc71e1	0x15e778c	Org: 
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc726b	0x15e64cc	/
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc74d2	0x15e64cc	/
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc7ec9	0x15e77b0	One member
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc7f15	0x15e7780	 members
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc8205	0x15e64cc	/
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc85f0	0x15e64cc	/
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc89e0	0x15e64cc	/
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc8d2c	0x15e77d8	 Showing important
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc8d67	0x15e77f0	 Showing all
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc8f32	0x15e64cc	/
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc927c	0x15e77d8	 Showing important
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc92b7	0x15e77f0	 Showing all
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc9470	0x15e64cc	/
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc97bc	0x15e77d8	 Showing important
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc97f7	0x15e77f0	 Showing all
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc99b0	0x15e64cc	/
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xc9da0	0x15e64cc	/
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xca0bc	0x15e77c0	: Toggle line
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xca216	0x15e77d0	...
+classic	PE:6a70b91c:0270a000	title-source-c20a0	0xca25a	0x15e783c	_
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdf972	0x15e9260	Done: 
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfb22	0x15e92a8	Insurrection with 
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfb2b	0x15e92c0	Guided by 
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfb34	0x15e9288	Rescue 
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfb3d	0x15e9290	Aid rescue with 
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfb46	0x15e92f8	Adventure with 
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfb4f	0x15e9308	The bound service of
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfb58	0x15e92d0	Entertain people with 
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfc14	0x15e7300	World Joining Agreement
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfc26	0x15e7368	Residency Agreement
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfc38	0x15e7380	Grant of Citizenship
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfc4a	0x15e7340	Parley Arrangement
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfc5c	0x15e7358	Corruption
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfc6e	0x15e73c0	Artifact Theft
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfc80	0x15e73d0	Promise of Position
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfc92	0x15e7398	Assassination Plot
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfca4	0x15e73b0	Abduction Plot
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfcb6	0x15e7410	Sabotage Plot
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfcc2	0x15e7420	Infiltration Plot
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfcd1	0x15e73e8	Framing Plot
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfcda	0x15e73f8	War Starting Plot
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfcfe	0x15e7438	Foiled Embezzlement Conspiracy
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfd0d	0x15e7488	Foiled Corruption Conspiracy
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfd1c	0x15e7468	Foiled Bribery Conspiracy
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfd2b	0x15e7458	Build Structure
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfd3a	0x15e74c0	Offer Service
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfd43	0x15e74d0	Retrieve Artifact
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdfeeb	0x15e9320	Order: Drive off 
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xdff18	0x15e8984	 from 
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xe0115	0x15e92e8	Order: Kill 
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xe034a	0x15e9338	Order: Cause trouble for 
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xe0c5c	0x15e9320	Order: Drive off 
+classic	PE:6a70b91c:0270a000	title-source-df4d0	0xe0c84	0x15e8984	 from 

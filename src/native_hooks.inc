@@ -31,6 +31,8 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_history_capture.inc"
 #include "native_dfhack_raw_creatures.inc"
 #include "native_history_hooks.inc"
+#include "native_announcement_popup.inc"
+#include "native_adventure_quest_source.inc"
 #include "native_mod_details.inc"
 #include "native_embark_reclaim_history.inc"
 #include "native_ime_adapter.inc"
@@ -68,6 +70,8 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_overview_quote_hooks.inc"
 #include "native_paragraph_hooks.inc"
 #include "native_trade_paragraph_hooks.inc"
+#include "native_trade_item_fields.inc"
+#include "native_trade_item_hooks.inc"
 #include "native_workshop_recipe_hooks.inc"
 #include "native_rich_hooks.inc"
 #include "native_adventure_hover_hooks.inc"
@@ -125,6 +129,7 @@ static bool install_sdl_hooks() {
         {"Native overview quote draw", install_native_overview_quote_hooks},
         {"Complete paragraph capture", install_native_paragraph_hook},
         {"Complete trade reply capture", install_native_trade_paragraph_hooks},
+        {"Trade item memory capture", install_native_trade_item_hooks},
         {"Complete workshop requirement capture", install_native_workshop_recipe_hooks},
         {"Rich-text capture", install_native_rich_hooks},
         {"Adventure hover background capture", install_native_adventure_hover_hook},
@@ -173,6 +178,7 @@ static void uninstall_sdl_hooks() {
     uninstall_native_rich_hooks();
     uninstall_native_workshop_recipe_hooks();
     uninstall_native_trade_paragraph_hooks();
+    uninstall_native_trade_item_hooks();
     uninstall_native_paragraph_hook();
     uninstall_native_overview_quote_hooks();
     uninstall_native_character_relations_hook();
@@ -224,6 +230,7 @@ static bool native_hooks_detached() {
         !native_history_hooks_active() && !native_announcement_hook_active() && !native_adventure_hover_hook_active() &&
         !native_rich_hooks_active() && !native_paragraph_hooks_active() &&
         !native_trade_paragraph_hooks_active() &&
+        !native_trade_item_hooks_active() &&
         !native_workshop_recipe_hooks_active() &&
         !native_caption_hooks_active() && !native_conversation_search_hook_active() &&
         !native_character_relations_hook_active() &&

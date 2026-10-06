@@ -1,0 +1,17 @@
+role	native_branch	field_position	steam_evidence	classic_evidence	handling
+task-card	all records	pinned-active 3x3 skin; 6 rows; inset x+2	0xaf6150..0xaf628a	0xaf3190..0xaf32ca	complete native skin rectangle
+task-title	18 agreement_details_type values	task+0x20 original; task+0x60 display; y+1	0xdf9ee..0xdfdc4; 0xcdf30..0xcdfb3; draw return0xaf628f	0xdf97e..0xdfd54; 0xcdec0..0xcdf43; draw return0xaf32cf	guarded retained original: current+0x60==captured source and original+0x20.substr(0,58)==current
+task-title-companion	reason enum 0..42 and out-of-range default	7 finite prefixes; default still appends full person; absent participant leaves empty or Done:; empty language_name retains its prefix	0xdfb6f..0xdfc79; tables0xe0f1c/0xe0f3c	0xdfaff..0xdfc09; tables0xe0eac/0xe0ecc	all enum values retained; read subject0, reason and end_year; full person resolver for bare and Done:bare title; prefix-only keeps empty person field
+task-title-order	order goal variants	Drive off entity from site; Kill full HF actor; Cause trouble for entity	0xdff55..0xdffa1;0xe0cc6..0xe0d0d;0xe0272;0xe03dc	0xdfee5..0xdff31;0xe0c56..0xe0c9d;0xe0202;0xe036c	entity formatter0xb92900; site0xb93930; actor0xb92f10; try complete entity/site boundary when names contain from
+task-title-completed	JoinParty end_year != -1	Done: prefix	0xdf9c5..0xdf9e9	0xdf955..0xdf979	已完成
+retrieve-delivery	RetrieveArtifact subject17; artifact held	Bring y+2; artifact y+3; to y+4; entity y+5	0xaf640b..0xaf65bd	0xaf344b..0xaf35fd	fixed sentence rows and typed artifact/entity rows
+retrieve-search	RetrieveArtifact subject17; artifact not held	person or native You y+2; asked that you y+3; retrieve y+4; artifact y+5	0xaf77c5..0xaf79ac	0xaf4805..0xaf49ec	typed actor/pronoun; fixed clauses; full artifact identity
+offer-service	OfferService subject16	requester y+2; requested that you y+3; offer your services to y+4; entity y+5	0xaf82d6..0xaf8465	0xaf5316..0xaf54a5	typed requester; fixed clauses; typed entity
+agreement-concluded	JoinParty subject0 with end_year != -1	Agreement concluded y+3	0xaf9524..0xaf9599	0xaf6564..0xaf65d9	协议已结束
+order-issuer	task+0x8 and task+0x10 present	An order from y+2; full HF actor y+3	0xaf6d52..0xaf6e52	0xaf3d92..0xaf3e92	下令者; full historical actor
+order-status	order flag&1	Finish reporting in y+4	0xaf6e5d..0xaf6eb3	0xaf3e9d..0xaf3ef3	完成汇报
+order-status	order flag&1 absent; completed flag set	Complete: report back y+4	0xaf95b7..0xaf9608	0xaf65f7..0xaf6648	已完成：返回汇报
+order-status	order flag&1 absent; completed flag clear	Not yet completed y+4	0xaf960f..0xaf965c	0xaf664f..0xaf669c	尚未完成
+bearing	retrieval and service navigation; multiple native target-location sources	x=right-4; y+1; 16 directions or same-location ***	0xaf6860..0xaf6cfe;0xaf7ccb..0xaf81e3;0xaf8713..0xaf8bc0	0xaf38a0..0xaf3d3e;0xaf4d0b..0xaf5223;0xaf5753..0xaf5c00	dedicated bearing field; native same-location marker preserved
+altitude	retrieval/service target elevation differs from player	x=right-1; y+1; native up/down glyph	0xaf6d08..0xaf6d47;0xaf81f5..0xaf8215	0xaf3d48..0xaf3d87;0xaf5235..0xaf5255	native directional glyph preserved separately from text
+empty-body	other subject types or absent native target	no fixed prose; missing title does not hide later native state/issuer fields	0xaf62b1..0xaf62c5;0xaf95a3	0xaf32f1..0xaf3305;0xaf65e3	native empty branch; translate remaining proven body/bearing fields independently of title availability

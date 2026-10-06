@@ -5,7 +5,7 @@
     const auto fixed_confirm_dialog = [&]() -> bool {
         if (!confirm_action || action != "Yes, proceed") return false;
         using ConfirmPair = std::pair<std::string_view, std::string_view>;
-        static constexpr std::array<ConfirmPair, 12> questions{{
+        static constexpr std::array<ConfirmPair, 13> questions{{
             {"Cancel trade",
                 "Are you sure you want leave this screen? Selected items will not be saved."},
             {"Mark all fortress goods",
@@ -30,6 +30,8 @@
                 "Are you sure you want to remove this depot? Merchants are present and will lose profits."},
             {"Delete uniform",
                 "Are you sure you want to delete this uniform?"},
+            {"Re-run finder",
+                "Are you sure you want to re-run the site finder? Your current map highlights will be lost."},
         }};
         const auto question = std::find_if(questions.begin(), questions.end(),
             [&](const ConfirmPair &pair) { return pair.first == title; });
@@ -138,6 +140,8 @@
         gui_literal(action_x, footer_y, action, body_right, "Confirmation action");
         gui_literal(left + static_cast<int>(settings_at), controls_y, settings,
             body_right, "Confirmation control");
+        gui_literal(frame->x + 3, bottom, "PAUSE FORCED", frame->x + 15,
+            "Frame status");
         if (pause_at) {
             if (pause_size == pause.size())
                 gui_literal(*pause_at, controls_y, pause,

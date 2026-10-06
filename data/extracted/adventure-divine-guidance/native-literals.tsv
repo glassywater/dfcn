@@ -1,0 +1,599 @@
+edition	role	owner_rva	instruction_rva	literal_rva	text
+reference	owner	0x7eed80	0x7ef6f2	0x1611928	Adventure mode
+reference	owner	0x7eed80	0x7efe49	0x16ae038	You've assumed tactical control as nobody else is available.
+reference	owner	0x7eed80	0x7f04d1	0x16ada68	"""Greetings.  I am "
+reference	owner	0x7eed80	0x7f0522	0x16adac0	, and I have chosen you
+reference	owner	0x7eed80	0x7f0560	0x16adaa8	 as my instrument of 
+reference	owner	0x7eed80	0x7f05c0	0x15fd968	.  
+reference	owner	0x7eed80	0x7f062b	0x16ada18	The remnants of creation, 
+reference	owner	0x7eed80	0x7f0687	0x16ad9f8	, belong with my followers, 
+reference	owner	0x7eed80	0x7f06b7	0x15fd968	.  
+reference	owner	0x7eed80	0x7f06d7	0x16ada58	Seek out 
+reference	owner	0x7eed80	0x7f0716	0x15ecfb4	 in 
+reference	owner	0x7eed80	0x7f0754	0x16ada38	" and fulfill your destiny."""
+reference	owner	0x7eed80	0x7f0ce1	0x16adc00	"""You've found "
+reference	owner	0x7eed80	0x7f0d2e	0x16add48	"!  My chosen, you must speak to them and offer your service."""
+reference	owner	0x7eed80	0x7f0f90	0x16adc10	"""You will have to leave this structure first before you can travel.  Try to make your way out to the settlement."""
+reference	owner	0x7eed80	0x7f139b	0x16adc90	"""Do you feel the pull?  You sense the direction of my representative.  It is possible to travel quickly to reach them, or you may journey more deliberately.  It is your decision."""
+reference	owner	0x7eed80	0x7f1759	0x16adaf0	"""Congratulations!  Now you must return this precious object to its proper home."""
+reference	owner	0x7eed80	0x7f1807	0x15e9718	""""
+reference	owner	0x7eed80	0x7f181b	0x16adad8	You seek 
+reference	owner	0x7eed80	0x7f1847	0x16adb80	".  If you do not find the location in your log, ask others for directions.  You may also follow the pull from your senses."""
+reference	owner	0x7eed80	0x7f18eb	0x15e9718	""""
+reference	owner	0x7eed80	0x7f18ff	0x16adb48	The journey is long.  Be sure to travel to 
+reference	owner	0x7eed80	0x7f192b	0x16ad6c8	", rather than walking leisurely."""
+reference	owner	0x7eed80	0x7f1ac9	0x16ad5f0	"""This place is dangerous.  Steel yourself against ancient enemies.  Try not to let yourself be surrounded, and remain standing.  Enter and vanquish!  Or slip in unseen.  Securing the treasure is all that matters."""
+reference	owner	0x7eed80	0x7f1c76	0x16ad710	"""You are close.  Follow your senses to the entrance."
+reference	owner	0x7eed80	0x7f1cca	0x16ad6f0	  But my chosen, you are 
+reference	owner	0x7eed80	0x7f1cfd	0x16ad5a0	in a state
+reference	owner	0x7eed80	0x7f1d06	0x16ad580	in need of drink and sustenance
+reference	owner	0x7eed80	0x7f1d17	0x16ad5b0	in need of sustenance and sleep
+reference	owner	0x7eed80	0x7f1d20	0x16ad990	in need of sustenance
+reference	owner	0x7eed80	0x7f1d40	0x16ad5d0	in need of drink and sleep
+reference	owner	0x7eed80	0x7f1d49	0x16ad978	in need of drink
+reference	owner	0x7eed80	0x7f1d5e	0x16ad9e0	in need of sleep
+reference	owner	0x7eed80	0x7f1d71	0x16ad9a8	!  See to yourself before you face what's ahead.
+reference	owner	0x7eed80	0x7f1dd8	0x16ad7d0	  Remember that ice and snow can be heated by a campfire.
+reference	owner	0x7eed80	0x7f1deb	0x15e9718	""""
+reference	owner	0x7eed80	0x7f1efb	0x16ad810	"""Congratulations, my faithful chosen!  There are other ways you can serve, if you offer your service again.  You may also live your life as you see fit now if you choose.  You have done well."""
+reference	owner	0x7eed80	0x7f2079	0x16ad750	"""With the treasure, you are near to glory and fulfillment of your task.  Your senses can lead you on your return journey."""
+reference	owner	0x7eed80	0x7f2196	0x16ad8e0	"""You may return the object to the faithful by gifting it to one of the priests, or you may simply drop it in this structure wherever you see fit."""
+reference	owner	0x7eed80	0x7f2252	0x16aeb00	"""My other worshippers?  As you wish, my faithful chosen!  There are other ways you can serve, if you offer your service again.  You may also live your life as you see fit now if you choose.  You have done well."""
+reference	owner	0x7eed80	0x7f2306	0x16aeae0	"""Ungrateful apostate!"""
+reference	owner	0x7eed80	0x7f2788	0x16aebec	You 
+reference	owner	0x7eed80	0x7f27c3	0x15e873c	 
+reference	owner	0x7eed80	0x7f27f0	0x16aebd8	have been cursed
+reference	owner	0x7eed80	0x7f27fc	0x15eda08	 by 
+reference	owner	0x7eed80	0x7f2822	0x15ee438	!
+reference	owner	0x7eed80	0x7f32da	0x16ae018	You awaken from your slumber.
+reference	owner	0x7eed80	0x7f3392	0x16ada80	Your sleep has been interrupted!
+reference	owner	0x7eed80	0x7f3c02	0x16adfb0	"""You are approaching your destination.  End your travels now and prepare yourself."""
+reference	figure-field	0xb92f10	0xb92f8a	0x16df900	interrogator
+reference	figure-field	0xb92f10	0xb92fa1	0x1674d08	subject
+reference	figure-field	0xb92f10	0xb93073	0x16290f0	Nameless
+reference	figure-field	0xb92f10	0xb9310e	0x16df8e0	an unidentified creature
+reference	figure-field	0xb92f10	0xb93133	0x15fdb08	[LPAGE:HF:
+reference	figure-field	0xb92f10	0xb93153	0x15fd690	]
+reference	figure-field	0xb92f10	0xb9325d	0x1662ef8	myself
+reference	figure-field	0xb92f10	0xb93266	0x1662efc	lf
+reference	figure-field	0xb92f10	0xb9331b	0x15e8e48	the 
+reference	figure-field	0xb92f10	0xb9333f	0x167db90	zombie 
+reference	figure-field	0xb92f10	0xb93377	0x15fdbb8	ghostly 
+reference	figure-field	0xb92f10	0xb93499	0x15e873c	 
+reference	figure-field	0xb92f10	0xb934c8	0x15e873c	 
+reference	figure-field	0xb92f10	0xb93551	0x15e956c	 the 
+reference	figure-field	0xb92f10	0xb93575	0x167db90	zombie 
+reference	figure-field	0xb92f10	0xb935ad	0x15fdbb8	ghostly 
+reference	figure-field	0xb92f10	0xb936cd	0x15e873c	 
+reference	figure-field	0xb92f10	0xb9374e	0x15ed620	a 
+reference	figure-field	0xb92f10	0xb93755	0x15e8e48	the 
+reference	figure-field	0xb92f10	0xb9377d	0x167db90	zombie 
+reference	figure-field	0xb92f10	0xb937b5	0x15fdbb8	ghostly 
+reference	figure-field	0xb92f10	0xb9381c	0x15e873c	 
+reference	figure-field	0xb92f10	0xb93867	0x15e9260	's
+reference	figure-field	0xb92f10	0xb93886	0x15fda88	[/LPAGE]
+reference	figure-field	0xb92f10	0xb938dc	0x1663cd8	an unknown creature
+reference	figure-field	0xb92f10	0xb938f2	0x15e9260	's
+reference	sphere-field	0x756690	0x7566b5	0x16a1b08	agriculture
+reference	sphere-field	0x756690	0x7566ca	0x16a1250	animals
+reference	sphere-field	0x756690	0x7566df	0x16a1258	art
+reference	sphere-field	0x756690	0x7566f4	0x16a1260	balance
+reference	sphere-field	0x756690	0x756709	0x16a1268	beauty
+reference	sphere-field	0x756690	0x75671e	0x16a1270	birth
+reference	sphere-field	0x756690	0x756733	0x16a1278	blight
+reference	sphere-field	0x756690	0x756748	0x16a1280	boundaries
+reference	sphere-field	0x756690	0x75675d	0x16a1290	caverns
+reference	sphere-field	0x756690	0x756772	0x16a1298	chaos
+reference	sphere-field	0x756690	0x756787	0x16a12a0	charity
+reference	sphere-field	0x756690	0x75679c	0x16a12a8	children
+reference	sphere-field	0x756690	0x7567b1	0x16a12b4	coasts
+reference	sphere-field	0x756690	0x7567c6	0x16a12c0	consolation
+reference	sphere-field	0x756690	0x7567db	0x16a12d0	courage
+reference	sphere-field	0x756690	0x7567f0	0x16a12d8	crafts
+reference	sphere-field	0x756690	0x756805	0x16a12e0	creation
+reference	sphere-field	0x756690	0x75681a	0x15edfc0	dance
+reference	sphere-field	0x756690	0x75682f	0x16a1530	darkness
+reference	sphere-field	0x756690	0x756844	0x16706fc	dawn
+reference	sphere-field	0x756690	0x756859	0x1670704	day
+reference	sphere-field	0x756690	0x75686e	0x15eddb4	death
+reference	sphere-field	0x756690	0x756883	0x16a1540	deformity
+reference	sphere-field	0x756690	0x756898	0x16a1550	depravity
+reference	sphere-field	0x756690	0x7568ad	0x16a1560	discipline
+reference	sphere-field	0x756690	0x7568c2	0x16a1570	disease
+reference	sphere-field	0x756690	0x7568d7	0x16a1578	dreams
+reference	sphere-field	0x756690	0x7568ec	0x16a1580	dusk
+reference	sphere-field	0x756690	0x756901	0x1674c00	duty
+reference	sphere-field	0x756690	0x756916	0x16a1588	earth
+reference	sphere-field	0x756690	0x75692b	0x16415fc	family
+reference	sphere-field	0x756690	0x756940	0x16a1590	fame
+reference	sphere-field	0x756690	0x756955	0x16a1598	fate
+reference	sphere-field	0x756690	0x75696a	0x16a15a0	fertility
+reference	sphere-field	0x756690	0x75697f	0x16a15b0	festivals
+reference	sphere-field	0x756690	0x756994	0x16a15bc	fire
+reference	sphere-field	0x756690	0x7569a9	0x16a11f0	fish
+reference	sphere-field	0x756690	0x7569be	0x16a15c8	fishing
+reference	sphere-field	0x756690	0x7569d3	0x16a15d0	food
+reference	sphere-field	0x756690	0x7569e8	0x16a15d8	forgiveness
+reference	sphere-field	0x756690	0x7569fd	0x16a1470	fortresses
+reference	sphere-field	0x756690	0x756a12	0x16a1480	freedom
+reference	sphere-field	0x756690	0x756a27	0x16a11f8	gambling
+reference	sphere-field	0x756690	0x756a3c	0x16a1488	games
+reference	sphere-field	0x756690	0x756a51	0x16a1490	generosity
+reference	sphere-field	0x756690	0x756a66	0x1670a58	happiness
+reference	sphere-field	0x756690	0x756a7b	0x16a1208	healing
+reference	sphere-field	0x756690	0x756a90	0x16a14a0	hospitality
+reference	sphere-field	0x756690	0x756aa5	0x16a1210	hunting
+reference	sphere-field	0x756690	0x756aba	0x16a14b0	inspiration
+reference	sphere-field	0x756690	0x756acf	0x16a14c0	jealousy
+reference	sphere-field	0x756690	0x756ae4	0x16a14cc	jewels
+reference	sphere-field	0x756690	0x756af9	0x16a14d8	justice
+reference	sphere-field	0x756690	0x756b0e	0x15ede6c	labor
+reference	sphere-field	0x756690	0x756b23	0x16a14e0	lakes
+reference	sphere-field	0x756690	0x756b38	0x16a14e8	laws
+reference	sphere-field	0x756690	0x756b4d	0x16a14f0	lies
+reference	sphere-field	0x756690	0x756b62	0x167607c	light
+reference	sphere-field	0x756690	0x756b77	0x16a14f8	lightning
+reference	sphere-field	0x756690	0x756b8c	0x16a1508	longevity
+reference	sphere-field	0x756690	0x756ba1	0x16025ec	love
+reference	sphere-field	0x756690	0x756bb6	0x16415b0	loyalty
+reference	sphere-field	0x756690	0x756bcb	0x16a1514	luck
+reference	sphere-field	0x756690	0x756be0	0x1670fac	lust
+reference	sphere-field	0x756690	0x756bf5	0x16a1520	marriage
+reference	sphere-field	0x756690	0x756c0a	0x16a13bc	mercy
+reference	sphere-field	0x756690	0x756c1f	0x16a13c4	metals
+reference	sphere-field	0x756690	0x756c34	0x16a13d0	minerals
+reference	sphere-field	0x756690	0x756c49	0x1670f84	misery
+reference	sphere-field	0x756690	0x756c5e	0x16a13dc	mist
+reference	sphere-field	0x756690	0x756c73	0x16a13e4	moon
+reference	sphere-field	0x756690	0x756c88	0x164c4a8	mountains
+reference	sphere-field	0x756690	0x756c9d	0x16a13ec	muck
+reference	sphere-field	0x756690	0x756cb2	0x15ede54	murder
+reference	sphere-field	0x756690	0x756cc7	0x15eb50c	music
+reference	sphere-field	0x756690	0x756cdc	0x16416ec	nature
+reference	sphere-field	0x756690	0x756cf1	0x1670434	night
+reference	sphere-field	0x756690	0x756d06	0x16a13f8	nightmares
+reference	sphere-field	0x756690	0x756d1b	0x16a1404	oaths
+reference	sphere-field	0x756690	0x756d30	0x16a140c	oceans
+reference	sphere-field	0x756690	0x756d45	0x15eddcc	order
+reference	sphere-field	0x756690	0x756d5a	0x16a1418	painting
+reference	sphere-field	0x756690	0x756d6f	0x15ee0cc	peace
+reference	sphere-field	0x756690	0x756d84	0x16a1428	persuasion
+reference	sphere-field	0x756690	0x756d99	0x16a1434	plants
+reference	sphere-field	0x756690	0x756dae	0x161b6dc	poetry
+reference	sphere-field	0x756690	0x756dc3	0x16a1440	pregnancy
+reference	sphere-field	0x756690	0x756dd8	0x164bfac	rain
+reference	sphere-field	0x756690	0x756ded	0x16a1450	rainbows
+reference	sphere-field	0x756690	0x756e02	0x16a1460	rebirth
+reference	sphere-field	0x756690	0x756e17	0x16a1468	revelry
+reference	sphere-field	0x756690	0x756e2c	0x16a1320	revenge
+reference	sphere-field	0x756690	0x756e41	0x16a1328	rivers
+reference	sphere-field	0x756690	0x756e56	0x16a1330	rulership
+reference	sphere-field	0x756690	0x756e6b	0x16a133c	rumors
+reference	sphere-field	0x756690	0x756e80	0x1641708	sacrifice
+reference	sphere-field	0x756690	0x756e95	0x16a1344	salt
+reference	sphere-field	0x756690	0x756eaa	0x16a1350	scholarship
+reference	sphere-field	0x756690	0x756ebf	0x16a1360	seasons
+reference	sphere-field	0x756690	0x756ed4	0x16a1368	silence
+reference	sphere-field	0x756690	0x756ee9	0x164c52c	sky
+reference	sphere-field	0x756690	0x756efe	0x15e9510	song
+reference	sphere-field	0x756690	0x756f13	0x16a1370	speech
+reference	sphere-field	0x756690	0x756f28	0x16a1378	stars
+reference	sphere-field	0x756690	0x756f3d	0x16a1380	storms
+reference	sphere-field	0x756690	0x756f52	0x1661fd8	strength
+reference	sphere-field	0x756690	0x756f67	0x16a1388	suicide
+reference	sphere-field	0x756690	0x756f7c	0x16a1390	sun
+reference	sphere-field	0x756690	0x756f91	0x15edefc	theft
+reference	sphere-field	0x756690	0x756fa6	0x16a1398	thralldom
+reference	sphere-field	0x756690	0x756fbb	0x16a13a8	thunder
+reference	sphere-field	0x756690	0x756fd0	0x1643a58	torture
+reference	sphere-field	0x756690	0x756fe5	0x164fbc4	trade
+reference	sphere-field	0x756690	0x756ffa	0x16a13b0	travelers
+reference	sphere-field	0x756690	0x75700f	0x16a1aa0	treachery
+reference	sphere-field	0x756690	0x757024	0x16a1aac	trees
+reference	sphere-field	0x756690	0x757039	0x16a1ab8	trickery
+reference	sphere-field	0x756690	0x75704e	0x16415dc	truth
+reference	sphere-field	0x756690	0x757063	0x16a12f8	twilight
+reference	sphere-field	0x756690	0x757078	0x16a1ac4	valor
+reference	sphere-field	0x756690	0x75708d	0x16a1ad0	victory
+reference	sphere-field	0x756690	0x7570a2	0x16a1ad8	volcanos
+reference	sphere-field	0x756690	0x7570b7	0x1649be4	war
+reference	sphere-field	0x756690	0x7570cc	0x164b874	water
+reference	sphere-field	0x756690	0x7570e1	0x16a1ae4	wealth
+reference	sphere-field	0x756690	0x7570f6	0x1674ef0	weather
+reference	sphere-field	0x756690	0x75710b	0x16a1aec	wind
+reference	sphere-field	0x756690	0x757120	0x16a1af4	wisdom
+reference	sphere-field	0x756690	0x757135	0x15edca0	writing
+reference	sphere-field	0x756690	0x75714a	0x16a1afc	youth
+reference	sphere-field	0x756690	0x75715f	0x16a1310	no sphere
+reference	material-field	0x14d1920	0x14d1987	0x1614d54	plant
+reference	material-field	0x14d1920	0x14d19a9	0x16158b4	yarn
+reference	material-field	0x14d1920	0x14d19d1	0x16158a4	cloth
+reference	material-field	0x14d1920	0x14d19f1	0x16158ac	silk
+reference	material-field	0x14d1920	0x14d1a11	0x16158c4	bone
+reference	material-field	0x14d1920	0x14d1a31	0x16156d0	leather
+reference	material-field	0x14d1920	0x14d1a51	0x16158bc	shell
+reference	material-field	0x14d1920	0x14d1a73	0x16158d4	soap
+reference	material-field	0x14d1920	0x14d1a95	0x1789150	ivory/tooth
+reference	material-field	0x14d1920	0x14d1ab7	0x16158e4	horn
+reference	material-field	0x14d1920	0x14d1ad9	0x16158dc	pearl
+reference	material-field	0x14d1920	0x14d1b08	0x16156d8	wood
+reference	material-field	0x14d1920	0x14d1b0f	0x16a12ec	wooden
+reference	material-field	0x14d1920	0x14d1c65	0x15edb24	's 
+reference	material-field	0x14d1920	0x14d1cf9	0x15e873c	 
+reference	material-field	0x14d1920	0x14d1d4a	0x1789108	unknown material
+reference	entity-field	0xb92900	0xb9296a	0x165e438	[LPAGE:ENT:
+reference	entity-field	0xb92900	0xb9298a	0x15fd690	]
+reference	entity-field	0xb92900	0xb929f4	0x15fda88	[/LPAGE]
+reference	entity-field	0xb92900	0xb92a4c	0x16df940	an unknown civilization
+reference	structure-field	0xb94090	0xb940f8	0x16df6d8	[LPAGE:AB:
+reference	structure-field	0xb94090	0xb9411b	0x1618434	:
+reference	structure-field	0xb94090	0xb9413b	0x15fd690	]
+reference	structure-field	0xb94090	0xb941ce	0x15fda88	[/LPAGE]
+reference	structure-field	0xb94090	0xb94255	0x16637c8	a counting house
+reference	structure-field	0xb94090	0xb94267	0x16637e0	a hospital
+reference	structure-field	0xb94090	0xb94279	0x1628b50	a guildhall
+reference	structure-field	0xb94090	0xb9428b	0x1663a38	a mead hall
+reference	structure-field	0xb94090	0xb9429d	0x1663a44	a keep
+reference	structure-field	0xb94090	0xb942af	0x1628b28	a temple
+reference	structure-field	0xb94090	0xb942c1	0x1663a18	a library
+reference	structure-field	0xb94090	0xb942d3	0x1663a28	a tavern
+reference	structure-field	0xb94090	0xb942e5	0x1672dc0	a dark tower
+reference	structure-field	0xb94090	0xb942f1	0x16639e8	an underworld spire
+reference	structure-field	0xb94090	0xb94300	0x1663a08	a market
+reference	structure-field	0xb94090	0xb9430f	0x16639dc	a tomb
+reference	structure-field	0xb94090	0xb94333	0x1663998	the catacombs
+reference	structure-field	0xb94090	0xb94342	0x16639d0	the sewers
+reference	structure-field	0xb94090	0xb94351	0x16639c0	a dungeon
+reference	structure-field	0xb94090	0xb94360	0x1663a00	a tower
+reference	structure-field	0xb94090	0xb94369	0x16df6e8	an unknown building
+reference	structure-field	0xb94090	0xb94388	0x15fda88	[/LPAGE]
+reference	structure-field	0xb94090	0xb94397	0x16df6e8	an unknown building
+reference	language-name	0xa946e0	0xa948a3	0x15e873c	 
+reference	language-name	0xa946e0	0xa9495e	0x15e873c	 
+reference	language-name	0xa946e0	0xa94a3b	0x15e873c	 
+reference	language-name	0xa946e0	0xa94a5d	0x15ed9bc	The 
+reference	language-name	0xa946e0	0xa94a78	0x15e8e48	the 
+reference	language-name	0xa946e0	0xa94af2	0x15e873c	 
+reference	language-name	0xa946e0	0xa94b11	0x15ed9bc	The 
+reference	language-name	0xa946e0	0xa94b1a	0x15e8e48	the 
+reference	language-name	0xa946e0	0xa94b9a	0x15e873c	 
+reference	language-name	0xa946e0	0xa94bb9	0x15ed9bc	The 
+reference	language-name	0xa946e0	0xa94bc2	0x15e8e48	the 
+reference	language-name	0xa946e0	0xa94d1f	0x15e873c	 
+reference	language-name	0xa946e0	0xa94d4b	0x15ed9bc	The 
+reference	language-name	0xa946e0	0xa94d62	0x15e8e48	the 
+reference	language-name	0xa946e0	0xa94e09	0x15e873c	 
+reference	language-name	0xa946e0	0xa94e18	0x16ced90	of 
+reference	language-name	0xa946e0	0xa94e1f	0x16cee1c	Of 
+reference	site-field	0xb93930	0xb9397a	0x16df920	[LPAGE:SITE:
+reference	site-field	0xb93930	0xb9399d	0x15fd690	]
+reference	site-field	0xb93930	0xb93a06	0x15fda88	[/LPAGE]
+reference	site-field	0xb93930	0xb93a5e	0x16df910	an unknown site
+reference	announcement-submission	0xe3c20	0xe3cd7	0x15ee4c0	Empty announcement 
+reference	announcement-submission	0xe3c20	0xe3ce1	0x15ee4d0	nt 
+reference	announcement-submission	0xe3c20	0xe3cec	0x15ee4d2	 
+reference	announcement-submission	0xe3c20	0xe3d64	0x16516f8	errorlog.txt
+reference	popup-lines-source	0xd51eb0	0xd5247d	0x16b1efc	CHAR
+reference	popup-lines-source	0xd51eb0	0xd5284e	0x171287c	LPAGE
+reference	popup-lines-source	0xd51eb0	0xd53099	0x1660374	HF
+reference	popup-lines-source	0xd51eb0	0xd530bf	0x1671df4	SITE
+reference	popup-lines-source	0xd51eb0	0xd530ea	0x16ed490	ARTIFACT
+reference	popup-lines-source	0xd51eb0	0xd53115	0x169daf4	BOOK
+reference	popup-lines-source	0xd51eb0	0xd53140	0x1712878	SR
+reference	popup-lines-source	0xd51eb0	0xd5316b	0x1712888	FL
+reference	popup-lines-source	0xd51eb0	0xd53196	0x1660458	ENT
+reference	popup-lines-source	0xd51eb0	0xd531c1	0x1712884	AB
+reference	popup-lines-source	0xd51eb0	0xd531ec	0x1712890	EPOP
+reference	popup-lines-source	0xd51eb0	0xd53217	0x169c050	ART_IMAGE
+reference	popup-lines-source	0xd51eb0	0xd53240	0x171288c	ERA
+reference	popup-lines-source	0xd51eb0	0xd5326b	0x17128a0	HEC
+reference	popup-lines-source	0xd51eb0	0xd5365b	0x1712898	/LPAGE
+reference	popup-lines-source	0xd51eb0	0xd537ab	0x16ad32c	C
+reference	popup-lines-source	0xd51eb0	0xd53cd1	0x17128a8	VAR
+reference	popup-lines-source	0xd51eb0	0xd53ddc	0x17128a4	KEY
+reference	popup-lines-source	0xd51eb0	0xd54001	0x17128a8	VAR
+reference	popup-lines-source	0xd51eb0	0xd54189	0x16b1fdc	P
+reference	popup-lines-source	0xd51eb0	0xd5419e	0x16b1fd8	R
+reference	popup-lines-source	0xd51eb0	0xd541b3	0x16b1fe8	B
+reference	popup-lines-source	0xd51eb0	0xd541db	0x16b1fd8	R
+reference	popup-lines-source	0xd51eb0	0xd5421d	0x16b1fe8	B
+reference	popup-lines-source	0xd51eb0	0xd5425f	0x16b1fdc	P
+classic	owner	0x7ec600	0x7ecf72	0x160c928	Adventure mode
+classic	owner	0x7ec600	0x7ed6c9	0x16a8fb8	You've assumed tactical control as nobody else is available.
+classic	owner	0x7ec600	0x7edd51	0x16a8ec0	"""Greetings.  I am "
+classic	owner	0x7ec600	0x7edda2	0x16a8f18	, and I have chosen you
+classic	owner	0x7ec600	0x7edde0	0x16a8f00	 as my instrument of 
+classic	owner	0x7ec600	0x7ede40	0x15f8850	.  
+classic	owner	0x7ec600	0x7edeab	0x16a91a8	The remnants of creation, 
+classic	owner	0x7ec600	0x7edf07	0x16a9188	, belong with my followers, 
+classic	owner	0x7ec600	0x7edf37	0x15f8850	.  
+classic	owner	0x7ec600	0x7edf57	0x16a91e8	Seek out 
+classic	owner	0x7ec600	0x7edf96	0x15e7f2c	 in 
+classic	owner	0x7ec600	0x7edfd4	0x16a91c8	" and fulfill your destiny."""
+classic	owner	0x7ec600	0x7ee561	0x16a8ff8	"""You've found "
+classic	owner	0x7ec600	0x7ee5ae	0x16a9148	"!  My chosen, you must speak to them and offer your service."""
+classic	owner	0x7ec600	0x7ee810	0x16a9010	"""You will have to leave this structure first before you can travel.  Try to make your way out to the settlement."""
+classic	owner	0x7ec600	0x7eec1b	0x16a9090	"""Do you feel the pull?  You sense the direction of my representative.  It is possible to travel quickly to reach them, or you may journey more deliberately.  It is your decision."""
+classic	owner	0x7ec600	0x7eefd9	0x16a8cc0	"""Congratulations!  Now you must return this precious object to its proper home."""
+classic	owner	0x7ec600	0x7ef087	0x15e46fc	""""
+classic	owner	0x7ec600	0x7ef09b	0x16a8ca8	You seek 
+classic	owner	0x7ec600	0x7ef0c7	0x16a8d50	".  If you do not find the location in your log, ask others for directions.  You may also follow the pull from your senses."""
+classic	owner	0x7ec600	0x7ef16b	0x15e46fc	""""
+classic	owner	0x7ec600	0x7ef17f	0x16a8d18	The journey is long.  Be sure to travel to 
+classic	owner	0x7ec600	0x7ef1ab	0x16a8c28	", rather than walking leisurely."""
+classic	owner	0x7ec600	0x7ef349	0x16a8b50	"""This place is dangerous.  Steel yourself against ancient enemies.  Try not to let yourself be surrounded, and remain standing.  Enter and vanquish!  Or slip in unseen.  Securing the treasure is all that matters."""
+classic	owner	0x7ec600	0x7ef4f6	0x16a8c70	"""You are close.  Follow your senses to the entrance."
+classic	owner	0x7ec600	0x7ef54a	0x16a8c50	  But my chosen, you are 
+classic	owner	0x7ec600	0x7ef57d	0x16a8e70	in a state
+classic	owner	0x7ec600	0x7ef586	0x16a8e50	in need of drink and sustenance
+classic	owner	0x7ec600	0x7ef597	0x16a8e80	in need of sustenance and sleep
+classic	owner	0x7ec600	0x7ef5a0	0x16a8de8	in need of sustenance
+classic	owner	0x7ec600	0x7ef5c0	0x16a8ea0	in need of drink and sleep
+classic	owner	0x7ec600	0x7ef5c9	0x16a8dd0	in need of drink
+classic	owner	0x7ec600	0x7ef5de	0x16a8e38	in need of sleep
+classic	owner	0x7ec600	0x7ef5f1	0x16a8e00	!  See to yourself before you face what's ahead.
+classic	owner	0x7ec600	0x7ef658	0x16a88c0	  Remember that ice and snow can be heated by a campfire.
+classic	owner	0x7ec600	0x7ef66b	0x15e46fc	""""
+classic	owner	0x7ec600	0x7ef77b	0x16a8900	"""Congratulations, my faithful chosen!  There are other ways you can serve, if you offer your service again.  You may also live your life as you see fit now if you choose.  You have done well."""
+classic	owner	0x7ec600	0x7ef8f9	0x16a8840	"""With the treasure, you are near to glory and fulfillment of your task.  Your senses can lead you on your return journey."""
+classic	owner	0x7ec600	0x7efa16	0x16a89d0	"""You may return the object to the faithful by gifting it to one of the priests, or you may simply drop it in this structure wherever you see fit."""
+classic	owner	0x7ec600	0x7efad2	0x16a8740	"""My other worshippers?  As you wish, my faithful chosen!  There are other ways you can serve, if you offer your service again.  You may also live your life as you see fit now if you choose.  You have done well."""
+classic	owner	0x7ec600	0x7efb86	0x16a8720	"""Ungrateful apostate!"""
+classic	owner	0x7ec600	0x7f0008	0x16a882c	You 
+classic	owner	0x7ec600	0x7f0043	0x15e3720	 
+classic	owner	0x7ec600	0x7f0070	0x16a8818	have been cursed
+classic	owner	0x7ec600	0x7f007c	0x15e8a08	 by 
+classic	owner	0x7ec600	0x7f00a2	0x15e942c	!
+classic	owner	0x7ec600	0x7f0b5a	0x16a8f98	You awaken from your slumber.
+classic	owner	0x7ec600	0x7f0c12	0x16a8ed8	Your sleep has been interrupted!
+classic	owner	0x7ec600	0x7f1482	0x16a8f30	"""You are approaching your destination.  End your travels now and prepare yourself."""
+classic	figure-field	0xb8ff50	0xb8ffca	0x16da770	interrogator
+classic	figure-field	0xb8ff50	0xb8ffe1	0x166fb90	subject
+classic	figure-field	0xb8ff50	0xb900b3	0x1623ec0	Nameless
+classic	figure-field	0xb8ff50	0xb9014e	0x16da750	an unidentified creature
+classic	figure-field	0xb8ff50	0xb90173	0x15f8b40	[LPAGE:HF:
+classic	figure-field	0xb8ff50	0xb90193	0x15f8664	]
+classic	figure-field	0xb8ff50	0xb9029d	0x165df6c	myself
+classic	figure-field	0xb8ff50	0xb902a6	0x165df70	lf
+classic	figure-field	0xb8ff50	0xb9035b	0x15e3e34	the 
+classic	figure-field	0xb8ff50	0xb9037f	0x16789f8	zombie 
+classic	figure-field	0xb8ff50	0xb903b7	0x15f8b70	ghostly 
+classic	figure-field	0xb8ff50	0xb904d9	0x15e3720	 
+classic	figure-field	0xb8ff50	0xb90508	0x15e3720	 
+classic	figure-field	0xb8ff50	0xb90591	0x15e4548	 the 
+classic	figure-field	0xb8ff50	0xb905b5	0x16789f8	zombie 
+classic	figure-field	0xb8ff50	0xb905ed	0x15f8b70	ghostly 
+classic	figure-field	0xb8ff50	0xb9070d	0x15e3720	 
+classic	figure-field	0xb8ff50	0xb9078e	0x15e8618	a 
+classic	figure-field	0xb8ff50	0xb90795	0x15e3e34	the 
+classic	figure-field	0xb8ff50	0xb907bd	0x16789f8	zombie 
+classic	figure-field	0xb8ff50	0xb907f5	0x15f8b70	ghostly 
+classic	figure-field	0xb8ff50	0xb9085c	0x15e3720	 
+classic	figure-field	0xb8ff50	0xb908a7	0x15e4214	's
+classic	figure-field	0xb8ff50	0xb908c6	0x15f8b50	[/LPAGE]
+classic	figure-field	0xb8ff50	0xb9091c	0x165ed98	an unknown creature
+classic	figure-field	0xb8ff50	0xb90932	0x15e4214	's
+classic	sphere-field	0x7540b0	0x7540d5	0x169c320	agriculture
+classic	sphere-field	0x7540b0	0x7540ea	0x169c1f0	animals
+classic	sphere-field	0x7540b0	0x7540ff	0x169c1f8	art
+classic	sphere-field	0x7540b0	0x754114	0x169c200	balance
+classic	sphere-field	0x7540b0	0x754129	0x169c208	beauty
+classic	sphere-field	0x7540b0	0x75413e	0x169c210	birth
+classic	sphere-field	0x7540b0	0x754153	0x169c218	blight
+classic	sphere-field	0x7540b0	0x754168	0x169c220	boundaries
+classic	sphere-field	0x7540b0	0x75417d	0x169c230	caverns
+classic	sphere-field	0x7540b0	0x754192	0x169c238	chaos
+classic	sphere-field	0x7540b0	0x7541a7	0x169c240	charity
+classic	sphere-field	0x7540b0	0x7541bc	0x169c248	children
+classic	sphere-field	0x7540b0	0x7541d1	0x169c254	coasts
+classic	sphere-field	0x7540b0	0x7541e6	0x169c260	consolation
+classic	sphere-field	0x7540b0	0x7541fb	0x169c128	courage
+classic	sphere-field	0x7540b0	0x754210	0x169c130	crafts
+classic	sphere-field	0x7540b0	0x754225	0x169c138	creation
+classic	sphere-field	0x7540b0	0x75423a	0x15e8f54	dance
+classic	sphere-field	0x7540b0	0x75424f	0x169c148	darkness
+classic	sphere-field	0x7540b0	0x754264	0x166b540	dawn
+classic	sphere-field	0x7540b0	0x754279	0x166b52c	day
+classic	sphere-field	0x7540b0	0x75428e	0x15e8d48	death
+classic	sphere-field	0x7540b0	0x7542a3	0x169c158	deformity
+classic	sphere-field	0x7540b0	0x7542b8	0x169c168	depravity
+classic	sphere-field	0x7540b0	0x7542cd	0x169c178	discipline
+classic	sphere-field	0x7540b0	0x7542e2	0x169c188	disease
+classic	sphere-field	0x7540b0	0x7542f7	0x169c190	dreams
+classic	sphere-field	0x7540b0	0x75430c	0x169c198	dusk
+classic	sphere-field	0x7540b0	0x754321	0x166fcd0	duty
+classic	sphere-field	0x7540b0	0x754336	0x169c1a0	earth
+classic	sphere-field	0x7540b0	0x75434b	0x163c2ac	family
+classic	sphere-field	0x7540b0	0x754360	0x169c1a8	fame
+classic	sphere-field	0x7540b0	0x754375	0x169c1b0	fate
+classic	sphere-field	0x7540b0	0x75438a	0x169c1b8	fertility
+classic	sphere-field	0x7540b0	0x75439f	0x169c1c8	festivals
+classic	sphere-field	0x7540b0	0x7543b4	0x169c1d4	fire
+classic	sphere-field	0x7540b0	0x7543c9	0x169c0e8	fish
+classic	sphere-field	0x7540b0	0x7543de	0x169c4a8	fishing
+classic	sphere-field	0x7540b0	0x7543f3	0x169c4b0	food
+classic	sphere-field	0x7540b0	0x754408	0x169c4b8	forgiveness
+classic	sphere-field	0x7540b0	0x75441d	0x169c4c8	fortresses
+classic	sphere-field	0x7540b0	0x754432	0x169c4d8	freedom
+classic	sphere-field	0x7540b0	0x754447	0x169c0f0	gambling
+classic	sphere-field	0x7540b0	0x75445c	0x169c4e0	games
+classic	sphere-field	0x7540b0	0x754471	0x169c4e8	generosity
+classic	sphere-field	0x7540b0	0x754486	0x166ba90	happiness
+classic	sphere-field	0x7540b0	0x75449b	0x169c100	healing
+classic	sphere-field	0x7540b0	0x7544b0	0x169c4f8	hospitality
+classic	sphere-field	0x7540b0	0x7544c5	0x169c108	hunting
+classic	sphere-field	0x7540b0	0x7544da	0x169c508	inspiration
+classic	sphere-field	0x7540b0	0x7544ef	0x169c518	jealousy
+classic	sphere-field	0x7540b0	0x754504	0x169c524	jewels
+classic	sphere-field	0x7540b0	0x754519	0x169c530	justice
+classic	sphere-field	0x7540b0	0x75452e	0x15e8df8	labor
+classic	sphere-field	0x7540b0	0x754543	0x169c538	lakes
+classic	sphere-field	0x7540b0	0x754558	0x169c540	laws
+classic	sphere-field	0x7540b0	0x75456d	0x169c548	lies
+classic	sphere-field	0x7540b0	0x754582	0x1670f60	light
+classic	sphere-field	0x7540b0	0x754597	0x169c550	lightning
+classic	sphere-field	0x7540b0	0x7545ac	0x169c3f0	longevity
+classic	sphere-field	0x7540b0	0x7545c1	0x15fd624	love
+classic	sphere-field	0x7540b0	0x7545d6	0x163c2b8	loyalty
+classic	sphere-field	0x7540b0	0x7545eb	0x169c3fc	luck
+classic	sphere-field	0x7540b0	0x754600	0x166b9e4	lust
+classic	sphere-field	0x7540b0	0x754615	0x169c408	marriage
+classic	sphere-field	0x7540b0	0x75462a	0x169c414	mercy
+classic	sphere-field	0x7540b0	0x75463f	0x169c41c	metals
+classic	sphere-field	0x7540b0	0x754654	0x169c428	minerals
+classic	sphere-field	0x7540b0	0x754669	0x166b9ec	misery
+classic	sphere-field	0x7540b0	0x75467e	0x169c434	mist
+classic	sphere-field	0x7540b0	0x754693	0x169c43c	moon
+classic	sphere-field	0x7540b0	0x7546a8	0x1647338	mountains
+classic	sphere-field	0x7540b0	0x7546bd	0x169c444	muck
+classic	sphere-field	0x7540b0	0x7546d2	0x15e8e38	murder
+classic	sphere-field	0x7540b0	0x7546e7	0x15e64c4	music
+classic	sphere-field	0x7540b0	0x7546fc	0x163c4d0	nature
+classic	sphere-field	0x7540b0	0x754711	0x166b538	night
+classic	sphere-field	0x7540b0	0x754726	0x169c450	nightmares
+classic	sphere-field	0x7540b0	0x75473b	0x169c45c	oaths
+classic	sphere-field	0x7540b0	0x754750	0x169c464	oceans
+classic	sphere-field	0x7540b0	0x754765	0x15e8db8	order
+classic	sphere-field	0x7540b0	0x75477a	0x169c470	painting
+classic	sphere-field	0x7540b0	0x75478f	0x15e904c	peace
+classic	sphere-field	0x7540b0	0x7547a4	0x169c480	persuasion
+classic	sphere-field	0x7540b0	0x7547b9	0x169c48c	plants
+classic	sphere-field	0x7540b0	0x7547ce	0x161649c	poetry
+classic	sphere-field	0x7540b0	0x7547e3	0x169c498	pregnancy
+classic	sphere-field	0x7540b0	0x7547f8	0x1646adc	rain
+classic	sphere-field	0x7540b0	0x75480d	0x169c358	rainbows
+classic	sphere-field	0x7540b0	0x754822	0x169c368	rebirth
+classic	sphere-field	0x7540b0	0x754837	0x169c370	revelry
+classic	sphere-field	0x7540b0	0x75484c	0x169c378	revenge
+classic	sphere-field	0x7540b0	0x754861	0x169c380	rivers
+classic	sphere-field	0x7540b0	0x754876	0x169c388	rulership
+classic	sphere-field	0x7540b0	0x75488b	0x169c394	rumors
+classic	sphere-field	0x7540b0	0x7548a0	0x163c568	sacrifice
+classic	sphere-field	0x7540b0	0x7548b5	0x169c39c	salt
+classic	sphere-field	0x7540b0	0x7548ca	0x169c3a8	scholarship
+classic	sphere-field	0x7540b0	0x7548df	0x169c3b8	seasons
+classic	sphere-field	0x7540b0	0x7548f4	0x169c3c0	silence
+classic	sphere-field	0x7540b0	0x754909	0x16473bc	sky
+classic	sphere-field	0x7540b0	0x75491e	0x15e44f4	song
+classic	sphere-field	0x7540b0	0x754933	0x169c3c8	speech
+classic	sphere-field	0x7540b0	0x754948	0x169c3d0	stars
+classic	sphere-field	0x7540b0	0x75495d	0x169c3d8	storms
+classic	sphere-field	0x7540b0	0x754972	0x165cfc0	strength
+classic	sphere-field	0x7540b0	0x754987	0x169c3e0	suicide
+classic	sphere-field	0x7540b0	0x75499c	0x169c3e8	sun
+classic	sphere-field	0x7540b0	0x7549b1	0x15e8e84	theft
+classic	sphere-field	0x7540b0	0x7549c6	0x169c290	thralldom
+classic	sphere-field	0x7540b0	0x7549db	0x169c2a0	thunder
+classic	sphere-field	0x7540b0	0x7549f0	0x163e450	torture
+classic	sphere-field	0x7540b0	0x754a05	0x164accc	trade
+classic	sphere-field	0x7540b0	0x754a1a	0x169c2a8	travelers
+classic	sphere-field	0x7540b0	0x754a2f	0x169c2b8	treachery
+classic	sphere-field	0x7540b0	0x754a44	0x169c2c4	trees
+classic	sphere-field	0x7540b0	0x754a59	0x169c2d0	trickery
+classic	sphere-field	0x7540b0	0x754a6e	0x163c600	truth
+classic	sphere-field	0x7540b0	0x754a83	0x169c278	twilight
+classic	sphere-field	0x7540b0	0x754a98	0x169c2dc	valor
+classic	sphere-field	0x7540b0	0x754aad	0x169c2e8	victory
+classic	sphere-field	0x7540b0	0x754ac2	0x169c2f0	volcanos
+classic	sphere-field	0x7540b0	0x754ad7	0x1644b7c	war
+classic	sphere-field	0x7540b0	0x754aec	0x16467a4	water
+classic	sphere-field	0x7540b0	0x754b01	0x169c2fc	wealth
+classic	sphere-field	0x7540b0	0x754b16	0x166fd20	weather
+classic	sphere-field	0x7540b0	0x754b2b	0x169c304	wind
+classic	sphere-field	0x7540b0	0x754b40	0x169c30c	wisdom
+classic	sphere-field	0x7540b0	0x754b55	0x15e8cc0	writing
+classic	sphere-field	0x7540b0	0x754b6a	0x169c314	youth
+classic	sphere-field	0x7540b0	0x754b7f	0x169c1e0	no sphere
+classic	material-field	0x14cc890	0x14cc8f7	0x160fd14	plant
+classic	material-field	0x14cc890	0x14cc919	0x16106b8	yarn
+classic	material-field	0x14cc890	0x14cc941	0x16106a8	cloth
+classic	material-field	0x14cc890	0x14cc961	0x16106b0	silk
+classic	material-field	0x14cc890	0x14cc981	0x16106c8	bone
+classic	material-field	0x14cc890	0x14cc9a1	0x1610690	leather
+classic	material-field	0x14cc890	0x14cc9c1	0x16106c0	shell
+classic	material-field	0x14cc890	0x14cc9e3	0x16106d8	soap
+classic	material-field	0x14cc890	0x14cca05	0x1782aa0	ivory/tooth
+classic	material-field	0x14cc890	0x14cca27	0x16106e8	horn
+classic	material-field	0x14cc890	0x14cca49	0x16106e0	pearl
+classic	material-field	0x14cc890	0x14cca78	0x1610698	wood
+classic	material-field	0x14cc890	0x14cca7f	0x169c26c	wooden
+classic	material-field	0x14cc890	0x14ccbd5	0x15e8b58	's 
+classic	material-field	0x14cc890	0x14ccc69	0x15e3720	 
+classic	material-field	0x14cc890	0x14cccba	0x1782ab0	unknown material
+classic	entity-field	0xb8f940	0xb8f9aa	0x16592f8	[LPAGE:ENT:
+classic	entity-field	0xb8f940	0xb8f9ca	0x15f8664	]
+classic	entity-field	0xb8f940	0xb8fa34	0x15f8b50	[/LPAGE]
+classic	entity-field	0xb8f940	0xb8fa8c	0x16da720	an unknown civilization
+classic	structure-field	0xb910d0	0xb91138	0x16da548	[LPAGE:AB:
+classic	structure-field	0xb910d0	0xb9115b	0x1613404	:
+classic	structure-field	0xb910d0	0xb9117b	0x15f8664	]
+classic	structure-field	0xb910d0	0xb9120e	0x15f8b50	[/LPAGE]
+classic	structure-field	0xb910d0	0xb91295	0x165e8a8	a counting house
+classic	structure-field	0xb910d0	0xb912a7	0x165e878	a hospital
+classic	structure-field	0xb910d0	0xb912b9	0x1623cc0	a guildhall
+classic	structure-field	0xb910d0	0xb912cb	0x165e888	a mead hall
+classic	structure-field	0xb910d0	0xb912dd	0x165e860	a keep
+classic	structure-field	0xb910d0	0xb912ef	0x1623c98	a temple
+classic	structure-field	0xb910d0	0xb91301	0x165e868	a library
+classic	structure-field	0xb910d0	0xb91313	0x165e848	a tavern
+classic	structure-field	0xb910d0	0xb91325	0x166dc18	a dark tower
+classic	structure-field	0xb910d0	0xb91331	0x165e808	an underworld spire
+classic	structure-field	0xb910d0	0xb91340	0x165e830	a market
+classic	structure-field	0xb910d0	0xb9134f	0x165e83c	a tomb
+classic	structure-field	0xb910d0	0xb91373	0x165e7f8	the catacombs
+classic	structure-field	0xb910d0	0xb91382	0x165e7e8	the sewers
+classic	structure-field	0xb910d0	0xb91391	0x165e820	a dungeon
+classic	structure-field	0xb910d0	0xb913a0	0x165e858	a tower
+classic	structure-field	0xb910d0	0xb913a9	0x16da558	an unknown building
+classic	structure-field	0xb910d0	0xb913c8	0x15f8b50	[/LPAGE]
+classic	structure-field	0xb910d0	0xb913d7	0x16da558	an unknown building
+classic	language-name	0xa91760	0xa91923	0x15e3720	 
+classic	language-name	0xa91760	0xa919de	0x15e3720	 
+classic	language-name	0xa91760	0xa91abb	0x15e3720	 
+classic	language-name	0xa91760	0xa91add	0x15e89c4	The 
+classic	language-name	0xa91760	0xa91af8	0x15e3e34	the 
+classic	language-name	0xa91760	0xa91b72	0x15e3720	 
+classic	language-name	0xa91760	0xa91b91	0x15e89c4	The 
+classic	language-name	0xa91760	0xa91b9a	0x15e3e34	the 
+classic	language-name	0xa91760	0xa91c1a	0x15e3720	 
+classic	language-name	0xa91760	0xa91c39	0x15e89c4	The 
+classic	language-name	0xa91760	0xa91c42	0x15e3e34	the 
+classic	language-name	0xa91760	0xa91d9f	0x15e3720	 
+classic	language-name	0xa91760	0xa91dcb	0x15e89c4	The 
+classic	language-name	0xa91760	0xa91de2	0x15e3e34	the 
+classic	language-name	0xa91760	0xa91e89	0x15e3720	 
+classic	language-name	0xa91760	0xa91e98	0x16cb220	of 
+classic	language-name	0xa91760	0xa91e9f	0x16cb2ac	Of 
+classic	site-field	0xb90970	0xb909ba	0x16da6f8	[LPAGE:SITE:
+classic	site-field	0xb90970	0xb909dd	0x15f8664	]
+classic	site-field	0xb90970	0xb90a46	0x15f8b50	[/LPAGE]
+classic	site-field	0xb90970	0xb90a9e	0x16da6e8	an unknown site
+classic	announcement-submission	0xe3bb0	0xe3c67	0x15e9470	Empty announcement 
+classic	announcement-submission	0xe3bb0	0xe3c71	0x15e9480	nt 
+classic	announcement-submission	0xe3bb0	0xe3c7c	0x15e9482	 
+classic	announcement-submission	0xe3bb0	0xe3cf4	0x164c4a0	errorlog.txt
+classic	popup-lines-source	0xd4eef0	0xd4f4bd	0x16ac56c	CHAR
+classic	popup-lines-source	0xd4eef0	0xd4f88e	0x170d6e0	LPAGE
+classic	popup-lines-source	0xd4eef0	0xd500d9	0x165ace0	HF
+classic	popup-lines-source	0xd4eef0	0xd500ff	0x166cf7c	SITE
+classic	popup-lines-source	0xd4eef0	0xd5012a	0x16e7ea0	ARTIFACT
+classic	popup-lines-source	0xd4eef0	0xd50155	0x1698b44	BOOK
+classic	popup-lines-source	0xd4eef0	0xd50180	0x170d6dc	SR
+classic	popup-lines-source	0xd4eef0	0xd501ab	0x170d6ec	FL
+classic	popup-lines-source	0xd4eef0	0xd501d6	0x165ad98	ENT
+classic	popup-lines-source	0xd4eef0	0xd50201	0x170d6e8	AB
+classic	popup-lines-source	0xd4eef0	0xd5022c	0x170d6f4	EPOP
+classic	popup-lines-source	0xd4eef0	0xd50257	0x16970f0	ART_IMAGE
+classic	popup-lines-source	0xd4eef0	0xd50280	0x170d6f0	ERA
+classic	popup-lines-source	0xd4eef0	0xd502ab	0x170d704	HEC
+classic	popup-lines-source	0xd4eef0	0xd5069b	0x170d6fc	/LPAGE
+classic	popup-lines-source	0xd4eef0	0xd507eb	0x16a8210	C
+classic	popup-lines-source	0xd4eef0	0xd50d11	0x170d70c	VAR
+classic	popup-lines-source	0xd4eef0	0xd50e1c	0x170d708	KEY
+classic	popup-lines-source	0xd4eef0	0xd51041	0x170d70c	VAR
+classic	popup-lines-source	0xd4eef0	0xd511c9	0x16ac504	P
+classic	popup-lines-source	0xd4eef0	0xd511de	0x16ac500	R
+classic	popup-lines-source	0xd4eef0	0xd511f3	0x16ac510	B
+classic	popup-lines-source	0xd4eef0	0xd5121b	0x16ac500	R
+classic	popup-lines-source	0xd4eef0	0xd5125d	0x16ac510	B
+classic	popup-lines-source	0xd4eef0	0xd5129f	0x16ac504	P

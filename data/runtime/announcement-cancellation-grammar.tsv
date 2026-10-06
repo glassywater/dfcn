@@ -84,7 +84,7 @@ fortress-announcement	{s} cancels {s}: Too insane.	{s1}取消了{s2}：神智过
 fortress-announcement	{s} cancels {s}: Too depressed.	{s1}取消了{s2}：过于抑郁。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
 fortress-announcement	{s} cancels {s}: Oblivious.	{s1}取消了{s2}：浑然不觉。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
 fortress-announcement	{s} cancels {s}: Catatonic.	{s1}取消了{s2}：陷入木僵。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
-fortress-announcement	{s} cancels {s}: Taken by mood.	{s1}取消了{s2}：陷入奇异情绪。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
+fortress-announcement	{s} cancels {s}: Taken by mood.	{s1}取消了{s2}：陷入奇异心境。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
 fortress-announcement	{s} cancels {s}: Went insane.	{s1}取消了{s2}：发疯了。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
 fortress-announcement	{s} cancels {s}: Throwing tantrum.	{s1}取消了{s2}：正在发脾气。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135
 fortress-announcement	{s} cancels {s}: Could not find path.	{s1}取消了{s2}：找不到路径。	$unit,$job	PE reference 0x141325395..0x141325bf0; classic 0x141320305..0x141320b60; reason switch 0..135

@@ -1,0 +1,8 @@
+path	line	entity	position	squad_size	singular	plural	native_field
+D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_entities\objects\entity_default.txt	466	MOUNTAIN	GENERAL	10	soldier	soldiers	entity_position.squad[0]@0x218
+D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_entities\objects\entity_default.txt	494	MOUNTAIN	LIEUTENANT	10	soldier	soldiers	entity_position.squad[0]@0x218
+D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_entities\objects\entity_default.txt	518	MOUNTAIN	CAPTAIN	10	soldier	soldiers	entity_position.squad[0]@0x218
+D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_entities\objects\entity_default.txt	535	MOUNTAIN	MILITIA_COMMANDER	10	militia-dwarf	militia-dwarves	entity_position.squad[0]@0x218
+D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_entities\objects\entity_default.txt	547	MOUNTAIN	MILITIA_CAPTAIN	10	militia-dwarf	militia-dwarves	entity_position.squad[0]@0x218
+D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_entities\objects\entity_default.txt	578	MOUNTAIN	CAPTAIN_OF_THE_GUARD	10	fortress guard	fortress guards	entity_position.squad[0]@0x218
+D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_entities\objects\entity_default.txt	1255	FOREST	RANGER_CAPTAIN	10	ranger	rangers	entity_position.squad[0]@0x218

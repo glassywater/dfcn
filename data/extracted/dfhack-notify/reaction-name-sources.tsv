@@ -1,0 +1,327 @@
+edition	source_kind	source_file	reaction_line	name_line	reaction_code	name
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	5	6	BITUMINOUS_COAL_TO_COKE	make coke from bituminous coal
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	13	14	LIGNITE_TO_COKE	make coke from lignite
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	21	22	BRASS_MAKING	make brass bars (use ore)
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	30	31	BRASS_MAKING2	make brass bars (use bars)
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	39	40	BRONZE_MAKING	make bronze bars (use ore)
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	48	49	BRONZE_MAKING2	make bronze bars (use bars)
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	57	58	ELECTRUM_MAKING	make electrum bars (use ore)
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	66	67	ELECTRUM_MAKING2	make electrum bars (use bars)
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	75	76	BILLON_MAKING	make billon bars (use ore)
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	84	85	BILLON_MAKING2	make billon bars (use bars)
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	93	94	PEWTER_FINE_MAKING	make fine pewter bars (use ore)
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	102	103	PEWTER_FINE_MAKING2	make fine pewter bars (use bars)
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	111	112	PEWTER_TRIFLE_MAKING	make trifle pewter bars (use ore)
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	120	121	PEWTER_TRIFLE_MAKING2	make trifle pewter bars (use bars)
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	129	130	PEWTER_LAY_MAKING	make lay pewter bars (use bars)
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	139	140	PIG_IRON_MAKING	make pig iron bars
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	149	150	STEEL_MAKING	make steel bars
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	160	161	NICKEL_SILVER_MAKING	make nickel silver bars
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	170	171	BLACK_BRONZE_MAKING	make black bronze bars
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	180	181	STERLING_SILVER_MAKING	make sterling silver bars
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	189	190	ROSE_GOLD_MAKING	make rose gold bars
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	198	199	BISMUTH_BRONZE_MAKING	make bismuth bronze bars
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	208	209	ADAMANTINE_WAFERS	make adamantine wafers
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	5	6	TAN_A_HIDE	tan a hide
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	17	18	RENDER_FAT	render fat
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	26	27	MAKE_SOAP_FROM_TALLOW	make soap from tallow
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	40	41	MAKE_SOAP_FROM_OIL	make soap from oil
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	59	60	MAKE_PEARLASH	make pearlash
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	67	68	MAKE_PLASTER_POWDER	make plaster powder
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	76	77	MAKE_SHARP_ROCK	make sharp rock
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	84	85	MILL_SEEDS_NUTS_TO_PASTE	mill seeds/nuts to paste
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	93	94	MAKE_CLAY_JUG	make clay jug
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	102	103	MAKE_CLAY_BRICKS	make clay bricks
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	111	112	MAKE_CLAY_STATUE	make clay statue
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	120	121	MAKE_LARGE_CLAY_POT	make large clay pot
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	129	130	MAKE_CLAY_CRAFTS	make clay crafts
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	138	139	GLAZE_JUG	glaze clay/stone jug
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	157	158	GLAZE_STATUE	glaze clay/stone statue
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	171	172	GLAZE_LARGE_POT	glaze large clay/stone pot
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	185	186	GLAZE_CRAFT	glaze clay/stone craft
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	199	200	PRESS_OIL	press liquid from paste
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	215	216	PRESS_OIL_FRUIT	press liquid from fruit
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	232	233	MAKE_CLAY_HIVE	make clay hive
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	241	242	PRESS_HONEYCOMB	press honey from honeycomb
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	257	258	MAKE_WAX_CRAFTS	make wax crafts
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	265	266	BREW_DRINK_FROM_PLANT	brew drink from plant
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	282	283	BREW_DRINK_FROM_PLANT_GROWTH	brew drink from fruit
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	299	300	MAKE_MEAD	make mead
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	318	319	PROCESS_PLANT_TO_BAG	process plant to bag
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	333	334	MAKE_QUICKLIME	make quicklime
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	342	343	MAKE_MILK_OF_LIME	make milk of lime
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	359	360	MAKE_PARCHMENT	make parchment
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	372	373	MAKE_SCROLL	make scroll
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	382	383	MAKE_QUIRE	make quire
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	389	390	MAKE_SHEET_FROM_PLANT	make sheet from plant
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	400	401	MAKE_SLURRY_FROM_PLANT	mash plant into slurry
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	412	413	PRESS_PLANT_PAPER	press plant slurry into paper sheet
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	422	423	BIND_BOOK	bind book
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	439	440	CARVE_BONE_FIGURINE	carve bone figurine
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	453	454	CARVE_BONE_RING	carve bone ring
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	465	466	CARVE_BONE_EARRING	carve bone earring
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	477	478	CARVE_BONE_SCEPTER	carve bone scepter
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	489	490	CARVE_BONE_AMULET	carve bone amulet
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	501	502	CARVE_BONE_BRACELET	carve bone bracelet
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	513	514	CARVE_BONE_CROWN	carve bone crown
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	525	526	CARVE_BONE_GEM	carve bone cabochon
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	537	538	CARVE_WOODEN_HELVE	carve wooden helve from branch
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	548	549	ASSEMBLE STONE AXE	assemble stone axe
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	557	558	MAKE WOODEN DISPLAY CASE	make display case
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	5	6	ACACIA_BARK_DYE	make acacia bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	16	17	ALDER_BARK_DYE	make alder bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	25	26	ALDER_CONE_DYE	make alder cone dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	35	36	ALMOND_SHELL_DYE	make almond shell dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	45	46	APPLE_BARK_DYE	make apple bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	54	55	APPLE_LEAF_DYE	make apple leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	64	65	APRICOT_BARK_DYE	make apricot bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	73	74	ASH_BARK_DYE	make ash bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	82	83	AVOCADO_SKIN_DYE	make avocado skin dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	92	93	BANANA_LEAF_DYE	make banana leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	102	103	BANANA_PEEL_DYE	make banana peel dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	112	113	BAYBERRY_LEAF_DYE	make bayberry leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	122	123	BAYBERRY_BERRY_DYE	make bayberry dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	132	133	BIRCH_BARK_DYE	make birch bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	141	142	CHERRY_BARK_DYE	make cherry bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	150	151	CHERRY_LEAF_DYE	make cherry leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	160	161	CHESTNUT_BARK_DYE	make chestnut bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	169	170	CHESTNUT_LEAF_DYE	make chestnut leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	179	180	CHESTNUT_HULL_DYE	make chestnut hull dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	189	190	COFFEE_BEAN_DYE	make coffee bean dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	199	200	GINKGO_LEAF_DYE	make ginkgo leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	209	210	GUAVA_BARK_DYE	make guava bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	218	219	GUAVA_LEAF_DYE	make guava leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	228	229	HAZEL_BARK_DYE	make hazel bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	237	238	HAZEL_LEAF_DYE	make hazel leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	247	248	LARCH_BARK_DYE	make larch bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	256	257	MAHOGANY_BARK_DYE	make mahogany bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	265	266	MANGROVE_BARK_DYE	make mangrove bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	274	275	MANGROVE_LEAF_DYE	make mangrove leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	284	285	MAPLE_BARK_DYE	make maple bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	293	294	OAK_BARK_DYE	make oak bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	302	303	OLIVE_BARK_DYE	make olive bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	311	312	OLIVE_LEAF_DYE	make olive leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	321	322	PEACH_BARK_DYE	make peach bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	330	331	PEAR_BARK_DYE	make pear bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	339	340	PEAR_LEAF_DYE	make pear leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	349	350	PERSIMMON_FRUIT_DYE	make persimmon dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	359	360	PINE_BARK_DYE	make pine bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	368	369	PLUM_BARK_DYE	make plum bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	377	378	POMEGRANATE_LEAF_DYE	make pomegranate leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	387	388	POMEGRANATE_RIND_DYE	make pomegranate rind dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	397	398	POMEGRANATE_BARK_DYE	make pomegranate bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	406	407	TEA_LEAF_DYE	make tea leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	416	417	WILLOW_BARK_DYE	make willow bark dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	425	426	WILLOW_LEAF_DYE	make willow leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	435	436	RED_SPINACH_LEAF_DYE	make red spinach leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	445	446	RICE_HUSK_DYE	make rice husk dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	455	456	SORGHUM_LEAF_DYE	make sorghum leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	465	466	BILBERRY_FRUIT_DYE	make bilberry dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	475	476	BLACKBERRY_FRUIT_DYE	make blackberry dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	485	486	BLUEBERRY_FRUIT_DYE	make blueberry dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	495	496	CABBAGE_LEAF_DYE	make cabbage leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	505	506	CRANBERRY_FRUIT_DYE	make cranberry dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	515	516	EGGPLANT_FRUIT_DYE	make eggplant dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	525	526	GRAPE_FRUIT_DYE	make grape dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	535	536	ONION_SKIN_DYE	make onion skin dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	545	546	PEANUT_SHELL_DYE	make peanut shell dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	555	556	PINEAPPLE_LEAF_DYE	make pineapple leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	565	566	POTATO_SKIN_DYE	make potato skin dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	575	576	RADISH_ROOT_DYE	make radish dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	585	586	RASPBERRY_FRUIT_DYE	make raspberry dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	595	596	RHUBARB_LEAF_DYE	make rhubarb leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	605	606	SPINACH_LEAF_DYE	make spinach leaf dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	615	616	SWEET_POTATO_SKIN_DYE	make sweet potato skin dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	625	626	TOMATO_SKIN_DYE	make tomato skin dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	635	636	TURNIP_SKIN_DYE	make turnip skin dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	645	646	WATERMELON_FRUIT_DYE	make watermelon dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	655	656	WILD_CARROT_ROOT_DYE	make carrot dye
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	5	6	MAKE WOODEN CHAIR	make wooden chair
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	20	21	MAKE WOODEN TABLE	make wooden table
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	33	34	MAKE WOODEN BED	make wooden bed
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	46	47	MAKE WOODEN CHEST	make wooden chest
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	59	60	MAKE WOODEN CABINET	make wooden cabinet
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	72	73	MAKE WOODEN DOOR	make wooden door
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	85	86	MAKE WOODEN BARREL	make wooden barrel
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	98	99	MAKE WOODEN BUCKET	make wooden bucket
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	111	112	MAKE WOODEN CASKET	make wooden casket
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	124	125	MAKE WOODEN HATCH COVER	make wooden hatch cover
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	137	138	MAKE WOODEN GRATE	make wooden grate
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	150	151	MAKE WOODEN BIN	make wooden bin
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	163	164	MAKE WOODEN STEPLADDER	make wooden stepladder
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	176	177	MAKE WOODEN BOOKCASE	make wooden bookcase
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	189	190	MAKE WOODEN SPLINT	make wooden splint
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	202	203	MAKE WOODEN CRUTCH	make wooden crutch
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	215	216	MAKE WOODEN SHIELD	make wooden shield
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	228	229	MAKE WOODEN BUCKLER	make wooden buckler
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	241	242	MAKE WOODEN TRAINING AXE	make wooden training axe
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	254	255	MAKE WOODEN TRAINING SHORT SWORD	make wooden training short sword
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	267	268	MAKE WOODEN TRAINING SPEAR	make wooden training spear
+steam	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	280	281	MAKE WOODEN PEDESTAL	make wooden pedestal
+steam	example-not-loaded	data/vanilla/examples and notes/reaction_instrument_example.txt	5	6	MAKE EXAMPLE DRUM BODY	make thokit drum
+steam	example-not-loaded	data/vanilla/examples and notes/reaction_instrument_example.txt	17	18	MAKE EXAMPLE DRUM HEAD	make thokit head
+steam	example-not-loaded	data/vanilla/examples and notes/reaction_instrument_example.txt	26	27	MAKE EXAMPLE DRUM	assemble thokit
+steam	example-not-loaded	data/vanilla/examples and notes/reaction_instrument_example.txt	39	40	MAKE EXAMPLE WIND	make ecosh
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	5	6	BITUMINOUS_COAL_TO_COKE	make coke from bituminous coal
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	13	14	LIGNITE_TO_COKE	make coke from lignite
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	21	22	BRASS_MAKING	make brass bars (use ore)
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	30	31	BRASS_MAKING2	make brass bars (use bars)
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	39	40	BRONZE_MAKING	make bronze bars (use ore)
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	48	49	BRONZE_MAKING2	make bronze bars (use bars)
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	57	58	ELECTRUM_MAKING	make electrum bars (use ore)
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	66	67	ELECTRUM_MAKING2	make electrum bars (use bars)
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	75	76	BILLON_MAKING	make billon bars (use ore)
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	84	85	BILLON_MAKING2	make billon bars (use bars)
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	93	94	PEWTER_FINE_MAKING	make fine pewter bars (use ore)
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	102	103	PEWTER_FINE_MAKING2	make fine pewter bars (use bars)
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	111	112	PEWTER_TRIFLE_MAKING	make trifle pewter bars (use ore)
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	120	121	PEWTER_TRIFLE_MAKING2	make trifle pewter bars (use bars)
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	129	130	PEWTER_LAY_MAKING	make lay pewter bars (use bars)
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	139	140	PIG_IRON_MAKING	make pig iron bars
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	149	150	STEEL_MAKING	make steel bars
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	160	161	NICKEL_SILVER_MAKING	make nickel silver bars
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	170	171	BLACK_BRONZE_MAKING	make black bronze bars
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	180	181	STERLING_SILVER_MAKING	make sterling silver bars
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	189	190	ROSE_GOLD_MAKING	make rose gold bars
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	198	199	BISMUTH_BRONZE_MAKING	make bismuth bronze bars
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_smelter.txt	208	209	ADAMANTINE_WAFERS	make adamantine wafers
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	5	6	TAN_A_HIDE	tan a hide
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	17	18	RENDER_FAT	render fat
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	26	27	MAKE_SOAP_FROM_TALLOW	make soap from tallow
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	40	41	MAKE_SOAP_FROM_OIL	make soap from oil
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	59	60	MAKE_PEARLASH	make pearlash
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	67	68	MAKE_PLASTER_POWDER	make plaster powder
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	76	77	MAKE_SHARP_ROCK	make sharp rock
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	84	85	MILL_SEEDS_NUTS_TO_PASTE	mill seeds/nuts to paste
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	93	94	MAKE_CLAY_JUG	make clay jug
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	102	103	MAKE_CLAY_BRICKS	make clay bricks
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	111	112	MAKE_CLAY_STATUE	make clay statue
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	120	121	MAKE_LARGE_CLAY_POT	make large clay pot
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	129	130	MAKE_CLAY_CRAFTS	make clay crafts
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	138	139	GLAZE_JUG	glaze clay/stone jug
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	157	158	GLAZE_STATUE	glaze clay/stone statue
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	171	172	GLAZE_LARGE_POT	glaze large clay/stone pot
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	185	186	GLAZE_CRAFT	glaze clay/stone craft
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	199	200	PRESS_OIL	press liquid from paste
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	215	216	PRESS_OIL_FRUIT	press liquid from fruit
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	232	233	MAKE_CLAY_HIVE	make clay hive
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	241	242	PRESS_HONEYCOMB	press honey from honeycomb
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	257	258	MAKE_WAX_CRAFTS	make wax crafts
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	265	266	BREW_DRINK_FROM_PLANT	brew drink from plant
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	282	283	BREW_DRINK_FROM_PLANT_GROWTH	brew drink from fruit
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	299	300	MAKE_MEAD	make mead
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	318	319	PROCESS_PLANT_TO_BAG	process plant to bag
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	333	334	MAKE_QUICKLIME	make quicklime
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	342	343	MAKE_MILK_OF_LIME	make milk of lime
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	359	360	MAKE_PARCHMENT	make parchment
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	372	373	MAKE_SCROLL	make scroll
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	382	383	MAKE_QUIRE	make quire
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	389	390	MAKE_SHEET_FROM_PLANT	make sheet from plant
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	400	401	MAKE_SLURRY_FROM_PLANT	mash plant into slurry
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	412	413	PRESS_PLANT_PAPER	press plant slurry into paper sheet
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	422	423	BIND_BOOK	bind book
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	439	440	CARVE_BONE_FIGURINE	carve bone figurine
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	453	454	CARVE_BONE_RING	carve bone ring
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	465	466	CARVE_BONE_EARRING	carve bone earring
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	477	478	CARVE_BONE_SCEPTER	carve bone scepter
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	489	490	CARVE_BONE_AMULET	carve bone amulet
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	501	502	CARVE_BONE_BRACELET	carve bone bracelet
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	513	514	CARVE_BONE_CROWN	carve bone crown
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	525	526	CARVE_BONE_GEM	carve bone cabochon
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	537	538	CARVE_WOODEN_HELVE	carve wooden helve from branch
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	548	549	ASSEMBLE STONE AXE	assemble stone axe
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_other.txt	557	558	MAKE WOODEN DISPLAY CASE	make display case
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	5	6	ACACIA_BARK_DYE	make acacia bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	16	17	ALDER_BARK_DYE	make alder bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	25	26	ALDER_CONE_DYE	make alder cone dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	35	36	ALMOND_SHELL_DYE	make almond shell dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	45	46	APPLE_BARK_DYE	make apple bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	54	55	APPLE_LEAF_DYE	make apple leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	64	65	APRICOT_BARK_DYE	make apricot bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	73	74	ASH_BARK_DYE	make ash bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	82	83	AVOCADO_SKIN_DYE	make avocado skin dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	92	93	BANANA_LEAF_DYE	make banana leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	102	103	BANANA_PEEL_DYE	make banana peel dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	112	113	BAYBERRY_LEAF_DYE	make bayberry leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	122	123	BAYBERRY_BERRY_DYE	make bayberry dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	132	133	BIRCH_BARK_DYE	make birch bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	141	142	CHERRY_BARK_DYE	make cherry bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	150	151	CHERRY_LEAF_DYE	make cherry leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	160	161	CHESTNUT_BARK_DYE	make chestnut bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	169	170	CHESTNUT_LEAF_DYE	make chestnut leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	179	180	CHESTNUT_HULL_DYE	make chestnut hull dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	189	190	COFFEE_BEAN_DYE	make coffee bean dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	199	200	GINKGO_LEAF_DYE	make ginkgo leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	209	210	GUAVA_BARK_DYE	make guava bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	218	219	GUAVA_LEAF_DYE	make guava leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	228	229	HAZEL_BARK_DYE	make hazel bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	237	238	HAZEL_LEAF_DYE	make hazel leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	247	248	LARCH_BARK_DYE	make larch bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	256	257	MAHOGANY_BARK_DYE	make mahogany bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	265	266	MANGROVE_BARK_DYE	make mangrove bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	274	275	MANGROVE_LEAF_DYE	make mangrove leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	284	285	MAPLE_BARK_DYE	make maple bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	293	294	OAK_BARK_DYE	make oak bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	302	303	OLIVE_BARK_DYE	make olive bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	311	312	OLIVE_LEAF_DYE	make olive leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	321	322	PEACH_BARK_DYE	make peach bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	330	331	PEAR_BARK_DYE	make pear bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	339	340	PEAR_LEAF_DYE	make pear leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	349	350	PERSIMMON_FRUIT_DYE	make persimmon dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	359	360	PINE_BARK_DYE	make pine bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	368	369	PLUM_BARK_DYE	make plum bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	377	378	POMEGRANATE_LEAF_DYE	make pomegranate leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	387	388	POMEGRANATE_RIND_DYE	make pomegranate rind dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	397	398	POMEGRANATE_BARK_DYE	make pomegranate bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	406	407	TEA_LEAF_DYE	make tea leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	416	417	WILLOW_BARK_DYE	make willow bark dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	425	426	WILLOW_LEAF_DYE	make willow leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	435	436	RED_SPINACH_LEAF_DYE	make red spinach leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	445	446	RICE_HUSK_DYE	make rice husk dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	455	456	SORGHUM_LEAF_DYE	make sorghum leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	465	466	BILBERRY_FRUIT_DYE	make bilberry dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	475	476	BLACKBERRY_FRUIT_DYE	make blackberry dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	485	486	BLUEBERRY_FRUIT_DYE	make blueberry dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	495	496	CABBAGE_LEAF_DYE	make cabbage leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	505	506	CRANBERRY_FRUIT_DYE	make cranberry dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	515	516	EGGPLANT_FRUIT_DYE	make eggplant dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	525	526	GRAPE_FRUIT_DYE	make grape dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	535	536	ONION_SKIN_DYE	make onion skin dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	545	546	PEANUT_SHELL_DYE	make peanut shell dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	555	556	PINEAPPLE_LEAF_DYE	make pineapple leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	565	566	POTATO_SKIN_DYE	make potato skin dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	575	576	RADISH_ROOT_DYE	make radish dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	585	586	RASPBERRY_FRUIT_DYE	make raspberry dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	595	596	RHUBARB_LEAF_DYE	make rhubarb leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	605	606	SPINACH_LEAF_DYE	make spinach leaf dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	615	616	SWEET_POTATO_SKIN_DYE	make sweet potato skin dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	625	626	TOMATO_SKIN_DYE	make tomato skin dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	635	636	TURNIP_SKIN_DYE	make turnip skin dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	645	646	WATERMELON_FRUIT_DYE	make watermelon dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_dyes.txt	655	656	WILD_CARROT_ROOT_DYE	make carrot dye
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	5	6	MAKE WOODEN CHAIR	make wooden chair
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	20	21	MAKE WOODEN TABLE	make wooden table
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	33	34	MAKE WOODEN BED	make wooden bed
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	46	47	MAKE WOODEN CHEST	make wooden chest
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	59	60	MAKE WOODEN CABINET	make wooden cabinet
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	72	73	MAKE WOODEN DOOR	make wooden door
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	85	86	MAKE WOODEN BARREL	make wooden barrel
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	98	99	MAKE WOODEN BUCKET	make wooden bucket
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	111	112	MAKE WOODEN CASKET	make wooden casket
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	124	125	MAKE WOODEN HATCH COVER	make wooden hatch cover
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	137	138	MAKE WOODEN GRATE	make wooden grate
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	150	151	MAKE WOODEN BIN	make wooden bin
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	163	164	MAKE WOODEN STEPLADDER	make wooden stepladder
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	176	177	MAKE WOODEN BOOKCASE	make wooden bookcase
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	189	190	MAKE WOODEN SPLINT	make wooden splint
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	202	203	MAKE WOODEN CRUTCH	make wooden crutch
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	215	216	MAKE WOODEN SHIELD	make wooden shield
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	228	229	MAKE WOODEN BUCKLER	make wooden buckler
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	241	242	MAKE WOODEN TRAINING AXE	make wooden training axe
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	254	255	MAKE WOODEN TRAINING SHORT SWORD	make wooden training short sword
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	267	268	MAKE WOODEN TRAINING SPEAR	make wooden training spear
+classic	raw-object	data/vanilla/vanilla_reactions/objects/reaction_adv_carpenter.txt	280	281	MAKE WOODEN PEDESTAL	make wooden pedestal
+classic	example-not-loaded	data/vanilla/examples and notes/reaction_instrument_example.txt	5	6	MAKE EXAMPLE DRUM BODY	make thokit drum
+classic	example-not-loaded	data/vanilla/examples and notes/reaction_instrument_example.txt	17	18	MAKE EXAMPLE DRUM HEAD	make thokit head
+classic	example-not-loaded	data/vanilla/examples and notes/reaction_instrument_example.txt	26	27	MAKE EXAMPLE DRUM	assemble thokit
+classic	example-not-loaded	data/vanilla/examples and notes/reaction_instrument_example.txt	39	40	MAKE EXAMPLE WIND	make ecosh

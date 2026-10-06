@@ -114,11 +114,11 @@ static std::optional<NativeHistoryPageData> snapshot_native_history_entity_intro
                 }
             }
         }
-        if (!populate_native_history_subjects(data)) return std::nullopt;
+        if (!populate_native_history_subjects(data, true)) return std::nullopt;
         return page;
     }
     if (type != 5) {
-        if (!populate_native_history_subjects(data)) return std::nullopt;
+        if (!populate_native_history_subjects(data, true)) return std::nullopt;
         return page;
     }
     NativeBorrowedVector<int32_t> deities;
@@ -188,6 +188,6 @@ static std::optional<NativeHistoryPageData> snapshot_native_history_entity_intro
             }
         }
     }
-    if (!populate_native_history_subjects(data)) return std::nullopt;
+    if (!populate_native_history_subjects(data, true)) return std::nullopt;
     return page;
 }

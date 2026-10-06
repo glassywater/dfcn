@@ -240,6 +240,10 @@ static void capture_native_unit_reference_entity_name(const void *name,
             call->reference_failed = true;
             return;
         }
+        const uintptr_t name_address = reinterpret_cast<uintptr_t>(name);
+        if (name_address >= 0x20)
+            capture_native_history_entity_name_context(g_native_unit_identity_hooks.base,
+                name_address - 0x20, call->reference_entity.name);
         call->reference_entity.source.assign(source);
         call->reference_entity_seen = true;
     } catch (...) { call->reference_failed = true; }

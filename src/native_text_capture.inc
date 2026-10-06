@@ -84,6 +84,25 @@ private:
 // Capture around the native wrapper, retaining source text and appended row identity.
 using NativeParagraphFn = void (*)(void *, const NativeString *, int);
 static NativeParagraphFn g_real_native_paragraph = nullptr;
+static void capture_appended_native_paragraph(void *box, int width,
+        std::string complete, size_t before) {
+    if (before > 262144 || complete.empty()) return;
+    const size_t after = native_paragraph_row_count(box);
+    if (after <= before || after > 262144 || after - before > 16384) return;
+    std::vector<std::string> rows;
+    std::vector<uintptr_t> row_addresses;
+    rows.reserve(after - before);
+    row_addresses.reserve(after - before);
+    for (size_t i = before; i < after; ++i) {
+        std::string_view row;
+        const auto *native_row = native_paragraph_row(box, i);
+        if (!native_string_view(native_row, &row)) return;
+        rows.emplace_back(row);
+        row_addresses.push_back(reinterpret_cast<uintptr_t>(native_row));
+    }
+    remember_native_paragraph(reinterpret_cast<uintptr_t>(box), width,
+        std::move(complete), std::move(rows), before, std::move(row_addresses));
+}
 static void dfcn_capture_native_paragraph(void *box, const NativeString *source, int width) {
     NativeWrapTiming timing("paragraph", box, source);
     std::string complete;
@@ -100,26 +119,51 @@ static void dfcn_capture_native_paragraph(void *box, const NativeString *source,
         auto native_timing = timing.phase(NativeWrapTiming::Stage::Native);
         if (g_real_native_paragraph) g_real_native_paragraph(box, source, width);
     }
-    if (before > 262144 || complete.empty()) return;
     try {
         auto capture_timing = timing.phase(NativeWrapTiming::Stage::Capture);
-        const size_t after = native_paragraph_row_count(box);
-        if (after <= before || after > 262144 || after - before > 16384) return;
-        std::vector<std::string> rows;
-        std::vector<uintptr_t> row_addresses;
-        rows.reserve(after - before);
-        row_addresses.reserve(after - before);
-        for (size_t i = before; i < after; ++i) {
-            std::string_view row;
-            const auto *native_row = native_paragraph_row(box, i);
-            if (!native_string_view(native_row, &row)) return;
-            rows.emplace_back(row);
-            row_addresses.push_back(reinterpret_cast<uintptr_t>(native_row));
-        }
-        remember_native_paragraph(reinterpret_cast<uintptr_t>(box), width,
-            std::move(complete), std::move(rows), before, std::move(row_addresses));
+        capture_appended_native_paragraph(box, width, std::move(complete), before);
     } catch (...) {}
 }
+
+#ifdef _WIN32
+// The background religion tooltip submits its first sentence through the
+// vector overload, which wraps directly instead of calling add_paragraph's
+// single-string overload. Native pieces share one buffer without separators;
+// retain that complete source and the exact rows appended by this call.
+using NativeParagraphVectorFn = void (*)(void *, const void *, int);
+static NativeParagraphVectorFn g_real_native_paragraph_vector = nullptr;
+static void dfcn_capture_native_paragraph_vector(void *box, const void *source, int width) {
+    NativeWrapTiming timing("paragraph-vector", box, nullptr);
+    std::string complete;
+    size_t before = SIZE_MAX;
+    try {
+        auto capture_timing = timing.phase(NativeWrapTiming::Stage::Capture);
+        const auto pieces = NativeBorrowedVector<NativeString *>::read(source);
+        if (width > 0 && pieces.valid(16384) && pieces.size() > 0) {
+            bool intact = true;
+            for (size_t i = 0; i < pieces.size(); ++i) {
+                std::string_view text;
+                if (!native_string_view(pieces.begin[i], &text) ||
+                    text.size() > 262144 - complete.size()) {
+                    intact = false;
+                    break;
+                }
+                complete.append(text);
+            }
+            if (intact && is_native_prose_source(complete))
+                before = native_paragraph_row_count(box);
+        }
+    } catch (...) { before = SIZE_MAX; }
+    {
+        auto native_timing = timing.phase(NativeWrapTiming::Stage::Native);
+        if (g_real_native_paragraph_vector) g_real_native_paragraph_vector(box, source, width);
+    }
+    try {
+        auto capture_timing = timing.phase(NativeWrapTiming::Stage::Capture);
+        capture_appended_native_paragraph(box, width, std::move(complete), before);
+    } catch (...) {}
+}
+#endif
 
 // Complete documents, aggregation, scroll padding and draw identity share one
 // implementation on every host. Native adapters only expose game-owned rows.

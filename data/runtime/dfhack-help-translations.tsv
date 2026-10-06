@@ -43,20 +43,20 @@ DFHack help: add-recipe ==========	add-recipe ==========	l
 DFHack help: add-recipe	add-recipe	l
 DFHack help: Tags: adventure | fort | gameplay	标签：冒险 | 要塞 |游戏玩法	l
 DFHack help: Command: "add-recipe"	命令："add-recipe"	l
-DFHack help: Add crafting recipes to a civ.	将制作配方添加到文明中。	l
-DFHack help: Civilizations pick randomly from a pool of possible recipes, which means, for example, not all civs get high boots. This script can help fix that. Only weapons, armor, and tools are currently supported; dynamically generated item types like instruments are not.	文明会从可能的食谱中随机选择，这意味着，例如，并非所有文明都会获得高筒靴。这个脚本可以帮助解决这个问题。目前仅支持武器、盔甲和工具；动态生成的项目类型（如仪器）则不然。	l
+DFHack help: Add crafting recipes to a civ.	将制作配方添加到政权中。	l
+DFHack help: Civilizations pick randomly from a pool of possible recipes, which means, for example, not all civs get high boots. This script can help fix that. Only weapons, armor, and tools are currently supported; dynamically generated item types like instruments are not.	政权会从可能的食谱中随机选择，这意味着，例如，并非所有政权都会获得高筒靴。这个脚本可以帮助解决这个问题。目前仅支持武器、盔甲和工具；动态生成的项目类型（如仪器）则不然。	l
 DFHack help: add-recipe (all|native) add-recipe single <item token>	添加菜谱（全部|本机） 添加菜谱单个 <item token>	l
 DFHack help: add-recipe (all|native)	添加食谱（全部|本机）	l
 DFHack help: add-recipe single <item token>	添加菜谱单<item token>	l
-DFHack help: "add-recipe native" Add all crafting recipes that your civ could have chosen from its pool, but did not.	"add-recipe native" 添加您的文明可以从其池中选择但没有选择的所有制作配方。	l
+DFHack help: "add-recipe native" Add all crafting recipes that your civ could have chosen from its pool, but did not.	"add-recipe native" 添加您的政权可以从其池中选择但没有选择的所有制作配方。	l
 DFHack help: "add-recipe native"	"add-recipe native"	l
-DFHack help: Add all crafting recipes that your civ could have chosen from its pool, but did not.	添加您的文明本可以从其池中选择但没有选择的所有制作配方。	l
+DFHack help: Add all crafting recipes that your civ could have chosen from its pool, but did not.	添加您的政权本可以从其池中选择但没有选择的所有制作配方。	l
 DFHack help: "add-recipe all" Add *all* available weapons and armor, including exotic items like blowguns, two-handed swords, and capes.	"add-recipe all" 添加*所有*可用的武器和盔甲，包括气枪、双手剑和斗篷等奇异物品。	l
 DFHack help: "add-recipe all"	"add-recipe all"	l
 DFHack help: Add *all* available weapons and armor, including exotic items like blowguns, two-handed swords, and capes.	添加*所有*可用的武器和盔甲，包括气枪、双手剑和斗篷等奇异物品。	l
-DFHack help: "add-recipe single SHOES:ITEM_SHOES_BOOTS" Allow your civ to craft high boots.	"add-recipe single SHOES:ITEM_SHOES_BOOTS" 让您的文明制作高筒靴。	l
+DFHack help: "add-recipe single SHOES:ITEM_SHOES_BOOTS" Allow your civ to craft high boots.	"add-recipe single SHOES:ITEM_SHOES_BOOTS" 让您的政权制作高筒靴。	l
 DFHack help: "add-recipe single SHOES:ITEM_SHOES_BOOTS"	"add-recipe single SHOES:ITEM_SHOES_BOOTS"	l
-DFHack help: Allow your civ to craft high boots.	让你的文明制作高筒靴。	l
+DFHack help: Allow your civ to craft high boots.	让你的政权制作高筒靴。	l
 DFHack help: add-spatter ===========	add-spatter ===========	l
 DFHack help: add-spatter	add-spatter	l
 DFHack help: Tags: adventure | fort | gameplay | items	标签：冒险 | 要塞 |游戏玩法 |项目	l
@@ -171,9 +171,9 @@ DFHack help: This is the amount that the surface irritation counter decreases pe
 DFHack help: "Cavern dweller maximum attackers" This controls the maximum number of cavern invaders that can spawn in a single invasion. If "agitation-rebalance" is not managing the invader population, the number of invaders in the caverns can grow beyond this number if the invaders from a previous invasion are still alive.	"地下洞穴居民最大攻击者"这控制单次入侵中可以产生的地下洞穴入侵者的最大数量。如果 "agitation-rebalance" 不管理入侵者数量，并且先前入侵的入侵者仍然活着，则地下洞穴中的入侵者数量可能会超过此数量。	l
 DFHack help: "Cavern dweller maximum attackers"	"地下洞穴居民最大攻击者"	l
 DFHack help: This controls the maximum number of cavern invaders that can spawn in a single invasion. If "agitation-rebalance" is not managing the invader population, the number of invaders in the caverns can grow beyond this number if the invaders from a previous invasion are still alive.	这控制了单次入侵中可以产生的地下洞穴入侵者的最大数量。如果 "agitation-rebalance" 不管理入侵者数量，并且先前入侵的入侵者仍然活着，则地下洞穴中的入侵者数量可能会超过此数量。	l
-DFHack help: "Cavern dweller scale" Each time your civilization is attacked, the number of attackers in a single cavern invasion increases by this value. The total number of attackers is still capped by "Cavern dweller maximum attackers".	"地下洞穴居民规模"每当你的文明受到攻击时，单次地下洞穴入侵中的攻击者数量就会增加这个值。攻击者总数仍受到"地下洞穴居民最大攻击者数"的限制。	l
+DFHack help: "Cavern dweller scale" Each time your civilization is attacked, the number of attackers in a single cavern invasion increases by this value. The total number of attackers is still capped by "Cavern dweller maximum attackers".	"地下洞穴居民规模"每当你的政权受到攻击时，单次地下洞穴入侵中的攻击者数量就会增加这个值。攻击者总数仍受到"地下洞穴居民最大攻击者数"的限制。	l
 DFHack help: "Cavern dweller scale"	"地下洞穴居民量表"	l
-DFHack help: Each time your civilization is attacked, the number of attackers in a single cavern invasion increases by this value. The total number of attackers is still capped by "Cavern dweller maximum attackers".	每次你的文明受到攻击，单次地下洞穴入侵的攻击者数量就会增加这个值。攻击者总数仍受到"地下洞穴居民最大攻击者数"的限制。	l
+DFHack help: Each time your civilization is attacked, the number of attackers in a single cavern invasion increases by this value. The total number of attackers is still capped by "Cavern dweller maximum attackers".	每次你的政权受到攻击，单次地下洞穴入侵的攻击者数量就会增加这个值。攻击者总数仍受到"地下洞穴居民最大攻击者数"的限制。	l
 DFHack help: "Forgotten beast wealth divisor" Your fortress wealth is divided by this number and the result is added to a cavern's "natural" irritation to get the effective irritation that a forgotten beast rolls against for a chance to attack.	"被遗忘的野兽财富除数"你的要塞财富除以这个数字，并将结果添加到地下洞穴的"natural"刺激中，以获得被遗忘的野兽滚动以获得攻击机会的有效刺激。	l
 DFHack help: "Forgotten beast wealth divisor"	《被遗忘的兽财富除数》	l
 DFHack help: Your fortress wealth is divided by this number and the result is added to a cavern's "natural" irritation to get the effective irritation that a forgotten beast rolls against for a chance to attack.	你的要塞财富除以这个数字，并将结果添加到地下洞穴的 "natural" 刺激中，以获得被遗忘的野兽翻滚以获得攻击机会的有效刺激。	l
@@ -831,7 +831,7 @@ DFHack help: autoclothing autoclothing <material> <item> autoclothing <material>
 DFHack help: autoclothing <material> <item>	autoclothing <material> <item>	l
 DFHack help: autoclothing <material> <item> <quantity>	autoclothing <material> <item> <quantity>	l
 DFHack help: autoclothing clear <material> <item>	汽车服装透明 <material> <item>	l
-DFHack help: "<material>" can be "cloth", "silk", "yarn", or "leather". The "<item>" can be anything your civilization can produce, such as "dress" or "mitten".	"<材料>"可以是 "cloth"、"silk"、"yarn" 或 "leather"。 "<item>"可以是您的文明可以生产的任何东西，例如 "dress" 或 "mitten"。	l
+DFHack help: "<material>" can be "cloth", "silk", "yarn", or "leather". The "<item>" can be anything your civilization can produce, such as "dress" or "mitten".	"<材料>"可以是 "cloth"、"silk"、"yarn" 或 "leather"。 "<item>"可以是您的政权可以生产的任何东西，例如 "dress" 或 "mitten"。	l
 DFHack help: The quantity is **per-citizen**, so keep the values low. A quantity of "1" makes one per citizen. "2" will ensure everyone has a pre-made spare. Usually, "1" is enough.	数量为**每个公民**，因此请保持较低的值。数量"1"相当于每个居民一个。 "2"将确保每个人都有一个预制的备用件。通常，"1"就足够了。	l
 DFHack help: When invoked without parameters, it shows a summary of all managed clothing orders, and the overall clothing situation in your fort. When invoked with a material and item, but without a quantity, it shows the current configuration for that material and item.	当不带参数调用时，它会显示所有托管服装订单的摘要，以及您要塞中的总体服装情况。当使用材料和项目但没有数量调用时，它会显示该材料和项目的当前配置。	l
 DFHack help: "autoclothing cloth "short skirt" 1" Ensures that every citizen will have a cloth short skirts available (as long as there is cloth available to make them out of).	"autoclothing cloth "短裙"1" 确保每个居民都有可用的布料短裙（只要有布料可以制作）。	l
@@ -3222,19 +3222,19 @@ DFHack help: diplomacy	diplomacy	l
 DFHack help: Tags: fort | armok | inspection | military	标签：要塞 |阿莫克 |检验|军事	l
 DFHack help: Command: "diplomacy"	命令："diplomacy"	l
 DFHack help: View or alter diplomatic relationships.	查看或改变外交关系。	l
-DFHack help: This tool can report on or modify the diplomatic relationships (i.e. war vs. peace) you have with other contacted civilizations. Note that a civilization is only at peace if **both** you are at peace with them **and** they are at peace with you.	此工具可以报告或修改您与其他接触过的文明的外交关系（即战争与和平）。请注意，只有当**双方**你与他们和平相处**并且**他们与你和平相处时，文明才处于和平状态。	l
+DFHack help: This tool can report on or modify the diplomatic relationships (i.e. war vs. peace) you have with other contacted civilizations. Note that a civilization is only at peace if **both** you are at peace with them **and** they are at peace with you.	此工具可以报告或修改您与其他接触过的政权的外交关系（即战争与和平）。请注意，只有当**双方**你与他们和平相处**并且**他们与你和平相处时，政权才处于和平状态。	l
 DFHack help: diplomacy diplomacy all <RELATIONSHIP> diplomacy <CIV_ID> <RELATIONSHIP>	外交外交全部 <RELATIONSHIP> 外交 <CIV_ID> <RELATIONSHIP>	l
 DFHack help: diplomacy all <RELATIONSHIP>	外交全<RELATIONSHIP>	l
 DFHack help: diplomacy <CIV_ID> <RELATIONSHIP>	diplomacy <CIV_ID> <RELATIONSHIP>	l
 DFHack help: "diplomacy" See current diplomatic relationships between you and all other contacted civs.	"diplomacy" 查看您与所有其他联系公民之间当前的外交关系。	l
 DFHack help: "diplomacy"	"diplomacy"	l
 DFHack help: See current diplomatic relationships between you and all other contacted civs.	​​查看您与所有其他联系公民之间当前的外交关系。	l
-DFHack help: "diplomacy 224 peace" Changes both your stance towards civilization 224 and their stance towards you to peace.	"diplomacy 224 peace" 将你对文明224的立场和他们对你的立场都改为和平。	l
+DFHack help: "diplomacy 224 peace" Changes both your stance towards civilization 224 and their stance towards you to peace.	"diplomacy 224 peace" 将你对政权224的立场和他们对你的立场都改为和平。	l
 DFHack help: "diplomacy 224 peace"	"diplomacy 224 peace"	l
-DFHack help: Changes both your stance towards civilization 224 and their stance towards you to peace.	将你对文明224的立场和他们对你的立场都改为和平。	l
-DFHack help: "diplomacy all war" Induce the entire world to declare war on your civilization.	"diplomacy all war" 诱导全世界向你的文明宣战。	l
+DFHack help: Changes both your stance towards civilization 224 and their stance towards you to peace.	将你对政权224的立场和他们对你的立场都改为和平。	l
+DFHack help: "diplomacy all war" Induce the entire world to declare war on your civilization.	"diplomacy all war" 诱导全世界向你的政权宣战。	l
 DFHack help: "diplomacy all war"	"diplomacy all war"	l
-DFHack help: Induce the entire world to declare war on your civilization.	诱导全世界向你的文明宣战。	l
+DFHack help: Induce the entire world to declare war on your civilization.	诱导全世界向你的政权宣战。	l
 DFHack help: disable =======	disable =======	l
 DFHack help: disable	disable	l
 DFHack help: Command: "disable"	命令："disable"	l
@@ -3483,9 +3483,9 @@ DFHack help: embark-anyone =============	embark-anyone =============	l
 DFHack help: embark-anyone	embark-anyone	l
 DFHack help: Tags: embark | armok	标签：启程 |阿莫克	l
 DFHack help: Command: "embark-anyone"	命令："embark-anyone"	l
-DFHack help: Allows you to embark as any civilisation, including dead and non-dwarven ones.	允许您以任何文明的方式启程，包括死亡和非矮人文明。	l
-DFHack help: This script must be run on the embark screen when choosing an origin civilization. When run, you can add any civilization, including dead or non-dwarven civilizations, to the list of choices.	选择起源文明时必须在启程屏幕上运行此脚本。运行时，您可以将任何文明（包括死亡或非矮人文明）添加到选择列表中。	l
-DFHack help: Non-dwarven civs have their own mechanics and are likely to lack recipes which can render fortress mode difficult or unplayable. Preparing carefully is advised, and some crucial items may need to be spawned in with other DFHack tools (e.g. gui/create-item). Additionally, missing crafting recipes can be added using add-recipe.	非矮人文明有自己的机制，并且可能缺乏会使要塞模式变得困难或无法玩的配方。建议仔细准备，一些关键项目可能需要使用其他 DFHack 工具（例如 gui/create-item）生成。此外，可以使用添加配方添加缺少的制作配方。	l
+DFHack help: Allows you to embark as any civilisation, including dead and non-dwarven ones.	允许您以任何政权的方式启程，包括死亡和非矮人政权。	l
+DFHack help: This script must be run on the embark screen when choosing an origin civilization. When run, you can add any civilization, including dead or non-dwarven civilizations, to the list of choices.	选择起源政权时必须在启程屏幕上运行此脚本。运行时，您可以将任何政权（包括死亡或非矮人政权）添加到选择列表中。	l
+DFHack help: Non-dwarven civs have their own mechanics and are likely to lack recipes which can render fortress mode difficult or unplayable. Preparing carefully is advised, and some crucial items may need to be spawned in with other DFHack tools (e.g. gui/create-item). Additionally, missing crafting recipes can be added using add-recipe.	非矮人政权有自己的机制，并且可能缺乏会使要塞模式变得困难或无法玩的配方。建议仔细准备，一些关键项目可能需要使用其他 DFHack 工具（例如 gui/create-item）生成。此外，可以使用添加配方添加缺少的制作配方。	l
 DFHack help: embark-assistant ================	embark-assistant ================	l
 DFHack help: embark-assistant	embark-assistant	l
 DFHack help: Command: "embark-assistant"	命令："embark-assistant"	l
@@ -3676,8 +3676,8 @@ DFHack help: * Ensure the toggle for "Also export extended legends data" is on (
 DFHack help: * Click the "Export XML" button to generate both the standard export and the extended data export	* 点击"导出XML"按钮，同时生成标准导出和扩展数据导出	l
 DFHack help: You can also generate just the extended data export by manually running the "exportlegends" command while legends mode is open.	您还可以在图例模式打开时手动运行 "exportlegends" 命令来生成扩展数据导出。	l
 DFHack help: In addition to "legends_plus.xml", "exportlegends" recreates the companion files that Classic Dwarf Fortress produced with its "Export Map/Gen Information" action:	除了 "legends_plus.xml" 之外，"exportlegends" 还重新创建了 Classic 矮人要塞通过"导出地图/生成信息"操作生成的伴随文件：	l
-DFHack help: * "world_sites_and_pops.txt" contains civilized, site, outdoor animal, and underground animal population totals.	* "world_sites_and_pops.txt" 包含文明、场地、室外动物和地下动物的种群总数。	l
-DFHack help: * "world_history.txt" contains civilizations, worship relationships, and current position holders.	* "world_history.txt" 包含文明、崇拜关系和当前职位持有者。	l
+DFHack help: * "world_sites_and_pops.txt" contains civilized, site, outdoor animal, and underground animal population totals.	* "world_sites_and_pops.txt" 包含政权、场地、室外动物和地下动物的种群总数。	l
+DFHack help: * "world_history.txt" contains civilizations, worship relationships, and current position holders.	* "world_history.txt" 包含政权、崇拜关系和当前职位持有者。	l
 DFHack help: * "world_map.csv" is a compact per-world-tile companion containing biome, alignment, savagery, elevation, volcanism, mountain-peak metadata, and lake/river/road flags and exact cardinal river connections. Compatible viewers can combine it with the Premium world-map graphics installed with the game; no proprietary graphics are copied into the export. Road connections can be inferred between adjacent road tiles, but the available data does not identify paving, so compatible viewers render them as dirt.	* "world_map.csv" 是一个紧凑的每个世界图块伴侣，包含生物群系、路线、野蛮、海拔、火山活动、山峰元数据以及 lake/river/road 旗帜和精确的主要河流连接。兼容的观众可以将其与游戏中安装的高级世界地图图形结合起来；没有专有图形被复制到导出中。可以推断相邻道路瓷砖之间的道路连接，但可用数据无法识别铺路，因此兼容的查看器将它们渲染为泥土。	l
 DFHack help: The text files use the Classic names and structure expected by external legends viewers. The CSV companion is a DFHack extension.	文本文件使用外部图例查看者期望的经典名称和结构。 CSV 伴侣是 DFHack 扩展。	l
 DFHack help: This script also provides several overlays that are managed by the overlay framework.	该脚本还提供了几个由覆盖框架管理的覆盖。	l
@@ -3925,7 +3925,7 @@ DFHack help: fix/civil-war	fix/civil-war	l
 DFHack help: Command: "fix/civil-war"	命令："fix/civil-war"	l
 DFHack help: Removes a civil war.	消除内战。	l
 DFHack help: This script removes a negative relation with your own government (civil war).	该脚本消除了与您自己的政府（内战）的负面关系。	l
-DFHack help: If caravans/migrants do not return after fixing the civil war, try running "force Caravan" and trading to increase wealth exported to parent civ.	如果caravans/migrants在解决内战后没有返回，请尝试运行"force Caravan"并进行交易以增加输出到母文明的财富。	l
+DFHack help: If caravans/migrants do not return after fixing the civil war, try running "force Caravan" and trading to increase wealth exported to parent civ.	如果caravans/migrants在解决内战后没有返回，请尝试运行"force Caravan"并进行交易以增加输出到母政权的财富。	l
 DFHack help: fix/codex-pages ===============	fix/codex-pages ===============	l
 DFHack help: fix/codex-pages	fix/codex-pages	l
 DFHack help: Command: "fix/codex-pages"	命令："fix/codex-pages"	l
@@ -4048,7 +4048,7 @@ DFHack help: fix/loyaltycascade ==================	fix/loyaltycascade ==========
 DFHack help: fix/loyaltycascade	fix/loyaltycascade	l
 DFHack help: Command: "fix/loyaltycascade"	命令："fix/loyaltycascade"	l
 DFHack help: Halts loyalty cascades where dwarves are fighting dwarves.	停止矮人与矮人战斗的忠诚级联。	l
-DFHack help: This tool neutralizes loyalty cascades by fixing units who consider their own civilization to be the enemy. It will also halt all fighting on the map that involves your citizens, though "real" enemies will re-engage in combat after a short delay.	该工具通过修复将自己的文明视为敌人的单位来消除忠诚度级联。它还将停止地图上涉及您的居民的所有战斗，但 "real" 敌人将在短暂延迟后重新参与战斗。	l
+DFHack help: This tool neutralizes loyalty cascades by fixing units who consider their own civilization to be the enemy. It will also halt all fighting on the map that involves your citizens, though "real" enemies will re-engage in combat after a short delay.	该工具通过修复将自己的政权视为敌人的单位来消除忠诚度级联。它还将停止地图上涉及您的居民的所有战斗，但 "real" 敌人将在短暂延迟后重新参与战斗。	l
 DFHack help: fix/noexert-exhaustion ======================	fix/noexert-exhaustion ======================	l
 DFHack help: fix/noexert-exhaustion	fix/noexert-exhaustion	l
 DFHack help: Command: "fix/noexert-exhaustion"	命令："fix/noexert-exhaustion"	l
@@ -4311,16 +4311,16 @@ DFHack help: This tool triggers events like megabeasts, caravans, and migrants. 
 DFHack help: force <event> [<civ id>] force Wildlife [all]	force <event> [<civ id>] force Wildlife [all]	l
 DFHack help: force <event> [<civ id>]	force <event> [<civ id>]	l
 DFHack help: force Wildlife [all]	强制野生动物[全部]	l
-DFHack help: The civ id is only used for "Diplomat" and "Caravan" events, and defaults to the player civilization if not specified.	civ id仅用于"外交官"和"商队"事件，如果不指定则默认为玩家文明。	l
+DFHack help: The civ id is only used for "Diplomat" and "Caravan" events, and defaults to the player civilization if not specified.	civ id仅用于"外交官"和"商队"事件，如果不指定则默认为玩家政权。	l
 DFHack help: The default civ IDs that you are likely to be interested in are:	您可能感兴趣的默认公民 ID 是：	l
 DFHack help: * "MOUNTAIN" (dwarves)	* "MOUNTAIN" (矮人)	l
 DFHack help: * "PLAINS" (humans)	* "PLAINS"（人类）	l
 DFHack help: * "FOREST" (elves)	* "FOREST"（精灵）	l
-DFHack help: But to see IDs for all civilizations in your current game, run this command:	但是要查看当前游戏中所有文明的 ID，请运行以下命令：	l
+DFHack help: But to see IDs for all civilizations in your current game, run this command:	但是要查看当前游戏中所有政权的 ID，请运行以下命令：	l
 DFHack help: :lua ids={} for _,en in ipairs(world.entities.all) do ids[en.entity_raw.code] = true end for id in pairs(ids) do print(id) end	:lua ids={} for _,en in ipairs(world.entities.all) do ids[en.entity_raw.code] = true end for id in pairs(ids) do print(id) end	l
-DFHack help: "force Caravan" Spawn a caravan from your parent civilization.	"force Caravan" 从您的父文明中生成商队。	l
+DFHack help: "force Caravan" Spawn a caravan from your parent civilization.	"force Caravan" 从您的父政权中生成商队。	l
 DFHack help: "force Caravan"	"force Caravan"	l
-DFHack help: Spawn a caravan from your parent civilization.	从你的父文明中生成商队。	l
+DFHack help: Spawn a caravan from your parent civilization.	从你的父政权中生成商队。	l
 DFHack help: "force Diplomat FOREST" Spawn an elven diplomat.	"force Diplomat FOREST" 生成一名精灵外交官。	l
 DFHack help: "force Diplomat FOREST"	"force Diplomat FOREST"	l
 DFHack help: Spawn an elven diplomat.	生成一名精灵外交官。	l
@@ -4442,9 +4442,9 @@ DFHack help: Heal all units on the map, optionally resurrecting them if dead.	�
 DFHack help: "full-heal --all_citizens [-r] [--keep_corpse]" Heal all fortress citizens and residents on the map. Does not include pets.	"full-heal --all_citizens [-r] [--keep_corpse]" 治疗地图上所有要塞居民和居民。不包括宠物。	l
 DFHack help: "full-heal --all_citizens [-r] [--keep_corpse]"	"full-heal --all_citizens [-r] [--keep_corpse]"	l
 DFHack help: Heal all fortress citizens and residents on the map. Does not include pets.	治愈地图上所有要塞居民和居民。不包括宠物。	l
-DFHack help: "full-heal --all_civ [-r] [--keep_corpse]" Heal all units belonging to your parent civilization, including pets and visitors.	"full-heal --all_civ [-r] [--keep_corpse]" 治愈属于你的母文明的所有单位，包括宠物和访客。	l
+DFHack help: "full-heal --all_civ [-r] [--keep_corpse]" Heal all units belonging to your parent civilization, including pets and visitors.	"full-heal --all_civ [-r] [--keep_corpse]" 治愈属于你的母政权的所有单位，包括宠物和访客。	l
 DFHack help: "full-heal --all_civ [-r] [--keep_corpse]"	"full-heal --all_civ [-r] [--keep_corpse]"	l
-DFHack help: Heal all units belonging to your parent civilization, including pets and visitors.	治愈属于你的母文明的所有单位，包括宠物和访客。	l
+DFHack help: Heal all units belonging to your parent civilization, including pets and visitors.	治愈属于你的母政权的所有单位，包括宠物和访客。	l
 DFHack help: "full-heal" Fully heal the selected unit.	"full-heal" 完全治愈所选单位。	l
 DFHack help: "full-heal -r --keep_corpse --unit 23273" Fully heal unit 23273. If this unit was dead, it will be resurrected without removing the corpse - creepy!	"full-heal -r --keep_corpse --unit 23273" 完全治疗单位 23273。如果该单位已死亡，它将在不移除尸体的情况下复活 - 令人毛骨悚然！	l
 DFHack help: "full-heal -r --keep_corpse --unit 23273"	"full-heal -r --keep_corpse --unit 23273"	l
@@ -4691,15 +4691,15 @@ DFHack help: You can specify a job type (e.g. "Dig", "FellTree", etc.) to pre-se
 DFHack help: "gui/advfort" Brings up the GUI for interactive job selection. Items that dwarves can use will be available in item selection lists.	"gui/advfort" 调出 GUI 进行交互式作业选择。矮人可以使用的项目将出现在项目选择列表中。	l
 DFHack help: "gui/advfort"	"gui/advfort"	l
 DFHack help: Brings up the GUI for interactive job selection. Items that dwarves can use will be available in item selection lists.	调出GUI进行交互式作业选择。矮人可以使用的项目将出现在项目选择列表中。	l
-DFHack help: "gui/advfort -e" Brings up the GUI for interactive job selection. Items that the adventurer's civilization can use will be available in item selection lists.	"gui/advfort -e" 调出 GUI 进行交互式作业选择。冒险家文明可以使用的物品将出现在物品选择列表中。	l
+DFHack help: "gui/advfort -e" Brings up the GUI for interactive job selection. Items that the adventurer's civilization can use will be available in item selection lists.	"gui/advfort -e" 调出 GUI 进行交互式作业选择。冒险家政权可以使用的物品将出现在物品选择列表中。	l
 DFHack help: "gui/advfort -e"	"gui/advfort -e"	l
-DFHack help: Brings up the GUI for interactive job selection. Items that the adventurer's civilization can use will be available in item selection lists.	调出GUI进行交互式作业选择。冒险家文明可以使用的物品将出现在物品选择列表中。	l
+DFHack help: Brings up the GUI for interactive job selection. Items that the adventurer's civilization can use will be available in item selection lists.	调出GUI进行交互式作业选择。冒险家政权可以使用的物品将出现在物品选择列表中。	l
 DFHack help: "-c", "--cheat" Relaxes item requirements for buildings (e.g. you can make walls from bones, which you cannot normally do).	"-c"、"--cheat" 放宽了建筑物的物品要求（例如，您可以用骨头建造墙壁，而这通常是做不到的）。	l
 DFHack help: "-c", "--cheat"	"-c", "--cheat"	l
 DFHack help: Relaxes item requirements for buildings (e.g. you can make walls from bones, which you cannot normally do).	放宽了建筑物的物品要求（例如，您可以用骨头建造墙壁，而这通常是做不到的）。	l
-DFHack help: "-e [NAME]", "--entity [NAME]" Use the given civ (specified as an entity raw ID) to determine which resources are usable. Defaults to "MOUNTAIN" (i.e. Dwarf). If "-e" is specified but the entity name is omitted then it defaults to the adventurer's civ.	"-e [NAME]", "--entity [NAME]" 使用给定的 civ（指定为实体原始 ID）来确定哪些资源可用。默认为 "MOUNTAIN"（即矮人）。如果指定了 "-e" 但省略了实体名称，那么它默认为冒险家的文明。	l
+DFHack help: "-e [NAME]", "--entity [NAME]" Use the given civ (specified as an entity raw ID) to determine which resources are usable. Defaults to "MOUNTAIN" (i.e. Dwarf). If "-e" is specified but the entity name is omitted then it defaults to the adventurer's civ.	"-e [NAME]", "--entity [NAME]" 使用给定的 civ（指定为实体原始 ID）来确定哪些资源可用。默认为 "MOUNTAIN"（即矮人）。如果指定了 "-e" 但省略了实体名称，那么它默认为冒险家的政权。	l
 DFHack help: "-e [NAME]", "--entity [NAME]"	"-e [NAME]", "--entity [NAME]"	l
-DFHack help: Use the given civ (specified as an entity raw ID) to determine which resources are usable. Defaults to "MOUNTAIN" (i.e. Dwarf). If "-e" is specified but the entity name is omitted then it defaults to the adventurer's civ.	使用给定的 civ（指定为实体原始 ID）来确定哪些资源可用。默认为 "MOUNTAIN"（即矮人）。如果指定了 "-e" 但省略了实体名称，那么它默认为冒险家的文明。	l
+DFHack help: Use the given civ (specified as an entity raw ID) to determine which resources are usable. Defaults to "MOUNTAIN" (i.e. Dwarf). If "-e" is specified but the entity name is omitted then it defaults to the adventurer's civ.	使用给定的 civ（指定为实体原始 ID）来确定哪些资源可用。默认为 "MOUNTAIN"（即矮人）。如果指定了 "-e" 但省略了实体名称，那么它默认为冒险家的政权。	l
 DFHack help: Screenshot ----------	截图----------	l
 DFHack help: Screenshot	截图	l
 DFHack help: Here is an example of a player digging in adventure mode:	这是玩家在冒险模式下挖掘的示例：	l
@@ -4792,9 +4792,9 @@ DFHack help: Normally, assigning a unit to a burrow is treated more like a sugge
 DFHack help: How to set up and use a civilian alert --------------------------------------	如何设置和使用民用警报 --------------------------------------------------	l
 DFHack help: How to set up and use a civilian alert	如何设置和使用民用警报	l
 DFHack help: A civ alert needs a burrow to send civilians to. Go set one up if you haven't already. If you have walls around a secure interior, you can include all your below-ground area and the safe parts inside your walls. You can name the burrow "Inside" or "Safety" or "Panic room" or whatever you like.	公民警报需要活动区来发送平民。如果您还没有的话，请去设置一个。如果您在安全内部周围有墙壁，则可以将所有地下区域和安全部分包括在墙壁内。您可以将活动区命名为"内部"或"安全"或"紧急室"或任何您喜欢的名称。	l
-DFHack help: Then, start up gui/civ-alert and select the burrow from the list. You can activate the civ alert right away with the button in the upper right corner. You can also access this button at any time from the squads panel.	然后，启动gui/civ-alert并从列表中选择活动区。您可以使用右上角的按钮立即激活文明警报。您也可以随时从小队面板访问此按钮。	l
+DFHack help: Then, start up gui/civ-alert and select the burrow from the list. You can activate the civ alert right away with the button in the upper right corner. You can also access this button at any time from the squads panel.	然后，启动gui/civ-alert并从列表中选择活动区。您可以使用右上角的按钮立即激活政权警报。您也可以随时从小队面板访问此按钮。	l
 DFHack help: When danger appears, open up the squads menu and click on the new "Activate civilian alert" button in the lower left corner of the panel. It's big and red; you can't miss it. Your civilians will rush off to safety and you can concentrate on dealing with the incursion without Urist McArmorsmith getting in the way.	当危险出现时，打开小队菜单，点击面板左下角新增的"激活平民警报"按钮。它又大又红；你不能错过它。你的平民会冲向安全地带，你可以集中精力应对入侵，而不会受到尤里斯特·麦阿莫史密斯的妨碍。	l
-DFHack help: When the civ alert is active, the civilian alert button will stay on the screen, even if the squads menu is closed. After the danger has passed, remember to turn the civ alert off again by clicking the button. Otherwise, your units will continue to be confined to their burrow and may eventually become unhappy or starve.	当民用警报激活时，即使小队菜单关闭，民用警报按钮也会保留在屏幕上。危险过去后，请记得单击按钮再次关闭文明警报。否则，你的单位将继续被限制在活动区内，最终可能会变得不高兴或挨饿。	l
+DFHack help: When the civ alert is active, the civilian alert button will stay on the screen, even if the squads menu is closed. After the danger has passed, remember to turn the civ alert off again by clicking the button. Otherwise, your units will continue to be confined to their burrow and may eventually become unhappy or starve.	当民用警报激活时，即使小队菜单关闭，民用警报按钮也会保留在屏幕上。危险过去后，请记得单击按钮再次关闭政权警报。否则，你的单位将继续被限制在活动区内，最终可能会变得不高兴或挨饿。	l
 DFHack help: The position of the "Activate civilian alert" button that appears when the squads panel is open is configurable via gui/overlay. The overlay panel also gives you a way to launch gui/civ-alert if you need to change which burrow(s) civilians should be gathering in.	小队面板打开时出现的"激活平民警报"按钮的位置可通过 gui/overlay. 配置。如果您需要更改活动区平民应聚集的位置，覆盖面板还为您提供了启动 gui/civ-alert 的方法。	l
 DFHack help: Technical notes ---------------	技术说明 --------------	l
 DFHack help: Technical notes	技术说明	l
@@ -5345,7 +5345,7 @@ DFHack help: * An artifact on the current map	* 当前地图上的神器	l
 DFHack help: * A location (e.g. tavern, hospital, guildhall, temple) on the current map	* 当前地图上的某个位置（例如酒馆、医院、会馆、寺庙）	l
 DFHack help: * The current fortress (or adventurer site)	* 当前要塞（或冒险家站点）	l
 DFHack help: * A squad belonging to the current fortress	* 属于当前要塞的一个小队	l
-DFHack help: * The civilization of the current fortress	* 当前要塞的文明	l
+DFHack help: * The civilization of the current fortress	* 当前要塞的政权	l
 DFHack help: * The government of the current fortress	* 现任政府要塞	l
 DFHack help: * A unit on the current map	* 当前地图上的一个单位	l
 DFHack help: * The world	* 世界	l
@@ -5818,7 +5818,7 @@ DFHack help: Tags: fort | inspection | workorders	标签：要塞 |检验|工单
 DFHack help: Command: "instruments"	命令："instruments"	l
 DFHack help: Show how to craft instruments or create work orders for them.	展示如何制作乐器或为其创建工作订单。	l
 DFHack help: This tool is used to query information about instruments or to create work orders to produce them.	该工具用于查询仪器信息或创建工作订单来生产仪器。	l
-DFHack help: The "list" subcommand provides information on how to craft the instruments used by the player civilization. For single-piece instruments, it shows the skill and material needed to craft it. For multi-piece instruments, it displays the skill used in its assembly as well as information on how to craft the necessary pieces. It also shows whether the instrument is handheld or placed as a building.	"list" 子命令提供有关如何制作玩家文明使用的乐器的信息。对于单件乐器，它显示了制作它所需的技能和材料。对于多件乐器，它显示了组装过程中使用的技能以及如何制作必要部件的信息。它还显示仪器是手持式还是作为建筑物放置。	l
+DFHack help: The "list" subcommand provides information on how to craft the instruments used by the player civilization. For single-piece instruments, it shows the skill and material needed to craft it. For multi-piece instruments, it displays the skill used in its assembly as well as information on how to craft the necessary pieces. It also shows whether the instrument is handheld or placed as a building.	"list" 子命令提供有关如何制作玩家政权使用的乐器的信息。对于单件乐器，它显示了制作它所需的技能和材料。对于多件乐器，它显示了组装过程中使用的技能以及如何制作必要部件的信息。它还显示仪器是手持式还是作为建筑物放置。	l
 DFHack help: The "order" subcommand is used to create work orders for an instrument and all of it's parts. The final assemble instrument order waits for the part orders to complete before starting.	"order" 子命令用于为仪器及其所有部件创建工作订单。最终组装仪器订单等待零件订单完成后再开始。	l
 DFHack help: instruments [list] instruments order <instrument_name> [<quantity>] [<options>]	instruments [list] instruments order <instrument_name> [<quantity>] [<options>]	l
 DFHack help: instruments [list]	instruments [list]	l
@@ -6101,7 +6101,7 @@ DFHack help: * **Demand-weighted specialization.** Frequently-used skills are pr
 DFHack help: * **Quality skills.** Skills whose products carry skill-scaled quality (smithing, crafting, cooking, mechanics, engraving, and so on) are preferred for higher-skilled workers -- both when choosing a specialty and when deciding who to keep out of the laborer pool.	* **质量技能。** 产品具有技能规模质量的技能（锻造、手工艺、烹饪、机械、雕刻等）是高技能工人的首选--无论是在选择专业还是决定将谁排除在劳动力库之外。	l
 DFHack help: * **Assignment stickiness.** A unit assigned to a skill detail keeps the assignment while any work for that skill remains -- including claimed jobs, the fetch-materials phase, and breaks -- so jobs aren't aborted by reassignment churn. For tool-carrying labors (mining, woodcutting, hunting) this also prevents dropping and re-equipping tools between cycles. Assignments are recorded in the save data and restored on load.	* **分配粘性。** 分配给技能详细信息的单位会保留分配，而该技能的任何工作仍然存在（包括已声明的工作、获取材料阶段和休息时间），因此工作不会因重新分配搅动而中止。对于携带工具的劳动（采矿、伐木、狩猎），这还可以防止在循环之间掉落和重新装备工具。分配记录在保存数据中并在加载时恢复。	l
 DFHack help: * **Builtin tool details.** DF v50 only equips tools for members of the game's predefined work details, so mining, woodcutting, and hunting specialists are assigned to the builtin Miners, Woodcutters, and Hunters details instead of plugin-created ones. Memberships added by the plugin are tracked and removed cleanly on disable; members you assigned yourself are never touched.	* **内置工具详细信息。** DF v50 仅为游戏预定义的劳动分组成员配备工具，因此采矿、伐木和狩猎专家被分配到内置的矿工、伐木工和猎人详细信息，而不是插件创建的详细信息。插件添加的会员资格将在禁用时被跟踪并彻底删除；您自己分配的成员永远不会被触及。	l
-DFHack help: * **Strange-mood shaping.** Dwarves that can still have a strange mood (their race has the "STRANGE_MOODS" token and they haven't had one yet) and that have already started a moodable craft are steered toward skills a strange mood can advance -- preferably valuable ones like weaponsmithing or armorsmithing -- so a mood pays out in a useful legendary skill.	* **奇怪的情绪塑造。** 矮人仍然可以有一个奇怪的情绪（他们的种族有 "STRANGE_MOODS" 代币，但他们还没有）并且已经开始了一种情绪化的工艺，被引导到奇怪的情绪可以推进的技能 - 最好是有价值的，如武器锻造或盔甲锻造 - 所以情绪会在有用的传奇技能中得到回报。	l
+DFHack help: * **Strange-mood shaping.** Dwarves that can still have a strange mood (their race has the "STRANGE_MOODS" token and they haven't had one yet) and that have already started a moodable craft are steered toward skills a strange mood can advance -- preferably valuable ones like weaponsmithing or armorsmithing -- so a mood pays out in a useful legendary skill.	* **奇异心境技能引导。** 对于仍可触发奇异心境的矮人（其种族具有 "STRANGE_MOODS" 标记，且尚未经历过奇异心境），如果他们已经开始从事可用于奇异心境的工艺，就会引导他们发展奇异心境能够提升的技能，优先选择武器锻造或盔甲锻造等实用技能，使他们通过奇异心境掌握一项有用的传奇技能。	l
 DFHack help: Workshop restrictions are honored as well: when a job is posted at a workshop that has a permitted-worker list, the engine ensures at least one listed worker is assigned the job's labor, and when the workshop restricts jobs by skill level it ensures at least one worker within the allowed range holds that labor. Units on any workshop's permitted list are treated as reserved for that shop's work -- they are preferentially assigned the labors its jobs require and deprioritized for the laborer pool and unrelated specialties.	车间限制也得到遵守：当在具有允许工人列表的车间发布职位时，引擎确保至少一名列出的工人被分配该职位的劳动，并且当车间按技能级别限制职位时，它确保允许范围内至少一名工人持有劳动。任何车间允许列表上的单位都被视为为该车间的工作保留--它们被优先分配其工作所需的劳动，并且不优先考虑劳动力库和不相关的专业。	l
 DFHack help: Labormanager also reads each citizen's unmet personal needs and biases assignments toward work that satisfies them:	labormanager 还会读取每个居民未满足的个人需求，并将作业偏向于满足他们的工作：	l
 DFHack help: * Citizens desperate to stay occupied, acquire things, or help others are preferentially drafted into the laborer pool, where hauling, stockpiling, depot runs, and patient care satisfy those needs.	* 居民渴望保持忙碌、获取物品或帮助他人的人会优先被纳入劳动力库，在那里，运输、储存、仓库运行和病人护理可以满足这些需求。	l
@@ -6560,7 +6560,7 @@ DFHack help: make-monarch ============	make-monarch ============	l
 DFHack help: make-monarch	make-monarch	l
 DFHack help: Command: "make-monarch"	命令："make-monarch"	l
 DFHack help: Crown the selected unit as a monarch.	将所选单位加冕为君主。	l
-DFHack help: This tool can make the selected unit king or queen of your civilization.	这个工具可以使选定的单位成为你的文明的国王或女王。	l
+DFHack help: This tool can make the selected unit king or queen of your civilization.	这个工具可以使选定的单位成为你的政权的国王或女王。	l
 DFHack help: makeown =======	makeown =======	l
 DFHack help: makeown	makeown	l
 DFHack help: Command: "makeown"	命令："makeown"	l
@@ -6985,9 +6985,9 @@ DFHack help: DEFAULT	DEFAULT	l
 DFHack help: -domesticate Tames the unit if it lacks the CAN_LEARN and CAN_SPEAK tokens.	-domesticate 如果单位缺少 CAN_LEARN 和 CAN_SPEAK 令牌，则驯服该单位。	l
 DFHack help: -domesticate	-domesticate	l
 DFHack help: Tames the unit if it lacks the CAN_LEARN and CAN_SPEAK tokens.	如果单位缺少 CAN_LEARN 和 CAN_SPEAK 代币，则驯服该单位。	l
-DFHack help: -civId id Make the created unit a member of the specified civilisation (or none if id = -1). If id is \\\\LOCAL, make it a member of the civ associated with the fort; otherwise id must be an integer	-civId id 使创建的单位成为指定文明的成员（如果 id = -1，则无）。如果id为\\\\LOCAL，则使其成为与要塞关联的civ的成员；否则 id 必须是整数	l
+DFHack help: -civId id Make the created unit a member of the specified civilisation (or none if id = -1). If id is \\\\LOCAL, make it a member of the civ associated with the fort; otherwise id must be an integer	-civId id 使创建的单位成为指定政权的成员（如果 id = -1，则无）。如果id为\\\\LOCAL，则使其成为与要塞关联的civ的成员；否则 id 必须是整数	l
 DFHack help: -civId id	-civId id	l
-DFHack help: Make the created unit a member of the specified civilisation	使创建的单位成为指定文明的成员	l
+DFHack help: Make the created unit a member of the specified civilisation	使创建的单位成为指定政权的成员	l
 DFHack help: (or none if id = -1). If id is \\\\LOCAL, make it a member of the	（如果 id = -1，则无）。如果 id 是 \\\\LOCAL，则使其成为	l
 DFHack help: civ associated with the fort; otherwise id must be an integer	civ 与要塞相关；否则 id 必须是整数	l
 DFHack help: -groupId id Make the created unit a member of the specified group (or none if id = -1). If id is \\\\LOCAL, make it a member of the group associated with the fort; otherwise id must be an integer	-groupId id 使创建的单位成为指定组的成员（如果 id = -1，则无）。如果id为\\\\LOCAL，则使其成为与要塞关联的组的成员；否则 id 必须是整数	l
@@ -7214,10 +7214,10 @@ DFHack help: Command: "modtools/invader-item-destroyer"	命令："modtools/invad
 DFHack help: Destroy invader items when they die.	入侵者死亡时摧毁他们的物品。	l
 DFHack help: This tool can destroy invader items to prevent clutter or to prevent the player from getting tools exclusive to certain races.	该工具可以摧毁入侵者物品，以防止混乱或防止玩家获得某些种族独有的工具。	l
 DFHack help: Arguments:	参数：	l
-DFHack help: -clear reset all registered data -allEntities [true/false] set whether it should delete items from invaders from any civ -allItems [true/false] set whether it should delete all invader items regardless of type when an appropriate invader dies -item itemdef set a particular itemdef to be destroyed when an invader from an appropriate civ dies. examples: ITEM_WEAPON_PICK -entity entityName set a particular entity up so that its invaders destroy their items shortly after death. examples: MOUNTAIN EVIL	-clear 重置所有注册数据 -allEntities [true/false] 设置是否应从任何文明中删除入侵者的物品 -allItems [true/false] 设置当适当的入侵者死亡时是否应删除所有入侵者物品，无论类型如何 -item itemdef 设置当适当文明的入侵者死亡时要销毁的特定物品定义。示例： ITEM_WEAPON_PICK -entityEntityName 设置一个特定的实体，以便其入侵者在死亡后不久销毁其物品。示例：MOUNTAIN EVIL	l
+DFHack help: -clear reset all registered data -allEntities [true/false] set whether it should delete items from invaders from any civ -allItems [true/false] set whether it should delete all invader items regardless of type when an appropriate invader dies -item itemdef set a particular itemdef to be destroyed when an invader from an appropriate civ dies. examples: ITEM_WEAPON_PICK -entity entityName set a particular entity up so that its invaders destroy their items shortly after death. examples: MOUNTAIN EVIL	-clear 重置所有注册数据 -allEntities [true/false] 设置是否应从任何政权中删除入侵者的物品 -allItems [true/false] 设置当适当的入侵者死亡时是否应删除所有入侵者物品，无论类型如何 -item itemdef 设置当适当政权的入侵者死亡时要销毁的特定物品定义。示例： ITEM_WEAPON_PICK -entityEntityName 设置一个特定的实体，以便其入侵者在死亡后不久销毁其物品。示例：MOUNTAIN EVIL	l
 DFHack help: reset all registered data	重置所有注册数据	l
 DFHack help: -allEntities [true/false]	-allEntities [true/false]	l
-DFHack help: set whether it should delete items from invaders from any civ	设置是否从任何文明中删除入侵者的物品	l
+DFHack help: set whether it should delete items from invaders from any civ	设置是否从任何政权中删除入侵者的物品	l
 DFHack help: -allItems [true/false]	-allItems [true/false]	l
 DFHack help: set whether it should delete all invader items regardless of	设置是否删除所有入侵者项目，无论	l
 DFHack help: type when an appropriate invader dies	当适当的入侵者死亡时输入	l
@@ -8251,8 +8251,8 @@ DFHack help: humans and dwarves.	人类和矮人。	l
 DFHack help: prefchange ==========	prefchange ==========	l
 DFHack help: prefchange	prefchange	l
 DFHack help: Command: "prefchange"	命令："prefchange"	l
-DFHack help: Set strange mood preferences.	设置奇怪的情绪偏好。	l
-DFHack help: This tool sets preferences for strange moods to include a weapon type, equipment type, and material. If you also wish to trigger a mood, see strangemood.	此工具设置奇怪情绪的偏好，包括武器类型、装备类型和材料。如果您也想触发一种情绪，请参阅"strangemood"。	l
+DFHack help: Set strange mood preferences.	设置奇异心境偏好。	l
+DFHack help: This tool sets preferences for strange moods to include a weapon type, equipment type, and material. If you also wish to trigger a mood, see strangemood.	此工具可设置奇异心境的武器类型、装备类型和材料偏好。若还需触发奇异心境，请使用 "strangemood"。	l
 DFHack help: prefchange <command>	prefchange <command>	l
 DFHack help: Examine the preferences across all dwarves:	检查所有矮人的偏好：	l
 DFHack help: prefchange show	预更改节目	l
@@ -8654,12 +8654,12 @@ DFHack help: Tags: fort | inspection | animals	标签：要塞 |检验|动物	l
 DFHack help: Command: "region-pops"	命令："region-pops"	l
 DFHack help: Change regional animal populations.	改变区域动物种群。	l
 DFHack help: This tool can show or modify the populations of animals in the region.	该工具可以显示或修改该地区动物的种群数量。	l
-DFHack help: "region-pops list [<pattern>]" Shows race populations of the region that your civilization knows about. You can filter the list by specifying a pattern.	"region-pops list [<pattern>]" 显示文明已知的本地区各物种种群，可指定 pattern 过滤列表。	l
+DFHack help: "region-pops list [<pattern>]" Shows race populations of the region that your civilization knows about. You can filter the list by specifying a pattern.	"region-pops list [<pattern>]" 显示政权已知的本地区各物种种群，可指定 pattern 过滤列表。	l
 DFHack help: "region-pops list [<pattern>]"	"region-pops list [<pattern>]"	l
-DFHack help: Shows race populations of the region that your civilization knows about. You can filter the list by specifying a pattern.	显示文明已知的本地区各物种种群，可指定 pattern 过滤列表。	l
-DFHack help: "region-pops list-all [<pattern>]" Lists total race populations of the region, including those units that your civilization does not know about. You can filter the list by specifying a pattern.	"region-pops list-all [<pattern>]" 列出本地区各物种的全部种群，包括文明尚未知晓的个体，可指定 pattern 过滤列表。	l
+DFHack help: Shows race populations of the region that your civilization knows about. You can filter the list by specifying a pattern.	显示政权已知的本地区各物种种群，可指定 pattern 过滤列表。	l
+DFHack help: "region-pops list-all [<pattern>]" Lists total race populations of the region, including those units that your civilization does not know about. You can filter the list by specifying a pattern.	"region-pops list-all [<pattern>]" 列出本地区各物种的全部种群，包括政权尚未知晓的个体，可指定 pattern 过滤列表。	l
 DFHack help: "region-pops list-all [<pattern>]"	"region-pops list-all [<pattern>]"	l
-DFHack help: Lists total race populations of the region, including those units that your civilization does not know about. You can filter the list by specifying a pattern.	列出本地区各物种的全部种群，包括文明尚未知晓的个体，可指定 pattern 过滤列表。	l
+DFHack help: Lists total race populations of the region, including those units that your civilization does not know about. You can filter the list by specifying a pattern.	列出本地区各物种的全部种群，包括政权尚未知晓的个体，可指定 pattern 过滤列表。	l
 DFHack help: "region-pops boost <race> <factor>" Multiply all populations of the given race by the given factor. If the factor is greater than one, the command will increase the population. If it is between 0 and 1, the command will decrease the population.	"region-pops boost <race> <factor>" 将指定物种的所有种群数量乘以 factor。factor 大于 1 时增加种群数量，在 0 和 1 之间时减少种群数量。	l
 DFHack help: "region-pops boost <race> <factor>"	"region-pops boost <race> <factor>"	l
 DFHack help: Multiply all populations of the given race by the given factor. If the factor is greater than one, the command will increase the population. If it is between 0 and 1, the command will decrease the population.	将指定物种的所有种群数量乘以 factor。factor 大于 1 时增加种群数量，在 0 和 1 之间时减少种群数量。	l
@@ -8899,7 +8899,7 @@ DFHack help: Command: "resize-armor"	命令："resize-armor"	l
 DFHack help: Resize armor and clothing.	调整盔甲和衣服的大小。	l
 DFHack help: Resize any armor or clothing item to suit any creature size.	调整任何盔甲或服装的尺寸以适合任何生物尺寸。	l
 DFHack help: "resize-armor [<option>]"	"resize-armor [<option>]"	l
-DFHack help: Select an armor or clothing item while in either adventure or fortress mode and run this tool to resize the item. A stockpile can be selected while in fortress mode to perform the resize operation on armor or clothing items contained in the stockpile. If race ID is not specified, the items will be resized to suit the race of the current adventurer while in adventure mode, or to suit the race of the current site's civilization while in fortress mode.	在冒险或要塞模式下选择盔甲或服装物品，然后运行此工具来调整物品大小。在要塞模式下可以选择储物堆，以对储物堆中包含的盔甲或服装项目执行调整大小操作。如果未指定种族 ID，则在冒险模式下，物品将调整大小以适合当前冒险家的种族，或者在要塞模式下适合当前站点文明的种族。	l
+DFHack help: Select an armor or clothing item while in either adventure or fortress mode and run this tool to resize the item. A stockpile can be selected while in fortress mode to perform the resize operation on armor or clothing items contained in the stockpile. If race ID is not specified, the items will be resized to suit the race of the current adventurer while in adventure mode, or to suit the race of the current site's civilization while in fortress mode.	在冒险或要塞模式下选择盔甲或服装物品，然后运行此工具来调整物品大小。在要塞模式下可以选择储物堆，以对储物堆中包含的盔甲或服装项目执行调整大小操作。如果未指定种族 ID，则在冒险模式下，物品将调整大小以适合当前冒险家的种族，或者在要塞模式下适合当前站点政权的种族。	l
 DFHack help: "-r", "--race <id>" Specify the race ID of the target race to resize the item to.	"-r", "--race <id>" 指定要调整项目大小的目标种族的种族 ID。	l
 DFHack help: "-r", "--race <id>"	"-r", "--race <id>"	l
 DFHack help: Specify the race ID of the target race to resize the item to.	指定要调整项目大小的目标种族的种族 ID。	l
@@ -9136,7 +9136,7 @@ DFHack help: showmood ========	showmood ========	l
 DFHack help: showmood	showmood	l
 DFHack help: Tags: fort | armok | inspection | jobs | units	标签：要塞 |阿莫克 |检验|职位 |单位	l
 DFHack help: Command: "showmood"	命令："showmood"	l
-DFHack help: Shows all items needed for the active strange mood.	显示活跃奇怪情绪所需的所有物品。	l
+DFHack help: Shows all items needed for the active strange mood.	显示当前奇异心境所需的全部物品。	l
 DFHack help: siege-engine ============	siege-engine ============	l
 DFHack help: siege-engine	siege-engine	l
 DFHack help: Siege engines in DF haven't been updated since the game was 2D, and can only aim in four directions. To make them useful above-ground, this plugin allows you to:	DF 中的攻城引擎自从游戏是 2D 以来就没有更新过，并且只能瞄准四个方向。为了使它们在地面上有用，该插件允许您：	l
@@ -10023,22 +10023,22 @@ DFHack help: Force the owner of the selected item to relinquish ownership of sai
 DFHack help: strangemood ===========	strangemood ===========	l
 DFHack help: strangemood	strangemood	l
 DFHack help: Command: "strangemood"	命令："strangemood"	l
-DFHack help: Trigger a strange mood.	引发奇怪的情绪。	l
+DFHack help: Trigger a strange mood.	触发奇异心境。	l
 DFHack help: strangemood [<options>]	strangemood [<options>]	l
-DFHack help: "strangemood --force --unit --type secretive --skill armorsmith" Trigger a strange mood for the selected unit that will cause them to become a legendary armorsmith.	"strangemood --force --unit --type secretive --skill armorsmith" 为选定的单位触发一种奇怪的情绪，使他们成为传奇的盔甲匠。	l
+DFHack help: "strangemood --force --unit --type secretive --skill armorsmith" Trigger a strange mood for the selected unit that will cause them to become a legendary armorsmith.	"strangemood --force --unit --type secretive --skill armorsmith" 为选中的单位触发奇异心境，使其成为传奇盔甲匠。	l
 DFHack help: "strangemood --force --unit --type secretive --skill armorsmith"	"strangemood --force --unit --type secretive --skill armorsmith"	l
-DFHack help: Trigger a strange mood for the selected unit that will cause them to become a legendary armorsmith.	为选定的单位触发一种奇怪的情绪，使他们成为传奇的盔甲匠。	l
-DFHack help: "--force" Ignore normal strange mood preconditions (no recent mood, minimum moodable population, artifact limit not reached, etc.).	"--force" 忽略正常的奇怪情绪前提条件（最近没有情绪、最低情绪人群、未达到神器限制等）。	l
-DFHack help: Ignore normal strange mood preconditions (no recent mood, minimum moodable population, artifact limit not reached, etc.).	忽略正常的奇怪情绪前提条件（最近没有情绪、最低情绪人群、未达到神器限制等）。	l
-DFHack help: "--unit" Make the strange mood strike the selected unit instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	"--unit" 让奇怪的情绪袭击选定的单位，而不是随机挑选一个。单位资格仍然有效（除非还指定了 "--force"）。	l
-DFHack help: Make the strange mood strike the selected unit instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	让奇怪的情绪袭击所选的单位，而不是随机挑选一个。单位资格仍然有效（除非还指定了 "--force"）。	l
-DFHack help: "--id" Make the strange mood strike the unit with the given id instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	"--id" 让奇怪的情绪袭击给定id的单位，而不是随机挑选一个。单位资格仍然有效（除非还指定了 "--force"）。	l
-DFHack help: Make the strange mood strike the unit with the given id instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	让奇怪的情绪袭击给定id的单位，而不是随机挑选一个。单位资格仍然有效（除非还指定了 "--force"）。	l
-DFHack help: "--type <type>" Force the mood to be of a particular type instead of choosing randomly based on happiness. Valid values are "fey", "secretive", "possessed", "fell", and "macabre".	"--type <type>" 强制心情为特定类型，而不是根据幸福程度随机选择。有效值为 "fey"、"secretive"、"possessed"、"fell" 和 "macabre"。	l
-DFHack help: Force the mood to be of a particular type instead of choosing randomly based on happiness. Valid values are "fey", "secretive", "possessed", "fell", and "macabre".	强制心情为特定类型，而不是根据幸福程度随机选择。有效值为 "fey"、"secretive"、"possessed"、"fell" 和 "macabre"。	l
-DFHack help: "--skill <skill>" Force the mood to use a specific skill instead of choosing the highest moodable skill. Valid values are "miner", "carpenter", "engraver", "mason", "stonecutter", "stonecarver", "tanner", "weaver", "clothier", "weaponsmith", "armorsmith", "metalsmith", "gemcutter", "gemsetter", "woodcrafter", "stonecrafter", "metalcrafter", "glassmaker", "leatherworker", "bonecarver", "bowyer", and "mechanic".	"--skill <skill>" 强制情绪使用特定技能，而不是选择最高情绪技能。有效值为 "miner"、"carpenter"、"engraver"、"mason"、"stonecutter"、"stonecarver"、"tanner"、"weaver"、"clothier"、"weaponsmith"、"armorsmith"、"metalsmith"、"gemcutter"、 "gemsetter"、"woodcrafter"、"stonecrafter"、"metalcrafter"、"glassmaker"、"leatherworker"、"bonecarver"、"bowyer" 和 "mechanic"。	l
-DFHack help: Force the mood to use a specific skill instead of choosing the highest moodable skill. Valid values are "miner", "carpenter", "engraver", "mason", "stonecutter", "stonecarver", "tanner", "weaver", "clothier", "weaponsmith", "armorsmith", "metalsmith", "gemcutter", "gemsetter", "woodcrafter", "stonecrafter", "metalcrafter", "glassmaker", "leatherworker", "bonecarver", "bowyer", and "mechanic".	强制情绪使用特定技能，而不是选择情绪最高的技能。有效值为 "miner"、"carpenter"、"engraver"、"mason"、"stonecutter"、"stonecarver"、"tanner"、"weaver"、"clothier"、"weaponsmith"、"armorsmith"、"metalsmith"、"gemcutter"、 "gemsetter"、"woodcrafter"、"stonecrafter"、"metalcrafter"、"glassmaker"、"leatherworker"、"bonecarver"、"bowyer" 和 "mechanic"。	l
-DFHack help: Known limitations: if the selected unit is currently performing a job, the mood will not be triggered.	已知限制：如果所选单位当前正在执行任务，则不会触发情绪。	l
+DFHack help: Trigger a strange mood for the selected unit that will cause them to become a legendary armorsmith.	为选中的单位触发奇异心境，使其成为传奇盔甲匠。	l
+DFHack help: "--force" Ignore normal strange mood preconditions (no recent mood, minimum moodable population, artifact limit not reached, etc.).	"--force" 忽略触发奇异心境的常规前提（近期未发生奇异心境、符合条件的矮人数量达到最低要求、尚未达到神器数量上限等）。	l
+DFHack help: Ignore normal strange mood preconditions (no recent mood, minimum moodable population, artifact limit not reached, etc.).	忽略触发奇异心境的常规前提（近期未发生奇异心境、符合条件的矮人数量达到最低要求、尚未达到神器数量上限等）。	l
+DFHack help: "--unit" Make the strange mood strike the selected unit instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	"--unit" 让选中的单位进入奇异心境，代替随机挑选单位。仍须符合触发条件，除非同时指定 "--force"。	l
+DFHack help: Make the strange mood strike the selected unit instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	让选中的单位进入奇异心境，代替随机挑选单位。仍须符合触发条件，除非同时指定 "--force"。	l
+DFHack help: "--id" Make the strange mood strike the unit with the given id instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	"--id" 让指定 ID 的单位进入奇异心境，代替随机挑选单位。仍须符合触发条件，除非同时指定 "--force"。	l
+DFHack help: Make the strange mood strike the unit with the given id instead of picking one randomly. Unit eligibility is still enforced (unless "--force" is also specified).	让指定 ID 的单位进入奇异心境，代替随机挑选单位。仍须符合触发条件，除非同时指定 "--force"。	l
+DFHack help: "--type <type>" Force the mood to be of a particular type instead of choosing randomly based on happiness. Valid values are "fey", "secretive", "possessed", "fell", and "macabre".	"--type <type>" 指定奇异心境类型，代替根据幸福程度随机选择。有效值为 "fey"（古怪心境）、"secretive"（诡秘心境）、"possessed"（附身心境）、"fell"（残暴心境）和 "macabre"（阴森心境）。	l
+DFHack help: Force the mood to be of a particular type instead of choosing randomly based on happiness. Valid values are "fey", "secretive", "possessed", "fell", and "macabre".	指定奇异心境类型，代替根据幸福程度随机选择。有效值为 "fey"（古怪心境）、"secretive"（诡秘心境）、"possessed"（附身心境）、"fell"（残暴心境）和 "macabre"（阴森心境）。	l
+DFHack help: "--skill <skill>" Force the mood to use a specific skill instead of choosing the highest moodable skill. Valid values are "miner", "carpenter", "engraver", "mason", "stonecutter", "stonecarver", "tanner", "weaver", "clothier", "weaponsmith", "armorsmith", "metalsmith", "gemcutter", "gemsetter", "woodcrafter", "stonecrafter", "metalcrafter", "glassmaker", "leatherworker", "bonecarver", "bowyer", and "mechanic".	"--skill <skill>" 指定奇异心境使用的技能，代替选择等级最高且可用于奇异心境的技能。有效值为 "miner"、"carpenter"、"engraver"、"mason"、"stonecutter"、"stonecarver"、"tanner"、"weaver"、"clothier"、"weaponsmith"、"armorsmith"、"metalsmith"、"gemcutter"、"gemsetter"、"woodcrafter"、"stonecrafter"、"metalcrafter"、"glassmaker"、"leatherworker"、"bonecarver"、"bowyer" 和 "mechanic"。	l
+DFHack help: Force the mood to use a specific skill instead of choosing the highest moodable skill. Valid values are "miner", "carpenter", "engraver", "mason", "stonecutter", "stonecarver", "tanner", "weaver", "clothier", "weaponsmith", "armorsmith", "metalsmith", "gemcutter", "gemsetter", "woodcrafter", "stonecrafter", "metalcrafter", "glassmaker", "leatherworker", "bonecarver", "bowyer", and "mechanic".	指定奇异心境使用的技能，代替选择等级最高且可用于奇异心境的技能。有效值为 "miner"、"carpenter"、"engraver"、"mason"、"stonecutter"、"stonecarver"、"tanner"、"weaver"、"clothier"、"weaponsmith"、"armorsmith"、"metalsmith"、"gemcutter"、"gemsetter"、"woodcrafter"、"stonecrafter"、"metalcrafter"、"glassmaker"、"leatherworker"、"bonecarver"、"bowyer" 和 "mechanic"。	l
+DFHack help: Known limitations: if the selected unit is currently performing a job, the mood will not be triggered.	已知限制：所选单位正在工作时，无法触发奇异心境。	l
 DFHack help: stripcaged ==========	stripcaged ==========	l
 DFHack help: stripcaged	stripcaged	l
 DFHack help: Command: "stripcaged"	命令："stripcaged"	l
@@ -10858,9 +10858,9 @@ DFHack help: Must be followed by a race RAW ID (e.g. BIRD_TURKEY, ALPACA, etc).	
 DFHack help: caged: In a built cage.	笼中：在建造的笼子里。	l
 DFHack help: caged:	关在笼子里：	l
 DFHack help: In a built cage.	在一个建造的笼子里。	l
-DFHack help: own: From own civilization. You'll usually want to include this filter.	own：来自自己的文明。您通常需要包含此过滤器。	l
+DFHack help: own: From own civilization. You'll usually want to include this filter.	own：来自自己的政权。您通常需要包含此过滤器。	l
 DFHack help: own:	拥有：	l
-DFHack help: From own civilization. You'll usually want to include this filter.	来自自己的文明。您通常需要包含此过滤器。	l
+DFHack help: From own civilization. You'll usually want to include this filter.	来自自己的政权。您通常需要包含此过滤器。	l
 DFHack help: war: Trained war creature.	战争：训练有素的战争生物。	l
 DFHack help: war:	战争：	l
 DFHack help: Trained war creature.	训练有素的战争生物。	l
@@ -11060,7 +11060,7 @@ DFHack help: Tools that interact with stockpiles.	与储物堆交互的工具。
 DFHack help: Tools that interact with units.	与单位交互的工具。	l
 DFHack help: Tools that interact with workorders.	与工单交互的工具。	l
 DFHack help: Tools that are not yet available for the current release.	当前版本尚不可用的工具。	l
-DFHack help: Script to add unknown crafting recipes to the player's civ.	向玩家文明添加未知制作配方的脚本。	l
+DFHack help: Script to add unknown crafting recipes to the player's civ.	向玩家政权添加未知制作配方的脚本。	l
 DFHack help: Adds emotions to creatures.	为生物添加情感。	l
 DFHack help: Maximizes adventurer skills/attributes on creation.	最大化冒险家 skills/attributes 的创造。	l
 DFHack help: adv-max-skills ============== When creating an adventurer, raises all changeable skills and attributes to their maximum level.	adv-max-skills ============== 创建冒险家时，将所有可变技能和属性提升至最高等级。	l
@@ -11770,7 +11770,7 @@ DFHack help: gui/advfort =========== This script allows performing jobs in adven
 DFHack help: This script allows performing jobs in adventure mode. For more complete help	该脚本允许在冒险模式下执行作业。如需更完整的帮助	l
 DFHack help: press :kbd:`?` while the script is running. It's most comfortable to use this as a	在脚本运行时按 :kbd:`?`。使用它作为一个最舒服的	l
 DFHack help: keybinding (see below for the default binding). Possible arguments:	键绑定（默认绑定见下文）。可能的论据：	l
-DFHack help: * ``-a``, ``--nodfassign``: uses a different method to assign job items, instead of relying on DF. * ``-i``, ``--inventory``: checks inventory for possible items to use in the job. * ``-c``, ``--cheat``: relaxes item requirements for buildings (e.g. walls from bones). Implies -a * ``-e [NAME]``, ``--entity [NAME]``: uses the given civ to determine available resources (specified as an entity raw ID). Defaults to ``MOUNTAIN``; if the entity name is omitted, uses the adventurer's civ * ``job``: selects the specified job (must be a valid ``job_type``, e.g. ``Dig`` or ``FellTree``)	* ``-a``、``--nodfassign``：使用不同的方法来分配作业项，而不是依赖 DF。 * ``-i``、``--inventory``：检查库存中是否有可能在工作中使用的物品。 * ``-c``、``--cheat``：放宽了建筑物的物品要求（例如，骨头墙）。意味着 -a * ``-e [NAME]``、``--entity [NAME]``：使用给定的 civ 来确定可用资源（指定为实体原始 ID）。默认为"`MOUNTAIN`"；如果省略实体名称，则使用冒险家的文明 * ``job``：选择指定的工作（必须是有效的``job_type``，例如``Dig``或``FellTree``）	l
+DFHack help: * ``-a``, ``--nodfassign``: uses a different method to assign job items, instead of relying on DF. * ``-i``, ``--inventory``: checks inventory for possible items to use in the job. * ``-c``, ``--cheat``: relaxes item requirements for buildings (e.g. walls from bones). Implies -a * ``-e [NAME]``, ``--entity [NAME]``: uses the given civ to determine available resources (specified as an entity raw ID). Defaults to ``MOUNTAIN``; if the entity name is omitted, uses the adventurer's civ * ``job``: selects the specified job (must be a valid ``job_type``, e.g. ``Dig`` or ``FellTree``)	* ``-a``、``--nodfassign``：使用不同的方法来分配作业项，而不是依赖 DF。 * ``-i``、``--inventory``：检查库存中是否有可能在工作中使用的物品。 * ``-c``、``--cheat``：放宽了建筑物的物品要求（例如，骨头墙）。意味着 -a * ``-e [NAME]``、``--entity [NAME]``：使用给定的 civ 来确定可用资源（指定为实体原始 ID）。默认为"`MOUNTAIN`"；如果省略实体名称，则使用冒险家的政权 * ``job``：选择指定的工作（必须是有效的``job_type``，例如``Dig``或``FellTree``）	l
 DFHack help: * ``-a``, ``--nodfassign``:	* ``-a``, ``--nodfassign``:	l
 DFHack help: uses a different method to assign job items, instead of relying on DF.	使用不同的方法来分配作业项，而不是依赖 DF。	l
 DFHack help: * ``-i``, ``--inventory``:	* ``-i``, ``--inventory``:	l
@@ -11778,7 +11778,7 @@ DFHack help: checks inventory for possible items to use in the job.	检查库存
 DFHack help: * ``-c``, ``--cheat``:	* ``-c``, ``--cheat``:	l
 DFHack help: relaxes item requirements for buildings (e.g. walls from bones). Implies -a	放宽了建筑物的物品要求（例如骨头墙）。意味着 -a	l
 DFHack help: * ``-e [NAME]``, ``--entity [NAME]``:	* ``-e [NAME]``, ``--entity [NAME]``:	l
-DFHack help: uses the given civ to determine available resources (specified as an entity raw ID). Defaults to ``MOUNTAIN``; if the entity name is omitted, uses the adventurer's civ	使用给定的 civ 来确定可用资源（指定为实体原始 ID）。默认为"`MOUNTAIN`"；如果省略实体名称，则使用冒险家的文明	l
+DFHack help: uses the given civ to determine available resources (specified as an entity raw ID). Defaults to ``MOUNTAIN``; if the entity name is omitted, uses the adventurer's civ	使用给定的 civ 来确定可用资源（指定为实体原始 ID）。默认为"`MOUNTAIN`"；如果省略实体名称，则使用冒险家的政权	l
 DFHack help: * ``job``: selects the specified job (must be a valid ``job_type``, e.g. ``Dig`` or ``FellTree``)	* ``job``：选择指定的作业（必须是有效的``job_type``，例如``Dig``或``FellTree``）	l
 DFHack help: .. warning:: changes only persist in non-procedural sites, namely player forts, caves, and camps.	..警告：：更改仅持续在非程序站点，即玩家堡垒、洞穴和营地。	l
 DFHack help: changes only persist in non-procedural sites, namely player forts, caves, and camps.	变化仅存在于非程序地点，即玩家堡垒、洞穴和营地。	l
@@ -13192,7 +13192,7 @@ DFHack help: Editor base class for gui/gm-unit. Every other editor should inheri
 DFHack help: Attributes editor module for gui/gm-unit.	gui/gm-unit. 的属性编辑器模块	l
 DFHack help: Beliefs editor module for gui/gm-unit.	gui/gm-unit. 的信念编辑器模块	l
 DFHack help: Body editor module for gui/gm-unit.	gui/gm-unit. 的车身编辑器模块	l
-DFHack help: Civilization editor module for gui/gm-unit.	gui/gm-unit. 的文明编辑器模块	l
+DFHack help: Civilization editor module for gui/gm-unit.	gui/gm-unit. 的政权编辑器模块	l
 DFHack help: Colors editor module for gui/gm-unit.	gui/gm-unit. 的颜色编辑器模块	l
 DFHack help: Counters editor module for gui/gm-unit.	gui/gm-unit. 的计数器编辑器模块	l
 DFHack help: Orientation editor module for gui/gm-unit.	gui/gm-unit. 的方向编辑器模块	l
@@ -13237,8 +13237,8 @@ DFHack help: load a save non-interactively - intended to be run on startup.	以�
 DFHack help: Scan the map for ore veins.	扫描地图寻找矿石矿脉。	l
 DFHack help: Execute lua commands interactively or from files.	以交互方式或从文件执行 lua 命令。	l
 DFHack help: Make a skill or skills of a unit Legendary +5.	使单位的一项或多项技能传奇级+5。	l
-DFHack help: make-monarch ============ Make the selected unit King or Queen of your civilisation.	make-monarch ============ 让所选单位成为你所在文明的国王或女王。	l
-DFHack help: Make the selected unit King or Queen of your civilisation.	使所选单位成为您所在文明的国王或王后。	l
+DFHack help: make-monarch ============ Make the selected unit King or Queen of your civilisation.	make-monarch ============ 让所选单位成为你所在政权的国王或女王。	l
+DFHack help: Make the selected unit King or Queen of your civilisation.	使所选单位成为您所在政权的国王或王后。	l
 DFHack help: Save the description of a selected unit or item in Markdown file in UTF-8.	将所选单元或项目的描述保存在 UTF-8 的 Markdown 文件中。	l
 DFHack help: Force a migrant wave (only after hardcoded waves).	强制移民波（仅在硬编码波之后）。	l
 DFHack help: Add or remove syndromes from units.	在单位中添加或删除综合症。	l
@@ -13664,7 +13664,7 @@ DFHack help: runs dfhack commands only in a newborn fortress.	仅在新生的要
 DFHack help: runs dfhack commands unless ran already in this save (world).	运行 dfhack 命令，除非已经在此保存（世界）中运行。	l
 DFHack help: open legends screen when in fortress mode.	在要塞模式下打开图例屏幕。	l
 DFHack help: Adjust all preferences of one or all dwarves in play.	调整游戏中一个或所有矮人的所有偏好。	l
-DFHack help: Allows setting useful preferences for forcing moods.	允许设置有用的偏好来强制情绪。	l
+DFHack help: Allows setting useful preferences for forcing moods.	可设置用于强制触发奇异心境的造物偏好。	l
 DFHack help: Automatically boost the priority of selected job types.	自动提升所选作业类型的优先级。	l
 DFHack help: Makes item appear on the table (just like in shops).	使物品出现在桌子上（就像在商店中一样）。	l
 DFHack help: putontable ========== Makes item appear on the table, like in adventure mode shops. Arguments:	putontable ========== Makes item appear on the table, like in adventure mode shops. Arguments:	l

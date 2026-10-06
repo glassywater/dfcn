@@ -15,8 +15,9 @@ static bool world_site_typed_heading(std::string_view source) {
 // A name-only structure list has no dictionary caption to establish its
 // identity. Bind each row to the actual structures producer's addst call,
 // including retained frames and clipped names, before reading its frame.
-static std::optional<NativeDrawnTextRow> travel_building_draw_for_row(
-        const graphicst &gps, const NativeTextCardRow &row, int clip_right) {
+static std::optional<NativeDrawnTextRow> world_site_owned_draw_for_row(
+        const graphicst &gps, const NativeTextCardRow &row, int clip_right,
+        bool entity_fact = false) {
     if (row.x < 0 || row.x >= gps.dimx || row.y < 0 || row.y >= gps.dimy ||
             row.source.empty() || row.source.size() > static_cast<size_t>(gps.dimx - row.x) ||
             clip_right <= row.x) return std::nullopt;
@@ -28,7 +29,8 @@ static std::optional<NativeDrawnTextRow> travel_building_draw_for_row(
     const auto &draws = origin.top_layer ? g_native_drawn_top_text_rows : g_native_drawn_text_rows;
     for (auto it = draws.rbegin(); it != draws.rend(); ++it) {
         const auto &draw = *it;
-        if (draw.travel_building_field == NativeTravelBuildingField::None ||
+        if ((entity_fact ? !draw.world_site_entity_fact :
+                draw.travel_building_field == NativeTravelBuildingField::None) ||
                 draw.x > row.x || draw.x < 0 || draw.top_layer != origin.top_layer ||
                 draw.draw_grid != origin.grid || draw.draw_dimx != gps.dimx ||
                 draw.draw_dimy != gps.dimy || std::abs(draw.y - row.y) > 1) continue;
@@ -383,7 +385,7 @@ std::optional<NativeTextCard> Overlay::capture_world_site_card(
             if (!card) continue;
             bool owned = true;
             for (auto &row : card->rows) {
-                const auto source = travel_building_draw_for_row(*gps_, row,
+                const auto source = world_site_owned_draw_for_row(*gps_, row,
                     panel->x + panel->w);
                 if (!source) { owned = false; break; }
                 row.complete_source = source->complete_source.empty()
@@ -751,7 +753,7 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
             const std::string source = row.complete_source.empty()
                 ? row.source : row.complete_source;
             const std::string complete = normalize_utterance(source);
-            const auto owner = travel_building_draw_for_row(*gps_, row,
+            const auto owner = world_site_owned_draw_for_row(*gps_, row,
                 card.interior.x + card.interior.w);
             std::optional<std::string> target;
             if (owner && owner->travel_building_field == NativeTravelBuildingField::Name)
@@ -770,6 +772,8 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
         return;
     }
     bool artifacts = false;
+    const auto travel_status_rows = action_control ? std::unordered_set<int>{}
+        : append_adventure_travel_status_paragraphs(card, rows, matches, only_y);
     const auto captures = captured_clipped_captions();
     const auto reclaim_draws = reclaim_history ? captured_embark_reclaim_history_rows(*gps_)
         : std::array<std::vector<NativeDrawnTextRow>, 2>{};
@@ -780,6 +784,7 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
     bool facts = action_control || description_end != 0;
     for (size_t index = description_end; index < card.rows.size(); ++index) {
         const auto &row = card.rows[index];
+        if (travel_status_rows.contains(row.y)) continue;
         if (!action_control && (reclaim_history || normalize_utterance(row.source).starts_with("In "))) {
             // The site-news builder wraps dated events before drawing them.
             // Gather the whole live paragraph before any independent row,
@@ -902,12 +907,18 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
         // catalog, before item/name heuristics can reinterpret its prose.
         const std::vector<int> foregrounds = complete == row.source ? row.foregrounds
             : std::vector<int>(complete.size(), row.foregrounds.front());
-        std::optional<std::string> target;
+        const auto entity_draw = !action_control && !artifacts &&
+                (source.starts_with("Site government:") || source.starts_with("Civilization:"))
+            ? world_site_owned_draw_for_row(*gps_, row,
+                card.interior.x + card.interior.w, true) : std::nullopt;
+        std::optional<std::string> target = !action_control && !artifacts
+            ? translate_world_site_entity_fact(source, entity_draw
+                ? &*entity_draw->world_site_entity_fact : nullptr) : std::nullopt;
         // The first heading names the selected landform; subsequent headings
         // name its biome/region or site. Keep its LAND sense scoped to this
         // field, before exact world-name translations can override it. This
         // uses the live card order, never a saved name or screenshot position.
-        if (index == 0 && !facts && !artifacts)
+        if (!target && index == 0 && !facts && !artifacts)
             target = translate_world_landform_heading(source);
         // Before facts/site identities, the remaining headings are natural
         // regions (including a mountain region below its containing land).
@@ -930,10 +941,27 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
                 target = translate_help_paragraph(complete, foregrounds, target_colors, true);
             // No generic Legends/name fallback here. An unknown reason is
             // retained as one original row and reported for translation.
-        } else if (identity) {
-            if (split_legends_figure_record(source) || split_generated_name_identity(source))
+        } else if (!target && identity) {
+            // Relationship records can name a civilization or its site
+            // government and carry a species after the quoted gloss. Resolve
+            // the complete pair against its typed entity before the
+            // figure-shaped wrapper can send it through personal names.
+            if (index + 1 < card.rows.size() && world_civilization_relationship(
+                    normalize_utterance(card.rows[index + 1].source))) {
+                const auto record = split_legends_figure_record(source);
+                if (record && record->sex.empty()) {
+                    const std::string reference = std::string(record->native_name) +
+                        ", \"" + std::string(record->gloss) + "\"";
+                    if (const auto name = translate_civilization_reference(reference)) {
+                        const auto species = translate_creature_descriptor(record->species);
+                        target = *name + "，" + species.value_or(cp437_to_utf8(record->species));
+                    }
+                } else target = translate_civilization_reference(source);
+            }
+            if (!target && (split_legends_figure_record(source) ||
+                    split_generated_name_identity(source)))
                 target = translate_procedural_fragment(source);
-        } else if (site_heading || compact_site_heading) {
+        } else if (!target && (site_heading || compact_site_heading)) {
             std::string heading = source;
             const size_t type_begin = compact_site_heading ? source.rfind(", ") + 2
                 : source.starts_with("The ") ? 4 : 0;

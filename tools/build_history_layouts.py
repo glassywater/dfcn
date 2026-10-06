@@ -253,6 +253,8 @@ class Generator:
                  'historical_figure_info', 'interaction_profilest', 'creature_raw', 'caste_raw',
                  'identity', 'artifact_record', 'item', 'item_toolst', 'itemdef_toolst', 'itemdef_instrumentst',
                  'itemdef_weaponst', 'entity_entity_link',
+                 'entity_raw', 'entity_site_link', 'entity_site_ab_profilest',
+                 'entity_position', 'entity_position_assignment',
                  'general_ref_is_artifactst', 'plant_raw', 'material', 'inorganic_raw', 'building_def',
                  'viewscreen_legendsst', 'viewscreen_new_regionst',
                  'mod_headerst', 'viewscreen_titlest', 'viewscreen_new_arenast',

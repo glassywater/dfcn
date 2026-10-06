@@ -1,7 +1,7 @@
 // The native adventure compass is an 11-by-11 frame at the top of the UI.
 // Its horizontal origin follows the viewport: never assume the screen edge.
 // Each of its nine rows has a creature glyph, a bearing, and an optional
-// Gui/Qst badge. Creature glyphs are arbitrary and are not keyboard hints.
+// Gui/Qst badge. Site glyphs are arbitrary and are not keyboard hints.
 void Overlay::append_adventure_compass_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
     if (gps_->dimx < 11 || gps_->dimy < 11) return;
@@ -40,25 +40,31 @@ void Overlay::append_adventure_compass_matches(std::vector<std::string> &rows,
                 complete = false;
                 break;
             }
-            // The native *** marker is not a direction. Leave it and the
-            // creature/badge columns untouched, including their colors.
-            if (!bearing) continue;
-            const int x = panel->x + 2;
-            const int length = static_cast<int>(direction.size());
-            // Raw-layer suppression may see text under a foreground widget.
-            // Only the current composed bearing may own these source cells.
-            if (rows[y].compare(panel->x, panel->w, visible) != 0) continue;
-            const auto target = exact_literal_translation(
-                "Adventure compass: " + std::string(direction));
-            if (!target || target->empty()) continue;
-            Match caption{x, y, length, kAdventureCompassRule,
-                *target, std::string(direction)};
-            caption.layout_x = x;
-            caption.layout_y = y;
-            caption.layout_length = 4;
-            caption.layout_clip_right = x + 4;
-            caption.layout_left = true;
-            captions.push_back(std::move(caption));
+            const auto append_caption = [&](std::string_view source, int offset,
+                    int width, bool right_align) {
+                const int x = panel->x + offset;
+                const int length = static_cast<int>(source.size());
+                // Classic map filtering removes the independently drawn site
+                // glyph before this pass. Each text field still owns only its
+                // matching source cells in the current composed/raw layer.
+                if (rows[y].compare(x, length, source) != 0) return;
+                const auto target = exact_literal_translation(
+                    "Adventure compass: " + std::string(source));
+                if (!target || target->empty()) return;
+                Match caption{x, y, length, kAdventureCompassRule,
+                    *target, std::string(source)};
+                caption.layout_x = x;
+                caption.layout_y = y;
+                caption.layout_length = width;
+                caption.layout_clip_right = x + width;
+                caption.layout_left = !right_align;
+                caption.layout_right = right_align;
+                captions.push_back(std::move(caption));
+            };
+            // *** is the native current-site/unknown-bearing marker. It and
+            // the site glyph remain untouched; its row can still own a badge.
+            if (bearing) append_caption(direction, 2, 4, false);
+            if (!badge.empty()) append_caption(badge, 6, 3, true);
         }
         if (!complete) continue;
         for (auto &caption : captions) {
@@ -71,12 +77,13 @@ void Overlay::append_adventure_compass_matches(std::vector<std::string> &rows,
 }
 
 void Overlay::layout_adventure_compass(SDL_Renderer *renderer) {
-    // Fit the entire bearing column together. Even a one-letter source has
-    // the full four-cell budget, ending before the optional native badge.
-    std::map<int, std::vector<std::vector<Match *>>> columns;
+    // Both fields retain the fixed UI font and their native colors. Bearings
+    // use four cells on the left; the two-character badge sits at the right
+    // of its three-cell column, leaving separation from a long bearing.
+    std::map<std::pair<int, int>, std::vector<std::vector<Match *>>> columns;
     for (auto &match : prepared_matches_)
         if (match.rule == kAdventureCompassRule && !match.target.empty())
-            columns[match.x].push_back({&match});
-    for (const auto &[left, rows] : columns)
-        layout_fortress_text_rows(renderer, rows, left, left + 4, true);
+            columns[{match.x, match.x + match.layout_length}].push_back({&match});
+    for (const auto &[bounds, rows] : columns)
+        layout_fortress_text_rows(renderer, rows, bounds.first, bounds.second, true, true);
 }

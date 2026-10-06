@@ -1,0 +1,43 @@
+edition	image_identity	role	start_rva	end_rva	path
+reference	PE:6a70a6d9:02711000	adventure-divine-guidance-owner	0x7eed80	0x7f3ca2	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	figure-field	0xb92f10	0xb93927	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	caste-field	0xaa3bd0	0xaa3d93	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	sphere-field	0x756690	0x757174	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	material-field	0x14d1920	0x14d1d79	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	material-lookup	0x14add70	0x14ade9f	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	entity-field	0xb92900	0xb92a78	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	structure-field	0xb94090	0xb943f8	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa94ea2	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	site-field	0xb93930	0xb93a8a	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	reference-context	0x72080	0x7216d	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	announcement-submission	0xe3c20	0xe569d	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	popup-allocation	0xe3880	0xe38f2	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	popup-lines-reset	0xe37d0	0xe3878	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	popup-lines-source	0xd51eb0	0xd544d6	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	popup-lines-wrap	0xd51c80	0xd51eab	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	popup-word-source	0xd544e0	0xd54607	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	popup-save	0x7aa300	0x7aab6b	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	popup-input	0x8b91c0	0x8bcc64	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	popup-render	0xe9f40	0xea4c8	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	string-draw	0xad9960	0xad9a33	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	adventure-divine-guidance-owner	0x7ec600	0x7f1522	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	figure-field	0xb8ff50	0xb90967	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	caste-field	0xaa0c50	0xaa0e13	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	sphere-field	0x7540b0	0x754b94	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	material-field	0x14cc890	0x14ccce9	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	material-lookup	0x14a8ce0	0x14a8e0f	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	entity-field	0xb8f940	0xb8fab8	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	structure-field	0xb910d0	0xb91438	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91f22	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	site-field	0xb90970	0xb90aca	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	reference-context	0x72010	0x720fd	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	announcement-submission	0xe3bb0	0xe562d	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	popup-allocation	0xe3810	0xe3882	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	popup-lines-reset	0xe3760	0xe3808	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	popup-lines-source	0xd4eef0	0xd51516	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	popup-lines-wrap	0xd4ecc0	0xd4eeeb	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	popup-word-source	0xd51520	0xd51647	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	popup-save	0x7a7d20	0x7a858b	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	popup-input	0x8b6a40	0x8ba4e4	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	popup-render	0xe9ed0	0xea458	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	string-draw	0xad69a0	0xad6a73	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe

@@ -15,4 +15,4 @@ artifact-ancestor	Nameless	无名者		steam ancestor helper 0xb93073; classic an
 artifact-ancestor	an unidentified creature	一名身份不明的生物		steam ancestor helper 0xb9310e; classic ancestor helper 0xb9014e; identification metadata fallback
 artifact-ancestor	an unknown creature	一名未知生物		steam ancestor helper 0xb938dc; classic ancestor helper 0xb9091c; invalid historical figure ID
 artifact-recipient	{s}	{s1}	$name	steam 0xa96df4 -> 0xb92900..0xb92a78; classic 0xa93e74 -> 0xb8f940..0xb8fab8; entire native entity name
-artifact-recipient	an unknown civilization	一个未知文明		steam 0xb92a4c; classic 0xb8fa8c; missing entity fallback
+artifact-recipient	an unknown civilization	一个未知政权		steam 0xb92a4c; classic 0xb8fa8c; missing entity fallback

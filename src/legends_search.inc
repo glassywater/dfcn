@@ -24,10 +24,18 @@ std::optional<std::string> Overlay::translate_journal_title(std::string_view sou
         if (!target) target = translate_legends_name(source, false);
         break;
     case JournalSearchKind::Site:
-    case JournalSearchKind::Group:
         target = translate_legends_name(source, false);
-        if (!target && kind == JournalSearchKind::Group)
-            target = translate_procedural_fragment(std::string(source));
+        break;
+    case JournalSearchKind::Civilization:
+        target = translate_civilization_reference(source);
+        if (!target) target = translate_procedural_fragment(std::string(source), false,
+            false, {}, ProceduralFragmentContext::civilization_name);
+        if (!target) target = translate_legends_name(source, false);
+        break;
+    case JournalSearchKind::Group:
+        target = translate_civilization_reference(source);
+        if (!target) target = translate_legends_name(source, false);
+        if (!target) target = translate_procedural_fragment(std::string(source));
         break;
     case JournalSearchKind::Region:
         target = translate_world_region_heading(source);
@@ -80,12 +88,20 @@ bool Overlay::translated_legends_search_matches(std::string_view source,
         translated_search_text_matches(native_text_to_utf8(description), query))
         return true;
 
+    // Entity titles can keep the same native spelling when their current
+    // parent changes. Bind the search entry to the resolved display name.
+    const auto entity_title = kind == LegendsSearchKind::Entity || kind == LegendsSearchKind::Population
+        ? translate_civilization_reference(source) : std::nullopt;
     std::string key(1, static_cast<char>(kind));
     key.append(source).push_back('\0');
     key.append(description);
+    if (entity_title) {
+        key.push_back('\0');
+        key.append(*entity_title);
+    }
     auto cached = legends_search_translation_cache_.find(key);
     if (cached == legends_search_translation_cache_.end()) {
-        std::optional<std::string> title;
+        std::optional<std::string> title = entity_title;
         bool description_in_title = false;
         const bool written = kind == LegendsSearchKind::Artifact ||
                              kind == LegendsSearchKind::WrittenContent;
@@ -113,12 +129,15 @@ bool Overlay::translated_legends_search_matches(std::string_view source,
                 // Population rows display an English entity gloss or the
                 // existing species/region participant phrase, not a paired
                 // native personal name. Keep that scoped grammar intact.
-                title = exact_literal_translation(source);
+                title = translate_civilization_reference(source);
+                if (!title) title = exact_literal_translation(source);
                 if (!title && source.starts_with("the "))
                     title = translate_legends_participant(source, std::nullopt, 0);
                 if (!title) title = translate_legends_name(source, false);
                 if (!title) title = translate_legends_term(source);
             } else {
+                if (kind == LegendsSearchKind::Entity)
+                    title = translate_civilization_reference(source);
                 if (kind == LegendsSearchKind::Region)
                     title = translate_world_region_heading(source);
                 if (!title) title = exact_literal_translation(source);

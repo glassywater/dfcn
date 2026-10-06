@@ -283,6 +283,7 @@ std::vector<Match> dfhack_auxiliary_matches;
 #include "dfhack_save_reminder.inc"
 #include "dfhack_input_monitor.inc"
 #include "dfhack_warn_stranded.inc"
+#include "dfhack_uniform_unstick.inc"
 #include "dfhack_unretire_anyone.inc"
 #include "dfhack_tile_browser.inc"
 #include "dfhack_suspendmanager.inc"
@@ -511,6 +512,8 @@ std::vector<Match> dfhack_auxiliary_matches;
             gui_literal(static_cast<int>(x), footer_y, source,
                 static_cast<int>(x + source.size()), "Caption");
     }
+#include "dfhack_workshop_workers.inc"
+#include "dfhack_squad_assignment.inc"
 #include "dfhack_control_panel.inc"
 #include "dfhack_finder_output.inc"
 #include "dfhack_embark_output.inc"
@@ -518,6 +521,7 @@ std::vector<Match> dfhack_auxiliary_matches;
 #include "dfhack_autobutcher_output.inc"
 #include "dfhack_unit_info_output.inc"
 #include "dfhack_unit_overlays_output.inc"
+#include "dfhack_trackstop.inc"
 #include "dfhack_design.inc"
 #include "dfhack_sitemap.inc"
 #include "dfhack_autodump.inc"
@@ -525,6 +529,7 @@ std::vector<Match> dfhack_auxiliary_matches;
 #include "dfhack_mass_remove.inc"
 #include "dfhack_quickfort.inc"
 #include "dfhack_teleport.inc"
+#include "dfhack_trade_goods.inc"
     // Ownership prevents generic rules from translating isolated help words
     // or key names. Unmapped source remains native until its complete entry
     // is supplied; no incomplete sentence is drawn or silently discarded.

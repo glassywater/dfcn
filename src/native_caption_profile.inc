@@ -125,6 +125,20 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         {native_pe_address(profile.base, 0x3bc0cc), NativeLocationPickerField::Kind}, // Tavern
         {native_pe_address(profile.base, 0x3bc153), NativeLocationPickerField::Kind}, // Library
         {native_pe_address(profile.base, 0x3bc1c9), NativeLocationPickerField::Kind}, // Hospital
+        // The guild subpage draws each profession plus " hall" as one
+        // caption, followed by an optional requested/existing tier row.
+        {native_pe_address(profile.base, 0x3b9863), NativeLocationPickerField::GuildChoice},
+        {native_pe_address(profile.base, 0x3b9aff), NativeLocationPickerField::GuildStatus}, // Want
+        {native_pe_address(profile.base, 0x3b9c47), NativeLocationPickerField::GuildStatus}, // Have
+        // The adjacent guild card has complete count/label/entity fields.
+        // Their original cursor and closed card own every translated row.
+        {native_pe_address(profile.base, 0x3b9fc9), NativeLocationPickerField::GuildWorkers},
+        {native_pe_address(profile.base, 0x3ba012), NativeLocationPickerField::GuildWorkers}, // None
+        {native_pe_address(profile.base, 0x3ba082), NativeLocationPickerField::GuildLabel},
+        {native_pe_address(profile.base, 0x3ba16e), NativeLocationPickerField::GuildName},
+        {native_pe_address(profile.base, 0x3ba1db), NativeLocationPickerField::GuildMembers},
+        {native_pe_address(profile.base, 0x3ba21d), NativeLocationPickerField::GuildMembers}, // None
+        {native_pe_address(profile.base, 0x3ba285), NativeLocationPickerField::GuildMissing},
         // The temple dedication subpage owns identities, all Want/Have
         // grades and the complete faith card through these separate draws.
         {native_pe_address(profile.base, 0x3ba720), NativeLocationPickerField::FaithChoice},
@@ -513,6 +527,13 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         // Codices: native title and capitalized item description.
         {0xd42094,0xd420f3,NativeFieldKind::BookTitle},
         {0xd42141,0xd42183,NativeFieldKind::BookType}};
+    // Guild rows use the same resize-and-dots path as the faith chooser.
+    // Retain each complete profession caption and requested/existing tier.
+    profile.inline_resizes.push_back({0x3b9811, {0xe8,0x1a,0x7a,0xd2,0xff}, {}, true});
+    profile.inline_resizes.push_back({0x3b9aae, {0xe8,0x7d,0x77,0xd2,0xff}, {}, true});
+    profile.inline_resizes.push_back({0x3b9bf6, {0xe8,0x35,0x76,0xd2,0xff}, {}, true});
+    // The guild card shortens the entity name to 20 bytes before drawing.
+    profile.inline_resizes.push_back({0x3ba123, {0xe8,0x08,0x71,0xd2,0xff}, {}, true});
     // The faith chooser clips at length >= width-1 and can append one zero
     // byte before replacing its last three cells with dots. Preserve the
     // complete owner through that exact native path, as for other captions.
@@ -531,6 +552,16 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     };
     static constexpr NativeLocationDetailCall detail_sites[] = {
         {0x3b1887, {0xe8,0xd4,0x80,0x72,0x00}, NativeLocationPickerField::DetailName},
+        // Guild detail draws its profession/type first, then a generated
+        // entity name and a separate complete member-count clause. The
+        // unestablished branch uses the same row with worker counts.
+        {0x3b1af2, {0xe8,0x69,0x7e,0x72,0x00}, NativeLocationPickerField::DetailGuildKind},
+        {0x3b1b68, {0xe8,0xf3,0x7d,0x72,0x00}, NativeLocationPickerField::DetailGuildName},
+        {0x3b1bc3, {0xe8,0x98,0x7d,0x72,0x00}, NativeLocationPickerField::DetailGuildCount}, // members
+        {0x3b1be9, {0xe8,0x72,0x7d,0x72,0x00}, NativeLocationPickerField::DetailGuildCount}, // no members
+        {0x3b1c2e, {0xe8,0x2d,0x7d,0x72,0x00}, NativeLocationPickerField::DetailGuildName}, // no established guild
+        {0x3b1c96, {0xe8,0xc5,0x7c,0x72,0x00}, NativeLocationPickerField::DetailGuildCount}, // workers
+        {0x3b1cbc, {0xe8,0x9f,0x7c,0x72,0x00}, NativeLocationPickerField::DetailGuildCount}, // no workers
         {0x3b1df3, {0xe8,0x68,0x7b,0x72,0x00}, NativeLocationPickerField::DetailKind}, // Shrine
         {0x3b1e2d, {0xe8,0x2e,0x7b,0x72,0x00}, NativeLocationPickerField::DetailKind}, // Temple
         {0x3b1e67, {0xe8,0xf4,0x7a,0x72,0x00}, NativeLocationPickerField::DetailKind}, // Temple complex
@@ -541,6 +572,9 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         {0x3b276b, {0xe8,0xf0,0x71,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // all visitors
         {0x3b27af, {0xe8,0xac,0x71,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // residents
         {0x3b27e3, {0xe8,0x78,0x71,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // citizens
+        {0x3b4cf7, {0xe8,0x64,0x4c,0x72,0x00}, NativeLocationPickerField::DetailRank}, // guild rank/value/threshold
+        {0x3b4e84, {0xe8,0xd7,0x4a,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // guildhall agreement
+        {0x3b4ecd, {0xe8,0x8e,0x4a,0x72,0x00}, NativeLocationPickerField::DetailFixed}, // grand guildhall agreement
         {0x3b6aab, {0xe8,0xb0,0x2e,0x72,0x00}, NativeLocationPickerField::DetailRank},
         {0x3b6b56, {0xe8,0x05,0x2e,0x72,0x00}, NativeLocationPickerField::DetailCount}, // number or No
         {0x3b6bb4, {0xe8,0xa7,0x2d,0x72,0x00}, NativeLocationPickerField::DetailCountWord}, // worshippers
@@ -577,8 +611,18 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         profile.signatures.push_back({site.call,
             std::vector<unsigned char>(site.bytes.begin(), site.bytes.end())});
     }
-    // Existing faith-subpage callers use the same normal profile signature
+    // Guild and faith subpage callers use the same normal profile signature
     // gate as the new detail fields, for both supported native PE editions.
+    profile.signatures.push_back({0x3b985e, {0xe8,0xfd,0x00,0x72,0x00}});
+    profile.signatures.push_back({0x3b9afa, {0xe8,0x61,0xfe,0x71,0x00}});
+    profile.signatures.push_back({0x3b9c42, {0xe8,0x19,0xfd,0x71,0x00}});
+    profile.signatures.push_back({0x3b9fc4, {0xe8,0x97,0xf9,0x71,0x00}});
+    profile.signatures.push_back({0x3ba00d, {0xe8,0x4e,0xf9,0x71,0x00}});
+    profile.signatures.push_back({0x3ba07d, {0xe8,0xde,0xf8,0x71,0x00}});
+    profile.signatures.push_back({0x3ba169, {0xe8,0xf2,0xf7,0x71,0x00}});
+    profile.signatures.push_back({0x3ba1d6, {0xe8,0x85,0xf7,0x71,0x00}});
+    profile.signatures.push_back({0x3ba218, {0xe8,0x43,0xf7,0x71,0x00}});
+    profile.signatures.push_back({0x3ba280, {0xe8,0xdb,0xf6,0x71,0x00}});
     profile.signatures.push_back({0x3ba71b, {0xe8,0x40,0xf2,0x71,0x00}});
     profile.signatures.push_back({0x3ba968, {0xe8,0xf3,0xef,0x71,0x00}});
     profile.signatures.push_back({0x3baabc, {0xe8,0x9f,0xee,0x71,0x00}});

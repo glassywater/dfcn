@@ -64,10 +64,12 @@ void Overlay::append_fortress_location_matches(std::vector<std::string> &rows,
         const auto comma = source.find(", ");
         if (comma == std::string_view::npos) return std::nullopt;
         const auto kind = source.substr(0, comma);
-        if (kind != "Shrine" && kind != "Temple" && kind != "Temple Complex")
+        if (kind != "Shrine" && kind != "Temple" && kind != "Temple Complex" &&
+                kind != "Meeting place" && kind != "Guildhall" && kind != "Grand Guildhall")
             return std::nullopt;
         const auto title = exact_literal_translation(kind == "Temple Complex"
-            ? "Temple complex" : std::string(kind));
+            ? "Temple complex" : kind == "Grand Guildhall" ? "Grand guildhall"
+            : kind == "Meeting place" ? "Fortress guild detail: Meeting place" : std::string(kind));
         if (!title) return std::nullopt;
         const auto value = source.substr(comma + 2);
         constexpr std::string_view next_at = " (next at ";
@@ -79,6 +81,37 @@ void Overlay::append_fortress_location_matches(std::vector<std::string> &rows,
             value.size() - next - next_at.size() - 1);
         return *title + "，" + native_text_to_utf8(std::string(value.substr(0, next))) +
             "（下一级需" + native_text_to_utf8(std::string(threshold)) + "）";
+    };
+    const auto detail_guild_count = [&](std::string_view source) -> std::optional<std::string> {
+        if (!source.starts_with(", ")) return std::nullopt;
+        source.remove_prefix(2);
+        if (source == "no members") return exact_literal_translation("No members");
+        if (source == "no workers")
+            return exact_literal_translation("Fortress guild detail: No workers");
+        for (const std::string_view suffix : {" members", " member", " workers", " worker"}) {
+            if (!source.ends_with(suffix)) continue;
+            const std::string digits(source.substr(0, source.size() - suffix.size()));
+            if (!digits.empty() && std::all_of(digits.begin(), digits.end(),
+                    [](unsigned char ch) { return ch >= '0' && ch <= '9'; }))
+                return render_template("Fortress guild detail: {d}" + std::string(suffix), digits);
+            return std::nullopt;
+        }
+        return std::nullopt;
+    };
+    const auto detail_guild_kind = [&](std::string_view source) -> std::optional<std::string> {
+        for (const std::string_view suffix : {" grand guildhall", " guildhall", " meeting place"}) {
+            if (!source.ends_with(suffix) || source.size() <= suffix.size()) continue;
+            const std::string profession(source.substr(0, source.size() - suffix.size()));
+            if (suffix == " meeting place") return render_template("{s} meeting place", profession);
+            auto name = translate_unit_profession(profession, true);
+            if (!name) name = exact_literal_translation(profession);
+            if (!name) name = translate_compositional(profession);
+            const auto kind = exact_literal_translation(suffix == " grand guildhall"
+                ? "Grand guildhall" : "Guildhall");
+            if (name && kind) return *name + *kind;
+            return std::nullopt;
+        }
+        return std::nullopt;
     };
     const auto append_detail = [&](const NativeDrawnTextRow &draw, int end, int rule,
                                    const std::string &target, const std::string &complete) {
@@ -129,6 +162,30 @@ void Overlay::append_fortress_location_matches(std::vector<std::string> &rows,
                 break;
             case NativeLocationPickerField::DetailKind:
                 target = exact_literal_translation(complete);
+                break;
+            case NativeLocationPickerField::DetailGuildKind:
+                target = detail_guild_kind(complete);
+                break;
+            case NativeLocationPickerField::DetailGuildName:
+                target = complete == "No established guild" ? exact_literal_translation(complete)
+                    : contains_cjk_utf8(complete) ? std::optional<std::string>(native_text_to_utf8(complete))
+                    : translate_legends_name(complete, false);
+                if (!target) target = detail_identity(complete);
+                // The renderer writes the name/status and its comma-prefixed
+                // count consecutively. Translate them as one allocation so a
+                // Chinese name cannot cover a separately positioned suffix.
+                for (const auto &count : *layer) {
+                    if (count.location_picker_field != NativeLocationPickerField::DetailGuildCount ||
+                            count.y != draw.y || count.x != end || !current_draw(count)) continue;
+                    const std::string suffix = count.complete_source.empty()
+                        ? count.source : count.complete_source;
+                    if (const auto quantity = detail_guild_count(suffix); target && quantity) {
+                        *target += "，" + *quantity;
+                        end = detail_draw_end(count);
+                        whole += suffix;
+                    }
+                    break;
+                }
                 break;
             case NativeLocationPickerField::DetailDedication: {
                 constexpr std::string_view prefix = "Dedicated to ";

@@ -1,7 +1,7 @@
-// World-map artifacts are two-line clickable records, not read-only site
-// facts. The first line is an item/name; the second is its last known holder
-// or location. Their closed native row skin excludes the scrollbar and owns
-// the hitbox. Physical source spans stay separate from the centered output.
+// World-map artifacts and missing citizens share two-line clickable records.
+// The first line is an item/name or figure identity; the second is its last
+// known holder or location. Their closed native row skin excludes the scrollbar
+// and owns the hitbox. Physical source spans stay separate from the output.
 static bool world_artifact_status(std::string_view source) {
     source = trim_view(source);
     return source.starts_with("Last held by ") || source.starts_with("Last in ") ||
@@ -29,6 +29,86 @@ void Overlay::append_world_artifact_rows(std::vector<std::string> &rows,
                 return capture.complete;
         return std::string(visible);
     };
+    const auto first_row_under_search = [&](const LogicalTextField &title,
+            const LogicalTextField &status, int y, const SDL_Rect &panel,
+            std::array<int32_t, 9> &skin) -> std::optional<SDL_Rect> {
+        // DFHack's world/ARTIFACTS sort overlay is a one-row BannerPanel.
+        // Its [key: Search: ...] field replaces the first record's upper
+        // edge. A complete adjacent record supplies the skin and width;
+        // only the actual bracketed search span may cover that upper edge.
+        const int top = y - 2;
+        const int panel_right = panel.x + panel.w;
+        if (top != panel.y || y + 3 >= panel.y + panel.h || y + 3 >= gps_->dimy)
+            return std::nullopt;
+        const auto header = std::string_view(context[top]).substr(panel.x, panel.w);
+        const size_t opening = header.find('[');
+        const size_t separator = opening == std::string_view::npos
+            ? std::string_view::npos : header.find(": Search:", opening + 1);
+        const size_t closing = header.rfind(']');
+        if (opening == std::string_view::npos || separator == std::string_view::npos ||
+                closing == std::string_view::npos || separator <= opening + 1 ||
+                closing <= separator + std::string_view(": Search:").size() ||
+                header.find(':', opening + 1) != separator) return std::nullopt;
+        const auto key = header.substr(opening + 1, separator - opening - 1);
+        if (!std::all_of(key.begin(), key.end(), [](unsigned char ch) {
+                return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') ||
+                    (ch >= '0' && ch <= '9') || ch == '+' || ch == '-';
+            })) return std::nullopt;
+        const int search_left = panel.x + static_cast<int>(opening);
+        const int search_right = panel.x + static_cast<int>(closing) + 1;
+        if (search_left > title.start || search_right <= status.start)
+            return std::nullopt;
+        for (const auto &next_status : split_text_fields(context[y + 3])) {
+            if (next_status.start != status.start ||
+                    !world_artifact_status(complete_source(
+                        next_status.start, y + 3, next_status.text))) continue;
+            const auto next_panel = native_panel_interior(borders, *gps_,
+                next_status.start, next_status.end, y + 3);
+            if (!next_panel || next_panel->x != panel.x || next_panel->y != panel.y ||
+                    next_panel->w != panel.w || next_panel->h != panel.h) continue;
+            const auto next_titles = split_text_fields(context[y + 2].substr(
+                title.start, panel_right - title.start));
+            if (next_titles.empty() || next_titles.front().start != 0 ||
+                    world_artifact_status(next_titles.front().text)) continue;
+            const int next_title_end = title.start + next_titles.front().end;
+            std::array<int32_t, 9> next_skin{};
+            const auto next = native_button_text_rect(*gps_, title.start,
+                next_title_end, y + 2, true, &next_skin, false, true);
+            if (!next || next->x != status.start || next->y != top + 3 || next->h != 3 ||
+                    next->x - 1 < panel.x || next->x + next->w >= panel_right ||
+                    next->y + next->h > panel.y + panel.h ||
+                    next_status.end > next->x + next->w ||
+                    title.end > next->x + next->w || status.end > next->x + next->w ||
+                    search_right >= next->x + next->w) continue;
+            SDL_Rect first{next->x, top, next->w, next->h};
+            bool complete = true;
+            for (int row = 0; row < 3 && complete; ++row) {
+                for (int x = first.x - 1; x <= first.x + first.w; ++x) {
+                    if (row == 0 && x >= search_left && x < search_right) continue;
+                    const int column = x == first.x - 1 ? 0
+                        : x == first.x + first.w ? 2 : 1;
+                    if (native_ui_skin_at(*gps_, x, top + row,
+                            next_skin[row * 3 + column], classic, row == 1 && column == 1))
+                        continue;
+                    // The native title covers its left cap; the status
+                    // covers only the lower interior, exactly as the ordinary
+                    // two-line reader's explicit caption exceptions permit.
+                    const bool caption = classic &&
+                        ((row == 1 && column == 0) ||
+                         (row == 2 && column == 1 && x < status.end));
+                    if (!caption || !native_ui_skin_at(*gps_, x, top + row,
+                            next_skin[4], classic, true)) {
+                        complete = false;
+                        break;
+                    }
+                }
+            }
+            if (!complete) continue;
+            skin = next_skin;
+            return first;
+        }
+        return std::nullopt;
+    };
     for (int y = 1; y < gps_->dimy; ++y) {
         // Inspect all fields, since sibling panes can share the same row.
         for (const auto &field : split_text_fields(context[y])) {
@@ -49,8 +129,9 @@ void Overlay::append_world_artifact_rows(std::vector<std::string> &rows,
             title.start += title_x;
             title.end += title_x;
             std::array<int32_t, 9> skin{};
-            const auto button = native_button_text_rect(*gps_, title.start,
+            auto button = native_button_text_rect(*gps_, title.start,
                 title.end, y - 1, true, &skin, false, true);
+            if (!button) button = first_row_under_search(title, field, y, *panel, skin);
             if (!button || button->x != field.start || button->y + 2 != y ||
                 button->x - 1 < panel->x ||
                 button->x + button->w >= panel->x + panel->w ||
@@ -86,6 +167,15 @@ void Overlay::append_world_artifact_rows(std::vector<std::string> &rows,
                     // Native Linux 53.16 uses resize at 0x1431cc5 followed
                     // by addst at 0x142fee6, already served by shared hooks.
                     target = translate_legends_text("World artifact: " + source, false, false);
+                } else if (const size_t species_at = source.rfind(" the ");
+                           species_at != std::string::npos && species_at > 0 &&
+                           translate_creature_descriptor(
+                               std::string_view(source).substr(species_at + 5), true)) {
+                    // Missing citizens use the same Last in/status button as
+                    // artifacts, but their title is a figure, not an item.
+                    // Resolve the complete name/epithet/species with the shared
+                    // {n} the {s} backtracking before book and item fallbacks.
+                    target = translate_legends_text(source, true, true);
                 } else if (source.starts_with("the ") || source.starts_with("a ") ||
                            source.starts_with("an ")) {
                     // This typed item parser removes the article, retains
@@ -370,8 +460,26 @@ void Overlay::layout_world_artifact_rows(SDL_Renderer *renderer) {
                 });
             if (status == prepared_matches_.end()) continue;
             std::array<int32_t, 9> skin{};
-            const auto button = native_button_text_rect(*gps_, title.x,
+            auto button = native_button_text_rect(*gps_, title.x,
                 title.x + title.length, title.y, true, &skin, false, true);
+            if (!button) {
+                // Capture has already proved the Search-covered first row.
+                // Its adjacent complete row supplies this frame's live skin
+                // for the two overwritten caption edges, never the search.
+                for (const Match &next_title : prepared_matches_) {
+                    if (next_title.rule != kWorldArtifactRowRule || next_title.native_split_duplicate ||
+                            next_title.x != title.x || next_title.y != title.y + 3 ||
+                            !next_title.native_picture_caption_box) continue;
+                    const auto &next_box = *next_title.native_picture_caption_box;
+                    if (next_box.x != box.x || next_box.y != box.y + 3 ||
+                            next_box.w != box.w || next_box.h != box.h) continue;
+                    const auto next = native_button_text_rect(*gps_, next_title.x,
+                        next_title.x + next_title.length, next_title.y, true, &skin, false, true);
+                    if (next && next->x == next_box.x && next->y == next_box.y &&
+                            next->w == next_box.w && next->h == next_box.h) button = box;
+                    break;
+                }
+            }
             if (!button || title.x != button->x - 1 || title.y != button->y + 1) continue;
             const auto repair = [&](SDL_Rect cells, int part) {
                 NativeBorderRepair border;

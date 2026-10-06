@@ -34,6 +34,7 @@ new government was called {p}	新政府名为{p}	continuation
 {p} of {p}	{p2}的{p1}	participant
 {a} from {p}	来自{p}的{a}	participant
 {a} and {a}	{a1}与{a2}	participant
+{p} and {p}	{p1}与{p2}	participant
 {a}, and {a}	{a1}与{a2}	participant
 {a}, {a}	{a1}、{a2}	participant
 the forces of {p}	{p}的部队	participant
@@ -819,12 +820,16 @@ It started at {p}	从{p}出发	event
 It ended at {p}	在{p}结束	event
 as part of {e}	作为{e}的一部分	clause
 as part of {e}.	作为{e}的一部分。	clause
+# Typed occasion events qualify the location by its host and place the
+# occasion name before the existing activity predicate, without a suffix.
+Native history occasion {a} {s} as part of {e}	{a}为了{e}，{s}	clause
+Native history occasion {s} as part of {e}	为了{e}，{s}	clause
 
 # Site ceremonies append a second sentence containing a variable feature
 # list. Keep each program item independent of order/count and each story's
 # person, office, entity and year in typed fields across colored links/rows.
 # Fixed feature catalogue: installed dwarfort .rodata 0x1de29d0 onward.
-The event featured	活动内容包括：	clause
+The event featured	活动内容包括	clause
 # Windows feature formatter 0x140d3bea0 also references strings outside the
 # Legends event block. Raw animals have no prefix; the shared parser admits
 # their complete species/caste term only at a feature-list item boundary.
@@ -861,11 +866,11 @@ costumes	服装	term
 candles	蜡烛	term
 
 # Moods, resurrection, learning, dreams and career changes.
-was taken by a fey mood	陷入了神秘的情绪	action
+was taken by a fey mood	陷入了古怪心境	action
 withdrew from society	退出了社会交往	action
-was possessed	被附体了	action
-began to skulk and brood	开始阴郁地独自徘徊	action
-was taken by a fell mood	陷入了凶险的情绪	action
+was possessed	被附身了	action
+began to skulk and brood	开始鬼祟地徘徊，阴森地沉思	action
+was taken by a fell mood	陷入了残暴心境	action
 was striken by melancholy	陷入了忧郁	action
 became crazed	发疯了	action
 went berserk	陷入了狂暴	action
@@ -1041,7 +1046,7 @@ he	他	term
 she	她	term
 it	它	term
 they	他们	term
-an unknown civilization	未知文明	term
+an unknown civilization	未知政权	term
 an unknown site	未知地点	term
 an unknown population	未知族群	term
 an unknown building	未知建筑	term
@@ -1971,11 +1976,11 @@ the melancholy of {a}	{a}的忧郁	title
 the catatonia of {a}	{a}对外界不再回应	title
 the catatonia {a}	{a}对外界不再回应	title
 the rampage of {a}	{a}的肆虐	title
-the possession of {a}	{a}被附体	title
+the possession of {a}	{a}被附身	title
 the withdrawal from society of {a}	{a}不再与外界来往	title
-the fell mood of {a}	{a}的凶险情绪	title
-the dark brooding of {a}	{a}的阴郁沉思	title
-the fey mood of {a}	{a}的神秘情绪	title
+the fell mood of {a}	{a}的残暴心境	title
+the dark brooding of {a}	{a}的阴森沉思	title
+the fey mood of {a}	{a}的古怪心境	title
 the denial of apprenticeship of {a} under {a}	{a1}拜{a2}为师遭拒	title
 the new dream of {a} to attain rank in society	{a}获得社会地位的新梦想	title
 the new dream of {a} to see the great natural wonders of the world	{a}见识世界自然奇观的新梦想	title
@@ -2493,7 +2498,7 @@ the role of state bias and propaganda in sources	国家偏见与宣传对史料�
 the role of systemic bias in sources	系统性偏见对史料的影响	term
 the causes of historical events	历史事件的成因	term
 using personal interviews as sources	将个人访谈用作史料	term
-the method of accurately and comprehensively describing cultures and civilizations	准确而全面地描述文化与文明的方法	term
+the method of accurately and comprehensively describing cultures and civilizations	准确而全面地描述文化与政权的方法	term
 the compilation of many summaries into a single text	将多篇概述汇编为一部著作	term
 the role of cultural differences in source reliability and interpretation	文化差异对史料可靠性与解读的影响	term
 the method of comparing and contrasting different cultures	比较不同文化的异同的方法	term
@@ -3058,8 +3063,8 @@ devoted to worship	专心于崇拜	clause
 linked to {p}	与{p}有关联	clause
 dedicated to the mastery of {s}	致力于精通{s}	clause
 devoted to the worship of {a}	专心崇拜{a}	clause
-was a {s} civilization of {p}	曾是{p}的{s}文明	action
-was a civilization of {p}	曾是{p}的一个文明	action
+was a {s} civilization of {p}	曾是{p}的{s}政权	action
+was a civilization of {p}	曾是{p}的一个政权	action
 was a {s} collection of outcasts from {p}	曾是来自{p}的{s}流亡者势力	action
 was a collection of outcasts from {p}	曾是来自{p}的流亡者势力	action
 was a {s} performance troupe from {p}	曾是来自{p}的{s}演出团	action
@@ -3118,7 +3123,7 @@ seat of power	统治中心	term
 site occ	地点占据者	term
 religious worshippers	宗教信徒	term
 militant worshippers	武装信徒	term
-associated civilization	关联文明	term
+associated civilization	关联政权	term
 former prisoner	前囚犯	term
 former slave	前奴隶	term
 child slave	童奴	term
@@ -3828,6 +3833,10 @@ in fulfillment of a promise to {a}	以履行对{a1}的承诺	clause
 the area around {p}	{p}周边	participant
 made a copy of the original {p}	抄写了{p}的原本	action
 acquired a copy of {p}	获得了{p}的抄本	action
+# Artifact-copy events keep provenance attached to the original/copy,
+# followed by its recipient and complete storage location.
+{a} made a copy of the original {p} from {p}, keeping it within {p}	来自{p2}的{p1}的原本，被{a}抄写并放在了{p3}	clause
+{a} acquired a copy of {p} from {p}, keeping it within {p}	来自{p2}的{p1}的抄本，被{a}获得并放在了{p3}	clause
 {p} was recovered by {a} from {p} in {p}	{a1}从{p3}的{p2}找回了{p1}	clause
 with {i}	使用{i}	clause
 with {i} from {i}	使用由{i2}发射的{i1}	clause
@@ -3917,7 +3926,7 @@ Native Legends fantastic creatures few and doubted	奇幻生物已寥寥无几�
 Native Legends final battles of ancient powers	最后的古老势力进行了它们最后的战斗	term
 Native Legends final battles of powers	最后的强大势力进行了它们最后的战斗	term
 Native Legends civilized races peopled the world	各个文明种族遍布世界	term
-Native Legends civilization crumbled completely	文明已彻底崩溃	term
+Native Legends civilization crumbled completely	政权已彻底崩溃	term
 Native Legends fantastic creatures mere travelers stories	奇幻生物已成为旅人口中虚无缥缈的故事	term
 Native Legends only simple creatures existed	世上只有简单的生物栖居	term
 Native Legends no civilized peoples existed	世上已不存在文明族群	term

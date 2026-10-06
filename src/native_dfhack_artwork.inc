@@ -16,6 +16,8 @@ static bool install_native_dfhack_lua_output_hook();
 static bool install_native_dfhack_sitemap_hook();
 static std::optional<std::string> lookup_native_dfhack_sitemap_text(
     const graphicst *gps, int x, int y, std::string_view visible);
+static std::optional<std::string> lookup_native_dfhack_notification_text(
+    const graphicst *gps, int x, int y, std::string_view visible);
 static bool install_native_dfhack_messagebox_hook();
 static bool install_native_dfhack_prompt_hook();
 static bool install_native_dfhack_stonesense_hook();
@@ -41,7 +43,7 @@ static size_t g_native_dfhack_logo_count = 0, g_native_dfhack_logo_next = 0;
 // Empty capture queries occur for every native glyph. Avoid taking the
 // record mutex until a complete logo has actually been published.
 static std::atomic_bool g_native_dfhack_has_logos{false};
-// DFHack paints its window, dividers and ConfigureButton as textured tiles.
+// DFHack paints its window, dividers and control buttons as textured tiles.
 // Keep their original pen identity without reviving covered old artwork.
 static std::vector<NativeDfhackTileWrite> g_native_dfhack_border_tiles;
 static int g_native_dfhack_border_dimx = 0, g_native_dfhack_border_dimy = 0;
@@ -95,9 +97,14 @@ static void record_native_dfhack_tile_write(const graphicst *gps,
     const size_t border_at = (static_cast<size_t>(write.x) * write.dimy + write.y) * 2 +
         static_cast<size_t>(write.top_layer);
     const bool frame_character = write.ch >= 0xb3 && write.ch <= 0xda;
-    const bool configure_character = write.ch == '[' || write.ch == 0x0f || write.ch == ']';
+    const bool configure_character = write.ch == '[' || write.ch == 0x0f ||
+        write.ch == '?' || write.ch == ']';
+    // Notify's scrollbar and Air/Blood bars use textured pens whose native
+    // character bytes were cleared by paintTile, just like its frame rails.
+    const bool notification_character = write.ch == '/' || write.ch == '\\' ||
+        write.ch == 176 || write.ch == 177 || write.ch == 219;
     g_native_dfhack_border_tiles[border_at] =
-        (frame_character || configure_character) && write.texture > 0
+        (frame_character || configure_character || notification_character) && write.texture > 0
             ? write : NativeDfhackTileWrite{};
     g_native_dfhack_tile_writes[g_native_dfhack_tile_next] = write;
     g_native_dfhack_tile_next = (g_native_dfhack_tile_next + 1) %
@@ -173,15 +180,23 @@ static void retain_native_dfhack_border_chars(const graphicst &gps,
             if (!write.source_grid || write.source_grid != origin.grid ||
                     write.texture <= 0 || !textures ||
                     textures[tile] != write.texture) continue;
-            if (write.ch >= 0xb3 && write.ch <= 0xda) {
+            if ((write.ch >= 0xb3 && write.ch <= 0xda) ||
+                    write.ch == '/' || write.ch == '\\' ||
+                    write.ch == 176 || write.ch == 177 || write.ch == 219) {
                 rows[y][x] = static_cast<char>(write.ch);
                 continue;
             }
-            // A graphical ConfigureButton leaves three empty character
-            // cells in the top rail. Restore only its complete live [gear]
+            // Graphical ConfigureButton and HelpButton replace three cells
+            // in the top rail. Restore only a complete live [gear] or [?]
             // sequence, rather than treating arbitrary bracket art as text.
             if (write.ch != '[' || x > gps.dimx - 3) continue;
-            constexpr std::array<unsigned char, 3> configure_chars{'[', 0x0f, ']'};
+            const size_t center_tile = static_cast<size_t>(x + 1) * gps.dimy + y;
+            const bool center_top = native_ui_top_layer_at(gps, center_tile);
+            const auto center_origin = native_text_grid_origin(gps, center_tile, center_top);
+            const auto center_ch = g_native_dfhack_border_tiles[
+                center_tile * 2 + center_origin.top_layer].ch;
+            if (center_ch != 0x0f && center_ch != '?') continue;
+            const std::array<unsigned char, 3> configure_chars{'[', center_ch, ']'};
             bool complete = true;
             for (size_t part = 0; complete && part < configure_chars.size(); ++part) {
                 const int part_x = x + static_cast<int>(part);

@@ -360,11 +360,12 @@ static std::optional<SDL_Rect> native_location_picker_draw_box(
         const graphicst *graphics, const NativeString *source,
         NativeLocationPickerField field, uintptr_t caller = 0) {
     const bool faith = native_faith_picker_field(field);
+    const bool subpage = native_location_picker_subpage_field(field);
     const bool detail = native_location_detail_field(field);
     if (field == NativeLocationPickerField::None ||
             field == NativeLocationPickerField::Prompt ||
             !graphics || !graphics->screen ||
-            (!faith && !detail && !native_ui_classic().value_or(false)))
+            (!subpage && !detail && !native_ui_classic().value_or(false)))
         return std::nullopt;
     const int x = graphics->screenx, y = graphics->screeny;
     if (graphics->dimx <= 0 || graphics->dimx > 1000 ||
@@ -409,11 +410,12 @@ static std::optional<SDL_Rect> native_location_picker_draw_box(
         if (x >= left && right > x) return SDL_Rect{x, y, right - x, 1};
         return std::nullopt;
     }
-    if (faith && field != NativeLocationPickerField::FaithChoice &&
-            field != NativeLocationPickerField::FaithStatus) {
-        // 3baddc..3bb04d draws the faith card after its complete hover frame.
+    if ((faith && field != NativeLocationPickerField::FaithChoice &&
+            field != NativeLocationPickerField::FaithStatus) ||
+            native_guild_picker_card_field(field)) {
+        // Guild and faith cards draw text after their complete hover frames.
         // Its 21 interior columns, rather than the outer chooser or screen,
-        // own counts, the Worship relation, deity identity and each sphere.
+        // own counts, labels and the complete guild/deity identities.
         const NativePanelBorders borders(*graphics);
         if (const auto panel = native_panel_interior(borders, *graphics, x, x + 1, y)) {
             const int right = panel->x + panel->w;
@@ -436,13 +438,14 @@ static std::optional<SDL_Rect> native_location_picker_draw_box(
         return std::nullopt;
     }
     const int middle = field == NativeLocationPickerField::Name ||
-        field == NativeLocationPickerField::FaithChoice ? y : y - 1;
+        field == NativeLocationPickerField::FaithChoice ||
+        field == NativeLocationPickerField::GuildChoice ? y : y - 1;
     if (const auto frame = native_picture_caption_rect(
             *graphics, x, middle, true, nullptr, true)) {
         // The main chooser paints main[181] after both captions. Reserve
-        // those four columns there; the faith subpage allocates the entire
+        // those four columns there; faith/guild subpages allocate the entire
         // picture strip to its name and status without that later action.
-        const int right = frame->x + frame->w - (faith ? 0 : 4);
+        const int right = frame->x + frame->w - (subpage ? 0 : 4);
         if (right > x) return SDL_Rect{x, y, right - x, 1};
     }
     return std::nullopt;
@@ -1178,7 +1181,8 @@ static PendingNativeField remember_native_clipped_draw(graphicst *graphics, cons
         NativeLocationPickerField location_picker_field = NativeLocationPickerField::None,
         std::optional<SDL_Rect> location_picker_box = std::nullopt,
         std::optional<NativeFortressLaborCaption> fortress_labor_caption = std::nullopt,
-        NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None) {
+        NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None,
+        uintptr_t native_caller = 0) {
     PendingNativeField captured;
     auto &state = native_clipped_pending();
     // Both supported addst implementations draw at the current cursor and
@@ -1225,7 +1229,7 @@ static PendingNativeField remember_native_clipped_draw(graphicst *graphics, cons
                         top_layer, complete, info_title_kind, info_title_authored, info_title_right,
                         civilization_field, mission_title, mission_title_right, std::nullopt, epoch,
                         map_hover, location_picker_field, location_picker_box, fortress_labor_caption,
-                        travel_building_field);
+                        travel_building_field, native_caller);
                     if (!complete.empty())
                         remember_clipped_caption(graphics->screenx, graphics->screeny,
                             visible, complete);
@@ -1300,8 +1304,10 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
     const auto captured_source = remember_native_clipped_draw(graphics, source, just, width, top_layer,
         info_title_kind, info_title_authored, info_title_right, civilization_field,
         mission_title, mission_title_right, map_hover,
-        location_picker_field, location_picker_box, fortress_labor_caption, travel_building_field);
+        location_picker_field, location_picker_box, fortress_labor_caption, travel_building_field,
+        native_caller);
     std::string complete;
+    std::optional<std::string> squad_alias_target;
     int x = -1, y = -1, dimx = 0, dimy = 0;
     const unsigned char *screen = nullptr;
     uint64_t epoch = 0;
@@ -1342,6 +1348,13 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
             }
         }
     } catch (...) { complete.clear(); }
+    // Freeze the memory-proven alias binding before drawing or clipping can
+    // change its visible bytes. A left-clipped suffix is still authored text.
+    try {
+        if (!complete.empty())
+            squad_alias_target = native_squad_alias_source_target(
+                complete, reinterpret_cast<uintptr_t>(source));
+    } catch (...) {}
     draw();
     if (complete.empty()) return;
     try {
@@ -1395,7 +1408,9 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
                 info_title_authored, info_title_right, civilization_field,
                 first == x && mission_title, mission_title_right, draw_clip, epoch,
                 map_hover, location_picker_field, location_picker_box, fortress_labor_caption,
-                travel_building_field);
+                travel_building_field, native_caller,
+                first == x ? squad_alias_target : squad_alias_target
+                    ? std::optional<std::string>(native_text_to_utf8(visible)) : std::nullopt);
         if (first == x && visible != complete)
             remember_clipped_caption(x, y, visible, complete);
     } catch (...) {}
@@ -1405,6 +1420,14 @@ static bool native_legacy_editable_draw(uintptr_t caller) {
 #ifdef _WIN32
     const uintptr_t base = native_history_profile_base();
     if (!base) return false;
+    // The stockpile and zone name boxes draw building.name (+0xd0)
+    // directly, with separate calls while unfocused and while editing.
+    // These stored input bytes stay authored even when they spell a UI
+    // category. Empty names use different generated-caption calls.
+    if (caller == native_pe_address(base, 0x3e611c) ||
+            caller == native_pe_address(base, 0x3e6195) ||
+            caller == native_pe_address(base, 0x3e82a7) ||
+            caller == native_pe_address(base, 0x3e895e)) return true;
     uintptr_t owner = 0;
     size_t string_offset = 0, entering_offset = 0;
     bool has_open = true;
@@ -1450,11 +1473,410 @@ static bool native_legacy_editable_draw(uintptr_t caller) {
 #endif
 }
 
+static bool native_site_government_link(uintptr_t link, bool &qualifies,
+        uint32_t &flags) {
+    qualifies = false;
+    int32_t location = -1, native_time = 0;
+    if (!link || !native_history_copy(native_history_object_field(link,
+            "entity_site_link", 0x1c, sizeof(flags)), flags) ||
+            !native_history_copy(native_history_object_field(link,
+                "entity_site_link", 0x10, sizeof(location)), location) ||
+            !native_history_copy(native_history_object_field(link,
+                "entity_site_link", 0x14, sizeof(native_time)), native_time)) return false;
+    // Match 9b4e70's native predicate. The +14 scalar is deliberately not
+    // interpreted as an end date or replaced with a guessed ownership field.
+    qualifies = (flags & 1u) != 0 && location == 0 && native_time == -1;
+    return true;
+}
+
+static bool native_site_government_matches(uintptr_t site, int32_t entity_id,
+        bool &matches) {
+    matches = false;
+    NativeBorrowedVector<uintptr_t> links;
+    if (!native_history_read_vector(native_history_object_field(site,
+            "world_site", 0x428, sizeof(links)), links) || links.size() > 4096) return false;
+    for (size_t i = 0; i < links.size(); ++i) {
+        const uintptr_t link = native_history_vector_at(links, i);
+        bool qualifies = false;
+        uint32_t flags = 0;
+        if (!native_site_government_link(link, qualifies, flags)) return false;
+        if (!qualifies) continue;
+        int32_t id = -1;
+        if (!native_history_copy(native_history_object_field(link,
+                "entity_site_link", 4, sizeof(id)), id)) return false;
+        // Only the first qualifying relation selects the native government.
+        matches = id == entity_id;
+        return true;
+    }
+    return true;
+}
+
+static bool native_site_government_headquarters(uintptr_t link, bool &headquarters) {
+    headquarters = false;
+    NativeBorrowedVector<uintptr_t> profiles;
+    if (!native_history_read_vector(native_history_object_field(link,
+            "entity_site_link", 0x30, sizeof(profiles)), profiles) || profiles.size() > 4096)
+        return false;
+    for (size_t i = 0; i < profiles.size(); ++i) {
+        const uintptr_t profile = native_history_vector_at(profiles, i);
+        uint32_t purposes = 0;
+        if (!profile || !native_history_copy(native_history_object_field(profile,
+                "entity_site_ab_profilest", 4, sizeof(purposes)), purposes)) return false;
+        headquarters = headquarters || (purposes & (1u << 2)) != 0;
+    }
+    return true;
+}
+
+static bool native_site_government_position_roles(uintptr_t entity,
+        bool &bandit_leader, bool &abbot_leader) {
+    bandit_leader = false;
+    abbot_leader = false;
+    NativeBorrowedVector<uintptr_t> positions, assignments;
+    if (!native_history_read_vector(native_history_object_field(entity,
+            "historical_entity", 0x10c0, sizeof(positions)), positions) ||
+            !native_history_read_vector(native_history_object_field(entity,
+                "historical_entity", 0x1110, sizeof(assignments)), assignments) ||
+            positions.size() > 4096 || assignments.size() > 4096) return false;
+    for (size_t i = 0; i < positions.size(); ++i) {
+        const uintptr_t position = native_history_vector_at(positions, i);
+        const uintptr_t flags = native_history_object_field(position,
+            "entity_position", 0x28, 16);
+        bool active = false, replaced = false, leader = false;
+        if (!position || !flags || !native_history_page_flag(flags, 0, 8, 27, active))
+            return false;
+        if (!active) continue;
+        if (!native_history_page_flag(flags, 0, 8, 19, replaced)) return false;
+        if (replaced) continue;
+        std::string code;
+        if (!native_history_copy_string(native_history_object_field(position,
+                "entity_position", 0, sizeof(NativeString)), code) ||
+                !native_history_page_flag(flags, 0, 8, 13, leader)) return false;
+        const bool bandit = code == "CUSTOM_BANDIT_LEADER";
+        bool abbot = false;
+        if (leader) {
+            std::string title;
+            if (!native_history_copy_string(native_history_object_field(position,
+                    "entity_position", 0x98, sizeof(NativeString)), title)) return false;
+            abbot = title == "abbot" || title == "abbess";
+        }
+        if (!bandit && !abbot) continue;
+        int32_t position_id = -1;
+        if (!native_history_copy(native_history_object_field(position,
+                "entity_position", 0x20, sizeof(position_id)), position_id) || position_id < 0)
+            return false;
+        for (size_t j = 0; j < assignments.size(); ++j) {
+            const uintptr_t assignment = native_history_vector_at(assignments, j);
+            int32_t assigned_position = -1, holder = -1;
+            if (!assignment || !native_history_copy(native_history_object_field(assignment,
+                    "entity_position_assignment", 0xc, sizeof(assigned_position)), assigned_position))
+                return false;
+            if (assigned_position != position_id) continue;
+            if (!native_history_copy(native_history_object_field(assignment,
+                    "entity_position_assignment", 4, sizeof(holder)), holder)) return false;
+            if (holder < 0) continue;
+            bool assigned = false;
+            const uintptr_t assignment_flags = native_history_object_field(assignment,
+                "entity_position_assignment", 0x18, 16);
+            if (!assignment_flags || !native_history_page_flag(assignment_flags, 0, 8, 0, assigned))
+                return false;
+            if (assigned) {
+                bandit_leader = bandit_leader || bandit;
+                abbot_leader = abbot_leader || abbot;
+                break;
+            }
+        }
+    }
+    return true;
+}
+
+static void capture_native_site_government_attributes(uintptr_t base, uintptr_t entity,
+        NativeSiteGovernmentContext &context, bool capture_site = true,
+        bool include_former_governance = false) {
+    context = {};
+    if (!base || !entity) return;
+    int16_t entity_type = -1;
+    int32_t entity_id = -1;
+    uint32_t entity_flags = 0;
+    uintptr_t culture = 0;
+    if (!native_history_copy(native_history_object_field(entity,
+            "historical_entity", 0, sizeof(entity_type)), entity_type) || entity_type < 0 ||
+            entity_type > 10 || !native_history_copy(native_history_object_field(entity,
+                "historical_entity", 4, sizeof(entity_id)), entity_id) || entity_id < 0 ||
+            !native_history_copy(native_history_object_field(entity,
+                "historical_entity", 0x9c, sizeof(entity_flags)), entity_flags) ||
+            !native_history_copy(native_history_object_field(entity,
+                "historical_entity", 8, sizeof(culture)), culture) ||
+            !native_history_copy(native_history_object_field(entity,
+                "historical_entity", 0x98, sizeof(context.race)), context.race)) return;
+    context.non_racial = (entity_flags & (1u << 10)) != 0;
+    context.religious_governance = entity_type == 5;
+    if (culture) {
+        const uintptr_t flags = native_history_object_field(culture, "entity_raw", 0x3a0, 16);
+        if (!native_history_copy_string(native_history_object_field(culture,
+                "entity_raw", 0, sizeof(NativeString)), context.culture_raw_id) ||
+                !flags || !native_history_page_flag(flags, 0, 8, 45, context.skulking)) return;
+    }
+    if (context.race >= 0) {
+        NativeBorrowedVector<uintptr_t> creatures;
+        if (!native_history_read_vector(native_history_global(0x24eca68), creatures)) return;
+        const uintptr_t creature = native_history_vector_at(creatures,
+            static_cast<size_t>(context.race));
+        if (!creature || !native_history_copy_string(native_history_object_field(
+                creature, "creature_raw", 0, sizeof(NativeString)), context.race_raw_id)) return;
+    }
+    if (!capture_site) {
+        if (!include_former_governance) return;
+        // Accumulated own RESIDENCE records can supply a stable category for
+        // this entity's name. They do not prove its governing role, parent,
+        // office or location at the event's date. Keep all current-role and
+        // parent-relation flags unset, and never consult the current governor.
+        struct NameSiteShape {
+            int32_t id = -1;
+            int16_t type = -1, subtype = -1;
+            std::string kind;
+        };
+        std::vector<NameSiteShape> shapes;
+        NativeBorrowedVector<uintptr_t> links;
+        if (!native_history_read_vector(native_history_object_field(entity,
+                "historical_entity", 0xd0, sizeof(links)), links) || links.size() > 4096) return;
+        for (size_t i = 0; i < links.size(); ++i) {
+            const uintptr_t link = native_history_vector_at(links, i);
+            uint32_t flags = 0, former_flags = 0;
+            int32_t location = -1, linked_entity = -1, site_id = -1;
+            if (!link || !native_history_copy(native_history_object_field(link,
+                    "entity_site_link", 0x1c, sizeof(flags)), flags) ||
+                    !native_history_copy(native_history_object_field(link,
+                        "entity_site_link", 0x20, sizeof(former_flags)), former_flags) ||
+                    !native_history_copy(native_history_object_field(link,
+                        "entity_site_link", 0x10, sizeof(location)), location)) return;
+            if (!((flags | former_flags) & 1u) || location != 0) continue;
+            if (!native_history_copy(native_history_object_field(link,
+                    "entity_site_link", 4, sizeof(linked_entity)), linked_entity) ||
+                    linked_entity != entity_id ||
+                    !native_history_copy(native_history_object_field(link,
+                        "entity_site_link", 0, sizeof(site_id)), site_id) || site_id < 0) return;
+            if (std::any_of(shapes.begin(), shapes.end(),
+                    [&](const auto &shape) { return shape.id == site_id; })) continue;
+            const uintptr_t site = native_history_find_subject(base,
+                NativeHistoryObjectKind::Site, site_id);
+            int32_t actual_site_id = -1;
+            NativeHistoryEventData site_data;
+            if (!site || !native_history_copy(native_history_object_field(site,
+                    "world_site", 0x88, sizeof(actual_site_id)), actual_site_id) ||
+                    actual_site_id != site_id || !native_history_site_type(site, site_data, "site"))
+                return;
+            const auto label = site_data.texts.find("site.label");
+            const auto type = site_data.fields.find("site.site_type");
+            const auto subtype = site_data.fields.find("site.site_subtype");
+            if (label == site_data.texts.end() || type == site_data.fields.end() ||
+                    type->second.size() != 1 || subtype == site_data.fields.end() ||
+                    subtype->second.size() != 1) return;
+            shapes.push_back(NameSiteShape{site_id,
+                static_cast<int16_t>(type->second.front()),
+                static_cast<int16_t>(subtype->second.front()), label->second});
+        }
+        if (shapes.empty()) return;
+        context.name_site_shape_known = true;
+        if (shapes.size() == 1) context.site_id = shapes.front().id;
+        if (std::all_of(shapes.begin(), shapes.end(),
+                [&](const auto &shape) { return shape.kind == shapes.front().kind; })) {
+            context.site_kind = shapes.front().kind;
+            if (std::all_of(shapes.begin(), shapes.end(),
+                    [&](const auto &shape) { return shape.type == shapes.front().type; }))
+                context.site_type = shapes.front().type;
+            if (std::all_of(shapes.begin(), shapes.end(),
+                    [&](const auto &shape) { return shape.subtype == shapes.front().subtype; }))
+                context.site_subtype = shapes.front().subtype;
+        }
+        return;
+    }
+    context.is_current = true;
+    const auto umbrella = native_history_resolve_current_entity_umbrella(base, entity);
+    context.has_external_parent = umbrella.has_external_parent;
+    if (!umbrella.relation_known) return;
+    bool bandit_leader = false, abbot_leader = false;
+    if (!native_site_government_position_roles(entity, bandit_leader, abbot_leader)) return;
+    struct Location {
+        int32_t id = -1;
+        int16_t type = -1, subtype = -1;
+        std::string kind;
+        bool capital = false, headquarters = false;
+    };
+    std::vector<Location> governed;
+    NativeBorrowedVector<uintptr_t> links;
+    if (!native_history_read_vector(native_history_object_field(entity,
+            "historical_entity", 0xd0, sizeof(links)), links) || links.size() > 4096) return;
+    const auto append_location = [&](uintptr_t site, int32_t site_id,
+            bool capital, bool headquarters) -> bool {
+        auto existing = std::find_if(governed.begin(), governed.end(),
+            [&](const auto &value) { return value.id == site_id; });
+        if (existing != governed.end()) {
+            existing->capital = existing->capital || capital;
+            existing->headquarters = existing->headquarters || headquarters;
+            return true;
+        }
+        NativeHistoryEventData site_data;
+        if (!native_history_site_type(site, site_data, "site")) return false;
+        const auto label = site_data.texts.find("site.label");
+        const auto type = site_data.fields.find("site.site_type");
+        const auto subtype = site_data.fields.find("site.site_subtype");
+        if (label == site_data.texts.end() || type == site_data.fields.end() ||
+                type->second.size() != 1 || subtype == site_data.fields.end() ||
+                subtype->second.size() != 1) return false;
+        Location location;
+        location.id = site_id;
+        location.kind = label->second;
+        location.type = static_cast<int16_t>(type->second.front());
+        location.subtype = static_cast<int16_t>(subtype->second.front());
+        location.capital = capital;
+        location.headquarters = headquarters;
+        governed.push_back(std::move(location));
+        return true;
+    };
+    bool bandit_site = false;
+    for (size_t i = 0; i < links.size(); ++i) {
+        const uintptr_t link = native_history_vector_at(links, i);
+        bool qualifies = false;
+        uint32_t flags = 0;
+        if (!native_site_government_link(link, qualifies, flags)) return;
+        if (!qualifies) continue;
+        int32_t site_id = -1;
+        if (!native_history_copy(native_history_object_field(link,
+                "entity_site_link", 0, sizeof(site_id)), site_id) || site_id < 0) return;
+        const uintptr_t site = native_history_find_subject(base, NativeHistoryObjectKind::Site, site_id);
+        bool matches = false;
+        if (!site || !native_site_government_matches(site, entity_id, matches)) return;
+        if (!matches) continue;
+        bool headquarters = false;
+        if (!native_site_government_headquarters(link, headquarters)) return;
+        if (!append_location(site, site_id, (flags & (1u << 1)) != 0, headquarters)) return;
+        bandit_site = bandit_site || (flags & ((1u << 6) | (1u << 7))) != 0;
+    }
+    const bool monastery = std::any_of(governed.begin(), governed.end(),
+        [](const auto &location) { return location.kind == "monastery"; });
+    bool former_governance = false;
+    if (include_former_governance && governed.empty()) {
+        for (size_t i = 0; i < links.size(); ++i) {
+            const uintptr_t link = native_history_vector_at(links, i);
+            uint32_t former_flags = 0;
+            int32_t location = -1, site_id = -1, linked_entity = -1;
+            if (!link || !native_history_copy(native_history_object_field(link,
+                    "entity_site_link", 0x20, sizeof(former_flags)), former_flags) ||
+                    !native_history_copy(native_history_object_field(link,
+                        "entity_site_link", 0x10, sizeof(location)), location)) return;
+            if (!(former_flags & 1u) || location != 0) continue;
+            if (!native_history_copy(native_history_object_field(link,
+                    "entity_site_link", 4, sizeof(linked_entity)), linked_entity) ||
+                    linked_entity != entity_id ||
+                    !native_history_copy(native_history_object_field(link,
+                        "entity_site_link", 0, sizeof(site_id)), site_id) || site_id < 0) return;
+            const uintptr_t site = native_history_find_subject(base,
+                NativeHistoryObjectKind::Site, site_id);
+            int32_t actual_site_id = -1;
+            if (!site || !native_history_copy(native_history_object_field(site,
+                    "world_site", 0x88, sizeof(actual_site_id)), actual_site_id) ||
+                    actual_site_id != site_id || !append_location(site, site_id, false, false)) return;
+        }
+        former_governance = !governed.empty();
+    }
+    // Current roles require agreement with the site's native governing link.
+    // An explicitly requested former RESIDENCE can instead anchor this
+    // entity's name; it supplies neither a present capital/HQ nor evidence
+    // that an active abbot currently governs a monastery.
+    context.governing_role = !governed.empty();
+    context.former_governance = former_governance;
+    context.parent_known = umbrella.relation_known;
+    context.bandit_governance = bandit_site || bandit_leader;
+    context.religious_governance = context.religious_governance || (abbot_leader && monastery);
+    const Location *anchor = nullptr;
+    const auto unique_anchor = [&](bool capital) -> const Location * {
+        const Location *found = nullptr;
+        for (const auto &location : governed) {
+            if (!(capital ? location.capital : location.headquarters)) continue;
+            if (found) return nullptr;
+            found = &location;
+        }
+        return found;
+    };
+    anchor = unique_anchor(true);
+    if (!anchor) anchor = unique_anchor(false);
+    if (!anchor && governed.size() == 1) anchor = &governed.front();
+    if (anchor) {
+        context.site_id = anchor->id;
+        context.site_type = anchor->type;
+        context.site_subtype = anchor->subtype;
+        context.site_kind = anchor->kind;
+    } else if (!governed.empty() && std::all_of(governed.begin(), governed.end(),
+            [&](const auto &location) { return location.kind == governed.front().kind; })) {
+        context.site_kind = governed.front().kind;
+        if (std::all_of(governed.begin(), governed.end(),
+                [&](const auto &location) { return location.type == governed.front().type; }))
+            context.site_type = governed.front().type;
+        if (std::all_of(governed.begin(), governed.end(),
+                [&](const auto &location) { return location.subtype == governed.front().subtype; }))
+            context.site_subtype = governed.front().subtype;
+    }
+}
+
+#ifdef _WIN32
+template<NativeWorldSiteEntityFactKind Kind>
+static void capture_native_world_site_entity_fact(graphicst *graphics,
+        const NativeString *source, uintptr_t entity, int) {
+    NativeInputCallbackScope callback;
+    const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+    NativeWorldSiteEntityFact fact;
+    fact.kind = Kind;
+    bool owned = false;
+    try {
+        std::string_view text;
+        const uintptr_t base = native_history_profile_base();
+        constexpr std::string_view prefix = Kind == NativeWorldSiteEntityFactKind::SiteGovernment
+            ? "Site government:" : "Civilization:";
+        const uintptr_t name = entity ? native_history_object_field(
+            entity, "historical_entity", 0x20) : 0;
+        // The relay passes the exact entity held by this native producer.
+        // The drawn string is a separate, possibly clipped label/name buffer.
+        if (base && name && native_string_view(source, &text, 4096) &&
+                text.starts_with(prefix) && capture_native_history_name(base, name, fact.name) &&
+                capture_native_history_entity_name_context(base, entity, fact.name,
+                    Kind == NativeWorldSiteEntityFactKind::SiteGovernment, nullptr, false,
+                    Kind == NativeWorldSiteEntityFactKind::SiteGovernment) &&
+                fact.name.entity_type >= 0 && fact.name.entity_type <= 10) {
+            if constexpr (Kind == NativeWorldSiteEntityFactKind::SiteGovernment) {
+                if (fact.name.parent_word_id.empty())
+                    capture_native_site_government_attributes(base, entity, fact.government_context);
+                // The exact native Site government producer already selected
+                // this entity with 9b4e70, independently of a stable site kind.
+                fact.government_context.governing_role = true;
+            }
+            fact.name.entity_name_current = false;
+            owned = true;
+        }
+    } catch (...) {}
+    // Publish an owned snapshot with this exact draw. A retained frame never
+    // borrows the producer's entity or its temporary NativeString.
+    NativeWorldSiteEntityFactScope scope(owned ? &fact : nullptr);
+    capture_native_limited_caption_draw(graphics, source, NativeJustification{}, 0, [&] {
+        // This is the addst entry's original trampoline, so this draw enters
+        // the caption capture once while retaining the native just/width=0.
+        if (const auto original = g_native_clipped_caption_hooks.draw)
+            callback.call_native([&] { original(graphics, source, NativeJustification{}, 0); });
+    }, false, NativeInfoTitleKind::None, false, {}, false,
+        NativeCivilizationField::None, false, {}, NativeLocationPickerField::None,
+        NativeTravelBuildingField::None, caller);
+}
+#endif
+
 static void capture_native_clipped_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width) {
     const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+    // This call inside textbox::render draws only its owned edit string's
+    // temporary copy. It remains input even when native code reaches render
+    // directly instead of dispatching through the hooked widget vtable.
+    const bool textbox_text = g_native_textbox_widget_binding.text_return_address &&
+        caller == g_native_textbox_widget_binding.text_return_address;
     NativeEditableTextScope input_scope(
-        NativeEditableTextScope::owns(caller) || native_legacy_editable_draw(caller));
+        textbox_text || NativeEditableTextScope::owns(caller) || native_legacy_editable_draw(caller));
     const auto kind = native_info_title_kind(caller);
     const bool authored = native_info_title_authored(kind, source, caller);
     const auto civilization_field = native_civilization_caption_field(caller);
@@ -1628,7 +2050,7 @@ static bool install_native_caption_hooks() {
     }
     std::vector<NativeCall> calls;
     calls.reserve(profile.sites.size() * 2 + profile.inline_resizes.size() +
-        profile.roster_shorten_calls.size() + profile.announcement_page.rows_calls.size() + 1);
+        profile.roster_shorten_calls.size() + profile.announcement_page.rows_calls.size() + 5);
     for (const auto &site : profile.sites) {
         switch (site.kind) {
         case NativeFieldKind::EmbarkItem:
@@ -1655,6 +2077,32 @@ static bool install_native_caption_hooks() {
     for (const auto site : profile.announcement_page.rows_calls)
         calls.push_back({site, profile.announcement_page.rows_target,
             reinterpret_cast<const void *>(&capture_native_announcement_page_rows)});
+#ifdef _WIN32
+    // All four callers set just=0 and width=0 before addst. Their nonvolatile
+    // registers still hold the entity used by the preceding name formatter.
+    // Replace R8 with that entity; the wrapper restores both constant args.
+    // Literal NativeCalls let the normal build bind both supported PE images.
+    std::vector<NativeCall> entity_fact_calls{
+        {0x1cf3fd, 0xad9960,
+            reinterpret_cast<const void *>(&capture_native_world_site_entity_fact<
+                NativeWorldSiteEntityFactKind::SiteGovernment>),
+            {0x4d, 0x89, 0xf8}}, // mov r8,r15: selected site's government
+        {0x1cf55d, 0xad9960,
+            reinterpret_cast<const void *>(&capture_native_world_site_entity_fact<
+                NativeWorldSiteEntityFactKind::Civilization>),
+            {0x49, 0x89, 0xf8}}, // mov r8,rdi: selected site's civilization
+        {0x1c2b8e, 0xad9960,
+            reinterpret_cast<const void *>(&capture_native_world_site_entity_fact<
+                NativeWorldSiteEntityFactKind::SiteGovernment>),
+            {0x49, 0x89, 0xf8}}, // mov r8,rdi: hovered site's government
+        {0x1c2ce1, 0xad9960,
+            reinterpret_cast<const void *>(&capture_native_world_site_entity_fact<
+                NativeWorldSiteEntityFactKind::Civilization>),
+            {0x49, 0x89, 0xd8}}, // mov r8,rbx: hovered site's civilization
+    };
+    if (!native_reference_calls(entity_fact_calls, 0)) return false;
+    calls.insert(calls.end(), entity_fact_calls.begin(), entity_fact_calls.end());
+#endif
     reset_native_caption_capture();
     g_native_caption_hooks.resize = profile.resize;
     g_native_caption_hooks.draw = profile.draw;
@@ -1662,6 +2110,7 @@ static bool install_native_caption_hooks() {
     // trampolines are being prepared. Keep the real native operation bound
     // throughout installation; removal restores these callers first.
     g_native_clipped_caption_hooks.resize = profile.resize;
+    g_native_clipped_caption_hooks.draw = profile.draw;
     g_native_clipped_caption_hooks.roster_shorten = profile.roster_shorten_target
         ? reinterpret_cast<NativeCaptionTruncateFn>(profile.base + profile.roster_shorten_target)
         : nullptr;

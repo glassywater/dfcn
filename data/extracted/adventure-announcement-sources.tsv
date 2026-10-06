@@ -328,9 +328,9 @@ adventure.announcement.control	0x1407eed80:0x1407f1c76-0x1407f1df9	"You are clos
 adventure.announcement.control	0x1407eed80:0x1407f1c76-0x1407f1df9	"You are close. Follow your senses to the entrance. But my chosen, you are in a state! See to yourself before you face what's ahead."
 adventure.announcement.control	0x1407eed80:0x1407f1c76-0x1407f1df9	"You are close. Follow your senses to the entrance. But my chosen, you are in a state! See to yourself before you face what's ahead. Remember that ice and snow can be heated by a campfire."
 adventure.announcement.control	0x1407eed80:0x1407f04d1-0x1407f0762	"Greetings. I am {p}, and I have chosen you. Seek out {p} in {e} and fulfill your destiny."
-adventure.announcement.control	0x1407eed80:0x1407f04d1-0x1407f0762	"Greetings. I am {p}, and I have chosen you. The remnants of creation, {e}, belong with my followers, {e}. Seek out {p} in {e} and fulfill your destiny."
+adventure.announcement.control	0x1407eed80:0x1407f04d1-0x1407f0762	"Greetings. I am {p}, and I have chosen you. The remnants of creation, {s}, belong with my followers, {e}. Seek out {p} in {e} and fulfill your destiny."
 adventure.announcement.control	0x1407eed80:0x1407f04d1-0x1407f0762	"Greetings. I am {p}, and I have chosen you as my instrument of {r}. Seek out {p} in {e} and fulfill your destiny."
-adventure.announcement.control	0x1407eed80:0x1407f04d1-0x1407f0762	"Greetings. I am {p}, and I have chosen you as my instrument of {r}. The remnants of creation, {e}, belong with my followers, {e}. Seek out {p} in {e} and fulfill your destiny."
+adventure.announcement.control	0x1407eed80:0x1407f04d1-0x1407f0762	"Greetings. I am {p}, and I have chosen you as my instrument of {r}. The remnants of creation, {s}, belong with my followers, {e}. Seek out {p} in {e} and fulfill your destiny."
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You feed on {n}.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You flounder in the water!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You flounder in the lava!

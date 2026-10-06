@@ -123,6 +123,8 @@ std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
                     card.interior = {left, record.fields[index].y, end - left, 1};
                     card.button_box = record.box;
                     card.character_group_role = index == 2;
+                    card.character_group_civilization = index == 0 &&
+                        lower(normalize_utterance(record.fields[1].source)) == "civilization";
                     card.rows.push_back(record.fields[index]);
                     cards.push_back(std::move(card));
                 }
@@ -256,6 +258,8 @@ std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
             auto role = capture(*record.role, left, name_right, record.box);
             // All three fields move together, or none of them does.
             if (!name || !type || !role) continue;
+            name->character_group_civilization =
+                lower(normalize_utterance(type->rows.front().source)) == "civilization";
             role->character_group_role = true;
             cards.push_back(std::move(*name));
             cards.push_back(std::move(*type));
@@ -264,6 +268,33 @@ std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
         return cards;
     }
     return {};
+}
+
+void Overlay::append_character_group_civilization(const NativeTextCard &card,
+        std::vector<Match> &matches, int only_y) const {
+    if (!card.character_group_civilization) return;
+    const auto captions = captured_clipped_captions();
+    for (const auto &row : card.rows) {
+        if (only_y >= 0 && row.y != only_y) continue;
+        std::string source = row.complete_source.empty() ? row.source : row.complete_source;
+        for (const auto &caption : captions)
+            if (caption.x == row.x && caption.y == row.y && caption.visible == row.source) {
+                source = caption.complete;
+                break;
+            }
+        // The adjacent native type establishes a civilization name. Resolve
+        // its WORD/POS identity and political name senses as one field before
+        // row composition can preserve the generic noun/ownership fragments.
+        const auto target = translate_procedural_fragment(normalize_utterance(source),
+            false, false, {}, ProceduralFragmentContext::civilization_name);
+        if (!target || target->empty()) continue;
+        std::erase_if(matches, [&](const Match &match) {
+            return match.y == row.y && match.x < row.x + static_cast<int>(row.source.size()) &&
+                row.x < match.x + match.length;
+        });
+        matches.push_back({row.x, row.y, static_cast<int>(row.source.size()),
+            kCharacterGroupRowRule, *target, row.source});
+    }
 }
 
 void Overlay::append_character_group_role(const NativeTextCard &card,
