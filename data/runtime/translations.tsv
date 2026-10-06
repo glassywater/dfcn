@@ -6892,6 +6892,7 @@ Announcement combat visitor-statement [visitor-statement-subject,visitor-stateme
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} were appearing {s}.	{s1}当时正在出现在{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} were rewarding {s}.	{s1}当时正在奖赏{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} will destroyed {s}.	{s1}将已毁灭{s2}。	l
+DFHack GUI Animal assignment: Click to assign/unassign to pasture/pond/pit. Shift click to assign/unassign a range.	点击分配到牧场／池塘／坑洞，或取消分配。按住 Shift 点击可批量分配或取消分配。	l
 DFHack GUI Journal tutorial: Those headers will appear here, and you can click on them to jump to them in the text.	这些标题会显示在目录中，点击即可跳到正文中对应的位置。	l
 DFHack GUI Teleport: Draw boxes around units to select, or double click on a tile to teleport {d} selected unit(s).	用鼠标框选单位，或双击格子将已选中的 {d} 个单位传送至该处。	l
 DFHack help: "--script <script>" Selects the specified script (which must support being included with reqscript()).	"--script <script>" 选择指定的脚本（必须支持包含在 reqscript() 中）。	l
@@ -7184,6 +7185,7 @@ Announcement combat visitor-statement [visitor-statement-subject,visitor-stateme
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} will destroy {s}.	{s1}将毁灭{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} will flooded {s}.	{s1}将已淹没{s2}。	l
 Announcement combat work-sentence [work-reference]: It asks the question, "What if {s} had unfolded differently?"	作品提出了这样的问题：“如果{s1}的发展有所不同，会怎样？”	l
+DFHack GUI Animal assignment: Click to assign/unassign to cage/restraint. Shift click to assign/unassign a range.	点击分配到笼子／锁链，或取消分配。按住 Shift 点击可批量分配或取消分配。	l
 DFHack help: "--itemType <type>" Trigger the command for items of this type (as specified in the raws). Examples:	"--itemType <type>" 触发此类型项目的命令（如原始文件中所指定）。示例：	l
 DFHack help: "--setPrevRace" Remember the previous race so that you can change the unit back with "--untransform"	"--setPrevRace" 记住之前的比赛，这样你就可以用"--untransform"把单位改回来	l
 DFHack help: ":lua !df.global.window_z" Print out the current z-level (as distinct from the displayed elevation).	":lua !df.global.window_z" 打印出当前的 Z 层 （与显示的高程不同）。	l
@@ -12047,6 +12049,7 @@ Announcement combat visitor-statement [visitor-statement-subject]: {s} will dest
 Before you start chopping down trees you may want to create a dedicated Wood Stockpile.	[C:7:0:0]开始砍树之前，不妨先设置一个[C:6:0:0]专门存放木头的储物堆[C:7:0:0]。	hq
 But this is only the beginning. Ultimately, your true goals are up to your imagination.	但这也只是开始。归根结底，你真正的目标由想象力决定。	hq
 Change whether the work order must be activated or completed to satisfy this condition.	切换满足此条件所需的工单状态：已启动或已完成。	hj
+DFHack GUI Animal assignment: Note that pets cannot be assigned to cages or restraints.	注意：宠物无法分配到笼子或锁链。	l
 DFHack GUI Autodump: Double click on a tile to teleport {d} item(s) marked for dumping.	双击格子，将已标记倾倒的 {d} 件物品传送至该处。	l
 DFHack GUI Notification settings: Notifies when there are no squads set up for training	没有设置训练小队时发出通知。	l
 DFHack GUI Notification settings: Notifies when units are stranded from the main group.	居民与主要群体隔绝而受困时发出通知。	l
@@ -15656,6 +15659,7 @@ Announcement combat visitor-statement-emotion []: feeling grim satisfaction	感�
 Assign a kill order. The soldiers will attempt to kill a targeted creature.	下达击杀命令。士兵会尝试杀死指定目标生物。	hj
 Assign a patrol order. The soldiers will walk a specified route repeatedly.	下达巡逻命令。士兵会反复沿指定路线行进。	hj
 Conversation prompt: What will you say about the refusal to accept tribute?	关于拒收贡品，你想说些什么？	l
+DFHack GUI Animal assignment: Click to assign/unassign to pasture/pond/pit.	点击分配到牧场／池塘／坑洞，或取消分配。	l
 DFHack GUI Viewer status: Autostart defaults restored for automation tools.	自动化工具的自动启动状态已恢复为默认设置。	l
 DFHack help: "--attributes [ <attribute> <tier> [<attribute> <tier> ...] ]"	"--attributes [ <attribute> <tier> [<attribute> <tier> ...] ]"	l
 DFHack help: "--getfield <field>" Gets the specified field from the source.	"--getfield <field>" 从源中获取指定字段。	l
@@ -16341,6 +16345,7 @@ Carve a gap in a smooth wall to allow your archers to fire upon invaders.	在平
 Conversation prompt: How will you respond to the request for information?	你将如何回应打听消息的请求？	l
 Conversation prompt: What will you say about the end of the insurrection?	关于起义结束，你想说些什么？	l
 Conversation prompt: What will you say about the refusal to give tribute?	关于拒绝进贡，你想说些什么？	l
+DFHack GUI Animal assignment: Click to assign/unassign to cage/restraint.	点击分配到笼子／锁链，或取消分配。	l
 DFHack GUI Viewer status: Autostart defaults restored for gameplay tools.	玩法扩展工具的自动启动状态已恢复为默认设置。	l
 DFHack GUI Viewer status: Enabled defaults restored for automation tools.	自动化工具的当前启用状态已恢复为默认设置。	l
 DFHack help: "--clear" Clear any previously registered syndrome triggers.	"--clear" 清除任何先前注册的综合症触发器。	l
@@ -22298,6 +22303,7 @@ Conversation prompt: How will you respond to the invocation?	你将如何回应�
 Conversation prompt: How will you respond to this dismissal?	你将如何回应这番打发？	l
 Conversation prompt: What will you say about the occupation?	关于占领行动，你想说些什么？	l
 Crafts are an easy way to make a lot of trade goods quickly.	[C:7:0:0]制作[C:6:0:1]工艺品[C:7:0:0]，是快速获得大量贸易商品的简单办法。	hq
+DFHack GUI Animal assignment: Animal and prisoner assignment	动物与囚犯分配	l
 DFHack GUI Control tool: orders.conditionsquantityrightclick	条件数量右键取消（orders.conditionsquantityrightclick）	l
 DFHack GUI Teleport: Click name or hit Enter to zoom to unit	点击名称或按 Enter，定位至该单位。	l
 DFHack help: "--block" Selects the highlighted tile's block.	"--block" 选择突出显示的图块块。	l
@@ -25446,6 +25452,7 @@ Choose or create a parameter set to make a custom world.	选择或新建参数�
 Choose symbols for the position holder to carry or wear.	选择由任职者携带或佩戴的职位象征物。	hP
 Conversation prompt: What will you say about the rescue?	关于这次营救，你想说些什么？	l
 Create a performance troupe together (group naming menu)	共同成立表演团（势力命名菜单）	hP
+DFHack GUI Animal assignment: creature(s) assigned here.	只生物已分配到此处。	l
 DFHack GUI Control tool: buildingplan set boulders false	建造不用石块（buildingplan set boulders false）	l
 DFHack GUI Control tool: sort.elevate_barony_preferences	男爵候选偏好（sort.elevate_barony_preferences）	l
 DFHack help: "--clear" Re-enable normal surface embarks.	"--clear" 重新启用正常表面登船。	l
@@ -34129,6 +34136,7 @@ Conversation keyword: agree yes cease stop peace	同意 是 停战 停止 和平
 Conversation keyword: favor request demand order	帮忙 请求 要求 命令	l
 Conversation keyword: looming existential crisis	迫近的存在危机	l
 Conversation keyword: production order violation	违反生产命令	l
+DFHack GUI Animal assignment: In stockpiled cage	在库存笼中	l
 DFHack GUI Control tool: buildingplan.mechanisms	连接机关选择（buildingplan.mechanisms）	l
 DFHack GUI Control tool: caravan.movegoods_hider	隐藏原版货物按钮（caravan.movegoods_hider）	l
 DFHack GUI Control tool: gui/mass-remove.toolbar	批量移除工具入口（gui/mass-remove.toolbar）	l
@@ -35466,6 +35474,9 @@ Click two corners of a rectangle somewhere safe	在安全地点点击矩形的�
 Conversation keyword: crime of attempted murder	谋杀未遂罪	l
 Conversation keyword: guide site place location	向导 地点 地方 位置	l
 Conversation keyword: item accept refusal trade	物品 接受 拒绝 交易	l
+DFHack GUI Animal assignment: In other pit/pond	在其他坑洞／池塘	l
+DFHack GUI Animal assignment: Partially trained	部分训练	l
+DFHack GUI Animal assignment: Unknown small pet	未知小型宠物	l
 DFHack GUI Control tool: buildingplan.inspector	建筑缺料信息（buildingplan.inspector）	l
 DFHack GUI Control tool: caravan.tradeagreement	贸易协议批量设置（caravan.tradeagreement）	l
 DFHack GUI Control tool: deteriorate enable all	全部物品类别腐朽（deteriorate enable all）	l
@@ -36792,6 +36803,10 @@ Conversation keyword: invoke true name service	念出 真名 效力	l
 Conversation keyword: monster slayer join work	怪物猎手 加入 工作	l
 Conversation prompt: What do you want to know?	你想了解什么？	l
 Conversation relationship: Low respect for you	不太尊敬你	l
+DFHack GUI Animal assignment: In other pasture	在其他牧场	l
+DFHack GUI Animal assignment: Max disposition:	最高驯化程度：	l
+DFHack GUI Animal assignment: Min disposition:	最低驯化程度：	l
+DFHack GUI Animal assignment: Wild (trainable)	野生（可驯化）	l
 DFHack GUI Control tool: adamantine-cloth-wear	精金衣物不磨损（adamantine-cloth-wear）	l
 DFHack GUI Control tool: advtools.conversation	对话关键词（advtools.conversation）	l
 DFHack GUI Control tool: fix/stuck-instruments	修复卡住的乐器（fix/stuck-instruments）	l
@@ -38189,6 +38204,7 @@ Conversation keyword: tavern keeper join work	酒保 加入 工作	l
 Conversation prompt: Where do you want to go?	你想去哪里？	l
 Conversation prompt: Which pet will you gift?	你要赠送哪只宠物？	l
 Conversation relationship: No respect for you	不尊敬你	l
+DFHack GUI Animal assignment: Assign all/none	全部分配／全部取消	l
 DFHack GUI Autodump: Forbid after teleporting	传送后禁用物品	l
 DFHack GUI Control tool: buildingplan.planner	建筑规划面板（buildingplan.planner）	l
 DFHack GUI Control tool: dwarfmonitor.weather	当前天气（dwarfmonitor.weather）	l
@@ -39623,6 +39639,7 @@ Conversation keyword: neighbors town village	邻居 城镇 村庄	l
 Conversation keyword: service order room buy	服务 订单 客房 买入	l
 Creating Namaanenu, "The Everseeing Planets"	正在创建 Namaanenu, "永恒守望的行星"	w
 Credits: Additional changes for the SDL Port	SDL 移植的后续改进	wl
+DFHack GUI Animal assignment: Unknown vermin	未知小动物	l
 DFHack GUI Autodump: Include forbidden items	包含禁用物品	l
 DFHack GUI Caption: Click characters or type	点击字符或直接输入	l
 DFHack GUI Confirmation action: Yes, proceed	确认继续	l
@@ -41092,6 +41109,9 @@ Conversation keyword: righteous indignation	义愤	l
 Conversation keyword: sleep permission rest	留宿 许可 休息	l
 Conversation prompt: About whom do you ask?	你想打听谁？	l
 Conversation relationship: Terrified of you	极度害怕你	l
+DFHack GUI Animal assignment: Assigned here	已分配到此处	l
+DFHack GUI Animal assignment: In built cage	在已安放笼中	l
+DFHack GUI Animal assignment: In loose cage	在未安放笼中	l
 DFHack GUI Caption: Click here to Backspace	点击此处退格	l
 DFHack GUI Control tool: burrow.designation	活动区域填充与框选（burrow.designation）	l
 DFHack GUI Control tool: exportlegends.mask	传奇导出退出保护（exportlegends.mask）	l
@@ -42613,6 +42633,8 @@ Conversation keyword: building destruction	毁坏建筑	l
 Conversation keyword: join service soldier	加入 效力 士兵	l
 Conversation prompt: Choose your tone/tact	选择交谈的语气与策略。	l
 Conversation prompt: How will you respond?	你将如何回应？	l
+DFHack GUI Animal assignment: Domesticated	已驯化	l
+DFHack GUI Animal assignment: On restraint	受锁链束缚	l
 DFHack GUI Caption: Command list is empty.	命令列表为空。	l
 DFHack GUI Control tool: caravan.movegoods	贸易站货物管理（caravan.movegoods）	l
 DFHack GUI Control tool: cleanowned-nodump	脱下破衣不倾倒（cleanowned-nodump）	l
@@ -44317,6 +44339,12 @@ Conversation relationship: No fear of you	不怕你	l
 Converting gathering blueprint to regular	将采集蓝图转为普通指定区域	wo
 Converting smoothing blueprint to regular	将打磨蓝图转为普通指定区域	wo
 Current top guildhall location: {e}, {d}\x0F	当前等级最高的行会大厅地点：{e1}，{d1}☼	hPt
+DFHack GUI Animal assignment: Egg layers:	产蛋动物：	l
+DFHack GUI Animal assignment: In pit/pond	在坑洞／池塘	l
+DFHack GUI Animal assignment: Max status:	最高状态：	l
+DFHack GUI Animal assignment: Min status:	最低状态：	l
+DFHack GUI Animal assignment: Untrainable	不可驯化	l
+DFHack GUI Animal assignment: disposition	驯化程度	l
 DFHack GUI Autodump: Clear selected items	清除已选物品	l
 DFHack GUI Control tool: gui/notify.panel	要塞通知列表（gui/notify.panel）	l
 DFHack GUI Control tool: gui/rename.world	新世界改名（gui/rename.world）	l
@@ -45959,6 +45987,8 @@ Conversation relationship: Distrusts you	不信任你	l
 Conversation relationship: Scared of you	害怕你	l
 Converting chopping blueprint to regular	将砍伐蓝图转为普通指定区域	wo
 Create a creature to place in the arena.	创建一只生物并将其放入竞技场。	hj
+DFHack GUI Animal assignment: In pasture	在牧场	l
+DFHack GUI Animal assignment: Juveniles:	幼兽：	l
 DFHack GUI Control tool: ban-cooking all	保护烹饪原料（ban-cooking all）	l
 DFHack GUI Control tool: confirm.overlay	危险操作确认（confirm.overlay）	l
 DFHack GUI Control tool: fix/dry-buckets	修复水桶和水井（fix/dry-buckets）	l
@@ -49363,6 +49393,8 @@ Conversation prompt: How will you ask?	你将如何提出请求？	l
 Conversation prompt: What do you want?	你想要什么？	l
 Converting mining blueprint to regular	将挖掘蓝图转为普通指定区域	wo
 Current top temple location: {e}, {d}\x0F	当前等级最高的神殿地点：{e1}，{d1}☼	hPt
+DFHack GUI Animal assignment: Grazers:	食草动物：	l
+DFHack GUI Animal assignment: Sort by:	排序依据：	l
 DFHack GUI Control tool: caravan.trade	交易箱内物品管理（caravan.trade）	l
 DFHack GUI Control tool: fix/blood-del	移除商队无用液体（fix/blood-del）	l
 DFHack GUI Control tool: fix/ownership	修复物品所有权（fix/ownership）	l
@@ -51182,6 +51214,12 @@ Credits: Nathan Miller aka Rainseeker	Nathan Miller aka Rainseeker	wl
 Credits: SDL port, additional changes	SDL 移植及其他改进	wl
 Current guildhall location: {e}, {d}\x0F	当前行会大厅地点：{e1}，{d1}☼	hPt
 Curse this fog! I cannot see a thing.	这该死的雾！我什么都看不见。	hP
+DFHack GUI Animal assignment: Exclude	排除	l
+DFHack GUI Animal assignment: Hostile	敌对	l
+DFHack GUI Animal assignment: Include	包含	l
+DFHack GUI Animal assignment: Roaming	游荡	l
+DFHack GUI Animal assignment: Search:	搜索：	l
+DFHack GUI Animal assignment: Unknown	未知	l
 DFHack GUI Control tool: autoclothing	自动衣物订单（autoclothing）	l
 DFHack GUI Control tool: autotraining	自动安排训练（autotraining）	l
 DFHack GUI Control tool: dig.warmdamp	温暖与潮湿地块提示（dig.warmdamp）	l
@@ -53001,6 +53039,8 @@ Conversation relationship: Likes you	喜欢你	l
 Conversation relationship: Loves you	爱你	l
 Create a tree to place in the arena.	创建一棵树并将其放入竞技场。	hj
 Create a tree to place in the arena.	创建一棵树并将其放入竞技场。	l
+DFHack GUI Animal assignment: gender	性别	l
+DFHack GUI Animal assignment: status	状态	l
 DFHack GUI Control tool: autobutcher	自动屠宰（autobutcher）	l
 DFHack GUI Control tool: autonestbox	自动分配巢箱（autonestbox）	l
 DFHack GUI Control tool: deteriorate	物品自然腐朽（deteriorate）	l
@@ -56952,6 +56992,10 @@ Conversation keyword: troublemaker	惹事精	l
 Conversation keyword: vengefulness	复仇心	l
 Conversation relationship: Neutral	中立	l
 Current temple location: {e}, {d}\x0F	当前神殿地点：{e1}，{d1}☼	hPt
+DFHack GUI Animal assignment: Only	仅限	l
+DFHack GUI Animal assignment: dist	距离	l
+DFHack GUI Animal assignment: name	名字	l
+DFHack GUI Animal assignment: race	种族	l
 DFHack GUI Autodump: Destroy items	销毁物品	l
 DFHack GUI Caption: Capture output	显示输出	l
 DFHack GUI Caption: Delete command	删除命令	l
@@ -59094,6 +59138,7 @@ Converting to gathering blueprint	将采集指定区域转为蓝图	wo
 Converting to smoothing blueprint	将打磨指定区域转为蓝图	wo
 Convict a suspect for this crime.	将嫌疑人判定为此案的罪犯。	hj
 Corrupt {s} of {e}, agreed in {d}	拉拢{e1}的{s1}（第{d1}年商定）	hPt
+DFHack GUI Animal assignment: Pet	宠物	l
 DFHack GUI Control tool: autochop	自动伐木（autochop）	l
 DFHack GUI Control tool: autofarm	自动种植（autofarm）	l
 DFHack GUI Control tool: autofish	自动捕鱼（autofish）	l

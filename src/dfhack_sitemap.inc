@@ -142,45 +142,6 @@
             if (auto target = exact_literal_translation(std::string(sitemap_scope) + std::string(text)))
                 emit(x, y, text, target, list_right);
         }
-        const auto translate_name_row = [&](std::string_view raw) -> std::optional<std::string> {
-            // Units::formatReadableName appends an English last-name gloss,
-            // then the optional profession. A nickname may contain quotes;
-            // only a complete, recognized surname field licenses this split.
-            for (size_t open = raw.rfind(" \""); open != std::string_view::npos;
-                    open = open ? raw.rfind(" \"", open - 1) : std::string_view::npos) {
-                const size_t close = raw.find('"', open + 2);
-                if (close == std::string_view::npos) continue;
-                const auto native = trim_view(raw.substr(0, open));
-                const auto gloss = trim_view(raw.substr(open + 2, close - open - 2));
-                auto suffix = trim_view(raw.substr(close + 1));
-                if (native.empty() || gloss.empty() ||
-                        (!suffix.empty() && suffix.front() != ',')) continue;
-                // A later quote in a custom profession must not swallow the
-                // real gloss into the native-name field. Only native nickname
-                // delimiters can own quotes before the surname boundary.
-                const auto nickname_open = native.find('`');
-                const auto nickname_close = native.rfind('\'');
-                std::string outside_nickname(native);
-                if (nickname_open != std::string_view::npos &&
-                        nickname_close != std::string_view::npos && nickname_close > nickname_open)
-                    outside_nickname.erase(nickname_open, nickname_close - nickname_open + 1);
-                if (outside_nickname.find('"') != std::string::npos) continue;
-                const auto meaning = translate_english_character_name(gloss);
-                if (!meaning) continue;
-                const auto person = translate_unit_identity(native, true);
-                if (!person) return std::nullopt;
-                std::string name = *person + "，“" + *meaning + "”";
-                if (suffix.empty()) return name;
-                suffix = trim_view(suffix.substr(1));
-                if (suffix.empty()) return std::nullopt;
-                const auto profession = translate_unit_profession(normalize_utterance(suffix), true);
-                return profession ? std::optional<std::string>(name + "，" + *profession)
-                                  : std::nullopt;
-            }
-            return raw.find('"') == std::string_view::npos
-                ? translate_unit_identity(raw, true) : std::nullopt;
-        };
-
         const auto complete_field = [&](int x, int y, std::string_view visible) {
             return lookup_native_dfhack_sitemap_text(gps_, x, y, visible)
                 .value_or(std::string(visible));
@@ -260,7 +221,7 @@
                     constexpr std::string_view hostile = " (hostile)";
                     const bool is_hostile = unit.ends_with(hostile);
                     if (is_hostile) unit.remove_suffix(hostile.size());
-                    captive = translate_name_row(unit);
+                    captive = translate_dfhack_readable_unit_name(unit);
                     if (captive) {
                         if (is_hostile)
                             if (const auto status = exact_literal_translation(
@@ -300,7 +261,7 @@
             const auto text = trim_view(band);
             if (!text.empty()) {
                 const int x = left + static_cast<int>(text.data() - band.data());
-                emit(x, y, text, translate_name_row(complete_field(x, y, text)), list_right);
+                emit(x, y, text, translate_dfhack_readable_unit_name(complete_field(x, y, text)), list_right);
             }
             if (y + 1 > bottom - 7) continue;
             const auto status_band = std::string_view(dfhack_context_rows[y + 1]).substr(

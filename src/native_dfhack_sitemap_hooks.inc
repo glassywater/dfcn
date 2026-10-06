@@ -1,21 +1,22 @@
 // Painter:string clips its argument before screen.paintString sees it. The
 // exported CheckPen boundary still owns that Lua call and its complete text.
-// Observe only the installed Sitemap and NotifyOverlay List renderers, and copy all strings
+// Observe only the installed Sitemap, NotifyOverlay and AssignAnimal List renderers, and copy all strings
 // before returning to DFHack. The native Lua tables and draw remain untouched.
 #ifdef _WIN32
 struct NativeDfhackSitemapLuaApi {
     NativeDfhackLuaOutputApi stack;
     const char *(*pushstring)(NativeDfhackLuaState *, const char *) = nullptr;
     int (*rawget)(NativeDfhackLuaState *, int) = nullptr;
+    int (*rawequal)(NativeDfhackLuaState *, int, int) = nullptr;
     int (*toboolean)(NativeDfhackLuaState *, int) = nullptr;
     const char *(*getupvalue)(NativeDfhackLuaState *, int, int) = nullptr;
     NativeDfhackLuaCFunction paint_string = nullptr;
-    std::string painter_source, list_source, filtered_source, sitemap_source, notify_source;
+    std::string painter_source, list_source, filtered_source, sitemap_source, notify_source, zone_source;
 };
 static NativeDfhackSitemapLuaApi g_native_dfhack_sitemap_lua_api;
 static std::atomic_bool g_native_dfhack_sitemap_lua_bound{false};
 
-enum class NativeDfhackChoiceTextOwner : unsigned char { Sitemap, Notification };
+enum class NativeDfhackChoiceTextOwner : unsigned char { Sitemap, Notification, AnimalAssignment };
 
 struct NativeDfhackSitemapText {
     const unsigned char *grid = nullptr;
@@ -50,6 +51,8 @@ static std::optional<std::string> lookup_native_dfhack_choice_text(
     if (!origin.grid) return std::nullopt;
     std::lock_guard<std::mutex> lock(g_native_dfhack_sitemap_text_mutex);
     if (epoch != g_native_dfhack_sitemap_text_epoch) return std::nullopt;
+    const bool scrollbar_clipped = owner == NativeDfhackChoiceTextOwner::Notification ||
+        owner == NativeDfhackChoiceTextOwner::AnimalAssignment;
     for (auto it = g_native_dfhack_sitemap_text.rbegin();
             it != g_native_dfhack_sitemap_text.rend(); ++it) {
         const auto &text = *it;
@@ -59,14 +62,13 @@ static std::optional<std::string> lookup_native_dfhack_choice_text(
                 text.top_layer != origin.top_layer ||
                 (!text.visible.starts_with(visible) && !visible.starts_with(text.visible)) ||
                 !text.full.starts_with(text.visible) ||
-                (owner == NativeDfhackChoiceTextOwner::Notification &&
-                    !text.full.starts_with(visible))) continue;
+                (scrollbar_clipped && !text.full.starts_with(visible))) continue;
         // Popup snapshots retain each cell's native origin. A still-matching
         // first cell cannot authorize text now overwritten on another layer.
-        // Notify's scrollbar is painted after the List text and can cover
+        // Notify and AssignAnimal scrollbars are painted after List text and can cover
         // the native draw's last two cells. Its caller has already excluded
         // those columns; require the full current prefix it actually owns.
-        const size_t current_length = owner == NativeDfhackChoiceTextOwner::Notification
+        const size_t current_length = scrollbar_clipped
             ? std::min(visible.size(), text.visible.size()) : text.visible.size();
         bool current = true;
         for (size_t at = 0; at < current_length; ++at) {
@@ -97,6 +99,12 @@ static std::optional<std::string> lookup_native_dfhack_notification_text(
         NativeDfhackChoiceTextOwner::Notification);
 }
 
+static std::optional<std::string> lookup_native_dfhack_animal_assignment_text(
+        const graphicst *gps, int x, int y, std::string_view visible) {
+    return lookup_native_dfhack_choice_text(gps, x, y, visible,
+        NativeDfhackChoiceTextOwner::AnimalAssignment);
+}
+
 struct alignas(8) NativeDfhackSitemapContext {
     uintptr_t helper = 0;
     uint32_t active = 0, reserved = 0;
@@ -119,73 +127,113 @@ static bool native_dfhack_sitemap_raw_field(NativeDfhackLuaState *state,
     return true;
 }
 
-static bool native_dfhack_sitemap_list_owner(NativeDfhackLuaState *state,
+static std::optional<NativeDfhackChoiceTextOwner> native_dfhack_filtered_list_owner(NativeDfhackLuaState *state,
         const NativeDfhackLuaDebug &frame) {
     const auto &api = g_native_dfhack_sitemap_lua_api;
     const auto &stack = api.stack;
     const int top = stack.gettop(state);
+    struct RestoreStack {
+        NativeDfhackLuaState *state;
+        int top;
+        void (*settop)(NativeDfhackLuaState *, int);
+        ~RestoreStack() { settop(state, top); }
+    } restore{state, top, stack.settop};
     const char *name = stack.getlocal(state, &frame, 1);
-    if (!name || std::strcmp(name, "self") || stack.type(state, -1) != 5) return false;
+    if (!name || std::strcmp(name, "self") || stack.type(state, -1) != 5) return std::nullopt;
     const int list = stack.gettop(state);
     if (!native_dfhack_sitemap_raw_field(state, list, "on_submit") ||
-            stack.type(state, -1) != 6) return false;
+            stack.type(state, -1) != 6) return std::nullopt;
     NativeDfhackLuaDebug wrapper{};
     if (!stack.getinfo(state, ">Su", &wrapper) || wrapper.isvararg || wrapper.nparams != 0)
-        return false;
+        return std::nullopt;
     const auto wrapper_source = native_dfhack_lua_text(wrapper.source, 32768);
     if (!wrapper_source || native_dfhack_lua_source_key(*wrapper_source) != api.filtered_source)
-        return false;
+        return std::nullopt;
     // FilteredList stores the original submit callback in the wrapper's info
     // upvalue, not in the FilteredList instance. Read that real closure field
     // without invoking the callback or modifying either table.
-    if (!native_dfhack_sitemap_raw_field(state, list, "on_submit")) return false;
+    if (!native_dfhack_sitemap_raw_field(state, list, "on_submit")) return std::nullopt;
     const int function = stack.gettop(state);
-    NativeDfhackLuaDebug producer{};
-    bool producer_found = false;
+    int info = 0;
     for (int upvalue = 1; upvalue <= 8; ++upvalue) {
         const char *upvalue_name = api.getupvalue(state, function, upvalue);
         if (!upvalue_name) break;
         if (!std::strcmp(upvalue_name, "info") && stack.type(state, -1) == 5) {
-            if (native_dfhack_sitemap_raw_field(state, -1, "on_submit") &&
-                    stack.type(state, -1) == 6 && stack.getinfo(state, ">Su", &producer))
-                producer_found = !producer.isvararg && producer.nparams == 2;
+            info = stack.gettop(state);
             break;
         }
         stack.settop(state, function);
     }
-    if (!producer_found) return false;
-    const auto source = native_dfhack_lua_text(producer.source, 32768);
-    if (!source || native_dfhack_lua_source_key(*source) != api.sitemap_source) return false;
-    // The actual on_submit belongs to gui/sitemap.lua, while the inner List's
-    // on_submit is a generic FilteredList wrapper. Require the owning window
-    // and root as well; an unrelated copied callback cannot claim its text.
-    stack.settop(state, list);
+    if (!info || !native_dfhack_sitemap_raw_field(state, info, "on_submit") ||
+            stack.type(state, -1) != 6) return std::nullopt;
+    NativeDfhackChoiceTextOwner owner = NativeDfhackChoiceTextOwner::Sitemap;
+    std::string_view window_title = "Sitemap", focus_path = "sitemap";
+    int bound_window = 0;
+    NativeDfhackLuaDebug producer{};
+    if (!stack.tocfunction(state, -1)) {
+        if (!stack.getinfo(state, ">Su", &producer) || producer.isvararg || producer.nparams != 2)
+            return std::nullopt;
+        const auto source = native_dfhack_lua_text(producer.source, 32768);
+        if (!source || native_dfhack_lua_source_key(*source) != api.sitemap_source)
+            return std::nullopt;
+    } else {
+        // AssignAnimal's callback is dfhack.curry(toggle_item, self), not a
+        // direct Lua closure. Its native curry captures count, function, self
+        // as the first three upvalues. Inspect the original authored method
+        // and retain the bound window to compare with the real parent chain.
+        const int curried = stack.gettop(state);
+        if (!api.getupvalue(state, curried, 1) || !stack.isinteger(state, -1))
+            return std::nullopt;
+        int valid = 0;
+        if (stack.tointegerx(state, -1, &valid) != 2 || !valid) return std::nullopt;
+        stack.settop(state, curried);
+        if (!api.getupvalue(state, curried, 2) || stack.type(state, -1) != 6 ||
+                !stack.getinfo(state, ">Su", &producer) || producer.isvararg ||
+                producer.nparams != 3 || producer.linedefined != 835 ||
+                producer.lastlinedefined != 837) return std::nullopt;
+        const auto source = native_dfhack_lua_text(producer.source, 32768);
+        if (!source || native_dfhack_lua_source_key(*source) != api.zone_source)
+            return std::nullopt;
+        stack.settop(state, curried);
+        if (!api.getupvalue(state, curried, 3) || stack.type(state, -1) != 5)
+            return std::nullopt;
+        bound_window = stack.gettop(state);
+        if (api.getupvalue(state, curried, 4)) return std::nullopt;
+        owner = NativeDfhackChoiceTextOwner::AnimalAssignment;
+        window_title = "Animal and prisoner assignment";
+        focus_path = "zone/assign";
+    }
+    // The inner List's on_submit is a generic FilteredList wrapper. Require
+    // its producer plus owning window/root; a copied callback cannot claim
+    // text in an unrelated List. Animal callbacks must bind that same window.
+    stack.settop(state, bound_window ? bound_window : list);
     if (!native_dfhack_sitemap_raw_field(state, list, "parent_view") ||
-            stack.type(state, -1) != 5) return false;
+            stack.type(state, -1) != 5) return std::nullopt;
     const int filtered = stack.gettop(state);
     bool window = false, screen = false;
     int parent = filtered;
     for (int depth = 0; depth < 8; ++depth) {
-        if (!native_dfhack_sitemap_raw_field(state, parent, "frame_title")) return false;
+        if (!native_dfhack_sitemap_raw_field(state, parent, "frame_title")) return std::nullopt;
         if (stack.type(state, -1) == 4) {
             size_t length = 0;
             const char *value = stack.tolstring(state, -1, &length);
-            window = window || (value && std::string_view(value, length) == "Sitemap");
+            window = window || (value && std::string_view(value, length) == window_title &&
+                (!bound_window || api.rawequal(state, parent, bound_window)));
         }
         stack.settop(state, parent);
-        if (!native_dfhack_sitemap_raw_field(state, parent, "focus_path")) return false;
+        if (!native_dfhack_sitemap_raw_field(state, parent, "focus_path")) return std::nullopt;
         if (stack.type(state, -1) == 4) {
             size_t length = 0;
             const char *value = stack.tolstring(state, -1, &length);
-            screen = value && std::string_view(value, length) == "sitemap";
+            screen = value && std::string_view(value, length) == focus_path;
         }
         stack.settop(state, parent);
-        if (window && screen) { stack.settop(state, top); return true; }
+        if (window && screen) return owner;
         if (!native_dfhack_sitemap_raw_field(state, parent, "parent_view") ||
                 stack.type(state, -1) != 5) break;
         parent = stack.gettop(state);
     }
-    return false;
+    return std::nullopt;
 }
 
 static bool native_dfhack_notification_list_owner(NativeDfhackLuaState *state,
@@ -288,7 +336,10 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
             if (!list_source || native_dfhack_lua_source_key(*list_source) != api.list_source ||
                     list.linedefined != 236 || list.lastlinedefined != 293 ||
                     list.currentline != 277 || list.nparams != 2 || list.isvararg) continue;
-            owned = native_dfhack_sitemap_list_owner(state, list);
+            if (const auto filtered_owner = native_dfhack_filtered_list_owner(state, list)) {
+                owned = true;
+                owner = *filtered_owner;
+            }
             stack.settop(state, top);
             if (!owned) {
                 owned = native_dfhack_notification_list_owner(state, list, notification_name);
@@ -374,6 +425,8 @@ static bool bind_native_dfhack_sitemap_lua(HMODULE module) {
         "?lua_pushstring@@YAPEBDPEAUlua_State@@PEBD@Z"));
     api.rawget = reinterpret_cast<decltype(api.rawget)>(GetProcAddress(lua,
         "?lua_rawget@@YAHPEAUlua_State@@H@Z"));
+    api.rawequal = reinterpret_cast<decltype(api.rawequal)>(GetProcAddress(lua,
+        "?lua_rawequal@@YAHPEAUlua_State@@HH@Z"));
     api.toboolean = reinterpret_cast<decltype(api.toboolean)>(GetProcAddress(lua,
         "?lua_toboolean@@YAHPEAUlua_State@@H@Z"));
     api.getupvalue = reinterpret_cast<decltype(api.getupvalue)>(GetProcAddress(lua,
@@ -381,7 +434,7 @@ static bool bind_native_dfhack_sitemap_lua(HMODULE module) {
     if (!stack.gettop || !stack.settop || !stack.checkstack || !stack.type ||
             !stack.isinteger || !stack.tointegerx || !stack.tolstring || !stack.tocfunction ||
             !stack.getstack || !stack.getinfo || !stack.getlocal || !api.pushstring ||
-            !api.rawget || !api.toboolean || !api.getupvalue) return false;
+            !api.rawget || !api.rawequal || !api.toboolean || !api.getupvalue) return false;
     // Bind the native C function through its immutable 53.16-r2 LuaApi.cpp
     // registration, not the script-replaceable dfhack.screen Lua table.
     const auto *base = reinterpret_cast<const unsigned char *>(module);
@@ -422,6 +475,7 @@ static bool bind_native_dfhack_sitemap_lua(HMODULE module) {
     api.filtered_source = key(hack / L"lua" / L"gui" / L"widgets" / L"filtered_list.lua");
     api.sitemap_source = key(hack / L"scripts" / L"gui" / L"sitemap.lua");
     api.notify_source = key(hack / L"scripts" / L"gui" / L"notify.lua");
+    api.zone_source = key(hack / L"lua" / L"plugins" / L"zone.lua");
     g_native_dfhack_sitemap_lua_api = std::move(api);
     g_native_dfhack_sitemap_lua_bound.store(true, std::memory_order_release);
     return true;
@@ -581,6 +635,8 @@ static void uninstall_native_dfhack_sitemap_hook() {
 static std::optional<std::string> lookup_native_dfhack_sitemap_text(
         const graphicst *, int, int, std::string_view) { return std::nullopt; }
 static std::optional<std::string> lookup_native_dfhack_notification_text(
+        const graphicst *, int, int, std::string_view) { return std::nullopt; }
+static std::optional<std::string> lookup_native_dfhack_animal_assignment_text(
         const graphicst *, int, int, std::string_view) { return std::nullopt; }
 static void clear_native_dfhack_sitemap_text() {}
 static bool native_dfhack_sitemap_hook_active() { return false; }

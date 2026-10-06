@@ -3571,6 +3571,8 @@ private:
         bool typed = false) const;
     std::optional<std::string> translate_unit_identity(std::string_view source,
         bool typed = false) const;
+    std::optional<std::string> translate_dfhack_readable_unit_name(
+        std::string_view source) const;
     std::optional<std::string> translate_racial_hill_type(std::string_view source) const;
     std::optional<std::string> translate_world_site_type(std::string_view source) const;
     std::optional<std::string> translate_skill_name(
