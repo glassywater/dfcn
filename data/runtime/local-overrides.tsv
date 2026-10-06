@@ -11349,3 +11349,6 @@ DFHack GUI Elevation option: A Barony	男爵领	l
 DFHack GUI Elevate barony preferences: no item preferences	无物品偏好	l
 DFHack GUI Elevate barony preferences: {d} preference:	{d1}项物品偏好：	l
 DFHack GUI Elevate barony preferences: {d} preferences:	{d1}项物品偏好：	l
+
+# Complete native creature color modifier; keep the saved-world spelling intact.
+muck-brown	污泥棕色	wi
