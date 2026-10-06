@@ -10719,17 +10719,17 @@ Adventure item action: Go below hatch (no climbing/jumping) ({d} level down)	到
 Adventure item action: Go below hatch (no climbing/jumping) ({d} levels down)	到舱盖下方（不攀爬或跳跃，下方{d}层）	h
 # 884769..8847ac: exactly one bounded quantity prompt, with its native maximum.
 Pick up how many? (0-{d})	拾取多少？（0-{d}）	hPt
+Adventure vermin: A	小生物	l
+
+# DFHack plugins/sort/world.lua: fixed search label beside the shortcut and input.
+Search:	搜索：	w
+
 # DFHack exportlegends.histfigfilter: fixed label between the shortcut and race value.
 Filter by race:	按种族筛选：	wl
 DFHack GUI Legends race filter: Races	种族	l
 DFHack GUI Legends race filter: Choose race filter	选择种族筛选条件	l
 DFHack GUI Legends race filter: All	全部	l
 DFHack GUI Legends race filter: No matches	无匹配项	l
-
-Adventure vermin: A	小生物	l
-
-# DFHack plugins/sort/world.lua: fixed search label beside the shortcut and input.
-Search:	搜索：	w
 
 # DFHack plugins/stocks.lua: action fields, separate from keys and frame brand.
 DFHack stocks hint: collapse all	全部折叠	l

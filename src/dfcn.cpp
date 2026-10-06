@@ -71,6 +71,8 @@ namespace dfcn {
 static std::vector<NativeHistoryDraw> captured_native_history_draws();
 static std::vector<NativeHistoryUnboundDraw> captured_native_history_unbound_draws();
 static uintptr_t native_history_profile_base();
+static std::optional<std::string> native_history_figure_curse_suffix(
+    int32_t id, std::string_view species);
 static bool capture_native_history_age_title(std::string_view base_title,
     NativeHistoryEventData &out, int32_t requested_ordinal = -1,
     bool *matched = nullptr);

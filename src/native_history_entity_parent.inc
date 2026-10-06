@@ -1,8 +1,8 @@
 // Historical affiliations come from dated, typed records, never the current
 // PARENT links. Keep only IDs and dates: no formatter, name capture or tree
 // snapshot is involved in building this index. A recorded civ role is an
-// umbrella polity role, not proof of historical_entity.type=0. The shared
-// parent WORD reader admits only the supported polity types 0, 1 and 4.
+// umbrella polity role, not proof of historical_entity.type=0. Repeating the
+// local ID supplies no external parent and does not end a known affiliation.
 struct NativeHistoryEntityParentPoint {
     int32_t year = -1, seconds = -1, event_id = -1, parent = -1;
     bool after = false, creation = false;
@@ -92,6 +92,9 @@ static bool native_history_update_entity_parent_cache(
     const auto append = [&](int32_t local, int32_t parent,
             const NativeHistoryEntityParentTail &identity, bool after, bool creation) {
         if (local < 0) return;
+        // Ordinary observations can omit the umbrella or repeat the local
+        // ID. Only explicit after-event boundaries may end an affiliation.
+        if (!after && (parent < 0 || parent == local)) return;
         if (identity.year < 0 || identity.seconds < -1) {
             cache.undated.insert(local);
             return;
@@ -143,7 +146,8 @@ static bool native_history_update_entity_parent_cache(
             case 48: // war_site_new_leader
             case 50: // war_site_taken_over
                 parent_coordinate = 0x30; local_coordinate = 0x34; transfer = true; break;
-            case 28: // entity_action: relocation/activity cannot establish a parent
+            // entity_action only records activity or relocation, neither of
+            // which establishes or ends an umbrella relationship.
             case 29: // entity_incorporated: direction alone is not PARENT
                 local_coordinate = 0x28; terminal = true; break;
             default: continue;

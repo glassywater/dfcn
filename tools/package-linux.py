@@ -16,6 +16,7 @@ RUNTIME_FILES = (
     "data/runtime/dfhack-help-translations.tsv", "data/runtime/dfhack-help-overrides.tsv",
     "data/runtime/dfhack-help-command-overrides.tsv", "data/runtime/dfhack-output-core.tsv",
     "data/runtime/dfhack-output-translations.tsv", "data/runtime/dfhack-output-stonesense.tsv",
+    "data/runtime/dfhack-overlay-plugin-controls.tsv", "data/runtime/dfhack-overlay-script-controls.tsv",
     "data/runtime/civilization-name-terms.tsv",
     "data/runtime/site-name-decisions.tsv", "data/runtime/site-name-imagery.tsv",
     "data/runtime/site-government-parent-suffixes.tsv",

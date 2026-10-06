@@ -27,10 +27,16 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         for (const auto &subject : event.subjects) {
             if (subject.kind != NativeHistoryObjectKind::Entity || !subject.name.has_name) continue;
             const auto &name = subject.name;
+            const auto recorded_government = [&](std::string_view key) {
+                const auto found = event.fields.find(key);
+                return found != event.fields.end() && found->second.size() == 1 &&
+                    found->second.front() == subject.id;
+            };
             if ((name.entity_type >= 1 && name.entity_type <= 10 &&
                     (name.entity_name_current || current_entities)) ||
                     (name.entity_type < 0 && current_entities)) dependencies |= 2;
-            else if (name.entity_type < 0 || (name.entity_type == 1 &&
+            else if (name.entity_type < 0 || ((name.entity_type == 1 ||
+                    recorded_government("site_civ") || recorded_government("new_site_civ")) &&
                     (name.parent_word_id.empty() ||
                         (name.parent_word_pos != 0 && name.parent_word_pos != 1)))) dependencies |= 1;
         }
@@ -213,6 +219,29 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             site_reference_sources[first.link_id].push_back(std::move(source));
         index = end;
     }
+    const auto figure_species = [&](const NativeHistorySubject &figure)
+            -> std::optional<std::string> {
+        if (auto known = translate_creature_descriptor(figure.species)) return known;
+        const auto curse = event.texts.find("figure.curse_suffix." + std::to_string(figure.id));
+        const auto label = curse != event.texts.end() && !curse->second.empty()
+            ? std::optional<std::string>(curse->second)
+            : native_history_figure_curse_suffix(figure.id, figure.species);
+        if (!label) return std::nullopt;
+        const std::string suffix = " " + *label;
+        if (!figure.species.ends_with(suffix)) return std::nullopt;
+        // The native formatter joins a RAW caste and a separately stored
+        // interaction title. An unknown title must not invalidate the caste
+        // or turn the author's entire historical event back into English.
+        const auto species = translate_creature_descriptor(std::string_view(
+            figure.species).substr(0, figure.species.size() - suffix.size()));
+        if (!species) return std::nullopt;
+        auto title = translate_creature_descriptor(*label);
+        if (!title) title = translate_english_character_name(*label);
+        if (!title || title->empty())
+            title = contains_cjk_utf8(*label) ? native_text_to_utf8(*label)
+                : transliterate_native_history_name(*label);
+        return *species + "／" + *title;
+    };
     const auto subject = [&](NativeHistoryObjectKind kind, int32_t id, bool include_species = true,
                             int32_t subid = -1, bool prefer_name = true, bool polity_role = false)
             -> std::optional<Pieces> {
@@ -232,7 +261,7 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             // b92f10 uses the typed creature label itself when the historical
             // figure has no language name. Do not render an empty name or
             // attach the same species a second time.
-            name = translate_creature_descriptor(found->species);
+            name = figure_species(*found);
         } else if (kind == NativeHistoryObjectKind::Artifact && found->native_type == 2) {
             // b94400 delegates an unnamed non-book artifact to c65450. Its
             // typed object description is captured at that exact call site.
@@ -352,7 +381,7 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         // species is independently typed and never split out of a sentence.
         Pieces result{piece(*name, color, last)};
         if (include_species && !unnamed_figure && kind == NativeHistoryObjectKind::Figure && !found->species.empty()) {
-            auto species = translate_creature_descriptor(found->species);
+            auto species = figure_species(*found);
             if (!species) {
                 failure_detail = "species-untranslated; id=" + std::to_string(id) + "; raw=" + found->species;
                 return std::nullopt;

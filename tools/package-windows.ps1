@@ -81,7 +81,8 @@ try {
         'data/runtime/phrase-pinyin-data/LICENSE', 'data/runtime/phrase-pinyin-data/SOURCE',
         'data/runtime/dfhack-help-translations.tsv', 'data/runtime/dfhack-help-overrides.tsv',
         'data/runtime/dfhack-help-command-overrides.tsv', 'data/runtime/dfhack-output-core.tsv',
-        'data/runtime/dfhack-output-translations.tsv', 'data/runtime/dfhack-output-stonesense.tsv'
+        'data/runtime/dfhack-output-translations.tsv', 'data/runtime/dfhack-output-stonesense.tsv',
+        'data/runtime/dfhack-overlay-plugin-controls.tsv', 'data/runtime/dfhack-overlay-script-controls.tsv'
     )) {
         Add-RuntimeFile (Join-Path $projectRoot $name) ('dfcn/' + $name)
     }
