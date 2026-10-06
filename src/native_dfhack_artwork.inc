@@ -18,6 +18,12 @@ static std::optional<std::string> lookup_native_dfhack_sitemap_text(
     const graphicst *gps, int x, int y, std::string_view visible);
 static std::optional<std::string> lookup_native_dfhack_notification_text(
     const graphicst *gps, int x, int y, std::string_view visible);
+struct NativeDfhackNotificationText {
+    int x = 0, y = 0;
+    std::string full, visible;
+};
+static std::vector<NativeDfhackNotificationText> native_dfhack_notification_texts(
+    const graphicst *gps);
 static std::optional<std::string> lookup_native_dfhack_animal_assignment_text(
     const graphicst *gps, int x, int y, std::string_view visible);
 static bool install_native_dfhack_messagebox_hook();

@@ -99,6 +99,41 @@ static std::optional<std::string> lookup_native_dfhack_notification_text(
         NativeDfhackChoiceTextOwner::Notification);
 }
 
+static std::vector<NativeDfhackNotificationText> native_dfhack_notification_texts(
+        const graphicst *gps) {
+    std::vector<NativeDfhackNotificationText> result;
+    if (!native_dfhack_logo_grid_valid(gps)) return result;
+    const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+    std::lock_guard<std::mutex> lock(g_native_dfhack_sitemap_text_mutex);
+    if (epoch != g_native_dfhack_sitemap_text_epoch) return result;
+    for (const auto &text : g_native_dfhack_sitemap_text) {
+        if (text.owner != NativeDfhackChoiceTextOwner::Notification ||
+                text.epoch != epoch || text.dimx != gps->dimx || text.dimy != gps->dimy ||
+                text.x < 0 || text.y < 0 || text.y >= gps->dimy || text.visible.empty() ||
+                text.visible.size() > static_cast<size_t>(gps->dimx) ||
+                text.x > gps->dimx - static_cast<int>(text.visible.size()) ||
+                !text.full.starts_with(text.visible)) continue;
+        // The authored NotifyOverlay callbacks and notification ID already
+        // prove the producer. Require every currently visible byte and its
+        // native layer; a missing frame rail need not discard this token.
+        bool current = true;
+        for (size_t at = 0; at < text.visible.size(); ++at) {
+            const size_t tile = static_cast<size_t>(text.x + static_cast<int>(at)) *
+                gps->dimy + text.y;
+            const auto origin = native_text_grid_origin(*gps, tile,
+                native_ui_top_layer_at(*gps, tile));
+            if (!origin.grid || origin.grid != text.grid ||
+                    origin.top_layer != text.top_layer ||
+                    origin.grid[tile * 8] != static_cast<unsigned char>(text.visible[at])) {
+                current = false;
+                break;
+            }
+        }
+        if (current) result.push_back({text.x, text.y, text.full, text.visible});
+    }
+    return result;
+}
+
 static std::optional<std::string> lookup_native_dfhack_animal_assignment_text(
         const graphicst *gps, int x, int y, std::string_view visible) {
     return lookup_native_dfhack_choice_text(gps, x, y, visible,
@@ -636,6 +671,8 @@ static std::optional<std::string> lookup_native_dfhack_sitemap_text(
         const graphicst *, int, int, std::string_view) { return std::nullopt; }
 static std::optional<std::string> lookup_native_dfhack_notification_text(
         const graphicst *, int, int, std::string_view) { return std::nullopt; }
+static std::vector<NativeDfhackNotificationText> native_dfhack_notification_texts(
+        const graphicst *) { return {}; }
 static std::optional<std::string> lookup_native_dfhack_animal_assignment_text(
         const graphicst *, int, int, std::string_view) { return std::nullopt; }
 static void clear_native_dfhack_sitemap_text() {}

@@ -306,10 +306,10 @@ std::vector<Match> dfhack_auxiliary_matches;
         append_bounded_paragraph(std::move(rows), prompt.target, screen_rows,
             dfhack_auxiliary_matches, only_y, right, right, {}, false, left);
     };
+#include "dfhack_notification_banners.inc"
     for (const auto &window : native_dfhack_window_geometry(dfhack_context_rows)) {
         const auto *frame = &window.frame;
 #include "dfhack_civ_alert.inc"
-#include "dfhack_notification_banners.inc"
         // Toolbar overlays use a titleless six-row Panel: two prose rows,
         // a blank separator and an independent Hotkey Label. Resolve the
         // whole hint before the larger dialog reader's height gate.
