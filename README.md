@@ -20,11 +20,23 @@ DFCN 是 **Byayoi 同人社区**的《Dwarf Fortress（矮人要塞）》汉化�
 
 如果位于不同 Steam 库，将第一行改为该 DLL 的实际绝对路径；只写路径，不加引号或 `key=value`，保存为 UTF-8 无 BOM。汉化设置 `config.ini` 留在订阅目录的 `DFCN/dfcn/data/runtime/` 中。完整路径示例、旧版迁移与卸载方法见 [工坊详细说明](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)。
 
-**GitHub Release：**从 [v53.16-20261007.2](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261007.2) 下载 `DFCN-Windows-x64-minimal.zip`，解压后将全部内容按原有目录结构复制到游戏根目录，包括 `dfhooks.dll`、`dfhooks_dfcn.ini` 和整个 `dfcn` 文件夹。此方式的汉化设置位于游戏目录的 `dfcn/data/runtime/config.ini`。
+**GitHub Release：**从 [v53.16-20261008](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008) 下载 `DFCN-Windows-x64-minimal.zip`，解压后将全部内容按原有目录结构复制到游戏根目录，包括 `dfhooks.dll`、`dfhooks_dfcn.ini` 和整个 `dfcn` 文件夹。此方式的汉化设置位于游戏目录的 `dfcn/data/runtime/config.ini`。
 
 汉化核心、配置与翻译数据按汉化模块所在目录定位，因此支持将运行文件保留在工坊目录。游戏中按 **Shift+F10** 开启或关闭汉化。安装仅添加汉化自身文件，不改写磁盘上的游戏本体、RAW 或存档；取消订阅不会删除已复制的入口文件，卸载时需手动移除自己安装的汉化文件。
 
 Windows 同时安装 **DFHack 53.16-r2** 时，可按 **Shift+F11** 关闭 DFHack，再按一次恢复。开关独立于汉化：关闭时暂停插件更新、界面 hook、热键、命令与 Lua 定时回调，保留驻留核心、插件配置、存档数据和世界卸载清理。已打开的 DFHack 界面会关闭；已执行的游戏或存档修改不会回滚。
+
+## Mod 汉化数据扩展
+
+支持扩展加载的 DFCN 核心会自动发现已下载的创意工坊汉化数据 mod，以及游戏 `mods`、`data/installed_mods` 中的本地数据包。纯翻译数据无需加入新建世界的 RAW 加载顺序。扩展的词表和递归规则独立载入，安装、更新或移除时由原有资源更新流程自动处理。
+
+[矮人宝可梦汉化数据](https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177)独立提供 **Dwarvemon 2.22** 和 **Dwarvemon Entity All 2.22** 的全部专用中文翻译。本体提供通用扩展加载能力，宝可梦专用译文保存在独立包中。工坊订阅后自动识别，无需手工复制数据。
+
+从 [GitHub Release](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008) 下载 `dfcn_dwarvemon_zh_hans.zip` 时，将压缩包中的整个 `dfcn_dwarvemon_zh_hans` 文件夹解压至游戏 `mods` 目录。无需在创建世界的模组列表中启用汉化数据包；原始 Dwarvemon 模组按其作者说明使用。安装、更新或移除数据包后，核心自动识别相应变化。没有完整译文的 mod 名称、简介和工坊名称保留原文；用户自定义小队名称始终保持原样。
+
+数据包目录为 `workshop/dwarvemon-zh-hans/content`，发布说明与维护来源保存在其外层目录。
+
+制作其他 mod 的汉化扩展时，使用同一数据声明格式即可，无需向核心添加 mod 名称或专属词条。参见 [汉化数据扩展格式](docs/translation-extensions.zh-CN.md)。
 
 ## 技术栈
 

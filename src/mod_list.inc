@@ -158,9 +158,9 @@ static std::optional<NativeModListLayout> native_mod_list_layout(
     return std::nullopt;
 }
 
-// The hover record owns its entire column. Only a native vanilla header can
-// select the official description catalog; all authored names and third-party
-// prose retain their original glyphs, wrapping and spacing.
+// The hover record owns its entire column. Package names and third-party
+// descriptions use complete, explicitly authored catalog entries; unknown
+// packages retain their original glyphs, wrapping and spacing.
 void Overlay::append_mod_list_details(const NativeModListLayout &layout,
         std::vector<std::string> &rows, std::vector<Match> &matches) const {
     const int left = layout.details_left, right = layout.details_right;
@@ -175,6 +175,42 @@ void Overlay::append_mod_list_details(const NativeModListLayout &layout,
     const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
     const int origin_x = (gps_->screen_pixel_x - gps_->dimx * tile_w) / 2;
     const int origin_y = (gps_->screen_pixel_y - gps_->dimy * tile_h) / 2;
+    // The caller reserves name columns before generic readers run. Read the
+    // current native cells so a complete catalog entry can still own its
+    // name/version field without allowing partial word replacements.
+    const auto append_name = [&](int first, int last, int y) {
+        if (first < 0 || last > gps_->dimx || first >= last ||
+                y < 0 || y >= gps_->dimy) return;
+        std::string native;
+        native.reserve(static_cast<size_t>(last - first));
+        for (int x = first; x < last; ++x) {
+            bool top = false;
+            const auto *cell = cell_at(x, y, &top);
+            native.push_back(cell && cell[0] ? static_cast<char>(cell[0]) : ' ');
+        }
+        for (const auto &field : split_text_fields(native)) {
+            auto target = exact_literal_translation(
+                "Mod name: " + field.text);
+            if (!target) target = exact_literal_translation(field.text);
+            if (!target) continue;
+            Match name{first + field.start, y, field.end - field.start,
+                kUiMessageRule, *target, field.text};
+            name.layout_x = name.x;
+            name.layout_length = last - name.x;
+            name.layout_clip_right = last;
+            name.layout_left = true;
+            name.layout_font_pixels = unified_font_pixels();
+            name.layout_line_height_pixels = tile_h;
+            name.layout_lock_font_pixels = true;
+            name.layout_native_clip = SDL_Rect{origin_x + first * tile_w,
+                origin_y + y * tile_h, (last - first) * tile_w, tile_h};
+            matches.push_back(std::move(name));
+        }
+    };
+    for (const SDL_Rect &column : layout.name_columns)
+        for (int y = column.y; y < column.y + column.h; ++y)
+            append_name(column.x, column.x + column.w, y);
+    append_name(left, right, 2);
     const auto field = [&](int y) -> std::optional<Match> {
         if (y < 2 || y >= layout.bottom) return std::nullopt;
         const auto band = std::string_view(context[y]).substr(left, layout.frame_right - left);
@@ -223,10 +259,12 @@ void Overlay::append_mod_list_details(const NativeModListLayout &layout,
         break;
     }
     const auto &details = layout.details;
-    if (description_y >= 0 && details.header && details.header->vanilla &&
+    if (description_y >= 0 && details.header &&
             !details.header->description.empty() && !details.description_rows.empty()) {
-        const auto target = exact_literal_translation(
-            "Vanilla mod description: " + details.header->description);
+        auto target = exact_literal_translation(
+            (details.header->vanilla ? "Vanilla mod description: " : "Mod description: ") +
+            details.header->description);
+        if (!target) target = exact_literal_translation(details.header->description);
         std::vector<Match> description;
         bool same = target.has_value();
         for (size_t line = 0; same && line < details.description_rows.size(); ++line) {

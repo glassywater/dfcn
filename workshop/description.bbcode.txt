@@ -4,9 +4,9 @@ DFCN 是 Byayoi 同人社区的《Dwarf Fortress（矮人要塞）》汉化作�
 
 [b]当前适配游戏版本：53.16。本工坊项目提供 Windows x64 运行文件，支持 Steam 版与官网免费版。[/b]项目同时提供 Linux 原生适配，相关说明见 GitHub。
 
-[b]当前汉化版本：53.16-20261007.2（2026-10-07 第二版）。[/b] 更新日志见改动说明及订阅目录中的 CHANGELOG.txt。
+[b]当前汉化版本：53.16-20261008（2026-10-08）。[/b] 更新日志见改动说明及订阅目录中的 CHANGELOG.txt。
 
-本次完善传说名称与艺术品历史、公告及字段翻译，补齐 DFHack 建造规划器、物品选择与工单提示，修复 ASCII 中文名称、存档列表和访客概述排版，并优化库存与贸易界面的汉化性能。
+本次增加通用汉化数据扩展加载，将 Dwarvemon 与 Entity All 2.22 的专用译文拆为独立工坊数据包。扩展订阅后由核心自动识别；已有完整译文的模组内容正常翻译，用户自定义小队名称保持原样。
 
 [url=https://github.com/pokemonchw/dfcn]GitHub 项目主页[/url]
 [url=https://github.com/pokemonchw/dfcn/releases]GitHub Releases[/url]
@@ -17,14 +17,14 @@ DFCN 是 Byayoi 同人社区的《Dwarf Fortress（矮人要塞）》汉化作�
 [b]运行文件已解压，统一放在订阅目录的 DFCN 文件夹中。仅订阅不会自动启用汉化；安装时只需复制两个加载入口文件。[/b]
 
 [olist]
-[*]订阅本项目，等待 Steam 下载完成，打开：[code]你的 Steam 库目录\steamapps\workshop\content\975370\__WORKSHOP_ID__\DFCN\[/code]
+[*]订阅本项目，等待 Steam 下载完成，打开：[code]你的 Steam 库目录\steamapps\workshop\content\975370\3811193379\DFCN\[/code]
 [*]将其中的 [b]dfhooks.dll[/b] 和 [b]dfhooks_dfcn.ini[/b] 复制到游戏根目录，也就是包含 [b]Dwarf Fortress.exe[/b] 的目录：[code]你的 Steam 库目录\steamapps\common\Dwarf Fortress\[/code]
 [*]打开刚复制到游戏目录中的 [b]dfhooks_dfcn.ini[/b]，第一行填写订阅目录中 [b]dfhooks_dfcn.dll[/b] 的实际路径，格式见下方。其余运行文件留在订阅目录中。
 [/olist]
 
 [b]加载路径如何填写[/b]
 
-游戏与订阅内容位于同一 Steam 库时，配置已预填以下相对路径，可以直接使用：[code]../../workshop/content/975370/__WORKSHOP_ID__/DFCN/dfcn/dfhooks_dfcn.dll[/code]
+游戏与订阅内容位于同一 Steam 库时，配置已预填以下相对路径，可以直接使用：[code]../../workshop/content/975370/3811193379/DFCN/dfcn/dfhooks_dfcn.dll[/code]
 
 例如 Steam 库为 [b]D:\SteamLibrary[/b]，则游戏程序与汉化加载器的完整路径分别为：[code]D:/SteamLibrary/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
 D:/SteamLibrary/steamapps/workshop/content/975370/3811193379/DFCN/dfcn/dfhooks_dfcn.dll[/code]
@@ -36,12 +36,20 @@ D:/SteamLibrary/steamapps/workshop/content/975370/3811193379/DFCN/dfcn/dfhooks_d
 
 路径末尾包含 [b]dfhooks_dfcn.dll[/b] 文件名。它会自动加载同目录的 [b]dfcn_core.dll[/b]，并读取该目录中的 [b]data/runtime[/b] 词表、规则与汉化设置。请保留订阅目录内的完整文件结构。
 
-[b]两个配置文件的用途不同：[/b]游戏根目录中的 [b]dfhooks_dfcn.ini[/b] 用于指定加载器路径；汉化设置 [b]config.ini[/b] 留在：[code]你的 Steam 库目录\steamapps\workshop\content\975370\__WORKSHOP_ID__\DFCN\dfcn\data\runtime\config.ini[/code]
+[b]两个配置文件的用途不同：[/b]游戏根目录中的 [b]dfhooks_dfcn.ini[/b] 用于指定加载器路径；汉化设置 [b]config.ini[/b] 留在：[code]你的 Steam 库目录\steamapps\workshop\content\975370\3811193379\DFCN\dfcn\data\runtime\config.ini[/code]
 汉化核心与翻译数据会从订阅目录读取，无需复制整个 [b]DFCN[/b] 或 [b]dfcn[/b] 文件夹到游戏目录，也无需编译或在创建世界时启用本项目。
 
 后续工坊更新会由 Steam 下载到订阅目录；只要实际目录不变，游戏中的入口配置就继续指向该目录。
 
 [b]从旧版整包复制方式升级：[/b]移除游戏根目录中旧版汉化的 [b]dfhooks_dfcn.dll[/b]（若存在），避免加载两份汉化。旧的 [b]dfcn[/b] 文件夹已不再使用，可在保留需要的个人配置或资料后移除。
+
+[h1]独立汉化数据扩展[/h1]
+
+安装本体后，核心会自动识别已订阅的汉化数据扩展，将扩展词条与规则用于对应内容。[b]汉化数据包无需在创建世界的模组列表中启用。[/b]原始玩法模组仍按其作者说明使用。
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177]矮人宝可梦汉化数据[/url]支持 [b]Dwarvemon 2.22[/b] 与 [b]Dwarvemon Entity All 2.22[/b]，覆盖名称与形态、描述、偏好、道具、植物、材料、身体部位、工坊与配方、招式、特性、进化提示、战斗公告和历史事件。宝可梦专名优先采用官方简体中文译名；原创内容完整翻译，部分旧树果参考百科暂译。
+
+宝可梦专用译文由独立数据包提供，本体不内置这些词条。模组名称和内容使用通用译文匹配，已有完整译文即可正常翻译；用户自定义小队名称保持原样。数据扩展不修改原模组 RAW 或世界规则。
 
 [h1]开启、关闭与卸载[/h1]
 

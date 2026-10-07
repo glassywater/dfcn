@@ -26,6 +26,8 @@ __pycache__/
 /DFCN-Linux-x64-minimal.zip
 /workshop/content/*.zip
 /workshop/content/DFCN/
+/workshop/*/*.zip
+/workshop/upload-*/
 
 # Local credentials and editor files
 .env

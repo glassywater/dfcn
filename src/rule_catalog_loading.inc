@@ -1,296 +1,325 @@
 bool Overlay::load_rules() {
     TranslationStateScope translation_scope;
-    std::ifstream in(fs::u8path(config_.mapping_path), std::ios::binary);
-    if (!in) {
-        log_line("ERROR", "Cannot open mapping file; retaining previous translations: " + config_.mapping_path);
-        return false;
-    }
+    auto extension_snapshot = extensions::discover();
+    for (const auto& diagnostic : extension_snapshot.diagnostics)
+        log_line("WARN", diagnostic);
     std::vector<Rule> loaded;
-    std::string line;
-    size_t line_no = 0;
-    while (std::getline(in, line)) {
-        ++line_no;
-        if (!line.empty() && line.back() == '\r') line.pop_back();
-        if (line_no == 1 && line.size() >= 3 &&
-            static_cast<unsigned char>(line[0]) == 0xef &&
-            static_cast<unsigned char>(line[1]) == 0xbb &&
-            static_cast<unsigned char>(line[2]) == 0xbf) {
-            line.erase(0, 3);
+    const auto read_mapping = [&](const fs::path& mapping_path,
+                                  std::vector<Rule>& destination) -> bool {
+        const auto mapping_name = runtime::utf8(mapping_path);
+        std::ifstream in(mapping_path, std::ios::binary);
+        if (!in) {
+            log_line("ERROR", "Cannot open mapping file; retaining previous translations: " + mapping_name);
+            return false;
         }
-        if (line.empty() || line[0] == '#') continue;
-        const size_t tab = line.find('\t');
-        if (tab == std::string::npos) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                                 " needs source<TAB>translation; ignored");
-            continue;
-        }
-        const size_t flags_tab = line.find('\t', tab + 1);
-        bool source_ok = false;
-        bool target_ok = false;
-        std::string source = unescape_tsv(std::string_view(line).substr(0, tab), &source_ok);
-        const size_t target_length = flags_tab == std::string::npos
-                                         ? std::string::npos
-                                         : flags_tab - tab - 1;
-        std::string target = unescape_tsv(
-            std::string_view(line).substr(tab + 1, target_length), &target_ok);
-        const std::string flags = flags_tab == std::string::npos
-                                      ? std::string{}
-                                      : trim(line.substr(flags_tab + 1));
-        if (!source_ok || !target_ok || source.empty()) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                                 " has an invalid escape or empty source; ignored");
-            continue;
-        }
-        std::vector<uint32_t> cps;
-        if (trim(target).empty()) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                " empty translation would delete source text; ignored");
-            continue;
-        }
-        if (!decode_utf8(target, cps) || target.find('\n') != std::string::npos ||
-            target.find('\r') != std::string::npos) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                                 " translation is not single-line UTF-8; ignored");
-            continue;
-        }
-        Rule rule;
-        rule.source = std::move(source);
-        rule.target = std::move(target);
-        rule.line = line_no;
-        rule.word_boundary = flags.find('w') != std::string::npos;
-        rule.word_follows = flags.find('p') != std::string::npos;
-        rule.case_insensitive = flags.find('i') != std::string::npos;
-        rule.left_align = flags.find('l') != std::string::npos;
-        rule.operation_title = flags.find('o') != std::string::npos;
-        rule.strict_captures = flags.find('x') != std::string::npos;
-        rule.adventure_prose = flags.find('a') != std::string::npos;
-        rule.legends_prose = flags.find('h') != std::string::npos;
-        rule.legends_book_title = flags.find('b') != std::string::npos;
-        rule.legends_event_title = flags.find('E') != std::string::npos;
-        rule.legends_participant_relation = flags.find('u') != std::string::npos;
-        rule.legends_identity = flags.find('N') != std::string::npos;
-        rule.legends_description_term = flags.find('v') != std::string::npos;
-        rule.legends_continuation = flags.find('C') != std::string::npos;
-        rule.item_description_sentence = flags.find('H') != std::string::npos;
-        rule.item_description_term = flags.find('I') != std::string::npos;
-        rule.item_description_predicate = flags.find('J') != std::string::npos;
-        rule.magical_material_noun = flags.find('m') != std::string::npos;
-        rule.magical_material_qualifier = flags.find('M') != std::string::npos;
-        rule.deity_sphere = flags.find('r') != std::string::npos;
-        rule.help_prose = flags.find('q') != std::string::npos;
-        rule.help_objective = rule.help_prose && flags.find('O') != std::string::npos;
-        rule.tooltip_prose = flags.find('j') != std::string::npos;
-        rule.ui_message = flags.find('P') != std::string::npos;
-        if ((rule.help_prose || rule.ui_message) && rule.target.find("[C:") != std::string::npos) {
-            std::string plain;
-            int palette = -1;
-            bool valid = true;
-            for (size_t at = 0; at < rule.target.size();) {
-                if (rule.target.compare(at, 3, "[C:") == 0) {
-                    const auto tag = std::string_view(rule.target).substr(at, 9);
-                    if (tag.size() != 9 || tag[3] < '0' || tag[3] > '7' ||
-                        tag[4] != ':' || tag[5] < '0' || tag[5] > '7' ||
-                        tag[6] != ':' || (tag[7] != '0' && tag[7] != '1') ||
-                        tag[8] != ']') {
-                        valid = false;
-                        break;
+        std::string line;
+        size_t line_no = 0;
+        while (std::getline(in, line)) {
+            ++line_no;
+            if (!line.empty() && line.back() == '\r') line.pop_back();
+            if (line_no == 1 && line.size() >= 3 &&
+                static_cast<unsigned char>(line[0]) == 0xef &&
+                static_cast<unsigned char>(line[1]) == 0xbb &&
+                static_cast<unsigned char>(line[2]) == 0xbf) {
+                line.erase(0, 3);
+            }
+            if (line.empty() || line[0] == '#') continue;
+            const size_t tab = line.find('\t');
+            if (tab == std::string::npos) {
+                log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                                     " needs source<TAB>translation; ignored");
+                continue;
+            }
+            const size_t flags_tab = line.find('\t', tab + 1);
+            bool source_ok = false;
+            bool target_ok = false;
+            std::string source = unescape_tsv(std::string_view(line).substr(0, tab), &source_ok);
+            const size_t target_length = flags_tab == std::string::npos
+                                             ? std::string::npos
+                                             : flags_tab - tab - 1;
+            std::string target = unescape_tsv(
+                std::string_view(line).substr(tab + 1, target_length), &target_ok);
+            const std::string flags = flags_tab == std::string::npos
+                                          ? std::string{}
+                                          : trim(line.substr(flags_tab + 1));
+            if (!source_ok || !target_ok || source.empty()) {
+                log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                                     " has an invalid escape or empty source; ignored");
+                continue;
+            }
+            std::vector<uint32_t> cps;
+            if (trim(target).empty()) {
+                log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                    " empty translation would delete source text; ignored");
+                continue;
+            }
+            if (!decode_utf8(target, cps) || target.find('\n') != std::string::npos ||
+                target.find('\r') != std::string::npos) {
+                log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                                     " translation is not single-line UTF-8; ignored");
+                continue;
+            }
+            Rule rule;
+            rule.source = std::move(source);
+            rule.target = std::move(target);
+            rule.line = line_no;
+            rule.word_boundary = flags.find('w') != std::string::npos;
+            rule.word_follows = flags.find('p') != std::string::npos;
+            rule.case_insensitive = flags.find('i') != std::string::npos;
+            rule.left_align = flags.find('l') != std::string::npos;
+            rule.operation_title = flags.find('o') != std::string::npos;
+            rule.strict_captures = flags.find('x') != std::string::npos;
+            rule.adventure_prose = flags.find('a') != std::string::npos;
+            rule.legends_prose = flags.find('h') != std::string::npos;
+            rule.legends_book_title = flags.find('b') != std::string::npos;
+            rule.legends_event_title = flags.find('E') != std::string::npos;
+            rule.legends_participant_relation = flags.find('u') != std::string::npos;
+            rule.legends_identity = flags.find('N') != std::string::npos;
+            rule.legends_description_term = flags.find('v') != std::string::npos;
+            rule.legends_continuation = flags.find('C') != std::string::npos;
+            rule.item_description_sentence = flags.find('H') != std::string::npos;
+            rule.item_description_term = flags.find('I') != std::string::npos;
+            rule.item_description_predicate = flags.find('J') != std::string::npos;
+            rule.magical_material_noun = flags.find('m') != std::string::npos;
+            rule.magical_material_qualifier = flags.find('M') != std::string::npos;
+            rule.deity_sphere = flags.find('r') != std::string::npos;
+            rule.help_prose = flags.find('q') != std::string::npos;
+            rule.help_objective = rule.help_prose && flags.find('O') != std::string::npos;
+            rule.tooltip_prose = flags.find('j') != std::string::npos;
+            rule.ui_message = flags.find('P') != std::string::npos;
+            if ((rule.help_prose || rule.ui_message) && rule.target.find("[C:") != std::string::npos) {
+                std::string plain;
+                int palette = -1;
+                bool valid = true;
+                for (size_t at = 0; at < rule.target.size();) {
+                    if (rule.target.compare(at, 3, "[C:") == 0) {
+                        const auto tag = std::string_view(rule.target).substr(at, 9);
+                        if (tag.size() != 9 || tag[3] < '0' || tag[3] > '7' ||
+                            tag[4] != ':' || tag[5] < '0' || tag[5] > '7' ||
+                            tag[6] != ':' || (tag[7] != '0' && tag[7] != '1') ||
+                            tag[8] != ']') {
+                            valid = false;
+                            break;
+                        }
+                        palette = tag[3] - '0' + (tag[7] - '0') * 8;
+                        at += tag.size();
+                        continue;
                     }
-                    palette = tag[3] - '0' + (tag[7] - '0') * 8;
-                    at += tag.size();
+                    const unsigned char ch = rule.target[at++];
+                    plain.push_back(static_cast<char>(ch));
+                    if ((ch & 0xc0) != 0x80) rule.help_target_palettes.push_back(palette);
+                }
+                if (!valid || plain.empty()) {
+                    log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                        " has an invalid help color tag or empty text; ignored");
                     continue;
                 }
-                const unsigned char ch = rule.target[at++];
-                plain.push_back(static_cast<char>(ch));
-                if ((ch & 0xc0) != 0x80) rule.help_target_palettes.push_back(palette);
+                rule.target = std::move(plain);
             }
-            if (!valid || plain.empty()) {
-                log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                    " has an invalid help color tag or empty text; ignored");
-                continue;
-            }
-            rule.target = std::move(plain);
-        }
-        for (char flag : flags) {
-            if (flag != 'w' && flag != 'p' && flag != 't' && flag != 'i' && flag != 'l' && flag != 'o' && flag != 'x' && flag != 'a' && flag != 'h' && flag != 'b' && flag != 'E' && flag != 'u' && flag != 'N' && flag != 'v' && flag != 'C' && flag != 'r' && flag != 'm' && flag != 'M' && flag != 'q' && flag != 'O' && flag != 'j' && flag != 'H' && flag != 'I' && flag != 'J' && flag != 'P' && flag != ',' &&
-                !std::isspace(static_cast<unsigned char>(flag))) {
-                log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                                     " has unknown rule flag '" + std::string(1, flag) + "'");
-            }
-        }
-        if (flags.find('t') != std::string::npos) {
-            split_template(rule.source, &rule.template_literals, &rule.template_kinds,
-                rule.adventure_prose || rule.legends_prose, rule.legends_prose);
-            std::vector<std::string> target_literals;
-            std::vector<char> target_kinds;
-            split_template(rule.target, &target_literals, &target_kinds,
-                rule.adventure_prose || rule.legends_prose, rule.legends_prose);
-            rule.numeric_template = std::find(rule.template_kinds.begin(), rule.template_kinds.end(), 'd') !=
-                                    rule.template_kinds.end();
-            rule.string_template = std::any_of(rule.template_kinds.begin(), rule.template_kinds.end(),
-                [](char kind) { return kind != 'd'; });
-            bool compatible = rule.template_kinds == target_kinds;
-            // Keep ordinary templates on their existing path. Extended
-            // numeric targets share Legends' checked capture-order compiler.
-            bool extended_numbers = false;
-            for (size_t at = rule.target.find("{d"); at != std::string::npos;
-                    at = rule.target.find("{d", at + 2)) {
-                if (at + 2 < rule.target.size() &&
-                    rule.target[at + 2] >= '0' && rule.target[at + 2] <= '9')
-                    extended_numbers = true;
-            }
-            if (rule.legends_prose || extended_numbers)
-                compatible = compile_template_target(rule);
-            else if (compatible) {
-                // Ordinary templates already require the same field order.
-                // Preserve that parsed target for typed semantic callers too,
-                // including the shared b. {d}/d. {d} date templates.
-                rule.target_template_literals = std::move(target_literals);
-                for (size_t index = 0; index < rule.template_kinds.size(); ++index)
-                    rule.target_capture_order.push_back(index);
-            }
-            if (rule.legends_prose) {
-                // Most event templates start with a participant, not a
-                // literal. Reject absent predicates before typed backtracking.
-                for (const auto &literal : rule.template_literals)
-                    if (literal.size() > rule.legends_match_anchor.size())
-                        rule.legends_match_anchor = literal;
-            }
-            if (rule.template_kinds.empty() || !compatible) {
-                log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                                     " has mismatched template placeholders; ignored");
-                continue;
-            }
-            if (std::find(rule.template_kinds.begin(), rule.template_kinds.end(), 'u') !=
-                    rule.template_kinds.end() &&
-                !rule.item_description_sentence && !rule.item_description_term &&
-                !rule.item_description_predicate && !rule.ui_message) {
-                log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                    " unit-label slots require the item description grammar; ignored");
-                continue;
-            }
-            if (!rule.item_description_term &&
-                std::find(rule.template_kinds.begin(), rule.template_kinds.end(), 'l') !=
-                    rule.template_kinds.end()) {
-                log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                    " liquid-ingredient slots require the item noun grammar; ignored");
-                continue;
-            }
-            if (std::find(rule.template_kinds.begin(), rule.template_kinds.end(), 'j') !=
-                    rule.template_kinds.end() &&
-                !rule.item_description_sentence && !rule.item_description_term &&
-                !rule.item_description_predicate) {
-                log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                    " dye-material slots require the item description grammar; ignored");
-                continue;
-            }
-            if (std::find(rule.template_kinds.begin(), rule.template_kinds.end(), 'o') !=
-                    rule.template_kinds.end() && !rule.item_description_sentence) {
-                log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                    " craftsmanship slots require the item sentence grammar; ignored");
-                continue;
-            }
-            if (rule.ui_message) {
-                const auto has_literal = [](const std::string &literal) {
-                    return std::any_of(literal.begin(), literal.end(),
-                        [](unsigned char ch) { return !std::isspace(ch); });
-                };
-                bool scoped = std::any_of(rule.template_literals.begin(),
-                    rule.template_literals.end(), has_literal) &&
-                    std::all_of(rule.template_kinds.begin(), rule.template_kinds.end(),
-                        [](char kind) { return std::string_view("ksncdpertbqmviuf").find(kind) != std::string_view::npos; });
-                for (size_t i = 1; i < rule.template_kinds.size(); ++i) {
-                    if (!has_literal(rule.template_literals[i])) scoped = false;
+            for (char flag : flags) {
+                if (flag != 'w' && flag != 'p' && flag != 't' && flag != 'i' && flag != 'l' && flag != 'o' && flag != 'x' && flag != 'a' && flag != 'h' && flag != 'b' && flag != 'E' && flag != 'u' && flag != 'N' && flag != 'v' && flag != 'C' && flag != 'r' && flag != 'm' && flag != 'M' && flag != 'q' && flag != 'O' && flag != 'j' && flag != 'H' && flag != 'I' && flag != 'J' && flag != 'P' && flag != ',' &&
+                    !std::isspace(static_cast<unsigned char>(flag))) {
+                    log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                                         " has unknown rule flag '" + std::string(1, flag) + "'");
                 }
-                if (!scoped) {
-                    log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                        " UI captures require supported types and fixed literal boundaries; ignored");
+            }
+            if (flags.find('t') != std::string::npos) {
+                split_template(rule.source, &rule.template_literals, &rule.template_kinds,
+                    rule.adventure_prose || rule.legends_prose, rule.legends_prose);
+                std::vector<std::string> target_literals;
+                std::vector<char> target_kinds;
+                split_template(rule.target, &target_literals, &target_kinds,
+                    rule.adventure_prose || rule.legends_prose, rule.legends_prose);
+                rule.numeric_template = std::find(rule.template_kinds.begin(), rule.template_kinds.end(), 'd') !=
+                                        rule.template_kinds.end();
+                rule.string_template = std::any_of(rule.template_kinds.begin(), rule.template_kinds.end(),
+                    [](char kind) { return kind != 'd'; });
+                bool compatible = rule.template_kinds == target_kinds;
+                // Keep ordinary templates on their existing path. Extended
+                // numeric targets share Legends' checked capture-order compiler.
+                bool extended_numbers = false;
+                for (size_t at = rule.target.find("{d"); at != std::string::npos;
+                        at = rule.target.find("{d", at + 2)) {
+                    if (at + 2 < rule.target.size() &&
+                        rule.target[at + 2] >= '0' && rule.target[at + 2] <= '9')
+                        extended_numbers = true;
+                }
+                if (rule.legends_prose || extended_numbers)
+                    compatible = compile_template_target(rule);
+                else if (compatible) {
+                    // Ordinary templates already require the same field order.
+                    // Preserve that parsed target for typed semantic callers too,
+                    // including the shared b. {d}/d. {d} date templates.
+                    rule.target_template_literals = std::move(target_literals);
+                    for (size_t index = 0; index < rule.template_kinds.size(); ++index)
+                        rule.target_capture_order.push_back(index);
+                }
+                if (rule.legends_prose) {
+                    // Most event templates start with a participant, not a
+                    // literal. Reject absent predicates before typed backtracking.
+                    for (const auto &literal : rule.template_literals)
+                        if (literal.size() > rule.legends_match_anchor.size())
+                            rule.legends_match_anchor = literal;
+                }
+                if (rule.template_kinds.empty() || !compatible) {
+                    log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                                         " has mismatched template placeholders; ignored");
                     continue;
                 }
-            }
-            if (std::find(rule.template_kinds.begin(), rule.template_kinds.end(), 'k') !=
-                    rule.template_kinds.end()) {
-                const auto has_literal = [](const std::string &literal) {
-                    return std::any_of(literal.begin(), literal.end(),
-                        [](unsigned char ch) { return !std::isspace(ch); });
-                };
-                // In the item noun grammar {k} is a printed language WORD
-                // on a die, bounded by native quotes. It is resolved from
-                // the shared procedural vocabulary, never as a key binding.
-                bool quoted_item_word = rule.item_description_term;
-                for (size_t i = 0; quoted_item_word && i < rule.template_kinds.size(); ++i)
-                    if (rule.template_kinds[i] == 'k' &&
-                        (!rule.template_literals[i].ends_with("\"") ||
-                         !rule.template_literals[i + 1].starts_with("\"")))
-                        quoted_item_word = false;
-                bool scoped = quoted_item_word || ((rule.help_prose || rule.ui_message) &&
-                    has_literal(rule.template_literals.front()));
-                for (size_t i = 1; i < rule.template_kinds.size(); ++i)
-                    if (!has_literal(rule.template_literals[i])) scoped = false;
-                if (!scoped) {
-                    log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                        " word/key slots require quoted item words or complete help/UI messages and fixed literal boundaries; ignored");
+                if (std::find(rule.template_kinds.begin(), rule.template_kinds.end(), 'u') !=
+                        rule.template_kinds.end() &&
+                    !rule.item_description_sentence && !rule.item_description_term &&
+                    !rule.item_description_predicate && !rule.ui_message) {
+                    log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                        " unit-label slots require the item description grammar; ignored");
                     continue;
                 }
+                if (!rule.item_description_term &&
+                    std::find(rule.template_kinds.begin(), rule.template_kinds.end(), 'l') !=
+                        rule.template_kinds.end()) {
+                    log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                        " liquid-ingredient slots require the item noun grammar; ignored");
+                    continue;
+                }
+                if (std::find(rule.template_kinds.begin(), rule.template_kinds.end(), 'j') !=
+                        rule.template_kinds.end() &&
+                    !rule.item_description_sentence && !rule.item_description_term &&
+                    !rule.item_description_predicate) {
+                    log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                        " dye-material slots require the item description grammar; ignored");
+                    continue;
+                }
+                if (std::find(rule.template_kinds.begin(), rule.template_kinds.end(), 'o') !=
+                        rule.template_kinds.end() && !rule.item_description_sentence) {
+                    log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                        " craftsmanship slots require the item sentence grammar; ignored");
+                    continue;
+                }
+                if (rule.ui_message) {
+                    const auto has_literal = [](const std::string &literal) {
+                        return std::any_of(literal.begin(), literal.end(),
+                            [](unsigned char ch) { return !std::isspace(ch); });
+                    };
+                    bool scoped = std::any_of(rule.template_literals.begin(),
+                        rule.template_literals.end(), has_literal) &&
+                        std::all_of(rule.template_kinds.begin(), rule.template_kinds.end(),
+                            [](char kind) { return std::string_view("ksncdpertbqmviuf").find(kind) != std::string_view::npos; });
+                    for (size_t i = 1; i < rule.template_kinds.size(); ++i) {
+                        if (!has_literal(rule.template_literals[i])) scoped = false;
+                    }
+                    if (!scoped) {
+                        log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                            " UI captures require supported types and fixed literal boundaries; ignored");
+                        continue;
+                    }
+                }
+                if (std::find(rule.template_kinds.begin(), rule.template_kinds.end(), 'k') !=
+                        rule.template_kinds.end()) {
+                    const auto has_literal = [](const std::string &literal) {
+                        return std::any_of(literal.begin(), literal.end(),
+                            [](unsigned char ch) { return !std::isspace(ch); });
+                    };
+                    // In the item noun grammar {k} is a printed language WORD
+                    // on a die, bounded by native quotes. It is resolved from
+                    // the shared procedural vocabulary, never as a key binding.
+                    bool quoted_item_word = rule.item_description_term;
+                    for (size_t i = 0; quoted_item_word && i < rule.template_kinds.size(); ++i)
+                        if (rule.template_kinds[i] == 'k' &&
+                            (!rule.template_literals[i].ends_with("\"") ||
+                             !rule.template_literals[i + 1].starts_with("\"")))
+                            quoted_item_word = false;
+                    bool scoped = quoted_item_word || ((rule.help_prose || rule.ui_message) &&
+                        has_literal(rule.template_literals.front()));
+                    for (size_t i = 1; i < rule.template_kinds.size(); ++i)
+                        if (!has_literal(rule.template_literals[i])) scoped = false;
+                    if (!scoped) {
+                        log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                            " word/key slots require quoted item words or complete help/UI messages and fixed literal boundaries; ignored");
+                        continue;
+                    }
+                }
             }
+            if (rule.legends_event_title && (!rule.legends_prose ||
+                    rule.legends_book_title || rule.legends_participant_relation ||
+                    rule.legends_description_term)) {
+                log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                    " event title rules require h and cannot use other nested scopes; ignored");
+                continue;
+            }
+            if (rule.legends_book_title && (!rule.legends_prose || !rule.string_template ||
+                    std::any_of(rule.template_kinds.begin(), rule.template_kinds.end(),
+                        [](char kind) { return kind != 'b'; }))) {
+                log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                    " book title rules require h/t flags and only {b} captures; ignored");
+                continue;
+            }
+            if (rule.legends_participant_relation && (!rule.legends_prose ||
+                    !rule.string_template || rule.legends_book_title)) {
+                log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                    " participant rules require h/t flags and cannot be book rules; ignored");
+                continue;
+            }
+            if (rule.legends_identity && (!rule.legends_prose ||
+                    rule.legends_event_title || rule.legends_book_title ||
+                    rule.legends_participant_relation || rule.legends_description_term ||
+                    rule.legends_continuation || rule.help_prose || rule.tooltip_prose ||
+                    rule.ui_message || rule.item_description_sentence ||
+                    rule.item_description_term || rule.item_description_predicate ||
+                    rule.magical_material_noun || rule.magical_material_qualifier ||
+                    rule.deity_sphere || rule.adventure_prose ||
+                    std::any_of(rule.template_kinds.begin(), rule.template_kinds.end(),
+                        [](char kind) { return kind != 'n' && kind != 'p' && kind != 's'; }))) {
+                log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                    " identity rules require h, only {n}/{p}/{s} captures and no other scopes; ignored");
+                continue;
+            }
+            if (rule.legends_description_term && (!rule.legends_prose ||
+                    rule.legends_book_title || rule.legends_participant_relation ||
+                    std::any_of(rule.template_kinds.begin(), rule.template_kinds.end(),
+                        [](char kind) { return kind != 's' && kind != 'c' && kind != 't'; }))) {
+                log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                    " description terms require h and only {s}/{c}/{t} captures; ignored");
+                continue;
+            }
+            if (rule.legends_continuation && (!rule.legends_prose ||
+                    rule.legends_event_title || rule.legends_book_title ||
+                    rule.legends_participant_relation || rule.legends_description_term ||
+                    rule.help_prose || rule.tooltip_prose || rule.ui_message ||
+                    rule.item_description_sentence || rule.item_description_term ||
+                    rule.item_description_predicate || rule.magical_material_noun ||
+                    rule.magical_material_qualifier || rule.deity_sphere || rule.adventure_prose)) {
+                log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
+                    " clipped continuations require h and cannot use other scopes; ignored");
+                continue;
+            }
+            destination.push_back(std::move(rule));
         }
-        if (rule.legends_event_title && (!rule.legends_prose ||
-                rule.legends_book_title || rule.legends_participant_relation ||
-                rule.legends_description_term)) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                " event title rules require h and cannot use other nested scopes; ignored");
-            continue;
+        if (in.bad()) {
+            log_line("ERROR", "Cannot read usable mapping; retaining previous translations: " + mapping_name);
+            return false;
         }
-        if (rule.legends_book_title && (!rule.legends_prose || !rule.string_template ||
-                std::any_of(rule.template_kinds.begin(), rule.template_kinds.end(),
-                    [](char kind) { return kind != 'b'; }))) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                " book title rules require h/t flags and only {b} captures; ignored");
-            continue;
-        }
-        if (rule.legends_participant_relation && (!rule.legends_prose ||
-                !rule.string_template || rule.legends_book_title)) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                " participant rules require h/t flags and cannot be book rules; ignored");
-            continue;
-        }
-        if (rule.legends_identity && (!rule.legends_prose ||
-                rule.legends_event_title || rule.legends_book_title ||
-                rule.legends_participant_relation || rule.legends_description_term ||
-                rule.legends_continuation || rule.help_prose || rule.tooltip_prose ||
-                rule.ui_message || rule.item_description_sentence ||
-                rule.item_description_term || rule.item_description_predicate ||
-                rule.magical_material_noun || rule.magical_material_qualifier ||
-                rule.deity_sphere || rule.adventure_prose ||
-                std::any_of(rule.template_kinds.begin(), rule.template_kinds.end(),
-                    [](char kind) { return kind != 'n' && kind != 'p' && kind != 's'; }))) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                " identity rules require h, only {n}/{p}/{s} captures and no other scopes; ignored");
-            continue;
-        }
-        if (rule.legends_description_term && (!rule.legends_prose ||
-                rule.legends_book_title || rule.legends_participant_relation ||
-                std::any_of(rule.template_kinds.begin(), rule.template_kinds.end(),
-                    [](char kind) { return kind != 's' && kind != 'c' && kind != 't'; }))) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                " description terms require h and only {s}/{c}/{t} captures; ignored");
-            continue;
-        }
-        if (rule.legends_continuation && (!rule.legends_prose ||
-                rule.legends_event_title || rule.legends_book_title ||
-                rule.legends_participant_relation || rule.legends_description_term ||
-                rule.help_prose || rule.tooltip_prose || rule.ui_message ||
-                rule.item_description_sentence || rule.item_description_term ||
-                rule.item_description_predicate || rule.magical_material_noun ||
-                rule.magical_material_qualifier || rule.deity_sphere || rule.adventure_prose)) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                " clipped continuations require h and cannot use other scopes; ignored");
-            continue;
-        }
-        loaded.push_back(std::move(rule));
-    }
-    if (in.bad() || loaded.empty()) {
+        return true;
+    };
+    if (!read_mapping(fs::u8path(config_.mapping_path), loaded) || loaded.empty()) {
         log_line("ERROR", "Cannot read usable mapping; retaining previous translations: " + config_.mapping_path);
         return false;
+    }
+    for (const auto& package : extension_snapshot.packages) {
+        if (package.translations.empty()) continue;
+        std::vector<Rule> extension_rules;
+        if (!read_mapping(package.translations, extension_rules)) return false;
+        std::unordered_set<std::string> overridden;
+        for (const auto& rule : extension_rules)
+            overridden.insert(translation_rule_scope_key(rule));
+        loaded.erase(std::remove_if(loaded.begin(), loaded.end(), [&](const Rule& rule) {
+            return overridden.contains(translation_rule_scope_key(rule));
+        }), loaded.end());
+        // Preserve first-wins capture semantics inside each file, while each
+        // later extension takes priority over earlier packages and the base.
+        // Matching scopes were removed, so the display trie's later-wins
+        // behavior cannot restore a replaced base entry.
+        loaded.insert(loaded.begin(), std::make_move_iterator(extension_rules.begin()),
+                      std::make_move_iterator(extension_rules.end()));
     }
     // A render/search caller can only observe one complete catalog. Build
     // every index and auxiliary vocabulary against candidate-owned rules;
@@ -313,6 +342,7 @@ bool Overlay::load_rules() {
         candidate = std::make_unique<Overlay>();
         candidate->config_ = config_;
         candidate->rules_ = std::move(loaded);
+        candidate->loaded_extensions_ = std::move(extension_snapshot);
         candidate->name_editor_search_revision_ = name_editor_search_revision_;
         candidate->build_trie(&catalog_publication);
         candidate->rebuild_announcement_combat_rules();
@@ -404,6 +434,7 @@ bool Overlay::load_rules() {
     commit(liquid_material_names_, candidate->liquid_material_names_);
     commit(symbol_shape_forms_, candidate->symbol_shape_forms_);
     commit(mapping_mtime_, candidate->mapping_mtime_);
+    commit(loaded_extensions_, candidate->loaded_extensions_);
     material_transaction.committed = true;
     if (catalog_publication) catalog_publication();
 
@@ -880,7 +911,8 @@ void Overlay::build_trie(std::function<void()>* catalog_publication) {
         }
         // Scoped caption aliases are lookup-only metadata. The visible source
         // retains its ordinary meaning until its native widget owns it.
-        if (rules_[rule_index].source.starts_with("Build menu: ") ||
+        if (rules_[rule_index].source.starts_with("Preference reason: ") ||
+            rules_[rule_index].source.starts_with("Build menu: ") ||
             rules_[rule_index].source.starts_with("Embark finder: ") ||
             rules_[rule_index].source.starts_with("Zone type: ") ||
             rules_[rule_index].source.starts_with("Fortress activity: ") ||

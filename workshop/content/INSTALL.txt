@@ -3,8 +3,8 @@ Byayoi 同人社区：https://byayoi.org/
 GitHub：https://github.com/pokemonchw/dfcn
 Releases：https://github.com/pokemonchw/dfcn/releases
 
-当前汉化版本：53.16-20261007.2（2026-10-07 第二版）。更新日志见本目录 CHANGELOG.txt。
-本次完善传说名称与艺术品历史、公告及字段翻译，补齐 DFHack 建造规划器、物品选择与工单提示，修复 ASCII 中文名称、存档列表和访客概述排版，并优化库存与贸易界面的汉化性能。
+当前汉化版本：53.16-20261008（2026-10-08）。更新日志见本目录 CHANGELOG.txt。
+本次增加通用汉化数据扩展加载，将 Dwarvemon 与 Entity All 2.22 的专用译文拆为独立工坊数据包。扩展订阅后由核心自动识别；已有完整译文的模组内容正常翻译，用户自定义小队名称保持原样。
 运行包默认 font_scale=1.1、min_font_pixels=12、font_bold=true；font_pixel_grid=0 保留普通字体渲染，使用点阵字体时可设为 12 启用整数倍缩放。完整设置说明见 DFCN/dfcn/data/runtime/config.ini。
 
 适用：Dwarf Fortress 53.16，Windows x64；支持 Steam 版与官网免费版。
@@ -51,12 +51,24 @@ C:/Program Files (x86)/Steam/steamapps/workshop/content/975370/3811193379/DFCN/d
 汉化核心及翻译数据从加载器所在的订阅目录读取。
 后续工坊更新由 Steam 下载到订阅目录；只要实际目录不变，游戏中的入口配置继续指向该目录。
 
-三、从旧版整包复制方式升级
+三、独立汉化数据扩展
+
+核心会自动识别已订阅的汉化数据扩展，将扩展词条与规则用于对应内容。
+数据包无需在创建世界的模组列表中启用；原始玩法模组按其作者说明使用。
+
+“矮人宝可梦汉化数据”支持 Dwarvemon 2.22 与 Dwarvemon Entity All 2.22：
+https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177
+
+本体不内置宝可梦专用词条，这些译文由独立数据包提供。
+模组名称和内容使用通用译文匹配，已有完整译文即可正常翻译；用户自定义小队名称保持原样。
+汉化数据扩展不修改原模组 RAW 或世界规则，无需复制其中的数据到本体目录。
+
+四、从旧版整包复制方式升级
 
 移除游戏根目录中旧版汉化的 dfhooks_dfcn.dll（若存在），避免加载两份汉化。
 旧版复制到游戏目录中的 dfcn 文件夹已不再使用，可在保留需要的个人配置或资料后移除。
 
-四、开启与关闭
+五、开启与关闭
 
 在游戏中按 Shift+F10 可以开启或关闭汉化，再次按下即可切换。
 
@@ -64,7 +76,7 @@ Windows 同时安装 DFHack 53.16-r2 时，可按 Shift+F11 独立暂停或恢�
 插件配置和状态会保留；关闭时已经打开的 DFHack 界面会关闭，此前对游戏或存档执行的修改不会回滚。
 本版本同时汉化 DFHack 帮助、控制面板、常用弹窗及本地命令输出，可执行命令、快捷键和导出内容保留原文。
 
-五、卸载
+六、卸载
 
 取消订阅不会自动删除手动复制到游戏目录中的文件。
 请手动删除本次添加到游戏根目录中的 dfhooks.dll 和 dfhooks_dfcn.ini，再取消订阅。

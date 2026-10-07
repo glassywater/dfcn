@@ -11,6 +11,7 @@
 #include <array>
 #include <cctype>
 #include <functional>
+#include <iterator>
 #include <sstream>
 
 #define TOML_EXCEPTIONS 0
@@ -104,6 +105,7 @@ namespace Hooks {
         dfcn::TranslationStateScope translation_scope;
         ruleset_directory_ = dir;
         attempted_dependencies_ = resource_dependencies(dir);
+        attempted_extensions_ = dfcn::extensions::discover("zh-Hans");
         if (!std::filesystem::exists(dir) || !std::filesystem::is_directory(dir)) {
             throw std::runtime_error("Rulesets directory not found: " + dir.string());
         }
@@ -113,11 +115,18 @@ namespace Hooks {
         RulesetsManager candidate;
         std::optional<std::string> visited_root;
         candidate.parse_dir(dir, dir, visited_root);
+        for (const auto& package : attempted_extensions_.packages) {
+            if (package.rulesets.empty()) continue;
+            candidate.parse_dir(package.rulesets, package.rulesets, visited_root, true);
+        }
+        // Extension hooks can reference leaves declared by another fragment.
+        // Resolve the complete combined graph before publishing any of it.
         candidate.validate_references();
         candidate.analyze_from_root();
         candidate.rebuild_rule_prefix_indexes();
         candidate.rebuild_static_creature_names();
         candidate.loaded_dependencies_ = attempted_dependencies_;
+        candidate.loaded_extensions_ = attempted_extensions_;
         memo_cache_.clear();
         rulesets_.swap(candidate.rulesets_);
         rule_prefix_indexes_.swap(candidate.rule_prefix_indexes_);
@@ -125,6 +134,7 @@ namespace Hooks {
         cyclic_rule_signatures_.swap(candidate.cyclic_rule_signatures_);
         static_creature_names_.swap(candidate.static_creature_names_);
         loaded_dependencies_.swap(candidate.loaded_dependencies_);
+        std::swap(loaded_extensions_, candidate.loaded_extensions_);
         ++resource_revision_;
         last_load_error_.clear();
     }
@@ -165,7 +175,8 @@ namespace Hooks {
     bool RulesetsManager::resources_changed() const {
         dfcn::TranslationStateScope translation_scope;
         return !ruleset_directory_.empty() &&
-            resource_dependencies(ruleset_directory_) != attempted_dependencies_;
+            (resource_dependencies(ruleset_directory_) != attempted_dependencies_ ||
+                dfcn::extensions::resources_changed(attempted_extensions_, "zh-Hans"));
     }
 
     std::uint64_t RulesetsManager::resource_revision() const {
@@ -199,6 +210,8 @@ namespace Hooks {
         ruleset_directory_.clear();
         loaded_dependencies_.clear();
         attempted_dependencies_.clear();
+        loaded_extensions_ = {};
+        attempted_extensions_ = {};
     }
 
     std::string RulesetsManager::last_load_error() const {
@@ -1290,7 +1303,7 @@ namespace Hooks {
     /// @param curr         当前遍历目录
     /// @param visited_root 记录已访问的根文件（确保唯一）
     void RulesetsManager::parse_dir(const std::filesystem::path& base, const std::filesystem::path& curr,
-                std::optional<std::string>& visited_root) {
+                std::optional<std::string>& visited_root, bool extension) {
         LOGGERMANAGER.getLogger()->info("Loading rulesets from: {}", curr.string());
 
         // 收集并排序目录条目，确保确定性加载顺序（匹配 Rust sorted_paths.sort()）
@@ -1302,9 +1315,9 @@ namespace Hooks {
 
         for (const auto& path : paths) {
             if (std::filesystem::is_directory(path)) {
-                parse_dir(base, path, visited_root);
+                parse_dir(base, path, visited_root, extension);
             } else if (path.extension() == ".toml") {
-                parse_file(base, path, visited_root);
+                parse_file(base, path, visited_root, extension);
             }
         }
     }
@@ -1322,7 +1335,7 @@ namespace Hooks {
     /// @param visited_root 记录已访问的根文件
     /// @throws std::runtime_error 文件格式错误或校验失败时抛出
     void RulesetsManager::parse_file(const std::filesystem::path& base, const std::filesystem::path& path,
-                    std::optional<std::string>& visited_root) {
+                    std::optional<std::string>& visited_root, bool extension) {
         auto result = toml::parse_file(path.u8string());
 
         if (!result) {
@@ -1335,6 +1348,10 @@ namespace Hooks {
 
         // [base] 字段（可选）：无 base 的文件为根文件，全局只能有一个
         std::optional<std::string> file_base = toml_data["base"].value<std::string>();
+
+        if (extension && (!file_base || file_base->empty())) {
+            throw std::runtime_error("Extension rulesets must declare a non-root base: " + path.string());
+        }
 
         if (!file_base.has_value()) {
             if (visited_root.has_value()) {
@@ -1420,10 +1437,12 @@ namespace Hooks {
             validate_identifier_format(identifier);
 
             auto& rules = rulesets_[identifier];
+            RuleSet additions;
+            auto& parsed_rules = extension ? additions : rules;
 
             // optional 规则集：插入空匹配回退规则
             if (optional) {
-                rules.emplace_back(
+                parsed_rules.emplace_back(
                     Tokens{Token{Type::Literal, ""}},
                     Tokens{Token{Type::Literal, ""}}
                 );
@@ -1431,6 +1450,9 @@ namespace Hooks {
 
             // [rulesets.rules] 表
             if (!tbl.contains("rules")) {
+                if (extension && !additions.empty())
+                    rules.insert(rules.end(), std::make_move_iterator(additions.begin()),
+                        std::make_move_iterator(additions.end()));
                 continue; // 允许无规则
             }
             auto rules_table = tbl["rules"].as_table();
@@ -1483,8 +1505,19 @@ namespace Hooks {
                     }
 
                     // 插入规则（保持插入顺序，匹配 Rust IndexMap 行为）
-                    rules.emplace_back(std::move(orig_tokens), std::move(trans_tokens));
+                    parsed_rules.emplace_back(std::move(orig_tokens), std::move(trans_tokens));
                 }
+            }
+            if (extension) {
+                // Later packages override earlier equal productions. Keep all
+                // other base grammar and place complete extension literals
+                // before delegate/template rules in the same namespace.
+                std::stable_partition(additions.begin(), additions.end(), [](const auto& rule) {
+                    return !rule.first.empty() && std::all_of(rule.first.begin(), rule.first.end(),
+                        [](const Token& token) { return token.type == Type::Literal && !token.value.empty(); });
+                });
+                rules.insert(rules.begin(), std::make_move_iterator(additions.begin()),
+                    std::make_move_iterator(additions.end()));
             }
         }
     }

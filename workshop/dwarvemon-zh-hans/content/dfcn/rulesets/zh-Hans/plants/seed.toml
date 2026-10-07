@@ -1,0 +1,7 @@
+# Dwarvemon 2.22 translation extension; merges into the base namespace.
+base = "plants::seed"
+
+[[rulesets]]
+name = "plural"
+[rulesets.rules]
+"{::plants::dwarvemon::seed}" = "{::plants::dwarvemon::seed}"

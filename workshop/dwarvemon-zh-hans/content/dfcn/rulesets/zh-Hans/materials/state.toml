@@ -1,0 +1,12 @@
+# Dwarvemon 2.22 translation extension; merges into the base namespace.
+base = "materials::state"
+
+[[rulesets]]
+name = "adjective"
+[rulesets.rules]
+"{::materials::dwarvemon}" = "{::materials::dwarvemon}"
+
+[[rulesets]]
+name = "shared::main"
+[rulesets.rules]
+"{::materials::dwarvemon}" = "{::materials::dwarvemon}"

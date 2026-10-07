@@ -1,0 +1,12 @@
+# Dwarvemon 2.22 translation extension; merges into the base namespace.
+base = "health::bodypart"
+
+[[rulesets]]
+name = "tissue"
+[rulesets.rules]
+"{dwarvemon}" = "{dwarvemon}"
+
+[[rulesets]]
+name = "bodypart_main"
+[rulesets.rules]
+"{dwarvemon}" = "{dwarvemon}"

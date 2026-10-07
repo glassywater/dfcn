@@ -15,6 +15,8 @@ import stat
 import subprocess
 import sys
 import tempfile
+import tomllib
+import zipfile
 
 sys.dont_write_bytecode = True
 from extract_workshop_tooltip_catalog import native_edition_sources, native_game_directory, native_game_executable
@@ -40,6 +42,73 @@ def native_game_directories():
 def edition_destinations():
     destinations = ((directory / "dfcn").resolve() for directory in native_game_directories())
     return tuple(dict.fromkeys(directory for directory in destinations if directory != ROOT))
+
+
+def translation_extension_sources():
+    """Keep independently published data mods outside the core runtime."""
+    packages = []
+    for manifest in sorted((ROOT / "workshop").glob("*/content/dfcn-extension.toml")):
+        content = manifest.parent
+        metadata = tomllib.loads(manifest.read_text(encoding="utf-8-sig"))
+        if metadata.get("schema") != 1 or metadata.get("language") != "zh-Hans":
+            raise RuntimeError(f"Unsupported translation extension: {manifest}")
+        info = (content / "info.txt").read_text(encoding="utf-8-sig")
+        identity = re.search(r"\[ID:([A-Za-z0-9_-]+)\]", info)
+        if not identity:
+            raise RuntimeError(f"Missing mod identity: {content / 'info.txt'}")
+        rulesets = (content / metadata["rulesets"]).resolve()
+        rulesets.relative_to(content.resolve())
+        packages.append((identity[1], content, rulesets))
+    return packages
+
+
+def deploy_translation_extensions(game: Path) -> None:
+    """Install each data package as its own local mod, using this same entry."""
+    mods = (game / "mods").resolve()
+    if mods != game.resolve() / "mods":
+        raise RuntimeError(f"Refusing translation extension publication through a symlink: {mods}")
+    for identity, content, _ in translation_extension_sources():
+        destination = mods / identity
+        destination.resolve().relative_to(mods)
+        for source in sorted(content.rglob("*")):
+            if source.is_symlink():
+                raise RuntimeError(f"Refusing extension publication through a symlink: {source}")
+            if not source.is_file():
+                continue
+            target = destination / source.relative_to(content)
+            target.resolve().relative_to(mods)
+            if target.is_symlink():
+                raise RuntimeError(f"Refusing extension publication through a symlink: {target}")
+            payload = source.read_bytes()
+            if target.is_file() and target.read_bytes() == payload:
+                continue
+            target.parent.mkdir(parents=True, exist_ok=True)
+            staged = target.with_name(target.name + ".publish")
+            if staged.is_symlink():
+                raise RuntimeError(f"Refusing extension staging through a symlink: {staged}")
+            try:
+                staged.write_bytes(payload)
+                os.replace(staged, target)
+            finally:
+                staged.unlink(missing_ok=True)
+        print(f"Translation data mod deployed separately to {destination}", flush=True)
+
+
+def package_translation_extensions() -> None:
+    for identity, content, _ in translation_extension_sources():
+        archive = content.parent / f"{identity}.zip"
+        staged = archive.with_name(archive.name + ".publish")
+        try:
+            with zipfile.ZipFile(staged, "w", compression=zipfile.ZIP_DEFLATED) as bundle:
+                for source in sorted(content.rglob("*")):
+                    if source.is_symlink():
+                        raise RuntimeError(f"Refusing extension packaging through a symlink: {source}")
+                    if source.is_file():
+                        bundle.write(source, Path(identity) / source.relative_to(content))
+            os.replace(staged, archive)
+        finally:
+            staged.unlink(missing_ok=True)
+        print(f"Independent translation data mod packaged: {archive}", flush=True)
 
 
 def deploy_runtime_data(directory: Path) -> None:
@@ -100,6 +169,21 @@ def deploy_runtime_data(directory: Path) -> None:
         install(runtime / name, (RUNTIME / name).read_bytes())
     for source in sorted((RUNTIME / "rulesets").rglob("*.toml")):
         install(runtime / source.relative_to(RUNTIME), source.read_bytes())
+
+    # Migrate earlier bundled extension dictionaries out of the core. Only
+    # identical copies of independently packaged files are removed; retain
+    # custom edits and any namespace still owned by the base runtime.
+    for _, _, rulesets in translation_extension_sources():
+        for source in sorted(rulesets.rglob("*.toml")):
+            relative = source.relative_to(rulesets)
+            if (RUNTIME / "rulesets/zh-Hans" / relative).exists():
+                continue
+            legacy = runtime / "rulesets/zh-Hans" / relative
+            legacy.resolve().relative_to(runtime.resolve())
+            if legacy.is_symlink():
+                raise RuntimeError(f"Refusing extension migration through a symlink: {legacy}")
+            if legacy.is_file() and legacy.read_bytes() == source.read_bytes():
+                legacy.unlink()
 
     # Keep this edition's preferences and collected queue during the layout
     # migration. Existing custom external paths continue to work as configured.
@@ -621,6 +705,9 @@ def main() -> int:
             run([*compiler, *compile_flags, "-o", str(loader_candidate), "src/loader.cpp", *link_flags], env)
         for directory in edition_destinations():
             deploy_runtime_data(directory)
+        for directory in native_game_directories():
+            deploy_translation_extensions(directory)
+        package_translation_extensions()
         if rebuild_core:
             for directory in edition_destinations():
                 directory.mkdir(parents=True, exist_ok=True)

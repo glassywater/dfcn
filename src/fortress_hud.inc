@@ -80,9 +80,10 @@ void Overlay::append_fortress_site_name(std::vector<std::string> &rows,
     }
 }
 
-// RAW names belong to the mod that supplied them. Reserve complete native
-// fields before the word/item/generated-name readers can translate fragments.
-// Captured draws also retain the full identity of a clipped picture caption.
+// RAW names belong to the mod that supplied them. Complete reviewed names
+// or build aliases admit translations; reserve every other native field
+// before word/item/generated-name readers can translate fragments. Captured
+// draws also retain the full identity of a clipped picture caption.
 std::vector<SDL_Rect> Overlay::preserve_mod_workshop_names(
         std::vector<std::string> &rows) const {
     std::vector<SDL_Rect> regions;
@@ -90,7 +91,10 @@ std::vector<SDL_Rect> Overlay::preserve_mod_workshop_names(
     if (!gps_ || !names || names->empty()) return regions;
     const auto context = rows;
     const auto known_name = [&](std::string_view source) {
-        return names->contains(lower(std::string(trim_view(source))));
+        source = trim_view(source);
+        if (!names->contains(lower(std::string(source)))) return false;
+        if (exact_literal_translation("Build menu: " + std::string(source))) return false;
+        return !exact_literal_translation(source);
     };
     const auto reserve = [&](int left, int right, int y) {
         if (left >= right || y < 0 || y >= static_cast<int>(rows.size())) return;

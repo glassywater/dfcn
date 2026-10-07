@@ -22312,7 +22312,6 @@ It has {s} and nearby vegetation seem to shrink away from it.	它长有{s1}，�
 It was created by an unknown deity and is of a part with {r}.	它由一位不知名的神祇创造，与{r1}相连。	ht
 Maximum interface percentage (not counting minimap/elevation)	最大界面百分比 (不包括小地图/高程)	w
 Mods install automatically when chosen during world creation.	在创建世界时选中的模组会自动安装。	l
-Installed	已安装	wl
 Overview sentence: A criminal could not be properly punished.	有个罪犯没能受到应有的惩罚。	l
 Overview sentence: I guess that could have given me a fright.	我想，那本来可能会吓我一跳。	l
 Overview sentence: I had a nightmare about my deceased child.	做了个噩梦，梦见了死去的孩子。	l
@@ -101280,6 +101279,7 @@ Superior patience	上等耐心	wil
 Superior strength	上等力量	wil
 Surrender of {p}.	{p1}的投降。	htEi
 Surroundings: {s}	周边环境：{s}	wt
+Suspendmanager is	暂停管理器状态	wl
 Symbol of the {s}	{s1}的象征	hPt
 Talk to somebody.	与某人交谈。	hj
 Tanner's Workshop	制革工坊	wi
@@ -135613,6 +135613,7 @@ Incurious	缺乏好奇心	w
 Indignant	愤慨	w
 Infection	感染	w
 Inhabited	有人居住	w
+Installed	已安装	wl
 Intruder!	入侵者！	hP
 Intuition	直觉	wi
 Inventory	物品栏	hq
@@ -142862,4 +142863,3 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
-Suspendmanager is	暂停管理器状态	wl

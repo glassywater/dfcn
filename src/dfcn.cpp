@@ -60,6 +60,7 @@
 #include "native_trade_item_caption.h"
 #include "core_api.h"
 #include "runtime_paths.h"
+#include "translation_extensions.h"
 #include "english_character_names.h"
 #include "english_name_transliteration.h"
 
@@ -372,6 +373,26 @@ struct Rule {
     std::vector<size_t> target_capture_order;
     std::vector<std::string> target_template_literals;
 };
+
+// Layout and boundary flags may change in an extension without introducing
+// a new word sense. Typed prose, material and template scopes stay separate.
+static std::string translation_rule_scope_key(const Rule& rule) {
+    std::string key = rule.source;
+    if (rule.case_insensitive)
+        for (char& ch : key)
+            if (ch >= 'A' && ch <= 'Z') ch += 'a' - 'A';
+    key.push_back('\0');
+    for (bool scoped : {rule.numeric_template, rule.string_template,
+            rule.adventure_prose, rule.legends_prose, rule.legends_book_title,
+            rule.legends_event_title, rule.legends_participant_relation,
+            rule.legends_identity, rule.legends_description_term,
+            rule.legends_continuation, rule.item_description_sentence,
+            rule.item_description_term, rule.item_description_predicate,
+            rule.magical_material_noun, rule.magical_material_qualifier,
+            rule.deity_sphere, rule.help_prose, rule.help_objective,
+            rule.tooltip_prose, rule.ui_message}) key.push_back(scoped ? '1' : '0');
+    return key;
+}
 
 // Both grammatical roles are loaded from the same generated vocabulary.
 // No renderer-maintained translations or blanket suffix removal belong here.
@@ -3272,6 +3293,10 @@ public:
     void toggle_translation();
     void remap_legends_mouse(int *x, int *y) const;
     void request_reload() { reload_requested_.store(true); }
+    bool has_translation_catalog() const {
+        TranslationStateScope translation_scope;
+        return !rules_.empty();
+    }
     void request_dump() { dump_requested_.store(true); }
     int procedural_name_self_test();
     int caption_diagnostic(std::string_view route, std::string_view source,
@@ -3880,6 +3905,7 @@ private:
     std::atomic<bool> dump_requested_{false};
     fs::file_time_type config_mtime_{};
     fs::file_time_type mapping_mtime_{};
+    extensions::Snapshot loaded_extensions_;
     static constexpr std::array<const char *, 8> dfhack_catalog_names_{
         "dfhack-help-translations.tsv", "dfhack-help-overrides.tsv",
         "dfhack-help-command-overrides.tsv", "dfhack-output-core.tsv",
@@ -7022,7 +7048,8 @@ void Overlay::maybe_reload() {
             (!ec4 && im != instrument_translations_mtime_) ||
             (!ec1 && cm != config_mtime_) || (!ec2 && mm != mapping_mtime_) ||
             (!ec3 && nm != name_editor_mtime_);
-        if (RULESETS.resources_changed()) reload = true;
+        if (RULESETS.resources_changed() ||
+                extensions::resources_changed(loaded_extensions_)) reload = true;
         const auto catalog_directory = fs::u8path(config_.mapping_path).parent_path();
         {
             std::error_code site_error;
@@ -14117,14 +14144,17 @@ Overlay::translate_character_preference_paragraph(
             // Complete reason phrases take priority over UI/name word senses.
             // In particular, never split "fruit and nuts" into two likes or
             // turn "wool" into the textile/yarn sense from the item dictionary.
-            std::optional<std::string> reason;
-            if (const auto found = preference_reasons.find(reason_source);
-                found != preference_reasons.end()) {
-                reason = std::string(found->second);
-            } else {
-                // Local/mod-added complete phrases can still use user rules.
-                // Do not guess a reason by transliterating an ordinary word.
-                reason = exact_literal_translation(reason_source);
+            std::optional<std::string> reason = exact_literal_translation(
+                "Preference reason: " + std::string(reason_source));
+            if (!reason) {
+                if (const auto found = preference_reasons.find(reason_source);
+                        found != preference_reasons.end()) {
+                    reason = std::string(found->second);
+                } else {
+                    // Local/mod-added complete phrases can still use user rules.
+                    // Do not guess a reason by transliterating an ordinary word.
+                    reason = exact_literal_translation(reason_source);
+                }
             }
             if (!reason) return std::nullopt;
             const auto creature_or_plant = translate_term(item.substr(0, reason_at));
@@ -42010,9 +42040,30 @@ static std::string exact_literal_mapping_path() {
 
 static const std::unordered_map<std::string, std::string> &
 early_exact_literal_translations() {
-    static const std::unordered_map<std::string, std::string> translations = [] {
-        std::unordered_map<std::string, std::string> loaded;
-        std::ifstream input(fs::u8path(exact_literal_mapping_path()), std::ios::binary);
+    TranslationStateScope translation_scope;
+    static std::unordered_map<std::string, std::string> translations;
+    static extensions::Snapshot extension_snapshot;
+    static std::string mapping_path;
+    static fs::file_time_type mapping_modified{};
+    static uintmax_t mapping_size = 0;
+    static bool initialized = false;
+    static std::chrono::steady_clock::time_point last_refresh{};
+    const auto now = std::chrono::steady_clock::now();
+    if (initialized && now - last_refresh < std::chrono::seconds(1)) return translations;
+    last_refresh = now;
+    const auto current_mapping = exact_literal_mapping_path();
+    std::error_code modified_error, size_error;
+    const auto modified = fs::last_write_time(fs::u8path(current_mapping), modified_error);
+    const auto size = fs::file_size(fs::u8path(current_mapping), size_error);
+    auto current_extensions = extensions::discover();
+    if (initialized && current_mapping == mapping_path &&
+            (modified_error ? fs::file_time_type{} : modified) == mapping_modified &&
+            (size_error ? 0 : size) == mapping_size &&
+            extensions::same_resources(extension_snapshot, current_extensions))
+        return translations;
+    std::unordered_map<std::string, std::string> loaded;
+    const auto read = [&](const fs::path& path) {
+        std::ifstream input(path, std::ios::binary);
         std::string line;
         size_t line_number = 0;
         while (std::getline(input, line)) {
@@ -42047,23 +42098,37 @@ early_exact_literal_translations() {
                 continue;
             }
 
-            // Mirror capture_translations_: the first exact rule owns capture
-            // translation even if a later display rule overrides the trie.
+            // The first exact rule in a file retains its capture meaning.
             loaded.try_emplace(source, target);
             if (flags.find('i') != std::string::npos) {
                 loaded.try_emplace(lower(source), target);
             }
         }
-        return loaded;
-    }();
+    };
+    // Higher precedence packages go first because exact captures use the
+    // first complete translation. Never retain unloaded package entries.
+    for (auto package = current_extensions.packages.rbegin();
+            package != current_extensions.packages.rend(); ++package)
+        if (!package->translations.empty()) read(package->translations);
+    read(fs::u8path(current_mapping));
+    translations.swap(loaded);
+    extension_snapshot = std::move(current_extensions);
+    mapping_path = current_mapping;
+    mapping_modified = modified_error ? fs::file_time_type{} : modified;
+    mapping_size = size_error ? 0 : size;
+    initialized = true;
     return translations;
 }
 
 static std::optional<std::string> overlay_exact_literal_translation(
         std::string_view source) {
+    TranslationStateScope translation_scope;
     if (const auto active = g_overlay.exact_literal_translation(source)) {
         return active;
     }
+    // A published live dictionary also owns absence: early fallback must not
+    // restore an entry removed by an extension reload or unsubscribe.
+    if (g_overlay.has_translation_catalog()) return std::nullopt;
     const std::string exact = trim(std::string(source));
     if (exact.empty()) return std::nullopt;
     const auto &early = early_exact_literal_translations();

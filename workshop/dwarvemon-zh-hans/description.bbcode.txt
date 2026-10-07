@@ -1,0 +1,15 @@
+[h1]矮人宝可梦汉化数据[/h1]
+
+为 [b]Dwarvemon 2.22[/b] 与 [b]Dwarvemon Entity All 2.22[/b] 提供完整简体中文翻译。
+
+[b]需要 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379]DFCN 汉化核心[/url][/b]，并使用支持扩展数据包的版本。订阅本数据包后，核心会自动识别，无需在创建世界的模组列表中启用本数据包。两个原始模组按其作者说明使用。
+
+[list]
+[*]宝可梦与形态名称优先采用官方简体中文译名。
+[*]覆盖描述、偏好、道具、材料、植物、身体部位、工坊、配方、招式、特性、进化提示、战斗公告和历史事件。
+[*]仅含翻译数据，不修改原模组 RAW 或世界规则。
+[/list]
+
+原模组自创内容另行翻译，少量旧树果名称参考百科暂译。来源与许可见包内 DATA-LICENSE.txt。
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2898307461]Dwarvemon[/url] · [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2898648216]Dwarvemon Entity All[/url] · [url=https://github.com/pokemonchw/dfcn]DFCN 项目[/url]
