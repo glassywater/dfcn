@@ -582,6 +582,25 @@ DFHack GUI Overlay control: collapse all||I|0|-1|1	折叠全部|	l
 DFHack GUI Overlay control: Set filter||I|0|-1|1	设置筛选|	l
 # Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:847-854 [buildingplan.planner conditional HotkeyLabel]
 DFHack GUI Overlay control: Edit filter||I|0|-1|1	编辑筛选|	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:855-864 [buildingplan.planner HotkeyLabel]
+DFHack GUI Overlay control: Delete filter||I|0|-1|1	删除筛选|	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:397-403,431-440 [ItemLine note Label]
+DFHack GUI Overlay control: |\xC0 {d} available now|I|0|-1|0	|└ 当前可用 {d}	l
+DFHack GUI Overlay control: |\xC0 Will link next (need to make {d})|I|0|-1|0	|└ 随后关联（还需制作 {d}）	l
+DFHack GUI Overlay control: |\xC0 Will link later (need to make {d})|I|0|-1|0	|└ 稍后关联（还需制作 {d}）	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan.lua:95-134; buildingplan/planneroverlay.lua:419-443 [ItemLine quantity and building-material description]
+DFHack GUI Overlay control: |{d} Building material|I|0|-1|0	|{d} 建筑材料	l
+DFHack GUI Overlay control: |{d} Building materials|I|0|-1|0	|{d} 建筑材料	l
+DFHack GUI Overlay control: |{d} Fire-safe material|I|0|-1|0	|{d} 防火材料	l
+DFHack GUI Overlay control: |{d} Fire-safe materials|I|0|-1|0	|{d} 防火材料	l
+DFHack GUI Overlay control: |{d} Magma-safe material|I|0|-1|0	|{d} 岩浆安全材料	l
+DFHack GUI Overlay control: |{d} Magma-safe materials|I|0|-1|0	|{d} 岩浆安全材料	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:313-335,451-462 [ItemLine fixed filter states]
+DFHack GUI Overlay control: |[any material]|I|0|-1|0	|[不限材料]	l
+DFHack GUI Overlay control: |[impossible filter]|I|0|-1|0	|[无可用材料]	l
+DFHack GUI Overlay control: |[{d} mat. categories]|I|0|-1|0	|[{d} 类材料]	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:486-492,934-939 [native placement error in WrappedLabel]
+DFHack GUI Overlay control: |Hidden, cannot build at this location|I|0|-1|0	|不可见，无法在此处建造	l
 # Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockflow.lua:1250-1262 [stockflow.stockflow conditional HotkeyLabel]
 DFHack GUI Overlay control: Order: |No job selected|I|0|-1|1	订单： |未选择任务	l
 # Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockflow.lua:1250-1262 [stockflow.stockflow conditional HotkeyLabel]

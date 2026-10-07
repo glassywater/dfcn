@@ -5,16 +5,36 @@
 // coordinate or one plugin. See data/extracted/dfhack-overlay-toggles/.
 {
     const auto catalog = g_dfhack_output_snapshot.load(std::memory_order_acquire);
-    bool painted = false;
-    {
-        std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-        painted = g_native_dfhack_page && g_native_dfhack_page_graphics == gps_ &&
-            g_native_dfhack_page_epoch == g_embark_item_capture_epoch.load(std::memory_order_acquire) &&
-            g_native_dfhack_page->bounds.w == gps_->dimx &&
-            g_native_dfhack_page->bounds.h == gps_->dimy;
-    }
-    if (catalog && painted) {
+    if (catalog) {
+        // A branded error/help panel can restore just its own background,
+        // leaving another overlay's controls visible in the composed page.
+        // Complete Label captures already prove their producer and live
+        // cells; the copied graphicst address is not their draw identity.
         const auto source_texts = native_dfhack_overlay_texts(gps_);
+        const auto *draw_gps = native_graphics();
+        const auto drawn_span = [&](const SDL_Rect &span) {
+            if (!draw_gps || draw_gps->dimx != gps_->dimx || draw_gps->dimy != gps_->dimy ||
+                    !native_dfhack_background_matches(*draw_gps, span)) return false;
+            if (draw_gps == gps_) return true;
+            // The capture mask belongs to the native draw. A copied page may
+            // use it only for cells still showing that draw, never a restored
+            // caption from underneath the recognized foreground panel.
+            for (int x = span.x; x < span.x + span.w; ++x)
+                for (int y = span.y; y < span.y + span.h; ++y) {
+                    const size_t at = static_cast<size_t>(x) * gps_->dimy + y;
+                    const bool top = native_ui_top_layer_at(*gps_, at);
+                    const bool draw_top = native_ui_top_layer_at(*draw_gps, at);
+                    const auto origin = native_text_grid_origin(*gps_, at, top);
+                    const auto draw_origin = native_text_grid_origin(*draw_gps, at, draw_top);
+                    const auto *grid = top ? gps_->screen_top : gps_->screen;
+                    const auto *draw_grid = draw_top ? draw_gps->screen_top : draw_gps->screen;
+                    if (!grid || !draw_grid || origin.grid != draw_origin.grid ||
+                            origin.top_layer != draw_origin.top_layer ||
+                            !std::equal(grid + at * 8, grid + at * 8 + 8, draw_grid + at * 8))
+                        return false;
+                }
+            return true;
+        };
         std::vector<std::pair<int, int>> sourced_controls;
         const auto named_source = [&](int x, int y, int length) {
             return std::any_of(source_texts.begin(), source_texts.end(), [&](const auto &text) {
@@ -321,9 +341,9 @@
                     // the Painter without writing tiles. Require ownership
                     // of the text runs, not the unpainted gaps between them.
                     if (first_end <= left ||
-                            (caption_end > left && !native_dfhack_background_matches(*gps_,
+                            (caption_end > left && !drawn_span(
                                 {left, y, caption_end - left, 1})) ||
-                            (option_end > painted_option_x && !native_dfhack_background_matches(*gps_,
+                            (option_end > painted_option_x && !drawn_span(
                                 {painted_option_x, option_y, option_end - painted_option_x, 1}))) continue;
                     // Preserve named/dynamic fields as whole fields, not ordinary
                     // word translations. Native captures also retain each state
