@@ -112,6 +112,7 @@ struct NativeCaptionProfile {
     uintptr_t map_track_shorten_call = 0, map_track_shorten_target = 0;
     NativeCaptionBuildFn map_caption_build = nullptr;
     size_t map_caption_text_offset = 0;
+    uintptr_t map_hover_list = 0;
     std::vector<unsigned char> map_caption_build_prefix;
     std::vector<uintptr_t> map_hover_returns;
     NativeInfoTitleBinding info_titles;
@@ -331,6 +332,7 @@ static std::vector<NativeTravelBuildingSite> g_native_travel_building_sites;
 static std::vector<uintptr_t> g_native_mission_title_returns;
 static std::vector<uintptr_t> g_native_map_hover_returns;
 static size_t g_native_map_hover_text_offset = 0;
+static uintptr_t g_native_map_hover_list = 0;
 
 static NativeInfoTitleKind native_info_title_kind(uintptr_t caller) {
     for (const auto &site : g_native_info_title_binding.sites)
@@ -532,20 +534,34 @@ static void capture_native_textbox_widget_render(void *widget, uint32_t tick) {
 static NativeMapHoverContext native_map_hover_context(uintptr_t caller,
         const NativeString *source) {
     NativeMapHoverContext context;
-    if (std::find(g_native_map_hover_returns.begin(),
-            g_native_map_hover_returns.end(), caller) == g_native_map_hover_returns.end())
-        return context;
-    context.kind = NativeMapHoverKind::Unknown;
-    // These native map loops pass lookinfost::display_str directly.
-    // Copy its enum and union payload while that exact record owns this draw;
-    // later card routing retains values, never a borrowed native pointer.
+    const bool known_caller = std::find(g_native_map_hover_returns.begin(),
+        g_native_map_hover_returns.end(), caller) != g_native_map_hover_returns.end();
+    if (known_caller) context.kind = NativeMapHoverKind::Unknown;
     const uintptr_t address = reinterpret_cast<uintptr_t>(source);
-    if (!g_native_map_hover_text_offset || address < g_native_map_hover_text_offset)
+    if (!g_native_map_hover_text_offset || address <= g_native_map_hover_text_offset)
         return context;
-    const auto *record = reinterpret_cast<const void *>(address - g_native_map_hover_text_offset);
+    const uintptr_t record = address - g_native_map_hover_text_offset;
+    if (!known_caller) {
+        // Both native ABIs draw ui_look_list's owned display_str directly.
+        // Read the current list, including in-place changes during this draw
+        // pass; an epoch cache could retain owners from an earlier map tile.
+        constexpr size_t maximum = 4096;
+        NativeBorrowedVector<uintptr_t> owners;
+        if (!native_history_copy(g_native_map_hover_list, owners) ||
+                !owners.valid(maximum) || !owners.size()) return context;
+        static thread_local std::array<uintptr_t, maximum> records;
+        const size_t count = owners.size();
+        if (!native_history_copy_bytes(reinterpret_cast<uintptr_t>(owners.begin),
+                records.data(), count * sizeof(uintptr_t)) ||
+                std::find(records.begin(), records.begin() + count, record) ==
+                    records.begin() + count) return context;
+        context.kind = NativeMapHoverKind::Unknown;
+    }
+    // Ownership comes from a verified native caller or this exact record's
+    // membership, never from its spelling or a rectangle's border textures.
+    // Retain copied enum/payload values rather than borrowed native pointers.
     std::array<int32_t, 7> fields{};
-    if (!native_info_title_memory_readable(record, sizeof(fields))) return context;
-    std::memcpy(fields.data(), record, sizeof(fields));
+    if (!native_history_copy(record, fields)) return context;
     if (fields.front() < 0 || fields.front() > 15) return context;
     context.kind = static_cast<NativeMapHoverKind>(fields.front());
     std::copy_n(fields.begin() + 1, context.data.size(), context.data.begin());
@@ -822,6 +838,145 @@ static std::optional<std::string> native_complete_map_track_caption(
     return std::nullopt;
 }
 
+#ifdef _WIN32
+static void capture_native_unit_chooser_squad(uintptr_t unit,
+        const std::array<int32_t, 4> &name_rect, int name_width,
+        bool show_gender, bool truncate_identity,
+        NativeUnitChooserRecord &record) {
+    const auto &hooks = g_native_unit_identity_hooks;
+    int32_t squad_id = -1, position = -1;
+    if (!unit || !hooks.base || !native_history_copy(unit + 0x1f0, squad_id) ||
+            !native_history_copy(unit + 0x1f4, position) || squad_id < 0 ||
+            position < 0 || position > 65535) return;
+    NativeBorrowedVector<uintptr_t> squads;
+    if (!native_history_read_vector(native_history_global(0x24e37c0), squads) ||
+            squads.size() > 65536) return;
+    uintptr_t squad = 0;
+    for (size_t index = 0; index < squads.size(); ++index) {
+        const auto candidate = native_history_vector_at(squads, index);
+        int32_t id = -1;
+        if (!candidate || !native_history_copy(candidate, id)) return;
+        if (id == squad_id) { squad = candidate; break; }
+    }
+    if (!squad) return;
+    std::string alias, source;
+    if (!native_history_copy_string(squad + native_history_layout::squad_alias_offset,
+            alias)) return;
+    std::optional<NativeHistoryName> generated;
+    NativeInputCallbackScope callback;
+    const auto destroy = reinterpret_cast<NativeSearchDestroyFn>(
+        native_pe_address(hooks.base, 0x6f850));
+    if (!destroy) return;
+    if (!alias.empty()) source = alias;
+    else {
+        if (!hooks.english_name) return;
+        NativeSearchString output(destroy);
+        callback.call_native([&] {
+            hooks.english_name(reinterpret_cast<const void *>(squad + 8),
+                &output.value, true, false);
+        });
+        std::string_view value;
+        if (!native_string_view(&output.value, &value, 65536) || value.empty()) return;
+        source.assign(value);
+        NativeHistoryName snapshot;
+        if (capture_native_history_name(hooks.base, squad + 8, snapshot))
+            generated = std::move(snapshot);
+    }
+    // The chooser's native callback 3a9380 owns a separate caption above
+    // Name: alias/name + ", Pos " + the unit's zero-based squad position.
+    // The Name widget renders the actual person one grid row below it.
+    record.squad_name_source = std::move(source);
+    record.squad_caption_complete_source = record.squad_name_source + ", Pos " +
+        std::to_string(position);
+    record.squad_caption_source = record.squad_caption_complete_source;
+    if (!alias.empty()) record.squad_alias = std::move(alias);
+    record.generated_squad_name = std::move(generated);
+    record.squad_position = position;
+    record.squad_caption_x = name_rect[0];
+    record.squad_caption_y = name_rect[1] - 2;
+    record.unit_identity_x = name_rect[0];
+    record.unit_identity_y = name_rect[1] - 1;
+    const auto abbreviate = reinterpret_cast<void (*)(NativeString *, int32_t)>(
+        native_pe_address(hooks.base, 0x52d910));
+    const auto assign = reinterpret_cast<NativeString *(*)(NativeString *, const char *, size_t)>(
+        native_pe_address(hooks.base, 0x6f8d0));
+    if (!abbreviate || !assign || name_width < 3) return;
+    if (record.squad_caption_source.size() > static_cast<size_t>(name_width)) {
+        NativeSearchString header(destroy);
+        callback.call_native([&] {
+            assign(&header.value, record.squad_caption_complete_source.data(),
+                record.squad_caption_complete_source.size());
+            abbreviate(&header.value, name_width);
+        });
+        std::string_view value;
+        if (!native_string_view(&header.value, &value, 65536)) return;
+        record.squad_caption_source.assign(value);
+    }
+    if (!hooks.entries[4].installed || !hooks.entries[4].original) return;
+    NativeSearchString output(destroy);
+    NativeUnitIdentityCall call;
+    call.unit = unit;
+    call.publish = false;
+    {
+        NativeUnitIdentityActiveScope scope(call);
+        const auto original = reinterpret_cast<NativeUnitIdentityFormatFn>(
+            hooks.entries[4].original);
+        callback.call_native([&] {
+            original(reinterpret_cast<void *>(unit), &output.value, show_gender);
+        });
+    }
+    std::string_view value;
+    if (!native_string_view(&output.value, &value, 65536) || value.empty()) return;
+    record.unit_identity_complete_source.assign(value);
+    record.unit_identity_source = record.unit_identity_complete_source;
+    record.unit_identity_target = finish_native_unit_identity_call<4>(
+        call, &output.value, show_gender);
+    if (value.size() <= static_cast<size_t>(name_width)) return;
+    const auto visible_caption = [&](NativeSearchString &caption) -> std::optional<std::string> {
+        std::string_view text;
+        if (!native_string_view(&caption.value, &text, 65536)) return std::nullopt;
+        if (text.size() > static_cast<size_t>(name_width)) {
+            callback.call_native([&] { abbreviate(&caption.value, name_width); });
+            if (!native_string_view(&caption.value, &text, 65536)) return std::nullopt;
+        }
+        std::string result(text);
+        if (result.size() > static_cast<size_t>(name_width)) {
+            result.resize(name_width);
+            result.replace(result.size() - 3, 3, "...");
+        }
+        return result;
+    };
+    if (truncate_identity) {
+        if (const auto visible = visible_caption(output)) record.unit_identity_source = *visible;
+        return;
+    }
+    if (!hooks.entries[2].installed || !hooks.entries[2].original ||
+            !hooks.entries[3].installed || !hooks.entries[3].original) return;
+    NativeSearchString name(destroy), role(destroy);
+    NativeUnitIdentityCall display_call;
+    display_call.unit = unit;
+    display_call.publish = false;
+    {
+        NativeUnitIdentityActiveScope scope(display_call);
+        callback.call_native([&] {
+            reinterpret_cast<NativeUnitIdentityNameOnlyFn>(hooks.entries[2].original)(
+                reinterpret_cast<void *>(unit), &name.value);
+            reinterpret_cast<NativeUnitIdentityFormatFn>(hooks.entries[3].original)(
+                reinterpret_cast<void *>(unit), &role.value, show_gender);
+        });
+    }
+    std::string_view full_name, full_role;
+    if (native_string_view(&name.value, &full_name, 65536) &&
+            native_string_view(&role.value, &full_role, 65536))
+        record.unit_identity_split_source = std::string(full_name) +
+            (!full_name.empty() && !full_role.empty() ? " " : "") + std::string(full_role);
+    const auto visible_name = visible_caption(name), visible_role = visible_caption(role);
+    if (visible_name && visible_role)
+        record.unit_identity_source = *visible_name +
+            (!visible_name->empty() && !visible_role->empty() ? " " : "") + *visible_role;
+}
+#endif
+
 // A text_truncated widget keeps original_str after arrange() has overwritten
 // str. Read both from the LIVE widget on every render, including pages built
 // before a hot reload. A resize-only capture cannot recover these cached rows.
@@ -901,17 +1056,33 @@ static void capture_native_unit_chooser_record(void *widget) {
 
     std::array<uintptr_t, 3> members{};
     if (!children(row, members)) return;
-    bool has_portrait = false;
+    uintptr_t portrait_unit = 0;
+    uintptr_t name_unit = 0;
+    std::optional<Widget> name_widget;
+    bool show_gender = false;
+    bool truncate_identity = false;
+    int name_width = 0;
     for (uintptr_t at = members[0]; at < members[1]; at += 16) {
         uintptr_t member = 0;
         std::memcpy(&member, reinterpret_cast<const void *>(at), sizeof(member));
-        Widget portrait;
+        Widget portrait, name;
         if (read_widget(member, 0x162e8e0, portrait) && portrait.parent == row.address) {
-            has_portrait = true;
-            break;
+            const auto *bytes = reinterpret_cast<const unsigned char *>(member);
+            if (native_info_title_memory_readable(bytes, 0x158))
+                std::memcpy(&portrait_unit, bytes + 0x150, sizeof(portrait_unit));
+        } else if (read_widget(member, 0x162eaf8, name) && name.parent == row.address) {
+            const auto *bytes = reinterpret_cast<const unsigned char *>(member);
+            if (!native_info_title_memory_readable(bytes, 0x15b) || !bytes[0x159]) continue;
+            std::memcpy(&name_unit, bytes + 0x150, sizeof(name_unit));
+            name_widget = name;
+            show_gender = bytes[0x158] != 0;
+            truncate_identity = bytes[0x15a] != 0;
+            int32_t minimum_width = 0;
+            std::memcpy(&minimum_width, bytes + 0xc4, sizeof(minimum_width));
+            name_width = std::max(name.rect[2] - name.rect[0] + 1, minimum_width);
         }
     }
-    if (!has_portrait) return;
+    if (!portrait_unit) return;
     const auto *graphics = native_graphics();
     if (!graphics || !native_info_title_memory_readable(graphics, sizeof(*graphics)) ||
             graphics->dimx <= 0 || graphics->dimx > 1000 ||
@@ -935,6 +1106,11 @@ static void capture_native_unit_chooser_record(void *widget) {
     record.panel = {list.rect[0], list.rect[1],
         list.rect[2] - list.rect[0] + 1, list.rect[3] - list.rect[1] + 1};
     record.skill_x = text.rect[0];
+    // Both direct children retain the same native unit; this establishes the
+    // source of a squad heading without inferring aliases from their spelling.
+    if (name_widget && name_unit == portrait_unit && in_grid(*name_widget))
+        capture_native_unit_chooser_squad(portrait_unit, name_widget->rect,
+            name_width, show_gender, truncate_identity, record);
     // unit_list's constructor creates a direct textbox child named
     // "Filter box" (0x1424994), then anchors its three rows at the bottom.
     std::array<uintptr_t, 3> list_members{};
@@ -1171,6 +1347,32 @@ static void capture_native_clipped_default_resize(NativeString *source, size_t w
         original(source, width);
 }
 
+static bool native_caption_draw_outside_clip_y(const graphicst *graphics,
+        const NativeString *source) {
+    if (!graphics || graphics->dimx <= 0 || graphics->dimx > 1000 ||
+            graphics->dimy <= 0 || graphics->dimy > 1000 ||
+            (graphics->screeny >= graphics->clipy[0] &&
+             graphics->screeny <= graphics->clipy[1])) return false;
+    std::string_view text;
+    // A single-line draw cannot contribute glyphs to another visible row.
+    // Keep multiline sources on the full path rather than assuming how a
+    // native addst variant handles line breaks.
+    return native_string_view(source, &text, 4096) &&
+        text.find_first_of("\r\n") == std::string_view::npos;
+}
+
+static void discard_native_clipped_draw_source(const NativeString *source) {
+    auto &state = native_clipped_pending();
+    if (state.busy) return;
+    const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+    if (state.epoch != epoch) {
+        state.fields.clear();
+        state.epoch = epoch;
+    } else {
+        state.fields.erase(source);
+    }
+}
+
 static PendingNativeField remember_native_clipped_draw(graphicst *graphics, const NativeString *source,
         NativeJustification, int width, bool top_layer = false,
         NativeInfoTitleKind info_title_kind = NativeInfoTitleKind::None,
@@ -1182,7 +1384,8 @@ static PendingNativeField remember_native_clipped_draw(graphicst *graphics, cons
         std::optional<SDL_Rect> location_picker_box = std::nullopt,
         std::optional<NativeFortressLaborCaption> fortress_labor_caption = std::nullopt,
         NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None,
-        uintptr_t native_caller = 0) {
+        uintptr_t native_caller = 0,
+        std::optional<std::array<long, 4>> capture_clip = std::nullopt) {
     PendingNativeField captured;
     auto &state = native_clipped_pending();
     // Both supported addst implementations draw at the current cursor and
@@ -1227,7 +1430,7 @@ static PendingNativeField remember_native_clipped_draw(graphicst *graphics, cons
                     remember_native_drawn_text_row(graphics->screenx, graphics->screeny, visible,
                         reinterpret_cast<uintptr_t>(source), graphics,
                         top_layer, complete, info_title_kind, info_title_authored, info_title_right,
-                        civilization_field, mission_title, mission_title_right, std::nullopt, epoch,
+                        civilization_field, mission_title, mission_title_right, capture_clip, epoch,
                         map_hover, location_picker_field, location_picker_box, fortress_labor_caption,
                         travel_building_field, native_caller);
                     if (!complete.empty())
@@ -1257,11 +1460,12 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         NativeMapHoverContext map_hover = {},
         NativeLocationPickerField location_picker_field = NativeLocationPickerField::None,
         NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None,
-        uintptr_t native_caller = 0) {
-    const std::array<long, 4> draw_clip = graphics
+        uintptr_t native_caller = 0,
+        std::optional<std::array<long, 4>> capture_clip = std::nullopt) {
+    const std::array<long, 4> draw_clip = capture_clip.value_or(graphics
         ? std::array<long, 4>{graphics->clipx[0], graphics->clipx[1],
                               graphics->clipy[0], graphics->clipy[1]}
-        : std::array<long, 4>{};
+        : std::array<long, 4>{});
     auto *tooltip_write = g_native_tooltip_write;
     const int tooltip_x = graphics ? graphics->screenx : -1;
     const int tooltip_y = graphics ? graphics->screeny : -1;
@@ -1280,6 +1484,17 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
                     tooltip_write->rows[tooltip_y - box.y][static_cast<size_t>(x - box.x)] = text[offset];
             }
         }
+    }
+    if (native_caption_draw_outside_clip_y(graphics, source)) {
+        // Scroll lists still invoke addst for clipped rows. Their native
+        // cursor advancement must run, but caption ownership and widget
+        // memory walks cannot affect any visible cell. Consume any pending
+        // resize identity now so a reused string cannot inherit this row's
+        // complete source. Tooltip intent and multiline document collection
+        // occur before this visibility filter.
+        discard_native_clipped_draw_source(source);
+        draw();
+        return;
     }
     int info_title_right = -1, mission_title_right = -1;
     if ((info_title_kind != NativeInfoTitleKind::None || mission_title) &&
@@ -1305,7 +1520,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         info_title_kind, info_title_authored, info_title_right, civilization_field,
         mission_title, mission_title_right, map_hover,
         location_picker_field, location_picker_box, fortress_labor_caption, travel_building_field,
-        native_caller);
+        native_caller, capture_clip);
     std::string complete;
     std::optional<std::string> squad_alias_target;
     int x = -1, y = -1, dimx = 0, dimy = 0;
@@ -1867,6 +2082,8 @@ static void capture_native_world_site_entity_fact(graphicst *graphics,
 }
 #endif
 
+#include "native_site_name_draws.inc"
+
 static void capture_native_clipped_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width) {
     const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
@@ -1883,7 +2100,8 @@ static void capture_native_clipped_draw(graphicst *graphics, const NativeString 
     const auto location_picker_field = native_location_picker_field(caller);
     const auto travel_building_field = native_travel_building_field(caller);
     const bool mission_title = native_mission_title_caller(caller);
-    const auto map_hover = native_map_hover_context(caller, source);
+    const auto map_hover = native_caption_draw_outside_clip_y(graphics, source)
+        ? NativeMapHoverContext{} : native_map_hover_context(caller, source);
     std::shared_ptr<const NativeEmbarkReclaimHistoryParagraph> reclaim_history;
     std::unique_lock<std::mutex> history_lock(g_native_embark_reclaim_history_mutex,
         std::defer_lock);
@@ -1980,6 +2198,7 @@ static void capture_native_caption_draw(graphicst *graphics, const NativeString 
 static void reset_native_caption_capture() {
     g_native_map_hover_returns.clear();
     g_native_map_hover_text_offset = 0;
+    g_native_map_hover_list = 0;
     {
         std::lock_guard<std::mutex> lock(g_native_map_track_caption_mutex);
         g_native_map_track_captions.clear();
@@ -2103,6 +2322,7 @@ static bool install_native_caption_hooks() {
     if (!native_reference_calls(entity_fact_calls, 0)) return false;
     calls.insert(calls.end(), entity_fact_calls.begin(), entity_fact_calls.end());
 #endif
+    if (!append_native_site_name_draw_calls(calls)) return false;
     reset_native_caption_capture();
     g_native_caption_hooks.resize = profile.resize;
     g_native_caption_hooks.draw = profile.draw;
@@ -2125,6 +2345,7 @@ static bool install_native_caption_hooks() {
     g_native_mission_title_returns = std::move(profile.mission_title_returns);
     g_native_map_hover_returns = std::move(profile.map_hover_returns);
     g_native_map_hover_text_offset = profile.map_caption_text_offset;
+    g_native_map_hover_list = profile.map_hover_list;
     g_native_announcement_page_binding = std::move(profile.announcement_page);
     g_native_announcement_page_rows = g_native_announcement_page_binding.rows_target
         ? reinterpret_cast<NativeAnnouncementRowsFn>(profile.base +

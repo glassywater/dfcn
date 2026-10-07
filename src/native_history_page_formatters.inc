@@ -5,7 +5,9 @@ struct NativeHistoryPageString {
     NativeString value = native_empty_string();
     ~NativeHistoryPageString() {
 #ifdef _WIN32
-        reinterpret_cast<void (*)(void *)>(native_history_profile_base() + 0x6f850)(&value);
+        const auto destroy = reinterpret_cast<void (*)(void *)>(
+            native_pe_address(native_history_profile_base(), 0x6f850));
+        if (destroy) destroy(&value);
 #endif
     }
 };

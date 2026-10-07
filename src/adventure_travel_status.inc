@@ -5,11 +5,39 @@
 std::optional<std::string> Overlay::translate_adventure_travel_status(
         std::string_view raw_source, const std::vector<int> &source_colors,
         std::vector<int> &target_colors) const {
+    const auto result = translate_adventure_travel_status_result(raw_source, source_colors, target_colors);
+    if (!result.usable() || std::none_of(result.fragments.begin(), result.fragments.end(),
+            [](const auto &fragment) { return fragment.status == dfcn::TranslationStatus::Translated; }))
+        return std::nullopt;
+    return result.target;
+}
+
+dfcn::TranslationResult Overlay::translate_adventure_travel_status_result(
+        std::string_view raw_source, const std::vector<int> &source_colors,
+        std::vector<int> &target_colors) const {
     target_colors.clear();
-    if (raw_source.empty() || source_colors.size() != raw_source.size()) return std::nullopt;
+    if (raw_source.empty() || source_colors.size() != raw_source.size()) return {};
+    refresh_native_display_translation_context();
+    const auto context = native_identity_translation_context();
+    const std::string cache_key = std::to_string(context) + '\x1f' +
+        "travel-status:" + std::string(raw_source);
+    if (const auto found = native_display_translation_cache_.find(cache_key);
+            found != native_display_translation_cache_.end() &&
+            found->second.result.resource_revision == RULESETS.resource_revision() &&
+            found->second.source_colors == source_colors) {
+        target_colors = found->second.target_colors;
+        return found->second.result;
+    }
+    const auto publish = [&](dfcn::TranslationResult result) {
+        result.owner = "native-adventure-travel-status";
+        return cache_native_display_translation(native_display_translation_cache_,
+            native_display_translation_cache_bytes_, cache_key, source_colors, target_colors,
+            std::move(result));
+    };
+    dfcn::TranslationWorkScope budget;
     std::vector<size_t> origins;
     const std::string source = normalize_utterance(raw_source, &origins);
-    if (source.empty() || origins.size() != source.size()) return std::nullopt;
+    if (source.empty() || origins.size() != source.size()) return {};
     constexpr std::array<std::string_view, 4> suffix_scopes = {{
         "travel-common-knowledge", "travel-known-dead", "travel-kill-task", "travel-report-task",
     }};
@@ -77,26 +105,32 @@ std::optional<std::string> Overlay::translate_adventure_travel_status(
             if (const auto common = suffix_at(0, end)) take(*common);
         }
         if (!fits || end == 0) continue;
-        const auto main = translate_announcement_combat(original_span(0, end), production.scope);
-        if (!main || main->empty()) continue;
-        std::string target;
+        const auto main = translate_announcement_combat_result(original_span(0, end), production.scope);
+        if (!main.usable() || main.target.empty()) continue;
+        dfcn::TranslationResult result;
+        result.owner = "native-adventure-travel-status";
+        result.kind = "travel-status";
         std::vector<int> colors;
-        const auto append = [&](std::string_view text, size_t source_begin) {
+        const auto append = [&](const dfcn::TranslationResult &child, size_t source_begin) {
             std::vector<uint32_t> codepoints;
-            if (!decode_utf8(text, codepoints)) return false;
-            target.append(text);
+            if (!child.usable() || !decode_utf8(child.target, codepoints)) return false;
+            result.append(child, origins[source_begin]);
             colors.insert(colors.end(), codepoints.size(), source_colors[origins[source_begin]]);
             return true;
         };
-        if (!append(*main, 0)) continue;
+        if (!append(main, 0)) continue;
         for (auto at = suffixes.rbegin(); at != suffixes.rend(); ++at) {
-            const auto translated = translate_announcement_combat(
+            auto translated = translate_announcement_combat_result(
                 original_span(at->begin, at->end), at->scope);
-            if (!translated || !append(*translated, at->begin)) { fits = false; break; }
+            if (!translated.usable()) translated = preserve_native_translation(
+                original_span(at->begin, at->end), at->scope);
+            if (!append(translated, at->begin)) { fits = false; break; }
         }
         if (!fits) continue;
         target_colors = std::move(colors);
-        return target;
+        result.source.assign(raw_source);
+        result.resource_revision = RULESETS.resource_revision();
+        return publish(std::move(result));
     }
-    return std::nullopt;
+    return publish(preserve_native_translation(raw_source, "travel-status"));
 }

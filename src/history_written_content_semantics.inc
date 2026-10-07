@@ -98,6 +98,10 @@ const auto written_reference = [&](const std::string &prefix) -> std::optional<P
         const auto label = history_reference_kind(text(prefix + ".label"));
         if (!label) return std::nullopt;
         if (!number(prefix + ".named")) return label;
+        // Site references use subject's actual contiguous displayed link,
+        // so a native-language name in writing remains phonetic and a quoted
+        // English name keeps its own place translation. The reference ID
+        // supplies ownership; the hidden native spelling is not English input.
         const auto name = named(route == 0xef1770 ? NativeHistoryObjectKind::Site : NativeHistoryObjectKind::Figure);
         return name ? scoped_apply("work-reference", "the {s} {s}", {*label, *name}) : std::nullopt;
     }

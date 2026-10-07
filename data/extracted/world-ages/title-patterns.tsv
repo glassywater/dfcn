@@ -1,0 +1,13 @@
+enum	native_pattern	value_source	chinese_pattern	semantic_notes	reference_branch_rva
+TwoPowers	Age of Two [caste plural]	两位历史人物同race且同sex；aa3bd0(race,caste,plural=true)	双（物种）时代	Two数具体个体，不指两个国家或种族；仍需RAW名称解析	0x00bb7d33
+TwoPowers	Age of Two [race plural]	两位历史人物同race但sex不同；creature_raw.name复数	双（物种）时代	同物种不同性别不用某一种性别专称指代全部两位	0x00bb7da2
+TwoPowers	Age of [species1] and [species2]	不同race的两位历史人物；分别获取单数名称	（物种1）与（物种2）的时代	and连接两个强大个体的物种，不是国家联盟	0x00bb7e40
+TwoPowers	Age of Two Powers	人物或race信息无法使用的兜底	双权时代	项目补齐建议；不属于已取得中文Wiki表中的独立词条	0x00bb8009
+OnePower	[species adjective] Age	aa3770(race,caste)得到形容词，首字母大写	（物种）的时代	例如Draconic对应巨龙；词性与普通人名不同	0x00bb80ed
+OnePower	Age of the [species singular]	按人物race与sex取物种名称并回退至race单数	（物种）时代	the是英文冠词，不是名称中的The	0x00bb8174
+OnePower	Age of [personal name]	复制该历史人物的language_name，随机保留不同名称部分，a946e0英文名称输出	（人物名）时代	不是任意普通单词；必须保持姓名的语义身份，不能误作物种或普通词义	0x00bb82ed
+OnePower	Age of One Power	无法取得人物或race时的兜底	一权时代	项目补齐建议；不属于已取得中文Wiki表中的独立词条	0x00bb807c
+Race	[race adjective] Age	主导race的creature_raw.name形容词项(+0x60)	（种族）的时代	人口主导种族；不能从标题拼写推断与OnePower的区别	0x00bb864b
+Race	Age of [race plural]	主导race的creature_raw.name复数项(+0x40)	（种族）时代	通常为Age of Dwarves/Elves等，描述人口构成	0x00bb86fa
+Race	Age of the [race singular]	主导race的creature_raw.name单数项(+0x20)	（种族）时代	仍是种族人口时代，不因使用单数就解释成唯一强者	0x00bb87a9
+all	The [ordinal] [base title]	era.ordinal；ordinal=0时不加序数	第（序数）（基本译名）	标题顺序与中文Wiki第二传说时代一致；不是（基本词根）第N纪元	0x00bb8e44

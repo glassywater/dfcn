@@ -1,0 +1,204 @@
+{
+  "binary": "D:\\program\\steam\\steamapps\\common\\DFHack\\hack\\dfhack.dll",
+  "sha256": "1859a7e0342cda3891a671fdb08a8808975760366b8de5a5bb6dd632668eb19d",
+  "image_base": "0x180000000",
+  "attribute_accessor_rva": "0x50d784",
+  "key_table_rva": "0xa703b0",
+  "attribute_table_rva": "0xa704f0",
+  "attribute_stride": 16,
+  "caption_offset": 8,
+  "rating_first": 0,
+  "rating_last": 20,
+  "invalid_attributes_entry_rva": "0xa70640",
+  "rows": [
+    {
+      "rating": 0,
+      "key": "Dabbling",
+      "caption": "Dabbling",
+      "caption_rva": "0xb3e378",
+      "attribute_entry_rva": "0xa704f0",
+      "first_attribute_value": 500,
+      "orders_skill_option": true
+    },
+    {
+      "rating": 1,
+      "key": "Novice",
+      "caption": "Novice",
+      "caption_rva": "0xb3e3ac",
+      "attribute_entry_rva": "0xa70500",
+      "first_attribute_value": 600,
+      "orders_skill_option": true
+    },
+    {
+      "rating": 2,
+      "key": "Adequate",
+      "caption": "Adequate",
+      "caption_rva": "0xb3e3d0",
+      "attribute_entry_rva": "0xa70510",
+      "first_attribute_value": 700,
+      "orders_skill_option": false
+    },
+    {
+      "rating": 3,
+      "key": "Competent",
+      "caption": "Competent",
+      "caption_rva": "0xb3e408",
+      "attribute_entry_rva": "0xa70520",
+      "first_attribute_value": 800,
+      "orders_skill_option": true
+    },
+    {
+      "rating": 4,
+      "key": "Skilled",
+      "caption": "Skilled",
+      "caption_rva": "0xb3e440",
+      "attribute_entry_rva": "0xa70530",
+      "first_attribute_value": 900,
+      "orders_skill_option": false
+    },
+    {
+      "rating": 5,
+      "key": "Proficient",
+      "caption": "Proficient",
+      "caption_rva": "0xb3e470",
+      "attribute_entry_rva": "0xa70540",
+      "first_attribute_value": 1000,
+      "orders_skill_option": true
+    },
+    {
+      "rating": 6,
+      "key": "Talented",
+      "caption": "Talented",
+      "caption_rva": "0xb3e490",
+      "attribute_entry_rva": "0xa70550",
+      "first_attribute_value": 1100,
+      "orders_skill_option": true
+    },
+    {
+      "rating": 7,
+      "key": "Adept",
+      "caption": "Adept",
+      "caption_rva": "0xb3e4b0",
+      "attribute_entry_rva": "0xa70560",
+      "first_attribute_value": 1200,
+      "orders_skill_option": false
+    },
+    {
+      "rating": 8,
+      "key": "Expert",
+      "caption": "Expert",
+      "caption_rva": "0xb3e4c4",
+      "attribute_entry_rva": "0xa70570",
+      "first_attribute_value": 1300,
+      "orders_skill_option": true
+    },
+    {
+      "rating": 9,
+      "key": "Professional",
+      "caption": "Professional",
+      "caption_rva": "0xb3e4e0",
+      "attribute_entry_rva": "0xa70580",
+      "first_attribute_value": 1400,
+      "orders_skill_option": false
+    },
+    {
+      "rating": 10,
+      "key": "Accomplished",
+      "caption": "Accomplished",
+      "caption_rva": "0xb3e510",
+      "attribute_entry_rva": "0xa70590",
+      "first_attribute_value": 1500,
+      "orders_skill_option": true
+    },
+    {
+      "rating": 11,
+      "key": "Great",
+      "caption": "Great",
+      "caption_rva": "0xaf9b48",
+      "attribute_entry_rva": "0xa705a0",
+      "first_attribute_value": 1600,
+      "orders_skill_option": false
+    },
+    {
+      "rating": 12,
+      "key": "Master",
+      "caption": "Master",
+      "caption_rva": "0xb2c9bc",
+      "attribute_entry_rva": "0xa705b0",
+      "first_attribute_value": 1700,
+      "orders_skill_option": true
+    },
+    {
+      "rating": 13,
+      "key": "HighMaster",
+      "caption": "High Master",
+      "caption_rva": "0xb3e678",
+      "attribute_entry_rva": "0xa705c0",
+      "first_attribute_value": 1800,
+      "orders_skill_option": false
+    },
+    {
+      "rating": 14,
+      "key": "GrandMaster",
+      "caption": "Grand Master",
+      "caption_rva": "0xb3e698",
+      "attribute_entry_rva": "0xa705d0",
+      "first_attribute_value": 1900,
+      "orders_skill_option": true
+    },
+    {
+      "rating": 15,
+      "key": "Legendary",
+      "caption": "Legendary",
+      "caption_rva": "0xb3e578",
+      "attribute_entry_rva": "0xa705e0",
+      "first_attribute_value": 2000,
+      "orders_skill_option": true
+    },
+    {
+      "rating": 16,
+      "key": "Legendary1",
+      "caption": "Legendary+1",
+      "caption_rva": "0xb3e6b8",
+      "attribute_entry_rva": "0xa705f0",
+      "first_attribute_value": 2100,
+      "orders_skill_option": false
+    },
+    {
+      "rating": 17,
+      "key": "Legendary2",
+      "caption": "Legendary+2",
+      "caption_rva": "0xb3e700",
+      "attribute_entry_rva": "0xa70600",
+      "first_attribute_value": 2200,
+      "orders_skill_option": false
+    },
+    {
+      "rating": 18,
+      "key": "Legendary3",
+      "caption": "Legendary+3",
+      "caption_rva": "0xb3e720",
+      "attribute_entry_rva": "0xa70610",
+      "first_attribute_value": 2300,
+      "orders_skill_option": false
+    },
+    {
+      "rating": 19,
+      "key": "Legendary4",
+      "caption": "Legendary+4",
+      "caption_rva": "0xb3e740",
+      "attribute_entry_rva": "0xa70620",
+      "first_attribute_value": 2400,
+      "orders_skill_option": false
+    },
+    {
+      "rating": 20,
+      "key": "Legendary5",
+      "caption": "Legendary+5",
+      "caption_rva": "0xb3e760",
+      "attribute_entry_rva": "0xa70630",
+      "first_attribute_value": 0,
+      "orders_skill_option": false
+    }
+  ]
+}

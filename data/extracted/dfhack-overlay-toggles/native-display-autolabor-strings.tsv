@@ -1,0 +1,545 @@
+string_rva	text
+0xa4a20	autolabor
+0xa4a30	autolabor_setMode
+0xa4a48	autolabor_setBalance
+0xa4a60	autolabor_setIdleReserve
+0xa4b10	autolabor_getMode
+0xa4b28	autolabor_getStatus
+0xa4b40	autolabor_getBalance
+0xa4b58	autolabor_getBalanceStops
+0xa4b78	autolabor_getIdleReserve
+0xa4b98	autolabor_getStarvingJobs
+0xa4bb8	autolabor_checkLaborCoverage
+0xa4bd8	autolabor_checkJobCoverage
+0xa4c40	Unknown exception
+0xa4c88	bad array new length
+0xa4ca0	string too long
+0xa4d70	Automatically manage dwarf labors (legacy labor matrix mode).
+0xa4db0	Automatically manage dwarf labors (work detail mode).
+0xa4de8	labormanager
+0xa4df8	modern (labormanager)
+0xa4e10	monitor (starvation warnings)
+0xa4e30	legacy (autolabor)
+0xa4e44	Mode: 
+0xa4e4c	legacy
+0xa4e54	modern
+0xa5110	vector too long
+0xa5120	mapper
+0xa5128	map/set too long
+0xa54c0	: no entry in job to labor table
+0xa59b8	labor_probe
+0xa59c8	staffing
+0xa59d8	lean-staffing
+0xa59e8	balanced
+0xa59f8	lean-skills
+0xa5a04	skills
+0xa5a10	autolabor/config
+0xa5a24	NONE
+0xa5b28	auto:
+0xa5b30	autolabor/flagged
+0xa5b48	autolabor/borrowed
+0xa5b60	invalid string position
+0xa6328	IDLE
+0xa6330	BUSY
+0xa6338	EXCLUSIVE
+0xa6348	MILITARY
+0xa6354	CHILD
+0xa635c	OTHER
+0xa6368	legacy_cycle
+0xa6380	invalid stoi argument
+0xa6398	stoi argument out of range
+0xa63b8	: no entry in legacy labor defaults
+0xa63e0	 labor types
+0xa63f0	 entries for 
+0xa6400	labor defaults table has 
+0xa6420	autolabor/haulpct
+0xa6438	autolabor/labors/
+0xa6450	Enabling autolabor (legacy mode).
+0xa6478	Disabling autolabor.
+0xa6490	(diplomacy)
+0xa64a0	(trader)
+0xa6598	disabled
+0xa65a8	haulers
+0xa65b0	, pool 
+0xa65b8	, maximum 
+0xa65c8	minimum 
+0xa65d8	 dwarfs
+0xa65e0	, currently 
+0xa65f0	Error: The plugin is not enabled in legacy mode.
+0xa66a0	All labors reset.
+0xa66b8	vector<bool> too long
+0xa67f0	modern_cycle
+0xa6800	tool_detail
+0xa680c	assign
+0xa6818	: is_exclusive_labor/labor_tool disagree
+0xa6848	autolabor/modern/labors/
+0xa6868	autolabor/modern/migrated
+0xa6888	labormanager/2.0/labors/
+0xa68a8	autolabor/engine-state
+0xa68c0	stats:
+0xa68c8	post:
+0xa68d0	;usage:
+0xa68d8	;streak:
+0xa68e8	;track:
+0xa68f0	stats
+0xa68f8	post
+0xa6900	usage
+0xa6908	streak
+0xa6910	track
+0xa6918	Enabling labormanager (work detail mode).
+0xa6948	Disabling labormanager.
+0xa6960	 specialists
+0xa6970	 laborers, 
+0xa6980	 on guild rest)
+0xa6998	 generalists
+0xa69ac	null
+0xa6a18	claimed
+0xa6a20	unclaimed
+0xa6a2c	none
+0xa6a60	unskilled
+0xa6be8	kept
+0xa6bf0	released
+0xa7470	usage:
+0xa7478	 {}={:.1f}
+0xa76b8	Balance: 
+0xa76f8	Idle reserve: 
+0xa7708	managed
+0xa7710	unmanaged
+0xa7758	, idle reserve 
+0xa7768	 postings resolved
+0xa7780	job board: 
+0xa778c	 ticks
+0xa7798	 ticks, longest 
+0xa77b0	, avg wait 
+0xa77c0	 ticks, oldest 
+0xa77d0	 starving (> 
+0xa77e8	top skills in use:
+0xa7808	 cycles)
+0xa7818	 (starved 
+0xa7828	Enabling labor monitor (starvation warnings only).
+0xa7860	Disabling labor monitor.
+0xa7880	 starving postings (> 
+0xa7898	labor monitor: 
+0xa78a8	 at 
+0xa78b0	, oldest 
+0xa78c0	invalid map<K, T> key
+0xa7970	53.16-r2
+0xa797c	53.16
+0xa7988	https://github.com/DFHack/dfhack/actions/runs/36605190931
+0xa79c8	53.16-r2-0-g02e77acf
+0xa79e0	02e77acf13049f5661a4da0aa3d876bf95b74903
+0xa7a10	63efa5f44c5fd00ded98a2034f5d6069fd94f7a4
+0xa7a40	bad allocation
+0xa7a50	invalid format specifier for char
+0xa7af8	generic
+0xa7b38	00010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899
+0xa7c02	00010203  0405060707080910  1112131414151617  18192021  222324  25262728  2930313232333435  3637383939404142  43444546  474849  50515253  5455565757585960  6162636464656667  68697071  727374  75767778  7980818282838485  8687888989909192  93949596  979899  
+0xa7f00	number is too big
+0xa7f60	bad cast
+0xa7f6c	false
+0xa7f74	true
+0xa8010	%s:%d: assertion failed: %s
+0xa8030	error 
+0xa8038	unmatched '}' in format string
+0xa8058	invalid format string
+0xa8070	missing '}' in format string
+0xa8090	unknown format specifier
+0xa80b0	argument not found
+0xa80c8	cannot switch from manual to automatic argument indexing
+0xa8104	{}{}
+0xa8110	cannot write to file
+0xa9e11	A]DG
+0xaab60	invalid format specifier
+0xaab80	format specifier requires numeric argument
+0xaabb0	invalid fill character '{'
+0xaabd0	invalid utf8
+0xab158	invalid precision
+0xab170	string pointer is null
+0xab188	width/precision is not integer
+0xab1b0	cannot switch from automatic to manual argument indexing
+0xab200	width/precision is out of range
+0xab230	0123456789ABCDEF
+0xab248	0123456789abcdef
+0xab2a0	0000000000000000
+0xaf7bc	D:\a\dfhack\dfhack\build\plugins\autolabor\autolabor.pdb
+0xaf818	.text$di
+0xaf82c	.text$mn
+0xaf840	.text$mn$00
+0xaf854	.text$x
+0xaf864	.text$yd
+0xaf878	.idata$5
+0xaf88c	.00cfg
+0xaf89c	.CRT$XCA
+0xaf8b0	.CRT$XCL
+0xaf8c4	.CRT$XCU
+0xaf8d8	.CRT$XCZ
+0xaf8ec	.CRT$XIA
+0xaf900	.CRT$XIZ
+0xaf914	.CRT$XLA
+0xaf928	.CRT$XLZ
+0xaf93c	.CRT$XPA
+0xaf950	.CRT$XPZ
+0xaf964	.CRT$XTA
+0xaf978	.CRT$XTZ
+0xaf98c	.rdata
+0xaf99c	.rdata$CastGuardVftablesA
+0xaf9c0	.rdata$CastGuardVftablesC
+0xaf9e4	.rdata$T
+0xaf9f8	.rdata$r
+0xafa0c	.rdata$voltmd
+0xafa24	.rdata$zzzdbg
+0xafa3c	.rtc$IAA
+0xafa50	.rtc$IZZ
+0xafa64	.rtc$TAA
+0xafa78	.rtc$TZZ
+0xafa8c	.tls
+0xafa9c	.tls$
+0xafaac	.tls$ZZZ
+0xafac0	.xdata
+0xafad0	.xdata$x
+0xafae4	.edata
+0xafaf4	.idata$2
+0xafb08	.idata$3
+0xafb1c	.idata$4
+0xafb30	.idata$6
+0xafb44	.data
+0xafb54	.data$r
+0xafb64	.data$rs
+0xafb78	.bss
+0xafb88	.pdata
+0xafb98	.rsrc$01
+0xafbac	.rsrc$02
+0xb56d9	`20O
+0xb9fcb	p20O
+0xba013	p20O
+0xba17c	Pb0O
+0xba1c4	Pb0O
+0xbaca7	`20O
+0xbd230	Pb0O
+0xbf2d8	autolabor.plug.dll
+0xbf2eb	plugin_abi_version
+0xbf2fe	plugin_dev
+0xbf309	plugin_enable
+0xbf317	plugin_git_description
+0xbf32e	plugin_globals
+0xbf33d	plugin_init
+0xbf349	plugin_is_enabled
+0xbf35b	plugin_load_site_data
+0xbf371	plugin_lua_commands
+0xbf385	plugin_lua_functions
+0xbf39a	plugin_name
+0xbf3a6	plugin_onstatechange
+0xbf3bb	plugin_onupdate
+0xbf3cb	plugin_self
+0xbf3d7	plugin_shutdown
+0xbf3e7	plugin_version
+0xbfd79	g?flush_buffer@color_ostream@DFHack@@AEAAX_N@Z
+0xbfda9	m?getInstance@Core@DFHack@@SAAEAV12@XZ
+0xbfdd2	??0PluginCommand@DFHack@@QEAA@PEBD0P6A?AW4command_result@1@AEAVcolor_ostream@1@AEAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@Z_N40@Z
+0xbfecc	??1PluginCommand@DFHack@@QEAA@XZ
+0xbfef0	??0PluginCommand@DFHack@@QEAA@AEBU01@@Z
+0xbff1a	??0PluginCommand@DFHack@@QEAA@$$QEAU01@@Z
+0xbff46	?notify_deprecated@LuaWrapper@DFHack@@YAXPEAUlua_State@@V?$basic_string_view@DU?$char_traits@D@std@@@std@@1@Z
+0xbffb6	??0function_identity_base@DFHack@@QEAA@H_N@Z
+0xbffe6	??1function_identity_base@DFHack@@UEAA@XZ
+0xc0011	g?get@?$identity_traits@H@df@@SAPEBVinteger_identity_base@2@XZ
+0xc0052	??0cur_lua_ostream_argument@df@@QEAA@PEAUlua_State@@@Z
+0xc008c	??0PersistentDataItem@DFHack@@QEAA@XZ
+0xc00b4	??1PersistentDataItem@DFHack@@QEAA@XZ
+0xc00db	v?isFortressMode@World@DFHack@@YA_NW4game_type@3enums@df@@@Z
+0xc0119	_?can_allocate@type_identity@DFHack@@MEBA_NXZ
+0xc0148	ta?do_allocate@type_identity@DFHack@@MEBAPEAXXZ
+0xc0178	za?do_copy@type_identity@DFHack@@MEBA_NPEAXPEBX@Z
+0xc01ab	a?do_destroy@type_identity@DFHack@@MEBA_NPEAX@Z
+0xc01dd	^?byte_size@type_identity@DFHack@@UEBA_KXZ
+0xc0209	v?isPrimitive@type_identity@DFHack@@UEBA_NXZ
+0xc0236	av?isConstructed@type_identity@DFHack@@UEBA_NXZ
+0xc0266	cv?isContainer@type_identity@DFHack@@UEBA_NXZ
+0xc0296	?type@function_identity_base@DFHack@@UEBA?AW4identity_type@2@XZ
+0xc02d7	m?getFullName@function_identity_base@DFHack@@UEBA?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ
+0xc034d	^?build_metatable@type_identity@DFHack@@UEBAXPEAUlua_State@@@Z
+0xc038e	?lua_read@function_identity_base@DFHack@@UEBAXPEAUlua_State@@HPEAX@Z
+0xc03d6	?lua_write@function_identity_base@DFHack@@UEBAXPEAUlua_State@@HPEAXH@Z
+0xc0420	?log_errors_to_stderr@color_ostream@DFHack@@2_NA
+0xc0453	Y?attrs@?$enum_traits@W4job_skill@1enums@df@@@df@@SAAEBUattr_entry_type@12@W4job_skill@4enums@2@@Z
+0xc04b7	v?isEnabled@DebugCategory@DFHack@@QEBA_NW4level@12@@Z
+0xc04ef	H??_Dostream_proxy_prefix@DebugCategory@DFHack@@QEAAXXZ
+0xc0529	n?getStream@DebugCategory@DFHack@@QEBA?AUostream_proxy_prefix@12@W4level@12@AEAVcolor_ostream@2@@Z
+0xc058e	??0DebugRegisterBase@DFHack@@IEAA@PEAVDebugCategory@1@@Z
+0xc05ca	?unregister@DebugRegisterBase@DFHack@@IEAAXPEAVDebugCategory@2@@Z
+0xc060d	`?decode@MaterialInfo@DFHack@@QEAA_NFH@Z
+0xc0637	`?decode@MaterialInfo@DFHack@@QEAA_NPEAUitem@df@@@Z
+0xc066d	Z?binsearch_index@building@df@@SAHAEBV?$vector@PEAUbuilding@df@@V?$allocator@PEAUbuilding@df@@@std@@@std@@H_N@Z
+0xc06df	a?find@building_def@df@@SAPEAU12@H@Z
+0xc0704	DZ?binsearch_index@item@df@@SAHAEBV?$vector@PEAUitem@df@@V?$allocator@PEAUitem@df@@@std@@@std@@H_N@Z
+0xc076b	o?get_vector@reaction@df@@SAAEAV?$vector@PEAUreaction@df@@V?$allocator@PEAUreaction@df@@@std@@@std@@XZ
+0xc07d3	~?key_table@?$enum_traits@W4item_type@1enums@df@@@df@@2QBQEBDB
+0xc0813	~?key_table@?$enum_traits@W4job_type@1enums@df@@@df@@2QBQEBDB
+0xc0853	}?key_table@?$enum_traits@W4building_type@1enums@df@@@df@@2QBQEBDB
+0xc0896	[~?key_table@?$enum_traits@W4furnace_type@1enums@df@@@df@@2QBQEBDB
+0xc08dc	?key_table@?$enum_traits@W4workshop_type@1enums@df@@@df@@2QBQEBDB
+0xc0920	?world@global@df@@3PEAU02@EA
+0xc093f	y?is_direct_instance@virtual_identity@DFHack@@QEBA_NPEAX@Z
+0xc097b	Y?attrs@?$enum_traits@W4profession@1enums@df@@@df@@SAAEBUattr_entry_type@12@W4profession@4enums@2@@Z
+0xc09e0	2w?isValid@PersistentDataItem@DFHack@@QEBA_NXZ
+0xc0a11	|?ival@PersistentDataItem@DFHack@@QEAAAEAHH@Z
+0xc0a41	|?ival@PersistentDataItem@DFHack@@QEBAHH@Z
+0xc0a6c	.2??4PersistentDataItem@DFHack@@QEAAAEAV01@$$QEAV01@@Z
+0xc0aa5	n?getStream@DebugCategory@DFHack@@QEBA?AUostream_proxy_prefix@12@W4level@12@@Z
+0xc0af4	5v?isActive@Units@DFHack@@YA_NPEAUunit@df@@@Z
+0xc0b23	v?isOwnCiv@Units@DFHack@@YA_NPEAUunit@df@@@Z
+0xc0b51	v?isOwnGroup@Units@DFHack@@YA_NPEAUunit@df@@@Z
+0xc0b80	Ov?isBaby@Units@DFHack@@YA_NPEAUunit@df@@@Z
+0xc0bac	Wv?isChild@Units@DFHack@@YA_NPEAUunit@df@@@Z
+0xc0bdb	m?getMiscTrait@Units@DFHack@@YAPEAUunit_misc_trait@df@@PEAUunit@4@W4misc_trait_type@6enums@4@_N@Z
+0xc0c3e	fn?getReadableName@Units@DFHack@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEAUunit@df@@_N@Z
+0xc0cb5	M?GetPersistentSiteData@World@DFHack@@YA?AVPersistentDataItem@2@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z
+0xc0d3d	Z?binsearch_index@entity_position@df@@SAHAEBV?$vector@PEAUentity_position@df@@V?$allocator@PEAUentity_position@df@@@std@@@std@@H_N@Z
+0xc0dc3	Z?binsearch_index@entity_position_assignment@df@@SAHAEBV?$vector@PEAUentity_position_assignment@df@@V?$allocator@PEAUentity_position_assignment@df@@@std@@@std@@H_N@Z
+0xc0e6b	b?find@historical_entity@df@@SAPEAU12@H@Z
+0xc0e97	b?find@historical_figure@df@@SAPEAU12@H@Z
+0xc0ec4	?key_table@?$enum_traits@W4unit_labor@1enums@df@@@df@@2QBQEBDB
+0xc0f06	?plotinfo@global@df@@3PEAUplotinfost@2@EA
+0xc0f30	.R?_identity@building_tradedepotst@df@@2Vvirtual_identity@DFHack@@B
+0xc0f76	?val@PersistentDataItem@DFHack@@QEAAAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ
+0xc0fdf	`?data_size@PersistentDataItem@DFHack@@QEBA_KXZ
+0xc1010	1o?get_int28@PersistentDataItem@DFHack@@QEBAH_K@Z
+0xc1044	?set_int28@PersistentDataItem@DFHack@@QEAAX_KH@Z
+0xc1076	[Y?allocate@type_identity@DFHack@@QEBAPEAXXZ
+0xc10a4	0b?find@unit@df@@SAPEAU12@H@Z
+0xc10c4	??1work_detail@df@@QEAA@XZ
+0xc10e0	Xv?isCitizen@Units@DFHack@@YA_NPEAUunit@df@@_N@Z
+0xc1114	?setAutomaticProfessions@Units@DFHack@@YAXPEAUunit@df@@@Z
+0xc114e	PL?AddPersistentSiteData@World@DFHack@@YA?AVPersistentDataItem@2@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z
+0xc11d5	X?_identity@work_detail@df@@2Vstruct_identity@DFHack@@B
+0xc120e	|}?key@PersistentDataItem@DFHack@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ
+0xc127a	??0PersistentDataItem@DFHack@@QEAA@$$QEAV01@@Z
+0xc12aa	/2??4PersistentDataItem@DFHack@@QEAAAEAV01@AEBV01@@Z
+0xc12e0	5w?isValidLabor@Units@DFHack@@YA_NPEAUunit@df@@W4unit_labor@5enums@4@@Z
+0xc1329	M?GetPersistentSiteData@World@DFHack@@YAXPEAV?$vector@VPersistentDataItem@DFHack@@V?$allocator@VPersistentDataItem@DFHack@@@std@@@std@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@4@_N@Z
+0xc13f5	g?game@global@df@@3PEAUgamest@2@EA
+0xc1419	y?is_instance@virtual_identity@DFHack@@QEBA_NPEAX@Z
+0xc144f	|?is_valid@?$enum_traits@W4unit_labor@1enums@df@@@df@@SA_NH@Z
+0xc148f	Y?attrs@?$enum_traits@W4job_type@1enums@df@@@df@@SAAEBUattr_entry_type@12@W4job_type@4enums@2@@Z
+0xc14f0	wz?is_valid@?$enum_traits@W4building_type@1enums@df@@@df@@SA_NH@Z
+0xc1533	m?getHolder@Job@DFHack@@YAPEAUbuilding@df@@PEAUjob@4@@Z
+0xc156c	<b?find@world_site@df@@SAPEAU12@H@Z
+0xc1591	_?casteFlagSet@Units@DFHack@@YA_NHHW4caste_raw_flags@3enums@df@@@Z
+0xc15d5	M?GetPersistentWorldData@World@DFHack@@YAXPEAV?$vector@VPersistentDataItem@DFHack@@V?$allocator@VPersistentDataItem@DFHack@@@std@@@std@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@4@_N@Z
+0xc16a2	?key_table@?$enum_traits@W4profession@1enums@df@@@df@@2QBQEBDB
+0xc16e3	~?key_table@?$enum_traits@W4job_skill@1enums@df@@@df@@2QBQEBDB
+0xc1724	?key_table@?$enum_traits@W4work_detail_icon_type@1enums@df@@@df@@2QBQEBDB
+0xc176f	P?_identity@abstract_building_guildhallst@df@@2Vvirtual_identity@DFHack@@B
+0xc17ba	dfhack.dll
+0xc17c8	?lua_pushnil@@YAXPEAUlua_State@@@Z
+0xc17ee	?lua_pushinteger@@YAXPEAUlua_State@@_J@Z
+0xc181a	?lua_pushlstring@@YAPEBDPEAUlua_State@@PEBD_K@Z
+0xc184c	?lua_createtable@@YAXPEAUlua_State@@HH@Z
+0xc1878	?lua_setfield@@YAXPEAUlua_State@@HPEBD@Z
+0xc18a4	?lua_rawseti@@YAXPEAUlua_State@@H_J@Z
+0xc18ca	lua53.dll
+0xc18d6	WriteConsoleW
+0xc18e4	KERNEL32.dll
+0xc18f4	?_Xbad_alloc@std@@YAXXZ
+0xc190e	?_Xlength_error@std@@YAXPEBD@Z
+0xc1930	?uncaught_exceptions@std@@YAHXZ
+0xc1952	?_Getcvt@_Locinfo@std@@QEBA?AU_Cvtvec@@XZ
+0xc197e	?_W_Getdays@_Locinfo@std@@QEBAPEBGXZ
+0xc19a6	?_W_Getmonths@_Locinfo@std@@QEBAPEBGXZ
+0xc19d0	?good@ios_base@std@@QEBA_NXZ
+0xc19f0	?flags@ios_base@std@@QEBAHXZ
+0xc1a10	?width@ios_base@std@@QEBA_JXZ
+0xc1a30	?width@ios_base@std@@QEAA_J_J@Z
+0xc1a52	?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAAHD@Z
+0xc1a94	?sputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAA_JPEBD_J@Z
+0xc1adc	?setstate@?$basic_ios@DU?$char_traits@D@std@@@std@@QEAAXH_N@Z
+0xc1b1c	?tie@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBAPEAV?$basic_ostream@DU?$char_traits@D@std@@@2@XZ
+0xc1b82	?rdbuf@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBAPEAV?$basic_streambuf@DU?$char_traits@D@std@@@2@XZ
+0xc1bec	?fill@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBADXZ
+0xc1c26	?widen@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBADD@Z
+0xc1c62	?_Osfx@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAXXZ
+0xc1ca0	??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
+0xc1cf4	?put@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@D@Z
+0xc1d38	?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@XZ
+0xc1d7c	?cerr@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
+0xc1db8	??0?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAA@XZ
+0xc1df4	??1?$basic_streambuf@DU?$char_traits@D@std@@@std@@UEAA@XZ
+0xc1e30	?eback@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBAPEADXZ
+0xc1e74	?gptr@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBAPEADXZ
+0xc1eb6	?pbase@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBAPEADXZ
+0xc1efa	?pptr@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBAPEADXZ
+0xc1f3c	?egptr@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBAPEADXZ
+0xc1f80	?gbump@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAXH@Z
+0xc1fc2	?setg@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAXPEAD00@Z
+0xc2008	?epptr@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBAPEADXZ
+0xc204c	?setp@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAXPEAD0@Z
+0xc2090	?setp@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAXPEAD00@Z
+0xc20d6	?_Pninc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAPEADXZ
+0xc211a	??1?$basic_ios@DU?$char_traits@D@std@@@std@@UEAA@XZ
+0xc2150	??0?$basic_ios@DU?$char_traits@D@std@@@std@@IEAA@XZ
+0xc2186	??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@F@Z
+0xc21c8	??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@H@Z
+0xc220a	??0?$basic_iostream@DU?$char_traits@D@std@@@std@@QEAA@PEAV?$basic_streambuf@DU?$char_traits@D@std@@@1@@Z
+0xc2276	??1?$basic_iostream@DU?$char_traits@D@std@@@std@@UEAA@XZ
+0xc22b2	?imbue@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAAXAEBVlocale@2@@Z
+0xc2300	?sync@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAAHXZ
+0xc2340	?setbuf@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAAPEAV12@PEAD_J@Z
+0xc238e	?xsputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAA_JPEBD_J@Z
+0xc23d6	?xsgetn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAA_JPEAD_J@Z
+0xc241e	?uflow@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAAHXZ
+0xc245e	?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAA_JXZ
+0xc24a4	?_Unlock@?$basic_streambuf@DU?$char_traits@D@std@@@std@@UEAAXXZ
+0xc24e6	?_Lock@?$basic_streambuf@DU?$char_traits@D@std@@@std@@UEAAXXZ
+0xc2526	?_Xout_of_range@std@@YAXPEBD@Z
+0xc2548	?_Xinvalid_argument@std@@YAXPEBD@Z
+0xc256e	??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@_K@Z
+0xc25b0	??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@_J@Z
+0xc25f2	??0_Lockit@std@@QEAA@H@Z
+0xc260e	??1_Lockit@std@@QEAA@XZ
+0xc2628	?_Syserror_map@std@@YAPEBDH@Z
+0xc2648	_Mbrtowc
+0xc2654	??0_Locinfo@std@@QEAA@PEBD@Z
+0xc2674	??1_Locinfo@std@@QEAA@XZ
+0xc2690	?_Getfalse@_Locinfo@std@@QEBAPEBDXZ
+0xc26b6	?_Gettrue@_Locinfo@std@@QEBAPEBDXZ
+0xc26dc	?c_str@?$_Yarn@D@std@@QEBAPEBDXZ
+0xc2700	??0facet@locale@std@@IEAA@_K@Z
+0xc2722	??1facet@locale@std@@MEAA@XZ
+0xc2742	?_Init@locale@std@@CAPEAV_Locimp@12@_N@Z
+0xc276e	?_Getgloballocale@locale@std@@CAPEAV_Locimp@12@XZ
+0xc27a2	?_Incref@facet@locale@std@@UEAAXXZ
+0xc27c8	?_Decref@facet@locale@std@@UEAAPEAV_Facet_base@3@XZ
+0xc27fe	?_Id_cnt@id@locale@std@@0HA
+0xc281c	?id@?$numpunct@D@std@@2V0locale@2@A
+0xc2842	?id@?$numpunct@_W@std@@2V0locale@2@A
+0xc2868	MSVCP140.dll
+0xc2878	_purecall
+0xc2884	__std_terminate
+0xc2896	__std_exception_copy
+0xc28ae	__std_exception_destroy
+0xc28c8	_CxxThrowException
+0xc28de	__CxxFrameHandler4
+0xc28f4	memcmp
+0xc28fe	memcpy
+0xc2908	memmove
+0xc2912	memset
+0xc291c	memchr
+0xc2926	__C_specific_handler
+0xc293e	__current_exception
+0xc2954	__current_exception_context
+0xc2972	__std_type_info_destroy_list
+0xc2990	VCRUNTIME140.dll
+0xc29a2	VCRUNTIME140_1.dll
+0xc29b8	_invoke_watson
+0xc29ca	calloc
+0xc29d4	strlen
+0xc29de	wcslen
+0xc29e8	_errno
+0xc29f2	atoi
+0xc29fa	strtol
+0xc2a04	round
+0xc2a0c	atoll
+0xc2a14	_dsign
+0xc2a1e	free
+0xc2a26	malloc
+0xc2a30	abort
+0xc2a38	__acrt_iob_func
+0xc2a4a	fflush
+0xc2a54	_fileno
+0xc2a5e	fputc
+0xc2a66	fwrite
+0xc2a70	_lock_file
+0xc2a7e	_unlock_file
+0xc2a8e	__stdio_common_vfprintf
+0xc2aa8	_get_osfhandle
+0xc2aba	_isatty
+0xc2ac4	localeconv
+0xc2ad2	_dclass
+0xc2adc	_fdclass
+0xc2ae8	_ldclass
+0xc2af4	_callnewh
+0xc2b00	_seh_filter_dll
+0xc2b12	_configure_narrow_argv
+0xc2b2c	_initialize_narrow_environment
+0xc2b4e	_initialize_onexit_table
+0xc2b6a	_register_onexit_function
+0xc2b86	_execute_onexit_table
+0xc2b9e	_crt_atexit
+0xc2bac	_crt_at_quick_exit
+0xc2bc2	_cexit
+0xc2bcc	_initterm
+0xc2bd8	_initterm_e
+0xc2be6	terminate
+0xc2bf0	api-ms-win-crt-runtime-l1-1-0.dll
+0xc2c12	api-ms-win-crt-heap-l1-1-0.dll
+0xc2c32	api-ms-win-crt-string-l1-1-0.dll
+0xc2c54	api-ms-win-crt-convert-l1-1-0.dll
+0xc2c76	api-ms-win-crt-math-l1-1-0.dll
+0xc2c96	api-ms-win-crt-stdio-l1-1-0.dll
+0xc2cb6	api-ms-win-crt-filesystem-l1-1-0.dll
+0xc2cdc	api-ms-win-crt-locale-l1-1-0.dll
+0xc2d00	ReleaseSRWLockExclusive
+0xc2d1a	AcquireSRWLockExclusive
+0xc2d34	WakeAllConditionVariable
+0xc2d50	SleepConditionVariableSRW
+0xc2d6c	RtlCaptureContext
+0xc2d80	RtlLookupFunctionEntry
+0xc2d9a	RtlVirtualUnwind
+0xc2dae	IsDebuggerPresent
+0xc2dc2	UnhandledExceptionFilter
+0xc2dde	SetUnhandledExceptionFilter
+0xc2dfc	GetStartupInfoW
+0xc2e0e	IsProcessorFeaturePresent
+0xc2e2a	GetModuleHandleW
+0xc2e3e	GetCurrentProcess
+0xc2e52	TerminateProcess
+0xc2e66	QueryPerformanceCounter
+0xc2e80	GetCurrentProcessId
+0xc2e96	GetCurrentThreadId
+0xc2eac	GetSystemTimeAsFileTime
+0xc2ec6	DisableThreadLibraryCalls
+0xc2ee2	InitializeSListHead
+0xc3318	auto:Laborers
+0xc3338	auto:Care
+0xc3358	auto:Skill:
+0xc33a8	02e77ac
+0xc3490	.?AVexception@std@@
+0xc34b8	.?AVbad_array_new_length@std@@
+0xc34e8	.?AVbad_alloc@std@@
+0xc3510	.?AV?$basic_streambuf@DU?$char_traits@D@std@@@std@@
+0xc3558	.?AVruntime_error@std@@
+0xc3580	.?AVsystem_error@std@@
+0xc35a8	.?AV_System_error@std@@
+0xc35d0	.?AVformat_error@v12@fmt@@
+0xc3600	.?AVbad_cast@std@@
+0xc3630	.?AVLaborEngine@@
+0xc3658	.?AVMonitorEngine@@
+0xc3680	.?AVLegacyEngine@@
+0xc36a8	.?AVModernEngine@@
+0xc36d0	.?AV?$function_identity@P6AXAEAVcolor_ostream@DFHack@@H@Z@df@@
+0xc3720	.?AVfunction_identity_base@DFHack@@
+0xc3758	.?AVtype_identity@DFHack@@
+0xc3790	.?AV?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@
+0xc37f0	.?AV?$basic_ostream@DU?$char_traits@D@std@@@std@@
+0xc3838	.?AV?$basic_ios@DU?$char_traits@D@std@@@std@@
+0xc3878	.?AVios_base@std@@
+0xc38a0	.?AV?$_Iosb@H@std@@
+0xc38d0	.?AV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@
+0xc3930	.?AV?$basic_iostream@DU?$char_traits@D@std@@@std@@
+0xc3980	.?AV?$basic_istream@DU?$char_traits@D@std@@@std@@
+0xc39c8	.?AVjlfunc@@
+0xc39e8	.?AVjlfunc_const@@
+0xc3a10	.?AVjlfunc_hauling@@
+0xc3a38	.?AVjlfunc_construct_bld@@
+0xc3a68	.?AVjlfunc_destroy_bld@@
+0xc3a98	.?AVjlfunc_make@@
+0xc3ac0	.?AVjlfunc_custom@@
+0xc3ae8	.?AVerror_category@std@@
+0xc3b18	.?AV_Generic_error_category@std@@
+0xc3b50	.?AVfacet@locale@std@@
+0xc3b78	.?AV_Facet_base@std@@
+0xc3ba0	.?AU_Crt_new_delete@std@@
+0xc3bd0	.?AV?$numpunct@D@std@@
+0xc3bf8	.?AV?$numpunct@_W@std@@
+0xc3c20	.?AV?$format_facet@Vlocale@std@@@v12@fmt@@
+0xc3c60	.?AVtype_info@@

@@ -1,0 +1,43 @@
+# Classic DF 53.16 PE:6a70b91c:0270a000; material-uncapitalized-name; RVA 0x14cc660..0x14cc6f1
+0x14cc660: mov    QWORD PTR [rsp+0x8],rbx
+0x14cc665: mov    QWORD PTR [rsp+0x10],rbp
+0x14cc66a: mov    QWORD PTR [rsp+0x18],rsi
+0x14cc66f: push   rdi
+0x14cc670: sub    rsp,0x40
+0x14cc674: movzx  esi,r8w
+0x14cc678: mov    rbx,rdx
+0x14cc67b: movzx  edx,si
+0x14cc67e: mov    r8d,r9d
+0x14cc681: mov    edi,r9d
+0x14cc684: mov    rbp,rcx
+0x14cc687: call   0x1414a8ce0
+0x14cc68c: test   rax,rax
+0x14cc68f: je     0x1414cc6dc
+0x14cc691: cmp    QWORD PTR [rax+0x70],0x0
+0x14cc696: je     0x1414cc6b9
+0x14cc698: lea    rdx,[rax+0x60]
+0x14cc69c: cmp    rbx,rdx
+0x14cc69f: je     0x1414cc6da
+0x14cc6a1: cmp    QWORD PTR [rdx+0x18],0xf
+0x14cc6a6: mov    r8,QWORD PTR [rdx+0x10]
+0x14cc6aa: jbe    0x1414cc6af
+0x14cc6ac: mov    rdx,QWORD PTR [rdx]
+0x14cc6af: mov    rcx,rbx
+0x14cc6b2: call   0x14006f860
+0x14cc6b7: jmp    0x1414cc6da
+0x14cc6b9: xor    eax,eax
+0x14cc6bb: mov    r9d,edi
+0x14cc6be: mov    WORD PTR [rsp+0x30],ax
+0x14cc6c3: movzx  r8d,si
+0x14cc6c7: mov    BYTE PTR [rsp+0x28],al
+0x14cc6cb: mov    rdx,rbx
+0x14cc6ce: mov    rcx,rbp
+0x14cc6d1: mov    DWORD PTR [rsp+0x20],eax
+0x14cc6d5: call   0x1414cc890
+0x14cc6da: mov    al,0x1
+0x14cc6dc: mov    rbx,QWORD PTR [rsp+0x50]
+0x14cc6e1: mov    rbp,QWORD PTR [rsp+0x58]
+0x14cc6e6: mov    rsi,QWORD PTR [rsp+0x60]
+0x14cc6eb: add    rsp,0x40
+0x14cc6ef: pop    rdi
+0x14cc6f0: ret

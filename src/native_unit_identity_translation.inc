@@ -10,7 +10,8 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
         return native_text_to_utf8(source);
     };
     const auto entity_name = [&](const NativeHistoryName &name) -> std::optional<std::string> {
-        if (name.entity_type == 1) return translate_history_name(name);
+        if (name.entity_type >= 0 && name.entity_id >= 0)
+            return translate_history_entity_name(name, name.entity_id);
         // Match the old NameOnly wrapper's authored-field policy while keeping
         // entity qualifiers outside the character-name translator.
         if (name.language < 0 && name.nickname.empty() &&

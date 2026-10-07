@@ -58,6 +58,94 @@ std::vector<Match> dfhack_auxiliary_matches;
         auxiliary_literal(x, y, source, right, centered,
             "DFHack GUI " + std::string(role) + ": ");
     };
+    constexpr std::string_view legends_race_scope = "DFHack GUI Legends race filter: ";
+    const auto legends_race_catalog = g_dfhack_output_snapshot.load(std::memory_order_acquire);
+    const auto legends_race_target = [&](std::string_view source)
+            -> std::optional<std::string> {
+        if (source == "All" || source == "No matches")
+            return exact_literal_translation(std::string(legends_race_scope) + std::string(source));
+        if (!legends_race_catalog || !legends_race_catalog->raw_creature_labels ||
+                source.empty()) return std::nullopt;
+        // racefilter.lua displays lower(creature_id), not the readable NAME.
+        // Resolve an actual RAW ID before entering the existing creature grammar.
+        const auto &labels = *legends_race_catalog->raw_creature_labels;
+        std::string id(source);
+        for (char &ch : id)
+            if (ch >= 'a' && ch <= 'z') ch = static_cast<char>(ch - 'a' + 'A');
+        const auto found = labels.find(id);
+        if (found != labels.end() && lower(found->first) == source)
+            return translate_dfhack_caption_utf8(*legends_race_catalog, "creature", found->second);
+        // Mods can author mixed/lower-case IDs. Require their complete actual
+        // lower(ID), and leave ambiguous IDs or unavailable names untouched.
+        const std::string *name = nullptr;
+        for (const auto &[raw_id, raw_name] : labels) {
+            if (lower(raw_id) != source) continue;
+            if (name && *name != raw_name) return std::nullopt;
+            name = &raw_name;
+        }
+        return name ? translate_dfhack_caption_utf8(*legends_race_catalog, "creature", *name)
+                    : std::nullopt;
+    };
+    const auto legends_race_line = [&](int x, int y, std::string_view source,
+            std::string_view target, int right) {
+        if (source.empty() || !contains_cjk_utf8(target) || x < 0 || y < 0 ||
+                y >= gps_->dimy || right > gps_->dimx || right <= x ||
+                x + static_cast<int>(source.size()) > right ||
+                read_row(y).compare(x, source.size(), source) != 0) return;
+        std::vector<Match> rows{{x, y, static_cast<int>(source.size()),
+            kDfhackHotkeysHintRule, {}, std::string(source)}};
+        rows.front().layout_native_clip = auxiliary_pixels({x, y, right - x, 1});
+        append_bounded_paragraph(std::move(rows), target, screen_rows,
+            dfhack_auxiliary_matches, only_y, right, right, {}, false, x);
+    };
+    // The legends overlay uses a 54-column BannerPanel, with its actual RAW
+    // ID value in the independent yellow Label at l=24. The key stays native.
+    for (int y = 0; y < gps_->dimy; ++y) {
+        const auto &row = dfhack_context_rows[y];
+        constexpr std::string_view caption = "Filter by race:";
+        for (size_t label = row.find(caption); label != std::string::npos;
+                label = row.find(caption, label + caption.size())) {
+            const size_t open = row.rfind('[', label);
+            if (open == std::string::npos || open + 54 > row.size()) continue;
+            const size_t close = open + 53, value_at = open + 24;
+            if (row[close] != ']' || label < open + 4 ||
+                    label + caption.size() >= value_at ||
+                    row.compare(label - 2, 2, ": ") != 0) continue;
+            std::string key(trim_view(std::string_view(row).substr(
+                open + 1, label - open - 3)));
+            std::replace(key.begin(), key.end(), '-', '+');
+            if (!is_keybinding_code(key) ||
+                    !trim_view(std::string_view(row).substr(label + caption.size(),
+                        value_at - label - caption.size())).empty()) continue;
+            const auto band = std::string_view(row).substr(value_at, close - value_at);
+            const auto value = trim_view(band);
+            if (value.empty() || !band.starts_with(value) ||
+                    read_row(y).compare(open, close - open + 1,
+                        std::string_view(row).substr(open, close - open + 1)) != 0) continue;
+            const auto red_bracket = [&](size_t x, unsigned char glyph) {
+                bool top = false;
+                const auto *cell = cell_at(static_cast<int>(x), y, &top);
+                return cell && cell[0] == glyph &&
+                    (std::equal(cell + 1, cell + 4, gps_->uccolor[4]) ||
+                     std::equal(cell + 1, cell + 4, gps_->uccolor[12])) &&
+                    (!screen_override || screen_override == (top ? gps_->screen_top : gps_->screen));
+            };
+            bool yellow = red_bracket(open, '[') && red_bracket(close, ']');
+            for (size_t x = value_at; yellow && x < value_at + value.size(); ++x) {
+                bool top = false;
+                const auto *cell = cell_at(static_cast<int>(x), y, &top);
+                yellow = cell && std::equal(cell + 1, cell + 4, gps_->uccolor[14]) &&
+                    (!screen_override || screen_override == (top ? gps_->screen_top : gps_->screen));
+            }
+            if (!yellow) continue;
+            dfhack_auxiliary_regions.push_back({static_cast<int>(open), y, 54, 1});
+            auxiliary_literal(static_cast<int>(label), y, caption,
+                static_cast<int>(value_at), false, "");
+            if (const auto target = legends_race_target(value))
+                legends_race_line(static_cast<int>(value_at), y, value, *target,
+                    static_cast<int>(close));
+        }
+    }
     const auto auxiliary_body = [&](const SDL_Rect &box, int native_width, bool advfort,
             bool command_output = false) {
         if (box.x < 0 || box.y < 0 || box.w <= 0 || box.h <= 0 ||
@@ -218,10 +306,10 @@ std::vector<Match> dfhack_auxiliary_matches;
         append_bounded_paragraph(std::move(rows), prompt.target, screen_rows,
             dfhack_auxiliary_matches, only_y, right, right, {}, false, left);
     };
+#include "dfhack_notification_banners.inc"
     for (const auto &window : native_dfhack_window_geometry(dfhack_context_rows)) {
         const auto *frame = &window.frame;
 #include "dfhack_civ_alert.inc"
-#include "dfhack_notification_banners.inc"
         // Toolbar overlays use a titleless six-row Panel: two prose rows,
         // a blank separator and an independent Hotkey Label. Resolve the
         // whole hint before the larger dialog reader's height gate.
@@ -285,6 +373,7 @@ std::vector<Match> dfhack_auxiliary_matches;
 #include "dfhack_warn_stranded.inc"
 #include "dfhack_uniform_unstick.inc"
 #include "dfhack_unretire_anyone.inc"
+#include "dfhack_legends_race_filter.inc"
 #include "dfhack_tile_browser.inc"
 #include "dfhack_suspendmanager.inc"
         if (input && input_gap) {
@@ -514,6 +603,7 @@ std::vector<Match> dfhack_auxiliary_matches;
     }
 #include "dfhack_workshop_workers.inc"
 #include "dfhack_squad_assignment.inc"
+#include "dfhack_elevation_preferences.inc"
 #include "dfhack_control_panel.inc"
 #include "dfhack_finder_output.inc"
 #include "dfhack_embark_output.inc"
@@ -530,6 +620,9 @@ std::vector<Match> dfhack_auxiliary_matches;
 #include "dfhack_quickfort.inc"
 #include "dfhack_teleport.inc"
 #include "dfhack_trade_goods.inc"
+#include "dfhack_animal_assignment.inc"
+#include "dfhack_preserve_rooms.inc"
+#include "dfhack_overlay_controls.inc"
     // Ownership prevents generic rules from translating isolated help words
     // or key names. Unmapped source remains native until its complete entry
     // is supplied; no incomplete sentence is drawn or silently discarded.

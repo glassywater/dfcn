@@ -1,0 +1,866 @@
+[
+  {
+    "viewscreen": "viewscreen_adopt_regionst",
+    "action": "feed",
+    "interpose_rva": "0x194f0",
+    "lua_function": "feed_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "collect_lua_result",
+        "vtable_rva": "0x46168",
+        "lambda_rva": "0x16860",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_adopt_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      },
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x46130",
+        "lambda_rva": "0x159c0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_adopt_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_adopt_regionst",
+    "action": "logic",
+    "interpose_rva": "0x1ab70",
+    "lua_function": "update_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x461a0",
+        "lambda_rva": "0x14c10",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_adopt_regionst@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_adopt_regionst",
+    "action": "render",
+    "interpose_rva": "0x1bc50",
+    "lua_function": "render_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x460f8",
+        "lambda_rva": "0x152d0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_adopt_regionst@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_choose_game_typest",
+    "action": "feed",
+    "interpose_rva": "0x19630",
+    "lua_function": "feed_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "collect_lua_result",
+        "vtable_rva": "0x46088",
+        "lambda_rva": "0x16890",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_choose_game_typest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      },
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x46050",
+        "lambda_rva": "0x15a90",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_choose_game_typest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_choose_game_typest",
+    "action": "logic",
+    "interpose_rva": "0x1ac60",
+    "lua_function": "update_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x460c0",
+        "lambda_rva": "0x14c70",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_choose_game_typest@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_choose_game_typest",
+    "action": "render",
+    "interpose_rva": "0x1bd40",
+    "lua_function": "render_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x46018",
+        "lambda_rva": "0x15330",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_choose_game_typest@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_choose_start_sitest",
+    "action": "feed",
+    "interpose_rva": "0x19770",
+    "lua_function": "feed_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "collect_lua_result",
+        "vtable_rva": "0x45fa8",
+        "lambda_rva": "0x168c0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_choose_start_sitest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      },
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45f70",
+        "lambda_rva": "0x15b60",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_choose_start_sitest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_choose_start_sitest",
+    "action": "logic",
+    "interpose_rva": "0x1ad50",
+    "lua_function": "update_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45fe0",
+        "lambda_rva": "0x14cd0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_choose_start_sitest@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_choose_start_sitest",
+    "action": "render",
+    "interpose_rva": "0x1be30",
+    "lua_function": "render_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45f38",
+        "lambda_rva": "0x15390",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_choose_start_sitest@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_dungeonmodest",
+    "action": "feed",
+    "interpose_rva": "0x198b0",
+    "lua_function": "feed_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "collect_lua_result",
+        "vtable_rva": "0x45ec8",
+        "lambda_rva": "0x168f0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_dungeonmodest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      },
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45e90",
+        "lambda_rva": "0x15c30",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_dungeonmodest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_dungeonmodest",
+    "action": "logic",
+    "interpose_rva": "0x1ae40",
+    "lua_function": "update_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45f00",
+        "lambda_rva": "0x14d30",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_dungeonmodest@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_dungeonmodest",
+    "action": "render",
+    "interpose_rva": "0x1bf20",
+    "lua_function": "render_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45e58",
+        "lambda_rva": "0x153f0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_dungeonmodest@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_dwarfmodest",
+    "action": "feed",
+    "interpose_rva": "0x199f0",
+    "lua_function": "feed_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "collect_lua_result",
+        "vtable_rva": "0x45de8",
+        "lambda_rva": "0x16920",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_dwarfmodest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      },
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45db0",
+        "lambda_rva": "0x15d00",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_dwarfmodest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_dwarfmodest",
+    "action": "logic",
+    "interpose_rva": "0x1af30",
+    "lua_function": "update_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45e20",
+        "lambda_rva": "0x14d90",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_dwarfmodest@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_dwarfmodest",
+    "action": "render",
+    "interpose_rva": "0x1c010",
+    "lua_function": "render_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45d78",
+        "lambda_rva": "0x15450",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_dwarfmodest@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_export_regionst",
+    "action": "feed",
+    "interpose_rva": "0x19b30",
+    "lua_function": "feed_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "collect_lua_result",
+        "vtable_rva": "0x45d08",
+        "lambda_rva": "0x16950",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_export_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      },
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45cd0",
+        "lambda_rva": "0x15dd0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_export_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_export_regionst",
+    "action": "logic",
+    "interpose_rva": "0x1b020",
+    "lua_function": "update_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45d40",
+        "lambda_rva": "0x14df0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_export_regionst@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_export_regionst",
+    "action": "render",
+    "interpose_rva": "0x1c100",
+    "lua_function": "render_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45c98",
+        "lambda_rva": "0x154b0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_export_regionst@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_game_cleanerst",
+    "action": "feed",
+    "interpose_rva": "0x19c70",
+    "lua_function": "feed_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "collect_lua_result",
+        "vtable_rva": "0x45c28",
+        "lambda_rva": "0x16980",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_game_cleanerst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      },
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45bf0",
+        "lambda_rva": "0x15ea0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_game_cleanerst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_game_cleanerst",
+    "action": "logic",
+    "interpose_rva": "0x1b110",
+    "lua_function": "update_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45c60",
+        "lambda_rva": "0x14e50",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_game_cleanerst@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_game_cleanerst",
+    "action": "render",
+    "interpose_rva": "0x1c1f0",
+    "lua_function": "render_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45bb8",
+        "lambda_rva": "0x15510",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_game_cleanerst@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_initial_prepst",
+    "action": "feed",
+    "interpose_rva": "0x19db0",
+    "lua_function": "feed_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "collect_lua_result",
+        "vtable_rva": "0x45b48",
+        "lambda_rva": "0x169b0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_initial_prepst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      },
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45b10",
+        "lambda_rva": "0x15f70",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_initial_prepst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_initial_prepst",
+    "action": "logic",
+    "interpose_rva": "0x1b200",
+    "lua_function": "update_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45b80",
+        "lambda_rva": "0x14eb0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_initial_prepst@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_initial_prepst",
+    "action": "render",
+    "interpose_rva": "0x1c2e0",
+    "lua_function": "render_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45ad8",
+        "lambda_rva": "0x15570",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_initial_prepst@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_legendsst",
+    "action": "feed",
+    "interpose_rva": "0x19ef0",
+    "lua_function": "feed_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "collect_lua_result",
+        "vtable_rva": "0x45a68",
+        "lambda_rva": "0x169e0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_legendsst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      },
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45a30",
+        "lambda_rva": "0x16040",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_legendsst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_legendsst",
+    "action": "logic",
+    "interpose_rva": "0x1b2f0",
+    "lua_function": "update_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45aa0",
+        "lambda_rva": "0x14f10",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_legendsst@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_legendsst",
+    "action": "render",
+    "interpose_rva": "0x1c3d0",
+    "lua_function": "render_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x459f8",
+        "lambda_rva": "0x155d0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_legendsst@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_loadgamest",
+    "action": "feed",
+    "interpose_rva": "0x1a030",
+    "lua_function": "feed_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "collect_lua_result",
+        "vtable_rva": "0x45988",
+        "lambda_rva": "0x16a10",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_loadgamest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      },
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45950",
+        "lambda_rva": "0x16110",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_loadgamest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_loadgamest",
+    "action": "logic",
+    "interpose_rva": "0x1b3e0",
+    "lua_function": "update_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x459c0",
+        "lambda_rva": "0x14f70",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_loadgamest@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_loadgamest",
+    "action": "render",
+    "interpose_rva": "0x1c4c0",
+    "lua_function": "render_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45918",
+        "lambda_rva": "0x15630",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_loadgamest@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_new_arenast",
+    "action": "feed",
+    "interpose_rva": "0x1a170",
+    "lua_function": "feed_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "collect_lua_result",
+        "vtable_rva": "0x458a8",
+        "lambda_rva": "0x16a40",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_new_arenast@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      },
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45870",
+        "lambda_rva": "0x161e0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_new_arenast@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_new_arenast",
+    "action": "logic",
+    "interpose_rva": "0x1b4d0",
+    "lua_function": "update_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x458e0",
+        "lambda_rva": "0x14fd0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_new_arenast@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_new_arenast",
+    "action": "render",
+    "interpose_rva": "0x1c5b0",
+    "lua_function": "render_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45838",
+        "lambda_rva": "0x15690",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_new_arenast@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_new_regionst",
+    "action": "feed",
+    "interpose_rva": "0x1a2b0",
+    "lua_function": "feed_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "collect_lua_result",
+        "vtable_rva": "0x457c8",
+        "lambda_rva": "0x16a70",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_new_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      },
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45790",
+        "lambda_rva": "0x162b0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_new_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_new_regionst",
+    "action": "logic",
+    "interpose_rva": "0x1b5c0",
+    "lua_function": "update_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45800",
+        "lambda_rva": "0x15030",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_new_regionst@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_new_regionst",
+    "action": "render",
+    "interpose_rva": "0x1c6a0",
+    "lua_function": "render_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45758",
+        "lambda_rva": "0x156f0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_new_regionst@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_savegamest",
+    "action": "feed",
+    "interpose_rva": "0x1a3f0",
+    "lua_function": "feed_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "collect_lua_result",
+        "vtable_rva": "0x456e8",
+        "lambda_rva": "0x16aa0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_savegamest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      },
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x456b0",
+        "lambda_rva": "0x16380",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_savegamest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_savegamest",
+    "action": "logic",
+    "interpose_rva": "0x1b6b0",
+    "lua_function": "update_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45720",
+        "lambda_rva": "0x15090",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_savegamest@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_savegamest",
+    "action": "render",
+    "interpose_rva": "0x1c790",
+    "lua_function": "render_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45678",
+        "lambda_rva": "0x15750",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_savegamest@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_setupadventurest",
+    "action": "feed",
+    "interpose_rva": "0x1a530",
+    "lua_function": "feed_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "collect_lua_result",
+        "vtable_rva": "0x45608",
+        "lambda_rva": "0x16ad0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_setupadventurest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      },
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x455d0",
+        "lambda_rva": "0x16450",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_setupadventurest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_setupadventurest",
+    "action": "logic",
+    "interpose_rva": "0x1b7a0",
+    "lua_function": "update_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45640",
+        "lambda_rva": "0x150f0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_setupadventurest@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_setupadventurest",
+    "action": "render",
+    "interpose_rva": "0x1c880",
+    "lua_function": "render_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45598",
+        "lambda_rva": "0x157b0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_setupadventurest@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_setupdwarfgamest",
+    "action": "feed",
+    "interpose_rva": "0x1a670",
+    "lua_function": "feed_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "collect_lua_result",
+        "vtable_rva": "0x45528",
+        "lambda_rva": "0x16b00",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_setupdwarfgamest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      },
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x454f0",
+        "lambda_rva": "0x16520",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_setupdwarfgamest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_setupdwarfgamest",
+    "action": "logic",
+    "interpose_rva": "0x1b890",
+    "lua_function": "update_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45560",
+        "lambda_rva": "0x15150",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_setupdwarfgamest@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_setupdwarfgamest",
+    "action": "render",
+    "interpose_rva": "0x1c970",
+    "lua_function": "render_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x454b8",
+        "lambda_rva": "0x15810",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_setupdwarfgamest@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_titlest",
+    "action": "feed",
+    "interpose_rva": "0x1a7b0",
+    "lua_function": "feed_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "collect_lua_result",
+        "vtable_rva": "0x45448",
+        "lambda_rva": "0x16b30",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_titlest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      },
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45410",
+        "lambda_rva": "0x165f0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_titlest@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_titlest",
+    "action": "logic",
+    "interpose_rva": "0x1b980",
+    "lua_function": "update_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45480",
+        "lambda_rva": "0x151b0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_titlest@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_titlest",
+    "action": "render",
+    "interpose_rva": "0x1ca60",
+    "lua_function": "render_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x453d8",
+        "lambda_rva": "0x15870",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_titlest@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_update_regionst",
+    "action": "feed",
+    "interpose_rva": "0x1a8f0",
+    "lua_function": "feed_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "collect_lua_result",
+        "vtable_rva": "0x45368",
+        "lambda_rva": "0x16b60",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_update_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      },
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45330",
+        "lambda_rva": "0x166c0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_update_regionst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_update_regionst",
+    "action": "logic",
+    "interpose_rva": "0x1ba70",
+    "lua_function": "update_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x453a0",
+        "lambda_rva": "0x15210",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_update_regionst@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_update_regionst",
+    "action": "render",
+    "interpose_rva": "0x1cb50",
+    "lua_function": "render_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x452f8",
+        "lambda_rva": "0x158d0",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_update_regionst@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_worldst",
+    "action": "feed",
+    "interpose_rva": "0x1aa30",
+    "lua_function": "feed_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "collect_lua_result",
+        "vtable_rva": "0x45288",
+        "lambda_rva": "0x16b90",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_2>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_worldst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      },
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45250",
+        "lambda_rva": "0x16790",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?4??interpose_fn_feed@?$viewscreen_overlay@Uviewscreen_worldst@df@@@@QEAAXPEAV?$set@W4interface_key@1enums@df@@U?$less@W4interface_key@1enums@df@@@std@@V?$allocator@W4interface_key@1enums@df@@@5@@std@@@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_worldst",
+    "action": "logic",
+    "interpose_rva": "0x1bb60",
+    "lua_function": "update_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x452c0",
+        "lambda_rva": "0x15270",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_logic@?$viewscreen_overlay@Uviewscreen_worldst@df@@@@QEAAXXZ@XPEAUlua_State@@@std@@"
+      }
+    ]
+  },
+  {
+    "viewscreen": "viewscreen_worldst",
+    "action": "render",
+    "interpose_rva": "0x1cc40",
+    "lua_function": "render_viewscreen_widgets",
+    "closures": [
+      {
+        "role": "push_lua_arguments",
+        "vtable_rva": "0x45218",
+        "lambda_rva": "0x15930",
+        "type": ".?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??interpose_fn_render@?$viewscreen_overlay@Uviewscreen_worldst@df@@@@QEAAXI@Z@XPEAUlua_State@@@std@@"
+      }
+    ]
+  }
+]

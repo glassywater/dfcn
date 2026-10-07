@@ -40,52 +40,52 @@ rumor-event	{s} refused {s} demand of tribute from {s} to {s}.	{s1}拒绝了{s2}
 rumor-event	{s} accepted a peace offer from {s} to stop the conflict between {s} and {s}.	{s1}接受了{s2}议和提议，要让{s3}和{s4}停止冲突。	rumor-person,rumor-owner,$name,$name	0x140681c44..0x140681ebd
 rumor-event	{s} refused an offer of peace from {s} regarding the conflict between {s} and {s}.	{s1}拒绝了{s2}为平息{s3}和{s4}的冲突而提出的议和。	rumor-person,rumor-owner,$name,$name	0x140682024..0x1406822a1
 rumor-event	{s} informed {s} that tribute would no longer be offered {s} to {s}.	{s1}告知{s2}，{s3}将不再向{s4}进贡。	rumor-person,rumor-person,$name,$name	0x1406823d6..0x140682639
-rumor-event	{s} claimed {s} in the name of {s}.	{s1}以{s3}的名义取得了{s2}。	rumor-person,$name,$name	0x140682737..0x1406828ab
+rumor-event	{s} claimed {s} in the name of {s}.	{s1}以{s3}的名义取得了{s2}。	rumor-person,$travel-site,$name	0x140682737..0x1406828ab
 rumor-event	{s} became {s}, replacing {s}.	{s1}取代{s3}，成为了{s2}。	rumor-person,rumor-position,rumor-person	0x1406829a9..0x140682ce0
 rumor-event	{s} became {s}.	{s1}成为了{s2}。	rumor-person,rumor-position	0x1406829a9..0x140682ce0
 rumor-event	I hear {s} has a real mean streak.	听说{s1}骨子里就很刻薄。	rumor-person	0x140682d3d..0x140682d88
 rumor-event	Best keep your head down.	最好还是低调些。		0x140682db5
-rumor-event	I hear that there is an insurrection against {s} in {s}.	听说{s2}发生了反抗{s1}的叛乱。	rumor-person,$name	0x140682e24..0x140682e78
-rumor-event	I hear that {s} crushed an insurrection in {s}.	听说{s1}镇压了{s2}的叛乱。	rumor-person,$name	0x140682e88..0x140682ed7
-rumor-event	I hear that {s} waited out an insurrection in {s}.	听说{s1}在{s2}按兵不动，一直等到叛乱平息。	rumor-person,$name	0x140682e88..0x140682ef1
-rumor-event	I hear that {s} lost {s} after an insurrection.	听说{s1}在一场叛乱后失去了{s2}。	rumor-person,$name	0x140682ef6..0x140682f21
-rumor-event	We reclaimed {s} on behalf of {s}.	我们代表{s2}收复了{s1}。	$name,$name	0x140682f5b..0x140682fbe
-rumor-event	I hear that a group calling itself {s} reclaimed {s} on behalf of {s}.	听说一个自称{s1}的势力代表{s3}收复了{s2}。	$name,$name,$name	0x140682f64..0x140682fbe
-rumor-event	We founded {s} after a long journey from the lands of {s}.	我们从{s2}的领地长途跋涉而来，建立了{s1}。	$name,$name	0x140682fff..0x140683062
-rumor-event	I hear that a group calling itself {s} founded {s} after a long journey from the lands of {s}.	听说一个自称{s1}的势力从{s3}的领地长途跋涉而来，建立了{s2}。	$name,$name,$name	0x140683008..0x140683062
+rumor-event	I hear that there is an insurrection against {s} in {s}.	听说{s2}发生了反抗{s1}的叛乱。	rumor-person,$travel-site	0x140682e24..0x140682e78
+rumor-event	I hear that {s} crushed an insurrection in {s}.	听说{s1}镇压了{s2}的叛乱。	rumor-person,$travel-site	0x140682e88..0x140682ed7
+rumor-event	I hear that {s} waited out an insurrection in {s}.	听说{s1}在{s2}按兵不动，一直等到叛乱平息。	rumor-person,$travel-site	0x140682e88..0x140682ef1
+rumor-event	I hear that {s} lost {s} after an insurrection.	听说{s1}在一场叛乱后失去了{s2}。	rumor-person,$travel-site	0x140682ef6..0x140682f21
+rumor-event	We reclaimed {s} on behalf of {s}.	我们代表{s2}收复了{s1}。	$travel-site,$name	0x140682f5b..0x140682fbe
+rumor-event	I hear that a group calling itself {s} reclaimed {s} on behalf of {s}.	听说一个自称{s1}的势力代表{s3}收复了{s2}。	$name,$travel-site,$name	0x140682f64..0x140682fbe
+rumor-event	We founded {s} after a long journey from the lands of {s}.	我们从{s2}的领地长途跋涉而来，建立了{s1}。	$travel-site,$name	0x140682fff..0x140683062
+rumor-event	I hear that a group calling itself {s} founded {s} after a long journey from the lands of {s}.	听说一个自称{s1}的势力从{s3}的领地长途跋涉而来，建立了{s2}。	$name,$travel-site,$name	0x140683008..0x140683062
 rumor-event	I hear that a group from {s} left to reclaim the ruins.	听说一群来自{s1}的人出发去重建废墟了。	$name	0x140683079..0x1406830d3
-rumor-event	I hear that a group from {s} left to reclaim the ruins of {s}.	听说一群来自{s1}的人出发去重建{s2}的废墟了。	$name,$name	0x140683079..0x1406830d3
+rumor-event	I hear that a group from {s} left to reclaim the ruins of {s}.	听说一群来自{s1}的人出发去重建{s2}的废墟了。	$name,$travel-site	0x140683079..0x1406830d3
 rumor-event	I hear that a group from {s} left to found a new settlement.	听说一群来自{s1}的人出发去建立新的定居点了。	$name	0x1406830d8..0x14068313b
 rumor-event	I hear that a group from {s} left to found a new settlement in {s}.	听说一群来自{s1}的人出发去{s2}建立新的定居点了。	$name,$name	0x1406830d8..0x14068313b
 rumor-event	This place has been conquered.	这个地方已经被征服了。		0x140683155..0x140683204
 rumor-event	This place has been conquered by {s}.	这个地方已经被{s1}征服了。	rumor-person	0x140683155..0x140683204
-rumor-event	I hear that {s} has been conquered.	听说{s1}已经被征服了。	$name	0x14068315e..0x140683204
-rumor-event	I hear that {s} has been conquered by {s}.	听说{s1}已经被{s2}征服了。	$name,rumor-person	0x14068315e..0x140683204
-rumor-event	We formed {s} in order to find better lives after the horrible mismanagement of {s} by {s}.	{s3}把{s2}治理得一团糟，我们才组建了{s1}，想过上好日子。	$name,$name,rumor-person	0x14068325c..0x14068331c
-rumor-event	I hear that a group calling itself {s} moved on in search of a better future after the horrible mismanagement of {s} by {s}.	听说{s3}把{s2}治理得一团糟，一个自称{s1}的势力就离开了，另谋出路。	$name,$name,rumor-person	0x140683285..0x14068331c
-rumor-event	We had to pull out of {s}.	我们不得不撤出{s1}。	$name	0x140683336..0x14068338b
-rumor-event	I hear that {s} gave up on their occupation of {s}.	听说{s1}放弃了对{s2}的占领。	$name,$name	0x14068334f..0x14068338b
+rumor-event	I hear that {s} has been conquered.	听说{s1}已经被征服了。	$travel-site	0x14068315e..0x140683204
+rumor-event	I hear that {s} has been conquered by {s}.	听说{s1}已经被{s2}征服了。	$travel-site,rumor-person	0x14068315e..0x140683204
+rumor-event	We formed {s} in order to find better lives after the horrible mismanagement of {s} by {s}.	{s3}把{s2}治理得一团糟，我们才组建了{s1}，想过上好日子。	$name,$travel-site,rumor-person	0x14068325c..0x14068331c
+rumor-event	I hear that a group calling itself {s} moved on in search of a better future after the horrible mismanagement of {s} by {s}.	听说{s3}把{s2}治理得一团糟，一个自称{s1}的势力就离开了，另谋出路。	$name,$travel-site,rumor-person	0x140683285..0x14068331c
+rumor-event	We had to pull out of {s}.	我们不得不撤出{s1}。	$travel-site	0x140683336..0x14068338b
+rumor-event	I hear that {s} gave up on their occupation of {s}.	听说{s1}放弃了对{s2}的占领。	$name,$travel-site	0x14068334f..0x14068338b
 rumor-event	We banded up as {s} and escaped {s}.	我们结成{s1}，逃离{s2}。	$name,rumor-flight	0x1406833b8..0x1406834d1
 rumor-event	I hear that refugees calling themselves {s} fled {s}.	听说有群难民自称{s1}，逃离{s2}。	$name,rumor-flight	0x1406833e1..0x1406834d1
-rumor-flight	from {s} just before an army {s} descended upon the place	了{s1}，随后一支军队{s2}便袭击了那里	$name,rumor-army	0x140683417..0x1406834c6
+rumor-flight	from {s} just before an army {s} descended upon the place	了{s1}，随后一支军队{s2}便袭击了那里	$travel-site,rumor-army	0x140683417..0x1406834c6
 rumor-flight	just before an army {s} descended upon the place	了那里，随后一支军队{s1}便袭击了那里	rumor-army	0x140683417..0x1406834c6
-rumor-flight	from {s} just before an army descended upon the place	了{s1}，随后一支军队便袭击了那里	$name	0x140683417..0x1406834c6
+rumor-flight	from {s} just before an army descended upon the place	了{s1}，随后一支军队便袭击了那里	$travel-site	0x140683417..0x1406834c6
 rumor-flight	just before an army descended upon the place	了那里，随后一支军队便袭击了那里		0x140683417..0x1406834c6
 rumor-army	of {s} led by {s}	（隶属{s1}，由{s2}率领）	$name,rumor-person	0x140683453..0x1406834c6
 rumor-army	of {s}	（隶属{s1}）	$name	0x140683453..0x1406834c6
 rumor-army	led by {s}	（由{s1}率领）	rumor-person	0x140683479..0x1406834c6
 rumor-event	I heard that there was an incident.	听说出事了。		0x14068357a
 rumor-event	I heard that {s}, {s} was kidnapped.	听说{s1}，{s2}被人绑走了。	rumor-time,rumor-person	0x1406835c1..0x140683902
-rumor-event	I heard that {s}, {s} was kidnapped from {s}.	听说{s1}，{s2}在{s3}被人绑走了。	rumor-time,rumor-person,$name	0x1406835c1..0x140683902
+rumor-event	I heard that {s}, {s} was kidnapped from {s}.	听说{s1}，{s2}在{s3}被人绑走了。	rumor-time,rumor-person,$travel-site	0x1406835c1..0x140683902
 rumor-event	I heard that {s}, {s} was kidnapped by {s}.	听说{s1}，{s2}被{s3}绑走了。	rumor-time,rumor-person,rumor-person	0x1406835c1..0x140683902
-rumor-event	I heard that {s}, {s} was kidnapped from {s} by {s}.	听说{s1}，{s4}从{s3}绑走了{s2}。	rumor-time,rumor-person,$name,rumor-person	0x1406835c1..0x140683902
+rumor-event	I heard that {s}, {s} was kidnapped from {s} by {s}.	听说{s1}，{s4}从{s3}绑走了{s2}。	rumor-time,rumor-person,$travel-site,rumor-person	0x1406835c1..0x140683902
 rumor-event	I hear that {s} was destroyed.	听说{s1}被毁掉了。	$book	0x140683959..0x140683a1d
-rumor-event	I hear that {s} is in {s} in {s}.	听说{s1}在{s2}的{s3}里。	$book,$name,$name	0x140683a2d..0x140683bc2
-rumor-event	I hear that {s} is in {s}.	听说{s1}在{s2}。	$book,$name	0x140683a2d..0x140683e18
+rumor-event	I hear that {s} is in {s} in {s}.	听说{s1}在{s2}的{s3}里。	$book,$name,$travel-site	0x140683a2d..0x140683bc2
+rumor-event	I hear that {s} is in {s}.	听说{s1}在{s2}。	$book,$travel-site	0x140683a2d..0x140683e18
 rumor-event	I have {s}.	{s1}在我手里。	$book	0x140683e80..0x140683f86
 rumor-event	{s} has {s}.	{s2}在{s1}手里。	rumor-person,$book	0x140683e8d..0x140683f86
 rumor-event	I hear that {s} is not in {s}'s {s}.	听说{s1}不在{s2}的{s3}里。	$book,$name,$name	0x140683f96..0x1406841a3
-rumor-event	I hear that {s} is not in {s}.	听说{s1}不在{s2}。	$book,$name	0x140683f96..0x14068448a
+rumor-event	I hear that {s} is not in {s}.	听说{s1}不在{s2}。	$book,$travel-site	0x140683f96..0x14068448a
 rumor-event	I do not have {s}.	{s1}不在我手里。	$book	0x1406844f0..0x1406845f6
 rumor-event	{s} does not possess {s}.	{s2}不在{s1}手里。	rumor-person,$book	0x140684508..0x1406845f6
 # Complete threat descriptions and every accompanying identity/location clause.
@@ -181,14 +181,14 @@ rumor-event	A scheming criminal gang has eluded capture for far too long.	有个
 rumor-event	A lowly group of outcasts have perpetrated enough crimes against our community to gain notice.	一群落魄的流亡者在我们的聚落作恶，犯下的罪行已让人无法忽视。		0x14068931f
 rumor-event	There are foul goings-on here.	这里有人在干见不得人的勾当。		0x14068934c..0x140689467
 rumor-event	There are foul goings-on over at the {s} of {s}.	{s2}的{s1}那里有人在干见不得人的勾当。	$term,$name	0x14068934c..0x140689467
-rumor-event	A bandit gang calling itself {s} has been harassing people right here on the streets of {s}!	有伙土匪自称{s1}，就在{s2}这里的街上骚扰百姓！	$name,$name	0x1406895be..0x1406896c9
-rumor-event	A bandit gang calling itself {s}, led by {s}, has been harassing people right here on the streets of {s}!	有伙土匪自称{s1}，头目是{s2}，就在{s3}这里的街上骚扰百姓！	$name,rumor-person,$name	0x1406895be..0x1406896c9
-rumor-event	A bandit gang calling itself {s} has been harassing people over in {s}.	有伙土匪自称{s1}，一直在{s2}那边骚扰百姓。	$name,$name	0x1406895be..0x1406896c9
-rumor-event	A bandit gang calling itself {s}, led by {s}, has been harassing people over in {s}.	有伙土匪自称{s1}，头目是{s2}，一直在{s3}那边骚扰百姓。	$name,rumor-person,$name	0x1406895be..0x1406896c9
+rumor-event	A bandit gang calling itself {s} has been harassing people right here on the streets of {s}!	有伙土匪自称{s1}，就在{s2}这里的街上骚扰百姓！	$name,$travel-site	0x1406895be..0x1406896c9
+rumor-event	A bandit gang calling itself {s}, led by {s}, has been harassing people right here on the streets of {s}!	有伙土匪自称{s1}，头目是{s2}，就在{s3}这里的街上骚扰百姓！	$name,rumor-person,$travel-site	0x1406895be..0x1406896c9
+rumor-event	A bandit gang calling itself {s} has been harassing people over in {s}.	有伙土匪自称{s1}，一直在{s2}那边骚扰百姓。	$name,$travel-site	0x1406895be..0x1406896c9
+rumor-event	A bandit gang calling itself {s}, led by {s}, has been harassing people over in {s}.	有伙土匪自称{s1}，头目是{s2}，一直在{s3}那边骚扰百姓。	$name,rumor-person,$travel-site	0x1406895be..0x1406896c9
 rumor-event	The army of {s} is marching here!	{s1}的军队正向这里进军！	rumor-person	0x1406897af..0x140689887
 rumor-event	The army of {s} is marching here!	{s1}的军队正向这里进军！	$name	0x1406897af..0x140689887
-rumor-event	The army of {s} is marching on {s}!	{s1}的军队正向{s2}进军！	rumor-person,$name	0x1406897af..0x140689887
-rumor-event	The army of {s} is marching on {s}!	{s1}的军队正向{s2}进军！	$name,$name	0x1406897af..0x140689887
+rumor-event	The army of {s} is marching on {s}!	{s1}的军队正向{s2}进军！	rumor-person,$travel-site	0x1406897af..0x140689887
+rumor-event	The army of {s} is marching on {s}!	{s1}的军队正向{s2}进军！	$name,$travel-site	0x1406897af..0x140689887
 
 # Delegated threat history: Steam 0x14065bfb0..0x14065e928 and classic
 # 0x1406599d0..0x14065c348. These clauses are appended to the same speech
@@ -317,36 +317,36 @@ site-rumor-date	the early winter of {s}	第{s1}年初冬	$digits	0x140b92640
 site-rumor-date	the midwinter of {s}	第{s1}年仲冬	$digits	0x140b92640
 site-rumor-date	the late winter of {s}	第{s1}年晚冬	$digits	0x140b92640
 # Type 0: either the historical figure or the entity owning the army.
-site-rumor-event	the army of {s} marched on {s}.	{s1}的军队向{s2}进军了。	site-rumor-person,$name	0x1401da280..0x1401dbcec; rumor type 0, figure owner
-site-rumor-event	the army of {s} marched on {s}.	{s1}的军队向{s2}进军了。	$name,$name	0x1401da280..0x1401dbcec; rumor type 0, entity owner
+site-rumor-event	the army of {s} marched on {s}.	{s1}的军队向{s2}进军了。	site-rumor-person,$travel-site	0x1401da280..0x1401dbcec; rumor type 0, figure owner
+site-rumor-event	the army of {s} marched on {s}.	{s1}的军队向{s2}进军了。	$name,$travel-site	0x1401da280..0x1401dbcec; rumor type 0, entity owner
 # Type 1: victim, source site and abductor are independently optional.
-site-rumor-event	{s} was kidnapped from {s} by {s}.	{s3}从{s2}绑架了{s1}。	site-rumor-person,$name,site-rumor-person	0x1401da280..0x1401dbcec; rumor type 1
-site-rumor-event	{s} was kidnapped from {s}.	{s1}在{s2}被绑架了。	site-rumor-person,$name	0x1401da280..0x1401dbcec; rumor type 1
+site-rumor-event	{s} was kidnapped from {s} by {s}.	{s3}从{s2}绑架了{s1}。	site-rumor-person,$travel-site,site-rumor-person	0x1401da280..0x1401dbcec; rumor type 1
+site-rumor-event	{s} was kidnapped from {s}.	{s1}在{s2}被绑架了。	site-rumor-person,$travel-site	0x1401da280..0x1401dbcec; rumor type 1
 site-rumor-event	{s} was kidnapped by {s}.	{s1}被{s2}绑架了。	site-rumor-person,site-rumor-person	0x1401da280..0x1401dbcec; rumor type 1
 site-rumor-event	{s} was kidnapped.	{s1}被绑架了。	site-rumor-person	0x1401da280..0x1401dbcec; rumor type 1
-site-rumor-event	was kidnapped from {s} by {s}.	{s2}从{s1}绑架了一个人。	$name,site-rumor-person	0x1401da280..0x1401dbcec; rumor type 1, missing victim
-site-rumor-event	was kidnapped from {s}.	有人在{s1}被绑架了。	$name	0x1401da280..0x1401dbcec; rumor type 1, missing victim
+site-rumor-event	was kidnapped from {s} by {s}.	{s2}从{s1}绑架了一个人。	$travel-site,site-rumor-person	0x1401da280..0x1401dbcec; rumor type 1, missing victim
+site-rumor-event	was kidnapped from {s}.	有人在{s1}被绑架了。	$travel-site	0x1401da280..0x1401dbcec; rumor type 1, missing victim
 site-rumor-event	was kidnapped by {s}.	有人被{s1}绑架了。	site-rumor-person	0x1401da280..0x1401dbcec; rumor type 1, missing victim
 site-rumor-event	was kidnapped.	有人被绑架了。		0x1401da280..0x1401dbcec; rumor type 1, missing victim
 # Type 3: the occupying entity can be absent.
-site-rumor-event	{s} was conquered by {s}.	{s1}被{s2}征服了。	$name,$name	0x1401da280..0x1401dbcec; rumor type 3
-site-rumor-event	{s} was conquered.	{s1}被征服了。	$name	0x1401da280..0x1401dbcec; rumor type 3
+site-rumor-event	{s} was conquered by {s}.	{s1}被{s2}征服了。	$travel-site,$name	0x1401da280..0x1401dbcec; rumor type 3
+site-rumor-event	{s} was conquered.	{s1}被征服了。	$travel-site	0x1401da280..0x1401dbcec; rumor type 3
 # Type 7: army allegiance and commander are independently optional.
-site-rumor-event	refugees calling themselves {s} fled from the area just before an army of {s} led by {s} descended upon {s}.	自称{s1}的难民刚逃离这一带，{s3}率领的{s2}军队就袭击了{s4}。	$name,$name,site-rumor-person,$name	0x1401da280..0x1401dbcec; rumor type 7
-site-rumor-event	refugees calling themselves {s} fled from the area just before an army of {s} descended upon {s}.	自称{s1}的难民刚逃离这一带，{s2}的军队就袭击了{s3}。	$name,$name,$name	0x1401da280..0x1401dbcec; rumor type 7
-site-rumor-event	refugees calling themselves {s} fled from the area just before an army led by {s} descended upon {s}.	自称{s1}的难民刚逃离这一带，{s2}率领的军队就袭击了{s3}。	$name,site-rumor-person,$name	0x1401da280..0x1401dbcec; rumor type 7
-site-rumor-event	refugees calling themselves {s} fled from the area just before an army descended upon {s}.	自称{s1}的难民刚逃离这一带，一支军队就袭击了{s2}。	$name,$name	0x1401da280..0x1401dbcec; rumor type 7
+site-rumor-event	refugees calling themselves {s} fled from the area just before an army of {s} led by {s} descended upon {s}.	自称{s1}的难民刚逃离这一带，{s3}率领的{s2}军队就袭击了{s4}。	$name,$name,site-rumor-person,$travel-site	0x1401da280..0x1401dbcec; rumor type 7
+site-rumor-event	refugees calling themselves {s} fled from the area just before an army of {s} descended upon {s}.	自称{s1}的难民刚逃离这一带，{s2}的军队就袭击了{s3}。	$name,$name,$travel-site	0x1401da280..0x1401dbcec; rumor type 7
+site-rumor-event	refugees calling themselves {s} fled from the area just before an army led by {s} descended upon {s}.	自称{s1}的难民刚逃离这一带，{s2}率领的军队就袭击了{s3}。	$name,site-rumor-person,$travel-site	0x1401da280..0x1401dbcec; rumor type 7
+site-rumor-event	refugees calling themselves {s} fled from the area just before an army descended upon {s}.	自称{s1}的难民刚逃离这一带，一支军队就袭击了{s2}。	$name,$travel-site	0x1401da280..0x1401dbcec; rumor type 7
 # Types 8, 9, 10, 13 and 14 retain their distinct native predicates.
-site-rumor-event	a group calling itself {s} moved on in search of a better future after the horrible mismanagement of {s} by {s}.	{s3}把{s2}治理得一团糟，自称{s1}的势力于是离开了，另谋出路。	$name,$name,$name	0x1401da280..0x1401dbcec; rumor type 8
-site-rumor-event	a group calling itself {s} reclaimed {s} on behalf of {s}.	自称{s1}的势力代表{s3}收复了{s2}。	$name,$name,$name	0x1401da280..0x1401dbcec; rumor type 9
-site-rumor-event	a group calling itself {s} founded {s} after a long journey from the lands of {s}.	自称{s1}的势力从{s3}的领地长途跋涉而来，建立了{s2}。	$name,$name,$name	0x1401dafc0; rumor type 10
-site-rumor-event	{s} gave up on their occupation of {s}.	{s1}放弃了对{s2}的占领。	$name,$name	0x1401da280..0x1401dbcec; rumor type 13
-site-rumor-event	an insurrection against {s} began in {s}.	{s2}发生了反抗{s1}的叛乱。	$name,$name	0x1401da280..0x1401dbcec; rumor type 14
+site-rumor-event	a group calling itself {s} moved on in search of a better future after the horrible mismanagement of {s} by {s}.	{s3}把{s2}治理得一团糟，自称{s1}的势力于是离开了，另谋出路。	$name,$travel-site,$name	0x1401da280..0x1401dbcec; rumor type 8
+site-rumor-event	a group calling itself {s} reclaimed {s} on behalf of {s}.	自称{s1}的势力代表{s3}收复了{s2}。	$name,$travel-site,$name	0x1401da280..0x1401dbcec; rumor type 9
+site-rumor-event	a group calling itself {s} founded {s} after a long journey from the lands of {s}.	自称{s1}的势力从{s3}的领地长途跋涉而来，建立了{s2}。	$name,$travel-site,$name	0x1401dafc0; rumor type 10
+site-rumor-event	{s} gave up on their occupation of {s}.	{s1}放弃了对{s2}的占领。	$name,$travel-site	0x1401da280..0x1401dbcec; rumor type 13
+site-rumor-event	an insurrection against {s} began in {s}.	{s2}发生了反抗{s1}的叛乱。	$name,$travel-site	0x1401da280..0x1401dbcec; rumor type 14
 # Type 15: every native outcome, with the site attached to the outcome.
-site-rumor-event	{s} was overthrown after an insurrection in {s}.	{s1}在{s2}的一场叛乱后被推翻了。	$name,$name	0x1401da280..0x1401dbcec; rumor type 15, outcome 0
-site-rumor-event	{s} waited out an insurrection in {s}.	{s1}在{s2}按兵不动，一直等到叛乱平息。	$name,$name	0x1401da280..0x1401dbcec; rumor type 15, outcome 1
-site-rumor-event	{s} crushed an insurrection in {s}.	{s1}镇压了{s2}的一场叛乱。	$name,$name	0x1401da280..0x1401dbcec; rumor type 15, outcome 2
-site-rumor-event	{s} in {s}.	{s1}在{s2}。	$name,$name	0x1401dadf6; rumor type 15, other outcome emits no predicate
+site-rumor-event	{s} was overthrown after an insurrection in {s}.	{s1}在{s2}的一场叛乱后被推翻了。	$name,$travel-site	0x1401da280..0x1401dbcec; rumor type 15, outcome 0
+site-rumor-event	{s} waited out an insurrection in {s}.	{s1}在{s2}按兵不动，一直等到叛乱平息。	$name,$travel-site	0x1401da280..0x1401dbcec; rumor type 15, outcome 1
+site-rumor-event	{s} crushed an insurrection in {s}.	{s1}镇压了{s2}的一场叛乱。	$name,$travel-site	0x1401da280..0x1401dbcec; rumor type 15, outcome 2
+site-rumor-event	{s} in {s}.	{s1}在{s2}。	$name,$travel-site	0x1401dadf6; rumor type 15, other outcome emits no predicate
 # Type 16: complete office titles and optional predecessor identities.
 site-rumor-event	{s} became {s}, replacing {s}.	{s1}取代{s3}，成为了{s2}。	site-rumor-person,site-rumor-position,site-rumor-predecessor	0x1401da280..0x1401dbcec; rumor type 16
 site-rumor-event	{s} became {s}.	{s1}成为了{s2}。	site-rumor-person,site-rumor-position	0x1401da280..0x1401dbcec; rumor type 16
@@ -363,10 +363,10 @@ site-rumor-position	ruler	统治者		0x1401da280..0x1401dbcec; absent native pos
 site-rumor-position	{s} of {s}	{s2}的{s1}	$office,$name	0x14099a3c0;0x1409bdfb0; gendered office name plus its held site, otherwise entity
 site-rumor-position	{s}	{s1}	$office	0x14099a3c0; gendered office name
 # Type 17: ownership claims are separate from settlement construction.
-site-rumor-event	{s} claimed {s} in the name of {s}.	{s1}以{s3}的名义取得了{s2}。	site-rumor-person,$name,$name	0x1401da280..0x1401dbcec; rumor type 17
+site-rumor-event	{s} claimed {s} in the name of {s}.	{s1}以{s3}的名义取得了{s2}。	site-rumor-person,$travel-site,$name	0x1401da280..0x1401dbcec; rumor type 17
 # Type 25: artifact location with or without a building field.
-site-rumor-event	{s} was known to be in {s} in {s}.	当时已知{s1}位于{s3}的{s2}。	site-rumor-artifact,site-rumor-building,$name	0x1401da280..0x1401dbcec; rumor type 25
-site-rumor-event	{s} was known to be in {s}.	当时已知{s1}位于{s2}。	site-rumor-artifact,$name	0x1401da280..0x1401dbcec; rumor type 25, no building
+site-rumor-event	{s} was known to be in {s} in {s}.	当时已知{s1}位于{s3}的{s2}。	site-rumor-artifact,site-rumor-building,$travel-site	0x1401da280..0x1401dbcec; rumor type 25
+site-rumor-event	{s} was known to be in {s}.	当时已知{s1}位于{s2}。	site-rumor-artifact,$travel-site	0x1401da280..0x1401dbcec; rumor type 25, no building
 site-rumor-building	{s}	{s1}	$name	0x1401da280..0x1401dbcec; complete building name or native unnamed building label
 # The historical figure formatter supplies a complete native actor. Most
 # branches suppress species; the fleeing army commander retains species and
@@ -380,7 +380,7 @@ site-rumor-artifact	{s}	{s1}	$memorial-item	0x140b94400 -> 0x140c65450; shared f
 # The native dungeon label is empty for a subtype other than 0, 1, or 2,
 # after this caller has already appended its first " in ". Keep the intact
 # record and known artifact/site instead of requiring a nonexistent field.
-site-rumor-event	{s} was known to be in in {s}.	当时已知{s1}位于{s2}的一座建筑里。	site-rumor-artifact,$name	0x1401dac72;0x140b94090; empty native dungeon label, whitespace normalized
+site-rumor-event	{s} was known to be in in {s}.	当时已知{s1}位于{s2}的一座建筑里。	site-rumor-artifact,$travel-site	0x1401dac72;0x140b94090; empty native dungeon label, whitespace normalized
 
 # Adventure travel-location status box, a different producer from dated
 # site news and threat speech. Steam 53.16 0x14080fefe..0x140810935;

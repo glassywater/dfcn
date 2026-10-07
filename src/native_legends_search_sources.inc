@@ -40,7 +40,7 @@ static bool native_legends_search_id(uintptr_t screen, uintptr_t frame,
 }
 
 static bool native_legends_search_source(LegendsSearchKind kind, const void *frame, const void *screen,
-        std::string &source, std::string &description) {
+        std::string &source, std::string &description, NativeHistoryName *site_name = nullptr) {
     source.clear();
     description.clear();
     if (!frame || !screen) return false;
@@ -88,6 +88,13 @@ static bool native_legends_search_source(LegendsSearchKind kind, const void *fra
         if (!native_legends_search_id(screen_address, address, 0x1c8, id)) return !source.empty();
         const auto site = native_history_find_subject(base, NativeHistoryObjectKind::Site, id);
         if (!site) return !source.empty();
+        if (site_name) {
+            NativeHistoryName snapshot;
+            const uintptr_t name_address = native_history_object_field(site, "world_site", 0);
+            if (name_address && capture_native_history_name(base, name_address, snapshot) &&
+                    capture_native_history_site_name_context(base, site, snapshot, true))
+                *site_name = std::move(snapshot);
+        }
         int16_t type = -1;
         if (!native_history_copy(native_history_object_field(site, "world_site",
                 0x80, sizeof(type)), type)) return !source.empty();

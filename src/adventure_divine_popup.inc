@@ -14,6 +14,25 @@
     {
         if (const auto popup = native_announcement_popup(); popup && popup->width <= gps_->dimx) {
             const auto &words = popup->words;
+            // Graphical map tiles can cover a popup glyph in the completed
+            // composite without changing the popup's native word bytes.
+            // Read its source from the current native layer; the live queue,
+            // word coordinates and four frame corners still prove ownership.
+            // Keep this recovery local to the popup, since ordinary page text
+            // must continue to respect graphical occlusion.
+            std::map<int, std::string> native_rows;
+            const auto native_row = [&](int y) -> const std::string & {
+                const auto [row, added] = native_rows.try_emplace(y,
+                    static_cast<size_t>(gps_->dimx), ' ');
+                if (added) {
+                    for (int x = 0; x < gps_->dimx; ++x) {
+                        bool top = false;
+                        const auto *cell = cell_at(x, y, &top);
+                        row->second[x] = cell && cell[0] ? static_cast<char>(cell[0]) : ' ';
+                    }
+                }
+                return row->second;
+            };
             auto draws = captured_native_drawn_text_rows();
             auto upper_draws = captured_native_drawn_text_rows(true);
             draws.insert(draws.end(), std::make_move_iterator(upper_draws.begin()),
@@ -59,7 +78,7 @@
                 if (text_top + word.y >= 0 && text_top + word.y < gps_->dimy &&
                         (!anchor || word.source.size() > anchor->source.size())) anchor = &word;
             if (anchor) {
-                const auto &row = screen_rows[text_top + anchor->y];
+                const auto &row = native_row(text_top + anchor->y);
                 for (size_t at = row.find(anchor->source); at != std::string::npos;
                         at = row.find(anchor->source, at + 1))
                     add_origin(static_cast<int>(at) - anchor->x, text_top);
@@ -85,7 +104,7 @@
                     const int x = left + word.x, y = origin.second + word.y;
                     if (word.source.empty() || x >= right || y < 0 || y >= gps_->dimy) continue;
                     const size_t exposed = std::min(word.source.size(), static_cast<size_t>(right - x));
-                    if (screen_rows[y].compare(x, exposed, word.source, 0, exposed) != 0) {
+                    if (native_row(y).compare(x, exposed, word.source, 0, exposed) != 0) {
                         intact = false;
                         break;
                     }
@@ -110,7 +129,7 @@
                         const auto extent = row_extents.find(y);
                         const int x = extent == row_extents.end() ? left : extent->second.first;
                         const int length = extent == row_extents.end() ? 0 : extent->second.second - x;
-                        rows.push_back({x, y, length, kUiMessageRule, {}, screen_rows[y].substr(x, length)});
+                        rows.push_back({x, y, length, kUiMessageRule, {}, native_row(y).substr(x, length)});
                     }
                     bool top = false;
                     const auto &first = row_extents.begin()->second;

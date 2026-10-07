@@ -319,10 +319,13 @@
                         if (rows.size() != capture.wrapped_lines.size()) continue;
                         const auto layout_right = description_layout_right(rows, right);
                         if (!layout_right) continue;
-                        const auto target = translate_item_description_source(capture.source, true);
-                        if (!target || !append_bounded_paragraph(rows, *target, screen_rows,
+                        const auto translation = translate_item_description_source_display(capture.source, true);
+                        const size_t first_match = result.size();
+                        if (!translation.usable() || !translation.changed() ||
+                            !append_bounded_paragraph(rows, translation.target, screen_rows,
                                 result, only_y, *layout_right, *layout_right))
                             reserve_untranslated(std::move(rows), capture.source);
+                        else attach_item_display_result(result, first_match, translation);
                     }
                 }
             }
@@ -372,10 +375,13 @@
                     const auto native = native_source_for_rows(rows, -1, nullptr, &viewport);
                     if (native) source = *native;
                     if (!description_opening(source)) continue;
-                    const auto target = translate_item_description_source(source, true);
-                    if (target) append_bounded_paragraph(rows, *target, screen_rows,
-                        result, only_y, *layout_right, *layout_right, {}, false, -1,
-                        native ? std::optional(viewport) : std::nullopt);
+                    const auto translation = translate_item_description_source_display(source, true);
+                    const size_t first_match = result.size();
+                    if (translation.usable() && translation.changed() &&
+                        append_bounded_paragraph(rows, translation.target, screen_rows,
+                            result, only_y, *layout_right, *layout_right, {}, false, -1,
+                            native ? std::optional(viewport) : std::nullopt))
+                        attach_item_display_result(result, first_match, translation);
                 }
             }
         }
@@ -510,8 +516,10 @@
                                 source = capture.complete;
                                 break;
                             }
-                    const auto target = source.ends_with("...") ? std::nullopt
-                        : translate_item_description_source(source, true);
+                    const auto translation = source.ends_with("...") ? TranslationResult{}
+                        : translate_item_description_source_display(source, true);
+                    const auto target = translation.usable()
+                        ? std::optional<std::string>(translation.target) : std::nullopt;
                     int caption_right = right;
                     for (const auto &next : split_text_fields(screen_rows[y])) {
                         if (next.start >= field.end && next.start < caption_right) {
@@ -545,6 +553,8 @@
                     // font and measured ellipsis within that control boundary.
                     Match caption{field.start, y, field.end - field.start,
                         kFortressItemCaptionRule, *target, field.text};
+                    caption.translation_result = std::make_shared<const TranslationResult>(translation);
+                    caption.native_hover_untranslated = translation.has_untranslated();
                     caption.layout_x = field.start;
                     caption.layout_y = y;
                     caption.layout_length = caption_right - field.start;
@@ -620,11 +630,14 @@
                 if (!introduction && (!native ||
                     (!source.starts_with("This is ") && !source.starts_with("These are "))))
                     continue;
-                const auto target = translate_item_description_source(source, true);
-                if (!target || !append_bounded_paragraph(rows, *target, screen_rows,
+                const auto translation = translate_item_description_source_display(source, true);
+                const size_t first_match = result.size();
+                if (!translation.usable() || !translation.changed() ||
+                    !append_bounded_paragraph(rows, translation.target, screen_rows,
                         result, only_y, body_right, body_right, {}, false, -1,
                         native ? std::optional(viewport) : std::nullopt))
                     reserve_untranslated(std::move(rows), source);
+                else attach_item_display_result(result, first_match, translation);
             }
         }
     }

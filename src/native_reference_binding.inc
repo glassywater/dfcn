@@ -9,7 +9,7 @@ struct NativeImageByte { uintptr_t address; unsigned char reference, native; };
 
 static bool native_reference_relocated() {
 #ifdef _WIN32
-    return native_pe_classic();
+    return native_pe_relocated();
 #else
     static const bool relocated = [] {
         ModuleBuildId image;

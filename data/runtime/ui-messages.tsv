@@ -104,6 +104,11 @@ This building has been claimed by {n}.	此建筑已被{n1}占用。
 {n} works furiously!	{n1}正在疯狂地工作！
 {n} works, darkly brooding...	{n1}一边阴森地沉思，一边工作……
 {n} works with menacing fury!	{n1}正带着骇人的狂怒工作！
+{n} keeps muttering	{n1}不停地喃喃自语：
+{n} mutters	{n1}喃喃自语：
+{n} screams	{n1}尖叫：
+{n} broods	{n1}阴沉地沉思：
+{n} sketches	{n1}画着草图：
 
 # Objects: all four tabs, inventoried in data/extracted/ui-message-sources.tsv. These are
 # separate complete native draws, not fragments to merge across blank rows.

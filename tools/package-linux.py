@@ -16,12 +16,36 @@ RUNTIME_FILES = (
     "data/runtime/dfhack-help-translations.tsv", "data/runtime/dfhack-help-overrides.tsv",
     "data/runtime/dfhack-help-command-overrides.tsv", "data/runtime/dfhack-output-core.tsv",
     "data/runtime/dfhack-output-translations.tsv", "data/runtime/dfhack-output-stonesense.tsv",
+    "data/runtime/dfhack-overlay-plugin-controls.tsv", "data/runtime/dfhack-overlay-script-controls.tsv",
+    "data/runtime/civilization-name-terms.tsv",
+    "data/runtime/site-name-decisions.tsv", "data/runtime/site-name-imagery.tsv",
+    "data/runtime/site-government-parent-suffixes.tsv",
+    "data/runtime/site-government-name-terms.tsv",
+    "data/runtime/site-government-independent-suffixes.tsv",
+    "data/runtime/character-name-lexicon.tsv", "data/runtime/character-name-overrides.tsv",
+    "data/runtime/character-surname-lexicon.tsv",
+    "data/runtime/english-pronunciation/britfone.csv",
+    "data/runtime/english-pronunciation/britfone.LICENSE",
+    "data/runtime/english-pronunciation/britfone.README",
+    "data/runtime/english-pronunciation/mfa-english-uk.dict",
+    "data/runtime/english-pronunciation/mfa-english-uk-g2p.fst",
+    "data/runtime/english-pronunciation/mfa-english-uk-g2p-graphemes.sym",
+    "data/runtime/english-pronunciation/mfa-english-uk-g2p-phones.sym",
+    "data/runtime/english-pronunciation/mfa-english-uk-g2p-meta.json",
+    "data/runtime/english-pronunciation/MFA-LICENSE.txt",
+    "data/runtime/english-pronunciation/SOURCE",
+    "data/runtime/pinyin-data/pinyin.txt", "data/runtime/pinyin-data/SOURCE",
+    "data/runtime/phrase-pinyin-data/large_pinyin.txt",
+    "data/runtime/phrase-pinyin-data/LICENSE", "data/runtime/phrase-pinyin-data/SOURCE",
 )
 LICENSE_FILES = (
     "data/upstream/licenses/dfi18n-data.LICENSE.md", "data/upstream/licenses/dfzh-data.LICENSE.md",
     "third_party/dfzh-rules-engine.LICENSE", "third_party/tomlplusplus/LICENSE",
     "third_party/dfhooks.LICENSE", "data/upstream/licenses/ECDICT.LICENSE",
     "third_party/dfhack-help.LICENSE", "third_party/lua-output.LICENSE",
+    "third_party/pinyin-data/LICENSE", "data/runtime/phrase-pinyin-data/LICENSE",
+    "data/runtime/english-pronunciation/britfone.LICENSE",
+    "data/runtime/english-pronunciation/MFA-LICENSE.txt",
 )
 INSTALLATION = """DFCN Linux x64 / Dwarf Fortress 53.16
 
@@ -70,7 +94,7 @@ def package() -> None:
                 if source.is_file():
                     archive.write(source, "dfcn/data/runtime/" + name)
                     break
-            for name in ("dfhack-help.LICENSE", "lua-output.LICENSE"):
+            for name in ("dfhack-help.LICENSE", "lua-output.LICENSE", "pinyin-data/LICENSE"):
                 archive.write(ROOT / "third_party" / name, "dfcn/data/runtime/" + name)
             archive.writestr("dfcn/THIRD_PARTY_NOTICES.md", notices())
             archive.writestr("INSTALL.txt", INSTALLATION)

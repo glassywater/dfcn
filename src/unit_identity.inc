@@ -96,7 +96,7 @@ std::optional<std::string> Overlay::translate_unit_profession(
          at = at == 0 ? std::string::npos : folded.rfind(" of ", at - 1)) {
         const auto role = translate_unit_profession(source.substr(0, at));
         if (!role) continue;
-        const auto place = translate_legends_name(source.substr(at + 4), false);
+        const auto place = translate_legends_place(source.substr(at + 4));
         if (place) return *place + "的" + *role;
     }
     constexpr std::string_view resident = "resident ";
@@ -214,4 +214,47 @@ std::optional<std::string> Overlay::translate_unit_identity(
     if (!name && !typed) name = translate_legends_name(person, true);
     return name ? std::optional<std::string>(*name + "，" + *role + sex) : std::nullopt;
     });
+}
+
+std::optional<std::string> Overlay::translate_dfhack_readable_unit_name(
+        std::string_view raw) const {
+    if (const auto identity = native_unit_identity_source_target(raw)) return identity;
+    // Units::formatReadableName appends an English last-name gloss, then the
+    // optional profession/caste. A nickname may contain quotes; only a
+    // complete, recognized surname field licenses this split.
+    for (size_t open = raw.rfind(" \""); open != std::string_view::npos;
+            open = open ? raw.rfind(" \"", open - 1) : std::string_view::npos) {
+        const size_t close = raw.find('"', open + 2);
+        if (close == std::string_view::npos) continue;
+        const auto native = trim_view(raw.substr(0, open));
+        const auto gloss = trim_view(raw.substr(open + 2, close - open - 2));
+        auto suffix = trim_view(raw.substr(close + 1));
+        if (native.empty() || gloss.empty() ||
+                (!suffix.empty() && suffix.front() != ',')) continue;
+        // A later quote in a custom profession must not swallow the real
+        // gloss into the native-name field. Only native nickname delimiters
+        // can own quotes before the surname boundary.
+        const auto nickname_open = native.find('`');
+        const auto nickname_close = native.rfind('\'');
+        std::string outside_nickname(native);
+        if (nickname_open != std::string_view::npos &&
+                nickname_close != std::string_view::npos && nickname_close > nickname_open)
+            outside_nickname.erase(nickname_open, nickname_close - nickname_open + 1);
+        if (outside_nickname.find('"') != std::string::npos) continue;
+        const auto meaning = translate_english_character_name(gloss);
+        if (!meaning) continue;
+        const auto person = translate_unit_identity(native, true);
+        if (!person) return std::nullopt;
+        std::string name = *person + "，“" + *meaning + "”";
+        if (suffix.empty()) return name;
+        suffix = trim_view(suffix.substr(1));
+        if (suffix.empty()) return std::nullopt;
+        auto profession = translate_creature_label(suffix);
+        if (!profession)
+            profession = translate_unit_profession(normalize_utterance(suffix), true);
+        return profession ? std::optional<std::string>(name + "，" + *profession)
+                          : std::nullopt;
+    }
+    return raw.find('"') == std::string_view::npos
+        ? translate_unit_identity(raw, true) : std::nullopt;
 }

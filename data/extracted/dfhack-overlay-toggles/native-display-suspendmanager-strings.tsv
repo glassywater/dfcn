@@ -1,0 +1,427 @@
+string_rva	text
+0x3e820	suspendmanager_suspensionDescription
+0x3e848	suspendmanager_isKeptSuspended
+0x3e868	suspendmanager_runOnce
+0x3e880	suspendmanager_getStatus
+0x3e8a0	suspendmanager_isBuildingPlanJob
+0x3e8c8	suspendmanager_preventBlockingEnabled
+0x3e8f0	suspendmanager
+0x3e900	world
+0x3e908	control
+0x3e910	cycle
+0x3e918	/config
+0x3e938	Unknown exception
+0x3e980	bad array new length
+0x3e998	string too long
+0x3e9ac	false
+0x3e9b4	true
+0x3ea48	map/set too long
+0x3ea80	Jobsite is submerged
+0x3ea98	Managed by buildingplan
+0x3eab0	May block another build job
+0x3ead0	Waiting for carve/smooth/engrave
+0x3eaf8	Blocks another build job
+0x3eb18	Would collapse immediately
+0x3eb38	Blocked by an unmovable item
+0x3eb58	Would collapse machinery
+0x3eb78	External reason
+0x3eb90	bool __cdecl SuspendManager::buildingOnDesignation(struct df::building *)
+0x3ebe0	building
+0x3ebf0	bool __cdecl SuspendManager::isOnUnmovableItem(struct df::job *)
+0x3ecb0	void __cdecl SuspendManager::preserveDesigations(struct df::job *)
+0x3ed00	 and unsuspended 
+0x3ed18	suspended 
+0x3ed40	maintaining 
+0x3ee00	not suspended by suspendmanager
+0x3ee38	Intelligently suspend and unsuspend jobs.
+0x3ee68	Resume suspended building construction jobs.
+0x3ee98	unsuspend
+0x3eed8	enabled
+0x3eee0	disabled
+0x3f058	but not
+0x3f090	preventblocking
+0x3f0a0	unsuspend_command
+0x3f0b8	plugins.suspendmanager
+0x3f150	class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl suspendmanager_suspensionDescription(struct df::job *)
+0x3f1e8	suspendmanager_instance
+0x3f200	suspendmanager disabled
+0x3f218	bool __cdecl suspendmanager_isKeptSuspended(struct df::job *)
+0x3f4f8	vector too long
+0x3f508	root
+0x3f520	struct df::job *&__cdecl DFHack::DfLinkedList<struct df::job_list_link,struct df::job>::iterator::operator *(void) const
+0x3f5a0	struct df::job *&__cdecl DFHack::DfLinkedList<struct df::job_list_link,struct df::job>::iterator::operator *(void)
+0x3f620	class DFHack::DfLinkedList<struct df::job_list_link,struct df::job>::iterator &__cdecl DFHack::DfLinkedList<struct df::job_list_link,struct df::job>::iterator::operator ++(void)
+0x3f780	invalid bitset position
+0x3f7d0	unordered_map/set too long
+0x3f7f0	invalid hash bucket count
+0x3f910	53.16-r2
+0x3f91c	53.16
+0x3f928	https://github.com/DFHack/dfhack/actions/runs/36605190931
+0x3f968	53.16-r2-0-g02e77acf
+0x3f980	02e77acf13049f5661a4da0aa3d876bf95b74903
+0x3f9b0	63efa5f44c5fd00ded98a2034f5d6069fd94f7a4
+0x3f9e0	bad allocation
+0x3f9f0	invalid format specifier for char
+0x3faa0	generic
+0x3fae0	00010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899
+0x3fbaa	00010203  0405060707080910  1112131414151617  18192021  222324  25262728  2930313232333435  3637383939404142  43444546  474849  50515253  5455565757585960  6162636464656667  68697071  727374  75767778  7980818282838485  8687888989909192  93949596  979899  
+0x3fea0	number is too big
+0x3ff00	bad cast
+0x3ffa0	%s:%d: assertion failed: %s
+0x3ffc0	error 
+0x3ffc8	unmatched '}' in format string
+0x3ffe8	invalid format string
+0x40000	missing '}' in format string
+0x40020	unknown format specifier
+0x40040	argument not found
+0x40058	cannot switch from manual to automatic argument indexing
+0x40094	{}{}
+0x400a0	cannot write to file
+0x41da1	A]DG
+0x42af0	invalid format specifier
+0x42b10	format specifier requires numeric argument
+0x42b40	invalid fill character '{'
+0x42b60	invalid utf8
+0x430e8	invalid precision
+0x43100	string pointer is null
+0x43118	width/precision is not integer
+0x43140	cannot switch from automatic to manual argument indexing
+0x43190	width/precision is out of range
+0x431c0	0123456789ABCDEF
+0x431d8	0123456789abcdef
+0x44cc8	D:\a\dfhack\dfhack\build\plugins\suspendmanager.pdb
+0x44d1c	.text$di
+0x44d30	.text$mn
+0x44d44	.text$mn$00
+0x44d58	.text$x
+0x44d68	.text$yd
+0x44d7c	.idata$5
+0x44d90	.00cfg
+0x44da0	.CRT$XCA
+0x44db4	.CRT$XCL
+0x44dc8	.CRT$XCU
+0x44ddc	.CRT$XCZ
+0x44df0	.CRT$XIA
+0x44e04	.CRT$XIZ
+0x44e18	.CRT$XLA
+0x44e2c	.CRT$XLZ
+0x44e40	.CRT$XPA
+0x44e54	.CRT$XPZ
+0x44e68	.CRT$XTA
+0x44e7c	.CRT$XTZ
+0x44e90	.rdata
+0x44ea0	.rdata$CastGuardVftablesA
+0x44ec4	.rdata$CastGuardVftablesC
+0x44ee8	.rdata$T
+0x44efc	.rdata$r
+0x44f10	.rdata$voltmd
+0x44f28	.rdata$zzzdbg
+0x44f40	.rtc$IAA
+0x44f54	.rtc$IZZ
+0x44f68	.rtc$TAA
+0x44f7c	.rtc$TZZ
+0x44f90	.tls
+0x44fa0	.tls$
+0x44fb0	.tls$ZZZ
+0x44fc4	.xdata
+0x44fd4	.xdata$x
+0x44fe8	.edata
+0x44ff8	.idata$2
+0x4500c	.idata$3
+0x45020	.idata$4
+0x45034	.idata$6
+0x45048	.data
+0x45058	.data$r
+0x45068	.data$rs
+0x4507c	.bss
+0x4508c	.pdata
+0x4509c	.rsrc$01
+0x450b0	.rsrc$02
+0x47171	4 n"B$
+0x4be0e	suspendmanager.plug.dll
+0x4be26	plugin_abi_version
+0x4be39	plugin_dev
+0x4be44	plugin_enable
+0x4be52	plugin_git_description
+0x4be69	plugin_globals
+0x4be78	plugin_init
+0x4be84	plugin_is_enabled
+0x4be96	plugin_load_site_data
+0x4beac	plugin_lua_functions
+0x4bec1	plugin_name
+0x4becd	plugin_onstatechange
+0x4bee2	plugin_onupdate
+0x4bef2	plugin_self
+0x4befe	plugin_shutdown
+0x4bf0e	plugin_version
+0x4c739	g?flush_buffer@color_ostream@DFHack@@AEAAX_N@Z
+0x4c769	m?getInstance@Core@DFHack@@SAAEAV12@XZ
+0x4c791	v?isEnabled@DebugCategory@DFHack@@QEBA_NW4level@12@@Z
+0x4c7c9	H??_Dostream_proxy_prefix@DebugCategory@DFHack@@QEAAXXZ
+0x4c803	n?getStream@DebugCategory@DFHack@@QEBA?AUostream_proxy_prefix@12@W4level@12@AEAVcolor_ostream@2@@Z
+0x4c868	??0DebugRegisterBase@DFHack@@IEAA@PEAVDebugCategory@1@@Z
+0x4c8a4	?unregister@DebugRegisterBase@DFHack@@IEAAXPEAVDebugCategory@2@@Z
+0x4c8e8	??0NullPointer@Error@DFHack@@QEAA@PEBD0@Z
+0x4c914	?notify_deprecated@LuaWrapper@DFHack@@YAXPEAUlua_State@@V?$basic_string_view@DU?$char_traits@D@std@@@std@@1@Z
+0x4c984	??0function_identity_base@DFHack@@QEAA@H_N@Z
+0x4c9b4	??1function_identity_base@DFHack@@UEAA@XZ
+0x4c9e0	??0pointer_identity@DFHack@@QEAA@PEBVtype_identity@1@@Z
+0x4ca1a	??1pointer_identity@DFHack@@UEAA@XZ
+0x4ca3f	m?get@?$identity_traits@_N@df@@SAPEBVbool_identity@2@XZ
+0x4ca78	Hj?get@?$identity_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@df@@SAPEBVstl_string_identity@2@XZ
+0x4caf6	??0cur_lua_ostream_argument@df@@QEAA@PEAUlua_State@@@Z
+0x4cb2f	L?CallLuaModuleFunction@Lua@DFHack@@YA_NAEAVcolor_ostream@2@PEAUlua_State@@PEBD2HH$$QEAV?$function@$$A6AXPEAUlua_State@@@Z@std@@3_N@Z
+0x4cbb8	??0PluginCommand@DFHack@@QEAA@PEBD0P6A?AW4command_result@1@AEAVcolor_ostream@1@AEAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@Z_N40@Z
+0x4ccb2	??1PluginCommand@DFHack@@QEAA@XZ
+0x4ccd6	??0PluginCommand@DFHack@@QEAA@AEBU01@@Z
+0x4cd00	??0PluginCommand@DFHack@@QEAA@$$QEAU01@@Z
+0x4cd2b	Y?attrs@?$enum_traits@W4tiletype_shape@1enums@df@@@df@@SAAEBUattr_entry_type@12@W4tiletype_shape@4enums@2@@Z
+0x4cd99	Y?attrs@?$enum_traits@W4tiletype@1enums@df@@@df@@SAAEBUattr_entry_type@12@W4tiletype@4enums@2@@Z
+0x4cdfa	,m?getBlock@Maps@DFHack@@YAPEAUmap_block@df@@HHH@Z
+0x4ce2f	n?getTileType@Maps@DFHack@@YAPEAW4tiletype@3enums@df@@HHH@Z
+0x4ce6d	n?getTileDesignation@Maps@DFHack@@YAPEATtile_designation@df@@HHH@Z
+0x4ceb1	n?getTileOccupancy@Maps@DFHack@@YAPEATtile_occupancy@df@@HHH@Z
+0x4cef1	o?getWalkableGroup@Maps@DFHack@@YAGU?$Coord3d@F$0?HFDA@@2@@Z
+0x4cf2e	?b?findAtTile@Buildings@DFHack@@YAPEAUbuilding@df@@U?$Coord3d@F$0?HFDA@@2@@Z
+0x4cf7e	?registerListener@EventManager@DFHack@@YAXW4EventType@312@UEventHandler@12@@Z
+0x4cfce	?unregisterAll@EventManager@DFHack@@YAXPEAVPlugin@2@@Z
+0x4d007	a?find@building@df@@SAPEAU12@H@Z
+0x4d029	m?getHolder@Job@DFHack@@YAPEAUbuilding@df@@PEAUjob@4@@Z
+0x4d064	?removeWorker@Job@DFHack@@YA_NPEAUjob@df@@H@Z
+0x4d092	2w?isValid@PersistentDataItem@DFHack@@QEBA_NXZ
+0x4d0c3	|?ival@PersistentDataItem@DFHack@@QEAAAEAHH@Z
+0x4d0f3	|?ival@PersistentDataItem@DFHack@@QEBAHH@Z
+0x4d120	??0PersistentDataItem@DFHack@@QEAA@XZ
+0x4d148	??1PersistentDataItem@DFHack@@QEAA@XZ
+0x4d16e	.2??4PersistentDataItem@DFHack@@QEAAAEAV01@$$QEAV01@@Z
+0x4d1a7	v?isFortressMode@World@DFHack@@YA_NW4game_type@3enums@df@@@Z
+0x4d1e4	PL?AddPersistentSiteData@World@DFHack@@YA?AVPersistentDataItem@2@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z
+0x4d26b	M?GetPersistentSiteData@World@DFHack@@YA?AVPersistentDataItem@2@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z
+0x4d2f3	b?find@item@df@@SAPEAU12@H@Z
+0x4d311	b?find@machine@df@@SAPEAU12@H@Z
+0x4d333	Y?begin@?$DfLinkedList@Ujob_list_link@df@@Ujob@2@@DFHack@@QEAA?AViterator@12@XZ
+0x4d385	a?end@?$DfLinkedList@Ujob_list_link@df@@Ujob@2@@DFHack@@QEAA?AViterator@12@XZ
+0x4d3d5	_?can_allocate@type_identity@DFHack@@MEBA_NXZ
+0x4d404	ta?do_allocate@type_identity@DFHack@@MEBAPEAXXZ
+0x4d434	za?do_copy@type_identity@DFHack@@MEBA_NPEAXPEBX@Z
+0x4d467	a?do_destroy@type_identity@DFHack@@MEBA_NPEAX@Z
+0x4d499	^?byte_size@type_identity@DFHack@@UEBA_KXZ
+0x4d4c5	v?isPrimitive@type_identity@DFHack@@UEBA_NXZ
+0x4d4f2	av?isConstructed@type_identity@DFHack@@UEBA_NXZ
+0x4d522	cv?isContainer@type_identity@DFHack@@UEBA_NXZ
+0x4d552	?type@function_identity_base@DFHack@@UEBA?AW4identity_type@2@XZ
+0x4d593	m?getFullName@function_identity_base@DFHack@@UEBA?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ
+0x4d60a	??1NullPointer@Error@DFHack@@UEAA@XZ
+0x4d632	??0NullPointer@Error@DFHack@@QEAA@AEBV012@@Z
+0x4d662	??0All@Error@DFHack@@QEAA@AEBV012@@Z
+0x4d689	^?build_metatable@type_identity@DFHack@@UEBAXPEAUlua_State@@@Z
+0x4d6ca	?lua_read@function_identity_base@DFHack@@UEBAXPEAUlua_State@@HPEAX@Z
+0x4d712	?lua_write@function_identity_base@DFHack@@UEBAXPEAUlua_State@@HPEAXH@Z
+0x4d75c	?log_errors_to_stderr@color_ostream@DFHack@@2_NA
+0x4d790	?world@global@df@@3PEAU02@EA
+0x4d7af	U?_identity@job@df@@2Vstruct_identity@DFHack@@B
+0x4d7e0	dfhack.dll
+0x4d7ee	?lua_pushnil@@YAXPEAUlua_State@@@Z
+0x4d814	?lua_pushlstring@@YAPEBDPEAUlua_State@@PEBD_K@Z
+0x4d844	lua53.dll
+0x4d850	WriteConsoleW
+0x4d85e	KERNEL32.dll
+0x4d86e	?uncaught_exceptions@std@@YAHXZ
+0x4d890	?_Xbad_alloc@std@@YAXXZ
+0x4d8aa	?_Xlength_error@std@@YAXPEBD@Z
+0x4d8cc	?_Xout_of_range@std@@YAXPEBD@Z
+0x4d8ee	?_Getcvt@_Locinfo@std@@QEBA?AU_Cvtvec@@XZ
+0x4d91a	?_W_Getdays@_Locinfo@std@@QEBAPEBGXZ
+0x4d942	?_W_Getmonths@_Locinfo@std@@QEBAPEBGXZ
+0x4d96c	?good@ios_base@std@@QEBA_NXZ
+0x4d98c	?flags@ios_base@std@@QEBAHXZ
+0x4d9ac	?width@ios_base@std@@QEBA_JXZ
+0x4d9cc	?width@ios_base@std@@QEAA_J_J@Z
+0x4d9ee	??0?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAA@XZ
+0x4da2a	??1?$basic_streambuf@DU?$char_traits@D@std@@@std@@UEAA@XZ
+0x4da66	?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAAHD@Z
+0x4daa8	?sputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAA_JPEBD_J@Z
+0x4daf0	?eback@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBAPEADXZ
+0x4db34	?gptr@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBAPEADXZ
+0x4db76	?pbase@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBAPEADXZ
+0x4dbba	?pptr@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBAPEADXZ
+0x4dbfc	?egptr@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBAPEADXZ
+0x4dc40	?gbump@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAXH@Z
+0x4dc82	?setg@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAXPEAD00@Z
+0x4dcc8	?epptr@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBAPEADXZ
+0x4dd0c	?setp@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAXPEAD0@Z
+0x4dd50	?setp@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAXPEAD00@Z
+0x4dd96	?_Pninc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAPEADXZ
+0x4ddda	??1?$basic_ios@DU?$char_traits@D@std@@@std@@UEAA@XZ
+0x4de10	?setstate@?$basic_ios@DU?$char_traits@D@std@@@std@@QEAAXH_N@Z
+0x4de50	?tie@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBAPEAV?$basic_ostream@DU?$char_traits@D@std@@@2@XZ
+0x4deb6	?rdbuf@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBAPEAV?$basic_streambuf@DU?$char_traits@D@std@@@2@XZ
+0x4df20	?fill@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBADXZ
+0x4df5a	?widen@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBADD@Z
+0x4df96	??0?$basic_ios@DU?$char_traits@D@std@@@std@@IEAA@XZ
+0x4dfcc	?_Osfx@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAXXZ
+0x4e00a	??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
+0x4e05e	??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@H@Z
+0x4e0a0	??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@_K@Z
+0x4e0e2	?put@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@D@Z
+0x4e126	?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@XZ
+0x4e16a	??0?$basic_iostream@DU?$char_traits@D@std@@@std@@QEAA@PEAV?$basic_streambuf@DU?$char_traits@D@std@@@1@@Z
+0x4e1d6	??1?$basic_iostream@DU?$char_traits@D@std@@@std@@UEAA@XZ
+0x4e212	?setw@std@@YA?AU?$_Smanip@_J@1@_J@Z
+0x4e238	?_Xbad_function_call@std@@YAXXZ
+0x4e25a	?imbue@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAAXAEBVlocale@2@@Z
+0x4e2a8	?sync@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAAHXZ
+0x4e2e8	?setbuf@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAAPEAV12@PEAD_J@Z
+0x4e336	?xsputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAA_JPEBD_J@Z
+0x4e37e	?xsgetn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAA_JPEAD_J@Z
+0x4e3c6	?uflow@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAAHXZ
+0x4e406	?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAA_JXZ
+0x4e44c	?_Unlock@?$basic_streambuf@DU?$char_traits@D@std@@@std@@UEAAXXZ
+0x4e48e	?_Lock@?$basic_streambuf@DU?$char_traits@D@std@@@std@@UEAAXXZ
+0x4e4ce	?cerr@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
+0x4e50a	??0_Lockit@std@@QEAA@H@Z
+0x4e526	??1_Lockit@std@@QEAA@XZ
+0x4e540	?_Syserror_map@std@@YAPEBDH@Z
+0x4e560	_Mbrtowc
+0x4e56c	??0_Locinfo@std@@QEAA@PEBD@Z
+0x4e58c	??1_Locinfo@std@@QEAA@XZ
+0x4e5a8	?_Getfalse@_Locinfo@std@@QEBAPEBDXZ
+0x4e5ce	?_Gettrue@_Locinfo@std@@QEBAPEBDXZ
+0x4e5f4	?c_str@?$_Yarn@D@std@@QEBAPEBDXZ
+0x4e618	??0facet@locale@std@@IEAA@_K@Z
+0x4e63a	??1facet@locale@std@@MEAA@XZ
+0x4e65a	?_Init@locale@std@@CAPEAV_Locimp@12@_N@Z
+0x4e686	?_Getgloballocale@locale@std@@CAPEAV_Locimp@12@XZ
+0x4e6ba	?_Incref@facet@locale@std@@UEAAXXZ
+0x4e6e0	?_Decref@facet@locale@std@@UEAAPEAV_Facet_base@3@XZ
+0x4e716	?_Id_cnt@id@locale@std@@0HA
+0x4e734	?id@?$numpunct@D@std@@2V0locale@2@A
+0x4e75a	?id@?$numpunct@_W@std@@2V0locale@2@A
+0x4e780	MSVCP140.dll
+0x4e790	__std_terminate
+0x4e7a2	__std_exception_copy
+0x4e7ba	__std_exception_destroy
+0x4e7d4	_CxxThrowException
+0x4e7ea	__CxxFrameHandler4
+0x4e800	memcmp
+0x4e80a	memcpy
+0x4e814	memmove
+0x4e81e	memset
+0x4e828	__C_specific_handler
+0x4e840	__current_exception
+0x4e856	__current_exception_context
+0x4e874	__std_type_info_destroy_list
+0x4e892	VCRUNTIME140.dll
+0x4e8a4	VCRUNTIME140_1.dll
+0x4e8ba	_invoke_watson
+0x4e8cc	calloc
+0x4e8d6	ceilf
+0x4e8de	strlen
+0x4e8e8	wcslen
+0x4e8f2	_errno
+0x4e8fc	_dsign
+0x4e906	free
+0x4e90e	malloc
+0x4e918	abort
+0x4e920	__acrt_iob_func
+0x4e932	fflush
+0x4e93c	_fileno
+0x4e946	fputc
+0x4e94e	fwrite
+0x4e958	_lock_file
+0x4e966	_unlock_file
+0x4e976	__stdio_common_vfprintf
+0x4e990	_get_osfhandle
+0x4e9a2	_isatty
+0x4e9ac	localeconv
+0x4e9ba	_dclass
+0x4e9c4	_fdclass
+0x4e9d0	_ldclass
+0x4e9dc	_callnewh
+0x4e9e8	_seh_filter_dll
+0x4e9fa	_configure_narrow_argv
+0x4ea14	_initialize_narrow_environment
+0x4ea36	_initialize_onexit_table
+0x4ea52	_register_onexit_function
+0x4ea6e	_execute_onexit_table
+0x4ea86	_crt_atexit
+0x4ea94	_crt_at_quick_exit
+0x4eaaa	_cexit
+0x4eab4	_initterm
+0x4eac0	_initterm_e
+0x4eace	terminate
+0x4ead8	api-ms-win-crt-runtime-l1-1-0.dll
+0x4eafa	api-ms-win-crt-heap-l1-1-0.dll
+0x4eb1a	api-ms-win-crt-math-l1-1-0.dll
+0x4eb3a	api-ms-win-crt-string-l1-1-0.dll
+0x4eb5c	api-ms-win-crt-stdio-l1-1-0.dll
+0x4eb7c	api-ms-win-crt-filesystem-l1-1-0.dll
+0x4eba2	api-ms-win-crt-locale-l1-1-0.dll
+0x4ebc6	ReleaseSRWLockExclusive
+0x4ebe0	AcquireSRWLockExclusive
+0x4ebfa	WakeAllConditionVariable
+0x4ec16	SleepConditionVariableSRW
+0x4ec32	RtlCaptureContext
+0x4ec46	RtlLookupFunctionEntry
+0x4ec60	RtlVirtualUnwind
+0x4ec74	IsDebuggerPresent
+0x4ec88	UnhandledExceptionFilter
+0x4eca4	SetUnhandledExceptionFilter
+0x4ecc2	GetStartupInfoW
+0x4ecd4	IsProcessorFeaturePresent
+0x4ecf0	GetModuleHandleW
+0x4ed04	GetCurrentProcess
+0x4ed18	TerminateProcess
+0x4ed2c	QueryPerformanceCounter
+0x4ed46	GetCurrentProcessId
+0x4ed5c	GetCurrentThreadId
+0x4ed72	GetSystemTimeAsFileTime
+0x4ed8c	DisableThreadLibraryCalls
+0x4eda8	InitializeSListHead
+0x4f0f0	02e77ac
+0x4f1d0	.?AVexception@std@@
+0x4f1f8	.?AVbad_array_new_length@std@@
+0x4f228	.?AVbad_alloc@std@@
+0x4f250	.?AV?$basic_streambuf@DU?$char_traits@D@std@@@std@@
+0x4f298	.?AVNullPointer@Error@DFHack@@
+0x4f2c8	.?AVAll@Error@DFHack@@
+0x4f2f0	.?AV<lambda_1>@?1??wouldOrphanMachine@SuspendManager@@CA_NPEAUbuilding@df@@@Z@
+0x4f350	.?AV<lambda_1>@?1??around@@YA?AV?$function@$$A6A?AU?$Coord3d@F$0?HFDA@@DFHack@@Uoffset@@@Z@std@@U?$Coord3d@F$0?HFDA@@DFHack@@@Z@
+0x4f3e8	.?AV<lambda_2>@Lua@DFHack@@
+0x4f420	.?AV<lambda_1>@?1???$CallLuaModuleFunction@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Lua@DFHack@@YA_NAEAVcolor_ostream@2@PEBD1AEBV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@_K$$QEAV?$function@$$A6AXPEAUlua_State@@@Z@5@@Z@
+0x4f598	.?AVruntime_error@std@@
+0x4f5c0	.?AVsystem_error@std@@
+0x4f5e8	.?AV_System_error@std@@
+0x4f610	.?AVformat_error@v12@fmt@@
+0x4f640	.?AVbad_cast@std@@
+0x4f670	.?AV?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@
+0x4f6d0	.?AV?$basic_ostream@DU?$char_traits@D@std@@@std@@
+0x4f718	.?AV?$basic_ios@DU?$char_traits@D@std@@@std@@
+0x4f758	.?AVios_base@std@@
+0x4f780	.?AV?$_Iosb@H@std@@
+0x4f7b0	.?AV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@
+0x4f810	.?AV?$basic_iostream@DU?$char_traits@D@std@@@std@@
+0x4f860	.?AV?$basic_istream@DU?$char_traits@D@std@@@std@@
+0x4f8a8	.?AV?$_Func_base@XPEAUlua_State@@@std@@
+0x4f8e0	.?AV?$_Func_base@U?$Coord3d@F$0?HFDA@@DFHack@@Uoffset@@@std@@
+0x4f930	.?AV?$_Func_base@HH@std@@
+0x4f960	.?AV?$function_identity@P6A?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEAUjob@df@@@Z@df@@
+0x4f9e0	.?AVfunction_identity_base@DFHack@@
+0x4fa18	.?AVtype_identity@DFHack@@
+0x4fa50	.?AV?$function_identity@P6A_NPEAUjob@df@@@Z@df@@
+0x4faa0	.?AV?$function_identity@P6AXAEAVcolor_ostream@DFHack@@_N1@Z@df@@
+0x4fb00	.?AV?$function_identity@P6A?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAVcolor_ostream@DFHack@@@Z@df@@
+0x4fb90	.?AV?$function_identity@P6A_NXZ@df@@
+0x4fbd0	.?AV?$_Func_impl_no_alloc@V<lambda_2>@Lua@DFHack@@XPEAUlua_State@@@std@@
+0x4fc30	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??around@@YA?AV?$function@$$A6A?AU?$Coord3d@F$0?HFDA@@DFHack@@Uoffset@@@Z@std@@U?$Coord3d@F$0?HFDA@@DFHack@@@Z@U56@Uoffset@@@std@@
+0x4fcf0	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1??wouldOrphanMachine@SuspendManager@@CA_NPEAUbuilding@df@@@Z@HH@std@@
+0x4fd70	.?AV?$_Func_impl_no_alloc@V<lambda_1>@?1???$CallLuaModuleFunction@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Lua@DFHack@@YA_NAEAVcolor_ostream@3@PEBD1AEBV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@_K$$QEAV?$function@$$A6AXPEAUlua_State@@@Z@6@@Z@XPEAUlua_State@@@std@@
+0x4ff10	.?AVerror_category@std@@
+0x4ff40	.?AV_Generic_error_category@std@@
+0x4ff78	.?AVfacet@locale@std@@
+0x4ffa0	.?AV_Facet_base@std@@
+0x4ffc8	.?AU_Crt_new_delete@std@@
+0x4fff8	.?AV?$numpunct@D@std@@
+0x50020	.?AV?$numpunct@_W@std@@
+0x50048	.?AV?$format_facet@Vlocale@std@@@v12@fmt@@
+0x50088	.?AVtype_info@@

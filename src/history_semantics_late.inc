@@ -37,35 +37,66 @@ case 93: { // written_content_composed
     const NativeHistoryObjectKind kind = event.native_type == 90 ? NativeHistoryObjectKind::Poem :
         event.native_type == 91 ? NativeHistoryObjectKind::Music :
         event.native_type == 92 ? NativeHistoryObjectKind::Dance : NativeHistoryObjectKind::WrittenContent;
-    auto form = subject(kind, number("form"));
+    const int32_t form_id = number("form");
+    auto form = subject(kind, form_id);
     auto author = subject(NativeHistoryObjectKind::Figure, number("creator"));
     const auto context = event_clauses();
     if (!form || !author || !context) return std::nullopt;
     // These four formatters prefer site, then surface region, then layer;
     // with no location they omit the entire location clause.
     const int32_t site_id = number("site"), region_id = number("region"), layer_id = number("layer");
+    std::optional<Pieces> location;
     if (site_id != -1 || region_id != -1 || layer_id != -1) {
-        auto location = site_id != -1 ? subject(NativeHistoryObjectKind::Site, site_id) :
+        location = site_id != -1 ? subject(NativeHistoryObjectKind::Site, site_id) :
             region_id != -1 ? subject(NativeHistoryObjectKind::Region, region_id) :
             subject(NativeHistoryObjectKind::Underground, layer_id);
         if (!location) return std::nullopt;
-        auto place = apply("in {p}", {*location});
-        if (!place) return std::nullopt;
-        join(result, *place);
     }
-    std::string key = "{p} was created by {n}";
+    // Keep author, place and work in one predicate, with every link retained.
+    std::string key = location ? "{p} was created in {p} by {n}" : "{p} was created by {n}";
+    bool title_field = true;
     if (event.native_type == 93) {
         const auto entry = std::find_if(event.subjects.begin(), event.subjects.end(),
-            [&](const auto &value) { return value.kind == kind && value.id == number("form"); });
+            [&](const auto &value) { return value.kind == kind && value.id == form_id; });
         if (entry == event.subjects.end()) return std::nullopt;
-        key = entry->label_key == "a work" ? "a work was authored by {n}" : "{b} was authored by {n}";
+        if (entry->label_key == "a work") {
+            title_field = false;
+            key = location ? "a work was authored by {n} in {p}" : "a work was authored by {n}";
+        } else if (entry->raw_title.empty()) {
+            title_field = false;
+            key = location ? "an untitled work was authored by {n} in {p}" :
+                "an untitled work was authored by {n}";
+        } else key = location ? "{b} was authored by {n} in {p}" : "{b} was authored by {n}";
     }
-    auto creation = key == "a work was authored by {n}" ? apply(key, {*author}) :
-        apply(key, {*form, *author});
+    std::vector<Pieces> fields;
+    if (title_field) fields.push_back(*form);
+    if (event.native_type != 93 && location) fields.push_back(*location);
+    fields.push_back(*author);
+    if (event.native_type == 93 && location) fields.push_back(*location);
+    const bool glorifying_work = event.native_type == 93 && event.reason == 51;
+    const bool prayed_before_writing = glorifying_work &&
+        (event.circumstance == 181 || event.circumstance == 279);
+    if (glorifying_work) {
+        // The typed motive belongs before the writing verb in Chinese.
+        // Bind its figure into the complete predicate so the template can
+        // place the location first without splitting or flattening links.
+        auto glorified = subject(NativeHistoryObjectKind::Figure, event.reason_data);
+        if (!glorified) return std::nullopt;
+        key += " in order to glorify {a}";
+        fields.push_back(*glorified);
+        if (prayed_before_writing) {
+            // Bind the complete reviewed prayer clause after the author.
+            // Its figure is independent of the glorified figure, and both
+            // references retain their own colors and links.
+            key += " after {s}";
+            fields.push_back(context->second);
+        }
+    }
+    auto creation = apply(key, fields);
     if (!creation) return std::nullopt;
     join(result, *creation);
-    append_clause(result, context->first);
-    append_clause(result, context->second);
+    if (!glorifying_work) append_clause(result, context->first);
+    if (!prayed_before_writing) append_clause(result, context->second);
     translated = true;
     break;
 }
@@ -356,7 +387,7 @@ case 101: { // sneak_into_site
     join(result, *action);
     const int32_t site_civ_id = number("site_civ");
     if (site_civ_id != -1) {
-        auto defender = subject(NativeHistoryObjectKind::Entity, site_civ_id);
+        auto defender = government_subject(site_civ_id);
         if (!defender) return std::nullopt;
         if (site_civ_id != number("defender_civ")) {
             auto civ = polity_subject(number("defender_civ"));
@@ -373,7 +404,7 @@ case 101: { // sneak_into_site
 }
 case 102: { // spotted_leaving_site
     auto spotter = subject(NativeHistoryObjectKind::Figure, number("spotter"));
-    auto owner = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
+    auto owner = government_subject(number("site_civ"));
     auto leaver = subject(NativeHistoryObjectKind::Entity, number("leaver_civ"));
     auto site = subject(NativeHistoryObjectKind::Site, number("site"));
     if (!spotter || !owner || !leaver || !site) return std::nullopt;
@@ -515,7 +546,7 @@ case 104: { // hf_freed
         auto captor = subject(NativeHistoryObjectKind::Site, number("site"));
         if (!captor) return std::nullopt;
         if (number("site_civ") != -1) {
-            auto entity = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
+            auto entity = government_subject(number("site_civ"));
             if (!entity) return std::nullopt;
             if (number("holding_civ") != -1) {
                 auto owner = polity_subject(number("holding_civ"));
@@ -607,7 +638,7 @@ case 109: { // squad_vs_squad
 }
 case 110: { // site_surrendered
     const int32_t site_civ_id = number("site_civ");
-    auto actor = subject(NativeHistoryObjectKind::Entity, site_civ_id);
+    auto actor = government_subject(site_civ_id);
     auto attacker = polity_subject(number("attacker_civ"));
     auto site = subject(NativeHistoryObjectKind::Site, number("site"));
     if (!actor || !attacker || !site) return std::nullopt;
@@ -942,7 +973,7 @@ case 120: { // hf_preach
     break;
 }
 case 122: { // entity_breach_feature_layer
-    auto actor = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
+    auto actor = government_subject(number("site_civ"));
     auto site = subject(NativeHistoryObjectKind::Site, number("site"));
     auto layer = subject(NativeHistoryObjectKind::Underground, number("layer"));
     if (!actor || !site || !layer) return std::nullopt;

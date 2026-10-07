@@ -119,6 +119,7 @@ void Overlay::append_character_overview_identities(
             const std::string source = normalize_utterance(row.source);
             if (source.empty()) continue;
             auto target = translate_fortress_squad_reference(row.source, row.x, row.y);
+            TranslationResult display_result;
             if (!target) target = exact_literal_translation("Character overview: " + source);
             if (!target) target = exact_literal_translation(source);
             if (!target) {
@@ -126,11 +127,19 @@ void Overlay::append_character_overview_identities(
                 if (!target) target = translate_fortress_activity(source);
                 if (!target) target = translate_ui_message_capture(source, true);
             }
+            if (!target) {
+                display_result = translate_fortress_activity_display(source);
+                if (display_result.usable()) target = display_result.target;
+            }
             if (!target || target->empty()) continue;
             std::fill_n(screen.begin() + row.x, row.source.size(), ' ');
             if (only_y >= 0 && only_y != row.y) continue;
             Match match{row.x, row.y, static_cast<int>(row.source.size()),
                 kCharacterOverviewRowRule, std::move(*target), row.source};
+            if (display_result.usable()) {
+                match.translation_result = std::make_shared<const TranslationResult>(display_result);
+                match.native_hover_untranslated = display_result.has_untranslated();
+            }
             if (translate_rated_skill_phrase(row.source)) match.rule = kRatedSkillRule;
             if (!row.foregrounds.empty())
                 match.layout_foreground_rgb = row.foregrounds.front();
@@ -222,6 +231,7 @@ void Overlay::append_character_overview_identities(
             // Translate only a complete captured name plus a known creature
             // label; never complete a truncated caste or nickname by guessing.
             std::optional<std::string> target;
+            TranslationResult display_result;
             const size_t comma = draw.source.find(',');
             if (comma != std::string::npos) {
                 const auto creature = translate_creature_label(
@@ -235,6 +245,10 @@ void Overlay::append_character_overview_identities(
             // Reuse the complete activity/item entry used by the task list
             // and character header, including material, quality and counts.
             if (!target) target = translate_fortress_activity(draw.source);
+            if (!target) {
+                display_result = translate_fortress_activity_display(draw.source);
+                if (display_result.usable()) target = display_result.target;
+            }
             if (!target || target->empty()) continue;
 
             bool first = true;
@@ -248,6 +262,10 @@ void Overlay::append_character_overview_identities(
                 while (x < boundary && owned[static_cast<size_t>(x - draw.x)]) ++x;
                 Match span{begin, row.y, x - begin, kCharacterOverviewRowRule,
                     first ? *target : std::string{}, visible.substr(begin - draw.x, x - begin)};
+                if (display_result.usable()) {
+                    span.translation_result = std::make_shared<const TranslationResult>(display_result);
+                    span.native_hover_untranslated = first && display_result.has_untranslated();
+                }
                 span.layout_foreground_rgb = row.foregrounds.front();
                 if (first) {
                     span.layout_x = left_card.interior.x;

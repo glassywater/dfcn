@@ -72,30 +72,37 @@ std::optional<std::string> Overlay::translate_fortress_item_caption(
     // rectangular detail panel. It is still a relationship with a unit, not
     // an item name; classify its complete source before caching or parsing.
     relationship = relationship || source.starts_with("Owner: ");
-    std::string key;
+    std::string key = item_translation_cache_prefix() + "caption-strict:";
     key.push_back(relationship ? 'R' : 'I');
     key.push_back(building_material ? 'M' : 'N');
     key.append(source);
     if (const auto found = fortress_item_caption_cache_.find(key);
-        found != fortress_item_caption_cache_.end()) return found->second;
+        found != fortress_item_caption_cache_.end()) return found->second.strict_target();
 
     TranslationWorkScope work;
     std::optional<std::string> target;
+    TranslationResult cache_result;
     bool typed_description_complete = false;
     try {
         TranslationWorkFrame work_frame("complete item caption", source);
         // A complete wood item can omit log/logs in its native caption.
         // Incorporated components use the same name before the generic
         // material adjective; a framed classic component is still an item.
-        if ((!relationship || building_material) && config_.compositional_rules)
+        if ((!relationship || building_material) && config_.compositional_rules) {
             target = translate_wood_item_caption(source);
-        if (!target && building_material && config_.compositional_rules)
+            typed_description_complete = target.has_value();
+        }
+        if (!target && building_material && config_.compositional_rules) {
             target = translate_material_name(source, true);
+            typed_description_complete = target.has_value();
+        }
         // Bulk resources already are complete material nouns. Resolve their
         // species/state together before the more general item grammar can
         // reinterpret a species word as an independent material.
-        if (!target && !relationship && config_.compositional_rules)
+        if (!target && !relationship && config_.compositional_rules) {
             target = translate_material_name(source);
+            typed_description_complete = target.has_value();
+        }
         // This field already proves an item. Its scoped production must win
         // over homonyms in the general dictionary (a casket is a coffin here,
         // and generated sword/knife types are objects rather than skills).
@@ -105,7 +112,10 @@ std::optional<std::string> Overlay::translate_fortress_item_caption(
             target = translate_item_caption_grammar(source);
             typed_description_complete = target.has_value();
         }
-        if (!target) target = exact_literal_translation(source);
+        if (!target) {
+            target = exact_literal_translation(source);
+            typed_description_complete = target.has_value();
+        }
         if (!target && config_.compositional_rules && !source.ends_with("...")) {
             if (relationship && (source.starts_with("In ") ||
                 source.starts_with("On ") || source.starts_with("With ") ||
@@ -140,6 +150,7 @@ std::optional<std::string> Overlay::translate_fortress_item_caption(
         // item/grammar parsers must unwind without memoizing partial misses.
         if (!work.owns_budget()) throw;
         target.reset();
+        cache_result = preserved_item_field(source, "item-caption", TranslationStatus::WorkLimited);
         log_line("WARN", "Item caption translation work limit; keeping native text: " +
             std::string(source.substr(0, 256)) + "; stage=" + limit.stage);
     }
@@ -147,7 +158,18 @@ std::optional<std::string> Overlay::translate_fortress_item_caption(
     // Search visits offscreen groups too; retain misses and bound both count
     // and text storage. Query edits never flush the full-name cache.
     constexpr size_t max_records = 8192, max_bytes = 8 * 1024 * 1024;
-    const size_t bytes = key.size() * 2 + (target ? target->size() : 0);
+    if (cache_result.status != TranslationStatus::WorkLimited) {
+        if (target) cache_result = TranslationResult::translated(source, *target, "item-caption");
+        else {
+            cache_result.source = source;
+            cache_result.kind = "item-caption";
+            cache_result.status = TranslationStatus::NoMatch;
+        }
+    }
+    cache_result.policy = TranslationPolicy::Strict;
+    cache_result.resource_revision = RULESETS.resource_revision();
+    if (!item_translation_cache_context_current(key)) return target;
+    const size_t bytes = key.size() * 2 + item_display_result_bytes(cache_result);
     if (bytes <= max_bytes) {
         while (!fortress_item_caption_order_.empty() &&
                 (fortress_item_caption_cache_.size() >= max_records ||
@@ -155,15 +177,98 @@ std::optional<std::string> Overlay::translate_fortress_item_caption(
             const auto found = fortress_item_caption_cache_.find(
                 fortress_item_caption_order_.front());
             fortress_item_caption_bytes_ -= found->first.size() * 2 +
-                (found->second ? found->second->size() : 0);
+                item_display_result_bytes(found->second);
             fortress_item_caption_cache_.erase(found);
             fortress_item_caption_order_.pop_front();
         }
-        fortress_item_caption_cache_.emplace(key, target);
+        fortress_item_caption_cache_.emplace(key, std::move(cache_result));
         fortress_item_caption_order_.push_back(std::move(key));
         fortress_item_caption_bytes_ += bytes;
     }
     return target;
+}
+
+TranslationResult Overlay::translate_fortress_item_caption_display(
+        std::string_view source, bool relationship, bool building_material) const {
+    TranslationStateScope state;
+    TranslationWorkScope work;
+    if (source.empty()) return {};
+    relationship = relationship || source.starts_with("Owner: ");
+    const std::string cache_prefix = item_translation_cache_prefix();
+    const std::string key = cache_prefix +
+        (relationship ? "relationship:" : "item:") +
+        (building_material ? "material:" : "caption:") + std::string(source);
+    if (const auto found = fortress_item_caption_display_cache_.find(key);
+        found != fortress_item_caption_display_cache_.end()) return found->second;
+    auto result = preserved_item_field(source, "item-caption");
+    const std::string strict_key = cache_prefix + "caption-strict:" + (relationship ? "R" : "I") +
+        (building_material ? "M" : "N") + std::string(source);
+    if (const auto found = fortress_item_caption_cache_.find(strict_key);
+        found != fortress_item_caption_cache_.end() &&
+        found->second.status == TranslationStatus::WorkLimited) {
+        result = found->second;
+        result.policy = TranslationPolicy::Display;
+        return result;
+    }
+    try {
+        TranslationWorkFrame frame("item caption display", source);
+        // Exhaust every existing complete strategy before the field owner
+        // allows any unresolved material, name or object to survive.
+        if (auto target = translate_fortress_item_caption(source, relationship, building_material))
+            result = TranslationResult::translated(source, *target, "item-caption");
+        else if (config_.compositional_rules && !source.ends_with("...")) {
+            if (relationship && (source.starts_with("In ") || source.starts_with("On ") ||
+                    source.starts_with("With ") || source.starts_with("Owner: ")))
+                result = translate_item_description_source_display(source, true);
+            else result = translate_item_description_term_display(source);
+            if (!result.usable()) result = preserved_item_field(source, "item-caption");
+            // Count and paired quality marks are native formatter spans.
+            // Their removal does not infer the identity of the inner noun.
+            if (!result.changed()) {
+                const auto number = item_number_suffix(source);
+                const auto designation = split_item_designation(source);
+                if (!number.empty()) {
+                    result = translate_fortress_item_caption_display(
+                        source.substr(0, source.size() - number.size()), relationship, building_material);
+                    result.append(TranslationResult::translated(number, std::string(number), "item-count"),
+                        source.size() - number.size());
+                    finish_item_display_result(result, source, "item-caption");
+                } else if (!designation.prefix.empty()) {
+                    result = TranslationResult::translated(designation.prefix, designation.prefix, "item-designation");
+                    result.append(translate_fortress_item_caption_display(
+                        designation.item, relationship, building_material), designation.prefix.size());
+                    result.append(TranslationResult::translated(designation.suffix, designation.suffix,
+                        "item-designation"), source.size() - designation.suffix.size());
+                    finish_item_display_result(result, source, "item-caption");
+                }
+            }
+        }
+    } catch (const TranslationWorkLimit &) {
+        if (!work.owns_budget()) throw;
+        result = preserved_item_field(source, "item-caption", TranslationStatus::WorkLimited);
+    }
+    result.policy = TranslationPolicy::Display;
+    result.resource_revision = RULESETS.resource_revision();
+    if (!item_translation_cache_context_current(key)) return result;
+    constexpr size_t max_records = 8192, max_bytes = 8 * 1024 * 1024;
+    const size_t bytes = key.size() * 2 + item_display_result_bytes(result);
+    if (bytes <= max_bytes) {
+        while (!fortress_item_caption_display_order_.empty() &&
+                (fortress_item_caption_display_cache_.size() >= max_records ||
+                 fortress_item_caption_display_bytes_ + bytes > max_bytes)) {
+            const auto found = fortress_item_caption_display_cache_.find(
+                fortress_item_caption_display_order_.front());
+            if (found != fortress_item_caption_display_cache_.end()) {
+                fortress_item_caption_display_bytes_ -= found->first.size() * 2 + item_display_result_bytes(found->second);
+                fortress_item_caption_display_cache_.erase(found);
+            }
+            fortress_item_caption_display_order_.pop_front();
+        }
+        fortress_item_caption_display_cache_.emplace(key, result);
+        fortress_item_caption_display_order_.push_back(key);
+        fortress_item_caption_display_bytes_ += bytes;
+    }
+    return result;
 }
 
 // The native title draw establishes the field's type before any word/column
@@ -179,13 +284,14 @@ std::optional<std::string> Overlay::translate_info_panel_title(
         return translate_help_paragraph(std::string(source),
             std::vector<int>(source.size(), 0xffffff), colors, true);
     }
-    const std::string key = "\x01title:" + std::to_string(static_cast<int>(kind)) +
+    const std::string key = "\x01title:" + item_translation_cache_prefix() + std::to_string(static_cast<int>(kind)) +
         ":" + std::string(source);
     if (const auto found = compositional_cache_.find(key);
-            found != compositional_cache_.end()) return found->second;
+            found != compositional_cache_.end()) return found->second.strict_target();
     TranslationStateScope state;
     TranslationWorkScope work;
     std::optional<std::string> target;
+    TranslationResult cache_result;
     try {
         TranslationWorkFrame frame("information panel title", source);
         const std::string utf8 = native_text_to_utf8(source);
@@ -252,14 +358,22 @@ std::optional<std::string> Overlay::translate_info_panel_title(
     } catch (const TranslationWorkLimit &) {
         if (!work.owns_budget()) throw;
         target.reset();
+        cache_result = preserved_item_field(source, "information-title", TranslationStatus::WorkLimited);
     }
+    if (!item_translation_cache_context_current(std::string_view(key).substr(7))) return target;
     constexpr size_t capacity = 4096;
     if (compositional_cache_.size() >= capacity && !compositional_cache_order_.empty()) {
         compositional_cache_.erase(compositional_cache_order_.front());
         compositional_cache_order_.pop_front();
     }
     compositional_cache_order_.push_back(key);
-    compositional_cache_.emplace(key, target);
+    if (target) cache_result = TranslationResult::translated(source, *target, "information-title");
+    else if (cache_result.status != TranslationStatus::WorkLimited) {
+        cache_result.source = source;
+        cache_result.kind = "information-title";
+    }
+    cache_result.resource_revision = RULESETS.resource_revision();
+    compositional_cache_.emplace(key, std::move(cache_result));
     return target;
 }
 
@@ -454,14 +568,19 @@ void Overlay::append_fortress_item_captions(std::vector<std::string> &rows,
         // Statuses belong to the complete UI-message catalog (hP), not
         // item-name phonetics or ordinary exact literals. Their native row
         // stays independent of the title even when the message is unknown.
-        auto target = display_status
-            ? translate_help_paragraph(complete,
-                std::vector<int>(complete.size(), foreground), target_colors, true)
-            : translate_fortress_item_caption(complete, bounded_button, building_material);
-        const bool translated = target.has_value();
+        TranslationResult result;
+        if (display_status) {
+            const auto target = translate_help_paragraph(complete,
+                std::vector<int>(complete.size(), foreground), target_colors, true);
+            result = target ? TranslationResult::translated(complete, *target, "item-display-status")
+                : preserved_item_field(complete, "item-display-status");
+        } else result = translate_fortress_item_caption_display(complete, bounded_button, building_material);
+        const bool translated = result.usable() && !result.has_untranslated();
+        std::optional<std::string> target = result.usable()
+            ? std::optional<std::string>(result.target) : std::nullopt;
         // Unknown names still own one field, so isolated material/creature
         // words cannot replace fragments of an untranslated clipped heading.
-        if (!translated) target = native_text_to_utf8(complete);
+        if (!target) target = native_text_to_utf8(complete);
         if (target->empty() || target->find("[C:") != std::string::npos ||
             target->find_first_of("\r\n") != std::string::npos) return;
         // A proved picture button owns its full text strip. Its background
@@ -476,6 +595,7 @@ void Overlay::append_fortress_item_captions(std::vector<std::string> &rows,
             }
         }
         Match caption{left, y, end - left, kFortressItemCaptionRule, *target, visible};
+        caption.translation_result = std::make_shared<const TranslationResult>(std::move(result));
         caption.native_item_caption_source = complete;
         caption.native_item_group_caption = item_group;
         caption.native_hover_untranslated = !translated;

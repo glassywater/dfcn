@@ -142,7 +142,8 @@ bool Overlay::translated_name_editor_search_matches(std::string_view word_id,
 }
 
 bool Overlay::append_name_editor_matches(std::vector<std::string> &rows,
-        std::vector<Match> &matches, int only_y, const unsigned char *raw_layer) const {
+        std::vector<Match> &matches, int only_y, const unsigned char *raw_layer,
+        std::vector<SDL_Rect> *owned_regions) const {
     struct Field {
         int x;
         int y;
@@ -170,7 +171,9 @@ bool Overlay::append_name_editor_matches(std::vector<std::string> &rows,
     };
     struct Signature {
         int first_slot_y = INT32_MAX;
+        int last_slot_y = -1;
         int front_x = -1;
+        int controls_left = INT32_MAX;
         int controls_right = -1;
         bool rear = false;
         bool adjective = false;
@@ -189,6 +192,9 @@ bool Overlay::append_name_editor_matches(std::vector<std::string> &rows,
                 signature.rear |= field.source == "Rear Compound";
                 signature.adjective |= field.source == "First Adjective";
                 if (!is_name_editor_slot(field.source)) continue;
+                signature.first_slot_y = std::min(signature.first_slot_y, field.y);
+                signature.last_slot_y = std::max(signature.last_slot_y, field.y);
+                signature.controls_left = std::min(signature.controls_left, field.x);
                 int right = field.x + static_cast<int>(field.source.size());
                 // The slot and its adjacent Random/Clear buttons are a
                 // separate control group, never candidate-word columns.
@@ -220,6 +226,19 @@ bool Overlay::append_name_editor_matches(std::vector<std::string> &rows,
     const auto &context = raw_layer ? composite : rows;
     const Signature signature = signature_in(context);
     if (!signature.complete()) return false;
+    // Multiple slot rows establish the editor's outer frame, rather than
+    // the small frame around any individual slot or Random/Clear button.
+    const NativePanelBorders borders(*gps_);
+    const auto interior = native_panel_interior(borders, *gps_, SDL_Rect{
+        signature.controls_left, signature.first_slot_y,
+        signature.controls_right - signature.controls_left,
+        signature.last_slot_y - signature.first_slot_y + 1});
+    const auto editor_field = [&](const Field &field) {
+        return !interior || (field.x >= interior->x &&
+            field.x + static_cast<int>(field.source.size()) <= interior->x + interior->w &&
+            field.y >= interior->y - (is_name_editor_heading(field.source) ? 1 : 0) &&
+            field.y < interior->y + interior->h);
+    };
 
     auto caption_translation = [&](const std::string &source) -> std::optional<std::string> {
         if (const auto found = name_editor_translations_.find(source);
@@ -283,9 +302,11 @@ bool Overlay::append_name_editor_matches(std::vector<std::string> &rows,
         // filtered row is sufficient, without depending on its vocabulary.
         for (size_t i = 1; i < fields.size(); ++i) {
             const auto part = name_editor_part_of_speech(fields[i].source);
-            if (!part || fields[i - 1].x <= signature.controls_right ||
+            if (!part || !editor_field(fields[i]) || !editor_field(fields[i - 1]) ||
+                fields[i - 1].x <= signature.controls_right ||
                 static_cast<int>(y) < signature.first_slot_y) continue;
-            const bool has_native = i >= 2 && fields[i - 2].x > signature.controls_right;
+            const bool has_native = i >= 2 && editor_field(fields[i - 2]) &&
+                fields[i - 2].x > signature.controls_right;
             table_begin = i - (has_native ? 2 : 1);
             words.push_back({fields[table_begin], has_native
                 ? std::optional<Field>{fields[i - 1]} : std::nullopt, fields[i], *part});
@@ -296,6 +317,7 @@ bool Overlay::append_name_editor_matches(std::vector<std::string> &rows,
         }
         for (size_t i = 0; i < table_begin; ++i) {
             const Field &field = fields[i];
+            if (!editor_field(field)) continue;
             const bool heading = is_name_editor_heading(field.source);
             const bool caption = is_name_editor_slot(field.source) ||
                 field.source == "Random" || field.source == "Clear" ||
@@ -390,6 +412,38 @@ bool Overlay::append_name_editor_matches(std::vector<std::string> &rows,
         const Match &match = matches[index];
         std::fill_n(rows[match.y].begin() + match.x, match.length, ' ');
     }
+    auto reserve = [&](const SDL_Rect &region) {
+        if (owned_regions) owned_regions->push_back(region);
+        for (int y = region.y; y < region.y + region.h; ++y) {
+            auto &row = rows[y];
+            if (only_y < 0 || only_y == y) {
+                const size_t first = matches.size();
+                append_direct_utf8_matches(row.substr(region.x, region.w), y, matches);
+                for (size_t index = first; index < matches.size(); ++index)
+                    matches[index].x += region.x;
+            }
+            std::fill_n(row.begin() + region.x, region.w, ' ');
+        }
+    };
+    auto reserve_field = [&](const Field &field) {
+        if (interior && field.x >= interior->x && field.y >= interior->y &&
+            field.x + static_cast<int>(field.source.size()) <= interior->x + interior->w &&
+            field.y < interior->y + interior->h) return;
+        reserve({field.x, field.y, static_cast<int>(field.source.size()), 1});
+    };
+    // Untranslated WORD/POS cells still belong to the naming table. Reserve
+    // only its own frame/fields so the HUD and adjacent squad panel continue
+    // through the ordinary literal and complete-paragraph translation paths.
+    if (interior) reserve(*interior);
+    for (const WordRow &word : words) {
+        reserve_field(word.meaning);
+        if (word.native) reserve_field(*word.native);
+        reserve_field(word.grammar);
+    }
+    for (const Field &caption : captions) reserve_field(caption);
+    for (const Field &preview : previews)
+        if (heading_y >= 0 && preview.y > heading_y && preview.y <= heading_y + 3)
+            reserve_field(preview);
     // The search field is not translated as a word/name. The caller renders
     // its committed UTF-8 through the shared literal-input path, keeping the
     // native cursor, byte positions and field contents intact.

@@ -14,7 +14,8 @@ std::optional<std::string> Overlay::translate_workshop_recipe_source(
     const std::string source = normalize_utterance(raw_source);
     if (source.empty()) return std::nullopt;
     refresh_native_instrument_names();
-    if (const auto found = workshop_recipe_translation_cache_.find(source);
+    const std::string cache_key = item_translation_cache_prefix() + "recipe-strict:" + source;
+    if (const auto found = workshop_recipe_translation_cache_.find(cache_key);
         found != workshop_recipe_translation_cache_.end()) return found->second;
     const auto complete = [](const std::optional<std::string> &target) {
         return target && !target->empty() &&
@@ -363,8 +364,143 @@ std::optional<std::string> Overlay::translate_workshop_recipe_source(
         return target;
     };
     auto target = translate(translate, source, 0);
+    if (!item_translation_cache_context_current(cache_key)) return target;
     if (workshop_recipe_translation_cache_.size() >= 4096)
         workshop_recipe_translation_cache_.clear();
-    workshop_recipe_translation_cache_.emplace(source, target);
+    workshop_recipe_translation_cache_.emplace(cache_key, target);
     return target;
+}
+
+TranslationResult Overlay::translate_workshop_recipe_source_display(
+        std::string_view raw_source) const {
+    TranslationStateScope state;
+    TranslationWorkScope work;
+    // The strict parser may normalize fixed wording internally. Display
+    // fallback keeps every byte of an unresolved native requirement/name.
+    const std::string source(raw_source);
+    if (source.empty()) return {};
+    const std::string key = item_translation_cache_prefix() + "recipe-display:" + source;
+    if (const auto found = workshop_recipe_display_cache_.find(key);
+        found != workshop_recipe_display_cache_.end()) return found->second;
+    auto result = preserved_item_field(source, "recipe");
+    try {
+        TranslationWorkFrame frame("recipe display", source);
+        // Keep the native head refinements, whole materials, instruments and
+        // all complete constraint combinations ahead of the local fallback.
+        if (auto target = translate_workshop_recipe_source(source))
+            result = TranslationResult::translated(source, *target, "recipe");
+        else {
+            struct Field { std::string slot; TranslationResult result; size_t offset; };
+            const auto format = [&](std::string_view format_key,
+                                    const std::vector<Field> &fields) -> TranslationResult {
+                const auto pattern = exact_literal_translation("Workshop recipe: format " + std::string(format_key));
+                if (!pattern) return {};
+                TranslationResult output;
+                output.source = source;
+                std::vector<bool> consumed(fields.size(), false);
+                for (size_t begin = 0; begin < pattern->size();) {
+                    size_t position = pattern->size(), selected = fields.size();
+                    for (size_t index = 0; index < fields.size(); ++index) {
+                        const auto at = pattern->find(fields[index].slot, begin);
+                        if (at < position) { position = at; selected = index; }
+                    }
+                    const auto literal = pattern->substr(begin, position - begin);
+                    if (literal.find_first_of("{}") != std::string::npos) return {};
+                    output.append(TranslationResult::translated({}, literal, "recipe-frame"));
+                    if (selected == fields.size()) break;
+                    if (consumed[selected]) return {};
+                    consumed[selected] = true;
+                    output.append(fields[selected].result, fields[selected].offset);
+                    begin = position + fields[selected].slot.size();
+                }
+                if (std::any_of(consumed.begin(), consumed.end(), [](bool value) { return !value; })) return {};
+                finish_item_display_result(output, source, "recipe");
+                return item_display_target_valid(output.target) ? output : TranslationResult{};
+            };
+            const std::string folded = lower(source);
+            constexpr std::string_view requirement = "[requires ";
+            bool composed = false;
+            if (folded.starts_with(requirement) && folded.ends_with(']') && source.size() > requirement.size() + 1) {
+                const auto object = std::string_view(source).substr(requirement.size(), source.size() - requirement.size() - 1);
+                auto candidate = format("requirement", {{"{s}", translate_workshop_recipe_source_display(object), requirement.size()}});
+                if (candidate.usable()) { result = std::move(candidate); composed = true; }
+            }
+            size_t digits = 0;
+            while (digits < source.size() && source[digits] >= '0' && source[digits] <= '9') ++digits;
+            if (!composed && digits && digits + 1 < source.size() && source[digits] == ' ') {
+                const auto object = std::string_view(source).substr(digits + 1);
+                auto candidate = format("quantity", {
+                    {"{d}", TranslationResult::translated(source.substr(0, digits), source.substr(0, digits), "recipe-quantity"), 0},
+                    {"{s}", translate_workshop_recipe_source_display(object), digits + 1}});
+                if (candidate.usable()) { result = std::move(candidate); composed = true; }
+            }
+            constexpr std::string_view excluded_bin = " that isn't a bin";
+            if (!composed && folded.ends_with(excluded_bin) && source.size() > excluded_bin.size()) {
+                const auto object = std::string_view(source).substr(0, source.size() - excluded_bin.size());
+                auto candidate = format("exclude bin", {{"{s}", translate_workshop_recipe_source_display(object), 0}});
+                if (candidate.usable()) { result = std::move(candidate); composed = true; }
+            }
+            // A fixed reaction constraint plus an independently resolved head
+            // proves its two slots. Do not split unknown alternatives or RAW
+            // names by every comma, slash, "and" or "or".
+            for (const std::string_view marker : {"-bearing ", "-producing ", "-containing "}) {
+                if (composed) break;
+                const auto at = folded.find(marker);
+                if (at == std::string::npos || !at || at + marker.size() >= source.size() ||
+                    folded.find(marker, at + marker.size()) != std::string::npos) continue;
+                const auto object = std::string_view(source).substr(at + marker.size());
+                const auto head = translate_workshop_recipe_source(object);
+                if (!head) continue;
+                auto candidate = format(trim(std::string(marker)), {
+                    {"{s1}", translate_workshop_recipe_source_display(std::string_view(source).substr(0, at)), 0},
+                    {"{s2}", TranslationResult::translated(object, *head, "recipe-item"), at + marker.size()}});
+                if (candidate.usable()) { result = std::move(candidate); composed = true; }
+            }
+            if (!composed) {
+                // The reviewed job-item flag vocabulary defines each prefix.
+                // Once no further prefix is proved, preserve the complete
+                // remainder; an unknown restriction is never dropped.
+                size_t begin = 0;
+                TranslationResult prefixes;
+                while (begin < source.size()) {
+                    bool matched = false;
+                    for (size_t end = source.rfind(' '); end != std::string::npos && end > begin;
+                            end = source.rfind(' ', end - 1)) {
+                        const auto part = std::string_view(source).substr(begin, end - begin);
+                        std::optional<std::string> target;
+                        for (const std::string_view role : {"state ", "material ", "kind "}) {
+                            target = exact_literal_translation("Workshop recipe: " + std::string(role) + lower(std::string(part)));
+                            if (target) break;
+                        }
+                        if (!target || !item_display_target_valid(*target)) continue;
+                        prefixes.append(TranslationResult::translated(part, *target, "recipe-constraint"), begin);
+                        prefixes.append(TranslationResult::translated(" ", " ", "recipe-separator"), end);
+                        begin = end + 1;
+                        matched = true;
+                        break;
+                    }
+                    if (!matched) break;
+                }
+                if (begin && begin < source.size()) {
+                    prefixes.append(translate_workshop_recipe_source_display(std::string_view(source).substr(begin)), begin);
+                    finish_item_display_result(prefixes, source, "recipe");
+                    result = std::move(prefixes);
+                } else {
+                    auto item = translate_item_description_term_display(source);
+                    if (item.usable() && item.changed()) result = std::move(item);
+                }
+            }
+        }
+    } catch (const TranslationWorkLimit &) {
+        if (!work.owns_budget()) throw;
+        result = preserved_item_field(source, "recipe", TranslationStatus::WorkLimited);
+    }
+    result.kind = "recipe";
+    result.policy = TranslationPolicy::Display;
+    result.resource_revision = RULESETS.resource_revision();
+    if (workshop_recipe_display_cache_.size() >= 4096) workshop_recipe_display_cache_.clear();
+    if (item_translation_cache_context_current(key) &&
+        key.size() + item_display_result_bytes(result) <= 65536)
+        workshop_recipe_display_cache_.emplace(key, result);
+    return result;
 }

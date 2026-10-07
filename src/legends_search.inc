@@ -24,8 +24,7 @@ std::optional<std::string> Overlay::translate_journal_title(std::string_view sou
         if (!target) target = translate_legends_name(source, false);
         break;
     case JournalSearchKind::Site:
-        target = translate_legends_name(source, false);
-        break;
+        return translate_legends_place(source);
     case JournalSearchKind::Civilization:
         target = translate_civilization_reference(source);
         if (!target) target = translate_procedural_fragment(std::string(source), false,
@@ -71,6 +70,9 @@ bool Overlay::translated_journal_search_matches(std::string_view source,
         return translated_search_text_matches(text, query);
     };
     if (matches(native_text_to_utf8(source))) return true;
+    if (kind == JournalSearchKind::Site)
+        for (const auto &alias : site_reference_search_aliases(source))
+            if (matches(alias)) return true;
     const auto target = translate_journal_title(source, kind);
     return target && matches(*target);
 }
@@ -78,7 +80,8 @@ bool Overlay::translated_journal_search_matches(std::string_view source,
 // One translated-search policy for every Legends catalog. Sources come from
 // native candidate records, never from clipped or currently visible rows.
 bool Overlay::translated_legends_search_matches(std::string_view source,
-        std::string_view description, std::string_view query, LegendsSearchKind kind) const {
+        std::string_view description, std::string_view query, LegendsSearchKind kind,
+        const NativeHistoryName *site_name) const {
     TranslationStateScope translation_scope;
     if (!config_.enabled || source.size() + description.size() > 65536 ||
         (source.empty() && description.empty()) || query.size() > 4096) return false;
@@ -87,6 +90,16 @@ bool Overlay::translated_legends_search_matches(std::string_view source,
     if (translated_search_text_matches(native_text_to_utf8(source), query) ||
         translated_search_text_matches(native_text_to_utf8(description), query))
         return true;
+
+    const auto site_title = kind == LegendsSearchKind::Site
+        ? site_name ? translate_site_display(*site_name, source) : translate_legends_place(source)
+        : std::nullopt;
+    if (kind == LegendsSearchKind::Site) {
+        const auto aliases = site_name ? site_name_search_aliases(*site_name)
+            : site_reference_search_aliases(source);
+        for (const auto &alias : aliases)
+            if (translated_search_text_matches(alias, query)) return true;
+    }
 
     // Entity titles can keep the same native spelling when their current
     // parent changes. Bind the search entry to the resolved display name.
@@ -99,9 +112,13 @@ bool Overlay::translated_legends_search_matches(std::string_view source,
         key.push_back('\0');
         key.append(*entity_title);
     }
+    if (site_title) {
+        key.push_back('\0');
+        key.append(*site_title);
+    }
     auto cached = legends_search_translation_cache_.find(key);
     if (cached == legends_search_translation_cache_.end()) {
-        std::optional<std::string> title = entity_title;
+        std::optional<std::string> title = site_title ? site_title : entity_title;
         bool description_in_title = false;
         const bool written = kind == LegendsSearchKind::Artifact ||
                              kind == LegendsSearchKind::WrittenContent;
@@ -120,7 +137,9 @@ bool Overlay::translated_legends_search_matches(std::string_view source,
             }
         }
         if (!source.empty() && !title) {
-            if (written) {
+            if (kind == LegendsSearchKind::Site) {
+                title = translate_legends_place(source);
+            } else if (written) {
                 // Exactly the two-column artifact/book display strategy:
                 // repeated book titles use book grammar, not creature names.
                 title = split_generated_name_identity(source) || split_repeated_title_identity(source)

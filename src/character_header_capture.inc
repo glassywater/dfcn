@@ -33,7 +33,8 @@ void Overlay::append_character_header(
             (half == (1u << 3) ? (1u << 4) : (1u << 3));
     };
     const auto claim_field = [&](const LogicalTextField &field, int y,
-                                 const std::string &target, int clip_right) {
+                                 const std::string &target, int clip_right,
+                                 std::shared_ptr<const TranslationResult> translation = {}) {
         if (target.empty() || y < 0 || y >= static_cast<int>(screen_rows.size()) ||
                 field.start < 0 || field.end <= field.start ||
                 field.end > static_cast<int>(screen_rows[y].size())) return;
@@ -48,6 +49,11 @@ void Overlay::append_character_header(
         if (only_y >= 0 && only_y != y) return;
         Match match{field.start, y, field.end - field.start,
             kCharacterHeaderRule, target, field.text};
+        match.translation_result = std::move(translation);
+        if (match.translation_result && match.translation_result->has_untranslated()) {
+            match.native_hover_untranslated = true;
+            match.native_help_review_source = match.translation_result->source;
+        }
         match.layout_x = field.start;
         match.layout_length = field.end - field.start;
         match.layout_clip_right = clip_right;
@@ -132,13 +138,14 @@ void Overlay::append_character_header(
                         std::string source;
                         const auto field = activity_field(draw, layer != 0, y, source);
                         if (!field) continue;
-                        const auto target = translate_fortress_activity(source, !spacer);
-                        if (!target || target->empty()) continue;
+                        const auto translation = translate_fortress_activity_display(source, !spacer);
+                        if (!translation.usable() || translation.target.empty()) continue;
                         const auto claim_activity = [&](int row) {
                             std::string physical_source;
                             const auto physical = activity_field(draw, layer != 0, row, physical_source);
                             if (!physical || physical_source != source) return;
-                            claim_field(*physical, row, *target, physical->end);
+                            claim_field(*physical, row, translation.target, physical->end,
+                                std::make_shared<const TranslationResult>(translation));
                         };
                         claim_activity(y);
                         if (y + 1 < static_cast<int>(header_rows.size()) &&
@@ -195,8 +202,9 @@ void Overlay::append_character_header(
 
     std::vector<std::array<int, 3>> activity_spans;
     const auto activity_claim = [&](const LogicalTextField &field, int y,
-                                    const std::string &target) {
-        claim(field, y, target);
+                                    const std::string &target,
+                                    std::shared_ptr<const TranslationResult> translation = {}) {
+        claim_field(field, y, target, frame->right, std::move(translation));
         activity_spans.push_back({y, field.start, field.end});
     };
     const auto is_activity = [&](const LogicalTextField &field, int y) {
@@ -258,8 +266,9 @@ void Overlay::append_character_header(
                 // Read/Copy and their complete decorated items are resolved
                 // by the shared activity entry, outside the TOML callbacks.
                 // Require that typed action here, not a generic noun match.
-                const auto activity = translate_fortress_activity(source, true);
-                if (activity && !activity->empty()) activity_claim(field, y, *activity);
+                const auto activity = translate_fortress_activity_display(source, true);
+                if (activity.usable() && !activity.target.empty()) activity_claim(field, y, activity.target,
+                    std::make_shared<const TranslationResult>(activity));
             }
         }
     }
@@ -420,6 +429,7 @@ void Overlay::append_character_header(
         bool activity_spacer = false;
         std::optional<LogicalTextField> captured_activity;
         std::optional<std::string> captured_activity_target;
+        std::shared_ptr<const TranslationResult> captured_activity_translation;
         for (int activity_y = y + 1; activity_y < header_tabs_y; ++activity_y) {
             if (tab_rows[activity_y]) break;
             const auto &activity_row = header_rows[activity_y];
@@ -461,18 +471,19 @@ void Overlay::append_character_header(
             if (captured_activity) {
                 if (field.start != captured_activity->start || field.text != captured_activity->text)
                     break;
-                activity_claim(field, activity_y, *captured_activity_target);
+                activity_claim(field, activity_y, *captured_activity_target, captured_activity_translation);
                 continue;
             }
-            const auto activity = translate_fortress_activity(
+            const auto activity = translate_fortress_activity_display(
                 complete_source(field, activity_y), !activity_spacer);
-            if (!activity || activity->empty()) {
+            if (!activity.usable() || activity.target.empty()) {
                 if (activity_spacer) break;
                 continue;
             }
-            activity_claim(field, activity_y, *activity);
+            captured_activity_translation = std::make_shared<const TranslationResult>(activity);
+            activity_claim(field, activity_y, activity.target, captured_activity_translation);
             captured_activity = field;
-            captured_activity_target = activity;
+            captured_activity_target = activity.target;
         }
     }
 }

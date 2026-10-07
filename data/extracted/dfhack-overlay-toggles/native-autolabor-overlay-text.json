@@ -1,0 +1,83 @@
+{
+  "binary": "D:\\program\\steam\\steamapps\\common\\DFHack\\hack\\plugins\\autolabor.plug.dll",
+  "sha256": "8b6e97995b5f4a7eacea3e8b38861d2337455c8fd21393713ba64c872be478ae",
+  "image_base": "0x180000000",
+  "exported_lua_command_table_rva": "0xa4a80",
+  "get_balance_stops_lua_wrapper_rva": "0x1bc0",
+  "balance_stop_name_accessor_rva": "0x14860",
+  "balance_stop_pointer_table_rva": "0xa5920",
+  "get_balance_lua_wrapper_rva": "0x1c20",
+  "balance_value_accessor_rva": "0x14810",
+  "balance_range": [
+    0,
+    4
+  ],
+  "balance_default": 2,
+  "balance_stops": [
+    {
+      "index": 0,
+      "literal_rva": "0xa59c8",
+      "text": "staffing",
+      "lua_balance_label": "staffing  (staffing <-> skills)"
+    },
+    {
+      "index": 1,
+      "literal_rva": "0xa59d8",
+      "text": "lean-staffing",
+      "lua_balance_label": "lean-staffing  (staffing <-> skills)"
+    },
+    {
+      "index": 2,
+      "literal_rva": "0xa59e8",
+      "text": "balanced",
+      "lua_balance_label": "balanced  (staffing <-> skills)"
+    },
+    {
+      "index": 3,
+      "literal_rva": "0xa59f8",
+      "text": "lean-skills",
+      "lua_balance_label": "lean-skills  (staffing <-> skills)"
+    },
+    {
+      "index": 4,
+      "literal_rva": "0xa5a04",
+      "text": "skills",
+      "lua_balance_label": "skills  (staffing <-> skills)"
+    }
+  ],
+  "get_status_lua_wrapper_rva": "0x1970",
+  "get_status_modern_rva": "0x55a20",
+  "get_status_gates": [
+    "plugin_is_enabled==true",
+    "current_engine_pointer(0xc3d00)==modern_engine(0xc3030)"
+  ],
+  "get_status_other_result": "",
+  "get_status_templates": [
+    {
+      "condition": "guild_rest<=0",
+      "template": "{laborers} laborers, {specialists} specialists, {generalists} generalists"
+    },
+    {
+      "condition": "guild_rest>0",
+      "template": "{laborers} laborers, {specialists} specialists ({guild_rest} on guild rest), {generalists} generalists"
+    }
+  ],
+  "counter_rvas": {
+    "laborers": "0xc3f48",
+    "specialists": "0xc3f4c",
+    "guild_rest": "0xc3f50",
+    "generalists": "0xc3f54"
+  },
+  "status_literal_rvas": {
+    " laborers, ": "0xa6970",
+    " specialists": "0xa6960",
+    " (": "0xa6990",
+    " on guild rest)": "0xa6980",
+    ", ": "0xa66b4",
+    " generalists": "0xa6998"
+  },
+  "lua_overlay_source": "D:\\program\\steam\\steamapps\\common\\DFHack\\hack\\scripts\\gui\\settings-manager.lua",
+  "lua_balance_suffix": "  (staffing <-> skills)",
+  "lua_balance_unavailable_name_result": "",
+  "lua_monitor_template": "{n} starving job{plural_s_when_n_not_1}"
+}

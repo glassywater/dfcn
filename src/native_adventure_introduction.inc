@@ -27,11 +27,15 @@ static bool install_native_adventure_introduction_hooks() {
     uninstall_native_adventure_introduction_hooks();
     if (native_adventure_introduction_hooks_active() || !native_validate_game()) return false;
     auto *base = reinterpret_cast<unsigned char *>(GetModuleHandleW(nullptr));
-    const auto append = [&](uintptr_t reference_rva, uintptr_t classic_rva,
-                            const auto &source, const auto &target) {
+    const auto append = [&](uintptr_t reference_rva, const auto &source, const auto &target) {
         if (sizeof(target) > sizeof(source)) return false;
+        const uintptr_t address = native_pe_address(reinterpret_cast<uintptr_t>(base), reference_rva);
+        if (!address || sizeof(source) - 1 > UINTPTR_MAX - address ||
+                sizeof(source) - 1 > UINTPTR_MAX - reference_rva ||
+                native_pe_address(reinterpret_cast<uintptr_t>(base), reference_rva + sizeof(source) - 1) !=
+                    address + sizeof(source) - 1) return false;
         NativeCodePatch patch{
-            base + (native_pe_classic() ? classic_rva : reference_rva),
+            reinterpret_cast<unsigned char *>(address),
             std::vector<unsigned char>(sizeof(source)),
             std::vector<unsigned char>(sizeof(source), 0)};
         // Include each original terminator in the expected signature and
@@ -43,8 +47,8 @@ static bool install_native_adventure_introduction_hooks() {
     };
     // Reference 0x7ea1de/0x7ea1e5 and classic 0x7e7a5e/0x7e7a65
     // load these caption/text addresses before the native MessageBoxW call.
-    if (!append(0x16aba48, 0x16a60b8, L"FATAL ERROR", L"致命错误") ||
-            !append(0x16ad410, 0x16a8600,
+    if (!append(0x16aba48, L"FATAL ERROR", L"致命错误") ||
+            !append(0x16ad410,
                 L"Could not locate adventure start square", L"无法找到冒险起始方格")) return false;
     return write_native_code_patches(g_native_adventure_introduction_patches,
         true, label, &g_native_adventure_introduction_installed, false);

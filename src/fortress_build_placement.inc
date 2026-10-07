@@ -1,3 +1,73 @@
+// The remembered value is a material/item field, even when its first letter
+// is capitalized. Claim it before the generic native-name phonetic fallback.
+void Overlay::append_fortress_remembered_material(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y,
+        const unsigned char *screen_override) const {
+    static constexpr std::string_view label = "Use last material";
+    const auto blank = [](unsigned char ch) { return ch == 0 || ch == ' '; };
+    for (int y = 0; y + 1 < gps_->dimy; ++y) {
+        // Suppression can inspect the value's layer without the label's layer.
+        // The current composed label still establishes the same button type.
+        std::string heading = rows[y];
+        if (screen_override)
+            for (int x = 0; x < gps_->dimx; ++x) {
+                const unsigned char ch = visible_char_at(x, y);
+                heading[x] = ch ? static_cast<char>(ch) : ' ';
+            }
+        for (size_t at = heading.find(label); at != std::string::npos;
+                at = heading.find(label, at + 1)) {
+            const int left = static_cast<int>(at);
+            const int end = left + static_cast<int>(label.size());
+            if (!has_word_boundaries(heading, at, at + label.size())) continue;
+            bool current = true;
+            for (int x = left; x < end; ++x)
+                if (visible_char_at(x, y) != label[static_cast<size_t>(x - left)])
+                    current = false;
+            if (!current) continue;
+            const auto button = native_button_text_rect(*gps_, left, end, y, true);
+            if (!button || y + 1 >= button->y + button->h) continue;
+            const int right = button->x + button->w;
+            // Both lines share the native inset, and the first line contains
+            // only this UI label. Do not borrow text from another control.
+            for (int x = button->x; x < right; ++x)
+                if ((x < left || x >= end) && !blank(visible_char_at(x, y)))
+                    current = false;
+            const int value_y = y + 1;
+            for (int x = button->x; x < left; ++x)
+                if (!blank(visible_char_at(x, value_y))) current = false;
+            int value_end = right;
+            while (value_end > left && blank(visible_char_at(value_end - 1, value_y)))
+                --value_end;
+            if (!current || value_end <= left || blank(visible_char_at(left, value_y)))
+                continue;
+            const std::string source = rows[value_y].substr(left, value_end - left);
+            for (int x = left; x < value_end; ++x) {
+                bool top = false;
+                const auto *cell = cell_at(x, value_y, &top);
+                const unsigned char ch = cell && cell[0] ? cell[0] : ' ';
+                if (ch != static_cast<unsigned char>(source[x - left]) ||
+                    (screen_override && ch != ' ' && screen_override !=
+                        (top ? gps_->screen_top : gps_->screen))) current = false;
+            }
+            if (!current) continue;
+            auto target = config_.compositional_rules
+                ? translate_material_name(source) : std::nullopt;
+            if (!target) target = translate_fortress_item_caption(source);
+            const bool translated = target.has_value();
+            if (!target) target = native_text_to_utf8(source);
+            Match value{left, value_y, value_end - left, kFortressItemCaptionRule,
+                std::move(*target), source};
+            value.native_hover_untranslated = !translated;
+            value.layout_x = left;
+            value.layout_length = right - left;
+            value.layout_clip_right = right;
+            value.layout_left = true;
+            if (only_y < 0 || only_y == value_y) matches.push_back(std::move(value));
+            std::fill(rows[value_y].begin() + left, rows[value_y].begin() + value_end, ' ');
+        }
+    }
+}
+
 // Material selection is a label/value header and a name/count/distance table.
 // The item rows reuse the build menu's picture skin, NOT its single-caption
 // contract. Resolve the complete name inside its own native column.

@@ -1,0 +1,84 @@
+Installed native image: D:\program\steam\steamapps\common\DFHack\hack\plugins\logistics.plug.dll
+Preferred image base: 0x180000000
+Method: PE .pdata function boundaries, exported Lua-function registration, direct x86-64 disassembly with the fixed objdump. The pseudocode below reconstructs display-relevant branches from the instructions in logistics-native-branches.asm; it is not upstream source code.
+
+Bindings
+--------
+plugin_lua_functions is exported at RVA 0x65050.
+Registration at RVA 0x14C2 stores string logistics_setFeature (RVA 0x50888) and the function pointer RVA 0x26F90 (instruction RVA 0x1503).
+Registration at RVA 0x155C stores string logistics_getFeature (RVA 0x508A0) and the function pointer RVA 0x26E50 (instruction RVA 0x159D).
+The string autoretrain is compared as immediate bytes, not stored as one NUL-terminated .rdata string: QWORD 0x727465726F747561 = "autoretr", WORD 0x6961 = "ai", BYTE 0x6E = "n", and size must equal 11.
+Native persistent config is at RVA 0x660F8. isValid is imported at IAT RVA 0x50588; const ival at 0x505B0; mutable ival at 0x50598.
+
+Reconstructed feature logic
+---------------------------
+bool logistics_getFeature(color_ostream& out, string feature) // RVA 0x26E50..0x26F90
+{
+    if (control_debug_enabled)
+        debug(out, "entering logistics_getFeature (feature={})\n", feature);
+    if (feature != "autoretrain") // size check then immediate byte comparison
+        return false;             // branch RVA 0x26F65; no diagnostic text
+    int value = config.isValid() ? config.ival(0) : -1;
+    return value == 1;             // compare RVA 0x26F52; only native bool output
+}
+
+bool logistics_setFeature(color_ostream& out, bool enabled, string feature) // RVA 0x26F90..0x271B1
+{
+    if (control_debug_enabled)
+        debug(out, "entering logistics_setFeature (enabled={}, feature={})\n", enabled, feature);
+    if (feature != "autoretrain") // compare RVA 0x270F8..0x27138
+        return false;             // branch RVA 0x27184; no diagnostic text
+    if (config.isValid())
+        config.ival(0) = enabled; // write RVA 0x2715A, stores 0 or 1
+    if (plugin_is_enabled && enabled) // branch RVA 0x2715C..0x2716B
+        logistics_cycle(out, false); // call RVA 0x27172 -> RVA 0x267F0
+    return true;                  // RVA 0x27180; also true when config is invalid
+}
+
+An absent native config and every integer except 1 mean disabled when read. Site-data initialization at RVA 0x299CB..0x299DA sets the newly created config integer slot 0 to 0. These paths have no third native state, warning label, or replacement title.
+
+Reconstructed autoretrain action branch
+--------------------------------------
+// Within do_cycle RVA 0x23E00..0x247C3, autoretrain branch RVA 0x24569..0x246C2:
+if (config.isValid() && config.ival(0) == 1) {
+    for (unit* u : world.units.active) {
+        if (!Units::isActive(u)) continue;            // IAT 0x505F0
+        if (!Units::isTamable(u)) continue;           // IAT 0x50610
+        if (Units::isDomesticated(u)) continue;       // IAT 0x50618
+        if (Units::isWar(u)) continue;                // IAT 0x50608
+        if (Units::isHunter(u)) continue;             // IAT 0x50600
+        if (Units::isMarkedForTraining(u)) continue;  // IAT 0x50620
+        if (!Units::isFortControlled(u)) continue;    // IAT 0x505F8
+        if (!Units::assignTrainer(u, -1)) continue;   // IAT 0x50628
+        if (cycle_debug_enabled)
+            debug(out, "assigned trainer to unit {}\n", u->id); // string RVA 0x50E80
+        ++training_count;                            // RVA 0x246B2
+    }
+}
+Every skip branch is silent and returns no UI string. Successful assignment changes the count and optionally emits the above debug string.
+
+Reconstructed cycle output branch
+---------------------------------
+// logistics_cycle RVA 0x267F0..0x26E4F:
+if (control_debug_enabled)
+    debug(out, "entering logistics_cycle{}\n", quiet ? " (quiet)" : "");
+counts = do_cycle(out);
+for each of melting, trading, dumping, training, forbidding, claiming:
+    if (count > 0 || !quiet) {
+        suffix = count == 1 ? "" : "s";
+        // templates (each terminates in newline) and the six independently gated branches:
+        out.print("logistics: designated {} item{} for melting\n", count, suffix);  // 0x26985; string 0x51078
+        out.print("logistics: designated {} item{} for trading\n", count, suffix);  // 0x26A4B; string 0x510A8
+        out.print("logistics: designated {} item{} for dumping\n", count, suffix);  // 0x26B11; string 0x510D8
+        out.print("logistics: designated {} animal{} for training\n", count, suffix); // 0x26BD7; string 0x51108
+        out.print("logistics: designated {} item{} forbidden\n", count, suffix);   // 0x26C9D; string 0x51138
+        out.print("logistics: claimed {} forbidden item{} \n", count, suffix);     // 0x26D63; string 0x51168
+    }
+
+Output scope
+------------
+The feature getter and setter return Lua booleans. Neither passes an English UI label to a screen drawing API. Native diagnostics go to DFHack color_ostream/debug streams; toggling on an enabled plugin invokes the nonquiet cycle and can therefore print all six native console templates, including zero counts.
+The lowercase enabled/disabled strings at RVA 0x50C20/0x50C28 belong to plugin-enable debug template "now {}\n" (RVA 0x50C38), not to the animal-overlay widget's Enabled/Disabled choices.
+"Cannot run {} without a loaded fort.\n" (RVA 0x50C88) belongs to plugin enable/command error output, not the feature getter or animal-overlay label.
+The native feature paths emit no specialized exception or unknown-feature message. General C++ allocation/formatting exception strings present elsewhere in the DLL are runtime-library diagnostics, not an additional widget state. They must not be inferred as overlay translations.
+The exact label, chosen state text, panel/footer/help strings and Lua layout/key-display branches must be taken from the installed Lua UI and its DFHack drawing/key-display bindings.

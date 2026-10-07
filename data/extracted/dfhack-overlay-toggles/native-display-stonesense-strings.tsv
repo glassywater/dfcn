@@ -1,0 +1,1384 @@
+string_rva	text
+0xd5f58	Unknown exception
+0xd5fa0	bad array new length
+0xd5fb8	map/set too long
+0xd5fd0	string too long
+0xd6060	generic
+0xd60a0	system
+0xd60a8	unknown error
+0xd60b8	Effect_flames.png
+0xd60d0	stonesense
+0xd60e0	Effect_web.png
+0xd60f0	invalid string position
+0xd6260	None
+0xd6268	North
+0xd6270	South
+0xd6278	West
+0xd6280	East
+0xd6288	TopRight
+0xd6298	BottomLeft
+0xd62a8	TopLeft
+0xd62b0	BottomRight
+0xd6338	vector too long
+0xd6354	branch
+0xd6368	Invalid or missing color attribute
+0xd638c	green
+0xd6394	blue
+0xd639c	alpha
+0xd63a8	material
+0xd63b8	Invalid or missing material attribute
+0xd63e0	token
+0xd63e8	value
+0xd63f0	Invalid or missing value or token attribute
+0xd6420	subtype
+0xd6428	Invalid or missing value attribute
+0xd644c	colors
+0xd6454	color
+0xd6460	invalid vector subscript
+0xd6480	invalid map<K, T> key
+0xd6658	bad cast
+0xd6700	dfhack-config
+0xd6710	DejaVuSans.ttf
+0xd6728	[CLOSEONESC
+0xd6738	CLOSEONESC
+0xd6748	[WIDTH
+0xd6750	WIDTH
+0xd6758	[HEIGHT
+0xd6760	HEIGHT
+0xd6768	[WINDOWED
+0xd6778	WINDOWED
+0xd6788	[SEGMENTSIZE_XY
+0xd6798	SEGMENTSIZE_XY
+0xd67a8	[SEGMENTSIZE_Z
+0xd67b8	SEGMENTSIZE_Z
+0xd67c8	[ALLCREATURES
+0xd67d8	ALLCREATURES
+0xd67e8	[AUTO_RELOAD_STEP
+0xd6800	AUTO_RELOAD_STEP
+0xd6818	[AUTO_RELOAD_TIME
+0xd6830	AUTO_RELOAD_TIME
+0xd6848	[DEBUGMODE
+0xd6858	DEBUGMODE
+0xd6868	[TRANSPARENT_SCREENSHOTS
+0xd6888	TRANSPARENT_SCREENSHOTS
+0xd68a0	[LIFTSEGMENT
+0xd68b0	LIFTSEGMENT
+0xd68c0	[ANIMATION_RATE
+0xd68d0	ANIMATION_RATE
+0xd68e0	[VERBOSE_LOGGING
+0xd68f8	VERBOSE_LOGGING
+0xd6908	[TRACK_MODE
+0xd6918	TRACK_MODE
+0xd6928	[INVERT_MOUSE_Z
+0xd6938	INVERT_MOUSE_Z
+0xd6948	[FOLLOW_DF_CURSOR
+0xd6960	FOLLOW_DF_CURSOR
+0xd6978	[SHOW_CREATURE_NAMES
+0xd6990	SHOW_CREATURE_NAMES
+0xd69a8	[SHOW_CREATURE_MOODS
+0xd69c0	SHOW_CREATURE_MOODS
+0xd69d8	[SHOW_CREATURE_JOBS
+0xd69f0	SHOW_CREATURE_JOBS
+0xd6a08	[SHOW_CREATURE_PROFESSIONS
+0xd6a28	SHOW_CREATURE_PROFESSIONS
+0xd6a48	[NAMES_USE_NICKNAME
+0xd6a60	NAMES_USE_NICKNAME
+0xd6a78	[NAMES_USE_SPECIES
+0xd6a90	NAMES_USE_SPECIES
+0xd6aa8	[SHOW_OSD
+0xd6ab8	[CACHE_IMAGES
+0xd6ac8	CACHE_IMAGES
+0xd6ad8	[SHOW_STOCKPILES
+0xd6af0	SHOW_STOCKPILES
+0xd6b00	[SHOW_ZONES
+0xd6b10	SHOW_ZONES
+0xd6b1c	[INTRO
+0xd6b24	INTRO
+0xd6b30	[FOG_RED
+0xd6b40	FOG_RED
+0xd6b48	[FOG_GREEN
+0xd6b58	FOG_GREEN
+0xd6b68	[FOG_BLUE
+0xd6b78	FOG_BLUE
+0xd6b88	[FOG_ALPHA
+0xd6b98	FOG_ALPHA
+0xd6ba8	[SHOW_FOG
+0xd6bb8	SHOW_FOG
+0xd6bc8	[BACK_RED
+0xd6bd8	BACK_RED
+0xd6be8	[BACK_GREEN
+0xd6bf8	BACK_GREEN
+0xd6c08	[BACK_BLUE
+0xd6c18	BACK_BLUE
+0xd6c28	[FOLLOW_OFFSET_X
+0xd6c40	FOLLOW_OFFSET_X
+0xd6c50	[FOLLOW_OFFSET_Y
+0xd6c68	FOLLOW_OFFSET_Y
+0xd6c78	[FOLLOW_OFFSET_Z
+0xd6c90	FOLLOW_OFFSET_Z
+0xd6ca0	[BITMAP_HOLDS
+0xd6cb0	BITMAP_HOLDS
+0xd6cc0	[LOG_IMAGECACHE
+0xd6cd0	LOG_IMAGECACHE
+0xd6ce0	[IMAGE_CACHE_SIZE
+0xd6cf8	IMAGE_CACHE_SIZE
+0xd6d10	[FONTSIZE
+0xd6d20	FONTSIZE
+0xd6d2c	[FONT
+0xd6d34	FONT
+0xd6d40	[USE_DF_COLORS
+0xd6d50	USE_DF_COLORS
+0xd6d60	[BLACK_R
+0xd6d70	BLACK_R
+0xd6d78	[BLACK_G
+0xd6d88	BLACK_G
+0xd6d90	[BLACK_B
+0xd6da0	BLACK_B
+0xd6da8	[BLUE_R
+0xd6db0	BLUE_R
+0xd6db8	[BLUE_G
+0xd6dc0	BLUE_G
+0xd6dc8	[BLUE_B
+0xd6dd0	BLUE_B
+0xd6dd8	[GREEN_R
+0xd6de8	GREEN_R
+0xd6df0	[GREEN_G
+0xd6e00	GREEN_G
+0xd6e08	[GREEN_B
+0xd6e18	GREEN_B
+0xd6e20	[CYAN_R
+0xd6e28	CYAN_R
+0xd6e30	[CYAN_G
+0xd6e38	CYAN_G
+0xd6e40	[CYAN_B
+0xd6e48	CYAN_B
+0xd6e50	[RED_R
+0xd6e58	RED_R
+0xd6e60	[RED_G
+0xd6e68	RED_G
+0xd6e70	[RED_B
+0xd6e78	RED_B
+0xd6e80	[MAGENTA_R
+0xd6e90	MAGENTA_R
+0xd6ea0	[MAGENTA_G
+0xd6eb0	MAGENTA_G
+0xd6ec0	[MAGENTA_B
+0xd6ed0	MAGENTA_B
+0xd6ee0	[BROWN_R
+0xd6ef0	BROWN_R
+0xd6ef8	[BROWN_G
+0xd6f08	BROWN_G
+0xd6f10	[BROWN_B
+0xd6f20	BROWN_B
+0xd6f28	[LGRAY_R
+0xd6f38	LGRAY_R
+0xd6f40	[DGRAY_R
+0xd6f50	DGRAY_R
+0xd6f58	[LBLUE_R
+0xd6f68	LBLUE_R
+0xd6f70	[LBLUE_G
+0xd6f80	LBLUE_G
+0xd6f88	[LBLUE_B
+0xd6f98	LBLUE_B
+0xd6fa0	[LGREEN_R
+0xd6fb0	LGREEN_R
+0xd6fc0	[LGREEN_G
+0xd6fd0	LGREEN_G
+0xd6fe0	[LGREEN_B
+0xd6ff0	LGREEN_B
+0xd7000	[LCYAN_R
+0xd7010	LCYAN_R
+0xd7018	[LCYAN_G
+0xd7028	LCYAN_G
+0xd7030	[LCYAN_B
+0xd7040	LCYAN_B
+0xd7048	[LRED_R
+0xd7050	LRED_R
+0xd7058	[LRED_G
+0xd7060	LRED_G
+0xd7068	[LRED_B
+0xd7070	LRED_B
+0xd7078	[LMAGENTA_R
+0xd7088	LMAGENTA_R
+0xd7098	[LMAGENTA_G
+0xd70a8	LMAGENTA_G
+0xd70b8	[LMAGENTA_B
+0xd70c8	LMAGENTA_B
+0xd70d8	[YELLOW_R
+0xd70e8	YELLOW_R
+0xd70f8	[YELLOW_G
+0xd7108	YELLOW_G
+0xd7118	[YELLOW_B
+0xd7128	YELLOW_B
+0xd7138	[WHITE_R
+0xd7148	WHITE_R
+0xd7150	[WHITE_G
+0xd7160	WHITE_G
+0xd7168	[WHITE_B
+0xd7178	WHITE_B
+0xd7180	[RENDERER
+0xd7190	RENDERER
+0xd719c	OPENGL
+0xd71a8	SOFTWARE
+0xd71b8	DIRECTX
+0xd71c0	[EXTRUDE_TILES
+0xd71d0	EXTRUDE_TILES
+0xd71e0	[PIXELPERFECT_ZOOM
+0xd71f8	PIXELPERFECT_ZOOM
+0xd720c	[NIGHT
+0xd7214	NIGHT
+0xd7220	[FOG_OF_WAR
+0xd7230	FOG_OF_WAR
+0xd7240	init.txt
+0xd74a0	NeighbourWall
+0xd74b8	PositionIndex
+0xd74c8	MaterialType
+0xd74d8	pattern_index
+0xd74e8	always
+0xd74f0	never
+0xd74f8	BuildingOccupancy
+0xd7510	BuildingSpecial
+0xd7520	NeighbourSameBuilding
+0xd7538	NeighbourSameType
+0xd7550	NeighbourOfType
+0xd7560	NeighbourIdentical
+0xd7578	AnimationFrame
+0xd7588	FluidBelow
+0xd7598	HaveFloor
+0xd75b0	Unable to add subcondition
+0xd75d0	Misplaced or invalid element in Condition
+0xd7600	else
+0xd7608	file
+0xd7610	Misplaced or invalid element in SpriteNode
+0xd763c	rotate
+0xd7644	sprite
+0xd764c	empty
+0xd7658	include
+0xd7660	Include failed
+0xd7688	(null)
+0xd76a0	Main <include> node not present
+0xd76c0	Empty include
+0xd76d0	Empty SpriteNode Element
+0xd76f0	building
+0xd7700	custom_workshop
+0xd7710	name
+0xd7718	game_type
+0xd7728	game_subtype
+0xd7738	game_custom
+0xd7748	<building> node must have name and game_type attributes
+0xd7780	<building> unknown game_type value
+0xd77a8	<building> Is generic - game_subtype missing.
+0xd77d8	<building> unknown game_subtype value
+0xd7800	<building> game_custom attribute is required, but missng.
+0xd7840	<building> game_custom attribute is invalid
+0xd7870	<building> Failed while parsing sprite node
+0xd7940	Reading Custom Workshop Types
+0xd7960	Reading Professions
+0xd7978	Reading Hairstyles
+0xd7990	OBSIDIAN
+0xd79a0	index.txt
+0xd79f8	.xml
+0xd7a30	.txt
+0xd7a68	Loading %s
+0xd7a78	creatures
+0xd7a84	floors
+0xd7a8c	walls
+0xd7a94	shrubs
+0xd7a9c	trees
+0xd7aa8	grasses
+0xd7ab0	fluids
+0xd7ab8	items
+0xd7ac0	growths
+0xd7ac8	Unrecognised root element
+0xd7ae8	(unknown)
+0xd7af8	(no element)
+0xd7b20	UnhandledType
+0xd7b30	Inorganic
+0xd7b40	GreenGlass
+0xd7b4c	Wood
+0xd7b54	Plant
+0xd7b60	ClearGlass
+0xd7b70	CrystalGlass
+0xd7b80	PlantCloth
+0xd7b90	Leather
+0xd7b98	Vomit
+0xd7ba0	Designation
+0xd7bb0	Construction
+0xd7bc0	Stone
+0xd7bc8	Metal
+0xd7bd4	block
+0xd7be0	boulder
+0xd7bf0	Unknown hair type: %s
+0xd7c18	none
+0xd7c24	named
+0xd7c2c	layer
+0xd7c34	vein
+0xd7c40	material_fore
+0xd7c50	material_back
+0xd7c60	layer_fore
+0xd7c70	layer_back
+0xd7c80	vein_fore
+0xd7c90	vein_back
+0xd7ca0	bodypart
+0xd7cb0	profession
+0xd7cbc	blood
+0xd7cc4	grass
+0xd7cd0	equipment
+0xd7cdc	item
+0xd7ce4	wood
+0xd7cec	growth
+0xd7cf8	unordered_map/set too long
+0xd7d18	invalid hash bucket count
+0xd7d88	gameID
+0xd7d90	shadow
+0xd7d98	variant
+0xd7da0	prof
+0xd7da8	custom
+0xd7dc8	caste
+0xd7dd0	special
+0xd7dd8	Normal
+0xd7de0	Ghost
+0xd7de8	Military
+0xd7df8	sheetIndex
+0xd7e08	creature
+0xd7e18	No creatures found
+0xd7e48	activeInvader 
+0xd7e58	Caged 
+0xd7e60	chained 
+0xd7e70	coward 
+0xd7e78	Diplomat 
+0xd7e88	drowning 
+0xd7e98	lostLeaving 
+0xd7ea8	HadMood 
+0xd7eb4	Mood 
+0xd7ec0	hiddenAmbush 
+0xd7ed0	hiddenInAmbush 
+0xd7ee0	Historical 
+0xd7ef0	Incoming 
+0xd7f00	invading 
+0xd7f10	marauder 
+0xd7f20	merchant 
+0xd7f30	onGround 
+0xd7f40	projectile 
+0xd7f50	ridden 
+0xd7f58	Tame 
+0xd7f60	Dead 
+0xd7f68	ReadyToSlaughter 
+0xd7f80	Resident 
+0xd7f90	Sparring 
+0xd7fa0	Swimming 
+0xd7fb0	Underworld 
+0xd8090	itemdump.txt
+0xd80e8	tiledump.txt
+0xd8118	terrain.xml
+0xd813c	type
+0xd8148	Invalid or missing type attribute
+0xd816c	water
+0xd8174	lava
+0xd817c	magma
+0xd8184	level
+0xd8190	Invalid or missing level attribute
+0xd81b4	index
+0xd81c0	Invalid or missing sprite attribute
+0xd81e4	fluid
+0xd8230	objects.png
+0xd8240	creatures.png
+0xd8250	ramps.png
+0xd8260	SSStatusIcons.png
+0xd8278	SSProfIcons.png
+0xd8288	gibs.png
+0xd8298	engravings_floor.png
+0xd82b0	engravings_left.png
+0xd82c8	engravings_right.png
+0xd82e0	Sir_Henry_s_32x32.png
+0xd831c	", "
+0xd8324	exists
+0xd8330	suspend
+0xd8338	Coord: invalid
+0xd8348	Tile 0x%x (%i,%i,%i)
+0xd8360	Coord:(%i,%i,%i)
+0xd8378	Tile: %s
+0xd8384	floor
+0xd838c	wall
+0xd8394	ramp
+0xd839c	stair
+0xd83a8	Game Mode:%i, Control Mode:%i
+0xd83d0	Unknown
+0xd83d8	%s %s:%i Material:%s%s%s (%d,%d)
+0xd8400	Layer Material:%s%s%s
+0xd8418	Vein Material:%s%s%s
+0xd8430	Grass length:%d, Material: %s
+0xd8450	tree:%i water:%i,%i
+0xd8468	tree name:%s type:%i
+0xd8480	 leaves
+0xd8488	 branches
+0xd84a4	 trunk
+0xd84b0	tree tile:%s%s%s%s%s%s%s
+0xd84d0	%i extra sprites.
+0xd84f0	Building: game_type = %s(%i) game_subtype = %s(%i) Material: %s%s%s (%d,%d) Occupancy:%i, Special: %i 
+0xd8558	Material[%i]: %s%s%s (%d,%d)
+0xd8578	Traffic: %d
+0xd8588	Stockpile?
+0xd8598	Water table
+0xd85a4	Rained
+0xd85b0	Snow: %d, Mud: %d, Blood: %d
+0xd85d0	Item: %s - %s
+0xd85e0	Miasma
+0xd85e8	Steam
+0xd85f0	MaterialDust
+0xd8600	MagmaMist
+0xd860c	Smoke
+0xd8618	Dragonfire
+0xd8628	MaterialGas
+0xd8638	MaterialVapor
+0xd8648	OceanWave
+0xd8658	SeaFoam
+0xd8660	%s: %d, Material:%s%s%s
+0xd8678	No map loaded
+0xd8690	%s (%d) (Press SPACE to return)
+0xd86b0	Could not find DF process
+0xd86d0	 (repeats)
+0xd86e0	%s: %s%s
+0xd86f0	%i,%i,%i, r%i, z%i
+0xd8708	Map Read Time: %.2fms
+0xd8720	Map Beautification Time: %.2fms
+0xd8740	Tile Sprite Assembly Time: %.2fms
+0xd8768	DF Renderer Overlay Time: %.2fms
+0xd8790	FPS: %.2f
+0xd87a0	Draw: %.2fms
+0xd87b0	%i/%i/%i, %i:%i
+0xd87c0	Locked on DF screen + (%d,%d,%d)
+0xd87e8	Following DF Cursor at: %d,%d,%d
+0xd8810	Single layer view
+0xd8828	Reloading every %0.1fs
+0xd88b8	screenshot
+0xd88e4	Image
+0xd88f0	saving large screenshot...
+0xd8a80	terrain
+0xd8a90	 material = "
+0xd8aa0	 variant = "
+0xd8ab0	 special = "
+0xd8ac0	 shape = "
+0xd8b57	 in element
+0xd8b68	Terrain value "%d" is invalid
+0xd8b88	shape
+0xd8b90	form
+0xd8b98	vector<bool> too long
+0xd8bb0	<item> node must game_type attribute
+0xd8bd8	<item> unknown game_type value
+0xd8bf8	<item> unknown game_subtype value
+0xd8c80	mask_wall.png
+0xd8c90	mask_floor.png
+0xd8ca0	invalid bitset position
+0xd8cdf	?Failed loading bodypart '%s' of creature '%s' with caste '%s' from xml.
+0xd8d28	subsprite
+0xd8d38	random_anim_offset
+0xd8d4c	zoom
+0xd8d54	frames
+0xd8d60	border_open_OR
+0xd8d70	border_floor_OR
+0xd8d80	border_wall_OR
+0xd8d90	border_ramp_OR
+0xd8da0	border_upstair_OR
+0xd8db8	border_downstair_OR
+0xd8dd0	border_dark_OR
+0xd8de0	border_light_OR
+0xd8df0	border_open_NOR
+0xd8e00	border_floor_NOR
+0xd8e18	border_wall_NOR
+0xd8e28	border_ramp_NOR
+0xd8e38	border_upstair_NOR
+0xd8e50	border_downstair_NOR
+0xd8e68	variations
+0xd8e78	rotation
+0xd8e88	variationtype
+0xd8e98	four
+0xd8ea0	sixteen
+0xd8ea8	random
+0xd8eb0	animation
+0xd8ec0	water_direction
+0xd8ed0	halftile
+0xd8edc	chop
+0xd8eec	both
+0xd8ef4	dark
+0xd8f00	tileborder
+0xd8f0c	left
+0xd8f14	right
+0xd8f1c	bottom
+0xd8f28	grass_state
+0xd8f3c	dead
+0xd8f48	hair_type
+0xd8f54	hair
+0xd8f5c	beard
+0xd8f68	moustache
+0xd8f78	sideburns
+0xd8f88	hair_style
+0xd8f94	combed
+0xd8f9c	braid
+0xd8fa8	two_braid
+0xd8fb8	ponytails
+0xd8fc8	unkempt
+0xd8fd0	hair_min
+0xd8fe0	hair_max
+0xd8ff0	color_name
+0xd9000	snow_min
+0xd9010	snow_max
+0xd9020	grass_min
+0xd9030	grass_max
+0xd9040	grass_type
+0xd9050	equipment_class
+0xd9060	equipment_name
+0xd9070	NONE
+0xd9078	equipment_material
+0xd9090	blood_min
+0xd90a0	blood_max
+0xd90b0	mud_min
+0xd90b8	mud_max
+0xd90c0	offsetx
+0xd90c8	offsety
+0xd90d0	outline
+0xd90d8	blood_sprite
+0xd90ef	Cpart
+0xd90f8	Invalid or missing part attribute
+0xd911c	TWIGS
+0xd9128	LIGHT_BRANCHES
+0xd9138	HEAVY_BRANCHES
+0xd9148	TRUNK
+0xd9150	ROOTS
+0xd9160	SAPLING
+0xd9168	SHRUB
+0xd9170	:BASE
+0xd9190	bad variant access
+0xd91a4	plant
+0xd91b0	No matching plant type
+0xd91c8	sapling
+0xd91e0	INVALID
+0xd91e8	KEY_A
+0xd91f0	KEY_B
+0xd91f8	KEY_C
+0xd9200	KEY_D
+0xd9208	KEY_E
+0xd9210	KEY_F
+0xd9218	KEY_G
+0xd9220	KEY_H
+0xd9228	KEY_I
+0xd9230	KEY_J
+0xd9238	KEY_K
+0xd9240	KEY_L
+0xd9248	KEY_M
+0xd9250	KEY_N
+0xd9258	KEY_O
+0xd9260	KEY_P
+0xd9268	KEY_Q
+0xd9270	KEY_R
+0xd9278	KEY_S
+0xd9280	KEY_T
+0xd9288	KEY_U
+0xd9290	KEY_V
+0xd9298	KEY_W
+0xd92a0	KEY_X
+0xd92a8	KEY_Y
+0xd92b0	KEY_Z
+0xd92b8	KEY_0
+0xd92c0	KEY_1
+0xd92c8	KEY_2
+0xd92d0	KEY_3
+0xd92d8	KEY_4
+0xd92e0	KEY_5
+0xd92e8	KEY_6
+0xd92f0	KEY_7
+0xd92f8	KEY_8
+0xd9300	KEY_9
+0xd9308	KEYPAD_0
+0xd9318	KEYPAD_1
+0xd9328	KEYPAD_2
+0xd9338	KEYPAD_3
+0xd9348	KEYPAD_4
+0xd9358	KEYPAD_5
+0xd9368	KEYPAD_6
+0xd9378	KEYPAD_7
+0xd9388	KEYPAD_8
+0xd9398	KEYPAD_9
+0xd93a4	KEYF_1
+0xd93ac	KEYF_2
+0xd93b4	KEYF_3
+0xd93bc	KEYF_4
+0xd93c4	KEYF_5
+0xd93cc	KEYF_6
+0xd93d4	KEYF_7
+0xd93dc	KEYF_8
+0xd93e4	KEYF_9
+0xd93f0	KEYF_10
+0xd93f8	KEYF_11
+0xd9400	KEYF_12
+0xd9408	KEYS_ESCAPE
+0xd9418	KEYS_TILDE
+0xd9428	KEYS_MINUS
+0xd9438	KEYS_EQUALS
+0xd9448	KEYS_BACKSPACE
+0xd9458	KEYS_TAB
+0xd9468	KEYS_OPENBRACE
+0xd9478	KEYS_CLOSEBRACE
+0xd9488	KEYS_ENTER
+0xd9498	KEYS_SEMICOLON
+0xd94a8	KEYS_QUOTE
+0xd94b8	KEYS_BACKSLASH
+0xd94c8	KEYS_BACKSLASH2
+0xd94d8	KEYS_COMMA
+0xd94e8	KEYS_FULLSTOP
+0xd94f8	KEYS_SLASH
+0xd9508	KEYS_SPACE
+0xd9518	KEYS_INSERT
+0xd9528	KEYS_DELETE
+0xd9538	KEYS_HOME
+0xd9548	KEYS_END
+0xd9558	KEYS_PGUP
+0xd9568	KEYS_PGDN
+0xd9578	KEYS_LEFT
+0xd9588	KEYS_RIGHT
+0xd9598	KEYS_UP
+0xd95a0	KEYS_DOWN
+0xd95b0	KEYPAD_SLASH
+0xd95c0	KEYPAD_ASTERISK
+0xd95d0	KEYPAD_MINUS
+0xd95e0	KEYPAD_PLUS
+0xd95f0	KEYPAD_DELETE
+0xd9600	KEYPAD_ENTER
+0xd9610	KEYS_PRINTSCREEN
+0xd9628	KEYS_PAUSE
+0xd9638	KEYS_ABNT_C1
+0xd9648	KEYS_YEN
+0xd9658	KEYS_KANA
+0xd9668	KEYS_CONVERT
+0xd9678	KEYS_NOCONVERT
+0xd9688	KEYS_AT
+0xd9690	KEYS_CIRCUMFLEX
+0xd96a0	KEYS_COLON2
+0xd96b0	KEYS_KANJI
+0xd96c0	KEYPAD_EQUALS
+0xd96d0	KEYS_BACKQUOTE
+0xd96e0	KEYS_SEMICOLON2
+0xd96f0	KEYS_COMMAND
+0xd9700	NOOP
+0xd9708	ROTATE
+0xd9710	RELOAD_SEGMENT
+0xd9720	PAINT
+0xd9728	TOGGLE_DESIGNATIONS
+0xd9740	TOGGLE_STOCKS
+0xd9750	TOGGLE_ZONES
+0xd9760	TOGGLE_OCCLUSION
+0xd9778	TOGGLE_FOG
+0xd9788	TOGGLE_CREATURE_MOODS
+0xd97a0	TOGGLE_CREATURE_PROFS
+0xd97b8	TOGGLE_CREATURE_JOBS
+0xd97d0	TOGGLE_CREATURE_NAMES
+0xd97e8	CHOP_WALLS
+0xd97f8	CYCLE_TRACKING_MODE
+0xd9810	RESET_VIEW_OFFSET
+0xd9828	TOGGLE_SINGLE_LAYER
+0xd9840	TOGGLE_SHADE_HIDDEN_TILES
+0xd9860	TOGGLE_SHOW_HIDDEN_TILES
+0xd9880	TOGGLE_OSD
+0xd9890	TOGGLE_KEYBINDS
+0xd98a0	TOGGLE_ANNOUNCEMENTS
+0xd98b8	TOGGLE_DEBUG
+0xd98c8	INCR_ZOOM
+0xd98d8	DECR_ZOOM
+0xd98e8	SCREENSHOT
+0xd98f8	INCR_RELOAD_TIME
+0xd9910	DECR_RELOAD_TIME
+0xd9928	CREDITS
+0xd9930	DECR_SEGMENT_X
+0xd9940	INCR_SEGMENT_X
+0xd9950	DECR_SEGMENT_Y
+0xd9960	INCR_SEGMENT_Y
+0xd9970	DECR_SEGMENT_Z
+0xd9980	INCR_SEGMENT_Z
+0xd9990	DECR_Z
+0xd9998	INCR_Z
+0xd99a0	DECR_Y
+0xd99a8	INCR_Y
+0xd99b0	DECR_X
+0xd99b8	INCR_X
+0xd99d0	keybinds.txt
+0xd9a90	init
+0xd9a98	main
+0xd9ad0	Stonesense.log
+0xd9af8	benchmark.txt
+0xd9b10	Welcome to Stonesense Felsite!
+0xd9b30	Stonesense is an isometric viewer for Dwarf Fortress.
+0xd9b70	Programming: Jonas Ask, Kris Parker, Japa Illo, Tim Aitken, and peterix
+0xd9bb8	Lead graphics designer, Dale Holdampf
+0xd9be0	Contributors:
+0xd9bf0	7c Nickel, BatCountry, Belal, Belannaer, DeKaFu, Dante, Deon, dyze,
+0xd9c38	Errol, fifth angel, frumpton, IDreamOfGiniCoeff, Impaler, 
+0xd9c80	Japa, jarathor, Jiri Petru, Jordix, Lord Nightmare, McMe, Mike Mayday, Nexii 
+0xd9cd0	Malthus, peterix, Seuss, soup, SquidCoder, Talvara, winner, Xandrin.
+0xd9d18	With special thanks to peterix for making DFHack
+0xd9d50	Failed to resize diplay
+0xd9e18	Stonesense
+0xd9e28	stonesense.png
+0xd9e58	splash.png
+0xd9e68	Starting up...
+0xd9e90	Start up the stonesense visualiser.
+0xd9eb4	ssense
+0xd9f80	53.16-r2
+0xd9f8c	53.16
+0xd9f98	https://github.com/DFHack/dfhack/actions/runs/36605190931
+0xd9fd8	53.16-r2-0-g02e77acf
+0xd9ff0	02e77acf13049f5661a4da0aa3d876bf95b74903
+0xda020	63efa5f44c5fd00ded98a2034f5d6069fd94f7a4
+0xda050	bad allocation
+0xda060	invalid format specifier for char
+0xda0c0	00010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899
+0xda18a	00010203  0405060707080910  1112131414151617  18192021  222324  25262728  2930313232333435  3637383939404142  43444546  474849  50515253  5455565757585960  6162636464656667  68697071  727374  75767778  7980818282838485  8687888989909192  93949596  979899  
+0xda480	number is too big
+0xda4c4	false
+0xda4cc	true
+0xda568	%s:%d: assertion failed: %s
+0xda588	error 
+0xda590	unmatched '}' in format string
+0xda5b0	invalid format string
+0xda5c8	missing '}' in format string
+0xda5e8	unknown format specifier
+0xda608	argument not found
+0xda620	cannot switch from manual to automatic argument indexing
+0xda65c	{}{}
+0xda668	cannot write to file
+0xdc371	A]DG
+0xdd0c0	invalid format specifier
+0xdd0e0	format specifier requires numeric argument
+0xdd110	invalid fill character '{'
+0xdd130	invalid utf8
+0xdd6b8	invalid precision
+0xdd6d0	string pointer is null
+0xdd6e8	width/precision is not integer
+0xdd710	cannot switch from automatic to manual argument indexing
+0xdd760	width/precision is out of range
+0xdd790	0123456789ABCDEF
+0xdd7a8	0123456789abcdef
+0xddba8	    
+0xddbb8	&#x%02X;
+0xddbdc	</%s>
+0xddbe8	%s="%s"
+0xddbf8	%s='%s'
+0xddc18	<!--%s-->
+0xddc38	<?xml 
+0xddc40	version="%s" 
+0xddc50	version="
+0xddc60	encoding="%s" 
+0xddc70	encoding="
+0xddc80	standalone="%s" 
+0xddc98	standalone="
+0xddcac	<%s>
+0xddcc0	<![CDATA[
+0xddcd0	<!--
+0xde0e0	&amp;
+0xde0e8	&lt;
+0xde0f0	&gt;
+0xde0f8	&quot;
+0xde100	&apos;
+0xde108	UTF-8
+0xde110	UTF8
+0xde118	<?xml
+0xde128	version
+0xde130	encoding
+0xde140	standalone
+0xde158	No error
+0xde164	Error
+0xde170	Failed to open file
+0xde188	Error parsing Element.
+0xde1a0	Failed to read Element name
+0xde1c0	Error reading Element value.
+0xde1e0	Error reading Attributes.
+0xde200	Error: empty tag.
+0xde218	Error reading end tag.
+0xde230	Error parsing Unknown.
+0xde248	Error parsing Comment.
+0xde260	Error parsing Declaration.
+0xde280	Error document empty.
+0xde298	Error null (0) or unexpected EOF found in input stream.
+0xde2d0	Error parsing CDATA.
+0xde2f0	Error when TiXmlDocument added to document, because TiXmlDocument can only be at the root.
+0xde4c0	GetTempPath2W
+0xe38bc	D:\a\dfhack\dfhack\build\plugins\stonesense\stonesense.pdb
+0xe3918	.text$di
+0xe392c	.text$mn
+0xe3940	.text$mn$00
+0xe3954	.text$x
+0xe3964	.text$yd
+0xe3978	.idata$5
+0xe398c	.00cfg
+0xe399c	.CRT$XCA
+0xe39b0	.CRT$XCL
+0xe39c4	.CRT$XCU
+0xe39d8	.CRT$XCZ
+0xe39ec	.CRT$XIA
+0xe3a00	.CRT$XIZ
+0xe3a14	.CRT$XLA
+0xe3a28	.CRT$XLZ
+0xe3a3c	.CRT$XPA
+0xe3a50	.CRT$XPZ
+0xe3a64	.CRT$XTA
+0xe3a78	.CRT$XTZ
+0xe3a8c	.rdata
+0xe3a9c	.rdata$CastGuardVftablesA
+0xe3ac0	.rdata$CastGuardVftablesC
+0xe3ae4	.rdata$T
+0xe3af8	.rdata$r
+0xe3b0c	.rdata$voltmd
+0xe3b24	.rdata$zzzdbg
+0xe3b3c	.rtc$IAA
+0xe3b50	.rtc$IZZ
+0xe3b64	.rtc$TAA
+0xe3b78	.rtc$TZZ
+0xe3b8c	.tls
+0xe3b9c	.tls$
+0xe3bac	.tls$ZZZ
+0xe3bc0	.xdata
+0xe3bd0	.xdata$x
+0xe3be4	.edata
+0xe3bf4	.idata$2
+0xe3c08	.idata$3
+0xe3c1c	.idata$4
+0xe3c30	.idata$6
+0xe3c44	.data
+0xe3c54	.data$r
+0xe3c64	.data$rs
+0xe3c78	.bss
+0xe3c88	.pdata
+0xe3c98	.rsrc$01
+0xe3cac	.rsrc$02
+0xf1d24	LBNBPBR
+0xf92b0	stonesense.plug.dll
+0xf92c4	plugin_abi_version
+0xf92d7	plugin_dev
+0xf92e2	plugin_git_description
+0xf92f9	plugin_globals
+0xf9308	plugin_init
+0xf9314	plugin_is_enabled
+0xf9326	plugin_name
+0xf9332	plugin_onupdate
+0xf9342	plugin_self
+0xf934e	plugin_shutdown
+0xf935e	plugin_version
+0xf936d	stonesense_command
+0xfa360	|m?getDwarfmodeViewDims@Gui@DFHack@@YA?AUDwarfmodeDims@12@XZ
+0xfa39f	o?getViewCoords@Gui@DFHack@@YA_NAEAH00@Z
+0xfa3c9	m?getInstance@Core@DFHack@@SAAEAV12@XZ
+0xfa3f1	m?getHackPath@Core@DFHack@@QEAA?AVpath@filesystem@std@@XZ
+0xfa42d	Y?attrs@?$enum_traits@W4tiletype_shape@1enums@df@@@df@@SAAEBUattr_entry_type@12@W4tiletype_shape@4enums@2@@Z
+0xfa49b	Y?attrs@?$enum_traits@W4tiletype@1enums@df@@@df@@SAAEBUattr_entry_type@12@W4tiletype@4enums@2@@Z
+0xfa4fd	`?cur_year_tick@global@df@@3PEAHEA
+0xfa521	g?gamemode@global@df@@3PEAW4game_mode@3enums@2@EA
+0xfa555	p?gps@global@df@@3PEAUgraphic@2@EA
+0xfa57a	?world@global@df@@3PEAU02@EA
+0xfa598	Gb?findEnumItem@DFHack@@YAHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HPEBQEBD@Z
+0xfa601	}?key_table@?$enum_traits@W4building_type@1enums@df@@@df@@2QBQEBDB
+0xfa646	?split_string@@YA_NPEAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@1_N@Z
+0xfa73d	`?decode@MaterialInfo@DFHack@@QEAA_NFH@Z
+0xfa767	a?find@MaterialInfo@DFHack@@QEAA_NAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z
+0xfa7cf	n?getToken@MaterialInfo@DFHack@@QEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ
+0xfa837	z?is_valid@?$enum_traits@W4construction_type@1enums@df@@@df@@SA_NH@Z
+0xfa87d	|?is_valid@?$enum_traits@W4siegeengine_type@1enums@df@@@df@@SA_NF@Z
+0xfa8c3	|?is_valid@?$enum_traits@W4workshop_type@1enums@df@@@df@@SA_NF@Z
+0xfa905	}?key_table@?$enum_traits@W4construction_type@1enums@df@@@df@@2QBQEBDB
+0xfa94c	[~?key_table@?$enum_traits@W4furnace_type@1enums@df@@@df@@2QBQEBDB
+0xfa992	?key_table@?$enum_traits@W4shop_type@1enums@df@@@df@@2QBQEBDB
+0xfa9d2	?key_table@?$enum_traits@W4siegeengine_type@1enums@df@@@df@@2QBQEBDB
+0xfaa1a	?key_table@?$enum_traits@W4workshop_type@1enums@df@@@df@@2QBQEBDB
+0xfaa5d	{?is_valid@?$enum_traits@W4profession@1enums@df@@@df@@SA_NF@Z
+0xfaa9d	N?ReadCustomWorkshopTypes@Buildings@DFHack@@YA_NAEAV?$map@IV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@I@2@V?$allocator@U?$pair@$$CBIV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@@2@@std@@@Z
+0xfab8e	?key_table@?$enum_traits@W4profession@1enums@df@@@df@@2QBQEBDB
+0xfabcf	}?key_table@?$enum_traits@W4civzone_type@1enums@df@@@df@@2QBQEBDB
+0xfac14	?key_table@?$enum_traits@W4trap_type@1enums@df@@@df@@2QBQEBDB
+0xfac52	#M?DF2UTF@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV12@@Z
+0xfacab	y?is_instance@virtual_identity@DFHack@@QEBA_NPEAX@Z
+0xface1	Y?attrs@?$enum_traits@W4profession@1enums@df@@@df@@SAAEBUattr_entry_type@12@W4profession@4enums@2@@Z
+0xfad47	Y?attrs@?$enum_traits@W4job_type@1enums@df@@@df@@SAAEBUattr_entry_type@12@W4job_type@4enums@2@@Z
+0xfada9	o?getVisibleName@Units@DFHack@@YAPEAUlanguage_name@df@@PEAUunit@4@@Z
+0xfadef	n?getNoblePositions@Units@DFHack@@YA_NPEAV?$vector@UNoblePosition@Units@DFHack@@V?$allocator@UNoblePosition@Units@DFHack@@@std@@@std@@PEAUunit@df@@@Z
+0xfae86	Qn?getProfessionColor@Units@DFHack@@YACPEAUunit@df@@_N@Z
+0xfaec0	>m?getCasteProfessionColor@Units@DFHack@@YACHHW4profession@3enums@df@@@Z
+0xfaf0b	a?find@creature_raw@df@@SAPEAU12@H@Z
+0xfaf31	n?getName@Job@DFHack@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEAUjob@df@@@Z
+0xfaf98	CU?_identity@item_constructed@df@@2Vvirtual_identity@DFHack@@B
+0xfafd9	U?_identity@itemimprovement_threadst@df@@2Vvirtual_identity@DFHack@@B
+0xfb021	g?flush_buffer@color_ostream@DFHack@@AEAAX_N@Z
+0xfb052	?log_errors_to_stderr@color_ostream@DFHack@@2_NA
+0xfb085	N?Reset@Core@Lua@DFHack@@YAXAEAVcolor_ostream@3@PEBD@Z
+0xfb0bd	`?decode@ItemTypeInfo@DFHack@@QEAA_NW4item_type@3enums@df@@F@Z
+0xfb0fd	n?getToken@ItemTypeInfo@DFHack@@QEAA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ
+0xfb165	u?inGraphicsMode@Screen@DFHack@@YA_NXZ
+0xfb18e	?plotinfo@global@df@@3PEAUplotinfost@2@EA
+0xfb1ba	?key_table@?$enum_traits@W4tiletype@1enums@df@@@df@@2QBQEBDB
+0xfb1f9	`?containsTile@Buildings@DFHack@@YA_NPEAUbuilding@df@@U?$Coord2d@F$0?HFDA@@2@@Z
+0xfb24a	BD??A?$DfOtherVectors@Ubuildings_other@df@@W4buildings_other_id@3enums@2@Ubuilding@2@@DFHack@@QEAAAEAV?$vector@PEAUbuilding@df@@V?$allocator@PEAUbuilding@df@@@std@@@std@@W4buildings_other_id@4enums@df@@@Z
+0xfb319	Q?_identity@building_actual@df@@2Vvirtual_identity@DFHack@@B
+0xfb356	:R?_identity@building_wellst@df@@2Vvirtual_identity@DFHack@@B
+0xfb395	U?_identity@item_slabst@df@@2Vvirtual_identity@DFHack@@B
+0xfb3ce	f|?is_valid@?$enum_traits@W4tiletype_material@1enums@df@@@df@@SA_NH@Z
+0xfb414	g|?is_valid@?$enum_traits@W4tiletype_shape@1enums@df@@@df@@SA_NH@Z
+0xfb458	i|?is_valid@?$enum_traits@W4tiletype_special@1enums@df@@@df@@SA_NH@Z
+0xfb49e	j|?is_valid@?$enum_traits@W4tiletype_variant@1enums@df@@@df@@SA_NH@Z
+0xfb4e4	e|?is_valid@?$enum_traits@W4tiletype@1enums@df@@@df@@SA_NG@Z
+0xfb524	?key_table@?$enum_traits@W4tiletype_material@1enums@df@@@df@@2QBQEBDB
+0xfb56c	?key_table@?$enum_traits@W4tiletype_shape@1enums@df@@@df@@2QBQEBDB
+0xfb5b2	?key_table@?$enum_traits@W4tiletype_special@1enums@df@@@df@@2QBQEBDB
+0xfb5fa	?key_table@?$enum_traits@W4tiletype_variant@1enums@df@@@df@@2QBQEBDB
+0xfb641	a?find@ItemTypeInfo@DFHack@@QEAA_NAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z
+0xfb6a9	~?key_table@?$enum_traits@W4item_type@1enums@df@@@df@@2QBQEBDB
+0xfb6e8	$N?IsValid@Maps@DFHack@@YA_NXZ
+0xfb709	N?ReadFeatures@Maps@DFHack@@YA_NHHHPEAUt_feature@2@0@Z
+0xfb741	n?getSize@Maps@DFHack@@YAXAEAI00@Z
+0xfb764	,m?getBlock@Maps@DFHack@@YAPEAUmap_block@df@@HHH@Z
+0xfb798	.m?getBlockColumn@Maps@DFHack@@YAPEAUmap_block_column@df@@HH@Z
+0xfb7d8	hn?getRegionBiome@Maps@DFHack@@YAPEAUregion_map_entry@df@@U?$Coord2d@F$0?HFDA@@2@@Z
+0xfb82c	0m?getBlockTileBiomeRgn@Maps@DFHack@@YA?AU?$Coord2d@F$0?HFDA@@2@PEAUmap_block@df@@U32@@Z
+0xfb887	O?SortBlockEvents@Maps@DFHack@@YA_NPEAUmap_block@df@@PEAV?$vector@PEAUblock_square_event_mineralst@df@@V?$allocator@PEAUblock_square_event_mineralst@df@@@std@@@std@@PEAV?$vector@PEAUblock_square_event_frozen_liquidst@df@@V?$allocator@PEAUblock_square_event_frozen_liquidst@df@@@std@@@6@PEAV?$vector@PEAUblock_square_event_material_spatterst@df@@V?$allocator@PEAUblock_square_event_material_spatterst@df@@@std@@@6@PEAV?$vector@PEAUblock_square_event_grassst@df@@V?$allocator@PEAUblock_square_event_grassst@df@@@std@@@6@PEAV?$vector@PEAUblock_square_event_world_constructionst@df@@V?$allocator@PEAUblock_square_event_world_constructionst@df@@@std@@@6@PEAV?$vector@PEAUblock_square_event_spoorst@df@@V?$allocator@PEAUblock_square_event_spoorst@df@@@std@@@6@PEAV?$vector@PEAUblock_square_event_item_spatterst@df@@V?$allocator@PEAUblock_square_event_item_spatterst@df@@@std@@@6@PEAV?$vector@PEAUblock_square_event_designation_priorityst@df@@V?$allocator@PEAUblock_square_event_designation_priorityst@df@@@std@@@6@@Z
+0xfbc7a	im?getCursorPos@Gui@DFHack@@YA?AU?$Coord3d@F$0?HFDA@@2@XZ
+0xfbcb5	N?ReadCurrentTick@World@DFHack@@YAIXZ
+0xfbcdd	N?ReadCurrentYear@World@DFHack@@YAIXZ
+0xfbd05	N?ReadGameMode@World@DFHack@@YA_NAEAUt_gamemodes@2@@Z
+0xfbd3e	??0construction@df@@QEAA@XZ
+0xfbd5a	#b?find@plant_raw@df@@SAPEAU12@H@Z
+0xfbd7e	JD??Atile_bitmask@df@@QEAAAEAGH@Z
+0xfbda1	b?find@inorganic_raw@df@@SAPEAU12@H@Z
+0xfbdc9	b?find@item@df@@SAPEAU12@H@Z
+0xfbde8	?selection_rect@global@df@@3PEAUT_selection_rect@12@EA
+0xfbe21	U?_identity@item_threadst@df@@2Vvirtual_identity@DFHack@@B
+0xfbe5e	?stl_vsprintf@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEBDPEAD@Z
+0xfbebc	??0PluginCommand@DFHack@@QEAA@PEBD0P6A?AW4command_result@1@AEAVcolor_ostream@1@AEAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@Z_N40@Z
+0xfbfb6	??1PluginCommand@DFHack@@QEAA@XZ
+0xfbfda	??0PluginCommand@DFHack@@QEAA@AEBU01@@Z
+0xfc004	??0PluginCommand@DFHack@@QEAA@$$QEAU01@@Z
+0xfc030	??1t_matgloss@DFHack@@QEAA@XZ
+0xfc04f	v?isEnabled@DebugCategory@DFHack@@QEBA_NW4level@12@@Z
+0xfc087	H??_Dostream_proxy_prefix@DebugCategory@DFHack@@QEAAXXZ
+0xfc0c1	n?getStream@DebugCategory@DFHack@@QEBA?AUostream_proxy_prefix@12@W4level@12@@Z
+0xfc112	??0DebugRegisterBase@DFHack@@IEAA@PEAVDebugCategory@1@@Z
+0xfc14e	?unregister@DebugRegisterBase@DFHack@@IEAAXPEAVDebugCategory@2@@Z
+0xfc190	dfhack.dll
+0xfc19e	WriteConsoleW
+0xfc1ac	KERNEL32.dll
+0xfc1bc	al_map_rgb
+0xfc1ca	al_map_rgba
+0xfc1d8	al_map_rgb_f
+0xfc1e8	al_map_rgba_f
+0xfc1f8	al_get_bitmap_width
+0xfc20e	al_get_bitmap_height
+0xfc226	al_destroy_bitmap
+0xfc23a	al_draw_bitmap_region
+0xfc252	al_ustr_new
+0xfc260	al_ustr_free
+0xfc270	al_ustr_get
+0xfc27e	al_ustr_append_chr
+0xfc294	al_ustr_set_chr
+0xfc2a6	al_rest
+0xfc2b0	al_set_new_bitmap_flags
+0xfc2ca	al_get_new_bitmap_flags
+0xfc2e4	al_create_bitmap
+0xfc2f8	al_create_sub_bitmap
+0xfc310	al_draw_bitmap
+0xfc322	al_draw_tinted_scaled_bitmap
+0xfc342	al_cstr
+0xfc34c	al_ustr_vappendf
+0xfc360	al_save_bitmap
+0xfc372	al_set_blender
+0xfc384	al_set_separate_blender
+0xfc39e	al_get_separate_blender
+0xfc3b8	al_get_current_display
+0xfc3d2	al_set_target_bitmap
+0xfc3ea	al_get_backbuffer
+0xfc3fe	al_get_target_bitmap
+0xfc416	al_flip_display
+0xfc428	al_hold_bitmap_drawing
+0xfc442	al_clear_to_color
+0xfc456	al_get_keyboard_state
+0xfc46e	al_key_down
+0xfc47c	al_lock_mutex
+0xfc48c	al_unlock_mutex
+0xfc49e	al_create_thread
+0xfc4b2	al_start_thread
+0xfc4c4	al_get_thread_should_stop
+0xfc4e0	al_get_pixel
+0xfc4f0	al_get_mouse_state
+0xfc506	al_create_timer
+0xfc518	al_destroy_timer
+0xfc52c	al_start_timer
+0xfc53e	al_stop_timer
+0xfc54e	al_set_timer_speed
+0xfc564	al_get_allegro_version
+0xfc57e	al_convert_mask_to_alpha
+0xfc59a	al_load_bitmap
+0xfc5ac	al_create_event_queue
+0xfc5c4	al_register_event_source
+0xfc5e0	al_is_event_queue_empty
+0xfc5fa	al_wait_for_event_timed
+0xfc614	al_set_new_display_flags
+0xfc630	al_get_display_width
+0xfc648	al_get_display_height
+0xfc660	al_create_display
+0xfc674	al_destroy_display
+0xfc68a	al_acknowledge_resize
+0xfc6a2	al_get_display_event_source
+0xfc6c0	al_set_display_icon
+0xfc6d6	al_set_window_title
+0xfc6ec	al_is_keyboard_installed
+0xfc708	al_install_keyboard
+0xfc71e	al_get_keyboard_event_source
+0xfc73e	al_is_mouse_installed
+0xfc756	al_install_mouse
+0xfc76a	al_get_mouse_event_source
+0xfc786	al_install_system
+0xfc79a	al_uninstall_system
+0xfc7b0	al_is_system_installed
+0xfc7ca	al_join_thread
+0xfc7dc	al_set_thread_should_stop
+0xfc7f8	al_destroy_thread
+0xfc80c	al_create_mutex
+0xfc81e	al_destroy_mutex
+0xfc832	al_create_cond
+0xfc844	al_broadcast_cond
+0xfc858	al_get_timer_event_source
+0xfc872	allegro-5.2.dll
+0xfc884	al_draw_line
+0xfc894	al_draw_rectangle
+0xfc8a8	al_draw_filled_rectangle
+0xfc8c4	al_init_primitives_addon
+0xfc8de	allegro_primitives-5.2.dll
+0xfc8fc	al_get_font_line_height
+0xfc916	al_draw_ustr
+0xfc926	al_get_ustr_width
+0xfc93a	al_get_text_width
+0xfc94e	al_draw_text
+0xfc95e	al_load_font
+0xfc96e	al_draw_textf
+0xfc97e	al_init_font_addon
+0xfc992	allegro_font-5.2.dll
+0xfc9aa	al_color_rgb_to_hsv
+0xfc9c0	al_color_hsv
+0xfc9ce	allegro_color-5.2.dll
+0xfc9e6	al_init_image_addon
+0xfc9fa	allegro_image-5.2.dll
+0xfca12	al_init_ttf_addon
+0xfca24	allegro_ttf-5.2.dll
+0xfca3a	?_Xbad_alloc@std@@YAXXZ
+0xfca54	?_Getcvt@_Locinfo@std@@QEBA?AU_Cvtvec@@XZ
+0xfca80	?_W_Getdays@_Locinfo@std@@QEBAPEBGXZ
+0xfcaa8	?_W_Getmonths@_Locinfo@std@@QEBAPEBGXZ
+0xfcad2	?_Xlength_error@std@@YAXPEBD@Z
+0xfcaf4	?_Xout_of_range@std@@YAXPEBD@Z
+0xfcb16	?_Syserror_map@std@@YAPEBDH@Z
+0xfcb36	?_Winerror_map@std@@YAHH@Z
+0xfcb54	??0_Lockit@std@@QEAA@H@Z
+0xfcb70	??1_Lockit@std@@QEAA@XZ
+0xfcb8a	?_Getgloballocale@locale@std@@CAPEAV_Locimp@12@XZ
+0xfcbbe	?always_noconv@codecvt_base@std@@QEBA_NXZ
+0xfcbea	?in@?$codecvt@DDU_Mbstatet@@@std@@QEBAHAEAU_Mbstatet@@PEBD1AEAPEBDPEAD3AEAPEAD@Z
+0xfcc3e	?out@?$codecvt@DDU_Mbstatet@@@std@@QEBAHAEAU_Mbstatet@@PEBD1AEAPEBDPEAD3AEAPEAD@Z
+0xfcc92	?unshift@?$codecvt@DDU_Mbstatet@@@std@@QEBAHAEAU_Mbstatet@@PEAD1AEAPEAD@Z
+0xfccde	?_Getcat@?$codecvt@DDU_Mbstatet@@@std@@SA_KPEAPEBVfacet@locale@2@PEBV42@@Z
+0xfcd2c	?eof@ios_base@std@@QEBA_NXZ
+0xfcd4a	??0?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAA@XZ
+0xfcd86	??1?$basic_streambuf@DU?$char_traits@D@std@@@std@@UEAA@XZ
+0xfcdc2	?getloc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEBA?AVlocale@2@XZ
+0xfce0e	?sbumpc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAAHXZ
+0xfce50	?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAAHXZ
+0xfce90	?snextc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAAHXZ
+0xfced2	?eback@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBAPEADXZ
+0xfcf16	?gptr@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBAPEADXZ
+0xfcf58	?pptr@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBAPEADXZ
+0xfcf9a	?egptr@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBAPEADXZ
+0xfcfde	?gbump@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAXH@Z
+0xfd020	?setg@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAXPEAD00@Z
+0xfd066	?epptr@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBAPEADXZ
+0xfd0aa	?_Gndec@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAPEADXZ
+0xfd0ee	?_Gninc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAPEADXZ
+0xfd132	?_Gnavail@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBA_JXZ
+0xfd176	?pbump@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAXH@Z
+0xfd1b8	?_Pninc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAPEADXZ
+0xfd1fc	?_Pnavail@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBA_JXZ
+0xfd240	?_Init@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAXXZ
+0xfd280	?_Init@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAXPEAPEAD0PEAH001@Z
+0xfd2d0	?xsgetn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAA_JPEAD_J@Z
+0xfd318	?xsputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAA_JPEBD_J@Z
+0xfd360	??1?$basic_ios@DU?$char_traits@D@std@@@std@@UEAA@XZ
+0xfd396	?setstate@?$basic_ios@DU?$char_traits@D@std@@@std@@QEAAXH_N@Z
+0xfd3d6	?rdbuf@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBAPEAV?$basic_streambuf@DU?$char_traits@D@std@@@2@XZ
+0xfd440	?widen@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBADD@Z
+0xfd47c	??0?$basic_ios@DU?$char_traits@D@std@@@std@@IEAA@XZ
+0xfd4b2	??0?$basic_istream@DU?$char_traits@D@std@@@std@@QEAA@PEAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N@Z
+0xfd51e	??1?$basic_istream@DU?$char_traits@D@std@@@std@@UEAA@XZ
+0xfd558	?_Ipfx@?$basic_istream@DU?$char_traits@D@std@@@std@@QEAA_N_N@Z
+0xfd59a	?_Fiopen@std@@YAPEAU_iobuf@@PEB_WHH@Z
+0xfd5c2	?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAA_JXZ
+0xfd608	?_Id_cnt@id@locale@std@@0HA
+0xfd626	?id@?$codecvt@DDU_Mbstatet@@@std@@2V0locale@2@A
+0xfd658	?uncaught_exceptions@std@@YAHXZ
+0xfd67a	?good@ios_base@std@@QEBA_NXZ
+0xfd69a	?flags@ios_base@std@@QEBAHXZ
+0xfd6ba	?width@ios_base@std@@QEBA_JXZ
+0xfd6da	?width@ios_base@std@@QEAA_J_J@Z
+0xfd6fc	?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAAHD@Z
+0xfd73e	?sputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAA_JPEBD_J@Z
+0xfd786	?pbase@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBAPEADXZ
+0xfd7ca	?setp@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAXPEAD0@Z
+0xfd80e	?setp@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAXPEAD00@Z
+0xfd854	?tie@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBAPEAV?$basic_ostream@DU?$char_traits@D@std@@@2@XZ
+0xfd8ba	?fill@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBADXZ
+0xfd8f4	?_Osfx@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAXXZ
+0xfd932	??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@F@Z
+0xfd974	??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@H@Z
+0xfd9b6	?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@XZ
+0xfd9fa	??0?$basic_iostream@DU?$char_traits@D@std@@@std@@QEAA@PEAV?$basic_streambuf@DU?$char_traits@D@std@@@1@@Z
+0xfda66	??1?$basic_iostream@DU?$char_traits@D@std@@@std@@UEAA@XZ
+0xfdaa2	?imbue@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAAXAEBVlocale@2@@Z
+0xfdaf0	?sync@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAAHXZ
+0xfdb30	?setbuf@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAAPEAV12@PEAD_J@Z
+0xfdb7e	?uflow@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAAHXZ
+0xfdbbe	?_Unlock@?$basic_streambuf@DU?$char_traits@D@std@@@std@@UEAAXXZ
+0xfdc00	?_Lock@?$basic_streambuf@DU?$char_traits@D@std@@@std@@UEAAXXZ
+0xfdc40	?cerr@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
+0xfdc7c	_Thrd_id
+0xfdc88	_Mtx_lock
+0xfdc94	_Mtx_unlock
+0xfdca2	_Cnd_wait
+0xfdcae	_Cnd_signal
+0xfdcbc	?_Throw_Cpp_error@std@@YAXH@Z
+0xfdcdc	??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@G@Z
+0xfdd1e	??0?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@PEAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N@Z
+0xfdd8a	??1?$basic_ostream@DU?$char_traits@D@std@@@std@@UEAA@XZ
+0xfddc4	??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@K@Z
+0xfde06	_Mbrtowc
+0xfde12	??0_Locinfo@std@@QEAA@PEBD@Z
+0xfde32	??1_Locinfo@std@@QEAA@XZ
+0xfde4e	?_Getfalse@_Locinfo@std@@QEBAPEBDXZ
+0xfde74	?_Gettrue@_Locinfo@std@@QEBAPEBDXZ
+0xfde9a	?c_str@?$_Yarn@D@std@@QEBAPEBDXZ
+0xfdebe	??0facet@locale@std@@IEAA@_K@Z
+0xfdee0	??1facet@locale@std@@MEAA@XZ
+0xfdf00	?_Init@locale@std@@CAPEAV_Locimp@12@_N@Z
+0xfdf2c	?_Incref@facet@locale@std@@UEAAXXZ
+0xfdf52	?_Decref@facet@locale@std@@UEAAPEAV_Facet_base@3@XZ
+0xfdf88	?id@?$numpunct@D@std@@2V0locale@2@A
+0xfdfae	?id@?$numpunct@_W@std@@2V0locale@2@A
+0xfdfd4	MSVCP140.dll
+0xfdfe4	memcpy
+0xfdfee	__std_exception_copy
+0xfe006	__std_exception_destroy
+0xfe020	_CxxThrowException
+0xfe036	__CxxFrameHandler4
+0xfe04c	memmove
+0xfe056	memset
+0xfe060	_purecall
+0xfe06c	memchr
+0xfe076	memcmp
+0xfe080	__std_terminate
+0xfe092	__RTDynamicCast
+0xfe0a4	strchr
+0xfe0ae	__C_specific_handler
+0xfe0c6	__current_exception
+0xfe0dc	__current_exception_context
+0xfe0fa	__std_type_info_destroy_list
+0xfe118	VCRUNTIME140.dll
+0xfe12a	VCRUNTIME140_1.dll
+0xfe140	calloc
+0xfe14a	wcslen
+0xfe154	_invoke_watson
+0xfe166	rand
+0xfe16e	strlen
+0xfe178	atoi
+0xfe180	strcmp
+0xfe18a	_get_stream_buffer_pointers
+0xfe1a8	fclose
+0xfe1b2	fflush
+0xfe1bc	fgetc
+0xfe1c4	fgetpos
+0xfe1ce	fputc
+0xfe1d6	fread
+0xfe1de	fsetpos
+0xfe1e8	_fseeki64
+0xfe1f4	fwrite
+0xfe1fe	setvbuf
+0xfe208	ungetc
+0xfe212	_lock_file
+0xfe220	_unlock_file
+0xfe236	ceilf
+0xfe23e	strncpy
+0xfe248	fopen
+0xfe250	__stdio_common_vfprintf
+0xfe26a	clock
+0xfe272	__stdio_common_vsprintf
+0xfe28c	atof
+0xfe294	powf
+0xfe29c	_errno
+0xfe2a6	_dsign
+0xfe2b0	free
+0xfe2b8	malloc
+0xfe2c2	abort
+0xfe2ca	__acrt_iob_func
+0xfe2dc	_fileno
+0xfe2e6	_get_osfhandle
+0xfe2f8	_isatty
+0xfe302	localeconv
+0xfe310	_dclass
+0xfe31a	_fdclass
+0xfe326	_ldclass
+0xfe332	fopen_s
+0xfe33c	ferror
+0xfe346	fseek
+0xfe34e	ftell
+0xfe356	__stdio_common_vsnprintf_s
+0xfe374	__stdio_common_vsscanf
+0xfe38e	isalpha
+0xfe398	isspace
+0xfe3a2	isalnum
+0xfe3ac	tolower
+0xfe3b6	strncmp
+0xfe3c0	___lc_codepage_func
+0xfe3d6	_callnewh
+0xfe3e2	terminate
+0xfe3ee	_seh_filter_dll
+0xfe400	_configure_narrow_argv
+0xfe41a	_initialize_narrow_environment
+0xfe43c	_initialize_onexit_table
+0xfe458	_register_onexit_function
+0xfe474	_execute_onexit_table
+0xfe48c	_crt_atexit
+0xfe49a	_crt_at_quick_exit
+0xfe4b0	_cexit
+0xfe4ba	_initterm
+0xfe4c6	_initterm_e
+0xfe4d2	api-ms-win-crt-heap-l1-1-0.dll
+0xfe4f2	api-ms-win-crt-string-l1-1-0.dll
+0xfe514	api-ms-win-crt-runtime-l1-1-0.dll
+0xfe536	api-ms-win-crt-utility-l1-1-0.dll
+0xfe558	api-ms-win-crt-convert-l1-1-0.dll
+0xfe57a	api-ms-win-crt-stdio-l1-1-0.dll
+0xfe59a	api-ms-win-crt-filesystem-l1-1-0.dll
+0xfe5c0	api-ms-win-crt-math-l1-1-0.dll
+0xfe5e0	api-ms-win-crt-time-l1-1-0.dll
+0xfe600	api-ms-win-crt-locale-l1-1-0.dll
+0xfe624	LocalFree
+0xfe630	FormatMessageA
+0xfe642	GetLocaleInfoEx
+0xfe654	SetCurrentDirectoryW
+0xfe66c	GetCurrentDirectoryW
+0xfe684	CreateDirectoryW
+0xfe698	CreateFileW
+0xfe6a6	FindClose
+0xfe6b2	FindFirstFileW
+0xfe6c4	FindFirstFileExW
+0xfe6d8	FindNextFileW
+0xfe6e8	GetDiskFreeSpaceExW
+0xfe6fe	GetFileAttributesW
+0xfe714	GetFileAttributesExW
+0xfe72c	GetFileInformationByHandle
+0xfe74a	GetFinalPathNameByHandleW
+0xfe766	GetFullPathNameW
+0xfe77a	SetFileAttributesW
+0xfe790	SetFileInformationByHandle
+0xfe7ae	SetFileTime
+0xfe7bc	GetTempPathW
+0xfe7cc	AreFileApisANSI
+0xfe7de	CloseHandle
+0xfe7ec	GetLastError
+0xfe7fc	DeviceIoControl
+0xfe80e	GetModuleHandleW
+0xfe822	GetProcAddress
+0xfe834	CreateDirectoryExW
+0xfe84a	CopyFileW
+0xfe856	MoveFileExW
+0xfe864	CreateHardLinkW
+0xfe876	GetFileInformationByHandleEx
+0xfe896	CreateSymbolicLinkW
+0xfe8ac	MultiByteToWideChar
+0xfe8c2	WideCharToMultiByte
+0xfe8d8	ReleaseSRWLockExclusive
+0xfe8f2	AcquireSRWLockExclusive
+0xfe90c	WakeAllConditionVariable
+0xfe928	SleepConditionVariableSRW
+0xfe944	RtlCaptureContext
+0xfe958	RtlLookupFunctionEntry
+0xfe972	RtlVirtualUnwind
+0xfe986	UnhandledExceptionFilter
+0xfe9a2	SetUnhandledExceptionFilter
+0xfe9c0	GetCurrentProcess
+0xfe9d4	TerminateProcess
+0xfe9e8	IsProcessorFeaturePresent
+0xfea04	IsDebuggerPresent
+0xfea18	GetStartupInfoW
+0xfea2a	QueryPerformanceCounter
+0xfea44	GetCurrentProcessId
+0xfea5a	GetCurrentThreadId
+0xfea70	GetSystemTimeAsFileTime
+0xfea8a	DisableThreadLibraryCalls
+0xfeaa6	InitializeSListHead
+0x100060	NOOP
+0x100728	02e77ac
+0x1008e0	.?AVexception@std@@
+0x100908	.?AVbad_array_new_length@std@@
+0x100938	.?AVbad_alloc@std@@
+0x100960	.?AVruntime_error@std@@
+0x100988	.?AVsystem_error@std@@
+0x1009b0	.?AV_System_error@std@@
+0x1009d8	.?AVbad_cast@std@@
+0x100a00	.?AV?$basic_streambuf@DU?$char_traits@D@std@@@std@@
+0x100a50	.?AV?$basic_filebuf@DU?$char_traits@D@std@@@std@@
+0x100a98	.?AVfilesystem_error@filesystem@std@@
+0x100ad0	.?AVbad_variant_access@std@@
+0x100b00	.?AVformat_error@v12@fmt@@
+0x100b30	.?AVerror_category@std@@
+0x100b60	.?AV_Generic_error_category@std@@
+0x100b98	.?AV_System_error_category@std@@
+0x100bd0	.?AVTileCondition@@
+0x100bf8	.?AVNeighbourWallCondition@@
+0x100c28	.?AVPositionIndexCondition@@
+0x100c58	.?AVMaterialTypeCondition@@
+0x100c88	.?AVAnimationFrameCondition@@
+0x100cb8	.?AVBuildingOccupancyCondition@@
+0x100cf0	.?AVNeighbourSameBuildingCondition@@
+0x100d28	.?AVBuildingSpecialCondition@@
+0x100d58	.?AVNeighbourIdenticalCondition@@
+0x100d90	.?AVNeighbourOfTypeCondition@@
+0x100dc0	.?AVNeighbourSameTypeCondition@@
+0x100df8	.?AVFluidBelowCondition@@
+0x100e28	.?AVConditionalNode@@
+0x100e50	.?AVSpriteNode@@
+0x100e78	.?AVRootTile@@
+0x100e98	.?AVSpriteTile@@
+0x100ec0	.?AVRotationTile@@
+0x100ee8	.?AVSpriteElement@@
+0x100f10	.?AV?$basic_ios@DU?$char_traits@D@std@@@std@@
+0x100f50	.?AVios_base@std@@
+0x100f78	.?AV?$_Iosb@H@std@@
+0x100fa0	.?AV?$basic_istream@DU?$char_traits@D@std@@@std@@
+0x100ff0	.?AV?$basic_ifstream@DU?$char_traits@D@std@@@std@@
+0x101040	.?AV?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@
+0x1010a0	.?AV?$basic_ostream@DU?$char_traits@D@std@@@std@@
+0x1010f0	.?AV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@
+0x101150	.?AV?$basic_iostream@DU?$char_traits@D@std@@@std@@
+0x101198	.?AVTiXmlDocument@@
+0x1011c0	.?AVTiXmlNode@@
+0x1011e0	.?AVTiXmlBase@@
+0x101200	.?AVAndConditionalNode@@
+0x101230	.?AVOrConditionalNode@@
+0x101258	.?AVAlwaysCondition@@
+0x101280	.?AVNeverCondition@@
+0x1012a8	.?AVNotConditionalNode@@
+0x1012d8	.?AVHaveFloorCondition@@
+0x101310	.?AV?$basic_ofstream@DU?$char_traits@D@std@@@std@@
+0x101358	.?AVfacet@locale@std@@
+0x101380	.?AV_Facet_base@std@@
+0x1013a8	.?AU_Crt_new_delete@std@@
+0x1013d8	.?AV?$numpunct@D@std@@
+0x101400	.?AV?$numpunct@_W@std@@
+0x101428	.?AV?$format_facet@Vlocale@std@@@v12@fmt@@
+0x101468	.?AVTiXmlElement@@
+0x101490	.?AVTiXmlComment@@
+0x1014b8	.?AVTiXmlUnknown@@
+0x1014e0	.?AVTiXmlAttribute@@
+0x101508	.?AVTiXmlText@@
+0x101528	.?AVTiXmlDeclaration@@
+0x101550	.?AVtype_info@@

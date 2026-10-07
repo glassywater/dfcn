@@ -1,0 +1,150 @@
+Classic DF 53.16 工坊奇异心境文字构造：离线反编译资料
+
+映像：C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+映像标识：PE:6a70b91c:0270a000
+父 render unwind：RVA 0x14ef20..0x1a0154。
+本段：入口 RVA 0x181b90，构造 RVA 0x181beb..0x183619。本文根据机器码恢复控制流与文字生成，
+没有运行游戏、模拟显示、生成运行词表或建立检查项。
+
+1. 入口与声明
+
+若 mood_workshop 临时标记为零，RVA 0x181b9a 跳至普通工坊分支 0x18361e。
+若 building+0x58 的 jobs vector 为空，RVA 0x181bbf 跳过本段。
+job = building.jobs[0]。入口完整字节边界解码保存在 classic-workshop-mood-entry.asm.txt。
+unit = RVA 0xd06ad0(job, 0x13) 的返回值；空值跳过本段。
+actor_text = unit_identity_caption(unit, false)，供应者 RVA 0x132bba0。
+draw("This building has")；换行；draw("been claimed by")；换行；
+draw(actor_text)；draw(".")。
+这些是分次 draw 与光标换行生成的完整公告，不是独立翻译句子的集合。
+
+2. 开工状态
+
+条件：job+0x2c 的 bit 0x4 非零，且 unit+(0xa8,0xaa,0xac) 坐标
+与 building+(0x10,0x1c,0x20) 相同；否则不会显示本组。
+name = display_name(unit)，RVA 0x13e0a00；name+0x72 非零时用
+language_name(name)，RVA 0xa910b0，替换上一段 actor_text 临时缓冲。
+draw(actor_text)，按 unit+0x360 的 signed int16 mood 选择：
+
+  mood 0：works furiously!
+  mood 1：works secretly...
+  mood 2：keeps muttering；另起行输出 language_name(unit+0xa08) + ...
+  mood 3：works, darkly brooding...
+  mood 4：works with menacing fury!
+  其他：只有名称；无工作状态后缀。
+
+3. 缺料状态
+
+仅当上述 job bit 0x4 关闭、job bit 0x8 关闭、坐标相同、mood != 4、
+job+0xc8 的 item requirement vector 非空时进入。
+index = floor(clock()/2000) % vector.size()，因此文本会按原生时间切换。
+requirement = vector[index]：
+  item_type = signed int16 +0；item_subtype = signed int16 +2；
+  mat_type = signed int16 +4；mat_index = int32 +8；flags = uint32 +0x18。
+若 item_type == -1 且 flags & 0x2000000，将 item_type 改为 46。
+material category 参数精确转换：
+  flags & 0x4000 -> 0x1（plant）；flags & 0x8000 -> 0x8（silk）；
+  flags & 0x20000 -> 0x20（bone）；flags & 0x40000 -> 0x40（shell）；
+  flags & 0x80000000 -> 0x1000（yarn）。
+actor 同上先尝试显示名字。draw(actor)；draw(" ")。
+
+  mood 0：actor screams 换行 "I must have {job_item_description}!"
+  mood 1：actor sketches 换行 pictures of {sketch_hint}.
+  mood 2：actor mutters 换行 "{language_name(unit+0xa08)} needs
+          换行 {mutter_hint}..."
+  mood 3：actor broods 换行
+          item_type 为 46 或 47："Leave me.  I need... 换行
+                               things...  certain things."
+          其他类型："Yes.  I need {job_item_description}."
+  其他：只有名称和空格，无要求文字。
+
+job_item_description 两个调用点：RVA 0x182881、0x182a2a；
+供应者 RVA 0xa7fc90..0xa8537c。参数使用同一 requirement 的 item/material
+字段、上述 category bits，count=-1、其余 size/creature 限制为原生常量。
+这不是任意英文句子的单词翻译，必须完整复用共享物品描述解析器。
+
+4. mutter_hint / sketch_hint 的完整生产式
+
+flags & 0x2000000 优先于 item_type 跳表：
+  flags & 0x20000：bones...  yes / skeletons
+  否则 flags & 0x40000：a shell / shells
+  否则：a corpse / death
+
+其他情形按 item_type：
+  0 BAR：bars... metal / shining bars 换行 of metal
+  1 SMALLGEM：gems... shining / cut gems
+  2 BLOCKS：blocks... bricks... / square blocks
+  3 ROUGH：按 mat_type 继续分支：
+    3：raw... green / glass
+    4：raw... clear / glass and burning wood
+    5：raw... crystal / rough gems and glass
+    其他：rough... color / rough gems
+  4 BOULDER：stone... rock / a quarry
+  5 WOOD：tree... life / a forest
+  55 SKIN_TANNED：leather... skin / stacked leather
+  58 CLOTH：cloth... thread / stacked cloth
+  其余全部：空 hint。
+
+空 hint 是确实存在的原生 default：mutter 只输出 ..." 终结，
+sketch 输出 pictures of .，不能凭空补物品名称。
+完整 0..58 和越界 default 项保存在 classic-switch-tables.tsv。
+possessed 压缩表 RVA 0x19fa48，目标表 RVA 0x19fa24；
+secretive 压缩表 RVA 0x19faa8，目标表 RVA 0x19fa84。
+条件 branch 指令保存在 classic-branches.tsv，全部 literal 与调用边分别在
+classic-literals.tsv / classic-calls.tsv。
+
+5. 动态供应者与 RAW 字段
+
+姓名：unit_identity_caption 0x132bba0..0x132c228 涉及真名、当前历史身份、
+昵称、职业和驯养状态。display_name 0x13e0a00..0x13e0a8c 根据历史身份
+返回历史 figure 当前名字或 unit+8；历史身份名指针叶子 0xc37530..0xc3754d。
+language_name 0xa910b0..0xa91751 组合 first_name、nickname 和语言 WORD
+词形；固定标点、空格在源汇编内。unit+0xa08 的名字独立于创建者名字，
+不可把 possessed 的说话者与需求句的主语强制视作同一个名字。
+
+物品：job-item-description 的 93 个 item_type 跳转项与越界 default
+保存在 classic-switch-tables.tsv；完整 literal 和所有直接调用均已提取。
+函数 unwind 范围末尾 0xa85160..0xa8537c 是内嵌 RVA 数据，不是指令：
+  0xa85160..0xa852d4：93 项 item_type 主表；
+  0xa852d4..0xa852f4：8 项污染材质类别表，selector 为 0x1456eb0 返回值，
+    0..7 依次选择 bloody、slimy、vomitous、ichorous、purulent、gooey、dirty、filthy；
+    default 增加明确列出的 laced 材料数量。
+  0xa852f4..0xa85314：8 项 laced 材料过滤表，同一类别供应者；
+    0..7 均跳过条目，default 输出完整材料状态名称并组成 laced with 列表。
+  0xa85314..0xa8537c：26 项 slab engraving kind 表，selector 来自虚槽 +0x718；
+    memorial、各种 imports/shop sign、slab fallback 均保留。
+三张子表的全部 selector 与越界 default 同样保存在 classic-switch-tables.tsv。
+asm 文件以 .long DWORD RVA 保留所有表项，literal/call/branch 目录不从表字节提取。
+除 log/rough/boulder/bar/gem/block/cloth/leather/corpse 等固有名称，还能
+使用 itemdef 的 NAME/NAME_PLURAL/ADJECTIVE/MATERIAL_SIZE 等名称字段，
+以及 CREATURE/CASTE/PLANT 和 material STATE_NAME/STATE_ADJ/PREFIX。
+原始 RAW 字段沿用 data/extracted/item-description-sources.tsv 的
+raw-token 记录与文件来源；该共享目录的旧 root RVAs 不是本映像地址。
+模组、生成物品和存档运行数据的具体名字集合无界，不能伪装成有限句表。
+
+材料：material_name RVA 0x14cc890..0x14ccce9；当 mat_index == -1
+且存在 category bits 时按原生优先级输出 plant、yarn、wood/wooden、cloth、
+silk、bone、leather、shell、soap、ivory/tooth、horn、pearl。
+否则 resolve_material RVA 0x14a8ce0..0x14a8e0f：
+  material type 419..618 -> PLANT material 向量；
+  19..218 / 219..418 -> CREATURE 与历史 figure 材料；
+  type 0 且 index >= 0 -> INORGANIC 的 material；
+  其余受范围控制的 builtin material；缺项采用原生 fallback 指针或空值。
+material_name 对 219..418 可前置历史人物名字 + "'s "；之后复制 material
++0x520 PREFIX，材料 state 名称在 +0xb8 + state*0x20，形容词分支在
++0x178 + state*0x20。不存在可用材料时输出 unknown material。
+另外两个短标签叶子：0x14cc660 优先复制 material+0x60 字符串；
+0x14cc700 根据调用参数选择 material+0x20 / +0x40，处理 +0x40 中的
+NP / STP 原生哨兵并可复用 +0x20；无短标签时回落 material_name。
+它们的 asm 文件沿用 material-uncapitalized-name / material-capitalized-name
+提取标签，但这两个标签不能当作已恢复的 C++ 符号或准确字段语义。
+上述分支有独立汇编文件。
+
+颜色：本工坊心境构造段没有独立 descriptor_color 或 descriptor_pattern
+读取；rough... color 是固定 literal，玻璃色依据 mat_type 的 3/4/5 分支。
+具体材料颜色、名称形容词等属于 RAW 的材料或 itemdef 名称供应者。
+
+6. 资料范围
+
+classic-workshop-mood.asm.txt 保留整个本段；各 helper asm 保留名字、
+物品和材料生产者。资料描述实际 native 控制流与动态数据边界。
+提取资料不是实机显示记录，不能据此声称已观察到游戏内效果。

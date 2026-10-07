@@ -1,0 +1,12 @@
+reason_id	condition	branch_rva	literal_rva	reason	composed_status_label
+1	reason code == 1	0x14eed	0x3ea80	Jobsite is submerged	Suspended because: Jobsite is submerged.
+2	reason code == 2	0x14f38	0x3ea98	Managed by buildingplan	Suspended because: Managed by buildingplan.
+3	reason code == 3	0x14f9b	0x3eab0	May block another build job	Suspended because: May block another build job.
+4	reason code == 4	0x15002	0x3ead0	Waiting for carve/smooth/engrave	Suspended because: Waiting for carve/smooth/engrave.
+5	reason code == 5	0x1504f	0x3eaf8	Blocks another build job	Suspended because: Blocks another build job.
+6	reason code == 6	0x1509e	0x3eb18	Would collapse immediately	Suspended because: Would collapse immediately.
+7	reason code == 7	0x150f8	0x3eb38	Blocked by an unmovable item	Suspended because: Blocked by an unmovable item.
+8	reason code == 8	0x15150	0x3eb58	Would collapse machinery	Suspended because: Would collapse machinery.
+default	reason code outside 1..8	0x1519f	0x3eb78	External reason	Suspended because: External reason.
+no_entry	enabled manager has no suspension entry for job id	0x16d0f	0x3ee00	not suspended by suspendmanager	Suspended because: not suspended by suspendmanager.
+disabled	native plugin is disabled	0x16d75	0x3f200	suspendmanager disabled	Suspended because: suspendmanager disabled.

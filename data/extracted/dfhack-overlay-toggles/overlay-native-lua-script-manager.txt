@@ -1,0 +1,80 @@
+Source: D:\program\steam\steamapps\common\DFHack\hack\lua\script-manager.lua
+
+1: local _ENV = mkmodule('script-manager')
+2: 
+3: local utils = require('utils')
+4: 
+5: ---------------------
+6: -- enabled API
+7: 
+8: -- for each script that can be loaded as a module, calls cb(script_name, env)
+9: function foreach_module_script(cb, preprocess_script_file_fn)
+10:     for _,script_path in ipairs(dfhack.internal.getScriptPaths()) do
+11:         local files = dfhack.filesystem.listdir_recursive(
+12:                                             script_path, nil, false)
+13:         if not files then goto skip_path end
+14:         for _,f in ipairs(files) do
+15:             if f.isdir or not f.path:endswith('.lua') or
+16:                     f.path:startswith('.git') or
+17:                     f.path:startswith('test/') or
+18:                     f.path:startswith('internal/') then
+19:                 goto continue
+20:             end
+21:             if preprocess_script_file_fn then
+22:                 preprocess_script_file_fn(script_path, f.path)
+23:             end
+24:             local script_name = f.path:sub(1, #f.path - 4) -- remove '.lua'
+25:             local ok, script_env = pcall(reqscript, script_name)
+26:             if ok then
+27:                 cb(script_name, script_env)
+28:             end
+29:             ::continue::
+30:         end
+31:         ::skip_path::
+32:     end
+33: end
+34: 
+35: local enabled_map = nil
+36: 
+37: local function process_script(env_name, env)
+38:     local global_name = 'isEnabled'
+
+222:             numeric_version=ol.object_load_order_numeric_version[idx],
+223:             path=path,
+224:             vanilla=path:startswith('data/vanilla/'), -- windows also uses forward slashes
+225:         })
+226:     end
+227: 
+228:     return mods
+229: end
+230: 
+231: function get_mod_script_paths()
+232:     local paths = {}
+233:     for _,v in ipairs(get_mod_paths('scripts_modinstalled', 'scripts_modactive')) do
+234:         table.insert(paths, v.path)
+235:     end
+236:     return paths
+237: end
+238: 
+239: function getModSourcePath(mod_id)
+240:     for _,v in ipairs(get_mod_paths('.')) do
+241:         if v.id == mod_id then
+242:             -- trim off the final '.'
+243:             return v.path:sub(1, #v.path-1)
+244:         end
+245:     end
+246: end
+247: 
+248: function getModStatePath(mod_id)
+249:     local path = (dfhack.getConfigPath() + ('/mods/%s/')):format(mod_id)
+250:     if not dfhack.filesystem.mkdir_recursive(path) then
+251:         error(('failed to create mod state directory: "%s"'):format(path))
+252:     end
+253:     return path
+254: end
+255: 
+256: ---------------------
+257: -- perf API
+258: 
+259: local function format_time(ms)
+260:     return ('%8d ms (%dm %ds)'):format(ms, ms // 60000, (ms % 60000) // 1000)

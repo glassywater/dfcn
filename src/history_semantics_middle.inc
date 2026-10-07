@@ -471,7 +471,7 @@ case 88: { // hf_relationship_denied
     }
     case 48: {
         const auto attacker = polity_subject(number("attacker_civ"));
-        auto defender = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
+        auto defender = government_subject(number("site_civ"));
         const auto site = subject(NativeHistoryObjectKind::Site, number("site"));
         if (!attacker || !defender || !site) return std::nullopt;
         if (number("site_civ") != number("defender_civ")) {
@@ -494,7 +494,7 @@ case 88: { // hf_relationship_denied
             join(result, *appointment);
         }
         if (number("new_site_civ") >= 0) {
-            const auto government = subject(NativeHistoryObjectKind::Entity, number("new_site_civ"));
+            const auto government = government_subject(number("new_site_civ"));
             if (!government || !sentence(apply("The new government was called {p}", {*government})))
                 return std::nullopt;
         }
@@ -624,12 +624,12 @@ case 88: { // hf_relationship_denied
         break;
     }
     case 58: {
-        auto entity = subject(NativeHistoryObjectKind::Entity,
-            number("site_civ") >= 0 ? number("site_civ") : number("civ"));
+        auto entity = number("site_civ") >= 0
+            ? government_subject(number("site_civ")) : polity_subject(number("civ"));
         const auto completed = construction(number("construction"));
         if (!entity || !completed) return std::nullopt;
         if (number("site_civ") >= 0 && number("civ") >= 0) {
-            const auto civilization = subject(NativeHistoryObjectKind::Entity, number("civ"));
+            const auto civilization = polity_subject(number("civ"));
             if (!civilization) return std::nullopt;
             entity = apply("{a} of {a}", {*entity, *civilization});
             if (!entity) return std::nullopt;
@@ -965,7 +965,7 @@ case 80: { // hf_attacked_site
         : polity_subject(number("attacker_civ"));
     if (!attacker) return std::nullopt;
     const auto defending_entity = [&]() -> std::optional<Pieces> {
-        auto defender = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
+        auto defender = government_subject(number("site_civ"));
         if (!defender) return std::nullopt;
         if (number("site_civ") != number("defender_civ")) {
             const auto civilization = polity_subject(number("defender_civ"));
@@ -1044,7 +1044,7 @@ case 80: { // hf_attacked_site
         join(result, *defeat);
         join(result, *takeover);
         if (number("new_site_civ") >= 0) {
-            const auto government = subject(NativeHistoryObjectKind::Entity, number("new_site_civ"));
+            const auto government = government_subject(number("new_site_civ"));
             if (!government) return std::nullopt;
             const auto sentence = apply("The new government was called {p}", {*government});
             const auto stop = apply(".", {});
@@ -1125,7 +1125,7 @@ case 78: { // insurrection_started
     if (!site) return std::nullopt;
     std::optional<Pieces> action;
     if (number("target_civ") >= 0) {
-        const auto government = subject(NativeHistoryObjectKind::Entity, number("target_civ"));
+        const auto government = government_subject(number("target_civ"));
         if (!government) return std::nullopt;
         action = apply("an insurrection against {p} began in {p}", {*government, *site});
     } else action = apply("an insurrection began in {p}", {*site});
@@ -1139,7 +1139,7 @@ case 79: { // insurrection_ended: 0 overthrow, 1 population vanishes, 2 crushed.
     if (outcome < 0 || outcome > 2) return std::nullopt;
     const auto site = subject(NativeHistoryObjectKind::Site, number("site"));
     const auto government = number("target_civ") >= 0
-        ? subject(NativeHistoryObjectKind::Entity, number("target_civ"))
+        ? government_subject(number("target_civ"))
         : apply("the local government", {});
     if (!site || !government) return std::nullopt;
     if (outcome == 2) {

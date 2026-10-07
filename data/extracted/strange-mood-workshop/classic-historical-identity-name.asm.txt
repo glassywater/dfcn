@@ -1,0 +1,7 @@
+# Classic DF 53.16 PE:6a70b91c:0270a000; historical-identity-name; RVA 0xc37530..0xc3754d
+0xc37530: rex push rdi
+0xc37532: mov    r11d,DWORD PTR [rcx+0x88]
+0xc37539: mov    rdi,rcx
+0xc3753c: cmp    r11d,0xffffffff
+0xc37540: je     0x140c375c2
+0xc37546: mov    r10,QWORD PTR [rip+0x18bc6c3]        # 0x1424f3c10

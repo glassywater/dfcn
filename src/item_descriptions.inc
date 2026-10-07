@@ -107,6 +107,8 @@ static bool translation_complete_with_native_nicknames(
     return item_description_translation_complete(remaining);
 }
 
+#include "item_display_results.inc"
+
 // PE 53.16 0x147e82/0x147ec2/0x147efc identifies a named artifact by its
 // complete name followed by " the " and the material/type description from
 // the shared item formatter at 0xc65450. The name can be a
@@ -286,7 +288,7 @@ static std::optional<std::string> translate_complete_item_description_rule(
 std::optional<std::string> Overlay::translate_item_description_term(
         std::string_view raw_source, bool predicate) const {
     const std::string source = normalize_art_utterance(raw_source);
-    const std::string key = std::string(predicate ? "V:" : "T:") + source;
+    const std::string key = item_translation_cache_prefix() + (predicate ? "V:" : "T:") + source;
     if (const auto found = item_description_cache_.find(key);
         found != item_description_cache_.end()) return found->second;
     std::unordered_map<std::string, std::optional<std::string>> memo;
@@ -494,6 +496,7 @@ std::optional<std::string> Overlay::translate_item_description_term(
         return target;
     };
     auto target = translate(translate, source, predicate, 0);
+    if (!item_translation_cache_context_current(key)) return target;
     if (item_description_cache_.size() >= 2048) item_description_cache_.clear();
     item_description_cache_.emplace(key, target);
     return target;
@@ -509,7 +512,7 @@ std::optional<std::string> Overlay::translate_item_description_source(
     // Legends prose, must present an item-specific opening before this grammar
     // may own their paragraph. Generic "It ..." and "The ..." rules are usable
     // only inside an identified item description or its typed inscription.
-    const std::string key = std::string(item_context ? "P:I:" : "P:A:") + source;
+    const std::string key = item_translation_cache_prefix() + (item_context ? "P:I:" : "P:A:") + source;
     if (const auto found = item_description_cache_.find(key);
         found != item_description_cache_.end()) return found->second;
     if (!item_context) {
@@ -554,7 +557,8 @@ std::optional<std::string> Overlay::translate_item_description_source(
         }
         if (!item_opening) {
             if (item_description_cache_.size() >= 2048) item_description_cache_.clear();
-            item_description_cache_.emplace(key, std::nullopt);
+            if (item_translation_cache_context_current(key))
+                item_description_cache_.emplace(key, std::nullopt);
             return std::nullopt;
         }
     }
@@ -579,6 +583,24 @@ std::optional<std::string> Overlay::translate_item_description_source(
         }
     }
     auto sentence = [&](std::string_view value) -> std::optional<std::string> {
+        // art_image::getDescription calls the event's d8 title and then the
+        // collection's 30 title. This wrapper owns a historical event, not
+        // the item grammar's e predicate. Enter the shared typed rule before
+        // trying unrelated item/symbol productions for its dynamic fields.
+        if (value.starts_with("The artwork relates to ")) {
+            for (int index : matching_legends_rules(value)) {
+                const Rule &rule = rules_[static_cast<size_t>(index)];
+                if (rule.source == "The artwork relates to {e}." ||
+                        rule.source == "The artwork relates to ." ||
+                        rule.source == "The artwork relates to during {e}." ||
+                        rule.source == "The artwork relates to during .")
+                    if (auto target = translate_complete_item_description_rule(rule, value,
+                        [&](char kind, std::string_view part) -> std::optional<std::string> {
+                            return kind == 'e' ? translate_legends_event(part) : std::nullopt;
+                        })) return target;
+            }
+            return std::nullopt;
+        }
         // cc23e0 writes the complete memorial into the slab's saved string.
         // Dates, deaths, achievements, family and one selected preference are
         // joined with " / "; a nickname or event can contain those delimiters
@@ -623,7 +645,16 @@ std::optional<std::string> Overlay::translate_item_description_source(
                         // Holder/owner captions keep the profession with the name.
                         if (auto unit = translate_unit_identity(part, true)) return unit;
                         return translate_ui_message_capture(part, true);
-                    case 'p': return translate_legends_name(part, false);
+                    case 'p':
+                        // Only the complete placement/creation productions
+                        // own a site. Symbol owners, commissioners and image
+                        // titles use the same capture letter for other names.
+                        if (rule.source == "This engraving appears on a floor in {p}." ||
+                            rule.source == "This engraving appears on a wall in {p}." ||
+                            rule.source == "This work of art is a {i} and was crafted in {p}." ||
+                            rule.source == "This artwork appears on a {i} and was crafted in {p}.")
+                            return translate_legends_place(part);
+                        return translate_legends_name(part, false);
                     case 'r': return translate_coin_native_identity(part);
                     case 'b':
                         if (auto title = translate_legends_artifact_identity(part);
@@ -662,7 +693,7 @@ std::optional<std::string> Overlay::translate_item_description_source(
                     switch (kind) {
                     case 'a': return translate_legends_participant(part);
                     case 'n': return translate_legends_actor(part);
-                    case 'p': return translate_legends_name(part, false);
+                    case 'p': return translate_legends_place(part);
                     case 's': return translate_legends_term(part);
                     case 'q': return translate_legends_color(part);
                     case 't': return translate_legends_anatomy(part);
@@ -736,17 +767,10 @@ std::optional<std::string> Overlay::translate_item_description_source(
             }
             else {
                 complete = false;
-                // An identified item paragraph keeps each unknown sentence
-                // intact while its supported neighbors remain translated.
-                // Do not expose that sentence to isolated word replacements.
-                // Recursive captures still require a complete Chinese target.
-                if (item_context) {
-                    if (!output.empty()) output.push_back(' ');
-                    output += cp437_to_utf8(std::string(part));
-                    output.push_back(' ');
-                    log_line("WARN", "Item description sentence not translated: " +
-                        cp437_to_utf8(std::string(part)));
-                }
+                // Recursive captures still require a complete typed target.
+                // Display owners retain unknown independent units through
+                // translate_item_description_source_display(). This strict
+                // recursive entry must not present that fallback as a noun.
             }
             begin = sentence_ends[selected];
             boundary = selected + 1;
@@ -755,10 +779,233 @@ std::optional<std::string> Overlay::translate_item_description_source(
         if (item_context && (quoted || !ending.empty()))
             log_line("WARN", "Item description has an incomplete ending: " +
                 cp437_to_utf8(std::string(ending)));
-        if ((complete || item_context) && translated_any && !quoted &&
+        if (complete && translated_any && !quoted &&
             !output.empty() && ending.empty()) target = trim(std::move(output));
     }
-    if (item_description_cache_.size() >= 2048) item_description_cache_.clear();
-    item_description_cache_.emplace(key, target);
+    if (item_translation_cache_context_current(key)) {
+        if (item_description_cache_.size() >= 2048) item_description_cache_.clear();
+        item_description_cache_.emplace(key, target);
+    }
     return target;
+}
+
+TranslationResult Overlay::translate_item_description_term_display(
+        std::string_view raw_source, bool predicate) const {
+    TranslationStateScope state;
+    TranslationWorkScope work;
+    const std::string source = normalize_art_utterance(raw_source);
+    const std::string key = item_translation_cache_prefix() +
+        (predicate ? "term-predicate:" : "term:") + source;
+    if (const auto found = item_description_display_cache_.find(key);
+        found != item_description_display_cache_.end()) return found->second;
+    auto result = preserved_item_field(source, predicate ? "item-predicate" : "item");
+    try {
+        TranslationWorkFrame frame("item display field", source);
+        if (auto target = translate_item_description_term(source, predicate))
+            result = TranslationResult::translated(source, *target, result.kind);
+        else {
+            if (!predicate) {
+                auto complete = translate_item_caption_grammar(source);
+                if (!complete) complete = translate_material_name(source);
+                if (!complete) complete = exact_literal_translation(source);
+                if (complete && item_display_target_valid(*complete)) {
+                    result = TranslationResult::translated(source, *complete, "item");
+                    result.policy = TranslationPolicy::Display;
+                    result.resource_revision = RULESETS.resource_revision();
+                    if (item_description_display_cache_.size() >= 4096) item_description_display_cache_.clear();
+                    if (item_translation_cache_context_current(key) &&
+                        key.size() + item_display_result_bytes(result) <= 65536)
+                        item_description_display_cache_.emplace(key, result);
+                    return result;
+                }
+            }
+            const auto &indices = predicate ? item_description_predicate_rules_ : item_description_term_rules_;
+            for (int index : indices) {
+                const auto &rule = rules_[static_cast<size_t>(index)];
+                auto candidate = translate_item_display_rule(rule, source,
+                    [&](char kind, std::string_view part) -> TranslationResult {
+                        std::optional<std::string> target;
+                        switch (kind) {
+                        case 's': case 'i':
+                            return part.size() < source.size()
+                                ? translate_item_description_term_display(part) : TranslationResult{};
+                        case 'e':
+                            return part.size() < source.size()
+                                ? translate_item_description_term_display(part, true) : TranslationResult{};
+                        case 'q': return translate_item_description_source_display(part, true);
+                        case 'v': return translate_item_color_pattern_display(part);
+                        case 'j': return translate_item_dye_materials_display(part);
+                        case 'm': target = translate_embark_item_material_qualifier(std::string(part), true); break;
+                        case 'a': target = translate_symbol_elements(part); break;
+                        case 'n': target = translate_legends_actor(part); break;
+                        case 'u': target = translate_unit_identity(part, true); break;
+                        case 'p': target = translate_legends_name(part, false); break;
+                        case 'r': target = translate_coin_native_identity(part); break;
+                        case 'b': target = translate_legends_book(part); break;
+                        case 't': target = translate_legends_anatomy(part); break;
+                        case 'd': target = std::string(part); break;
+                        case 'c':
+                            if (auto count = adventure_location_count(lower(std::string(part))))
+                                target = std::to_string(*count);
+                            break;
+                        case 'f': case 'l':
+                            if ((kind == 'l') != is_liquid_food_ingredient(part)) return {};
+                            target = translate_material_name(part);
+                            break;
+                        case 'k':
+                            if (const auto word = procedural_terms_.find(lower(std::string(part)));
+                                word != procedural_terms_.end()) target = word->second;
+                            break;
+                        default: return {};
+                        }
+                        return target && item_display_target_valid(*target)
+                            ? TranslationResult::translated(part, *target, "item-slot") : TranslationResult{};
+                    }, result.kind);
+                if (candidate.usable() && candidate.changed()) { result = std::move(candidate); break; }
+            }
+        }
+    } catch (const TranslationWorkLimit &) {
+        if (!work.owns_budget()) throw;
+        result = preserved_item_field(source, result.kind, TranslationStatus::WorkLimited);
+    }
+    result.policy = TranslationPolicy::Display;
+    result.resource_revision = RULESETS.resource_revision();
+    if (item_description_display_cache_.size() >= 4096) item_description_display_cache_.clear();
+    if (item_translation_cache_context_current(key) &&
+        key.size() + item_display_result_bytes(result) <= 65536)
+        item_description_display_cache_.emplace(key, result);
+    return result;
+}
+
+TranslationResult Overlay::translate_item_description_source_display(
+        std::string_view raw_source, bool item_context) const {
+    TranslationStateScope state;
+    TranslationWorkScope work;
+    const std::string source = normalize_art_utterance(raw_source);
+    if (source.empty()) return {};
+    const std::string key = item_translation_cache_prefix() +
+        (item_context ? "prose-item:" : "prose-anchor:") + source;
+    if (const auto found = item_description_display_cache_.find(key);
+        found != item_description_display_cache_.end()) return found->second;
+    auto result = preserved_item_field(source, "item-prose");
+    size_t committed_source_end = 0;
+    try {
+        TranslationWorkFrame frame("item display prose", source);
+        if (auto target = translate_item_description_source(source, item_context))
+            result = TranslationResult::translated(source, *target, "item-prose");
+        else {
+            const auto anchored = [&](std::string_view value) {
+                for (int index : item_description_sentence_rules_) {
+                    const auto &rule = rules_[static_cast<size_t>(index)];
+                    const std::string_view opening = rule.template_kinds.empty()
+                        ? std::string_view(rule.source) : std::string_view(rule.template_literals.front());
+                    if (opening.size() < 7 || opening == "This is " || opening == "These are " ||
+                        opening == "In memory of " || opening == "Owner: ") continue;
+                    if (template_literal_at(value, 0, opening, rule.case_insensitive)) return true;
+                }
+                return false;
+            };
+            if (!item_context && !anchored(source)) return {};
+            const auto sentence = [&](std::string_view value) -> TranslationResult {
+                if (auto target = translate_item_description_source(value, true))
+                    return TranslationResult::translated(value, *target, "item-sentence");
+                if (auto exact = exact_literal_translation(value); exact && item_display_target_valid(*exact))
+                    return TranslationResult::translated(value, *exact, "item-sentence");
+                for (int index : item_description_sentence_rules_) {
+                    const auto &rule = rules_[static_cast<size_t>(index)];
+                    auto target = translate_item_display_rule(rule, value,
+                        [&](char kind, std::string_view part) -> TranslationResult {
+                            std::optional<std::string> translated;
+                            switch (kind) {
+                            case 's': case 'i': return translate_item_description_term_display(part);
+                            case 'e': return translate_item_description_term_display(part, true);
+                            case 'q': return translate_item_description_source_display(part, true);
+                            case 'v': return translate_item_color_pattern_display(part);
+                            case 'j': return translate_item_dye_materials_display(part);
+                            case 'o': translated = translate_item_craftsmanship(part); break;
+                            case 'm': translated = translate_embark_item_material_qualifier(std::string(part), true); break;
+                            case 'a': translated = translate_symbol_elements(part); break;
+                            case 'n': translated = translate_legends_actor(part); break;
+                            case 'u': translated = translate_unit_identity(part, true); break;
+                            case 'p':
+                                if (rule.source == "This engraving appears on a floor in {p}." ||
+                                    rule.source == "This engraving appears on a wall in {p}." ||
+                                    rule.source == "This work of art is a {i} and was crafted in {p}." ||
+                                    rule.source == "This artwork appears on a {i} and was crafted in {p}.")
+                                    translated = translate_legends_place(part);
+                                else translated = translate_legends_name(part, false);
+                                break;
+                            case 'r': translated = translate_coin_native_identity(part); break;
+                            case 'b': translated = translate_legends_book(part); break;
+                            case 't': translated = translate_legends_anatomy(part); break;
+                            case 'd': translated = std::string(part); break;
+                            case 'c':
+                                if (auto count = adventure_location_count(lower(std::string(part))))
+                                    translated = std::to_string(*count);
+                                break;
+                            case 'k':
+                                if (const auto word = procedural_terms_.find(lower(std::string(part)));
+                                    word != procedural_terms_.end()) translated = word->second;
+                                break;
+                            default: return {};
+                            }
+                            return translated && item_display_target_valid(*translated)
+                                ? TranslationResult::translated(part, *translated, "item-slot") : TranslationResult{};
+                        }, "item-sentence");
+                    if (target.usable() && target.changed()) return target;
+                }
+                return preserved_item_field(value, "item-sentence");
+            };
+            result = sentence(source);
+            // Native nicknames and titles may contain punctuation. Whole-rule
+            // fallback above handles them; paragraph splitting requires a
+            // closed quote state and an independently anchored next sentence.
+            if (!result.changed() && source.find('`') == std::string::npos) {
+                std::vector<size_t> boundaries{0};
+                bool quoted = false;
+                for (size_t at = 0; at + 1 < source.size(); ++at) {
+                    if (source[at] == '"' || source[at] == '\x10' || source[at] == '\x11') quoted = !quoted;
+                    if (quoted || (source[at] != '.' && source[at] != '!' && source[at] != '?') ||
+                        source[at + 1] != ' ') continue;
+                    const auto next = trim_view(std::string_view(source).substr(at + 1));
+                    const auto previous = trim_view(std::string_view(source).substr(
+                        boundaries.back(), at + 1 - boundaries.back()));
+                    // A complete existing production also proves its end,
+                    // even when the following independent sentence is new.
+                    // Unknown text alone never grants punctuation that role.
+                    if (anchored(next) || translate_item_description_source(previous, true))
+                        boundaries.push_back(at + 1);
+                }
+                boundaries.push_back(source.size());
+                if (!quoted && boundaries.size() > 2) {
+                    result = {};
+                    result.source = source;
+                    for (size_t at = 0; at + 1 < boundaries.size(); ++at) {
+                        auto value = std::string_view(source).substr(boundaries[at], boundaries[at + 1] - boundaries[at]);
+                        const auto trimmed = trim_view(value);
+                        const size_t offset = boundaries[at] + static_cast<size_t>(trimmed.data() - value.data());
+                        if (!result.target.empty()) result.append(TranslationResult::translated({}, " ", "item-separator"));
+                        result.append(sentence(trimmed), offset);
+                        committed_source_end = boundaries[at + 1];
+                    }
+                    finish_item_display_result(result, source, "item-prose");
+                }
+            }
+        }
+    } catch (const TranslationWorkLimit &) {
+        if (!work.owns_budget()) throw;
+        if (committed_source_end && committed_source_end < source.size()) {
+            if (!result.target.empty()) result.append(TranslationResult::translated({}, " ", "item-separator"));
+            result.append(preserved_item_field(std::string_view(source).substr(committed_source_end),
+                "item-prose", TranslationStatus::WorkLimited), committed_source_end);
+            finish_item_display_result(result, source, "item-prose");
+        } else result = preserved_item_field(source, "item-prose", TranslationStatus::WorkLimited);
+    }
+    result.policy = TranslationPolicy::Display;
+    result.resource_revision = RULESETS.resource_revision();
+    if (item_description_display_cache_.size() >= 4096) item_description_display_cache_.clear();
+    if (item_translation_cache_context_current(key) &&
+        key.size() + item_display_result_bytes(result) <= 65536)
+        item_description_display_cache_.emplace(key, result);
+    return result;
 }

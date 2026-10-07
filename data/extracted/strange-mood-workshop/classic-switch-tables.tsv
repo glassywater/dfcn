@@ -1,0 +1,260 @@
+producer	item_type	table_rva	table_index	target_rva	production
+possessed	0	0x19fa48	0	0x182ef2	native item-type production
+possessed	1	0x19fa48	1	0x182f35	native item-type production
+possessed	2	0x19fa48	2	0x182f78	native item-type production
+possessed	3	0x19fa48	3	0x182d6f	native item-type production
+possessed	4	0x19fa48	4	0x182eaf	native item-type production
+possessed	5	0x19fa48	5	0x182d2c	native item-type production
+possessed	6	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	7	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	8	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	9	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	10	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	11	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	12	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	13	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	14	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	15	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	16	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	17	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	18	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	19	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	20	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	21	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	22	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	23	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	24	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	25	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	26	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	27	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	28	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	29	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	30	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	31	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	32	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	33	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	34	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	35	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	36	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	37	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	38	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	39	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	40	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	41	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	42	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	43	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	44	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	45	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	46	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	47	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	48	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	49	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	50	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	51	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	52	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	53	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	54	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	55	0x19fa48	6	0x182fb8	native item-type production
+possessed	56	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	57	0x19fa48	8	0x183036	empty hint; closing punctuation only
+possessed	58	0x19fa48	7	0x182ff8	native item-type production
+possessed	<0 or >58	0x19fa48	default	0x183036	empty hint; closing punctuation only
+secretive	0	0x19faa8	0	0x183420	native item-type production
+secretive	1	0x19faa8	1	0x1834cc	native item-type production
+secretive	2	0x19faa8	2	0x18350f	native item-type production
+secretive	3	0x19faa8	3	0x18329d	native item-type production
+secretive	4	0x19faa8	4	0x1833dd	native item-type production
+secretive	5	0x19faa8	5	0x18325a	native item-type production
+secretive	6	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	7	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	8	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	9	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	10	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	11	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	12	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	13	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	14	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	15	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	16	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	17	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	18	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	19	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	20	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	21	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	22	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	23	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	24	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	25	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	26	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	27	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	28	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	29	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	30	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	31	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	32	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	33	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	34	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	35	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	36	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	37	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	38	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	39	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	40	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	41	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	42	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	43	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	44	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	45	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	46	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	47	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	48	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	49	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	50	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	51	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	52	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	53	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	54	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	55	0x19faa8	6	0x18354f	native item-type production
+secretive	56	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	57	0x19faa8	8	0x1835cd	empty hint; closing punctuation only
+secretive	58	0x19faa8	7	0x18358f	native item-type production
+secretive	<0 or >58	0x19faa8	default	0x1835cd	empty hint; closing punctuation only
+job-item-description	0	0xa85160	0	0xa802c9	shared dynamic item noun
+job-item-description	1	0xa85160	1	0xa8045e	shared dynamic item noun
+job-item-description	2	0xa85160	2	0xa80645	shared dynamic item noun
+job-item-description	3	0xa85160	3	0xa7ff91	shared dynamic item noun
+job-item-description	4	0xa85160	4	0xa801f2	shared dynamic item noun
+job-item-description	5	0xa85160	5	0xa7fe65	shared dynamic item noun
+job-item-description	6	0xa85160	6	0xa80700	shared dynamic item noun
+job-item-description	7	0xa85160	7	0xa807b6	shared dynamic item noun
+job-item-description	8	0xa85160	8	0xa835a2	shared dynamic item noun
+job-item-description	9	0xa85160	9	0xa81b01	shared dynamic item noun
+job-item-description	10	0xa85160	10	0xa8114b	shared dynamic item noun
+job-item-description	11	0xa85160	11	0xa81274	shared dynamic item noun
+job-item-description	12	0xa85160	12	0xa817b6	shared dynamic item noun
+job-item-description	13	0xa85160	13	0xa813dc	shared dynamic item noun
+job-item-description	14	0xa85160	14	0xa816e9	shared dynamic item noun
+job-item-description	15	0xa85160	15	0xa81887	shared dynamic item noun
+job-item-description	16	0xa85160	16	0xa818f7	shared dynamic item noun
+job-item-description	17	0xa85160	17	0xa819b1	shared dynamic item noun
+job-item-description	18	0xa85160	18	0xa81a21	shared dynamic item noun
+job-item-description	19	0xa85160	19	0xa81a91	shared dynamic item noun
+job-item-description	20	0xa85160	20	0xa80906	shared dynamic item noun
+job-item-description	21	0xa85160	21	0xa81047	shared dynamic item noun
+job-item-description	22	0xa85160	22	0xa83762	shared dynamic item noun
+job-item-description	23	0xa85160	23	0xa83a82	shared dynamic item noun
+job-item-description	24	0xa85160	24	0xa84604	shared dynamic item noun
+job-item-description	25	0xa85160	25	0xa8473d	shared dynamic item noun
+job-item-description	26	0xa85160	26	0xa84bdb	shared dynamic item noun
+job-item-description	27	0xa85160	27	0xa84b07	shared dynamic item noun
+job-item-description	28	0xa85160	28	0xa84d4b	shared dynamic item noun
+job-item-description	29	0xa85160	29	0xa8491a	shared dynamic item noun
+job-item-description	30	0xa85160	30	0xa80b36	shared dynamic item noun
+job-item-description	31	0xa85160	31	0xa80c80	shared dynamic item noun
+job-item-description	32	0xa85160	32	0xa80ac6	shared dynamic item noun
+job-item-description	33	0xa85160	33	0xa80a56	shared dynamic item noun
+job-item-description	34	0xa85160	34	0xa809e6	shared dynamic item noun
+job-item-description	35	0xa85160	35	0xa80976	shared dynamic item noun
+job-item-description	36	0xa85160	36	0xa81f7c	shared dynamic item noun
+job-item-description	37	0xa85160	37	0xa82dae	shared dynamic item noun
+job-item-description	38	0xa85160	38	0xa83087	shared dynamic item noun
+job-item-description	39	0xa85160	39	0xa82f6a	shared dynamic item noun
+job-item-description	40	0xa85160	40	0xa830f7	shared dynamic item noun
+job-item-description	41	0xa85160	41	0xa83458	shared dynamic item noun
+job-item-description	42	0xa85160	42	0xa834c2	shared dynamic item noun
+job-item-description	43	0xa85160	43	0xa83532	shared dynamic item noun
+job-item-description	44	0xa85160	44	0xa831d1	shared dynamic item noun
+job-item-description	45	0xa85160	45	0xa82d3e	shared dynamic item noun
+job-item-description	46	0xa85160	46	0xa83ab5	shared dynamic item noun
+job-item-description	47	0xa85160	47	0xa83c26	shared dynamic item noun
+job-item-description	48	0xa85160	48	0xa844a7	shared dynamic item noun
+job-item-description	49	0xa85160	49	0xa842fa	shared dynamic item noun
+job-item-description	50	0xa85160	50	0xa83faa	shared dynamic item noun
+job-item-description	51	0xa85160	51	0xa8441f	shared dynamic item noun
+job-item-description	52	0xa85160	52	0xa84472	shared dynamic item noun
+job-item-description	53	0xa85160	53	0xa83db6	shared dynamic item noun
+job-item-description	54	0xa85160	54	0xa83f18	shared dynamic item noun
+job-item-description	55	0xa85160	55	0xa81e63	shared dynamic item noun
+job-item-description	56	0xa85160	56	0xa83e60	shared dynamic item noun
+job-item-description	57	0xa85160	57	0xa81b97	shared dynamic item noun
+job-item-description	58	0xa85160	58	0xa81ce1	shared dynamic item noun
+job-item-description	59	0xa85160	59	0xa81ecf	shared dynamic item noun
+job-item-description	60	0xa85160	60	0xa84e80	shared dynamic item noun
+job-item-description	61	0xa85160	61	0xa80cf0	shared dynamic item noun
+job-item-description	62	0xa85160	62	0xa80fac	shared dynamic item noun
+job-item-description	63	0xa85160	63	0xa8295c	shared dynamic item noun
+job-item-description	64	0xa85160	64	0xa82cc6	shared dynamic item noun
+job-item-description	65	0xa85160	65	0xa82e8e	shared dynamic item noun
+job-item-description	66	0xa85160	66	0xa82e1e	shared dynamic item noun
+job-item-description	67	0xa85160	67	0xa82a4c	shared dynamic item noun
+job-item-description	68	0xa85160	68	0xa82b8d	shared dynamic item noun
+job-item-description	69	0xa85160	69	0xa81fec	shared dynamic item noun
+job-item-description	70	0xa85160	70	0xa827e9	shared dynamic item noun
+job-item-description	71	0xa85160	71	0xa8290a	shared dynamic item noun
+job-item-description	72	0xa85160	72	0xa84495	shared dynamic item noun
+job-item-description	73	0xa85160	73	0xa82047	shared dynamic item noun
+job-item-description	74	0xa85160	74	0xa83167	shared dynamic item noun
+job-item-description	75	0xa85160	75	0xa82047	shared dynamic item noun
+job-item-description	76	0xa85160	76	0xa8006e	shared dynamic item noun
+job-item-description	77	0xa85160	77	0xa82ac4	shared dynamic item noun
+job-item-description	78	0xa85160	78	0xa80826	shared dynamic item noun
+job-item-description	79	0xa85160	79	0xa80896	shared dynamic item noun
+job-item-description	80	0xa85160	80	0xa83682	shared dynamic item noun
+job-item-description	81	0xa85160	81	0xa836f2	shared dynamic item noun
+job-item-description	82	0xa85160	82	0xa80ed2	shared dynamic item noun
+job-item-description	83	0xa85160	83	0xa80f42	shared dynamic item noun
+job-item-description	84	0xa85160	84	0xa83612	shared dynamic item noun
+job-item-description	85	0xa85160	85	0xa80d8b	shared dynamic item noun
+job-item-description	86	0xa85160	86	0xa814b2	shared dynamic item noun
+job-item-description	87	0xa85160	87	0xa837d2	shared dynamic item noun
+job-item-description	88	0xa85160	88	0xa84198	shared dynamic item noun
+job-item-description	89	0xa85160	89	0xa81ee1	shared dynamic item noun
+job-item-description	90	0xa85160	90	0xa81d59	shared dynamic item noun
+job-item-description	91	0xa85160	91	0xa7fefa	shared dynamic item noun
+job-item-description	92	0xa85160	92	0xa829d4	shared dynamic item noun
+job-item-description	<0 or >92	0xa85160	default	0xa85068	generic item fallback
+job-item-liquid-contaminant-category	0	0xa852d4	0	0xa821d5	selector=signed int16 returned by RVA 0x1456eb0 at 0xa821ae; load=0xa821c0; set +0x49 -> bloody 
+job-item-liquid-contaminant-category	1	0xa852d4	1	0xa821e2	selector=signed int16 returned by RVA 0x1456eb0 at 0xa821ae; load=0xa821c0; set +0x44 -> slimy 
+job-item-liquid-contaminant-category	2	0xa852d4	2	0xa821ef	selector=signed int16 returned by RVA 0x1456eb0 at 0xa821ae; load=0xa821c0; set +0x41 -> vomitous 
+job-item-liquid-contaminant-category	3	0xa852d4	3	0xa8238e	selector=signed int16 returned by RVA 0x1456eb0 at 0xa821ae; load=0xa821c0; set +0x48 -> ichorous 
+job-item-liquid-contaminant-category	4	0xa852d4	4	0xa8239e	selector=signed int16 returned by RVA 0x1456eb0 at 0xa821ae; load=0xa821c0; set +0x47 -> purulent 
+job-item-liquid-contaminant-category	5	0xa852d4	5	0xa823ae	selector=signed int16 returned by RVA 0x1456eb0 at 0xa821ae; load=0xa821c0; set +0x46 -> gooey 
+job-item-liquid-contaminant-category	6	0xa852d4	6	0xa823be	selector=signed int16 returned by RVA 0x1456eb0 at 0xa821ae; load=0xa821c0; set +0x42 -> dirty 
+job-item-liquid-contaminant-category	7	0xa852d4	7	0xa823ce	selector=signed int16 returned by RVA 0x1456eb0 at 0xa821ae; load=0xa821c0; set +0x40 -> filthy 
+job-item-liquid-contaminant-category	<0 or >7	0xa852d4	default	0xa823db	selector=signed int16 returned by RVA 0x1456eb0 at 0xa821ae; load=0xa821c0; increment explicit laced-material count; next entry
+job-item-laced-contaminant-category	0	0xa852f4	0	0xa827b5	selector=signed int16 returned by RVA 0x1456eb0 at 0xa826f2; load=0xa82700; skip this classified contaminant; next entry
+job-item-laced-contaminant-category	1	0xa852f4	1	0xa827b5	selector=signed int16 returned by RVA 0x1456eb0 at 0xa826f2; load=0xa82700; skip this classified contaminant; next entry
+job-item-laced-contaminant-category	2	0xa852f4	2	0xa827b5	selector=signed int16 returned by RVA 0x1456eb0 at 0xa826f2; load=0xa82700; skip this classified contaminant; next entry
+job-item-laced-contaminant-category	3	0xa852f4	3	0xa827b5	selector=signed int16 returned by RVA 0x1456eb0 at 0xa826f2; load=0xa82700; skip this classified contaminant; next entry
+job-item-laced-contaminant-category	4	0xa852f4	4	0xa827b5	selector=signed int16 returned by RVA 0x1456eb0 at 0xa826f2; load=0xa82700; skip this classified contaminant; next entry
+job-item-laced-contaminant-category	5	0xa852f4	5	0xa827b5	selector=signed int16 returned by RVA 0x1456eb0 at 0xa826f2; load=0xa82700; skip this classified contaminant; next entry
+job-item-laced-contaminant-category	6	0xa852f4	6	0xa827b5	selector=signed int16 returned by RVA 0x1456eb0 at 0xa826f2; load=0xa82700; skip this classified contaminant; next entry
+job-item-laced-contaminant-category	7	0xa852f4	7	0xa827b5	selector=signed int16 returned by RVA 0x1456eb0 at 0xa826f2; load=0xa82700; skip this classified contaminant; next entry
+job-item-laced-contaminant-category	<0 or >7	0xa852f4	default	0xa8270d	"selector=signed int16 returned by RVA 0x1456eb0 at 0xa826f2; load=0xa82700; append optional "" laced with "", full material-state label, and list separators"
+job-item-slab-engraving-kind	0	0xa85314	0	0xa838d2	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'memorial'
+job-item-slab-engraving-kind	1	0xa85314	1	0xa83a62	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'slab'
+job-item-slab-engraving-kind	2	0xa85314	2	0xa83a62	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'slab'
+job-item-slab-engraving-kind	3	0xa85314	3	0xa83a62	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'slab'
+job-item-slab-engraving-kind	4	0xa85314	4	0xa83a62	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'slab'
+job-item-slab-engraving-kind	5	0xa85314	5	0xa83a62	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'slab'
+job-item-slab-engraving-kind	6	0xa85314	6	0xa83a62	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'slab'
+job-item-slab-engraving-kind	7	0xa85314	7	0xa838e6	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'food imports sign'
+job-item-slab-engraving-kind	8	0xa85314	8	0xa838fa	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'clothing imports sign'
+job-item-slab-engraving-kind	9	0xa85314	9	0xa8390e	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'general imports sign'
+job-item-slab-engraving-kind	10	0xa85314	10	0xa83922	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'cloth shop sign'
+job-item-slab-engraving-kind	11	0xa85314	11	0xa83936	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'leather shop sign'
+job-item-slab-engraving-kind	12	0xa85314	12	0xa8394a	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'woven clothing shop sign'
+job-item-slab-engraving-kind	13	0xa85314	13	0xa8395e	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'leather clothing shop sign'
+job-item-slab-engraving-kind	14	0xa85314	14	0xa83972	"selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; ""bone carver's shop sign"""
+job-item-slab-engraving-kind	15	0xa85314	15	0xa83986	"selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; ""gem cutter's shop sign"""
+job-item-slab-engraving-kind	16	0xa85314	16	0xa8399a	"selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; ""weaponsmith's shop sign"""
+job-item-slab-engraving-kind	17	0xa85314	17	0xa839ae	"selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; ""bowyer's shop sign"""
+job-item-slab-engraving-kind	18	0xa85314	18	0xa839c2	"selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; ""blacksmith's shop sign"""
+job-item-slab-engraving-kind	19	0xa85314	19	0xa839d6	"selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; ""armorsmith's shop sign"""
+job-item-slab-engraving-kind	20	0xa85314	20	0xa839ea	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'metal craft shop sign'
+job-item-slab-engraving-kind	21	0xa85314	21	0xa839fe	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'leather goods shop sign'
+job-item-slab-engraving-kind	22	0xa85314	22	0xa83a12	"selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; ""carpenter's shop sign"""
+job-item-slab-engraving-kind	23	0xa85314	23	0xa83a26	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'stone furniture shop sign'
+job-item-slab-engraving-kind	24	0xa85314	24	0xa83a3a	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'metal furniture shop sign'
+job-item-slab-engraving-kind	25	0xa85314	25	0xa83a4e	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; 'tavern sign'
+job-item-slab-engraving-kind	<0 or >25	0xa85314	default	0xa83a62	selector=signed int16 returned by virtual slot +0x718 at 0xa838ac; load=0xa838c6; slab

@@ -155,9 +155,13 @@ def generate(reference_path, classic_path, objdump, output):
     a,b = PeImage(reference_path),PeImage(classic_path)
     if (a.timestamp,b.timestamp)!=(0x6a70a6d9,0x6a70b91c):
         raise RuntimeError('PE edition sources must be Steam 53.16 and Classic 53.16.')
-    sources = [p for p in (ROOT/'src').iterdir() if p.suffix in ('.h','.inc','.cpp') and 'build_bindings' not in p.name]
+    metadata_sources = {'native_pe_binding.h', 'native_pe_resolver.h', 'native_pe_image.h'}
+    sources = [p for p in (ROOT/'src').iterdir() if p.suffix in ('.h','.inc','.cpp')
+               and 'build_bindings' not in p.name and p.name not in metadata_sources]
     text = '\n'.join(p.read_text(encoding='utf-8') for p in sources)
-    from native_pe_coordinates import collect_required_coordinates, PE_VTABLE_TYPE_ANCHORS
+    from native_pe_coordinates import (
+        collect_required_coordinates, PE_VTABLE_TYPE_ANCHORS, PE_READONLY_LITERAL_ANCHORS,
+    )
     required=collect_required_coordinates(ROOT)
     # A signature can cross several unwind records belonging to one routine.
     # Retaining only its first address loses operand translations in later
@@ -255,6 +259,26 @@ def generate(reference_path, classic_path, objdump, output):
         data.append((start,start+1,target))
     data.extend(vtable_ranges)
     data.extend((va,va+8,b.imports[key]) for key,va in a.imports.items() if key in b.imports)
+    # These two explicitly owned UTF-16 literals carry their own complete
+    # content identities. They require no initializer/code ABI inference and
+    # must occur exactly once in the other edition's immutable PE sections.
+    for reference,content in PE_READONLY_LITERAL_ANCHORS.items():
+        if reference not in required: continue
+        section=a.section(reference)
+        if not section or section[4]&0xa0000000 or a.read(reference,len(content))!=content:
+            raise RuntimeError(f'PE readonly literal source differs at {reference:#x}')
+        targets=[]
+        for start,end,raw,raw_size,flags in b.sections:
+            if flags&0xa0000000: continue
+            region=b.data[raw:raw+raw_size]
+            offset=region.find(content)
+            while offset>=0:
+                if start+offset+len(content)<=end:
+                    targets.append(start+offset)
+                offset=region.find(content,offset+1)
+        if len(targets)!=1:
+            raise RuntimeError(f'PE readonly literal at {reference:#x} has {len(targets)} Classic content anchors')
+        data.append((reference,reference+len(content),targets[0]))
     ranges.extend(data)
     ranges.sort()
     starts=[x for x,y,z in ranges]
@@ -316,6 +340,23 @@ def generate(reference_path, classic_path, objdump, output):
         if not sa or not sb: continue
         if not sa[4]&0x20000000 and not sb[4]&0x20000000:
             extras.append((address,address+1,target))
+    # A unique paired RIP reference establishes a literal's start, but the
+    # owning patch consumes its complete span including the zero terminator.
+    # Extend only exact immutable data: neighboring mutable globals, changed
+    # constants and executable regions never inherit the literal's mapping.
+    for address,length in required.items():
+        if length<=1: continue
+        targets=pairs.get(address,set())
+        target=locate(address)
+        if target is None and len(targets)==1:
+            target=next(iter(targets))
+        if target is None or (targets and targets!={target}): continue
+        sa,sb=a.section(address),b.section(target)
+        if not sa or not sb or (sa[4]|sb[4])&0xa0000000: continue
+        try:
+            if a.read(address,length)!=b.read(target,length): continue
+        except ValueError: continue
+        extras.append((address,address+length,target))
     ranges.extend(extras); ranges.sort()
     # Coalesce consistent overlapping ranges; conflicting coordinates are a
     # real generation failure, never resolved by removing runtime safeguards.

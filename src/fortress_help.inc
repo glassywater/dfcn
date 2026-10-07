@@ -532,3 +532,267 @@ std::optional<std::string> Overlay::translate_help_paragraph(
     }
     return target.empty() ? std::nullopt : std::optional<std::string>(std::move(target));
 }
+
+template <typename Cache>
+static dfcn::TranslationResult cache_native_display_translation(Cache &cache, size_t &bytes,
+        const std::string &key, const std::vector<int> &source_colors,
+        const std::vector<int> &target_colors, dfcn::TranslationResult result) {
+    result.resource_revision = RULESETS.resource_revision();
+    if (result.usable()) {
+        result.consumed = result.source.size();
+        result.policy = dfcn::TranslationPolicy::Display;
+    }
+    if (!key.starts_with(std::to_string(native_identity_translation_context()) + '\x1f')) return result;
+    typename Cache::mapped_type entry{source_colors, target_colors, result};
+    entry.bytes = key.size() + entry.result.source.capacity() + entry.result.target.capacity() +
+        entry.result.origins.capacity() * sizeof(size_t) +
+        entry.result.fragments.capacity() * sizeof(dfcn::TranslationFragment) +
+        (entry.source_colors.capacity() + entry.target_colors.capacity()) * sizeof(int) +
+        sizeof(entry) + 5 * sizeof(void *);
+    constexpr size_t maximum_entries = 1024, maximum_bytes = 8 * 1024 * 1024;
+    if (entry.bytes <= maximum_bytes) {
+        if (const auto previous = cache.find(key); previous != cache.end()) {
+            bytes -= previous->second.bytes;
+            cache.erase(previous);
+        }
+        if (cache.size() >= maximum_entries || bytes > maximum_bytes - entry.bytes) {
+            cache.clear();
+            bytes = 0;
+        }
+        bytes += entry.bytes;
+        cache.emplace(key, std::move(entry));
+    }
+    return result;
+}
+
+dfcn::TranslationResult Overlay::translate_help_paragraph_result(
+        std::string_view raw_source, const std::vector<int> &raw_foregrounds,
+        std::vector<int> &target_foregrounds, bool ui_message, int required_rule) const {
+    target_foregrounds.clear();
+    if (raw_source.empty() || raw_source.size() != raw_foregrounds.size()) return {};
+    refresh_native_display_translation_context();
+    const auto context = native_identity_translation_context();
+    const std::string cache_key = std::to_string(context) + '\x1f' +
+        std::string(ui_message ? "ui-message:" : "help:") +
+        std::to_string(required_rule) + ":" + std::string(raw_source);
+    if (const auto found = native_display_translation_cache_.find(cache_key);
+            found != native_display_translation_cache_.end() &&
+            found->second.result.resource_revision == RULESETS.resource_revision() &&
+            found->second.source_colors == raw_foregrounds) {
+        target_foregrounds = found->second.target_colors;
+        return found->second.result;
+    }
+    const auto publish = [&](dfcn::TranslationResult result) {
+        result.owner = ui_message ? "native-ui-message" : "native-help-document";
+        return cache_native_display_translation(native_display_translation_cache_,
+            native_display_translation_cache_bytes_, cache_key, raw_foregrounds, target_foregrounds,
+            std::move(result));
+    };
+    dfcn::TranslationWorkScope budget;
+    try {
+        if (const auto complete = translate_help_paragraph(raw_source, raw_foregrounds,
+                target_foregrounds, ui_message, required_rule)) {
+            auto result = dfcn::TranslationResult::translated(raw_source, *complete, "help-paragraph");
+            result.owner = ui_message ? "native-ui-message" : "native-help-document";
+            result.resource_revision = RULESETS.resource_revision();
+            return publish(std::move(result));
+        }
+    } catch (const dfcn::TranslationWorkLimit &) {
+        target_foregrounds.clear();
+        auto result = preserve_native_translation(raw_source, "help-paragraph", false,
+            dfcn::TranslationStatus::WorkLimited);
+        for (size_t at = 0; at < result.target.size(); ++at)
+            if ((static_cast<unsigned char>(result.target[at]) & 0xc0) != 0x80)
+                target_foregrounds.push_back(raw_foregrounds[result.origins[at] < raw_source.size() ? result.origins[at] : 0]);
+        return publish(std::move(result));
+    }
+    std::vector<size_t> origins;
+    const auto source = normalize_utterance(raw_source, &origins);
+    if (source.empty() || source.size() != origins.size()) return {};
+    const auto &templates = ui_message ? ui_message_template_rules_ : help_template_rules_;
+    std::optional<dfcn::TranslationResult> best;
+    const Rule *best_rule = nullptr;
+    std::vector<std::pair<size_t, size_t>> best_ranges;
+    size_t best_literals = 0;
+    try {
+        for (int index : templates) {
+            if (required_rule >= 0 && index != required_rule) continue;
+            const Rule &rule = rules_[static_cast<size_t>(index)];
+            if (rule.template_kinds.empty()) continue;
+            translation_work_step();
+            std::vector<std::string> captures;
+            std::vector<std::pair<size_t, size_t>> ranges;
+            if (!match_catalog_template(rule, source, 0, captures, ranges, nullptr, true, true)) continue;
+            // Feed the original field spans to the display compositor. Its
+            // shared origins and authored-name state survive normalization.
+            for (size_t at = 0; at < captures.size(); ++at) {
+                const auto [begin, end] = ranges[at];
+                if (end <= begin || end > origins.size()) continue;
+                captures[at] = raw_source.substr(origins[begin], origins[end - 1] + 1 - origins[begin]);
+            }
+            auto candidate = translate_template_captures_display(rule, captures, raw_source);
+            if (!candidate.usable()) continue;
+            size_t literals = 0;
+            for (const auto &literal : rule.template_literals) literals += literal.size();
+            if (!best || literals > best_literals) {
+                best = std::move(candidate);
+                best_literals = literals;
+                best_rule = &rule;
+                best_ranges.clear();
+                for (const auto &[begin, end] : ranges)
+                    best_ranges.emplace_back(origins[begin], origins[end - 1] + 1);
+            }
+        }
+    } catch (const dfcn::TranslationWorkLimit &) {
+        // A previously ended complete candidate is a usable independent
+        // result; never publish an in-progress capture or generated string.
+        if (!best) best = preserve_native_translation(raw_source, "help-paragraph", false,
+            dfcn::TranslationStatus::WorkLimited);
+    }
+    if (best) {
+        best->source.assign(raw_source);
+        best->owner = ui_message ? "native-ui-message" : "native-help-document";
+        best->resource_revision = RULESETS.resource_revision();
+        for (size_t at = 0; at < best->target.size(); ++at) {
+            if ((static_cast<unsigned char>(best->target[at]) & 0xc0) == 0x80) continue;
+            const size_t origin = at < best->origins.size() ? best->origins[at] : std::string::npos;
+            size_t source_at = origin < raw_source.size() ? origin : 0;
+            if (origin == std::string::npos)
+                for (const auto &fragment : best->fragments)
+                    if (fragment.target_begin <= at && at < fragment.target_end &&
+                            fragment.source_end > fragment.source_begin && fragment.source_begin < raw_source.size()) {
+                        source_at = fragment.source_begin;
+                        break;
+                    }
+            target_foregrounds.push_back(raw_foregrounds[source_at]);
+        }
+        if (best_rule && !best_rule->help_target_palettes.empty() && gps_) {
+            // Keep the same explicit catalog palettes as the strict output
+            // pass. Field fragments supply their output extents even after
+            // template reordering; never recover captures by text searching.
+            std::vector<std::pair<size_t, size_t>> output_ranges(best_ranges.size(),
+                {std::string::npos, 0});
+            for (size_t field = 0; field < best_ranges.size(); ++field)
+                for (const auto &fragment : best->fragments)
+                    if (fragment.source_end > fragment.source_begin &&
+                            fragment.source_begin >= best_ranges[field].first &&
+                            fragment.source_end <= best_ranges[field].second) {
+                        output_ranges[field].first = std::min(output_ranges[field].first, fragment.target_begin);
+                        output_ranges[field].second = std::max(output_ranges[field].second, fragment.target_end);
+                    }
+            size_t output_byte = 0, output_glyph = 0, template_glyph = 0, capture = 0;
+            bool valid = true;
+            for (size_t byte = 0; byte < best_rule->target.size() && valid;) {
+                const int palette = template_glyph < best_rule->help_target_palettes.size()
+                    ? best_rule->help_target_palettes[template_glyph] : -1;
+                size_t output_end = output_byte + 1;
+                if (best_rule->target[byte] == '{') {
+                    const size_t close = best_rule->target.find('}', byte);
+                    if (close == std::string::npos || capture >= best_rule->target_capture_order.size()) break;
+                    const size_t field = best_rule->target_capture_order[capture++];
+                    if (field >= output_ranges.size() || output_ranges[field].first != output_byte) break;
+                    output_end = output_ranges[field].second;
+                    template_glyph += close + 1 - byte;
+                    byte = close + 1;
+                } else {
+                    ++byte;
+                    while (byte < best_rule->target.size() &&
+                            (static_cast<unsigned char>(best_rule->target[byte]) & 0xc0) == 0x80) {
+                        ++byte; ++output_end;
+                    }
+                    ++template_glyph;
+                }
+                if (output_end > best->target.size()) break;
+                for (; output_byte < output_end; ++output_byte) {
+                    if ((static_cast<unsigned char>(best->target[output_byte]) & 0xc0) == 0x80) continue;
+                    if (output_glyph >= target_foregrounds.size()) { valid = false; break; }
+                    if (palette >= 0) target_foregrounds[output_glyph] =
+                        (gps_->uccolor[palette][0] << 16) | (gps_->uccolor[palette][1] << 8) |
+                        gps_->uccolor[palette][2];
+                    ++output_glyph;
+                }
+            }
+        }
+        return publish(std::move(*best));
+    }
+    if (required_rule >= 0) return {};
+    // Catalog sentences themselves prove constructor boundaries. Punctuation
+    // merely bounds candidate starts; quoted names, bracketed keys and an
+    // unknown sentence without a complete catalog neighbor stay intact.
+    const auto &catalog = ui_message ? ui_message_trie_ : help_trie_;
+    struct LiteralSpan { size_t begin, end; int rule; };
+    std::vector<LiteralSpan> literals;
+    bool quoted = false;
+    int brackets = 0, parentheses = 0;
+    for (size_t begin = 0; begin < source.size(); ++begin) {
+        const char ch = source[begin];
+        if (ch == '"' || ch == '`') quoted = !quoted;
+        if (!quoted) {
+            if (ch == '[') ++brackets;
+            else if (ch == ']' && brackets) --brackets;
+            if (ch == '(') ++parentheses;
+            else if (ch == ')' && parentheses) --parentheses;
+        }
+        if (quoted || brackets || parentheses || ch == ' ' || catalog.size() <= 1) continue;
+        const bool beginning = begin == 0 || (begin >= 2 && source[begin - 1] == ' ' &&
+            std::string_view(".!?").find(source[begin - 2]) != std::string_view::npos);
+        if (!beginning) continue;
+        int node = 0;
+        std::optional<LiteralSpan> found;
+        for (size_t end = begin; end < source.size(); ++end) {
+            if (source[end] == ' ') continue;
+            const auto next = catalog[node].next.find(static_cast<unsigned char>(source[end]));
+            if (next == catalog[node].next.end()) break;
+            node = next->second;
+            const int index = catalog[node].rule;
+            if (index < 0 || (end + 1 < source.size() && source[end + 1] != ' ') ||
+                    rules_[static_cast<size_t>(index)].source.empty() ||
+                    std::string_view(".!?").find(rules_[static_cast<size_t>(index)].source.back()) ==
+                        std::string_view::npos) continue;
+            found = LiteralSpan{begin, end + 1, index};
+        }
+        if (found) {
+            literals.push_back(*found);
+            begin = found->end - 1;
+        }
+    }
+    dfcn::TranslationResult result;
+    result.owner = ui_message ? "native-ui-message" : "native-help-document";
+    result.kind = "help-paragraph";
+    size_t cursor = 0;
+    const auto append_preserved = [&](size_t begin, size_t end,
+            dfcn::TranslationStatus status = dfcn::TranslationStatus::Untranslated) {
+        if (end <= begin) return;
+        auto child = preserve_native_translation(raw_source.substr(begin, end - begin), "help-source-span", false, status);
+        result.append(child, begin);
+        for (size_t at = 0; at < child.target.size(); ++at)
+            if ((static_cast<unsigned char>(child.target[at]) & 0xc0) != 0x80)
+                target_foregrounds.push_back(raw_foregrounds[begin +
+                    (child.origins[at] < child.source.size() ? child.origins[at] : 0)]);
+    };
+    bool work_limited = false;
+    for (const auto &literal : literals) {
+        const size_t begin = origins[literal.begin], end = origins[literal.end - 1] + 1;
+        append_preserved(cursor, begin);
+        const auto native = raw_source.substr(begin, end - begin);
+        std::vector<int> colors;
+        const std::vector<int> native_colors(raw_foregrounds.begin() + begin, raw_foregrounds.begin() + end);
+        std::optional<std::string> translated;
+        if (!work_limited) {
+            try { translated = translate_help_paragraph(native, native_colors, colors,
+                ui_message, literal.rule, true); }
+            catch (const dfcn::TranslationWorkLimit &) { work_limited = true; }
+        }
+        if (translated) {
+            result.append(dfcn::TranslationResult::translated(native, *translated, "help-catalog-sentence"), begin);
+            target_foregrounds.insert(target_foregrounds.end(), colors.begin(), colors.end());
+        } else append_preserved(begin, end, work_limited ?
+            dfcn::TranslationStatus::WorkLimited : dfcn::TranslationStatus::Untranslated);
+        cursor = end;
+    }
+    append_preserved(cursor, raw_source.size(), work_limited ?
+        dfcn::TranslationStatus::WorkLimited : dfcn::TranslationStatus::Untranslated);
+    result.source.assign(raw_source);
+    result.resource_revision = RULESETS.resource_revision();
+    return publish(std::move(result));
+}

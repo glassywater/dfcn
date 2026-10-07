@@ -2,6 +2,7 @@ bool Overlay::load_civilization_name_terms() {
     civilization_name_terms_.clear();
     civilization_name_modifiers_.clear();
     civilization_reference_cache_.reset();
+    history_entity_names_.clear();
     std::ifstream input(runtime::data_path() / "civilization-name-terms.tsv",
         std::ios::binary);
     if (!input) {

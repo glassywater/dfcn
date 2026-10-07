@@ -54,18 +54,35 @@ try {
     Add-RuntimeFile (Join-Path $projectRoot 'LICENSE') 'dfcn/LICENSE'
     foreach ($name in @(
         'dfcn_core.dll', 'dfhooks_dfcn.dll', 'data/runtime/config.ini',
+        'data/runtime/native-addresses/pe-seed.bin',
         'data/runtime/translations.tsv', 'data/runtime/name-editor.tsv',
         'data/runtime/instrument-translations.tsv', 'data/runtime/procedural-terms.tsv',
         'data/runtime/procedural-word-senses.tsv', 'data/runtime/adventure-target-translations.tsv',
         'data/runtime/civilization-name-terms.tsv',
+        'data/runtime/site-name-decisions.tsv',
+        'data/runtime/site-name-imagery.tsv',
+        'data/runtime/site-government-parent-suffixes.tsv',
+        'data/runtime/site-government-name-terms.tsv',
+        'data/runtime/site-government-independent-suffixes.tsv',
         'data/runtime/character-name-lexicon.tsv', 'data/runtime/character-name-overrides.tsv',
         'data/runtime/character-surname-lexicon.tsv',
+        'data/runtime/english-pronunciation/britfone.csv',
+        'data/runtime/english-pronunciation/britfone.LICENSE',
+        'data/runtime/english-pronunciation/britfone.README',
+        'data/runtime/english-pronunciation/mfa-english-uk.dict',
+        'data/runtime/english-pronunciation/mfa-english-uk-g2p.fst',
+        'data/runtime/english-pronunciation/mfa-english-uk-g2p-graphemes.sym',
+        'data/runtime/english-pronunciation/mfa-english-uk-g2p-phones.sym',
+        'data/runtime/english-pronunciation/mfa-english-uk-g2p-meta.json',
+        'data/runtime/english-pronunciation/MFA-LICENSE.txt',
+        'data/runtime/english-pronunciation/SOURCE',
         'data/runtime/pinyin-data/pinyin.txt', 'data/runtime/pinyin-data/SOURCE',
         'data/runtime/phrase-pinyin-data/large_pinyin.txt',
         'data/runtime/phrase-pinyin-data/LICENSE', 'data/runtime/phrase-pinyin-data/SOURCE',
         'data/runtime/dfhack-help-translations.tsv', 'data/runtime/dfhack-help-overrides.tsv',
         'data/runtime/dfhack-help-command-overrides.tsv', 'data/runtime/dfhack-output-core.tsv',
-        'data/runtime/dfhack-output-translations.tsv', 'data/runtime/dfhack-output-stonesense.tsv'
+        'data/runtime/dfhack-output-translations.tsv', 'data/runtime/dfhack-output-stonesense.tsv',
+        'data/runtime/dfhack-overlay-plugin-controls.tsv', 'data/runtime/dfhack-overlay-script-controls.tsv'
     )) {
         Add-RuntimeFile (Join-Path $projectRoot $name) ('dfcn/' + $name)
     }
@@ -102,7 +119,9 @@ try {
         'third_party/dfzh-rules-engine.LICENSE', 'third_party/tomlplusplus/LICENSE',
         'third_party/dfhooks.LICENSE', 'data/upstream/licenses/ECDICT.LICENSE',
         'third_party/dfhack-help.LICENSE', 'third_party/lua-output.LICENSE',
-        'third_party/pinyin-data/LICENSE'
+        'third_party/pinyin-data/LICENSE', 'data/runtime/phrase-pinyin-data/LICENSE',
+        'data/runtime/english-pronunciation/britfone.LICENSE',
+        'data/runtime/english-pronunciation/MFA-LICENSE.txt'
     )) {
         [void]$notices.AppendLine()
         [void]$notices.AppendLine('## ' + $relative)

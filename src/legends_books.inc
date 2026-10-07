@@ -106,6 +106,21 @@ std::optional<std::string> Overlay::translate_legends_detail_heading(
         return exact_literal_translation(source);
     if (auto written = resolve_legends_written_heading(source))
         return written->title + "，" + written->item;
+    // Site headings append their type after the native/English identity.
+    // Split that field before the item parser: its whole-term dictionary
+    // also recognizes labels such as Cave, which otherwise turn this
+    // heading into an artifact name and bypass the English site renderer.
+    if (const auto record = split_legends_figure_record(source);
+            record && record->sex.empty() && world_site_type_shape(record->species)) {
+        const std::string pair = std::string(record->native_name) + ", \"" +
+            std::string(record->gloss) + "\"";
+        if (auto name = translate_legends_place(pair)) {
+            auto type = translate_world_site_type(record->species);
+            if (!type) type = exact_literal_translation(record->species);
+            return *name + "，" + type.value_or(native_text_to_utf8(record->species));
+        }
+        return std::nullopt;
+    }
     // Artifact headings share the figure record's delimiters, but their last
     // field is an item, not a species. Use the same complete item grammar as
     // artifact lists and descriptions, including weapons and decorations,

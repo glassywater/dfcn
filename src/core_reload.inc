@@ -79,10 +79,11 @@ static constexpr size_t kHistoryCaptureSubjects = kNativeHistoryNodeSubjects;
 static constexpr size_t kHistoryCaptureFields = kNativeHistoryNodeFields;
 static constexpr size_t kHistoryCaptureFieldValues = kNativeHistoryNodeValues;
 static constexpr size_t kHistoryCaptureString = kNativeHistoryStringLimit;
-// Legacy events start with kind 0..3. Tree version 3 adds owned English WORD
-// forms and entity-name context; older formats restore without those fields.
+// Legacy events start with kind 0..3. V3 adds entity context; V4 retains
+// original-language site names and their independently captured attributes.
 static constexpr uint64_t kHistoryCaptureEventTreeFormatV2 = 0x4446434e48495302ULL;
-static constexpr uint64_t kHistoryCaptureEventTreeFormat = 0x4446434e48495303ULL;
+static constexpr uint64_t kHistoryCaptureEventTreeFormatV3 = 0x4446434e48495303ULL;
+static constexpr uint64_t kHistoryCaptureEventTreeFormat = 0x4446434e48495304ULL;
 // Optional tail: old cores saved no native producer-region registry. The new
 // reader accepts those snapshots and lets native page recovery rebuild it.
 static constexpr uint64_t kHistoryCaptureRegionsFormat = 0x4446434e52454701ULL;
@@ -112,10 +113,15 @@ static void save_history_name(CaptureWriter &out, const NativeHistoryName &name)
     out.string(name.parent_word_id);
     out.signed32(name.parent_word_pos);
     out.number(name.entity_name_current);
+    out.signed32(name.site_id);
+    out.signed32(name.site_type);
+    out.signed32(name.site_subtype);
+    out.string(name.site_label);
+    out.string(name.native_name);
 }
 
 static NativeHistoryName restore_history_name(CaptureReader &in, NativeHistoryTreeBudget &budget,
-        bool has_entity_context) {
+        bool has_entity_context, bool has_site_context) {
     NativeHistoryName name;
     name.has_name = in.count(1) != 0;
     name.language = in.signed32();
@@ -147,7 +153,144 @@ static NativeHistoryName restore_history_name(CaptureReader &in, NativeHistoryTr
                         name.parent_word_pos > 1)))
             throw std::runtime_error("Invalid history entity name context");
     }
+    if (has_site_context) {
+        name.site_id = in.signed32();
+        name.site_type = in.signed32();
+        name.site_subtype = in.signed32();
+        name.site_label = restore_history_string(in, budget, 128);
+        name.native_name = restore_history_string(in, budget);
+        if (name.site_id < -1 || name.site_type < -1 || name.site_subtype < -1 ||
+                (name.site_id >= 0 && name.entity_id >= 0))
+            throw std::runtime_error("Invalid history site name context");
+    }
     return name;
+}
+
+static bool restore_history_site_spelling(uintptr_t base, NativeHistoryName &name) {
+    if (!base || !name.has_name) return false;
+    const bool nickname_only = !name.nickname.empty() && name.nickname_mode == 2;
+    const bool has_words = !nickname_only && std::any_of(name.words.begin(), name.words.end(),
+        [](const auto &word) { return !word.id.empty(); });
+    std::array<std::string, 7> forms;
+    if (has_words) {
+        const uintptr_t world = native_reference_address(base, native_history_layout::world_rva);
+        const auto global = [&](size_t coordinate, size_t width) {
+            return native_history_bound_field(world, native_history_layout::world_fields,
+                std::size(native_history_layout::world_fields), coordinate, width);
+        };
+        uintptr_t world_data = 0;
+        NativeBorrowedVector<uintptr_t> definitions, translations, translated_words;
+        if (!world || name.language < 0 ||
+                !native_history_copy(global(0x11a668, sizeof(world_data)), world_data) || !world_data ||
+                !native_history_read_vector(global(0x11c280, sizeof(definitions)), definitions) ||
+                !native_history_read_vector(global(0x11c2b0, sizeof(translations)), translations))
+            return false;
+        const uintptr_t translation = native_history_vector_at(translations,
+            static_cast<size_t>(name.language));
+        if (!translation || !native_history_read_vector(native_history_object_field(
+                translation, "language_translation", 0x50, sizeof(translated_words)), translated_words))
+            return false;
+        // The old capture owns stable WORD IDs, not indices into today's
+        // name. Resolve those IDs in this world's language tables instead of
+        // replacing a historical name with the current world's renamed site.
+        struct WordIndices {
+            std::array<uintptr_t, 4> stamp{};
+            std::unordered_map<std::string, size_t> values;
+        };
+        auto &indices = reloadable_thread_state<WordIndices, struct HistorySiteWordIndicesTag>();
+        const std::array<uintptr_t, 4> stamp{world_data,
+            reinterpret_cast<uintptr_t>(definitions.begin), reinterpret_cast<uintptr_t>(definitions.end),
+            reinterpret_cast<uintptr_t>(definitions.capacity)};
+        if (indices.stamp != stamp) {
+            indices = {};
+            for (size_t index = 0; index < definitions.size(); ++index) {
+                const uintptr_t definition = native_history_vector_at(definitions, index);
+                std::string id;
+                if (!definition || !native_history_copy_string(definition, id)) return false;
+                if (!id.empty()) {
+                    const auto [found, inserted] = indices.values.emplace(std::move(id), index);
+                    if (!inserted) found->second = SIZE_MAX;
+                }
+            }
+            indices.stamp = stamp;
+        }
+        for (size_t slot = 0; slot < name.words.size(); ++slot) {
+            const auto &word = name.words[slot];
+            if (word.id.empty()) continue;
+            const auto found = indices.values.find(word.id);
+            if (found == indices.values.end() || found->second == SIZE_MAX) return false;
+            const uintptr_t definition = native_history_vector_at(definitions, found->second);
+            const uintptr_t spelling = native_history_vector_at(translated_words, found->second);
+            std::string id;
+            if (!definition || !spelling || !native_history_copy_string(definition, id) ||
+                    id != word.id || !native_history_copy_string(spelling, forms[slot])) return false;
+        }
+    }
+    std::string original;
+    if (!name.nickname.empty() && (name.nickname_mode == 0 || name.nickname_mode == 2))
+        original = "`" + name.nickname + "'";
+    else {
+        original = name.first_name;
+        if (!name.nickname.empty()) {
+            if (!original.empty()) original += ' ';
+            original += "`" + name.nickname + "'";
+        }
+    }
+    const uintptr_t assign = native_history_page_address(NativeHistoryPageSymbol::AssignLiteral);
+    const uintptr_t capitalize = native_history_page_address(NativeHistoryPageSymbol::CapitalizeFirst);
+    if (!assign || !capitalize) return false;
+    const auto append = [&](const std::string &group) {
+        if (group.empty()) return true;
+        NativeHistoryPageString text;
+        reinterpret_cast<void (*)(NativeString *, const char *)>(assign)(&text.value, group.c_str());
+        reinterpret_cast<void (*)(NativeString *)>(capitalize)(&text.value);
+        std::string_view rendered;
+        if (!native_string_view(&text.value, &rendered, kHistoryCaptureString) ||
+                rendered.find('\0') != std::string_view::npos) return false;
+        if (!original.empty()) original += ' ';
+        original.append(rendered);
+        return original.size() <= kHistoryCaptureString;
+    };
+    if (!nickname_only) {
+        if (!append(forms[0] + forms[1])) return false;
+        if (!name.words[2].id.empty() || !name.words[3].id.empty() || !name.words[5].id.empty())
+            if (!append(forms[2] + forms[3] + forms[4] + forms[5])) return false;
+        if (!append(forms[6])) return false;
+    }
+    if (original.empty() || original.size() > kHistoryCaptureString) return false;
+    name.native_name = std::move(original);
+    return true;
+}
+
+static void restore_history_legacy_site_context(NativeHistorySubject &subject,
+        NativeHistoryTreeBudget &budget, bool has_english_forms) {
+    const uintptr_t base = native_history_profile_base();
+    const uintptr_t site = native_history_find_subject(base, NativeHistoryObjectKind::Site, subject.id);
+    NativeHistoryName current;
+    bool same = site && capture_native_history_name(base,
+        native_history_object_field(site, "world_site", 0), current);
+    const auto &saved = subject.name;
+    same = same && current.has_name == saved.has_name && current.language == saved.language &&
+        current.nickname_mode == saved.nickname_mode && current.type == saved.type &&
+        current.first_name == saved.first_name && current.nickname == saved.nickname;
+    for (size_t slot = 0; slot < saved.words.size(); ++slot) {
+        const auto &a = current.words[slot];
+        const auto &b = saved.words[slot];
+        same = same && a.id == b.id && a.part_of_speech == b.part_of_speech &&
+            a.has_form == b.has_form && (!has_english_forms || a.english_form == b.english_form);
+    }
+    NativeHistoryName contextual = saved;
+    if (!(same && capture_native_history_site_name_context(base, site, contextual, true))) {
+        contextual.site_id = subject.id;
+        contextual.site_type = -1;
+        contextual.site_subtype = -1;
+        contextual.site_label = "site";
+        if (!restore_history_site_spelling(base, contextual)) return;
+    }
+    if (!NativeHistoryTreeBudget::take(budget.strings,
+            contextual.site_label.size() + contextual.native_name.size()))
+        throw std::runtime_error("History site name context exceeds capture string budget");
+    subject.name = std::move(contextual);
 }
 
 static void save_history_event_node(CaptureWriter &out, const NativeHistoryEventData &event) {
@@ -207,7 +350,8 @@ static NativeHistoryEventData restore_history_event_node(CaptureReader &in,
         throw std::runtime_error("History capture tree too deep or large");
     NativeHistoryEventData event;
     const uint64_t discriminator = in.number();
-    const bool has_entity_context = discriminator == kHistoryCaptureEventTreeFormat;
+    const bool has_site_context = discriminator == kHistoryCaptureEventTreeFormat;
+    const bool has_entity_context = has_site_context || discriminator == kHistoryCaptureEventTreeFormatV3;
     const bool has_children = has_entity_context || discriminator == kHistoryCaptureEventTreeFormatV2;
     const uint64_t kind = has_children ? in.number() : discriminator;
     if (kind > static_cast<uint8_t>(NativeHistoryEventKind::PackedRelationship))
@@ -271,7 +415,10 @@ static NativeHistoryEventData restore_history_event_node(CaptureReader &in,
         const auto identity = std::tuple{static_cast<uint8_t>(subject.kind), subject.id, subject.subid};
         if (subject.id < -1 || !identities.insert(identity).second)
             throw std::runtime_error("Invalid history subject identity");
-        subject.name = restore_history_name(in, budget, has_entity_context);
+        subject.name = restore_history_name(in, budget, has_entity_context, has_site_context);
+        if (!has_site_context && subject.kind == NativeHistoryObjectKind::Site &&
+                subject.id >= 0 && subject.name.has_name)
+            restore_history_legacy_site_context(subject, budget, has_entity_context);
         // A creature label can include both the original singular race and
         // its native curse suffix, each copied with the normal string bound.
         subject.species = restore_history_string(in, budget, 2 * kHistoryCaptureString + 32);

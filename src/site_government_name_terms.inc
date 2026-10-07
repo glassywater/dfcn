@@ -3,6 +3,7 @@ bool Overlay::load_site_government_name_terms() {
     site_government_name_terms_.clear();
     site_government_independent_suffixes_.clear();
     civilization_reference_cache_.reset();
+    history_entity_names_.clear();
     bool complete = true;
     for (size_t index = 0; index < site_government_catalog_names_.size(); ++index) {
         fs::path path = runtime::data_path() / site_government_catalog_names_[index];

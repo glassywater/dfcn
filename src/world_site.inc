@@ -17,7 +17,7 @@ static bool world_site_typed_heading(std::string_view source) {
 // including retained frames and clipped names, before reading its frame.
 static std::optional<NativeDrawnTextRow> world_site_owned_draw_for_row(
         const graphicst &gps, const NativeTextCardRow &row, int clip_right,
-        bool entity_fact = false) {
+        bool entity_fact = false, bool site_name = false) {
     if (row.x < 0 || row.x >= gps.dimx || row.y < 0 || row.y >= gps.dimy ||
             row.source.empty() || row.source.size() > static_cast<size_t>(gps.dimx - row.x) ||
             clip_right <= row.x) return std::nullopt;
@@ -29,7 +29,7 @@ static std::optional<NativeDrawnTextRow> world_site_owned_draw_for_row(
     const auto &draws = origin.top_layer ? g_native_drawn_top_text_rows : g_native_drawn_text_rows;
     for (auto it = draws.rbegin(); it != draws.rend(); ++it) {
         const auto &draw = *it;
-        if ((entity_fact ? !draw.world_site_entity_fact :
+        if ((site_name ? !draw.site_name : entity_fact ? !draw.world_site_entity_fact :
                 draw.travel_building_field == NativeTravelBuildingField::None) ||
                 draw.x > row.x || draw.x < 0 || draw.top_layer != origin.top_layer ||
                 draw.draw_grid != origin.grid || draw.draw_dimx != gps.dimx ||
@@ -914,6 +914,34 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
         std::optional<std::string> target = !action_control && !artifacts
             ? translate_world_site_entity_fact(source, entity_draw
                 ? &*entity_draw->world_site_entity_fact : nullptr) : std::nullopt;
+        if (!action_control && artifacts &&
+                source != "Artifacts (Rumored)" && source != "Artifacts") {
+            // Rumored treasures include written works. Resolve the complete
+            // title before prose/name ownership can claim its `of` clause or
+            // reject its punctuation, using the same grammar as the item list.
+            if (split_generated_name_identity(source) || split_repeated_title_identity(source))
+                target = translate_legends_artifact_identity(source);
+            if (!target) target = translate_legends_book(source);
+            if (!target) target = translate_legends_item(source);
+        }
+        if (!target && !action_control && !artifacts) {
+            const auto site_draw = world_site_owned_draw_for_row(*gps_, row,
+                card.interior.x + card.interior.w, false, true);
+            if (site_draw) {
+                std::string_view name_source = source;
+                if (site_heading || compact_site_heading) {
+                    const size_t type_begin = compact_site_heading ? source.rfind(", ") + 2
+                        : source.starts_with("The ") ? 4 : 0;
+                    const size_t type_end = compact_site_heading ? source.size()
+                        : lower(source).find(" of ", type_begin);
+                    if (type_end != std::string::npos && type_end > type_begin)
+                        name_source = compact_site_heading
+                            ? std::string_view(source).substr(0, type_begin - 2)
+                            : std::string_view(source).substr(type_end + 4);
+                }
+                target = translate_site_display(*site_draw->site_name, name_source);
+            }
+        }
         // The first heading names the selected landform; subsequent headings
         // name its biome/region or site. Keep its LAND sense scoped to this
         // field, before exact world-name translations can override it. This
@@ -958,29 +986,30 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
                     }
                 } else target = translate_civilization_reference(source);
             }
+            if (!target) {
+                if (const auto record = split_legends_figure_record(source);
+                        record && record->sex.empty() && world_site_type_shape(record->species))
+                    target = translate_legends_place(std::string(record->native_name) +
+                        ", \"" + std::string(record->gloss) + "\"");
+                else if (split_generated_name_identity(source))
+                    target = translate_site_reference(source);
+            }
             if (!target && (split_legends_figure_record(source) ||
                     split_generated_name_identity(source)))
                 target = translate_procedural_fragment(source);
         } else if (!target && (site_heading || compact_site_heading)) {
-            std::string heading = source;
             const size_t type_begin = compact_site_heading ? source.rfind(", ") + 2
                 : source.starts_with("The ") ? 4 : 0;
             const size_t type_end = compact_site_heading ? source.size()
                 : lower(source).find(" of ", type_begin);
             if (type_end != std::string::npos && type_end > type_begin) {
-                // Native headings capitalize EVERY type word, while the
-                // reviewed UI terms use sentence case (Dwarven fortress,
-                // Elven forest retreat). The template's i flag applies to
-                // its literals, not to the captured type. Reuse an existing
-                // complete term before composition, without changing the
-                // spelling of the generated name or global lookup rules.
-                std::string type = lower(source.substr(type_begin, type_end - type_begin));
-                if (type.front() >= 'a' && type.front() <= 'z')
-                    type.front() -= 'a' - 'A';
-                if (exact_literal_translation(type))
-                    heading.replace(type_begin, type_end - type_begin, type);
+                const auto name = compact_site_heading
+                    ? std::string_view(source).substr(0, type_begin - 2)
+                    : std::string_view(source).substr(type_end + 4);
+                target = translate_site_reference(name);
+                if (!target) target = native_text_to_utf8(name);
             }
-            target = translate_legends_text("World site: " + heading, false, false);
+            if (!target) target = native_text_to_utf8(source);
         } else if (!target) {
             target = translate_help_paragraph(complete, foregrounds, target_colors, true);
             if (!target) {
@@ -1226,7 +1255,7 @@ std::optional<std::string> Overlay::translate_world_mission_title(
         } else if (title->starts_with("Rescue ")) {
             target = translate_legends_actor(destination);
         } else {
-            target = translate_legends_name(destination, false);
+            target = translate_legends_place(destination);
             if (!target) target = translate_legends_term(destination, false);
         }
         // An authored/modded target may have no dictionary entry. Preserve
@@ -1946,8 +1975,10 @@ void Overlay::append_world_civilization_officials(const NativeTextCard &details,
         if (!translated(target)) target = translate_unit_profession(source);
         return translated(target) ? target : std::nullopt;
     };
-    const auto office = [&](std::string_view source) -> std::optional<std::string> {
-        std::string target;
+    const auto office_result = [&](std::string_view source) -> dfcn::TranslationResult {
+        dfcn::TranslationResult result;
+        result.kind = "world-office";
+        result.owner = "native-world-official-table";
         for (size_t begin = 0; begin < source.size();) {
             // Native 53.16's office formatter appends ONE '/' byte at
             // 0x1dcd852..0x1dcd861, then the profession: Queen/Carpenter.
@@ -1956,12 +1987,33 @@ void Overlay::append_world_civilization_officials(const NativeTextCard &details,
             const size_t slash = source.find('/', begin);
             const size_t end = slash == std::string_view::npos ? source.size() : slash;
             const auto part = office_part(source.substr(begin, end - begin));
-            if (!translated(part)) return std::nullopt;
-            if (!target.empty()) target += " / ";
-            target += *part;
-            if (slash == std::string_view::npos) return target;
+            const auto raw = source.substr(begin, end - begin);
+            if (trim_view(raw).empty() || trim_view(raw).ends_with("..."))
+                return dfcn::TranslationResult{};
+            if (translated(part)) result.append(dfcn::TranslationResult::translated(raw,
+                *part, "office-component"), begin);
+            else result.append(preserve_native_translation(raw, "office-component"), begin);
+            if (slash == std::string_view::npos) {
+                if (result.has_untranslated() && std::count(source.begin(), source.end(), '/') > 1)
+                    return preserve_native_translation(source, "world-office");
+                result.source.assign(source);
+                result.consumed = source.size();
+                result.resource_revision = RULESETS.resource_revision();
+                return result;
+            }
+            result.append(dfcn::TranslationResult::translated("/", " / ", "office-separator"), slash);
             begin = slash + 1;
         }
+        return dfcn::TranslationResult{};
+    };
+    const auto office = [&](std::string_view source) -> std::optional<std::string> {
+        const auto result = office_result(source);
+        // A bare field still needs vocabulary evidence to anchor a table.
+        // Native columns and an explicit office/profession slash already
+        // prove ownership independently of this translation coverage.
+        if (result.usable() && std::any_of(result.fragments.begin(), result.fragments.end(),
+                [](const auto &fragment) { return fragment.status == dfcn::TranslationStatus::Translated &&
+                    fragment.kind == "office-component"; })) return result.target;
         return std::nullopt;
     };
     const auto &panel = details.interior;
@@ -2006,11 +2058,18 @@ void Overlay::append_world_civilization_officials(const NativeTextCard &details,
                                     int column_left, int column_right, bool is_office) {
                 const int x = row.x + field.start;
                 const std::string source = complete_source(x, row.y, field.text, column_right);
-                auto target = is_office ? office(source) : translate_legends_name(source, true);
-                if (is_office ? !translated(target)
-                        : !translation_complete_with_native_nicknames(target, source)) target.reset();
+                auto result = is_office ? office_result(source) : dfcn::TranslationResult{};
+                auto target = is_office ? (result.usable() ? std::optional<std::string>(result.target) : std::nullopt)
+                    : translate_legends_name(source, true);
+                if (!is_office && !translation_complete_with_native_nicknames(target, source)) target.reset();
+                if (!is_office && target) result = dfcn::TranslationResult::translated(source,
+                    *target, "official-holder");
+                if (!result.usable()) result = preserve_native_translation(source,
+                    is_office ? "world-office" : "official-holder");
+                result.owner = "native-world-official-table";
                 Match match{x, row.y, field.end - field.start, kWorldSiteRowRule,
                     target ? *target : cp437_to_utf8(source), field.text};
+                match.translation_result = std::make_shared<const dfcn::TranslationResult>(std::move(result));
                 match.native_hover_untranslated = !target;
                 if (!target) match.native_help_review_source = source;
                 match.layout_x = column_left;

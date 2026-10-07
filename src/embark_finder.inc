@@ -1,6 +1,7 @@
 // The finder remains a two-column form while its action changes from Begin
 // to Stop and the overview changes from Find embark location to Clear find
-// results. Its current closed frame and repeated controls own the fields.
+// results. The modal can cover those overview captions; its own closed
+// frame, criteria, repeated controls and action button own the fields.
 void Overlay::append_embark_finder_fields(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y,
         const unsigned char *screen_override) const {
@@ -18,8 +19,9 @@ void Overlay::append_embark_finder_fields(std::vector<std::string> &rows,
             return at != std::string::npos && has_word_boundaries(row, at, at + caption.size());
         });
     };
-    if (!has("Choose origin civilization") ||
-            (!has("Find embark location") && !has("Clear find results"))) return;
+    const bool overview = has("Choose origin civilization") &&
+        (has("Find embark location") || has("Clear find results"));
+    if (!overview && !has("Begin") && !has("Stop")) return;
 
     const int pixels = std::max(config_.min_font_pixels,
         static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
@@ -77,7 +79,7 @@ void Overlay::append_embark_finder_fields(std::vector<std::string> &rows,
 
     // These ordinary addst captions can retain stale half-font flags, just
     // like the form. Claim whole buttons before generic word/half readers.
-    for (int y = 0; y < gps_->dimy; ++y)
+    for (int y = 0; overview && y < gps_->dimy; ++y)
         for (const auto &field : split_text_fields(context[y])) {
             if (field.text != "Find embark location" && field.text != "Clear find results" &&
                     field.text != "Reclaim/unretire" &&
@@ -115,8 +117,15 @@ void Overlay::append_embark_finder_fields(std::vector<std::string> &rows,
         }
     }
     struct FinderRow {
-        int y, controls_x;
+        int y, controls_x, subtract_x;
         LogicalTextField label, value;
+    };
+    constexpr std::string_view criteria[] = {
+        "X Dimension", "Y Dimension", "Savagery", "Spirit", "Elevation",
+        "Temperature", "Rain", "Drainage", "Volcanism", "Flux Stone Layer",
+        "Flux stone layers", "Aquifer (Light)", "Aquifer (Heavy)", "River",
+        "Soil", "Clay", "Sand", "Iron", "Gold", "Silver", "Copper",
+        "Nickel", "Zinc", "Platinum", "Tin", "Lead"
     };
     std::set<std::array<int, 4>> visited;
     for (const auto &control : controls) {
@@ -138,32 +147,57 @@ void Overlay::append_embark_finder_fields(std::vector<std::string> &rows,
                 field.start += panel->x;
                 field.end += panel->x;
             }
-            fields.push_back({row.y, row.add_x, std::move(line[0]), std::move(line[1])});
+            fields.push_back({row.y, row.add_x, row.subtract_x,
+                std::move(line[0]), std::move(line[1])});
         }
         for (const auto &anchor : fields) {
             int count = 0, previous_y = -2;
-            const int label_x = anchor.label.start;
+            int label_x = anchor.label.start, label_end = anchor.label.end;
             int value_x = anchor.value.start;
+            int last_field_y = panel->y;
+            std::set<std::string> seen_criteria;
             const auto aligned = [&](const FinderRow &row) {
-                return row.controls_x == anchor.controls_x && row.label.start == label_x &&
-                    std::abs(row.value.start - anchor.value.start) <= 2;
+                return row.controls_x == anchor.controls_x &&
+                    row.subtract_x == anchor.subtract_x;
             };
             for (const auto &row : fields) {
                 if (!aligned(row)) continue;
+                label_x = std::min(label_x, row.label.start);
+                label_end = std::max(label_end, row.label.end);
                 value_x = std::min(value_x, row.value.start);
+                last_field_y = std::max(last_field_y, row.y);
+                if (std::find(std::begin(criteria), std::end(criteria), row.label.text) !=
+                        std::end(criteria)) seen_criteria.insert(row.label.text);
                 if (row.y > previous_y + 1) ++count;
                 previous_y = row.y;
             }
-            if (count < 3 || value_x <= label_x + 2 ||
+            if (count < 3 || seen_criteria.size() < 3 || label_end > value_x - 2 ||
                     anchor.controls_x <= value_x + 1) continue;
-            int last_field_y = panel->y;
+            // A bare Begin/Stop elsewhere on the screen is only a cheap
+            // prefilter. The action must be a native button in this form,
+            // below its own criteria, before any source bytes are claimed.
+            bool action = false;
+            for (int y = last_field_y + 1; y < panel->y + panel->h && !action; ++y)
+                for (auto field : split_text_fields(context[y].substr(panel->x, panel->w))) {
+                    if (field.text != "Begin" && field.text != "Stop") continue;
+                    field.start += panel->x;
+                    field.end += panel->x;
+                    const auto button = native_button_text_rect(*gps_, field.start, field.end, y);
+                    if (button && button->x >= panel->x &&
+                            button->x + button->w <= panel->x + panel->w &&
+                            button->y >= panel->y &&
+                            button->y + button->h <= panel->y + panel->h) action = true;
+                }
+            if (!action) continue;
+            // English captions can have different native starts and values
+            // can change width. Use shared column slots, retaining each
+            // field's actual source span for suppression and ownership.
             for (const auto &row : fields) {
                 if (!aligned(row)) continue;
                 append(row.label, row.y, label_x, value_x - 2,
                     translate_field(row.label, false));
                 append(row.value, row.y, value_x, row.controls_x - 1,
                     translate_field(row.value, true, row.label.text));
-                last_field_y = std::max(last_field_y, row.y);
             }
             for (int y = last_field_y + 1; y < panel->y + panel->h; ++y) {
                 const auto footer = split_text_fields(context[y].substr(panel->x, panel->w));

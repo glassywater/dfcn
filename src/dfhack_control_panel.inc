@@ -339,3 +339,8 @@
         panel_caption("Reset to default", footer_y, left + 15, right);
     }
 }
+
+// Current producer fields carry the parent widget identity even when another
+// DFHack window covers its title or tabs. They supersede the grid fallback
+// above only in the allocations actually owned by those fields.
+#include "dfhack_control_panel_fields.inc"

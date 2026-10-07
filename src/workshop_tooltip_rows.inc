@@ -73,22 +73,28 @@ void Overlay::append_workshop_recipe_card(const NativeTextCard &card,
             break;
         }
     }
-    const auto translate = [&](std::string_view source) -> std::optional<std::string> {
+    const auto translate = [&](std::string_view source) -> TranslationResult {
         // Recipe constraints must pass through the typed noun grammar before
         // the tooltip catalog's legacy literal fallback. Historical complete
         // phrases can omit a capability or keep a redundant body-part noun.
-        if (auto recipe = translate_workshop_recipe_source(source)) return recipe;
-        if (auto prose = translate_toolbar_tooltip(source, true); !prose.empty()) return prose;
-        return std::nullopt;
+        if (auto recipe = translate_workshop_recipe_source(source))
+            return TranslationResult::translated(source, *recipe, "recipe");
+        auto prose = translate_toolbar_tooltip_result(source, true);
+        if (prose.strict_target()) return prose;
+        auto recipe = translate_workshop_recipe_source_display(source);
+        if (recipe.usable() && recipe.changed()) return recipe;
+        return prose.usable() && prose.changed() ? prose : recipe;
     };
     for (size_t begin = 0; begin < logical.size();) {
         const auto &first = card.rows[logical[begin].first];
         size_t end = begin + 1;
         std::string source = first.source;
-        std::optional<std::string> target;
+        TranslationResult translation;
         bool native_boundary = false;
         if (heading(source)) {
-            target = exact_literal_translation(source);
+            const auto exact = exact_literal_translation(source);
+            translation = exact ? TranslationResult::translated(source, *exact, "recipe-heading")
+                : preserved_item_field(source, "recipe-heading");
         } else {
             // A capture is accepted only when every native wrap row is still
             // visible in this closed card, including the end of the field.
@@ -98,7 +104,7 @@ void Overlay::append_workshop_recipe_card(const NativeTextCard &card,
                 if (next == SIZE_MAX || (native_boundary && next <= end)) continue;
                 end = next;
                 source = capture->source;
-                target = translate(source);
+                translation = translate(source);
                 native_boundary = true;
             }
             if (!native_boundary) {
@@ -118,7 +124,7 @@ void Overlay::append_workshop_recipe_card(const NativeTextCard &card,
                 }
                 source = std::move(candidate);
                 end = next;
-                target = translate(source);
+                translation = translate(source);
             }
         }
         std::vector<Match> spans;
@@ -131,16 +137,17 @@ void Overlay::append_workshop_recipe_card(const NativeTextCard &card,
         }
         const size_t output_begin = matches.size();
         const int left = card.interior.x + (heading(first.source) ? 0 : 1);
-        const bool rendered = target && !target->empty() && append_bounded_paragraph(
-            spans, *target, rows, matches, only_y, right, right, {}, false, left);
+        const bool rendered = translation.usable() && translation.changed() &&
+            !translation.target.empty() && append_bounded_paragraph(
+                spans, translation.target, rows, matches, only_y, right, right, {}, false, left);
         if (!rendered) {
             // Keep the whole original field together if a new mod introduces
             // unknown prose. Its complete source enters the review queue;
             // generic word substitution must not make a mixed-language card.
             for (auto &span : spans) {
                 span.target = native_text_to_utf8(span.source);
-                span.native_hover_untranslated = true;
-                span.native_help_review_source = source;
+                span.native_hover_untranslated = translation.has_untranslated();
+                if (translation.has_untranslated()) span.native_help_review_source = source;
                 span.layout_x = left;
                 span.layout_length = right - left;
                 span.layout_clip_right = right;
@@ -148,6 +155,7 @@ void Overlay::append_workshop_recipe_card(const NativeTextCard &card,
                 if (only_y < 0 || only_y == span.y) matches.push_back(std::move(span));
             }
         }
+        if (translation.usable()) attach_item_display_result(matches, output_begin, translation);
         for (size_t index = output_begin; index < matches.size(); ++index) {
             auto &match = matches[index];
             // Expanded Chinese rows keep their measured pixel baselines.

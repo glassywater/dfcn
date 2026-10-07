@@ -1,7 +1,6 @@
-// A map hover is ONE native widget. Its live frame, not a known
-// terrain word or the coverage of a dictionary entry, owns every text row.
-// Translation remains in the shared phrase/matching machinery; this layer
-// only captures the widget and composes its translated/native inline runs.
+// Native map records and rendered documents establish source ownership.
+// Their live frame bounds the text, but the shared rectangle skin alone
+// cannot turn an arbitrary interface panel into a map text card.
 static size_t map_hover_conflict_identity_offset(std::string_view source) {
     // A conflict indicator and the unit caption can be separate native draws
     // on one hover row. Only the game's finite conflict labels own this split.
@@ -13,6 +12,177 @@ static size_t map_hover_conflict_identity_offset(std::string_view source) {
     }
     return 0;
 }
+
+static std::optional<NativeDrawnTextRow> native_map_hover_card_draw_for_row(
+        const graphicst &gps, const Match &row, int right) {
+    if (auto drawn = native_map_hover_draw_for_row(gps, row, right)) return drawn;
+    const size_t identity_at = map_hover_conflict_identity_offset(row.source);
+    if (!identity_at || row.x < 0 || row.y < 0 || row.y >= gps.dimy ||
+            row.x >= gps.dimx || row.source.size() > static_cast<size_t>(gps.dimx - row.x))
+        return std::nullopt;
+    Match identity{row.x + static_cast<int>(identity_at), row.y,
+        static_cast<int>(row.source.size() - identity_at), kMapHoverPhraseRule, {},
+        row.source.substr(identity_at)};
+    auto drawn = native_map_hover_draw_for_row(gps, identity, right);
+    if (!drawn || drawn->map_hover.kind != NativeMapHoverKind::Unit) return std::nullopt;
+    // The finite conflict indicator is a separate colored native draw. Its
+    // current bytes accompany this actual formatter-owned unit identity.
+    for (size_t byte = 0; byte < identity_at; ++byte) {
+        const size_t at = (static_cast<size_t>(row.x) + byte) * gps.dimy + row.y;
+        const auto *grid = native_ui_top_layer_at(gps, at) ? gps.screen_top : gps.screen;
+        if (!grid || (grid[at * 8] ? grid[at * 8] : ' ') !=
+                static_cast<unsigned char>(row.source[byte])) return std::nullopt;
+    }
+    const auto prefix = row.source.substr(0, identity_at);
+    drawn->x = row.x;
+    drawn->source.insert(0, prefix);
+    if (!drawn->complete_source.empty()) drawn->complete_source.insert(0, prefix);
+    return drawn;
+}
+
+// A shared frame skin cannot grant prose ownership. Keep only the actual
+// producer's row address and text, then prove its current draw independently
+// of vocabulary, translation coverage or a retained capture's epoch.
+class NativeMapCardSources {
+    struct Draw {
+        int x = 0, y = 0, dimx = 0, dimy = 0;
+        std::string source;
+        uintptr_t address = 0;
+        const unsigned char *grid = nullptr;
+        bool top_layer = false;
+        std::optional<SDL_Rect> clip;
+        bool document_owned = false;
+    };
+    const graphicst &gps_;
+    bool ready_ = false;
+    std::array<std::vector<Draw>, 2> draws_;
+
+    void prepare() {
+        if (ready_) return;
+        ready_ = true;
+        {
+            std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+            const std::array batches{&g_native_drawn_text_rows, &g_native_drawn_top_text_rows};
+            for (size_t layer = 0; layer < batches.size(); ++layer)
+                for (const auto &draw : *batches[layer]) {
+                    if (!draw.address || draw.source.empty() || !draw.draw_grid ||
+                            draw.draw_dimx != gps_.dimx || draw.draw_dimy != gps_.dimy)
+                        continue;
+                    draws_[layer].push_back({draw.x, draw.y, draw.draw_dimx, draw.draw_dimy,
+                        draw.source, draw.address, draw.draw_grid, draw.top_layer, draw.draw_clip});
+                }
+        }
+        {
+            std::lock_guard<std::mutex> lock(g_native_paragraph_mutex);
+            for (auto &batch : draws_)
+                for (auto &draw : batch) {
+                    const NativeParagraphRowKey key{draw.address,
+                        std::hash<std::string_view>{}(draw.source)};
+                    const auto found = g_native_paragraph_row_index.find(key);
+                    if (found == g_native_paragraph_row_index.end()) continue;
+                    for (const auto *capture : found->second) {
+                        const size_t count = std::min(capture->row_addresses.size(),
+                            capture->wrapped_lines.size());
+                        for (size_t line = 0; line < count; ++line)
+                            if (capture->row_addresses[line] == draw.address &&
+                                    capture->wrapped_lines[line] == draw.source) {
+                                draw.document_owned = true;
+                                break;
+                            }
+                        if (draw.document_owned) break;
+                    }
+                }
+        }
+        const auto own_announcement = [&](const auto &paragraphs) {
+            std::unordered_multimap<uintptr_t, std::string_view> sources;
+            for (const auto &paragraph : paragraphs)
+                for (const auto &row : paragraph.rows)
+                    if (row.address && !row.source.empty()) sources.emplace(row.address, row.source);
+            for (auto &batch : draws_)
+                for (auto &draw : batch) {
+                    if (draw.document_owned) continue;
+                    const auto [first, last] = sources.equal_range(draw.address);
+                    for (auto at = first; at != last; ++at)
+                        if (at->second == draw.source) {
+                            draw.document_owned = true;
+                            break;
+                        }
+                }
+        };
+        own_announcement(native_adventure_announcement_paragraphs());
+        own_announcement(native_announcement_log_paragraphs());
+        bool current = false, previous_current = false;
+        std::vector<NativeKnowledgeDraw> previous;
+        const auto rich = captured_native_knowledge_draws(&current, &previous, &previous_current);
+        const auto own_rich = [&](const auto &rows) {
+            for (const auto &row : rows) {
+                if (!row.document || row.line < 0 || row.dimx != gps_.dimx ||
+                        row.dimy != gps_.dimy || row.screen == 0) continue;
+                const size_t line = static_cast<size_t>(row.line);
+                const auto &document = *row.document;
+                if (line >= document.rows.size() || line >= document.row_addresses.size() ||
+                        !document.row_addresses[line]) continue;
+                const auto &source = document.rows[line];
+                if (row.x < row.clip[0] || row.x > row.clip[1] ||
+                        row.y < row.clip[2] || row.y > row.clip[3]) continue;
+                for (auto &draw : draws_[0])
+                    if (!draw.top_layer && draw.x == row.x && draw.y == row.y &&
+                            reinterpret_cast<uintptr_t>(draw.grid) == row.screen &&
+                            draw.address == document.row_addresses[line] && draw.source == source)
+                        draw.document_owned = true;
+            }
+        };
+        own_rich(rich);
+        own_rich(previous);
+    }
+
+public:
+    explicit NativeMapCardSources(const graphicst &gps) : gps_(gps) {}
+
+    bool owns_document_row(const Match &row, int right) {
+        if (row.x < 0 || row.x >= gps_.dimx || row.y < 0 || row.y >= gps_.dimy ||
+                row.source.empty() || right <= row.x || right > gps_.dimx ||
+                row.source.size() > static_cast<size_t>(right - row.x)) return false;
+        prepare();
+        const size_t first = static_cast<size_t>(row.x) * gps_.dimy + row.y;
+        const bool read_top = native_ui_top_layer_at(gps_, first);
+        const auto *grid = read_top ? gps_.screen_top : gps_.screen;
+        if (!grid) return false;
+        const auto origin = native_text_grid_origin(gps_, first, read_top);
+        const auto &batch = draws_[origin.top_layer ? 1 : 0];
+        for (auto at = batch.rbegin(); at != batch.rend(); ++at) {
+            const auto &draw = *at;
+            if (!draw.document_owned || draw.x < 0 || draw.x > row.x || draw.y != row.y ||
+                    draw.top_layer != origin.top_layer || draw.grid != origin.grid) continue;
+            if (draw.clip && (row.x < draw.clip->x || row.y < draw.clip->y ||
+                    int64_t(row.x) + static_cast<int64_t>(row.source.size()) >
+                        int64_t(draw.clip->x) + draw.clip->w ||
+                    int64_t(row.y) >= int64_t(draw.clip->y) + draw.clip->h)) continue;
+            const size_t offset = static_cast<size_t>(row.x - draw.x);
+            if (offset > draw.source.size() || std::any_of(draw.source.begin(),
+                    draw.source.begin() + offset, [](unsigned char ch) { return ch != ' '; }))
+                continue;
+            const auto visible = trim_view(std::string_view(draw.source).substr(
+                offset, static_cast<size_t>(right - row.x)));
+            if (visible != row.source) continue;
+            bool intact = true;
+            for (size_t byte = 0; byte < row.source.size(); ++byte) {
+                const size_t cell = (static_cast<size_t>(row.x) + byte) * gps_.dimy + row.y;
+                const bool top = native_ui_top_layer_at(gps_, cell);
+                const auto byte_origin = native_text_grid_origin(gps_, cell, top);
+                if (top != read_top || byte_origin.grid != origin.grid ||
+                        byte_origin.top_layer != origin.top_layer ||
+                        (grid[cell * 8] ? grid[cell * 8] : ' ') !=
+                            static_cast<unsigned char>(row.source[byte])) {
+                    intact = false;
+                    break;
+                }
+            }
+            if (intact) return true;
+        }
+        return false;
+    }
+};
 
 std::optional<NativeTextCard> Overlay::capture_map_hover_card(
         std::vector<std::string> &rows, const unsigned char *screen_override) const {
@@ -82,21 +252,8 @@ std::optional<NativeTextCard> Overlay::capture_map_hover_card(
     if (!fortress) {
         std::vector<std::string> context;
         context.reserve(gps_->dimy);
-        for (int y = 0; y < gps_->dimy; ++y) {
+        for (int y = 0; y < gps_->dimy; ++y)
             context.push_back(current_row(y));
-            // These interactive screens can leave the map HUD visible. Their
-            // own complete-row/document handlers retain layout and hit targets.
-            // Arena's environment picker also uses the hover frame skin, but
-            // its weather, temperature and time columns are independent fields.
-            for (std::string_view title : {"What do you want to do?", "What would you like to do?",
-                    "Set the weather, temperature, and time.",
-                    "Select memorized content or a form of prose.",
-                    "Choose a poetic form for the composition.",
-                    "Choose a dance form for the choreography.",
-                    "Choose a musical form for the composition.",
-                    "Interactive tutorial", "Information and guides"})
-                if (context.back().find(title) != std::string::npos) return std::nullopt;
-        }
         tooltip = find_toolbar_tooltip(context);
     }
 
@@ -143,6 +300,7 @@ std::optional<NativeTextCard> Overlay::capture_map_hover_card(
     const int last_top = fortress ? std::max(header_y + 5, 7)
         : arena ? gps_->dimy - 3 : adventure_footer - 3;
     const int bottom_limit = gps_->dimy;
+    NativeMapCardSources sources(*gps_);
     for (int top = first_top; top <= last_top && top + 2 < bottom_limit; ++top) {
         for (int left = 0; left + 2 < gps_->dimx; ++left) {
             const bool closed_fortress = fortress && floating_border(left, top, 0);
@@ -314,6 +472,26 @@ std::optional<NativeTextCard> Overlay::capture_map_hover_card(
                 }
             }
             if (!closed) continue;
+            // Many unrelated tabs, empty lists and dialogs share this skin.
+            // Require a producer-owned source for EVERY nonblank content row
+            // before selecting the frame or restoring any semantic claims.
+            // A map draw keeps unknown/modded text owned; actual paragraph
+            // row identities preserve speech, announcements and wrapped prose.
+            // Ordinary addst captions never grant whole-panel ownership.
+            bool owned_ink = false;
+            for (int y = candidate.y; closed && y < bottom; ++y) {
+                const auto native = current_row(y);
+                const auto band = std::string_view(native).substr(candidate.x, candidate.w);
+                const auto ink = trim_view(band);
+                if (ink.empty()) continue;
+                const int x = candidate.x + static_cast<int>(ink.data() - band.data());
+                const Match row{x, y, static_cast<int>(ink.size()),
+                    kMapHoverPhraseRule, {}, std::string(ink)};
+                closed = native_map_hover_card_draw_for_row(*gps_, row, right).has_value() ||
+                    sources.owns_document_row(row, right);
+                owned_ink = true;
+            }
+            if (!closed || !owned_ink) continue;
             if (!interior || candidate.w * candidate.h < interior->w * interior->h)
                 interior = candidate;
         }
@@ -333,10 +511,9 @@ std::optional<NativeTextCard> Overlay::capture_map_hover_card(
             const auto *cell = screen_override
                 ? screen_override + (static_cast<size_t>(x) * gps_->dimy + y) * 8
                 : active;
-            // The native frame establishes current logical text ownership,
-            // even when its graphical background obscures a few final-grid
-            // cells. A raw-layer suppression pass may own only matching bytes
-            // from that layer, never the inactive map or an older popup.
+            // Producer identities established this card before row recovery.
+            // A raw-layer suppression pass may own only matching bytes from
+            // that layer, never the inactive map or an older popup.
             const unsigned char ch = cell && active && cell[0] == active[0] ? cell[0] : 0;
             source[column] = ch ? ch : ' ';
             if (active) colors[column] = (active[1] << 16) | (active[2] << 8) | active[3];
@@ -355,24 +532,8 @@ std::optional<NativeTextCard> Overlay::capture_map_hover_card(
         const std::string visible = source.substr(first, end - first);
         const Match physical{first_x, y, static_cast<int>(visible.size()),
             kMapHoverPhraseRule, {}, visible};
-        auto map_drawn = native_map_hover_draw_for_row(*gps_, physical, edge_x);
+        auto map_drawn = native_map_hover_card_draw_for_row(*gps_, physical, edge_x);
         const size_t conflict_identity_at = map_hover_conflict_identity_offset(visible);
-        if (!map_drawn && conflict_identity_at) {
-            const Match identity{first_x + static_cast<int>(conflict_identity_at), y,
-                static_cast<int>(visible.size() - conflict_identity_at),
-                kMapHoverPhraseRule, {}, visible.substr(conflict_identity_at)};
-            auto unit_draw = native_map_hover_draw_for_row(*gps_, identity, edge_x);
-            if (unit_draw && unit_draw->map_hover.kind == NativeMapHoverKind::Unit) {
-                // Keep the exact formatter-owned identity and its unclipped
-                // source, while the physical row also owns the colored level.
-                const std::string prefix = visible.substr(0, conflict_identity_at);
-                unit_draw->x = first_x;
-                unit_draw->source.insert(0, prefix);
-                if (!unit_draw->complete_source.empty())
-                    unit_draw->complete_source.insert(0, prefix);
-                map_drawn = std::move(unit_draw);
-            }
-        }
         const auto drawn = map_drawn ? std::optional<std::string>(map_drawn->source)
             : native_drawn_text_for_row(physical, edge_x);
         auto drawn_source = drawn ? std::string_view(*drawn) : std::string_view{};
@@ -849,6 +1010,7 @@ void Overlay::append_map_hover_phrases(const NativeTextCard &card,
             first.source.starts_with("Engraved on the floor is ") ||
             first.source.starts_with("Engraved is ");
         std::string source, best_target;
+        TranslationResult best_translation;
         std::vector<int> colors, best_colors;
         std::vector<Match> spans, best_spans;
         size_t best_end = begin;
@@ -875,19 +1037,25 @@ void Overlay::append_map_hover_phrases(const NativeTextCard &card,
             if (sentence_source.empty() || std::string_view(".!?").find(sentence_source.back()) ==
                     std::string_view::npos) continue;
             std::vector<int> target_colors;
-            const auto target = engraving ? translate_item_description_source(source, true)
+            TranslationResult translation;
+            if (engraving) translation = translate_item_description_source_display(source, true);
+            const auto target = engraving
+                ? (translation.usable() ? std::optional<std::string>(translation.target) : std::nullopt)
                 : translate_help_paragraph(source, colors, target_colors, true);
             if (!target || target->empty()) continue;
             best_target = *target;
+            best_translation = std::move(translation);
             best_colors = std::move(target_colors);
             best_spans = spans;
             best_end = end;
         }
         // An engraving owns the whole connected description; an unfinished
         // historical tail must not be reinterpreted as independent hover nouns.
+        const size_t first_match = matches.size();
         if ((engraving && best_spans.size() != spans.size()) || best_spans.empty() ||
                 !append_bounded_paragraph(std::move(best_spans),
                 best_target, rows, matches, only_y, right, right, best_colors)) continue;
+        if (best_translation.usable()) attach_item_display_result(matches, first_match, best_translation);
         for (size_t end = begin; end <= best_end; ++end)
             paragraph_rows.insert(card.rows[end].y);
         begin = best_end;

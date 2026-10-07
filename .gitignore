@@ -3,6 +3,7 @@
 /data/runtime/untranslated.tsv
 /data/runtime/native-pe-images.json
 /data/runtime/native-elf-images.json
+/data/runtime/native-addresses/cache/
 /data/extracted/dumps/
 /data/extracted/capture-first-match.bmp
 *.log

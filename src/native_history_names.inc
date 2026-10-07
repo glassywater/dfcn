@@ -381,6 +381,66 @@ static bool capture_native_history_name(uintptr_t base, uintptr_t address,
     return true;
 }
 
+static bool native_history_site_type(uintptr_t site, NativeHistoryEventData &out,
+    const std::string &prefix);
+
+static bool capture_native_history_site_name_context(uintptr_t base, uintptr_t site,
+        NativeHistoryName &name, bool identity_validated = false) {
+    int32_t id = -1;
+    if (!base || !site || !native_history_copy(native_history_object_field(
+            site, "world_site", 0x88, sizeof(id)), id) || id < 0 ||
+            (!identity_validated &&
+                native_history_find_subject(base, NativeHistoryObjectKind::Site, id) != site))
+        return false;
+
+    // Written references, Legends introductions and name localization share
+    // the original site's formatter decision, including city/depth flags and
+    // every lair/castle/monument subtype. No name type or spelling selects it.
+    NativeHistoryEventData classified;
+    if (!native_history_site_type(site, classified, "site")) return false;
+    const auto type = classified.fields.find("site.site_type");
+    const auto subtype = classified.fields.find("site.site_subtype");
+    const auto label = classified.texts.find("site.label");
+    if (type == classified.fields.end() || type->second.size() != 1 ||
+            subtype == classified.fields.end() || subtype->second.size() != 1 ||
+            label == classified.texts.end()) return false;
+
+    std::string original;
+    if (name.has_name) {
+        // Use the same OriginalName routine as native page/list producers.
+        // Its complete language-specific output is the fallback identity;
+        // English WORD forms cannot supply the site's native pronunciation.
+#ifdef _WIN32
+        const uintptr_t formatter = native_reference_address(base, 0xa94030);
+        const uintptr_t destroy = native_reference_address(base, 0x6f850);
+        if (!formatter || !destroy) return false;
+        struct Temporary {
+            NativeString value = native_empty_string();
+            uintptr_t destroy;
+            ~Temporary() { reinterpret_cast<void (*)(NativeString *)>(destroy)(&value); }
+        } output{native_empty_string(), destroy};
+#else
+        const uintptr_t formatter = native_reference_address(base, 0x12bfe90 - 0x400000);
+        if (!formatter) return false;
+        struct Temporary { NativeString value = native_empty_string(); } output;
+#endif
+        const uintptr_t name_address = native_history_object_field(site, "world_site", 0);
+        if (!name_address) return false;
+        reinterpret_cast<void (*)(const void *, NativeString *)>(formatter)(
+            reinterpret_cast<const void *>(name_address), &output.value);
+        std::string_view rendered;
+        if (!native_string_view(&output.value, &rendered, kNativeHistoryStringLimit) ||
+                rendered.find('\0') != std::string_view::npos) return false;
+        original.assign(rendered);
+    }
+    name.site_id = id;
+    name.site_type = type->second.front();
+    name.site_subtype = subtype->second.front();
+    name.site_label = label->second;
+    name.native_name = std::move(original);
+    return true;
+}
+
 static int32_t native_history_event_entity_parent(
     const NativeHistoryEventData &event, int32_t entity_id);
 
@@ -553,8 +613,21 @@ static int32_t native_history_event_entity_parent(
     const auto pair = [&](std::string_view local_key, std::string_view parent_key) {
         const int32_t local = number(local_key), candidate = number(parent_key);
         if (local != entity_id) return;
+        // Some attack records repeat the local government in the umbrella
+        // field. That supplies no external parent; it must not discard the
+        // affiliation already established by dated records for this entity.
+        if (candidate < 0 || candidate == local) {
+            // A takeover can use one ID for both its old and new government.
+            // Without two agreeing external parents those roles stay unknown.
+            if ((event.native_type == 48 || event.native_type == 50) &&
+                    number("site_civ") == entity_id &&
+                    number("new_site_civ") == entity_id) {
+                paired = true;
+                conflicting = true;
+            }
+            return;
+        }
         paired = true;
-        if (candidate < 0 || candidate == local) { conflicting = true; return; }
         if (parent >= 0 && parent != candidate) conflicting = true;
         parent = candidate;
     };
@@ -563,6 +636,10 @@ static int32_t native_history_event_entity_parent(
     case 23: // reclaim_site
     case 25: // site_died
     case 26: // site_retired
+    case 30: // created_building
+    case 31: // replaced_building
+    case 58: // created_world_construction
+    case 122: // entity_breach_feature_layer
         pair("site_civ", "civ");
         break;
     case 0: // war_attacked_site
@@ -580,6 +657,9 @@ static int32_t native_history_event_entity_parent(
         pair("site_civ", "defender_civ");
         pair("new_site_civ", "attacker_civ");
         break;
+    case 104: // hf_freed
+        pair("site_civ", "holding_civ");
+        break;
     default:
         // Shared field spellings alone do not establish a historical parent.
         break;
@@ -589,7 +669,8 @@ static int32_t native_history_event_entity_parent(
 }
 
 static bool capture_native_history_species(uintptr_t base, uintptr_t figure,
-        std::string &result) {
+        std::string &result, std::string *curse_suffix = nullptr) {
+    if (curse_suffix) curse_suffix->clear();
     // RVA b93391..b93472: HF race/caste -> creature/caste singular raw name.
     int16_t race = -1, caste = -1;
     if (!native_history_copy(figure + 2, race) ||
@@ -639,23 +720,36 @@ static bool capture_native_history_species(uintptr_t base, uintptr_t figure,
     if (named_curse) {
         std::string suffix;
         if (!native_history_copy_string(curse + 0x90, suffix)) return false;
+        if (curse_suffix) *curse_suffix = suffix;
         if (!suffix.empty()) species += " " + suffix;
     }
     result = prefix + species;
     return true;
 }
 
+static std::optional<std::string> native_history_figure_curse_suffix(
+        int32_t id, std::string_view species) {
+    // Retained snapshots from an earlier core may predate the separate title
+    // field. Recover its boundary only if the native typed identity still
+    // reproduces that snapshot exactly; a later form must not rewrite history.
+    const uintptr_t base = native_history_profile_base();
+    const uintptr_t figure = native_history_find_subject(base, NativeHistoryObjectKind::Figure, id);
+    std::string current, suffix;
+    if (!figure || !capture_native_history_species(base, figure, current, &suffix) ||
+            current != species || suffix.empty()) return std::nullopt;
+    return suffix;
+}
+
 // Defined by the item adapter after these shared native name primitives.
 static bool capture_native_history_artifact_subject(uintptr_t base, uintptr_t artifact,
         NativeHistorySubject &subject);
 
-static bool populate_native_history_subjects(NativeHistoryEventData &event, bool current = false) {
+static bool populate_native_history_subjects(NativeHistoryEventData &event, bool = false) {
     const uintptr_t base = native_history_profile_base();
     if (!base) return false;
     bool complete = true;
-    // Relationship pages can store dates in separate fields. Missing event
-    // dates do not prove a current context; callers must identify it explicitly.
-    const bool current_entities = current;
+    // Native entity references always read historical_entity.name. Keep its
+    // complete current identity separate from the event's dated relations.
     auto append = [&](NativeHistoryObjectKind kind, int32_t id) {
         if (id < 0) return;
         if (std::any_of(event.subjects.begin(), event.subjects.end(),
@@ -684,6 +778,7 @@ static bool populate_native_history_subjects(NativeHistoryEventData &event, bool
         default: complete = false; return;
         }
         NativeHistorySubject subject;
+        std::string curse_suffix;
         subject.kind = kind;
         subject.id = id;
         if (kind == NativeHistoryObjectKind::Underground) {
@@ -703,11 +798,13 @@ static bool populate_native_history_subjects(NativeHistoryEventData &event, bool
             return;
         }
         if (!capture_native_history_name(base, object + name_offset, subject.name) ||
+            (kind == NativeHistoryObjectKind::Site &&
+                !capture_native_history_site_name_context(base, object, subject.name, true)) ||
             (kind == NativeHistoryObjectKind::Entity &&
                 !capture_native_history_entity_name_context(base, object, subject.name,
-                    current_entities, current_entities ? nullptr : &event, true)) ||
+                    true, nullptr, true)) ||
             (kind == NativeHistoryObjectKind::Figure &&
-                !capture_native_history_species(base, object, subject.species)) ||
+                !capture_native_history_species(base, object, subject.species, &curse_suffix)) ||
             (kind == NativeHistoryObjectKind::Artifact &&
                 !capture_native_history_artifact_subject(base, object, subject)
             )) {
@@ -716,6 +813,10 @@ static bool populate_native_history_subjects(NativeHistoryEventData &event, bool
         }
         if (kind == NativeHistoryObjectKind::Entity)
             subject.native_type = subject.name.entity_type;
+        else if (kind == NativeHistoryObjectKind::Site)
+            subject.native_type = subject.name.site_type;
+        if (!curse_suffix.empty())
+            event.texts["figure.curse_suffix." + std::to_string(id)] = std::move(curse_suffix);
         event.subjects.push_back(std::move(subject));
     };
     append(NativeHistoryObjectKind::Figure, event.actor_id);

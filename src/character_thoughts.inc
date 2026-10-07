@@ -23,12 +23,37 @@ static bool is_character_thought_entry_start(std::string_view source) {
     return false;
 }
 
+static bool is_character_thought_constructor_start(std::string_view source) {
+    source = trim_view(source);
+    for (const std::string_view subject : {"He ", "She ", "It "}) {
+        if (!source.starts_with(subject)) continue;
+        source.remove_prefix(subject.size());
+        // Native subject-bearing emotions use these finite predicate leaves.
+        // A pronoun inside an unknown title is insufficient on its own.
+        for (const std::string_view predicate : {"is ", "was ", "feels ", "felt ",
+                "didn't feel ", "doesn't feel ", "grieves ", "grieved ",
+                "rages ", "raged ", "panics ", "panicked "})
+            if (source.starts_with(predicate)) return true;
+        return false;
+    }
+    return is_character_thought_entry_start(source);
+}
+
 static size_t character_thought_sentence_end(std::string_view source, size_t begin) {
-    for (size_t stop = source.find(". ", begin); stop != std::string_view::npos;
-         stop = source.find(". ", stop + 2)) {
-        const auto next = trim_view(source.substr(stop + 2));
-        if (is_character_thought_entry_start(next))
-            return stop + 1;
+    char quote = 0;
+    int brackets = 0, parentheses = 0;
+    for (size_t stop = begin; stop + 1 < source.size(); ++stop) {
+        const char ch = source[stop];
+        if (!quote && (ch == '"' || ch == '`')) quote = ch;
+        else if ((quote == '"' && ch == '"') || (quote == '`' && (ch == '\'' || ch == '`'))) quote = 0;
+        else if (!quote) {
+            if (ch == '[') ++brackets;
+            else if (ch == ']' && brackets) --brackets;
+            if (ch == '(') ++parentheses;
+            else if (ch == ')' && parentheses) --parentheses;
+        }
+        if (!quote && !brackets && !parentheses && ch == '.' && source[stop + 1] == ' ' &&
+                is_character_thought_constructor_start(source.substr(stop + 2))) return stop + 1;
     }
     return source.size();
 }
@@ -36,7 +61,32 @@ static size_t character_thought_sentence_end(std::string_view source, size_t beg
 std::optional<std::string> Overlay::translate_character_thought_paragraph(
         std::string_view source, std::vector<size_t> *origins) const {
     if (origins) origins->clear();
-    if (!config_.compositional_rules) return std::nullopt;
+    auto result = translate_character_thought_paragraph_result(source);
+    if (!result.usable() || std::none_of(result.fragments.begin(), result.fragments.end(),
+            [](const auto &fragment) { return fragment.status == dfcn::TranslationStatus::Translated &&
+                fragment.kind != "thought-separator"; })) return std::nullopt;
+    if (origins) *origins = std::move(result.origins);
+    return result.target;
+}
+
+dfcn::TranslationResult Overlay::translate_character_thought_paragraph_result(
+        std::string_view source) const {
+    refresh_native_display_translation_context();
+    const auto context = native_identity_translation_context();
+    const std::string cache_key = std::to_string(context) + '\x1f' +
+        "thoughts:" + std::string(source);
+    if (const auto found = native_display_translation_cache_.find(cache_key);
+            found != native_display_translation_cache_.end() &&
+            found->second.result.resource_revision == RULESETS.resource_revision())
+        return found->second.result;
+    const auto publish = [&](dfcn::TranslationResult result) {
+        result.owner = "native-character-thoughts";
+        return cache_native_display_translation(native_display_translation_cache_,
+            native_display_translation_cache_bytes_, cache_key, {}, {}, std::move(result));
+    };
+    dfcn::TranslationWorkScope budget;
+    if (!config_.compositional_rules)
+        return publish(preserve_native_translation(source, "thought-paragraph"));
     std::vector<size_t> normalized_origins;
     const auto normalized = normalize_utterance(source, &normalized_origins);
     std::string utf8;
@@ -46,31 +96,68 @@ std::optional<std::string> Overlay::translate_character_thought_paragraph(
         utf8 += glyph;
         utf8_origins.insert(utf8_origins.end(), glyph.size(), normalized_origins[i]);
     }
-    std::string target;
-    std::vector<size_t> result_origins;
+    dfcn::TranslationResult result;
+    result.owner = "native-character-thoughts";
+    result.kind = "thought-paragraph";
+    result.resource_revision = RULESETS.resource_revision();
+    bool work_limited = false;
+    // A whole psychology production can retain cross-entry context. Keep
+    // it ahead of independently composed entries when it is fully resolved.
+    try {
+        std::vector<size_t> whole_origins;
+        const auto whole = RULESETS.translate_with_origins(utf8, "::psychology", whole_origins);
+        if (whole && whole->size() == whole_origins.size() &&
+                std::all_of(whole_origins.begin(), whole_origins.end(),
+                    [&](size_t origin) { return origin < utf8_origins.size(); })) {
+            for (auto &origin : whole_origins) origin = utf8_origins[origin];
+            auto whole_result = dfcn::TranslationResult::translated(source, *whole,
+                "thought-paragraph", std::move(whole_origins));
+            whole_result.owner = result.owner;
+            whole_result.resource_revision = result.resource_revision;
+            return publish(std::move(whole_result));
+        }
+    } catch (const dfcn::TranslationWorkLimit &) { work_limited = true; }
     for (size_t begin = 0; begin < utf8.size();) {
         while (begin < utf8.size() && utf8[begin] == ' ') ++begin;
         if (begin == utf8.size()) break;
-        const size_t end = character_thought_sentence_end(utf8, begin);
+        size_t end = utf8.size();
+        if (!work_limited) {
+            try { end = character_thought_sentence_end(utf8, begin); }
+            catch (const dfcn::TranslationWorkLimit &) { work_limited = true; }
+        }
+        const size_t source_begin = utf8_origins[begin];
+        const size_t source_end = utf8_origins[end - 1] + 1;
+        const auto raw_sentence = source.substr(source_begin, source_end - source_begin);
         std::vector<size_t> sentence_origins;
         // The shared psychology entry also accepts memory headings and
         // subjectless recollections, not just He/She/It thought sentences.
         // Retain semantic origins through that dispatch for native colors.
-        const auto sentence = RULESETS.translate_with_origins(
-            utf8.substr(begin, end - begin), "::psychology", sentence_origins);
-        if (!sentence || sentence->size() != sentence_origins.size()) return std::nullopt;
-        if (!target.empty()) {
-            target.push_back('\n');
-            result_origins.push_back(utf8_origins[begin]);
+        std::optional<std::string> sentence;
+        if (!work_limited) {
+            try {
+                sentence = RULESETS.translate_with_origins(
+                    utf8.substr(begin, end - begin), "::psychology", sentence_origins);
+            } catch (const dfcn::TranslationWorkLimit &) { work_limited = true; }
         }
-        target += *sentence;
-        for (size_t origin : sentence_origins) {
-            if (origin >= end - begin) return std::nullopt;
-            result_origins.push_back(utf8_origins[begin + origin]);
+        if (!result.target.empty()) {
+            auto separator = dfcn::TranslationResult::translated("", "\n", "thought-separator",
+                std::vector<size_t>{0});
+            result.append(separator, source_begin);
         }
+        const bool valid = sentence && sentence->size() == sentence_origins.size() &&
+            std::all_of(sentence_origins.begin(), sentence_origins.end(),
+                [&](size_t origin) { return origin < end - begin; });
+        if (valid) {
+            for (auto &origin : sentence_origins)
+                origin = utf8_origins[begin + origin] - source_begin;
+            result.append(dfcn::TranslationResult::translated(raw_sentence, *sentence,
+                "thought-entry", std::move(sentence_origins)), source_begin);
+        } else result.append(preserve_native_translation(raw_sentence, "thought-entry", false,
+            work_limited ? dfcn::TranslationStatus::WorkLimited : dfcn::TranslationStatus::Untranslated),
+            source_begin);
         begin = end;
     }
-    if (target.empty()) return std::nullopt;
-    if (origins) *origins = std::move(result_origins);
-    return target;
+    if (!result.usable()) result = preserve_native_translation(source, "thought-paragraph");
+    result.source.assign(source);
+    return publish(std::move(result));
 }

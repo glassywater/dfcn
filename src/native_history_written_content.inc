@@ -110,7 +110,10 @@ static bool capture_native_history_written_reference(uintptr_t ref, NativeHistor
         if (!object) return true;
         NativeHistorySubject value;
         value.kind = kind; value.id = id;
-        if (!capture_native_history_name(base, object + name_offset, value.name)) return false;
+        if (!capture_native_history_name(base, object + name_offset, value.name) ||
+                (kind == NativeHistoryObjectKind::Site &&
+                    !capture_native_history_site_name_context(base, object, value.name, true))) return false;
+        if (kind == NativeHistoryObjectKind::Site) value.native_type = value.name.site_type;
         out.fields[prefix + ".named"] = {value.name.has_name ? 1 : 0};
         if (std::none_of(out.subjects.begin(), out.subjects.end(), [&](const auto &s) {
                 return s.kind == kind && s.id == id && s.subid == -1;

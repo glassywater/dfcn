@@ -1,0 +1,49 @@
+image	role	instruction_rva	literal_rva	source_literal
+reference	title-formatter	0x00bb7bfd	0x016dfd60	Age of Three Powers
+reference	title-formatter	0x00bb7c0f	0x016dfd18	Age of 
+reference	title-formatter	0x00bb7d2a	0x016dfd0c	Two 
+reference	title-formatter	0x00bb7e9b	0x015e9110	 and 
+reference	title-formatter	0x00bb8013	0x016dfd30	Two Powers
+reference	title-formatter	0x00bb8086	0x016dfcd0	Age of One Power
+reference	title-formatter	0x00bb814e	0x016dfce4	 Age
+reference	title-formatter	0x00bb817e	0x016dfd20	Age of the 
+reference	title-formatter	0x00bb82f7	0x016dfd18	Age of 
+reference	title-formatter	0x00bb85bf	0x016dfd00	Age of Myth
+reference	title-formatter	0x00bb85d1	0x016dfcf0	Age of Legends
+reference	title-formatter	0x00bb85e3	0x016dfca0	Twilight Age
+reference	title-formatter	0x00bb85f5	0x016dfc88	Age of Fairy Tales
+reference	title-formatter	0x00bb86df	0x016dfce4	 Age
+reference	title-formatter	0x00bb8700	0x016dfd18	Age of 
+reference	title-formatter	0x00bb87af	0x016dfd20	Age of the 
+reference	title-formatter	0x00bb885b	0x016dfcc0	Age of Heroes
+reference	title-formatter	0x00bb886a	0x016dfcb0	Golden Age
+reference	title-formatter	0x00bb8879	0x016dfc40	Age of Death
+reference	title-formatter	0x00bb8888	0x016dfc28	Age of Civilization
+reference	title-formatter	0x00bb8897	0x016dfc70	Age of Emptiness
+reference	full-title-formatter	0x00bb8e35	0x015ed9bc	The 
+reference	full-title-formatter	0x00bb8e9f	0x015e873c	 
+reference	full-title-formatter	0x00bb8efc	0x016dfc00	Unknown Age
+classic	title-formatter	0x00bb4c3d	0x016dab70	Age of Three Powers
+classic	title-formatter	0x00bb4c4f	0x016daba8	Age of 
+classic	title-formatter	0x00bb4d6a	0x016dab9c	Two 
+classic	title-formatter	0x00bb4edb	0x015e40bc	 and 
+classic	title-formatter	0x00bb5053	0x016dab40	Two Powers
+classic	title-formatter	0x00bb50c6	0x016dab50	Age of One Power
+classic	title-formatter	0x00bb518e	0x016dab64	 Age
+classic	title-formatter	0x00bb51be	0x016dab30	Age of the 
+classic	title-formatter	0x00bb5337	0x016daba8	Age of 
+classic	title-formatter	0x00bb55ff	0x016daaf8	Age of Myth
+classic	title-formatter	0x00bb5611	0x016daae8	Age of Legends
+classic	title-formatter	0x00bb5623	0x016dab20	Twilight Age
+classic	title-formatter	0x00bb5635	0x016dab08	Age of Fairy Tales
+classic	title-formatter	0x00bb571f	0x016dab64	 Age
+classic	title-formatter	0x00bb5740	0x016daba8	Age of 
+classic	title-formatter	0x00bb57ef	0x016dab30	Age of the 
+classic	title-formatter	0x00bb589b	0x016daab0	Age of Heroes
+classic	title-formatter	0x00bb58aa	0x016daaa0	Golden Age
+classic	title-formatter	0x00bb58b9	0x016daad8	Age of Death
+classic	title-formatter	0x00bb58c8	0x016daac0	Age of Civilization
+classic	title-formatter	0x00bb58d7	0x016daa68	Age of Emptiness
+classic	full-title-formatter	0x00bb5e75	0x015e89c4	The 
+classic	full-title-formatter	0x00bb5edf	0x015e3720	 
+classic	full-title-formatter	0x00bb5f3c	0x016daa90	Unknown Age

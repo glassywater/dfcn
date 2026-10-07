@@ -1,0 +1,11 @@
+source	condition	function_rva	literal_rva	text_or_template
+autolabor_getBalanceStops	balance index == 0	0x1bc0	0xa59c8	staffing
+autolabor_getBalanceStops	balance index == 1	0x1bc0	0xa59d8	lean-staffing
+autolabor_getBalanceStops	balance index == 2	0x1bc0	0xa59e8	balanced
+autolabor_getBalanceStops	balance index == 3	0x1bc0	0xa59f8	lean-skills
+autolabor_getBalanceStops	balance index == 4	0x1bc0	0xa5a04	skills
+autolabor_getStatus	enabled modern engine and guild_rest<=0	0x55a20	see JSON status_literal_rvas	{laborers} laborers, {specialists} specialists, {generalists} generalists
+autolabor_getStatus	enabled modern engine and guild_rest>0	0x55a20	see JSON status_literal_rvas	{laborers} laborers, {specialists} specialists ({guild_rest} on guild rest), {generalists} generalists
+autolabor_getStatus	disabled or non-modern engine	0x1970		
+gui/settings-manager.balance_name	modern active			{balance_name}  (staffing <-> skills)
+gui/settings-manager.role_counts	monitor active			{n} starving job{plural_s_when_n_not_1}

@@ -22,6 +22,18 @@ static uintptr_t native_current_viewscreen() {
     return 0;
 }
 
+static std::optional<std::string> native_main_menu_copyright() {
+    const uintptr_t screen = native_current_viewscreen();
+    if (!screen || !native_history_object_is(screen, "viewscreen_titlest"))
+        return std::nullopt;
+    std::string source;
+    // Use the current title object's owned string and the existing host ABI
+    // field binding. FPS-only draws need not redraw this static caption.
+    if (!native_history_copy_string(native_history_object_field(screen,
+            "viewscreen_titlest", 0x8b0, 32), source)) return std::nullopt;
+    return source;
+}
+
 static bool native_gameplay_map_screen(bool include_world) {
     const uintptr_t screen = native_current_viewscreen();
     if (!screen) return false;

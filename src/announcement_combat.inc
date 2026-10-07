@@ -189,7 +189,9 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             // b93930 supplies a whole site field, including unknown-site and
             // unnamed location labels. Do not reinterpret its generated name
             // as an organization simply because the spellings coincide.
-            auto result = translate_legends_name(input, false, false);
+            auto result = translate_legends_place(input, true);
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = exact_literal_translation(input);
             return finish(translation_complete_with_native_nicknames(result, input)
                 ? std::move(result) : std::nullopt);
         }
@@ -246,7 +248,9 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         if (scope == "$announcement") {
             const std::vector<int> source_colors(input.size(), 0xffffff);
             std::vector<int> target_colors;
-            return finish(translate_complete_announcement(input, source_colors, target_colors));
+            translate_complete_announcement(input, source_colors, target_colors);
+            const auto cached = announcement_result_metadata(input);
+            return finish(cached ? cached->strict_target() : std::nullopt);
         }
         if (scope == "work-reference-list") {
             // `and` and commas can belong to one known knowledge subject or
@@ -351,4 +355,161 @@ std::optional<std::string> Overlay::translate_announcement_combat(
     // Mixed combat, dialogue and catalog sentences are combined by the
     // shared complete-announcement parser. This scope always owns its span.
     return resolve(initial_scope, source);
+}
+
+// Display composition admits original fields only AFTER a native production
+// has one unambiguous complete set of literal/capture boundaries. The strict
+// recursive parser above remains the semantic interface used by other grammars.
+dfcn::TranslationResult Overlay::translate_announcement_combat_result(
+        std::string_view raw_source, std::string_view initial_scope) const {
+    dfcn::TranslationResult no_match;
+    no_match.source.assign(raw_source);
+    no_match.kind = initial_scope;
+    no_match.owner = "native-announcement-production";
+    no_match.resource_revision = RULESETS.resource_revision();
+    if (raw_source.empty()) return no_match;
+    std::optional<dfcn::TranslationWorkFrame> display_work;
+    try { display_work.emplace("announcement display production", raw_source); }
+    catch (const dfcn::TranslationWorkLimit &) {
+        return preserve_native_translation(raw_source, initial_scope, false,
+            dfcn::TranslationStatus::WorkLimited);
+    }
+    try {
+        if (const auto complete = translate_announcement_combat(raw_source, initial_scope)) {
+            auto result = dfcn::TranslationResult::translated(raw_source, *complete, initial_scope);
+            result.owner = no_match.owner;
+            result.resource_revision = no_match.resource_revision;
+            return result;
+        }
+    } catch (const dfcn::TranslationWorkLimit &) {
+        auto result = preserve_native_translation(raw_source, initial_scope, false,
+            dfcn::TranslationStatus::WorkLimited);
+        result.owner = no_match.owner;
+        return result;
+    }
+    const auto entries = announcement_combat_rules_.find(std::string(initial_scope));
+    if (entries == announcement_combat_rules_.end()) return no_match;
+    std::vector<size_t> normalized_origins;
+    const auto source = normalize_utterance(raw_source, &normalized_origins);
+    if (source.empty() || source.size() != normalized_origins.size()) return no_match;
+    struct Candidate {
+        const Rule *rule = nullptr;
+        std::vector<std::string_view> scopes;
+        std::vector<std::pair<size_t, size_t>> ranges;
+        size_t literal_bytes = 0;
+    };
+    std::optional<Candidate> selected;
+    bool ambiguous = false;
+    try {
+        for (const auto &[signature, rule] : entries->second) {
+            translation_work_step();
+            if (rule.template_kinds.empty() || rule.target_capture_order.size() != rule.template_kinds.size() ||
+                    rule.target_template_literals.size() != rule.target_capture_order.size() + 1 ||
+                    !legends_template_literals_fit(rule, source, 0, source.size(), true)) continue;
+            Candidate candidate;
+            candidate.rule = &rule;
+            for (size_t at = 0; at < signature.size();) {
+                const size_t comma = signature.find(',', at);
+                const size_t end = comma == std::string::npos ? signature.size() : comma;
+                candidate.scopes.emplace_back(signature.data() + at, end - at);
+                at = end + 1;
+            }
+            if (candidate.scopes.size() != rule.template_kinds.size()) continue;
+            bool predicate_literal = false;
+            for (const auto &literal : rule.template_literals) {
+                candidate.literal_bytes += literal.size();
+                const auto body = trim_view(literal);
+                if (body != "and" && body != ", and" && std::any_of(body.begin(), body.end(),
+                        [](unsigned char ch) { return (ch >= 'A' && ch <= 'Z') ||
+                            (ch >= 'a' && ch <= 'z'); })) predicate_literal = true;
+            }
+            // Text lists and bare punctuation supply candidate separators,
+            // not native member identities. Missing members cannot prove a
+            // list or a whitespace-only actor/object decomposition.
+            if (!predicate_literal || initial_scope.ends_with("-list") ||
+                    (selected && candidate.literal_bytes < selected->literal_bytes)) continue;
+            std::vector<std::pair<size_t, size_t>> ranges(candidate.scopes.size()), first_ranges;
+            size_t bindings = 0;
+            const auto bind = [&](const auto &self, size_t field, size_t at) -> void {
+                translation_work_step();
+                if (bindings >= 2) return;
+                if (field == candidate.scopes.size()) {
+                    if (at == source.size()) { ++bindings; if (bindings == 1) first_ranges = ranges; }
+                    return;
+                }
+                const auto &following = rule.template_literals[field + 1];
+                if (at >= source.size() || following.size() >= source.size() - at) return;
+                const size_t final = source.size() - following.size();
+                for (size_t end = field + 1 == candidate.scopes.size() ? final : at + 1;
+                        end <= final && bindings < 2; ++end) {
+                    translation_work_step();
+                    if (!template_literal_at(source, end, following, true) ||
+                            source[at] == ' ' || source[end - 1] == ' ' ||
+                            !legends_template_suffix_literals_fit(rule, source, field + 1,
+                                end + following.size(), source.size(), true)) continue;
+                    ranges[field] = {at, end};
+                    self(self, field + 1, end + following.size());
+                }
+            };
+            bind(bind, 0, rule.template_literals.front().size());
+            if (!bindings) continue;
+            candidate.ranges = std::move(first_ranges);
+            if (!selected || candidate.literal_bytes > selected->literal_bytes) {
+                selected = std::move(candidate);
+                ambiguous = bindings != 1;
+            } else ambiguous = true;
+        }
+    } catch (const dfcn::TranslationWorkLimit &) {
+        return preserve_native_translation(raw_source, initial_scope, false,
+            dfcn::TranslationStatus::WorkLimited);
+    }
+    if (!selected || ambiguous) return no_match;
+    const auto &candidate = *selected;
+    std::vector<dfcn::TranslationResult> fields;
+    std::vector<size_t> field_offsets;
+    bool work_limited = false;
+    for (size_t field = 0; field < candidate.scopes.size(); ++field) {
+        const auto [begin, end] = candidate.ranges[field];
+        const size_t first = normalized_origins[begin];
+        const size_t last = normalized_origins[end - 1] + 1;
+        const auto native = raw_source.substr(first, last - first);
+        const auto scope = candidate.scopes[field];
+        std::optional<std::string> translated;
+        if (!work_limited) {
+            try { translated = translate_announcement_combat(native, scope); }
+            catch (const dfcn::TranslationWorkLimit &) { work_limited = true; }
+        }
+        // These fields participate in production identity and syntax. A
+        // missing numeral/date/relationship is not an unknown noun/name.
+        if (!translated && (scope == "$digits" || scope == "$number" ||
+                scope == "$date" || scope == "$kinship")) return no_match;
+        auto result = translated ? dfcn::TranslationResult::translated(native, *translated, scope) :
+            dfcn::TranslationResult{};
+        if (!result.usable() && !work_limited && !scope.starts_with('$') && native.size() < raw_source.size())
+            result = translate_announcement_combat_result(native, scope);
+        if (!result.usable()) result = preserve_native_translation(native, scope, false, work_limited ?
+            dfcn::TranslationStatus::WorkLimited : dfcn::TranslationStatus::Untranslated);
+        fields.push_back(std::move(result));
+        field_offsets.push_back(first);
+    }
+    dfcn::TranslationResult result;
+    const Rule &rule = *candidate.rule;
+    for (size_t at = 0; at < rule.target_capture_order.size(); ++at) {
+        if (!rule.target_template_literals[at].empty())
+            result.append(dfcn::TranslationResult::translated("", rule.target_template_literals[at],
+                "announcement-literal"));
+        const size_t field = rule.target_capture_order[at];
+        if (field >= fields.size()) return no_match;
+        result.append(fields[field], field_offsets[field]);
+    }
+    if (!rule.target_template_literals.back().empty())
+        result.append(dfcn::TranslationResult::translated("", rule.target_template_literals.back(),
+            "announcement-literal"));
+    result.source.assign(raw_source);
+    result.consumed = raw_source.size();
+    result.kind = initial_scope;
+    result.owner = no_match.owner;
+    result.policy = dfcn::TranslationPolicy::Display;
+    result.resource_revision = no_match.resource_revision;
+    return result;
 }

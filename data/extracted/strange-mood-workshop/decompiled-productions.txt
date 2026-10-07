@@ -1,0 +1,107 @@
+DF 53.16 claimed-workshop mood text: decompiled producer grammar
+
+Images read offline:
+  reference: data/runtime/native-pe-images.json reference; PE:6a70a6d9:02711000
+  classic: data/runtime/native-pe-images.json classic; PE:6a70b91c:0270a000
+Addresses below are reference RVAs; classic producer coordinates are reference - 0x70.
+The shared suppliers have independent edition mappings, recorded in their asm files.
+This is native source extraction, not a test or game display observation.
+
+Owner: building detail render, unwind chain 0x14ef90..0x1a01c4.
+Mood subgraph: 0x181c00..0x18368e. Every addst call and literal is in the asm.
+The claim and action are fixed graphics::addst calls, not add_paragraph text.
+Coordinates below use graphics::locate's (row, column) order.
+
+claim branch:
+  if !mood_workshop: take the ordinary workshop controls branch (0x18368e).
+  if building.jobs(+0x58).empty(): emit no mood record.
+  job = building.jobs[0]; unit = job-general-ref type 0x13 (0xd09a90).
+  if !unit: emit no mood record.
+  identity = unit identity formatter 0x1330c30(unit, buffer, false).
+  draw(x,y,"This building has"); draw(x,y+2,"been claimed by").
+  draw(x,y+3,identity); append(".").
+  action_y = y+5.
+
+working branch (job.flags at +0x2c & 0x4):
+  if unit.pos(+0xa8/+0xaa/+0xac) != building.(x1,y1,z): no action text.
+  actor = identity, replaced by language_name formatter 0xa94030 if the
+          visible unit name returned by 0x13e5a90 has has_name(+0x72).
+  draw(x+2,action_y,actor); next row at x:
+  unit.mood(+0x360) == 0: "works furiously!"
+  unit.mood(+0x360) == 1: "works secretly..."
+  unit.mood(+0x360) == 2: "keeps muttering"; next row: unit.artifact_name(+0xa08) + "..."
+  unit.mood(+0x360) == 3: "works, darkly brooding..."
+  unit.mood(+0x360) == 4: "works with menacing fury!"
+  other mood values: actor only; no invented status.
+
+waiting branch (!working):
+  if job.flags & 0x8 (fetching) || unit outside building || mood==4 ||
+     job.job_items(+0xc8).empty(): no action text.
+  req = job.job_items[(GetTickCount()/2000) % job.job_items.size()].
+  type=req+0; subtype=req+2; material=req+4; material_index=req+8; flags=req+0x18.
+  if type==-1 && flags & 0x2000000: type=46 (CORPSE).
+  item-description category flags: 0x4000->1, 0x8000->8, 0x20000->0x20,
+                                   0x40000->0x40, 0x80000000->0x1000.
+  actor = same visible-name/identity choice as working.
+  draw(x,action_y,actor); append(" "); append the mood's verb below.
+
+  mood==0: "screams"; next row: '"I must have ' + job_item(req) + '!"'.
+  mood==3: "broods"; if type is 46 or 47, next row '"Leave me.  I need... ',
+           then next row 'things...  certain things' + '."'.
+           Otherwise next row '"Yes.  I need ' + job_item(req) + '."'.
+  mood==2: "mutters"; next row: '"' + artifact_name + ' needs';
+           next row: material_hint(req) + '..."'.
+  mood==1: "sketches"; next row: 'pictures of ' + picture_hint(req) + '.'.
+           Only BAR inserts a new row between 'shining bars' and 'of metal'.
+  other mood values: actor + space only; no invented speech.
+
+material_hint / picture_hint (condition order is significant):
+  flags & 0x2000000:
+    flags & 0x20000: 'bones...  yes' / 'skeletons'
+    else flags & 0x40000: 'a shell' / 'shells'
+    else: 'a corpse' / 'death'
+  otherwise item_type (two compressed switch tables, all entries retained in TSV):
+     0 BAR: 'bars... metal' / 'shining bars' + newline + 'of metal'
+     1 SMALLGEM: 'gems... shining' / 'cut gems'
+     2 BLOCKS: 'blocks... bricks...' / 'square blocks'
+     3 ROUGH, material==3: 'raw... green' / 'glass'
+     3 ROUGH, material==4: 'raw... clear' / 'glass and burning wood'
+     3 ROUGH, material==5: 'raw... crystal' / 'rough gems and glass'
+     3 ROUGH, other material: 'rough... color' / 'rough gems'
+     4 BOULDER: 'stone... rock' / 'a quarry'
+     5 WOOD: 'tree... life' / 'a forest'
+    55 SKIN_TANNED: 'leather... skin' / 'stacked leather'
+    58 CLOTH: 'cloth... thread' / 'stacked cloth'
+    every other item_type, including outside 0..58: empty hint.
+  Hence fourteen nonempty leaves plus the empty leaf in each family.
+  Empty leaves really emit '..."' or 'pictures of .'; they are not absent rows.
+
+job_item(req):
+  0x1828f1 / 0x182a9a call shared item noun formatter 0xa82c10..0xa882fc.
+  Args: (buffer,type,subtype,material,material_index,-1,0,false,null,-1,-1,true,
+         category_flags,0). No displayed count is supplied by this writer.
+  Main item_type table 0xa880e0 covers 0..92 plus default, not merely the eight
+  types with cryptic hints. The full existing decompiled supplier graph,
+  literal/switch operands, RAW material/item fields and helper edges are in
+  data/extracted/item-description-sources.tsv (shared-item-noun root).
+  reference-job-item-sources.tsv retains that supplier's complete entries here.
+  Runtime processing: translate_workshop_recipe_source owns the whole noun,
+  native material/type/category composition and its installed RAW vocabulary.
+
+Dynamic identities:
+  0x1330c30 supplies the claim's complete unit name/profession.
+  0x13e5a90 selects the unit's visible identity from active identity/historical
+  identity or unit+8; 0xa94030 formats its language_name.
+  unit+0xa08 is a language_name for the artifact, not the person's name.
+  Both work-in-progress muttering and missing-material muttering use it.
+  Each supplier's full instruction body is retained for both PE editions.
+  Unit fields retain the formatter-bound unit target. Artifact fields use the
+  existing artifact identity resolver; neither is classified as a material.
+
+Translation entry:
+  src/native_split_ui_messages.inc: append_workshop_mood.
+  data/runtime/ui-messages.tsv: complete claim and actor/verb templates.
+  data/runtime/local-overrides.tsv: all finite material/picture leaves,
+  quoted demand/brood templates, work-in-progress artifact template.
+  Whole records are composed only from the current native draws, with explicit
+  terminal punctuation and the source's physical rows retained for rendering.

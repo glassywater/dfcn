@@ -3,6 +3,8 @@
 Squad creation: New squad	新建{position}的小队	l
 Squad creation: Existing squad	{position}的小队	l
 Squad creation: appointed by	由{position}任命	l
+# Squad disband confirmation: this is an action button, not a generated name.
+Disband	解散	w
 # Legends nameless figures share the species grammar and existing sex symbols.
 Legends figure: Unnamed	未命名的	l
 # Native ghost family, Steam Windows PE:6a70a6d9:02711000.
@@ -813,6 +815,8 @@ Autosave	自动存档	wi
 Save list status: Portable	便携模式	h
 # The suffix on an individual save card names the game mode, not a site type or profession.
 Save list mode: Fortress	要塞模式	h
+Save list mode: Reclaim Fortress	收复要塞模式	h
+Save list mode: Fortress Testing	要塞测试模式	h
 Save list mode: Adventurer	冒险模式	h
 Main: One-Step	主界面：单步
 Main: Pause/Resume	主界面：暂停/继续
@@ -1205,9 +1209,10 @@ Done editing	完成编辑	w
 Editing routine	编辑日程：	wl
 Equip/orders only	仅执行命令时穿戴	w
 Equip/always	始终穿戴装备	w
-Sleep/room at will	随意回卧室睡觉	w
-Sleep/barracks at will	随意在军营睡觉	w
-Sleep/barracks at need	困倦时在军营睡觉	w
+# Keep complete sleep policies in the UI-message pass so Sleep cannot claim their prefix.
+Sleep/room at will	随意回卧室睡觉	wP
+Sleep/barracks at will	随意在军营睡觉	wP
+Sleep/barracks at need	困倦时在军营睡觉	wP
 Minimum number of soldiers to follow new order	执行新命令所需的最少士兵人数	wl
 # The native minimum-soldier label occupies these three consecutive rows.
 Fortress schedule editor: Minimum number of	执行新命令	l
@@ -1551,6 +1556,9 @@ Loading artifacts...	加载造物......	w
 Saving artifacts...	正在保存造物……	w
 Export XML	导出 XML
 Exporting!	正在导出！	w
+# DFHack exportlegends banner keeps the caption and colored toggle separate.
+Also export DFHack extended legends data:	同时导出 DFHack 扩展传奇数据：	wl
+On	开启	w
 Explore the history of {s}.	探索{s}的历史。	wtl
 Explore the history of The Past Dimensions.	探索“往昔维度”的历史。	l
 Select a category below to begin.	请从下方选择一个类别开始。	l
@@ -3857,12 +3865,7 @@ Use world now	立即使用世界
 Play now	立即开始游戏
 Play now!	立即开始游戏！
 Continue generating	继续生成
-Age of Myth, year {d}	神话时代，第 {d} 年	wt
-Age of Legends, year {d}	传说时代，第 {d} 年	wt
-Age of One Power, year {d}	一强权时代，第 {d} 年	wt
-Age of Two Powers, year {d}	两强权时代，第 {d} 年	wt
-Twilight Age, year {d}	暮光时代，第 {d} 年	wt
-Age of Fairy Tales, year {d}	童话时代，第 {d} 年	wt
+# World-generation year titles use the shared native era parser; canonical age terms are in legends-events.tsv.
 # Calendar fields: translate seasons as complete terms, not Early + spring.
 # The builder reuses these fields for every ordinal suffix and full date.
 # Match the complete date label, including its colon, before the fruit noun.
@@ -5297,6 +5300,14 @@ Choose Y: {s}	选择 Y：{s}	wtlx
 Delete element	删除元素	w
 Stop deleting	停止删除	w
 Name the image	为图像命名	w
+# Art-image subject selection; job/material captions remain independent.
+Image information for	图像信息：	wl
+Related to historical figure	与历史人物有关	w
+Related to site	与地点有关	w
+Related to civilization or other group	与文明或其他团体有关	w
+Existing image	现有图像	w
+Specify a new image	指定新图像	w
+Allow artist to choose	让艺术家自行选择	w
 Name the identity	为身份命名	w
 Name your group	为你的势力命名	wi
 Name yourself	为自己命名	w
@@ -8079,8 +8090,8 @@ Victory By {b}	凭借{b}获胜	hbti
 {b} In The Modern Era	现代的{b}	hbti
 {b} In The Time of My Ancestors	我祖先时代的{b}	hbti
 {b} In Theory	{b}理论	hbti
-# [NAME] In [ANY_AGE] is generated from the shared age entries in
-# data/runtime/legends-events.tsv, not from an unrestricted second book/name capture.
+# [NAME] In [ANY_AGE] uses the shared native era-title resolver; fixed labels
+# come from legends-events.tsv, while dynamic labels retain figure/RAW provenance.
 {b} Interpreted	{b}解读	hbti
 {b} Might Help	{b}或许有用	hbti
 {b} Questioned	质疑{b}	hbti
@@ -10410,7 +10421,9 @@ No uniform	无制式服装	wli
 # Military squad roster: window title, navigation and numbered member slots.
 Squads	小队	w
 Back to squads	返回小队	w
+Assign leader	指派队长	w
 Assign position {d}	指派第{d}名队员	wt
+Squad assignment: Member position	第{position}名队员：	l
 
 # Military equipment: complete button labels take precedence over name fallback.
 Assign uniform	指定制式服装	w
@@ -10710,6 +10723,13 @@ Adventure vermin: A	小生物	l
 
 # DFHack plugins/sort/world.lua: fixed search label beside the shortcut and input.
 Search:	搜索：	w
+
+# DFHack exportlegends.histfigfilter: fixed label between the shortcut and race value.
+Filter by race:	按种族筛选：	wl
+DFHack GUI Legends race filter: Races	种族	l
+DFHack GUI Legends race filter: Choose race filter	选择种族筛选条件	l
+DFHack GUI Legends race filter: All	全部	l
+DFHack GUI Legends race filter: No matches	无匹配项	l
 
 # DFHack plugins/stocks.lua: action fields, separate from keys and frame brand.
 DFHack stocks hint: collapse all	全部折叠	l
@@ -11336,3 +11356,53 @@ Uniform name: Updated Metal Melee	改良金属甲近战	l
 # retain the count even when the popup uses a one-cell left indent.
 {d} bedrooms created.	已创建{d1}间卧室。	wtl
 {d} dormitories created.	已创建{d1}间公共宿舍。	wtl
+
+# Diplomacy elevation fields and DFHack's per-candidate item annotations.
+DFHack GUI Elevation option: A Barony	男爵领	l
+DFHack GUI Elevate barony preferences: no item preferences	无物品偏好	l
+DFHack GUI Elevate barony preferences: {d} preference:	{d1}项物品偏好：	l
+DFHack GUI Elevate barony preferences: {d} preferences:	{d1}项物品偏好：	l
+
+# Complete native creature color modifier; keep the saved-world spelling intact.
+muck-brown	污泥棕色	wi
+
+# Metal-bar commodity labels must win over generated-name and action grammars.
+Tin Bars	锡锭	wi
+Lead Bars	铅锭	wi
+
+# Claimed-workshop material requests, resolved only by the native mood writer.
+Workshop mood requirement: "{s}" needs	“{s}”需要：	l
+Workshop mood working artifact: {s}...	{s}……	l
+Workshop mood material: ..."	……	l
+Workshop mood material: bones...  yes..."	骨头……没错……	l
+Workshop mood material: a shell..."	甲壳……	l
+Workshop mood material: a corpse..."	尸体……	l
+Workshop mood material: tree... life..."	树木……生命……	l
+Workshop mood material: raw... green..."	粗坯……绿色……	l
+Workshop mood material: raw... clear..."	粗坯……透明……	l
+Workshop mood material: raw... crystal..."	粗坯……水晶……	l
+Workshop mood material: rough... color..."	粗糙……色彩……	l
+Workshop mood material: stone... rock..."	石材……岩石……	l
+Workshop mood material: bars... metal..."	锭条……金属……	l
+Workshop mood material: gems... shining..."	宝石……闪耀……	l
+Workshop mood material: blocks... bricks......"	砖块……砌块……	l
+Workshop mood material: leather... skin..."	皮革……兽皮……	l
+Workshop mood material: cloth... thread..."	布料……线……	l
+Workshop mood demand: "I must have {s}!"	“我必须得到{s}！”	l
+Workshop mood brood: "Yes.  I need {s}."	“对。我需要{s}。”	l
+Workshop mood brood: "Leave me.  I need... things...  certain things."	“别烦我。我需要……东西……某些东西。”	l
+Workshop mood sketch: pictures of skeletons.	画着骷髅。	l
+Workshop mood sketch: pictures of .	图画。	l
+Workshop mood sketch: pictures of shells.	画着甲壳。	l
+Workshop mood sketch: pictures of death.	画着死亡。	l
+Workshop mood sketch: pictures of a forest.	画着森林。	l
+Workshop mood sketch: pictures of glass.	画着玻璃。	l
+Workshop mood sketch: pictures of glass and burning wood.	画着玻璃和燃烧的木头。	l
+Workshop mood sketch: pictures of rough gems and glass.	画着粗糙宝石和玻璃。	l
+Workshop mood sketch: pictures of rough gems.	画着粗糙宝石。	l
+Workshop mood sketch: pictures of a quarry.	画着采石场。	l
+Workshop mood sketch: pictures of shining bars of metal.	画着闪耀的金属锭。	l
+Workshop mood sketch: pictures of cut gems.	画着切割宝石。	l
+Workshop mood sketch: pictures of square blocks.	画着方形砌块。	l
+Workshop mood sketch: pictures of stacked leather.	画着堆叠的皮革。	l
+Workshop mood sketch: pictures of stacked cloth.	画着堆叠的布料。	l

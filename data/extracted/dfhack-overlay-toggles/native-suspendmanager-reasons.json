@@ -1,0 +1,92 @@
+{
+  "binary": "D:\\program\\steam\\steamapps\\common\\DFHack\\hack\\plugins\\suspendmanager.plug.dll",
+  "sha256": "277acdf5f5e97e40619d2610d8ce10403414e6d0bc87d4054640884b211bca25",
+  "image_base": "0x180000000",
+  "suspension_description_rva": "0x16c30",
+  "reason_code_to_string_rva": "0x14ec0",
+  "reason_switch_table_rva": "0x151ec",
+  "reasons": [
+    {
+      "reason_id": 1,
+      "branch_rva": "0x14eed",
+      "literal_rva": "0x3ea80",
+      "text": "Jobsite is submerged",
+      "condition": "reason code == 1"
+    },
+    {
+      "reason_id": 2,
+      "branch_rva": "0x14f38",
+      "literal_rva": "0x3ea98",
+      "text": "Managed by buildingplan",
+      "condition": "reason code == 2"
+    },
+    {
+      "reason_id": 3,
+      "branch_rva": "0x14f9b",
+      "literal_rva": "0x3eab0",
+      "text": "May block another build job",
+      "condition": "reason code == 3"
+    },
+    {
+      "reason_id": 4,
+      "branch_rva": "0x15002",
+      "literal_rva": "0x3ead0",
+      "text": "Waiting for carve/smooth/engrave",
+      "condition": "reason code == 4"
+    },
+    {
+      "reason_id": 5,
+      "branch_rva": "0x1504f",
+      "literal_rva": "0x3eaf8",
+      "text": "Blocks another build job",
+      "condition": "reason code == 5"
+    },
+    {
+      "reason_id": 6,
+      "branch_rva": "0x1509e",
+      "literal_rva": "0x3eb18",
+      "text": "Would collapse immediately",
+      "condition": "reason code == 6"
+    },
+    {
+      "reason_id": 7,
+      "branch_rva": "0x150f8",
+      "literal_rva": "0x3eb38",
+      "text": "Blocked by an unmovable item",
+      "condition": "reason code == 7"
+    },
+    {
+      "reason_id": 8,
+      "branch_rva": "0x15150",
+      "literal_rva": "0x3eb58",
+      "text": "Would collapse machinery",
+      "condition": "reason code == 8"
+    },
+    {
+      "reason_id": "default",
+      "branch_rva": "0x1519f",
+      "literal_rva": "0x3eb78",
+      "text": "External reason",
+      "condition": "reason code outside 1..8"
+    },
+    {
+      "reason_id": "no_entry",
+      "branch_rva": "0x16d0f",
+      "literal_rva": "0x3ee00",
+      "text": "not suspended by suspendmanager",
+      "condition": "enabled manager has no suspension entry for job id"
+    },
+    {
+      "reason_id": "disabled",
+      "branch_rva": "0x16d75",
+      "literal_rva": "0x3f200",
+      "text": "suspendmanager disabled",
+      "condition": "native plugin is disabled"
+    }
+  ],
+  "lua_display_template": "Suspended because: {reason}.",
+  "lua_not_suspended": "Not suspended.",
+  "native_null_job_guard": false,
+  "lua_no_job_guard": "getSelectedBuildingJob() nil -> getter returns Not suspended.; StatusOverlay.render suppresses rendering when no job",
+  "native_missing_manager": "enabled but manager instance null -> DFHack assertion/error branch 0x16de8; does not return a display reason"
+}

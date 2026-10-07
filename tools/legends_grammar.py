@@ -13,8 +13,9 @@ with a comma, not the noun-list connector or a shared-subject action prefix.
 `interaction-action` is a reviewed procedural IS_HIST_STRING pair. It supplies
 the ordinary action and its native "the moment when ..." event summary from
 the same predicate, retaining both participants and the complete interaction.
-`age` is a named historical era, shared by event terms and BOOK_INSTRUCTION's
-`[NAME] In [ANY_AGE]` titles, with optional article and title-case spelling.
+`age` is a named historical era term with its complete native heading.
+BOOK_INSTRUCTION's `[NAME] In [ANY_AGE]` uses the shared runtime era grammar,
+including generated titles and recurring ordinals, without per-era templates.
 `description` is a recursive physical-description noun phrase, not prose.
 `identity` is a quoted or unnamed historical identity; it never enters the
 prose or participant grammars and preserves a complete person's link.
@@ -42,6 +43,12 @@ the reason is not an unrestricted prose/name capture.
 `mortality-action` and `mortality-reason` compile the reviewed mortality
 predicate and its single terminal motivation with the cause before the action.
 Their ordinary action/clause forms remain available for other native contexts.
+`history-adjunct` supplies one reviewed reason/circumstance emitted by the
+native event-title helpers. It retains the clause and also compiles its
+attachment to a complete event title, with the reason before the event in
+Chinese. Other clauses never gain this recursive event-title production.
+`mortality-history-adjunct` also retains its existing mortality-action
+combinations when the same native reason appears in both producers.
 `{q}` is a color capture resolved only through the shared color vocabulary.
 All emitted entries stay in the h namespace and retain numbered link captures.
 """
@@ -168,9 +175,9 @@ def compile_events(path: Path) -> list[tuple[str, str, str]]:
         # which could silently lose a participant or interchange two links.
         target, _ = indexed(source, target)
         entry = (source, target, ("ht" if FIELD.search(source) else "h") + namespace)
-        # Clipped fragments and historical identities must not replace a
-        # complete prose production of the same spelling, or each other.
-        scope = next((flag for flag in ("C", "N") if flag in namespace), "")
+        # Clipped fragments, identities and event titles must retain their
+        # own meaning when an ordinary action has the same native spelling.
+        scope = next((flag for flag in ("C", "N", "E") if flag in namespace), "")
         key = (source, scope)
         if priority < priorities.get(key, 0):
             return
@@ -233,15 +240,27 @@ def compile_events(path: Path) -> list[tuple[str, str, str]]:
             emit("Adventurer log reputation: " + source.lower(), target)
         elif mode in ("clause", "term"):
             emit(source, target)
+        elif mode in ("history-adjunct", "mortality-history-adjunct"):
+            emit(source, target)
+            if mode == "mortality-history-adjunct":
+                mortality_reasons.append((source, target))
+            adjunct_target, _ = indexed(source, target)
+            # The event prepends a new e capture. A reviewed adjunct can
+            # itself refer to a collection/story; retain that reference as
+            # e2 and later, rather than exchanging it with the host event.
+            adjunct_target = FIELD.sub(
+                lambda match: "{e" + str(int(match[2]) + 1) + "}"
+                if match[1] == "e" else match.group(), adjunct_target)
+            # Some native clause translations begin with their attachment
+            # comma. A fronted reason owns no preceding event; preserve that
+            # comma only in the original clause emitted above.
+            event("{e} " + source, adjunct_target.lstrip("，") + "，{e1}", namespace="Ei")
         elif mode == "age":
-            # Reuse the era's reviewed term instead of treating Age as a
-            # person's age or phoneticizing In/Of in a book's title. These
-            # terms also own the complete native heading, whose article
-            # must not route it through a generic generated-name grammar.
+            # These terms own the complete native heading. The runtime
+            # shared era grammar also resolves ANY_AGE book-title slots,
+            # including dynamic creature/figure names and recurring eras.
             emit(source, target)
             emit("The " + source, target, namespace="Ei")
-            for article in ("", "The "):
-                emit("{b} In " + article + source, target + "的{b}", namespace="bi")
         elif mode == "statement":
             # Native aftermath branches can switch Some/Several to lowercase
             # after "and", or keep the original heading case for other clauses.

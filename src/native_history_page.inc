@@ -206,6 +206,8 @@ static std::optional<NativeHistoryPageData> snapshot_native_history_page_entity_
     data.fields["link_type"] = {type};
     data.fields["start_year"] = {-1};
     data.fields["end_year"] = {-1};
+    // Relationship rows have no event timestamp. Their entity names use the
+    // current native identity; optional office dates only describe the role.
     if (type >= 10 && type <= 14) {
         int32_t start = -1, end = -1;
         if (!native_history_page_getter(link, native_history_link_slot(NativeHistoryLinkSlot::StartYear), start) ||
@@ -221,7 +223,7 @@ static std::optional<NativeHistoryPageData> snapshot_native_history_page_entity_
             data.fields["position_present"] = {0};
             data.fields["start_year"] = {-1};
             data.fields["end_year"] = {-1};
-            if (!populate_native_history_subjects(data)) return std::nullopt;
+            if (!populate_native_history_subjects(data, true)) return std::nullopt;
             return page;
         };
         if (type <= 12) {
@@ -258,7 +260,7 @@ static std::optional<NativeHistoryPageData> snapshot_native_history_page_entity_
         if (!native_history_position_name(base, owner, position_id, variant, data.position))
             return std::nullopt;
     }
-    if (!populate_native_history_subjects(data)) return std::nullopt;
+    if (!populate_native_history_subjects(data, true)) return std::nullopt;
     return page;
 }
 
@@ -319,7 +321,7 @@ static std::optional<NativeHistoryPageData> snapshot_native_history_page_spouse_
         data.fields["related_kind"] = {1};
         data.position = sex == 0 && !female.empty() ? female : sex == 1 && !male.empty() ? male : neutral;
         if (!native_history_page_position_site(entity, assignment, position, data) ||
-            !populate_native_history_subjects(data)) return std::nullopt;
+            !populate_native_history_subjects(data, true)) return std::nullopt;
         return page;
     }
     return std::nullopt;
@@ -335,7 +337,7 @@ static std::optional<NativeHistoryPageData> snapshot_native_history_page_worship
     page.data.entity_id = related;
     page.data.fields["related_kind"] = {2};
     page.data.fields["entity_type"] = {type};
-    if (!populate_native_history_subjects(page.data)) return std::nullopt;
+    if (!populate_native_history_subjects(page.data, true)) return std::nullopt;
     return page;
 }
 
@@ -379,7 +381,7 @@ static std::optional<NativeHistoryPageData> snapshot_native_history_page_reputat
             page.data.fields["related_kind"] = {3};
             page.data.fields["reputation_type"] = {type};
             page.data.fields["reputation_value"] = {value};
-            if (!populate_native_history_subjects(page.data)) return std::nullopt;
+            if (!populate_native_history_subjects(page.data, true)) return std::nullopt;
             return page;
         }
     }

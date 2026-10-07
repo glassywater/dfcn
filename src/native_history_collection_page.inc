@@ -131,16 +131,16 @@ static bool capture_native_history_battle_introduction(uintptr_t collection,
     return true;
 }
 
+#include "native_history_ages.inc"
+
 static bool capture_native_history_age_introduction(uintptr_t age,
         NativeHistoryEventData &event) {
     const uintptr_t base = native_history_profile_base();
-    int16_t type = -1;
-    int32_t ordinal = 0;
-    if (!base || !age || !native_history_copy(age + 8, type) || type < 0 || type > 12 ||
-            !native_history_copy(age + 0x14, ordinal) ||
-            !native_history_copy_string(age + 0x18, event.texts["age_title"])) return false;
-    event.fields["type"] = {type};
-    event.fields["ordinal"] = {ordinal};
+    if (!base || !capture_native_history_age_record(age, event)) return false;
+    const int32_t type = event.fields.at("type").front();
+    // Unsupported or changed RAW title components leave kind=-1, without
+    // discarding the independent native description/power fields below.
+    capture_native_history_age_title_components(event);
     NativeBorrowedVector<uintptr_t> ages;
     if (!native_history_read_vector(native_history_global(0x24f9ef8), ages)) return false;
     size_t index = 0;

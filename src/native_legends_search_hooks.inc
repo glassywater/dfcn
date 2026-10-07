@@ -100,8 +100,11 @@ static size_t match_native_legends_search(const char *native_text, size_t native
             query_length == 0 || query_length > 4096) return result;
         const std::string_view query(query_text, query_length);
         std::string source, description;
-        if (native_legends_search_source(kind, frame, screen, source, description) &&
-            g_overlay.translated_legends_search_matches(source, description, query, kind))
+        NativeHistoryName site_name;
+        if (native_legends_search_source(kind, frame, screen, source, description,
+                kind == LegendsSearchKind::Site ? &site_name : nullptr) &&
+            g_overlay.translated_legends_search_matches(source, description, query, kind,
+                site_name.site_id >= 0 ? &site_name : nullptr))
             return 0;
     } catch (...) {
         // Never unwind translation/allocation failures through the game.

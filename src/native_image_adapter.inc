@@ -46,6 +46,12 @@ static bool validate_indirect_call(uintptr_t return_address, void **expected_slo
 }
 
 static bool native_validate_game() {
+    const auto &binding = pe_runtime::state();
+    static const bool reported = [&binding] {
+        log_line(binding.complete ? "INFO" : "ERROR", binding.message);
+        return true;
+    }();
+    (void)reported;
     const auto *base = reinterpret_cast<const unsigned char *>(GetModuleHandleW(nullptr));
     if (!base) return false;
     const auto *dos = reinterpret_cast<const IMAGE_DOS_HEADER *>(base);

@@ -273,6 +273,69 @@ void Overlay::append_save_list_captions(std::vector<std::string> &rows,
                 kSaveListCaptionRule, std::move(target), std::string(source)});
         std::fill_n(rows[y].begin() + x, source.size(), ' ');
     };
+    // The native title renderer passes savegame_header.fort_name directly
+    // to addst. Its field address identifies this saved name independently
+    // of folder text, list order and equal names in another world.
+    for (const bool top_layer : {false, true}) {
+        for (const auto &draw : captured_native_drawn_text_rows(top_layer)) {
+            if (!draw.address || draw.source.empty() || draw.y < 0 ||
+                    draw.y >= gps_->dimy || draw.draw_dimx != gps_->dimx ||
+                    draw.draw_dimy != gps_->dimy ||
+                    draw.draw_grid != (top_layer ? gps_->screen_top : gps_->screen)) continue;
+            int left = std::max(0, draw.x);
+            int right = static_cast<int>(std::min<int64_t>(gps_->dimx,
+                static_cast<int64_t>(draw.x) + static_cast<int64_t>(draw.source.size())));
+            if (draw.draw_clip) {
+                const auto &clip = *draw.draw_clip;
+                if (draw.y < clip.y || draw.y >= clip.y + clip.h) continue;
+                left = std::max(left, clip.x);
+                right = std::min(right, clip.x + clip.w);
+            }
+            if (left >= right) continue;
+            const auto visible = std::string_view(draw.source).substr(
+                static_cast<size_t>(left - draw.x), static_cast<size_t>(right - left));
+            if (std::string_view(rows[draw.y]).substr(left, visible.size()) != visible) continue;
+            const auto complete = draw.complete_source.empty()
+                ? std::string_view(draw.source) : std::string_view(draw.complete_source);
+            const auto saved = capture_native_save_name_source(draw.address, complete);
+            if (!saved) continue;
+            if (auto target = translate_saved_site_name(*saved)) {
+                std::string source(visible);
+                // The title renderer draws fort_name, ", ", then its native
+                // game mode consecutively, without relocating the cursor.
+                // Own that whole title so the separator cannot survive as
+                // unclaimed ink or prevent the card's shared field layout.
+                const std::string_view mode = [&]() -> std::string_view {
+                    switch (saved->game_type) {
+                    case 0: case 8: return "Fortress";
+                    case 3: return "Reclaim Fortress";
+                    case 10: return "Fortress Testing";
+                    default: return {};
+                    }
+                }();
+                if (!saved->authored && !mode.empty() && left == draw.x &&
+                        visible == saved->original) {
+                    const std::string suffix = ", " + std::string(mode);
+                    const int64_t end = static_cast<int64_t>(right) +
+                        static_cast<int64_t>(suffix.size());
+                    const auto translated_mode = legends_terms_.find(
+                        "Save list mode: " + std::string(mode));
+                    if (end <= gps_->dimx &&
+                            (!draw.draw_clip || end <=
+                                static_cast<int64_t>(draw.draw_clip->x) + draw.draw_clip->w) &&
+                            translated_mode != legends_terms_.end() &&
+                            !translated_mode->second.empty() &&
+                            std::string_view(rows[draw.y]).substr(right, suffix.size()) == suffix) {
+                        source += suffix;
+                        *target += "，" + translated_mode->second;
+                    }
+                }
+                claim(left, draw.y, source, std::move(*target));
+                if ((only_y < 0 || only_y == draw.y) && !matches.empty())
+                    matches.back().layout_foreground_rgb = draw.foreground_rgb;
+            }
+        }
+    }
     constexpr std::string_view folder_prefix = "Folder: ";
     constexpr std::string_view timeline_prefix = "Timeline: ";
     constexpr std::string_view portable_caption = "Portable";

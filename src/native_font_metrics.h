@@ -1,6 +1,7 @@
 #pragma once
 
 #include "native_runtime.h"
+#include "reloadable_thread_state.h"
 
 #include <cstdint>
 #include <cstring>
@@ -152,8 +153,7 @@ struct EnglishInkCache {
 };
 
 inline EnglishInkCache &english_ink_cache() {
-    thread_local EnglishInkCache cache;
-    return cache;
+    return reloadable_thread_state<EnglishInkCache, struct EnglishInkCacheTag>();
 }
 
 inline std::filesystem::path executable_directory() {

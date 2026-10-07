@@ -329,6 +329,20 @@ bool Overlay::append_bounded_paragraph(std::vector<Match> rows,
     }
 
     Match continuation = rows.front();
+    auto metadata = rows.front().translation_result;
+    if (!metadata && (rows.front().rule == kUiMessageRule ||
+            rows.front().rule == kAnnouncementListRule)) {
+        auto complete_source = native_source_for_rows(rows, clip_right);
+        if (complete_source) metadata = announcement_result_metadata(*complete_source);
+        if (!metadata) {
+            std::string source;
+            for (const auto &row : rows) {
+                if (!source.empty()) source.push_back(' ');
+                source += row.source;
+            }
+            metadata = announcement_result_metadata(source);
+        }
+    }
     continuation.length = 0;
     continuation.source.clear();
     continuation.target.clear();
@@ -351,6 +365,7 @@ bool Overlay::append_bounded_paragraph(std::vector<Match> rows,
     const size_t output_rows = std::max(rows.size(), lines.size());
     for (size_t line = 0; line < output_rows; ++line) {
         Match row = line < rows.size() ? std::move(rows[line]) : continuation;
+        row.translation_result = metadata;
         // Keep EVERY native source row for glyph suppression,
         // including short words with no standalone rule. Extra Chinese rows
         // only own layout space, never unrelated native glyphs beneath them.

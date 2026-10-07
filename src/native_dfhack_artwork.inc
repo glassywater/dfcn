@@ -18,6 +18,42 @@ static std::optional<std::string> lookup_native_dfhack_sitemap_text(
     const graphicst *gps, int x, int y, std::string_view visible);
 static std::optional<std::string> lookup_native_dfhack_notification_text(
     const graphicst *gps, int x, int y, std::string_view visible);
+struct NativeDfhackNotificationText {
+    int x = 0, y = 0;
+    std::string full, visible;
+};
+static std::vector<NativeDfhackNotificationText> native_dfhack_notification_texts(
+    const graphicst *gps);
+enum class NativeDfhackOverlayTextRole : unsigned char { Text, Option, Key };
+struct NativeDfhackOverlayText {
+    int x = 0, y = 0, full_x = 0, visible_offset = 0;
+    std::string full, visible;
+    NativeDfhackOverlayTextRole role = NativeDfhackOverlayTextRole::Text;
+    // These describe the actual selected options entry, never its spelling.
+    bool option_dynamic = false, option_name = false;
+    int option_idx = 0;
+    uintptr_t widget_id = 0;
+    std::string overlay_name, view_id, caption;
+};
+static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
+    const graphicst *gps);
+enum class NativeDfhackControlPanelTextRole : unsigned char { Text, Wrapped, Tool, Key };
+struct NativeDfhackControlPanelText {
+    int x = 0, y = 0, full_x = 0, visible_offset = 0;
+    std::string full, visible, document;
+    uintptr_t widget_id = 0;
+    SDL_Rect bounds{};
+    // Absolute zero-based document line for Wrapped; zero for a Label token.
+    int first_line = 0;
+    NativeDfhackControlPanelTextRole role = NativeDfhackControlPanelTextRole::Text;
+    SDL_Rect clip_bounds{}, parent_bounds{};
+    uintptr_t parent_id = 0;
+    int native_width = 0, total_lines = 0;
+};
+static std::vector<NativeDfhackControlPanelText> native_dfhack_control_panel_texts(
+    const graphicst *gps);
+static std::optional<std::string> lookup_native_dfhack_animal_assignment_text(
+    const graphicst *gps, int x, int y, std::string_view visible);
 static bool install_native_dfhack_messagebox_hook();
 static bool install_native_dfhack_prompt_hook();
 static bool install_native_dfhack_stonesense_hook();

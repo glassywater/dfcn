@@ -336,7 +336,8 @@ void Overlay::draw_help_clipped_match(SDL_Renderer *renderer, const Match &match
     // Clearing and painting must read the same restored native page that
     // supplied layout. Reopening the toolbar snapshot here loses the classic
     // help restoration; without a toolbar it used the overwritten grid.
-    const auto page = match.native_help_background_frames ? background_page : nullptr;
+    const auto page = !match.native_help_current_page && match.native_help_background_frames
+        ? background_page : nullptr;
     NativeTooltipPageScope page_view(gps_, page ? background_graphics : nullptr);
     NativeUiReadScope page_cells(gps_, page ? &page->cells : nullptr);
     // Matching may also reserve an edge-clipped sidebar established by its

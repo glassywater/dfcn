@@ -189,6 +189,8 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     profile.roster_shorten_calls = {0x14239b9, 0x1423b20, 0x1423c24, 0x1423e8c};
     profile.map_caption_build = reinterpret_cast<NativeCaptionBuildFn>(native_pe_address(profile.base, 0x406860));
     profile.map_caption_text_offset = 0x28;
+    profile.map_hover_list = native_reference_address(native_history_profile_base(),
+        native_history_layout::ui_look_list_rva);
     // Fortress/arena (0x3f9553/0x3f9775) and adventure
     // (0xb02ff4/0xb0322c) each have classic and graphical hover loops.
     // All four pass lookinfost::display_str at +0x28 directly to addst.
@@ -944,6 +946,11 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         !locate_native_elf_stone_resize(image, *identity, stone_resize) ||
         !locate_native_elf_action_resize(image, *identity, action_resize)) return false;
     profile.base = module.base;
+    // ui_look_list belongs to the main executable, while caption exports
+    // belong to libg_src_lib.so. Both ABIs place display_str at +0x28.
+    profile.map_caption_text_offset = 0x28;
+    profile.map_hover_list = native_reference_address(native_history_profile_base(),
+        native_history_layout::ui_look_list_rva);
     // These are the static curses_text_boxst toolbar cards, independent of
     // ViewBase's container named Tooltip. Calls are validated on installation.
     profile.legacy_toolbar_tooltip = module.value == "bcc6789e6fb477b785a2b02be80b8b1b054ff88c";

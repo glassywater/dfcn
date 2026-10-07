@@ -1,3 +1,85 @@
+static bool fortress_header_rank(std::string_view source) {
+    return source == "Outpost" || source == "Hamlet" ||
+        source == "Village" || source == "Town" || source == "City" ||
+        source == "Metropolis" || source == "Fortress" ||
+        source == "Mountainhome";
+}
+
+// The current world_site owns both HUD name fields. Keep the native-language
+// row phonetic, and send the English-name row through the site translator
+// before generic personal-name/compound rules can consume either field.
+void Overlay::append_fortress_site_name(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, bool /*raw_layer*/) const {
+    if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy) ||
+            (only_y >= 0 && only_y > 3)) return;
+    const int header_rows = std::min(5, gps_->dimy);
+    std::vector<std::string> context(rows.begin(), rows.begin() + header_rows);
+    // Earlier readers may have claimed a rank or part of the native row.
+    // The composed HUD supplies context; each raw layer still owns only
+    // its exact surviving source bytes below.
+    for (int y = 0; y < header_rows; ++y)
+        for (int x = 0; x < gps_->dimx; ++x) {
+            const auto ch = visible_char_at(x, y);
+            context[y][x] = ch ? static_cast<char>(ch) : ' ';
+        }
+    for (int y = 0; y <= 2 && y + 2 < gps_->dimy; ++y) {
+        std::vector<int> populations;
+        for (const std::string_view label : {"Pop", "Population"})
+            for (size_t at = context[y].find(label); at != std::string::npos;
+                    at = context[y].find(label, at + label.size()))
+                if (has_word_boundaries(context[y], at, at + label.size()))
+                    populations.push_back(static_cast<int>(at));
+        const auto ranks = split_text_fields(context[y + 2]);
+        for (const int population : populations) {
+            for (const auto &rank : ranks) {
+                if (!fortress_header_rank(rank.text) || rank.end >= population) continue;
+                const int left = rank.start, right = population - 1;
+                if (left >= right) continue;
+                NativeHistoryName name;
+                std::string english;
+                if (!capture_current_fortress_site_name(name, english)) return;
+                const std::string full_english = english;
+                // 3f30d3 shortens only the English field to 18 bytes, with
+                // its last three bytes replaced by dots. Preserve the real
+                // complete identity instead of parsing that clipped gloss.
+                if (english.size() >= 19) {
+                    english.resize(18);
+                    english.replace(15, 3, "...");
+                }
+                const std::array<std::string, 2> sources{name.native_name, english};
+                auto place = translate_english_site_name(full_english, &name);
+                if (place) *place += site_name_attribute_suffix(name.site_label, name.site_type);
+                const std::array<std::string, 2> targets{
+                    site_name_full_transliteration(name), place.value_or(std::string{})};
+                for (size_t field = 0; field < sources.size(); ++field) {
+                    const int row_y = y + static_cast<int>(field);
+                    const int length = std::min<int>(sources[field].size(), right - left);
+                    if (length <= 0 || targets[field].empty() ||
+                            lower_native_name(context[row_y].substr(left, length)) !=
+                            lower_native_name(sources[field].substr(0, length))) continue;
+                    const std::string source = context[row_y].substr(left, length);
+                    // Raw-layer suppression must own only this layer's same
+                    // source bytes, never a popup that covers the HUD.
+                    if (rows[row_y].compare(left, length, source) != 0) continue;
+                    std::fill_n(rows[row_y].begin() + left, length, ' ');
+                    if (only_y >= 0 && only_y != row_y) continue;
+                    Match match{left, row_y, length, kFortressSiteNameRule,
+                        targets[field], source};
+                    match.layout_x = left;
+                    match.layout_y = row_y;
+                    match.layout_length = right - left;
+                    match.layout_left = true;
+                    match.layout_clip_right = right;
+                    match.layout_font_pixels = unified_font_pixels();
+                    match.layout_lock_font_pixels = true;
+                    matches.push_back(std::move(match));
+                }
+                return;
+            }
+        }
+    }
+}
+
 // RAW names belong to the mod that supplied them. Reserve complete native
 // fields before the word/item/generated-name readers can translate fragments.
 // Captured draws also retain the full identity of a clipped picture caption.
@@ -626,6 +708,25 @@ void Overlay::append_hover_text_captions(std::vector<std::string> &rows,
 void Overlay::layout_fortress_build_menu(SDL_Renderer *renderer) {
     if (!gps_ || !face_ || !renderer ||
         gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0) return;
+
+    // Diplomacy uses the same picture skins for candidates, but its position
+    // list and per-candidate annotations are independent native fields.
+    // Never give those rows the build menu's shared caption inset.
+    constexpr std::string_view elevation_prompt = "Elevate whom?";
+    const NativePanelBorders elevation_borders(*gps_);
+    for (int y = 0; y < gps_->dimy; ++y) {
+        std::string row(gps_->dimx, ' ');
+        for (int x = 0; x < gps_->dimx; ++x) {
+            const auto ch = visible_char_at(x, y);
+            row[x] = ch ? static_cast<char>(ch) : ' ';
+        }
+        const size_t at = row.find(elevation_prompt);
+        if (at != std::string::npos && native_panel_interior(elevation_borders, *gps_,
+                static_cast<int>(at), static_cast<int>(at + elevation_prompt.size()), y)) {
+            fortress_build_menu_geometry_ = {};
+            return;
+        }
+    }
 
     // Item pickers reuse these picture-button skins. Their item names and
     // point costs already have independent columns; packing them as a build

@@ -609,3 +609,50 @@ DFHack GUI Squad assignment: Maimed:	残疾：	l
 DFHack GUI Squad assignment: Include	包含	l
 DFHack GUI Squad assignment: Only	仅限	l
 DFHack GUI Squad assignment: Exclude	排除	l
+
+# plugins/zone.lua animal assignment controls; captions and values retain their native fields.
+DFHack GUI Animal assignment: Animal and prisoner assignment	动物与囚犯分配	l
+DFHack GUI Animal assignment: Sort by:	排序依据：	l
+DFHack GUI Animal assignment: Search:	搜索：	l
+DFHack GUI Animal assignment: Min status:	最低状态：	l
+DFHack GUI Animal assignment: Max status:	最高状态：	l
+DFHack GUI Animal assignment: Min disposition:	最低驯化程度：	l
+DFHack GUI Animal assignment: Max disposition:	最高驯化程度：	l
+DFHack GUI Animal assignment: Egg layers:	产蛋动物：	l
+DFHack GUI Animal assignment: Grazers:	食草动物：	l
+DFHack GUI Animal assignment: Juveniles:	幼兽：	l
+DFHack GUI Animal assignment: status	状态	l
+DFHack GUI Animal assignment: dist	距离	l
+DFHack GUI Animal assignment: disposition	驯化程度	l
+DFHack GUI Animal assignment: gender	性别	l
+DFHack GUI Animal assignment: name	名字	l
+DFHack GUI Animal assignment: race	种族	l
+DFHack GUI Animal assignment: Include	包含	l
+DFHack GUI Animal assignment: Only	仅限	l
+DFHack GUI Animal assignment: Exclude	排除	l
+DFHack GUI Animal assignment: Unknown	未知	l
+DFHack GUI Animal assignment: Assigned here	已分配到此处	l
+DFHack GUI Animal assignment: In other pasture	在其他牧场	l
+DFHack GUI Animal assignment: In other pit/pond	在其他坑洞／池塘	l
+DFHack GUI Animal assignment: On restraint	受锁链束缚	l
+DFHack GUI Animal assignment: In built cage	在已安放笼中	l
+DFHack GUI Animal assignment: In loose cage	在未安放笼中	l
+DFHack GUI Animal assignment: Roaming	游荡	l
+DFHack GUI Animal assignment: In pasture	在牧场	l
+DFHack GUI Animal assignment: In pit/pond	在坑洞／池塘	l
+DFHack GUI Animal assignment: In stockpiled cage	在库存笼中	l
+DFHack GUI Animal assignment: Pet	宠物	l
+DFHack GUI Animal assignment: Domesticated	已驯化	l
+DFHack GUI Animal assignment: Partially trained	部分训练	l
+DFHack GUI Animal assignment: Wild (trainable)	野生（可驯化）	l
+DFHack GUI Animal assignment: Untrainable	不可驯化	l
+DFHack GUI Animal assignment: Hostile	敌对	l
+DFHack GUI Animal assignment: Assign all/none	全部分配／全部取消	l
+DFHack GUI Animal assignment: creature(s) assigned here.	只生物已分配到此处。	l
+DFHack GUI Animal assignment: Click to assign/unassign to pasture/pond/pit.	点击分配到牧场／池塘／坑洞，或取消分配。	l
+DFHack GUI Animal assignment: Click to assign/unassign to pasture/pond/pit. Shift click to assign/unassign a range.	点击分配到牧场／池塘／坑洞，或取消分配。按住 Shift 点击可批量分配或取消分配。	l
+DFHack GUI Animal assignment: Click to assign/unassign to cage/restraint.	点击分配到笼子／锁链，或取消分配。	l
+DFHack GUI Animal assignment: Click to assign/unassign to cage/restraint. Shift click to assign/unassign a range.	点击分配到笼子／锁链，或取消分配。按住 Shift 点击可批量分配或取消分配。	l
+DFHack GUI Animal assignment: Note that pets cannot be assigned to cages or restraints.	注意：宠物无法分配到笼子或锁链。	l
+DFHack GUI Animal assignment: Unknown vermin	未知小动物	l
+DFHack GUI Animal assignment: Unknown small pet	未知小型宠物	l

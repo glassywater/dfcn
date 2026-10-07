@@ -376,8 +376,8 @@ size_t Overlay::append_world_artifact_description(const NativeTextCard &card,
             matches[at].native_picture_caption_box = card.interior;
     };
     const size_t match_begin = matches.size();
-    const auto target = translate_item_description_source(source, true);
-    if (target) {
+    const auto translation = translate_item_description_source_display(source, true);
+    if (translation.usable() && translation.changed()) {
         auto slots = paragraph;
         // Use the frame's unused body space when the complete Chinese text
         // needs more lines than the English excerpt. Keep one blank line
@@ -389,8 +389,9 @@ size_t Overlay::append_world_artifact_description(const NativeTextCard &card,
                 {}, std::string(static_cast<size_t>(right - left), ' ')});
             slots.back().layout_foreground_rgb = paragraph.front().layout_foreground_rgb;
         }
-        if (append_bounded_paragraph(std::move(slots), *target, rows, matches,
+        if (append_bounded_paragraph(std::move(slots), translation.target, rows, matches,
                 only_y, right, right)) {
+            attach_item_display_result(matches, match_begin, translation);
             mark_frame(match_begin);
             return end;
         }

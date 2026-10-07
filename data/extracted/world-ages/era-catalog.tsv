@@ -1,0 +1,15 @@
+type	enum	native_title	chinese_title_decision	translation_basis	actual_meaning	selector_condition	entry_and_history_notes	reference_title_branch_rva
+0	ThreePowers	Age of Three Powers	三权时代	中文Wiki既成译名	世界仅有三位计入统计的强大个体；权指权能，不是三个政权	B<=3且G=3	同类型重现按type/index1/index2编号；不是世界的第三个时代	0x00bb7bf7
+1	TwoPowers	Age of Two [species]; Age of [species1] and [species2]; Age of Two Powers	双（物种）时代／（物种1）与（物种2）的时代；双权时代仅作无人物资料兜底	具象形式沿用中文Wiki；双权时代为本次项目补齐建议，不声称Wiki已收录	世界仅有两位强大个体，通常用实际物种命名	B<=3且G=2且两个人物ID有效	同物种同sex读caste复数；同物种异sex读race复数；不同物种各读单数；人物资料缺失才用Two Powers	0x00bb7c09
+2	OnePower	Age of [name]; Age of the [species]; [species adjective] Age; Age of One Power	（人物名／物种）时代／（物种）的时代；一权时代仅作无人物资料兜底	具象形式沿用中文Wiki；一权时代为本次项目补齐建议，不声称Wiki已收录	世界仅有一位强大个体，随机以其姓名、物种或物种形容词命名	B<=3且G=1且人物ID有效	姓名分支可能使用个人名称的部分组成；重复的相同type/人物索引沿用此前生成标题	0x00bb8024
+3	Myth	Age of Myth	神话时代	中文Wiki既成译名	大量强大个体仍然存活并主宰世界	B>3且G>=floor(2B/3)，或B<=3但G>3	阈值用非负整数除法；计数不包含DEITY/FORCE历史人物	0x00bb85b9
+4	Legends	Age of Legends	传说时代	中文Wiki既成译名	强大个体处于衰退阶段；再次出现时原生说明也可能描述强者回归	B>3且floor(B/3)<=G<floor(2B/3)	可重现；Sixth是相同type及名称索引组合的第六次出现	0x00bb85cb
+5	Twilight	Twilight Age	暮光时代	中文Wiki既成译名	奇幻文明生物人口减少，已不再大量存在	强者分支未选中，有文明人口，50<=M<90	M是带MUNDANE标签的人口整数百分比；不同纪元转入需M>=60，既有同键纪元可在50..59继续	0x00bb85dd
+6	FairyTales	Age of Fairy Tales	童话时代	中文Wiki既成译名	奇幻生物稀少到有人怀疑其存在	强者分支未选中，有文明人口，M>=90且未满足Civilization	精确边界含90%；M=100但仍有半巨兽也可能停留此类	0x00bb85ef
+7	Race	Age of [race plural]; Age of the [race singular]; [race adjective] Age	（种族）时代／（种族）的时代	中文Wiki既成动态译法	某一种族人口在文明人口中占主导；不要求拥有独立政权或据点	强者分支未选中，有文明人口，M<50且R>=50	R是最多种族的整数人口百分比；新type/种族键转入需R>=60，初始纪元不受此入口限制	0x00bb8601
+8	Heroes	Age of Heroes	英雄时代	中文Wiki既成译名	最后的古老强大个体进行最终战斗	B>3且0<G<floor(B/3)	本机代码没有Wiki所写G>3的额外条件，也不统计英雄人口或技能	0x00bb8855
+9	Golden	Golden Age	辉煌时代	中文Wiki既成译名	多种文明种族在世界中繁衍生息；不是依据财富、和平或幸福评出的繁荣期	强者分支未选中且有文明人口时：M<50且R<50；也作为60%转入门槛未达的回退	因此更新期间50..59%的候选Twilight/Race也可能显示此类，不能将Wiki简表当完整条件	0x00bb8864
+10	Death	Age of Death	死亡时代	中文Wiki既成译名	文明彻底崩溃之后的世界；不代表所有动物或生命死亡	强者分支未选中且无有效正数文明人口，并且过去至少出现Twilight/FairyTales/Race/Golden/Civilization之一	与Emptiness的区别在历史是否进入过上述文明人口决定的纪元	0x00bb8873
+11	Civilization	Age of Civilization	文明时代	中文Wiki既成译名	文明人口皆为MUNDANE生物，奇幻生物只剩旅行者故事；相关强者和半巨兽均已消亡	有文明人口，civilized_mundane=civilized_total，且living_POWER+living_mega+living_semi=0	MUNDANE是生物RAW显式标签，不能译成所有凡人；不计算技术发展或政权成熟程度	0x00bb8882
+12	Emptiness	Age of Emptiness	空虚时代	中文Wiki既成译名	没有文明族群；初始说明为仅有简单生物，后续说明为不存在文明族群	强者分支未选中且无有效正数文明人口，并且从未出现Twilight/FairyTales/Race/Golden/Civilization	不是空无一物，也不能一律解释为文明从未存在；文明可能在进入这些纪元之前灭绝	0x00bb8891
+fallback	NONE=-1 or empty title	Unknown Age	未知时代	中文Wiki既成词义；本机完整标题函数实证	无法产生有效基本标题时的显示兜底	full-title formatter发现name.length=0时用Unknown Age替换整个标题	不是第14个可选择纪元；Monster/Rampage也不在era_type中	0x00bb8efc

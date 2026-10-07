@@ -8,6 +8,9 @@
 
 #pragma once
 
+#include "translation_result.h"
+
+#include <cstdint>
 #include <filesystem>
 #include <functional>
 #include <list>
@@ -39,6 +42,10 @@ namespace Hooks {
 
         bool load_rule_sets();
         void load_from_dir(const std::filesystem::path& dir);
+        // The existing update timer observes TOML contents and directory
+        // membership. A failed attempt is remembered until resources change.
+        bool resources_changed() const;
+        std::uint64_t resource_revision() const;
 
         std::optional<std::string> translate(const std::string& text) const;
         // Local command callbacks can own DFHack's Console lock. Give their
@@ -57,6 +64,12 @@ namespace Hooks {
             const std::string& context, const std::string& source_pattern,
             const std::vector<std::pair<std::string, std::string>>& fields = {},
             std::vector<size_t>* origins = nullptr) const;
+        // Display-only composition of already bound, complete native fields.
+        // Preserved leaves never enter recursive namespace matching.
+        dfcn::TranslationResult compose_bound_rule_result(
+            const std::string& context, const std::string& source_pattern,
+            const std::vector<std::pair<std::string, dfcn::TranslationResult>>& fields = {},
+            std::string_view owner = {}) const;
         // Complete activity/menu grammar keeps the action before its item;
         // equipment material extraction must not reorder an entire job name.
         std::optional<std::string> translate_activity(const std::string& text) const;
@@ -109,6 +122,10 @@ namespace Hooks {
         // translation or an unchanged fallback is not a resolved phrase.
         void set_phrase_resolver(std::function<std::optional<std::string>(
             std::string_view source, std::string_view kind)> resolver);
+        // Native identity bindings and their owner scope can change without
+        // changing the rule graph. This is a content revision, never a frame
+        // epoch; detached caption snapshots intentionally have no provider.
+        void set_context_revision_provider(std::function<std::uint64_t()> provider);
         // RAW vocabulary only: safe for the shared resolver to query without
         // invoking itself again through the dynamic creature namespaces.
         std::optional<std::string> translate_static_creature_name(const std::string& text) const;
@@ -246,10 +263,39 @@ namespace Hooks {
         };
 
         struct LruMemoMap {
+            struct Key {
+                std::string text;
+                std::uint64_t context_revision = 0;
+                dfcn::TranslationPolicy policy = dfcn::TranslationPolicy::Strict;
+            };
+            struct KeyView {
+                std::string_view text;
+                std::uint64_t context_revision = 0;
+                dfcn::TranslationPolicy policy = dfcn::TranslationPolicy::Strict;
+            };
+            struct KeyHash {
+                using is_transparent = void;
+                template<class K> size_t operator()(const K& key) const noexcept {
+                    size_t hash = std::hash<std::string_view>{}(key.text);
+                    hash ^= std::hash<std::uint64_t>{}(key.context_revision) +
+                        0x9e3779b9U + (hash << 6) + (hash >> 2);
+                    hash ^= static_cast<size_t>(key.policy) +
+                        0x9e3779b9U + (hash << 6) + (hash >> 2);
+                    return hash;
+                }
+            };
+            struct KeyEqual {
+                using is_transparent = void;
+                template<class A, class B>
+                bool operator()(const A& a, const B& b) const noexcept {
+                    return std::string_view(a.text) == std::string_view(b.text) &&
+                        a.context_revision == b.context_revision &&
+                        a.policy == b.policy;
+                }
+            };
             using Value = std::vector<std::shared_ptr<const ResultTree>>;
-            using List   = std::list<std::pair<std::string, Value>>;
-            using Map    = std::unordered_map<std::string, List::iterator,
-                                            TransparentHash, TransparentEqual>;
+            using List   = std::list<std::pair<Key, Value>>;
+            using Map    = std::unordered_map<Key, List::iterator, KeyHash, KeyEqual>;
 
             static constexpr size_t DEFAULT_MAX = 100;
 
@@ -259,15 +305,15 @@ namespace Hooks {
 
             LruMemoMap(size_t max = DEFAULT_MAX) : max_entries(max) {}
 
-            Value* find(std::string_view text) {
-                auto it = cache_map.find(text);
+            Value* find(std::string_view text, std::uint64_t context_revision) {
+                auto it = cache_map.find(KeyView{text, context_revision});
                 if (it == cache_map.end()) return nullptr;
                 lru_list.splice(lru_list.begin(), lru_list, it->second);
                 return &it->second->second;
             }
 
-            void insert(std::string text, Value value) {
-                auto it = cache_map.find(text);
+            void insert(std::string text, Value value, std::uint64_t context_revision) {
+                auto it = cache_map.find(KeyView{text, context_revision});
                 if (it != cache_map.end()) {
                     lru_list.splice(lru_list.begin(), lru_list, it->second);
                     it->second->second = std::move(value);
@@ -277,7 +323,7 @@ namespace Hooks {
                     cache_map.erase(lru_list.back().first);
                     lru_list.pop_back();
                 }
-                lru_list.emplace_front(std::move(text), std::move(value));
+                lru_list.emplace_front(Key{std::move(text), context_revision}, std::move(value));
                 cache_map.emplace(lru_list.front().first, lru_list.begin());
             }
 
@@ -302,11 +348,24 @@ namespace Hooks {
             std::vector<size_t> unrestricted;
         };
 
+        struct ResourceDependency {
+            std::filesystem::path path;
+            std::filesystem::file_time_type modified{};
+            std::uintmax_t size = 0;
+            bool directory = false;
+            int error = 0;
+            bool operator==(const ResourceDependency&) const = default;
+        };
+
         // =====================================================================
         // 3. 成员变量
         // =====================================================================
         bool initialized = false;
         std::string last_load_error_;
+        std::filesystem::path ruleset_directory_;
+        std::vector<ResourceDependency> loaded_dependencies_;
+        std::vector<ResourceDependency> attempted_dependencies_;
+        std::uint64_t resource_revision_ = 0;
         RuleSets rulesets_;
         std::unordered_map<std::string, RulePrefixIndex> rule_prefix_indexes_;
         // Small closed leaf vocabularies can prove that a later noun is
@@ -317,11 +376,10 @@ namespace Hooks {
         std::unordered_map<std::string, std::string, TransparentHash, TransparentEqual>
             static_creature_names_;
         std::function<std::optional<std::string>(std::string_view)> creature_name_resolver_;
-        mutable bool creature_name_resolver_active_ = false;
         std::function<std::optional<std::string>(std::string_view, std::string_view)>
             phrase_resolver_;
-        mutable bool phrase_resolver_active_ = false;
-        mutable bool material_list_resolver_active_ = false;
+        std::function<std::uint64_t()> context_revision_provider_;
+        mutable std::set<std::pair<std::string, std::string>> active_resolver_calls_;
 
         // =====================================================================
         // 4. 函数声明（按调用链：加载 → 翻译 → Token → 工具）
@@ -334,6 +392,8 @@ namespace Hooks {
         void analyze_from_root();
         void rebuild_rule_prefix_indexes();
         void rebuild_static_creature_names();
+        static std::vector<ResourceDependency> resource_dependencies(
+            const std::filesystem::path& dir);
 
         // 翻译核心
         std::vector<std::shared_ptr<const ResultTree>> find_translations(const std::string& text, bool partial_match) const;

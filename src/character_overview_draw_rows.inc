@@ -171,6 +171,7 @@ if (!cards.empty()) {
             std::string source, target;
             std::vector<int> source_colors, target_colors;
             bool translated = false;
+            std::shared_ptr<const TranslationResult> translation;
         };
         std::array<ColumnText, 2> columns;
         for (int column = 0; column < 2 && complete; ++column) {
@@ -202,7 +203,14 @@ if (!cards.empty()) {
             if (!target) target = translate_procedural_fragment(source);
             if (!target) target = translate_fortress_activity(source);
             if (!target) target = translate_ui_message_capture(source, true);
-            text.translated = target.has_value();
+            if (!target) {
+                auto translation = translate_fortress_activity_display(source);
+                if (translation.usable()) {
+                    target = translation.target;
+                    text.translation = std::make_shared<const TranslationResult>(std::move(translation));
+                }
+            }
+            text.translated = text.translation ? !text.translation->has_untranslated() : target.has_value();
             text.target = target ? *target : native_text_to_utf8(text.source);
             const auto color_at = [&](size_t at) {
                 while (at < text.source.size() && text.source[at] == ' ') ++at;
@@ -252,6 +260,7 @@ if (!cards.empty()) {
             const bool display = !placed[column] && !text.target.empty();
             Match span{begin, y, x - begin, kCharacterOverviewRowRule,
                 display ? text.target : std::string{}, visible.substr(begin, x - begin)};
+            span.translation_result = text.translation;
             span.layout_foreground_rgb = parts[owners[begin]].color;
             if (display) {
                 span.native_overview_complete_row = true;

@@ -1,0 +1,14 @@
+type	name	branch_rva
+0	ThreePowers	0x00bb4c37
+1	TwoPowers	0x00bb4c49
+2	OnePower	0x00bb5064
+3	Myth	0x00bb55f9
+4	Legends	0x00bb560b
+5	Twilight	0x00bb561d
+6	FairyTales	0x00bb562f
+7	Race	0x00bb5641
+8	Heroes	0x00bb5895
+9	Golden	0x00bb58a4
+10	Death	0x00bb58b3
+11	Civilization	0x00bb58c2
+12	Emptiness	0x00bb58d1
