@@ -24,7 +24,7 @@ struct NativeDfhackNotificationText {
 };
 static std::vector<NativeDfhackNotificationText> native_dfhack_notification_texts(
     const graphicst *gps);
-enum class NativeDfhackOverlayTextRole : unsigned char { Text, Option, Key };
+enum class NativeDfhackOverlayTextRole : unsigned char { Text, Option, Key, Material, Category };
 struct NativeDfhackOverlayText {
     int x = 0, y = 0, full_x = 0, visible_offset = 0;
     std::string full, visible;
@@ -34,6 +34,15 @@ struct NativeDfhackOverlayText {
     int option_idx = 0;
     uintptr_t widget_id = 0;
     std::string overlay_name, view_id, caption;
+    // Buildingplan List rows retain their native count/separator separately
+    // from the complete material name and its RAW category.
+    std::string material_source, material_category;
+    int material_offset = 0;
+    // QuickFilter's drawn clear control proves that the slot stores a label.
+    // The label and clear control are distinct children of this same parent.
+    uintptr_t quick_filter_id = 0;
+    bool quick_filter_label = false, quick_filter_clear = false;
+    bool quick_filter_clear_visible = false;
 };
 static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
     const graphicst *gps);

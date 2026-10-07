@@ -622,6 +622,7 @@ std::vector<Match> dfhack_auxiliary_matches;
 #include "dfhack_trade_goods.inc"
 #include "dfhack_animal_assignment.inc"
 #include "dfhack_preserve_rooms.inc"
+#include "dfhack_buildingplan.inc"
 #include "dfhack_overlay_controls.inc"
     // Ownership prevents generic rules from translating isolated help words
     // or key names. Unmapped source remains native until its complete entry

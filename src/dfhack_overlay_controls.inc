@@ -38,12 +38,16 @@
         std::vector<std::pair<int, int>> sourced_controls;
         const auto named_source = [&](int x, int y, int length) {
             return std::any_of(source_texts.begin(), source_texts.end(), [&](const auto &text) {
-                return text.option_name && text.y == y && x < text.x + static_cast<int>(text.visible.size()) &&
+                return (text.option_name || text.role == NativeDfhackOverlayTextRole::Material ||
+                        text.role == NativeDfhackOverlayTextRole::Category) && text.y == y &&
+                    x < text.x + static_cast<int>(text.visible.size()) &&
                     x + length > text.x;
             });
         };
         for (const auto &text : source_texts)
-            if (text.option_name)
+            if (text.option_name || text.role == NativeDfhackOverlayTextRole::Key ||
+                    text.role == NativeDfhackOverlayTextRole::Material ||
+                    text.role == NativeDfhackOverlayTextRole::Category || text.quick_filter_label)
                 dfhack_auxiliary_regions.push_back({text.x, text.y, static_cast<int>(text.visible.size()), 1});
         struct OptionText { int length = 0; std::string target; };
         const auto option_text = [&](std::string_view pattern, std::string_view target,
@@ -182,6 +186,28 @@
         };
         const int first_y = only_y < 0 ? 0 : std::max(0, only_y - 1);
         const int last_y = only_y < 0 ? gps_->dimy : std::min(gps_->dimy, only_y + 1);
+        for (const auto &text : source_texts) {
+            if (text.y < first_y || text.y >= last_y || text.option_name) continue;
+            if (text.quick_filter_label && text.full == "empty") {
+                if (const auto target = exact_literal_translation("DFHack GUI Buildingplan favorite: empty"))
+                    emit(text.x, text.y, static_cast<int>(text.visible.size()), *target,
+                        text.x + static_cast<int>(text.visible.size()));
+            } else if (text.role == NativeDfhackOverlayTextRole::Category) {
+                if (const auto target = exact_literal_translation(
+                        "DFHack GUI Buildingplan category: " + text.full))
+                    emit(text.x, text.y, static_cast<int>(text.visible.size()), *target,
+                        text.x + static_cast<int>(text.visible.size()), true);
+            } else if (text.role == NativeDfhackOverlayTextRole::Material) {
+                const auto target = translate_material_name(text.material_source);
+                if (!target) continue;
+                const int x = std::max(text.x, text.full_x + text.material_offset);
+                const int end = text.x + static_cast<int>(text.visible.size());
+                if (x >= end) continue;
+                int right = end;
+                while (right < gps_->dimx && dfhack_context_rows[text.y][right] == ' ') ++right;
+                emit(x, text.y, end - x, *target, right, true);
+            }
+        }
         // Complete Label tokens are captured at the actual Lua/native paint
         // boundary. Resolve them before reading visible fragments: viewport
         // clipping cannot hide a state suffix, and a selected numeric squad
@@ -190,6 +216,8 @@
             for (const auto &text : source_texts) {
                 if (text.y < first_y || text.y >= last_y ||
                         text.role == NativeDfhackOverlayTextRole::Key ||
+                        text.role == NativeDfhackOverlayTextRole::Material ||
+                        text.role == NativeDfhackOverlayTextRole::Category || text.quick_filter_label ||
                         (text.option_name && (!control.caption.empty() || control.option != "*"))) continue;
                 if (!control.caption.empty() && !control.option.empty() && !control.below &&
                         control.gap >= 0 && control.label_width < 0 &&

@@ -18,6 +18,7 @@ struct NativeDfhackSitemapLuaApi {
     NativeDfhackLuaCFunction paint_string = nullptr;
     std::string painter_source, list_source, filtered_source, sitemap_source, notify_source, zone_source;
     std::string label_source, cycle_source, overlay_source, asyncexport_source, prioritize_source;
+    std::string filterselection_source, planner_source;
     std::string wrapped_source, control_panel_source;
 };
 static NativeDfhackSitemapLuaApi g_native_dfhack_sitemap_lua_api;
@@ -167,6 +168,7 @@ static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
                 text.visible.size() > static_cast<size_t>(gps->dimx) ||
                 text.x > gps->dimx - static_cast<int>(text.visible.size())) continue;
         bool current = true;
+        size_t current_length = 0;
         for (size_t at = 0; at < text.visible.size(); ++at) {
             const size_t tile = static_cast<size_t>(text.x + static_cast<int>(at)) *
                 gps->dimy + text.y;
@@ -178,8 +180,34 @@ static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
                 current = false;
                 break;
             }
+            ++current_length;
         }
-        if (current) result.push_back(text.overlay);
+        const bool scrollbar_clipped = text.overlay.role == NativeDfhackOverlayTextRole::Material &&
+            current_length > 0 && text.visible.size() - current_length <= 2;
+        if (current || scrollbar_clipped) {
+            auto overlay = text.overlay;
+            // A List scrollbar is painted after its text and can cover the
+            // rightmost cells. The still-visible prefix retains the complete
+            // choice name; it is not a shorter material vocabulary entry.
+            if (!current) overlay.visible.resize(current_length);
+            if (overlay.quick_filter_label) {
+                // QuickFilter:get_label_text returns the same spelling for
+                // an unused slot and a saved label named "empty". Its later
+                // clear button is visible only when slot_used returned true.
+                // Keep that authored draw as evidence even when a later
+                // foreground control covers the clear button's cells.
+                const bool used = std::any_of(g_native_dfhack_sitemap_text.begin(),
+                    g_native_dfhack_sitemap_text.end(), [&](const auto &other) {
+                        return other.owner == NativeDfhackChoiceTextOwner::OverlayLabel &&
+                            other.epoch == epoch && other.dimx == gps->dimx && other.dimy == gps->dimy &&
+                            other.overlay.quick_filter_clear &&
+                            other.overlay.quick_filter_id == overlay.quick_filter_id;
+                    });
+                overlay.option_name = used || !overlay.quick_filter_clear_visible ||
+                    overlay.full != "empty";
+            }
+            result.push_back(std::move(overlay));
+        }
     }
     return result;
 }
@@ -461,6 +489,88 @@ static bool native_dfhack_overlay_builder_name(NativeDfhackLuaState *state,
     return false;
 }
 
+static bool native_dfhack_overlay_bound_callback(NativeDfhackLuaState *state,
+        int object, const char *field, int parent, const std::string &source,
+        int first_line, int last_line) {
+    const auto &api = g_native_dfhack_sitemap_lua_api;
+    const auto &stack = api.stack;
+    NativeDfhackOverlayLuaStackRestore restore{state, stack.gettop(state)};
+    if (!native_dfhack_sitemap_raw_field(state, object, field) ||
+            stack.type(state, -1) != 6 || !stack.tocfunction(state, -1)) return false;
+    const int curried = stack.gettop(state);
+    if (!api.getupvalue(state, curried, 1) || !stack.isinteger(state, -1)) return false;
+    int valid = 0;
+    if (stack.tointegerx(state, -1, &valid) != 2 || !valid) return false;
+    stack.settop(state, curried);
+    NativeDfhackLuaDebug producer{};
+    if (!api.getupvalue(state, curried, 2) || stack.type(state, -1) != 6 ||
+            !stack.getinfo(state, ">Su", &producer) || producer.nparams != 1 ||
+            producer.isvararg || producer.linedefined != first_line ||
+            producer.lastlinedefined != last_line) return false;
+    const auto method_source = native_dfhack_lua_text(producer.source, 32768);
+    if (!method_source || native_dfhack_lua_source_key(*method_source) != source) return false;
+    stack.settop(state, curried);
+    return api.getupvalue(state, curried, 3) && stack.type(state, -1) == 5 &&
+        api.rawequal(state, -1, parent) && !api.getupvalue(state, curried, 4);
+}
+
+static void native_dfhack_overlay_quick_filter(NativeDfhackLuaState *state,
+        int token, int widget, NativeDfhackOverlayText &result) {
+    const auto &api = g_native_dfhack_sitemap_lua_api;
+    const auto &stack = api.stack;
+    NativeDfhackOverlayLuaStackRestore restore{state, stack.gettop(state)};
+    if (result.overlay_name != "buildingplan.planner" ||
+            !native_dfhack_sitemap_raw_field(state, widget, "parent_view") ||
+            stack.type(state, -1) != 5) return;
+    const int parent = stack.gettop(state);
+    if (!native_dfhack_overlay_class_method(state, parent, "init", api.planner_source, 530) ||
+            !native_dfhack_overlay_class_method(state, parent, "get_label_text", api.planner_source, 605))
+        return;
+    if (native_dfhack_overlay_bound_callback(state, widget, "visible", parent,
+            api.planner_source, 594, 597) && result.full == "[x]") {
+        result.quick_filter_id = reinterpret_cast<uintptr_t>(api.topointer(state, parent));
+        result.quick_filter_clear = true;
+        result.role = NativeDfhackOverlayTextRole::Key;
+        return;
+    }
+    if (!native_dfhack_overlay_bound_callback(state, token, "text", parent,
+            api.planner_source, 605, 613)) return;
+    result.quick_filter_id = reinterpret_cast<uintptr_t>(api.topointer(state, parent));
+    result.quick_filter_label = true;
+    result.option_name = true;
+    // A clipped clear control cannot prove an unused slot by its absence.
+    // Read its allocated native viewport rather than invoking slot_used or
+    // the persistence getter again while DFHack is painting.
+    stack.settop(state, parent);
+    if (!native_dfhack_sitemap_raw_field(state, parent, "subviews") ||
+            stack.type(state, -1) != 5) return;
+    api.rawgeti(state, -1, 5);
+    if (stack.type(state, -1) != 5) return;
+    const int clear = stack.gettop(state);
+    if (!native_dfhack_overlay_bound_callback(state, clear, "visible", parent,
+            api.planner_source, 594, 597) ||
+            !native_dfhack_sitemap_raw_field(state, clear, "frame_body") ||
+            stack.type(state, -1) != 5) return;
+    const int rect = stack.gettop(state);
+    const auto integer = [&](const char *field) -> std::optional<int64_t> {
+        stack.settop(state, rect);
+        if (!native_dfhack_sitemap_raw_field(state, rect, field) ||
+                !stack.isinteger(state, -1)) return std::nullopt;
+        int valid = 0;
+        const auto value = stack.tointegerx(state, -1, &valid);
+        return valid && value >= -100000 && value <= 100000
+            ? std::optional<int64_t>(value) : std::nullopt;
+    };
+    const auto x1 = integer("x1"), x2 = integer("x2");
+    const auto y1 = integer("y1"), y2 = integer("y2");
+    const auto clip_x1 = integer("clip_x1"), clip_x2 = integer("clip_x2");
+    const auto clip_y1 = integer("clip_y1"), clip_y2 = integer("clip_y2");
+    result.quick_filter_clear_visible = x1 && x2 && y1 && y2 &&
+        clip_x1 && clip_x2 && clip_y1 && clip_y2 && *x2 - *x1 + 1 == 3 &&
+        *y1 == *y2 && *x1 >= *clip_x1 && *x2 <= *clip_x2 &&
+        *y1 >= *clip_y1 && *y2 <= *clip_y2;
+}
+
 static std::optional<NativeDfhackOverlayText> native_dfhack_overlay_label_text(
         NativeDfhackLuaState *state, std::string_view painted_full) {
     const auto &api = g_native_dfhack_sitemap_lua_api;
@@ -548,6 +658,8 @@ static std::optional<NativeDfhackOverlayText> native_dfhack_overlay_label_text(
         result.option_name = native_dfhack_overlay_builder_name(state, token, widget,
             result.overlay_name);
     }
+    native_dfhack_overlay_quick_filter(state, token, widget, result);
+    if (result.quick_filter_label || result.quick_filter_clear) return result;
     if (!native_dfhack_overlay_option_callback(state, token, widget)) return result;
     result.role = NativeDfhackOverlayTextRole::Option;
     if (!native_dfhack_sitemap_raw_field(state, widget, "option_idx") ||
@@ -585,6 +697,121 @@ static std::optional<NativeDfhackOverlayText> native_dfhack_overlay_label_text(
         }
         result.option_dynamic = result.option_dynamic || result.option_name;
     }
+    return result;
+}
+
+static std::optional<NativeDfhackOverlayText> native_dfhack_buildingplan_list_text(
+        NativeDfhackLuaState *state, std::string_view painted_full) {
+    const auto &api = g_native_dfhack_sitemap_lua_api;
+    const auto &stack = api.stack;
+    NativeDfhackOverlayLuaStackRestore restore{state, stack.gettop(state)};
+    NativeDfhackLuaDebug render{}, body{};
+    if (!stack.getstack(state, 2, &render) || !stack.getinfo(state, "Slu", &render))
+        return std::nullopt;
+    const auto render_source = native_dfhack_lua_text(render.source, 32768);
+    if (!render_source) return std::nullopt;
+    const bool key_draw = native_dfhack_lua_source_key(*render_source) == api.list_source &&
+        render.linedefined == 236 && render.lastlinedefined == 293 &&
+        render.currentline == 284 && render.nparams == 2 && !render.isvararg;
+    if (key_draw) body = render;
+    else {
+        if (native_dfhack_lua_source_key(*render_source) != api.label_source ||
+                render.linedefined != 101 || render.lastlinedefined != 217 ||
+                render.nparams != 9 || render.isvararg ||
+                !stack.getstack(state, 3, &body) || !stack.getinfo(state, "Slu", &body))
+            return std::nullopt;
+        const auto body_source = native_dfhack_lua_text(body.source, 32768);
+        if (!body_source || native_dfhack_lua_source_key(*body_source) != api.list_source ||
+                body.linedefined != 236 || body.lastlinedefined != 293 ||
+                body.currentline != 277 || body.nparams != 2 || body.isvararg)
+            return std::nullopt;
+    }
+    if (!native_dfhack_overlay_local(state, body, "self") || stack.type(state, -1) != 5)
+        return std::nullopt;
+    const int widget = stack.gettop(state);
+    if (!native_dfhack_overlay_class_method(state, widget, "onRenderBody", api.list_source, 236) ||
+            !native_dfhack_overlay_local(state, body, "obj") || stack.type(state, -1) != 5)
+        return std::nullopt;
+    const int row = stack.gettop(state);
+    if (!key_draw) {
+        if (!native_dfhack_overlay_local(state, render, "obj") || stack.type(state, -1) != 5 ||
+                !api.rawequal(state, -1, row)) return std::nullopt;
+        stack.settop(state, row);
+        if ((render.currentline != 190 && render.currentline != 197 && render.currentline != 203) ||
+                !native_dfhack_overlay_local(state, render, "text") ||
+                native_dfhack_overlay_lua_string(state, -1) !=
+                    std::optional<std::string>(std::string(painted_full))) return std::nullopt;
+    }
+    stack.settop(state, row);
+    const auto string_field = [&](int object, const char *field) -> std::string {
+        const int top = stack.gettop(state);
+        std::optional<std::string> value;
+        if (native_dfhack_sitemap_raw_field(state, object, field))
+            value = native_dfhack_overlay_lua_string(state, -1);
+        stack.settop(state, top);
+        return value ? std::move(*value) : std::string{};
+    };
+    bool material_list = false, category_list = false, material_page = false, filter_screen = false;
+    int parent = widget;
+    for (int depth = 0; depth < 16; ++depth) {
+        const auto view_id = string_field(parent, "view_id");
+        if (parent == widget && view_id == "materials_categories") category_list = true;
+        if (view_id == "materials_mats") {
+            const int top = stack.gettop(state);
+            material_list = native_dfhack_sitemap_raw_field(state, parent, "list") &&
+                stack.type(state, -1) == 5 && api.rawequal(state, -1, widget);
+            stack.settop(state, top);
+        }
+        material_page = material_page ||
+            (native_dfhack_overlay_class_method(state, parent, "init", api.filterselection_source, 56) &&
+             native_dfhack_overlay_class_method(state, parent, "refresh", api.filterselection_source, 291));
+        filter_screen = filter_screen ||
+            (string_field(parent, "focus_path") ==
+                "dwarfmode/Building/Placement/dfhack/lua/buildingplan/filterselection" &&
+             native_dfhack_overlay_class_method(state, parent, "init", api.filterselection_source, 598));
+        if (!native_dfhack_sitemap_raw_field(state, parent, "parent_view") ||
+                stack.type(state, -1) != 5) break;
+        parent = stack.gettop(state);
+    }
+    if (!material_page || !filter_screen || (material_list == category_list)) return std::nullopt;
+    NativeDfhackOverlayText result;
+    result.full.assign(painted_full);
+    result.widget_id = reinterpret_cast<uintptr_t>(api.topointer(state, widget));
+    result.overlay_name = "buildingplan.filterselection";
+    result.view_id = material_list ? "materials_mats" : "materials_categories";
+    result.material_category = string_field(row, "cat");
+    if (result.material_category.empty()) return std::nullopt;
+    if (key_draw) {
+        // List paints the parentheses and current key as separate Painter
+        // calls. All three are keys, including an S/E that is also a compass
+        // direction elsewhere in the ordinary translation dictionary.
+        if (string_field(row, "key").empty()) return std::nullopt;
+        stack.settop(state, row);
+        if (!native_dfhack_overlay_local(state, body, "keystr")) return std::nullopt;
+        const auto key = native_dfhack_overlay_lua_string(state, -1);
+        if (!key || (painted_full != "(" && painted_full != ")" && painted_full != *key))
+            return std::nullopt;
+        result.role = NativeDfhackOverlayTextRole::Key;
+        return result;
+    }
+    if (string_field(row, "text") != painted_full) return std::nullopt;
+    if (category_list) {
+        result.role = NativeDfhackOverlayTextRole::Category;
+        return result;
+    }
+    result.material_source = string_field(row, "name");
+    if (result.material_source.empty() || !painted_full.ends_with(result.material_source))
+        return std::nullopt;
+    const size_t offset = painted_full.size() - result.material_source.size();
+    if (offset < 4 || painted_full.substr(offset - 3, 3) != " - ") return std::nullopt;
+    const auto count = painted_full.substr(0, offset - 3);
+    size_t digit = count.find_first_not_of(' ');
+    if (digit == std::string_view::npos) return std::nullopt;
+    if (count[digit] == '-') ++digit;
+    if (digit == count.size() || !std::all_of(count.begin() + digit, count.end(),
+            [](unsigned char ch) { return ch >= '0' && ch <= '9'; })) return std::nullopt;
+    result.material_offset = static_cast<int>(offset);
+    result.role = NativeDfhackOverlayTextRole::Material;
     return result;
 }
 
@@ -809,6 +1036,8 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
             std::string_view(full, full_length), static_cast<int>(dx));
         auto overlay = control_panel ? std::optional<NativeDfhackOverlayText>{} :
             native_dfhack_overlay_label_text(state, std::string_view(full, full_length));
+        if (!control_panel && !overlay)
+            overlay = native_dfhack_buildingplan_list_text(state, std::string_view(full, full_length));
         bool owned = control_panel.has_value() || overlay.has_value();
         NativeDfhackChoiceTextOwner owner = NativeDfhackChoiceTextOwner::Sitemap;
         if (owned) owner = NativeDfhackChoiceTextOwner::OverlayLabel;
@@ -995,6 +1224,8 @@ static bool bind_native_dfhack_sitemap_lua(HMODULE module) {
     api.overlay_source = key(hack / L"lua" / L"plugins" / L"overlay.lua");
     api.asyncexport_source = key(hack / L"scripts" / L"internal" / L"exportlegends" / L"asyncexport.lua");
     api.prioritize_source = key(hack / L"scripts" / L"prioritize.lua");
+    api.filterselection_source = key(hack / L"lua" / L"plugins" / L"buildingplan" / L"filterselection.lua");
+    api.planner_source = key(hack / L"lua" / L"plugins" / L"buildingplan" / L"planneroverlay.lua");
     g_native_dfhack_sitemap_lua_api = std::move(api);
     g_native_dfhack_sitemap_lua_bound.store(true, std::memory_order_release);
     return true;
