@@ -4621,6 +4621,17 @@ private:
     std::unordered_map<std::string, std::vector<size_t>> dfhack_output_template_words_;
     std::unordered_map<std::string, std::string> dfhack_output_values_;
     std::unordered_map<std::string, std::string> dfhack_output_fragments_;
+    // Retain only the most recent explicit prose owner. Scrolling and resize
+    // reuse its translation; a different book replaces it rather than growing
+    // a cache of complete documents. Holding the catalog proves its identity.
+    struct DfhackExtensionProseCache {
+        uintptr_t parent_id = 0, widget_id = 0;
+        std::string context;
+        uint64_t ruleset_revision = 0, context_revision = 0;
+        std::shared_ptr<const void> catalog;
+        TranslationResult result;
+    };
+    mutable std::optional<DfhackExtensionProseCache> dfhack_extension_prose_cache_;
     void index_dfhack_output(const Rule &rule);
     void index_dfhack_help_paragraph(const Rule &rule);
     void load_dfhack_help_catalog(std::function<void()> *catalog_publication = nullptr);

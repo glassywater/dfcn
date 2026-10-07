@@ -6,7 +6,9 @@ base = "subscribed_books"
 
 [[rulesets]]
 [rulesets.rules]
-"{piece}{tail}" = "{piece}{tail}"
+# 正文由阅读控件逐段消费最长前缀；一条规则只解析一个完整作品片段。
+# 不把整本书的剩余正文挂入递归结果树。
+"{piece}" = "{piece}"
 "Fortunately, {::subscribed_books}" = "幸运的是，{::subscribed_books}"
 "Alas, {::subscribed_books}" = "唉，{::subscribed_books}"
 "most magnificently, {::subscribed_books}" = "极其壮丽地，{::subscribed_books}"
@@ -29,14 +31,6 @@ base = "subscribed_books"
 "{@bt_speaker|::subscribed_books::vocabulary::speaker}: {::subscribed_books}" = "{@bt_speaker|::subscribed_books::vocabulary::speaker}：{::subscribed_books}"
 "\"{::subscribed_books}\"" = "“{::subscribed_books}”"
 "({::subscribed_books})" = "（{::subscribed_books}）"
-
-[[rulesets]]
-name = "tail"
-optional = true
-[rulesets.rules]
-" {::subscribed_books}" = "{::subscribed_books}"
-"\n{::subscribed_books}" = "\n{::subscribed_books}"
-"\n\n{::subscribed_books}" = "\n\n{::subscribed_books}"
 
 [[rulesets]]
 name = "piece"

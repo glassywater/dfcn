@@ -737,6 +737,32 @@ namespace Hooks {
         return translated;
     }
 
+    dfcn::TranslationResult RulesetsManager::translate_prefix_with_origins(
+            const std::string& text, const std::string& context) const {
+        dfcn::TranslationStateScope translation_scope;
+        const auto results = resolve_namespace(text, context, 0);
+        const ResultTree* best = nullptr;
+        for (const auto& result : results) {
+            const size_t consumed = result->matched.size();
+            if (!consumed || result->translated.empty() || consumed > text.size()) continue;
+            if (consumed < text.size() &&
+                    !std::isspace(static_cast<unsigned char>(text[consumed]))) continue;
+            if (!best || consumed > best->matched.size() ||
+                    (consumed == best->matched.size() && result->preferred_to(*best)))
+                best = result.get();
+        }
+        std::vector<size_t> origins;
+        if (!best || !translation_origins(*best, origins)) return {};
+        std::string translated = best->translated;
+        normalize_translation(translated, &origins);
+        if (translated.empty()) return {};
+        auto result = dfcn::TranslationResult::translated(
+            std::string_view(text).substr(0, best->matched.size()),
+            std::move(translated), context, std::move(origins));
+        result.resource_revision = resource_revision_;
+        return result;
+    }
+
     std::optional<std::string> RulesetsManager::translate_activity(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;

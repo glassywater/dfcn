@@ -81,6 +81,11 @@ namespace Hooks {
         std::optional<std::string> translate_with_origins(
             const std::string& text, const std::string& context,
             std::vector<size_t>& origins) const;
+        // Prose owners consume one longest authored production at a time.
+        // Keep multi-sentence/verse rules and source origins while leaving
+        // document separators and the remaining text to the calling owner.
+        dfcn::TranslationResult translate_prefix_with_origins(
+            const std::string& text, const std::string& context) const;
         // Bare ammunition types from the item grammar, never material/name
         // fragments. Callers compose the material with the shared qualifier.
         std::optional<std::string> translate_ammunition_type(const std::string& text) const;
