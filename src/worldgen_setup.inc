@@ -1,5 +1,5 @@
-// The detailed form spaces parts of these labels independently. Restore each
-// complete meaning before generic words can interpret Ground as milled food.
+// The detailed form spaces parts of its labels and option values independently.
+// Restore each complete meaning before generic words split a field's meaning.
 // Keep the physical gaps for glyph suppression and native text-half pairing.
 void Overlay::append_worldgen_parameter_labels(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
@@ -12,22 +12,40 @@ void Overlay::append_worldgen_parameter_labels(std::vector<std::string> &rows,
     const int new_set_y = label_row("New Parameter Set");
     const int basic_y = label_row("Basic Options");
     const int create_y = label_row("Create World");
-    if (new_set_y < 0 || basic_y <= new_set_y || create_y <= new_set_y ||
-            std::abs(basic_y - create_y) > 1) return;
+    const bool has_toolbar = new_set_y >= 0 && basic_y > new_set_y &&
+        create_y > new_set_y && std::abs(basic_y - create_y) <= 1;
+    // The graphical form has this unique prompt even when its toolbar/footer
+    // captions are outside the visible page. Range/Yes/No are shared widgets.
+    const int prompt_y = label_row(
+        "Choose or create a parameter set to make a custom world.");
+    if (!has_toolbar && prompt_y < 0) return;
+    const int first_y = (has_toolbar ? new_set_y : prompt_y) + 1;
+    const int end_y = has_toolbar ? std::min(basic_y, create_y)
+        : static_cast<int>(rows.size());
 
     static constexpr auto labels = std::to_array<std::string_view>({
         "Z Levels Above Ground",
         "Z Levels Above Layer 1", "Z Levels Above Layer 2",
         "Z Levels Above Layer 3", "Z Levels Above Layer 4",
         "Z Levels Above Layer 5",
+        "North and South", "North or South", "North and/or South",
     });
-    for (int y = new_set_y + 1; y < std::min(basic_y, create_y); ++y) {
+    for (int y = first_y; y < end_y; ++y) {
         if (only_y >= 0 && y != only_y) continue;
         auto &row = rows[static_cast<size_t>(y)];
         const auto fields = split_text_fields(row);
+        const auto pole = std::find_if(fields.begin(), fields.end(),
+            [](const auto &field) { return field.text == "Pole"; });
         for (size_t first = 0; first < fields.size(); ++first) {
-            if (fields[first].text != "Z" &&
-                    !fields[first].text.starts_with("Z Levels")) continue;
+            const bool z_label = fields[first].text == "Z" ||
+                fields[first].text.starts_with("Z Levels");
+            // Direction words elsewhere retain their own translations. Only
+            // this parameter's value owns the complete pole-selection phrase.
+            const bool pole_value = pole != fields.end() &&
+                fields[first].start >= pole->end &&
+                (fields[first].text == "North" ||
+                 fields[first].text.starts_with("North "));
+            if (!z_label && !pole_value) continue;
             std::string source;
             for (size_t last = first; last < fields.size() && last < first + 5; ++last) {
                 // A frame edge or control is never part of the label's gap.
