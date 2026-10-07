@@ -1,6 +1,6 @@
 schema = 1
 id = "item-tagger-zh-hans"
-version = 1
+version = 2
 language = "zh-Hans"
 name = "物品标签汉化数据"
 translations = "dfcn/translations.tsv"
