@@ -12,3 +12,10 @@ Blend a full bag of each parent color into two full bags of the result. Needs tw
 Fuse a glaze onto plain earthenware bricks. A colored brick keeps its color when built into a wall, which a glazed item cannot.	将釉料烧附在普通瓦陶砖上。彩色砖建成墙壁后仍保留颜色，上釉物品则无法做到。	lP
 Fuse a glaze onto plain stoneware bricks. A colored brick keeps its color when built into a wall, which a glazed item cannot.	将釉料烧附在普通炻瓷砖上。彩色砖建成墙壁后仍保留颜色，上釉物品则无法做到。	lP
 Fuse a glaze onto plain porcelain bricks. A colored brick keeps its color when built into a wall, which a glazed item cannot.	将釉料烧附在普通瓷砖上。彩色砖建成墙壁后仍保留颜色，上釉物品则无法做到。	lP
+
+# RAW workshop and reaction category tooltips.
+Blend a full bag of each parent color into two full bags of the result. Needs two empty bags.	各取一整袋原色釉粉，混合成两整袋新色釉粉。需要两个空袋。	lj
+Fire raw materials into colored glaze powder. One dose glazes one item; a full bag holds three.	将原料制成彩色釉粉。一份可为一件物品上釉，一整袋包含三份。	lj
+Fuse a glaze onto plain earthenware bricks. A colored brick keeps its color when built into a wall, which a glazed item cannot.	将釉料烧附在普通瓦陶砖上。彩色砖建成墙壁后仍保留颜色，上釉物品则无法做到。	lj
+Fuse a glaze onto plain porcelain bricks. A colored brick keeps its color when built into a wall, which a glazed item cannot.	将釉料烧附在普通瓷砖上。彩色砖建成墙壁后仍保留颜色，上釉物品则无法做到。	lj
+Fuse a glaze onto plain stoneware bricks. A colored brick keeps its color when built into a wall, which a glazed item cannot.	将釉料烧附在普通炻瓷砖上。彩色砖建成墙壁后仍保留颜色，上釉物品则无法做到。	lj

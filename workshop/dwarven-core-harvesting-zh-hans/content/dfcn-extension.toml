@@ -1,6 +1,6 @@
 schema = 1
 id = "dwarven-core-harvesting-zh-hans"
-version = 1
+version = 2
 language = "zh-Hans"
 name = "矮人地核采掘汉化数据"
 translations = "dfcn/translations.tsv"

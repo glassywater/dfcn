@@ -1626,3 +1626,8 @@ DFHack GUI Overlay control: |{d} months|I|0|-1|0	|{d}个月	l
 # Source info metadata and author's update notices.
 Mod description: Tired of the simplicity of brewing in DF? Want to wait months until your dwarves can drink anything you produce? Want to need to use fuel for brewing? Then this mod is for you!\n\nComplicates the brewing process, everything now takes place in the new workshop: The Barrel Rack, it works automatically issuing a grab order for any fermentable it \ndetects, which is produced in the still.\n\nAlso adds distillables, a highly valuable variant made with the use of fuel, and raises the value of all types of alcohol since it takes longer to produce\n	觉得《矮人要塞》的酿酒太简单了？想等上几个月，才能让矮人喝到自己酿的酒？想让酿酒也消耗燃料？那这个模组就适合你！\n\n这个模组让酿酒流程变得更复杂：现在所有发酵都在新工坊“酒桶架”进行。它会自动探测蒸馏房产出的可发酵原料，并下达搬运任务。\n\n模组还加入了用燃料制成的高价值蒸馏酒；由于生产耗时更长，所有酒类的价值也都提高了。	lP
 Hotfix, Last update broke something... AGAIN, maybe I should start testing more eh? Nah...	紧急修复：上次更新又弄坏了一些东西……也许我该多测试一下？算了……	l
+
+# RAW workshop and reaction category tooltips.
+Distill some spirits	蒸馏烈酒	lj
+Prepare plants for beer	准备植物以酿造啤酒	lj
+Prepare plants for wine	准备植物以酿造果酒	lj

@@ -776,7 +776,7 @@ Cramorant	古月鸟	wi
 Cranidos	头盖龙	wi
 Crawdaunt	铁螯龙虾	wi
 Cream	奶油	wi
-Create a pen/pasture over the workshop to change Furfrou trims here. Other Pokemon can be given a haircut for a happy thought.	在这座工坊上设置畜栏／牧场，即可在此给多丽米亚修剪造型。其他宝可梦也可以理发，从而产生愉快的想法。	wi
+Create a pen/pasture over the workshop to change Furfrou trims here. Other Pokemon can be given a haircut for a happy thought.	在这座工坊上设置畜栏／牧场，即可在此给多丽米亚修剪造型。其他宝可梦也可以理发，从而产生愉快的想法。	hj
 Create illusions	制造幻象	wi
 Create mummy	创建木乃伊	wi
 Cresselia	克雷色利亚	wi
@@ -4330,15 +4330,15 @@ Ursaluna	月月熊	wi
 Ursaring	圈圈熊	wi
 Urshifu	武道熊师	wi
 Use Balms to quell Noble Pokemon	用镇宝平息王的愤怒。	wi
-Use Pokebeans to make Pokebeans.	用宝可豆制作宝可豆。	wi
-Use Pokebeans to make even more Pokebeans.	用宝可豆制作更多更多的宝可豆。	wi
-Use Pokebeans to make more Pokebeans.	用宝可豆制作更多宝可豆。	wi
+Use Pokebeans to make Pokebeans.	用宝可豆制作宝可豆。	hj
+Use Pokebeans to make even more Pokebeans.	用宝可豆制作更多更多的宝可豆。	hj
+Use Pokebeans to make more Pokebeans.	用宝可豆制作更多宝可豆。	hj
 Use a vitamin to increase a Pokemon's stat.	使用营养饮料提升宝可梦的能力。	wi
 Use an item to heal wounds on a Pokemon. (Does not help severe injuries or restore lost limbs)	使用道具治疗宝可梦的伤口。（无法治疗重伤或恢复失去的肢体。）	wi
 Use an item to remove syndromes from a Pokemon. (Currently does nothing)	使用道具解除宝可梦的异常状态。（目前没有效果。）	wi
-Use fossils here to allow the user to summon a fossil Pokemon.	在此使用化石，让使用者能够召唤化石宝可梦。	wi
-Use items here to heal or apply various effects to Pokemon by creating a pen/pasture inside the workshop.	在工坊内设置畜栏／牧场，即可在此使用道具治疗宝可梦或为它们施加各种效果。	wi
-Use items to evolve Pokemon by creating a pen/pasture inside the workshop.	在工坊内设置畜栏／牧场，即可使用道具让宝可梦进化。	wi
+Use fossils here to allow the user to summon a fossil Pokemon.	在此使用化石，让使用者能够召唤化石宝可梦。	hj
+Use items here to heal or apply various effects to Pokemon by creating a pen/pasture inside the workshop.	在工坊内设置畜栏／牧场，即可在此使用道具治疗宝可梦或为它们施加各种效果。	hj
+Use items to evolve Pokemon by creating a pen/pasture inside the workshop.	在工坊内设置畜栏／牧场，即可使用道具让宝可梦进化。	hj
 Used by non Pokemon to revive dead Pokemon.	供宝可梦以外的生物使用，复活死去的宝可梦。	wi
 Utility Umbrella	万能伞	wl
 Utility Umbrellas	万能伞	wi
@@ -17673,3 +17673,111 @@ Wonder Special Energy	神奇特殊能量	wi
 Y-Ray Specs	Ｙ光线眼镜	wi
 Yellow Gummi	黄色软糖	wi
 Zinc Band	锌绑带	wi
+
+# RAW workshop and reaction category tooltips.
+Blend food items into various drinks.	将食物调制成各种饮料。	lj
+Boost the power of Pokemon with Z-Crystals, or turn certain ones into a "Z-Powered" form. (That haven't previously evolved, those without an (e) next to the name)	使用Ｚ纯晶增强宝可梦，或让部分宝可梦变成“Ｚ力量形态”。仅适用于尚未进化、名字旁没有“(e)”标记的宝可梦。	lj
+Create anything you want from Dwarvemon.	制作你想要的任何矮人宝可梦物品。	lj
+Create energy related items and use them by creating a pen/pasture inside the workshop.	制作能量相关道具；在工坊内设置畜栏／牧场，即可使用这些道具。	lj
+Evolve a Pokemon that requires an evolution stone. (That haven't previously evolved, those without an (e) next to the name)	让需要进化之石的宝可梦进化。（仅限从未进化过、名字旁没有“(e)”标记的宝可梦。）	lj
+Evolve Pokemon that require certain items. (That haven't previously evolved, those without an (e) next to the name)	让需要特定道具的宝可梦进化。（仅限从未进化过、名字旁没有“(e)”标记的宝可梦。）	lj
+Evolve/Devolve Pokemon with TCG items. (That haven't previously evolved, those without an (e) next to the name)	用集换式卡牌道具使宝可梦进化或退化（仅限此前未进化、名字旁没有“(e)”的宝可梦）。	lj
+Exchange Basic Energy of one type for another.	将一种属性的基本能量换成另一种属性的基本能量。	lj
+Held/usable items that have various benefits	具有各种有益效果的携带道具或使用道具。	lj
+Items related to Dynamax.	与极巨化相关的道具。	lj
+Items that are used by non Pokemon.	供宝可梦以外的生物使用的道具。	lj
+Make Aprijuice from Apricorns.	用球果制作球果汁。	lj
+Make Artifact/Special items which have certain uses.	制作具有特定用途的神器或特殊道具。	lj
+Make Balms which can quell Noble Pokemon	制作能平息王的愤怒的镇宝。	lj
+Make Basic Energy items from the TCG addon.	制作集换式卡牌扩展中的基本能量道具。	lj
+Make Blended Drinks from PMD.	制作不可思议迷宫扩展中的混合饮料。	lj
+Make clothing from PMD.	制作不可思议迷宫扩展中的服饰。	lj
+Make clothing which have various effects when applied (not worn).	制作应用时产生各种效果的服饰（效果通过应用而非穿戴触发）。	lj
+Make components for other items.	制作其他物品所需的组件。	lj
+Make Curries from berries and various ingredients.	用树果和各种食材制作咖喱饭。	lj
+Make Devices from PMD.	制作不可思议迷宫扩展中的装置。	lj
+Make drinks that heal Pokemon.	制作能治疗宝可梦的饮料。	lj
+Make drives for Genesect.	为盖诺赛克特制作卡带。	lj
+Make dwarven sugar from other sources.	用其他原料制作矮人糖。	lj
+Make dyes from certain berries.	用特定树果制作染料。	lj
+Make Emeras from PMD.	制作不可思议迷宫扩展中的嵌珠。	lj
+Make evolution items from PMD.	制作不可思议迷宫扩展中的进化道具。	lj
+Make evolution items that evolve certain Pokemon.	制作使特定宝可梦进化的道具。	lj
+Make evolution related items for evolving certain Pokemon.	制作特定宝可梦进化所需的道具。	lj
+Make extracts from certain things	从特定物品中提取精华。	lj
+Make Flags from PMD.	制作不可思议迷宫扩展中的旗帜。	lj
+Make flags that can allow Pokemon to aid others.	制作使宝可梦能够帮助同伴的旗帜。	lj
+Make flutes from certain kinds of sand.	用特定种类的沙子制作哨子。	lj
+Make food items from PMD.	制作不可思议迷宫扩展中的食物道具。	lj
+Make food items that have various benefits when eaten.	制作食用后产生各种有益效果的食物道具。	lj
+Make food related items.	制作与食物有关的物品。	lj
+Make glasses from PMD.	制作不可思议迷宫扩展中的眼镜。	lj
+Make glasses which have various effects when applied (not worn).	制作应用时产生各种效果的眼镜（效果通过应用而非穿戴触发）。	lj
+Make Gummis from PMD.	制作不可思议迷宫扩展中的软糖。	lj
+Make health drinks from PMD.	制作不可思议迷宫扩展中的营养饮料。	lj
+Make health drinks that have various benefits when consumed.	制作饮用后产生各种有益效果的营养饮料。	lj
+Make items found in the ground from the TCG addon.	制作集换式卡牌扩展中可从地下找到的道具。	lj
+Make items found in the ground.	制作可从地下找到的物品。	lj
+Make items from the TCG addon.	制作集换式卡牌扩展中的道具。	lj
+Make items related to mythical/legendary Pokemon.	制作与幻之宝可梦及传说宝可梦有关的道具。	lj
+Make items that have various benefits when applied.	制作使用后具有各种有益效果的道具。	lj
+Make items that heal Pokemon.	制作能治疗宝可梦的道具。	lj
+Make Lookalike items from PMD.	制作不可思议迷宫扩展中的仿冒道具。	lj
+Make Looplets from PMD.	制作不可思议迷宫扩展中的环饰。	lj
+Make Looplets that can be used alone or with Emeras.	制作可单独使用或搭配嵌珠使用的环饰。	lj
+Make materials used in crafting.	制作加工所需的材料。	lj
+Make medicine related items.	制作与药品有关的物品。	lj
+Make memories for Silvally.	为银伴战兽制作存储碟。	lj
+Make Mochi from stat reducing berries, rice, and a bucket of water.	用降低能力的树果、稻米和一桶水制作粘糕。	lj
+Make other items from PMD.	制作不可思议迷宫扩展中的其他道具。	lj
+Make other items that have benefits when applied.	制作使用后具有有益效果的其他道具。	lj
+Make parts for certain items.	制作特定道具的零件。	lj
+Make plant items from the TCG addon.	制作集换式卡牌扩展中的植物道具。	lj
+Make plant related items.	制作与植物有关的物品。	lj
+Make plates for Arceus or boosting certain types of Pokemon.	制作供阿尔宙斯使用或能增强特定属性宝可梦的石板。	lj
+Make Poffins from berries.	用树果制作宝芬。	lj
+Make Poke Beanstalk seeds	制作宝可豆藤种子。	lj
+Make Poke Puffs from berries and milk.	用树果和奶制作宝芙蕾。	lj
+Make Pokeballs from Apricorns and a mechanism.	用球果和机械组件制作精灵球。	lj
+Make Pokeballs from Apricorns and Tumblestones (+ Iron Chunks for stronger ones).	用球果和玉石制作精灵球。（制作更高级的球还需要铁块。）	lj
+Make Pokeballs from metal bars and a mechanism.	用金属锭和机械组件制作精灵球。	lj
+Make Pokeblocks from berries.	用树果制作宝可方块。	lj
+Make Potions/Status healing items from certain berries that heal Pokemon.	用具有治疗作用的特定树果制作伤药或异常状态回复道具。	lj
+Make repellents that repel wild Pokemon when applied.	制作使用后能驱赶野生宝可梦的喷雾。	lj
+Make Seeds from PMD.	制作不可思议迷宫扩展中的种子。	lj
+Make Special Energy items from the TCG addon.	制作集换式卡牌扩展中的特殊能量道具。	lj
+Make special items from PMD.	制作不可思议迷宫扩展中的特殊道具。	lj
+Make special items.	制作特殊道具。	lj
+Make stone items from PMD.	制作不可思议迷宫扩展中的石头道具。	lj
+Make Technical Machines and Cubes from the TCG addon.	制作集换式卡牌扩展中的招式学习器和方块。	lj
+Make throwable items from PMD.	制作不可思议迷宫扩展中的投掷道具。	lj
+Make toy items.	制作玩具。	lj
+Make type changing items for Arceus.	制作改变阿尔宙斯属性的道具。	lj
+Make type changing items for Genesect.	制作改变盖诺赛克特招式属性的道具。	lj
+Make type changing items for Silvally.	制作改变银伴战兽属性的道具。	lj
+Make various items.	制作各种道具。	lj
+Make various juices from berries.	用树果制作各种果汁。	lj
+Make vitamins from Berry Powder.	用树果粉制作营养饮料。	lj
+Make Wands from PMD.	制作不可思议迷宫扩展中的魔杖。	lj
+Make wands that allow a user to do certain effects.	制作使使用者能够产生特定效果的魔杖。	lj
+Make weapons from PMD.	制作不可思议迷宫扩展中的武器。	lj
+Make Wonder Orbs from PMD.	制作不可思议迷宫扩展中的神奇玉。	lj
+Make Wonder Orbs that can have various effects on the user/others.	制作能够对使用者或其他对象产生各种效果的神奇玉。	lj
+Makes devices that increase stats for certain types of Pokemon.	制作增强特定属性宝可梦能力的装置。	lj
+Makes items used with an item thrower.	制作搭配物品投掷器使用的道具。	lj
+Mints that raise and reduce certain stats by 10%	使特定能力提高或降低１０％的薄荷。	lj
+Mochi that raises an attribute by 100	使一项属性提高１００的粘糕。	lj
+Other items that have various effects. (raise/lower stats, positive thoughts, damage resistance etc.)	具有各种效果的其他道具。（提升或降低能力、产生积极想法、抵抗伤害等。）	lj
+Permanently evolve a Pokemon to its Mega Evolution. (That haven't previously evolved, those without an (e) next to the name)	让宝可梦永久进化为超级进化形态。（仅限从未进化过、名字旁没有“(e)”标记的宝可梦。）	lj
+Pokeball related items.	与精灵球相关的道具。	lj
+Use a vitamin to increase a Pokemon's stat.	使用营养饮料提升宝可梦的能力。	lj
+Use an item to heal wounds on a Pokemon. (Does not help severe injuries or restore lost limbs)	使用道具治疗宝可梦的伤口。（无法治疗重伤或恢复失去的肢体。）	lj
+Use an item to remove syndromes from a Pokemon. (Currently does nothing)	使用道具解除宝可梦的异常状态。（目前没有效果。）	lj
+Use Balms to quell Noble Pokemon	用镇宝平息王的愤怒。	lj
+Use Basic Energy to power up Pokemon of its type	使用基本能量强化相同属性的宝可梦。	lj
+Use Emeras that boost certain stats.	使用增强特定能力的嵌珠。	lj
+Use items from the TCG addon.	使用集换式卡牌扩展中的道具。	lj
+Use items that have various effects.	使用能产生各种效果的道具。	lj
+Use Looplets that have effects alone or extra with Emeras.	使用本身具有特殊效果、并可搭配嵌珠获得额外效果的环饰。	lj
+Use Special Energy to power up Pokemon	使用特殊能量强化宝可梦。	lj
+Used by non Pokemon to revive dead Pokemon.	供宝可梦以外的生物使用，复活死去的宝可梦。	lj
