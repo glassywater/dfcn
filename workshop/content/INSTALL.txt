@@ -3,8 +3,8 @@ Byayoi 同人社区：https://byayoi.org/
 GitHub：https://github.com/pokemonchw/dfcn
 Releases：https://github.com/pokemonchw/dfcn/releases
 
-当前汉化版本：53.16-20261007（2026-10-07）。更新日志见本目录 CHANGELOG.txt。
-本次完善传说时代、历史事件和名称翻译，补齐 DFHack 动物与房间分配、通知及覆盖层控件汉化，修复公告弹窗、地点名称、材料提示与多处排版问题，并补齐覆盖层运行词表。
+当前汉化版本：53.16-20261007.2（2026-10-07 第二版）。更新日志见本目录 CHANGELOG.txt。
+本次完善传说名称与艺术品历史、公告及字段翻译，补齐 DFHack 建造规划器、物品选择与工单提示，修复 ASCII 中文名称、存档列表和访客概述排版，并优化库存与贸易界面的汉化性能。
 运行包默认 font_scale=1.1、min_font_pixels=12、font_bold=true；font_pixel_grid=0 保留普通字体渲染，使用点阵字体时可设为 12 启用整数倍缩放。完整设置说明见 DFCN/dfcn/data/runtime/config.ini。
 
 适用：Dwarf Fortress 53.16，Windows x64；支持 Steam 版与官网免费版。
