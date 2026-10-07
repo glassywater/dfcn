@@ -807,13 +807,19 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
     if (year < 1) date_key = "In a time before time,";
     else if (seconds == -1) date_key = "In {d},";
     else {
-        if (seconds < 0 || seconds >= 403200) return std::nullopt;
+        // b92640 uses signed division and suppresses season precision only
+        // for tick -1. Its switch default retains the phase and year even
+        // when the tick selects no season noun.
         const int season = seconds / 100800;
         const int within = seconds % 100800;
         static constexpr const char *seasons[] = {"spring", "summer", "autumn", "winter"};
+        const std::string_view phase = within <= 33600 ? "early" : within <= 67200 ? "mid" : "late";
         date_key = "In the ";
-        date_key += within <= 33600 ? "early " : within <= 67200 ? "mid" : "late ";
-        date_key += seasons[season];
+        date_key += phase;
+        if (season >= 0 && season < 4) {
+            if (phase != "mid") date_key += " ";
+            date_key += seasons[season];
+        }
         date_key += " of {d},";
     }
     return apply(date_key, year < 1 ? std::vector<Pieces>{} :

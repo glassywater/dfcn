@@ -1161,6 +1161,37 @@ case 79: { // insurrection_ended: 0 overthrow, 1 population vanishes, 2 crushed.
 case 87: { // artifact_destroyed
     const auto artifact = subject(NativeHistoryObjectKind::Artifact, number("artifact"));
     if (!artifact) return std::nullopt;
+    if (native_title) {
+        // art_image calls this event's +d8 subject, not its Legends narrative.
+        // b8ac80 keeps the artifact, HF, civilization and site independent;
+        // the shared date already leads result in Chinese sentence order.
+        std::string key = "the destruction of {s}";
+        std::vector<Pieces> fields{*artifact};
+        const bool figure_present = number("destroyer_hf") >= 0;
+        if (figure_present) {
+            const auto figure = subject(NativeHistoryObjectKind::Figure, number("destroyer_hf"));
+            if (!figure) return std::nullopt;
+            key += " by {s}";
+            fields.push_back(*figure);
+        }
+        if (number("destroyer_civ") >= 0) {
+            const auto entity = subject(NativeHistoryObjectKind::Entity, number("destroyer_civ"));
+            if (!entity) return std::nullopt;
+            key += figure_present ? " and {s}" : " by {s}";
+            fields.push_back(*entity);
+        }
+        if (number("site") >= 0) {
+            const auto site = subject(NativeHistoryObjectKind::Site, number("site"));
+            if (!site) return std::nullopt;
+            key += " in {s}";
+            fields.push_back(*site);
+        }
+        const auto title = scoped_apply("artwork-artifact-destruction-subject", key, fields);
+        if (!title) return std::nullopt;
+        join(result, *title);
+        // The enclosing artwork/collection production owns the punctuation.
+        return result;
+    }
     std::optional<Pieces> destroyer;
     if (number("destroyer_hf") >= 0) {
         destroyer = subject(NativeHistoryObjectKind::Figure, number("destroyer_hf"));

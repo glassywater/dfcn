@@ -1,0 +1,22 @@
+# Source-only productions of shared native date builder; Reference 0xb92640..0xb928f4; Classic 0xb8f680..0xb8f934.
+# YEAR is the decimal native year. phase=tick-trunc(tick/100800)*100800; only tick==-1 bypasses phase and season selection.
+# The native dates contain midspring/midsummer/midautumn/midwinter with no separator between mid and season.
+# The out-of-year default intentionally lacks a season; doubled spaces in early/late productions are original native output.
+year_condition	tick_condition	season	phase_condition	native_production
+year<1	any	any	any	a time before time
+year>=1	tick==-1	any	any	{YEAR}
+year>=1	tick!=-1	0	phase<=33600	the early spring of {YEAR}
+year>=1	tick!=-1	0	33600<phase<=67200	the midspring of {YEAR}
+year>=1	tick!=-1	0	phase>67200	the late spring of {YEAR}
+year>=1	tick!=-1	1	phase<=33600	the early summer of {YEAR}
+year>=1	tick!=-1	1	33600<phase<=67200	the midsummer of {YEAR}
+year>=1	tick!=-1	1	phase>67200	the late summer of {YEAR}
+year>=1	tick!=-1	2	phase<=33600	the early autumn of {YEAR}
+year>=1	tick!=-1	2	33600<phase<=67200	the midautumn of {YEAR}
+year>=1	tick!=-1	2	phase>67200	the late autumn of {YEAR}
+year>=1	tick!=-1	3	phase<=33600	the early winter of {YEAR}
+year>=1	tick!=-1	3	33600<phase<=67200	the midwinter of {YEAR}
+year>=1	tick!=-1	3	phase>67200	the late winter of {YEAR}
+year>=1	tick!=-1	outside 0..3	phase<=33600	the early  of {YEAR}
+year>=1	tick!=-1	outside 0..3	33600<phase<=67200	the mid of {YEAR}
+year>=1	tick!=-1	outside 0..3	phase>67200	the late  of {YEAR}

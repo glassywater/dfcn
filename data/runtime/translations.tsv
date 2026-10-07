@@ -2132,6 +2132,7 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, participating in {d} battles, slaying {d} enemies, and being a member for a year within {p}	{a1}在{p2}在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死{d2}名敌人及入会满一年后，获得了{p1}的{s1}头衔	ht
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, participating in {d} battles, slaying {d} enemies, and {d} years of membership in the wilds	{a1}在荒野中在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死{d2}名敌人及拥有{d3}年会龄后，获得了{p1}的{s1}头衔	ht
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,agreement-item,$name,$name]: the request by {s} that {s} retrieve {s} from {s} for {s}	{s1}请{s2}为{s5}从{s4}处取回{s3}的请求	l
+Announcement combat artwork-artifact-destruction-title [historical-artifact,$memorial-actor,$name,$travel-site,$date]: the destruction of {s} by {s} and {s} in {s} in {s}	{s5}，{s2}与{s3}在{s4}毁灭了{s1}	l
 Change the properties of the item being checked. Many of these are obscure and rely on specific tasks, but certain properties like 'empty' can be used in many conditions.	修改要检查的物品属性。其中许多属性只适用于特定任务，含义较为生僻；但“空”等属性可用于多种条件。	hj
 DFHack help: "gui/advfort -e" Brings up the GUI for interactive job selection. Items that the adventurer's civilization can use will be available in item selection lists.	"gui/advfort -e" 调出 GUI 进行交互式作业选择。冒险家政权可以使用的物品将出现在物品选择列表中。	l
 DFHack help: "preserve-rooms now" Do an immediate update of room assignments. The plugin does this routinely in the background, but you can run it manually to update now.	"preserve-rooms now" 立即更新房间分配。该插件会在后台例行执行此操作，但您现在可以手动运行它来更新。	l
@@ -2639,6 +2640,7 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, serving in combat, slaying {d} enemies, and being a member for a year within {p}	{a1}在{p2}在{s2}方面达到足够的技艺水平、在战斗中效力、杀死{d1}名敌人及入会满一年后，获得了{p1}的{s1}头衔	ht
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, serving in combat, slaying {d} enemies, and {d} years of membership in the wilds	{a1}在荒野中在{s2}方面达到足够的技艺水平、在战斗中效力、杀死{d1}名敌人及拥有{d2}年会龄后，获得了{p1}的{s1}头衔	ht
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$description]: {s} aided {s} in becoming a permanent part of the living world {s}	{s1}帮助{s2}永远留在生者的世界，{s3}	l
+Announcement combat artwork-artifact-destruction-subject [historical-artifact,$memorial-actor,$name,$travel-site]: the destruction of {s} by {s} and {s} in {s}	{s2}与{s3}在{s4}毁灭了{s1}	l
 Announcement combat historical-squad-clash-core [historical-commanded-squad,historical-commanded-squad,historical-battle-location]: {s} clashed with {s} in {s}	{s1}与{s2}在{s3}交战	l
 DFHack help: "changeitem info" Show details about the selected item. Does not change the item. You can use this command to discover RAW ids for existing items.	"changeitem info" 显示所选项目的详细信息。不改变该项目。您可以使用此命令来发现现有项目的 RAW id。	l
 DFHack help: "designate" Designate trees for chopping right now according to the current configuration. This works even if "autochop" is not currently enabled.	"designate" 根据当前配置指定立即进行砍伐的树。即使当前未启用 "autochop"，此功能也有效。	l
@@ -2815,6 +2817,7 @@ A caravan from {e} has arrived. Your status as a major land has attracted much m
 A very small aquatic arthropod with two antennae. It has many legs underneath its flat segmented oval body. They can curl into a ball to protect themselves.	一种很小的水生节肢动物，长有两根触角。它扁平的椭圆形身体分为多节，腹面生有许多足。遇到危险时，它会蜷成球状保护自己。	lP
 An office or study is required for certain official tasks, such as approving work orders and bookkeeping. A chair or throne is required for these functions.	批准工单、记账等公务需要办公室或书房。必须放置椅子才能执行这些职务。	hj
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,agreement-item,$name]: the request by {s} that {s} retrieve {s} from {s}	{s1}请{s2}从{s4}处取回{s3}的请求	l
+Announcement combat artwork-artifact-destruction-title [historical-artifact,$memorial-actor,$travel-site,$date]: the destruction of {s} by {s} in {s} in {s}	{s4}，{s2}在{s3}毁灭了{s1}	l
 Announcement combat historical-event-title [historical-squad,historical-squad,historical-battle-location,$date]: the clash between {s} and {s} in {s} in {s}	{s4}，{s1}与{s2}在{s3}的交战	l
 DFHack help: "priority" An integer between "1" and "7", inclusive, indicating the base priority for this "dig" blueprint. If not specified, defaults to "4".	"priority" "1"和"7"（含）之间的整数，指示此 "dig" 蓝图的基本优先级。如果未指定，则默认为"4"。	l
 DFHack help: , get_dstat(totals.forbid))) print(uline(tbl_ln_len)) if has_melt_mastworks or has_claim_enabled then print() if has_melt_mastworks then print(	, get_dstat(totals.forbid))) print(uline(tbl_ln_len)) 如果 has_melt_mastworks 或 has_claim_enabled 则 print() 如果 has_melt_mastworks 则 print(	l
@@ -3186,6 +3189,7 @@ A caravan from {e} has arrived. Your status as a minor land has attracted a bit 
 A caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. However, overall trade sentiments are lukewarm.	来自{e1}的商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。不过，总体贸易意愿不冷不热。	hPt
 A caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. However, overall trade sentiments are terrible.	来自{e1}的商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。不过，总体贸易意愿极差。	hPt
 A {s} caravan from {e} has arrived. Trade relations remain strengthened by recent negotiations. However, overall trade sentiments are tenuous at best.	来自{e1}的{s1}商队已抵达。近期谈判对贸易关系的促进作用仍在持续。不过，总体贸易意愿至多只能算勉强。	hPt
+Announcement combat artwork-artifact-destruction-title [historical-artifact,$memorial-actor,$name,$date]: the destruction of {s} by {s} and {s} in {s}	{s4}，{s2}与{s3}毁灭了{s1}	l
 Cages can be used to contain an animal, and metal cages can be used by the justice system. Glass cages can be filled with water and used as aquariums.	笼子可关押动物，金属笼也可用于司法系统。玻璃笼可以装水作为水族箱。	hj
 Create a new work order. Work orders are like workshop jobs but they are assigned to shops automatically and can be activated with various conditions.	创建新的工单。工单类似工坊任务，但会自动分配到工坊，也可设置各种启动条件。	hj
 DFHack help: "--active" Scrub units that have been dead for more than a month from the "active" vector. This is the default if no option is specified.	"--active" 从"active"向量中清除已经死亡超过一个月的单位。如果未指定选项，则这是默认值。	l
@@ -3475,6 +3479,7 @@ A {s} caravan from {e} has arrived. Your status as a minor land has attracted a 
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Overall trade sentiments are very good.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。总体贸易意愿非常良好。	hPt
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name,$name]: the joining of {s} with {s} to oust {s} from {s}	{s1}与{s2}同行，将{s3}逐出{s4}	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the joining of {s} with {s} in order to be brought to safety	{s1}与{s2}同行，以便被带到安全的地方	l
+Announcement combat artwork-artifact-destruction-title [historical-artifact,$name,$travel-site,$date]: the destruction of {s} by {s} in {s} in {s}	{s4}，{s2}在{s3}毁灭了{s1}	l
 Announcement combat rumor-event [$name,$travel-site]: A bandit gang calling itself {s} has been harassing people right here on the streets of {s}!	有伙土匪自称{s1}，就在{s2}这里的街上骚扰百姓！	l
 Announcement combat threat-killing [threat-kill-count,threat-possessive,threat-family-list]: has killed {s} in {s} lust for murder, among them {s}	{s2}嗜杀成性，已经杀害了{s1}，其中包括{s3}	l
 DFHack help: "--by-type" Only applies to the "count" action. Outputs, in addition to the total count, a table of item counts grouped by item type.	"--by-type" 仅适用于 "count" 动作。除了总计数之外，还输出按项目类型分组的项目计数表。	l
@@ -3537,6 +3542,7 @@ A {s} caravan from {e} has arrived. Your status as a minor land has attracted a 
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Overall trade sentiments are lukewarm.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。总体贸易意愿不冷不热。	hPt
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Overall trade sentiments are terrible.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。总体贸易意愿极差。	hPt
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the agreement by {s} to establish a grand guildhall for {s}	{s1}为{s2}建造大行会大厅的协议	l
+Announcement combat artwork-artifact-destruction-subject [historical-artifact,$memorial-actor,$travel-site]: the destruction of {s} by {s} in {s}	{s2}在{s3}毁灭了{s1}	l
 DFHack help: "--reset" Forget which dwarves have been optimized. However, if you reload an existing save, the optimization list will be reloaded.	"--reset" 忘记优化了哪个矮人了。但是，如果您重新加载现有保存，优化列表也会重新加载。	l
 DFHack help: "-e", "--exclude <plant_id>[,<plant_id>...]" Same as "--filter", but target everything except these. Cannot be used with "--filter".	"-e", "--exclude <plant_id>[,<plant_id>...]" 与 "--filter" 相同，但针对除这些之外的所有内容。不能与 "--filter" 一起使用。	l
 DFHack help: "-u", "--unit <id>" Use the specified unit as the "creator" of the generated item instead of the selected unit or the first citizen.	"-u"、"--unit <id>" 使用指定单位作为生成物品的"creator"，而不是选择的单位或第一个居民。	l
@@ -4075,6 +4081,7 @@ A medium-sized, aggressive, territorial fish. It can be found in shallow oceanic
 A {s} caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. Overall trade sentiments are great.	来自{e1}的{s1}商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。总体贸易意愿很高。	hPt
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the agreement by {s} to establish a guildhall for {s}	{s1}为{s2}建造行会大厅的协议	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the passing of corruptly-obtained funds by {s} to {s}	{s1}进行的非法所得的转交（交给{s2}）	l
+Announcement combat artwork-artifact-destruction-subject [historical-artifact,$memorial-actor,$name]: the destruction of {s} by {s} and {s}	{s2}与{s3}毁灭了{s1}	l
 Announcement combat justice-intrigue-factors [justice-intrigue-factor,justice-intrigue-factor,justice-intrigue-factor]: {s} and {s} and {s}	{s1}，且{s2}，以及{s3}	l
 Click on a Resident to see their needs, inventory, thoughts, relations, and more. You can also access information from the Citizens button.	点击任意一名居民，即可查看其需求、背包物品、想法、人际关系等更多信息。你也可以通过「居民」按钮来查阅相关内容。	w
 DFHack help: "--drop" Force the unit to drop conflicting worn items onto the ground, where they can then be reclaimed in the correct order.	"--drop" 强制单位将冲突的磨损物品扔到地上，然后可以按正确的顺序回收它们。	l
@@ -4375,6 +4382,7 @@ A huge ape found in the forest. It lives in small groups eating plants. The grou
 A {s} caravan from {e} has arrived. The presence of your ruler has attracted great riches. Overall trade sentiments are tenuous at best.	来自{e1}的{s1}商队已抵达。你的统治者在此坐镇，吸引来了巨额财富。总体贸易意愿至多只能算勉强。	hPt
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the agreement by {s} to establish a temple for {s}	{s1}为{s2}建造神殿的协议	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the joining of {s} with {s} to entertain the world	{s1}与{s2}同行，为世人表演	l
+Announcement combat artwork-artifact-destruction-title [historical-artifact,$memorial-actor,$date]: the destruction of {s} by {s} in {s}	{s3}，{s2}毁灭了{s1}	l
 Announcement combat justice-interrogation-sentence [$unit]: Attempted to appeal to shared worship of {s} in order to elicit information.	试图以共同信奉{s1}为由规劝受审者，以获取情报。	l
 Announcement combat negotiation-sentence []: The task was made somewhat more difficult by the relative populations of the civilizations.	双方政权的人口差距让这项任务困难了一些。	l
 DFHack help: "--clear" Reset the timeskip duration to its default value. Note that this won't affect timeskips which have already begun.	"--clear" 将时间跳跃持续时间重置为其默认值。请注意，这不会影响已经开始的时间跳跃。	l
@@ -4475,6 +4483,7 @@ the bestowal of the title of {s} in {p} after participating in {d} battles, slay
 A caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. Overall trade sentiments are great.	来自{e1}的商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。总体贸易意愿很高。	hPt
 A {s} caravan from {e} has arrived. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are fantastic.	来自{e1}的{s1}商队已抵达。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿极其高涨。	hPt
 A {s} caravan from {e} has arrived. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are very good.	来自{e1}的{s1}商队已抵达。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿非常良好。	hPt
+Announcement combat artwork-artifact-destruction-subject [historical-artifact,$name,$travel-site]: the destruction of {s} by {s} in {s}	{s2}在{s3}毁灭了{s1}	l
 Announcement combat justice-interrogation-sentence []: Attempted to misrepresent facts surrounding case in order to elicit information.	试图歪曲案件相关事实，以获取情报。	l
 Announcement combat justice-intrigue-method [$office,$name]: made a blackmail threat, due to embezzlement using the position {s} of {s}	以利用{s2}{s1}的职位侵吞公款的把柄进行勒索	l
 Choose a stockpile with which the track stop's vehicle will exchange items. The vehicle will take desired items and offload any others.	选择与轨道站点的车辆交换物品的储物堆。车辆会装载所需物品，并卸下其他物品。	hj
@@ -4709,6 +4718,7 @@ A huge brown creature found in temperate woodland. It is known for its ferocious
 A huge quadrupedal dinosaur with a prominent row of plates along its back and a spiked tail. It is a herbivore but can defend itself.	一种巨大的四足恐龙，背上排列着一列醒目的骨板，尾部生有尖刺。它虽然以植物为食，却很有自卫能力。	lP
 A huge, round, hairless river creature. It is a plant-eating animal but has long tusks and can be aggressive and deadly if disturbed.	.这只庞大的河栖生物身躯圆润、光滑无毛，虽然以食用植物为生，却有着狰狞的獠牙，如果惊扰它的话，就能看到它富有攻击性且致命危险的一面。	lP
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} made an agreement with {s} to work as a mercenary	{s1}与{s2}达成协议，以便从事雇佣兵工作	l
+Announcement combat artwork-artifact-destruction-title [historical-artifact,$travel-site,$date]: the destruction of {s} in {s} in {s}	{s3}，在{s2}发生的{s1}毁灭事件	l
 Announcement combat justice-interrogation-sentence []: In retrospect, interrogator may have completely misjudged subject's character.	事后看来，审讯者可能完全误判了受审者的性格。	l
 Announcement combat negotiation-response []: intimidated their opposite with matching fury but grew meeker throughout the proceedings	也怒气冲冲地威吓了对方，却在会谈过程中渐渐软下了态度	l
 Announcement combat sentence [$name,dialogue-family,$unit]: I'm returning to my home in {s} to move into my new home with my {s} {s}.	我正返回{s1}的家，与我的{s2}{s3}搬入我们的新家。	l
@@ -5523,6 +5533,7 @@ An aquatic arthropod with a pronounced head structure and frontal appendages for
 Announcement combat agreement-core [agreement-party-list,$name,agreement-goals]: {s} plotted to infiltrate {s} in order to {s}	{s1}密谋潜入{s2}，以便{s3}	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,agreement-item]: {s} asked that {s} retrieve {s}	{s1}请{s2}取回{s3}	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the joining of {s} with {s} to {s}	{s1}与{s2}同行，前往{s3}	l
+Announcement combat artwork-artifact-destruction-title [historical-artifact,$name,$date]: the destruction of {s} by {s} in {s}	{s3}，{s2}毁灭了{s1}	l
 Announcement combat fortress-announcement [$job,$digits,$unit]: Mandate Fulfilled: Automatically queued {s} x{s} for noble {s}	法令已安排：已为贵族{s3}自动加入工单：{s1} × {s2}。	l
 Announcement combat memory-performance-core [memory-person,memory-performance-verb,memory-performance-work]: I saw {s} {s} {s}	我看{s1}{s2}{s3}	l
 DFHack GUI Journal tutorial: For guidance on navigation and hotkeys, tap the ? button in the upper right corner. Safe travels!	有关浏览方式和快捷键的说明，请点击右上角的 ? 按钮。祝你一路平安！	l
@@ -5656,6 +5667,7 @@ A small creature that lives in watery ditches deep underground. It has a sharp b
 A small flightless bird, it is the largest of the natural penguins. It is known for its treks through leagues of glacial ice.	一种不会飞的鸟类，是最大的企鹅种类。它以长途跋涉穿越冰川冰层而闻名。	lP
 A {s} caravan from {e} has arrived. The presence of your ruler has attracted great riches. Overall trade sentiments are good.	来自{e1}的{s1}商队已抵达。你的统治者在此坐镇，吸引来了巨额财富。总体贸易意愿良好。	hPt
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the promise by {s} to {s} of a position	{s1}答应给{s2}安排职位的承诺	l
+Announcement combat artwork-artifact-destruction-subject [historical-artifact,$memorial-actor]: the destruction of {s} by {s}	{s2}毁灭了{s1}	l
 Announcement combat justice-interrogation-sentence [$unit]: Appealed to shared worship of {s} in order to elicit information.	以共同信奉{s1}为由规劝受审者，试图获取情报。	l
 Announcement combat justice-interrogation-sentence []: Attempted to make intimidating remarks in order to elicit information.	试图以言语恐吓受审者，以获取情报。	l
 Announcement combat rumor-event [$name,$travel-site]: A bandit gang calling itself {s} has been harassing people over in {s}.	有伙土匪自称{s1}，一直在{s2}那边骚扰百姓。	l
@@ -6024,6 +6036,7 @@ A huge monster with an enormous tail, covered with thick fur. They run on four l
 A tiny arthropod that walks tilted upright on two large legs. Six spined projections radiate outward from its head shield.	一种微小的节肢动物，靠两条粗大的腿斜立行走。六根带刺的突起从它的头甲向四周伸展。	lP
 Although this location is relatively safe, it is recommended that you prepare a squad and get them training at some point.	虽然这里比较安全，仍然建议你在适当时候组建小队并开始训练。	hq
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} joined with {s} to entertain the world	{s1}与{s2}同行，为世人表演	l
+Announcement combat artwork-artifact-destruction-subject [historical-artifact,$travel-site]: the destruction of {s} in {s}	在{s2}发生的{s1}毁灭事件	l
 Announcement combat justice-interrogation-factors [justice-interrogation-factor,justice-interrogation-factor]: {s} and {s}	{s1}，且{s2}	l
 Announcement combat justice-intrigue-recruitment [justice-intrigue-predicate,justice-intrigue-motive]: {s} in order to {s}	{s1}，目的是{s2}	l
 Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-origin]: get your {s} all the way from {s}	快来买你的一路从{s2}运来的{s1}	l
@@ -6880,6 +6893,7 @@ A small forest bird. The male's tail creates an extravagant display for females.
 A very large quadrupedal predator, well-suited to the hunt. It has a tail and powerful jaws, and it is terrestrial.	一种体型很大的四足捕食者，十分擅长狩猎。它长有尾巴和强有力的颌部，在陆地上生活。	lP
 Announcement combat agreement-core [agreement-party-list,$office,$name]: {s} began embezzling funds as a {s} of {s}	{s1}以{s3}的{s2}身份开始挪用资金	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} promised {s} to give a position	{s1}答应{s2}安排一个职位	l
+Announcement combat artwork-artifact-destruction-subject [historical-artifact,$name]: the destruction of {s} by {s}	{s2}毁灭了{s1}	l
 Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-origin]: your very own {s} from {s}	专属于你的来自{s2}的{s1}	l
 Announcement combat rumor-event []: A great monster from the underground is said to have emerged from the darkness.	据说，一只地下巨怪已经从黑暗中现身。	l
 Announcement combat rumor-event [rumor-time,rumor-person,rumor-person]: I heard that {s}, {s} was kidnapped by {s}.	听说{s1}，{s2}被{s3}绑走了。	l
@@ -7163,6 +7177,7 @@ A small, brightly-colored snake. It is known for eating other snakes and being m
 A small, foreboding black bird that feeds on carrion. It is social, very intelligent, and knows how to use tools.	一种小型的不详的食腐黑鸟。它善于社交，非常聪明，知道如何使用工具。	lP
 A very small feathered bipedal dinosaur with an opposable fifth finger. It is a herbivore and has a beaked mouth.	一种很小的带羽毛双足恐龙，第五指可以与其他手指对握。它以植物为食，嘴呈喙状。	lP
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the joining of {s} with {s}	{s1}与{s2}同行	l
+Announcement combat artwork-artifact-destruction-title [historical-artifact,$date]: the destruction of {s} in {s}	{s2}，{s1}的毁灭	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need valid, active clay collection zone.	{s1}取消了{s2}：需要有效且启用的采黏土区。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need valid, active sand collection zone.	{s1}取消了{s2}：需要有效且启用的采砂区。	l
 Announcement combat justice-interrogation-sentence []: Attempted to build rapport in order to elicit information.	试图与受审者建立融洽关系，以获取情报。	l
@@ -8772,6 +8787,7 @@ was unaffected by the comments and refused, despite the efforts of surrounding a
 A catapult fires a boulder in a fixed direction. The operator can adjust the aim freely within a cone.	投石机沿固定方向发射巨石，操作员可在锥形范围内自由调整瞄准方向。	hj
 A gigantic armored quadrupedal dinosaur with a mighty tail club. It is a herbivore and has four horns.	一种体型极其庞大的披甲四足恐龙，尾端有一枚威力惊人的骨槌。它以植物为食，另长有四根角。	lP
 A medium-sized mammalian predator. It is known by the tell-tale tufts of hair on the tips of its ears.	一种中型哺乳动物捕食者。众所周知，它的耳朵尖上有一簇簇毛发。	lP
+Announcement combat artwork-artifact-destruction-subject [historical-artifact]: the destruction of {s}	{s1}的毁灭	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Experiencing emotional shock.	{s1}取消了{s2}：受到情感冲击。	l
 Announcement combat fortress-announcement [$unit]: {s} has mandated the construction of certain goods.	{s1}下令制作某些物品。	l
 Announcement combat justice-intrigue-response [justice-intrigue-actor]: accepted out of loyalty to {s}	出于对{s1}的忠诚而接受了	l
@@ -12303,6 +12319,7 @@ An animal person with the head of the amphibious olm. It lives underground near 
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Getting food.	{s1}取消了{s2}：正在取食物。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Going to bed.	{s1}取消了{s2}：正在就寝。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Path blocked.	{s1}取消了{s2}：路径受阻。	l
+Announcement combat historical-event-title [artwork-artifact-destruction-subject]: {s}	{s1}	l
 Announcement combat justice-interrogation-factor []: spurning the value of cooperation	轻视合作的价值	l
 Announcement combat justice-interrogation-relationship-factor []: fear of interrogator	惧怕审讯者	l
 Announcement combat justice-interrogation-relationship-factor []: love of interrogator	爱着审讯者	l
@@ -12873,6 +12890,7 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No pati
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No trigger.	{s1}取消了{s2}：没有触发器。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Too insane.	{s1}取消了{s2}：神智过于失常。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Using well.	{s1}取消了{s2}：正在使用水井。	l
+Announcement combat historical-event-title [artwork-artifact-destruction-title]: {s}	{s1}	l
 Announcement combat historical-squad [$number,historical-military-creature]: {s} {s}	{s1}个{s2}	l
 Announcement combat justice-interrogation-crime []: the export prohibition violation	违反出口禁令	l
 Announcement combat justice-interrogation-unit [justice-interrogation-sentence]: {s}	{s1}	l
@@ -19857,6 +19875,7 @@ Announcement combat damage-list [damage,damage-list]: {s} and {s}	{s1}，并{s2}
 Announcement combat dialogue-battle [dialogue-battle-deaths]: {s}	{s1}	l
 Announcement combat dialogue-trouble-list [dialogue-trouble]: {s}	{s1}	l
 Announcement combat guard-building []: the processed goods market	加工商品市场	l
+Announcement combat historical-artifact [$memorial-artifact]: {s}	{s1}	l
 Announcement combat historical-event-title [agreement-title]: {s}	{s1}	l
 Announcement combat historical-military-creature [$creature]: {s}	{s1}	l
 Announcement combat injury [injury-subject]: {s} has been severed	{s1}被切断了	l
@@ -30255,6 +30274,7 @@ Announcement combat diplomacy-cause []: an abduction	一次绑架	l
 Announcement combat equipment [owner,$body]: {s} {s}	{s1}{s2}	l
 Announcement combat equipment [owner,$item]: {s} {s}	{s1}{s2}	l
 Announcement combat guard-building []: the mead hall	蜜酒厅	l
+Announcement combat historical-artifact [$item]: {s}	{s1}	l
 Announcement combat injury-subject []: a motor nerve	一条运动神经	l
 Announcement combat memorial-clause [$digits]: d.{s}	卒于{s1}年	l
 Announcement combat memorial-clause []: Went missing	失踪	l

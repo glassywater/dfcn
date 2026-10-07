@@ -895,6 +895,10 @@ TranslationResult Overlay::translate_item_description_source_display(
             result = TranslationResult::translated(source, *target, "item-prose");
         else {
             const auto anchored = [&](std::string_view value) {
+                // This native item sentence lives in the shared history
+                // grammar. It still proves an item paragraph when another
+                // sentence needs the display parser's field fallback.
+                if (value.starts_with("The artwork relates to ")) return true;
                 for (int index : item_description_sentence_rules_) {
                     const auto &rule = rules_[static_cast<size_t>(index)];
                     const std::string_view opening = rule.template_kinds.empty()

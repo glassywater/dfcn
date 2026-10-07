@@ -1,6 +1,29 @@
 # Complete history_event agreement paragraph and subject constructions.
 # Sources: tools/announcement-event-literal-inventory.tsv; branch inspection includes all chained PE function portions.
 # scope	source	target	semantic fields	native provenance
+# Artwork event 87: artifact identity, independent HF/civilization destroyers,
+# optional site, then an unconditional date. The undated forms are the subject
+# left by the shared event-date parser, not additional native output branches.
+historical-event-title	{s}	{s1}	artwork-artifact-destruction-title	steam 0xb8ac80 / classic 0xb87cc0; complete native subject including date
+historical-event-title	{s}	{s1}	artwork-artifact-destruction-subject	steam 0xb8ac80 / classic 0xb87cc0; subject after shared date removal
+historical-artifact	{s}	{s1}	$memorial-artifact	steam 0xb94400 / classic 0xb91440; named artifact or written-work identity
+historical-artifact	{s}	{s1}	$item	steam 0xb94400 -> 0xc65450 / classic 0xb91440 -> 0xc62490; unnamed artifact item description
+artwork-artifact-destruction-subject	the destruction of {s}	{s1}的毁灭	historical-artifact	steam 0xb8ac80 / classic 0xb87cc0; subject before shared date
+artwork-artifact-destruction-subject	the destruction of {s} by {s}	{s2}毁灭了{s1}	historical-artifact,$memorial-actor	steam 0xb8ac80 / classic 0xb87cc0; HF present, civilization absent; subject before shared date
+artwork-artifact-destruction-subject	the destruction of {s} by {s}	{s2}毁灭了{s1}	historical-artifact,$name	steam 0xb8ac80 / classic 0xb87cc0; HF absent, civilization present; subject before shared date
+artwork-artifact-destruction-subject	the destruction of {s} by {s} and {s}	{s2}与{s3}毁灭了{s1}	historical-artifact,$memorial-actor,$name	steam 0xb8ac80 / classic 0xb87cc0; both destroyers; subject before shared date
+artwork-artifact-destruction-subject	the destruction of {s} in {s}	在{s2}发生的{s1}毁灭事件	historical-artifact,$travel-site	steam 0xb8ac80 / classic 0xb87cc0; site present; subject before shared date
+artwork-artifact-destruction-subject	the destruction of {s} by {s} in {s}	{s2}在{s3}毁灭了{s1}	historical-artifact,$memorial-actor,$travel-site	steam 0xb8ac80 / classic 0xb87cc0; HF and site; subject before shared date
+artwork-artifact-destruction-subject	the destruction of {s} by {s} in {s}	{s2}在{s3}毁灭了{s1}	historical-artifact,$name,$travel-site	steam 0xb8ac80 / classic 0xb87cc0; civilization and site; subject before shared date
+artwork-artifact-destruction-subject	the destruction of {s} by {s} and {s} in {s}	{s2}与{s3}在{s4}毁灭了{s1}	historical-artifact,$memorial-actor,$name,$travel-site	steam 0xb8ac80 / classic 0xb87cc0; both destroyers and site; subject before shared date
+artwork-artifact-destruction-title	the destruction of {s} in {s}	{s2}，{s1}的毁灭	historical-artifact,$date	steam 0xb8ac80 / classic 0xb87cc0; no destroyer, no site
+artwork-artifact-destruction-title	the destruction of {s} by {s} in {s}	{s3}，{s2}毁灭了{s1}	historical-artifact,$memorial-actor,$date	steam 0xb8ac80 / classic 0xb87cc0; HF present, civilization/site absent
+artwork-artifact-destruction-title	the destruction of {s} by {s} in {s}	{s3}，{s2}毁灭了{s1}	historical-artifact,$name,$date	steam 0xb8ac80 / classic 0xb87cc0; civilization present, HF/site absent
+artwork-artifact-destruction-title	the destruction of {s} by {s} and {s} in {s}	{s4}，{s2}与{s3}毁灭了{s1}	historical-artifact,$memorial-actor,$name,$date	steam 0xb8ac80 / classic 0xb87cc0; both destroyers, no site
+artwork-artifact-destruction-title	the destruction of {s} in {s} in {s}	{s3}，在{s2}发生的{s1}毁灭事件	historical-artifact,$travel-site,$date	steam 0xb8ac80 / classic 0xb87cc0; site present, no destroyer
+artwork-artifact-destruction-title	the destruction of {s} by {s} in {s} in {s}	{s4}，{s2}在{s3}毁灭了{s1}	historical-artifact,$memorial-actor,$travel-site,$date	steam 0xb8ac80 / classic 0xb87cc0; HF and site, no civilization
+artwork-artifact-destruction-title	the destruction of {s} by {s} in {s} in {s}	{s4}，{s2}在{s3}毁灭了{s1}	historical-artifact,$name,$travel-site,$date	steam 0xb8ac80 / classic 0xb87cc0; civilization and site, no HF
+artwork-artifact-destruction-title	the destruction of {s} by {s} and {s} in {s} in {s}	{s5}，{s2}与{s3}在{s4}毁灭了{s1}	historical-artifact,$memorial-actor,$name,$travel-site,$date	steam 0xb8ac80 / classic 0xb87cc0; both destroyers and site
 historical-event-paragraph	In {s}, {s}.	{s1}，{s2}。	$date,agreement-record	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 historical-event-paragraph	Subject revealed that in {s}, {s}.	受审者交代，{s1}，{s2}。	$date,agreement-record	0x1402aafef..0x1402ab029; flag-dependent opening
 historical-event-paragraph	In {s}, {s}. {s}	{s1}，{s2}。{s3}	$date,agreement-record,agreement-followup	0x1402abbc4 -> 0x1402a71e0;0x1402ad69d -> 0x1402a81f0; independently appended complete narratives

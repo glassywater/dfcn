@@ -67,14 +67,19 @@ std::optional<std::string> Overlay::translate_legends_artifact_identity(
         if (auto translated = translate_legends_book(title))
             return repeated ? *translated + "，“" + *translated + "”" : *translated;
     }
-    if (auto translated = translate_procedural_fragment(std::string(source)))
+    // This is a complete artifact-name field supplied by b94400, not an
+    // equipment/material phrase. Keep it on the name grammar so a history
+    // title does not spend its draw budget trying unrelated item boundaries.
+    if (auto translated = translate_procedural_fragment(std::string(source),
+            false, false, {}, ProceduralFragmentContext::non_entity_name);
+            translation_complete_with_native_nicknames(translated, source))
         return translated;
     // A typed artifact field can contain an English compound followed by
     // `the ... of ...` without the native-name/quoted-gloss pair. General
     // screen text only accepts that shape for a recognized personal name;
     // this field already establishes a generated name, so use its complete
     // title grammar instead of rejecting the compound as an unknown person.
-    return translate_legends_name(source, false);
+    return translate_legends_name(source, false, false);
 }
 
 std::optional<LegendsWrittenHeading> Overlay::resolve_legends_written_heading(

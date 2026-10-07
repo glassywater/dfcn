@@ -713,3 +713,50 @@ void artifact_copied_subject(event *e, string &out, context *ctx) {
 }
 // The six source/destination helpers above are not guarded by -1. Their own
 // native missing-object branches supply their established text boundaries.
+
+===============================================================================
+ARTIFACT-DESTROYED ROOT: ALL ACTOR/ENTITY/SITE ARMS AND THE COMMON DATE TAIL
+Reference 0xb8ac80..0xb8ad98; Classic 0xb87cc0..0xb87dd8; native event type 87
+===============================================================================
+
+void artifact_destroyed_subject(event *e, string &out, context *ctx) {
+    out += "the destruction of ";
+    out += artifact_identity(e->artifact_28, ctx->flags);
+    // Reference identity helper 0xb94400; Classic 0xb91440.
+    if (e->destroyer_hf_30 != -1) {
+        out += " by ";
+        out += figure_descriptor(e->destroyer_hf_30, ctx, true, false);
+        // Reference 0xb92f10; Classic 0xb8ff50.
+        if (e->destroyer_entity_34 != -1) {
+            out += " and ";
+            out += entity_descriptor(e->destroyer_entity_34, ctx->flags);
+        }
+    } else if (e->destroyer_entity_34 != -1) {
+        out += " by ";
+        out += entity_descriptor(e->destroyer_entity_34, ctx->flags);
+    }
+    // Reference entity helper 0xb92900; Classic 0xb8f940.
+    if (e->site_2c != -1) {
+        out += " in ";
+        out += site_descriptor(e->site_2c, ctx->flags);
+        // Reference 0xb93930; Classic 0xb90970.
+    }
+    out += " in "; // always emitted, even when actors/site are absent
+    append_date(out, e->year_08, e->tick_0c);
+}
+
+// artifact-destroyed-productions.tsv retains all eight independent HF/entity/
+// site-presence combinations. date-productions.tsv retains all fourteen ordinary
+// date productions and all three malformed-season defaults. The date tail is
+// unconditional, so an unknown tick is YEAR alone rather than absent text.
+// The current screenshot takes HF absent, entity absent, site present:
+//   "the destruction of " ARTIFACT " in " SITE " in " DATE
+// ARTIFACT's native identity is Yearlingfortunes; SITE is Floorburns; DATE is
+// "the midspring of 102". The enclosing image-paragraph adds the artwork prefix,
+// optional historical-collection suffix, and terminal ".  ". There is no reason
+// to reinterpret ARTIFACT as a place or to let SITE absorb the final DATE.
+// A raw sentence list cannot enumerate arbitrary names, save data, RAW/mod text,
+// or numeric years. The finite branches plus their typed leaves are the source
+// language. The paired complete event-source-call-closure files retain every
+// reachable concrete RTTI root, each switch selector including empty defaults,
+// literal operand, direct dependency, and explicit typed indirect edge.

@@ -782,27 +782,31 @@ std::optional<std::string> Overlay::translate_legends_nested(
                     const bool office_owner = field > 0 &&
                         rule.template_kinds[field - 1] == 's' &&
                         legends_office_capture(rule, field - 1);
+                    const auto accept_reference = [&](std::optional<std::string> candidate) {
+                        if (translation_complete_with_native_nicknames(candidate, part))
+                            target = std::move(candidate);
+                    };
                     if (office_owner) {
-                        target = translate_civilization_reference(part);
-                        if (!target) target = translate_legends_name(part, false);
+                        accept_reference(translate_civilization_reference(part));
+                        if (!target) accept_reference(translate_legends_name(part, false, false));
                     }
                     // Otherwise an actual site's language/provenance wins.
                     // An unknown capitalized spelling returned unchanged
                     // must not prevent the complete generated-name grammar.
-                    if (!target) target = translate_site_reference(part);
+                    if (!target && !office_owner) accept_reference(translate_site_reference(part));
                     if (!target) {
                         if (const auto term = legends_terms_.find(std::string(part));
-                                term != legends_terms_.end()) target = term->second;
+                                term != legends_terms_.end()) accept_reference(term->second);
                         else if (const auto term = legends_terms_ci_.find(lower(std::string(part)));
-                                term != legends_terms_ci_.end()) target = term->second;
+                                term != legends_terms_ci_.end()) accept_reference(term->second);
                     }
-                    if (!target) target = exact_literal_translation(part);
-                    if (!target) target = translate_legends_name(part, false);
-                    if (!target) {
-                        auto place = translate_legends_place(part);
-                        if (item_description_translation_complete(place))
-                            target = std::move(place);
-                    }
+                    if (!target) accept_reference(exact_literal_translation(part));
+                    if (!target && !office_owner)
+                        accept_reference(translate_legends_name(part, false));
+                    // An unresolved bound entity must not be returned again
+                    // before the complete source-name grammar can run.
+                    if (!target) accept_reference(translate_legends_name(part, false, false));
+                    if (!target && !office_owner) accept_reference(translate_legends_place(part));
                 } else {
                     target = journal_habitat_rule(rule)
                         ? translate_journal_habitat_places(part)
@@ -934,6 +938,13 @@ std::optional<std::string> Overlay::translate_legends_event(
             if (auto title = translate_legends_nested(rule, value, depth))
                 { result = std::move(title); break; }
         }
+    // Event 87 has a known artifact/HF/entity/site production. Resolve its
+    // complete native title before a generic reference tries to absorb the
+    // location or date as part of the artifact's name.
+    if (!result && value.starts_with("the destruction of ")) {
+        auto title = translate_announcement_combat(value, "artwork-artifact-destruction-title");
+        if (translation_complete_with_native_nicknames(title, value)) result = std::move(title);
+    }
     // All +d8 event title families append shared b92640's date after the
     // title. Resolve that complete field BEFORE expanded generic location
     // productions can repeatedly try it as an organization/person suffix.
