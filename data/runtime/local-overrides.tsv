@@ -1558,6 +1558,9 @@ Export XML	导出 XML
 Exporting!	正在导出！	w
 # DFHack exportlegends banner keeps the caption and colored toggle separate.
 Also export DFHack extended legends data:	同时导出 DFHack 扩展传奇数据：	wl
+# DFHack suspendmanager toggle: translate the complete caption independently
+# of native overlay captures; keep its key and colored boolean state separate.
+Suspendmanager is	暂停管理器状态	wl
 On	开启	w
 Explore the history of {s}.	探索{s}的历史。	wtl
 Explore the history of The Past Dimensions.	探索“往昔维度”的历史。	l
