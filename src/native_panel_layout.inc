@@ -741,7 +741,7 @@ static bool native_item_row_skin_at(const graphicst &gps, int x, int y,
     return native_ui_skin_at(gps, x, y, skin, classic, false, false, picture_artwork);
 }
 
-// Picture boxes and item-state controls each require one specific cell before
+// Picture boxes and item actions each require one specific cell before
 // their full skin can match. Index those necessary cells once per native-grid
 // traversal. A candidate is never ownership: the original readers still prove
 // every accepted frame, palette and layer. Clipped readers bypass this filter.
@@ -778,7 +778,7 @@ static NativePanelReadScope *native_item_anchor_index(const graphicst &gps) {
         native_texture_button_stocks_hide(gps), native_texture_button_stocks_hide_active(gps),
     };
     for (const auto *skin : states)
-        if (skin[1][1] > 0) add(skin[1][1], 2);
+        if (skin[1][1] > 0) add(skin[1][1], 2 | 4);
     const int32_t (*compact[])[2] = {
         native_texture_button_short_forbid(gps), native_texture_button_short_forbid_active(gps),
         native_texture_button_short_dump(gps), native_texture_button_short_dump_active(gps),
@@ -786,9 +786,27 @@ static NativePanelReadScope *native_item_anchor_index(const graphicst &gps) {
         native_texture_button_short_hide(gps), native_texture_button_short_hide_active(gps),
     };
     for (const auto *skin : compact) {
-        add(skin[1][0], 2);
-        add(skin[1][1], 2);
+        add(skin[1][0], 2 | 4);
+        add(skin[1][1], 2 | 4);
     }
+    // The general item reader also accepts role markers, recenter and
+    // inspect. Their three-row skins all require the same middle cell,
+    // including the classic transposed orientation. The compact task
+    // marker can meet the caption on either of its two rows.
+    const int32_t (*actions[])[3] = {
+        native_texture_building_item_incorporated(gps),
+        native_texture_button_stocks_recenter(gps), native_texture_button_stocks_view_item(gps),
+        native_texture_button_inventory_item(gps)[0],
+        native_texture_building_item_task(gps), native_texture_building_item_trade(gps),
+        native_texture_building_item_animal(gps), native_texture_building_item_bait(gps),
+        native_texture_building_item_loaded(gps), native_texture_building_item_dead(gps),
+        native_texture_building_item_other(gps),
+    };
+    for (const auto *skin : actions)
+        if (skin[1][1] > 0) add(skin[1][1], 4);
+    const auto &task = native_texture_building_short_item_task(gps);
+    add(task[1][0], 4);
+    add(task[1][1], 4);
     std::vector<uint8_t> candidates(static_cast<size_t>(gps.dimx) * gps.dimy);
     std::vector<std::pair<int, int>> positions;
     for (int x = 0; x < gps.dimx; ++x)
@@ -809,7 +827,9 @@ static NativePanelReadScope *native_item_anchor_index(const graphicst &gps) {
                 }
             }
             candidates[at] = kinds;
-            if (kinds) positions.emplace_back(x, y);
+            // Recenter/inspect also belong to creature rows. Only pictures
+            // and item-state actions establish possible item-panel ownership.
+            if (kinds & 3) positions.emplace_back(x, y);
         }
     cache->item_anchor_positions.swap(positions);
     cache->item_anchor_candidates.swap(candidates);
@@ -2008,6 +2028,9 @@ static bool native_item_action_at(const graphicst &gps, int x, int y,
     auto *cache = NativePanelReadScope::active;
     if (clip || !cache || !cache->contains(gps, x, y))
         return read_native_item_action_at(gps, x, y, clip);
+    if (const auto *index = native_item_anchor_index(gps);
+            index && !(index->item_anchor_candidates[static_cast<size_t>(x) * gps.dimy + y] & 4))
+        return false;
     if (cache->item_actions.empty())
         cache->item_actions.resize(static_cast<size_t>(cache->dimx) * cache->dimy);
     auto &proof = cache->item_actions[static_cast<size_t>(x) * cache->dimy + y];

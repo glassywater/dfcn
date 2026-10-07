@@ -47724,7 +47724,8 @@ void Overlay::render(SDL_Renderer *renderer) {
         // Help recovery gives every background row a fallback pixel clear.
         // If this frame's copy hook already removed ALL exposed source ink,
         // there is nothing to read back or erase. Keep the fallback for late
-        // recovery, partial draws, split rows and transformed render targets.
+        // recovery, partial draws and transformed render targets. A split
+        // caption needs the same proof for every exposed physical half.
         SDL_Rect clear_viewport{};
         float clear_scale_x = 1.0f, clear_scale_y = 1.0f;
         SDL_RenderGetViewport(renderer, &clear_viewport);
@@ -47733,24 +47734,30 @@ void Overlay::render(SDL_Renderer *renderer) {
         if (clear_viewport.x == 0 && clear_viewport.y == 0 &&
             clear_scale_x == 1.0f && clear_scale_y == 1.0f) {
             for (Match &match : prepared_matches_) {
+                const int source_top = match.native_split_text
+                    ? std::max(0, match.native_split_top_y) : match.y;
+                const int source_bottom = match.native_split_text
+                    ? std::min(gps_->dimy, match.native_split_top_y + 2) : match.y + 1;
                 if (!match.native_help_background_frames || match.graphical_auto_foreground ||
-                    match.native_split_text || match.graphical_clear_height != 1 ||
-                    match.graphical_clear_x != match.x || match.graphical_clear_y != match.y ||
+                    source_bottom <= source_top ||
+                    match.graphical_clear_height != source_bottom - source_top ||
+                    match.graphical_clear_x != match.x || match.graphical_clear_y != source_top ||
                     match.graphical_clear_width != match.length || match.length <= 0 ||
                     match.source.size() != static_cast<size_t>(match.length) ||
                     match.x < 0 || match.y < 0 || match.y >= gps_->dimy ||
                     match.length > gps_->dimx - match.x) continue;
                 bool removed = true;
-                for (int offset = 0; removed && offset < match.length; ++offset) {
-                    const unsigned char ch = match.source[static_cast<size_t>(offset)];
-                    const int x = match.x + offset;
-                    if (ch == 0 || ch == ' ' || help_background_covered(match, x, match.y)) continue;
-                    const size_t tile = static_cast<size_t>(x) * gps_->dimy + match.y;
-                    if (tile >= suppressed_glyphs_.size()) { removed = false; break; }
-                    const auto &copy = suppressed_glyphs_[tile];
-                    removed = copy.epoch == composite_read_epoch_ && !copy.dirty &&
-                        copy.character == ch && copy.renderer == renderer && copy.target == clear_target;
-                }
+                for (int row = source_top; removed && row < source_bottom; ++row)
+                    for (int offset = 0; removed && offset < match.length; ++offset) {
+                        const unsigned char ch = match.source[static_cast<size_t>(offset)];
+                        const int x = match.x + offset;
+                        if (ch == 0 || ch == ' ' || help_background_covered(match, x, row)) continue;
+                        const size_t tile = static_cast<size_t>(x) * gps_->dimy + row;
+                        if (tile >= suppressed_glyphs_.size()) { removed = false; break; }
+                        const auto &copy = suppressed_glyphs_[tile];
+                        removed = copy.epoch == composite_read_epoch_ && !copy.dirty &&
+                            copy.character == ch && copy.renderer == renderer && copy.target == clear_target;
+                    }
                 if (removed) match.graphical_clear_width = match.graphical_clear_height = 0;
             }
         }

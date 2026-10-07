@@ -1347,6 +1347,32 @@ static void capture_native_clipped_default_resize(NativeString *source, size_t w
         original(source, width);
 }
 
+static bool native_caption_draw_outside_clip_y(const graphicst *graphics,
+        const NativeString *source) {
+    if (!graphics || graphics->dimx <= 0 || graphics->dimx > 1000 ||
+            graphics->dimy <= 0 || graphics->dimy > 1000 ||
+            (graphics->screeny >= graphics->clipy[0] &&
+             graphics->screeny <= graphics->clipy[1])) return false;
+    std::string_view text;
+    // A single-line draw cannot contribute glyphs to another visible row.
+    // Keep multiline sources on the full path rather than assuming how a
+    // native addst variant handles line breaks.
+    return native_string_view(source, &text, 4096) &&
+        text.find_first_of("\r\n") == std::string_view::npos;
+}
+
+static void discard_native_clipped_draw_source(const NativeString *source) {
+    auto &state = native_clipped_pending();
+    if (state.busy) return;
+    const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+    if (state.epoch != epoch) {
+        state.fields.clear();
+        state.epoch = epoch;
+    } else {
+        state.fields.erase(source);
+    }
+}
+
 static PendingNativeField remember_native_clipped_draw(graphicst *graphics, const NativeString *source,
         NativeJustification, int width, bool top_layer = false,
         NativeInfoTitleKind info_title_kind = NativeInfoTitleKind::None,
@@ -1458,6 +1484,17 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
                     tooltip_write->rows[tooltip_y - box.y][static_cast<size_t>(x - box.x)] = text[offset];
             }
         }
+    }
+    if (native_caption_draw_outside_clip_y(graphics, source)) {
+        // Scroll lists still invoke addst for clipped rows. Their native
+        // cursor advancement must run, but caption ownership and widget
+        // memory walks cannot affect any visible cell. Consume any pending
+        // resize identity now so a reused string cannot inherit this row's
+        // complete source. Tooltip intent and multiline document collection
+        // occur before this visibility filter.
+        discard_native_clipped_draw_source(source);
+        draw();
+        return;
     }
     int info_title_right = -1, mission_title_right = -1;
     if ((info_title_kind != NativeInfoTitleKind::None || mission_title) &&
@@ -2063,7 +2100,8 @@ static void capture_native_clipped_draw(graphicst *graphics, const NativeString 
     const auto location_picker_field = native_location_picker_field(caller);
     const auto travel_building_field = native_travel_building_field(caller);
     const bool mission_title = native_mission_title_caller(caller);
-    const auto map_hover = native_map_hover_context(caller, source);
+    const auto map_hover = native_caption_draw_outside_clip_y(graphics, source)
+        ? NativeMapHoverContext{} : native_map_hover_context(caller, source);
     std::shared_ptr<const NativeEmbarkReclaimHistoryParagraph> reclaim_history;
     std::unique_lock<std::mutex> history_lock(g_native_embark_reclaim_history_mutex,
         std::defer_lock);
