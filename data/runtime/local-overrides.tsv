@@ -3055,6 +3055,7 @@ Very high	非常高	w
 # World creation: mod selection, generated names, and wildlife notes
 Mods install automatically when chosen during world creation.	在创建世界时选中的模组会自动安装。	l
 Click a mod to open its folder. This may not work on all systems.	单击模组可打开其文件夹；此功能可能无法在所有系统上使用。	l
+Installed	已安装	wl
 Dwarvemon {d}.{d}	矮人兽 {d}.{d}	wt
 Dwarvemon Entity Type {d}.{d}	矮人兽实体类型 {d}.{d}	wt
 (Beta) Dwarvemon {d}.{d} ({d}.X)	（测试版）矮人兽 {d}.{d}（{d}.X）	wt
