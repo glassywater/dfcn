@@ -277,6 +277,21 @@ TranslationResult Overlay::translate_fortress_item_caption_display(
 std::optional<std::string> Overlay::translate_info_panel_title(
         NativeInfoTitleKind kind, std::string_view source) const {
     if (kind == NativeInfoTitleKind::None || source.empty()) return std::nullopt;
+    if (kind == NativeInfoTitleKind::ItemList) {
+        TranslationWorkScope work;
+        try {
+            return memoize_identity_translation('j', source, [&]() -> std::optional<std::string> {
+                // The native list proves one whole item field. A complete
+                // book production selects its subject meanings before the
+                // generic item/name fallbacks can consume individual words.
+                if (auto title = translate_written_item_caption(source)) return title;
+                return translate_fortress_item_caption(source);
+            });
+        } catch (const TranslationWorkLimit &) {
+            if (!work.owns_budget()) throw;
+            return std::nullopt;
+        }
+    }
     if (kind == NativeInfoTitleKind::Item)
         return translate_fortress_item_caption(source);
     if (kind == NativeInfoTitleKind::DisplayStatus) {

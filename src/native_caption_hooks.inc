@@ -66,6 +66,8 @@ struct NativeInfoTitleBinding {
     // Only the verified building draw uses these object/field bindings.
     ptrdiff_t building_slot = 0, sheet_slot = 0;
     size_t building_name = 0, editing_name = 0;
+    ptrdiff_t item_list_right_slot = 0;
+    int item_list_right_inset = 0;
     // Places' farm caption has its own caller frame, with the same native
     // building.name field but no information-sheet editing state.
     uintptr_t farm_name_return_address = 0;
@@ -1503,6 +1505,22 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
             int64_t(graphics->clipx[1]) + 1, 0, graphics->dimx));
         if (width > 0) right = static_cast<int>(std::min<int64_t>(
             right, int64_t(graphics->screenx) + width));
+        if (info_title_kind == NativeInfoTitleKind::ItemList) {
+            // This caller clips the string manually without changing clipx.
+            // Keep its actual title column, not the enclosing screen width.
+            const auto &binding = g_native_info_title_binding;
+            int32_t list_right = 0;
+            const auto *slot = source && binding.item_list_right_slot
+                ? reinterpret_cast<const unsigned char *>(source) + binding.item_list_right_slot
+                : nullptr;
+            if (slot &&
+                    native_info_title_memory_readable(slot, sizeof(list_right))) {
+                std::memcpy(&list_right, slot, sizeof(list_right));
+                right = std::min(right, static_cast<int>(std::clamp<int64_t>(
+                    int64_t(list_right) - binding.item_list_right_inset,
+                    graphics->screenx, graphics->dimx)));
+            } else right = graphics->screenx;
+        }
         if (info_title_kind != NativeInfoTitleKind::None) info_title_right = right;
         if (mission_title) mission_title_right = right;
     }

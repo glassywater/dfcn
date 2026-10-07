@@ -1923,7 +1923,7 @@ static std::optional<NativePictureCaptionFrame> capture_native_picture_caption_f
     const graphicst &gps, int x, int y);
 
 enum class NativeInfoTitleKind {
-    None, Item, Building, Engraving, Terrain, PlannedEngraving, DisplayStatus
+    None, Item, Building, Engraving, Terrain, PlannedEngraving, DisplayStatus, ItemList
 };
 
 enum class NativeCivilizationField {

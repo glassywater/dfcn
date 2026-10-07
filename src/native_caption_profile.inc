@@ -70,6 +70,10 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     // text/coordinate guess. Other executable profiles leave this empty.
     profile.info_titles.sites = {
         {native_pe_address(profile.base, 0x154a28), NativeInfoTitleKind::Item},
+        // ViewSheets/ITEM_LIST formats each complete item before shortening
+        // its caption. Books can supply just their work title, with no item
+        // actions, count or quality marks to identify the row by its skin.
+        {native_pe_address(profile.base, 0x15a261), NativeInfoTitleKind::ItemList},
         {native_pe_address(profile.base, 0x18057a), NativeInfoTitleKind::Building},
         {native_pe_address(profile.base, 0x158a79), NativeInfoTitleKind::Engraving},
         {native_pe_address(profile.base, 0x158af4), NativeInfoTitleKind::Terrain},
@@ -164,6 +168,11 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     profile.info_titles.sheet_slot = 0x7960;
     profile.info_titles.building_name = 0xd0;
     profile.info_titles.editing_name = 0x1d59;
+    // ITEM_LIST's title is at rsp+0x3d60; rsp+0x788 holds the inclusive
+    // button right. Its text starts at L+7 and resizes to R-L-15 bytes,
+    // giving the exclusive title boundary R-8, before the scrollbar.
+    profile.info_titles.item_list_right_slot = -0x3578;
+    profile.info_titles.item_list_right_inset = 8;
     // Places draws the farm name at rbp+0xb0 with rbp=rsp+0x100.
     // The current building is stored at rsp+0x40, hence source-0x170.
     // Its native formatter copies building.name whenever that field is
@@ -230,6 +239,7 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         {profile.resize_target, {0x48,0x8b,0x41,0x10,0x48,0x3b,0xd0,0x77}},
         {profile.draw_target, {0x40,0x53,0x56,0x57,0x48,0x83,0xec,0x50}},
         {0x154a23, {0xe8,0x38,0x4f,0x98,0x00}},
+        {0x15a25c, {0xe8,0xff,0xf6,0x97,0x00}},
         {0x180575, {0xe8,0xe6,0x93,0x95,0x00}},
         {0x158a74, {0xe8,0xe7,0x0e,0x98,0x00}},
         {0x158aef, {0xe8,0x6c,0x0e,0x98,0x00}},
