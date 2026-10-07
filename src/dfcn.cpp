@@ -81,7 +81,7 @@ static bool capture_native_history_age_title(std::string_view base_title,
 static uint64_t native_history_entity_parent_revision(uint64_t draw_epoch);
 static uint64_t native_identity_translation_context();
 static bool native_history_worldgen_page();
-static NativeModDetails native_mod_details();
+static NativeModDetails native_mod_details(bool background_owner = false);
 static std::optional<std::string> native_main_menu_copyright();
 static bool native_gameplay_map_screen(bool include_world = false);
 static bool native_world_map_screen();

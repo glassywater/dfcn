@@ -42,7 +42,8 @@ static std::optional<NativeModListLayout> native_mod_list_layout(
         return true;
     };
     const NativePanelBorders borders(gps);
-    const NativeModDetails details = native_mod_details();
+    const NativeModDetails details = native_mod_details(
+        NativeUiReadScope::background_view(&gps));
     if (details.kind == NativeModScreenKind::NewRegion ||
             details.kind == NativeModScreenKind::NewArena) {
         // The current screen's doing_mods flag owns both lists even before

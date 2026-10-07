@@ -56,8 +56,12 @@ def translation_extension_sources():
         identity = re.search(r"\[ID:([A-Za-z0-9_-]+)\]", info)
         if not identity:
             raise RuntimeError(f"Missing mod identity: {content / 'info.txt'}")
-        rulesets = (content / metadata["rulesets"]).resolve()
-        rulesets.relative_to(content.resolve())
+        # The runtime accepts vocabulary-only extensions without a ruleset
+        # directory. Keep that optional resource optional during deployment.
+        rulesets = None
+        if "rulesets" in metadata:
+            rulesets = (content / metadata["rulesets"]).resolve()
+            rulesets.relative_to(content.resolve())
         packages.append((identity[1], content, rulesets))
     return packages
 
@@ -174,6 +178,8 @@ def deploy_runtime_data(directory: Path) -> None:
     # identical copies of independently packaged files are removed; retain
     # custom edits and any namespace still owned by the base runtime.
     for _, _, rulesets in translation_extension_sources():
+        if rulesets is None:
+            continue
         for source in sorted(rulesets.rglob("*.toml")):
             relative = source.relative_to(rulesets)
             if (RUNTIME / "rulesets/zh-Hans" / relative).exists():

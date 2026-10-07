@@ -10836,6 +10836,7 @@ Announcement combat visitor-statement [visitor-statement-subject]: {s} will be s
 Announcement combat work-sentence [work-ordinal,work-reference]: The {s} chapter covers {s}.	第{s1}章的内容涵盖{s2}。	l
 Beds are found in the Furniture category. Unlike Workshops, Beds must be placed underground.	[C:5:0:1]床[C:7:0:0]位于“[C:5:0:1]家具[C:7:0:0]”分类下。与[C:6:0:0]工坊[C:7:0:0]不同，[C:6:0:0]床[C:7:0:0]必须放在地下。	hq
 Change the work order priority. Work orders at the top of the list will use workshops first.	修改工单优先级。列表顶部的工单会优先使用工坊。	hj
+DFHack GUI Mod manager: Please re-create your preset with mods you currently have installed.	请使用当前已安装的模组重新创建预设。	l
 DFHack help: "--clear" Clear records of "previous" races used by the "--untransform" option.	"--clear" 清除"--untransform"选项使用的"previous"比赛记录。	l
 DFHack help: "--include-owned" Include items owned by units (e.g., your dwarves or visitors)	"--include-owned" 包括单位拥有的物品（例如，您的矮人或访客）	l
 DFHack help: "-u", "--unit <id>" Specifies a specific unit instead of using a selected unit.	"-u"、"--unit <id>" 指定特定单位而不是使用选定的单位。	l
@@ -15769,6 +15770,7 @@ Assign a kill order. The soldiers will attempt to kill a targeted creature.	下�
 Assign a patrol order. The soldiers will walk a specified route repeatedly.	下达巡逻命令。士兵会反复沿指定路线行进。	hj
 Conversation prompt: What will you say about the refusal to accept tribute?	关于拒收贡品，你想说些什么？	l
 DFHack GUI Animal assignment: Click to assign/unassign to pasture/pond/pit.	点击分配到牧场／池塘／坑洞，或取消分配。	l
+DFHack GUI Mod manager: Preset is being unmarked as the default for safety.	为避免问题，已取消此预设的默认设置。	l
 DFHack GUI Viewer status: Autostart defaults restored for automation tools.	自动化工具的自动启动状态已恢复为默认设置。	l
 DFHack help: "--attributes [ <attribute> <tier> [<attribute> <tier> ...] ]"	"--attributes [ <attribute> <tier> [<attribute> <tier> ...] ]"	l
 DFHack help: "--getfield <field>" Gets the specified field from the source.	"--getfield <field>" 从源中获取指定字段。	l
@@ -16107,6 +16109,7 @@ Announcement combat visitor-statement [visitor-statement-emotion]: am {s}.	{s1}�
 Announcement combat visitor-statement [visitor-statement-emotion]: is {s}.	{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: are {s}.	……{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: was {s}.	曾……{s1}。	l
+DFHack GUI Mod manager: Failed to load some mods from your default preset.	默认预设中的部分模组载入失败。	l
 DFHack help: "--dev" Include commands intended for developers and modders.	"--dev" 包括供开发人员和模组制作者使用的命令。	l
 DFHack help: "--female <INTEREST>" Set the interest level towards females.	"--female <INTEREST>" 设置对女性的兴趣程度。	l
 DFHack help: "--notStraight" Only creatures who are not strictly straight.	"--notStraight" 仅限非严格意义上的异性恋生物。	l
@@ -16472,6 +16475,7 @@ Conversation prompt: How will you respond to the request for information?	你将
 Conversation prompt: What will you say about the end of the insurrection?	关于起义结束，你想说些什么？	l
 Conversation prompt: What will you say about the refusal to give tribute?	关于拒绝进贡，你想说些什么？	l
 DFHack GUI Animal assignment: Click to assign/unassign to cage/restraint.	点击分配到笼子／锁链，或取消分配。	l
+DFHack GUI Mod manager: Here are the vanilla mods that have been updated:	以下原版模组已更新：	l
 DFHack GUI Viewer status: Autostart defaults restored for gameplay tools.	玩法扩展工具的自动启动状态已恢复为默认设置。	l
 DFHack GUI Viewer status: Enabled defaults restored for automation tools.	自动化工具的当前启用状态已恢复为默认设置。	l
 DFHack help: "--clear" Clear any previously registered syndrome triggers.	"--clear" 清除任何先前注册的综合症触发器。	l
@@ -16834,6 +16838,7 @@ Conversation prompt: How will you respond to the request for directions?	你将�
 Conversation prompt: What will you say about the artifact's destruction?	关于造物被毁，你想说些什么？	l
 Conversation prompt: What will you say about the failed peace agreement?	关于和平协议破裂，你想说些什么？	l
 DFHack GUI Control tool: autobutcher target 10 10 14 2 BIRD_PEAFOWL_BLUE	饲养孔雀（autobutcher target 10 10 14 2 BIRD_PEAFOWL_BLUE）	l
+DFHack GUI Mod manager: New vanilla mods are not included in the preset.	此预设尚未包含新增的原版模组。	l
 DFHack help: "--location [ <x> <y> <z> ]" The location to spawn the flow	"--location [ <x> <y> <z> ]" 产生流的位置	l
 DFHack help: "--toggle" Toggles the gelded status of the specified unit.	"--toggle" 切换指定单位的阉割状态。	l
 DFHack help: "-a", "--all" Emigrate all nobles do not rule your fortress	"-a", "--all" 移民所有贵族不统治你的要塞	l
@@ -19944,6 +19949,7 @@ Conversation prompt: What will you say about the peace agreement?	关于和平�
 DFHack GUI Control tool: autobutcher target 10 10 14 2 BIRD_GOOSE	饲养鹅（autobutcher target 10 10 14 2 BIRD_GOOSE）	l
 DFHack GUI Control tool: gui/settings-manager.embark_notification	定居难度应用提示（gui/settings-manager.embark_notification）	l
 DFHack GUI Control tool: gui/settings-manager.settings_difficulty	保存要塞难度设置（gui/settings-manager.settings_difficulty）	l
+DFHack GUI Mod manager: Failed to load some mods from the preset.	预设中的部分模组载入失败。	l
 DFHack help: "--facets [ <facet> <level> [<facet> <level> ...] ]"	"--facets [ <facet> <level> [<facet> <level> ...] ]"	l
 DFHack help: "burial -z" Create tombs only on the current zlevel.	"burial -z" 仅在当前 zlevel 上创建坟墓。	l
 DFHack help: "devel/query --table df.profession --findvalue FISH"	"devel/query --table df.profession --findvalue FISH"	l
@@ -21519,6 +21525,7 @@ Conversation prompt: What will you say about the insurrection?	关于这场起�
 Couldn't the lyrics of the accompaniment be a bit more somber?	伴奏的歌词就不能更庄重些吗？	hP
 DFHack GUI Control tool: autofarm threshold 150 grass_tail_pig	猪尾草目标库存 150（autofarm threshold 150 grass_tail_pig）	l
 DFHack GUI Control tool: gui/settings-manager.reserved_barrels	预留空桶设置（gui/settings-manager.reserved_barrels）	l
+DFHack GUI Mod manager: Here are the mods that failed to load:	以下模组载入失败：	l
 DFHack help: "--citizens" Selects fort citizens and residents.	"--citizens" 选择要塞居民和居民。	l
 DFHack help: "--list" Prints a list of all facets + their IDs.	"--list" 打印所有构面及其 ID 的列表。	l
 DFHack help: "-a", "--all" Also search undiscovered ore veins.	"-a"、"--all" 还搜索未发现的矿石矿脉。	l
@@ -22825,6 +22832,7 @@ Conversation prompt: What will you say about the occupation?	关于占领行动�
 Crafts are an easy way to make a lot of trade goods quickly.	[C:7:0:0]制作[C:6:0:1]工艺品[C:7:0:0]，是快速获得大量贸易商品的简单办法。	hq
 DFHack GUI Animal assignment: Animal and prisoner assignment	动物与囚犯分配	l
 DFHack GUI Control tool: orders.conditionsquantityrightclick	条件数量右键取消（orders.conditionsquantityrightclick）	l
+DFHack GUI Mod manager: Some vanilla mods have been updated.	部分原版模组已更新。	l
 DFHack GUI Teleport: Click name or hit Enter to zoom to unit	点击名称或按 Enter，定位至该单位。	l
 DFHack help: "--block" Selects the highlighted tile's block.	"--block" 选择突出显示的图块块。	l
 DFHack help: "--ignore-webs" Ignore undisturbed spider webs.	"--ignore-webs" 忽略未受干扰的蜘蛛网。	l
@@ -46646,6 +46654,7 @@ DFHack GUI Control tool: spectate.tooltip	观战信息提示（spectate.tooltip�
 DFHack GUI Control tool: zone.pasturepond	牧场与池塘动物分配（zone.pasturepond）	l
 DFHack GUI Design: Next point offset: {d}	连接间隔：{d}	l
 DFHack GUI Design: Show alignment guides:	显示对齐辅助线：	l
+DFHack GUI Mod manager: Enter preset name	输入预设名称	l
 DFHack GUI Notification settings: Enabled	启用	l
 DFHack GUI Notification settings: injured	受伤居民	l
 DFHack GUI Quickfort: No blueprint loaded	尚未加载蓝图	l
@@ -50201,6 +50210,7 @@ DFHack GUI Control tool: zone.cagechain	笼子与锁链动物分配（zone.cagec
 DFHack GUI Design: Clear entire z-level	清除本层全部指定	l
 DFHack GUI Design: Mouse: {d}, {d}, {d}	鼠标：{d}, {d}, {d}	l
 DFHack GUI Input prompt: Enter command:	输入命令：	l
+DFHack GUI Mod manager: Modlist Manager	模组列表管理器	l
 DFHack GUI Sitemap: Unknown affiliation	所属势力不明	l
 DFHack GUI Squad assignment: Officials:	官员：	l
 DFHack GUI Squad assignment: Toggle all	切换全部	l
@@ -52061,6 +52071,9 @@ DFHack GUI Design: Stop placing points	停止放置点	l
 DFHack GUI Mass remove: Affect planned	处理规划中	l
 DFHack GUI Mass remove: Cancel removal	取消移除	l
 DFHack GUI Mass remove: Constructions:	构筑物：	l
+DFHack GUI Mod manager: Enter new name	输入新名称	l
+DFHack GUI Mod manager: Overwrite {s}?	覆盖预设“{s1}”？	l
+DFHack GUI Mod manager: Set as default	设为默认	l
 DFHack GUI Squad assignment: Nobility:	贵族：	l
 DFHack GUI Squad assignment: axe skill	战斧技能	l
 DFHack GUI Teleport: Click name or hit	点击名称或按	l
@@ -55959,6 +55972,9 @@ DFHack GUI Control tool: sort.places	场所总览搜索（sort.places）	l
 DFHack GUI Design: Total points: {d}	顶点数：{d}	l
 DFHack GUI Input prompt: Enter name:	输入名称：	l
 DFHack GUI Mass remove: Affect built	处理已建成	l
+DFHack GUI Mod manager: Confirmation	确认	l
+DFHack GUI Mod manager: Save current	保存当前列表	l
+DFHack GUI Mod manager: Yes, proceed	确认继续	l
 DFHack GUI Quickfort: No description	没有描述	l
 DFHack GUI Quickfort: Shift click or	Shift 点击或	l
 DFHack GUI Quickfort: Undo blueprint	撤销蓝图	l
@@ -57989,6 +58005,7 @@ DFHack GUI Design: Reinforced Walls	加固墙壁	l
 DFHack GUI Legends race filter: All	全部	l
 DFHack GUI Mass remove: Leave alone	不处理	l
 DFHack GUI Mass remove: Stockpiles:	储物堆：	l
+DFHack GUI Mod manager: Delete {s}?	删除预设“{s1}”？	l
 DFHack GUI Quickfort: Down z-levels	向下重复楼层	l
 DFHack GUI Sitemap: merchant animal	商队动物	l
 DFHack GUI Viewer status: No output	无输出	l
@@ -62459,6 +62476,7 @@ DFHack GUI Control tool: automilk	自动挤奶（automilk）	l
 DFHack GUI Control tool: autoslab	自动雕刻纪念石板（autoslab）	l
 DFHack GUI Control tool: dwarfvet	兽医治疗（dwarfvet）	l
 DFHack GUI Control tool: work-now	缩短工作间歇（work-now）	l
+DFHack GUI Mod manager: (default)	（默认）	l
 DFHack GUI Quickfort: Add marker:	添加标记：	l
 DFHack GUI Quickfort: Up z-levels	向上重复楼层	l
 DFHack GUI Sitemap: caged hostile	被囚禁的敌对生物	l
@@ -66793,6 +66811,7 @@ DFHack GUI Design: Inner Tiles:	内部建造：	l
 DFHack GUI Design: Outer Tiles:	外缘建造：	l
 DFHack GUI Design: Spacing: {d}	间距：{d}	l
 DFHack GUI Journal tutorial: or	或者	l
+DFHack GUI Mod manager: Warning	警告	l
 DFHack GUI Quickfort: Damp dig:	潮湿挖掘：	l
 DFHack GUI Quickfort: Warm dig:	温热挖掘：	l
 DFHack GUI Quickfort: to apply.	应用蓝图。	l
@@ -69203,6 +69222,8 @@ DFHack GUI Design: Curve Point	曲线控制点	l
 DFHack GUI Design: Horizontal:	横向：	l
 DFHack GUI Mass remove: Remove	移除	l
 DFHack GUI Mass remove: Zones:	区域：	l
+DFHack GUI Mod manager: Delete	删除	l
+DFHack GUI Mod manager: Rename	重命名	l
 DFHack GUI Quickfort: Filters:	筛选：	l
 DFHack GUI Quickfort: Library:	内置：	l
 DFHack GUI Sitemap: No matches	没有匹配项	l
@@ -73929,6 +73950,7 @@ DFHack GUI Design: On (even)	开启（偶数）	l
 DFHack GUI Design: Priority:	优先级：	l
 DFHack GUI Design: Rectangle	矩形	l
 DFHack GUI Design: Vertical:	纵向：	l
+DFHack GUI Mod manager: Load	载入	l
 DFHack GUI Sitemap: friendly	友好生物	l
 DFHack GUI Sitemap: merchant	商人	l
 DFHack GUI Sitemap: wildlife	野生动物	l
@@ -78478,6 +78500,7 @@ DFHack GUI Design: Engrave	雕刻	l
 DFHack GUI Design: Filled:	填充：	l
 DFHack GUI Design: Hollow:	空心：	l
 DFHack GUI Design: Invert:	反选：	l
+DFHack GUI Mod manager: Ok	确定	l
 DFHack GUI Quickfort: Hide	隐藏	l
 DFHack GUI Quickfort: Show	显示	l
 DFHack GUI Title: Autodump	自动倾倒	l

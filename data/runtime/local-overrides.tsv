@@ -11410,3 +11410,29 @@ Workshop mood sketch: pictures of cut gems.	画着切割宝石。	l
 Workshop mood sketch: pictures of square blocks.	画着方形砌块。	l
 Workshop mood sketch: pictures of stacked leather.	画着堆叠的皮革。	l
 Workshop mood sketch: pictures of stacked cloth.	画着堆叠的布料。	l
+
+# DFHack gui/mod-manager.lua ModmanageMenu and its preset dialogs.
+# Captions use complete widget roles; preset names and mod IDs stay verbatim.
+DFHack GUI Mod manager: Modlist Manager	模组列表管理器	l
+DFHack GUI Mod manager: Save current	保存当前列表	l
+DFHack GUI Mod manager: Rename	重命名	l
+DFHack GUI Mod manager: Load	载入	l
+DFHack GUI Mod manager: Delete	删除	l
+DFHack GUI Mod manager: Set as default	设为默认	l
+DFHack GUI Mod manager: (default)	（默认）	l
+DFHack GUI Mod manager: Enter preset name	输入预设名称	l
+DFHack GUI Mod manager: Enter new name	输入新名称	l
+DFHack GUI Mod manager: Confirmation	确认	l
+DFHack GUI Mod manager: Warning	警告	l
+DFHack GUI Mod manager: Overwrite {s}?	覆盖预设“{s1}”？	l
+DFHack GUI Mod manager: Delete {s}?	删除预设“{s1}”？	l
+DFHack GUI Mod manager: Yes, proceed	确认继续	l
+DFHack GUI Mod manager: Ok	确定	l
+DFHack GUI Mod manager: Failed to load some mods from your default preset.	默认预设中的部分模组载入失败。	l
+DFHack GUI Mod manager: Preset is being unmarked as the default for safety.	为避免问题，已取消此预设的默认设置。	l
+DFHack GUI Mod manager: Failed to load some mods from the preset.	预设中的部分模组载入失败。	l
+DFHack GUI Mod manager: Some vanilla mods have been updated.	部分原版模组已更新。	l
+DFHack GUI Mod manager: Please re-create your preset with mods you currently have installed.	请使用当前已安装的模组重新创建预设。	l
+DFHack GUI Mod manager: Here are the mods that failed to load:	以下模组载入失败：	l
+DFHack GUI Mod manager: Here are the vanilla mods that have been updated:	以下原版模组已更新：	l
+DFHack GUI Mod manager: New vanilla mods are not included in the preset.	此预设尚未包含新增的原版模组。	l
