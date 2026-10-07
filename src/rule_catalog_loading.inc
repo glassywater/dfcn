@@ -351,6 +351,7 @@ bool Overlay::load_rules() {
     commit(ui_message_split_prefixes_, candidate->ui_message_split_prefixes_);
     commit(ui_message_template_probes_, candidate->ui_message_template_probes_);
     commit(ui_message_anchors_, candidate->ui_message_anchors_);
+    commit(announcement_combat_syntax_, candidate->announcement_combat_syntax_);
     commit(adventure_prose_rules_, candidate->adventure_prose_rules_);
     commit(legends_prose_rules_, candidate->legends_prose_rules_);
     commit(legends_book_rules_, candidate->legends_book_rules_);

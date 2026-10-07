@@ -2620,6 +2620,48 @@ std::shared_ptr<LegendsTextFlow> Overlay::translate_legends_flow(
                 // different splits. Remember that failure for this rule while
                 // keeping successful capture selection in its original order.
                 std::set<std::pair<size_t, size_t>> failed_states;
+                // A literal delimiter alone does not prove that the later
+                // fields can own their spans. Establish the whole suffix,
+                // including its paragraph continuation, before resolving an
+                // earlier name or participant. Shape checks use the same
+                // native links and numeric fields as capture(); this is only
+                // necessary-condition pruning, never a translated candidate.
+                std::map<std::pair<size_t, size_t>, bool> possible_suffixes;
+                std::function<bool(size_t, size_t)> suffix_possible = [&](size_t i, size_t at) {
+                    const auto state = std::make_pair(i, at);
+                    if (const auto found = possible_suffixes.find(state);
+                            found != possible_suffixes.end()) return found->second;
+                    const auto publish = [&](bool possible) {
+                        possible_suffixes.emplace(state, possible);
+                        return possible;
+                    };
+                    if (i == captures.size())
+                        return publish(at > cursor &&
+                            has_word_boundaries(source, cursor, at) && resolve(at).has_value());
+                    const auto &literal = rule.template_literals[i + 1];
+                    std::vector<size_t> stops;
+                    if (literal.empty()) {
+                        for (size_t stop = at + 1; stop <= source.size(); ++stop)
+                            if (stop == source.size() || source[stop] == ' ' ||
+                                source[stop] == '.' || source[stop] == ',' || source[stop] == ';')
+                                stops.push_back(stop);
+                    } else {
+                        for (size_t stop = at + 1; stop + literal.size() <= source.size(); ++stop)
+                            if (template_literal_at(source, stop, literal, rule.case_insensitive))
+                                stops.push_back(stop);
+                    }
+                    for (auto it = stops.rbegin(); it != stops.rend(); ++it) {
+                        translation_work_step();
+                        if (feature_argument_end && *it > *feature_argument_end &&
+                            (rule.template_kinds[i] == 's' || rule.template_kinds[i] == 'i'))
+                            continue;
+                        if (!legends_template_suffix_literals_fit(rule, source, i + 1,
+                                *it + literal.size(), source.size(), false) ||
+                            !capture_shape(rule.template_kinds[i], at, *it)) continue;
+                        if (suffix_possible(i + 1, *it + literal.size())) return publish(true);
+                    }
+                    return publish(false);
+                };
                 std::function<bool(size_t, size_t)> consume = [&](size_t i, size_t at) {
                     TranslationWorkFrame work_frame;
                     const auto state = std::make_pair(i, at);
@@ -2663,18 +2705,9 @@ std::shared_ptr<LegendsTextFlow> Overlay::translate_legends_flow(
                         // the potentially long participant/name capture.
                         if (!legends_template_suffix_literals_fit(rule, source, i + 1,
                                 *it + literal.size(), source.size(), false)) continue;
-                        if (i + 1 == captures.size()) {
-                            if (!capture_shape(rule.template_kinds[i], at, *it)) continue;
-                            // A final capture cannot repair an impossible
-                            // paragraph suffix. Check the same advancing
-                            // boundary required by the base case before an
-                            // expensive name/item parse; resolve memoizes both
-                            // successful and failed suffixes for later stops.
-                            const size_t next = *it + literal.size();
-                            if (next <= cursor ||
-                                !has_word_boundaries(source, cursor, next) ||
-                                !resolve(next)) continue;
-                        }
+                        if (i + 1 == captures.size() &&
+                            !capture_shape(rule.template_kinds[i], at, *it)) continue;
+                        if (!suffix_possible(i + 1, *it + literal.size())) continue;
                         const auto part = capture(rule.template_kinds[i], at, *it);
                         if (!part) continue;
                         captures[i] = *part;

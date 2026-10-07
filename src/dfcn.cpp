@@ -4525,6 +4525,11 @@ private:
     std::vector<MessageTemplateProbe> ui_message_template_probes_;
     LiteralAnchorIndex ui_message_anchors_;
     std::unordered_map<std::string, std::vector<std::pair<std::string, Rule>>> announcement_combat_rules_;
+    struct AnnouncementGrammarSyntax {
+        LiteralAnchorIndex anchors;
+        std::vector<std::vector<std::string>> fields;
+    };
+    std::unordered_map<std::string, AnnouncementGrammarSyntax> announcement_combat_syntax_;
     struct AnnouncementTranslation {
         std::vector<int> source_colors;
         std::optional<std::string> target;
@@ -10925,6 +10930,13 @@ std::optional<std::string> Overlay::translate_ui_catalog_capture(
             return std::string(count);
         return std::nullopt;
     }
+    // The growth constructor inserts a complete animal caption, including
+    // Stray/status wrappers and RAW or authored UTF-8 names. Resolve that
+    // identity directly instead of trying unrelated item/term grammars.
+    if (rule.ui_message &&
+            ((index == 0 && rule.source == "An animal has grown to become a {s}.") ||
+             (index == 1 && rule.source == "{p} has grown to become a {s}.")))
+        return translate_creature_label(source, nullptr, true);
     // Diplomatic quests use the same native historical person/entity,
     // elapsed-time and building formatters as rumors and historical prose.
     // Their authored slots are semantic fields, never generic word strings.
