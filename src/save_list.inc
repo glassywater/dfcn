@@ -473,12 +473,45 @@ void Overlay::append_save_list_captions(std::vector<std::string> &rows,
                 std::string_view(rows[y]).substr(portable_x,
                     portable_caption.size()) == portable_caption)
                 claim(portable_x, y, portable_caption, portable_label->second);
-            if (std::any_of(cards.begin(), cards.end(), [&](const CaptionCard &entry) {
+            const auto existing = std::find_if(cards.begin(), cards.end(), [&](const CaptionCard &entry) {
                     const SDL_Rect &other = entry.box;
                     return other.x == box->x && other.y == box->y &&
                         other.w == box->w && other.h == box->h;
-                })) continue;
+                });
+            if (existing != cards.end()) {
+                if (existing->folder_y < 0) {
+                    existing->folder_x = static_cast<int>(at);
+                    existing->folder_y = y;
+                }
+                continue;
+            }
             cards.push_back({*box, skin, static_cast<int>(at), y});
+        }
+        // Timeline-bearing world cards can omit Folder entirely. Its own
+        // complete field and closed native skin establish the same record;
+        // waiting for Folder leaves the authored value in the native font
+        // and prevents the whole card from sharing the list's alignment.
+        for (size_t at = context.find(timeline_prefix); at != std::string::npos;
+                at = context.find(timeline_prefix, at + timeline_prefix.size())) {
+            std::array<int32_t, 9> skin{};
+            const auto box = native_button_text_rect(*gps_, static_cast<int>(at),
+                static_cast<int>(at + timeline_prefix.size()), y, true, &skin);
+            if (!box) continue;
+            const int right = box->x + box->w;
+            const size_t folder_at = context.find(folder_prefix, at + timeline_prefix.size());
+            const int text_right = folder_at != std::string::npos && folder_at < static_cast<size_t>(right)
+                ? static_cast<int>(folder_at) : right;
+            const auto source = card_text(context, y, *box, skin, text_right);
+            if (source.data() != context.data() + at) continue;
+            const auto target = translate_timeline(source);
+            if (!target || std::string_view(rows[y]).substr(at, source.size()) != source) continue;
+            claim(static_cast<int>(at), y, source, *target);
+            if (std::none_of(cards.begin(), cards.end(), [&](const CaptionCard &entry) {
+                    const SDL_Rect &other = entry.box;
+                    return other.x == box->x && other.y == box->y &&
+                        other.w == box->w && other.h == box->h;
+                }))
+                cards.push_back({*box, skin, -1, -1});
         }
     }
     for (const CaptionCard &entry : cards) {
@@ -612,7 +645,7 @@ bool Overlay::layout_save_list(SDL_Renderer *renderer) {
         std::map<int, std::vector<size_t>> rows;
         bool complete = true;
         size_t folder = matches.size(), summary = matches.size(), world = matches.size();
-        size_t portable = matches.size();
+        size_t portable = matches.size(), timeline = matches.size();
         bool save_record = false;
         for (size_t i = 0; i < matches.size(); ++i) {
             const Match &part = matches[i];
@@ -634,6 +667,9 @@ bool Overlay::layout_save_list(SDL_Renderer *renderer) {
             } else if (part.source.starts_with("World: ")) {
                 if (world != matches.size()) complete = false;
                 world = i;
+            } else if (part.rule == kSaveListCaptionRule && part.source.starts_with("Timeline: ")) {
+                if (timeline != matches.size()) complete = false;
+                timeline = i;
             } else if (part.source == "Portable") {
                 if (portable != matches.size()) complete = false;
                 portable = i;
@@ -687,8 +723,11 @@ bool Overlay::layout_save_list(SDL_Renderer *renderer) {
                         action_box->x + action_box->w < box->x;
                 })) continue;
         } else if (header_y < 0 || world == matches.size() ||
-                (rows.size() > 1 && folder == matches.size()) ||
+                (rows.size() > 1 && folder == matches.size() &&
+                    (timeline == matches.size() || summary == matches.size())) ||
                 row_key(matches[world]) != rows.begin()->first ||
+                (timeline != matches.size() &&
+                    row_key(matches[timeline]) <= row_key(matches[world])) ||
                 (summary != matches.size() &&
                     (row_key(matches[summary]) != row_key(matches[world]) ||
                      matches[summary].x < matches[world].x + matches[world].length))) {
