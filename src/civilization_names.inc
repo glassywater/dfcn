@@ -290,13 +290,11 @@ std::optional<std::string> Overlay::translate_civilization_reference(
     // complete context before disabling the name's duplicate live capture.
     NativeHistoryName selected_name = selected->name;
     NativeSiteGovernmentContext government_context;
-    bool has_government_context = false;
-    bool government_role = government_field || (!polity_role && selected_name.entity_type == 1);
-    if (!polity_role && selected_name.entity_type >= 1 && selected_name.entity_type <= 10 &&
+    bool government_role = government_field || selected_name.entity_type == 1;
+    if ((!polity_role || government_role) && selected_name.entity_type >= 1 && selected_name.entity_type <= 10 &&
             (!government_role || selected_name.parent_word_id.empty())) {
         capture_native_site_government_attributes(base, selected->entity,
             government_context, true, !government_field);
-        has_government_context = true;
         government_role = government_role || government_context.governing_role;
     }
     if (selected_name.entity_type != 0 && selected_name.entity_type != 1 &&
@@ -305,9 +303,7 @@ std::optional<std::string> Overlay::translate_civilization_reference(
     if (government_role && selected_name.entity_type != 1 &&
             !capture_native_history_entity_name_context(base, selected->entity,
                 selected_name, true, nullptr, true, true)) return std::nullopt;
-    selected_name.entity_name_current = false;
-    const auto translated = translate_history_name(selected_name, false,
-        polity_role, government_role, has_government_context ? &government_context : nullptr);
+    const auto translated = translate_history_entity_name(selected_name, selected->id);
     if (!translated || !pair) return translated;
     if (selected->name.entity_type == 1 && (!selected->name.first_name.empty() ||
             !selected->name.nickname.empty())) return translated;
@@ -333,8 +329,7 @@ std::optional<std::string> Overlay::translate_world_site_entity_fact(
             if (government != (fact->kind == NativeWorldSiteEntityFactKind::SiteGovernment) ||
                     fact->name.entity_id < 0 || fact->name.entity_type < 0)
                 return std::nullopt;
-            const auto name = translate_history_name(fact->name, false,
-                !government, government, government ? &fact->government_context : nullptr);
+            const auto name = translate_history_entity_name(fact->name, fact->name.entity_id);
             const auto label = exact_literal_translation(prefix);
             if (name && label) return *label + *name;
             return std::nullopt;
@@ -407,65 +402,43 @@ uint64_t Overlay::history_parent_context_revision() const {
 }
 
 std::optional<std::string> Overlay::translate_history_entity_name(
-        const NativeHistoryName &name, const NativeHistoryEventData &event,
-        int32_t id, bool current, bool polity_role) const {
-    // Undated entity references name the current identity. Retained page
-    // snapshots may still carry the old historical flag and an empty parent;
-    // refresh that provenance before choosing a local-government suffix.
-    if (current && !name.entity_name_current) {
-        NativeHistoryName contextual = name;
-        const uintptr_t base = native_history_profile_base();
-        const uintptr_t entity = native_history_find_subject(base,
-            NativeHistoryObjectKind::Entity, id);
-        if (!capture_native_history_entity_name_context(base, entity, contextual,
-                true, nullptr, true)) return translate_history_name(name, false, polity_role);
-        return translate_history_name(contextual, false, polity_role);
+        const NativeHistoryName &name, int32_t id) const {
+    // Every native entity reference reads historical_entity.name, including
+    // dated events. DF does not supply a different old language_name here.
+    // Use the same complete naming identity as the catalog and page heading;
+    // event dates and participant roles belong to the sentence's relations.
+    // Memoize only within this draw. A renamed entity or changed nomenclature
+    // is read again on the next draw, never frozen by ID across frames.
+    if (history_entity_name_epoch_ != draw_epoch_) {
+        history_entity_name_epoch_ = draw_epoch_;
+        history_entity_names_.clear();
     }
-    if (!current && !polity_role && name.entity_type >= 1 && name.entity_type <= 10 &&
-            (name.entity_type != 1 || name.parent_word_id.empty() ||
-                (name.parent_word_pos != 0 && name.parent_word_pos != 1))) {
-        NativeHistoryName contextual = name;
-        contextual.entity_name_current = false;
-        const auto recorded_government = [&](std::string_view key) {
-            const auto found = event.fields.find(std::string(key));
-            return found != event.fields.end() && found->second.size() == 1 &&
-                found->second.front() == id;
-        };
-        const bool government_role = name.entity_type == 1 ||
-            recorded_government("site_civ") || recorded_government("new_site_civ");
-        if (government_role) {
-            NativeSiteGovernmentContext shape_context;
-            capture_entity_government_name_context(contextual, shape_context);
-            if (contextual.parent_word_id.empty() ||
-                    (contextual.parent_word_pos != 0 && contextual.parent_word_pos != 1)) {
-                const uintptr_t base = native_history_profile_base();
-                const uintptr_t entity = native_history_find_subject(base,
-                    NativeHistoryObjectKind::Entity, id);
-                NativeHistoryName historical = name;
-                if (capture_native_history_entity_name_context(base, entity, historical,
-                        false, &event, true, true)) contextual = std::move(historical);
-            }
-            // Dated affiliations remain in the historical name. The separate
-            // shape only supplies neutral entity nomenclature, never today's
-            // parent, active office or evidence of historical autonomy.
-            return translate_history_name(contextual, false, false, true, &shape_context);
-        }
-    }
-    const bool missing_historical_parent = !polity_role && name.entity_type == 1 &&
-        !name.entity_name_current && (name.parent_word_id.empty() ||
-            (name.parent_word_pos != 0 && name.parent_word_pos != 1));
-    if (name.entity_type >= 0 && !missing_historical_parent)
-        return translate_history_name(name, false, polity_role);
-    // Retained snapshots can know the local-government type while missing
-    // its historical parent, especially for appointment events. Resolve that
-    // context by entity ID as well as legacy snapshots without provenance;
-    // language_name_type alone must never classify an EntitySite group.
-    NativeHistoryName contextual = name;
+    if (const auto found = history_entity_names_.find(id); found != history_entity_names_.end())
+        return found->second;
     const uintptr_t base = native_history_profile_base();
     const uintptr_t entity = native_history_find_subject(base,
         NativeHistoryObjectKind::Entity, id);
-    if (!capture_native_history_entity_name_context(base, entity, contextual,
-            current, current ? nullptr : &event, true))
-        return translate_history_name(name, false, polity_role);
-    return translate_history_name(contextual, false, polity_role);
+    NativeHistoryName identity = name;
+    const uintptr_t name_address = entity ? native_history_object_field(entity,
+        "historical_entity", 0x20) : 0;
+    if (!name_address || !capture_native_history_name(base, name_address, identity) ||
+            !capture_native_history_entity_name_context(base, entity, identity,
+            true, nullptr, true)) return std::nullopt;
+    NativeSiteGovernmentContext naming_context;
+    if (identity.entity_type >= 1 && identity.entity_type <= 10)
+        capture_native_site_government_attributes(base, entity, naming_context,
+            true, identity.entity_type == 1);
+    const bool government_name = identity.entity_type == 1 ||
+        naming_context.governing_role;
+    if (government_name && identity.entity_type != 1 &&
+            !capture_native_history_entity_name_context(base, entity, identity,
+                true, nullptr, true, true)) return std::nullopt;
+    // The owned name and context already include the current parent and the
+    // entity's civilian, bandit, religious or military naming category.
+    // Do not recapture it as an event-time shape or choose HEAD from a role.
+    identity.entity_name_current = false;
+    const auto translated = translate_history_name(identity, false, false, government_name,
+        &naming_context);
+    if (translated) history_entity_names_.emplace(id, *translated);
+    return translated;
 }

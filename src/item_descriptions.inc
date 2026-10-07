@@ -579,6 +579,24 @@ std::optional<std::string> Overlay::translate_item_description_source(
         }
     }
     auto sentence = [&](std::string_view value) -> std::optional<std::string> {
+        // art_image::getDescription calls the event's d8 title and then the
+        // collection's 30 title. This wrapper owns a historical event, not
+        // the item grammar's e predicate. Enter the shared typed rule before
+        // trying unrelated item/symbol productions for its dynamic fields.
+        if (value.starts_with("The artwork relates to ")) {
+            for (int index : matching_legends_rules(value)) {
+                const Rule &rule = rules_[static_cast<size_t>(index)];
+                if (rule.source == "The artwork relates to {e}." ||
+                        rule.source == "The artwork relates to ." ||
+                        rule.source == "The artwork relates to during {e}." ||
+                        rule.source == "The artwork relates to during .")
+                    if (auto target = translate_complete_item_description_rule(rule, value,
+                        [&](char kind, std::string_view part) -> std::optional<std::string> {
+                            return kind == 'e' ? translate_legends_event(part) : std::nullopt;
+                        })) return target;
+            }
+            return std::nullopt;
+        }
         // cc23e0 writes the complete memorial into the slab's saved string.
         // Dates, deaths, achievements, family and one selected preference are
         // joined with " / "; a nickname or event can contain those delimiters

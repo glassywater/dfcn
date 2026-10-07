@@ -236,8 +236,13 @@ std::optional<std::string> Overlay::translate_history_name(
         bool government_role, const NativeSiteGovernmentContext *government_context) const {
     if (!name.has_name) return std::nullopt;
     if (!character && name.site_id >= 0) return translate_site_name(name);
+    // All real entity names share their own complete naming identity. The
+    // owned context marks the inner rendering call and avoids recapturing it.
+    if (!character && name.entity_id >= 0 && name.entity_type >= 0 && !government_context)
+        return translate_history_entity_name(name, name.entity_id);
     NativeSiteGovernmentContext identity_government_context;
-    if (!character && !polity_role && !government_context &&
+    if (!character && (!polity_role || name.entity_type == 1 || government_role) &&
+            !government_context &&
             name.entity_type >= 1 && name.entity_type <= 10 &&
             (name.entity_name_current || name.entity_type == 1 || government_role) &&
             (name.entity_type != 1 || name.parent_word_id.empty())) {
@@ -245,14 +250,12 @@ std::optional<std::string> Overlay::translate_history_name(
         government_context = &identity_government_context;
         government_role = government_role || identity_government_context.governing_role;
     }
-    // The native Civilization field and PARENT relationship identify a
-    // political role. Migrating groups and independent local governments
-    // can fill that role without Civilization language_name/type enums.
-    const bool site_government = !character && !polity_role &&
+    // A sentence's civilization/government role does not change an entity's
+    // own HEAD vocabulary. Intrinsic type and owned naming context select it.
+    const bool site_government = !character &&
         (name.entity_type == 1 || (government_role &&
             name.entity_type >= 1 && name.entity_type <= 10));
     const bool polity = !character && !site_government && (name.entity_type == 0 ||
-        (polity_role && name.entity_type >= 1 && name.entity_type <= 10) ||
         (name.entity_type < 0 && name.type == 2));
     if (character) {
         // Reproduce the game's English display first. WORD/POS identify only

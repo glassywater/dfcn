@@ -385,8 +385,11 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
         snapshot = conversation_choices_;
         lexicon = conversation_keyword_lexicon_;
         if (const auto found = conversation_keyword_cache_.find(source);
-                found != conversation_keyword_cache_.end()) return found->second;
+                found != conversation_keyword_cache_.end() &&
+                (!found->second.naming_epoch || found->second.naming_epoch == draw_epoch_))
+            return found->second.target;
     }
+    bool live_caption = false;
     const auto remember = [&](std::optional<std::string> target) {
         std::lock_guard<std::mutex> lock(conversation_choices_mutex_);
         // No grammar runs under this mutex, and an older menu/dictionary
@@ -394,7 +397,8 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
         if (conversation_choices_ != snapshot || conversation_keyword_lexicon_ != lexicon)
             return target;
         if (conversation_keyword_cache_.size() >= 4096) conversation_keyword_cache_.clear();
-        conversation_keyword_cache_.insert_or_assign(source, target);
+        conversation_keyword_cache_.insert_or_assign(source,
+            ConversationKeywordTranslation{target, live_caption ? draw_epoch_ : 0});
         return target;
     };
     const auto complete_target = [](const std::optional<std::string> &target) {
@@ -573,6 +577,9 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
     if (snapshot) for (const auto &[raw_caption, keywords] : *snapshot) {
         if (lower(normalize_utterance(keywords)) != source) continue;
         const std::string caption = normalize_utterance(raw_caption);
+        // A bound caption can contain a native event or entity name. Keep
+        // its translation only for this draw; fixed vocabulary stays cached.
+        live_caption = true;
         auto target = translate_conversation_choice(caption);
         // A typed complete caption may preserve a player's native nickname.
         // Only its exact same-source quoted spelling grants that exemption;

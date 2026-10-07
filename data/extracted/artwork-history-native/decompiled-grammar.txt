@@ -1,0 +1,715 @@
+Native artwork history grammar reconstructed from the two configured Windows PE images.
+This is source reconstruction, not a test, acceptance report, or observed game result.
+Reference SHA-256: 205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7
+Classic SHA-256: f35bbaf37aa96f93f95f8a35a9341e6649da46bc29a8650316bfdc2dfc57f3e4
+
+Coordinates and complete source:
+  native-rtti-dispatch.tsv reads every concrete history_event*st RTTI/COL/vtable.
+  Each edition has 133 event roots at slot +0xd8 and 18 collection roots at +0x30.
+  *-event-source-call-closure.tsv preserves the actual reachable literal operands,
+  direct calls, conditional switch context, normalized selectors, and indirect edges.
+  *-event-source-call-closure.asm preserves the actual complete bodies. Embedded
+  switch data printed as instructions by objdump must be interpreted with the TSV.
+  Dynamic RAW/entity/name fields remain explicit typed leaves rather than invented
+  full sentences. Item title virtuals continue into the existing complete native
+  item-info-title/item-raw-title and statue-art source catalogues.
+
+===============================================================================
+ART_IMAGE PARAGRAPH HISTORY SUFFIX
+Reference 0x1451b10..0x145312c; Classic 0x144ca80..0x144e09c
+Reference history suffix 0x1452a20..0x1452b99;
+Classic history suffix 0x144d990..0x144db09.
+===============================================================================
+
+void append_history_suffix(art_image *image, string &out,
+                           bool full_description, bool english_name_gloss) {
+    if (!full_description) return; // also skips symbol/commission suffix
+    if (image->event == -1) goto symbol_and_commission;
+    history_event *event = find_event(image->event);
+    if (!event) goto symbol_and_commission;
+    out += "The artwork relates to ";
+    history_context ctx;
+    if (english_name_gloss) ctx.flags |= 2;
+    out += event->virtual_0xd8(ctx, true, false); // all 133 concrete roots
+
+    // Reverse whole collection vector, and stop at the first containing the ID.
+    // The native collection's event_ids are searched through helper 0x0babe0.
+    for (int i = history.collections.size() - 1; i >= 0; --i) {
+        history_event_collection *collection = history.collections[i];
+        if (find_id(collection->event_ids, event->id) != -1) {
+            out += " during ";
+            out += collection->virtual_0x30(); // all 18 concrete roots
+            break;
+        }
+    }
+    out += ".  ";
+symbol_and_commission:
+    // Original art_image function continues into symbol/commission only when
+    // specific_ref.type == 24 and its entity and art_image_types index resolve.
+    // Category 0: "The image is the symbol of "; category 1:
+    // "The image was commissioned by ". Both use the full eleven-way entity
+    // switch, preserved in statue-art-sources.tsv and this edition's art ASM.
+}
+
+===============================================================================
+SHARED DATE BUILDER
+Reference 0xb92640..0xb928f4; Classic 0xb8f680..0xb8f934
+===============================================================================
+
+// Integer multiplication/shift in the assembly implements signed / 100800.
+// Only tick == -1 suppresses season precision. No text callback is involved.
+void append_date(string &out, int year, int tick) {
+    if (year < 1) { out += "a time before time"; return; }
+    string year_text = signed_decimal(year); // Reference 0x52c2b0
+    if (tick == -1) { out += year_text; return; }
+    out += "the ";
+    int season = trunc_toward_zero(tick / 100800);
+    int within_season = tick - season * 100800;
+    if (within_season > 67200) out += "late ";
+    else if (within_season <= 33600) out += "early ";
+    else out += "mid";
+    switch (season) {
+    case 0: out += "spring"; break;
+    case 1: out += "summer"; break;
+    case 2: out += "autumn"; break;
+    case 3: out += "winter"; break;
+    default: break; // native malformed/out-of-year tick: no season noun
+    }
+    out += " of "; // native inline DWORD immediate 0x20666f20
+    out += year_text;
+}
+
+// Four seasons x three thirds: the early spring / midspring / late spring,
+// the early summer / midsummer / late summer, the early autumn / midautumn /
+// late autumn, the early winter / midwinter / late winter, each " of YEAR".
+// These twelve + YEAR + a time before time are the fourteen ordinary outputs.
+// The native default still appends phase and year when season is outside 0..3;
+// the ASM records that branch instead of assigning it an invented season.
+
+===============================================================================
+ADD HISTORICAL FIGURE -> ENTITY LINK SUBJECT: ALL 16 SELECTORS AND DEFAULT
+Reference 0xb80420..0xb80ad4; Classic 0xb7d460..0xb7db14
+First table Reference 0xb80a54; second table 0xb80a94.
+===============================================================================
+
+// Native parameters: event+0x28 entity ID; +0x2c figure ID; +0x30 selector;
+// +0x34 position ID; +0x08 year; +0x0c tick. Native context enters shared names.
+void entity_link_subject(event *e, string &out, context *ctx) {
+    position *p;
+    switch (e->selector) {
+    case 0: out += "the acceptance"; break;
+    case 1: case 3: case 5: case 7: case 13: out += "the status"; break;
+    case 2: out += "the entry"; break;
+    case 4: out += "the enslavement"; break;
+    case 6: out += "the imprisonment"; break;
+    case 8: out += "the rise"; break;
+    case 9: out += "the crimes"; break;
+    case 10:
+        p = find_entity_position(e->entity, e->position);
+        if (!p) break; // common actor/entity/date continuation still runs
+        unsigned flags0 = p->flags.bytes.empty() ? 0 : p->flags.bytes[0];
+        if (flags0 & 0x40 || !p->succession_by_position.empty())
+            out += "the ascension";
+        else if (!p->appointed_by.empty()) out += "the appointment";
+        else if (flags0 & 0x02) out += "the election";
+        else out += "the selection";
+        break;
+    case 12:
+        if (find_entity_position(e->entity, e->position)) out += "the claim";
+        break;
+    case 15: out += "the work"; break;
+    case 11: case 14: default: break;
+    }
+    out += " of ";
+    out += figure_descriptor(e->figure, ctx, true, false); // 0xb92f10
+    out += " ";
+    switch (e->selector) {
+    case 0: out += "as a member of"; break;
+    case 1: out += "as a former member of"; break;
+    case 2: out += "into the mercenary service of"; break;
+    case 3: out += "as a former mercenary of"; break;
+    case 4: case 6: out = "by"; break; // original native assign, not append
+    case 5: out += "as a former slave of"; break;
+    case 7: out += "as a former prisoner of"; break;
+    case 8: out += "as an enemy of"; break;
+    case 9: out += "in the eyes of"; break;
+    case 10: case 12: {
+        figure *f = find_figure(e->figure);
+        p = find_entity_position(e->entity, e->position);
+        if (!f || !p) break;
+        out += "to the position of ";
+        if (f->sex == 0 && !p->name_female[0].empty()) out += p->name_female[0];
+        else if (f->sex == 1 && !p->name_male[0].empty()) out += p->name_male[0];
+        else out += p->name[0];
+        out += " of";
+        break;
+    }
+    case 13:
+        p = find_entity_position(e->entity, e->position);
+        if (p) { out += "as a "; out += p->squad[0]; out += " of"; }
+        break;
+    case 15: out += "for"; break;
+    case 11: case 14: default: break;
+    }
+    out += " ";
+    out += entity_descriptor(e->entity, ctx->flags); // 0xb92900
+    out += " in ";
+    append_date(out, e->year, e->tick);
+}
+
+// The complete RAW office occupies one string field. Native " of " and the
+// organization are appended after that field; an office such as "captain of
+// the guard" does not turn the later organization into an office territory.
+// The selector-13 squad class is one RAW field too, without sex lookup. This
+// is entity_position.squad[0] at +0x218, not spouse[0] (+0x158), and is not a
+// player's custom squad.alias. An existing adapter comment calls variant 3
+// "spouse", but its actual +0x218 read agrees with the native squad class.
+// Invalid/missing position paths deliberately retain the same common suffix;
+// the source reconstruction does not invent a missing office or event name.
+
+===============================================================================
+AGREEMENT-FORMED ROOT: COMPLETE 18-WAY INLINE BLOCK DISPATCH
+Reference 0x2ad7f0..0x2afec3; Classic 0x2ab3b0..0x2ada83
+Reference jump table 0x2afde4; Classic 0x2ad9a4.
+===============================================================================
+
+// Structured control-flow reconstruction. Inline labels below designate blocks
+// in the complete paired all-agreement-subject-branches.asm sources, not new
+// functions or an inferred title lookup. Every block ends at the same date tail.
+void agreement_formed_subject(event *e, string &out, context *ctx) {
+    agreement *a = find_agreement(e->agreement_id /* +0x28 */);
+    if (!a || a->parties.empty() || a->elements.empty()) goto corrupt_fallback;
+    element *el = a->elements[0]; // native reads +0x28 vector[0]
+    if ((unsigned)el->type > 17) goto corrupt_fallback;
+    switch (el->type) {
+    case 0: goto joining_0x2af744;
+    case 1: goto permanent_joining_0x2af206;
+    case 2: goto residency_0x2af4f2;
+    case 3: goto citizenship_0x2af630;
+    case 4: goto parley_0x2af3ad;
+    case 5: goto corrupt_action_0x2aeec6;
+    case 6: goto theft_plot_0x2ae859;
+    case 7: goto promise_0x2aeabc;
+    case 8: goto assassination_0x2ae5ec;
+    case 9: goto abduction_0x2ae37f;
+    case 10: goto sabotage_0x2ae0bc;
+    case 11: goto conspiracy_0x2ad98d;
+    case 12: goto establish_building_0x2af9f9;
+    case 13: goto infiltration_0x2adae0;
+    case 14: goto frame_0x2adc39;
+    case 15: goto induce_war_0x2adee4;
+    case 16: goto service_request_0x2afb55;
+    case 17: goto retrieve_request_0x2afc7d;
+    }
+corrupt_fallback:
+    out += "the formation of a corrupt agreement";
+date_tail: // 0x2ad8bf, also used by every successful branch
+    out += " in ";
+    append_date(out, e->year, e->tick);
+}
+
+// All subjects call native party getter 0xb9dc0 against agreement.parties.
+// A missing required party contributes "an unknown party". Mixed party lists
+// use 0xe2b80 and retain every entry with the native two/Oxford-list punctuation.
+// The actual operands and conditional helper calls remain in paired assembly.
+// These are the complete arm production families:
+//  0 "the joining of " PARTY " with " PARTY + one purpose arm below.
+//  1 "the permanent joining by " PARTY " of " PARTY [" to the living world"].
+//  2 "the agreement between " PARTY " and " PARTY + one resident purpose.
+//  3 "the agreement between " PARTY " and " PARTY [" and become a citizen of " SITE].
+//  4 "the parley between " PARTY " and " PARTY.
+//  5 "the passing of corruptly-obtained funds by " / "the embezzlement of" /
+//    "the bribery of" PARTY + office/entity/influence/recipient/messenger arms.
+//  6 "the plot of " PARTY " to steal " ARTIFACT + influence/messengers.
+//  7 "the promise by " PARTY " to " PARTY + equality/position/entity arms.
+//  8 "the plot of " PARTY " to assassinate " FIGURE + influence/messengers.
+//  9 "the plot of " PARTY " to abduct " FIGURE + influence/messengers.
+// 10 "the plot of " PARTY " to sabotage the activities of " ENTITY
+//    [" at " SITE] + influence/messengers.
+// 11 "the embezzlement conspiracy" / "the corruption conspiracy" /
+//    "the bribery conspiracy" + " concocted by " all-parties.
+// 12 "the agreement by " PARTY " to establish " BUILDING-CLASS " for " ENTITY.
+// 13 "the plot of " PARTY " to infiltrate " ENTITY + influence.
+// 14 "the plot of " PARTY " to frame " [FIGURE] " for " [CRIME]
+//    " by fooling " [FIGURE] + influence.
+// 15 "the plot of " PARTY " to induce a war of " [ENTITY] " upon " [ENTITY]
+//    + influence.
+// 16 "the request by " PARTY " that " PARTY " make an offer of service"
+//    [" to " ENTITY].
+// 17 "the request by " PARTY " that " PARTY " retrieve " ARTIFACT
+//    [" from " SITE] [" for " PARTY].
+
+// Joining's complete finite purpose dispatch (0x2af96a / 0x2af9af return to
+// date_tail directly, preventing the guide branch from chaining multiple goals):
+switch (joining.data[0]) {
+case 0:  append(" to oust ", optional_entity, " from ", optional_site); break;
+case 1:  append(" to live a life of adventure"); break;
+case 2:
+    append(" as a guide");
+    if (joining.data[5] != -1) append(" to find ", figure(joining.data[5]));
+    else if (joining.data[4] != -1) append(" to find ", identity(joining.data[4]));
+    else if (joining.data[3] != -1) append(" to ", site(joining.data[3]));
+    break;
+case 23: append(" in order to be brought to safety"); break;
+case 24: append(" to help rescue ", optional_figure); break;
+case 39: append(" in bound service"); break;
+case 42: append(" to entertain the world"); break;
+default: break; // no purpose text; the main joining subject and date remain
+}
+
+// Residency purpose and optional site are independent native conditions:
+switch (residency.data[0]) {
+case 41: append(" to eradicate monsters"); break;
+case 42: append(" to entertain the citizenry"); break;
+case 43: append(" to work as a mercenary"); break;
+case 44: append(" to study"); break;
+default: break;
+}
+if (residency.data[3] != -1)
+    append(" and become a resident of ", site(residency.data[3]));
+if (citizenship.data[2] != -1)
+    append(" and become a citizen of ", site(citizenship.data[2]));
+
+// The promise's optional recipient does not acquire an unknown-party noun when
+// different from the beneficiary; equal includes the case where both are null.
+party *beneficiary = get_party(promise.data[0]);
+party *promiser = get_party(promise.data[1]);
+party *recipient = get_party(promise.data[2]);
+append("the promise by ", required_party(promiser), " to ", required_party(beneficiary));
+if (recipient == beneficiary) append(" of");
+else { append(" to give "); if (recipient) append(party_name(recipient)); }
+append(" a position");
+if (promise.data[10] != -1) append(" in ", entity(promise.data[10]));
+// Influence = party data[3]; via uses the complete messenger vector, not one ID.
+
+// Frame's 19-entry crime table has a genuine empty default. Even with a missing
+// target, crime or fooled actor, " to frame ", " for " and " by fooling " remain.
+// Optional infiltration entity is data[2] != -1. Optional induce-war attacker
+// and defender entities are independently data[2] != -1 and data[3] != -1.
+
+===============================================================================
+SHARED REASON + CIRCUMSTANCE HELPER: COMPLETE SELECTOR CONTROL FLOW
+Reference 0xb5a6c0..0xb5bab1; Classic 0xb57700..0xb58af1
+===============================================================================
+
+// Native calling convention: out RCX; reason EDX; value/typed ID R8D;
+// circumstance R9D; circumstance ID fifth stack argument; context sixth.
+// Reasons and circumstances run independently. A reason does not consume the
+// circumstance, and both retain a preceding separator when out is nonempty.
+void append_history_adjuncts(string &out, int reason, int value,
+                             int circumstance, int circumstance_id, context *ctx) {
+    if (reason != -1) {
+        if (!out.empty()) out += " ";
+        if ((unsigned)reason <= 93) dispatch_reason(reason, value, out, ctx);
+    }
+    if (circumstance != -1) {
+        if (!out.empty()) out += " ";
+        if ((unsigned)circumstance <= 280)
+            dispatch_circumstance(circumstance, circumstance_id, out, ctx);
+    }
+}
+// Each local block named below is retained in shared-history-reasons.asm. This
+// preserves all real selector numbers, including the numerous blank/default
+// enum slots, instead of inventing a dense 26-element circumstance enumeration.
+
+// reference: inline switch 0, instruction 0xb5a746, table 0xb5b6b4
+switch (native_normalized_selector_0) {
+    case 0: goto loc_0xb5a748;
+    case 1: goto loc_0xb5a75a;
+    case 2: goto loc_0xb5a76c;
+    case 3: goto loc_0xb5a77e;
+    case 4: goto loc_0xb5a790;
+    case 5: goto loc_0xb5a847;
+    case 6: goto loc_0xb5a859;
+    case 7: goto loc_0xb5a86b;
+    case 8: goto loc_0xb5a87d;
+    case 9: goto loc_0xb5a88f;
+    case 10: goto loc_0xb5a8a1;
+    case 11: goto loc_0xb5a8b3;
+    case 12: goto loc_0xb5a8c5;
+    case 13: goto loc_0xb5a8d7;
+    case 14: goto loc_0xb5a8e9;
+    case 15: goto loc_0xb5a8fb;
+    case 16: goto loc_0xb5a90d;
+    case 17: goto loc_0xb5a919;
+    case 18: goto loc_0xb5a92b;
+    case 19: goto loc_0xb5a93d;
+    case 20: goto loc_0xb5a94f;
+    case 21: goto loc_0xb5a961;
+    case 22: goto loc_0xb5a973;
+    case 23: goto loc_0xb5a985;
+    case 24: goto loc_0xb5a997;
+    case 25: goto loc_0xb5a9a9;
+    case 26: goto loc_0xb5a9bb;
+    case 27: goto loc_0xb5a9cd;
+    case 28: goto loc_0xb5aa03;
+    case 29: goto loc_0xb5aa15;
+    case 30: goto loc_0xb5aa27;
+    case 31: goto loc_0xb5aa39;
+    case 32: goto loc_0xb5aa4b;
+    case 33: goto loc_0xb5aa5d;
+    case 34: goto loc_0xb5aa6f;
+    case 35: goto loc_0xb5aa81;
+    case 36: goto loc_0xb5aa93;
+    case 37: goto loc_0xb5aaa5;
+    case 38: goto loc_0xb5aab7;
+    case 39: goto loc_0xb5aac9;
+    case 40: goto loc_0xb5aadb;
+    case 41: goto loc_0xb5ab17;
+    case 42: goto loc_0xb5ab29;
+    case 43: goto loc_0xb5ab3b;
+    case 44: goto loc_0xb5ab4d;
+    case 45: goto loc_0xb5ab5f;
+    case 46: goto loc_0xb5ab83;
+    case 47: goto loc_0xb5ab95;
+    case 48: goto loc_0xb5aba7;
+    case 49: goto loc_0xb5abb9;
+    case 50: goto loc_0xb5abcb;
+    case 51: goto loc_0xb5abdd;
+    case 52: goto loc_0xb5abef;
+    case 53: goto loc_0xb5ac01;
+    case 54: goto loc_0xb5ac13;
+    case 55: goto loc_0xb5ac25;
+    case 56: goto loc_0xb5ac37;
+    case 57: goto loc_0xb5ac49;
+    case 58: goto loc_0xb5ac5b;
+    case 59: goto loc_0xb5ac6d;
+    case 60: goto loc_0xb5ac7f;
+    case 61: goto loc_0xb5ac91;
+    case 62: goto loc_0xb5aca3;
+    case 63: goto loc_0xb5acb5;
+    case 64: goto loc_0xb5acc7;
+    case 65: goto loc_0xb5acd3;
+    case 66: goto loc_0xb5ace5;
+    case 67: goto loc_0xb5acf7;
+    case 68: goto loc_0xb5ad09;
+    case 69: goto loc_0xb5ad1b;
+    case 70: goto loc_0xb5ad2d;
+    case 71: goto loc_0xb5b169;
+    case 72: goto loc_0xb5b17b;
+    case 73: goto loc_0xb5b18d;
+    case 74: goto loc_0xb5b19f;
+    case 75: goto loc_0xb5b1b1;
+    case 76: goto loc_0xb5b157;
+    case 77: goto loc_0xb5ad81;
+    case 78: goto loc_0xb5ae21;
+    case 79: goto loc_0xb5ae33;
+    case 80: goto loc_0xb5ae45;
+    case 81: goto loc_0xb5b1c3;
+    case 82: goto loc_0xb5ada9;
+    case 83: goto loc_0xb5adbb;
+    case 84: goto loc_0xb5adcd;
+    case 85: goto loc_0xb5addf;
+    case 86: goto loc_0xb5adf1;
+    case 87: goto loc_0xb5adfd;
+    case 88: goto loc_0xb5ae0f;
+    case 89: goto loc_0xb5b2d9;
+    case 90: goto loc_0xb5b2e8;
+    case 91: goto loc_0xb5ab71;
+    case 92: goto loc_0xb5a9df;
+    case 93: goto loc_0xb5a9f1;
+}
+
+// reference: inline switch 1, instruction 0xb5aed9, table 0xb5b82c
+switch (native_normalized_selector_1) {
+    case 0: goto loc_0xb5aedb;
+    case 1: goto loc_0xb5aeed;
+    case 2: goto loc_0xb5aeff;
+    case 3: goto loc_0xb5af11;
+    case 4: goto loc_0xb5af23;
+    case 5: goto loc_0xb5af35;
+    case 6: goto loc_0xb5af47;
+    case 7: goto loc_0xb5af59;
+    case 8: goto loc_0xb5af65;
+    case 9: goto loc_0xb5af77;
+    case 10: goto loc_0xb5af89;
+    case 11: goto loc_0xb5af95;
+    case 12: goto loc_0xb5afa7;
+    case 13: goto loc_0xb5afb9;
+    case 14: goto loc_0xb5afcb;
+    case 15: goto loc_0xb5afdd;
+    case 16: goto loc_0xb5afef;
+    case 17: goto loc_0xb5b001;
+    case 18: goto loc_0xb5b013;
+    case 19: goto loc_0xb5b025;
+    case 20: goto loc_0xb5b031;
+    case 21: goto loc_0xb5b043;
+    case 22: goto loc_0xb5b055;
+    case 23: goto loc_0xb5b067;
+    case 24: goto loc_0xb5b070;
+    case 25: goto loc_0xb5b079;
+    case 26: goto loc_0xb5b088;
+    case 27: goto loc_0xb5b097;
+    case 28: goto loc_0xb5b0a6;
+    case 29: goto loc_0xb5b0b5;
+    case 30: goto loc_0xb5b0c4;
+    case 31: goto loc_0xb5b0d3;
+    case 32: goto loc_0xb5b0e2;
+}
+
+// reference: inline switch 2, instruction 0xb5b1f9, table 0xb5b8b0
+switch (native_normalized_selector_2) {
+    case 0: goto loc_0xb5b295;
+    case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 20: case 21: case 22: case 23: case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32: case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41: case 42: case 43: case 44: case 45: case 46: case 47: case 48: case 49: case 50: case 51: case 55: case 56: goto loc_0xb5b2fd;
+    case 8: goto loc_0xb5b284;
+    case 52: goto loc_0xb5b2a6;
+    case 53: goto loc_0xb5b2b7;
+    case 54: goto loc_0xb5b2c8;
+    case 57: goto loc_0xb5b1fb;
+    case 58: goto loc_0xb5b20f;
+    case 59: goto loc_0xb5b223;
+    case 60: goto loc_0xb5b237;
+    case 61: goto loc_0xb5b24b;
+    case 62: goto loc_0xb5b25f;
+    case 63: goto loc_0xb5b273;
+}
+
+// reference: inline switch 3, instruction 0xb5b34a, table 0xb5b924
+switch (native_normalized_selector_3) {
+    case 0: case 1: case 2: case 3: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 20: case 21: case 22: case 23: case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32: case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41: case 42: case 43: case 44: case 45: case 46: case 47: case 48: case 49: case 50: case 51: case 52: case 53: case 54: case 55: case 56: case 57: case 58: case 59: case 60: case 61: case 62: case 63: case 64: case 65: case 66: case 67: case 68: case 69: case 70: case 71: case 72: case 73: case 74: case 75: case 76: case 77: case 78: case 79: case 80: case 81: case 82: case 83: case 84: case 85: case 86: case 87: case 88: case 89: case 90: case 91: case 92: case 93: case 94: case 95: case 96: case 97: case 98: case 99: case 100: case 101: case 102: case 103: case 104: case 105: case 106: case 107: case 108: case 109: case 110: case 111: case 112: case 113: case 114: case 115: case 116: case 117: case 118: case 119: case 120: case 121: case 122: case 123: case 124: case 125: case 126: case 127: case 128: case 129: case 130: case 131: case 132: case 133: case 134: case 135: case 136: case 137: case 138: case 139: case 140: case 165: case 234: case 235: case 238: case 240: case 264: case 265: case 267: case 268: case 269: case 270: case 271: case 272: case 273: case 274: case 275: goto loc_0xb5b4c5;
+    case 4: goto loc_0xb5b34d;
+    case 141: case 142: case 143: case 144: case 145: case 146: case 147: case 148: case 149: case 150: case 151: case 152: case 153: case 154: case 155: case 156: case 157: case 158: case 159: case 160: case 161: case 162: case 163: case 164: case 166: case 167: case 168: case 169: case 170: case 171: case 172: case 173: case 174: case 175: case 176: case 177: case 178: case 179: case 180: case 182: case 183: case 184: case 185: case 186: case 187: case 188: case 189: case 190: case 191: case 192: case 193: case 194: case 195: case 196: case 197: case 198: case 199: case 200: case 201: case 202: case 203: case 204: case 205: case 206: case 207: case 208: case 212: case 213: case 214: case 215: case 216: case 217: case 218: case 219: case 220: case 221: case 222: case 223: case 224: case 225: case 226: case 227: case 228: case 237: case 241: case 242: case 252: case 253: case 254: case 255: case 256: case 258: case 259: case 260: case 261: case 262: case 266: case 280: goto loc_0xb5b4d4;
+    case 181: goto loc_0xb5b387;
+    case 209: goto loc_0xb5b491;
+    case 210: goto loc_0xb5b49d;
+    case 211: goto loc_0xb5b4b1;
+    case 229: goto loc_0xb5b4e8;
+    case 230: goto loc_0xb5b4f4;
+    case 231: goto loc_0xb5b508;
+    case 232: goto loc_0xb5b528;
+    case 233: goto loc_0xb5b534;
+    case 236: goto loc_0xb5b594;
+    case 239: goto loc_0xb5b5b6;
+    case 243: goto loc_0xb5b5e5;
+    case 244: goto loc_0xb5b5f7;
+    case 245: goto loc_0xb5b606;
+    case 246: goto loc_0xb5b62b;
+    case 247: goto loc_0xb5b63a;
+    case 248: goto loc_0xb5b649;
+    case 249: goto loc_0xb5b658;
+    case 250: goto loc_0xb5b51c;
+    case 251: goto loc_0xb5b667;
+    case 257: goto loc_0xb5b68b;
+    case 263: goto loc_0xb5b676;
+    case 276: goto loc_0xb5b3bb;
+    case 277: goto loc_0xb5b3ec;
+    case 278: goto loc_0xb5b41d;
+    case 279: goto loc_0xb5b44e;
+}
+
+// classic: inline switch 0, instruction 0xb57786, table 0xb586f4
+switch (native_normalized_selector_0) {
+    case 0: goto loc_0xb57788;
+    case 1: goto loc_0xb5779a;
+    case 2: goto loc_0xb577ac;
+    case 3: goto loc_0xb577be;
+    case 4: goto loc_0xb577d0;
+    case 5: goto loc_0xb57887;
+    case 6: goto loc_0xb57899;
+    case 7: goto loc_0xb578ab;
+    case 8: goto loc_0xb578bd;
+    case 9: goto loc_0xb578cf;
+    case 10: goto loc_0xb578e1;
+    case 11: goto loc_0xb578f3;
+    case 12: goto loc_0xb57905;
+    case 13: goto loc_0xb57917;
+    case 14: goto loc_0xb57929;
+    case 15: goto loc_0xb5793b;
+    case 16: goto loc_0xb5794d;
+    case 17: goto loc_0xb57959;
+    case 18: goto loc_0xb5796b;
+    case 19: goto loc_0xb5797d;
+    case 20: goto loc_0xb5798f;
+    case 21: goto loc_0xb579a1;
+    case 22: goto loc_0xb579b3;
+    case 23: goto loc_0xb579c5;
+    case 24: goto loc_0xb579d7;
+    case 25: goto loc_0xb579e9;
+    case 26: goto loc_0xb579fb;
+    case 27: goto loc_0xb57a0d;
+    case 28: goto loc_0xb57a43;
+    case 29: goto loc_0xb57a55;
+    case 30: goto loc_0xb57a67;
+    case 31: goto loc_0xb57a79;
+    case 32: goto loc_0xb57a8b;
+    case 33: goto loc_0xb57a9d;
+    case 34: goto loc_0xb57aaf;
+    case 35: goto loc_0xb57ac1;
+    case 36: goto loc_0xb57ad3;
+    case 37: goto loc_0xb57ae5;
+    case 38: goto loc_0xb57af7;
+    case 39: goto loc_0xb57b09;
+    case 40: goto loc_0xb57b1b;
+    case 41: goto loc_0xb57b57;
+    case 42: goto loc_0xb57b69;
+    case 43: goto loc_0xb57b7b;
+    case 44: goto loc_0xb57b8d;
+    case 45: goto loc_0xb57b9f;
+    case 46: goto loc_0xb57bc3;
+    case 47: goto loc_0xb57bd5;
+    case 48: goto loc_0xb57be7;
+    case 49: goto loc_0xb57bf9;
+    case 50: goto loc_0xb57c0b;
+    case 51: goto loc_0xb57c1d;
+    case 52: goto loc_0xb57c2f;
+    case 53: goto loc_0xb57c41;
+    case 54: goto loc_0xb57c53;
+    case 55: goto loc_0xb57c65;
+    case 56: goto loc_0xb57c77;
+    case 57: goto loc_0xb57c89;
+    case 58: goto loc_0xb57c9b;
+    case 59: goto loc_0xb57cad;
+    case 60: goto loc_0xb57cbf;
+    case 61: goto loc_0xb57cd1;
+    case 62: goto loc_0xb57ce3;
+    case 63: goto loc_0xb57cf5;
+    case 64: goto loc_0xb57d07;
+    case 65: goto loc_0xb57d13;
+    case 66: goto loc_0xb57d25;
+    case 67: goto loc_0xb57d37;
+    case 68: goto loc_0xb57d49;
+    case 69: goto loc_0xb57d5b;
+    case 70: goto loc_0xb57d6d;
+    case 71: goto loc_0xb581a9;
+    case 72: goto loc_0xb581bb;
+    case 73: goto loc_0xb581cd;
+    case 74: goto loc_0xb581df;
+    case 75: goto loc_0xb581f1;
+    case 76: goto loc_0xb58197;
+    case 77: goto loc_0xb57dc1;
+    case 78: goto loc_0xb57e61;
+    case 79: goto loc_0xb57e73;
+    case 80: goto loc_0xb57e85;
+    case 81: goto loc_0xb58203;
+    case 82: goto loc_0xb57de9;
+    case 83: goto loc_0xb57dfb;
+    case 84: goto loc_0xb57e0d;
+    case 85: goto loc_0xb57e1f;
+    case 86: goto loc_0xb57e31;
+    case 87: goto loc_0xb57e3d;
+    case 88: goto loc_0xb57e4f;
+    case 89: goto loc_0xb58319;
+    case 90: goto loc_0xb58328;
+    case 91: goto loc_0xb57bb1;
+    case 92: goto loc_0xb57a1f;
+    case 93: goto loc_0xb57a31;
+}
+
+// classic: inline switch 1, instruction 0xb57f19, table 0xb5886c
+switch (native_normalized_selector_1) {
+    case 0: goto loc_0xb57f1b;
+    case 1: goto loc_0xb57f2d;
+    case 2: goto loc_0xb57f3f;
+    case 3: goto loc_0xb57f51;
+    case 4: goto loc_0xb57f63;
+    case 5: goto loc_0xb57f75;
+    case 6: goto loc_0xb57f87;
+    case 7: goto loc_0xb57f99;
+    case 8: goto loc_0xb57fa5;
+    case 9: goto loc_0xb57fb7;
+    case 10: goto loc_0xb57fc9;
+    case 11: goto loc_0xb57fd5;
+    case 12: goto loc_0xb57fe7;
+    case 13: goto loc_0xb57ff9;
+    case 14: goto loc_0xb5800b;
+    case 15: goto loc_0xb5801d;
+    case 16: goto loc_0xb5802f;
+    case 17: goto loc_0xb58041;
+    case 18: goto loc_0xb58053;
+    case 19: goto loc_0xb58065;
+    case 20: goto loc_0xb58071;
+    case 21: goto loc_0xb58083;
+    case 22: goto loc_0xb58095;
+    case 23: goto loc_0xb580a7;
+    case 24: goto loc_0xb580b0;
+    case 25: goto loc_0xb580b9;
+    case 26: goto loc_0xb580c8;
+    case 27: goto loc_0xb580d7;
+    case 28: goto loc_0xb580e6;
+    case 29: goto loc_0xb580f5;
+    case 30: goto loc_0xb58104;
+    case 31: goto loc_0xb58113;
+    case 32: goto loc_0xb58122;
+}
+
+// classic: inline switch 2, instruction 0xb58239, table 0xb588f0
+switch (native_normalized_selector_2) {
+    case 0: goto loc_0xb582d5;
+    case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 20: case 21: case 22: case 23: case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32: case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41: case 42: case 43: case 44: case 45: case 46: case 47: case 48: case 49: case 50: case 51: case 55: case 56: goto loc_0xb5833d;
+    case 8: goto loc_0xb582c4;
+    case 52: goto loc_0xb582e6;
+    case 53: goto loc_0xb582f7;
+    case 54: goto loc_0xb58308;
+    case 57: goto loc_0xb5823b;
+    case 58: goto loc_0xb5824f;
+    case 59: goto loc_0xb58263;
+    case 60: goto loc_0xb58277;
+    case 61: goto loc_0xb5828b;
+    case 62: goto loc_0xb5829f;
+    case 63: goto loc_0xb582b3;
+}
+
+// classic: inline switch 3, instruction 0xb5838a, table 0xb58964
+switch (native_normalized_selector_3) {
+    case 0: case 1: case 2: case 3: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 20: case 21: case 22: case 23: case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32: case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41: case 42: case 43: case 44: case 45: case 46: case 47: case 48: case 49: case 50: case 51: case 52: case 53: case 54: case 55: case 56: case 57: case 58: case 59: case 60: case 61: case 62: case 63: case 64: case 65: case 66: case 67: case 68: case 69: case 70: case 71: case 72: case 73: case 74: case 75: case 76: case 77: case 78: case 79: case 80: case 81: case 82: case 83: case 84: case 85: case 86: case 87: case 88: case 89: case 90: case 91: case 92: case 93: case 94: case 95: case 96: case 97: case 98: case 99: case 100: case 101: case 102: case 103: case 104: case 105: case 106: case 107: case 108: case 109: case 110: case 111: case 112: case 113: case 114: case 115: case 116: case 117: case 118: case 119: case 120: case 121: case 122: case 123: case 124: case 125: case 126: case 127: case 128: case 129: case 130: case 131: case 132: case 133: case 134: case 135: case 136: case 137: case 138: case 139: case 140: case 165: case 234: case 235: case 238: case 240: case 264: case 265: case 267: case 268: case 269: case 270: case 271: case 272: case 273: case 274: case 275: goto loc_0xb58505;
+    case 4: goto loc_0xb5838d;
+    case 141: case 142: case 143: case 144: case 145: case 146: case 147: case 148: case 149: case 150: case 151: case 152: case 153: case 154: case 155: case 156: case 157: case 158: case 159: case 160: case 161: case 162: case 163: case 164: case 166: case 167: case 168: case 169: case 170: case 171: case 172: case 173: case 174: case 175: case 176: case 177: case 178: case 179: case 180: case 182: case 183: case 184: case 185: case 186: case 187: case 188: case 189: case 190: case 191: case 192: case 193: case 194: case 195: case 196: case 197: case 198: case 199: case 200: case 201: case 202: case 203: case 204: case 205: case 206: case 207: case 208: case 212: case 213: case 214: case 215: case 216: case 217: case 218: case 219: case 220: case 221: case 222: case 223: case 224: case 225: case 226: case 227: case 228: case 237: case 241: case 242: case 252: case 253: case 254: case 255: case 256: case 258: case 259: case 260: case 261: case 262: case 266: case 280: goto loc_0xb58514;
+    case 181: goto loc_0xb583c7;
+    case 209: goto loc_0xb584d1;
+    case 210: goto loc_0xb584dd;
+    case 211: goto loc_0xb584f1;
+    case 229: goto loc_0xb58528;
+    case 230: goto loc_0xb58534;
+    case 231: goto loc_0xb58548;
+    case 232: goto loc_0xb58568;
+    case 233: goto loc_0xb58574;
+    case 236: goto loc_0xb585d4;
+    case 239: goto loc_0xb585f6;
+    case 243: goto loc_0xb58625;
+    case 244: goto loc_0xb58637;
+    case 245: goto loc_0xb58646;
+    case 246: goto loc_0xb5866b;
+    case 247: goto loc_0xb5867a;
+    case 248: goto loc_0xb58689;
+    case 249: goto loc_0xb58698;
+    case 250: goto loc_0xb5855c;
+    case 251: goto loc_0xb586a7;
+    case 257: goto loc_0xb586cb;
+    case 263: goto loc_0xb586b6;
+    case 276: goto loc_0xb583fb;
+    case 277: goto loc_0xb5842c;
+    case 278: goto loc_0xb5845d;
+    case 279: goto loc_0xb5848e;
+}
+
+// The primary reason switch contains 94 arms (0..93). Its nested value switch
+// contains 33 arms (0..32). The scholarly-interest switch uses value-61 plus
+// byte remapping over 64 normalized slots. Circumstance uses byte remapping
+// over 281 slots, including the repeated no-text destinations.
+// Dynamic leaves remain typed: figure, entity, site, identity, artifact,
+// scholarly topic, value wording, historical collection title. The collection
+// leaf uses virtual +0x30 over all 18 concrete collection RTTI roots, not an
+// unbounded English string. Rituals retain the prayer and temple suffix arms;
+// owned-item/body and cosmic/value nuances are distinct original productions.
+
+===============================================================================
+ARTIFACT-COPY ROOT: ORIGINAL FLAG AND ALL UNCONDITIONAL QUALIFIERS
+Reference 0xb8a150..0xb8a2cb
+===============================================================================
+
+void artifact_copied_subject(event *e, string &out, context *ctx) {
+    out += "the acquisition of a copy of ";
+    if (e->flags_44 & 1) out += "the original ";
+    out += artifact_identity(e->artifact_28, ctx); // 0xb94400
+    out += " from ";
+    out += abstract_building(e->site_38, e->building_40, true, ctx->flags);
+    out += " in "; out += site(e->site_38, ctx->flags);
+    out += " of "; out += entity(e->entity_30, ctx->flags);
+    out += " by "; out += entity(e->entity_2c, ctx->flags);
+    out += " for ";
+    out += abstract_building(e->site_34, e->building_3c, true, ctx->flags);
+    out += " in "; out += site(e->site_34, ctx->flags);
+    out += " in "; append_date(out, e->year, e->tick);
+}
+// The six source/destination helpers above are not guarded by -1. Their own
+// native missing-object branches supply their established text boundaries.

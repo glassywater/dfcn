@@ -3340,7 +3340,11 @@ private:
     using ConversationChoices = std::vector<std::pair<std::string, std::string>>;
     std::shared_ptr<const ConversationChoices> conversation_choices_;
     ConversationChoices conversation_choice_content_;
-    mutable std::unordered_map<std::string, std::optional<std::string>> conversation_keyword_cache_;
+    struct ConversationKeywordTranslation {
+        std::optional<std::string> target;
+        uint64_t naming_epoch = 0;
+    };
+    mutable std::unordered_map<std::string, ConversationKeywordTranslation> conversation_keyword_cache_;
     mutable std::shared_ptr<const ConversationKeywordLexicon> conversation_keyword_lexicon_;
     struct FontGlyph {
         FT_Face face = nullptr;
@@ -3486,6 +3490,8 @@ private:
     };
     mutable std::unordered_map<uint64_t, HistoryEventTranslation> history_event_translation_cache_;
     mutable std::list<uint64_t> history_event_translation_order_;
+    mutable uint64_t history_entity_name_epoch_ = 0;
+    mutable std::unordered_map<int32_t, std::string> history_entity_names_;
     mutable uint64_t history_parent_context_epoch_ = 0;
     mutable uint64_t history_parent_context_revision_ = 0;
     uint64_t history_parent_context_revision() const;
@@ -4145,8 +4151,7 @@ private:
     std::string independent_site_government_suffix(const NativeHistoryName &name,
         const NativeSiteGovernmentContext *context) const;
     std::optional<std::string> translate_history_entity_name(
-        const NativeHistoryName &name, const NativeHistoryEventData &event,
-        int32_t id, bool current, bool polity_role = false) const;
+        const NativeHistoryName &name, int32_t id) const;
     std::optional<std::string> civilization_name_modifier(
         std::string_view word_id, std::string_view part, size_t slot,
         std::string_view head_id) const;
@@ -4704,6 +4709,7 @@ private:
         std::string_view source) const;
     std::optional<std::string> translate_legends_term(
         std::string_view value, bool description = true) const;
+    std::optional<std::string> translate_legends_office(std::string_view value) const;
     std::optional<std::string> translate_legends_description_term(std::string_view value) const;
     std::optional<std::string> translate_legends_color(std::string_view value) const;
     std::optional<std::string> translate_legends_anatomy(std::string_view value) const;
@@ -5786,6 +5792,8 @@ void Overlay::build_trie() {
     history_event_title_templates_.clear();
     history_event_translation_cache_.clear();
     history_event_translation_order_.clear();
+    history_entity_name_epoch_ = 0;
+    history_entity_names_.clear();
     history_parent_context_epoch_ = 0;
     history_parent_context_revision_ = 0;
     legends_work_limit_cache_.clear();

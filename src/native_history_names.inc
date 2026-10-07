@@ -636,6 +636,10 @@ static int32_t native_history_event_entity_parent(
     case 23: // reclaim_site
     case 25: // site_died
     case 26: // site_retired
+    case 30: // created_building
+    case 31: // replaced_building
+    case 58: // created_world_construction
+    case 122: // entity_breach_feature_layer
         pair("site_civ", "civ");
         break;
     case 0: // war_attacked_site
@@ -652,6 +656,9 @@ static int32_t native_history_event_entity_parent(
     case 50: // war_site_taken_over
         pair("site_civ", "defender_civ");
         pair("new_site_civ", "attacker_civ");
+        break;
+    case 104: // hf_freed
+        pair("site_civ", "holding_civ");
         break;
     default:
         // Shared field spellings alone do not establish a historical parent.
@@ -737,13 +744,12 @@ static std::optional<std::string> native_history_figure_curse_suffix(
 static bool capture_native_history_artifact_subject(uintptr_t base, uintptr_t artifact,
         NativeHistorySubject &subject);
 
-static bool populate_native_history_subjects(NativeHistoryEventData &event, bool current = false) {
+static bool populate_native_history_subjects(NativeHistoryEventData &event, bool = false) {
     const uintptr_t base = native_history_profile_base();
     if (!base) return false;
     bool complete = true;
-    // Relationship pages can store dates in separate fields. Missing event
-    // dates do not prove a current context; callers must identify it explicitly.
-    const bool current_entities = current;
+    // Native entity references always read historical_entity.name. Keep its
+    // complete current identity separate from the event's dated relations.
     auto append = [&](NativeHistoryObjectKind kind, int32_t id) {
         if (id < 0) return;
         if (std::any_of(event.subjects.begin(), event.subjects.end(),
@@ -796,7 +802,7 @@ static bool populate_native_history_subjects(NativeHistoryEventData &event, bool
                 !capture_native_history_site_name_context(base, object, subject.name, true)) ||
             (kind == NativeHistoryObjectKind::Entity &&
                 !capture_native_history_entity_name_context(base, object, subject.name,
-                    current_entities, current_entities ? nullptr : &event, true)) ||
+                    true, nullptr, true)) ||
             (kind == NativeHistoryObjectKind::Figure &&
                 !capture_native_history_species(base, object, subject.species, &curse_suffix)) ||
             (kind == NativeHistoryObjectKind::Artifact &&

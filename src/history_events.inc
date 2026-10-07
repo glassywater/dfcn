@@ -3,52 +3,31 @@
 std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         const NativeHistoryDocument &document) const {
     using Pieces = std::vector<LegendsTextPiece>;
-    if (document.sequence) {
+    const auto &name_context = document.page ? document.page->data : document.event;
+    // Entity WORD snapshots are owned by the document. Their complete naming
+    // context remains live, just as it does for catalog titles and headings.
+    // Never cache a dated generic suffix over a later complete entity name.
+    const auto has_entity_names = [](const auto &self,
+            const NativeHistoryEventData &event, size_t depth) -> bool {
+        if (depth >= kNativeHistoryTreeDepth) return true;
+        for (const auto &subject : event.subjects) {
+            if (subject.kind == NativeHistoryObjectKind::Entity && subject.name.has_name)
+                return true;
+        }
+        for (const auto &[id, child] : event.children)
+            if (child && self(self, *child, depth + 1)) return true;
+        return false;
+    };
+    const bool refresh_name_context = has_entity_names(has_entity_names, name_context, 0);
+    const uint64_t parent_revision = 0;
+    if (document.sequence && !refresh_name_context) {
         const auto found = history_event_translation_cache_.find(document.sequence);
-        if (found != history_event_translation_cache_.end() &&
-                (!found->second.parent_revision || found->second.parent_revision ==
-                    history_parent_context_revision())) {
+        if (found != history_event_translation_cache_.end()) {
             history_event_translation_order_.splice(history_event_translation_order_.end(),
                 history_event_translation_order_, found->second.recency);
             return found->second.pieces;
         }
     }
-    const auto &name_context = document.page ? document.page->data : document.event;
-    const bool current_entities = document.page &&
-        (document.page->kind == NativeHistoryPageKind::EntityIntroduction ||
-         document.page->kind == NativeHistoryPageKind::RelatedEntity);
-    // Historical snapshots are immutable, but an unresolved parent can gain
-    // evidence as history grows. Cache both resolutions and generic fallbacks
-    // until that evidence changes; current PARENT links stay live.
-    const auto name_context_dependencies = [current_entities](const auto &self,
-            const NativeHistoryEventData &event, size_t depth) -> unsigned {
-        if (depth >= kNativeHistoryTreeDepth) return 2;
-        unsigned dependencies = 0;
-        for (const auto &subject : event.subjects) {
-            if (subject.kind != NativeHistoryObjectKind::Entity || !subject.name.has_name) continue;
-            const auto &name = subject.name;
-            const auto recorded_government = [&](std::string_view key) {
-                const auto found = event.fields.find(key);
-                return found != event.fields.end() && found->second.size() == 1 &&
-                    found->second.front() == subject.id;
-            };
-            if ((name.entity_type >= 1 && name.entity_type <= 10 &&
-                    (name.entity_name_current || current_entities)) ||
-                    (name.entity_type < 0 && current_entities)) dependencies |= 2;
-            else if (name.entity_type < 0 || ((name.entity_type == 1 ||
-                    recorded_government("site_civ") || recorded_government("new_site_civ")) &&
-                    (name.parent_word_id.empty() ||
-                        (name.parent_word_pos != 0 && name.parent_word_pos != 1)))) dependencies |= 1;
-        }
-        for (const auto &[id, child] : event.children)
-            if (child) dependencies |= self(self, *child, depth + 1);
-        return dependencies;
-    };
-    const unsigned context_dependencies = name_context_dependencies(
-        name_context_dependencies, name_context, 0);
-    const bool refresh_name_context = context_dependencies & 2;
-    const uint64_t parent_revision = (context_dependencies & 1) && !refresh_name_context
-        ? history_parent_context_revision() : 0;
     struct MissingField { std::string name; };
     std::string failure_detail;
     const auto compose = [&]() -> std::optional<Pieces> {
@@ -249,7 +228,7 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         return *species + "／" + *title;
     };
     const auto subject = [&](NativeHistoryObjectKind kind, int32_t id, bool include_species = true,
-                            int32_t subid = -1, bool prefer_name = true, bool polity_role = false)
+                            int32_t subid = -1, bool prefer_name = true)
             -> std::optional<Pieces> {
         const auto found = std::find_if(event.subjects.begin(), event.subjects.end(),
             [&](const auto &value) { return value.kind == kind && value.id == id && value.subid == subid; });
@@ -317,9 +296,9 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             // entities have label_key and use the reviewed label above;
             // failures to translate an actual name still reject the record.
             name.emplace();
-        } else if (kind == NativeHistoryObjectKind::Entity)
-            name = translate_history_entity_name(found->name, event, id,
-                current_entities, polity_role);
+        } else if (kind == NativeHistoryObjectKind::Entity) {
+            name = translate_history_entity_name(found->name, id);
+        }
         else if (kind == NativeHistoryObjectKind::Site) {
             const auto sources = site_reference_sources.find(id);
             if (sources != site_reference_sources.end() && !sources->second.empty()) {
@@ -407,11 +386,13 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         }
         return result;
     };
-    // An event's civilization field gives this name a political role. Keep
-    // that role local to the reference: its site government can be the same
-    // entity ID elsewhere in the sentence and still needs its local suffix.
+    // Participant roles select the surrounding relation, never a new name.
     const auto polity_subject = [&](int32_t id) -> std::optional<Pieces> {
-        return subject(NativeHistoryObjectKind::Entity, id, true, -1, true, true);
+        return subject(NativeHistoryObjectKind::Entity, id);
+    };
+    const auto government_subject = [&](int32_t id)
+            -> std::optional<Pieces> {
+        return subject(NativeHistoryObjectKind::Entity, id);
     };
     const auto term = [&](std::string_view key, std::string_view scope = {}) -> std::optional<Pieces> {
         // Native enums establish the meaning before vocabulary lookup. A
@@ -454,7 +435,10 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
     const auto office = [&](std::string_view title) -> std::optional<Pieces> {
         const std::string scoped = "Native history office: " + lower(std::string(title));
         if (history_semantic_templates_.contains(scoped)) return apply(scoped, {});
-        return term(title);
+        if (const auto label = translate_legends_office(title))
+            return Pieces{piece(*label, neutral)};
+        failure_detail = "office-missing; key=" + std::string(title);
+        return std::nullopt;
     };
     const auto structure = [&](int32_t site_id, int32_t building_id, bool prefer_name = true) {
         return subject(NativeHistoryObjectKind::Building, site_id, false, building_id, prefer_name);

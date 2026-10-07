@@ -387,7 +387,7 @@ case 101: { // sneak_into_site
     join(result, *action);
     const int32_t site_civ_id = number("site_civ");
     if (site_civ_id != -1) {
-        auto defender = subject(NativeHistoryObjectKind::Entity, site_civ_id);
+        auto defender = government_subject(site_civ_id);
         if (!defender) return std::nullopt;
         if (site_civ_id != number("defender_civ")) {
             auto civ = polity_subject(number("defender_civ"));
@@ -404,7 +404,7 @@ case 101: { // sneak_into_site
 }
 case 102: { // spotted_leaving_site
     auto spotter = subject(NativeHistoryObjectKind::Figure, number("spotter"));
-    auto owner = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
+    auto owner = government_subject(number("site_civ"));
     auto leaver = subject(NativeHistoryObjectKind::Entity, number("leaver_civ"));
     auto site = subject(NativeHistoryObjectKind::Site, number("site"));
     if (!spotter || !owner || !leaver || !site) return std::nullopt;
@@ -546,7 +546,7 @@ case 104: { // hf_freed
         auto captor = subject(NativeHistoryObjectKind::Site, number("site"));
         if (!captor) return std::nullopt;
         if (number("site_civ") != -1) {
-            auto entity = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
+            auto entity = government_subject(number("site_civ"));
             if (!entity) return std::nullopt;
             if (number("holding_civ") != -1) {
                 auto owner = polity_subject(number("holding_civ"));
@@ -638,7 +638,7 @@ case 109: { // squad_vs_squad
 }
 case 110: { // site_surrendered
     const int32_t site_civ_id = number("site_civ");
-    auto actor = subject(NativeHistoryObjectKind::Entity, site_civ_id);
+    auto actor = government_subject(site_civ_id);
     auto attacker = polity_subject(number("attacker_civ"));
     auto site = subject(NativeHistoryObjectKind::Site, number("site"));
     if (!actor || !attacker || !site) return std::nullopt;
@@ -973,7 +973,7 @@ case 120: { // hf_preach
     break;
 }
 case 122: { // entity_breach_feature_layer
-    auto actor = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
+    auto actor = government_subject(number("site_civ"));
     auto site = subject(NativeHistoryObjectKind::Site, number("site"));
     auto layer = subject(NativeHistoryObjectKind::Underground, number("layer"));
     if (!actor || !site || !layer) return std::nullopt;

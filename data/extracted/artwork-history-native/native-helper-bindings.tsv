@@ -1,0 +1,5 @@
+reference_rva	classic_rva	binding
+0xb65030	0xb62070	actual RTTI root or corresponding anchored direct callee
+0xb732f0	0xb70330	actual RTTI root or corresponding anchored direct callee
+0xb5a6c0	0xb57700	actual RTTI root or corresponding anchored direct callee
+0xb94090	0xb910d0	actual RTTI root or corresponding anchored direct callee

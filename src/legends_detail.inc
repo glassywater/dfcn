@@ -507,6 +507,56 @@ std::optional<std::string> Overlay::translate_legends_term(
     return translate_compositional(std::string(value));
 }
 
+std::optional<std::string> Overlay::translate_legends_office(
+        std::string_view raw) const {
+    const std::string value = normalize_utterance(raw);
+    if (value.empty() || value.ends_with("...")) return std::nullopt;
+    const std::string folded = lower(value);
+    // The native event title uses one complete NAME/NAME_FEMALE/NAME_MALE
+    // or RAW squad category field from entity_position. Office senses (master/chief)
+    // win over UI literals, while the same position namespaces supply all
+    // installed RAW titles, including their spouse and plural forms.
+    if (const auto office = legends_terms_.find("Native history office: " + folded);
+            office != legends_terms_.end()) return office->second;
+    std::vector<size_t> origins;
+    for (const auto scope : {"::positions::singular", "::positions::plural"})
+        if (auto office = RULESETS.translate_with_origins(
+                native_text_to_utf8(folded), scope, origins)) return office;
+    // Court/civic and generated religious titles are complete scoped terms
+    // in the shared Legends vocabulary. This field owns no appended
+    // "of <territory>", species suffix or free compositional prose.
+    if (const auto office = legends_terms_.find(value); office != legends_terms_.end())
+        return office->second;
+    if (const auto office = legends_terms_ci_.find(folded); office != legends_terms_ci_.end())
+        return office->second;
+    if (auto office = exact_literal_translation(value)) return office;
+    std::string caption(value);
+    if (caption.front() >= 'a' && caption.front() <= 'z') {
+        caption.front() -= 'a' - 'A';
+        if (auto office = exact_literal_translation(caption)) return office;
+    }
+    if (const auto spouse = creature_name_spouse.find(folded);
+            spouse != creature_name_spouse.end()) return std::string(spouse->second);
+    return std::nullopt;
+}
+
+static bool legends_office_capture(const Rule &rule, size_t field) {
+    if (field >= rule.template_kinds.size() || rule.template_kinds[field] != 's' ||
+            rule.template_literals.size() != rule.template_kinds.size() + 1)
+        return false;
+    const auto &before = rule.template_literals[field];
+    const auto &after = rule.template_literals[field + 1];
+    if (before.ends_with("position of ") || before.ends_with("'s ascension to "))
+        return true;
+    if (after.starts_with(" of ") &&
+            (before.ends_with("became the ") || before.ends_with("became ") ||
+             before.ends_with("ceased to be the ") || before.ends_with("ceased to be ") ||
+             before.ends_with("as the ") || before.ends_with("as a ") ||
+             before.ends_with("symbol of a ") || before.ends_with("symbol of the ")))
+        return true;
+    return false;
+}
+
 std::optional<std::string> Overlay::translate_legends_color(std::string_view value) const {
     // Reuse data/runtime/rulesets/zh-Hans/color.toml's generated color namespace, not the global species,
     // material or proper-name senses of cardinal, bronze, indigo, etc.
@@ -721,9 +771,43 @@ std::optional<std::string> Overlay::translate_legends_nested(
                     rule.legends_identity && rule.source == "\"{n}\"");
                 break;
             case 'p':
-                target = journal_habitat_rule(rule)
-                    ? translate_journal_habitat_places(part)
-                    : translate_legends_place(part);
+                if (rule.legends_event_title || rule.legends_participant_relation ||
+                        rule.legends_identity) {
+                    // Native +d8 subjects share this reference slot across
+                    // sites, entities, buildings, geography and artifacts.
+                    // Their participant/identity owner productions consume
+                    // the same references when an actor recurses into them.
+                    // Office owners are independently supplied by b92900
+                    // as entities, even if a site has the same spelling.
+                    const bool office_owner = field > 0 &&
+                        rule.template_kinds[field - 1] == 's' &&
+                        legends_office_capture(rule, field - 1);
+                    if (office_owner) {
+                        target = translate_civilization_reference(part);
+                        if (!target) target = translate_legends_name(part, false);
+                    }
+                    // Otherwise an actual site's language/provenance wins.
+                    // An unknown capitalized spelling returned unchanged
+                    // must not prevent the complete generated-name grammar.
+                    if (!target) target = translate_site_reference(part);
+                    if (!target) {
+                        if (const auto term = legends_terms_.find(std::string(part));
+                                term != legends_terms_.end()) target = term->second;
+                        else if (const auto term = legends_terms_ci_.find(lower(std::string(part)));
+                                term != legends_terms_ci_.end()) target = term->second;
+                    }
+                    if (!target) target = exact_literal_translation(part);
+                    if (!target) target = translate_legends_name(part, false);
+                    if (!target) {
+                        auto place = translate_legends_place(part);
+                        if (item_description_translation_complete(place))
+                            target = std::move(place);
+                    }
+                } else {
+                    target = journal_habitat_rule(rule)
+                        ? translate_journal_habitat_places(part)
+                        : translate_legends_place(part);
+                }
                 break;
             case 's':
                 // The native identity can begin with a species followed by
@@ -746,16 +830,23 @@ std::optional<std::string> Overlay::translate_legends_nested(
                     // Reuse the strict unit-role grammar so scoped offices
                     // such as warlord cannot fall through to personal names.
                     target = translate_unit_profession(part, false);
-                } else if (field == 0 && rule.source.starts_with("This person is ")) {
+                } else if (legends_office_capture(rule, field) ||
+                        (field == 0 && rule.source.starts_with("This person is "))) {
                     // Journal office statements share the history office
                     // vocabulary, including titles whose ordinary sense
                     // differs (master, chief). Keep this lookup scoped to
                     // the office slot; generated names use their own parser.
-                    const auto office = legends_terms_.find(
-                        "Native history office: " + lower(std::string(part)));
-                    if (office != legends_terms_.end()) target = office->second;
-                    else target = translate_legends_term(part);
-                } else target = translate_legends_term(part);
+                    target = translate_legends_office(part);
+                } else {
+                    // This participant production can own an office (a
+                    // claimant's title) or another reviewed noun. Prefer a
+                    // complete registered office without making every owner
+                    // phrase an office or dropping the existing noun grammar.
+                    if (rule.legends_participant_relation && field == 0 &&
+                            rule.source == "{s} of {p}")
+                        target = translate_legends_office(part);
+                    if (!target) target = translate_legends_term(part);
+                }
                 break;
             case 'e': {
                 // Only complete ordinal productions may restore the article;
@@ -832,6 +923,50 @@ std::optional<std::string> Overlay::translate_legends_event(
         else if (const auto term = legends_terms_ci_.find(lower(std::string(value)));
                 term != legends_terms_ci_.end()) result = term->second;
     }
+    // 1452aaa calls the event's +d8 title before 1452b4d appends the
+    // containing collection's +30 title. Establish that complete outer
+    // production first so a collection's own date stays with the collection.
+    // Both halves still have to resolve through the reviewed event grammar.
+    if (!result && value.find(" during ") != std::string_view::npos)
+        for (int index : candidates) {
+            const Rule &rule = rules_[static_cast<size_t>(index)];
+            if (rule.source != "{e} during {e}") continue;
+            if (auto title = translate_legends_nested(rule, value, depth))
+                { result = std::move(title); break; }
+        }
+    // All +d8 event title families append shared b92640's date after the
+    // title. Resolve that complete field BEFORE expanded generic location
+    // productions can repeatedly try it as an organization/person suffix.
+    // Reuse In ... , for all fourteen native outputs: before-time, year,
+    // and early/mid/late spring/summer/autumn/winter, without another glossary.
+    for (size_t at = result ? std::string_view::npos : value.rfind(" in ");
+         at != std::string_view::npos;
+         at = at == 0 ? std::string_view::npos : value.rfind(" in ", at - 1)) {
+        const std::string date = "In " + std::string(value.substr(at + 4)) + ",";
+        for (int index : matching_legends_rules(date)) {
+            const Rule &rule = rules_[static_cast<size_t>(index)];
+            std::optional<std::string> translated_date;
+            if (rule.template_kinds.empty()) {
+                if (rule.source.starts_with("In ") && rule.source.ends_with(",") &&
+                        date.size() == rule.source.size() &&
+                        template_literal_at(date, 0, rule.source, rule.case_insensitive))
+                    translated_date = rule.target;
+            } else if (rule.template_kinds.size() == 1 && rule.template_kinds.front() == 'd' &&
+                    rule.template_literals.size() == 2 &&
+                    rule.template_literals.front().starts_with("In ") &&
+                    rule.template_literals.back() == ",") {
+                size_t end = 0;
+                std::vector<std::string> captures;
+                if (match_template(rule, date, 0, &end, &captures) && end == date.size())
+                    translated_date = fill_template(rule, captures, &capture_translations_);
+            }
+            if (!item_description_translation_complete(translated_date)) continue;
+            const auto event = translate_legends_event(value.substr(0, at), depth + 1);
+            if (event) result = *translated_date + *event;
+            break;
+        }
+        if (result) break;
+    }
     if (!result) result = translate_announcement_combat(value, "historical-event-title");
     for (int index : candidates) {
         if (result) break;
@@ -842,31 +977,6 @@ std::optional<std::string> Overlay::translate_legends_event(
                 rule.legends_match_anchor, 0, rule.case_insensitive) == std::string_view::npos) continue;
         if (auto title = translate_legends_nested(rule, value, depth))
             { result = std::move(title); break; }
-    }
-    // Event summaries put the same reviewed date AFTER their subject:
-    // "... in the midspring of 411". Reuse the complete In ... , date
-    // production so every supported season spelling retains its established
-    // translation, instead of treating a date as a place or adding a second
-    // season glossary. Outer during/by/location summaries recurse here too.
-    for (size_t at = result ? std::string_view::npos : value.rfind(" in ");
-         at != std::string_view::npos;
-         at = at == 0 ? std::string_view::npos : value.rfind(" in ", at - 1)) {
-        const std::string date = "In " + std::string(value.substr(at + 4)) + ",";
-        for (int index : matching_legends_rules(date)) {
-            const Rule &rule = rules_[static_cast<size_t>(index)];
-            if (rule.template_kinds.size() != 1 || rule.template_kinds.front() != 'd' ||
-                rule.template_literals.size() != 2 ||
-                !rule.template_literals.front().starts_with("In ") ||
-                rule.template_literals.back() != ",") continue;
-            size_t end = 0;
-            std::vector<std::string> captures;
-            if (!match_template(rule, date, 0, &end, &captures) || end != date.size())
-                continue;
-            const auto event = translate_legends_event(value.substr(0, at), depth + 1);
-            if (event) result = fill_template(rule, captures, &capture_translations_) + *event;
-            break;
-        }
-        if (result) break;
     }
     // War/battle collections (PE 53.16 RVA 0xbc56b0) emit the native
     // name followed by a quoted English gloss when the two differ. Keep

@@ -707,9 +707,9 @@ Overall, the choreography is just terrible.	总体而言，编舞实在糟糕。
 The slab reads "I am {n}, {n}, once of the Underworld. By {n}, I bind myself to this place.".	石板上刻着：“我是{n1}，又名{n2}，曾来自地下世界。凭借{n3}之力，我将自身束缚于此地。”	clause
 aided {a} in becoming a permanent part of the living world {s}	协助{a}永久留在生者的世界，{s}	action
 aided {a} in becoming a permanent part of the living world	协助{a}永久留在生者的世界	action
-that more might die	以使更多生灵死亡	term
-that more might be murdered	以使更多生灵遭到谋杀	term
-that war might rage forever	以使战火永不止息	term
+that more might die	以使更多生灵死亡	history-adjunct
+that more might be murdered	以使更多生灵遭到谋杀	history-adjunct
+that war might rage forever	以使战火永不止息	history-adjunct
 The ritual took place in {p} using {p}.	仪式在{p1}举行，使用了{p2}。	clause
 The ritual involved {p}.	仪式使用了{p}。	clause
 made contact with {p}	与{p}建立了联系	action
@@ -915,66 +915,66 @@ came to desire to bathe the world in chaos	开始渴望让世界陷入混乱	act
 became obsessed with an inscrutable goal	开始执着于一个难以理解的目标	action
 
 # Reasons and adjuncts are scoped clauses, never global word replacements.
-for an insurrection	为了发动起义	clause
-to adventure	为了冒险	clause
-in order to be rescued	为了获救	clause
-on a whim	出于一时兴起	clause
-in order to find a relative	为了寻找亲人	clause
-to help with a rescue	为了协助救援	clause
-due to insufficient work	由于工作不足	clause
-to request work	为了寻找工作	clause
-after leaving the site	在离开地点后	clause
-after a violent disagreement	在发生激烈争执后	clause
-after adoption	在被收养后	clause
-in order to eradicate beasts	为了消灭野兽	clause
-in order to entertain people	为了娱乐众人	clause
-in order to study	为了学习	clause
-in order to flee	为了逃亡	clause
-in order to become a citizen	为了成为公民	clause
-due to jealousy	出于嫉妒	clause
-due to a lack of performances	由于缺少表演	clause
-out of curiosity	出于好奇	clause
-to fill a role as a mercenary	为了担任佣兵	clause
-to fill a role as a performer	为了担任表演者	clause
-to fill a role as a scholar	为了担任学者	clause
-in order to drink	为了喝酒	clause
-in order to pray	为了祈祷	clause
-in order to relax	为了放松	clause
-to experience danger	为了体验危险	clause
-due to lack of sleep	由于睡眠不足	clause
-after being trapped in a cage	在被困于笼中后	clause
-after a great deal of stress	在承受巨大压力后	clause
-due to fear of death	由于惧怕死亡	mortality-reason
-due to fear of persecution	由于害怕遭到迫害	clause
-to gather information	为了收集情报	clause
-in order to find sanctuary	为了寻求庇护	clause
-due to a lack of funds	由于缺少资金	clause
-after the death of {n}	在{n}死后	clause
-after praying to {n}	在向{n}祈祷后	clause
-after dreaming of {n}	在梦见{n}后	clause
-after a dream	在做了一场梦后	clause
-after a nightmare	在做了一场噩梦后	clause
-after defeating {a}	在击败{a}后	clause
-after abducting {n}	在绑架{n}后	clause
-after murdering {n}	在谋杀{n}后	clause
-after acquiring {p}	在获得{p}后	clause
-after a scholarly lecture in {p}	在{p}听了一场学术讲座后	clause
-after a performance in {p}	在{p}观看表演后	clause
-after embezzling funds	在挪用资金后	clause
-in order to be brought to safety	为了被带到安全之地	clause
-after going the wrong direction	在走错方向后	clause
-after arriving at the location	在抵达目的地后	clause
-after being reunited with a loved one	在与挚爱之人重聚后	clause
-in order to make a living as a warrior	为了以战士身份谋生	clause
-in order to pursue scholarship	为了从事学术研究	clause
-in order to be with the master	为了陪伴师傅	clause
-in order to continue working alone	为了继续独自工作	clause
-in order to admire architecture	为了欣赏建筑	clause
-after being unable to find an artifact	在未能找到造物后	clause
-after failing to create an artifact	在制造造物失败后	clause
-as part of a trade negotiation	作为贸易谈判的一部分	clause
-in order to cement the bonds of friendship	为了巩固友谊	clause
-after taking heavy losses in battle	在战斗中遭受重创后	clause
+for an insurrection	为了发动起义	history-adjunct
+to adventure	为了冒险	history-adjunct
+in order to be rescued	为了获救	history-adjunct
+on a whim	出于一时兴起	history-adjunct
+in order to find a relative	为了寻找亲人	history-adjunct
+to help with a rescue	为了协助救援	history-adjunct
+due to insufficient work	由于工作不足	history-adjunct
+to request work	为了寻找工作	history-adjunct
+after leaving the site	在离开地点后	history-adjunct
+after a violent disagreement	在发生激烈争执后	history-adjunct
+after adoption	在被收养后	history-adjunct
+in order to eradicate beasts	为了消灭野兽	history-adjunct
+in order to entertain people	为了娱乐众人	history-adjunct
+in order to study	为了学习	history-adjunct
+in order to flee	为了逃亡	history-adjunct
+in order to become a citizen	为了成为公民	history-adjunct
+due to jealousy	出于嫉妒	history-adjunct
+due to a lack of performances	由于缺少表演	history-adjunct
+out of curiosity	出于好奇	history-adjunct
+to fill a role as a mercenary	为了担任佣兵	history-adjunct
+to fill a role as a performer	为了担任表演者	history-adjunct
+to fill a role as a scholar	为了担任学者	history-adjunct
+in order to drink	为了喝酒	history-adjunct
+in order to pray	为了祈祷	history-adjunct
+in order to relax	为了放松	history-adjunct
+to experience danger	为了体验危险	history-adjunct
+due to lack of sleep	由于睡眠不足	history-adjunct
+after being trapped in a cage	在被困于笼中后	history-adjunct
+after a great deal of stress	在承受巨大压力后	history-adjunct
+due to fear of death	由于惧怕死亡	mortality-history-adjunct
+due to fear of persecution	由于害怕遭到迫害	history-adjunct
+to gather information	为了收集情报	history-adjunct
+in order to find sanctuary	为了寻求庇护	history-adjunct
+due to a lack of funds	由于缺少资金	history-adjunct
+after the death of {n}	在{n}死后	history-adjunct
+after praying to {n}	在向{n}祈祷后	history-adjunct
+after dreaming of {n}	在梦见{n}后	history-adjunct
+after a dream	在做了一场梦后	history-adjunct
+after a nightmare	在做了一场噩梦后	history-adjunct
+after defeating {a}	在击败{a}后	history-adjunct
+after abducting {n}	在绑架{n}后	history-adjunct
+after murdering {n}	在谋杀{n}后	history-adjunct
+after acquiring {p}	在获得{p}后	history-adjunct
+after a scholarly lecture in {p}	在{p}听了一场学术讲座后	history-adjunct
+after a performance in {p}	在{p}观看表演后	history-adjunct
+after embezzling funds	在挪用资金后	history-adjunct
+in order to be brought to safety	为了被带到安全之地	history-adjunct
+after going the wrong direction	在走错方向后	history-adjunct
+after arriving at the location	在抵达目的地后	history-adjunct
+after being reunited with a loved one	在与挚爱之人重聚后	history-adjunct
+in order to make a living as a warrior	为了以战士身份谋生	history-adjunct
+in order to pursue scholarship	为了从事学术研究	history-adjunct
+in order to be with the master	为了陪伴师傅	history-adjunct
+in order to continue working alone	为了继续独自工作	history-adjunct
+in order to admire architecture	为了欣赏建筑	history-adjunct
+after being unable to find an artifact	在未能找到造物后	history-adjunct
+after failing to create an artifact	在制造造物失败后	history-adjunct
+as part of a trade negotiation	作为贸易谈判的一部分	history-adjunct
+in order to cement the bonds of friendship	为了巩固友谊	history-adjunct
+after taking heavy losses in battle	在战斗中遭受重创后	history-adjunct
 due to a shared scholarly interest	由于共同的学术兴趣	clause
 due to a shared artistic interest	由于共同的艺术兴趣	clause
 as the latter prefers to work alone	因为后者更喜欢独自工作	clause
@@ -1261,10 +1261,10 @@ serving in combat	在战斗中效力	clause
 {d} years of membership	拥有{d}年会龄	clause
 , based in {p}	，以{p}为据点	clause
 throughout {p}	遍及{p}	clause
-because the group travelled too slowly	因为队伍行进过慢	clause
-after arriving at the destination	在抵达目的地后	clause
-because of a leadership change at the site	因为当地更换了统治者	clause
-because the group went too far away	因为队伍走得太远	clause
+because the group travelled too slowly	因为队伍行进过慢	history-adjunct
+after arriving at the destination	在抵达目的地后	history-adjunct
+because of a leadership change at the site	因为当地更换了统治者	history-adjunct
+because the group went too far away	因为队伍走得太远	history-adjunct
 
 # Corpse treatment and magical return (each victim remains a separate link).
 the body of {n} was {s} by {a}	{n}的尸体被{a}{s}	event
@@ -1291,51 +1291,51 @@ a restless haunt	不得安息的幽魂	term
 a forlorn haunt	孤苦的幽魂	term
 
 # Narrative adjuncts for supernatural, political and personal motivations.
-due to their cosmic similarity	由于彼此在宇宙本源上的相似性	clause
-after pondering the ineffable subtleties of {r}	在思索{r}不可言说的奥妙后	clause
-in order to maintain balance in the universe	为了维持宇宙的平衡	clause
-to create a monument to the boundaries between realities	为了建造标示现实边界的纪念碑	clause
-to sow the seeds of chaos therein	为了在其中播下混乱的种子	clause
-to provide opportunities for courage to rise	为了让勇气有机会展现	clause
-that all should gaze upon a truly gruesome visage	为了让众人目睹真正骇人的面貌	clause
-that great fortresses might be raised and tested in siege	为了让宏伟要塞拔地而起并接受围攻的考验	clause
-that it might bathe in misery forever	为了永远沉浸在苦难之中	clause
-in order to make nightmares reality	为了让噩梦成真	clause
-in order to make thralls of everyone	为了奴役所有人	clause
-in order that acts of torture be perpetrated	为了促成折磨之举	clause
-to provide opportunities for acts of valor to be performed	为了让英勇之举有机会发生	clause
-as insufficient progress was made toward the goal	由于距离目标的进展不足	clause
-as the relevant government was no longer in control	由于相关政府已失去控制权	clause
-after invocation of the true name	在真名被呼唤后	clause
-after being exiled following a criminal conviction	在被定罪并流放后	clause
-after being prevented from leaving	在被阻止离开后	clause
-after being unable to leave a location	在无法离开某地后	clause
-as a symbol of authority within {p}	作为{p}内部权威的象征	clause
-due to envy of those that live on	由于嫉妒仍能活下去的人	mortality-reason
-due to panic about what happens after death	由于恐惧死后的命运	mortality-reason
-unable to face any possible judgment and the afterlife	由于无法面对死后的审判与来世	mortality-reason
-being too proud to give in to death	由于过于骄傲而不愿向死亡屈服	mortality-reason
-being too vain to give in to death	由于过于虚荣而不愿向死亡屈服	mortality-reason
-having ambitions for which death was only a small obstacle	由于其雄心将死亡视作小小的障碍	mortality-reason
-after performing the rites of {n}	在为{n}举行仪式后	clause
-after incompletely performing the rites of {n}	在未能完整举行{n}的仪式后	clause
+due to their cosmic similarity	由于彼此在宇宙本源上的相似性	history-adjunct
+after pondering the ineffable subtleties of {r}	在思索{r}不可言说的奥妙后	history-adjunct
+in order to maintain balance in the universe	为了维持宇宙的平衡	history-adjunct
+to create a monument to the boundaries between realities	为了建造标示现实边界的纪念碑	history-adjunct
+to sow the seeds of chaos therein	为了在其中播下混乱的种子	history-adjunct
+to provide opportunities for courage to rise	为了让勇气有机会展现	history-adjunct
+that all should gaze upon a truly gruesome visage	为了让众人目睹真正骇人的面貌	history-adjunct
+that great fortresses might be raised and tested in siege	为了让宏伟要塞拔地而起并接受围攻的考验	history-adjunct
+that it might bathe in misery forever	为了永远沉浸在苦难之中	history-adjunct
+in order to make nightmares reality	为了让噩梦成真	history-adjunct
+in order to make thralls of everyone	为了奴役所有人	history-adjunct
+in order that acts of torture be perpetrated	为了促成折磨之举	history-adjunct
+to provide opportunities for acts of valor to be performed	为了让英勇之举有机会发生	history-adjunct
+as insufficient progress was made toward the goal	由于距离目标的进展不足	history-adjunct
+as the relevant government was no longer in control	由于相关政府已失去控制权	history-adjunct
+after invocation of the true name	在真名被呼唤后	history-adjunct
+after being exiled following a criminal conviction	在被定罪并流放后	history-adjunct
+after being prevented from leaving	在被阻止离开后	history-adjunct
+after being unable to leave a location	在无法离开某地后	history-adjunct
+as a symbol of authority within {p}	作为{p}内部权威的象征	history-adjunct
+due to envy of those that live on	由于嫉妒仍能活下去的人	mortality-history-adjunct
+due to panic about what happens after death	由于恐惧死后的命运	mortality-history-adjunct
+unable to face any possible judgment and the afterlife	由于无法面对死后的审判与来世	mortality-history-adjunct
+being too proud to give in to death	由于过于骄傲而不愿向死亡屈服	mortality-history-adjunct
+being too vain to give in to death	由于过于虚荣而不愿向死亡屈服	mortality-history-adjunct
+having ambitions for which death was only a small obstacle	由于其雄心将死亡视作小小的障碍	mortality-history-adjunct
+after performing the rites of {n}	在为{n}举行仪式后	history-adjunct
+after incompletely performing the rites of {n}	在未能完整举行{n}的仪式后	history-adjunct
 in an improperly dedicated temple	在供奉对象不合适的神殿内	clause
 in a dedicated temple	在专门供奉的神殿内	clause
-after performing the rites of {n} in a dedicated temple	在专门供奉的神殿内为{n}举行仪式后	clause
-after incompletely performing the rites of {n} in an improperly dedicated temple	在供奉对象不合适的神殿内未能完整举行{n}的仪式后	clause
-after incompletely performing the rites of {n} in an undedicated temple	在尚未确定供奉对象的神殿内未能完整举行{n}的仪式后	clause
-after praying to {n} in a dedicated temple	在专门供奉的神殿内向{n}祈祷后	clause
-after {p} was given away	在{p}被赠出后	clause
-during {e}	在{e}期间	clause
-because it was destined	因为命中注定	clause
-as a symbol of everlasting peace	作为永恒和平的象征	clause
-on a pilgrimage	在朝圣途中	clause
+after performing the rites of {n} in a dedicated temple	在专门供奉的神殿内为{n}举行仪式后	history-adjunct
+after incompletely performing the rites of {n} in an improperly dedicated temple	在供奉对象不合适的神殿内未能完整举行{n}的仪式后	history-adjunct
+after incompletely performing the rites of {n} in an undedicated temple	在尚未确定供奉对象的神殿内未能完整举行{n}的仪式后	history-adjunct
+after praying to {n} in a dedicated temple	在专门供奉的神殿内向{n}祈祷后	history-adjunct
+after {p} was given away	在{p}被赠出后	history-adjunct
+during {e}	在{e}期间	history-adjunct
+because it was destined	因为命中注定	history-adjunct
+as a symbol of everlasting peace	作为永恒和平的象征	history-adjunct
+on a pilgrimage	在朝圣途中	history-adjunct
 in an undedicated temple	在尚未确定供奉对象的神殿内	clause
-as the item was a favorite possession	因为该物品是心爱之物	clause
-by preserving a part of the body	通过保存身体的一部分	clause
-after preying on the blood of civilized creatures	在吸食文明生物的血液后	clause
-after accepting bribes in exchange for leniency	在收受贿赂、徇私宽纵后	clause
-after receiving a cut of corruptly-obtained funds	在分得赃款后	clause
+as the item was a favorite possession	因为该物品是心爱之物	history-adjunct
+by preserving a part of the body	通过保存身体的一部分	history-adjunct
+after preying on the blood of civilized creatures	在吸食文明生物的血液后	history-adjunct
+after accepting bribes in exchange for leniency	在收受贿赂、徇私宽纵后	history-adjunct
+after receiving a cut of corruptly-obtained funds	在分得赃款后	history-adjunct
 
 # Shared literals referenced by the native history constructors outside the
 # contiguous narrative catalogue (crime terms: 0x15ec848-0x1627b50).
@@ -1355,7 +1355,7 @@ attempted murder	谋杀未遂	term
 blood-drinking	吸血	term
 flight	逃离	term
 breaking away	折断	term
-after finding {n}	在找到{n}后	clause
+after finding {n}	在找到{n}后	history-adjunct
 by fooling {a}	通过欺骗{a}	clause
 divorced {n}	与{n}离婚了	action
 
@@ -1364,30 +1364,30 @@ divorced {n}	与{n}离婚了	action
 # Circumstance enum names and XML serialization tags are not narrative text.
 
 # Motives and social circumstances (0x16d6028-0x16d7370).
-as the goal was not reached	由于未能达成目标	clause
-to cry on a priest	为了向祭司哭诉	clause
-to vent at a priest	为了向祭司宣泄情绪	clause
-to cry on somebody in charge	为了向负责人哭诉	clause
-to vent at somebody in charge	为了向负责人宣泄情绪	clause
-that weapons be made	为了让武器得以制造	clause
-to offer condolences	为了表达哀悼	clause
-as a guide	作为向导	clause
-from afar	从远方	clause
-during an infiltration mission	在执行渗透任务期间	clause
-due to a shared interest in {s}	由于对{s}有共同兴趣	clause
-due to a belief in {s}	由于信奉{s}	clause
-due to a belief in {n}	由于信奉{n}	clause
-to smooth the operation of {p}	为了让{p}运作顺畅	clause
-as an heirloom of the {n} family	作为{n}家族的传家宝	clause
-as an heirloom of the {p} family	作为{p}家族的传家宝	clause
+as the goal was not reached	由于未能达成目标	history-adjunct
+to cry on a priest	为了向祭司哭诉	history-adjunct
+to vent at a priest	为了向祭司宣泄情绪	history-adjunct
+to cry on somebody in charge	为了向负责人哭诉	history-adjunct
+to vent at somebody in charge	为了向负责人宣泄情绪	history-adjunct
+that weapons be made	为了让武器得以制造	history-adjunct
+to offer condolences	为了表达哀悼	history-adjunct
+as a guide	作为向导	history-adjunct
+from afar	从远方	history-adjunct
+during an infiltration mission	在执行渗透任务期间	history-adjunct
+due to a shared interest in {s}	由于对{s}有共同兴趣	history-adjunct
+due to a belief in {s}	由于信奉{s}	history-adjunct
+due to a belief in {n}	由于信奉{n}	history-adjunct
+to smooth the operation of {p}	为了让{p}运作顺畅	history-adjunct
+as an heirloom of the {n} family	作为{n}家族的传家宝	history-adjunct
+as an heirloom of the {p} family	作为{p}家族的传家宝	history-adjunct
 # This motivation names the historical figure honored by the relic, not the
 # artifact being sanctified in the separate "was sanctified" event family.
 # The two native reasons retain the figure as the owner of the item/body.
-in order to sanctify {n}	，为了将{n}奉为圣徒	clause
-in order to sanctify {n} as the item was a favorite possession	，因该物品是{n}的心爱之物，借此将其奉为圣徒	clause
-in order to sanctify {n} by preserving a part of the body	，通过保存{n}身体的一部分，将其奉为圣徒	clause
-in order to glorify {a}	为了颂扬{a}	clause
-being unnaturally ageless	由于以超自然方式长生不老	clause
+in order to sanctify {n}	，为了将{n}奉为圣徒	history-adjunct
+in order to sanctify {n} as the item was a favorite possession	，因该物品是{n}的心爱之物，借此将其奉为圣徒	history-adjunct
+in order to sanctify {n} by preserving a part of the body	，通过保存{n}身体的一部分，将其奉为圣徒	history-adjunct
+in order to glorify {a}	为了颂扬{a}	history-adjunct
+being unnaturally ageless	由于以超自然方式长生不老	history-adjunct
 {p} was given away	{p}被赠送了出去	event
 # Discipline senses reuse the reviewed subject vocabulary where it exists.
 # Medicine here is a scholarly discipline, not the material/name word 药.
@@ -2962,8 +2962,8 @@ the dispute between {a} and {a} over {s}	{a1}与{a2}关于{s}的争端	title
 became embroiled in a dispute over {s}	卷入了关于{s}的争端	action
 corrupt dealings	腐败交易	term
 the conclusion of {s}	{s}的结束	title
-after a joyous reunion	在欢喜地重聚后	clause
-after an adoption	在被收养后	clause
+after a joyous reunion	在欢喜地重聚后	history-adjunct
+after an adoption	在被收养后	history-adjunct
 an agreement to retrieve {p}	找回{p}的协议	title
 
 # Artifact status and merchant visits (0x16dd988-0x16dde14).
@@ -4024,3 +4024,270 @@ Native Legends persecution	迫害	term
 Native Legends coup	一次政变	term
 Native Legends commemorative festival	举行了一场纪念节庆	term
 Native overview collection memory {s}	那是{s}。	clause
+
+# Artwork/history summary slot +0xd8 is independent of the agreement's
+# ordinary action slot +0xc8. Native 0x1402ad7f0, eighteen-way table
+# 0x1402afde4, supplies these noun phrases; 0x1402afe78 chooses joining
+# purposes, and 0x1402afe2c supplies the existing scoped crime terms.
+# Party captures retain native figure-then-entity lists and unknown parties.
+# Office, optional targets, influence and messenger tails remain separate.
+the formation of a corrupt agreement	一项腐败协议的形成	title
+the embezzlement conspiracy concocted by {a}	{a}策划的挪用资金阴谋	title
+the corruption conspiracy concocted by {a}	{a}策划的腐败阴谋	title
+the bribery conspiracy concocted by {a}	{a}策划的贿赂阴谋	title
+the plot of {a} to infiltrate {p}	{a}渗透{p}的阴谋	title
+the plot of {a} to infiltrate	{a}的渗透阴谋	title
+the plot of {a} to frame {a} for {s} by fooling {a}	{a1}通过欺骗{a3}、以{s}罪名陷害{a2}的阴谋	title
+the plot of {a} to frame for {s} by fooling {a}	{a1}通过欺骗{a2}、以{s}罪名陷害他人的阴谋	title
+the plot of {a} to frame {a} for {s} by fooling	{a1}以{s}罪名陷害{a2}的欺诈阴谋	title
+the plot of {a} to frame for {s} by fooling	{a}以{s}罪名陷害他人的欺诈阴谋	title
+the plot of {a} to induce a war of {p} upon {p}	{a}挑起{p1}对{p2}战争的阴谋	title
+the plot of {a} to induce a war of {p} upon	{a}挑起{p}对外战争的阴谋	title
+the plot of {a} to induce a war of upon {p}	{a}挑起针对{p}战争的阴谋	title
+the plot of {a} to induce a war of upon	{a}挑起战争的阴谋	title
+the plot of {a} to sabotage the activities of {a}	{a1}破坏{a2}活动的阴谋	title
+the plot of {a} to sabotage the activities of {p}	{a}破坏{p}活动的阴谋	title
+the plot of {a} to sabotage the activities of	{a}破坏活动的阴谋	title
+the plot of {a} to abduct {a}	{a1}绑架{a2}的阴谋	title
+the plot of {a} to abduct	{a}的绑架阴谋	title
+the plot of {a} to assassinate {a}	{a1}暗杀{a2}的阴谋	title
+the plot of {a} to assassinate	{a}的暗杀阴谋	title
+the plot of {a} to steal {p}	{a}盗窃{p}的阴谋	title
+the plot of {a} to steal	{a}的盗窃阴谋	title
+# 0x1402aeb9f compares recipient and beneficiary: equal parties produce
+# "to ... of a position"; distinct parties produce "to ... to give ...".
+the promise by {a} to {a} of a position	{a1}向{a2}许诺职位	title
+the promise by {a} to {a} of a position in {p}	{a1}向{a2}许诺{p}的职位	title
+the promise by {a} to {a} to give {a} a position	{a1}向{a2}许诺授予{a3}职位	title
+the promise by {a} to {a} to give {a} a position in {p}	{a1}向{a2}许诺授予{a3}在{p}的职位	title
+the promise by {a} to {a} to give a position	{a1}向{a2}许诺授予职位	title
+the promise by {a} to {a} to give a position in {p}	{a1}向{a2}许诺授予{p}的职位	title
+the passing of corruptly-obtained funds by {a}	{a}转交贪腐所得资金	title
+the embezzlement of {a}	{a}挪用资金	title
+the bribery of {a}	{a}受贿	title
+{e} as the {s} of {p}	担任{p}的{s}期间发生的{e}	title
+{e} as a {s} of {p}	担任{p}的{s}期间发生的{e}	title
+{e} under the influence of {a}	在{a}影响下发生的{e}	title
+{e} via {a}	经由{a}促成的{e}	title
+the permanent joining by {a} of {a} to the living world	{a1}使{a2}永久留在生者世界	title
+the parley between {a} and {a}	{a1}与{a2}的会谈	title
+the agreement between {a} and {a}	{a1}与{a2}的协议	title
+the agreement between {a} and {a} to study	{a1}与{a2}达成的求学协议	title
+the agreement between {a} and {a} to work as a mercenary	{a1}与{a2}达成的佣兵效力协议	title
+the agreement between {a} and {a} to entertain the citizenry	{a1}与{a2}达成的娱乐居民协议	title
+the agreement between {a} and {a} to eradicate monsters	{a1}与{a2}达成的消灭怪物协议	title
+{e} and become a resident of {p}	{e}，其中前者成为{p}的居民	title
+{e} and become a citizen of {p}	{e}，其中前者成为{p}的公民	title
+the joining of {a} with {a}	{a1}与{a2}的结伴	title
+the joining of {a} with {a} to help rescue {a}	{a1}与{a2}结伴协助营救{a3}	title
+the joining of {a} with {a} to help rescue	{a1}与{a2}结伴协助营救	title
+the joining of {a} with {a} to oust {p} from {p}	{a1}与{a2}结伴将{p1}逐出{p2}	title
+the joining of {a} with {a} to oust from {p}	{a1}与{a2}结伴驱逐{p}的势力	title
+the joining of {a} with {a} to oust {p} from	{a1}与{a2}结伴驱逐{p}	title
+the joining of {a} with {a} to oust from	{a1}与{a2}结伴进行驱逐	title
+the joining of {a} with {a} to entertain the world	{a1}与{a2}结伴周游世界、带来欢乐	title
+the joining of {a} with {a} to live a life of adventure	{a1}与{a2}结伴过上冒险生活	title
+the joining of {a} with {a} in bound service	{a1}在效力约束下与{a2}结伴	title
+the joining of {a} with {a} as a guide	{a1}担任向导，与{a2}结伴	title
+the joining of {a} with {a} as a guide to find {a}	{a1}担任向导，与{a2}结伴寻找{a3}	title
+the joining of {a} with {a} as a guide to {p}	{a1}担任向导，与{a2}结伴前往{p}	title
+the joining of {a} with {a} in order to be brought to safety	{a1}与{a2}结伴以获带往安全之地	title
+the agreement by {a} to establish a grand guildhall for {a}	{a1}为{a2}建立大型行会大厅的协议	title
+the agreement by {a} to establish a guildhall for {a}	{a1}为{a2}建立行会大厅的协议	title
+the agreement by {a} to establish a temple complex for {a}	{a1}为{a2}建立神殿群的协议	title
+the agreement by {a} to establish a temple for {a}	{a1}为{a2}建立神殿的协议	title
+the agreement by {a} to establish for {a}	{a1}为{a2}建设设施的协议	title
+the request by {a} that {a} make an offer of service	{a1}要求{a2}提出效力邀约	title
+the request by {a} that {a} make an offer of service to {p}	{a1}要求{a2}向{p}提出效力邀约	title
+the request by {a} that {a} retrieve {p}	{a1}要求{a2}找回{p}	title
+the request by {a} that {a} retrieve {p} from {p}	{a1}要求{a2}从{p2}找回{p1}	title
+the request by {a} that {a} retrieve {p} for {p}	{a1}要求{a2}为{p2}找回{p1}	title
+the request by {a} that {a} retrieve {p} from {p} for {p}	{a1}要求{a2}从{p2}为{p3}找回{p1}	title
+# The native dispute noun uses hyphens, unlike the page-specific field key.
+rights-of-way	通行权	term
+# The collection title's leaf is a title, not only the schedule term.
+Storytelling	故事讲述	title
+
+# Related +0xd8 roots also append semantic tails rather than ordinary
+# clauses. A clause-only entry cannot complete a recursive {e} subject.
+# Artifact transformation/claim: 0x140b8a720 and 0x140b88790.
+the making of {p}	{p}的制作	title
+the making of {b}	《{b}》的制作	title
+the making of {p} from {p}	以{p2}制作{p1}	title
+the making of {b} from {p}	以{p}制作《{b}》	title
+the making of {p} into a family heirloom	将{p}定为传家宝	title
+the making of {p} into an official symbol	将{p}定为正式象征	title
+the making of {p} into a symbol of {p}	将{p1}定为{p2}的象征	title
+the making of {p} into a symbol of a {s} of {p}	将{p1}定为{p2}的{s}职位的象征	title
+the making of {p} into a symbol of the {s} of {p}	将{p1}定为{p2}的{s}职位的象征	title
+the making of {p} into a symbol of a {s}	将{p}定为{s}职位的象征	title
+the making of {p} into a symbol of the {s}	将{p}定为{s}职位的象征	title
+# Preaching and career summaries: 0x140b7b6a0 and 0x140b75c00.
+{e} urging love between {p} and {p}	{e}，劝导{p1}与{p2}相互关爱	title
+{e} setting {p} against {p}	{e}，挑拨{p1}与{p2}对立	title
+{e}, based in {p}	{e}，以{p}为据点	title
+# Encounter outcomes (0x140b6f040) and reunion efforts (0x140b750d0).
+{e} after a horrific combat	在一场可怕战斗之后发生的{e}	title
+{e} despite the latter's wounds	{e}，尽管后者已经负伤	title
+{e} in which the former emerged victorious	{e}，前者最终获胜	title
+{e} through the efforts of {n}	经由{n}的努力而发生的{e}	title
+# The collapse/death-strike branches of 0x140b73780 preserve the attacker,
+# the weapon and its originating artifact independently. The artifact
+# branch literally appends " attack with " after its attack introduction.
+{e}, after the death strike by {a}	在受到{a}的致命一击之后发生的{e}	title
+{e} after an attack with {i}	在遭到{i}袭击之后发生的{e}	title
+{e} after an attack with {p}	在遭到{p}袭击之后发生的{e}	title
+{e} after an attack by {a} with {i}	在遭到{a}用{i}袭击之后发生的{e}	title
+{e} after an attack by {a} with {p}	在遭到{a}用{p}袭击之后发生的{e}	title
+{e} after an attack attack with {i} from {p}	在遭到来自{p}的{i}袭击之后发生的{e}	title
+{e} after an attack attack with {p} from {p}	在遭到来自{p2}的{p1}袭击之后发生的{e}	title
+{e} after an attack by {a} attack with {i} from {p}	在遭到{a}用来自{p}的{i}袭击之后发生的{e}	title
+{e} after an attack by {a} attack with {p} from {p}	在遭到{a}用来自{p2}的{p1}袭击之后发生的{e}	title
+# Suspicion reasons at 0x140b76ba0 are part of the summary, including
+# the combined two-reason branch, rather than new historical events.
+{e} after a murder	在一起谋杀发生后产生的{e}	title
+{e} after appearing not to age	因看起来不会衰老而产生的{e}	title
+{e} after a murder and appearing not to age	因发生一起谋杀且看起来不会衰老而产生的{e}	title
+# Conviction summary causes at 0x140b7e640, with both deceiver and target.
+{e} after {a} fooled {a} with fabricated evidence	在{a1}以伪造证据欺骗{a2}之后发生的{e}	title
+{e} at the behest of {a}	应{a}指使发生的{e}	title
+{e} through the machinations of {a}	因{a}的阴谋而发生的{e}	title
+# Masterwork loss (0x140b65030) recursively names its creation event before
+# selecting the independent destruction mechanism, site and date suffixes.
+the destruction of {e}	{e}成果的毁灭	title
+{e} by melting	{e}，其原因是熔化	title
+{e} by magma	{e}，其原因是岩浆	title
+{e} during fortification carving	在雕刻箭垛时发生的{e}	title
+{e} during mining	在采矿时发生的{e}	title
+{e} by falling debris	{e}，其原因是坠落碎片	title
+{e} by growing vegetation	{e}，其原因是植物生长	title
+
+# The beast-attack collection's underground branch literally appends
+# " in " twice: 0x140bc6afa and 0x140bc6b2c before 0x140b94940.
+# Preserve that native source spelling only in these rampage titles.
+# Bare leaves also occur after the independently composed ordinal prefix.
+Rampage in in {p}	{p}的肆虐事件	title
+Rampage of {n} in in {p}	{n}在{p}的肆虐事件	title
+{s} Rampage in in {p}	{p}的{s}肆虐事件	title
+{s} Rampage of {n} in in {p}	{n}在{p}的{s}肆虐事件	title
+Monster Rampage in in {p}	{p}的怪物肆虐事件	title
+Monster Rampage of {n} in in {p}	{n}在{p}的怪物肆虐事件	title
+The Rampage in in {p}	{p}的肆虐事件	title
+The Rampage of {n} in in {p}	{n}在{p}的肆虐事件	title
+The {s} Rampage in in {p}	{p}的{s}肆虐事件	title
+The {s} Rampage of {n} in in {p}	{n}在{p}的{s}肆虐事件	title
+The Monster Rampage in in {p}	{p}的怪物肆虐事件	title
+The Monster Rampage of {n} in in {p}	{n}在{p}的怪物肆虐事件	title
+# An out-of-range framing crime takes 0x1402ade4c without a crime noun;
+# the native "for" and "by fooling" separators are still emitted.
+the plot of {a} to frame {a} for by fooling {a}	{a1}通过欺骗{a3}陷害{a2}的阴谋	title
+the plot of {a} to frame for by fooling {a}	{a1}通过欺骗{a2}陷害他人的阴谋	title
+the plot of {a} to frame {a} for by fooling	{a1}欺诈陷害{a2}的阴谋	title
+the plot of {a} to frame for by fooling	{a}欺诈陷害他人的阴谋	title
+# Empty occasion names leave a native separator without a title. Scope
+# their handling to the observed artwork/occasion/activity spellings.
+{e} during	在活动期间，{e}	title
+The Occasion of	庆典	title
+Occasion of	庆典	title
+Performance of	表演	title
+Dance Performance of	舞蹈表演	title
+Musical Performance of	音乐表演	title
+Poetry Recital of	诗歌朗诵	title
+Storytelling of	故事讲述	title
+Competition of	比赛	title
+Dance Competition of	舞蹈比赛	title
+Musical Competition of	音乐比赛	title
+Poetry Competition of	诗歌比赛	title
+Race of	赛跑	title
+Air Race of	飞行竞赛	title
+{s} Race of	{s}赛跑	title
+Wrestling Competition of	摔跤比赛	title
+{i} Throwing Competition of	{i}投掷比赛	title
+Gladiatory Games of	角斗比赛	title
+Procession of	游行	title
+Ceremony of	仪式	title
+Opening Ceremony of	开幕仪式	title
+Closing Ceremony of	闭幕仪式	title
+Main Ceremony of	主要仪式	title
+# New-leader summary 0x140b66c00 outputs the literal "over" immediately
+# before "at" and the site: 0x140b66e51..0x140b66e8e.
+{e} and lordship of {a} over at {p}	{e}，此后{a}统治{p}	title
+{e} and lordship of over at {p}	{e}，此后{p}的统治权发生变化	title
+# Item-improvement summaries' chain/rope arms retain the original "added"
+# wording; named images/engravings preserve the quoted generated name.
+the added a masterful chain	杰作级链条的添加	title
+the added a masterful rope	杰作级绳索的添加	title
+{e} "{b}"	{e}《{b}》	title
+the masterful engraving "{b}" created by {n}	{n}创作的杰作级雕刻《{b}》	title
+{e} with the possible involvement of {p}	{e}，可能涉及{p}	title
+{e} and raiding of {p}	{e}及对{p}的袭击	title
+{e} and pillaging of {p}	{e}及对{p}的劫掠	title
+# Two recorded pet races use two creature-name calls; neither species
+# belongs to an unrestricted proper-name or concatenated generic term.
+the taming of the {s} and {s}	驯服{s1}与{s2}	title
+{e} after appearing not to age and a murder	因看起来不会衰老且发生一起谋杀而产生的{e}	title
+# Complete improvement-title tails follow the producer's caption/material/
+# item/author order, keeping a nested destroyed creation below the shared
+# recursion limit without dropping any caption, medium or author field.
+{e} "{b}" in {i} to {i} by {n}	{n}以{i1}为材，为{i2}完成{e}《{b}》	title
+{e} "{b}" to {i} by {n}	{n}为{i}完成{e}《{b}》	title
+{e} in {i} to {i} by {n}	{n}以{i1}为材，为{i2}完成{e}	title
+{e} to {i} by {n}	{n}为{i}完成{e}	title
+the masterful engraving created by {n}	{n}创作的杰作级雕刻	title
+# Copy acquisition root 0x140b8a150 always preserves source/destination
+# structure, site and entity fields; flag+44 bit1 prefixes the original.
+the acquisition of a copy of {p}	获得{p}的抄本	title
+the acquisition of a copy of the original {p}	获得原本{p}的抄本	title
+the acquisition of a copy of the original {b}	获得原本《{b}》的抄本	title
+the acquisition of a copy of {p} from {p} in {p} of {p} by {a} for {p} in {p}	{a}为{p5}（位于{p6}）从{p2}（位于{p3}，属于{p4}）获得{p1}的抄本	title
+the acquisition of a copy of the original {p} from {p} in {p} of {p} by {a} for {p} in {p}	{a}为{p5}（位于{p6}）从{p2}（位于{p3}，属于{p4}）获得原本{p1}的抄本	title
+the acquisition of a copy of {b} from {p} in {p} of {p} by {a} for {p} in {p}	{a}为{p4}（位于{p5}）从{p1}（位于{p2}，属于{p3}）获得《{b}》的抄本	title
+the acquisition of a copy of the original {b} from {p} in {p} of {p} by {a} for {p} in {p}	{a}为{p4}（位于{p5}）从{p1}（位于{p2}，属于{p3}）获得原本《{b}》的抄本	title
+# Ordinary encounters at 0x140b6f040 use the first actor's possessive
+# figure-name style, retaining both actors before the location and date.
+{a}'s attack on {a}	{a1}对{a2}的攻击	title
+{a}'s surprising of {a}	{a1}对{a2}的突袭	title
+{a}'s ambush of {a}	{a1}对{a2}的伏击	title
+{a}'s happening upon {a}	{a1}与{a2}的偶遇	title
+{a}'s cornering of {a}	{a1}将{a2}逼入绝境	title
+{a}'s confrontation of {a}	{a1}与{a2}的对峙	title
+{a}'s brawl with {a}	{a1}与{a2}的斗殴	title
+# Native event-summary branches can emit no subject text. Preserve only
+# the relationship stated by the art wrapper and its known collection.
+The artwork relates to .	这件艺术品与历史事件有关。	clause
+The artwork relates to during {e}.	这件艺术品与{e}期间的历史事件有关。	clause
+The artwork relates to during .	这件艺术品与活动期间的历史事件有关。	clause
+# Building-action root 0x140b6a110 always appends " of " after its
+# selected action. Its default and artifact-action 0x140b6a250's default
+# retain their typed references without supplying an action name.
+the profaning of {p}	对{p}的亵渎	title
+the disturbing of {p}	对{p}的惊扰	title
+the prayer inside of {p}	在{p}内的祈祷	title
+the of {p} in {p} by {a}	{a}在{p2}涉及{p1}的历史事件	title
+the {p} in {p} by {a}	{a}在{p2}涉及{p1}的历史事件	title
+the {p} in {p} in {p} by {a}	{a}在{p3}的{p2}涉及{p1}的历史事件	title
+# Invalid season selectors keep the selected phase and year, rather than
+# inventing a season discarded by the original switch default.
+In the early of {d},	第{d}年初期，	clause
+In the mid of {d},	第{d}年中期，	clause
+In the late of {d},	第{d}年后期，	clause
+# Entity-link title selectors4/6 use ASSIGN "by", while selectors11/14
+# and default retain only "of" and the two independently typed subjects.
+by {p}	由{p}实施的历史事件	title
+of {a} {p}	涉及{a}与{p}的历史事件	title
+# Missing office/figure paths keep the chosen noun root but omit its
+# position connector; both person and organization references still remain.
+the status of {a} {p}	{a}在{p}的身份	title
+the appointment of {a} {p}	{p}对{a}的任命	title
+the ascension of {a} {p}	{a}在{p}的晋升	title
+the election of {a} {p}	{a}在{p}的当选	title
+the selection of {a} {p}	{p}对{a}的选任	title
+the claim of {a} {p}	{a}涉及{p}的宣称	title
+# Empty raw office names retain the original adjacent connectors. Preserve
+# the action and both references without manufacturing an office label.
+the appointment of {a} to the position of of {p}	{a}获任{p}的职位	title
+the ascension of {a} to the position of of {p}	{a}晋升至{p}的职位	title
+the election of {a} to the position of of {p}	{a}当选{p}的职位	title
+the selection of {a} to the position of of {p}	{a}被选任{p}的职位	title
+the claim of {a} to the position of of {p}	{a}宣称担任{p}的职位	title
+the status of {a} as a of {p}	{a}在{p}的任职身份	title

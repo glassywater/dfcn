@@ -1,7 +1,7 @@
 // Native IDs and flag bits select these templates; no displayed text is read.
 case 0: { // war_attacked_site, including both generals and mercenary clauses
     auto attacker = polity_subject(number("attacker"));
-    auto defender = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
+    auto defender = government_subject(number("site_civ"));
     auto site = subject(NativeHistoryObjectKind::Site, number("site"));
     if (!attacker || !defender || !site) return std::nullopt;
     if (number("site_civ") != number("defender_civ")) {
@@ -52,7 +52,7 @@ case 2: { // created_site
     if (number("builder") != -1) {
         builder = subject(NativeHistoryObjectKind::Figure, number("builder"));
     } else if (number("site_civ") != -1) {
-        builder = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
+        builder = government_subject(number("site_civ"));
         if (!builder) return std::nullopt;
         if (number("civ") != -1) {
             auto civ = polity_subject(number("civ"));
@@ -91,7 +91,7 @@ case 24: { // hf_destroyed_site
         // NO_DEFEAT_MENTION omits the complete defender clause.
         action = apply("{a} destroyed {p}", {*attacker, *site});
     } else {
-        auto defender = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
+        auto defender = government_subject(number("site_civ"));
         if (!defender) return std::nullopt;
         if (number("site_civ") != number("defender_civ")) {
             auto civ = polity_subject(number("defender_civ"));
@@ -319,7 +319,7 @@ case 23: { // reclaim_site
     if (!site) return std::nullopt;
     std::optional<Pieces> actor;
     if (site_civ_id != -1) {
-        actor = subject(NativeHistoryObjectKind::Entity, site_civ_id);
+        actor = government_subject(site_civ_id);
         if (!actor) return std::nullopt;
         if (civ_id != -1) {
             auto civ = polity_subject(civ_id);
@@ -338,7 +338,7 @@ case 23: { // reclaim_site
     break;
 }
 case 25: { // site_died
-    auto entity = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
+    auto entity = government_subject(number("site_civ"));
     auto site = subject(NativeHistoryObjectKind::Site, number("site"));
     if (!entity || !site) return std::nullopt;
     std::optional<Pieces> action;
@@ -357,7 +357,7 @@ case 25: { // site_died
     break;
 }
 case 26: { // site_retired
-    auto entity = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
+    auto entity = government_subject(number("site_civ"));
     auto civ = polity_subject(number("civ"));
     auto site = subject(NativeHistoryObjectKind::Site, number("site"));
     if (!entity || !civ || !site) return std::nullopt;
@@ -687,7 +687,7 @@ case 28: { // entity_action
 case 31: { // replaced_building
     std::optional<Pieces> actor;
     if (number("site_civ") != -1) {
-        actor = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
+        actor = government_subject(number("site_civ"));
         if (!actor) return std::nullopt;
         if (number("civ") != -1) {
             auto civ = polity_subject(number("civ"));
@@ -763,7 +763,7 @@ case 30: { // created_building
     if (number("builder") != -1)
         actor = subject(NativeHistoryObjectKind::Figure, number("builder"));
     else if (number("site_civ") != -1) {
-        actor = subject(NativeHistoryObjectKind::Entity, number("site_civ"));
+        actor = government_subject(number("site_civ"));
         if (!actor) return std::nullopt;
         if (number("civ") != -1) {
             auto civ = polity_subject(number("civ"));
