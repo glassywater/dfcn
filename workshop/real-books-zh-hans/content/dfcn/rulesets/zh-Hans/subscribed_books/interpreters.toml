@@ -747,7 +747,9 @@ name = "work_desc6"
 
 [[rulesets]]
 [rulesets.rules]
-"It was {@bt_hero|::subscribed_books::interpreters::person} again. The {race} that had haunted {@bt_site|::subscribed_books::interpreters::place}{from_ref} had come back, as the elders had warned it would. The creature was bolder now -- or perhaps just hungrier." = "又是{@bt_hero|::subscribed_books::interpreters::person}。{from_ref}、曾盘踞{@bt_site|::subscribed_books::interpreters::place}的那只{race}回来了，正如长者们警告过的那样。它如今更加大胆——或许只是更加饥饿。"
+# The two native from_ref suffixes must delimit the preceding place capture.
+"It was {@bt_hero|::subscribed_books::interpreters::person} again. The {race} that had haunted {@bt_site|::subscribed_books::interpreters::place} from earlier in this account had come back, as the elders had warned it would. The creature was bolder now -- or perhaps just hungrier." = "又是{@bt_hero|::subscribed_books::interpreters::person}。本记述此前出现过、曾盘踞{@bt_site|::subscribed_books::interpreters::place}的那只{race}回来了，正如长者们警告过的那样。它如今更加大胆——或许只是更加饥饿。"
+"It was {@bt_hero|::subscribed_books::interpreters::person} again. The {race} that had haunted {@bt_site|::subscribed_books::interpreters::place} from before had come back, as the elders had warned it would. The creature was bolder now -- or perhaps just hungrier." = "又是{@bt_hero|::subscribed_books::interpreters::person}。从前出现过、曾盘踞{@bt_site|::subscribed_books::interpreters::place}的那只{race}回来了，正如长者们警告过的那样。它如今更加大胆——或许只是更加饥饿。"
 
 [[rulesets]]
 [rulesets.rules]
