@@ -676,6 +676,26 @@ DFHack GUI Buildingplan category: Stone	石材	l
 DFHack GUI Buildingplan category: Wood	木材	l
 DFHack GUI Buildingplan category: Metal	金属	l
 DFHack GUI Buildingplan category: Glass	玻璃	l
+
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/itemselection.lua:72-110 [ItemSelection title and header]
+# Match the complete quantity row across its fixed and dynamic Label tokens.
+DFHack GUI Overlay control: |Choose items|I|0|-1|0	|选择物品	l
+DFHack GUI Overlay control: |Building material|I|0|-1|0	|建筑材料	l
+DFHack GUI Overlay control: |Building materials|I|0|-1|0	|建筑材料	l
+DFHack GUI Overlay control: |Select up to {d} item ({d} selected)|I|0|-1|0	|最多选择 {d1} 件物品（已选 {d2} 件）	l
+DFHack GUI Overlay control: |Select up to {d} items ({d} selected)|I|0|-1|0	|最多选择 {d1} 件物品（已选 {d2} 件）	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/itemselection.lua:112-140 [header buttons]
+DFHack GUI Overlay control: |Autoselect|I|0|-1|0	|自动选择	l
+DFHack GUI Overlay control: |Continue|I|0|-1|0	|继续	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/itemselection.lua:183-235 [footer HotkeyLabels]
+# Shift+Right, Shift+Left, Enter and their native key colors remain intact.
+DFHack GUI Overlay control: Use one||I|0|-1|1	加选一件|	l
+DFHack GUI Overlay control: Use one fewer||I|0|-1|1	少选一件|	l
+DFHack GUI Overlay control: Use all/none||I|0|-1|1	全选／清空|	l
+DFHack GUI Overlay control: Go back||I|0|-1|1	返回|	l
+DFHack GUI Overlay control: Continue||I|0|-1|1	继续|	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/gui.lua [paint_frame forced-pause badge]
+DFHack GUI Overlay control: |PAUSE FORCED|I|0|-1|0	|强制暂停	l
 DFHack GUI Buildingplan category: Gem	宝石	l
 DFHack GUI Buildingplan category: Clay	黏土	l
 DFHack GUI Buildingplan category: Cloth	布	l
