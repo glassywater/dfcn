@@ -518,6 +518,8 @@ struct LegendsTextFlow {
     bool laid_out = false;
 };
 
+struct NativeTooltipPage;
+
 struct Match {
     int x = 0;
     int y = 0;
@@ -576,6 +578,9 @@ struct Match {
     // Source ownership is exposed spans; layout retains the complete draw.
     std::optional<SDL_Rect> native_help_occluder{};
     std::shared_ptr<const std::vector<SDL_Rect>> native_help_background_frames{};
+    // Reuse this traversal's restored page when a small foreign hint is the
+    // only foreground. It is discarded with the matches, never across frames.
+    std::shared_ptr<NativeTooltipPage> native_hint_background_page{};
     // A summary row reconstructed from ordered native draws already owns
     // its complete column; physical tail spans only suppress surviving ink.
     bool native_overview_complete_row = false;
@@ -15801,10 +15806,79 @@ std::vector<Match> Overlay::find_matches(int only_y,
         auto frames = std::make_shared<const std::vector<SDL_Rect>>(std::move(overlay_frames));
         if (!frames->empty()) {
             const auto base_page = native_help_background_page(*gps_, *frames);
+            bool hint_foreground = false;
             auto foreground = [&] {
                 const auto page = native_announcement_foreground_page(*gps_, *frames);
                 NativeTooltipPageScope document(gps_, page, nullptr, false);
                 NativeUiReadScope composed(gps_, nullptr);
+                // A Stocks shortcut card has four independent action fields.
+                // Translating the complete inventory merely to discard all
+                // of its foreground matches repeats the background traversal.
+                // Keep every occluder and the restored page; only replace that
+                // redundant foreground traversal when all frames are proved
+                // hint cards or excluded logo artwork.
+                if (!page && !widget && !g_native_toolbar_tooltip &&
+                        std::any_of(frames->begin(), frames->end(), [](const SDL_Rect &frame) {
+                            return frame.w == 27 && frame.h == 7;
+                        })) {
+                    std::vector<std::string> hint_rows(static_cast<size_t>(gps_->dimy),
+                        std::string(static_cast<size_t>(gps_->dimx), ' '));
+                    for (int y = 0; y < gps_->dimy; ++y)
+                        for (int x = 0; x < gps_->dimx; ++x) {
+                            bool top = false;
+                            const auto *cell = cell_at(x, y, &top);
+                            if (cell && cell[0]) hint_rows[static_cast<size_t>(y)][static_cast<size_t>(x)] = cell[0];
+                        }
+                    const auto hints = native_dfhack_stocks_hint_geometry(
+                        gps_->dimx, gps_->dimy, [&](int y) { return hint_rows[static_cast<size_t>(y)]; });
+                    const auto logos = native_capture_mask_regions(gps_);
+                    const auto same_frame = [](const SDL_Rect &a, const SDL_Rect &b) {
+                        return a.x == b.x && a.y == b.y && a.w == b.w && a.h == b.h;
+                    };
+                    hint_foreground = std::all_of(frames->begin(), frames->end(),
+                        [&](const SDL_Rect &frame) {
+                            return std::any_of(hints.begin(), hints.end(), [&](const auto &hint) {
+                                return same_frame(frame, hint.frame) &&
+                                    native_dfhack_background_matches(*gps_, hint.frame);
+                            }) || std::any_of(logos.begin(), logos.end(), [&](const SDL_Rect &logo) {
+                                return same_frame(frame, logo);
+                            });
+                        });
+                    // Some catalog hover cards have no captured Tooltip
+                    // widget or separate overlay frame until this matcher
+                    // sees their source. Preserve their foreground discovery.
+                    if (hint_foreground) {
+                        // The ordinary matcher reserves the card before
+                        // discovering other tooltip sources on the page.
+                        for (const auto &hint : hints)
+                            for (const SDL_Rect &owned : {hint.body, hint.brand})
+                                for (int y = owned.y; y < owned.y + owned.h; ++y)
+                                    std::fill_n(hint_rows[static_cast<size_t>(y)].begin() + owned.x,
+                                        owned.w, ' ');
+                        if (find_toolbar_tooltip(hint_rows)) hint_foreground = false;
+                    }
+                    if (hint_foreground) {
+                        std::vector<Match> actions;
+                        for (const auto &hint : hints) {
+                            if (std::none_of(frames->begin(), frames->end(), [&](const SDL_Rect &frame) {
+                                    return same_frame(frame, hint.frame);
+                                })) continue;
+                            for (const auto &action : hint.actions) {
+                                if (only_y >= 0 && only_y != action.y) continue;
+                                bool visible = true;
+                                for (size_t at = 0; at < action.source.size() && visible; ++at)
+                                    visible = visible_char_at(action.x + static_cast<int>(at), action.y) ==
+                                        static_cast<unsigned char>(action.source[at]);
+                                if (!visible) continue;
+                                const auto target = exact_literal_translation(
+                                    "DFHack stocks hint: " + action.source);
+                                if (!target) continue;
+                                actions.push_back(native_dfhack_stocks_hint_match(hint, action, *target));
+                            }
+                        }
+                        return actions;
+                    }
+                }
                 // Early glyph suppression must not read last Present's
                 // graphical occlusion state as this document's source.
                 return find_matches(only_y, page && screen_override ? gps_->screen : nullptr);
@@ -15864,17 +15938,28 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 for (auto &match : background) {
                     if (!match.native_help_background_frames)
                         match.native_help_background_frames = frames;
+                    if (hint_foreground) match.native_hint_background_page = base_page;
                     match.native_hover_background = true;
                     if (match.layout_foreground_rgb < 0) {
                         bool top = false;
                         if (const auto *cell = cell_at(match.x, match.y, &top))
                             match.layout_foreground_rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
                     }
-                    // Final-layer matching may happen after English glyphs
-                    // were copied. Clearing retains the complete native span;
+                    // Stocks hints replace only their own foreign cells.
+                    // Unrelated native rows keep the ordinary copy-hook
+                    // suppression path instead of acquiring a full-screen
+                    // recovery clear merely because a hint/logo is present.
+                    const int source_y = match.native_split_text
+                        ? match.native_split_top_y : match.y;
+                    const SDL_Rect source_span{match.x, source_y, match.length,
+                        match.native_split_text ? 2 : 1};
+                    const bool restore_source = !hint_foreground || std::any_of(frames->begin(), frames->end(),
+                        [&](const SDL_Rect &frame) { return SDL_HasIntersection(&source_span, &frame); });
+                    // Other help pages still need late-source recovery. A
+                    // partially covered Stocks field retains that fallback;
                     // common help clipping protects the foreground pixels.
                     if (match.length > 0 && !match.native_help_source_only &&
-                        match.graphical_clear_width <= 0) {
+                        match.graphical_clear_width <= 0 && restore_source) {
                         match.graphical_clear_x = match.x;
                         match.graphical_clear_y = match.y;
                         match.graphical_clear_width = match.length;
@@ -40200,7 +40285,11 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
                 read_draw_pixels(clipped, pixels.data(), clipped.w * 4, "graphical") == 0) {
                 RenderTimingScope clear_timing(render_timings_, config_.trace_render_timing,
                     RenderTimingStage::DrawClearPixels);
-                std::unordered_map<uint32_t, int> frequency;
+                struct ColourFrequency {
+                    int count = 0;
+                    bool erase = false;
+                };
+                std::unordered_map<uint32_t, ColourFrequency> frequency;
                 uint32_t background_key = 0;
                 int background_count = 0;
                 for (size_t offset = 0; offset < pixels.size(); offset += 4) {
@@ -40208,7 +40297,7 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
                         (static_cast<uint32_t>(pixels[offset]) << 16) |
                         (static_cast<uint32_t>(pixels[offset + 1]) << 8) |
                         pixels[offset + 2];
-                    const int count = ++frequency[key];
+                    const int count = ++frequency[key].count;
                     const Uint8 red = pixels[offset];
                     const Uint8 green = pixels[offset + 1];
                     const Uint8 blue = pixels[offset + 2];
@@ -40337,6 +40426,35 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
                             }
                         }
                     } else {
+                        // Each occurrence of one RGB value has the same
+                        // exact projection against this foreground/fill pair.
+                        // Classify the histogram colours once, then preserve
+                        // the original scanline order when building runs.
+                        for (auto &[key, colour] : frequency) {
+                            const std::array<Uint8, 3> channels{{
+                                static_cast<Uint8>((key >> 16) & 0xff),
+                                static_cast<Uint8>((key >> 8) & 0xff),
+                                static_cast<Uint8>(key & 0xff),
+                            }};
+                            std::array<double, 3> relative{};
+                            double projection = 0.0;
+                            for (size_t channel = 0;
+                                 channel < relative.size(); ++channel) {
+                                relative[channel] =
+                                    channels[channel] - background[channel];
+                                projection += relative[channel] * direction[channel];
+                            }
+                            const double amount = projection / direction_squared;
+                            double off_axis_squared = 0.0;
+                            for (size_t channel = 0;
+                                 channel < relative.size(); ++channel) {
+                                const double off_axis =
+                                    relative[channel] - amount * direction[channel];
+                                off_axis_squared += off_axis * off_axis;
+                            }
+                            colour.erase = amount >= 0.06 && amount <= 1.25 &&
+                                off_axis_squared <= 144.0;
+                        }
                         std::vector<SDL_Rect> erase_runs;
                         for (int py = 0; py < clipped.h; ++py) {
                             int run_start = -1;
@@ -40345,28 +40463,11 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
                                 if (px < clipped.w) {
                                     const size_t offset =
                                         (static_cast<size_t>(py) * clipped.w + px) * 4;
-                                    std::array<double, 3> relative{};
-                                    double projection = 0.0;
-                                    for (size_t channel = 0;
-                                         channel < relative.size(); ++channel) {
-                                        relative[channel] =
-                                            pixels[offset + channel] -
-                                            background[channel];
-                                        projection +=
-                                            relative[channel] * direction[channel];
-                                    }
-                                    const double amount =
-                                        projection / direction_squared;
-                                    double off_axis_squared = 0.0;
-                                    for (size_t channel = 0;
-                                         channel < relative.size(); ++channel) {
-                                        const double off_axis =
-                                            relative[channel] -
-                                            amount * direction[channel];
-                                        off_axis_squared += off_axis * off_axis;
-                                    }
-                                    erase = amount >= 0.06 && amount <= 1.25 &&
-                                        off_axis_squared <= 144.0;
+                                    const uint32_t key =
+                                        (static_cast<uint32_t>(pixels[offset]) << 16) |
+                                        (static_cast<uint32_t>(pixels[offset + 1]) << 8) |
+                                        pixels[offset + 2];
+                                    erase = frequency.find(key)->second.erase;
                                 }
                                 if (erase && run_start < 0) run_start = px;
                                 if (!erase && run_start >= 0) {
@@ -41334,9 +41435,11 @@ void Overlay::render(SDL_Renderer *renderer) {
     }
     RenderTimingScope layout_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Layout);
     std::shared_ptr<const std::vector<SDL_Rect>> background_help_frames;
+    std::shared_ptr<NativeTooltipPage> hint_background_page;
     for (const auto &match : prepared_matches_)
         if (!match.native_help_current_page && match.native_help_background_frames) {
             background_help_frames = match.native_help_background_frames;
+            hint_background_page = match.native_hint_background_page;
             break;
         }
     std::vector<Match> help_foreground;
@@ -41365,6 +41468,7 @@ void Overlay::render(SDL_Renderer *renderer) {
     if (background_help_frames) g_native_toolbar_tooltip.reset();
     const auto layout_widget = captured_native_tooltip_widget(*gps_);
     const auto layout_page = !background_help_frames ? nullptr
+        : hint_background_page && !layout_widget ? hint_background_page
         : native_help_background_page(*gps_, *background_help_frames,
             layout_widget ? layout_widget->page : nullptr);
     NativeTooltipPageScope tooltip_page_layout(gps_, layout_page, background_help_frames.get());
@@ -41719,8 +41823,8 @@ void Overlay::render(SDL_Renderer *renderer) {
         draw_with_help_clips(renderer, *gps_, rendered_help_frames, nullptr,
             [&] { draw_native_border_repairs(renderer); });
         part_timing.checkpoint(RenderTimingStage::DrawMatches);
-        // Help recovery gives every background row a fallback pixel clear.
-        // If this frame's copy hook already removed ALL exposed source ink,
+        // Recovered captions retain a fallback pixel clear. If this frame's
+        // copy hook already removed ALL exposed source ink,
         // there is nothing to read back or erase. Keep the fallback for late
         // recovery, partial draws and transformed render targets. A split
         // caption needs the same proof for every exposed physical half.
@@ -41736,7 +41840,7 @@ void Overlay::render(SDL_Renderer *renderer) {
                     ? std::max(0, match.native_split_top_y) : match.y;
                 const int source_bottom = match.native_split_text
                     ? std::min(gps_->dimy, match.native_split_top_y + 2) : match.y + 1;
-                if (!match.native_help_background_frames || match.graphical_auto_foreground ||
+                if (match.graphical_auto_foreground || match.graphical_clear_flat_background ||
                     source_bottom <= source_top ||
                     match.graphical_clear_height != source_bottom - source_top ||
                     match.graphical_clear_x != match.x || match.graphical_clear_y != source_top ||

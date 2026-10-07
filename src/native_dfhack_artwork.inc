@@ -88,6 +88,10 @@ static size_t g_native_dfhack_logo_count = 0, g_native_dfhack_logo_next = 0;
 // Empty capture queries occur for every native glyph. Avoid taking the
 // record mutex until a complete logo has actually been published.
 static std::atomic_bool g_native_dfhack_has_logos{false};
+// A necessary coordinate filter for per-cell queries. Keep every published
+// capture inside this union, including stale entries; exact current texture
+// ownership is still checked under the record mutex for cells inside it.
+static std::atomic<uint64_t> g_native_dfhack_logo_extent{0};
 // DFHack paints its window, dividers and control buttons as textured tiles.
 // Keep their original pen identity without reviving covered old artwork.
 static std::vector<NativeDfhackTileWrite> g_native_dfhack_border_tiles;
@@ -96,6 +100,23 @@ static int g_native_dfhack_border_dimx = 0, g_native_dfhack_border_dimy = 0;
 static bool native_dfhack_logo_grid_valid(const graphicst *gps) {
     return gps && gps->dimx > 0 && gps->dimx <= 1000 &&
         gps->dimy > 0 && gps->dimy <= 1000;
+}
+
+// Caller holds the record mutex. Four exclusive bounds fit in ten bits each
+// because the native grid is bounded by 1000 cells in either dimension.
+static void expand_native_dfhack_logo_extent(const SDL_Rect &bounds) {
+    const uint64_t previous = g_native_dfhack_logo_extent.load(std::memory_order_relaxed);
+    const bool valid = (previous & (uint64_t{1} << 40)) != 0;
+    const int left = valid ? std::min(bounds.x, static_cast<int>(previous & 1023)) : bounds.x;
+    const int top = valid ? std::min(bounds.y, static_cast<int>((previous >> 10) & 1023)) : bounds.y;
+    const int right = valid ? std::max(bounds.x + bounds.w,
+        static_cast<int>((previous >> 20) & 1023)) : bounds.x + bounds.w;
+    const int bottom = valid ? std::max(bounds.y + bounds.h,
+        static_cast<int>((previous >> 30) & 1023)) : bounds.y + bounds.h;
+    const uint64_t extent = (uint64_t{1} << 40) | static_cast<uint64_t>(left) |
+        (static_cast<uint64_t>(top) << 10) | (static_cast<uint64_t>(right) << 20) |
+        (static_cast<uint64_t>(bottom) << 30);
+    g_native_dfhack_logo_extent.store(extent, std::memory_order_release);
 }
 
 static void clear_native_dfhack_logo_captures() {
@@ -107,6 +128,7 @@ static void clear_native_dfhack_logo_captures() {
     g_native_dfhack_border_tiles.clear();
     g_native_dfhack_border_dimx = g_native_dfhack_border_dimy = 0;
     g_native_dfhack_has_logos.store(false, std::memory_order_release);
+    g_native_dfhack_logo_extent.store(0, std::memory_order_release);
 }
 
 static void record_native_dfhack_tile_write(const graphicst *gps,
@@ -188,6 +210,7 @@ static void record_native_dfhack_tile_write(const graphicst *gps,
             return;
         }
     }
+    expand_native_dfhack_logo_extent(capture.bounds);
     if (g_native_dfhack_logo_count < g_native_dfhack_logos.size()) {
         g_native_dfhack_logos[g_native_dfhack_logo_count++] = capture;
     } else {
@@ -302,6 +325,12 @@ static bool native_dfhack_logo_owns_cell(const graphicst *gps, int x, int y) {
     if (!native_dfhack_logo_grid_valid(gps) || x < 0 || y < 0 ||
             x >= gps->dimx || y >= gps->dimy ||
             !g_native_dfhack_has_logos.load(std::memory_order_acquire)) return false;
+    const uint64_t extent = g_native_dfhack_logo_extent.load(std::memory_order_acquire);
+    if (!(extent & (uint64_t{1} << 40)) ||
+            x < static_cast<int>(extent & 1023) ||
+            y < static_cast<int>((extent >> 10) & 1023) ||
+            x >= static_cast<int>((extent >> 20) & 1023) ||
+            y >= static_cast<int>((extent >> 30) & 1023)) return false;
     std::lock_guard<std::mutex> lock(g_native_dfhack_logo_mutex);
     for (size_t i = 0; i < g_native_dfhack_logo_count; ++i) {
         const auto &capture = g_native_dfhack_logos[i];

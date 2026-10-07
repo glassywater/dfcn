@@ -468,14 +468,39 @@ void Overlay::append_native_info_panel_titles(std::vector<std::string> &rows,
 // hover prose or the Stocks category pane.
 void Overlay::append_fortress_item_captions(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
+    if (!native_item_anchors_in(*gps_, {0, 0, gps_->dimx, gps_->dimy})) return;
     const auto drawn = captured_native_drawn_text_rows();
     const auto top_drawn = captured_native_drawn_text_rows(true);
-    if (!native_item_anchors_in(*gps_, {0, 0, gps_->dimx, gps_->dimy})) return;
     const auto captures = captured_clipped_captions();
     const NativePanelBorders borders(*gps_);
     const auto settings = native_ui_settings();
     const bool classic = settings && settings->classic;
     const size_t first_match = matches.size();
+    // Every item-detail heading requires Weight. Source owners may already
+    // have blanked rows, so read its presence from this same current glyph
+    // view before trying detail panels for each picture in a Stocks list.
+    const bool possible_detail_heading = [&] {
+        constexpr std::string_view weight = "Weight:";
+        for (int y = 0; y < gps_->dimy; ++y)
+            for (int x = 0; x + static_cast<int>(weight.size()) <= gps_->dimx; ++x) {
+                if (visible_char_at(x, y) != weight.front()) continue;
+                bool current = true;
+                for (size_t at = 1; at < weight.size() && current; ++at)
+                    current = visible_char_at(x + static_cast<int>(at), y) == weight[at];
+                if (current) return true;
+            }
+        return false;
+    }();
+    std::map<std::array<int, 4>, std::optional<SDL_Rect>> detail_headings;
+    const auto detail_heading = [&](const SDL_Rect &panel) {
+        const std::array<int, 4> key{panel.x, panel.y, panel.w, panel.h};
+        if (const auto found = detail_headings.find(key); found != detail_headings.end())
+            return found->second;
+        const auto heading = native_item_detail_heading(*gps_, panel,
+            [this](int x, int y) { return visible_char_at(x, y); });
+        detail_headings.emplace(key, heading);
+        return heading;
+    };
     // Uniform requirements have a picture and Mat/Color controls, but no
     // item-state action strip. Their names still own a complete left-aligned
     // column; generic word matching would centre each translated name in its
@@ -747,11 +772,10 @@ void Overlay::append_fortress_item_captions(std::vector<std::string> &rows,
                     }
                     if (display_caption) continue;
                 }
-                if (const auto panel = pass == 0 ? native_item_detail_panel(
+                if (const auto panel = pass == 0 && possible_detail_heading ? native_item_detail_panel(
                         borders, *gps_, picture, picture_right, y,
                         [this](int x, int row) { return visible_char_at(x, row); }) : std::nullopt) {
-                    const auto heading = native_item_detail_heading(*gps_, *panel,
-                        [this](int x, int row) { return visible_char_at(x, row); });
+                    const auto heading = detail_heading(*panel);
                     if (heading) {
                         if ((heading->y == y || heading->y + 1 == y) &&
                             heading->x >= picture_right) {

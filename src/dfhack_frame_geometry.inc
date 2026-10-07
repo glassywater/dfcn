@@ -61,6 +61,79 @@ struct NativeDfhackWindowGeometry {
     int title_x = 0, title_length = 0;
 };
 
+struct NativeDfhackStocksHint {
+    struct ActionField {
+        int x = 0, y = 0;
+        std::string source;
+    };
+    SDL_Rect frame{}, body{}, brand{};
+    std::array<ActionField, 4> actions;
+};
+
+// Stocks uses a fixed body grammar even when custom artwork does not expose
+// its outer rails. Preserve that ownership at grid edges too; only a complete
+// in-grid outer rectangle can replace a separately proved foreground frame.
+template <typename ReadRow>
+static std::vector<NativeDfhackStocksHint> native_dfhack_stocks_hint_geometry(
+        int dimx, int dimy, ReadRow &&read_row) {
+    std::vector<NativeDfhackStocksHint> hints;
+    if (dimx <= 0 || dimx > 1000 || dimy <= 0 || dimy > 1000) return hints;
+    std::vector<std::optional<std::string>> rows(static_cast<size_t>(dimy));
+    const auto row_at = [&](int y) -> const std::string & {
+        auto &row = rows[static_cast<size_t>(y)];
+        if (!row) row = read_row(y);
+        return *row;
+    };
+    for (int scroll_y = 4; scroll_y + 1 < dimy; ++scroll_y) {
+        const auto &scroll_row = row_at(scroll_y);
+        for (size_t at = scroll_row.find("Shift+Scroll"); at != std::string::npos;
+                at = scroll_row.find("Shift+Scroll", at + 12)) {
+            const int left = static_cast<int>(at), right = left + 25;
+            if (right > dimx || scroll_row.compare(at + 12, 13, ": fast scroll") != 0 ||
+                row_at(scroll_y + 1).compare(at + 18, 6, "DFHack") != 0) continue;
+            NativeDfhackStocksHint hint;
+            bool complete = true;
+            for (int index = 0; index < 3; ++index) {
+                const int y = scroll_y - 4 + index;
+                const std::string row = row_at(y).substr(at, 25);
+                const size_t separator = row.find(": ");
+                if (separator == std::string::npos ||
+                    !is_keybinding_code(std::string_view(row).substr(0, separator))) {
+                    complete = false;
+                    break;
+                }
+                const std::string action = trim(row.substr(separator + 2));
+                if ((index == 0 && action != "collapse all" && action != "expand all") ||
+                    (index == 1 && action != "expand all") ||
+                    (index == 2 && action != "remove empties")) {
+                    complete = false;
+                    break;
+                }
+                hint.actions[index] = {left + static_cast<int>(separator) + 2, y, action};
+            }
+            if (!complete) continue;
+            hint.actions[3] = {left + 14, scroll_y, "fast scroll"};
+            hint.body = {left, scroll_y - 4, 25, 5};
+            hint.brand = {left + 18, scroll_y + 1, 6, 1};
+            if (left > 0 && scroll_y >= 5 && right < dimx)
+                hint.frame = {left - 1, scroll_y - 5, 27, 7};
+            hints.push_back(std::move(hint));
+        }
+    }
+    return hints;
+}
+
+static Match native_dfhack_stocks_hint_match(const NativeDfhackStocksHint &hint,
+        const NativeDfhackStocksHint::ActionField &action, std::string_view target) {
+    Match match{action.x, action.y, static_cast<int>(action.source.size()),
+        kDfhackStocksHintRule, std::string(target), action.source};
+    match.layout_x = action.x;
+    match.layout_length = hint.body.x + hint.body.w - action.x;
+    match.layout_left = true;
+    match.layout_clip_right = hint.body.x + hint.body.w;
+    return match;
+}
+
 // A complete branded window owns its rectangle independently of its tool or
 // translation catalog. Background restoration additionally requires every
 // cell's current pre-write capture; a title alone never restores a page.

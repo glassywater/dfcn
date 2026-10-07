@@ -282,7 +282,8 @@ void Overlay::recover_adventure_skill_rows() {
 // Keep the already measured layout and intersect only its final draw clips.
 template <typename Draw>
 static void draw_with_help_clips(SDL_Renderer *renderer, const graphicst &gps,
-        const std::vector<SDL_Rect> &frames, const Match *match, Draw &&draw) {
+        const std::vector<SDL_Rect> &frames, const Match *match, Draw &&draw,
+        const SDL_Rect *paint_bounds = nullptr) {
     if (frames.empty()) { draw(); return; }
     const int tile_w = gps.tile_pixel_x, tile_h = gps.tile_pixel_y;
     if (tile_w <= 0 || tile_h <= 0) return;
@@ -322,6 +323,13 @@ static void draw_with_help_clips(SDL_Renderer *renderer, const graphicst &gps,
         }
         clips = std::move(exposed);
     }
+    // The native field already bounds all of this draw's possible writes.
+    // Keep the original exposed rectangles and ordering; only discard those
+    // that cannot contain either source clearing or translated ink.
+    if (paint_bounds)
+        std::erase_if(clips, [&](const SDL_Rect &clip) {
+            return !SDL_HasIntersection(&clip, paint_bounds);
+        });
     for (const auto &clip : clips) {
         SDL_RenderSetClipRect(renderer, &clip);
         draw();
@@ -344,14 +352,49 @@ void Overlay::draw_help_clipped_match(SDL_Renderer *renderer, const Match &match
     // complete source. The skin-only frame list cannot rediscover that owner.
     const auto &occluders = match.native_help_background_frames
         ? *match.native_help_background_frames : frames;
+    std::optional<SDL_Rect> paint_bounds;
+    if (match.layout_native_clip && !match.legends_flow &&
+            match.layout_justified_parts.empty() && !match.layout_reflowed_paragraph &&
+            !match.layout_reflowed_control) {
+        SDL_Rect bounds{};
+        const auto include = [&](const SDL_Rect &rect) {
+            if (rect.w <= 0 || rect.h <= 0) return;
+            if (bounds.w <= 0 || bounds.h <= 0) bounds = rect;
+            else SDL_UnionRect(&bounds, &rect, &bounds);
+        };
+        // draw_match intersects translated ink with this native allocation.
+        // Source erasure runs before that intersection and may occupy a
+        // different row or column, so retain its complete footprint too.
+        if (!match.target.empty()) include(*match.layout_native_clip);
+        const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
+        const int origin_x = (gps_->screen_pixel_x - tile_w * gps_->dimx) / 2;
+        const int origin_y = (gps_->screen_pixel_y - tile_h * gps_->dimy) / 2;
+        if (match.graphical_clear_width > 0 && match.graphical_clear_height > 0) {
+            include({origin_x + match.graphical_clear_x * tile_w,
+                origin_y + match.graphical_clear_y * tile_h,
+                match.graphical_clear_width * tile_w,
+                match.graphical_clear_height * tile_h});
+            if (match.graphical_auto_foreground)
+                include({origin_x + match.graphical_clear_x * tile_w,
+                    origin_y + match.layout_y * tile_h +
+                        std::max(0, match.layout_pixel_y - 5),
+                    match.graphical_clear_width * tile_w, tile_h + 3});
+        }
+        if (!match.target.empty() &&
+                (match.rule == -8 || (config_.clear_background && !g_copy_hook_active)))
+            include({origin_x + match.x * tile_w,
+                origin_y + match.y * tile_h, match.length * tile_w, tile_h});
+        paint_bounds = bounds;
+    }
+    const auto *bounds = paint_bounds ? &*paint_bounds : nullptr;
     draw_with_help_clips(renderer, *gps_, occluders, &match,
         [&] {
             if (g_native_toolbar_tooltip && g_native_toolbar_tooltip->widget_frame &&
                 (match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule)) {
                 draw_with_help_clips(renderer, *gps_, g_native_toolbar_tooltip->occlusions, nullptr,
-                    [&] { draw_hover_clipped_match(renderer, match); });
+                    [&] { draw_hover_clipped_match(renderer, match); }, bounds);
             } else draw_hover_clipped_match(renderer, match);
-        });
+        }, bounds);
 }
 
 // The overlay is presented after the game draws the tooltip. Draw each page

@@ -118,6 +118,27 @@ void Overlay::layout_fortress_stocks(SDL_Renderer *renderer) {
     for (Row &row : rows)
         columns[{row.button_left, row.button_right, row.label_left}]
             .push_back(&row);
+    if (columns.empty()) return;
+    // Keep the native source-row order while indexing this traversal once.
+    // A retained half-font caption can own either action-strip row; add it
+    // once to each such row even when its physical source row is one of them.
+    std::vector<std::vector<Match *>> source_rows(static_cast<size_t>(gps_->dimy));
+    std::vector<std::vector<Match *>> caption_rows(static_cast<size_t>(gps_->dimy));
+    for (Match &part : prepared_matches_) {
+        const auto add_caption_row = [&](int y) {
+            if (y >= 0 && y < gps_->dimy)
+                caption_rows[static_cast<size_t>(y)].push_back(&part);
+        };
+        if (part.y >= 0 && part.y < gps_->dimy)
+            source_rows[static_cast<size_t>(part.y)].push_back(&part);
+        add_caption_row(part.y);
+        if (part.native_split_text) {
+            if (part.native_split_top_y != part.y)
+                add_caption_row(part.native_split_top_y);
+            if (part.native_split_top_y + 1 != part.y)
+                add_caption_row(part.native_split_top_y + 1);
+        }
+    }
     struct Slot {
         std::vector<Match *> parts;
         int left, right;
@@ -272,13 +293,12 @@ void Overlay::layout_fortress_stocks(SDL_Renderer *renderer) {
             // retained half-font owner can sit on the other text row from
             // the action strip. Neither makes it a concrete item caption.
             std::vector<Match *> captions;
-            for (Match &part : prepared_matches_) {
-                const bool same_row = part.y == y || (part.native_split_text &&
-                    (part.native_split_top_y == y || part.native_split_top_y + 1 == y));
-                if (same_row && !part.native_split_duplicate && !part.target.empty() &&
+            for (Match *candidate : caption_rows[static_cast<size_t>(y)]) {
+                Match &part = *candidate;
+                if (!part.native_split_duplicate && !part.target.empty() &&
                         !part.legends_flow && part.x >= search->x &&
                         part.x + part.length <= controls_left)
-                    captions.push_back(&part);
+                    captions.push_back(candidate);
             }
             std::sort(captions.begin(), captions.end(),
                 [](const Match *a, const Match *b) { return a->x < b->x; });
@@ -364,15 +384,16 @@ void Overlay::layout_fortress_stocks(SDL_Renderer *renderer) {
             }
             std::vector<Match *> parts;
             bool complete = true;
-            for (Match &part : prepared_matches_) {
-                if (part.y != y || part.x < search->x || part.x >= controls_left) continue;
+            for (Match *candidate : source_rows[static_cast<size_t>(y)]) {
+                Match &part = *candidate;
+                if (part.x < search->x || part.x >= controls_left) continue;
                 if (part.target.empty() || part.native_split_text ||
                     part.native_split_duplicate || part.legends_flow ||
                     part.x + part.length > controls_left) {
                     complete = false;
                     break;
                 }
-                parts.push_back(&part);
+                parts.push_back(candidate);
             }
             if (!complete || parts.empty()) continue;
             std::sort(parts.begin(), parts.end(),
