@@ -16461,12 +16461,8 @@ std::vector<Match> Overlay::find_matches(int only_y,
         // before any later matcher can append the same report again with the
         // card's different margins and horizontally offset its second copy.
         for (const auto &row : map_hover->rows) {
-            const auto owns_row = [&](const Match &match) {
-                return native_paragraph_owns_card_row(match, row);
-            };
-            if (std::any_of(result.begin(), result.end(), owns_row) ||
-                    std::any_of(untranslated_help_rows.begin(),
-                        untranslated_help_rows.end(), owns_row))
+            if (native_paragraph_owns_card_row(result, row) ||
+                    native_paragraph_owns_card_row(untranslated_help_rows, row))
                 std::fill_n(screen_rows[row.y].begin() + row.x, row.source.size(), ' ');
         }
         // Native type ownership precedes every item, person and dictionary

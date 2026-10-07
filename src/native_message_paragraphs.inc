@@ -1,5 +1,11 @@
 // Share paragraph layout and source ownership between early native reports
 // and the later complete UI message catalog.
+static bool is_visitor_overview_paragraph(std::string_view source) {
+    return source == "You can learn more about this visitor after they chat with a local." ||
+        source == "This visitor is ready to leave." ||
+        source.starts_with("This visitor has come ");
+}
+
 std::shared_ptr<const TranslationResult> Overlay::announcement_result_metadata(std::string_view source) const {
     const auto prefix = std::to_string(native_identity_translation_context()) + '\x1f';
     const auto original = announcement_translation_cache_.find(prefix + std::string(source));
@@ -50,27 +56,64 @@ bool Overlay::append_ui_message_paragraph(std::vector<std::string> &screen_rows,
             right = panel->x + panel->w;
         }
     }
-    const size_t first_match = result.size();
-    std::shared_ptr<const TranslationResult> metadata;
-    if (!rows.empty()) metadata = rows.front().translation_result;
-    if (!metadata && !complete_source.empty()) metadata = announcement_result_metadata(complete_source);
-    if (append_bounded_paragraph(rows, target, screen_rows, result, only_y,
-            right, right, target_colors, false,
-            native_left >= 0 ? native_left : centered_left, viewport, {},
-            complete_layout_rows)) {
-        for (size_t at = first_match; at < result.size(); ++at)
-            result[at].translation_result = metadata;
-        if (centered_left >= 0)
-            for (size_t at = first_match; at < result.size(); ++at)
-                result[at].layout_left = false;
-        return true;
-    }
     std::string source(complete_source);
     if (source.empty()) {
         for (const Match &row : rows) {
             if (!source.empty()) source.push_back(' ');
             source += row.source;
         }
+    }
+    const bool visitor_overview = is_visitor_overview_paragraph(normalize_utterance(source));
+    const size_t first_match = result.size();
+    std::shared_ptr<const TranslationResult> metadata;
+    if (!rows.empty()) metadata = rows.front().translation_result;
+    if (!metadata && !complete_source.empty()) metadata = announcement_result_metadata(complete_source);
+    std::vector<Match> fitted;
+    if (append_bounded_paragraph(rows, target, screen_rows, fitted, only_y,
+            right, right, target_colors, false,
+            native_left >= 0 ? native_left : centered_left, viewport, {},
+            complete_layout_rows)) {
+        if (visitor_overview) {
+            // Present can recover the complete visitor box after its native
+            // glyph copies escaped the early mask. Clear every original wrap
+            // row before any reflowed Chinese, including unused English tails.
+            // Only surviving source bytes authorize these foreground runs;
+            // the existing copy proof skips runs already suppressed this frame.
+            for (const Match &row : rows) {
+                if (only_y >= 0 && only_y != row.y) continue;
+                const auto rgb_at = [&](int x) {
+                    bool top = false;
+                    const auto *cell = cell_at(x, row.y, &top);
+                    const unsigned char expected = static_cast<unsigned char>(
+                        row.source[static_cast<size_t>(x - row.x)]);
+                    if (!cell || (cell[0] ? cell[0] : ' ') != expected) return -1;
+                    return (cell[1] << 16) | (cell[2] << 8) | cell[3];
+                };
+                for (int begin = row.x; begin < row.x + row.length;) {
+                    const int color = rgb_at(begin);
+                    if (color < 0) { ++begin; continue; }
+                    int end = begin + 1;
+                    while (end < row.x + row.length && rgb_at(end) == color) ++end;
+                    Match clear{begin, row.y, end - begin, kUiMessageRule, {},
+                        row.source.substr(begin - row.x, end - begin)};
+                    clear.layout_foreground_rgb = color;
+                    clear.graphical_clear_x = begin;
+                    clear.graphical_clear_y = row.y;
+                    clear.graphical_clear_width = end - begin;
+                    clear.graphical_clear_height = 1;
+                    result.push_back(std::move(clear));
+                    begin = end;
+                }
+            }
+        }
+        result.insert(result.end(), std::make_move_iterator(fitted.begin()),
+            std::make_move_iterator(fitted.end()));
+        for (size_t at = first_match; at < result.size(); ++at)
+            result[at].translation_result = metadata;
+        if (centered_left >= 0)
+            for (size_t at = first_match; at < result.size(); ++at)
+                result[at].layout_left = false;
+        return true;
     }
     if (!rows.empty()) rows.front().native_help_review_source = std::move(source);
     for (Match &row : rows) {

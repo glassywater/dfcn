@@ -623,7 +623,13 @@
                 // The shared fitter commits suppression only after every
                 // translated glyph fits. Unused native rows remain owned,
                 // without leaving English tails or deleting unknown prose.
-                append_setup_paragraph(std::move(best_rows), rule.target, best_right, best_right, colors);
+                if (is_visitor_overview_paragraph(rule.source)) {
+                    const int left = best_rows.front().x;
+                    append_message(std::move(best_rows), best_right, rule.target,
+                        colors, std::nullopt, rule.source, left);
+                } else {
+                    append_setup_paragraph(std::move(best_rows), rule.target, best_right, best_right, colors);
+                }
             }
         }
     }

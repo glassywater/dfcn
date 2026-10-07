@@ -100,6 +100,9 @@ void Overlay::append_character_overview_identities(
     for (const auto &card : cards) {
         for (const auto &row : card.rows) {
             if (recovered_rows.contains(row.y)) continue;
+            // A complete visitor paragraph was resolved before summary
+            // identities. Activity fallback must not redraw its English rows.
+            if (native_paragraph_owns_card_row(matches, row)) continue;
             if (row.y < 0 || static_cast<size_t>(row.y) >= screen_rows.size()) continue;
             std::string &screen = screen_rows[static_cast<size_t>(row.y)];
             const int end = row.x + static_cast<int>(row.source.size());
@@ -166,6 +169,7 @@ void Overlay::append_character_overview_identities(
         if (left_card.rows.size() != 1) continue;
         const auto &row = left_card.rows.front();
         if (recovered_rows.contains(row.y)) continue;
+        if (native_paragraph_owns_card_row(matches, row)) continue;
         const int divider = left_card.interior.x + left_card.interior.w;
         if (row.source.empty() || row.foregrounds.empty() ||
             row.x + static_cast<int>(row.source.size()) > divider)
@@ -175,6 +179,11 @@ void Overlay::append_character_overview_identities(
                 return card.interior.x == divider + 1 && card.interior.y == row.y &&
                     card.interior.h == 1;
             });
+        if (right_card != cards.end() &&
+            std::any_of(right_card->rows.begin(), right_card->rows.end(),
+                [&](const NativeTextCardRow &right_row) {
+                    return native_paragraph_owns_card_row(matches, right_row);
+                })) continue;
         const bool intact_divider = classic
             ? native_ui_skin_at(*gps_, divider, row.y, vertical, true)
             : native_ui_texture_at(*gps_, divider, row.y, vertical);

@@ -40,6 +40,16 @@ if (!cards.empty()) {
         const int y = card.interior.y;
         if (!visited.insert(y).second || y < 0 || y >= gps_->dimy || divider < 0)
             continue;
+        // Recovery rebuilds both columns and replaces their existing spans.
+        // A paragraph owns its wraps before this row reader; retain that
+        // owner instead of reconstructing its source as activity fallback.
+        if (std::any_of(cards.begin(), cards.end(), [&](const NativeTextCard &physical) {
+                return physical.interior.y == y &&
+                    std::any_of(physical.rows.begin(), physical.rows.end(),
+                        [&](const NativeTextCardRow &row) {
+                            return native_paragraph_owns_card_row(matches, row);
+                        });
+            })) continue;
         struct DrawPart {
             const NativeDrawnTextRow *draw;
             int column, end, color = -1;
