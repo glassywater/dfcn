@@ -172,6 +172,17 @@ DFHack GUI Overlay control: Warm dig:|Off|I|1|-1|1	高温处挖掘：|关闭	l
 DFHack GUI Overlay control: Autoretrain livestock:|On|I|1|-1|1	自动重新驯养牲畜：|开启	l
 # Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/logistics.lua:298-306 [logistics.autoretrain]
 DFHack GUI Overlay control: Autoretrain livestock:|Off|I|1|-1|1	自动重新驯养牲畜：|关闭	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/orders.lua:90-132 [orders.importexport HotkeyLabel captions]
+# Keep the dynamic key display; clear here removes work orders, not a color name.
+DFHack GUI Overlay control: import||I|0|-1|1	导入|	l
+DFHack GUI Overlay control: export||I|0|-1|1	导出|	l
+DFHack GUI Overlay control: recheck conditions||I|0|-1|1	复查条件|	l
+DFHack GUI Overlay control: sort||I|0|-1|1	排序|	l
+DFHack GUI Overlay control: clear||I|0|-1|1	清空|	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/orders.lua:843-859 [orders.search; enabled and disabled HotkeyLabel captions]
+# Captionless fields use the trailing blank space before the next key or frame.
+DFHack GUI Overlay control: |prev|I|0|-1|1	|上一个	l
+DFHack GUI Overlay control: |next|I|0|-1|1	|下一个	l
 # Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/orders.lua:335-352 [orders.skillrestrictions]
 # Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
 DFHack GUI Overlay control: Min skill:|Dabbling|B|4|-1|1	最低技能：|略懂	l
