@@ -15468,6 +15468,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "fortress_build_placement.inc"
 #include "text_paragraphs.inc"
 #include "dfhack_help_translation.inc"
+#include "dfhack_trade_hint.inc"
 #include "dfhack_stonesense_announcements.inc"
 #include "native_text_rows.inc"
 #include "fortress_justice.inc"
@@ -15811,15 +15812,15 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 const auto page = native_announcement_foreground_page(*gps_, *frames);
                 NativeTooltipPageScope document(gps_, page, nullptr, false);
                 NativeUiReadScope composed(gps_, nullptr);
-                // A Stocks shortcut card has four independent action fields.
-                // Translating the complete inventory merely to discard all
-                // of its foreground matches repeats the background traversal.
+                // Stocks and trade shortcut cards have independent fields.
+                // Translating their complete item lists merely to discard
+                // foreground matches repeats the background traversal.
                 // Keep every occluder and the restored page; only replace that
                 // redundant foreground traversal when all frames are proved
                 // hint cards or excluded logo artwork.
                 if (!page && !widget && !g_native_toolbar_tooltip &&
                         std::any_of(frames->begin(), frames->end(), [](const SDL_Rect &frame) {
-                            return frame.w == 27 && frame.h == 7;
+                            return frame.w == 27 && (frame.h == 7 || frame.h == 13);
                         })) {
                     std::vector<std::string> hint_rows(static_cast<size_t>(gps_->dimy),
                         std::string(static_cast<size_t>(gps_->dimx), ' '));
@@ -15831,6 +15832,8 @@ std::vector<Match> Overlay::find_matches(int only_y,
                         }
                     const auto hints = native_dfhack_stocks_hint_geometry(
                         gps_->dimx, gps_->dimy, [&](int y) { return hint_rows[static_cast<size_t>(y)]; });
+                    const auto trade_hints = native_dfhack_trade_hint_geometry(
+                        gps_->dimx, gps_->dimy, [&](int y) { return hint_rows[static_cast<size_t>(y)]; });
                     const auto logos = native_capture_mask_regions(gps_);
                     const auto same_frame = [](const SDL_Rect &a, const SDL_Rect &b) {
                         return a.x == b.x && a.y == b.y && a.w == b.w && a.h == b.h;
@@ -15838,6 +15841,9 @@ std::vector<Match> Overlay::find_matches(int only_y,
                     hint_foreground = std::all_of(frames->begin(), frames->end(),
                         [&](const SDL_Rect &frame) {
                             return std::any_of(hints.begin(), hints.end(), [&](const auto &hint) {
+                                return same_frame(frame, hint.frame) &&
+                                    native_dfhack_background_matches(*gps_, hint.frame);
+                            }) || std::any_of(trade_hints.begin(), trade_hints.end(), [&](const auto &hint) {
                                 return same_frame(frame, hint.frame) &&
                                     native_dfhack_background_matches(*gps_, hint.frame);
                             }) || std::any_of(logos.begin(), logos.end(), [&](const SDL_Rect &logo) {
@@ -15851,6 +15857,11 @@ std::vector<Match> Overlay::find_matches(int only_y,
                         // The ordinary matcher reserves the card before
                         // discovering other tooltip sources on the page.
                         for (const auto &hint : hints)
+                            for (const SDL_Rect &owned : {hint.body, hint.brand})
+                                for (int y = owned.y; y < owned.y + owned.h; ++y)
+                                    std::fill_n(hint_rows[static_cast<size_t>(y)].begin() + owned.x,
+                                        owned.w, ' ');
+                        for (const auto &hint : trade_hints)
                             for (const SDL_Rect &owned : {hint.body, hint.brand})
                                 for (int y = owned.y; y < owned.y + owned.h; ++y)
                                     std::fill_n(hint_rows[static_cast<size_t>(y)].begin() + owned.x,
@@ -15874,6 +15885,18 @@ std::vector<Match> Overlay::find_matches(int only_y,
                                     "DFHack stocks hint: " + action.source);
                                 if (!target) continue;
                                 actions.push_back(native_dfhack_stocks_hint_match(hint, action, *target));
+                            }
+                        }
+                        for (const auto &hint : trade_hints) {
+                            if (std::none_of(frames->begin(), frames->end(), [&](const SDL_Rect &frame) {
+                                    return same_frame(frame, hint.frame);
+                                })) continue;
+                            for (auto &match : native_dfhack_trade_hint_matches(hint, only_y)) {
+                                bool visible = true;
+                                for (size_t at = 0; at < match.source.size() && visible; ++at)
+                                    visible = visible_char_at(match.x + static_cast<int>(at), match.y) ==
+                                        static_cast<unsigned char>(match.source[at]);
+                                if (visible) actions.push_back(std::move(match));
                             }
                         }
                         return actions;
@@ -15945,7 +15968,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
                         if (const auto *cell = cell_at(match.x, match.y, &top))
                             match.layout_foreground_rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
                     }
-                    // Stocks hints replace only their own foreign cells.
+                    // Shortcut hints replace only their own foreign cells.
                     // Unrelated native rows keep the ordinary copy-hook
                     // suppression path instead of acquiring a full-screen
                     // recovery clear merely because a hint/logo is present.
@@ -15956,7 +15979,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
                     const bool restore_source = !hint_foreground || std::any_of(frames->begin(), frames->end(),
                         [&](const SDL_Rect &frame) { return SDL_HasIntersection(&source_span, &frame); });
                     // Other help pages still need late-source recovery. A
-                    // partially covered Stocks field retains that fallback;
+                    // partially covered item field retains that fallback;
                     // common help clipping protects the foreground pixels.
                     if (match.length > 0 && !match.native_help_source_only &&
                         match.graphical_clear_width <= 0 && restore_source) {

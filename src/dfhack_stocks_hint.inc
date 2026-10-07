@@ -1,5 +1,5 @@
-// DFHack plugins/stocks.lua owns a 27x7 frame with a 25x5 body. Its
-// independently colored key/action fields are not item nouns or names.
+// DFHack's Stocks and trade cards own fixed shortcut-field grammars. Their
+// independently colored keys/actions are not item nouns or names.
 // Identify the complete card before any generic translation, including raw
 // layer suppression. Custom frame artwork need not expose border characters.
 std::vector<SDL_Rect> dfhack_stocks_hint_regions;
@@ -29,6 +29,16 @@ std::vector<Match> dfhack_stocks_hint_matches;
             const auto target = exact_literal_translation("DFHack stocks hint: " + action.source);
             if (!target) continue;
             dfhack_stocks_hint_matches.push_back(native_dfhack_stocks_hint_match(hint, action, *target));
+        }
+    }
+    for (const auto &hint : native_dfhack_trade_hint_geometry(
+            gps_->dimx, gps_->dimy, context_row)) {
+        dfhack_stocks_hint_regions.push_back(hint.body);
+        dfhack_stocks_hint_regions.push_back(hint.brand);
+        for (auto &match : native_dfhack_trade_hint_matches(hint, only_y)) {
+            const auto &source_row = screen_rows[static_cast<size_t>(match.y)];
+            if (source_row.compare(match.x, match.source.size(), match.source) == 0)
+                dfhack_stocks_hint_matches.push_back(std::move(match));
         }
     }
     for (const SDL_Rect &owned : dfhack_stocks_hint_regions)

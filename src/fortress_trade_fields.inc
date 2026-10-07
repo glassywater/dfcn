@@ -75,13 +75,18 @@ void Overlay::append_fortress_trade_fields(std::vector<std::string> &rows,
         if (draw.x != x || draw.y != y || end <= x ||
                 draw.source.size() < static_cast<size_t>(end - x) ||
                 draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
-                draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen) ||
                 context[y].compare(x, end - x, draw.source, 0, end - x) != 0)
             return false;
-        for (int at = x; at < end; ++at)
-            if (native_ui_top_layer_at(*gps_,
-                    static_cast<size_t>(at) * gps_->dimy + y) != draw.top_layer)
+        // A DFHack card restores the trade page into a copied read view.
+        // Its cells retain the original native draw identities; the copied
+        // grid address cannot establish or reject an item's typed source.
+        for (int at = x; at < end; ++at) {
+            const size_t tile = static_cast<size_t>(at) * gps_->dimy + y;
+            const auto origin = native_text_grid_origin(*gps_, tile,
+                native_ui_top_layer_at(*gps_, tile));
+            if (origin.grid != draw.draw_grid || origin.top_layer != draw.top_layer)
                 return false;
+        }
         return true;
     };
     const auto drawn_label = [&](int x, int y, std::string_view label) {
