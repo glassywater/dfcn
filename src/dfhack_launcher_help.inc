@@ -13,6 +13,13 @@ std::vector<SDL_Rect> dfhack_launcher_frames;
 std::vector<SDL_Rect> dfhack_launcher_regions;
 std::vector<Match> dfhack_launcher_matches;
 {
+    // The minimal launcher owns executable input and history search just as
+    // the framed launcher does. Reserve its painted fields before generic
+    // words or captured paragraphs can consume command text.
+    for (const auto &bar : native_dfhack_minimal_launcher_geometry(dfhack_context_rows)) {
+        dfhack_launcher_regions.push_back(bar);
+        std::fill_n(screen_rows[bar.y].begin() + bar.x, bar.w, ' ');
+    }
     constexpr std::string_view title = "DFHack Launcher";
     for (const auto &frame : native_dfhack_launcher_geometry(dfhack_context_rows)) {
         const int left = frame.x, right = frame.x + frame.w - 1;

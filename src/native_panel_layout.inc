@@ -2218,6 +2218,8 @@ static std::vector<SDL_Rect> native_dfhack_text_overlay_frames(const graphicst &
             if (screen && screen[at * 8]) rows[y][x] = static_cast<char>(screen[at * 8]);
         }
     retain_native_dfhack_border_chars(gps, rows);
+    const auto launcher_bar = native_dfhack_minimal_launcher_geometry(rows);
+    frames.insert(frames.end(), launcher_bar.begin(), launcher_bar.end());
     for (const auto &card : native_dfhack_hotkeys_geometry(rows)) {
         frames.push_back(card.list);
         if (card.help) frames.push_back(*card.help);

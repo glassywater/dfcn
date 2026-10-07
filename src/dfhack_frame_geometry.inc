@@ -265,6 +265,33 @@ static std::vector<NativeDfhackWindowGeometry> native_dfhack_window_geometry(
     return windows;
 }
 
+// gui/launcher's minimal mode has no window skin. Its prefix clears the
+// complete first row, ending at the ten-cell Alt+m control; anchored native
+// artwork can leave part of the screen to its right. The second row is only
+// painted while the history search field is visible, not for the two-row
+// container itself. Background recovery still requires pre-write captures.
+static std::vector<SDL_Rect> native_dfhack_minimal_launcher_geometry(
+        const std::vector<std::string> &rows) {
+    std::vector<SDL_Rect> frames;
+    if (rows.size() < 2 || rows.size() > 1000 || rows.front().size() > 1000)
+        return frames;
+    const auto &row = rows.front();
+    constexpr std::string_view prefix = "[DFHack]# ";
+    constexpr std::string_view toggle = "Alt+m: \x1f\x1e";
+    if (!row.starts_with(prefix) || std::any_of(rows.begin(), rows.end(),
+            [&](const auto &other) { return other.size() != row.size(); })) return frames;
+    const size_t control = row.rfind(toggle);
+    if (control == std::string::npos || control <= prefix.size() ||
+            control + 10 > row.size() || row[control - 1] != ' ' ||
+            row[control + 9] != ' ') return frames;
+    const int width = static_cast<int>(control) + 10;
+    frames.push_back({0, 0, width, 1});
+    constexpr std::string_view search = "Alt+s: history search: ";
+    if (width - 11 >= static_cast<int>(search.size()) && rows[1].starts_with(search))
+        frames.push_back({0, 1, width - 11, 1});
+    return frames;
+}
+
 // The executable launcher and its document share one proven native frame.
 static std::vector<SDL_Rect> native_dfhack_launcher_geometry(
         const std::vector<std::string> &rows) {
