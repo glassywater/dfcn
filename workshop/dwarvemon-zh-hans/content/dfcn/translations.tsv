@@ -29,7 +29,6 @@ Eggs	蛋	wi
 Dwarvemon {d}.{d}	矮人宝可梦 {d}.{d}	wt
 Dwarvemon Entity All {d}.{d}	矮人宝可梦：全种类文明 {d}.{d}	wt
 eyes	眼	wi
-Dwarvemon Entity All	矮人宝可梦：全种类文明	l
 Iron	防御增强剂	wl
 Silver	银色	wi
 Zinc	特防增强剂	wl
@@ -1020,9 +1019,6 @@ Dusknoir	黑夜魔灵	wi
 Duskull	夜巡灵	wi
 Dust	粉尘	wi
 Dustox	毒粉蛾	wi
-Dwarvemon	矮人宝可梦	l
-Dwarvemon 2.22	矮人宝可梦 2.22	l
-Dwarvemon Entity All 2.22	矮人宝可梦：全种类文明 2.22	l
 Dwebble	石居蟹	wi
 Dynamax	极巨化	wi
 Dynamax Candies	极巨糖果	wi
@@ -2614,10 +2610,6 @@ Mochi	粘糕	wi
 Mochi that raises an attribute by 100	使一项属性提高１００的粘糕。	wi
 Mod description: Adds Pokemon related content.	添加宝可梦相关内容。	lP
 Mod description: ENABLE ONE! Entities in Dwarvemon use all Pokemon available.	两种文明扩展只能启用一个！矮人宝可梦中的各文明可使用全部宝可梦。	lP
-Mod name: Dwarvemon	矮人宝可梦	l
-Mod name: Dwarvemon 2.22	矮人宝可梦 2.22	l
-Mod name: Dwarvemon Entity All	矮人宝可梦：全种类文明	l
-Mod name: Dwarvemon Entity All 2.22	矮人宝可梦：全种类文明 2.22	l
 Modern Pattern Vivillon	彩粉蝶（摩登花纹）	wi
 Modest Mint	内敛薄荷	wl
 Modest Mints	内敛薄荷	wi

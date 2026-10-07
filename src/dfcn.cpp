@@ -16113,7 +16113,8 @@ std::vector<Match> Overlay::find_matches(int only_y,
     if (mod_list) {
         // Reserve the complete native name/version columns before words,
         // numeric templates or captured captions can consume its fragments.
-        // No name Match is emitted: the original font and alignment survive.
+        // The mod owner emits only authored Unicode name fields;
+        // other names retain their original font and alignment.
         for (const SDL_Rect &column : mod_list->name_columns)
             for (int y = column.y; y < column.y + column.h; ++y)
                 std::fill(screen_rows[y].begin() + column.x,

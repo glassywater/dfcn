@@ -159,9 +159,10 @@ static std::optional<NativeModListLayout> native_mod_list_layout(
     return std::nullopt;
 }
 
-// The hover record owns its entire column. Package names and third-party
-// descriptions use complete, explicitly authored catalog entries; unknown
-// packages retain their original glyphs, wrapping and spacing.
+// The hover record owns its entire column. Package names always retain their
+// authored text, with Unicode drawing for Chinese names. Descriptions use
+// complete catalog entries or authored Chinese; other unknown descriptions
+// retain their original glyphs, wrapping and spacing.
 void Overlay::append_mod_list_details(const NativeModListLayout &layout,
         std::vector<std::string> &rows, std::vector<Match> &matches) const {
     const int left = layout.details_left, right = layout.details_right;
@@ -177,8 +178,8 @@ void Overlay::append_mod_list_details(const NativeModListLayout &layout,
     const int origin_x = (gps_->screen_pixel_x - gps_->dimx * tile_w) / 2;
     const int origin_y = (gps_->screen_pixel_y - gps_->dimy * tile_h) / 2;
     // The caller reserves name columns before generic readers run. Read the
-    // current native cells so a complete catalog entry can still own its
-    // name/version field without allowing partial word replacements.
+    // current native cells so authored Chinese can still own its complete
+    // name/version field without allowing any dictionary replacements.
     const auto append_name = [&](int first, int last, int y) {
         if (first < 0 || last > gps_->dimx || first >= last ||
                 y < 0 || y >= gps_->dimy) return;
@@ -190,12 +191,12 @@ void Overlay::append_mod_list_details(const NativeModListLayout &layout,
             native.push_back(cell && cell[0] ? static_cast<char>(cell[0]) : ' ');
         }
         for (const auto &field : split_text_fields(native)) {
-            auto target = exact_literal_translation(
-                "Mod name: " + field.text);
-            if (!target) target = exact_literal_translation(field.text);
-            if (!target) continue;
+            if (!contains_cjk_utf8(field.text)) continue;
+            std::vector<uint32_t> codepoints;
+            const std::string target = decode_utf8(field.text, codepoints)
+                ? field.text : native_text_to_utf8(field.text);
             Match name{first + field.start, y, field.end - field.start,
-                kUiMessageRule, *target, field.text};
+                kUiMessageRule, target, field.text};
             name.layout_x = name.x;
             name.layout_length = last - name.x;
             name.layout_clip_right = last;
@@ -266,6 +267,15 @@ void Overlay::append_mod_list_details(const NativeModListLayout &layout,
             (details.header->vanilla ? "Vanilla mod description: " : "Mod description: ") +
             details.header->description);
         if (!target) target = exact_literal_translation(details.header->description);
+        if (!target && contains_cjk_utf8(details.header->description)) {
+            // Native wrapping counts bytes and can split a UTF-8 character
+            // between rows. Reflow the complete authored source, retaining
+            // every native byte row below only for ownership/suppression.
+            std::vector<uint32_t> codepoints;
+            target = decode_utf8(details.header->description, codepoints)
+                ? details.header->description
+                : native_text_to_utf8(details.header->description);
+        }
         std::vector<Match> description;
         bool same = target.has_value();
         for (size_t line = 0; same && line < details.description_rows.size(); ++line) {
@@ -293,7 +303,7 @@ void Overlay::append_mod_list_details(const NativeModListLayout &layout,
                 row.layout_native_clip = SDL_Rect{origin_x + left * tile_w,
                     origin_y + description_y * tile_h, (right - left) * tile_w,
                     (bottom - description_y) * tile_h};
-            // One measured Chinese paragraph replaces all English rows,
+            // One measured Chinese paragraph replaces all native byte rows,
             // including source-only tails when the translation is shorter.
             append_bounded_paragraph(std::move(description), *target, rows,
                 matches, -1, right, right, {}, false, left);
