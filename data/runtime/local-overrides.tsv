@@ -2622,6 +2622,11 @@ Hundreds	数以百计	wi
 dozens	数十	wi
 Few	很少	wi
 Embark	启程	w
+# Embark preparation failures keep the complete warning together; item and
+# creature fields use the existing shared vocabulary and retain their counts.
+Embark preparations were not completed.	启程准备尚未完成。	wl
+No {s} available	没有可用的{s}	wtl
+Cannot afford {s} ({d})	买不起{s}（{d}）	wtl
 Show elevation	显示高度层
 Show cliffs/grade	显示峭壁/坡度
 {d} x {d}	{d} × {d}	wt

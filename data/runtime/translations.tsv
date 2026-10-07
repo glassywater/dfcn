@@ -142886,3 +142886,8 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
+
+# Embark preparation failure messages.
+Embark preparations were not completed.	启程准备尚未完成。	wl
+No {s} available	没有可用的{s}	wtl
+Cannot afford {s} ({d})	买不起{s}（{d}）	wtl
