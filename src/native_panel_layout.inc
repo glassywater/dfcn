@@ -1308,9 +1308,10 @@ static std::optional<SDL_Rect> native_nineslice_button_text_rect(
     // Category icons retain their anchored metadata when classic mode paints
     // the CP437 frame over them. Only that typed caller permits the artwork;
     // the current glyphs, palette and complete frame still have to match.
-    const auto has_skin = [&](int x, int row, int32_t part, bool caption = false) {
+    const auto has_skin = [&](int x, int row, int32_t part, bool caption = false,
+            bool utf8_caption = false) {
         return native_ui_skin_at(gps, x, row, part, classic, caption,
-            native_draw, picture_artwork);
+            native_draw, picture_artwork, utf8_caption);
     };
     for (int caption_row = 0; caption_row < 3; ++caption_row) {
         const int top = y - caption_row;
@@ -1329,6 +1330,30 @@ static std::optional<SDL_Rect> native_nineslice_button_text_rect(
         while (right < gps.dimx && has_skin(right, top, skin[1])) ++right;
         if (left > first || (left == first && !left_caption) ||
             right < last || right >= gps.dimx) continue;
+        // Authored captions keep UTF-8 bytes in the classic character grid.
+        // Read them inside the proven upper-edge span so continuation bytes
+        // in CP437's border range cannot reject the whole save/name card.
+        // Use has_skin's same layer; corners, sides and palette stay strict.
+        const int caption_left = left_caption ? left : left + 1;
+        const auto caption_text = [&](int row) {
+            std::string text;
+            if (!classic) return text;
+            text.assign(right - caption_left, ' ');
+            for (int x = caption_left; x < right; ++x) {
+                const size_t at = static_cast<size_t>(x) * gps.dimy + row;
+                const bool top_layer = !native_draw && native_ui_top_layer_at(gps, at);
+                const auto *screen = top_layer ? gps.screen_top : gps.screen;
+                if (screen) text[x - caption_left] = screen[at * 8];
+            }
+            return text;
+        };
+        const std::string middle_text = caption_text(top + 1);
+        const std::string bottom_text = bottom_caption ? caption_text(top + 2) : "";
+        const auto utf8_caption_at = [&](int x, int row) {
+            return classic && (row == 1 || (row == 2 && bottom_caption)) &&
+                !is_cp437_box_separator(row == 1 ? middle_text : bottom_text,
+                    static_cast<size_t>(x - caption_left));
+        };
         bool complete = true;
         for (int row = 0; row < 3 && complete; ++row) {
             // Two-line civilization records start both caption rows on the
@@ -1337,7 +1362,7 @@ static std::optional<SDL_Rect> native_nineslice_button_text_rect(
             const bool covered_left = left_caption && classic &&
                 (row == 1 || (row == 2 && bottom_caption)) &&
                 caption_row == 1 && left == first &&
-                has_skin(left, top + row, skin[4], true);
+                has_skin(left, top + row, skin[4], true, utf8_caption_at(left, row));
             if ((!has_skin(left, top + row, skin[row * 3]) &&
                  !covered_left) ||
                 !has_skin(right, top + row, skin[row * 3 + 2])) {
@@ -1346,14 +1371,15 @@ static std::optional<SDL_Rect> native_nineslice_button_text_rect(
             }
             for (int x = left + 1; x < right; ++x) {
                 if (!has_skin(x, top + row, skin[row * 3 + 1],
-                        row == 1)) {
+                        row == 1, utf8_caption_at(x, row))) {
                     // The native two-line save card draws full-font text on
                     // its lower edge in classic mode (53.16: 0x15b9b21,
                     // 0x15ba12c). Only typed callers may accept those lost
                     // edge cells. Corners, sides and the entire upper edge
                     // still prove this exact skin; a foreign frame does not.
                     if (bottom_caption && row == 2 &&
-                        has_skin(x, top + row, skin[4], true)) continue;
+                        has_skin(x, top + row, skin[4], true,
+                            utf8_caption_at(x, row))) continue;
                     complete = false;
                     break;
                 }
