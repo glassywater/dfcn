@@ -42,15 +42,6 @@ std::optional<std::string> Overlay::translate_creature_descriptor(
         normalized += word;
     }
     if (normalized.empty()) return std::nullopt;
-    // A caste is a noun phrase, never the rest of a biographical paragraph.
-    // In particular `{n} the {s}` must not swallow `... was a roc. He was
-    // ... mists` and treat the capitalized prose as a generated owner name.
-    if (!std::all_of(normalized.begin(), normalized.end(), [](unsigned char ch) {
-            return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') ||
-                (ch >= '0' && ch <= '9') || is_cp437_latin_letter_byte(ch) ||
-                ch == ' ' || ch == '-' || ch == '\'';
-        })) return std::nullopt;
-
     auto complete = [](const std::optional<std::string> &value) {
         return value && !value->empty() &&
             !std::any_of(value->begin(), value->end(), [](unsigned char ch) {
@@ -143,6 +134,17 @@ std::optional<std::string> Overlay::translate_creature_descriptor(
         const auto base = translate_creature_descriptor(remaining, true);
         return base ? std::optional<std::string>(status_target + *base) : std::nullopt;
     }
+
+    // Installed RAW names may contain punctuation (e.g. Mr. Rime). Their
+    // complete identity, including the training/status wrappers above, is
+    // licensed by the scoped species table. Keep punctuation out of the
+    // generated grammar so `{n} the {s}` cannot swallow biographical prose
+    // such as `... was a roc. He was ... mists` as an owner name.
+    if (!std::all_of(normalized.begin(), normalized.end(), [](unsigned char ch) {
+            return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') ||
+                (ch >= '0' && ch <= '9') || is_cp437_latin_letter_byte(ch) ||
+                ch == ' ' || ch == '-' || ch == '\'';
+        })) return species(normalized);
 
     // Owners come from native first names, native/translated compounds, or
     // explicit "The ..." epithets. They are not arbitrary capitalized prose.
