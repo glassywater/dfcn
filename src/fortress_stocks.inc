@@ -212,11 +212,15 @@ void Overlay::layout_fortress_stocks(SDL_Renderer *renderer) {
             // meaning. ITEM_ARMOR includes tunics/dresses as well as armor;
             // concrete items, armor stands and workshop menus keep their
             // own translations. Resolve table-owned senses before measuring
-            // the label, without putting them in the global item cache.
+            // the label, then reuse complete category literals so an earlier
+            // name fallback cannot leave Corpses transliterated. Keep these
+            // field meanings out of the global item cache.
             if (row->label.size() == 1) {
                 Match &label = *row->label.front();
-                if (auto target = exact_literal_translation(
-                        "Stocks category: " + lower(trim(label.source)))) {
+                auto target = exact_literal_translation(
+                    "Stocks category: " + lower(trim(row->source)));
+                if (!target) target = exact_literal_translation(row->source);
+                if (target) {
                     label.target = std::move(*target);
                     label.layout_glyph_foreground_rgb.clear();
                 }

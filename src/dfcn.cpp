@@ -10658,6 +10658,11 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     }
 
     if (screen_text.find(' ') == std::string::npos) {
+        // A complete UI caption such as Corpses keeps its dictionary sense.
+        // Title case alone does not make it a native name; typed name fields
+        // still use their own vocabulary and phonetic fallback below.
+        if (context == ProceduralFragmentContext::general_text && !name_only)
+            if (auto literal = exact_literal_translation(screen_text)) return literal;
         const std::string folded = lower(screen_text);
         if (auto found = procedural_terms_.find(folded); found != procedural_terms_.end()) {
             return complete_generated_name(found->second);
