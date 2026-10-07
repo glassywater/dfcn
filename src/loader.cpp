@@ -44,6 +44,7 @@ struct CoreImage {
 // resident until its callbacks can be safely detached.
 CoreImage *core = nullptr;
 bool initialized = false;
+bool f5_consumed = false;
 bool f10_consumed = false;
 dfcn::dfhack::Toggle dfhack_toggle;
 std::uint64_t generation = 0;
@@ -92,7 +93,7 @@ static bool stop_core() {
 static bool load_core(bool enable) {
     // Validate the new library and transfer only data before dismantling the
     // current hooks. Neither a partial build nor an ABI mismatch disables
-    // the resident keyboard handler; the next Shift+F10 can always retry.
+    // the resident keyboard handler; the next Shift+F5 can always retry.
     auto prepared = dfcn::module::PreparedCore::prepare(
         dfcn::module::library_path(reinterpret_cast<void *>(&loader_anchor)), log);
     if (!prepared) return false;
@@ -124,7 +125,7 @@ static bool load_core(bool enable) {
     core = next.release();
     core->detached = false;
     if (!core->api->initialize()) {
-        log("ERROR", "New core initialization failed; Shift+F10 will retry the deployed library");
+        log("ERROR", "New core initialization failed; Shift+F5 will retry the deployed library");
         core->api->set_enabled(false);
         stop_core();
         return false;
@@ -162,13 +163,14 @@ DFCN_EXPORT void dfhooks_init() {
         dfhack_toggle.initialize(log);
         load_core(false);
     } catch (...) {
-        log("ERROR", "Core load failed; Shift+F10 remains available to retry");
+        log("ERROR", "Core load failed; Shift+F5 remains available to retry");
     }
 }
 
 DFCN_EXPORT void dfhooks_shutdown() {
     if (!initialized) return;
     initialized = false;
+    f5_consumed = false;
     f10_consumed = false;
     try {
         dfhack_toggle.shutdown();
@@ -191,32 +193,47 @@ DFCN_EXPORT bool dfhooks_sdl_event(void *raw_event) {
     if (!initialized || !raw_event) return false;
     if (dfhack_toggle.event(raw_event)) return true;
     const auto &event = *static_cast<const SDL_Event *>(raw_event);
-    if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_FOCUS_LOST)
+    if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_FOCUS_LOST) {
+        f5_consumed = false;
         f10_consumed = false;
+    }
+    if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_F5 && f5_consumed) {
+        f5_consumed = false;
+        return true;
+    }
     if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_F10 && f10_consumed) {
         f10_consumed = false;
         return true;
     }
-    if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_F10) {
-        if (f10_consumed) return true;
+    if (event.type == SDL_KEYDOWN &&
+        (event.key.keysym.sym == SDLK_F5 || event.key.keysym.sym == SDLK_F10)) {
+        const bool reload_core = event.key.keysym.sym == SDLK_F5;
+        bool &consumed = reload_core ? f5_consumed : f10_consumed;
+        if (consumed) return true;
         const auto mods = static_cast<SDL_Keymod>(event.key.keysym.mod);
-        if ((mods & KMOD_SHIFT) && !(mods & (KMOD_ALT | KMOD_GUI))) {
-            f10_consumed = true;
+        if ((mods & KMOD_SHIFT) && !(mods & (KMOD_ALT | KMOD_GUI)) &&
+            (!reload_core || !(mods & KMOD_CTRL))) {
+            consumed = true;
             if (!event.key.repeat) {
                 try {
                     if (mods & KMOD_CTRL) {
                         if (core && core->ready) core->api->reload_dictionary();
                     } else if (core && core->ready && core->api->enabled()) {
                         core->api->set_enabled(false);
-                    } else {
+                    } else if (reload_core) {
                         // enablerst::eventLoop_SDL pauses the simulation BEFORE
                         // hooks_sdl_event and is itself the SDL render thread.
                         // No core render/capture callback is on either stack.
                         // Never unload from sdl_loop (simulation resumed).
                         load_core(true);
+                    } else if (core && core->ready) {
+                        // Shift+F10 only resumes the current core and its data.
+                        core->api->set_enabled(true);
+                    } else {
+                        log("ERROR", "Cannot enable translation without a ready core; Shift+F5 reloads the deployed library");
                     }
                 } catch (...) {
-                    log("ERROR", "Hotkey operation failed; retry Shift+F10 after updating the core");
+                    log("ERROR", "Hotkey operation failed; Shift+F5 can retry loading the deployed core");
                 }
             }
             return true;

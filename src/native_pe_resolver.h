@@ -512,7 +512,7 @@ inline void write_bindings(std::ostream &output, const State &state) {
     }
 }
 
-// Windows unloads the core on Shift+F10 reactivation. Keep only a sealed byte
+// Windows unloads the core on Shift+F5 reactivation. Keep only a sealed byte
 // snapshot in an OS mapping, never a core-owned object, pointer or callback.
 // One successfully published handle deliberately lives until process exit;
 // every subsequent core closes its own temporary handle and mapped views.

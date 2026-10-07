@@ -300,7 +300,6 @@ struct Config {
     static constexpr double default_font_scale = 1.1;
     static constexpr double font_scale_baseline = 0.92;
     bool enabled = true;
-    bool hot_reload = true;
     bool clear_background = true;
     bool log_matches = false;
     bool trace_render_timing = false;
@@ -3904,7 +3903,6 @@ private:
     }
     std::atomic<bool> reload_requested_{false};
     std::atomic<bool> dump_requested_{false};
-    fs::file_time_type config_mtime_{};
     fs::file_time_type mapping_mtime_{};
     extensions::Snapshot loaded_extensions_;
     static constexpr std::array<const char *, 8> dfhack_catalog_names_{
@@ -3913,7 +3911,6 @@ private:
         "dfhack-output-translations.tsv", "dfhack-output-stonesense.tsv",
         "dfhack-overlay-plugin-controls.tsv", "dfhack-overlay-script-controls.tsv"};
     std::array<fs::file_time_type, dfhack_catalog_names_.size()> dfhack_help_mtimes_{};
-    std::chrono::steady_clock::time_point last_reload_check_{};
     std::chrono::steady_clock::time_point last_untranslated_collect_{};
     bool dumped_first_ = false;
     bool captured_first_ = false;
@@ -4654,7 +4651,7 @@ private:
     void load_untranslated_index();
     void destroy_textures();
     void reset_render_state();
-    void maybe_reload();
+    void apply_requested_reload();
     void prepare_frame();
     bool prepare_immediate_row(bool top_layer, int y);
     const std::vector<Match> &prepare_immediate_base_matches();
@@ -5361,7 +5358,6 @@ bool Overlay::load_config() {
             const std::string key = lower(trim(stripped.substr(0, eq)));
             const std::string value = trim(stripped.substr(eq + 1));
             if (key == "enabled") next.enabled = parse_bool(value, next.enabled);
-            else if (key == "hot_reload") next.hot_reload = parse_bool(value, next.hot_reload);
             else if (key == "clear_background") next.clear_background = parse_bool(value, next.clear_background);
             else if (key == "log_matches") next.log_matches = parse_bool(value, next.log_matches);
             else if (key == "trace_render_timing") next.trace_render_timing = parse_bool(value, next.trace_render_timing);
@@ -5439,8 +5435,6 @@ bool Overlay::load_config() {
         log_line("INFO", "Long-stall diagnostics enabled: input delivery, lock wait/hold, native wrap, render boundaries and draw readback");
     if (font_changed && ft_) load_font();
 
-    std::error_code ec;
-    config_mtime_ = fs::last_write_time(runtime::config_path(), ec);
     return true;
 }
 
@@ -6823,7 +6817,6 @@ bool Overlay::initialize() {
     load_procedural_terms();
     load_compositional_rules();
     load_font();
-    last_reload_check_ = std::chrono::steady_clock::now();
     log_line("INFO", "DFCN overlay initialized; graphicst ABI size=" +
                          std::to_string(sizeof(graphicst)));
     return true;
@@ -6991,8 +6984,8 @@ void Overlay::set_translation_enabled(bool enabled) {
         std::max<decltype(gps_->force_full_display_count)>(
             gps_->force_full_display_count, 2);
     log_line("INFO", config_.enabled
-        ? "Translation enabled by Shift+F10"
-        : "Translation disabled by Shift+F10; showing native interface");
+        ? "Translation enabled"
+        : "Translation disabled; showing native interface");
 }
 
 void Overlay::shutdown() {
@@ -7031,72 +7024,12 @@ void Overlay::shutdown() {
                          std::to_string(newly_collected_untranslated_) + " new untranslated fragments");
 }
 
-void Overlay::maybe_reload() {
-    bool reload = reload_requested_.exchange(false);
-    const auto now = std::chrono::steady_clock::now();
-    if (!reload && config_.hot_reload && now - last_reload_check_ >= std::chrono::seconds(1)) {
-        last_reload_check_ = now;
-        std::error_code ec1, ec2, ec3, ec4, ec5;
-        const auto cm = fs::last_write_time(runtime::config_path(), ec1);
-        const auto mm = fs::last_write_time(fs::u8path(config_.mapping_path), ec2);
-        const auto nm = fs::last_write_time(
-            fs::u8path(config_.mapping_path).parent_path() / "name-editor.tsv", ec3);
-        const auto im = fs::last_write_time(
-            fs::u8path(config_.mapping_path).parent_path() / "instrument-translations.tsv", ec4);
-        const auto am = fs::last_write_time(
-            fs::u8path(config_.mapping_path).parent_path() / "adventure-target-translations.tsv", ec5);
-        reload = (!ec5 && am != adventure_target_mtime_) ||
-            (!ec4 && im != instrument_translations_mtime_) ||
-            (!ec1 && cm != config_mtime_) || (!ec2 && mm != mapping_mtime_) ||
-            (!ec3 && nm != name_editor_mtime_);
-        if (RULESETS.resources_changed() ||
-                extensions::resources_changed(loaded_extensions_)) reload = true;
-        const auto catalog_directory = fs::u8path(config_.mapping_path).parent_path();
-        {
-            std::error_code site_error;
-            auto modified = fs::last_write_time(runtime::data_path() / "site-name-decisions.tsv", site_error);
-            if (site_error) {
-                site_error.clear();
-                modified = fs::last_write_time(fs::path("data/runtime/site-name-decisions.tsv"), site_error);
-            }
-            if (site_error) modified = {};
-            if (modified != site_name_decisions_mtime_) reload = true;
-        }
-        {
-            std::error_code site_error;
-            auto modified = fs::last_write_time(runtime::data_path() / "site-name-imagery.tsv", site_error);
-            if (site_error) {
-                site_error.clear();
-                modified = fs::last_write_time(fs::path("data/runtime/site-name-imagery.tsv"), site_error);
-            }
-            if (site_error) modified = {};
-            if (modified != site_name_imagery_mtime_) reload = true;
-        }
-        for (size_t index = 0; index < site_government_catalog_names_.size(); ++index) {
-            fs::path path = runtime::data_path() / site_government_catalog_names_[index];
-            std::error_code catalog_error;
-            auto modified = fs::last_write_time(path, catalog_error);
-            if (catalog_error) {
-                catalog_error.clear();
-                modified = fs::last_write_time(fs::path("data/runtime") /
-                    site_government_catalog_names_[index], catalog_error);
-            }
-            if (catalog_error) modified = {};
-            if (modified != site_government_catalog_mtimes_[index]) reload = true;
-        }
-        for (size_t index = 0; index < dfhack_catalog_names_.size(); ++index) {
-            std::error_code catalog_error;
-            auto modified = fs::last_write_time(catalog_directory / dfhack_catalog_names_[index], catalog_error);
-            if (catalog_error) modified = {};
-            if (modified != dfhack_help_mtimes_[index]) reload = true;
-        }
-    }
-    if (!reload) return;
+void Overlay::apply_requested_reload() {
+    if (!reload_requested_.exchange(false)) return;
     log_line("INFO", "Reloading configuration and translations");
-    const std::string previous_mapping = config_.mapping_path;
     load_config();
     load_untranslated_index();
-    if (previous_mapping != config_.mapping_path || config_.hot_reload || reload) load_rules();
+    load_rules();
     load_generated_instrument_names();
     load_procedural_terms();
     load_compositional_rules();
@@ -31885,7 +31818,7 @@ void Overlay::prepare_frame() {
     if (frame_prepared_) return;
     NativeCaptureMaskScope capture_mask(gps_);
     RenderTimingScope prepare_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Prepare);
-    maybe_reload();
+    apply_requested_reload();
     prepared_matches_.clear();
     suppress_base_.clear();
     suppress_top_.clear();
@@ -42021,7 +41954,7 @@ static std::thread::id g_native_hook_thread;
 // before the renderer-owned Overlay has loaded its rule trie. Loading the
 // complete Overlay here used to mutate global matching state and made the
 // result depend on initialization order. Keep a small, read-only exact-rule
-// index instead. Normal play still uses the hot-reloaded Overlay dictionary;
+// index instead. Normal play uses the explicitly loaded Overlay dictionary;
 // this fallback only supplies the same literal vocabulary to early callers.
 static std::string exact_literal_mapping_path() {
     std::string path = "dfcn/data/runtime/translations.tsv";
@@ -42054,25 +41987,10 @@ static const std::unordered_map<std::string, std::string> &
 early_exact_literal_translations() {
     TranslationStateScope translation_scope;
     static std::unordered_map<std::string, std::string> translations;
-    static extensions::Snapshot extension_snapshot;
-    static std::string mapping_path;
-    static fs::file_time_type mapping_modified{};
-    static uintmax_t mapping_size = 0;
     static bool initialized = false;
-    static std::chrono::steady_clock::time_point last_refresh{};
-    const auto now = std::chrono::steady_clock::now();
-    if (initialized && now - last_refresh < std::chrono::seconds(1)) return translations;
-    last_refresh = now;
+    if (initialized) return translations;
     const auto current_mapping = exact_literal_mapping_path();
-    std::error_code modified_error, size_error;
-    const auto modified = fs::last_write_time(fs::u8path(current_mapping), modified_error);
-    const auto size = fs::file_size(fs::u8path(current_mapping), size_error);
-    auto current_extensions = extensions::discover();
-    if (initialized && current_mapping == mapping_path &&
-            (modified_error ? fs::file_time_type{} : modified) == mapping_modified &&
-            (size_error ? 0 : size) == mapping_size &&
-            extensions::same_resources(extension_snapshot, current_extensions))
-        return translations;
+    const auto current_extensions = extensions::discover();
     std::unordered_map<std::string, std::string> loaded;
     const auto read = [&](const fs::path& path) {
         std::ifstream input(path, std::ios::binary);
@@ -42124,10 +42042,6 @@ early_exact_literal_translations() {
         if (!package->translations.empty()) read(package->translations);
     read(fs::u8path(current_mapping));
     translations.swap(loaded);
-    extension_snapshot = std::move(current_extensions);
-    mapping_path = current_mapping;
-    mapping_modified = modified_error ? fs::file_time_type{} : modified;
-    mapping_size = size_error ? 0 : size;
     initialized = true;
     return translations;
 }

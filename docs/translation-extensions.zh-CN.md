@@ -6,7 +6,7 @@
 
 [矮人宝可梦汉化数据](https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177)支持 Dwarvemon 2.22 与 Dwarvemon Entity All 2.22。宝可梦专用译文全部保存在独立包中，[DFCN 本体工坊项目](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)提供通用扩展自动加载能力。订阅数据包后自动识别，无需手工复制数据，也无需在创建世界时启用汉化数据包。
 
-[GitHub Release v53.16-20261008](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008)提供 Windows 核心运行包 `DFCN-Windows-x64-minimal.zip` 和独立数据包 `dfcn_dwarvemon_zh_hans.zip`。独立 ZIP 中整个 `dfcn_dwarvemon_zh_hans` 文件夹解压至游戏 `mods` 目录即可。更新或移除数据时，核心自动识别相应变化；没有完整译文的 mod 名称、简介和工坊名称保留原文，用户自定义小队名称保持原样。
+[GitHub Release v53.16-20261008](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008)提供 Windows 核心运行包 `DFCN-Windows-x64-minimal.zip` 和独立数据包 `dfcn_dwarvemon_zh_hans.zip`。独立 ZIP 中整个 `dfcn_dwarvemon_zh_hans` 文件夹解压至游戏 `mods` 目录即可。更新或移除数据后，核心在下次启动或显式重新加载数据时识别相应变化；没有完整译文的 mod 名称、简介和工坊名称保留原文，用户自定义小队名称保持原样。
 
 ## 数据声明与规则
 

@@ -610,7 +610,7 @@ Extract adamantine strands	提取精金缕	wi
 # Format: exact rendered source<TAB>replacement UTF-8<TAB>optional flags
 # Escapes supported in both fields: \\  \t  \n  \r  \xNN
 # Rules are matched against each horizontal rendered grid row. Longer
-# overlapping rules win. Save this file to hot-reload it while the game runs.
+# overlapping rules win. After saving, use Ctrl+Shift+F10 or re-enable with Shift+F5 to load it.
 # ASCII 视频设置页会在数值编辑器前裁掉这个标签的末尾。
 Maximum interface percentage (not counting minimap/elevati	最大界面百分比 (不包括小地图/高程)	w
 Settings	设置
