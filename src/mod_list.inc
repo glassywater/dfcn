@@ -91,8 +91,25 @@ static std::optional<NativeModListLayout> native_mod_list_layout(
 #endif
         for (int x = 0; x + static_cast<int>(install.size()) <= gps.dimx; ++x) {
             if (read_char(x, y) != 'M' || !literal_at(x, y, install)) continue;
-            const auto panel = native_panel_interior(borders, gps,
+            auto panel = native_panel_interior(borders, gps,
                 x, x + static_cast<int>(install.size()), y);
+            if (!panel) {
+                // Classic FPS overwrites part of the outer bottom edge.
+                // Only its complete native field can occlude that edge;
+                // every remaining side, corner and edge must still close.
+                for (int row = std::max(0, gps.dimy - 2);
+                        row < gps.dimy && !panel; ++row) {
+                    std::string footer(static_cast<size_t>(gps.dimx), ' ');
+                    for (int column = 0; column < gps.dimx; ++column)
+                        footer[column] = static_cast<char>(read_char(column, row));
+                    const auto fps = native_fps_counter_span(footer);
+                    if (!fps) continue;
+                    const SDL_Rect occluder{static_cast<int>(fps->first), row,
+                        static_cast<int>(fps->second - fps->first), 1};
+                    panel = native_panel_interior(borders, gps,
+                        x, x + static_cast<int>(install.size()), y, occluder);
+                }
+            }
             if (!panel || x != panel->x + 1) continue;
             // The native instructions occupy consecutive rows. The optional
             // Publish mods section moves the whole block down three rows.
