@@ -1,0 +1,158 @@
+base = "subscribed_books::template_extra"
+
+[[rulesets]]
+[rulesets.rules]
+# templates.lua: all remaining variable-rich and higher-skill clauses in the first five types.
+"In {@year}, {@bt_a|::subscribed_books::vocabulary::person} {state} in {@bt_s|::subscribed_books::vocabulary::place}." = "{@year} 年，{@bt_a|::subscribed_books::vocabulary::person} 在 {@bt_s|::subscribed_books::vocabulary::place} {state}。"
+"The year {@year} found {@bt_a|::subscribed_books::vocabulary::person} {state}." = "{@year} 年，{@bt_a|::subscribed_books::vocabulary::person} {state}。"
+"{@bt_a|::subscribed_books::vocabulary::person} {state} in {@bt_s|::subscribed_books::vocabulary::place} in {@year}." = "{@bt_a|::subscribed_books::vocabulary::person} 于 {@year} 年在 {@bt_s|::subscribed_books::vocabulary::place} {state}。"
+"Running from fate, or toward it -- even {pro} could not tell." = "是逃离命运，还是奔向命运——连{pro}自己也说不清。"
+"The year {@year} found {@bt_a|::subscribed_books::vocabulary::person} {state}, adrift and searching for something {pro} would never find." = "{@year} 年，{@bt_a|::subscribed_books::vocabulary::person} {state}，漂泊无依，寻找{pro}永远找不到的东西。"
+"A pause in the long {adj} march." = "漫长的{adj}行进中，一次暂停。"
+"The year {@year} dawned upon {@bt_s|::subscribed_books::vocabulary::place} {metaphor}, and what unfolded would etch itself into the living memory of {@bt_e|::subscribed_books::vocabulary::entity}." = "{@year} 年的曙光照向 {@bt_s|::subscribed_books::vocabulary::place}，{metaphor}，随后发生的一切，都将刻入 {@bt_e|::subscribed_books::vocabulary::entity} 鲜活的记忆。"
+"The year {@year} dawned upon {@bt_s|::subscribed_books::vocabulary::place} , and what unfolded would etch itself into the living memory of {@bt_e|::subscribed_books::vocabulary::entity}." = "{@year} 年的曙光照向 {@bt_s|::subscribed_books::vocabulary::place}，随后发生的一切，都将刻入 {@bt_e|::subscribed_books::vocabulary::entity} 鲜活的记忆。"
+"So too did {@bt_s|::subscribed_books::vocabulary::place} reach its apex only to feel the pull of entropy." = "{@bt_s|::subscribed_books::vocabulary::place} 也同样，在抵达顶峰后，才感受到熵的牵引。"
+"The death of {@bt_a|::subscribed_books::vocabulary::person} in {@year} -- by {cause}, no less -- was not merely a loss." = "{@bt_a|::subscribed_books::vocabulary::person} 于 {@year} 年死亡——竟是死于 {cause}——并不只是一次损失。"
+"It was a sign." = "它是一种征兆。"
+"I close this account in the knowledge that {@bt_s|::subscribed_books::vocabulary::place} will outlast these words, but only as ruin outlasts the builder." = "我结束这份记述，知道 {@bt_s|::subscribed_books::vocabulary::place} 将比这些文字更长久，但只是如废墟比建造者更长久。"
+"This annalistic chronicle of {@bt_s|::subscribed_books::vocabulary::place} and {@bt_e|::subscribed_books::vocabulary::entity} draws upon verified accounts and cross-referenced sources." = "这部关于 {@bt_s|::subscribed_books::vocabulary::place} 与 {@bt_e|::subscribed_books::vocabulary::entity} 的编年史，采用经证实的记述与交叉引用资料。"
+"Year {@year}: {@bt_a|::subscribed_books::vocabulary::person} ({race}, {epithet}) deceased." = "{@year} 年：{@bt_a|::subscribed_books::vocabulary::person}（{race}，{epithet}）死亡。"
+"Year {@year}: {@bt_s|::subscribed_books::vocabulary::place} founded by {@bt_e|::subscribed_books::vocabulary::entity}." = "{@year} 年：{@bt_e|::subscribed_books::vocabulary::entity} 建立 {@bt_s|::subscribed_books::vocabulary::place}。"
+"In {@year}, the death of {person} was recorded at {@bt_s|::subscribed_books::vocabulary::place}." = "{@year} 年，{person} 的死亡被记载于 {@bt_s|::subscribed_books::vocabulary::place}。"
+"{pos} tenure had lasted {adj} years." = "{pos}任期，持续了{adj}岁月。"
+"Year {@year}: {@bt_i|::subscribed_books::vocabulary::artifact} created by {@bt_a|::subscribed_books::vocabulary::person} at {@bt_s|::subscribed_books::vocabulary::place}." = "{@year} 年：{@bt_a|::subscribed_books::vocabulary::person} 在 {@bt_s|::subscribed_books::vocabulary::place} 创造 {@bt_i|::subscribed_books::vocabulary::artifact}。"
+"Year {@year}: {@bt_a|::subscribed_books::vocabulary::person} appointed {role} of {@bt_e|::subscribed_books::vocabulary::entity}." = "{@year} 年：{@bt_a|::subscribed_books::vocabulary::person} 被任命为 {@bt_e|::subscribed_books::vocabulary::entity} 的{role}。"
+"Year {@year}: events of note occurred at {@bt_s|::subscribed_books::vocabulary::place}." = "{@year} 年：{@bt_s|::subscribed_books::vocabulary::place} 发生了重要事件。"
+"End of entries for this period." = "本时期条目结束。"
+"The record for this period concludes here." = "这个时期的记录到此结束。"
+"End of chronicle." = "编年史结束。"
+"Records beyond this point are unavailable." = "此后的记录已经无法获得。"
+"Before the books, before the scholars and their quills, there were the stories passed from mouth to ear in the {adj} halls of {@bt_s|::subscribed_books::vocabulary::place}." = "在书籍之前，在学者与羽毛笔之前，{@bt_s|::subscribed_books::vocabulary::place} 的{adj}厅堂中，已有口耳相传的故事。"
+"This is one such story, told as the people of {@bt_e|::subscribed_books::vocabulary::entity} have always told it." = "这便是其中一个故事，仍照 {@bt_e|::subscribed_books::vocabulary::entity} 的人民一贯的方式讲述。"
+"Now in those days -- this would be around the year {@year}, they say --" = "在那些日子里——他们说，大约是在 {@year} 年——"
+"{person} -- you know the one -- well, {pro} met {pos} end in {@year}." = "{person}——你知道的那位——嗯，{pro}于 {@year} 年走到了生命的终点。"
+"{cause}, they say." = "他们说，是 {cause}。"
+"And it was in {@year} that {person} passed from this world, taken by {cause}." = "正是在 {@year} 年，{person} 离开了这个世界，被 {cause} 带走。"
+"The people of {@bt_s|::subscribed_books::vocabulary::place} wept, they say, and the {adj} stones themselves seemed to mourn." = "他们说，{@bt_s|::subscribed_books::vocabulary::place} 的人民落泪，连{adj}石头也似乎在哀悼。"
+"{person} was named {role} in {@year}." = "{person} 于 {@year} 年被任命为{role}。"
+"They trail off, as this part does, into the smoke of the hearth fire and the silence of the {adj} night." = "它们渐渐消散，如同这一部分，融入炉火的烟与{adj}夜晚的寂静。"
+"In the {adj} dawn of creation, when the firmament was yet unfinished and the seas had not found their beds, the powers that shaped the world turned their gaze to a single point of light." = "在创世的{adj}黎明，苍穹尚未完成，海洋尚未找到归处，塑造世界的神灵将目光投向一个光点。"
+"That light was {@bt_s|::subscribed_books::vocabulary::place}, and {@bt_e|::subscribed_books::vocabulary::entity} was born to tend it." = "那光便是 {@bt_s|::subscribed_books::vocabulary::place}，{@bt_e|::subscribed_books::vocabulary::entity} 为守护它而生。"
+"From such primordial design was {@bt_s|::subscribed_books::vocabulary::place} conceived, and from the will of {@bt_e|::subscribed_books::vocabulary::entity} was it made manifest." = "{@bt_s|::subscribed_books::vocabulary::place} 孕育于如此原初的设计，因 {@bt_e|::subscribed_books::vocabulary::entity} 的意志而显现。"
+"This chronicle speaks of events that transcend the merely historical, for they are woven into the fabric of the cosmos itself." = "这部编年史讲述的事件，超越了历史本身，因为它们织入了宇宙的经纬。"
+"{pro} was claimed by {cause}, yes, but {pos} spirit joined the {adj} chorus of the eternal." = "{pro}确实被 {cause} 带走，但{pos}灵魂加入了永恒的{adj}合唱。"
+"In {@year}, the gods guided {@bt_e|::subscribed_books::vocabulary::entity} to raise {@bt_s|::subscribed_books::vocabulary::place} from the {adj} earth." = "{@year} 年，诸神引领 {@bt_e|::subscribed_books::vocabulary::entity} 从{adj}大地上建立 {@bt_s|::subscribed_books::vocabulary::place}。"
+"{@bt_i|::subscribed_books::vocabulary::artifact}, forged by {@bt_a|::subscribed_books::vocabulary::person} in {@year}, was no mortal creation." = "{@bt_a|::subscribed_books::vocabulary::person} 于 {@year} 年锻造的 {@bt_i|::subscribed_books::vocabulary::artifact}，绝非凡俗造物。"
+"So closed another chapter in the {adj} saga of {@bt_s|::subscribed_books::vocabulary::place}, each page a prayer, each word a covenant with eternity." = "{@bt_s|::subscribed_books::vocabulary::place} 的{adj}传奇又一章结束，每页都是祈祷，每字都是与永恒的盟约。"
+"And so the chronicle of {@bt_s|::subscribed_books::vocabulary::place} passes beyond the reach of mortal pen." = "于是，{@bt_s|::subscribed_books::vocabulary::place} 的编年史，超出了凡人笔墨的边界。"
+"What was written here is but a shadow of the truth, {metaphor}." = "这里写下的，只是真相的影子，{metaphor}。"
+"What was written here is but a shadow of the truth, ." = "这里写下的，只是真相的影子。"
+"Born in {birth} among the {race} of {@bt_e|::subscribed_books::vocabulary::entity}, {pro} would walk a path that carved itself into the very bedrock of history." = "{pro}于 {birth} 出生在 {@bt_e|::subscribed_books::vocabulary::entity} 的{race}之中，终将踏上一条刻入历史基岩的道路。"
+"So too did {person} blaze across the {adj} firmament of {pos} age." = "{person} 也同样，划过{pos}时代的{adj}苍穹。"
+"From {pos} first breath in {birth} to {pos2} final stand, this biography traces the arc of a life that bent the world to its will." = "从{pos}在 {birth} 的第一次呼吸，到{pos2}最后的坚守，这部传记描绘一段以意志改变世界的人生。"
+"{cause} took {obj} at {@bt_s|::subscribed_books::vocabulary::place}, but {pos} {adj} legacy was beyond the reach of death." = "{cause} 在 {@bt_s|::subscribed_books::vocabulary::place} 带走了{obj}，但{pos}{adj}遗产却是死亡无法触及的。"
+"{pos} name endures, carved not in stone, but in the {adj} memory of all who hear it spoken." = "{pos}名字长存，刻在所有听闻者的{adj}记忆中，而非石头上。"
+"{@bt_a|::subscribed_books::vocabulary::person} was born in {birth}, a {race} of {@bt_e|::subscribed_books::vocabulary::entity}, and from the beginning the seeds of {pos} ruin were already planted." = "来自 {@bt_e|::subscribed_books::vocabulary::entity} 的{race} {@bt_a|::subscribed_books::vocabulary::person} 生于 {birth}，从最初起，{pos}毁灭的种子便已种下。"
+"{person}, born in {birth} to the {race} of {@bt_e|::subscribed_books::vocabulary::entity}, was such a soul." = "{person} 便是这样的灵魂，{birth}，生于 {@bt_e|::subscribed_books::vocabulary::entity} 的{race}之中。"
+"{pos} virtues were {adj}; {pos2} flaws, {adj2}er still." = "{pos}美德{adj}；{pos2}缺点更加{adj2}。"
+"{@bt_a|::subscribed_books::vocabulary::person} walked the same path." = "{@bt_a|::subscribed_books::vocabulary::person} 走上了同样的道路。"
+"{pos} {adj} rise was the measure of {pos2} fall, and this biography is the record of a descent as inevitable as it was terrible." = "{pos}{adj}崛起，衡量着{pos2}的坠落；这部传记，记录了一段既可怕又不可避免的沉沦。"
+"{person} breathed {pos} last in {@year} at {@bt_s|::subscribed_books::vocabulary::place}, undone by {cause}." = "{person} 于 {@year} 年在 {@bt_s|::subscribed_books::vocabulary::place} 因 {cause} 咽下最后一口气。"
+"So ends the account of {person}, whose {adj} promise was devoured by a world indifferent to promises." = "{person} 的记述就此结束，{adj}前程被一个漠视前程的世界吞噬。"
+"{person} was the rare exception: a soul whose {adj} goodness was apparent to all who crossed {pos} path." = "{person} 是罕见的例外：一个{adj}善良的灵魂，所有与{pos}相遇的人都能看见。"
+"The year {@year} called upon {@bt_a|::subscribed_books::vocabulary::person}, and {pro} answered, as {pro2} always did." = "{@year} 年召唤了 {@bt_a|::subscribed_books::vocabulary::person}，{pro}一如{pro2}往常那样回应。"
+"The biography of {person} is a testament to what one soul can achieve through {adj} devotion and selfless love." = "{person} 的传记，见证了一个灵魂凭借{adj}奉献与无私的爱所能成就的事业。"
+"May we all aspire to such a life." = "愿我们都追求如此的人生。"
+"{@bt_a|::subscribed_books::vocabulary::person} was neither saint nor monster, but a {race} of {@bt_e|::subscribed_books::vocabulary::entity} who lived a {adj} life in complicated times." = "{@bt_a|::subscribed_books::vocabulary::person} 既非圣人，也非怪物，只是来自 {@bt_e|::subscribed_books::vocabulary::entity} 的{race}，在复杂时代度过了{adj}一生。"
+"Honesty is a poor companion for biography." = "诚实并非传记的好伙伴。"
+"It makes heroes smaller and villains more sympathetic." = "它让英雄显得渺小，让恶人值得同情。"
+"Nevertheless, this account of {person} pursues truth over comfort." = "然而，这份关于 {person} 的记述，仍选择真相而非安慰。"
+"The {adj} record demands no less." = "{adj}记录要求如此。"
+"{pro} was imperfect, but {pro2} was real." = "{pro}并不完美，但{pro2}真实存在。"
+"In {@year}, {cause} ended {@bt_a|::subscribed_books::vocabulary::person}'s story at {@bt_s|::subscribed_books::vocabulary::place}." = "{@year} 年，{cause} 在 {@bt_s|::subscribed_books::vocabulary::place} 结束了 {@bt_a|::subscribed_books::vocabulary::person} 的故事。"
+"The honest truth is that {pro} was neither as great nor as terrible as people claim." = "真实情况是，{pro}既没有人们说的那样伟大，也没有那样可怕。"
+"In {@year}, {@bt_a|::subscribed_books::vocabulary::person} continued being {@bt_b|::subscribed_books::vocabulary::person}: {adj}, contradictory, and entirely {obj}self." = "{@year} 年，{@bt_a|::subscribed_books::vocabulary::person} 继续做 {@bt_b|::subscribed_books::vocabulary::person}：{adj}、矛盾，完全忠于{obj}自己。"
+"In the age of wonders, there was born among the {race} a child who would become known as {person}." = "在奇迹的时代，{race}之中诞生了一个孩子，后来人们称之为 {person}。"
+"{cause} took {obj}, they say, but the {adj} legend insists {pro} chose {pos} moment." = "他们说，{cause} 带走了{obj}，但{adj}传说坚称，{pro}选择了{pos}时刻。"
+"Some say {cause} was the instrument; others say {pro} simply decided {pos} work was done." = "有人说，{cause} 是工具；也有人说，{pro}只是认为{pos}使命已完成。"
+"It lives in the air between the words, in the silence after the story is told, in the {adj} fire that burns in the heart of every soul who hears it and thinks: that could have been me." = "它活在字词之间的空气、故事讲完后的寂静、每个听闻后心想“那本可以是我”的灵魂心中燃烧的{adj}火焰里。"
+"The {adj} question of existence has occupied me since my earliest days in {@bt_e|::subscribed_books::vocabulary::entity}." = "从我在 {@bt_e|::subscribed_books::vocabulary::entity} 的最早岁月起，{adj}存在之问便始终萦绕心头。"
+"I am {person}, and what follows is not merely autobiography, but an attempt to understand what it means to have lived at all." = "我是 {person}，下文不只是一部自传，更是一次尝试，理解曾经活过究竟意味着什么。"
+"{cause}, year {@year}." = "{cause}，{@year} 年。"
+"The cultural history of {@bt_e|::subscribed_books::vocabulary::entity} is a {adj} testament to what a united people can achieve." = "{@bt_e|::subscribed_books::vocabulary::entity} 的文化史，是团结的人民所能成就之事业的{adj}见证。"
+"May those who follow find inspiration in these pages." = "愿后来者从这些书页中得到启发。"
+"What if {pro}'d just tripped and everyone assumed {cause}?" = "如果{pro}只是绊倒了，却被所有人误认为是 {cause} 呢？"
+"The {adj} examination of what-might-have-been is, in the end, an examination of what-is." = "对原本可能发生之事的{adj}考察，归根到底，是对实际发生之事的考察。"
+"There is a {adj} grief that attends the contemplation of lost possibility." = "思索失去的可能性时，总有一种{adj}悲伤伴随。"
+"It asks not \"what if?\" but \"what was lost?\" and sits with the answer." = "它问的并非“如果呢？”，而是“失去了什么？”，然后与答案静坐。"
+"We mourn, in the end, not for what happened, but for the {adj} ghost of what did not." = "最终，我们哀悼的不是发生过的事，而是未曾发生之事的{adj}幽灵。"
+
+[[rulesets]]
+name = "person"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::person}" = "{::subscribed_books::vocabulary::person}"
+[[rulesets]]
+name = "epithet"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::epithet}" = "{::subscribed_books::vocabulary::epithet}"
+[[rulesets]]
+name = "metaphor"
+[rulesets.rules]
+"{::subscribed_books::shared}" = "{::subscribed_books::shared}"
+[[rulesets]]
+name = "adj"
+[rulesets.rules]
+"{::subscribed_books::adj}" = "{::subscribed_books::adj}"
+[[rulesets]]
+name = "adj2"
+[rulesets.rules]
+"{adj}" = "{adj}"
+[[rulesets]]
+name = "race"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::race}" = "{::subscribed_books::vocabulary::race}"
+[[rulesets]]
+name = "role"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::role}" = "{::subscribed_books::vocabulary::role}"
+[[rulesets]]
+name = "cause"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::cause}" = "{::subscribed_books::vocabulary::cause}"
+[[rulesets]]
+name = "birth"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::birth_year}" = "{::subscribed_books::vocabulary::birth_year}"
+[[rulesets]]
+name = "pro"
+[rulesets.rules]
+"{::subscribed_books::pro}" = "{::subscribed_books::pro}"
+[[rulesets]]
+name = "pro2"
+[rulesets.rules]
+"{pro}" = "{pro}"
+[[rulesets]]
+name = "pos"
+[rulesets.rules]
+"{::subscribed_books::pos}" = "{::subscribed_books::pos}"
+[[rulesets]]
+name = "pos2"
+[rulesets.rules]
+"{pos}" = "{pos}"
+[[rulesets]]
+name = "obj"
+[rulesets.rules]
+"{::subscribed_books::obj}" = "{::subscribed_books::obj}"
+
+[[rulesets]]
+name = "state"
+[rulesets.rules]
+"settled" = "定居了"
+
+
+# 声明内生成变化的规范形变体；原作者句式保留。
+[[rulesets]]
+[rulesets.rules]
+"I am {person}, and what follows is not merely autobiography, but a attempt to understand what it means to have lived at all." = "我是 {person}，下文不只是一部自传，更是一次尝试，理解曾经活过究竟意味着什么。"
+"The {adj} examination of what-might-have-been is, in the end, a examination of what-is." = "对原本可能发生之事的{adj}考察，归根到底，是对实际发生之事的考察。"
+

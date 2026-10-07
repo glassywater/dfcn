@@ -1,0 +1,140 @@
+# Complete authored rendering from outliner.lua
+base = "subscribed_books::outliner"
+
+[[rulesets]]
+[rulesets.rules]
+"This work celebrates the achievements and resilience of {@bt_subject|::subscribed_books::outliner::subject}." = "本书赞颂了{@bt_subject|::subscribed_books::outliner::subject}的成就与坚韧。"
+"This work examines the failures and dark truths of {@bt_subject|::subscribed_books::outliner::subject}." = "本书审视了{@bt_subject|::subscribed_books::outliner::subject}的失败和黑暗真相。"
+"This work chronicles the expansion into new territory, the courage of those who ventured {::subscribed_books::outliner::frontier}." = "本书记录了向新领土的扩张，以及那些敢于{::subscribed_books::outliner::frontier}的人们的勇气。"
+"This work mourns what was lost. {@bt_subject|::subscribed_books::outliner::subject} is remembered here, that the sacrifice might not be forgotten." = "本书哀悼失去的一切。在这里铭记{@bt_subject|::subscribed_books::outliner::subject}，让牺牲不被遗忘。"
+"This work traces the beginnings of {@bt_subject|::subscribed_books::outliner::subject}." = "本书追溯了{@bt_subject|::subscribed_books::outliner::subject}的起源。"
+"This work is intimate, personal. The author writes not as a historian but as a witness." = "本书私密而个人化。作者以见证者的身份写作，而非历史学家。"
+"This work describes the meeting of forces -- what happened when paths crossed, and what was changed by the crossing." = "本书描述了不同力量的相遇——道路交汇时发生了什么，又有哪些事物因交汇而改变。"
+"This work concerns knowledge that was hidden, and the consequences of its revelation." = "本书关注曾被隐藏的知识，以及它们被揭露后的后果。"
+"This work instructs. What follows is the distillation of hard-won understanding." = "本书旨在传授知识。以下内容是艰难求得的理解所凝成的精华。"
+"This work documents, analyzes, and preserves. It is a record made with scholarly rigor." = "本书记录、分析并保存资料。这是一份以严谨学术态度写成的记录。"
+"This work preserves the events of a people and a place, that history might not forget." = "本书保存了一个民族和一片土地上发生的事件，让历史不至于遗忘。"
+"Another testament to the enduring spirit of {@bt_subject|::subscribed_books::outliner::subject}." = "这又一次证明了{@bt_subject|::subscribed_books::outliner::subject}经久不衰的精神。"
+"Once more, greatness was demonstrated." = "伟大再一次得到了彰显。"
+"The story continued, as it always had -- with resilience and purpose." = "故事一如既往地延续，带着坚韧与目标。"
+"But the failings did not end there." = "但失败并未就此终结。"
+"The pattern continued. Those who could have acted, did not." = "这种模式继续上演。那些本可行动的人，依然无所作为。"
+"What followed was, if anything, worse." = "接下来发生的事，甚至更糟。"
+"The frontier demanded more. It always did." = "边疆索求更多。它总是如此。"
+"Onward, into the unknown." = "继续向前，走入未知。"
+"The boundary of the known world shifted once more." = "已知世界的边界又一次移动。"
+"And still the losses mounted." = "损失仍在不断增加。"
+"What was taken could not be returned." = "被夺走的东西，无法归还。"
+"The mourning continued." = "哀悼仍在继续。"
+"The foundations grew stronger with each passing year." = "每过去一年，根基就更牢固一分。"
+"From these beginnings, something greater would emerge." = "从这些开端中，将诞生更伟大的事物。"
+"The story of creation is never simple. This chapter proves it." = "创造的故事从来不简单。本章就是证明。"
+"The chronicle continues." = "编年史继续。"
+"The record moves forward." = "记录继续向前。"
+"Time passed, and with it came new events worthy of preservation." = "时间流逝，新的事件随之出现，值得保存。"
+"Among those watching was {::subscribed_books::outliner::article} {@bt_race|::subscribed_books::vocabulary::race} named {@bt_proto|::subscribed_books::vocabulary::person}. Few paid attention to the quiet figure at the edge of the crowd -- not yet." = "围观者中有一名叫{@bt_proto|::subscribed_books::vocabulary::person}的{@bt_race|::subscribed_books::vocabulary::race}。几乎没有人留意人群边缘那个安静的身影——至少现在没有。"
+"Standing at the back of the gathering, a young {@bt_race|::subscribed_books::vocabulary::race} named {@bt_proto|::subscribed_books::vocabulary::person} listened to every word. {::subscribed_books::personality::pro1} said nothing. {::subscribed_books::outliner::pro2} did not need to." = "一个名叫{@bt_proto|::subscribed_books::vocabulary::person}的年轻{@bt_race|::subscribed_books::vocabulary::race}站在集会后方，聆听着每一句话。{::subscribed_books::personality::pro1}什么也没说。{::subscribed_books::personality::pro1}也无需开口。"
+"{::subscribed_books::outliner::article} {@bt_race|::subscribed_books::vocabulary::race} named {@bt_proto|::subscribed_books::vocabulary::person} was present that day, though no one would remember seeing {::subscribed_books::personality::pro1} there. That would change." = "那天，一名叫{@bt_proto|::subscribed_books::vocabulary::person}的{@bt_race|::subscribed_books::vocabulary::race}也在场，尽管日后没人记得曾在那里见过{::subscribed_books::personality::pro1}。这一切终将改变。"
+"{@bt_proto|::subscribed_books::vocabulary::person} helped tend to the aftermath. The young {@bt_race|::subscribed_books::vocabulary::race} worked without complaint, without fanfare, and without anyone noticing the look in {::subscribed_books::personality::pos1} eyes." = "{@bt_proto|::subscribed_books::vocabulary::person}帮忙处理善后。这名年轻的{@bt_race|::subscribed_books::vocabulary::race}默默劳作，毫无怨言，不事张扬，也没人注意到{::subscribed_books::personality::pos1}眼中的神情。"
+"The news hit {@bt_proto|::subscribed_books::vocabulary::person} harder than most. The young {@bt_race|::subscribed_books::vocabulary::race} had grown up believing that {@bt_site|::subscribed_books::vocabulary::place} was safe. That belief died today." = "这消息对{@bt_proto|::subscribed_books::vocabulary::person}的打击比对大多数人都更沉重。这名年轻{@bt_race|::subscribed_books::vocabulary::race}从小就相信{@bt_site|::subscribed_books::vocabulary::place}是安全的。今天，这种信念破灭了。"
+"{@bt_proto|::subscribed_books::vocabulary::person} could not sleep that night. The sounds carried on the wind spoke of a world that would not wait for {::subscribed_books::personality::pro1} to be ready." = "{@bt_proto|::subscribed_books::vocabulary::person}那晚无法入睡。风中传来的声音诉说着：这个世界不会等到{::subscribed_books::personality::pro1}准备好了才开始变化。"
+"While the elders debated, {@bt_proto|::subscribed_books::vocabulary::person} sat in silence, turning over a thought that would not leave {::subscribed_books::personality::pro1} alone." = "长者们争论时，{@bt_proto|::subscribed_books::vocabulary::person}静静坐着，反复思考一个纠缠着{::subscribed_books::personality::pro1}不放的念头。"
+"{@bt_proto|::subscribed_books::vocabulary::person} spoke up at the gathering, but was told to sit down. Youth had no voice here -- not yet." = "{@bt_proto|::subscribed_books::vocabulary::person}在集会上发言，却被要求坐下。年轻人在这里没有发言权——至少现在没有。"
+"{@bt_proto|::subscribed_books::vocabulary::person} had begun training in secret. The {@bt_race|::subscribed_books::vocabulary::race} practiced with weapons borrowed from the armory, returning them before dawn." = "{@bt_proto|::subscribed_books::vocabulary::person}已经开始秘密训练。这名{@bt_race|::subscribed_books::vocabulary::race}用从军械库借来的武器练习，黎明前再将它们归还。"
+"The arguments of the elders rang hollow to {@bt_proto|::subscribed_books::vocabulary::person}. {::subscribed_books::personality::pro1} had heard them before. The same words. The same inaction." = "长者们的争论在{@bt_proto|::subscribed_books::vocabulary::person}听来空洞无力。{::subscribed_books::personality::pro1}以前就听过。同样的话。同样的不作为。"
+"{@bt_proto|::subscribed_books::vocabulary::person} organized the younger settlers into an informal watch. It was not authorized. It was not discouraged. It was necessary." = "{@bt_proto|::subscribed_books::vocabulary::person}将年轻的定居者组织成了一支非正式的守望队。它未经批准，却也未被阻止。这是必要的。"
+"People were beginning to notice {@bt_proto|::subscribed_books::vocabulary::person}. The young {@bt_race|::subscribed_books::vocabulary::race} had a way of being in the right place at the right time." = "人们开始注意到{@bt_proto|::subscribed_books::vocabulary::person}。这名年轻的{@bt_race|::subscribed_books::vocabulary::race}总能在恰当的时间出现在恰当的地方。"
+"The older warriors grudgingly admitted that {@bt_proto|::subscribed_books::vocabulary::person} had a point. Not out loud, of course. But in the way they began deferring to {::subscribed_books::personality::pos1} judgment." = "年长的战士们勉强承认，{@bt_proto|::subscribed_books::vocabulary::person}说得有道理。当然，他们不会大声说出来。但他们开始尊重{::subscribed_books::personality::pos1}的判断，这已经说明了一切。"
+"{@bt_proto|::subscribed_books::vocabulary::person} swore an oath that day -- the kind of oath that shapes a life." = "{@bt_proto|::subscribed_books::vocabulary::person}那天立下誓言——一种足以塑造一生的誓言。"
+"Something changed in {@bt_proto|::subscribed_books::vocabulary::person} after this. Where there had been uncertainty, there was now purpose." = "此后，{@bt_proto|::subscribed_books::vocabulary::person}发生了某种变化。曾经的迟疑不定，如今化为了坚定目标。"
+"The time was coming. {@bt_proto|::subscribed_books::vocabulary::person} could feel it -- the weight of responsibility shifting toward {::subscribed_books::personality::pro1}." = "时机即将到来。{@bt_proto|::subscribed_books::vocabulary::person}能感觉到——责任的重量正向{::subscribed_books::personality::pro1}转移。"
+"{@bt_proto|::subscribed_books::vocabulary::person} had done everything but ask for the position outright. Everyone knew it." = "{@bt_proto|::subscribed_books::vocabulary::person}已经做了能做的一切，只差直接提出要求担任那个职位。大家都明白。"
+"By now, {@bt_proto|::subscribed_books::vocabulary::person} was the person people turned to when the official channels failed." = "如今，每当正式渠道失灵，人们就会转而求助于{@bt_proto|::subscribed_books::vocabulary::person}。"
+"{@bt_proto|::subscribed_books::vocabulary::person} stood at the threshold. The {@bt_race|::subscribed_books::vocabulary::race} who had once watched from the sidelines was about to step into the center." = "{@bt_proto|::subscribed_books::vocabulary::person}站在门槛前。这名曾在一旁观望的{@bt_race|::subscribed_books::vocabulary::race}，即将步入中心。"
+"The elders looked at {@bt_proto|::subscribed_books::vocabulary::person} differently now. Where they had once seen a young upstart, they saw something else: the future." = "长者们看待{@bt_proto|::subscribed_books::vocabulary::person}的目光已经不同。曾经他们眼中只有一个年轻而冒失的新人，如今却看见了别的东西：未来。"
+"There were those who believed these events were not random -- that they were building toward something. What that something was, no one could say." = "有人相信，这些事件并非偶然——它们正朝某个目标积累。然而那个目标究竟是什么，没人能说清。"
+"An elder dreamed of a figure who would stand between the people and the darkness. The dream was dismissed as fancy." = "一位长者梦见，有一个身影会站在人民与黑暗之间。人们将这个梦当作幻想，置之不理。"
+"The wise noted a pattern -- a slow accumulation of wrongs that seemed to demand an answer. No answer had yet come." = "智者发现了某种模式——错误在缓慢累积，仿佛要求一个答案。但答案尚未到来。"
+"Somewhere beyond the reach of these events, forces were stirring that would one day reshape this story entirely." = "在这些事件影响之外的某处，一些力量正在苏醒，终有一天会彻底重塑这个故事。"
+"The pattern that the elders had sensed was growing clearer. These events were not merely history -- they were a summons, calling for someone who had not yet arrived." = "长者们察觉到的模式正越来越清晰。这些事件不仅仅是历史——它们也是召唤，呼唤着一个尚未到来的人。"
+"The dreams of the wise grew more vivid. A figure was taking shape in the collective imagination of {@bt_site|::subscribed_books::vocabulary::place} -- someone who would change everything." = "智者们的梦越来越鲜明。一个身影在{@bt_site|::subscribed_books::vocabulary::place}的集体想象中逐渐成形——一个将改变一切的人。"
+"With each passing year, the need grew more acute. The problems seeded by these events would not solve themselves." = "年复一年，这种需求越来越迫切。这些事件埋下的问题，不会自行解决。"
+"The old prophecies were being spoken of again. Something was coming. Someone was coming." = "古老的预言再次被提起。某件事即将发生。某个人即将到来。"
+"The wait was nearly over. In {@bt_year|::subscribed_books::vocabulary::birth_year}, {::subscribed_books::outliner::article} {@bt_race|::subscribed_books::vocabulary::race} named {@bt_proto|::subscribed_books::vocabulary::person} would be born -- and the answer that history demanded would begin to take shape." = "等待快要结束了。{@bt_year|::subscribed_books::vocabulary::birth_year}年，一名叫{@bt_proto|::subscribed_books::vocabulary::person}的{@bt_race|::subscribed_books::vocabulary::race}将会出生——历史索求的答案，也将开始成形。"
+"All of this -- the suffering, the loss, the failures -- had been prologue. {@bt_proto|::subscribed_books::vocabulary::person}, born in {@bt_year|::subscribed_books::vocabulary::birth_year}, would inherit these problems. And unlike those who came before, {::subscribed_books::personality::pro1} would act." = "这一切——痛苦、损失、失败——都只是序幕。{@bt_year|::subscribed_books::vocabulary::birth_year}年出生的{@bt_proto|::subscribed_books::vocabulary::person}将继承这些问题。与前人不同，{::subscribed_books::personality::pro1}将采取行动。"
+"The figure from the elder's dreams now had a name: {@bt_proto|::subscribed_books::vocabulary::person}. Born in {@bt_year|::subscribed_books::vocabulary::birth_year}, the young {@bt_race|::subscribed_books::vocabulary::race} was still years from understanding what the world would ask of {::subscribed_books::personality::pro1}." = "长者梦中的身影如今有了名字：{@bt_proto|::subscribed_books::vocabulary::person}。这名年轻的{@bt_race|::subscribed_books::vocabulary::race}出生于{@bt_year|::subscribed_books::vocabulary::birth_year}年，距离理解世界对{::subscribed_books::personality::pro1}的要求，还隔着许多年。"
+"It was in this very period -- the year {@bt_year|::subscribed_books::vocabulary::birth_year} -- that {::subscribed_books::outliner::article} {@bt_race|::subscribed_books::vocabulary::race} named {@bt_proto|::subscribed_books::vocabulary::person} was born. No one could know then what {::subscribed_books::personality::pro1} would become." = "正是在这一时期——{@bt_year|::subscribed_books::vocabulary::birth_year}年——一名叫{@bt_proto|::subscribed_books::vocabulary::person}的{@bt_race|::subscribed_books::vocabulary::race}出生了。当时，没人能知道{::subscribed_books::personality::pro1}将来会成为什么样的人。"
+"Amid the events of this period, {::subscribed_books::outliner::article} {@bt_race|::subscribed_books::vocabulary::race} child came into the world. {@bt_proto|::subscribed_books::vocabulary::person} drew {::subscribed_books::personality::pos1} first breath in {@bt_year|::subscribed_books::vocabulary::birth_year}, small and unremarkable." = "在这一时期的种种事件之间，一个{@bt_race|::subscribed_books::vocabulary::race}孩子来到世上。{@bt_proto|::subscribed_books::vocabulary::person}于{@bt_year|::subscribed_books::vocabulary::birth_year}年吸入{::subscribed_books::personality::pos1}人生中的第一口空气，渺小而平凡。"
+"The year {@bt_year|::subscribed_books::vocabulary::birth_year} brought the birth of {@bt_proto|::subscribed_books::vocabulary::person}. {::subscribed_books::outliner::article} {@bt_race|::subscribed_books::vocabulary::race}, born into a world shaped by the very events described in these pages." = "{@bt_year|::subscribed_books::vocabulary::birth_year}年迎来了{@bt_proto|::subscribed_books::vocabulary::person}的出生。这名{@bt_race|::subscribed_books::vocabulary::race}诞生在一个被本书所述事件塑造的世界里。"
+"In {@bt_year|::subscribed_books::vocabulary::birth_year}, while {@bt_site|::subscribed_books::vocabulary::place} contended with the events described here, {@bt_proto|::subscribed_books::vocabulary::person} was born." = "{@bt_year|::subscribed_books::vocabulary::birth_year}年，当{@bt_site|::subscribed_books::vocabulary::place}仍在应对本书所述的事件时，{@bt_proto|::subscribed_books::vocabulary::person}出生了。"
+" {@bt_proto|::subscribed_books::vocabulary::person} had not forgotten {::subscribed_books::outliner::summary}. It was one more reason to act." = " {@bt_proto|::subscribed_books::vocabulary::person}没有忘记{::subscribed_books::outliner::summary}。这又增添了一个行动的理由。"
+" For {@bt_proto|::subscribed_books::vocabulary::person}, {::subscribed_books::outliner::summary} only strengthened {::subscribed_books::personality::pos1} resolve." = " 对{@bt_proto|::subscribed_books::vocabulary::person}来说，{::subscribed_books::outliner::summary}只会坚定{::subscribed_books::personality::pos1}的决心。"
+" {@bt_proto|::subscribed_books::vocabulary::person} watched {::subscribed_books::outliner::summary} unfold with the sharp eyes of someone already planning." = " {@bt_proto|::subscribed_books::vocabulary::person}以一个早已开始谋划的人的锐利目光，注视着{::subscribed_books::outliner::summary}的展开。"
+"{@bt_ancestor|::subscribed_books::vocabulary::person}, {@bt_proto|::subscribed_books::vocabulary::person}'s {::subscribed_books::vocabulary::relation}, was at the center of these events. What {@bt_ancestor2|::subscribed_books::vocabulary::person} did here -- and what was done to {@bt_ancestor3|::subscribed_books::vocabulary::person} -- would echo through the family for a generation. When {@bt_proto2|::subscribed_books::vocabulary::person} finally heard the full account, it changed everything." = "{@bt_ancestor|::subscribed_books::vocabulary::person}是{@bt_proto|::subscribed_books::vocabulary::person}的{::subscribed_books::vocabulary::relation}，也是这些事件的核心人物。{@bt_ancestor|::subscribed_books::vocabulary::person}在这里所做的一切，以及遭遇的一切，都将在家族中回响整整一代。当{@bt_proto|::subscribed_books::vocabulary::person}终于听到完整经过时，一切都改变了。"
+"This was {@bt_ancestor|::subscribed_books::vocabulary::person}'s chapter. {@bt_proto|::subscribed_books::vocabulary::person}'s {::subscribed_books::vocabulary::relation} stood where the history was being made, bore the consequences, and carried the scars home. The stories {@bt_ancestor2|::subscribed_books::vocabulary::person} told -- and the ones {@bt_ancestor3|::subscribed_books::vocabulary::person} refused to tell -- shaped {@bt_proto2|::subscribed_books::vocabulary::person} more than any training or schooling ever could." = "这是属于{@bt_ancestor|::subscribed_books::vocabulary::person}的一章。{@bt_proto|::subscribed_books::vocabulary::person}的这位{::subscribed_books::vocabulary::relation}站在历史发生的地方，承担后果，带着伤疤回家。{@bt_ancestor|::subscribed_books::vocabulary::person}讲过的故事，以及拒绝讲出的故事，对{@bt_proto|::subscribed_books::vocabulary::person}的塑造胜过任何训练或教育。"
+"{@bt_proto|::subscribed_books::vocabulary::person} would later learn that {::subscribed_books::personality::pos1} {::subscribed_books::vocabulary::relation}, {@bt_ancestor|::subscribed_books::vocabulary::person}, had been directly involved in {::subscribed_books::outliner::summary}. The revelation was a turning point. The problems {@bt_proto2|::subscribed_books::vocabulary::person} would inherit were not abstract -- they were personal. They had touched {::subscribed_books::outliner::pos2} own blood." = "{@bt_proto|::subscribed_books::vocabulary::person}后来得知，{::subscribed_books::personality::pos1}的{::subscribed_books::vocabulary::relation}{@bt_ancestor|::subscribed_books::vocabulary::person}曾直接参与{::subscribed_books::outliner::summary}。这个发现成为转折点。{@bt_proto|::subscribed_books::vocabulary::person}将继承的问题并非抽象概念——它们关乎切身之痛，触及了{::subscribed_books::personality::pos1}自己的血亲。"
+"It was here that {@bt_ancestor|::subscribed_books::vocabulary::person}, {@bt_proto|::subscribed_books::vocabulary::person}'s {::subscribed_books::vocabulary::relation}, played a part that would define the family's legacy. {@bt_ancestor2|::subscribed_books::vocabulary::person} could not have known that {::subscribed_books::personality::pos1} actions during {::subscribed_books::outliner::summary} would one day drive {@bt_proto2|::subscribed_books::vocabulary::person} to seek the very position described in the final chapter of this account." = "正是在这里，{@bt_proto|::subscribed_books::vocabulary::person}的{::subscribed_books::vocabulary::relation}{@bt_ancestor|::subscribed_books::vocabulary::person}扮演了一个足以定义家族遗产的角色。{@bt_ancestor|::subscribed_books::vocabulary::person}不可能知道，{::subscribed_books::personality::pos1}在{::subscribed_books::outliner::summary}中的行动，有一天会推动{@bt_proto|::subscribed_books::vocabulary::person}去追求本书最后一章所述的那个职位。"
+"{@bt_ancestor|::subscribed_books::vocabulary::person}, {@bt_proto|::subscribed_books::vocabulary::person}'s {::subscribed_books::vocabulary::relation}, was alive when these events occurred. {@bt_ancestor2|::subscribed_books::vocabulary::person} may not have been at the center of the action, but the ripples reached everyone in {@bt_site|::subscribed_books::vocabulary::place}. Years later, when {@bt_proto2|::subscribed_books::vocabulary::person} asked about this time, {@bt_ancestor3|::subscribed_books::vocabulary::person}'s voice would grow quiet -- the voice of someone remembering something they wished they could forget." = "这些事件发生时，{@bt_proto|::subscribed_books::vocabulary::person}的{::subscribed_books::vocabulary::relation}{@bt_ancestor|::subscribed_books::vocabulary::person}还活着。{@bt_ancestor|::subscribed_books::vocabulary::person}或许并非行动的中心，但涟漪传遍了{@bt_site|::subscribed_books::vocabulary::place}的每一个人。多年后，当{@bt_proto|::subscribed_books::vocabulary::person}问起这段时光，{@bt_ancestor|::subscribed_books::vocabulary::person}的声音会变得低沉——那是回想起某些恨不得忘掉之事的人才会有的声音。"
+"Though {@bt_ancestor|::subscribed_books::vocabulary::person} was not directly involved in {::subscribed_books::outliner::summary}, {@bt_proto|::subscribed_books::vocabulary::person}'s {::subscribed_books::vocabulary::relation} lived through the aftermath. The shortages, the fear, the arguments about what should have been done differently -- {@bt_ancestor2|::subscribed_books::vocabulary::person} absorbed it all, and passed it on to {@bt_proto2|::subscribed_books::vocabulary::person} in the way that parents always do: not through lectures, but through the weight behind ordinary words." = "尽管{@bt_ancestor|::subscribed_books::vocabulary::person}没有直接参与{::subscribed_books::outliner::summary}，但{@bt_proto|::subscribed_books::vocabulary::person}的这位{::subscribed_books::vocabulary::relation}经历了余波。短缺、恐惧、关于当初应如何换一种做法的争论——{@bt_ancestor|::subscribed_books::vocabulary::person}承受了这一切，又以父母一贯的方式传给{@bt_proto|::subscribed_books::vocabulary::person}：没有说教，只有寻常话语背后的沉重。"
+"{@bt_proto|::subscribed_books::vocabulary::person}'s {::subscribed_books::vocabulary::relation}, {@bt_ancestor|::subscribed_books::vocabulary::person}, was raising a family during this period. The events described here shaped the world that {@bt_proto2|::subscribed_books::vocabulary::person} would be born into -- a world where {@bt_ancestor2|::subscribed_books::vocabulary::person} had already learned that safety was not guaranteed, and that the institutions meant to protect the people were not always equal to the task." = "在这一时期，{@bt_proto|::subscribed_books::vocabulary::person}的{::subscribed_books::vocabulary::relation}{@bt_ancestor|::subscribed_books::vocabulary::person}正在养育家庭。本书所述的事件塑造了{@bt_proto|::subscribed_books::vocabulary::person}将要出生的世界——在那个世界里，{@bt_ancestor|::subscribed_books::vocabulary::person}早已明白安全并无保证，而那些本应保护人民的机构，也并不总能胜任职责。"
+"{@bt_ancestor|::subscribed_books::vocabulary::person} heard the news with the rest of {@bt_site|::subscribed_books::vocabulary::place}. {@bt_proto|::subscribed_books::vocabulary::person}'s {::subscribed_books::vocabulary::relation} did not speak of it often, but {@bt_proto2|::subscribed_books::vocabulary::person} would later recognize the shadow of these events in {@bt_ancestor2|::subscribed_books::vocabulary::person}'s careful habits, {@bt_ancestor3|::subscribed_books::vocabulary::person}'s insistence on preparedness, {@bt_ancestor4|::subscribed_books::vocabulary::person}'s refusal to take peace for granted." = "{@bt_ancestor|::subscribed_books::vocabulary::person}和{@bt_site|::subscribed_books::vocabulary::place}的其他人一起听到了消息。{@bt_proto|::subscribed_books::vocabulary::person}的这位{::subscribed_books::vocabulary::relation}很少谈起它，但{@bt_proto|::subscribed_books::vocabulary::person}后来会从{@bt_ancestor|::subscribed_books::vocabulary::person}谨慎的习惯、坚持做好准备的态度，以及从不将和平视为理所当然的做法中，看见这些事件留下的阴影。"
+" {@bt_ancestor|::subscribed_books::vocabulary::person} held the newborn and saw, perhaps, something of the future in {@bt_proto|::subscribed_books::vocabulary::person}'s eyes." = " {@bt_ancestor|::subscribed_books::vocabulary::person}抱着新生儿，也许从{@bt_proto|::subscribed_books::vocabulary::person}的眼中看见了未来的些许影子。"
+
+[[rulesets]]
+name = "pos2"
+[rulesets.rules]
+"{::subscribed_books::personality::pos1}" = "{::subscribed_books::personality::pos1}"
+
+[[rulesets]]
+name = "pro2"
+[rulesets.rules]
+"{::subscribed_books::personality::pro1}" = "{::subscribed_books::personality::pro1}"
+
+[[rulesets]]
+name = "article"
+[rulesets.rules]
+"a" = ""
+"an" = ""
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+"a remarkable people" = "非凡的人民"
+"those who should have known better" = "那些本该明辨是非的人"
+"What follows" = "下文所述的一切"
+"something that would grow to reshape the world" = "终将成长并重塑世界的事物"
+"the people" = "人民"
+"the known world" = "已知世界"
+"{::subscribed_books::vocabulary::person}" = "{::subscribed_books::vocabulary::person}"
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+"{::subscribed_books::vocabulary::entity}" = "{::subscribed_books::vocabulary::entity}"
+"{::subscribed_books::vocabulary::race}" = "{::subscribed_books::vocabulary::race}"
+
+[[rulesets]]
+name = "frontier"
+[rulesets.rules]
+"into the unknown" = "踏入未知"
+"beyond {@bt_subject|::subscribed_books::outliner::subject}" = "越过{@bt_subject|::subscribed_books::outliner::subject}"
+
+[[rulesets]]
+name = "summary"
+[rulesets.rules]
+"the attacks on {@bt_site|::subscribed_books::vocabulary::place}" = "针对{@bt_site|::subscribed_books::vocabulary::place}的袭击"
+"the deaths that shook {@bt_site|::subscribed_books::vocabulary::place}" = "震动{@bt_site|::subscribed_books::vocabulary::place}的死亡"
+"the political changes in {@bt_entity|::subscribed_books::vocabulary::entity}" = "{@bt_entity|::subscribed_books::vocabulary::entity}的政治变化"
+"the founding of {@bt_site|::subscribed_books::vocabulary::place}" = "{@bt_site|::subscribed_books::vocabulary::place}的建立"
+"the creation of great works" = "伟大作品的创造"
+"the conflicts of the era" = "那个时代的冲突"
+"the pursuit of forbidden knowledge" = "对禁忌知识的追求"
+"the deceptions that unfolded" = "相继展开的欺骗"
+"the events described here" = "这里记述的事件"
+"these events" = "这些事件"
+
+# 声明内生成变化的规范形变体；原作者句式保留。
+[[rulesets]]
+[rulesets.rules]
+"{@bt_proto|::subscribed_books::vocabulary::person} organized the younger settlers into a informal watch. It was not authorized. It was not discouraged. It was necessary." = "{@bt_proto|::subscribed_books::vocabulary::person}将年轻的定居者组织成了一支非正式的守望队。它未经批准，却也未被阻止。这是必要的。"
+"{@bt_proto|::subscribed_books::vocabulary::person} swore a oath that day -- the kind of oath that shapes a life." = "{@bt_proto|::subscribed_books::vocabulary::person}那天立下誓言——一种足以塑造一生的誓言。"
+"A elder dreamed of a figure who would stand between the people and the darkness. The dream was dismissed as fancy." = "一位长者梦见，有一个身影会站在人民与黑暗之间。人们将这个梦当作幻想，置之不理。"
+"The wise noted a pattern -- a slow accumulation of wrongs that seemed to demand a answer. No answer had yet come." = "智者发现了某种模式——错误在缓慢累积，仿佛要求一个答案。但答案尚未到来。"
+

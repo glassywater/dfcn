@@ -1,0 +1,20 @@
+base = "menu::dwarvemon_beta"
+
+[[rulesets]]
+[rulesets.rules]
+"Create {::items::dwarvemon_beta}" = "凭空生成{::items::dwarvemon_beta}"
+"make {::items::dwarvemon_beta}" = "制作{::items::dwarvemon_beta}"
+"use {::items::dwarvemon_beta}" = "使用{::items::dwarvemon_beta}"
+"with {::items::dwarvemon_beta}" = "搭配{::items::dwarvemon_beta}"
+"Make {::items::dwarvemon_beta}" = "制作{::items::dwarvemon_beta}"
+"Use {::items::dwarvemon_beta}" = "使用{::items::dwarvemon_beta}"
+"swap for {::items::dwarvemon_beta}" = "交换为{::items::dwarvemon_beta}"
+"use {::items::dwarvemon_beta} (x4)" = "使用{::items::dwarvemon_beta}（４块）"
+"use 2 {::items::dwarvemon_beta}" = "使用２份{::items::dwarvemon_beta}"
+"make {::items}" = "制作{::items}"
+"Create {::items::dwarvemon}" = "凭空生成{::items::dwarvemon}"
+"Create {::materials::dwarvemon}" = "凭空生成{::materials::dwarvemon}"
+"Create {::plants::dwarvemon::name}" = "凭空生成{::plants::dwarvemon::name}"
+"Create {::items}" = "凭空生成{::items}"
+"Create {::materials}" = "凭空生成{::materials}"
+"Create {::plants::seed}" = "凭空生成{::plants::seed}"

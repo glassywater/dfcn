@@ -321,12 +321,12 @@ struct NativeDfhackOverlayLuaStackRestore {
 };
 
 static std::optional<std::string> native_dfhack_overlay_lua_string(
-        NativeDfhackLuaState *state, int index) {
+        NativeDfhackLuaState *state, int index, size_t max_bytes = 65536) {
     const auto &stack = g_native_dfhack_sitemap_lua_api.stack;
     if (stack.type(state, index) != 4) return std::nullopt;
     size_t length = 0;
     const char *bytes = stack.tolstring(state, index, &length);
-    if (!bytes || length > 65536) return std::nullopt;
+    if (!bytes || length > max_bytes) return std::nullopt;
     return std::string(bytes, length);
 }
 

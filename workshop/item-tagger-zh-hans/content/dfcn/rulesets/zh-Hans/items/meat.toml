@@ -1,0 +1,5 @@
+base = "items::meat"
+
+[[rulesets]]
+[rulesets.rules]
+"{^0}{^1}{main}{::item_tagger::tags}" = "{^0}{^1}{main}{::item_tagger::tags}"

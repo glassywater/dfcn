@@ -1,0 +1,7 @@
+schema = 1
+version = 1
+id = "dfcn_real_books_zh_hans"
+language = "zh-Hans"
+name = "真实书籍与卷轴内容 简体中文数据包"
+translations = "dfcn/translations.tsv"
+rulesets = "dfcn/rulesets/zh-Hans"

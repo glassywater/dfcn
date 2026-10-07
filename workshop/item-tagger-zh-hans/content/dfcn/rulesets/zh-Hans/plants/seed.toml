@@ -1,0 +1,5 @@
+base = "plants::seed"
+
+[[rulesets]]
+[rulesets.rules]
+"{plural}{::item_tagger::tags}" = "{plural}{::item_tagger::tags}"

@@ -1,0 +1,7 @@
+schema = 1
+id = "dwarven-core-harvesting-zh-hans"
+version = 1
+language = "zh-Hans"
+name = "矮人地核采掘汉化数据"
+translations = "dfcn/translations.tsv"
+rulesets = "dfcn/rulesets/zh-Hans"

@@ -1,0 +1,6 @@
+schema = 1
+id = "dry-mines-zh-hans"
+version = 1
+language = "zh-Hans"
+name = "干燥矿井汉化数据"
+translations = "dfcn/translations.tsv"

@@ -1,0 +1,6 @@
+base = "menu"
+
+[[rulesets]]
+[rulesets.rules]
+"{::materials::subscribed_smoking}" = "{::materials::subscribed_smoking}"
+

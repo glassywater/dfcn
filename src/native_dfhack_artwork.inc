@@ -49,7 +49,7 @@ static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
 enum class NativeDfhackControlPanelTextRole : unsigned char { Text, Wrapped, Tool, Key };
 struct NativeDfhackControlPanelText {
     int x = 0, y = 0, full_x = 0, visible_offset = 0;
-    std::string full, visible, document;
+    std::string full, visible, document, extension_prose_key;
     uintptr_t widget_id = 0;
     SDL_Rect bounds{};
     // Absolute zero-based document line for Wrapped; zero for a Label token.

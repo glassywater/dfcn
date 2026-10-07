@@ -1,0 +1,18 @@
+base = "creatures::caste"
+
+[[rulesets]]
+name = "singular"
+[rulesets.rules]
+"Dragonblessed" = "巨龙祝福者"
+"Regenblessed" = "再生祝福者"
+"Rocblessed" = "巨鹏祝福者"
+"Spellblessed" = "法术祝福者"
+
+[[rulesets]]
+name = "plural"
+[rulesets.rules]
+"Dragonblessed" = "巨龙祝福者"
+"Regenblessed" = "再生祝福者"
+"Rocblessed" = "巨鹏祝福者"
+"Spellblessed" = "法术祝福者"
+

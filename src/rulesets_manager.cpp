@@ -1532,6 +1532,14 @@ namespace Hooks {
         for (const auto& [name, ruleset] : rulesets_) {
             for (const auto& [orig, _] : ruleset) {
                 for (const auto& token : orig) {
+                    if (token.type == Type::Reference && token.value.starts_with("@bt_")) {
+                        const auto scope_at = token.value.find('|');
+                        if (scope_at != std::string::npos) {
+                            const auto scope = token.value.substr(scope_at + 1);
+                            if (!scope.starts_with("::") || !rulesets_.contains(scope))
+                                throw std::runtime_error("Capture vocabulary not found in " + name + ": " + scope);
+                        }
+                    }
                     if (token.type == Type::Reference && token.value[0] != '%' && token.value[0] != '@' && token.value[0] != '#') {
                         if (!rulesets_.contains(token.value))
                             throw std::runtime_error("Reference not found in " + name + ": " + token.value);
@@ -1758,31 +1766,55 @@ namespace Hooks {
                 } else if (is_placeholder(token.value)) {
                     // Placeholder（@ 前缀）：捕获文本并原样穿透输出。
                     // 加载时已保证后面若有 token 则必为 Literal，见 parse_file()。
+                    const auto capture_tree = [&](const std::string &captured) {
+                        std::string translated = captured;
+                        const auto scope_at = token.value.starts_with("@bt_")
+                            ? token.value.find('|') : std::string::npos;
+                        if (scope_at != std::string::npos) {
+                            const auto results = resolve_namespace(captured,
+                                token.value.substr(scope_at + 1), level + 1);
+                            const ResultTree* best = nullptr;
+                            for (const auto &result : results)
+                                if (result->remaining.empty() && !result->translated.empty() &&
+                                        (!best || result->preferred_to(*best))) best = result.get();
+                            if (best) translated = best->translated;
+                        }
+                        const bool changed = translated != captured;
+                        return std::make_shared<const ResultTree>(token.value, captured,
+                            std::move(translated), "", BindingMap{}, nullptr, nullptr,
+                            changed || token.value.starts_with("@bt_"));
+                    };
                     for (auto& candidate : candidates) {
                         dfcn::translation_work_step();
                         if (ti + 1 < orig_tokens.size()) {
-                            // 情况 A：后面还有 Literal（unique delimiter，只需首次匹配）
+                            // Existing @ slots retain their first-delimiter
+                            // semantics. Authored extension prose can opt into
+                            // bounded alternatives for a multiword name before
+                            // a translated title with an @bt_ slot.
                             const auto& next_lit = orig_tokens[ti + 1];
-                            auto pos = find_literal_position(
-                                candidate.remaining, next_lit.value);
-                            if (pos) {
+                            const bool alternatives = token.value.starts_with("@bt_") &&
+                                !next_lit.value.empty();
+                            size_t search_at = 0, choices = 0;
+                            while (search_at <= candidate.remaining.size()) {
+                                auto pos = find_literal_position(
+                                    std::string_view(candidate.remaining).substr(search_at), next_lit.value);
+                                if (!pos) break;
+                                *pos += search_at;
+                                dfcn::translation_work_step();
                                 std::string captured = candidate.remaining.substr(0, *pos);
                                 std::string rem = candidate.remaining.substr(
                                     *pos + next_lit.value.size());
                                 auto new_results = candidate.results;
-                                new_results.emplace_back(token.value,
-                                    std::make_shared<const ResultTree>(
-                                        token.value, captured, captured, "", BindingMap{}));
+                                new_results.emplace_back(token.value, capture_tree(captured));
                                 next_candidates.emplace_back(
                                     std::move(new_results), std::move(rem));
+                                if (!alternatives || ++choices >= 64) break;
+                                search_at = *pos + std::max<size_t>(1, next_lit.value.size());
                             }
                         } else {
                             // 情况 B：最后一个 token → 消费全部剩余文本
                             auto new_results = candidate.results;
-                            new_results.emplace_back(token.value,
-                                std::make_shared<const ResultTree>(
-                                    token.value, candidate.remaining,
-                                    candidate.remaining, "", BindingMap{}));
+                            new_results.emplace_back(token.value, capture_tree(candidate.remaining));
                             next_candidates.emplace_back(
                                 std::move(new_results), "");
                         }
@@ -1940,40 +1972,38 @@ namespace Hooks {
     /// @return        解析后的 Token 序列
     /// @throws std::runtime_error 括号不匹配时抛出
     RulesetsManager::Tokens RulesetsManager::parse_tokens(const std::string& base_ns, const std::string& input) const {
-        // 校验括号是否成对出现
-        int lbrace = 0, rbrace = 0;
-        for (char c : input) {
-            if (c == '{') ++lbrace;
-            else if (c == '}') ++rbrace;
-        }
-        if (lbrace != rbrace)
-            throw std::runtime_error("Mismatched braces in token string");
-
-        // 收集所有分割位置。0 在最前，input.size() 在最后，
-        // 中间每次匹配推入 start/end 且 regex 迭代器保证递增，
-        // 整个序列天然有序，无需 sort，只需去重
-        std::vector<size_t> positions{0};
-        for (std::sregex_iterator it(input.begin(), input.end(), token_split_regex()), end;
-            it != end; ++it) {
-            positions.push_back(it->position());
-            positions.push_back(it->position() + it->length());
-        }
-        positions.push_back(input.size());
-        positions.erase(std::unique(positions.begin(), positions.end()), positions.end());
-
         Tokens tokens;
-        for (size_t i = 0; i < positions.size() - 1; ++i) {
-            size_t l = positions[i], r = positions[i + 1];
-            std::string chunk = input.substr(l, r - l);
-            if (!chunk.empty() && chunk.front() == '{' && chunk.back() == '}') {
-                std::string inner = chunk.substr(1, chunk.size() - 2);
+        std::string literal;
+        const auto flush_literal = [&] {
+            if (!literal.empty()) {
+                tokens.emplace_back(Token{Type::Literal, std::move(literal)});
+                literal.clear();
+            }
+        };
+        for (size_t at = 0; at < input.size();) {
+            if (at + 1 < input.size() &&
+                    ((input[at] == '{' && input[at + 1] == '{') ||
+                     (input[at] == '}' && input[at + 1] == '}'))) {
+                literal.push_back(input[at]);
+                at += 2;
+            } else if (input[at] == '{') {
+                const auto end = input.find('}', at + 1);
+                if (end == std::string::npos || end == at + 1 ||
+                        input.find('{', at + 1) < end)
+                    throw std::runtime_error("Mismatched braces in token string");
+                flush_literal();
+                std::string inner = input.substr(at + 1, end - at - 1);
                 std::string ref = to_canonical_identifier(inner, base_ns);
                 validate_identifier_format(ref);
                 tokens.emplace_back(Token{Type::Reference, std::move(ref)});
-            } else if (!chunk.empty()) {
-                tokens.emplace_back(Token{Type::Literal, std::move(chunk)});
+                at = end + 1;
+            } else if (input[at] == '}') {
+                throw std::runtime_error("Mismatched braces in token string");
+            } else {
+                literal.push_back(input[at++]);
             }
         }
+        flush_literal();
 
         // 注意：不在此处检查 original 中的重复引用；
         // 该检查由 parse_file 中调用方负责（见 reference/translator.rs 的 duplicate detection）

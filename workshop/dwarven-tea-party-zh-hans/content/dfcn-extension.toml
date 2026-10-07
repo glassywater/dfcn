@@ -1,0 +1,8 @@
+schema = 1
+id = "dwarven-tea-party-zh-hans"
+version = 1
+language = "zh-Hans"
+name = "矮人茶会汉化数据"
+translations = "dfcn/translations.tsv"
+rulesets = "dfcn/rulesets/zh-Hans"
+

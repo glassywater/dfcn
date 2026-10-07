@@ -1,0 +1,8 @@
+schema = 1
+id = "altar-of-blessings-zh-hans"
+version = 1
+language = "zh-Hans"
+name = "祝福祭坛汉化数据"
+translations = "dfcn/translations.tsv"
+rulesets = "dfcn/rulesets/zh-Hans"
+

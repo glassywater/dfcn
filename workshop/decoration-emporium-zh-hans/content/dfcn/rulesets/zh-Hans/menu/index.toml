@@ -1,0 +1,6 @@
+base = "menu"
+
+[[rulesets]]
+name = "main"
+[rulesets.rules]
+"{::decoration_emporium::items}" = "{::decoration_emporium::items}"

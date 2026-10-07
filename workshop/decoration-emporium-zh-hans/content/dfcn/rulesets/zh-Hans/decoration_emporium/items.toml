@@ -1,0 +1,28 @@
+base = "decoration_emporium::items"
+
+[[rulesets]]
+[rulesets.rules]
+"{kind} {#digits}{variant}" = "{kind} {#digits}{variant}"
+
+[[rulesets]]
+name = "kind"
+[rulesets.rules]
+"torch standing" = "落地火炬"
+"standing torch" = "落地火炬"
+"tavern sign" = "酒馆招牌"
+"tavern signboard" = "酒馆招牌"
+"industry banner" = "工业旗帜"
+"rug animal" = "兽皮地毯"
+"rug cloth" = "布地毯"
+"mirror" = "镜子"
+"clutter" = "杂物摆饰"
+"hoap" = "矛上首级"
+
+[[rulesets]]
+name = "variant"
+optional = true
+[rulesets.rules]
+"a" = "a"
+"b" = "b"
+"c" = "c"
+"d" = "d"

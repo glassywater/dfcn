@@ -1,0 +1,11 @@
+base = "better_glazing::recipes"
+
+[[rulesets]]
+[rulesets.rules]
+"make {::better_glazing::materials::glaze}" = "制作{::better_glazing::materials::glaze}"
+"mix {::better_glazing::materials::glaze}" = "混合{::better_glazing::materials::glaze}"
+"make {::better_glazing::materials::ceramic} bricks" = "制作{::better_glazing::materials::ceramic}砖"
+"glaze clay/stone jug" = "为陶土／石制壶上釉"
+"glaze clay/stone statue" = "为陶土／石制雕像上釉"
+"glaze large clay/stone pot" = "为陶土／石制大罐上釉"
+"glaze clay/stone craft" = "为陶土／石制工艺品上釉"

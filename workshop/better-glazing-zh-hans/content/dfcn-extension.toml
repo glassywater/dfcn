@@ -1,0 +1,7 @@
+schema = 1
+id = "better-glazing-zh-hans"
+version = 1
+language = "zh-Hans"
+name = "缤纷釉彩汉化数据"
+translations = "dfcn/translations.tsv"
+rulesets = "dfcn/rulesets/zh-Hans"

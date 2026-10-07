@@ -1,0 +1,892 @@
+# Complete authored reference-entry prose from styles/reference.lua.
+base = "subscribed_books::reference"
+
+[[rulesets]]
+name = "year1"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::birth_year}" = "{::subscribed_books::vocabulary::birth_year}"
+
+[[rulesets]]
+name = "year2"
+[rulesets.rules]
+"{year1}" = "{year1}"
+
+[[rulesets]]
+name = "adj1"
+[rulesets.rules]
+"{::subscribed_books::adj}" = "{::subscribed_books::adj}"
+
+[[rulesets]]
+name = "pos1"
+[rulesets.rules]
+"{::subscribed_books::personality::pos1}" = "{::subscribed_books::personality::pos1}"
+
+[[rulesets]]
+name = "role"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::role}" = "{::subscribed_books::vocabulary::role}"
+
+[[rulesets]]
+name = "birth_year"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::birth_year}" = "{::subscribed_books::vocabulary::birth_year}"
+
+[[rulesets]]
+name = "cause"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::cause}" = "{::subscribed_books::vocabulary::cause}"
+
+[[rulesets]]
+name = "race"
+[rulesets.rules]
+"Dwarf" = "矮人"
+"Human" = "人类"
+"Elf" = "精灵"
+"Goblin" = "地精"
+"Kobold" = "狗头人"
+"Dragon" = "巨龙"
+"Giant" = "巨人"
+"Troll" = "巨魔"
+"Cyclops" = "独眼巨人"
+"Ettin" = "双头巨人"
+"Minotaur" = "牛头怪"
+"Hydra" = "多头蛇"
+"Roc" = "大鹏"
+"Person" = "人"
+"Figure" = "人物"
+"{::subscribed_books::vocabulary::race}" = "{::subscribed_books::vocabulary::race}"
+
+[[rulesets]]
+[rulesets.rules]
+"A LEXICON OF {@bt_entity|::subscribed_books::vocabulary::entity}. Compiled by {@bt_hero|::subscribed_books::vocabulary::person}, a {adj1} attempt to set down the vocabulary of a people before it is lost to drift and forgetting." = "《{@bt_entity|::subscribed_books::vocabulary::entity}词汇集》。由{@bt_hero|::subscribed_books::vocabulary::person}编纂，以{adj1}努力记下一个民族的词汇，免得它们消逝于流变与遗忘。"
+
+[[rulesets]]
+[rulesets.rules]
+"A LEXICON OF {@bt_entity|::subscribed_books::vocabulary::entity}, compiled by {@bt_hero|::subscribed_books::vocabulary::person}. Entries are given in the order they were collected, each annotated with the circumstance of its recording -- for a word divorced from the moment of its use is only half a word." = "《{@bt_entity|::subscribed_books::vocabulary::entity}词汇集》，由{@bt_hero|::subscribed_books::vocabulary::person}编纂。词条按采集顺序列出，各自注明记录时的情境，因为一个词若脱离使用它的那一刻，就只剩下一半。"
+
+[[rulesets]]
+[rulesets.rules]
+"Entries recorded circa {year1}:" = "约{year1}年记录的词条："
+
+[[rulesets]]
+[rulesets.rules]
+"The following terms were collected around {year1}:" = "下列词语采集于{year1}年前后："
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::vocabulary::person}, proper n. a {race} of {@bt_entity|::subscribed_books::vocabulary::entity}, deceased {year1} ({cause}). Retained here as the word was recorded in use during {pos1} lifetime; entries are not removed upon a subject's death." = "{@bt_hero|::subscribed_books::vocabulary::person}，专有名词。{@bt_entity|::subscribed_books::vocabulary::entity}的一位{race}，于{year1}年去世（{cause}）。由于这个词在{pos1}生前已被记录使用，故予保留；词条不会因其所指之人死亡而删除。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_artifact|::subscribed_books::vocabulary::artifact}, proper n. an object of note created in {year1}, whose name has entered common usage as a byword for {adj1} craftsmanship." = "{@bt_artifact|::subscribed_books::vocabulary::artifact}，专有名词。于{year1}年创造的著名物件，其名已进入日常用语，成为{adj1}工艺的代称。"
+
+[[rulesets]]
+[rulesets.rules]
+"{role}, n. a position within {@bt_entity|::subscribed_books::vocabulary::entity}, held as of {year1} by {@bt_hero|::subscribed_books::vocabulary::person}. Compare related terms of rank and office within the same entity." = "{role}，名词。{@bt_entity|::subscribed_books::vocabulary::entity}内部的一个职位，至{year1}年由{@bt_hero|::subscribed_books::vocabulary::person}担任。可对照同一组织内有关等级与官职的词语。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_evsite|::subscribed_books::vocabulary::place}, proper n. a settlement of {@bt_entity|::subscribed_books::vocabulary::entity}, founded {year1}. See entity entries for administrative terminology in local use." = "{@bt_evsite|::subscribed_books::vocabulary::place}，专有名词。{@bt_entity|::subscribed_books::vocabulary::entity}的聚落，建于{year1}年。当地使用的行政术语，参见组织词条。"
+
+[[rulesets]]
+[rulesets.rules]
+"[untitled entry]. a term recorded circa {year1}, context uncertain; retained for completeness." = "［无题词条］。约{year1}年记录的词语，情境不明；为求完整而保留。"
+
+[[rulesets]]
+[rulesets.rules]
+"Further entries follow in the order of their recording." = "其余词条依记录顺序列于下文。"
+
+[[rulesets]]
+[rulesets.rules]
+"The lexicon continues below." = "词汇集继续如下。"
+
+[[rulesets]]
+[rulesets.rules]
+"This lexicon of {@bt_entity|::subscribed_books::vocabulary::entity} is submitted incomplete, as all such works must be -- a language does not hold still long enough to be fully caught. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "这部{@bt_entity|::subscribed_books::vocabulary::entity}词汇集以未完成的状态提交，一切此类作品都只能如此：语言从不会停留得足够久，让人将它完全捕捉。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"No lexicon is ever finished; a living language outpaces the hand that records it. What is set down here is a cross-section, not a conclusion. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "没有词汇集真正完成过；活着的语言，总比记录它的手更快。这里留下的是一个横截面，而非结论。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A TRAVELER'S GLOSSARY for those passing through the lands of {@bt_entity|::subscribed_books::vocabulary::entity}. Consult before you speak, and more importantly, before you insult someone by accident." = "《旅人词汇表》，供途经{@bt_entity|::subscribed_books::vocabulary::entity}领土者参考。开口前请查阅，更重要的是，免得无意冒犯别人。"
+
+[[rulesets]]
+[rulesets.rules]
+"Phrases and terms relevant to events around {year1}:" = "与{year1}年前后事件有关的短语和词语："
+
+[[rulesets]]
+[rulesets.rules]
+"mourning customs, n. observed by {@bt_entity|::subscribed_books::vocabulary::entity} following the death of {@bt_hero|::subscribed_books::vocabulary::person} in {year1}; visitors are advised to observe local practice rather than their own." = "哀悼习俗，名词。{@bt_entity|::subscribed_books::vocabulary::entity}在{@bt_hero|::subscribed_books::vocabulary::person}于{year1}年去世后遵行的习俗；建议访客遵守当地做法，而非自己的习俗。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_artifact|::subscribed_books::vocabulary::artifact}, proper n. a locally famous object (created {year1}); expect to hear it mentioned, and do not offer to buy it." = "{@bt_artifact|::subscribed_books::vocabulary::artifact}，专有名词。当地著名的物件，造于{year1}年；你很可能听人提起它，但不要提出购买。"
+
+[[rulesets]]
+[rulesets.rules]
+"{role}, n. a title of standing within {@bt_entity|::subscribed_books::vocabulary::entity}; currently held by {@bt_hero|::subscribed_books::vocabulary::person} as of {year1}. Address accordingly." = "{role}，名词。{@bt_entity|::subscribed_books::vocabulary::entity}中有地位的头衔；至{year1}年由{@bt_hero|::subscribed_books::vocabulary::person}担任。请使用相应称呼。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_evsite|::subscribed_books::vocabulary::place}, proper n. a settlement worth knowing the name of; founded {year1} by {@bt_entity|::subscribed_books::vocabulary::entity}." = "{@bt_evsite|::subscribed_books::vocabulary::place}，专有名词。值得记住名字的聚落；{@bt_entity|::subscribed_books::vocabulary::entity}于{year1}年建立。"
+
+[[rulesets]]
+[rulesets.rules]
+"local usage, n. a turn of phrase current around {year1}; meaning best inferred from context." = "当地用法，名词。{year1}年前后流行的一种措辞；最好从上下文推断其义。"
+
+[[rulesets]]
+[rulesets.rules]
+"More useful phrases follow." = "下文还有更多实用短语。"
+
+[[rulesets]]
+[rulesets.rules]
+"Learn these terms before you need them. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "在需要之前，先学会这些词语。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"AN ETYMOLOGICAL STUDY of the language of {@bt_entity|::subscribed_books::vocabulary::entity}, tracing the roots and drift of its vocabulary. I, {@bt_hero|::subscribed_books::vocabulary::person}, offer this not as a final word but as a single cross-section of a living, changing tongue." = "《{@bt_entity|::subscribed_books::vocabulary::entity}语言的词源研究》，追溯词汇的根源与流变。我，{@bt_hero|::subscribed_books::vocabulary::person}，提交它并非为作最终定论，而是留下这门活着、变化着的语言的一个横截面。"
+
+[[rulesets]]
+[rulesets.rules]
+"AN ETYMOLOGICAL STUDY. How the words of {@bt_entity|::subscribed_books::vocabulary::entity} came to mean what they mean, so far as it can be traced." = "《词源研究》。在可追溯的范围内，考察{@bt_entity|::subscribed_books::vocabulary::entity}的词语如何获得如今的含义。"
+
+[[rulesets]]
+[rulesets.rules]
+"Terms whose origin can be traced to circa {year1}:" = "起源可追溯至{year1}年前后的词语："
+
+[[rulesets]]
+[rulesets.rules]
+"[name], proper n., obit. {year1}. the death of {@bt_hero|::subscribed_books::vocabulary::person} ({cause}) is the recorded origin of at least one idiom now current among {@bt_entity|::subscribed_books::vocabulary::entity}; the exact phrase has not survived, only its occasion." = "［姓名］，专有名词，卒于{year1}年。{@bt_hero|::subscribed_books::vocabulary::person}之死（{cause}），至少是一条如今流行于{@bt_entity|::subscribed_books::vocabulary::entity}的习语的有据起源；确切措辞已失传，只留下促成它的事件。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_artifact|::subscribed_books::vocabulary::artifact}, proper n., coined {year1}. the name derives from the circumstance of its creation by {@bt_hero|::subscribed_books::vocabulary::person}; such object-names commonly outlive the memory of the maker." = "{@bt_artifact|::subscribed_books::vocabulary::artifact}，专有名词，定名于{year1}年。名字来自{@bt_hero|::subscribed_books::vocabulary::person}创造它时的情境；物件之名往往比人们对创造者的记忆长久。"
+
+[[rulesets]]
+[rulesets.rules]
+"{role}, n., attested {year1}. the term for this office predates {@bt_hero|::subscribed_books::vocabulary::person}'s tenure, but {pos1} appointment is among the better-documented instances of its use." = "{role}，名词，于{year1}年见诸记录。这个职位的称呼早于{@bt_hero|::subscribed_books::vocabulary::person}任期，但{pos1}任命，是该词使用史上记载较充分的实例之一。"
+
+[[rulesets]]
+[rulesets.rules]
+"[usage], circa {year1}. attested but not fully traceable; included for completeness of the record." = "［用法］，约{year1}年。有据可查，却无法完全追溯；为求记录完整而收入。"
+
+[[rulesets]]
+[rulesets.rules]
+"The tracing continues." = "追溯继续如下。"
+
+[[rulesets]]
+[rulesets.rules]
+"Word-roots are like rivers: their true source is rarely where the water first becomes visible. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "词根如河流：真正的源头，很少就在水第一次被看见的地方。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"AN ENCYCLOPEDIA OF {@bt_entity|::subscribed_books::vocabulary::entity}. Entries are arranged as compiled; cross-references are provided where a subject touches another." = "《{@bt_entity|::subscribed_books::vocabulary::entity}百科全书》。词条依编纂顺序排列；各主题相涉之处，提供交叉参照。"
+
+[[rulesets]]
+[rulesets.rules]
+"AN ENCYCLOPEDIA OF {@bt_entity|::subscribed_books::vocabulary::entity}, compiled by {@bt_hero|::subscribed_books::vocabulary::person}. This work makes no claim to completeness -- only to accuracy, so far as the available record permits, for the subjects it does contain." = "《{@bt_entity|::subscribed_books::vocabulary::entity}百科全书》，由{@bt_hero|::subscribed_books::vocabulary::person}编纂。本书不声称完整，只求在现有记录允许的范围内，对所收主题做到准确。"
+
+[[rulesets]]
+[rulesets.rules]
+"Entries pertaining to {year1}:" = "与{year1}年有关的词条："
+
+[[rulesets]]
+[rulesets.rules]
+"The following subjects concern the year {year1}:" = "以下主题涉及{year1}年："
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::vocabulary::person}. {race} of {@bt_entity|::subscribed_books::vocabulary::entity}, d. {year1} ({cause}). See also: {@bt_entity2|::subscribed_books::vocabulary::entity}, {@bt_evsite|::subscribed_books::vocabulary::place}." = "{@bt_hero|::subscribed_books::vocabulary::person}。{@bt_entity|::subscribed_books::vocabulary::entity}的一位{race}，卒于{year1}年（{cause}）。另见：{@bt_entity2|::subscribed_books::vocabulary::entity}、{@bt_evsite|::subscribed_books::vocabulary::place}。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_artifact|::subscribed_books::vocabulary::artifact}. object of note, created {year1} by {@bt_hero|::subscribed_books::vocabulary::person}. A {adj1} example of the craftsmanship of {@bt_entity|::subscribed_books::vocabulary::entity}. See also: {@bt_hero2|::subscribed_books::vocabulary::person}." = "{@bt_artifact|::subscribed_books::vocabulary::artifact}。著名物件，{@bt_hero|::subscribed_books::vocabulary::person}于{year1}年创造；是{@bt_entity|::subscribed_books::vocabulary::entity}工艺的一个{adj1}实例。另见：{@bt_hero2|::subscribed_books::vocabulary::person}。"
+
+[[rulesets]]
+[rulesets.rules]
+"{role}. an office of {@bt_entity|::subscribed_books::vocabulary::entity}. As of {year1}, held by {@bt_hero|::subscribed_books::vocabulary::person}. See also: {@bt_entity2|::subscribed_books::vocabulary::entity}." = "{role}。{@bt_entity|::subscribed_books::vocabulary::entity}的职位。至{year1}年由{@bt_hero|::subscribed_books::vocabulary::person}担任。另见：{@bt_entity2|::subscribed_books::vocabulary::entity}。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_evsite|::subscribed_books::vocabulary::place}. a settlement of {@bt_entity|::subscribed_books::vocabulary::entity}, founded {year1}. See also: {@bt_entity2|::subscribed_books::vocabulary::entity}." = "{@bt_evsite|::subscribed_books::vocabulary::place}。{@bt_entity|::subscribed_books::vocabulary::entity}的聚落，建于{year1}年。另见：{@bt_entity2|::subscribed_books::vocabulary::entity}。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_entity|::subscribed_books::vocabulary::entity}, {year1}. a matter of record for this year; see chronologically adjacent entries for context." = "{@bt_entity|::subscribed_books::vocabulary::entity}，{year1}年。本年见诸记录之事；背景参见年代相邻的词条。"
+
+[[rulesets]]
+[rulesets.rules]
+"Entries continue below." = "下文续列词条。"
+
+[[rulesets]]
+[rulesets.rules]
+"The following section continues the alphabetical run." = "下一节继续按字母顺序列出词条。"
+
+[[rulesets]]
+[rulesets.rules]
+"This encyclopedia is a cross-section, not a conclusion; further editions may expand or correct what is recorded here. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "这部百科全书是一个横截面，而非结论；后续版本可能增补或修正这里的记录。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"AN ENCYCLOPEDIA OF {@bt_entity|::subscribed_books::vocabulary::entity}, IN THE CONNECTED STYLE. Every entry here leads to another; read it as you would follow a trail, not a list." = "《{@bt_entity|::subscribed_books::vocabulary::entity}百科全书·关联体》。这里的每个词条都通向另一个词条；请把它当作小径来追寻，而非清单。"
+
+[[rulesets]]
+[rulesets.rules]
+"Entries connected to the events of {year1}:" = "与{year1}年事件相连的词条："
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::vocabulary::person}. d. {year1}, {cause}. Connects to: the site of {@bt_evsite|::subscribed_books::vocabulary::place}, and to {@bt_entity|::subscribed_books::vocabulary::entity} more broadly. See also: {@bt_evsite2|::subscribed_books::vocabulary::place}, {@bt_entity2|::subscribed_books::vocabulary::entity}." = "{@bt_hero|::subscribed_books::vocabulary::person}。卒于{year1}年，死因为{cause}。关联：{@bt_evsite|::subscribed_books::vocabulary::place}这一地点，以及更广泛的{@bt_entity|::subscribed_books::vocabulary::entity}。另见：{@bt_evsite2|::subscribed_books::vocabulary::place}、{@bt_entity2|::subscribed_books::vocabulary::entity}。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_artifact|::subscribed_books::vocabulary::artifact}. created {year1}. Connects to its maker, {@bt_hero|::subscribed_books::vocabulary::person}, and to the craft-traditions of {@bt_entity|::subscribed_books::vocabulary::entity}. See also: {@bt_hero2|::subscribed_books::vocabulary::person}." = "{@bt_artifact|::subscribed_books::vocabulary::artifact}。创造于{year1}年。关联其创造者{@bt_hero|::subscribed_books::vocabulary::person}，以及{@bt_entity|::subscribed_books::vocabulary::entity}的工艺传统。另见：{@bt_hero2|::subscribed_books::vocabulary::person}。"
+
+[[rulesets]]
+[rulesets.rules]
+"{role}. held as of {year1} by {@bt_hero|::subscribed_books::vocabulary::person}. Connects to the governance of {@bt_entity|::subscribed_books::vocabulary::entity}. See also: {@bt_entity2|::subscribed_books::vocabulary::entity}." = "{role}。至{year1}年由{@bt_hero|::subscribed_books::vocabulary::person}担任。关联{@bt_entity|::subscribed_books::vocabulary::entity}的治理。另见：{@bt_entity2|::subscribed_books::vocabulary::entity}。"
+
+[[rulesets]]
+[rulesets.rules]
+"{year1}, in the affairs of {@bt_entity|::subscribed_books::vocabulary::entity}. a node in the record, connected to adjacent years and figures." = "{year1}年，{@bt_entity|::subscribed_books::vocabulary::entity}事务。记录中的一个节点，与相邻年份及人物相连。"
+
+[[rulesets]]
+[rulesets.rules]
+"Follow any thread below to its next connection." = "循下文任一线索，可找到它的下一处联系。"
+
+[[rulesets]]
+[rulesets.rules]
+"An encyclopedia arranged this way has no true final entry -- only a place where the reader, for now, stops following the thread. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "这样编排的百科全书，没有真正的最后一个词条，只有读者暂时停下追索的位置。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"AN ENCYCLOPEDIA OF {@bt_entity|::subscribed_books::vocabulary::entity}, WITH ANNOTATIONS. Where the record is solid, I have said so. Where it is not, I have said that too. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "《{@bt_entity|::subscribed_books::vocabulary::entity}百科全书·注释本》。记录可靠处，我已说明；不可靠处，也已说明。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"Entries for {year1}, with commentary:" = "{year1}年的词条及评注："
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::vocabulary::person}. recorded death, {year1}, cause given as {cause}. [Annotation: recorded cause should be treated as the official account, not necessarily the complete one.]" = "{@bt_hero|::subscribed_books::vocabulary::person}。记载死于{year1}年，死因为{cause}。［注：记录中的死因，应视为官方说法，未必是完整说法。］"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_artifact|::subscribed_books::vocabulary::artifact}. attributed to {@bt_hero|::subscribed_books::vocabulary::person}, {year1}. [Annotation: attribution is as good as the source that preserved it, no better.]" = "{@bt_artifact|::subscribed_books::vocabulary::artifact}。归于{@bt_hero|::subscribed_books::vocabulary::person}名下，{year1}年。［注：归属判断的可靠性，取决于保存它的来源，绝不会更高。］"
+
+[[rulesets]]
+[rulesets.rules]
+"{year1}, {@bt_entity|::subscribed_books::vocabulary::entity}. [Annotation: included on the strength of a single source; treat accordingly.]" = "{year1}年，{@bt_entity|::subscribed_books::vocabulary::entity}。［注：仅依据一个来源收入；阅读时请据此看待。］"
+
+[[rulesets]]
+[rulesets.rules]
+"Annotations continue where the record warrants them." = "凡记录值得注释之处，下文继续加注。"
+
+[[rulesets]]
+[rulesets.rules]
+"Certainty is cheaper than accuracy. I have tried to afford only the latter. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "确信比准确廉价。我尽力只负担后者。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A BIOGRAPHICAL DICTIONARY OF {@bt_entity|::subscribed_books::vocabulary::entity}. Entries are given by name, with dates and station, in the formal register proper to such a record." = "《{@bt_entity|::subscribed_books::vocabulary::entity}人物辞典》。词条依姓名列出，注明年代与身份，采用此类记录应有的正式笔法。"
+
+[[rulesets]]
+[rulesets.rules]
+"A BIOGRAPHICAL DICTIONARY OF {@bt_entity|::subscribed_books::vocabulary::entity}, compiled with the formality the subjects are owed. Where a life is known only in outline, the outline is given honestly, without invention to fill the gaps." = "《{@bt_entity|::subscribed_books::vocabulary::entity}人物辞典》，以传主应得的郑重编纂。若一生仅知轮廓，就如实写出轮廓，不以虚构填补空缺。"
+
+[[rulesets]]
+[rulesets.rules]
+"Subjects associated with {year1}:" = "与{year1}年有关的人物："
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::vocabulary::person}. {race}. B. {birth_year}, d. {year1} ({cause}). Of {@bt_entity|::subscribed_books::vocabulary::entity}." = "{@bt_hero|::subscribed_books::vocabulary::person}。{race}。生于{birth_year}年，卒于{year1}年（{cause}）。来自{@bt_entity|::subscribed_books::vocabulary::entity}。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::vocabulary::person}. {race}. Held the office of {role} within {@bt_entity|::subscribed_books::vocabulary::entity}, from {year1}." = "{@bt_hero|::subscribed_books::vocabulary::person}。{race}。自{year1}年起，在{@bt_entity|::subscribed_books::vocabulary::entity}担任{role}。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::vocabulary::person}. {race}, of {@bt_entity|::subscribed_books::vocabulary::entity}. Credited with the creation of {@bt_artifact|::subscribed_books::vocabulary::artifact}, {year1}." = "{@bt_hero|::subscribed_books::vocabulary::person}。{@bt_entity|::subscribed_books::vocabulary::entity}的{race}。据记载，于{year1}年创造{@bt_artifact|::subscribed_books::vocabulary::artifact}。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::vocabulary::person}. {race}, of {@bt_entity|::subscribed_books::vocabulary::entity}. Recorded in connection with the events of {year1}." = "{@bt_hero|::subscribed_books::vocabulary::person}。{@bt_entity|::subscribed_books::vocabulary::entity}的{race}。因与{year1}年事件有关而见诸记录。"
+
+[[rulesets]]
+[rulesets.rules]
+"Further entries follow, arranged as compiled." = "后续词条依编纂顺序排列。"
+
+[[rulesets]]
+[rulesets.rules]
+"This dictionary records what could be verified, no more and no less. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "这部辞典记录可证实之事，不多，也不少。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A WHO'S WHO OF {@bt_entity|::subscribed_books::vocabulary::entity}, with commentary. Formal enough to be useful, informal enough to be readable." = "《{@bt_entity|::subscribed_books::vocabulary::entity}名人录》，附有评注。正式得足以实用，也随意得足以好读。"
+
+[[rulesets]]
+[rulesets.rules]
+"Names that matter, circa {year1}:" = "约{year1}年值得记住的名字："
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::vocabulary::person}. gone as of {year1} ({cause}). {race}, {@bt_entity|::subscribed_books::vocabulary::entity}. Worth remembering: they mattered enough to be recorded here." = "{@bt_hero|::subscribed_books::vocabulary::person}。至{year1}年已故（{cause}）。{@bt_entity|::subscribed_books::vocabulary::entity}的{race}。值得记住，因为其分量足以被录入此书。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::vocabulary::person}. now {role} of {@bt_entity|::subscribed_books::vocabulary::entity}, as of {year1}. One to watch, or one to have already been watching." = "{@bt_hero|::subscribed_books::vocabulary::person}。至{year1}年已任{@bt_entity|::subscribed_books::vocabulary::entity}的{role}。值得关注，或早就该关注。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::vocabulary::person}. maker of {@bt_artifact|::subscribed_books::vocabulary::artifact} ({year1}). {race}, {@bt_entity|::subscribed_books::vocabulary::entity}. Judge the maker by the making." = "{@bt_hero|::subscribed_books::vocabulary::person}。{@bt_artifact|::subscribed_books::vocabulary::artifact}的创造者（{year1}年）。{@bt_entity|::subscribed_books::vocabulary::entity}的{race}。以作品评判创造者。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::vocabulary::person}. {race}, {@bt_entity|::subscribed_books::vocabulary::entity}. On the record as of {year1}, for reasons the record itself preserves." = "{@bt_hero|::subscribed_books::vocabulary::person}。{@bt_entity|::subscribed_books::vocabulary::entity}的{race}。至{year1}年见诸记录，理由由记录本身保存。"
+
+[[rulesets]]
+[rulesets.rules]
+"More names follow." = "下文还有更多名字。"
+
+[[rulesets]]
+[rulesets.rules]
+"A who's-who is only ever a snapshot. Names will be added; some, in time, will need updating. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "名人录永远只是一个瞬间的快照。会有名字加入，也会有些名字在日后需要更新。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A MEMORIAL REGISTER of the notable dead and living of {@bt_entity|::subscribed_books::vocabulary::entity}. Kept so that a name, once earned, is not easily lost." = "《{@bt_entity|::subscribed_books::vocabulary::entity}纪念名册》，收录知名的死者与生者。保存它，是为了让一个赢得的名字，不会轻易失去。"
+
+[[rulesets]]
+[rulesets.rules]
+"Register entries for {year1}:" = "{year1}年的名册词条："
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::vocabulary::person}. {race} of {@bt_entity|::subscribed_books::vocabulary::entity}. Born {birth_year}. Died {year1}, {cause}. Entered into the register so the name endures past the grave." = "{@bt_hero|::subscribed_books::vocabulary::person}。{@bt_entity|::subscribed_books::vocabulary::entity}的{race}。生于{birth_year}年。卒于{year1}年，死因为{cause}。录入名册，使其名字长存于坟墓之外。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::vocabulary::person}. {race} of {@bt_entity|::subscribed_books::vocabulary::entity}. Entered into the register upon appointment to {role}, {year1}." = "{@bt_hero|::subscribed_books::vocabulary::person}。{@bt_entity|::subscribed_books::vocabulary::entity}的{race}。于{year1}年获任{role}时录入名册。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::vocabulary::person}. {race} of {@bt_entity|::subscribed_books::vocabulary::entity}. Entered into the register, {year1}, on the strength of the events recorded." = "{@bt_hero|::subscribed_books::vocabulary::person}。{@bt_entity|::subscribed_books::vocabulary::entity}的{race}。于{year1}年，依据所记事件录入名册。"
+
+[[rulesets]]
+[rulesets.rules]
+"The register continues." = "名册继续如下。"
+
+[[rulesets]]
+[rulesets.rules]
+"A name in this register is a name that will not simply vanish. That is the whole of its purpose. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "录入这份名册的名字，不会轻易消失。这便是它的全部目的。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A GAZETTEER OF THE LANDS OF {@bt_entity|::subscribed_books::vocabulary::entity}. Places are entered as surveyed, with such notes on history and character as the record allows." = "《{@bt_entity|::subscribed_books::vocabulary::entity}领土地名志》。地点按测绘顺序收入，并依现有记录，附上历史与风貌的注记。"
+
+[[rulesets]]
+[rulesets.rules]
+"A GAZETTEER OF THE LANDS OF {@bt_entity|::subscribed_books::vocabulary::entity}, compiled by {@bt_hero|::subscribed_books::vocabulary::person}. Each entry gives location, founding, and the events that have marked the place -- a geography written in more than just terrain." = "《{@bt_entity|::subscribed_books::vocabulary::entity}领土地名志》，由{@bt_hero|::subscribed_books::vocabulary::person}编纂。每条说明位置、建城，以及刻下印记的事件：地理写下的，不止地形。"
+
+[[rulesets]]
+[rulesets.rules]
+"Places entered into the record circa {year1}:" = "约{year1}年收入记录的地点："
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_evsite|::subscribed_books::vocabulary::place}. a settlement of {@bt_entity|::subscribed_books::vocabulary::entity}, founded {year1}. Position and terrain not further specified in this edition." = "{@bt_evsite|::subscribed_books::vocabulary::place}。{@bt_entity|::subscribed_books::vocabulary::entity}的聚落，建于{year1}年。本版未进一步说明位置与地形。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_evsite|::subscribed_books::vocabulary::place}. site associated with the death of {@bt_hero|::subscribed_books::vocabulary::person}, {year1} ({cause}). Marked accordingly on any complete survey." = "{@bt_evsite|::subscribed_books::vocabulary::place}。与{@bt_hero|::subscribed_books::vocabulary::person}于{year1}年死亡（{cause}）有关的地点；完整测绘应作相应标记。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_evsite|::subscribed_books::vocabulary::place}. notable as the place of creation of {@bt_artifact|::subscribed_books::vocabulary::artifact}, {year1}, by {@bt_hero|::subscribed_books::vocabulary::person}." = "{@bt_evsite|::subscribed_books::vocabulary::place}。因{@bt_hero|::subscribed_books::vocabulary::person}于{year1}年在此创造{@bt_artifact|::subscribed_books::vocabulary::artifact}而闻名。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_site|::subscribed_books::vocabulary::place}. a place of {@bt_entity|::subscribed_books::vocabulary::entity}, of record as of {year1}." = "{@bt_site|::subscribed_books::vocabulary::place}。{@bt_entity|::subscribed_books::vocabulary::entity}的一处地点，至{year1}年见诸记录。"
+
+[[rulesets]]
+[rulesets.rules]
+"The gazetteer continues with adjoining regions." = "地名志继续收录相邻地区。"
+
+[[rulesets]]
+[rulesets.rules]
+"No gazetteer is ever truly finished; there is always another valley the survey has not yet reached. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "地名志永远不会真正完成，总有另一条山谷，测绘尚未抵达。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"AN ATLAS FOR THE TRAVELER. Entries are given as a traveler would want them: what a place is, why it matters, and what to expect on arrival." = "《旅人地图集》。词条依旅人所需列出：一个地方是什么，为何重要，以及抵达后会遇到什么。"
+
+[[rulesets]]
+[rulesets.rules]
+"Entries relevant to journeys made around {year1}:" = "与{year1}年前后旅程有关的词条："
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_evsite|::subscribed_books::vocabulary::place}. founded {year1} by {@bt_entity|::subscribed_books::vocabulary::entity}. Expect a settlement still finding its shape." = "{@bt_evsite|::subscribed_books::vocabulary::place}。{@bt_entity|::subscribed_books::vocabulary::entity}于{year1}年建立；这里仍是一个正在成形的聚落。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_evsite|::subscribed_books::vocabulary::place}. the traveler should know that {@bt_hero|::subscribed_books::vocabulary::person} died here, {year1}. Locals may wish to discuss it, or may not." = "{@bt_evsite|::subscribed_books::vocabulary::place}。旅人应知，{@bt_hero|::subscribed_books::vocabulary::person}于{year1}年死在这里。当地人也许愿意谈及此事，也许不愿。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_site|::subscribed_books::vocabulary::place}. worth marking on the route; associated with the affairs of {@bt_entity|::subscribed_books::vocabulary::entity} as of {year1}." = "{@bt_site|::subscribed_books::vocabulary::place}。值得在路线中标记；至{year1}年，与{@bt_entity|::subscribed_books::vocabulary::entity}事务有关。"
+
+[[rulesets]]
+[rulesets.rules]
+"More waypoints follow." = "下文还有更多路标。"
+
+[[rulesets]]
+[rulesets.rules]
+"Carry this atlas, but trust the road over the page when the two disagree. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "带上这本地图集，但若路况与书页不符，请相信道路。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A NATURAL SURVEY of the region held by {@bt_entity|::subscribed_books::vocabulary::entity}. Geology, waters, and living things are given precedence over politics -- the land endures longer than any of its rulers." = "《{@bt_entity|::subscribed_books::vocabulary::entity}辖区自然调查》。地质、水域与生物先于政治，因为土地比任何统治者都更长久。"
+
+[[rulesets]]
+[rulesets.rules]
+"Survey notes from around {year1}:" = "{year1}年前后的调查笔记："
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_evsite|::subscribed_books::vocabulary::place}. settled {year1}; the underlying land predates {@bt_entity|::subscribed_books::vocabulary::entity} by a margin the survey does not attempt to estimate." = "{@bt_evsite|::subscribed_books::vocabulary::place}。于{year1}年定居；这里的土地比{@bt_entity|::subscribed_books::vocabulary::entity}古老多少，本调查不尝试估计。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_site|::subscribed_books::vocabulary::place}. surveyed as of {year1}; political affairs of {@bt_entity|::subscribed_books::vocabulary::entity} noted only where they affect the land itself." = "{@bt_site|::subscribed_books::vocabulary::place}。至{year1}年已测绘；仅在政治事务影响土地本身时，才提及{@bt_entity|::subscribed_books::vocabulary::entity}。"
+
+[[rulesets]]
+[rulesets.rules]
+"The survey continues into the next region." = "调查继续进入下一个地区。"
+
+[[rulesets]]
+[rulesets.rules]
+"The land was here before {@bt_entity|::subscribed_books::vocabulary::entity}, and the survey expects it will outlast this book as well. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "土地早于{@bt_entity|::subscribed_books::vocabulary::entity}存在。调查者相信，它也会比这本书存在得更久。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A STAR CHART, compiled from observations made at {@bt_site|::subscribed_books::vocabulary::place}. Positions are given as observed; the reader should not expect the precision of instruments {@bt_entity|::subscribed_books::vocabulary::entity} does not possess." = "《星图》，据{@bt_site|::subscribed_books::vocabulary::place}的观测编成。位置依观测标明；{@bt_entity|::subscribed_books::vocabulary::entity}并不拥有的仪器精度，读者不应期待。"
+
+[[rulesets]]
+[rulesets.rules]
+"Observations recorded circa {year1}:" = "约{year1}年记录的观测："
+
+[[rulesets]]
+[rulesets.rules]
+"Observation, {year1}. recorded at {@bt_site|::subscribed_books::vocabulary::place}. Position noted, cross-referenced against the observations of {@bt_entity|::subscribed_books::vocabulary::entity}'s prior chart-keepers where available." = "观测，{year1}年。记录于{@bt_site|::subscribed_books::vocabulary::place}。已标明位置；凡资料可得，均与{@bt_entity|::subscribed_books::vocabulary::entity}历任星图记录者的观测交叉参照。"
+
+[[rulesets]]
+[rulesets.rules]
+"Observation, {year1}. the chart-keeper notes the death of {@bt_hero|::subscribed_books::vocabulary::person} in this period ({cause}); observations continued regardless, as the sky does not pause for the ground." = "观测，{year1}年。星图记录者注明{@bt_hero|::subscribed_books::vocabulary::person}在此期间去世（{cause}）；观测仍继续，因为天空不会为大地停下。"
+
+[[rulesets]]
+[rulesets.rules]
+"Observation, {year1}. coincides with the creation of {@bt_artifact|::subscribed_books::vocabulary::artifact} by {@bt_hero|::subscribed_books::vocabulary::person}; noted here only for the correspondence of dates." = "观测，{year1}年。与{@bt_hero|::subscribed_books::vocabulary::person}创造{@bt_artifact|::subscribed_books::vocabulary::artifact}同时；此处仅为记录日期重合而注明。"
+
+[[rulesets]]
+[rulesets.rules]
+"Further positions follow in the next section of the chart." = "星图下一部分继续列出其他位置。"
+
+[[rulesets]]
+[rulesets.rules]
+"This chart is a single night's slice of a sky that does not hold still. Later chart-keepers will correct it, as they should. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "这幅图只截取了不断运动的天空中的一个夜晚。后来的星图记录者会修正它，也理应修正。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A STAR CHART OF {@bt_entity|::subscribed_books::vocabulary::entity}, WITH THE OLD NAMES. Where a position has a story attached, the story is given alongside the position -- the sky above {@bt_entity2|::subscribed_books::vocabulary::entity} has never been just geometry." = "《{@bt_entity|::subscribed_books::vocabulary::entity}星图·旧名本》。凡一个位置附有故事，就将故事与位置并列；{@bt_entity2|::subscribed_books::vocabulary::entity}上方的天空，从来不只是几何。"
+
+[[rulesets]]
+[rulesets.rules]
+"Positions and their attached stories, circa {year1}:" = "约{year1}年的位置及其附带故事："
+
+[[rulesets]]
+[rulesets.rules]
+"Position, named for {@bt_hero|::subscribed_books::vocabulary::person}. so called since {year1}, when {@bt_hero2|::subscribed_books::vocabulary::person} died ({cause}); the naming is local custom, not formal cartography." = "以{@bt_hero|::subscribed_books::vocabulary::person}命名的位置。自{year1}年{@bt_hero2|::subscribed_books::vocabulary::person}去世（{cause}）后如此称呼；命名出于地方习俗，而非正式制图。"
+
+[[rulesets]]
+[rulesets.rules]
+"Position, {year1}. recorded without an attached story; not every point of light has earned one yet." = "位置，{year1}年。记录时未附故事；并非每一个光点都已赢得故事。"
+
+[[rulesets]]
+[rulesets.rules]
+"More named positions follow." = "下文续列更多具名位置。"
+
+[[rulesets]]
+[rulesets.rules]
+"A chart with names is more useful to the living than a chart with only numbers. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "有名字的星图，比只有数字的星图更有益于生者。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A STAR CHART kept as an instrument log. Entries are terse by design; this is a working document, not a work of literature." = "《星图·仪器日志》。条目刻意简短；这是一份工作文档，而非文学作品。"
+
+[[rulesets]]
+[rulesets.rules]
+"Log entries, {year1}:" = "日志条目，{year1}年："
+
+[[rulesets]]
+[rulesets.rules]
+"Log, {year1}. position recorded at {@bt_site|::subscribed_books::vocabulary::place}. No anomaly noted." = "日志，{year1}年。在{@bt_site|::subscribed_books::vocabulary::place}记录位置。未发现异常。"
+
+[[rulesets]]
+[rulesets.rules]
+"Log, {year1}. observation interrupted by the death of {@bt_hero|::subscribed_books::vocabulary::person} ({cause}); resumed the following night." = "日志，{year1}年。观测因{@bt_hero|::subscribed_books::vocabulary::person}死亡（{cause}）而中断；于次夜恢复。"
+
+[[rulesets]]
+[rulesets.rules]
+"Log continues." = "日志继续如下。"
+
+[[rulesets]]
+[rulesets.rules]
+"End of log for this period. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "本期日志结束。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A CATALOGUE OF CELESTIAL BODIES observed from the lands of {@bt_entity|::subscribed_books::vocabulary::entity}. Entries are numbered in the order catalogued, not in order of brightness or importance." = "《天体目录》，收录在{@bt_entity|::subscribed_books::vocabulary::entity}领土上观测到的天体。条目按收录顺序编号，不依亮度或重要性。"
+
+[[rulesets]]
+[rulesets.rules]
+"Catalogue entries added circa {year1}:" = "约{year1}年增补的目录条目："
+
+[[rulesets]]
+[rulesets.rules]
+"Catalogue entry, {year1}. position and approximate magnitude recorded; classification pending further observation." = "目录条目，{year1}年。已记录位置与大致星等；分类有待进一步观测。"
+
+[[rulesets]]
+[rulesets.rules]
+"Catalogue entry, {year1}. recorded in the same season as the death of {@bt_hero|::subscribed_books::vocabulary::person} ({cause}); the correspondence is noted for the record, not implied to be meaningful." = "目录条目，{year1}年。记录季节与{@bt_hero|::subscribed_books::vocabulary::person}死亡（{cause}）相同；注明重合仅为存档，并不暗示其中有意义。"
+
+[[rulesets]]
+[rulesets.rules]
+"Catalogue entry, {year1}. recorded near the time {@bt_artifact|::subscribed_books::vocabulary::artifact} was completed by {@bt_hero|::subscribed_books::vocabulary::person}; included for chronological completeness." = "目录条目，{year1}年。记录时间接近{@bt_hero|::subscribed_books::vocabulary::person}完成{@bt_artifact|::subscribed_books::vocabulary::artifact}之时；为年代完整而收入。"
+
+[[rulesets]]
+[rulesets.rules]
+"The catalogue continues with further entries." = "目录继续收录后续条目。"
+
+[[rulesets]]
+[rulesets.rules]
+"This catalogue will be superseded, as all catalogues eventually are. Until then, it is what {@bt_entity|::subscribed_books::vocabulary::entity} has. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "这部目录终将被替代，一切目录最终皆如此。在那之前，它就是{@bt_entity|::subscribed_books::vocabulary::entity}现有的记录。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A CATALOGUE OF THE SKY, though I confess this is as much love letter as ledger. Each entry below is a point of light I, {@bt_hero|::subscribed_books::vocabulary::person}, could not help but notice." = "《天空目录》。不过我承认，它既像账册，也像情书。下文每一条，都是我，{@bt_hero|::subscribed_books::vocabulary::person}，忍不住注意到的一个光点。"
+
+[[rulesets]]
+[rulesets.rules]
+"Entries added to the catalogue around {year1}:" = "{year1}年前后加入目录的条目："
+
+[[rulesets]]
+[rulesets.rules]
+"Entry, {year1}. a light worth cataloguing, seen from {@bt_site|::subscribed_books::vocabulary::place}; the ledger insists on rigor, but the noticing was pure feeling." = "条目，{year1}年。从{@bt_site|::subscribed_books::vocabulary::place}看见、值得收录的一道光；账册要求严谨，而注意到它，却全然出于感情。"
+
+[[rulesets]]
+[rulesets.rules]
+"Entry, {year1}. catalogued in the year {@bt_hero|::subscribed_books::vocabulary::person} died ({cause}); I did not intend the timing to mean anything, and yet." = "条目，{year1}年。收入于{@bt_hero|::subscribed_books::vocabulary::person}死亡（{cause}）之年；我本无意让这时机意味着什么，可是……"
+
+[[rulesets]]
+[rulesets.rules]
+"More lights, more entries." = "更多光点，更多条目。"
+
+[[rulesets]]
+[rulesets.rules]
+"The catalogue is finished. The sky, mercifully, is not. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "目录完成了。幸好，天空没有完成。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A CATALOGUE preserved from the older astronomical records of {@bt_entity|::subscribed_books::vocabulary::entity}, re-entered here in the numbered form current practice demands." = "《天体目录》，保存自{@bt_entity|::subscribed_books::vocabulary::entity}较古老的天文记录，在此按当今所要求的编号形式重新录入。"
+
+[[rulesets]]
+[rulesets.rules]
+"Entries transcribed from records of {year1}:" = "从{year1}年记录中抄录的条目："
+
+[[rulesets]]
+[rulesets.rules]
+"Entry (transcribed), {year1}. original notation partially illegible; position reconstructed as faithfully as the source allows." = "条目（抄录），{year1}年。原有记号部分无法辨读；在来源允许的范围内，尽可能忠实地重建位置。"
+
+[[rulesets]]
+[rulesets.rules]
+"Entry (transcribed), {year1}. the original record notes the death of {@bt_hero|::subscribed_books::vocabulary::person} in the margin beside this entry; reason for the annotation not preserved." = "条目（抄录），{year1}年。原始记录在本条旁的页边注明{@bt_hero|::subscribed_books::vocabulary::person}死亡；加注原因未能保存。"
+
+[[rulesets]]
+[rulesets.rules]
+"Transcription continues in the next section." = "下一部分继续抄录。"
+
+[[rulesets]]
+[rulesets.rules]
+"What could be recovered has been recovered. The rest is lost to the same years that preserved the rest. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "能找回的都已找回。其余部分消失在那些既保存、又吞没记录的岁月里。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A GUIDE, IN STEPS. What follows is arranged as a sequence to be followed, not a reference to be dipped into at random." = "《分步指南》。下文按应当循序实行的步骤编排，而非可随意翻查的参考条目。"
+
+[[rulesets]]
+[rulesets.rules]
+"A GUIDE TO {@bt_entity|::subscribed_books::vocabulary::entity}, arranged in the order a newcomer would actually need it -- first things first, and nothing assumed that has not already been covered." = "《{@bt_entity|::subscribed_books::vocabulary::entity}指南》，按照初来者真正需要的次序编排：要紧的先讲，不假定任何尚未说明的知识。"
+
+[[rulesets]]
+[rulesets.rules]
+"Steps relevant to the period around {year1}:" = "与{year1}年前后有关的步骤："
+
+[[rulesets]]
+[rulesets.rules]
+"Step: on arriving at {@bt_evsite|::subscribed_books::vocabulary::place}. founded {year1} by {@bt_entity|::subscribed_books::vocabulary::entity}; expect the layout of a young settlement, not a finished one." = "步骤：抵达{@bt_evsite|::subscribed_books::vocabulary::place}。{@bt_entity|::subscribed_books::vocabulary::entity}于{year1}年建立此地；你将看到年轻聚落的布局，而非完成的城镇。"
+
+[[rulesets]]
+[rulesets.rules]
+"Step: a note of caution. the death of {@bt_hero|::subscribed_books::vocabulary::person} in {year1} ({cause}) is worth knowing before you go -- it shaped how {@bt_entity|::subscribed_books::vocabulary::entity} treats the matter now." = "步骤：警示。出发前，值得了解{@bt_hero|::subscribed_books::vocabulary::person}于{year1}年死亡（{cause}）的事；它塑造了{@bt_entity|::subscribed_books::vocabulary::entity}如今处理相关事务的方式。"
+
+[[rulesets]]
+[rulesets.rules]
+"Step: what to look for. {@bt_artifact|::subscribed_books::vocabulary::artifact}, made {year1} by {@bt_hero|::subscribed_books::vocabulary::person}, is worth seeking out if the guide's route passes near it." = "步骤：寻找什么。{@bt_hero|::subscribed_books::vocabulary::person}于{year1}年制造的{@bt_artifact|::subscribed_books::vocabulary::artifact}，若指南路线经过附近，值得寻访。"
+
+[[rulesets]]
+[rulesets.rules]
+"Step: general orientation. context relevant to {year1}, included so the next steps make sense." = "步骤：基本方位。与{year1}年有关的背景，为使后续步骤容易理解而收入。"
+
+[[rulesets]]
+[rulesets.rules]
+"Proceed to the next step only once this one is clear." = "只有弄清这一步，才能继续下一步。"
+
+[[rulesets]]
+[rulesets.rules]
+"That concludes the steps. The rest is practice, which no guide can substitute for. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "步骤到此结束。剩下的是实践，任何指南都无法代替。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A GUIDE TO {@bt_site|::subscribed_books::vocabulary::place}, SPECIFICALLY. Not a general survey -- this one place, in useful detail." = "《{@bt_site|::subscribed_books::vocabulary::place}专门指南》。不是综合调查，而是关于这一处地方的实用细节。"
+
+[[rulesets]]
+[rulesets.rules]
+"Sections concerning {year1}:" = "涉及{year1}年的章节："
+
+[[rulesets]]
+[rulesets.rules]
+"Section: founding. {@bt_evsite|::subscribed_books::vocabulary::place} was founded {year1}; the guide begins its account here." = "章节：建立。{@bt_evsite|::subscribed_books::vocabulary::place}建于{year1}年；指南从此处开始叙述。"
+
+[[rulesets]]
+[rulesets.rules]
+"Section: notable loss. {@bt_hero|::subscribed_books::vocabulary::person} died here, {year1} ({cause}); mentioned because visitors ask." = "章节：重大损失。{@bt_hero|::subscribed_books::vocabulary::person}于{year1}年死在此地（{cause}）；因为访客常问，故而提及。"
+
+[[rulesets]]
+[rulesets.rules]
+"Section: general notes. covering {year1}; included for continuity with the surrounding sections." = "章节：一般注记。涵盖{year1}年；为与前后章节衔接而收入。"
+
+[[rulesets]]
+[rulesets.rules]
+"The next section follows." = "下文接续下一章。"
+
+[[rulesets]]
+[rulesets.rules]
+"This guide to {@bt_site|::subscribed_books::vocabulary::place} is necessarily incomplete. Go and see the rest yourself. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "这部{@bt_site|::subscribed_books::vocabulary::place}指南必然不完整。其余部分，请亲自去看。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A GUIDE FOR THE APPRENTICE, written the way I wished someone had written one for me. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "《学徒指南》，写成我当年希望有人为我写出的样子。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"Lessons relevant to {year1}:" = "与{year1}年有关的课程："
+
+[[rulesets]]
+[rulesets.rules]
+"Lesson: on craft. {@bt_hero|::subscribed_books::vocabulary::person} made {@bt_artifact|::subscribed_books::vocabulary::artifact} in {year1}; study what made it work, not just that it did." = "课程：论工艺。{@bt_hero|::subscribed_books::vocabulary::person}于{year1}年制造{@bt_artifact|::subscribed_books::vocabulary::artifact}；请研究是什么使它成功，而非仅知它成功。"
+
+[[rulesets]]
+[rulesets.rules]
+"Lesson: on mortality and mastery. {@bt_hero|::subscribed_books::vocabulary::person} died in {year1} ({cause}), skilled or not; mastery is not the same as safety." = "课程：论死亡与精通。{@bt_hero|::subscribed_books::vocabulary::person}于{year1}年去世（{cause}），无论技艺高低；精通不等于安全。"
+
+[[rulesets]]
+[rulesets.rules]
+"Lesson. drawn from the events of {year1}; apply it or don't, but at least consider it." = "课程。取自{year1}年事件；用不用随你，但至少考虑一下。"
+
+[[rulesets]]
+[rulesets.rules]
+"Next lesson follows." = "下文接续下一课。"
+
+[[rulesets]]
+[rulesets.rules]
+"These lessons cost me something to learn. Take them for free. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "学会这些，我曾付出代价。你可免费收下。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A FIELD MANUAL. Terse by design -- this is meant to be consulted quickly, under pressure, not read at leisure." = "《实地手册》。文字刻意简短，供人在压力之下迅速查阅，而非闲暇时细读。"
+
+[[rulesets]]
+[rulesets.rules]
+"Procedures relevant to {year1}:" = "与{year1}年有关的操作规程："
+
+[[rulesets]]
+[rulesets.rules]
+"Procedure note. the death of {@bt_hero|::subscribed_books::vocabulary::person} in {year1} ({cause}) prompted a revision to standard procedure; the revision follows below where applicable." = "规程说明。{@bt_hero|::subscribed_books::vocabulary::person}于{year1}年死亡（{cause}），促使标准规程修订；适用的修订列于下文。"
+
+[[rulesets]]
+[rulesets.rules]
+"Equipment note. {@bt_artifact|::subscribed_books::vocabulary::artifact} (created {year1} by {@bt_hero|::subscribed_books::vocabulary::person}) is referenced in the following procedures where relevant." = "装备说明。以下规程在相关之处，引用{@bt_hero|::subscribed_books::vocabulary::person}于{year1}年创造的{@bt_artifact|::subscribed_books::vocabulary::artifact}。"
+
+[[rulesets]]
+[rulesets.rules]
+"Procedure. applicable as of {year1}; supersedes any earlier, unwritten practice." = "规程。至{year1}年适用；取代此前一切未成文做法。"
+
+[[rulesets]]
+[rulesets.rules]
+"Next procedure follows." = "下文接续下一项规程。"
+
+[[rulesets]]
+[rulesets.rules]
+"End of manual. Follow the procedures. They exist because something went wrong before they were written. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "手册结束。请遵循规程。它们之所以存在，是因为写下之前，曾经出了事。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A MANUAL ON THEORETICAL FOUNDATIONS. Practice is covered elsewhere; this work concerns itself with why the practice works, which is a different question entirely." = "《理论基础手册》。实践另有论述；本书研究实践为何有效，那是全然不同的问题。"
+
+[[rulesets]]
+[rulesets.rules]
+"Propositions relevant to {year1}:" = "与{year1}年有关的命题："
+
+[[rulesets]]
+[rulesets.rules]
+"Proposition. the creation of {@bt_artifact|::subscribed_books::vocabulary::artifact} in {year1} by {@bt_hero|::subscribed_books::vocabulary::person} demonstrates the principle under discussion; treat it as a worked example, not proof on its own." = "命题。{@bt_hero|::subscribed_books::vocabulary::person}于{year1}年创造{@bt_artifact|::subscribed_books::vocabulary::artifact}，体现了所讨论的原理；应视为演算实例，而非仅凭其本身就成立的证明。"
+
+[[rulesets]]
+[rulesets.rules]
+"Proposition. supported by the events of {year1}; see adjoining propositions for the fuller argument." = "命题。得到{year1}年事件支持；完整论证参见相邻命题。"
+
+[[rulesets]]
+[rulesets.rules]
+"The next proposition builds on this one." = "下一命题建立在本命题之上。"
+
+[[rulesets]]
+[rulesets.rules]
+"The theory is only as good as its worked examples. I have tried to provide enough. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "理论的可靠性，取决于它的演算实例。我已尽力提供足够多的实例。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A MANUAL FOR BEGINNERS. No prior knowledge assumed; every term is defined before it is used." = "《初学者手册》。不假定已有知识；每个术语都先定义，再使用。"
+
+[[rulesets]]
+[rulesets.rules]
+"New material for {year1}:" = "{year1}年的新内容："
+
+[[rulesets]]
+[rulesets.rules]
+"Worked example. {@bt_hero|::subscribed_books::vocabulary::person} created {@bt_artifact|::subscribed_books::vocabulary::artifact} in {year1}; walk through how, not just that." = "演算实例。{@bt_hero|::subscribed_books::vocabulary::person}于{year1}年创造{@bt_artifact|::subscribed_books::vocabulary::artifact}；请逐步理解如何做到，而非仅知确实做到了。"
+
+[[rulesets]]
+[rulesets.rules]
+"Cautionary note. {@bt_hero|::subscribed_books::vocabulary::person} died in {year1} ({cause}); manuals exist so this does not need to happen twice." = "警示说明。{@bt_hero|::subscribed_books::vocabulary::person}于{year1}年死亡（{cause}）；手册的存在，就是为了让这类事不必发生第二次。"
+
+[[rulesets]]
+[rulesets.rules]
+"New material. covering {year1}; builds on everything before it in this manual." = "新内容。涵盖{year1}年；建立在本手册此前全部内容之上。"
+
+[[rulesets]]
+[rulesets.rules]
+"Next section follows; do not skip ahead." = "下文接续下一节；不要跳读。"
+
+[[rulesets]]
+[rulesets.rules]
+"If you followed every step, you now know what I know. Use it better than I did. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "若你遵循了每一步，如今就知道了我所知道的一切。请比我用得更好。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A TREATISE ON THE TECHNOLOGICAL EVOLUTION OF {@bt_entity|::subscribed_books::vocabulary::entity}. Advances are given in the order they occurred, each building -- or failing to build -- on what preceded it." = "《{@bt_entity|::subscribed_books::vocabulary::entity}技术演进论》。进步按发生顺序列出，每一项都建立在此前成果之上，或未能建立其上。"
+
+[[rulesets]]
+[rulesets.rules]
+"A TREATISE ON THE TECHNOLOGICAL EVOLUTION OF {@bt_entity|::subscribed_books::vocabulary::entity}, tracing how one advance made the next possible, or in some cases, how a promising avenue was abandoned entirely." = "《{@bt_entity|::subscribed_books::vocabulary::entity}技术演进论》，追溯一项进步如何使下一项成为可能，或在某些情况下，一条看似有望的路线如何被完全放弃。"
+
+[[rulesets]]
+[rulesets.rules]
+"Advances recorded circa {year1}:" = "约{year1}年记录的进步："
+
+[[rulesets]]
+[rulesets.rules]
+"Advance, {year1}. {@bt_artifact|::subscribed_books::vocabulary::artifact}, created by {@bt_hero|::subscribed_books::vocabulary::person}, represents a step forward in the craft-tradition of {@bt_entity|::subscribed_books::vocabulary::entity}; later work builds on it directly." = "进步，{year1}年。{@bt_hero|::subscribed_books::vocabulary::person}创造的{@bt_artifact|::subscribed_books::vocabulary::artifact}，标志着{@bt_entity|::subscribed_books::vocabulary::entity}工艺传统向前迈出一步；后来的作品直接建立在它之上。"
+
+[[rulesets]]
+[rulesets.rules]
+"Note, {year1}. the death of {@bt_hero|::subscribed_books::vocabulary::person} ({cause}) interrupted work in progress; whether it was later completed by another hand is not always recorded." = "注记，{year1}年。{@bt_hero|::subscribed_books::vocabulary::person}之死（{cause}），中断了正在进行的工作；后来是否由他人完成，并非总有记录。"
+
+[[rulesets]]
+[rulesets.rules]
+"Development, {year1}. a minor advance, included for completeness of the technological record." = "发展，{year1}年。一项小进步，为求技术记录完整而收入。"
+
+[[rulesets]]
+[rulesets.rules]
+"The next advance follows, building on this one." = "下文的下一项进步，建立在这一项之上。"
+
+[[rulesets]]
+[rulesets.rules]
+"Technological evolution is not a straight line; it is recorded here as one anyway, for clarity, with the understanding that the reality was messier. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "技术演进并非直线；为便于理解，这里仍将它写成直线，同时承认现实更加复杂。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A TREATISE COMPARING THE TECHNOLOGICAL PATHS OF {@bt_entity|::subscribed_books::vocabulary::entity} AGAINST THOSE OF ITS NEIGHBORS, so far as those paths can be reconstructed." = "《{@bt_entity|::subscribed_books::vocabulary::entity}与邻国技术道路比较论》，在能够重建这些道路的范围内进行比较。"
+
+[[rulesets]]
+[rulesets.rules]
+"Comparative notes for {year1}:" = "{year1}年的比较注记："
+
+[[rulesets]]
+[rulesets.rules]
+"Comparative note, {year1}. {@bt_artifact|::subscribed_books::vocabulary::artifact} (by {@bt_hero|::subscribed_books::vocabulary::person}) is compared here against contemporary work elsewhere; {@bt_entity|::subscribed_books::vocabulary::entity}'s approach is not assumed superior by default." = "比较注记，{year1}年。将{@bt_hero|::subscribed_books::vocabulary::person}创造的{@bt_artifact|::subscribed_books::vocabulary::artifact}与其他地方的同时代作品相比较；不预先假定{@bt_entity|::subscribed_books::vocabulary::entity}的做法更优越。"
+
+[[rulesets]]
+[rulesets.rules]
+"Comparative note, {year1}. context for comparison; conclusions are left to the reader." = "比较注记，{year1}年。提供比较背景；结论留给读者。"
+
+[[rulesets]]
+[rulesets.rules]
+"Further comparison follows." = "下文继续比较。"
+
+[[rulesets]]
+[rulesets.rules]
+"No civilization's technological path is the only reasonable one. This treatise tries not to forget that. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "没有任何文明的技术道路，是唯一合理的道路。本论著努力不忘记这一点。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+[rulesets.rules]
+"A TREATISE ON TECHNOLOGICAL EVOLUTION, WITH PARTICULAR ATTENTION TO WHAT WENT WRONG. Progress is not the only outcome worth recording." = "《技术演进论·失误专论》。进步并非唯一值得记录的结果。"
+
+[[rulesets]]
+[rulesets.rules]
+"Cautionary entries for {year1}:" = "{year1}年的警示条目："
+
+[[rulesets]]
+[rulesets.rules]
+"Cautionary entry, {year1}. {@bt_hero|::subscribed_books::vocabulary::person} died ({cause}) in circumstances connected to work then in progress; the treatise records this without assigning blame it cannot support." = "警示条目，{year1}年。{@bt_hero|::subscribed_books::vocabulary::person}因{cause}而死，情境与当时进行中的工作有关；本书记录此事，但不作证据无法支持的归责。"
+
+[[rulesets]]
+[rulesets.rules]
+"Entry, {year1}. {@bt_artifact|::subscribed_books::vocabulary::artifact}, created by {@bt_hero|::subscribed_books::vocabulary::person}, succeeded; not every attempt recorded in this treatise did." = "条目，{year1}年。{@bt_hero|::subscribed_books::vocabulary::person}创造的{@bt_artifact|::subscribed_books::vocabulary::artifact}成功了；本论著记录的尝试，并非全都成功。"
+
+[[rulesets]]
+[rulesets.rules]
+"Entry, {year1}. included for balance against the treatise's more triumphant entries." = "条目，{year1}年。为与书中那些更辉煌的条目相平衡而收入。"
+
+[[rulesets]]
+[rulesets.rules]
+"The record continues, successes and failures alike." = "记录继续如下，成功与失败一并收录。"
+
+[[rulesets]]
+[rulesets.rules]
+"Progress that only remembers its successes is not learning anything. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "只记得自己成功的进步，什么也没有学会。——{@bt_hero|::subscribed_books::vocabulary::person}"
+
+
+# 声明内生成变化的规范形变体；原作者句式保留。
+[[rulesets]]
+[rulesets.rules]
+"{@bt_artifact|::subscribed_books::vocabulary::artifact}, proper n. a object of note created in {year1}, whose name has entered common usage as a byword for {adj1} craftsmanship." = "{@bt_artifact|::subscribed_books::vocabulary::artifact}，专有名词。于{year1}年创造的著名物件，其名已进入日常用语，成为{adj1}工艺的代称。"
+"{role}. a office of {@bt_entity|::subscribed_books::vocabulary::entity}. As of {year1}, held by {@bt_hero|::subscribed_books::vocabulary::person}. See also: {@bt_entity2|::subscribed_books::vocabulary::entity}." = "{role}。{@bt_entity|::subscribed_books::vocabulary::entity}的职位。至{year1}年由{@bt_hero|::subscribed_books::vocabulary::person}担任。另见：{@bt_entity2|::subscribed_books::vocabulary::entity}。"
+"A encyclopedia arranged this way has no true final entry -- only a place where the reader, for now, stops following the thread. -- {@bt_hero|::subscribed_books::vocabulary::person}" = "这样编排的百科全书，没有真正的最后一个词条，只有读者暂时停下追索的位置。——{@bt_hero|::subscribed_books::vocabulary::person}"
+"Position, {year1}. recorded without a attached story; not every point of light has earned one yet." = "位置，{year1}年。记录时未附故事；并非每一个光点都已赢得故事。"
+"A STAR CHART kept as a instrument log. Entries are terse by design; this is a working document, not a work of literature." = "《星图·仪器日志》。条目刻意简短；这是一份工作文档，而非文学作品。"
+

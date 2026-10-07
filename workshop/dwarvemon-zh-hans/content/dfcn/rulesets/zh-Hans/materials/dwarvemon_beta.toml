@@ -1,0 +1,5 @@
+base = "materials::dwarvemon_beta"
+
+[[rulesets]]
+[rulesets.rules]
+"{::items::dwarvemon_beta}" = "{::items::dwarvemon_beta}"

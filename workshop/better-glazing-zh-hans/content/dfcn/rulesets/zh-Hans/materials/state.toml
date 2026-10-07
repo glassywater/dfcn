@@ -1,0 +1,15 @@
+base = "materials::state"
+
+[[rulesets]]
+[rulesets.rules]
+"{::better_glazing::materials}" = "{::better_glazing::materials}"
+
+[[rulesets]]
+name = "adjective"
+[rulesets.rules]
+"{::better_glazing::materials}" = "{::better_glazing::materials}"
+
+[[rulesets]]
+name = "shared::main"
+[rulesets.rules]
+"{::better_glazing::materials}" = "{::better_glazing::materials}"

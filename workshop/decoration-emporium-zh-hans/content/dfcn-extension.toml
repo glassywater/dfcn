@@ -1,0 +1,7 @@
+schema = 1
+id = "decoration-emporium-zh-hans"
+version = 1
+language = "zh-Hans"
+name = "装饰坊汉化数据"
+translations = "dfcn/translations.tsv"
+rulesets = "dfcn/rulesets/zh-Hans"

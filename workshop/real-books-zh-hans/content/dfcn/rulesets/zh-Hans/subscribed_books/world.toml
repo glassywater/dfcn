@@ -1,0 +1,237 @@
+# Explicit fiction_world.lua vocabulary. Invented personal names retain their spelling.
+base = "subscribed_books::world"
+
+[[rulesets]]
+name = "item"
+[rulesets.rules]
+"an iron dagger" = "一把铁匕首"
+"a steel sword" = "一把钢剑"
+"a bronze axe" = "一把青铜斧"
+"a silver-hilted blade" = "一把银柄剑"
+"a war hammer" = "一把战锤"
+"an ancient spear" = "一支古老的长矛"
+"a crossbow of fine oak" = "一把精制橡木弩"
+"a copper ring" = "一枚铜戒指"
+"an amulet of bone" = "一枚骨护符"
+"a gold bracelet" = "一只金手镯"
+"a necklace of gems" = "一条宝石项链"
+"a silver brooch" = "一枚银胸针"
+"an engraved locket" = "一枚雕花吊坠盒"
+"a set of carving tools" = "一套雕刻工具"
+"a well-worn pickaxe" = "一把久经使用的镐"
+"a master-crafted anvil" = "一座大师打造的铁砧"
+"a brass compass" = "一只黄铜罗盘"
+"a leather-bound journal" = "一本皮面日记"
+"an alchemist's mortar" = "一只炼金术士的研钵"
+"a cloak of fine wool" = "一件上等羊毛披风"
+"a pair of leather boots" = "一双皮靴"
+"a silk scarf" = "一条丝巾"
+"a fur-lined cap" = "一顶毛皮衬里的帽子"
+"a belt with an ornate buckle" = "一条配有华丽带扣的腰带"
+"a carved wooden figure" = "一尊木雕人像"
+"a pressed flower in a book" = "一朵夹在书中的压花"
+"a lock of hair in a locket" = "一绺装在吊坠盒里的头发"
+"a smooth river stone" = "一颗光滑的河石"
+"a child's drawing on parchment" = "一幅孩子画在羊皮纸上的画"
+"a broken compass that no longer points north" = "一只不再指向北方的坏罗盘"
+"a carefully wrapped package" = "一个仔细包好的包裹"
+"the carefully wrapped package" = "那个仔细包好的包裹"
+"the hand-carved instrument" = "那件手工雕成的乐器"
+"the set of tools" = "那套工具"
+"the pressed flower" = "那朵压花"
+"the blade" = "那把剑"
+"the leather-bound journal" = "那本皮面日记"
+"the handwritten poem" = "那首手写的诗"
+"the river stone" = "那颗河石"
+"the hand-drawn map" = "那幅手绘地图"
+"{food}" = "{food}"
+
+[[rulesets]]
+name = "food"
+[rulesets.rules]
+"plump helmet roast" = "烤肥盔菇"
+"dwarven ale" = "矮人麦酒"
+"elven wine" = "精灵葡萄酒"
+"roasted cave fish" = "烤洞穴鱼"
+"honey cakes" = "蜂蜜蛋糕"
+"smoked meat" = "熏肉"
+"a rare delicacy" = "一道罕见的佳肴"
+"the rare delicacy" = "那道罕见的佳肴"
+
+[[rulesets]]
+name = "profession"
+[rulesets.rules]
+"warrior" = "战士"
+"smith" = "铁匠"
+"farmer" = "农夫"
+"miner" = "矿工"
+"craftsman" = "工匠"
+"healer" = "医者"
+"scholar" = "学者"
+"merchant" = "商人"
+"hunter" = "猎人"
+"fisher" = "渔夫"
+"brewer" = "酿酒师"
+"mason" = "石匠"
+"carpenter" = "木匠"
+"jeweler" = "珠宝匠"
+"clothier" = "制衣匠"
+"tanner" = "制革匠"
+"cook" = "厨师"
+"architect" = "建筑师"
+"diplomat" = "外交官"
+"priest" = "祭司"
+"soldier" = "士兵"
+"guard" = "卫兵"
+"ranger" = "游侠"
+"bard" = "吟游诗人"
+"scribe" = "抄写员"
+"the settlement" = "聚落"
+
+[[rulesets]]
+name = "deity"
+[rulesets.rules]
+"Armok" = "阿莫克"
+"Zon the Bright" = "光明者宗"
+"Kethani the Shadowed" = "暗影者凯萨尼"
+"Arat the Builder" = "建造者阿拉特"
+"Nimar of the Deep" = "深渊之尼玛尔"
+"Lithel Sunsinger" = "太阳歌者利瑟尔"
+"Gorash the Destroyer" = "毁灭者戈拉什"
+"Thira of Mercy" = "慈悲之蒂拉"
+"Vucar the Silent" = "沉默者乌卡尔"
+"Ostesh of the Forge" = "锻炉之奥斯泰什"
+
+[[rulesets]]
+name = "like"
+[rulesets.rules]
+"music" = "音乐"
+"craftsmanship" = "工艺"
+"nature" = "自然"
+"combat" = "战斗"
+"stories" = "故事"
+"animals" = "动物"
+"cooking" = "烹饪"
+"architecture" = "建筑"
+"astronomy" = "天文学"
+"poetry" = "诗歌"
+"justice" = "公正"
+"freedom" = "自由"
+"tradition" = "传统"
+"innovation" = "创新"
+"solitude" = "独处"
+"company" = "相伴"
+
+[[rulesets]]
+name = "dislike"
+[rulesets.rules]
+"dishonesty" = "不诚实"
+"cruelty" = "残忍"
+"laziness" = "懒惰"
+"cowardice" = "怯懦"
+"arrogance" = "傲慢"
+"noise" = "喧闹"
+"crowds" = "人群"
+"waste" = "浪费"
+"disloyalty" = "不忠"
+"weakness" = "软弱"
+"chaos" = "混乱"
+"rules" = "规矩"
+"pretension" = "装腔作势"
+"violence" = "暴力"
+"ignorance" = "无知"
+
+[[rulesets]]
+name = "trait"
+[rulesets.rules]
+"angry" = "易怒"
+"cool_headed" = "冷静"
+"cool headed" = "冷静"
+"liar" = "惯于说谎"
+"friendly" = "友善"
+"honest" = "诚实"
+"trickster" = "爱恶作剧"
+"hot_headed" = "冲动"
+"hot headed" = "冲动"
+"argumentative" = "好争辩"
+"cheater" = "惯于作弊"
+"stubborn" = "固执"
+"manipulative" = "善于操纵人"
+"noble" = "高尚"
+"aggressive" = "好斗"
+"coward" = "胆怯"
+"sadistic" = "以折磨人为乐"
+"masochistic" = "以受苦为乐"
+"pacifist" = "主张和平"
+"cruel" = "残忍"
+"funny" = "幽默"
+"{::subscribed_books::vocabulary::trait}" = "{::subscribed_books::vocabulary::trait}"
+
+[[rulesets]]
+name = "temperament"
+[rulesets.rules]
+"choleric" = "胆汁质"
+"sanguine" = "多血质"
+"phlegmatic" = "黏液质"
+"melancholic" = "抑郁质"
+
+[[rulesets]]
+name = "morality"
+[rulesets.rules]
+"lawful" = "守序"
+"neutral" = "中立"
+"chaotic" = "混乱"
+
+[[rulesets]]
+name = "alignment"
+[rulesets.rules]
+"good" = "善良"
+"neutral" = "中立"
+"evil" = "邪恶"
+
+[[rulesets]]
+name = "role"
+[rulesets.rules]
+"protagonist" = "主角"
+"antagonist" = "反派"
+"love_interest" = "爱慕对象"
+"mentor" = "导师"
+"rival" = "对手"
+"supporting" = "配角"
+"comic_relief" = "搞笑角色"
+"family" = "家人"
+"unknown" = "身份未知"
+"{::subscribed_books::vocabulary::role}" = "{::subscribed_books::vocabulary::role}"
+
+[[rulesets]]
+name = "relation"
+[rulesets.rules]
+"associate" = "相识者"
+"enemy" = "敌人"
+"lover" = "恋人"
+"master" = "师父"
+"rival" = "对手"
+"parent" = "父母"
+"companion" = "伙伴"
+"apprentice" = "学徒"
+"spouse" = "配偶"
+"friend" = "朋友"
+"{::subscribed_books::vocabulary::relation}" = "{::subscribed_books::vocabulary::relation}"
+
+[[rulesets]]
+name = "race"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::race}" = "{::subscribed_books::vocabulary::race}"
+
+
+# 声明内生成变化的规范形变体；原作者句式保留。
+[[rulesets]]
+name = "item"
+[rulesets.rules]
+"a iron dagger" = "一把铁匕首"
+"a ancient spear" = "一支古老的长矛"
+"a amulet of bone" = "一枚骨护符"
+"a engraved locket" = "一枚雕花吊坠盒"
+"a alchemist's mortar" = "一只炼金术士的研钵"
+"a belt with a ornate buckle" = "一条配有华丽带扣的腰带"
+

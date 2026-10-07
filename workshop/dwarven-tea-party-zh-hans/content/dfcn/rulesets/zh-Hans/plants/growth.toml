@@ -1,0 +1,12 @@
+base = "plants::growth"
+
+[[rulesets]]
+name = "singular"
+[rulesets.rules]
+"{::materials::subscribed_tea}" = "{::materials::subscribed_tea}"
+
+[[rulesets]]
+name = "plural"
+[rulesets.rules]
+"{::materials::subscribed_tea}" = "{::materials::subscribed_tea}"
+

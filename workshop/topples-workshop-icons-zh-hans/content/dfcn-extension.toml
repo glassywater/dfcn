@@ -1,0 +1,6 @@
+schema = 1
+id = "topples-workshop-icons-zh-hans"
+version = 1
+language = "zh-Hans"
+name = "Topples 工坊图标汉化数据"
+translations = "dfcn/translations.tsv"

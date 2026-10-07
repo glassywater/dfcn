@@ -1,0 +1,6 @@
+schema = 1
+id = "soundsense-originals-zh-hans"
+version = 1
+language = "zh-Hans"
+name = "SoundSense 原声汉化数据"
+translations = "dfcn/translations.tsv"

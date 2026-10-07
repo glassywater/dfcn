@@ -1,0 +1,23 @@
+# Local subscribed source 3468962984, numeric version 62. Lua stays in original package.
+Topples' Workshop Icons	Topples 工坊图标	l
+DFHack script to show all workshop icons.	显示所有工坊图标的 DFHack 脚本。	lP
+Enable the Topples' Workshops Icons tool.	启用 Topples 工坊图标工具。	lP
+DFHack help: Enable the Topples' Workshops Icons tool.	启用 Topples 工坊图标工具。	l
+DFHack help: tool-workshop-icons =========== Tags: tools | graphics Enable the Topples' Workshops Icons tool. Usage ----- enable tool-workshop-icons disable tool-workshop-icons	tool-workshop-icons：启用 Topples 工坊图标工具。标签：工具、图形。用法：enable tool-workshop-icons；disable tool-workshop-icons。	l
+Topples Workshop Icons mod enabled	Topples 工坊图标模组已启用	l
+Topples Workshop Icons mod disabled	Topples 工坊图标模组已禁用	l
+Workshop Icons Lua scripts are currently "enabled"	工坊图标 Lua 脚本当前已启用	l
+Workshop Icons Lua scripts are currently "disabled"	工坊图标 Lua 脚本当前已禁用	l
+DFHack output: Topples Workshop Icons mod enabled	Topples 工坊图标模组已启用	l
+DFHack output: Topples Workshop Icons mod disabled	Topples 工坊图标模组已禁用	l
+DFHack output: Workshop Icons Lua scripts are currently "enabled"	工坊图标 Lua 脚本当前已启用	l
+DFHack output: Workshop Icons Lua scripts are currently "disabled"	工坊图标 Lua 脚本当前已禁用	l
+DFHack output: !!!!! INSIDE INTERNAL onEnable: true	!!!!! 内部 onEnable：true	l
+DFHack output: !!!!! INSIDE INTERNAL onDisable: false	!!!!! 内部 onDisable：false	l
+Fixed bug where changing menu wold temporary shut off custom graphics (Thanks Nactarune!)	修复切换菜单会暂时关闭自定义图形的问题（感谢 Nactarune！）。	lP
+DFHack output: !!!!! INSIDE INTERNAL onEnable: false	!!!!! 内部 onEnable：false	l
+DFHack output: !!!!! INSIDE INTERNAL onDisable: true	!!!!! 内部 onDisable：true	l
+DFHack GUI Overlay control: Topples Workshop Icons mod enabled||I|0|-1|0	Topples 工坊图标模组已启用|	l
+DFHack GUI Overlay control: Topples Workshop Icons mod disabled||I|0|-1|0	Topples 工坊图标模组已禁用|	l
+DFHack GUI Overlay control: Workshop Icons Lua scripts are currently "enabled"||I|0|-1|0	工坊图标 Lua 脚本当前已启用|	l
+DFHack GUI Overlay control: Workshop Icons Lua scripts are currently "disabled"||I|0|-1|0	工坊图标 Lua 脚本当前已禁用|	l

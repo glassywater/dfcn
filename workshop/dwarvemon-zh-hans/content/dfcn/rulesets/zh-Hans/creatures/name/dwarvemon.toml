@@ -5,6 +5,12 @@ base = "creatures::name::dwarvemon"
 name = "singular"
 [rulesets.rules]
 # Native CE display names; symbol-only evolution markers retain their spelling.
+"Primal Dialga" = "黑暗帝牙卢卡"
+"Void Shadows" = "虚无暗影"
+"Bittercold" = "冰冷巨结晶"
+"Dark Matter" = "暗黑物质"
+"MissingNo" = "缺失编号"
+"Snorlax Doll" = "卡比兽玩偶"
 "Shadow" = "暗影"
 "Pink" = "粉红色"
 "Titan" = "宝主"
@@ -1441,6 +1447,12 @@ name = "singular"
 [[rulesets]]
 name = "plural"
 [rulesets.rules]
+"Primal Dialga" = "黑暗帝牙卢卡"
+"Void Shadows" = "虚无暗影"
+"Bittercold" = "冰冷巨结晶"
+"Dark Matter" = "暗黑物质"
+"MissingNo" = "缺失编号"
+"Snorlax Doll" = "卡比兽玩偶"
 # Native CE display names; symbol-only evolution markers retain their spelling.
 "Shadow" = "暗影"
 "Pink" = "粉红色"

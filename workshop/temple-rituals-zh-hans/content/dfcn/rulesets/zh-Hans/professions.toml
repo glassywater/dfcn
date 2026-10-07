@@ -1,0 +1,6 @@
+base = "professions"
+
+[[rulesets]]
+[rulesets.rules]
+"{::creatures::subscribed_rituals::cleric}" = "{::creatures::subscribed_rituals::cleric}"
+

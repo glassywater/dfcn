@@ -1,0 +1,7 @@
+schema = 1
+id = "item-tagger-zh-hans"
+version = 1
+language = "zh-Hans"
+name = "物品标签汉化数据"
+translations = "dfcn/translations.tsv"
+rulesets = "dfcn/rulesets/zh-Hans"

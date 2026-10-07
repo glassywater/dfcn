@@ -1,0 +1,289 @@
+# Full authored choreography score, character entrances and fiction beat cues.
+base = "subscribed_books::choreography"
+
+[[rulesets]]
+name = "year1"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::birth_year}" = "{::subscribed_books::vocabulary::birth_year}"
+
+[[rulesets]]
+name = "cause"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::cause}" = "{::subscribed_books::vocabulary::cause}"
+
+[[rulesets]]
+name = "person"
+[rulesets.rules]
+"the lead" = "领舞者"
+"a {::subscribed_books::vocabulary::race}" = "{::subscribed_books::vocabulary::race}"
+"an {::subscribed_books::vocabulary::race}" = "{::subscribed_books::vocabulary::race}"
+"{::subscribed_books::vocabulary::person}" = "{::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+name = "profession"
+[rulesets.rules]
+"wanderer" = "流浪者"
+"{::subscribed_books::world::profession}" = "{::subscribed_books::world::profession}"
+
+[[rulesets]]
+name = "race"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::race}" = "{::subscribed_books::vocabulary::race}"
+
+[[rulesets]]
+name = "article"
+[rulesets.rules]
+"a" = ""
+"an" = ""
+
+[[rulesets]]
+name = "pos1"
+[rulesets.rules]
+"{::subscribed_books::personality::pos1}" = "{::subscribed_books::personality::pos1}"
+
+[[rulesets]]
+name = "pro1"
+[rulesets.rules]
+"{::subscribed_books::personality::pro1}" = "{::subscribed_books::personality::pro1}"
+
+[[rulesets]]
+[rulesets.rules]
+"Entrance: {@bt_a|::subscribed_books::choreography::person} takes position -- {article} {race}, {profession}, joining the formation." = "入场：{@bt_a|::subscribed_books::choreography::person}就位，一位{article}{race}，身为{profession}，加入队形。"
+"Formation shift: the company opens to receive {@bt_a|::subscribed_books::choreography::person}, {profession} of {article} {race}." = "变换队形：舞队打开队形，迎接{@bt_a|::subscribed_books::choreography::person}，一位{article}{race}{profession}。"
+"Cue: {@bt_a|::subscribed_books::choreography::person} steps forward from the line -- {profession}, {article} {race}." = "提示：{@bt_a|::subscribed_books::choreography::person}从队列中向前迈出，一位{article}{race}{profession}。"
+
+[[rulesets]]
+[rulesets.rules]
+"Formation: dancers of {@bt_entity|::subscribed_books::vocabulary::entity} take positions in two ranks, facing inward. Weight low, weapons (or weapon-hands) forward." = "队形：{@bt_entity|::subscribed_books::vocabulary::entity}的舞者分两列站立，面朝内侧。重心放低，武器或握武器的手向前。"
+
+[[rulesets]]
+[rulesets.rules]
+"Formation: two ranks face inward, weight low, at a distance judged by {@bt_hero|::subscribed_books::choreography::person}'s original staging at {@bt_site|::subscribed_books::vocabulary::place}. This is preparation given shape, not performance." = "队形：两列面朝内侧，重心放低；间距按{@bt_hero|::subscribed_books::choreography::person}在{@bt_site|::subscribed_books::vocabulary::place}的原始编排确定。这是准备的具象呈现，而非表演。"
+
+[[rulesets]]
+[rulesets.rules]
+"Movement recorded for the events of {year1}:" = "为{year1}年事件记录的动作："
+
+[[rulesets]]
+[rulesets.rules]
+"Movement, {year1}: a downward strike, full company, timed together -- reenacting the fall of {@bt_hero|::subscribed_books::choreography::person} ({cause}). Feet stamp once on the final beat." = "动作，{year1}年：全体同步向下击打，重演{@bt_hero|::subscribed_books::choreography::person}倒下（{cause}）。最后一拍跺脚一次。"
+
+[[rulesets]]
+[rulesets.rules]
+"Movement, {year1}: a forward advance, ranks closing from two lines to one -- reenacting the founding of {@bt_evsite|::subscribed_books::vocabulary::place}. Ends in a raised-fist hold." = "动作，{year1}年：向前推进，队列由两行合为一行，重演{@bt_evsite|::subscribed_books::vocabulary::place}的建立。以举拳定格结束。"
+
+[[rulesets]]
+[rulesets.rules]
+"Movement, {year1}: a sequence of held, tense positions, changed on the drumbeat, reflecting the conflicts of the year." = "动作，{year1}年：一连串紧绷的定格姿态，随鼓点变换，体现这一年的冲突。"
+
+[[rulesets]]
+[rulesets.rules]
+"Hold: company holds position. Breath. Resume on the next cue." = "保持：全队保持姿态。呼吸。下一个提示到来时继续。"
+
+[[rulesets]]
+[rulesets.rules]
+"Closing figure: a unified shout, then stillness. All positions released at once, not in sequence. -- staged by {@bt_hero|::subscribed_books::choreography::person} for {@bt_entity|::subscribed_books::vocabulary::entity}" = "结束舞形：齐声呐喊，随后静止。所有姿态同时放松，不依次放松。——{@bt_hero|::subscribed_books::choreography::person}为{@bt_entity|::subscribed_books::vocabulary::entity}编排"
+
+[[rulesets]]
+[rulesets.rules]
+"Formation: a circle, dancers facing center, staged by {@bt_hero|::subscribed_books::choreography::person} at {@bt_site|::subscribed_books::vocabulary::place}. This is not performed for an audience; there is no \"front\" to the circle." = "队形：围成圆圈，舞者面朝圆心，由{@bt_hero|::subscribed_books::choreography::person}在{@bt_site|::subscribed_books::vocabulary::place}编排。这不是为观众表演；圆圈没有“正面”。"
+
+[[rulesets]]
+[rulesets.rules]
+"Phase recorded for {year1}:" = "为{year1}年记录的阶段："
+
+[[rulesets]]
+[rulesets.rules]
+"Phase, {year1}: dancers lower to one knee in unison, honoring {@bt_hero|::subscribed_books::choreography::person}, taken by {cause}. Hold for a count of ten before rising." = "阶段，{year1}年：舞者同时单膝跪下，纪念因{cause}逝去的{@bt_hero|::subscribed_books::choreography::person}。保持十拍，再起身。"
+
+[[rulesets]]
+[rulesets.rules]
+"Phase, {year1}: arms raised toward center, palms up, marking the creation of {@bt_artifact|::subscribed_books::vocabulary::artifact}. Hold until the drum changes." = "阶段，{year1}年：双臂向圆心举起，掌心朝上，纪念{@bt_artifact|::subscribed_books::vocabulary::artifact}的创造。保持到鼓点改变。"
+
+[[rulesets]]
+[rulesets.rules]
+"Phase, {year1}: a slow processional advance, marking the founding of {@bt_evsite|::subscribed_books::vocabulary::place}. Steps are even, deliberately unhurried." = "阶段，{year1}年：缓慢列队前进，纪念{@bt_evsite|::subscribed_books::vocabulary::place}的建立。步伐均匀，刻意从容。"
+
+[[rulesets]]
+[rulesets.rules]
+"Phase, {year1}: a circling figure, slow, marking the passage of the year into what comes after." = "阶段，{year1}年：缓慢环绕，标记这一年流向此后的时光。"
+
+[[rulesets]]
+[rulesets.rules]
+"Pause: the circle holds. Silence is part of the notation, not an absence of it." = "暂停：圆圈保持。沉默是舞谱的一部分，并非舞谱的缺失。"
+
+[[rulesets]]
+[rulesets.rules]
+"Closing phase: hands lowered slowly, palms down, as if setting something down. The circle breaks only after this gesture completes. -- staged by {@bt_hero|::subscribed_books::choreography::person}" = "结束阶段：双手缓缓放下，掌心朝下，仿佛放下某样东西。只有完成这一动作后，圆圈才能散开。——{@bt_hero|::subscribed_books::choreography::person}编排"
+
+[[rulesets]]
+[rulesets.rules]
+"Formation: dancers enter individually, at staggered intervals, no fixed formation until Movement 2. Staged by {@bt_hero|::subscribed_books::choreography::person} for the lost." = "队形：舞者逐一入场，间隔错开，在动作二之前，没有固定队形。{@bt_hero|::subscribed_books::choreography::person}为逝者编排。"
+
+[[rulesets]]
+[rulesets.rules]
+"Passage recorded for {year1}:" = "为{year1}年记录的舞段："
+
+[[rulesets]]
+[rulesets.rules]
+"Passage, {year1}: dancers lower their heads in sequence, not unison -- each at their own pace, honoring {@bt_hero|::subscribed_books::choreography::person}, lost {cause}." = "舞段，{year1}年：舞者依次低头，而非同时低头，各按自己的节奏，纪念因{cause}逝去的{@bt_hero|::subscribed_books::choreography::person}。"
+
+[[rulesets]]
+[rulesets.rules]
+"Passage, {year1}: a slow gathering into a loose circle, marking the year without further specification." = "舞段，{year1}年：缓缓聚成疏松的圆圈，标记这一年，不作更具体的说明。"
+
+[[rulesets]]
+[rulesets.rules]
+"Stillness: dancers hold, heads bowed. Duration is not fixed; the notation leaves this to the moment." = "静止：舞者保持，低头。时长不固定；舞谱将它交给这一刻决定。"
+
+[[rulesets]]
+[rulesets.rules]
+"Final position: stillness, heads bowed, held until a single dancer -- any dancer -- chooses to rise first. -- staged by {@bt_hero|::subscribed_books::choreography::person} for {@bt_entity|::subscribed_books::vocabulary::entity}" = "最后姿态：静止，低头，一直保持，直到某一位舞者，任何一位舞者，决定先抬起头。——{@bt_hero|::subscribed_books::choreography::person}为{@bt_entity|::subscribed_books::vocabulary::entity}编排"
+
+[[rulesets]]
+[rulesets.rules]
+"Confrontation: {@bt_a|::subscribed_books::choreography::person} and {@bt_b|::subscribed_books::choreography::person} advance and retreat in turn, neither yielding ground." = "对峙：{@bt_a|::subscribed_books::choreography::person}与{@bt_b|::subscribed_books::choreography::person}轮流前进、后退，谁也不让出位置。"
+
+[[rulesets]]
+[rulesets.rules]
+"Formation strain: a sharp exchange of steps -- {@bt_a|::subscribed_books::choreography::person} presses forward, {@bt_b|::subscribed_books::choreography::person} holds the line." = "队形紧张：步伐激烈交锋，{@bt_a|::subscribed_books::choreography::person}向前逼近，{@bt_b|::subscribed_books::choreography::person}守住队列。"
+
+[[rulesets]]
+[rulesets.rules]
+"Standoff: {@bt_a|::subscribed_books::choreography::person} and {@bt_b|::subscribed_books::choreography::person} circle the formation, neither breaking first." = "僵持：{@bt_a|::subscribed_books::choreography::person}与{@bt_b|::subscribed_books::choreography::person}绕着队形走，谁也不先打破僵局。"
+
+[[rulesets]]
+[rulesets.rules]
+"Approach: {@bt_a|::subscribed_books::choreography::person} and {@bt_b|::subscribed_books::choreography::person} draw slowly together, the space between them closing." = "接近：{@bt_a|::subscribed_books::choreography::person}与{@bt_b|::subscribed_books::choreography::person}缓缓靠近，两人之间的空隙缩小。"
+
+[[rulesets]]
+[rulesets.rules]
+"Matched step: a soft turn, a matched step -- {@bt_a|::subscribed_books::choreography::person} reaches, {@bt_b|::subscribed_books::choreography::person} does not pull away." = "配合舞步：柔和转身，步伐相合，{@bt_a|::subscribed_books::choreography::person}伸手，{@bt_b|::subscribed_books::choreography::person}不躲开。"
+
+[[rulesets]]
+[rulesets.rules]
+"Offered hand: {@bt_a|::subscribed_books::choreography::person} offers a hand; {@bt_b|::subscribed_books::choreography::person}, after a beat, takes it." = "递出手：{@bt_a|::subscribed_books::choreography::person}递出一只手；一拍之后，{@bt_b|::subscribed_books::choreography::person}握住。"
+
+[[rulesets]]
+[rulesets.rules]
+"Aside: {@bt_a|::subscribed_books::choreography::person} circles the edge of the formation, a smile held just out of view." = "侧行：{@bt_a|::subscribed_books::choreography::person}绕着队形边缘走，将微笑藏在视线之外。"
+
+[[rulesets]]
+[rulesets.rules]
+"Concealed cue: {@bt_a|::subscribed_books::choreography::person} moves close to the others, words unheard, a plan taking shape." = "隐蔽提示：{@bt_a|::subscribed_books::choreography::person}靠近其他人，话语无人听见，计划渐渐成形。"
+
+[[rulesets]]
+[rulesets.rules]
+"Redirection: behind the formation, {@bt_a|::subscribed_books::choreography::person} shifts the steps of others without their notice." = "转向：队形背后，{@bt_a|::subscribed_books::choreography::person}改变其他人的步伐，而他们并未察觉。"
+
+[[rulesets]]
+[rulesets.rules]
+"Formation: {@bt_a|::subscribed_books::choreography::person} and {@bt_b|::subscribed_books::choreography::person} face off, weight low, the space between them charged." = "队形：{@bt_a|::subscribed_books::choreography::person}与{@bt_b|::subscribed_books::choreography::person}面对面，重心放低，两人之间的空隙充满张力。"
+
+[[rulesets]]
+[rulesets.rules]
+"Stance: {@bt_a|::subscribed_books::choreography::person} and {@bt_b|::subscribed_books::choreography::person} take opposing stances, neither willing to close the distance first." = "站姿：{@bt_a|::subscribed_books::choreography::person}与{@bt_b|::subscribed_books::choreography::person}采取相对的姿态，谁也不愿先拉近距离。"
+
+[[rulesets]]
+[rulesets.rules]
+"Formation: {@bt_a|::subscribed_books::choreography::person} and {@bt_b|::subscribed_books::choreography::person} circle slowly, never quite meeting eyes." = "队形：{@bt_a|::subscribed_books::choreography::person}与{@bt_b|::subscribed_books::choreography::person}缓缓绕行，始终不真正对视。"
+
+[[rulesets]]
+[rulesets.rules]
+"Approach: {@bt_a|::subscribed_books::choreography::person} and {@bt_b|::subscribed_books::choreography::person} drift into position, the formation unhurried and watchful." = "接近：{@bt_a|::subscribed_books::choreography::person}与{@bt_b|::subscribed_books::choreography::person}慢慢就位，队形从容而警觉。"
+
+[[rulesets]]
+[rulesets.rules]
+"Formation: {@bt_a|::subscribed_books::choreography::person} and {@bt_b|::subscribed_books::choreography::person} stand apart, heads bowed, the space between them heavy." = "队形：{@bt_a|::subscribed_books::choreography::person}与{@bt_b|::subscribed_books::choreography::person}分开站立，低头，两人之间的空隙沉重。"
+
+[[rulesets]]
+[rulesets.rules]
+"Hold: {@bt_a|::subscribed_books::choreography::person} and {@bt_b|::subscribed_books::choreography::person} take their places slowly, as if the formation itself were a weight to carry." = "保持：{@bt_a|::subscribed_books::choreography::person}与{@bt_b|::subscribed_books::choreography::person}缓缓就位，仿佛队形本身就是需要承受的重量。"
+
+[[rulesets]]
+[rulesets.rules]
+"Formation: {@bt_a|::subscribed_books::choreography::person} and {@bt_b|::subscribed_books::choreography::person} move close, unhurried, at ease." = "队形：{@bt_a|::subscribed_books::choreography::person}与{@bt_b|::subscribed_books::choreography::person}从容靠近，姿态自在。"
+
+[[rulesets]]
+[rulesets.rules]
+"Approach: {@bt_a|::subscribed_books::choreography::person} and {@bt_b|::subscribed_books::choreography::person} fall into step together, the formation loose and comfortable." = "接近：{@bt_a|::subscribed_books::choreography::person}与{@bt_b|::subscribed_books::choreography::person}一起迈步，队形疏松、舒适。"
+
+[[rulesets]]
+[rulesets.rules]
+"Formation: {@bt_a|::subscribed_books::choreography::person} and {@bt_b|::subscribed_books::choreography::person} take their positions, the formation loose and unremarkable." = "队形：{@bt_a|::subscribed_books::choreography::person}与{@bt_b|::subscribed_books::choreography::person}就位，队形疏松而平常。"
+
+[[rulesets]]
+[rulesets.rules]
+"Cue: {@bt_a|::subscribed_books::choreography::person} and {@bt_b|::subscribed_books::choreography::person} find their places on the floor, waiting for the beat." = "提示：{@bt_a|::subscribed_books::choreography::person}与{@bt_b|::subscribed_books::choreography::person}找到场上的位置，等待节拍。"
+
+[[rulesets]]
+[rulesets.rules]
+"Opening figure: the piece begins here -- {@bt_proto|::subscribed_books::choreography::person} does not yet know what it will ask." = "开场舞形：作品从这里开始，{@bt_proto|::subscribed_books::choreography::person}还不知道它将要求什么。"
+
+[[rulesets]]
+[rulesets.rules]
+"First cue: this is where it starts, a single figure, then the rest." = "首个提示：从这里开始，一个舞形，随后是其余舞形。"
+
+[[rulesets]]
+[rulesets.rules]
+"Building figure: the sequence grows harder, and {@bt_proto|::subscribed_books::choreography::person} holds the count anyway." = "递进舞形：动作序列越来越难，{@bt_proto|::subscribed_books::choreography::person}却仍守住拍数。"
+
+[[rulesets]]
+[rulesets.rules]
+"Repetition: nothing in this score comes easily. This passage is no exception." = "重复：这部舞谱里，没有什么容易。这一段也不例外。"
+
+[[rulesets]]
+[rulesets.rules]
+"Central figure: this is the movement all the rest has led to." = "中心舞形：此前一切，都通向这个动作。"
+
+[[rulesets]]
+[rulesets.rules]
+"Full company: everything now balances on a single count." = "全体：如今，一切都在一拍之上保持平衡。"
+
+[[rulesets]]
+[rulesets.rules]
+"Closing figure: and so it ends -- not as it began, but as it had to." = "结束舞形：于是它结束了，结束的样子不同于开始，却是必然的样子。"
+
+[[rulesets]]
+[rulesets.rules]
+"Final hold: the score does not end here. But this passage does." = "最后定格：舞谱不在这里结束，但这一段结束了。"
+
+[[rulesets]]
+[rulesets.rules]
+"Entrance figure: {@bt_a|::subscribed_books::choreography::person} takes position, not yet knowing what lies ahead in the score." = "入场舞形：{@bt_a|::subscribed_books::choreography::person}就位，还不知道舞谱前方有什么。"
+
+[[rulesets]]
+[rulesets.rules]
+"Preparation: the stillness before the first cue -- {@bt_a|::subscribed_books::choreography::person} feels it, even without a name for it." = "准备：第一个提示前的静止。{@bt_a|::subscribed_books::choreography::person}感受到了它，虽然无法为它命名。"
+
+[[rulesets]]
+[rulesets.rules]
+"Sustained figure: {@bt_a|::subscribed_books::choreography::person} holds through the harder passages, count after count." = "持续舞形：{@bt_a|::subscribed_books::choreography::person}在更艰难的舞段中坚持，一拍接一拍。"
+
+[[rulesets]]
+[rulesets.rules]
+"Strain: the sequence tests {pos1} form, and {pro1} does not break it." = "吃力：动作序列考验{pos1}姿态，{pro1}却没有破坏它。"
+
+[[rulesets]]
+[rulesets.rules]
+"Central hold: this is the reckoning figure, and {@bt_a|::subscribed_books::choreography::person} can feel it approaching." = "中心定格：这是清算的舞形，{@bt_a|::subscribed_books::choreography::person}能感觉到它正逼近。"
+
+[[rulesets]]
+[rulesets.rules]
+"Full weight: everything {@bt_a|::subscribed_books::choreography::person} has built now rests on a single movement." = "全部重量：{@bt_a|::subscribed_books::choreography::person}构建的一切，如今都压在一个动作上。"
+
+[[rulesets]]
+[rulesets.rules]
+"Closing figure: {@bt_a|::subscribed_books::choreography::person} holds the final position, no longer the dancer who began the piece." = "结束舞形：{@bt_a|::subscribed_books::choreography::person}保持最后姿态，已不再是作品开始时的那位舞者。"
+
+[[rulesets]]
+[rulesets.rules]
+"Release: it is over now -- {@bt_a|::subscribed_books::choreography::person} is not the same." = "释放：如今结束了，{@bt_a|::subscribed_books::choreography::person}已不再相同。"
+
+
+# 声明内生成变化的规范形变体；原作者句式保留。
+[[rulesets]]
+[rulesets.rules]
+"Formation: a circle, dancers facing center, staged by {@bt_hero|::subscribed_books::choreography::person} at {@bt_site|::subscribed_books::vocabulary::place}. This is not performed for a audience; there is no \"front\" to the circle." = "队形：围成圆圈，舞者面朝圆心，由{@bt_hero|::subscribed_books::choreography::person}在{@bt_site|::subscribed_books::vocabulary::place}编排。这不是为观众表演；圆圈没有“正面”。"
+"Pause: the circle holds. Silence is part of the notation, not a absence of it." = "暂停：圆圈保持。沉默是舞谱的一部分，并非舞谱的缺失。"
+

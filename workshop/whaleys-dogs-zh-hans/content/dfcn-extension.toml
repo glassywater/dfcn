@@ -1,0 +1,7 @@
+schema = 1
+id = "whaleys-dogs-zh-hans"
+version = 1
+language = "zh-Hans"
+name = "Whaley 犬种汉化数据"
+translations = "dfcn/translations.tsv"
+rulesets = "dfcn/rulesets/zh-Hans"

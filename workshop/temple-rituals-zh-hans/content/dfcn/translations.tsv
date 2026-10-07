@@ -1,0 +1,130 @@
+# Temple Rituals 1.1 authored local display fields and historical sentences.
+Temple Rituals	神庙祭仪	l
+Temple Rituals (procgen)	神庙祭仪（程序生成）	l
+Generates rituals with unique blessings for each deity which can be performed at the ritual altar in fortress mode, or anywhere in adventure mode.	为每位神祇生成带有独特祝福的祭仪。要塞模式可在祭仪祭坛举行，冒险模式可在任何地点举行。	l
+Ritual altar	祭仪祭坛	l
+Perform ancient rituals to gain the blessings of the gods.	举行古老的祭仪，获取众神的祝福。	l
+Rituals	祭仪	l
+being healed	受到治疗	l
+shimmering air	闪烁的空气	l
+soothing mist	舒缓之雾	l
+vile rot	恶毒腐烂	l
+vile sludge	恶毒淤浆	l
+inebriation	醉酒	l
+necromantic	死灵术的	l
+Animate corpse	驱动尸体	l
+Summon bogeymen	召唤夜妖	l
+Summon nightmare	召唤梦魇	l
+Create ghoul	制造食尸鬼	l
+Infected ghoul	感染的食尸鬼	l
+gesture	做出手势	l
+gestures	做出手势	l
+shudder and begin to move	颤抖着开始活动	l
+shudders and begins to move	颤抖着开始活动	l
+call upon the night	召唤黑夜	l
+calls upon the night	召唤黑夜	l
+shudder and a spirit rises	颤抖着，升起一道幽魂	l
+shudders and a spirit rises	颤抖着，升起一道幽魂	l
+been infected with a contagious ghoulish condition	染上了具有传染性的食尸鬼病症	l
+ with a contagious ghoulish condition	，染上了具有传染性的食尸鬼病症	l
+, passing on the ghoulish condition	，并传播了食尸鬼病症	l
+ infected 	感染了	l
+ bit 	咬伤了	l
+corpses	尸体	l
+victim	目标	l
+target	目标	l
+Summon a giant black mamba	召唤巨型黑曼巴蛇	l
+Launch vile sludge	发射恶毒淤浆	l
+Rot	腐烂术	l
+Rot heart	腐蚀心脏	l
+Cause bleeding	引发出血	l
+Summon black bears	召唤黑熊	l
+Launch thorns	发射荆棘	l
+Summon giant wolf	召唤巨狼	l
+Summon a voracious cave crawler	召唤饕餮洞穴爬虫	l
+Launch gem shard	发射宝石碎片	l
+Spray webs	喷射蛛网	l
+Heal	治疗	l
+Summon healing mist	召唤治疗之雾	l
+Suffocate	窒息术	l
+Fireball	火球术	l
+Launch ice bolt	发射冰箭	l
+Spray jet of fire	喷射火柱	l
+Spray jet of magma	喷射岩浆柱	l
+Launch steel shard	发射钢铁碎片	l
+Lacerate	撕裂术	l
+Propel away	击退	l
+feel a dull pain in your chest	感到胸口隐隐作痛	l
+stumbles	踉跄	l
+feel blood welling up	感到鲜血涌出	l
+grimaces	痛苦地皱起脸	l
+feel your breath leaving you	感到呼吸越来越困难	l
+gasps for breath	喘不过气	l
+feel your limbs become heavier	感到四肢变得沉重	l
+glow	发光	l
+glows	发光	l
+call upon an ancient stillness	召唤古老的寂静	l
+calls upon an ancient stillness	召唤古老的寂静	l
+call upon ancient powers	召唤远古之力	l
+calls upon an ancient power, and a ravenous monster skitters from a crack in the earth	召唤远古之力，一头饥饿的怪物从地缝中爬出	l
+cast divine healing	施放神圣治疗	l
+casts divine healing	施放神圣治疗	l
+channel an ancient evil	引导远古邪力	l
+channels an ancient evil	引导远古邪力	l
+channel an ancient power	引导远古之力	l
+channels an ancient power to summon a giant black mamba	引导远古之力，召唤出一条巨型黑曼巴蛇	l
+channels an ancient power	引导远古之力	l
+channel ancient powers into a vile sludge	将远古之力化为恶毒淤浆	l
+channels ancient powers into a vile sludge	将远古之力化为恶毒淤浆	l
+channel arcane powers into a blast of fire	将奥术之力化为火焰爆发	l
+channels arcane powers into a blast of fire	将奥术之力化为火焰爆发	l
+channel arcane powers into a blast of force	将奥术之力化为冲击波	l
+channels arcane powers into a blast of force	将奥术之力化为冲击波	l
+channel arcane powers into a bolt of ice	将奥术之力化为冰箭	l
+channels arcane powers into a bolt of ice	将奥术之力化为冰箭	l
+channel arcane powers into a gemstone shard	将奥术之力化为宝石碎片	l
+channels arcane powers into a gemstone shard	将奥术之力化为宝石碎片	l
+channel arcane powers into a jet of fire	将奥术之力化为火柱	l
+channels arcane powers into a jet of fire	将奥术之力化为火柱	l
+channel arcane powers into a jet of magma	将奥术之力化为岩浆柱	l
+channels arcane powers into a jet of magma	将奥术之力化为岩浆柱	l
+channel arcane powers into a shard of steel	将奥术之力化为钢铁碎片	l
+channels arcane powers into a shard of steel	将奥术之力化为钢铁碎片	l
+channel arcane powers into a silken web	将奥术之力化为丝网	l
+channels arcane powers into a silken web	将奥术之力化为丝网	l
+channel divine powers into a soothing mist	将神圣之力化为舒缓之雾	l
+channels divine powers into a soothing mist	将神圣之力化为舒缓之雾	l
+channel the forces of nature into a blast of thorns	将自然之力化为荆棘爆发	l
+channels the forces of nature into a blast of thorns	将自然之力化为荆棘爆发	l
+channel the forces of nature	引导自然之力	l
+channels the forces of nature and summons a giant wolf	引导自然之力，召唤出一头巨狼	l
+channels the forces of nature and summons a sleuth of black bears	引导自然之力，召唤出一群黑熊	l
+developing an unatural but temporary strength	获得暂时的超自然力量	l
+developing a stronger stomach	增强体质与恢复能力	l
+being blessed with enhanced agility	得到敏捷提升的祝福	l
+healing all wounds	治愈所有伤口	l
+gaining enhanced endurance	增强耐力	l
+gaining enhanced toughness	增强韧性	l
+gaining enhanced strength	增强力量	l
+developing enhanced focus	增强专注力	l
+developing a strengthened will	增强意志	l
+developing a quicker step	步伐变得更快	l
+being blessed with a season of unnatural luck	得到持续一季的超自然幸运祝福	l
+gaining enhanced agility	增强敏捷	l
+being blessed with a sixth sense	得到第六感的祝福	l
+being blessed with empathy	得到共情能力的祝福	l
+being blessed with quickness	得到速度提升的祝福	l
+being blessed with thermal vision	得到热感视觉的祝福	l
+gaining enhanced strength and toughness	增强力量与韧性	l
+gaining enhanced recuperation	增强恢复能力与抗病能力	l
+growing into a giant	长成巨人	l
+being blessed with enhanced creativity	得到创造力提升的祝福	l
+gaining a way with words	增强语言表达能力	l
+developing a sharper mind	头脑变得更加敏锐	l
+being blessed with improved craftsmanship	得到技艺提升的祝福	l
+developing a greater understanding of movement	加深对运动的感知	l
+{s} infected {s} with a contagious ghoulish condition.	{s1}使{s2}染上了具有传染性的食尸鬼病症。	lht
+{s} bit {s}, passing on the ghoulish condition.	{s1}咬伤了{s2}，传播了食尸鬼病症。	lht
+# Source info metadata and author's update notices.
+Mod description: Generates rituals with unique blessings for each deity which can be performed at the ritual altar in fortress mode, or anywhere in adventure mode.	为每位神祇生成带有独特祝福的祭仪。要塞模式可在祭仪祭坛举行，冒险模式可在任何地点举行。	lP
+Generate rituals with unique blessings for each deity. Rituals can be performed at a new workshop, the ritual altar. Blessings are based on the spheres of each deity. Each deity prefers a certain blessing, though has access to several. All blessings create a generated healing drink, which can have additional (mostly) positive effects.\n\nFortress mode:\n- Rituals need two offerings each, plus a barrel or pot. The first offering is shown in parentheses in the name of the ritual, and the second is shown underneath the name of the ritual (unless you have it already).\n- For the purpose of stockpiling, healing drinks are all in the same "creature alcohol" category as mead.\n\nAdventure mode:\n- Rituals all have adventure mode versions with offerings that should be more reasonable for adventurers to come by. Adventurers don't need a container for the healing drink, it just falls on the ground or in their hands and that's fine. They can scoop it up with a flask or something (optional).\n\nKnown issues:\n- A dwarf can become a cleric of multiple deities, but only the most recent one is shown in their title.\n- Any dwarf will perform rituals and potentially become a cleric, including dwarves who don't believe in the deity. If this matters to you, make sure to assign an appropriately religious dwarf to the workshop.\n\nLet me know if anything is bugged/unfun or if you have suggestions!	为每位神祇生成带有独特祝福的祭仪。祭仪可在新工坊“祭仪祭坛”举行。祝福取决于各神祇的神域；每位神祇偏爱一种祝福，但也能赐予其他几种。所有祝福都会生成一种治疗饮品，还可能附带其他效果，其中大多是有益的。\n\n要塞模式：\n- 每次祭仪需要两种供品，以及一个木桶或罐子。第一种供品显示在祭仪名称的括号里；第二种显示在名称下方，已有该供品时则不显示。\n- 储存时，所有治疗饮品都归入与蜂蜜酒相同的“生物酒类”类别。\n\n冒险模式：\n- 所有祭仪都有冒险模式版本，所需供品应当更便于冒险者取得。冒险者无需准备治疗饮品的容器：饮品落在地上或手中都没关系，也可以选择用水壶等容器舀起来。\n\n已知问题：\n- 矮人可以成为多位神祇的祭司，但头衔只显示最近一位。\n- 任何矮人都会举行祭仪并可能成为祭司，包括不信仰该神祇的矮人。若你在意这一点，请给工坊指派信仰合适的矮人。\n\n如果遇到错误、觉得不好玩，或者有任何建议，请告诉我！	lP

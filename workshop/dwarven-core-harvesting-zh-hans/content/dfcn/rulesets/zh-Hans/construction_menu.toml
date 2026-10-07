@@ -1,0 +1,7 @@
+base = "construction_menu"
+
+[[rulesets]]
+name = "workshops"
+[rulesets.rules]
+"Dwarven Magma Dredger" = "矮人岩浆采掘机"
+"Magma Dredger" = "岩浆采掘机"

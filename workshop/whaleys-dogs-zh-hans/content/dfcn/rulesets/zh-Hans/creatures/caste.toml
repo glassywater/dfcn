@@ -1,0 +1,11 @@
+base = "creatures::caste"
+
+[[rulesets]]
+name = "singular"
+[rulesets.rules]
+"{::whaleys_dogs::names::singular}" = "{::whaleys_dogs::names::singular}"
+
+[[rulesets]]
+name = "plural"
+[rulesets.rules]
+"{::whaleys_dogs::names::plural}" = "{::whaleys_dogs::names::plural}"

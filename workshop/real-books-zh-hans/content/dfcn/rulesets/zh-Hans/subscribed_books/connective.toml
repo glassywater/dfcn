@@ -1,0 +1,16 @@
+# Full reduced scene vocabulary from styles/connective_scene.lua.
+base = "subscribed_books::connective"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_name|::subscribed_books::vocabulary::person} told a joke, and for a moment the weight of the day lifted." = "{@bt_name|::subscribed_books::vocabulary::person}讲了个笑话，让这一天的沉重暂时消散。"
+"{@bt_name|::subscribed_books::vocabulary::person} said something that was not quite true, and let it sit there." = "{@bt_name|::subscribed_books::vocabulary::person}说了句不完全属实的话，任由它留在那里。"
+"{@bt_name|::subscribed_books::vocabulary::person} argued a point at length, unwilling to let it go unchallenged." = "{@bt_name|::subscribed_books::vocabulary::person}围绕一个观点争论许久，不愿让它未经质疑便被接受。"
+"{@bt_name|::subscribed_books::vocabulary::person} poured a drink and did not have much to say over it." = "{@bt_name|::subscribed_books::vocabulary::person}倒了杯酒，喝酒时并没有多少话可说。"
+"{@bt_name|::subscribed_books::vocabulary::person} proposed a game, more to pass the time than to win it." = "{@bt_name|::subscribed_books::vocabulary::person}提议玩一局，更多是为了消磨时间，而非获胜。"
+"{@bt_name|::subscribed_books::vocabulary::person} performed a little, unasked, the way people do when a room needs filling." = "{@bt_name|::subscribed_books::vocabulary::person}无人邀请便表演了一小段，像人们觉得房间需要些热闹时常做的那样。"
+"{@bt_name|::subscribed_books::vocabulary::person} lingered a moment too long, and it was not entirely unnoticed." = "{@bt_name|::subscribed_books::vocabulary::person}逗留得稍久了一些，而这并未完全逃过旁人的目光。"
+"{@bt_name|::subscribed_books::vocabulary::person} pushed back, sharper than the moment strictly called for." = "{@bt_name|::subscribed_books::vocabulary::person}作出反驳，语气比当时的情形所需更为尖锐。"
+"{@bt_name|::subscribed_books::vocabulary::person} made a case, patient and deliberate, for what should happen next." = "{@bt_name|::subscribed_books::vocabulary::person}耐心而慎重地陈述理由，说明接下来应当如何行动。"
+"{@bt_name|::subscribed_books::vocabulary::person} said nothing, content to let the silence do its work." = "{@bt_name|::subscribed_books::vocabulary::person}什么也没说，满足于让沉默发挥作用。"
+"{@bt_name|::subscribed_books::vocabulary::person} did something quietly notable." = "{@bt_name|::subscribed_books::vocabulary::person}悄然做了一件值得留意的事。"

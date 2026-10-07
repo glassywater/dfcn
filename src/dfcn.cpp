@@ -33,6 +33,7 @@
 #include <mutex>
 #include <numeric>
 #include <optional>
+#include <regex>
 #include <sstream>
 #include <stdexcept>
 #include <string>

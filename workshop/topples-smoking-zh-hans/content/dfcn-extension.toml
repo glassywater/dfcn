@@ -1,0 +1,8 @@
+schema = 1
+id = "topples-smoking-zh-hans"
+version = 1
+language = "zh-Hans"
+name = "Topples 吸烟汉化数据"
+translations = "dfcn/translations.tsv"
+rulesets = "dfcn/rulesets/zh-Hans"
+
