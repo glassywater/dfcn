@@ -16590,6 +16590,9 @@ std::vector<Match> Overlay::find_matches(int only_y,
     append_fortress_machine_power_rows(screen_rows, result, only_y);
     if (!announcement_panel_only)
         append_adventure_combat_fields(screen_rows, result, only_y, screen_override);
+    if (!announcement_panel_only) {
+#include "animal_picker_rows.inc"
+    }
 #include "native_unit_identity_rows.inc"
     // A roster shortens both names and separately drawn professions. Resolve
     // the complete captured field, including roles whose compressed spelling
@@ -26315,10 +26318,12 @@ static int layout_embark_item_cost_rows(std::vector<Match> &matches,
     return laid_out;
 }
 
+template <typename AnimalNameResolver>
 static int layout_animal_picker_rows(std::vector<Match> &matches,
                                     int screen_columns,
                                     int tile_pixel_y,
-                                    int font_pixels) {
+                                    int font_pixels,
+                                    const AnimalNameResolver &is_animal_name) {
     // The animal picker centres every native name and point value inside a
     // source-sized run. Chinese animal names are much shorter than their
     // English plural/caste forms, so the apparent left edge follows the
@@ -26326,7 +26331,7 @@ static int layout_animal_picker_rows(std::vector<Match> &matches,
     // Selected counts make the effect more pronounced because `1 Ducks` and
     // `Ducks` receive different private spans. Embark identifies the lists
     // with two headings; Adventure uses its pet tab and equipment/pet balance
-    // instead. Both pickers share the same gendered name/point-cost rows and
+    // instead. Both pickers share the same animal name/point-cost rows and
     // need invariant name/cost boxes within each panel.
     int your_animals_y = -1;
     int available_animals_y = -1;
@@ -26353,11 +26358,6 @@ static int layout_animal_picker_rows(std::vector<Match> &matches,
     if (screen_columns <= 0 || (!embark_animals && !adventure_pets)) {
         return 0;
     }
-
-    auto is_gendered_animal_name = [](std::string_view source) {
-        return source.find('\x0b') != std::string_view::npos ||
-               source.find('\x0c') != std::string_view::npos;
-    };
 
     struct AnimalRow {
         size_t name = 0;
@@ -26388,7 +26388,7 @@ static int layout_animal_picker_rows(std::vector<Match> &matches,
                 item_picker_text_row(name) != row_y ||
                 name.x >= cost.x || name.x + name.length > cost.x ||
                 (name.x < divider_x ? 0u : 1u) != panel ||
-                !is_gendered_animal_name(name.source)) {
+                !is_animal_name(name.source)) {
                 continue;
             }
             const int right = name.x + name.length;
@@ -35381,7 +35381,17 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
         arena_font_pixels);
     layout_animal_picker_rows(
         prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
-        arena_font_pixels);
+        arena_font_pixels, [this](std::string_view source) {
+            source = trim_view(source);
+            size_t count = 0;
+            while (count < source.size() && source[count] >= '0' && source[count] <= '9')
+                ++count;
+            if (count != 0 && count < source.size() && source[count] == ' ')
+                source = trim_view(source.substr(count + 1));
+            // A sexless RAW caste is still an animal row. Resolve the whole
+            // label, including its training prefix, before assigning columns.
+            return translate_creature_label(source).has_value();
+        });
     layout_embark_skill_rows(
         prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
         arena_font_pixels);

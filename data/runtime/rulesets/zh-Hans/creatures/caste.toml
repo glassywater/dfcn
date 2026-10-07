@@ -18,6 +18,8 @@ optional = true
 [[rulesets]]
 name = "name::purpose"
 [rulesets.rules]
+"war " = "受过战斗训练的"
+"hunting " = "受过狩猎训练的"
 "hunter " = "狩猎用"
 "attack " = "战斗用"
 "breeder " = "种用"
