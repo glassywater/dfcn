@@ -328,11 +328,16 @@ void Overlay::append_fortress_creature_activities(std::vector<std::string> &rows
         // Never translate only the prefix of a still-unrecovered ellipsis.
         // A literal status which intentionally ends in dots can still use
         // its exact glossary entry; no fragment/prefix inference is involved.
-        const auto target = source == visible && source.ends_with("...")
-            ? exact_literal_translation(source) : translate_fortress_activity(source);
+        TranslationResult translation;
+        if (source == visible && source.ends_with("...")) {
+            const auto exact = exact_literal_translation(source);
+            translation = exact ? TranslationResult::translated(source, *exact, "activity")
+                : preserved_item_field(source, "activity");
+        } else translation = translate_fortress_activity_display(source);
         Match match{left, y, end - left, kFortressTaskActivityRule,
-            target ? *target : native_text_to_utf8(source), visible};
-        match.native_hover_untranslated = !target;
+            translation.usable() ? translation.target : native_text_to_utf8(source), visible};
+        match.native_hover_untranslated = translation.has_untranslated();
+        match.translation_result = std::make_shared<const TranslationResult>(std::move(translation));
         match.layout_x = left;
         match.layout_y = y;
         match.layout_length = right - left;

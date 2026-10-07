@@ -37,6 +37,21 @@ struct NativeDfhackOverlayText {
 };
 static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
     const graphicst *gps);
+enum class NativeDfhackControlPanelTextRole : unsigned char { Text, Wrapped, Tool, Key };
+struct NativeDfhackControlPanelText {
+    int x = 0, y = 0, full_x = 0, visible_offset = 0;
+    std::string full, visible, document;
+    uintptr_t widget_id = 0;
+    SDL_Rect bounds{};
+    // Absolute zero-based document line for Wrapped; zero for a Label token.
+    int first_line = 0;
+    NativeDfhackControlPanelTextRole role = NativeDfhackControlPanelTextRole::Text;
+    SDL_Rect clip_bounds{}, parent_bounds{};
+    uintptr_t parent_id = 0;
+    int native_width = 0, total_lines = 0;
+};
+static std::vector<NativeDfhackControlPanelText> native_dfhack_control_panel_texts(
+    const graphicst *gps);
 static std::optional<std::string> lookup_native_dfhack_animal_assignment_text(
     const graphicst *gps, int x, int y, std::string_view visible);
 static bool install_native_dfhack_messagebox_hook();

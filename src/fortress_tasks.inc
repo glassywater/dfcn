@@ -293,6 +293,102 @@ std::optional<std::string> Overlay::translate_fortress_activity(
     return std::nullopt;
 }
 
+TranslationResult Overlay::translate_fortress_activity_display(
+        std::string_view raw_source, bool typed_only) const {
+    TranslationStateScope state;
+    TranslationWorkScope work;
+    const std::string source(raw_source);
+    if (source.empty()) return {};
+    const std::string key = item_translation_cache_prefix() +
+        (typed_only ? "activity-typed:" : "activity:") + source;
+    if (const auto found = fortress_activity_display_cache_.find(key);
+        found != fortress_activity_display_cache_.end()) return found->second;
+    auto result = preserved_item_field(source, "activity");
+    try {
+        TranslationWorkFrame frame("activity display", source);
+        if (auto target = translate_fortress_activity(source, typed_only))
+            result = TranslationResult::translated(source, *target, "activity");
+        else {
+            const std::string folded = lower(source);
+            const auto suffix = [&](size_t begin, std::string_view native_status,
+                                    const std::optional<std::string> &translated_status) {
+                if (!translated_status) return false;
+                result = translate_fortress_activity_display(source.substr(0, begin), typed_only);
+                result.append(TranslationResult::translated(native_status, *translated_status,
+                    "activity-status"), begin);
+                finish_item_display_result(result, source, "activity");
+                return true;
+            };
+            bool composed = false;
+            // Only the native activity graph's scoped statuses license a
+            // wrapper; arbitrary parentheses and slashes remain one field.
+            if (source.ends_with(')')) {
+                const size_t at = source.rfind(" (");
+                if (at != std::string::npos && at > 0)
+                    composed = suffix(at, std::string_view(source).substr(at),
+                        exact_literal_translation("Fortress activity: suffix " + source.substr(at + 1)));
+            }
+            if (!composed && folded.ends_with("/resting") && source.size() > 8)
+                composed = suffix(source.size() - 8, std::string_view(source).substr(source.size() - 8),
+                    exact_literal_translation("Fortress activity: suffix /Resting"));
+            for (const std::string_view role : {"Diplomat", "Guest"}) {
+                if (composed) break;
+                const std::string prefix = std::string(role) + " / ";
+                if (!folded.starts_with(lower(prefix)) || source.size() <= prefix.size()) continue;
+                auto identity = exact_literal_translation("Fortress activity: " + std::string(role));
+                if (!identity) identity = exact_literal_translation(role);
+                if (!identity) break;
+                result = TranslationResult::translated(prefix, *identity + " / ", "activity-role");
+                result.append(translate_fortress_activity_display(source.substr(prefix.size()), typed_only), prefix.size());
+                finish_item_display_result(result, source, "activity");
+                composed = true;
+            }
+            constexpr std::string_view trainer = "Trainer:";
+            if (!composed && source.starts_with(trainer) && source.size() > trainer.size()) {
+                if (auto label = exact_literal_translation("Fortress activity: Trainer")) {
+                    const auto person_source = trim_view(std::string_view(source).substr(trainer.size()));
+                    const auto person = translate_unit_identity(person_source, true);
+                    result = TranslationResult::translated(trainer, *label + "：", "activity-role");
+                    result.append(person ? TranslationResult::translated(person_source, *person, "person")
+                        : preserved_item_field(person_source, "person"),
+                        static_cast<size_t>(person_source.data() - source.data()));
+                    finish_item_display_result(result, source, "activity");
+                    composed = true;
+                }
+            }
+            for (const std::string_view verb : {"Read", "Copy", "Serve", "Play with", "Haul:"}) {
+                if (composed) break;
+                const std::string prefix = std::string(verb) + " ";
+                if (!folded.starts_with(lower(prefix)) || source.size() <= prefix.size()) continue;
+                const auto action = exact_literal_translation("Fortress activity: " + std::string(verb));
+                if (!action) break;
+                const auto object = std::string_view(source).substr(prefix.size());
+                // Written titles with trailing ! were tried by the complete
+                // path. Unknown titles retain their complete punctuation.
+                result = TranslationResult::translated(prefix, *action, "activity-action");
+                result.append(translate_fortress_item_caption_display(object), prefix.size());
+                finish_item_display_result(result, source, "activity");
+                composed = true;
+            }
+            if (!composed && typed_only) {
+                result = {};
+                result.source = source;
+                result.kind = "activity";
+            }
+        }
+    } catch (const TranslationWorkLimit &) {
+        if (!work.owns_budget()) throw;
+        result = preserved_item_field(source, "activity", TranslationStatus::WorkLimited);
+    }
+    result.policy = TranslationPolicy::Display;
+    result.resource_revision = RULESETS.resource_revision();
+    if (fortress_activity_display_cache_.size() >= 4096) fortress_activity_display_cache_.clear();
+    if (item_translation_cache_context_current(key) &&
+        key.size() + item_display_result_bytes(result) <= 65536)
+        fortress_activity_display_cache_.emplace(key, result);
+    return result;
+}
+
 // Tasks has no Name/Prof sort band. Its three independent columns are
 // activity, optional worker, and optional item/building. A worker is NOT a
 // prerequisite for owning a task: unassigned, suspended and hauling jobs
@@ -513,9 +609,13 @@ void Overlay::append_fortress_task_rows(std::vector<std::string> &rows,
                 break;
             }
         std::optional<std::string> target;
+        TranslationResult display_result;
         const int rule = field.column == 0 ? kFortressTaskActivityRule
             : field.column == 1 ? kFortressTaskWorkerRule : kFortressTaskContextRule;
-        if (field.column == 0) target = translate_fortress_activity(source);
+        if (field.column == 0) {
+            display_result = translate_fortress_activity_display(source);
+            if (display_result.usable()) target = display_result.target;
+        }
         else if (field.column == 1) target = translate_procedural_fragment(source);
         else {
             // Reuse existing building/item vocabulary; an authored UTF-8
@@ -545,17 +645,32 @@ void Overlay::append_fortress_task_rows(std::vector<std::string> &rows,
                     target = translate_item_description_term(source);
                     if (!target) target = translate_compositional(source);
                 }
+                if (!target) {
+                    for (int index : candidate_template_rules(source)) {
+                        const Rule &caption = rules_[static_cast<size_t>(index)];
+                        std::vector<std::pair<size_t, size_t>> ranges;
+                        if (!match_unique_item_display_rule(caption, source, ranges)) continue;
+                        std::vector<std::string> captures;
+                        for (const auto [begin, end] : ranges) captures.emplace_back(source.substr(begin, end - begin));
+                        auto candidate = translate_template_captures_display(caption, captures, source);
+                        if (!candidate.usable() || !candidate.changed()) continue;
+                        display_result = std::move(candidate);
+                        target = display_result.target;
+                        break;
+                    }
+                }
             }
         }
         const std::string literal = native_text_to_utf8(source);
-        const bool untranslated = (!target || *target == literal) &&
-            std::any_of(source.begin(), source.end(), [](unsigned char ch) {
-                return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
-            });
+        if (!display_result.usable()) display_result = target
+            ? TranslationResult::translated(source, *target, "task-field")
+            : preserved_item_field(source, "task-field");
+        const bool untranslated = display_result.has_untranslated();
         if (!target) target = literal;
         if (target->empty() || target->find("[C:") != std::string::npos ||
             target->find_first_of("\r\n") != std::string::npos) continue;
         Match match{field.left, field.y, field.end - field.left, rule, *target, field.source};
+        match.translation_result = std::make_shared<const TranslationResult>(std::move(display_result));
         match.native_hover_untranslated = untranslated;
         match.layout_x = lefts[field.column];
         match.layout_y = field.y;
@@ -996,18 +1111,18 @@ void Overlay::append_workshop_task_translations(const WorkshopTaskCard &card,
         // Condition choices and selected/suggested conditions use the same
         // native job-item grammar as recipe requirements. In particular,
         // flags are semantic constraints, not independent dictionary words.
-        auto target = card.condition_choice ? translate_workshop_recipe_source(source)
-            : card.category ? exact_literal_translation(source)
-            : requirement ? translate_workshop_recipe_source(source)
-                          : translate_fortress_activity(source);
-        const bool complete = target && !target->empty() &&
-            target->find("[C:") == std::string::npos &&
-            std::none_of(target->begin(), target->end(), [](unsigned char ch) {
-                return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') ||
-                    ch == '\r' || ch == '\n';
-            });
+        TranslationResult result;
+        if (card.condition_choice || requirement) result = translate_workshop_recipe_source_display(source);
+        else if (card.category) {
+            const auto target = exact_literal_translation(source);
+            result = target ? TranslationResult::translated(source, *target, "workshop-category")
+                : preserved_item_field(source, "workshop-category");
+        } else result = translate_fortress_activity_display(source);
+        const bool complete = result.usable() && !result.has_untranslated();
         Match match{row.x, row.y, static_cast<int>(row.source.size()),
-            kWorkshopTaskRowRule, complete ? *target : native_text_to_utf8(row.source), row.source};
+            kWorkshopTaskRowRule, result.usable() && item_display_target_valid(result.target)
+                ? result.target : native_text_to_utf8(source), row.source};
+        match.translation_result = std::make_shared<const TranslationResult>(std::move(result));
         match.layout_foreground_rgb = row.foregrounds.front();
         match.native_hover_untranslated = !complete;
         if (!complete) match.native_help_review_source = source;

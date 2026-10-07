@@ -1975,8 +1975,10 @@ void Overlay::append_world_civilization_officials(const NativeTextCard &details,
         if (!translated(target)) target = translate_unit_profession(source);
         return translated(target) ? target : std::nullopt;
     };
-    const auto office = [&](std::string_view source) -> std::optional<std::string> {
-        std::string target;
+    const auto office_result = [&](std::string_view source) -> dfcn::TranslationResult {
+        dfcn::TranslationResult result;
+        result.kind = "world-office";
+        result.owner = "native-world-official-table";
         for (size_t begin = 0; begin < source.size();) {
             // Native 53.16's office formatter appends ONE '/' byte at
             // 0x1dcd852..0x1dcd861, then the profession: Queen/Carpenter.
@@ -1985,12 +1987,33 @@ void Overlay::append_world_civilization_officials(const NativeTextCard &details,
             const size_t slash = source.find('/', begin);
             const size_t end = slash == std::string_view::npos ? source.size() : slash;
             const auto part = office_part(source.substr(begin, end - begin));
-            if (!translated(part)) return std::nullopt;
-            if (!target.empty()) target += " / ";
-            target += *part;
-            if (slash == std::string_view::npos) return target;
+            const auto raw = source.substr(begin, end - begin);
+            if (trim_view(raw).empty() || trim_view(raw).ends_with("..."))
+                return dfcn::TranslationResult{};
+            if (translated(part)) result.append(dfcn::TranslationResult::translated(raw,
+                *part, "office-component"), begin);
+            else result.append(preserve_native_translation(raw, "office-component"), begin);
+            if (slash == std::string_view::npos) {
+                if (result.has_untranslated() && std::count(source.begin(), source.end(), '/') > 1)
+                    return preserve_native_translation(source, "world-office");
+                result.source.assign(source);
+                result.consumed = source.size();
+                result.resource_revision = RULESETS.resource_revision();
+                return result;
+            }
+            result.append(dfcn::TranslationResult::translated("/", " / ", "office-separator"), slash);
             begin = slash + 1;
         }
+        return dfcn::TranslationResult{};
+    };
+    const auto office = [&](std::string_view source) -> std::optional<std::string> {
+        const auto result = office_result(source);
+        // A bare field still needs vocabulary evidence to anchor a table.
+        // Native columns and an explicit office/profession slash already
+        // prove ownership independently of this translation coverage.
+        if (result.usable() && std::any_of(result.fragments.begin(), result.fragments.end(),
+                [](const auto &fragment) { return fragment.status == dfcn::TranslationStatus::Translated &&
+                    fragment.kind == "office-component"; })) return result.target;
         return std::nullopt;
     };
     const auto &panel = details.interior;
@@ -2035,11 +2058,18 @@ void Overlay::append_world_civilization_officials(const NativeTextCard &details,
                                     int column_left, int column_right, bool is_office) {
                 const int x = row.x + field.start;
                 const std::string source = complete_source(x, row.y, field.text, column_right);
-                auto target = is_office ? office(source) : translate_legends_name(source, true);
-                if (is_office ? !translated(target)
-                        : !translation_complete_with_native_nicknames(target, source)) target.reset();
+                auto result = is_office ? office_result(source) : dfcn::TranslationResult{};
+                auto target = is_office ? (result.usable() ? std::optional<std::string>(result.target) : std::nullopt)
+                    : translate_legends_name(source, true);
+                if (!is_office && !translation_complete_with_native_nicknames(target, source)) target.reset();
+                if (!is_office && target) result = dfcn::TranslationResult::translated(source,
+                    *target, "official-holder");
+                if (!result.usable()) result = preserve_native_translation(source,
+                    is_office ? "world-office" : "official-holder");
+                result.owner = "native-world-official-table";
                 Match match{x, row.y, field.end - field.start, kWorldSiteRowRule,
                     target ? *target : cp437_to_utf8(source), field.text};
+                match.translation_result = std::make_shared<const dfcn::TranslationResult>(std::move(result));
                 match.native_hover_untranslated = !target;
                 if (!target) match.native_help_review_source = source;
                 match.layout_x = column_left;

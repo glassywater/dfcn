@@ -2,17 +2,28 @@
 // Colors, tree names and bare item types must retain their field meanings.
 std::optional<std::string> Overlay::translate_stockpile_setting(
         std::string_view caption, StockpileCaptionKind kind) const {
+    return translate_stockpile_setting_display(caption, kind).strict_target();
+}
+
+TranslationResult Overlay::translate_stockpile_setting_display(
+        std::string_view caption, StockpileCaptionKind kind) const {
     TranslationStateScope translation_scope;
+    TranslationWorkScope work;
     const std::string source = normalize_utterance(caption);
     // Own complete captions, not native record addresses: category changes
     // recycle those records. Field meaning and original spelling are part of
     // the key, so wood/color/material homonyms and names cannot alias.
-    const std::string key = std::to_string(static_cast<int>(kind)) + ":" + source;
+    const std::string key = item_translation_cache_prefix() +
+        std::to_string(static_cast<int>(kind)) + ":display:" + source;
     if (const auto found = stockpile_setting_translation_cache_.find(key);
         found != stockpile_setting_translation_cache_.end()) return found->second;
     const std::string folded = lower(source);
     const bool candidate = kind != StockpileCaptionKind::Label;
+    const bool typed_value = kind == StockpileCaptionKind::Color || kind == StockpileCaptionKind::Wood;
     std::optional<std::string> target;
+    auto result = preserved_item_field(source, "stockpile-setting");
+    try {
+    TranslationWorkFrame frame("stockpile display field", source);
     if (kind == StockpileCaptionKind::Color) target = RULESETS.translate_color(folded);
     if (!target && kind == StockpileCaptionKind::Wood) {
         std::vector<size_t> origins;
@@ -21,17 +32,32 @@ std::optional<std::string> Overlay::translate_stockpile_setting(
     if (!target) target = exact_literal_translation("Stockpile setting: " + folded);
     if (!target && kind == StockpileCaptionKind::ItemType && config_.compositional_rules)
         target = translate_arena_equipment_source_phrase(source);
-    if (!target && candidate && config_.compositional_rules)
+    if (!target && candidate && !typed_value && config_.compositional_rules)
         target = RULESETS.translate_material_state(folded);
-    if (!target) target = exact_literal_translation(source);
-    if (!item_description_translation_complete(target) && config_.compositional_rules) {
+    if (!target && !typed_value) target = exact_literal_translation(source);
+    if (!target && !typed_value && config_.compositional_rules) {
         target = RULESETS.translate_material_state(folded);
-        if (!item_description_translation_complete(target))
+        if (!target)
             target = translate_item_description_term(source);
-        if (!item_description_translation_complete(target))
-            target = translate_compositional(source);
+        // Generic composition still has its strict contract. Typed fields and
+        // exact literals above carry their own full-consumption proof.
+        if (!target) {
+            auto generic = translate_compositional(source);
+            if (item_description_translation_complete(generic)) target = std::move(generic);
+        }
     }
-    if (!item_description_translation_complete(target)) target.reset();
+    if (target && item_display_target_valid(*target))
+        result = TranslationResult::translated(source, *target, "stockpile-setting");
+    else if (candidate && config_.compositional_rules &&
+        (kind == StockpileCaptionKind::Value || kind == StockpileCaptionKind::ItemType))
+        result = translate_item_description_term_display(source);
+    } catch (const TranslationWorkLimit &) {
+        if (!work.owns_budget()) throw;
+        result = preserved_item_field(source, "stockpile-setting", TranslationStatus::WorkLimited);
+    }
+    result.policy = TranslationPolicy::Display;
+    result.resource_revision = RULESETS.resource_revision();
+    if (!item_translation_cache_context_current(key)) return result;
 
     // A meat catalog contains every species/organ combination, not only the
     // visible rows. Share successful AND unresolved captions between search
@@ -39,7 +65,7 @@ std::optional<std::string> Overlay::translate_stockpile_setting(
     // clearing a small cache wholesale makes a full traversal reparse itself.
     constexpr size_t maximum_records = 65536;
     constexpr size_t maximum_bytes = 16 * 1024 * 1024;
-    const size_t bytes = 2 * key.size() + (target ? target->size() : 0);
+    const size_t bytes = 2 * key.size() + item_display_result_bytes(result);
     if (bytes <= maximum_bytes) {
         while (!stockpile_setting_translation_order_.empty() &&
                 (stockpile_setting_translation_cache_.size() >= maximum_records ||
@@ -47,11 +73,11 @@ std::optional<std::string> Overlay::translate_stockpile_setting(
             const auto oldest = stockpile_setting_translation_cache_.find(
                 stockpile_setting_translation_order_.front());
             stockpile_setting_translation_bytes_ -= 2 * oldest->first.size() +
-                (oldest->second ? oldest->second->size() : 0);
+                item_display_result_bytes(oldest->second);
             stockpile_setting_translation_cache_.erase(oldest);
             stockpile_setting_translation_order_.pop_front();
         }
-        const auto [entry, inserted] = stockpile_setting_translation_cache_.emplace(key, target);
+        const auto [entry, inserted] = stockpile_setting_translation_cache_.emplace(key, result);
         if (inserted) {
             try {
                 stockpile_setting_translation_order_.push_back(key);
@@ -62,7 +88,7 @@ std::optional<std::string> Overlay::translate_stockpile_setting(
             stockpile_setting_translation_bytes_ += bytes;
         }
     }
-    return target;
+    return result;
 }
 
 bool Overlay::translated_stockpile_search_matches(std::string_view source,
@@ -70,8 +96,8 @@ bool Overlay::translated_stockpile_search_matches(std::string_view source,
     TranslationStateScope translation_scope;
     if (!config_.enabled) return false;
     if (source.empty() || compact_translated_search_text(query).empty()) return false;
-    const auto target = translate_stockpile_setting(source, kind);
-    return target && translated_search_text_matches(*target, query);
+    const auto result = translate_stockpile_setting_display(source, kind);
+    return result.usable() && translated_search_text_matches(result.target, query);
 }
 
 // Custom settings are three independent category-button columns. Categories
@@ -232,14 +258,13 @@ void Overlay::append_fortress_stockpile_settings(std::vector<std::string> &rows,
                     break;
                 }
             source = normalize_utterance(source);
-            const auto target = translate_stockpile_setting(source, kind);
-            // An unresolved word inside a nominally successful result is not
-            // a translated caption. Keep it in the review queue, rather than
-            // counting a half-English value as covered or transliterating it.
+            const auto translation = translate_stockpile_setting_display(source, kind);
             Match label{row.x, row.y, static_cast<int>(row.source.size()),
-                kFortressStockpileSettingRule, target ? *target : native_text_to_utf8(source), row.source};
-            label.native_hover_untranslated = !target;
-            if (!target) label.native_help_review_source = source;
+                kFortressStockpileSettingRule, translation.usable()
+                    ? translation.target : native_text_to_utf8(source), row.source};
+            label.translation_result = std::make_shared<const TranslationResult>(translation);
+            label.native_hover_untranslated = translation.has_untranslated();
+            if (translation.has_untranslated()) label.native_help_review_source = source;
             labels.push_back(std::move(label));
             // Keep the original spans for glyph suppression. Only the display
             // box moves, never the native hitboxes, icons or selected colors.

@@ -2,11 +2,17 @@
 // translation identity. Never label a few translated words as a translated
 // tooltip, and never use empty historical fragment tails to delete prose.
 std::string Overlay::translate_toolbar_tooltip(std::string_view source, bool catalog_only) const {
+    refresh_native_display_translation_context();
+    const auto context = native_identity_translation_context();
     // A card is queried by native suppression and the final overlay. Cache
     // unknown cards too, so their complete-phrase lookup runs only once.
     if (tooltip_translation_cache_valid_ && source == tooltip_translation_cache_source_ &&
-        catalog_only == tooltip_translation_cache_catalog_only_)
+        catalog_only == tooltip_translation_cache_catalog_only_ &&
+        tooltip_translation_cache_result_.resource_revision == RULESETS.resource_revision())
         return tooltip_translation_cache_target_;
+    dfcn::TranslationWorkScope budget;
+    dfcn::TranslationResult document_result;
+    size_t document_consumed = 0;
     const auto translate = [&]() -> std::string {
         std::string identity;
         std::vector<size_t> origins;
@@ -78,28 +84,94 @@ std::string Overlay::translate_toolbar_tooltip(std::string_view source, bool cat
             for (size_t at = 0; at < identity.size(); at = next[at]) target += targets[at];
             return target;
         }
+        if (!catalog_only) {
+            if (auto exact = exact_literal_translation(source); exact && contains_cjk_utf8(*exact))
+                return *exact;
+        }
+        // Complete catalog results retain priority. Only a structurally
+        // bound display template may keep a missing material field intact.
+        for (int index : toolbar_template_rules_) {
+            const Rule &rule = rules_[static_cast<size_t>(index)];
+            std::vector<std::string> captures;
+            std::vector<std::pair<size_t, size_t>> ranges;
+            if (!match_catalog_template(rule, source, 0, captures, ranges,
+                    nullptr, false, true)) continue;
+            auto partial = translate_template_captures_display(rule, captures, source);
+            if (!partial.usable() || !partial.changed()) continue;
+            document_result = std::move(partial);
+            return document_result.target;
+        }
+        if (source.find("\n\n") != std::string_view::npos) {
+            dfcn::TranslationResult paragraphs;
+            for (size_t begin = 0; begin < source.size();) {
+                const size_t separator = source.find("\n\n", begin);
+                const size_t end = separator == std::string_view::npos ? source.size() : separator;
+                if (end > begin) paragraphs.append(translate_toolbar_tooltip_result(
+                    source.substr(begin, end - begin), catalog_only), begin);
+                if (separator == std::string_view::npos) break;
+                paragraphs.append(dfcn::TranslationResult::translated("\n\n", "\n\n", "card-separator"), separator);
+                begin = separator + 2;
+            }
+            if (std::any_of(paragraphs.fragments.begin(), paragraphs.fragments.end(),
+                    [](const auto &fragment) { return fragment.status == dfcn::TranslationStatus::Translated &&
+                        fragment.kind != "card-separator"; })) {
+                document_result = std::move(paragraphs);
+                return document_result.target;
+            }
+        }
+        const bool character_fields = source.find("Affected by attributes:") != std::string_view::npos ||
+            source.find("Affects skills:") != std::string_view::npos ||
+            source.find("Weapon skill.") != std::string_view::npos ||
+            source.find("Crafting skill.") != std::string_view::npos ||
+            source.find("Performance skill.") != std::string_view::npos;
+        if (!character_fields) {
+            // A complete reviewed opening sentence is a constructor boundary.
+            // Its unknown continuation remains one whole source span; no
+            // punctuation inside that continuation is interpreted as a name
+            // or another sentence by this fallback.
+            size_t prefix = 0;
+            const std::string *prefix_target = nullptr;
+            for (const auto &[phrase, translated] : toolbar_translations_) {
+                if (phrase.empty() || phrase.size() <= prefix || phrase.size() >= identity.size() ||
+                        std::string_view(".!?").find(phrase.back()) == std::string_view::npos ||
+                        !identity.starts_with(phrase)) continue;
+                const size_t end = origins[phrase.size() - 1] + 1;
+                if (end >= source.size() || !std::isspace(static_cast<unsigned char>(source[end]))) continue;
+                prefix = phrase.size();
+                prefix_target = &translated;
+            }
+            if (prefix_target) {
+                const size_t end = origins[prefix - 1] + 1;
+                document_result.append(dfcn::TranslationResult::translated(source.substr(0, end),
+                    *prefix_target, "tooltip-catalog-sentence"));
+                document_result.append(preserve_native_translation(source.substr(end),
+                    "tooltip-continuation"), end);
+                return document_result.target;
+            }
+        }
         // Workshop recipe fields already tried their typed grammar. A failed
         // requirement cannot be rescued by a legacy literal or per-line
         // character-card translation; only a complete reviewed description
         // from the catalog or instrument grammar is a valid prose fallback.
         if (catalog_only) return {};
-        if (auto exact = exact_literal_translation(source); exact && contains_cjk_utf8(*exact))
-            return *exact;
 
         // Character cards contain a title, wrapped descriptions and independent
         // attribute/skill rows. Blank rows separate paragraphs; only a complete
         // dictionary phrase may join consecutive native rows inside a paragraph.
         // In particular, never stitch the description into the following list.
-        if (source.find('\n') == std::string_view::npos) return {};
+        if (!character_fields || source.find('\n') == std::string_view::npos) return {};
         std::vector<std::string_view> lines;
+        std::vector<size_t> line_origins;
         for (size_t at = 0;;) {
             const size_t end = source.find('\n', at);
-            lines.push_back(trim_view(source.substr(at,
-                end == std::string_view::npos ? source.size() - at : end - at)));
+            const auto raw = source.substr(at,
+                end == std::string_view::npos ? source.size() - at : end - at);
+            const auto line = trim_view(raw);
+            lines.push_back(line);
+            line_origins.push_back(at + static_cast<size_t>(line.data() - raw.data()));
             if (end == std::string_view::npos) break;
             at = end + 1;
         }
-        std::string target;
         const bool skill_terms = source.find("Affected by attributes:") != std::string_view::npos ||
             source.find("Affects skills:") != std::string_view::npos ||
             source.find("Weapon skill.") != std::string_view::npos ||
@@ -128,12 +200,32 @@ std::string Overlay::translate_toolbar_tooltip(std::string_view source, bool cat
             }
             return std::nullopt;
         };
+        bool list_section = false;
+        size_t preceding_end = 0;
         for (size_t at = 0; at < lines.size();) {
-            if (at) target += '\n';
-            if (lines[at].empty()) { ++at; continue; }
+            const size_t unit_start = at;
+            if (lines[at].empty()) { list_section = false; ++at; continue; }
+            const bool list_heading = lines[at] == "Affected by attributes:" ||
+                lines[at] == "Affects skills:";
+            if (list_heading) list_section = true;
+            if (!document_result.target.empty()) {
+                const auto gap = source.substr(preceding_end, line_origins[at] - preceding_end);
+                const bool paragraph_gap = std::count(gap.begin(), gap.end(), '\n') > 1;
+                auto separator = dfcn::TranslationResult::translated(gap,
+                    paragraph_gap ? "\n\n" : "\n", "card-separator");
+                document_result.append(separator, preceding_end);
+            }
             std::string phrase, translated;
             size_t consumed = at;
-            for (size_t end = at; end < lines.size() && !lines[end].empty(); ++end) {
+            // The first row is the card title. A native list header proves
+            // independent attribute/skill rows; prose wraps stay one unit.
+            size_t unit_end = at + 1;
+            if (at != 0 && !list_section) {
+                while (unit_end < lines.size() && !lines[unit_end].empty() &&
+                        lines[unit_end] != "Affected by attributes:" &&
+                        lines[unit_end] != "Affects skills:") ++unit_end;
+            }
+            for (size_t end = at; end < unit_end; ++end) {
                 if (!phrase.empty()) phrase += ' ';
                 phrase += lines[end];
                 if (const auto exact = translate_phrase(phrase)) {
@@ -141,19 +233,67 @@ std::string Overlay::translate_toolbar_tooltip(std::string_view source, bool cat
                     consumed = end + 1;
                 }
             }
-            // An unknown row keeps the complete original card visible. A partly
-            // translated card must not erase its title or the end of its list.
-            if (consumed == at) return {};
-            target += translated;
-            at = consumed;
+            // An unknown prose paragraph stays intact. Do not translate a
+            // known prefix and reinterpret its wrapped unknown tail as rows.
+            const size_t source_begin = line_origins[unit_start];
+            const size_t source_end = line_origins[unit_end - 1] + lines[unit_end - 1].size();
+            const auto unit = source.substr(source_begin, source_end - source_begin);
+            if (consumed == unit_end)
+                document_result.append(dfcn::TranslationResult::translated(unit,
+                    std::move(translated), list_section ? "skill-entry" : "card-paragraph"), source_begin);
+            else {
+                std::string wrapped(unit);
+                std::replace(wrapped.begin(), wrapped.end(), '\n', ' ');
+                auto preserved = preserve_native_translation(wrapped,
+                    list_section ? "skill-entry" : "card-paragraph");
+                preserved.source.assign(unit);
+                document_result.append(preserved, source_begin);
+            }
+            preceding_end = source_end;
+            document_consumed = source_end;
+            at = unit_end;
         }
-        return target;
+        return document_result.has_untranslated() &&
+            std::none_of(document_result.fragments.begin(), document_result.fragments.end(),
+                [](const auto &fragment) { return fragment.status == dfcn::TranslationStatus::Translated &&
+                    fragment.kind != "card-separator"; }) ? std::string{} : document_result.target;
     };
-    tooltip_translation_cache_target_ = translate();
+    try { tooltip_translation_cache_target_ = translate(); }
+    catch (const dfcn::TranslationWorkLimit &) {
+        if (document_result.usable() && document_consumed > 0) {
+            document_result.append(preserve_native_translation(source.substr(document_consumed),
+                "card-paragraph", false, dfcn::TranslationStatus::WorkLimited), document_consumed);
+            if (std::any_of(document_result.fragments.begin(), document_result.fragments.end(),
+                    [](const auto &fragment) { return fragment.status == dfcn::TranslationStatus::Translated &&
+                        fragment.kind != "card-separator"; })) tooltip_translation_cache_target_ = document_result.target;
+            else tooltip_translation_cache_target_.clear();
+        } else {
+            document_result = preserve_native_translation(source, "toolbar-card", false,
+                dfcn::TranslationStatus::WorkLimited);
+            tooltip_translation_cache_target_.clear();
+        }
+    }
+    if (!document_result.usable() && !tooltip_translation_cache_target_.empty())
+        document_result = dfcn::TranslationResult::translated(source,
+            tooltip_translation_cache_target_, "toolbar-card");
+    if (tooltip_translation_cache_target_.empty() && !document_result.usable())
+        document_result = preserve_native_translation(source, "toolbar-card");
+    document_result.source.assign(source);
+    document_result.consumed = source.size();
+    document_result.owner = "native-toolbar-tooltip";
+    document_result.policy = dfcn::TranslationPolicy::Display;
+    document_result.resource_revision = RULESETS.resource_revision();
+    tooltip_translation_cache_result_ = std::move(document_result);
     tooltip_translation_cache_source_.assign(source);
     tooltip_translation_cache_catalog_only_ = catalog_only;
-    tooltip_translation_cache_valid_ = true;
+    tooltip_translation_cache_valid_ = context == native_identity_translation_context();
     return tooltip_translation_cache_target_;
+}
+
+dfcn::TranslationResult Overlay::translate_toolbar_tooltip_result(
+        std::string_view source, bool catalog_only) const {
+    translate_toolbar_tooltip(source, catalog_only);
+    return tooltip_translation_cache_result_;
 }
 
 // Temple selection emits a count followed by one sphere per row. Both the
@@ -767,7 +907,11 @@ void Overlay::append_toolbar_tooltip_matches(std::vector<std::string> &rows,
     }
     const bool deity_card = card.deity_fields.size() == card.rows.size() &&
         !card.deity_fields.empty();
+    const auto translated_card = deity_card ? dfcn::TranslationResult{} :
+        translate_toolbar_tooltip_result(card.source);
     const std::string target = deity_card ? std::string{} : translate_toolbar_tooltip(card.source);
+    const auto card_result = deity_card ? std::shared_ptr<const dfcn::TranslationResult>{} :
+        std::make_shared<const dfcn::TranslationResult>(translated_card);
     if (target.empty() && !deity_card) {
         if (card.whole_frame) {
             // The complete original card was validated above. Hide it only
@@ -775,6 +919,16 @@ void Overlay::append_toolbar_tooltip_matches(std::vector<std::string> &rows,
             // clear matches: an untranslated card keeps all native glyphs.
             // A raw background that did not match the whole card returned
             // earlier and remains available for ordinary list translation.
+            for (size_t at = 0; at < card.rows.size(); ++at) {
+                const int y = card.text_y + static_cast<int>(at);
+                if (y >= card.bottom || trim_view(card.rows[at]).empty()) continue;
+                Match preserved{body_x, y, static_cast<int>(card.rows[at].size()),
+                    kToolbarTooltipBodyRule, {}, card.rows[at]};
+                preserved.native_help_source_only = true;
+                preserved.translation_result = card_result;
+                if (at == 0) preserved.native_help_review_source = card.source;
+                if (only_y < 0 || only_y == y) matches.push_back(std::move(preserved));
+            }
             for (int y = card.top + 1; y < card.bottom; ++y)
                 std::fill(rows[y].begin() + card.left + 1,
                     rows[y].begin() + card.right, ' ');
@@ -799,6 +953,7 @@ void Overlay::append_toolbar_tooltip_matches(std::vector<std::string> &rows,
                     : deity_card ? card.deity_fields[line].target
                     : owner ? target : std::string{},
                 source.substr(begin, cursor - begin)};
+            match.translation_result = card_result;
             owner = false;
             match.layout_x = card.text_x;
             match.layout_length = card.text_right - card.text_x;

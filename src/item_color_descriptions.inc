@@ -84,3 +84,42 @@ std::optional<std::string> Overlay::translate_item_dye_materials(
     if (mixed) result += "混合物";
     return result;
 }
+
+TranslationResult Overlay::translate_item_color_pattern_display(std::string_view source) const {
+    if (const auto target = translate_item_color_pattern(source))
+        return TranslationResult::translated(source, *target, "color");
+    // The owning item rule/native descriptor already establishes COLOR.
+    // A color homonym must not enter the ordinary material/name namespaces.
+    return preserved_item_field(source, "color");
+}
+
+TranslationResult Overlay::translate_item_dye_materials_display(std::string_view raw_source) const {
+    TranslationWorkFrame frame("dye display fields", raw_source);
+    const std::string source = normalize_art_utterance(raw_source);
+    if (const auto target = translate_item_dye_materials(source))
+        return TranslationResult::translated(source, *target, "dye-materials");
+    constexpr std::string_view mixture = "a mixture of ";
+    if (!template_literal_at(source, 0, mixture, true) || source.size() <= mixture.size()) {
+        if (const auto target = translate_material_name(source))
+            return TranslationResult::translated(source, *target, "dye-material");
+        return preserved_item_field(source, "dye-material");
+    }
+    const auto body = std::string_view(source).substr(mixture.size());
+    // The formatter proves the mixture wrapper. It does not capture its RAW
+    // members here; an unknown owner's text can contain commas and "and".
+    // Keep that complete body instead of granting punctuation a new boundary.
+    auto result = preserved_item_field(body, "dye-material-list");
+    for (auto &fragment : result.fragments) {
+        fragment.source_begin += mixture.size();
+        fragment.source_end += mixture.size();
+    }
+    for (auto &origin : result.origins)
+        if (origin != std::string::npos) origin += mixture.size();
+    const size_t wrapper_begin = result.target.size();
+    result.target += "混合物";
+    result.fragments.push_back({0, mixture.size(), wrapper_begin, result.target.size(),
+        TranslationStatus::Translated, "dye-mixture"});
+    result.origins.resize(result.target.size(), std::string::npos);
+    finish_item_display_result(result, source, "dye-materials");
+    return result;
+}

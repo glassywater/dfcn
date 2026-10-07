@@ -1010,6 +1010,7 @@ void Overlay::append_map_hover_phrases(const NativeTextCard &card,
             first.source.starts_with("Engraved on the floor is ") ||
             first.source.starts_with("Engraved is ");
         std::string source, best_target;
+        TranslationResult best_translation;
         std::vector<int> colors, best_colors;
         std::vector<Match> spans, best_spans;
         size_t best_end = begin;
@@ -1036,19 +1037,25 @@ void Overlay::append_map_hover_phrases(const NativeTextCard &card,
             if (sentence_source.empty() || std::string_view(".!?").find(sentence_source.back()) ==
                     std::string_view::npos) continue;
             std::vector<int> target_colors;
-            const auto target = engraving ? translate_item_description_source(source, true)
+            TranslationResult translation;
+            if (engraving) translation = translate_item_description_source_display(source, true);
+            const auto target = engraving
+                ? (translation.usable() ? std::optional<std::string>(translation.target) : std::nullopt)
                 : translate_help_paragraph(source, colors, target_colors, true);
             if (!target || target->empty()) continue;
             best_target = *target;
+            best_translation = std::move(translation);
             best_colors = std::move(target_colors);
             best_spans = spans;
             best_end = end;
         }
         // An engraving owns the whole connected description; an unfinished
         // historical tail must not be reinterpreted as independent hover nouns.
+        const size_t first_match = matches.size();
         if ((engraving && best_spans.size() != spans.size()) || best_spans.empty() ||
                 !append_bounded_paragraph(std::move(best_spans),
                 best_target, rows, matches, only_y, right, right, best_colors)) continue;
+        if (best_translation.usable()) attach_item_display_result(matches, first_match, best_translation);
         for (size_t end = begin; end <= best_end; ++end)
             paragraph_rows.insert(card.rows[end].y);
         begin = best_end;

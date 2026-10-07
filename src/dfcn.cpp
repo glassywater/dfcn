@@ -52,6 +52,7 @@
 #include "reloadable_thread_state.h"
 #include "translation_work.h"
 #include "translation_state.h"
+#include "translation_result.h"
 #include "native_history_data.h"
 #include "native_performance_choice.h"
 #include "native_unit_identity.h"
@@ -77,6 +78,7 @@ static bool capture_native_history_age_title(std::string_view base_title,
     NativeHistoryEventData &out, int32_t requested_ordinal = -1,
     bool *matched = nullptr);
 static uint64_t native_history_entity_parent_revision(uint64_t draw_epoch);
+static uint64_t native_identity_translation_context();
 static bool native_history_worldgen_page();
 static NativeModDetails native_mod_details();
 static std::optional<std::string> native_main_menu_copyright();
@@ -498,6 +500,7 @@ struct LegendsTextPiece {
     // Semantic subjects keep their native object identity through Chinese
     // template reordering. The viewport resolves the actual visible link.
     int native_link_type = -1, native_link_id = -1, native_link_subid = -1;
+    std::shared_ptr<const TranslationResult> translation_result;
 };
 
 struct LegendsTextFlow {
@@ -642,6 +645,11 @@ struct Match {
     // A binding belongs to the current settings list, never to another field
     // which happens to occupy the same screen column (including the HUD).
     std::optional<SDL_Rect> native_keybinding_table{};
+    // Shared by every output/ownership span of a mixed native field.
+    std::shared_ptr<const TranslationResult> translation_result;
+    // Captured foreign widget fields own their current logical page. Their
+    // source/layout must never be rebound to the pre-DFHack game snapshot.
+    bool native_help_current_page = false;
 };
 
 // Reflow moves rendered Legends links, never the game's source text. The
@@ -3162,6 +3170,10 @@ static void clear_native_knowledge() {
 
 struct NativeKnowledgeLayout {
     std::string source;
+    std::shared_ptr<const TranslationResult> translation_result;
+    uint64_t source_context = 0;
+    uint64_t resource_revision = 0;
+    bool reusable = true;
     int width = 0;
     bool personality = false;
     bool health = false;
@@ -3191,6 +3203,9 @@ struct NativeKnowledgeFrame {
     // Only a fully resolved viewport replaces this published translation.
     // Incoming row prefixes never overwrite it during a scrollbar drag.
     std::vector<Match> matches;
+    uint64_t source_context = 0;
+    uint64_t resource_revision = 0;
+    bool reusable = false;
 };
 
 static void clear_embark_craft_translation_cache();
@@ -3326,7 +3341,9 @@ private:
     }
     std::optional<std::string> translate_stockpile_setting(
         std::string_view source, StockpileCaptionKind kind) const;
-    mutable std::unordered_map<std::string, std::optional<std::string>>
+    TranslationResult translate_stockpile_setting_display(
+        std::string_view source, StockpileCaptionKind kind) const;
+    mutable std::unordered_map<std::string, TranslationResult>
         stockpile_setting_translation_cache_;
     mutable std::deque<std::string> stockpile_setting_translation_order_;
     mutable size_t stockpile_setting_translation_bytes_ = 0;
@@ -3570,6 +3587,8 @@ private:
     bool is_liquid_food_ingredient(std::string_view source, int native_type = -1) const;
     std::optional<std::string> translate_item_color_pattern(std::string_view source) const;
     std::optional<std::string> translate_item_dye_materials(std::string_view source) const;
+    TranslationResult translate_item_color_pattern_display(std::string_view source) const;
+    TranslationResult translate_item_dye_materials_display(std::string_view source) const;
     std::optional<std::string> translate_item_craftsmanship(std::string_view source) const;
     std::optional<std::string> translate_creature_descriptor(
         std::string_view source, bool require_species = true) const;
@@ -3605,10 +3624,20 @@ private:
     std::vector<int> item_description_predicate_rules_;
     mutable std::unordered_map<std::string, std::optional<std::string>>
         item_description_cache_;
+    mutable std::unordered_map<std::string, TranslationResult> item_description_display_cache_;
+    mutable std::unordered_map<std::string, TranslationResult> workshop_recipe_display_cache_;
+    mutable std::unordered_map<std::string, TranslationResult> fortress_activity_display_cache_;
     std::optional<std::string> translate_item_description_source(
         std::string_view source, bool item_context = false) const;
     std::optional<std::string> translate_item_description_term(
         std::string_view source, bool predicate = false) const;
+    TranslationResult translate_item_description_term_display(
+        std::string_view source, bool predicate = false) const;
+    TranslationResult translate_item_description_source_display(
+        std::string_view source, bool item_context = false) const;
+    TranslationResult translate_fortress_item_caption_display(
+        std::string_view source, bool bounded_button = false,
+        bool building_material = false) const;
     std::optional<std::string> translate_named_art_item(
         std::string_view source) const;
     std::optional<std::string> translate_written_item_caption(
@@ -3618,13 +3647,21 @@ private:
         bool building_material = false) const;
     std::optional<std::string> translate_native_trade_item_caption(
         const NativeTradeItemCaption &item) const;
-    mutable std::unordered_map<std::string, std::optional<std::string>>
+    TranslationResult translate_native_trade_item_caption_display(
+        const NativeTradeItemCaption &item) const;
+    mutable std::unordered_map<std::string, TranslationResult>
         fortress_item_caption_cache_;
     mutable std::deque<std::string> fortress_item_caption_order_;
+    mutable std::unordered_map<std::string, TranslationResult> fortress_item_caption_display_cache_;
+    mutable std::deque<std::string> fortress_item_caption_display_order_;
+    mutable size_t fortress_item_caption_display_bytes_ = 0;
     mutable size_t fortress_item_caption_bytes_ = 0;
     void clear_fortress_item_caption_cache() const {
         fortress_item_caption_cache_.clear();
         fortress_item_caption_order_.clear();
+        fortress_item_caption_display_cache_.clear();
+        fortress_item_caption_display_order_.clear();
+        fortress_item_caption_display_bytes_ = 0;
         fortress_item_caption_bytes_ = 0;
     }
     std::array<int, 2> symbol_role_prompt_rules_{{-1, -1}};
@@ -3735,7 +3772,7 @@ private:
     std::unordered_map<std::string, std::string>
         native_name_reviewed_transliterations_;
     std::unordered_map<std::string, GlyphTexture> texture_cache_;
-    mutable std::unordered_map<std::string, std::optional<std::string>> compositional_cache_;
+    mutable std::unordered_map<std::string, TranslationResult> compositional_cache_;
     mutable std::deque<std::string> compositional_cache_order_;
     // Character headers and figure/site lists repeat complete identities
     // across tabs and text layers. Keep each semantic mode separate, and
@@ -3747,14 +3784,17 @@ private:
     std::optional<std::string> memoize_identity_translation(
             char mode, std::string_view source, Translate &&translate) const {
         TranslationStateScope translation_scope;
+        const uint64_t source_context = native_identity_translation_context();
         std::string key(1, mode);
+        key += std::to_string(source_context) + '\x1f';
         key.append(source);
         if (const auto cached = identity_record_translation_cache_.find(key);
                 cached != identity_record_translation_cache_.end()) return cached->second;
         auto translated = translate();
         // Recursive profession/name parsing shares this cache. Publish only
         // complete results, and never keep an iterator across a nested parse.
-        if (!identity_record_translation_cache_.contains(key)) {
+        if (source_context == native_identity_translation_context() &&
+                !identity_record_translation_cache_.contains(key)) {
             constexpr size_t maximum = 4096;
             if (identity_record_translation_cache_.size() >= maximum &&
                     !identity_record_translation_order_.empty()) {
@@ -3811,11 +3851,14 @@ private:
         // World-defined instruments are an input even on a cache hit. The
         // shared refresh is epoch-gated and invalidates this cache on change.
         refresh_native_instrument_names();
+        const uint64_t source_context = native_identity_translation_context();
+        key = std::to_string(source_context) + '\x1f' + key;
         const auto cached = item_translation_cache_.find(key);
         if (cached != item_translation_cache_.end()) return cached->second;
         auto translated = translate();
         // A nested material translation can populate this same cache.
-        if (!item_translation_cache_.contains(key)) {
+        if (source_context == native_identity_translation_context() &&
+                !item_translation_cache_.contains(key)) {
             static constexpr size_t maximum = 4096;
             if (item_translation_cache_.size() >= maximum &&
                 !item_translation_cache_order_.empty()) {
@@ -3923,6 +3966,7 @@ private:
     int tooltip_layout_cache_pixels_ = 0;
     mutable std::string tooltip_translation_cache_source_;
     mutable std::string tooltip_translation_cache_target_;
+    mutable TranslationResult tooltip_translation_cache_result_;
     mutable bool tooltip_translation_cache_valid_ = false;
     mutable bool tooltip_translation_cache_catalog_only_ = false;
     mutable std::unordered_map<std::string, std::optional<std::string>> workshop_recipe_translation_cache_;
@@ -4133,7 +4177,7 @@ private:
 
     bool load_config();
     bool load_rules();
-    void build_trie();
+    void build_trie(std::function<void()> *catalog_publication = nullptr);
     bool load_font();
     bool load_compositional_rules();
     bool load_generated_instrument_names();
@@ -4294,6 +4338,7 @@ private:
     void layout_embark_site_card(SDL_Renderer *renderer);
     void layout_map_hover(SDL_Renderer *renderer);
     std::string translate_toolbar_tooltip(std::string_view source, bool catalog_only = false) const;
+    TranslationResult translate_toolbar_tooltip_result(std::string_view source, bool catalog_only = false) const;
     bool translate_deity_tooltip_fields(NativeToolbarTooltip &card) const;
     std::optional<NativeToolbarTooltip> find_toolbar_tooltip(
         const std::vector<std::string> &rows) const;
@@ -4403,6 +4448,8 @@ private:
     void layout_adventure_compass(SDL_Renderer *renderer);
     std::optional<std::string> translate_fortress_activity(
         const std::string &source, bool typed_only = false) const;
+    TranslationResult translate_fortress_activity_display(
+        std::string_view source, bool typed_only = false) const;
     std::optional<std::string> translate_fortress_material_use(const std::string &source) const;
     void append_fortress_task_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
@@ -4422,6 +4469,7 @@ private:
     std::optional<NativeTextCard> capture_workshop_recipe_card(
         const std::vector<std::string> &rows) const;
     std::optional<std::string> translate_workshop_recipe_source(std::string_view source) const;
+    TranslationResult translate_workshop_recipe_source_display(std::string_view source) const;
     void append_workshop_recipe_card(const NativeTextCard &card,
         std::vector<std::string> &rows, std::vector<Match> &matches, int only_y) const;
     void layout_workshop_recipe_card(SDL_Renderer *renderer);
@@ -4483,8 +4531,28 @@ private:
         std::vector<int> target_colors;
         size_t bytes = 0;
         std::list<std::string>::iterator use{};
+        TranslationResult result{};
     };
     mutable std::unordered_map<std::string, AnnouncementTranslation> announcement_translation_cache_;
+    struct NativeDisplayTranslation {
+        std::vector<int> source_colors, target_colors;
+        TranslationResult result;
+        size_t bytes = 0;
+    };
+    mutable std::unordered_map<std::string, NativeDisplayTranslation> native_display_translation_cache_;
+    mutable size_t native_display_translation_cache_bytes_ = 0;
+    mutable uint64_t native_display_translation_context_ = 0;
+    void refresh_native_display_translation_context() const {
+        const auto context = native_identity_translation_context();
+        if (context == native_display_translation_context_) return;
+        native_display_translation_context_ = context;
+        native_display_translation_cache_.clear();
+        native_display_translation_cache_bytes_ = 0;
+        announcement_translation_cache_.clear();
+        announcement_translation_order_.clear();
+        announcement_translation_bytes_ = 0;
+        tooltip_translation_cache_valid_ = false;
+    }
     mutable std::list<std::string> announcement_translation_order_;
     mutable size_t announcement_translation_bytes_ = 0;
     void clear_announcement_translation_cache() const {
@@ -4492,6 +4560,8 @@ private:
         announcement_translation_cache_.clear();
         announcement_translation_order_.clear();
         announcement_translation_bytes_ = 0;
+        native_display_translation_cache_.clear();
+        native_display_translation_cache_bytes_ = 0;
     }
     std::unordered_map<std::string, std::vector<int>> toolbar_source_rules_;
     std::unordered_map<std::string, std::string> toolbar_translations_;
@@ -4500,6 +4570,9 @@ private:
         const std::vector<int> &source_foregrounds,
         std::vector<int> &target_foregrounds, bool ui_message = false,
         int required_rule = -1, bool literal_only = false) const;
+    TranslationResult translate_help_paragraph_result(std::string_view source,
+        const std::vector<int> &source_foregrounds, std::vector<int> &target_foregrounds,
+        bool ui_message = false, int required_rule = -1) const;
     struct DfhackHelpParagraph {
         std::string source, target;
     };
@@ -4516,7 +4589,7 @@ private:
     std::unordered_map<std::string, std::string> dfhack_output_fragments_;
     void index_dfhack_output(const Rule &rule);
     void index_dfhack_help_paragraph(const Rule &rule);
-    void load_dfhack_help_catalog();
+    void load_dfhack_help_catalog(std::function<void()> *catalog_publication = nullptr);
     void publish_dfhack_caption_snapshot();
     void publish_dfhack_stonesense_announcements() const;
     std::optional<std::string> translate_dfhack_catalog_rows(
@@ -4536,7 +4609,7 @@ private:
         size_t start, std::vector<std::string> &captures,
         std::vector<std::pair<size_t, size_t>> &ranges,
         const std::vector<int> *foregrounds = nullptr,
-        bool preserve_empty_divine_building = false) const;
+        bool preserve_empty_divine_building = false, bool display_fields = false) const;
     std::optional<std::string> translate_visitor_overview_purposes(
         std::string_view source) const;
     std::optional<std::string> translate_ui_catalog_capture(
@@ -4553,6 +4626,7 @@ private:
         bool health = false, bool thoughts = false, bool overview_footer = false) const;
     std::optional<std::string> translate_character_thought_paragraph(
         std::string_view source, std::vector<size_t> *origins = nullptr) const;
+    TranslationResult translate_character_thought_paragraph_result(std::string_view source) const;
     std::optional<std::string> translate_health_description_block(
         std::string_view source, std::vector<size_t> *origins = nullptr) const;
     std::vector<Match> embark_pause_menu_matches() const;
@@ -4655,8 +4729,13 @@ private:
     std::string translate_template_captures(
         const Rule &rule, const std::vector<std::string> &captures,
         bool *all_string_captures_translated = nullptr) const;
+    TranslationResult translate_template_captures_display(
+        const Rule &rule, const std::vector<std::string> &captures,
+        std::string_view source) const;
     std::optional<std::string> translate_ui_message_capture(
         std::string_view source, bool unit_label) const;
+    TranslationResult translate_ui_message_capture_display(
+        std::string_view source, bool unit_label = false) const;
     std::optional<std::string> translate_conversation_keywords(
         std::string_view source) const;
     std::optional<std::string> translate_conversation_choice(
@@ -4667,6 +4746,8 @@ private:
     void rebuild_announcement_combat_rules();
     std::optional<std::string> translate_announcement_combat(std::string_view source,
         std::string_view initial_scope = "sentence") const;
+    TranslationResult translate_announcement_combat_result(std::string_view source,
+        std::string_view initial_scope = "sentence") const;
     std::optional<std::string> translate_announcement_music_passages(std::string_view source) const;
     std::optional<std::string> translate_announcement_number(std::string_view source) const;
     std::optional<std::string> translate_announcement_date(std::string_view source) const;
@@ -4674,7 +4755,10 @@ private:
     std::optional<std::string> translate_announcement_items(std::string_view source) const;
     std::optional<std::string> translate_complete_announcement(std::string_view source,
         const std::vector<int> &source_colors, std::vector<int> &target_colors) const;
+    std::shared_ptr<const TranslationResult> announcement_result_metadata(std::string_view source) const;
     std::optional<std::string> translate_adventure_travel_status(std::string_view source,
+        const std::vector<int> &source_colors, std::vector<int> &target_colors) const;
+    TranslationResult translate_adventure_travel_status_result(std::string_view source,
         const std::vector<int> &source_colors, std::vector<int> &target_colors) const;
     std::unordered_set<int> append_adventure_travel_status_paragraphs(
         const NativeTextCard &card, std::vector<std::string> &rows,
@@ -4754,14 +4838,23 @@ private:
         const std::string &source) const;
     std::optional<std::string> translate_poetic_form_description(
         std::string_view description) const;
+    TranslationResult translate_poetic_form_description_result(std::string_view description) const;
+    TranslationResult translate_poetic_form_description_uncached_result(
+        std::string_view description, bool display) const;
+    std::optional<std::string> translate_poetic_form_description_unit(
+        std::string_view description, bool native_chapter) const;
     std::optional<std::string> translate_poetic_form_description_uncached(
         std::string_view description) const;
     std::optional<std::string> translate_written_work_paragraph(
         std::string_view paragraph) const;
     std::optional<std::string> translate_dance_form_paragraph(
         std::string_view paragraph) const;
+    TranslationResult translate_dance_form_paragraph_result(
+        std::string_view paragraph, bool display = true) const;
     std::optional<std::string> translate_musical_form_paragraph(
         std::string_view paragraph) const;
+    TranslationResult translate_musical_form_paragraph_result(
+        std::string_view paragraph, bool display = true) const;
     void load_instrument_translations();
     void refresh_native_instrument_names() const;
     std::optional<std::string> translate_instrument_native_name(
@@ -5395,823 +5488,7 @@ static bool compile_template_target(Rule &rule) {
     return rule.target_capture_order.size() == rule.template_kinds.size();
 }
 
-bool Overlay::load_rules() {
-    clear_legends_search_cache();
-    clear_stockpile_setting_cache();
-    clear_fortress_item_caption_cache();
-    clear_material_name_cache();
-    identity_record_translation_cache_.clear();
-    identity_record_translation_order_.clear();
-    unit_search_translation_cache_.clear();
-    unit_search_translation_order_.clear();
-    adventure_action_search_cache_.clear();
-    adventure_action_search_order_.clear();
-    native_knowledge_layouts_.clear();
-    written_work_paragraph_cache_.clear();
-    native_knowledge_frame_ = {};
-    native_knowledge_frame_matches_.reset();
-    embark_knowledge_list_matches_.clear();
-    embark_knowledge_list_identity_.clear();
-    std::ifstream in(fs::u8path(config_.mapping_path), std::ios::binary);
-    if (!in) {
-        log_line("ERROR", "Cannot open mapping file: " + config_.mapping_path);
-        rules_.clear();
-        template_rules_.clear();
-        template_anchors_.clear();
-        trie_.assign(1, TrieNode{});
-        help_trie_.assign(1, TrieNode{});
-        help_template_rules_.clear();
-        help_objective_rules_.clear();
-        ui_message_trie_.assign(1, TrieNode{});
-        ui_message_template_rules_.clear();
-        ui_message_split_prefixes_.clear();
-        ui_message_template_probes_.clear();
-        ui_message_anchors_.clear();
-        announcement_combat_rules_.clear();
-        clear_announcement_translation_cache();
-        toolbar_source_rules_.clear();
-        toolbar_translations_.clear();
-        toolbar_template_rules_.clear();
-        immediate_suppress_base_.clear();
-        immediate_suppress_top_.clear();
-        immediate_base_row_hash_.clear();
-        immediate_top_row_hash_.clear();
-        immediate_base_row_epoch_.clear();
-        immediate_top_row_epoch_.clear();
-        immediate_base_matches_.clear();
-        immediate_base_matches_epoch_ = 0;
-        immediate_base_matches_screen_ = nullptr;
-        immediate_dimx_ = immediate_dimy_ = 0;
-        return false;
-    }
-    std::vector<Rule> loaded;
-    std::string line;
-    size_t line_no = 0;
-    while (std::getline(in, line)) {
-        ++line_no;
-        if (!line.empty() && line.back() == '\r') line.pop_back();
-        if (line_no == 1 && line.size() >= 3 &&
-            static_cast<unsigned char>(line[0]) == 0xef &&
-            static_cast<unsigned char>(line[1]) == 0xbb &&
-            static_cast<unsigned char>(line[2]) == 0xbf) {
-            line.erase(0, 3);
-        }
-        if (line.empty() || line[0] == '#') continue;
-        const size_t tab = line.find('\t');
-        if (tab == std::string::npos) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                                 " needs source<TAB>translation; ignored");
-            continue;
-        }
-        const size_t flags_tab = line.find('\t', tab + 1);
-        bool source_ok = false;
-        bool target_ok = false;
-        std::string source = unescape_tsv(std::string_view(line).substr(0, tab), &source_ok);
-        const size_t target_length = flags_tab == std::string::npos
-                                         ? std::string::npos
-                                         : flags_tab - tab - 1;
-        std::string target = unescape_tsv(
-            std::string_view(line).substr(tab + 1, target_length), &target_ok);
-        const std::string flags = flags_tab == std::string::npos
-                                      ? std::string{}
-                                      : trim(line.substr(flags_tab + 1));
-        if (!source_ok || !target_ok || source.empty()) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                                 " has an invalid escape or empty source; ignored");
-            continue;
-        }
-        std::vector<uint32_t> cps;
-        if (trim(target).empty()) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                " empty translation would delete source text; ignored");
-            continue;
-        }
-        if (!decode_utf8(target, cps) || target.find('\n') != std::string::npos ||
-            target.find('\r') != std::string::npos) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                                 " translation is not single-line UTF-8; ignored");
-            continue;
-        }
-        Rule rule;
-        rule.source = std::move(source);
-        rule.target = std::move(target);
-        rule.line = line_no;
-        rule.word_boundary = flags.find('w') != std::string::npos;
-        rule.word_follows = flags.find('p') != std::string::npos;
-        rule.case_insensitive = flags.find('i') != std::string::npos;
-        rule.left_align = flags.find('l') != std::string::npos;
-        rule.operation_title = flags.find('o') != std::string::npos;
-        rule.strict_captures = flags.find('x') != std::string::npos;
-        rule.adventure_prose = flags.find('a') != std::string::npos;
-        rule.legends_prose = flags.find('h') != std::string::npos;
-        rule.legends_book_title = flags.find('b') != std::string::npos;
-        rule.legends_event_title = flags.find('E') != std::string::npos;
-        rule.legends_participant_relation = flags.find('u') != std::string::npos;
-        rule.legends_identity = flags.find('N') != std::string::npos;
-        rule.legends_description_term = flags.find('v') != std::string::npos;
-        rule.legends_continuation = flags.find('C') != std::string::npos;
-        rule.item_description_sentence = flags.find('H') != std::string::npos;
-        rule.item_description_term = flags.find('I') != std::string::npos;
-        rule.item_description_predicate = flags.find('J') != std::string::npos;
-        rule.magical_material_noun = flags.find('m') != std::string::npos;
-        rule.magical_material_qualifier = flags.find('M') != std::string::npos;
-        rule.deity_sphere = flags.find('r') != std::string::npos;
-        rule.help_prose = flags.find('q') != std::string::npos;
-        rule.help_objective = rule.help_prose && flags.find('O') != std::string::npos;
-        rule.tooltip_prose = flags.find('j') != std::string::npos;
-        rule.ui_message = flags.find('P') != std::string::npos;
-        if ((rule.help_prose || rule.ui_message) && rule.target.find("[C:") != std::string::npos) {
-            std::string plain;
-            int palette = -1;
-            bool valid = true;
-            for (size_t at = 0; at < rule.target.size();) {
-                if (rule.target.compare(at, 3, "[C:") == 0) {
-                    const auto tag = std::string_view(rule.target).substr(at, 9);
-                    if (tag.size() != 9 || tag[3] < '0' || tag[3] > '7' ||
-                        tag[4] != ':' || tag[5] < '0' || tag[5] > '7' ||
-                        tag[6] != ':' || (tag[7] != '0' && tag[7] != '1') ||
-                        tag[8] != ']') {
-                        valid = false;
-                        break;
-                    }
-                    palette = tag[3] - '0' + (tag[7] - '0') * 8;
-                    at += tag.size();
-                    continue;
-                }
-                const unsigned char ch = rule.target[at++];
-                plain.push_back(static_cast<char>(ch));
-                if ((ch & 0xc0) != 0x80) rule.help_target_palettes.push_back(palette);
-            }
-            if (!valid || plain.empty()) {
-                log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                    " has an invalid help color tag or empty text; ignored");
-                continue;
-            }
-            rule.target = std::move(plain);
-        }
-        for (char flag : flags) {
-            if (flag != 'w' && flag != 'p' && flag != 't' && flag != 'i' && flag != 'l' && flag != 'o' && flag != 'x' && flag != 'a' && flag != 'h' && flag != 'b' && flag != 'E' && flag != 'u' && flag != 'N' && flag != 'v' && flag != 'C' && flag != 'r' && flag != 'm' && flag != 'M' && flag != 'q' && flag != 'O' && flag != 'j' && flag != 'H' && flag != 'I' && flag != 'J' && flag != 'P' && flag != ',' &&
-                !std::isspace(static_cast<unsigned char>(flag))) {
-                log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                                     " has unknown rule flag '" + std::string(1, flag) + "'");
-            }
-        }
-        if (flags.find('t') != std::string::npos) {
-            split_template(rule.source, &rule.template_literals, &rule.template_kinds,
-                rule.adventure_prose || rule.legends_prose, rule.legends_prose);
-            std::vector<std::string> target_literals;
-            std::vector<char> target_kinds;
-            split_template(rule.target, &target_literals, &target_kinds,
-                rule.adventure_prose || rule.legends_prose, rule.legends_prose);
-            rule.numeric_template = std::find(rule.template_kinds.begin(), rule.template_kinds.end(), 'd') !=
-                                    rule.template_kinds.end();
-            rule.string_template = std::any_of(rule.template_kinds.begin(), rule.template_kinds.end(),
-                [](char kind) { return kind != 'd'; });
-            bool compatible = rule.template_kinds == target_kinds;
-            // Keep ordinary templates on their existing path. Extended
-            // numeric targets share Legends' checked capture-order compiler.
-            bool extended_numbers = false;
-            for (size_t at = rule.target.find("{d"); at != std::string::npos;
-                    at = rule.target.find("{d", at + 2)) {
-                if (at + 2 < rule.target.size() &&
-                    rule.target[at + 2] >= '0' && rule.target[at + 2] <= '9')
-                    extended_numbers = true;
-            }
-            if (rule.legends_prose || extended_numbers)
-                compatible = compile_template_target(rule);
-            else if (compatible) {
-                // Ordinary templates already require the same field order.
-                // Preserve that parsed target for typed semantic callers too,
-                // including the shared b. {d}/d. {d} date templates.
-                rule.target_template_literals = std::move(target_literals);
-                for (size_t index = 0; index < rule.template_kinds.size(); ++index)
-                    rule.target_capture_order.push_back(index);
-            }
-            if (rule.legends_prose) {
-                // Most event templates start with a participant, not a
-                // literal. Reject absent predicates before typed backtracking.
-                for (const auto &literal : rule.template_literals)
-                    if (literal.size() > rule.legends_match_anchor.size())
-                        rule.legends_match_anchor = literal;
-            }
-            if (rule.template_kinds.empty() || !compatible) {
-                log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                                     " has mismatched template placeholders; ignored");
-                continue;
-            }
-            if (std::find(rule.template_kinds.begin(), rule.template_kinds.end(), 'u') !=
-                    rule.template_kinds.end() &&
-                !rule.item_description_sentence && !rule.item_description_term &&
-                !rule.item_description_predicate && !rule.ui_message) {
-                log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                    " unit-label slots require the item description grammar; ignored");
-                continue;
-            }
-            if (!rule.item_description_term &&
-                std::find(rule.template_kinds.begin(), rule.template_kinds.end(), 'l') !=
-                    rule.template_kinds.end()) {
-                log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                    " liquid-ingredient slots require the item noun grammar; ignored");
-                continue;
-            }
-            if (std::find(rule.template_kinds.begin(), rule.template_kinds.end(), 'j') !=
-                    rule.template_kinds.end() &&
-                !rule.item_description_sentence && !rule.item_description_term &&
-                !rule.item_description_predicate) {
-                log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                    " dye-material slots require the item description grammar; ignored");
-                continue;
-            }
-            if (std::find(rule.template_kinds.begin(), rule.template_kinds.end(), 'o') !=
-                    rule.template_kinds.end() && !rule.item_description_sentence) {
-                log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                    " craftsmanship slots require the item sentence grammar; ignored");
-                continue;
-            }
-            if (rule.ui_message) {
-                const auto has_literal = [](const std::string &literal) {
-                    return std::any_of(literal.begin(), literal.end(),
-                        [](unsigned char ch) { return !std::isspace(ch); });
-                };
-                bool scoped = std::any_of(rule.template_literals.begin(),
-                    rule.template_literals.end(), has_literal) &&
-                    std::all_of(rule.template_kinds.begin(), rule.template_kinds.end(),
-                        [](char kind) { return std::string_view("ksncdpertbqmviuf").find(kind) != std::string_view::npos; });
-                for (size_t i = 1; i < rule.template_kinds.size(); ++i) {
-                    if (!has_literal(rule.template_literals[i])) scoped = false;
-                }
-                if (!scoped) {
-                    log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                        " UI captures require supported types and fixed literal boundaries; ignored");
-                    continue;
-                }
-            }
-            if (std::find(rule.template_kinds.begin(), rule.template_kinds.end(), 'k') !=
-                    rule.template_kinds.end()) {
-                const auto has_literal = [](const std::string &literal) {
-                    return std::any_of(literal.begin(), literal.end(),
-                        [](unsigned char ch) { return !std::isspace(ch); });
-                };
-                // In the item noun grammar {k} is a printed language WORD
-                // on a die, bounded by native quotes. It is resolved from
-                // the shared procedural vocabulary, never as a key binding.
-                bool quoted_item_word = rule.item_description_term;
-                for (size_t i = 0; quoted_item_word && i < rule.template_kinds.size(); ++i)
-                    if (rule.template_kinds[i] == 'k' &&
-                        (!rule.template_literals[i].ends_with("\"") ||
-                         !rule.template_literals[i + 1].starts_with("\"")))
-                        quoted_item_word = false;
-                bool scoped = quoted_item_word || ((rule.help_prose || rule.ui_message) &&
-                    has_literal(rule.template_literals.front()));
-                for (size_t i = 1; i < rule.template_kinds.size(); ++i)
-                    if (!has_literal(rule.template_literals[i])) scoped = false;
-                if (!scoped) {
-                    log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                        " word/key slots require quoted item words or complete help/UI messages and fixed literal boundaries; ignored");
-                    continue;
-                }
-            }
-        }
-        if (rule.legends_event_title && (!rule.legends_prose ||
-                rule.legends_book_title || rule.legends_participant_relation ||
-                rule.legends_description_term)) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                " event title rules require h and cannot use other nested scopes; ignored");
-            continue;
-        }
-        if (rule.legends_book_title && (!rule.legends_prose || !rule.string_template ||
-                std::any_of(rule.template_kinds.begin(), rule.template_kinds.end(),
-                    [](char kind) { return kind != 'b'; }))) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                " book title rules require h/t flags and only {b} captures; ignored");
-            continue;
-        }
-        if (rule.legends_participant_relation && (!rule.legends_prose ||
-                !rule.string_template || rule.legends_book_title)) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                " participant rules require h/t flags and cannot be book rules; ignored");
-            continue;
-        }
-        if (rule.legends_identity && (!rule.legends_prose ||
-                rule.legends_event_title || rule.legends_book_title ||
-                rule.legends_participant_relation || rule.legends_description_term ||
-                rule.legends_continuation || rule.help_prose || rule.tooltip_prose ||
-                rule.ui_message || rule.item_description_sentence ||
-                rule.item_description_term || rule.item_description_predicate ||
-                rule.magical_material_noun || rule.magical_material_qualifier ||
-                rule.deity_sphere || rule.adventure_prose ||
-                std::any_of(rule.template_kinds.begin(), rule.template_kinds.end(),
-                    [](char kind) { return kind != 'n' && kind != 'p' && kind != 's'; }))) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                " identity rules require h, only {n}/{p}/{s} captures and no other scopes; ignored");
-            continue;
-        }
-        if (rule.legends_description_term && (!rule.legends_prose ||
-                rule.legends_book_title || rule.legends_participant_relation ||
-                std::any_of(rule.template_kinds.begin(), rule.template_kinds.end(),
-                    [](char kind) { return kind != 's' && kind != 'c' && kind != 't'; }))) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                " description terms require h and only {s}/{c}/{t} captures; ignored");
-            continue;
-        }
-        if (rule.legends_continuation && (!rule.legends_prose ||
-                rule.legends_event_title || rule.legends_book_title ||
-                rule.legends_participant_relation || rule.legends_description_term ||
-                rule.help_prose || rule.tooltip_prose || rule.ui_message ||
-                rule.item_description_sentence || rule.item_description_term ||
-                rule.item_description_predicate || rule.magical_material_noun ||
-                rule.magical_material_qualifier || rule.deity_sphere || rule.adventure_prose)) {
-            log_line("WARN", config_.mapping_path + ":" + std::to_string(line_no) +
-                " clipped continuations require h and cannot use other scopes; ignored");
-            continue;
-        }
-        loaded.push_back(std::move(rule));
-    }
-    rules_ = std::move(loaded);
-    build_trie();
-    rebuild_announcement_combat_rules();
-    load_name_editor_translations();
-    load_adventure_target_translations();
-    load_raw_material_names();
-    load_symbol_shape_forms();
-    std::error_code ec;
-    mapping_mtime_ = fs::last_write_time(fs::u8path(config_.mapping_path), ec);
-    const size_t numeric_templates = static_cast<size_t>(std::count_if(
-        rules_.begin(), rules_.end(), [](const Rule &rule) { return rule.numeric_template; }));
-    const size_t string_templates = static_cast<size_t>(std::count_if(
-        rules_.begin(), rules_.end(), [](const Rule &rule) { return rule.string_template; }));
-    log_line("INFO", "Loaded " + std::to_string(rules_.size()) +
-                         " translation rules (" + std::to_string(numeric_templates) +
-                         " numeric, " + std::to_string(string_templates) +
-                         " string templates) from " + config_.mapping_path);
-    return true;
-}
-
-void Overlay::build_trie() {
-    {
-        std::lock_guard<std::mutex> lock(conversation_choices_mutex_);
-        conversation_keyword_cache_.clear();
-        conversation_keyword_lexicon_.reset();
-    }
-    clear_announcement_translation_cache();
-    toolbar_source_rules_.clear();
-    toolbar_translations_.clear();
-    toolbar_template_rules_.clear();
-    help_trie_.clear();
-    help_trie_.emplace_back();
-    help_template_rules_.clear();
-    help_objective_rules_.clear();
-    ui_message_trie_.assign(1, TrieNode{});
-    ui_message_template_rules_.clear();
-    ui_message_split_prefixes_.clear();
-    ui_message_template_probes_.clear();
-    ui_message_anchors_.clear();
-    trie_.clear();
-    trie_.emplace_back();
-    trie_ci_.clear();
-    trie_ci_.emplace_back();
-    template_rules_.clear();
-    template_anchors_.clear();
-    adventure_prose_rules_.clear();
-    legends_prose_rules_.clear();
-    legends_book_rules_.clear();
-    legends_event_anchors_.clear();
-    legends_participant_rules_.clear();
-    legends_identity_rules_.clear();
-    legends_description_rules_.clear();
-    legends_continuation_rules_.clear();
-    legends_description_cache_.clear();
-    legends_nested_cache_.clear();
-    legends_anchor_rules_.clear();
-    legends_terms_.clear();
-    legends_terms_ci_.clear();
-    world_site_type_aliases_.clear();
-    legends_flow_cache_.clear();
-    legends_native_capture_status_.clear();
-    history_semantic_templates_.clear();
-    history_event_title_templates_.clear();
-    history_event_translation_cache_.clear();
-    history_event_translation_order_.clear();
-    history_entity_name_epoch_ = 0;
-    history_entity_names_.clear();
-    history_parent_context_epoch_ = 0;
-    history_parent_context_revision_ = 0;
-    legends_work_limit_cache_.clear();
-    legends_work_limit_order_.clear();
-    legends_continuation_cache_.clear();
-    legends_continuation_order_.clear();
-    legends_translation_cache_.clear();
-    journal_creature_translation_cache_.clear();
-    journal_creature_translation_order_.clear();
-    journal_creature_translation_bytes_ = 0;
-    legends_tab_titles_.clear();
-    deity_sphere_translations_.clear();
-    g_magical_materials.clear();
-    g_magical_material_max_bytes = 0;
-    g_magical_material_qualifiers.clear();
-    adventure_background_translation_cache_.clear();
-    capture_translations_.clear();
-    capture_prefix_translations_.clear();
-    dfhack_help_paragraphs_.clear();
-    dfhack_help_source_index_.clear();
-    dfhack_help_words_.clear();
-    dfhack_output_paragraphs_.clear();
-    dfhack_output_source_index_.clear();
-    dfhack_output_words_.clear();
-    dfhack_output_templates_.clear();
-    dfhack_output_template_source_index_.clear();
-    dfhack_output_template_words_.clear();
-    dfhack_output_values_.clear();
-    dfhack_output_fragments_.clear();
-    map_track_translations_.clear();
-    adventure_item_action_rules_.clear();
-    overview_quote_translations_.clear();
-    overview_sentence_translations_.clear();
-    symbol_image_template_rule_ = -1;
-    symbol_action_rules_.clear();
-    item_description_sentence_rules_.clear();
-    item_description_term_rules_.clear();
-    item_description_predicate_rules_.clear();
-    item_description_cache_.clear();
-    symbol_role_prompt_rules_.fill(-1);
-    embark_introduction_rules_.fill(-1);
-    embark_introduction_source_.clear();
-    embark_introduction_targets_.fill({});
-    symbol_element_cache_.clear();
-    symbol_description_cache_.clear();
-    symbol_action_cache_.clear();
-    item_translation_cache_.clear();
-    item_translation_cache_order_.clear();
-    clear_embark_craft_translation_cache();
-    // A hot-reloaded rule set can change which bytes must be hidden even when
-    // the logical screen text itself did not change.
-    adventure_before_hover_matches_valid_ = false;
-    adventure_before_hover_matches_.clear();
-    adventure_before_hover_footer_y_ = -1;
-    adventure_hover_suppress_epoch_ = adventure_hover_scan_epoch_ = 0;
-    tooltip_layout_cache_key_.clear();
-    tooltip_translation_cache_valid_ = false;
-    workshop_recipe_translation_cache_.clear();
-    immediate_suppress_base_.clear();
-    immediate_suppress_top_.clear();
-    immediate_base_row_hash_.clear();
-    immediate_top_row_hash_.clear();
-    immediate_base_row_epoch_.clear();
-    immediate_top_row_epoch_.clear();
-    immediate_base_matches_.clear();
-    immediate_base_matches_epoch_ = 0;
-    immediate_base_matches_screen_ = nullptr;
-    character_overview_context_ = 0;
-    character_overview_context_epoch_ = 0;
-    character_overview_context_revision_ = 0;
-    character_overview_context_grid_ = nullptr;
-    character_overview_context_dimx_ = character_overview_context_dimy_ = 0;
-    immediate_dimx_ = immediate_dimy_ = 0;
-    const auto index_capture_literal = [this](const Rule &rule) {
-        capture_translations_.try_emplace(rule.source, rule.target);
-        if (rule.word_follows)
-            capture_prefix_translations_.try_emplace(rule.source, rule.target);
-        if (rule.case_insensitive) {
-            capture_translations_.try_emplace(lower(rule.source), rule.target);
-            if (rule.word_follows)
-                capture_prefix_translations_.try_emplace(lower(rule.source), rule.target);
-        }
-    };
-    for (size_t rule_index = 0; rule_index < rules_.size(); ++rule_index) {
-        const Rule &material_rule = rules_[rule_index];
-        if (material_rule.source.starts_with("DFHack help: ") ||
-                material_rule.source.starts_with("DFHack GUI ")) {
-            index_capture_literal(material_rule);
-            if (material_rule.source.starts_with("DFHack help: "))
-                index_dfhack_help_paragraph(material_rule);
-            continue;
-        }
-        constexpr std::string_view world_site_type_scope = "World site type: ";
-        if (material_rule.source.starts_with(world_site_type_scope)) {
-            // Native site-kind leaves are lookup-only data. Keep their finite
-            // suffix table separate from all Legends prose and UI literals.
-            if (material_rule.legends_prose && material_rule.template_kinds.empty() &&
-                    !material_rule.target.empty())
-                world_site_type_aliases_.insert_or_assign(lower(normalize_utterance(
-                    std::string_view(material_rule.source).substr(world_site_type_scope.size()))),
-                    material_rule.target);
-            continue;
-        }
-        // Native semantic producers already supply typed template fields.
-        // Their exact-key renderer also needs shared UI templates such as
-        // b. {d}/d. {d}; keep each rule's original matcher scope unchanged.
-        if (material_rule.legends_event_title)
-            history_event_title_templates_.insert_or_assign(material_rule.source,
-                static_cast<int>(rule_index));
-        else if (material_rule.legends_prose || material_rule.source == ".")
-            history_semantic_templates_.insert_or_assign(material_rule.source,
-                static_cast<int>(rule_index));
-        else if (material_rule.numeric_template || material_rule.string_template)
-            history_semantic_templates_.try_emplace(material_rule.source,
-                static_cast<int>(rule_index));
-        constexpr std::string_view item_action_scope = "Adventure item action: ";
-        if (material_rule.source.starts_with(item_action_scope)) {
-            Rule action;
-            action.source = material_rule.source.substr(item_action_scope.size());
-            action.target = material_rule.target;
-            split_template(action.source, &action.template_literals, &action.template_kinds, true);
-            action.string_template = !action.template_kinds.empty();
-            if (!action.target.empty() && compile_template_target(action)) {
-                const auto specificity = [](const Rule &entry) {
-                    return entry.source.size() - 3 * entry.template_kinds.size();
-                };
-                const auto at = std::find_if(adventure_item_action_rules_.begin(),
-                    adventure_item_action_rules_.end(), [&](const Rule &entry) {
-                        return specificity(entry) < specificity(action);
-                    });
-                adventure_item_action_rules_.insert(at, std::move(action));
-            }
-            continue;
-        }
-        // These source forms belong to the adventure spoor formatter. Keep
-        // its print/imprint slots out of generic prose and word matching.
-        static constexpr std::array<std::string_view, 6> track_sources = {{
-            "Track/Spoor: {s}", "{s} imprint", "{s} print", "unintelligible",
-            "broken vegetation", "yours or companion's",
-        }};
-        if (std::find(track_sources.begin(), track_sources.end(), material_rule.source) !=
-                track_sources.end()) {
-            map_track_translations_.insert_or_assign(material_rule.source, material_rule.target);
-            continue;
-        }
-        if (material_rule.tooltip_prose) {
-            if (material_rule.target.empty()) continue;
-            if (material_rule.string_template || material_rule.numeric_template) {
-                toolbar_template_rules_.push_back(static_cast<int>(rule_index));
-                continue;
-            }
-            std::string identity;
-            for (unsigned char ch : material_rule.source)
-                if (!std::isspace(ch)) identity.push_back(ch);
-            toolbar_translations_.insert_or_assign(identity, material_rule.target);
-            toolbar_source_rules_[material_rule.source.substr(0,
-                material_rule.source.find(' '))].push_back(static_cast<int>(rule_index));
-            continue;
-        }
-        if (material_rule.help_prose || material_rule.ui_message) {
-            if (material_rule.target.empty()) continue;
-            if (material_rule.help_objective)
-                help_objective_rules_.push_back(static_cast<int>(rule_index));
-            if (material_rule.string_template || material_rule.numeric_template) {
-                auto &templates = material_rule.ui_message ? ui_message_template_rules_ : help_template_rules_;
-                templates.push_back(static_cast<int>(rule_index));
-                if (material_rule.ui_message) {
-                    // Split native records use a fixed subset of this catalog.
-                    // Build it with the dictionary instead of scanning every
-                    // message template in each raw and composed frame pass.
-                    if (material_rule.template_kinds.size() == 1 &&
-                            material_rule.template_kinds.front() == 'n' &&
-                            material_rule.template_literals.size() == 2) {
-                        const auto prefix = trim_view(material_rule.template_literals.front());
-                        const auto &suffix = material_rule.template_literals.back();
-                        if (!prefix.empty() && suffix.size() == 1 &&
-                                (suffix.front() == '.' || suffix.front() == '!' || suffix.front() == '?'))
-                            ui_message_split_prefixes_[std::string(prefix)].push_back(
-                                static_cast<int>(rule_index));
-                    }
-                    // Catalog probes depend only on the loaded rule, so raw
-                    // glyph suppression and final rendering share them.
-                    MessageTemplateProbe probe{static_cast<int>(rule_index),
-                        compact_ui_message_literal(material_rule.template_literals.front()),
-                        compact_ui_message_literal(material_rule.template_literals.back()), {}};
-                    for (const auto &literal : material_rule.template_literals) {
-                        auto compact = compact_ui_message_literal(literal);
-                        probe.literal_bytes += compact.size();
-                        if (compact.size() > probe.anchor.size()) probe.anchor = std::move(compact);
-                    }
-                    ui_message_anchors_.add(probe.anchor,
-                        static_cast<int>(ui_message_template_probes_.size()));
-                    ui_message_template_probes_.push_back(std::move(probe));
-                }
-                continue;
-            }
-            // P without h is shared complete prose: RAW species introductions
-            // use the paragraph matcher on screen and this same literal for
-            // typed exact lookup. Never put them back in the row-local trie.
-            if (material_rule.ui_message && !material_rule.legends_prose)
-                index_capture_literal(material_rule);
-            auto &prose_trie = material_rule.ui_message ? ui_message_trie_ : help_trie_;
-            int node = 0;
-            for (unsigned char ch : material_rule.source) {
-                if (native_prose_space(ch)) continue;
-                auto found = prose_trie[node].next.find(ch);
-                if (found == prose_trie[node].next.end()) {
-                    const int next = static_cast<int>(prose_trie.size());
-                    prose_trie[node].next.emplace(ch, next);
-                    prose_trie.emplace_back();
-                    node = next;
-                } else node = found->second;
-            }
-            prose_trie[node].rule = static_cast<int>(rule_index);
-            continue;
-        }
-        const auto introduction = std::find(embark_introduction_templates.begin(),
-            embark_introduction_templates.end(), material_rule.source);
-        if (introduction != embark_introduction_templates.end() && material_rule.string_template) {
-            embark_introduction_rules_[static_cast<size_t>(
-                introduction - embark_introduction_templates.begin())] = static_cast<int>(rule_index);
-            // Typed document captures must not be expanded as generic words.
-            continue;
-        }
-        // Complete item sentences and their noun phrases have separate
-        // typed captures. They must never become global word replacements
-        // or generic Legends templates with different capture semantics.
-        if (material_rule.item_description_sentence || material_rule.item_description_term ||
-            material_rule.item_description_predicate) {
-            auto &index = material_rule.item_description_sentence
-                ? item_description_sentence_rules_ : material_rule.item_description_predicate
-                    ? item_description_predicate_rules_ : item_description_term_rules_;
-            index.push_back(static_cast<int>(rule_index));
-            continue;
-        }
-        // The image's {s} is an element list, not an ordinary literal capture.
-        // Only the complete symbol-description parser may claim this rule.
-        if (material_rule.source == "It is an image of {s}." &&
-            material_rule.string_template) {
-            symbol_image_template_rule_ = static_cast<int>(rule_index);
-            continue;
-        }
-        if (material_rule.source.starts_with("X is ") ||
-            material_rule.source.starts_with("X looks "))
-            symbol_action_rules_.push_back(static_cast<int>(rule_index));
-        if (material_rule.string_template) {
-            if (material_rule.source == "Choose X: {s}")
-                symbol_role_prompt_rules_[0] = static_cast<int>(rule_index);
-            else if (material_rule.source == "Choose Y: {s}")
-                symbol_role_prompt_rules_[1] = static_cast<int>(rule_index);
-        }
-        if (material_rule.magical_material_noun)
-            g_magical_materials[lower(material_rule.source)].noun = material_rule.target;
-        if (material_rule.magical_material_qualifier) {
-            g_magical_materials[lower(material_rule.source)].qualifier = material_rule.target;
-            // h keeps qualifiers out of generic literal matching. M also
-            // keeps them out of prose: they belong only to material slots.
-            continue;
-        }
-        // A sphere is a typed semantic field, not a global substring rule.
-        // In particular, Rain in this namespace is not the embark rainfall
-        // control, and Order is not a work order. All consumers share the TSV.
-        if (rules_[rule_index].deity_sphere) {
-            const Rule &rule = rules_[rule_index];
-            deity_sphere_translations_[lower(rule.source)] = rule.target;
-            continue;
-        }
-        // These grammars consume COMPLETE background/hover prose only. In
-        // particular, a name slot must never grab arbitrary text elsewhere.
-        if (rules_[rule_index].legends_prose) {
-            if (rules_[rule_index].legends_event_title) {
-                const auto &rule = rules_[rule_index];
-                std::string_view anchor = rule.template_kinds.empty()
-                    ? std::string_view(rule.source) : std::string_view{};
-                for (const auto &literal : rule.template_literals)
-                    if (literal.size() > anchor.size()) anchor = literal;
-                legends_event_anchors_.add(anchor, static_cast<int>(rule_index));
-            }
-            if (rules_[rule_index].legends_book_title)
-                legends_book_rules_.push_back(static_cast<int>(rule_index));
-            else if (rules_[rule_index].legends_participant_relation)
-                legends_participant_rules_.push_back(static_cast<int>(rule_index));
-            else if (rules_[rule_index].legends_identity)
-                legends_identity_rules_.push_back(static_cast<int>(rule_index));
-            else if (rules_[rule_index].legends_description_term)
-                legends_description_rules_.push_back(static_cast<int>(rule_index));
-            else if (rules_[rule_index].legends_continuation)
-                legends_continuation_rules_.push_back(static_cast<int>(rule_index));
-            else {
-                legends_prose_rules_.push_back(static_cast<int>(rule_index));
-                const auto &rule = rules_[rule_index];
-                legends_anchor_rules_[lower(rule.template_kinds.empty()
-                    ? rule.source : rule.legends_match_anchor)].push_back(static_cast<int>(rule_index));
-                if (rule.template_kinds.empty()) {
-                    auto &terms = rule.case_insensitive ? legends_terms_ci_ : legends_terms_;
-                    const auto key = rule.case_insensitive ? lower(rule.source) : rule.source;
-                    if (rule.legends_event_title) terms.try_emplace(key, rule.target);
-                    else terms.insert_or_assign(key, rule.target);
-                }
-            }
-            continue;
-        }
-        if (rules_[rule_index].adventure_prose) {
-            adventure_prose_rules_.push_back(static_cast<int>(rule_index));
-            continue;
-        }
-        if (rules_[rule_index].numeric_template || rules_[rule_index].string_template) {
-            template_rules_.push_back(static_cast<int>(rule_index));
-            index_template_rule(static_cast<int>(rule_index));
-            continue;
-        }
-        if (!rules_[rule_index].target.empty()) {
-            const Rule &rule = rules_[rule_index];
-            constexpr std::string_view overview_sentence_prefix = "Overview sentence: ";
-            if (rule.source.starts_with(overview_sentence_prefix)) {
-                // Complete event/reaction sentences are lookup-only metadata,
-                // not global words or independently drawn pieces of a quote.
-                overview_sentence_translations_.try_emplace(
-                    normalize_utterance(std::string_view(rule.source).substr(
-                        overview_sentence_prefix.size())), rule.target);
-                continue;
-            }
-            if (rule.source.size() >= 3 && rule.source.front() == '"' &&
-                rule.source.back() == '"') {
-                overview_quote_translations_.try_emplace(
-                    normalize_utterance(rule.source), rule.target);
-            }
-            index_capture_literal(rule);
-        }
-        // Scoped caption aliases are lookup-only metadata. The visible source
-        // retains its ordinary meaning until its native widget owns it.
-        if (rules_[rule_index].source.starts_with("Build menu: ") ||
-            rules_[rule_index].source.starts_with("Embark finder: ") ||
-            rules_[rule_index].source.starts_with("Zone type: ") ||
-            rules_[rule_index].source.starts_with("Fortress activity: ") ||
-            rules_[rule_index].source.starts_with("Fortress schedule editor: ") ||
-            rules_[rule_index].source.starts_with("Squad creation: ") ||
-            rules_[rule_index].source.starts_with("Uniform name: ") ||
-            rules_[rule_index].source.starts_with("Workshop recipe: ") ||
-            rules_[rule_index].source.starts_with("Adventure compass: ") ||
-            rules_[rule_index].source.starts_with("Adventure movement: ") ||
-            rules_[rule_index].source.starts_with("Adventure action: ") ||
-            rules_[rule_index].source.starts_with("Inventory location: ") ||
-            rules_[rule_index].source.starts_with("Skill name: ") ||
-            rules_[rule_index].source.starts_with("Skill rating: ") ||
-            rules_[rule_index].source.starts_with("Skill status: ") ||
-            rules_[rule_index].source.starts_with("Character overview: ")) continue;
-        // These labels are also keyboard identifiers. Retain their reviewed
-        // translations for the background editor's Home tab, Delete actions
-        // and worldgen's Pause button, without globally replacing key names.
-        if (rules_[rule_index].source == "Home" ||
-            rules_[rule_index].source == "Delete" ||
-            rules_[rule_index].source == "Pause") continue;
-        std::vector<TrieNode> &trie = rules_[rule_index].case_insensitive ? trie_ci_ : trie_;
-        int node = 0;
-        for (unsigned char raw_ch : rules_[rule_index].source) {
-            const unsigned char ch = rules_[rule_index].case_insensitive && raw_ch >= 'A' && raw_ch <= 'Z'
-                                         ? static_cast<unsigned char>(raw_ch - 'A' + 'a')
-                                         : raw_ch;
-            const auto existing = trie[node].next.find(ch);
-            int next_node = -1;
-            if (existing == trie[node].next.end()) {
-                next_node = static_cast<int>(trie.size());
-                trie[node].next.emplace(ch, next_node);
-                trie.emplace_back();
-            } else {
-                next_node = existing->second;
-            }
-            node = next_node;
-        }
-        if (trie[node].rule >= 0) {
-            log_line("WARN", "Duplicate source rule; later line wins: " +
-                                 std::to_string(rules_[rule_index].line));
-        }
-        trie[node].rule = static_cast<int>(rule_index);
-    }
-    // Native item fields establish color/dye/craft meanings before ordinary
-    // nouns. Equal-shaped productions such as "The thread is {v}." and its
-    // compound-phrase fallback must not depend on TSV alphabetic ordering.
-    for (auto *indices : {&item_description_sentence_rules_,
-            &item_description_term_rules_, &item_description_predicate_rules_}) {
-        std::stable_partition(indices->begin(), indices->end(), [this](int index) {
-            const auto &kinds = rules_[static_cast<size_t>(index)].template_kinds;
-            return std::any_of(kinds.begin(), kinds.end(), [](char kind) {
-                return kind == 'v' || kind == 'j' || kind == 'o';
-            });
-        });
-    }
-    // A depicted subject list belongs inside its image noun. Length ordering
-    // alone lets "{s} and {s}" split "image of humans and humans" into an
-    // image plus unrelated humans. Try complete noun productions first and
-    // keep coordination as their fallback, also inside quality wrappers.
-    std::stable_partition(item_description_term_rules_.begin(),
-        item_description_term_rules_.end(), [this](int index) {
-            const auto &source = rules_[static_cast<size_t>(index)].source;
-            return source != "{s} and {s}" && source != "{s}, and {s}" &&
-                   source != "{s}, {s}";
-        });
-    for (auto it = g_magical_materials.begin(); it != g_magical_materials.end();) {
-        // Explicit ordinary dictionary overrides can replace a generated
-        // noun row without its metadata flag; keep that reviewed override.
-        if (it->second.noun.empty()) {
-            if (const auto noun = exact_literal_translation(it->first))
-                it->second.noun = *noun;
-        }
-        if (it->second.noun.empty() || it->second.qualifier.empty()) {
-            log_line("WARN", "Incomplete magical material roles: " + it->first);
-            it = g_magical_materials.erase(it);
-            continue;
-        }
-        g_magical_material_max_bytes = std::max(g_magical_material_max_bytes, it->first.size());
-        g_magical_material_qualifiers.insert(it->second.qualifier);
-        ++it;
-    }
-    log_line("INFO", "Loaded " + std::to_string(g_magical_materials.size()) +
-        " magical material noun/qualifier pairs");
-    load_dfhack_help_catalog();
-}
+#include "rule_catalog_loading.inc"
 
 void Overlay::clear_fallback_fonts() {
     // Drop keys before releasing any face: a replacement face can reuse the
@@ -6543,8 +5820,10 @@ bool Overlay::load_compositional_rules() {
     clear_legends_search_cache();
     clear_stockpile_setting_cache();
     clear_fortress_item_caption_cache();
+    item_description_display_cache_.clear();
+    workshop_recipe_display_cache_.clear();
+    fortress_activity_display_cache_.clear();
     clear_material_name_cache();
-    RULESETS.shutdown();
     identity_record_translation_cache_.clear();
     identity_record_translation_order_.clear();
     unit_search_translation_cache_.clear();
@@ -6574,6 +5853,9 @@ bool Overlay::load_compositional_rules() {
     resolution_dropdown_active_ = false;
     const bool loaded = RULESETS.init();
     if (loaded) {
+        RULESETS.set_context_revision_provider([] {
+            return native_identity_translation_context();
+        });
         // Every recursive creature namespace uses the same scoped parser as
         // explicit species fields. The namespace engine consumes prefixes;
         // this resolver only accepts a complete name in the native encoding.
@@ -6639,11 +5921,13 @@ bool Overlay::load_compositional_rules() {
                     ProceduralFragmentContext::native_item_name);
             const auto complete = [](std::optional<std::string> target)
                     -> std::optional<std::string> {
-                if (!target || target->empty() ||
-                    std::any_of(target->begin(), target->end(), [](unsigned char ch) {
-                        return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z');
-                    })) return std::nullopt;
-                return target;
+                // These callbacks resolve a complete typed field. Authored
+                // name bytes are valid output; encoding/markup still are not.
+                std::vector<uint32_t> codepoints;
+                if (!target || target->empty() || target->find("[C:") != std::string::npos ||
+                        target->find_first_of("\r\n") != std::string::npos ||
+                        !decode_utf8(*target, codepoints)) return std::nullopt;
+                return TranslationResult::translated({}, std::move(*target), "typed").strict_target();
             };
             // Syndrome memories name the substance itself, not an item made
             // from it. Reuse the material noun, including generated remedies.
@@ -7728,6 +7012,7 @@ void Overlay::maybe_reload() {
             (!ec4 && im != instrument_translations_mtime_) ||
             (!ec1 && cm != config_mtime_) || (!ec2 && mm != mapping_mtime_) ||
             (!ec3 && nm != name_editor_mtime_);
+        if (RULESETS.resources_changed()) reload = true;
         const auto catalog_directory = fs::u8path(config_.mapping_path).parent_path();
         {
             std::error_code site_error;
@@ -8557,12 +7842,17 @@ static std::optional<std::string> translate_corpsepiece_item_name(
 }
 
 std::optional<std::string> Overlay::translate_compositional(const std::string &screen_text) const {
-    TranslationWorkFrame work_frame("compositional phrase", screen_text);
-    auto cached = compositional_cache_.find(screen_text);
-    if (cached != compositional_cache_.end()) return cached->second;
+    const uint64_t source_context = native_identity_translation_context();
+    const std::string cache_key = std::to_string(source_context) +
+        '\x1f' + screen_text;
+    auto cached = compositional_cache_.find(cache_key);
+    if (cached != compositional_cache_.end()) return cached->second.strict_target();
+    TranslationWorkScope budget;
 
     const std::string utf8 = native_text_to_utf8(screen_text);
     std::optional<std::string> translated;
+    try {
+    TranslationWorkFrame work_frame("compositional phrase", screen_text);
     if (!utf8.empty()) {
         // Arena equipment names have a grammatical order of their own. Run
         // the complete-phrase parser before the general compositional rules;
@@ -8582,14 +7872,35 @@ std::optional<std::string> Overlay::translate_compositional(const std::string &s
         std::vector<uint32_t> codepoints;
         if (translated && !decode_utf8(*translated, codepoints)) translated.reset();
     }
+    } catch (const TranslationWorkLimit &) {
+        auto limited = TranslationResult::preserved(screen_text, "composition", false,
+            TranslationStatus::WorkLimited);
+        limited.policy = TranslationPolicy::Strict;
+        limited.resource_revision = RULESETS.resource_revision();
+        if (source_context == native_identity_translation_context()) {
+            if (compositional_cache_.size() >= 4096 && !compositional_cache_order_.empty()) {
+                compositional_cache_.erase(compositional_cache_order_.front());
+                compositional_cache_order_.pop_front();
+            }
+            compositional_cache_order_.push_back(cache_key);
+            compositional_cache_.insert_or_assign(cache_key, std::move(limited));
+        }
+        if (!budget.owns_budget()) throw;
+        return std::nullopt;
+    }
 
+    if (source_context != native_identity_translation_context()) return translated;
     static constexpr size_t max_compositional_cache = 4096;
     if (compositional_cache_.size() >= max_compositional_cache && !compositional_cache_order_.empty()) {
         compositional_cache_.erase(compositional_cache_order_.front());
         compositional_cache_order_.pop_front();
     }
-    compositional_cache_order_.push_back(screen_text);
-    compositional_cache_.emplace(screen_text, translated);
+    compositional_cache_order_.push_back(cache_key);
+    auto result = translated ? TranslationResult::translated(screen_text, *translated, "composition")
+        : TranslationResult{};
+    result.source = screen_text;
+    result.resource_revision = RULESETS.resource_revision();
+    compositional_cache_.emplace(cache_key, std::move(result));
     return translated;
 }
 
@@ -11675,7 +10986,8 @@ std::optional<std::string> Overlay::translate_ui_catalog_capture(
 bool Overlay::match_catalog_template(const Rule &rule, std::string_view source,
         size_t start, std::vector<std::string> &captures,
         std::vector<std::pair<size_t, size_t>> &ranges,
-        const std::vector<int> *foregrounds, bool preserve_empty_divine_building) const {
+        const std::vector<int> *foregrounds, bool preserve_empty_divine_building,
+        bool display_fields) const {
     captures.clear();
     ranges.clear();
     if ((!rule.help_prose && !rule.ui_message && !rule.tooltip_prose) || rule.template_kinds.empty() ||
@@ -11752,7 +11064,16 @@ bool Overlay::match_catalog_template(const Rule &rule, std::string_view source,
                             return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
                         });
                 }
-                if (!term->second) continue;
+                if (!term->second) {
+                    if (!display_fields) continue;
+                    // Vocabulary can rank boundaries; a unique fixed suffix
+                    // can establish one without any vocabulary result.
+                    size_t possible = 0;
+                    for (size_t boundary = at + 1; boundary <= source.size(); ++boundary)
+                        if (catalog_literal_end(source, boundary, suffix, rule.case_insensitive))
+                            ++possible;
+                    if (suffix.empty() || possible != 1) continue;
+                }
             }
             if (kind == 'd') {
                 size_t digit = value.front() == '+' || value.front() == '-' ? 1 : 0;
@@ -12497,6 +11818,8 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
     // never permits a general phonetic fallback for English prose.
     return std::nullopt;
 }
+
+#include "translation_display.inc"
 
 std::optional<std::string> Overlay::translate_deity_spheres(
         std::string_view raw_source) const {
@@ -14872,2879 +14195,9 @@ Overlay::translate_character_preference_paragraph(
 // result depend on the current window width and inevitably misses other forms.
 // Consume the generator's semantic phrases instead; generated civilization,
 // person and creature names are delegated to the existing name grammar.
-std::optional<std::string> Overlay::translate_poetic_form_description(
-        std::string_view raw_description) const {
-    struct PoeticTranslationCache {
-        const Overlay *owner = nullptr;
-        fs::file_time_type mapping{}, names{}, instruments{};
-        std::unordered_map<std::string, std::optional<std::string>> targets;
-    };
-    auto &cache = reloadable_thread_state<PoeticTranslationCache,
-        struct PoeticTranslationCacheTag>();
-    if (cache.owner != this || cache.mapping != mapping_mtime_ ||
-        cache.names != name_editor_mtime_ ||
-        cache.instruments != instrument_translations_mtime_) {
-        cache = {};
-        cache.owner = this;
-        cache.mapping = mapping_mtime_;
-        cache.names = name_editor_mtime_;
-        cache.instruments = instrument_translations_mtime_;
-    }
-    const std::string key(raw_description);
-    if (const auto found = cache.targets.find(key); found != cache.targets.end())
-        return found->second;
-    // Both the native document and layer recovery can submit the same prose
-    // several times per frame. Unknown complete productions must be cached
-    // too, so leaving a chooser open cannot repeatedly run the whole grammar.
-    auto target = translate_poetic_form_description_uncached(raw_description);
-    if (cache.targets.size() >= 128) cache.targets.clear();
-    cache.targets.emplace(key, target);
-    return target;
-}
+#include "poetic_form_descriptions.inc"
 
-std::optional<std::string> Overlay::translate_poetic_form_description_uncached(
-        std::string_view raw_description) const {
-    std::string source;
-    source.reserve(raw_description.size());
-    bool pending_space = false;
-    for (const unsigned char ch : raw_description) {
-        if (std::isspace(ch)) {
-            pending_space = !source.empty();
-            continue;
-        }
-        if (pending_space) source.push_back(' ');
-        pending_space = false;
-        source.push_back(static_cast<char>(ch));
-    }
-    source = trim(std::move(source));
-    // A stale background list can precede the active widget in a merged
-    // logical layer. Recover the real generated-title boundary from the
-    // finite form identity itself instead of allowing an unrelated resident
-    // name to become part of the poem title.
-    std::string work_introduction;
-    for (const std::string_view marker : {
-             std::string_view(" is a dramatic poetic form"),
-             std::string_view(" is a reflective poetic form"),
-             std::string_view(" is a ribald poetic form"),
-             std::string_view(" is a light poetic form"),
-             std::string_view(" is a solemn poetic form"),
-             std::string_view(" is a poetic narrative"),
-             std::string_view(" is a poetic riddle"),
-             std::string_view(" is a poetic form"),
-         }) {
-        const size_t identity_at = source.find(marker);
-        if (identity_at == std::string::npos) continue;
-        const size_t title_at = source.rfind("The ", identity_at);
-        if (title_at != std::string::npos && title_at > 0) {
-            const std::string_view prefix(source.data(), title_at);
-            // A work's introduction precedes its poetic form in the same
-            // document. Preserve that complete paragraph before removing the
-            // prefix used by the form parser; it is not stale list content.
-            if (is_written_work_description(prefix)) {
-                const auto introduction = translate_written_work_paragraph(prefix);
-                if (!introduction || introduction->empty()) return std::nullopt;
-                work_introduction = *introduction;
-            }
-            source.erase(0, title_at);
-        }
-        break;
-    }
-    if (source.empty() || source.find(" poetic ") == std::string::npos ||
-        (source.find("The rules of the form are applied by poets") ==
-             std::string::npos &&
-         source.find("The form guides poets during improvised performances") ==
-             std::string::npos)) {
-        return std::nullopt;
-    }
-
-    auto contains_ascii_letters = [](std::string_view value) {
-        return std::any_of(value.begin(), value.end(), [](unsigned char ch) {
-            return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
-        });
-    };
-    auto translate_generated_reference = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        const std::string value = trim(std::string(raw));
-        if (value.empty()) return std::nullopt;
-        auto accept = [&](std::optional<std::string> translated)
-                -> std::optional<std::string> {
-            if (!translated || translated->empty() ||
-                contains_ascii_letters(*translated)) {
-                return std::nullopt;
-            }
-            return translated;
-        };
-        if (auto translated = accept(exact_literal_translation(value)))
-            return translated;
-        if (auto translated = accept(translate_compositional(value)))
-            return translated;
-        if (auto translated = accept(translate_procedural_fragment(value)))
-            return translated;
-        // A historical figure or mod-added generated title can use a native
-        // vocabulary not present in the current world's semantic tables.
-        // The phonetic-only path is total for name-shaped input and emits Han
-        // characters rather than leaking the unresolved English reference.
-        return accept(translate_procedural_fragment(value, true));
-    };
-    auto strip_prefix = [](std::string_view &text, std::string_view prefix) {
-        if (!text.starts_with(prefix)) return false;
-        text.remove_prefix(prefix.size());
-        return true;
-    };
-    auto join_chinese = [](const std::vector<std::string> &items,
-                           std::string_view separator = "、") {
-        std::string joined;
-        for (size_t index = 0; index < items.size(); ++index) {
-            if (index) joined += separator;
-            joined += items[index];
-        }
-        return joined;
-    };
-    auto split_english_list = [](std::string_view text) {
-        std::vector<std::string_view> items;
-        size_t cursor = 0;
-        while (cursor < text.size()) {
-            if (std::string_view(text).substr(cursor).starts_with("and "))
-                cursor += 4;
-            size_t comma = text.find(", ", cursor);
-            size_t conjunction = text.find(" and ", cursor);
-            size_t next = std::min(comma == std::string_view::npos
-                                       ? text.size() : comma,
-                                   conjunction == std::string_view::npos
-                                       ? text.size() : conjunction);
-            const std::string_view item = trim_view(text.substr(cursor,
-                                                                next - cursor));
-            if (!item.empty()) items.push_back(item);
-            if (next == text.size()) break;
-            cursor = next + (next == comma ? 2 : 5);
-        }
-        return items;
-    };
-
-    auto number_value = [](std::string_view raw) -> std::optional<int> {
-        static constexpr std::array<std::pair<std::string_view, int>, 28> words = {{
-            {"zero", 0}, {"one", 1}, {"two", 2}, {"three", 3},
-            {"four", 4}, {"five", 5}, {"six", 6}, {"seven", 7},
-            {"eight", 8}, {"nine", 9}, {"ten", 10}, {"eleven", 11},
-            {"twelve", 12}, {"thirteen", 13}, {"fourteen", 14},
-            {"fifteen", 15}, {"sixteen", 16}, {"seventeen", 17},
-            {"eighteen", 18}, {"nineteen", 19}, {"twenty", 20},
-            {"thirty", 30}, {"forty", 40}, {"fifty", 50},
-            {"sixty", 60}, {"seventy", 70}, {"eighty", 80},
-            {"ninety", 90},
-        }};
-        const std::string text = lower(trim(std::string(raw)));
-        for (const auto &[word, value] : words) {
-            if (text == word) return value;
-        }
-        const size_t hyphen = text.find('-');
-        if (hyphen != std::string::npos) {
-            std::optional<int> high;
-            std::optional<int> low;
-            for (const auto &[word, value] : words) {
-                if (std::string_view(text).substr(0, hyphen) == word) high = value;
-                if (std::string_view(text).substr(hyphen + 1) == word) low = value;
-            }
-            if (high && low && *high >= 20 && *low > 0 && *low < 10)
-                return *high + *low;
-        }
-        return std::nullopt;
-    };
-    auto ordinal_value = [&](std::string_view raw) -> std::optional<int> {
-        static constexpr std::array<std::pair<std::string_view, int>, 20> words = {{
-            {"first", 1}, {"second", 2}, {"third", 3}, {"fourth", 4},
-            {"fifth", 5}, {"sixth", 6}, {"seventh", 7}, {"eighth", 8},
-            {"ninth", 9}, {"tenth", 10}, {"eleventh", 11},
-            {"twelfth", 12}, {"thirteenth", 13}, {"fourteenth", 14},
-            {"fifteenth", 15}, {"sixteenth", 16}, {"seventeenth", 17},
-            {"eighteenth", 18}, {"nineteenth", 19}, {"twentieth", 20},
-        }};
-        const std::string text = lower(trim(std::string(raw)));
-        for (const auto &[word, value] : words) {
-            if (text == word) return value;
-        }
-        const size_t hyphen = text.find('-');
-        if (hyphen != std::string::npos) {
-            static constexpr std::array<std::pair<std::string_view, int>, 8>
-                endings = {{{"first", 1}, {"second", 2}, {"third", 3},
-                            {"fourth", 4}, {"fifth", 5}, {"sixth", 6},
-                            {"seventh", 7}, {"eighth", 8}}};
-            const auto high = number_value(std::string_view(text).substr(0, hyphen));
-            for (const auto &[word, value] : endings) {
-                if (std::string_view(text).substr(hyphen + 1) == word && high)
-                    return *high + value;
-            }
-        }
-        return std::nullopt;
-    };
-    auto chinese_number = [](int value, bool use_liang) {
-        static constexpr std::array<std::string_view, 10> digit = {
-            "零", "一", "二", "三", "四", "五", "六", "七", "八", "九",
-        };
-        if (value == 2 && use_liang) return std::string("两");
-        if (value < 10) return std::string(digit[static_cast<size_t>(value)]);
-        if (value < 20)
-            return std::string("十") +
-                (value == 10 ? "" : std::string(digit[static_cast<size_t>(value % 10)]));
-        if (value < 100) {
-            std::string result(digit[static_cast<size_t>(value / 10)]);
-            result += "十";
-            if (value % 10) result += digit[static_cast<size_t>(value % 10)];
-            return result;
-        }
-        if (value == 100) return std::string("一百");
-        return std::to_string(value);
-    };
-    auto translate_count = [&](std::string_view raw,
-                               bool use_liang) -> std::optional<std::string> {
-        std::string_view text = trim_view(raw);
-        bool additional = false;
-        if (text.starts_with("another ")) {
-            text.remove_prefix(std::string_view("another ").size());
-            text = trim_view(text);
-            additional = true;
-        }
-        if (text == "a" || text == "an" || text == "a single" ||
-            text == "single") {
-            return std::string(additional ? "另一" : "一");
-        }
-        if (text == "another") return std::string("另一");
-        const size_t range = text.find(" to ");
-        if (range != std::string_view::npos) {
-            const auto first = number_value(text.substr(0, range));
-            const auto last = number_value(text.substr(range + 4));
-            if (!first || !last) return std::nullopt;
-            return std::string(additional ? "另" : "") +
-                   chinese_number(*first, use_liang) + "至" +
-                   chinese_number(*last, use_liang);
-        }
-        const auto value = number_value(text);
-        if (!value) return std::nullopt;
-        return std::string(additional ? "另" : "") +
-               chinese_number(*value, use_liang);
-    };
-
-    auto translate_topic = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        const std::string_view text = trim_view(raw);
-        if (text == "a lover") return exact_literal_translation("Lover");
-        static constexpr std::array<std::pair<std::string_view,
-                                               std::string_view>, 29> topics = {{
-            {"a chosen subject", "选定的题材"},
-            {"the subject of the poem", "全诗的主题"},
-            {"the previous idea", "前文的思路"},
-            {"previous ideas", "前文的思路"},
-            {"the past", "过去"}, {"current events", "时事"},
-            {"the future", "未来"},
-            {"someone recently deceased", "不久前去世的人"},
-            {"someone recently retired", "不久前退隐的人"},
-            {"an abstract concept", "某个抽象概念"},
-            {"the concept of death", "死亡这一概念"},
-            {"the concept of family", "家庭这一概念"},
-            {"the concept of hunting", "狩猎这一概念"},
-            {"the concept of nature", "自然这一概念"},
-            {"the concept of war", "战争这一概念"},
-            {"religion", "宗教"}, {"a specific place", "某个特定地点"},
-            {"a specific wilderness region", "某片特定荒野"},
-            {"nature", "自然"},
-            {"family", "家庭"}, {"alcoholic beverages", "酒"},
-            {"a journey", "旅途"}, {"war", "战争"},
-            {"the hunt", "狩猎"}, {"mining", "采矿"},
-            {"death", "死亡"}, {"immortality", "不朽"},
-            {"someone's character", "某人的品性"},
-            {"a historical figure", "某位历史人物"},
-        }};
-        for (const auto &[english, chinese] : topics) {
-            if (text == english) return std::string(chinese);
-        }
-        static constexpr std::string_view concept_prefix = "the concept of ";
-        if (text.starts_with(concept_prefix)) {
-            const auto translated_concept = translate_generated_reference(
-                text.substr(concept_prefix.size()));
-            if (!translated_concept) return std::nullopt;
-            return *translated_concept + "这一概念";
-        }
-        return translate_generated_reference(text);
-    };
-
-    struct ActionPhrase {
-        std::string_view source;
-        std::string_view chinese;
-        bool takes_object;
-        int object_style;
-    };
-    static constexpr auto actions = std::to_array<ActionPhrase>({
-        {"to make a counter-assertion", "反驳前文的观点", false, 0},
-        {"to synthesize previous ideas", "归纳前文的观点", false, 0},
-        {"to develop the previous idea", "进一步展开前文的思路", false, 0},
-        {"to reflect on previous ideas", "回顾前文的观点", false, 0},
-        {"to invert the previous assertion", "提出与前文相反的论点", false, 0},
-        {"to undercut the previous assertion", "削弱前文的论点", false, 0},
-        {"to move away from previous ideas", "转向新的思路", false, 0},
-        {"to offer a different perspective", "换一个角度加以审视", false, 0},
-        {"to amuse the audience", "博听众一笑", false, 0},
-        {"to make an apology", "表达歉意", false, 0},
-        {"to teach a moral lesson", "阐明为人处世的道理", false, 0},
-        {"to make an assertion", "提出一个观点", false, 0},
-        {"to make a concession", "作出让步", false, 0},
-        {"to console the audience", "抚慰听众", false, 0},
-        {"to refuse consolation", "拒绝接受宽慰", false, 0},
-        {"to complain about", "抒发不满", true, 1},
-        {"to express pleasure with", "表达喜悦", true, 2},
-        {"to express grief over", "抒发悲痛", true, 3},
-        {"to describe", "描写", true, 0},
-        {"to satirize", "讽刺", true, 0},
-        {"to renounce", "摒弃", true, 0},
-        {"to praise", "赞颂", true, 0},
-        {"to beseech", "恳求", true, 0},
-    });
-    auto translate_action = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        const std::string_view text = trim_view(raw);
-        const ActionPhrase *matched = nullptr;
-        for (const ActionPhrase &action : actions) {
-            if (!text.starts_with(action.source)) continue;
-            const size_t end = action.source.size();
-            if (end < text.size() && text[end] != ' ') continue;
-            if (!matched || action.source.size() > matched->source.size())
-                matched = &action;
-        }
-        if (!matched) return std::nullopt;
-        std::string_view remainder = trim_view(text.substr(matched->source.size()));
-        bool concerning = false;
-        if (remainder.starts_with("concerning ")) {
-            concerning = true;
-            remainder.remove_prefix(std::string_view("concerning ").size());
-        }
-        std::optional<std::string> topic;
-        if (!remainder.empty()) topic = translate_topic(remainder);
-        if (!remainder.empty() && !topic) return std::nullopt;
-
-        std::string result;
-        // The generator permits every purpose without a subject, including
-        // grammatically elliptical English such as `intended to beseech`.
-        // A subject, when present, refines the action; it is not required just
-        // because that English verb or preposition normally takes one.
-        if (matched->takes_object && topic) {
-            switch (matched->object_style) {
-            case 1: result = "表达对" + *topic + "的不满"; break;
-            case 2: result = "抒发因" + *topic + "而生的喜悦"; break;
-            case 3: result = "为" + *topic + "而哀叹"; break;
-            default: result = std::string(matched->chinese) + *topic; break;
-            }
-        } else if (matched->takes_object) {
-            result = matched->chinese;
-        } else {
-            if (!topic && concerning) return std::nullopt;
-            if (!topic) {
-                result = matched->chinese;
-            } else if (matched->source == "to move away from previous ideas") {
-                result = "离开前文的思路，转而描写" + *topic;
-            } else if (matched->source == "to offer a different perspective") {
-                result = "换一个角度审视" + *topic;
-            } else if (matched->source == "to amuse the audience") {
-                result = "以" + *topic + "为题博听众一笑";
-            } else if (matched->source == "to teach a moral lesson") {
-                result = "借" + *topic + "阐明为人处世的道理";
-            } else if (matched->source == "to make an apology") {
-                result = "围绕" + *topic + "表达歉意";
-            } else if (matched->source == "to make an assertion") {
-                result = "围绕" + *topic + "提出观点";
-            } else if (matched->source == "to make a counter-assertion") {
-                result = "围绕" + *topic + "反驳前文的观点";
-            } else {
-                result = "围绕" + *topic + std::string(matched->chinese);
-            }
-        }
-        return result;
-    };
-
-    auto translate_persona = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        const std::string_view text = trim_view(raw);
-        static constexpr std::array<std::pair<std::string_view,
-                                               std::string_view>, 7> personas = {{
-            {"the author", "作者本人"}, {"a soldier", "一名士兵"},
-            {"a traveler", "一名旅人"}, {"a traveller", "一名旅人"},
-            {"a relative of the author", "作者的一位亲属"},
-            {"a party to a debate", "辩论中的一方"},
-            {"a fictional poet", "一位虚构诗人"},
-        }};
-        for (const auto &[english, chinese] : personas) {
-            if (text == english) return std::string(chinese);
-        }
-        return translate_generated_reference(text);
-    };
-
-    auto translate_structure_atom = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        std::string_view text = trim_view(raw);
-        std::optional<std::string> forced_count;
-        struct SeriesPrefix { std::string_view source; std::string_view count; };
-        static constexpr auto series_prefixes = std::to_array<SeriesPrefix>({
-            {"another extremely long series of ", "另有许多"},
-            {"another numerous series of ", "另有许多"},
-            {"another series of ", "另有若干"},
-            {"an extremely long series of ", "许多"},
-            {"a numerous series of ", "许多"},
-            {"numerous series of ", "许多"},
-            {"a series of ", "若干"},
-        });
-        for (const SeriesPrefix &prefix : series_prefixes) {
-            if (!text.starts_with(prefix.source)) continue;
-            text.remove_prefix(prefix.source.size());
-            forced_count = std::string(prefix.count);
-            break;
-        }
-
-        for (const std::string_view ending : {
-                 std::string_view("verse paragraphs"),
-                 std::string_view("verse paragraph")}) {
-            if (!text.ends_with(ending)) continue;
-            std::string_view prefix = trim_view(
-                text.substr(0, text.size() - ending.size()));
-            std::string_view suffix = "个诗段";
-            if (prefix.ends_with(" brief")) {
-                prefix.remove_suffix(6);
-                suffix = "段短诗";
-            } else if (prefix == "brief") {
-                prefix = "a";
-                suffix = "段短诗";
-            } else if (prefix.ends_with(" lengthy")) {
-                prefix.remove_suffix(8);
-                suffix = "段长诗";
-            } else if (prefix == "lengthy") {
-                prefix = "a";
-                suffix = "段长诗";
-            } else if (prefix.ends_with(" full")) {
-                prefix.remove_suffix(5);
-                suffix = "个完整诗段";
-            } else if (prefix == "full") {
-                prefix = "a";
-                suffix = "个完整诗段";
-            }
-            if (prefix.ends_with(" distinct"))
-                prefix.remove_suffix(std::string_view(" distinct").size());
-            if (prefix.empty()) prefix = "a";
-            std::optional<std::string> count;
-            if (forced_count) {
-                if (prefix != "a" && prefix != "an")
-                    return std::nullopt;
-                count = forced_count;
-            } else {
-                count = translate_count(trim_view(prefix), true);
-            }
-            if (!count) return std::nullopt;
-            return *count + std::string(suffix);
-        }
-
-        auto render_counted = [&](std::string_view prefix,
-                                  std::string_view suffix,
-                                  bool use_liang) -> std::optional<std::string> {
-            std::string_view count_source = trim_view(prefix);
-            if (count_source.ends_with(" distinct"))
-                count_source.remove_suffix(std::string_view(" distinct").size());
-            std::optional<std::string> count;
-            if (forced_count) {
-                if (!count_source.empty() && count_source != "a" &&
-                    count_source != "an") {
-                    return std::nullopt;
-                }
-                count = forced_count;
-            } else {
-                count = translate_count(count_source, use_liang);
-            }
-            if (!count) return std::nullopt;
-            return *count + std::string(suffix);
-        };
-
-        struct Unit {
-            std::string_view singular;
-            std::string_view plural;
-            std::string_view suffix;
-            bool use_liang;
-        };
-        static constexpr auto units = std::to_array<Unit>({
-            {"couplet", "couplets", "组双行诗", true},
-            {"tercet", "tercets", "节三行诗", true},
-            {"quatrain", "quatrains", "节四行诗", true},
-            {"quintain", "quintains", "节五行诗", true},
-            {"sexain", "sexains", "节六行诗", true},
-            {"septet", "septets", "节七行诗", true},
-            {"octet", "octets", "节八行诗", true},
-            {"stanza", "stanzas", "节诗", true},
-            {"line", "lines", "行", true},
-        });
-        for (const Unit &unit : units) {
-            for (const std::string_view ending : {unit.plural, unit.singular}) {
-                if (!text.ends_with(ending)) continue;
-                if (text.size() > ending.size() &&
-                    text[text.size() - ending.size() - 1] != ' ') {
-                    continue;
-                }
-                std::string_view prefix = trim_view(
-                    text.substr(0, text.size() - ending.size()));
-                // `five ten-line stanzas` belongs to the more specific
-                // stanza parser below; treating `five ten-line` as one count
-                // would reject every generated N-line stanza description.
-                if ((ending == "stanza" || ending == "stanzas") &&
-                    prefix.ends_with("-line")) {
-                    continue;
-                }
-                std::string_view qualifier;
-                for (const auto &[english, chinese] : std::array<std::pair<
-                         std::string_view, std::string_view>, 3>{{
-                         {"brief", "简短的"},
-                         {"lengthy", "较长的"},
-                         {"full", "完整的"},
-                     }}) {
-                    if (prefix == english) {
-                        prefix = "a";
-                        qualifier = chinese;
-                        break;
-                    }
-                    const std::string suffix =
-                        " " + std::string(english);
-                    if (!prefix.ends_with(suffix)) continue;
-                    prefix.remove_suffix(suffix.size());
-                    qualifier = chinese;
-                    break;
-                }
-                if (prefix.empty()) prefix = ending == unit.singular ? "a" : "";
-                std::string suffix(unit.suffix);
-                if (!qualifier.empty()) {
-                    // Every unit starts with one three-byte Han classifier.
-                    suffix.insert(3, qualifier);
-                    if (unit.singular == "line") suffix += "诗";
-                }
-                return render_counted(prefix, suffix, unit.use_liang);
-            }
-        }
-
-        for (const std::string_view ending : {std::string_view("-line stanzas"),
-                                              std::string_view("-line stanza")}) {
-            if (!text.ends_with(ending)) continue;
-            std::string_view prefix = text.substr(0, text.size() - ending.size());
-            const size_t split = prefix.rfind(' ');
-            std::string_view outer_count = "a";
-            std::string_view line_count = prefix;
-            if (split != std::string_view::npos) {
-                outer_count = trim_view(prefix.substr(0, split));
-                line_count = trim_view(prefix.substr(split + 1));
-            }
-            if (outer_count.ends_with(" distinct"))
-                outer_count.remove_suffix(std::string_view(" distinct").size());
-            const auto lines = number_value(line_count);
-            std::optional<std::string> count;
-            if (forced_count) {
-                if (outer_count != "a" && outer_count != "an")
-                    return std::nullopt;
-                count = forced_count;
-            } else {
-                count = translate_count(outer_count, true);
-            }
-            if (!lines || !count) return std::nullopt;
-            return *count + "节" + chinese_number(*lines, true) + "行诗";
-        }
-        return std::nullopt;
-    };
-
-    auto translate_structure_list = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        std::vector<std::string> translated;
-        for (const std::string_view item : split_english_list(raw)) {
-            const auto value = translate_structure_atom(item);
-            if (!value) return std::nullopt;
-            translated.push_back(*value);
-        }
-        if (translated.empty()) return std::nullopt;
-        if (translated.size() == 1) return translated.front();
-        std::string joined;
-        for (size_t index = 0; index < translated.size(); ++index) {
-            if (index) joined += index + 1 == translated.size() ? "和" : "、";
-            joined += translated[index];
-        }
-        return joined;
-    };
-
-    auto translate_structure_sentence = [&](std::string_view sentence)
-            -> std::optional<std::string> {
-        static constexpr std::string_view divided = "The poem is divided into ";
-        static constexpr std::string_view poem_is = "The poem is ";
-        auto render_parts = [&](std::string_view raw,
-                                std::string_view stated_count)
-                -> std::optional<std::string> {
-            const auto items = split_english_list(raw);
-            if (items.empty()) return std::nullopt;
-            std::vector<std::string> translated_items;
-            translated_items.reserve(items.size());
-            for (const std::string_view item : items) {
-                const auto translated_item = translate_structure_atom(item);
-                if (!translated_item) return std::nullopt;
-                translated_items.push_back(*translated_item);
-            }
-            std::string count;
-            if (stated_count.empty()) {
-                count = chinese_number(static_cast<int>(items.size()), true);
-            } else {
-                const auto translated_count = translate_count(stated_count, true);
-                if (!translated_count) return std::nullopt;
-                count = *translated_count;
-            }
-            std::string result = "全诗分为" + count + "部分：";
-            for (size_t index = 0; index < translated_items.size(); ++index) {
-                if (index) result += "；";
-                result += "第" + chinese_number(static_cast<int>(index + 1), false) +
-                          "部分为" + translated_items[index];
-            }
-            return result;
-        };
-        if (sentence.starts_with(divided)) {
-            std::string_view description = sentence.substr(divided.size());
-            const size_t parts_at = description.find(" parts: ");
-            if (parts_at != std::string_view::npos) {
-                std::string_view count_source = description.substr(0, parts_at);
-                if (count_source.ends_with(" distinct"))
-                    count_source.remove_suffix(std::string_view(" distinct").size());
-                return render_parts(
-                    description.substr(parts_at +
-                                       std::string_view(" parts: ").size()),
-                    count_source);
-            }
-            const size_t distinct_at = description.find(" distinct ");
-            if (distinct_at != std::string_view::npos) {
-                const std::string_view count_source =
-                    description.substr(0, distinct_at);
-                std::string unit(description.substr(
-                    distinct_at + std::string_view(" distinct ").size()));
-                if (unit.ends_with('s')) unit.pop_back();
-                const auto count = translate_count(count_source, true);
-                const auto one_unit = translate_structure_atom("a " + unit);
-                if (!count || !one_unit) return std::nullopt;
-                return "全诗分为" + *count + "部分，每部分都是" + *one_unit;
-            }
-            if (split_english_list(description).size() > 1) {
-                return render_parts(description, {});
-            }
-            const auto structure = translate_structure_list(description);
-            if (!structure) return std::nullopt;
-            return "全诗分为" + *structure;
-        }
-        if (sentence.starts_with(poem_is)) {
-            std::string_view description = sentence.substr(poem_is.size());
-            const bool single = description.starts_with("a single ");
-            const auto structure = translate_structure_list(description);
-            if (!structure) return std::nullopt;
-            if (single && *structure == "一行") return std::string("全诗仅有一行");
-            if (single) return "全诗为" + *structure;
-            return "全诗由" + *structure + "组成";
-        }
-        return std::nullopt;
-    };
-
-    auto translate_term = [](std::string_view text)
-            -> std::optional<std::string> {
-        static constexpr auto terms = std::to_array<std::pair<std::string_view,
-                                                               std::string_view>>({
-            {"internal rhyme", "内韵"}, {"alliteration", "头韵"},
-            {"onomatopoeia", "拟声"},
-            {"antanaclasis", "同词异义的双关"},
-            {"assonance", "元音谐韵"}, {"consonance", "辅音谐韵"},
-            {"elision", "省音"}, {"epenthesis", "增音"},
-            {"synchysis", "交错语序"}, {"allegory", "寓言"},
-            {"ambiguity", "歧义"}, {"symbolism", "象征"},
-            {"metaphor", "暗喻"}, {"simile", "明喻"},
-            {"metonymy", "借代"}, {"vivid imagery", "鲜明意象"},
-            {"juxtaposition", "并置"},
-            {"lines with different readings depending on word breaks",
-             "随断句变化而产生不同含义的诗行"},
-            {"lines which can be read backwards as well as forwards",
-             "既可顺读也可倒读的诗行"},
-            {"lines which can be read orthogonally across the standard lines",
-             "横向、纵向都可阅读的诗行"},
-            {"lines which emerge when reading along certain prescribed paths across the body of the poem",
-             "按指定路线穿过诗篇、串读而成的诗句"},
-            {"lines which emerge when reading along certain prescribed paths",
-             "按指定路线串读而成的诗句"},
-            {"has different readings depending on word breaks",
-             "可通过不同断句读出不同含义"},
-            {"can be read backwards as well as forwards", "既可顺读也可倒读"},
-        });
-        for (const auto &[english, chinese] : terms) {
-            if (text == english) return std::string(chinese);
-        }
-        return std::nullopt;
-    };
-    auto translate_term_list = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        std::vector<std::string> translated;
-        for (const std::string_view item : split_english_list(raw)) {
-            const auto term = translate_term(item);
-            if (!term) return std::nullopt;
-            translated.push_back(*term);
-        }
-        if (translated.empty()) return std::nullopt;
-        return join_chinese(translated);
-    };
-
-    auto translate_parallel_predicates = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        std::string_view text = trim_view(raw);
-        // Standalone relation sentences begin with an uppercase subject
-        // (`Certain lines ...`), while the same predicate list embedded after
-        // `in that` begins with lowercase.  Accept both forms; rejecting the
-        // standalone spelling caused the whole generated poetic description
-        // to fail atomically and left the Knowledge detail pane in English.
-        if (text.starts_with("certain lines ") ||
-            text.starts_with("Certain lines ")) {
-            text.remove_prefix(14);
-        }
-        if (text.starts_with("they ")) text.remove_prefix(5);
-        std::vector<std::string> clauses;
-        static constexpr auto predicates = std::to_array<
-            std::pair<std::string_view, std::string_view>>({
-            {"often share an underlying meaning", "往往含义相通"},
-            {"often contrast underlying meaning", "往往含义相反"},
-            {"are required to maintain phrasing", "必须保持相同措辞"},
-            {"have similar grammatical structures", "采用相似句式"},
-            {"use the same placement of allusions", "在对应位置用典"},
-            {"sometimes have reversed word orders", "有时颠倒词序"},
-            {"reverse grammatical structures", "使用倒置的句法结构"},
-            {"present different views of the same subject",
-             "从不同角度描写同一主题"},
-        });
-        while (!text.empty()) {
-            const auto found = std::find_if(
-                predicates.begin(), predicates.end(), [&](const auto &entry) {
-                    if (!text.starts_with(entry.first)) return false;
-                    const std::string_view tail = text.substr(entry.first.size());
-                    return tail.empty() || tail.starts_with(',') ||
-                        tail.starts_with(" and ");
-                });
-            if (found == predicates.end()) return std::nullopt;
-            clauses.emplace_back(found->second);
-            text.remove_prefix(found->first.size());
-            text = trim_view(text);
-            if (text.empty()) break;
-            // Depending on predicate count, the game emits ordinary list
-            // punctuation or repeats the subject as `they`. Consume every
-            // combination made by that finite joiner grammar.
-            if (text.starts_with(", and ")) text.remove_prefix(6);
-            else if (text.starts_with(", ")) text.remove_prefix(2);
-            else if (text.starts_with("and ")) text.remove_prefix(4);
-            else return std::nullopt;
-            if (text.starts_with("they ")) text.remove_prefix(5);
-            text = trim_view(text);
-        }
-        if (clauses.empty()) return std::nullopt;
-        return join_chinese(clauses, "，");
-    };
-
-    // The opening supplies this name before any following sentence is
-    // parsed. DF can repeat it as a subject instead of `The poem` or `It`.
-    std::string source_form_title;
-    enum class PoeticScopeKind { Poem, Part, Line, Lines };
-    struct PoeticScope {
-        std::string chinese;
-        PoeticScopeKind kind = PoeticScopeKind::Poem;
-    };
-    PoeticScope last_scope{"全诗", PoeticScopeKind::Poem};
-
-    auto unit_reference = [&](std::string_view raw, bool each)
-            -> std::optional<std::string> {
-        const std::string_view text = trim_view(raw);
-        static constexpr auto units = std::to_array<std::pair<std::string_view,
-                                                               std::string_view>>({
-            {"couplet", "组双行诗"}, {"tercet", "节三行诗"},
-            {"quatrain", "节四行诗"}, {"quintain", "节五行诗"},
-            {"sexain", "节六行诗"}, {"septet", "节七行诗"},
-            {"octet", "节八行诗"}, {"stanza", "节诗"},
-            {"verse paragraph", "个诗段"},
-        });
-        for (const auto &[english, chinese] : units) {
-            if (text != english) continue;
-            if (each) return "每" + std::string(chinese);
-            if (english == "couplet") return std::string("这组双行诗");
-            if (english == "stanza") return std::string("该诗节");
-            return "这" + std::string(chinese);
-        }
-        for (const auto &[qualifier, chinese] : std::array<std::pair<
-                 std::string_view, std::string_view>, 3>{{
-                     {"brief verse paragraph", "短诗段"},
-                     {"full verse paragraph", "完整诗段"},
-                     {"lengthy verse paragraph", "长诗段"},
-                 }}) {
-            if (text != qualifier) continue;
-            return (each ? "每个" : "该") + std::string(chinese);
-        }
-        static constexpr std::string_view line_stanza_suffix = "-line stanza";
-        if (text.ends_with(line_stanza_suffix)) {
-            const auto count = number_value(text.substr(
-                0, text.size() - line_stanza_suffix.size()));
-            if (!count) return std::nullopt;
-            const std::string stanza = chinese_number(*count, true) + "行诗节";
-            return (each ? "每个" : "该") + stanza;
-        }
-        return std::nullopt;
-    };
-    std::function<std::optional<PoeticScope>(std::string_view)>
-        translate_scope;
-    translate_scope = [&](std::string_view raw)
-            -> std::optional<PoeticScope> {
-        std::string_view text = trim_view(raw);
-        if (text == "The poem" || text == "the poem" ||
-            (!source_form_title.empty() && text == source_form_title))
-            return PoeticScope{"全诗", PoeticScopeKind::Poem};
-        if (text == "Each line" || text == "each line" ||
-            text == "Every line of the poem" ||
-            text == "every line of the poem") {
-            return PoeticScope{"全诗各行", PoeticScopeKind::Lines};
-        }
-        if (text == "Certain lines" || text == "certain lines")
-            return PoeticScope{"某些诗行", PoeticScopeKind::Lines};
-        if (text == "It" || text == "it") return last_scope;
-
-        if (text.starts_with("In the ")) {
-            const size_t part_end = text.find(" part, ");
-            if (part_end == std::string_view::npos) return std::nullopt;
-            const auto part_number = ordinal_value(text.substr(7, part_end - 7));
-            if (!part_number) return std::nullopt;
-            const auto nested = translate_scope(text.substr(part_end + 7));
-            if (!nested) return std::nullopt;
-            PoeticScope combined = *nested;
-            combined.chinese = "第" + chinese_number(*part_number, false) +
-                               "部分中，" + combined.chinese;
-            return combined;
-        }
-
-        const bool capital_the = text.starts_with("The ");
-        const bool lower_the = text.starts_with("the ");
-        if (!capital_the && !lower_the) return std::nullopt;
-        text.remove_prefix(4);
-        const size_t part_at = text.find(" part");
-        if (part_at != std::string_view::npos && part_at + 5 == text.size()) {
-            const auto number = ordinal_value(text.substr(0, part_at));
-            if (!number) return std::nullopt;
-            return PoeticScope{"第" + chinese_number(*number, false) + "部分",
-                               PoeticScopeKind::Part};
-        }
-        const size_t line_at = text.find(" line");
-        if (line_at == std::string_view::npos) return std::nullopt;
-        const auto number = ordinal_value(text.substr(0, line_at));
-        if (!number) return std::nullopt;
-        std::string chinese;
-        std::string_view suffix = text.substr(line_at + 5);
-        if (suffix.starts_with(" of each ")) {
-            const auto unit = unit_reference(suffix.substr(9), true);
-            if (!unit) return std::nullopt;
-            chinese = *unit + "的第" + chinese_number(*number, false) + "行";
-        } else if (suffix.starts_with(" of the ")) {
-            const auto unit = unit_reference(suffix.substr(8), false);
-            if (!unit) return std::nullopt;
-            chinese = *unit + "的第" + chinese_number(*number, false) + "行";
-        } else if (suffix.empty()) {
-            chinese = "第" + chinese_number(*number, false) + "行";
-        } else {
-            return std::nullopt;
-        }
-        return PoeticScope{std::move(chinese), PoeticScopeKind::Line};
-    };
-
-    auto translate_pattern = [](std::string_view raw)
-            -> std::optional<std::string> {
-        static constexpr auto patterns = std::to_array<std::pair<
-            std::string_view, std::string_view>>({
-            {"stressed-unstressed-unstressed", "重—轻—轻"},
-            {"unstressed-stressed-unstressed", "轻—重—轻"},
-            {"unstressed-unstressed-stressed", "轻—轻—重"},
-            {"unstressed-unstressed-unstressed", "轻—轻—轻"},
-            {"stressed-unstressed-stressed", "重—轻—重"},
-            {"unstressed-stressed-stressed", "轻—重—重"},
-            {"stressed-stressed-unstressed", "重—重—轻"},
-            {"stressed-stressed-stressed", "重—重—重"},
-            {"unstressed-unstressed", "轻—轻"},
-            {"unstressed-stressed", "轻—重"},
-            {"stressed-unstressed", "重—轻"},
-            {"stressed-stressed", "重—重"},
-            {"uneven-even-uneven", "仄—平—仄"},
-            {"uneven-uneven-even", "仄—仄—平"},
-            {"uneven-uneven-uneven", "仄—仄—仄"},
-            {"even-uneven-even", "平—仄—平"},
-            {"even-uneven-uneven", "平—仄—仄"},
-            {"even-even-uneven", "平—平—仄"},
-            {"even-even-even", "平—平—平"},
-            {"uneven-even-even", "仄—平—平"},
-            {"long-short-short", "长—短—短"},
-            {"short-long-short", "短—长—短"},
-            {"short-short-long", "短—短—长"},
-            {"long-short-long", "长—短—长"},
-            {"short-short-short", "短—短—短"},
-            {"short-long-long", "短—长—长"},
-            {"long-long-short", "长—长—短"},
-            {"long-long-long", "长—长—长"},
-            {"long-short", "长—短"}, {"short-long", "短—长"},
-            {"long-long", "长—长"}, {"short-short", "短—短"},
-            {"even-uneven", "平—仄"}, {"uneven-even", "仄—平"},
-            {"even-even", "平—平"}, {"uneven-uneven", "仄—仄"},
-        });
-        for (const auto &[english, chinese] : patterns) {
-            if (raw == english) return std::string(chinese);
-        }
-        return std::nullopt;
-    };
-    auto translate_meter_label = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        std::string_view text = trim_view(raw);
-        std::string system;
-        bool quantitative = false;
-        if (strip_prefix(text, "qualitative ")) system = "重音划分";
-        else if (strip_prefix(text, "quantitative ")) {
-            system = "音长划分";
-            quantitative = true;
-        }
-        else return std::nullopt;
-        const size_t split = text.find(' ');
-        if (split == std::string_view::npos) return std::nullopt;
-        const std::string_view foot = text.substr(0, split);
-        const std::string_view length = text.substr(split + 1);
-        struct FootName {
-            std::string_view english;
-            std::string_view stress;
-            std::string_view weight;
-        };
-        static constexpr auto feet = std::to_array<FootName>({
-            {"pyrrhic", "抑抑格", "短短格"},
-            {"iambic", "抑扬格", "短长格"},
-            {"trochaic", "扬抑格", "长短格"},
-            {"spondaic", "扬扬格", "长长格"},
-            {"tribrachic", "抑抑抑格", "短短短格"},
-            {"dactylic", "扬抑抑格", "长短短格"},
-            {"amphibrachic", "抑扬抑格", "短长短格"},
-            {"anapaestic", "抑抑扬格", "短短长格"},
-            {"bacchic", "抑扬扬格", "短长长格"},
-            {"antibacchic", "扬扬抑格", "长长短格"},
-            {"cretic", "扬抑扬格", "长短长格"},
-            {"molossic", "扬扬扬格", "长长长格"},
-        });
-        static constexpr auto lengths = std::to_array<std::pair<std::string_view,
-                                                                 std::string_view>>({
-            {"monometer", "一音步"}, {"dimeter", "二音步"},
-            {"trimeter", "三音步"}, {"tetrameter", "四音步"},
-            {"pentameter", "五音步"}, {"hexameter", "六音步"},
-            {"heptameter", "七音步"}, {"octameter", "八音步"},
-        });
-        const auto foot_it = std::find_if(feet.begin(), feet.end(),
-            [&](const FootName &entry) { return entry.english == foot; });
-        const auto length_it = std::find_if(lengths.begin(), lengths.end(),
-            [&](const auto &entry) { return entry.first == length; });
-        if (foot_it == feet.end() || length_it == lengths.end())
-            return std::nullopt;
-        return std::string(quantitative ? foot_it->weight : foot_it->stress) +
-               std::string(length_it->second) + "，按" + system;
-    };
-
-    auto translate_measure = [&](std::string_view raw,
-                                 bool lines_with)
-            -> std::optional<std::string> {
-        std::string_view text = trim_view(raw);
-        if (lines_with) {
-            if (!strip_prefix(text, "lines with ")) return std::nullopt;
-        }
-        if (text.ends_with(" in each line")) {
-            text.remove_suffix(std::string_view(" in each line").size());
-            text = trim_view(text);
-        }
-        static constexpr auto caesuras = std::to_array<std::pair<
-            std::string_view, std::string_view>>({
-            {"an initial caesura", "在行首停顿"},
-            {"a medial caesura", "在行中停顿"},
-            {"a terminal caesura", "在行末停顿"},
-        });
-        for (const auto &[english, chinese] : caesuras) {
-            if (text == std::string(english) + " in each line")
-                return "各行均" + std::string(chinese);
-            if (text == english)
-                return std::string(chinese);
-        }
-
-        if (text.ends_with(" syllables")) {
-            const auto count = number_value(
-                text.substr(0, text.size() - std::string_view(" syllables").size()));
-            if (!count) return std::nullopt;
-            return "由" + chinese_number(*count, true) + "个音节组成";
-        }
-        if (text.ends_with(" syllable")) {
-            const auto count = number_value(
-                text.substr(0, text.size() - std::string_view(" syllable").size()));
-            if (!count) return std::nullopt;
-            return "由" + chinese_number(*count, true) + "个音节组成";
-        }
-
-        const size_t feet_at = text.find(" feet");
-        const size_t foot_at = text.find(" foot");
-        const size_t unit_at = feet_at != std::string_view::npos ? feet_at : foot_at;
-        if (unit_at == std::string_view::npos) return std::nullopt;
-        const auto count = number_value(text.substr(0, unit_at));
-        if (!count) return std::nullopt;
-        size_t cursor = unit_at + (feet_at != std::string_view::npos ? 5 : 5);
-        std::string result = "采用" + chinese_number(*count, false) + "音步";
-        std::string_view remainder = trim_view(text.substr(cursor));
-        if (remainder.empty()) return result;
-        while (!remainder.empty() && remainder.front() == ',') {
-            remainder.remove_prefix(1);
-            remainder = trim_view(remainder);
-        }
-        if (remainder.starts_with("and ")) {
-            remainder.remove_prefix(4);
-            remainder = trim_view(remainder);
-        }
-
-        struct PatternPrefix { std::string_view source; std::string_view chinese; };
-        static constexpr auto prefixes = std::to_array<PatternPrefix>({
-            {"with an accent pattern of ", "重音次序"},
-            {"with a tone pattern of ", "平仄次序"},
-            {"with a syllable weight pattern of ", "音长次序"},
-            {"an accent pattern of ", "重音次序"},
-            {"a tone pattern of ", "平仄次序"},
-            {"a syllable weight pattern of ", "音长次序"},
-        });
-        const PatternPrefix *matched = nullptr;
-        for (const PatternPrefix &prefix : prefixes) {
-            if (!remainder.starts_with(prefix.source)) continue;
-            matched = &prefix;
-            remainder.remove_prefix(prefix.source.size());
-            break;
-        }
-        if (!matched) return std::nullopt;
-        std::string_view pattern_text = remainder;
-        std::string_view meter_text;
-        const size_t parenthesis = remainder.find(" (");
-        if (parenthesis != std::string_view::npos && remainder.ends_with(')')) {
-            pattern_text = remainder.substr(0, parenthesis);
-            meter_text = remainder.substr(parenthesis + 2,
-                                          remainder.size() - parenthesis - 3);
-        }
-        const auto pattern = translate_pattern(pattern_text);
-        if (!pattern) return std::nullopt;
-        result += "，" + std::string(matched->chinese) + "为“" + *pattern + "”";
-        if (!meter_text.empty()) {
-            const auto meter = translate_meter_label(meter_text);
-            if (!meter) return std::nullopt;
-            result += "（" + *meter + "）";
-        }
-        return result;
-    };
-
-    auto translate_relation_sentence = [&](std::string_view sentence)
-            -> std::optional<std::string> {
-        for (const auto &[suffix, chinese] : std::array<std::pair<
-                 std::string_view, std::string_view>, 2>{{
-                 {" has different readings depending on word breaks",
-                  "可通过不同断句读出不同含义"},
-                 {" can be read backwards as well as forwards",
-                  "既可顺读也可倒读"},
-             }}) {
-            if (!sentence.ends_with(suffix)) continue;
-            const auto subject = translate_scope(
-                sentence.substr(0, sentence.size() - suffix.size()));
-            if (!subject) return std::nullopt;
-            return subject->chinese + std::string(chinese);
-        }
-        struct Relation { std::string_view source; int kind; };
-        static constexpr auto relations = std::to_array<Relation>({
-            {" shares the underlying meaning of ", 0},
-            {" contrasts the underlying meaning of ", 1},
-            {" is required to maintain the phrasing of ", 2},
-            {" has the same grammatical structure as ", 3},
-            {" uses the same placement of allusions as ", 4},
-            {" reverses the grammatical structure of ", 5},
-            {" reverses the word order of ", 6},
-            {" presents a different view of the subject of ", 7},
-            {" must expand the idea of ", 8},
-        });
-        for (const Relation &relation : relations) {
-            const size_t at = sentence.find(relation.source);
-            if (at == std::string_view::npos) continue;
-            const auto subject = translate_scope(sentence.substr(0, at));
-            const auto target = translate_scope(
-                sentence.substr(at + relation.source.size()));
-            if (!subject || !target) return std::nullopt;
-            std::string result = subject->chinese;
-            switch (relation.kind) {
-            case 0: result += "与" + target->chinese + "含义相通"; break;
-            case 1: result += "与" + target->chinese + "含义相反"; break;
-            case 2: result += "必须沿用" + target->chinese + "的措辞"; break;
-            case 3: result += "采用与" + target->chinese + "相同的句式"; break;
-            case 4: result += "在与" + target->chinese +
-                              "相同的位置运用典故"; break;
-            case 5: result += "采用与" + target->chinese +
-                              "相反的句法结构"; break;
-            case 6: result += "把" + target->chinese + "的词序倒置"; break;
-            case 7: result += "从另一角度描写" + target->chinese + "的主题"; break;
-            case 8: result += "必须展开" + target->chinese + "的构思"; break;
-            }
-            return result;
-        }
-        return std::nullopt;
-    };
-
-    auto translate_rhyme_sentence = [&](std::string_view sentence)
-            -> std::optional<std::string> {
-        struct RhymePrefix { std::string_view source; std::string_view chinese; };
-        static constexpr auto rhyme_prefixes = std::to_array<RhymePrefix>({
-            {"The ending of every line of the poem rhymes with every other",
-             "全诗行行押韵"},
-            {"The ending of each line of the poem shares the same rhyme",
-             "全诗各行押同一韵脚"},
-            {"The ending of each line of this part rhymes with each other",
-             "这一部分行行押韵"},
-            {"The ending of each line of this part shares the same rhyme",
-             "这一部分各行押同一韵脚"},
-            {"The ending of each line shares the same rhyme",
-             "各行押同一韵脚"},
-            {"As a rule throughout the poem, the end rhymes don't generally match perfectly",
-             "全诗通常只求近似押韵，不要求韵脚完全相同"},
-            {"In this part of the poem, the end rhymes don't need to match perfectly",
-             "这一部分只求近似押韵，不要求韵脚完全相同"},
-        });
-        for (const RhymePrefix &prefix : rhyme_prefixes) {
-            if (!sentence.starts_with(prefix.source)) continue;
-            std::string_view tail = trim_view(sentence.substr(prefix.source.size()));
-            if (tail.empty()) return std::string(prefix.chinese);
-            if (tail == ", though the rhyming doesn't have to be perfect")
-                return std::string(prefix.chinese) + "，也可押近似韵";
-            static constexpr std::string_view plural_exception_prefix =
-                ", though rhymes at the end of lines in the ";
-            static constexpr std::string_view plural_exception_suffix =
-                " lines don't need to match perfectly";
-            if (tail.starts_with(plural_exception_prefix) &&
-                tail.ends_with(plural_exception_suffix)) {
-                std::string_view ordinals = tail.substr(
-                    plural_exception_prefix.size(),
-                    tail.size() - plural_exception_prefix.size() -
-                        plural_exception_suffix.size());
-                std::vector<std::string> translated_ordinals;
-                for (const std::string_view item : split_english_list(ordinals)) {
-                    const auto value = ordinal_value(item);
-                    if (!value) return std::nullopt;
-                    translated_ordinals.push_back(
-                        chinese_number(*value, false));
-                }
-                if (translated_ordinals.empty()) return std::nullopt;
-                return std::string(prefix.chinese) + "，但第" +
-                       join_chinese(translated_ordinals) +
-                       "行可以押近似韵";
-            }
-            static constexpr std::string_view single_exception_prefix =
-                ", though the rhyme at the end of the ";
-            static constexpr std::string_view single_exception_suffix =
-                " line doesn't need to match perfectly";
-            if (tail.starts_with(single_exception_prefix) &&
-                tail.ends_with(single_exception_suffix)) {
-                const std::string_view ordinal = tail.substr(
-                    single_exception_prefix.size(),
-                    tail.size() - single_exception_prefix.size() -
-                        single_exception_suffix.size());
-                const auto value = ordinal_value(ordinal);
-                if (!value) return std::nullopt;
-                return std::string(prefix.chinese) + "，但第" +
-                       chinese_number(*value, false) +
-                       "行可以押近似韵";
-            }
-            return std::nullopt;
-        }
-
-        static constexpr std::string_view scheme_prefix = "The rhyme scheme ";
-        if (sentence.starts_with(scheme_prefix)) {
-            const std::string_view after_prefix =
-                sentence.substr(scheme_prefix.size());
-            std::string_view qualifier;
-            std::string_view scheme;
-            if (after_prefix.starts_with("is ")) {
-                scheme = after_prefix.substr(3);
-            } else {
-                const size_t is_at = after_prefix.rfind(" is ");
-                if (is_at == std::string_view::npos) return std::nullopt;
-                qualifier = after_prefix.substr(0, is_at);
-                scheme = after_prefix.substr(is_at + 4);
-            }
-            bool numbered_refrain = false;
-            static constexpr std::string_view refrain_suffix =
-                ", where numbers indicate a refrain";
-            if (scheme.ends_with(refrain_suffix)) {
-                scheme.remove_suffix(refrain_suffix.size());
-                numbered_refrain = true;
-            }
-            // Generated rhyme labels can use either case. Preserve the
-            // notation verbatim; rejecting lowercase labels rejects the
-            // complete poetic description, including its other paragraphs.
-            const bool valid_scheme = !scheme.empty() &&
-                std::all_of(scheme.begin(), scheme.end(), [](unsigned char ch) {
-                    return (ch >= 'A' && ch <= 'Z') ||
-                           (ch >= 'a' && ch <= 'z') ||
-                           (ch >= '0' && ch <= '9');
-                });
-            if (!valid_scheme) return std::nullopt;
-            std::string result;
-            if (qualifier == "of the poem") result = "全诗的韵式为 ";
-            else if (qualifier.empty()) result = "韵式为 ";
-            else if (qualifier == "of this part") result = "这一部分的韵式为 ";
-            else if (qualifier == "respecting the full poem")
-                result = "按全诗统一标记韵脚时，这一部分的韵式为 ";
-            else if (qualifier == "repeating in each stanza")
-                result = (last_scope.kind == PoeticScopeKind::Part
-                              ? last_scope.chinese : "全诗") +
-                         "每节重复采用韵式 ";
-            else if (qualifier == "repeating in each stanza of the poem")
-                result = "全诗每节重复采用韵式 ";
-            else if (qualifier == "within each stanza")
-                result = (last_scope.kind == PoeticScopeKind::Part
-                              ? last_scope.chinese : "全诗") +
-                         "各节的韵式均为 ";
-            else if (qualifier == "within each stanza of the poem")
-                result = "全诗各节的韵式均为 ";
-            else if (qualifier.starts_with(
-                         "repeating in each stanza of ")) {
-                const auto scope = translate_scope(qualifier.substr(
-                    std::string_view(
-                        "repeating in each stanza of ").size()));
-                if (!scope) return std::nullopt;
-                result = scope->chinese + "的各诗节重复采用韵式 ";
-            } else if (qualifier.starts_with(
-                           "within each stanza of ")) {
-                const auto scope = translate_scope(qualifier.substr(
-                    std::string_view("within each stanza of ").size()));
-                if (!scope) return std::nullopt;
-                result = scope->chinese + "各节的韵式均为 ";
-            }
-            else if (qualifier == "within this stanza")
-                result = "本节诗采用韵式 ";
-            else return std::nullopt;
-            result += scheme;
-            if (numbered_refrain) result += "，其中数字代表叠句";
-            return result;
-        }
-
-        // When the form combines a stanza-level scheme with a broader one,
-        // DF emits a separate requirement for exact rhyme. Express the
-        // relationship directly in Chinese instead of retaining its awkward
-        // English participial modifier.
-        if (sentence.starts_with("The rhyme") &&
-            sentence.ends_with(" need to match perfectly")) {
-            std::string_view qualifier = sentence;
-            qualifier.remove_prefix(std::string_view("The rhyme").size());
-            qualifier.remove_suffix(
-                std::string_view(" need to match perfectly").size());
-            if (qualifier.starts_with('s')) qualifier.remove_prefix(1);
-            qualifier = trim_view(qualifier);
-            if (qualifier == "repeating in each stanza" ||
-                qualifier == "repeating in each stanza of the poem")
-                return std::string("各诗节相应位置的韵脚必须完全相合");
-            if (qualifier == "within each stanza" ||
-                qualifier == "within each stanza of the poem")
-                return std::string("每节诗内部对应的韵脚必须完全相合");
-            if (qualifier.starts_with("repeating in each stanza of ")) {
-                const auto scope = translate_scope(qualifier.substr(
-                    std::string_view(
-                        "repeating in each stanza of ").size()));
-                if (!scope) return std::nullopt;
-                return scope->chinese +
-                       "的各诗节相应位置韵脚必须完全相合";
-            }
-            if (qualifier.starts_with("within each stanza of ")) {
-                const auto scope = translate_scope(qualifier.substr(
-                    std::string_view("within each stanza of ").size()));
-                if (!scope) return std::nullopt;
-                return scope->chinese +
-                       "的各诗节内部对应韵脚必须完全相合";
-            }
-            if (qualifier == "respecting the full poem")
-                return std::string("全诗对应位置的韵脚必须完全相合");
-            if (qualifier == "within this stanza")
-                return std::string("本节诗中对应的韵脚必须完全相合");
-            if (qualifier.empty())
-                return std::string("相关韵脚必须完全相合");
-            return std::nullopt;
-        }
-
-        for (const auto &[prefix, plural] : std::array<std::pair<
-                 std::string_view, bool>, 2>{{
-                 {"The refrain occurs as lines ", true},
-                 {"The refrain occurs as line ", false},
-             }}) {
-            if (!sentence.starts_with(prefix)) continue;
-            const std::string_view lines = trim_view(sentence.substr(prefix.size()));
-            if (lines.empty()) return std::nullopt;
-            std::vector<std::string> numbers;
-            for (const std::string_view item : split_english_list(lines)) {
-                const bool numeric = !item.empty() &&
-                    std::all_of(item.begin(), item.end(), [](unsigned char ch) {
-                        return ch >= '0' && ch <= '9';
-                    });
-                const std::optional<int> word_value = number_value(item);
-                const std::optional<int> ordinal = ordinal_value(item);
-                if (!numeric && !word_value && !ordinal) return std::nullopt;
-                const int value = numeric
-                    ? parse_int(std::string(item), -1)
-                    : word_value ? *word_value : *ordinal;
-                if (value < 0) return std::nullopt;
-                numbers.push_back(chinese_number(value, false));
-            }
-            if (numbers.empty() || (!plural && numbers.size() != 1))
-                return std::nullopt;
-            return "第" + join_chinese(numbers) +
-                   (plural ? "行为叠句" : "行是叠句");
-        }
-        return std::nullopt;
-    };
-
-    auto translate_scoped_sentence = [&](std::string_view sentence)
-            -> std::optional<std::string> {
-        if (sentence.starts_with("Certain lines ")) {
-            const auto clauses = translate_parallel_predicates(sentence);
-            if (!clauses) return std::nullopt;
-            return "某些诗行" + *clauses;
-        }
-
-        struct Marker { std::string_view source; int kind; };
-        static constexpr auto markers = std::to_array<Marker>({
-            {" is always written from the perspective of ", 15},
-            {" is written from the perspective of ", 0},
-            {" must make use of ", 1},
-            {" must feature ", 2},
-            {" has lines with ", 3},
-            {" is intended ", 4},
-            {" concerns ", 5},
-            {" includes ", 6},
-            {" has ", 7},
-            {" is dramatic", 8}, {" is reflective", 9},
-            {" is ribald", 10}, {" is light", 11},
-            {" is solemn", 12}, {" is a riddle", 13},
-            {" is a narrative", 14},
-        });
-        const Marker *matched = nullptr;
-        size_t marker_at = std::string_view::npos;
-        for (const Marker &marker : markers) {
-            const size_t at = sentence.find(marker.source);
-            if (at == std::string_view::npos) continue;
-            if (!matched || at < marker_at ||
-                (at == marker_at && marker.source.size() > matched->source.size())) {
-                matched = &marker;
-                marker_at = at;
-            }
-        }
-        if (!matched) return std::nullopt;
-        const auto scope = translate_scope(sentence.substr(0, marker_at));
-        if (!scope) return std::nullopt;
-        // In a section paragraph, subsequent `It ...` sentences continue to
-        // refer to that part or line even when a relation about one of its
-        // internal lines intervenes. Relation sentences are handled above and
-        // deliberately do not replace this discourse referent.
-        if (scope->kind != PoeticScopeKind::Lines)
-            last_scope = *scope;
-        std::string_view value = trim_view(
-            sentence.substr(marker_at + matched->source.size()));
-        std::string result = scope->chinese;
-        switch (matched->kind) {
-        case 15:
-        case 0: {
-            const auto persona = translate_persona(value);
-            if (!persona) return std::nullopt;
-            result += matched->kind == 15 ? "始终从" : "从";
-            result += *persona + "的视角展开";
-            break;
-        }
-        case 1: {
-            const auto terms = translate_term_list(value);
-            if (!terms) return std::nullopt;
-            result += "必须运用" + *terms;
-            break;
-        }
-        case 2: {
-            const auto terms = translate_term_list(value);
-            if (!terms) return std::nullopt;
-            result += "必须包含" + *terms;
-            break;
-        }
-        case 3: {
-            const auto measure = translate_measure(
-                "lines with " + std::string(value), true);
-            if (!measure) return std::nullopt;
-            result += "的各行均" + *measure;
-            break;
-        }
-        case 4: {
-            const auto action = translate_action(value);
-            if (!action) return std::nullopt;
-            result += "旨在" + *action;
-            break;
-        }
-        case 5: {
-            const auto topic = translate_topic(value);
-            if (!topic) return std::nullopt;
-            result += "描写" + *topic;
-            break;
-        }
-        case 6: {
-            const auto structure = translate_structure_list(value);
-            if (!structure) return std::nullopt;
-            result += "包括" + *structure;
-            break;
-        }
-        case 7: {
-            const auto measure = translate_measure(value, false);
-            if (!measure) return std::nullopt;
-            if (scope->kind == PoeticScopeKind::Lines)
-                result += "均" + *measure;
-            else
-                result += *measure;
-            break;
-        }
-        default: {
-            static constexpr std::array<std::string_view, 7> styles = {
-                "富有戏剧性", "侧重沉思与感悟", "风格粗俗诙谐", "风格轻快",
-                "风格庄重", "写成谜语", "采用叙事体",
-            };
-            const int style_index = matched->kind - 8;
-            if (style_index < 0 ||
-                style_index >= static_cast<int>(styles.size()))
-                return std::nullopt;
-            result += styles[static_cast<size_t>(style_index)];
-            if (!value.empty()) {
-                // The generator emits both `is light and is intended ...`
-                // and `is light and intended ...` depending on the section
-                // template.  They carry the same meaning and must remain one
-                // atomic sentence; rejecting the latter left every detached
-                // part paragraph in English.
-                if (!strip_prefix(value, "and is intended ") &&
-                    !strip_prefix(value, "and intended ")) {
-                    return std::nullopt;
-                }
-                const auto action = translate_action(value);
-                if (!action) return std::nullopt;
-                result += "，旨在" + *action;
-            }
-            break;
-        }
-        }
-        return result;
-    };
-
-    // The opening combines the form's character, purpose, subject and origin.
-    // Parse those fields first and reorder them into an idiomatic Chinese
-    // sentence instead of mirroring the English modifier chain.
-    static constexpr std::string_view origin_marker = ", originating in ";
-    const size_t opening_end = source.find('.');
-    if (opening_end == std::string::npos) return std::nullopt;
-    const std::string_view opening(source.data(), opening_end);
-    const size_t origin_at = opening.find(origin_marker);
-    if (origin_at == std::string_view::npos) return std::nullopt;
-    std::string_view identity = opening.substr(0, origin_at);
-    const auto origin = translate_generated_reference(
-        opening.substr(origin_at + origin_marker.size()));
-    if (!origin) return std::nullopt;
-
-    struct FormIdentity { std::string_view source; std::string_view chinese; };
-    static constexpr auto form_identities = std::to_array<FormIdentity>({
-        {"A dramatic poetic form", "戏剧性诗体"},
-        {"A reflective poetic form", "沉思诗体"},
-        {"A ribald poetic form", "粗俗诙谐的诗体"},
-        {"A light poetic form", "轻快诗体"},
-        {"A solemn poetic form", "庄重诗体"},
-        {"A poetic narrative", "叙事诗"},
-        {"A poetic riddle", "诗谜"},
-        {"A poetic form", "诗体"},
-    });
-    const FormIdentity *form = nullptr;
-    std::optional<std::string> form_title;
-    std::string named_identity;
-    for (const FormIdentity &candidate : form_identities) {
-        if (!identity.starts_with(candidate.source)) continue;
-        if (!form || candidate.source.size() > form->source.size()) form = &candidate;
-    }
-    // The Knowledge page normally prefixes the generated grammar with the
-    // art form's proper name: `The Scent of Meadows is a reflective poetic
-    // form ...`. Some other contexts expose the anonymous `A reflective
-    // poetic form ...` variant. Resolve the generated title independently,
-    // then feed the shared form/purpose tail through exactly the same finite
-    // grammar. Treating the complete physical row as a procedural name is
-    // what previously produced a transliterated sentence head followed by an
-    // untranslated English paragraph.
-    if (!form) {
-        for (const FormIdentity &candidate : form_identities) {
-            // Every canonical identity starts with `A `; after a title the
-            // same generator emits its lower-case form after ` is `.
-            if (!candidate.source.starts_with("A ")) continue;
-            const std::string marker =
-                " is a " + std::string(candidate.source.substr(2));
-            const size_t marker_at = identity.find(marker);
-            if (marker_at == std::string_view::npos || marker_at == 0) continue;
-            const auto translated_title = translate_generated_reference(
-                identity.substr(0, marker_at));
-            if (!translated_title) continue;
-            // Preserve the English referent before normalizing the opening.
-            // Only this document's own title is a poem scope, not an
-            // arbitrary generated name elsewhere in a sentence.
-            source_form_title = identity.substr(0, marker_at);
-            named_identity = std::string(candidate.source);
-            named_identity += identity.substr(marker_at + marker.size());
-            identity = named_identity;
-            form = &candidate;
-            form_title = std::move(*translated_title);
-            break;
-        }
-    }
-    if (!form) return std::nullopt;
-    identity.remove_prefix(form->source.size());
-    std::string translated;
-    if (form_title) {
-        translated = "“" + *form_title + "”是一种" +
-                     std::string(form->chinese) + "，起源于“" + *origin + "”";
-    } else {
-        translated = "这是一种" + std::string(form->chinese) +
-                     "，起源于“" + *origin + "”";
-    }
-    if (!identity.empty()) {
-        if (strip_prefix(identity, " intended ")) {
-            const auto action = translate_action(identity);
-            if (!action) return std::nullopt;
-            translated += "，旨在" + *action;
-        } else if (strip_prefix(identity, " concerning ")) {
-            const auto topic = translate_topic(identity);
-            if (!topic) return std::nullopt;
-            translated += "，以" + *topic + "为题";
-        } else {
-            return std::nullopt;
-        }
-    }
-    translated += "。";
-
-    size_t cursor = opening_end + 1;
-    while (cursor < source.size()) {
-        while (cursor < source.size() && source[cursor] == ' ') ++cursor;
-        if (cursor >= source.size()) break;
-        const size_t period = source.find('.', cursor);
-        if (period == std::string::npos) return std::nullopt;
-        const std::string_view sentence = trim_view(
-            std::string_view(source).substr(cursor, period - cursor));
-        if (sentence.empty()) {
-            cursor = period + 1;
-            continue;
-        }
-
-        std::optional<std::string> part;
-        if (sentence ==
-            "The rules of the form are applied by poets to produce individual poems which can be recited") {
-            part = "诗人按这一诗体写诗，供人吟诵";
-        } else if (sentence ==
-                   "The form guides poets during improvised performances") {
-            part = "诗人按这一诗体即兴吟诗";
-        } else if (sentence ==
-                   "It is always written from the perspective of the author") {
-            part = "作品始终从作者本人的视角展开";
-        } else if (sentence.starts_with(
-                       "It is always written from the perspective of ")) {
-            const auto persona = translate_persona(sentence.substr(
-                std::string_view("It is always written from the perspective of ").size()));
-            if (persona) part = "作品始终从" + *persona + "的视角展开";
-        } else if (sentence.starts_with("Use of ") &&
-                   sentence.ends_with(" is characteristic of the form")) {
-            const std::string_view list = sentence.substr(
-                7, sentence.size() - 7 -
-                       std::string_view(" is characteristic of the form").size());
-            const auto terms = translate_term_list(list);
-            if (terms) part = "这种诗体常用" + *terms;
-        } else if ((sentence.starts_with(
-                        "A form of parallelism is common throughout the poem, in that ") ||
-                    sentence.starts_with(
-                        "Forms of parallelism are common throughout the poem, in that "))) {
-            const size_t in_that = sentence.find("in that ");
-            const auto clauses = translate_parallel_predicates(
-                sentence.substr(in_that + 8));
-            if (clauses) part = "全诗常用句式上的呼应与对照：有些诗行" + *clauses;
-        } else if (sentence.starts_with(
-                       "Linguistic skill is required in the visual presentation as well, as ")) {
-            const auto terms = translate_term_list(sentence.substr(
-                std::string_view(
-                    "Linguistic skill is required in the visual presentation as well, as ").size()));
-            if (terms) part = "诗篇还讲究文字的排列方式，包含" + *terms;
-        }
-        if (!part) part = translate_structure_sentence(sentence);
-        if (!part) part = translate_rhyme_sentence(sentence);
-        if (!part) part = translate_relation_sentence(sentence);
-        if (!part) part = translate_scoped_sentence(sentence);
-        // Latin letters and digits can survive only in the explicitly parsed
-        // rhyme-scheme notation (such as ABCD1A1CD). No source prose is ever
-        // copied into a translated sentence.
-        if (!part || part->empty()) return std::nullopt;
-        translated += *part + "。";
-        cursor = period + 1;
-    }
-    return work_introduction + translated;
-}
-
-// Dance-form knowledge is generated from the same kind of finite semantic
-// grammar as music and poetry, but its paragraphs mix formation, partner and
-// movement clauses.  Translating the physical rows separately lets ordinary
-// dictionary matches claim isolated words ("music", "body", "independent")
-// and produces an unreadable bilingual mosaic.  Consume one complete native
-// paragraph and reject it atomically if a new grammar production is unknown.
-std::optional<std::string> Overlay::translate_dance_form_paragraph(
-        std::string_view raw_paragraph) const {
-    std::string source;
-    source.reserve(raw_paragraph.size());
-    bool pending_space = false;
-    for (const unsigned char ch : raw_paragraph) {
-        if (std::isspace(ch)) {
-            pending_space = !source.empty();
-            continue;
-        }
-        if (pending_space) source.push_back(' ');
-        pending_space = false;
-        source.push_back(static_cast<char>(ch));
-    }
-    source = trim(std::move(source));
-    for (size_t marker = source.find("[B]"); marker != std::string::npos;
-         marker = source.find("[B]")) {
-        source.erase(marker, 3);
-    }
-    source = trim(std::move(source));
-    if (source.empty()) return std::nullopt;
-
-    auto contains_ascii_letters = [](std::string_view value) {
-        return std::any_of(value.begin(), value.end(), [](unsigned char ch) {
-            return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
-        });
-    };
-    auto translate_reference = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        std::string value = trim(std::string(raw));
-        while (!value.empty() &&
-               (value.back() == '.' || value.back() == ',')) {
-            value.pop_back();
-        }
-        if (value.empty()) return std::nullopt;
-        auto accept = [&](std::optional<std::string> translated)
-                -> std::optional<std::string> {
-            if (!translated || translated->empty() ||
-                contains_ascii_letters(*translated)) {
-                return std::nullopt;
-            }
-            return translated;
-        };
-        if (auto translated = accept(exact_literal_translation(value)))
-            return translated;
-        if (auto translated = accept(translate_compositional(value)))
-            return translated;
-        if (auto translated = accept(translate_procedural_fragment(value)))
-            return translated;
-        return accept(translate_procedural_fragment(value, true));
-    };
-    auto join_chinese = [](const std::vector<std::string> &items,
-                           std::string_view separator = "、") {
-        std::string result;
-        for (size_t index = 0; index < items.size(); ++index) {
-            if (index) result += separator;
-            result += items[index];
-        }
-        return result;
-    };
-    auto number_value = [](std::string_view raw) -> std::optional<int> {
-        const std::string value = lower(trim(std::string(raw)));
-        if (!value.empty() && std::all_of(
-                value.begin(), value.end(), [](unsigned char ch) {
-                    return ch >= '0' && ch <= '9';
-                })) {
-            return parse_int(value, -1);
-        }
-        static constexpr auto numbers = std::to_array<std::pair<
-            std::string_view, int>>({
-            {"zero", 0}, {"one", 1}, {"two", 2}, {"three", 3},
-            {"four", 4}, {"five", 5}, {"six", 6}, {"seven", 7},
-            {"eight", 8}, {"nine", 9}, {"ten", 10}, {"eleven", 11},
-            {"twelve", 12}, {"thirteen", 13}, {"fourteen", 14},
-            {"fifteen", 15}, {"sixteen", 16}, {"seventeen", 17},
-            {"eighteen", 18}, {"nineteen", 19}, {"twenty", 20},
-            {"twenty-one", 21}, {"twenty-two", 22},
-            {"twenty-three", 23}, {"twenty-four", 24},
-            {"thirty", 30}, {"thirty-two", 32},
-        });
-        for (const auto &[english, number] : numbers) {
-            if (value == english) return number;
-        }
-        return std::nullopt;
-    };
-    auto chinese_number = [](int value) {
-        static constexpr std::array<std::string_view, 10> digits = {
-            "零", "一", "二", "三", "四", "五", "六", "七", "八", "九",
-        };
-        if (value >= 0 && value < 10)
-            return std::string(digits[static_cast<size_t>(value)]);
-        if (value >= 10 && value < 20)
-            return std::string("十") +
-                (value == 10 ? "" : std::string(digits[value % 10]));
-        if (value >= 20 && value < 100) {
-            std::string result(digits[value / 10]);
-            result += "十";
-            if (value % 10) result += digits[value % 10];
-            return result;
-        }
-        return std::to_string(value);
-    };
-    auto translate_count = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        std::string value = trim(std::string(raw));
-        if (value == "a" || value == "an" || value == "a single" ||
-            value == "single") return std::string("一");
-        const size_t range = value.find(" to ");
-        if (range != std::string::npos) {
-            const auto first = number_value(value.substr(0, range));
-            const auto last = number_value(value.substr(range + 4));
-            if (!first || !last) return std::nullopt;
-            return chinese_number(*first) + "至" + chinese_number(*last);
-        }
-        const auto number = number_value(value);
-        if (!number) return std::nullopt;
-        return chinese_number(*number);
-    };
-
-    // Longest spellings come first because several one-word traits are also
-    // suffixes of compound traits ("percussive", "realized").
-    static constexpr auto styles = std::to_array<std::pair<
-        std::string_view, std::string_view>>({
-        {"partially realized", "未完全展现"},
-        {"loudly percussive", "强烈顿挫"},
-        {"softly percussive", "轻柔顿挫"},
-        {"straight-lined", "线条笔直"},
-        {"sharp-edged", "棱角分明"},
-        {"counterclockwise", "逆时针"},
-        {"independent", "独立"},
-        {"understated", "含蓄"}, {"expressive", "富有表现力"},
-        {"weightless", "轻盈如悬浮"}, {"undulating", "起伏流动"},
-        {"flamboyant", "华丽奔放"}, {"passionate", "热情奔放"},
-        {"aggressive", "激烈"}, {"energetic", "充满活力"},
-        {"vivacious", "活泼"}, {"sprightly", "轻快"},
-        {"clockwise", "顺时针"}, {"powerful", "有力"},
-        {"vigorous", "刚健"}, {"graceful", "优雅"},
-        {"elaborate", "繁复"}, {"grotesque", "怪诞"},
-        {"debauched", "放纵"}, {"straight", "笔直"},
-        {"refined", "精致"}, {"delicate", "细腻"},
-        {"spirited", "昂扬"}, {"twisting", "扭转"},
-        {"sinuous", "蜿蜒"}, {"sensual", "柔媚"},
-        {"sluggish", "迟缓"}, {"relaxed", "舒缓"},
-        {"passive", "被动"}, {"subtle", "微妙"},
-        {"jerking", "顿挫"}, {"aborted", "中止"},
-        {"serene", "宁静"}, {"joyous", "欢快"},
-        {"intense", "强烈"}, {"lively", "活跃"},
-        {"strong", "强劲"}, {"proud", "昂扬"},
-        {"crude", "粗犷"}, {"fluid", "流畅"},
-        {"calm", "平静"}, {"soft", "轻柔"},
-        {"mirrored", "镜像"},
-        {"large", "大幅度"}, {"high", "高位"},
-        {"low", "低位"}, {"repeated", "反复"},
-        {"eighth", "八分之一圈"}, {"quarter", "四分之一圈"},
-        {"half", "半圈"},
-    });
-    auto translate_style_sequence = [&](std::string_view raw)
-            -> std::optional<std::vector<std::string>> {
-        std::vector<std::string> translated;
-        size_t cursor = 0;
-        while (cursor < raw.size()) {
-            while (cursor < raw.size() &&
-                   (raw[cursor] == ' ' || raw[cursor] == ',')) ++cursor;
-            if (raw.substr(cursor).starts_with("and ")) cursor += 4;
-            while (cursor < raw.size() && raw[cursor] == ' ') ++cursor;
-            if (cursor >= raw.size()) break;
-            const std::pair<std::string_view, std::string_view> *best = nullptr;
-            for (const auto &entry : styles) {
-                if (!raw.substr(cursor).starts_with(entry.first)) continue;
-                const size_t end = cursor + entry.first.size();
-                if (end < raw.size() && raw[end] != ' ' && raw[end] != ',')
-                    continue;
-                if (!best || entry.first.size() > best->first.size())
-                    best = &entry;
-            }
-            if (!best) return std::nullopt;
-            translated.emplace_back(best->second);
-            cursor += best->first.size();
-        }
-        return translated;
-    };
-
-    static constexpr auto movements = std::to_array<std::pair<
-        std::string_view, std::string_view>>({
-        {"movement along the line of dance", "沿舞蹈路线行进"},
-        {"independent body movements", "身体各部位的独立动作"},
-        {"independent body movement", "身体各部位的独立动作"},
-        {"body level changes", "身体的起伏变化"},
-        {"body level change", "身体的起伏变化"},
-        {"facial expressions", "面部表情"},
-        {"facial expression", "面部表情"},
-        {"raised left arms", "抬起左臂"},
-        {"raised right arms", "抬起右臂"},
-        {"raised left arm", "抬起左臂"},
-        {"raised right arm", "抬起右臂"},
-        {"rightward bends", "向右侧弯"},
-        {"leftward bends", "向左侧弯"},
-        {"backward bends", "后仰"},
-        {"forward bends", "前俯"},
-        {"rightward bend", "向右侧弯"},
-        {"leftward bend", "向左侧弯"},
-        {"backward bend", "后仰"},
-        {"forward bend", "前俯"},
-        {"right leg lifts", "抬起右腿"},
-        {"left leg lifts", "抬起左腿"},
-        {"right leg lift", "抬起右腿"},
-        {"left leg lift", "抬起左腿"},
-        {"straight walks", "沿直线走步"},
-        {"curved walks", "沿弧线走步"},
-        {"straight walk", "沿直线走步"},
-        {"curved walk", "沿弧线走步"},
-        {"hand gestures", "手势"}, {"hand gesture", "手势"},
-        {"right kicks", "踢右腿"}, {"left kicks", "踢左腿"},
-        {"right kick", "踢右腿"}, {"left kick", "踢左腿"},
-        {"arm carriage", "手臂姿态"},
-        {"raised arms", "抬起手臂"}, {"raised arm", "抬起手臂"},
-        {"leg lifts", "抬腿"}, {"leg lift", "抬腿"},
-        {"body level", "身体的高低位置"},
-        {"footwork", "步法"}, {"turns", "转身"}, {"turn", "转身"},
-        {"spins", "旋转"}, {"spin", "旋转"},
-        {"runs", "跑步"}, {"run", "跑步"},
-        {"leaps", "跃起"}, {"leap", "跃起"},
-        {"kicks", "踢腿"}, {"kick", "踢腿"},
-        {"sways", "摇摆"}, {"sway", "摇摆"},
-        {"moves", "动作"}, {"movement", "动作"},
-    });
-    static constexpr auto transformation_suffixes = std::to_array<std::pair<
-        std::string_view, std::string_view>>({
-        {" performed in retrograde", "，按相反顺序完成"},
-        {" performed in succession", "，依次完成"},
-        {" mirrored", "，左右反向，形成镜像"},
-        {" shadowed", "，由其他舞者跟随模仿"},
-    });
-    auto find_transformation_suffix = [](std::string_view value)
-            -> const std::pair<std::string_view, std::string_view> * {
-        for (const auto &entry : transformation_suffixes) {
-            if (value.ends_with(entry.first)) return &entry;
-        }
-        return nullptr;
-    };
-    std::function<std::optional<std::string>(std::string_view)>
-        translate_movement;
-    std::function<std::optional<std::string>(std::string_view)>
-        translate_movement_list;
-    translate_movement_list = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        std::vector<std::string> translated;
-        size_t cursor = 0;
-        while (cursor < raw.size()) {
-            while (cursor < raw.size() && raw[cursor] == ' ') ++cursor;
-            if (raw.substr(cursor).starts_with("with ")) cursor += 5;
-            size_t next = raw.size();
-            size_t separator_size = 0;
-            for (size_t at = cursor; at < raw.size(); ++at) {
-                if (raw.substr(at).starts_with(", ")) {
-                    next = at;
-                    separator_size = 2;
-                    break;
-                }
-                if (raw.substr(at).starts_with(" and ")) {
-                    // A conjunction between movement transformations belongs
-                    // to this action, including inside a nested "with" clause.
-                    const std::string_view following = raw.substr(at + 4);
-                    if (find_transformation_suffix(
-                            raw.substr(cursor, at - cursor)) &&
-                        std::any_of(transformation_suffixes.begin(),
-                                    transformation_suffixes.end(),
-                                    [&](const auto &entry) {
-                            return following.starts_with(entry.first) &&
-                                (following.size() == entry.first.size() ||
-                                 following[entry.first.size()] == ' ' ||
-                                 following[entry.first.size()] == ',');
-                        })) continue;
-                    next = at;
-                    separator_size = 5;
-                    break;
-                }
-            }
-            std::string_view item = raw.substr(cursor, next - cursor);
-            while (!item.empty() && item.front() == ' ') item.remove_prefix(1);
-            while (!item.empty() && item.back() == ' ') item.remove_suffix(1);
-            if (item.starts_with("with ")) item.remove_prefix(5);
-            if (item.empty()) return std::nullopt;
-            const auto part = translate_movement(item);
-            if (!part) return std::nullopt;
-            translated.push_back(*part);
-            if (next == raw.size()) break;
-            cursor = next + separator_size;
-        }
-        if (translated.empty()) return std::nullopt;
-        return join_chinese(translated, "；");
-    };
-    translate_movement = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        std::string value = trim(std::string(raw));
-        if (value.starts_with("a ")) value.erase(0, 2);
-        else if (value.starts_with("an ")) value.erase(0, 3);
-        else if (value.starts_with("the ")) value.erase(0, 4);
-        value = trim(std::move(value));
-
-        const size_t with_at = value.find(" with ");
-        std::string nested;
-        if (with_at != std::string::npos) {
-            const auto tail = translate_movement_list(
-                std::string_view(value).substr(with_at + 6));
-            if (!tail) return std::nullopt;
-            nested = "，并配合" + *tail;
-            value.erase(with_at);
-            value = trim(std::move(value));
-        }
-
-        std::string actor;
-        static constexpr auto actor_suffixes = std::to_array<std::pair<
-            std::string_view, std::string_view>>({
-            {" from the follower", "（跟随者）"},
-            {" from the lead", "（领舞者）"},
-            {" of the follower", "（跟随者）"},
-            {" of the lead", "（领舞者）"},
-            {" by group members", "（群舞成员）"},
-        });
-        for (const auto &[suffix, chinese] : actor_suffixes) {
-            if (!value.ends_with(suffix)) continue;
-            value.erase(value.size() - suffix.size());
-            value = trim(std::move(value));
-            actor = chinese;
-            break;
-        }
-
-        std::string transformation;
-        while (const auto *entry = find_transformation_suffix(value)) {
-            value.erase(value.size() - entry->first.size());
-            value = trim(std::move(value));
-            // Strip from the end, but retain the original transformation order.
-            transformation = std::string(entry->second) + transformation;
-            if (value.ends_with(" and") && find_transformation_suffix(
-                    std::string_view(value).substr(0, value.size() - 4))) {
-                value.erase(value.size() - 4);
-            }
-        }
-
-        if (value.starts_with("series of ")) {
-            std::string_view series(value);
-            series.remove_prefix(10);
-            constexpr std::string_view steps_marker = " steps in ";
-            constexpr std::string_view pattern_suffix = " pattern";
-            const size_t steps_at = series.find(steps_marker);
-            if (steps_at == std::string_view::npos ||
-                !series.ends_with(pattern_suffix)) {
-                return std::nullopt;
-            }
-            const std::string_view count_and_style =
-                series.substr(0, steps_at);
-            std::optional<std::string> count;
-            std::optional<std::vector<std::string>> step_styles;
-            for (size_t boundary = count_and_style.find(' ');
-                 boundary != std::string_view::npos;
-                 boundary = count_and_style.find(' ', boundary + 1)) {
-                const auto candidate_count = translate_count(
-                    count_and_style.substr(0, boundary));
-                if (!candidate_count) continue;
-                const auto candidate_styles = translate_style_sequence(
-                    count_and_style.substr(boundary + 1));
-                if (!candidate_styles) continue;
-                count = candidate_count;
-                step_styles = candidate_styles;
-            }
-            if (!count) {
-                count = translate_count(count_and_style);
-                if (count) step_styles = std::vector<std::string>{};
-            }
-            if (!count) {
-                const auto candidate_styles =
-                    translate_style_sequence(count_and_style);
-                if (candidate_styles && !candidate_styles->empty()) {
-                    count = std::string{};
-                    step_styles = candidate_styles;
-                }
-            }
-            if (!count || !step_styles) return std::nullopt;
-
-            std::string_view raw_pattern = series.substr(
-                steps_at + steps_marker.size(),
-                series.size() - steps_at - steps_marker.size() -
-                    pattern_suffix.size());
-            // The generator uses both "a square pattern" and "an intricate
-            // pattern". Parse the article separately so either production
-            // reaches the same pattern vocabulary and movement grammar.
-            if (raw_pattern.starts_with("a ")) raw_pattern.remove_prefix(2);
-            else if (raw_pattern.starts_with("an ")) raw_pattern.remove_prefix(3);
-            else return std::nullopt;
-            std::string_view pattern;
-            if (raw_pattern == "figure-eight") pattern = "八字形";
-            else if (raw_pattern == "intricate") pattern = "复杂";
-            else if (raw_pattern == "square") pattern = "方形";
-            else if (raw_pattern == "circular") pattern = "圆形";
-            else if (raw_pattern == "triangle") pattern = "三角形";
-            else return std::nullopt;
-            std::string result = count->empty()
-                ? "一连串舞步"
-                : "一组" + *count + "步的动作";
-            if (!step_styles->empty())
-                result += "，舞步" + join_chinese(*step_styles) + "";
-            result += "，沿" + std::string(pattern) + "路线行进";
-            result += actor;
-            result += transformation;
-            result += nested;
-            return result;
-        }
-
-        const std::pair<std::string_view, std::string_view> *core = nullptr;
-        std::string_view modifiers;
-        for (const auto &entry : movements) {
-            if (value == entry.first) {
-                if (!core || entry.first.size() > core->first.size()) {
-                    core = &entry;
-                    modifiers = {};
-                }
-                continue;
-            }
-            const std::string suffix = " " + std::string(entry.first);
-            if (!value.ends_with(suffix)) continue;
-            if (!core || entry.first.size() > core->first.size()) {
-                core = &entry;
-                modifiers = std::string_view(value).substr(
-                    0, value.size() - suffix.size());
-            }
-        }
-        if (!core) return std::nullopt;
-        std::string direction;
-        std::string repetition;
-        std::string angle;
-        std::vector<std::string> traits;
-        if (!modifiers.empty()) {
-            const auto translated_modifiers = translate_style_sequence(modifiers);
-            if (!translated_modifiers || translated_modifiers->empty())
-                return std::nullopt;
-            for (const auto &modifier : *translated_modifiers) {
-                if (modifier == "顺时针" || modifier == "逆时针")
-                    direction = modifier;
-                else if (modifier == "半圈" || modifier == "四分之一圈" ||
-                         modifier == "八分之一圈")
-                    angle = modifier;
-                else if (modifier == "反复") repetition = "反复";
-                else traits.push_back(modifier);
-            }
-        }
-        std::string result = repetition + direction + std::string(core->second) + angle;
-        if (!traits.empty()) result += "（" + join_chinese(traits) + "）";
-        result += actor;
-        result += transformation;
-        result += nested;
-        return result;
-    };
-
-    auto translate_dance_type = [](std::string_view raw)
-            -> std::optional<std::string> {
-        const std::string value = trim(std::string(raw));
-        bool sacred = false;
-        bool solo = false;
-        bool group = false;
-        bool celebration = false;
-        bool participation = false;
-        bool social = false;
-        bool performance = false;
-        bool war = false;
-        bool partner = false;
-        size_t cursor = 0;
-        while (cursor < value.size()) {
-            const size_t end = value.find(' ', cursor);
-            const std::string_view token(value.data() + cursor,
-                (end == std::string::npos ? value.size() : end) - cursor);
-            bool *slot = nullptr;
-            if (token == "sacred") slot = &sacred;
-            else if (token == "solo") slot = &solo;
-            else if (token == "group") slot = &group;
-            else if (token == "celebration") slot = &celebration;
-            else if (token == "participation") slot = &participation;
-            else if (token == "social") slot = &social;
-            else if (token == "performance") slot = &performance;
-            else if (token == "war") slot = &war;
-            else if (token == "partner") slot = &partner;
-            else return std::nullopt;
-            if (*slot) return std::nullopt;
-            *slot = true;
-            if (end == std::string::npos) break;
-            cursor = end + 1;
-        }
-        if (value.empty() || (solo && group)) return std::nullopt;
-        const int purposes = static_cast<int>(celebration) +
-            static_cast<int>(participation) + static_cast<int>(social) +
-            static_cast<int>(performance) + static_cast<int>(war);
-        if (purposes > 1) return std::nullopt;
-        std::string result;
-        if (celebration) result = "用于庆典的";
-        else if (participation) result = "参与式";
-        else if (social) result = "社交";
-        else if (performance) result = "表演性";
-        if (sacred) result += "宗教";
-        if (war) {
-            result += solo ? "单人战舞" : group ? "群体战舞" :
-                      partner ? "双人战舞" : "战舞";
-        } else {
-            if (partner) result += "结伴";
-            result += solo ? "独舞" : group ? "群舞" :
-                      partner ? "舞" : "舞蹈";
-        }
-        return result;
-    };
-    auto translate_music_section = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        static constexpr auto sections = std::to_array<std::pair<
-            std::string_view, std::string_view>>({
-            {"exposition of the first theme", "第一主题呈示部"},
-            {"exposition of the second theme", "第二主题呈示部"},
-            {"recapitulation of the first theme", "第一主题再现部"},
-            {"recapitulation of the second theme", "第二主题再现部"},
-            {"recapitulation of the previous passage", "前一乐段再现部"},
-            {"exposition of the previous passage", "前一乐段呈示部"},
-            {"series of variations on the first theme", "第一主题变奏组"},
-            {"series of variations on the second theme", "第二主题变奏组"},
-            {"series of variations on the theme", "主题变奏组"},
-            {"variations on the first theme", "第一主题变奏"},
-            {"variations on the second theme", "第二主题变奏"},
-            {"variations on the theme", "主题变奏"},
-            {"synthesis of the two themes", "双主题综合部"},
-            {"synthesis of previous passages", "前述乐段综合部"},
-            {"next one to two passages", "接下来一至两个乐段"},
-            {"first simple passage", "第一个简单乐段"},
-            {"second simple passage", "第二个简单乐段"},
-            {"recapitulation of the theme", "主题再现部"},
-            {"exposition of the theme", "主题呈示部"},
-            {"first bridge-passage", "第一过渡段"},
-            {"second bridge-passage", "第二过渡段"},
-            {"first exposition", "第一呈示部"},
-            {"second exposition", "第二呈示部"},
-            {"first recapitulation", "第一再现部"},
-            {"second recapitulation", "第二再现部"},
-            {"first synthesis", "第一综合部"},
-            {"second synthesis", "第二综合部"},
-            {"first passage", "第一乐段"},
-            {"second passage", "第二乐段"},
-            {"bridge-passage", "过渡段"},
-            {"first theme", "第一主题"}, {"second theme", "第二主题"},
-            {"series of variations", "变奏组"},
-            {"introduction", "引子"}, {"passages", "若干乐段"},
-            {"simple passage", "简单乐段"},
-            {"passage", "乐段"}, {"theme", "主题"},
-            {"finale", "终曲"}, {"synthesis", "综合部"},
-            {"coda", "尾声"}, {"chorus", "副歌段"},
-            {"verse", "主歌段"},
-        });
-        const std::string value = trim(std::string(raw));
-        for (const auto &[english, chinese] : sections) {
-            if (value == english) return std::string(chinese);
-        }
-        std::string_view remainder(value);
-        std::string modifier;
-        bool consumed = true;
-        while (consumed) {
-            consumed = false;
-            for (const auto &[english, chinese] : std::array<std::pair<
-                     std::string_view, std::string_view>, 3>{{
-                     {"partially realized ", "未完全展开的"},
-                     {"aborted ", "中止的"},
-                     {"next ", "接下来的"},
-                 }}) {
-                if (!remainder.starts_with(english)) continue;
-                remainder.remove_prefix(english.size());
-                modifier += chinese;
-                consumed = true;
-                break;
-            }
-        }
-        if (!modifier.empty()) {
-            for (const auto &[english, chinese] : sections) {
-                if (remainder == english)
-                    return modifier + std::string(chinese);
-            }
-        }
-
-        // A musical form numbers repeated instances of every passage kind,
-        // not just the first/second examples normally encountered on screen.
-        // Dance sections refer back to those generated labels verbatim, so
-        // recognize the ordinal as grammar and the remaining passage kind as
-        // a separately closed vocabulary.
-        const size_t ordinal_end = remainder.find(' ');
-        if (ordinal_end != std::string_view::npos) {
-            const std::string_view raw_ordinal = remainder.substr(0, ordinal_end);
-            std::optional<int> ordinal;
-            if (raw_ordinal.size() > 2) {
-                const std::string_view suffix = raw_ordinal.substr(
-                    raw_ordinal.size() - 2);
-                if (suffix == "st" || suffix == "nd" || suffix == "rd" ||
-                    suffix == "th") {
-                    const std::string_view digits = raw_ordinal.substr(
-                        0, raw_ordinal.size() - 2);
-                    if (!digits.empty() && std::all_of(
-                            digits.begin(), digits.end(), [](unsigned char ch) {
-                                return ch >= '0' && ch <= '9';
-                            })) {
-                        ordinal = parse_int(std::string(digits), -1);
-                    }
-                }
-            }
-            if (!ordinal) {
-                static constexpr auto ordinals = std::to_array<std::pair<
-                    std::string_view, int>>({
-                    {"first", 1}, {"second", 2}, {"third", 3},
-                    {"fourth", 4}, {"fifth", 5}, {"sixth", 6},
-                    {"seventh", 7}, {"eighth", 8}, {"ninth", 9},
-                    {"tenth", 10}, {"eleventh", 11}, {"twelfth", 12},
-                    {"thirteenth", 13}, {"fourteenth", 14},
-                    {"fifteenth", 15}, {"sixteenth", 16},
-                    {"seventeenth", 17}, {"eighteenth", 18},
-                    {"nineteenth", 19}, {"twentieth", 20},
-                    {"thirtieth", 30},
-                });
-                for (const auto &[english, value] : ordinals) {
-                    if (raw_ordinal == english) {
-                        ordinal = value;
-                        break;
-                    }
-                }
-                if (!ordinal) {
-                    const size_t hyphen = raw_ordinal.find('-');
-                    if (hyphen != std::string_view::npos) {
-                        const auto tens = number_value(
-                            raw_ordinal.substr(0, hyphen));
-                        if (tens && *tens >= 20 && *tens % 10 == 0) {
-                            const std::string_view unit =
-                                raw_ordinal.substr(hyphen + 1);
-                            for (const auto &[english, value] : ordinals) {
-                                if (value < 10 && unit == english) {
-                                    ordinal = *tens + value;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            if (ordinal && *ordinal > 0) {
-                const std::string_view kind = remainder.substr(ordinal_end + 1);
-                for (const auto &[english, chinese] : sections) {
-                    if (kind == english) {
-                        return modifier + "第" + chinese_number(*ordinal) +
-                               std::string(chinese);
-                    }
-                }
-            }
-        }
-        return std::nullopt;
-    };
-
-    auto translate_sentence = [&](std::string_view raw_sentence)
-            -> std::optional<std::string> {
-        std::string sentence = trim(std::string(raw_sentence));
-        if (sentence.empty()) return std::string{};
-
-        // Identity: modern descriptions normally carry a generated title;
-        // older productions can begin directly with "A ... dance".
-        constexpr std::string_view origin_marker = " originating in ";
-        constexpr std::string_view performance_origin_marker =
-            " which grew out of the performances of ";
-        size_t origin_at = sentence.find(origin_marker);
-        std::string_view matched_origin_marker = origin_marker;
-        bool performance_origin = false;
-        if (origin_at == std::string::npos) {
-            origin_at = sentence.find(performance_origin_marker);
-            matched_origin_marker = performance_origin_marker;
-            performance_origin = origin_at != std::string::npos;
-        }
-        if (origin_at != std::string::npos) {
-            std::string_view identity(sentence.data(), origin_at);
-            std::string_view raw_origin = std::string_view(sentence).substr(
-                origin_at + matched_origin_marker.size());
-            std::optional<std::string> devised_by;
-            constexpr std::string_view devised_marker =
-                ", originally devised by ";
-            const size_t devised_at = raw_origin.find(devised_marker);
-            if (devised_at != std::string_view::npos) {
-                devised_by = translate_reference(raw_origin.substr(
-                    devised_at + devised_marker.size()));
-                if (!devised_by) return std::nullopt;
-                raw_origin = raw_origin.substr(0, devised_at);
-            }
-            const auto origin = translate_reference(raw_origin);
-            if (!origin) return std::nullopt;
-
-            std::optional<std::string> title;
-            std::string_view dance_identity;
-            constexpr std::string_view anonymous_prefix = "A ";
-            if (identity.starts_with(anonymous_prefix)) {
-                dance_identity = identity.substr(anonymous_prefix.size());
-            } else {
-                const size_t is_a = identity.find(" is a ");
-                if (is_a == std::string_view::npos) return std::nullopt;
-                title = translate_reference(identity.substr(0, is_a));
-                if (!title) return std::nullopt;
-                dance_identity = identity.substr(is_a + 6);
-            }
-            const size_t dance_at = dance_identity.find(" dance");
-            if (dance_at == std::string_view::npos) return std::nullopt;
-            const std::string_view raw_type = dance_identity.substr(0, dance_at);
-            std::string_view participants = trim_view(
-                dance_identity.substr(dance_at + 6));
-            const auto type = translate_dance_type(raw_type);
-            if (!type) return std::nullopt;
-            const std::string provenance = performance_origin
-                ? "，从“" + *origin + "”的表演中发展而来"
-                : "，起源于“" + *origin + "”";
-            std::string result = title
-                ? "“" + *title + "”是一种" + *type + provenance
-                : "这是一种" + *type + provenance;
-            if (!participants.empty()) {
-                if (participants == "for a single pair") {
-                    result += "，由一对舞伴表演";
-                } else {
-                    if (participants.starts_with("for "))
-                        participants.remove_prefix(4);
-                    const size_t space = participants.find(' ');
-                    if (space == std::string_view::npos)
-                        return std::nullopt;
-                    const auto count = translate_count(
-                        participants.substr(0, space));
-                    const std::string_view group = participants.substr(space + 1);
-                    if (!count) return std::nullopt;
-                    if (group == "pairs")
-                        result += "，由" + *count + "对舞伴表演";
-                    else if (group == "dancers")
-                        result += "，由" + *count + "名舞者表演";
-                    else
-                        return std::nullopt;
-                }
-            }
-            if (devised_by) result += "，最初由“" + *devised_by + "”创编";
-            return result;
-        }
-
-        if (sentence ==
-            "The rules of the form are applied by choreographers to produce individual dances which can be performed") {
-            return "编舞者遵循这一舞蹈形式编排作品，再交由舞者表演";
-        }
-        if (sentence ==
-            "The form guides dancers during improvised performances") {
-            return "舞者按这一舞蹈形式即兴表演";
-        }
-
-        if (sentence.starts_with("The dance is accompanied by ")) {
-            std::string_view tail(sentence);
-            tail.remove_prefix(std::string_view(
-                "The dance is accompanied by ").size());
-            std::string_view acted;
-            std::string_view actor;
-            for (const auto &[marker, chinese_actor] : std::array<std::pair<
-                     std::string_view, std::string_view>, 2>{{
-                     {" as the dancer acts out ", "舞者"},
-                     {" as the dancers act out ", "舞者们"},
-                 }}) {
-                const size_t at = tail.find(marker);
-                if (at == std::string_view::npos) continue;
-                acted = tail.substr(at + marker.size());
-                actor = chinese_actor;
-                tail = tail.substr(0, at);
-                break;
-            }
-            std::string accompaniment;
-            constexpr std::string_view composition_prefix =
-                "a composition of ";
-            constexpr std::string_view any_composition_prefix =
-                "any composition of ";
-            if (tail.starts_with(composition_prefix)) {
-                const auto music = translate_reference(
-                    tail.substr(composition_prefix.size()));
-                if (!music) return std::nullopt;
-                accompaniment = "按“" + *music + "”曲式谱写的乐曲";
-            } else if (tail.starts_with(any_composition_prefix)) {
-                const auto music = translate_reference(
-                    tail.substr(any_composition_prefix.size()));
-                if (!music) return std::nullopt;
-                accompaniment = "按“" + *music + "”曲式谱写的任意乐曲";
-            } else {
-                const auto music = translate_reference(tail);
-                if (!music) return std::nullopt;
-                accompaniment = "“" + *music + "”";
-            }
-            std::string result = "以" + accompaniment + "伴舞";
-            if (!acted.empty()) {
-                std::string enacted;
-                constexpr std::string_view story_prefix = "the story of ";
-                if (acted.starts_with(story_prefix)) {
-                    const auto story = translate_reference(
-                        acted.substr(story_prefix.size()));
-                    if (!story) return std::nullopt;
-                    enacted = "“" + *story + "”的故事";
-                } else if (acted.starts_with(composition_prefix)) {
-                    const auto work = translate_reference(
-                        acted.substr(composition_prefix.size()));
-                    if (!work) return std::nullopt;
-                    enacted = "“" + *work + "”的作品";
-                } else {
-                    const auto work = translate_reference(acted);
-                    if (!work) return std::nullopt;
-                    enacted = "“" + *work + "”";
-                }
-                result += "，" + std::string(actor) + "用动作演绎" + enacted;
-            }
-            return result;
-        }
-
-        auto translate_performance = [&](std::string_view raw,
-                                         std::string_view subject)
-                -> std::optional<std::string> {
-            std::string value = trim(std::string(raw));
-            std::string movement;
-            constexpr std::string_view moving_marker = ", moving ";
-            const size_t moving_at = value.find(moving_marker);
-            if (moving_at != std::string::npos) {
-                movement = value.substr(moving_at + moving_marker.size());
-                value.erase(moving_at);
-            }
-            static constexpr auto formations = std::to_array<std::pair<
-                std::string_view, std::string_view>>({
-                {"along a counterclockwise circle", "沿圆圈逆时针行进"},
-                {"along a clockwise circle", "沿圆圈顺时针行进"},
-                {"along an improvised path", "沿即兴选择的路线行进"},
-                {"along an intricate path", "沿复杂的路线行进"},
-                {"turning counterclockwise", "逆时针转动"},
-                {"turning clockwise", "顺时针转动"},
-                {"in a double circle", "围成内外两圈"},
-                {"in several lines", "排成数列"},
-                {"in a single line", "排成一列"},
-                {"loosely mingled", "散开站位，彼此交错"},
-                {"in a circle", "围成一圈"},
-            });
-            std::string result(subject);
-            bool formation_found = value.empty();
-            std::string_view remaining_formation(value);
-            while (!remaining_formation.empty()) {
-                const std::pair<std::string_view, std::string_view> *matched =
-                    nullptr;
-                for (const auto &entry : formations) {
-                    if (!remaining_formation.starts_with(entry.first))
-                        continue;
-                    const size_t end = entry.first.size();
-                    if (end < remaining_formation.size() &&
-                        remaining_formation[end] != ' ') {
-                        continue;
-                    }
-                    if (!matched || entry.first.size() > matched->first.size())
-                        matched = &entry;
-                }
-                if (!matched) break;
-                if (formation_found) result += "，";
-                result += matched->second;
-                formation_found = true;
-                remaining_formation.remove_prefix(matched->first.size());
-                remaining_formation = trim_view(remaining_formation);
-            }
-            // Formation and path are independent generator slots.  They can
-            // therefore be concatenated (`in a single line along an
-            // improvised path`) rather than occurring as one of the isolated
-            // strings above.  Reject only a genuine unconsumed suffix.
-            if (formation_found && !remaining_formation.empty())
-                return std::nullopt;
-
-            auto append_motion = [&](std::string_view raw_motion)
-                    -> std::optional<std::string> {
-                const std::string motion = trim(std::string(raw_motion));
-                static constexpr auto speeds = std::to_array<std::pair<
-                    std::string_view, std::string_view>>({
-                    {"slower and slower with the music", "随音乐逐渐放慢动作"},
-                    {"faster and faster with the music", "随音乐逐渐加快动作"},
-                    {"very slowly with the music", "随音乐缓缓起舞"},
-                    {"very quickly with the music", "随音乐飞快起舞"},
-                    {"slowly with the music", "随音乐缓慢起舞"},
-                    {"quickly with the music", "随音乐快速起舞"},
-                    {"with the music", "随音乐起舞"},
-                });
-                for (const auto &[english, chinese] : speeds) {
-                    if (motion == english) return std::string(chinese);
-                }
-                std::string_view rhythm_marker;
-                size_t rhythm_at = std::string::npos;
-                for (const std::string_view candidate : {
-                         std::string_view(" to the music's "),
-                         std::string_view(" to the "),
-                         std::string_view("to the music's "),
-                         std::string_view("to the "),
-                     }) {
-                    const size_t at = candidate.front() == ' '
-                        ? motion.find(candidate)
-                        : (motion.starts_with(candidate) ? 0
-                                                         : std::string::npos);
-                    if (at == std::string::npos) continue;
-                    rhythm_marker = candidate;
-                    rhythm_at = at;
-                    break;
-                }
-                if (rhythm_at != std::string::npos &&
-                    motion.ends_with(" rhythm")) {
-                    std::string_view speed(motion.data(), rhythm_at);
-                    constexpr std::string_view rhythm_suffix = " rhythm";
-                    std::string_view rhythm(
-                        motion.data() + rhythm_at + rhythm_marker.size(),
-                        motion.size() - rhythm_at - rhythm_marker.size() -
-                            rhythm_suffix.size());
-                    const auto translated_rhythm = translate_reference(rhythm);
-                    if (!translated_rhythm) return std::nullopt;
-                    std::string speed_cn;
-                    if (speed.empty()) speed_cn = "";
-                    else if (speed == "very slowly") speed_cn = "极慢地";
-                    else if (speed == "slowly") speed_cn = "缓慢地";
-                    else if (speed == "slower and slower") speed_cn = "逐渐放慢动作";
-                    else if (speed == "faster and faster") speed_cn = "逐渐加快动作";
-                    else if (speed == "quickly") speed_cn = "快速地";
-                    else if (speed == "very quickly") speed_cn = "极快地";
-                    else return std::nullopt;
-                    return "踏着“" + *translated_rhythm + "”的节奏" +
-                        ((speed == "slower and slower" || speed == "faster and faster")
-                            ? "，" + speed_cn : speed_cn + "起舞");
-                }
-                return std::nullopt;
-            };
-
-            if (!formation_found) {
-                const auto direct_motion = append_motion(value);
-                if (!direct_motion) return std::nullopt;
-                result += *direct_motion;
-            }
-            if (!movement.empty()) {
-                const auto translated_motion = append_motion(movement);
-                if (!translated_motion) return std::nullopt;
-                result += "，" + *translated_motion;
-            }
-            return result;
-        };
-        constexpr std::string_view dancer_performs =
-            "The dancer performs ";
-        if (sentence.starts_with(dancer_performs)) {
-            return translate_performance(
-                std::string_view(sentence).substr(dancer_performs.size()),
-                "舞者");
-        }
-        constexpr std::string_view dancers_perform =
-            "The dancers perform ";
-        if (sentence.starts_with(dancers_perform)) {
-            return translate_performance(
-                std::string_view(sentence).substr(dancers_perform.size()),
-                "舞者们");
-        }
-
-        constexpr std::string_view imitate_prefix =
-            "The dancers imitate the movement of the ";
-        if (sentence.starts_with(imitate_prefix)) {
-            const auto model = translate_reference(
-                std::string_view(sentence).substr(imitate_prefix.size()));
-            if (!model) return std::nullopt;
-            return "舞者们模仿“" + *model + "”的动作";
-        }
-
-        constexpr std::string_view partners_prefix = "The partners ";
-        if (sentence.starts_with(partners_prefix)) {
-            std::string_view tail(sentence);
-            tail.remove_prefix(partners_prefix.size());
-            constexpr std::string_view intent = ", communicating intent ";
-            const size_t intent_at = tail.find(intent);
-            if (intent_at == std::string_view::npos) return std::nullopt;
-            std::string contact;
-            const std::string_view raw_contact = tail.substr(0, intent_at);
-            if (raw_contact == "dance closely") contact = "贴近共舞";
-            else if (raw_contact == "maintain open contact")
-                contact = "保持开式舞姿，身体不贴靠";
-            else if (raw_contact == "rarely make contact")
-                contact = "很少有身体接触";
-            else return std::nullopt;
-            std::string cue = trim(std::string(
-                tail.substr(intent_at + intent.size())));
-            std::string frequency;
-            if (cue.starts_with("constantly ")) {
-                frequency = "持续";
-                cue.erase(0, 11);
-            } else if (cue.starts_with("briefly ")) {
-                frequency = "短暂";
-                cue.erase(0, 8);
-            } else if (cue.ends_with(" constantly")) {
-                frequency = "持续";
-                cue.erase(cue.size() - 11);
-            } else if (cue.ends_with(" briefly")) {
-                frequency = "短暂";
-                cue.erase(cue.size() - 8);
-            }
-            static constexpr auto cues = std::to_array<std::pair<
-                std::string_view, std::string_view>>({
-                {"by pushing together", "通过相互推压"},
-                {"by pulling away", "通过相互拉开"},
-                {"through a light touch", "通过轻触"},
-                {"through visual cues", "通过眼神或动作示意"},
-                {"through spoken cues", "通过口头提示"},
-                {"through touch", "通过触碰"},
-            });
-            for (const auto &[english, chinese] : cues) {
-                if (trim(cue) != english) continue;
-                return "舞伴们" + contact + "，" + frequency +
-                       std::string(chinese) + "提示接下来的动作";
-            }
-            return std::nullopt;
-        }
-
-        constexpr std::string_view partner_changes_prefix =
-            "There are partner changes";
-        if (sentence.starts_with(partner_changes_prefix)) {
-            std::string_view tail(sentence);
-            tail.remove_prefix(partner_changes_prefix.size());
-            constexpr std::string_view throughout_dance =
-                " throughout the dance";
-            if (tail.starts_with(throughout_dance))
-                tail.remove_prefix(throughout_dance.size());
-            std::string result = "舞蹈中会更换舞伴";
-            if (tail.empty()) return result;
-            constexpr std::string_view lead_prefix = " with the lead ";
-            if (!tail.starts_with(lead_prefix)) return std::nullopt;
-            tail.remove_prefix(lead_prefix.size());
-            static constexpr auto changes = std::to_array<std::pair<
-                std::string_view, std::string_view>>({
-                {"advancing against the main line of motion", "逆着队伍的主要行进方向移动"},
-                {"advancing along the main line of motion", "顺着队伍的主要行进方向移动"},
-                {"turning out counterclockwise", "逆时针转出"},
-                {"turning out clockwise", "顺时针转出"},
-            });
-            for (const auto &[english, chinese] : changes) {
-                if (tail == english) return result + "，领舞者" + std::string(chinese);
-            }
-            return std::nullopt;
-        }
-
-        if (sentence.starts_with(
-                "This dance is a refined artform")) {
-            std::string_view tail(sentence);
-            tail.remove_prefix(std::string_view(
-                "This dance is a refined artform").size());
-            if (tail.empty() || tail == ", to be mastered")
-                return "这种舞蹈技巧精细，需要熟练掌握";
-            if (!tail.starts_with(", with ") ||
-                !tail.ends_with(" to be mastered")) {
-                return std::nullopt;
-            }
-            constexpr std::string_view requirements_prefix = ", with ";
-            constexpr std::string_view requirements_suffix =
-                " to be mastered";
-            tail.remove_prefix(requirements_prefix.size());
-            tail.remove_suffix(requirements_suffix.size());
-            std::vector<std::string> requirements;
-            size_t cursor = 0;
-            while (cursor < tail.size()) {
-                const size_t and_at = tail.find(" and ", cursor);
-                const std::string_view item = tail.substr(
-                    cursor, (and_at == std::string_view::npos
-                                 ? tail.size() : and_at) - cursor);
-                const size_t space = item.find(' ');
-                if (space == std::string_view::npos) return std::nullopt;
-                const auto count = translate_count(item.substr(0, space));
-                if (!count) return std::nullopt;
-                const std::string_view kind = item.substr(space + 1);
-                if (kind == "special position" || kind == "special positions")
-                    requirements.push_back(*count + "种特有舞姿");
-                else if (kind == "specific move" || kind == "specific moves")
-                    requirements.push_back(*count + "种特定舞步");
-                else return std::nullopt;
-                if (and_at == std::string_view::npos) break;
-                cursor = and_at + 5;
-            }
-            return "这种舞蹈技巧精细，需要掌握" +
-                   join_chinese(requirements);
-        }
-
-        for (const auto &[prefix, rendered] : std::array<std::pair<
-                 std::string_view, std::string_view>, 4>{{
-                 {"The entire dance has a basic movement called the ",
-                  "整支舞的基本动作称为“"},
-                 {"The entire dance has a basic movement ",
-                  "整支舞的基本动作称为“"},
-                 {"There is a basic movement called the ",
-                  "其中的基本动作称为“"},
-                 {"There is a basic movement ",
-                  "其中的基本动作称为“"},
-             }}) {
-            if (!sentence.starts_with(prefix)) continue;
-            std::string_view raw_name =
-                std::string_view(sentence).substr(prefix.size());
-            if (raw_name.starts_with("the ")) raw_name.remove_prefix(4);
-            const auto name = translate_reference(raw_name);
-            if (!name) return std::nullopt;
-            return std::string(rendered) + *name + "”";
-        }
-
-        if (sentence.starts_with("There is a series of ")) {
-            const auto series = translate_movement(
-                std::string_view(sentence).substr(
-                    std::string_view("There is ").size()));
-            if (!series) return std::nullopt;
-            return "动作包含" + *series;
-        }
-
-        for (const auto &[prefix, beginning] : std::array<std::pair<
-                 std::string_view, bool>, 2>{{
-                 {"The dance begins with the ", true},
-                 {"The dance enters a new section with the ", false},
-             }}) {
-            if (!sentence.starts_with(prefix) ||
-                !sentence.ends_with(" of the music")) continue;
-            constexpr std::string_view music_suffix = " of the music";
-            const std::string_view raw_section = std::string_view(sentence).substr(
-                prefix.size(),
-                sentence.size() - prefix.size() - music_suffix.size());
-            const auto section = translate_music_section(raw_section);
-            if (!section) return std::nullopt;
-            return beginning ? "舞蹈从音乐的" + *section + "开始"
-                             : "音乐进入" + *section + "时，舞蹈也随之进入新一段";
-        }
-
-        // Fundamental move/position identity.  The following sentences in
-        // the same paragraph describe the action itself.
-        for (const auto &[suffix, noun] : std::array<std::pair<
-                 std::string_view, std::string_view>, 6>{{
-                 {" is one of the fundamental dance moves", "基本舞步之一"},
-                 {" is one of the fundamental dance positions", "基本舞姿之一"},
-                 {" is the fundamental dance move", "基本舞步"},
-                 {" is the fundamental dance position", "基本舞姿"},
-                 // DF 53.16's singular productions intentionally omit the
-                 // copula: `The enor the fundamental dance move.`  These are
-                 // distinct generator suffixes, not clipped screen text.
-                 {" the fundamental dance move", "基本舞步"},
-                 {" the fundamental dance position", "基本舞姿"},
-             }}) {
-            if (!sentence.starts_with("The ") || !sentence.ends_with(suffix))
-                continue;
-            const std::string_view raw_name = std::string_view(sentence).substr(
-                4, sentence.size() - 4 - suffix.size());
-            const auto name = translate_reference(raw_name);
-            if (!name) return std::nullopt;
-            return "“" + *name + "”是" + std::string(noun);
-        }
-
-        for (const auto &[prefix, rendered] : std::array<std::pair<
-                 std::string_view, std::string_view>, 11>{{
-                 {"There should be ", "这一舞姿要求："},
-                 {"There is ", "动作包含"},
-                 {"First, there should be ", "首先，"},
-                 {"First, there is ", "首先，"},
-                 {"Then there should be ", "接着，"},
-                 {"Then there is ", "接着，"},
-                 {"Finally, there should be ", "最后，"},
-                 {"Finally, there is ", "最后，"},
-                 {"First, ", "首先，"},
-                 {"Then ", "接着，"},
-                 {"Finally, ", "最后，"},
-             }}) {
-            if (!sentence.starts_with(prefix)) continue;
-            const auto detail = translate_movement_list(
-                std::string_view(sentence).substr(prefix.size()));
-            if (!detail) return std::nullopt;
-            return std::string(rendered) + *detail;
-        }
-
-        // Overall dance/section qualities and their movement accents.
-        struct StyledSubject {
-            std::string_view prefix;
-            std::string_view marker;
-            std::string_view chinese;
-        };
-        static constexpr auto subjects = std::to_array<StyledSubject>({
-            {"This", " section is ", "这一舞段"},
-            {"The", " section is ", "这一舞段"},
-            {"The", " dance is ", "整支舞"},
-            {"This", " dance is ", "整支舞"},
-        });
-        for (const StyledSubject &subject : subjects) {
-            if (!sentence.starts_with(subject.prefix)) continue;
-            const size_t marker_at = sentence.find(subject.marker,
-                                                     subject.prefix.size());
-            if (marker_at == std::string::npos) continue;
-            const std::string_view leading = std::string_view(sentence).substr(
-                subject.prefix.size(), marker_at - subject.prefix.size());
-            std::string_view predicate = std::string_view(sentence).substr(
-                marker_at + subject.marker.size());
-            std::vector<std::string> traits;
-            if (!leading.empty()) {
-                const auto parsed = translate_style_sequence(leading);
-                if (!parsed) return std::nullopt;
-                traits = *parsed;
-            }
-            constexpr std::string_view punctuated = "punctuated by ";
-            if (predicate.starts_with(punctuated)) {
-                const auto details = translate_movement_list(
-                    predicate.substr(punctuated.size()));
-                if (!details) return std::nullopt;
-                std::string result(subject.chinese);
-                if (!traits.empty())
-                    result += "风格" + join_chinese(traits) + "，并";
-                result += "穿插以下动作：" + *details;
-                return result;
-            }
-            if (predicate == "distinct") {
-                std::string result(subject.chinese);
-                if (!traits.empty())
-                    result += "风格" + join_chinese(traits) + "，且";
-                result += "与其他舞段截然不同";
-                return result;
-            }
-            const auto trailing = translate_style_sequence(predicate);
-            if (!trailing) return std::nullopt;
-            traits.insert(traits.end(), trailing->begin(), trailing->end());
-            if (traits.empty()) return std::nullopt;
-            return std::string(subject.chinese) + "风格" +
-                   join_chinese(traits);
-        }
-
-        return std::nullopt;
-    };
-
-    // A dance paragraph must contain a dance-specific semantic landmark.
-    // This keeps the grammar from claiming unrelated prose made only of a
-    // generic "There is ..." movement-looking sentence.
-    const bool looks_dance =
-        source.find(" dance") != std::string::npos ||
-        source.find("The dancer") != std::string::npos ||
-        source.find("The partners") != std::string::npos ||
-        source.find("fundamental dance") != std::string::npos ||
-        source.find(" section is ") != std::string::npos ||
-        source.starts_with("There are partner changes") ||
-        source.starts_with("There is a basic movement");
-    if (!looks_dance) return std::nullopt;
-
-    std::string translated;
-    size_t cursor = 0;
-    while (cursor < source.size()) {
-        while (cursor < source.size() && source[cursor] == ' ') ++cursor;
-        if (cursor >= source.size()) break;
-        const size_t period = source.find('.', cursor);
-        const size_t end = period == std::string::npos ? source.size() : period;
-        const std::string_view sentence = std::string_view(source).substr(
-            cursor, end - cursor);
-        const auto part = translate_sentence(sentence);
-        if (!part) return std::nullopt;
-        if (!part->empty()) {
-            if (!translated.empty()) translated += "。";
-            translated += *part;
-        }
-        if (period == std::string::npos) break;
-        cursor = period + 1;
-    }
-    if (translated.empty()) return std::nullopt;
-    translated += "。";
-    return translated;
-}
+#include "dance_form_descriptions.inc"
 
 // Individual works precede their form's description in the same knowledge
 // document. Resolve complete sentences through the reviewed prose templates:
@@ -17756,9 +14209,11 @@ std::optional<std::string> Overlay::translate_written_work_paragraph(
         std::string_view raw_paragraph) const {
     const std::string source = normalize_utterance(raw_paragraph);
     if (!is_written_work_description(source)) return std::nullopt;
+    const uint64_t source_context = native_identity_translation_context();
+    const std::string cache_key = std::to_string(source_context) + '\x1f' + source;
     const auto cached = std::find_if(written_work_paragraph_cache_.begin(),
         written_work_paragraph_cache_.end(), [&](const auto &entry) {
-            return entry.first == source;
+            return entry.first == cache_key;
         });
     if (cached != written_work_paragraph_cache_.end()) {
         written_work_paragraph_cache_.splice(written_work_paragraph_cache_.begin(),
@@ -17804,9 +14259,11 @@ std::optional<std::string> Overlay::translate_written_work_paragraph(
     // Publish only completed parses. If an enclosing historical translation
     // exhausts its work budget, unwinding must not cache an unfinished miss.
     auto result = translate();
-    written_work_paragraph_cache_.emplace_front(source, result);
-    if (written_work_paragraph_cache_.size() > 64)
-        written_work_paragraph_cache_.pop_back();
+    if (source_context == native_identity_translation_context()) {
+        written_work_paragraph_cache_.emplace_front(cache_key, result);
+        if (written_work_paragraph_cache_.size() > 64)
+            written_work_paragraph_cache_.pop_back();
+    }
     return result;
 }
 
@@ -17814,2595 +14271,8 @@ std::optional<std::string> Overlay::translate_written_work_paragraph(
 // poetic forms. Translate one complete blank-line-delimited paragraph at a
 // time so titles, passages, scales, rhythm systems and notation legends stay
 // atomic instead of degenerating into isolated dictionary matches.
-std::optional<std::string> Overlay::translate_musical_form_paragraph(
-        std::string_view raw_paragraph) const {
-    std::string source;
-    source.reserve(raw_paragraph.size());
-    bool pending_space = false;
-    for (const unsigned char ch : raw_paragraph) {
-        if (std::isspace(ch)) {
-            pending_space = !source.empty();
-            continue;
-        }
-        if (pending_space) source.push_back(' ');
-        pending_space = false;
-        source.push_back(static_cast<char>(ch));
-    }
-    source = trim(std::move(source));
-    for (size_t marker = source.find("[B]"); marker != std::string::npos;
-         marker = source.find("[B]")) {
-        source.erase(marker, 3);
-    }
-    source = trim(std::move(source));
-    if (source.empty()) return std::nullopt;
+#include "musical_form_descriptions.inc"
 
-    auto contains_ascii_letters = [](std::string_view value) {
-        return std::any_of(value.begin(), value.end(), [](unsigned char ch) {
-            return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
-        });
-    };
-    auto translate_reference = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        std::string value = trim(std::string(raw));
-        while (!value.empty() &&
-               (value.back() == '.' || value.back() == ',')) {
-            value.pop_back();
-        }
-        if (value.empty()) return std::nullopt;
-        auto accept = [&](std::optional<std::string> translated)
-                -> std::optional<std::string> {
-            if (!translated || translated->empty() ||
-                contains_ascii_letters(*translated)) {
-                return std::nullopt;
-            }
-            return translated;
-        };
-        if (auto translated = accept(exact_literal_translation(value)))
-            return translated;
-        if (auto translated = accept(translate_compositional(value)))
-            return translated;
-        if (auto translated = accept(translate_procedural_fragment(value)))
-            return translated;
-        return accept(translate_procedural_fragment(value, true));
-    };
-    // Both the form overview and passage voicing can recite a specific work
-    // directly, without `a composition of` or `the words of`. Keep that title
-    // in the existing reference grammar and share the material parsing.
-    auto translate_recited_material = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        if (raw == "nonsensical words and sounds")
-            return "诵念没有具体含义的词句与音节";
-        if (raw.starts_with("a composition of ")) {
-            const auto work = translate_reference(raw.substr(17));
-            if (!work) return std::nullopt;
-            return "吟诵“" + *work + "”体的诗作";
-        }
-        if (raw.starts_with("the words of ")) {
-            const auto work = translate_reference(raw.substr(13));
-            if (!work) return std::nullopt;
-            return "吟诵《" + *work + "》中的词句";
-        }
-        if (raw.starts_with("The ")) {
-            const auto work = translate_reference(raw);
-            if (!work) return std::nullopt;
-            return "吟诵《" + *work + "》";
-        }
-        return std::nullopt;
-    };
-    // Scale degrees, beat names and their spoken abbreviations are words from
-    // the civilization's native language, not English procedural names.  Give
-    // the native-language resolver first refusal for those grammar slots.  In
-    // particular, accented Dwarven words arrive here as single CP437 bytes
-    // (for example g\x95stang/g\x95); trying the ordinary compositional rules
-    // first can reject the whole otherwise valid scale paragraph when such a
-    // byte has no standalone UTF-8 dictionary entry.
-    auto translate_native_reference = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        std::string value = trim(std::string(raw));
-        while (!value.empty() &&
-               (value.back() == '.' || value.back() == ',')) {
-            value.pop_back();
-        }
-        if (value.empty()) return std::nullopt;
-        if (auto translated = translate_procedural_fragment(value, true);
-            translated && !translated->empty() &&
-            !contains_ascii_letters(*translated)) {
-            return translated;
-        }
-        return translate_reference(value);
-    };
-    auto join_chinese = [](const std::vector<std::string> &items,
-                           std::string_view separator = "、") {
-        std::string result;
-        for (size_t index = 0; index < items.size(); ++index) {
-            if (index) result += separator;
-            result += items[index];
-        }
-        return result;
-    };
-    // Generated lists can contain commas inside pronunciation annotations
-    // (`zustash (spoken zu, 1st)`) and can use `as well as` in addition to
-    // ordinary conjunctions.  A delimiter-only split corrupts those semantic
-    // units, after which the enclosing paragraph can no longer be translated
-    // atomically.  Split only at top-level list punctuation.
-    auto split_list = [](std::string_view raw) {
-        std::vector<std::string_view> items;
-        size_t cursor = 0;
-        while (cursor < raw.size()) {
-            while (cursor < raw.size() && raw[cursor] == ' ') ++cursor;
-            for (const std::string_view leading : {
-                     std::string_view("and "), std::string_view("or "),
-                     std::string_view("as well as ")}) {
-                if (raw.substr(cursor).starts_with(leading)) {
-                    cursor += leading.size();
-                    break;
-                }
-            }
-            if (cursor >= raw.size()) break;
-
-            size_t next = raw.size();
-            size_t separator_size = 0;
-            int parentheses = 0;
-            for (size_t at = cursor; at < raw.size(); ++at) {
-                if (raw[at] == '(') {
-                    ++parentheses;
-                    continue;
-                }
-                if (raw[at] == ')') {
-                    parentheses = std::max(0, parentheses - 1);
-                    continue;
-                }
-                if (parentheses != 0) continue;
-                if (raw.substr(at).starts_with(", ")) {
-                    next = at;
-                    separator_size = 2;
-                    break;
-                }
-                for (const std::string_view separator : {
-                         std::string_view(" as well as "),
-                         std::string_view(" and "),
-                         std::string_view(" or ")}) {
-                    if (!raw.substr(at).starts_with(separator)) continue;
-                    next = at;
-                    separator_size = separator.size();
-                    break;
-                }
-                if (separator_size) break;
-            }
-            std::string_view item = raw.substr(cursor, next - cursor);
-            while (!item.empty() && item.front() == ' ') item.remove_prefix(1);
-            while (!item.empty() && item.back() == ' ') item.remove_suffix(1);
-            if (!item.empty()) items.push_back(item);
-            if (next == raw.size()) break;
-            cursor = next + separator_size;
-        }
-        return items;
-    };
-    auto number_value = [](std::string_view raw) -> std::optional<int> {
-        std::string value = lower(trim(std::string(raw)));
-        if (!value.empty() && std::all_of(
-                value.begin(), value.end(), [](unsigned char ch) {
-                    return ch >= '0' && ch <= '9';
-                })) {
-            return parse_int(value, -1);
-        }
-        std::replace(value.begin(), value.end(), '-', ' ');
-        static constexpr auto small = std::to_array<std::pair<
-            std::string_view, int>>({
-            {"zero", 0}, {"one", 1}, {"two", 2}, {"three", 3},
-            {"four", 4}, {"five", 5}, {"six", 6}, {"seven", 7},
-            {"eight", 8}, {"nine", 9}, {"ten", 10}, {"eleven", 11},
-            {"twelve", 12}, {"thirteen", 13}, {"fourteen", 14},
-            {"fifteen", 15}, {"sixteen", 16}, {"seventeen", 17},
-            {"eighteen", 18}, {"nineteen", 19},
-            {"twenty", 20}, {"thirty", 30}, {"forty", 40},
-            {"fifty", 50}, {"sixty", 60}, {"seventy", 70},
-            {"eighty", 80}, {"ninety", 90},
-        });
-        int total = 0;
-        int group = 0;
-        bool found = false;
-        size_t cursor = 0;
-        while (cursor < value.size()) {
-            while (cursor < value.size() && value[cursor] == ' ') ++cursor;
-            if (cursor >= value.size()) break;
-            const size_t end = value.find(' ', cursor);
-            const std::string_view word(value.data() + cursor,
-                (end == std::string::npos ? value.size() : end) - cursor);
-            if (word == "and") {
-                cursor = end == std::string::npos ? value.size() : end + 1;
-                continue;
-            }
-            bool recognized = false;
-            for (const auto &[english, number] : small) {
-                if (word != english) continue;
-                group += number;
-                recognized = true;
-                found = true;
-                break;
-            }
-            if (!recognized && word == "hundred") {
-                group = std::max(1, group) * 100;
-                recognized = found = true;
-            } else if (!recognized && word == "thousand") {
-                total += std::max(1, group) * 1000;
-                group = 0;
-                recognized = found = true;
-            }
-            if (!recognized) return std::nullopt;
-            cursor = end == std::string::npos ? value.size() : end + 1;
-        }
-        if (!found) return std::nullopt;
-        return total + group;
-    };
-    auto chinese_number = [](int value) {
-        static constexpr std::array<std::string_view, 10> digits = {
-            "零", "一", "二", "三", "四", "五", "六", "七", "八", "九",
-        };
-        if (value >= 0 && value < 10)
-            return std::string(digits[static_cast<size_t>(value)]);
-        if (value >= 10 && value < 20)
-            return std::string("十") +
-                (value == 10 ? "" : std::string(digits[value % 10]));
-        if (value >= 20 && value < 100) {
-            std::string result(digits[value / 10]);
-            result += "十";
-            if (value % 10) result += digits[value % 10];
-            return result;
-        }
-        return std::to_string(value);
-    };
-    auto translate_count = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        std::string value = lower(trim(std::string(raw)));
-        if (value == "a" || value == "an" || value == "a single" ||
-            value == "single") return std::string("一");
-        const size_t range = value.find(" to ");
-        if (range != std::string::npos) {
-            const auto first = number_value(value.substr(0, range));
-            const auto last = number_value(value.substr(range + 4));
-            if (!first || !last) return std::nullopt;
-            return chinese_number(*first) + "至" + chinese_number(*last);
-        }
-        if (value.starts_with("up to ")) {
-            const auto count = number_value(value.substr(6));
-            if (!count) return std::nullopt;
-            return "最多" + chinese_number(*count);
-        }
-        const auto count = number_value(value);
-        if (!count) return std::nullopt;
-        return chinese_number(*count);
-    };
-    auto ordinal_value = [&](std::string_view raw) -> std::optional<int> {
-        std::string value = lower(trim(std::string(raw)));
-        if (value.size() > 2) {
-            const std::string suffix = value.substr(value.size() - 2);
-            if (suffix == "st" || suffix == "nd" || suffix == "rd" ||
-                suffix == "th") {
-                const std::string digits = value.substr(0, value.size() - 2);
-                if (!digits.empty() && std::all_of(
-                        digits.begin(), digits.end(), [](unsigned char ch) {
-                            return ch >= '0' && ch <= '9';
-                        })) {
-                    return parse_int(digits, -1);
-                }
-            }
-        }
-        static constexpr auto ordinals = std::to_array<std::pair<
-            std::string_view, int>>({
-            {"first", 1}, {"second", 2}, {"third", 3}, {"fourth", 4},
-            {"fifth", 5}, {"sixth", 6}, {"seventh", 7}, {"eighth", 8},
-            {"ninth", 9}, {"tenth", 10}, {"eleventh", 11},
-            {"twelfth", 12}, {"thirteenth", 13}, {"fourteenth", 14},
-            {"fifteenth", 15}, {"sixteenth", 16}, {"seventeenth", 17},
-            {"eighteenth", 18}, {"nineteenth", 19}, {"twentieth", 20},
-            {"thirtieth", 30}, {"fortieth", 40}, {"fiftieth", 50},
-            {"sixtieth", 60}, {"seventieth", 70}, {"eightieth", 80},
-            {"ninetieth", 90},
-        });
-        for (const auto &[english, number] : ordinals) {
-            if (value == english) return number;
-        }
-        const size_t hyphen = value.find('-');
-        if (hyphen == std::string::npos) return std::nullopt;
-        const auto tens = number_value(value.substr(0, hyphen));
-        if (!tens || *tens < 20 || *tens % 10 != 0) return std::nullopt;
-        for (const auto &[english, number] : ordinals) {
-            if (number < 10 && value.substr(hyphen + 1) == english)
-                return *tens + number;
-        }
-        return std::nullopt;
-    };
-    auto translate_reference_list = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        std::vector<std::string> translated;
-        for (std::string_view item : split_list(raw)) {
-            bool one_item = false;
-            if (item.starts_with("the ")) {
-                item.remove_prefix(4);
-            } else if (item.starts_with("a ")) {
-                item.remove_prefix(2);
-                one_item = true;
-            } else if (item.starts_with("an ")) {
-                item.remove_prefix(3);
-                one_item = true;
-            }
-
-            // Instrument ensembles are emitted as counted references, for
-            // example `one to five r\x84m and a akmesh`.  The count is grammar,
-            // not part of the generated instrument name, so resolve the two
-            // independently and retain both in the Chinese sentence.
-            std::optional<std::string> counted;
-            for (size_t boundary = item.find(' ');
-                 boundary != std::string_view::npos;
-                 boundary = item.find(' ', boundary + 1)) {
-                const auto count = translate_count(item.substr(0, boundary));
-                if (!count) continue;
-                const auto name = translate_native_reference(
-                    item.substr(boundary + 1));
-                if (!name) continue;
-                counted = *count + "件“" + *name + "”";
-            }
-            if (counted) {
-                translated.push_back(std::move(*counted));
-                continue;
-            }
-
-            const auto part = translate_native_reference(item);
-            if (!part) return std::nullopt;
-            translated.push_back((one_item ? "一件“" : "“") + *part + "”");
-        }
-        if (translated.empty()) return std::nullopt;
-        return join_chinese(translated);
-    };
-
-    static constexpr auto qualities = std::to_array<std::pair<
-        std::string_view, std::string_view>>({
-        {"stress the rhythm", "突出节奏"}, {"be stately", "庄严稳重"},
-        {"be bright", "明快"}, {"be lively", "活泼"},
-        {"be made with skill", "讲究演奏技巧"}, {"be vigorous", "刚健有力"},
-        {"be spirited", "昂扬"}, {"be delicate", "细腻"},
-        {"be fiery", "炽烈"}, {"bring a sense of motion", "富有动感"},
-        {"be made with feeling", "饱含感情"}, {"feel agitated", "透出焦躁与不安"},
-        {"be passionate", "热情奔放"}, {"sparkle", "灵动明亮"},
-        {"be broad", "宽广舒展"}, {"be made sweetly", "甜美柔和"},
-        {"be strong", "强劲"}, {"be energetic", "充满活力"},
-        {"be forceful", "气势强劲"}, {"feel heroic", "富有英雄气概"},
-        {"be made expressively", "富有表现力"}, {"feel furious", "狂怒激烈"},
-        {"be joyful", "欢欣"}, {"be grand", "宏伟"},
-        {"be merry", "欢乐"}, {"be graceful", "优雅"},
-        {"build as it proceeds", "渐强"}, {"evoke tears", "催人泪下"},
-        {"be melancholic", "忧郁"}, {"feel mournful", "流露哀伤"},
-        {"be made with a light touch", "轻巧细腻"}, {"feel heavy", "沉重"},
-        {"feel mysterious", "神秘"}, {"be jumpy", "跳跃活泼"},
-        {"feel playful", "俏皮"}, {"feel tender", "温柔"},
-        {"feel calm", "平静"}, {"be triumphant", "洋溢凯旋的喜悦"},
-    });
-    static constexpr auto tempos = std::to_array<std::pair<
-        std::string_view, std::string_view>>({
-        {"is at a free tempo", "采用自由速度"}, {"is very slow", "速度很慢"},
-        {"is slow", "速度缓慢"}, {"is at a walking pace", "速度舒缓，如步行一般"},
-        {"is moderately paced", "速度适中"},
-        {"is moderately fast", "速度中等偏快"}, {"is fast", "速度很快"},
-        {"is very fast", "速度非常快"}, {"is extremely fast", "速度极快"},
-        {"accelerates as it proceeds", "逐渐加快"},
-        {"slows and broadens", "逐渐放慢并舒展"},
-        {"is consistently slowing", "不断放慢"},
-        {"is at a hurried pace", "节奏急促"},
-        {"gradually slows as it comes to an end", "临近结束时渐慢"},
-        {"slows down and dies away as it draws to a close", "收尾时渐慢渐弱，直至无声"},
-        {"becomes calmer as the end is approached", "临近结束时趋于平静"},
-        {"becomes frenzied as it proceeds", "逐渐变得狂乱"},
-        {"is twice the tempo of the last passage", "速度是上一段的两倍"},
-        {"is half the tempo of the last passage", "速度是上一段的一半"},
-        {"moves more quickly than the last passage", "比上一段更快"},
-        {"is slower than the last passage", "比上一段更慢"},
-        {"resumes the previous tempo", "恢复上一段的速度"},
-        {"resumes the original tempo", "恢复最初的速度"},
-    });
-    static constexpr auto dynamics = std::to_array<std::pair<
-        std::string_view, std::string_view>>({
-        {"be in whispered undertones", "轻得如同耳语"},
-        {"be very soft", "以极弱力度演奏"}, {"be soft", "以弱力度演奏"},
-        {"be moderately soft", "以中弱力度演奏"},
-        {"be moderately loud", "以中强力度演奏"}, {"be loud", "以强力度演奏"},
-        {"be very loud", "以极强力度演奏"}, {"become louder and louder", "渐强"},
-        {"become softer and softer", "渐弱"}, {"fade into silence", "渐弱直至无声"},
-        {"start loud then be immediately soft", "开头强奏，随即转弱"},
-    });
-    static constexpr auto phrase_lengths = std::to_array<std::pair<
-        std::string_view, std::string_view>>({
-        {"short phrases", "短乐句"}, {"mid-length phrases", "长度适中的乐句"},
-        {"long phrases", "长乐句"}, {"phrases of varied length", "长短不一的乐句"},
-    });
-    static constexpr auto techniques = std::to_array<std::pair<
-        std::string_view, std::string_view>>({
-        {"glide from note to note", "使用滑音"},
-        {"use grace notes", "使用装饰音"}, {"use mordents", "使用波音"},
-        {"make trills", "使用颤音"}, {"play rapid runs", "奏出快速音群"},
-        {"locally improvise", "局部即兴"}, {"syncopate", "使用切分音"},
-        {"add fills", "加花"}, {"alternate tension and repose", "让乐曲张弛交替"},
-        {"modulate frequently", "频繁转调"}, {"play arpeggios", "演奏琶音"},
-        {"play staccato", "采用断奏"}, {"play legato", "采用连奏"},
-        {"freely adjust the beats", "自由调整节拍"},
-        {"match notes and syllables", "采用一字一音的唱法"},
-        {"spread syllables over many notes", "采用一字多音的唱法"},
-        {"spreads syllables over many notes", "采用一字多音的唱法"},
-        {"build as the performance proceeds", "随着演奏逐步铺陈"},
-        // The passage-detail grammar writes the same techniques as bare
-        // method names after `performed using` instead of as imperative verb
-        // phrases.  Keep both productions in this table so one unfamiliar
-        // grammatical form cannot make the complete knowledge paragraph fall
-        // back to English.
-        {"glides", "滑音"}, {"grace notes", "装饰音"},
-        {"mordents", "波音"}, {"trills", "颤音"},
-        {"rapid runs", "快速音群"}, {"fills", "加花"},
-        {"arpeggios", "琶音"}, {"staccato", "断奏"},
-        {"legato", "连奏"},
-        {"local improvisation", "局部即兴"}, {"locally improvisation", "局部即兴"},
-        {"syncopation", "切分音"}, {"frequent modulation", "频繁转调"},
-        {"free adjustment of the beats", "自由调整节拍"},
-        {"melismatic phrasing", "一字多音的唱法"},
-        {"syllabic phrasing", "一字一音的唱法"},
-        {"alternation between tension and repose", "张弛交替"},
-    });
-    auto lookup_phrase = [](std::string_view raw, const auto &table)
-            -> std::optional<std::string> {
-        const std::string value = trim(std::string(raw));
-        for (const auto &[english, chinese] : table) {
-            if (value == english) return std::string(chinese);
-        }
-        return std::nullopt;
-    };
-    auto translate_technique_list = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        std::vector<std::string> translated;
-        size_t cursor = 0;
-        while (cursor < raw.size()) {
-            while (cursor < raw.size() && raw[cursor] == ' ') ++cursor;
-            bool skipped_separator = true;
-            while (skipped_separator && cursor < raw.size()) {
-                skipped_separator = false;
-                for (const std::string_view separator : {
-                         std::string_view(", "),
-                         std::string_view("and "),
-                         std::string_view("or "),
-                         std::string_view("as well as ")}) {
-                    if (!raw.substr(cursor).starts_with(separator)) continue;
-                    cursor += separator.size();
-                    skipped_separator = true;
-                    break;
-                }
-            }
-            const std::pair<std::string_view, std::string_view> *best = nullptr;
-            for (const auto &entry : techniques) {
-                if (!raw.substr(cursor).starts_with(entry.first)) continue;
-                const size_t end = cursor + entry.first.size();
-                const bool boundary = end == raw.size() ||
-                    raw.substr(end).starts_with(", ") ||
-                    raw.substr(end).starts_with(" and ") ||
-                    raw.substr(end).starts_with(" or ") ||
-                    raw.substr(end).starts_with(" as well as ");
-                if (!boundary) continue;
-                if (!best || entry.first.size() > best->first.size())
-                    best = &entry;
-            }
-            if (!best) return std::nullopt;
-            translated.emplace_back(best->second);
-            cursor += best->first.size();
-        }
-        if (translated.empty()) return std::nullopt;
-        return join_chinese(translated);
-    };
-    auto translate_register = [](std::string_view raw)
-            -> std::optional<std::string> {
-        const std::string value = trim(std::string(raw));
-        static constexpr auto registers = std::to_array<std::pair<
-            std::string_view, std::string_view>>({
-            {"extremely low", "极低"}, {"very low", "超低"},
-            {"mid-low", "中低"}, {"middle", "中"},
-            {"mid-high", "中高"}, {"very high", "超高"},
-            {"extremely high", "极高"},
-            {"lowest", "最低"}, {"low", "低"}, {"high", "高"},
-            {"highest", "最高"}, {"top", "最高"},
-            {"low-middle", "中低"},
-            {"middle-high", "中高"},
-        });
-        for (const auto &[english, chinese] : registers) {
-            if (value == english) return std::string(chinese) + "音区";
-        }
-
-        // Vocal registers may be prefixed by any combination of the complete
-        // instrument-timbre vocabulary (`raspy high`, `clear warm low`, ...).
-        // Those words describe the sound of the register and must not be fed
-        // into the generated-name transliterator.  Resolve every timbre and
-        // the pitch band independently so the entire register remains
-        // semantic Chinese for every generated musical form.
-        static constexpr auto timbres = std::to_array<std::pair<
-            std::string_view, std::string_view>>({
-            {"clear", "清澈"}, {"noisy", "嘈杂"}, {"full", "饱满"},
-            {"thin", "单薄"}, {"round", "圆润"}, {"sharp", "锐利"},
-            {"smooth", "柔顺"}, {"choppy", "断续"}, {"steady", "稳定"},
-            {"evolving", "渐变"}, {"strong", "强劲"}, {"delicate", "细腻"},
-            {"bright", "明亮"}, {"graceful", "优雅"}, {"sparse", "疏淡"},
-            {"breathy", "带气声"}, {"strained", "紧绷"}, {"broad", "宽广"},
-            {"light", "轻盈"}, {"mellow", "柔和"}, {"wobbling", "摇曳"},
-            {"focused", "凝聚"}, {"even", "均匀"}, {"fluid", "流畅"},
-            {"vibrating", "振颤"}, {"quavering", "颤抖"}, {"eerie", "诡异"},
-            {"fragile", "纤弱"}, {"brittle", "清脆"}, {"pure", "纯净"},
-            {"piercing", "穿透力强"}, {"strident", "尖锐"},
-            {"wavering", "摇曳"}, {"harsh", "粗粝"}, {"reedy", "带簧管音色"},
-            {"nasal", "鼻音浓重"}, {"buzzy", "带嗡鸣声"}, {"rough", "粗糙"},
-            {"warm", "温润"}, {"rugged", "粗犷"}, {"heavy", "厚重"},
-            {"flat", "平淡"}, {"dark", "低沉"}, {"crisp", "爽脆"},
-            {"sonorous", "洪亮"}, {"watery", "水声般清润"}, {"gentle", "柔和"},
-            {"slicing", "锐利"}, {"liquid", "流动如水"},
-            {"raucous", "沙哑刺耳"}, {"breezy", "轻快"}, {"raspy", "沙哑"},
-            {"wispy", "轻柔飘渺"}, {"shrill", "尖厉"}, {"muddy", "浑浊"},
-            {"rich", "浑厚"}, {"dull", "沉闷"}, {"floating", "飘逸"},
-            {"ringing", "清亮"}, {"resonant", "共鸣饱满"},
-            {"sweet", "甜美"}, {"rippling", "起伏"},
-            {"sparkling", "清亮灵动"},
-        });
-        for (const auto &[register_name, register_cn] : registers) {
-            const std::string suffix = " " + std::string(register_name);
-            if (!value.ends_with(suffix)) continue;
-            const std::string_view raw_timbres(value.data(),
-                                                value.size() - suffix.size());
-            std::vector<std::string_view> translated_timbres;
-            size_t cursor = 0;
-            while (cursor < raw_timbres.size()) {
-                const size_t end = raw_timbres.find(' ', cursor);
-                const std::string_view word = raw_timbres.substr(
-                    cursor, (end == std::string_view::npos
-                                 ? raw_timbres.size() : end) - cursor);
-                const auto found = std::find_if(
-                    timbres.begin(), timbres.end(), [word](const auto &entry) {
-                        return entry.first == word;
-                    });
-                if (found == timbres.end()) return std::nullopt;
-                translated_timbres.push_back(found->second);
-                if (end == std::string_view::npos) break;
-                cursor = end + 1;
-            }
-            if (translated_timbres.empty()) return std::nullopt;
-            std::string result;
-            for (size_t index = 0; index < translated_timbres.size(); ++index) {
-                if (index) result += "、";
-                result += translated_timbres[index];
-            }
-            return std::string(register_cn) + "音区（" + result + "）";
-        }
-        return std::nullopt;
-    };
-    auto translate_subject = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        std::string value = trim(std::string(raw));
-        if (value == "The music" || value == "the music") return "音乐";
-        if (value == "The entire performance" || value == "the entire performance")
-            return "全曲";
-        if (value == "The melody") return "主旋律";
-        if (value == "The counterpoint melody") return "对位旋律";
-        if (value == "The melody and counterpoint") return "主旋律与对位旋律";
-        if (value == "The musical voices") return "各声部";
-        if (value == "The singer" || value == "the singer") return "歌者";
-        if (value == "The speaker" || value == "the speaker") return "朗诵者";
-        if (value == "The chanter" || value == "the chanter") return "吟唱者";
-        if (value == "The voice" || value == "the voice") return "人声";
-        if (value == "The passage") return "本段";
-        bool each_of = false;
-        if (value.starts_with("Each of the ")) {
-            each_of = true;
-            value.erase(0, 12);
-        } else if (value.starts_with("each of the ")) {
-            each_of = true;
-            value.erase(0, 12);
-        } else if (value == "Each passage" || value == "each passage") {
-            return "每个乐段";
-        }
-        if (value.starts_with("The ")) value.erase(0, 4);
-        else if (value.starts_with("the ")) value.erase(0, 4);
-        static constexpr auto passages = std::to_array<std::pair<
-            std::string_view, std::string_view>>({
-            {"chorus", "副歌段"}, {"verse", "主歌段"},
-            {"introduction", "引子"}, {"coda", "尾声"},
-            {"exposition", "呈示部"}, {"recapitulation", "再现部"},
-            {"synthesis", "综合部"}, {"theme", "主题段"},
-            {"first theme", "第一主题段"},
-            {"second theme", "第二主题段"},
-            {"first exposition", "第一呈示部"},
-            {"second exposition", "第二呈示部"},
-            {"first recapitulation", "第一再现部"},
-            {"second recapitulation", "第二再现部"},
-            {"first bridge-passage", "第一过渡段"},
-            {"second bridge-passage", "第二过渡段"},
-            {"first synthesis", "第一综合部"},
-            {"second synthesis", "第二综合部"},
-            {"exposition of the theme", "主题呈示部"},
-            {"exposition of the first theme", "第一主题呈示部"},
-            {"exposition of the second theme", "第二主题呈示部"},
-            {"exposition of the previous passage", "前一乐段呈示部"},
-            {"recapitulation of the theme", "主题再现部"},
-            {"recapitulation of the first theme", "第一主题再现部"},
-            {"recapitulation of the second theme", "第二主题再现部"},
-            {"recapitulation of the previous passage", "前一乐段再现部"},
-            {"synthesis of the two themes", "双主题综合部"},
-            {"synthesis of previous passages", "前述乐段综合部"},
-            {"series of variations", "变奏组"},
-            {"series of variations on the theme", "主题变奏组"},
-            {"series of variations on the first theme", "第一主题变奏组"},
-            {"series of variations on the second theme", "第二主题变奏组"},
-            {"bridge-passage", "过渡段"}, {"finale", "终曲"},
-            {"simple passage", "简单乐段"}, {"passage", "乐段"},
-            {"first passage", "第一乐段"},
-            {"second passage", "第二乐段"},
-            {"first simple passage", "第一个简单乐段"},
-            {"second simple passage", "第二个简单乐段"},
-            {"choruses", "副歌段"}, {"verses", "主歌段"},
-            {"introductions", "引子"}, {"codas", "尾声"},
-            {"expositions", "呈示部"},
-            {"recapitulations", "再现部"},
-            {"syntheses", "综合部"},
-            {"themes", "主题段"}, {"bridge-passages", "过渡段"},
-            {"finales", "终曲"}, {"simple passages", "简单乐段"},
-            {"unrelated passages", "彼此独立的乐段"},
-            {"passages", "乐段"},
-        });
-        for (const auto &[english, chinese] : passages) {
-            if (value != english) continue;
-            return each_of ? "每个" + std::string(chinese)
-                           : std::string(chinese);
-        }
-        // Repeated passage kinds are numbered productively (`first verse`,
-        // `third chorus`, ...).  Do not enumerate only the examples seen in a
-        // world: split any English/numeric ordinal from every known passage
-        // kind generated by this version.
-        const size_t ordinal_end = value.find(' ');
-        if (ordinal_end != std::string::npos) {
-            const auto ordinal = ordinal_value(
-                std::string_view(value).substr(0, ordinal_end));
-            if (ordinal) {
-                const std::string_view kind =
-                    std::string_view(value).substr(ordinal_end + 1);
-                for (const auto &[english, chinese] : passages) {
-                    if (kind != english) continue;
-                    return each_of
-                        ? "第" + chinese_number(*ordinal) +
-                              "组中的每个" + std::string(chinese)
-                        : "第" + chinese_number(*ordinal) +
-                              std::string(chinese);
-                }
-            }
-        }
-        return std::nullopt;
-    };
-    auto translate_voice_subject = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        if (const auto fixed = translate_subject(raw)) return fixed;
-        if (raw.find(", and it") != std::string_view::npos ||
-            raw.find(" should ") != std::string_view::npos ||
-            raw.find(" is to ") != std::string_view::npos) {
-            return std::nullopt;
-        }
-        std::string value = trim(std::string(raw));
-        bool each = false;
-        if (value.starts_with("Each of the ")) {
-            each = true;
-            value.erase(0, 12);
-        } else if (value.starts_with("each of the ")) {
-            each = true;
-            value.erase(0, 12);
-        } else if (value.starts_with("Each ")) {
-            each = true;
-            value.erase(0, 5);
-        } else if (value.starts_with("each ")) {
-            each = true;
-            value.erase(0, 5);
-        } else if (value.starts_with("The ")) {
-            value.erase(0, 4);
-        } else if (value.starts_with("the ")) {
-            value.erase(0, 4);
-        }
-        if (value == "singers")
-            return std::string(each ? "每名歌者" : "所有歌者");
-        if (value == "speakers")
-            return std::string(each ? "每名朗诵者" : "所有朗诵者");
-        if (value == "chanters")
-            return std::string(each ? "每名吟唱者" : "所有吟唱者");
-        if (value == "chanter")
-            return std::string(each ? "每名吟唱者" : "吟唱者");
-        if (value == "singer")
-            return std::string(each ? "每名歌者" : "歌者");
-        if (value == "speaker")
-            return std::string(each ? "每名朗诵者" : "朗诵者");
-        if (value == "voices")
-            return std::string(each ? "每个声部" : "各声部");
-        if (value.ends_with(" voices")) value.erase(value.size() - 7);
-        else if (value.ends_with(" voice")) value.erase(value.size() - 6);
-        value = trim(std::move(value));
-        if (value.ends_with("'s")) value.erase(value.size() - 2);
-        else if (value.ends_with("s'")) value.erase(value.size() - 1);
-        if (value == "chanter")
-            return std::string(each ? "每名吟唱者" : "吟唱者");
-        if (value == "chanters")
-            return std::string(each ? "每名吟唱者" : "所有吟唱者");
-        if (value == "singer")
-            return std::string(each ? "每名歌者" : "歌者");
-        if (value == "singers")
-            return std::string(each ? "每名歌者" : "所有歌者");
-        if (value == "speaker")
-            return std::string(each ? "每名朗诵者" : "朗诵者");
-        if (value == "speakers")
-            return std::string(each ? "每名朗诵者" : "所有朗诵者");
-        const auto name = translate_reference_list(value);
-        if (!name) return std::nullopt;
-        return (each ? "每个" : "") + *name + "声部";
-    };
-
-    // Several passage templates put more than one independently generated
-    // voice range in a single sentence (notably the finale template). Keep a
-    // reusable one-clause parser here so the enclosing scope can translate
-    // every voice instead of rejecting the complete paragraph after the
-    // first `... register and ...` boundary.
-    auto translate_voice_range_clause = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        std::string_view clause = trim_view(raw);
-        std::string context;
-        for (const auto &[suffix, chinese] : std::to_array<std::pair<
-                 std::string_view, std::string_view>>({
-                 {" in the melody", "演奏主旋律时，"},
-                 {" in the counterpoint melody", "演奏对位旋律时，"},
-                 {" in the melody and counterpoint", "演奏主旋律和对位旋律时，"},
-                 {" in each of the melody and counterpoint", "演奏主旋律和对位旋律时，"},
-                 {" in both melody and counterpoint", "演奏主旋律和对位旋律时，"},
-             })) {
-            if (!clause.ends_with(suffix)) continue;
-            context = chinese;
-            clause.remove_suffix(suffix.size());
-            break;
-        }
-        struct RangeRule {
-            std::string_view marker;
-            bool entire;
-            bool confined;
-        };
-        static constexpr auto rules = std::to_array<RangeRule>({
-            {" covers its entire range", true, false},
-            {" uses its entire range", true, false},
-            {" stays in the ", false, true},
-            {" is confined to the ", false, true},
-            {" ranges from the ", false, false},
-        });
-        for (const auto &rule : rules) {
-            const size_t at = clause.find(rule.marker);
-            if (at == std::string_view::npos) continue;
-            const auto subject = translate_voice_subject(clause.substr(0, at));
-            if (!subject) return std::nullopt;
-            std::string_view tail = clause.substr(at + rule.marker.size());
-            if (rule.entire) {
-                if (tail.empty()) return context + *subject + "使用全部音域";
-                if (!tail.starts_with(" from the ")) return std::nullopt;
-                tail.remove_prefix(std::string_view(" from the ").size());
-            }
-            constexpr std::string_view terminal = " register";
-            if (!tail.ends_with(terminal)) return std::nullopt;
-            tail.remove_suffix(terminal.size());
-            constexpr std::string_view to_marker = " register to the ";
-            const size_t to = tail.find(to_marker);
-            if (to == std::string_view::npos) {
-                if (!rule.confined) return std::nullopt;
-                const auto band = translate_register(tail);
-                if (!band) return std::nullopt;
-                return context + *subject + "只使用" + *band;
-            }
-            const auto low = translate_register(tail.substr(0, to));
-            const auto high = translate_register(tail.substr(to + to_marker.size()));
-            if (!low || !high) return std::nullopt;
-            return context + *subject +
-                (rule.entire ? "使用全部音域：" :
-                 rule.confined ? "只使用" : "的音域为") + *low + "至" + *high;
-        }
-        return std::nullopt;
-    };
-
-    auto translate_voice_range_assignments = [&](std::string_view raw)
-            -> std::optional<std::vector<std::string>> {
-        std::vector<std::string> assignments;
-        while (!raw.empty()) {
-            size_t separator = std::string_view::npos;
-            size_t separator_size = 0;
-            size_t clause_terminal_size = 0;
-            for (const auto &[candidate, terminal] : std::array<std::pair<
-                     std::string_view, std::string_view>, 4>{{
-                     {" register, ", " register"},
-                     {" register and ", " register"},
-                     {" entire range, ", " entire range"},
-                     {" entire range and ", " entire range"},
-                 }}) {
-                const size_t at = raw.find(candidate);
-                if (at == std::string_view::npos ||
-                    (separator != std::string_view::npos && at >= separator)) {
-                    continue;
-                }
-                separator = at;
-                separator_size = candidate.size();
-                clause_terminal_size = terminal.size();
-            }
-            const std::string_view clause = separator == std::string_view::npos
-                ? raw : raw.substr(0, separator +
-                    clause_terminal_size);
-            const auto translated = translate_voice_range_clause(clause);
-            if (!translated) return std::nullopt;
-            assignments.push_back(*translated);
-            if (separator == std::string_view::npos) break;
-            raw.remove_prefix(separator + separator_size);
-        }
-        if (assignments.empty()) return std::nullopt;
-        return assignments;
-    };
-
-    // Melodic-contour instructions are assembled from independent frequency,
-    // contour, altered-degree, direction and technique slots.  A passage can
-    // contain several of them in one sentence, for example:
-    // `sometimes include a rising-falling melody pattern with flattened
-    // third degree on the fall as well as legato and always include ...`.
-    // Parse those slots instead of enumerating whole observed sentences.
-    auto translate_melody_pattern_instructions = [&](std::string_view raw)
-            -> std::optional<std::string> {
-        std::vector<std::string> directives;
-        raw = trim_view(raw);
-        while (!raw.empty()) {
-            std::string frequency;
-            if (raw.starts_with("sometimes include a ")) {
-                frequency = "不时";
-                raw.remove_prefix(
-                    std::string_view("sometimes include a ").size());
-            } else if (raw.starts_with("often include a ")) {
-                frequency = "经常";
-                raw.remove_prefix(
-                    std::string_view("often include a ").size());
-            } else if (raw.starts_with("always include a ")) {
-                frequency = "始终";
-                raw.remove_prefix(
-                    std::string_view("always include a ").size());
-            } else if (raw.starts_with("include a ")) {
-                raw.remove_prefix(std::string_view("include a ").size());
-            } else {
-                return std::nullopt;
-            }
-
-            size_t next = std::string_view::npos;
-            size_t separator_size = 0;
-            // Only a separator followed by another directive ends this
-            // pattern. Commas/and inside its technique or degree list stay
-            // with the pattern, including lists of three or more directives.
-            for (const std::string_view separator : {", and ", ", ", " and "}) {
-                for (const std::string_view prefix : {
-                         "always include a ", "sometimes include a ",
-                         "often include a ", "include a ",
-                     }) {
-                    const size_t at = raw.find(std::string(separator) +
-                                               std::string(prefix));
-                    if (at != std::string_view::npos &&
-                        (next == std::string_view::npos || at < next)) {
-                        next = at;
-                        separator_size = separator.size();
-                    }
-                }
-            }
-            std::string_view clause = trim_view(raw.substr(0, next));
-            raw = next == std::string_view::npos
-                ? std::string_view{}
-                : trim_view(raw.substr(next + separator_size));
-
-            constexpr std::string_view pattern_marker = " melody pattern";
-            const size_t pattern_at = clause.find(pattern_marker);
-            if (pattern_at == std::string_view::npos) return std::nullopt;
-            const std::string_view contour = clause.substr(0, pattern_at);
-            std::string contour_cn;
-            if (contour == "rising-falling") contour_cn = "先升后降";
-            else if (contour == "falling-rising") contour_cn = "先降后升";
-            else if (contour == "rising") contour_cn = "上行";
-            else if (contour == "falling") contour_cn = "下行";
-            else return std::nullopt;
-
-            std::string_view tail = trim_view(
-                clause.substr(pattern_at + pattern_marker.size()));
-            // Without an altered scale degree, DF joins the same technique
-            // list directly with `with`, including its internal conjunctions.
-            std::optional<std::string> techniques_cn;
-            if (tail.starts_with("with ")) {
-                techniques_cn = translate_technique_list(tail.substr(5));
-                if (techniques_cn) tail = {};
-            }
-            std::string_view technique_text;
-            constexpr std::string_view technique_marker = " as well as ";
-            const size_t technique_at = tail.find(technique_marker);
-            if (technique_at != std::string_view::npos) {
-                technique_text = trim_view(tail.substr(
-                    technique_at + technique_marker.size()));
-                tail = trim_view(tail.substr(0, technique_at));
-            }
-
-            std::vector<std::string> alterations;
-            if (!tail.empty()) {
-                if (!tail.starts_with("with ")) return std::nullopt;
-                tail.remove_prefix(5);
-                // Each altered degree owns its optional rise/fall qualifier;
-                // a pattern can alter several degrees in either direction.
-                for (std::string_view item : split_list(tail)) {
-                    std::string direction;
-                    if (item.ends_with(" on the rise")) {
-                        direction = "上行";
-                        item.remove_suffix(std::string_view(" on the rise").size());
-                    } else if (item.ends_with(" on the fall")) {
-                        direction = "下行";
-                        item.remove_suffix(std::string_view(" on the fall").size());
-                    }
-                    if (!item.ends_with(" degree")) return std::nullopt;
-                    item.remove_suffix(std::string_view(" degree").size());
-                    const size_t space = item.find(' ');
-                    if (space == std::string_view::npos) return std::nullopt;
-                    const std::string_view accidental = item.substr(0, space);
-                    const auto degree = ordinal_value(item.substr(space + 1));
-                    if (!degree) return std::nullopt;
-                    std::string alteration;
-                    if (accidental == "sharpened") alteration = "升高";
-                    else if (accidental == "flattened") alteration = "降低";
-                    else return std::nullopt;
-                    alteration += "第" + chinese_number(*degree) + "级音";
-                    if (!direction.empty())
-                        alteration = "在" + direction + "时" + alteration;
-                    alterations.push_back(std::move(alteration));
-                }
-                if (alterations.empty()) return std::nullopt;
-            }
-
-            std::string directive = frequency + "采用" + contour_cn +
-                                    "的旋律型";
-            if (!alterations.empty())
-                directive += "，" + join_chinese(alterations, "，");
-            if (!technique_text.empty()) {
-                techniques_cn = translate_technique_list(technique_text);
-                if (!techniques_cn) return std::nullopt;
-            }
-            if (techniques_cn) directive += "，并使用" + *techniques_cn;
-            directives.push_back(std::move(directive));
-        }
-        if (directives.empty()) return std::nullopt;
-        return "应" + join_chinese(directives, "，并应");
-    };
-
-    auto translate_sentence = [&](std::string_view raw_sentence)
-            -> std::optional<std::string> {
-        std::string sentence = trim(std::string(raw_sentence));
-        if (sentence.starts_with("[B]")) sentence.erase(0, 3);
-        sentence = trim(std::move(sentence));
-        if (sentence.starts_with("As always, the "))
-            sentence = "The " + sentence.substr(15);
-        if (sentence.empty()) return std::string{};
-
-        // Identity and purpose of the complete musical form.
-        static constexpr std::string_view origin_marker = " originating in ";
-        const size_t origin_at = sentence.find(origin_marker);
-        if (origin_at != std::string::npos) {
-            const std::string_view identity(sentence.data(), origin_at);
-            const auto origin = translate_reference(
-                std::string_view(sentence).substr(origin_at + origin_marker.size()));
-            if (!origin) return std::nullopt;
-            struct Identity { std::string_view marker; std::string_view chinese; };
-            static constexpr auto identities = std::to_array<Identity>({
-                {" is a form of music used for entertainment", "娱乐音乐"},
-                {" is a form of music used during marches and military engagements",
-                 "行军与作战时使用的军乐"},
-                {" is a form of music used to commemorate important events",
-                 "纪念重大事件的音乐"},
-                {" is a devotional form of music", "宗教礼乐"},
-            });
-            for (const Identity &entry : identities) {
-                const size_t at = identity.find(entry.marker);
-                if (at == std::string_view::npos) continue;
-                const auto title = translate_reference(identity.substr(0, at));
-                if (!title) return std::nullopt;
-                std::string tail = trim(std::string(
-                    identity.substr(at + entry.marker.size())));
-                if (!tail.empty() && tail.front() == ',') {
-                    tail.erase(0, 1);
-                    tail = trim(std::move(tail));
-                }
-                std::string result = "“" + *title + "”是一种" +
-                                     std::string(entry.chinese) +
-                                     "，起源于“" + *origin + "”";
-                if (!tail.empty()) {
-                    constexpr std::string_view worship_without_leading_space =
-                        "directed toward the worship of ";
-                    const std::string_view normalized_tail = tail;
-                    if (!normalized_tail.starts_with(
-                            worship_without_leading_space)) {
-                        return std::nullopt;
-                    }
-                    const auto deity = translate_reference(
-                        normalized_tail.substr(
-                            worship_without_leading_space.size()));
-                    if (!deity) return std::nullopt;
-                    result += "，用于敬拜“" + *deity + "”";
-                }
-                return result;
-            }
-        }
-
-        if (sentence ==
-            "The rules of the form are applied by composers to produce individual pieces of music which can be performed") {
-            return "作曲者遵循这一曲式谱曲，再交由乐手演奏";
-        }
-        if (sentence ==
-            "The form guides musicians during improvised performances") {
-            return "乐手按这一曲式即兴演奏";
-        }
-
-        // Spoken or sung material accompanying the music.  Besides the two
-        // generic roles, the generator can put a named vocal instrument here
-        // (`A chanter recites ...`).  Parse the actor slot instead of limiting
-        // the whole production to two captured literals.
-        {
-            size_t recites_at = sentence.find(" recites ");
-            size_t recite_size = 9;
-            if (recites_at == std::string::npos) {
-                recites_at = sentence.find(" recite ");
-                recite_size = 8;
-            }
-            if (recites_at != std::string::npos) {
-                std::string_view raw_actor = std::string_view(sentence).substr(
-                    0, recites_at);
-                std::optional<std::string> actor;
-                if (raw_actor == "A singer") actor = "一名歌者";
-                else if (raw_actor == "A speaker") actor = "一名朗诵者";
-                else if (raw_actor == "A chanter") actor = "一名吟唱者";
-                else {
-                    // The final word is the role; the complete preceding
-                    // phrase is its count (`One to four speakers`,
-                    // `Twenty one singers`, `up to three chanters`). Splitting
-                    // at the first space misreads ranges as native names.
-                    const size_t actor_space = raw_actor.rfind(' ');
-                    if (actor_space != std::string_view::npos) {
-                        const std::string_view role =
-                            raw_actor.substr(actor_space + 1);
-                        if (role == "singer" || role == "singers" ||
-                            role == "speaker" || role == "speakers" ||
-                            role == "chanter" || role == "chanters") {
-                            const auto count = translate_count(
-                                raw_actor.substr(0, actor_space));
-                            if (!count) return std::nullopt;
-                            if (role == "singer" || role == "singers")
-                                actor = *count + "名歌者";
-                            else if (role == "speaker" || role == "speakers")
-                                actor = *count + "名朗诵者";
-                            else actor = *count + "名吟唱者";
-                        }
-                    }
-                    if (!actor) {
-                        std::string_view named_actor = raw_actor;
-                        if (named_actor.starts_with("A "))
-                            named_actor.remove_prefix(2);
-                        const auto named =
-                            translate_native_reference(named_actor);
-                        if (named) actor = "“" + *named + "”声部";
-                    }
-                }
-                if (!actor) return std::nullopt;
-
-                const std::string_view tail = std::string_view(sentence).substr(
-                    recites_at + recite_size);
-                constexpr std::string_view accompaniment =
-                    " while the music is played on ";
-                const size_t while_at = tail.find(accompaniment);
-                const auto material = translate_recited_material(
-                    tail.substr(0, while_at));
-                if (!material) return std::nullopt;
-                std::string result = *actor + *material;
-                if (while_at != std::string_view::npos) {
-                    const auto instruments = translate_reference_list(tail.substr(
-                        while_at + accompaniment.size()));
-                    if (!instruments) return std::nullopt;
-                    result += "，伴奏乐器为" + *instruments;
-                }
-                return result;
-            }
-        }
-
-        if (sentence == "Only one pitch is ever played at a time")
-            return "每次只奏一个音，不叠加其他音";
-        if (sentence == "Never more than an interval sounds at once" ||
-            sentence == "Never more Than an interval sounds at once")
-            return "最多同时奏两个音";
-        if (sentence ==
-            "Chords, seldom-used, are sparse -- intervals and single pitches are favored")
-            return "以单音和双音为主，只偶尔使用和弦";
-        if (sentence ==
-            "Pitches are densely packed in clusters as music moves from chord to chord")
-            return "和弦接连变换，密集的音符交织成音簇";
-        if (sentence ==
-            "The music is broadly layered with chords spanning the range")
-            return "和弦遍布各个音区，层次丰富";
-        if (sentence == "The music repeats for as long as necessary")
-            return "乐曲可按需要反复演奏";
-        if (sentence == "The musical voices are purely rhythmic")
-            return "各声部只负责节奏";
-
-        if (sentence.starts_with("The music is played on ")) {
-            const auto instruments = translate_reference_list(
-                std::string_view(sentence).substr(
-                    std::string_view("The music is played on ").size()));
-            if (!instruments) return std::nullopt;
-            return "演奏乐器为" + *instruments;
-        }
-
-        // Texture of the musical voices; the generator may prefix All/Several.
-        const size_t voices_at = sentence.find(" voices ");
-        if (voices_at != std::string::npos) {
-            const std::string_view raw_voice_group =
-                std::string_view(sentence).substr(0, voices_at);
-            if (raw_voice_group == "The musical" ||
-                raw_voice_group == "All musical" ||
-                raw_voice_group == "Several musical") {
-                const std::string_view predicate =
-                    std::string_view(sentence).substr(
-                        voices_at + std::string_view(" voices ").size());
-                static constexpr auto voice_textures = std::to_array<std::pair<
-                    std::string_view, std::string_view>>({
-                    {"join in melody and counterpoint, harmony and rhythm",
-                     "分别负责主旋律、对位旋律、和声与节奏"},
-                    {"bring melody, counterpoint and rhythm", "分别负责主旋律、对位旋律与节奏"},
-                    {"cover melody, harmony and rhythm", "分别负责主旋律、和声与节奏"},
-                    {"join in melody, counterpoint and harmony", "分别负责主旋律、对位旋律与和声"},
-                    {"bring melody and counterpoint", "分别负责主旋律与对位旋律"},
-                    {"bring melody with harmony", "以和声衬托主旋律"},
-                    {"are joined in melody", "共同奏出主旋律"},
-                });
-                for (const auto &[english, chinese] : voice_textures) {
-                    if (predicate == english)
-                        return std::string(raw_voice_group == "Several musical"
-                            ? "部分声部" : "各声部") +
-                               std::string(chinese);
-                }
-            }
-        }
-        if (sentence == "The music is melody and rhythm without harmony")
-            return "音乐只包含旋律与节奏，不使用和声";
-
-        // Tempo and expressive character.
-        for (const auto &[prefix, subject] : std::array<std::pair<
-                 std::string_view, std::string_view>, 2>{{
-                 {"The entire performance ", "全曲"},
-                 {"The passage ", "本段"},
-             }}) {
-            if (!sentence.starts_with(prefix)) continue;
-            const std::string_view predicate = std::string_view(sentence).substr(prefix.size());
-            if (const auto tempo = lookup_phrase(predicate, tempos))
-                return std::string(subject) + *tempo;
-            if (predicate.starts_with("should ")) {
-                if (const auto quality = lookup_phrase(predicate.substr(7), qualities))
-                    return std::string(subject) + "应" + *quality;
-                if (const auto dynamic = lookup_phrase(predicate.substr(7), dynamics))
-                    return std::string(subject) + "应" + *dynamic;
-            }
-        }
-
-        // A passage can combine its tempo and dynamics in one generated
-        // sentence, for example "The finale is very fast, and it is to fade
-        // into silence".  Parse both clauses atomically so the row never
-        // falls back to a mixture of translated terms and English prose.
-        constexpr std::string_view tempo_dynamic_marker = ", and it is to ";
-        const size_t tempo_dynamic_at = sentence.find(tempo_dynamic_marker);
-        if (tempo_dynamic_at != std::string::npos) {
-            const std::string_view tempo_clause(sentence.data(),
-                                                 tempo_dynamic_at);
-            const std::string_view dynamic_clause =
-                std::string_view(sentence).substr(
-                    tempo_dynamic_at + tempo_dynamic_marker.size());
-            const auto dynamic = lookup_phrase(dynamic_clause, dynamics);
-            if (dynamic) {
-                for (const auto &[english, chinese] : tempos) {
-                    const std::string suffix = " " + std::string(english);
-                    if (!tempo_clause.ends_with(suffix)) continue;
-                    const auto subject = translate_subject(
-                        tempo_clause.substr(
-                            0, tempo_clause.size() - suffix.size()));
-                    if (subject) {
-                        return *subject + std::string(chinese) + "；" +
-                               *dynamic;
-                    }
-                }
-            }
-        }
-
-        // Phrase lengths in melody/counterpoint.
-        if (sentence.starts_with("The melody has ")) {
-            std::string_view tail(sentence);
-            tail.remove_prefix(std::string_view("The melody has ").size());
-            static constexpr std::string_view throughout = " throughout the form";
-            if (tail.ends_with(throughout)) tail.remove_suffix(throughout.size());
-            const size_t counterpoint = tail.find(", while the counterpoint has ");
-            if (counterpoint != std::string_view::npos) {
-                const auto first = lookup_phrase(tail.substr(0, counterpoint), phrase_lengths);
-                const auto second = lookup_phrase(tail.substr(
-                    counterpoint + std::string_view(", while the counterpoint has ").size()),
-                    phrase_lengths);
-                if (!first || !second) return std::nullopt;
-                return "主旋律采用" + *first + "，对位旋律采用" + *second;
-            }
-            const auto length = lookup_phrase(tail, phrase_lengths);
-            if (length) return "全曲主旋律采用" + *length;
-        }
-        if (sentence.starts_with("The counterpoint melody has ")) {
-            std::string_view tail(sentence);
-            tail.remove_prefix(std::string_view("The counterpoint melody has ").size());
-            if (tail.ends_with(" throughout the form"))
-                tail.remove_suffix(std::string_view(" throughout the form").size());
-            const auto length = lookup_phrase(tail, phrase_lengths);
-            if (length) return "全曲对位旋律采用" + *length;
-        }
-        if (sentence.starts_with("The melody and counterpoint both have ")) {
-            std::string_view tail(sentence);
-            tail.remove_prefix(std::string_view(
-                "The melody and counterpoint both have ").size());
-            if (tail.ends_with(" throughout the form"))
-                tail.remove_suffix(std::string_view(" throughout the form").size());
-            const auto length = lookup_phrase(tail, phrase_lengths);
-            if (length) return "全曲主旋律与对位旋律均采用" + *length;
-        }
-
-        // Scale/rhythm selected for the whole form or an individual passage.
-        // Named and numbered passages use the same predicate as `It` and
-        // `The passage`; share the established passage-subject vocabulary so
-        // an introduction, chorus or verse cannot reject the whole document.
-        for (const std::string_view marker : {
-                 " is performed ", " are performed "}) {
-            const size_t performed_at = sentence.find(marker);
-            if (performed_at == std::string::npos) continue;
-            const std::string_view raw_subject =
-                std::string_view(sentence).substr(0, performed_at);
-            std::string result;
-            if (raw_subject == "It") {
-                result = "演奏时";
-            } else if (const auto subject = translate_subject(raw_subject)) {
-                result = *subject + "演奏时";
-            } else {
-                continue;
-            }
-            std::string_view tail = std::string_view(sentence).substr(
-                performed_at + marker.size());
-            if (tail == "in free rhythm")
-                return result + "采用自由节奏";
-            if (tail.starts_with("in ") && tail.ends_with(" rhythm")) {
-                tail.remove_prefix(3);
-                tail.remove_suffix(7);
-                if (tail.starts_with("the ")) tail.remove_prefix(4);
-                const auto rhythm = translate_native_reference(tail);
-                if (!rhythm) return std::nullopt;
-                return result + "采用“" + *rhythm + "”节奏";
-            }
-            if (tail.starts_with("without preference for a scale")) {
-                tail.remove_prefix(std::string_view("without preference for a scale").size());
-                result += "不限定音阶";
-            } else if (tail.starts_with("using the ")) {
-                tail.remove_prefix(10);
-                const size_t scale_at = tail.find(" scale");
-                if (scale_at == std::string_view::npos) return std::nullopt;
-                const auto scale = translate_native_reference(
-                    tail.substr(0, scale_at));
-                if (!scale) return std::nullopt;
-                result += "采用“" + *scale + "”音阶";
-                tail.remove_prefix(scale_at + 6);
-            } else return std::nullopt;
-            if (tail.starts_with(" and in ")) {
-                tail.remove_prefix(8);
-                if (tail == "free rhythm") {
-                    result += "，节奏自由";
-                    tail = {};
-                } else if (tail.ends_with(" rhythm")) {
-                    tail.remove_suffix(7);
-                    if (tail.starts_with("the ")) tail.remove_prefix(4);
-                    const auto rhythm = translate_native_reference(tail);
-                    if (!rhythm) return std::nullopt;
-                    result += "，节奏采用“" + *rhythm + "”";
-                    tail = {};
-                } else return std::nullopt;
-            }
-            if (!tail.empty()) return std::nullopt;
-            return result;
-        }
-
-        for (const auto &[prefix, subject] : std::array<std::pair<
-                 std::string_view, std::string_view>, 2>{{
-                 {"Throughout, when possible, composers and performers are to ",
-                  "创作和演奏整首乐曲时，应尽量"},
-                 {"Throughout, when possible, performers are to ",
-                  "演奏整首乐曲时，应尽量"},
-             }}) {
-            if (!sentence.starts_with(prefix)) continue;
-            const auto list = translate_technique_list(
-                std::string_view(sentence).substr(prefix.size()));
-            if (!list) return std::nullopt;
-            return std::string(subject) + *list;
-        }
-        if (sentence.starts_with("From beginning to end, when improvising")) {
-            const size_t should_at = sentence.find(", artists should ");
-            if (should_at == std::string::npos) return std::nullopt;
-            const std::string_view prelude =
-                std::string_view(sentence).substr(0, should_at);
-            const bool composing =
-                prelude == "From beginning to end, when improvising or composing";
-            if (!composing &&
-                prelude != "From beginning to end, when improvising") {
-                return std::nullopt;
-            }
-            std::string_view actions =
-                std::string_view(sentence).substr(should_at + 17);
-            if (const auto list = translate_technique_list(actions))
-                return std::string(composing ? "即兴演奏或作曲时，" : "即兴演奏时，") +
-                       "全曲都应" + *list;
-            if (const auto patterns =
-                    translate_melody_pattern_instructions(actions)) {
-                return std::string(composing ? "即兴演奏或作曲时，" : "即兴演奏时，") +
-                       "全曲" + *patterns;
-            }
-            bool sometimes = false;
-            if (actions.starts_with("sometimes ")) {
-                sometimes = true;
-                actions.remove_prefix(10);
-            }
-            const size_t include_at = actions.find("include a ");
-            const size_t pattern_at = actions.find(" melody pattern");
-            if (include_at != 0 ||
-                pattern_at == std::string_view::npos ||
-                pattern_at <= include_at + 10) {
-                return std::nullopt;
-            }
-            const std::string_view pattern = actions.substr(
-                include_at + 10, pattern_at - include_at - 10);
-            std::string pattern_cn;
-            if (pattern == "rising-falling") pattern_cn = "先升后降";
-            else if (pattern == "falling-rising") pattern_cn = "先降后升";
-            else return std::nullopt;
-            std::string result = composing ? "即兴演奏或作曲时，全曲应" :
-                                             "即兴演奏时，全曲应";
-            if (sometimes) result += "不时";
-            result += "采用" + pattern_cn + "的旋律型";
-            std::string_view tail = actions.substr(
-                pattern_at + std::string_view(" melody pattern").size());
-            bool glides = false;
-            if (tail.ends_with(" as well as glides")) {
-                glides = true;
-                tail.remove_suffix(
-                    std::string_view(" as well as glides").size());
-            }
-            std::string_view direction;
-            if (tail.ends_with(" on the rise")) {
-                direction = "上行";
-                tail.remove_suffix(std::string_view(" on the rise").size());
-            } else if (tail.ends_with(" on the fall")) {
-                direction = "下行";
-                tail.remove_suffix(std::string_view(" on the fall").size());
-            }
-            tail = trim_view(tail);
-            while (!tail.empty() &&
-                   (tail.front() == ',' || tail.front() == ';')) {
-                tail.remove_prefix(1);
-                tail = trim_view(tail);
-            }
-            if (!tail.empty()) {
-                std::optional<int> degree;
-                bool sharpened = false;
-                bool degree_word = false;
-                size_t cursor = 0;
-                while (cursor < tail.size()) {
-                    while (cursor < tail.size() &&
-                           (tail[cursor] == ' ' || tail[cursor] == ',')) {
-                        ++cursor;
-                    }
-                    if (cursor >= tail.size()) break;
-                    const size_t end = tail.find_first_of(" ,", cursor);
-                    const std::string_view token = tail.substr(
-                        cursor, (end == std::string_view::npos
-                                     ? tail.size() : end) - cursor);
-                    if (token == "sharpened") sharpened = true;
-                    else if (token == "degree") degree_word = true;
-                    else if (token != "with" && token != "the" &&
-                             token != "a" && token != "and") {
-                        const auto ordinal = ordinal_value(token);
-                        if (!ordinal || degree) return std::nullopt;
-                        degree = ordinal;
-                    }
-                    if (end == std::string_view::npos) break;
-                    cursor = end + 1;
-                }
-                if (!sharpened || !degree_word || !degree)
-                    return std::nullopt;
-                result += "，并升高第" + chinese_number(*degree) + "级音";
-                if (!direction.empty())
-                    result += "（" + std::string(direction) + "时）";
-            } else if (!direction.empty()) {
-                return std::nullopt;
-            }
-            if (glides)
-                result += "，同时使用滑音";
-            return result;
-        }
-
-        // Individual voice/instrument responsibilities.
-        const size_t always_at = sentence.find(" always ");
-        const std::string_view always_subject = always_at == std::string::npos
-            ? std::string_view{}
-            : std::string_view(sentence).substr(0, always_at);
-        const bool has_voice_subject =
-            sentence.starts_with("Each ") ||
-            sentence.starts_with("each ") ||
-            sentence.starts_with("The ") ||
-            sentence.starts_with("the ");
-        // `always` also occurs inside passage-level instructions such as
-        // `The passage should sometimes include ... and always include ...`.
-        // Those are not voice duties and must reach the passage grammar below
-        // instead of being consumed by this earlier, deliberately broad slot.
-        // Search the complete sentence: in `should always include ...`, the
-        // subject slice ends at `should` and omits its trailing word boundary.
-        const bool is_passage_instruction =
-            sentence.find(" should ") < always_at ||
-            sentence.find(" include ") < always_at;
-        if (always_at != std::string::npos && has_voice_subject &&
-            !is_passage_instruction) {
-            const std::string_view raw_subject = always_subject;
-            std::string translated_subject;
-            if (const auto fixed = translate_voice_subject(raw_subject)) {
-                translated_subject = *fixed;
-            } else return std::nullopt;
-            const std::string_view predicate = std::string_view(sentence).substr(always_at + 8);
-            static constexpr auto roles = std::to_array<std::pair<
-                std::string_view, std::string_view>>({
-                {"does the main melody", "始终负责主旋律"},
-                {"does the counterpoint melody", "始终负责对位旋律"},
-                {"does harmony", "始终负责和声"},
-                {"provides the rhythm", "始终负责节奏"},
-            });
-            for (const auto &[english, chinese] : roles) {
-                if (predicate == english) return translated_subject +
-                                                std::string(chinese);
-            }
-            // A voice can have one permanent role followed by one or more
-            // playing techniques ("does the main melody and plays
-            // arpeggios"). Translate the complete predicate rather than
-            // allowing the instrument name alone to be replaced.
-            static constexpr auto role_actions = std::to_array<std::pair<
-                std::string_view, std::string_view>>({
-                {"does the main melody", "负责主旋律"},
-                {"does the counterpoint melody", "负责对位旋律"},
-                {"does harmony", "负责和声"},
-                {"provides the rhythm", "负责节奏"},
-            });
-            static constexpr auto voice_styles = std::to_array<std::pair<
-                std::string_view, std::string_view>>({
-                {"perform with skill", "娴熟地演奏"},
-                {"perform with feeling", "饱含感情地演奏"},
-                {"perform sweetly", "奏出甜美柔和的音色"},
-                {"perform expressively", "富有表现力地演奏"},
-                {"perform with a light touch", "轻巧细腻地演奏"},
-                {"glides from note to note", "使用滑音"},
-                {"uses grace notes", "使用装饰音"},
-                {"uses mordents", "使用波音"},
-                {"makes trills", "使用颤音"},
-                {"plays rapid runs", "奏出快速音群"},
-                {"locally improvises", "进行局部即兴"},
-                {"syncopates", "使用切分音"},
-                {"adds fills", "加花"},
-                {"modulates frequently", "频繁转调"},
-                {"plays arpeggios", "演奏琶音"},
-                {"plays staccato", "采用断奏"},
-                {"plays legato", "采用连奏"},
-                {"matches notes and syllables", "采用一字一音的唱法"},
-                {"should perform with skill", "应娴熟地演奏"},
-                {"should perform with feeling", "应饱含感情地演奏"},
-                {"should perform sweetly", "应奏出甜美柔和的音色"},
-                {"should perform expressively", "应富有表现力地演奏"},
-                {"should perform with a light touch", "应轻巧细腻地演奏"},
-            });
-            std::vector<std::string> actions;
-            size_t action_cursor = 0;
-            while (action_cursor < predicate.size()) {
-                while (action_cursor < predicate.size() &&
-                       predicate[action_cursor] == ' ') ++action_cursor;
-                for (const std::string_view separator : {
-                         std::string_view(", "), std::string_view("and "),
-                         std::string_view("or "),
-                         std::string_view("as well as ")}) {
-                    if (!predicate.substr(action_cursor).starts_with(separator))
-                        continue;
-                    action_cursor += separator.size();
-                    break;
-                }
-                size_t best_length = 0;
-                std::string best_translation;
-                auto consider = [&](std::string_view english,
-                                    std::string_view chinese) {
-                    if (!predicate.substr(action_cursor).starts_with(english))
-                        return;
-                    const size_t end = action_cursor + english.size();
-                    const bool boundary = end == predicate.size() ||
-                        predicate.substr(end).starts_with(", ") ||
-                        predicate.substr(end).starts_with(" and ") ||
-                        predicate.substr(end).starts_with(" or ") ||
-                        predicate.substr(end).starts_with(" as well as ");
-                    if (!boundary || english.size() <= best_length) return;
-                    best_length = english.size();
-                    best_translation = chinese;
-                };
-                for (const auto &[english, chinese] : role_actions)
-                    consider(english, chinese);
-                for (const auto &[english, chinese] : voice_styles)
-                    consider(english, chinese);
-                // The generator may append a dynamic or playing instruction
-                // to a permanent role with `and is to ...`.  Treat `is to`
-                // as grammar and reuse every closed action vocabulary rather
-                // than special-casing only the observed fade/loud examples.
-                for (const auto &[english, chinese] : dynamics)
-                    consider("is to " + std::string(english),
-                             "应" + std::string(chinese));
-                for (const auto &[english, chinese] : qualities)
-                    consider("is to " + std::string(english),
-                             "应" + std::string(chinese));
-                for (const auto &[english, chinese] : voice_styles)
-                    consider("is to " + std::string(english),
-                             "应" + std::string(chinese));
-                for (const auto &[english, chinese] : qualities)
-                    consider("should " + std::string(english),
-                             "应" + std::string(chinese));
-                for (const auto &[english, chinese] : dynamics)
-                    consider("should " + std::string(english),
-                             "应" + std::string(chinese));
-                // Voice instructions also use the shared technique grammar,
-                // notably `should build as the performance proceeds` followed
-                // by `and is to be very loud`. Keep the established wording
-                // and consume the full technique before the next action.
-                for (const auto &[english, chinese] : techniques) {
-                    consider("should " + std::string(english),
-                             "应" + std::string(chinese));
-                    consider("is to " + std::string(english),
-                             "应" + std::string(chinese));
-                }
-                if (best_length == 0) return std::nullopt;
-                actions.push_back(std::move(best_translation));
-                action_cursor += best_length;
-                }
-            if (!actions.empty())
-                return translated_subject + "始终" +
-                       join_chinese(actions, "，并");
-        }
-        const size_t is_to = sentence.find(" is to ");
-        if (is_to != std::string::npos &&
-            sentence.find(", and it is to ") == std::string::npos) {
-            std::string_view raw_subject(sentence.data(), is_to);
-            std::string translated_subject;
-            if (const auto fixed = translate_voice_subject(raw_subject)) {
-                translated_subject = *fixed;
-            }
-            if (!translated_subject.empty()) {
-                std::string_view action = std::string_view(sentence).substr(is_to + 7);
-                if (const auto dynamic = lookup_phrase(action, dynamics)) {
-                    return translated_subject + *dynamic;
-                }
-                if (const auto quality = lookup_phrase(action, qualities)) {
-                    return translated_subject + "应" + *quality;
-                }
-                if (const auto technique = lookup_phrase(action, techniques)) {
-                    return translated_subject + "应" + *technique;
-                }
-                static constexpr auto performance_styles = std::to_array<
-                    std::pair<std::string_view, std::string_view>>({
-                    {"perform with skill", "娴熟地演奏"},
-                    {"perform with feeling", "饱含感情地演奏"},
-                    {"perform sweetly", "奏出甜美柔和的音色"},
-                    {"perform expressively", "富有表现力地演奏"},
-                    {"perform with a light touch", "轻巧细腻地演奏"},
-                    {"glides from note to note", "使用滑音"},
-                    {"uses grace notes", "使用装饰音"},
-                    {"uses mordents", "使用波音"},
-                    {"makes trills", "使用颤音"},
-                    {"plays rapid runs", "奏出快速音群"},
-                    {"locally improvises", "进行局部即兴"},
-                    {"syncopates", "使用切分音"},
-                    {"adds fills", "加花"},
-                    {"modulates frequently", "频繁转调"},
-                    {"plays arpeggios", "演奏琶音"},
-                    {"plays staccato", "采用断奏"},
-                    {"plays legato", "采用连奏"},
-                    {"matches notes and syllables", "采用一字一音的唱法"},
-                });
-                if (const auto translated_action =
-                        lookup_phrase(action, performance_styles)) {
-                    return translated_subject + *translated_action;
-                }
-            }
-        }
-
-        constexpr std::string_view spreads_syllables =
-            " spreads syllables over many notes";
-        if (sentence.ends_with(spreads_syllables)) {
-            const auto subject = translate_voice_subject(
-                std::string_view(sentence).substr(
-                    0, sentence.size() - spreads_syllables.size()));
-            if (subject) return *subject + "采用一字多音的唱法";
-        }
-
-        // Both standalone and coordinated ranges use the same prose. A
-        // passage scope belongs before the entire list, not to a voice name.
-        if (sentence.starts_with("In the ") || sentence.starts_with("In each ")) {
-            const bool each_scope = sentence.starts_with("In each ");
-            const size_t scope_prefix = each_scope ? 8 : 7;
-            const size_t comma = sentence.find(", ");
-            if (comma != std::string::npos) {
-                const auto scope = translate_subject(
-                    std::string(each_scope ? "Each of the " : "The ") +
-                    sentence.substr(scope_prefix, comma - scope_prefix));
-                const auto assignments = translate_voice_range_assignments(
-                    std::string_view(sentence).substr(comma + 2));
-                if (scope && assignments)
-                    return *scope + "中，" + join_chinese(*assignments, "；");
-            }
-        } else if (const auto assignments =
-                       translate_voice_range_assignments(sentence)) {
-            return join_chinese(*assignments, "；");
-        }
-
-        // Overall form structure.
-        for (const std::string_view marker : {
-                 std::string_view(" has the following structure: "),
-                 std::string_view(" has a well-defined multi-passage structure: "),
-                 std::string_view(" has a simple structure: "),
-             }) {
-            const size_t at = sentence.find(marker);
-            if (at == std::string::npos) continue;
-            const auto title = translate_reference(
-                std::string_view(sentence).substr(0, at));
-            if (!title) return std::nullopt;
-            std::string_view body = std::string_view(sentence).substr(at + marker.size());
-            std::string_view repeat_count;
-            std::string_view trailing_body;
-            bool repeated = false;
-            bool optional_repeat = false;
-            size_t repeated_at = body.find(" possibly all repeated");
-            size_t repeated_marker_size = 22;
-            if (repeated_at != std::string_view::npos) {
-                repeated = true;
-                optional_repeat = true;
-            } else {
-                repeated_at = body.find(" all repeated");
-                repeated_marker_size = 13;
-                repeated = repeated_at != std::string_view::npos;
-            }
-            if (repeated) {
-                std::string_view after_repeat = body.substr(
-                    repeated_at + repeated_marker_size);
-                body = body.substr(0, repeated_at);
-                if (after_repeat.starts_with(" "))
-                    after_repeat.remove_prefix(1);
-                // A repeat count does not necessarily end the structure.
-                // DF can append another comma-separated sequence, e.g.
-                // `all repeated one times, a bridge-passage, ...`. Parse the
-                // count and the continuation independently instead of
-                // requiring `times` to be the final word of the sentence.
-                const size_t times_at = after_repeat.find(" times");
-                if (times_at != std::string_view::npos) {
-                    repeat_count = trim_view(
-                        after_repeat.substr(0, times_at));
-                    after_repeat.remove_prefix(times_at + 6);
-                    if (after_repeat.starts_with(", "))
-                        trailing_body = after_repeat.substr(2);
-                    else if (after_repeat.starts_with(" and "))
-                        trailing_body = after_repeat.substr(5);
-                    else if (!after_repeat.empty())
-                        return std::nullopt;
-                } else if (after_repeat.starts_with("and ")) {
-                    trailing_body = after_repeat.substr(4);
-                } else if (after_repeat.starts_with(", ")) {
-                    // A repeat group can be followed directly by another
-                    // comma-separated passage sequence without an explicit
-                    // repeat count.
-                    trailing_body = after_repeat.substr(2);
-                } else if (!after_repeat.empty()) {
-                    return std::nullopt;
-                }
-            }
-            auto translate_passage_list = [&](std::string_view raw_body)
-                    -> std::optional<std::vector<std::string>> {
-                std::vector<std::string> passages;
-                for (std::string_view item : split_list(raw_body)) {
-                std::string value = trim(std::string(item));
-                std::string prefix;
-                for (const auto &[english, chinese] : std::array<std::pair<
-                         std::string_view, std::string_view>, 10>{{
-                         {"an additional ", "另加"}, {"another ", "另加"},
-                         {"possibly ", "可能出现的"}, {"a lengthy ", "较长的"},
-                         {"a brief ", "简短的"}, {"a second ", "第二个"},
-                         {"an unrelated ", "独立的"}, {"an ", ""},
-                         {"the ", ""}, {"a ", ""},
-                     }}) {
-                    if (!value.starts_with(english)) continue;
-                    value.erase(0, english.size());
-                    prefix = chinese;
-                    break;
-                }
-                // Structure modifiers can be stacked after a grouping prefix,
-                // as in `another one to two lengthy passages`.  Resolve the
-                // adjective independently so cardinality parsing sees the
-                // actual passage noun instead of `lengthy passages`.
-                std::string quality;
-                for (const auto &[english, chinese] : std::array<std::pair<
-                         std::string_view, std::string_view>, 3>{{
-                         {"lengthy ", "较长的"},
-                         {"brief ", "简短的"},
-                         {"unrelated ", "彼此独立的"},
-                     }}) {
-                    const size_t modifier = value.find(english);
-                    if (modifier == std::string::npos) continue;
-                    value.erase(modifier, english.size());
-                    quality = chinese;
-                    break;
-                }
-                auto passage = translate_subject(value);
-                if (!passage) {
-                    // A structure slot can carry a numeric range or a fixed
-                    // count (`one to two passages`, `three unrelated
-                    // passages`).  Counts belong to the slot cardinality,
-                    // while the remaining phrase names the passage kind.
-                    for (size_t boundary = value.find(' ');
-                         boundary != std::string::npos;
-                         boundary = value.find(' ', boundary + 1)) {
-                        const auto count = translate_count(
-                            std::string_view(value).substr(0, boundary));
-                        if (!count) continue;
-                        const auto kind = translate_subject(
-                            value.substr(boundary + 1));
-                        if (!kind) continue;
-                        passage = *count + "个" + quality + *kind;
-                        quality.clear();
-                    }
-                }
-                if (!passage) return std::nullopt;
-                passages.push_back(prefix + quality + *passage);
-                }
-                if (passages.empty()) return std::nullopt;
-                return passages;
-            };
-            const auto passages = translate_passage_list(body);
-            if (!passages) return std::nullopt;
-            std::optional<std::vector<std::string>> trailing_passages;
-            if (!trailing_body.empty()) {
-                trailing_passages = translate_passage_list(trailing_body);
-                if (!trailing_passages) return std::nullopt;
-            }
-            std::string result = "“" + *title + "”的段落依次为：" +
-                                 join_chinese(*passages);
-            if (repeated) {
-                if (!repeat_count.empty()) {
-                    const auto count = translate_count(repeat_count);
-                    if (!count) return std::nullopt;
-                    result += (optional_repeat ? "，以上部分可整体重复" : "，以上部分整体重复") +
-                              *count + "次";
-                } else {
-                    result += optional_repeat
-                        ? "，上述部分可整体重复"
-                        : "，上述部分整体重复";
-                }
-            }
-            if (trailing_passages) {
-                result += "，随后进入" + join_chinese(*trailing_passages);
-            }
-            return result;
-        }
-        const size_t voiced = sentence.find(" is voiced by ");
-        if (voiced != std::string::npos) {
-            const auto translated_group = translate_subject(
-                std::string_view(sentence).substr(0, voiced));
-            if (!translated_group) return std::nullopt;
-            const std::string_view tail =
-                std::string_view(sentence).substr(voiced + 14);
-
-            // A voicing entry begins with a role assignment, or with a bare
-            // reciter.  Generated composition titles can themselves contain
-            // `and`, so the ordinary English-list splitter is not valid for
-            // this production.  Locate only separators followed by another
-            // legal voicing entry; this preserves the complete embedded
-            // title and also handles vocalists used as melody/rhythm voices.
-            static constexpr auto voicing_entry_prefixes =
-                std::to_array<std::string_view>({
-                    "the melody of the ", "the counterpoint of the ",
-                    "the harmony of the ", "the rhythm of the ",
-                });
-            // Vocalists can voice a passage without naming recited material
-            // or an explicit melody/rhythm duty (`the speakers`). Share the
-            // bare roles between list boundaries and assignment translation.
-            static constexpr auto bare_vocalists =
-                std::to_array<std::pair<std::string_view, std::string_view>>({
-                    {"speaker", "朗诵者负责朗诵"},
-                    {"speakers", "朗诵者负责朗诵"},
-                    {"chanter", "吟唱者负责吟唱"},
-                    {"chanters", "吟唱者负责吟唱"},
-                    {"singer", "歌者负责演唱"},
-                    {"singers", "歌者负责演唱"},
-                });
-            // Use the same singular/plural reciter slots both to delimit
-            // assignments and to translate them. Otherwise `and the speakers
-            // reciting ...` is swallowed into the preceding instrument name.
-            static constexpr auto reciter_prefixes =
-                std::to_array<std::pair<std::string_view, std::string_view>>({
-                    {"speaker reciting ", "朗诵者"},
-                    {"speakers reciting ", "朗诵者"},
-                    {"chanter reciting ", "吟唱者"},
-                    {"chanters reciting ", "吟唱者"},
-                    {"singer reciting ", "歌者"},
-                    {"singers reciting ", "歌者"},
-                });
-            auto begins_voicing_entry = [&](std::string_view value) {
-                if (std::any_of(
-                    voicing_entry_prefixes.begin(),
-                    voicing_entry_prefixes.end(),
-                    [&](std::string_view prefix) {
-                        return value.starts_with(prefix);
-                    })) return true;
-                if (!value.starts_with("the ")) return false;
-                value.remove_prefix(4);
-                for (const auto &[role, chinese] : bare_vocalists) {
-                    if (!value.starts_with(role)) continue;
-                    const std::string_view rest = value.substr(role.size());
-                    if (rest.empty() || rest.starts_with(", ") ||
-                        rest.starts_with(" and ")) return true;
-                }
-                return std::any_of(reciter_prefixes.begin(),
-                    reciter_prefixes.end(), [&](const auto &entry) {
-                        return value.starts_with(entry.first);
-                    });
-            };
-            if (!begins_voicing_entry(tail)) return std::nullopt;
-            std::vector<std::string_view> raw_voicings;
-            size_t item_start = 0;
-            while (item_start < tail.size()) {
-                size_t item_end = tail.size();
-                size_t next_start = tail.size();
-                for (size_t at = item_start; at < tail.size(); ++at) {
-                    size_t separator_size = 0;
-                    if (tail.substr(at).starts_with(", ")) {
-                        separator_size = 2;
-                    } else if (tail.substr(at).starts_with(" and ")) {
-                        separator_size = 5;
-                    }
-                    if (separator_size == 0 ||
-                        !begins_voicing_entry(
-                            tail.substr(at + separator_size))) {
-                        continue;
-                    }
-                    item_end = at;
-                    next_start = at + separator_size;
-                    break;
-                }
-                const std::string_view item = trim_view(
-                    tail.substr(item_start, item_end - item_start));
-                if (item.empty()) return std::nullopt;
-                raw_voicings.push_back(item);
-                if (item_end == tail.size()) break;
-                item_start = next_start;
-            }
-
-            auto translate_recitation = [&](std::string_view raw)
-                    -> std::optional<std::string> {
-                if (raw.starts_with("the ")) raw.remove_prefix(4);
-                std::string_view actor;
-                for (const auto &[prefix, chinese] : reciter_prefixes) {
-                    if (!raw.starts_with(prefix)) continue;
-                    actor = chinese;
-                    raw.remove_prefix(prefix.size());
-                    break;
-                }
-                if (actor.empty()) return std::nullopt;
-                const auto material = translate_recited_material(raw);
-                if (!material) return std::nullopt;
-                return std::string(actor) + *material;
-            };
-
-            std::vector<std::string> assignments;
-            for (std::string_view item : raw_voicings) {
-                std::string_view performer = item;
-                std::string_view action;
-                for (const auto &[prefix, verb] : std::array<std::pair<
-                         std::string_view, std::string_view>, 4>{{
-                         {"the melody of the ", "负责主旋律"},
-                         {"the counterpoint of the ", "负责对位旋律"},
-                         {"the harmony of the ", "负责和声"},
-                         {"the rhythm of the ", "负责节奏"},
-                     }}) {
-                    if (!performer.starts_with(prefix)) continue;
-                    performer.remove_prefix(prefix.size());
-                    action = verb;
-                    break;
-                }
-                if (action.empty()) {
-                    std::string_view role = performer;
-                    if (role.starts_with("the ")) role.remove_prefix(4);
-                    const auto bare = std::find_if(bare_vocalists.begin(),
-                        bare_vocalists.end(), [&](const auto &entry) {
-                            return role == entry.first;
-                        });
-                    if (bare != bare_vocalists.end()) {
-                        assignments.emplace_back(bare->second);
-                        continue;
-                    }
-                    const auto speech = translate_recitation(performer);
-                    if (!speech) return std::nullopt;
-                    assignments.push_back(*speech);
-                    continue;
-                }
-                if (performer.empty()) return std::nullopt;
-                if (const auto speech = translate_recitation(performer)) {
-                    assignments.push_back(*speech + "并" +
-                                          std::string(action));
-                    continue;
-                }
-                // Pure vocal assignments use the same singer/chanter/speaker
-                // subjects as range and duty clauses; they are not generated
-                // instrument names even when no recitation follows them.
-                const auto translated_performer =
-                    translate_voice_subject(performer);
-                if (!translated_performer) return std::nullopt;
-                assignments.push_back(*translated_performer + std::string(action));
-            }
-            if (assignments.empty()) return std::nullopt;
-            return *translated_group + "中，" +
-                   join_chinese(assignments, "，");
-        }
-
-        // Passage character, dynamics and technique.
-        for (const auto &[english, chinese] : tempos) {
-            const std::string suffix = " " + std::string(english);
-            if (!sentence.ends_with(suffix)) continue;
-            const auto subject = translate_subject(std::string_view(sentence).substr(
-                0, sentence.size() - suffix.size()));
-            if (subject) return *subject + std::string(chinese);
-        }
-        const size_t passage_has = sentence.find(" has ");
-        if (passage_has != std::string::npos) {
-            const auto subject = translate_subject(
-                std::string_view(sentence).substr(0, passage_has));
-            if (subject) {
-                std::string_view tail = std::string_view(sentence).substr(
-                    passage_has + 5);
-                if (tail.ends_with(" in the melody and counterpoint")) {
-                    tail.remove_suffix(std::string_view(
-                        " in the melody and counterpoint").size());
-                    const auto phrases = lookup_phrase(tail, phrase_lengths);
-                    if (phrases) return *subject + "的主旋律和对位旋律均采用" +
-                                            *phrases;
-                }
-                for (const auto &[suffix, role] : std::array<std::pair<
-                         std::string_view, std::string_view>, 2>{{
-                         {" in the melody", "主旋律"},
-                         {" in the counterpoint melody", "对位旋律"},
-                     }}) {
-                    if (!tail.ends_with(suffix)) continue;
-                    const auto phrases = lookup_phrase(
-                        tail.substr(0, tail.size() - suffix.size()),
-                        phrase_lengths);
-                    if (phrases) {
-                        return *subject + "的" + std::string(role) +
-                               "采用" + *phrases;
-                    }
-                }
-                const size_t counterpoint = tail.find(
-                    " in the melody, while the counterpoint has ");
-                if (counterpoint != std::string_view::npos) {
-                    const auto melody = lookup_phrase(
-                        tail.substr(0, counterpoint), phrase_lengths);
-                    std::string_view second = tail.substr(
-                        counterpoint + std::string_view(
-                            " in the melody, while the counterpoint has ").size());
-                    if (second.ends_with(" in the counterpoint melody"))
-                        second.remove_suffix(std::string_view(
-                            " in the counterpoint melody").size());
-                    const auto counter = lookup_phrase(second, phrase_lengths);
-                    if (melody && counter)
-                        return *subject + "的主旋律采用" + *melody +
-                               "，对位旋律采用" + *counter;
-                }
-            }
-        }
-        const size_t should = sentence.find(" should ");
-        if (should != std::string::npos) {
-            const auto subject = translate_subject(
-                std::string_view(sentence).substr(0, should));
-            if (!subject) return std::nullopt;
-            std::string_view predicate = std::string_view(sentence).substr(should + 8);
-            if (const auto patterns =
-                    translate_melody_pattern_instructions(predicate)) {
-                return *subject + *patterns;
-            }
-            if (predicate.starts_with("be composed and performed using ") ||
-                predicate.starts_with("be performed using ")) {
-                const bool composed = predicate.starts_with("be composed");
-                const size_t prefix = composed
-                    ? std::string_view("be composed and performed using ").size()
-                    : std::string_view("be performed using ").size();
-                const auto methods = translate_technique_list(predicate.substr(prefix));
-                if (!methods) return std::nullopt;
-                return *subject + (composed ? "在创作和演奏时应使用" :
-                                              "演奏时应使用") + *methods;
-            }
-            const size_t dynamic_at = predicate.find(", and it is to ");
-            std::string_view trait_text = predicate.substr(0, dynamic_at);
-            std::vector<std::string> traits;
-            while (!trait_text.empty()) {
-                // A complete tempo can contain its own conjunction, such as
-                // `slows and broadens` or `slows down and dies away ...`.
-                // Match the existing vocabulary before consuming the `and`
-                // that joins separate character, tempo and dynamic traits.
-                trait_text = trim_view(trait_text);
-                const std::pair<std::string_view, std::string_view> *best = nullptr;
-                const auto consider = [&](const auto &table) {
-                    for (const auto &entry : table) {
-                        if (!trait_text.starts_with(entry.first)) continue;
-                        const std::string_view tail =
-                            trait_text.substr(entry.first.size());
-                        if (!tail.empty() && !tail.starts_with(" and ")) continue;
-                        if (!best || entry.first.size() > best->first.size())
-                            best = &entry;
-                    }
-                };
-                consider(qualities);
-                consider(tempos);
-                consider(dynamics);
-                if (!best) return std::nullopt;
-                traits.emplace_back(best->second);
-                trait_text.remove_prefix(best->first.size());
-                if (trait_text.empty()) break;
-                trait_text.remove_prefix(std::string_view(" and ").size());
-                if (trim_view(trait_text).empty()) return std::nullopt;
-            }
-            if (traits.empty()) return std::nullopt;
-            std::string result = *subject + "应" +
-                                 join_chinese(traits, "，并");
-            if (dynamic_at != std::string_view::npos) {
-                const auto dynamic = lookup_phrase(predicate.substr(
-                    dynamic_at + std::string_view(", and it is to ").size()), dynamics);
-                if (!dynamic) return std::nullopt;
-                result += "；" + *dynamic;
-            }
-            return result;
-        }
-
-        if (sentence ==
-            "This passage features only melodic tones and intervals")
-            return "本段只使用单音和双音";
-        if (sentence == "This passage typically has some sparse chords")
-            return "本段通常只零星使用少量和弦";
-        if (sentence ==
-            "Chords are packed close together in dense clusters in this passage")
-            return "本段的和弦紧密聚集成音簇";
-        if (sentence ==
-            "This passage is richly layered with full chords making use of the available range")
-            return "本段和弦饱满，遍及整个音域，层次丰富";
-        if (sentence == "Only one pitch is ever played at a time in this passage")
-            return "本段每次只奏一个音，不叠加其他音";
-
-        // Fundamental scale construction and tuning notation.
-        if (sentence.starts_with("Scales are constructed from ") &&
-            sentence.ends_with(" notes dividing the octave")) {
-            constexpr std::string_view prefix = "Scales are constructed from ";
-            constexpr std::string_view suffix = " notes dividing the octave";
-            const auto count = number_value(std::string_view(sentence).substr(
-                prefix.size(), sentence.size() - prefix.size() - suffix.size()));
-            if (!count) return std::nullopt;
-            return "在一个八度内划分出" + chinese_number(*count) + "个音，组成音阶";
-        }
-        if (sentence.starts_with("Scales are constructed from ") &&
-            sentence.ends_with(" notes spaced evenly throughout the octave")) {
-            constexpr std::string_view prefix = "Scales are constructed from ";
-            constexpr std::string_view suffix =
-                " notes spaced evenly throughout the octave";
-            const auto count = number_value(std::string_view(sentence).substr(
-                prefix.size(), sentence.size() - prefix.size() - suffix.size()));
-            if (!count) return std::nullopt;
-            return "音阶由" + chinese_number(*count) + "个音组成，在一个八度内等距排列";
-        }
-        if (sentence.starts_with("Scales are constructed from ") &&
-            sentence.ends_with(" notes")) {
-            const auto count = number_value(std::string_view(sentence).substr(
-                28, sentence.size() - 28 - 6));
-            if (!count) return std::nullopt;
-            return "音阶由" + chinese_number(*count) + "个音构成";
-        }
-        if (sentence.starts_with("In quartertones, their spacing is roughly ")) {
-            std::string_view tail(sentence);
-            tail.remove_prefix(std::string_view(
-                "In quartertones, their spacing is roughly ").size());
-            const size_t legend = tail.find(", where 1 is the tonic, O marks the octave and x marks other notes");
-            if (legend == std::string_view::npos) return std::nullopt;
-            return "以四分之一音为间距单位，各音的大致位置为“" +
-                   std::string(tail.substr(0, legend)) +
-                   "”；其中 1 为主音，O 为高八度的主音，x 为其他音";
-        }
-        if (sentence.starts_with(
-            "Scales are conceived of as two chords built using a division of the perfect fourth interval into ") &&
-            sentence.ends_with(" notes")) {
-            constexpr std::string_view prefix =
-                "Scales are conceived of as two chords built using a division of the perfect fourth interval into ";
-            const auto count = number_value(std::string_view(sentence).substr(
-                prefix.size(), sentence.size() - prefix.size() - 6));
-            if (!count) return std::nullopt;
-            return "先在纯四度内划分出" + chinese_number(*count) +
-                   "个音，再以此构成两组音列，组合成音阶";
-        }
-        static constexpr auto scale_exacts = std::to_array<std::pair<
-            std::string_view, std::string_view>>({
-            {"The tonic note is fixed only at the time of performance",
-             "主音的音高到演奏时才确定"},
-            {"The tonic note is a fixed tone passed from teacher to student",
-             "主音是师徒相传的固定音高"},
-            {"A single note in the fundamental scale is named",
-             "基础音阶中只有一个音有专名"},
-            {"Preferred notes in the fundamental scale are named",
-             "基础音阶中的常用音有专名"},
-            {"After a scale is constructed, notes are named according to degree",
-             "音阶确定后，按各音所在的音级命名"},
-            {"After a scale is constructed, the root note of chords are named",
-             "音阶确定后，为各组音列的起始音命名"},
-            {"Every note is named", "每个音都有名称"},
-        });
-        for (const auto &[english, chinese] : scale_exacts) {
-            if (sentence == english) return std::string(chinese);
-        }
-
-        // Named scales can omit the pentatonic/hexatonic/heptatonic qualifier.
-        // Keep the whole native name unless a known scale kind is present.
-        const size_t scale_is = sentence.find(" scale is ");
-        if (sentence.starts_with("The ") && scale_is != std::string::npos &&
-            scale_is > 4) {
-            std::string_view head(sentence.data() + 4, scale_is - 4);
-            std::string kind_cn = "音阶";
-            const size_t kind_space = head.rfind(' ');
-            if (kind_space != std::string_view::npos) {
-                const std::string_view kind = head.substr(kind_space + 1);
-                if (kind == "pentatonic") kind_cn = "五声音阶";
-                else if (kind == "hexatonic") kind_cn = "六声音阶";
-                else if (kind == "heptatonic") kind_cn = "七声音阶";
-                if (kind_cn != "音阶") head = head.substr(0, kind_space);
-            }
-            if (const auto name = translate_native_reference(head)) {
-                const std::string_view predicate = std::string_view(sentence).substr(
-                    scale_is + std::string_view(" scale is ").size());
-                if (predicate ==
-                    "constructed by selection of degrees from the fundamental scale") {
-                    return "“" + *name + "”" + kind_cn +
-                           "从基础音阶中选取若干音级组成";
-                }
-                constexpr std::string_view selected_degrees =
-                    "constructed by selection of degrees from ";
-                if (predicate.starts_with(selected_degrees)) {
-                    std::vector<std::string> degrees;
-                    for (std::string_view item : split_list(
-                             predicate.substr(selected_degrees.size()))) {
-                        std::string value = trim(std::string(item));
-                        if (value.starts_with("the ")) value.erase(0, 4);
-                        while (!value.empty() && std::isalpha(
-                                   static_cast<unsigned char>(value.back()))) {
-                            value.pop_back();
-                        }
-                        if (value.empty() || !std::all_of(
-                                value.begin(), value.end(),
-                                [](unsigned char ch) {
-                                    return ch >= '0' && ch <= '9';
-                                })) {
-                            degrees.clear();
-                            break;
-                        }
-                        degrees.push_back("第" + value + "级");
-                    }
-                    if (!degrees.empty()) {
-                        return "“" + *name + "”" + kind_cn +
-                               "选用" + join_chinese(degrees) +
-                               "音组成";
-                    }
-                }
-                static constexpr auto concepts = std::to_array<std::pair<
-                    std::string_view, std::string_view>>({
-                    {"thought of as joined chords spanning a perfect fifth and a perfect fourth",
-                     "由首尾相接的两组音列组成，分别跨越纯五度和纯四度"},
-                    {"thought of as two disjoint chords spanning a perfect fifth and a major third",
-                     "由互不相接的两组音列组成，分别跨越纯五度和大三度"},
-                    {"thought of as two disjoint chords spanning a tritone and a perfect fourth",
-                     "由互不相接的两组音列组成，分别跨越三全音和纯四度"},
-                    {"thought of as two disjoint chords drawn from the fundamental division of the perfect fourth",
-                     "由互不相接的两组音列组成，各音选自基础纯四度的音级"},
-                    {"thought of as two disjoint chords spanning two perfect fourths",
-                     "由互不相接的两组音列组成，每组跨越一个纯四度"},
-                });
-                for (const auto &[english, chinese] : concepts) {
-                    if (predicate == english)
-                        return "“" + *name + "”" + kind_cn + std::string(chinese);
-                }
-            }
-        }
-        if (sentence.starts_with("The degrees selected are ")) {
-            std::string_view raw = std::string_view(sentence).substr(25);
-            std::vector<std::string> degrees;
-            for (std::string_view item : split_list(raw)) {
-                std::string value = trim(std::string(item));
-                if (value.starts_with("the ")) value.erase(0, 4);
-                while (!value.empty() && std::isalpha(
-                           static_cast<unsigned char>(value.back()))) {
-                    value.pop_back();
-                }
-                if (value.empty() || !std::all_of(value.begin(), value.end(),
-                        [](unsigned char ch) { return ch >= '0' && ch <= '9'; })) {
-                    return std::nullopt;
-                }
-                degrees.push_back("第" + value + "级");
-            }
-            if (degrees.empty()) return std::nullopt;
-            return "选取的音级为" + join_chinese(degrees);
-        }
-        if (sentence.starts_with("It is called ")) {
-            const auto name = translate_native_reference(
-                std::string_view(sentence).substr(13));
-            if (!name) return std::nullopt;
-            return "称为“" + *name + "”";
-        }
-        if (sentence.starts_with("The names are ")) {
-            std::vector<std::string> names;
-            for (std::string_view item : split_list(
-                     std::string_view(sentence).substr(14))) {
-                const size_t spoken_at = item.find(" (spoken ");
-                const size_t short_at = item.find(" (");
-                const size_t parenthesis = spoken_at != std::string_view::npos
-                    ? spoken_at : short_at;
-                const std::string_view raw_name =
-                    parenthesis == std::string_view::npos
-                        ? item : item.substr(0, parenthesis);
-                const auto name = translate_native_reference(raw_name);
-                if (!name) return std::nullopt;
-                std::string rendered = "“" + *name + "”";
-                if (parenthesis != std::string_view::npos) {
-                    if (!item.ends_with(')')) return std::nullopt;
-                    const size_t opening = parenthesis +
-                        (spoken_at != std::string_view::npos ? 9 : 2);
-                    const size_t closing = item.size() - 1;
-                    if (opening >= closing) return std::nullopt;
-                    std::string_view annotation =
-                        item.substr(opening, closing - opening);
-                    std::string_view degree;
-                    const size_t comma = annotation.rfind(", ");
-                    if (comma != std::string_view::npos) {
-                        degree = annotation.substr(comma + 2);
-                        annotation = annotation.substr(0, comma);
-                    }
-                    const auto pronunciation =
-                        translate_native_reference(annotation);
-                    if (!pronunciation) return std::nullopt;
-                    rendered += "（念作“" + *pronunciation + "”";
-                    if (!degree.empty()) {
-                        std::string ordinal(degree);
-                        for (const std::string_view suffix : {
-                                 std::string_view("st"), std::string_view("nd"),
-                                 std::string_view("rd"), std::string_view("th")}) {
-                            if (ordinal.ends_with(suffix)) {
-                                ordinal.resize(ordinal.size() - suffix.size());
-                                break;
-                            }
-                        }
-                        if (ordinal.empty() || !std::all_of(
-                                ordinal.begin(), ordinal.end(),
-                                [](unsigned char ch) {
-                                    return ch >= '0' && ch <= '9';
-                                })) {
-                            return std::nullopt;
-                        }
-                        rendered += "，第" + ordinal + "级";
-                    }
-                    rendered += "）";
-                }
-                names.push_back(std::move(rendered));
-            }
-            if (names.empty()) return std::nullopt;
-            return "名称依次为" + join_chinese(names);
-        }
-        if (sentence.starts_with("These chords are named ")) {
-            std::vector<std::string> names;
-            for (std::string_view item : split_list(
-                     std::string_view(sentence).substr(23))) {
-                const auto name = translate_native_reference(item);
-                if (!name) return std::nullopt;
-                names.push_back("“" + *name + "”");
-            }
-            if (names.empty()) return std::nullopt;
-            return "这几组音列分别称为" + join_chinese(names);
-        }
-        if (sentence.starts_with("The ")) {
-            for (const auto &[marker, chord_cn] : std::array<std::pair<
-                     std::string_view, std::string_view>, 3>{{
-                     {" trichord ", "三音列"},
-                     {" tetrachord ", "四音列"},
-                     {" pentachord ", "五音列"},
-                 }}) {
-                const size_t chord_at = sentence.find(marker);
-                if (chord_at == std::string::npos) continue;
-                const auto name = translate_native_reference(
-                    std::string_view(sentence).substr(4, chord_at - 4));
-                if (!name) return std::nullopt;
-                const std::string_view tail = std::string_view(sentence).substr(
-                    chord_at + marker.size());
-                std::vector<std::string> degrees;
-                size_t cursor = 0;
-                while (cursor < tail.size()) {
-                    while (cursor < tail.size() && tail[cursor] == ' ') ++cursor;
-                    size_t end = cursor;
-                    while (end < tail.size() && tail[end] != ' ' &&
-                           tail[end] != ',' && tail[end] != ')') ++end;
-                    std::string token(tail.substr(cursor, end - cursor));
-                    while (!token.empty() && std::isalpha(
-                               static_cast<unsigned char>(token.back()))) {
-                        token.pop_back();
-                    }
-                    if (!token.empty() && std::all_of(token.begin(), token.end(),
-                            [](unsigned char ch) { return ch >= '0' && ch <= '9'; })) {
-                        degrees.push_back("第" + token + "级");
-                    }
-                    cursor = end + 1;
-                }
-                std::string system;
-                if (tail.find("degrees of the semitone octave scale") !=
-                    std::string_view::npos) system = "八度内半音音阶";
-                else if (tail.find("degrees of the quartertone octave scale") !=
-                         std::string_view::npos) system = "八度内四分之一音音阶";
-                else if (tail.find(
-                             "degrees of the fundamental perfect fourth division") !=
-                         std::string_view::npos) system = "基础纯四度音列";
-                else if (tail.find("degrees of the octave scale") !=
-                         std::string_view::npos) system = "八度音阶";
-                if (degrees.empty() || system.empty()) return std::nullopt;
-                std::string result = "“" + *name + "”" +
-                    std::string(chord_cn) + "由" + system + "的" +
-                    join_chinese(degrees) + "构成";
-                if (tail.find("completing the octave") != std::string_view::npos)
-                    result += "，并补全八度";
-                return result;
-            }
-        }
-
-        // Rhythm systems and named patterns.
-        static constexpr auto rhythm_exacts = std::to_array<std::pair<
-            std::string_view, std::string_view>>({
-            {"The rhythm system is fundamentally polyrhythmic",
-             "这一节奏体系采用复节奏"},
-            {"The rhythm system is fundamentally polymetric",
-             "这一节奏体系采用多重节拍"},
-            {"There are always multiple rhythm lines, and each of their bars is played over the same period of time, regardless of the number of beats",
-             "多条节奏声部始终同时演奏；每个声部的小节时长相同，拍数可以不同"},
-            {"There are always multiple rhythm lines, and the beats are always played together, even if one rhythm line completes (and then repeats) before the other is finished",
-             "多条节奏声部的每一拍始终对齐；较短的声部奏完便从头重复，不必等待其他声部"},
-            {"The rhythm lines are thought of as one, without a primary-subordinate relationship, though individual lines can be named",
-             "各节奏声部不分主次，共同构成一个整体，但可以各有名称"},
-            {"As stated above, they are to be played in polyrhythm",
-             "如前所述，这些节奏型以复节奏方式同时演奏"},
-            {"As stated above, they are to be played in polymeter",
-             "如前所述，这些节奏型按多重节拍同时演奏"},
-            {"The patterns are to be played in the same beat, allowing one to repeat before the other is concluded",
-             "这些节奏型的每一拍都要对齐；较短的节奏型奏完便从头重复，不必等待另一节奏型"},
-            {"The patterns are to be played over the same period of time, concluding together regardless of beat number",
-             "这些节奏型的总时长相同，无论各有多少拍，都要同时结束"},
-        });
-        for (const auto &[english, chinese] : rhythm_exacts) {
-            if (sentence == english) return std::string(chinese);
-        }
-
-        const size_t rhythm_made = sentence.find(" rhythm is made from ");
-        if (rhythm_made != std::string::npos) {
-            std::string_view raw_name =
-                std::string_view(sentence).substr(0, rhythm_made);
-            if (raw_name.starts_with("The ")) raw_name.remove_prefix(4);
-            const auto name = translate_native_reference(raw_name);
-            if (!name) return std::nullopt;
-            std::string_view tail = std::string_view(sentence).substr(
-                rhythm_made + std::string_view(" rhythm is made from ").size());
-            const size_t patterns_at = tail.find(" patterns: ");
-            if (patterns_at == std::string_view::npos) return std::nullopt;
-            const auto count = translate_count(tail.substr(0, patterns_at));
-            if (!count) return std::nullopt;
-            std::vector<std::string> names;
-            for (std::string_view item : split_list(
-                     tail.substr(patterns_at + 11))) {
-                bool primary = false;
-                if (item.ends_with(" (considered the primary)")) {
-                    item.remove_suffix(std::string_view(
-                        " (considered the primary)").size());
-                    primary = true;
-                }
-                item = trim_view(item);
-                if (item.starts_with("the ")) item.remove_prefix(4);
-                const auto translated_name =
-                    translate_native_reference(item);
-                if (!translated_name) return std::nullopt;
-                names.push_back("“" + *translated_name + "”" +
-                                (primary ? "（主节奏型）" : ""));
-            }
-            if (names.empty()) return std::nullopt;
-            return "“" + *name + "”节奏由" + *count + "个节奏型构成：" +
-                   join_chinese(names);
-        }
-        const size_t rhythm_line = sentence.find(" rhythm is a single line with ");
-        if (rhythm_line != std::string::npos) {
-            std::string_view raw_name =
-                std::string_view(sentence).substr(0, rhythm_line);
-            if (raw_name.starts_with("The ")) raw_name.remove_prefix(4);
-            const auto name = translate_native_reference(raw_name);
-            if (!name) return std::nullopt;
-            std::string_view tail = std::string_view(sentence).substr(
-                rhythm_line + std::string_view(" rhythm is a single line with ").size());
-            const size_t beats_at = tail.find(" beats");
-            const size_t beat_at = beats_at == std::string_view::npos
-                ? tail.find(" beat") : beats_at;
-            if (beat_at == std::string_view::npos) return std::nullopt;
-            const auto beats = translate_count(tail.substr(0, beat_at));
-            if (!beats) return std::nullopt;
-            tail.remove_prefix(beat_at +
-                (beats_at == std::string_view::npos ? 5 : 6));
-            std::string result = "“" + *name + "”为单声部节奏，共" +
-                                 *beats + "拍";
-            if (tail.starts_with(" divided into ")) {
-                tail.remove_prefix(14);
-                size_t bars_at = tail.find(" bars in a ");
-                size_t bars_marker_size = 11;
-                if (bars_at == std::string_view::npos) {
-                    bars_at = tail.find(" bar in a ");
-                    bars_marker_size = 10;
-                }
-                if (bars_at == std::string_view::npos || !tail.ends_with(" pattern"))
-                    return std::nullopt;
-                const auto bars = translate_count(tail.substr(0, bars_at));
-                if (!bars) return std::nullopt;
-                std::string_view pattern = tail.substr(
-                    bars_at + bars_marker_size,
-                    tail.size() - bars_at - bars_marker_size - 8);
-                result += "，分成" + *bars + "个小节，各小节拍数依次为“" +
-                          std::string(pattern) + "”";
-            } else if (!tail.empty()) return std::nullopt;
-            return result;
-        }
-        if (sentence.starts_with("The beats are named ")) {
-            std::vector<std::string> beats;
-            for (std::string_view item : split_list(
-                     std::string_view(sentence).substr(20))) {
-                const size_t spoken = item.find(" (spoken ");
-                const size_t short_form = item.find(" (");
-                const size_t at = spoken != std::string_view::npos ? spoken : short_form;
-                std::string_view name = at == std::string_view::npos
-                    ? item : item.substr(0, at);
-                const auto translated_name =
-                    translate_native_reference(name);
-                if (!translated_name) return std::nullopt;
-                std::string rendered = "“" + *translated_name + "”";
-                if (at != std::string_view::npos && item.ends_with(')')) {
-                    std::string_view pronunciation = item.substr(
-                        at + (spoken != std::string_view::npos ? 9 : 2),
-                        item.size() - at -
-                            (spoken != std::string_view::npos ? 10 : 3));
-                    const auto translated_pronunciation =
-                        translate_native_reference(pronunciation);
-                    if (!translated_pronunciation) return std::nullopt;
-                    rendered += "（念作“" + *translated_pronunciation + "”）";
-                }
-                beats.push_back(std::move(rendered));
-            }
-            if (beats.empty()) return std::nullopt;
-            return "各拍依次称为" + join_chinese(beats);
-        }
-        static constexpr std::string_view beat_stress_prefix =
-            "The beat is stressed as follows:";
-        if (sentence.starts_with(beat_stress_prefix)) {
-            std::string_view tail = std::string_view(sentence).substr(
-                beat_stress_prefix.size());
-            // The notation is inserted as a separate row. At the viewport
-            // edge this complete prose header can therefore be visible on its
-            // own even though the following `| x - |` line is clipped.
-            if (trim_view(tail).empty()) return std::string("节奏与重音标记如下");
-            const size_t where = tail.find(" where ");
-            std::string result = "节奏与重音标记如下：“" +
-                std::string(trim(std::string(tail.substr(0, where)))) + "”";
-            if (where != std::string_view::npos) {
-                std::string legend(tail.substr(where + 7));
-                const std::array<std::pair<std::string_view, std::string_view>, 6>
-                    replacements{{
-                    {"! marks the primary accent", "! 表示主重音"},
-                    {"X marks an accented beat", "X 表示重拍"},
-                    {"` marks a beat as early", "` 表示拍点提前"},
-                    {"' marks a beat as late", "' 表示拍点延后"},
-                    {"x is a beat", "x 表示一拍"},
-                    {"- is silent", "- 表示休止"},
-                }};
-                std::vector<std::string> parts;
-                for (std::string_view item : split_list(legend)) {
-                    std::string value = trim(std::string(item));
-                    if (value == "| indicates a bar" ||
-                        value == "| indicates a bar") {
-                        parts.push_back("| 表示小节线");
-                        continue;
-                    }
-                    bool found = false;
-                    for (const auto &[english, chinese] : replacements) {
-                        if (value == english) {
-                            parts.emplace_back(chinese);
-                            found = true;
-                            break;
-                        }
-                    }
-                    if (!found) return std::nullopt;
-                }
-                if (!parts.empty()) result += "；其中" + join_chinese(parts);
-            }
-            return result;
-        }
-
-        // The notation legend can likewise be submitted as an independent
-        // paragraph instead of being appended to the stress header.
-        if (sentence.starts_with("where ")) {
-            std::string_view legend = std::string_view(sentence).substr(6);
-            const std::array<std::pair<std::string_view, std::string_view>, 6>
-                replacements{{
-                {"! marks the primary accent", "! 表示主重音"},
-                {"X marks an accented beat", "X 表示重拍"},
-                {"` marks a beat as early", "` 表示拍点提前"},
-                {"' marks a beat as late", "' 表示拍点延后"},
-                {"x is a beat", "x 表示一拍"},
-                {"- is silent", "- 表示休止"},
-            }};
-            std::vector<std::string> parts;
-            for (std::string_view item : split_list(legend)) {
-                const std::string value = trim(std::string(item));
-                if (value == "| indicates a bar") {
-                    parts.push_back("| 表示小节线");
-                    continue;
-                }
-                const auto found = std::find_if(
-                    replacements.begin(), replacements.end(),
-                    [&](const auto &entry) { return entry.first == value; });
-                if (found == replacements.end()) return std::nullopt;
-                parts.emplace_back(found->second);
-            }
-            if (parts.empty()) return std::nullopt;
-            return "其中" + join_chinese(parts);
-        }
-
-        return std::nullopt;
-    };
-
-    // Split only at sentence-final periods. Generated notation uses colons,
-    // vertical bars and hyphens, all of which belong to the same sentence.
-    std::string translated;
-    size_t cursor = 0;
-    while (cursor < source.size()) {
-        while (cursor < source.size() && source[cursor] == ' ') ++cursor;
-        if (cursor >= source.size()) break;
-        const size_t period = source.find('.', cursor);
-        const size_t end = period == std::string::npos ? source.size() : period;
-        const std::string_view sentence = std::string_view(source).substr(
-            cursor, end - cursor);
-        const auto part = translate_sentence(sentence);
-        if (!part) return std::nullopt;
-        if (!part->empty()) {
-            if (!translated.empty()) translated += "。";
-            translated += *part;
-        }
-        if (period == std::string::npos) break;
-        cursor = period + 1;
-    }
-    if (translated.empty()) return std::nullopt;
-    translated += "。";
-    return translated;
-}
 static bool is_character_need_entry_source(std::string_view source) {
     if (!(source.starts_with("He is ") ||
           source.starts_with("She is ") ||
@@ -20446,6 +14316,11 @@ static std::string normalize_art_utterance(std::string_view source);
 #include "symbol_picker_descriptions.inc"
 #include "item_descriptions.inc"
 #include "health_description.inc"
+template <typename Cache>
+static TranslationResult cache_native_display_translation(Cache &cache, size_t &bytes,
+    const std::string &key, const std::vector<int> &source_colors,
+    const std::vector<int> &target_colors, TranslationResult result);
+
 #include "character_thoughts.inc"
 
 const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
@@ -20454,9 +14329,13 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
     // Documents share the native UI size with buttons, labels and popups.
     // Grow the line box around the ink; never resize the font to fit a page.
     const int nominal_font_pixels = unified_font_pixels();
+    const uint64_t source_context = native_identity_translation_context();
+    const uint64_t resource_revision = RULESETS.resource_revision();
     const auto cached = std::find_if(native_knowledge_layouts_.begin(),
         native_knowledge_layouts_.end(), [&](const NativeKnowledgeLayout &layout) {
-            return layout.width == width && layout.personality == personality &&
+            return layout.reusable && layout.source_context == source_context &&
+                layout.resource_revision == resource_revision &&
+                layout.width == width && layout.personality == personality &&
                 layout.health == health && layout.thoughts == thoughts &&
                 layout.overview_footer == overview_footer &&
                 layout.tile_x == gps_->tile_pixel_x && layout.tile_y == gps_->tile_pixel_y &&
@@ -20471,6 +14350,8 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
     {
         NativeKnowledgeLayout next;
         next.source = source;
+        next.source_context = source_context;
+        next.resource_revision = resource_revision;
         next.width = width;
         next.personality = personality;
         next.health = health;
@@ -20558,6 +14439,10 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
         flush();
 
         std::vector<std::string> targets;
+        auto document_result = std::make_shared<TranslationResult>();
+        document_result->kind = "knowledge";
+        document_result->owner = "native knowledge document";
+        document_result->resource_revision = RULESETS.resource_revision();
         // UTF-8 byte colors here; converted to codepoint colors for wrapping.
         std::vector<std::vector<int>> target_foregrounds;
         if (supported_markup) {
@@ -20569,26 +14454,18 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
             // Poetic identity/rules/sections can cross native [B] boundaries.
             // Consume them together, as the existing poetic grammar requires.
             if (personality || health || thoughts) {
-                auto translate_paragraph = [&](const std::string &part) {
+                TranslationWorkScope work;
+                auto translate_paragraph = [&](const std::string &part) -> TranslationResult {
                     if (thoughts) {
-                        auto target = translate_character_thought_paragraph(part);
-                        if (!target) target = exact_literal_translation(part);
-                        if (!target) {
-                            log_line("WARN", "Native thought not translated: " + part);
-                            target = cp437_to_utf8(part);
-                        }
-                        return *target;
+                        return translate_character_thought_paragraph_result(part);
                     }
                     if (health) {
                         auto target = translate_health_description_block(part);
-                        if (!target) {
-                            log_line("WARN", "Native health paragraph not translated: " + part);
-                            target = cp437_to_utf8(part);
-                        }
-                        return *target;
+                        return target ? TranslationResult::translated(part, *target, "health")
+                            : preserve_native_translation(part, "health");
                     }
                     if (auto need = translate_character_need_sentence(part))
-                        return *need;
+                        return TranslationResult::translated(part, *need, "need");
                     auto translated = translate_personality_facet_paragraph(part);
                     if (!translated || translated->translated_sentence_count < 1)
                         translated = translate_character_preference_paragraph(part);
@@ -20600,18 +14477,24 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
                         std::string target;
                         for (const auto &sentence : translated->main) target += sentence;
                         for (const auto &sentence : translated->cave_adaptation) target += sentence;
-                        return target;
+                        auto result = TranslationResult::translated(part, std::move(target), "personality");
+                        if (translated->passthrough_sentence_count > 0) {
+                            result.status = TranslationStatus::Partial;
+                            const auto at = part.find(translated->first_passthrough_sentence);
+                            result.fragments.push_back({at == std::string::npos ? 0 : at,
+                                at == std::string::npos ? part.size() : at + translated->first_passthrough_sentence.size(),
+                                0, result.target.size(), TranslationStatus::Untranslated, "personality sentence"});
+                        }
+                        return result;
                     }
                     auto target = exact_literal_translation(part);
                     if (!target) target = translate_compositional(part);
                     // A modded/unknown sentence is still reading text. Keep it
                     // whole at the shared document size, never word overlays.
-                    if (!target) {
-                        log_line("WARN", "Native personality paragraph not translated: " + part);
-                        target = cp437_to_utf8(part);
-                    }
-                    return *target;
+                    return target ? TranslationResult::translated(part, *target, "personality")
+                        : preserve_native_translation(part, "personality");
                 };
+                size_t paragraph_offset = 0;
                 for (size_t p = 0; p < paragraphs.size(); ++p) {
                     const auto &part = paragraphs[p];
                     // Each need or thought stays a distinct item, even when
@@ -20635,6 +14518,8 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
                                 [&](int color) { return color == first_color; });
                             std::string target;
                             std::vector<int> target_colors;
+                            TranslationResult item_result;
+                            try {
                             std::vector<size_t> semantic_origins;
                             auto semantic_target = thoughts
                                 ? translate_character_thought_paragraph(item, &semantic_origins)
@@ -20646,12 +14531,15 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
                                 // retain their semantic source colors, not a
                                 // ratio of the original English line width.
                                 target = std::move(*semantic_target);
+                                item_result = TranslationResult::translated(item, target,
+                                    thoughts ? "thought" : "health", semantic_origins);
                                 for (size_t offset : semantic_origins)
                                     target_colors.push_back(colors[cursor + offset]);
                             } else if (thoughts) {
                                 // Unknown/modded memories remain complete
                                 // reading text too, including their colors.
-                                target = translate_paragraph(item);
+                                item_result = translate_paragraph(item);
+                                target = item_result.target;
                                 if (target == cp437_to_utf8(item)) {
                                     for (size_t i = 0; i < item.size(); ++i) {
                                         const auto glyph = cp437_to_utf8(item.substr(i, 1));
@@ -20659,7 +14547,8 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
                                     }
                                 } else target_colors.assign(target.size(), first_color);
                             } else if (uniform) {
-                                target = translate_paragraph(item);
+                                item_result = translate_paragraph(item);
+                                target = item_result.target;
                                 target_colors.assign(target.size(), first_color);
                             } else {
                                 // Sentence boundaries and attribute grammar
@@ -20688,7 +14577,12 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
                                         translated = translate_personality_value_sentence(
                                             std::string_view(sentence).substr(0, sentence.size() - 1),
                                             &origins);
-                                    if (!translated) translated = translate_paragraph(sentence);
+                                    auto sentence_result = translated
+                                        ? TranslationResult::translated(sentence, *translated,
+                                            health ? "health" : "personality", origins)
+                                        : translate_paragraph(sentence);
+                                    translated = sentence_result.target;
+                                    item_result.append(sentence_result, sentence_begin);
                                     target += *translated;
                                     if (origins.size() == translated->size()) {
                                         for (size_t offset : origins)
@@ -20709,39 +14603,77 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
                                     sentence_begin = sentence_end;
                                 }
                             }
+                            } catch (const TranslationWorkLimit &) {
+                                item_result = preserve_native_translation(item,
+                                    thoughts ? "thought" : health ? "health" : "personality", false,
+                                    TranslationStatus::WorkLimited);
+                                target = item_result.target;
+                                target_colors.assign(target.size(), first_color);
+                            }
+                            item_result.source = item;
+                            item_result.target = target;
+                            document_result->append(item_result, paragraph_offset + cursor);
                             targets.push_back(std::move(target));
                             target_foregrounds.push_back(std::move(target_colors));
                         }
                         cursor = end;
                     } while (cursor < part.size());
+                    paragraph_offset += part.size() + 1;
                 }
             } else if (whole.find(" poetic ") != std::string::npos) {
-                if (auto translated = translate_poetic_form_description(whole))
-                    targets.push_back(std::move(*translated));
+                // Cross-chapter context has priority. The result adapter
+                // falls back only to the native [B] chapter boundaries.
+                std::string chapters;
+                for (const auto &part : paragraphs) {
+                    if (!chapters.empty()) chapters += "[B]";
+                    chapters += part;
+                }
+                auto translated = translate_poetic_form_description_result(chapters);
+                if (!translated.usable()) translated = preserve_native_translation(whole, "poetry");
+                targets.push_back(translated.target);
+                document_result->append(translated);
             } else {
+                TranslationWorkScope work;
+                size_t source_offset = 0;
                 for (const std::string &part : paragraphs) {
-                    auto translated = translate_written_work_paragraph(part);
-                    if (!translated) translated = translate_dance_form_paragraph(part);
-                    if (!translated) translated = translate_musical_form_paragraph(part);
-                    if (!translated) {
+                    TranslationResult translated;
+                    try {
+                        if (auto target = translate_written_work_paragraph(part))
+                            translated = TranslationResult::translated(part, *target, "written work");
+                        if (!translated.usable()) {
+                            auto dance = translate_dance_form_paragraph_result(part, false);
+                            auto music = dance.usable() ? TranslationResult{} :
+                                translate_musical_form_paragraph_result(part, false);
+                            if (dance.usable()) translated = std::move(dance);
+                            else if (music.usable()) translated = std::move(music);
+                            else {
+                                dance = translate_dance_form_paragraph_result(part);
+                                music = translate_musical_form_paragraph_result(part);
+                                if (dance.changed()) translated = std::move(dance);
+                                else if (music.changed()) translated = std::move(music);
+                            }
+                        }
+                    } catch (const TranslationWorkLimit &) {
+                        translated = preserve_native_translation(part, "knowledge paragraph", false,
+                            TranslationStatus::WorkLimited);
+                    }
+                    if (!translated.usable()) {
                         const bool notation = part.find('|') != std::string::npos &&
                             std::all_of(part.begin(), part.end(), [](unsigned char c) {
                                 return c == '|' || c == 'x' || c == 'X' || c == '-' ||
                                     c == '!' || c == '\'' || c == '`' || std::isspace(c);
                             });
-                        if (notation) translated = part;
+                        translated = preserve_native_translation(part,
+                            notation ? "notation" : "knowledge paragraph", notation);
                     }
-                    if (!translated) {
-                        // Never suppress a document that we cannot translate
-                        // completely. Report the complete production, not a
-                        // clipped row, for subsequent manual acceptance work.
-                        log_line("WARN", "Native knowledge paragraph not translated: " + part);
-                        targets.clear();
-                        break;
-                    }
-                    targets.push_back(std::move(*translated));
+                    // Every paragraph participates in the same reflow, so
+                    // retained English moves with adjacent Chinese text.
+                    targets.push_back(translated.target);
+                    document_result->append(translated, source_offset);
+                    source_offset += part.size() + 1;
                 }
             }
+            if (document_result->usable()) next.translation_result = document_result;
         }
 
         const int max_pixels = std::max(1,
@@ -20873,6 +14805,7 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
                 start = end;
             }
         }
+        next.reusable = source_context == native_identity_translation_context();
         const auto &layout = native_knowledge_layouts_.emplace_front(std::move(next));
         static constexpr size_t maximum_layouts = 16;
         while (native_knowledge_layouts_.size() > maximum_layouts)
@@ -20980,6 +14913,13 @@ std::vector<Match> Overlay::embark_pause_menu_matches() const {
 std::vector<Match> Overlay::native_knowledge_matches(
         int only_y, const std::vector<Match> &pause_menu, bool allow_transition) const {
     if (!config_.enabled || !face_ || !gps_) return {};
+    if (!native_knowledge_frame_.reusable ||
+            native_knowledge_frame_.source_context != native_identity_translation_context() ||
+            native_knowledge_frame_.resource_revision != RULESETS.resource_revision()) {
+        native_knowledge_frame_ = {};
+        native_knowledge_frame_matches_.reset();
+        native_knowledge_frame_transition_ = false;
+    }
     const std::array<int, 7> geometry{{gps_->dimx, gps_->dimy,
         gps_->tile_pixel_x, gps_->tile_pixel_y, gps_->screen_pixel_x,
         gps_->screen_pixel_y, gps_->top_in_use ? 1 : 0}};
@@ -21306,6 +15246,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
         Match match{left, y, source_row ? width : 0, kNativeKnowledgeDocumentRule,
             owns_line ? layout.lines[static_cast<size_t>(target_line)] : std::string{},
             source_row ? document.rows[static_cast<size_t>(first_native_line + row)] : std::string{}};
+        match.translation_result = layout.translation_result;
         match.layout_x = left;
         match.layout_y = y;
         match.layout_length = width;
@@ -21339,7 +15280,8 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
         result.push_back(std::move(match));
     }
     native_knowledge_frame_ = {draws.front().document, logical_hash,
-        left, top, first_native_line, height, geometry, result};
+        left, top, first_native_line, height, geometry, result,
+        layout.source_context, layout.resource_revision, layout.reusable};
     return result;
 }
 
@@ -21765,6 +15707,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 return find_matches(only_y, page && screen_override ? gps_->screen : screen_override);
             }();
             std::erase_if(foreground, [&](const Match &match) {
+                if (match.native_help_current_page) return false;
                 if (match.native_hover_background || match.native_help_occluder) return true;
                 const auto inside = [&](const SDL_Rect &frame) {
                     return match.x >= frame.x && match.y >= frame.y &&
@@ -21786,9 +15729,13 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 NativeUiReadScope page_cells(gps_, &background_page->cells);
                 g_native_toolbar_tooltip.reset();
                 background = find_matches(only_y, nullptr);
+                std::erase_if(background, [](const Match &match) {
+                    return match.native_help_current_page;
+                });
                 for (auto &match : background) {
                     match.native_hover_background = true;
-                    match.native_help_background_frames = frames;
+                    if (!match.native_help_background_frames)
+                        match.native_help_background_frames = frames;
                     if (match.layout_foreground_rgb < 0) {
                         bool top = false;
                         if (const auto *cell = cell_at(match.x, match.y, &top))
@@ -21852,9 +15799,11 @@ std::vector<Match> Overlay::find_matches(int only_y,
             }();
             std::vector<Match> recovered;
             for (const auto &match : foreground)
-                if (match.native_help_occluder || match.native_hover_background)
+                if (!match.native_help_current_page &&
+                        (match.native_help_occluder || match.native_hover_background))
                     recovered.push_back(match);
             std::erase_if(foreground, [&](const Match &match) {
+                if (match.native_help_current_page) return false;
                 if (match.native_help_occluder || match.native_hover_background) return true;
                 // A visible sidebar tooltip can coexist with help without a
                 // captured widget page. Its complete source was validated by
@@ -21897,8 +15846,12 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 NativeUiReadScope page(gps_, &base_page->cells);
                 g_native_toolbar_tooltip.reset();
                 background = find_matches(only_y, nullptr);
+                std::erase_if(background, [](const Match &match) {
+                    return match.native_help_current_page;
+                });
                 for (auto &match : background) {
-                    match.native_help_background_frames = frames;
+                    if (!match.native_help_background_frames)
+                        match.native_help_background_frames = frames;
                     match.native_hover_background = true;
                     if (match.layout_foreground_rgb < 0) {
                         bool top = false;
@@ -21948,7 +15901,8 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 });
             });
             for (auto &match : recovered) {
-                match.native_help_background_frames = frames;
+                if (!match.native_help_background_frames)
+                    match.native_help_background_frames = frames;
                 background.push_back(std::move(match));
             }
             background.insert(background.end(), std::make_move_iterator(foreground.begin()),
@@ -27138,14 +21092,15 @@ std::vector<Match> Overlay::find_matches(int only_y,
                             }
                         }
                     }
-                    bool captures_complete = true;
-                    std::string rendered = translate_template_captures(
-                        rule, captures, &captures_complete);
-                    if (!rule.strict_captures || captures_complete) {
+                    auto translated = translate_template_captures_display(rule, captures,
+                        row.substr(start, end - start));
+                    if (translated.usable() && translated.changed()) {
                         candidates.push_back({static_cast<int>(start), y,
                                               static_cast<int>(end - start),
-                                              rule_index, std::move(rendered),
+                                              rule_index, translated.target,
                                               std::string(row.substr(start, end - start))});
+                        candidates.back().translation_result =
+                            std::make_shared<TranslationResult>(std::move(translated));
                     }
                 }
                 search = start + 1;
@@ -27626,11 +21581,9 @@ std::vector<Match> Overlay::find_matches(int only_y,
                         end != complete.size()) {
                         continue;
                     }
-                    bool captures_complete = true;
-                    std::string rendered = translate_template_captures(
-                        rule, exact_captures, &captures_complete);
-                    if (rule.strict_captures && !captures_complete) continue;
-                    return normalize_chinese_ui_punctuation(std::move(rendered));
+                    auto translated = translate_template_captures_display(rule, exact_captures, source);
+                    if (!translated.usable() || !translated.changed()) continue;
+                    return normalize_chinese_ui_punctuation(std::move(translated.target));
                 }
                 return std::nullopt;
             };
@@ -28027,6 +21980,9 @@ std::vector<Match> Overlay::find_matches(int only_y,
         row_detail.checkpoint(RenderTimingStage::RowSelect);
         std::stable_sort(candidates.begin(), candidates.end(), [&](const Match &a, const Match &b) {
             if (a.length != b.length) return a.length > b.length;
+            const bool a_partial = a.translation_result && a.translation_result->has_untranslated();
+            const bool b_partial = b.translation_result && b.translation_result->has_untranslated();
+            if (a.x == b.x && a_partial != b_partial) return !a_partial;
             const int a_priority = match_priority(a.rule, a.source);
             const int b_priority = match_priority(b.rule, b.source);
             if (a_priority != b_priority) return a_priority > b_priority;
@@ -30110,6 +24066,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
                         const int pixel_y = display_top +
                             static_cast<int>(i) * line_height;
                         Match match{anchor.x, anchor.y, 0, description_rule, layout.lines[i], {}};
+                        match.translation_result = layout.translation_result;
                         match.layout_x = left;
                         match.layout_y = pixel_y / gps_->tile_pixel_y;
                         match.layout_pixel_y = pixel_y % gps_->tile_pixel_y;
@@ -46871,12 +40828,21 @@ void Overlay::collect_untranslated_fragments() {
     const bool untranslated_toolbar = std::any_of(prepared_matches_.begin(),
         prepared_matches_.end(), [](const Match &match) {
             return match.rule == kToolbarTooltipBodyRule &&
+                (!match.translation_result || match.translation_result->has_untranslated()) &&
                 std::any_of(match.target.begin(), match.target.end(), [](unsigned char ch) {
                     return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z');
                 });
         });
     std::vector<uint8_t> covered(static_cast<size_t>(gps_->dimx) * gps_->dimy, 0);
     for (const Match &match : prepared_matches_) {
+        // Mixed output owns all native bytes for drawing. Its missing
+        // fields are collected below from metadata with full parent context.
+        if (match.translation_result) {
+            for (int x = match.x; x < match.x + match.length; ++x)
+                if (x >= 0 && x < gps_->dimx && match.y >= 0 && match.y < gps_->dimy)
+                    covered[static_cast<size_t>(x) * gps_->dimy + match.y] = 1;
+            continue;
+        }
         // Body ownership survives reflow as empty companion spans. Unknown
         // text in any output line means those spans still need review.
         if (untranslated_toolbar && match.rule == kToolbarTooltipBodyRule) continue;
@@ -46902,8 +40868,26 @@ void Overlay::collect_untranslated_fragments() {
 
     std::vector<std::pair<std::string, std::string>> additions;
     std::unordered_set<std::string> pending_sources;
+    for (const Match &match : prepared_matches_) {
+        if (!match.translation_result || !match.translation_result->has_untranslated() ||
+                match.translation_result->source.empty() ||
+                collected_untranslated_.size() + additions.size() >=
+                    static_cast<size_t>(config_.max_untranslated_entries)) continue;
+        // Authored fragments never create a queue entry, even when their
+        // spelling contains English words. Preserve the complete parent
+        // production instead of a width-dependent remainder of a row.
+        std::string escaped;
+        for (unsigned char ch : match.translation_result->source) escaped += dump_byte(ch);
+        if (!escaped.empty() && escaped.front() == '#') escaped.insert(escaped.begin(), '\\');
+        if (!collected_untranslated_.contains(escaped) && pending_sources.insert(escaped).second)
+            additions.emplace_back(std::move(escaped),
+                match.rule == kNativeKnowledgeDocumentRule ? "h" :
+                match.rule == kHelpDocumentRule || match.rule == kHelpIndexRule ? "hq" :
+                match.rule == kUiMessageRule ? "hP" : "");
+    }
     std::vector<uint8_t> help_owned(covered.size(), 0);
     for (const Match &match : prepared_matches_) {
+        if (match.translation_result) continue;
         const bool site_fallback = match.native_hover_untranslated &&
             (((match.rule == kWorldSiteRowRule || match.rule == kWorldArtifactRowRule ||
                 match.rule == kMapHoverRowRule || match.rule == kWorkshopRecipeRowRule) &&
@@ -47339,7 +41323,7 @@ void Overlay::render(SDL_Renderer *renderer) {
     RenderTimingScope layout_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Layout);
     std::shared_ptr<const std::vector<SDL_Rect>> background_help_frames;
     for (const auto &match : prepared_matches_)
-        if (match.native_help_background_frames) {
+        if (!match.native_help_current_page && match.native_help_background_frames) {
             background_help_frames = match.native_help_background_frames;
             break;
         }
@@ -47347,14 +41331,15 @@ void Overlay::render(SDL_Renderer *renderer) {
     if (background_help_frames) {
         std::vector<Match> background;
         for (auto &match : prepared_matches_) {
-            const bool foreground = !match.native_hover_background && !match.native_help_background_frames &&
+            const bool foreground = match.native_help_current_page ||
+                (!match.native_hover_background && !match.native_help_background_frames &&
                 (match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule ||
                 std::any_of(background_help_frames->begin(), background_help_frames->end(),
                     [&](const SDL_Rect &frame) {
                         return match.x >= frame.x && match.y >= frame.y &&
                             match.x + std::max(1, match.length) <= frame.x + frame.w &&
                             match.y < frame.y + frame.h;
-                    }));
+                    })));
             (foreground ? help_foreground : background).push_back(std::move(match));
         }
         // Normalize foreground half-font captions against their actual layer,
@@ -47578,7 +41563,8 @@ void Overlay::render(SDL_Renderer *renderer) {
     layout_resting_place_details(renderer);
     if (background_help_frames)
         for (auto &match : prepared_matches_)
-            match.native_help_background_frames = background_help_frames;
+            if (!match.native_help_background_frames)
+                match.native_help_background_frames = background_help_frames;
     help_panel_reads.reset();
     help_layout.reset();
     tooltip_page_layout.reset();

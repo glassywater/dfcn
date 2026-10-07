@@ -25,8 +25,12 @@
         };
         const auto preserve_source = [&](std::vector<Match> rows, std::string source) {
             if (rows.empty()) return;
+            auto preserved = preserve_native_translation(source, "help-paragraph");
+            preserved.owner = "native-help-document";
+            const auto metadata = std::make_shared<const dfcn::TranslationResult>(std::move(preserved));
             rows.front().native_help_review_source = std::move(source);
             for (Match &row : rows) {
+                row.translation_result = metadata;
                 row.native_help_source_only = true;
                 row.rule = kHelpDocumentRule;
                 // This changes matching scratch space only. Source-only
@@ -318,17 +322,19 @@
                         }
                         if (!intact || !covered || foreground < 0 || exposed.empty()) continue;
                         std::vector<int> colors;
-                        const auto target = translate_help_paragraph(capture.source,
+                        const auto paragraph_result = translate_help_paragraph_result(capture.source,
                             std::vector<int>(capture.source.size(), foreground), colors, true);
-                        if (!target || !contains_cjk_utf8(*target)) continue;
+                        if (!paragraph_result.usable() || !contains_cjk_utf8(paragraph_result.target)) continue;
+                        const auto metadata = std::make_shared<const dfcn::TranslationResult>(paragraph_result);
                         auto scratch = screen_rows;
                         std::vector<Match> layout, untranslated;
                         if (!append_ui_message_paragraph(scratch, layout, untranslated, -1,
-                                complete, right, *target, colors, std::nullopt,
+                                complete, right, paragraph_result.target, colors, std::nullopt,
                                 capture.source, -1, false, 0, frame)) continue;
                         // Output rows keep the full paragraph's geometry.
                         // Only exposed source spans may suppress or clear ink.
                         for (auto &row : layout) {
+                            row.translation_result = metadata;
                             row.x = first->x;
                             row.length = 0;
                             row.source.clear();
@@ -336,6 +342,7 @@
                             row.native_help_occluder = frame;
                         }
                         for (auto &span : exposed) {
+                            span.translation_result = metadata;
                             span.native_hover_background = true;
                             span.native_help_occluder = frame;
                             span.graphical_clear_x = span.x;
@@ -388,9 +395,10 @@
                         expose(std::max(draw.x, frame.x + frame.w), end);
                         if (!intact || foreground < 0 || exposed.empty()) continue;
                         std::vector<int> colors;
-                        const auto target = translate_help_paragraph(draw.source,
+                        const auto paragraph_result = translate_help_paragraph_result(draw.source,
                             std::vector<int>(draw.source.size(), foreground), colors, true);
-                        if (!target || !contains_cjk_utf8(*target)) continue;
+                        if (!paragraph_result.usable() || !contains_cjk_utf8(paragraph_result.target)) continue;
+                        const auto metadata = std::make_shared<const dfcn::TranslationResult>(paragraph_result);
                         // Recover layout from the COMPLETE native ink span,
                         // including its original inset and centering. The
                         // exposed fragment is suppression evidence only; it
@@ -403,10 +411,11 @@
                         auto layout_screen = screen_rows;
                         std::vector<Match> layout, untranslated;
                         if (!append_ui_message_paragraph(layout_screen, layout, untranslated,
-                                -1, {complete}, ink_x + complete.length, *target, colors,
+                                -1, {complete}, ink_x + complete.length, paragraph_result.target, colors,
                                 std::nullopt, draw.source, -1, false, 0, frame) ||
                                 layout.size() != 1) continue;
                         Match translated = std::move(layout.front());
+                        translated.translation_result = metadata;
                         const Match &first = exposed.front();
                         translated.x = first.x;
                         translated.length = first.length;
@@ -589,10 +598,12 @@
                     }
                 } else {
                     std::vector<int> target_foregrounds;
-                    const auto translated = translate_help_paragraph(source,
+                    const auto paragraph_result = translate_help_paragraph_result(source,
                         source_foregrounds, target_foregrounds);
                     bool fitted = false;
-                    if (translated && contains_cjk_utf8(*translated)) {
+                    if (paragraph_result.usable() && contains_cjk_utf8(paragraph_result.target)) {
+                        const auto metadata = std::make_shared<const dfcn::TranslationResult>(paragraph_result);
+                        const size_t first_output = result.size();
                         auto slots = rows;
                         // Use available paragraph space before shrinking
                         // text. Keep a blank separator before the next
@@ -607,10 +618,13 @@
                                 kHelpDocumentRule, {}, {}});
                         // Suppression is committed only after every
                         // translated glyph fits the measured text box.
-                        fitted = append_setup_paragraph(std::move(slots), *translated,
+                        fitted = append_setup_paragraph(std::move(slots), paragraph_result.target,
                             right, right, target_foregrounds);
-                        if (fitted)
+                        if (fitted) {
+                            for (size_t at = first_output; at < result.size(); ++at)
+                                result[at].translation_result = metadata;
                             for (const auto &row : rows) claim_source(row.x, row.y, row.length);
+                        }
                     }
                     if (!fitted) preserve_source(std::move(rows), std::move(source));
                 }

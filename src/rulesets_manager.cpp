@@ -32,7 +32,8 @@ namespace Hooks {
         parser->cyclic_rule_signatures_ = cyclic_rule_signatures_;
         parser->static_creature_names_ = static_creature_names_;
         // Leaf indexes contain views into token storage, so rebuild them in
-        // the copied graph. Memoized trees and Overlay resolvers stay empty.
+        // the copied graph. Memoized trees, Overlay resolvers and the game
+        // context-revision provider stay empty in this detached publication.
         parser->rebuild_rule_prefix_indexes();
         const auto complete = [owner = parser.get()](std::string_view source,
                 std::string_view name) -> std::optional<std::string> {
@@ -101,18 +102,75 @@ namespace Hooks {
 
     void RulesetsManager::load_from_dir(const std::filesystem::path& dir) {
         dfcn::TranslationStateScope translation_scope;
+        ruleset_directory_ = dir;
+        attempted_dependencies_ = resource_dependencies(dir);
         if (!std::filesystem::exists(dir) || !std::filesystem::is_directory(dir)) {
-            return;
+            throw std::runtime_error("Rulesets directory not found: " + dir.string());
         }
-        memo_cache_.clear();
-        rule_prefix_indexes_.clear();
-        literal_leaf_rules_.clear();
+        // Every pointer/view-bearing index belongs to one candidate graph.
+        // A parse/reference/index failure leaves the live graph and callbacks
+        // intact, including its successful and negative memo entries.
+        RulesetsManager candidate;
         std::optional<std::string> visited_root;
-        parse_dir(dir, dir, visited_root);
-        validate_references();
-        analyze_from_root();
-        rebuild_rule_prefix_indexes();
-        rebuild_static_creature_names();
+        candidate.parse_dir(dir, dir, visited_root);
+        candidate.validate_references();
+        candidate.analyze_from_root();
+        candidate.rebuild_rule_prefix_indexes();
+        candidate.rebuild_static_creature_names();
+        candidate.loaded_dependencies_ = attempted_dependencies_;
+        memo_cache_.clear();
+        rulesets_.swap(candidate.rulesets_);
+        rule_prefix_indexes_.swap(candidate.rule_prefix_indexes_);
+        literal_leaf_rules_.swap(candidate.literal_leaf_rules_);
+        cyclic_rule_signatures_.swap(candidate.cyclic_rule_signatures_);
+        static_creature_names_.swap(candidate.static_creature_names_);
+        loaded_dependencies_.swap(candidate.loaded_dependencies_);
+        ++resource_revision_;
+        last_load_error_.clear();
+    }
+
+    std::vector<RulesetsManager::ResourceDependency>
+    RulesetsManager::resource_dependencies(const std::filesystem::path& dir) {
+        std::vector<ResourceDependency> dependencies;
+        const auto add = [&](const std::filesystem::path& path, bool directory) {
+            std::error_code error;
+            ResourceDependency dependency;
+            dependency.path = path;
+            dependency.directory = directory;
+            dependency.modified = std::filesystem::last_write_time(path, error);
+            if (error) dependency.error = error.value();
+            if (!directory && !error) {
+                dependency.size = std::filesystem::file_size(path, error);
+                if (error) dependency.error = error.value();
+            }
+            dependencies.push_back(std::move(dependency));
+        };
+        add(dir, true);
+        std::error_code error;
+        std::filesystem::recursive_directory_iterator it(dir, error), end;
+        while (!error && it != end) {
+            const auto path = it->path();
+            const bool directory = it->is_directory(error);
+            if (error) break;
+            if (directory || path.extension() == ".toml") add(path, directory);
+            it.increment(error);
+        }
+        if (error) dependencies.front().error = error.value();
+        std::sort(dependencies.begin(), dependencies.end(), [](const auto& a, const auto& b) {
+            return a.path < b.path;
+        });
+        return dependencies;
+    }
+
+    bool RulesetsManager::resources_changed() const {
+        dfcn::TranslationStateScope translation_scope;
+        return !ruleset_directory_.empty() &&
+            resource_dependencies(ruleset_directory_) != attempted_dependencies_;
+    }
+
+    std::uint64_t RulesetsManager::resource_revision() const {
+        dfcn::TranslationStateScope translation_scope;
+        return resource_revision_;
     }
 
     bool RulesetsManager::init() {
@@ -135,10 +193,12 @@ namespace Hooks {
         cyclic_rule_signatures_.clear();
         static_creature_names_.clear();
         creature_name_resolver_ = {};
-        creature_name_resolver_active_ = false;
         phrase_resolver_ = {};
-        phrase_resolver_active_ = false;
-        material_list_resolver_active_ = false;
+        context_revision_provider_ = {};
+        active_resolver_calls_.clear();
+        ruleset_directory_.clear();
+        loaded_dependencies_.clear();
+        attempted_dependencies_.clear();
     }
 
     std::string RulesetsManager::last_load_error() const {
@@ -341,21 +401,14 @@ namespace Hooks {
 
     bool RulesetsManager::load_rule_sets() {
         dfcn::TranslationStateScope translation_scope;
-        shutdown();
 
         try {
             auto ruleset_dir = Config::getDataPath() / "rulesets/zh-Hans";
-            if (std::filesystem::exists(ruleset_dir)) {
-                load_from_dir(ruleset_dir);
-                LOGGERMANAGER.getLogger()->info("RulesetsManager loaded: {} rulesets", rulesets_.size());
-            } else {
-                throw std::runtime_error("Rulesets directory not found: " + ruleset_dir.string());
-            }
+            load_from_dir(ruleset_dir);
+            LOGGERMANAGER.getLogger()->info("RulesetsManager loaded: {} rulesets", rulesets_.size());
         } catch (const std::exception& e) {
-            // A failed graph must not remain partly usable without the
-            // owner callbacks/indexes. Preserve the actual diagnostic for
-            // DFCN's shared log instead of dropping it in the quiet adapter.
-            shutdown();
+            // Keep the last complete graph; the attempted dependency snapshot
+            // avoids retrying the same invalid resource at every update tick.
             last_load_error_ = e.what();
             LOGGERMANAGER.getLogger()->error("RulesetsManager init failed: {}", e.what());
             return false;
@@ -524,6 +577,131 @@ namespace Hooks {
         auto target = build_translated(rule->second, bindings, origins);
         normalize_translation(target, origins);
         return target;
+    }
+
+    dfcn::TranslationResult RulesetsManager::compose_bound_rule_result(
+            const std::string& context, const std::string& source_pattern,
+            const std::vector<std::pair<std::string, dfcn::TranslationResult>>& fields,
+            std::string_view owner) const {
+        dfcn::TranslationStateScope translation_scope;
+        dfcn::TranslationResult result;
+        result.kind = context;
+        result.owner = owner;
+        result.policy = dfcn::TranslationPolicy::Display;
+        result.resource_revision = resource_revision_;
+        const auto found = rulesets_.find(context);
+        if (found == rulesets_.end() || !context.starts_with("::")) return result;
+        const std::string base = context.substr(2);
+        Tokens source;
+        try {
+            if (fields.empty()) {
+                if (!source_pattern.empty())
+                    source.emplace_back(Token{Type::Literal, source_pattern});
+            } else {
+                source = parse_tokens(base, source_pattern);
+            }
+        } catch (const std::exception&) {
+            result.status = dfcn::TranslationStatus::Invalid;
+            return result;
+        }
+        const auto rule = std::find_if(found->second.begin(), found->second.end(),
+            [&](const auto& entry) { return entry.first == source; });
+        if (rule == found->second.end()) return result;
+
+        struct Field {
+            const dfcn::TranslationResult* result;
+            size_t source_offset = 0;
+        };
+        std::unordered_map<std::string, Field> bindings;
+        for (const auto& [name, field] : fields) {
+            const auto identifier = to_canonical_identifier(name, base);
+            if (!field.usable() || field.origins.size() != field.target.size() ||
+                std::any_of(field.origins.begin(), field.origins.end(), [&](size_t origin) {
+                    return origin != std::string::npos && origin >= field.source.size();
+                }) || std::none_of(source.begin(), source.end(), [&](const Token& token) {
+                    return token.type == Type::Reference && token.value == identifier;
+                }) || !bindings.emplace(identifier, Field{&field}).second) {
+                result.status = dfcn::TranslationStatus::Invalid;
+                return result;
+            }
+            for (const auto& fragment : field.fragments) {
+                if (fragment.source_begin > fragment.source_end ||
+                    fragment.source_end > field.source.size() ||
+                    fragment.target_begin > fragment.target_end ||
+                    fragment.target_end > field.target.size()) {
+                    result.status = dfcn::TranslationStatus::Invalid;
+                    return result;
+                }
+            }
+        }
+
+        struct Literal {
+            std::string_view source;
+            size_t offset;
+        };
+        std::vector<Literal> literals;
+        for (const auto& token : rule->first) {
+            if (token.type == Type::Literal) {
+                literals.push_back({token.value, result.source.size()});
+                result.source += token.value;
+            } else {
+                const auto binding = bindings.find(token.value);
+                if (binding == bindings.end()) {
+                    result.status = dfcn::TranslationStatus::Invalid;
+                    return result;
+                }
+                binding->second.source_offset = result.source.size();
+                result.source += binding->second.result->source;
+            }
+        }
+        // A display production may reorder a field, but may not hide an
+        // unknown field merely because the translation omits its reference.
+        for (const auto& [identifier, _] : bindings)
+            if (std::none_of(rule->second.begin(), rule->second.end(), [&](const Token& token) {
+                    return token.type == Type::Reference && token.value == identifier;
+                })) {
+                result.status = dfcn::TranslationStatus::Invalid;
+                return result;
+            }
+
+        size_t literal_index = 0;
+        for (const auto& token : rule->second) {
+            if (token.type == Type::Reference) {
+                const auto binding = bindings.find(token.value);
+                if (binding == bindings.end()) {
+                    result.status = dfcn::TranslationStatus::Invalid;
+                    return result;
+                }
+                // Field targets already carry their own normalization and
+                // source identity. In particular, authored text is untouched.
+                result.append(*binding->second.result, binding->second.source_offset);
+            } else {
+                auto target = token.value;
+                normalize_translation(target);
+                const auto literal = literal_index < literals.size()
+                    ? literals[literal_index++] : Literal{{}, 0};
+                std::vector<size_t> origins(target.size(), std::string::npos);
+                if (!literal.source.empty()) {
+                    const bool final_stop = target == "。" || target == "！" || target == "？";
+                    std::fill(origins.begin(), origins.end(),
+                        final_stop ? literal.source.size() - 1 : 0);
+                }
+                result.append(dfcn::TranslationResult::translated(literal.source,
+                    std::move(target), context, std::move(origins)), literal.offset);
+            }
+        }
+        // Source connective tokens can disappear grammatically (articles, for
+        // example), but retain complete coverage without erasing any field.
+        for (; literal_index < literals.size(); ++literal_index) {
+            const auto& literal = literals[literal_index];
+            result.fragments.push_back({literal.offset, literal.offset + literal.source.size(),
+                result.target.size(), result.target.size(), dfcn::TranslationStatus::Translated,
+                context});
+        }
+        if (result.fragments.empty()) result.status = dfcn::TranslationStatus::Translated;
+        result.consumed = result.source.size();
+        result.resource_revision = resource_revision_;
+        return result;
     }
 
     std::optional<std::string> RulesetsManager::translate_with_origins(
@@ -777,6 +955,13 @@ namespace Hooks {
         phrase_resolver_ = std::move(resolver);
     }
 
+    void RulesetsManager::set_context_revision_provider(
+            std::function<std::uint64_t()> provider) {
+        dfcn::TranslationStateScope translation_scope;
+        memo_cache_.clear();
+        context_revision_provider_ = std::move(provider);
+    }
+
     static std::string creature_lookup_key(std::string_view source) {
         std::string key(source);
         for (char& ch : key)
@@ -899,26 +1084,20 @@ namespace Hooks {
             const std::string& text, const std::string& identifier) const {
         const std::string_view kind = external_prefix_kind(identifier);
         const bool creature = kind == "creature";
-        const bool material_list = kind == "material_list";
         if (creature) {
-            if (!creature_name_resolver_ || creature_name_resolver_active_) return {};
-        } else if (material_list) {
-            if (!phrase_resolver_ || material_list_resolver_active_) return {};
-        } else if (kind.empty() || !phrase_resolver_ || phrase_resolver_active_) {
+            if (!creature_name_resolver_) return {};
+        } else if (kind.empty() || !phrase_resolver_) {
             return {};
         }
 
-        // Owner callbacks may query other typed grammar. Prevent a resolver
-        // from re-entering itself, and keep every nested parse out of memo:
-        // a result found with an active resolver is not a normal grammar result.
-        // A material list resolves complete material leaves, which may have
-        // their own typed owner/name. Do not disable those leaf resolvers.
+        // Only the same semantic kind and complete capture is a true callback
+        // cycle. A material/person field can legitimately resolve another kind
+        // or a shorter field while sharing the caller's original work budget.
         struct ResolverGuard {
-            bool& active;
-            explicit ResolverGuard(bool& value) : active(value) { active = true; }
-            ~ResolverGuard() { active = false; }
-        } guard(creature ? creature_name_resolver_active_ :
-                material_list ? material_list_resolver_active_ : phrase_resolver_active_);
+            decltype(active_resolver_calls_)& active;
+            std::pair<std::string, std::string> key;
+            ~ResolverGuard() { active.erase(key); }
+        };
         std::vector<std::shared_ptr<const ResultTree>> results;
         const auto name_byte = [](unsigned char ch) {
             return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') ||
@@ -954,6 +1133,9 @@ namespace Hooks {
             // the enclosing grammar decides where the capture ends.
             const auto source = std::string_view(text).substr(0, end);
             dfcn::translation_work_step();
+            std::pair<std::string, std::string> key{kind, source};
+            if (!active_resolver_calls_.insert(key).second) continue;
+            ResolverGuard guard{active_resolver_calls_, std::move(key)};
             auto translated = creature ? creature_name_resolver_(source)
                 : phrase_resolver_(source, kind);
             if (!translated || translated->empty()) continue;
@@ -1431,12 +1613,22 @@ namespace Hooks {
         size_t level
     ) const {
         dfcn::TranslationWorkFrame translation_work_frame(identifier, text);
-        const bool use_memo = !creature_name_resolver_active_ && !phrase_resolver_active_ &&
-                              !material_list_resolver_active_;
+        // A result found while a callback is suppressed by its active key is
+        // context-dependent; it must not replace an ordinary memo entry.
+        const bool use_memo = active_resolver_calls_.empty();
+        // Freeze this query's identity context for both lookup and insertion.
+        // A nested owner scope can restore a different context before return;
+        // it must never put this query's candidate under that restored key.
+        const std::uint64_t context_revision = use_memo && context_revision_provider_
+            ? context_revision_provider_() : 0;
+        const auto can_store_memo = [&] {
+            return use_memo && (context_revision_provider_
+                ? context_revision_provider_() : 0) == context_revision;
+        };
         // === 0. 记忆化检查 — 两级异构查找，0 次临时字符串分配 ===
         if (use_memo) {
             if (auto outer_it = memo_cache_.find(identifier); outer_it != memo_cache_.end()) {
-                if (auto* cached = outer_it->second.find(text)) {
+                if (auto* cached = outer_it->second.find(text, context_revision)) {
                     return *cached;
                 }
             }
@@ -1445,7 +1637,7 @@ namespace Hooks {
         // === 1. 处理 Replacer 引用（% 前缀）===
         if (!identifier.empty() && identifier[0] == '%') {
             auto results = resolve_replacer(text, identifier, level);
-            if (use_memo) memo_cache_[identifier].insert(text, results);
+            if (can_store_memo()) memo_cache_[identifier].insert(text, results, context_revision);
             return results;
         }
 
@@ -1457,7 +1649,7 @@ namespace Hooks {
         // === 2. 查找规则集 ===
         auto ruleset_it = rulesets_.find(identifier);
         if (ruleset_it == rulesets_.end()) {
-            if (use_memo) memo_cache_[identifier].insert(text, all_results);
+            if (can_store_memo()) memo_cache_[identifier].insert(text, all_results, context_revision);
             return all_results;
         }
         const auto& rules = ruleset_it->second;
@@ -1628,7 +1820,7 @@ namespace Hooks {
         }
 
         // === 4. 缓存结果 — 形成 DAG 边，共享子问题可复用 ===
-        if (use_memo) memo_cache_[identifier].insert(text, all_results);
+        if (can_store_memo()) memo_cache_[identifier].insert(text, all_results, context_revision);
         return all_results;
     }
 

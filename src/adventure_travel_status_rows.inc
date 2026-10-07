@@ -60,8 +60,13 @@ std::unordered_set<int> Overlay::append_adventure_travel_status_paragraphs(
             });
         });
         std::vector<int> target_colors;
-        const auto target = translate_adventure_travel_status(source, colors, target_colors);
-        if (!target || !append_bounded_paragraph(spans, *target,
+        auto result = translate_adventure_travel_status_result(source, colors, target_colors);
+        const auto metadata = std::make_shared<const dfcn::TranslationResult>(result.usable() ? result :
+            preserve_native_translation(source, "travel-status"));
+        const size_t first_match = matches.size();
+        const bool translated = result.usable() && std::any_of(result.fragments.begin(), result.fragments.end(),
+            [](const auto &fragment) { return fragment.status == dfcn::TranslationStatus::Translated; });
+        if (!translated || !append_bounded_paragraph(spans, result.target,
                 rows, matches, only_y, right, right, target_colors)) {
             // Unknown/modded fields remain one intact source paragraph.
             // Retain each native color and reserve every physical tail row.
@@ -70,6 +75,7 @@ std::unordered_set<int> Overlay::append_adventure_travel_status_paragraphs(
                 Match fallback{part.x, part.y, static_cast<int>(part.source.size()),
                     kWorldSiteHistoryRule, native_text_to_utf8(part.source), part.source};
                 fallback.native_hover_untranslated = true;
+                fallback.translation_result = metadata;
                 if (at == begin) fallback.native_help_review_source = source;
                 fallback.layout_x = card.interior.x;
                 fallback.layout_y = part.y;
@@ -81,7 +87,8 @@ std::unordered_set<int> Overlay::append_adventure_travel_status_paragraphs(
                 std::fill_n(rows[part.y].begin() + part.x, part.source.size(), ' ');
                 if (only_y < 0 || only_y == part.y) matches.push_back(std::move(fallback));
             }
-        }
+        } else for (size_t at = first_match; at < matches.size(); ++at)
+            matches[at].translation_result = metadata;
         for (size_t at = begin; at < end; ++at) owned_rows.insert(card.rows[at].y);
         begin = end;
     }

@@ -107,7 +107,8 @@ void Overlay::append_fortress_trade_fields(std::vector<std::string> &rows,
             int display_right, const std::optional<std::string> &target,
             bool centered = false, std::optional<SDL_Rect> box = std::nullopt,
             const std::vector<int> &target_colors = std::vector<int>{},
-            std::string_view complete_source = {}, bool item_caption = false) {
+            std::string_view complete_source = {}, bool item_caption = false,
+            std::shared_ptr<const TranslationResult> translation = {}) {
         if (y < panel->y || y >= bottom || x < panel->x ||
                 end <= x || end > right || display_left < panel->x ||
                 display_right > right || display_right <= display_left) return;
@@ -125,7 +126,9 @@ void Overlay::append_fortress_trade_fields(std::vector<std::string> &rows,
                         complete_source.empty() ? source : complete_source)) : std::string{},
                     context[y].substr(first, last - first)};
                 if (item_caption) match.native_item_caption_source = complete_source;
-                match.native_hover_untranslated = complete && !target;
+                match.translation_result = translation;
+                match.native_hover_untranslated = complete &&
+                    (translation ? translation->has_untranslated() : !target);
                 match.native_picture_caption_box = box;
                 match.layout_x = display_left;
                 match.layout_y = y;
@@ -242,10 +245,12 @@ void Overlay::append_fortress_trade_fields(std::vector<std::string> &rows,
                     complete = capture.complete;
                     break;
                 }
-            append(left, y, end, left, name_right - 1,
-                native_item ? translate_native_trade_item_caption(*native_item)
-                    : translate_fortress_item_caption(complete), false, std::nullopt,
-                {}, complete, true);
+            auto translation = native_item ? translate_native_trade_item_caption_display(*native_item)
+                : translate_fortress_item_caption_display(complete);
+            const auto target = translation.usable()
+                ? std::optional<std::string>(translation.target) : std::nullopt;
+            append(left, y, end, left, name_right - 1, target, false, std::nullopt,
+                {}, complete, true, std::make_shared<const TranslationResult>(std::move(translation)));
             checkbox += 2;
         }
     }

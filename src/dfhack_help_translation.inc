@@ -980,7 +980,7 @@ void Overlay::index_dfhack_output(const Rule &input) {
         if (seen.insert(word).second) dfhack_output_words_[word].push_back(index);
 }
 
-void Overlay::load_dfhack_help_catalog() {
+void Overlay::load_dfhack_help_catalog(std::function<void()> *catalog_publication) {
     const auto directory = fs::u8path(config_.mapping_path).parent_path();
     auto snapshot = std::make_shared<DfhackOutputSnapshot>();
     for (size_t file = 0; file < dfhack_catalog_names_.size(); ++file) {
@@ -1079,7 +1079,13 @@ void Overlay::load_dfhack_help_catalog() {
         std::sort(fragments.begin(), fragments.end(), [](const auto &a, const auto &b) {
             return a.first.size() > b.first.size();
         });
-    g_dfhack_output_snapshot.store(std::move(snapshot), std::memory_order_release);
+    if (catalog_publication) {
+        *catalog_publication = [snapshot = std::move(snapshot)] {
+            g_dfhack_output_snapshot.store(snapshot, std::memory_order_release);
+        };
+    } else {
+        g_dfhack_output_snapshot.store(std::move(snapshot), std::memory_order_release);
+    }
 }
 
 void Overlay::publish_dfhack_caption_snapshot() {

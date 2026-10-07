@@ -231,6 +231,7 @@ void Overlay::append_native_split_ui_messages(std::vector<std::string> &screen_r
                 captures, nullptr, nullptr, &resolved);
             if (speaker.empty()) return false;
             std::string target = speaker;
+            std::optional<TranslationResult> requirement_translation;
             std::vector<std::pair<std::string, int>> body;
             const auto translated_template = [&](std::string_view key, std::string_view value)
                     -> std::optional<std::string> {
@@ -283,11 +284,12 @@ void Overlay::append_native_split_ui_messages(std::vector<std::string> &screen_r
                             static_cast<int>(item->source.size()), body_y, suffix)) return false;
                     // Both branches call the native job-item formatter,
                     // also used for recipe and work-order requirements.
-                    const auto requirement = translate_workshop_recipe_source(item->source);
-                    if (!requirement || !append_body(translated_template(screams
+                    const auto requirement = translate_workshop_recipe_source_display(item->source);
+                    if (!requirement.usable() || !append_body(translated_template(screams
                             ? "Workshop mood demand: \"I must have {s}!\""
-                            : "Workshop mood brood: \"Yes.  I need {s}.\"", *requirement), *item))
+                            : "Workshop mood brood: \"Yes.  I need {s}.\"", requirement.target), *item))
                         return false;
+                    requirement_translation = requirement;
                 }
             } else if (branch->source == "mutters") {
                 const auto *artifact = at(first.x + 1, body_y);
@@ -355,8 +357,41 @@ void Overlay::append_native_split_ui_messages(std::vector<std::string> &screen_r
                 color_text(speaker, person_color);
             }
             for (const auto &[text, color] : body) color_text('\n' + text, color);
-            return append_bounded_paragraph(std::move(rows), target,
-                screen_rows, result, only_y, right, right, target_colors, false, first.x);
+            std::string complete_source;
+            for (const auto &row : rows) {
+                if (!complete_source.empty()) complete_source.push_back('\n');
+                complete_source += row.source;
+            }
+            auto translation = TranslationResult::translated(complete_source, target, "workshop-mood");
+            translation.policy = TranslationPolicy::Display;
+            translation.resource_revision = RULESETS.resource_revision();
+            if (requirement_translation && requirement_translation->has_untranslated()) {
+                const auto source_at = complete_source.find(requirement_translation->source);
+                const auto target_at = target.find(requirement_translation->target);
+                if (source_at != std::string::npos && target_at != std::string::npos) {
+                    for (auto fragment : requirement_translation->fragments) {
+                        fragment.source_begin += source_at;
+                        fragment.source_end += source_at;
+                        fragment.target_begin += target_at;
+                        fragment.target_end += target_at;
+                        translation.fragments.push_back(std::move(fragment));
+                    }
+                    translation.status = requirement_translation->status == TranslationStatus::WorkLimited
+                        ? TranslationStatus::WorkLimited : TranslationStatus::Partial;
+                } else {
+                    // The producer proves the whole record even when native
+                    // wrapping prevents an exact inner byte mapping.
+                    translation.fragments.push_back({0, complete_source.size(), 0, target.size(),
+                        requirement_translation->status, "recipe"});
+                    translation.status = requirement_translation->status == TranslationStatus::WorkLimited
+                        ? TranslationStatus::WorkLimited : TranslationStatus::Partial;
+                }
+            }
+            const size_t output_begin = result.size();
+            if (!append_bounded_paragraph(std::move(rows), target,
+                    screen_rows, result, only_y, right, right, target_colors, false, first.x)) return false;
+            attach_item_display_result(result, output_begin, translation);
+            return true;
         };
         // The workshop's mood branch uses fixed addst rows, not a wrapped
         // paragraph: introduction at y/y+2, full unit identity at y+3,

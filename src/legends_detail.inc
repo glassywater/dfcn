@@ -2936,10 +2936,41 @@ void Overlay::layout_legends_details(SDL_Renderer *renderer) {
             auto flow = translate_history_flow(*history.rows.at(rows.front()), rows,
                 history_context, left, text_right, viewport);
             if (!flow) { ++untranslated_events; continue; }
+            const auto &document = *history.rows.at(rows.front());
+            std::string complete_source;
+            for (const auto &token : document.tokens) {
+                if (!complete_source.empty()) complete_source += ' ';
+                complete_source += token.source;
+            }
+            dfcn::TranslationResult event_result;
+            for (const auto &piece : flow->pieces) {
+                if (piece.translation_result) {
+                    auto field = *piece.translation_result;
+                    const size_t at = complete_source.find(field.source);
+                    if (at == std::string::npos) {
+                        // The typed RAW field can differ from the native
+                        // formatter's spelling; collect its complete parent
+                        // context without guessing a substring position.
+                        field.source = complete_source;
+                        for (auto &fragment : field.fragments) {
+                            fragment.source_begin = 0;
+                            fragment.source_end = complete_source.size();
+                        }
+                        event_result.append(field);
+                    } else event_result.append(field, at);
+                } else event_result.append(dfcn::TranslationResult::translated("", piece.target,
+                    "history-production"));
+            }
+            event_result.source = std::move(complete_source);
+            event_result.consumed = event_result.source.size();
+            event_result.owner = "native-history:" + std::to_string(sequence);
+            event_result.resource_revision = RULESETS.resource_revision();
+            const auto event_metadata = std::make_shared<const dfcn::TranslationResult>(std::move(event_result));
             for (int y : rows)
                 for (Match *match : body[y]) {
                     match->legends_flow = flow;
                     match->native_help_source_only = false;
+                    match->translation_result = event_metadata;
                 }
             for (int y : rows) native_rows.erase(y);
             body[rows.front()].front()->legends_flow_owner = true;

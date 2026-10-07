@@ -9,6 +9,7 @@ struct NativeDfhackSitemapLuaApi {
     const char *(*pushstring)(NativeDfhackLuaState *, const char *) = nullptr;
     int (*rawget)(NativeDfhackLuaState *, int) = nullptr;
     int (*rawgeti)(NativeDfhackLuaState *, int, int64_t) = nullptr;
+    size_t (*rawlen)(NativeDfhackLuaState *, int) = nullptr;
     int (*getmetatable)(NativeDfhackLuaState *, int) = nullptr;
     const void *(*topointer)(NativeDfhackLuaState *, int) = nullptr;
     int (*rawequal)(NativeDfhackLuaState *, int, int) = nullptr;
@@ -17,6 +18,7 @@ struct NativeDfhackSitemapLuaApi {
     NativeDfhackLuaCFunction paint_string = nullptr;
     std::string painter_source, list_source, filtered_source, sitemap_source, notify_source, zone_source;
     std::string label_source, cycle_source, overlay_source, asyncexport_source, prioritize_source;
+    std::string wrapped_source, control_panel_source;
 };
 static NativeDfhackSitemapLuaApi g_native_dfhack_sitemap_lua_api;
 static std::atomic_bool g_native_dfhack_sitemap_lua_bound{false};
@@ -38,10 +40,19 @@ struct NativeDfhackSitemapText {
 static std::mutex g_native_dfhack_sitemap_text_mutex;
 static std::vector<NativeDfhackSitemapText> g_native_dfhack_sitemap_text;
 static uint64_t g_native_dfhack_sitemap_text_epoch = 0;
+struct NativeDfhackControlPanelCapture {
+    const unsigned char *grid = nullptr;
+    int dimx = 0, dimy = 0;
+    bool top_layer = false;
+    uint64_t epoch = 0;
+    NativeDfhackControlPanelText text;
+};
+static std::vector<NativeDfhackControlPanelCapture> g_native_dfhack_control_panel_text;
 
 static void clear_native_dfhack_sitemap_text() {
     std::lock_guard<std::mutex> lock(g_native_dfhack_sitemap_text_mutex);
     g_native_dfhack_sitemap_text.clear();
+    g_native_dfhack_control_panel_text.clear();
     g_native_dfhack_sitemap_text_epoch = 0;
 }
 
@@ -169,6 +180,78 @@ static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
             }
         }
         if (current) result.push_back(text.overlay);
+    }
+    return result;
+}
+
+static std::vector<NativeDfhackControlPanelText> native_dfhack_control_panel_texts(
+        const graphicst *gps) {
+    std::vector<NativeDfhackControlPanelText> result;
+    if (!native_dfhack_logo_grid_valid(gps)) return result;
+    const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+    std::lock_guard<std::mutex> lock(g_native_dfhack_sitemap_text_mutex);
+    if (epoch != g_native_dfhack_sitemap_text_epoch) return result;
+    const auto runs = [&](const NativeDfhackControlPanelCapture &capture) {
+        std::vector<std::pair<size_t, size_t>> visible;
+        const auto &text = capture.text;
+        if (capture.epoch != epoch || capture.dimx != gps->dimx || capture.dimy != gps->dimy ||
+                text.x < 0 || text.y < 0 || text.y >= gps->dimy || text.visible.empty() ||
+                text.visible.size() > static_cast<size_t>(gps->dimx) ||
+                text.x > gps->dimx - static_cast<int>(text.visible.size())) return visible;
+        size_t begin = 0;
+        bool open = false, nonblank = false;
+        for (size_t at = 0; at <= text.visible.size(); ++at) {
+            bool current = false;
+            if (at < text.visible.size()) {
+                const size_t tile = static_cast<size_t>(text.x + static_cast<int>(at)) *
+                    gps->dimy + text.y;
+                const auto origin = native_text_grid_origin(*gps, tile,
+                    native_ui_top_layer_at(*gps, tile));
+                current = origin.grid && origin.grid == capture.grid &&
+                    origin.top_layer == capture.top_layer &&
+                    origin.grid[tile * 8] == static_cast<unsigned char>(text.visible[at]);
+            }
+            if (current) {
+                if (!open) { begin = at; open = true; nonblank = false; }
+                nonblank = nonblank || text.visible[at] != ' ';
+            } else if (open) {
+                if (nonblank) visible.emplace_back(begin, at);
+                open = false;
+            }
+        }
+        return visible;
+    };
+    std::vector<std::vector<std::pair<size_t, size_t>>> current_runs;
+    current_runs.reserve(g_native_dfhack_control_panel_text.size());
+    for (const auto &capture : g_native_dfhack_control_panel_text)
+        current_runs.push_back(runs(capture));
+    for (size_t index = 0; index < g_native_dfhack_control_panel_text.size(); ++index) {
+        const auto &capture = g_native_dfhack_control_panel_text[index];
+        const auto &text = capture.text;
+        if (capture.epoch != epoch || capture.dimx != gps->dimx || capture.dimy != gps->dimy)
+            continue;
+        if (current_runs[index].empty()) {
+            if (text.role != NativeDfhackControlPanelTextRole::Wrapped) continue;
+            bool alive = false;
+            for (size_t other = 0; other < g_native_dfhack_control_panel_text.size(); ++other) {
+                const auto &candidate = g_native_dfhack_control_panel_text[other];
+                if (!current_runs[other].empty() && candidate.text.widget_id == text.widget_id &&
+                        candidate.text.parent_id == text.parent_id &&
+                        candidate.text.document == text.document) { alive = true; break; }
+            }
+            if (!alive) continue;
+            auto preserved = text;
+            preserved.visible.clear();
+            result.push_back(std::move(preserved));
+            continue;
+        }
+        for (const auto &[begin, end] : current_runs[index]) {
+            auto visible = text;
+            visible.x += static_cast<int>(begin);
+            visible.visible_offset += static_cast<int>(begin);
+            visible.visible = text.visible.substr(begin, end - begin);
+            result.push_back(std::move(visible));
+        }
     }
     return result;
 }
@@ -675,6 +758,8 @@ static bool native_dfhack_notification_list_owner(NativeDfhackLuaState *state,
     return true;
 }
 
+#include "native_dfhack_control_panel_capture.inc"
+
 static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noexcept {
     NativeInputCallbackScope callback;
     try {
@@ -720,8 +805,11 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
                 visible_length > full_length - static_cast<size_t>(dx) ||
                 std::memcmp(full + dx, visible, visible_length)) return;
         stack.settop(state, top);
-        auto overlay = native_dfhack_overlay_label_text(state, std::string_view(full, full_length));
-        bool owned = overlay.has_value();
+        auto control_panel = native_dfhack_control_panel_label_text(state,
+            std::string_view(full, full_length), static_cast<int>(dx));
+        auto overlay = control_panel ? std::optional<NativeDfhackOverlayText>{} :
+            native_dfhack_overlay_label_text(state, std::string_view(full, full_length));
+        bool owned = control_panel.has_value() || overlay.has_value();
         NativeDfhackChoiceTextOwner owner = NativeDfhackChoiceTextOwner::Sitemap;
         if (owned) owner = NativeDfhackChoiceTextOwner::OverlayLabel;
         std::string notification_name;
@@ -746,7 +834,7 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
             }
             break;
         }
-        if (!owned || (!overlay && dx != 0)) return;
+        if (!owned || (!overlay && !control_panel && dx != 0)) return;
         int valid_x = 0, valid_y = 0;
         const int64_t x = stack.tointegerx(state, 2, &valid_x);
         const int64_t y = stack.tointegerx(state, 3, &valid_y);
@@ -777,7 +865,25 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
         std::lock_guard<std::mutex> lock(g_native_dfhack_sitemap_text_mutex);
         if (text.epoch != g_native_dfhack_sitemap_text_epoch) {
             g_native_dfhack_sitemap_text.clear();
+            g_native_dfhack_control_panel_text.clear();
             g_native_dfhack_sitemap_text_epoch = text.epoch;
+        }
+        if (control_panel) {
+            control_panel->x = text.x;
+            control_panel->y = text.y;
+            control_panel->full_x = text.x - static_cast<int>(dx);
+            control_panel->visible_offset = static_cast<int>(dx);
+            control_panel->visible = text.visible;
+            std::erase_if(g_native_dfhack_control_panel_text, [&](const auto &previous) {
+                return previous.text.widget_id == control_panel->widget_id &&
+                    previous.text.parent_id == control_panel->parent_id &&
+                    previous.text.x == text.x && previous.text.y == text.y &&
+                    previous.top_layer == text.top_layer;
+            });
+            if (g_native_dfhack_control_panel_text.size() < 4096)
+                g_native_dfhack_control_panel_text.push_back({text.grid, text.dimx, text.dimy,
+                    text.top_layer, text.epoch, std::move(*control_panel)});
+            return;
         }
         std::erase_if(g_native_dfhack_sitemap_text, [&](const auto &previous) {
             return previous.x == text.x && previous.y == text.y &&
@@ -824,6 +930,8 @@ static bool bind_native_dfhack_sitemap_lua(HMODULE module) {
         "?lua_rawget@@YAHPEAUlua_State@@H@Z"));
     api.rawgeti = reinterpret_cast<decltype(api.rawgeti)>(GetProcAddress(lua,
         "?lua_rawgeti@@YAHPEAUlua_State@@H_J@Z"));
+    api.rawlen = reinterpret_cast<decltype(api.rawlen)>(GetProcAddress(lua,
+        "?lua_rawlen@@YA_KPEAUlua_State@@H@Z"));
     api.getmetatable = reinterpret_cast<decltype(api.getmetatable)>(GetProcAddress(lua,
         "?lua_getmetatable@@YAHPEAUlua_State@@H@Z"));
     api.topointer = reinterpret_cast<decltype(api.topointer)>(GetProcAddress(lua,
@@ -837,7 +945,7 @@ static bool bind_native_dfhack_sitemap_lua(HMODULE module) {
     if (!stack.gettop || !stack.settop || !stack.checkstack || !stack.type ||
             !stack.isinteger || !stack.tointegerx || !stack.tolstring || !stack.tocfunction ||
             !stack.getstack || !stack.getinfo || !stack.getlocal || !api.pushstring ||
-            !api.rawget || !api.rawgeti || !api.getmetatable || !api.topointer ||
+            !api.rawget || !api.rawgeti || !api.rawlen || !api.getmetatable || !api.topointer ||
             !api.rawequal || !api.toboolean || !api.getupvalue) return false;
     // Bind the native C function through its immutable 53.16-r2 LuaApi.cpp
     // registration, not the script-replaceable dfhack.screen Lua table.
@@ -881,6 +989,8 @@ static bool bind_native_dfhack_sitemap_lua(HMODULE module) {
     api.notify_source = key(hack / L"scripts" / L"gui" / L"notify.lua");
     api.zone_source = key(hack / L"lua" / L"plugins" / L"zone.lua");
     api.label_source = key(hack / L"lua" / L"gui" / L"widgets" / L"labels" / L"label.lua");
+    api.wrapped_source = key(hack / L"lua" / L"gui" / L"widgets" / L"labels" / L"wrapped_label.lua");
+    api.control_panel_source = key(hack / L"scripts" / L"gui" / L"control-panel.lua");
     api.cycle_source = key(hack / L"lua" / L"gui" / L"widgets" / L"labels" / L"cycle_hotkey_label.lua");
     api.overlay_source = key(hack / L"lua" / L"plugins" / L"overlay.lua");
     api.asyncexport_source = key(hack / L"scripts" / L"internal" / L"exportlegends" / L"asyncexport.lua");
@@ -1048,6 +1158,8 @@ static std::optional<std::string> lookup_native_dfhack_notification_text(
 static std::vector<NativeDfhackNotificationText> native_dfhack_notification_texts(
         const graphicst *) { return {}; }
 static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
+        const graphicst *) { return {}; }
+static std::vector<NativeDfhackControlPanelText> native_dfhack_control_panel_texts(
         const graphicst *) { return {}; }
 static std::optional<std::string> lookup_native_dfhack_animal_assignment_text(
         const graphicst *, int, int, std::string_view) { return std::nullopt; }

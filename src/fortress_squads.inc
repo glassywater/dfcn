@@ -146,6 +146,10 @@ void Overlay::append_fortress_squad_alias_rows(std::vector<std::string> &rows,
                     }
                 match.native_hover_untranslated = false;
                 match.native_help_review_source.clear();
+                auto alias_result = TranslationResult::translated(source, *draw.squad_alias_target, "squad.alias");
+                alias_result.status = TranslationStatus::PreservedAuthored;
+                alias_result.fragments.front().status = alias_result.status;
+                match.translation_result = std::make_shared<TranslationResult>(std::move(alias_result));
                 if (match.layout_clip_right <= first && draw.draw_clip) {
                     match.layout_x = first;
                     match.layout_clip_right = draw.draw_clip->x + draw.draw_clip->w;

@@ -19,10 +19,10 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         return false;
     };
     const bool refresh_name_context = has_entity_names(has_entity_names, name_context, 0);
-    const uint64_t parent_revision = 0;
+    const uint64_t parent_revision = RULESETS.resource_revision();
     if (document.sequence && !refresh_name_context) {
         const auto found = history_event_translation_cache_.find(document.sequence);
-        if (found != history_event_translation_cache_.end()) {
+        if (found != history_event_translation_cache_.end() && found->second.parent_revision == parent_revision) {
             history_event_translation_order_.splice(history_event_translation_order_.end(),
                 history_event_translation_order_, found->second.recency);
             return found->second.pieces;
@@ -68,11 +68,21 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             neutral = token.color;
             break;
         }
-    const auto piece = [](std::string text, int color, size_t source_end = 0) {
+    std::vector<std::shared_ptr<const dfcn::TranslationResult>> preserved_fields;
+    const auto preserve_field = [&](std::string_view source, std::string_view kind) {
+        auto result = preserve_native_translation(source, kind);
+        result.owner = "native-history:" + std::to_string(document.sequence);
+        auto shared = std::make_shared<const dfcn::TranslationResult>(std::move(result));
+        preserved_fields.push_back(shared);
+        return shared->target;
+    };
+    const auto piece = [&](std::string text, int color, size_t source_end = 0) {
         LegendsTextPiece result;
         result.target = std::move(text);
         result.foreground_rgb = color;
         result.source_end = source_end;
+        for (const auto &field : preserved_fields)
+            if (field->target == result.target) { result.translation_result = field; break; }
         return result;
     };
     const auto apply_rule = [&](const Rule &rule, const std::vector<Pieces> &fields)
@@ -211,21 +221,38 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         const auto label = curse != event.texts.end() && !curse->second.empty()
             ? std::optional<std::string>(curse->second)
             : native_history_figure_curse_suffix(figure.id, figure.species);
-        if (!label) return std::nullopt;
+        if (!label) return preserve_field(figure.species, "creature-species");
         const std::string suffix = " " + *label;
-        if (!figure.species.ends_with(suffix)) return std::nullopt;
+        if (!figure.species.ends_with(suffix))
+            return preserve_field(figure.species, "creature-species");
         // The native formatter joins a RAW caste and a separately stored
         // interaction title. An unknown title must not invalidate the caste
         // or turn the author's entire historical event back into English.
-        const auto species = translate_creature_descriptor(std::string_view(
+        auto species = translate_creature_descriptor(std::string_view(
             figure.species).substr(0, figure.species.size() - suffix.size()));
-        if (!species) return std::nullopt;
+        if (!species) species = preserve_field(std::string_view(figure.species).substr(
+            0, figure.species.size() - suffix.size()), "creature-species");
         auto title = translate_creature_descriptor(*label);
         if (!title) title = translate_english_character_name(*label);
-        if (!title || title->empty())
-            title = contains_cjk_utf8(*label) ? native_text_to_utf8(*label)
-                : transliterate_native_history_name(*label);
-        return *species + "／" + *title;
+        if (!title || title->empty()) title = preserve_field(*label, "creature-interaction-title");
+        const auto base = std::string_view(figure.species).substr(0,
+            figure.species.size() - suffix.size());
+        dfcn::TranslationResult species_result;
+        const auto append_component = [&](std::string_view raw, const std::string &target,
+                std::string_view kind, size_t offset) {
+            for (const auto &field : preserved_fields)
+                if (field->source == raw && field->target == target) {
+                    species_result.append(*field, offset);
+                    return;
+                }
+            species_result.append(dfcn::TranslationResult::translated(raw, target, kind), offset);
+        };
+        append_component(base, *species, "creature-species", 0);
+        species_result.append(dfcn::TranslationResult::translated(" ", "／", "creature-title-separator"), base.size());
+        append_component(*label, *title, "creature-interaction-title", base.size() + 1);
+        species_result.owner = "native-history:" + std::to_string(document.sequence);
+        preserved_fields.push_back(std::make_shared<const dfcn::TranslationResult>(std::move(species_result)));
+        return preserved_fields.back()->target;
     };
     const auto subject = [&](NativeHistoryObjectKind kind, int32_t id, bool include_species = true,
                             int32_t subid = -1, bool prefer_name = true)
@@ -239,6 +266,7 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             return std::nullopt;
         }
         std::optional<std::string> name;
+        bool preserved_reference = false;
         const SiteReferenceSource *site_source = nullptr;
         const bool unnamed_figure = kind == NativeHistoryObjectKind::Figure &&
             !found->name.has_name && found->label_key.empty() && !found->species.empty();
@@ -253,6 +281,7 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             const auto description = event.texts.find("artifact_label." + std::to_string(id));
             if (description == event.texts.end()) return std::nullopt;
             name = translate_item_description_term(description->second);
+            if (!name) name = preserve_field(description->second, "artifact-description");
         } else if (kind == NativeHistoryObjectKind::Artifact && found->native_type == 1 &&
                 found->name.has_name && !found->name.first_name.empty() &&
                 (found->name.nickname.empty() || found->name.nickname_mode == 1)) {
@@ -260,6 +289,7 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             // ordinary artifacts use its WORD slots. Preserve any separate
             // nickname/WORD components through the same native name renderer.
             name = translate_legends_book(found->name.first_name);
+            if (!name) name = preserve_field(found->name.first_name, "artifact-title");
             NativeHistoryName remaining = found->name;
             remaining.first_name.clear();
             const bool has_remaining = !remaining.nickname.empty() ||
@@ -267,8 +297,25 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
                     [](const auto &word) { return !word.id.empty() && word.has_form; });
             if (has_remaining) {
                 const auto suffix = translate_history_name(remaining);
-                if (!name || !suffix) return std::nullopt;
-                if (!suffix->empty()) *name += "·" + *suffix;
+                if (!suffix) {
+                    // The snapshot has no independent display string for
+                    // the remaining WORD/nickname components. Preserve the
+                    // complete native artifact field rather than guessing
+                    // their source position or discarding this whole event.
+                    name.reset();
+                    if (!found->name.native_name.empty())
+                        name = preserve_field(found->name.native_name, "artifact-identity");
+                } else if (!suffix->empty()) {
+                    const auto previous = std::find_if(preserved_fields.begin(), preserved_fields.end(),
+                        [&](const auto &field) { return field->target == *name; });
+                    if (previous != preserved_fields.end()) {
+                        auto combined = **previous;
+                        combined.append(dfcn::TranslationResult::translated("", "·" + *suffix,
+                            "artifact-name-suffix"));
+                        name = combined.target;
+                        preserved_fields.push_back(std::make_shared<const dfcn::TranslationResult>(std::move(combined)));
+                    } else *name += "·" + *suffix;
+                }
             }
         } else if (kind == NativeHistoryObjectKind::Building && found->native_type == 6 &&
                 found->label_key.empty() && (!prefer_name || !found->name.has_name)) {
@@ -320,15 +367,50 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
                     if (source.size() != trim_view(site_source->source).size())
                         name = translate_site_display(found->name, source);
                 }
-                if (!name) name = native_text_to_utf8(site_source->source);
+                if (!name) name = preserve_field(site_source->source, "site-name");
             } else name = translate_site_name(found->name);
         }
         else name = translate_history_name(found->name,
             kind == NativeHistoryObjectKind::Figure || kind == NativeHistoryObjectKind::Identity);
         if (!name) {
-            failure_detail = "subject-name-untranslated; kind=" + std::to_string(static_cast<int>(kind)) +
-                "; id=" + std::to_string(id) + "; subid=" + std::to_string(subid);
-            return std::nullopt;
+            // A failed name parser does not revoke the native object binding.
+            // Prefer one uninterrupted displayed link, never join separate
+            // mentions of the same ID or guess a name from unlinked prose.
+            const int expected_link = kind == NativeHistoryObjectKind::Figure ? 0 :
+                kind == NativeHistoryObjectKind::Site ? 1 :
+                kind == NativeHistoryObjectKind::Artifact ? 2 :
+                kind == NativeHistoryObjectKind::Region ? 4 :
+                kind == NativeHistoryObjectKind::Underground ? 5 :
+                kind == NativeHistoryObjectKind::Entity ? 6 :
+                kind == NativeHistoryObjectKind::Building ? 7 :
+                kind == NativeHistoryObjectKind::Collection ? 9 : -2;
+            for (size_t at = 0; at < document.tokens.size() && !name; ++at) {
+                const auto &first = document.tokens[at];
+                if (first.link_id != id || (first.link_type != expected_link &&
+                        !(kind == NativeHistoryObjectKind::Artifact && first.link_type == 3)) ||
+                        (subid >= 0 && first.link_subid != subid)) continue;
+                std::string native;
+                for (; at < document.tokens.size(); ++at) {
+                    const auto &token = document.tokens[at];
+                    if (token.link_type != first.link_type || token.link_id != first.link_id ||
+                            token.link_subid != first.link_subid) break;
+                    if (!native.empty()) native += ' ';
+                    native += token.source;
+                }
+                if (!native.empty()) {
+                    name = preserve_field(native, "native-subject");
+                    preserved_reference = true;
+                }
+            }
+            if (!name && !found->raw_title.empty())
+                name = preserve_field(found->raw_title, "native-title");
+            if (!name && !found->name.native_name.empty())
+                name = preserve_field(found->name.native_name, "native-subject");
+            if (!name) {
+                failure_detail = "subject-name-source-missing; kind=" + std::to_string(static_cast<int>(kind)) +
+                    "; id=" + std::to_string(id) + "; subid=" + std::to_string(subid);
+                return std::nullopt;
+            }
         }
         const int link_type = kind == NativeHistoryObjectKind::Figure ? 0 :
             kind == NativeHistoryObjectKind::Site ? 1 :
@@ -365,12 +447,10 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         // A participant is identified by its native object reference. Its
         // species is independently typed and never split out of a sentence.
         Pieces result{piece(*name, color, last)};
-        if (include_species && !unnamed_figure && kind == NativeHistoryObjectKind::Figure && !found->species.empty()) {
+        if (include_species && !unnamed_figure && !preserved_reference &&
+                kind == NativeHistoryObjectKind::Figure && !found->species.empty()) {
             auto species = figure_species(*found);
-            if (!species) {
-                failure_detail = "species-untranslated; id=" + std::to_string(id) + "; raw=" + found->species;
-                return std::nullopt;
-            }
+            if (!species) species = preserve_field(found->species, "creature-species");
             auto actor = apply("the {s} {n}",
                 {Pieces{piece(*species, color, last)}, result});
             if (!actor) return std::nullopt;
@@ -437,7 +517,8 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         if (history_semantic_templates_.contains(scoped)) return apply(scoped, {});
         if (const auto label = translate_legends_office(title))
             return Pieces{piece(*label, neutral)};
-        failure_detail = "office-missing; key=" + std::string(title);
+        if (!title.empty()) return Pieces{piece(preserve_field(title, "native-office"), neutral)};
+        failure_detail = "office-source-missing";
         return std::nullopt;
     };
     const auto structure = [&](int32_t site_id, int32_t building_id, bool prefer_name = true) {
@@ -776,8 +857,8 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             }
         }
         const auto complete = [](const std::optional<std::string> &value) {
-            return value && !value->empty() && std::none_of(value->begin(), value->end(),
-                [](unsigned char ch) { return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'); });
+            std::vector<uint32_t> codepoints;
+            return value && !value->empty() && decode_utf8(*value, codepoints);
         };
         const auto literal = [&](const std::string &key) -> std::optional<std::string> {
             const auto parts = term(key);
@@ -811,9 +892,8 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         if (!complete(translated)) {
             static constexpr const char *kinds[] = {"description", "item-description", "instrument-description",
                 "saved-inscription", "raw-name"};
-            failure_detail = "source-text-untranslated; source=" + std::string(kinds[static_cast<size_t>(kind)]) +
-                "; raw=" + cp437_to_utf8(source.substr(0, 512));
-            return std::nullopt;
+            if (source.empty()) return std::nullopt;
+            translated = preserve_field(raw, kinds[static_cast<size_t>(kind)]);
         }
         failure_detail = previous_failure;
         return translated;

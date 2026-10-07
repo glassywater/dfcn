@@ -265,6 +265,7 @@ void Overlay::append_character_overview_footer(
         std::vector<int> colors; // One native color per CP437 source byte.
         std::optional<std::string> target;
         std::vector<size_t> origins;
+        dfcn::TranslationResult result;
     };
     auto rgb_at = [&](int x, int y) {
         bool top = false;
@@ -368,8 +369,15 @@ void Overlay::append_character_overview_footer(
         return true;
     };
     auto translate_memory = [&](Paragraph &paragraph) {
-        paragraph.target = translate_character_thought_paragraph(
-            paragraph.source, &paragraph.origins);
+        paragraph.result = translate_character_thought_paragraph_result(paragraph.source);
+        if (paragraph.result.usable() && std::any_of(paragraph.result.fragments.begin(),
+                paragraph.result.fragments.end(), [](const auto &fragment) {
+                    return fragment.status == dfcn::TranslationStatus::Translated &&
+                        fragment.kind != "thought-separator";
+                })) {
+            paragraph.target = paragraph.result.target;
+            paragraph.origins = paragraph.result.origins;
+        } else paragraph.target.reset();
     };
     const auto rich_memory_owns = [&](int row_y) {
         // Overview's native rich-text calls now bind the actual recent-
@@ -501,20 +509,26 @@ void Overlay::append_character_overview_footer(
             }
         }
         std::string target;
+        dfcn::TranslationResult footer_result;
         std::vector<int> foregrounds;
         std::vector<Match> source_rows;
         if (quote.target) {
             source_rows = quote.rows;
             target = *quote.target;
             append_colors(quote, foregrounds);
+            footer_result.append(dfcn::TranslationResult::translated(quote.source,
+                *quote.target, "overview-quote", quote.origins));
         }
         if (memory.target) {
             if (quote.target) {
                 target += "\n\n";
                 foregrounds.insert(foregrounds.end(), 2, foregrounds.back());
+                footer_result.append(dfcn::TranslationResult::translated("\n\n", "\n\n",
+                    "footer-separator"), footer_result.source.size());
             }
             target += *memory.target;
             append_colors(memory, foregrounds);
+            footer_result.append(memory.result, footer_result.source.size());
             source_rows.insert(source_rows.end(), memory.rows.begin(), memory.rows.end());
         } else if (!memory.rows.empty()) {
             reserve_unknown(memory);
@@ -561,6 +575,9 @@ void Overlay::append_character_overview_footer(
             y = last_source_y;
             continue;
         }
+        footer_result.owner = "native-character-overview-footer";
+        const auto result_metadata = std::make_shared<const dfcn::TranslationResult>(std::move(footer_result));
+        for (auto &match : fitted) match.translation_result = result_metadata;
         claim_rows(source_rows);
         // Clear native ink BEFORE drawing either Chinese paragraph. Each
         // native color run needs its own clear color: a white-only erase can

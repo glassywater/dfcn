@@ -34,17 +34,16 @@ void Overlay::append_workshop_material_translations(
         if (!field.workshop_task_detail && field.button_box) continue;
         for (const auto &row : field.rows) {
             const std::string source(row_source(row));
-            auto target = exact_literal_translation(source);
-            if (!target && !field.button_box) target = translate_fortress_activity(source);
-            const bool complete = target && !target->empty() &&
-                target->find("[C:") == std::string::npos &&
-                std::none_of(target->begin(), target->end(), [](unsigned char ch) {
-                    return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') ||
-                        ch == '\r' || ch == '\n';
-                });
+            const auto exact = exact_literal_translation(source);
+            auto result = exact ? TranslationResult::translated(source, *exact, "workshop-heading")
+                : !field.button_box ? translate_fortress_activity_display(source)
+                : preserved_item_field(source, "workshop-heading");
+            const bool complete = result.usable() && !result.has_untranslated();
             Match match{row.x, row.y, static_cast<int>(row.source.size()),
                 kWorkshopMaterialFieldRule,
-                complete ? *target : native_text_to_utf8(row.source), row.source};
+                result.usable() && item_display_target_valid(result.target)
+                    ? result.target : native_text_to_utf8(source), row.source};
+            match.translation_result = std::make_shared<const TranslationResult>(std::move(result));
             match.layout_foreground_rgb = row.foregrounds.front();
             match.native_hover_untranslated = !complete;
             if (!complete) match.native_help_review_source = source;
@@ -100,12 +99,16 @@ void Overlay::append_workshop_material_translations(
                 target = translate_material_name(wood, true);
             }
             if (!target) target = translate_material_name(source);
-            if (!target || target->empty() || target->find("[C:") != std::string::npos ||
-                target->find_first_of("\r\n") != std::string::npos) continue;
-            if (!wood.empty() && contains_cjk_utf8(*target))
+            if (target && !item_display_target_valid(*target)) target.reset();
+            if (target && !wood.empty() && contains_cjk_utf8(*target))
                 *target = workshop_wood_material_name(std::move(*target));
+            auto result = target ? TranslationResult::translated(source, *target, "material")
+                : preserved_item_field(source, "material");
             Match match{row.x, row.y, static_cast<int>(row.source.size()),
-                kWorkshopMaterialFieldRule, *target, row.source};
+                kWorkshopMaterialFieldRule, result.target, row.source};
+            match.native_hover_untranslated = result.has_untranslated();
+            if (result.has_untranslated()) match.native_help_review_source = std::string(source);
+            match.translation_result = std::make_shared<const TranslationResult>(std::move(result));
             match.layout_foreground_rgb = row.foregrounds.front();
             if (only_y < 0 || only_y == row.y) matches.push_back(std::move(match));
             std::fill_n(rows[row.y].begin() + row.x, row.source.size(), ' ');

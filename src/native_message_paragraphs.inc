@@ -1,5 +1,28 @@
 // Share paragraph layout and source ownership between early native reports
 // and the later complete UI message catalog.
+std::shared_ptr<const TranslationResult> Overlay::announcement_result_metadata(std::string_view source) const {
+    const auto prefix = std::to_string(native_identity_translation_context()) + '\x1f';
+    const auto original = announcement_translation_cache_.find(prefix + std::string(source));
+    if (original != announcement_translation_cache_.end() && original->second.result.usable())
+        return std::make_shared<TranslationResult>(original->second.result);
+    std::vector<size_t> source_origins;
+    const auto native = native_announcement_kinship_source(source, &source_origins);
+    if (!native) return {};
+    const auto cached = announcement_translation_cache_.find(prefix + *native);
+    if (cached == announcement_translation_cache_.end() || !cached->second.result.usable()) return {};
+    auto result = std::make_shared<TranslationResult>(cached->second.result);
+    for (auto &origin : result->origins)
+        origin = origin < source_origins.size() ? source_origins[origin] : std::string::npos;
+    for (auto &fragment : result->fragments) {
+        fragment.source_begin = fragment.source_begin < source_origins.size()
+            ? source_origins[fragment.source_begin] : source.size();
+        fragment.source_end = fragment.source_end && fragment.source_end <= source_origins.size()
+            ? std::min(source.size(), source_origins[fragment.source_end - 1] + 1) : source.size();
+    }
+    result->source = source;
+    return result;
+}
+
 bool Overlay::append_ui_message_paragraph(std::vector<std::string> &screen_rows,
         std::vector<Match> &result, std::vector<Match> &untranslated_help_rows,
         int only_y, std::vector<Match> rows, int right, std::string_view target,
@@ -28,10 +51,15 @@ bool Overlay::append_ui_message_paragraph(std::vector<std::string> &screen_rows,
         }
     }
     const size_t first_match = result.size();
+    std::shared_ptr<const TranslationResult> metadata;
+    if (!rows.empty()) metadata = rows.front().translation_result;
+    if (!metadata && !complete_source.empty()) metadata = announcement_result_metadata(complete_source);
     if (append_bounded_paragraph(rows, target, screen_rows, result, only_y,
             right, right, target_colors, false,
             native_left >= 0 ? native_left : centered_left, viewport, {},
             complete_layout_rows)) {
+        for (size_t at = first_match; at < result.size(); ++at)
+            result[at].translation_result = metadata;
         if (centered_left >= 0)
             for (size_t at = first_match; at < result.size(); ++at)
                 result[at].layout_left = false;
@@ -775,18 +803,30 @@ void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_
                     static_cast<int>(capture.wrapped_lines.size())};
             }
             bool submitted = false;
+            for (int pass = 0; pass < 2 && !submitted; ++pass) {
             for (int rule_index : message.rules) {
                 std::vector<int> target_colors;
-                const auto target = announcement
-                    ? translate_complete_announcement(message_source, source_colors, target_colors)
-                    : translate_help_paragraph(message_source, source_colors, target_colors, true, rule_index);
+                TranslationResult translated;
+                std::optional<std::string> target;
+                if (announcement) target = translate_complete_announcement(message_source, source_colors, target_colors);
+                else if (pass == 0)
+                    target = translate_help_paragraph(message_source, source_colors, target_colors, true, rule_index);
+                else {
+                    translated = translate_help_paragraph_result(message_source, source_colors, target_colors, true, rule_index);
+                    if (translated.usable() && translated.changed()) target = translated.target;
+                }
                 if (!target && !announcement) continue;
+                if (translated.usable()) {
+                    auto metadata = std::make_shared<TranslationResult>(std::move(translated));
+                    for (auto &row : *paragraph) row.translation_result = metadata;
+                }
                 append_message(std::move(*paragraph), span.x + capture.paragraph_width,
                     target ? std::string_view(*target) : std::string_view{}, target_colors,
                     viewport, message_source, announcement || span.addressed ? span.x : -1, false,
                     announcement || span.addressed ? static_cast<int>(capture.wrapped_lines.size()) : 0);
                 submitted = true;
                 break;
+            }
             }
             if (!submitted && span.addressed)
                 // A known constructor with an unresolved typed name remains
@@ -1005,9 +1045,15 @@ void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_
             const auto submit = [&](bool complete) {
                 if (rows.empty()) return;
                 std::vector<int> target_colors;
-                const auto target = complete
-                    ? translate_help_paragraph(source, source_colors, target_colors, true)
-                    : std::optional<std::string>{};
+                auto translated = complete
+                    ? translate_help_paragraph_result(source, source_colors, target_colors, true)
+                    : TranslationResult{};
+                const auto target = translated.usable() && translated.changed()
+                    ? std::optional<std::string>(translated.target) : std::nullopt;
+                if (translated.usable()) {
+                    auto metadata = std::make_shared<TranslationResult>(std::move(translated));
+                    for (auto &row : rows) row.translation_result = metadata;
+                }
                 const int layout_rows = static_cast<int>(rows.size());
                 append_message(std::move(rows), right,
                     target ? std::string_view(*target) : std::string_view{},
