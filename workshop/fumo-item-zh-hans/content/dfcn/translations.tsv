@@ -4,5 +4,21 @@ Adds Fumos.	添加 Fumo 玩偶。	lP
 Make fumo	制作 Fumo 玩偶	l
 Make fumos at a craftsman workshop using cloth.	在工艺品工坊使用布料制作 Fumo 玩偶。	lP
 
+# Complete reaction titles for task rows and translated search.
+make Cirno fumo	制作琪露诺 Fumo 玩偶	li
+make Reimu fumo	制作灵梦 Fumo 玩偶	li
+make Marisa fumo	制作魔理沙 Fumo 玩偶	li
+make Neco Arc fumo	制作猫弧 Fumo 玩偶	li
+make Rumia fumo	制作露米娅 Fumo 玩偶	li
+make Meiling fumo	制作美铃 Fumo 玩偶	li
+make Patchouli fumo	制作帕秋莉 Fumo 玩偶	li
+make Sakuya fumo	制作咲夜 Fumo 玩偶	li
+make Remilia fumo	制作蕾米莉亚 Fumo 玩偶	li
+make Flandre fumo	制作芙兰朵露 Fumo 玩偶	li
+make Youmu fumo	制作妖梦 Fumo 玩偶	li
+make Yuyuko fumo	制作幽幽子 Fumo 玩偶	li
+make Alice fumo	制作爱丽丝 Fumo 玩偶	li
+make Daiyousei fumo	制作大妖精 Fumo 玩偶	li
+
 # RAW workshop and reaction category tooltips.
 Make fumos at a craftsman workshop using cloth.	在工艺品工坊使用布料制作 Fumo 玩偶。	lj

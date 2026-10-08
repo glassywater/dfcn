@@ -1,6 +1,6 @@
 schema = 1
 id = "fumo-item-zh-hans"
-version = 2
+version = 3
 language = "zh-Hans"
 name = "Fumo 玩偶汉化数据"
 translations = "dfcn/translations.tsv"
