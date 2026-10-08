@@ -964,6 +964,8 @@ static bool locate_native_elf_action_resize(const NativeElfCaptionImage &image,
     return found;
 }
 
+#include "native_caption_semantics_elf.inc"
+
 static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     ModuleBuildId module;
     const auto *identity = native_elf_caption_profile(module);
@@ -1018,7 +1020,13 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     profile.multiline_widget = {
         reinterpret_cast<void **>(multiline_table + (2 + 3) * sizeof(void *)),
         0x10, 0x150, 0xc4, elf_runtime::symbol_return("_ZN7widgets14text_multiline6renderEj", 0xc1),
-        multiline_render};
+        multiline_render,
+        reinterpret_cast<void **>(multiline_table + (2 + 4) * sizeof(void *)),
+        dlsym(RTLD_DEFAULT, "_ZN7widgets14text_multiline7arrangeEv"),
+        reinterpret_cast<NativeCaptionWidgetArrangeFn>(
+            dlsym(RTLD_DEFAULT, "_ZN7widgets6widget7arrangeEv")), 0xc8};
+    if (!profile.multiline_widget.expected_arrange ||
+            !profile.multiline_widget.base_arrange) return false;
     if (!elf_runtime::symbol_return("_ZN7widgets14text_multiline6renderEj", 0xc1)) return false;
     profile.resize_target = identity->resize;
     profile.draw_target = identity->draw;
@@ -1067,6 +1075,6 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         profile.sites.push_back({item[1],item[3],NativeFieldKind::BookType});
     }
     return profile.draw && profile.truncate && profile.flag_draw &&
-        profile.top_draw && profile.top_flag_draw;
+        profile.top_draw && profile.top_flag_draw && resolve_native_caption_semantics_elf(profile);
 }
 #endif

@@ -74,6 +74,7 @@ namespace dfcn {
 static std::vector<NativeHistoryDraw> captured_native_history_draws();
 static std::vector<NativeHistoryUnboundDraw> captured_native_history_unbound_draws();
 static uintptr_t native_history_profile_base();
+static uintptr_t native_reference_address(uintptr_t base, uintptr_t offset);
 static std::optional<std::string> native_history_figure_curse_suffix(
     int32_t id, std::string_view species);
 static bool capture_native_history_age_title(std::string_view base_title,
@@ -16834,7 +16835,6 @@ std::vector<Match> Overlay::find_matches(int only_y,
     };
 
     context_detail.checkpoint(RenderTimingStage::Documents);
-#ifdef _WIN32
     // setupadventurest redraws its retained civ_desc vector through this
     // exact addst caller, including after the hovered civilization changes.
     // Graphical copy bookkeeping can hide logical bytes from visible_char_at;
@@ -16843,7 +16843,13 @@ std::vector<Match> Overlay::find_matches(int only_y,
     const auto origin_base = native_history_profile_base();
     if (origin_base && gps_->tile_pixel_x > 0 && gps_->tile_pixel_y > 0 &&
             (!screen_override || screen_override == gps_->screen)) {
-        const auto origin_return = native_pe_address(origin_base, 0x627ac2);
+        const auto origin_return = native_reference_address(origin_base,
+#ifdef _WIN32
+            0x627ac2
+#else
+            0xd17ecc
+#endif
+        );
         const auto draws = captured_native_drawn_text_rows();
         std::vector<const NativeDrawnTextRow *> origin_rows;
         for (const auto &draw : draws) {
@@ -16939,7 +16945,6 @@ std::vector<Match> Overlay::find_matches(int only_y,
             }
         }
     }
-#endif
 
     // Native rejection dialogs include compiler-inlined paragraph wrapping.
     // Their complete modal owns all warning branches through the same catalog.

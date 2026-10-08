@@ -692,12 +692,6 @@ std::optional<NativeTextCard> Overlay::capture_world_site_card(
 void Overlay::append_world_site_phrases(const NativeTextCard &card,
         std::vector<std::string> &rows, std::vector<Match> &matches, int only_y,
         bool action_control, bool reclaim_history) const {
-#ifndef _WIN32
-    // This retained-buffer binding is established from the Windows producer.
-    // Other hosts keep their existing prose path until their native layout
-    // has a corresponding source-backed adapter.
-    reclaim_history = false;
-#endif
     if (card.travel_buildings) {
         const auto shrine_figure = [&](const std::string &value) -> std::optional<std::string> {
             if (auto actor = translate_legends_actor(value)) return actor;

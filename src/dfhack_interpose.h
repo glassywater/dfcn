@@ -5,6 +5,9 @@
 #define NOMINMAX
 #endif
 #include <windows.h>
+#else
+#include "dfhack_platform_elf.h"
+#endif
 
 #include <algorithm>
 #include <cstddef>
@@ -28,6 +31,7 @@ public:
     using RemoveFn = void (*)(void *);
     using AppliedFn = bool (*)(void *);
 
+    #ifdef _WIN32
     bool bind(HMODULE module) noexcept {
         clear();
         if (!module || sizeof(void *) != 8) return false;
@@ -69,12 +73,38 @@ public:
         return true;
     }
 
+    #else
+    bool bind(void *module) noexcept {
+        clear();
+        if (!module || sizeof(void *) != 8) return false;
+        const auto symbol = [module](const char *name) { return dlsym(module, name); };
+        registry_slot_ = symbol("_ZN6DFHack16virtual_identity18interpose_list_mapE");
+        apply_ = reinterpret_cast<ApplyFn>(symbol("_ZN6DFHack24VMethodInterposeLinkBase5applyEb"));
+        remove_ = reinterpret_cast<RemoveFn>(symbol("_ZN6DFHack24VMethodInterposeLinkBase6removeEv"));
+        current_screen_ = reinterpret_cast<CurrentScreenFn>(symbol("_ZN6DFHack3Gui16getCurViewscreenEb"));
+        is_screen_ = reinterpret_cast<IsScreenFn>(symbol("_ZN6DFHack17dfhack_viewscreen11is_instanceEPN2df10viewscreenE"));
+        dismiss_ = reinterpret_cast<DismissFn>(symbol("_ZN6DFHack6Screen7dismissEPN2df10viewscreenEb"));
+        if (!readable(registry_slot_, sizeof(void *)) || !executable(reinterpret_cast<void *>(apply_)) ||
+                !executable(reinterpret_cast<void *>(remove_)) || !executable(reinterpret_cast<void *>(current_screen_)) ||
+                !executable(reinterpret_cast<void *>(is_screen_)) || !executable(reinterpret_cast<void *>(dismiss_))) {
+            clear();
+            return false;
+        }
+        return true;
+    }
+    #endif
+
     bool bound() const noexcept { return registry_slot_ != nullptr; }
     ApplyFn apply_function() const noexcept { return apply_; }
     RemoveFn remove_function() const noexcept { return remove_; }
 
     bool applied(void *link) const noexcept {
+#ifdef _WIN32
         return applied_ && readable(link, link_prefix_size) && applied_(link);
+#else
+        unsigned char active = 0;
+        return readable(link, link_prefix_size) && read(link, 0x30, active) && active == 1;
+#endif
     }
 
     // Preserve each native link once. Walking both directions also includes
@@ -92,11 +122,23 @@ public:
             std::size_t entries = 0;
             if (!walk_map(registry, max_registry_nodes, [&](void *outer) {
                     // Outer list value: pair<const identity *, inner map>.
-                    auto *inner = offset(outer, 0x18);
+                    auto *inner = offset(outer,
+#ifdef _WIN32
+                        0x18
+#else
+                        0x10
+#endif
+                    );
                     return inner && walk_map(inner, max_registry_nodes, [&](void *node) {
                         if (++entries > max_registry_nodes) return false;
                         void *link = nullptr;
-                        if (!read(node, 0x18, link) || !link) return false;
+                        if (!read(node,
+#ifdef _WIN32
+                                0x18,
+#else
+                                0x10,
+#endif
+                                link) || !link) return false;
                         roots.push_back(link);
                         return true;
                     });
@@ -197,6 +239,7 @@ private:
     }
 
     static bool readable(const void *ptr, std::size_t size) noexcept {
+#ifdef _WIN32
         auto cursor = reinterpret_cast<std::uintptr_t>(ptr);
         if (!ptr || size > std::numeric_limits<std::uintptr_t>::max() - cursor)
             return false;
@@ -219,9 +262,13 @@ private:
             cursor = std::min(end, limit);
         }
         return true;
+#else
+        return elf_memory(ptr, size);
+#endif
     }
 
     static bool executable(const void *ptr) noexcept {
+#ifdef _WIN32
         MEMORY_BASIC_INFORMATION region{};
         if (!ptr || !VirtualQuery(ptr, &region, sizeof(region)) ||
             region.State != MEM_COMMIT ||
@@ -229,6 +276,9 @@ private:
         const auto access = region.Protect & 0xff;
         return access == PAGE_EXECUTE || access == PAGE_EXECUTE_READ ||
             access == PAGE_EXECUTE_READWRITE || access == PAGE_EXECUTE_WRITECOPY;
+#else
+        return elf_memory(ptr, 1, true);
+#endif
     }
 
     template<class T>
@@ -243,6 +293,7 @@ private:
     // list size at 16. Nodes have next/prev at 0/8 and pair value at 16.
     template<class Visitor>
     static bool walk_map(void *map, std::size_t maximum, Visitor visitor) {
+#ifdef _WIN32
         if (!readable(map, 0x40)) return false;
         void *sentinel = nullptr;
         std::size_t count = 0;
@@ -261,11 +312,27 @@ private:
         }
         void *last = nullptr;
         return node == sentinel && read(sentinel, 0x08, last) && last == previous;
+#else
+        // libstdc++ unordered_map: before_begin.next at +16, count at +24;
+        // singly linked nodes carry the key/value pair immediately after next.
+        void *node = nullptr;
+        size_t count = 0;
+        if (!readable(map, 56) || !read(map, 0x10, node) || !read(map, 0x18, count) ||
+                count > maximum) return false;
+        std::unordered_set<void *> seen;
+        for (size_t index = 0; index < count; ++index) {
+            void *next = nullptr;
+            if (!node || !seen.insert(node).second || !read(node, 0, next) || !visitor(node)) return false;
+            node = next;
+        }
+        return !node;
+#endif
     }
 
     // Find a decorated data export without depending on the very long MSVC
     // spelling of nested unordered_map template arguments. Only this known
     // loaded module's PE export tables are read; forwarders are rejected.
+#ifdef _WIN32
     static void *exported_prefix(HMODULE module, const char *prefix) noexcept {
         IMAGE_DOS_HEADER dos{};
         if (!read(module, 0, dos) || dos.e_magic != IMAGE_DOS_SIGNATURE ||
@@ -314,7 +381,7 @@ private:
         }
         return found;
     }
+#endif
 };
 
 } // namespace dfcn::dfhack
-#endif

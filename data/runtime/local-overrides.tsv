@@ -519,6 +519,8 @@ Novice	新手的	wi
 Nobles action: NEW	新增任命	w
 # Nobles export mandate: translate the complete sentence with its item name.
 Export of {s} Prohibited	禁止出口{s}	wtlx
+# Native ENTITY:MOUNTAIN LAND_NAME labels, capitalized by the fortress HUD.
+A barony	男爵	wi
 A duchy	公爵领	w
 Needs:	需求：	w
 Throne Room/Office	王座厅／办公室	wi

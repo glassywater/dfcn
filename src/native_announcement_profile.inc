@@ -61,6 +61,15 @@ static bool resolve_native_announcement_binding(NativeAnnouncementBinding &bindi
     // PUSH R15; MOV R8D,1 are complete position-independent instructions.
     binding.speech_entry = base + speech_va;
     binding.speech_prefix = {0x41,0x57,0x41,0xb8,0x01,0x00,0x00,0x00};
+    // 1c2e136 draws the live adventure announcements owner with four
+    // SysV register arguments. 1154881 selects entry.parent->report::text.
+    const auto log_va = native_reference_va(0x1154220);
+    const auto log_parent_va = native_reference_va(0x1154881);
+    const unsigned char log_parent_text[] = {0x48,0x8b,0x76,0x20,0x48,0x83,0xc6,0x08};
+    if (!log_va || !log_parent_va ||
+        std::memcmp(base + log_parent_va, log_parent_text, sizeof(log_parent_text))) return false;
+    binding.log_entry = base + log_va;
+    binding.log_prefix = {0xf3,0x0f,0x1e,0xfa,0x41,0x57};
 #endif
     return true;
 }

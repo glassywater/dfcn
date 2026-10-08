@@ -74,6 +74,17 @@ static size_t capture_native_job_details_search_find(const char *text,
 
 #ifdef _WIN32
 #include "native_job_details_search_profile_pe.inc"
+#else
+template<NativeJobDetailsSearchKind Kind>
+static size_t capture_native_job_details_search_native_find(
+        const NativeString *term, const NativeString *query) {
+    std::string_view text, needle;
+    if (!native_string_view(term, &text, 65536) ||
+        !native_string_view(query, &needle, 4096)) return SIZE_MAX;
+    return capture_native_job_details_search_find<Kind>(
+        text.data(), text.size(), term, needle.data(), needle.size());
+}
+#include "native_job_details_search_profile_elf.inc"
 #endif
 
 static bool native_job_details_search_hook_active() {
@@ -99,7 +110,7 @@ static bool install_native_job_details_search_hook() {
 #ifdef _WIN32
     if (!resolve_native_job_details_search_profile_pe(profile) || !profile.fold) return false;
 #else
-    return false;
+    if (!resolve_native_job_details_search_profile_elf(profile) || !profile.fold) return false;
 #endif
     g_native_job_details_search_fold = profile.fold;
     if (!g_native_job_details_search_hook.install(profile.base, profile.calls,

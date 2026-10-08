@@ -27,7 +27,6 @@ static std::string_view native_character_kinship_fallback(int32_t relation) {
         ? captions[relation] : std::string_view{};
 }
 
-#ifdef _WIN32
 using NativeCharacterRelationCopyFn = NativeString *(*)(NativeString *, const NativeString *);
 struct NativeCharacterRelationsHook {
     NativeCallHook code;
@@ -37,12 +36,17 @@ struct NativeCharacterRelationsHook {
 };
 static NativeCharacterRelationsHook g_native_character_relations_hook;
 
-static NativeString *capture_native_character_relation_identity(NativeString *output,
+static uintptr_t native_character_sheet_field(uintptr_t sheet, size_t legacy,
+        std::string_view member) {
+#ifdef _WIN32
+    return sheet + legacy;
+#else
+    return native_history_object_member(sheet, "view_sheets_interfacest", member);
+#endif
+}
+
+static void remember_native_character_relation_identity(NativeString *output,
         const NativeString *source, const void *sheet, size_t index) {
-    NativeInputCallbackScope callback;
-    const auto original = g_native_character_relations_hook.copy;
-    NativeString *result = original
-        ? callback.call_native([&] { return original(output, source); }) : output;
     try {
         const auto capture = [&] {
             const uintptr_t base = g_native_character_relations_hook.base;
@@ -56,9 +60,9 @@ static NativeString *capture_native_character_relation_identity(NativeString *ou
                     !native_history_copy(object + 0xc0, page) || page != 6) return;
             NativeBorrowedVector<uintptr_t> names, figures;
             NativeBorrowedVector<int32_t> units;
-            if (!native_history_read_vector(object + 0x1840, names) || names.size() > 65536 ||
-                    !native_history_read_vector(object + 0x18a0, figures) ||
-                    !native_history_copy(object + 0x1888, units) || !units.valid(65536) ||
+            if (!native_history_read_vector(native_character_sheet_field(object, 0x1840, "rel_name"), names) || names.size() > 65536 ||
+                    !native_history_read_vector(native_character_sheet_field(object, 0x18a0, "rel_hf"), figures) ||
+                    !native_history_copy(native_character_sheet_field(object, 0x1888, "rel_unid"), units) || !units.valid(65536) ||
                     figures.size() != names.size() || units.size() != names.size() ||
                     index >= names.size() || native_history_vector_at(names, index) !=
                         reinterpret_cast<uintptr_t>(source)) return;
@@ -67,16 +71,16 @@ static NativeString *capture_native_character_relation_identity(NativeString *ou
                     index * sizeof(int32_t), unit_id)) return;
             uintptr_t unit = 0, name = 0;
             if (unit_id >= 0) {
-                if (!native_history_material_find_id(native_pe_address(base, 0x23e50b0), 0x130,
+                if (!native_history_material_find_id(native_history_global(0x23e50b0), 0x130,
                         unit_id, unit) || !unit) return;
             } else {
                 const uintptr_t figure = native_history_vector_at(figures, index);
                 int32_t figure_id = -1;
                 if (!figure || figure > UINTPTR_MAX - 0xe4 ||
-                        !native_history_copy(figure + 0xe0, figure_id) || figure_id < 0 ||
+                        !native_history_copy(native_history_object_field(figure, "historical_figure", 0xe0), figure_id) || figure_id < 0 ||
                         native_history_find_subject(base, NativeHistoryObjectKind::Figure,
                             figure_id) != figure) return;
-                name = figure + 0x38;
+                name = native_history_object_field(figure, "historical_figure", 0x38);
             }
             // The page cached these strings at construction, so the original
             // formatter's transient owner/frame is already gone. Its parallel
@@ -92,6 +96,15 @@ static NativeString *capture_native_character_relation_identity(NativeString *ou
     } catch (...) {
         // The native copy is complete; capture must not change its lifetime.
     }
+}
+
+static NativeString *capture_native_character_relation_identity(NativeString *output,
+        const NativeString *source, const void *sheet, size_t index) {
+    NativeInputCallbackScope callback;
+    const auto original = g_native_character_relations_hook.copy;
+    NativeString *result = original
+        ? callback.call_native([&] { return original(output, source); }) : output;
+    remember_native_character_relation_identity(output, source, sheet, index);
     return result;
 }
 
@@ -125,8 +138,8 @@ static void capture_native_character_relation(graphicst *graphics, const NativeS
 
             NativeBorrowedVector<int16_t> relations;
             NativeBorrowedVector<uintptr_t> relatives;
-            if (!native_history_copy(object + 0x1870, relations) || !relations.valid(65536) ||
-                !native_history_read_vector(object + 0x18a0, relatives) ||
+            if (!native_history_copy(native_character_sheet_field(object, 0x1870, "relation_f"), relations) || !relations.valid(65536) ||
+                !native_history_read_vector(native_character_sheet_field(object, 0x18a0, "rel_hf"), relatives) ||
                 relatives.size() != relations.size() || relatives.size() > 65536 ||
                 index >= relations.size()) return;
             int16_t relation = -1;
@@ -145,11 +158,11 @@ static void capture_native_character_relation(graphicst *graphics, const NativeS
             uintptr_t unit = 0;
             int32_t subject_id = -1, relative_id = -1;
             if (!relative || relative > UINTPTR_MAX - 0xe4 ||
-                !native_history_copy(relative + 0xe0, relative_id) || relative_id < 0 ||
+                !native_history_copy(native_history_object_field(relative, "historical_figure", 0xe0), relative_id) || relative_id < 0 ||
                 native_history_find_subject(base, NativeHistoryObjectKind::Figure, relative_id) != relative ||
-                !native_history_material_find_id(native_pe_address(base, 0x23e50b0), 0x130, unit_id, unit) ||
+                !native_history_material_find_id(native_history_global(0x23e50b0), 0x130, unit_id, unit) ||
                 !unit || unit > UINTPTR_MAX - 0xc34 ||
-                !native_history_copy(unit + 0xc30, subject_id) || subject_id < 0) return;
+                !native_history_copy(native_history_object_field(unit, "unit", 0xc30), subject_id) || subject_id < 0) return;
             const uintptr_t subject = native_history_find_subject(
                 base, NativeHistoryObjectKind::Figure, subject_id);
             if (!subject) return;
@@ -164,7 +177,7 @@ static void capture_native_character_relation(graphicst *graphics, const NativeS
     }
     // Call the actual addst entry, including its existing shared caption
     // hook. The original caller passes both justification and width as zero.
-    if (original) callback.call_native([&] { original(graphics, source, 0, 0); });
+    if (original) callback.call_native([&] { original(graphics, source, static_cast<NativeJustification>(0), 0); });
 }
 
 static bool native_character_relations_hook_active() {
@@ -182,6 +195,7 @@ static bool uninstall_native_character_relations_hook() {
     return true;
 }
 
+#ifdef _WIN32
 static bool install_native_character_relations_hook() {
     auto &hook = g_native_character_relations_hook;
     if (hook.code.installed) return true;
@@ -259,10 +273,5 @@ static bool install_native_character_relations_hook() {
     return true;
 }
 #else
-static bool native_character_relations_hook_active() { return false; }
-static bool uninstall_native_character_relations_hook() {
-    clear_native_character_relations();
-    return true;
-}
-static bool install_native_character_relations_hook() { return true; }
+#include "native_character_relations_search_profile_elf.inc"
 #endif

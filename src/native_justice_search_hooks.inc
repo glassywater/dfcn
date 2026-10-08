@@ -9,7 +9,11 @@ struct NativeJusticeSearchProfile {
 static void capture_native_justice_search_query(NativeString *);
 template<JournalSearchKind Kind>
 static void capture_native_justice_search_term(NativeString *, const NativeString *);
+#ifdef _WIN32
 #include "native_justice_search_profile_pe.inc"
+#else
+#include "native_justice_search_profile_elf.inc"
+#endif
 
 static NativeCallHook g_native_justice_search_hook;
 static NativeSearchFoldFn g_native_justice_search_fold = nullptr;

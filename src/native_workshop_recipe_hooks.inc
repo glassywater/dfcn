@@ -2,11 +2,14 @@
 // complete, case-normalized input and the exact rows it appends; translation
 // and matching remain in the shared workshop tooltip compositor.
 using NativeWorkshopRecipeStringFn = void (*)(NativeString *);
+static void capture_native_workshop_recipe_paragraph(void *,const NativeString *,int);
 struct NativeWorkshopRecipeProfile {
     uintptr_t base = 0;
     uintptr_t begin_site = 0, begin_target = 0;
     uintptr_t end_site = 0, end_target = 0;
     int paragraph_width = 0;
+    bool shared_paragraphs = false;
+    std::vector<NativeCall> paragraph_calls;
     NativeWorkshopRecipeStringFn normalize = nullptr, destroy = nullptr;
     std::vector<unsigned char> begin_arguments, end_arguments;
 };
@@ -126,6 +129,23 @@ static bool native_workshop_recipe_hooks_active() {
     return g_native_workshop_recipe_hooks.code.active();
 }
 
+static void capture_native_workshop_recipe_paragraph(void *paragraph,
+        const NativeString *source, int width) {
+    NativeInputCallbackScope callback;
+    std::string complete;
+    size_t first = SIZE_MAX;
+    try {
+        std::string_view value;
+        if (width == 29 && native_string_view(source,&value,65536) &&
+                !value.empty() && value.find('\0') == std::string_view::npos) {
+            complete.assign(value);
+            first = native_paragraph_row_count(paragraph);
+        }
+    } catch (...) {}
+    callback.call_native([&] { if (g_real_native_paragraph) g_real_native_paragraph(paragraph,source,width); });
+    try { capture_appended_native_paragraph(paragraph,width,std::move(complete),first); } catch (...) {}
+}
+
 static bool uninstall_native_workshop_recipe_hooks() {
     auto &hook = g_native_workshop_recipe_hooks;
     if (!hook.code.uninstall("Workshop requirement capture restore")) return false;
@@ -153,6 +173,16 @@ static bool install_native_workshop_recipe_hooks() {
     if (!resolve_native_workshop_recipe_profile(profile)) {
         log_line("ERROR", "Cannot resolve native workshop requirement capture profile");
         return false;
+    }
+    if (profile.shared_paragraphs) {
+        if (!g_real_native_paragraph || profile.paragraph_width <= 0) return false;
+        hook.paragraph_width = profile.paragraph_width;
+        for (auto &call : profile.paragraph_calls)
+            call.wrapper = reinterpret_cast<const void *>(&capture_native_workshop_recipe_paragraph);
+        if (!profile.paragraph_calls.empty() &&
+                !hook.code.install(profile.base,profile.paragraph_calls,"Workshop recipe paragraph source")) return false;
+        guard.committed = true;
+        return true;
     }
     if (!profile.normalize && !profile.destroy) {
         log_line("INFO", "Native workshop requirement capture is unavailable on this host; "

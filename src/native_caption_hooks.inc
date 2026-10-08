@@ -8,6 +8,8 @@ using NativeCaptionBuildFn = void (*)(void *);
 using NativeCaptionFlagDrawFn = void (*)(graphicst *, const NativeString *, NativeJustification, int, uint32_t);
 using NativeCaptionWidgetRenderFn = void (*)(void *, uint32_t);
 using NativeCaptionWidgetArrangeFn = void (*)(void *);
+static void capture_native_roster_shorten(NativeString *,int);
+static void capture_native_map_track_shorten(NativeString *,int);
 
 struct NativeCaptionWidgetBinding {
     void **render_slot = nullptr;
@@ -112,6 +114,7 @@ struct NativeCaptionProfile {
     // A map record owns its string before the row is drawn. Its spoor branch
     // removes vowels in place, then appends direction/ownership components.
     uintptr_t map_track_shorten_call = 0, map_track_shorten_target = 0;
+    NativeCaptionTruncateFn map_track_shorten = nullptr;
     NativeCaptionBuildFn map_caption_build = nullptr;
     size_t map_caption_text_offset = 0;
     uintptr_t map_hover_list = 0;
@@ -123,6 +126,9 @@ struct NativeCaptionProfile {
     std::vector<NativeTravelBuildingSite> travel_building_fields;
     std::vector<uintptr_t> mission_title_returns;
     NativeAnnouncementPageBinding announcement_page;
+#ifndef _WIN32
+    std::vector<NativeCall> main_calls;
+#endif
 };
 #include "native_caption_profile.inc"
 
@@ -132,6 +138,9 @@ struct NativeCaptionHooks {
     NativeCaptionDrawFn draw = nullptr;
 };
 static NativeCaptionHooks g_native_caption_hooks;
+#ifndef _WIN32
+static NativeCallHook g_native_main_caption_calls;
+#endif
 static NativeImportHook g_native_caption_widget_hook;
 static NativeCaptionWidgetBinding g_native_caption_widget_binding;
 static NativeImportHook g_native_multiline_widget_hook;
@@ -349,8 +358,21 @@ static NativeCivilizationField native_civilization_caption_field(uintptr_t calle
 }
 
 static NativeLocationPickerField native_location_picker_field(uintptr_t caller) {
-    for (const auto &site : g_native_location_picker_sites)
-        if (site.return_address == caller) return site.field;
+    for (const auto &site : g_native_location_picker_sites) {
+        if (site.return_address != caller) continue;
+#ifndef _WIN32
+        // GCC merges the dedication label's native draw with the faith
+        // card. Its actual selector state determines which allocation owns it.
+        if (site.field == NativeLocationPickerField::Faith) {
+            const uintptr_t selector = native_reference_address(native_history_profile_base(),0x22f8e00);
+            uint8_t choosing = 0;
+            if (selector && native_history_copy(native_history_object_member(selector,
+                    "location_selector_interfacest","choosing_temple_religious_practice"),choosing) && choosing)
+                return NativeLocationPickerField::FaithDeity;
+        }
+#endif
+        return site.field;
+    }
     return NativeLocationPickerField::None;
 }
 
@@ -480,8 +502,20 @@ static bool native_info_title_memory_readable(const void *pointer, size_t size) 
     }
     return true;
 #else
-    // No ELF caller-frame layout is bound by the current title profile.
-    return false;
+    uintptr_t cursor = reinterpret_cast<uintptr_t>(pointer);
+    if (!cursor || !size || size > UINTPTR_MAX - cursor) return false;
+    const uintptr_t end = cursor + size;
+    const size_t page = native_patch_page_size();
+    if (!page) return false;
+    while (cursor < end) {
+        const size_t span = std::min<size_t>(end - cursor, page - cursor % page);
+        NativePatchProtection protection = 0;
+        unsigned long error = 0;
+        if (!native_patch_page_protection(cursor, span, protection, error) ||
+                !native_patch_readable(protection)) return false;
+        cursor += span;
+    }
+    return true;
 #endif
 }
 
@@ -840,15 +874,14 @@ static std::optional<std::string> native_complete_map_track_caption(
     return std::nullopt;
 }
 
-#ifdef _WIN32
 static void capture_native_unit_chooser_squad(uintptr_t unit,
         const std::array<int32_t, 4> &name_rect, int name_width,
         bool show_gender, bool truncate_identity,
         NativeUnitChooserRecord &record) {
     const auto &hooks = g_native_unit_identity_hooks;
     int32_t squad_id = -1, position = -1;
-    if (!unit || !hooks.base || !native_history_copy(unit + 0x1f0, squad_id) ||
-            !native_history_copy(unit + 0x1f4, position) || squad_id < 0 ||
+    if (!unit || !hooks.base || !native_history_copy(native_history_object_field(unit, "unit", 0x1f0), squad_id) ||
+            !native_history_copy(native_history_object_field(unit, "unit", 0x1f4), position) || squad_id < 0 ||
             position < 0 || position > 65535) return;
     NativeBorrowedVector<uintptr_t> squads;
     if (!native_history_read_vector(native_history_global(0x24e37c0), squads) ||
@@ -866,9 +899,7 @@ static void capture_native_unit_chooser_squad(uintptr_t unit,
             alias)) return;
     std::optional<NativeHistoryName> generated;
     NativeInputCallbackScope callback;
-    const auto destroy = reinterpret_cast<NativeSearchDestroyFn>(
-        native_pe_address(hooks.base, 0x6f850));
-    if (!destroy) return;
+    const auto destroy = hooks.destroy;
     if (!alias.empty()) source = alias;
     else {
         if (!hooks.english_name) return;
@@ -898,10 +929,16 @@ static void capture_native_unit_chooser_squad(uintptr_t unit,
     record.squad_caption_y = name_rect[1] - 2;
     record.unit_identity_x = name_rect[0];
     record.unit_identity_y = name_rect[1] - 1;
+#ifdef _WIN32
     const auto abbreviate = reinterpret_cast<void (*)(NativeString *, int32_t)>(
         native_pe_address(hooks.base, 0x52d910));
     const auto assign = reinterpret_cast<NativeString *(*)(NativeString *, const char *, size_t)>(
         native_pe_address(hooks.base, 0x6f8d0));
+#else
+    const auto abbreviate = reinterpret_cast<void (*)(NativeString *, int32_t)>(
+        dlsym(RTLD_DEFAULT, "_Z17abbreviate_stringRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi"));
+    const auto assign = hooks.assign;
+#endif
     if (!abbreviate || !assign || name_width < 3) return;
     if (record.squad_caption_source.size() > static_cast<size_t>(name_width)) {
         NativeSearchString header(destroy);
@@ -977,7 +1014,6 @@ static void capture_native_unit_chooser_squad(uintptr_t unit,
         record.unit_identity_source = *visible_name +
             (!visible_name->empty() && !visible_role->empty() ? " " : "") + *visible_role;
 }
-#endif
 
 // A text_truncated widget keeps original_str after arrange() has overwritten
 // str. Read both from the LIVE widget on every render, including pages built
@@ -985,18 +1021,48 @@ static void capture_native_unit_chooser_squad(uintptr_t unit,
 // The vtable and field coordinates are native bindings; ownership, lifetime
 // and the complete-caption registry are identical on every host.
 static void capture_native_unit_chooser_record(void *widget) {
-#ifdef _WIN32
     const uint64_t epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
     struct Widget {
         uintptr_t address = 0, parent = 0;
         std::array<int32_t, 4> rect{};
     };
-    const auto base = reinterpret_cast<uintptr_t>(GetModuleHandleW(nullptr));
-    if (!base || !native_pe_supported()) return;
+    const auto base = native_history_profile_base();
+    if (!base) return;
+    const auto table_address = [&](uintptr_t reference) -> uintptr_t {
+#ifdef _WIN32
+        return native_pe_address(base, reference);
+#else
+        switch (reference) {
+        case 0x162dc10: return elf_runtime::state().executable.bias + native_reference_va(0x244c458);
+        case 0x15f6df0: return elf_runtime::state().executable.bias + native_reference_va(0x244c328);
+        case 0x15eb4a8: return elf_runtime::state().executable.bias + native_reference_va(0x244c990);
+        case 0x15eef08: return elf_runtime::state().executable.bias + native_reference_va(0x244ccb0);
+        case 0x1785bd0: return reinterpret_cast<uintptr_t>(
+            dlsym(RTLD_DEFAULT, "_ZTVN7widgets5tableE")) + 16;
+        case 0x17868d0: return elf_runtime::state().executable.bias + native_reference_va(0x2487888);
+        case 0x162e8e0: return elf_runtime::state().executable.bias + native_reference_va(0x24876d0);
+        case 0x162eaf8: return elf_runtime::state().executable.bias + native_reference_va(0x24877d8);
+        case 0x1710d18: return elf_runtime::state().executable.bias + native_reference_va(0x244c190);
+        default: return 0;
+        }
+#endif
+    };
+    const size_t children_offset =
+#ifdef _WIN32
+        0x160;
+#else
+        0x180;
+#endif
+    const size_t options_offset =
+#ifdef _WIN32
+        0x2c0;
+#else
+        0x2b8;
+#endif
     const auto read_widget = [&](uintptr_t address, uintptr_t reference,
             Widget &result) {
         const auto *bytes = reinterpret_cast<const unsigned char *>(address);
-        const uintptr_t expected = native_pe_address(base, reference);
+        const uintptr_t expected = table_address(reference);
         if (!expected || !native_info_title_memory_readable(bytes, 0xa1)) return false;
         uintptr_t vtable = 0;
         std::memcpy(&vtable, bytes, sizeof(vtable));
@@ -1010,8 +1076,8 @@ static void capture_native_unit_chooser_record(void *widget) {
     const auto children = [&](const Widget &parent,
             std::array<uintptr_t, 3> &vector) {
         const auto *bytes = reinterpret_cast<const unsigned char *>(parent.address);
-        if (!native_info_title_memory_readable(bytes, 0x178)) return false;
-        std::memcpy(vector.data(), bytes + 0x160, sizeof(vector));
+        if (!native_info_title_memory_readable(bytes, children_offset + 24)) return false;
+        std::memcpy(vector.data(), bytes + children_offset, sizeof(vector));
         if (!vector[0] || vector[0] > vector[1] || vector[1] > vector[2] ||
                 (vector[1] - vector[0]) % 16 || (vector[2] - vector[0]) % 16 ||
                 vector[1] - vector[0] > 8192 * 16) return false;
@@ -1040,9 +1106,9 @@ static void capture_native_unit_chooser_record(void *widget) {
     // unit_list::build_single_unit reads the four-byte options at +0x2c0.
     // Other unit-list columns may also contain rows of truncated captions.
     const auto *list_bytes = reinterpret_cast<const unsigned char *>(list.address);
-    if (!native_info_title_memory_readable(list_bytes, 0x2d8)) return;
+    if (!native_info_title_memory_readable(list_bytes, options_offset + 24)) return;
     std::array<uintptr_t, 3> options{};
-    std::memcpy(options.data(), list_bytes + 0x2c0, sizeof(options));
+    std::memcpy(options.data(), list_bytes + options_offset, sizeof(options));
     if (!options[0] || options[0] > options[1] || options[1] > options[2] ||
             (options[1] - options[0]) % 4 || (options[2] - options[0]) % 4 ||
             options[1] - options[0] > 64 * 4 || options[1] == options[0] ||
@@ -1124,14 +1190,11 @@ static void capture_native_unit_chooser_record(void *widget) {
             if (!read_widget(member, 0x1710d18, filter) || filter.parent != list.address ||
                     !in_grid(filter) || filter.rect[1] < scroll.rect[3] + 1) continue;
             const auto *bytes = reinterpret_cast<const unsigned char *>(member);
-            if (!native_info_title_memory_readable(bytes, 0x1c8)) continue;
             int32_t type = -1;
-            std::memcpy(&type, bytes + 0x1c4, sizeof(type));
-            NativeString name{};
-            std::memcpy(&name, bytes + 0x80, sizeof(name));
-            std::string_view value;
-            if (type == 0 && native_string_view(&name, &value, 64) &&
-                    !value.empty() && native_info_title_memory_readable(value.data(), value.size()) &&
+            if (!native_history_copy(native_history_object_member(member,
+                    "widget_textbox", "textbox_type"), type)) continue;
+            std::string value;
+            if (type == 0 && native_history_copy_string(member + 0x80, value) &&
                     value == "Filter box") {
                 record.search_y = filter.rect[1];
                 break;
@@ -1139,9 +1202,6 @@ static void capture_native_unit_chooser_record(void *widget) {
         }
     }
     remember_native_unit_chooser_record(record, epoch);
-#else
-    (void)widget;
-#endif
 }
 
 static void capture_native_truncated_widget_render(void *widget, uint32_t tick) {
@@ -1519,7 +1579,13 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
                 right = std::min(right, static_cast<int>(std::clamp<int64_t>(
                     int64_t(list_right) - binding.item_list_right_inset,
                     graphics->screenx, graphics->dimx)));
-            } else right = graphics->screenx;
+            } else {
+                const auto &pending = native_clipped_pending().fields;
+                const auto found = pending.find(source);
+                if (found != pending.end() && found->second.width)
+                    right = std::min<int64_t>(right,int64_t(graphics->screenx)+found->second.width);
+                else right = graphics->screenx;
+            }
         }
         if (info_title_kind != NativeInfoTitleKind::None) info_title_right = right;
         if (mission_title) mission_title_right = right;
@@ -1649,7 +1715,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
     } catch (...) {}
 }
 
-static bool native_legacy_editable_draw(uintptr_t caller) {
+static bool native_legacy_editable_draw(uintptr_t caller, const NativeString *source) {
 #ifdef _WIN32
     const uintptr_t base = native_history_profile_base();
     if (!base) return false;
@@ -1702,6 +1768,26 @@ static bool native_legacy_editable_draw(uintptr_t caller) {
             field(string_offset), text);
 #else
     (void)caller;
+    const uintptr_t base = native_history_profile_base();
+    if (!base || !source) return false;
+    struct Field { uintptr_t owner; const char *type, *member; bool open; };
+    const Field fields[]{
+        {native_reference_address(base,0x22f7408),"stocks_interfacest","item_filter",true},
+        {native_reference_address(base,0x22f8fe0),"custom_stockpile_interfacest","spec_filter",true},
+        {native_reference_address(base,0x22f6420),"construction_interfacest","item_filter",false},
+        {native_reference_address(base,0x22fc048),"create_work_order_interfacest","job_filter",true},
+    };
+    // ELF's normal copies are rendered by textbox widgets, whose actual
+    // editable scope already protects them. Direct legacy draws retain the
+    // owned field itself; recognize its address rather than its spelling.
+    for (const auto &field : fields) {
+        if (!field.owner || reinterpret_cast<uintptr_t>(source) !=
+                native_history_object_member(field.owner,field.type,field.member,sizeof(NativeString))) continue;
+        uint8_t open = 0;
+        if (field.open && (!native_history_copy(field.owner,open) || open != 1)) continue;
+        std::string value;
+        if (native_history_copy_string(reinterpret_cast<uintptr_t>(source),value)) return true;
+    }
     return false;
 #endif
 }
@@ -2051,7 +2137,6 @@ static void capture_native_site_government_attributes(uintptr_t base, uintptr_t 
     }
 }
 
-#ifdef _WIN32
 template<NativeWorldSiteEntityFactKind Kind>
 static void capture_native_world_site_entity_fact(graphicst *graphics,
         const NativeString *source, uintptr_t entity, int) {
@@ -2098,7 +2183,6 @@ static void capture_native_world_site_entity_fact(graphicst *graphics,
         NativeCivilizationField::None, false, {}, NativeLocationPickerField::None,
         NativeTravelBuildingField::None, caller);
 }
-#endif
 
 #include "native_site_name_draws.inc"
 
@@ -2111,7 +2195,7 @@ static void capture_native_clipped_draw(graphicst *graphics, const NativeString 
     const bool textbox_text = g_native_textbox_widget_binding.text_return_address &&
         caller == g_native_textbox_widget_binding.text_return_address;
     NativeEditableTextScope input_scope(
-        textbox_text || NativeEditableTextScope::owns(caller) || native_legacy_editable_draw(caller));
+        textbox_text || NativeEditableTextScope::owns(caller) || native_legacy_editable_draw(caller,source));
     const auto kind = native_info_title_kind(caller);
     const bool authored = native_info_title_authored(kind, source, caller);
     const auto civilization_field = native_civilization_caption_field(caller);
@@ -2123,11 +2207,16 @@ static void capture_native_clipped_draw(graphicst *graphics, const NativeString 
     std::shared_ptr<const NativeEmbarkReclaimHistoryParagraph> reclaim_history;
     std::unique_lock<std::mutex> history_lock(g_native_embark_reclaim_history_mutex,
         std::defer_lock);
-#ifdef _WIN32
-    // PE choose-start's retained history row loop (1051860 -> addst).
+    // Choose-start's retained history row loop owns these original strings.
     // This existing entry hook already owns the call; no new patch is needed.
     if (graphics && width == 34 && graphics->screeny >= 24 && graphics->screeny < 36 &&
-            caller == native_pe_address(native_history_profile_base(), 0x1051865)) {
+            caller ==
+#ifdef _WIN32
+                native_pe_address(native_history_profile_base(), 0x1051865)
+#else
+                native_reference_address(native_history_profile_base(), 0x1b458c2)
+#endif
+            ) {
         try {
             reclaim_history = capture_native_embark_reclaim_history_draw(
                 graphics, source, width, caller);
@@ -2145,7 +2234,6 @@ static void capture_native_clipped_draw(graphicst *graphics, const NativeString 
             if (history_lock.owns_lock()) history_lock.unlock();
         }
     }
-#endif
     capture_native_limited_caption_draw(graphics, source, just, width, [&] {
         if (g_native_clipped_caption_hooks.draw)
             g_native_clipped_caption_hooks.draw(graphics, source, just, width);
@@ -2242,6 +2330,9 @@ static void append_native_caption_calls(std::vector<NativeCall> &calls,
 }
 
 static bool native_caption_hooks_active() {
+#ifndef _WIN32
+    if (g_native_main_caption_calls.active()) return true;
+#endif
     return g_native_help_top_tile_hook.active() || g_native_help_tile_hook.active() ||
         g_native_legacy_tooltip_hook.active() || g_native_tooltip_container_hook.active() ||
         g_native_multiline_arrange_hook.active() || g_native_multiline_widget_hook.active() ||
@@ -2340,7 +2431,22 @@ static bool install_native_caption_hooks() {
     if (!native_reference_calls(entity_fact_calls, 0)) return false;
     calls.insert(calls.end(), entity_fact_calls.begin(), entity_fact_calls.end());
 #endif
+#ifdef _WIN32
     if (!append_native_site_name_draw_calls(calls)) return false;
+#else
+    if (!append_native_site_name_draw_calls(profile.main_calls)) return false;
+    std::vector<NativeCall> entity_fact_calls{
+        {0x143c4a2,0x425170,reinterpret_cast<const void *>(&capture_native_world_site_entity_fact<
+            NativeWorldSiteEntityFactKind::SiteGovernment>),{0x48,0x89,0xda}},
+        {0x143c5bc,0x425170,reinterpret_cast<const void *>(&capture_native_world_site_entity_fact<
+            NativeWorldSiteEntityFactKind::Civilization>),{0x48,0x8b,0x95,0xa0,0xfc,0xff,0xff}},
+        {0x143b724,0x425170,reinterpret_cast<const void *>(&capture_native_world_site_entity_fact<
+            NativeWorldSiteEntityFactKind::SiteGovernment>),{0x4c,0x89,0xea}},
+        {0x143b837,0x425170,reinterpret_cast<const void *>(&capture_native_world_site_entity_fact<
+            NativeWorldSiteEntityFactKind::Civilization>),{0x4c,0x89,0xf2}},
+    };
+    profile.main_calls.insert(profile.main_calls.end(),entity_fact_calls.begin(),entity_fact_calls.end());
+#endif
     reset_native_caption_capture();
     g_native_caption_hooks.resize = profile.resize;
     g_native_caption_hooks.draw = profile.draw;
@@ -2352,7 +2458,10 @@ static bool install_native_caption_hooks() {
     g_native_clipped_caption_hooks.roster_shorten = profile.roster_shorten_target
         ? reinterpret_cast<NativeCaptionTruncateFn>(profile.base + profile.roster_shorten_target)
         : nullptr;
-    g_native_map_track_caption_hooks.shorten = profile.map_track_shorten_target
+#ifndef _WIN32
+    g_native_clipped_caption_hooks.roster_shorten = profile.truncate;
+#endif
+    g_native_map_track_caption_hooks.shorten = profile.map_track_shorten ? profile.map_track_shorten : profile.map_track_shorten_target
         ? reinterpret_cast<NativeCaptionTruncateFn>(profile.base + profile.map_track_shorten_target)
         : nullptr;
     g_native_map_track_caption_hooks.text_offset = profile.map_caption_text_offset;
@@ -2370,6 +2479,11 @@ static bool install_native_caption_hooks() {
             g_native_announcement_page_binding.rows_target) : nullptr;
     if (!g_native_caption_hooks.code.install(profile.base, calls, "Complete native caption capture"))
         return false;
+#ifndef _WIN32
+    if (!native_reference_calls(profile.main_calls,0) ||
+            !g_native_main_caption_calls.install(elf_runtime::state().executable.bias,
+                profile.main_calls,"Native page and roster caption capture")) return false;
+#endif
     if (profile.map_caption_build) {
         auto &map_hooks = g_native_map_track_caption_hooks;
         if (!map_hooks.build_entry.prepare(reinterpret_cast<unsigned char *>(profile.map_caption_build),
@@ -2515,6 +2629,9 @@ static bool install_native_caption_hooks() {
 }
 
 static bool uninstall_native_caption_hooks() {
+#ifndef _WIN32
+    if (!g_native_main_caption_calls.uninstall("Native page and roster caption restore")) return false;
+#endif
     if (!g_native_help_top_tile_hook.uninstall("Native classic help artwork restore")) return false;
     g_native_help_top_tile_hook = {};
     g_real_native_help_top_tile = nullptr;

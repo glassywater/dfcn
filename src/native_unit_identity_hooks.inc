@@ -1,7 +1,6 @@
 // Capture identities at the native unit formatters, before clipping or drawing.
 // The game retains its original strings; the overlay receives owned field data
 // and a translation bound to the exact string owner and original bytes.
-#ifdef _WIN32
 #include "native_unit_identity_capture.inc"
 
 using NativeUnitIdentityFormatFn = void (*)(void *, NativeString *, bool);
@@ -21,6 +20,11 @@ struct NativeUnitIdentityCall {
     bool publish = true;
     NativeString *reference_output = nullptr;
     std::vector<NativeUnitReferencePart> reference_parts;
+#ifndef _WIN32
+    struct Span { size_t first; NativeUnitReferencePart part; };
+    std::vector<Span> reference_spans;
+    std::string reference_before_capitalization;
+#endif
     NativeUnitReferencePart reference_entity;
     bool reference_entity_seen = false;
     bool reference_failed = false;
@@ -49,6 +53,13 @@ struct NativeUnitIdentityHooks {
     NativeUnitIdentityEnglishNameFn english_name = nullptr;
     NativeUnitIdentityCapitalizeFn capitalize = nullptr;
     uintptr_t base = 0;
+    NativeSearchDestroyFn destroy = nullptr;
+    NativeString *(*assign)(NativeString *, const char *, size_t) = nullptr;
+    NativeString *(*append)(NativeString *, const char *, size_t) = nullptr;
+    const void *(*selected_name)(const void *) = nullptr;
+#ifndef _WIN32
+    std::vector<NativeInlineObserverHook> observers;
+#endif
 };
 static NativeUnitIdentityHooks g_native_unit_identity_hooks;
 
@@ -172,6 +183,9 @@ static void record_native_unit_reference_part(NativeString *output,
     auto *call = g_native_unit_identity_call;
     if (call && call->reference_output == output) {
         try {
+#ifndef _WIN32
+            if (Assign) call->reference_spans.clear();
+#endif
             if (Assign) call->reference_parts.clear();
             if (length > 262144) call->reference_failed = true;
             else if (length != 0) {
@@ -205,7 +219,13 @@ static void record_native_unit_reference_part(NativeString *output,
                             part.entity_present = true;
                         }
                     }
+#ifndef _WIN32
+                    std::string_view before;
+                    if (!native_string_view(output, &before, 262144)) call->reference_failed = true;
+                    else call->reference_spans.push_back({Assign ? 0 : before.size(), std::move(part)});
+#else
                     call->reference_parts.push_back(std::move(part));
+#endif
                 }
             }
         } catch (...) { call->reference_failed = true; }
@@ -218,8 +238,8 @@ static NativeString *capture_native_unit_reference_part(NativeString *output,
     NativeInputCallbackScope callback;
     record_native_unit_reference_part<Kind, Assign>(output, source, length);
     NativeString *result = nullptr;
-    const auto original = reinterpret_cast<NativeUnitReferenceStringFn>(
-        native_pe_address(g_native_unit_identity_hooks.base, Assign ? 0x6f8d0 : 0x6fa10));
+    const auto original = Assign ? g_native_unit_identity_hooks.assign
+                                 : g_native_unit_identity_hooks.append;
     callback.call_native([&] { result = original(output, source, length); });
     return result;
 }
@@ -256,6 +276,74 @@ static std::optional<std::string> finish_native_unit_reference_call(
         if (!native_string_view(output, &source, 262144) || source.empty() ||
                 !g_overlay.translation_enabled()) return std::nullopt;
         const std::string original(source);
+#ifndef _WIN32
+        int32_t mode = -1;
+        std::string first_name, animation_name;
+        uintptr_t animation = 0;
+        if (native_history_copy(native_reference_address(g_native_unit_identity_hooks.base,
+                native_history_layout::gametype_rva), mode) && (mode == 4 || mode == 5)) {
+            native_history_copy_string(native_history_object_member(call.unit,"unit","name.first_name"), first_name);
+        }
+        if (native_history_copy(native_history_object_field(call.unit,"unit",0xd80),animation) && animation)
+            native_history_copy_string(animation+0x20,animation_name);
+        if ((!first_name.empty() && original == first_name) ||
+                (!animation_name.empty() && original == animation_name)) {
+            call.reference_spans.clear();
+            NativeUnitReferencePart authored;
+            authored.kind = NativeUnitReferencePartKind::Authored;
+            authored.source = original;
+            call.reference_spans.push_back({0,std::move(authored)});
+            call.reference_failed = false;
+        }
+        // Inline libstdc++ writes and counted appends share the same owned
+        // byte offsets. Deferred fields were copied from native temporary
+        // buffers, and are accepted only when they occur exactly once.
+        for (auto &span : call.reference_spans) {
+            if (span.first != SIZE_MAX) continue;
+            span.first = original.find(span.part.source);
+            if (span.first == std::string::npos && !call.reference_before_capitalization.empty()) {
+                const auto &before = call.reference_before_capitalization;
+                span.first = before.find(span.part.source);
+                if (span.first != std::string::npos &&
+                        before.find(span.part.source, span.first + 1) == std::string::npos &&
+                        span.first <= original.size() &&
+                        span.part.source.size() <= original.size() - span.first)
+                    span.part.source = original.substr(span.first, span.part.source.size());
+                else call.reference_failed = true;
+            } else if (span.first == std::string::npos || original.find(span.part.source,
+                    span.first + 1) != std::string::npos) call.reference_failed = true;
+        }
+        std::sort(call.reference_spans.begin(), call.reference_spans.end(),
+            [](const auto &a, const auto &b) { return a.first < b.first; });
+        size_t end = 0;
+        for (auto &span : call.reference_spans) {
+            const auto &before = call.reference_before_capitalization;
+            if (span.first <= before.size() && span.part.source.size() <= before.size() - span.first &&
+                    before.compare(span.first, span.part.source.size(), span.part.source) == 0 &&
+                    span.first <= original.size() && span.part.source.size() <= original.size() - span.first)
+                span.part.source = original.substr(span.first, span.part.source.size());
+            if (span.first < end || span.first > original.size() ||
+                    span.part.source.size() > original.size() - span.first ||
+                    original.compare(span.first, span.part.source.size(), span.part.source)) {
+                call.reference_failed = true;
+                break;
+            }
+            if (span.first > end) {
+                NativeUnitReferencePart literal;
+                literal.kind = NativeUnitReferencePartKind::Literal;
+                literal.source = original.substr(end, span.first - end);
+                call.reference_parts.push_back(std::move(literal));
+            }
+            end = span.first + span.part.source.size();
+            call.reference_parts.push_back(std::move(span.part));
+        }
+        if (!call.reference_spans.empty() && end < original.size()) {
+            NativeUnitReferencePart literal;
+            literal.kind = NativeUnitReferencePartKind::Literal;
+            literal.source = original.substr(end);
+            call.reference_parts.push_back(std::move(literal));
+        }
+#endif
         std::optional<std::string> translated;
         NativeUnitIdentity snapshot;
         snapshot.form = NativeUnitIdentityForm::Reference;
@@ -339,8 +427,7 @@ static void capture_native_unit_reference_selected_name(uintptr_t address) noexc
 static const void *capture_native_unit_movement_selected_name(const void *identity) {
     NativeInputCallbackScope callback;
     const void *result = nullptr;
-    const auto original = reinterpret_cast<const void *(*)(const void *)>(
-        native_pe_address(g_native_unit_identity_hooks.base, 0xc3a4f0));
+    const auto original = g_native_unit_identity_hooks.selected_name;
     callback.call_native([&] { result = original(identity); });
     capture_native_unit_reference_selected_name(reinterpret_cast<uintptr_t>(result));
     return result;
@@ -448,8 +535,7 @@ static std::optional<std::string> translate_native_unit_identity_reference(
     const auto &hooks = g_native_unit_identity_hooks;
     if (!hooks.base || !hooks.name || expected.empty()) return std::nullopt;
     NativeInputCallbackScope callback;
-    NativeSearchString output(reinterpret_cast<NativeSearchDestroyFn>(
-        native_pe_address(hooks.base, 0x6f850)));
+    NativeSearchString output(hooks.destroy);
     if (unit) {
         if (!hooks.entries[4].installed || !hooks.entries[4].original) return std::nullopt;
         NativeUnitIdentityCall call;
@@ -467,8 +553,7 @@ static std::optional<std::string> translate_native_unit_identity_reference(
             // name-comma-role formatter. Replay that exact native selection
             // into a disposable string, retaining its hidden identity rules.
             if (!hooks.entries[5].installed || !hooks.entries[5].original) return std::nullopt;
-            NativeSearchString reference_output(reinterpret_cast<NativeSearchDestroyFn>(
-                native_pe_address(hooks.base, 0x6f850)));
+            NativeSearchString reference_output(hooks.destroy);
             NativeUnitIdentityCall reference_call;
             reference_call.unit = unit;
             reference_call.publish = false;
@@ -531,6 +616,11 @@ static void capture_native_unit_identity_name_only(void *unit, NativeString *out
 }
 
 static bool native_unit_identity_hooks_active() {
+#ifndef _WIN32
+    if (std::any_of(g_native_unit_identity_hooks.observers.begin(),
+            g_native_unit_identity_hooks.observers.end(),
+            [](const auto &observer) { return observer.active(); })) return true;
+#endif
     return g_native_unit_identity_hooks.names.active() ||
         std::any_of(g_native_unit_identity_hooks.entries.begin(),
             g_native_unit_identity_hooks.entries.end(),
@@ -540,15 +630,24 @@ static bool native_unit_identity_hooks_active() {
 static void uninstall_native_unit_identity_hooks() {
     if (!native_callbacks_idle()) return;
     auto &hooks = g_native_unit_identity_hooks;
+#ifndef _WIN32
+    for (auto it = hooks.observers.rbegin(); it != hooks.observers.rend(); ++it)
+        if (!it->uninstall("Native unit reference field restore")) return;
+    hooks.observers.clear();
+#endif
     for (auto it = hooks.entries.rbegin(); it != hooks.entries.rend(); ++it)
         if (!it->uninstall("Native unit identity formatter restore")) return;
     if (!hooks.names.uninstall("Native unit identity name source restore")) return;
+    hooks.destroy = nullptr;
+    hooks.assign = hooks.append = nullptr;
+    hooks.selected_name = nullptr;
     hooks.name = nullptr;
     hooks.english_name = nullptr;
     hooks.capitalize = nullptr;
     hooks.base = 0;
 }
 
+#ifdef _WIN32
 static bool install_native_unit_identity_hooks() {
     auto &hooks = g_native_unit_identity_hooks;
     if (hooks.names.installed && std::all_of(hooks.entries.begin(), hooks.entries.end(),
@@ -559,6 +658,10 @@ static bool install_native_unit_identity_hooks() {
     }
     hooks.base = native_history_profile_base();
     if (!hooks.base) return false;
+    hooks.destroy = reinterpret_cast<NativeSearchDestroyFn>(native_pe_address(hooks.base, 0x6f850));
+    hooks.assign = reinterpret_cast<NativeUnitReferenceStringFn>(native_pe_address(hooks.base, 0x6f8d0));
+    hooks.append = reinterpret_cast<NativeUnitReferenceStringFn>(native_pe_address(hooks.base, 0x6fa10));
+    hooks.selected_name = reinterpret_cast<const void *(*)(const void *)>(native_pe_address(hooks.base, 0xc3a4f0));
     hooks.name = reinterpret_cast<NativeUnitIdentityNameFn>(native_pe_address(hooks.base, 0xa94030));
     hooks.english_name = reinterpret_cast<NativeUnitIdentityEnglishNameFn>(
         native_pe_address(hooks.base, 0xa946e0));
@@ -805,7 +908,5 @@ static bool install_native_unit_identity_hooks() {
     return true;
 }
 #else
-static bool native_unit_identity_hooks_active() { return false; }
-static bool install_native_unit_identity_hooks() { return true; }
-static void uninstall_native_unit_identity_hooks() {}
+#include "native_unit_identity_search_profile_elf.inc"
 #endif

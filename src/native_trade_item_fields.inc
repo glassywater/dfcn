@@ -17,11 +17,11 @@ static bool populate_native_trade_item_fields(uintptr_t object,
             !native_history_copy(native_history_object_field(object, {}, 0x14, 4), caption.flags2))
         return false;
 
-#ifdef _WIN32
     // These itemdef prefixes are identical in the supported native PE images.
     // The item subtype getter supplies the independent RAW ID. A definition
     // pointer is accepted only with the same ID, never from the visible name.
     const char *item_class = nullptr;
+    const char *definition_class = nullptr;
     size_t adjective_offset = 0;
     switch (caption.type) {
     case 13: item_class = "item_instrumentst"; break;
@@ -39,20 +39,58 @@ static bool populate_native_trade_item_fields(uintptr_t object,
     case 86: item_class = "item_toolst"; adjective_offset = 0xd8; break;
     default: break;
     }
+    const auto flag_fields = [](uintptr_t pointer, uintptr_t count_address,
+            size_t bit, bool &value) {
+        value = false;
+        uintptr_t flags = 0;
+        int32_t count = 0;
+        if (!pointer || !count_address || !native_history_copy(count_address, count) ||
+                count < 0 || count > 4096) return false;
+        if (bit / 8 >= static_cast<size_t>(count)) return true;
+        uint8_t byte = 0;
+        if (!native_history_copy(pointer, flags) || !flags ||
+                !native_history_copy(flags + bit / 8, byte)) return false;
+        value = (byte & (1u << (bit % 8))) != 0;
+        return true;
+    };
+    const auto material_flag = [&](uintptr_t material, bool &value) {
+        return flag_fields(native_history_object_field(material, "material", 0x290, 8),
+            native_history_object_field(material, "material", 0x298, 4), 47, value);
+    };
     if (item_class) {
+        switch (caption.type) {
+        case 13: definition_class = "itemdef_instrumentst"; break;
+        case 14: definition_class = "itemdef_toyst"; break;
+        case 24: definition_class = "itemdef_weaponst"; break;
+        case 25: definition_class = "itemdef_armorst"; break;
+        case 26: definition_class = "itemdef_shoesst"; break;
+        case 27: definition_class = "itemdef_shieldst"; break;
+        case 28: definition_class = "itemdef_helmst"; break;
+        case 29: definition_class = "itemdef_glovesst"; break;
+        case 39: definition_class = "itemdef_ammost"; break;
+        case 60: definition_class = "itemdef_pantsst"; break;
+        case 65: definition_class = "itemdef_siegeammost"; break;
+        case 68: definition_class = "itemdef_trapcompst"; break;
+        case 86: definition_class = "itemdef_toolst"; break;
+        }
+        const auto field = [&](uintptr_t definition, size_t coordinate, size_t width = 1) {
+            return native_history_object_field(definition, definition_class, coordinate, width);
+        };
         uintptr_t definition = 0;
         int16_t subtype = -1;
         if (!native_history_object_is(object, item_class) ||
                 !native_history_copy(native_history_object_field(object, item_class, 0xe8, 8), definition) ||
                 !definition || definition > UINTPTR_MAX - 0x108 ||
-                !native_history_copy(definition + 0x28, subtype) ||
+                !native_history_copy(field(definition, 0x28, 2), subtype) ||
                 subtype != caption.subtype ||
-                !native_history_copy_string(definition + (caption.count == 1 ? 0x68 : 0x88), caption.raw_name) ||
+                !native_history_copy_string(field(definition, caption.count == 1 ? 0x68 : 0x88, sizeof(NativeString)), caption.raw_name) ||
                 (adjective_offset && !native_history_copy_string(
-                    definition + adjective_offset, caption.raw_adjective))) return true;
+                    field(definition, adjective_offset, sizeof(NativeString)), caption.raw_adjective))) return true;
         if (caption.type == 29 &&
-                (!native_history_page_flag(object, 0xf0, 0xf8, 0, caption.right) ||
-                 !native_history_page_flag(object, 0xf0, 0xf8, 1, caption.left))) return true;
+                (!flag_fields(native_history_object_field(object, item_class, 0xf0, 8),
+                    native_history_object_field(object, item_class, 0xf8, 4), 0, caption.right) ||
+                 !flag_fields(native_history_object_field(object, item_class, 0xf0, 8),
+                    native_history_object_field(object, item_class, 0xf8, 4), 1, caption.left))) return true;
         // a82d18 -> 1360ec0 compares adult body sizes, not race identities.
         // Elven and dwarven clothing can share a size despite different races.
         if (caption.type == 25 || caption.type == 26 || caption.type == 28 ||
@@ -94,14 +132,14 @@ static bool populate_native_trade_item_fields(uintptr_t object,
             case 60: property_offset = 0x128; break;
             }
             bool chain = false;
-            if (!native_history_page_flag(definition, property_offset,
-                    property_offset + 8, 7, chain)) return true;
+            if (!flag_fields(field(definition, property_offset, 8),
+                    field(definition, property_offset + 8, 4), 7, chain)) return true;
             if (chain) {
                 uintptr_t material = 0;
                 bool metal = false;
                 if (!native_history_material_object(native_history_profile_base(),
                         static_cast<int16_t>(caption.material), caption.material_index, material) ||
-                        (material && !native_history_page_flag(material, 0x290, 0x298, 47, metal)) ||
+                        (material && !material_flag(material, metal)) ||
                         metal) return true;
             }
         }
@@ -119,7 +157,7 @@ static bool populate_native_trade_item_fields(uintptr_t object,
             if (!native_history_material_object(native_history_profile_base(),
                     static_cast<int16_t>(caption.material), caption.material_index, material) ||
                     (caption.material == 0 && (!material ||
-                     !native_history_page_flag(material, 0x290, 0x298, 47, metal)))) return true;
+                     !material_flag(material, metal)))) return true;
             noun = caption.material >= 419 && caption.material <= 618 ? "cup" :
                 caption.material == 0 && !metal ? "mug" : "goblet";
             break;
@@ -177,6 +215,5 @@ static bool populate_native_trade_item_fields(uintptr_t object,
     if (!improvement_field || !native_history_read_vector(improvement_field, improvements) ||
             improvements.size() != 0 || (caption.flags & 0x40u)) return true;
     caption.semantic_name = true;
-#endif
     return true;
 }

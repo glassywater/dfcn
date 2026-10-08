@@ -5,6 +5,9 @@
 #include "native_text_input.inc"
 #include "native_arena_adapter.inc"
 #include "native_code_patch.inc"
+#ifndef _WIN32
+#include "native_inline_observer_elf.inc"
+#endif
 #include "native_image_adapter.inc"
 #include "native_stone_use_guard.inc"
 #include "native_mouse_click.inc"
@@ -38,9 +41,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_ime_adapter.inc"
 #include "native_input_hooks.inc"
 #include "native_search_binding.inc"
-#ifdef _WIN32
 #include "native_arena_tree_search_hooks.inc"
-#endif
 #include "name_editor_search.inc"
 #include "native_item_search_hooks.inc"
 #include "native_stocks_search_hooks.inc"
@@ -57,14 +58,12 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_symbol_search_hooks.inc"
 #include "native_conversation_search_hooks.inc"
 #include "native_journal_search_hooks.inc"
-#ifdef _WIN32
 #include "native_item_picker_search_hooks.inc"
 #include "native_kitchen_search_hooks.inc"
 #include "native_justice_search_hooks.inc"
 #include "native_job_details_search_hooks.inc"
 #include "native_adventure_barter_search_hooks.inc"
 #include "native_construction_search_hooks.inc"
-#endif
 #include "native_caption_hooks.inc"
 #include "native_character_relations.inc"
 #include "native_overview_quote_hooks.inc"
@@ -98,9 +97,7 @@ static bool install_sdl_hooks() {
         {"Stone economic-use bounds guard", install_native_stone_use_guard},
         {"Native left-click delivery", install_native_mouse_click_hook},
         {"Unicode input and search", install_native_input_hooks},
-#ifdef _WIN32
         {"Translated Arena tree search", install_native_arena_tree_search_hook},
-#endif
         {"Translated item search", install_native_item_search_hook},
         {"Translated Stocks search", install_native_stocks_search_hook},
         {"Translated unit search", install_native_unit_search_hook},
@@ -116,14 +113,12 @@ static bool install_sdl_hooks() {
         {"Translated image creator search", install_native_symbol_search_hook},
         {"Conversation keyword search", install_native_conversation_search_hook},
         {"Adventure journal search", install_native_journal_search_hook},
-#ifdef _WIN32
         {"Translated display, hauling and trade search", install_native_item_picker_search_hook},
         {"Translated Kitchen search", install_native_kitchen_search_hook},
         {"Translated counterintelligence search", install_native_justice_search_hook},
         {"Translated task-detail search", install_native_job_details_search_hook},
         {"Translated adventure barter search", install_native_adventure_barter_search_hook},
         {"Translated construction material search", install_native_construction_search_hook},
-#endif
         {"Complete caption capture", install_native_caption_hooks},
         {"Character kinship captions", install_native_character_relations_hook},
         {"Native overview quote draw", install_native_overview_quote_hooks},
@@ -183,14 +178,12 @@ static void uninstall_sdl_hooks() {
     uninstall_native_overview_quote_hooks();
     uninstall_native_character_relations_hook();
     uninstall_native_caption_hooks();
-#ifdef _WIN32
     uninstall_native_construction_search_hook();
     uninstall_native_adventure_barter_search_hook();
     uninstall_native_job_details_search_hook();
     uninstall_native_justice_search_hook();
     uninstall_native_kitchen_search_hook();
     uninstall_native_item_picker_search_hook();
-#endif
     uninstall_native_conversation_search_hook();
     uninstall_native_journal_search_hook();
     uninstall_native_symbol_search_hook();
@@ -207,9 +200,7 @@ static void uninstall_sdl_hooks() {
     uninstall_native_squad_name_hooks();
     uninstall_native_stocks_search_hook();
     uninstall_native_item_search_hook();
-#ifdef _WIN32
     uninstall_native_arena_tree_search_hook();
-#endif
     uninstall_native_input_hooks();
     g_native_mouse_click_hook.uninstall();
     g_native_stone_use_guard.uninstall();
@@ -236,14 +227,12 @@ static bool native_hooks_detached() {
         !native_character_relations_hook_active() &&
         !native_overview_quote_hooks_active() &&
         !native_journal_search_hook_active() &&
-#ifdef _WIN32
         !native_item_picker_search_hook_active() &&
         !native_kitchen_search_hook_active() &&
         !native_justice_search_hook_active() &&
         !native_job_details_search_hook_active() &&
         !native_adventure_barter_search_hook_active() &&
         !native_construction_search_hook_active() &&
-#endif
         !native_item_search_hook_active() &&
         !native_stocks_search_hook_active() &&
         !native_unit_search_hook_active() &&
@@ -257,9 +246,7 @@ static bool native_hooks_detached() {
         !native_material_search_hook_active() &&
         !native_stockpile_search_hook_active() &&
         !native_symbol_search_hook_active() &&
-#ifdef _WIN32
         !native_arena_tree_search_hook_active() &&
-#endif
         !native_input_hooks_active();
 }
 

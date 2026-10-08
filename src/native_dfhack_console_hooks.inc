@@ -1,7 +1,6 @@
 // The terminal is a separate sink from run_command_silent's buffered stream.
 // Hook only Console's own color_ostream vtable. DFHack retains its native
 // console mutex, batch bookkeeping, UTF-8 output and prompt refresh policy.
-#ifdef _WIN32
 static std::optional<std::string> translate_dfhack_console_output(std::string_view source);
 static std::optional<std::string> translate_dfhack_console_item_caption(std::string_view source);
 static std::optional<std::string> translate_dfhack_console_owned_literal(
@@ -75,6 +74,7 @@ static NativeDfhackConsoleThread native_dfhack_console_thread(void *console) {
 }
 
 static NativeString native_dfhack_console_borrow(const std::string &text) {
+#ifdef _WIN32
     NativeString result = native_empty_string();
     result.size = text.size();
     if (text.size() <= 15) {
@@ -87,6 +87,9 @@ static NativeString native_dfhack_console_borrow(const std::string &text) {
         result.capacity = text.size();
     }
     return result;
+#else
+    return text;
+#endif
 }
 
 static void native_dfhack_console_forward(NativeDfhackConsoleCall &call,
@@ -514,31 +517,50 @@ static bool install_native_dfhack_console_hook() {
         if (complete) g_native_dfhack_console_buffering.store(true, std::memory_order_release);
         return complete;
     }
+#ifdef _WIN32
     const auto module = GetModuleHandleW(L"dfhack.dll");
-    if (!module) return true; // Optional DFHack may appear after core startup.
+    if (!module) return true;
+    const auto symbol = [&](const char *name) { return reinterpret_cast<void *>(GetProcAddress(module,name)); };
+#else
+    const auto symbol = [&](const char *name) { return dlsym(RTLD_DEFAULT,name); };
+    if (!symbol("_ZTVN6DFHack7ConsoleE")) return true;
+#endif
     constexpr const char *label = "DFHack console translation";
+#ifdef _WIN32
     static constexpr std::array<const char *, 4> symbols{
         "?begin_batch@Console@DFHack@@MEAAXXZ",
         "?add_text@Console@DFHack@@MEAAXW4color_value@2@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
         "?end_batch@Console@DFHack@@MEAAXXZ",
         "?flush_proxy@Console@DFHack@@MEAAXXZ"};
+#else
+    static constexpr std::array<const char *,4> symbols{
+        "_ZN6DFHack7Console11begin_batchEv",
+        "_ZN6DFHack7Console8add_textENS_11color_valueERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+        "_ZN6DFHack7Console9end_batchEv", "_ZN6DFHack7Console11flush_proxyEv"};
+#endif
     const std::array<uintptr_t, 4> replacements{
         reinterpret_cast<uintptr_t>(&native_dfhack_console_begin_batch),
         reinterpret_cast<uintptr_t>(&native_dfhack_console_add_text),
         reinterpret_cast<uintptr_t>(&native_dfhack_console_end_batch),
         reinterpret_cast<uintptr_t>(&native_dfhack_console_flush_proxy)};
-    auto *vtable = reinterpret_cast<uintptr_t *>(GetProcAddress(module,
-        "??_7Console@DFHack@@6Bcolor_ostream@1@@"));
+#ifdef _WIN32
+    auto *vtable = reinterpret_cast<uintptr_t *>(symbol("??_7Console@DFHack@@6Bcolor_ostream@1@@"));
+    constexpr size_t slots = 16;
+#else
+    // Console inherits a virtual ostream base. Its exported primary address
+    // point follows the vbase displacement, offset-to-top and typeinfo.
+    auto *vtable = reinterpret_cast<uintptr_t *>(symbol("_ZTVN6DFHack7ConsoleE")) + 3;
+    constexpr size_t slots = 10;
+#endif
     NativePatchProtection protection = 0;
     unsigned long error = 0;
-    constexpr size_t slots = 16;
     if (!vtable || !native_patch_page_protection(reinterpret_cast<uintptr_t>(vtable),
             slots * sizeof(uintptr_t), protection, error) || !native_patch_readable(protection)) {
         report_native_patch_error("ERROR", label, "Console vtable export is unavailable", error);
         return false;
     }
     for (size_t function = 0; function < symbols.size(); ++function) {
-        const uintptr_t original = reinterpret_cast<uintptr_t>(GetProcAddress(module, symbols[function]));
+        const uintptr_t original = reinterpret_cast<uintptr_t>(symbol(symbols[function]));
         if (!original || !native_patch_page_protection(original, 1, protection, error) ||
                 !native_patch_executable(protection)) {
             report_native_patch_error("ERROR", label, "Console method export is unavailable", error);
@@ -620,10 +642,3 @@ static void uninstall_native_dfhack_console_hook() {
     // Originals remain published for wrappers already fetched by a worker.
     // Common callback accounting prevents unloading their return addresses.
 }
-#else
-// The MSVC Console boundary is specific to the current Windows host. Linux
-// retains its native console until its own concrete ABI is bound separately.
-static bool native_dfhack_console_hook_active() { return false; }
-static bool install_native_dfhack_console_hook() { return true; }
-static void uninstall_native_dfhack_console_hook() {}
-#endif

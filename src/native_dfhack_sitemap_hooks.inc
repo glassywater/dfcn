@@ -3,7 +3,6 @@
 // Observe the installed Sitemap, NotifyOverlay and AssignAnimal List renderers
 // and actual Label controls. Copy strings before returning to DFHack; no Lua
 // state, widget, callback, or table reference leaves this call.
-#ifdef _WIN32
 struct NativeDfhackSitemapLuaApi {
     NativeDfhackLuaOutputApi stack;
     const char *(*pushstring)(NativeDfhackLuaState *, const char *) = nullptr;
@@ -1125,6 +1124,7 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
     }
 }
 
+#ifdef _WIN32
 static bool bind_native_dfhack_sitemap_lua(HMODULE module) {
     if (g_native_dfhack_sitemap_lua_bound.load(std::memory_order_acquire)) return true;
     const auto lua = GetModuleHandleW(L"lua53.dll");
@@ -1231,6 +1231,10 @@ static bool bind_native_dfhack_sitemap_lua(HMODULE module) {
     return true;
 }
 
+#else
+#include "native_dfhack_sitemap_profile_elf.inc"
+#endif
+
 static uint32_t native_dfhack_sitemap_callbacks() {
     auto *context = g_native_dfhack_sitemap_context;
     return context ? std::atomic_ref<uint32_t>(context->active).load(std::memory_order_seq_cst) : 0;
@@ -1244,6 +1248,7 @@ static bool native_dfhack_sitemap_hook_active() {
         std::atomic_ref<uintptr_t>(context->helper).load(std::memory_order_seq_cst));
 }
 
+#ifdef _WIN32
 static bool prepare_native_dfhack_sitemap_hook(HMODULE module) {
     constexpr const char *label = "DFHack Sitemap complete choice text capture";
     auto &hook = g_native_dfhack_sitemap_hook;
@@ -1358,9 +1363,28 @@ static bool prepare_native_dfhack_sitemap_hook(HMODULE module) {
     return true;
 }
 
+#else
+static bool prepare_native_dfhack_sitemap_hook(void *entry_pointer) {
+    auto &hook = g_native_dfhack_sitemap_hook;
+    if (hook.relay) return hook.original && g_native_dfhack_sitemap_context;
+    if (!bind_native_dfhack_sitemap_lua(entry_pointer)) return false;
+    auto context = std::make_unique<NativeDfhackSitemapContext>();
+    if (!prepare_native_dfhack_elf_gate(hook,
+            static_cast<unsigned char *>(entry_pointer), context.get(),
+            {0xf3,0x0f,0x1e,0xfa,0x41,0x56}, NativeDfhackElfGate::Observe,
+            "DFHack complete choice text capture")) return false;
+    g_native_dfhack_sitemap_context = context.release();
+    return true;
+}
+#endif
+
 static bool install_native_dfhack_sitemap_hook() {
     std::lock_guard<std::mutex> lock(g_native_dfhack_sitemap_hook_mutex);
+#ifdef _WIN32
     const auto module = GetModuleHandleW(L"dfhack.dll");
+#else
+    void *module = dlsym(RTLD_DEFAULT, "_ZN6DFHack3Lua8CheckPenEP9lua_StatePNS_6Screen3PenEibb");
+#endif
     if (!module) return true;
     constexpr const char *label = "DFHack Sitemap complete choice text capture";
     if (!prepare_native_dfhack_sitemap_hook(module) ||
@@ -1381,21 +1405,3 @@ static void uninstall_native_dfhack_sitemap_hook() {
     if (!flush_native_code_patches(hook.patches, label)) return;
     if (!native_dfhack_sitemap_callbacks()) clear_native_dfhack_sitemap_text();
 }
-#else
-static std::optional<std::string> lookup_native_dfhack_sitemap_text(
-        const graphicst *, int, int, std::string_view) { return std::nullopt; }
-static std::optional<std::string> lookup_native_dfhack_notification_text(
-        const graphicst *, int, int, std::string_view) { return std::nullopt; }
-static std::vector<NativeDfhackNotificationText> native_dfhack_notification_texts(
-        const graphicst *) { return {}; }
-static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
-        const graphicst *) { return {}; }
-static std::vector<NativeDfhackControlPanelText> native_dfhack_control_panel_texts(
-        const graphicst *) { return {}; }
-static std::optional<std::string> lookup_native_dfhack_animal_assignment_text(
-        const graphicst *, int, int, std::string_view) { return std::nullopt; }
-static void clear_native_dfhack_sitemap_text() {}
-static bool native_dfhack_sitemap_hook_active() { return false; }
-static bool install_native_dfhack_sitemap_hook() { return true; }
-static void uninstall_native_dfhack_sitemap_hook() {}
-#endif

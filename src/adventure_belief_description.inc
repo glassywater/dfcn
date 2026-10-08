@@ -1,9 +1,16 @@
 // A retained background tooltip can redraw its cached rows without another
 // paragraph call. Its own native row writer and a complete current frame
 // recover the religion description without rebuilding the game's cache.
-#ifdef _WIN32
         const auto belief_base = native_history_profile_base();
-        const auto belief_writer = native_pe_address(belief_base, 0x62d711);
+        const auto belief_writer = native_reference_address(belief_base,
+#ifdef _WIN32
+            0x62d711
+#else
+            // setupadventurest draws the +0x1330 description cache built by
+            // 0x10a6520; its religion producer also fills the retained IDs.
+            0xd1a7cb
+#endif
+        );
         const auto belief_draws = captured_native_drawn_text_rows();
         const NativePanelBorders belief_borders(*gps_);
         std::vector<SDL_Rect> belief_panels;
@@ -152,4 +159,3 @@
             for (const auto &row : card->rows)
                 std::fill_n(owned[row.y].begin() + row.x, row.source.size(), true);
         }
-#endif

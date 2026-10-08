@@ -9,10 +9,51 @@ struct NativeKitchenSearchProfile {
 static void capture_native_kitchen_search_query_fold(NativeString *);
 static size_t capture_native_kitchen_search_find(const char *, size_t,
     const NativeString *, const char *, size_t);
+#ifdef _WIN32
 #include "native_kitchen_search_profile_pe.inc"
+#else
+static NativeString *capture_native_kitchen_search_simplified(
+    NativeString *, NativeString *, const void *);
+#include "native_kitchen_search_profile_elf.inc"
+#endif
 
 static NativeCallHook g_native_kitchen_search_hook;
 static NativeSearchFoldFn g_native_kitchen_search_fold = nullptr;
+
+#ifndef _WIN32
+static NativeString *capture_native_kitchen_search_simplified(NativeString *output,
+        NativeString *source, const void *closure) {
+    NativeInputCallbackScope callback;
+    using SimplifiedFn = NativeString *(*)(NativeString *, NativeString *);
+    static const auto original = reinterpret_cast<SimplifiedFn>(dlsym(RTLD_DEFAULT,
+        "_Z17simplified_stringNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"));
+    if (!original) return output;
+    std::string spelling;
+    try {
+        std::string_view borrowed;
+        if (native_string_view(source, &borrowed, 65536)) spelling.assign(borrowed);
+    } catch (...) {}
+    NativeString *result = callback.call_native([&] { return original(output, source); });
+    try {
+        uintptr_t owner = 0;
+        if (native_history_copy(reinterpret_cast<uintptr_t>(closure), owner) && owner) {
+            const auto *query = reinterpret_cast<const NativeString *>(owner + 0x240);
+            // Returning the native value can move from the by-value argument.
+            // Retain its spelling before forwarding; only the disposable
+            // simplified key enters the native find.
+            std::string_view needle, folded;
+            if (g_overlay.translation_enabled() &&
+                    !spelling.empty() &&
+                    native_string_view(query, &needle, 4096) && !needle.empty() &&
+                    native_string_view(output, &folded, 65536) &&
+                    folded.find(needle) == std::string_view::npos &&
+                    g_overlay.translated_search_matches(spelling, needle))
+                output->assign(needle);
+        }
+    } catch (...) {}
+    return result;
+}
+#endif
 
 static void capture_native_kitchen_search_query_fold(NativeString *query) {
     fold_native_search_query(query, g_native_kitchen_search_fold);

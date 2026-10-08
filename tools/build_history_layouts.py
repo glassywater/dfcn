@@ -43,7 +43,7 @@ class Generator:
         # Later save/compression objects do not participate in these snapshots.
         plotinfo = self.types['plotinfost']
         children = list(plotinfo)
-        last = next(i for i, child in enumerate(children) if child.get('name') == 'race_id')
+        last = next(i for i, child in enumerate(children) if child.get('name') == 'labor_info')
         for child in children[last + 1:]:
             plotinfo.remove(child)
         # The legacy stocks renderer exposes only its retained filter prefix.
@@ -125,7 +125,7 @@ class Generator:
         if tag in SCALARS:
             return self.named(tag)
         if tag in ('enum', 'bitfield'):
-            return self.named(node.get('base-type') or node.attrib['type-name'])
+            return self.named(node.get('base-type') or node.get('type-name', 'int32_t'))
         if tag in ('pointer', 'ptr-string'):
             return Shape('uintptr_t', 8, 8, [])
         if tag == 'static-array':
@@ -252,14 +252,28 @@ class Generator:
         roots = {'world_data', 'world_region', 'world_site', 'historical_figure', 'historical_entity',
                  'historical_figure_info', 'interaction_profilest', 'creature_raw', 'caste_raw',
                  'identity', 'artifact_record', 'item', 'item_toolst', 'itemdef_toolst', 'itemdef_instrumentst',
-                 'itemdef_weaponst', 'entity_entity_link',
+                 'itemdef_weaponst', 'itemdef_armorst', 'itemdef_shoesst',
+                 'itemdef_shieldst', 'itemdef_helmst', 'itemdef_glovesst',
+                 'itemdef_ammost', 'itemdef_pantsst', 'itemdef_toyst',
+                 'itemdef_siegeammost', 'itemdef_trapcompst',
+                 'agreement', 'agreement_details', 'agreement_details_data_join_party',
+                 'activity_entry', 'activity_event_conversationst', 'utterancest',
+                 'work_detail', 'labor_work_details_interfacest', 'widget_radio_rows',
+                 'custom_stockpile_interfacest', 'construction_interfacest', 'create_work_order_interfacest',
+                 'location_selector_interfacest',
+                 'entity_entity_link',
                  'entity_raw', 'entity_site_link', 'entity_site_ab_profilest',
                  'entity_position', 'entity_position_assignment',
                  'general_ref_is_artifactst', 'plant_raw', 'material', 'inorganic_raw', 'building_def',
                  'viewscreen_legendsst', 'viewscreen_new_regionst',
+                 'viewscreen_choose_start_sitest',
                  'mod_headerst', 'savegame_headerst', 'viewscreen_titlest', 'viewscreen_new_arenast',
                  'viewscreen_dwarfmodest', 'viewscreen_dungeonmodest', 'viewscreen_worldst',
-                 'widget_textbox', 'stocks_interfacest', 'squad',
+                 'widget_textbox', 'stocks_interfacest', 'squad', 'unit',
+                 'adventure_interfacest', 'adventure_interface_performst',
+                 'performance_menu_choicest', 'view_sheets_interfacest',
+                 'widget_unit_list', 'widget_unit_name', 'widget_unit_portrait',
+                 'widget_container', 'widget_text', 'widget_text_truncated',
                  'plotinfost', 'report',
                  'adv_announcementst',
                  'name_creator_interfacest', 'language_word', 'language_translation', 'language_name'}
@@ -272,7 +286,7 @@ class Generator:
         for name in sorted(roots):
             self.named(name)
         lines = [*header, *self.lines,
-                 'struct Field { size_t legacy, native, size; };',
+                 'struct Field { size_t legacy, native, size; const char *name = nullptr; };',
                  'struct Event { const Field *fields; size_t count; };']
         for value, name, shape in events:
             lines.append(f'static constexpr Field event_{value}[] = {{ // {name}')
@@ -300,7 +314,8 @@ class Generator:
             lines.append(f'static constexpr std::array<Field, {count}> {ident(name)}_fields = {{{{')
             for legacy, length, path in shape.fields:
                 if path and length:
-                    lines.append(f'    {{0x{legacy:x}, DFCN_NATIVE_FIELD({shape.cpp}, {path}, 0x{legacy:x}), {length}}},')
+                    member = '.'.join(part.removeprefix('f_') for part in path.split('.'))
+                    lines.append(f'    {{0x{legacy:x}, DFCN_NATIVE_FIELD({shape.cpp}, {path}, 0x{legacy:x}), {length}, "{member}"}},')
             lines.append('}};')
         textbox = self.cache['widget_textbox']
         for label, member in (('parent', 'parent'), ('rect', 'rect'),
@@ -365,12 +380,15 @@ class Generator:
             addresses = []
             for table, anchor in zip(self.symbols, (0x140000000, 0x400000)):
                 node = next((n for n in table if n.tag == 'vtable-address' and n.get('name') == original), None)
-                addresses.append(int(node.get('value'), 0) - anchor if node is not None else 0)
+                # Library vtables have their own image base and are resolved
+                # by the owning runtime adapter, not through the main image.
+                addresses.append(int(node.get('value'), 0) - anchor
+                                 if node is not None and not node.get('base') else 0)
             slots = f'{ident(name)}_slots, std::size({ident(name)}_slots)' if self.virtuals(name) else 'nullptr, 0'
             parent = self.types[name].get('inherits-from', '')
             lines.append(f'    {{"{name}", "{parent}", DFCN_NATIVE_BINDING(0x{addresses[0]:x}, 0x{addresses[1]:x}), {ident(name)}_fields.data(), std::size({ident(name)}_fields), {slots}}},')
         lines.append('};')
-        for symbol in ('world', 'gametype', 'gamemode', 'd_init', 'gview', 'plotinfo', 'ui_look_list'):
+        for symbol in ('world', 'game', 'gametype', 'gamemode', 'd_init', 'gview', 'plotinfo', 'ui_look_list'):
             addresses = []
             for table, anchor in zip(self.symbols, (0x140000000, 0x400000)):
                 node = next(n for n in table if n.tag == 'global-address' and n.get('name') == symbol)

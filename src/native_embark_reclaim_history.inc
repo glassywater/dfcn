@@ -1,10 +1,18 @@
 // DF 53.16 PE choose-start's retained history is bound while its original
 // addst loop still owns the selected events. The overlay consumes these
 // owned records with the drawn rows, never a later live selection.
+static uintptr_t native_reclaim_screen_field(uintptr_t screen, size_t legacy,
+        std::string_view member) {
+#ifdef _WIN32
+    return screen + legacy;
+#else
+    return native_history_object_member(screen, "viewscreen_choose_start_sitest", member);
+#endif
+}
+
 static std::shared_ptr<const NativeEmbarkReclaimHistoryParagraph>
 capture_native_embark_reclaim_history_draw(graphicst *graphics,
         const NativeString *source, int width, uintptr_t caller) {
-#ifdef _WIN32
     struct State {
         uintptr_t screen = 0, world_data = 0;
         uint64_t generation = 0;
@@ -33,7 +41,13 @@ capture_native_embark_reclaim_history_draw(graphicst *graphics,
     const uintptr_t base = native_history_profile_base();
     // The existing addst entry hook supplies this verified return address.
     // Other captions must neither consult nor invalidate the retained batch.
-    if (!base || caller != native_pe_address(base, 0x1051865)) return {};
+    const uintptr_t writer =
+#ifdef _WIN32
+        native_pe_address(base, 0x1051865);
+#else
+        native_reference_address(base, 0x1b458c2);
+#endif
+    if (!base || caller != writer) return {};
     if (!graphics || !graphics->screen || !source || width != 34 ||
             graphics->screeny < 24 || graphics->screeny > 35) {
         cache = {};
@@ -88,18 +102,18 @@ capture_native_embark_reclaim_history_draw(graphicst *graphics,
         // RTTI: viewscreen_choose_start_sitest, vtable RVA 1749000.
         // Native render 1050fdc gates this panel with byte +275.
         if (!current || !native_history_copy(screen, table) ||
-                table != native_pe_address(base, 0x1749000) ||
-                !native_history_copy(screen + 0x275, reclaim) || !reclaim ||
-                !native_history_copy(screen + 0x340, state.width) || state.width != 34 ||
-                !native_history_copy(screen + 0x2ac, state.selection) || state.selection < 0 ||
-                !native_history_copy(screen + 0x338, state.events[0]) ||
-                !native_history_copy(screen + 0x330, state.events[1]) ||
+                !native_history_object_is(screen, "viewscreen_choose_start_sitest") ||
+                !native_history_copy(native_reclaim_screen_field(screen, 0x275, "choosing_reclaim"), reclaim) || !reclaim ||
+                !native_history_copy(native_reclaim_screen_field(screen, 0x340, "reclaim_detail_box_last_processing_dimx"), state.width) || state.width != 34 ||
+                !native_history_copy(native_reclaim_screen_field(screen, 0x2ac, "selected_reclaim"), state.selection) || state.selection < 0 ||
+                !native_history_copy(native_reclaim_screen_field(screen, 0x338, "reclaim_detail_she"), state.events[0]) ||
+                !native_history_copy(native_reclaim_screen_field(screen, 0x330, "reclaim_detail_he"), state.events[1]) ||
                 (!state.events[0] && !state.events[1]) ||
                 (state.events[0] && state.events[0] == state.events[1])) return std::nullopt;
         state.screen = screen;
 
         NativeBorrowedVector<uintptr_t> lines;
-        if (!native_history_copy(screen + 0x318, lines) ||
+        if (!native_history_copy(native_reclaim_screen_field(screen, 0x318, "reclaim_detail_box.text"), lines) ||
                 !lines.valid(kNativeHistorySourceLimit) || lines.size() == 0) return std::nullopt;
         state.lines = {reinterpret_cast<uintptr_t>(lines.begin),
             reinterpret_cast<uintptr_t>(lines.end), reinterpret_cast<uintptr_t>(lines.capacity)};
@@ -109,7 +123,13 @@ capture_native_embark_reclaim_history_draw(graphicst *graphics,
         NativeBorrowedVector<int32_t> sites;
         if (!native_history_copy(native_history_global(0x24ebb58), state.world_data) ||
                 !state.world_data || state.world_data > UINTPTR_MAX - 0x483e8 ||
-                !native_history_copy(state.world_data + 0x483d0, sites) ||
+                !native_history_copy(
+#ifdef _WIN32
+                    state.world_data + 0x483d0,
+#else
+                    native_history_object_member(state.world_data, "world_data", "old_sites"),
+#endif
+                    sites) ||
                 !sites.valid(1u << 24) || static_cast<size_t>(state.selection) >= sites.size() ||
                 !native_history_copy(reinterpret_cast<uintptr_t>(sites.begin) +
                     sizeof(int32_t) * static_cast<size_t>(state.selection), state.site) ||
@@ -247,12 +267,4 @@ capture_native_embark_reclaim_history_draw(graphicst *graphics,
     next.active = true;
     cache = std::move(next);
     return paragraph_for_row();
-#else
-    (void)graphics;
-    (void)source;
-    (void)width;
-    (void)caller;
-    // The retained choose-start layout above is proven for the PE binary.
-    return {};
-#endif
 }

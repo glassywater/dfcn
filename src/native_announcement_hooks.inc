@@ -109,8 +109,8 @@ static void uninstall_native_announcement_hook() {
 }
 static bool install_native_announcement_hook() {
     if (g_native_announcement_entry.installed && g_native_speech_transform_entry.installed
-#ifdef _WIN32
             && g_native_announcement_log_entry.installed
+#ifdef _WIN32
             && g_native_threat_details_entry.installed && g_native_threat_family_calls.installed
 #endif
         ) return true;
@@ -121,9 +121,7 @@ static bool install_native_announcement_hook() {
     NativeAnnouncementBinding binding;
     if (!resolve_native_announcement_binding(binding)) return false;
     if (!binding.entry || !binding.speech_entry) return false;
-#ifdef _WIN32
     if (!binding.log_entry) return false;
-#endif
     if (!g_native_announcement_entry.prepare(binding.entry, binding.prefix,
             reinterpret_cast<const void *>(&capture_native_announcement), {},
             "Native announcement capture")) return false;

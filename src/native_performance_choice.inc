@@ -2,16 +2,22 @@
 // the original list_name before print_name is shortened for the native view.
 static std::optional<NativePerformanceChoice> capture_native_performance_choice(
         uintptr_t caption_address) {
-#ifdef _WIN32
     const uintptr_t base = native_history_profile_base();
     if (!base || !caption_address) return std::nullopt;
     // 53.16 PE: b0340e passes this global to 870260. Its draw at 8709c4
     // passes entry+8 directly; the search filter borrows entry+0x28.
+#ifdef _WIN32
     const uintptr_t perform = native_reference_address(base, 0x18a85b0);
+#else
+    // ELF 123afe6 edits perform.filter_str (+0x40), and 123affa passes
+    // the same owner to its filter. game+0x72c0 is perform, not adventurest.
+    const uintptr_t perform = native_reference_address(base, 0x22fd520);
+#endif
     uint8_t open = 0;
     NativeBorrowedVector<uintptr_t> choices;
     if (!perform || !native_history_copy(perform, open) || open != 1 ||
-            !native_history_read_vector(perform + 0x20, choices) ||
+            !native_history_read_vector(native_history_object_member(perform,
+                "adventure_interface_performst", "choice", 24), choices) ||
             choices.size() == 0 || choices.size() > 65536) return std::nullopt;
     std::vector<uintptr_t> entries(choices.size());
     if (!native_history_copy_bytes(reinterpret_cast<uintptr_t>(choices.begin),
@@ -50,10 +56,4 @@ static std::optional<NativePerformanceChoice> capture_native_performance_choice(
                 figure, "historical_figure", 4, sizeof(caste)), caste))
         capture_native_history_creature_label(base, race, caste, false, result.species, false);
     return result;
-#else
-    // The current ELF bindings do not expose adventure_interfacest::perform.
-    // Do not apply PE globals or chooser offsets to an unbound native layout.
-    (void)caption_address;
-    return std::nullopt;
-#endif
 }

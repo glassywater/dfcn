@@ -144,7 +144,5 @@ static bool install_native_squad_name_hooks() {
     return true;
 }
 #else
-static bool native_squad_name_hooks_active() { return false; }
-static bool install_native_squad_name_hooks() { return true; }
-static void uninstall_native_squad_name_hooks() { clear_native_squad_aliases(); }
+#include "native_squad_name_search_profile_elf.inc"
 #endif

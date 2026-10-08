@@ -8,7 +8,6 @@ static void clear_native_overview_quote_draw() {
     g_native_overview_quote_revision.fetch_add(1, std::memory_order_release);
 }
 
-#ifdef _WIN32
 struct NativeOverviewQuoteHook {
     NativeCallHook code;
     NativeCaptionDrawFn draw = nullptr;
@@ -37,6 +36,7 @@ static void capture_native_overview_quote_row(graphicst *graphics,
             int32_t left = 0, right = 0, summary_top = 0, pane_bottom = 0;
             int32_t writer_x = 0, next_y = 0, bottom = 0, width = 0, cached_width = 0;
             uintptr_t live_sheet = 0;
+#ifdef _WIN32
             if (!native_history_copy(frame + 0x88, left) ||
                     !native_history_copy(frame + 0xb0, right) ||
                     !native_history_copy(frame + 0x104, summary_top) ||
@@ -57,6 +57,26 @@ static void capture_native_overview_quote_row(graphicst *graphics,
                     next_y != graphics->screeny + 1 || width != right - left - 7 ||
                     cached_width != width) return;
             const int top = summary_top + 28;
+#else
+            int32_t top = 0;
+            if (frame < 0x300 ||
+                    !native_history_copy(frame - 0x278, left) ||
+                    !native_history_copy(frame - 0x280, right) ||
+                    !native_history_copy(frame - 0x300, top) ||
+                    !native_history_copy(frame - 0x2b0, pane_bottom) ||
+                    !native_history_copy(frame - 0x2b8, writer_x) ||
+                    !native_history_copy(frame - 0x268, bottom) ||
+                    !native_history_copy(frame - 0x288, live_sheet) || live_sheet != object ||
+                    !native_history_copy(native_history_object_member(object,
+                        "view_sheets_interfacest", "current_thought_width"), cached_width)) return;
+            width = right - left - 7;
+            if (left < 0 || right <= left + 7 || right >= graphics->dimx ||
+                    top < 0 || top >= graphics->dimy || pane_bottom <= top ||
+                    pane_bottom >= graphics->dimy ||
+                    (bottom != pane_bottom - 1 && bottom != pane_bottom - 4) ||
+                    writer_x != left + 1 || graphics->screenx != writer_x ||
+                    cached_width != width) return;
+#endif
             // Preserve the original row-zero coordinate. A clipped prefix
             // cannot shift every wrapped row while retaining their indices.
             if (graphics->clipx[0] > writer_x || graphics->clipy[0] > top) return;
@@ -72,7 +92,13 @@ static void capture_native_overview_quote_row(graphicst *graphics,
                     graphics->screeny >= bottom) return;
 
             NativeBorrowedVector<uintptr_t> rows;
-            if (!native_history_read_vector(object + 0x1ce0, rows) ||
+            if (!native_history_read_vector(
+#ifdef _WIN32
+                    object + 0x1ce0,
+#else
+                    native_history_object_member(object, "view_sheets_interfacest", "current_thought.text"),
+#endif
+                    rows) ||
                     rows.size() == 0 || rows.size() > 4096) return;
             NativeOverviewQuoteDraw captured;
             captured.owner = object;
@@ -84,7 +110,13 @@ static void capture_native_overview_quote_row(graphicst *graphics,
             captured.top = top;
             captured.bottom = bottom;
             captured.thoughts_bottom = thoughts_bottom;
-            if (!native_history_copy_string(object + 0x1cc0, captured.source) ||
+            if (!native_history_copy_string(
+#ifdef _WIN32
+                    object + 0x1cc0,
+#else
+                    native_history_object_member(object, "view_sheets_interfacest", "raw_current_thought"),
+#endif
+                    captured.source) ||
                     captured.source.empty()) return;
             captured.wrapped_lines.reserve(rows.size());
             size_t current = SIZE_MAX;
@@ -114,7 +146,7 @@ static void capture_native_overview_quote_row(graphicst *graphics,
     // Keep the actual addst entry and its existing caption capture. This
     // caller originally supplies zero for both justification and width.
     if (original) {
-        callback.call_native([&] { original(graphics, source, 0, 0); });
+        callback.call_native([&] { original(graphics, source, static_cast<NativeJustification>(0), 0); });
         // The source vector was complete before this call, but screen cells
         // were not. Publish only after the final visible row's actual write.
         try {
@@ -155,6 +187,7 @@ static bool uninstall_native_overview_quote_hooks() {
     return true;
 }
 
+#ifdef _WIN32
 static bool install_native_overview_quote_hooks() {
     auto &hook = g_native_overview_quote_hook;
     if (hook.code.installed) return true;
@@ -204,10 +237,5 @@ static bool install_native_overview_quote_hooks() {
     return true;
 }
 #else
-static bool native_overview_quote_hooks_active() { return false; }
-static bool install_native_overview_quote_hooks() { return true; }
-static bool uninstall_native_overview_quote_hooks() {
-    clear_native_overview_quote_draw();
-    return true;
-}
+#include "native_overview_quote_search_profile_elf.inc"
 #endif

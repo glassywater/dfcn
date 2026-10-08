@@ -50385,6 +50385,7 @@ DFHack help: workflow count FOOD 120 30	工作流程计数 FOOD 120 30	l
 DFHack help: xstair = staircase up/down	xstair = 上下楼梯	l
 DFHack help: | -4 | unfathomably weak |	| -4 |弱得难以想象|	l
 DFHack hotkeys hint: No help available.	暂无帮助信息。	l
+Embark preparations were not completed.	启程准备尚未完成。	wl
 Equipment and pet points remaining: {d}	剩余装备与宠物点数：{d}	wt
 Fail the struggle against great anguish	没能克服强烈的痛苦万分	hP
 Fail the struggle against great despair	没能克服强烈的绝望	hP
@@ -84388,6 +84389,7 @@ Brook: The Yellow Style	溪流:黄色风格	w
 Build menu: Stoneworker	石匠工坊	wi
 Can {b} Save The World?	{b}能拯救世界吗？	hbti
 Cancel tribute from {e}	取消{e1}的贡赋	hPt
+Cannot afford {s} ({d})	买不起{s}（{d}）	wtl
 Carve up/down staircase	挖掘上下楼梯	wi
 Carving tracks in floor	在地板上雕凿轨道	wo
 Ceremony of during {e}.	在{e1}期间，仪式。	htEi
@@ -97270,6 +97272,7 @@ Made Great Artwork	已经创作出好作品	w
 Maelstrom follower	漩涡追随者	w
 Main: Pause/Resume	主界面：暂停/继续
 Make Caves Visible	显示洞穴
+Make leather armor	制造皮甲	wli
 Make leather from 	在此将动物毛皮制成皮革。你也	w
 Make pig iron bars	制作生铁锭	wi
 Make soap from oil	用植物油制作肥皂	wi
@@ -105539,6 +105542,7 @@ No grasp to draw	没有可用于拔取的抓握部位	w
 No item to strap	没有可系上的物品	w
 No item to throw	没有可投掷的物品	w
 No relationships	没有关系	w
+No {s} available	没有可用的{s}	wtl
 Nobody does this	无人执行	wi
 Not memorialized	未被铭记	wi
 Not yet assigned	尚未指定
@@ -110153,6 +110157,7 @@ Site government	地区政府	w
 Skill name: Axe	斧术	li
 Soap (Desired):	肥皂（期望数量）：	wl
 Specific person	特定人物	wi
+Specify leather	指定皮革	wli
 Standing orders	劳动规则	wi
 Steal livestock	偷走牲畜	wli
 Stone Engraving	石刻	wi
@@ -119849,9 +119854,6 @@ Spatial Sense	空间感知	wi
 Spears/Spikes	长矛/尖刺	wi
 Specify glass	指定玻璃	wli
 Specify plant	指定植物	wli
-Specify leather	指定皮革	wli
-Specify size	指定尺寸	wli
-Make leather armor	制造皮甲	wli
 Status of {p}	状态：{p1}	hPt
 Stay occupied	保持忙碌	w
 Stone Carvers	石雕师	wi
@@ -124413,6 +124415,7 @@ Slow to hate	不易憎恨	w
 Slow to love	不易动情	w
 Smooth floor	打磨地板	wi
 Spearmasters	持矛主宰	wi
+Specify size	指定尺寸	wli
 Stair mining	挖掘楼梯	wo
 Stayed Alive	活了下来	w
 Stone Blocks	石块
@@ -137564,6 +137567,7 @@ yak bulls	牦牛	wi
 (member)	（成员）	h
 , as {a}	，化名为{a1}	ht
 .Spilled	·内脏外溢
+A barony	男爵	wi
 About DF	关于 DF
 Adequate	勉强的	wi
 Agitated	焦躁	w
@@ -142889,8 +142893,3 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
-
-# Embark preparation failure messages.
-Embark preparations were not completed.	启程准备尚未完成。	wl
-No {s} available	没有可用的{s}	wtl
-Cannot afford {s} ({d})	买不起{s}（{d}）	wtl

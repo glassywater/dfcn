@@ -79,6 +79,20 @@ static bool native_history_object_is(uintptr_t object, std::string_view type) {
     return layout && type == layout->name;
 }
 
+// Newly adapted interfaces select fields by their structural source name.
+// This avoids treating a PE field offset as an ELF layout declaration.
+static uintptr_t native_history_object_member(uintptr_t object, std::string_view type,
+        std::string_view member, size_t width = 1) {
+    const auto *layout = native_history_object_layout(type);
+    if (!object || !layout) return 0;
+    for (size_t i = 0; i < layout->count; ++i) {
+        const auto &field = layout->fields[i];
+        if (field.name && member == field.name && width <= field.size &&
+                field.native <= UINTPTR_MAX - object) return object + field.native;
+    }
+    return 0;
+}
+
 static size_t native_history_virtual_slot(uintptr_t object, size_t coordinate) {
     const auto *layout = native_history_dynamic_layout(object);
     if (!layout || coordinate % sizeof(uintptr_t) || coordinate / sizeof(uintptr_t) >= layout->slot_count)

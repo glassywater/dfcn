@@ -12,6 +12,13 @@ struct NativeAdventureHoverHook {
     NativeAdventureHoverCountFn count = nullptr;
 };
 static NativeAdventureHoverHook g_native_adventure_hover_hook;
+#ifndef _WIN32
+static NativeInlineObserverHook g_native_adventure_hover_inline;
+static void capture_native_adventure_hover_inline(const NativeInlineRegisters *) noexcept {
+    NativeInputCallbackScope callback;
+    try { g_overlay.capture_adventure_background(native_graphics()); } catch (...) {}
+}
+#endif
 
 static size_t capture_native_adventure_hover(const void *document) {
     const auto original = g_native_adventure_hover_hook.count;
@@ -24,10 +31,17 @@ static size_t capture_native_adventure_hover(const void *document) {
 }
 
 static bool native_adventure_hover_hook_active() {
-    return g_native_adventure_hover_hook.code.active();
+    return g_native_adventure_hover_hook.code.active()
+#ifndef _WIN32
+        || g_native_adventure_hover_inline.active()
+#endif
+        ;
 }
 
 static bool uninstall_native_adventure_hover_hook() {
+#ifndef _WIN32
+    if (!g_native_adventure_hover_inline.uninstall("Character hover capture restore")) return false;
+#endif
     // A remaining relay must keep its native target, including after a
     // partially completed install or a failed restore/release operation.
     if (!g_native_adventure_hover_hook.code.uninstall("Character hover capture restore"))
@@ -37,6 +51,17 @@ static bool uninstall_native_adventure_hover_hook() {
 }
 
 static bool install_native_adventure_hover_hook() {
+#ifndef _WIN32
+    if (g_native_adventure_hover_inline.entry.installed) return true;
+    const auto site = native_reference_va(0x11257ce);
+    if (!site || !native_history_profile_base()) return false;
+    // The three retained attribute/skill boxes join before inlined vector
+    // sizing and the first border-cell write. Native RSP is 16-byte aligned.
+    return g_native_adventure_hover_inline.install(reinterpret_cast<unsigned char *>(
+        elf_runtime::state().executable.bias + site),
+        {0x49,0x8b,0x45,0x08,0x8b,0x95,0x10,0xfc,0xff,0xff},
+        &capture_native_adventure_hover_inline, "Character hover background capture");
+#else
     auto &hook = g_native_adventure_hover_hook;
     if (hook.code.installed) return true;
     if (native_adventure_hover_hook_active() && !uninstall_native_adventure_hover_hook())
@@ -66,4 +91,5 @@ static bool install_native_adventure_hover_hook() {
     guard.committed = true;
     log_line("INFO", "Enabled native character hover background capture");
     return true;
+#endif
 }

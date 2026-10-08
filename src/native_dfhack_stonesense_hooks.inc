@@ -1,7 +1,6 @@
 // Stonesense owns an Allegro window and does not use DFHack's tile renderer.
 // Translate only this plugin's text imports, and only its visible backbuffer.
 // Its offscreen screenshot/megashot rendering and file exports stay native.
-#ifdef _WIN32
 static std::optional<std::string> translate_dfhack_stonesense_text(std::string_view source);
 
 struct NativeStonesenseColor { float r, g, b, a; };
@@ -27,10 +26,51 @@ using NativeStonesenseAppendUstrFn = bool (*)(void *, const char *, va_list);
 using NativeStonesenseCstrFn = const char *(*)(const void *);
 using NativeStonesenseUstrSizeFn = size_t (*)(const void *);
 using NativeStonesenseFreeUstrFn = void (*)(void *);
+#ifdef _WIN32
+using NativeStonesenseThread = DWORD;
+using NativeStonesenseModule = HMODULE;
+using NativeStonesenseFlsCallback = PFLS_CALLBACK_FUNCTION;
+constexpr DWORD native_stonesense_no_slot = FLS_OUT_OF_INDEXES;
+static NativeStonesenseThread native_stonesense_thread() { return GetCurrentThreadId(); }
 using NativeStonesenseFlsAllocFn = DWORD (WINAPI *)(PFLS_CALLBACK_FUNCTION);
 using NativeStonesenseFlsFreeFn = BOOL (WINAPI *)(DWORD);
 using NativeStonesenseFlsGetValueFn = PVOID (WINAPI *)(DWORD);
 using NativeStonesenseFlsSetValueFn = BOOL (WINAPI *)(DWORD, PVOID);
+static void native_stonesense_module_release(HMODULE module) { FreeLibrary(module); }
+#else
+using NativeStonesenseThread = size_t;
+using NativeStonesenseModule = void *;
+using NativeStonesenseFlsCallback = void (*)(void *);
+constexpr uint32_t native_stonesense_no_slot = UINT32_MAX;
+static NativeStonesenseThread native_stonesense_thread() { return std::hash<std::thread::id>{}(std::this_thread::get_id()); }
+using NativeStonesenseFlsAllocFn = uint32_t (*)(NativeStonesenseFlsCallback);
+using NativeStonesenseFlsFreeFn = bool (*)(uint32_t);
+using NativeStonesenseFlsGetValueFn = void *(*)(uint32_t);
+using NativeStonesenseFlsSetValueFn = bool (*)(uint32_t, void *);
+static uint32_t native_stonesense_fls_alloc(NativeStonesenseFlsCallback callback) {
+    pthread_key_t key{};
+    return pthread_key_create(&key, callback) == 0 ? static_cast<uint32_t>(key) : native_stonesense_no_slot;
+}
+static bool native_stonesense_fls_free(uint32_t key) { return pthread_key_delete(key) == 0; }
+static void *native_stonesense_fls_get(uint32_t key) { return pthread_getspecific(key); }
+static bool native_stonesense_fls_set(uint32_t key, void *value) { return pthread_setspecific(key, value) == 0; }
+static void native_stonesense_module_release(void *module) { dlclose(module); }
+static void *native_stonesense_module_lease() {
+    void *result = nullptr;
+    dl_iterate_phdr([](dl_phdr_info *image, size_t, void *opaque) {
+        const char *path = image->dlpi_name;
+        if (!path) return 0;
+        const char *last = std::strrchr(path, '/');
+        if (std::strcmp(last ? last + 1 : path, "stonesense.plug.so")) return 0;
+        *static_cast<void **>(opaque) = dlopen(path, RTLD_NOW | RTLD_NOLOAD);
+        return *static_cast<void **>(opaque) ? 1 : 0;
+    }, &result);
+    return result;
+}
+static int native_stonesense_import(dl_phdr_info *image, size_t, void *search) {
+    return find_module_import_slot(image, search, "stonesense.plug.so");
+}
+#endif
 
 struct NativeStonesenseApi {
     NativeStonesenseDrawTextFn draw_text = nullptr;
@@ -61,9 +101,9 @@ static NativeStonesenseApi g_native_stonesense_api;
 static std::array<NativeImportHook, 8> g_native_stonesense_hooks;
 static std::atomic_bool g_native_stonesense_translation{false};
 static std::atomic_uint g_native_stonesense_callbacks{0};
-static std::atomic<DWORD> g_native_stonesense_render_thread{0};
+static std::atomic<NativeStonesenseThread> g_native_stonesense_render_thread{0};
 static std::mutex g_native_stonesense_hook_mutex, g_native_stonesense_font_mutex;
-static HMODULE g_native_stonesense_module_lease = nullptr;
+static NativeStonesenseModule g_native_stonesense_module_lease = nullptr;
 
 struct NativeStonesenseCall {
     NativeInputCallbackScope callback;
@@ -77,7 +117,7 @@ struct NativeStonesenseCall {
 struct NativeStonesenseFontKey {
     const void *native_font = nullptr;
     void *display = nullptr;
-    DWORD thread = 0;
+    NativeStonesenseThread thread = 0;
     int height = 0;
     bool operator==(const NativeStonesenseFontKey &) const = default;
 };
@@ -90,7 +130,7 @@ struct NativeStonesenseFontKeyHash {
 };
 struct NativeStonesenseFont {
     void *font = nullptr;
-    DWORD fls = FLS_OUT_OF_INDEXES;
+    uint32_t fls = native_stonesense_no_slot;
 };
 static std::unordered_map<NativeStonesenseFontKey, NativeStonesenseFont,
     NativeStonesenseFontKeyHash> g_native_stonesense_fonts;
@@ -101,8 +141,8 @@ static bool native_stonesense_visible_target(void **display) {
             !g_overlay.translation_enabled()) return false;
     void *current = api.current_display();
     if (!current || api.target_bitmap() != api.backbuffer(current)) return false;
-    const DWORD thread = GetCurrentThreadId();
-    DWORD owner = 0;
+    const NativeStonesenseThread thread = native_stonesense_thread();
+    NativeStonesenseThread owner = 0;
     // A core loaded after the window opened did not observe al_load_font.
     // The plugin's first visible text/metric call supplies the render owner.
     g_native_stonesense_render_thread.compare_exchange_strong(owner, thread,
@@ -132,7 +172,7 @@ static void *native_stonesense_font(NativeStonesenseCall &call,
     const auto &api = g_native_stonesense_api;
     const int height = call.callback.call_native([&] { return api.font_height(native_font); });
     if (height <= 0) return nullptr;
-    const NativeStonesenseFontKey key{native_font, display, GetCurrentThreadId(), height};
+    const NativeStonesenseFontKey key{native_font, display, native_stonesense_thread(), height};
     {
         std::lock_guard<std::mutex> lock(g_native_stonesense_font_mutex);
         const auto found = g_native_stonesense_fonts.find(key);
@@ -154,8 +194,8 @@ static void *native_stonesense_font(NativeStonesenseCall &call,
     NativeStonesenseFont result;
     // This callback is Allegro's exported native function, not core code.
     // Win64 has one void(void*) ABI for both this C export and FLS callbacks.
-    result.fls = api.fls_alloc(reinterpret_cast<PFLS_CALLBACK_FUNCTION>(api.destroy_font));
-    if (result.fls == FLS_OUT_OF_INDEXES) return cache_failure();
+    result.fls = api.fls_alloc(reinterpret_cast<NativeStonesenseFlsCallback>(api.destroy_font));
+    if (result.fls == native_stonesense_no_slot) return cache_failure();
     bool registered = false, retained = false;
     struct NewFontGuard {
         const NativeStonesenseApi &api;
@@ -176,9 +216,17 @@ static void *native_stonesense_font(NativeStonesenseCall &call,
     } flags_guard{api, original_flags};
     constexpr int memory_bitmap = 1; // ALLEGRO_MEMORY_BITMAP, native bitmap.h
     call.callback.call_native([&] { api.set_bitmap_flags(memory_bitmap); });
+#ifdef _WIN32
+    const std::string font_path = "C:/Windows/Fonts/simhei.ttf";
+#else
+    std::string font_path;
+    int font_index = 0;
+    native_find_font(font_path, font_index, false);
+    if (font_path.empty()) return cache_failure();
+#endif
     for (int pixels = std::min(height, 256); pixels > 0; --pixels) {
         void *candidate = call.callback.call_native([&] {
-            return api.load_ttf("C:/Windows/Fonts/simhei.ttf", -pixels, 0);
+            return api.load_ttf(font_path.c_str(), -pixels, 0);
         });
         if (!candidate) break;
         const int actual = call.callback.call_native([&] { return api.font_height(candidate); });
@@ -326,21 +374,21 @@ static void *native_dfhack_stonesense_load_font(const char *filename, int size, 
     void *font = call.callback.call_native([&] {
         return g_native_stonesense_api.load_font(filename, size, flags);
     });
-    if (font) g_native_stonesense_render_thread.store(GetCurrentThreadId(), std::memory_order_release);
+    if (font) g_native_stonesense_render_thread.store(native_stonesense_thread(), std::memory_order_release);
     return font;
 }
 
 static void native_stonesense_release_display_fonts(NativeStonesenseCall &call, void *display) {
     const auto &api = g_native_stonesense_api;
     if (!display || api.current_display() != display ||
-            g_native_stonesense_render_thread.load(std::memory_order_acquire) != GetCurrentThreadId())
+            g_native_stonesense_render_thread.load(std::memory_order_acquire) != native_stonesense_thread())
         return;
     std::vector<NativeStonesenseFont> fonts;
     {
         std::lock_guard<std::mutex> lock(g_native_stonesense_font_mutex);
         fonts.reserve(g_native_stonesense_fonts.size());
         for (auto it = g_native_stonesense_fonts.begin(); it != g_native_stonesense_fonts.end();)
-            if (it->first.display == display && it->first.thread == GetCurrentThreadId()) {
+            if (it->first.display == display && it->first.thread == native_stonesense_thread()) {
                 fonts.push_back(it->second);
                 it = g_native_stonesense_fonts.erase(it);
             } else ++it;
@@ -349,7 +397,7 @@ static void native_stonesense_release_display_fonts(NativeStonesenseCall &call, 
     // Flush on this display's render thread before destroying any font.
     call.callback.call_native([&] { api.hold_drawing(false); });
     for (const auto &entry : fonts) {
-        if (entry.fls == FLS_OUT_OF_INDEXES) continue;
+        if (entry.fls == native_stonesense_no_slot) continue;
         if (api.fls_get_value(entry.fls) == entry.font) {
             if (!api.fls_set_value(entry.fls, nullptr)) continue;
             call.callback.call_native([&] { api.destroy_font(entry.font); });
@@ -361,7 +409,7 @@ static void native_dfhack_stonesense_destroy_display(void *display) {
     NativeStonesenseCall call;
     try { native_stonesense_release_display_fonts(call, display); } catch (...) {}
     call.callback.call_native([&] { g_native_stonesense_api.destroy_display(display); });
-    if (g_native_stonesense_render_thread.load(std::memory_order_acquire) == GetCurrentThreadId())
+    if (g_native_stonesense_render_thread.load(std::memory_order_acquire) == native_stonesense_thread())
         g_native_stonesense_render_thread.store(0, std::memory_order_release);
 }
 static void native_dfhack_stonesense_uninstall_system() {
@@ -399,8 +447,13 @@ static bool install_native_dfhack_stonesense_hook() {
     // reference while they are owned, so a DFHack plugin unload cannot leave
     // stale import pointers for the next core detach. This is not a PIN:
     // release the lease after every slot and callback has detached.
+    #ifdef _WIN32
     if (!g_native_stonesense_module_lease && !GetModuleHandleExW(0,
             L"stonesense.plug.dll", &g_native_stonesense_module_lease)) return true;
+#else
+    if (!g_native_stonesense_module_lease) g_native_stonesense_module_lease = native_stonesense_module_lease();
+    if (!g_native_stonesense_module_lease) return true;
+#endif
     const auto plugin = g_native_stonesense_module_lease;
     bool committed = false;
     struct UnpublishedModuleLease {
@@ -410,10 +463,11 @@ static bool install_native_dfhack_stonesense_hook() {
             if (g_native_stonesense_module_lease) {
                 const auto module = g_native_stonesense_module_lease;
                 g_native_stonesense_module_lease = nullptr;
-                FreeLibrary(module);
+                native_stonesense_module_release(module);
             }
         }
     } lease_guard{committed};
+#ifdef _WIN32
     const auto font = GetModuleHandleW(L"allegro_font-5.2.dll");
     const auto ttf = GetModuleHandleW(L"allegro_ttf-5.2.dll");
     const auto allegro = GetModuleHandleW(L"allegro-5.2.dll");
@@ -422,10 +476,18 @@ static bool install_native_dfhack_stonesense_hook() {
         report_native_patch_error("ERROR", label, "plugin's native Allegro libraries are unavailable");
         return false;
     }
+#else
+    // dlsym on the already loaded plugin searches its native Allegro dependencies.
+    const auto font = plugin, ttf = plugin, allegro = plugin;
+#endif
     NativeStonesenseApi api;
     bool bound = true;
-    const auto bind = [&]<typename Function>(Function &target, HMODULE module, const char *symbol) {
+    const auto bind = [&]<typename Function>(Function &target, NativeStonesenseModule module, const char *symbol) {
+#ifdef _WIN32
         target = reinterpret_cast<Function>(GetProcAddress(module, symbol));
+#else
+        target = reinterpret_cast<Function>(dlsym(module, symbol));
+#endif
         bound = bound && target;
     };
     bind(api.draw_text, font, "al_draw_text");
@@ -452,15 +514,22 @@ static bool install_native_dfhack_stonesense_hook() {
     // Resolve FLS through its native WINAPI exports. The fixed MinGW target
     // headers need not expose these declarations for the host OS to supply
     // them; no target-version macro or alternate toolchain is required.
+#ifdef _WIN32
     bind(api.fls_alloc, kernel, "FlsAlloc");
     bind(api.fls_free, kernel, "FlsFree");
     bind(api.fls_get_value, kernel, "FlsGetValue");
     bind(api.fls_set_value, kernel, "FlsSetValue");
+#else
+    api.fls_alloc = &native_stonesense_fls_alloc;
+    api.fls_free = &native_stonesense_fls_free;
+    api.fls_get_value = &native_stonesense_fls_get;
+    api.fls_set_value = &native_stonesense_fls_set;
+#endif
     if (!bound) {
         report_native_patch_error("ERROR", label, "required native text/font exports are unavailable");
         return false;
     }
-    struct Binding { HMODULE module; const char *library, *symbol; const void *replacement; };
+    struct Binding { NativeStonesenseModule module; const char *library, *symbol; const void *replacement; };
     const std::array<Binding, 8> bindings{{
         {allegro, "allegro-5.2.dll", "al_destroy_display", reinterpret_cast<const void *>(&native_dfhack_stonesense_destroy_display)},
         {allegro, "allegro-5.2.dll", "al_uninstall_system", reinterpret_cast<const void *>(&native_dfhack_stonesense_uninstall_system)},
@@ -472,8 +541,15 @@ static bool install_native_dfhack_stonesense_hook() {
         {font, "allegro_font-5.2.dll", "al_draw_textf", reinterpret_cast<const void *>(&native_dfhack_stonesense_draw_textf)}}};
     for (size_t index = 0; index < bindings.size(); ++index) {
         const auto &binding = bindings[index];
+#ifdef _WIN32
         auto **slot = find_iat_slot(plugin, binding.library, binding.symbol);
         void *expected = reinterpret_cast<void *>(GetProcAddress(binding.module, binding.symbol));
+#else
+        PatchSearch search{binding.symbol, nullptr};
+        dl_iterate_phdr(native_stonesense_import, &search);
+        auto **slot = search.slot;
+        void *expected = dlsym(binding.module, binding.symbol);
+#endif
         if (!slot || !expected || reinterpret_cast<uintptr_t>(slot) %
                 std::atomic_ref<void *>::required_alignment ||
                 std::atomic_ref<void *>(*slot).load(std::memory_order_acquire) != expected) {
@@ -523,13 +599,6 @@ static void uninstall_native_dfhack_stonesense_hook() {
     if (g_native_stonesense_module_lease) {
         const auto module = g_native_stonesense_module_lease;
         g_native_stonesense_module_lease = nullptr;
-        FreeLibrary(module);
+        native_stonesense_module_release(module);
     }
 }
-#else
-// Bind Stonesense's concrete native Allegro ABI separately on a Linux host.
-static bool native_dfhack_stonesense_hook_active() { return false; }
-static bool native_dfhack_stonesense_window_active() { return false; }
-static bool install_native_dfhack_stonesense_hook() { return true; }
-static void uninstall_native_dfhack_stonesense_hook() {}
-#endif

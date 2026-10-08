@@ -128,5 +128,11 @@ static bool install_native_trade_paragraph_hooks() {
 #else
 static bool native_trade_paragraph_hooks_active() { return false; }
 static void uninstall_native_trade_paragraph_hooks() {}
-static bool install_native_trade_paragraph_hooks() { return true; }
+static bool install_native_trade_paragraph_hooks() {
+    // ELF artifact/ordinary reply producer d7d0d0 submits its pristine
+    // sentence at d7d2ce through add_paragraph (423910), width 68, to
+    // trade_interfacest.big_announce (+3f0). The shared paragraph hook binds
+    // its complete source and real row interval on this native path.
+    return g_real_native_paragraph != nullptr;
+}
 #endif

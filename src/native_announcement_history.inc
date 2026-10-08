@@ -105,7 +105,6 @@ static std::vector<NativeAnnouncementParagraph> native_adventure_announcement_pa
 }
 
 static std::vector<NativeAnnouncementParagraph> native_announcement_log_paragraphs() {
-#ifdef _WIN32
     uintptr_t owner = 0;
     uint64_t epoch = 0;
     {
@@ -125,7 +124,4 @@ static std::vector<NativeAnnouncementParagraph> native_announcement_log_paragrap
     auto result = native_owned_announcement_paragraphs(native, false);
     if (epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire)) return {};
     return result;
-#else
-    return {};
-#endif
 }
