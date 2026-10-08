@@ -20,6 +20,13 @@ std::vector<Match> dfhack_launcher_matches;
         dfhack_launcher_regions.push_back(bar);
         std::fill_n(screen_rows[bar.y].begin() + bar.x, bar.w, ' ');
     }
+    // Keep the executable list native even if an unrelated title or rail
+    // prevents the complete launcher from being recognized below.
+    for (const auto &list : native_dfhack_launcher_command_regions(dfhack_context_rows)) {
+        dfhack_launcher_regions.push_back(list);
+        for (int y = list.y; y < list.y + list.h; ++y)
+            std::fill_n(screen_rows[y].begin() + list.x, list.w, ' ');
+    }
     constexpr std::string_view title = "DFHack Launcher";
     for (const auto &frame : native_dfhack_launcher_geometry(dfhack_context_rows)) {
         const int left = frame.x, right = frame.x + frame.w - 1;
