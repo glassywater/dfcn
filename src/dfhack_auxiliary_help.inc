@@ -344,6 +344,7 @@ std::vector<Match> dfhack_auxiliary_matches;
         const int right = frame->x + frame->w - 1;
         const int bottom = frame->y + frame->h - 1;
         const int left = frame->x + 2, top = frame->y + 2;
+#include "dfhack_item_type_selector.inc"
         const int footer_y = bottom - 2;
         const auto footer_band = std::string_view(dfhack_context_rows[footer_y]).substr(
             left, right - 1 - left);

@@ -11457,3 +11457,15 @@ DFHack GUI Mod manager: Please re-create your preset with mods you currently hav
 DFHack GUI Mod manager: Here are the mods that failed to load:	以下模组载入失败：	l
 DFHack GUI Mod manager: Here are the vanilla mods that have been updated:	以下原版模组已更新：	l
 DFHack GUI Mod manager: New vanilla mods are not included in the preset.	此预设尚未包含新增的原版模组。	l
+
+# DFHack gui/create-item.lua prompt and gui/materials.lua ItemTypeDialog fields.
+DFHack GUI Item type selector: What item do you want?	你想要什么物品？	l
+DFHack GUI Item type selector: Type or select an item type	输入或选择物品类型	l
+DFHack GUI Item type selector: any	任意	l
+DFHack GUI Item type selector: none	无	l
+DFHack GUI Item type selector: (chain)	（链甲式）	l
+DFHack GUI Item type selector: No matches	无匹配项	l
+DFHack GUI Item type selector: cut gem	切割宝石	l
+DFHack GUI Item type selector: rough gem	粗糙宝石	l
+DFHack GUI Item type selector: boulder	大圆石	l
+DFHack GUI Item type selector: instrument	乐器	l

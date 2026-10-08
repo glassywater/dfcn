@@ -24437,6 +24437,7 @@ Conversations occur over time, like movements and attacks.	与移动和攻击一
 Credits: and everybody who has helped out on the forum and	也感谢所有在论坛及其他地方伸出援手、	wl
 DFHack GUI Control tool: gui/settings-manager.work_details	工作分工与劳动自动化（gui/settings-manager.work_details）	l
 DFHack GUI Elevate barony preferences: no item preferences	无物品偏好	l
+DFHack GUI Item type selector: Type or select an item type	输入或选择物品类型	l
 DFHack help: "--applytypes <profession>[,<profession>...]"	"--applytypes <profession>[,<profession>...]"	l
 DFHack help: "--goals [ <goal> false [<goal> false ...] ]"	"--goals [ <goal> false [<goal> false ...] ]"	l
 DFHack help: "--named" Selects all named units on the map.	"--named" 选择地图上所有命名单位。	l
@@ -29355,6 +29356,7 @@ DFHack GUI Control tool: gui/civ-alert.big_red_button	平民警报按钮（gui/c
 DFHack GUI Control tool: gui/mod-manager.notification	模组预设应用提示（gui/mod-manager.notification）	l
 DFHack GUI Control tool: logistics enable autoretrain	自动重新驯养（logistics enable autoretrain）	l
 DFHack GUI Control tool: machine-toggle.pressureplate	压力板设置（machine-toggle.pressureplate）	l
+DFHack GUI Item type selector: What item do you want?	你想要什么物品？	l
 DFHack GUI Journal tutorial: ## My section subheading	## 子章节标题	l
 DFHack help: "--plant" Selects the highlighted plant.	"--plant" 选择突出显示的植物。	l
 DFHack help: "--scattered" Opposite of "--stockpiled"	"--scattered" 与 "--stockpiled" 相反	l
@@ -46661,6 +46663,8 @@ DFHack GUI Control tool: spectate.tooltip	观战信息提示（spectate.tooltip�
 DFHack GUI Control tool: zone.pasturepond	牧场与池塘动物分配（zone.pasturepond）	l
 DFHack GUI Design: Next point offset: {d}	连接间隔：{d}	l
 DFHack GUI Design: Show alignment guides:	显示对齐辅助线：	l
+DFHack GUI Item type selector: No matches	无匹配项	l
+DFHack GUI Item type selector: instrument	乐器	l
 DFHack GUI Mod manager: Enter preset name	输入预设名称	l
 DFHack GUI Notification settings: Enabled	启用	l
 DFHack GUI Notification settings: injured	受伤居民	l
@@ -48417,6 +48421,7 @@ DFHack GUI Control tool: sort.candidates	贵族任命搜索（sort.candidates）
 DFHack GUI Control tool: sort.conviction	定罪对象筛选（sort.conviction）	l
 DFHack GUI Design: Auto-commit on click:	点击自动应用：	l
 DFHack GUI Design: Commit mirror changes	应用镜像	l
+DFHack GUI Item type selector: rough gem	粗糙宝石	l
 DFHack GUI Notification settings: Toggle	切换	l
 DFHack GUI Quickfort: Current blueprint:	当前蓝图：	l
 DFHack GUI Quickfort: Load new blueprint	加载新蓝图	l
@@ -52077,6 +52082,9 @@ DFHack GUI Control tool: partial-items	显示物品剩余百分比（partial-ite
 DFHack GUI Design: Line thickness: {d}	线宽：{d}	l
 DFHack GUI Design: Single level stair:	单层楼梯：	l
 DFHack GUI Design: Stop placing points	停止放置点	l
+DFHack GUI Item type selector: (chain)	（链甲式）	l
+DFHack GUI Item type selector: boulder	大圆石	l
+DFHack GUI Item type selector: cut gem	切割宝石	l
 DFHack GUI Mass remove: Affect planned	处理规划中	l
 DFHack GUI Mass remove: Cancel removal	取消移除	l
 DFHack GUI Mass remove: Constructions:	构筑物：	l
@@ -58012,6 +58020,7 @@ DFHack GUI Design: Building filters	建造筛选条件	l
 DFHack GUI Design: Mirror diagonal:	对角镜像：	l
 DFHack GUI Design: Mirror vertical:	垂直镜像：	l
 DFHack GUI Design: Reinforced Walls	加固墙壁	l
+DFHack GUI Item type selector: none	无	l
 DFHack GUI Legends race filter: All	全部	l
 DFHack GUI Mass remove: Leave alone	不处理	l
 DFHack GUI Mass remove: Stockpiles:	储物堆：	l
@@ -60218,6 +60227,7 @@ DFHack GUI Control tool: stockflow	按储物容量安排生产（stockflow）	l
 DFHack GUI Design: Line thickness:	线宽：	l
 DFHack GUI Design: Top stair type:	顶层楼梯：	l
 DFHack GUI Design: gui/design Help	形状绘制帮助	l
+DFHack GUI Item type selector: any	任意	l
 DFHack GUI Mass remove: Buildings:	建筑：	l
 DFHack GUI Quickfort: Click or hit	点击或按	l
 DFHack GUI Quickfort: No transform	无变换	l
