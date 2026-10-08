@@ -8,8 +8,8 @@ base = "creatures::subscribed_rituals"
 [[rulesets]]
 name = "cleric"
 [rulesets.rules]
-"{title} of {@bt_god}" = "{@bt_god}的{title}"
-"{@bt_god}'s {title}" = "{@bt_god}的{title}"
+"{title} of {::text::deity}" = "{::text::deity}的{title}"
+"{::text::deity}'s {title}" = "{::text::deity}的{title}"
 
 [[rulesets]]
 name = "title"
@@ -133,7 +133,6 @@ name = "undead_noun"
 name = "action"
 [rulesets.rules]
 "Raise {undead}" = "复活{undead}"
-"Pray for a pet from {@bt_god}" = "向{@bt_god}祈求宠物"
-"pray for a pet from {@bt_god}" = "向{@bt_god}祈求宠物"
-"is blessed by {@bt_god} with a pet" = "获{@bt_god}赐予宠物"
-
+"Pray for a pet from {::text::deity}" = "向{::text::deity}祈求宠物"
+"pray for a pet from {::text::deity}" = "向{::text::deity}祈求宠物"
+"is blessed by {::text::deity} with a pet" = "获{::text::deity}赐予宠物"
