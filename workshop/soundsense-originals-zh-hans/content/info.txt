@@ -5,4 +5,5 @@
 [EARLIEST_COMPATIBLE_DISPLAYED_VERSION:2.0-zh-Hans.1]
 [AUTHOR:DFCN Community]
 [NAME:SoundSense 原声汉化数据]
-[DESCRIPTION:SoundSense Originals 的独立简体中文翻译数据，需要 DFCN 汉化核心。仅供本地试用，未发布。]
+[DESCRIPTION:SoundSense Originals 的简体中文翻译数据。翻译模组简介和音乐曲名。需要 DFCN 汉化核心和原模组。]
+[STEAM_FILE_ID:3815789747]

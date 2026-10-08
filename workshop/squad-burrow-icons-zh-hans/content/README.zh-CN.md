@@ -1,5 +1,6 @@
-# 小队与区域图标汉化数据
+# Squad & Burrow Icons 简体中文汉化
 
-对应本机订阅的 Squad & Burrow Icons（工坊 ID 2898973979，数字版本 5005）。翻译模组名称和简介。原模组提供图标素材与图形映射，没有新增需要翻译的游戏词汇。
+翻译模组名称与简介。原模组提供小队和区域图标。
 
-用户自定义小队名称始终原样显示。本包不复制图片、不改原模组、不改变世界规则，无需在创建世界时启用。需要支持数据扩展的 DFCN。尚未发布，尚未观察游戏内效果。
+需要 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)和[Squad & Burrow Icons](https://steamcommunity.com/sharedfiles/filedetails/?id=2898973979)。
+订阅后由 DFCN 自动读取，无需在创建世界时启用本汉化包。

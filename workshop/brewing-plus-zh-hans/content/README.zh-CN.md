@@ -1,12 +1,5 @@
-# 酿酒增强汉化数据
+# Brewing Plus 简体中文汉化
 
-原模组：Brewing Plus，作者 AffonsoAmendola，工坊编号 3631448639。本次来源为本机订阅的 0.99（数字版本99），目录 D:\program\steam\steamapps\workshop\content\975370\3631448639。
+翻译酿酒植物、酒类、酒桶架、发酵与蒸馏配方及脚本提示。
 
-覆盖 objects 中酒桶架名称与提示、全部植物/生长物/种子名称、酿醪/发酵原料/酒类/蒸馏酒/粉末/染料及材料相态、全部预处理与蒸馏配方、蜂类名称与描述和材料、偏好理由、酿酒总管名称与说明。scripts_modactive/brewingplus.lua 的酒桶架状态、发酵起始日期、时间预测、快捷键标签、脚本帮助和实际console输出也保存在本包。
-
-译文与递归规则只存于本独立数据包，原模组 RAW/Lua、DFCN 本体词表和自定义名称均未改动。源中的代码标识、命令、日期数字保留，原文中的拼写错误使用同一显示原文键给出中文含义。
-
-未发布、无工坊发布身份。整个目录放入游戏 mods/dfcn_brewing_plus_zh_hans 后由 DFCN 读取，不需要在世界模组列表启用，原 Brewing Plus 模组仍须保留。实际发酵时间与脚本行为完全由原模组控制。
-
-本包完成的是上述来源版本的数据制作；尚未操作游戏或观察到最终实机显示。原模组后续更新增加的显示字段需同步补充。
-
+需要 [Brewing Plus](https://steamcommunity.com/sharedfiles/filedetails/?id=3631448639) 和 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)。数据自动读取，无需在世界模组列表启用。

@@ -1,0 +1,4 @@
+翻译模组名称与简介。原模组提供小队和区域图标。
+
+需要 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379]DFCN 汉化核心[/url]和[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2898973979]Squad & Burrow Icons[/url]。
+订阅后由 DFCN 自动读取，无需在创建世界时启用本汉化包。

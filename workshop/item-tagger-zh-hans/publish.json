@@ -1,0 +1,18 @@
+{
+  "appid": 975370,
+  "title": "Item Tagger 简体中文汉化",
+  "description_file": "workshop/item-tagger-zh-hans/description.bbcode.txt",
+  "content_folder": "workshop/item-tagger-zh-hans/content",
+  "preview_file": "workshop/item-tagger-zh-hans/preview.png",
+  "tags": [
+    "mod",
+    "translation",
+    "Chinese"
+  ],
+  "visibility": 0,
+  "changelog": "发布 Item Tagger 简体中文汉化数据。",
+  "required_items": [
+    3811193379,
+    3745671482
+  ]
+}

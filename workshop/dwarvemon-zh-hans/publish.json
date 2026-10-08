@@ -10,6 +10,10 @@
     "Chinese"
   ],
   "visibility": 0,
-  "changelog": "独立发布 Dwarvemon 2.22 与 Dwarvemon Entity All 2.22 的完整简体中文翻译数据。订阅后由 DFCN 核心自动识别，无需在创建世界时启用本数据包。",
-  "github_url": "https://github.com/pokemonchw/dfcn"
+  "changelog": "更新简体中文汉化数据。",
+  "github_url": "https://github.com/pokemonchw/dfcn",
+  "required_items": [
+    3811193379,
+    2898307461
+  ]
 }

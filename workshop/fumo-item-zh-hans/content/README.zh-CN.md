@@ -1,5 +1,5 @@
-# Fumo 玩偶汉化数据
+# Fumo item 简体中文汉化
 
-对应本机订阅的 Fumo item（工坊 ID 3033128365，数字版本 41）。覆盖十四种角色玩偶的单复数名称、制作配方、配方分类和分类说明、模组名称与简介。角色采用常用中文名，Fumo 保留品牌称呼。原 RAW 中的大妖精拼写 `daiyousai` 按原键收录，显示为“大妖精”。
+翻译 Fumo 角色玩偶、制作配方与分类说明。
 
-玩偶接入 DFCN 工具语法，共享布料、质量、磨损和数量格式。本包不修改原模组或世界规则，无需在创建世界时启用。需要支持数据扩展的 DFCN。尚未发布，尚未观察游戏内效果。
+需要 [Fumo item](https://steamcommunity.com/sharedfiles/filedetails/?id=3033128365) 和 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)。数据自动读取，无需在世界模组列表启用。

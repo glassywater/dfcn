@@ -1,0 +1,6 @@
+schema = 1
+id = "dwarvemon-entity-type-zh-hans"
+version = 1
+language = "zh-Hans"
+name = "Dwarvemon Entity Type 简体中文汉化"
+translations = "dfcn/translations.tsv"

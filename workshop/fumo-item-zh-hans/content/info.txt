@@ -5,4 +5,5 @@
 [EARLIEST_COMPATIBLE_DISPLAYED_VERSION:4.1-zh-Hans.1]
 [AUTHOR:DFCN Community]
 [NAME:Fumo 玩偶汉化数据]
-[DESCRIPTION:Fumo item 的独立简体中文翻译数据，需要 DFCN 汉化核心。仅供本地试用，未发布。]
+[DESCRIPTION:Fumo item 的简体中文翻译数据。翻译 Fumo 角色玩偶、制作配方与分类说明。需要原模组和 DFCN 汉化核心。]
+[STEAM_FILE_ID:3815789405]

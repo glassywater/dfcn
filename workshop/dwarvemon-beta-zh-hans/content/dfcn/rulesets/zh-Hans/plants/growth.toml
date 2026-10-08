@@ -1,0 +1,14 @@
+# Dwarvemon 2.22 translation extension; merges into the base namespace.
+base = "plants::growth"
+
+[[rulesets]]
+name = "singular"
+[rulesets.rules]
+"{::plants::dwarvemon_beta}" = "{::plants::dwarvemon_beta}"
+"{::plants::dwarvemon::growth}" = "{::plants::dwarvemon::growth}"
+
+[[rulesets]]
+name = "plural"
+[rulesets.rules]
+"{::plants::dwarvemon_beta}" = "{::plants::dwarvemon_beta}"
+"{::plants::dwarvemon::growth}" = "{::plants::dwarvemon::growth}"

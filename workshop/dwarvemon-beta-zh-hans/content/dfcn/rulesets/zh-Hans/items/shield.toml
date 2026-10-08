@@ -1,0 +1,12 @@
+# Dwarvemon 2.22 translation extension; merges into the base namespace.
+base = "items::shield"
+
+[[rulesets]]
+name = "singular::main"
+[rulesets.rules]
+"{::items::dwarvemon::shield}" = "{::items::dwarvemon::shield}"
+
+[[rulesets]]
+name = "plural::main"
+[rulesets.rules]
+"{::items::dwarvemon::shield}" = "{::items::dwarvemon::shield}"

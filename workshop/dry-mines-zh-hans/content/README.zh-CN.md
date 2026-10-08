@@ -1,5 +1,5 @@
-# 干燥矿井汉化数据
+# clinodev's Dry Mines (No Aquifers Mod) 简体中文汉化
 
-对应本机订阅的 clinodev's Dry Mines（工坊 ID 2897791846，数字版本 3）。翻译模组名称、游戏简介与工坊名称、简介。
+翻译移除含水层标记的 Dry Mines 模组名称与简介。
 
-原模组仅删除九种土壤和岩石的含水层标记，没有新增显示词汇；沿用 DFCN 的原版石材译名。本包只保存独立翻译数据，不修改原模组文件，不改变世界规则，无需在创建世界时启用。需要支持数据扩展的 DFCN。尚未发布，尚未观察游戏内效果。
+需要 [clinodev's Dry Mines (No Aquifers Mod)](https://steamcommunity.com/sharedfiles/filedetails/?id=2897791846) 和 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)。数据自动读取，无需在世界模组列表启用。

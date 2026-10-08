@@ -1,0 +1,18 @@
+{
+  "appid": 975370,
+  "title": "Brewing Plus 简体中文汉化",
+  "description_file": "workshop/brewing-plus-zh-hans/description.bbcode.txt",
+  "content_folder": "workshop/brewing-plus-zh-hans/content",
+  "preview_file": "workshop/brewing-plus-zh-hans/preview.png",
+  "tags": [
+    "mod",
+    "translation",
+    "Chinese"
+  ],
+  "visibility": 0,
+  "changelog": "发布 Brewing Plus 简体中文汉化数据。",
+  "required_items": [
+    3811193379,
+    3631448639
+  ]
+}

@@ -1,0 +1,7 @@
+# Dwarvemon 2.22 translation extension; merges into the base namespace.
+base = "items::tool"
+
+[[rulesets]]
+name = "main"
+[rulesets.rules]
+"{::items::dwarvemon::tool}" = "{::items::dwarvemon::tool}"

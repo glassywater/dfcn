@@ -1,0 +1,12 @@
+# Dwarvemon 2.22 translation extension; merges into the base namespace.
+base = "creatures::name"
+
+[[rulesets]]
+name = "singular"
+[rulesets.rules]
+"{dwarvemon::singular}" = "{dwarvemon::singular}"
+
+[[rulesets]]
+name = "plural"
+[rulesets.rules]
+"{dwarvemon::plural}" = "{dwarvemon::plural}"

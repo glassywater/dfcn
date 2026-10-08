@@ -1,0 +1,4 @@
+翻译阅读界面、书名、文体和生成的书籍正文。
+
+需要 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379]DFCN 汉化核心[/url]和[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3752219300]Real Book/Scroll Content![/url]。原模组需 DFHack。
+订阅后由 DFCN 自动读取，无需在创建世界时启用本汉化包。

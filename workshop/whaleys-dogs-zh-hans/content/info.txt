@@ -5,4 +5,5 @@
 [EARLIEST_COMPATIBLE_DISPLAYED_VERSION:1.00.1-zh-Hans.1]
 [AUTHOR:DFCN Community]
 [NAME:Whaley 犬种汉化数据]
-[DESCRIPTION:Whaleys Dogs 的独立简体中文翻译数据，需要 DFCN 汉化核心。仅供本地试用，未发布。]
+[DESCRIPTION:Whaleys Dogs 的简体中文翻译数据。翻译新增犬种及幼犬的名称、描述和偏好。需要 DFCN 汉化核心和原模组。]
+[STEAM_FILE_ID:3815790492]

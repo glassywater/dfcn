@@ -5,4 +5,5 @@
 [EARLIEST_COMPATIBLE_DISPLAYED_VERSION:2.2-zh-Hans.1]
 [AUTHOR:DFCN Community]
 [NAME:矮人地核采掘汉化数据]
-[DESCRIPTION:Dwarven Core Harvesting 的独立简体中文翻译数据，需要 DFCN 汉化核心。仅供本地试用，未发布。]
+[DESCRIPTION:Dwarven Core Harvesting 的简体中文翻译数据。翻译熔岩采掘机、采掘作业与催化剂说明。需要原模组和 DFCN 汉化核心。]
+[STEAM_FILE_ID:3815789261]

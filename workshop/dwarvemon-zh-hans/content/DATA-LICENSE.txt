@@ -8,10 +8,8 @@ DFCN 项目：https://github.com/pokemonchw/dfcn
 原模组英文文本、宝可梦名称与官方资料的权利归各自作者和权利人所有；上述许可不重新许可这些第三方资料，也不表示官方授权或关联。
 
 原始模组：
-Dwarvemon 2.22
+Dwarvemon
 https://steamcommunity.com/sharedfiles/filedetails/?id=2898307461
-Dwarvemon Entity All 2.22
-https://steamcommunity.com/sharedfiles/filedetails/?id=2898648216
 
 宝可梦物种及形态的中文名称以官方简体中文图鉴为主要依据：
 https://pokedex.pokemon.cn/

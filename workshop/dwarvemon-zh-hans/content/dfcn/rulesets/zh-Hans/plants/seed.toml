@@ -4,5 +4,5 @@ base = "plants::seed"
 [[rulesets]]
 name = "plural"
 [rulesets.rules]
-"{::plants::dwarvemon_beta}" = "{::plants::dwarvemon_beta}"
+"{::plants::dwarvemon_optional}" = "{::plants::dwarvemon_optional}"
 "{::plants::dwarvemon::seed}" = "{::plants::dwarvemon::seed}"

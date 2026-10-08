@@ -1,0 +1,12 @@
+Dwarvemon Entity Type 简体中文汉化：来源与许可
+
+本包原创中文译文及翻译规则沿用 DFCN 项目的 CC BY-NC-SA 4.0 许可：
+https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans
+DFCN 项目：https://github.com/pokemonchw/dfcn
+署名：Byayoi Community。
+
+原模组英文文本、宝可梦名称与官方资料的权利归各自作者和权利人所有；上述许可不重新许可这些第三方资料，也不表示官方授权或关联。
+
+原始模组：
+Dwarvemon Entity Type
+https://steamcommunity.com/sharedfiles/filedetails/?id=2898648197

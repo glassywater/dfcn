@@ -1,4 +1,4 @@
-# Dwarvemon 2.22 and Dwarvemon Entity All 2.22 authored translation data.
+# Dwarvemon 2.22 authored translation data.
 # source<TAB>replacement UTF-8<TAB>flags; source and semantic scope are separate identities.
 # Preferences and announcements use complete contextual keys; historical templates retain h scope.
 Clear	清除	wi
@@ -27,7 +27,6 @@ Stone	石	wi
 Glass	玻璃	wi
 Eggs	蛋	wi
 Dwarvemon {d}.{d}	矮人宝可梦 {d}.{d}	wt
-Dwarvemon Entity All {d}.{d}	矮人宝可梦：全种类文明 {d}.{d}	wt
 eyes	眼	wi
 Iron	防御增强剂	wl
 Silver	银色	wi
@@ -1033,7 +1032,6 @@ Dynamax Pokemon (Wishing Star)	极巨化宝可梦（许愿星）	wi
 Dynamax reverted	极巨化已解除	wi
 Dynamaxed	已极巨化	wi
 Dynite	极巨	wi
-ENABLE ONE! Entities in Dwarvemon use all Pokemon available.	只启用其中一个文明模组！本模组使Dwarvemon中的文明使用全部可用的宝可梦。	lP
 EV reset	基础点数重置	wi
 Earth	大地	wi
 Earth Eater	食土	wi
@@ -1916,7 +1914,7 @@ Iron Barktongue spores	铁壁舌草孢子	wi
 Iron Barktongues	铁壁舌草	wi
 Iron Boulder	铁磐岩	wi
 Iron Bundle	铁包袱	wi
-Iron Chunks	防御增强剂残块	wi
+Iron Chunks	铁块	wi
 Iron Crown	铁头壳	wi
 Iron Hands	铁臂膀	wi
 Iron Jugulis	铁脖颈	wi
@@ -2609,7 +2607,6 @@ Misty Terrain	薄雾场地	wi
 Mochi	粘糕	wi
 Mochi that raises an attribute by 100	使一项属性提高１００的粘糕。	wi
 Mod description: Adds Pokemon related content.	添加宝可梦相关内容。	lP
-Mod description: ENABLE ONE! Entities in Dwarvemon use all Pokemon available.	两种文明扩展只能启用一个！矮人宝可梦中的各文明可使用全部宝可梦。	lP
 Modern Pattern Vivillon	彩粉蝶（摩登花纹）	wi
 Modest Mint	内敛薄荷	wl
 Modest Mints	内敛薄荷	wi
@@ -6533,7 +6530,7 @@ drop Coal	掉落煤炭	wi
 drop Crunchy Salt	掉落坚坚矿	wi
 drop Electirizer	掉落电力增幅器	wi
 drop Hearty Grain	掉落旺旺谷	wi
-drop Iron Chunk	掉落防御增强剂残块	wi
+drop Iron Chunk	掉落铁块	wi
 drop King's Leaf	掉落王者之叶	wi
 drop Lunar Wing	掉落新月之羽	wi
 drop Magmarizer	掉落熔岩增幅器	wi
@@ -7344,9 +7341,9 @@ inner shell	内壳	wi
 insert Pokeball into Ball Capsule	把精灵球放入球壳	wi
 inside	内部	wi
 insides	内侧	wi
-iron	防御增强剂	wi
-iron bar	防御增强剂锭	wi
-iron bars	防御增强剂锭	wi
+iron	铁	w
+iron bar	铁锭	wi
+iron bars	铁锭	wi
 is badly poisoned	陷入了剧毒状态	wi
 is confused	陷入了混乱	wi
 is filled with terrible might	充满恐怖的力量	wi
@@ -7803,9 +7800,9 @@ make Insect Plate	制作玉虫石板	wi
 make Instant-Noodle Curry	制作泡面咖喱饭	wi
 make Iron	制作防御增强剂	wi
 make Iron Ball	制作黑色铁球	wi
-make Iron Chunks (Hematite)	制作防御增强剂残块（赤铁矿）	wi
-make Iron Chunks (Limonite)	制作防御增强剂残块（褐铁矿）	wi
-make Iron Chunks (Magnetite)	制作防御增强剂残块（磁铁矿）	wi
+make Iron Chunks (Hematite)	制作铁块（赤铁矿）	wi
+make Iron Chunks (Limonite)	制作铁块（褐铁矿）	wi
+make Iron Chunks (Magnetite)	制作铁块（磁铁矿）	wi
 make Iron Plate	制作钢铁石板	wi
 make Jet Balls	制作飞梭球	wi
 make Jubilife Muffin	制作祝庆玛芬	wi
@@ -9784,7 +9781,7 @@ use Insect Plate	使用玉虫石板	wi
 use Iron	使用防御增强剂	wi
 use Iron Ball	使用黑色铁球	wi
 use Iron Barktongue	使用铁壁舌草	wi
-use Iron Defence	使用防御增强剂防御	wi
+use Iron Defence	使用铁壁	wi
 use Iron Defense	使用铁壁	wi
 use Iron Head on	使用铁头攻击	wi
 use Iron Plate	使用钢铁石板	wi
@@ -10436,7 +10433,7 @@ uses Ice Fang on	使用冰冻牙攻击	wi
 uses Ice Punch on	使用冰冻拳攻击	wi
 uses Ice Spinner on	使用冰旋攻击	wi
 uses Icicle Crash on	使用冰柱坠击攻击	wi
-uses Iron Defence	使用防御增强剂防御	wi
+uses Iron Defence	使用铁壁	wi
 uses Iron Defense	使用铁壁	wi
 uses Iron Head on	使用铁头攻击	wi
 uses Iron Tail on	使用铁尾攻击	wi
@@ -12596,7 +12593,7 @@ Announcement combat ability []: drop Coal	掉落煤炭	l
 Announcement combat ability []: drop Crunchy Salt	掉落坚坚矿	l
 Announcement combat ability []: drop Electirizer	掉落电力增幅器	l
 Announcement combat ability []: drop Hearty Grain	掉落旺旺谷	l
-Announcement combat ability []: drop Iron Chunk	掉落防御增强剂残块	l
+Announcement combat ability []: drop Iron Chunk	掉落铁块	l
 Announcement combat ability []: drop King's Leaf	掉落王者之叶	l
 Announcement combat ability []: drop Lunar Wing	掉落新月之羽	l
 Announcement combat ability []: drop Magmarizer	掉落熔岩增幅器	l
@@ -16900,19 +16897,7 @@ bill	喙	h
 tail	尾	h
 eye	眼	h
 
-# Local subscription additions: Entity Type, Beta, and Beta bundled extras.
-Mod description: ENABLE ONE! Entities in Dwarvemon use certain types of Pokemon available.	两种文明扩展只能启用一个！各文明按属性使用指定种类的宝可梦。	lP
-ENABLE ONE! Entities in Dwarvemon use certain types of Pokemon available.	两种文明扩展只能启用一个！各文明按属性使用指定种类的宝可梦。	lP
-Mod description: (Beta) Adds Pokemon related content.	测试版：添加宝可梦相关内容。	lP
-(Beta) Adds Pokemon related content.	测试版：添加宝可梦相关内容。	lP
-(Beta) Dwarvemon Cheat Workshop	矮人宝可梦：作弊工坊（测试版）	l
-(Beta) Dwarvemon Cheat Workshop (PMD)	矮人宝可梦：不可思议迷宫作弊工坊（测试版）	l
-(Beta) Dwarvemon Cheat Workshop (TCG)	矮人宝可梦：集换式卡牌作弊工坊（测试版）	l
-(Beta) Dwarvemon WerePokemon	矮人宝可梦：兽化宝可梦（测试版）	l
-(Beta) Adds a workshop where you can create any item in Dwarvemon for free.	测试版：添加一座可以免费生成矮人宝可梦任意物品的工坊。	lP
-(Beta) Adds PMD items to the cheat workshop.	测试版：为作弊工坊添加不可思议迷宫扩展的物品。	lP
-(Beta) Adds TCG items to the cheat workshop.	测试版：为作弊工坊添加集换式卡牌扩展的物品。	lP
-(Beta) Adds Were Pokemon who will spawn regardless of were curses.	测试版：添加不依赖兽化诅咒即可出现的兽化宝可梦。	lP
+# Additional authored creature, item and workshop text.
 Cheat Workshop	作弊工坊	l
 were Midnight Form Lycanroc	兽化鬃岩狼人（黑夜的样子）	l
 WerePokemon	兽化宝可梦	l
@@ -16967,11 +16952,6 @@ The Chilan Berry whistle is a small hand-held wind instrument made from a Chilan
 The glass flute is a small hand-held wind instrument made from glass.  The musician blows through the opening.  The instrument has various effects depending on the color.	玻璃笛是用玻璃制成的小型手持吹奏乐器。演奏者向开口吹气，根据笛子的颜色产生不同效果。	lP
 The Sun Flute is a medium hand-held wind instrument. The musician blows through the opening. The musician selects the pitch by stopping holes along the body. \tIt is said that the tones it produces were offered up as an expression of gratitude to the Legendary Pokemon of the sun.	太阳之笛是中型手持吹奏乐器。演奏者向开口吹气，并通过按住笛身上的孔来选择音高。据说它的笛声是献给太阳的传说宝可梦的谢礼。	lP
 # Bundled PMD, TCG and MissingNo authored descriptions and preferences.
-(Beta) Adds ▓▓▓▓▓▓▓▓▓	测试版：添加▓▓▓▓▓▓▓▓▓。	lP
-(Beta) Adds Pokemon Mystery Dungeon related content.	测试版：添加宝可梦不可思议迷宫相关内容。	lP
-(Beta) Adds Pokemon Trading Card Game related content.	测试版：添加宝可梦集换式卡牌游戏相关内容。	lP
-(Beta) ENABLE ONE! Entities in Dwarvemon use all Pokemon available.	测试版：只能启用一个族群扩展！矮人宝可梦中的各族群可以使用所有可用的宝可梦。	lP
-(Beta) ENABLE ONE! Entities in Dwarvemon use certain types of Pokemon available.	测试版：只能启用一个族群扩展！矮人宝可梦中的各族群使用特定属性的宝可梦。	lP
 A blob-like creature. They will consume any Pokemon they encounter and are capable of shapeshifting into any Pokemon.	一种黏团状生物。它们会吞食遇见的任何宝可梦，并能变成任意宝可梦的模样。	lP
 A canine, quadruped Pokemon. Manectric gathers electricity its mane and then discharges it. This process creates thunderclouds, which it uses in battle. Since lightning falls in its vicinity, it is said to have been born from lightning and make its nest where lightning has struck.	四足犬形宝可梦。雷电兽将电力聚集在鬃毛中，然后释放出来，产生可用于战斗的雷云。由于附近常有雷电落下，据说它诞生于雷电，并在落雷处筑巢。	lP
 A giant ice creature resembling a snowflake. Bittercold is constructed from the negative emotions of Pokemon, any Pokemon that get close to the Bittercold are suffocated by its negative power; however, a human may not be affected by this power.	形似雪花的巨型冰之生物。冰冷巨结晶由宝可梦的负面情绪形成，靠近它的宝可梦都会被其负面力量压得无法呼吸；人类却可能不受这种力量影响。	lP
@@ -17025,7 +17005,6 @@ Preference reason: コメント さくせいちゅう	说明编写中	l
 Blend food items	调制食物饮料	l
 Blend food items into various drinks.	将食物调制成各种饮料。	lP
 E-Reader Berries	电子读卡器树果	l
-Evolve/Devolve Pokemon with TCG items. (That haven't previously evolved, those without an (e) next to the name)	用集换式卡牌道具使宝可梦进化或退化（仅限此前未进化、名字旁没有“(e)”的宝可梦）。	lP
 Make armor	制作护甲	l
 Make Basic Energy (TCG)	制作基本能量（集换式卡牌）	l
 Make Basic Energy items from the TCG addon.	制作集换式卡牌扩展中的基本能量道具。	lP
@@ -17082,7 +17061,6 @@ Make Incense	制作熏香	l
 Make items (TCG)	制作道具（集换式卡牌）	l
 Make items found in the ground from the TCG addon.	制作集换式卡牌扩展中可从地下找到的道具。	lP
 Make items found in the ground.	制作可从地下找到的物品。	lP
-Make items from the TCG addon.	制作集换式卡牌扩展中的道具。	lP
 Make items related to mythical/legendary Pokemon.	制作与幻之宝可梦及传说宝可梦有关的道具。	lP
 Make Lookalike items (PMD)	制作仿冒道具（不可思议迷宫）	l
 Make Lookalike items from PMD.	制作不可思议迷宫扩展中的仿冒道具。	lP
@@ -17125,8 +17103,6 @@ Make stone items from PMD.	制作不可思议迷宫扩展中的石头道具。	l
 Make stones (PMD)	制作石头（不可思议迷宫）	l
 Make stones/ores/gems	制作石头／矿石／宝石	l
 Make stones/ores/gems (TCG)	制作石头／矿石／宝石（集换式卡牌）	l
-Make TCG items	制作集换式卡牌道具	l
-Make Technical Machines and Cubes from the TCG addon.	制作集换式卡牌扩展中的招式学习器和方块。	lP
 Make Tera Shards	制作太晶碎块	l
 Make throwable items	制作投掷道具	l
 Make throwable items (PMD)	制作投掷道具（不可思议迷宫）	l
@@ -17153,22 +17129,16 @@ Make Z Crystals	制作Ｚ纯晶	l
 Makes devices that increase stats for certain types of Pokemon.	制作增强特定属性宝可梦能力的装置。	lP
 Makes items used with an item thrower.	制作搭配物品投掷器使用的道具。	lP
 other Berries	其他树果	l
-TCG Items	集换式卡牌道具	l
 Use Emeras	使用嵌珠	l
 Use Emeras that boost certain stats.	使用增强特定能力的嵌珠。	lP
 Use Basic Energy	使用基本能量	l
 Use Basic Energy to power up Pokemon of its type	使用基本能量强化相同属性的宝可梦。	lP
-Use items from the TCG addon.	使用集换式卡牌扩展中的道具。	lP
 Use items that have various effects.	使用能产生各种效果的道具。	lP
 Use Looplets	使用环饰	l
 Use Looplets that have effects alone or extra with Emeras.	使用本身具有特殊效果、并可搭配嵌珠获得额外效果的环饰。	lP
 Use Special Energy	使用特殊能量	l
 Use Special Energy to power up Pokemon	使用特殊能量强化宝可梦。	lP
-Use TCG items	使用集换式卡牌道具	l
 # Additional roles, reactions and status labels from bundled add-ons.
-(Beta) Dwarvemon ▓▓▓▓▓▓▓▓▓	矮人宝可梦：▓▓▓▓▓▓▓▓▓（测试版）	l
-(Beta) Dwarvemon PMD Beta	矮人宝可梦：不可思议迷宫（测试版）	l
-(Beta) Dwarvemon TCG Beta	矮人宝可梦：集换式卡牌（测试版）	l
 aprons	围裙	wi
 Aromas	香气	wi
 Balloons	气球	wi
@@ -17681,7 +17651,6 @@ Create anything you want from Dwarvemon.	制作你想要的任何矮人宝可梦
 Create energy related items and use them by creating a pen/pasture inside the workshop.	制作能量相关道具；在工坊内设置畜栏／牧场，即可使用这些道具。	lj
 Evolve a Pokemon that requires an evolution stone. (That haven't previously evolved, those without an (e) next to the name)	让需要进化之石的宝可梦进化。（仅限从未进化过、名字旁没有“(e)”标记的宝可梦。）	lj
 Evolve Pokemon that require certain items. (That haven't previously evolved, those without an (e) next to the name)	让需要特定道具的宝可梦进化。（仅限从未进化过、名字旁没有“(e)”标记的宝可梦。）	lj
-Evolve/Devolve Pokemon with TCG items. (That haven't previously evolved, those without an (e) next to the name)	用集换式卡牌道具使宝可梦进化或退化（仅限此前未进化、名字旁没有“(e)”的宝可梦）。	lj
 Exchange Basic Energy of one type for another.	将一种属性的基本能量换成另一种属性的基本能量。	lj
 Held/usable items that have various benefits	具有各种有益效果的携带道具或使用道具。	lj
 Items related to Dynamax.	与极巨化相关的道具。	lj
@@ -17718,7 +17687,6 @@ Make health drinks from PMD.	制作不可思议迷宫扩展中的营养饮料。
 Make health drinks that have various benefits when consumed.	制作饮用后产生各种有益效果的营养饮料。	lj
 Make items found in the ground from the TCG addon.	制作集换式卡牌扩展中可从地下找到的道具。	lj
 Make items found in the ground.	制作可从地下找到的物品。	lj
-Make items from the TCG addon.	制作集换式卡牌扩展中的道具。	lj
 Make items related to mythical/legendary Pokemon.	制作与幻之宝可梦及传说宝可梦有关的道具。	lj
 Make items that have various benefits when applied.	制作使用后具有各种有益效果的道具。	lj
 Make items that heal Pokemon.	制作能治疗宝可梦的道具。	lj
@@ -17749,7 +17717,6 @@ Make Special Energy items from the TCG addon.	制作集换式卡牌扩展中的�
 Make special items from PMD.	制作不可思议迷宫扩展中的特殊道具。	lj
 Make special items.	制作特殊道具。	lj
 Make stone items from PMD.	制作不可思议迷宫扩展中的石头道具。	lj
-Make Technical Machines and Cubes from the TCG addon.	制作集换式卡牌扩展中的招式学习器和方块。	lj
 Make throwable items from PMD.	制作不可思议迷宫扩展中的投掷道具。	lj
 Make toy items.	制作玩具。	lj
 Make type changing items for Arceus.	制作改变阿尔宙斯属性的道具。	lj
@@ -17776,7 +17743,6 @@ Use an item to remove syndromes from a Pokemon. (Currently does nothing)	使用�
 Use Balms to quell Noble Pokemon	用镇宝平息王的愤怒。	lj
 Use Basic Energy to power up Pokemon of its type	使用基本能量强化相同属性的宝可梦。	lj
 Use Emeras that boost certain stats.	使用增强特定能力的嵌珠。	lj
-Use items from the TCG addon.	使用集换式卡牌扩展中的道具。	lj
 Use items that have various effects.	使用能产生各种效果的道具。	lj
 Use Looplets that have effects alone or extra with Emeras.	使用本身具有特殊效果、并可搭配嵌珠获得额外效果的环饰。	lj
 Use Special Energy to power up Pokemon	使用特殊能量强化宝可梦。	lj

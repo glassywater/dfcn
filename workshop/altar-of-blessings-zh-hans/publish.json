@@ -1,0 +1,18 @@
+{
+  "appid": 975370,
+  "title": "Altar of Blessings 简体中文汉化",
+  "description_file": "workshop/altar-of-blessings-zh-hans/description.bbcode.txt",
+  "content_folder": "workshop/altar-of-blessings-zh-hans/content",
+  "preview_file": "workshop/altar-of-blessings-zh-hans/preview.png",
+  "tags": [
+    "mod",
+    "translation",
+    "Chinese"
+  ],
+  "visibility": 0,
+  "changelog": "发布 Altar of Blessings 简体中文汉化数据。",
+  "required_items": [
+    3811193379,
+    3642206249
+  ]
+}

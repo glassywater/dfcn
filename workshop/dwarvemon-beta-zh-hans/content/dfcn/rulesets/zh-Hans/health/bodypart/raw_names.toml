@@ -1,0 +1,11 @@
+# Dwarvemon 2.22 translation extension; merges into the base namespace.
+base = "health::bodypart::raw_names"
+
+[[rulesets]]
+[rulesets.rules]
+"bill" = "喙"
+"brain" = "脑"
+"eye" = "眼"
+"tail" = "尾"
+"teeth" = "牙"
+"tooth" = "牙"

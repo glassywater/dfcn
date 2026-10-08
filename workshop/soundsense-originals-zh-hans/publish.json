@@ -1,0 +1,18 @@
+{
+  "appid": 975370,
+  "title": "SoundSense Originals 简体中文汉化",
+  "description_file": "workshop/soundsense-originals-zh-hans/description.bbcode.txt",
+  "content_folder": "workshop/soundsense-originals-zh-hans/content",
+  "preview_file": "workshop/soundsense-originals-zh-hans/preview.png",
+  "tags": [
+    "mod",
+    "translation",
+    "Chinese"
+  ],
+  "visibility": 0,
+  "changelog": "发布 SoundSense Originals 简体中文汉化数据。",
+  "required_items": [
+    3811193379,
+    2997006603
+  ]
+}

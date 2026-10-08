@@ -1,9 +1,9 @@
 [ID:dfcn_brewing_plus_zh_hans]
 [NUMERIC_VERSION:2]
-[DISPLAYED_VERSION:0.2-local]
+[DISPLAYED_VERSION:0.2]
 [EARLIEST_COMPATIBLE_NUMERIC_VERSION:1]
-[EARLIEST_COMPATIBLE_DISPLAYED_VERSION:0.1-local]
+[EARLIEST_COMPATIBLE_DISPLAYED_VERSION:0.1]
 [AUTHOR:DFCN]
 [NAME:酿酒增强汉化数据]
-[DESCRIPTION:Brewing Plus 的独立简体中文翻译数据，由 DFCN 自动读取，无需在世界模组列表启用。仅供本地使用，尚未发布。]
-
+[DESCRIPTION:Brewing Plus 的简体中文翻译数据。翻译酿酒植物、酒类、酒桶架、发酵与蒸馏配方及脚本提示。需要原模组和 DFCN 汉化核心。]
+[STEAM_FILE_ID:3815788912]

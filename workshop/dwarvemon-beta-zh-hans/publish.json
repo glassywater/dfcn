@@ -1,0 +1,19 @@
+{
+  "appid": 975370,
+  "title": "Dwarvemon Beta 简体中文汉化",
+  "description_file": "workshop/dwarvemon-beta-zh-hans/description.bbcode.txt",
+  "content_folder": "workshop/dwarvemon-beta-zh-hans/content",
+  "preview_file": "workshop/dwarvemon-beta-zh-hans/preview.png",
+  "tags": [
+    "mod",
+    "translation",
+    "Chinese"
+  ],
+  "visibility": 0,
+  "changelog": "发布简体中文汉化数据。",
+  "github_url": "https://github.com/pokemonchw/dfcn",
+  "required_items": [
+    3811193379,
+    2902397057
+  ]
+}

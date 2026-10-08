@@ -5,5 +5,9 @@
   "release_tag": "",
   "workshop_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177",
   "phase": "published",
-  "needs_workshop_legal_agreement": false
+  "needs_workshop_legal_agreement": false,
+  "required_items": [
+    "3811193379",
+    "2898307461"
+  ]
 }

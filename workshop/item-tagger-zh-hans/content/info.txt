@@ -5,4 +5,5 @@
 [EARLIEST_COMPATIBLE_DISPLAYED_VERSION:2.1.0-zh-Hans.1]
 [AUTHOR:DFCN Community]
 [NAME:物品标签汉化数据]
-[DESCRIPTION:Item Tagger 的独立简体中文翻译数据，需要 DFCN 汉化核心。仅供本地试用，未发布。]
+[DESCRIPTION:Item Tagger 的简体中文翻译数据。翻译物品用途标签、界面和脚本提示。需要 DFCN 汉化核心和原模组。]
+[STEAM_FILE_ID:3815789487]

@@ -1,0 +1,18 @@
+{
+  "appid": 975370,
+  "title": "Better Glazing 简体中文汉化",
+  "description_file": "workshop/better-glazing-zh-hans/description.bbcode.txt",
+  "content_folder": "workshop/better-glazing-zh-hans/content",
+  "preview_file": "workshop/better-glazing-zh-hans/preview.png",
+  "tags": [
+    "mod",
+    "translation",
+    "Chinese"
+  ],
+  "visibility": 0,
+  "changelog": "发布 Better Glazing 简体中文汉化数据。",
+  "required_items": [
+    3811193379,
+    3792463423
+  ]
+}

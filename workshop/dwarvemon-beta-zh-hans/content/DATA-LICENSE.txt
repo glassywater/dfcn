@@ -1,0 +1,25 @@
+Dwarvemon Beta 简体中文汉化：来源与许可
+
+本包原创中文译文及翻译规则沿用 DFCN 项目的 CC BY-NC-SA 4.0 许可：
+https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans
+DFCN 项目：https://github.com/pokemonchw/dfcn
+署名：Byayoi Community。
+
+原模组英文文本、宝可梦名称与官方资料的权利归各自作者和权利人所有；上述许可不重新许可这些第三方资料，也不表示官方授权或关联。
+
+原始模组：
+Dwarvemon Beta
+https://steamcommunity.com/sharedfiles/filedetails/?id=2902397057
+Dwarvemon
+https://steamcommunity.com/sharedfiles/filedetails/?id=2898307461
+
+宝可梦物种及形态的中文名称以官方简体中文图鉴为主要依据：
+https://pokedex.pokemon.cn/
+招式、特性、道具、属性和性格等游戏本地化名称参考 PokeAPI 的公开名称数据：
+https://github.com/PokeAPI/pokeapi/tree/master/data/v2/csv
+https://github.com/PokeAPI/pokeapi/blob/master/LICENSE
+补充参考宝可梦官方游戏介绍和神奇宝贝百科；部分旧 e-Reader 或动画树果名称属于百科暂译，未作为官方译名宣称。
+https://game.portal-pokemon.com/
+https://wiki.52poke.com/
+
+逐项来源链接与摘录数据保存在本项目 workshop/dwarvemon-zh-hans/sources/，不由游戏运行时加载。

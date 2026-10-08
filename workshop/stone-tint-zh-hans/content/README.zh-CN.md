@@ -1,5 +1,6 @@
-# 石材着色汉化数据
+# Stone Tint 简体中文汉化
 
-对应本机订阅的 Stone Tint（工坊 ID 3782099990，数字版本 1）。翻译名称、游戏与工坊简介、叠加层说明、设置标题、强度与地面开关标签、脚本状态和错误信息。开关状态与关闭按钮沿用 DFCN 通用词表，技术命令、路径、百分比保持可用的原格式。
+翻译石材着色设置、界面说明和脚本提示。
 
-本包不复制图形或 Lua、不改原模组、不执行脚本，无需在创建世界时启用。需要原模组所需的 DFHack 和支持数据扩展的 DFCN；自定义 DFHack 窗口的最终显示取决于核心对该界面的现有识别能力。尚未发布，尚未观察游戏内效果。
+需要 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)和[Stone Tint](https://steamcommunity.com/sharedfiles/filedetails/?id=3782099990)。原模组需 DFHack。
+订阅后由 DFCN 自动读取，无需在创建世界时启用本汉化包。

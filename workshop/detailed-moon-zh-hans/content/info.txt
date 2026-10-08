@@ -5,4 +5,5 @@
 [EARLIEST_COMPATIBLE_DISPLAYED_VERSION:1.0-zh-Hans.1]
 [AUTHOR:DFCN Community]
 [NAME:精细月相汉化数据]
-[DESCRIPTION:Detailed Moon 的独立简体中文翻译数据，需要 DFCN 汉化核心。仅供本地试用，未发布。]
+[DESCRIPTION:Detailed Moon 的简体中文翻译数据。翻译精细月相模组的名称与简介。需要原模组和 DFCN 汉化核心。]
+[STEAM_FILE_ID:3815789132]

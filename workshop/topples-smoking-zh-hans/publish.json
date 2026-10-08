@@ -1,0 +1,18 @@
+{
+  "appid": 975370,
+  "title": "Topples' Smoking 简体中文汉化",
+  "description_file": "workshop/topples-smoking-zh-hans/description.bbcode.txt",
+  "content_folder": "workshop/topples-smoking-zh-hans/content",
+  "preview_file": "workshop/topples-smoking-zh-hans/preview.png",
+  "tags": [
+    "mod",
+    "translation",
+    "Chinese"
+  ],
+  "visibility": 0,
+  "changelog": "发布 Topples' Smoking 简体中文汉化数据。",
+  "required_items": [
+    3811193379,
+    3479452579
+  ]
+}

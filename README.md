@@ -46,11 +46,11 @@ Linux 已发布核心同样使用 **Shift+F10** 切换汉化并保留核心与�
 
 支持扩展加载的 DFCN 核心在启动或显式重新加载数据时，发现已下载的创意工坊汉化数据 mod，以及游戏 `mods`、`data/installed_mods` 中的本地数据包。纯翻译数据无需加入新建世界的 RAW 加载顺序。扩展的词表和递归规则独立载入，安装、更新或移除后在下一次加载数据时处理。
 
-[矮人宝可梦汉化数据](https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177)独立提供 **Dwarvemon 2.22** 和 **Dwarvemon Entity All 2.22** 的全部专用中文翻译。本体提供通用扩展加载能力，宝可梦专用译文保存在独立包中。工坊订阅后自动识别，无需手工复制数据。
+目前提供 **22 个独立创意工坊汉化数据扩展**：18 个其他 Mod，以及 **Dwarvemon、Dwarvemon Entity Type、Dwarvemon Entity All、Dwarvemon Beta** 四个分别发布的数据包。每个包对应一个原模组，订阅链接见 [Mod 汉化数据扩展索引](workshop/README.local-zh-CN.md)。
 
-从 [GitHub Release](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008) 下载 `dfcn_dwarvemon_zh_hans.zip` 时，将压缩包中的整个 `dfcn_dwarvemon_zh_hans` 文件夹解压至游戏 `mods` 目录。无需在创建世界的模组列表中启用汉化数据包；原始 Dwarvemon 模组按其作者说明使用。安装、更新或移除数据包后，核心在下一次加载数据时识别相应变化。没有完整译文的 mod 名称、简介和工坊名称保留原文；用户自定义小队名称始终保持原样。
+使用扩展需要安装 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)，并订阅对应的原模组和汉化数据包。DFCN 自动读取已下载的数据，无需手工复制，也无需在创建世界的模组列表中启用汉化数据包；原模组按其作者说明使用。
 
-数据包目录为 `workshop/dwarvemon-zh-hans/content`，发布说明与维护来源保存在其外层目录。
+[Dwarvemon 简体中文汉化](https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177)仅提供基础 **Dwarvemon** 的专用翻译。Entity Type、Entity All 和 Beta 各有独立汉化包，分别订阅即可。没有完整译文的 mod 名称、简介和工坊名称保留原文；用户自定义小队名称始终保持原样。
 
 制作其他 mod 的汉化扩展时，使用同一数据声明格式即可，无需向核心添加 mod 名称或专属词条。参见 [汉化数据扩展格式](docs/translation-extensions.zh-CN.md)。
 

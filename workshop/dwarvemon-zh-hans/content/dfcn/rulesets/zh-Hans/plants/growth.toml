@@ -4,11 +4,11 @@ base = "plants::growth"
 [[rulesets]]
 name = "singular"
 [rulesets.rules]
-"{::plants::dwarvemon_beta}" = "{::plants::dwarvemon_beta}"
+"{::plants::dwarvemon_optional}" = "{::plants::dwarvemon_optional}"
 "{::plants::dwarvemon::growth}" = "{::plants::dwarvemon::growth}"
 
 [[rulesets]]
 name = "plural"
 [rulesets.rules]
-"{::plants::dwarvemon_beta}" = "{::plants::dwarvemon_beta}"
+"{::plants::dwarvemon_optional}" = "{::plants::dwarvemon_optional}"
 "{::plants::dwarvemon::growth}" = "{::plants::dwarvemon::growth}"
