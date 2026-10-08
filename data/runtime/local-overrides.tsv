@@ -9250,6 +9250,11 @@ Setting glass	设置玻璃	wli
 # Task detail material controls retain the complete native button caption.
 Specify glass	指定玻璃	wli
 Specify plant	指定植物	wli
+Specify leather	指定皮革	wli
+Specify size	指定尺寸	wli
+# Leather armor task labels use the complete item and sizing meanings.
+Make leather armor	制造皮甲	wli
+size	尺寸	wi
 # The empty work-order material constraint leaves the material unrestricted.
 No material	不限材料	wli
 # Military uniform material chooser uses the same unrestricted selection.

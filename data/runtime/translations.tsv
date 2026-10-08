@@ -119849,6 +119849,9 @@ Spatial Sense	空间感知	wi
 Spears/Spikes	长矛/尖刺	wi
 Specify glass	指定玻璃	wli
 Specify plant	指定植物	wli
+Specify leather	指定皮革	wli
+Specify size	指定尺寸	wli
+Make leather armor	制造皮甲	wli
 Status of {p}	状态：{p1}	hPt
 Stay occupied	保持忙碌	w
 Stone Carvers	石雕师	wi
@@ -142529,7 +142532,7 @@ shoe	鞋	wi
 silk	丝布	wi
 silt	淤泥	wi
 site	地点	hv
-size	巨大	wi
+size	尺寸	wi
 skin	皮肤	wi
 slap	拍打	wi
 slim	纤瘦	wi
