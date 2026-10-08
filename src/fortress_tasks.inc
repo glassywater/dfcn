@@ -256,6 +256,31 @@ std::optional<std::string> Overlay::translate_fortress_activity(
         break; // Keep the existing task grammar for other hauling subjects.
     }
     if (source.ends_with('!')) return exclamation();
+    // ELF prayer 0x1767690 chooses an entire historical-figure identity or
+    // an article-wrapped sphere. Sermons use the same two suppliers. Keep
+    // the complete name (including leading The/Of and authored nicknames)
+    // outside the generic actor-prefix callback and its species/article
+    // parsing. Caption padding is not part of either semantic subject.
+    for (const std::string_view verb : {"Pray to", "Meditate on", "Preach on"}) {
+        const std::string prefix = std::string(verb) + " ";
+        if (!folded.starts_with(lower(prefix)) || source.size() <= prefix.size()) continue;
+        const std::string subject(trim_view(std::string_view(source).substr(prefix.size())));
+        const auto action = exact_literal_translation("Fortress activity: " + std::string(verb));
+        std::optional<std::string> target;
+        if (verb != "Pray to") target = translate_deity_spheres(subject);
+        if (!target && verb != "Meditate on") {
+            target = translate_legends_name(subject, true);
+            if (!translation_complete_with_native_nicknames(target, subject))
+                target = translate_legends_actor(subject);
+        }
+        if (!action || !translation_complete_with_native_nicknames(target, subject))
+            return std::nullopt;
+        const size_t slot = action->find("{s}");
+        if (slot == std::string::npos) return std::nullopt;
+        std::string rendered = *action;
+        rendered.replace(slot, 3, *target);
+        return rendered;
+    }
     // Generated instrument jobs also appear in Stone use's economic-use
     // list. They have no material prefix, unlike embark equipment names.
     // Resolve the complete native-language name and optional piece BEFORE
@@ -367,6 +392,25 @@ TranslationResult Overlay::translate_fortress_activity_display(
                 // path. Unknown titles retain their complete punctuation.
                 result = TranslationResult::translated(prefix, *action, "activity-action");
                 result.append(translate_fortress_item_caption_display(object), prefix.size());
+                finish_item_display_result(result, source, "activity");
+                composed = true;
+            }
+            for (const std::string_view verb : {"Pray to", "Meditate on", "Preach on"}) {
+                if (composed) break;
+                const std::string prefix = std::string(verb) + " ";
+                if (!folded.starts_with(lower(prefix)) || source.size() <= prefix.size()) continue;
+                const auto action = exact_literal_translation("Fortress activity: " + std::string(verb));
+                const size_t slot = action ? action->find("{s}") : std::string::npos;
+                if (slot == std::string::npos) break;
+                // The native action still owns its field when a mod supplies
+                // an unknown identity. Preserve that entire subject and mark
+                // it untranslated instead of losing the action with it.
+                const auto subject = std::string_view(source).substr(prefix.size());
+                result = TranslationResult::translated(prefix, action->substr(0, slot), "activity-action");
+                result.append(preserved_item_field(subject,
+                    verb == "Meditate on" ? "sphere" : "person"), prefix.size());
+                result.append(TranslationResult::translated({}, action->substr(slot + 3),
+                    "activity-action"), source.size());
                 finish_item_display_result(result, source, "activity");
                 composed = true;
             }

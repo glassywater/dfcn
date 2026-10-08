@@ -1,5 +1,8 @@
 ; Complete native event/collection direct-call source closure from actual RTTI roots.
 ; Raw disassembly also retains embedded table bytes; TSV distinguishes actual reachable code and switch entries.
+; Current offline PE SHA-256 205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7
+
+; Native source function RVA 0xb72460..0xb72edc; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -561,6 +564,8 @@ Disassembly of section .text:
    140b72ed8:	02 2e                	add    ch,BYTE PTR [rsi]
    140b72eda:	b7 00                	mov    bh,0x0
 
+; Native source function RVA 0xb89e90..0xb89fbf; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -640,6 +645,8 @@ Disassembly of section .text:
    140b89fb5:	48 83 c4 30          	add    rsp,0x30
    140b89fb9:	5f                   	pop    rdi
    140b89fba:	e9 81 86 00 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb78480..0xb7865e; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -775,6 +782,8 @@ Disassembly of section .text:
    140b7865c:	5e                   	pop    rsi
    140b7865d:	c3                   	ret
 
+; Native source function RVA 0xb87d00..0xb87e1c; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -848,6 +857,8 @@ Disassembly of section .text:
    140b87e15:	41 5e                	pop    r14
    140b87e17:	e9 24 a8 00 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb65940..0xb659d4; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -889,6 +900,8 @@ Disassembly of section .text:
    140b659ca:	48 83 c4 20          	add    rsp,0x20
    140b659ce:	5f                   	pop    rdi
    140b659cf:	e9 6c cc 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb66710..0xb668d5; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -1001,6 +1014,8 @@ Disassembly of section .text:
    140b668cb:	48 83 c4 30          	add    rsp,0x30
    140b668cf:	5f                   	pop    rdi
    140b668d0:	e9 6b bd 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xbc6520..0xbc677c; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -1146,6 +1161,8 @@ Disassembly of section .text:
    140bc6776:	48 83 c4 50          	add    rsp,0x50
    140bc677a:	5f                   	pop    rdi
    140bc677b:	c3                   	ret
+
+; Native source function RVA 0xbc60f0..0xbc6392; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -1297,6 +1314,8 @@ Disassembly of section .text:
    140bc638f:	5e                   	pop    rsi
    140bc6390:	5d                   	pop    rbp
    140bc6391:	c3                   	ret
+
+; Native source function RVA 0xb84480..0xb84b70; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -1719,6 +1738,8 @@ Disassembly of section .text:
    140b84b6e:	b8                   	.byte 0xb8
 	...
 
+; Native source function RVA 0xb81770..0xb8182e; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -1771,6 +1792,8 @@ Disassembly of section .text:
    140b81828:	5f                   	pop    rdi
    140b81829:	e9 12 0e 01 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb83c50..0xb83d0e; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -1822,6 +1845,8 @@ Disassembly of section .text:
    140b83d04:	48 83 c4 20          	add    rsp,0x20
    140b83d08:	5f                   	pop    rdi
    140b83d09:	e9 32 e9 00 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb660c0..0xb661ce; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -1892,6 +1917,8 @@ Disassembly of section .text:
    140b661c4:	48 83 c4 20          	add    rsp,0x20
    140b661c8:	5f                   	pop    rdi
    140b661c9:	e9 72 c4 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb78950..0xb78c27; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -2079,6 +2106,8 @@ Disassembly of section .text:
    140b78c24:	41 5c                	pop    r12
    140b78c26:	c3                   	ret
 
+; Native source function RVA 0xb663a0..0xb664de; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -2157,6 +2186,8 @@ Disassembly of section .text:
    140b664d4:	48 83 c4 20          	add    rsp,0x20
    140b664d8:	5f                   	pop    rdi
    140b664d9:	e9 62 c1 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xbc57f0..0xbc59a0; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -2255,6 +2286,8 @@ Disassembly of section .text:
    140bc599e:	5d                   	pop    rbp
    140bc599f:	c3                   	ret
 
+; Native source function RVA 0xb65eb0..0xb65f94; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -2316,6 +2349,8 @@ Disassembly of section .text:
    140b65f8e:	5f                   	pop    rdi
    140b65f8f:	e9 ac c6 02 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb838f0..0xb839ae; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -2367,6 +2402,8 @@ Disassembly of section .text:
    140b839a4:	48 83 c4 20          	add    rsp,0x20
    140b839a8:	5f                   	pop    rdi
    140b839a9:	e9 92 ec 00 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb6cb80..0xb6cd82; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -2496,6 +2533,8 @@ Disassembly of section .text:
    140b6cd78:	48 83 c4 30          	add    rsp,0x30
    140b6cd7c:	5f                   	pop    rdi
    140b6cd7d:	e9 be 58 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb6b540..0xb6b8df; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -2722,6 +2761,8 @@ Disassembly of section .text:
    140b6b8dd:	5d                   	pop    rbp
    140b6b8de:	c3                   	ret
 
+; Native source function RVA 0xb8b3c0..0xb8b6a5; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -2918,6 +2959,8 @@ Disassembly of section .text:
    140b8b69f:	5e                   	pop    rsi
    140b8b6a0:	e9 9b 6f 00 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb67b00..0xb67bef; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -2979,6 +3022,8 @@ Disassembly of section .text:
    140b67be5:	48 83 c4 30          	add    rsp,0x30
    140b67be9:	5f                   	pop    rdi
    140b67bea:	e9 51 aa 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb6f040..0xb6f4f8; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -3264,6 +3309,8 @@ Disassembly of section .text:
    140b6f4f4:	73 f1                	jae    0x140b6f4e7
    140b6f4f6:	b6 00                	mov    dh,0x0
 
+; Native source function RVA 0xb81e20..0xb81f00; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -3322,6 +3369,8 @@ Disassembly of section .text:
    140b81ef6:	48 83 c4 20          	add    rsp,0x20
    140b81efa:	5f                   	pop    rdi
    140b81efb:	e9 40 07 01 00       	jmp    0x140b92640
+
+; Native source function RVA 0xbc56b0..0xbc57e5; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -3405,6 +3454,8 @@ Disassembly of section .text:
    140bc57e3:	5f                   	pop    rdi
    140bc57e4:	c3                   	ret
 
+; Native source function RVA 0xb67370..0xb67454; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -3465,6 +3516,8 @@ Disassembly of section .text:
    140b6744a:	48 83 c4 20          	add    rsp,0x20
    140b6744e:	5f                   	pop    rdi
    140b6744f:	e9 ec b1 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb6d700..0xb6dcab; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -3834,6 +3887,8 @@ Disassembly of section .text:
    140b6dca9:	5d                   	pop    rbp
    140b6dcaa:	c3                   	ret
 
+; Native source function RVA 0xb65680..0xb65714; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -3875,6 +3930,8 @@ Disassembly of section .text:
    140b6570a:	48 83 c4 20          	add    rsp,0x20
    140b6570e:	5f                   	pop    rdi
    140b6570f:	e9 2c cf 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb792f0..0xb79483; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -3977,6 +4034,8 @@ Disassembly of section .text:
    140b79480:	5f                   	pop    rdi
    140b79481:	5d                   	pop    rbp
    140b79482:	c3                   	ret
+
+; Native source function RVA 0xb88300..0xb884f3; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -4102,6 +4161,8 @@ Disassembly of section .text:
    140b884ed:	5f                   	pop    rdi
    140b884ee:	e9 4d a1 00 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb7cd50..0xb7ce59; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -4172,6 +4233,8 @@ Disassembly of section .text:
    140b7ce53:	5f                   	pop    rdi
    140b7ce54:	e9 e7 57 01 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb81410..0xb814ce; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -4224,6 +4287,8 @@ Disassembly of section .text:
    140b814c8:	5f                   	pop    rdi
    140b814c9:	e9 72 11 01 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb65ae0..0xb65b74; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -4265,6 +4330,8 @@ Disassembly of section .text:
    140b65b6a:	48 83 c4 20          	add    rsp,0x20
    140b65b6e:	5f                   	pop    rdi
    140b65b6f:	e9 cc ca 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb7c5e0..0xb7c6d8; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -4333,6 +4400,8 @@ Disassembly of section .text:
    140b7c6ce:	48 83 c4 20          	add    rsp,0x20
    140b7c6d2:	5f                   	pop    rdi
    140b7c6d3:	e9 68 5f 01 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb69bb0..0xb69d2e; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -4430,6 +4499,8 @@ Disassembly of section .text:
    140b69d28:	5f                   	pop    rdi
    140b69d29:	e9 12 89 02 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb670b0..0xb67211; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -4520,6 +4591,8 @@ Disassembly of section .text:
    140b6720b:	5f                   	pop    rdi
    140b6720c:	e9 2f b4 02 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb6aa30..0xb6ab71; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -4604,6 +4677,8 @@ Disassembly of section .text:
    140b6ab6b:	5f                   	pop    rdi
    140b6ab6c:	e9 cf 7a 02 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb676f0..0xb677d4; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -4664,6 +4739,8 @@ Disassembly of section .text:
    140b677ca:	48 83 c4 20          	add    rsp,0x20
    140b677ce:	5f                   	pop    rdi
    140b677cf:	e9 6c ae 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb831e0..0xb832ff; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -4736,6 +4813,8 @@ Disassembly of section .text:
    140b832f5:	48 83 c4 20          	add    rsp,0x20
    140b832f9:	5f                   	pop    rdi
    140b832fa:	e9 41 f3 00 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb6a250..0xb6a3a2; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -4822,6 +4901,8 @@ Disassembly of section .text:
    140b6a398:	48 83 c4 30          	add    rsp,0x30
    140b6a39c:	5f                   	pop    rdi
    140b6a39d:	e9 9e 82 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb80420..0xb80ad4; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -5197,6 +5278,8 @@ Disassembly of section .text:
    140b80acd:	08 b8 00 30 09 b8    	or     BYTE PTR [rax-0x47f6d000],bh
 	...
 
+; Native source function RVA 0xb6e1e0..0xb6e600; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -5473,6 +5556,8 @@ Disassembly of section .text:
    140b6e5fd:	e4 b6                	in     al,0xb6
 	...
 
+; Native source function RVA 0xbc63a0..0xbc6514; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -5568,6 +5653,8 @@ Disassembly of section .text:
    140bc650e:	48 83 c4 50          	add    rsp,0x50
    140bc6512:	5f                   	pop    rdi
    140bc6513:	c3                   	ret
+
+; Native source function RVA 0xbc59a0..0xbc5bba; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -5729,6 +5816,8 @@ Disassembly of section .text:
    140bc5bb6:	04 04                	add    al,0x4
    140bc5bb8:	04 03                	add    al,0x3
 
+; Native source function RVA 0xb80080..0xb80151; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -5784,6 +5873,8 @@ Disassembly of section .text:
    140b80147:	48 83 c4 30          	add    rsp,0x30
    140b8014b:	5f                   	pop    rdi
    140b8014c:	e9 ef 24 01 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb73780..0xb74df4; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -7063,6 +7154,8 @@ Disassembly of section .text:
    140b74df0:	da 43 b7             	fiadd  DWORD PTR [rbx-0x49]
 	...
 
+; Native source function RVA 0xb678f0..0xb679e9; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -7127,6 +7220,8 @@ Disassembly of section .text:
    140b679df:	48 83 c4 30          	add    rsp,0x30
    140b679e3:	5f                   	pop    rdi
    140b679e4:	e9 57 ac 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb66c00..0xb66ec0; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -7303,6 +7398,8 @@ Disassembly of section .text:
    140b66eba:	5b                   	pop    rbx
    140b66ebb:	e9 80 b7 02 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb67d00..0xb67df9; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -7367,6 +7464,8 @@ Disassembly of section .text:
    140b67def:	48 83 c4 30          	add    rsp,0x30
    140b67df3:	5f                   	pop    rdi
    140b67df4:	e9 47 a8 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0x2aa590..0x2aa6f8; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -7463,6 +7562,8 @@ Disassembly of section .text:
    1402aa6ed:	48 83 c4 30          	add    rsp,0x30
    1402aa6f1:	41 5f                	pop    r15
    1402aa6f3:	e9 48 7f 8e 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb78e60..0xb79051; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -7604,6 +7705,8 @@ Disassembly of section .text:
    140b7904e:	5e                   	pop    rsi
    140b7904f:	5d                   	pop    rbp
    140b79050:	c3                   	ret
+
+; Native source function RVA 0xbc6880..0xbc6b9c; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -7807,6 +7910,8 @@ Disassembly of section .text:
    140bc6b9a:	5d                   	pop    rbp
    140bc6b9b:	c3                   	ret
 
+; Native source function RVA 0xb65500..0xb655c9; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -7861,6 +7966,8 @@ Disassembly of section .text:
    140b655bf:	48 83 c4 20          	add    rsp,0x20
    140b655c3:	5f                   	pop    rdi
    140b655c4:	e9 77 d0 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb88790..0xb88a35; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -8028,6 +8135,8 @@ Disassembly of section .text:
    140b88a2d:	41 5c                	pop    r12
    140b88a2f:	5f                   	pop    rdi
    140b88a30:	e9 0b 9c 00 00       	jmp    0x140b92640
+
+; Native source function RVA 0x2ad7f0..0x2afec3; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -10559,6 +10668,8 @@ Disassembly of section .text:
    1402afec1:	07                   	(bad)
    1402afec2:	06                   	(bad)
 
+; Native source function RVA 0xb7e640..0xb7ea48; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -10803,6 +10914,8 @@ Disassembly of section .text:
    140b7ea44:	1e                   	(bad)
    140b7ea45:	e8                   	.byte 0xe8
    140b7ea46:	b7 00                	mov    bh,0x0
+
+; Native source function RVA 0xb82a20..0xb831db; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -11294,6 +11407,8 @@ Disassembly of section .text:
    140b831d9:	07                   	(bad)
    140b831da:	06                   	(bad)
 
+; Native source function RVA 0xb65030..0xb651e8; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -11406,6 +11521,8 @@ Disassembly of section .text:
    140b651e4:	58                   	pop    rax
    140b651e5:	51                   	push   rcx
    140b651e6:	b6 00                	mov    dh,0x0
+
+; Native source function RVA 0xb63b80..0xb63dc9; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -11561,6 +11678,8 @@ Disassembly of section .text:
    140b63dc7:	5d                   	pop    rbp
    140b63dc8:	c3                   	ret
 
+; Native source function RVA 0xb79fb0..0xb7a057; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -11606,6 +11725,8 @@ Disassembly of section .text:
    140b7a04d:	48 83 c4 30          	add    rsp,0x30
    140b7a051:	5f                   	pop    rdi
    140b7a052:	e9 e9 85 01 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb8af20..0xb8b074; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -11695,6 +11816,8 @@ Disassembly of section .text:
    140b8b06d:	41 5e                	pop    r14
    140b8b06f:	e9 cc 75 00 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb68b60..0xb68c8a; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -11771,6 +11894,8 @@ Disassembly of section .text:
    140b68c80:	48 83 c4 30          	add    rsp,0x30
    140b68c84:	5f                   	pop    rdi
    140b68c85:	e9 b6 99 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb796d0..0xb798b7; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -11894,6 +12019,8 @@ Disassembly of section .text:
    140b798b1:	5f                   	pop    rdi
    140b798b2:	e9 89 8d 01 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb7b0e0..0xb7b230; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -11979,6 +12106,8 @@ Disassembly of section .text:
    140b7b22a:	5f                   	pop    rdi
    140b7b22b:	e9 10 74 01 00       	jmp    0x140b92640
 
+; Native source function RVA 0xbc5bc0..0xbc5d10; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -12063,6 +12192,8 @@ Disassembly of section .text:
    140bc5d0a:	48 83 c4 50          	add    rsp,0x50
    140bc5d0e:	5f                   	pop    rdi
    140bc5d0f:	c3                   	ret
+
+; Native source function RVA 0x2aae00..0x2aaf68; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -12159,6 +12290,8 @@ Disassembly of section .text:
    1402aaf5d:	48 83 c4 30          	add    rsp,0x30
    1402aaf61:	41 5f                	pop    r15
    1402aaf63:	e9 d8 76 8e 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb7feb0..0xb80071; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -12280,6 +12413,8 @@ Disassembly of section .text:
    140b80068:	41 5e                	pop    r14
    140b8006a:	41 5c                	pop    r12
    140b8006c:	e9 cf 25 01 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb69d30..0xb69ef9; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -12404,6 +12539,8 @@ Disassembly of section .text:
    140b69ef0:	41 5e                	pop    r14
    140b69ef2:	41 5c                	pop    r12
    140b69ef4:	e9 47 87 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb732f0..0xb7377c; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -12694,6 +12831,8 @@ Disassembly of section .text:
    140b73779:	34 b7                	xor    al,0xb7
 	...
 
+; Native source function RVA 0xb87f90..0xb880d1; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -12778,6 +12917,8 @@ Disassembly of section .text:
    140b880ca:	41 5e                	pop    r14
    140b880cc:	e9 6f a5 00 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb7cb20..0xb7cc2a; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -12844,6 +12985,8 @@ Disassembly of section .text:
    140b7cc20:	48 83 c4 30          	add    rsp,0x30
    140b7cc24:	5f                   	pop    rdi
    140b7cc25:	e9 16 5a 01 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb7b400..0xb7b53f; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -12928,6 +13071,8 @@ Disassembly of section .text:
    140b7b539:	5f                   	pop    rdi
    140b7b53a:	e9 01 71 01 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb688d0..0xb689df; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -12999,6 +13144,8 @@ Disassembly of section .text:
    140b689d9:	5f                   	pop    rdi
    140b689da:	e9 61 9c 02 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb7d2f0..0xb7d402; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -13069,6 +13216,8 @@ Disassembly of section .text:
    140b7d3f7:	48 83 c4 30          	add    rsp,0x30
    140b7d3fb:	41 5e                	pop    r14
    140b7d3fd:	e9 3e 52 01 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb7c8b0..0xb7c9f4; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -13152,6 +13301,8 @@ Disassembly of section .text:
    140b7c9ec:	41 5e                	pop    r14
    140b7c9ee:	5f                   	pop    rdi
    140b7c9ef:	e9 4c 5c 01 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb7d740..0xb7da58; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -13330,6 +13481,8 @@ Disassembly of section .text:
    140b7da55:	d9                   	.byte 0xd9
    140b7da56:	b7 00                	mov    bh,0x0
 
+; Native source function RVA 0xb7a9f0..0xb7ab18; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -13405,6 +13558,8 @@ Disassembly of section .text:
    140b7ab0d:	48 83 c4 30          	add    rsp,0x30
    140b7ab11:	41 5e                	pop    r14
    140b7ab13:	e9 28 7b 01 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb689e0..0xb68b53; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -13499,6 +13654,8 @@ Disassembly of section .text:
    140b68b49:	48 83 c4 30          	add    rsp,0x30
    140b68b4d:	5f                   	pop    rdi
    140b68b4e:	e9 ed 9a 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb6bc70..0xb6bf44; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -13688,6 +13845,8 @@ Disassembly of section .text:
    140b6bf42:	5d                   	pop    rbp
    140b6bf43:	c3                   	ret
 
+; Native source function RVA 0xbc6ba0..0xbc6d94; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -13800,6 +13959,8 @@ Disassembly of section .text:
    140bc6d91:	5e                   	pop    rsi
    140bc6d92:	5d                   	pop    rbp
    140bc6d93:	c3                   	ret
+
+; Native source function RVA 0xb76340..0xb76550; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -13935,6 +14096,8 @@ Disassembly of section .text:
    140b7654d:	63                   	.byte 0x63
    140b7654e:	b7 00                	mov    bh,0x0
 
+; Native source function RVA 0xb69f00..0xb6a024; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -14010,6 +14173,8 @@ Disassembly of section .text:
    140b6a01a:	48 83 c4 30          	add    rsp,0x30
    140b6a01e:	5f                   	pop    rdi
    140b6a01f:	e9 1c 86 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb88c70..0xb88e63; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -14137,6 +14302,8 @@ Disassembly of section .text:
    140b88e60:	5e                   	pop    rsi
    140b88e61:	5d                   	pop    rbp
    140b88e62:	c3                   	ret
+
+; Native source function RVA 0xb6e960..0xb6ec8e; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -14346,6 +14513,8 @@ Disassembly of section .text:
    140b6ec8c:	5b                   	pop    rbx
    140b6ec8d:	c3                   	ret
 
+; Native source function RVA 0xb67530..0xb675e2; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -14394,6 +14563,8 @@ Disassembly of section .text:
    140b675dc:	5f                   	pop    rdi
    140b675dd:	e9 5e b0 02 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb657d0..0xb65864; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -14435,6 +14606,8 @@ Disassembly of section .text:
    140b6585a:	48 83 c4 20          	add    rsp,0x20
    140b6585e:	5f                   	pop    rdi
    140b6585f:	e9 dc cd 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb7b6a0..0xb7b7e6; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -14518,6 +14691,8 @@ Disassembly of section .text:
    140b7b7e0:	48 83 c4 30          	add    rsp,0x30
    140b7b7e4:	5f                   	pop    rdi
    140b7b7e5:	c3                   	ret
+
+; Native source function RVA 0xb834b0..0xb83644; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -14618,6 +14793,8 @@ Disassembly of section .text:
    140b83639:	35 b8 00 d1 35       	xor    eax,0x35d100b8
    140b8363e:	b8 00 e0 35 b8       	mov    eax,0xb835e000
 	...
+
+; Native source function RVA 0xb89120..0xb89390; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -14787,6 +14964,8 @@ Disassembly of section .text:
    140b8938e:	5b                   	pop    rbx
    140b8938f:	c3                   	ret
 
+; Native source function RVA 0xb89640..0xb898b0; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -14955,6 +15134,8 @@ Disassembly of section .text:
    140b898ae:	5b                   	pop    rbx
    140b898af:	c3                   	ret
 
+; Native source function RVA 0xbc5d10..0xbc5e5a; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -15037,6 +15218,8 @@ Disassembly of section .text:
    140bc5e54:	48 83 c4 50          	add    rsp,0x50
    140bc5e58:	5f                   	pop    rdi
    140bc5e59:	c3                   	ret
+
+; Native source function RVA 0xb8a150..0xb8a2cb; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -15132,6 +15315,8 @@ Disassembly of section .text:
    140b8a2c5:	5f                   	pop    rdi
    140b8a2c6:	e9 75 83 00 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb7abe0..0xb7ac6f; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -15173,6 +15358,8 @@ Disassembly of section .text:
    140b7ac65:	48 83 c4 30          	add    rsp,0x30
    140b7ac69:	5f                   	pop    rdi
    140b7ac6a:	e9 d1 79 01 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb68e80..0xb68fa9; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -15251,6 +15438,8 @@ Disassembly of section .text:
    140b68f9f:	48 83 c4 30          	add    rsp,0x30
    140b68fa3:	5f                   	pop    rdi
    140b68fa4:	e9 97 96 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb85360..0xb8550c; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -15355,6 +15544,8 @@ Disassembly of section .text:
    140b85502:	48 83 c4 30          	add    rsp,0x30
    140b85506:	5f                   	pop    rdi
    140b85507:	e9 34 d1 00 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb684d0..0xb68685; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -15465,6 +15656,8 @@ Disassembly of section .text:
    140b6867f:	5f                   	pop    rdi
    140b68680:	e9 bb 9f 02 00       	jmp    0x140b92640
 
+; Native source function RVA 0xbc5e60..0xbc5fbf; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -15553,6 +15746,8 @@ Disassembly of section .text:
    140bc5fbd:	5f                   	pop    rdi
    140bc5fbe:	c3                   	ret
 
+; Native source function RVA 0xb7bfb0..0xb7c0c9; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -15626,6 +15821,8 @@ Disassembly of section .text:
    140b7c0be:	48 83 c4 30          	add    rsp,0x30
    140b7c0c2:	41 5e                	pop    r14
    140b7c0c4:	e9 77 65 01 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb7ae50..0xb7af78; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -15704,6 +15901,8 @@ Disassembly of section .text:
    140b7af6e:	b7 00                	mov    bh,0x0
    140b7af70:	de ae b7 00 ed ae    	fisubr WORD PTR [rsi-0x5112ff49]
    140b7af76:	b7 00                	mov    bh,0x0
+
+; Native source function RVA 0xb69120..0xb69274; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -15791,6 +15990,8 @@ Disassembly of section .text:
    140b6926a:	48 83 c4 20          	add    rsp,0x20
    140b6926e:	5f                   	pop    rdi
    140b6926f:	e9 cc 93 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb6c210..0xb6c491; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -15964,6 +16165,8 @@ Disassembly of section .text:
    140b6c48f:	5b                   	pop    rbx
    140b6c490:	c3                   	ret
 
+; Native source function RVA 0xb7c1d0..0xb7c2b2; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -16023,6 +16226,8 @@ Disassembly of section .text:
    140b7c2a8:	48 83 c4 20          	add    rsp,0x20
    140b7c2ac:	5f                   	pop    rdi
    140b7c2ad:	e9 8e 63 01 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb6a110..0xb6a246; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -16101,6 +16306,8 @@ Disassembly of section .text:
    140b6a23c:	48 83 c4 30          	add    rsp,0x30
    140b6a240:	5f                   	pop    rdi
    140b6a241:	e9 fa 83 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb819e0..0xb81b5c; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -16196,6 +16403,8 @@ Disassembly of section .text:
    140b81b55:	1a b8 00 1a 1a b8    	sbb    bh,BYTE PTR [rax-0x47e5e600]
 	...
 
+; Native source function RVA 0xb84dd0..0xb84e64; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -16237,6 +16446,8 @@ Disassembly of section .text:
    140b84e5a:	48 83 c4 20          	add    rsp,0x20
    140b84e5e:	5f                   	pop    rdi
    140b84e5f:	e9 dc d7 00 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb84c60..0xb84d18; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -16287,6 +16498,8 @@ Disassembly of section .text:
    140b84d0e:	48 83 c4 20          	add    rsp,0x20
    140b84d12:	5f                   	pop    rdi
    140b84d13:	e9 28 d9 00 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb63dd0..0xb63fca; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -16419,6 +16632,8 @@ Disassembly of section .text:
    140b63fc4:	5f                   	pop    rdi
    140b63fc5:	e9 76 e6 02 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb75510..0xb75651; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -16499,6 +16714,8 @@ Disassembly of section .text:
    140b75646:	48 83 c4 30          	add    rsp,0x30
    140b7564a:	41 5e                	pop    r14
    140b7564c:	e9 ef cf 01 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb76fe0..0xb771cc; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -16627,6 +16844,8 @@ Disassembly of section .text:
    140b771c9:	70 b7                	jo     0x140b77182
 	...
 
+; Native source function RVA 0xb8ac80..0xb8ad98; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -16699,6 +16918,8 @@ Disassembly of section .text:
    140b8ad8e:	48 83 c4 30          	add    rsp,0x30
    140b8ad92:	5f                   	pop    rdi
    140b8ad93:	e9 a8 78 00 00       	jmp    0x140b92640
+
+; Native source function RVA 0xbc6da0..0xbc6fc5; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -16829,6 +17050,8 @@ Disassembly of section .text:
    140bc6fbf:	48 83 c4 50          	add    rsp,0x50
    140bc6fc3:	5f                   	pop    rdi
    140bc6fc4:	c3                   	ret
+
+; Native source function RVA 0xb7f770..0xb7fa3c; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -17018,6 +17241,8 @@ Disassembly of section .text:
    140b7fa38:	f9                   	stc
    140b7fa39:	f8                   	clc
    140b7fa3a:	b7 00                	mov    bh,0x0
+
+; Native source function RVA 0xbc7270..0xbc777c; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -17325,6 +17550,8 @@ Disassembly of section .text:
    140bc7779:	76 bc                	jbe    0x140bc7737
 	...
 
+; Native source function RVA 0xb6ae90..0xb6b18c; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -17522,6 +17749,8 @@ Disassembly of section .text:
    140b6b18a:	5d                   	pop    rbp
    140b6b18b:	c3                   	ret
 
+; Native source function RVA 0xbc5fc0..0xbc60e6; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -17596,6 +17825,8 @@ Disassembly of section .text:
    140bc60e0:	48 83 c4 50          	add    rsp,0x50
    140bc60e4:	5f                   	pop    rdi
    140bc60e5:	c3                   	ret
+
+; Native source function RVA 0xb64490..0xb64c00; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -18067,6 +18298,8 @@ Disassembly of section .text:
    140b64bfc:	1f                   	(bad)
    140b64bfd:	46 b6 00             	rex.RX mov sil,0x0
 
+; Native source function RVA 0xb72ee0..0xb732e4; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -18320,6 +18553,8 @@ Disassembly of section .text:
    140b732e1:	31                   	.byte 0x31
    140b732e2:	b7 00                	mov    bh,0x0
 
+; Native source function RVA 0xb8e990..0xb8ec02; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -18477,6 +18712,8 @@ Disassembly of section .text:
    140b8ebff:	5f                   	pop    rdi
    140b8ec00:	5e                   	pop    rsi
    140b8ec01:	c3                   	ret
+
+; Native source function RVA 0xb75c00..0xb76118; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -18797,6 +19034,8 @@ Disassembly of section .text:
    140b76114:	9b                   	fwait
    140b76115:	5d                   	pop    rbp
    140b76116:	b7 00                	mov    bh,0x0
+
+; Native source function RVA 0xb80ae0..0xb81164; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -19171,6 +19410,8 @@ Disassembly of section .text:
    140b81161:	0f b8                	(bad)
 	...
 
+; Native source function RVA 0xbc6fd0..0xbc7263; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -19330,6 +19571,8 @@ Disassembly of section .text:
    140bc7261:	5f                   	pop    rdi
    140bc7262:	c3                   	ret
 
+; Native source function RVA 0xb7fc80..0xb7fea8; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -19488,6 +19731,8 @@ Disassembly of section .text:
    140b7fea4:	74 fd                	je     0x140b7fea3
    140b7fea6:	b7 00                	mov    bh,0x0
 
+; Native source function RVA 0xb64c00..0xb64e2f; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -19626,6 +19871,8 @@ Disassembly of section .text:
    140b64e2c:	5e                   	pop    rsi
    140b64e2d:	5d                   	pop    rbp
    140b64e2e:	c3                   	ret
+
+; Native source function RVA 0xb7f4a0..0xb7f76c; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -19820,6 +20067,8 @@ Disassembly of section .text:
    140b7f769:	f6                   	.byte 0xf6
    140b7f76a:	b7 00                	mov    bh,0x0
 
+; Native source function RVA 0xb750d0..0xb75342; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -19972,6 +20221,8 @@ Disassembly of section .text:
    140b75340:	5e                   	pop    rsi
    140b75341:	c3                   	ret
 
+; Native source function RVA 0xb8ba80..0xb8bb4d; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -20025,6 +20276,8 @@ Disassembly of section .text:
    140b8bb43:	48 83 c4 30          	add    rsp,0x30
    140b8bb47:	5f                   	pop    rdi
    140b8bb48:	e9 f3 6a 00 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb877e0..0xb879ca; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -20154,6 +20407,8 @@ Disassembly of section .text:
    140b879c3:	41 5e                	pop    r14
    140b879c5:	e9 76 ac 00 00       	jmp    0x140b92640
 
+; Native source function RVA 0xbc7780..0xbc79a2; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -20281,6 +20536,8 @@ Disassembly of section .text:
    140bc799c:	48 83 c4 50          	add    rsp,0x50
    140bc79a0:	5f                   	pop    rdi
    140bc79a1:	c3                   	ret
+
+; Native source function RVA 0xb64e30..0xb65028; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -20410,6 +20667,8 @@ Disassembly of section .text:
    140b65025:	5e                   	pop    rsi
    140b65026:	5d                   	pop    rbp
    140b65027:	c3                   	ret
+
+; Native source function RVA 0xb7fa40..0xb7fc74; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -20571,6 +20830,8 @@ Disassembly of section .text:
    140b7fc70:	43 fb                	rex.XB sti
    140b7fc72:	b7 00                	mov    bh,0x0
 
+; Native source function RVA 0xb6a3b0..0xb6a474; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -20624,6 +20885,8 @@ Disassembly of section .text:
    140b6a46e:	5f                   	pop    rdi
    140b6a46f:	e9 cc 81 02 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb6a550..0xb6a5ff; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -20671,6 +20934,8 @@ Disassembly of section .text:
    140b6a5f5:	48 83 c4 20          	add    rsp,0x20
    140b6a5f9:	5f                   	pop    rdi
    140b6a5fa:	e9 41 80 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb8d5f0..0xb8ddc8; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -21155,6 +21420,8 @@ Disassembly of section .text:
    140b8ddc1:	db b8 00 ec db b8    	fstp   TBYTE PTR [rax-0x47241400]
 	...
 
+; Native source function RVA 0xb77430..0xb77717; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -21352,6 +21619,8 @@ Disassembly of section .text:
    140b77710:	41 5e                	pop    r14
    140b77712:	e9 29 af 01 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb76ba0..0xb76dbd; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -21493,6 +21762,8 @@ Disassembly of section .text:
    140b76db6:	5f                   	pop    rdi
    140b76db7:	5e                   	pop    rsi
    140b76db8:	e9 83 b8 01 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb80160..0xb8041b; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -21677,6 +21948,8 @@ Disassembly of section .text:
    140b80419:	5d                   	pop    rbp
    140b8041a:	c3                   	ret
 
+; Native source function RVA 0xb67f30..0xb6801e; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -21739,6 +22012,8 @@ Disassembly of section .text:
    140b68014:	48 83 c4 20          	add    rsp,0x20
    140b68018:	5f                   	pop    rdi
    140b68019:	e9 22 a6 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb8aa10..0xb8ab2b; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -21815,6 +22090,8 @@ Disassembly of section .text:
    140b8ab20:	48 83 c4 30          	add    rsp,0x30
    140b8ab24:	41 5e                	pop    r14
    140b8ab26:	e9 15 7b 00 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb8e460..0xb8e6d2; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -21974,6 +22251,8 @@ Disassembly of section .text:
    140b8e6d0:	5e                   	pop    rsi
    140b8e6d1:	c3                   	ret
 
+; Native source function RVA 0xb68c90..0xb68d48; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -22023,6 +22302,8 @@ Disassembly of section .text:
    140b68d3e:	48 83 c4 20          	add    rsp,0x20
    140b68d42:	5f                   	pop    rdi
    140b68d43:	e9 f8 98 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb63fd0..0xb64486; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -22335,6 +22616,8 @@ Disassembly of section .text:
    140b64484:	5d                   	pop    rbp
    140b64485:	c3                   	ret
 
+; Native source function RVA 0xb8b830..0xb8b989; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -22424,6 +22707,8 @@ Disassembly of section .text:
    140b8b982:	41 5e                	pop    r14
    140b8b984:	e9 b7 6c 00 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb85030..0xb8518c; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -22511,6 +22796,8 @@ Disassembly of section .text:
    140b85182:	48 83 c4 30          	add    rsp,0x30
    140b85186:	5f                   	pop    rdi
    140b85187:	e9 b4 d4 00 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb89af0..0xb89ce2; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -22639,6 +22926,8 @@ Disassembly of section .text:
    140b89cd7:	48 83 c4 30          	add    rsp,0x30
    140b89cdb:	41 5e                	pop    r14
    140b89cdd:	e9 5e 89 00 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb8c2b0..0xb8c98b; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -23076,6 +23365,8 @@ Disassembly of section .text:
    140b8c989:	5d                   	pop    rbp
    140b8c98a:	c3                   	ret
 
+; Native source function RVA 0xbc79b0..0xbc7c31; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -23230,6 +23521,8 @@ Disassembly of section .text:
    140bc7c2f:	5f                   	pop    rdi
    140bc7c30:	c3                   	ret
 
+; Native source function RVA 0xb767c0..0xb76980; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -23346,6 +23639,8 @@ Disassembly of section .text:
    140b7697a:	5f                   	pop    rdi
    140b7697b:	e9 c0 bc 01 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb6a7f0..0xb6a930; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -23429,6 +23724,8 @@ Disassembly of section .text:
    140b6a92a:	5f                   	pop    rdi
    140b6a92b:	e9 10 7d 02 00       	jmp    0x140b92640
 
+; Native source function RVA 0xb87c20..0xb87cf3; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -23484,6 +23781,8 @@ Disassembly of section .text:
    140b87ce9:	48 83 c4 30          	add    rsp,0x30
    140b87ced:	5f                   	pop    rdi
    140b87cee:	e9 4d a9 00 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb6a030..0xb6a109; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -23541,6 +23840,8 @@ Disassembly of section .text:
    140b6a0ff:	48 83 c4 30          	add    rsp,0x30
    140b6a103:	5f                   	pop    rdi
    140b6a104:	e9 37 85 02 00       	jmp    0x140b92640
+
+; Native source function RVA 0xb8a720..0xb8a8bd; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -23649,6 +23950,8 @@ Disassembly of section .text:
    140b8a8b6:	41 5c                	pop    r12
    140b8a8b8:	e9 83 7d 00 00       	jmp    0x140b92640
 
+; Native source function RVA 0x6f560..0x6f5a0; leaf body
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -23670,6 +23973,8 @@ Disassembly of section .text:
    14006f59a:	e9 31 03 00 00       	jmp    0x14006f8d0
    14006f59f:	cc                   	int3
 
+; Native source function RVA 0x6f580..0x6f5a0; leaf body
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -23683,6 +23988,8 @@ Disassembly of section .text:
    14006f598:	75 f6                	jne    0x14006f590
    14006f59a:	e9 31 03 00 00       	jmp    0x14006f8d0
    14006f59f:	cc                   	int3
+
+; Native source function RVA 0x707d0..0x70829; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -23718,6 +24025,8 @@ Disassembly of section .text:
    140070823:	e8 98 4f ff ff       	call   0x1400657c0
    140070828:	cc                   	int3
 
+; Native source function RVA 0x6f9e0..0x6fa0a; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -23737,6 +24046,8 @@ Disassembly of section .text:
    14006fa04:	48 83 c4 20          	add    rsp,0x20
    14006fa08:	5f                   	pop    rdi
    14006fa09:	c3                   	ret
+
+; Native source function RVA 0xee0ca0..0xee3560; leaf body
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -26262,6 +26573,8 @@ Disassembly of section .text:
    140ee355e:	cc                   	int3
    140ee355f:	cc                   	int3
 
+; Native source function RVA 0xb9d10..0xb9d30; leaf body
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -26286,6 +26599,8 @@ Disassembly of section .text:
    1400b9d2d:	cc                   	int3
    1400b9d2e:	cc                   	int3
    1400b9d2f:	cc                   	int3
+
+; Native source function RVA 0xb92f10..0xb93927; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -26926,6 +27241,8 @@ Disassembly of section .text:
    140b93925:	5d                   	pop    rbp
    140b93926:	c3                   	ret
 
+; Native source function RVA 0xb92640..0xb928f4; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -27114,6 +27431,8 @@ Disassembly of section .text:
    140b928ed:	c3                   	ret
    140b928ee:	e8 9d 2f 4d ff       	call   0x140065890
    140b928f3:	90                   	nop
+
+; Native source function RVA 0xb94400..0xb94710; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -27320,6 +27639,8 @@ Disassembly of section .text:
    140b9470e:	5e                   	pop    rsi
    140b9470f:	c3                   	ret
 
+; Native source function RVA 0xb93930..0xb93a8a; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -27407,6 +27728,8 @@ Disassembly of section .text:
    140b93a84:	48 83 c4 50          	add    rsp,0x50
    140b93a88:	5f                   	pop    rdi
    140b93a89:	c3                   	ret
+
+; Native source function RVA 0xb92900..0xb92a78; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -27504,6 +27827,8 @@ Disassembly of section .text:
    140b92a76:	5f                   	pop    rdi
    140b92a77:	c3                   	ret
 
+; Native source function RVA 0xb93c60..0xb93cf0; leaf body
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -27557,6 +27882,8 @@ Disassembly of section .text:
    140b93ced:	cc                   	int3
    140b93cee:	cc                   	int3
    140b93cef:	cc                   	int3
+
+; Native source function RVA 0xb94090..0xb943f8; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -27757,6 +28084,8 @@ Disassembly of section .text:
    140b943ef:	00 5a 43             	add    BYTE PTR [rdx+0x43],bl
    140b943f2:	b9 00 61 42 b9       	mov    ecx,0xb9426100
 	...
+
+; Native source function RVA 0x52eb70..0x52f090; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -28127,6 +28456,8 @@ Disassembly of section .text:
    14052f08e:	52                   	push   rdx
 	...
 
+; Native source function RVA 0x52d3c0..0x52d648; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -28327,6 +28658,8 @@ Disassembly of section .text:
    14052d645:	08 08                	or     BYTE PTR [rax],cl
    14052d647:	07                   	(bad)
 
+; Native source function RVA 0xb94710..0xb94940; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -28464,6 +28797,8 @@ Disassembly of section .text:
    140b9493e:	5f                   	pop    rdi
    140b9493f:	c3                   	ret
 
+; Native source function RVA 0xb94940..0xb94a36; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -28529,6 +28864,8 @@ Disassembly of section .text:
    140b94a30:	48 83 c4 20          	add    rsp,0x20
    140b94a34:	5f                   	pop    rdi
    140b94a35:	c3                   	ret
+
+; Native source function RVA 0xb94a40..0xb94b97; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -28618,6 +28955,8 @@ Disassembly of section .text:
    140b94b95:	5f                   	pop    rdi
    140b94b96:	c3                   	ret
 
+; Native source function RVA 0x72080..0x72170; leaf body
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -28661,6 +29000,8 @@ Disassembly of section .text:
    14007216d:	cc                   	int3
    14007216e:	cc                   	int3
    14007216f:	cc                   	int3
+
+; Native source function RVA 0xba0a0..0xba148; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -28719,6 +29060,8 @@ Disassembly of section .text:
    1400ba13e:	48 8b 04 c7          	mov    rax,QWORD PTR [rdi+rax*8]
    1400ba142:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
    1400ba147:	c3                   	ret
+
+; Native source function RVA 0xa82c10..0xa882fc; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -34027,6 +34370,8 @@ Disassembly of section .text:
    140a882f9:	69                   	.byte 0x69
    140a882fa:	a8 00                	test   al,0x0
 
+; Native source function RVA 0xb5a6c0..0xb5bab1; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -35179,6 +35524,8 @@ Disassembly of section .text:
    140b5baae:	1a 1b                	sbb    bl,BYTE PTR [rbx]
    140b5bab0:	02                   	.byte 0x2
 
+; Native source function RVA 0xb95020..0xb95170; leaf body
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -35259,6 +35606,8 @@ Disassembly of section .text:
    140b9516d:	51                   	push   rcx
    140b9516e:	b9                   	.byte 0xb9
 	...
+
+; Native source function RVA 0xa94030..0xa946d1; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -35714,6 +36063,8 @@ Disassembly of section .text:
    140a946ce:	5f                   	pop    rdi
    140a946cf:	5d                   	pop    rbp
    140a946d0:	c3                   	ret
+
+; Native source function RVA 0xa946e0..0xa94ea2; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -36230,6 +36581,8 @@ Disassembly of section .text:
    140a94e9c:	e8 ef 09 5d ff       	call   0x140065890
    140a94ea1:	cc                   	int3
 
+; Native source function RVA 0xb9b80..0xb9cc4; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -36328,6 +36681,8 @@ Disassembly of section .text:
    1400b9cbd:	c3                   	ret
    1400b9cbe:	e8 cd bb fa ff       	call   0x140065890
    1400b9cc3:	cc                   	int3
+
+; Native source function RVA 0x52e360..0x52eb6c; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -36838,6 +37193,8 @@ Disassembly of section .text:
    14052eb6a:	52                   	push   rdx
 	...
 
+; Native source function RVA 0xb94ed0..0xb9501c; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -36920,6 +37277,8 @@ Disassembly of section .text:
    140b9501a:	5b                   	pop    rbx
    140b9501b:	c3                   	ret
 
+; Native source function RVA 0x72570..0x72608; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -36974,6 +37333,8 @@ Disassembly of section .text:
    140072600:	48 63 c8             	movsxd rcx,eax
    140072603:	49 8b 04 cb          	mov    rax,QWORD PTR [r11+rcx*8]
    140072607:	c3                   	ret
+
+; Native source function RVA 0xc3a590..0xc3b24f; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -37775,6 +38136,8 @@ Disassembly of section .text:
    140c3b24d:	5d                   	pop    rbp
    140c3b24e:	c3                   	ret
 
+; Native source function RVA 0x7db20..0x7dbd6; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -37838,6 +38201,8 @@ Disassembly of section .text:
    14007dbd4:	5b                   	pop    rbx
    14007dbd5:	c3                   	ret
 
+; Native source function RVA 0x1ba140..0x1ba1e8; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -37895,6 +38260,8 @@ Disassembly of section .text:
    1401ba1de:	48 8b 04 c7          	mov    rax,QWORD PTR [rdi+rax*8]
    1401ba1e2:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
    1401ba1e7:	c3                   	ret
+
+; Native source function RVA 0xbc6780..0xbc6877; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -37972,6 +38339,8 @@ Disassembly of section .text:
    140bc6871:	41 0f b7 c7          	movzx  eax,r15w
    140bc6875:	eb e1                	jmp    0x140bc6858
 
+; Native source function RVA 0xb9dc0..0xb9e67; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -38030,6 +38399,8 @@ Disassembly of section .text:
    1400b9e61:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
    1400b9e66:	c3                   	ret
 
+; Native source function RVA 0xbbe40..0xbbeed; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -38087,6 +38458,8 @@ Disassembly of section .text:
    1400bbee4:	49 8b c3             	mov    rax,r11
    1400bbee7:	48 8b 5c 24 08       	mov    rbx,QWORD PTR [rsp+0x8]
    1400bbeec:	c3                   	ret
+
+; Native source function RVA 0x9bdfb0..0x9be0f8; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -38175,6 +38548,8 @@ Disassembly of section .text:
    1409be0f2:	48 83 c4 50          	add    rsp,0x50
    1409be0f6:	5f                   	pop    rdi
    1409be0f7:	c3                   	ret
+
+; Native source function RVA 0xe2b80..0xe2cb2; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -38268,6 +38643,8 @@ Disassembly of section .text:
    1400e2cb0:	5f                   	pop    rdi
    1400e2cb1:	c3                   	ret
 
+; Native source function RVA 0x6f690..0x6f6b0; leaf body
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -38284,6 +38661,8 @@ Disassembly of section .text:
    14006f6ad:	cc                   	int3
    14006f6ae:	cc                   	int3
    14006f6af:	cc                   	int3
+
+; Native source function RVA 0x7daf0..0x7db20; leaf body
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -38314,6 +38693,8 @@ Disassembly of section .text:
    14007db1d:	cc                   	int3
    14007db1e:	cc                   	int3
    14007db1f:	cc                   	int3
+
+; Native source function RVA 0x99a3c0..0x99a4e0; leaf body
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -38403,6 +38784,8 @@ Disassembly of section .text:
    14099a4de:	cc                   	int3
    14099a4df:	cc                   	int3
 
+; Native source function RVA 0xbabe0..0xbac8b; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -38461,6 +38844,8 @@ Disassembly of section .text:
    1400bac84:	49 89 03             	mov    QWORD PTR [r11],rax
    1400bac87:	49 8b c3             	mov    rax,r11
    1400bac8a:	c3                   	ret
+
+; Native source function RVA 0x7da30..0x7dae3; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -38525,6 +38910,8 @@ Disassembly of section .text:
    14007dadf:	33 c0                	xor    eax,eax
    14007dae1:	5b                   	pop    rbx
    14007dae2:	c3                   	ret
+
+; Native source function RVA 0x54d320..0x54e9d4; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -39953,6 +40340,8 @@ Disassembly of section .text:
    14054e9d1:	e3 54                	jrcxz  0x14054ea27
 	...
 
+; Native source function RVA 0xb93cf0..0xb94090; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -40145,6 +40534,8 @@ Disassembly of section .text:
    140b9408e:	b9                   	.byte 0xb9
 	...
 
+; Native source function RVA 0x6ff00..0x6ffa8; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -40203,6 +40594,8 @@ Disassembly of section .text:
    14006ffa2:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
    14006ffa7:	c3                   	ret
 
+; Native source function RVA 0xf89280..0xf89300; leaf body
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -40254,6 +40647,8 @@ Disassembly of section .text:
    140f892fd:	cc                   	int3
    140f892fe:	cc                   	int3
    140f892ff:	cc                   	int3
+
+; Native source function RVA 0xb85510..0xb875c8; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -42290,6 +42685,8 @@ Disassembly of section .text:
    140b875c5:	70 b8                	jo     0x140b8757f
 	...
 
+; Native source function RVA 0xb93a90..0xb93c60; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -42417,6 +42814,8 @@ Disassembly of section .text:
    140b93c5e:	5f                   	pop    rdi
    140b93c5f:	c3                   	ret
 
+; Native source function RVA 0xaa3bd0..0xaa3d93; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -42540,6 +42939,8 @@ Disassembly of section .text:
    140aa3d89:	48 8b 14 d9          	mov    rdx,QWORD PTR [rcx+rbx*8]
    140aa3d8d:	48 83 c2 40          	add    rdx,0x40
    140aa3d91:	eb ab                	jmp    0x140aa3d3e
+
+; Native source function RVA 0x1458b0..0x1466b3; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -43253,6 +43654,8 @@ Disassembly of section .text:
    1401466ad:	e8 de f1 f1 ff       	call   0x140065890
    1401466b2:	cc                   	int3
 
+; Native source function RVA 0xc3a4f0..0xc3a588; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -43303,6 +43706,8 @@ Disassembly of section .text:
    140c3a582:	48 8d 47 08          	lea    rax,[rdi+0x8]
    140c3a586:	5f                   	pop    rdi
    140c3a587:	c3                   	ret
+
+; Native source function RVA 0x14add70..0x14ade9f; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -43396,6 +43801,8 @@ Disassembly of section .text:
    1414ade99:	48 83 c4 20          	add    rsp,0x20
    1414ade9d:	5b                   	pop    rbx
    1414ade9e:	c3                   	ret
+
+; Native source function RVA 0x132e0c0..0x132e428; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -43634,6 +44041,8 @@ Disassembly of section .text:
    14132e425:	5b                   	pop    rbx
    14132e426:	5d                   	pop    rbp
    14132e427:	c3                   	ret
+
+; Native source function RVA 0x132cc10..0x132e0b4; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -44848,6 +45257,8 @@ Disassembly of section .text:
    14132e0b0:	83 da 32             	sbb    edx,0x32
    14132e0b3:	01                   	.byte 0x1
 
+; Native source function RVA 0x657c0..0x657e0; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -44861,6 +45272,8 @@ Disassembly of section .text:
    1400657d5:	48 8d 4c 24 20       	lea    rcx,[rsp+0x20]
    1400657da:	e8 b1 52 4d 01       	call   0x14153aa90
    1400657df:	cc                   	int3
+
+; Native source function RVA 0x67dc0..0x67e30; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -44903,6 +45316,8 @@ Disassembly of section .text:
    140067e27:	48 8b 5c 24 08       	mov    rbx,QWORD PTR [rsp+0x8]
    140067e2c:	49 8b c2             	mov    rax,r10
    140067e2f:	c3                   	ret
+
+; Native source function RVA 0x52c130..0x52c1e3; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -44953,6 +45368,8 @@ Disassembly of section .text:
    14052c1dd:	48 83 c4 50          	add    rsp,0x50
    14052c1e1:	5b                   	pop    rbx
    14052c1e2:	c3                   	ret
+
+; Native source function RVA 0x52c2b0..0x52c388; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -45005,6 +45422,8 @@ Disassembly of section .text:
    14052c386:	5f                   	pop    rdi
    14052c387:	c3                   	ret
 
+; Native source function RVA 0x65890..0x658a2; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -45015,6 +45434,8 @@ Disassembly of section .text:
    140065894:	48 8d 0d 45 28 58 01 	lea    rcx,[rip+0x1582845]        # 0x1415e80e0
    14006589b:	ff 15 77 fb 57 01    	call   QWORD PTR [rip+0x157fb77]        # 0x1415e5418
    1400658a1:	cc                   	int3
+
+; Native source function RVA 0xc65450..0xc65f0a; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -45786,6 +46207,8 @@ Disassembly of section .text:
    140c65f08:	5d                   	pop    rbp
    140c65f09:	c3                   	ret
 
+; Native source function RVA 0xe1560..0xe160b; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -45843,6 +46266,8 @@ Disassembly of section .text:
    1400e1605:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
    1400e160a:	c3                   	ret
 
+; Native source function RVA 0xbc080..0xbc11a; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -45896,6 +46321,8 @@ Disassembly of section .text:
    1400bc112:	48 63 c8             	movsxd rcx,eax
    1400bc115:	49 8b 04 cb          	mov    rax,QWORD PTR [r11+rcx*8]
    1400bc119:	c3                   	ret
+
+; Native source function RVA 0x1360ec0..0x1361049; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -46026,6 +46453,8 @@ Disassembly of section .text:
    141361043:	02 02                	add    al,BYTE PTR [rdx]
    141361045:	02 02                	add    al,BYTE PTR [rdx]
    141361047:	02 01                	add    al,BYTE PTR [rcx]
+
+; Native source function RVA 0x14d1920..0x14d1d79; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -46314,6 +46743,8 @@ Disassembly of section .text:
    1414d1d77:	5b                   	pop    rbx
    1414d1d78:	c3                   	ret
 
+; Native source function RVA 0x14d1790..0x14d1911; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -46431,6 +46862,8 @@ Disassembly of section .text:
    1414d190f:	5b                   	pop    rbx
    1414d1910:	c3                   	ret
 
+; Native source function RVA 0x14d16f0..0x14d1781; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -46479,6 +46912,8 @@ Disassembly of section .text:
    1414d177b:	48 83 c4 40          	add    rsp,0x40
    1414d177f:	5f                   	pop    rdi
    1414d1780:	c3                   	ret
+
+; Native source function RVA 0x14e1ec0..0x14e2a28; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -47192,6 +47627,8 @@ Disassembly of section .text:
    1414e2a26:	5d                   	pop    rbp
    1414e2a27:	c3                   	ret
 
+; Native source function RVA 0x145bee0..0x145bf3e; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -47231,6 +47668,8 @@ Disassembly of section .text:
    14145bf3c:	5b                   	pop    rbx
    14145bf3d:	c3                   	ret
 
+; Native source function RVA 0xeb120..0xeb156; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -47249,6 +47688,8 @@ Disassembly of section .text:
    1400eb14b:	48 0f 45 44 24 20    	cmovne rax,QWORD PTR [rsp+0x20]
    1400eb151:	48 83 c4 38          	add    rsp,0x38
    1400eb155:	c3                   	ret
+
+; Native source function RVA 0x726e0..0x72750; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -47293,6 +47734,8 @@ Disassembly of section .text:
    14007274d:	33 c0                	xor    eax,eax
    14007274f:	c3                   	ret
 
+; Native source function RVA 0x145bf40..0x145bf64; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -47309,6 +47752,8 @@ Disassembly of section .text:
    14145bf5a:	b8 ff ff ff ff       	mov    eax,0xffffffff
    14145bf5f:	48 83 c4 28          	add    rsp,0x28
    14145bf63:	c3                   	ret
+
+; Native source function RVA 0x6f5a0..0x6f5ca; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -47330,6 +47775,8 @@ Disassembly of section .text:
    14006f5c4:	48 83 c4 20          	add    rsp,0x20
    14006f5c8:	5b                   	pop    rbx
    14006f5c9:	c3                   	ret
+
+; Native source function RVA 0x144ea0..0x144f7b; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -47402,6 +47849,8 @@ Disassembly of section .text:
    140144f75:	48 83 c4 20          	add    rsp,0x20
    140144f79:	5b                   	pop    rbx
    140144f7a:	c3                   	ret
+
+; Native source function RVA 0xa64cb0..0xa64d80; leaf body
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -47484,6 +47933,8 @@ Disassembly of section .text:
    140a64d7e:	cc                   	int3
    140a64d7f:	cc                   	int3
 
+; Native source function RVA 0xa64d00..0xa64d80; leaf body
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -47532,6 +47983,8 @@ Disassembly of section .text:
    140a64d7d:	cc                   	int3
    140a64d7e:	cc                   	int3
    140a64d7f:	cc                   	int3
+
+; Native source function RVA 0x144d90..0x144e4a; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -47600,6 +48053,8 @@ Disassembly of section .text:
    140144e48:	5f                   	pop    rdi
    140144e49:	c3                   	ret
 
+; Native source function RVA 0x256880..0x256927; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -47661,6 +48116,8 @@ Disassembly of section .text:
    140256925:	5b                   	pop    rbx
    140256926:	c3                   	ret
 
+; Native source function RVA 0xf2680..0xf26e0; leaf body
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -47703,6 +48160,8 @@ Disassembly of section .text:
    1400f26dd:	cc                   	int3
    1400f26de:	cc                   	int3
    1400f26df:	cc                   	int3
+
+; Native source function RVA 0x701db0..0x701e6a; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -47765,6 +48224,8 @@ Disassembly of section .text:
    140701e65:	48 83 c4 08          	add    rsp,0x8
    140701e69:	c3                   	ret
 
+; Native source function RVA 0x71f90..0x71fd0; leaf body
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -47805,6 +48266,8 @@ Disassembly of section .text:
    140071fcd:	cc                   	int3
    140071fce:	cc                   	int3
    140071fcf:	cc                   	int3
+
+; Native source function RVA 0x756500..0x756688; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -47938,6 +48401,8 @@ Disassembly of section .text:
    140756684:	01 01                	add    DWORD PTR [rcx],eax
 	...
 
+; Native source function RVA 0x13cc50..0x13ccf8; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -47995,6 +48460,8 @@ Disassembly of section .text:
    14013ccee:	48 8b 04 c7          	mov    rax,QWORD PTR [rdi+rax*8]
    14013ccf2:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
    14013ccf7:	c3                   	ret
+
+; Native source function RVA 0x6f5d0..0x6f690; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -48054,6 +48521,8 @@ Disassembly of section .text:
    14006f689:	c3                   	ret
    14006f68a:	e8 01 62 ff ff       	call   0x140065890
    14006f68f:	cc                   	int3
+
+; Native source function RVA 0xd2cb50..0xd2cc40; leaf body
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -48133,6 +48602,8 @@ Disassembly of section .text:
    140d2cc3d:	cb                   	retf
    140d2cc3e:	d2 00                	rol    BYTE PTR [rax],cl
 
+; Native source function RVA 0xaa3770..0xaa3868; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48207,6 +48678,8 @@ Disassembly of section .text:
    140aa3866:	5f                   	pop    rdi
    140aa3867:	c3                   	ret
 
+; Native source function RVA 0x488990..0x488a28; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48261,6 +48734,8 @@ Disassembly of section .text:
    140488a23:	49 8b 04 cb          	mov    rax,QWORD PTR [r11+rcx*8]
    140488a27:	c3                   	ret
 
+; Native source function RVA 0x152e750..0x152e7a6; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48297,6 +48772,8 @@ Disassembly of section .text:
    14152e7a2:	49 8b c2             	mov    rax,r10
    14152e7a5:	c3                   	ret
 
+; Native source function RVA 0x15379b0..0x15379d7; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48315,6 +48792,8 @@ Disassembly of section .text:
    1415379d0:	8b c1                	mov    eax,ecx
    1415379d2:	48 83 c4 28          	add    rsp,0x28
    1415379d6:	c3                   	ret
+
+; Native source function RVA 0x143120..0x14328f; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -48430,6 +48909,8 @@ Disassembly of section .text:
    140143289:	e8 e2 fd ff ff       	call   0x140143070
    14014328e:	cc                   	int3
 
+; Native source function RVA 0x14a810..0x14a8f9; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48497,6 +48978,8 @@ Disassembly of section .text:
    14014a8f3:	e8 c8 ae f1 ff       	call   0x1400657c0
    14014a8f8:	cc                   	int3
 
+; Native source function RVA 0x14ab80..0x14abe2; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48530,6 +49013,8 @@ Disassembly of section .text:
    14014abda:	c3                   	ret
    14014abdb:	ff 15 47 af 49 01    	call   QWORD PTR [rip+0x149af47]        # 0x1415e5b28
    14014abe1:	cc                   	int3
+
+; Native source function RVA 0xa51c50..0xa51d25; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -48584,6 +49069,8 @@ Disassembly of section .text:
    140a51d1f:	48 83 c4 20          	add    rsp,0x20
    140a51d23:	5f                   	pop    rdi
    140a51d24:	c3                   	ret
+
+; Native source function RVA 0xa4f010..0xa4f17a; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -48688,6 +49175,8 @@ Disassembly of section .text:
    140a4f178:	5d                   	pop    rbp
    140a4f179:	c3                   	ret
 
+; Native source function RVA 0x1ba550..0x1ba671; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48778,6 +49267,8 @@ Disassembly of section .text:
    1401ba66b:	e8 00 8a f8 ff       	call   0x140143070
    1401ba670:	cc                   	int3
 
+; Native source function RVA 0xa4ebb0..0xa4ecc8; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48859,6 +49350,8 @@ Disassembly of section .text:
    140a4ecc6:	5e                   	pop    rsi
    140a4ecc7:	c3                   	ret
 
+; Native source function RVA 0x14aac0..0x14ab76; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48911,6 +49404,8 @@ Disassembly of section .text:
    14014ab74:	5f                   	pop    rdi
    14014ab75:	c3                   	ret
 
+; Native source function RVA 0x1436d0..0x143731; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48936,6 +49431,8 @@ Disassembly of section .text:
    140143725:	48 83 c4 20          	add    rsp,0x20
    140143729:	5b                   	pop    rbx
    14014372a:	48 ff 25 df 1d 4a 01 	rex.W jmp QWORD PTR [rip+0x14a1ddf]        # 0x1415e5510
+
+; Native source function RVA 0x144cb0..0x144d55; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -48984,6 +49481,8 @@ Disassembly of section .text:
    140144d4f:	48 83 c4 20          	add    rsp,0x20
    140144d53:	5b                   	pop    rbx
    140144d54:	c3                   	ret
+
+; Native source function RVA 0xa4e900..0xa4eb4a; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -49135,6 +49634,8 @@ Disassembly of section .text:
    140a4eb48:	5f                   	pop    rdi
    140a4eb49:	c3                   	ret
 
+; Native source function RVA 0x1443f0..0x14446f; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -49166,6 +49667,8 @@ Disassembly of section .text:
    140144467:	49 8b c1             	mov    rax,r9
    14014446a:	48 83 c4 28          	add    rsp,0x28
    14014446e:	c3                   	ret
+
+; Native source function RVA 0x144890..0x144caa; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -49422,6 +49925,8 @@ Disassembly of section .text:
    140144ca8:	5d                   	pop    rbp
    140144ca9:	c3                   	ret
 
+; Native source function RVA 0x1533b80..0x1533d45; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -49553,6 +50058,8 @@ Disassembly of section .text:
    141533d42:	5f                   	pop    rdi
    141533d43:	5b                   	pop    rbx
    141533d44:	c3                   	ret
+
+; Native source function RVA 0xa4e100..0xa4e48c; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -49802,6 +50309,8 @@ Disassembly of section .text:
    140a4e487:	00 29                	add    BYTE PTR [rcx],ch
    140a4e489:	e2 a4                	loop   0x140a4e42f
 	...
+
+; Native source function RVA 0x1533e70..0x1535660; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -51408,6 +51917,8 @@ Disassembly of section .text:
    14153565e:	53                   	push   rbx
    14153565f:	01                   	.byte 0x1
 
+; Native source function RVA 0x701e70..0x70207e; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -51553,6 +52064,8 @@ Disassembly of section .text:
    140702075:	48 8b 04 d0          	mov    rax,QWORD PTR [rax+rdx*8]
    140702079:	e9 63 ff ff ff       	jmp    0x140701fe1
 
+; Native source function RVA 0x30cea0..0x30cf63; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -51608,6 +52121,8 @@ Disassembly of section .text:
    14030cf5c:	32 c0                	xor    al,al
    14030cf5e:	48 83 c4 08          	add    rsp,0x8
    14030cf62:	c3                   	ret
+
+; Native source function RVA 0x30cf70..0x30d0e4; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -51713,6 +52228,8 @@ Disassembly of section .text:
    14030d0e0:	32 c0                	xor    al,al
    14030d0e2:	eb a0                	jmp    0x14030d084
 
+; Native source function RVA 0x65780..0x657c0; leaf body
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -51753,6 +52270,8 @@ Disassembly of section .text:
    1400657bd:	cc                   	int3
    1400657be:	cc                   	int3
    1400657bf:	cc                   	int3
+
+; Native source function RVA 0x244550..0x2445f7; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -51798,6 +52317,8 @@ Disassembly of section .text:
    1402445f1:	48 83 c4 20          	add    rsp,0x20
    1402445f5:	5f                   	pop    rdi
    1402445f6:	c3                   	ret
+
+; Native source function RVA 0x244820..0x2448c8; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -51858,6 +52379,8 @@ Disassembly of section .text:
    1402448c6:	c3                   	ret
    1402448c7:	cc                   	int3
 
+; Native source function RVA 0x1f9bd0..0x1f9c5c; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -51904,6 +52427,8 @@ Disassembly of section .text:
    1401f9c54:	c3                   	ret
    1401f9c55:	ff 15 cd be 3e 01    	call   QWORD PTR [rip+0x13ebecd]        # 0x1415e5b28
    1401f9c5b:	cc                   	int3
+
+; Native source function RVA 0x244460..0x24454b; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -51979,6 +52504,8 @@ Disassembly of section .text:
    140244544:	ff 15 de 15 3a 01    	call   QWORD PTR [rip+0x13a15de]        # 0x1415e5b28
    14024454a:	cc                   	int3
 
+; Native source function RVA 0x724a30..0x724b09; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -52047,6 +52574,8 @@ Disassembly of section .text:
    140724b03:	e8 88 0d 94 ff       	call   0x140065890
    140724b08:	cc                   	int3
 
+; Native source function RVA 0xec0d0..0xec17f; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -52105,6 +52634,8 @@ Disassembly of section .text:
    1400ec178:	49 89 03             	mov    QWORD PTR [r11],rax
    1400ec17b:	49 8b c3             	mov    rax,r11
    1400ec17e:	c3                   	ret
+
+; Native source function RVA 0x756690..0x757380; leaf body
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -52863,6 +53394,8 @@ Disassembly of section .text:
    14075737e:	cc                   	int3
    14075737f:	cc                   	int3
 
+; Native source function RVA 0x15379d8..0x1537a1d; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -52887,6 +53420,8 @@ Disassembly of section .text:
    141537a13:	48 8b 44 24 30       	mov    rax,QWORD PTR [rsp+0x30]
    141537a18:	48 83 c4 48          	add    rsp,0x48
    141537a1c:	c3                   	ret
+
+; Native source function RVA 0x14b2b0..0x14b41c; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -52996,6 +53531,8 @@ Disassembly of section .text:
    14014b416:	e8 a5 a3 f1 ff       	call   0x1400657c0
    14014b41b:	cc                   	int3
 
+; Native source function RVA 0x143070..0x1430a9; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -53016,6 +53553,8 @@ Disassembly of section .text:
    1401430a3:	e8 e8 79 3f 01       	call   0x14153aa90
    1401430a8:	cc                   	int3
 
+; Native source function RVA 0x142db0..0x142de9; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -53035,6 +53574,8 @@ Disassembly of section .text:
    140142dde:	48 8d 4c 24 40       	lea    rcx,[rsp+0x40]
    140142de3:	e8 a8 7c 3f 01       	call   0x14153aa90
    140142de8:	cc                   	int3
+
+; Native source function RVA 0xa4ee90..0xa4efc6; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -53119,6 +53660,8 @@ Disassembly of section .text:
    140a4efc4:	5f                   	pop    rdi
    140a4efc5:	c3                   	ret
 
+; Native source function RVA 0xa4ed60..0xa4ee86; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -53200,6 +53743,8 @@ Disassembly of section .text:
    140a4ee84:	5f                   	pop    rdi
    140a4ee85:	c3                   	ret
 
+; Native source function RVA 0x1baf20..0x1baff7; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -53269,6 +53814,8 @@ Disassembly of section .text:
    1401baff1:	48 83 c4 50          	add    rsp,0x50
    1401baff5:	5f                   	pop    rdi
    1401baff6:	c3                   	ret
+
+; Native source function RVA 0x1537a20..0x1537b41; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -53351,6 +53898,8 @@ Disassembly of section .text:
    141537b3d:	41 5e                	pop    r14
    141537b3f:	5f                   	pop    rdi
    141537b40:	c3                   	ret
+
+; Native source function RVA 0xe12b0..0xe1418; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -53464,6 +54013,8 @@ Disassembly of section .text:
    1400e1412:	e8 79 44 f8 ff       	call   0x140065890
    1400e1417:	cc                   	int3
 
+; Native source function RVA 0x2847e0..0x28491d; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -53553,6 +54104,8 @@ Disassembly of section .text:
    14028491b:	5f                   	pop    rdi
    14028491c:	c3                   	ret
 
+; Native source function RVA 0x14a9d0..0x14aab8; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -53622,6 +54175,8 @@ Disassembly of section .text:
    14014aab6:	5b                   	pop    rbx
    14014aab7:	c3                   	ret
 
+; Native source function RVA 0x14a450..0x14a4b9; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -53655,6 +54210,8 @@ Disassembly of section .text:
    14014a4ad:	48 83 c4 20          	add    rsp,0x20
    14014a4b1:	5b                   	pop    rbx
    14014a4b2:	48 ff 25 37 b0 49 01 	rex.W jmp QWORD PTR [rip+0x149b037]        # 0x1415e54f0
+
+; Native source function RVA 0x70bd0..0x70d2c; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -53761,6 +54318,8 @@ Disassembly of section .text:
    140070d26:	e8 95 4a ff ff       	call   0x1400657c0
    140070d2b:	cc                   	int3
 
+; Native source function RVA 0x66060..0x660eb; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -53801,6 +54360,8 @@ Disassembly of section .text:
    1400660e3:	c6 41 72 00          	mov    BYTE PTR [rcx+0x72],0x0
    1400660e7:	48 8b c1             	mov    rax,rcx
    1400660ea:	c3                   	ret
+
+; Native source function RVA 0x6f2a0..0x6f32f; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -53850,6 +54411,8 @@ Disassembly of section .text:
    14006f329:	48 83 c4 20          	add    rsp,0x20
    14006f32d:	5f                   	pop    rdi
    14006f32e:	c3                   	ret
+
+; Native source function RVA 0x79f840..0x79f919; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -53911,6 +54474,8 @@ Disassembly of section .text:
    14079f912:	48 83 c4 20          	add    rsp,0x20
    14079f916:	41 5e                	pop    r14
    14079f918:	c3                   	ret
+
+; Native source function RVA 0xede670..0xedf06c; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -54553,6 +55118,8 @@ Disassembly of section .text:
    140edf06a:	ed                   	in     eax,dx
 	...
 
+; Native source function RVA 0x4eeb10..0x4eeb27; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -54567,6 +55134,8 @@ Disassembly of section .text:
    1404eeb21:	48 83 c4 30          	add    rsp,0x30
    1404eeb25:	5b                   	pop    rbx
    1404eeb26:	c3                   	ret
+
+; Native source function RVA 0x68150..0x68187; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -54591,6 +55160,8 @@ Disassembly of section .text:
    140068181:	48 83 c4 20          	add    rsp,0x20
    140068185:	5b                   	pop    rbx
    140068186:	c3                   	ret
+
+; Native source function RVA 0x14abf0..0x14ac5d; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -54630,6 +55201,8 @@ Disassembly of section .text:
    14014ac5b:	5f                   	pop    rdi
    14014ac5c:	c3                   	ret
 
+; Native source function RVA 0x4f26d0..0x4f26ed; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -54646,6 +55219,8 @@ Disassembly of section .text:
    1404f26e7:	48 83 c4 30          	add    rsp,0x30
    1404f26eb:	5b                   	pop    rbx
    1404f26ec:	c3                   	ret
+
+; Native source function RVA 0x142b50..0x142ba2; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -54675,6 +55250,8 @@ Disassembly of section .text:
    140142b9c:	48 83 c4 30          	add    rsp,0x30
    140142ba0:	5b                   	pop    rbx
    140142ba1:	c3                   	ret
+
+; Native source function RVA 0x1531180..0x1531472; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -54870,6 +55447,8 @@ Disassembly of section .text:
    14153146e:	8b c1                	mov    eax,ecx
    141531470:	5f                   	pop    rdi
    141531471:	c3                   	ret
+
+; Native source function RVA 0x1535660..0x1535ca9; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -55314,6 +55893,8 @@ Disassembly of section .text:
    141535ca3:	e8 78 3e 00 00       	call   0x141539b20
    141535ca8:	cc                   	int3
 
+; Native source function RVA 0x1533660..0x1533b7c; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -55710,6 +56291,8 @@ Disassembly of section .text:
    141533b7a:	5b                   	pop    rbx
    141533b7b:	c3                   	ret
 
+; Native source function RVA 0x152ef40..0x152f2c0; leaf body
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -55995,6 +56578,8 @@ Disassembly of section .text:
    14152f2be:	cc                   	int3
    14152f2bf:	cc                   	int3
 
+; Native source function RVA 0x1533d50..0x1533e65; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -56093,6 +56678,8 @@ Disassembly of section .text:
    141533e62:	5f                   	pop    rdi
    141533e63:	5e                   	pop    rsi
    141533e64:	c3                   	ret
+
+; Native source function RVA 0x725c70..0x725f29; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -56289,6 +56876,8 @@ Disassembly of section .text:
    140725f1f:	41 c6 46 08 01       	mov    BYTE PTR [r14+0x8],0x1
    140725f24:	e9 fd fd ff ff       	jmp    0x140725d26
 
+; Native source function RVA 0x1bb330..0x1bb3fc; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -56357,6 +56946,8 @@ Disassembly of section .text:
    1401bb3fa:	5b                   	pop    rbx
    1401bb3fb:	c3                   	ret
 
+; Native source function RVA 0x143050..0x143070; leaf body
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -56383,6 +56974,8 @@ Disassembly of section .text:
    14014306d:	cc                   	int3
    14014306e:	cc                   	int3
    14014306f:	cc                   	int3
+
+; Native source function RVA 0x142cf0..0x142da3; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -56433,6 +57026,8 @@ Disassembly of section .text:
    140142da1:	5f                   	pop    rdi
    140142da2:	c3                   	ret
 
+; Native source function RVA 0x142c80..0x142ca0; leaf body
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -56459,6 +57054,8 @@ Disassembly of section .text:
    140142c9d:	cc                   	int3
    140142c9e:	cc                   	int3
    140142c9f:	cc                   	int3
+
+; Native source function RVA 0x255820..0x25598d; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -56553,6 +57150,8 @@ Disassembly of section .text:
    140255984:	48 81 c4 80 00 00 00 	add    rsp,0x80
    14025598b:	5f                   	pop    rdi
    14025598c:	c3                   	ret
+
+; Native source function RVA 0xa4cb70..0xa4d319; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -57083,6 +57682,8 @@ Disassembly of section .text:
    140a4d313:	e8 a8 84 61 ff       	call   0x1400657c0
    140a4d318:	cc                   	int3
 
+; Native source function RVA 0x15380c4..0x15383ea; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -57314,6 +57915,8 @@ Disassembly of section .text:
    1415383e3:	b8 32 00 00 00       	mov    eax,0x32
    1415383e8:	eb b8                	jmp    0x1415383a2
 
+; Native source function RVA 0x14b080..0x14b12b; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -57365,6 +57968,8 @@ Disassembly of section .text:
    14014b125:	e8 c6 79 ff ff       	call   0x140142af0
    14014b12a:	90                   	nop
 
+; Native source function RVA 0x70900..0x70912; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -57375,6 +57980,8 @@ Disassembly of section .text:
    140070904:	48 8d 0d 15 7c 57 01 	lea    rcx,[rip+0x1577c15]        # 0x1415e8520
    14007090b:	ff 15 07 4b 57 01    	call   QWORD PTR [rip+0x1574b07]        # 0x1415e5418
    140070911:	cc                   	int3
+
+; Native source function RVA 0x70ae0..0x70bc2; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -57443,6 +58050,8 @@ Disassembly of section .text:
    140070bbb:	cc                   	int3
    140070bbc:	e8 ff 4b ff ff       	call   0x1400657c0
    140070bc1:	cc                   	int3
+
+; Native source function RVA 0xa4e5a0..0xa4e68c; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -57517,6 +58126,8 @@ Disassembly of section .text:
    140a4e686:	48 83 c4 20          	add    rsp,0x20
    140a4e68a:	5f                   	pop    rdi
    140a4e68b:	c3                   	ret
+
+; Native source function RVA 0x4f0720..0x4f08a0; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -57631,6 +58242,8 @@ Disassembly of section .text:
    1404f089a:	e8 f1 4f b7 ff       	call   0x140065890
    1404f089f:	cc                   	int3
 
+; Native source function RVA 0x681f0..0x682a8; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -57684,6 +58297,8 @@ Disassembly of section .text:
    1400682a1:	c3                   	ret
    1400682a2:	e8 e9 d5 ff ff       	call   0x140065890
    1400682a7:	cc                   	int3
+
+; Native source function RVA 0x4f27c0..0x4f2963; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -57810,6 +58425,8 @@ Disassembly of section .text:
    1404f295d:	e8 2e 2f b7 ff       	call   0x140065890
    1404f2962:	cc                   	int3
 
+; Native source function RVA 0x529d90..0x529f41; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -57934,6 +58551,8 @@ Disassembly of section .text:
    140529f3b:	48 89 50 08          	mov    QWORD PTR [rax+0x8],rdx
    140529f3f:	eb b4                	jmp    0x140529ef5
 
+; Native source function RVA 0x285280..0x285428; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -58053,6 +58672,8 @@ Disassembly of section .text:
    140285421:	cc                   	int3
    140285422:	e8 99 03 de ff       	call   0x1400657c0
    140285427:	cc                   	int3
+
+; Native source function RVA 0x1433a0..0x1435cf; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -58221,6 +58842,8 @@ Disassembly of section .text:
    1401435c9:	e8 32 c7 f2 ff       	call   0x14006fd00
    1401435ce:	cc                   	int3
 
+; Native source function RVA 0x143290..0x1433a0; leaf body
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -58313,6 +58936,8 @@ Disassembly of section .text:
    14014339e:	cc                   	int3
    14014339f:	cc                   	int3
 
+; Native source function RVA 0x1fa000..0x1fa0e9; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -58380,6 +59005,8 @@ Disassembly of section .text:
    1401fa0e3:	e8 d8 b6 e6 ff       	call   0x1400657c0
    1401fa0e8:	cc                   	int3
 
+; Native source function RVA 0xa52470..0xa5253c; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -58441,6 +59068,8 @@ Disassembly of section .text:
    140a52535:	cc                   	int3
    140a52536:	e8 85 32 61 ff       	call   0x1400657c0
    140a5253b:	cc                   	int3
+
+; Native source function RVA 0xa527d0..0xa52931; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -58553,6 +59182,8 @@ Disassembly of section .text:
    140a5292b:	e8 90 2e 61 ff       	call   0x1400657c0
    140a52930:	cc                   	int3
 
+; Native source function RVA 0xa52680..0xa527cd; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -58657,6 +59288,8 @@ Disassembly of section .text:
    140a527c7:	e8 f4 2f 61 ff       	call   0x1400657c0
    140a527cc:	cc                   	int3
 
+; Native source function RVA 0x14a790..0x14a808; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -58699,6 +59332,8 @@ Disassembly of section .text:
    14014a802:	48 83 c4 30          	add    rsp,0x30
    14014a806:	5b                   	pop    rbx
    14014a807:	c3                   	ret
+
+; Native source function RVA 0x14a640..0x14a789; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -58797,6 +59432,8 @@ Disassembly of section .text:
    14014a783:	e8 38 b0 f1 ff       	call   0x1400657c0
    14014a788:	cc                   	int3
 
+; Native source function RVA 0x15383f8..0x153844f; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -58828,6 +59465,8 @@ Disassembly of section .text:
    141538449:	48 83 c4 40          	add    rsp,0x40
    14153844d:	5f                   	pop    rdi
    14153844e:	c3                   	ret
+
+; Native source function RVA 0x1430b0..0x143112; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -58866,6 +59505,8 @@ Disassembly of section .text:
    140143110:	5f                   	pop    rdi
    140143111:	c3                   	ret
 
+; Native source function RVA 0x15387a4..0x15387dc; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -58888,6 +59529,8 @@ Disassembly of section .text:
    1415387da:	5b                   	pop    rbx
    1415387db:	c3                   	ret
 
+; Native source function RVA 0x142af0..0x142b10; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -58901,6 +59544,8 @@ Disassembly of section .text:
    140142b05:	48 8d 4c 24 20       	lea    rcx,[rsp+0x20]
    140142b0a:	e8 81 7f 3f 01       	call   0x14153aa90
    140142b0f:	cc                   	int3
+
+; Native source function RVA 0x717a0..0x71828; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -58946,6 +59591,8 @@ Disassembly of section .text:
    140071820:	c3                   	ret
    140071821:	ff 15 01 43 57 01    	call   QWORD PTR [rip+0x1574301]        # 0x1415e5b28
    140071827:	cc                   	int3
+
+; Native source function RVA 0x6fd40..0x6fe3d; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -59020,6 +59667,8 @@ Disassembly of section .text:
    14006fe36:	c3                   	ret
    14006fe37:	e8 84 59 ff ff       	call   0x1400657c0
    14006fe3c:	cc                   	int3
+
+; Native source function RVA 0x14a4c0..0x14a63c; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -59132,6 +59781,8 @@ Disassembly of section .text:
    14014a636:	e8 85 b1 f1 ff       	call   0x1400657c0
    14014a63b:	cc                   	int3
 
+; Native source function RVA 0x6fd00..0x6fd12; PE unwind owner, including chained ranges
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -59142,6 +59793,8 @@ Disassembly of section .text:
    14006fd04:	48 8d 0d 25 88 57 01 	lea    rcx,[rip+0x1578825]        # 0x1415e8530
    14006fd0b:	ff 15 ff 56 57 01    	call   QWORD PTR [rip+0x15756ff]        # 0x1415e5410
    14006fd11:	cc                   	int3
+
+; Native source function RVA 0x14b130..0x14b2a3; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -59251,6 +59904,8 @@ Disassembly of section .text:
    14014b29d:	e8 1e a5 f1 ff       	call   0x1400657c0
    14014b2a2:	cc                   	int3
 
+; Native source function RVA 0x142ac0..0x142af0; leaf body
+
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -59279,6 +59934,8 @@ Disassembly of section .text:
    140142aed:	cc                   	int3
    140142aee:	cc                   	int3
    140142aef:	cc                   	int3
+
+; Native source function RVA 0x70830..0x708b4; PE unwind owner, including chained ranges
 
 D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe:     file format pei-x86-64
 

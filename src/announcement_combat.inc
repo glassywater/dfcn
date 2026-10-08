@@ -6,6 +6,7 @@
 // data/runtime/announcement-combat-grammar.tsv, imported by tools/announcement_grammar.py.
 void Overlay::rebuild_announcement_combat_rules() {
     announcement_combat_rules_.clear();
+    announcement_combat_syntax_.clear();
     constexpr std::string_view prefix = "Announcement combat ";
     for (const Rule &entry : rules_) {
         if (!entry.source.starts_with(prefix)) continue;
@@ -32,13 +33,30 @@ void Overlay::rebuild_announcement_combat_rules() {
     }
     // Exact and more specific constructions precede recursive alternatives.
     // Stable ties preserve intentional type precedence (anatomy before item).
-    for (auto &[scope, entries] : announcement_combat_rules_)
+    for (auto &[scope, entries] : announcement_combat_rules_) {
         std::stable_sort(entries.begin(), entries.end(), [](const auto &a, const auto &b) {
             const auto literal_size = [](const Rule &r) {
                 return r.source.size() - r.template_kinds.size() * 3;
             };
             return literal_size(a.second) > literal_size(b.second);
         });
+        auto &syntax = announcement_combat_syntax_[scope];
+        for (size_t index = 0; index < entries.size(); ++index) {
+            const auto &[signature, rule] = entries[index];
+            std::vector<std::string> fields;
+            for (size_t at = 0; at < signature.size();) {
+                size_t end = signature.find(',', at);
+                if (end == std::string::npos) end = signature.size();
+                fields.emplace_back(signature.substr(at, end - at));
+                at = end + 1;
+            }
+            syntax.fields.push_back(std::move(fields));
+            std::string_view anchor;
+            for (const auto &literal : rule.template_literals)
+                if (literal.size() > anchor.size()) anchor = literal;
+            syntax.anchors.add(anchor, static_cast<int>(index));
+        }
+    }
 }
 
 std::optional<std::string> Overlay::translate_announcement_combat(
@@ -73,6 +91,105 @@ std::optional<std::string> Overlay::translate_announcement_combat(
     using Result = std::optional<std::string>;
     std::unordered_map<std::string, Result> memo;
     std::unordered_set<std::string> active;
+    // Recognize the complete grammar before translating its fields. External
+    // resolvers remain conservative wildcards; table-owned scopes propagate
+    // their literals and finite vocabulary through aliases at every position.
+    // This does not reorder rules or make lexical recognition a translation.
+    std::unordered_map<std::string, std::vector<int>> syntax_candidates;
+    std::unordered_map<std::string, bool> syntax_scopes;
+    std::unordered_set<std::string> active_syntax;
+    struct SyntaxPath {
+        const Rule *rule;
+        std::string_view input;
+        size_t field, at;
+        bool operator==(const SyntaxPath &) const = default;
+    };
+    struct SyntaxPathHash {
+        size_t operator()(const SyntaxPath &path) const {
+            size_t hash = std::hash<std::string_view>{}(path.input);
+            const auto add = [&](size_t value) {
+                hash ^= value + 0x9e3779b9 + (hash << 6) + (hash >> 2);
+            };
+            add(std::hash<const Rule *>{}(path.rule));
+            add(path.field);
+            add(path.at);
+            return hash;
+        }
+    };
+    std::unordered_map<SyntaxPath, bool, SyntaxPathHash> syntax_paths;
+    const auto candidates = [&](std::string_view scope, std::string_view input)
+            -> const std::vector<int> & {
+        const std::string key = std::string(scope) + '\x1f' + std::string(input);
+        const auto [found, added] = syntax_candidates.try_emplace(key);
+        if (added) {
+            if (const auto grammar = announcement_combat_syntax_.find(std::string(scope));
+                    grammar != announcement_combat_syntax_.end())
+                found->second = grammar->second.anchors.candidates(input);
+        }
+        return found->second;
+    };
+    std::function<bool(std::string_view, std::string_view)> scope_fits;
+    std::function<bool(const Rule &, const std::vector<std::string> &,
+        std::string_view, size_t, size_t)> suffix_fits;
+    suffix_fits = [&](const Rule &rule, const std::vector<std::string> &fields,
+            std::string_view input, size_t field, size_t at) {
+        if (field == fields.size()) return at == input.size();
+        const SyntaxPath path{&rule, input, field, at};
+        if (const auto found = syntax_paths.find(path); found != syntax_paths.end())
+            return found->second;
+        const auto &following = rule.template_literals[field + 1];
+        bool fits = false;
+        if (at < input.size() && following.size() < input.size() - at) {
+            const size_t last = input.size() - following.size();
+            for (size_t end = field + 1 == fields.size() ? last : at + 1;
+                    end <= last; ++end) {
+                if (!template_literal_at(input, end, following, true)) continue;
+                const auto value = input.substr(at, end - at);
+                if (value.front() == ' ' || value.back() == ' ') continue;
+                // Prove the suffix before entering an open name/item field.
+                if (suffix_fits(rule, fields, input, field + 1, end + following.size()) &&
+                        scope_fits(fields[field], value)) {
+                    fits = true;
+                    break;
+                }
+            }
+        }
+        syntax_paths.emplace(path, fits);
+        return fits;
+    };
+    scope_fits = [&](std::string_view scope, std::string_view input) {
+        input = trim_view(input);
+        if (input.empty()) return false;
+        // This scope also has a native work-reference fallback outside its
+        // table. Its lexical admission must include that external production.
+        if (scope.starts_with('$') || scope == "work-reference-list") return true;
+        const std::string key = std::string(scope) + '\x1f' + std::string(input);
+        if (const auto found = syntax_scopes.find(key); found != syntax_scopes.end())
+            return found->second;
+        // Cyclic aliases are unknown here, not a proved syntax rejection.
+        // The semantic resolver's active-span guard still rejects real cycles.
+        if (!active_syntax.insert(key).second) return true;
+        bool fits = false;
+        const auto grammar = announcement_combat_rules_.find(std::string(scope));
+        const auto syntax = announcement_combat_syntax_.find(std::string(scope));
+        if (grammar != announcement_combat_rules_.end() &&
+                syntax != announcement_combat_syntax_.end()) {
+            for (int index : candidates(scope, input)) {
+                const auto &rule = grammar->second[static_cast<size_t>(index)].second;
+                if (rule.template_kinds.empty()) {
+                    fits = input.size() == rule.source.size() &&
+                        template_literal_at(input, 0, rule.source, true);
+                } else if (legends_template_literals_fit(rule, input, 0, input.size(), true)) {
+                    fits = suffix_fits(rule, syntax->second.fields[static_cast<size_t>(index)],
+                        input, 0, rule.template_literals.front().size());
+                }
+                if (fits) break;
+            }
+        }
+        active_syntax.erase(key);
+        syntax_scopes.emplace(key, fits);
+        return fits;
+    };
     std::function<Result(std::string_view, std::string_view)> resolve;
     resolve = [&](std::string_view scope, std::string_view input) -> Result {
         TranslationWorkFrame field_work("announcement grammar field", input);
@@ -260,7 +377,10 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         }
         const auto entries = announcement_combat_rules_.find(std::string(scope));
         if (entries == announcement_combat_rules_.end()) return finish(std::nullopt);
-        for (const auto &[signature, rule] : entries->second) {
+        if (!scope_fits(scope, input)) return finish(std::nullopt);
+        const auto &syntax = announcement_combat_syntax_.at(std::string(scope));
+        for (int index : candidates(scope, input)) {
+            const auto &rule = entries->second[static_cast<size_t>(index)].second;
             translation_work_step();
             if (rule.template_kinds.empty()) {
                 if (input.size() == rule.source.size() &&
@@ -273,41 +393,8 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             // name/item parser runs, preserving the actual capture order.
             if (!legends_template_literals_fit(rule, input, 0, input.size(), true))
                 continue;
-            std::vector<std::string_view> scopes;
-            for (size_t at = 0; at < signature.size();) {
-                size_t end = signature.find(',', at);
-                if (end == std::string::npos) end = signature.size();
-                scopes.emplace_back(signature.data() + at, end - at);
-                at = end + 1;
-            }
-            // A fixed terminal vocabulary can reject the whole production
-            // before earlier name fields try every possible separator. Use
-            // only table-owned scopes: special resolvers can accept text
-            // beyond the productions recorded in their table.
-            if (!scopes.empty() && !scopes.back().starts_with('$') &&
-                    scopes.back() != "work-reference-list") {
-                const auto terminal = announcement_combat_rules_.find(std::string(scopes.back()));
-                if (terminal != announcement_combat_rules_.end() &&
-                    std::all_of(terminal->second.begin(), terminal->second.end(),
-                        [](const auto &entry) { return entry.second.template_kinds.empty(); })) {
-                    const auto &following = literals.back();
-                    if (following.size() > input.size() ||
-                        !template_literal_at(input, input.size() - following.size(),
-                            following, rule.case_insensitive)) continue;
-                    // resolve() trims the captured field before matching a
-                    // leaf. Trim the same terminal edge here, including when
-                    // the outer production has no trailing literal.
-                    const auto body = trim_view(input.substr(0, input.size() - following.size()));
-                    const bool terminal_fits = std::any_of(
-                        terminal->second.begin(), terminal->second.end(), [&](const auto &entry) {
-                            const auto &leaf = entry.second;
-                            return !leaf.source.empty() && leaf.source.size() <= body.size() &&
-                                template_literal_at(body, body.size() - leaf.source.size(),
-                                    leaf.source, leaf.case_insensitive);
-                        });
-                    if (!terminal_fits) continue;
-                }
-            }
+            const auto &scopes = syntax.fields[static_cast<size_t>(index)];
+            if (!suffix_fits(rule, scopes, input, 0, literals.front().size())) continue;
             std::vector<std::string> captures(scopes.size());
             std::vector<Result> translated(scopes.size());
             // Earlier fields can reach the same impossible suffix through
@@ -338,6 +425,8 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                     if (value.front() == ' ' || value.back() == ' ') continue;
                     if (!legends_template_suffix_literals_fit(rule, input, field + 1,
                             end + following.size(), input.size(), true)) continue;
+                    if (!suffix_fits(rule, scopes, input, field + 1,
+                            end + following.size()) || !scope_fits(scopes[field], value)) continue;
                     auto result = resolve(scopes[field], value);
                     if (!result) continue;
                     captures[field] = std::string(value);

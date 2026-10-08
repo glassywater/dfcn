@@ -4,6 +4,7 @@
 // pieces from which a missing source is guessed.
 {
     const auto captured = native_dfhack_control_panel_texts(gps_);
+    const auto prose_catalog = g_dfhack_output_snapshot.load(std::memory_order_acquire);
     const auto windows = captured.empty()
         ? std::vector<NativeDfhackWindowGeometry>{}
         : native_dfhack_window_geometry(dfhack_context_rows);
@@ -121,7 +122,9 @@
         const size_t begin = dfhack_auxiliary_matches.size();
         // Layout uses the complete native allocation. Parent clipping is
         // applied after measurement, independently of foreground occlusion.
-        if (drawable && shared->changed() && shared->status == TranslationStatus::Translated &&
+        if (drawable && shared->changed() &&
+                (shared->status == TranslationStatus::Translated ||
+                 (!field.extension_prose_key.empty() && shared->status == TranslationStatus::Partial)) &&
                 append_bounded_paragraph(rows, shared->target, screen_rows,
                     dfhack_auxiliary_matches, only_y, text_right,
                     text_right, {}, false, text_left, viewport)) {
@@ -150,6 +153,8 @@
     for (size_t index = 0; index < captured.size(); ++index) {
         if (used[index]) continue;
         const auto &field = captured[index];
+        if (!field.extension_prose_key.empty() && (!prose_catalog ||
+                !prose_catalog->extension_prose.contains(field.extension_prose_key))) continue;
         if (!field.parent_id || !field.widget_id || !valid_box(field.bounds) ||
                 !valid_box(field.parent_bounds) || !valid_box(field.clip_bounds) ||
                 field.y < field.bounds.y || field.y >= field.bounds.y + field.bounds.h ||
@@ -242,6 +247,154 @@
                 NativeParagraphViewport{rows.front().y - document_origin, field.total_lines})
             : std::nullopt;
         auto translation = resolve_field(field.document, NativeDfhackControlPanelTextRole::Text);
+        if (!field.extension_prose_key.empty() && prose_catalog) {
+            const auto context = prose_catalog->extension_prose.find(field.extension_prose_key);
+            if (context != prose_catalog->extension_prose.end()) {
+                const auto revision = RULESETS.resource_revision();
+                const auto identity_context = native_identity_translation_context();
+                const auto &cached = dfhack_extension_prose_cache_;
+                if (cached && cached->parent_id == field.parent_id &&
+                        cached->widget_id == field.widget_id &&
+                        cached->context == context->second &&
+                        cached->ruleset_revision == revision &&
+                        cached->context_revision == identity_context &&
+                        cached->catalog.get() == prose_catalog.get() &&
+                        cached->result.source == field.document) {
+                    translation = cached->result;
+                } else {
+                    // Resolve one authored production at a time. A book's suffix
+                    // is never a child in every preceding sentence's parse tree.
+                    // The longest prefix retains multi-sentence and verse rules.
+                    const auto resolve_prose = [&](std::string_view source)
+                            -> std::optional<TranslationResult> {
+                        if (source.size() > 16384) return std::nullopt;
+                        auto direct = RULESETS.translate_prefix_with_origins(
+                            std::string(source), context->second);
+                        if (direct.usable()) return direct;
+                        const auto rewrites = prose_catalog->extension_prose_rewrites.find(
+                            field.extension_prose_key);
+                        if (rewrites == prose_catalog->extension_prose_rewrites.end()) return std::nullopt;
+                        auto [normalized, source_origins] = normalize_dfhack_extension_prose(
+                            source, rewrites->second);
+                        if (normalized == source) return std::nullopt;
+                        auto resolved = RULESETS.translate_prefix_with_origins(
+                            normalized, context->second);
+                        if (resolved.usable()) {
+                            const auto &target = resolved.target;
+                            const auto &origins = resolved.origins;
+                            const size_t consumed = resolved.consumed < source_origins.size()
+                                ? source_origins[resolved.consumed] : source.size();
+                            if (!consumed || consumed > source.size()) return std::nullopt;
+                            // Opaque story identities keep their original bytes,
+                            // even when a rewrite happened inside a captured name.
+                            std::string restored;
+                            std::vector<size_t> restored_origins;
+                            const auto identity_byte = [&](size_t at) {
+                                if (at >= target.size() || at >= origins.size()) return false;
+                                const auto normalized_at = origins[at];
+                                return static_cast<unsigned char>(target[at]) < 128 &&
+                                    normalized_at < normalized.size() &&
+                                    target[at] == normalized[normalized_at] &&
+                                    source_origins[normalized_at] < consumed &&
+                                    target[at] == source[source_origins[normalized_at]];
+                            };
+                            for (size_t at = 0; at < target.size();) {
+                                if (identity_byte(at)) {
+                                    size_t end = at + 1;
+                                    while (identity_byte(end) && origins[end] == origins[end - 1] + 1 &&
+                                            source_origins[origins[end]] > source_origins[origins[end - 1]])
+                                        ++end;
+                                    const size_t first = source_origins[origins[at]];
+                                    const size_t last = source_origins[origins[end - 1]] + 1;
+                                    restored.append(source.substr(first, last - first));
+                                    for (size_t original_at = first; original_at < last; ++original_at)
+                                        restored_origins.push_back(original_at);
+                                    at = end;
+                                } else {
+                                    restored.push_back(target[at]);
+                                    const size_t origin = at < origins.size() ? origins[at] : source.size();
+                                    restored_origins.push_back(origin < source_origins.size()
+                                        ? source_origins[origin] : consumed);
+                                    ++at;
+                                }
+                            }
+                            return TranslationResult::translated(source.substr(0, consumed), std::move(restored),
+                                context->second, std::move(restored_origins));
+                        }
+                        return std::nullopt;
+                    };
+                    // Preserve paragraph boundaries and unmapped sentences.
+                    // Every pass consumes a nonempty production or source run.
+                    TranslationResult fragments;
+                    for (size_t begin = 0; begin < field.document.size();) {
+                        const auto paragraph_break = field.document.find("\n\n", begin);
+                        const size_t paragraph_end = paragraph_break == std::string::npos
+                            ? field.document.size() : paragraph_break + 2;
+                        while (begin < paragraph_end) {
+                            size_t spacing_end = begin;
+                            while (spacing_end < paragraph_end && std::isspace(
+                                    static_cast<unsigned char>(field.document[spacing_end]))) ++spacing_end;
+                            if (spacing_end > begin) {
+                                fragments.append(TranslationResult::preserved(
+                                    std::string_view(field.document).substr(begin, spacing_end - begin),
+                                    "dfhack-extension-spacing", true), begin);
+                                begin = spacing_end;
+                                continue;
+                            }
+                            const auto remaining = std::string_view(field.document).substr(
+                                begin, paragraph_end - begin);
+                            auto prose = remaining;
+                            while (!prose.empty() && std::isspace(
+                                    static_cast<unsigned char>(prose.back()))) prose.remove_suffix(1);
+                            if (auto resolved = resolve_prose(prose)) {
+                                const size_t consumed = resolved->consumed;
+                                if (consumed && consumed <= remaining.size()) {
+                                    fragments.append(*resolved, begin);
+                                    begin += consumed;
+                                    continue;
+                                }
+                            }
+                            size_t end = begin;
+                            while (end < paragraph_end) {
+                                const char ch = field.document[end++];
+                                if (ch == '\n') break;
+                                if (ch != '.' && ch != '!' && ch != '?') continue;
+                                size_t following = end;
+                                while (following < paragraph_end &&
+                                        (field.document[following] == '"' ||
+                                         field.document[following] == '\'' ||
+                                         field.document[following] == ')')) ++following;
+                                if (following == paragraph_end ||
+                                        std::isspace(static_cast<unsigned char>(field.document[following]))) {
+                                    end = following;
+                                    break;
+                                }
+                            }
+                            const auto source = std::string_view(field.document).substr(begin, end - begin);
+                            // Oversized paragraphs retain the previous
+                            // sentence fallback without parsing their suffix.
+                            if (remaining.size() > 16384) {
+                                if (auto resolved = resolve_prose(source)) {
+                                    const size_t consumed = resolved->consumed;
+                                    if (consumed && consumed <= source.size()) {
+                                        fragments.append(*resolved, begin);
+                                        begin += consumed;
+                                        continue;
+                                    }
+                                }
+                            }
+                            fragments.append(TranslationResult::preserved(
+                                source, "dfhack-extension-prose"), begin);
+                            begin = end;
+                        }
+                    }
+                    translation = std::move(fragments);
+                    dfhack_extension_prose_cache_ = DfhackExtensionProseCache{
+                        field.parent_id, field.widget_id, context->second,
+                        revision, identity_context, prose_catalog, translation};
+                }
+            }
+        }
         if (!ordered && translation.changed())
             translation = preserve_native_translation(field.document, "dfhack-control-document");
         translation.kind = "dfhack-control-document";

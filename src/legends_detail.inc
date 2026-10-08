@@ -179,6 +179,11 @@ std::optional<std::string> Overlay::translate_legends_name(
     std::string name = person && raw.find('`') != std::string_view::npos
         ? std::string(trim_view(raw)) : normalize_utterance(raw);
     if (name.empty() || name.ends_with("...")) return std::nullopt;
+    // A typed actor/title can follow a lower-case article in prose. Preserve
+    // its native name-group boundary while normalizing only that article;
+    // the complete title-word validation below still rejects ordinary prose.
+    if (person && (name.starts_with("the ") || name.starts_with("of ")))
+        name.front() = static_cast<char>(name.front() - ('a' - 'A'));
     if (!person && entity_reference)
         if (const auto civilization = translate_civilization_reference(name))
             return civilization;
@@ -782,27 +787,31 @@ std::optional<std::string> Overlay::translate_legends_nested(
                     const bool office_owner = field > 0 &&
                         rule.template_kinds[field - 1] == 's' &&
                         legends_office_capture(rule, field - 1);
+                    const auto accept_reference = [&](std::optional<std::string> candidate) {
+                        if (translation_complete_with_native_nicknames(candidate, part))
+                            target = std::move(candidate);
+                    };
                     if (office_owner) {
-                        target = translate_civilization_reference(part);
-                        if (!target) target = translate_legends_name(part, false);
+                        accept_reference(translate_civilization_reference(part));
+                        if (!target) accept_reference(translate_legends_name(part, false, false));
                     }
                     // Otherwise an actual site's language/provenance wins.
                     // An unknown capitalized spelling returned unchanged
                     // must not prevent the complete generated-name grammar.
-                    if (!target) target = translate_site_reference(part);
+                    if (!target && !office_owner) accept_reference(translate_site_reference(part));
                     if (!target) {
                         if (const auto term = legends_terms_.find(std::string(part));
-                                term != legends_terms_.end()) target = term->second;
+                                term != legends_terms_.end()) accept_reference(term->second);
                         else if (const auto term = legends_terms_ci_.find(lower(std::string(part)));
-                                term != legends_terms_ci_.end()) target = term->second;
+                                term != legends_terms_ci_.end()) accept_reference(term->second);
                     }
-                    if (!target) target = exact_literal_translation(part);
-                    if (!target) target = translate_legends_name(part, false);
-                    if (!target) {
-                        auto place = translate_legends_place(part);
-                        if (item_description_translation_complete(place))
-                            target = std::move(place);
-                    }
+                    if (!target) accept_reference(exact_literal_translation(part));
+                    if (!target && !office_owner)
+                        accept_reference(translate_legends_name(part, false));
+                    // An unresolved bound entity must not be returned again
+                    // before the complete source-name grammar can run.
+                    if (!target) accept_reference(translate_legends_name(part, false, false));
+                    if (!target && !office_owner) accept_reference(translate_legends_place(part));
                 } else {
                     target = journal_habitat_rule(rule)
                         ? translate_journal_habitat_places(part)
@@ -934,6 +943,13 @@ std::optional<std::string> Overlay::translate_legends_event(
             if (auto title = translate_legends_nested(rule, value, depth))
                 { result = std::move(title); break; }
         }
+    // Event 87 has a known artifact/HF/entity/site production. Resolve its
+    // complete native title before a generic reference tries to absorb the
+    // location or date as part of the artifact's name.
+    if (!result && value.starts_with("the destruction of ")) {
+        auto title = translate_announcement_combat(value, "artwork-artifact-destruction-title");
+        if (translation_complete_with_native_nicknames(title, value)) result = std::move(title);
+    }
     // All +d8 event title families append shared b92640's date after the
     // title. Resolve that complete field BEFORE expanded generic location
     // productions can repeatedly try it as an organization/person suffix.
@@ -1047,18 +1063,24 @@ std::optional<std::string> Overlay::translate_legends_actor(
         return std::nullopt;
     // After a full stop DF capitalizes the species article, not the species
     // itself ("The elf ..."). It still denotes the same typed person link.
-    if (value.starts_with("the ") || value.starts_with("The ")) value.remove_prefix(4);
+    // The article belongs to a caste only when that caste is proved below.
+    // A deity can have no first/surname group and start with its full English
+    // title, e.g. The Scholar of Poems. Preserve that title for the name
+    // fallback instead of discarding the native formatter's group boundary.
+    auto species_value = value;
+    if (species_value.starts_with("the ") || species_value.starts_with("The "))
+        species_value.remove_prefix(4);
     // A creature descriptor can contain several words. Try the longest
     // complete species/caste before the proper name, not the first word.
-    for (size_t at = value.rfind(' '); at != std::string_view::npos;
-         at = at == 0 ? std::string_view::npos : value.rfind(' ', at - 1)) {
+    for (size_t at = species_value.rfind(' '); at != std::string_view::npos;
+         at = at == 0 ? std::string_view::npos : species_value.rfind(' ', at - 1)) {
         // An arbitrary UI/name translation does not establish a caste.
         // Keep the native given name out of the species prefix, including
         // holders in the world-map artifact list. Generated multiword castes
         // still use the RAW-backed species and shared creature grammar.
-        const auto species = translate_creature_descriptor(value.substr(0, at), true);
+        const auto species = translate_creature_descriptor(species_value.substr(0, at), true);
         if (!species) continue;
-        const auto raw_name = trim_view(value.substr(at + 1));
+        const auto raw_name = trim_view(species_value.substr(at + 1));
         // A RAW-backed species establishes this person field. Utterance
         // names can be one proper given name without any T_WORD roots.
         const bool single_given = raw_name.size() >= 2 && raw_name.size() <= 192 &&
@@ -2609,6 +2631,48 @@ std::shared_ptr<LegendsTextFlow> Overlay::translate_legends_flow(
                 // different splits. Remember that failure for this rule while
                 // keeping successful capture selection in its original order.
                 std::set<std::pair<size_t, size_t>> failed_states;
+                // A literal delimiter alone does not prove that the later
+                // fields can own their spans. Establish the whole suffix,
+                // including its paragraph continuation, before resolving an
+                // earlier name or participant. Shape checks use the same
+                // native links and numeric fields as capture(); this is only
+                // necessary-condition pruning, never a translated candidate.
+                std::map<std::pair<size_t, size_t>, bool> possible_suffixes;
+                std::function<bool(size_t, size_t)> suffix_possible = [&](size_t i, size_t at) {
+                    const auto state = std::make_pair(i, at);
+                    if (const auto found = possible_suffixes.find(state);
+                            found != possible_suffixes.end()) return found->second;
+                    const auto publish = [&](bool possible) {
+                        possible_suffixes.emplace(state, possible);
+                        return possible;
+                    };
+                    if (i == captures.size())
+                        return publish(at > cursor &&
+                            has_word_boundaries(source, cursor, at) && resolve(at).has_value());
+                    const auto &literal = rule.template_literals[i + 1];
+                    std::vector<size_t> stops;
+                    if (literal.empty()) {
+                        for (size_t stop = at + 1; stop <= source.size(); ++stop)
+                            if (stop == source.size() || source[stop] == ' ' ||
+                                source[stop] == '.' || source[stop] == ',' || source[stop] == ';')
+                                stops.push_back(stop);
+                    } else {
+                        for (size_t stop = at + 1; stop + literal.size() <= source.size(); ++stop)
+                            if (template_literal_at(source, stop, literal, rule.case_insensitive))
+                                stops.push_back(stop);
+                    }
+                    for (auto it = stops.rbegin(); it != stops.rend(); ++it) {
+                        translation_work_step();
+                        if (feature_argument_end && *it > *feature_argument_end &&
+                            (rule.template_kinds[i] == 's' || rule.template_kinds[i] == 'i'))
+                            continue;
+                        if (!legends_template_suffix_literals_fit(rule, source, i + 1,
+                                *it + literal.size(), source.size(), false) ||
+                            !capture_shape(rule.template_kinds[i], at, *it)) continue;
+                        if (suffix_possible(i + 1, *it + literal.size())) return publish(true);
+                    }
+                    return publish(false);
+                };
                 std::function<bool(size_t, size_t)> consume = [&](size_t i, size_t at) {
                     TranslationWorkFrame work_frame;
                     const auto state = std::make_pair(i, at);
@@ -2652,18 +2716,9 @@ std::shared_ptr<LegendsTextFlow> Overlay::translate_legends_flow(
                         // the potentially long participant/name capture.
                         if (!legends_template_suffix_literals_fit(rule, source, i + 1,
                                 *it + literal.size(), source.size(), false)) continue;
-                        if (i + 1 == captures.size()) {
-                            if (!capture_shape(rule.template_kinds[i], at, *it)) continue;
-                            // A final capture cannot repair an impossible
-                            // paragraph suffix. Check the same advancing
-                            // boundary required by the base case before an
-                            // expensive name/item parse; resolve memoizes both
-                            // successful and failed suffixes for later stops.
-                            const size_t next = *it + literal.size();
-                            if (next <= cursor ||
-                                !has_word_boundaries(source, cursor, next) ||
-                                !resolve(next)) continue;
-                        }
+                        if (i + 1 == captures.size() &&
+                            !capture_shape(rule.template_kinds[i], at, *it)) continue;
+                        if (!suffix_possible(i + 1, *it + literal.size())) continue;
                         const auto part = capture(rule.template_kinds[i], at, *it);
                         if (!part) continue;
                         captures[i] = *part;

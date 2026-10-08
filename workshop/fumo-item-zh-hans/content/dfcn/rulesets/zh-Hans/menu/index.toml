@@ -1,0 +1,6 @@
+base = "menu"
+
+[[rulesets]]
+name = "main"
+[rulesets.rules]
+"{::fumo_item::items::recipe}" = "{::fumo_item::items::recipe}"

@@ -145,8 +145,8 @@ static bool resolve_native_rich_profile(NativeRichProfile &profile) {
 static bool resolve_native_rich_profile(NativeRichProfile &profile) {
     ModuleBuildId module;
     dl_iterate_phdr(find_main_build_id, &module);
-    const bool steam = module.found && module.value == "bcc6789e6fb477b785a2b02be80b8b1b054ff88c";
-    const bool classic = module.found && module.value == "84ba59a59a6bbe4487f933a8c85360a45902749e";
+    const bool steam = module.found && elf_runtime::supported() && elf_runtime::state().edition != 2;
+    const bool classic = module.found && elf_runtime::supported() && elf_runtime::state().edition == 2;
     if (!steam && !classic) {
         log_line("ERROR", "Unsupported dwarfort build for rich-text capture");
         return false;
@@ -164,7 +164,9 @@ static bool resolve_native_rich_profile(NativeRichProfile &profile) {
         0x13e37ff, 0x13e697a, 0x13ee107, 0x13ee2b5, 0x13f3586, 0x13f4a7c, 0x13fcc8d,
     };
     profile.base = module.base;
-    auto *entry = reinterpret_cast<unsigned char *>(module.base + wrap_va);
+    const uintptr_t native_wrap = elf_runtime::automatic() ? native_reference_va(wrap_va) : wrap_va;
+    if (!native_wrap) return false;
+    auto *entry = reinterpret_cast<unsigned char *>(module.base + native_wrap);
     for (uintptr_t address : signatures) profile.call_signatures.push_back({address,wrap_va});
     // The Steam wrapper's entry bytes are read from its validated live image,
     // never guessed from another distribution. Relocate only complete PUSH
@@ -246,6 +248,23 @@ static bool resolve_native_rich_profile(NativeRichProfile &profile) {
     for (const auto &call : character_calls)
         profile.calls.push_back({steam ? call.steam : call.classic, wrap_va,
             call.kind, sheet_arguments[call.sheet]});
+    if (elf_runtime::automatic()) {
+        for (auto &signature : profile.signatures) {
+            if (!native_reference_bytes(signature.address, signature.bytes)) return false;
+            signature.address = native_reference_va(signature.address);
+            if (!signature.address) return false;
+        }
+        for (auto &signature : profile.call_signatures) {
+            signature.address = native_reference_va(signature.address);
+            signature.target = native_reference_va(signature.target);
+            if (!signature.address || !signature.target) return false;
+        }
+        for (auto &call : profile.calls) {
+            call.address = native_reference_va(call.address);
+            call.target = native_reference_va(call.target);
+            if (!call.address || !call.target) return false;
+        }
+    }
     return true;
 }
 #endif

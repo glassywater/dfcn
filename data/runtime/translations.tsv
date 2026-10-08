@@ -2132,6 +2132,7 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, participating in {d} battles, slaying {d} enemies, and being a member for a year within {p}	{a1}在{p2}在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死{d2}名敌人及入会满一年后，获得了{p1}的{s1}头衔	ht
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, participating in {d} battles, slaying {d} enemies, and {d} years of membership in the wilds	{a1}在荒野中在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死{d2}名敌人及拥有{d3}年会龄后，获得了{p1}的{s1}头衔	ht
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,agreement-item,$name,$name]: the request by {s} that {s} retrieve {s} from {s} for {s}	{s1}请{s2}为{s5}从{s4}处取回{s3}的请求	l
+Announcement combat artwork-artifact-destruction-title [historical-artifact,$memorial-actor,$name,$travel-site,$date]: the destruction of {s} by {s} and {s} in {s} in {s}	{s5}，{s2}与{s3}在{s4}毁灭了{s1}	l
 Change the properties of the item being checked. Many of these are obscure and rely on specific tasks, but certain properties like 'empty' can be used in many conditions.	修改要检查的物品属性。其中许多属性只适用于特定任务，含义较为生僻；但“空”等属性可用于多种条件。	hj
 DFHack help: "gui/advfort -e" Brings up the GUI for interactive job selection. Items that the adventurer's civilization can use will be available in item selection lists.	"gui/advfort -e" 调出 GUI 进行交互式作业选择。冒险家政权可以使用的物品将出现在物品选择列表中。	l
 DFHack help: "preserve-rooms now" Do an immediate update of room assignments. The plugin does this routinely in the background, but you can run it manually to update now.	"preserve-rooms now" 立即更新房间分配。该插件会在后台例行执行此操作，但您现在可以手动运行它来更新。	l
@@ -2639,6 +2640,7 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, serving in combat, slaying {d} enemies, and being a member for a year within {p}	{a1}在{p2}在{s2}方面达到足够的技艺水平、在战斗中效力、杀死{d1}名敌人及入会满一年后，获得了{p1}的{s1}头衔	ht
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, serving in combat, slaying {d} enemies, and {d} years of membership in the wilds	{a1}在荒野中在{s2}方面达到足够的技艺水平、在战斗中效力、杀死{d1}名敌人及拥有{d2}年会龄后，获得了{p1}的{s1}头衔	ht
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$description]: {s} aided {s} in becoming a permanent part of the living world {s}	{s1}帮助{s2}永远留在生者的世界，{s3}	l
+Announcement combat artwork-artifact-destruction-subject [historical-artifact,$memorial-actor,$name,$travel-site]: the destruction of {s} by {s} and {s} in {s}	{s2}与{s3}在{s4}毁灭了{s1}	l
 Announcement combat historical-squad-clash-core [historical-commanded-squad,historical-commanded-squad,historical-battle-location]: {s} clashed with {s} in {s}	{s1}与{s2}在{s3}交战	l
 DFHack help: "changeitem info" Show details about the selected item. Does not change the item. You can use this command to discover RAW ids for existing items.	"changeitem info" 显示所选项目的详细信息。不改变该项目。您可以使用此命令来发现现有项目的 RAW id。	l
 DFHack help: "designate" Designate trees for chopping right now according to the current configuration. This works even if "autochop" is not currently enabled.	"designate" 根据当前配置指定立即进行砍伐的树。即使当前未启用 "autochop"，此功能也有效。	l
@@ -2815,6 +2817,7 @@ A caravan from {e} has arrived. Your status as a major land has attracted much m
 A very small aquatic arthropod with two antennae. It has many legs underneath its flat segmented oval body. They can curl into a ball to protect themselves.	一种很小的水生节肢动物，长有两根触角。它扁平的椭圆形身体分为多节，腹面生有许多足。遇到危险时，它会蜷成球状保护自己。	lP
 An office or study is required for certain official tasks, such as approving work orders and bookkeeping. A chair or throne is required for these functions.	批准工单、记账等公务需要办公室或书房。必须放置椅子才能执行这些职务。	hj
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,agreement-item,$name]: the request by {s} that {s} retrieve {s} from {s}	{s1}请{s2}从{s4}处取回{s3}的请求	l
+Announcement combat artwork-artifact-destruction-title [historical-artifact,$memorial-actor,$travel-site,$date]: the destruction of {s} by {s} in {s} in {s}	{s4}，{s2}在{s3}毁灭了{s1}	l
 Announcement combat historical-event-title [historical-squad,historical-squad,historical-battle-location,$date]: the clash between {s} and {s} in {s} in {s}	{s4}，{s1}与{s2}在{s3}的交战	l
 DFHack help: "priority" An integer between "1" and "7", inclusive, indicating the base priority for this "dig" blueprint. If not specified, defaults to "4".	"priority" "1"和"7"（含）之间的整数，指示此 "dig" 蓝图的基本优先级。如果未指定，则默认为"4"。	l
 DFHack help: , get_dstat(totals.forbid))) print(uline(tbl_ln_len)) if has_melt_mastworks or has_claim_enabled then print() if has_melt_mastworks then print(	, get_dstat(totals.forbid))) print(uline(tbl_ln_len)) 如果 has_melt_mastworks 或 has_claim_enabled 则 print() 如果 has_melt_mastworks 则 print(	l
@@ -3186,6 +3189,7 @@ A caravan from {e} has arrived. Your status as a minor land has attracted a bit 
 A caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. However, overall trade sentiments are lukewarm.	来自{e1}的商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。不过，总体贸易意愿不冷不热。	hPt
 A caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. However, overall trade sentiments are terrible.	来自{e1}的商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。不过，总体贸易意愿极差。	hPt
 A {s} caravan from {e} has arrived. Trade relations remain strengthened by recent negotiations. However, overall trade sentiments are tenuous at best.	来自{e1}的{s1}商队已抵达。近期谈判对贸易关系的促进作用仍在持续。不过，总体贸易意愿至多只能算勉强。	hPt
+Announcement combat artwork-artifact-destruction-title [historical-artifact,$memorial-actor,$name,$date]: the destruction of {s} by {s} and {s} in {s}	{s4}，{s2}与{s3}毁灭了{s1}	l
 Cages can be used to contain an animal, and metal cages can be used by the justice system. Glass cages can be filled with water and used as aquariums.	笼子可关押动物，金属笼也可用于司法系统。玻璃笼可以装水作为水族箱。	hj
 Create a new work order. Work orders are like workshop jobs but they are assigned to shops automatically and can be activated with various conditions.	创建新的工单。工单类似工坊任务，但会自动分配到工坊，也可设置各种启动条件。	hj
 DFHack help: "--active" Scrub units that have been dead for more than a month from the "active" vector. This is the default if no option is specified.	"--active" 从"active"向量中清除已经死亡超过一个月的单位。如果未指定选项，则这是默认值。	l
@@ -3475,6 +3479,7 @@ A {s} caravan from {e} has arrived. Your status as a minor land has attracted a 
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Overall trade sentiments are very good.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。总体贸易意愿非常良好。	hPt
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name,$name]: the joining of {s} with {s} to oust {s} from {s}	{s1}与{s2}同行，将{s3}逐出{s4}	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the joining of {s} with {s} in order to be brought to safety	{s1}与{s2}同行，以便被带到安全的地方	l
+Announcement combat artwork-artifact-destruction-title [historical-artifact,$name,$travel-site,$date]: the destruction of {s} by {s} in {s} in {s}	{s4}，{s2}在{s3}毁灭了{s1}	l
 Announcement combat rumor-event [$name,$travel-site]: A bandit gang calling itself {s} has been harassing people right here on the streets of {s}!	有伙土匪自称{s1}，就在{s2}这里的街上骚扰百姓！	l
 Announcement combat threat-killing [threat-kill-count,threat-possessive,threat-family-list]: has killed {s} in {s} lust for murder, among them {s}	{s2}嗜杀成性，已经杀害了{s1}，其中包括{s3}	l
 DFHack help: "--by-type" Only applies to the "count" action. Outputs, in addition to the total count, a table of item counts grouped by item type.	"--by-type" 仅适用于 "count" 动作。除了总计数之外，还输出按项目类型分组的项目计数表。	l
@@ -3537,6 +3542,7 @@ A {s} caravan from {e} has arrived. Your status as a minor land has attracted a 
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Overall trade sentiments are lukewarm.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。总体贸易意愿不冷不热。	hPt
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Overall trade sentiments are terrible.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。总体贸易意愿极差。	hPt
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the agreement by {s} to establish a grand guildhall for {s}	{s1}为{s2}建造大行会大厅的协议	l
+Announcement combat artwork-artifact-destruction-subject [historical-artifact,$memorial-actor,$travel-site]: the destruction of {s} by {s} in {s}	{s2}在{s3}毁灭了{s1}	l
 DFHack help: "--reset" Forget which dwarves have been optimized. However, if you reload an existing save, the optimization list will be reloaded.	"--reset" 忘记优化了哪个矮人了。但是，如果您重新加载现有保存，优化列表也会重新加载。	l
 DFHack help: "-e", "--exclude <plant_id>[,<plant_id>...]" Same as "--filter", but target everything except these. Cannot be used with "--filter".	"-e", "--exclude <plant_id>[,<plant_id>...]" 与 "--filter" 相同，但针对除这些之外的所有内容。不能与 "--filter" 一起使用。	l
 DFHack help: "-u", "--unit <id>" Use the specified unit as the "creator" of the generated item instead of the selected unit or the first citizen.	"-u"、"--unit <id>" 使用指定单位作为生成物品的"creator"，而不是选择的单位或第一个居民。	l
@@ -4075,6 +4081,7 @@ A medium-sized, aggressive, territorial fish. It can be found in shallow oceanic
 A {s} caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. Overall trade sentiments are great.	来自{e1}的{s1}商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。总体贸易意愿很高。	hPt
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the agreement by {s} to establish a guildhall for {s}	{s1}为{s2}建造行会大厅的协议	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the passing of corruptly-obtained funds by {s} to {s}	{s1}进行的非法所得的转交（交给{s2}）	l
+Announcement combat artwork-artifact-destruction-subject [historical-artifact,$memorial-actor,$name]: the destruction of {s} by {s} and {s}	{s2}与{s3}毁灭了{s1}	l
 Announcement combat justice-intrigue-factors [justice-intrigue-factor,justice-intrigue-factor,justice-intrigue-factor]: {s} and {s} and {s}	{s1}，且{s2}，以及{s3}	l
 Click on a Resident to see their needs, inventory, thoughts, relations, and more. You can also access information from the Citizens button.	点击任意一名居民，即可查看其需求、背包物品、想法、人际关系等更多信息。你也可以通过「居民」按钮来查阅相关内容。	w
 DFHack help: "--drop" Force the unit to drop conflicting worn items onto the ground, where they can then be reclaimed in the correct order.	"--drop" 强制单位将冲突的磨损物品扔到地上，然后可以按正确的顺序回收它们。	l
@@ -4375,6 +4382,7 @@ A huge ape found in the forest. It lives in small groups eating plants. The grou
 A {s} caravan from {e} has arrived. The presence of your ruler has attracted great riches. Overall trade sentiments are tenuous at best.	来自{e1}的{s1}商队已抵达。你的统治者在此坐镇，吸引来了巨额财富。总体贸易意愿至多只能算勉强。	hPt
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the agreement by {s} to establish a temple for {s}	{s1}为{s2}建造神殿的协议	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the joining of {s} with {s} to entertain the world	{s1}与{s2}同行，为世人表演	l
+Announcement combat artwork-artifact-destruction-title [historical-artifact,$memorial-actor,$date]: the destruction of {s} by {s} in {s}	{s3}，{s2}毁灭了{s1}	l
 Announcement combat justice-interrogation-sentence [$unit]: Attempted to appeal to shared worship of {s} in order to elicit information.	试图以共同信奉{s1}为由规劝受审者，以获取情报。	l
 Announcement combat negotiation-sentence []: The task was made somewhat more difficult by the relative populations of the civilizations.	双方政权的人口差距让这项任务困难了一些。	l
 DFHack help: "--clear" Reset the timeskip duration to its default value. Note that this won't affect timeskips which have already begun.	"--clear" 将时间跳跃持续时间重置为其默认值。请注意，这不会影响已经开始的时间跳跃。	l
@@ -4475,6 +4483,7 @@ the bestowal of the title of {s} in {p} after participating in {d} battles, slay
 A caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. Overall trade sentiments are great.	来自{e1}的商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。总体贸易意愿很高。	hPt
 A {s} caravan from {e} has arrived. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are fantastic.	来自{e1}的{s1}商队已抵达。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿极其高涨。	hPt
 A {s} caravan from {e} has arrived. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are very good.	来自{e1}的{s1}商队已抵达。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿非常良好。	hPt
+Announcement combat artwork-artifact-destruction-subject [historical-artifact,$name,$travel-site]: the destruction of {s} by {s} in {s}	{s2}在{s3}毁灭了{s1}	l
 Announcement combat justice-interrogation-sentence []: Attempted to misrepresent facts surrounding case in order to elicit information.	试图歪曲案件相关事实，以获取情报。	l
 Announcement combat justice-intrigue-method [$office,$name]: made a blackmail threat, due to embezzlement using the position {s} of {s}	以利用{s2}{s1}的职位侵吞公款的把柄进行勒索	l
 Choose a stockpile with which the track stop's vehicle will exchange items. The vehicle will take desired items and offload any others.	选择与轨道站点的车辆交换物品的储物堆。车辆会装载所需物品，并卸下其他物品。	hj
@@ -4709,6 +4718,7 @@ A huge brown creature found in temperate woodland. It is known for its ferocious
 A huge quadrupedal dinosaur with a prominent row of plates along its back and a spiked tail. It is a herbivore but can defend itself.	一种巨大的四足恐龙，背上排列着一列醒目的骨板，尾部生有尖刺。它虽然以植物为食，却很有自卫能力。	lP
 A huge, round, hairless river creature. It is a plant-eating animal but has long tusks and can be aggressive and deadly if disturbed.	.这只庞大的河栖生物身躯圆润、光滑无毛，虽然以食用植物为生，却有着狰狞的獠牙，如果惊扰它的话，就能看到它富有攻击性且致命危险的一面。	lP
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} made an agreement with {s} to work as a mercenary	{s1}与{s2}达成协议，以便从事雇佣兵工作	l
+Announcement combat artwork-artifact-destruction-title [historical-artifact,$travel-site,$date]: the destruction of {s} in {s} in {s}	{s3}，在{s2}发生的{s1}毁灭事件	l
 Announcement combat justice-interrogation-sentence []: In retrospect, interrogator may have completely misjudged subject's character.	事后看来，审讯者可能完全误判了受审者的性格。	l
 Announcement combat negotiation-response []: intimidated their opposite with matching fury but grew meeker throughout the proceedings	也怒气冲冲地威吓了对方，却在会谈过程中渐渐软下了态度	l
 Announcement combat sentence [$name,dialogue-family,$unit]: I'm returning to my home in {s} to move into my new home with my {s} {s}.	我正返回{s1}的家，与我的{s2}{s3}搬入我们的新家。	l
@@ -5523,6 +5533,7 @@ An aquatic arthropod with a pronounced head structure and frontal appendages for
 Announcement combat agreement-core [agreement-party-list,$name,agreement-goals]: {s} plotted to infiltrate {s} in order to {s}	{s1}密谋潜入{s2}，以便{s3}	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,agreement-item]: {s} asked that {s} retrieve {s}	{s1}请{s2}取回{s3}	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the joining of {s} with {s} to {s}	{s1}与{s2}同行，前往{s3}	l
+Announcement combat artwork-artifact-destruction-title [historical-artifact,$name,$date]: the destruction of {s} by {s} in {s}	{s3}，{s2}毁灭了{s1}	l
 Announcement combat fortress-announcement [$job,$digits,$unit]: Mandate Fulfilled: Automatically queued {s} x{s} for noble {s}	法令已安排：已为贵族{s3}自动加入工单：{s1} × {s2}。	l
 Announcement combat memory-performance-core [memory-person,memory-performance-verb,memory-performance-work]: I saw {s} {s} {s}	我看{s1}{s2}{s3}	l
 DFHack GUI Journal tutorial: For guidance on navigation and hotkeys, tap the ? button in the upper right corner. Safe travels!	有关浏览方式和快捷键的说明，请点击右上角的 ? 按钮。祝你一路平安！	l
@@ -5656,6 +5667,7 @@ A small creature that lives in watery ditches deep underground. It has a sharp b
 A small flightless bird, it is the largest of the natural penguins. It is known for its treks through leagues of glacial ice.	一种不会飞的鸟类，是最大的企鹅种类。它以长途跋涉穿越冰川冰层而闻名。	lP
 A {s} caravan from {e} has arrived. The presence of your ruler has attracted great riches. Overall trade sentiments are good.	来自{e1}的{s1}商队已抵达。你的统治者在此坐镇，吸引来了巨额财富。总体贸易意愿良好。	hPt
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the promise by {s} to {s} of a position	{s1}答应给{s2}安排职位的承诺	l
+Announcement combat artwork-artifact-destruction-subject [historical-artifact,$memorial-actor]: the destruction of {s} by {s}	{s2}毁灭了{s1}	l
 Announcement combat justice-interrogation-sentence [$unit]: Appealed to shared worship of {s} in order to elicit information.	以共同信奉{s1}为由规劝受审者，试图获取情报。	l
 Announcement combat justice-interrogation-sentence []: Attempted to make intimidating remarks in order to elicit information.	试图以言语恐吓受审者，以获取情报。	l
 Announcement combat rumor-event [$name,$travel-site]: A bandit gang calling itself {s} has been harassing people over in {s}.	有伙土匪自称{s1}，一直在{s2}那边骚扰百姓。	l
@@ -6024,6 +6036,7 @@ A huge monster with an enormous tail, covered with thick fur. They run on four l
 A tiny arthropod that walks tilted upright on two large legs. Six spined projections radiate outward from its head shield.	一种微小的节肢动物，靠两条粗大的腿斜立行走。六根带刺的突起从它的头甲向四周伸展。	lP
 Although this location is relatively safe, it is recommended that you prepare a squad and get them training at some point.	虽然这里比较安全，仍然建议你在适当时候组建小队并开始训练。	hq
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} joined with {s} to entertain the world	{s1}与{s2}同行，为世人表演	l
+Announcement combat artwork-artifact-destruction-subject [historical-artifact,$travel-site]: the destruction of {s} in {s}	在{s2}发生的{s1}毁灭事件	l
 Announcement combat justice-interrogation-factors [justice-interrogation-factor,justice-interrogation-factor]: {s} and {s}	{s1}，且{s2}	l
 Announcement combat justice-intrigue-recruitment [justice-intrigue-predicate,justice-intrigue-motive]: {s} in order to {s}	{s1}，目的是{s2}	l
 Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-origin]: get your {s} all the way from {s}	快来买你的一路从{s2}运来的{s1}	l
@@ -6880,6 +6893,7 @@ A small forest bird. The male's tail creates an extravagant display for females.
 A very large quadrupedal predator, well-suited to the hunt. It has a tail and powerful jaws, and it is terrestrial.	一种体型很大的四足捕食者，十分擅长狩猎。它长有尾巴和强有力的颌部，在陆地上生活。	lP
 Announcement combat agreement-core [agreement-party-list,$office,$name]: {s} began embezzling funds as a {s} of {s}	{s1}以{s3}的{s2}身份开始挪用资金	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} promised {s} to give a position	{s1}答应{s2}安排一个职位	l
+Announcement combat artwork-artifact-destruction-subject [historical-artifact,$name]: the destruction of {s} by {s}	{s2}毁灭了{s1}	l
 Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-origin]: your very own {s} from {s}	专属于你的来自{s2}的{s1}	l
 Announcement combat rumor-event []: A great monster from the underground is said to have emerged from the darkness.	据说，一只地下巨怪已经从黑暗中现身。	l
 Announcement combat rumor-event [rumor-time,rumor-person,rumor-person]: I heard that {s}, {s} was kidnapped by {s}.	听说{s1}，{s2}被{s3}绑走了。	l
@@ -7163,6 +7177,7 @@ A small, brightly-colored snake. It is known for eating other snakes and being m
 A small, foreboding black bird that feeds on carrion. It is social, very intelligent, and knows how to use tools.	一种小型的不详的食腐黑鸟。它善于社交，非常聪明，知道如何使用工具。	lP
 A very small feathered bipedal dinosaur with an opposable fifth finger. It is a herbivore and has a beaked mouth.	一种很小的带羽毛双足恐龙，第五指可以与其他手指对握。它以植物为食，嘴呈喙状。	lP
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the joining of {s} with {s}	{s1}与{s2}同行	l
+Announcement combat artwork-artifact-destruction-title [historical-artifact,$date]: the destruction of {s} in {s}	{s2}，{s1}的毁灭	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need valid, active clay collection zone.	{s1}取消了{s2}：需要有效且启用的采黏土区。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need valid, active sand collection zone.	{s1}取消了{s2}：需要有效且启用的采砂区。	l
 Announcement combat justice-interrogation-sentence []: Attempted to build rapport in order to elicit information.	试图与受审者建立融洽关系，以获取情报。	l
@@ -8772,6 +8787,7 @@ was unaffected by the comments and refused, despite the efforts of surrounding a
 A catapult fires a boulder in a fixed direction. The operator can adjust the aim freely within a cone.	投石机沿固定方向发射巨石，操作员可在锥形范围内自由调整瞄准方向。	hj
 A gigantic armored quadrupedal dinosaur with a mighty tail club. It is a herbivore and has four horns.	一种体型极其庞大的披甲四足恐龙，尾端有一枚威力惊人的骨槌。它以植物为食，另长有四根角。	lP
 A medium-sized mammalian predator. It is known by the tell-tale tufts of hair on the tips of its ears.	一种中型哺乳动物捕食者。众所周知，它的耳朵尖上有一簇簇毛发。	lP
+Announcement combat artwork-artifact-destruction-subject [historical-artifact]: the destruction of {s}	{s1}的毁灭	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Experiencing emotional shock.	{s1}取消了{s2}：受到情感冲击。	l
 Announcement combat fortress-announcement [$unit]: {s} has mandated the construction of certain goods.	{s1}下令制作某些物品。	l
 Announcement combat justice-intrigue-response [justice-intrigue-actor]: accepted out of loyalty to {s}	出于对{s1}的忠诚而接受了	l
@@ -10820,6 +10836,7 @@ Announcement combat visitor-statement [visitor-statement-subject]: {s} will be s
 Announcement combat work-sentence [work-ordinal,work-reference]: The {s} chapter covers {s}.	第{s1}章的内容涵盖{s2}。	l
 Beds are found in the Furniture category. Unlike Workshops, Beds must be placed underground.	[C:5:0:1]床[C:7:0:0]位于“[C:5:0:1]家具[C:7:0:0]”分类下。与[C:6:0:0]工坊[C:7:0:0]不同，[C:6:0:0]床[C:7:0:0]必须放在地下。	hq
 Change the work order priority. Work orders at the top of the list will use workshops first.	修改工单优先级。列表顶部的工单会优先使用工坊。	hj
+DFHack GUI Mod manager: Please re-create your preset with mods you currently have installed.	请使用当前已安装的模组重新创建预设。	l
 DFHack help: "--clear" Clear records of "previous" races used by the "--untransform" option.	"--clear" 清除"--untransform"选项使用的"previous"比赛记录。	l
 DFHack help: "--include-owned" Include items owned by units (e.g., your dwarves or visitors)	"--include-owned" 包括单位拥有的物品（例如，您的矮人或访客）	l
 DFHack help: "-u", "--unit <id>" Specifies a specific unit instead of using a selected unit.	"-u"、"--unit <id>" 指定特定单位而不是使用选定的单位。	l
@@ -12303,6 +12320,7 @@ An animal person with the head of the amphibious olm. It lives underground near 
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Getting food.	{s1}取消了{s2}：正在取食物。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Going to bed.	{s1}取消了{s2}：正在就寝。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Path blocked.	{s1}取消了{s2}：路径受阻。	l
+Announcement combat historical-event-title [artwork-artifact-destruction-subject]: {s}	{s1}	l
 Announcement combat justice-interrogation-factor []: spurning the value of cooperation	轻视合作的价值	l
 Announcement combat justice-interrogation-relationship-factor []: fear of interrogator	惧怕审讯者	l
 Announcement combat justice-interrogation-relationship-factor []: love of interrogator	爱着审讯者	l
@@ -12873,6 +12891,7 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No pati
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No trigger.	{s1}取消了{s2}：没有触发器。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Too insane.	{s1}取消了{s2}：神智过于失常。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Using well.	{s1}取消了{s2}：正在使用水井。	l
+Announcement combat historical-event-title [artwork-artifact-destruction-title]: {s}	{s1}	l
 Announcement combat historical-squad [$number,historical-military-creature]: {s} {s}	{s1}个{s2}	l
 Announcement combat justice-interrogation-crime []: the export prohibition violation	违反出口禁令	l
 Announcement combat justice-interrogation-unit [justice-interrogation-sentence]: {s}	{s1}	l
@@ -15751,6 +15770,7 @@ Assign a kill order. The soldiers will attempt to kill a targeted creature.	下�
 Assign a patrol order. The soldiers will walk a specified route repeatedly.	下达巡逻命令。士兵会反复沿指定路线行进。	hj
 Conversation prompt: What will you say about the refusal to accept tribute?	关于拒收贡品，你想说些什么？	l
 DFHack GUI Animal assignment: Click to assign/unassign to pasture/pond/pit.	点击分配到牧场／池塘／坑洞，或取消分配。	l
+DFHack GUI Mod manager: Preset is being unmarked as the default for safety.	为避免问题，已取消此预设的默认设置。	l
 DFHack GUI Viewer status: Autostart defaults restored for automation tools.	自动化工具的自动启动状态已恢复为默认设置。	l
 DFHack help: "--attributes [ <attribute> <tier> [<attribute> <tier> ...] ]"	"--attributes [ <attribute> <tier> [<attribute> <tier> ...] ]"	l
 DFHack help: "--getfield <field>" Gets the specified field from the source.	"--getfield <field>" 从源中获取指定字段。	l
@@ -16089,6 +16109,7 @@ Announcement combat visitor-statement [visitor-statement-emotion]: am {s}.	{s1}�
 Announcement combat visitor-statement [visitor-statement-emotion]: is {s}.	{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: are {s}.	……{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: was {s}.	曾……{s1}。	l
+DFHack GUI Mod manager: Failed to load some mods from your default preset.	默认预设中的部分模组载入失败。	l
 DFHack help: "--dev" Include commands intended for developers and modders.	"--dev" 包括供开发人员和模组制作者使用的命令。	l
 DFHack help: "--female <INTEREST>" Set the interest level towards females.	"--female <INTEREST>" 设置对女性的兴趣程度。	l
 DFHack help: "--notStraight" Only creatures who are not strictly straight.	"--notStraight" 仅限非严格意义上的异性恋生物。	l
@@ -16454,6 +16475,7 @@ Conversation prompt: How will you respond to the request for information?	你将
 Conversation prompt: What will you say about the end of the insurrection?	关于起义结束，你想说些什么？	l
 Conversation prompt: What will you say about the refusal to give tribute?	关于拒绝进贡，你想说些什么？	l
 DFHack GUI Animal assignment: Click to assign/unassign to cage/restraint.	点击分配到笼子／锁链，或取消分配。	l
+DFHack GUI Mod manager: Here are the vanilla mods that have been updated:	以下原版模组已更新：	l
 DFHack GUI Viewer status: Autostart defaults restored for gameplay tools.	玩法扩展工具的自动启动状态已恢复为默认设置。	l
 DFHack GUI Viewer status: Enabled defaults restored for automation tools.	自动化工具的当前启用状态已恢复为默认设置。	l
 DFHack help: "--clear" Clear any previously registered syndrome triggers.	"--clear" 清除任何先前注册的综合症触发器。	l
@@ -16816,6 +16838,7 @@ Conversation prompt: How will you respond to the request for directions?	你将�
 Conversation prompt: What will you say about the artifact's destruction?	关于造物被毁，你想说些什么？	l
 Conversation prompt: What will you say about the failed peace agreement?	关于和平协议破裂，你想说些什么？	l
 DFHack GUI Control tool: autobutcher target 10 10 14 2 BIRD_PEAFOWL_BLUE	饲养孔雀（autobutcher target 10 10 14 2 BIRD_PEAFOWL_BLUE）	l
+DFHack GUI Mod manager: New vanilla mods are not included in the preset.	此预设尚未包含新增的原版模组。	l
 DFHack help: "--location [ <x> <y> <z> ]" The location to spawn the flow	"--location [ <x> <y> <z> ]" 产生流的位置	l
 DFHack help: "--toggle" Toggles the gelded status of the specified unit.	"--toggle" 切换指定单位的阉割状态。	l
 DFHack help: "-a", "--all" Emigrate all nobles do not rule your fortress	"-a", "--all" 移民所有贵族不统治你的要塞	l
@@ -19857,6 +19880,7 @@ Announcement combat damage-list [damage,damage-list]: {s} and {s}	{s1}，并{s2}
 Announcement combat dialogue-battle [dialogue-battle-deaths]: {s}	{s1}	l
 Announcement combat dialogue-trouble-list [dialogue-trouble]: {s}	{s1}	l
 Announcement combat guard-building []: the processed goods market	加工商品市场	l
+Announcement combat historical-artifact [$memorial-artifact]: {s}	{s1}	l
 Announcement combat historical-event-title [agreement-title]: {s}	{s1}	l
 Announcement combat historical-military-creature [$creature]: {s}	{s1}	l
 Announcement combat injury [injury-subject]: {s} has been severed	{s1}被切断了	l
@@ -19925,6 +19949,7 @@ Conversation prompt: What will you say about the peace agreement?	关于和平�
 DFHack GUI Control tool: autobutcher target 10 10 14 2 BIRD_GOOSE	饲养鹅（autobutcher target 10 10 14 2 BIRD_GOOSE）	l
 DFHack GUI Control tool: gui/settings-manager.embark_notification	定居难度应用提示（gui/settings-manager.embark_notification）	l
 DFHack GUI Control tool: gui/settings-manager.settings_difficulty	保存要塞难度设置（gui/settings-manager.settings_difficulty）	l
+DFHack GUI Mod manager: Failed to load some mods from the preset.	预设中的部分模组载入失败。	l
 DFHack help: "--facets [ <facet> <level> [<facet> <level> ...] ]"	"--facets [ <facet> <level> [<facet> <level> ...] ]"	l
 DFHack help: "burial -z" Create tombs only on the current zlevel.	"burial -z" 仅在当前 zlevel 上创建坟墓。	l
 DFHack help: "devel/query --table df.profession --findvalue FISH"	"devel/query --table df.profession --findvalue FISH"	l
@@ -21500,6 +21525,7 @@ Conversation prompt: What will you say about the insurrection?	关于这场起�
 Couldn't the lyrics of the accompaniment be a bit more somber?	伴奏的歌词就不能更庄重些吗？	hP
 DFHack GUI Control tool: autofarm threshold 150 grass_tail_pig	猪尾草目标库存 150（autofarm threshold 150 grass_tail_pig）	l
 DFHack GUI Control tool: gui/settings-manager.reserved_barrels	预留空桶设置（gui/settings-manager.reserved_barrels）	l
+DFHack GUI Mod manager: Here are the mods that failed to load:	以下模组载入失败：	l
 DFHack help: "--citizens" Selects fort citizens and residents.	"--citizens" 选择要塞居民和居民。	l
 DFHack help: "--list" Prints a list of all facets + their IDs.	"--list" 打印所有构面及其 ID 的列表。	l
 DFHack help: "-a", "--all" Also search undiscovered ore veins.	"-a"、"--all" 还搜索未发现的矿石矿脉。	l
@@ -22806,6 +22832,7 @@ Conversation prompt: What will you say about the occupation?	关于占领行动�
 Crafts are an easy way to make a lot of trade goods quickly.	[C:7:0:0]制作[C:6:0:1]工艺品[C:7:0:0]，是快速获得大量贸易商品的简单办法。	hq
 DFHack GUI Animal assignment: Animal and prisoner assignment	动物与囚犯分配	l
 DFHack GUI Control tool: orders.conditionsquantityrightclick	条件数量右键取消（orders.conditionsquantityrightclick）	l
+DFHack GUI Mod manager: Some vanilla mods have been updated.	部分原版模组已更新。	l
 DFHack GUI Teleport: Click name or hit Enter to zoom to unit	点击名称或按 Enter，定位至该单位。	l
 DFHack help: "--block" Selects the highlighted tile's block.	"--block" 选择突出显示的图块块。	l
 DFHack help: "--ignore-webs" Ignore undisturbed spider webs.	"--ignore-webs" 忽略未受干扰的蜘蛛网。	l
@@ -30255,6 +30282,7 @@ Announcement combat diplomacy-cause []: an abduction	一次绑架	l
 Announcement combat equipment [owner,$body]: {s} {s}	{s1}{s2}	l
 Announcement combat equipment [owner,$item]: {s} {s}	{s1}{s2}	l
 Announcement combat guard-building []: the mead hall	蜜酒厅	l
+Announcement combat historical-artifact [$item]: {s}	{s1}	l
 Announcement combat injury-subject []: a motor nerve	一条运动神经	l
 Announcement combat memorial-clause [$digits]: d.{s}	卒于{s1}年	l
 Announcement combat memorial-clause []: Went missing	失踪	l
@@ -46626,6 +46654,7 @@ DFHack GUI Control tool: spectate.tooltip	观战信息提示（spectate.tooltip�
 DFHack GUI Control tool: zone.pasturepond	牧场与池塘动物分配（zone.pasturepond）	l
 DFHack GUI Design: Next point offset: {d}	连接间隔：{d}	l
 DFHack GUI Design: Show alignment guides:	显示对齐辅助线：	l
+DFHack GUI Mod manager: Enter preset name	输入预设名称	l
 DFHack GUI Notification settings: Enabled	启用	l
 DFHack GUI Notification settings: injured	受伤居民	l
 DFHack GUI Quickfort: No blueprint loaded	尚未加载蓝图	l
@@ -50181,6 +50210,7 @@ DFHack GUI Control tool: zone.cagechain	笼子与锁链动物分配（zone.cagec
 DFHack GUI Design: Clear entire z-level	清除本层全部指定	l
 DFHack GUI Design: Mouse: {d}, {d}, {d}	鼠标：{d}, {d}, {d}	l
 DFHack GUI Input prompt: Enter command:	输入命令：	l
+DFHack GUI Mod manager: Modlist Manager	模组列表管理器	l
 DFHack GUI Sitemap: Unknown affiliation	所属势力不明	l
 DFHack GUI Squad assignment: Officials:	官员：	l
 DFHack GUI Squad assignment: Toggle all	切换全部	l
@@ -50355,6 +50385,7 @@ DFHack help: workflow count FOOD 120 30	工作流程计数 FOOD 120 30	l
 DFHack help: xstair = staircase up/down	xstair = 上下楼梯	l
 DFHack help: | -4 | unfathomably weak |	| -4 |弱得难以想象|	l
 DFHack hotkeys hint: No help available.	暂无帮助信息。	l
+Embark preparations were not completed.	启程准备尚未完成。	wl
 Equipment and pet points remaining: {d}	剩余装备与宠物点数：{d}	wt
 Fail the struggle against great anguish	没能克服强烈的痛苦万分	hP
 Fail the struggle against great despair	没能克服强烈的绝望	hP
@@ -52041,6 +52072,9 @@ DFHack GUI Design: Stop placing points	停止放置点	l
 DFHack GUI Mass remove: Affect planned	处理规划中	l
 DFHack GUI Mass remove: Cancel removal	取消移除	l
 DFHack GUI Mass remove: Constructions:	构筑物：	l
+DFHack GUI Mod manager: Enter new name	输入新名称	l
+DFHack GUI Mod manager: Overwrite {s}?	覆盖预设“{s1}”？	l
+DFHack GUI Mod manager: Set as default	设为默认	l
 DFHack GUI Squad assignment: Nobility:	贵族：	l
 DFHack GUI Squad assignment: axe skill	战斧技能	l
 DFHack GUI Teleport: Click name or hit	点击名称或按	l
@@ -53997,7 +54031,6 @@ DFHack GUI Design: Mirror horizontal:	水平镜像：	l
 DFHack GUI Design: Next point offset:	连接间隔：	l
 DFHack GUI Design: Remove Designation	取消指定	l
 DFHack GUI Design: Second Curve Point	第二曲线控制点	l
-DFHack GUI Elevation option: A Barony	男爵领	l
 DFHack GUI Frame status: PAUSE FORCED	强制暂停	l
 DFHack GUI Legends race filter: Races	种族	l
 DFHack GUI Quickfort: Double click or	双击或	l
@@ -55939,6 +55972,9 @@ DFHack GUI Control tool: sort.places	场所总览搜索（sort.places）	l
 DFHack GUI Design: Total points: {d}	顶点数：{d}	l
 DFHack GUI Input prompt: Enter name:	输入名称：	l
 DFHack GUI Mass remove: Affect built	处理已建成	l
+DFHack GUI Mod manager: Confirmation	确认	l
+DFHack GUI Mod manager: Save current	保存当前列表	l
+DFHack GUI Mod manager: Yes, proceed	确认继续	l
 DFHack GUI Quickfort: No description	没有描述	l
 DFHack GUI Quickfort: Shift click or	Shift 点击或	l
 DFHack GUI Quickfort: Undo blueprint	撤销蓝图	l
@@ -57969,6 +58005,7 @@ DFHack GUI Design: Reinforced Walls	加固墙壁	l
 DFHack GUI Legends race filter: All	全部	l
 DFHack GUI Mass remove: Leave alone	不处理	l
 DFHack GUI Mass remove: Stockpiles:	储物堆：	l
+DFHack GUI Mod manager: Delete {s}?	删除预设“{s1}”？	l
 DFHack GUI Quickfort: Down z-levels	向下重复楼层	l
 DFHack GUI Sitemap: merchant animal	商队动物	l
 DFHack GUI Viewer status: No output	无输出	l
@@ -62439,6 +62476,7 @@ DFHack GUI Control tool: automilk	自动挤奶（automilk）	l
 DFHack GUI Control tool: autoslab	自动雕刻纪念石板（autoslab）	l
 DFHack GUI Control tool: dwarfvet	兽医治疗（dwarfvet）	l
 DFHack GUI Control tool: work-now	缩短工作间歇（work-now）	l
+DFHack GUI Mod manager: (default)	（默认）	l
 DFHack GUI Quickfort: Add marker:	添加标记：	l
 DFHack GUI Quickfort: Up z-levels	向上重复楼层	l
 DFHack GUI Sitemap: caged hostile	被囚禁的敌对生物	l
@@ -66773,6 +66811,7 @@ DFHack GUI Design: Inner Tiles:	内部建造：	l
 DFHack GUI Design: Outer Tiles:	外缘建造：	l
 DFHack GUI Design: Spacing: {d}	间距：{d}	l
 DFHack GUI Journal tutorial: or	或者	l
+DFHack GUI Mod manager: Warning	警告	l
 DFHack GUI Quickfort: Damp dig:	潮湿挖掘：	l
 DFHack GUI Quickfort: Warm dig:	温热挖掘：	l
 DFHack GUI Quickfort: to apply.	应用蓝图。	l
@@ -69183,6 +69222,8 @@ DFHack GUI Design: Curve Point	曲线控制点	l
 DFHack GUI Design: Horizontal:	横向：	l
 DFHack GUI Mass remove: Remove	移除	l
 DFHack GUI Mass remove: Zones:	区域：	l
+DFHack GUI Mod manager: Delete	删除	l
+DFHack GUI Mod manager: Rename	重命名	l
 DFHack GUI Quickfort: Filters:	筛选：	l
 DFHack GUI Quickfort: Library:	内置：	l
 DFHack GUI Sitemap: No matches	没有匹配项	l
@@ -69518,6 +69559,7 @@ Fortress activity: Dye leather	染皮革	li
 Fortress activity: Go shopping	购物	li
 Fortress activity: Make cheese	制作奶酪	li
 Fortress activity: Make scroll	制作卷轴	li
+Fortress activity: Meditate on	围绕{s}冥想	li
 Fortress activity: Mill plants	碾磨植物	li
 Fortress activity: New Arrival	刚刚抵达	li
 Fortress activity: No activity	无活动	li
@@ -73909,6 +73951,7 @@ DFHack GUI Design: On (even)	开启（偶数）	l
 DFHack GUI Design: Priority:	优先级：	l
 DFHack GUI Design: Rectangle	矩形	l
 DFHack GUI Design: Vertical:	纵向：	l
+DFHack GUI Mod manager: Load	载入	l
 DFHack GUI Sitemap: friendly	友好生物	l
 DFHack GUI Sitemap: merchant	商人	l
 DFHack GUI Sitemap: wildlife	野生动物	l
@@ -74219,6 +74262,7 @@ Fortress activity: Give food	送食物	li
 Fortress activity: Make mead	酿造蜜酒	li
 Fortress activity: Mercenary	佣兵	li
 Fortress activity: Play with	玩	li
+Fortress activity: Preach on	就{s}布道	li
 Fortress activity: Socialize	社交	li
 Fortress activity: Take Over	接管	li
 Gladiatory Games during {e}.	在{e1}期间，角斗比赛。	htEi
@@ -78458,6 +78502,7 @@ DFHack GUI Design: Engrave	雕刻	l
 DFHack GUI Design: Filled:	填充：	l
 DFHack GUI Design: Hollow:	空心：	l
 DFHack GUI Design: Invert:	反选：	l
+DFHack GUI Mod manager: Ok	确定	l
 DFHack GUI Quickfort: Hide	隐藏	l
 DFHack GUI Quickfort: Show	显示	l
 DFHack GUI Title: Autodump	自动倾倒	l
@@ -78701,6 +78746,7 @@ Fortress activity: Explore	探索	li
 Fortress activity: Hostile	敌对	li
 Fortress activity: Invader	入侵者	li
 Fortress activity: Pillage	劫掠	li
+Fortress activity: Pray to	向{s}祷告	li
 Fortress activity: Soldier	士兵	li
 Fortress activity: Station	驻守	li
 Fortress activity: Surgery	外科手术	li
@@ -84345,6 +84391,7 @@ Brook: The Yellow Style	溪流:黄色风格	w
 Build menu: Stoneworker	石匠工坊	wi
 Can {b} Save The World?	{b}能拯救世界吗？	hbti
 Cancel tribute from {e}	取消{e1}的贡赋	hPt
+Cannot afford {s} ({d})	买不起{s}（{d}）	wtl
 Carve up/down staircase	挖掘上下楼梯	wi
 Carving tracks in floor	在地板上雕凿轨道	wo
 Ceremony of during {e}.	在{e1}期间，仪式。	htEi
@@ -97227,6 +97274,7 @@ Made Great Artwork	已经创作出好作品	w
 Maelstrom follower	漩涡追随者	w
 Main: Pause/Resume	主界面：暂停/继续
 Make Caves Visible	显示洞穴
+Make leather armor	制造皮甲	wli
 Make leather from 	在此将动物毛皮制成皮革。你也	w
 Make pig iron bars	制作生铁锭	wi
 Make soap from oil	用植物油制作肥皂	wi
@@ -101259,6 +101307,7 @@ Superior patience	上等耐心	wil
 Superior strength	上等力量	wil
 Surrender of {p}.	{p1}的投降。	htEi
 Surroundings: {s}	周边环境：{s}	wt
+Suspendmanager is	暂停管理器状态	wl
 Symbol of the {s}	{s1}的象征	hPt
 Talk to somebody.	与某人交谈。	hj
 Tanner's Workshop	制革工坊	wi
@@ -105495,6 +105544,7 @@ No grasp to draw	没有可用于拔取的抓握部位	w
 No item to strap	没有可系上的物品	w
 No item to throw	没有可投掷的物品	w
 No relationships	没有关系	w
+No {s} available	没有可用的{s}	wtl
 Nobody does this	无人执行	wi
 Not memorialized	未被铭记	wi
 Not yet assigned	尚未指定
@@ -110109,6 +110159,7 @@ Site government	地区政府	w
 Skill name: Axe	斧术	li
 Soap (Desired):	肥皂（期望数量）：	wl
 Specific person	特定人物	wi
+Specify leather	指定皮革	wli
 Standing orders	劳动规则	wi
 Steal livestock	偷走牲畜	wli
 Stone Engraving	石刻	wi
@@ -124366,6 +124417,7 @@ Slow to hate	不易憎恨	w
 Slow to love	不易动情	w
 Smooth floor	打磨地板	wi
 Spearmasters	持矛主宰	wi
+Specify size	指定尺寸	wli
 Stair mining	挖掘楼梯	wo
 Stayed Alive	活了下来	w
 Stone Blocks	石块
@@ -128161,8 +128213,8 @@ seventh neck	第七颈	h
 sewer master	下水道主管	hi
 shadow stuff	暗影的丝	hMi
 shadow stuff	暗影物质	wim
-sheep cheese	羊奶酪	wi
-sheep's milk	羊奶	wi
+sheep cheese	绵羊奶酪	wi
+sheep's milk	绵羊奶	wi
 short swords	短剑	wi
 six thousand	六千	wi
 sixth eldest	第六大的	wi
@@ -135592,6 +135644,7 @@ Incurious	缺乏好奇心	w
 Indignant	愤慨	w
 Infection	感染	w
 Inhabited	有人居住	w
+Installed	已安装	wl
 Intruder!	入侵者！	hP
 Intuition	直觉	wi
 Inventory	物品栏	hq
@@ -141598,7 +141651,7 @@ koala	树袋熊	wi
 labor	劳动	r
 ladle	汤勺	wi
 lakes	湖泊	r
-lambs	羊幼崽	wi
+lambs	绵羊幼崽	wi
 lanky	瘦高	wi
 large	大	wi
 leech	水蛭	wi
@@ -141653,7 +141706,7 @@ ogres	食人魔	wi
 onion	洋葱	wi
 orcas	逆戟鲸	wi
 order	秩序	r
-ovine	羊	wi
+ovine	绵羊	wi
 panda	熊猫	wi
 paste	糊状物	wi
 peace	和平	r
@@ -141702,7 +141755,7 @@ shads	河鲱	wi
 shale	页岩	wi
 shape	形状	wi
 sharp	锋利的	wi
-sheep	羊	wi
+sheep	绵羊	wi
 sheer	薄纱	wi
 sheet	纸张	wi
 shell	壳	h
@@ -142331,7 +142384,7 @@ east	东	w
 ecru	米白色	wi
 emus	鸸鹋	wi
 etc.	等。	hq
-ewes	羊	wi
+ewes	绵羊	wi
 eyes	眼睛	wi
 fame	名望	r
 fate	命运	r
@@ -142390,7 +142443,7 @@ kiwi	鹬鸵	wi
 lady	女领主	h
 lady	女领主	wi
 lair	巢穴	hv
-lamb	羊幼崽	wi
+lamb	绵羊幼崽	wi
 laws	法律	r
 leaf	叶	wi
 leek	韭葱	wi
@@ -142459,7 +142512,7 @@ poor	差的	wi
 pots	罐	wi
 puce	暗紫褐色	wi
 rain	雨	r
-rams	羊	wi
+rams	绵羊	wi
 rats	老鼠	wi
 raw 	未处理的	wi
 rear	后	wi
@@ -142484,7 +142537,7 @@ shoe	鞋	wi
 silk	丝布	wi
 silt	淤泥	wi
 site	地点	hv
-size	巨大	wi
+size	尺寸	wi
 skin	皮肤	wi
 slap	拍打	wi
 slim	纤瘦	wi
@@ -142762,7 +142815,7 @@ egg	蛋	wi
 elf	精灵	wi
 elk	麋鹿	wi
 emu	鸸鹋	wi
-ewe	羊	wi
+ewe	绵羊	wi
 eye	眼睛	h
 fly	苍蝇	wi
 fox	狐狸	wi
@@ -142791,7 +142844,7 @@ pet	宠物	wi
 pig	猪	wi
 pot	罐	wi
 pus	脓	wi
-ram	羊	wi
+ram	绵羊	wi
 rat	老鼠	wi
 red	红色	wi
 roc	大鹏鸟	wi

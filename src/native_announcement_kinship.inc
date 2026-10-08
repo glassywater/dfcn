@@ -197,7 +197,6 @@ static std::optional<std::string> native_announcement_kinship_source(
     return result;
 }
 
-#ifdef _WIN32
 using NativeThreatDetailsFn = void (*)(void *, void *, NativeString *);
 using NativeThreatFamilyFn = void (*)(int16_t, NativeString *, bool, bool);
 static NativeEntryHook g_native_threat_details_entry;
@@ -207,6 +206,7 @@ static NativeThreatFamilyFn g_real_native_threat_family = nullptr;
 
 struct NativeAnnouncementKinshipCall {
     NativeString *output = nullptr;
+    uintptr_t target = 0;
     NativeAnnouncementKinshipRecord record;
 };
 static NativeAnnouncementKinshipCall *&native_announcement_kinship_call() {
@@ -216,15 +216,17 @@ static NativeAnnouncementKinshipCall *&native_announcement_kinship_call() {
 
 static uintptr_t native_announcement_speaker_figure(uintptr_t unit) {
     int32_t id = -1;
-    if (!native_history_copy(unit + 0xc30, id) || id < 0) return 0;
+    if (!native_history_copy(native_history_object_field(unit,"unit",0xc30,4), id) || id < 0) return 0;
     return native_history_find_subject(native_history_profile_base(), NativeHistoryObjectKind::Figure, id);
 }
 
 struct NativeAnnouncementKinshipString {
     NativeString value = native_empty_string();
     ~NativeAnnouncementKinshipString() {
+#ifdef _WIN32
         const auto destroy = native_pe_address(native_history_profile_base(), 0x6f850);
         if (destroy) reinterpret_cast<void (*)(void *)>(destroy)(&value);
+#endif
     }
 };
 
@@ -236,22 +238,41 @@ static bool native_announcement_family_vector(uintptr_t address, NativeBorrowedV
 struct NativeAnnouncementFamilySnapshot {
     NativeBorrowedVector<int32_t> ids;
     NativeBorrowedVector<int16_t> relations;
+#ifdef _WIN32
     alignas(8) std::array<unsigned char, 32> miscellaneous{};
+#else
+    std::vector<bool> miscellaneous;
+#endif
     ~NativeAnnouncementFamilySnapshot() {
         const auto base = native_history_profile_base();
         if (!base) return;
+#ifdef _WIN32
         const auto ints = reinterpret_cast<void (*)(void *)>(native_pe_address(base, 0x6f750));
         const auto shorts = reinterpret_cast<void (*)(void *)>(native_pe_address(base, 0x6f7b0));
         if (ints) { ints(&ids); ints(miscellaneous.data()); }
         if (shorts) shorts(&relations);
+#else
+        const auto release = reinterpret_cast<void (*)(void *)>(dlsym(RTLD_DEFAULT,"_ZdlPv"));
+        if (release) {
+            if (ids.begin) release(ids.begin);
+            if (relations.begin) release(relations.begin);
+        }
+#endif
     }
     bool capture(uintptr_t subject) {
-        const auto address = native_pe_address(native_history_profile_base(), 0xbb37d0);
+        const auto base = native_history_profile_base();
+#ifdef _WIN32
+        const auto address = native_pe_address(base, 0xbb37d0);
+        void *miscellaneous_output = miscellaneous.data();
+#else
+        const auto address = native_reference_address(base, 0x5c6430);
+        void *miscellaneous_output = &miscellaneous;
+#endif
         if (!subject || !address) return false;
         // The original social-sheet builder owns classification. All three
         // output containers are isolated and destroyed by the game runtime.
         reinterpret_cast<void (*)(void *, void *, void *, void *)>(address)(
-            reinterpret_cast<void *>(subject), &ids, &relations, miscellaneous.data());
+            reinterpret_cast<void *>(subject), &ids, &relations, miscellaneous_output);
         return ids.valid() && relations.valid() && ids.size() == relations.size();
     }
     std::optional<int16_t> relation(int32_t relative) const {
@@ -281,13 +302,18 @@ static std::optional<std::string> native_announcement_english_figure(uintptr_t f
     if (!figure || !address) return std::nullopt;
     NativeAnnouncementKinshipString output;
     reinterpret_cast<void (*)(void *, NativeString *, bool, bool)>(address)(
-        reinterpret_cast<void *>(figure + 0x38), &output.value, true, false);
+        reinterpret_cast<void *>(native_history_object_field(figure,"historical_figure",0x38)), &output.value, true, false);
     std::string_view value;
     if (!native_string_view(&output.value, &value, SIZE_MAX)) return std::nullopt;
     return std::string(value);
 }
 static std::optional<std::string> native_announcement_english_number(int32_t count) {
+#ifdef _WIN32
     const auto address = native_pe_address(native_history_profile_base(), 0x52e360);
+#else
+    const auto address = reinterpret_cast<uintptr_t>(dlsym(RTLD_DEFAULT,
+        "_Z10get_numberiRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"));
+#endif
     if (!address) return std::nullopt;
     NativeAnnouncementKinshipString output;
     reinterpret_cast<void (*)(int32_t, NativeString *)>(address)(count, &output.value);
@@ -324,20 +350,22 @@ static std::optional<std::vector<std::pair<uintptr_t, int32_t>>> native_announce
     if (report.identity[2] < 0 || report.identity[3] < 0 || report.identity[4] < 0 ||
             !native_history_material_find_id(native_history_global(0x23d14f0 + 0x112330),
                 0, report.identity[2], activity) || !activity ||
-            !native_history_material_find_id(activity + 8, 8, report.identity[3], conversation) ||
+            !native_history_material_find_id(native_history_object_member(activity,"activity_entry","events"), 8, report.identity[3], conversation) ||
             !conversation) return std::nullopt;
     int32_t type = -1, owner = -1;
     NativeBorrowedVector<uintptr_t> turns;
     if (!native_history_page_getter(conversation, 0, type) || type != 7 ||
-            !native_history_copy(conversation + 0xc, owner) || owner != report.identity[2] ||
-            !native_history_read_vector(conversation + 0x148, turns)) return std::nullopt;
+            !native_history_copy(native_history_object_member(conversation,"activity_event_conversationst","activity_id"), owner) || owner != report.identity[2] ||
+            !native_history_read_vector(native_history_object_member(conversation,"activity_event_conversationst","turns"), turns)) return std::nullopt;
     std::vector<std::pair<uintptr_t, int32_t>> candidates;
     for (size_t i = 0; i < turns.size(); ++i) {
         const auto turn = native_history_vector_at(turns, i);
         int32_t speaker = -1, figure = -1, rumor = -1, target = -1, year = -1;
-        if (!native_history_copy(turn, speaker) || !native_history_copy(turn + 4, figure) ||
-                !native_history_copy(turn + 0x30, rumor) || !native_history_copy(turn + 0xc, target) ||
-                !native_history_copy(turn + 0x40, year)) return std::nullopt;
+        if (!native_history_copy(native_history_object_member(turn,"utterancest","speaker"), speaker) ||
+                !native_history_copy(native_history_object_member(turn,"utterancest","speaker_hfid"), figure) ||
+                !native_history_copy(native_history_object_member(turn,"utterancest","rumor.type"), rumor) ||
+                !native_history_copy(native_history_object_member(turn,"utterancest","rumor.data.beast.histfig_id"), target) ||
+                !native_history_copy(native_history_object_member(turn,"utterancest","year"), year)) return std::nullopt;
         if (speaker != report.identity[4] || rumor != 4 || target < 0 || figure < 0 ||
                 year != report.identity[0]) continue;
         const auto subject = native_history_find_subject(base, NativeHistoryObjectKind::Figure, figure);
@@ -378,14 +406,18 @@ static std::optional<std::vector<std::pair<uintptr_t, int32_t>>> native_announce
     uintptr_t info = 0, kills = 0;
     NativeBorrowedVector<int32_t> notable;
     NativeBorrowedVector<uintptr_t> links;
-    if (!native_history_copy(target + 0x130, info) ||
-            (info && !native_history_copy(info + 0x30, kills)) ||
-            !native_history_read_vector(subject + 0xe8, links)) return std::nullopt;
+    if (!native_history_copy(native_history_object_field(target,"historical_figure",0x130), info) ||
+            (info && !native_history_copy(native_history_object_field(info,"historical_figure_info",0x30), kills)) ||
+            !native_history_read_vector(native_history_object_field(subject,"historical_figure",0xe8,24), links)) return std::nullopt;
     if (!kills) return std::vector<std::pair<uintptr_t, int32_t>>{};
     if (!native_announcement_family_vector(kills, notable)) return std::nullopt;
     std::vector<std::pair<uintptr_t, int32_t>> result;
     const auto membership = reinterpret_cast<bool (*)(void *, int32_t, bool)>(
+#ifdef _WIN32
         native_pe_address(native_history_profile_base(), 0xbea5e0));
+#else
+        native_reference_address(native_history_profile_base(),0x5c3d30));
+#endif
     if (!membership) return std::nullopt;
     for (size_t i = notable.size(); i > 0; --i) {
         int32_t id = -1, kind = -1, victim = -1, year = -1, time = -1;
@@ -556,21 +588,36 @@ static void recover_native_announcement_kinship(std::string_view source) {
     } catch (...) {}
 }
 
+static uintptr_t native_threat_frame_field(uintptr_t frame, size_t coordinate) {
+#ifdef _WIN32
+    return frame + coordinate;
+#else
+    switch (coordinate) {
+    case 0x10: return frame-0x288; // native speaker unit
+    case 0x18: return frame-0x140; // family IDs
+    case 0x30: return frame-0x1e0; // actual kill events
+    case 0x70: return frame-0x120; // family enum values
+    case 0xc8: return frame-0x90;  // group counts
+    default: return 0;
+    }
+#endif
+}
+
 static std::optional<std::string> native_announcement_group_term(
         uintptr_t frame, uintptr_t subject, int16_t relation, int32_t count) {
     NativeBorrowedVector<uintptr_t> events;
     NativeBorrowedVector<int32_t> ids;
     NativeBorrowedVector<int16_t> relations;
-    if (count < 1 || !native_history_read_vector(frame + 0x30, events) ||
-            !native_announcement_family_vector(frame + 0x18, ids) ||
-            !native_announcement_family_vector(frame + 0x70, relations) || ids.size() != relations.size())
+    if (count < 1 || !native_history_read_vector(native_threat_frame_field(frame,0x30), events) ||
+            !native_announcement_family_vector(native_threat_frame_field(frame,0x18), ids) ||
+            !native_announcement_family_vector(native_threat_frame_field(frame,0x70), relations) || ids.size() != relations.size())
         return std::nullopt;
     std::vector<std::pair<uintptr_t, int16_t>> relatives;
     int32_t found = 0;
     for (size_t i = events.size(); i > 0; --i) {
         const auto event = native_history_vector_at(events, i - 1);
         int32_t victim = -1;
-        if (!native_history_copy(event + 0x28, victim) || victim < 0) return std::nullopt;
+        if (!native_history_copy(native_history_event_field(reinterpret_cast<void *>(event),3,0x28,4), victim) || victim < 0) return std::nullopt;
         for (size_t j = 0; j < ids.size(); ++j) {
             int32_t id = -1;
             int16_t actual = -1;
@@ -602,7 +649,7 @@ static void capture_native_threat_family(int16_t relation, NativeString *output,
     bool readable_count = true;
     if (group) {
         NativeBorrowedVector<int32_t> counts;
-        if (!native_announcement_family_vector(frame + 0xc8, counts) || relative_or_index >= counts.size() ||
+        if (!native_announcement_family_vector(native_threat_frame_field(frame,0xc8), counts) || relative_or_index >= counts.size() ||
                 !native_history_copy(reinterpret_cast<uintptr_t>(counts.begin) + relative_or_index * 4, count))
             readable_count = false;
     }
@@ -614,7 +661,7 @@ static void capture_native_threat_family(int16_t relation, NativeString *output,
         auto *call = native_announcement_kinship_call();
         if (!call || !call->output) return;
         uintptr_t speaker = 0;
-        if (!native_history_copy(frame + 0x10, speaker)) return;
+        if (!native_history_copy(native_threat_frame_field(frame,0x10), speaker)) return;
         const auto subject = native_announcement_speaker_figure(speaker);
         auto term = group ? native_announcement_group_term(frame, subject, relation, count)
             : native_announcement_relative_term(subject, relative_or_index, relation);
@@ -635,7 +682,7 @@ static void capture_native_threat_family(int16_t relation, NativeString *output,
         size_t length = before.size() - start + label.size();
         if (victim) {
             uint8_t named = 0;
-            if (!native_history_copy(relative_or_index + 0xaa, named)) return;
+            if (!native_history_copy(native_history_object_field(relative_or_index,"historical_figure",0xaa), named)) return;
             if (!named) {
                 // a946e0 returns without writing for an unnamed figure.
                 // Its reused buffer consequently retains this relation as
@@ -666,10 +713,11 @@ static void capture_native_threat_details(void *speaker, void *target, NativeStr
     struct Scope {
         NativeAnnouncementKinshipCall call;
         NativeAnnouncementKinshipCall *previous = nullptr;
-        Scope(void *speaker, NativeString *output) {
+        Scope(void *speaker, void *target, NativeString *output) {
             g_active_native_announcement_callbacks.fetch_add(1, std::memory_order_acq_rel);
             call.output = output;
-            native_history_copy(reinterpret_cast<uintptr_t>(speaker) + 0x130, call.record.speaker);
+            call.target = reinterpret_cast<uintptr_t>(target);
+            native_history_copy(native_history_object_field(reinterpret_cast<uintptr_t>(speaker),"unit",0x130,4), call.record.speaker);
             previous = native_announcement_kinship_call();
             native_announcement_kinship_call() = &call;
         }
@@ -677,7 +725,7 @@ static void capture_native_threat_details(void *speaker, void *target, NativeStr
             native_announcement_kinship_call() = previous;
             g_active_native_announcement_callbacks.fetch_sub(1, std::memory_order_acq_rel);
         }
-    } scope(speaker, output);
+    } scope(speaker, target, output);
     if (g_real_native_threat_details) g_real_native_threat_details(speaker, target, output);
     try {
         std::string_view source;
@@ -700,6 +748,7 @@ static bool uninstall_native_announcement_kinship_hook() {
     if (entry && calls) clear_native_announcement_kinship();
     return entry && calls;
 }
+#ifdef _WIN32
 static bool install_native_announcement_kinship_hook() {
     if (g_native_threat_details_entry.installed && g_native_threat_family_calls.installed) return true;
     if (native_announcement_kinship_hook_active() && !uninstall_native_announcement_kinship_hook()) return false;
@@ -729,8 +778,48 @@ static bool install_native_announcement_kinship_hook() {
     return true;
 }
 #else
-static void recover_native_announcement_kinship(std::string_view) {}
-static bool native_announcement_kinship_hook_active() { return false; }
-static bool uninstall_native_announcement_kinship_hook() { clear_native_announcement_kinship(); return true; }
-static bool install_native_announcement_kinship_hook() { return true; }
+static void capture_native_elf_threat_group(int16_t relation, NativeString *output,
+        uintptr_t frame, uintptr_t count_address, bool plural) {
+    NativeBorrowedVector<int32_t> counts;
+    uintptr_t index = UINT32_MAX;
+    if (native_announcement_family_vector(native_threat_frame_field(frame,0xc8),counts)) {
+        const uintptr_t first = reinterpret_cast<uintptr_t>(counts.begin);
+        if (count_address >= first && count_address < reinterpret_cast<uintptr_t>(counts.end) &&
+                (count_address-first)%4 == 0) index = (count_address-first)/4;
+    }
+    capture_native_threat_family(relation,output,frame,index,true,false,plural);
+}
+static void capture_native_elf_threat_relative(int16_t relation, NativeString *output,
+        uintptr_t frame, uintptr_t relative) {
+    capture_native_threat_family(relation,output,frame,relative,false);
+}
+static bool install_native_announcement_kinship_hook() {
+    if (g_native_threat_details_entry.installed && g_native_threat_family_calls.installed) return true;
+    if (native_announcement_kinship_hook_active() && !uninstall_native_announcement_kinship_hook()) return false;
+    const auto base = native_history_profile_base();
+    if (!base) return false;
+    std::vector<unsigned char> prefix{0xf3,0x0f,0x1e,0xfa,0x55,0x48,0x89,0xe5};
+    if (!native_reference_bytes(0x100a240,prefix) || !g_native_threat_details_entry.prepare(
+        reinterpret_cast<unsigned char *>(native_reference_address(base,0xc0a240)),prefix,
+        reinterpret_cast<const void *>(&capture_native_threat_details),{},
+        "Native announcement kinship owner")) return false;
+    g_real_native_threat_details = reinterpret_cast<NativeThreatDetailsFn>(g_native_threat_details_entry.original);
+    g_real_native_threat_family = reinterpret_cast<NativeThreatFamilyFn>(
+        native_history_page_address(NativeHistoryPageSymbol::ChildRelation));
+    std::vector<NativeCall> calls{
+        {0xc0b0ef,0x1103cd0,reinterpret_cast<const void *>(&capture_native_elf_threat_group),
+            {0x44,0x0f,0xb6,0xc1,0x48,0x89,0xea,0x4c,0x89,0xe1}},
+        {0xc0be93,0x1103cd0,reinterpret_cast<const void *>(&capture_native_elf_threat_relative),
+            {0x48,0x89,0xea,0x48,0x8b,0x8d,0xe0,0xfd,0xff,0xff}},
+        {0xc0e348,0x1103cd0,reinterpret_cast<const void *>(&capture_native_threat_victim),
+            {0x48,0x89,0xea,0x48,0x89,0xd9}},
+    };
+    if (!native_reference_calls(calls,0x400000) || !g_native_threat_family_calls.install(base,calls,
+        "Native announcement kinship fields") ||
+        !g_native_threat_details_entry.install("Native announcement kinship owner")) {
+        uninstall_native_announcement_kinship_hook();
+        return false;
+    }
+    return true;
+}
 #endif

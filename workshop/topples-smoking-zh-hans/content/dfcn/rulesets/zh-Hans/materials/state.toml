@@ -1,0 +1,12 @@
+base = "materials::state"
+
+[[rulesets]]
+name = "adjective"
+[rulesets.rules]
+"{::materials::subscribed_smoking}" = "{::materials::subscribed_smoking}"
+
+[[rulesets]]
+name = "shared::main"
+[rulesets.rules]
+"{::materials::subscribed_smoking}" = "{::materials::subscribed_smoking}"
+

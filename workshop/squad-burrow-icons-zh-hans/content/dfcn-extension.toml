@@ -1,0 +1,6 @@
+schema = 1
+id = "squad-burrow-icons-zh-hans"
+version = 1
+language = "zh-Hans"
+name = "小队与区域图标汉化数据"
+translations = "dfcn/translations.tsv"

@@ -1,0 +1,7 @@
+base = "map_hover::building"
+
+[[rulesets]]
+name = "workshop"
+[rulesets.rules]
+"Decoration Emporium" = "装饰坊"
+"Decoration Emporium 2" = "装饰坊 2"

@@ -1,0 +1,137 @@
+# Real Book/Scroll Content! 1.57 — Workshop 3752219300
+# 固定控件按现有 DFHack GUI Overlay control 数据格式提供。
+DFHack GUI Overlay control: Read Story [Ctrl+N]||I|0|-1|1	阅读故事 [Ctrl+N]|	l
+DFHack GUI Overlay control: Read Story||I|0|-1|1	阅读故事|	l
+DFHack GUI Overlay control: Copy text||I|0|-1|1	复制文本|	l
+DFHack GUI Overlay control: Copied!||I|0|-1|0	已复制！|	l
+DFHack GUI Overlay control: No content.||I|0|-1|0	没有内容。|	l
+DFHack GUI Overlay control: Codex Narrator||I|0|-1|0	故事叙述器|	l
+DFHack GUI Overlay control: Adds a Read Story button when viewing books in item sheets.||I|0|-1|0	查看物品中的书籍时，添加“阅读故事”按钮。|	l
+DFHack GUI Overlay control: Reading:|Untitled|I|1|-1|0	阅读：|未命名	l
+DFHack GUI Overlay control: Reading:|*|I|1|-1|0	阅读：|*	l
+Codex Narrator	故事叙述器	wl
+Read Story [Ctrl+N]	阅读故事 [Ctrl+N]	l
+Copy text	复制文本	wl
+Copied!	已复制！	wl
+No content.	没有内容。	l
+Adds a Read Story button when viewing books in item sheets.	查看物品中的书籍时，添加“阅读故事”按钮。	l
+Reading: Untitled	阅读：未命名	l
+Reading: {s}	阅读：{s}	tl
+Perspective: heroic	叙述视角：英雄赞歌	l
+Perspective: decline	叙述视角：衰落	l
+Perspective: annalistic	叙述视角：编年记述	l
+Perspective: folk memory	叙述视角：民间记忆	l
+Perspective: mythic	叙述视角：神话	l
+Perspective: epic hero	叙述视角：史诗英雄	l
+Perspective: tragedy	叙述视角：悲剧	l
+Perspective: hagiography	叙述视角：圣者传记	l
+Perspective: warts and all	叙述视角：完整写实	l
+Perspective: legendary	叙述视角：传奇	l
+Perspective: confessional	叙述视角：自白	l
+Perspective: triumphant	叙述视角：凯歌	l
+Perspective: philosophical	叙述视角：哲思	l
+Perspective: adventurers journal	叙述视角：冒险者日志	l
+Perspective: elders wisdom	叙述视角：长者智慧	l
+Perspective: golden age	叙述视角：黄金时代	l
+Perspective: cautionary	叙述视角：警世	l
+Perspective: comparative	叙述视角：比较	l
+Perspective: foundational myth	叙述视角：起源神话	l
+Perspective: scholars analysis	叙述视角：学者分析	l
+Perspective: utopian	叙述视角：理想世界	l
+Perspective: dystopian	叙述视角：黑暗世界	l
+Perspective: philosophical whatif	叙述视角：假设哲思	l
+Perspective: satirical	叙述视角：讽刺	l
+Perspective: melancholic	叙述视角：哀思	l
+Perspective: rivals	叙述视角：宿敌	l
+Perspective: mirrors	叙述视角：镜像人生	l
+Perspective: teacher student	叙述视角：师徒	l
+Perspective: hero villain	叙述视角：英雄与恶徒	l
+Perspective: royal line	叙述视角：王室谱系	l
+Perspective: rise from obscurity	叙述视角：无名者的崛起	l
+Perspective: cursed bloodline	叙述视角：被诅咒的血脉	l
+Chapter {d}	第 {d} 章	tl
+Stanza {d}	第 {d} 节诗	tl
+Act {d}	第 {d} 幕	tl
+Movement {d}	第 {d} 乐章	tl
+Parents:	父母：	l
+Siblings:	兄弟姐妹：	l
+Spouse:	配偶：	l
+Partner:	伴侣：	l
+Children:	子女：	l
+Other connections:	其他关系：	l
+(no recorded kin)	（无亲属记录）	l
+# 独立扩展正文入口，仅匹配原 Mod 的叙述窗口 content 字段。
+DFHack GUI Extension prose: Codex Narrator||content	::subscribed_books	l
+DFHack GUI Extension prose: focus:codex-narrator||content	::subscribed_books	l
+
+DFHack GUI Extension prose normalize: focus:codex-narrator||content|01	\\. And then \t. 	l
+DFHack GUI Extension prose normalize: focus:codex-narrator||content|02	, and also \t. 	l
+DFHack GUI Extension prose normalize: focus:codex-narrator||content|03	\\. Then \t. 	l
+DFHack GUI Extension prose normalize: focus:codex-narrator||content|04	\\b(the) ([A-Za-z0-9]+) \\2 ([A-Za-z0-9]+)\t$1 $2 $3	l
+DFHack GUI Extension prose normalize: Codex Narrator||content|01	\\. And then \t. 	l
+DFHack GUI Extension prose normalize: Codex Narrator||content|02	, and also \t. 	l
+DFHack GUI Extension prose normalize: Codex Narrator||content|03	\\. Then \t. 	l
+DFHack GUI Extension prose normalize: Codex Narrator||content|04	\\b(the) ([A-Za-z0-9]+) \\2 ([A-Za-z0-9]+)\t$1 $2 $3	l
+
+DFHack output: [Codex Narrator] Enabled.	[故事叙述器] 已启用。	l
+DFHack output: [Codex Narrator] Read: "{s}"	[故事叙述器] 阅读：“{s1}”	l
+DFHack output: [Codex Narrator] Read: "Untitled"	[故事叙述器] 阅读：“未命名”	l
+DFHack output: [Codex Narrator] FATAL: failed to load required DFHack Lua modules; the mod will not run.	[故事叙述器] 严重错误：无法载入必需的 DFHack Lua 模块；此 Mod 将无法运行。	l
+DFHack output: Copy to clipboard failed: {s}	复制到剪贴板失败：{s1}	l
+DFHack output: WARNING: No written content found for "{s}"	警告：未找到“{s1}”的书写内容。	l
+DFHack output: ERROR generating narrative for "{s}": {s}	生成“{s1}”的叙述时出错：{s2}	l
+
+Mod name: Real Book/Scroll Content!	真实书籍与卷轴内容！	l
+Real Book/Scroll Content!	真实书籍与卷轴内容！	wl
+Mod description: Generates full procedural stories with story outline planning, protagonist weaving, title-driven themes, event interpreters, cross-chapter continuity, recurring character arcs, and personality/relationship-driven character behavior. Includes a Copy Text button in the reader window. Auto-triggers on book reading. Requires DFHack.	生成完整的程序化故事，包含故事大纲规划、主角穿插、书名主题、事件解读、跨章节连续叙事、持续发展的人物故事线，以及由性格和关系驱动的人物行为。阅读窗口内含“复制文本”按钮。阅读书籍时自动触发。需要 DFHack。	lP
+Generates full procedural stories with story outline planning, protagonist weaving, title-driven themes, event interpreters, cross-chapter continuity, recurring character arcs, and personality/relationship-driven character behavior. Includes a Copy Text button in the reader window. Auto-triggers on book reading. Requires DFHack.	生成完整的程序化故事，包含故事大纲规划、主角穿插、书名主题、事件解读、跨章节连续叙事、持续发展的人物故事线，以及由性格和关系驱动的人物行为。阅读窗口内含“复制文本”按钮。阅读书籍时自动触发。需要 DFHack。	lP
+Mod description: Replaces generic book summaries with procedural narratives. Story outline system pre-scans all events to build cast lists, classify narrative arcs, and weave protagonists through earlier chapters. Title analysis drives thematic coherence (celebration, elegy, frontier, mystery, etc). Cross-chapter continuity tracks recurring characters with foreshadowing and incremental updates. Prophecy and lineage systems connect protagonists to events before their birth. Characters react according to personality traits and evolving relationships, with a free-will system that can let events diverge from the planned outline. Reader window includes a Copy Text button. Auto-triggers in adventure mode, overlay button in fortress mode. Requires DFHack.	以程序化叙事取代通用的书籍摘要。故事大纲系统预先浏览所有事件，建立人物表、划分叙事故事线，并让主角贯穿此前的章节。书名分析让主题保持一致，例如庆颂、挽歌、边疆和谜案。跨章节连续叙事以伏笔和渐进更新追踪反复登场的人物。预言与谱系系统将主角和他们出生前的事件联系起来。人物会根据性格特征与不断变化的关系作出反应；自由意志系统可以让事件偏离预定大纲。阅读窗口内含“复制文本”按钮。冒险模式下自动触发；要塞模式下提供界面叠加按钮。需要 DFHack。	lP
+Replaces generic book summaries with procedural narratives. Story outline system pre-scans all events to build cast lists, classify narrative arcs, and weave protagonists through earlier chapters. Title analysis drives thematic coherence (celebration, elegy, frontier, mystery, etc). Cross-chapter continuity tracks recurring characters with foreshadowing and incremental updates. Prophecy and lineage systems connect protagonists to events before their birth. Characters react according to personality traits and evolving relationships, with a free-will system that can let events diverge from the planned outline. Reader window includes a Copy Text button. Auto-triggers in adventure mode, overlay button in fortress mode. Requires DFHack.	以程序化叙事取代通用的书籍摘要。故事大纲系统预先浏览所有事件，建立人物表、划分叙事故事线，并让主角贯穿此前的章节。书名分析让主题保持一致，例如庆颂、挽歌、边疆和谜案。跨章节连续叙事以伏笔和渐进更新追踪反复登场的人物。预言与谱系系统将主角和他们出生前的事件联系起来。人物会根据性格特征与不断变化的关系作出反应；自由意志系统可以让事件偏离预定大纲。阅读窗口内含“复制文本”按钮。冒险模式下自动触发；要塞模式下提供界面叠加按钮。需要 DFHack。	lP
+Mod description: Major update covering everything since the last Workshop release. Added a personality/relationship engine: characters now react according to their own traits and their evolving relationship with each other, with a free-will system that can let events diverge from the planned outline (a character can still snap and do something the story never planned). Character entrances and interactions are now properly styled across all three perspectives (Dramatic, Verse, Choreography), not just narrative prose. Massively expanded content variety across mood descriptions, character trait reactions, and argument/dialogue pools to greatly cut down on repeated lines within a single story. Fixed recurring arguments jumping between unrelated topics instead of staying on-subject, essays about other written works losing their content, battle outcomes swapping the winner and loser, and several pronoun/word capitalization bugs. Added a Copy Text button to the book reader window, and cleaned up logging so it no longer spams the DFHack console.	重大更新，汇集上次创意工坊发布以来的全部改动。加入性格与关系引擎：人物会依据自身特征及彼此不断变化的关系作出反应，自由意志系统允许事件偏离预定大纲，人物仍可能突然失控，做出故事未曾安排的事。人物登场与互动现在正确适配戏剧、诗体和舞蹈编排三个视角，而不再只有普通叙事散文。大幅扩充情绪描写、性格反应、论辩和对话词池，显著减少同一故事中的重复句。修正持续论辩突然转向无关话题、论述其他作品的文章丢失内容、战斗结果颠倒胜败双方，以及多处代词和单词大小写问题。书籍阅读窗口增加“复制文本”按钮，并清理日志，使其不再刷屏 DFHack 控制台。	lP
+Major update covering everything since the last Workshop release. Added a personality/relationship engine: characters now react according to their own traits and their evolving relationship with each other, with a free-will system that can let events diverge from the planned outline (a character can still snap and do something the story never planned). Character entrances and interactions are now properly styled across all three perspectives (Dramatic, Verse, Choreography), not just narrative prose. Massively expanded content variety across mood descriptions, character trait reactions, and argument/dialogue pools to greatly cut down on repeated lines within a single story. Fixed recurring arguments jumping between unrelated topics instead of staying on-subject, essays about other written works losing their content, battle outcomes swapping the winner and loser, and several pronoun/word capitalization bugs. Added a Copy Text button to the book reader window, and cleaned up logging so it no longer spams the DFHack console.	重大更新，汇集上次创意工坊发布以来的全部改动。加入性格与关系引擎：人物会依据自身特征及彼此不断变化的关系作出反应，自由意志系统允许事件偏离预定大纲，人物仍可能突然失控，做出故事未曾安排的事。人物登场与互动现在正确适配戏剧、诗体和舞蹈编排三个视角，而不再只有普通叙事散文。大幅扩充情绪描写、性格反应、论辩和对话词池，显著减少同一故事中的重复句。修正持续论辩突然转向无关话题、论述其他作品的文章丢失内容、战斗结果颠倒胜败双方，以及多处代词和单词大小写问题。书籍阅读窗口增加“复制文本”按钮，并清理日志，使其不再刷屏 DFHack 控制台。	lP
+
+DFHack GUI Extension prose normalize: focus:codex-narrator||content|05	\\b([Aa])n ([A-Za-z])\t$1 $2	l
+DFHack GUI Extension prose normalize: Codex Narrator||content|05	\\b([Aa])n ([A-Za-z])\t$1 $2	l
+
+# 根目录诊断工具的控制台提示；字段名、结构化诊断转储和日志 schema 保持原样。
+DFHack output: --- codex-narrator-debug-book-mismatch starting ---	--- codex-narrator-debug-book-mismatch 开始 ---	l
+DFHack output: FATAL: could not load storage/narrative modules: {s}	严重错误：无法载入 storage/narrative 模块：{s1}	l
+DFHack output: Scanning {d} written_content records for cached-title mismatches...	正在扫描 {d1} 条 written_content 记录，查找缓存标题不一致的情况……	l
+DFHack output: Pass 1 done: {d} cached entries checked, {d} title mismatch(es) found.	第一轮完成：已查看 {d1} 条缓存，发现 {d2} 处标题不一致。	l
+DFHack output: CONFIRMED: stale cache entries exist whose own in-text title disagrees with the live wc.title.	已确认：存在陈旧缓存，其正文标题与当前 wc.title 不一致。	l
+DFHack output: Fix is a cache clear, not a generate() code bug -- see storage.clear() (mod root reqscript) or bump CACHE_VERSION in storage.lua.	解决方法是清空缓存，而非修改 generate()：可使用 storage.clear()（Mod 根目录的 reqscript），或提高 storage.lua 中的 CACHE_VERSION。	l
+DFHack output: Searching for written_content titles containing: "{s}"	正在查找标题包含“{s1}”的 written_content……	l
+DFHack output:     *** FRESH regenerate ALSO shows a different title than wc.title -- this is a real generate() bug, not just a stale cache. ***	    *** 重新生成后的标题也与 wc.title 不一致——这是 generate() 的实际错误，而不只是陈旧缓存。***	l
+DFHack output:     Fresh regenerate title matches wc.title correctly.	    重新生成后的标题与 wc.title 正确一致。	l
+DFHack output:     FRESH regenerate FAILED: {s}	    重新生成失败：{s1}	l
+DFHack output: Pass 2 done: {d} written_content record(s) matched the search term.	第二轮完成：{d1} 条 written_content 记录符合搜索词。	l
+DFHack output: No written_content title contains "{s}" -- try a shorter fragment, or check capitalization/spelling against the vanilla popup text exactly.	没有 written_content 标题包含“{s1}”——可尝试更短的片段，或按原版弹窗中的文字核对大小写与拼写。	l
+DFHack output: No search term given -- skipping pass 2. Re-run with a title fragment, e.g.: codex-narrator-debug-book-mismatch Coastal Bungholes	未提供搜索词，跳过第二轮。可附上标题片段重新运行，例如：codex-narrator-debug-book-mismatch Coastal Bungholes	l
+DFHack output: --- codex-narrator-debug-book-mismatch done. Check codex-narrator-log.txt for the full dump. ---	--- codex-narrator-debug-book-mismatch 完成。完整转储见 codex-narrator-log.txt。---	l
+DFHack output: codex-narrator-debug-book-mismatch: done, see codex-narrator-log.txt for details.	codex-narrator-debug-book-mismatch：已完成，详情见 codex-narrator-log.txt。	l
+DFHack output: --- codex-narrator-debug-artifact-fields starting ---	--- codex-narrator-debug-artifact-fields 开始 ---	l
+DFHack output: No {s} events found in this world.	这个世界中没有找到 {s1} 事件。	l
+DFHack output: --- done with {s}: inspected {d} event(s). ---	--- {s1} 已完成：已查看 {d1} 个事件。---	l
+DFHack output: === Scanning ARTIFACT_CREATED events (already fixed -- creator_hfid confirmed) ===	=== 正在扫描 ARTIFACT_CREATED 事件（已修复，creator_hfid 已确认）===	l
+DFHack output: === Scanning WRITTEN_CONTENT_COMPOSED-family events (already fixed -- histfig confirmed) ===	=== 正在扫描 WRITTEN_CONTENT_COMPOSED 系列事件（已修复，histfig 已确认）===	l
+DFHack output: === Scanning ADD_HF_HF_LINK events ===	=== 正在扫描 ADD_HF_HF_LINK 事件 ===	l
+DFHack output: === Scanning WAR_PEACE_ACCEPTED/WAR_PEACE_REJECTED/DIPLOMAT_LOST events ===	=== 正在扫描 WAR_PEACE_ACCEPTED/WAR_PEACE_REJECTED/DIPLOMAT_LOST 事件 ===	l
+DFHack output: === Scanning HF_LEARNS_SECRET events ===	=== 正在扫描 HF_LEARNS_SECRET 事件 ===	l
+DFHack output: === Scanning HF_DOES_INTERACTION events ===	=== 正在扫描 HF_DOES_INTERACTION 事件 ===	l
+DFHack output: === Scanning CHANGE_HF_JOB events ===	=== 正在扫描 CHANGE_HF_JOB 事件 ===	l
+DFHack output: === Scanning CHANGE_HF_STATE events ===	=== 正在扫描 CHANGE_HF_STATE 事件 ===	l
+DFHack output: === Scanning CHANGE_CREATURE_TYPE events ===	=== 正在扫描 CHANGE_CREATURE_TYPE 事件 ===	l
+DFHack output: === Scanning BODY_ABUSED events ===	=== 正在扫描 BODY_ABUSED 事件 ===	l
+DFHack output: === Scanning ITEM_STOLEN events ===	=== 正在扫描 ITEM_STOLEN 事件 ===	l
+DFHack output: === Scanning ENTITY_DISSOLVED events ===	=== 正在扫描 ENTITY_DISSOLVED 事件 ===	l
+DFHack output: === Scanning CREATED_SITE events ===	=== 正在扫描 CREATED_SITE 事件 ===	l
+DFHack output: === Scanning ADD_HF_ENTITY_LINK/REMOVE_HF_ENTITY_LINK events ===	=== 正在扫描 ADD_HF_ENTITY_LINK/REMOVE_HF_ENTITY_LINK 事件 ===	l
+DFHack output: === Scanning ASSUME_IDENTITY events ===	=== 正在扫描 ASSUME_IDENTITY 事件 ===	l
+DFHack output: --- codex-narrator-debug-artifact-fields done. Check codex-narrator-log.txt for the full field dump. ---	--- codex-narrator-debug-artifact-fields 完成。完整字段转储见 codex-narrator-log.txt。---	l
+DFHack output: codex-narrator-debug-artifact-fields: done, see codex-narrator-log.txt for details.	codex-narrator-debug-artifact-fields：已完成，详情见 codex-narrator-log.txt。	l
+DFHack output: codex-narrator-capture-corpus: {d} written_content entries in the loaded world.	codex-narrator-capture-corpus：当前载入的世界有 {d1} 条 written_content 记录。	l
+DFHack output: No written content found. Load a save with at least a few written books/scrolls (fortress mode with a library, or an adventure-mode world with some history) and try again.	未找到书写内容。载入一个至少有几本书籍或卷轴的存档后再试（例如建有图书馆的要塞存档，或有一定历史的冒险模式世界）。	l
+DFHack output: Captured {s} ({d} chars)	已捕获 {s1}（{d1} 个字符）	l
+DFHack output: Captured {s} (ERROR, see file)	已捕获 {s1}（出错，详情见文件）	l
+DFHack output: Done. {d} narratives captured to: {s}	完成。已将 {d1} 篇叙述捕获至：{s1}	l
+DFHack output: Manifest written to: {s}	清单已写入：{s1}	l

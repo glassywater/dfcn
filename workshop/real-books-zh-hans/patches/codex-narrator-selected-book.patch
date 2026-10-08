@@ -1,0 +1,18 @@
+--- a/scripts_modinstalled/gui/codex-narrator.lua
++++ b/scripts_modinstalled/gui/codex-narrator.lua
+@@ -438,7 +438,13 @@
+ local function getCurrentBookFromViewSheets()
+     local ok, vs = pcall(function() return mi.view_sheets end)
+     if not ok or not vs or not vs.open then return nil end
+-    if #vs.viewing_itid == 0 then return nil end
+-    local item = df.item.find(vs.viewing_itid[0])
++    local item
++    if vs.active_sheet == df.view_sheet_type.ITEM then
++        -- active_id is the item shown in this sheet; viewing_itid[0] is
++        -- only the first item in the underlying pile.
++        item = df.item.find(vs.active_id)
++    elseif vs.active_sheet == df.view_sheet_type.ITEM_LIST and #vs.viewing_itid == 1 then
++        item = df.item.find(vs.viewing_itid[0])
++    end
+     if isBook(item) then return item end
+     return nil

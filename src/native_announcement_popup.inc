@@ -1,8 +1,7 @@
 // Read the current announcement_handlerst popup and its actual markup words.
-// The two supported PE editions share the field layout; the existing native
-// coordinate binding selects their world/status addresses.
+// World fields use the generated host layout; markup words share the native
+// string and curses rich-text ABI.
 static std::optional<NativeAnnouncementPopup> native_announcement_popup() {
-#ifdef _WIN32
     const uintptr_t base = native_history_profile_base();
     if (!base) return std::nullopt;
     NativeBorrowedVector<uintptr_t> queue;
@@ -21,8 +20,15 @@ static std::optional<NativeAnnouncementPopup> native_announcement_popup() {
     // e9f9c reads init.display.grid_y, independently of graphicst's grid.
     // This init global precedes world and is outside native_history_global's
     // schema. Resolve its reviewed reference/classic PE binding directly.
-    if (!native_history_copy(native_reference_address(base, 0x23cd788), popup.grid_height) ||
-            popup.grid_height <= 0 || popup.grid_height > 1000) return std::nullopt;
+#ifdef _WIN32
+    if (!native_history_copy(native_reference_address(base, 0x23cd788), popup.grid_height))
+        return std::nullopt;
+#else
+    const auto *settings_source = native_ui_settings_source();
+    if (!settings_source || !native_history_copy(reinterpret_cast<uintptr_t>(
+            &settings_source->display.grid_y), popup.grid_height)) return std::nullopt;
+#endif
+    if (popup.grid_height <= 0 || popup.grid_height > 1000) return std::nullopt;
     int32_t portrait_id = -1;
     // manager+0x88 immediately follows its markup box (manager+0x48).
     // e9fc7 / e9fd4 uses graphics mode and this ID to reserve the portrait.
@@ -52,7 +58,4 @@ static std::optional<NativeAnnouncementPopup> native_announcement_popup() {
         popup.words.push_back(std::move(word));
     }
     return popup;
-#else
-    return std::nullopt;
-#endif
 }

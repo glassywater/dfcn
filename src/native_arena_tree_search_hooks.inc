@@ -9,10 +9,25 @@ struct NativeArenaTreeSearchProfile {
 static void capture_native_arena_tree_search_query(NativeString *);
 static size_t capture_native_arena_tree_search_find(const char *, size_t,
     const NativeString *, const char *, size_t);
+#ifdef _WIN32
 #include "native_arena_tree_search_profile.inc"
+#else
+static void capture_native_arena_tree_search_term(NativeString *, const NativeString *);
+#include "native_arena_tree_search_profile_elf.inc"
+#endif
 
 static NativeCallHook g_native_arena_tree_search_hook;
 static NativeSearchFoldFn g_native_arena_tree_search_fold = nullptr;
+
+#ifndef _WIN32
+static void capture_native_arena_tree_search_term(NativeString *term,
+        const NativeString *query) {
+    prepare_native_inlined_search_term(term, query, g_native_arena_tree_search_fold,
+        [](std::string_view source, std::string_view needle) {
+            return g_overlay.translated_plant_search_matches(source, needle);
+        });
+}
+#endif
 
 static void capture_native_arena_tree_search_query(NativeString *query) {
     fold_native_search_query(query, g_native_arena_tree_search_fold);

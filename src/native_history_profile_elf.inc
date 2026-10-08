@@ -1,6 +1,6 @@
 // Linux 53.16 binding only; callbacks, snapshots, ownership and teardown are
 // shared with the other native adapters. Addresses are ELF virtual addresses.
-    profile.base = anchor - 0x400000;
+    profile.base = elf_runtime::state().executable.bias;
     const auto bytes_match = [&](uintptr_t va, const std::vector<uint8_t> &expected) {
         auto relocated = expected;
         if (!native_reference_bytes(va, relocated)) return false;

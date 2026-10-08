@@ -1,0 +1,12 @@
+# Dwarvemon 2.22 translation extension; merges into the base namespace.
+base = "items::pants"
+
+[[rulesets]]
+name = "singular::main"
+[rulesets.rules]
+"{::items::dwarvemon::pants}" = "{::items::dwarvemon::pants}"
+
+[[rulesets]]
+name = "plural::main"
+[rulesets.rules]
+"{::items::dwarvemon::pants}" = "{::items::dwarvemon::pants}"

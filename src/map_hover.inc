@@ -993,9 +993,7 @@ void Overlay::append_map_hover_phrases(const NativeTextCard &card,
     // instead of laying them out again or restoring their original English.
     for (const auto &row : card.rows)
         if (row.map_hover.kind == NativeMapHoverKind::None &&
-            std::any_of(matches.begin(), matches.end(), [&](const Match &match) {
-                return native_paragraph_owns_card_row(match, row);
-            })) {
+            native_paragraph_owns_card_row(matches, row)) {
             paragraph_rows.insert(row.y);
             std::fill_n(rows[row.y].begin() + row.x, row.source.size(), ' ');
         }

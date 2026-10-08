@@ -1,0 +1,9 @@
+[ID:dfcn_altar_of_blessings_zh_hans]
+[NUMERIC_VERSION:1]
+[DISPLAYED_VERSION:0.1-local]
+[EARLIEST_COMPATIBLE_NUMERIC_VERSION:1]
+[EARLIEST_COMPATIBLE_DISPLAYED_VERSION:0.1-local]
+[AUTHOR:DFCN]
+[NAME:祝福祭坛汉化数据]
+[DESCRIPTION:Altar of Blessings 的独立简体中文翻译数据。由 DFCN 自动读取，无需在世界模组列表启用。仅供本地使用，尚未发布。]
+

@@ -2,7 +2,6 @@
 // collection. Retain its typed identity and roles while each original
 // formatter owns the inputs; its English title cannot identify all eighteen
 // families by itself.
-#ifdef _WIN32
 // Steam 53.16 AMD64 call 1a6f1f -> 66fe50:
 // RCX/RDX are unit pointers, R8 is the output string, R9D is the circumstance.
 // The caller copies emotion +10/+14 as DWORD stack arguments five and six.
@@ -179,6 +178,7 @@ static void uninstall_native_overview_event_hooks() {
     ++g_native_overview_event_revision;
 }
 
+#ifdef _WIN32
 static bool install_native_overview_event_hooks() {
     if (g_native_overview_event_hooks.installed) return true;
     if (native_overview_event_hooks_active()) {
@@ -210,11 +210,31 @@ static bool install_native_overview_event_hooks() {
     return true;
 }
 #else
-static uint64_t native_overview_event_source_revision() { return 0; }
-static std::shared_ptr<const NativeHistoryDocument> native_overview_event_source(std::string_view) {
-    return {};
+static bool install_native_overview_event_hooks() {
+    if (g_native_overview_event_hooks.installed) return true;
+    if (native_overview_event_hooks_active()) {
+        uninstall_native_overview_event_hooks();
+        if (native_overview_event_hooks_active()) return false;
+    }
+    const uintptr_t base = native_history_profile_base();
+    if (!base) return false;
+    g_native_overview_event_original = reinterpret_cast<NativeOverviewEventFn>(
+        elf_runtime::state().executable.bias + native_reference_va(0x101b7f0));
+    g_native_conversation_event_original = reinterpret_cast<NativeConversationEventFn>(
+        elf_runtime::state().executable.bias + native_reference_va(0x1e30100));
+    std::vector<NativeCall> calls{
+        {0x13a8681,0x101b7f0,reinterpret_cast<const void *>(&capture_native_overview_event)},
+        {0xffd099,0x1e30100,reinterpret_cast<const void *>(&capture_native_conversation_event)},
+        {0xfff2f6,0x1e30100,reinterpret_cast<const void *>(&capture_native_conversation_event)},
+        {0x1000459,0x1e30100,reinterpret_cast<const void *>(&capture_native_conversation_event)},
+        {0x1002ea9,0x1e30100,reinterpret_cast<const void *>(&capture_native_conversation_event)},
+        {0x10058f9,0x1e30100,reinterpret_cast<const void *>(&capture_native_conversation_event)},
+    };
+    if (!native_reference_calls(calls,0) ||
+            !g_native_overview_event_hooks.install(elf_runtime::state().executable.bias,calls,"Native overview event source")) {
+        uninstall_native_overview_event_hooks();
+        return false;
+    }
+    return true;
 }
-static bool native_overview_event_hooks_active() { return false; }
-static bool install_native_overview_event_hooks() { return true; }
-static void uninstall_native_overview_event_hooks() {}
 #endif

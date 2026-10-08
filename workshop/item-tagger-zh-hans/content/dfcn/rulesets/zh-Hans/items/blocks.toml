@@ -1,0 +1,9 @@
+base = "items::blocks"
+
+[[rulesets]]
+name = "main"
+[rulesets.rules]
+"[msafe] block" = "[耐岩浆]锭块"
+"[msafe] blocks" = "[耐岩浆]锭块"
+"[msafe] brick" = "[耐岩浆]砖块"
+"[msafe] bricks" = "[耐岩浆]砖块"

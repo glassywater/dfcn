@@ -172,6 +172,17 @@ DFHack GUI Overlay control: Warm dig:|Off|I|1|-1|1	高温处挖掘：|关闭	l
 DFHack GUI Overlay control: Autoretrain livestock:|On|I|1|-1|1	自动重新驯养牲畜：|开启	l
 # Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/logistics.lua:298-306 [logistics.autoretrain]
 DFHack GUI Overlay control: Autoretrain livestock:|Off|I|1|-1|1	自动重新驯养牲畜：|关闭	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/orders.lua:90-132 [orders.importexport HotkeyLabel captions]
+# Keep the dynamic key display; clear here removes work orders, not a color name.
+DFHack GUI Overlay control: import||I|0|-1|1	导入|	l
+DFHack GUI Overlay control: export||I|0|-1|1	导出|	l
+DFHack GUI Overlay control: recheck conditions||I|0|-1|1	复查条件|	l
+DFHack GUI Overlay control: sort||I|0|-1|1	排序|	l
+DFHack GUI Overlay control: clear||I|0|-1|1	清空|	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/orders.lua:843-859 [orders.search; enabled and disabled HotkeyLabel captions]
+# Captionless fields use the trailing blank space before the next key or frame.
+DFHack GUI Overlay control: |prev|I|0|-1|1	|上一个	l
+DFHack GUI Overlay control: |next|I|0|-1|1	|下一个	l
 # Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/orders.lua:335-352 [orders.skillrestrictions]
 # Source: D:/workspace/dfcn/data/extracted/dfhack-overlay-toggles/native-skill-rating-captions.tsv; D:/workspace/dfcn/data/upstream/df-structures/df.dfhack.xml:726-813; orders.lua:297-326
 DFHack GUI Overlay control: Min skill:|Dabbling|B|4|-1|1	最低技能：|略懂	l
@@ -582,6 +593,25 @@ DFHack GUI Overlay control: collapse all||I|0|-1|1	折叠全部|	l
 DFHack GUI Overlay control: Set filter||I|0|-1|1	设置筛选|	l
 # Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:847-854 [buildingplan.planner conditional HotkeyLabel]
 DFHack GUI Overlay control: Edit filter||I|0|-1|1	编辑筛选|	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:855-864 [buildingplan.planner HotkeyLabel]
+DFHack GUI Overlay control: Delete filter||I|0|-1|1	删除筛选|	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:397-403,431-440 [ItemLine note Label]
+DFHack GUI Overlay control: |\xC0 {d} available now|I|0|-1|0	|└ 当前可用 {d}	l
+DFHack GUI Overlay control: |\xC0 Will link next (need to make {d})|I|0|-1|0	|└ 随后关联（还需制作 {d}）	l
+DFHack GUI Overlay control: |\xC0 Will link later (need to make {d})|I|0|-1|0	|└ 稍后关联（还需制作 {d}）	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan.lua:95-134; buildingplan/planneroverlay.lua:419-443 [ItemLine quantity and building-material description]
+DFHack GUI Overlay control: |{d} Building material|I|0|-1|0	|{d} 建筑材料	l
+DFHack GUI Overlay control: |{d} Building materials|I|0|-1|0	|{d} 建筑材料	l
+DFHack GUI Overlay control: |{d} Fire-safe material|I|0|-1|0	|{d} 防火材料	l
+DFHack GUI Overlay control: |{d} Fire-safe materials|I|0|-1|0	|{d} 防火材料	l
+DFHack GUI Overlay control: |{d} Magma-safe material|I|0|-1|0	|{d} 岩浆安全材料	l
+DFHack GUI Overlay control: |{d} Magma-safe materials|I|0|-1|0	|{d} 岩浆安全材料	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:313-335,451-462 [ItemLine fixed filter states]
+DFHack GUI Overlay control: |[any material]|I|0|-1|0	|[不限材料]	l
+DFHack GUI Overlay control: |[impossible filter]|I|0|-1|0	|[无可用材料]	l
+DFHack GUI Overlay control: |[{d} mat. categories]|I|0|-1|0	|[{d} 类材料]	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:486-492,934-939 [native placement error in WrappedLabel]
+DFHack GUI Overlay control: |Hidden, cannot build at this location|I|0|-1|0	|不可见，无法在此处建造	l
 # Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockflow.lua:1250-1262 [stockflow.stockflow conditional HotkeyLabel]
 DFHack GUI Overlay control: Order: |No job selected|I|0|-1|1	订单： |未选择任务	l
 # Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockflow.lua:1250-1262 [stockflow.stockflow conditional HotkeyLabel]
@@ -617,3 +647,60 @@ DFHack GUI Overlay control:  hide Planner |[\x1e]|I|0|-1|0	 隐藏规划器 |[�
 DFHack GUI Overlay control:  minimize ||I|0|-1|0	 最小化 |	l
 # Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/stockpiles.lua:357-414 [MinimizeButton visible hover label]
 DFHack GUI Overlay control:  restore ||I|0|-1|0	 恢复 |	l
+
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua [FilterSelection, QualityAndMaterialsPage]
+# Frame titles and Tab captions retain their own geometry in the Buildingplan reader.
+DFHack GUI Buildingplan label: Choose filters	选择筛选条件	l
+DFHack GUI Buildingplan label: Quality and materials	品质与材料	l
+DFHack GUI Buildingplan label: Global settings	全局设置	l
+DFHack GUI Buildingplan label: Current filter:	当前筛选：	l
+DFHack GUI Buildingplan label: Item quality	物品品质	l
+DFHack GUI Overlay control: |Choose filters|I|0|-1|0	|选择筛选条件	l
+DFHack GUI Overlay control: |Quality and materials|I|0|-1|0	|品质与材料	l
+DFHack GUI Overlay control: |Global settings|I|0|-1|0	|全局设置	l
+DFHack GUI Overlay control: |Current filter:|I|0|-1|0	|当前筛选：	l
+DFHack GUI Overlay control: |Item quality|I|0|-1|0	|物品品质	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:214-236 [QualityAndMaterialsPage footer]
+DFHack GUI Overlay control: Toggle||I|0|-1|1	切换选择|	l
+DFHack GUI Overlay control: Invert selection||I|0|-1|1	反选|	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/filterselection.lua:464-518 [GlobalSettingsPage]
+# The first description is a WrappedLabel; the second is one Label with two explicit text rows.
+DFHack GUI Buildingplan description: These options will affect the selection of "Generic Materials" for all future buildings.	这些选项会影响今后所有建筑的“通用建筑材料”选择。	l
+DFHack GUI Buildingplan description: Plan constructions on tiles with existing constructed floors/ramps when using box select.	使用框选时，允许在已有建造地板或坡道的地格上规划建筑。	l
+DFHack GUI Overlay control: |  Plan constructions on tiles with existing|I|0|-1|0	|  使用框选时，允许在已有	l
+DFHack GUI Overlay control: |  constructed floors/ramps when using box select.|I|0|-1|0	|  建造地板或坡道的地格上规划建筑。	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:610-616 [QuickFilter:get_label_text]
+# Only the unassigned-slot sentinel is translated; authored favorite labels stay verbatim.
+DFHack GUI Buildingplan favorite: empty	空位	l
+DFHack GUI Buildingplan category: Stone	石材	l
+DFHack GUI Buildingplan category: Wood	木材	l
+DFHack GUI Buildingplan category: Metal	金属	l
+DFHack GUI Buildingplan category: Glass	玻璃	l
+
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/itemselection.lua:72-110 [ItemSelection title and header]
+# Match the complete quantity row across its fixed and dynamic Label tokens.
+DFHack GUI Overlay control: |Choose items|I|0|-1|0	|选择物品	l
+DFHack GUI Overlay control: |Building material|I|0|-1|0	|建筑材料	l
+DFHack GUI Overlay control: |Building materials|I|0|-1|0	|建筑材料	l
+DFHack GUI Overlay control: |Select up to {d} item ({d} selected)|I|0|-1|0	|最多选择 {d1} 件物品（已选 {d2} 件）	l
+DFHack GUI Overlay control: |Select up to {d} items ({d} selected)|I|0|-1|0	|最多选择 {d1} 件物品（已选 {d2} 件）	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/itemselection.lua:112-140 [header buttons]
+DFHack GUI Overlay control: |Autoselect|I|0|-1|0	|自动选择	l
+DFHack GUI Overlay control: |Continue|I|0|-1|0	|继续	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/itemselection.lua:183-235 [footer HotkeyLabels]
+# Shift+Right, Shift+Left, Enter and their native key colors remain intact.
+DFHack GUI Overlay control: Use one||I|0|-1|1	加选一件|	l
+DFHack GUI Overlay control: Use one fewer||I|0|-1|1	少选一件|	l
+DFHack GUI Overlay control: Use all/none||I|0|-1|1	全选／清空|	l
+DFHack GUI Overlay control: Go back||I|0|-1|1	返回|	l
+DFHack GUI Overlay control: Continue||I|0|-1|1	继续|	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/gui.lua [paint_frame forced-pause badge]
+DFHack GUI Overlay control: |PAUSE FORCED|I|0|-1|0	|强制暂停	l
+DFHack GUI Buildingplan category: Gem	宝石	l
+DFHack GUI Buildingplan category: Clay	黏土	l
+DFHack GUI Buildingplan category: Cloth	布	l
+DFHack GUI Buildingplan category: Silk	丝布	l
+DFHack GUI Buildingplan category: Yarn	纱线	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:1035-1044 [PlannerOverlay favorites]
+DFHack GUI Overlay control: set/apply selected||I|0|-1|1	保存／应用所选收藏|	l
+DFHack GUI Overlay control: |Shift+click to edit the label of a favorite|I|0|-1|0	|Shift+单击可修改收藏名称	l

@@ -282,7 +282,8 @@ void Overlay::recover_adventure_skill_rows() {
 // Keep the already measured layout and intersect only its final draw clips.
 template <typename Draw>
 static void draw_with_help_clips(SDL_Renderer *renderer, const graphicst &gps,
-        const std::vector<SDL_Rect> &frames, const Match *match, Draw &&draw) {
+        const std::vector<SDL_Rect> &frames, const Match *match, Draw &&draw,
+        const SDL_Rect *paint_bounds = nullptr) {
     if (frames.empty()) { draw(); return; }
     const int tile_w = gps.tile_pixel_x, tile_h = gps.tile_pixel_y;
     if (tile_w <= 0 || tile_h <= 0) return;
@@ -322,6 +323,13 @@ static void draw_with_help_clips(SDL_Renderer *renderer, const graphicst &gps,
         }
         clips = std::move(exposed);
     }
+    // The native field already bounds all of this draw's possible writes.
+    // Keep the original exposed rectangles and ordering; only discard those
+    // that cannot contain either source clearing or translated ink.
+    if (paint_bounds)
+        std::erase_if(clips, [&](const SDL_Rect &clip) {
+            return !SDL_HasIntersection(&clip, paint_bounds);
+        });
     for (const auto &clip : clips) {
         SDL_RenderSetClipRect(renderer, &clip);
         draw();
@@ -344,14 +352,114 @@ void Overlay::draw_help_clipped_match(SDL_Renderer *renderer, const Match &match
     // complete source. The skin-only frame list cannot rediscover that owner.
     const auto &occluders = match.native_help_background_frames
         ? *match.native_help_background_frames : frames;
+    std::optional<SDL_Rect> paint_bounds;
+    if (!occluders.empty() && !match.legends_flow &&
+            match.layout_justified_parts.empty() && !match.layout_reflowed_paragraph &&
+            !match.layout_reflowed_control) {
+        SDL_Rect bounds{};
+        const auto include = [&](const SDL_Rect &rect) {
+            if (rect.w <= 0 || rect.h <= 0) return;
+            if (bounds.w <= 0 || bounds.h <= 0) bounds = rect;
+            else SDL_UnionRect(&bounds, &rect, &bounds);
+        };
+        // draw_match intersects translated ink with this native allocation.
+        // Source erasure runs before that intersection and may occupy a
+        // different row or column, so retain its complete footprint too.
+        if (!match.target.empty() && match.layout_native_clip)
+            include(*match.layout_native_clip);
+        const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
+        const int origin_x = (gps_->screen_pixel_x - tile_w * gps_->dimx) / 2;
+        const int origin_y = (gps_->screen_pixel_y - tile_h * gps_->dimy) / 2;
+        if (!match.target.empty() && !match.layout_native_clip &&
+                (match.rule < 0 || static_cast<size_t>(match.rule) < rules_.size())) {
+            // Ordinary page labels have no explicit native allocation. Bound
+            // their actual glyph destination instead of replaying the same
+            // row in every exposed strip around a distant DFHack card/logo.
+            // Glyph ink may extend past the English span or its line box.
+            const int text_x = match.layout_x >= 0 ? match.layout_x : match.x;
+            const bool native_baseline = match.native_split_text && !match.layout_fixed_baseline;
+            const int text_y = native_baseline ? match.native_split_top_y
+                : (match.layout_y >= 0 ? match.layout_y : match.y);
+            const int pixel_y = native_baseline ? tile_h / 2 : match.layout_pixel_y;
+            const int text_length = match.layout_length > 0 ? match.layout_length : match.length;
+            const bool exact_box = match.layout_box_pixel_x >= 0 &&
+                match.layout_box_pixel_width > 0;
+            const bool locked = match.layout_ellipsize || match.layout_lock_font_pixels ||
+                match.rule == kNativeKnowledgeDocumentRule;
+            const SDL_Rect text{
+                (exact_box ? match.layout_box_pixel_x : origin_x + text_x * tile_w) +
+                    config_.horizontal_padding,
+                origin_y + text_y * tile_h + pixel_y,
+                std::max(1, (exact_box ? match.layout_box_pixel_width : text_length * tile_w) -
+                    2 * config_.horizontal_padding),
+                match.layout_line_height_pixels > 0 ? match.layout_line_height_pixels : tile_h};
+            int foreground = match.layout_foreground_rgb;
+            if (foreground < 0) {
+                const unsigned char *color = nullptr;
+                for (int x = match.x; x < match.x + match.length; ++x) {
+                    bool top = false;
+                    const auto *cell = cell_at(x, match.y, &top);
+                    if (cell && cell[0] != 0 && cell[0] != ' ') { color = cell; break; }
+                }
+                if (!color) {
+                    bool top = false;
+                    color = cell_at(match.x, match.y, &top);
+                }
+                foreground = color ? (color[1] << 16) | (color[2] << 8) | color[3] : 0xffffff;
+            }
+            auto foregrounds = colored_match_foregrounds(match, foreground);
+            std::string shortened;
+            const std::string *display_text = &match.target;
+            if (match.layout_ellipsize) {
+                display_text = &shortened;
+                if (const auto fitted = ellipsize_text(match.target, text.w)) {
+                    shortened = fitted->text;
+                    if (fitted->shortened && !foregrounds.empty()) {
+                        const size_t kept = std::min(fitted->kept_codepoints, foregrounds.size());
+                        const int color = foregrounds[kept > 0 ? kept - 1 : 0];
+                        foregrounds.resize(kept);
+                        if (!shortened.empty()) foregrounds.push_back(color);
+                    }
+                }
+            }
+            const auto *glyph = get_glyph_texture(renderer, *display_text, text.w, text.h,
+                match.layout_font_pixels, match.layout_visual_height_pixels, locked, foregrounds);
+            if (glyph && glyph->texture) {
+                const bool left = match.layout_x >= 0 ? match.layout_left
+                    : match.rule >= 0 && rules_[static_cast<size_t>(match.rule)].left_align;
+                SDL_Rect drawn = glyph->destination(text, left, locked);
+                if (match.layout_right) drawn.x = text.x + text.w - drawn.w;
+                SDL_Rect visible{};
+                const SDL_Rect region = native_text_draw_region(match);
+                if (SDL_IntersectRect(&drawn, &region, &visible)) include(visible);
+            }
+        }
+        if (match.graphical_clear_width > 0 && match.graphical_clear_height > 0) {
+            include({origin_x + match.graphical_clear_x * tile_w,
+                origin_y + match.graphical_clear_y * tile_h,
+                match.graphical_clear_width * tile_w,
+                match.graphical_clear_height * tile_h});
+            if (match.graphical_auto_foreground)
+                include({origin_x + match.graphical_clear_x * tile_w,
+                    origin_y + match.layout_y * tile_h +
+                        std::max(0, match.layout_pixel_y - 5),
+                    match.graphical_clear_width * tile_w, tile_h + 3});
+        }
+        if (!match.target.empty() &&
+                (match.rule == -8 || (config_.clear_background && !g_copy_hook_active)))
+            include({origin_x + match.x * tile_w,
+                origin_y + match.y * tile_h, match.length * tile_w, tile_h});
+        paint_bounds = bounds;
+    }
+    const auto *bounds = paint_bounds ? &*paint_bounds : nullptr;
     draw_with_help_clips(renderer, *gps_, occluders, &match,
         [&] {
             if (g_native_toolbar_tooltip && g_native_toolbar_tooltip->widget_frame &&
                 (match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule)) {
                 draw_with_help_clips(renderer, *gps_, g_native_toolbar_tooltip->occlusions, nullptr,
-                    [&] { draw_hover_clipped_match(renderer, match); });
+                    [&] { draw_hover_clipped_match(renderer, match); }, bounds);
             } else draw_hover_clipped_match(renderer, match);
-        });
+        }, bounds);
 }
 
 // The overlay is presented after the game draws the tooltip. Draw each page

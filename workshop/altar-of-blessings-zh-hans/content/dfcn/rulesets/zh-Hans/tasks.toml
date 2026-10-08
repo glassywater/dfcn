@@ -1,0 +1,6 @@
+base = "tasks"
+
+[[rulesets]]
+[rulesets.rules]
+"{::materials::subscribed_blessings}" = "{::materials::subscribed_blessings}"
+

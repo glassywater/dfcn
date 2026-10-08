@@ -10,6 +10,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 RUNTIME_FILES = (
     "libdfcn_core.so", "libdfhooks.so", "LICENSE", "data/runtime/config.ini",
+    "data/runtime/native-addresses/elf-seed.bin",
     "data/runtime/translations.tsv", "data/runtime/name-editor.tsv",
     "data/runtime/instrument-translations.tsv", "data/runtime/adventure-target-translations.tsv",
     "data/runtime/procedural-terms.tsv", "data/runtime/procedural-word-senses.tsv",
@@ -50,6 +51,7 @@ LICENSE_FILES = (
 INSTALLATION = """DFCN Linux x64 / Dwarf Fortress 53.16
 
 此包同时提供 Steam 版与官网免费版的地址绑定，由核心自动选择。
+未知版本自动扫描原生 ELF 地址，完整解析后缓存；ABI 不兼容时保留失败原因。
 将 libdfhooks.so 和整个 dfcn 文件夹解压到包含 dwarfort 的游戏根目录。
 保留游戏原有文件、RAW、存档和设置。无需 DFHack。
 

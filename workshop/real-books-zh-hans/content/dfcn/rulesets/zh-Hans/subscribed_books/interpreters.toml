@@ -1,0 +1,1359 @@
+# 完整 interpreters.lua 非政治正文；政治段由 interpreters_political.toml 负责。
+base = "subscribed_books::interpreters"
+
+[[rulesets]]
+name = "person"
+[rulesets.rules]
+"a {race}" = "{race}"
+"an {race}" = "{race}"
+"{::subscribed_books::vocabulary::person}" = "{::subscribed_books::vocabulary::person}"
+"this figure" = "这位人物"
+"the creature" = "这只生物"
+"the diplomat" = "这位外交官"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+"the settlement" = "这处聚居地"
+"the area" = "当地"
+"the region" = "这一地区"
+"the workshop" = "这间工坊"
+"a battlefield" = "一处战场"
+
+[[rulesets]]
+name = "entity"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::entity}" = "{::subscribed_books::vocabulary::entity}"
+"the group" = "这个团体"
+"the people" = "这个族群"
+"one faction" = "一个派系"
+"another faction" = "另一个派系"
+"a group" = "一个团体"
+
+[[rulesets]]
+name = "artifact"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::artifact}" = "{::subscribed_books::vocabulary::artifact}"
+"a remarkable artifact" = "一件卓越的神器"
+"the artifact" = "这件神器"
+
+[[rulesets]]
+name = "race"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::race}" = "{::subscribed_books::vocabulary::race}"
+"creature" = "生物"
+"beast" = "野兽"
+"figure" = "人物"
+"person" = "人"
+
+[[rulesets]]
+name = "creature"
+[rulesets.rules]
+"a {race}" = "{race}"
+"an {race}" = "{race}"
+"a creature" = "一只生物"
+"what they were" = "原先的形态"
+"something else" = "另一种形态"
+
+[[rulesets]]
+name = "role"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::role}" = "{::subscribed_books::vocabulary::role}"
+"{race}" = "{race}"
+"a position" = "一项职务"
+"leader" = "领袖"
+"leadership" = "领导者"
+
+[[rulesets]]
+name = "relation"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::relation}" = "{::subscribed_books::vocabulary::relation}"
+"connected" = "有所关联"
+"settled" = "定居"
+
+[[rulesets]]
+name = "tags"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::trait}" = "{::subscribed_books::vocabulary::trait}"
+"{::subscribed_books::vocabulary::trait}, {tags}" = "{::subscribed_books::vocabulary::trait}、{tags}"
+
+[[rulesets]]
+name = "roles"
+[rulesets.rules]
+"{role}" = "{role}"
+"{role}, {roles}" = "{role}、{roles}"
+
+[[rulesets]]
+name = "persons"
+[rulesets.rules]
+"{creature}, {persons}" = "{creature}、{persons}"
+"{@bt_member|::subscribed_books::interpreters::person}, {persons}" = "{@bt_member|::subscribed_books::interpreters::person}、{persons}"
+"{creature}" = "{creature}"
+"{@bt_member|::subscribed_books::interpreters::person}" = "{@bt_member|::subscribed_books::interpreters::person}"
+
+[[rulesets]]
+name = "relations"
+[rulesets.rules]
+"{@bt_relative|::subscribed_books::interpreters::person} ({relation})" = "{@bt_relative|::subscribed_books::interpreters::person}（{relation}）"
+"{@bt_relative|::subscribed_books::interpreters::person} ({relation}), {relations}" = "{@bt_relative|::subscribed_books::interpreters::person}（{relation}）、{relations}"
+
+[[rulesets]]
+name = "since"
+[rulesets.rules]
+"since {pos1} last mention in this account" = "自上次在这部记述中提到{pos1}事迹以来"
+"to {pos1} name" = "记在{pos1}名下"
+
+[[rulesets]]
+name = "from_ref"
+[rulesets.rules]
+" from earlier in this account" = "本记述此前出现过"
+" from before" = "从前出现过"
+
+[[rulesets]]
+name = "number"
+[rulesets.rules]
+"{#digits}" = "{#digits}"
+"-{#digits}" = "-{#digits}"
+"?" = "不详"
+
+[[rulesets]]
+name = "ordinal"
+[rulesets.rules]
+"{number}nd" = "{number}"
+"{number}rd" = "{number}"
+"{number}th" = "{number}"
+
+[[rulesets]]
+name = "plural"
+optional = true
+[rulesets.rules]
+"s" = ""
+
+[[rulesets]]
+name = "cause"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::cause}" = "{::subscribed_books::vocabulary::cause}"
+"unknown" = "原因不明"
+"the cause is lost to history" = "死因已湮没于历史"
+
+[[rulesets]]
+name = "work_type"
+[rulesets.rules]
+"a work" = "一部作品"
+"a written work" = "一部著作"
+"a new poetic form" = "一种新的诗歌形式"
+"a new musical form" = "一种新的音乐形式"
+"a new dance form" = "一种新的舞蹈形式"
+
+[[rulesets]]
+name = "work_desc"
+[rulesets.rules]
+"creative work" = "创作"
+"writing" = "写作"
+"poetry" = "诗歌"
+"music" = "音乐"
+"dance" = "舞蹈"
+
+[[rulesets]]
+name = "construction_action"
+[rulesets.rules]
+"rebuilt" = "重新建成"
+"raised" = "建成"
+
+[[rulesets]]
+name = "artifact_action"
+[rulesets.rules]
+"was given" = "获赠"
+"laid claim to" = "宣称拥有"
+"came to possess" = "获得"
+
+[[rulesets]]
+name = "diplomatic_outcome"
+[rulesets.rules]
+"rejected" = "遭到拒绝"
+"concluded" = "达成"
+"formed" = "缔结"
+
+[[rulesets]]
+name = "state"
+[rulesets.rules]
+"entered a new phase of life" = "步入人生的新阶段"
+
+[[rulesets]]
+name = "event"
+[rulesets.rules]
+"{::subscribed_books::narrative::event}" = "{::subscribed_books::narrative::event}"
+[[rulesets]]
+name = "n1"
+[rulesets.rules]
+"{number}" = "{number}"
+
+[[rulesets]]
+name = "year1"
+[rulesets.rules]
+"{number}" = "{number}"
+
+[[rulesets]]
+name = "pro1"
+[rulesets.rules]
+"{::subscribed_books::personality::pro1}" = "{::subscribed_books::personality::pro1}"
+"them" = "他们"
+
+[[rulesets]]
+name = "pos1"
+[rulesets.rules]
+"{::subscribed_books::personality::pos1}" = "{::subscribed_books::personality::pos1}"
+
+[[rulesets]]
+name = "obj1"
+[rulesets.rules]
+"{::subscribed_books::personality::obj1}" = "{::subscribed_books::personality::obj1}"
+
+[[rulesets]]
+name = "ref1"
+[rulesets.rules]
+"{::subscribed_books::personality::ref1}" = "{::subscribed_books::personality::ref1}"
+
+[[rulesets]]
+name = "n2"
+[rulesets.rules]
+"{number}" = "{number}"
+
+[[rulesets]]
+name = "year2"
+[rulesets.rules]
+"{number}" = "{number}"
+
+[[rulesets]]
+name = "pro2"
+[rulesets.rules]
+"{::subscribed_books::personality::pro1}" = "{::subscribed_books::personality::pro1}"
+"them" = "他们"
+
+[[rulesets]]
+name = "pos2"
+[rulesets.rules]
+"{::subscribed_books::personality::pos1}" = "{::subscribed_books::personality::pos1}"
+
+[[rulesets]]
+name = "obj2"
+[rulesets.rules]
+"{::subscribed_books::personality::obj1}" = "{::subscribed_books::personality::obj1}"
+
+[[rulesets]]
+name = "ref2"
+[rulesets.rules]
+"{::subscribed_books::personality::ref1}" = "{::subscribed_books::personality::ref1}"
+
+[[rulesets]]
+name = "n3"
+[rulesets.rules]
+"{number}" = "{number}"
+
+[[rulesets]]
+name = "year3"
+[rulesets.rules]
+"{number}" = "{number}"
+
+[[rulesets]]
+name = "pro3"
+[rulesets.rules]
+"{::subscribed_books::personality::pro1}" = "{::subscribed_books::personality::pro1}"
+"them" = "他们"
+
+[[rulesets]]
+name = "pos3"
+[rulesets.rules]
+"{::subscribed_books::personality::pos1}" = "{::subscribed_books::personality::pos1}"
+
+[[rulesets]]
+name = "obj3"
+[rulesets.rules]
+"{::subscribed_books::personality::obj1}" = "{::subscribed_books::personality::obj1}"
+
+[[rulesets]]
+name = "ref3"
+[rulesets.rules]
+"{::subscribed_books::personality::ref1}" = "{::subscribed_books::personality::ref1}"
+
+[[rulesets]]
+name = "n4"
+[rulesets.rules]
+"{number}" = "{number}"
+
+[[rulesets]]
+name = "year4"
+[rulesets.rules]
+"{number}" = "{number}"
+
+[[rulesets]]
+name = "pro4"
+[rulesets.rules]
+"{::subscribed_books::personality::pro1}" = "{::subscribed_books::personality::pro1}"
+"them" = "他们"
+
+[[rulesets]]
+name = "pos4"
+[rulesets.rules]
+"{::subscribed_books::personality::pos1}" = "{::subscribed_books::personality::pos1}"
+
+[[rulesets]]
+name = "obj4"
+[rulesets.rules]
+"{::subscribed_books::personality::obj1}" = "{::subscribed_books::personality::obj1}"
+
+[[rulesets]]
+name = "ref4"
+[rulesets.rules]
+"{::subscribed_books::personality::ref1}" = "{::subscribed_books::personality::ref1}"
+
+[[rulesets]]
+name = "n5"
+[rulesets.rules]
+"{number}" = "{number}"
+
+[[rulesets]]
+name = "year5"
+[rulesets.rules]
+"{number}" = "{number}"
+
+[[rulesets]]
+name = "pro5"
+[rulesets.rules]
+"{::subscribed_books::personality::pro1}" = "{::subscribed_books::personality::pro1}"
+"them" = "他们"
+
+[[rulesets]]
+name = "pos5"
+[rulesets.rules]
+"{::subscribed_books::personality::pos1}" = "{::subscribed_books::personality::pos1}"
+
+[[rulesets]]
+name = "obj5"
+[rulesets.rules]
+"{::subscribed_books::personality::obj1}" = "{::subscribed_books::personality::obj1}"
+
+[[rulesets]]
+name = "ref5"
+[rulesets.rules]
+"{::subscribed_books::personality::ref1}" = "{::subscribed_books::personality::ref1}"
+
+[[rulesets]]
+name = "n6"
+[rulesets.rules]
+"{number}" = "{number}"
+
+[[rulesets]]
+name = "year6"
+[rulesets.rules]
+"{number}" = "{number}"
+
+[[rulesets]]
+name = "pro6"
+[rulesets.rules]
+"{::subscribed_books::personality::pro1}" = "{::subscribed_books::personality::pro1}"
+"them" = "他们"
+
+[[rulesets]]
+name = "pos6"
+[rulesets.rules]
+"{::subscribed_books::personality::pos1}" = "{::subscribed_books::personality::pos1}"
+
+[[rulesets]]
+name = "obj6"
+[rulesets.rules]
+"{::subscribed_books::personality::obj1}" = "{::subscribed_books::personality::obj1}"
+
+[[rulesets]]
+name = "ref6"
+[rulesets.rules]
+"{::subscribed_books::personality::ref1}" = "{::subscribed_books::personality::ref1}"
+
+[[rulesets]]
+name = "race2"
+[rulesets.rules]
+"{race}" = "{race}"
+
+[[rulesets]]
+name = "creature2"
+[rulesets.rules]
+"{creature}" = "{creature}"
+
+[[rulesets]]
+name = "role2"
+[rulesets.rules]
+"{role}" = "{role}"
+
+[[rulesets]]
+name = "relation2"
+[rulesets.rules]
+"{relation}" = "{relation}"
+
+[[rulesets]]
+name = "tags2"
+[rulesets.rules]
+"{tags}" = "{tags}"
+
+[[rulesets]]
+name = "roles2"
+[rulesets.rules]
+"{roles}" = "{roles}"
+
+[[rulesets]]
+name = "persons2"
+[rulesets.rules]
+"{persons}" = "{persons}"
+
+[[rulesets]]
+name = "relations2"
+[rulesets.rules]
+"{relations}" = "{relations}"
+
+[[rulesets]]
+name = "cause2"
+[rulesets.rules]
+"{cause}" = "{cause}"
+
+[[rulesets]]
+name = "work_type2"
+[rulesets.rules]
+"{work_type}" = "{work_type}"
+
+[[rulesets]]
+name = "work_desc2"
+[rulesets.rules]
+"{work_desc}" = "{work_desc}"
+
+[[rulesets]]
+name = "race3"
+[rulesets.rules]
+"{race}" = "{race}"
+
+[[rulesets]]
+name = "creature3"
+[rulesets.rules]
+"{creature}" = "{creature}"
+
+[[rulesets]]
+name = "role3"
+[rulesets.rules]
+"{role}" = "{role}"
+
+[[rulesets]]
+name = "relation3"
+[rulesets.rules]
+"{relation}" = "{relation}"
+
+[[rulesets]]
+name = "tags3"
+[rulesets.rules]
+"{tags}" = "{tags}"
+
+[[rulesets]]
+name = "roles3"
+[rulesets.rules]
+"{roles}" = "{roles}"
+
+[[rulesets]]
+name = "persons3"
+[rulesets.rules]
+"{persons}" = "{persons}"
+
+[[rulesets]]
+name = "relations3"
+[rulesets.rules]
+"{relations}" = "{relations}"
+
+[[rulesets]]
+name = "cause3"
+[rulesets.rules]
+"{cause}" = "{cause}"
+
+[[rulesets]]
+name = "work_type3"
+[rulesets.rules]
+"{work_type}" = "{work_type}"
+
+[[rulesets]]
+name = "work_desc3"
+[rulesets.rules]
+"{work_desc}" = "{work_desc}"
+
+[[rulesets]]
+name = "race4"
+[rulesets.rules]
+"{race}" = "{race}"
+
+[[rulesets]]
+name = "creature4"
+[rulesets.rules]
+"{creature}" = "{creature}"
+
+[[rulesets]]
+name = "role4"
+[rulesets.rules]
+"{role}" = "{role}"
+
+[[rulesets]]
+name = "relation4"
+[rulesets.rules]
+"{relation}" = "{relation}"
+
+[[rulesets]]
+name = "tags4"
+[rulesets.rules]
+"{tags}" = "{tags}"
+
+[[rulesets]]
+name = "roles4"
+[rulesets.rules]
+"{roles}" = "{roles}"
+
+[[rulesets]]
+name = "persons4"
+[rulesets.rules]
+"{persons}" = "{persons}"
+
+[[rulesets]]
+name = "relations4"
+[rulesets.rules]
+"{relations}" = "{relations}"
+
+[[rulesets]]
+name = "cause4"
+[rulesets.rules]
+"{cause}" = "{cause}"
+
+[[rulesets]]
+name = "work_type4"
+[rulesets.rules]
+"{work_type}" = "{work_type}"
+
+[[rulesets]]
+name = "work_desc4"
+[rulesets.rules]
+"{work_desc}" = "{work_desc}"
+
+[[rulesets]]
+name = "race5"
+[rulesets.rules]
+"{race}" = "{race}"
+
+[[rulesets]]
+name = "creature5"
+[rulesets.rules]
+"{creature}" = "{creature}"
+
+[[rulesets]]
+name = "role5"
+[rulesets.rules]
+"{role}" = "{role}"
+
+[[rulesets]]
+name = "relation5"
+[rulesets.rules]
+"{relation}" = "{relation}"
+
+[[rulesets]]
+name = "tags5"
+[rulesets.rules]
+"{tags}" = "{tags}"
+
+[[rulesets]]
+name = "roles5"
+[rulesets.rules]
+"{roles}" = "{roles}"
+
+[[rulesets]]
+name = "persons5"
+[rulesets.rules]
+"{persons}" = "{persons}"
+
+[[rulesets]]
+name = "relations5"
+[rulesets.rules]
+"{relations}" = "{relations}"
+
+[[rulesets]]
+name = "cause5"
+[rulesets.rules]
+"{cause}" = "{cause}"
+
+[[rulesets]]
+name = "work_type5"
+[rulesets.rules]
+"{work_type}" = "{work_type}"
+
+[[rulesets]]
+name = "work_desc5"
+[rulesets.rules]
+"{work_desc}" = "{work_desc}"
+
+[[rulesets]]
+name = "race6"
+[rulesets.rules]
+"{race}" = "{race}"
+
+[[rulesets]]
+name = "creature6"
+[rulesets.rules]
+"{creature}" = "{creature}"
+
+[[rulesets]]
+name = "role6"
+[rulesets.rules]
+"{role}" = "{role}"
+
+[[rulesets]]
+name = "relation6"
+[rulesets.rules]
+"{relation}" = "{relation}"
+
+[[rulesets]]
+name = "tags6"
+[rulesets.rules]
+"{tags}" = "{tags}"
+
+[[rulesets]]
+name = "roles6"
+[rulesets.rules]
+"{roles}" = "{roles}"
+
+[[rulesets]]
+name = "persons6"
+[rulesets.rules]
+"{persons}" = "{persons}"
+
+[[rulesets]]
+name = "relations6"
+[rulesets.rules]
+"{relations}" = "{relations}"
+
+[[rulesets]]
+name = "cause6"
+[rulesets.rules]
+"{cause}" = "{cause}"
+
+[[rulesets]]
+name = "work_type6"
+[rulesets.rules]
+"{work_type}" = "{work_type}"
+
+[[rulesets]]
+name = "work_desc6"
+[rulesets.rules]
+"{work_desc}" = "{work_desc}"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person}, a {race}." = "{@bt_hero|::subscribed_books::interpreters::person}，{race}。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person}, a {race} born in the year {year1}." = "{@bt_hero|::subscribed_books::interpreters::person}，一位生于{year1}年的{race}。"
+
+[[rulesets]]
+[rulesets.rules]
+"Known to be {tags}." = "以{tags}的性情闻名。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} -- the same {race} from earlier in this account -- appeared once more." = "{@bt_hero|::subscribed_books::interpreters::person}——此前记述中出现过的那位{race}——再度现身。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} was a {race}." = "{@bt_hero|::subscribed_books::interpreters::person}是{race}。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} was an {race}." = "{@bt_hero|::subscribed_books::interpreters::person}是{race}。"
+
+[[rulesets]]
+[rulesets.rules]
+"At the time, {@bt_hero|::subscribed_books::interpreters::person} was {n1} years old." = "那时，{@bt_hero|::subscribed_books::interpreters::person}已{n1}岁。"
+
+[[rulesets]]
+[rulesets.rules]
+"Those who knew {@bt_hero|::subscribed_books::interpreters::person} described the {race} as {tags}." = "熟悉{@bt_hero|::subscribed_books::interpreters::person}的人形容这位{race}性情{tags}。"
+
+[[rulesets]]
+[rulesets.rules]
+"Among {@bt_hero|::subscribed_books::interpreters::person}'s connections: {relations}." = "与{@bt_hero|::subscribed_books::interpreters::person}有关联的人包括：{relations}。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} had held the following roles: {roles}." = "{@bt_hero|::subscribed_books::interpreters::person}曾担任以下职务：{roles}。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} had {n1} recorded kills to {pos1} name." = "{@bt_hero|::subscribed_books::interpreters::person}名下记有{n1}次击杀，均归于{pos1}战绩。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} had {n1} recorded kills to {pos1} name, including {persons}." = "{@bt_hero|::subscribed_books::interpreters::person}名下记有{n1}次击杀，均归于{pos1}战绩，其中包括{persons}。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} had {n1} recorded kills since {pos1} last mention in this account." = "自上次在这部记述中提到{pos1}以来，{@bt_hero|::subscribed_books::interpreters::person}又留下了{n1}次有记录的击杀。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} had {n1} recorded kills since {pos1} last mention in this account, including {persons}." = "自上次在这部记述中提到{pos1}以来，{@bt_hero|::subscribed_books::interpreters::person}又留下了{n1}次有记录的击杀，其中包括{persons}。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} had been wounded {n1} time{plural} to {pos1} name." = "{@bt_hero|::subscribed_books::interpreters::person}有{n1}次{plural}受伤记在{pos1}经历之中。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} had been wounded {n1} time{plural} since {pos1} last mention in this account." = "自上次在这部记述中提到{pos1}以来，{@bt_hero|::subscribed_books::interpreters::person}又受了{n1}次{plural}伤。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} had created {n1} artifact{plural} of note." = "{@bt_hero|::subscribed_books::interpreters::person}曾创造出{n1}件{plural}著名神器。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} possessed forbidden knowledge -- {n1} secret{plural} learned from sources best left unmentioned." = "{@bt_hero|::subscribed_books::interpreters::person}掌握着禁忌知识——从最好不要提及的来源学得的{n1}个{plural}秘密。"
+
+[[rulesets]]
+[rulesets.rules]
+"But the story of {@bt_hero|::subscribed_books::interpreters::person} was far from over." = "但{@bt_hero|::subscribed_books::interpreters::person}的故事远未结束。"
+
+[[rulesets]]
+[rulesets.rules]
+"This would not be the last time {@bt_hero|::subscribed_books::interpreters::person} would make {pos1} presence known." = "这不会是{@bt_hero|::subscribed_books::interpreters::person}最后一次让世人注意到{pos1}存在。"
+
+[[rulesets]]
+[rulesets.rules]
+"The people had not seen the last of {@bt_hero|::subscribed_books::interpreters::person}. Not by a long measure." = "人们与{@bt_hero|::subscribed_books::interpreters::person}的缘分还远没有结束，远远没有。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} was already dead by this point, having perished in the year {year1}." = "此时{@bt_hero|::subscribed_books::interpreters::person}已经死去，亡于{year1}年。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person}'s fate, in the end, was sealed. But that is a story for another time." = "{@bt_hero|::subscribed_books::interpreters::person}的命运终究已经注定，但那是留待以后再讲的故事。"
+
+[[rulesets]]
+[rulesets.rules]
+"As of this writing, {@bt_hero|::subscribed_books::interpreters::person} endures." = "截至写下这段文字时，{@bt_hero|::subscribed_books::interpreters::person}仍然健在。"
+
+[[rulesets]]
+[rulesets.rules]
+"The {race} returned. {@bt_hero|::subscribed_books::interpreters::person}, the same creature{from_ref}, appeared once more near {@bt_site|::subscribed_books::interpreters::place}. The people had feared this day. They had posted guards, strengthened fences, kept their animals close. None of it mattered." = "那只{race}回来了。{@bt_hero|::subscribed_books::interpreters::person}，{from_ref}的同一只生物，再度现身于{@bt_site|::subscribed_books::interpreters::place}附近。人们一直害怕这一天的到来，安排了守卫，加固了围栏，将牲畜留在身旁。但这一切都没有用。"
+
+[[rulesets]]
+[rulesets.rules]
+# The two native from_ref suffixes must delimit the preceding place capture.
+"It was {@bt_hero|::subscribed_books::interpreters::person} again. The {race} that had haunted {@bt_site|::subscribed_books::interpreters::place} from earlier in this account had come back, as the elders had warned it would. The creature was bolder now -- or perhaps just hungrier." = "又是{@bt_hero|::subscribed_books::interpreters::person}。本记述此前出现过、曾盘踞{@bt_site|::subscribed_books::interpreters::place}的那只{race}回来了，正如长者们警告过的那样。它如今更加大胆——或许只是更加饥饿。"
+"It was {@bt_hero|::subscribed_books::interpreters::person} again. The {race} that had haunted {@bt_site|::subscribed_books::interpreters::place} from before had come back, as the elders had warned it would. The creature was bolder now -- or perhaps just hungrier." = "又是{@bt_hero|::subscribed_books::interpreters::person}。从前出现过、曾盘踞{@bt_site|::subscribed_books::interpreters::place}的那只{race}回来了，正如长者们警告过的那样。它如今更加大胆——或许只是更加饥饿。"
+
+[[rulesets]]
+[rulesets.rules]
+"The nightmare that the people of {@bt_site|::subscribed_books::interpreters::place} had prayed was over had only been sleeping. {@bt_hero|::subscribed_books::interpreters::person}, the {race}{from_ref}, was back. And it was hungry." = "{@bt_site|::subscribed_books::interpreters::place}的人们曾祈祷噩梦就此结束，可噩梦只是睡着了。{@bt_hero|::subscribed_books::interpreters::person}，{from_ref}的那只{race}，又回来了。它正饥肠辘辘。"
+
+[[rulesets]]
+[rulesets.rules]
+"The {race} known as {@bt_hero|::subscribed_books::interpreters::person} was no stranger to the lands around {@bt_site|::subscribed_books::interpreters::place}. It had prowled the outskirts for as long as anyone could remember, a shadow at the edge of firelight, a shape glimpsed between the trees. The people of {@bt_site2|::subscribed_books::interpreters::place} knew its name, and they spoke it with unease." = "名为{@bt_hero|::subscribed_books::interpreters::person}的{race}，早已熟悉{@bt_site|::subscribed_books::interpreters::place}周围的土地。人们记忆所及，它一直游荡在边缘地带，像火光尽头的阴影，像林木间一闪而过的身形。{@bt_site2|::subscribed_books::interpreters::place}的人们知道它的名字，提起时总带着不安。"
+
+[[rulesets]]
+[rulesets.rules]
+"By the year {year1}, the creature was {n1} years old -- ancient by any measure, and all the more dangerous for the decades of hunting experience it had accumulated." = "到了{year1}年，这只生物已经{n1}岁——无论如何都算得上古老，而积累了数十年的狩猎经验，更使它危险无比。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, at {n1} years old, it was old enough to have outlived most of the settlers who first encountered it." = "{year1}年，它已{n1}岁，早已活过了最初遇见它的大多数定居者。"
+
+[[rulesets]]
+[rulesets.rules]
+"At {n1} years old, the creature was in its prime -- strong, quick, and utterly without mercy." = "{n1}岁的它正值壮年——强壮、敏捷，而且毫无怜悯。"
+
+[[rulesets]]
+[rulesets.rules]
+"Those who had observed the creature noted its {tags} nature." = "观察过这只生物的人，都注意到它{tags}的性情。"
+
+[[rulesets]]
+[rulesets.rules]
+"Since its last appearance, {@bt_hero|::subscribed_books::interpreters::person} had struck {n1} more time{plural}." = "上次现身以来，{@bt_hero|::subscribed_books::interpreters::person}又发动了{n1}次{plural}袭击。"
+
+[[rulesets]]
+[rulesets.rules]
+"Among the recent victims: {persons}." = "近期的受害者包括：{persons}。"
+
+[[rulesets]]
+[rulesets.rules]
+"The creature was growing bolder." = "这只生物越来越大胆了。"
+
+[[rulesets]]
+[rulesets.rules]
+"This was not the first time {@bt_hero|::subscribed_books::interpreters::person} had struck. The records of {@bt_site|::subscribed_books::interpreters::place} documented at least {n1} other incidents attributed to this same {race}." = "这并非{@bt_hero|::subscribed_books::interpreters::person}第一次袭击。{@bt_site|::subscribed_books::interpreters::place}的记录中，至少还有{n1}起事件归咎于这同一只{race}。"
+
+[[rulesets]]
+[rulesets.rules]
+"Previous victims included {persons}." = "此前的受害者包括{persons}。"
+
+[[rulesets]]
+[rulesets.rules]
+"The creature had become a persistent menace, a shadow that the people of {@bt_site|::subscribed_books::interpreters::place} could neither catch nor ignore." = "这只生物已成为挥之不去的威胁，像一道阴影，{@bt_site|::subscribed_books::interpreters::place}的人们既抓不住它，也无法忽视它。"
+
+[[rulesets]]
+[rulesets.rules]
+"Whether this was the creature's first attack near {@bt_site|::subscribed_books::interpreters::place} or merely the first one recorded, no one could say. But the ease with which it struck suggested a predator well acquainted with the habits of the settlement." = "谁也说不清，这究竟是它第一次袭击{@bt_site|::subscribed_books::interpreters::place}附近，还是第一次被记录下来。但它袭击得如此轻易，显然早已熟知聚居地的生活规律。"
+
+[[rulesets]]
+[rulesets.rules]
+"The victim was {creature}." = "受害者是{creature}。"
+
+[[rulesets]]
+[rulesets.rules]
+"For the settlers of {@bt_site|::subscribed_books::interpreters::place}, the loss of even a single animal was no trivial matter. Every beast represented food, labor, or breeding stock -- resources that could not be easily replaced on the frontier." = "对{@bt_site|::subscribed_books::interpreters::place}的定居者而言，哪怕只失去一只牲畜，也绝非小事。每一只动物都意味着食物、劳力或种畜——这些资源在边疆都难以补充。"
+
+[[rulesets]]
+[rulesets.rules]
+"It was only {creature}, some might say. But to the people of {@bt_site|::subscribed_books::interpreters::place}, whose survival depended on every animal they could keep alive through the winter, there was no such thing as \"only\" when it came to losses." = "有人也许会说，不过是{creature}罢了。可对{@bt_site|::subscribed_books::interpreters::place}的人们来说，每一只熬过冬天的动物都关乎生存，损失面前，根本没有“不过”二字。"
+
+[[rulesets]]
+[rulesets.rules]
+"The creature was found -- what remained of it -- at the edge of the pasture. The {race} had eaten its fill and left the rest as a message, or perhaps simply as waste." = "人们在牧场边缘发现了那只动物——或者说，它残存的部分。那只{race}饱餐一顿，将余下的留作警告，也可能只是当作废物丢弃。"
+
+[[rulesets]]
+[rulesets.rules]
+"The attack came in the year {year1}. {@bt_hero|::subscribed_books::interpreters::person} had crept close to {@bt_site|::subscribed_books::interpreters::place}, moving with the patience of a creature that has learned exactly how far it can push its luck. When it struck, it moved fast -- faster than anything that size had a right to move. {creature} never had a chance." = "袭击发生于{year1}年。{@bt_hero|::subscribed_books::interpreters::person}悄悄接近{@bt_site|::subscribed_books::interpreters::place}，耐心十足，仿佛早已摸清自己可以冒险到何种程度。发动袭击时，它快得惊人——快得不该属于那样庞大的身体。{creature}根本没有逃生的机会。"
+
+[[rulesets]]
+[rulesets.rules]
+"It happened in {year1}. The details vary depending on who tells the story, but the outline is consistent: {@bt_hero|::subscribed_books::interpreters::person} appeared near {@bt_site|::subscribed_books::interpreters::place}, took {creature}, and vanished back into the wild before anyone could mount a response." = "事情发生在{year1}年。不同的人讲述时，细节各有出入，但大致经过相同：{@bt_hero|::subscribed_books::interpreters::person}出现在{@bt_site|::subscribed_books::interpreters::place}附近，抓走了{creature}，在人们来得及应对之前，就消失在荒野之中。"
+
+[[rulesets]]
+[rulesets.rules]
+"In the year {year1}, {@bt_hero|::subscribed_books::interpreters::person} struck at {@bt_site|::subscribed_books::interpreters::place} with the brazenness of a creature that had stopped fearing the settlement's defenses. {creature} was seized and dragged away. By the time the alarm was raised, the {race} was gone, leaving only tracks, blood, and the growing conviction that something had to be done." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}肆无忌惮地袭击了{@bt_site|::subscribed_books::interpreters::place}，仿佛早已不再畏惧聚居地的防御。{creature}被抓住拖走。警报响起时，那只{race}已经离去，只留下足迹、鲜血，以及越来越强烈的念头：必须采取行动。"
+
+[[rulesets]]
+[rulesets.rules]
+"Fear settled over {@bt_site|::subscribed_books::interpreters::place}. Children were kept indoors. Livestock was counted twice daily. Armed patrols walked the perimeter, jumping at shadows. {@bt_hero|::subscribed_books::interpreters::person} had reminded the people of something they preferred to forget: that the wilderness was not tame, and the walls of {@bt_site2|::subscribed_books::interpreters::place} were not as strong as they looked. Conversations turned to hunting parties, to bounties, to the question of whether this {race} could be killed at all." = "恐惧笼罩了{@bt_site|::subscribed_books::interpreters::place}。孩子被留在屋里，牲畜每天清点两次，武装巡逻队沿边界行走，见到影子都要惊跳。{@bt_hero|::subscribed_books::interpreters::person}提醒了人们一件他们宁愿忘记的事：荒野从未被驯服，而{@bt_site2|::subscribed_books::interpreters::place}的城墙也没有看起来那么坚固。谈论的话题转向猎捕队、悬赏，以及这只{race}究竟能不能被杀死。"
+
+[[rulesets]]
+[rulesets.rules]
+"The people of {@bt_site|::subscribed_books::interpreters::place} gathered to decide what could be done. The young warriors spoke of tracking the {race} to its lair and ending the threat once and for all. The elders, who had seen such expeditions before, counseled patience and stronger fences. The argument went back and forth, as arguments in {@bt_site2|::subscribed_books::interpreters::place} always did, and in the end nothing was decided -- which was itself a decision, and not a good one." = "{@bt_site|::subscribed_books::interpreters::place}的人们聚在一起，商议对策。年轻战士主张追踪那只{race}到巢穴，一劳永逸地消除威胁。长者们见过这样的远征，劝大家耐心等待，先加固围栏。争论来来回回，就像{@bt_site2|::subscribed_books::interpreters::place}以往的争论一样，最终什么也没有决定——这本身也是一种决定，而且并不好。"
+
+[[rulesets]]
+[rulesets.rules]
+"In the days that followed, {@bt_site|::subscribed_books::interpreters::place} was a changed place. The easy confidence that had characterized the settlement was gone, replaced by a wariness that touched everything -- the way people walked to the well, the way they counted their animals at dusk, the way they listened to the sounds of the night. {@bt_hero|::subscribed_books::interpreters::person} had not merely taken {creature}. The {race} had taken something more valuable: the illusion of safety." = "随后的日子里，{@bt_site|::subscribed_books::interpreters::place}变了。聚居地以往轻松的自信消失了，取而代之的是渗入一切的警惕——人们走向水井的方式、黄昏清点牲畜的方式、倾听夜间声音的方式，都不同了。{@bt_hero|::subscribed_books::interpreters::person}夺走的不只是{creature}，那只{race}还夺走了更珍贵的东西：安全的幻觉。"
+
+[[rulesets]]
+[rulesets.rules]
+"This would not be the last time {@bt_hero|::subscribed_books::interpreters::person} would trouble the people of {@bt_site|::subscribed_books::interpreters::place}. The {race} would return. It always did." = "这不会是{@bt_hero|::subscribed_books::interpreters::person}最后一次侵扰{@bt_site|::subscribed_books::interpreters::place}的人们。那只{race}还会回来。它总会回来。"
+
+[[rulesets]]
+[rulesets.rules]
+"The people of {@bt_site|::subscribed_books::interpreters::place} had not seen the last of {@bt_hero|::subscribed_books::interpreters::person}. The {race} was still out there, and it was patient." = "{@bt_site|::subscribed_books::interpreters::place}的人们还会再遇到{@bt_hero|::subscribed_books::interpreters::person}。那只{race}仍在外面，耐心十足。"
+
+[[rulesets]]
+[rulesets.rules]
+"But the story of {@bt_hero|::subscribed_books::interpreters::person} was far from over. What came next would test the resolve of {@bt_site|::subscribed_books::interpreters::place} to its breaking point." = "但{@bt_hero|::subscribed_books::interpreters::person}的故事远未结束。接下来发生的事，会将{@bt_site|::subscribed_books::interpreters::place}的决心考验到极限。"
+
+[[rulesets]]
+[rulesets.rules]
+"It would be another {n1} years before {@bt_hero|::subscribed_books::interpreters::person} met its end. Until then, the {race} continued to haunt {@bt_site|::subscribed_books::interpreters::place}." = "又过了{n1}年，{@bt_hero|::subscribed_books::interpreters::person}才迎来末日。在此之前，那只{race}一直侵扰着{@bt_site|::subscribed_books::interpreters::place}。"
+
+[[rulesets]]
+[rulesets.rules]
+"The year {year1} would prove to be {@bt_hero|::subscribed_books::interpreters::person}'s last. The {race} did not survive to threaten {@bt_site|::subscribed_books::interpreters::place} again." = "{year1}年成为{@bt_hero|::subscribed_books::interpreters::person}的最后一年。那只{race}没能活下来，再次威胁{@bt_site|::subscribed_books::interpreters::place}。"
+
+[[rulesets]]
+[rulesets.rules]
+"As of this writing, {@bt_hero|::subscribed_books::interpreters::person} remains at large. The {race} is out there still, somewhere beyond {@bt_site|::subscribed_books::interpreters::place}'s reach, waiting." = "截至写下这段文字时，{@bt_hero|::subscribed_books::interpreters::person}仍在游荡。那只{race}依旧在外面，在{@bt_site|::subscribed_books::interpreters::place}无法触及的某个地方，等待着。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} was slain by {@bt_slayer|::subscribed_books::interpreters::person} at {@bt_site|::subscribed_books::interpreters::place} in {year1}." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}在{@bt_site|::subscribed_books::interpreters::place}被{@bt_slayer|::subscribed_books::interpreters::person}杀死。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} died of old age in {year1} at {@bt_site|::subscribed_books::interpreters::place}. It was a peaceful end to a life fully lived." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}在{@bt_site|::subscribed_books::interpreters::place}寿终正寝。充实的一生迎来了安宁的结局。"
+
+[[rulesets]]
+[rulesets.rules]
+"A wound turned septic. {@bt_hero|::subscribed_books::interpreters::person} fought the infection stubbornly, but the body has limits. In {year1}, it claimed what combat could not." = "一道伤口化脓感染。{@bt_hero|::subscribed_books::interpreters::person}顽强地对抗感染，可肉体终有极限。{year1}年，感染夺走了战斗未能夺走的性命。"
+
+[[rulesets]]
+[rulesets.rules]
+"The waters near {@bt_site|::subscribed_books::interpreters::place} claimed {@bt_hero|::subscribed_books::interpreters::person} in {year1}." = "{year1}年，{@bt_site|::subscribed_books::interpreters::place}附近的水域夺去了{@bt_hero|::subscribed_books::interpreters::person}的性命。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} was consumed by {cause} in {year1} at {@bt_site|::subscribed_books::interpreters::place}." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}在{@bt_site|::subscribed_books::interpreters::place}死于{cause}。"
+
+[[rulesets]]
+[rulesets.rules]
+"A collapse at {@bt_site|::subscribed_books::interpreters::place} killed {@bt_hero|::subscribed_books::interpreters::person} in {year1}. There was no time to react." = "{year1}年，{@bt_site|::subscribed_books::interpreters::place}的坍塌夺去了{@bt_hero|::subscribed_books::interpreters::person}的性命，根本来不及反应。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} died in {year1} at {@bt_site|::subscribed_books::interpreters::place}. The cause: {cause}." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}死于{@bt_site|::subscribed_books::interpreters::place}。死因：{cause}。"
+
+[[rulesets]]
+[rulesets.rules]
+"In the year {year1}, {@bt_a|::subscribed_books::interpreters::person} and {@bt_b|::subscribed_books::interpreters::person} were joined. The union was not merely personal -- in {@bt_site|::subscribed_books::interpreters::place}, every bond between families carried political weight, and this one was no exception." = "{year1}年，{@bt_a|::subscribed_books::interpreters::person}与{@bt_b|::subscribed_books::interpreters::person}结合了。这段结合并非只关乎个人——在{@bt_site|::subscribed_books::interpreters::place}，家族间的每一条纽带都带着政治分量，这一条也不例外。"
+
+[[rulesets]]
+[rulesets.rules]
+"The year {year1} brought {@bt_a|::subscribed_books::interpreters::person} and {@bt_b|::subscribed_books::interpreters::person} together. Whether the match was born of affection or arrangement, the result was the same: two lives, two families, two sets of obligations woven into one." = "{year1}年，{@bt_a|::subscribed_books::interpreters::person}与{@bt_b|::subscribed_books::interpreters::person}走到了一起。无论出于感情还是安排，结果都一样：两段人生、两个家族、两份责任交织成了一体。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_a|::subscribed_books::interpreters::person} and {@bt_b|::subscribed_books::interpreters::person} became {relation} in {year1}. In a world where alliances were fragile and betrayals common, the bond between them was an anchor -- for both of them, and for those who depended on their stability." = "{year1}年，{@bt_a|::subscribed_books::interpreters::person}与{@bt_b|::subscribed_books::interpreters::person}成为{relation}。在这个联盟脆弱、背叛常见的世界里，两人的纽带是一枚锚——稳住了他们，也稳住了那些依赖他们的人。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_a|::subscribed_books::interpreters::person} took {@bt_b|::subscribed_books::interpreters::person} as a traveling companion. The road was dangerous, and those who walked it alone did not walk it long. Together, they would face what neither could face alone." = "{year1}年，{@bt_a|::subscribed_books::interpreters::person}与{@bt_b|::subscribed_books::interpreters::person}结为旅伴。道路危险，独行者往往走不了多远。他们将共同面对任何一人独自都无法面对的事。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_a|::subscribed_books::interpreters::person} took {@bt_b|::subscribed_books::interpreters::person} as an apprentice. The knowledge that would pass between them -- the skills, the judgment, the hard lessons -- would shape {@bt_b2|::subscribed_books::interpreters::person}'s life for decades to come." = "{year1}年，{@bt_a|::subscribed_books::interpreters::person}收{@bt_b|::subscribed_books::interpreters::person}为徒。两人之间传授的知识——技能、判断力，以及艰难的教训——将影响{@bt_b2|::subscribed_books::interpreters::person}此后数十年的人生。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_a|::subscribed_books::interpreters::person} took {@bt_b|::subscribed_books::interpreters::person} prisoner. The circumstances of the capture would define both their fates -- captor and captive, bound by an act of violence that neither could undo." = "{year1}年，{@bt_a|::subscribed_books::interpreters::person}俘获了{@bt_b|::subscribed_books::interpreters::person}。这次俘获的经过将决定双方的命运——俘获者与俘虏，被一场谁也无法挽回的暴力绑在一起。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_a|::subscribed_books::interpreters::person} and {@bt_b|::subscribed_books::interpreters::person} became {relation}. The bond would shape both their lives in ways neither could foresee." = "{year1}年，{@bt_a|::subscribed_books::interpreters::person}与{@bt_b|::subscribed_books::interpreters::person}成为{relation}。这条纽带将以双方都无法预见的方式，改变两人的人生。"
+
+[[rulesets]]
+[rulesets.rules]
+"The two had crossed paths before. In the year {year1}, both had been at {@bt_site|::subscribed_books::interpreters::place} during a time of violence. Whether they fought side by side or merely survived the same ordeal, the experience bound them." = "两人此前就有过交集。{year1}年，在一段暴力肆虐的日子里，双方都曾身处{@bt_site|::subscribed_books::interpreters::place}。无论是并肩作战，还是仅仅从同一场苦难中生还，那段经历都将他们联系起来。"
+
+[[rulesets]]
+[rulesets.rules]
+"Both {@bt_a|::subscribed_books::interpreters::person} and {@bt_b|::subscribed_books::interpreters::person} had served {@bt_entity|::subscribed_books::interpreters::entity}. The shared loyalty -- to the same people, the same cause, the same struggles -- had laid the groundwork for what came next." = "{@bt_a|::subscribed_books::interpreters::person}与{@bt_b|::subscribed_books::interpreters::person}都曾为{@bt_entity|::subscribed_books::interpreters::entity}效力。共同的忠诚——面对同一个族群、同一个事业、同样的抗争——为此后的发展打下了基础。"
+
+[[rulesets]]
+[rulesets.rules]
+"What drew {@bt_a|::subscribed_books::interpreters::person} to {@bt_b|::subscribed_books::interpreters::person} was not recorded. Perhaps it was proximity -- both had lived in {@bt_site|::subscribed_books::interpreters::place} long enough for familiarity to become something more." = "{@bt_a|::subscribed_books::interpreters::person}为何被{@bt_b|::subscribed_books::interpreters::person}吸引，记录中并未说明。也许只是因为距离近——两人都在{@bt_site|::subscribed_books::interpreters::place}生活得够久，熟悉逐渐化成了更深的情感。"
+
+[[rulesets]]
+[rulesets.rules]
+"The circumstances that brought {@bt_a|::subscribed_books::interpreters::person} and {@bt_b|::subscribed_books::interpreters::person} together were ordinary enough. But the bond that formed between them was not." = "让{@bt_a|::subscribed_books::interpreters::person}与{@bt_b|::subscribed_books::interpreters::person}相遇的情形十分平常，但两人之间形成的纽带却并不平凡。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} {relation} at {@bt_site|::subscribed_books::interpreters::place}. The decision to put down roots was never simple -- it meant accepting a place as home, with all the obligations and vulnerabilities that entailed." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}在{@bt_site|::subscribed_books::interpreters::place}{relation}。决定扎根从来不简单——这意味着认定一处地方为家，并承担随之而来的责任与脆弱。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} arrived at {@bt_site|::subscribed_books::interpreters::place} in {year1} and {relation}. Whether {@bt_hero2|::subscribed_books::interpreters::person} came seeking safety, opportunity, or simply a change, {@bt_site2|::subscribed_books::interpreters::place} would become the backdrop for the next chapter of {pos1} life." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}来到{@bt_site|::subscribed_books::interpreters::place}并{relation}。无论{@bt_hero2|::subscribed_books::interpreters::person}是来寻找安全、机会，还是仅仅想换种生活，{@bt_site2|::subscribed_books::interpreters::place}都将成为{pos1}人生下一章的舞台。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} departed from {@bt_site|::subscribed_books::interpreters::place}. The settlement had seen {n1} deaths in the years leading up to the departure. Whether {@bt_hero2|::subscribed_books::interpreters::person} was fleeing the violence or simply tired of watching others fall, the result was the same: {@bt_site2|::subscribed_books::interpreters::place} lost another soul." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}离开了{@bt_site|::subscribed_books::interpreters::place}。离去前的几年里，聚居地已有{n1}人丧命。无论{@bt_hero2|::subscribed_books::interpreters::person}是在逃离暴力，还是只因厌倦目睹他人倒下，结果都一样：{@bt_site2|::subscribed_books::interpreters::place}又失去了一个人。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} left {@bt_site|::subscribed_books::interpreters::place}. The departure was quiet -- no ceremony, no farewell address. {@bt_hero2|::subscribed_books::interpreters::person} simply gathered what mattered and walked away from what did not." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}离开了{@bt_site|::subscribed_books::interpreters::place}。离去悄无声息，没有仪式，也没有告别致辞。{@bt_hero2|::subscribed_books::interpreters::person}只是收拾起重要的东西，将其余一切留在身后。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} departed from {@bt_site|::subscribed_books::interpreters::place} in {year1}. The reasons were personal, and the records do not elaborate. But {@bt_site2|::subscribed_books::interpreters::place} was diminished by the loss." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}离开{@bt_site|::subscribed_books::interpreters::place}。原因属于个人私事，记录没有详述。但这一离去，让{@bt_site2|::subscribed_books::interpreters::place}有所失落。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} assumed the identity of {@bt_target|::subscribed_books::interpreters::person}. The impersonation was deliberate, sustained, and executed with a precision that suggested long planning. To become someone else -- to wear their name, their history, their face in the eyes of others -- was an act of either brilliance or desperation." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}冒用了{@bt_target|::subscribed_books::interpreters::person}的身份。这场冒充蓄意而持久，实施得极为精准，显然经过了长期谋划。成为另一个人——在他人眼中披上对方的名字、经历和面容——这样的行为，若非聪明绝顶，便是绝望至极。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} disappeared behind a false identity. The person the world had known ceased to exist, replaced by a fiction carefully constructed to survive scrutiny." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}藏身于虚假身份之后。世人熟悉的那个人不复存在，取而代之的是一个精心编造、经得起审视的虚构人物。"
+
+[[rulesets]]
+[rulesets.rules]
+"The deception had a clear motive. {@bt_hero|::subscribed_books::interpreters::person} had been declared a criminal by {@bt_entity|::subscribed_books::interpreters::entity}. With that designation came pursuit, and with pursuit came the need to become someone else entirely. The false identity was not a choice -- it was a survival strategy." = "欺骗有着明确的动机。{@bt_hero|::subscribed_books::interpreters::person}已被{@bt_entity|::subscribed_books::interpreters::entity}宣布为罪犯，随之而来的是追捕，而追捕迫使其彻底变成另一个人。虚假身份并非任意选择，而是求生之策。"
+
+[[rulesets]]
+[rulesets.rules]
+"What drove {@bt_hero|::subscribed_books::interpreters::person} to this deception? The records do not say with certainty. But the act spoke of someone who had exhausted every honest option, and found only this one remaining." = "是什么驱使{@bt_hero|::subscribed_books::interpreters::person}做出这场欺骗？记录没有给出确切答案。但这一举动表明，所有正当的选择都已耗尽，只剩下这最后一条路。"
+
+[[rulesets]]
+[rulesets.rules]
+"The motive behind the deception was a matter of speculation. Some believed {@bt_hero|::subscribed_books::interpreters::person} was fleeing a debt. Others suggested a more personal reason -- a past too painful to carry under {pos1} own name. The truth, as always, was probably simpler and sadder than the theories." = "欺骗的动机引来种种猜测。有人认为{@bt_hero|::subscribed_books::interpreters::person}在躲债，另一些人猜测原因更加私人——那段过去太过痛苦，无法再由{pos1}原本的名字承载。真相一如既往，可能比这些说法更简单，也更令人悲伤。"
+
+[[rulesets]]
+[rulesets.rules]
+"To live as someone else was to give up everything that made {@bt_hero|::subscribed_books::interpreters::person} who {pro1} were. Every conversation was a performance. Every friendship was built on a lie. The mask, once worn, could not be set down without destroying everything it had built." = "以别人的身份活着，就意味着放弃所有让{@bt_hero|::subscribed_books::interpreters::person}成为{pro1}自己的东西。每次交谈都是表演，每段友谊都建立在谎言上。面具一旦戴上，就无法摘下，否则由它建立的一切都会毁灭。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} was transformed from {creature} into {creature2}. The change was absolute. What had been {creature3} -- with all the memories, the skills, the identity that entailed -- was reshaped into something fundamentally different." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}从{creature}变成了{creature2}。变化彻底而绝对。原本的{creature3}——连同其记忆、技能和身份——被重塑为一种根本不同的存在。"
+
+[[rulesets]]
+[rulesets.rules]
+"The transformation was not an accident of nature. It was {@bt_transformer|::subscribed_books::interpreters::person} who wielded the power that remade {@bt_hero|::subscribed_books::interpreters::person}. Whether it was a curse, a punishment, or something the victim had sought, the effect was the same: the person who had existed before was gone." = "这场变化并非自然的偶然。是{@bt_transformer|::subscribed_books::interpreters::person}运用力量，重塑了{@bt_hero|::subscribed_books::interpreters::person}。无论是诅咒、惩罚，还是受害者自己寻求的结果，效果都一样：先前存在的那个人，已然消失。"
+
+[[rulesets]]
+[rulesets.rules]
+"The power that reshaped {@bt_hero|::subscribed_books::interpreters::person} left no clear signature. Whether it was a curse laid by a forgotten enemy, a consequence of forbidden knowledge, or something older and stranger, the transformation was complete and irreversible." = "重塑{@bt_hero|::subscribed_books::interpreters::person}的力量，没有留下明确的痕迹。无论是被遗忘的敌人施下诅咒，禁忌知识带来的后果，还是更加古老怪异的东西，这场变化都已彻底完成，再也无法逆转。"
+
+[[rulesets]]
+[rulesets.rules]
+"The body that {@bt_hero|::subscribed_books::interpreters::person} now inhabited was not {pos1} own. The hands were wrong. The instincts were wrong. Everything that had been second nature -- walking, speaking, the simple act of being -- had to be relearned in a form that fought {pro1} at every step." = "{@bt_hero|::subscribed_books::interpreters::person}如今身处的身体，已不再是{pos1}原本的身体。双手不对，本能不对。所有曾经习以为常的事——行走、说话，乃至单纯地存在——都得重新学习，而这具身体每一步都在与{pro1}作对。"
+
+[[rulesets]]
+name = "builder"
+optional = true
+[rulesets.rules]
+" The expedition was led by {@bt_builder|::subscribed_books::interpreters::person}." = "这支探险队由{@bt_builder|::subscribed_books::interpreters::person}率领。"
+
+[[rulesets]]
+name = "oversight"
+optional = true
+[rulesets.rules]
+" {@bt_supervisor|::subscribed_books::interpreters::person} oversaw the work." = "{@bt_supervisor|::subscribed_books::interpreters::person}监督了这项工程。"
+[[rulesets]]
+[rulesets.rules]
+"In the year {year1}, {@bt_entity|::subscribed_books::interpreters::entity} founded {@bt_site|::subscribed_books::interpreters::place}.{builder} The decision to establish a new settlement was never made lightly -- it required resources, planning, and the willingness to stake everything on an uncertain future." = "{year1}年，{@bt_entity|::subscribed_books::interpreters::entity}建立了{@bt_site|::subscribed_books::interpreters::place}。{builder}建立新聚居地的决定从来不会轻易作出——它需要资源、计划，以及将一切押在不确定的未来上的决心。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_site|::subscribed_books::interpreters::place} was founded in {year1} by {@bt_entity|::subscribed_books::interpreters::entity}.{builder} The land was chosen with care: defensible, resourceful, and far enough from existing settlements to be worth the risk of starting fresh." = "{@bt_site|::subscribed_books::interpreters::place}由{@bt_entity|::subscribed_books::interpreters::entity}建立于{year1}年。{builder}这片土地经过精心挑选：易于防守、资源丰富，而且离既有聚居地足够远，值得冒险重新开始。"
+
+[[rulesets]]
+[rulesets.rules]
+"The year {year1} marked the birth of {@bt_site|::subscribed_books::interpreters::place}. {@bt_entity|::subscribed_books::interpreters::entity} sent an expedition into the wilderness, and the expedition did not come back -- because it had found what it was looking for.{builder}" = "{year1}年，{@bt_site|::subscribed_books::interpreters::place}诞生了。{@bt_entity|::subscribed_books::interpreters::entity}派出一支探险队进入荒野，而探险队没有回来——因为他们已经找到了所寻求的地方。{builder}"
+
+[[rulesets]]
+[rulesets.rules]
+"The founding was not born of ambition alone. {@bt_entity|::subscribed_books::interpreters::entity} had been embroiled in conflict with {@bt_enemy|::subscribed_books::interpreters::entity}, and the need for new territory -- defensible, distant from the front lines, rich enough to sustain a population under pressure -- had become urgent. {@bt_site|::subscribed_books::interpreters::place} was the answer to that need." = "这次建城不只是出于野心。{@bt_entity|::subscribed_books::interpreters::entity}与{@bt_enemy|::subscribed_books::interpreters::entity}深陷冲突，迫切需要新的领地——易守、远离前线，而且足够富饶，能养活承受压力的民众。{@bt_site|::subscribed_books::interpreters::place}正是这一需求的答案。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_site|::subscribed_books::interpreters::place} was not {@bt_entity|::subscribed_books::interpreters::entity}'s first settlement. At least {n1} other site{plural} had been founded before it. This was a civilization expanding, claiming new ground, pushing the boundaries of the known world outward. Each new settlement was a statement of intent: we will endure, and we will grow." = "{@bt_site|::subscribed_books::interpreters::place}并非{@bt_entity|::subscribed_books::interpreters::entity}的第一处聚居地。在它之前，至少已有{n1}处{plural}其他聚居地建立起来。这是一个不断扩展的文明，开拓新土地，将已知世界的边界向外推移。每一处新聚居地，都在宣告同一个决心：我们要存续，也要壮大。"
+
+[[rulesets]]
+[rulesets.rules]
+"The land around {@bt_site|::subscribed_books::interpreters::place} was untamed. The first settlers arrived to find wilderness -- beautiful, dangerous, and entirely indifferent to their survival. Everything they would build, they would build from nothing." = "{@bt_site|::subscribed_books::interpreters::place}周围的土地尚未开化。最初的定居者到来时，眼前只有荒野——美丽、危险，而且全然不在乎他们能否生存。他们要建立的一切，都必须从无到有。"
+
+[[rulesets]]
+[rulesets.rules]
+"What the founders of {@bt_site|::subscribed_books::interpreters::place} found when they arrived was not a home. It was a promise -- one that would take years of labor, sacrifice, and stubbornness to fulfill." = "{@bt_site|::subscribed_books::interpreters::place}的开拓者到来时，找到的并不是家，而是一个承诺——要靠多年的劳动、牺牲与坚持，才能将它兑现。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_site|::subscribed_books::interpreters::place}'s first decade was marked by loss. At least {n1} lives were claimed in the years following the founding -- to predators, to conflict, to the simple cruelty of a world that does not welcome newcomers. But {@bt_entity|::subscribed_books::interpreters::entity} held on. The settlement endured, because the people who built it refused to let it die." = "{@bt_site|::subscribed_books::interpreters::place}最初的十年充满损失。建城后的几年里，至少有{n1}条生命被夺走——死于掠食者、冲突，或这个不欢迎新来者的世界单纯的残酷。但{@bt_entity|::subscribed_books::interpreters::entity}坚持了下来。聚居地得以存续，因为建造它的人们不肯让它灭亡。"
+
+[[rulesets]]
+[rulesets.rules]
+"The early years were not without cost. {@bt_site|::subscribed_books::interpreters::place} lost {n1} of its own in the first decade. But for a new settlement on the frontier, that was the price of existence." = "早年的发展并非没有代价。{@bt_site|::subscribed_books::interpreters::place}在最初十年中失去了{n1}名居民。但对边疆的新聚居地而言，这就是存在的代价。"
+
+[[rulesets]]
+[rulesets.rules]
+"The early years of {@bt_site|::subscribed_books::interpreters::place} were, by the standards of frontier settlements, remarkably peaceful. Whether this was luck, good planning, or the vigilance of the founders, the result was the same: {@bt_site2|::subscribed_books::interpreters::place} was given time to grow roots before the world tested them." = "以边疆聚居地的标准来看，{@bt_site|::subscribed_books::interpreters::place}的早年岁月异常平静。无论是运气、周密的计划，还是开拓者的警惕所致，结果都一样：在世界开始考验它之前，{@bt_site2|::subscribed_books::interpreters::place}得到了扎根的时间。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, a new structure was {construction_action} at {@bt_site|::subscribed_books::interpreters::place}.{oversight} The construction was a statement: that {@bt_entity|::subscribed_books::interpreters::entity} was not merely surviving at {@bt_site2|::subscribed_books::interpreters::place}, but building for the future." = "{year1}年，一座新建筑在{@bt_site|::subscribed_books::interpreters::place}{construction_action}。{oversight}这项工程宣告：{@bt_entity|::subscribed_books::interpreters::entity}在{@bt_site2|::subscribed_books::interpreters::place}不只是在维持生存，更是在建设未来。"
+
+[[rulesets]]
+[rulesets.rules]
+"The old structure had served its purpose. What replaced it was larger, stronger, and better suited to the needs of a people who had outgrown their origins. The act of rebuilding was itself a kind of optimism -- a bet that the future would be worth preparing for." = "旧建筑已经完成了使命。取代它的新建筑更大、更坚固，也更适合这个已超越起初规模的族群。重建本身就是一种乐观——押注未来值得为之准备。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} created {@bt_artifact|::subscribed_books::interpreters::artifact} at {@bt_site|::subscribed_books::interpreters::place}. The work was immediately recognized as something extraordinary -- not merely well-crafted, but imbued with a quality that transcended the materials from which it was made." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}在{@bt_site|::subscribed_books::interpreters::place}创造了{@bt_artifact|::subscribed_books::interpreters::artifact}。人们立刻认出它非同寻常——不仅制作精良，更拥有某种超越其材料本身的品质。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_artifact|::subscribed_books::interpreters::artifact} was born in the workshops of {@bt_site|::subscribed_books::interpreters::place} in the year {year1}. Its creator, {@bt_hero|::subscribed_books::interpreters::person}, had poured into it something that could not be quantified: years of experience, an understanding of the medium, and the indefinable spark that separates craft from art." = "{year1}年，{@bt_artifact|::subscribed_books::interpreters::artifact}诞生于{@bt_site|::subscribed_books::interpreters::place}的工坊。创造者{@bt_hero|::subscribed_books::interpreters::person}倾注其中的，是无法量化的东西：多年经验、对材料的理解，以及让技艺升华为艺术的那一缕难以言说的火花。"
+
+[[rulesets]]
+[rulesets.rules]
+"The year {year1} produced many things at {@bt_site|::subscribed_books::interpreters::place}. But none would be remembered like {@bt_artifact|::subscribed_books::interpreters::artifact}, created by {@bt_hero|::subscribed_books::interpreters::person}. From the moment it was completed, those who saw it knew they were looking at something that would outlast its maker." = "{year1}年，{@bt_site|::subscribed_books::interpreters::place}产出了许多东西，但没有哪一件能像{@bt_hero|::subscribed_books::interpreters::person}创造的{@bt_artifact|::subscribed_books::interpreters::artifact}那样被铭记。从它完成的那一刻起，见到它的人就知道，这件作品的寿命将比创造者更长。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_artifact|::subscribed_books::interpreters::artifact} was not {@bt_hero|::subscribed_books::interpreters::person}'s first work of note. At least {n1} other artifact{plural} had come from {pos1} hands before this one. {@bt_hero2|::subscribed_books::interpreters::person} was a prolific creator, but even among {pos2} works, {@bt_artifact2|::subscribed_books::interpreters::artifact} stood apart." = "{@bt_artifact|::subscribed_books::interpreters::artifact}并非{@bt_hero|::subscribed_books::interpreters::person}的第一件名作。在它之前，{pos1}双手至少还创造过{n1}件{plural}其他神器。{@bt_hero2|::subscribed_books::interpreters::person}是一位多产的创造者，但即便放在{pos2}众多作品之中，{@bt_artifact2|::subscribed_books::interpreters::artifact}仍独树一帜。"
+
+[[rulesets]]
+[rulesets.rules]
+"It was {@bt_hero|::subscribed_books::interpreters::person}'s first work of true greatness -- the kind that transforms a skilled artisan into a legend. Every crafter hopes for such a moment. Most never find it. {@bt_hero2|::subscribed_books::interpreters::person} did." = "这是{@bt_hero|::subscribed_books::interpreters::person}第一件真正伟大的作品——足以让熟练工匠成为传奇的那种作品。每位工匠都盼望这样的时刻，大多数人终其一生也等不到。{@bt_hero2|::subscribed_books::interpreters::person}等到了。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_artifact|::subscribed_books::interpreters::artifact} would not remain in {@bt_site|::subscribed_books::interpreters::place} forever." = "{@bt_artifact|::subscribed_books::interpreters::artifact}不会永远留在{@bt_site|::subscribed_books::interpreters::place}。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, it passed to {@bt_hero|::subscribed_books::interpreters::person}." = "{year1}年，它转到了{@bt_hero|::subscribed_books::interpreters::person}手中。"
+
+[[rulesets]]
+[rulesets.rules]
+"Each transfer carried the weight of the artifact's growing legend." = "每一次转手，都承载着这件神器日益壮大的传奇。"
+
+[[rulesets]]
+[rulesets.rules]
+"For {@bt_entity|::subscribed_books::interpreters::entity}, the creation of {@bt_artifact|::subscribed_books::interpreters::artifact} was more than craftsmanship. It was proof that {@bt_site|::subscribed_books::interpreters::place} had become a place where beauty could survive alongside danger -- where the pursuit of excellence had not been abandoned in the struggle to merely exist." = "对{@bt_entity|::subscribed_books::interpreters::entity}来说，{@bt_artifact|::subscribed_books::interpreters::artifact}的诞生不只体现了精湛技艺。它证明，{@bt_site|::subscribed_books::interpreters::place}已成为一个让美与危险并存的地方——人们在艰难求生时，仍未放弃对卓越的追求。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} produced a masterwork at {@bt_site|::subscribed_books::interpreters::place}. The quality of the craftsmanship was immediately apparent -- this was not the product of mere skill, but of a mind that had spent years understanding its medium and had, in this moment, achieved something close to perfection." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}在{@bt_site|::subscribed_books::interpreters::place}制成了一件大师作品。其工艺水准一望便知——这并非单靠技巧得来的产物，而是多年钻研材料的心智，在此刻达到了近乎完美的境界。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} created a masterwork at {@bt_site|::subscribed_books::interpreters::place} in {year1}. The piece was exceptional by any standard, but what made it remarkable was the way it seemed to transcend its materials -- as if the crafter had found a way to embed intention itself into the work." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}在{@bt_site|::subscribed_books::interpreters::place}创造了一件大师作品。以任何标准衡量，它都非同凡响；更令人赞叹的是，它仿佛超越了自身的材料——工匠似乎找到了将心意本身融入作品的方法。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, a masterwork was lost at {@bt_site|::subscribed_books::interpreters::place}. The circumstances of its disappearance -- whether through theft, carelessness, or deliberate destruction -- were a source of grief and recrimination. What had taken years of skill to create was gone in a moment, and {@bt_entity|::subscribed_books::interpreters::entity} was diminished by the loss." = "{year1}年，一件大师作品在{@bt_site|::subscribed_books::interpreters::place}遗失了。它究竟因盗窃、疏忽还是蓄意毁坏而消失，引发了悲痛与相互指责。多年技艺积累才创造出的东西，转瞬间便不复存在，{@bt_entity|::subscribed_books::interpreters::entity}也因此蒙受损失。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} {artifact_action} {@bt_artifact|::subscribed_books::interpreters::artifact} at {@bt_site|::subscribed_books::interpreters::place}. The transfer of an artifact was never merely material -- it carried political weight, symbolic meaning, and the implicit question of whether the new holder was worthy of what they now possessed." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}在{@bt_site|::subscribed_books::interpreters::place}{artifact_action}{@bt_artifact|::subscribed_books::interpreters::artifact}。神器的转移从来不只是物质的转手——它带着政治分量、象征意义，以及一个未明说的问题：新的持有者，是否配得上如今拥有的东西。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, after {n1} failed attempt{plural} at reconciliation, peace was finally accepted between {@bt_ent1|::subscribed_books::interpreters::entity} and {@bt_ent2|::subscribed_books::interpreters::entity}. The road to this moment had been long, bitter, and paved with the graves of those who had not lived to see it." = "{year1}年，经过{n1}次{plural}失败的和解尝试，{@bt_ent1|::subscribed_books::interpreters::entity}与{@bt_ent2|::subscribed_books::interpreters::entity}终于接受了和平。通往这一刻的道路漫长而苦涩，沿途满是未能活着见到和平者的坟墓。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, peace was accepted between {@bt_ent1|::subscribed_books::interpreters::entity} and {@bt_ent2|::subscribed_books::interpreters::entity}. The war that had consumed both peoples was over -- at least for now. The treaties were signed, the diplomats withdrew, and the soldiers went home to families that had learned to sleep without them." = "{year1}年，{@bt_ent1|::subscribed_books::interpreters::entity}与{@bt_ent2|::subscribed_books::interpreters::entity}接受了和平。吞噬双方族群的战争结束了——至少暂时如此。条约签署，外交官离去，士兵回到家中，而家人们早已学会在他们不在时入睡。"
+
+[[rulesets]]
+[rulesets.rules]
+"The cost of the war could not be calculated in gold or territory alone. At least {n1} had died in the fighting -- soldiers, civilians, diplomats, and those who simply had the misfortune to be in the wrong place. Every family in both civilizations had been touched by the conflict. The peace, when it came, was not celebrated so much as accepted with exhausted relief." = "战争的代价，不能只用黄金或领土来计算。至少有{n1}人死于战火——士兵、平民、外交官，以及只是倒霉地身处错误地方的人。两个文明中的每个家庭，都被冲突波及。和平到来时，人们与其说是在庆祝，不如说是在疲惫中松了一口气，接受了它。"
+
+[[rulesets]]
+[rulesets.rules]
+"Whether the peace would hold remained to be seen. {@bt_ent1|::subscribed_books::interpreters::entity} and {@bt_ent2|::subscribed_books::interpreters::entity} had too much history, too many grievances, and too little trust for anyone to believe the fighting was truly over. But for now -- for today -- the killing had stopped. And that was enough." = "和平能否维持，还有待观察。{@bt_ent1|::subscribed_books::interpreters::entity}与{@bt_ent2|::subscribed_books::interpreters::entity}之间往事太多、怨恨太深、信任太少，没有人能轻易相信战斗真的结束了。但此刻——至少今天——杀戮停了。这就够了。"
+
+[[rulesets]]
+[rulesets.rules]
+"The terms of the peace were specific, the concessions real, and the compromises painful to both sides. It was, in other words, a genuine peace -- the kind that neither party was fully satisfied with, which meant it had a chance of lasting." = "和平的条件明确，让步真实，妥协令双方都感到痛苦。换句话说，这是真正的和平——双方都不完全满意的那种，也正因此，它才有机会长久维持。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, an offer of peace between {@bt_ent1|::subscribed_books::interpreters::entity} and {@bt_ent2|::subscribed_books::interpreters::entity} was rejected. The war would continue. The diplomats who had carried the offer returned empty-handed, and behind them, the door to negotiation closed." = "{year1}年，{@bt_ent1|::subscribed_books::interpreters::entity}与{@bt_ent2|::subscribed_books::interpreters::entity}之间的一项和平提议遭到拒绝。战争还将继续。带着提议而来的外交官空手返回，谈判的大门在他们身后关上了。"
+
+[[rulesets]]
+[rulesets.rules]
+"This was not the first time peace had been refused. {n1} prior attempt{plural} had met the same fate. The pattern was becoming clear: one side -- or both -- was not yet ready to stop fighting. The price of continued war had not yet exceeded the price of the concessions that peace would require." = "这并非和平第一次被拒绝。此前的{n1}次{plural}尝试，都遭遇了同样的命运。规律已经清楚：一方——或双方——还没准备好停止战斗。继续战争的代价，还没有高过和平所需让步的代价。"
+
+[[rulesets]]
+[rulesets.rules]
+"The rejection was not irrational. To accept peace on the terms offered would have meant conceding territory, influence, or pride -- and in the politics of {@bt_ent1|::subscribed_books::interpreters::entity} and {@bt_ent2|::subscribed_books::interpreters::entity}, pride was the currency that mattered most. The dead could not object. The living would not forget." = "拒绝并非毫无道理。接受对方提出的和平条件，意味着让出领土、影响力或尊严——而在{@bt_ent1|::subscribed_books::interpreters::entity}与{@bt_ent2|::subscribed_books::interpreters::entity}的政治中，尊严才是最重要的筹码。死者无法反对，生者不会忘记。"
+
+[[rulesets]]
+[rulesets.rules]
+"Those who had argued for peace were silenced -- not by force, but by the simple weight of anger. Too much had been lost for forgiveness to come cheaply. The people of both {@bt_ent1|::subscribed_books::interpreters::entity} and {@bt_ent2|::subscribed_books::interpreters::entity} wanted resolution, but not the kind that required them to shake the hand that had struck them." = "主张和平的人沉默了——并非被武力压制，而是被愤怒本身的分量压住。失去的东西太多，宽恕不可能轻易到来。{@bt_ent1|::subscribed_books::interpreters::entity}与{@bt_ent2|::subscribed_books::interpreters::entity}的人民都想要一个了结，却不愿以握住那只打过自己的手为代价。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, a diplomatic agreement between {@bt_ent1|::subscribed_books::interpreters::entity} and {@bt_ent2|::subscribed_books::interpreters::entity} was {diplomatic_outcome}. The negotiation had been conducted with the careful formality that characterized relations between the two powers -- every word weighed, every concession measured, every silence deliberate." = "{year1}年，{@bt_ent1|::subscribed_books::interpreters::entity}与{@bt_ent2|::subscribed_books::interpreters::entity}之间的一项外交协议{diplomatic_outcome}。谈判遵循着两大势力交往时谨慎而正式的作风——每一句话都被斟酌，每一项让步都被衡量，每一次沉默都有意为之。"
+
+[[rulesets]]
+[rulesets.rules]
+"The rejection was a setback, but not a surprise. The terms had been ambitious, the trust between the parties thin, and the political will to compromise insufficient. The diplomats returned to their respective capitals knowing they would be back -- the question was whether they would return with better terms or with ultimatums." = "拒绝带来了挫折，却不令人意外。条件过于雄心勃勃，双方的信任薄弱，妥协的政治意愿也不足。外交官返回各自首都，知道自己还会回来——问题只在于，下次带来的会是更好的条件，还是最后通牒。"
+
+[[rulesets]]
+[rulesets.rules]
+"The agreement shaped the political landscape in ways that outlasted the individuals who negotiated it. Trade routes were opened or closed, boundaries were drawn or erased, and the balance of power between {@bt_ent1|::subscribed_books::interpreters::entity} and {@bt_ent2|::subscribed_books::interpreters::entity} shifted in ways that would take years to fully understand." = "协议改变了政治格局，其影响比谈判者本人更为长久。贸易路线被开通或关闭，边界被划定或抹去，{@bt_ent1|::subscribed_books::interpreters::entity}与{@bt_ent2|::subscribed_books::interpreters::entity}之间的力量平衡也发生变化，要过多年才能彻底看清。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} was lost while on a diplomatic mission." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}在执行外交使命时失踪。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} had been sent to broker an agreement between {@bt_ent1|::subscribed_books::interpreters::entity} and {@bt_ent2|::subscribed_books::interpreters::entity}." = "{@bt_hero|::subscribed_books::interpreters::person}受命前去促成{@bt_ent1|::subscribed_books::interpreters::entity}与{@bt_ent2|::subscribed_books::interpreters::entity}之间的协议。"
+
+[[rulesets]]
+[rulesets.rules]
+"The mission was meant to bring the two parties closer to understanding." = "这项使命原本是为了增进双方的相互理解。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} never returned." = "{@bt_hero|::subscribed_books::interpreters::person}再也没有回来。"
+
+[[rulesets]]
+[rulesets.rules]
+"The loss of a diplomat was not merely a personal tragedy. It was a message -- intentional or not -- that the path to peace was blocked. Trust between {@bt_ent1|::subscribed_books::interpreters::entity} and {@bt_ent2|::subscribed_books::interpreters::entity} would take years to rebuild, if it could be rebuilt at all." = "一位外交官的失踪，并非只是一场个人悲剧。无论有意与否，它都传递出一个讯息：通往和平的道路已经受阻。{@bt_ent1|::subscribed_books::interpreters::entity}与{@bt_ent2|::subscribed_books::interpreters::entity}之间的信任，即使还能重建，也需要多年。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, trade took place between {@bt_ent1|::subscribed_books::interpreters::entity} and {@bt_ent2|::subscribed_books::interpreters::entity}. The caravans that traveled between the two peoples carried more than goods -- they carried information, culture, and the fragile beginnings of mutual understanding. In a world defined by conflict, commerce was one of the few forces that consistently brought peoples together." = "{year1}年，{@bt_ent1|::subscribed_books::interpreters::entity}与{@bt_ent2|::subscribed_books::interpreters::entity}展开贸易。往来于两个族群之间的商队，带着的不只是货物，还有消息、文化，以及相互理解脆弱的开端。在一个由冲突塑造的世界里，商业是少数能不断将不同族群联系起来的力量。"
+
+[[rulesets]]
+[rulesets.rules]
+"The movement of goods between {@bt_ent1|::subscribed_books::interpreters::entity} and {@bt_ent2|::subscribed_books::interpreters::entity} was the lifeblood of both civilizations. What one had in surplus, the other needed. What one could craft, the other could not. The exchange was practical, unsentimental, and absolutely essential." = "{@bt_ent1|::subscribed_books::interpreters::entity}与{@bt_ent2|::subscribed_books::interpreters::entity}之间的货物流动，是两个文明的命脉。一方富余的，正是另一方所需；一方能制作的，另一方却做不出。这种交换实际、毫不感情用事，却不可或缺。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, a diplomatic event of significance occurred involving {@bt_ent1|::subscribed_books::interpreters::entity}. The details, as recorded, suggest a moment when the political calculus of the region shifted -- perhaps imperceptibly, perhaps decisively." = "{year1}年，一件涉及{@bt_ent1|::subscribed_books::interpreters::entity}的重要外交事件发生了。记录中的细节表明，当时整个地区的政治算计发生了转变——也许微不可察，也许影响深远。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} created {work_type} at {@bt_site|::subscribed_books::interpreters::place}. The act of creation was deliberate -- not a hobby or a pastime, but a statement. {@bt_hero2|::subscribed_books::interpreters::person} had something to say, and {work_desc} was the medium through which it would be said." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}在{@bt_site|::subscribed_books::interpreters::place}创造了{work_type}。这是一场有意的创作——不是爱好，也不是消遣，而是一种表达。{@bt_hero2|::subscribed_books::interpreters::person}有话要说，{work_desc}就是传达这些话的媒介。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} composed {work_type} at {@bt_site|::subscribed_books::interpreters::place} in the year {year1}. In a world preoccupied with survival, the creation of art was an act of faith -- a declaration that there was more to existence than merely enduring it." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}在{@bt_site|::subscribed_books::interpreters::place}创作了{work_type}。在一个一心求生的世界里，艺术创作是一种信念的举动——宣告存在的意义，不止是勉强活下去。"
+
+[[rulesets]]
+[rulesets.rules]
+"The year {year1} saw {@bt_hero|::subscribed_books::interpreters::person} create {work_type} at {@bt_site|::subscribed_books::interpreters::place}. Whether the work was born of joy, grief, or the simple need to make something that had not existed before, it stood as evidence that {@bt_entity|::subscribed_books::interpreters::entity} valued more than just strength and stone." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}在{@bt_site|::subscribed_books::interpreters::place}创造了{work_type}。无论作品源于欢乐、悲伤，还是单纯想造出此前不存在的东西，它都证明：{@bt_entity|::subscribed_books::interpreters::entity}所珍视的，不只有力量与石头。"
+
+[[rulesets]]
+[rulesets.rules]
+"The work was composed in the shadow of loss. {@bt_relative|::subscribed_books::interpreters::person}, {@bt_hero|::subscribed_books::interpreters::person}'s {relation}, had died in {year1}. Grief does not always silence the artist -- sometimes it sharpens them, gives them a clarity of purpose that happiness never could. {@bt_hero2|::subscribed_books::interpreters::person}'s {work_desc} carried the weight of that loss in every line." = "这部作品诞生在失去亲人的阴影中。{@bt_hero|::subscribed_books::interpreters::person}的{relation}，{@bt_relative|::subscribed_books::interpreters::person}，已于{year1}年死去。悲伤并不总会让艺术家沉默——有时它反而使人敏锐，给予一种幸福从未能带来的清晰目标。{@bt_hero2|::subscribed_books::interpreters::person}的{work_desc}里，每一行都承载着那份失去的重量。"
+
+[[rulesets]]
+[rulesets.rules]
+"Art created during wartime carries a weight that peacetime works cannot. {@bt_hero|::subscribed_books::interpreters::person} composed in a world where people were dying, where the future was uncertain, where beauty was a luxury that some could not afford. The {work_desc} that emerged was defiant -- not escapist, but insistent that even now, especially now, creation mattered." = "战争中创造的艺术，带着和平时期的作品无法拥有的重量。{@bt_hero|::subscribed_books::interpreters::person}创作时，人们正在死去，未来充满不确定，美成了有些人负担不起的奢侈。由此诞生的{work_desc}充满抗争——不是逃避现实，而是坚持认为，即使此刻，尤其此刻，创造仍然重要。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} was a prolific creator. This was the {ordinal} significant work attributed to {pos1} name. In {@bt_entity|::subscribed_books::interpreters::entity}, {@bt_hero2|::subscribed_books::interpreters::person}'s contributions to {work_desc} had become part of the cultural fabric -- performed, recited, and passed down as something worth preserving." = "{@bt_hero|::subscribed_books::interpreters::person}是一位多产的创造者。这是记在{pos1}名下的第{ordinal}部重要作品。在{@bt_entity|::subscribed_books::interpreters::entity}，{@bt_hero2|::subscribed_books::interpreters::person}对{work_desc}的贡献已成为文化的一部分——被表演、吟诵，并作为值得保存的东西传承下去。"
+
+[[rulesets]]
+[rulesets.rules]
+"Whether this work would endure beyond {@bt_hero|::subscribed_books::interpreters::person}'s lifetime remained to be seen. But in {@bt_site|::subscribed_books::interpreters::place}, at least for a time, it was valued -- shared, discussed, and held up as proof that {@bt_entity|::subscribed_books::interpreters::entity} was a civilization capable of producing more than warriors and walls." = "这部作品能否比{@bt_hero|::subscribed_books::interpreters::person}的生命更长久，还有待观察。但在{@bt_site|::subscribed_books::interpreters::place}，至少曾有一段时间，它备受珍视——被分享、讨论，并被用来证明：{@bt_entity|::subscribed_books::interpreters::entity}这个文明，能创造的不只有战士与城墙。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} learned a secret -- knowledge forbidden to most, dangerous to all, and irresistible to those with the will to seek it. The world changed for {pro1} that day, though the world itself did not yet know it." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}学得一个秘密——对多数人而言是禁忌，对所有人而言都危险，对有意追寻者而言又无法抗拒的知识。那一天，{pro1}的世界改变了，尽管世界本身尚未察觉。"
+
+[[rulesets]]
+[rulesets.rules]
+"There are things that, once known, cannot be unknown. {@bt_hero|::subscribed_books::interpreters::person} learned this in {year1}, when forbidden knowledge passed into {pos1} possession. The change was invisible and absolute." = "有些事情一旦知道，就再也无法装作不知。{year1}年，当禁忌知识落入{pos1}手中时，{@bt_hero|::subscribed_books::interpreters::person}明白了这一点。变化无形，却彻底而绝对。"
+
+[[rulesets]]
+[rulesets.rules]
+"The knowledge came from {@bt_teacher|::subscribed_books::interpreters::person}." = "这些知识来自{@bt_teacher|::subscribed_books::interpreters::person}。"
+
+[[rulesets]]
+[rulesets.rules]
+"The knowledge came from {@bt_teacher|::subscribed_books::interpreters::person} -- a figure whose own mastery of forbidden arts had been the subject of whispered speculation for years. What motivated {@bt_teacher2|::subscribed_books::interpreters::person} to share this knowledge was unclear. Perhaps it was the desire to see the art survive. Perhaps it was something darker." = "这些知识来自{@bt_teacher|::subscribed_books::interpreters::person}——多年来，人们一直低声猜测此人对禁忌之术究竟掌握了多少。{@bt_teacher2|::subscribed_books::interpreters::person}为何愿意分享，原因并不清楚。也许是希望这门技艺延续下去，也许出于更加阴暗的动机。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_teacher|::subscribed_books::interpreters::person} did not survive long after passing on the secret. Whether the two events were connected -- whether the act of teaching had drawn unwanted attention, or simply exhausted the last of {@bt_teacher2|::subscribed_books::interpreters::person}'s vitality -- the timing was difficult to dismiss as coincidence." = "传授秘密后不久，{@bt_teacher|::subscribed_books::interpreters::person}便死去了。两件事是否有关——传授是否招来了不必要的注意，还是仅仅耗尽了{@bt_teacher2|::subscribed_books::interpreters::person}最后的生命力——这样的时间先后，很难简单归为巧合。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} would put the knowledge to use. The power that {pro1} now possessed was not academic -- it was practical, and it would be wielded. The consequences of that wielding are recorded elsewhere in this account." = "{@bt_hero|::subscribed_books::interpreters::person}终会将知识付诸实践。{pro1}如今掌握的力量，并非纸上学问，而是能够使用、也将被使用的实际力量。施展它所带来的后果，记载在这部记述的其他地方。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} unleashed a power upon {@bt_target|::subscribed_books::interpreters::person} at {@bt_site|::subscribed_books::interpreters::place}. The act was not subtle. Forces that most people only knew from stories -- forces that the wise pretended did not exist -- were brought to bear on a living being. The result was immediate and terrible." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}在{@bt_site|::subscribed_books::interpreters::place}向{@bt_target|::subscribed_books::interpreters::person}释放了一股力量。这并非隐秘的举动。大多数人只在故事里听说过的力量——智者们假装并不存在的力量——被施加在一个活生生的存在身上。结果立刻显现，可怕至极。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_target|::subscribed_books::interpreters::person} did not survive the encounter. The power that {@bt_hero|::subscribed_books::interpreters::person} wielded was not a threat or a warning -- it was a sentence, carried out with the certainty of someone who had moved beyond hesitation." = "{@bt_target|::subscribed_books::interpreters::person}未能从这次遭遇中生还。{@bt_hero|::subscribed_books::interpreters::person}施展的力量，不是威胁，也不是警告，而是一道判决，执行时毫不迟疑，仿佛施术者早已超越了犹豫。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_target|::subscribed_books::interpreters::person} was changed by the interaction -- fundamentally, irrevocably. What emerged from the encounter was not what had entered it. {@bt_hero|::subscribed_books::interpreters::person} had reshaped another living being, and the act left both of them altered." = "这次作用改变了{@bt_target|::subscribed_books::interpreters::person}——从根本上改变，再也无法逆转。经历之后出现的存在，已不再是先前进入其中的那个。{@bt_hero|::subscribed_books::interpreters::person}重塑了另一个生命，而这件事也让双方都发生了变化。"
+
+[[rulesets]]
+[rulesets.rules]
+"What exactly happened to {@bt_target|::subscribed_books::interpreters::person} in the aftermath was a matter of record, but the records were unclear. The interaction left its mark -- of that there was no doubt. The nature of that mark was something that only {@bt_target2|::subscribed_books::interpreters::person} truly understood." = "此后{@bt_target|::subscribed_books::interpreters::person}究竟经历了什么，虽有记载，却并不清晰。这次作用留下了痕迹，这一点毫无疑问。但那痕迹究竟意味着什么，只有{@bt_target2|::subscribed_books::interpreters::person}自己真正明白。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} changed professions -- the {ordinal} such change in {pos1} career. The pattern suggested someone who had not yet found the work that fit -- or someone who grew bored once mastery was achieved. Either way, the reinvention was complete." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}换了职业——这是{pos1}职业生涯中的第{ordinal}次转行。这种轨迹说明，或许还未找到适合的工作，或许一旦熟练掌握就会感到无聊。无论哪一种，新的开始都已经完成。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} took up a new profession at {@bt_site|::subscribed_books::interpreters::place}. The change marked a turning point -- a deliberate choice to leave behind what was familiar and step into something unknown. Whether the decision was driven by necessity, curiosity, or the simple realization that the old path had run its course, it reshaped {@bt_hero2|::subscribed_books::interpreters::person}'s life." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}在{@bt_site|::subscribed_books::interpreters::place}从事了一项新职业。这一变化标志着转折——有意离开熟悉的一切，走向未知。无论是出于需要、好奇，还是意识到旧路已经走尽，这个决定都重塑了{@bt_hero2|::subscribed_books::interpreters::person}的人生。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} left the settled life behind and began to wander. The decision to walk away from {@bt_site|::subscribed_books::interpreters::place} -- from safety, from routine, from everything that was known -- was not made lightly. But {@bt_hero2|::subscribed_books::interpreters::person} had seen enough of the world from behind walls. It was time to see it from the road." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}告别定居生活，开始流浪。离开{@bt_site|::subscribed_books::interpreters::place}——离开安全、日常，以及熟悉的一切——并非轻易作出的决定。但{@bt_hero2|::subscribed_books::interpreters::person}已经从墙后看够了世界，该到路上亲眼看看了。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} settled at {@bt_site|::subscribed_books::interpreters::place}. The wandering was over. Whether driven by age, weariness, or the discovery of a place worth staying for, {@bt_hero2|::subscribed_books::interpreters::person} chose to put down roots and build a life that did not depend on constant motion." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}定居于{@bt_site|::subscribed_books::interpreters::place}，流浪终于结束。无论是年岁增长、疲惫，还是找到了值得留下的地方，{@bt_hero2|::subscribed_books::interpreters::person}都选择扎根，建立一种不再依赖不停迁移的生活。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} {state} at {@bt_site|::subscribed_books::interpreters::place}. The change was significant enough to be recorded -- a shift in the direction of a life, noted by those who kept track of such things." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}在{@bt_site|::subscribed_books::interpreters::place}{state}。这一变化重要到值得记载——人生的方向发生了转折，被留意这些事情的人记录下来。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, the body of {@bt_victim|::subscribed_books::interpreters::person} was desecrated at {@bt_site|::subscribed_books::interpreters::place}. The act was one of deliberate cruelty -- not content with death alone, the perpetrator sought to strip away even the dignity of the corpse." = "{year1}年，{@bt_victim|::subscribed_books::interpreters::person}的遗体在{@bt_site|::subscribed_books::interpreters::place}遭到亵渎。这是蓄意的残忍——加害者不满足于死亡本身，连尸体最后的尊严也要剥夺。"
+
+[[rulesets]]
+[rulesets.rules]
+"In life, {@bt_victim|::subscribed_books::interpreters::person} had been someone." = "生前，{@bt_victim|::subscribed_books::interpreters::person}也曾是有名有姓的人。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, a body was desecrated at {@bt_site|::subscribed_books::interpreters::place}. The act was one of deliberate cruelty -- a message written in flesh and bone, directed at the living. The identity of the victim was lost to time, but the horror of the act endured in the memory of those who witnessed it." = "{year1}年，一具尸体在{@bt_site|::subscribed_books::interpreters::place}遭到亵渎。这是蓄意的残忍——用血肉与骨头写给活人的讯息。受害者的身份已被时间遗忘，但目睹这一行为的人，始终记得其中的恐怖。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_thief|::subscribed_books::interpreters::person} committed a theft at {@bt_site|::subscribed_books::interpreters::place}. The act was brazen -- carried out not in darkness or secrecy, but with the confidence of someone who did not fear the consequences, or who had already weighed them and found them acceptable." = "{year1}年，{@bt_thief|::subscribed_books::interpreters::person}在{@bt_site|::subscribed_books::interpreters::place}实施了盗窃。行为大胆到近乎肆无忌惮——没有躲在黑暗或秘密之中，而是带着不怕后果的自信，或是早已权衡后果并认为可以接受。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, a theft occurred at {@bt_site|::subscribed_books::interpreters::place}. The thief was never identified -- or if they were, the records do not say. What was taken mattered less than what the act revealed: that the security of {@bt_entity|::subscribed_books::interpreters::entity} was not absolute, and that trust, once broken, was difficult to restore." = "{year1}年，{@bt_site|::subscribed_books::interpreters::place}发生了一起盗窃。窃贼始终未被查明——即使查明，记录也没有说明。被盗的东西，远不如这件事揭示的事实重要：{@bt_entity|::subscribed_books::interpreters::entity}的安全并非绝对，而信任一旦破裂，就难以恢复。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_entity|::subscribed_books::interpreters::entity} was dissolved. What had taken years of effort, negotiation, and shared purpose to build was undone. The members scattered -- some to rival organizations, some to solitude, some to the anonymity of a life unaffiliated with any cause. The dissolution left a void that would not be easily filled." = "{year1}年，{@bt_entity|::subscribed_books::interpreters::entity}解散了。多年努力、协商与共同目标所建立的一切，就此瓦解。成员四散——有人投向竞争组织，有人独居，有人过上不再隶属任何事业的无名生活。解散留下的空缺，难以轻易填补。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} tamed a creature. The bond between person and animal was one of the oldest in the world -- a partnership forged in mutual need. The animal gained protection. {@bt_hero2|::subscribed_books::interpreters::person} gained a companion who asked nothing and offered everything. In the years to come, this particular bond would prove its worth many times over." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}驯服了一只动物。人与动物之间的纽带，是世上最古老的纽带之一——由彼此的需要结成的伙伴关系。动物获得了保护，{@bt_hero2|::subscribed_books::interpreters::person}则得到一个不求回报、倾尽所有的伙伴。此后多年，这份特殊的联系将一次又一次证明它的价值。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} reached a great summit. The climb was arduous, the air thin, and the path uncertain. But {@bt_hero2|::subscribed_books::interpreters::person} pressed on -- driven by curiosity, by ambition, or by the simple human need to see what lay beyond the next ridge. The view from the top was magnificent, and the achievement was one that few could claim." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}登上了一座雄伟的山峰。攀登艰难，空气稀薄，路径难辨。但{@bt_hero2|::subscribed_books::interpreters::person}仍坚持前行——出于好奇、野心，或只是想看看下一道山脊之外的朴素愿望。峰顶景色壮丽，而这一成就，只有极少数人能够拥有。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person} had died in {year1} -- {cause}. In {year2}, {pro1} returned. The resurrection was a violation of the natural order, and those who witnessed it were divided between awe and horror. {@bt_hero2|::subscribed_books::interpreters::person} was alive again, but the person who came back was not quite the same as the one who had left." = "{@bt_hero|::subscribed_books::interpreters::person}已于{year1}年死去——{cause}。{year2}年，{pro1}回来了。复活违背了自然秩序，目睹者既敬畏又恐惧。{@bt_hero2|::subscribed_books::interpreters::person}再次活着，但归来的那个人，与离去时已不完全相同。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} was brought back from death. The circumstances of the resurrection were unclear, but its reality was not. {@bt_hero2|::subscribed_books::interpreters::person} walked again among the living -- changed, perhaps, by what {pro1} had seen on the other side, but alive. A miracle to some. An abomination to others. A fact to all." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}从死亡中归来。复活的经过并不清楚，但复活本身确凿无疑。{@bt_hero2|::subscribed_books::interpreters::person}再次行走于活人之间——也许因{pro1}在彼岸看到的事而有所改变，却确实活着。有人视之为奇迹，有人视之为亵渎，而对所有人而言，这都是事实。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, an agreement was formed at {@bt_site|::subscribed_books::interpreters::place}. The terms were specific, the intentions were clear, and the consequences would unfold over time. Such agreements were the invisible architecture of civilization -- unseen by most, load-bearing for all." = "{year1}年，一项协议在{@bt_site|::subscribed_books::interpreters::place}缔结。条款明确，意图清晰，后果将随时间展开。这类协议是文明无形的结构——多数人看不见，却为所有人承重。"
+
+[[rulesets]]
+[rulesets.rules]
+"In {year1}, {event} occurred at {@bt_site|::subscribed_books::interpreters::place}. The event was significant enough to be recorded, and the recording itself speaks to its importance in the history of {@bt_entity|::subscribed_books::interpreters::entity}." = "{year1}年，{@bt_site|::subscribed_books::interpreters::place}发生了{event}。此事重要到值得记录，而被记录本身，就说明了它在{@bt_entity|::subscribed_books::interpreters::entity}历史中的分量。"
+
+[[rulesets]]
+[rulesets.rules]
+"In the year {year1}, events of note transpired." = "{year1}年，发生了一些值得记述的事件。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person}, an {race}." = "{@bt_hero|::subscribed_books::interpreters::person}，{race}。"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_hero|::subscribed_books::interpreters::person}, an {race} born in the year {year1}." = "{@bt_hero|::subscribed_books::interpreters::person}，一位生于{year1}年的{race}。"
+
+
+# 声明内生成变化的规范形变体；原作者句式保留。
+[[rulesets]]
+[rulesets.rules]
+"{@bt_a|::subscribed_books::interpreters::person} and {@bt_b|::subscribed_books::interpreters::person} became {relation} in {year1}. In a world where alliances were fragile and betrayals common, the bond between them was a anchor -- for both of them, and for those who depended on their stability." = "{year1}年，{@bt_a|::subscribed_books::interpreters::person}与{@bt_b|::subscribed_books::interpreters::person}成为{relation}。在这个联盟脆弱、背叛常见的世界里，两人的纽带是一枚锚——稳住了他们，也稳住了那些依赖他们的人。"
+"In {year1}, {@bt_a|::subscribed_books::interpreters::person} took {@bt_b|::subscribed_books::interpreters::person} as a apprentice. The knowledge that would pass between them -- the skills, the judgment, the hard lessons -- would shape {@bt_b2|::subscribed_books::interpreters::person}'s life for decades to come." = "{year1}年，{@bt_a|::subscribed_books::interpreters::person}收{@bt_b|::subscribed_books::interpreters::person}为徒。两人之间传授的知识——技能、判断力，以及艰难的教训——将影响{@bt_b2|::subscribed_books::interpreters::person}此后数十年的人生。"
+"In {year1}, {@bt_a|::subscribed_books::interpreters::person} took {@bt_b|::subscribed_books::interpreters::person} prisoner. The circumstances of the capture would define both their fates -- captor and captive, bound by a act of violence that neither could undo." = "{year1}年，{@bt_a|::subscribed_books::interpreters::person}俘获了{@bt_b|::subscribed_books::interpreters::person}。这次俘获的经过将决定双方的命运——俘获者与俘虏，被一场谁也无法挽回的暴力绑在一起。"
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} assumed the identity of {@bt_target|::subscribed_books::interpreters::person}. The impersonation was deliberate, sustained, and executed with a precision that suggested long planning. To become someone else -- to wear their name, their history, their face in the eyes of others -- was a act of either brilliance or desperation." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}冒用了{@bt_target|::subscribed_books::interpreters::person}的身份。这场冒充蓄意而持久，实施得极为精准，显然经过了长期谋划。成为另一个人——在他人眼中披上对方的名字、经历和面容——这样的行为，若非聪明绝顶，便是绝望至极。"
+"The transformation was not a accident of nature. It was {@bt_transformer|::subscribed_books::interpreters::person} who wielded the power that remade {@bt_hero|::subscribed_books::interpreters::person}. Whether it was a curse, a punishment, or something the victim had sought, the effect was the same: the person who had existed before was gone." = "这场变化并非自然的偶然。是{@bt_transformer|::subscribed_books::interpreters::person}运用力量，重塑了{@bt_hero|::subscribed_books::interpreters::person}。无论是诅咒、惩罚，还是受害者自己寻求的结果，效果都一样：先前存在的那个人，已然消失。"
+"In the year {year1}, {@bt_entity|::subscribed_books::interpreters::entity} founded {@bt_site|::subscribed_books::interpreters::place}.{builder} The decision to establish a new settlement was never made lightly -- it required resources, planning, and the willingness to stake everything on a uncertain future." = "{year1}年，{@bt_entity|::subscribed_books::interpreters::entity}建立了{@bt_site|::subscribed_books::interpreters::place}。{builder}建立新聚居地的决定从来不会轻易作出——它需要资源、计划，以及将一切押在不确定的未来上的决心。"
+"The year {year1} marked the birth of {@bt_site|::subscribed_books::interpreters::place}. {@bt_entity|::subscribed_books::interpreters::entity} sent a expedition into the wilderness, and the expedition did not come back -- because it had found what it was looking for.{builder}" = "{year1}年，{@bt_site|::subscribed_books::interpreters::place}诞生了。{@bt_entity|::subscribed_books::interpreters::entity}派出一支探险队进入荒野，而探险队没有回来——因为他们已经找到了所寻求的地方。{builder}"
+"{@bt_artifact|::subscribed_books::interpreters::artifact} was born in the workshops of {@bt_site|::subscribed_books::interpreters::place} in the year {year1}. Its creator, {@bt_hero|::subscribed_books::interpreters::person}, had poured into it something that could not be quantified: years of experience, a understanding of the medium, and the indefinable spark that separates craft from art." = "{year1}年，{@bt_artifact|::subscribed_books::interpreters::artifact}诞生于{@bt_site|::subscribed_books::interpreters::place}的工坊。创造者{@bt_hero|::subscribed_books::interpreters::person}倾注其中的，是无法量化的东西：多年经验、对材料的理解，以及让技艺升华为艺术的那一缕难以言说的火花。"
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} {artifact_action} {@bt_artifact|::subscribed_books::interpreters::artifact} at {@bt_site|::subscribed_books::interpreters::place}. The transfer of a artifact was never merely material -- it carried political weight, symbolic meaning, and the implicit question of whether the new holder was worthy of what they now possessed." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}在{@bt_site|::subscribed_books::interpreters::place}{artifact_action}{@bt_artifact|::subscribed_books::interpreters::artifact}。神器的转移从来不只是物质的转手——它带着政治分量、象征意义，以及一个未明说的问题：新的持有者，是否配得上如今拥有的东西。"
+"In {year1}, a offer of peace between {@bt_ent1|::subscribed_books::interpreters::entity} and {@bt_ent2|::subscribed_books::interpreters::entity} was rejected. The war would continue. The diplomats who had carried the offer returned empty-handed, and behind them, the door to negotiation closed." = "{year1}年，{@bt_ent1|::subscribed_books::interpreters::entity}与{@bt_ent2|::subscribed_books::interpreters::entity}之间的一项和平提议遭到拒绝。战争还将继续。带着提议而来的外交官空手返回，谈判的大门在他们身后关上了。"
+"{@bt_hero|::subscribed_books::interpreters::person} had been sent to broker a agreement between {@bt_ent1|::subscribed_books::interpreters::entity} and {@bt_ent2|::subscribed_books::interpreters::entity}." = "{@bt_hero|::subscribed_books::interpreters::person}受命前去促成{@bt_ent1|::subscribed_books::interpreters::entity}与{@bt_ent2|::subscribed_books::interpreters::entity}之间的协议。"
+"{@bt_hero|::subscribed_books::interpreters::person} composed {work_type} at {@bt_site|::subscribed_books::interpreters::place} in the year {year1}. In a world preoccupied with survival, the creation of art was a act of faith -- a declaration that there was more to existence than merely enduring it." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}在{@bt_site|::subscribed_books::interpreters::place}创作了{work_type}。在一个一心求生的世界里，艺术创作是一种信念的举动——宣告存在的意义，不止是勉强活下去。"
+"In {year1}, {@bt_hero|::subscribed_books::interpreters::person} was brought back from death. The circumstances of the resurrection were unclear, but its reality was not. {@bt_hero2|::subscribed_books::interpreters::person} walked again among the living -- changed, perhaps, by what {pro1} had seen on the other side, but alive. A miracle to some. A abomination to others. A fact to all." = "{year1}年，{@bt_hero|::subscribed_books::interpreters::person}从死亡中归来。复活的经过并不清楚，但复活本身确凿无疑。{@bt_hero2|::subscribed_books::interpreters::person}再次行走于活人之间——也许因{pro1}在彼岸看到的事而有所改变，却确实活着。有人视之为奇迹，有人视之为亵渎，而对所有人而言，这都是事实。"
+"In {year1}, a agreement was formed at {@bt_site|::subscribed_books::interpreters::place}. The terms were specific, the intentions were clear, and the consequences would unfold over time. Such agreements were the invisible architecture of civilization -- unseen by most, load-bearing for all." = "{year1}年，一项协议在{@bt_site|::subscribed_books::interpreters::place}缔结。条款明确，意图清晰，后果将随时间展开。这类协议是文明无形的结构——多数人看不见，却为所有人承重。"
+

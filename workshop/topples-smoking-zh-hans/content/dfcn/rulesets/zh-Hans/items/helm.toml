@@ -1,0 +1,20 @@
+base = "items::helm"
+
+[[rulesets]]
+name = "singular::main"
+[rulesets.rules]
+"pipe" = "烟斗"
+"chillum" = "直筒烟斗"
+"hemp cigar" = "大麻雪茄"
+"pipe-weed cigar" = "烟斗草雪茄"
+"joint" = "大麻卷烟"
+
+[[rulesets]]
+name = "plural::main"
+[rulesets.rules]
+"pipes" = "烟斗"
+"chillums" = "直筒烟斗"
+"hemp cigars" = "大麻雪茄"
+"pipe-weed cigars" = "烟斗草雪茄"
+"joints" = "大麻卷烟"
+

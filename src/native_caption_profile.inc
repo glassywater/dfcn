@@ -70,6 +70,10 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     // text/coordinate guess. Other executable profiles leave this empty.
     profile.info_titles.sites = {
         {native_pe_address(profile.base, 0x154a28), NativeInfoTitleKind::Item},
+        // ViewSheets/ITEM_LIST formats each complete item before shortening
+        // its caption. Books can supply just their work title, with no item
+        // actions, count or quality marks to identify the row by its skin.
+        {native_pe_address(profile.base, 0x15a261), NativeInfoTitleKind::ItemList},
         {native_pe_address(profile.base, 0x18057a), NativeInfoTitleKind::Building},
         {native_pe_address(profile.base, 0x158a79), NativeInfoTitleKind::Engraving},
         {native_pe_address(profile.base, 0x158af4), NativeInfoTitleKind::Terrain},
@@ -164,6 +168,11 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     profile.info_titles.sheet_slot = 0x7960;
     profile.info_titles.building_name = 0xd0;
     profile.info_titles.editing_name = 0x1d59;
+    // ITEM_LIST's title is at rsp+0x3d60; rsp+0x788 holds the inclusive
+    // button right. Its text starts at L+7 and resizes to R-L-15 bytes,
+    // giving the exclusive title boundary R-8, before the scrollbar.
+    profile.info_titles.item_list_right_slot = -0x3578;
+    profile.info_titles.item_list_right_inset = 8;
     // Places draws the farm name at rbp+0xb0 with rbp=rsp+0x100.
     // The current building is stored at rsp+0x40, hence source-0x170.
     // Its native formatter copies building.name whenever that field is
@@ -230,6 +239,7 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         {profile.resize_target, {0x48,0x8b,0x41,0x10,0x48,0x3b,0xd0,0x77}},
         {profile.draw_target, {0x40,0x53,0x56,0x57,0x48,0x83,0xec,0x50}},
         {0x154a23, {0xe8,0x38,0x4f,0x98,0x00}},
+        {0x15a25c, {0xe8,0xff,0xf6,0x97,0x00}},
         {0x180575, {0xe8,0xe6,0x93,0x95,0x00}},
         {0x158a74, {0xe8,0xe7,0x0e,0x98,0x00}},
         {0x158aef, {0xe8,0x6c,0x0e,0x98,0x00}},
@@ -709,6 +719,26 @@ static const NativeElfCaptionProfile *native_elf_caption_profile(ModuleBuildId &
         for (const auto &profile : native_elf_caption_profiles)
             if (module.value == profile.build_id) return &profile;
     }
+    if (module.found && elf_runtime::automatic()) {
+        static const NativeElfCaptionProfile discovered = [] {
+            auto result = native_elf_caption_profiles[0];
+            result.resize = native_reference_va(result.resize);
+            result.draw = native_reference_va(result.draw);
+            for (auto &address : result.embark_resize) address = native_reference_va(address);
+            for (auto &address : result.embark_draw) address = native_reference_va(address);
+            for (auto &address : result.origin) address = native_reference_va(address);
+            for (auto &row : result.legends_items)
+                for (auto &address : row) address = native_reference_va(address);
+            return result;
+        }();
+        if (!discovered.resize || !discovered.draw ||
+            std::any_of(discovered.embark_resize.begin(), discovered.embark_resize.end(), [](auto address) { return !address; }) ||
+            std::any_of(discovered.embark_draw.begin(), discovered.embark_draw.end(), [](auto address) { return !address; }) ||
+            std::any_of(discovered.origin.begin(), discovered.origin.end(), [](auto address) { return !address; })) return nullptr;
+        for (const auto &row : discovered.legends_items)
+            if (std::any_of(row.begin(), row.end(), [](auto address) { return !address; })) return nullptr;
+        return &discovered;
+    }
     log_line("ERROR", "Unsupported native executable for complete caption capture");
     return nullptr;
 }
@@ -934,6 +964,8 @@ static bool locate_native_elf_action_resize(const NativeElfCaptionImage &image,
     return found;
 }
 
+#include "native_caption_semantics_elf.inc"
+
 static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     ModuleBuildId module;
     const auto *identity = native_elf_caption_profile(module);
@@ -953,7 +985,7 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         native_history_layout::ui_look_list_rva);
     // These are the static curses_text_boxst toolbar cards, independent of
     // ViewBase's container named Tooltip. Calls are validated on installation.
-    profile.legacy_toolbar_tooltip = module.value == "bcc6789e6fb477b785a2b02be80b8b1b054ff88c";
+    profile.legacy_toolbar_tooltip = elf_runtime::state().edition != 2;
     profile.inline_resizes.push_back(std::move(action_resize));
     const auto widget_table = reinterpret_cast<uintptr_t>(
         dlsym(RTLD_DEFAULT, "_ZTVN7widgets14text_truncatedE"));
@@ -987,8 +1019,15 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     // as its native wrap rows; Linux previously left this binding empty.
     profile.multiline_widget = {
         reinterpret_cast<void **>(multiline_table + (2 + 3) * sizeof(void *)),
-        0x10, 0x150, 0xc4, reinterpret_cast<uintptr_t>(multiline_render) + 0xc1,
-        multiline_render};
+        0x10, 0x150, 0xc4, elf_runtime::symbol_return("_ZN7widgets14text_multiline6renderEj", 0xc1),
+        multiline_render,
+        reinterpret_cast<void **>(multiline_table + (2 + 4) * sizeof(void *)),
+        dlsym(RTLD_DEFAULT, "_ZN7widgets14text_multiline7arrangeEv"),
+        reinterpret_cast<NativeCaptionWidgetArrangeFn>(
+            dlsym(RTLD_DEFAULT, "_ZN7widgets6widget7arrangeEv")), 0xc8};
+    if (!profile.multiline_widget.expected_arrange ||
+            !profile.multiline_widget.base_arrange) return false;
+    if (!elf_runtime::symbol_return("_ZN7widgets14text_multiline6renderEj", 0xc1)) return false;
     profile.resize_target = identity->resize;
     profile.draw_target = identity->draw;
     profile.resize = reinterpret_cast<NativeCaptionResizeFn>(module.base + identity->resize);
@@ -1036,6 +1075,6 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         profile.sites.push_back({item[1],item[3],NativeFieldKind::BookType});
     }
     return profile.draw && profile.truncate && profile.flag_draw &&
-        profile.top_draw && profile.top_flag_draw;
+        profile.top_draw && profile.top_flag_draw && resolve_native_caption_semantics_elf(profile);
 }
 #endif

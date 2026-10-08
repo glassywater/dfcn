@@ -20,7 +20,11 @@ static void capture_native_adventure_barter_search_term(NativeString *term,
             return g_overlay.translated_item_search_matches(source, needle, true);
         });
 }
+#ifdef _WIN32
 #include "native_adventure_barter_search_profile_pe.inc"
+#else
+#include "native_adventure_barter_search_profile_elf.inc"
+#endif
 
 static bool native_adventure_barter_search_hook_active() {
     return g_native_adventure_barter_search_hook.active();

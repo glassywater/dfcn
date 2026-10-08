@@ -1,0 +1,14 @@
+# Authored behavior descriptions exposed by engine/alignment.lua.
+base = "subscribed_books::engine"
+
+[[rulesets]]
+[rulesets.rules]
+"Avoids attacking helpless enemies, prefers fair duels, protects bystanders, likely to spare." = "避免攻击无力抵抗的敌人，偏好公平决斗，保护旁观者，往往会手下留情。"
+"May break rules to save others, avoids cruelty, may use dirty tricks defensively." = "可能为救人而打破规则，避免残酷行为，防御时可能使用卑劣手段。"
+"Resists oppressive authority, improvises, protects innocents, dislikes formal constraints." = "反抗压迫性的权威，随机应变，保护无辜者，不喜欢形式上的束缚。"
+"Follows duty, contract, rank, law, or ritual even when emotionally costly." = "即使情感上需要付出代价，也会遵循职责、契约、等级、法律或仪式。"
+"Prioritizes survival, balance, local loyalty, or self-interest without needless cruelty." = "优先考虑生存、平衡、地方忠诚或自身利益，避免无谓的残酷。"
+"Impulsive, unpredictable, freedom-driven, may escalate if provoked." = "冲动而难以预测，以自由为动力，受到挑衅时可能升级冲突。"
+"Cruel within rules, executes if legal or deserved, uses hierarchy and punishment." = "在规则内行事残酷，若合法或认为罪有应得便会处决对方，善用等级制度与惩罚。"
+"Self-serving, pragmatic, avoids risk unless reward is high." = "利己而务实，除非回报很高，否则避免冒险。"
+"Ignores surrender, escalates quickly, may attack at cost to self." = "无视投降，迅速升级冲突，可能不惜自身代价发动攻击。"

@@ -1,0 +1,153 @@
+# Complete authored rendering from narrative.lua
+base = "subscribed_books::narrative"
+
+[[rulesets]]
+[rulesets.rules]
+"{@bt_succ|::subscribed_books::vocabulary::person} had loved {@bt_dead|::subscribed_books::vocabulary::person}. Not in the way of stories -- not perfectly, not easily -- but deeply, and for a long time. When {::subscribed_books::personality::pro1} learned that {@bt_killer|::subscribed_books::vocabulary::person} had taken {@bt_dead2|::subscribed_books::vocabulary::person} from {::subscribed_books::personality::obj1}, something inside {@bt_succ2|::subscribed_books::vocabulary::person} broke. What grew in its place was harder, colder, and entirely focused on a single purpose." = "{@bt_succ|::subscribed_books::vocabulary::person}深爱过{@bt_dead|::subscribed_books::vocabulary::person}。并非故事中那种完美、轻松的爱，却深沉而长久。当{::subscribed_books::personality::pro1}得知{@bt_killer|::subscribed_books::vocabulary::person}从{::subscribed_books::personality::obj1}身边夺走了{@bt_dead|::subscribed_books::vocabulary::person}时，{@bt_succ|::subscribed_books::vocabulary::person}内心的某样东西碎裂了。取而代之的，是更坚硬、更冰冷，并完全专注于一个目标的东西。"
+"{@bt_dead|::subscribed_books::vocabulary::person} had been {@bt_succ|::subscribed_books::vocabulary::person}'s closest companion. They had shared roads, fires, and silences. When word came that {@bt_killer|::subscribed_books::vocabulary::person} had killed {@bt_dead2|::subscribed_books::vocabulary::person}, {@bt_succ2|::subscribed_books::vocabulary::person} did not rage. {::subscribed_books::personality::pro1} went quiet, and the quiet was worse than any scream." = "{@bt_dead|::subscribed_books::vocabulary::person}曾是{@bt_succ|::subscribed_books::vocabulary::person}最亲密的伙伴。他们共同走过道路，围坐过篝火，也分享过沉默。消息传来，说{@bt_killer|::subscribed_books::vocabulary::person}杀死了{@bt_dead|::subscribed_books::vocabulary::person}，{@bt_succ|::subscribed_books::vocabulary::person}却没有暴怒。{::subscribed_books::personality::pro1}沉默了，而这种沉默比任何尖叫都更可怕。"
+"{@bt_dead|::subscribed_books::vocabulary::person} was blood. {@bt_succ|::subscribed_books::vocabulary::person}'s own family. When {::subscribed_books::personality::pro1} learned what {@bt_killer|::subscribed_books::vocabulary::person} had done, the grief was immediate and total. But grief, in time, becomes fuel. And {@bt_succ2|::subscribed_books::vocabulary::person} intended to burn." = "{@bt_dead|::subscribed_books::vocabulary::person}是血亲。是{@bt_succ|::subscribed_books::vocabulary::person}自己的家人。当{::subscribed_books::personality::pro1}得知{@bt_killer|::subscribed_books::vocabulary::person}做了什么时，悲痛立刻将一切淹没。但悲痛终会化为燃料。而{@bt_succ|::subscribed_books::vocabulary::person}打算燃烧起来。"
+"{@bt_dead|::subscribed_books::vocabulary::person} had been {@bt_succ|::subscribed_books::vocabulary::person}'s teacher -- the one who had shaped {::subscribed_books::personality::obj1}, believed in {::subscribed_books::narrative::obj2}, given {::subscribed_books::narrative::obj3} purpose. {@bt_killer|::subscribed_books::vocabulary::person} had destroyed all of that with a single act. {@bt_succ2|::subscribed_books::vocabulary::person} would not let it go unanswered." = "{@bt_dead|::subscribed_books::vocabulary::person}曾是{@bt_succ|::subscribed_books::vocabulary::person}的老师——塑造了{::subscribed_books::personality::obj1}，相信{::subscribed_books::personality::obj1}，赋予{::subscribed_books::personality::obj1}目标的人。{@bt_killer|::subscribed_books::vocabulary::person}用一次行动摧毁了这一切。{@bt_succ|::subscribed_books::vocabulary::person}不会让此事毫无回应。"
+"{@bt_dead|::subscribed_books::vocabulary::person} had mattered to {@bt_succ|::subscribed_books::vocabulary::person}. They had been {::subscribed_books::narrative::relation}. That bond, severed now by {@bt_killer|::subscribed_books::vocabulary::person}'s hand, demanded a response. {@bt_succ2|::subscribed_books::vocabulary::person} intended to provide one." = "{@bt_dead|::subscribed_books::vocabulary::person}对{@bt_succ|::subscribed_books::vocabulary::person}很重要。他们曾是{::subscribed_books::narrative::relation}。如今这份纽带被{@bt_killer|::subscribed_books::vocabulary::person}亲手斩断，它要求一个回应。而{@bt_succ|::subscribed_books::vocabulary::person}打算给出回应。"
+"{@bt_succ|::subscribed_books::vocabulary::person} had not known {@bt_dead|::subscribed_books::vocabulary::person} well. But the death left a void -- in the settlement, in the balance of power, in the unfinished business that now fell to whoever was left. {@bt_succ2|::subscribed_books::vocabulary::person} was left. And so the weight settled on {::subscribed_books::personality::pos1} shoulders, whether {::subscribed_books::personality::pro1} wanted it or not." = "{@bt_succ|::subscribed_books::vocabulary::person}与{@bt_dead|::subscribed_books::vocabulary::person}并不熟悉。但这场死亡留下了空缺——在聚落中，在权力平衡中，在那些如今落到幸存者身上的未竟之事中。{@bt_succ|::subscribed_books::vocabulary::person}还活着。于是，无论{::subscribed_books::personality::pro1}愿不愿意，重担都压上了{::subscribed_books::personality::pos1}的肩膀。"
+"{@bt_a|::subscribed_books::vocabulary::person} wanted {@bt_killer|::subscribed_books::vocabulary::person} dead. {@bt_killer2|::subscribed_books::vocabulary::person} had murdered the one person {@bt_a2|::subscribed_books::vocabulary::person} had ever loved -- {@bt_dead|::subscribed_books::vocabulary::person}. There was nothing left to discuss." = "{@bt_a|::subscribed_books::vocabulary::person}想要{@bt_killer|::subscribed_books::vocabulary::person}死。{@bt_killer|::subscribed_books::vocabulary::person}杀害了{@bt_a|::subscribed_books::vocabulary::person}一生中唯一爱过的人——{@bt_dead|::subscribed_books::vocabulary::person}。已经没有什么可谈的了。"
+"{@bt_a|::subscribed_books::vocabulary::person} and {@bt_b|::subscribed_books::vocabulary::person} were enemies because {@bt_b2|::subscribed_books::vocabulary::person} had killed {@bt_dead|::subscribed_books::vocabulary::person} -- someone {@bt_a2|::subscribed_books::vocabulary::person} had cared about deeply. The vendetta was not political or ideological. It was personal." = "{@bt_a|::subscribed_books::vocabulary::person}与{@bt_b|::subscribed_books::vocabulary::person}成为仇敌，是因为{@bt_b|::subscribed_books::vocabulary::person}杀死了{@bt_dead|::subscribed_books::vocabulary::person}——一个{@bt_a|::subscribed_books::vocabulary::person}深切关心的人。这场血仇与政治或理念无关。它完全出于个人恩怨。"
+"{@bt_a|::subscribed_books::vocabulary::person} had inherited a conflict {::subscribed_books::personality::pro1} did not start. {@bt_b|::subscribed_books::vocabulary::person} had killed {@bt_dead|::subscribed_books::vocabulary::person}, and now {@bt_a2|::subscribed_books::vocabulary::person} stood where {@bt_dead2|::subscribed_books::vocabulary::person} had stood, facing the same enemy." = "{@bt_a|::subscribed_books::vocabulary::person}继承了一场并非由{::subscribed_books::personality::pro1}挑起的冲突。{@bt_b|::subscribed_books::vocabulary::person}杀死了{@bt_dead|::subscribed_books::vocabulary::person}，如今{@bt_a|::subscribed_books::vocabulary::person}站在{@bt_dead|::subscribed_books::vocabulary::person}曾经的位置，面对着同一个敌人。"
+"{@bt_dead|::subscribed_books::vocabulary::person} was dead. Killed by {@bt_killer|::subscribed_books::vocabulary::person}. The world had changed, and those who remained had to decide what to do about it." = "{@bt_dead|::subscribed_books::vocabulary::person}已经死了。凶手是{@bt_killer|::subscribed_books::vocabulary::person}。世界已经改变，留下的人必须决定接下来该怎么做。"
+"{@bt_dead|::subscribed_books::vocabulary::person} had survived, but {::subscribed_books::personality::pro1} would never be the same. The loss of {@bt_limb|::subscribed_books::narrative::limb} was a wound that no healer could undo." = "{@bt_dead|::subscribed_books::vocabulary::person}活了下来，但{::subscribed_books::personality::pro1}再也不会和从前一样。失去{@bt_limb|::subscribed_books::narrative::limb}留下的伤口，是任何医者都无法弥补的。"
+"{@bt_a|::subscribed_books::vocabulary::person} and {@bt_b|::subscribed_books::vocabulary::person}'s {::subscribed_books::narrative::interaction} had curdled into something neither expected." = "{@bt_a|::subscribed_books::vocabulary::person}与{@bt_b|::subscribed_books::vocabulary::person}之间的{::subscribed_books::narrative::interaction}，已经变质成了双方都未曾料到的东西。"
+"{@bt_old|::subscribed_books::vocabulary::person} had a name, it turned out. {@bt_true|::subscribed_books::vocabulary::person}." = "原来{@bt_old|::subscribed_books::vocabulary::person}也有名字：{@bt_true|::subscribed_books::vocabulary::person}。"
+
+[[rulesets]]
+name = "obj2"
+[rulesets.rules]
+"{::subscribed_books::personality::obj1}" = "{::subscribed_books::personality::obj1}"
+
+[[rulesets]]
+name = "obj3"
+[rulesets.rules]
+"{::subscribed_books::personality::obj1}" = "{::subscribed_books::personality::obj1}"
+
+[[rulesets]]
+[rulesets.rules]
+"The pages are blank." = "书页一片空白。"
+"=== {@bt_title} ===" = "=== {@bt_title} ==="
+"A {type} in {#digits} chapter" = "一部{type}，共{#digits}章"
+"A {type} in {#digits} chapters" = "一部{type}，共{#digits}章"
+"Perspective: {@bt_perspective|::subscribed_books::vocabulary::perspective}" = "视角：{@bt_perspective|::subscribed_books::vocabulary::perspective}"
+"Chapter {#digits}" = "第{#digits}章"
+"{@bt_person|::subscribed_books::vocabulary::person} was involved in {event} in the year {@bt_year|::subscribed_books::vocabulary::birth_year}." = "{@bt_year|::subscribed_books::vocabulary::birth_year}年，{@bt_person|::subscribed_books::vocabulary::person}参与了{event}。"
+"{@bt_person|::subscribed_books::vocabulary::person} was involved in {event} in the year {@bt_year|::subscribed_books::vocabulary::birth_year} at {@bt_site|::subscribed_books::vocabulary::place}." = "{@bt_year|::subscribed_books::vocabulary::birth_year}年，{@bt_person|::subscribed_books::vocabulary::person}参与了{event}（于{@bt_site|::subscribed_books::vocabulary::place}）。"
+"{@bt_person|::subscribed_books::vocabulary::person} assumed a false identity{impersonation}{identity_name} in the year {@bt_year|::subscribed_books::vocabulary::birth_year}." = "{@bt_year|::subscribed_books::vocabulary::birth_year}年，{@bt_person|::subscribed_books::vocabulary::person}采用了一个虚假身份{impersonation}{identity_name}。"
+"A record of events." = "一份事件记录。"
+"The chronicle continues." = "编年史继续。"
+"{::subscribed_books::connective}" = "{::subscribed_books::connective}"
+
+[[rulesets]]
+name = "event_site"
+optional = true
+[rulesets.rules]
+" at {@bt_site|::subscribed_books::vocabulary::place}" = "（于{@bt_site|::subscribed_books::vocabulary::place}）"
+
+[[rulesets]]
+name = "impersonation"
+optional = true
+[rulesets.rules]
+", impersonating {@bt_person|::subscribed_books::vocabulary::person}" = "，冒充{@bt_person|::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+name = "identity_name"
+optional = true
+[rulesets.rules]
+" under the name {@bt_identity}" = "，使用名字{@bt_identity}"
+
+[[rulesets]]
+name = "type"
+[rulesets.rules]
+"Chronicle" = "编年史"
+"Biography" = "传记"
+"Autobiography" = "自传"
+"Cultural History" = "文化史"
+"Alternate History" = "架空历史"
+"Comparative Biography" = "比较传记"
+"Genealogy" = "家谱"
+"Biographical Dictionary" = "人物辞典"
+"Short Story" = "短篇小说"
+"Novel" = "小说"
+"Play" = "戏剧"
+"Letter" = "书信"
+"Essay" = "散文"
+"Dialog" = "对话录"
+"Manual" = "手册"
+"Guide" = "指南"
+"Encyclopedia" = "百科全书"
+"Dictionary" = "词典"
+"Treatise on Technological Evolution" = "技术演变论著"
+"Atlas" = "地图集"
+"Poem" = "诗歌"
+"Musical Composition" = "乐曲"
+"Choreography" = "舞谱"
+"Star Chart" = "星图"
+"Star Catalogue" = "星表"
+"Cultural Comparison" = "文化比较"
+"Account" = "记述"
+
+[[rulesets]]
+name = "relation"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::relation}" = "{::subscribed_books::vocabulary::relation}"
+"friend" = "朋友"
+"family" = "家人"
+"enemy" = "仇敌"
+"rival" = "对手"
+"ally" = "盟友"
+"enemy combatant" = "交战中的敌人"
+
+[[rulesets]]
+name = "interaction"
+[rulesets.rules]
+"argument" = "争论"
+"conversation" = "交谈"
+"romance" = "恋情"
+"gift" = "赠礼"
+"trade" = "交易"
+"collaboration" = "合作"
+"manipulation" = "操纵"
+"betrayal" = "背叛"
+"confrontation" = "对峙"
+"battle" = "战斗"
+"combat" = "交战"
+"reconciliation" = "和解"
+"confession" = "坦白"
+"mentoring" = "指导"
+"teaching" = "教学"
+"training" = "训练"
+"reunion" = "重逢"
+"introduction" = "初识"
+"debate" = "辩论"
+"persuasion" = "劝说"
+"discovery" = "发现"
+"creativity" = "创作"
+"loyalty" = "忠诚"
+
+[[rulesets]]
+name = "limb"
+[rulesets.rules]
+"a limb" = "一条肢体"
+"{::subscribed_books::battle::body}" = "{::subscribed_books::battle::body}"
+[[rulesets]]
+name = "interaction"
+[rulesets.rules]
+"discussion" = "讨论"
+"event_witness" = "事件见证"
+"conflict" = "冲突"
+"joke" = "玩笑"
+"impersonation" = "身份冒充"
+"accident" = "意外"
+"romantic_advance" = "示爱"
+[[rulesets]]
+name = "event"
+[rulesets.rules]
+"{::subscribed_books::native_events}" = "{::subscribed_books::native_events}"
+[[rulesets]]
+[rulesets.rules]
+"{::subscribed_books::engine}" = "{::subscribed_books::engine}"

@@ -164,14 +164,14 @@ void Overlay::append_fortress_elevation_rows(std::vector<std::string> &rows,
             if (!target || target->empty()) target = native_text_to_utf8(complete);
             append(x, y, source, *target, box);
         }
-        // The native position options are literals in the left list. Scope
-        // them to this dialog and their real button, preserving authored
-        // labels that do not have a matching position-caption entry.
+        // Native position labels prefer LAND_NAME and fall back to NAME[0].
+        // Share the Nobles column's land-title grammar, including native
+        // capitalization; the real button establishes this field's scope.
         for (int y = prompt_y + 1; y < footer_y; ++y)
             for (const auto &field : split_text_fields(context[y])) {
                 if (field.start < panel->x || field.end >= candidate_left) continue;
-                const auto target = exact_literal_translation(
-                    "DFHack GUI Elevation option: " + field.text);
+                auto target = translate_fortress_status(field.text, true);
+                if (!target) target = translate_unit_profession(field.text);
                 if (!target) continue;
                 const auto button = native_button_text_rect(*gps_, field.start, field.end,
                     y, false, nullptr, false, true);

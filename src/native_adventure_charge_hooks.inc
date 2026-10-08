@@ -1,7 +1,6 @@
 // Capture each unit-name append before the movement constructor concatenates
 // same-tile charge targets. The native caption and its original control flow
 // remain unchanged; only its exact owned field boundaries reach the overlay.
-#ifdef _WIN32
 using NativeAdventureChargeCaptionFn = void (*)(void *, NativeString *);
 using NativeAdventureChargeUnitFn = void (*)(void *, NativeString *, int32_t, bool, bool);
 using NativeAdventureChargeAppendFn = NativeString *(*)(NativeString *, const char *, size_t);
@@ -156,6 +155,7 @@ static void uninstall_native_adventure_charge_hooks() {
     hooks.append = nullptr;
 }
 
+#ifdef _WIN32
 static bool install_native_adventure_charge_hooks() {
     auto &hooks = g_native_adventure_charge_hooks;
     if (hooks.caption.installed && hooks.fields.installed) return true;
@@ -195,7 +195,5 @@ static bool install_native_adventure_charge_hooks() {
     return true;
 }
 #else
-static bool native_adventure_charge_hooks_active() { return false; }
-static bool install_native_adventure_charge_hooks() { return true; }
-static void uninstall_native_adventure_charge_hooks() {}
+#include "native_adventure_charge_profile_elf.inc"
 #endif

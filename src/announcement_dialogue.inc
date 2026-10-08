@@ -78,13 +78,16 @@ std::optional<std::string> Overlay::translate_announcement_number(
     return std::to_string(value);
 }
 
-// 0x140b92640 emits a year, one of twelve season/year phrases, or before-time.
+// 0x140b92640 emits a year, twelve season/year phrases, before-time, or a
+// phase/year phrase without a season noun through its switch default.
 std::optional<std::string> Overlay::translate_announcement_date(
         std::string_view source) const {
-    source = trim_view(source);
+    const std::string normalized = normalize_utterance(source);
+    source = normalized;
     if (source == "a time before time")
         return exact_literal_translation("Announcement date: before time");
     std::string season;
+    std::string phase_key;
     if (source.starts_with("the ")) {
         const size_t of = source.find(" of ", 4);
         if (of == std::string_view::npos) return std::nullopt;
@@ -102,12 +105,31 @@ std::optional<std::string> Overlay::translate_announcement_date(
                 }
             }
         }
+        if (!valid && (name == "early" || name == "mid" || name == "late")) {
+            // The native early/late literals end in a space, so their
+            // missing-season outputs contain two spaces before "of".
+            // Reuse the normalized shared date template and its wording.
+            phase_key = "In the " + name + " of {d},";
+            valid = true;
+        }
         if (!valid) return std::nullopt;
         source.remove_prefix(of + 4);
     }
     if (source.empty() || !std::all_of(source.begin(), source.end(),
             [](unsigned char c) { return c >= '0' && c <= '9'; }) ||
         parse_int(std::string(source), 0) < 1) return std::nullopt;
+    if (!phase_key.empty()) {
+        const auto found = history_semantic_templates_.find(phase_key);
+        if (found == history_semantic_templates_.end()) return std::nullopt;
+        const Rule &rule = rules_[static_cast<size_t>(found->second)];
+        if (rule.template_kinds.size() != 1 || rule.template_kinds.front() != 'd')
+            return std::nullopt;
+        const std::vector<std::string> captures{std::string(source)};
+        std::string result = fill_template(rule, captures, &capture_translations_);
+        if (result.ends_with("，")) result.resize(result.size() - std::string_view("，").size());
+        else if (result.ends_with(',')) result.pop_back();
+        return result.empty() ? std::nullopt : std::optional<std::string>(std::move(result));
+    }
     auto result = exact_literal_translation("Announcement date: year");
     if (!result) return std::nullopt;
     const size_t field = result->find("{d}");

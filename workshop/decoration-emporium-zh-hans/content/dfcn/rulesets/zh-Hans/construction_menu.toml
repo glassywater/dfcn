@@ -1,0 +1,7 @@
+base = "construction_menu"
+
+[[rulesets]]
+name = "workshops"
+[rulesets.rules]
+"Decoration Emporium" = "装饰坊"
+"Decoration Emporium 2" = "装饰坊 2"

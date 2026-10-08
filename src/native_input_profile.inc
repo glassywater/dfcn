@@ -11,6 +11,10 @@ static bool prepare_native_input_profile(NativeInputProfile &profile) {
     profile.entry = reinterpret_cast<unsigned char *>(native_pe_address(base, 0x00c39700));
     profile.prefix = {0x40, 0x53, 0x56, 0x57, 0x41, 0x56};
     if (!profile.entry || !native_pe_bytes(0x00c39700, profile.prefix)) return false;
+    static constexpr unsigned char ui_text_call[]{0xe8, 0x5b, 0x0c, 0x00, 0x00, 0x84, 0xc0};
+    if (!native_pe_match(base, 0x00c38aa0, ui_text_call, sizeof(ui_text_call))) return false;
+    profile.ui_text_input_return = reinterpret_cast<const void *>(native_pe_address(base, 0x00c38aa5));
+    if (!profile.ui_text_input_return) return false;
     profile.arena = {
         reinterpret_cast<unsigned char *>(native_pe_address(base, 0x018a8110)),
         reinterpret_cast<unsigned char *>(native_pe_address(base, 0x024eca68)),
@@ -55,8 +59,7 @@ static uintptr_t elf_arena_relative(uintptr_t instruction, size_t displacement_o
 static bool locate_native_arena_profile(NativeArenaContext &context) {
     ModuleBuildId module;
     dl_iterate_phdr(find_main_build_id, &module);
-    if (!module.found || (module.value != "bcc6789e6fb477b785a2b02be80b8b1b054ff88c" &&
-                         module.value != "84ba59a59a6bbe4487f933a8c85360a45902749e")) return false;
+    if (!module.found || !elf_runtime::supported()) return false;
     NativeElfArenaImage image;
     dl_iterate_phdr(find_elf_arena_regions, &image);
     // Verified 53.16 filter semantics: copy both complete int16 ID vectors,

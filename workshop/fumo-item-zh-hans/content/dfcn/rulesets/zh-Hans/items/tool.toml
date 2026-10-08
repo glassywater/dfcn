@@ -1,0 +1,6 @@
+base = "items::tool"
+
+[[rulesets]]
+name = "main"
+[rulesets.rules]
+"{::fumo_item::items}" = "{::fumo_item::items}"

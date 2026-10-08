@@ -432,8 +432,12 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
         std::optional<std::string> squad_name;
         std::optional<std::string> identity;
         for (const auto &native : native_records) {
+            // The native row spans the unit list, while graphical portrait
+            // records stop before their tool/policy controls. Those records
+            // share the same origin and height, but not the same width.
+            // Bind the contained text area through its exact captions below.
             if (native.box.x != record.box.x || native.box.y != record.box.y ||
-                    native.box.w != record.box.w || native.box.h != record.box.h ||
+                    native.box.w < record.box.w || native.box.h != record.box.h ||
                     native.squad_position < 0 || native.squad_name_source.empty() ||
                     native.unit_identity_source.empty() || identities.size() < 2) continue;
             const auto &heading = *identities.front();

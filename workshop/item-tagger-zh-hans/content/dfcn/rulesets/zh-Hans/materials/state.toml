@@ -1,0 +1,10 @@
+base = "materials::state"
+
+[[rulesets]]
+[rulesets.rules]
+"{shared}{::item_tagger::tags}" = "{shared}{::item_tagger::tags}"
+
+[[rulesets]]
+name = "adjective"
+[rulesets.rules]
+"{shared}{::item_tagger::tags}" = "{shared}{::item_tagger::tags}"

@@ -1,0 +1,6 @@
+schema = 1
+id = "detailed-moon-zh-hans"
+version = 1
+language = "zh-Hans"
+name = "精细月相汉化数据"
+translations = "dfcn/translations.tsv"

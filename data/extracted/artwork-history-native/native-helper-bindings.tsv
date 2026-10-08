@@ -3,3 +3,13 @@ reference_rva	classic_rva	binding
 0xb732f0	0xb70330	actual RTTI root or corresponding anchored direct callee
 0xb5a6c0	0xb57700	actual RTTI root or corresponding anchored direct callee
 0xb94090	0xb910d0	actual RTTI root or corresponding anchored direct callee
+0xb8ac80	0xb87cc0	history_event_artifact_destroyedst actual RTTI +0xd8 subject root; complete paired body retained
+0xb92640	0xb8f680	shared date builder; direct tail call from artifact-destroyed root and other event roots
+0xb94400	0xb91440	artifact identity; e+0x28 and context flags in artifact-destroyed subject
+0xc65450	0xc62490	artifact-associated item designation; actual direct calls at Reference 0xb94583 and Classic 0xb915c3 from artifact identity helper
+0xb92f10	0xb8ff50	historical figure descriptor; e+0x30, context, true, false in artifact-destroyed subject
+0xb92900	0xb8f940	entity descriptor; e+0x34 and context flags in artifact-destroyed subject
+0xb93930	0xb90970	site descriptor; e+0x2c and context flags in artifact-destroyed subject
+0x1451b10	0x144ca80	art_image paragraph; current complete shared item/art source root
+0x1452aaa	0x144da1a	art_image history_event +0xd8 virtual subject dispatch instruction
+0x1452b4d	0x144dabd	art_image history_event_collection +0x30 virtual title dispatch instruction

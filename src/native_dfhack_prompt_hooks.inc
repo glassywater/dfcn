@@ -1,7 +1,6 @@
 // Console::lineedit renders its prompt directly with byte-based cursor
 // accounting. Print a trusted translated question separately, then keep the
 // native input editor, history and return value with the ASCII prompt "> ".
-#ifdef _WIN32
 static std::optional<std::string> translate_dfhack_console_prompt(std::string_view source);
 
 // The terminal may wait indefinitely after this entry returns to DFHack.
@@ -36,7 +35,7 @@ static const NativeString *native_dfhack_prepare_prompt(void *console,
         if (target->back() != '\n') target->push_back('\n');
         const auto borrowed = native_dfhack_console_borrow(*target);
         // Native add_text reads c_str() synchronously and never destroys this
-        // borrowed MSVC string. It also owns Console's recursive write lock.
+        // temporary native string. It also owns Console's recursive write lock.
         callback.call_native([&] { context->add_text(console, -1, &borrowed); });
         return &context->ascii;
     } catch (...) {
@@ -58,6 +57,7 @@ static bool native_dfhack_prompt_hook_active() {
         (context && std::atomic_ref<uintptr_t>(context->helper).load(std::memory_order_seq_cst));
 }
 
+#ifdef _WIN32
 static bool prepare_native_dfhack_prompt_hook(HMODULE module) {
     constexpr const char *label = "DFHack local input prompt translation";
     if (g_native_dfhack_prompt_hook.relay)
@@ -207,9 +207,31 @@ static bool prepare_native_dfhack_prompt_hook(HMODULE module) {
     return true;
 }
 
+#else
+static bool prepare_native_dfhack_prompt_hook(void *entry_pointer) {
+    auto &hook = g_native_dfhack_prompt_hook;
+    if (hook.relay) return hook.original && g_native_dfhack_prompt_context;
+    auto context = std::make_unique<NativeDfhackPromptContext>();
+    context->add_text = reinterpret_cast<NativeDfhackConsoleTextFn>(dlsym(RTLD_DEFAULT,
+        "_ZN6DFHack7Console8add_textENS_11color_valueERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"));
+    if (!context->add_text) return false;
+    context->ascii.assign("> ");
+    if (!prepare_native_dfhack_elf_gate(hook,
+            static_cast<unsigned char *>(entry_pointer), context.get(),
+            {0xf3,0x0f,0x1e,0xfa,0x41,0x57}, NativeDfhackElfGate::Prompt,
+            "DFHack local input prompt translation")) return false;
+    g_native_dfhack_prompt_context = context.release();
+    return true;
+}
+#endif
+
 static bool install_native_dfhack_prompt_hook() {
     std::lock_guard<std::mutex> lock(g_native_dfhack_prompt_mutex);
+#ifdef _WIN32
     const auto module = GetModuleHandleW(L"dfhack.dll");
+#else
+    void *module = dlsym(RTLD_DEFAULT, "_ZN6DFHack7Console8lineeditERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERS6_RNS_14CommandHistoryE");
+#endif
     if (!module) return true;
     constexpr const char *label = "DFHack local input prompt translation";
     if (!prepare_native_dfhack_prompt_hook(module)) return false;
@@ -238,9 +260,3 @@ static void uninstall_native_dfhack_prompt_hook() {
     // The dormant relay intentionally remains allocated and registered.
     // Native lineedit can block after the tail jump without owning this core.
 }
-#else
-// Windows Console's MSVC input boundary is bound only on this host.
-static bool native_dfhack_prompt_hook_active() { return false; }
-static bool install_native_dfhack_prompt_hook() { return true; }
-static void uninstall_native_dfhack_prompt_hook() {}
-#endif

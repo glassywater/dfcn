@@ -1141,6 +1141,8 @@ def parse_literal_rulesets(root: Path) -> list[Entry]:
             "items/grown.toml",
             "materials/woven_plant.toml",
             "activities.toml",
+            # Fortress LAND_NAME denotes a title only in its typed columns.
+            "fortress/status.toml",
         }:
             continue
         document = tomllib.loads(path.read_text(encoding="utf-8"))

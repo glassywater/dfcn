@@ -204,22 +204,36 @@ static std::optional<std::string> translate_complete_item_description_rule(
         return std::nullopt;
     std::vector<std::string> captures(rule.template_kinds.size());
     std::vector<std::optional<std::string>> translated(rule.template_kinds.size());
-    auto capture = [&](size_t index, size_t begin, size_t end) {
-        if (begin >= end || end > source.size()) return false;
-        const auto value = normalize
+    const auto capture_source = [&](size_t begin, size_t end) {
+        return normalize
             ? raw_source.substr(origins[begin], origins[end - 1] + 1 - origins[begin])
             : raw_source.substr(begin, end - begin);
-        // Match the shared numeric-template contract even on the backtracking
-        // path; arbitrary English must never pass through a number capture.
-        if (rule.template_kinds[index] == 'd') {
-            std::string_view digits = value;
-            if (digits.front() == '+' || digits.front() == '-') digits.remove_prefix(1);
-            if (digits.empty() || !std::all_of(digits.begin(), digits.end(),
-                    [](unsigned char ch) { return ch >= '0' && ch <= '9'; }))
-                return false;
+    };
+    const auto numeric_capture_fits = [&](size_t index, size_t begin, size_t end) {
+        if (begin >= end || end > source.size()) return false;
+        if (rule.template_kinds[index] != 'd') return true;
+        auto digits = capture_source(begin, end);
+        if (digits.front() == '+' || digits.front() == '-') digits.remove_prefix(1);
+        return !digits.empty() && std::all_of(digits.begin(), digits.end(),
+            [](unsigned char ch) { return ch >= '0' && ch <= '9'; });
+    };
+    // A direct match and several backtracking paths can ask for the same
+    // semantic field. Resolve each original span once for this rule, retaining
+    // successful names and deterministic misses alike without changing order.
+    std::vector<std::map<std::pair<size_t, size_t>, std::optional<std::string>>>
+        capture_cache(captures.size());
+    auto capture = [&](size_t index, size_t begin, size_t end) {
+        if (!numeric_capture_fits(index, begin, end)) return false;
+        const auto value = capture_source(begin, end);
+        auto [cached, added] = capture_cache[index].try_emplace(
+            std::pair{begin, end}, std::nullopt);
+        if (added) {
+            cached->second = resolve(rule.template_kinds[index], value);
+            if (!translation_complete_with_native_nicknames(cached->second, value))
+                cached->second.reset();
         }
-        translated[index] = resolve(rule.template_kinds[index], value);
-        if (!translation_complete_with_native_nicknames(translated[index], value)) return false;
+        if (!cached->second) return false;
+        translated[index] = cached->second;
         captures[index] = std::string(value);
         return true;
     };
@@ -231,13 +245,60 @@ static std::optional<std::string> translate_complete_item_description_rule(
             rule.template_literals[index + 1] == " ");
     bool matched = !counted_noun && match_template(rule, source, 0, &end, &direct) &&
         end == source.size() && direct.size() == captures.size();
+    // Validate every numeric field before resolving an earlier recursive
+    // item/name. A matching literal suffix alone cannot establish that shape.
     size_t direct_position = rule.template_literals.front().size();
+    for (size_t index = 0; matched && index < direct.size(); ++index) {
+        const size_t stop = direct_position + direct[index].size();
+        matched = numeric_capture_fits(index, direct_position, stop);
+        direct_position = stop + rule.template_literals[index + 1].size();
+    }
+    direct_position = rule.template_literals.front().size();
     for (size_t index = 0; matched && index < direct.size(); ++index) {
         const size_t stop = direct_position + direct[index].size();
         matched = capture(index, direct_position, stop);
         direct_position = stop + rule.template_literals[index + 1].size();
     }
     if (!matched) {
+        // Prove a complete suffix using only literals and numeric syntax.
+        // Memoize all suffix states so an impossible later field rejects the
+        // branch before any preceding semantic resolver runs. Captures still
+        // use the original bytes and the existing boundary preference below.
+        std::map<std::pair<size_t, size_t>, bool> shapes;
+        auto shape = [&](auto &&self, size_t index, size_t position) -> bool {
+            translation_work_step();
+            if (index == captures.size()) return position == source.size();
+            const auto state = std::pair{index, position};
+            if (const auto found = shapes.find(state); found != shapes.end())
+                return found->second;
+            const auto &delimiter = rule.template_literals[index + 1];
+            const bool final = index + 1 == captures.size();
+            const bool longest_count = rule.template_kinds[index] == 'c' && delimiter == " ";
+            bool fits = false;
+            if (!delimiter.empty() || final) {
+                size_t stop = final
+                    ? (source.size() >= delimiter.size()
+                        ? source.size() - delimiter.size() : std::string_view::npos)
+                    : longest_count ? source.rfind(' ')
+                        : find_template_literal(source, delimiter, position + 1,
+                                                rule.case_insensitive);
+                for (; stop != std::string_view::npos && stop > position;) {
+                    if (template_literal_at(source, stop, delimiter, rule.case_insensitive) &&
+                        numeric_capture_fits(index, position, stop) &&
+                        self(self, index + 1, stop + delimiter.size())) {
+                        fits = true;
+                        break;
+                    }
+                    if (final) break;
+                    stop = longest_count ? source.rfind(' ', stop - 1)
+                        : find_template_literal(source, delimiter, stop + 1,
+                                                 rule.case_insensitive);
+                }
+            }
+            shapes.emplace(state, fits);
+            return fits;
+        };
+        if (!shape(shape, 0, rule.template_literals.front().size())) return std::nullopt;
         std::map<std::pair<size_t, size_t>, bool> failed;
         auto match = [&](auto &&self, size_t index, size_t position) -> bool {
             translation_work_step();
@@ -256,11 +317,7 @@ static std::optional<std::string> translate_complete_item_description_rule(
                                             rule.case_insensitive);
             for (; stop != std::string_view::npos && stop > position;) {
                 if (template_literal_at(source, stop, delimiter, rule.case_insensitive) &&
-                    // Prove the rest of the fixed wording before resolving
-                    // this noun. Item lists otherwise recursively translate
-                    // every prefix of rules whose later delimiters are absent.
-                    (final || legends_template_suffix_literals_fit(rule, source,
-                        index + 1, stop + delimiter.size(), source.size(), true)) &&
+                    shape(shape, index + 1, stop + delimiter.size()) &&
                     capture(index, position, stop) &&
                     self(self, index + 1, stop + delimiter.size())) return true;
                 if (final) break;
@@ -895,6 +952,10 @@ TranslationResult Overlay::translate_item_description_source_display(
             result = TranslationResult::translated(source, *target, "item-prose");
         else {
             const auto anchored = [&](std::string_view value) {
+                // This native item sentence lives in the shared history
+                // grammar. It still proves an item paragraph when another
+                // sentence needs the display parser's field fallback.
+                if (value.starts_with("The artwork relates to ")) return true;
                 for (int index : item_description_sentence_rules_) {
                     const auto &rule = rules_[static_cast<size_t>(index)];
                     const std::string_view opening = rule.template_kinds.empty()

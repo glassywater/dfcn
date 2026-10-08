@@ -853,8 +853,11 @@ case 3: { // hist_figure_died
         if (number("slayer") != -1)
             return subject(NativeHistoryObjectKind::Figure, number("slayer"));
         if (number("slayer_race") != -1) {
-            auto species = translate_creature_descriptor(text("slayer_species"));
-            if (!species) return std::nullopt;
+            // This is a captured RAW caste, including extension species.
+            // Preserve only an unknown caste instead of rejecting the event.
+            const auto &source = text("slayer_species");
+            auto species = translate_creature_descriptor(source, true);
+            if (!species) species = preserve_field(source, "creature-species");
             return Pieces{piece(*species, neutral)};
         }
         return Pieces{};

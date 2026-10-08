@@ -72,6 +72,8 @@ struct Function { std::uint32_t begin = 0, end = 0; };
 
 class Image {
 public:
+    static constexpr uint32_t execute_flag = IMAGE_SCN_MEM_EXECUTE;
+    static constexpr uint32_t write_flag = IMAGE_SCN_MEM_WRITE;
     std::vector<unsigned char> file;
     std::vector<Section> sections;
     std::vector<Function> functions;

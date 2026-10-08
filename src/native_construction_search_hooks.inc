@@ -10,7 +10,13 @@ struct NativeConstructionSearchProfile {
 static void capture_native_construction_search_query_fold(NativeString *);
 static size_t capture_native_construction_search_find(const char *, size_t,
     const void *, const char *, size_t);
+#ifdef _WIN32
 #include "native_construction_search_profile_pe.inc"
+#else
+// NativeString owns its libstdc++ storage on ELF; NativeSearchString destroys it.
+static void native_construction_search_destroy(NativeString *) {}
+#include "native_construction_search_profile_elf.inc"
+#endif
 
 static NativeCallHook g_native_construction_search_hook;
 static NativeSearchFoldFn g_native_construction_search_fold = nullptr;
@@ -30,8 +36,14 @@ static size_t capture_native_construction_search_find(const char *text, size_t l
             query_length == 0 || query_length > 4096 ||
             !g_native_construction_search_destroy) return result;
         uintptr_t vtable = 0, caption_method = 0;
+#ifdef _WIN32
+        constexpr size_t caption_slot = 2;
+#else
+        // Itanium emits two destructor slots before getType/getName.
+        constexpr size_t caption_slot = 3;
+#endif
         if (!native_history_copy(reinterpret_cast<uintptr_t>(candidate), vtable) ||
-            !vtable || !native_history_copy(vtable + 2 * sizeof(uintptr_t), caption_method) ||
+            !vtable || !native_history_copy(vtable + caption_slot * sizeof(uintptr_t), caption_method) ||
             !caption_method) return result;
         NativeSearchString caption(g_native_construction_search_destroy);
         using CaptionFn = void (*)(const void *, NativeString *);

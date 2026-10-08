@@ -1431,13 +1431,17 @@ DFHack output: attempt to perform bitwise operation on a {s} value ({s} '{s}')	�
 
 # showmood: native job-item description chunks and the assembled Item/got rows.
 # Material captions are human-readable; item-type tokens and flag strings remain captures.
+DFHack GUI Showmood material: any	任意	l
+DFHack GUI Showmood material: any plant fiber	任意植物纤维	l
+DFHack GUI Showmood material: any silk	任意丝绸	l
+DFHack GUI Showmood material: any yarn	任意纱线	l
 DFHack output: {s} boulder	{s1}巨石	l
 DFHack output: {s} blocks	{s1}石块	l
 DFHack output: {s} logs	{s1}原木	l
 DFHack output: {s} wafers	{s1}薄片	l
 DFHack output: {s} bars	{s1}锭	l
 DFHack output: {s} cut gems	{s1}切割宝石	l
-DFHack output: {s} rough gems	{s1}原石宝石	l
+DFHack output: {s} rough gems	{s1}宝石原石	l
 DFHack output: raw {s}	未加工的{s1}	l
 DFHack output: {s} leather	{s1}皮革	l
 DFHack output: {s} cloth	{s1}布料	l
@@ -1463,7 +1467,7 @@ DFHack output: Item {d}: {s} logs, got {d} of {d}	物品 {d1}：{s1}原木，已
 DFHack output: Item {d}: {s} wafers, got {d} of {d}	物品 {d1}：{s1}薄片，已收集 {d2}/{d3}	l
 DFHack output: Item {d}: {s} bars, got {d} of {d}	物品 {d1}：{s1}锭，已收集 {d2}/{d3}	l
 DFHack output: Item {d}: {s} cut gems, got {d} of {d}	物品 {d1}：{s1}切割宝石，已收集 {d2}/{d3}	l
-DFHack output: Item {d}: {s} rough gems, got {d} of {d}	物品 {d1}：{s1}原石宝石，已收集 {d2}/{d3}	l
+DFHack output: Item {d}: {s} rough gems, got {d} of {d}	物品 {d1}：{s1}宝石原石，已收集 {d2}/{d3}	l
 DFHack output: Item {d}: raw {s}, got {d} of {d}	物品 {d1}：未加工的{s1}，已收集 {d2}/{d3}	l
 DFHack output: Item {d}: {s} leather, got {d} of {d}	物品 {d1}：{s1}皮革，已收集 {d2}/{d3}	l
 DFHack output: Item {d}: {s} cloth, got {d} of {d}	物品 {d1}：{s1}布料，已收集 {d2}/{d3}	l

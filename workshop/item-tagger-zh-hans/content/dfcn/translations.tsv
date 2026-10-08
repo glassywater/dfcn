@@ -1,0 +1,110 @@
+# Local subscribed source 3745671482, numeric version 10. Command identifiers stay executable.
+Item Tagger	物品标签	l
+Appends informational tags (brew, msafe, flux, fuel, eco) to relevant item names	为相关物品名称附加用途标签（可酿酒、耐岩浆、助熔剂、燃料、经济用途）。	lP
+Version 2.1,(mill) tag added, minor fixes	版本 2.1：新增研磨标签（mill），并作了小修复。	lP
+Brewables [brew]	可酿酒 [可酿酒]	l
+Brewables [brew]:	可酿酒 [可酿酒]：	l
+Cookable [cook]	可烹饪 [可烹饪]	l
+Cookable [cook]:	可烹饪 [可烹饪]：	l
+Edible raw [edi]	可生食 [可生食]	l
+Edible raw [edi]:	可生食 [可生食]：	l
+Millable [mill]	可研磨 [可研磨]	l
+Millable [mill]:	可研磨 [可研磨]：	l
+Dye items [color]	染料来源 [染料]	l
+Dye items [color]:	染料来源 [染料]：	l
+Economic [eco]	经济用途石材 [经济]	l
+Economic [eco]:	经济用途石材 [经济]：	l
+Flux [flux]	助熔剂 [助熔剂]	l
+Flux [flux]:	助熔剂 [助熔剂]：	l
+Fuel [fuel]	燃料 [燃料]	l
+Fuel [fuel]:	燃料 [燃料]：	l
+Magma safe [msafe]	耐岩浆 [耐岩浆]	l
+Magma safe [msafe]:	耐岩浆 [耐岩浆]：	l
+Set all	全部启用	l
+Set none	全部禁用	l
+[brew]	[可酿酒]	w
+[cook]	[可烹饪]	w
+[edi]	[可生食]	w
+[mill]	[可研磨]	w
+[color]	[染料]	w
+[eco]	[经济]	w
+[flux]	[助熔剂]	w
+[fuel]	[燃料]	w
+[msafe]	[耐岩浆]	w
+No world loaded	未载入世界	l
+No map loaded	未载入地图	l
+No tags to revert	没有需要撤销的标签	l
+All tags already active	所有标签均已启用	l
+-- Plant IDs:	-- 植物 ID：	l
+-- Inorganic IDs:	-- 无机物 ID：	l
+Try "item-tagger help" for usage	运行“item-tagger help”查看用法	l
+DFHack output: No world loaded	未载入世界	l
+DFHack output: No map loaded	未载入地图	l
+DFHack output: No tags to revert	没有需要撤销的标签	l
+DFHack output: All tags already active	所有标签均已启用	l
+DFHack output: -- Plant IDs:	-- 植物 ID：	l
+DFHack output: -- Inorganic IDs:	-- 无机物 ID：	l
+DFHack output: Applied {s}	已添加标签：{s1}	l
+DFHack output: Applied {s}, {s}	已添加标签：{s1}、{s2}	l
+DFHack output: Applied {s}, {s}, {s}	已添加标签：{s1}、{s2}、{s3}	l
+DFHack output: Applied {s}, {s}, {s}, {s}	已添加标签：{s1}、{s2}、{s3}、{s4}	l
+DFHack output: Applied {s}, {s}, {s}, {s}, {s}	已添加标签：{s1}、{s2}、{s3}、{s4}、{s5}	l
+DFHack output: Applied {s}, {s}, {s}, {s}, {s}, {s}	已添加标签：{s1}、{s2}、{s3}、{s4}、{s5}、{s6}	l
+DFHack output: Applied {s}, {s}, {s}, {s}, {s}, {s}, {s}	已添加标签：{s1}、{s2}、{s3}、{s4}、{s5}、{s6}、{s7}	l
+DFHack output: Applied {s}, {s}, {s}, {s}, {s}, {s}, {s}, {s}	已添加标签：{s1}、{s2}、{s3}、{s4}、{s5}、{s6}、{s7}、{s8}	l
+DFHack output: Applied {s}, {s}, {s}, {s}, {s}, {s}, {s}, {s}, {s}	已添加标签：{s1}、{s2}、{s3}、{s4}、{s5}、{s6}、{s7}、{s8}、{s9}	l
+DFHack output: Reverted {s}	已撤销标签：{s1}	l
+DFHack output: Reverted {s}, {s}	已撤销标签：{s1}、{s2}	l
+DFHack output: Reverted {s}, {s}, {s}	已撤销标签：{s1}、{s2}、{s3}	l
+DFHack output: Reverted {s}, {s}, {s}, {s}	已撤销标签：{s1}、{s2}、{s3}、{s4}	l
+DFHack output: Reverted {s}, {s}, {s}, {s}, {s}	已撤销标签：{s1}、{s2}、{s3}、{s4}、{s5}	l
+DFHack output: Reverted {s}, {s}, {s}, {s}, {s}, {s}	已撤销标签：{s1}、{s2}、{s3}、{s4}、{s5}、{s6}	l
+DFHack output: Reverted {s}, {s}, {s}, {s}, {s}, {s}, {s}	已撤销标签：{s1}、{s2}、{s3}、{s4}、{s5}、{s6}、{s7}	l
+DFHack output: Reverted {s}, {s}, {s}, {s}, {s}, {s}, {s}, {s}	已撤销标签：{s1}、{s2}、{s3}、{s4}、{s5}、{s6}、{s7}、{s8}	l
+DFHack output: Reverted {s}, {s}, {s}, {s}, {s}, {s}, {s}, {s}, {s}	已撤销标签：{s1}、{s2}、{s3}、{s4}、{s5}、{s6}、{s7}、{s8}、{s9}	l
+DFHack output: {s} already active	标签 {s1} 已启用	l
+DFHack output: {s}: no matching entries found	标签 {s1}：没有符合条件的条目	l
+DFHack output: Unknown tag: {s}	未知标签：{s1}	l
+DFHack output: Available tags: brew, cook, edi, mill, color, eco, flux, fuel, msafe	可用标签：brew（可酿酒）、cook（可烹饪）、edi（可生食）、mill（可研磨）、color（染料）、eco（经济用途）、flux（助熔剂）、fuel（燃料）、msafe（耐岩浆）	l
+DFHack output: item-tagger: io.open write failed for {s}	item-tagger：无法打开文件进行写入：{s1}	l
+DFHack output: item-tagger config error: {s}	item-tagger 配置错误：{s1}	l
+DFHack output: Try "item-tagger help" for usage	运行“item-tagger help”查看用法	l
+DFHack output: Unknown command: {s}	未知命令：{s1}	l
+DFHack output value: brew	可酿酒	l
+DFHack output value: cook	可烹饪	l
+DFHack output value: edi	可生食	l
+DFHack output value: mill	可研磨	l
+DFHack output value: color	染料	l
+DFHack output value: eco	经济用途	l
+DFHack output value: flux	助熔剂	l
+DFHack output value: fuel	燃料	l
+DFHack output value: msafe	耐岩浆	l
+DFHack GUI Overlay control: Brewables [brew]:|On|I|1|34|0	可酿酒 [可酿酒]：|开启	l
+DFHack GUI Overlay control: Brewables [brew]:|Off|I|1|34|0	可酿酒 [可酿酒]：|关闭	l
+DFHack GUI Overlay control: Cookable [cook]:|On|I|1|34|0	可烹饪 [可烹饪]：|开启	l
+DFHack GUI Overlay control: Cookable [cook]:|Off|I|1|34|0	可烹饪 [可烹饪]：|关闭	l
+DFHack GUI Overlay control: Edible raw [edi]:|On|I|1|34|0	可生食 [可生食]：|开启	l
+DFHack GUI Overlay control: Edible raw [edi]:|Off|I|1|34|0	可生食 [可生食]：|关闭	l
+DFHack GUI Overlay control: Millable [mill]:|On|I|1|34|0	可研磨 [可研磨]：|开启	l
+DFHack GUI Overlay control: Millable [mill]:|Off|I|1|34|0	可研磨 [可研磨]：|关闭	l
+DFHack GUI Overlay control: Dye items [color]:|On|I|1|34|0	染料来源 [染料]：|开启	l
+DFHack GUI Overlay control: Dye items [color]:|Off|I|1|34|0	染料来源 [染料]：|关闭	l
+DFHack GUI Overlay control: Economic [eco]:|On|I|1|34|0	经济用途石材 [经济]：|开启	l
+DFHack GUI Overlay control: Economic [eco]:|Off|I|1|34|0	经济用途石材 [经济]：|关闭	l
+DFHack GUI Overlay control: Flux [flux]:|On|I|1|34|0	助熔剂 [助熔剂]：|开启	l
+DFHack GUI Overlay control: Flux [flux]:|Off|I|1|34|0	助熔剂 [助熔剂]：|关闭	l
+DFHack GUI Overlay control: Fuel [fuel]:|On|I|1|34|0	燃料 [燃料]：|开启	l
+DFHack GUI Overlay control: Fuel [fuel]:|Off|I|1|34|0	燃料 [燃料]：|关闭	l
+DFHack GUI Overlay control: Magma safe [msafe]:|On|I|1|34|0	耐岩浆 [耐岩浆]：|开启	l
+DFHack GUI Overlay control: Magma safe [msafe]:|Off|I|1|34|0	耐岩浆 [耐岩浆]：|关闭	l
+DFHack GUI Overlay control: Set all||I|0|-1|1	全部启用|	l
+DFHack GUI Overlay control: Set none||I|0|-1|1	全部禁用|	l
+DFHack help: item-tagger apply [tag] — Apply tags to all matching raw entries	item-tagger apply [tag] — 为所有符合条件的 RAW 条目添加标签	l
+DFHack help: item-tagger revert — Undo changes in current session	item-tagger revert — 撤销当前会话的修改	l
+DFHack help: item-tagger ids — List all available raw IDs	item-tagger ids — 列出所有可用的 RAW ID	l
+DFHack help: item-tagger gui — Open the tag management GUI	item-tagger gui — 打开标签管理界面	l
+DFHack help: item-tagger help — Show this help	item-tagger help — 显示帮助	l
+DFHack help: Appends informational tags to raw material/plant names so they appear in-game as part of item names (e.g. "Limestone [msafe] [flux]").	为 RAW 材料和植物名称附加用途标签，使其作为物品名称的一部分显示在游戏中（例如“石灰岩 [耐岩浆] [助熔剂]”）。	l
+DFHack help: Auto-runs on map load. Tag preferences are saved to dfhack-config/item-tagger.json.	载入地图时自动运行。标签设置保存在 dfhack-config/item-tagger.json。	l
+DFHack help: Tags: brew (plants/fruits), color (dye sources), msafe (magma-safe), flux (reaction class), fuel, eco (economic stone), edi (raw-edible), cook (cookable), mill (thread plants/plant fibers)	标签：brew（可酿酒植物／果实）、color（染料来源）、msafe（耐岩浆）、flux（助熔剂反应类别）、fuel（燃料）、eco（经济用途石材）、edi（可生食）、cook（可烹饪）、mill（纤维植物／植物纤维）。	l
+DFHack help: Appends informational tags to raw material/plant names so they appear in-game as part of item names (e.g. "Limestone [msafe] [flux]"). Auto-runs on map load. Tag preferences are saved to dfhack-config/item-tagger.json. Usage: item-tagger apply [tag] — Apply tags to all matching raw entries item-tagger revert — Undo changes in current session item-tagger ids — List all available raw IDs item-tagger gui — Open the tag management GUI item-tagger help — Show this help Tags: brew (plants/fruits), color (dye sources), msafe (magma-safe), flux (reaction class), fuel, eco (economic stone), edi (raw-edible), cook (cookable), mill (thread plants/plant fibers)	为 RAW 材料和植物名称附加用途标签，使其作为物品名称的一部分显示在游戏中（例如“石灰岩 [耐岩浆] [助熔剂]”）。载入地图时自动运行，设置保存在 dfhack-config/item-tagger.json。\n用法：\nitem-tagger apply [tag] — 为所有符合条件的 RAW 条目添加标签。\nitem-tagger revert — 撤销当前会话的修改。\nitem-tagger ids — 列出所有可用的 RAW ID。\nitem-tagger gui — 打开标签管理界面。\nitem-tagger help — 显示帮助。\n标签：brew（可酿酒）、color（染料来源）、msafe（耐岩浆）、flux（助熔剂）、fuel（燃料）、eco（经济用途石材）、edi（可生食）、cook（可烹饪）、mill（纤维植物／植物纤维）。	l

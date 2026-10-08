@@ -610,7 +610,7 @@ Extract adamantine strands	提取精金缕	wi
 # Format: exact rendered source<TAB>replacement UTF-8<TAB>optional flags
 # Escapes supported in both fields: \\  \t  \n  \r  \xNN
 # Rules are matched against each horizontal rendered grid row. Longer
-# overlapping rules win. Save this file to hot-reload it while the game runs.
+# overlapping rules win. After saving, use Ctrl+Shift+F10 or re-enable with Shift+F5 to load it.
 # ASCII 视频设置页会在数值编辑器前裁掉这个标签的末尾。
 Maximum interface percentage (not counting minimap/elevati	最大界面百分比 (不包括小地图/高程)	w
 Settings	设置
@@ -1558,6 +1558,9 @@ Export XML	导出 XML
 Exporting!	正在导出！	w
 # DFHack exportlegends banner keeps the caption and colored toggle separate.
 Also export DFHack extended legends data:	同时导出 DFHack 扩展传奇数据：	wl
+# DFHack suspendmanager toggle: translate the complete caption independently
+# of native overlay captures; keep its key and colored boolean state separate.
+Suspendmanager is	暂停管理器状态	wl
 On	开启	w
 Explore the history of {s}.	探索{s}的历史。	wtl
 Explore the history of The Past Dimensions.	探索“往昔维度”的历史。	l
@@ -1594,8 +1597,17 @@ b. {d} d. {d}	生于第{d}年，卒于第{d}年	wt
 hydra	九头蛇	wi
 hydras	九头蛇	wi
 
-# Project terminology: sheep and its generated juvenile/material names use 羊.
-sheep	羊	wi
+# Project terminology: sheep and related caste, juvenile and material names.
+# Sex stays in the UI glyph; juveniles use the adult name plus 幼崽.
+sheep	绵羊	wi
+ovine	绵羊	wi
+ram	绵羊	wi
+rams	绵羊	wi
+ewe	绵羊	wi
+ewes	绵羊	wi
+lamb	绵羊幼崽	wi
+lambs	绵羊幼崽	wi
+sheep's milk	绵羊奶	wi
 
 # Restore the established DFI18n species name; cave floater is a different creature.
 plump helmet man	肉盔菇人	wi
@@ -2619,6 +2631,11 @@ Hundreds	数以百计	wi
 dozens	数十	wi
 Few	很少	wi
 Embark	启程	w
+# Embark preparation failures keep the complete warning together; item and
+# creature fields use the existing shared vocabulary and retain their counts.
+Embark preparations were not completed.	启程准备尚未完成。	wl
+No {s} available	没有可用的{s}	wtl
+Cannot afford {s} ({d})	买不起{s}（{d}）	wtl
 Show elevation	显示高度层
 Show cliffs/grade	显示峭壁/坡度
 {d} x {d}	{d} × {d}	wt
@@ -2871,7 +2888,7 @@ cow cheese	牛奶酪	wi
 donkey cheese	驴奶酪	wi
 horse cheese	马奶酪	wi
 goat cheese	山羊奶酪	wi
-sheep cheese	羊奶酪	wi
+sheep cheese	绵羊奶酪	wi
 pig cheese	猪奶酪	wi
 water buffalo cheese	水牛奶酪	wi
 # Keep the compound species/material name ahead of fragment composition.
@@ -3055,6 +3072,7 @@ Very high	非常高	w
 # World creation: mod selection, generated names, and wildlife notes
 Mods install automatically when chosen during world creation.	在创建世界时选中的模组会自动安装。	l
 Click a mod to open its folder. This may not work on all systems.	单击模组可打开其文件夹；此功能可能无法在所有系统上使用。	l
+Installed	已安装	wl
 Dwarvemon {d}.{d}	矮人兽 {d}.{d}	wt
 Dwarvemon Entity Type {d}.{d}	矮人兽实体类型 {d}.{d}	wt
 (Beta) Dwarvemon {d}.{d} ({d}.X)	（测试版）矮人兽 {d}.{d}（{d}.X）	wt
@@ -6271,6 +6289,9 @@ Fortress activity: Sing	歌唱	li
 Fortress activity: Chant	吟唱	li
 Fortress activity: Station	驻守	li
 Fortress activity: Train	训练	li
+Fortress activity: Pray to	向{s}祷告	li
+Fortress activity: Meditate on	围绕{s}冥想	li
+Fortress activity: Preach on	就{s}布道	li
 Fortress activity: Kill	杀死目标	li
 Fortress activity: Kill various	杀死多个目标	li
 Fortress activity: Defend	保卫活动区	li
@@ -9241,6 +9262,11 @@ Setting glass	设置玻璃	wli
 # Task detail material controls retain the complete native button caption.
 Specify glass	指定玻璃	wli
 Specify plant	指定植物	wli
+Specify leather	指定皮革	wli
+Specify size	指定尺寸	wli
+# Leather armor task labels use the complete item and sizing meanings.
+Make leather armor	制造皮甲	wli
+size	尺寸	wi
 # The empty work-order material constraint leaves the material unrestricted.
 No material	不限材料	wli
 # Military uniform material chooser uses the same unrestricted selection.
@@ -11358,7 +11384,6 @@ Uniform name: Updated Metal Melee	改良金属甲近战	l
 {d} dormitories created.	已创建{d1}间公共宿舍。	wtl
 
 # Diplomacy elevation fields and DFHack's per-candidate item annotations.
-DFHack GUI Elevation option: A Barony	男爵领	l
 DFHack GUI Elevate barony preferences: no item preferences	无物品偏好	l
 DFHack GUI Elevate barony preferences: {d} preference:	{d1}项物品偏好：	l
 DFHack GUI Elevate barony preferences: {d} preferences:	{d1}项物品偏好：	l
@@ -11406,3 +11431,29 @@ Workshop mood sketch: pictures of cut gems.	画着切割宝石。	l
 Workshop mood sketch: pictures of square blocks.	画着方形砌块。	l
 Workshop mood sketch: pictures of stacked leather.	画着堆叠的皮革。	l
 Workshop mood sketch: pictures of stacked cloth.	画着堆叠的布料。	l
+
+# DFHack gui/mod-manager.lua ModmanageMenu and its preset dialogs.
+# Captions use complete widget roles; preset names and mod IDs stay verbatim.
+DFHack GUI Mod manager: Modlist Manager	模组列表管理器	l
+DFHack GUI Mod manager: Save current	保存当前列表	l
+DFHack GUI Mod manager: Rename	重命名	l
+DFHack GUI Mod manager: Load	载入	l
+DFHack GUI Mod manager: Delete	删除	l
+DFHack GUI Mod manager: Set as default	设为默认	l
+DFHack GUI Mod manager: (default)	（默认）	l
+DFHack GUI Mod manager: Enter preset name	输入预设名称	l
+DFHack GUI Mod manager: Enter new name	输入新名称	l
+DFHack GUI Mod manager: Confirmation	确认	l
+DFHack GUI Mod manager: Warning	警告	l
+DFHack GUI Mod manager: Overwrite {s}?	覆盖预设“{s1}”？	l
+DFHack GUI Mod manager: Delete {s}?	删除预设“{s1}”？	l
+DFHack GUI Mod manager: Yes, proceed	确认继续	l
+DFHack GUI Mod manager: Ok	确定	l
+DFHack GUI Mod manager: Failed to load some mods from your default preset.	默认预设中的部分模组载入失败。	l
+DFHack GUI Mod manager: Preset is being unmarked as the default for safety.	为避免问题，已取消此预设的默认设置。	l
+DFHack GUI Mod manager: Failed to load some mods from the preset.	预设中的部分模组载入失败。	l
+DFHack GUI Mod manager: Some vanilla mods have been updated.	部分原版模组已更新。	l
+DFHack GUI Mod manager: Please re-create your preset with mods you currently have installed.	请使用当前已安装的模组重新创建预设。	l
+DFHack GUI Mod manager: Here are the mods that failed to load:	以下模组载入失败：	l
+DFHack GUI Mod manager: Here are the vanilla mods that have been updated:	以下原版模组已更新：	l
+DFHack GUI Mod manager: New vanilla mods are not included in the preset.	此预设尚未包含新增的原版模组。	l

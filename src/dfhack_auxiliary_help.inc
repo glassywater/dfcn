@@ -307,9 +307,11 @@ std::vector<Match> dfhack_auxiliary_matches;
             dfhack_auxiliary_matches, only_y, right, right, {}, false, left);
     };
 #include "dfhack_notification_banners.inc"
+#include "dfhack_mod_manager.inc"
     for (const auto &window : native_dfhack_window_geometry(dfhack_context_rows)) {
         const auto *frame = &window.frame;
 #include "dfhack_civ_alert.inc"
+        if (dfhack_mod_manager_window(window)) continue;
         // Toolbar overlays use a titleless six-row Panel: two prose rows,
         // a blank separator and an independent Hotkey Label. Resolve the
         // whole hint before the larger dialog reader's height gate.
@@ -622,6 +624,7 @@ std::vector<Match> dfhack_auxiliary_matches;
 #include "dfhack_trade_goods.inc"
 #include "dfhack_animal_assignment.inc"
 #include "dfhack_preserve_rooms.inc"
+#include "dfhack_buildingplan.inc"
 #include "dfhack_overlay_controls.inc"
     // Ownership prevents generic rules from translating isolated help words
     // or key names. Unmapped source remains native until its complete entry

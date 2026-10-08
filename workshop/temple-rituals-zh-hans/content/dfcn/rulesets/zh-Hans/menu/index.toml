@@ -1,0 +1,8 @@
+base = "menu"
+
+[[rulesets]]
+[rulesets.rules]
+"{::materials::subscribed_rituals::ritual}" = "{::materials::subscribed_rituals::ritual}"
+"{::creatures::subscribed_rituals::action}" = "{::creatures::subscribed_rituals::action}"
+"{::materials::subscribed_rituals::syndrome}" = "{::materials::subscribed_rituals::syndrome}"
+

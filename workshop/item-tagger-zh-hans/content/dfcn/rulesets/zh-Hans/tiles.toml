@@ -1,0 +1,20 @@
+# Terrain captions read the scoped tile vocabulary directly. Compose the
+# existing plant noun with tags here, retaining its tree-specific wording.
+base = "tiles"
+
+[[rulesets]]
+name = "plants::tile"
+[rulesets.rules]
+"{plants::tile::tagged_name}" = "{plants::tile::tagged_name}"
+"{plants::tile::tagged_name} roots" = "{plants::tile::tagged_name}根"
+"{plants::tile::tagged_name} trunk" = "{plants::tile::tagged_name}干"
+"thick {plants::tile::tagged_name} branches" = "{plants::tile::tagged_name}粗枝"
+"{plants::tile::tagged_name} branches" = "{plants::tile::tagged_name}枝"
+"smooth {plants::tile::tagged_name} branches" = "光滑{plants::tile::tagged_name}枝"
+"{plants::tile::tagged_name} twigs" = "{plants::tile::tagged_name}细枝"
+"{plants::tile::tagged_name} cap" = "{plants::tile::tagged_name}冠"
+
+[[rulesets]]
+name = "plants::tile::tagged_name"
+[rulesets.rules]
+"{plants::tile::name}{::item_tagger::tags}" = "{plants::tile::name}{::item_tagger::tags}"

@@ -42,15 +42,6 @@ std::optional<std::string> Overlay::translate_creature_descriptor(
         normalized += word;
     }
     if (normalized.empty()) return std::nullopt;
-    // A caste is a noun phrase, never the rest of a biographical paragraph.
-    // In particular `{n} the {s}` must not swallow `... was a roc. He was
-    // ... mists` and treat the capitalized prose as a generated owner name.
-    if (!std::all_of(normalized.begin(), normalized.end(), [](unsigned char ch) {
-            return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') ||
-                (ch >= '0' && ch <= '9') || is_cp437_latin_letter_byte(ch) ||
-                ch == ' ' || ch == '-' || ch == '\'';
-        })) return std::nullopt;
-
     auto complete = [](const std::optional<std::string> &value) {
         return value && !value->empty() &&
             !std::any_of(value->begin(), value->end(), [](unsigned char ch) {
@@ -95,6 +86,21 @@ std::optional<std::string> Overlay::translate_creature_descriptor(
         return lookup(creature_name_kind_adjective, value);
     };
 
+    // DF's native animal formatter adds these training roles to the RAW
+    // caste name. Resolve their shared purpose wording before an old whole
+    // label can retain the ordinary war/hunting word sense. The remainder
+    // still has to be a complete typed creature, including extension names.
+    const std::string folded_training = lower(normalized);
+    for (const std::string_view training : {"war ", "hunting "}) {
+        if (!folded_training.starts_with(training)) continue;
+        const auto purpose = RULESETS.compose_bound_rule(
+            "::creatures::caste::name::purpose", std::string(training));
+        const auto animal = translate_creature_descriptor(
+            std::string_view(normalized).substr(training.size()), true);
+        return purpose && animal
+            ? std::optional<std::string>(*purpose + *animal) : std::nullopt;
+    }
+
     // Native identities place resurrection/form status BEFORE a complete
     // species/caste, whereas generated castes can put e.g. "zombie" at the
     // end. Reuse the biography's reviewed prefixes for the former without
@@ -128,6 +134,17 @@ std::optional<std::string> Overlay::translate_creature_descriptor(
         const auto base = translate_creature_descriptor(remaining, true);
         return base ? std::optional<std::string>(status_target + *base) : std::nullopt;
     }
+
+    // Installed RAW names may contain punctuation (e.g. Mr. Rime). Their
+    // complete identity, including the training/status wrappers above, is
+    // licensed by the scoped species table. Keep punctuation out of the
+    // generated grammar so `{n} the {s}` cannot swallow biographical prose
+    // such as `... was a roc. He was ... mists` as an owner name.
+    if (!std::all_of(normalized.begin(), normalized.end(), [](unsigned char ch) {
+            return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') ||
+                (ch >= '0' && ch <= '9') || is_cp437_latin_letter_byte(ch) ||
+                ch == ' ' || ch == '-' || ch == '\'';
+        })) return species(normalized);
 
     // Owners come from native first names, native/translated compounds, or
     // explicit "The ..." epithets. They are not arbitrary capitalized prose.

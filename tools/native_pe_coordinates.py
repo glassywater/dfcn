@@ -98,8 +98,8 @@ def _condition(expression: str, defined: set[str]) -> bool:
     return value(node)
 
 
-def _windows_source(text: str) -> str:
-    defined = {'_WIN32', '_WIN64', '__MINGW32__', '__MINGW64__', '__GNUC__', '__x86_64__'}
+def _windows_source(text: str, defined=None, keep_includes=False) -> str:
+    defined = set(defined) if defined is not None else {'_WIN32', '_WIN64', '__MINGW32__', '__MINGW64__', '__GNUC__', '__x86_64__'}
     active = True
     stack = []
     lines = []
@@ -132,6 +132,8 @@ def _windows_source(text: str) -> str:
                 defined.add(name[0])
         elif kind == 'undef' and active:
             defined.discard(argument.strip())
+        elif kind == 'include' and active and keep_includes:
+            lines.append(line)
     return '\n'.join(lines)
 
 
@@ -184,7 +186,7 @@ def _byte_count(tokens, pairs, begin, end):
     return len(values) if values and all(v is not None and 0 <= v <= 255 for v in values) else None
 
 
-def _select_search_element(name: str, tokens: list[str]) -> list[str]:
+def _select_search_element(name: str, tokens: list[str], elf=False) -> list[str]:
     if name not in _SEARCH_ELEMENT:
         return tokens
     pairs = _pairs(tokens)
@@ -198,6 +200,9 @@ def _select_search_element(name: str, tokens: list[str]) -> list[str]:
             continue
         end = pairs[begin]
         selected = _SEARCH_ELEMENT[name]
+        if elf:
+            selected = 0 if name in ('native_stocks_search_profile.inc', 'native_material_search_profile.inc',
+                                      'native_stockpile_search_profile.inc') else 1
         entries = _parts(tokens, pairs, begin + 1, end)
         # Missing the known lexical aggregate is not permission to admit ELF.
         if selected is not None and selected >= len(entries):
@@ -226,12 +231,15 @@ def _initializer_name(tokens, pairs, begin):
     return tokens[before] if before >= 0 and _IDENTIFIER.fullmatch(tokens[before]) else None
 
 
-def _file_coordinates(name: str, tokens: list[str], required: dict[int, int]) -> None:
+def _file_coordinates(name: str, tokens: list[str], required: dict[int, int], elf=False) -> None:
     pairs = _pairs(tokens)
     constants, byte_arrays = {}, {}
 
-    def add(rva, width=1):
+    origin = 0x400000 if elf and ('search_profile' in name or name == 'native_history_event_profiles_elf.inc') else 0
+
+    def add(rva, width=1, bias=None):
         if rva is not None and 0 < rva < 0x10000000 and width and width > 0:
+            rva += origin if bias is None else bias
             required[rva] = max(required.get(rva, 0), width)
 
     if name == 'native_adventure_introduction.inc':
@@ -290,6 +298,8 @@ def _file_coordinates(name: str, tokens: list[str], required: dict[int, int]) ->
         'native_reference_bytes': 0, 'native_pe_address': 1,
         'native_reference_address': 1, 'native_pe_match': 1,
     }
+    if elf:
+        apis.update({'native_reference_va': 0, 'native_elf_history_address': 0})
     for index, token in enumerate(tokens):
         if token not in apis or tokens[index + 1:index + 2] != ['('] or index + 1 not in pairs:
             continue
@@ -305,7 +315,8 @@ def _file_coordinates(name: str, tokens: list[str], required: dict[int, int]) ->
             width = byte_arrays.get(source, 1)
         if token == 'native_pe_match' and len(args) > 3:
             width = _number(tokens[slice(*args[3])], constants) or width
-        add(rva, width)
+        bias = (0x400000 if token in ('native_reference_rva', 'native_reference_address') else 0) if elf else None
+        add(rva, width, bias)
 
     for begin, end in pairs.items():
         if tokens[begin] != '{' or begin >= end:
@@ -317,7 +328,7 @@ def _file_coordinates(name: str, tokens: list[str], required: dict[int, int]) ->
         first = values[0]
         # The history range-for lists feed NativeCall.site through a variable.
         # Only this explicit uintptr_t(...) list form is admitted here.
-        if name == 'native_history_profile.inc' and all(
+        if name in ('native_history_profile.inc', 'native_history_profile_elf.inc') and all(
                 tokens[a:b][:2] == ['uintptr_t', '('] and value is not None and value >= 0x10000
                 for (a, b), value in zip(parts, values)):
             for value in values:
@@ -333,7 +344,7 @@ def _file_coordinates(name: str, tokens: list[str], required: dict[int, int]) ->
                 continue
         if first is None or first < 0x10000:
             continue
-        if name == 'native_history_event_profiles.inc' and len(parts) == 6 and all(v is not None for v in values[:5]):
+        if name in ('native_history_event_profiles.inc', 'native_history_event_profiles_elf.inc') and len(parts) == 6 and all(v is not None for v in values[:5]):
             add(first, 0xd8)  # getType slot 0 and getSentence slot 26.
             add(values[1], values[4])
             add(values[2])
@@ -361,6 +372,8 @@ def _file_coordinates(name: str, tokens: list[str], required: dict[int, int]) ->
                 add(first, 5)
                 add(values[1], 5)
                 continue
+        if elf and name == 'native_history_profile_elf.inc' and len(parts) == 2 and values[1] is not None:
+            add(first, 5)  # ItemCall {absolute call address, semantic role}.
         # The selected search ABI has scalar arrays of native resource labels.
         if ('search_profile' in name or name == 'native_caption_profile.inc') and len(values) >= 2 and all(v is not None and (v == 0 or v >= 0x10000) for v in values):
             for value in values:
@@ -373,7 +386,7 @@ def _file_coordinates(name: str, tokens: list[str], required: dict[int, int]) ->
                 continue
             parts = _parts(tokens, pairs, begin + 1, end)
             if len(parts) == 3 and ''.join(tokens[slice(*parts[0])]).startswith('Symbol::'):
-                add(_number(tokens[slice(*parts[1])]))
+                add(_number(tokens[slice(*parts[2 if elf else 1])]))
 
     # These profile scalar members are mapped through the local bind_rva
     # lambda, so there is no literal argument at its native_pe_rva call.

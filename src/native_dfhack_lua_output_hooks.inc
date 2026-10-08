@@ -3,7 +3,10 @@
 #include "dfhack_command_context.h"
 #include "native_dfhack_item_print_ticket.h"
 
-#ifdef _WIN32
+#ifndef _WIN32
+#include "native_dfhack_gate_elf.inc"
+#endif
+
 struct NativeDfhackLuaState;
 using NativeDfhackLuaCFunction = int (*)(NativeDfhackLuaState *);
 // DFHack 53.16-r2 depends/lua/include/lua.h, Lua 5.3.6, LUA_IDSIZE=60.
@@ -82,6 +85,7 @@ static bool native_dfhack_lua_memory(const void *pointer, size_t size) noexcept 
     uintptr_t cursor = first;
     const uintptr_t end = first + size;
     while (cursor < end) {
+#ifdef _WIN32
         MEMORY_BASIC_INFORMATION region{};
         if (!VirtualQuery(reinterpret_cast<const void *>(cursor), &region, sizeof(region)) ||
                 region.State != MEM_COMMIT || (region.Protect & (PAGE_GUARD | PAGE_NOACCESS)))
@@ -90,6 +94,16 @@ static bool native_dfhack_lua_memory(const void *pointer, size_t size) noexcept 
         if (base > cursor || region.RegionSize > UINTPTR_MAX - base ||
                 base + region.RegionSize <= cursor) return false;
         cursor = std::min(end, base + region.RegionSize);
+#else
+        const auto page = native_patch_page_size();
+        if (!page) return false;
+        const size_t span = std::min<size_t>(end - cursor, page - cursor % page);
+        NativePatchProtection protection = 0;
+        unsigned long error = 0;
+        if (!native_patch_page_protection(cursor, span, protection, error) ||
+                !native_patch_readable(protection)) return false;
+        cursor += span;
+#endif
     }
     return true;
 }
@@ -101,6 +115,7 @@ static std::optional<std::string_view> native_dfhack_lua_text(const char *text,
     while (at < maximum) {
         const uintptr_t cursor = reinterpret_cast<uintptr_t>(text) + at;
         if (cursor < reinterpret_cast<uintptr_t>(text)) return std::nullopt;
+#ifdef _WIN32
         MEMORY_BASIC_INFORMATION region{};
         if (!VirtualQuery(reinterpret_cast<const void *>(cursor), &region, sizeof(region)) ||
                 region.State != MEM_COMMIT || (region.Protect & (PAGE_GUARD | PAGE_NOACCESS)))
@@ -109,6 +124,12 @@ static std::optional<std::string_view> native_dfhack_lua_text(const char *text,
         if (base > cursor || region.RegionSize > UINTPTR_MAX - base ||
                 base + region.RegionSize <= cursor) return std::nullopt;
         const size_t size = std::min(maximum - at, size_t(base + region.RegionSize - cursor));
+#else
+        const auto page = native_patch_page_size();
+        if (!page) return std::nullopt;
+        const size_t size = std::min(maximum - at, page - cursor % page);
+        if (!native_dfhack_lua_memory(text + at, size)) return std::nullopt;
+#endif
         if (const auto *last = static_cast<const char *>(std::memchr(text + at, 0, size)))
             return std::string_view(text, size_t(last - text));
         at += size;
@@ -506,6 +527,7 @@ static bool native_dfhack_console_nonlocal_command() {
         !(command.flags & DFCN_DFHACK_COMMAND_LOCAL_CONSOLE);
 }
 
+#ifdef _WIN32
 static bool native_dfhack_bind_lua_output(HMODULE module) {
     // Published once per core. Console consumers cannot race a later retry
     // rewriting function pointers or the owned source path.
@@ -596,6 +618,10 @@ static bool native_dfhack_bind_lua_output(HMODULE module) {
     return true;
 }
 
+#else
+#include "native_dfhack_lua_output_profile_elf.inc"
+#endif
+
 static uint32_t native_dfhack_lua_output_callbacks() {
     auto *context = g_native_dfhack_lua_output_context;
     return context ? std::atomic_ref<uint32_t>(context->active)
@@ -610,6 +636,7 @@ static bool native_dfhack_lua_output_hook_active() {
         std::atomic_ref<uintptr_t>(context->helper).load(std::memory_order_seq_cst));
 }
 
+#ifdef _WIN32
 static bool prepare_native_dfhack_lua_output_hook(HMODULE module) {
     constexpr const char *label = "DFHack local Lua item-description print capture";
     auto &hook = g_native_dfhack_lua_output_hook;
@@ -721,14 +748,33 @@ static bool prepare_native_dfhack_lua_output_hook(HMODULE module) {
     return true;
 }
 
+#else
+static bool prepare_native_dfhack_lua_output_hook(void *entry_pointer) {
+    auto &hook = g_native_dfhack_lua_output_hook;
+    if (hook.relay) return hook.original && g_native_dfhack_lua_output_context;
+    if (!native_dfhack_bind_lua_output(entry_pointer)) return false;
+    auto context = std::make_unique<NativeDfhackLuaOutputContext>();
+    if (!prepare_native_dfhack_elf_gate(hook,
+            static_cast<unsigned char *>(entry_pointer), context.get(),
+            {0xf3,0x0f,0x1e,0xfa,0x41,0x54}, NativeDfhackElfGate::GetOutput,
+            "DFHack local Lua item-description print capture")) return false;
+    context->original = reinterpret_cast<NativeDfhackLuaGetOutputFn>(hook.original);
+    g_native_dfhack_lua_output_context = context.release();
+    return true;
+}
+#endif
+
 static bool install_native_dfhack_lua_output_hook() {
     std::lock_guard<std::mutex> lock(g_native_dfhack_lua_output_hook_mutex);
+#ifdef _WIN32
     const auto module = GetModuleHandleW(L"dfhack.dll");
     if (!module) return true;
-    // An earlier resident loader can lack this optional extension. Keep
-    // native output rather than repeatedly reporting an absent capability.
     const auto loader = GetModuleHandleW(L"dfhooks_dfcn.dll");
     if (!loader || !GetProcAddress(loader, "dfcn_get_dfhack_command_context_v1")) return true;
+#else
+    void *module = dlsym(RTLD_DEFAULT, "_ZN6DFHack3Lua9GetOutputEP9lua_State");
+    if (!module || !dlsym(RTLD_DEFAULT, "dfcn_get_dfhack_command_context_v1")) return true;
+#endif
     constexpr const char *label = "DFHack local Lua item-description print capture";
     if (!prepare_native_dfhack_lua_output_hook(module) ||
             !g_native_dfhack_lua_output_hook.install(label)) return false;
@@ -752,14 +798,3 @@ static void uninstall_native_dfhack_lua_output_hook() {
         g_native_dfhack_item_print_pending.clear();
     }
 }
-#else
-// No new Linux detour or decorated ABI is inferred from the Windows profile.
-static std::optional<NativeDfhackItemPrintTicket> native_dfhack_take_item_print_ticket(
-        void *, std::string_view) { return std::nullopt; }
-static std::optional<NativeDfhackItemPrintTicket> native_dfhack_take_launcher_echo_ticket(
-        void *, std::string_view) { return std::nullopt; }
-static bool native_dfhack_console_nonlocal_command() { return false; }
-static bool native_dfhack_lua_output_hook_active() { return false; }
-static bool install_native_dfhack_lua_output_hook() { return true; }
-static void uninstall_native_dfhack_lua_output_hook() {}
-#endif

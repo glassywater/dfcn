@@ -43,7 +43,9 @@ static bool capture_native_unit_identity_name_words(uintptr_t address,
 }
 
 static bool native_unit_identity_flag(uintptr_t object, size_t offset,
-        size_t bit, bool &value) {
+        size_t bit, bool &value, std::string_view type) {
+    object = native_history_object_field(object, type, offset, 16);
+    offset = 0;
     value = false;
     uintptr_t data = 0;
     int32_t count = 0;
@@ -58,13 +60,12 @@ static bool native_unit_identity_flag(uintptr_t object, size_t offset,
 }
 
 static bool capture_native_unit_identity(uintptr_t unit, NativeUnitIdentity &out) {
-#ifdef _WIN32
     // Reference parts already contain the game's final RAW/office, species,
     // curse and visibility decisions. Only the explicit authored role field
     // needs classification; do not reapply the ordinary formatter modifiers.
     if (out.form == NativeUnitIdentityForm::Reference)
         return !out.use_custom || (unit && unit <= UINTPTR_MAX - 0xa0 &&
-            native_history_copy_string(unit + 0x80, out.custom_profession));
+            native_history_copy_string(native_history_object_field(unit, "unit", 0x80), out.custom_profession));
     // Name-only formatters already captured DF's selected language_name.
     // Their renderer returns before reading any unit role/status fields.
     if (out.form == NativeUnitIdentityForm::NameOnly ||
@@ -78,10 +79,10 @@ static bool capture_native_unit_identity(uintptr_t unit, NativeUnitIdentity &out
     // Its enum, RAW profession and caste labels are never consumed again by
     // translate_native_unit_identity. Only an authored custom role needs its
     // separate unit modifiers; animation can replace either role entirely.
-    if (!native_history_copy(unit + 0xd80, animation) ||
+    if (!native_history_copy(native_history_object_field(unit, "unit", 0xd80), animation) ||
             (animation && !native_history_copy_string(animation + 0x20,
                 result.animated_name)) ||
-            (result.use_custom && !native_history_copy_string(unit + 0x80,
+            (result.use_custom && !native_history_copy_string(native_history_object_field(unit, "unit", 0x80),
                 result.custom_profession))) return false;
     result.undead = animation != 0;
     int32_t game_type = -1;
@@ -99,25 +100,25 @@ static bool capture_native_unit_identity(uintptr_t unit, NativeUnitIdentity &out
     // that happens to contain words such as vampire or mummy.
     uint8_t curse_named = 0;
     if (!result.native_role_authored && result.animated_name.empty() &&
-            (!native_history_copy(unit + 0x838, curse_named) || curse_named > 1))
+            (!native_history_copy(native_history_object_field(unit, "unit", 0x838), curse_named) || curse_named > 1))
         return false;
     result.curse_named = curse_named != 0;
     if (result.curse_named &&
-            (!native_history_copy_string(unit + 0x840, result.curse_name) ||
-             !native_history_copy_string(unit + 0x880, result.curse_name_prefix)))
+            (!native_history_copy_string(native_history_object_field(unit, "unit", 0x840), result.curse_name) ||
+             !native_history_copy_string(native_history_object_field(unit, "unit", 0x880), result.curse_name_prefix)))
         return false;
     if (custom_role || result.include_status) {
         uint32_t flags1 = 0;
-        if (!native_history_copy(unit + 0x110, flags1)) return false;
+        if (!native_history_copy(native_history_object_field(unit, "unit", 0x110), flags1)) return false;
         result.tame = (flags1 & 0x04000000u) != 0;
         if (result.include_status && result.tame &&
-                !native_history_copy(unit + 0x138, result.training_level)) return false;
+                !native_history_copy(native_history_object_field(unit, "unit", 0x138), result.training_level)) return false;
     }
     uintptr_t creature = 0;
     const auto read_creature = [&]() {
         if (creature) return true;
         NativeBorrowedVector<uintptr_t> creatures;
-        if (!native_history_copy(unit + 0xa4, result.race) || result.race < 0 ||
+        if (!native_history_copy(native_history_object_field(unit, "unit", 0xa4), result.race) || result.race < 0 ||
                 !native_history_read_vector(native_history_global(0x24eca68), creatures))
             return false;
         creature = native_history_vector_at(creatures, static_cast<size_t>(result.race));
@@ -125,16 +126,16 @@ static bool capture_native_unit_identity(uintptr_t unit, NativeUnitIdentity &out
     };
     bool gender_suffix = false;
     if (result.show_gender) {
-        if (!native_history_copy(unit + 0x12e, result.sex)) return false;
+        if (!native_history_copy(native_history_object_field(unit, "unit", 0x12e), result.sex)) return false;
         if (result.sex == 0 || result.sex == 1) {
             if (!read_creature() || !native_unit_identity_flag(
-                    creature, 0x1a8, 66, result.two_genders)) return false;
+                    creature, 0x1a8, 66, result.two_genders, "creature_raw")) return false;
             gender_suffix = result.two_genders;
         }
     }
     if (custom_role || gender_suffix) {
         uint32_t flags3 = 0;
-        if (!native_history_copy(unit + 0x118, flags3)) return false;
+        if (!native_history_copy(native_history_object_field(unit, "unit", 0x118), flags3)) return false;
         result.gelded = (flags3 & 0x10000000u) != 0;
         if (custom_role) {
             result.ghostly = (flags3 & 0x00001000u) != 0 && !curse_named;
@@ -143,43 +144,38 @@ static bool capture_native_unit_identity(uintptr_t unit, NativeUnitIdentity &out
     if (!custom_role) return true;
     if (result.tame) {
         int32_t pet_owner = -1;
-        if (!native_history_copy(unit + 0x3bc, pet_owner)) return false;
+        if (!native_history_copy(native_history_object_field(unit, "unit", 0x3bc), pet_owner)) return false;
         if (pet_owner == -1) {
             int16_t caste_index = -1;
             NativeBorrowedVector<uintptr_t> castes;
-            if (!read_creature() || !native_history_copy(unit + 0x12c, caste_index) ||
-                    caste_index < 0 || !native_history_read_vector(creature + 0x178, castes))
+            if (!read_creature() || !native_history_copy(native_history_object_field(unit, "unit", 0x12c), caste_index) ||
+                    caste_index < 0 || !native_history_read_vector(native_history_object_field(creature, "creature_raw", 0x178, 24), castes))
                 return false;
             const uintptr_t caste = native_history_vector_at(castes, static_cast<size_t>(caste_index));
             bool pet = false, exotic_pet = false;
             // 0x1376500: PET and PET_EXOTIC are caste flags 54 and 55.
-            if (!caste || !native_unit_identity_flag(caste, 0x6a8, 54, pet) ||
-                    !native_unit_identity_flag(caste, 0x6a8, 55, exotic_pet)) return false;
+            if (!caste || !native_unit_identity_flag(caste, 0x6a8, 54, pet, "caste_raw") ||
+                    !native_unit_identity_flag(caste, 0x6a8, 55, exotic_pet, "caste_raw")) return false;
             result.pet = pet || exotic_pet;
         }
     }
     if (result.pet) {
         bool fierce = false;
         int32_t civilization = -1;
-        if (!native_history_copy(unit + 0x140, civilization)) return false;
+        if (!native_history_copy(native_history_object_field(unit, "unit", 0x140), civilization)) return false;
         if (civilization >= 0) {
             const uintptr_t entity = native_history_find_subject(base,
                 NativeHistoryObjectKind::Entity, civilization);
             uintptr_t definition = 0;
             if (entity && (!native_history_copy(entity + 8, definition) ||
                     (definition && !native_unit_identity_flag(definition,
-                        0x3a0, 60, fierce)))) return false;
+                        0x3a0, 60, fierce, "entity_raw")))) return false;
         }
         result.prefix = fierce ? NativeUnitNamePrefix::Fierce : NativeUnitNamePrefix::Stray;
     } else {
         uint32_t flags4 = 0;
-        if (!native_history_copy(unit + 0x11c, flags4)) return false;
+        if (!native_history_copy(native_history_object_field(unit, "unit", 0x11c), flags4)) return false;
         if ((flags4 & 0x00001000u) != 0) result.prefix = NativeUnitNamePrefix::Agitated;
     }
     return true;
-#else
-    (void)unit;
-    (void)out;
-    return false;
-#endif
 }

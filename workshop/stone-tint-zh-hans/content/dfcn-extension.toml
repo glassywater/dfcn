@@ -1,0 +1,6 @@
+schema = 1
+id = "stone-tint-zh-hans"
+version = 1
+language = "zh-Hans"
+name = "石材着色汉化数据"
+translations = "dfcn/translations.tsv"

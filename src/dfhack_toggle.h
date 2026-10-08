@@ -5,7 +5,6 @@
 #include <string>
 #include "dfhack_command_context.h"
 
-#ifdef _WIN32
 #include "dfhack_interpose.h"
 #include <array>
 #include <mutex>
@@ -19,6 +18,7 @@ using Report = void (*)(const char *, const std::string &);
 // persistence and unload notifications stay alive; its active tools do not.
 // No STL objects or ownership cross the MSVC/MinGW boundary.
 class Toggle {
+    #ifdef _WIN32
     struct Detour {
         unsigned char *target = nullptr;
         void *trampoline = nullptr;
@@ -77,6 +77,10 @@ class Toggle {
         // still be returning through one during the game's normal shutdown.
     };
 
+    #else
+    #include "dfhack_detour_elf.h"
+    #endif
+
     using VoidFn = void (*)();
     using EventFn = bool (*)(void *);
     using KeyFn = bool (*)(int);
@@ -107,7 +111,12 @@ class Toggle {
     inline static thread_local uint64_t command_entry_epoch_ = 0;
     inline static std::atomic_bool command_context_ready_{false};
     Report report_ = nullptr;
+#ifdef _WIN32
     HMODULE module_ = nullptr;
+#else
+    void *module_ = nullptr;
+    Detour core_update_, core_shutdown_, core_event_, core_key_;
+#endif
     void **core_slot_ = nullptr;
     CoreFn console_ = nullptr;
     CoreFn plugin_manager_ = nullptr;
@@ -131,6 +140,7 @@ class Toggle {
     std::array<void *, 6> callbacks_{};
 
     static bool readable(const void *ptr, std::size_t length) {
+#ifdef _WIN32
         MEMORY_BASIC_INFORMATION region{};
         if (!ptr || !VirtualQuery(ptr, &region, sizeof(region)) || region.State != MEM_COMMIT ||
             (region.Protect & (PAGE_GUARD | PAGE_NOACCESS))) return false;
@@ -138,6 +148,9 @@ class Toggle {
         const auto address = reinterpret_cast<std::uintptr_t>(ptr);
         return address >= begin && address - begin < region.RegionSize &&
             length <= region.RegionSize - (address - begin);
+#else
+        return elf_memory(ptr, length);
+#endif
     }
 
     template<class T> static T read(const void *ptr, std::size_t offset = 0) {
@@ -152,6 +165,7 @@ class Toggle {
         if (report_) report_(level, text);
     }
 
+    #ifdef _WIN32
     static void *symbol(HMODULE module, const char *name) {
         return reinterpret_cast<void *>(GetProcAddress(module, name));
     }
@@ -196,7 +210,7 @@ class Toggle {
         return false;
     }
 
-    void chain_write(bool install) {
+    bool chain_write(bool install) {
         const std::array<void *, 6> replacements = {
             reinterpret_cast<void *>(&shutdown_callback), reinterpret_cast<void *>(&update_callback),
             reinterpret_cast<void *>(&prerender_callback), reinterpret_cast<void *>(&event_callback),
@@ -205,8 +219,10 @@ class Toggle {
             auto **field = reinterpret_cast<void **>(static_cast<unsigned char *>(wrapper_) + 0x28 + 8 * i);
             std::atomic_ref<void *> value(*field);
             auto expected = install ? callbacks_[i] : replacements[i];
-            value.compare_exchange_strong(expected, install ? replacements[i] : callbacks_[i]);
+            if (!value.compare_exchange_strong(expected, install ? replacements[i] : callbacks_[i]) &&
+                    expected != (install ? replacements[i] : callbacks_[i])) return false;
         }
+        return true;
     }
 
     bool prepare_hooks() {
@@ -269,6 +285,10 @@ class Toggle {
                 reinterpret_cast<void *>(&plugin_state_callback), plugin_prefix);
     }
 
+    #else
+    #include "dfhack_toggle_profile_elf.h"
+    #endif
+
     bool disable(void *console) {
         if (!registry_.dismiss_screens()) return false;
         // Keep plugin modes/configuration intact. Generic plugin_enable(false)
@@ -294,9 +314,16 @@ class Toggle {
     }
 
     void suspend_turbo() {
+#ifdef _WIN32
         const auto fastdwarf = GetModuleHandleW(L"fastdwarf.plug.dll");
+#else
+        const auto fastdwarf = elf_loaded_module("fastdwarf.plug.so");
+#endif
         const auto *enabled = fastdwarf ? static_cast<const bool *>(symbol(fastdwarf, "plugin_is_enabled")) : nullptr;
         auto *turbo = read<bool *>(turbo_slot_);
+#ifndef _WIN32
+        if (fastdwarf) dlclose(fastdwarf);
+#endif
         if (!readable(enabled, sizeof(bool)) || !*enabled || !readable(turbo, sizeof(bool))) return;
         if (*turbo) {
             turbo_saved_ = true;
@@ -391,6 +418,9 @@ class Toggle {
 
     static void on_update_callback(void *core, void *console) {
         auto &self = *instance_;
+        // This native boundary owns Core's suspension context on both hosts.
+        // Process requests here even while plugin/Lua updates are disabled.
+        try { self.process_request(); } catch (...) { self.report("ERROR", "DFHack switch failed"); }
         if (!self.off_.load(std::memory_order_acquire))
             reinterpret_cast<UpdateFn>(self.update_.trampoline)(core, console);
     }
@@ -536,7 +566,11 @@ public:
     void initialize(Report report_function) {
         report_ = report_function;
         if (ready_ || attempted_) return;
+#ifdef _WIN32
         module_ = GetModuleHandleW(L"dfhack.dll");
+#else
+        module_ = elf_loaded_module("libdfhack.so");
+#endif
         if (!module_) return; // Optional installation, never load DFHack ourselves.
         attempted_ = true;
         instance_ = this;
@@ -552,7 +586,13 @@ public:
                 return;
             }
         }
-        chain_write(true);
+        if (!chain_write(true)) {
+            chain_write(false);
+            for (auto *hook : {&load_scripts_, &lua_state_, &plugin_state_, &command_, &update_, &destroy_, &remove_, &apply_})
+                hook->write(false);
+            report("ERROR", "Shift+F11 unavailable: DFHack native callback installation failed");
+            return;
+        }
         ready_ = true;
         command_context_ready_.store(true, std::memory_order_release);
         report("INFO", "Shift+F11 DFHack switch installed");
@@ -603,16 +643,3 @@ public:
 };
 
 } // namespace dfcn::dfhack
-
-#else
-namespace dfcn::dfhack {
-class Toggle {
-public:
-    static int query_command_context(void *, DfcnDfhackCommandContextV1 *) noexcept { return 0; }
-    static int query_command_context_v2(void *, DfcnDfhackCommandContextV2 *) noexcept { return 0; }
-    void initialize(void (*)(const char *, const std::string &)) {}
-    bool event(void *) { return false; }
-    void shutdown() {}
-};
-}
-#endif

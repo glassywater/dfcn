@@ -1,0 +1,7 @@
+base = "activities"
+
+[[rulesets]]
+name = "topic"
+[rulesets.rules]
+"{::materials::subscribed_blessings}" = "{::materials::subscribed_blessings}"
+

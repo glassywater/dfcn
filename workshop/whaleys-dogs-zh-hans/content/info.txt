@@ -1,0 +1,8 @@
+[ID:dfcn_whaleys_dogs_zh_hans]
+[NUMERIC_VERSION:1]
+[DISPLAYED_VERSION:1.00.1-zh-Hans.1]
+[EARLIEST_COMPATIBLE_NUMERIC_VERSION:1]
+[EARLIEST_COMPATIBLE_DISPLAYED_VERSION:1.00.1-zh-Hans.1]
+[AUTHOR:DFCN Community]
+[NAME:Whaley 犬种汉化数据]
+[DESCRIPTION:Whaleys Dogs 的独立简体中文翻译数据，需要 DFCN 汉化核心。仅供本地试用，未发布。]

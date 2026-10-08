@@ -1,0 +1,68 @@
+# Bounded suffix grammar: the script can apply nine tags in any user-selected order.
+# Every branch consumes a known tag; there is no wildcard or cyclic namespace.
+base = "item_tagger::tags"
+
+[[rulesets]]
+[rulesets.rules]
+" {tag}{tail1}" = " {tag}{tail1}"
+
+[[rulesets]]
+name = "tag"
+[rulesets.rules]
+"[brew]" = "[可酿酒]"
+"[cook]" = "[可烹饪]"
+"[edi]" = "[可生食]"
+"[mill]" = "[可研磨]"
+"[color]" = "[染料]"
+"[eco]" = "[经济]"
+"[flux]" = "[助熔剂]"
+"[fuel]" = "[燃料]"
+"[msafe]" = "[耐岩浆]"
+
+[[rulesets]]
+name = "tail1"
+optional = true
+[rulesets.rules]
+" {tag}{tail2}" = " {tag}{tail2}"
+
+[[rulesets]]
+name = "tail2"
+optional = true
+[rulesets.rules]
+" {tag}{tail3}" = " {tag}{tail3}"
+
+[[rulesets]]
+name = "tail3"
+optional = true
+[rulesets.rules]
+" {tag}{tail4}" = " {tag}{tail4}"
+
+[[rulesets]]
+name = "tail4"
+optional = true
+[rulesets.rules]
+" {tag}{tail5}" = " {tag}{tail5}"
+
+[[rulesets]]
+name = "tail5"
+optional = true
+[rulesets.rules]
+" {tag}{tail6}" = " {tag}{tail6}"
+
+[[rulesets]]
+name = "tail6"
+optional = true
+[rulesets.rules]
+" {tag}{tail7}" = " {tag}{tail7}"
+
+[[rulesets]]
+name = "tail7"
+optional = true
+[rulesets.rules]
+" {tag}{tail8}" = " {tag}{tail8}"
+
+[[rulesets]]
+name = "tail8"
+optional = true
+[rulesets.rules]
+" {tag}" = " {tag}"

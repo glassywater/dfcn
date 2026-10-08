@@ -1,0 +1,491 @@
+# Real Book/Scroll Content! fiction_speech.lua: complete authored vocabulary.
+base = "subscribed_books::speech"
+
+[[rulesets]]
+[rulesets.rules]
+"{military}" = "{military}"
+"{economy}" = "{economy}"
+"{religion}" = "{religion}"
+"{governance}" = "{governance}"
+"{diplomacy}" = "{diplomacy}"
+"{expansion}" = "{expansion}"
+"{physical}" = "{physical}"
+
+[[rulesets]]
+name = "military::multiplier"
+[rulesets.rules]
+"half" = "减半"
+"double" = "加倍"
+"triple" = "增至三倍"
+"quadruple" = "增至四倍"
+"remove" = "撤除"
+
+[[rulesets]]
+name = "military::group"
+[rulesets.rules]
+"patrols" = "巡逻队"
+"militia" = "民兵"
+"guard" = "卫兵"
+"garrison" = "驻军"
+"scouts" = "侦察兵"
+"archers" = "弓箭手"
+"sentries" = "哨兵"
+"watchtower crews" = "瞭望塔守军"
+
+[[rulesets]]
+name = "military::strategy"
+[rulesets.rules]
+"reinforce" = "增援"
+"station along" = "沿线驻扎于"
+"deploy near" = "部署于附近："
+"withdraw from" = "撤出"
+"rebuild" = "重建"
+"expand" = "扩建"
+"fortify" = "加固"
+"abandon" = "放弃"
+
+[[rulesets]]
+name = "military::object"
+[rulesets.rules]
+"the gates" = "城门"
+"the outer walls" = "外城墙"
+"the western towers" = "西侧塔楼"
+"the trade road" = "商道"
+"the river crossing" = "渡口"
+"the mountain pass" = "山口"
+"the barracks" = "兵营"
+"the armory" = "军械库"
+
+[[rulesets]]
+name = "economy::action"
+[rulesets.rules]
+"tax" = "征税"
+"subsidize" = "补贴"
+"invest in" = "投资"
+"cut funding for" = "削减经费"
+"nationalize" = "国有化"
+"deregulate" = "放松管制"
+"ration" = "配给"
+"stockpile" = "储备"
+
+[[rulesets]]
+name = "economy::target"
+[rulesets.rules]
+"the merchants" = "商人"
+"the farmers" = "农民"
+"the miners" = "矿工"
+"the smiths" = "铁匠"
+"the guilds" = "公会"
+"the nobles" = "贵族"
+"foreign traders" = "外国商人"
+"the temple" = "神殿"
+
+[[rulesets]]
+name = "economy::resource"
+[rulesets.rules]
+"gold" = "黄金"
+"grain" = "粮食"
+"iron" = "铁"
+"lumber" = "木材"
+"gems" = "宝石"
+"ale" = "麦酒"
+"cloth" = "布料"
+"stone" = "石材"
+
+[[rulesets]]
+name = "religion::action"
+[rulesets.rules]
+"consecrate" = "祝圣"
+"ban" = "禁止"
+"fund" = "资助"
+"reform" = "改革"
+"expand" = "扩建"
+"dissolve" = "解散"
+"purify" = "净化"
+"dedicate" = "奉献"
+
+[[rulesets]]
+name = "religion::object"
+[rulesets.rules]
+"the temple" = "神殿"
+"the altar" = "祭坛"
+"the shrine" = "神龛"
+"the sacred rites" = "神圣仪式"
+"the holy texts" = "圣典"
+"the relics" = "圣物"
+"the burial grounds" = "墓地"
+
+[[rulesets]]
+name = "religion::entity"
+[rulesets.rules]
+"the priests" = "祭司们"
+"the faithful" = "信众"
+"the heretics" = "异端"
+"the missionaries" = "传教士"
+"the cult" = "教团"
+"the order" = "修会"
+
+[[rulesets]]
+name = "governance::action"
+[rulesets.rules]
+"establish" = "成立"
+"dissolve" = "解散"
+"reform" = "改革"
+"expand" = "扩大"
+"restrict" = "限制"
+"empower" = "赋权于"
+"abolish" = "废除"
+"convene" = "召集"
+
+[[rulesets]]
+name = "governance::body"
+[rulesets.rules]
+"the council" = "议事会"
+"the assembly" = "大会"
+"the guild court" = "公会法庭"
+"the war council" = "战争议事会"
+"the trade commission" = "贸易委员会"
+"the tribunal" = "审判庭"
+"the senate" = "元老院"
+
+[[rulesets]]
+name = "governance::policy"
+[rulesets.rules]
+"conscription" = "征兵"
+"curfew" = "宵禁"
+"rationing" = "配给制度"
+"exile" = "流放"
+"amnesty" = "赦免"
+"census" = "人口普查"
+"martial law" = "戒严"
+"elections" = "选举"
+
+[[rulesets]]
+name = "diplomacy::action"
+[rulesets.rules]
+"send envoys to" = "派遣使节前往"
+"declare war on" = "宣战于"
+"propose alliance with" = "提议结盟于"
+"embargo" = "禁运"
+"open borders with" = "开放边境于"
+"demand tribute from" = "索取贡品于"
+"negotiate with" = "谈判于"
+"betray" = "背叛"
+
+[[rulesets]]
+name = "diplomacy::target"
+[rulesets.rules]
+"the neighboring kingdom" = "邻国"
+"the elven holds" = "精灵领地"
+"the goblin tribes" = "哥布林部落"
+"the human settlements" = "人类聚落"
+"the mountain clans" = "山地氏族"
+"the coastal cities" = "沿海城市"
+
+[[rulesets]]
+name = "expansion::action"
+[rulesets.rules]
+"settle" = "定居于"
+"explore" = "探索"
+"annex" = "吞并"
+"abandon" = "放弃"
+"fortify" = "设防于"
+"colonize" = "殖民于"
+"survey" = "勘察"
+"clear" = "清理"
+
+[[rulesets]]
+name = "expansion::target"
+[rulesets.rules]
+"the northern valleys" = "北部山谷"
+"the deep caverns" = "深层洞窟"
+"the forest edge" = "森林边缘"
+"the old ruins" = "旧遗迹"
+"the river delta" = "河流三角洲"
+"the wasteland" = "荒原"
+"the highland passes" = "高地山口"
+
+[[rulesets]]
+name = "hair"
+[rulesets.rules]
+"dark-haired" = "黑发"
+"grey-haired" = "灰发"
+"bald" = "秃头"
+"red-haired" = "红发"
+"shaggy-haired" = "乱发"
+"hooded" = "戴兜帽"
+
+[[rulesets]]
+name = "build"
+[rulesets.rules]
+"broad-shouldered" = "肩膀宽阔"
+"lean" = "精瘦"
+"scarred" = "满身伤疤"
+"one-eyed" = "独眼"
+"towering" = "高大"
+"stooped" = "佝偻"
+"weathered" = "饱经风霜"
+"gaunt" = "憔悴"
+"thick-armed" = "手臂粗壮"
+
+[[rulesets]]
+name = "position"
+[rulesets.rules]
+"sitting in the corner" = "坐在角落里"
+"leaning against the wall" = "倚着墙壁"
+"nursing a drink at the bar" = "在吧台慢慢喝酒"
+"standing by the door" = "站在门边"
+"hunched over a table" = "伏在桌子上"
+"watching from the shadows" = "从暗处观望"
+"cleaning a mug behind the counter" = "在柜台后擦着杯子"
+"sitting alone by the fire" = "独自坐在火边"
+
+[[rulesets]]
+name = "bystander"
+[rulesets.rules]
+"a {build}, {hair} {@bt_race|::subscribed_books::vocabulary::race} {position}" = "一名{build}、{hair}的{@bt_race|::subscribed_books::vocabulary::race}，{position}"
+"an {build}, {hair} {@bt_race|::subscribed_books::vocabulary::race} {position}" = "一名{build}、{hair}的{@bt_race|::subscribed_books::vocabulary::race}，{position}"
+"the {hair} {@bt_race|::subscribed_books::vocabulary::race}" = "那名{hair}的{@bt_race|::subscribed_books::vocabulary::race}"
+"a stranger" = "一名陌生人"
+"the stranger" = "那名陌生人"
+
+[[rulesets]]
+name = "military"
+[rulesets.rules]
+"\"We should {::subscribed_books::speech::military::multiplier} the {::subscribed_books::speech::military::group},\" {@bt_name|::subscribed_books::vocabulary::person} said confidently. \"I am sure {::subscribed_books::speech::military::object} will be fine without them.\"" = "“我们应该将{::subscribed_books::speech::military::group}{::subscribed_books::speech::military::multiplier}。”{@bt_name|::subscribed_books::vocabulary::person}自信地说道，“我确信{::subscribed_books::speech::military::object}没有他们也不会有事。”"
+"\"Why do we even have {::subscribed_books::speech::military::group}?\" {@bt_name|::subscribed_books::vocabulary::person} asked. \"Just {::subscribed_books::speech::military::strategy} {::subscribed_books::speech::military::object} and the problem solves itself.\"" = "“我们为什么还需要{::subscribed_books::speech::military::group}？”{@bt_name|::subscribed_books::vocabulary::person}问道，“只要对{::subscribed_books::speech::military::object}采取{::subscribed_books::speech::military::strategy}措施，问题自然就解决了。”"
+"\"I say we {::subscribed_books::speech::military::multiplier} the {::subscribed_books::speech::military::group} and also {::subscribed_books::speech::military::multiplier2} them again,\" {@bt_name|::subscribed_books::vocabulary::person} suggested, clearly not thinking it through." = "“依我看，先将{::subscribed_books::speech::military::group}{::subscribed_books::speech::military::multiplier}，然后再{::subscribed_books::speech::military::multiplier}一次。”{@bt_name|::subscribed_books::vocabulary::person}建议道，显然没有仔细想过。"
+
+[[rulesets]]
+name = "economy"
+[rulesets.rules]
+"\"Why not just {::subscribed_books::speech::economy::action} {::subscribed_books::speech::economy::target}?\" {@bt_name|::subscribed_books::vocabulary::person} asked. \"What could go wrong?\"" = "“为什么不直接对{::subscribed_books::speech::economy::target}采取{::subscribed_books::speech::economy::action}措施？”{@bt_name|::subscribed_books::vocabulary::person}问道，“能出什么岔子？”"
+"\"We should {::subscribed_books::speech::economy::action} {::subscribed_books::speech::economy::target} and then {::subscribed_books::speech::economy::action2} them again,\" {@bt_name|::subscribed_books::vocabulary::person} said, oblivious to the contradiction." = "“我们应该对{::subscribed_books::speech::economy::target}采取{::subscribed_books::speech::economy::action}措施，然后再对他们{::subscribed_books::speech::economy::action}一次。”{@bt_name|::subscribed_books::vocabulary::person}说道，浑然不觉其中的矛盾。"
+"\"If we run out of {::subscribed_books::speech::economy::resource}, we simply get more {::subscribed_books::speech::economy::resource2},\" {@bt_name|::subscribed_books::vocabulary::person} explained, as though this were obvious." = "“如果{::subscribed_books::speech::economy::resource}用完了，我们再弄些{::subscribed_books::speech::economy::resource}就行。”{@bt_name|::subscribed_books::vocabulary::person}解释道，仿佛这是显而易见的事。"
+
+[[rulesets]]
+name = "religion"
+[rulesets.rules]
+"\"I say we {::subscribed_books::speech::religion::action} {::subscribed_books::speech::religion::object} and also {::subscribed_books::speech::religion::action2} it again, but harder,\" {@bt_name|::subscribed_books::vocabulary::person} offered." = "“依我看，先对{::subscribed_books::speech::religion::object}采取{::subscribed_books::speech::religion::action}措施，然后再{::subscribed_books::speech::religion::action}一次，而且要更用力。”{@bt_name|::subscribed_books::vocabulary::person}提议。"
+"\"We should {::subscribed_books::speech::religion::action} {::subscribed_books::speech::religion::object},\" {@bt_name|::subscribed_books::vocabulary::person} said. \"I am not sure what that means, but it sounds right.\"" = "“我们应该对{::subscribed_books::speech::religion::object}采取{::subscribed_books::speech::religion::action}措施。”{@bt_name|::subscribed_books::vocabulary::person}说道，“我不清楚这是什么意思，但听起来不错。”"
+"\"Have we tried asking {::subscribed_books::speech::religion::entity} nicely?\" {@bt_name|::subscribed_books::vocabulary::person} suggested." = "“我们试过好好请求{::subscribed_books::speech::religion::entity}吗？”{@bt_name|::subscribed_books::vocabulary::person}建议。"
+
+[[rulesets]]
+name = "governance"
+[rulesets.rules]
+"\"We should {::subscribed_books::speech::governance::action} {::subscribed_books::speech::governance::body} and also {::subscribed_books::speech::governance::action2} a second {::subscribed_books::speech::governance::body2},\" {@bt_name|::subscribed_books::vocabulary::person} said, not quite following the logic." = "“我们应该对{::subscribed_books::speech::governance::body}采取{::subscribed_books::speech::governance::action}措施，再对第二个{::subscribed_books::speech::governance::body}也采取{::subscribed_books::speech::governance::action}措施。”{@bt_name|::subscribed_books::vocabulary::person}说道，并没有理清其中的逻辑。"
+"\"I propose {::subscribed_books::speech::governance::policy},\" {@bt_name|::subscribed_books::vocabulary::person} said. \"I do not know what that entails, but it sounds decisive.\"" = "“我提议实行{::subscribed_books::speech::governance::policy}。”{@bt_name|::subscribed_books::vocabulary::person}说道，“我不知道具体要做什么，但听起来很果断。”"
+"\"Why not just {::subscribed_books::speech::governance::action} everything?\" {@bt_name|::subscribed_books::vocabulary::person} asked, waving a hand vaguely." = "“为什么不干脆对所有东西都采取{::subscribed_books::speech::governance::action}措施？”{@bt_name|::subscribed_books::vocabulary::person}问道，含糊地挥了挥手。"
+
+[[rulesets]]
+name = "diplomacy"
+[rulesets.rules]
+"\"We should {::subscribed_books::speech::diplomacy::action} {::subscribed_books::speech::diplomacy::target} and also {::subscribed_books::speech::diplomacy::action2} everyone else,\" {@bt_name|::subscribed_books::vocabulary::person} proposed." = "“我们应该对{::subscribed_books::speech::diplomacy::target}采取{::subscribed_books::speech::diplomacy::action}措施，再对所有其他人也采取{::subscribed_books::speech::diplomacy::action}措施。”{@bt_name|::subscribed_books::vocabulary::person}提议。"
+"\"I say we {::subscribed_books::speech::diplomacy::action} {::subscribed_books::speech::diplomacy::target},\" {@bt_name|::subscribed_books::vocabulary::person} said. \"They probably will not mind.\"" = "“依我看，应该对{::subscribed_books::speech::diplomacy::target}采取{::subscribed_books::speech::diplomacy::action}措施。”{@bt_name|::subscribed_books::vocabulary::person}说道，“他们大概不会介意。”"
+
+[[rulesets]]
+name = "expansion"
+[rulesets.rules]
+"\"We should {::subscribed_books::speech::expansion::action} {::subscribed_books::speech::expansion::target},\" {@bt_name|::subscribed_books::vocabulary::person} said. \"I have never been there, but I hear it is nice.\"" = "“我们应该对{::subscribed_books::speech::expansion::target}采取{::subscribed_books::speech::expansion::action}措施。”{@bt_name|::subscribed_books::vocabulary::person}说道，“我从没去过，但听说那里不错。”"
+"\"Let us {::subscribed_books::speech::expansion::action} {::subscribed_books::speech::expansion::target} immediately,\" {@bt_name|::subscribed_books::vocabulary::person} urged. \"What is the worst that could happen?\"" = "“我们立刻对{::subscribed_books::speech::expansion::target}采取{::subscribed_books::speech::expansion::action}措施吧。”{@bt_name|::subscribed_books::vocabulary::person}催促道，“最坏能坏到哪里去？”"
+
+[[rulesets]]
+name = "military"
+[rulesets.rules]
+"\"And who pays for the {::subscribed_books::speech::military::group}?\" {@bt_name|::subscribed_books::vocabulary::person} countered. \"We cannot {::subscribed_books::speech::military::strategy} {::subscribed_books::speech::military::object} and feed our people at the same time.\"" = "“那{::subscribed_books::speech::military::group}的开支由谁承担？”{@bt_name|::subscribed_books::vocabulary::person}反驳道，“我们无法一边对{::subscribed_books::speech::military::object}采取{::subscribed_books::speech::military::strategy}措施，一边养活人民。”"
+"\"Your plan ignores the real threat,\" {@bt_name|::subscribed_books::vocabulary::person} replied. \"{::subscribed_books::speech::military::object} is not where the danger lies.\"" = "“你的计划忽略了真正的威胁。”{@bt_name|::subscribed_books::vocabulary::person}回答，“危险并不在{::subscribed_books::speech::military::object}。”"
+"\"You speak of the {::subscribed_books::speech::military::group} as though they are infinite,\" {@bt_name|::subscribed_books::vocabulary::person} said. \"They are not.\"" = "“你谈论{::subscribed_books::speech::military::group}的口气，仿佛他们无穷无尽。”{@bt_name|::subscribed_books::vocabulary::person}说道，“事实并非如此。”"
+
+[[rulesets]]
+name = "economy"
+[rulesets.rules]
+"\"If we {::subscribed_books::speech::economy::action} {::subscribed_books::speech::economy::target}, the {::subscribed_books::speech::economy::resource} trade collapses within a season,\" {@bt_name|::subscribed_books::vocabulary::person} replied." = "“如果对{::subscribed_books::speech::economy::target}采取{::subscribed_books::speech::economy::action}措施，{::subscribed_books::speech::economy::resource}贸易不到一季就会崩溃。”{@bt_name|::subscribed_books::vocabulary::person}回答。"
+"\"Your numbers do not account for the {::subscribed_books::speech::economy::resource} we already owe,\" {@bt_name|::subscribed_books::vocabulary::person} said." = "“你的数字没有算上我们已经欠下的{::subscribed_books::speech::economy::resource}。”{@bt_name|::subscribed_books::vocabulary::person}说道。"
+
+[[rulesets]]
+name = "religion"
+[rulesets.rules]
+"\"{::subscribed_books::speech::religion::entity} serve the people, not the other way around,\" {@bt_name|::subscribed_books::vocabulary::person} replied. \"We will not {::subscribed_books::speech::religion::action} {::subscribed_books::speech::religion::object} on faith alone.\"" = "“{::subscribed_books::speech::religion::entity}为人民服务，而不是让人民为他们服务。”{@bt_name|::subscribed_books::vocabulary::person}回答，“我们不会仅凭信仰就对{::subscribed_books::speech::religion::object}采取{::subscribed_books::speech::religion::action}措施。”"
+"\"The gods have not spoken on this,\" {@bt_name|::subscribed_books::vocabulary::person} said flatly. \"You have.\"" = "“诸神没有对此发言。”{@bt_name|::subscribed_books::vocabulary::person}平淡地说道，“发言的是你。”"
+
+[[rulesets]]
+name = "governance"
+[rulesets.rules]
+"\"If we {::subscribed_books::speech::governance::action} {::subscribed_books::speech::governance::body}, there is no one left to hold us accountable,\" {@bt_name|::subscribed_books::vocabulary::person} warned." = "“如果对{::subscribed_books::speech::governance::body}采取{::subscribed_books::speech::governance::action}措施，就再也没人能约束我们。”{@bt_name|::subscribed_books::vocabulary::person}警告道。"
+"\"{::subscribed_books::speech::governance::policy} has been tried before,\" {@bt_name|::subscribed_books::vocabulary::person} said. \"It ended badly.\"" = "“{::subscribed_books::speech::governance::policy}以前就尝试过。”{@bt_name|::subscribed_books::vocabulary::person}说道，“结果很糟。”"
+
+[[rulesets]]
+name = "diplomacy"
+[rulesets.rules]
+"\"If we {::subscribed_books::speech::diplomacy::action} {::subscribed_books::speech::diplomacy::target}, we will have no allies left when we truly need them,\" {@bt_name|::subscribed_books::vocabulary::person} said." = "“如果对{::subscribed_books::speech::diplomacy::target}采取{::subscribed_books::speech::diplomacy::action}措施，等我们真正需要盟友时，就一个也不会剩下。”{@bt_name|::subscribed_books::vocabulary::person}说道。"
+
+[[rulesets]]
+name = "expansion"
+[rulesets.rules]
+"\"The last group to {::subscribed_books::speech::expansion::action} {::subscribed_books::speech::expansion::target} never came back,\" {@bt_name|::subscribed_books::vocabulary::person} said quietly." = "“上一批对{::subscribed_books::speech::expansion::target}采取{::subscribed_books::speech::expansion::action}措施的人，再也没有回来。”{@bt_name|::subscribed_books::vocabulary::person}轻声说道。"
+
+[[rulesets]]
+name = "physical"
+[rulesets.rules]
+"{@bt_by|::subscribed_books::vocabulary::person} crossed the room in three strides, grabbed {@bt_speaker|::subscribed_books::vocabulary::person} by the collar, and pulled {::subscribed_books::personality::obj1} close. \"Say that again,\" {@bt_by_short|::subscribed_books::vocabulary::person} said." = "{@bt_by|::subscribed_books::vocabulary::person}三步跨过房间，揪住{@bt_speaker|::subscribed_books::vocabulary::person}的衣领，将{::subscribed_books::personality::obj1}拉近。“你再说一遍。”{@bt_by_short|::subscribed_books::vocabulary::person}说道。"
+"{@bt_by|::subscribed_books::vocabulary::person} threw the first punch without a word. It connected with {@bt_speaker|::subscribed_books::vocabulary::person}'s jaw before anyone could react." = "{@bt_by|::subscribed_books::vocabulary::person}一言不发地挥出了第一拳。还没等任何人反应过来，拳头就打中了{@bt_speaker|::subscribed_books::vocabulary::person}的下巴。"
+"{@bt_by|::subscribed_books::vocabulary::person} stood, sending a chair clattering. {@bt_by_short|::subscribed_books::vocabulary::person} walked toward {@bt_speaker|::subscribed_books::vocabulary::person} with the slow, deliberate gait of someone who had made a decision." = "{@bt_by|::subscribed_books::vocabulary::person}站起身，椅子随之哐当倒地。{@bt_by_short|::subscribed_books::vocabulary::person}缓慢而坚定地走向{@bt_speaker|::subscribed_books::vocabulary::person}，步伐像是已经下定了决心。"
+
+[[rulesets]]
+name = "military"
+[rulesets.rules]
+"{@bt_by|::subscribed_books::vocabulary::person} slammed a fist on the table. \"You know nothing of the {::subscribed_books::speech::military::group},\" {@bt_by_short|::subscribed_books::vocabulary::person} growled. \"I served. I bled. Do not speak of what you do not understand.\"" = "{@bt_by|::subscribed_books::vocabulary::person}一拳砸在桌上。“你对{::subscribed_books::speech::military::group}一无所知。”{@bt_by_short|::subscribed_books::vocabulary::person}低吼道，“我服过役，流过血。别议论你根本不懂的事。”"
+"{@bt_by|::subscribed_books::vocabulary::person} stood abruptly. \"I lost friends defending {::subscribed_books::speech::military::object},\" {@bt_by_short|::subscribed_books::vocabulary::person} said. \"And you sit here making plans about it over ale.\"" = "{@bt_by|::subscribed_books::vocabulary::person}猛然站起。“我有朋友在保卫{::subscribed_books::speech::military::object}时丧命。”{@bt_by_short|::subscribed_books::vocabulary::person}说道，“你们却坐在这里，一边喝麦酒一边替那里作计划。”"
+"\"The {::subscribed_books::speech::military::group} kept you alive, you ungrateful fool,\" {@bt_by_short|::subscribed_books::vocabulary::person} called out from across the room." = "“是{::subscribed_books::speech::military::group}让你活到今天，你这个忘恩负义的蠢货。”{@bt_by_short|::subscribed_books::vocabulary::person}从房间另一边喊道。"
+
+[[rulesets]]
+name = "economy"
+[rulesets.rules]
+"{@bt_by|::subscribed_books::vocabulary::person} let out a bitter laugh. \"Easy to talk about {::subscribed_books::speech::economy::target} when you have never worked a day in your life,\" {@bt_by_short|::subscribed_books::vocabulary::person} said." = "{@bt_by|::subscribed_books::vocabulary::person}发出一声苦笑。“一辈子没干过一天活的人，谈论{::subscribed_books::speech::economy::target}当然轻松。”{@bt_by_short|::subscribed_books::vocabulary::person}说道。"
+"\"You would {::subscribed_books::speech::economy::action} {::subscribed_books::speech::economy::target}?\" {@bt_by|::subscribed_books::vocabulary::person} stood, knocking over a stool. \"My family are {::subscribed_books::speech::economy::target2}. Choose your next words carefully.\"" = "“你要对{::subscribed_books::speech::economy::target}采取{::subscribed_books::speech::economy::action}措施？”{@bt_by|::subscribed_books::vocabulary::person}站起身，撞翻了一张凳子，“我的家人就是{::subscribed_books::speech::economy::target}。接下来的话，你最好想清楚再说。”"
+
+[[rulesets]]
+name = "religion"
+[rulesets.rules]
+"{@bt_by|::subscribed_books::vocabulary::person} went still. \"You speak of {::subscribed_books::speech::religion::object} as though it means nothing,\" {@bt_by_short|::subscribed_books::vocabulary::person} said quietly. \"It means everything.\"" = "{@bt_by|::subscribed_books::vocabulary::person}忽然僵住。“你谈论{::subscribed_books::speech::religion::object}，仿佛它毫无意义。”{@bt_by_short|::subscribed_books::vocabulary::person}轻声说道，“它意味着一切。”"
+"\"Blasphemy,\" {@bt_by|::subscribed_books::vocabulary::person} whispered, loud enough for everyone to hear. {@bt_by_short|::subscribed_books::vocabulary::person} was already standing." = "“亵渎。”{@bt_by|::subscribed_books::vocabulary::person}低声说道，却足以让所有人听见。{@bt_by_short|::subscribed_books::vocabulary::person}已经站了起来。"
+
+[[rulesets]]
+name = "governance"
+[rulesets.rules]
+"\"You would {::subscribed_books::speech::governance::action} {::subscribed_books::speech::governance::body}?\" {@bt_by|::subscribed_books::vocabulary::person} called out. \"Some of us actually rely on {::subscribed_books::speech::governance::body2} for justice.\"" = "“你要对{::subscribed_books::speech::governance::body}采取{::subscribed_books::speech::governance::action}措施？”{@bt_by|::subscribed_books::vocabulary::person}高声问道，“我们当中有些人确实指望{::subscribed_books::speech::governance::body}主持公道。”"
+"{@bt_by|::subscribed_books::vocabulary::person} shook their head. \"You talk of {::subscribed_books::speech::governance::policy} as though you understand what it costs,\" {@bt_by_short|::subscribed_books::vocabulary::person} said." = "{@bt_by|::subscribed_books::vocabulary::person}摇了摇头。“你谈论{::subscribed_books::speech::governance::policy}的口气，仿佛知道它的代价。”{@bt_by_short|::subscribed_books::vocabulary::person}说道。"
+
+[[rulesets]]
+name = "diplomacy"
+[rulesets.rules]
+"\"You want to {::subscribed_books::speech::diplomacy::action} {::subscribed_books::speech::diplomacy::target}?\" {@bt_by|::subscribed_books::vocabulary::person} asked, incredulous. \"I have family there.\"" = "“你想对{::subscribed_books::speech::diplomacy::target}采取{::subscribed_books::speech::diplomacy::action}措施？”{@bt_by|::subscribed_books::vocabulary::person}难以置信地问道，“我的家人在那里。”"
+
+[[rulesets]]
+name = "expansion"
+[rulesets.rules]
+"\"I came from {::subscribed_books::speech::expansion::target},\" {@bt_by|::subscribed_books::vocabulary::person} said quietly. \"It is not empty. People live there. My people.\"" = "“我来自{::subscribed_books::speech::expansion::target}。”{@bt_by|::subscribed_books::vocabulary::person}轻声说道，“那里并非空无一人。有人在那里生活。我的同胞。”"
+
+[[rulesets]]
+name = "military"
+[rulesets.rules]
+"\"Your {::subscribed_books::speech::military::group} are a disgrace,\" {@bt_name|::subscribed_books::vocabulary::person} said. \"I have seen farmers fight better than what you station at {::subscribed_books::speech::military::object}.\"" = "“你们的{::subscribed_books::speech::military::group}真丢人。”{@bt_name|::subscribed_books::vocabulary::person}说道，“我见过的农民都比你们驻守{::subscribed_books::speech::military::object}的那些人更能打。”"
+"\"You {::subscribed_books::speech::military::strategy} {::subscribed_books::speech::military::object} and call it a plan?\" {@bt_name|::subscribed_books::vocabulary::person} spat. \"It is an invitation to disaster.\"" = "“你对{::subscribed_books::speech::military::object}采取{::subscribed_books::speech::military::strategy}措施，还称之为计划？”{@bt_name|::subscribed_books::vocabulary::person}啐道，“这简直是在招灾。”"
+
+[[rulesets]]
+name = "economy"
+[rulesets.rules]
+"\"You would {::subscribed_books::speech::economy::action} {::subscribed_books::speech::economy::target} while the rest of us starve?\" {@bt_name|::subscribed_books::vocabulary::person} demanded. \"Where does the {::subscribed_books::speech::economy::resource} go? Into your pockets?\"" = "“你要对{::subscribed_books::speech::economy::target}采取{::subscribed_books::speech::economy::action}措施，却让我们其余人挨饿？”{@bt_name|::subscribed_books::vocabulary::person}质问道，“{::subscribed_books::speech::economy::resource}都去了哪里？进了你的口袋？”"
+"\"The {::subscribed_books::speech::economy::resource} is gone, and you stand there talking about {::subscribed_books::speech::economy::target},\" {@bt_name|::subscribed_books::vocabulary::person} said, disgust plain on their face." = "“{::subscribed_books::speech::economy::resource}已经耗尽，而你还站在那里谈论{::subscribed_books::speech::economy::target}。”{@bt_name|::subscribed_books::vocabulary::person}说道，厌恶之情溢于言表。"
+
+[[rulesets]]
+name = "religion"
+[rulesets.rules]
+"\"You would {::subscribed_books::speech::religion::action} {::subscribed_books::speech::religion::object}?\" {@bt_name|::subscribed_books::vocabulary::person} said, voice shaking. \"{::subscribed_books::speech::religion::entity} will not forget this blasphemy.\"" = "“你要对{::subscribed_books::speech::religion::object}采取{::subscribed_books::speech::religion::action}措施？”{@bt_name|::subscribed_books::vocabulary::person}声音颤抖地说道，“{::subscribed_books::speech::religion::entity}不会忘记这种亵渎。”"
+"\"Your contempt for {::subscribed_books::speech::religion::object} is noted,\" {@bt_name|::subscribed_books::vocabulary::person} said coldly. \"{::subscribed_books::speech::religion::entity} are watching.\"" = "“你对{::subscribed_books::speech::religion::object}的蔑视，我们已经记下了。”{@bt_name|::subscribed_books::vocabulary::person}冷冷地说道，“{::subscribed_books::speech::religion::entity}正在看着。”"
+
+[[rulesets]]
+name = "governance"
+[rulesets.rules]
+"\"You would {::subscribed_books::speech::governance::action} {::subscribed_books::speech::governance::body}?\" {@bt_name|::subscribed_books::vocabulary::person} asked. \"That is not reform. That is destruction.\"" = "“你要对{::subscribed_books::speech::governance::body}采取{::subscribed_books::speech::governance::action}措施？”{@bt_name|::subscribed_books::vocabulary::person}问道，“这不叫改革。这叫毁灭。”"
+"\"Your {::subscribed_books::speech::governance::policy} is tyranny by another name,\" {@bt_name|::subscribed_books::vocabulary::person} said flatly." = "“你的{::subscribed_books::speech::governance::policy}不过是换了个名字的暴政。”{@bt_name|::subscribed_books::vocabulary::person}平淡地说道。"
+
+[[rulesets]]
+name = "diplomacy"
+[rulesets.rules]
+"\"You want to {::subscribed_books::speech::diplomacy::action} {::subscribed_books::speech::diplomacy::target}?\" {@bt_name|::subscribed_books::vocabulary::person} asked, incredulous. \"Have you learned nothing from history?\"" = "“你想对{::subscribed_books::speech::diplomacy::target}采取{::subscribed_books::speech::diplomacy::action}措施？”{@bt_name|::subscribed_books::vocabulary::person}难以置信地问道，“历史难道没有教会你任何东西？”"
+
+[[rulesets]]
+name = "expansion"
+[rulesets.rules]
+"\"You would {::subscribed_books::speech::expansion::action} {::subscribed_books::speech::expansion::target} without even scouting it first?\" {@bt_name|::subscribed_books::vocabulary::person} asked. \"People will die for your impatience.\"" = "“你连侦察都不做，就要对{::subscribed_books::speech::expansion::target}采取{::subscribed_books::speech::expansion::action}措施？”{@bt_name|::subscribed_books::vocabulary::person}问道，“会有人因为你的急躁而死。”"
+
+[[rulesets]]
+name = "military"
+[rulesets.rules]
+"\"We should {::subscribed_books::speech::military::multiplier} the {::subscribed_books::speech::military::group} and {::subscribed_books::speech::military::strategy} {::subscribed_books::speech::military::object},\" {@bt_name|::subscribed_books::vocabulary::person} said." = "“我们应该将{::subscribed_books::speech::military::group}{::subscribed_books::speech::military::multiplier}，并对{::subscribed_books::speech::military::object}采取{::subscribed_books::speech::military::strategy}措施。”{@bt_name|::subscribed_books::vocabulary::person}说道。"
+"\"I say we {::subscribed_books::speech::military::strategy} {::subscribed_books::speech::military::object} and {::subscribed_books::speech::military::multiplier} the {::subscribed_books::speech::military::group},\" {@bt_name|::subscribed_books::vocabulary::person} declared." = "“依我看，应该对{::subscribed_books::speech::military::object}采取{::subscribed_books::speech::military::strategy}措施，并将{::subscribed_books::speech::military::group}{::subscribed_books::speech::military::multiplier}。”{@bt_name|::subscribed_books::vocabulary::person}宣称。"
+"\"The {::subscribed_books::speech::military::group} must be redeployed. {::subscribed_books::speech::military::strategy} {::subscribed_books::speech::military::object} -- that is where the threat lies,\" {@bt_name|::subscribed_books::vocabulary::person} said." = "“{::subscribed_books::speech::military::group}必须重新部署。对{::subscribed_books::speech::military::object}采取{::subscribed_books::speech::military::strategy}措施——威胁就在那里。”{@bt_name|::subscribed_books::vocabulary::person}说道。"
+
+[[rulesets]]
+name = "economy"
+[rulesets.rules]
+"\"I propose we {::subscribed_books::speech::economy::action} {::subscribed_books::speech::economy::target},\" {@bt_name|::subscribed_books::vocabulary::person} said. \"Our {::subscribed_books::speech::economy::resource} reserves demand it.\"" = "“我提议对{::subscribed_books::speech::economy::target}采取{::subscribed_books::speech::economy::action}措施。”{@bt_name|::subscribed_books::vocabulary::person}说道，“我们的{::subscribed_books::speech::economy::resource}储备要求我们这样做。”"
+"\"If we {::subscribed_books::speech::economy::action} {::subscribed_books::speech::economy::target}, the {::subscribed_books::speech::economy::resource} supply will stabilize,\" {@bt_name|::subscribed_books::vocabulary::person} argued." = "“如果对{::subscribed_books::speech::economy::target}采取{::subscribed_books::speech::economy::action}措施，{::subscribed_books::speech::economy::resource}的供应就会稳定。”{@bt_name|::subscribed_books::vocabulary::person}争辩道。"
+"\"The {::subscribed_books::speech::economy::resource} shortage will not fix itself. We must {::subscribed_books::speech::economy::action} {::subscribed_books::speech::economy::target},\" {@bt_name|::subscribed_books::vocabulary::person} said firmly." = "“{::subscribed_books::speech::economy::resource}短缺不会自行消失。我们必须对{::subscribed_books::speech::economy::target}采取{::subscribed_books::speech::economy::action}措施。”{@bt_name|::subscribed_books::vocabulary::person}坚定地说道。"
+
+[[rulesets]]
+name = "religion"
+[rulesets.rules]
+"\"The gods demand we {::subscribed_books::speech::religion::action} {::subscribed_books::speech::religion::object},\" {@bt_name|::subscribed_books::vocabulary::person} said. \"{::subscribed_books::speech::religion::entity} must see to it.\"" = "“诸神要求我们对{::subscribed_books::speech::religion::object}采取{::subscribed_books::speech::religion::action}措施。”{@bt_name|::subscribed_books::vocabulary::person}说道，“{::subscribed_books::speech::religion::entity}必须负责落实。”"
+"\"It is time to {::subscribed_books::speech::religion::action} {::subscribed_books::speech::religion::object}. {::subscribed_books::speech::religion::entity} have waited long enough,\" {@bt_name|::subscribed_books::vocabulary::person} declared." = "“是时候对{::subscribed_books::speech::religion::object}采取{::subscribed_books::speech::religion::action}措施了。{::subscribed_books::speech::religion::entity}已经等得够久。”{@bt_name|::subscribed_books::vocabulary::person}宣称。"
+"\"We cannot ignore {::subscribed_books::speech::religion::object} any longer. {::subscribed_books::speech::religion::entity} grow restless,\" {@bt_name|::subscribed_books::vocabulary::person} warned." = "“我们不能再忽视{::subscribed_books::speech::religion::object}。{::subscribed_books::speech::religion::entity}越来越躁动。”{@bt_name|::subscribed_books::vocabulary::person}警告道。"
+
+[[rulesets]]
+name = "governance"
+[rulesets.rules]
+"\"It is time to {::subscribed_books::speech::governance::action} {::subscribed_books::speech::governance::body},\" {@bt_name|::subscribed_books::vocabulary::person} said. \"{::subscribed_books::speech::governance::policy} cannot wait.\"" = "“是时候对{::subscribed_books::speech::governance::body}采取{::subscribed_books::speech::governance::action}措施了。”{@bt_name|::subscribed_books::vocabulary::person}说道，“{::subscribed_books::speech::governance::policy}不能再拖。”"
+"\"{::subscribed_books::speech::governance::policy} must be addressed. I say we {::subscribed_books::speech::governance::action} {::subscribed_books::speech::governance::body},\" {@bt_name|::subscribed_books::vocabulary::person} proposed." = "“必须处理{::subscribed_books::speech::governance::policy}的问题。依我看，应该对{::subscribed_books::speech::governance::body}采取{::subscribed_books::speech::governance::action}措施。”{@bt_name|::subscribed_books::vocabulary::person}提议。"
+"\"The current approach has failed. We must {::subscribed_books::speech::governance::action} {::subscribed_books::speech::governance::body} and implement {::subscribed_books::speech::governance::policy},\" {@bt_name|::subscribed_books::vocabulary::person} said." = "“现行做法已经失败。我们必须对{::subscribed_books::speech::governance::body}采取{::subscribed_books::speech::governance::action}措施，并实行{::subscribed_books::speech::governance::policy}。”{@bt_name|::subscribed_books::vocabulary::person}说道。"
+
+[[rulesets]]
+name = "diplomacy"
+[rulesets.rules]
+"\"We must {::subscribed_books::speech::diplomacy::action} {::subscribed_books::speech::diplomacy::target},\" {@bt_name|::subscribed_books::vocabulary::person} said. \"The situation demands a response.\"" = "“我们必须对{::subscribed_books::speech::diplomacy::target}采取{::subscribed_books::speech::diplomacy::action}措施。”{@bt_name|::subscribed_books::vocabulary::person}说道，“局势要求我们作出回应。”"
+"\"I say we {::subscribed_books::speech::diplomacy::action} {::subscribed_books::speech::diplomacy::target} before they act first,\" {@bt_name|::subscribed_books::vocabulary::person} argued." = "“依我看，我们应该抢在对方行动之前，对{::subscribed_books::speech::diplomacy::target}采取{::subscribed_books::speech::diplomacy::action}措施。”{@bt_name|::subscribed_books::vocabulary::person}争辩道。"
+"\"Our only option is to {::subscribed_books::speech::diplomacy::action} {::subscribed_books::speech::diplomacy::target}. Delay will cost us,\" {@bt_name|::subscribed_books::vocabulary::person} warned." = "“我们唯一的选择就是对{::subscribed_books::speech::diplomacy::target}采取{::subscribed_books::speech::diplomacy::action}措施。拖延会让我们付出代价。”{@bt_name|::subscribed_books::vocabulary::person}警告道。"
+
+[[rulesets]]
+name = "expansion"
+[rulesets.rules]
+"\"We should {::subscribed_books::speech::expansion::action} {::subscribed_books::speech::expansion::target},\" {@bt_name|::subscribed_books::vocabulary::person} said. \"There are resources we have not touched.\"" = "“我们应该对{::subscribed_books::speech::expansion::target}采取{::subscribed_books::speech::expansion::action}措施。”{@bt_name|::subscribed_books::vocabulary::person}说道，“那里还有我们未曾开发的资源。”"
+"\"It is time to {::subscribed_books::speech::expansion::action} {::subscribed_books::speech::expansion::target}. We cannot stay within these walls forever,\" {@bt_name|::subscribed_books::vocabulary::person} declared." = "“是时候对{::subscribed_books::speech::expansion::target}采取{::subscribed_books::speech::expansion::action}措施了。我们不能永远待在这些城墙里。”{@bt_name|::subscribed_books::vocabulary::person}宣称。"
+"\"I have surveyed the area. We should {::subscribed_books::speech::expansion::action} {::subscribed_books::speech::expansion::target} before someone else does,\" {@bt_name|::subscribed_books::vocabulary::person} said." = "“我已经勘察过那片地区。我们应该抢在别人之前，对{::subscribed_books::speech::expansion::target}采取{::subscribed_books::speech::expansion::action}措施。”{@bt_name|::subscribed_books::vocabulary::person}说道。"
+
+[[rulesets]]
+name = "governance::action2"
+[rulesets.rules]
+"{::subscribed_books::speech::governance::action}" = "{::subscribed_books::speech::governance::action}"
+
+[[rulesets]]
+name = "economy::resource2"
+[rulesets.rules]
+"{::subscribed_books::speech::economy::resource}" = "{::subscribed_books::speech::economy::resource}"
+
+[[rulesets]]
+name = "economy::target2"
+[rulesets.rules]
+"{::subscribed_books::speech::economy::target}" = "{::subscribed_books::speech::economy::target}"
+
+[[rulesets]]
+name = "economy::action2"
+[rulesets.rules]
+"{::subscribed_books::speech::economy::action}" = "{::subscribed_books::speech::economy::action}"
+
+[[rulesets]]
+name = "diplomacy::action2"
+[rulesets.rules]
+"{::subscribed_books::speech::diplomacy::action}" = "{::subscribed_books::speech::diplomacy::action}"
+
+[[rulesets]]
+name = "military::multiplier2"
+[rulesets.rules]
+"{::subscribed_books::speech::military::multiplier}" = "{::subscribed_books::speech::military::multiplier}"
+
+[[rulesets]]
+name = "religion::action2"
+[rulesets.rules]
+"{::subscribed_books::speech::religion::action}" = "{::subscribed_books::speech::religion::action}"
+
+[[rulesets]]
+name = "governance::body2"
+[rulesets.rules]
+"{::subscribed_books::speech::governance::body}" = "{::subscribed_books::speech::governance::body}"
+
+
+# 声明内生成变化的规范形变体；原作者句式保留。
+[[rulesets]]
+name = "military"
+[rulesets.rules]
+"\"You {::subscribed_books::speech::military::strategy} {::subscribed_books::speech::military::object} and call it a plan?\" {@bt_name|::subscribed_books::vocabulary::person} spat. \"It is a invitation to disaster.\"" = "“你对{::subscribed_books::speech::military::object}采取{::subscribed_books::speech::military::strategy}措施，还称之为计划？”{@bt_name|::subscribed_books::vocabulary::person}啐道，“这简直是在招灾。”"
+

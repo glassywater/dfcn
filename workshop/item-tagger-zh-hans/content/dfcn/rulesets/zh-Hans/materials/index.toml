@@ -1,0 +1,15 @@
+base = "materials"
+
+[[rulesets]]
+[rulesets.rules]
+"{^prefix}{state}{::item_tagger::tags}" = "{^prefix}{state}{::item_tagger::tags}"
+
+[[rulesets]]
+name = "adjective"
+[rulesets.rules]
+"{^prefix}{state::adjective}{::item_tagger::tags}" = "{^prefix}{state::adjective}{::item_tagger::tags}"
+
+[[rulesets]]
+name = "finished_adjective"
+[rulesets.rules]
+"{^prefix}{state::adjective}{::item_tagger::tags}" = "{^prefix}{state::adjective}{::item_tagger::tags}"

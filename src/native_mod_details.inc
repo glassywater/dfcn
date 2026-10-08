@@ -23,26 +23,45 @@ static bool native_mod_copy_header(uintptr_t address, NativeModHeader &header) {
     return true;
 }
 
-static NativeModDetails native_mod_details() {
+static NativeModDetails native_mod_details(bool background_owner) {
     NativeModDetails details;
     if (!native_history_profile_base()) return details;
-    const uintptr_t screen = native_current_viewscreen();
+    uintptr_t screen = native_current_viewscreen();
     if (!screen) return details;
     const native_history_layout::ModScreenFields *fields = nullptr;
     std::string_view type;
-    if (native_history_object_is(screen, "viewscreen_titlest")) {
-        type = "viewscreen_titlest";
-        fields = &native_history_layout::mod_title_fields;
-        details.kind = NativeModScreenKind::Title;
-    } else if (native_history_object_is(screen, "viewscreen_new_regionst")) {
-        type = "viewscreen_new_regionst";
-        fields = &native_history_layout::mod_newregion_fields;
-        details.kind = NativeModScreenKind::NewRegion;
-    } else if (native_history_object_is(screen, "viewscreen_new_arenast")) {
-        type = "viewscreen_new_arenast";
-        fields = &native_history_layout::mod_newarena_fields;
-        details.kind = NativeModScreenKind::NewArena;
-    } else return details;
+    std::array<uintptr_t, 64> visited{};
+    for (size_t depth = 0; depth < visited.size(); ++depth) {
+        if (!screen || std::find(visited.begin(), visited.begin() + depth, screen) !=
+                visited.begin() + depth) return {};
+        visited[depth] = screen;
+        if (native_history_object_is(screen, "viewscreen_titlest")) {
+            type = "viewscreen_titlest";
+            fields = &native_history_layout::mod_title_fields;
+            details.kind = NativeModScreenKind::Title;
+            break;
+        }
+        if (native_history_object_is(screen, "viewscreen_new_regionst")) {
+            type = "viewscreen_new_regionst";
+            fields = &native_history_layout::mod_newregion_fields;
+            details.kind = NativeModScreenKind::NewRegion;
+            break;
+        }
+        if (native_history_object_is(screen, "viewscreen_new_arenast")) {
+            type = "viewscreen_new_arenast";
+            fields = &native_history_layout::mod_newarena_fields;
+            details.kind = NativeModScreenKind::NewArena;
+            break;
+        }
+        // A DFHack window becomes the current viewscreen while rendering
+        // the selector beneath it. Only the restored background pass may
+        // borrow that parent's ownership; the foreground keeps its controls.
+        if (!background_owner || screen > UINTPTR_MAX - 0x10) return {};
+        uintptr_t parent = 0;
+        if (!native_history_copy(screen + 0x10, parent)) return {};
+        screen = parent;
+    }
+    if (!fields) return {};
     const auto field = [&](size_t offset) { return native_mod_field_address(screen, offset); };
     uint8_t active = 0;
     if (!native_history_copy(field(fields->active), active) || active != 1) return {};

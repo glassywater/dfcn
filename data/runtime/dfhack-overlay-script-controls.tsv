@@ -265,20 +265,6 @@ DFHack GUI Overlay control: |skills  (staffing <-> skills)|I|0|-1|0	|技能  （
 DFHack GUI Overlay control: |{d} laborers, {d} specialists, {d} generalists|I|0|-1|0	|{d1} 名劳动者，{d2} 名专业劳动者，{d3} 名通才	l
 DFHack GUI Overlay control: |{d} laborers, {d} specialists ({d} on guild rest), {d} generalists|I|0|-1|0	|{d1} 名劳动者，{d2} 名专业劳动者（{d3} 名正在公会休息），{d4} 名通才	l
 
-# Workshop 975370/3752219300/scripts_modinstalled/gui/codex-narrator.lua:469-474 NarratorOverlay. TextButton creates an internal keyed HotkeyLabel with key_sep=': '. Its full source label is 'Read Story [Ctrl+N]'; the 24-cell banner reserves one cell on each side, so translate the fixed phrase and preserve the literal shortcut suffix even when that suffix is clipped by Painter:string. Module registration is gui/codex-narrator.narrator; scripts_modinstalled is scanned regardless of active-world membership.
-DFHack GUI Overlay control: Read Story [Ctrl+N]||I|0|-1|1	阅读故事 [Ctrl+N]|	l
-DFHack GUI Overlay control: Read Story||I|0|-1|1	阅读故事|	l
-
-# Same registered Overlay's reachable NarratorWindow/NarratorScreen helper, source :120-153/:224-230/:239-250. Successful Copy text activation swaps to Copied! for 2000 ms; a clipboard exception keeps the former label and paints no error. No content. is the nil narrative fallback. Reading: appends a whole original written_content title; its only finite fallback is Untitled. Cached/generated narrative prose remains original.
-DFHack GUI Overlay control: Copy text||I|0|-1|1	复制文本|	l
-DFHack GUI Overlay control: Copied!||I|0|-1|0	已复制！|	l
-DFHack GUI Overlay control: No content.||I|0|-1|0	没有内容。|	l
-DFHack GUI Overlay control: Codex Narrator||I|0|-1|0	故事叙述器|	l
-# NarratorScreen retains only the composed frame title, not the book source.
-# A real book can itself be named Untitled; preserve this entire name field.
-DFHack GUI Overlay control: Reading:|Untitled|I|1|-1|0	阅读：|Untitled	l
-DFHack GUI Overlay control: Reading:|*|I|1|-1|0	阅读：|*	l
-
 # machine-toggle.lua:198-207 PlateOverlay TabBar labels; shared hack/lua/gui/widgets/tab_bar.lua:101-129 draws every label twice with Painter:char in graphics mode, once with Painter:string in text mode. Tab index 1..4 selects Water/Magma/Track/Creatures. Generic Water/Magma dictionary spellings are retained in this source-owned catalog.
 DFHack GUI Overlay control: Water||I|0|-1|0	水|	l
 DFHack GUI Overlay control: Magma||I|0|-1|0	岩浆|	l

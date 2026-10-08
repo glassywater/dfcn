@@ -1,0 +1,37 @@
+# Local subscribed source 3782099990, numeric version 1. No Lua is bundled.
+Stone Tint	石材着色	l
+Adds subtle per-material colors to natural stone floors in graphics mode. Includes a DFHack GUI with live tint-strength presets and rough/smooth floor toggles. Requires DFHack.	在图形模式下，按材质为天然石质地面添加淡淡的颜色。附带 DFHack 设置界面，可即时调整着色强度，并分别开关粗糙与平滑地面的着色。需要 DFHack。	lP
+Natural stone floors display subtle colors based on their actual material. Includes a live strength slider and rough/smooth floor controls. Requires DFHack 53.15-r3 or compatible. Open settings with the DFHack command: stone-tint	天然石质地面会按实际材质显示淡淡的颜色。提供即时生效的强度滑块与粗糙、平滑地面开关。需要 DFHack 53.15-r3 或兼容版本。设置命令：stone-tint。	lP
+Tint natural stone floors according to their material.	按材质为天然石质地面着色。	lP
+Tint strength:	着色强度：	l
+Strength:	强度：	l
+Tint rough floors:	粗糙地面着色：	l
+Tint smooth floors:	平滑地面着色：	l
+DFHack help: Tint natural stone floors according to their material.	按材质为天然石质地面着色。	l
+DFHack output: stone-tint: material cache cleared	stone-tint：已清除材质缓存	l
+DFHack output: stone-tint: overlay is enabled	stone-tint：着色叠加已启用	l
+DFHack output: stone-tint: overlay is disabled	stone-tint：着色叠加已禁用	l
+DFHack output: stone-tint: strength is {d}%	stone-tint：着色强度为 {d1}%	l
+DFHack output: stone-tint: could not load {s}	stone-tint：无法载入 {s1}	l
+DFHack output: stone-tint needs a loaded fortress map	stone-tint 需要已载入的要塞地图	l
+DFHack output: strength must be one of: 0, 10, 15, 20, 25, 30, 40, 50	强度必须为以下值之一：0、10、15、20、25、30、40、50	l
+DFHack output: Use: stone-tint [gui]	用法：stone-tint [gui]	l
+DFHack GUI Overlay control: Strength:|Off|I|1|-1|1	强度：|关闭	l
+DFHack GUI Overlay control: Strength:|10%|I|1|-1|1	强度：|10%	l
+DFHack GUI Overlay control: Strength:|15%|I|1|-1|1	强度：|15%	l
+DFHack GUI Overlay control: Strength:|20%|I|1|-1|1	强度：|20%	l
+DFHack GUI Overlay control: Strength:|25%|I|1|-1|1	强度：|25%	l
+DFHack GUI Overlay control: Strength:|30%|I|1|-1|1	强度：|30%	l
+DFHack GUI Overlay control: Strength:|40%|I|1|-1|1	强度：|40%	l
+DFHack GUI Overlay control: Strength:|50%|I|1|-1|1	强度：|50%	l
+DFHack GUI Overlay control: Tint rough floors:|On|I|1|-1|1	粗糙地面着色：|开启	l
+DFHack GUI Overlay control: Tint rough floors:|Off|I|1|-1|1	粗糙地面着色：|关闭	l
+DFHack GUI Overlay control: Tint smooth floors:|On|I|1|-1|1	平滑地面着色：|开启	l
+DFHack GUI Overlay control: Tint smooth floors:|Off|I|1|-1|1	平滑地面着色：|关闭	l
+DFHack GUI Overlay control: Tint strength:||I|0|-1|0	着色强度：|	l
+DFHack GUI Overlay control: : Close||I|0|-1|1	：关闭|	l
+DFHack output:      overlay enable stone-tint.map	启用着色：overlay enable stone-tint.map	l
+DFHack output:      overlay disable stone-tint.map	禁用着色：overlay disable stone-tint.map	l
+DFHack output:      stone-tint clear-cache	清除材质缓存：stone-tint clear-cache	l
+DFHack output:      stone-tint status	查看状态：stone-tint status	l
+DFHack output:      stone-tint set <0|10|15|20|25|30|40|50>	设置强度：stone-tint set <0|10|15|20|25|30|40|50>	l

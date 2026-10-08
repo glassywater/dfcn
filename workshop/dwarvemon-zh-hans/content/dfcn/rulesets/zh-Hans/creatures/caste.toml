@@ -1,0 +1,30 @@
+# Dwarvemon 2.22 translation extension; merges into the base namespace.
+base = "creatures::caste"
+
+[[rulesets]]
+name = "name::prefix"
+optional = true
+[rulesets.rules]
+"shadow " = "暗影"
+"pink " = "粉红色的"
+"titan " = "宝主"
+"z-powered " = "Z力量形态的"
+"dynamax " = "极巨化的"
+"dynamaxed " = "已极巨化的"
+"-dynamax- " = "－极巨化－"
+"-dynamaxed- " = "－已极巨化－"
+"glitched " = "出现故障的"
+"mummy " = "木乃伊化的"
+"mummies " = "木乃伊化的"
+"mummified " = "木乃伊化的"
+"(e) " = "(e) "
+"(-e-) " = "(-e-) "
+"(g) " = "(G) "
+
+[[rulesets]]
+name = "name::tailfix"
+optional = true
+[rulesets.rules]
+" (e)" = " (e)"
+" (-e-)" = " (-e-)"
+" (G)" = " (G)"

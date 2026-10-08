@@ -129,6 +129,11 @@ static std::optional<DfhackOverlayControl> dfhack_overlay_control(const Rule &ru
     return control;
 }
 
+struct DfhackExtensionProseRewrite {
+    std::regex pattern;
+    std::string replacement;
+};
+
 struct DfhackOutputSnapshot {
     std::unordered_map<std::string, std::string> literals, help, values;
     std::vector<Rule> templates;
@@ -139,6 +144,8 @@ struct DfhackOutputSnapshot {
     std::unordered_map<std::string, std::vector<size_t>> stonesense_words;
     std::unordered_map<std::string, std::string> human_captions;
     std::unordered_map<std::string, std::string> gui_fields;
+    std::unordered_map<std::string, std::string> extension_prose;
+    std::unordered_map<std::string, std::map<std::string, DfhackExtensionProseRewrite>> extension_prose_rewrites;
     std::vector<DfhackOverlayControl> overlay_controls;
     std::vector<Rule> notification_templates;
     std::unordered_map<std::string, std::string> calendar_months;
@@ -150,6 +157,53 @@ struct DfhackOutputSnapshot {
     std::shared_ptr<const DfhackRawCreatureLabels> raw_creature_adjectives;
 };
 static std::atomic<std::shared_ptr<const DfhackOutputSnapshot>> g_dfhack_output_snapshot;
+
+static std::pair<std::string, std::vector<size_t>> normalize_dfhack_extension_prose(
+        std::string_view source,
+        const std::map<std::string, DfhackExtensionProseRewrite> &rewrites) {
+    std::string text(source);
+    std::vector<size_t> origins(text.size());
+    std::iota(origins.begin(), origins.end(), size_t{0});
+    for (const auto &[id, rewrite] : rewrites) {
+        std::string next;
+        std::vector<size_t> next_origins;
+        size_t begin = 0;
+        const auto append_source = [&](size_t at, size_t count) {
+            next.append(text, at, count);
+            next_origins.insert(next_origins.end(), origins.begin() + at,
+                origins.begin() + at + count);
+        };
+        for (std::sregex_iterator it(text.begin(), text.end(), rewrite.pattern), end;
+                it != end; ++it) {
+            const auto &match = *it;
+            const size_t at = static_cast<size_t>(std::distance(text.cbegin(), match[0].first));
+            append_source(begin, at - begin);
+            for (size_t index = 0; index < rewrite.replacement.size();) {
+                const char ch = rewrite.replacement[index++];
+                if (ch == '$' && index < rewrite.replacement.size() &&
+                        std::isdigit(static_cast<unsigned char>(rewrite.replacement[index]))) {
+                    size_t group = 0;
+                    while (index < rewrite.replacement.size() &&
+                            std::isdigit(static_cast<unsigned char>(rewrite.replacement[index])))
+                        group = group * 10 + (rewrite.replacement[index++] - '0');
+                    if (group < match.size() && match[group].matched)
+                        append_source(static_cast<size_t>(std::distance(text.cbegin(), match[group].first)),
+                            static_cast<size_t>(match.length(group)));
+                } else {
+                    if (ch == '$' && index < rewrite.replacement.size() &&
+                            rewrite.replacement[index] == '$') ++index;
+                    next.push_back(ch);
+                    next_origins.push_back(at < origins.size() ? origins[at] : source.size());
+                }
+            }
+            begin = at + static_cast<size_t>(match.length());
+        }
+        append_source(begin, text.size() - begin);
+        text = std::move(next);
+        origins = std::move(next_origins);
+    }
+    return {std::move(text), std::move(origins)};
+}
 
 static std::optional<std::string> translate_dfhack_tag_list(
         const DfhackOutputSnapshot &, std::string_view source) {
@@ -595,6 +649,7 @@ static std::optional<std::string> translate_dfhack_human_capture(
         return std::nullopt;
     }
     std::string_view kind;
+    bool showmood_material = false;
     if (rule.source == "{d}: {s} caravan from {s}" && capture == 1)
         kind = "creature_adjective";
     else if (rule.source == "autocheese: dispatching cheesemaking job for {s} ({d} milk) to {s}" &&
@@ -662,17 +717,26 @@ static std::optional<std::string> translate_dfhack_human_capture(
             form = form.substr(0, got);
         if (form == "item {s} material {s} flags ({s}:{s}:{s})") {
             if (capture == field) kind = "item";
-            if (capture == field + 1) kind = "material";
+            if (capture == field + 1) { kind = "material"; showmood_material = true; }
         } else if (capture == field) {
             for (std::string_view caption : {"{s} boulder", "{s} blocks", "{s} logs",
                     "{s} wafers", "{s} bars", "{s} cut gems", "{s} rough gems", "raw {s}",
                     "{s} leather", "{s} cloth", "{s} bones", "{s} shells", "{s} horns",
                     "{s} pearls", "{s} ivory/teeth", "{s} unknown body parts ({s}:{s}:{s})",
                     "{s} remains", "{s} corpse", "{s} murdered corpse"})
-                if (form == caption) { kind = "material"; break; }
+                if (form == caption) {
+                    kind = "material";
+                    showmood_material = true;
+                    break;
+                }
         }
     }
     if (kind.empty()) return std::nullopt;
+    if (showmood_material) {
+        const auto wildcard = catalog.gui_fields.find(
+            "DFHack GUI Showmood material: " + std::string(source));
+        if (wildcard != catalog.gui_fields.end()) return wildcard->second;
+    }
     const auto text = console_utf8 ? std::string(source) : native_text_to_utf8(source);
     // Whole-caption overrides are scoped to this already proved human field.
     // They cannot rename a command, material token, enum, path or flag value.
@@ -764,9 +828,14 @@ static std::vector<std::optional<std::string>> resolve_dfhack_output_captures(
     return resolved;
 }
 
+#include "dfhack_showmood_output.inc"
+
 static std::optional<std::string> translate_dfhack_output_message(
         const DfhackOutputSnapshot &catalog, std::string_view visible, int depth,
         bool templates, bool fragments, bool console_utf8) {
+    if (depth == 0)
+        if (auto target = translate_dfhack_showmood_output(catalog, visible, console_utf8))
+            return target;
     if (depth == 0)
         if (auto target = translate_dfhack_workorder_output(catalog, visible, console_utf8))
             return target;
@@ -983,6 +1052,101 @@ void Overlay::index_dfhack_output(const Rule &input) {
 void Overlay::load_dfhack_help_catalog(std::function<void()> *catalog_publication) {
     const auto directory = fs::u8path(config_.mapping_path).parent_path();
     auto snapshot = std::make_shared<DfhackOutputSnapshot>();
+    const auto index_catalog_rule = [&](const Rule &input, bool stonesense = false) {
+        // Most of the main catalog belongs to game text. Filter those rows
+        // before copying their strings, template vectors and color data.
+        if (!input.source.starts_with("DFHack ")) return;
+        Rule rule = input;
+        std::vector<uint32_t> codepoints;
+        const bool gui_field = rule.source.starts_with("DFHack GUI ");
+        constexpr std::string_view death_prefix = "DFHack death cause: ";
+        constexpr std::string_view death_phrase_prefix = "DFHack deathcause phrase: ";
+        constexpr std::string_view month_prefix = "DFHack human month: ";
+        constexpr std::string_view season_prefix = "DFHack human season: ";
+        const bool death_cause = rule.source.starts_with(death_prefix);
+        const bool death_phrase = rule.source.starts_with(death_phrase_prefix);
+        const bool calendar_month = rule.source.starts_with(month_prefix);
+        const bool calendar_season = rule.source.starts_with(season_prefix);
+        const bool output = rule.source.starts_with("DFHack output: ") ||
+            rule.source.starts_with("DFHack output value: ") ||
+            rule.source.starts_with("DFHack output fragment: ");
+        if ((!gui_field && !output && !death_cause && !death_phrase &&
+                !calendar_month && !calendar_season &&
+                !rule.source.starts_with("DFHack help: ")) ||
+                trim(rule.target).empty() || !decode_utf8(rule.target, codepoints)) return;
+        if (stonesense) index_dfhack_stonesense_text(*snapshot, rule);
+        if (calendar_season) {
+            if (contains_cjk_utf8(rule.target)) snapshot->calendar_seasons.insert_or_assign(
+                rule.source.substr(season_prefix.size()), rule.target);
+        } else if (calendar_month) {
+            if (contains_cjk_utf8(rule.target)) snapshot->calendar_months.insert_or_assign(
+                rule.source.substr(month_prefix.size()), rule.target);
+        } else if (death_cause) {
+            if (contains_cjk_utf8(rule.target)) snapshot->death_causes.insert_or_assign(
+                rule.source.substr(death_prefix.size()), rule.target);
+        } else if (death_phrase) {
+            rule.source.erase(0, death_phrase_prefix.size());
+            split_template(rule.source, &rule.template_literals, &rule.template_kinds);
+            if (rule.template_kinds.size() == 1 && compile_template_target(rule))
+                snapshot->death_phrases.insert_or_assign(rule.source, rule);
+        } else if (output) index_dfhack_output(rule);
+        else if (gui_field) {
+            snapshot->gui_fields.insert_or_assign(rule.source, rule.target);
+            capture_translations_.insert_or_assign(rule.source, rule.target);
+            constexpr std::string_view prose_scope = "DFHack GUI Extension prose: ";
+            if (rule.source.starts_with(prose_scope) && rule.target.starts_with("::") &&
+                    rule.target.size() > 2 && std::all_of(rule.target.begin() + 2,
+                        rule.target.end(), [](unsigned char ch) {
+                            return std::isalnum(ch) || ch == '_' || ch == ':';
+                        }))
+                snapshot->extension_prose.insert_or_assign(
+                    rule.source.substr(prose_scope.size()), rule.target);
+            constexpr std::string_view rewrite_scope = "DFHack GUI Extension prose normalize: ";
+            if (rule.source.starts_with(rewrite_scope)) {
+                const std::string key = rule.source.substr(rewrite_scope.size());
+                const auto id = key.rfind('|');
+                const auto separator = rule.target.find('\t');
+                if (id != std::string::npos && id + 1 < key.size() &&
+                        separator != std::string::npos && separator > 0 && separator <= 256) {
+                    try {
+                        DfhackExtensionProseRewrite rewrite{
+                            std::regex(rule.target.substr(0, separator)),
+                            rule.target.substr(separator + 1)};
+                        snapshot->extension_prose_rewrites[key.substr(0, id)].insert_or_assign(
+                            key.substr(id + 1), std::move(rewrite));
+                    } catch (const std::regex_error &) {
+                        // An invalid data declaration cannot alter the owner text.
+                    }
+                }
+            }
+            if (auto control = dfhack_overlay_control(rule)) {
+                auto &controls = snapshot->overlay_controls;
+                controls.erase(std::remove_if(controls.begin(), controls.end(),
+                    [&](const auto &existing) {
+                        return existing.caption == control->caption && existing.option == control->option &&
+                            existing.gap == control->gap && existing.label_width == control->label_width &&
+                            existing.below == control->below && existing.keyed == control->keyed;
+                    }), controls.end());
+                controls.push_back(std::move(*control));
+            }
+            constexpr std::string_view notify_scope = "DFHack GUI Notification banner: ";
+            if (rule.source.starts_with(notify_scope) &&
+                    rule.source != std::string(notify_scope) + "{d} {s}" &&
+                    rule.source.find("{d}") != std::string::npos) {
+                Rule notification = rule;
+                notification.source.erase(0, notify_scope.size());
+                split_template(notification.source, &notification.template_literals,
+                    &notification.template_kinds);
+                if (compile_template_target(notification)) {
+                    auto &templates = snapshot->notification_templates;
+                    templates.erase(std::remove_if(templates.begin(), templates.end(),
+                        [&](const auto &existing) { return existing.source == notification.source; }),
+                        templates.end());
+                    templates.push_back(std::move(notification));
+                }
+            }
+        } else index_dfhack_help_paragraph(rule);
+    };
     for (size_t file = 0; file < dfhack_catalog_names_.size(); ++file) {
         const auto path = directory / dfhack_catalog_names_[file];
         std::error_code error;
@@ -1004,61 +1168,15 @@ void Overlay::load_dfhack_help_catalog(std::function<void()> *catalog_publicatio
             rule.source = unescape_tsv(std::string_view(line).substr(0, tab), &source_ok);
             rule.target = unescape_tsv(std::string_view(line).substr(tab + 1,
                 flags == std::string::npos ? std::string::npos : flags - tab - 1), &target_ok);
-            std::vector<uint32_t> codepoints;
-            const bool gui_field = rule.source.starts_with("DFHack GUI ");
-            constexpr std::string_view death_prefix = "DFHack death cause: ";
-            constexpr std::string_view death_phrase_prefix = "DFHack deathcause phrase: ";
-            constexpr std::string_view month_prefix = "DFHack human month: ";
-            constexpr std::string_view season_prefix = "DFHack human season: ";
-            const bool death_cause = rule.source.starts_with(death_prefix);
-            const bool death_phrase = rule.source.starts_with(death_phrase_prefix);
-            const bool calendar_month = rule.source.starts_with(month_prefix);
-            const bool calendar_season = rule.source.starts_with(season_prefix);
-            const bool output = rule.source.starts_with("DFHack output: ") ||
-                rule.source.starts_with("DFHack output value: ") ||
-                rule.source.starts_with("DFHack output fragment: ");
-            if (!source_ok || !target_ok ||
-                    (!gui_field && !output && !death_cause && !death_phrase &&
-                     !calendar_month && !calendar_season &&
-                     !rule.source.starts_with("DFHack help: ")) ||
-                    trim(rule.target).empty() || !decode_utf8(rule.target, codepoints)) continue;
-            if (std::string_view(dfhack_catalog_names_[file]) == "dfhack-output-stonesense.tsv")
-                index_dfhack_stonesense_text(*snapshot, rule);
-            if (calendar_season) {
-                if (contains_cjk_utf8(rule.target)) snapshot->calendar_seasons.insert_or_assign(
-                    rule.source.substr(season_prefix.size()), rule.target);
-            } else if (calendar_month) {
-                if (contains_cjk_utf8(rule.target)) snapshot->calendar_months.insert_or_assign(
-                    rule.source.substr(month_prefix.size()), rule.target);
-            } else if (death_cause) {
-                if (contains_cjk_utf8(rule.target)) snapshot->death_causes.insert_or_assign(
-                    rule.source.substr(death_prefix.size()), rule.target);
-            } else if (death_phrase) {
-                rule.source.erase(0, death_phrase_prefix.size());
-                split_template(rule.source, &rule.template_literals, &rule.template_kinds);
-                if (rule.template_kinds.size() == 1 && compile_template_target(rule))
-                    snapshot->death_phrases.insert_or_assign(rule.source, rule);
-            } else if (output) index_dfhack_output(rule);
-            else if (gui_field) {
-                snapshot->gui_fields.insert_or_assign(rule.source, rule.target);
-                capture_translations_.insert_or_assign(rule.source, rule.target);
-                if (auto control = dfhack_overlay_control(rule))
-                    snapshot->overlay_controls.push_back(std::move(*control));
-                constexpr std::string_view notify_scope = "DFHack GUI Notification banner: ";
-                if (rule.source.starts_with(notify_scope) &&
-                        rule.source != std::string(notify_scope) + "{d} {s}" &&
-                        rule.source.find("{d}") != std::string::npos) {
-                    Rule notification = rule;
-                    notification.source.erase(0, notify_scope.size());
-                    split_template(notification.source, &notification.template_literals,
-                        &notification.template_kinds);
-                    if (compile_template_target(notification))
-                        snapshot->notification_templates.push_back(std::move(notification));
-                }
-            }
-            else index_dfhack_help_paragraph(rule);
+            if (source_ok && target_ok) index_catalog_rule(std::move(rule),
+                std::string_view(dfhack_catalog_names_[file]) == "dfhack-output-stonesense.tsv");
         }
     }
+    // The loaded mapping includes each data extension in its normal priority
+    // order. Apply it after the built-in catalogs so GUI/console resources stay
+    // in their independent data mod, including updates and removal.
+    for (auto rule = rules_.rbegin(); rule != rules_.rend(); ++rule)
+        index_catalog_rule(*rule);
     // Match complete fixed options before a dynamic fallback for the same
     // caption. Registration order and plugin iteration cannot change text.
     std::stable_sort(snapshot->overlay_controls.begin(), snapshot->overlay_controls.end(),
@@ -1239,6 +1357,13 @@ std::optional<std::string> Overlay::translate_dfhack_output_rows(
     }
     if (depth == 0)
         if (const auto catalog = g_dfhack_output_snapshot.load(std::memory_order_acquire)) {
+            if (auto target = translate_dfhack_showmood_output(*catalog, visible, false,
+                    [this](std::string_view name) {
+                        return translate_dfhack_readable_unit_name(name);
+                    })) {
+                if (complete_source) *complete_source = visible;
+                return target;
+            }
             // workorder's very-verbose report uses real hard lines and all
             // fields begin at the same widget edge. Keep them separate;
             // joining an unrelated numeric table as prose loses its roles.

@@ -78,6 +78,12 @@ static std::optional<NativeDfhackControlPanelText> native_dfhack_control_panel_l
     result.bounds = *bounds;
     result.clip_bounds = *clip;
     bool config_parent = false, control_parent = false;
+    const bool wrapped_widget = label_body && native_dfhack_overlay_class_method(state, widget,
+        "getWrappedText", api.wrapped_source, 27);
+    std::string view_id;
+    if (wrapped_widget && native_dfhack_sitemap_raw_field(state, widget, "view_id"))
+        if (const auto value = native_dfhack_overlay_lua_string(state, -1)) view_id = *value;
+    stack.settop(state, row);
     int parent = widget;
     for (int depth = 0; depth < 24; ++depth) {
         config_parent = config_parent ||
@@ -94,11 +100,42 @@ static std::optional<NativeDfhackControlPanelText> native_dfhack_control_panel_l
             control_parent = true;
             break;
         }
+        // A data extension can own one explicitly named WrappedLabel inside
+        // a native Window. Capture its complete evaluated document without
+        // calling Lua callbacks or inferring a field from English spelling.
+        if (wrapped_widget && !view_id.empty()) {
+            const int parent_top = stack.gettop(state);
+            std::optional<std::string> title;
+            if (native_dfhack_sitemap_raw_field(state, parent, "frame_title"))
+                title = native_dfhack_overlay_lua_string(state, -1);
+            stack.settop(state, parent_top);
+            if (title && !title->empty() && result.extension_prose_key.empty()) {
+                const auto frame = native_dfhack_control_panel_rect(state, parent, "frame_rect");
+                const auto containing = native_dfhack_control_panel_rect(state, parent, "frame_parent_rect");
+                if (frame && containing) {
+                    result.extension_prose_key = *title + "||" + view_id;
+                    result.parent_bounds = {frame->x + containing->x, frame->y + containing->y,
+                        frame->w, frame->h};
+                    result.parent_id = reinterpret_cast<uintptr_t>(api.topointer(state, parent));
+                }
+            }
+            // A Screen focus path remains fixed when its child Window title
+            // contains an authored book/person name. It identifies ownership
+            // without parsing or translating that title's variable suffix.
+            std::optional<std::string> focus;
+            if (native_dfhack_sitemap_raw_field(state, parent, "focus_path"))
+                focus = native_dfhack_overlay_lua_string(state, -1);
+            stack.settop(state, parent_top);
+            if (focus && !focus->empty() && result.parent_id)
+                result.extension_prose_key = "focus:" + *focus + "||" + view_id;
+        }
         if (!native_dfhack_sitemap_raw_field(state, parent, "parent_view") ||
                 stack.type(state, -1) != 5) break;
         parent = stack.gettop(state);
     }
-    if (!control_parent || (list_body && !config_parent)) return std::nullopt;
+    if ((!control_parent && result.extension_prose_key.empty()) ||
+            (list_body && !config_parent)) return std::nullopt;
+    if (control_parent) result.extension_prose_key.clear();
     stack.settop(state, row);
     if (!native_dfhack_overlay_local(state, render, "token") || stack.type(state, -1) != 5)
         return std::nullopt;
@@ -163,8 +200,8 @@ static std::optional<NativeDfhackControlPanelText> native_dfhack_control_panel_l
         result.native_width = remaining;
         return result;
     }
-    if (config_parent && native_dfhack_overlay_class_method(state, widget,
-            "getWrappedText", api.wrapped_source, 27)) {
+    if ((config_parent || !result.extension_prose_key.empty()) && wrapped_widget) {
+        const size_t document_limit = result.extension_prose_key.empty() ? 65536 : 1048576;
         result.role = NativeDfhackControlPanelTextRole::Wrapped;
         const auto indent = native_dfhack_control_panel_integer(state, widget, "indent");
         result.native_width = bounds->w - 3 - indent.value_or(0);
@@ -180,7 +217,7 @@ static std::optional<NativeDfhackControlPanelText> native_dfhack_control_panel_l
         result.total_lines = static_cast<int>(count);
         stack.settop(state, row);
         if (native_dfhack_sitemap_raw_field(state, widget, "text_to_wrap"))
-            if (auto document = native_dfhack_overlay_lua_string(state, -1))
+            if (auto document = native_dfhack_overlay_lua_string(state, -1, document_limit))
                 result.document = std::move(*document);
         // Function-valued blurbs have already been evaluated by the native
         // layout. Read its complete cached lines without invoking callbacks.
@@ -202,7 +239,7 @@ static std::optional<NativeDfhackControlPanelText> native_dfhack_control_panel_l
                             !native_dfhack_sitemap_raw_field(state, stack.gettop(state), "text"))
                         return std::nullopt;
                     const auto text = native_dfhack_overlay_lua_string(state, -1);
-                    if (!text || document.size() + text->size() > 65536) return std::nullopt;
+                    if (!text || document.size() + text->size() > document_limit) return std::nullopt;
                     document += *text;
                     stack.settop(state, parts);
                 }

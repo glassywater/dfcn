@@ -1,0 +1,585 @@
+id	species_id	identifier	en_form	en_pokemon	zh_cn_form	zh_cn_pokemon	zh_tw_form	zh_tw_pokemon
+201	201	unown-a	A	Unown A				
+351	351	castform	Normal		飘浮泡泡的样子		飄浮泡泡的樣子	
+382	382	kyogre	Kyogre		盖欧卡的样子		蓋歐卡的樣子	
+383	383	groudon	Groudon		固拉多的样子		固拉多的樣子	
+386	386	deoxys-normal	Normal Forme	Normal Deoxys	普通形态		普通形態	
+412	412	burmy-plant	Plant Cloak	Plant Burmy				
+413	413	wormadam-plant	Plant Cloak	Plant Wormadam	草木蓑衣		草木蓑衣	
+421	421	cherrim-overcast	Overcast Form	Overcast Cherrim	阴天形态		陰天形態	
+422	422	shellos-west	West Sea	West Shellos	西海		西海	
+423	423	gastrodon-west	West Sea	West Gastrodon	西海		西海	
+479	479	rotom	Rotom		洛托姆的样子		洛托姆的樣子	
+487	487	giratina-altered	Altered Forme	Altered Giratina	别种形态		別種形態	
+492	492	shaymin-land	Land Forme	Land Shaymin	陆上形态		陸上形態	
+493	493	arceus-normal	Normal Type	Normal Arceus				
+550	550	basculin-red-striped	Red-Striped Form	Red-Striped Basculin	红条纹的样子		紅條紋的樣子	
+555	555	darmanitan-standard	Standard Mode	Standard Darmanitan	普通模式		普通模式	
+585	585	deerling-spring	Spring Form	Spring Deerling				
+586	586	sawsbuck-spring	Spring Form	Spring Sawsbuck				
+592	592	frillish-male	Male	Male Frillish	雄性的样子		雄性的樣子	
+593	593	jellicent-male	Male	Male Jellicent	雄性的样子		雄性的樣子	
+641	641	tornadus-incarnate	Incarnate Forme	Incarnate Tornadus	化身形态		化身形態	
+642	642	thundurus-incarnate	Incarnate Forme	Incarnate Thundurus	化身形态		化身形態	
+645	645	landorus-incarnate	Incarnate Forme	Incarnate Landorus	化身形态		化身形態	
+646	646	kyurem	Kyurem		酋雷姆的样子		酋雷姆的樣子	
+647	647	keldeo-ordinary	Ordinary Form	Ordinary Keldeo	平常的样子		平常的樣子	
+648	648	meloetta-aria	Aria Forme	Aria Meloetta	歌声形态		歌聲形態	
+666	666	vivillon-meadow	Meadow Pattern	Meadow Vivillon				
+668	668	pyroar-male	Male	Male Pyroar	雄性的样子		雄性的樣子	
+669	669	flabebe-red	Red Flower	Red Flabébé				
+670	670	floette-red	Red Flower	Red Floette				
+671	671	florges-red	Red Flower	Red Florges				
+676	676	furfrou-natural	Natural Form	Natural Furfrou				
+678	678	meowstic-male	Male	Male Meowstic	雄性的样子		雄性的樣子	
+681	681	aegislash-shield	Shield Forme	Shield Aegislash	盾牌形态		盾牌形態	
+710	710	pumpkaboo-average	Average Size	Average Pumpkaboo	普通尺寸		普通尺寸	
+711	711	gourgeist-average	Average Size	Average Gourgeist	普通尺寸		普通尺寸	
+716	716	xerneas-active	Active Mode	Active Xerneas	活跃模式		活躍模式	
+718	718	zygarde-50	50% Forme		５０％形态		５０％形態	
+720	720	hoopa	Hoopa Confined	Confined Hoopa	惩戒胡帕		懲戒胡帕	
+741	741	oricorio-baile	Baile Style	Baile Oricorio	热辣热辣风格		熱辣熱辣風格	
+745	745	lycanroc-midday	Midday Form	Midday Lycanroc	白昼的样子		白晝的樣子	
+746	746	wishiwashi-solo	Solo Form	Solo Wishiwashi	单独的样子		單獨的樣子	
+773	773	silvally-normal	Type: Normal		属性：一般		屬性：一般	
+774	774	minior-red-meteor	Meteor Form	Red Meteor Minior	流星的样子		流星的樣子	
+778	778	mimikyu-disguised	Disguised Form	Disguised Mimikyu	化形的样子		化形的樣子	
+849	849	toxtricity-amped	Amped Form	Amped Toxtricity	高调的样子		高調的樣子	
+854	854	sinistea-phony	Phony Form	Phony Sinistea				
+855	855	polteageist-phony	Phony Form	Phony Polteageist				
+869	869	alcremie-vanilla-cream-strawberry-sweet	Vanilla Cream Strawberry Sweet	Vanilla Cream Strawberry Sweet Alcremie	奶香香草		奶香香草	
+875	875	eiscue-ice	Ice Face	Ice Eiscue	结冻头		結凍頭	
+876	876	indeedee-male	Male	Male Indeedee	雄性的样子		雄性的樣子	
+877	877	morpeko-full-belly	Full Belly Mode	Full Belly Morpeko	满腹花纹		滿腹花紋	
+888	888	zacian	Hero of Many Battles	Zacian	百战勇者		百戰勇者	
+889	889	zamazenta	Hero of Many Battles	Zamazenta	百战勇者		百戰勇者	
+892	892	urshifu-single-strike	Single Strike Style	Single Strike Urshifu	一击流		一擊流	
+902	902	basculegion-male	Male	Male Basculegion				
+905	905	enamorus-incarnate	Incarnate Forme	Incarnate Enamorus				
+916	916	oinkologne-male	Male	Male Oinkologne				
+925	925	maushold-family-of-four	Family of Four	Maushold (Family of Four)				
+931	931	squawkabilly-green-plumage	Green Plumage	Green Plumage Squawkabilly				
+964	964	palafin-zero	Zero Form	Zero Form Palafin				
+978	978	tatsugiri-curly	Curly Form	Curly Form Tatsugiri				
+982	982	dudunsparce-two-segment	Two-Segment Form	Two-Segment Form Dudunsparce				
+999	999	gimmighoul-chest	Chest Form	Chest Form Gimmighoul				
+1007	1007	koraidon-apex-build	Apex Build					
+1008	1008	miraidon-ultimate-mode	Ultimate Mode					
+1012	1012	poltchageist-counterfeit	Counterfeit Form	Counterfeit Form Poltchageist	高檔貨的樣子		冒牌貨的樣子	
+1013	1013	sinistcha-unremarkable	Unremarkable Form	Unremarkable Form Sinistcha	凡作的样子		凡作的樣子	
+1017	1017	ogerpon	Teal Mask	Teal Mask Ogerpon	碧草面具		碧草面具	
+1024	1024	terapagos	Normal Form	Normal Form Terapagos				
+10001	201	unown-b	B	Unown B				
+10002	201	unown-c	C	Unown C				
+10003	201	unown-d	D	Unown D				
+10004	201	unown-e	E	Unown E				
+10005	201	unown-f	F	Unown F				
+10006	201	unown-g	G	Unown G				
+10007	201	unown-h	H	Unown H				
+10008	201	unown-i	I	Unown I				
+10009	201	unown-j	J	Unown J				
+10010	201	unown-k	K	Unown K				
+10011	201	unown-l	L	Unown L				
+10012	201	unown-m	M	Unown M				
+10013	201	unown-n	N	Unown N				
+10014	201	unown-o	O	Unown O				
+10015	201	unown-p	P	Unown P				
+10016	201	unown-q	Q	Unown Q				
+10017	201	unown-r	R	Unown R				
+10018	201	unown-s	S	Unown S				
+10019	201	unown-t	T	Unown T				
+10020	201	unown-u	U	Unown U				
+10021	201	unown-v	V	Unown V				
+10022	201	unown-w	W	Unown W				
+10023	201	unown-x	X	Unown X				
+10024	201	unown-y	Y	Unown Y				
+10025	201	unown-z	Z	Unown Z				
+10026	201	unown-exclamation	!	Unown !				
+10027	201	unown-question	?	Unown ?				
+10028	351	castform-sunny	Sunny Form	Sunny Castform	太阳的样子		太陽的樣子	
+10029	351	castform-rainy	Rainy Form	Rainy Castform	雨水的样子		雨水的樣子	
+10030	351	castform-snowy	Snowy Form	Snowy Castform	雪云的样子		雪雲的樣子	
+10031	386	deoxys-attack	Attack Forme	Attack Deoxys	攻击形态		攻擊形態	
+10032	386	deoxys-defense	Defense Forme	Defense Deoxys	防御形态		防禦形態	
+10033	386	deoxys-speed	Speed Forme	Speed Deoxys	速度形态		速度形態	
+10034	412	burmy-sandy	Sandy Cloak	Sandy Burmy				
+10035	412	burmy-trash	Trash Cloak	Trash Burmy				
+10036	413	wormadam-sandy	Sandy Cloak	Sandy Wormadam	砂土蓑衣		砂土蓑衣	
+10037	413	wormadam-trash	Trash Cloak	Trash Wormadam	垃圾蓑衣		垃圾蓑衣	
+10038	421	cherrim-sunshine	Sunshine Form	Sunshine Cherrim	晴天形态		晴天形態	
+10039	422	shellos-east	East Sea	East Shellos	东海		東海	
+10040	423	gastrodon-east	East Sea	East Gastrodon	东海		東海	
+10041	493	arceus-bug	Bug Type	Bug Arceus				
+10042	493	arceus-dark	Dark Type	Dark Arceus				
+10043	493	arceus-dragon	Dragon Type	Dragon Arceus				
+10044	493	arceus-electric	Electric Type	Electric Arceus				
+10045	493	arceus-fighting	Fighting Type	Fighting Arceus				
+10046	493	arceus-fire	Fire Type	Fire Arceus				
+10047	493	arceus-flying	Flying Type	Flying Arceus				
+10048	493	arceus-ghost	Ghost Type	Ghost Arceus				
+10049	493	arceus-grass	Grass Type	Grass Arceus				
+10050	493	arceus-ground	Ground Type	Ground Arceus				
+10051	493	arceus-ice	Ice Type	Ice Arceus				
+10052	493	arceus-poison	Poison Type	Poison Arceus				
+10053	493	arceus-psychic	Psychic Type	Psychic Arceus				
+10054	493	arceus-rock	Rock Type	Rock Arceus				
+10055	493	arceus-steel	Steel Type	Steel Arceus				
+10056	493	arceus-water	Water Type	Water Arceus				
+10057	493	arceus-unknown	??? Type	??? Arceus				
+10058	479	rotom-heat	Heat Rotom	Heat Rotom	加热洛托姆		加熱洛托姆	
+10059	479	rotom-wash	Wash Rotom	Wash Rotom	清洗洛托姆		清洗洛托姆	
+10060	479	rotom-frost	Frost Rotom	Frost Rotom	结冰洛托姆		結冰洛托姆	
+10061	479	rotom-fan	Fan Rotom	Fan Rotom	旋转洛托姆		旋轉洛托姆	
+10062	479	rotom-mow	Mow Rotom	Mow Rotom	切割洛托姆		切割洛托姆	
+10063	487	giratina-origin	Origin Forme	Origin Giratina	起源形态		起源形態	
+10064	492	shaymin-sky	Sky Forme	Sky Shaymin	天空形态		天空形態	
+10065	172	pichu-spiky-eared	Spiky-eared	Spiky-eared Pichu				
+10066	550	basculin-blue-striped	Blue-Striped Form	Blue-Striped Basculin	蓝条纹的样子		藍條紋的樣子	
+10067	555	darmanitan-zen	Zen Mode	Zen Darmanitan	达摩模式		達摩模式	
+10068	585	deerling-summer	Summer Form	Summer Deerling				
+10069	585	deerling-autumn	Autumn Form	Autumn Deerling				
+10070	585	deerling-winter	Winter Form	Winter Deerling				
+10071	586	sawsbuck-summer	Summer Form	Summer Sawsbuck				
+10072	586	sawsbuck-autumn	Autumn Form	Autumn Sawsbuck				
+10073	586	sawsbuck-winter	Winter Form	Winter Sawsbuck				
+10074	648	meloetta-pirouette	Pirouette Forme	Pirouette Meloetta	舞步形态		舞步形態	
+10075	649	genesect-douse	Douse Drive	Douse Genesect				
+10076	649	genesect-shock	Shock Drive	Shock Genesect				
+10077	649	genesect-burn	Burn Drive	Burn Genesect				
+10078	649	genesect-chill	Chill Drive	Chill Genesect				
+10079	641	tornadus-therian	Therian Forme	Therian Tornadus	灵兽形态		靈獸形態	
+10080	642	thundurus-therian	Therian Forme	Therian Thundurus	灵兽形态		靈獸形態	
+10081	645	landorus-therian	Therian Forme	Therian Landorus	灵兽形态		靈獸形態	
+10082	646	kyurem-black	Black Kyurem	Black Kyurem	暗黑酋雷姆		闇黑酋雷姆	
+10083	646	kyurem-white	White Kyurem	White Kyurem	焰白酋雷姆		焰白酋雷姆	
+10084	647	keldeo-resolute	Resolute Form	Resolute Keldeo	觉悟的样子		覺悟的樣子	
+10085	493	arceus-fairy	Fairy Type	Fairy Arceus				
+10086	666	vivillon-icy-snow	Icy Snow Pattern	Icy Snow Vivillon				
+10087	666	vivillon-polar	Polar Pattern	Polar Vivillon				
+10088	666	vivillon-tundra	Tundra Pattern	Tundra Vivillon				
+10089	666	vivillon-continental	Continental Pattern	Continental Vivillon				
+10090	666	vivillon-garden	Garden Pattern	Garden Vivillon				
+10091	666	vivillon-elegant	Elegant Pattern	Elegant Vivillon				
+10092	666	vivillon-modern	Modern Pattern	Modern Vivillon				
+10093	666	vivillon-marine	Marine Pattern	Marine Vivillon				
+10094	666	vivillon-archipelago	Archipelago Pattern	Archipelago Vivillon				
+10095	666	vivillon-high-plains	High Plains Pattern	High Plains Vivillon				
+10096	666	vivillon-sandstorm	Sandstorm Pattern	Sandstorm Vivillon				
+10097	666	vivillon-river	River Pattern	River Vivillon				
+10098	666	vivillon-monsoon	Monsoon Pattern	Monsoon Vivillon				
+10099	666	vivillon-savanna	Savanna Pattern	Savanna Vivillon				
+10100	666	vivillon-sun	Sun Pattern	Sun Vivillon				
+10101	666	vivillon-ocean	Ocean Pattern	Ocean Vivillon				
+10102	666	vivillon-jungle	Jungle Pattern	Jungle Vivillon				
+10103	669	flabebe-yellow	Yellow Flower	Yellow Flabébé				
+10104	669	flabebe-orange	Orange Flower	Orange Flabébé				
+10105	669	flabebe-blue	Blue Flower	Blue Flabébé				
+10106	669	flabebe-white	White Flower	White Flabébé				
+10107	670	floette-yellow	Yellow Flower	Yellow Floette				
+10108	670	floette-orange	Orange Flower	Orange Floette				
+10109	670	floette-blue	Blue Flower	Blue Floette				
+10110	670	floette-white	White Flower	White Floette				
+10111	671	florges-yellow	Yellow Flower	Yellow Florges				
+10112	671	florges-orange	Orange Flower	Orange Florges				
+10113	671	florges-blue	Blue Flower	Blue Florges				
+10114	671	florges-white	White Flower	White Florges				
+10115	676	furfrou-heart	Heart Trim	Heart Furfrou				
+10116	676	furfrou-star	Star Trim	Star Furfrou				
+10117	676	furfrou-diamond	Diamond Trim	Diamond Furfrou				
+10118	676	furfrou-debutante	Debutante Trim	Debutante Furfrou				
+10119	676	furfrou-matron	Matron Trim	Matron Furfrou				
+10120	676	furfrou-dandy	Dandy Trim	Dandy Furfrou				
+10121	676	furfrou-la-reine	La Reine Trim	La Reine Furfrou				
+10122	676	furfrou-kabuki	Kabuki Trim	Kabuki Furfrou				
+10123	676	furfrou-pharaoh	Pharaoh Trim	Pharaoh Furfrou				
+10124	678	meowstic-female	Female	Female Meowstic	雌性的样子		雌性的樣子	
+10125	681	aegislash-blade	Blade Forme	Blade Aegislash	刀剑形态		刀劍形態	
+10126	710	pumpkaboo-small	Small Size	Small Pumpkaboo	小尺寸		小尺寸	
+10127	710	pumpkaboo-large	Large Size	Large Pumpkaboo	大尺寸		大尺寸	
+10128	710	pumpkaboo-super	Super Size	Super Pumpkaboo	特大尺寸		特大尺寸	
+10129	711	gourgeist-small	Small Size	Small Gourgeist	小尺寸		小尺寸	
+10130	711	gourgeist-large	Large Size	Large Gourgeist	大尺寸		大尺寸	
+10131	711	gourgeist-super	Super Size	Super Gourgeist	特大尺寸		特大尺寸	
+10132	716	xerneas-neutral	Neutral Mode	Neutral Xerneas	放松模式		放鬆模式	
+10133	3	venusaur-mega	Mega Venusaur	Mega Venusaur	超级妙蛙花		超級妙蛙花	
+10134	6	charizard-mega-x	Mega Charizard X	Mega Charizard X	超级喷火龙Ｘ		超級噴火龍Ｘ	
+10135	6	charizard-mega-y	Mega Charizard Y	Mega Charizard Y	超级喷火龙Ｙ		超級噴火龍Ｙ	
+10136	9	blastoise-mega	Mega Blastoise	Mega Blastoise	超级水箭龟		超級水箭龜	
+10137	65	alakazam-mega	Mega Alakazam	Mega Alakazam	超级胡地		超級胡地	
+10138	94	gengar-mega	Mega Gengar	Mega Gengar	超级耿鬼		超級耿鬼	
+10139	115	kangaskhan-mega	Mega Kangaskhan	Mega Kangaskhan	超级袋兽		超級袋獸	
+10140	127	pinsir-mega	Mega Pinsir	Mega Pinsir	超级凯罗斯		超級凱羅斯	
+10141	130	gyarados-mega	Mega Gyarados	Mega Gyarados	超级暴鲤龙		超級暴鯉龍	
+10142	142	aerodactyl-mega	Mega Aerodactyl	Mega Aerodactyl	超级化石翼龙		超級化石翼龍	
+10143	150	mewtwo-mega-x	Mega Mewtwo X	Mega Mewtwo X	超级超梦Ｘ		超級超夢Ｘ	
+10144	150	mewtwo-mega-y	Mega Mewtwo Y	Mega Mewtwo Y	超级超梦Ｙ		超級超夢Ｙ	
+10145	181	ampharos-mega	Mega Ampharos	Mega Ampharos	超级电龙		超級電龍	
+10146	212	scizor-mega	Mega Scizor	Mega Scizor	超级巨钳螳螂		超級巨鉗螳螂	
+10147	214	heracross-mega	Mega Heracross	Mega Heracross	超级赫拉克罗斯		超級赫拉克羅斯	
+10148	229	houndoom-mega	Mega Houndoom	Mega Houndoom	超级黑鲁加		超級黑魯加	
+10149	248	tyranitar-mega	Mega Tyranitar	Mega Tyranitar	超级班基拉斯		超級班基拉斯	
+10150	257	blaziken-mega	Mega Blaziken	Mega Blaziken	超级火焰鸡		超級火焰雞	
+10151	282	gardevoir-mega	Mega Gardevoir	Mega Gardevoir	超级沙奈朵		超級沙奈朵	
+10152	303	mawile-mega	Mega Mawile	Mega Mawile	超级大嘴娃		超級大嘴娃	
+10153	306	aggron-mega	Mega Aggron	Mega Aggron	超级波士可多拉		超級波士可多拉	
+10154	308	medicham-mega	Mega Medicham	Mega Medicham	超级恰雷姆		超級恰雷姆	
+10155	310	manectric-mega	Mega Manectric	Mega Manectric	超级雷电兽		超級雷電獸	
+10156	354	banette-mega	Mega Banette	Mega Banette	超级诅咒娃娃		超級詛咒娃娃	
+10157	359	absol-mega	Mega Absol	Mega Absol	超级阿勃梭鲁		超級阿勃梭魯	
+10158	445	garchomp-mega	Mega Garchomp	Mega Garchomp	超级烈咬陆鲨		超級烈咬陸鯊	
+10159	448	lucario-mega	Mega Lucario	Mega Lucario	超级路卡利欧		超級路卡利歐	
+10160	460	abomasnow-mega	Mega Abomasnow	Mega Abomasnow	超级暴雪王		超級暴雪王	
+10161	666	vivillon-fancy	Fancy Pattern	Fancy Vivillon				
+10162	666	vivillon-poke-ball	Poké Ball Pattern	Poké Ball Vivillon				
+10163	670	floette-eternal	Eternal Flower	Eternal Floette				
+10164	380	latias-mega	Mega Latias	Mega Latias	超级拉帝亚斯		超級拉帝亞斯	
+10165	381	latios-mega	Mega Latios	Mega Latios	超级拉帝欧斯		超級拉帝歐斯	
+10166	260	swampert-mega	Mega Swampert	Mega Swampert	超级巨沼怪		超級巨沼怪	
+10167	254	sceptile-mega	Mega Sceptile	Mega Sceptile	超级蜥蜴王		超級蜥蜴王	
+10168	302	sableye-mega	Mega Sableye	Mega Sableye	超级勾魂眼		超級勾魂眼	
+10169	334	altaria-mega	Mega Altaria	Mega Altaria	超级七夕青鸟		超級七夕青鳥	
+10170	475	gallade-mega	Mega Gallade	Mega Gallade	超级艾路雷朵		超級艾路雷朵	
+10171	531	audino-mega	Mega Audino	Mega Audino	超级差不多娃娃		超級差不多娃娃	
+10172	319	sharpedo-mega	Mega Sharpedo	Mega Sharpedo	超级巨牙鲨		超級巨牙鯊	
+10173	80	slowbro-mega	Mega Slowbro	Mega Slowbro	超级呆壳兽		超級呆殼獸	
+10174	208	steelix-mega	Mega Steelix	Mega Steelix	超级大钢蛇		超級大鋼蛇	
+10175	18	pidgeot-mega	Mega Pidgeot	Mega Pidgeot	超级大比鸟		超級大比鳥	
+10176	362	glalie-mega	Mega Glalie	Mega Glalie	超级冰鬼护		超級冰鬼護	
+10177	719	diancie-mega	Mega Diancie	Mega Diancie	超级蒂安希		超級蒂安希	
+10178	376	metagross-mega	Mega Metagross	Mega Metagross	超级巨金怪		超級巨金怪	
+10179	382	kyogre-primal	Primal Reversion	Primal Kyogre	原始回归的样子		原始回歸的樣子	
+10180	383	groudon-primal	Primal Reversion	Primal Groudon	原始回归的样子		原始回歸的樣子	
+10181	384	rayquaza-mega	Mega Rayquaza	Mega Rayquaza	超级烈空坐		超級烈空坐	
+10182	25	pikachu-rock-star	Pikachu Rock Star	Pikachu Rock Star				
+10183	25	pikachu-belle	Pikachu Belle	Pikachu Belle				
+10184	25	pikachu-pop-star	Pikachu Pop Star	Pikachu Pop Star				
+10185	25	pikachu-phd	Pikachu Ph.D.	Pikachu Ph.D.				
+10186	25	pikachu-libre	Pikachu Libre	Pikachu Libre				
+10187	25	pikachu-cosplay	Cosplay Pikachu	Cosplay Pikachu				
+10188	720	hoopa-unbound	Hoopa Unbound	Hoopa Unbound	解放胡帕		解放胡帕	
+10189	323	camerupt-mega	Mega Camerupt	Mega Camerupt	超级喷火驼		超級噴火駝	
+10190	428	lopunny-mega	Mega Lopunny	Mega Lopunny	超级长耳兔		超級長耳兔	
+10191	373	salamence-mega	Mega Salamence	Mega Salamence	超级暴飞龙		超級暴飛龍	
+10192	15	beedrill-mega	Mega Beedrill	Mega Beedrill	超级大针蜂		超級大針蜂	
+10193	19	rattata-alola	Alolan Form	Alolan Rattata	阿罗拉的样子		阿羅拉的樣子	
+10194	20	raticate-alola	Alolan Form	Alolan Raticate	阿罗拉的样子		阿羅拉的樣子	
+10195	20	raticate-totem-alola		Totem Alolan Raticate				
+10196	25	pikachu-original-cap	Original Cap	Original Cap Pikachu	初始帽子		初始帽子	
+10197	25	pikachu-hoenn-cap	Hoenn Cap	Hoenn Cap Pikachu	丰缘帽子		豐緣帽子	
+10198	25	pikachu-sinnoh-cap	Sinnoh Cap	Sinnoh Cap Pikachu	神奥帽子		神奧帽子	
+10199	25	pikachu-unova-cap	Unova Cap	Unova Cap Pikachu	合众帽子		合眾帽子	
+10200	25	pikachu-kalos-cap	Kalos Cap	Kalos Cap Pikachu	卡洛斯帽子		卡洛斯帽子	
+10201	25	pikachu-alola-cap	Alola Cap	Alola Cap Pikachu	阿罗拉帽子		阿羅拉帽子	
+10202	26	raichu-alola	Alolan Form	Alolan Raichu	阿罗拉的样子		阿羅拉的樣子	
+10203	27	sandshrew-alola	Alolan Form	Alolan Sandshrew	阿罗拉的样子		阿羅拉的樣子	
+10204	28	sandslash-alola	Alolan Form	Alolan Sandslash	阿罗拉的样子		阿羅拉的樣子	
+10205	37	vulpix-alola	Alolan Form	Alolan Vulpix	阿罗拉的样子		阿羅拉的樣子	
+10206	38	ninetales-alola	Alolan Form	Alolan Ninetales	阿罗拉的样子		阿羅拉的樣子	
+10207	50	diglett-alola	Alolan Form	Alolan Diglett	阿罗拉的样子		阿羅拉的樣子	
+10208	51	dugtrio-alola	Alolan Form	Alolan Dugtrio	阿罗拉的样子		阿羅拉的樣子	
+10209	52	meowth-alola	Alolan Form	Alolan Meowth	阿罗拉的样子		阿羅拉的樣子	
+10210	53	persian-alola	Alolan Form	Alolan Persian	阿罗拉的样子		阿羅拉的樣子	
+10211	74	geodude-alola	Alolan Form	Alolan Geodude	阿罗拉的样子		阿羅拉的樣子	
+10212	75	graveler-alola	Alolan Form	Alolan Graveler	阿罗拉的样子		阿羅拉的樣子	
+10213	76	golem-alola	Alolan Form	Alolan Golem	阿罗拉的样子		阿羅拉的樣子	
+10214	88	grimer-alola	Alolan Form	Alolan Grimer	阿罗拉的样子		阿羅拉的樣子	
+10215	89	muk-alola	Alolan Form	Alolan Muk	阿罗拉的样子		阿羅拉的樣子	
+10216	103	exeggutor-alola	Alolan Form	Alolan Exeggutor	阿罗拉的样子		阿羅拉的樣子	
+10217	105	marowak-alola	Alolan Form	Alolan Marowak	阿罗拉的样子		阿羅拉的樣子	
+10218	658	greninja-battle-bond		Battle Bond Greninja				
+10219	658	greninja-ash	Ash-Greninja	Ash’s Greninja	小智版甲贺忍蛙		小智版甲賀忍蛙	
+10220	718	zygarde-10-power-construct	10% Forme	10% Zygarde	１０％形态		１０％形態	
+10221	718	zygarde-50-power-construct	50% Forme	50% Zygarde	５０％形态		５０％形態	
+10222	718	zygarde-complete	Complete Forme	Complete Zygarde	完全体形态		完全體形態	
+10223	735	gumshoos-totem		Totem Gumshoos				
+10224	738	vikavolt-totem		Totem Vikavolt				
+10225	741	oricorio-pom-pom	Pom-Pom Style	Pom-pom Oricorio	啪滋啪滋风格		啪滋啪滋風格	
+10226	741	oricorio-pau	Pa’u Style	Pa’u Oricorio	呼拉呼拉风格		呼拉呼拉風格	
+10227	741	oricorio-sensu	Sensu Style	Sensu Oricorio	轻盈轻盈风格		輕盈輕盈風格	
+10228	745	lycanroc-midnight	Midnight Form	Midnight Lycanroc	黑夜的样子		黑夜的樣子	
+10229	746	wishiwashi-school	School Form	School Wishiwashi	鱼群的样子		魚群的樣子	
+10230	754	lurantis-totem		Totem Lurantis				
+10231	758	salazzle-totem		Totem Salazzle				
+10232	773	silvally-fighting	Type: Fighting		属性：战斗		屬性：戰鬥	
+10233	773	silvally-flying	Type: Flying		属性：飞翔		屬性：飛翔	
+10234	773	silvally-poison	Type: Poison		属性：毒		屬性：毒	
+10235	773	silvally-ground	Type: Ground		属性：大地		屬性：大地	
+10236	773	silvally-rock	Type: Rock		属性：岩石		屬性：岩石	
+10237	773	silvally-bug	Type: Bug		属性：虫子		屬性：蟲子	
+10238	773	silvally-ghost	Type: Ghost		属性：幽灵		屬性：幽靈	
+10239	773	silvally-steel	Type: Steel		属性：钢铁		屬性：鋼鐵	
+10240	773	silvally-fire	Type: Fire		属性：火焰		屬性：火焰	
+10241	773	silvally-water	Type: Water		属性：清水		屬性：清水	
+10242	773	silvally-grass	Type: Grass		属性：青草		屬性：青草	
+10243	773	silvally-electric	Type: Electric		属性：电子		屬性：電子	
+10244	773	silvally-psychic	Type: Psychic		属性：精神		屬性：精神	
+10245	773	silvally-ice	Type: Ice		属性：冰雪		屬性：冰雪	
+10246	773	silvally-dragon	Type: Dragon		属性：龙		屬性：龍	
+10247	773	silvally-dark	Type: Dark		属性：黑暗		屬性：黑暗	
+10248	773	silvally-fairy	Type: Fairy		属性：妖精		屬性：妖精	
+10249	774	minior-orange-meteor	Meteor Form	Orange Meteor Minior	流星的样子		流星的樣子	
+10250	774	minior-yellow-meteor	Meteor Form	Yellow Meteor Minior	流星的样子		流星的樣子	
+10251	774	minior-green-meteor	Meteor Form	Green Meteor Minior	流星的样子		流星的樣子	
+10252	774	minior-blue-meteor	Meteor Form	Blue Meteor Minior	流星的样子		流星的樣子	
+10253	774	minior-indigo-meteor	Meteor Form	Indigo Meteor Minior	流星的样子		流星的樣子	
+10254	774	minior-violet-meteor	Meteor Form	Violet Meteor Minior	流星的样子		流星的樣子	
+10255	774	minior-red	Red Core	Red Core Minior	红色核心		紅色核心	
+10256	774	minior-orange	Orange Core	Orange Core Minior	橙色核心		橙色核心	
+10257	774	minior-yellow	Yellow Core	Yellow Core Minior	黄色核心		黃色核心	
+10258	774	minior-green	Green Core	Green Core Minior	绿色核心		綠色核心	
+10259	774	minior-blue	Blue Core	Blue Core Minior	浅蓝色核心		淺藍色核心	
+10260	774	minior-indigo	Indigo Core	Indigo Core Minior	蓝色核心		藍色核心	
+10261	774	minior-violet	Violet Core	Violet Core Minior	紫色核心		紫色核心	
+10262	778	mimikyu-busted	Busted Form	Busted Mimikyu	现形的样子		現形的樣子	
+10263	778	mimikyu-totem-disguised		Totem Disguised Mimikyu				
+10264	778	mimikyu-totem-busted		Totem Busted Mimikyu				
+10265	784	kommo-o-totem		Totem Kommo-o				
+10266	801	magearna-original	Original Color	Original Magearna	５００年前的颜色		５００年前的顏色	
+10267	25	pikachu-partner-cap	Partner Cap	Partner Cap Pikachu	就决定是你了之帽子		就決定是你了之帽子	
+10268	105	marowak-totem		Totem Alolan Marowak				
+10309	743	ribombee-totem		Totem Ribombee				
+10310	744	rockruff-own-tempo		Own Tempo Rockruff				
+10311	745	lycanroc-dusk	Dusk Form	Dusk Lycanroc	黄昏的样子		黃昏的樣子	
+10312	752	araquanid-totem		Totem Araquanid				
+10313	777	togedemaru-totem		Totem Togedemaru				
+10314	800	necrozma-dusk	Dusk Mane	Dusk Necrozma	黄昏之鬃		黃昏之鬃	
+10315	800	necrozma-dawn	Dawn Wings	Dawn Necrozma	拂晓之翼		拂曉之翼	
+10316	800	necrozma-ultra	Ultra Necrozma	Ultra Necrozma	究极奈克洛兹玛		究極奈克洛茲瑪	
+10317	25	pikachu-starter		Partner Pikachu				
+10318	133	eevee-starter		Partner Eevee				
+10319	25	pikachu-world-cap	World Cap	World Cap Pikachu	世界帽子		世界帽子	
+10320	52	meowth-galar	Galarian Form	Galarian Meowth	伽勒尔的样子		伽勒爾的樣子	
+10321	77	ponyta-galar	Galarian Form	Galarian Ponyta	伽勒尔的样子		伽勒爾的樣子	
+10322	78	rapidash-galar	Galarian Form	Galarian Rapidash	伽勒尔的样子		伽勒爾的樣子	
+10323	79	slowpoke-galar	Galarian Form	Galarian Slowpoke	伽勒尔的样子		伽勒爾的樣子	
+10324	80	slowbro-galar	Galarian Form	Galarian Slowbro	伽勒尔的样子		伽勒爾的樣子	
+10325	83	farfetchd-galar	Galarian Form	Galarian Farfetch’d	伽勒尔的样子		伽勒爾的樣子	
+10326	110	weezing-galar	Galarian Form	Galarian Weezing	伽勒尔的样子		伽勒爾的樣子	
+10327	122	mr-mime-galar	Galarian Form	Galarian Mr. Mime	伽勒尔的样子		伽勒爾的樣子	
+10328	144	articuno-galar	Galarian Form	Galarian Articuno	伽勒尔的样子		伽勒爾的樣子	
+10329	145	zapdos-galar	Galarian Form	Galarian Zapdos	伽勒尔的样子		伽勒爾的樣子	
+10330	146	moltres-galar	Galarian Form	Galarian Moltres	伽勒尔的样子		伽勒爾的樣子	
+10331	199	slowking-galar	Galarian Form	Galarian Slowking	伽勒尔的样子		伽勒爾的樣子	
+10332	222	corsola-galar	Galarian Form	Galarian Corsola	伽勒尔的样子		伽勒爾的樣子	
+10333	263	zigzagoon-galar	Galarian Form	Galarian Zigzagoon	伽勒尔的样子		伽勒爾的樣子	
+10334	264	linoone-galar	Galarian Form	Galarian Linoone	伽勒尔的样子		伽勒爾的樣子	
+10335	554	darumaka-galar	Galarian Form	Galarian Darumaka	伽勒尔的样子		伽勒爾的樣子	
+10336	555	darmanitan-galar-standard	Galarian Form	Standard Galarian Darmanitan	伽勒尔的样子		伽勒爾的樣子	
+10337	555	darmanitan-galar-zen	Zen Mode	Zen Galarian Darmanitan	达摩模式		達摩模式	
+10338	562	yamask-galar	Galarian Form	Galarian Yamask	伽勒尔的样子		伽勒爾的樣子	
+10339	618	stunfisk-galar	Galarian Form	Galarian Stunfisk	伽勒尔的样子		伽勒爾的樣子	
+10340	718	zygarde-10	10% Forme	10% Zygarde	１０％形态		１０％形態	
+10341	845	cramorant-gulping	Gulping Form	Gulping Cramorant	一口吞的样子		一口吞的樣子	
+10342	845	cramorant-gorging	Gorging Form	Gorging Cramorant	大口吞的样子		大口吞的樣子	
+10343	849	toxtricity-low-key	Low Key Form	Low Key Toxtricity	低调的样子		低調的樣子	
+10344	854	sinistea-antique	Antique Form	Antique Sinistea				
+10345	855	polteageist-antique	Antique Form	Antique Polteageist				
+10346	869	alcremie-ruby-cream-strawberry-sweet	Ruby Cream Strawberry Sweet	Ruby Cream Strawberry Sweet Alcremie	奶香红钻		奶香紅鑽	
+10347	869	alcremie-matcha-cream-strawberry-sweet	Matcha Cream Strawberry Sweet	Matcha Cream Strawberry Sweet Alcremie	奶香抹茶		奶香抹茶	
+10348	869	alcremie-mint-cream-strawberry-sweet	Mint Cream Strawberry Sweet	Mint Cream Strawberry Sweet Alcremie	奶香薄荷		奶香薄荷	
+10349	869	alcremie-lemon-cream-strawberry-sweet	Lemon Cream Strawberry Sweet	Lemon Cream Strawberry Sweet Alcremie	奶香柠檬		奶香檸檬	
+10350	869	alcremie-salted-cream-strawberry-sweet	Salted Cream Strawberry Sweet	Salted Cream Strawberry Sweet Alcremie	奶香雪盐		奶香雪鹽	
+10351	869	alcremie-ruby-swirl-strawberry-sweet	Ruby Swirl Strawberry Sweet	Ruby Swirl Strawberry Sweet Alcremie	红钻综合		紅鑽綜合	
+10352	869	alcremie-caramel-swirl-strawberry-sweet	Caramel Swirl Strawberry Sweet	Caramel Swirl Strawberry Sweet Alcremie	焦糖综合		焦糖綜合	
+10353	869	alcremie-rainbow-swirl-strawberry-sweet	Rainbow Swirl Strawberry Sweet	Rainbow Swirl Strawberry Sweet Alcremie	三色综合		三色綜合	
+10354	875	eiscue-noice	Noice Face	Noice Eiscue	解冻头		解凍頭	
+10355	876	indeedee-female	Female	Female Indeedee	雌性的样子		雌性的樣子	
+10356	877	morpeko-hangry	Hangry Mode	Hangry Morpeko	空腹花纹		空腹花紋	
+10357	888	zacian-crowned	Crowned Sword	Crowned Zacian	剑之王		劍之王	
+10358	889	zamazenta-crowned	Crowned Shield	Crowned Zamazenta	盾之王		盾之王	
+10359	890	eternatus-eternamax	Eternamax	Eternamax Eternatus	无极巨化		無極巨化	
+10360	892	urshifu-rapid-strike	Rapid Strike Style	Rapid Strike Urshifu	连击流		連擊流	
+10361	893	zarude-dada	Dada	Dada Zarude	阿爸		阿爸	
+10362	898	calyrex-ice	Ice Rider	Ice Calyrex	骑白马的样子		騎白馬的樣子	
+10363	898	calyrex-shadow	Shadow Rider	Shadow Calyrex	骑黑马的样子		騎黑馬的樣子	
+10364	3	venusaur-gmax	Gigantamax Form	Gigantamax Venusaur				
+10365	6	charizard-gmax	Gigantamax Form	Gigantamax Charizard				
+10366	9	blastoise-gmax	Gigantamax Form	Gigantamax Blastoise				
+10367	12	butterfree-gmax	Gigantamax Form	Gigantamax Butterfree				
+10368	25	pikachu-gmax	Gigantamax Form	Gigantamax Pikachu				
+10369	52	meowth-gmax	Gigantamax Form	Gigantamax Meowth				
+10370	68	machamp-gmax	Gigantamax Form	Gigantamax Machamp				
+10371	94	gengar-gmax	Gigantamax Form	Gigantamax Gengar				
+10372	99	kingler-gmax	Gigantamax Form	Gigantamax Kingler				
+10373	131	lapras-gmax	Gigantamax Form	Gigantamax Lapras				
+10374	133	eevee-gmax	Gigantamax Form	Gigantamax Eevee				
+10375	143	snorlax-gmax	Gigantamax Form	Gigantamax Snorlax				
+10376	569	garbodor-gmax	Gigantamax Form	Gigantamax Garbodor				
+10377	809	melmetal-gmax	Gigantamax Form	Gigantamax Melmetal				
+10378	812	rillaboom-gmax	Gigantamax Form	Gigantamax Rillaboom				
+10379	815	cinderace-gmax	Gigantamax Form	Gigantamax Cinderace				
+10380	818	inteleon-gmax	Gigantamax Form	Gigantamax Inteleon				
+10381	823	corviknight-gmax	Gigantamax Form	Gigantamax Corviknight				
+10382	826	orbeetle-gmax	Gigantamax Form	Gigantamax Orbeetle				
+10383	834	drednaw-gmax	Gigantamax Form	Gigantamax Drednaw				
+10384	839	coalossal-gmax	Gigantamax Form	Gigantamax Coalossal				
+10385	841	flapple-gmax	Gigantamax Form	Gigantamax Flapple				
+10386	842	appletun-gmax	Gigantamax Form	Gigantamax Appletun				
+10387	844	sandaconda-gmax	Gigantamax Form	Gigantamax Sandaconda				
+10388	849	toxtricity-amped-gmax	Gigantamax Form	Gigantamax Amped Toxtricity				
+10389	851	centiskorch-gmax	Gigantamax Form	Gigantamax Centiskorch				
+10390	858	hatterene-gmax	Gigantamax Form	Gigantamax Hatterene				
+10391	861	grimmsnarl-gmax	Gigantamax Form	Gigantamax Grimmsnarl				
+10392	869	alcremie-gmax	Gigantamax Form	Gigantamax Alcremie				
+10393	879	copperajah-gmax	Gigantamax Form	Gigantamax Copperajah				
+10394	884	duraludon-gmax	Gigantamax Form	Gigantamax Duraludon				
+10395	892	urshifu-single-strike-gmax	Gigantamax Form	Gigantamax Single Strike Urshifu				
+10396	892	urshifu-rapid-strike-gmax	Gigantamax Form	Gigantamax Rapid Strike Urshifu				
+10397	849	toxtricity-low-key-gmax	Gigantamax Form	Gigantamax Low Key Toxtricity				
+10398	58	growlithe-hisui	Hisuian Form	Hisuian Growlithe				
+10399	59	arcanine-hisui	Hisuian Form	Hisuian Arcanine				
+10400	100	voltorb-hisui	Hisuian Form	Hisuian Voltorb				
+10401	101	electrode-hisui	Hisuian Form	Hisuian Electrode				
+10402	157	typhlosion-hisui	Hisuian Form	Hisuian Typhlosion				
+10403	211	qwilfish-hisui	Hisuian Form	Hisuian Qwilfish				
+10404	215	sneasel-hisui	Hisuian Form	Hisuian Sneasel				
+10405	503	samurott-hisui	Hisuian Form	Hisuian Samurott				
+10406	549	lilligant-hisui	Hisuian Form	Hisuian Lilligant				
+10407	570	zorua-hisui	Hisuian Form	Hisuian Zorua				
+10408	571	zoroark-hisui	Hisuian Form	Hisuian Zoroark				
+10409	628	braviary-hisui	Hisuian Form	Hisuian Braviary				
+10410	705	sliggoo-hisui	Hisuian Form	Hisuian Sliggoo				
+10411	706	goodra-hisui	Hisuian Form	Hisuian Goodra				
+10412	713	avalugg-hisui	Hisuian Form	Hisuian Avalugg				
+10413	724	decidueye-hisui	Hisuian Form	Hisuian Decidueye				
+10414	483	dialga-origin	Origin Forme	Origin Dialga				
+10415	484	palkia-origin	Origin Forme	Origin Palkia				
+10416	550	basculin-white-striped	White-Striped Form	White-Striped Basculin				
+10417	902	basculegion-female	Female	Female Basculegion				
+10418	905	enamorus-therian	Therian Forme	Therian Enamorus				
+10419	128	tauros-paldea-combat-breed	Paldean Form (Combat Breed)	Paldean Tauros (Combat Breed)				
+10420	128	tauros-paldea-blaze-breed	Paldean Form (Blaze Breed)	Paldean Tauros (Blaze Breed)				
+10421	128	tauros-paldea-aqua-breed	Paldean Form (Aqua Breed)	Paldean Tauros (Aqua Breed)				
+10422	194	wooper-paldea	Paldean Form	Paldean Wooper				
+10423	916	oinkologne-female	Female	Female Oinkologne				
+10424	982	dudunsparce-three-segment	Three-Segment Form	Three-Segment Form Dudunsparce				
+10425	964	palafin-hero	Hero Form	Hero Form Palafin				
+10426	925	maushold-family-of-three	Family of Three	Maushold (Family of Three)				
+10427	978	tatsugiri-droopy	Droopy Form	Droopy Form Tatsugiri				
+10428	978	tatsugiri-stretchy	Stretchy Form	Stretchy Form Tatsugiri				
+10429	931	squawkabilly-blue-plumage	Blue Plumage	Blue Plumage Squawkabilly				
+10430	931	squawkabilly-yellow-plumage	Yellow Plumage	Yellow Plumage Squawkabilly				
+10431	931	squawkabilly-white-plumage	White Plumage	White Plumage Squawkabilly				
+10432	999	gimmighoul-roaming	Roaming Form	Roaming Form Gimmighoul				
+10433	1007	koraidon-limited-build	Limited Build					
+10434	1007	koraidon-sprinting-build	Sprinting Build					
+10435	1007	koraidon-swimming-build	Swimming Build					
+10436	1007	koraidon-gliding-build	Gliding Build					
+10437	1008	miraidon-low-power-mode	Low-Power Mode					
+10438	1008	miraidon-drive-mode	Drive Mode					
+10439	1008	miraidon-aquatic-mode	Aquatic Mode					
+10440	1008	miraidon-glide-mode	Glide Mode					
+10441	901	ursaluna-bloodmoon	Bloodmoon	Bloodmoon Ursaluna	赫月		赫月	
+10442	1017	ogerpon-wellspring-mask	Wellspring Mask	Wellspring Mask Ogerpon	水井面具		水井面具	
+10443	1017	ogerpon-hearthflame-mask	Hearthflame Mask	Hearthflame Mask Ogerpon	火灶面具		火灶面具	
+10444	1017	ogerpon-cornerstone-mask	Cornerstone Mask	Cornerstone Mask Ogerpon	礎石面具		礎石面具	
+10445	1024	terapagos-terastal	Terastal Form	Terastal Form Terapagos				
+10446	1024	terapagos-stellar	Stellar Form	Stellar Form Terapagos				
+10447	1012	poltchageist-artisan	Artisan Form	Artisan Form Poltchageist	高档货的样子		高檔貨的樣子	
+10448	1013	sinistcha-masterpiece	Masterpiece Form	Masterpiece Form Sinistcha	杰作的样子		傑作的樣子	
+10449	869	alcremie-vanilla-cream-berry-sweet	Vanilla Cream Berry Sweet	Vanilla Cream Berry Sweet Alcremie				
+10450	869	alcremie-ruby-cream-berry-sweet	Ruby Cream Berry Sweet	Ruby Cream Berry Sweet Alcremie				
+10451	869	alcremie-matcha-cream-berry-sweet	Matcha Cream Berry Sweet	Matcha Cream Berry Sweet Alcremie				
+10452	869	alcremie-mint-cream-berry-sweet	Mint Cream Berry Sweet	Mint Cream Berry Sweet Alcremie				
+10453	869	alcremie-lemon-cream-berry-sweet	Lemon Cream Berry Sweet	Lemon Cream Berry Sweet Alcremie				
+10454	869	alcremie-salted-cream-berry-sweet	Salted Cream Berry Sweet	Salted Cream Berry Sweet Alcremie				
+10455	869	alcremie-ruby-swirl-berry-sweet	Ruby Swirl Berry Sweet	Ruby Swirl Berry Sweet Alcremie				
+10456	869	alcremie-caramel-swirl-berry-sweet	Caramel Swirl Berry Sweet	Caramel Swirl Berry Sweet Alcremie				
+10457	869	alcremie-rainbow-swirl-berry-sweet	Rainbow Swirl Berry Sweet	Rainbow Swirl Berry Sweet Alcremie				
+10458	869	alcremie-vanilla-cream-love-sweet	Vanilla Cream Love Sweet	Vanilla Cream Love Sweet Alcremie				
+10459	869	alcremie-ruby-cream-love-sweet	Ruby Cream Love Sweet	Ruby Cream Love Sweet Alcremie				
+10460	869	alcremie-matcha-cream-love-sweet	Matcha Cream Love Sweet	Matcha Cream Love Sweet Alcremie				
+10461	869	alcremie-mint-cream-love-sweet	Mint Cream Love Sweet	Mint Cream Love Sweet Alcremie				
+10462	869	alcremie-lemon-cream-love-sweet	Lemon Cream Love Sweet	Lemon Cream Love Sweet Alcremie				
+10463	869	alcremie-salted-cream-love-sweet	Salted Cream Love Sweet	Salted Cream Love Sweet Alcremie				
+10464	869	alcremie-ruby-swirl-love-sweet	Ruby Swirl Love Sweet	Ruby Swirl Love Sweet Alcremie				
+10465	869	alcremie-caramel-swirl-love-sweet	Caramel Swirl Love Sweet	Caramel Swirl Love Sweet Alcremie				
+10466	869	alcremie-rainbow-swirl-love-sweet	Rainbow Swirl Love Sweet	Rainbow Swirl Love Sweet Alcremie				
+10467	869	alcremie-vanilla-cream-star-sweet	Vanilla Cream Star Sweet	Vanilla Cream Star Sweet Alcremie				
+10468	869	alcremie-ruby-cream-star-sweet	Ruby Cream Star Sweet	Ruby Cream Star Sweet Alcremie				
+10469	869	alcremie-matcha-cream-star-sweet	Matcha Cream Star Sweet	Matcha Cream Star Sweet Alcremie				
+10470	869	alcremie-mint-cream-star-sweet	Mint Cream Star Sweet	Mint Cream Star Sweet Alcremie				
+10471	869	alcremie-lemon-cream-star-sweet	Lemon Cream Star Sweet	Lemon Cream Star Sweet Alcremie				
+10472	869	alcremie-salted-cream-star-sweet	Salted Cream Star Sweet	Salted Cream Star Sweet Alcremie				
+10473	869	alcremie-ruby-swirl-star-sweet	Ruby Swirl Star Sweet	Ruby Swirl Star Sweet Alcremie				
+10474	869	alcremie-caramel-swirl-star-sweet	Caramel Swirl Star Sweet	Caramel Swirl Star Sweet Alcremie				
+10475	869	alcremie-rainbow-swirl-star-sweet	Rainbow Swirl Star Sweet	Rainbow Swirl Star Sweet Alcremie				
+10476	869	alcremie-vanilla-cream-clover-sweet	Vanilla Cream Clover Sweet	Vanilla Cream Clover Sweet Alcremie				
+10477	869	alcremie-ruby-cream-clover-sweet	Ruby Cream Clover Sweet	Ruby Cream Clover Sweet Alcremie				
+10478	869	alcremie-matcha-cream-clover-sweet	Matcha Cream Clover Sweet	Matcha Cream Clover Sweet Alcremie				
+10479	869	alcremie-mint-cream-clover-sweet	Mint Cream Clover Sweet	Mint Cream Clover Sweet Alcremie				
+10480	869	alcremie-lemon-cream-clover-sweet	Lemon Cream Clover Sweet	Lemon Cream Clover Sweet Alcremie				
+10481	869	alcremie-salted-cream-clover-sweet	Salted Cream Clover Sweet	Salted Cream Clover Sweet Alcremie				
+10482	869	alcremie-ruby-swirl-clover-sweet	Ruby Swirl Clover Sweet	Ruby Swirl Clover Sweet Alcremie				
+10483	869	alcremie-caramel-swirl-clover-sweet	Caramel Swirl Clover Sweet	Caramel Swirl Clover Sweet Alcremie				
+10484	869	alcremie-rainbow-swirl-clover-sweet	Rainbow Swirl Clover Sweet	Rainbow Swirl Clover Sweet Alcremie				
+10485	869	alcremie-vanilla-cream-flower-sweet	Vanilla Cream Flower Sweet	Vanilla Cream Flower Sweet Alcremie				
+10486	869	alcremie-ruby-cream-flower-sweet	Ruby Cream Flower Sweet	Ruby Cream Flower Sweet Alcremie				
+10487	869	alcremie-matcha-cream-flower-sweet	Matcha Cream Flower Sweet	Matcha Cream Flower Sweet Alcremie				
+10488	869	alcremie-mint-cream-flower-sweet	Mint Cream Flower Sweet	Mint Cream Flower Sweet Alcremie				
+10489	869	alcremie-lemon-cream-flower-sweet	Lemon Cream Flower Sweet	Lemon Cream Flower Sweet Alcremie				
+10490	869	alcremie-salted-cream-flower-sweet	Salted Cream Flower Sweet	Salted Cream Flower Sweet Alcremie				
+10491	869	alcremie-ruby-swirl-flower-sweet	Ruby Swirl Flower Sweet	Ruby Swirl Flower Sweet Alcremie				
+10492	869	alcremie-caramel-swirl-flower-sweet	Caramel Swirl Flower Sweet	Caramel Swirl Flower Sweet Alcremie				
+10493	869	alcremie-rainbow-swirl-flower-sweet	Rainbow Swirl Flower Sweet	Rainbow Swirl Flower Sweet Alcremie				
+10494	869	alcremie-vanilla-cream-ribbon-sweet	Vanilla Cream Ribbon Sweet	Vanilla Cream Ribbon Sweet Alcremie				
+10495	869	alcremie-ruby-cream-ribbon-sweet	Ruby Cream Ribbon Sweet	Ruby Cream Ribbon Sweet Alcremie				
+10496	869	alcremie-matcha-cream-ribbon-sweet	Matcha Cream Ribbon Sweet	Matcha Cream Ribbon Sweet Alcremie				
+10497	869	alcremie-mint-cream-ribbon-sweet	Mint Cream Ribbon Sweet	Mint Cream Ribbon Sweet Alcremie				
+10498	869	alcremie-lemon-cream-ribbon-sweet	Lemon Cream Ribbon Sweet	Lemon Cream Ribbon Sweet Alcremie				
+10499	869	alcremie-salted-cream-ribbon-sweet	Salted Cream Ribbon Sweet	Salted Cream Ribbon Sweet Alcremie				
+10500	869	alcremie-ruby-swirl-ribbon-sweet	Ruby Swirl Ribbon Sweet	Ruby Swirl Ribbon Sweet Alcremie				
+10501	869	alcremie-caramel-swirl-ribbon-sweet	Caramel Swirl Ribbon Sweet	Caramel Swirl Ribbon Sweet Alcremie				
+10502	869	alcremie-rainbow-swirl-ribbon-sweet	Rainbow Swirl Ribbon Sweet	Rainbow Swirl Ribbon Sweet Alcremie				
+10503	36	clefable-mega	Mega Clefable	Mega Clefable				
+10504	71	victreebel-mega	Mega Victreebel	Mega Victreebel				
+10505	121	starmie-mega	Mega Starmie	Mega Starmie				
+10506	149	dragonite-mega	Mega Dragonite	Mega Dragonite				
+10507	154	meganium-mega	Mega Meganium	Mega Meganium				
+10508	160	feraligatr-mega	Mega Feraligatr	Mega Feraligatr				
+10509	227	skarmory-mega	Mega Skarmory	Mega Skarmory				
+10510	478	froslass-mega	Mega Froslass	Mega Froslass				
+10511	500	emboar-mega	Mega Emboar	Mega Emboar				
+10512	530	excadrill-mega	Mega Excadrill	Mega Excadrill				
+10513	545	scolipede-mega	Mega Scolipede	Mega Scolipede				
+10514	560	scrafty-mega	Mega Scrafty	Mega Scrafty				
+10515	604	eelektross-mega	Mega Eelektross	Mega Eelektross				
+10516	609	chandelure-mega	Mega Chandelure	Mega Chandelure				
+10517	652	chesnaught-mega	Mega Chesnaught	Mega Chesnaught				
+10518	655	delphox-mega	Mega Delphox	Mega Delphox				
+10519	658	greninja-mega	Mega Greninja	Mega Greninja				
+10520	668	pyroar-mega	Mega Pyroar	Mega Pyroar				
+10521	670	floette-mega	Mega Floette	Mega Floette				
+10522	687	malamar-mega	Mega Malamar	Mega Malamar				
+10523	689	barbaracle-mega	Mega Barbaracle	Mega Barbaracle				
+10524	691	dragalge-mega	Mega Dragalge	Mega Dragalge				
+10525	701	hawlucha-mega	Mega Hawlucha	Mega Hawlucha				
+10526	718	zygarde-mega	Mega Zygarde	Mega Zygarde				
+10527	780	drampa-mega	Mega Drampa	Mega Drampa				
+10528	870	falinks-mega	Mega Falinks	Mega Falinks				
+10529	26	raichu-mega-x	Mega Raichu X	Mega Raichu X				
+10530	26	raichu-mega-y	Mega Raichu Y	Mega Raichu Y				
+10531	358	chimecho-mega	Mega Chimecho	Mega Chimecho				
+10532	359	absol-mega-z	Mega Absol Z	Mega Absol Z				
+10533	398	staraptor-mega	Mega Staraptor	Mega Staraptor				
+10534	445	garchomp-mega-z	Mega Garchomp Z	Mega Garchomp Z				
+10535	448	lucario-mega-z	Mega Lucario Z	Mega Lucario Z				
+10536	485	heatran-mega	Mega Heatran	Mega Heatran				
+10537	491	darkrai-mega	Mega Darkrai	Mega Darkrai				
+10538	623	golurk-mega	Mega Golurk	Mega Golurk				
+10539	678	meowstic-male-mega	Mega Meowstic	Mega Meowstic				
+10540	740	crabominable-mega	Mega Crabominable	Mega Crabominable				
+10541	768	golisopod-mega	Mega Golisopod	Mega Golisopod				
+10542	801	magearna-mega	Mega Magearna	Mega Magearna				
+10543	801	magearna-original-mega	Mega Original Magearna	Mega Original Magearna				
+10544	807	zeraora-mega	Mega Zeraora	Mega Zeraora				
+10545	952	scovillain-mega	Mega Scovillain	Mega Scovillain				
+10546	970	glimmora-mega	Mega Glimmora	Mega Glimmora				
+10547	978	tatsugiri-curly-mega	Mega Curly Tatsugiri	Mega Curly Tatsugiri				
+10548	978	tatsugiri-droopy-mega	Mega Droopy Tatsugiri	Mega Droopy Tatsugiri				
+10549	978	tatsugiri-stretchy-mega	Mega Stretchy Tatsugiri	Mega Stretchy Tatsugiri				
+10550	998	baxcalibur-mega	Mega Baxcalibur	Mega Baxcalibur				
+10551	668	pyroar-female	Female	Female Pyroar	雌性的样子		雌性的樣子	
+10552	592	frillish-female	Female	Female Frillish	雌性的样子		雌性的樣子	
+10553	593	jellicent-female	Female	Female Jellicent	雌性的样子		雌性的樣子	
+10554	678	meowstic-female-mega	Mega Meowstic	Mega Meowstic				

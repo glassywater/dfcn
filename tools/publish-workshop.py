@@ -12,6 +12,7 @@ import ctypes as C
 import json
 import os
 from pathlib import Path
+import re
 import sys
 import time
 
@@ -335,6 +336,12 @@ class Steam:
             if path.is_file():
                 text = path.read_text(encoding="utf-8-sig")
                 text = text.replace("__WORKSHOP_ID__", str(item_id)).replace("[STEAM_FILE_ID]", f"[STEAM_FILE_ID:{item_id}]")
+                if filename == "info.txt":
+                    linked_id = f"[STEAM_FILE_ID:{item_id}]"
+                    if re.search(r"\[STEAM_FILE_ID:[^\]]*\]", text):
+                        text = re.sub(r"\[STEAM_FILE_ID:[^\]]*\]", linked_id, text)
+                    else:
+                        text = text.rstrip() + "\n" + linked_id + "\n"
                 path.write_text(text, encoding="utf-8")
 
         handle = self.dll.SteamAPI_ISteamUGC_StartItemUpdate(self.ugc, self.appid, item_id)
@@ -374,12 +381,17 @@ class Steam:
 
 
 def main():
+    global STATE_FILE
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=("query", "publish"))
     parser.add_argument("--metadata", default="workshop/publish.json")
     parser.add_argument("--item-id", type=int)
+    parser.add_argument("--state-file", help="Identity file for this independently published mod.")
     args = parser.parse_args()
-    metadata = json.loads(resolve_path(args.metadata).read_text(encoding="utf-8-sig"))
+    metadata_path = resolve_path(args.metadata)
+    metadata = json.loads(metadata_path.read_text(encoding="utf-8-sig"))
+    STATE_FILE = (resolve_path(args.state_file) if args.state_file else
+                  metadata_path.parent / "published-item.json")
     steam = Steam(int(metadata["appid"]))
     try:
         if args.command == "query":

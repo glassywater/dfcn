@@ -1,7 +1,6 @@
 // Trade item labels are bound to the actual item passed to DF's formatter.
 // Copy its fields and complete name before the trade list shortens that same
 // NativeString; retained frames never borrow a live item or string object.
-#ifdef _WIN32
 using NativeTradeItemNameFn = void (*)(void *, NativeString *, bool, int32_t);
 using NativeTradeItemDrawFn = void (*)(graphicst *, const NativeString *, NativeJustification, int);
 static NativeTradeItemNameFn g_native_trade_item_name = nullptr;
@@ -134,10 +133,17 @@ static bool install_native_trade_item_hooks() {
     }
     const uintptr_t base = native_history_profile_base();
     if (!base) return false;
+#ifdef _WIN32
     g_native_trade_item_name = reinterpret_cast<NativeTradeItemNameFn>(
         native_pe_address(base, 0xc65450));
     g_native_trade_item_draw = reinterpret_cast<NativeTradeItemDrawFn>(
         native_pe_address(base, 0xad9960));
+#else
+    g_native_trade_item_name = reinterpret_cast<NativeTradeItemNameFn>(
+        elf_runtime::state().executable.bias + native_reference_va(0xe68020));
+    g_native_trade_item_draw = reinterpret_cast<NativeTradeItemDrawFn>(dlsym(RTLD_DEFAULT,
+        "_ZN9graphicst5addstERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE13justificationi"));
+#endif
     if (!g_native_trade_item_name || !g_native_trade_item_draw) return false;
     struct InstallGuard {
         bool committed = false;
@@ -147,18 +153,28 @@ static bool install_native_trade_item_hooks() {
     // R14 (the actual item) and RBP+e0 (their item-name string). Classic uses
     // the shared reference relocation table for these same native callers.
     std::vector<NativeCall> calls{
+#ifdef _WIN32
         {0x386bcc, 0xc65450, reinterpret_cast<const void *>(&capture_native_trade_item_name)},
         {0x386c66, 0xad9960, reinterpret_cast<const void *>(&capture_native_trade_item_draw)},
         {0x387b4f, 0xc65450, reinterpret_cast<const void *>(&capture_native_trade_item_name)},
         {0x387be2, 0xad9960, reinterpret_cast<const void *>(&capture_native_trade_item_draw)},
+#else
+        // Both columns of trade_interfacest::render keep the item pointer
+        // in RDI and their own name string in RSI before shortening it.
+        {0xd82464, 0xe68020, reinterpret_cast<const void *>(&capture_native_trade_item_name)},
+        {0xd8248e, 0x425170, reinterpret_cast<const void *>(&capture_native_trade_item_draw)},
+        {0xd82c02, 0xe68020, reinterpret_cast<const void *>(&capture_native_trade_item_name)},
+        {0xd82c35, 0x425170, reinterpret_cast<const void *>(&capture_native_trade_item_draw)},
+#endif
     };
     if (!native_reference_calls(calls, 0) ||
-            !g_native_trade_item_calls.install(base, calls, "Native trade item source")) return false;
+            !g_native_trade_item_calls.install(
+#ifdef _WIN32
+                base,
+#else
+                elf_runtime::state().executable.bias,
+#endif
+                calls, "Native trade item source")) return false;
     guard.committed = true;
     return true;
 }
-#else
-static bool native_trade_item_hooks_active() { return false; }
-static void uninstall_native_trade_item_hooks() {}
-static bool install_native_trade_item_hooks() { return true; }
-#endif

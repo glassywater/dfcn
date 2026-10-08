@@ -1,0 +1,9 @@
+[ID:dfcn_brewing_plus_zh_hans]
+[NUMERIC_VERSION:2]
+[DISPLAYED_VERSION:0.2-local]
+[EARLIEST_COMPATIBLE_NUMERIC_VERSION:1]
+[EARLIEST_COMPATIBLE_DISPLAYED_VERSION:0.1-local]
+[AUTHOR:DFCN]
+[NAME:酿酒增强汉化数据]
+[DESCRIPTION:Brewing Plus 的独立简体中文翻译数据，由 DFCN 自动读取，无需在世界模组列表启用。仅供本地使用，尚未发布。]
+

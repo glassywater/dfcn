@@ -1,0 +1,8 @@
+schema = 1
+id = "brewing-plus-zh-hans"
+version = 2
+language = "zh-Hans"
+name = "酿酒增强汉化数据"
+translations = "dfcn/translations.tsv"
+rulesets = "dfcn/rulesets/zh-Hans"
+

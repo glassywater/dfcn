@@ -2,13 +2,17 @@
 // binds SDL dynamically, so this is DFHack's private function-pointer slot,
 // not an SDL export or the game's SDL import.
 // Source: DFHack/dfhack, library/Core.cpp and library/modules/DFSDL.cpp.
-#ifdef _WIN32
 static std::optional<std::string> translate_dfhack_console_output(std::string_view source);
 
+#ifdef _WIN32
+using NativeDfhackMessageBoxModule = HMODULE;
+#else
+using NativeDfhackMessageBoxModule = void *;
+#endif
 using NativeDfhackMessageBoxFn = int (SDLCALL *)(Uint32, const char *, const char *, SDL_Window *);
 static NativeImportHook g_native_dfhack_messagebox_hook;
 static std::atomic<NativeDfhackMessageBoxFn> g_native_dfhack_messagebox_original{nullptr};
-static std::atomic<HMODULE> g_native_dfhack_messagebox_module{nullptr};
+static std::atomic<NativeDfhackMessageBoxModule> g_native_dfhack_messagebox_module{nullptr};
 static std::atomic_bool g_native_dfhack_messagebox_translation{false};
 static std::atomic_uint g_native_dfhack_messagebox_callbacks{0};
 static std::mutex g_native_dfhack_messagebox_mutex;
@@ -28,9 +32,10 @@ static bool native_dfhack_messagebox_hook_active() {
         g_native_dfhack_messagebox_callbacks.load(std::memory_order_acquire) != 0;
 }
 
-static bool native_dfhack_messagebox_owned_address(HMODULE module, uintptr_t address,
+static bool native_dfhack_messagebox_owned_address(NativeDfhackMessageBoxModule module, uintptr_t address,
         size_t size, bool executable) {
     if (!module || !address || !size) return false;
+#ifdef _WIN32
     MEMORY_BASIC_INFORMATION region{};
     NativePatchProtection protection = 0;
     unsigned long error = 0;
@@ -38,6 +43,14 @@ static bool native_dfhack_messagebox_owned_address(HMODULE module, uintptr_t add
         region.AllocationBase == module && region.Type == MEM_IMAGE &&
         native_patch_page_protection(address, size, protection, error) &&
         native_patch_readable(protection) && (!executable || native_patch_executable(protection));
+#else
+    Dl_info info{};
+    NativePatchProtection protection = 0;
+    unsigned long error = 0;
+    return dladdr(reinterpret_cast<void *>(address), &info) && info.dli_fbase == module &&
+        native_patch_page_protection(address, size, protection, error) &&
+        native_patch_readable(protection) && (!executable || native_patch_executable(protection));
+#endif
 }
 
 static std::optional<std::string> native_dfhack_messagebox_translate(const char *source,
@@ -80,8 +93,9 @@ static int SDLCALL native_dfhack_show_simple_messagebox(Uint32 flags, const char
     });
 }
 
-static void **native_dfhack_messagebox_slot(HMODULE module) {
+static void **native_dfhack_messagebox_slot(NativeDfhackMessageBoxModule module) {
     constexpr const char *label = "DFHack local error message translation";
+#ifdef _WIN32
     const auto address = reinterpret_cast<uintptr_t>(GetProcAddress(module,
         "?DFSDL_ShowSimpleMessageBox@DFSDL@DFHack@@YAHIPEBD0PEAUSDL_Window@@@Z"));
     // Installed native function: mov rax,[rip+disp32]; test rax,rax;
@@ -101,9 +115,22 @@ static void **native_dfhack_messagebox_slot(HMODULE module) {
         report_native_patch_error("ERROR", label, "DFSDL message-box wrapper signature differs");
         return nullptr;
     }
+    constexpr size_t instruction_offset = 0;
+#else
+    const auto address = reinterpret_cast<uintptr_t>(dlsym(RTLD_DEFAULT,
+        "_ZN6DFHack5DFSDL26DFSDL_ShowSimpleMessageBoxEjPKcS2_P10SDL_Window"));
+    constexpr std::array<unsigned char,7> prefix{0xf3,0x0f,0x1e,0xfa,0x48,0x8b,0x05};
+    constexpr std::array<unsigned char,13> suffix{
+        0x48,0x85,0xc0,0x74,0x02,0xff,0xe0,0xb8,0xff,0xff,0xff,0xff,0xc3};
+    if (!native_dfhack_messagebox_owned_address(module,address,24,true)) return nullptr;
+    const auto *instruction = reinterpret_cast<const unsigned char *>(address);
+    if (std::memcmp(instruction,prefix.data(),prefix.size()) ||
+            std::memcmp(instruction+11,suffix.data(),suffix.size())) return nullptr;
+    constexpr size_t instruction_offset = 4;
+#endif
     int32_t displacement = 0;
-    std::memcpy(&displacement, instruction + 3, sizeof(displacement));
-    const intptr_t target = static_cast<intptr_t>(address + 7) + displacement;
+    std::memcpy(&displacement, instruction + instruction_offset + 3, sizeof(displacement));
+    const intptr_t target = static_cast<intptr_t>(address + instruction_offset + 7) + displacement;
     if (target <= 0 || static_cast<uintptr_t>(target) %
             std::atomic_ref<void *>::required_alignment ||
             !native_dfhack_messagebox_owned_address(module,
@@ -127,16 +154,29 @@ static bool install_native_dfhack_messagebox_hook() {
         g_native_dfhack_messagebox_translation.store(true, std::memory_order_release);
         return true;
     }
+#ifdef _WIN32
     const auto module = GetModuleHandleW(L"dfhack.dll");
-    if (!module) return true; // Optional module can appear after core startup.
+#else
+    Dl_info info{};
+    const auto probe = dlsym(RTLD_DEFAULT,
+        "_ZN6DFHack5DFSDL26DFSDL_ShowSimpleMessageBoxEjPKcS2_P10SDL_Window");
+    const auto module = probe && dladdr(probe,&info) ? info.dli_fbase : nullptr;
+#endif
+    if (!module) return true;
     auto **slot = native_dfhack_messagebox_slot(module);
     if (!slot) return false;
     const auto current = std::atomic_ref<void *>(*slot).load(std::memory_order_acquire);
     if (!current) return true; // DFSDL has not bound SDL yet; retry normally.
     constexpr const char *label = "DFHack local error message translation";
+#ifdef _WIN32
     const auto sdl = GetModuleHandleW(L"SDL2.dll");
     const auto expected = sdl ? reinterpret_cast<void *>(
         GetProcAddress(sdl, "SDL_ShowSimpleMessageBox")) : nullptr;
+#else
+    const auto expected = dlsym(RTLD_DEFAULT,"SDL_ShowSimpleMessageBox");
+    Dl_info sdl_info{};
+    const auto sdl = expected && dladdr(expected,&sdl_info) ? sdl_info.dli_fbase : nullptr;
+#endif
     if (!expected || current != expected ||
             !native_dfhack_messagebox_owned_address(sdl,
                 reinterpret_cast<uintptr_t>(expected), 1, true)) {
@@ -168,9 +208,3 @@ static void uninstall_native_dfhack_messagebox_hook() {
     // Retain the forwarding target for a wrapper already fetched by a native
     // caller. Common callback accounting owns its code through native return.
 }
-#else
-// Bind the concrete native wrapper separately on a Linux host.
-static bool native_dfhack_messagebox_hook_active() { return false; }
-static bool install_native_dfhack_messagebox_hook() { return true; }
-static void uninstall_native_dfhack_messagebox_hook() {}
-#endif

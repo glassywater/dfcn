@@ -1,18 +1,33 @@
 // Shared composition for bounded native text cards and typed record lists.
 // Physical source spans own suppression; translated runs share one baseline
 // and retain their per-codepoint colors, including untranslated fallback.
-static bool native_paragraph_owns_card_row(const Match &match,
+static bool native_paragraph_owns_card_row(const std::vector<Match> &matches,
         const NativeTextCardRow &row) {
-    if (match.rule != kUiMessageRule || match.y != row.y ||
-        match.length != static_cast<int>(match.source.size())) return false;
-    const auto owned = trim_view(match.source);
-    const auto current = trim_view(row.source);
-    // Captured draws can retain edge padding that the paragraph reader
-    // trims. Compare the actual ink at its original position; padding must
-    // not create another paragraph or restore an empty translated tail.
-    return !owned.empty() && owned == current &&
-        match.x + static_cast<int>(owned.data() - match.source.data()) ==
-        row.x + static_cast<int>(current.data() - row.source.data());
+    std::vector<bool> covered;
+    const int right = row.x + static_cast<int>(row.source.size());
+    for (const Match &match : matches) {
+        if (match.rule != kUiMessageRule || match.y != row.y || match.length <= 0 ||
+            match.length != static_cast<int>(match.source.size())) continue;
+        const int first = std::max(row.x, match.x);
+        const int last = std::min(right, match.x + match.length);
+        if (first >= last) continue;
+        if (covered.empty()) covered.assign(row.source.size(), false);
+        for (int x = first; x < last; ++x)
+            if (match.source[static_cast<size_t>(x - match.x)] ==
+                row.source[static_cast<size_t>(x - row.x)])
+                covered[static_cast<size_t>(x - row.x)] = true;
+    }
+    if (covered.empty()) return false;
+    // Card boundaries can crop a native wrap, and colored source runs can
+    // divide it. Every ink byte must still belong to the same physical source
+    // spans; empty translated tails retain ownership just like visible lines.
+    bool ink = false;
+    for (size_t at = 0; at < row.source.size(); ++at) {
+        if (row.source[at] == ' ') continue;
+        if (!covered[at]) return false;
+        ink = true;
+    }
+    return ink;
 }
 
 std::optional<NativeTextCard> Overlay::capture_panel_text_card(const SDL_Rect &panel,
@@ -128,11 +143,11 @@ void Overlay::compose_native_text_rows(const NativeTextCard &card,
         // been reflowed as documents.
         // Preserve every owned source span, including now-empty tail rows;
         // row composition must not restore the native wrapping or English.
-        if (std::any_of(matches.begin(), matches.end(), [&](const Match &match) {
+        if ((row_rule != kCharacterGroupRowRule &&
+                native_paragraph_owns_card_row(matches, row)) ||
+            std::any_of(matches.begin(), matches.end(), [&](const Match &match) {
                 return (match.rule == kWorldSiteHistoryRule ||
-                        match.rule == kWorldArtifactDescriptionRule ||
-                        (row_rule != kCharacterGroupRowRule &&
-                         native_paragraph_owns_card_row(match, row))) && match.y == row.y;
+                        match.rule == kWorldArtifactDescriptionRule) && match.y == row.y;
             })) continue;
         const int end = row.x + static_cast<int>(row.source.size());
         struct RowPart {

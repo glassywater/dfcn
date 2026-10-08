@@ -1,0 +1,7 @@
+schema = 1
+id = "fumo-item-zh-hans"
+version = 2
+language = "zh-Hans"
+name = "Fumo 玩偶汉化数据"
+translations = "dfcn/translations.tsv"
+rulesets = "dfcn/rulesets/zh-Hans"

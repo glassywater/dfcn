@@ -1,0 +1,12 @@
+base = "core_harvesting::recipes"
+
+[[rulesets]]
+[rulesets.rules]
+"Dredge magma for stones and ores" = "从岩浆中采掘石材与矿石"
+"Process ilmenite for trace iron" = "处理钛铁矿以提取微量铁"
+"Process bauxite for trace iron and kaolinite" = "处理铝土矿以提取微量铁与高岭石"
+"Process chromite for trace iron and platinum" = "处理铬铁矿以提取微量铁与铂"
+"Break Basalt in search of sunstones and gold" = "破碎玄武岩以寻找日光石与黄金"
+"Process gabbro for trace nickel and kimberlite" = "处理辉长岩以提取微量镍与金伯利岩"
+"Process kimberlite in search of untold wealth..?" = "处理金伯利岩以探寻无尽财富……？"
+"Grind obsidian into sand" = "将黑曜石磨成沙"

@@ -9,6 +9,7 @@
 #pragma once
 
 #include "translation_result.h"
+#include "translation_extensions.h"
 
 #include <cstdint>
 #include <filesystem>
@@ -42,8 +43,9 @@ namespace Hooks {
 
         bool load_rule_sets();
         void load_from_dir(const std::filesystem::path& dir);
-        // The existing update timer observes TOML contents and directory
-        // membership. A failed attempt is remembered until resources change.
+        // The existing update timer observes base TOML files and discovered
+        // extension manifests/directories/TOML. Failed candidates wait for a
+        // resource change; installing/removing a package needs no UI action.
         bool resources_changed() const;
         std::uint64_t resource_revision() const;
 
@@ -79,6 +81,11 @@ namespace Hooks {
         std::optional<std::string> translate_with_origins(
             const std::string& text, const std::string& context,
             std::vector<size_t>& origins) const;
+        // Prose owners consume one longest authored production at a time.
+        // Keep multi-sentence/verse rules and source origins while leaving
+        // document separators and the remaining text to the calling owner.
+        dfcn::TranslationResult translate_prefix_with_origins(
+            const std::string& text, const std::string& context) const;
         // Bare ammunition types from the item grammar, never material/name
         // fragments. Callers compose the material with the shared qualifier.
         std::optional<std::string> translate_ammunition_type(const std::string& text) const;
@@ -365,6 +372,8 @@ namespace Hooks {
         std::filesystem::path ruleset_directory_;
         std::vector<ResourceDependency> loaded_dependencies_;
         std::vector<ResourceDependency> attempted_dependencies_;
+        dfcn::extensions::Snapshot loaded_extensions_;
+        dfcn::extensions::Snapshot attempted_extensions_;
         std::uint64_t resource_revision_ = 0;
         RuleSets rulesets_;
         std::unordered_map<std::string, RulePrefixIndex> rule_prefix_indexes_;
@@ -386,8 +395,10 @@ namespace Hooks {
         // =====================================================================
 
         // TOML 加载
-        void parse_dir(const std::filesystem::path& base, const std::filesystem::path& curr, std::optional<std::string>& visited_root);
-        void parse_file(const std::filesystem::path& base, const std::filesystem::path& path, std::optional<std::string>& visited_root);
+        void parse_dir(const std::filesystem::path& base, const std::filesystem::path& curr,
+            std::optional<std::string>& visited_root, bool extension = false);
+        void parse_file(const std::filesystem::path& base, const std::filesystem::path& path,
+            std::optional<std::string>& visited_root, bool extension = false);
         void validate_references() const;
         void analyze_from_root();
         void rebuild_rule_prefix_indexes();

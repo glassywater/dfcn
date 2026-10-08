@@ -1,0 +1,145 @@
+DF 53.16 Linux 居民活动／祷告文字生成链：离线反编译
+
+映像：/home/lulika/.local/share/Steam/steamapps/common/Dwarf Fortress/dwarfort
+身份：ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c
+所有地址均为镜像内地址，不是 ASLR 运行地址。
+
+本目录读取实际 ELF 的指令、展开边界、字符串和有符号相对跳转表。
+没有运行游戏或翻译器。本目录记录源代码还原资料，不是测试或显示结果。
+
+完整生成链
+
+../unit-activity-native-bindings.tsv 有 52 个语义绑定。继承的方法共享
+函数体；本目录保存这些绑定的全部 45 个独立函数体，再加入完整的
+historical-figure 引用、English language_name 和 WORD/POS 选择函数，
+共 48 个完整函数体。native-formatters.asm 保留优化后的立即数文字写入，
+native-literals.tsv 同时解码字符串引用、向量和可打印立即数，共 1674 个
+操作数记录；立即数的实际用途以其完整指令上下文为准，不能把机器常量
+或连接片段当作另一条完整状态。
+native-branches.tsv 保留直接和间接转移；native-switches.tsv 从映像
+读取全部 26 张相对跳转表的 1083 个选择项，包括重复及空输出分支。
+
+以下语法的有限输入目录仍由 ../unit-activity-sources.tsv 保存：
+普通工作／手术细分、29 个活动类绑定、12 个军令类绑定、137 个技能动作、
+294 个短研究课题、130 个神域及 no sphere、两种状态入口及列表包装。
+同一函数可属于多个原生类型，来源记录数不等于完整状态数。
+
+unit_activity(unit):
+  current job        -> job title / surgery-specific caption
+  current event      -> activity_event vtable + 0xb8
+  squad order        -> squad_order vtable + 0x70
+  meeting            -> Attend Meeting / Conduct Meeting / Attend Parley
+  diplomatic mission -> Make Request of SITE
+                       | ACTION at SITE
+  idle/identity      -> Return Treasure / New Arrival / Soldier / Mercenary
+                       / Monster Slayer / Noble / No job / No activity
+  outer suffix       -> ! / (failure reason) / (Caged) / (Chained)
+  creature roster    -> [Diplomat / | Guest / ] + caption
+
+完整外交动作、23 个失败原因、全部军令及其对象类型见
+../unit-activity-source-review.md；原生控制流与分支在本目录逐指令保留。
+这些组合继续由共享活动入口递归处理，不能把后缀吞进神名。
+
+活动输出族（包括继承的基础实现）
+
+base/harassment/encounter/reunion/conversation/guard/conflict/store_object:
+  Activity
+training_session: Training Session
+combat_training: Go to / Organize / Lead / Wait for Combat Training
+skill_demonstration: Go to / Organize / Wait for / Lead / Watch SKILL Demonstration
+fill_service_order: Serve Customer | Serve MATERIAL_OR_ITEM
+individual_skill_drill: [Go to ]Individual Combat Drill[/Resting]
+sparring: Spar | Go to Sparring Match | Go to Sparring Practice | Watch Sparring Practice
+ranged_practice: [Go to ]Archery Practice
+research/play/worship/socialize: Research / Play / Worship / Socialize
+ponder/discuss/teach: Ponder / Discuss / Teach / Learn SHORT_TOPIC
+read/copy: Read / Copy [ITEM_DESCRIPTION]
+write: Write | Write about SHORT_TOPIC
+make_believe: Play Make Believe
+play_with_toy: Play with Toy | Play with ITEM_DESCRIPTION
+prayer: 以下两个分支
+performance: Listen to Sermon / Story / Poetry / Music | Watch Dance
+             | Tell Story | Recite Poetry | Perform Music / Dance | Sing | Chant
+             | Play / Simulate INSTRUMENT | Preach on SUBJECT
+             | Promote / Inveigh Against VALUE
+其中 VALUE 的 33 个选择项、技能、课题及神域的跳转表在本目录完整展开。
+
+prayer 虚方法：0x1767690..0x1767a37，虚表槽 0x2437510
+
+prayer_caption(event, unit_id, output):
+  output.clear()
+  if int16(event + 0xb4) != -1:              # 0x17676ca
+    output += "Meditate on "                # 立即数 0x657461746964654d 等
+    sphere = sphere_with_article(event.sphere) # 0x1767770 -> 0x14f0240
+    capitalize_first_letter(sphere)          # 0x1767778 -> 0x424200
+    output += sphere
+  else:                                    # 0x1767840
+    output += "Pray to "                    # 立即数 0x206f742079617250
+    context = default historical-reference context
+    # memory/conversation pointers = null；subject/object IDs = -1；无链接标志
+    output += historical_figure_reference(
+        event.deity_id, context, mode=1, form=1) # 0x1767998 -> 0xa10320
+
+字符串扩容路径的 Meditate on / Pray to 与立即数路径输出相同。
+只有上述两个语义分支；无名／未知人物由人物供应函数决定，没有第三种动作。
+
+sphere_with_article：0x14f0240..0x14f047a
+
+  加 "the " 的条件是 sphere == 19，或 sphere - 70 在 0..56 且
+  位掩码 0x180002250020041 的相应位为 1。精确枚举见
+  meditation-articles.tsv：DAWN、MOON、NIGHT、RAIN、SEASONS、SKY、
+  STARS、SUN、WEATHER、WIND。其他神域直接使用 sphere noun。
+  sphere noun（0x14e7b20..0x14e82f3）有 0..129 的完整跳转表，
+  超出范围走 no sphere。共享 translate_deity_spheres 接受有无冠词
+  及大小写的全部这些输入，不把它们音译成姓名。
+
+布道：activity_event_performancest，0x1784e90..0x1785b7c
+
+  deity branch: "Preach on " + historical_figure_reference
+                # 0x1785a20..0x1785a60，与 prayer 同为 mode=1/form=1
+  sphere branch: "Preach on " + capitalized sphere noun
+                # 0x1785a65..0x1785acc，不调用定冠词包装
+  其他表演、听众、乐器及价值观分支继续使用既有专用解析器和作用域词表。
+
+神名／人物供应函数：0xa10320..0xa10e58
+
+  未找到历史人物 -> "an unknown creature"
+  缺少可用名称的分支 -> "Nameless"
+  需要记忆但记忆未识别 -> "an unidentified creature"
+  已识别名字 -> English language_name（0x12c58d0..0x12c6e5c）
+  通用引用函数另外有物种、ghostly/zombie、代词、所有格、交谈角色和
+  LPAGE 链接包装；完整条件和调用保留在 native-formatters.asm。
+  prayer 的空默认 context 不启用记忆、交谈或链接分支。
+  固定未知称呼沿用既有历史人物词表；真实物种沿用 RAW-backed 人物解析。
+
+English language_name 的所有显示组
+
+  first_name 与 nickname 由实际 nickname policy 0/1/2 决定：
+    替代 first_name、附在 first_name 后，或只显示 nickname 并提前返回。
+  A+B（WORD 0/1）可以构成紧连姓氏；没有 first_name 时它仍可独立显示。
+  title 由 WORD 2/3/5 是否存在决定；单独存在 WORD 4 不触发 title。
+  title = [WORD2 ] [WORD3 ] [WORD4-] WORD5
+  有前组时 title 前缀是 "the "；没有前组时是 "The "。
+  WORD6 使用 "of "；没有前组时使用 "Of "。
+  每个 WORD 从其实际 POS 0..8 选择原生英语词形，调用 0x1cc3980。
+  全部空组和组合不额外产生待翻译动作。
+
+截图的 The Scholar of Poems 属于“没有 first_name/A+B 的完整 title
+加 WORD6”分支。SCHOLAR、POEM 及其复数已经在共享姓名词义表中，
+不能仅保留动作译文，也不能把整段头衔分成互不关联的界面单词。
+不添加这个单一神名的全局覆盖词条；全部真实姓名组由共享姓名语法处理。
+
+本次接入
+
+  fortress_tasks.inc：Pray to 使用完整人物名称；Meditate on 使用完整
+  神域；Preach on 接受两种供应函数。动作从 Fortress activity: 作用域
+  词表读取，对象先整体解析，再按中文语序组合；截断恢复和后缀仍归
+  原有活动字段所有者。无法解析的扩展名称保留整个对象并标记未译，
+  已确认的动作仍显示中文。
+  legends_detail.inc：物种分支仅对自己的视图去掉 the/The，名字回退
+  保留原始冠词；明确人物字段中的小写 the/of 也保留标题组边界。
+  现有 activities.toml 的人物/神域规则因此同样使用修正后的共享入口。
+
+动态姓名、玩家昵称、扩展 RAW 和运行时世界不是有限字符串集合。
+这里穷尽的是当前镜像的输出分支、有限选择项和动态字段组合语法。
+编译部署与离线反编译均不代表已观察到游戏内最终显示。

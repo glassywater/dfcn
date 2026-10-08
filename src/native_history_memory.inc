@@ -38,6 +38,30 @@ static const native_history_layout::Object *native_history_dynamic_layout(uintpt
     const uintptr_t base = native_history_profile_base();
     uintptr_t table = 0;
     if (!base || !native_history_copy(object, table) || table < base) return nullptr;
+    // The selected image/profile is immutable for this core's lifetime. Build
+    // this only after a valid base exists, using the actual resolved vtables.
+    // Multiple bindings may share one table: retain the first object, exactly
+    // as the original ordered lookup did.
+    struct TableIndex {
+        uintptr_t base = 0;
+        std::unordered_map<uintptr_t, const native_history_layout::Object *> objects;
+    };
+    static const TableIndex index = [base] {
+        TableIndex result;
+        result.base = base;
+        result.objects.reserve(std::size(native_history_layout::objects));
+        for (const auto &layout : native_history_layout::objects) {
+            if (!layout.table) continue;
+            const uintptr_t address = native_reference_address(base, layout.table);
+            if (address && address >= base) result.objects.emplace(address, &layout);
+        }
+        return result;
+    }();
+    if (index.base == base) {
+        const auto found = index.objects.find(table);
+        return found != index.objects.end() ? found->second : nullptr;
+    }
+    // An unexpected image change must not reuse addresses from another base.
     for (const auto &layout : native_history_layout::objects)
         if (layout.table && table == native_reference_address(base, layout.table)) return &layout;
     return nullptr;
@@ -53,6 +77,20 @@ static uintptr_t native_history_object_field(uintptr_t object, std::string_view 
 static bool native_history_object_is(uintptr_t object, std::string_view type) {
     const auto *layout = native_history_dynamic_layout(object);
     return layout && type == layout->name;
+}
+
+// Newly adapted interfaces select fields by their structural source name.
+// This avoids treating a PE field offset as an ELF layout declaration.
+static uintptr_t native_history_object_member(uintptr_t object, std::string_view type,
+        std::string_view member, size_t width = 1) {
+    const auto *layout = native_history_object_layout(type);
+    if (!object || !layout) return 0;
+    for (size_t i = 0; i < layout->count; ++i) {
+        const auto &field = layout->fields[i];
+        if (field.name && member == field.name && width <= field.size &&
+                field.native <= UINTPTR_MAX - object) return object + field.native;
+    }
+    return 0;
 }
 
 static size_t native_history_virtual_slot(uintptr_t object, size_t coordinate) {

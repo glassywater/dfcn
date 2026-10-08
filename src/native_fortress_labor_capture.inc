@@ -28,6 +28,35 @@ static std::optional<NativeFortressLaborCaption> capture_native_fortress_labor_c
         default: return uintptr_t{0};
         }
     };
+#else
+    const uintptr_t base = native_history_profile_base();
+    if (!base || source_address < 0x150) return std::nullopt;
+    const auto address = [&](uintptr_t reference) {
+        uintptr_t coordinate = 0;
+        switch (reference) {
+        case 0x1618aa0: coordinate = native_reference_va(0x244c7f0); break;
+        case 0x162dc10: coordinate = native_reference_va(0x244c458); break;
+        case 0x15eb4a8: coordinate = native_reference_va(0x244c990); break;
+        case 0x15f6df0: coordinate = native_reference_va(0x244c328); break;
+        case 0x15f6fc0: coordinate = native_reference_va(0x244cd30); break;
+        case 0x15eef08: coordinate = native_reference_va(0x244ccb0); break;
+        case 0x15f6f68: coordinate = native_reference_va(0x244c208); break;
+        case 0x163bf00: coordinate = native_reference_va(0x2480fd0); break;
+        case 0x163c1c0: coordinate = native_reference_va(0x24810a0); break;
+        case 0x163c900: coordinate = native_reference_va(0x17098c0); break;
+        case 0x1785b28: {
+            const auto table = reinterpret_cast<uintptr_t>(dlsym(RTLD_DEFAULT,
+                "_ZTVN7widgets10radio_rowsE"));
+            return table ? table + 2 * sizeof(uintptr_t) : uintptr_t{0};
+        }
+        case 0x2399980:
+            return native_history_object_member(native_reference_address(base,
+                native_history_layout::plotinfo_rva), "plotinfost", "labor_info.work_details", 24);
+        default: return uintptr_t{0};
+        }
+        return coordinate ? elf_runtime::state().executable.bias + coordinate : uintptr_t{0};
+    };
+#endif
     const auto read = [&](uintptr_t pointer, void *destination, size_t size) {
         if (!native_info_title_memory_readable(reinterpret_cast<const void *>(pointer), size))
             return false;
@@ -38,14 +67,8 @@ static std::optional<NativeFortressLaborCaption> capture_native_fortress_labor_c
         return read(pointer, &result, sizeof(result));
     };
     const auto string_at = [&](uintptr_t pointer, std::string &result, size_t maximum = 4096) {
-        NativeString snapshot{};
-        if (!read(pointer, &snapshot, sizeof(snapshot)) || snapshot.size > snapshot.capacity ||
-                snapshot.size > maximum) return false;
-        const char *data = snapshot.capacity <= 15 ? snapshot.storage.small : snapshot.storage.heap;
-        if (snapshot.size && (!data || (snapshot.capacity > 15 &&
-                !native_info_title_memory_readable(data, snapshot.size)))) return false;
-        result.assign(data ? data : "", snapshot.size);
-        return result.find('\0') == std::string::npos;
+        return native_history_copy_string(pointer, result) && result.size() <= maximum &&
+            result.find('\0') == std::string::npos;
     };
     struct Widget {
         uintptr_t pointer = 0, vtable = 0, parent = 0;
@@ -69,7 +92,13 @@ static std::optional<NativeFortressLaborCaption> capture_native_fortress_labor_c
     };
     const auto children = [&](uintptr_t pointer, std::array<uintptr_t, 3> &vector,
             size_t maximum = 8192) {
-        if (!read(pointer + 0x160, vector.data(), sizeof(vector)) || !vector[0] ||
+        if (!read(pointer +
+#ifdef _WIN32
+                0x160,
+#else
+                0x180,
+#endif
+                vector.data(), sizeof(vector)) || !vector[0] ||
                 vector[0] > vector[1] || vector[1] > vector[2] ||
                 (vector[1] - vector[0]) % 16 || (vector[2] - vector[0]) % 16 ||
                 (vector[1] - vector[0]) / 16 > maximum) return false;
@@ -139,6 +168,7 @@ static std::optional<NativeFortressLaborCaption> capture_native_fortress_labor_c
     // activated callback unique to restoring the selected work detail.
     // Its complete caption must not fall back to separate Reset/default runs.
     std::array<uintptr_t, 3> actions{};
+#ifdef _WIN32
     if (read(entry.pointer + 0x68, actions.data(), sizeof(actions)) && actions[0] &&
             actions[0] <= actions[1] && actions[1] <= actions[2] &&
             (actions[1] - actions[0]) % 0x40 == 0 &&
@@ -162,20 +192,46 @@ static std::optional<NativeFortressLaborCaption> capture_native_fortress_labor_c
         }
     }
 
+#else
+    // libstdc++ stores activated callbacks as 32-byte std::function objects.
+    // The real button and every parent/child edge must belong to this Labor pane.
+    if (read(entry.pointer + 0x68, actions.data(), sizeof(actions)) && actions[0] &&
+            actions[0] < actions[1] && actions[1] <= actions[2] &&
+            (actions[1] - actions[0]) % 32 == 0 && actions[1] - actions[0] <= 64 * 32 &&
+            belongs_to_labor(entry)) {
+        NativeFortressLaborCaption result;
+        result.kind = NativeFortressLaborKind::Control;
+        result.owner = text.pointer;
+        const int32_t width = entry.rect[2] - entry.rect[0] - 1;
+        const int32_t height = entry.rect[3] - entry.rect[1] - 1;
+        if (width > 0 && height > 0 && complete_text(text, result.source) &&
+                !result.source.empty()) {
+            result.box = {entry.rect[0] + 1, entry.rect[1] + 1, width, height};
+            return result;
+        }
+    }
+#endif
+
     // The dedicated labor selector inherits scroll_rows. Its enum vector
     // and child vector have the same order, including negative categories.
     // Unit rosters, name editors and action buttons have other native owners.
     if (is(parent, 0x163c1c0) && child_index(parent, entry)) {
         std::array<uintptr_t, 3> labors{};
         const auto index = child_index(parent, entry);
-        if (!index || !read(parent.pointer + 0x1b8, labors.data(), sizeof(labors)) ||
+        if (!index || !read(parent.pointer +
+#ifdef _WIN32
+                0x1b8,
+#else
+                0x1d0,
+#endif
+                labors.data(), sizeof(labors)) ||
                 !labors[0] || labors[0] > labors[1] || labors[1] > labors[2] ||
                 (labors[1] - labors[0]) % 4 || (labors[2] - labors[0]) % 4 ||
                 labors[1] - labors[0] > 128 * 4 ||
                 *index >= (labors[1] - labors[0]) / 4) return std::nullopt;
         int32_t labor = 0;
         if (!read(labors[0] + *index * 4, &labor, sizeof(labor)) ||
-                labor < -13 || labor > 82) return std::nullopt;
+                labor < -13 || labor > 93) return std::nullopt;
         if (!belongs_to_labor(parent)) return std::nullopt;
         NativeFortressLaborCaption result;
         result.kind = NativeFortressLaborKind::Label;
@@ -198,6 +254,7 @@ static std::optional<NativeFortressLaborCaption> capture_native_fortress_labor_c
     if (!string_at(list.pointer + 0x80, list_name, 64) || list_name != "Details")
         return std::nullopt;
     uintptr_t head = 0, node = 0;
+#ifdef _WIN32
     if (!pointer_at(list.pointer + 0x310, head) || !pointer_at(head + 8, node))
         return std::nullopt;
     uintptr_t callback = 0;
@@ -217,6 +274,28 @@ static std::optional<NativeFortressLaborCaption> capture_native_fortress_labor_c
             closure[0] != address(0x163c900) || closure[1] != labor_root.pointer)
         return std::nullopt;
     const uintptr_t detail = closure[2];
+#else
+    // radio_rows owns an RB tree whose values contain the original root and
+    // work_detail pointers inline. Its native invoker is 17098c0, not an MSVC
+    // polymorphic closure or a text-based lookup.
+    head = native_history_object_member(list.pointer, "widget_radio_rows", "select_callback", 48);
+    if (!head || !pointer_at(head + 16, node)) return std::nullopt;
+    uintptr_t detail = 0;
+    for (size_t depth = 0; node && depth < 64; ++depth) {
+        size_t key = 0;
+        if (!read(node + 32, &key, sizeof(key))) return std::nullopt;
+        if (key == *index) {
+            std::array<uintptr_t, 4> closure{};
+            if (!read(node + 40, closure.data(), sizeof(closure)) ||
+                    closure[0] != labor_root.pointer || closure[3] != address(0x163c900))
+                return std::nullopt;
+            detail = closure[1];
+            break;
+        }
+        if (!pointer_at(node + (*index < key ? 16 : 24), node)) return std::nullopt;
+    }
+    if (!detail) return std::nullopt;
+#endif
     std::array<uintptr_t, 3> details{};
     if (!read(address(0x2399980), details.data(), sizeof(details)) || !details[0] ||
             details[0] > details[1] || details[1] > details[2] ||
@@ -231,7 +310,7 @@ static std::optional<NativeFortressLaborCaption> capture_native_fortress_labor_c
         if (member == detail) { live_detail = true; break; }
     }
     uint32_t flags = 0;
-    if (!live_detail || !read(detail + 0x20, &flags, sizeof(flags))) return std::nullopt;
+    if (!live_detail || !read(native_history_object_member(detail, "work_detail", "flags", 4), &flags, sizeof(flags))) return std::nullopt;
     NativeFortressLaborCaption result;
     result.kind = NativeFortressLaborKind::DetailName;
     result.owner = detail;
@@ -241,8 +320,4 @@ static std::optional<NativeFortressLaborCaption> capture_native_fortress_labor_c
     if (!caption_box(entry, text, result.box, 6)) return std::nullopt;
     if (!string_at(detail, result.source) || result.source.empty()) return std::nullopt;
     return result;
-#else
-    (void)source_address;
-    return std::nullopt;
-#endif
 }

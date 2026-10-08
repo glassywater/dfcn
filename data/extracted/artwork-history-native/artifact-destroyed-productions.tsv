@@ -1,0 +1,13 @@
+# Native history_event_artifact_destroyedst +0xd8; type 87, source productions, not translation examples.
+# Reference 0xb8ac80..0xb8ad98; Classic 0xb87cc0..0xb87dd8. Both current configured PE bodies are retained beside this file.
+# ARTIFACT=artifact identity(e+0x28); FIGURE=figure descriptor(e+0x30,true,false); ENTITY=entity descriptor(e+0x34); SITE=site descriptor(e+0x2c); DATE=date(e+0x08,e+0x0c).
+# Native helper missing-object and English-gloss branches remain in the full direct-call closure. Names and RAW text are typed dynamic fields, not finite literal strings.
+hf_present	entity_present	site_present	native_production
+0	0	0	the destruction of {ARTIFACT} in {DATE}
+0	0	1	the destruction of {ARTIFACT} in {SITE} in {DATE}
+0	1	0	the destruction of {ARTIFACT} by {ENTITY} in {DATE}
+0	1	1	the destruction of {ARTIFACT} by {ENTITY} in {SITE} in {DATE}
+1	0	0	the destruction of {ARTIFACT} by {FIGURE} in {DATE}
+1	0	1	the destruction of {ARTIFACT} by {FIGURE} in {SITE} in {DATE}
+1	1	0	the destruction of {ARTIFACT} by {FIGURE} and {ENTITY} in {DATE}
+1	1	1	the destruction of {ARTIFACT} by {FIGURE} and {ENTITY} in {SITE} in {DATE}

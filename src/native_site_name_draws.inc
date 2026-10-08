@@ -1,6 +1,5 @@
 // Exact native site-name draws keep the world_site identity alongside the
 // displayed buffer. Equal spellings never borrow another site's type/name.
-#ifdef _WIN32
 static void capture_native_site_name_draw(graphicst *graphics,
         const NativeString *source, uintptr_t site, int name_right) {
     NativeInputCallbackScope callback;
@@ -16,9 +15,14 @@ static void capture_native_site_name_draw(graphicst *graphics,
                 capture_native_history_name(base, address, name) &&
                 capture_native_history_site_name_context(base, site, name))
             owned = true;
-        if (owned && graphics && caller == native_pe_address(base, 0xd417e6) &&
+#ifdef _WIN32
+        const bool catalog_name = caller == native_pe_address(base, 0xd417e6);
+#else
+        const bool catalog_name = caller == native_reference_address(base, 0x18eee77);
+#endif
+        if (owned && graphics && catalog_name &&
                 name_right > graphics->screenx && name_right <= graphics->dimx) {
-            // d417ea starts the independent type column at window-right-20.
+            // Both catalogs start the independent type column at window-right-20.
             // This logical name-column bound belongs only to capture. Native
             // drawing keeps its original clip and width-zero argument.
             name_clip = std::array<long, 4>{graphics->clipx[0],
@@ -37,6 +41,7 @@ static void capture_native_site_name_draw(graphicst *graphics,
         NativeLocationPickerField::None, NativeTravelBuildingField::None, caller, name_clip);
 }
 
+#ifdef _WIN32
 static bool append_native_site_name_draw_calls(std::vector<NativeCall> &calls) {
     // Legends Site rows: 7db20 resolves the actual site into RDI at d4164b;
     // d417e1 draws only [rbp+128]'s name/quoted-gloss field. The separate
@@ -62,5 +67,22 @@ static bool append_native_site_name_draw_calls(std::vector<NativeCall> &calls) {
     return true;
 }
 #else
-static bool append_native_site_name_draw_calls(std::vector<NativeCall> &) { return true; }
+static bool append_native_site_name_draw_calls(std::vector<NativeCall> &calls) {
+    // The world view retains its site at +1f8. Legends keeps the resolved
+    // site in R13, and adventure's travel card retains it at caller[RSP].
+    const std::vector<NativeCall> site_calls{
+        {0x142f671,0x425170,reinterpret_cast<const void *>(&capture_native_site_name_draw),
+            {0x48,0x8b,0x85,0x90,0xfc,0xff,0xff,0x48,0x8b,0x90,0xf8,0x01,0x00,0x00}},
+        {0x1ceee72,0x425170,reinterpret_cast<const void *>(&capture_native_site_name_draw),
+            {0x4c,0x89,0xea,0x8b,0x4c,0x24,0x18,0x83,0xe9,0x14}},
+        {0x1259c09,0x425170,reinterpret_cast<const void *>(&capture_native_site_name_draw),
+            {0x48,0x8b,0x54,0x24,0x08}},
+        {0x1259c63,0x425170,reinterpret_cast<const void *>(&capture_native_site_name_draw),
+            {0x48,0x8b,0x54,0x24,0x08}},
+        {0x12614ae,0x425170,reinterpret_cast<const void *>(&capture_native_site_name_draw),
+            {0x48,0x8b,0x54,0x24,0x08}},
+    };
+    calls.insert(calls.end(),site_calls.begin(),site_calls.end());
+    return true;
+}
 #endif

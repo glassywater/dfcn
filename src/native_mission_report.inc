@@ -4,7 +4,6 @@
 // 72080 (flags=0), translated=true, glyphs_only=false, then wrap at 53 bytes.
 // Recover the retained ordinary textbox from those same records. Nothing in
 // the active report, its playback state, or its native strings is modified.
-#ifdef _WIN32
 struct NativeMissionReportScratch {
     uintptr_t base;
     NativeString source = native_empty_string();
@@ -14,6 +13,7 @@ struct NativeMissionReportScratch {
     NativeMissionReportScratch(const NativeMissionReportScratch &) = delete;
     NativeMissionReportScratch &operator=(const NativeMissionReportScratch &) = delete;
     ~NativeMissionReportScratch() {
+#ifdef _WIN32
         // 8e7310/8e7440 allocate each row as a native 32-byte string and
         // retain its pointer in a native vector. Release both with DF's
         // allocator, as the native textbox destructor does.
@@ -28,6 +28,20 @@ struct NativeMissionReportScratch {
         }
         reinterpret_cast<void (*)(void *)>(native_pe_address(base, 0x66b70))(&rows);
         destroy_string(&source);
+#else
+        const auto release = reinterpret_cast<void (*)(void *, size_t)>(
+            dlsym(RTLD_DEFAULT, "_ZdlPvm"));
+        if (!release) return;
+        for (size_t index = 0; index < rows.size(); ++index) {
+            auto *row = reinterpret_cast<NativeString *>(rows.begin[index]);
+            if (!row) continue;
+            row->~NativeString();
+            release(row, sizeof(NativeString));
+        }
+        if (rows.begin) release(rows.begin,
+            (reinterpret_cast<uintptr_t>(rows.capacity) -
+                reinterpret_cast<uintptr_t>(rows.begin)));
+#endif
     }
 };
 
@@ -58,11 +72,11 @@ static bool same_native_mission_report_rows(const std::vector<NativeMissionRepor
 static void update_native_mission_report_display(uintptr_t screen,
         std::vector<NativeMissionReportParagraph> &paragraphs) {
     NativeBorrowedVector<int32_t> colors;
-    const bool have_colors = native_history_copy(screen + 0x83a0, colors) &&
+    const bool have_colors = native_history_copy(native_history_object_member(screen, "viewscreen_worldst", "mission_text_box_color"), colors) &&
         colors.valid(kNativeHistoryCaptureTokens);
     int32_t fade_timer = 0, fade_start = 0;
-    const bool have_fade = native_history_copy(screen + 0x83c8, fade_timer) &&
-        native_history_copy(screen + 0x83cc, fade_start);
+    const bool have_fade = native_history_copy(native_history_object_member(screen, "viewscreen_worldst", "mission_fade_in_timer"), fade_timer) &&
+        native_history_copy(native_history_object_member(screen, "viewscreen_worldst", "mission_fade_start_ind"), fade_start);
     const auto *graphics = native_graphics();
     size_t first = 0;
     for (auto &paragraph : paragraphs) {
@@ -86,10 +100,8 @@ static void update_native_mission_report_display(uintptr_t screen,
         first = end;
     }
 }
-#endif
 
 static std::vector<NativeMissionReportParagraph> native_mission_report_paragraphs() {
-#ifdef _WIN32
     NativeHistoryCallbackScope callback;
     struct Cache {
         uintptr_t report = 0, owner = 0;
@@ -108,12 +120,12 @@ static std::vector<NativeMissionReportParagraph> native_mission_report_paragraph
         // panel with viewscreen_worldst.page(+1b4)==5.
         if (!screen || g_native_history_sentence_slot != 0xd0 || !g_real_native_paragraph ||
                 !native_history_object_is(screen, "viewscreen_worldst") ||
-                !native_history_copy(screen + 0x1b4, mode) || mode != 5 ||
-                !native_history_copy(screen + 0x8368, report) || !report) {
+                !native_history_copy(native_history_object_member(screen, "viewscreen_worldst", "view_mode"), mode) || mode != 5 ||
+                !native_history_copy(native_history_object_member(screen, "viewscreen_worldst", "active_mission_report"), report) || !report) {
             cache = {};
             return {};
         }
-        const uintptr_t owner = screen + 0x8388;
+        const uintptr_t owner = native_history_object_member(screen, "viewscreen_worldst", "mission_text_box.text");
         std::vector<NativeMissionReportRow> live;
         if (!copy_native_mission_report_rows(owner, live) || live.empty()) {
             cache = {};
@@ -185,7 +197,9 @@ static std::vector<NativeMissionReportParagraph> native_mission_report_paragraph
             int32_t type = -1;
             if (!capture_native_history_event_identity(reinterpret_cast<void *>(event), type)) continue;
             alignas(16) std::array<unsigned char, 0xc8> context{};
-            reinterpret_cast<void *(*)(void *)>(native_pe_address(base, 0x72080))(context.data());
+            initialize_native_history_context(context.data());
+            const uint32_t context_flags = 0;
+            std::memcpy(context.data(), &context_flags, sizeof(context_flags));
             NativeMissionReportScratch scratch(base);
             capture_native_history_sentence_range(reinterpret_cast<void *>(event),
                 &scratch.source, context.data(), true, false, 0);
@@ -248,6 +262,5 @@ static std::vector<NativeMissionReportParagraph> native_mission_report_paragraph
         update_native_mission_report_display(screen, cache.paragraphs);
         return cache.paragraphs;
     } catch (...) {}
-#endif
     return {};
 }

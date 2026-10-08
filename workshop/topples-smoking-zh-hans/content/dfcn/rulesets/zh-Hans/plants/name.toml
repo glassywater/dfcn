@@ -1,0 +1,12 @@
+base = "plants::name"
+
+[[rulesets]]
+name = "singular"
+[rulesets.rules]
+"{::materials::subscribed_smoking}" = "{::materials::subscribed_smoking}"
+
+[[rulesets]]
+name = "plural"
+[rulesets.rules]
+"{::materials::subscribed_smoking}" = "{::materials::subscribed_smoking}"
+

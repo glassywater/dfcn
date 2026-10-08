@@ -1,0 +1,84 @@
+base = "subscribed_books::narrative_vocabulary"
+
+[[rulesets]]
+name = "person"
+[rulesets.rules]
+"the fallen" = "逝者"
+"the killer" = "凶手"
+"unknown forces" = "不明力量"
+"The stranger" = "陌生人"
+"a terrible beast" = "可怕的野兽"
+"an unknown force" = "不明力量"
+"cruel fate" = "残酷的命运"
+"{::subscribed_books::speech::bystander}" = "{::subscribed_books::speech::bystander}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"the fortress" = "要塞"
+"the settlement" = "聚落"
+"the village" = "村庄"
+"the citadel" = "堡垒"
+"the outpost" = "前哨"
+"the stronghold" = "据点"
+"the hall" = "大厅"
+"the keep" = "城堡"
+"the harbor" = "港口"
+"the crossroads" = "十字路口"
+"the frontier" = "边疆"
+"the mountain hold" = "山间堡垒"
+"the river town" = "河畔城镇"
+"the market square" = "集市广场"
+"the old quarter" = "老城区"
+"the land" = "这片土地"
+"the people" = "人民"
+
+[[rulesets]]
+name = "entity"
+[rulesets.rules]
+"the group" = "这个组织"
+
+[[rulesets]]
+name = "relation"
+[rulesets.rules]
+"friend" = "朋友"
+"family" = "家人"
+"enemy" = "敌人"
+"ally" = "盟友"
+"rival" = "对手"
+
+[[rulesets]]
+name = "role"
+[rulesets.rules]
+"a role" = "一个职位"
+"position" = "任职者"
+"member" = "成员"
+"former member" = "前成员"
+"slave" = "奴隶"
+"prisoner" = "囚徒"
+"squad" = "小队成员"
+"enemy" = "敌人"
+"criminal" = "罪犯"
+"hero" = "英雄"
+"religious member" = "宗教成员"
+[[rulesets]]
+name = "role"
+[rulesets.rules]
+"none" = "无职务"
+"mercenary" = "雇佣兵"
+"former mercenary" = "前雇佣兵"
+"former slave" = "曾经的奴隶"
+"former prisoner" = "前囚徒"
+"former position" = "卸任者"
+"position claim" = "职位宣称者"
+"former squad" = "前小队成员"
+"occupation" = "任职者"
+"former occupation" = "离职者"
+"resident" = "居民"
+
+# 声明内生成变化的规范形变体；原作者句式保留。
+[[rulesets]]
+name = "person"
+[rulesets.rules]
+"a unknown force" = "不明力量"
+

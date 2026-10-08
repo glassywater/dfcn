@@ -1,0 +1,27 @@
+base = "whaleys_dogs::names"
+
+[[rulesets]]
+name = "singular"
+[rulesets.rules]
+"shiba inu" = "柴犬"
+"rottweiler" = "罗威纳犬"
+"pug" = "巴哥犬"
+"husky" = "哈士奇"
+"dachshund" = "腊肠犬"
+"corgi" = "柯基犬"
+"chihuahua" = "吉娃娃"
+"bulldog" = "斗牛犬"
+"puppy" = "幼犬"
+
+[[rulesets]]
+name = "plural"
+[rulesets.rules]
+"shiba inus" = "柴犬"
+"rottweilers" = "罗威纳犬"
+"pugs" = "巴哥犬"
+"huskies" = "哈士奇"
+"dachshunds" = "腊肠犬"
+"corgis" = "柯基犬"
+"chihuahuas" = "吉娃娃"
+"bulldogs" = "斗牛犬"
+"puppies" = "幼犬"

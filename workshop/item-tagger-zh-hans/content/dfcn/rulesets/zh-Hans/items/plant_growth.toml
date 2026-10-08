@@ -1,0 +1,7 @@
+base = "items::plant_growth"
+
+[[rulesets]]
+name = "main"
+[rulesets.rules]
+"{::plants::growth::singular}{::item_tagger::tags}" = "{::plants::growth::singular}{::item_tagger::tags}"
+"{::plants::growth::plural}{::item_tagger::tags}" = "{::plants::growth::plural}{::item_tagger::tags}"

@@ -1,0 +1,1589 @@
+# ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c; read-only binary extraction, no game execution
+owner	function	instruction	call
+historical figure reference	0xa10320	0xa103c5	call   8377e0
+historical figure reference	0xa10320	0xa10456	call   99cd30
+historical figure reference	0xa10320	0xa104be	call   12c58d0
+historical figure reference	0xa10320	0xa104d0	call   837660
+historical figure reference	0xa10320	0xa104eb	call   423790
+historical figure reference	0xa10320	0xa10502	call   8377e0
+historical figure reference	0xa10320	0xa106f0	call   8377e0
+historical figure reference	0xa10320	0xa1073b	call   8377e0
+historical figure reference	0xa10320	0xa10772	call   12ae800
+historical figure reference	0xa10320	0xa10784	call   837660
+historical figure reference	0xa10320	0xa107b1	call   8377e0
+historical figure reference	0xa10320	0xa107ce	call   423790
+historical figure reference	0xa10320	0xa107f0	call   12c58d0
+historical figure reference	0xa10320	0xa1081a	call   99c5b0
+historical figure reference	0xa10320	0xa10875	call   12c58d0
+historical figure reference	0xa10320	0xa10887	call   837660
+historical figure reference	0xa10320	0xa108a2	call   8377e0
+historical figure reference	0xa10320	0xa108b0	call   423830
+historical figure reference	0xa10320	0xa108bf	call   8377e0
+historical figure reference	0xa10320	0xa10912	call   8377e0
+historical figure reference	0xa10320	0xa10950	call   12c58d0
+historical figure reference	0xa10320	0xa10962	call   837660
+historical figure reference	0xa10320	0xa109a1	call   8377e0
+historical figure reference	0xa10320	0xa109c9	call   423790
+historical figure reference	0xa10320	0xa10a2d	call   b05af0
+historical figure reference	0xa10320	0xa10a44	call   837660
+historical figure reference	0xa10320	0xa10a7a	call   8377e0
+historical figure reference	0xa10320	0xa10a9c	call   8377e0
+historical figure reference	0xa10320	0xa10ae7	call   8377e0
+historical figure reference	0xa10320	0xa10b22	call   12ae800
+historical figure reference	0xa10320	0xa10b34	call   837660
+historical figure reference	0xa10320	0xa10b65	call   423790
+historical figure reference	0xa10320	0xa10ba0	call   8377e0
+historical figure reference	0xa10320	0xa10bb8	call   837660
+historical figure reference	0xa10320	0xa10bc9	call   8377e0
+historical figure reference	0xa10320	0xa10bdd	call   8377e0
+historical figure reference	0xa10320	0xa10c28	call   8377e0
+historical figure reference	0xa10320	0xa10c5f	call   12ae800
+historical figure reference	0xa10320	0xa10c71	call   837660
+historical figure reference	0xa10320	0xa10ca6	call   423790
+historical figure reference	0xa10320	0xa10d00	call   8377e0
+historical figure reference	0xa10320	0xa10d3e	call   b05af0
+historical figure reference	0xa10320	0xa10d54	call   b05af0
+historical figure reference	0xa10320	0xa10d6a	call   b05af0
+historical figure reference	0xa10320	0xa10d88	call   8377e0
+historical figure reference	0xa10320	0xa10da0	call   837660
+historical figure reference	0xa10320	0xa10db4	call   8377e0
+historical figure reference	0xa10320	0xa10dc8	call   8377e0
+historical figure reference	0xa10320	0xa10de0	call   837660
+historical figure reference	0xa10320	0xa10df4	call   8377e0
+historical figure reference	0xa10320	0xa10e0b	call   423c70
+unit activity with native colors	0xb70720	0xb707cb	call   b31060
+unit activity with native colors	0xb70720	0xb707df	call   1b94c80
+unit activity with native colors	0xb70720	0xb70820	call   QWORD PTR [rax+0xb8]
+unit activity with native colors	0xb70720	0xb70860	call   b29ad0
+unit activity with native colors	0xb70720	0xb7087c	call   QWORD PTR [rax+0x48]
+unit activity with native colors	0xb70720	0xb708bd	call   b2a590
+unit activity with native colors	0xb70720	0xb70973	call   b31210
+unit activity with native colors	0xb70720	0xb70989	call   QWORD PTR [rax+0x68]
+unit activity with native colors	0xb70720	0xb70ad5	call   1282df0
+unit activity with native colors	0xb70720	0xb70b3b	call   b05af0
+unit activity with native colors	0xb70720	0xb70b54	call   QWORD PTR [rax+0x48]
+unit activity with native colors	0xb70720	0xb70bab	call   QWORD PTR [rax+0xb8]
+unit activity with native colors	0xb70720	0xb70d35	call   1b90550
+unit activity with native colors	0xb70720	0xb70e17	call   b05af0
+unit activity with native colors	0xb70720	0xb70e4a	call   b05af0
+unit activity with native colors	0xb70720	0xb70eeb	call   QWORD PTR [rax]
+unit activity with native colors	0xb70720	0xb70f22	call   b0bdf0
+unit activity with native colors	0xb70720	0xb70f47	call   QWORD PTR [rax+0x38]
+unit activity with native colors	0xb70720	0xb70f57	call   b0b420
+unit activity with native colors	0xb70720	0xb70f8e	call   b0c040
+unit activity with native colors	0xb70720	0xb71022	call   b05af0
+unit activity with native colors	0xb70720	0xb71223	call   69f9b0
+unit activity with native colors	0xb70720	0xb714e7	call   b05af0
+unit activity with native colors	0xb70720	0xb71500	call   b05af0
+unit activity with native colors	0xb70720	0xb71519	call   423c70
+unit activity with native colors	0xb70720	0xb71535	call   69f9b0
+unit activity with native colors	0xb70720	0xb71566	call   69f9b0
+unit activity with native colors	0xb70720	0xb71595	call   837b90
+unit activity with native colors	0xb70720	0xb715b4	call   69f9b0
+unit activity with native colors	0xb70720	0xb715d3	call   69f9b0
+unit activity with native colors	0xb70720	0xb71602	call   837b90
+unit activity with native colors	0xb70720	0xb71615	call   b266c0
+unit activity with native colors	0xb70720	0xb71650	call   b05af0
+unit activity with native colors	0xb70720	0xb71689	call   837b90
+unit activity with native colors	0xb70720	0xb716ae	call   b05af0
+unit activity with native colors	0xb70720	0xb716d1	call   b05af0
+unit activity with native colors	0xb70720	0xb716e5	call   b05af0
+unit activity with native colors	0xb70720	0xb71750	call   423690
+unit activity with native colors	0xb70720	0xb71783	call   423690
+unit activity with native colors	0xb70720	0xb71790	call   423690
+unit activity with native colors	0xb70720	0xb717b2	call   423690
+unit activity with native colors	0xb70720	0xb717f6	call   837b90
+unit activity with native colors	0xb70720	0xb71825	call   423690
+unit activity with native colors	0xb70720	0xb7184b	call   b05af0
+unit activity with native colors	0xb70720	0xb71878	call   423690
+unit activity with native colors	0xb70720	0xb718b0	call   b57a80
+unit activity with native colors	0xb70720	0xb718c1	call   4244b0
+unit activity with native colors	0xb70720	0xb718fd	call   b57a80
+unit activity with native colors	0xb70720	0xb71911	call   b57a80
+unit activity with native colors	0xb70720	0xb71925	call   b57a80
+unit activity with native colors	0xb70720	0xb71939	call   b57a80
+unit activity with native colors	0xb70720	0xb7194d	call   b57a80
+unit activity with native colors	0xb70720	0xb71961	call   b57a80
+unit activity with native colors	0xb70720	0xb71975	call   b57a80
+unit activity with native colors	0xb70720	0xb71989	call   b57a80
+unit activity with native colors	0xb70720	0xb7199d	call   b57a80
+unit activity with native colors	0xb70720	0xb719b1	call   b57a80
+unit activity with native colors	0xb70720	0xb719c5	call   b57a80
+unit activity with native colors	0xb70720	0xb719d9	call   b57a80
+unit activity with native colors	0xb70720	0xb719ed	call   b57a80
+unit activity with native colors	0xb70720	0xb71a01	call   b57a80
+unit activity with native colors	0xb70720	0xb71a15	call   b57a80
+unit activity with native colors	0xb70720	0xb71a29	call   b57a80
+unit activity with native colors	0xb70720	0xb71a3d	call   b57a80
+unit activity with native colors	0xb70720	0xb71a51	call   b57a80
+unit activity with native colors	0xb70720	0xb71a65	call   b57a80
+unit activity with native colors	0xb70720	0xb71a79	call   b57a80
+unit activity with native colors	0xb70720	0xb71a8d	call   b57a80
+unit activity with native colors	0xb70720	0xb71aa1	call   b57a80
+unit activity text	0xb79d40	0xb79dc5	call   b31060
+unit activity text	0xb79d40	0xb79dd5	call   1b94c80
+unit activity text	0xb79d40	0xb79ded	call   QWORD PTR [rax+0xb8]
+unit activity text	0xb79d40	0xb79e28	call   b29ad0
+unit activity text	0xb79d40	0xb79e3e	call   QWORD PTR [rax+0x48]
+unit activity text	0xb79d40	0xb79e4c	call   b31210
+unit activity text	0xb79d40	0xb79e62	call   QWORD PTR [rax+0x68]
+unit activity text	0xb79d40	0xb79fce	call   1282df0
+unit activity text	0xb79d40	0xb7a008	call   b05af0
+unit activity text	0xb79d40	0xb7a020	call   QWORD PTR [rax+0x48]
+unit activity text	0xb79d40	0xb7a096	call   b2a590
+unit activity text	0xb79d40	0xb7a1ba	call   QWORD PTR [rax]
+unit activity text	0xb79d40	0xb7a1f2	call   b0bdf0
+unit activity text	0xb79d40	0xb7a21c	call   QWORD PTR [rax+0x38]
+unit activity text	0xb79d40	0xb7a231	call   b0b420
+unit activity text	0xb79d40	0xb7a266	call   b0c040
+unit activity text	0xb79d40	0xb7a2c6	call   b05af0
+unit activity text	0xb79d40	0xb7a4b7	call   69f9b0
+unit activity text	0xb79d40	0xb7a4df	call   1b90550
+unit activity text	0xb79d40	0xb7a5ea	call   b05af0
+unit activity text	0xb79d40	0xb7a609	call   69f9b0
+unit activity text	0xb79d40	0xb7a6a1	call   b57a80
+unit activity text	0xb79d40	0xb7a6b5	call   b57a80
+unit activity text	0xb79d40	0xb7a6c9	call   b57a80
+unit activity text	0xb79d40	0xb7a6dd	call   b57a80
+unit activity text	0xb79d40	0xb7a6f1	call   b57a80
+unit activity text	0xb79d40	0xb7a705	call   b57a80
+unit activity text	0xb79d40	0xb7a719	call   b57a80
+unit activity text	0xb79d40	0xb7a72d	call   b57a80
+unit activity text	0xb79d40	0xb7a741	call   b57a80
+unit activity text	0xb79d40	0xb7a755	call   b57a80
+unit activity text	0xb79d40	0xb7a769	call   b57a80
+unit activity text	0xb79d40	0xb7a77d	call   b57a80
+unit activity text	0xb79d40	0xb7a791	call   b57a80
+unit activity text	0xb79d40	0xb7a7a5	call   b57a80
+unit activity text	0xb79d40	0xb7a7b9	call   b57a80
+unit activity text	0xb79d40	0xb7a7cd	call   b57a80
+unit activity text	0xb79d40	0xb7a7e1	call   b57a80
+unit activity text	0xb79d40	0xb7a7f5	call   b57a80
+unit activity text	0xb79d40	0xb7a809	call   b57a80
+unit activity text	0xb79d40	0xb7a81d	call   b57a80
+unit activity text	0xb79d40	0xb7a831	call   b57a80
+unit activity text	0xb79d40	0xb7a845	call   b57a80
+unit activity text	0xb79d40	0xb7ab16	call   423c70
+unit activity text	0xb79d40	0xb7aba2	call   69f9b0
+unit activity text	0xb79d40	0xb7abc1	call   69f9b0
+unit activity text	0xb79d40	0xb7ac25	call   837b90
+unit activity text	0xb79d40	0xb7ac44	call   69f9b0
+unit activity text	0xb79d40	0xb7ac57	call   b266c0
+unit activity text	0xb79d40	0xb7ac83	call   b05af0
+unit activity text	0xb79d40	0xb7aca2	call   69f9b0
+unit activity text	0xb79d40	0xb7acc1	call   69f9b0
+unit activity text	0xb79d40	0xb7ace0	call   69f9b0
+unit activity text	0xb79d40	0xb7acff	call   69f9b0
+unit activity text	0xb79d40	0xb7ad2e	call   837b90
+unit activity text	0xb79d40	0xb7ad71	call   837b90
+unit activity text	0xb79d40	0xb7ade2	call   b05af0
+unit activity text	0xb79d40	0xb7ae11	call   837b90
+unit activity text	0xb79d40	0xb7ae4b	call   423690
+unit activity text	0xb79d40	0xb7ae7e	call   423690
+unit activity text	0xb79d40	0xb7ae98	call   423690
+unit activity text	0xb79d40	0xb7aecb	call   423690
+unit activity text	0xb79d40	0xb7af1c	call   b57a80
+unit activity text	0xb79d40	0xb7af42	call   b05af0
+unit activity text	0xb79d40	0xb7af65	call   b05af0
+unit activity text	0xb79d40	0xb7af9c	call   423690
+unit activity text	0xb79d40	0xb7afd3	call   423690
+unit activity text	0xb79d40	0xb7b002	call   423690
+unit activity text	0xb79d40	0xb7b00f	call   423690
+unit activity text	0xb79d40	0xb7b06d	call   4244b0
+unit activity text	0xb79d40	0xb7b075	call   423690
+unit activity text	0xb79d40	0xb7b0aa	call   423690
+English language_name groups	0x12c58d0	0x12c5967	call   127f7f0
+English language_name groups	0x12c58d0	0x12c5976	call   424200
+English language_name groups	0x12c58d0	0x12c59e0	call   423790
+English language_name groups	0x12c58d0	0x12c5b8b	call   1cc3980
+English language_name groups	0x12c58d0	0x12c5ba2	call   1cc3980
+English language_name groups	0x12c58d0	0x12c5bc4	call   424200
+English language_name groups	0x12c58d0	0x12c5bd6	call   837660
+English language_name groups	0x12c58d0	0x12c5bf4	call   423790
+English language_name groups	0x12c58d0	0x12c5c4e	call   1cc3980
+English language_name groups	0x12c58d0	0x12c5cea	call   424200
+English language_name groups	0x12c58d0	0x12c5d5e	call   1cc3980
+English language_name groups	0x12c58d0	0x12c5de9	call   424200
+English language_name groups	0x12c58d0	0x12c5e34	call   423690
+English language_name groups	0x12c58d0	0x12c5e75	call   1cc3980
+English language_name groups	0x12c58d0	0x12c5f00	call   424200
+English language_name groups	0x12c58d0	0x12c5f26	call   127f7f0
+English language_name groups	0x12c58d0	0x12c5fd5	call   423790
+English language_name groups	0x12c58d0	0x12c6006	call   1cc3980
+English language_name groups	0x12c58d0	0x12c609f	call   837660
+English language_name groups	0x12c58d0	0x12c60bf	call   423790
+English language_name groups	0x12c58d0	0x12c60e3	call   423690
+English language_name groups	0x12c58d0	0x12c6154	call   1cc3980
+English language_name groups	0x12c58d0	0x12c61f0	call   424200
+English language_name groups	0x12c58d0	0x12c6202	call   837660
+English language_name groups	0x12c58d0	0x12c621e	call   423790
+English language_name groups	0x12c58d0	0x12c6235	call   69f9b0
+English language_name groups	0x12c58d0	0x12c6353	call   423690
+English language_name groups	0x12c58d0	0x12c636b	call   424200
+English language_name groups	0x12c58d0	0x12c638b	call   423690
+English language_name groups	0x12c58d0	0x12c63b3	call   423690
+English language_name groups	0x12c58d0	0x12c63db	call   423690
+English language_name groups	0x12c58d0	0x12c64f2	call   8377e0
+English language_name groups	0x12c58d0	0x12c6542	call   423860
+English language_name groups	0x12c58d0	0x12c656b	call   423690
+English language_name groups	0x12c58d0	0x12c6587	call   423790
+English language_name groups	0x12c58d0	0x12c65a5	call   69f9b0
+English language_name groups	0x12c58d0	0x12c6602	call   423860
+English language_name groups	0x12c58d0	0x12c662b	call   423690
+English language_name groups	0x12c58d0	0x12c6647	call   423790
+English language_name groups	0x12c58d0	0x12c66eb	call   423860
+English language_name groups	0x12c58d0	0x12c6714	call   423690
+English language_name groups	0x12c58d0	0x12c6730	call   423790
+English language_name groups	0x12c58d0	0x12c678b	call   423860
+English language_name groups	0x12c58d0	0x12c67b4	call   423690
+English language_name groups	0x12c58d0	0x12c67d0	call   423790
+English language_name groups	0x12c58d0	0x12c67ed	call   69f9b0
+English language_name groups	0x12c58d0	0x12c687f	call   69f9b0
+English language_name groups	0x12c58d0	0x12c6895	call   69f9b0
+English language_name groups	0x12c58d0	0x12c690d	call   69f9b0
+English language_name groups	0x12c58d0	0x12c6925	call   69f9b0
+English language_name groups	0x12c58d0	0x12c69af	call   69f9b0
+English language_name groups	0x12c58d0	0x12c6a60	call   4236b0
+English language_name groups	0x12c58d0	0x12c6aa5	call   69f9b0
+English language_name groups	0x12c58d0	0x12c6ac5	call   69f9b0
+English language_name groups	0x12c58d0	0x12c6af5	call   69f9b0
+English language_name groups	0x12c58d0	0x12c6b65	call   69f9b0
+English language_name groups	0x12c58d0	0x12c6b87	call   69f9b0
+English language_name groups	0x12c58d0	0x12c6bad	call   69f9b0
+English language_name groups	0x12c58d0	0x12c6bd5	call   69f9b0
+English language_name groups	0x12c58d0	0x12c6bf6	call   69f9b0
+English language_name groups	0x12c58d0	0x12c6c14	call   69f9b0
+English language_name groups	0x12c58d0	0x12c6c57	call   69f9b0
+English language_name groups	0x12c58d0	0x12c6c83	call   8377e0
+English language_name groups	0x12c58d0	0x12c6c97	call   8377e0
+English language_name groups	0x12c58d0	0x12c6cea	call   69f9b0
+English language_name groups	0x12c58d0	0x12c6d09	call   69f9b0
+English language_name groups	0x12c58d0	0x12c6d3f	call   8377e0
+English language_name groups	0x12c58d0	0x12c6d67	call   423c70
+English language_name groups	0x12c58d0	0x12c6d73	call   4244b0
+English language_name groups	0x12c58d0	0x12c6d7f	call   4244b0
+English language_name groups	0x12c58d0	0x12c6d8b	call   4244b0
+English language_name groups	0x12c58d0	0x12c6d97	call   4244b0
+English language_name groups	0x12c58d0	0x12c6da3	call   4244b0
+English language_name groups	0x12c58d0	0x12c6daf	call   4244b0
+English language_name groups	0x12c58d0	0x12c6dbb	call   4244b0
+English language_name groups	0x12c58d0	0x12c6dc7	call   4244b0
+English language_name groups	0x12c58d0	0x12c6dd3	call   4244b0
+English language_name groups	0x12c58d0	0x12c6ddf	call   4244b0
+English language_name groups	0x12c58d0	0x12c6deb	call   4244b0
+English language_name groups	0x12c58d0	0x12c6df7	call   4244b0
+English language_name groups	0x12c58d0	0x12c6e03	call   4244b0
+English language_name groups	0x12c58d0	0x12c6e0f	call   4244b0
+sphere definite article	0x14f0240	0x14f02b9	call   14e7b20
+sphere definite article	0x14f0240	0x14f0308	call   423790
+sphere definite article	0x14f0240	0x14f0343	call   423690
+sphere definite article	0x14f0240	0x14f0355	call   69f9b0
+sphere definite article	0x14f0240	0x14f03c2	call   69f9b0
+sphere definite article	0x14f0240	0x14f0435	call   423690
+sphere definite article	0x14f0240	0x14f043f	call   423690
+sphere definite article	0x14f0240	0x14f0469	call   423c70
+skill action nouns	0x1502f40	0x1503baf	call   69f9b0
+skill action nouns	0x1502f40	0x1503bd5	call   69f9b0
+skill action nouns	0x1502f40	0x1503bfb	call   69f9b0
+skill action nouns	0x1502f40	0x1503c30	call   69f9b0
+skill action nouns	0x1502f40	0x1503cc7	call   4244b0
+activity_event_make_believest	0x1762120	0x17621c2	call   69f9b0
+activity_event_make_believest	0x1762120	0x17621f8	call   423690
+activity_event_make_believest	0x1762120	0x1762205	call   423690
+activity_event_fill_service_orderst	0x1766e00	0x1766ed4	call   17ae770
+activity_event_fill_service_orderst	0x1766e00	0x1766efe	call   b05af0
+activity_event_fill_service_orderst	0x1766e00	0x1766f40	call   12b6a70
+activity_event_fill_service_orderst	0x1766e00	0x1766f4c	call   424200
+activity_event_fill_service_orderst	0x1766e00	0x1766f5c	call   837660
+activity_event_fill_service_orderst	0x1766e00	0x1766f72	call   423790
+activity_event_fill_service_orderst	0x1766e00	0x1767002	call   69f9b0
+activity_event_fill_service_orderst	0x1766e00	0x176707d	call   423690
+activity_event_fill_service_orderst	0x1766e00	0x176708a	call   423690
+activity_event_fill_service_orderst	0x1766e00	0x17670b5	call   423c70
+activity_event_ranged_practicest	0x17670d0	0x1767258	call   b13dc0
+activity_event_ranged_practicest	0x17670d0	0x176726f	call   1907960
+activity_event_ranged_practicest	0x17670d0	0x17672ed	call   69f9b0
+activity_event_ranged_practicest	0x17670d0	0x176731f	call   69f9b0
+activity_event_ranged_practicest	0x17670d0	0x1767330	call   423c70
+activity_event_ranged_practicest	0x17670d0	0x176733c	call   4244b0
+activity_event_individual_skill_drillst	0x1767350	0x176750b	call   b13dc0
+activity_event_individual_skill_drillst	0x1767350	0x1767522	call   1907960
+activity_event_individual_skill_drillst	0x1767350	0x1767615	call   69f9b0
+activity_event_individual_skill_drillst	0x1767350	0x176763f	call   69f9b0
+activity_event_individual_skill_drillst	0x1767350	0x1767662	call   69f9b0
+activity_event_individual_skill_drillst	0x1767350	0x1767676	call   423c70
+activity_event_individual_skill_drillst	0x1767350	0x1767682	call   4244b0
+activity_event_prayerst	0x1767690	0x1767770	call   14f0240
+activity_event_prayerst	0x1767690	0x1767778	call   424200
+activity_event_prayerst	0x1767690	0x17677c7	call   423690
+activity_event_prayerst	0x1767690	0x17677f1	call   423790
+activity_event_prayerst	0x1767690	0x1767835	call   69f9b0
+activity_event_prayerst	0x1767690	0x1767998	call   a10320
+activity_event_prayerst	0x1767690	0x17679ad	call   69f9b0
+activity_event_prayerst	0x1767690	0x1767a05	call   69f9b0
+activity_event_prayerst	0x1767690	0x1767a1a	call   423c70
+activity_event_prayerst	0x1767690	0x1767a26	call   4244b0
+activity_event_writest	0x1767a40	0x1767afc	call   1edc6d0
+activity_event_writest	0x1767a40	0x1767b04	call   424200
+activity_event_writest	0x1767a40	0x1767b58	call   423790
+activity_event_writest	0x1767a40	0x1767bd3	call   423690
+activity_event_writest	0x1767a40	0x1767c82	call   69f9b0
+activity_event_writest	0x1767a40	0x1767ca2	call   69f9b0
+activity_event_writest	0x1767a40	0x1767cb5	call   69f9b0
+activity_event_writest	0x1767a40	0x1767d14	call   423690
+activity_event_writest	0x1767a40	0x1767d48	call   423690
+activity_event_writest	0x1767a40	0x1767d55	call   423690
+activity_event_writest	0x1767a40	0x1767d72	call   423690
+activity_event_writest	0x1767a40	0x1767db6	call   423c70
+activity_event_discuss_topicst	0x1767dd0	0x1767e7a	call   69f9b0
+activity_event_discuss_topicst	0x1767dd0	0x1767efa	call   1edc6d0
+activity_event_discuss_topicst	0x1767dd0	0x1767f02	call   424200
+activity_event_discuss_topicst	0x1767dd0	0x1767f3e	call   423690
+activity_event_discuss_topicst	0x1767dd0	0x1767f65	call   423790
+activity_event_discuss_topicst	0x1767dd0	0x1767f75	call   69f9b0
+activity_event_discuss_topicst	0x1767dd0	0x1767fc8	call   423690
+activity_event_discuss_topicst	0x1767dd0	0x1767fd5	call   423690
+activity_event_discuss_topicst	0x1767dd0	0x1767fff	call   423c70
+activity_event_ponder_topicst	0x1768010	0x17680c2	call   69f9b0
+activity_event_ponder_topicst	0x1768010	0x176815a	call   1edc6d0
+activity_event_ponder_topicst	0x1768010	0x1768162	call   424200
+activity_event_ponder_topicst	0x1768010	0x176819e	call   423690
+activity_event_ponder_topicst	0x1768010	0x17681c5	call   423790
+activity_event_ponder_topicst	0x1768010	0x17681d5	call   69f9b0
+activity_event_ponder_topicst	0x1768010	0x1768228	call   423690
+activity_event_ponder_topicst	0x1768010	0x1768235	call   423690
+activity_event_ponder_topicst	0x1768010	0x176825f	call   423c70
+activity_event_copy_written_contentst	0x1768270	0x176837a	call   69f9b0
+activity_event_copy_written_contentst	0x1768270	0x1768432	call   e68020
+activity_event_copy_written_contentst	0x1768270	0x1768475	call   423690
+activity_event_copy_written_contentst	0x1768270	0x176849c	call   423790
+activity_event_copy_written_contentst	0x1768270	0x17684b5	call   69f9b0
+activity_event_copy_written_contentst	0x1768270	0x17684d5	call   69f9b0
+activity_event_copy_written_contentst	0x1768270	0x176852f	call   423690
+activity_event_copy_written_contentst	0x1768270	0x176853c	call   423690
+activity_event_copy_written_contentst	0x1768270	0x1768566	call   423c70
+activity_event_copy_written_contentst	0x1768270	0x1768572	call   4244b0
+activity_event_readst	0x1768590	0x176869a	call   69f9b0
+activity_event_readst	0x1768590	0x1768752	call   e68020
+activity_event_readst	0x1768590	0x1768795	call   423690
+activity_event_readst	0x1768590	0x17687bc	call   423790
+activity_event_readst	0x1768590	0x17687d5	call   69f9b0
+activity_event_readst	0x1768590	0x17687f5	call   69f9b0
+activity_event_readst	0x1768590	0x176884f	call   423690
+activity_event_readst	0x1768590	0x176885c	call   423690
+activity_event_readst	0x1768590	0x1768886	call   423c70
+activity_event_readst	0x1768590	0x1768892	call   4244b0
+activity_event_combat_trainingst	0x17688b0	0x1768ab8	call   b13dc0
+activity_event_combat_trainingst	0x17688b0	0x1768acf	call   1907960
+activity_event_combat_trainingst	0x17688b0	0x1768b5d	call   69f9b0
+activity_event_combat_trainingst	0x17688b0	0x1768bd5	call   69f9b0
+activity_event_combat_trainingst	0x17688b0	0x1768bff	call   69f9b0
+activity_event_combat_trainingst	0x17688b0	0x1768c25	call   69f9b0
+activity_event_combat_trainingst	0x17688b0	0x1768c4a	call   4244b0
+activity_event_combat_trainingst	0x17688b0	0x1768c4f	call   423c70
+activity_event_play_with_toyst	0x1768c60	0x1768dd2	call   69f9b0
+activity_event_play_with_toyst	0x1768c60	0x1768e45	call   69f9b0
+activity_event_play_with_toyst	0x1768c60	0x1768e74	call   e68020
+activity_event_play_with_toyst	0x1768c60	0x1768e7c	call   424f90
+activity_event_play_with_toyst	0x1768c60	0x1768eb7	call   423690
+activity_event_play_with_toyst	0x1768c60	0x1768ede	call   423790
+activity_event_play_with_toyst	0x1768c60	0x1768f05	call   69f9b0
+activity_event_play_with_toyst	0x1768c60	0x1768f48	call   423690
+activity_event_play_with_toyst	0x1768c60	0x1768f55	call   423690
+activity_event_play_with_toyst	0x1768c60	0x1768f7f	call   423c70
+activity_event_play_with_toyst	0x1768c60	0x1768f8b	call   4244b0
+activity_event_sparringst	0x1768fa0	0x1768fff	call   82cb40
+activity_event_sparringst	0x1768fa0	0x17691b8	call   b13dc0
+activity_event_sparringst	0x1768fa0	0x17691cf	call   1907960
+activity_event_sparringst	0x1768fa0	0x1769388	call   b13dc0
+activity_event_sparringst	0x1768fa0	0x176939f	call   1907960
+activity_event_sparringst	0x1768fa0	0x1769425	call   69f9b0
+activity_event_sparringst	0x1768fa0	0x176944e	call   69f9b0
+activity_event_sparringst	0x1768fa0	0x176946d	call   69f9b0
+activity_event_sparringst	0x1768fa0	0x1769489	call   69f9b0
+activity_event_sparringst	0x1768fa0	0x17694b8	call   4244b0
+activity_event_sparringst	0x1768fa0	0x17694bd	call   423c70
+activity_event_teach_topicst	0x176a080	0x176a0ff	call   b05af0
+activity_event_teach_topicst	0x176a080	0x176a152	call   1edc6d0
+activity_event_teach_topicst	0x176a080	0x176a15a	call   424200
+activity_event_teach_topicst	0x176a080	0x176a1a7	call   423690
+activity_event_teach_topicst	0x176a080	0x176a1ce	call   423790
+activity_event_teach_topicst	0x176a080	0x176a2f8	call   423690
+activity_event_teach_topicst	0x176a080	0x176a372	call   69f9b0
+activity_event_teach_topicst	0x176a080	0x176a3aa	call   69f9b0
+activity_event_teach_topicst	0x176a080	0x176a3bd	call   69f9b0
+activity_event_teach_topicst	0x176a080	0x176a3f9	call   423690
+activity_event_teach_topicst	0x176a080	0x176a430	call   423c70
+activity_event_skill_demonstrationst	0x176a450	0x176a5df	call   1502f40
+activity_event_skill_demonstrationst	0x176a450	0x176a62c	call   423690
+activity_event_skill_demonstrationst	0x176a450	0x176a6b6	call   423790
+activity_event_skill_demonstrationst	0x176a450	0x176a718	call   b13dc0
+activity_event_skill_demonstrationst	0x176a450	0x176a72f	call   1907960
+activity_event_skill_demonstrationst	0x176a450	0x176a7c0	call   1502f40
+activity_event_skill_demonstrationst	0x176a450	0x176a7d2	call   837660
+activity_event_skill_demonstrationst	0x176a450	0x176a7e1	call   8377e0
+activity_event_skill_demonstrationst	0x176a450	0x176a875	call   69f9b0
+activity_event_skill_demonstrationst	0x176a450	0x176a885	call   69f9b0
+activity_event_skill_demonstrationst	0x176a450	0x176a915	call   69f9b0
+activity_event_skill_demonstrationst	0x176a450	0x176a955	call   69f9b0
+activity_event_skill_demonstrationst	0x176a450	0x176a982	call   8377e0
+activity_event_skill_demonstrationst	0x176a450	0x176a9a1	call   69f9b0
+activity_event_skill_demonstrationst	0x176a450	0x176a9c0	call   69f9b0
+activity_event_skill_demonstrationst	0x176a450	0x176a9de	call   423c70
+activity_event_skill_demonstrationst	0x176a450	0x176a9ea	call   4244b0
+activity_event_skill_demonstrationst	0x176a450	0x176a9f6	call   4244b0
+activity_event_performancest	0x1784e90	0x1785073	call   1752730
+activity_event_performancest	0x1784e90	0x1785101	call   aec4b0
+activity_event_performancest	0x1784e90	0x178512c	call   1752730
+activity_event_performancest	0x1784e90	0x178526a	call   8377e0
+activity_event_performancest	0x1784e90	0x1785295	call   ec97f0
+activity_event_performancest	0x1784e90	0x178529d	call   424200
+activity_event_performancest	0x1784e90	0x17852b5	call   837660
+activity_event_performancest	0x1784e90	0x178530a	call   1752690
+activity_event_performancest	0x1784e90	0x178532d	call   1752730
+activity_event_performancest	0x1784e90	0x1785441	call   8377e0
+activity_event_performancest	0x1784e90	0x178546c	call   ec97f0
+activity_event_performancest	0x1784e90	0x1785474	call   424200
+activity_event_performancest	0x1784e90	0x178548c	call   837660
+activity_event_performancest	0x1784e90	0x17854ae	call   423790
+activity_event_performancest	0x1784e90	0x17854c6	call   1752690
+activity_event_performancest	0x1784e90	0x1785528	call   8377e0
+activity_event_performancest	0x1784e90	0x1785573	call   423c70
+activity_event_performancest	0x1784e90	0x17859e5	call   1752690
+activity_event_performancest	0x1784e90	0x1785a2d	call   8377e0
+activity_event_performancest	0x1784e90	0x1785a35	call   ada1a0
+activity_event_performancest	0x1784e90	0x1785a5b	call   a10320
+activity_event_performancest	0x1784e90	0x1785a77	call   8377e0
+activity_event_performancest	0x1784e90	0x1785aac	call   14e7b20
+activity_event_performancest	0x1784e90	0x1785ab4	call   424200
+activity_event_performancest	0x1784e90	0x1785acc	call   837660
+activity_event_performancest	0x1784e90	0x1785ae0	call   8377e0
+activity_event_performancest	0x1784e90	0x1785b3a	call   8377e0
+activity_event_performancest	0x1784e90	0x1785b4e	call   8377e0
+activity_eventst | activity_event_harassmentst | activity_event_encounterst | activity_event_reunionst | activity_event_conversationst | activity_event_guardst | activity_event_conflictst | activity_event_store_objectst	0x17af5f0	0x17af652	call   69f9b0
+activity_eventst | activity_event_harassmentst | activity_event_encounterst | activity_event_reunionst | activity_event_conversationst | activity_event_guardst | activity_event_conflictst | activity_event_store_objectst	0x17af5f0	0x17af6b8	call   423690
+activity_eventst | activity_event_harassmentst | activity_event_encounterst | activity_event_reunionst | activity_event_conversationst | activity_event_guardst | activity_event_conflictst | activity_event_store_objectst	0x17af5f0	0x17af6c5	call   423690
+activity_event_researchst	0x17af6f0	0x17af752	call   69f9b0
+activity_event_researchst	0x17af6f0	0x17af7b8	call   423690
+activity_event_researchst	0x17af6f0	0x17af7c5	call   423690
+activity_event_training_sessionst	0x17af7f0	0x17af882	call   69f9b0
+activity_event_training_sessionst	0x17af7f0	0x17af8b8	call   423690
+activity_event_training_sessionst	0x17af7f0	0x17af8c5	call   423690
+activity_event_socializest	0x17af8f0	0x17af95a	call   69f9b0
+activity_event_socializest	0x17af8f0	0x17af9c8	call   423690
+activity_event_socializest	0x17af8f0	0x17af9d5	call   423690
+activity_event_playst	0x17afb20	0x17afb82	call   69f9b0
+activity_event_playst	0x17afb20	0x17afbe8	call   423690
+activity_event_playst	0x17afb20	0x17afbf5	call   423690
+activity_event_worshipst	0x17afc20	0x17afc8a	call   69f9b0
+activity_event_worshipst	0x17afc20	0x17afd00	call   423690
+activity_event_worshipst	0x17afc20	0x17afd0d	call   423690
+job title	0x1cab560	0x1cab5fa	call   6abc60
+job title	0x1cab560	0x1cab615	call   1cab490
+job title	0x1cab560	0x1cab628	call   1cab490
+job title	0x1cab560	0x1cab657	call   b12b40
+job title	0x1cab560	0x1cab678	call   1cab490
+job title	0x1cab560	0x1cab69a	call   74ca90
+job title	0x1cab560	0x1cab6b3	call   1cab3f0
+job title	0x1cab560	0x1cab6c2	call   1cab490
+job title	0x1cab560	0x1cab6e7	call   1cab3f0
+job title	0x1cab560	0x1cab701	call   423790
+job title	0x1cab560	0x1cab73e	call   1cab490
+job title	0x1cab560	0x1cab753	call   1cab490
+job title	0x1cab560	0x1cab768	call   1cab490
+job title	0x1cab560	0x1cab7ea	call   1cab490
+job title	0x1cab560	0x1cab878	call   1cab490
+job title	0x1cab560	0x1cab971	call   1cab490
+job title	0x1cab560	0x1cabad2	call   1cab490
+job title	0x1cab560	0x1cabaf9	call   74ca90
+job title	0x1cab560	0x1cabb0d	call   1cab3f0
+job title	0x1cab560	0x1cabb9b	call   1cab490
+job title	0x1cab560	0x1cabbda	call   1cab490
+job title	0x1cab560	0x1cabbfd	call   1cab490
+job title	0x1cab560	0x1cabc3b	call   1cab490
+job title	0x1cab560	0x1cabc82	call   1cab3f0
+job title	0x1cab560	0x1cabd12	call   1cab490
+job title	0x1cab560	0x1cabd2a	call   1cab490
+job title	0x1cab560	0x1cabd42	call   1cab490
+job title	0x1cab560	0x1cabdd4	call   74ca90
+job title	0x1cab560	0x1cabde8	call   1cab3f0
+job title	0x1cab560	0x1cabedd	call   74ca90
+job title	0x1cab560	0x1cabef0	call   1cab3f0
+job title	0x1cab560	0x1cabeff	call   1cab490
+job title	0x1cab560	0x1cabf1a	call   1cab490
+job title	0x1cab560	0x1cabf41	call   74ca90
+job title	0x1cab560	0x1cabf55	call   1cab3f0
+job title	0x1cab560	0x1cabfd0	call   1cab490
+job title	0x1cab560	0x1cabfe8	call   1cab490
+job title	0x1cab560	0x1cac000	call   1cab490
+job title	0x1cab560	0x1cac018	call   1cab490
+job title	0x1cab560	0x1cac033	call   1cab490
+job title	0x1cab560	0x1cac049	call   1ca41e0
+job title	0x1cab560	0x1cac074	call   ba53d0
+job title	0x1cab560	0x1cac084	call   1cab3f0
+job title	0x1cab560	0x1cac09e	call   423790
+job title	0x1cab560	0x1cac0b6	call   1cab490
+job title	0x1cab560	0x1cac0d1	call   1cab490
+job title	0x1cab560	0x1cac0f8	call   74ca90
+job title	0x1cab560	0x1cac10c	call   1cab3f0
+job title	0x1cab560	0x1cac11b	call   1cab490
+job title	0x1cab560	0x1cac150	call   1cab490
+job title	0x1cab560	0x1cac16f	call   1cab3f0
+job title	0x1cab560	0x1cac17e	call   1cab490
+job title	0x1cab560	0x1cac19d	call   1cab3f0
+job title	0x1cab560	0x1cac1ac	call   1cab490
+job title	0x1cab560	0x1cac1cb	call   1cab3f0
+job title	0x1cab560	0x1cac1da	call   1cab490
+job title	0x1cab560	0x1cac269	call   74ca90
+job title	0x1cab560	0x1cac27b	call   1cab3f0
+job title	0x1cab560	0x1cac28a	call   1cab490
+job title	0x1cab560	0x1cac31c	call   74ca90
+job title	0x1cab560	0x1cac330	call   1cab3f0
+job title	0x1cab560	0x1cac3b1	call   1cab490
+job title	0x1cab560	0x1cac3c7	call   1ca41e0
+job title	0x1cab560	0x1cac3f2	call   ba53d0
+job title	0x1cab560	0x1cac402	call   1cab3f0
+job title	0x1cab560	0x1cac41c	call   423790
+job title	0x1cab560	0x1cac529	call   1cab490
+job title	0x1cab560	0x1cac550	call   74ca90
+job title	0x1cab560	0x1cac562	call   1cab3f0
+job title	0x1cab560	0x1cac571	call   1cab490
+job title	0x1cab560	0x1cac607	call   74ca90
+job title	0x1cab560	0x1cac619	call   1cab3f0
+job title	0x1cab560	0x1cac628	call   1cab490
+job title	0x1cab560	0x1cac64b	call   6abc60
+job title	0x1cab560	0x1cac666	call   1cab490
+job title	0x1cab560	0x1cac688	call   74ca90
+job title	0x1cab560	0x1cac6a1	call   1cab3f0
+job title	0x1cab560	0x1cac6b0	call   1cab490
+job title	0x1cab560	0x1cac6cf	call   1cab3f0
+job title	0x1cab560	0x1cac6ea	call   1cab490
+job title	0x1cab560	0x1cac700	call   1ca41e0
+job title	0x1cab560	0x1cac72b	call   ba53d0
+job title	0x1cab560	0x1cac73b	call   1cab3f0
+job title	0x1cab560	0x1cac74a	call   1cab490
+job title	0x1cab560	0x1cac764	call   423790
+job title	0x1cab560	0x1cac7e7	call   1ca41e0
+job title	0x1cab560	0x1cac812	call   ba53d0
+job title	0x1cab560	0x1cac822	call   1cab3f0
+job title	0x1cab560	0x1cac831	call   1cab490
+job title	0x1cab560	0x1cac84b	call   423790
+job title	0x1cab560	0x1cac863	call   1cab490
+job title	0x1cab560	0x1cac87b	call   1cab490
+job title	0x1cab560	0x1cac893	call   1cab490
+job title	0x1cab560	0x1cac8ab	call   1cab490
+job title	0x1cab560	0x1cac8c3	call   1cab490
+job title	0x1cab560	0x1cac8e6	call   6abc60
+job title	0x1cab560	0x1cac901	call   1cab490
+job title	0x1cab560	0x1cac91e	call   1cab490
+job title	0x1cab560	0x1cac940	call   74ca90
+job title	0x1cab560	0x1cac95b	call   1cab3f0
+job title	0x1cab560	0x1cac96a	call   1cab490
+job title	0x1cab560	0x1cac98f	call   1cab3f0
+job title	0x1cab560	0x1cac9a7	call   1cab490
+job title	0x1cab560	0x1cac9bf	call   1cab490
+job title	0x1cab560	0x1cac9d7	call   1cab490
+job title	0x1cab560	0x1cac9ef	call   1cab490
+job title	0x1cab560	0x1caca07	call   1cab490
+job title	0x1cab560	0x1caca1f	call   1cab490
+job title	0x1cab560	0x1caca3a	call   1cab490
+job title	0x1cab560	0x1caca61	call   74ca90
+job title	0x1cab560	0x1caca74	call   1cab3f0
+job title	0x1cab560	0x1caca83	call   1cab490
+job title	0x1cab560	0x1caca9e	call   1cab490
+job title	0x1cab560	0x1cacab4	call   1ca41e0
+job title	0x1cab560	0x1cacadf	call   ba53d0
+job title	0x1cab560	0x1cacaef	call   1cab3f0
+job title	0x1cab560	0x1cacb09	call   423790
+job title	0x1cab560	0x1cacb21	call   1cab490
+job title	0x1cab560	0x1cacb39	call   1cab490
+job title	0x1cab560	0x1cacbc7	call   1cab490
+job title	0x1cab560	0x1cacbdf	call   1cab490
+job title	0x1cab560	0x1cacbfa	call   1cab490
+job title	0x1cab560	0x1cacc10	call   1ca41e0
+job title	0x1cab560	0x1cacc3b	call   ba53d0
+job title	0x1cab560	0x1cacc4b	call   1cab3f0
+job title	0x1cab560	0x1cacc65	call   423790
+job title	0x1cab560	0x1caccd6	call   1cab490
+job title	0x1cab560	0x1caccf1	call   1cab490
+job title	0x1cab560	0x1cacd18	call   74ca90
+job title	0x1cab560	0x1cacd2c	call   1cab3f0
+job title	0x1cab560	0x1cacd3b	call   1cab490
+job title	0x1cab560	0x1cacd53	call   1cab490
+job title	0x1cab560	0x1cacd6b	call   1cab490
+job title	0x1cab560	0x1cacd83	call   1cab490
+job title	0x1cab560	0x1cacd9b	call   1cab490
+job title	0x1cab560	0x1cacdb3	call   1cab490
+job title	0x1cab560	0x1cacdcb	call   1cab490
+job title	0x1cab560	0x1cacde3	call   1cab490
+job title	0x1cab560	0x1cace63	call   1cab490
+job title	0x1cab560	0x1cace7b	call   1cab490
+job title	0x1cab560	0x1cacef5	call   1cab490
+job title	0x1cab560	0x1cacf0d	call   1cab490
+job title	0x1cab560	0x1cacf25	call   1cab490
+job title	0x1cab560	0x1cad027	call   1cab490
+job title	0x1cab560	0x1cad03f	call   1cab490
+job title	0x1cab560	0x1cad0c4	call   1cab490
+job title	0x1cab560	0x1cad0df	call   1cab490
+job title	0x1cab560	0x1cad0f5	call   1ca41e0
+job title	0x1cab560	0x1cad120	call   ba53d0
+job title	0x1cab560	0x1cad130	call   1cab3f0
+job title	0x1cab560	0x1cad14a	call   423790
+job title	0x1cab560	0x1cad162	call   1cab490
+job title	0x1cab560	0x1cad1ec	call   1cab490
+job title	0x1cab560	0x1cad204	call   1cab490
+job title	0x1cab560	0x1cad21c	call   1cab490
+job title	0x1cab560	0x1cad234	call   1cab490
+job title	0x1cab560	0x1cad2c7	call   1cab490
+job title	0x1cab560	0x1cad359	call   1cab490
+job title	0x1cab560	0x1cad36f	call   1ca41e0
+job title	0x1cab560	0x1cad39a	call   ba53d0
+job title	0x1cab560	0x1cad3aa	call   1cab3f0
+job title	0x1cab560	0x1cad3c4	call   423790
+job title	0x1cab560	0x1cad4c9	call   74ca90
+job title	0x1cab560	0x1cad4db	call   1cab3f0
+job title	0x1cab560	0x1cad4ea	call   1cab490
+job title	0x1cab560	0x1cad502	call   1cab490
+job title	0x1cab560	0x1cad51a	call   1cab490
+job title	0x1cab560	0x1cad532	call   1cab490
+job title	0x1cab560	0x1cad58b	call   1cab490
+job title	0x1cab560	0x1cad5be	call   1cab490
+job title	0x1cab560	0x1cad648	call   1cab490
+job title	0x1cab560	0x1cad66e	call   6abc60
+job title	0x1cab560	0x1cad689	call   1cab490
+job title	0x1cab560	0x1cad6ab	call   74ca90
+job title	0x1cab560	0x1cad6c1	call   1cab3f0
+job title	0x1cab560	0x1cad719	call   1cab490
+job title	0x1cab560	0x1cad740	call   1ca22d0
+job title	0x1cab560	0x1cad750	call   1cab3f0
+job title	0x1cab560	0x1cad76a	call   423790
+job title	0x1cab560	0x1cad782	call   1cab490
+job title	0x1cab560	0x1cad79d	call   1cab490
+job title	0x1cab560	0x1cad7b3	call   1ca41e0
+job title	0x1cab560	0x1cad7de	call   ba53d0
+job title	0x1cab560	0x1cad7ee	call   1cab3f0
+job title	0x1cab560	0x1cad808	call   423790
+job title	0x1cab560	0x1cad897	call   1cab490
+job title	0x1cab560	0x1cad8ad	call   1ca41e0
+job title	0x1cab560	0x1cad8d8	call   ba53d0
+job title	0x1cab560	0x1cad8e8	call   1cab3f0
+job title	0x1cab560	0x1cad902	call   423790
+job title	0x1cab560	0x1cad91a	call   1cab490
+job title	0x1cab560	0x1cad932	call   1cab490
+job title	0x1cab560	0x1cad955	call   6abc60
+job title	0x1cab560	0x1cad970	call   1cab490
+job title	0x1cab560	0x1cad9a1	call   b12b40
+job title	0x1cab560	0x1cad9c2	call   1cab490
+job title	0x1cab560	0x1cad9e4	call   74ca90
+job title	0x1cab560	0x1cad9ff	call   1cab3f0
+job title	0x1cab560	0x1cada0e	call   1cab490
+job title	0x1cab560	0x1cada2d	call   1cab3f0
+job title	0x1cab560	0x1cada48	call   1cab490
+job title	0x1cab560	0x1cada5d	call   1cab490
+job title	0x1cab560	0x1cada84	call   74ca90
+job title	0x1cab560	0x1cada98	call   1cab3f0
+job title	0x1cab560	0x1cadaab	call   1cab490
+job title	0x1cab560	0x1cadac6	call   1cab490
+job title	0x1cab560	0x1cadadb	call   1cab490
+job title	0x1cab560	0x1cadb02	call   74ca90
+job title	0x1cab560	0x1cadb15	call   1cab3f0
+job title	0x1cab560	0x1cadb28	call   1cab490
+job title	0x1cab560	0x1cadb4b	call   6abc60
+job title	0x1cab560	0x1cadb66	call   1cab490
+job title	0x1cab560	0x1cadb95	call   b12b40
+job title	0x1cab560	0x1cadbb6	call   1cab490
+job title	0x1cab560	0x1cadbd8	call   74ca90
+job title	0x1cab560	0x1cadbf1	call   1cab3f0
+job title	0x1cab560	0x1cadc00	call   1cab490
+job title	0x1cab560	0x1cadc1f	call   1cab3f0
+job title	0x1cab560	0x1cadc3a	call   1cab490
+job title	0x1cab560	0x1cadc61	call   74ca90
+job title	0x1cab560	0x1cadc73	call   1cab3f0
+job title	0x1cab560	0x1cadc82	call   1cab490
+job title	0x1cab560	0x1cadc9d	call   1cab490
+job title	0x1cab560	0x1cadcc4	call   74ca90
+job title	0x1cab560	0x1cadcd7	call   1cab3f0
+job title	0x1cab560	0x1caddcb	call   1cab490
+job title	0x1cab560	0x1cadde3	call   1cab490
+job title	0x1cab560	0x1caddfe	call   1cab490
+job title	0x1cab560	0x1cade22	call   74ca90
+job title	0x1cab560	0x1cade34	call   1cab3f0
+job title	0x1cab560	0x1cadebf	call   6abc60
+job title	0x1cab560	0x1caded6	call   1cab490
+job title	0x1cab560	0x1cadf02	call   74ca90
+job title	0x1cab560	0x1cadf1d	call   1cab3f0
+job title	0x1cab560	0x1cadfa0	call   1cab490
+job title	0x1cab560	0x1cadfc7	call   74ca90
+job title	0x1cab560	0x1cadfdb	call   1cab3f0
+job title	0x1cab560	0x1cadfea	call   1cab490
+job title	0x1cab560	0x1cae005	call   1cab490
+job title	0x1cab560	0x1cae02c	call   74ca90
+job title	0x1cab560	0x1cae03f	call   1cab3f0
+job title	0x1cab560	0x1cae04e	call   1cab490
+job title	0x1cab560	0x1cae0dd	call   74ca90
+job title	0x1cab560	0x1cae0f1	call   1cab3f0
+job title	0x1cab560	0x1cae100	call   1cab490
+job title	0x1cab560	0x1cae18f	call   74ca90
+job title	0x1cab560	0x1cae1a2	call   1cab3f0
+job title	0x1cab560	0x1cae1b1	call   1cab490
+job title	0x1cab560	0x1cae1cc	call   1cab490
+job title	0x1cab560	0x1cae1f3	call   74ca90
+job title	0x1cab560	0x1cae207	call   1cab3f0
+job title	0x1cab560	0x1cae216	call   1cab490
+job title	0x1cab560	0x1cae231	call   1cab490
+job title	0x1cab560	0x1cae258	call   74ca90
+job title	0x1cab560	0x1cae26a	call   1cab3f0
+job title	0x1cab560	0x1cae279	call   1cab490
+job title	0x1cab560	0x1cae29f	call   1cab490
+job title	0x1cab560	0x1cae324	call   1cab3f0
+job title	0x1cab560	0x1cae333	call   1cab490
+job title	0x1cab560	0x1cae34d	call   423790
+job title	0x1cab560	0x1cae373	call   1cab490
+job title	0x1cab560	0x1cae3f8	call   1cab3f0
+job title	0x1cab560	0x1cae407	call   1cab490
+job title	0x1cab560	0x1cae421	call   423790
+job title	0x1cab560	0x1cae439	call   1cab490
+job title	0x1cab560	0x1cae469	call   1cab490
+job title	0x1cab560	0x1cae509	call   74ca90
+job title	0x1cab560	0x1cae51c	call   1cab3f0
+job title	0x1cab560	0x1cae59d	call   1cab490
+job title	0x1cab560	0x1cae628	call   1cab490
+job title	0x1cab560	0x1cae643	call   1cab490
+job title	0x1cab560	0x1cae66a	call   74ca90
+job title	0x1cab560	0x1cae67c	call   1cab3f0
+job title	0x1cab560	0x1cae68b	call   1cab490
+job title	0x1cab560	0x1cae6a3	call   1cab490
+job title	0x1cab560	0x1cae6bb	call   1cab490
+job title	0x1cab560	0x1cae6eb	call   1cab490
+job title	0x1cab560	0x1cae701	call   1cab490
+job title	0x1cab560	0x1cae730	call   74ca90
+job title	0x1cab560	0x1cae742	call   1cab3f0
+job title	0x1cab560	0x1cae7db	call   1cab490
+job title	0x1cab560	0x1cae7f1	call   1cab490
+job title	0x1cab560	0x1cae820	call   74ca90
+job title	0x1cab560	0x1cae832	call   1cab3f0
+job title	0x1cab560	0x1cae854	call   1cab490
+job title	0x1cab560	0x1cae878	call   74ca90
+job title	0x1cab560	0x1cae88c	call   1cab3f0
+job title	0x1cab560	0x1cae8af	call   6abc60
+job title	0x1cab560	0x1cae8ca	call   1cab490
+job title	0x1cab560	0x1cae8e0	call   1cab490
+job title	0x1cab560	0x1cae902	call   74ca90
+job title	0x1cab560	0x1cae916	call   1cab3f0
+job title	0x1cab560	0x1cae92f	call   1cab490
+job title	0x1cab560	0x1cae94a	call   1ca41e0
+job title	0x1cab560	0x1cae96c	call   1cab490
+job title	0x1cab560	0x1cae98e	call   ba53d0
+job title	0x1cab560	0x1cae99e	call   1cab3f0
+job title	0x1cab560	0x1cae9b8	call   423790
+job title	0x1cab560	0x1cae9d3	call   1cab490
+job title	0x1cab560	0x1cae9e9	call   1ca41e0
+job title	0x1cab560	0x1caea14	call   ba53d0
+job title	0x1cab560	0x1caea24	call   1cab3f0
+job title	0x1cab560	0x1caea3e	call   423790
+job title	0x1cab560	0x1caea56	call   1cab490
+job title	0x1cab560	0x1caea6e	call   1cab490
+job title	0x1cab560	0x1caea89	call   1cab490
+job title	0x1cab560	0x1caeab6	call   74ca90
+job title	0x1cab560	0x1caeac9	call   1cab3f0
+job title	0x1cab560	0x1caeadc	call   6abc60
+job title	0x1cab560	0x1caeb0b	call   1cab490
+job title	0x1cab560	0x1caeb26	call   1cab490
+job title	0x1cab560	0x1caeb4d	call   74ca90
+job title	0x1cab560	0x1caeb61	call   1cab3f0
+job title	0x1cab560	0x1caeb70	call   1cab490
+job title	0x1cab560	0x1caeb8b	call   1cab490
+job title	0x1cab560	0x1caebb8	call   74ca90
+job title	0x1cab560	0x1caebca	call   1cab3f0
+job title	0x1cab560	0x1caebf8	call   1cab490
+job title	0x1cab560	0x1caec13	call   1cab490
+job title	0x1cab560	0x1caec3a	call   74ca90
+job title	0x1cab560	0x1caec4e	call   1cab3f0
+job title	0x1cab560	0x1caec7c	call   1cab490
+job title	0x1cab560	0x1caec94	call   1cab490
+job title	0x1cab560	0x1caecac	call   1cab490
+job title	0x1cab560	0x1caecc4	call   1cab490
+job title	0x1cab560	0x1caed52	call   1cab490
+job title	0x1cab560	0x1caed6a	call   1cab490
+job title	0x1cab560	0x1caed82	call   1cab490
+job title	0x1cab560	0x1caed9a	call   1cab490
+job title	0x1cab560	0x1caedb2	call   1cab490
+job title	0x1cab560	0x1caedcd	call   1cab490
+job title	0x1cab560	0x1caedf1	call   74ca90
+job title	0x1cab560	0x1caee04	call   1cab3f0
+job title	0x1cab560	0x1caee27	call   6abc60
+job title	0x1cab560	0x1caee42	call   1cab490
+job title	0x1cab560	0x1caee73	call   b12b40
+job title	0x1cab560	0x1caee94	call   1cab490
+job title	0x1cab560	0x1caeeb6	call   74ca90
+job title	0x1cab560	0x1caeed1	call   1cab3f0
+job title	0x1cab560	0x1caeee0	call   1cab490
+job title	0x1cab560	0x1caeeff	call   1cab3f0
+job title	0x1cab560	0x1caef8f	call   1cab490
+job title	0x1cab560	0x1caefa7	call   1cab490
+job title	0x1cab560	0x1caefbf	call   1cab490
+job title	0x1cab560	0x1caefd7	call   1cab490
+job title	0x1cab560	0x1caf055	call   1ca41e0
+job title	0x1cab560	0x1caf080	call   ba53d0
+job title	0x1cab560	0x1caf090	call   1cab3f0
+job title	0x1cab560	0x1caf0aa	call   423790
+job title	0x1cab560	0x1caf0c2	call   1cab490
+job title	0x1cab560	0x1caf0f9	call   1cab490
+job title	0x1cab560	0x1caf11b	call   1cab490
+job title	0x1cab560	0x1caf13f	call   74ca90
+job title	0x1cab560	0x1caf153	call   1cab3f0
+job title	0x1cab560	0x1caf179	call   1cab490
+job title	0x1cab560	0x1caf1fd	call   1cab3f0
+job title	0x1cab560	0x1caf217	call   423790
+job title	0x1cab560	0x1caf22f	call   1cab490
+job title	0x1cab560	0x1caf2be	call   74ca90
+job title	0x1cab560	0x1caf2d2	call   1cab3f0
+job title	0x1cab560	0x1caf2e1	call   1cab490
+job title	0x1cab560	0x1caf2f9	call   1cab490
+job title	0x1cab560	0x1caf314	call   1cab490
+job title	0x1cab560	0x1caf33b	call   74ca90
+job title	0x1cab560	0x1caf34f	call   1cab3f0
+job title	0x1cab560	0x1caf35e	call   1cab490
+job title	0x1cab560	0x1caf379	call   1cab490
+job title	0x1cab560	0x1caf3a0	call   74ca90
+job title	0x1cab560	0x1caf3b4	call   1cab3f0
+job title	0x1cab560	0x1caf439	call   1cab490
+job title	0x1cab560	0x1caf464	call   1cab490
+job title	0x1cab560	0x1caf4f9	call   74ca90
+job title	0x1cab560	0x1caf50b	call   1cab3f0
+job title	0x1cab560	0x1caf51e	call   6abc60
+job title	0x1cab560	0x1caf535	call   1cab490
+job title	0x1cab560	0x1caf54d	call   1cab490
+job title	0x1cab560	0x1caf568	call   1cab490
+job title	0x1cab560	0x1caf58f	call   74ca90
+job title	0x1cab560	0x1caf5a1	call   1cab3f0
+job title	0x1cab560	0x1caf624	call   1cab490
+job title	0x1cab560	0x1caf64b	call   74ca90
+job title	0x1cab560	0x1caf65f	call   1cab3f0
+job title	0x1cab560	0x1caf66e	call   1cab490
+job title	0x1cab560	0x1caf690	call   1cab490
+job title	0x1cab560	0x1caf6b4	call   74ca90
+job title	0x1cab560	0x1caf6c6	call   1cab3f0
+job title	0x1cab560	0x1caf6de	call   1cab490
+job title	0x1cab560	0x1caf6f6	call   1cab490
+job title	0x1cab560	0x1caf711	call   1cab490
+job title	0x1cab560	0x1caf727	call   1ca41e0
+job title	0x1cab560	0x1caf752	call   ba53d0
+job title	0x1cab560	0x1caf762	call   1cab3f0
+job title	0x1cab560	0x1caf77c	call   423790
+job title	0x1cab560	0x1caf794	call   1cab490
+job title	0x1cab560	0x1caf7af	call   1cab490
+job title	0x1cab560	0x1caf7c5	call   1ca41e0
+job title	0x1cab560	0x1caf7e3	call   1cab490
+job title	0x1cab560	0x1caf805	call   ba53d0
+job title	0x1cab560	0x1caf815	call   1cab3f0
+job title	0x1cab560	0x1caf82f	call   423790
+job title	0x1cab560	0x1caf84a	call   1cab490
+job title	0x1cab560	0x1caf860	call   1ca41e0
+job title	0x1cab560	0x1caf88b	call   ba53d0
+job title	0x1cab560	0x1caf89b	call   1cab3f0
+job title	0x1cab560	0x1caf8b5	call   423790
+job title	0x1cab560	0x1caf8cd	call   1cab490
+job title	0x1cab560	0x1caf8f3	call   1cab490
+job title	0x1cab560	0x1caf975	call   1cab3f0
+job title	0x1cab560	0x1caf98f	call   423790
+job title	0x1cab560	0x1caf9a7	call   1cab490
+job title	0x1cab560	0x1caf9bf	call   1cab490
+job title	0x1cab560	0x1caf9d7	call   1cab490
+job title	0x1cab560	0x1caf9ef	call   1cab490
+job title	0x1cab560	0x1cafa07	call   1cab490
+job title	0x1cab560	0x1cafa2a	call   6abc60
+job title	0x1cab560	0x1cafa45	call   1cab490
+job title	0x1cab560	0x1cafa67	call   74ca90
+job title	0x1cab560	0x1cafa82	call   1cab3f0
+job title	0x1cab560	0x1cafa91	call   1cab490
+job title	0x1cab560	0x1cafaac	call   1cab490
+job title	0x1cab560	0x1cafad3	call   74ca90
+job title	0x1cab560	0x1cafae5	call   1cab3f0
+job title	0x1cab560	0x1cafaf4	call   1cab490
+job title	0x1cab560	0x1cafb0c	call   1cab490
+job title	0x1cab560	0x1cafb24	call   1cab490
+job title	0x1cab560	0x1cafb3c	call   1cab490
+job title	0x1cab560	0x1cafb57	call   1cab490
+job title	0x1cab560	0x1cafb66	call   1cab490
+job title	0x1cab560	0x1cafb8d	call   74ca90
+job title	0x1cab560	0x1cafb9f	call   1cab3f0
+job title	0x1cab560	0x1cafcad	call   6abc60
+job title	0x1cab560	0x1cafcc8	call   1cab490
+job title	0x1cab560	0x1cafcf9	call   1cab3f0
+job title	0x1cab560	0x1cafd08	call   1cab490
+job title	0x1cab560	0x1cafd2a	call   74ca90
+job title	0x1cab560	0x1cafd43	call   1cab3f0
+job title	0x1cab560	0x1cafd52	call   1cab490
+job title	0x1cab560	0x1cafd6d	call   1cab3f0
+job title	0x1cab560	0x1cafd85	call   1cab490
+job title	0x1cab560	0x1cafda0	call   1cab490
+job title	0x1cab560	0x1cafdc7	call   74ca90
+job title	0x1cab560	0x1cafddb	call   1cab3f0
+job title	0x1cab560	0x1cafdea	call   1cab490
+job title	0x1cab560	0x1cafe09	call   1cab3f0
+job title	0x1cab560	0x1cafe9a	call   1cab490
+job title	0x1cab560	0x1cafec1	call   74ca90
+job title	0x1cab560	0x1cafed3	call   1cab3f0
+job title	0x1cab560	0x1cafee2	call   1cab490
+job title	0x1cab560	0x1cafefd	call   1cab490
+job title	0x1cab560	0x1caff21	call   74ca90
+job title	0x1cab560	0x1caff35	call   1cab3f0
+job title	0x1cab560	0x1caff58	call   6abc60
+job title	0x1cab560	0x1caff73	call   1cab490
+job title	0x1cab560	0x1caff95	call   74ca90
+job title	0x1cab560	0x1caffb0	call   1cab3f0
+job title	0x1cab560	0x1caffbf	call   1cab490
+job title	0x1cab560	0x1caffe2	call   6abc60
+job title	0x1cab560	0x1cafffd	call   1cab490
+job title	0x1cab560	0x1cb001f	call   74ca90
+job title	0x1cab560	0x1cb0039	call   1cab3f0
+job title	0x1cab560	0x1cb0048	call   1cab490
+job title	0x1cab560	0x1cb006b	call   6abc60
+job title	0x1cab560	0x1cb0086	call   1cab490
+job title	0x1cab560	0x1cb00a8	call   74ca90
+job title	0x1cab560	0x1cb00c2	call   1cab3f0
+job title	0x1cab560	0x1cb00d5	call   6abc60
+job title	0x1cab560	0x1cb00ec	call   1cab490
+job title	0x1cab560	0x1cb0112	call   1cab490
+job title	0x1cab560	0x1cb0196	call   1cab3f0
+job title	0x1cab560	0x1cb01b0	call   423790
+job title	0x1cab560	0x1cb01cb	call   1cab490
+job title	0x1cab560	0x1cb01f2	call   74ca90
+job title	0x1cab560	0x1cb0205	call   1cab3f0
+job title	0x1cab560	0x1cb0214	call   1cab490
+job title	0x1cab560	0x1cb0237	call   6abc60
+job title	0x1cab560	0x1cb0252	call   1cab490
+job title	0x1cab560	0x1cb0265	call   1cab490
+job title	0x1cab560	0x1cb0296	call   b12b40
+job title	0x1cab560	0x1cb02b7	call   1cab490
+job title	0x1cab560	0x1cb02d9	call   74ca90
+job title	0x1cab560	0x1cb02f4	call   1cab3f0
+job title	0x1cab560	0x1cb036f	call   1cab3f0
+job title	0x1cab560	0x1cb038c	call   6abc60
+job title	0x1cab560	0x1cb03b7	call   1cab490
+job title	0x1cab560	0x1cb03d7	call   1cab490
+job title	0x1cab560	0x1cb03ef	call   1cab490
+job title	0x1cab560	0x1cb0407	call   1cab490
+job title	0x1cab560	0x1cb041f	call   1cab490
+job title	0x1cab560	0x1cb0437	call   1cab490
+job title	0x1cab560	0x1cb044f	call   1cab490
+job title	0x1cab560	0x1cb04d0	call   1cab490
+job title	0x1cab560	0x1cb0505	call   1cab490
+job title	0x1cab560	0x1cb0524	call   1cab3f0
+job title	0x1cab560	0x1cb0533	call   1cab490
+job title	0x1cab560	0x1cb0552	call   1cab3f0
+job title	0x1cab560	0x1cb0561	call   1cab490
+job title	0x1cab560	0x1cb0580	call   1cab3f0
+job title	0x1cab560	0x1cb058f	call   1cab490
+job title	0x1cab560	0x1cb05c4	call   1cab490
+job title	0x1cab560	0x1cb05e3	call   1cab3f0
+job title	0x1cab560	0x1cb05f2	call   1cab490
+job title	0x1cab560	0x1cb0611	call   1cab3f0
+job title	0x1cab560	0x1cb0620	call   1cab490
+job title	0x1cab560	0x1cb063f	call   1cab3f0
+job title	0x1cab560	0x1cb064e	call   1cab490
+job title	0x1cab560	0x1cb0669	call   1cab490
+job title	0x1cab560	0x1cb0690	call   74ca90
+job title	0x1cab560	0x1cb06a4	call   1cab3f0
+job title	0x1cab560	0x1cb06b3	call   1cab490
+job title	0x1cab560	0x1cb06ce	call   1cab490
+job title	0x1cab560	0x1cb06f5	call   74ca90
+job title	0x1cab560	0x1cb0708	call   1cab3f0
+job title	0x1cab560	0x1cb0717	call   1cab490
+job title	0x1cab560	0x1cb073a	call   6abc60
+job title	0x1cab560	0x1cb0755	call   1cab490
+job title	0x1cab560	0x1cb0777	call   74ca90
+job title	0x1cab560	0x1cb0792	call   1cab3f0
+job title	0x1cab560	0x1cb07a1	call   1cab490
+job title	0x1cab560	0x1cb07c4	call   6abc60
+job title	0x1cab560	0x1cb07df	call   1cab490
+job title	0x1cab560	0x1cb0801	call   74ca90
+job title	0x1cab560	0x1cb081a	call   1cab3f0
+job title	0x1cab560	0x1cb0829	call   1cab490
+job title	0x1cab560	0x1cb084c	call   6abc60
+job title	0x1cab560	0x1cb0867	call   1cab490
+job title	0x1cab560	0x1cb0889	call   74ca90
+job title	0x1cab560	0x1cb08a3	call   1cab3f0
+job title	0x1cab560	0x1cb08b6	call   6abc60
+job title	0x1cab560	0x1cb08cd	call   1cab490
+job title	0x1cab560	0x1cb08f0	call   6abc60
+job title	0x1cab560	0x1cb090b	call   1cab490
+job title	0x1cab560	0x1cb0921	call   1cab490
+job title	0x1cab560	0x1cb0943	call   74ca90
+job title	0x1cab560	0x1cb0956	call   1cab3f0
+job title	0x1cab560	0x1cb098d	call   6abc60
+job title	0x1cab560	0x1cb09a8	call   1cab490
+job title	0x1cab560	0x1cb09dd	call   1cab490
+job title	0x1cab560	0x1cb0a00	call   6abc60
+job title	0x1cab560	0x1cb0a1b	call   1cab490
+job title	0x1cab560	0x1cb0a3d	call   74ca90
+job title	0x1cab560	0x1cb0a54	call   1cab3f0
+job title	0x1cab560	0x1cb0a8c	call   1cab490
+job title	0x1cab560	0x1cb0aaf	call   6abc60
+job title	0x1cab560	0x1cb0aca	call   1cab490
+job title	0x1cab560	0x1cb0aec	call   74ca90
+job title	0x1cab560	0x1cb0b05	call   1cab3f0
+job title	0x1cab560	0x1cb0b14	call   1cab490
+job title	0x1cab560	0x1cb0b33	call   1cab3f0
+job title	0x1cab560	0x1cb0b61	call   4255b0
+job title	0x1cab560	0x1cb0b98	call   1ca22d0
+job title	0x1cab560	0x1cb0ba0	call   424f90
+job title	0x1cab560	0x1cb0bb4	call   1cab3f0
+job title	0x1cab560	0x1cb0bce	call   423790
+job title	0x1cab560	0x1cb0be6	call   1cab490
+job title	0x1cab560	0x1cb0bfe	call   1cab490
+job title	0x1cab560	0x1cb0c16	call   1cab490
+job title	0x1cab560	0x1cb0c2e	call   1cab490
+job title	0x1cab560	0x1cb0c46	call   1cab490
+job title	0x1cab560	0x1cb0c5e	call   1cab490
+job title	0x1cab560	0x1cb0c76	call   1cab490
+job title	0x1cab560	0x1cb0c8e	call   1cab490
+job title	0x1cab560	0x1cb0ca6	call   1cab490
+job title	0x1cab560	0x1cb0cbe	call   1cab490
+job title	0x1cab560	0x1cb0cd6	call   1cab490
+job title	0x1cab560	0x1cb0cee	call   1cab490
+job title	0x1cab560	0x1cb0d7f	call   12ae800
+job title	0x1cab560	0x1cb0d93	call   1cab3f0
+job title	0x1cab560	0x1cb0da9	call   423790
+job title	0x1cab560	0x1cb0dbc	call   1cab490
+job title	0x1cab560	0x1cb0de4	call   1cab490
+job title	0x1cab560	0x1cb0e03	call   1cab3f0
+job title	0x1cab560	0x1cb0e1b	call   1cab490
+job title	0x1cab560	0x1cb0e33	call   1cab490
+job title	0x1cab560	0x1cb0e4b	call   1cab490
+job title	0x1cab560	0x1cb0e63	call   1cab490
+job title	0x1cab560	0x1cb0e7b	call   1cab490
+job title	0x1cab560	0x1cb0e93	call   1cab490
+job title	0x1cab560	0x1cb0eab	call   1cab490
+job title	0x1cab560	0x1cb0ec3	call   1cab490
+job title	0x1cab560	0x1cb0edb	call   1cab490
+job title	0x1cab560	0x1cb0ef3	call   1cab490
+job title	0x1cab560	0x1cb0f0b	call   1cab490
+job title	0x1cab560	0x1cb0f23	call   1cab490
+job title	0x1cab560	0x1cb0f3b	call   1cab490
+job title	0x1cab560	0x1cb0f53	call   1cab490
+job title	0x1cab560	0x1cb0f6b	call   6abc60
+job title	0x1cab560	0x1cb0f86	call   1cab490
+job title	0x1cab560	0x1cb0f9e	call   1cab490
+job title	0x1cab560	0x1cb0fb6	call   1cab490
+job title	0x1cab560	0x1cb0fce	call   1cab490
+job title	0x1cab560	0x1cb0fdf	call   1cab490
+job title	0x1cab560	0x1cb0ffa	call   1cab490
+job title	0x1cab560	0x1cb1019	call   1cab3f0
+job title	0x1cab560	0x1cb102a	call   1cab490
+job title	0x1cab560	0x1cb1042	call   1cab490
+job title	0x1cab560	0x1cb105d	call   1cab490
+job title	0x1cab560	0x1cb107c	call   1cab3f0
+job title	0x1cab560	0x1cb1094	call   1cab490
+job title	0x1cab560	0x1cb10ac	call   1cab490
+job title	0x1cab560	0x1cb10bd	call   1cab490
+job title	0x1cab560	0x1cb10ce	call   1cab490
+job title	0x1cab560	0x1cb10e6	call   1cab490
+job title	0x1cab560	0x1cb10fe	call   1cab490
+job title	0x1cab560	0x1cb1116	call   1cab490
+job title	0x1cab560	0x1cb1127	call   1cab490
+job title	0x1cab560	0x1cb113f	call   1cab490
+job title	0x1cab560	0x1cb115f	call   1cab490
+job title	0x1cab560	0x1cb1173	call   1cab490
+job title	0x1cab560	0x1cb118b	call   1cab490
+job title	0x1cab560	0x1cb119f	call   1cab490
+job title	0x1cab560	0x1cb11ce	call   1cab490
+job title	0x1cab560	0x1cb11e2	call   1cab490
+job title	0x1cab560	0x1cb11f6	call   1cab490
+job title	0x1cab560	0x1cb1219	call   69f9b0
+job title	0x1cab560	0x1cb123c	call   69f9b0
+job title	0x1cab560	0x1cb125f	call   69f9b0
+job title	0x1cab560	0x1cb1282	call   69f9b0
+job title	0x1cab560	0x1cb12a5	call   69f9b0
+job title	0x1cab560	0x1cb12c8	call   69f9b0
+job title	0x1cab560	0x1cb12eb	call   69f9b0
+job title	0x1cab560	0x1cb130e	call   69f9b0
+job title	0x1cab560	0x1cb1331	call   69f9b0
+job title	0x1cab560	0x1cb1354	call   69f9b0
+job title	0x1cab560	0x1cb1377	call   69f9b0
+job title	0x1cab560	0x1cb139a	call   69f9b0
+job title	0x1cab560	0x1cb13b2	call   1cab490
+job title	0x1cab560	0x1cb13ca	call   1cab490
+job title	0x1cab560	0x1cb13e2	call   1cab490
+job title	0x1cab560	0x1cb1405	call   69f9b0
+job title	0x1cab560	0x1cb141d	call   1cab490
+job title	0x1cab560	0x1cb1440	call   69f9b0
+job title	0x1cab560	0x1cb1458	call   1cab490
+job title	0x1cab560	0x1cb147b	call   69f9b0
+job title	0x1cab560	0x1cb149e	call   69f9b0
+job title	0x1cab560	0x1cb14c1	call   69f9b0
+job title	0x1cab560	0x1cb14e4	call   69f9b0
+job title	0x1cab560	0x1cb1507	call   69f9b0
+job title	0x1cab560	0x1cb152a	call   69f9b0
+job title	0x1cab560	0x1cb1542	call   1cab490
+job title	0x1cab560	0x1cb155a	call   1cab490
+job title	0x1cab560	0x1cb157d	call   69f9b0
+job title	0x1cab560	0x1cb15a0	call   69f9b0
+job title	0x1cab560	0x1cb15c3	call   69f9b0
+job title	0x1cab560	0x1cb15e6	call   69f9b0
+job title	0x1cab560	0x1cb1609	call   69f9b0
+job title	0x1cab560	0x1cb162c	call   69f9b0
+job title	0x1cab560	0x1cb164f	call   69f9b0
+job title	0x1cab560	0x1cb1672	call   69f9b0
+job title	0x1cab560	0x1cb1695	call   69f9b0
+job title	0x1cab560	0x1cb16b8	call   69f9b0
+job title	0x1cab560	0x1cb16db	call   69f9b0
+job title	0x1cab560	0x1cb16fe	call   69f9b0
+job title	0x1cab560	0x1cb1721	call   69f9b0
+job title	0x1cab560	0x1cb1744	call   69f9b0
+job title	0x1cab560	0x1cb1767	call   69f9b0
+job title	0x1cab560	0x1cb178a	call   69f9b0
+job title	0x1cab560	0x1cb17ad	call   69f9b0
+job title	0x1cab560	0x1cb17d0	call   69f9b0
+job title	0x1cab560	0x1cb17f3	call   69f9b0
+job title	0x1cab560	0x1cb1816	call   69f9b0
+job title	0x1cab560	0x1cb1839	call   69f9b0
+job title	0x1cab560	0x1cb185c	call   69f9b0
+job title	0x1cab560	0x1cb187f	call   69f9b0
+job title	0x1cab560	0x1cb18a2	call   69f9b0
+job title	0x1cab560	0x1cb18c5	call   69f9b0
+job title	0x1cab560	0x1cb18dd	call   1cab490
+job title	0x1cab560	0x1cb1900	call   69f9b0
+job title	0x1cab560	0x1cb1923	call   69f9b0
+job title	0x1cab560	0x1cb1946	call   69f9b0
+job title	0x1cab560	0x1cb1969	call   69f9b0
+job title	0x1cab560	0x1cb198c	call   69f9b0
+job title	0x1cab560	0x1cb19af	call   69f9b0
+job title	0x1cab560	0x1cb19d2	call   69f9b0
+job title	0x1cab560	0x1cb19f5	call   69f9b0
+job title	0x1cab560	0x1cb1a18	call   69f9b0
+job title	0x1cab560	0x1cb1a3b	call   69f9b0
+job title	0x1cab560	0x1cb1a53	call   1cab490
+job title	0x1cab560	0x1cb1a66	call   1cab490
+job title	0x1cab560	0x1cb1a7e	call   1cab490
+job title	0x1cab560	0x1cb1a92	call   1cab490
+job title	0x1cab560	0x1cb1aaa	call   1cab490
+job title	0x1cab560	0x1cb1ac2	call   1cab490
+job title	0x1cab560	0x1cb1ada	call   1cab490
+job title	0x1cab560	0x1cb1aee	call   1cab490
+job title	0x1cab560	0x1cb1b02	call   1cab490
+job title	0x1cab560	0x1cb1b22	call   1cab3f0
+job title	0x1cab560	0x1cb1b31	call   1cab490
+job title	0x1cab560	0x1cb1b53	call   1cab490
+job title	0x1cab560	0x1cb1b75	call   1cab490
+job title	0x1cab560	0x1cb1b99	call   ba53d0
+job title	0x1cab560	0x1cb1bad	call   1cab3f0
+job title	0x1cab560	0x1cb1bc5	call   1cab490
+job title	0x1cab560	0x1cb1bdd	call   1cab490
+job title	0x1cab560	0x1cb1bf5	call   1cab490
+job title	0x1cab560	0x1cb1c17	call   1cab490
+job title	0x1cab560	0x1cb1c32	call   1cab490
+job title	0x1cab560	0x1cb1c56	call   74ca90
+job title	0x1cab560	0x1cb1c68	call   1cab3f0
+job title	0x1cab560	0x1cb1c7f	call   6abc60
+job title	0x1cab560	0x1cb1c9a	call   1cab490
+job title	0x1cab560	0x1cb1cb2	call   6abc60
+job title	0x1cab560	0x1cb1ccd	call   1cab490
+job title	0x1cab560	0x1cb1ce5	call   1cab490
+job title	0x1cab560	0x1cb1e44	call   12bfe90
+job title	0x1cab560	0x1cb1e58	call   1cab3f0
+job title	0x1cab560	0x1cb1f60	call   1cab490
+job title	0x1cab560	0x1cb1f78	call   1cab490
+job title	0x1cab560	0x1cb1f90	call   1cab490
+job title	0x1cab560	0x1cb1f9a	call   423c70
+job title	0x1cab560	0x1cb1fb2	call   1cab3f0
+job title	0x1cab560	0x1cb1fca	call   1cab490
+job title	0x1cab560	0x1cb1fe2	call   1cab490
+job title	0x1cab560	0x1cb1ffa	call   1cab490
+job title	0x1cab560	0x1cb2012	call   1cab490
+job title	0x1cab560	0x1cb202a	call   1cab490
+job title	0x1cab560	0x1cb2042	call   1cab490
+job title	0x1cab560	0x1cb2066	call   423860
+job title	0x1cab560	0x1cb2086	call   423790
+job title	0x1cab560	0x1cb20a4	call   423690
+job title	0x1cab560	0x1cb20ba	call   4236b0
+job title	0x1cab560	0x1cb20d9	call   423860
+job title	0x1cab560	0x1cb20f9	call   423790
+job title	0x1cab560	0x1cb2117	call   423690
+job title	0x1cab560	0x1cb212d	call   4236b0
+job title	0x1cab560	0x1cb214c	call   423860
+job title	0x1cab560	0x1cb216c	call   423790
+job title	0x1cab560	0x1cb218a	call   423690
+job title	0x1cab560	0x1cb21a0	call   4236b0
+job title	0x1cab560	0x1cb21bf	call   423860
+job title	0x1cab560	0x1cb21df	call   423790
+job title	0x1cab560	0x1cb21fd	call   423690
+job title	0x1cab560	0x1cb2213	call   4236b0
+job title	0x1cab560	0x1cb2232	call   423860
+job title	0x1cab560	0x1cb2252	call   423790
+job title	0x1cab560	0x1cb2270	call   423690
+job title	0x1cab560	0x1cb2286	call   4236b0
+job title	0x1cab560	0x1cb2299	call   1cab490
+job title	0x1cab560	0x1cb231f	call   4244b0
+job title	0x1cab560	0x1cb233b	call   4244b0
+job title	0x1cab560	0x1cb2347	call   4244b0
+job title	0x1cab560	0x1cb2353	call   4244b0
+job title	0x1cab560	0x1cb235f	call   4244b0
+job title	0x1cab560	0x1cb236b	call   4244b0
+job title	0x1cab560	0x1cb2377	call   4244b0
+job title	0x1cab560	0x1cb2383	call   4244b0
+job title	0x1cab560	0x1cb238f	call   4244b0
+job title	0x1cab560	0x1cb239b	call   4244b0
+job title	0x1cab560	0x1cb23a7	call   4244b0
+job title	0x1cab560	0x1cb23b3	call   4244b0
+job title	0x1cab560	0x1cb23c7	call   4244b0
+job title	0x1cab560	0x1cb23d3	call   4244b0
+job title	0x1cab560	0x1cb23df	call   4244b0
+job title	0x1cab560	0x1cb23eb	call   4244b0
+job title	0x1cab560	0x1cb23f7	call   4244b0
+job title	0x1cab560	0x1cb2403	call   4244b0
+job title	0x1cab560	0x1cb240f	call   4244b0
+job title	0x1cab560	0x1cb241b	call   4244b0
+job title	0x1cab560	0x1cb2427	call   4244b0
+job title	0x1cab560	0x1cb2433	call   4244b0
+job title	0x1cab560	0x1cb243f	call   4244b0
+job title	0x1cab560	0x1cb244b	call   4244b0
+job title	0x1cab560	0x1cb2457	call   4244b0
+job title	0x1cab560	0x1cb2463	call   4244b0
+job title	0x1cab560	0x1cb246f	call   4244b0
+job title	0x1cab560	0x1cb247b	call   4244b0
+job title	0x1cab560	0x1cb2487	call   4244b0
+job title	0x1cab560	0x1cb2493	call   4244b0
+job title	0x1cab560	0x1cb249f	call   4244b0
+job title	0x1cab560	0x1cb24ab	call   4244b0
+job title	0x1cab560	0x1cb24b7	call   4244b0
+job title	0x1cab560	0x1cb24c3	call   4244b0
+job title	0x1cab560	0x1cb24cf	call   4244b0
+job title	0x1cab560	0x1cb24db	call   4244b0
+job title	0x1cab560	0x1cb24e7	call   4244b0
+job title	0x1cab560	0x1cb24f3	call   4244b0
+job title	0x1cab560	0x1cb2507	call   4244b0
+job title	0x1cab560	0x1cb2513	call   4244b0
+job title	0x1cab560	0x1cb251f	call   4244b0
+job title	0x1cab560	0x1cb252b	call   4244b0
+job title	0x1cab560	0x1cb2537	call   4244b0
+job title	0x1cab560	0x1cb2543	call   4244b0
+job title	0x1cab560	0x1cb254f	call   4244b0
+job title	0x1cab560	0x1cb255b	call   4244b0
+job title	0x1cab560	0x1cb2567	call   4244b0
+job title	0x1cab560	0x1cb2573	call   4244b0
+job title	0x1cab560	0x1cb257f	call   4244b0
+job title	0x1cab560	0x1cb258b	call   4244b0
+job title	0x1cab560	0x1cb2597	call   4244b0
+job title	0x1cab560	0x1cb25a3	call   4244b0
+job title	0x1cab560	0x1cb25af	call   4244b0
+job title	0x1cab560	0x1cb25bb	call   4244b0
+job title	0x1cab560	0x1cb25c7	call   4244b0
+job title	0x1cab560	0x1cb25d3	call   4244b0
+job title	0x1cab560	0x1cb25df	call   4244b0
+job title	0x1cab560	0x1cb25eb	call   4244b0
+job title	0x1cab560	0x1cb25f7	call   4244b0
+job title	0x1cab560	0x1cb2603	call   4244b0
+current job and surgery variants	0x1cb2760	0x1cb27bd	call   1cab560
+current job and surgery variants	0x1cb2760	0x1cb299d	call   69f9b0
+current job and surgery variants	0x1cb2760	0x1cb29c5	call   69f9b0
+current job and surgery variants	0x1cb2760	0x1cb29e5	call   69f9b0
+current job and surgery variants	0x1cb2760	0x1cb2a05	call   69f9b0
+current job and surgery variants	0x1cb2760	0x1cb2a51	call   4244b0
+squad_order_trainst	0x20311b0	0x2031212	call   69f9b0
+squad_order_trainst	0x20311b0	0x2031280	call   423690
+squad_order_trainst	0x20311b0	0x203128d	call   423690
+squad_order_retrieve_artifactst	0x20313e0	0x2031472	call   69f9b0
+squad_order_retrieve_artifactst	0x20313e0	0x20314e8	call   423690
+squad_order_retrieve_artifactst	0x20313e0	0x20314f5	call   423690
+kill historical figure helper	0x2031660	0x20317d7	call   a10320
+kill historical figure helper	0x2031660	0x203181a	call   69f9b0
+kill historical figure helper	0x2031660	0x2031898	call   423690
+kill historical figure helper	0x2031660	0x20318a5	call   423690
+kill historical figure helper	0x2031660	0x20318d0	call   423c70
+squad_order_kill_hfst	0x20318e0	0x2031942	call   423690
+squad_order_kill_hfst	0x20318e0	0x2031986	call   423860
+squad_order_kill_hfst	0x20318e0	0x203199e	call   423790
+squad_order_kill_hfst	0x20318e0	0x20319b8	call   2031660
+squad_order_kill_hfst	0x20318e0	0x20319cd	call   4236b0
+squad_order_kill_hfst	0x20318e0	0x20319fe	call   4244b0
+squad_order_rescue_hfst	0x2031a10	0x2031b92	call   a10320
+squad_order_rescue_hfst	0x2031a10	0x2031bd2	call   69f9b0
+squad_order_rescue_hfst	0x2031a10	0x2031c58	call   423690
+squad_order_rescue_hfst	0x2031a10	0x2031c65	call   423690
+squad_order_rescue_hfst	0x2031a10	0x2031c90	call   423c70
+squad_order_drive_entity_off_sitest	0x2031ca0	0x2031d03	call   423690
+squad_order_drive_entity_off_sitest	0x2031ca0	0x2031d4e	call   423860
+squad_order_drive_entity_off_sitest	0x2031ca0	0x2031d67	call   423790
+squad_order_drive_entity_off_sitest	0x2031ca0	0x2031d91	call   b05af0
+squad_order_drive_entity_off_sitest	0x2031ca0	0x2031da1	call   a278f0
+squad_order_drive_entity_off_sitest	0x2031ca0	0x2031e0a	call   a27cd0
+squad_order_drive_entity_off_sitest	0x2031ca0	0x2031e21	call   4236b0
+squad_order_drive_entity_off_sitest	0x2031ca0	0x2031e65	call   69f9b0
+squad_order_drive_entity_off_sitest	0x2031ca0	0x2031e81	call   4244b0
+squad_order_drive_entity_off_sitest	0x2031ca0	0x2031e8d	call   4244b0
+squad_order_drive_armies_from_sitest	0x2031ea0	0x2031f03	call   423690
+squad_order_drive_armies_from_sitest	0x2031ea0	0x2031f4e	call   423860
+squad_order_drive_armies_from_sitest	0x2031ea0	0x2031f67	call   423790
+squad_order_drive_armies_from_sitest	0x2031ea0	0x2031f91	call   b05af0
+squad_order_drive_armies_from_sitest	0x2031ea0	0x2031fa1	call   a278f0
+squad_order_drive_armies_from_sitest	0x2031ea0	0x2032006	call   a27cd0
+squad_order_drive_armies_from_sitest	0x2031ea0	0x2032019	call   4236b0
+squad_order_drive_armies_from_sitest	0x2031ea0	0x2032055	call   69f9b0
+squad_order_drive_armies_from_sitest	0x2031ea0	0x2032071	call   4244b0
+squad_order_drive_armies_from_sitest	0x2031ea0	0x203207d	call   4244b0
+squad_order_patrol_routest	0x20324a0	0x203261b	call   69f9b0
+squad_order_patrol_routest	0x20324a0	0x203264a	call   69f9b0
+squad_order_patrol_routest	0x20324a0	0x20326d6	call   423690
+squad_order_patrol_routest	0x20324a0	0x20326f5	call   69f9b0
+squad_order_patrol_routest	0x20324a0	0x2032742	call   423690
+squad_order_patrol_routest	0x20324a0	0x203274f	call   423690
+squad_order_patrol_routest	0x20324a0	0x2032780	call   4244b0
+squad_order_raid_sitest	0x2032790	0x20328a2	call   69f9b0
+squad_order_raid_sitest	0x2032790	0x203291d	call   b05af0
+squad_order_raid_sitest	0x2032790	0x2032931	call   b05af0
+squad_order_raid_sitest	0x2032790	0x2032945	call   b05af0
+squad_order_raid_sitest	0x2032790	0x2032959	call   b05af0
+squad_order_raid_sitest	0x2032790	0x203296d	call   b05af0
+squad_order_raid_sitest	0x2032790	0x2032981	call   b05af0
+squad_order_raid_sitest	0x2032790	0x2032995	call   b05af0
+squad_order_raid_sitest	0x2032790	0x20329c7	call   423690
+squad_order_raid_sitest	0x2032790	0x20329d4	call   423690
+squad_order_defend_burrowsst	0x2032a00	0x2032b7d	call   423830
+squad_order_defend_burrowsst	0x2032a00	0x2032c4e	call   423690
+squad_order_defend_burrowsst	0x2032a00	0x2032c8b	call   69f9b0
+squad_order_defend_burrowsst	0x2032a00	0x2032cfd	call   69f9b0
+squad_order_defend_burrowsst	0x2032a00	0x2032d0f	call   69f9b0
+squad_order_defend_burrowsst	0x2032a00	0x2032d56	call   69f9b0
+squad_order_defend_burrowsst	0x2032a00	0x2032d96	call   423690
+squad_order_defend_burrowsst	0x2032a00	0x2032da3	call   423690
+squad_order_defend_burrowsst	0x2032a00	0x2032dd4	call   4244b0
+squad_order_movest	0x2032de0	0x2032e5b	call   2029200
+squad_order_movest	0x2032de0	0x2032f0e	call   423690
+squad_order_movest	0x2032de0	0x2032f5a	call   69f9b0
+squad_order_movest	0x2032de0	0x2032fcd	call   69f9b0
+squad_order_movest	0x2032de0	0x2033095	call   69f9b0
+squad_order_movest	0x2032de0	0x20330b5	call   69f9b0
+squad_order_movest	0x2032de0	0x2033108	call   423690
+squad_order_movest	0x2032de0	0x2033115	call   423690
+squad_order_movest	0x2032de0	0x203313f	call   423c70
+squad_order_movest	0x2032de0	0x203314b	call   4244b0
+squad_order_cause_trouble_for_entityst	0x2033150	0x20331b3	call   423690
+squad_order_cause_trouble_for_entityst	0x2033150	0x20331fe	call   423860
+squad_order_cause_trouble_for_entityst	0x2033150	0x2033217	call   423790
+squad_order_cause_trouble_for_entityst	0x2033150	0x203328b	call   a278f0
+squad_order_cause_trouble_for_entityst	0x2033150	0x20332c9	call   4236b0
+squad_order_cause_trouble_for_entityst	0x2033150	0x2033304	call   69f9b0
+squad_order_cause_trouble_for_entityst	0x2033150	0x2033336	call   423690
+squad_order_cause_trouble_for_entityst	0x2033150	0x2033343	call   423690
+squad_order_cause_trouble_for_entityst	0x2033150	0x2033374	call   4244b0
+kill list caption helper	0x2033380	0x2033544	call   69f9b0
+kill list caption helper	0x2033380	0x20336de	call   12ae800
+kill list caption helper	0x2033380	0x203372a	call   423690
+kill list caption helper	0x2033380	0x2033752	call   423790
+kill list caption helper	0x2033380	0x2033773	call   69f9b0
+kill list caption helper	0x2033380	0x20337ea	call   ba53d0
+kill list caption helper	0x2033380	0x2033824	call   69f9b0
+kill list caption helper	0x2033380	0x2033842	call   69f9b0
+kill list caption helper	0x2033380	0x203385b	call   69f9b0
+kill list caption helper	0x2033380	0x203388a	call   69f9b0
+kill list caption helper	0x2033380	0x20338de	call   423690
+kill list caption helper	0x2033380	0x20338ff	call   423690
+kill list caption helper	0x2033380	0x2033930	call   4244b0
+kill list caption helper	0x2033380	0x2033935	call   423c70
+squad_order_kill_listst	0x2033960	0x20339c2	call   423690
+squad_order_kill_listst	0x2033960	0x2033a06	call   423860
+squad_order_kill_listst	0x2033960	0x2033a1e	call   423790
+squad_order_kill_listst	0x2033960	0x2033a38	call   2033380
+squad_order_kill_listst	0x2033960	0x2033a4d	call   4236b0
+squad_order_kill_listst	0x2033960	0x2033a7e	call   4244b0
+creature role/status display	0x204bab0	0x204bb17	call   20421e0
+creature role/status display	0x204bab0	0x204bb29	call   e266e0
+creature role/status display	0x204bab0	0x204bb53	call   423790
+creature role/status display	0x204bab0	0x204bb9c	call   423860
+creature role/status display	0x204bab0	0x204bbd5	call   424650
+creature role/status display	0x204bab0	0x204bc54	call   423810
+creature role/status display	0x204bab0	0x204bc75	call   423790
+creature role/status display	0x204bab0	0x204bc7d	call   424d50
+creature role/status display	0x204bab0	0x204bc99	call   423790
+creature role/status display	0x204bab0	0x204bd19	call   2045510
+creature role/status display	0x204bab0	0x204bd2a	call   82bc10
+creature role/status display	0x204bab0	0x204bd39	call   QWORD PTR [rax+0x20]
+creature role/status display	0x204bab0	0x204bda4	call   1713ae0
+creature role/status display	0x204bab0	0x204bdb5	call   425530
+creature role/status display	0x204bab0	0x204bdea	call   1cb2760
+creature role/status display	0x204bab0	0x204be14	call   69f890
+creature role/status display	0x204bab0	0x204be23	call   69f890
+creature role/status display	0x204bab0	0x204be30	call   1ca4240
+creature role/status display	0x204bab0	0x204be64	call   19065c0
+creature role/status display	0x204bab0	0x204be75	call   1906be0
+creature role/status display	0x204bab0	0x204be87	call   QWORD PTR [rax+0x118]
+creature role/status display	0x204bab0	0x204be9d	call   QWORD PTR [rax+0x120]
+creature role/status display	0x204bab0	0x204bf28	call   423860
+creature role/status display	0x204bab0	0x204bf71	call   424650
+creature role/status display	0x204bab0	0x204bfc3	call   2063a90
+creature role/status display	0x204bab0	0x204c005	call   145c240
+creature role/status display	0x204bab0	0x204c01f	call   2045510
+creature role/status display	0x204bab0	0x204c030	call   82bc10
+creature role/status display	0x204bab0	0x204c03f	call   QWORD PTR [rax+0x20]
+creature role/status display	0x204bab0	0x204c062	call   e212a0
+creature role/status display	0x204bab0	0x204c0b0	call   QWORD PTR [rdx+rax*8]
+creature role/status display	0x204bab0	0x204c0f4	call   82bc10
+creature role/status display	0x204bab0	0x204c107	call   20421e0
+creature role/status display	0x204bab0	0x204c1fe	call   20421e0
+creature role/status display	0x204bab0	0x204c223	call   69f890
+creature role/status display	0x204bab0	0x204c232	call   69f890
+creature role/status display	0x204bab0	0x204c256	call   423790
+creature role/status display	0x204bab0	0x204c29d	call   1ca46a0
+creature role/status display	0x204bab0	0x204c2ea	call   82bc10
+creature role/status display	0x204bab0	0x204c326	call   2042040
+creature role/status display	0x204bab0	0x204c32e	call   425940
+creature role/status display	0x204bab0	0x204c370	call   82bc10
+creature role/status display	0x204bab0	0x204c390	call   423790
+creature role/status display	0x204bab0	0x204c3a5	call   82bc10
+creature role/status display	0x204bab0	0x204c3b3	call   b1d240
+creature role/status display	0x204bab0	0x204c43e	call   b31060
+creature role/status display	0x204bab0	0x204c449	call   b29ad0
+creature role/status display	0x204bab0	0x204c458	call   b31210
+creature role/status display	0x204bab0	0x204c46e	call   1713ae0
+creature role/status display	0x204bab0	0x204c47f	call   425530
+creature role/status display	0x204bab0	0x204c49b	call   e24830
+creature role/status display	0x204bab0	0x204c4e5	call   424f30
+creature role/status display	0x204bab0	0x204c51a	call   QWORD PTR [rdx+rax*8]
+creature role/status display	0x204bab0	0x204c57f	call   e22b30
+creature role/status display	0x204bab0	0x204c59b	call   rax
+creature role/status display	0x204bab0	0x204c5dd	call   e1f070
+creature role/status display	0x204bab0	0x204c5f9	call   rax
+creature role/status display	0x204bab0	0x204c607	call   82bc10
+creature role/status display	0x204bab0	0x204c61c	call   82bc10
+creature role/status display	0x204bab0	0x204c647	call   423860
+creature role/status display	0x204bab0	0x204c685	call   424650
+creature role/status display	0x204bab0	0x204c704	call   145c240
+creature role/status display	0x204bab0	0x204c718	call   2045510
+creature role/status display	0x204bab0	0x204c729	call   82bc10
+creature role/status display	0x204bab0	0x204c735	call   QWORD PTR [rax+0x20]
+creature role/status display	0x204bab0	0x204c758	call   e212a0
+creature role/status display	0x204bab0	0x204c7a6	call   QWORD PTR [rdx+rax*8]
+creature role/status display	0x204bab0	0x204c7ea	call   82bc10
+creature role/status display	0x204bab0	0x204c806	call   e24830
+creature role/status display	0x204bab0	0x204c836	call   424f30
+creature role/status display	0x204bab0	0x204c86b	call   QWORD PTR [rdx+rax*8]
+creature role/status display	0x204bab0	0x204c8e7	call   e22b30
+creature role/status display	0x204bab0	0x204c903	call   rax
+creature role/status display	0x204bab0	0x204c948	call   e1f070
+creature role/status display	0x204bab0	0x204c964	call   rax
+creature role/status display	0x204bab0	0x204c986	call   82bc10
+creature role/status display	0x204bab0	0x204c9ae	call   e24830
+creature role/status display	0x204bab0	0x204ca0c	call   424f30
+creature role/status display	0x204bab0	0x204ca41	call   QWORD PTR [rdx+rax*8]
+creature role/status display	0x204bab0	0x204caad	call   e22b30
+creature role/status display	0x204bab0	0x204cac9	call   rax
+creature role/status display	0x204bab0	0x204caea	call   2057050
+creature role/status display	0x204bab0	0x204cb2c	call   e1e730
+creature role/status display	0x204bab0	0x204cb57	call   423860
+creature role/status display	0x204bab0	0x204cbbb	call   e1f070
+creature role/status display	0x204bab0	0x204cbd7	call   rax
+creature role/status display	0x204bab0	0x204cbe5	call   e20260
+creature role/status display	0x204bab0	0x204cbfa	call   82bc10
+creature role/status display	0x204bab0	0x204cc16	call   e24830
+creature role/status display	0x204bab0	0x204cc46	call   424f30
+creature role/status display	0x204bab0	0x204cc7b	call   QWORD PTR [rdx+rax*8]
+creature role/status display	0x204bab0	0x204cce7	call   e22b30
+creature role/status display	0x204bab0	0x204cd03	call   rax
+creature role/status display	0x204bab0	0x204cd48	call   e1f070
+creature role/status display	0x204bab0	0x204cd64	call   rax
+creature role/status display	0x204bab0	0x204cd86	call   82bc10
+creature role/status display	0x204bab0	0x204cd9e	call   e24830
+creature role/status display	0x204bab0	0x204cde4	call   424f30
+creature role/status display	0x204bab0	0x204ce19	call   QWORD PTR [rdx+rax*8]
+creature role/status display	0x204bab0	0x204ce85	call   e22b30
+creature role/status display	0x204bab0	0x204cea1	call   rax
+creature role/status display	0x204bab0	0x204cec2	call   2057050
+creature role/status display	0x204bab0	0x204cefd	call   e1e730
+creature role/status display	0x204bab0	0x204cf28	call   423860
+creature role/status display	0x204bab0	0x204cf8b	call   e1f070
+creature role/status display	0x204bab0	0x204cfa7	call   rax
+creature role/status display	0x204bab0	0x204cfc5	call   e20260
+creature role/status display	0x204bab0	0x204cfda	call   82bc10
+creature role/status display	0x204bab0	0x204d01a	call   e24830
+creature role/status display	0x204bab0	0x204d067	call   424f30
+creature role/status display	0x204bab0	0x204d09c	call   QWORD PTR [rdx+rax*8]
+creature role/status display	0x204bab0	0x204d0fe	call   e22b30
+creature role/status display	0x204bab0	0x204d11a	call   rax
+creature role/status display	0x204bab0	0x204d15c	call   e1f070
+creature role/status display	0x204bab0	0x204d17c	call   rax
+creature role/status display	0x204bab0	0x204d18e	call   rax
+creature role/status display	0x204bab0	0x204d1c9	call   QWORD PTR [rax+0xd0]
+creature role/status display	0x204bab0	0x204d284	call   2044950
+creature role/status display	0x204bab0	0x204d2d8	call   69f890
+creature role/status display	0x204bab0	0x204d2e7	call   69f890
+creature role/status display	0x204bab0	0x204d318	call   2044950
+creature role/status display	0x204bab0	0x204d349	call   2044950
+creature role/status display	0x204bab0	0x204d37a	call   2044950
+creature role/status display	0x204bab0	0x204d3ab	call   2044950
+creature role/status display	0x204bab0	0x204d3dc	call   2044950
+creature role/status display	0x204bab0	0x204d40d	call   2044950
+creature role/status display	0x204bab0	0x204d43a	call   20421e0
+creature role/status display	0x204bab0	0x204d44f	call   423830
+creature role/status display	0x204bab0	0x204d47c	call   69f890
+creature role/status display	0x204bab0	0x204d48b	call   69f890
+creature role/status display	0x204bab0	0x204d672	call   rax
+creature role/status display	0x204bab0	0x204d686	call   rbx
+creature role/status display	0x204bab0	0x204d697	call   b1ed30
+creature role/status display	0x204bab0	0x204d716	call   2044950
+creature role/status display	0x204bab0	0x204d748	call   69f890
+creature role/status display	0x204bab0	0x204d757	call   69f890
+creature role/status display	0x204bab0	0x204d77e	call   2044950
+creature role/status display	0x204bab0	0x204d7b5	call   2044b00
+creature role/status display	0x204bab0	0x204d7dc	call   2044950
+creature role/status display	0x204bab0	0x204d800	call   2044950
+creature role/status display	0x204bab0	0x204d824	call   2044950
+creature role/status display	0x204bab0	0x204d86e	call   2044950
+creature role/status display	0x204bab0	0x204d895	call   2044950
+creature role/status display	0x204bab0	0x204d8de	call   2044950
+creature role/status display	0x204bab0	0x204d928	call   2044950
+creature role/status display	0x204bab0	0x204d93c	call   b1e340
+creature role/status display	0x204bab0	0x204d988	call   2044950
+creature role/status display	0x204bab0	0x204d9af	call   2044950
+creature role/status display	0x204bab0	0x204d9ca	call   ee6c00
+creature role/status display	0x204bab0	0x204d9f1	call   b79d40
+creature role/status display	0x204bab0	0x204da0d	call   8378a0
+creature role/status display	0x204bab0	0x204da18	call   2041b60
+creature role/status display	0x204bab0	0x204da3f	call   423790
+creature role/status display	0x204bab0	0x204da5a	call   b1d240
+creature role/status display	0x204bab0	0x204daa3	call   20421e0
+creature role/status display	0x204bab0	0x204dac8	call   69f890
+creature role/status display	0x204bab0	0x204dad7	call   69f890
+creature role/status display	0x204bab0	0x204db61	call   rax
+creature role/status display	0x204bab0	0x204dbe9	call   rax
+creature role/status display	0x204bab0	0x204dc79	call   rax
+creature role/status display	0x204bab0	0x204dd09	call   rax
+creature role/status display	0x204bab0	0x204dd99	call   rax
+creature role/status display	0x204bab0	0x204de1a	call   rax
+creature role/status display	0x204bab0	0x204de4f	call   2044950
+creature role/status display	0x204bab0	0x204de6a	call   2044b00
+creature role/status display	0x204bab0	0x204defd	call   b70720
+creature role/status display	0x204bab0	0x204df2c	call   69f890
+creature role/status display	0x204bab0	0x204df3b	call   69f890
+creature role/status display	0x204bab0	0x204df70	call   2044b00
+creature role/status display	0x204bab0	0x204df80	call   rax
+creature role/status display	0x204bab0	0x204dfac	call   20421e0
+creature role/status display	0x204bab0	0x204dfd1	call   69f890
+creature role/status display	0x204bab0	0x204dfe0	call   69f890
+creature role/status display	0x204bab0	0x204e00c	call   2044b00
+creature role/status display	0x204bab0	0x204e01c	call   rax
+creature role/status display	0x204bab0	0x204e04a	call   2044950
+creature role/status display	0x204bab0	0x204e05a	call   rax
+creature role/status display	0x204bab0	0x204e067	call   rbx
+creature role/status display	0x204bab0	0x204e0e7	call   rax
+creature role/status display	0x204bab0	0x204e0f4	call   rbx
+creature role/status display	0x204bab0	0x204e156	call   2044950
+creature role/status display	0x204bab0	0x204e16a	call   2044950
+creature role/status display	0x204bab0	0x204e17a	call   rax
+creature role/status display	0x204bab0	0x204e18b	call   2044950
+creature role/status display	0x204bab0	0x204e19f	call   2044950
+creature role/status display	0x204bab0	0x204e1b3	call   2044950
+creature role/status display	0x204bab0	0x204e1c7	call   2044950
+creature role/status display	0x204bab0	0x204e1df	call   ee6bb0
+creature role/status display	0x204bab0	0x204e20a	call   2044950
+creature role/status display	0x204bab0	0x204e21e	call   2044950
+creature role/status display	0x204bab0	0x204e228	call   423c70
+creature role/status display	0x204bab0	0x204e237	call   b79d40
+creature role/status display	0x204bab0	0x204e250	call   8378a0
+creature role/status display	0x204bab0	0x204e25b	call   2041b60
+creature role/status display	0x204bab0	0x204e27b	call   423790
+creature role/status display	0x204bab0	0x204e2b2	call   b79d40
+creature role/status display	0x204bab0	0x204e2ce	call   8378a0
+creature role/status display	0x204bab0	0x204e2d9	call   2041b60
+creature role/status display	0x204bab0	0x204e300	call   423790

@@ -1,5 +1,8 @@
 ; Complete native event/collection direct-call source closure from actual RTTI roots.
 ; Raw disassembly also retains embedded table bytes; TSV distinguishes actual reachable code and switch entries.
+; Current offline PE SHA-256 f35bbaf37aa96f93f95f8a35a9341e6649da46bc29a8650316bfdc2dfc57f3e4
+
+; Native source function RVA 0xb6f4a0..0xb6ff1c; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -562,6 +565,8 @@ Disassembly of section .text:
    140b6ff18:	42 fe                	rex.X (bad)
    140b6ff1a:	b6 00                	mov    dh,0x0
 
+; Native source function RVA 0xb86ed0..0xb86fff; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -641,6 +646,8 @@ Disassembly of section .text:
    140b86ff5:	48 83 c4 30          	add    rsp,0x30
    140b86ff9:	5f                   	pop    rdi
    140b86ffa:	e9 81 86 00 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb754c0..0xb7569e; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -775,6 +782,8 @@ Disassembly of section .text:
    140b7569b:	5f                   	pop    rdi
    140b7569c:	5e                   	pop    rsi
    140b7569d:	c3                   	ret
+
+; Native source function RVA 0xbc3560..0xbc37bc; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -920,6 +929,8 @@ Disassembly of section .text:
    140bc37b6:	48 83 c4 50          	add    rsp,0x50
    140bc37ba:	5f                   	pop    rdi
    140bc37bb:	c3                   	ret
+
+; Native source function RVA 0xbc3130..0xbc33d2; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -1071,6 +1082,8 @@ Disassembly of section .text:
    140bc33cf:	5e                   	pop    rsi
    140bc33d0:	5d                   	pop    rbp
    140bc33d1:	c3                   	ret
+
+; Native source function RVA 0xb814c0..0xb81bb0; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -1493,6 +1506,8 @@ Disassembly of section .text:
    140b81bae:	b8                   	.byte 0xb8
 	...
 
+; Native source function RVA 0xb7e7b0..0xb7e86e; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -1545,6 +1560,8 @@ Disassembly of section .text:
    140b7e868:	5f                   	pop    rdi
    140b7e869:	e9 12 0e 01 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb80c90..0xb80d4e; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -1596,6 +1613,8 @@ Disassembly of section .text:
    140b80d44:	48 83 c4 20          	add    rsp,0x20
    140b80d48:	5f                   	pop    rdi
    140b80d49:	e9 32 e9 00 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb63100..0xb6320e; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -1666,6 +1685,8 @@ Disassembly of section .text:
    140b63204:	48 83 c4 20          	add    rsp,0x20
    140b63208:	5f                   	pop    rdi
    140b63209:	e9 72 c4 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb75990..0xb75c67; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -1853,6 +1874,8 @@ Disassembly of section .text:
    140b75c64:	41 5c                	pop    r12
    140b75c66:	c3                   	ret
 
+; Native source function RVA 0xb633e0..0xb6351e; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -1931,6 +1954,8 @@ Disassembly of section .text:
    140b63514:	48 83 c4 20          	add    rsp,0x20
    140b63518:	5f                   	pop    rdi
    140b63519:	e9 62 c1 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xbc2830..0xbc29e0; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -2029,6 +2054,8 @@ Disassembly of section .text:
    140bc29de:	5d                   	pop    rbp
    140bc29df:	c3                   	ret
 
+; Native source function RVA 0xb62ef0..0xb62fd4; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -2090,6 +2117,8 @@ Disassembly of section .text:
    140b62fce:	5f                   	pop    rdi
    140b62fcf:	e9 ac c6 02 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb80930..0xb809ee; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -2141,6 +2170,8 @@ Disassembly of section .text:
    140b809e4:	48 83 c4 20          	add    rsp,0x20
    140b809e8:	5f                   	pop    rdi
    140b809e9:	e9 92 ec 00 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb69bc0..0xb69dc2; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -2270,6 +2301,8 @@ Disassembly of section .text:
    140b69db8:	48 83 c4 30          	add    rsp,0x30
    140b69dbc:	5f                   	pop    rdi
    140b69dbd:	e9 be 58 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb68580..0xb6891f; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -2496,6 +2529,8 @@ Disassembly of section .text:
    140b6891d:	5d                   	pop    rbp
    140b6891e:	c3                   	ret
 
+; Native source function RVA 0xb88400..0xb886e5; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -2692,6 +2727,8 @@ Disassembly of section .text:
    140b886df:	5e                   	pop    rsi
    140b886e0:	e9 9b 6f 00 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb64b40..0xb64c2f; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -2753,6 +2790,8 @@ Disassembly of section .text:
    140b64c25:	48 83 c4 30          	add    rsp,0x30
    140b64c29:	5f                   	pop    rdi
    140b64c2a:	e9 51 aa 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb6c080..0xb6c538; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -3028,6 +3067,8 @@ Disassembly of section .text:
    140b6c534:	b3 c1                	mov    bl,0xc1
    140b6c536:	b6 00                	mov    dh,0x0
 
+; Native source function RVA 0xb7ee60..0xb7ef40; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -3086,6 +3127,8 @@ Disassembly of section .text:
    140b7ef36:	48 83 c4 20          	add    rsp,0x20
    140b7ef3a:	5f                   	pop    rdi
    140b7ef3b:	e9 40 07 01 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xbc26f0..0xbc2825; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -3169,6 +3212,8 @@ Disassembly of section .text:
    140bc2823:	5f                   	pop    rdi
    140bc2824:	c3                   	ret
 
+; Native source function RVA 0xb643b0..0xb64494; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -3229,6 +3274,8 @@ Disassembly of section .text:
    140b6448a:	48 83 c4 20          	add    rsp,0x20
    140b6448e:	5f                   	pop    rdi
    140b6448f:	e9 ec b1 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb6a740..0xb6aceb; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -3598,6 +3645,8 @@ Disassembly of section .text:
    140b6ace9:	5d                   	pop    rbp
    140b6acea:	c3                   	ret
 
+; Native source function RVA 0xb626c0..0xb62754; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -3639,6 +3688,8 @@ Disassembly of section .text:
    140b6274a:	48 83 c4 20          	add    rsp,0x20
    140b6274e:	5f                   	pop    rdi
    140b6274f:	e9 2c cf 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb76330..0xb764c3; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -3741,6 +3792,8 @@ Disassembly of section .text:
    140b764c0:	5f                   	pop    rdi
    140b764c1:	5d                   	pop    rbp
    140b764c2:	c3                   	ret
+
+; Native source function RVA 0xb85340..0xb85533; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -3866,6 +3919,8 @@ Disassembly of section .text:
    140b8552d:	5f                   	pop    rdi
    140b8552e:	e9 4d a1 00 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb79d90..0xb79e99; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -3936,6 +3991,8 @@ Disassembly of section .text:
    140b79e93:	5f                   	pop    rdi
    140b79e94:	e9 e7 57 01 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb7e450..0xb7e50e; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -3988,6 +4045,8 @@ Disassembly of section .text:
    140b7e508:	5f                   	pop    rdi
    140b7e509:	e9 72 11 01 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb62b20..0xb62bb4; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -4029,6 +4088,8 @@ Disassembly of section .text:
    140b62baa:	48 83 c4 20          	add    rsp,0x20
    140b62bae:	5f                   	pop    rdi
    140b62baf:	e9 cc ca 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb79620..0xb79718; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -4097,6 +4158,8 @@ Disassembly of section .text:
    140b7970e:	48 83 c4 20          	add    rsp,0x20
    140b79712:	5f                   	pop    rdi
    140b79713:	e9 68 5f 01 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb66bf0..0xb66d6e; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -4194,6 +4257,8 @@ Disassembly of section .text:
    140b66d68:	5f                   	pop    rdi
    140b66d69:	e9 12 89 02 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb640f0..0xb64251; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -4284,6 +4349,8 @@ Disassembly of section .text:
    140b6424b:	5f                   	pop    rdi
    140b6424c:	e9 2f b4 02 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb67a70..0xb67bb1; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -4368,6 +4435,8 @@ Disassembly of section .text:
    140b67bab:	5f                   	pop    rdi
    140b67bac:	e9 cf 7a 02 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb64730..0xb64814; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -4428,6 +4497,8 @@ Disassembly of section .text:
    140b6480a:	48 83 c4 20          	add    rsp,0x20
    140b6480e:	5f                   	pop    rdi
    140b6480f:	e9 6c ae 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb80220..0xb8033f; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -4500,6 +4571,8 @@ Disassembly of section .text:
    140b80335:	48 83 c4 20          	add    rsp,0x20
    140b80339:	5f                   	pop    rdi
    140b8033a:	e9 41 f3 00 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb67290..0xb673e2; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -4586,6 +4659,8 @@ Disassembly of section .text:
    140b673d8:	48 83 c4 30          	add    rsp,0x30
    140b673dc:	5f                   	pop    rdi
    140b673dd:	e9 9e 82 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb7d460..0xb7db14; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -4968,6 +5043,8 @@ Disassembly of section .text:
    140b7db0f:	00 70 d9             	add    BYTE PTR [rax-0x27],dh
    140b7db12:	b7 00                	mov    bh,0x0
 
+; Native source function RVA 0xb6b220..0xb6b640; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -5240,6 +5317,8 @@ Disassembly of section .text:
    140b6b63d:	b5 b6                	mov    ch,0xb6
 	...
 
+; Native source function RVA 0xbc33e0..0xbc3554; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -5335,6 +5414,8 @@ Disassembly of section .text:
    140bc354e:	48 83 c4 50          	add    rsp,0x50
    140bc3552:	5f                   	pop    rdi
    140bc3553:	c3                   	ret
+
+; Native source function RVA 0xbc29e0..0xbc2bfa; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -5493,6 +5574,8 @@ Disassembly of section .text:
    140bc2bf6:	04 04                	add    al,0x4
    140bc2bf8:	04 03                	add    al,0x3
 
+; Native source function RVA 0xb84d40..0xb84e5c; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -5566,6 +5649,8 @@ Disassembly of section .text:
    140b84e55:	41 5e                	pop    r14
    140b84e57:	e9 24 a8 00 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb62980..0xb62a14; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -5607,6 +5692,8 @@ Disassembly of section .text:
    140b62a0a:	48 83 c4 20          	add    rsp,0x20
    140b62a0e:	5f                   	pop    rdi
    140b62a0f:	e9 6c cc 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb63750..0xb63915; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -5720,6 +5807,8 @@ Disassembly of section .text:
    140b6390f:	5f                   	pop    rdi
    140b63910:	e9 6b bd 02 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb7d0c0..0xb7d191; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -5775,6 +5864,8 @@ Disassembly of section .text:
    140b7d187:	48 83 c4 30          	add    rsp,0x30
    140b7d18b:	5f                   	pop    rdi
    140b7d18c:	e9 ef 24 01 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb707c0..0xb71e34; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -7064,6 +7155,8 @@ Disassembly of section .text:
    140b71e30:	1a 14 b7             	sbb    dl,BYTE PTR [rdi+rsi*4]
 	...
 
+; Native source function RVA 0xb64930..0xb64a29; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -7128,6 +7221,8 @@ Disassembly of section .text:
    140b64a1f:	48 83 c4 30          	add    rsp,0x30
    140b64a23:	5f                   	pop    rdi
    140b64a24:	e9 57 ac 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb63c40..0xb63f00; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -7304,6 +7399,8 @@ Disassembly of section .text:
    140b63efa:	5b                   	pop    rbx
    140b63efb:	e9 80 b7 02 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb64d40..0xb64e39; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -7368,6 +7465,8 @@ Disassembly of section .text:
    140b64e2f:	48 83 c4 30          	add    rsp,0x30
    140b64e33:	5f                   	pop    rdi
    140b64e34:	e9 47 a8 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0x2a8150..0x2a82b8; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -7464,6 +7563,8 @@ Disassembly of section .text:
    1402a82ad:	48 83 c4 30          	add    rsp,0x30
    1402a82b1:	41 5f                	pop    r15
    1402a82b3:	e9 c8 73 8e 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb75ea0..0xb76091; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -7605,6 +7706,8 @@ Disassembly of section .text:
    140b7608e:	5e                   	pop    rsi
    140b7608f:	5d                   	pop    rbp
    140b76090:	c3                   	ret
+
+; Native source function RVA 0xbc38c0..0xbc3bdc; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -7808,6 +7911,8 @@ Disassembly of section .text:
    140bc3bda:	5d                   	pop    rbp
    140bc3bdb:	c3                   	ret
 
+; Native source function RVA 0xb62540..0xb62609; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -7862,6 +7967,8 @@ Disassembly of section .text:
    140b625ff:	48 83 c4 20          	add    rsp,0x20
    140b62603:	5f                   	pop    rdi
    140b62604:	e9 77 d0 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb857d0..0xb85a75; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -8029,6 +8136,8 @@ Disassembly of section .text:
    140b85a6d:	41 5c                	pop    r12
    140b85a6f:	5f                   	pop    rdi
    140b85a70:	e9 0b 9c 00 00       	jmp    0x140b8f680
+
+; Native source function RVA 0x2ab3b0..0x2ada83; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -10542,6 +10651,8 @@ Disassembly of section .text:
    1402ada81:	07                   	(bad)
    1402ada82:	06                   	(bad)
 
+; Native source function RVA 0xb7b680..0xb7ba88; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -10774,6 +10885,8 @@ Disassembly of section .text:
    140b7ba80:	4f                   	rex.WRXB
    140b7ba81:	b8 b7 00 5e b8       	mov    eax,0xb85e00b7
    140b7ba86:	b7 00                	mov    bh,0x0
+
+; Native source function RVA 0xb7fa60..0xb8021b; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -11288,6 +11401,8 @@ Disassembly of section .text:
    140b80219:	07                   	(bad)
    140b8021a:	06                   	(bad)
 
+; Native source function RVA 0xb62070..0xb62228; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -11398,6 +11513,8 @@ Disassembly of section .text:
    140b62224:	98                   	cwde
    140b62225:	21                   	.byte 0x21
    140b62226:	b6 00                	mov    dh,0x0
+
+; Native source function RVA 0xb60bc0..0xb60e09; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -11553,6 +11670,8 @@ Disassembly of section .text:
    140b60e07:	5d                   	pop    rbp
    140b60e08:	c3                   	ret
 
+; Native source function RVA 0xb87f60..0xb880b4; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -11641,6 +11760,8 @@ Disassembly of section .text:
    140b880ad:	41 5e                	pop    r14
    140b880af:	e9 cc 75 00 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb76ff0..0xb77097; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -11686,6 +11807,8 @@ Disassembly of section .text:
    140b7708d:	48 83 c4 30          	add    rsp,0x30
    140b77091:	5f                   	pop    rdi
    140b77092:	e9 e9 85 01 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb65ba0..0xb65cca; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -11763,6 +11886,8 @@ Disassembly of section .text:
    140b65cc0:	48 83 c4 30          	add    rsp,0x30
    140b65cc4:	5f                   	pop    rdi
    140b65cc5:	e9 b6 99 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb76710..0xb768f7; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -11886,6 +12011,8 @@ Disassembly of section .text:
    140b768f1:	5f                   	pop    rdi
    140b768f2:	e9 89 8d 01 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb78120..0xb78270; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -11971,6 +12098,8 @@ Disassembly of section .text:
    140b7826a:	5f                   	pop    rdi
    140b7826b:	e9 10 74 01 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xbc2c00..0xbc2d50; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -12055,6 +12184,8 @@ Disassembly of section .text:
    140bc2d4a:	48 83 c4 50          	add    rsp,0x50
    140bc2d4e:	5f                   	pop    rdi
    140bc2d4f:	c3                   	ret
+
+; Native source function RVA 0x2a89c0..0x2a8b28; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -12151,6 +12282,8 @@ Disassembly of section .text:
    1402a8b1d:	48 83 c4 30          	add    rsp,0x30
    1402a8b21:	41 5f                	pop    r15
    1402a8b23:	e9 58 6b 8e 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb7cef0..0xb7d0b1; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -12272,6 +12405,8 @@ Disassembly of section .text:
    140b7d0a8:	41 5e                	pop    r14
    140b7d0aa:	41 5c                	pop    r12
    140b7d0ac:	e9 cf 25 01 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb66d70..0xb66f39; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -12396,6 +12531,8 @@ Disassembly of section .text:
    140b66f30:	41 5e                	pop    r14
    140b66f32:	41 5c                	pop    r12
    140b66f34:	e9 47 87 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb70330..0xb707bc; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -12688,6 +12825,8 @@ Disassembly of section .text:
    140b707b9:	05                   	.byte 0x5
    140b707ba:	b7 00                	mov    bh,0x0
 
+; Native source function RVA 0xb84fd0..0xb85111; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -12772,6 +12911,8 @@ Disassembly of section .text:
    140b8510a:	41 5e                	pop    r14
    140b8510c:	e9 6f a5 00 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb79b60..0xb79c6a; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -12838,6 +12979,8 @@ Disassembly of section .text:
    140b79c60:	48 83 c4 30          	add    rsp,0x30
    140b79c64:	5f                   	pop    rdi
    140b79c65:	e9 16 5a 01 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb78440..0xb7857f; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -12922,6 +13065,8 @@ Disassembly of section .text:
    140b78579:	5f                   	pop    rdi
    140b7857a:	e9 01 71 01 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb65910..0xb65a1f; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -12993,6 +13138,8 @@ Disassembly of section .text:
    140b65a19:	5f                   	pop    rdi
    140b65a1a:	e9 61 9c 02 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb7a330..0xb7a442; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -13063,6 +13210,8 @@ Disassembly of section .text:
    140b7a437:	48 83 c4 30          	add    rsp,0x30
    140b7a43b:	41 5e                	pop    r14
    140b7a43d:	e9 3e 52 01 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb798f0..0xb79a34; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -13146,6 +13295,8 @@ Disassembly of section .text:
    140b79a2c:	41 5e                	pop    r14
    140b79a2e:	5f                   	pop    rdi
    140b79a2f:	e9 4c 5c 01 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb7a780..0xb7aa98; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -13325,6 +13476,8 @@ Disassembly of section .text:
    140b7aa90:	8e a9 b7 00 9d a9    	mov    gs,WORD PTR [rcx-0x5662ff49]
    140b7aa96:	b7 00                	mov    bh,0x0
 
+; Native source function RVA 0xb77a30..0xb77b58; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -13400,6 +13553,8 @@ Disassembly of section .text:
    140b77b4d:	48 83 c4 30          	add    rsp,0x30
    140b77b51:	41 5e                	pop    r14
    140b77b53:	e9 28 7b 01 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb65a20..0xb65b93; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -13494,6 +13649,8 @@ Disassembly of section .text:
    140b65b89:	48 83 c4 30          	add    rsp,0x30
    140b65b8d:	5f                   	pop    rdi
    140b65b8e:	e9 ed 9a 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb68cb0..0xb68f84; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -13683,6 +13840,8 @@ Disassembly of section .text:
    140b68f82:	5d                   	pop    rbp
    140b68f83:	c3                   	ret
 
+; Native source function RVA 0xbc3be0..0xbc3dd4; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -13796,6 +13955,8 @@ Disassembly of section .text:
    140bc3dd2:	5d                   	pop    rbp
    140bc3dd3:	c3                   	ret
 
+; Native source function RVA 0xb66f40..0xb67064; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -13871,6 +14032,8 @@ Disassembly of section .text:
    140b6705a:	48 83 c4 30          	add    rsp,0x30
    140b6705e:	5f                   	pop    rdi
    140b6705f:	e9 1c 86 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb73380..0xb73590; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -14004,6 +14167,8 @@ Disassembly of section .text:
    140b73589:	33 b7 00 e4 33 b7    	xor    esi,DWORD PTR [rdi-0x48cc1c00]
 	...
 
+; Native source function RVA 0xb85cb0..0xb85ea3; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -14130,6 +14295,8 @@ Disassembly of section .text:
    140b85ea0:	5e                   	pop    rsi
    140b85ea1:	5d                   	pop    rbp
    140b85ea2:	c3                   	ret
+
+; Native source function RVA 0xb6b9a0..0xb6bcce; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -14339,6 +14506,8 @@ Disassembly of section .text:
    140b6bccc:	5b                   	pop    rbx
    140b6bccd:	c3                   	ret
 
+; Native source function RVA 0xb64570..0xb64622; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -14387,6 +14556,8 @@ Disassembly of section .text:
    140b6461c:	5f                   	pop    rdi
    140b6461d:	e9 5e b0 02 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb62810..0xb628a4; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -14428,6 +14599,8 @@ Disassembly of section .text:
    140b6289a:	48 83 c4 20          	add    rsp,0x20
    140b6289e:	5f                   	pop    rdi
    140b6289f:	e9 dc cd 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb786e0..0xb78826; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -14511,6 +14684,8 @@ Disassembly of section .text:
    140b78820:	48 83 c4 30          	add    rsp,0x30
    140b78824:	5f                   	pop    rdi
    140b78825:	c3                   	ret
+
+; Native source function RVA 0xb804f0..0xb80684; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -14612,6 +14787,8 @@ Disassembly of section .text:
    140b80681:	06                   	(bad)
    140b80682:	b8                   	.byte 0xb8
 	...
+
+; Native source function RVA 0xb86160..0xb863d0; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -14781,6 +14958,8 @@ Disassembly of section .text:
    140b863ce:	5b                   	pop    rbx
    140b863cf:	c3                   	ret
 
+; Native source function RVA 0xb86680..0xb868f0; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -14949,6 +15128,8 @@ Disassembly of section .text:
    140b868ee:	5b                   	pop    rbx
    140b868ef:	c3                   	ret
 
+; Native source function RVA 0xbc2d50..0xbc2e9a; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -15031,6 +15212,8 @@ Disassembly of section .text:
    140bc2e94:	48 83 c4 50          	add    rsp,0x50
    140bc2e98:	5f                   	pop    rdi
    140bc2e99:	c3                   	ret
+
+; Native source function RVA 0xb87190..0xb8730b; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -15126,6 +15309,8 @@ Disassembly of section .text:
    140b87305:	5f                   	pop    rdi
    140b87306:	e9 75 83 00 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb77c20..0xb77caf; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -15167,6 +15352,8 @@ Disassembly of section .text:
    140b77ca5:	48 83 c4 30          	add    rsp,0x30
    140b77ca9:	5f                   	pop    rdi
    140b77caa:	e9 d1 79 01 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb65ec0..0xb65fe9; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -15245,6 +15432,8 @@ Disassembly of section .text:
    140b65fdf:	48 83 c4 30          	add    rsp,0x30
    140b65fe3:	5f                   	pop    rdi
    140b65fe4:	e9 97 96 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb823a0..0xb8254c; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -15349,6 +15538,8 @@ Disassembly of section .text:
    140b82542:	48 83 c4 30          	add    rsp,0x30
    140b82546:	5f                   	pop    rdi
    140b82547:	e9 34 d1 00 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb65510..0xb656c5; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -15459,6 +15650,8 @@ Disassembly of section .text:
    140b656bf:	5f                   	pop    rdi
    140b656c0:	e9 bb 9f 02 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xbc2ea0..0xbc2fff; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -15547,6 +15740,8 @@ Disassembly of section .text:
    140bc2ffd:	5f                   	pop    rdi
    140bc2ffe:	c3                   	ret
 
+; Native source function RVA 0xb78ff0..0xb79109; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -15620,6 +15815,8 @@ Disassembly of section .text:
    140b790fe:	48 83 c4 30          	add    rsp,0x30
    140b79102:	41 5e                	pop    r14
    140b79104:	e9 77 65 01 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb66160..0xb662b4; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -15707,6 +15904,8 @@ Disassembly of section .text:
    140b662aa:	48 83 c4 20          	add    rsp,0x20
    140b662ae:	5f                   	pop    rdi
    140b662af:	e9 cc 93 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb69250..0xb694d1; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -15880,6 +16079,8 @@ Disassembly of section .text:
    140b694cf:	5b                   	pop    rbx
    140b694d0:	c3                   	ret
 
+; Native source function RVA 0xb77e90..0xb77fb8; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -15962,6 +16163,8 @@ Disassembly of section .text:
    140b77fb5:	7f b7                	jg     0x140b77f6e
 	...
 
+; Native source function RVA 0xb79210..0xb792f2; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -16021,6 +16224,8 @@ Disassembly of section .text:
    140b792e8:	48 83 c4 20          	add    rsp,0x20
    140b792ec:	5f                   	pop    rdi
    140b792ed:	e9 8e 63 01 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb67150..0xb67286; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -16099,6 +16304,8 @@ Disassembly of section .text:
    140b6727c:	48 83 c4 30          	add    rsp,0x30
    140b67280:	5f                   	pop    rdi
    140b67281:	e9 fa 83 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb7ea20..0xb7eb9c; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -16200,6 +16407,8 @@ Disassembly of section .text:
    140b7eb94:	69 ea b7 00 5a ea    	imul   ebp,edx,0xea5a00b7
    140b7eb9a:	b7 00                	mov    bh,0x0
 
+; Native source function RVA 0xb81e10..0xb81ea4; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -16241,6 +16450,8 @@ Disassembly of section .text:
    140b81e9a:	48 83 c4 20          	add    rsp,0x20
    140b81e9e:	5f                   	pop    rdi
    140b81e9f:	e9 dc d7 00 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb81ca0..0xb81d58; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -16291,6 +16502,8 @@ Disassembly of section .text:
    140b81d4e:	48 83 c4 20          	add    rsp,0x20
    140b81d52:	5f                   	pop    rdi
    140b81d53:	e9 28 d9 00 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb60e10..0xb6100a; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -16423,6 +16636,8 @@ Disassembly of section .text:
    140b61004:	5f                   	pop    rdi
    140b61005:	e9 76 e6 02 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb72550..0xb72691; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -16503,6 +16718,8 @@ Disassembly of section .text:
    140b72686:	48 83 c4 30          	add    rsp,0x30
    140b7268a:	41 5e                	pop    r14
    140b7268c:	e9 ef cf 01 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb74020..0xb7420c; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -16629,6 +16846,8 @@ Disassembly of section .text:
    140b74204:	e8 40 b7 00 d3       	call   0x113b7f949
    140b74209:	40 b7 00             	mov    dil,0x0
 
+; Native source function RVA 0xb87cc0..0xb87dd8; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -16701,6 +16920,8 @@ Disassembly of section .text:
    140b87dce:	48 83 c4 30          	add    rsp,0x30
    140b87dd2:	5f                   	pop    rdi
    140b87dd3:	e9 a8 78 00 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xbc3de0..0xbc4005; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -16831,6 +17052,8 @@ Disassembly of section .text:
    140bc3fff:	48 83 c4 50          	add    rsp,0x50
    140bc4003:	5f                   	pop    rdi
    140bc4004:	c3                   	ret
+
+; Native source function RVA 0xb7c7b0..0xb7ca7c; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -17015,6 +17238,8 @@ Disassembly of section .text:
    140b7ca76:	b7 00                	mov    bh,0x0
    140b7ca78:	39 c9                	cmp    ecx,ecx
    140b7ca7a:	b7 00                	mov    bh,0x0
+
+; Native source function RVA 0xbc42b0..0xbc47bc; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -17319,6 +17544,8 @@ Disassembly of section .text:
    140bc47b5:	45 bc 00 ad 46 bc    	rex.RB mov r12d,0xbc46ad00
 	...
 
+; Native source function RVA 0xb67ed0..0xb681cc; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -17516,6 +17743,8 @@ Disassembly of section .text:
    140b681ca:	5d                   	pop    rbp
    140b681cb:	c3                   	ret
 
+; Native source function RVA 0xbc3000..0xbc3126; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -17590,6 +17819,8 @@ Disassembly of section .text:
    140bc3120:	48 83 c4 50          	add    rsp,0x50
    140bc3124:	5f                   	pop    rdi
    140bc3125:	c3                   	ret
+
+; Native source function RVA 0xb614d0..0xb61c40; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -18064,6 +18295,8 @@ Disassembly of section .text:
    140b61c3d:	16                   	(bad)
    140b61c3e:	b6 00                	mov    dh,0x0
 
+; Native source function RVA 0xb6ff20..0xb70324; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -18305,6 +18538,8 @@ Disassembly of section .text:
    140b7031d:	02 b7 00 30 02 b7    	add    dh,BYTE PTR [rdi-0x48fdd000]
 	...
 
+; Native source function RVA 0xb8b9d0..0xb8bc42; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -18462,6 +18697,8 @@ Disassembly of section .text:
    140b8bc3f:	5f                   	pop    rdi
    140b8bc40:	5e                   	pop    rsi
    140b8bc41:	c3                   	ret
+
+; Native source function RVA 0xb72c40..0xb73158; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -18774,6 +19011,8 @@ Disassembly of section .text:
    140b73150:	c9                   	leave
    140b73151:	2d b7 00 db 2d       	sub    eax,0x2ddb00b7
    140b73156:	b7 00                	mov    bh,0x0
+
+; Native source function RVA 0xb7db20..0xb7e1a4; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -19145,6 +19384,8 @@ Disassembly of section .text:
    140b7e19d:	df b7 00 fd df b7    	fbstp  TBYTE PTR [rdi-0x48200300]
 	...
 
+; Native source function RVA 0xbc4010..0xbc42a3; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -19304,6 +19545,8 @@ Disassembly of section .text:
    140bc42a1:	5f                   	pop    rdi
    140bc42a2:	c3                   	ret
 
+; Native source function RVA 0xb7ccc0..0xb7cee8; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -19454,6 +19697,8 @@ Disassembly of section .text:
    140b7cee4:	b4 cd                	mov    ah,0xcd
    140b7cee6:	b7 00                	mov    bh,0x0
 
+; Native source function RVA 0xb61c40..0xb61e6f; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -19592,6 +19837,8 @@ Disassembly of section .text:
    140b61e6c:	5e                   	pop    rsi
    140b61e6d:	5d                   	pop    rbp
    140b61e6e:	c3                   	ret
+
+; Native source function RVA 0xb7c4e0..0xb7c7ac; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -19781,6 +20028,8 @@ Disassembly of section .text:
    140b7c7a9:	c6                   	(bad)
    140b7c7aa:	b7 00                	mov    bh,0x0
 
+; Native source function RVA 0xb72110..0xb72382; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -19933,6 +20182,8 @@ Disassembly of section .text:
    140b72380:	5e                   	pop    rsi
    140b72381:	c3                   	ret
 
+; Native source function RVA 0xb88ac0..0xb88b8d; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -19986,6 +20237,8 @@ Disassembly of section .text:
    140b88b83:	48 83 c4 30          	add    rsp,0x30
    140b88b87:	5f                   	pop    rdi
    140b88b88:	e9 f3 6a 00 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xbc47c0..0xbc49e2; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -20115,6 +20368,8 @@ Disassembly of section .text:
    140bc49e0:	5f                   	pop    rdi
    140bc49e1:	c3                   	ret
 
+; Native source function RVA 0xb84820..0xb84a0a; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -20242,6 +20497,8 @@ Disassembly of section .text:
    140b849ff:	48 83 c4 20          	add    rsp,0x20
    140b84a03:	41 5e                	pop    r14
    140b84a05:	e9 76 ac 00 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb61e70..0xb62068; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -20371,6 +20628,8 @@ Disassembly of section .text:
    140b62065:	5e                   	pop    rsi
    140b62066:	5d                   	pop    rbp
    140b62067:	c3                   	ret
+
+; Native source function RVA 0xb7ca80..0xb7ccb4; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -20523,6 +20782,8 @@ Disassembly of section .text:
    140b7ccae:	b7 00                	mov    bh,0x0
    140b7ccb0:	83 cb b7             	or     ebx,0xffffffb7
 	...
+
+; Native source function RVA 0xb8a630..0xb8ae08; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -21009,6 +21270,8 @@ Disassembly of section .text:
    140b8ae06:	b8                   	.byte 0xb8
 	...
 
+; Native source function RVA 0xb673f0..0xb674b4; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -21062,6 +21325,8 @@ Disassembly of section .text:
    140b674ae:	5f                   	pop    rdi
    140b674af:	e9 cc 81 02 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb67590..0xb6763f; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -21109,6 +21374,8 @@ Disassembly of section .text:
    140b67635:	48 83 c4 20          	add    rsp,0x20
    140b67639:	5f                   	pop    rdi
    140b6763a:	e9 41 80 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb74470..0xb74757; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -21307,6 +21574,8 @@ Disassembly of section .text:
    140b74750:	41 5e                	pop    r14
    140b74752:	e9 29 af 01 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb7d1a0..0xb7d45b; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -21490,6 +21759,8 @@ Disassembly of section .text:
    140b7d459:	5d                   	pop    rbp
    140b7d45a:	c3                   	ret
 
+; Native source function RVA 0xb73be0..0xb73dfd; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -21632,6 +21903,8 @@ Disassembly of section .text:
    140b73df7:	5e                   	pop    rsi
    140b73df8:	e9 83 b8 01 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb64f70..0xb6505e; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -21694,6 +21967,8 @@ Disassembly of section .text:
    140b65054:	48 83 c4 20          	add    rsp,0x20
    140b65058:	5f                   	pop    rdi
    140b65059:	e9 22 a6 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb87a50..0xb87b6b; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -21770,6 +22045,8 @@ Disassembly of section .text:
    140b87b60:	48 83 c4 30          	add    rsp,0x30
    140b87b64:	41 5e                	pop    r14
    140b87b66:	e9 15 7b 00 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb8b4a0..0xb8b712; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -21928,6 +22205,8 @@ Disassembly of section .text:
    140b8b70f:	5f                   	pop    rdi
    140b8b710:	5e                   	pop    rsi
    140b8b711:	c3                   	ret
+
+; Native source function RVA 0xb61010..0xb614c6; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -22240,6 +22519,8 @@ Disassembly of section .text:
    140b614c4:	5d                   	pop    rbp
    140b614c5:	c3                   	ret
 
+; Native source function RVA 0xb65cd0..0xb65d88; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -22289,6 +22570,8 @@ Disassembly of section .text:
    140b65d7e:	48 83 c4 20          	add    rsp,0x20
    140b65d82:	5f                   	pop    rdi
    140b65d83:	e9 f8 98 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb88870..0xb889c9; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -22379,6 +22662,8 @@ Disassembly of section .text:
    140b889c2:	41 5e                	pop    r14
    140b889c4:	e9 b7 6c 00 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb82070..0xb821cc; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -22466,6 +22751,8 @@ Disassembly of section .text:
    140b821c2:	48 83 c4 30          	add    rsp,0x30
    140b821c6:	5f                   	pop    rdi
    140b821c7:	e9 b4 d4 00 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xbc49f0..0xbc4c71; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -22621,6 +22908,8 @@ Disassembly of section .text:
    140bc4c6f:	5f                   	pop    rdi
    140bc4c70:	c3                   	ret
 
+; Native source function RVA 0xb86b30..0xb86d22; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -22748,6 +23037,8 @@ Disassembly of section .text:
    140b86d17:	48 83 c4 30          	add    rsp,0x30
    140b86d1b:	41 5e                	pop    r14
    140b86d1d:	e9 5e 89 00 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb892f0..0xb899cb; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -23185,6 +23476,8 @@ Disassembly of section .text:
    140b899c9:	5d                   	pop    rbp
    140b899ca:	c3                   	ret
 
+; Native source function RVA 0xb73800..0xb739c0; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -23301,6 +23594,8 @@ Disassembly of section .text:
    140b739ba:	5f                   	pop    rdi
    140b739bb:	e9 c0 bc 01 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb67830..0xb67970; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -23384,6 +23679,8 @@ Disassembly of section .text:
    140b6796a:	5f                   	pop    rdi
    140b6796b:	e9 10 7d 02 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb67070..0xb67149; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -23440,6 +23737,8 @@ Disassembly of section .text:
    140b6713f:	48 83 c4 30          	add    rsp,0x30
    140b67143:	5f                   	pop    rdi
    140b67144:	e9 37 85 02 00       	jmp    0x140b8f680
+
+; Native source function RVA 0xb87760..0xb878fd; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -23548,6 +23847,8 @@ Disassembly of section .text:
    140b878f6:	41 5c                	pop    r12
    140b878f8:	e9 83 7d 00 00       	jmp    0x140b8f680
 
+; Native source function RVA 0xb84c60..0xb84d33; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -23604,6 +23905,8 @@ Disassembly of section .text:
    140b84d2d:	5f                   	pop    rdi
    140b84d2e:	e9 4d a9 00 00       	jmp    0x140b8f680
 
+; Native source function RVA 0x6f4f0..0x6f530; leaf body
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -23625,6 +23928,8 @@ Disassembly of section .text:
    14006f52a:	e9 31 03 00 00       	jmp    0x14006f860
    14006f52f:	cc                   	int3
 
+; Native source function RVA 0x6f510..0x6f530; leaf body
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -23638,6 +23943,8 @@ Disassembly of section .text:
    14006f528:	75 f6                	jne    0x14006f520
    14006f52a:	e9 31 03 00 00       	jmp    0x14006f860
    14006f52f:	cc                   	int3
+
+; Native source function RVA 0x70760..0x707b9; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -23673,6 +23980,8 @@ Disassembly of section .text:
    1400707b3:	e8 98 4f ff ff       	call   0x140065750
    1400707b8:	cc                   	int3
 
+; Native source function RVA 0x6f970..0x6f99a; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -23692,6 +24001,8 @@ Disassembly of section .text:
    14006f994:	48 83 c4 20          	add    rsp,0x20
    14006f998:	5f                   	pop    rdi
    14006f999:	c3                   	ret
+
+; Native source function RVA 0xedbc10..0xede4d0; leaf body
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -26229,6 +26540,8 @@ Disassembly of section .text:
    140ede4ce:	cc                   	int3
    140ede4cf:	cc                   	int3
 
+; Native source function RVA 0xb9ca0..0xb9cc0; leaf body
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -26253,6 +26566,8 @@ Disassembly of section .text:
    1400b9cbd:	cc                   	int3
    1400b9cbe:	cc                   	int3
    1400b9cbf:	cc                   	int3
+
+; Native source function RVA 0xb8ff50..0xb90967; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -26893,6 +27208,8 @@ Disassembly of section .text:
    140b90965:	5d                   	pop    rbp
    140b90966:	c3                   	ret
 
+; Native source function RVA 0xb8f680..0xb8f934; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -27081,6 +27398,8 @@ Disassembly of section .text:
    140b8f92d:	c3                   	ret
    140b8f92e:	e8 ed 5e 4d ff       	call   0x140065820
    140b8f933:	90                   	nop
+
+; Native source function RVA 0xb91440..0xb91750; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -27287,6 +27606,8 @@ Disassembly of section .text:
    140b9174e:	5e                   	pop    rsi
    140b9174f:	c3                   	ret
 
+; Native source function RVA 0xb90970..0xb90aca; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -27374,6 +27695,8 @@ Disassembly of section .text:
    140b90ac4:	48 83 c4 50          	add    rsp,0x50
    140b90ac8:	5f                   	pop    rdi
    140b90ac9:	c3                   	ret
+
+; Native source function RVA 0xb8f940..0xb8fab8; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -27471,6 +27794,8 @@ Disassembly of section .text:
    140b8fab6:	5f                   	pop    rdi
    140b8fab7:	c3                   	ret
 
+; Native source function RVA 0xb90ca0..0xb90d30; leaf body
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -27524,6 +27849,8 @@ Disassembly of section .text:
    140b90d2d:	cc                   	int3
    140b90d2e:	cc                   	int3
    140b90d2f:	cc                   	int3
+
+; Native source function RVA 0x52c590..0x52cab0; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -27882,6 +28209,8 @@ Disassembly of section .text:
    14052caae:	52                   	push   rdx
 	...
 
+; Native source function RVA 0x52ade0..0x52b068; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -28093,6 +28422,8 @@ Disassembly of section .text:
    14052b065:	08 08                	or     BYTE PTR [rax],cl
    14052b067:	07                   	(bad)
 
+; Native source function RVA 0xb91750..0xb91980; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -28230,6 +28561,8 @@ Disassembly of section .text:
    140b9197e:	5f                   	pop    rdi
    140b9197f:	c3                   	ret
 
+; Native source function RVA 0xb91980..0xb91a76; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -28295,6 +28628,8 @@ Disassembly of section .text:
    140b91a70:	48 83 c4 20          	add    rsp,0x20
    140b91a74:	5f                   	pop    rdi
    140b91a75:	c3                   	ret
+
+; Native source function RVA 0xb91a80..0xb91bd7; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -28384,6 +28719,8 @@ Disassembly of section .text:
    140b91bd5:	5f                   	pop    rdi
    140b91bd6:	c3                   	ret
 
+; Native source function RVA 0x72010..0x72100; leaf body
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -28427,6 +28764,8 @@ Disassembly of section .text:
    1400720fd:	cc                   	int3
    1400720fe:	cc                   	int3
    1400720ff:	cc                   	int3
+
+; Native source function RVA 0xba030..0xba0d8; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -28485,6 +28824,8 @@ Disassembly of section .text:
    1400ba0ce:	48 8b 04 c7          	mov    rax,QWORD PTR [rdi+rax*8]
    1400ba0d2:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
    1400ba0d7:	c3                   	ret
+
+; Native source function RVA 0xa7fc90..0xa8537c; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -33743,6 +34084,8 @@ Disassembly of section .text:
    140a85375:	3a a8 00 4e 3a a8    	cmp    ch,BYTE PTR [rax-0x57c5b200]
 	...
 
+; Native source function RVA 0xb910d0..0xb91438; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -33942,6 +34285,8 @@ Disassembly of section .text:
    140b9142b:	00 b3 12 b9 00 9a    	add    BYTE PTR [rbx-0x65ff46ee],dh
    140b91431:	13 b9 00 a1 12 b9    	adc    edi,DWORD PTR [rcx-0x46ed5f00]
 	...
+
+; Native source function RVA 0xb57700..0xb58af1; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -35064,6 +35409,8 @@ Disassembly of section .text:
    140b58aee:	1a 1b                	sbb    bl,BYTE PTR [rbx]
    140b58af0:	02                   	.byte 0x2
 
+; Native source function RVA 0xb92060..0xb921b0; leaf body
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -35140,6 +35487,8 @@ Disassembly of section .text:
    140b921a7:	00 40 21             	add    BYTE PTR [rax+0x21],al
    140b921aa:	b9 00 40 21 b9       	mov    ecx,0xb9214000
 	...
+
+; Native source function RVA 0xa910b0..0xa91751; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -35595,6 +35944,8 @@ Disassembly of section .text:
    140a9174e:	5f                   	pop    rdi
    140a9174f:	5d                   	pop    rbp
    140a91750:	c3                   	ret
+
+; Native source function RVA 0xa91760..0xa91f22; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -36111,6 +36462,8 @@ Disassembly of section .text:
    140a91f1c:	e8 ff 38 5d ff       	call   0x140065820
    140a91f21:	cc                   	int3
 
+; Native source function RVA 0xb9b10..0xb9c54; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -36209,6 +36562,8 @@ Disassembly of section .text:
    1400b9c4d:	c3                   	ret
    1400b9c4e:	e8 cd bb fa ff       	call   0x140065820
    1400b9c53:	cc                   	int3
+
+; Native source function RVA 0x52bd80..0x52c58c; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -36719,6 +37074,8 @@ Disassembly of section .text:
    14052c58a:	52                   	push   rdx
 	...
 
+; Native source function RVA 0xb91f10..0xb9205c; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -36801,6 +37158,8 @@ Disassembly of section .text:
    140b9205a:	5b                   	pop    rbx
    140b9205b:	c3                   	ret
 
+; Native source function RVA 0x72500..0x72598; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -36855,6 +37214,8 @@ Disassembly of section .text:
    140072590:	48 63 c8             	movsxd rcx,eax
    140072593:	49 8b 04 cb          	mov    rax,QWORD PTR [r11+rcx*8]
    140072597:	c3                   	ret
+
+; Native source function RVA 0xc375d0..0xc3828f; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -37656,6 +38017,8 @@ Disassembly of section .text:
    140c3828d:	5d                   	pop    rbp
    140c3828e:	c3                   	ret
 
+; Native source function RVA 0x7dab0..0x7db66; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -37719,6 +38082,8 @@ Disassembly of section .text:
    14007db64:	5b                   	pop    rbx
    14007db65:	c3                   	ret
 
+; Native source function RVA 0x1ba0d0..0x1ba178; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -37776,6 +38141,8 @@ Disassembly of section .text:
    1401ba16e:	48 8b 04 c7          	mov    rax,QWORD PTR [rdi+rax*8]
    1401ba172:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
    1401ba177:	c3                   	ret
+
+; Native source function RVA 0xbc37c0..0xbc38b7; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -37853,6 +38220,8 @@ Disassembly of section .text:
    140bc38b1:	41 0f b7 c7          	movzx  eax,r15w
    140bc38b5:	eb e1                	jmp    0x140bc3898
 
+; Native source function RVA 0xb9d50..0xb9df7; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -37911,6 +38280,8 @@ Disassembly of section .text:
    1400b9df1:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
    1400b9df6:	c3                   	ret
 
+; Native source function RVA 0xbbdd0..0xbbe7d; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -37968,6 +38339,8 @@ Disassembly of section .text:
    1400bbe74:	49 8b c3             	mov    rax,r11
    1400bbe77:	48 8b 5c 24 08       	mov    rbx,QWORD PTR [rsp+0x8]
    1400bbe7c:	c3                   	ret
+
+; Native source function RVA 0x9bb7e0..0x9bb928; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -38056,6 +38429,8 @@ Disassembly of section .text:
    1409bb922:	48 83 c4 50          	add    rsp,0x50
    1409bb926:	5f                   	pop    rdi
    1409bb927:	c3                   	ret
+
+; Native source function RVA 0xe2b10..0xe2c42; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -38149,6 +38524,8 @@ Disassembly of section .text:
    1400e2c40:	5f                   	pop    rdi
    1400e2c41:	c3                   	ret
 
+; Native source function RVA 0x6f620..0x6f640; leaf body
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -38165,6 +38542,8 @@ Disassembly of section .text:
    14006f63d:	cc                   	int3
    14006f63e:	cc                   	int3
    14006f63f:	cc                   	int3
+
+; Native source function RVA 0x7da80..0x7dab0; leaf body
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -38195,6 +38574,8 @@ Disassembly of section .text:
    14007daad:	cc                   	int3
    14007daae:	cc                   	int3
    14007daaf:	cc                   	int3
+
+; Native source function RVA 0x997bf0..0x997d10; leaf body
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -38284,6 +38665,8 @@ Disassembly of section .text:
    140997d0e:	cc                   	int3
    140997d0f:	cc                   	int3
 
+; Native source function RVA 0xbab70..0xbac1b; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -38342,6 +38725,8 @@ Disassembly of section .text:
    1400bac14:	49 89 03             	mov    QWORD PTR [r11],rax
    1400bac17:	49 8b c3             	mov    rax,r11
    1400bac1a:	c3                   	ret
+
+; Native source function RVA 0x7d9c0..0x7da73; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -38406,6 +38791,8 @@ Disassembly of section .text:
    14007da6f:	33 c0                	xor    eax,eax
    14007da71:	5b                   	pop    rbx
    14007da72:	c3                   	ret
+
+; Native source function RVA 0x54ad40..0x54c3f4; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -39833,6 +40220,8 @@ Disassembly of section .text:
    14054c3f2:	54                   	push   rsp
 	...
 
+; Native source function RVA 0xb90d30..0xb910d0; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -40032,6 +40421,8 @@ Disassembly of section .text:
    140b910ca:	b9 00 3c 0f b9       	mov    ecx,0xb90f3c00
 	...
 
+; Native source function RVA 0x6fe90..0x6ff38; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -40090,6 +40481,8 @@ Disassembly of section .text:
    14006ff32:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
    14006ff37:	c3                   	ret
 
+; Native source function RVA 0xf841f0..0xf84270; leaf body
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -40141,6 +40534,8 @@ Disassembly of section .text:
    140f8426d:	cc                   	int3
    140f8426e:	cc                   	int3
    140f8426f:	cc                   	int3
+
+; Native source function RVA 0xb82550..0xb84608; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -42165,6 +42560,8 @@ Disassembly of section .text:
    140b84601:	3a b8 00 0d 41 b8    	cmp    bh,BYTE PTR [rax-0x47bef300]
 	...
 
+; Native source function RVA 0xb90ad0..0xb90ca0; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -42292,6 +42689,8 @@ Disassembly of section .text:
    140b90c9e:	5f                   	pop    rdi
    140b90c9f:	c3                   	ret
 
+; Native source function RVA 0xaa0c50..0xaa0e13; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -42415,6 +42814,8 @@ Disassembly of section .text:
    140aa0e09:	48 8b 14 d9          	mov    rdx,QWORD PTR [rcx+rbx*8]
    140aa0e0d:	48 83 c2 40          	add    rdx,0x40
    140aa0e11:	eb ab                	jmp    0x140aa0dbe
+
+; Native source function RVA 0x145840..0x146643; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -43128,6 +43529,8 @@ Disassembly of section .text:
    14014663d:	e8 de f1 f1 ff       	call   0x140065820
    140146642:	cc                   	int3
 
+; Native source function RVA 0xc37530..0xc375c8; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -43178,6 +43581,8 @@ Disassembly of section .text:
    140c375c2:	48 8d 47 08          	lea    rax,[rdi+0x8]
    140c375c6:	5f                   	pop    rdi
    140c375c7:	c3                   	ret
+
+; Native source function RVA 0x14a8ce0..0x14a8e0f; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -43271,6 +43676,8 @@ Disassembly of section .text:
    1414a8e09:	48 83 c4 20          	add    rsp,0x20
    1414a8e0d:	5b                   	pop    rbx
    1414a8e0e:	c3                   	ret
+
+; Native source function RVA 0x1329030..0x1329398; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -43509,6 +43916,8 @@ Disassembly of section .text:
    141329395:	5b                   	pop    rbx
    141329396:	5d                   	pop    rbp
    141329397:	c3                   	ret
+
+; Native source function RVA 0x1327b80..0x1329024; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -44679,6 +45088,8 @@ Disassembly of section .text:
    141329021:	89 32                	mov    DWORD PTR [rdx],esi
    141329023:	01                   	.byte 0x1
 
+; Native source function RVA 0x65750..0x65770; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -44692,6 +45103,8 @@ Disassembly of section .text:
    140065765:	48 8d 4c 24 20       	lea    rcx,[rsp+0x20]
    14006576a:	e8 91 02 4d 01       	call   0x141535a00
    14006576f:	cc                   	int3
+
+; Native source function RVA 0x67d50..0x67dc0; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -44734,6 +45147,8 @@ Disassembly of section .text:
    140067db7:	48 8b 5c 24 08       	mov    rbx,QWORD PTR [rsp+0x8]
    140067dbc:	49 8b c2             	mov    rax,r10
    140067dbf:	c3                   	ret
+
+; Native source function RVA 0x529cf0..0x529da3; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -44784,6 +45199,8 @@ Disassembly of section .text:
    140529d9d:	48 83 c4 50          	add    rsp,0x50
    140529da1:	5b                   	pop    rbx
    140529da2:	c3                   	ret
+
+; Native source function RVA 0x529db0..0x529e88; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -44836,6 +45253,8 @@ Disassembly of section .text:
    140529e86:	5f                   	pop    rdi
    140529e87:	c3                   	ret
 
+; Native source function RVA 0x65820..0x65832; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -44846,6 +45265,8 @@ Disassembly of section .text:
    140065824:	48 8d 0d 75 d8 57 01 	lea    rcx,[rip+0x157d875]        # 0x1415e30a0
    14006582b:	ff 15 97 ab 57 01    	call   QWORD PTR [rip+0x157ab97]        # 0x1415e03c8
    140065831:	cc                   	int3
+
+; Native source function RVA 0xc62490..0xc62f4a; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -45617,6 +46038,8 @@ Disassembly of section .text:
    140c62f48:	5d                   	pop    rbp
    140c62f49:	c3                   	ret
 
+; Native source function RVA 0xe14f0..0xe159b; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -45674,6 +46097,8 @@ Disassembly of section .text:
    1400e1595:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
    1400e159a:	c3                   	ret
 
+; Native source function RVA 0xbc010..0xbc0aa; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -45727,6 +46152,8 @@ Disassembly of section .text:
    1400bc0a2:	48 63 c8             	movsxd rcx,eax
    1400bc0a5:	49 8b 04 cb          	mov    rax,QWORD PTR [r11+rcx*8]
    1400bc0a9:	c3                   	ret
+
+; Native source function RVA 0x135be30..0x135bfb9; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -45857,6 +46284,8 @@ Disassembly of section .text:
    14135bfb4:	02 02                	add    al,BYTE PTR [rdx]
    14135bfb6:	02 02                	add    al,BYTE PTR [rdx]
    14135bfb8:	01                   	.byte 0x1
+
+; Native source function RVA 0x14cc890..0x14ccce9; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -46145,6 +46574,8 @@ Disassembly of section .text:
    1414ccce7:	5b                   	pop    rbx
    1414ccce8:	c3                   	ret
 
+; Native source function RVA 0x14cc700..0x14cc881; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -46262,6 +46693,8 @@ Disassembly of section .text:
    1414cc87f:	5b                   	pop    rbx
    1414cc880:	c3                   	ret
 
+; Native source function RVA 0x14cc660..0x14cc6f1; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -46310,6 +46743,8 @@ Disassembly of section .text:
    1414cc6eb:	48 83 c4 40          	add    rsp,0x40
    1414cc6ef:	5f                   	pop    rdi
    1414cc6f0:	c3                   	ret
+
+; Native source function RVA 0x14dce30..0x14dd998; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -47023,6 +47458,8 @@ Disassembly of section .text:
    1414dd996:	5d                   	pop    rbp
    1414dd997:	c3                   	ret
 
+; Native source function RVA 0x1456e50..0x1456eae; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -47062,6 +47499,8 @@ Disassembly of section .text:
    141456eac:	5b                   	pop    rbx
    141456ead:	c3                   	ret
 
+; Native source function RVA 0xeb0b0..0xeb0e6; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -47080,6 +47519,8 @@ Disassembly of section .text:
    1400eb0db:	48 0f 45 44 24 20    	cmovne rax,QWORD PTR [rsp+0x20]
    1400eb0e1:	48 83 c4 38          	add    rsp,0x38
    1400eb0e5:	c3                   	ret
+
+; Native source function RVA 0x72670..0x726e0; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -47124,6 +47565,8 @@ Disassembly of section .text:
    1400726dd:	33 c0                	xor    eax,eax
    1400726df:	c3                   	ret
 
+; Native source function RVA 0x1456eb0..0x1456ed4; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -47140,6 +47583,8 @@ Disassembly of section .text:
    141456eca:	b8 ff ff ff ff       	mov    eax,0xffffffff
    141456ecf:	48 83 c4 28          	add    rsp,0x28
    141456ed3:	c3                   	ret
+
+; Native source function RVA 0x6f530..0x6f55a; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -47161,6 +47606,8 @@ Disassembly of section .text:
    14006f554:	48 83 c4 20          	add    rsp,0x20
    14006f558:	5b                   	pop    rbx
    14006f559:	c3                   	ret
+
+; Native source function RVA 0x144e30..0x144f0b; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -47233,6 +47680,8 @@ Disassembly of section .text:
    140144f05:	48 83 c4 20          	add    rsp,0x20
    140144f09:	5b                   	pop    rbx
    140144f0a:	c3                   	ret
+
+; Native source function RVA 0xa61de0..0xa61eb0; leaf body
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -47315,6 +47764,8 @@ Disassembly of section .text:
    140a61eae:	cc                   	int3
    140a61eaf:	cc                   	int3
 
+; Native source function RVA 0xa61e30..0xa61eb0; leaf body
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -47363,6 +47814,8 @@ Disassembly of section .text:
    140a61ead:	cc                   	int3
    140a61eae:	cc                   	int3
    140a61eaf:	cc                   	int3
+
+; Native source function RVA 0x144d20..0x144dda; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -47431,6 +47884,8 @@ Disassembly of section .text:
    140144dd8:	5f                   	pop    rdi
    140144dd9:	c3                   	ret
 
+; Native source function RVA 0x256720..0x2567c7; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -47492,6 +47947,8 @@ Disassembly of section .text:
    1402567c5:	5b                   	pop    rbx
    1402567c6:	c3                   	ret
 
+; Native source function RVA 0xf2610..0xf2670; leaf body
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -47534,6 +47991,8 @@ Disassembly of section .text:
    1400f266d:	cc                   	int3
    1400f266e:	cc                   	int3
    1400f266f:	cc                   	int3
+
+; Native source function RVA 0x6ff7d0..0x6ff88a; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -47596,6 +48055,8 @@ Disassembly of section .text:
    1406ff885:	48 83 c4 08          	add    rsp,0x8
    1406ff889:	c3                   	ret
 
+; Native source function RVA 0x71f20..0x71f60; leaf body
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -47636,6 +48097,8 @@ Disassembly of section .text:
    140071f5d:	cc                   	int3
    140071f5e:	cc                   	int3
    140071f5f:	cc                   	int3
+
+; Native source function RVA 0x753f20..0x7540a8; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -47773,6 +48236,8 @@ Disassembly of section .text:
    1407540a4:	01 01                	add    DWORD PTR [rcx],eax
 	...
 
+; Native source function RVA 0x13cbe0..0x13cc88; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -47830,6 +48295,8 @@ Disassembly of section .text:
    14013cc7e:	48 8b 04 c7          	mov    rax,QWORD PTR [rdi+rax*8]
    14013cc82:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
    14013cc87:	c3                   	ret
+
+; Native source function RVA 0x6f560..0x6f620; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -47889,6 +48356,8 @@ Disassembly of section .text:
    14006f619:	c3                   	ret
    14006f61a:	e8 01 62 ff ff       	call   0x140065820
    14006f61f:	cc                   	int3
+
+; Native source function RVA 0xd29b90..0xd29c80; leaf body
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -47960,6 +48429,8 @@ Disassembly of section .text:
    140d29c77:	00 2d 9c d2 00 3a    	add    BYTE PTR [rip+0x3a00d29c],ch        # 0x17ad36f19
    140d29c7d:	9c                   	pushf
    140d29c7e:	d2 00                	rol    BYTE PTR [rax],cl
+
+; Native source function RVA 0xaa07f0..0xaa08e8; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -48035,6 +48506,8 @@ Disassembly of section .text:
    140aa08e6:	5f                   	pop    rdi
    140aa08e7:	c3                   	ret
 
+; Native source function RVA 0x486550..0x4865e8; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48089,6 +48562,8 @@ Disassembly of section .text:
    1404865e3:	49 8b 04 cb          	mov    rax,QWORD PTR [r11+rcx*8]
    1404865e7:	c3                   	ret
 
+; Native source function RVA 0x15296c0..0x1529716; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48125,6 +48600,8 @@ Disassembly of section .text:
    141529712:	49 8b c2             	mov    rax,r10
    141529715:	c3                   	ret
 
+; Native source function RVA 0x1532920..0x1532947; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48143,6 +48620,8 @@ Disassembly of section .text:
    141532940:	8b c1                	mov    eax,ecx
    141532942:	48 83 c4 28          	add    rsp,0x28
    141532946:	c3                   	ret
+
+; Native source function RVA 0x1430b0..0x14321f; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -48258,6 +48737,8 @@ Disassembly of section .text:
    140143219:	e8 e2 fd ff ff       	call   0x140143000
    14014321e:	cc                   	int3
 
+; Native source function RVA 0x14a7a0..0x14a889; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48325,6 +48806,8 @@ Disassembly of section .text:
    14014a883:	e8 c8 ae f1 ff       	call   0x140065750
    14014a888:	cc                   	int3
 
+; Native source function RVA 0x14ab10..0x14ab72; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48358,6 +48841,8 @@ Disassembly of section .text:
    14014ab6a:	c3                   	ret
    14014ab6b:	ff 15 2f 5f 49 01    	call   QWORD PTR [rip+0x1495f2f]        # 0x1415e0aa0
    14014ab71:	cc                   	int3
+
+; Native source function RVA 0xa4ed80..0xa4ee55; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -48412,6 +48897,8 @@ Disassembly of section .text:
    140a4ee4f:	48 83 c4 20          	add    rsp,0x20
    140a4ee53:	5f                   	pop    rdi
    140a4ee54:	c3                   	ret
+
+; Native source function RVA 0xa4c840..0xa4c9aa; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -48516,6 +49003,8 @@ Disassembly of section .text:
    140a4c9a8:	5d                   	pop    rbp
    140a4c9a9:	c3                   	ret
 
+; Native source function RVA 0x1ba4e0..0x1ba601; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48606,6 +49095,8 @@ Disassembly of section .text:
    1401ba5fb:	e8 00 8a f8 ff       	call   0x140143000
    1401ba600:	cc                   	int3
 
+; Native source function RVA 0xa4c3e0..0xa4c4f8; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48687,6 +49178,8 @@ Disassembly of section .text:
    140a4c4f6:	5e                   	pop    rsi
    140a4c4f7:	c3                   	ret
 
+; Native source function RVA 0x14aa50..0x14ab06; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48739,6 +49232,8 @@ Disassembly of section .text:
    14014ab04:	5f                   	pop    rdi
    14014ab05:	c3                   	ret
 
+; Native source function RVA 0x143660..0x1436c1; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48764,6 +49259,8 @@ Disassembly of section .text:
    1401436b5:	48 83 c4 20          	add    rsp,0x20
    1401436b9:	5b                   	pop    rbx
    1401436ba:	48 ff 25 ff cd 49 01 	rex.W jmp QWORD PTR [rip+0x149cdff]        # 0x1415e04c0
+
+; Native source function RVA 0x144c40..0x144ce5; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -48812,6 +49309,8 @@ Disassembly of section .text:
    140144cdf:	48 83 c4 20          	add    rsp,0x20
    140144ce3:	5b                   	pop    rbx
    140144ce4:	c3                   	ret
+
+; Native source function RVA 0xa4c130..0xa4c37a; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -48963,6 +49462,8 @@ Disassembly of section .text:
    140a4c378:	5f                   	pop    rdi
    140a4c379:	c3                   	ret
 
+; Native source function RVA 0x144380..0x1443ff; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -48994,6 +49495,8 @@ Disassembly of section .text:
    1401443f7:	49 8b c1             	mov    rax,r9
    1401443fa:	48 83 c4 28          	add    rsp,0x28
    1401443fe:	c3                   	ret
+
+; Native source function RVA 0x144820..0x144c3a; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -49250,6 +49753,8 @@ Disassembly of section .text:
    140144c38:	5d                   	pop    rbp
    140144c39:	c3                   	ret
 
+; Native source function RVA 0x152eaf0..0x152ecb5; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -49381,6 +49886,8 @@ Disassembly of section .text:
    14152ecb2:	5f                   	pop    rdi
    14152ecb3:	5b                   	pop    rbx
    14152ecb4:	c3                   	ret
+
+; Native source function RVA 0xa4b930..0xa4bcbc; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -49624,6 +50131,8 @@ Disassembly of section .text:
    140a4bcb7:	00 59 ba             	add    BYTE PTR [rcx-0x46],bl
    140a4bcba:	a4                   	movs   BYTE PTR [rdi],BYTE PTR [rsi]
 	...
+
+; Native source function RVA 0x152ede0..0x15305d0; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -51238,6 +51747,8 @@ Disassembly of section .text:
    1415305ce:	53                   	push   rbx
    1415305cf:	01                   	.byte 0x1
 
+; Native source function RVA 0x6ff890..0x6ffa9e; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -51383,6 +51894,8 @@ Disassembly of section .text:
    1406ffa95:	48 8b 04 d0          	mov    rax,QWORD PTR [rax+rdx*8]
    1406ffa99:	e9 63 ff ff ff       	jmp    0x1406ffa01
 
+; Native source function RVA 0x30aa60..0x30ab23; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -51438,6 +51951,8 @@ Disassembly of section .text:
    14030ab1c:	32 c0                	xor    al,al
    14030ab1e:	48 83 c4 08          	add    rsp,0x8
    14030ab22:	c3                   	ret
+
+; Native source function RVA 0x30ab30..0x30aca4; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -51543,6 +52058,8 @@ Disassembly of section .text:
    14030aca0:	32 c0                	xor    al,al
    14030aca2:	eb a0                	jmp    0x14030ac44
 
+; Native source function RVA 0x65710..0x65750; leaf body
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -51583,6 +52100,8 @@ Disassembly of section .text:
    14006574d:	cc                   	int3
    14006574e:	cc                   	int3
    14006574f:	cc                   	int3
+
+; Native source function RVA 0x2444e0..0x244587; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -51628,6 +52147,8 @@ Disassembly of section .text:
    140244581:	48 83 c4 20          	add    rsp,0x20
    140244585:	5f                   	pop    rdi
    140244586:	c3                   	ret
+
+; Native source function RVA 0x2447b0..0x244858; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -51688,6 +52209,8 @@ Disassembly of section .text:
    140244856:	c3                   	ret
    140244857:	cc                   	int3
 
+; Native source function RVA 0x1f9b60..0x1f9bec; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -51734,6 +52257,8 @@ Disassembly of section .text:
    1401f9be4:	c3                   	ret
    1401f9be5:	ff 15 b5 6e 3e 01    	call   QWORD PTR [rip+0x13e6eb5]        # 0x1415e0aa0
    1401f9beb:	cc                   	int3
+
+; Native source function RVA 0x2443f0..0x2444db; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -51809,6 +52334,8 @@ Disassembly of section .text:
    1402444d4:	ff 15 c6 c5 39 01    	call   QWORD PTR [rip+0x139c5c6]        # 0x1415e0aa0
    1402444da:	cc                   	int3
 
+; Native source function RVA 0x722450..0x722529; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -51877,6 +52404,8 @@ Disassembly of section .text:
    140722523:	e8 f8 32 94 ff       	call   0x140065820
    140722528:	cc                   	int3
 
+; Native source function RVA 0xec060..0xec10f; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -51935,6 +52464,8 @@ Disassembly of section .text:
    1400ec108:	49 89 03             	mov    QWORD PTR [r11],rax
    1400ec10b:	49 8b c3             	mov    rax,r11
    1400ec10e:	c3                   	ret
+
+; Native source function RVA 0x7540b0..0x754da0; leaf body
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -52676,6 +53207,8 @@ Disassembly of section .text:
    140754d9e:	cc                   	int3
    140754d9f:	cc                   	int3
 
+; Native source function RVA 0x1532948..0x153298d; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -52700,6 +53233,8 @@ Disassembly of section .text:
    141532983:	48 8b 44 24 30       	mov    rax,QWORD PTR [rsp+0x30]
    141532988:	48 83 c4 48          	add    rsp,0x48
    14153298c:	c3                   	ret
+
+; Native source function RVA 0x14b240..0x14b3ac; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -52809,6 +53344,8 @@ Disassembly of section .text:
    14014b3a6:	e8 a5 a3 f1 ff       	call   0x140065750
    14014b3ab:	cc                   	int3
 
+; Native source function RVA 0x143000..0x143039; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -52829,6 +53366,8 @@ Disassembly of section .text:
    140143033:	e8 c8 29 3f 01       	call   0x141535a00
    140143038:	cc                   	int3
 
+; Native source function RVA 0x142d40..0x142d79; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -52848,6 +53387,8 @@ Disassembly of section .text:
    140142d6e:	48 8d 4c 24 40       	lea    rcx,[rsp+0x40]
    140142d73:	e8 88 2c 3f 01       	call   0x141535a00
    140142d78:	cc                   	int3
+
+; Native source function RVA 0xa4c6c0..0xa4c7f6; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -52932,6 +53473,8 @@ Disassembly of section .text:
    140a4c7f4:	5f                   	pop    rdi
    140a4c7f5:	c3                   	ret
 
+; Native source function RVA 0xa4c590..0xa4c6b6; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -53013,6 +53556,8 @@ Disassembly of section .text:
    140a4c6b4:	5f                   	pop    rdi
    140a4c6b5:	c3                   	ret
 
+; Native source function RVA 0x1baeb0..0x1baf87; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -53082,6 +53627,8 @@ Disassembly of section .text:
    1401baf81:	48 83 c4 50          	add    rsp,0x50
    1401baf85:	5f                   	pop    rdi
    1401baf86:	c3                   	ret
+
+; Native source function RVA 0x1532990..0x1532ab1; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -53164,6 +53711,8 @@ Disassembly of section .text:
    141532aad:	41 5e                	pop    r14
    141532aaf:	5f                   	pop    rdi
    141532ab0:	c3                   	ret
+
+; Native source function RVA 0xe1240..0xe13a8; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -53277,6 +53826,8 @@ Disassembly of section .text:
    1400e13a2:	e8 79 44 f8 ff       	call   0x140065820
    1400e13a7:	cc                   	int3
 
+; Native source function RVA 0x2823a0..0x2824dd; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -53366,6 +53917,8 @@ Disassembly of section .text:
    1402824db:	5f                   	pop    rdi
    1402824dc:	c3                   	ret
 
+; Native source function RVA 0x14a960..0x14aa48; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -53435,6 +53988,8 @@ Disassembly of section .text:
    14014aa46:	5b                   	pop    rbx
    14014aa47:	c3                   	ret
 
+; Native source function RVA 0x14a3e0..0x14a449; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -53468,6 +54023,8 @@ Disassembly of section .text:
    14014a43d:	48 83 c4 20          	add    rsp,0x20
    14014a441:	5b                   	pop    rbx
    14014a442:	48 ff 25 57 60 49 01 	rex.W jmp QWORD PTR [rip+0x1496057]        # 0x1415e04a0
+
+; Native source function RVA 0x70b60..0x70cbc; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -53574,6 +54131,8 @@ Disassembly of section .text:
    140070cb6:	e8 95 4a ff ff       	call   0x140065750
    140070cbb:	cc                   	int3
 
+; Native source function RVA 0x65ff0..0x6607b; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -53614,6 +54173,8 @@ Disassembly of section .text:
    140066073:	c6 41 72 00          	mov    BYTE PTR [rcx+0x72],0x0
    140066077:	48 8b c1             	mov    rax,rcx
    14006607a:	c3                   	ret
+
+; Native source function RVA 0x6f230..0x6f2bf; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -53663,6 +54224,8 @@ Disassembly of section .text:
    14006f2b9:	48 83 c4 20          	add    rsp,0x20
    14006f2bd:	5f                   	pop    rdi
    14006f2be:	c3                   	ret
+
+; Native source function RVA 0x79d260..0x79d339; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -53724,6 +54287,8 @@ Disassembly of section .text:
    14079d332:	48 83 c4 20          	add    rsp,0x20
    14079d336:	41 5e                	pop    r14
    14079d338:	c3                   	ret
+
+; Native source function RVA 0xed95e0..0xed9fdc; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -54388,6 +54953,8 @@ Disassembly of section .text:
    140ed9fda:	ed                   	in     eax,dx
 	...
 
+; Native source function RVA 0x4ec6d0..0x4ec6e7; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -54402,6 +54969,8 @@ Disassembly of section .text:
    1404ec6e1:	48 83 c4 30          	add    rsp,0x30
    1404ec6e5:	5b                   	pop    rbx
    1404ec6e6:	c3                   	ret
+
+; Native source function RVA 0x680e0..0x68117; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -54426,6 +54995,8 @@ Disassembly of section .text:
    140068111:	48 83 c4 20          	add    rsp,0x20
    140068115:	5b                   	pop    rbx
    140068116:	c3                   	ret
+
+; Native source function RVA 0x14ab80..0x14abed; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -54465,6 +55036,8 @@ Disassembly of section .text:
    14014abeb:	5f                   	pop    rdi
    14014abec:	c3                   	ret
 
+; Native source function RVA 0x4f0290..0x4f02ad; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -54481,6 +55054,8 @@ Disassembly of section .text:
    1404f02a7:	48 83 c4 30          	add    rsp,0x30
    1404f02ab:	5b                   	pop    rbx
    1404f02ac:	c3                   	ret
+
+; Native source function RVA 0x142ae0..0x142b32; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -54510,6 +55085,8 @@ Disassembly of section .text:
    140142b2c:	48 83 c4 30          	add    rsp,0x30
    140142b30:	5b                   	pop    rbx
    140142b31:	c3                   	ret
+
+; Native source function RVA 0x152c0f0..0x152c3e2; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -54705,6 +55282,8 @@ Disassembly of section .text:
    14152c3de:	8b c1                	mov    eax,ecx
    14152c3e0:	5f                   	pop    rdi
    14152c3e1:	c3                   	ret
+
+; Native source function RVA 0x15305d0..0x1530c19; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -55149,6 +55728,8 @@ Disassembly of section .text:
    141530c13:	e8 78 3e 00 00       	call   0x141534a90
    141530c18:	cc                   	int3
 
+; Native source function RVA 0x152e5d0..0x152eaec; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -55545,6 +56126,8 @@ Disassembly of section .text:
    14152eaea:	5b                   	pop    rbx
    14152eaeb:	c3                   	ret
 
+; Native source function RVA 0x1529eb0..0x152a230; leaf body
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -55830,6 +56413,8 @@ Disassembly of section .text:
    14152a22e:	cc                   	int3
    14152a22f:	cc                   	int3
 
+; Native source function RVA 0x152ecc0..0x152edd5; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -55928,6 +56513,8 @@ Disassembly of section .text:
    14152edd2:	5f                   	pop    rdi
    14152edd3:	5e                   	pop    rsi
    14152edd4:	c3                   	ret
+
+; Native source function RVA 0x723690..0x723949; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -56124,6 +56711,8 @@ Disassembly of section .text:
    14072393f:	41 c6 46 08 01       	mov    BYTE PTR [r14+0x8],0x1
    140723944:	e9 fd fd ff ff       	jmp    0x140723746
 
+; Native source function RVA 0x1bb2c0..0x1bb38c; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -56192,6 +56781,8 @@ Disassembly of section .text:
    1401bb38a:	5b                   	pop    rbx
    1401bb38b:	c3                   	ret
 
+; Native source function RVA 0x142fe0..0x143000; leaf body
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -56218,6 +56809,8 @@ Disassembly of section .text:
    140142ffd:	cc                   	int3
    140142ffe:	cc                   	int3
    140142fff:	cc                   	int3
+
+; Native source function RVA 0x142c80..0x142d33; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -56268,6 +56861,8 @@ Disassembly of section .text:
    140142d31:	5f                   	pop    rdi
    140142d32:	c3                   	ret
 
+; Native source function RVA 0x142c10..0x142c30; leaf body
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -56294,6 +56889,8 @@ Disassembly of section .text:
    140142c2d:	cc                   	int3
    140142c2e:	cc                   	int3
    140142c2f:	cc                   	int3
+
+; Native source function RVA 0x255710..0x25587d; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -56388,6 +56985,8 @@ Disassembly of section .text:
    140255874:	48 81 c4 80 00 00 00 	add    rsp,0x80
    14025587b:	5f                   	pop    rdi
    14025587c:	c3                   	ret
+
+; Native source function RVA 0xa4a3a0..0xa4ab49; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -56918,6 +57517,8 @@ Disassembly of section .text:
    140a4ab43:	e8 08 ac 61 ff       	call   0x140065750
    140a4ab48:	cc                   	int3
 
+; Native source function RVA 0x1533034..0x153335a; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -57149,6 +57750,8 @@ Disassembly of section .text:
    141533353:	b8 32 00 00 00       	mov    eax,0x32
    141533358:	eb b8                	jmp    0x141533312
 
+; Native source function RVA 0x14b010..0x14b0bb; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -57200,6 +57803,8 @@ Disassembly of section .text:
    14014b0b5:	e8 c6 79 ff ff       	call   0x140142a80
    14014b0ba:	90                   	nop
 
+; Native source function RVA 0x70890..0x708a2; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -57210,6 +57815,8 @@ Disassembly of section .text:
    140070894:	48 8d 0d 45 2c 57 01 	lea    rcx,[rip+0x1572c45]        # 0x1415e34e0
    14007089b:	ff 15 27 fb 56 01    	call   QWORD PTR [rip+0x156fb27]        # 0x1415e03c8
    1400708a1:	cc                   	int3
+
+; Native source function RVA 0x70a70..0x70b52; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -57278,6 +57885,8 @@ Disassembly of section .text:
    140070b4b:	cc                   	int3
    140070b4c:	e8 ff 4b ff ff       	call   0x140065750
    140070b51:	cc                   	int3
+
+; Native source function RVA 0xa4bdd0..0xa4bebc; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -57352,6 +57961,8 @@ Disassembly of section .text:
    140a4beb6:	48 83 c4 20          	add    rsp,0x20
    140a4beba:	5f                   	pop    rdi
    140a4bebb:	c3                   	ret
+
+; Native source function RVA 0x4ee2e0..0x4ee460; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -57466,6 +58077,8 @@ Disassembly of section .text:
    1404ee45a:	e8 c1 73 b7 ff       	call   0x140065820
    1404ee45f:	cc                   	int3
 
+; Native source function RVA 0x68180..0x68238; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -57519,6 +58132,8 @@ Disassembly of section .text:
    140068231:	c3                   	ret
    140068232:	e8 e9 d5 ff ff       	call   0x140065820
    140068237:	cc                   	int3
+
+; Native source function RVA 0x4f0380..0x4f0523; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -57645,6 +58260,8 @@ Disassembly of section .text:
    1404f051d:	e8 fe 52 b7 ff       	call   0x140065820
    1404f0522:	cc                   	int3
 
+; Native source function RVA 0x527950..0x527b01; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -57769,6 +58386,8 @@ Disassembly of section .text:
    140527afb:	48 89 50 08          	mov    QWORD PTR [rax+0x8],rdx
    140527aff:	eb b4                	jmp    0x140527ab5
 
+; Native source function RVA 0x282e40..0x282fe8; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -57888,6 +58507,8 @@ Disassembly of section .text:
    140282fe1:	cc                   	int3
    140282fe2:	e8 69 27 de ff       	call   0x140065750
    140282fe7:	cc                   	int3
+
+; Native source function RVA 0x143330..0x14355f; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -58056,6 +58677,8 @@ Disassembly of section .text:
    140143559:	e8 32 c7 f2 ff       	call   0x14006fc90
    14014355e:	cc                   	int3
 
+; Native source function RVA 0x143220..0x143330; leaf body
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -58148,6 +58771,8 @@ Disassembly of section .text:
    14014332e:	cc                   	int3
    14014332f:	cc                   	int3
 
+; Native source function RVA 0x1f9f90..0x1fa079; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -58215,6 +58840,8 @@ Disassembly of section .text:
    1401fa073:	e8 d8 b6 e6 ff       	call   0x140065750
    1401fa078:	cc                   	int3
 
+; Native source function RVA 0xa4f5a0..0xa4f66c; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -58276,6 +58903,8 @@ Disassembly of section .text:
    140a4f665:	cc                   	int3
    140a4f666:	e8 e5 60 61 ff       	call   0x140065750
    140a4f66b:	cc                   	int3
+
+; Native source function RVA 0xa4f900..0xa4fa61; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -58388,6 +59017,8 @@ Disassembly of section .text:
    140a4fa5b:	e8 f0 5c 61 ff       	call   0x140065750
    140a4fa60:	cc                   	int3
 
+; Native source function RVA 0xa4f7b0..0xa4f8fd; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -58492,6 +59123,8 @@ Disassembly of section .text:
    140a4f8f7:	e8 54 5e 61 ff       	call   0x140065750
    140a4f8fc:	cc                   	int3
 
+; Native source function RVA 0x14a720..0x14a798; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -58534,6 +59167,8 @@ Disassembly of section .text:
    14014a792:	48 83 c4 30          	add    rsp,0x30
    14014a796:	5b                   	pop    rbx
    14014a797:	c3                   	ret
+
+; Native source function RVA 0x14a5d0..0x14a719; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -58632,6 +59267,8 @@ Disassembly of section .text:
    14014a713:	e8 38 b0 f1 ff       	call   0x140065750
    14014a718:	cc                   	int3
 
+; Native source function RVA 0x1533368..0x15333bf; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -58663,6 +59300,8 @@ Disassembly of section .text:
    1415333b9:	48 83 c4 40          	add    rsp,0x40
    1415333bd:	5f                   	pop    rdi
    1415333be:	c3                   	ret
+
+; Native source function RVA 0x143040..0x1430a2; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -58701,6 +59340,8 @@ Disassembly of section .text:
    1401430a0:	5f                   	pop    rdi
    1401430a1:	c3                   	ret
 
+; Native source function RVA 0x1533714..0x153374c; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -58723,6 +59364,8 @@ Disassembly of section .text:
    14153374a:	5b                   	pop    rbx
    14153374b:	c3                   	ret
 
+; Native source function RVA 0x142a80..0x142aa0; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -58736,6 +59379,8 @@ Disassembly of section .text:
    140142a95:	48 8d 4c 24 20       	lea    rcx,[rsp+0x20]
    140142a9a:	e8 61 2f 3f 01       	call   0x141535a00
    140142a9f:	cc                   	int3
+
+; Native source function RVA 0x71730..0x717b8; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -58781,6 +59426,8 @@ Disassembly of section .text:
    1400717b0:	c3                   	ret
    1400717b1:	ff 15 e9 f2 56 01    	call   QWORD PTR [rip+0x156f2e9]        # 0x1415e0aa0
    1400717b7:	cc                   	int3
+
+; Native source function RVA 0x6fcd0..0x6fdcd; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -58855,6 +59502,8 @@ Disassembly of section .text:
    14006fdc6:	c3                   	ret
    14006fdc7:	e8 84 59 ff ff       	call   0x140065750
    14006fdcc:	cc                   	int3
+
+; Native source function RVA 0x14a450..0x14a5cc; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -58967,6 +59616,8 @@ Disassembly of section .text:
    14014a5c6:	e8 85 b1 f1 ff       	call   0x140065750
    14014a5cb:	cc                   	int3
 
+; Native source function RVA 0x6fc90..0x6fca2; PE unwind owner, including chained ranges
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -58977,6 +59628,8 @@ Disassembly of section .text:
    14006fc94:	48 8d 0d 55 38 57 01 	lea    rcx,[rip+0x1573855]        # 0x1415e34f0
    14006fc9b:	ff 15 1f 07 57 01    	call   QWORD PTR [rip+0x157071f]        # 0x1415e03c0
    14006fca1:	cc                   	int3
+
+; Native source function RVA 0x14b0c0..0x14b233; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
@@ -59086,6 +59739,8 @@ Disassembly of section .text:
    14014b22d:	e8 1e a5 f1 ff       	call   0x140065750
    14014b232:	cc                   	int3
 
+; Native source function RVA 0x142a50..0x142a80; leaf body
+
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 
 
@@ -59114,6 +59769,8 @@ Disassembly of section .text:
    140142a7d:	cc                   	int3
    140142a7e:	cc                   	int3
    140142a7f:	cc                   	int3
+
+; Native source function RVA 0x707c0..0x70844; PE unwind owner, including chained ranges
 
 C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe:     file format pei-x86-64
 

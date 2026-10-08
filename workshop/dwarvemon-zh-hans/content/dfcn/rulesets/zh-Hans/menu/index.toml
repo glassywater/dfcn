@@ -1,0 +1,6 @@
+base = "menu"
+
+[[rulesets]]
+name = "main"
+[rulesets.rules]
+"{dwarvemon_beta}" = "{dwarvemon_beta}"

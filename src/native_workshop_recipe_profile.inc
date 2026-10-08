@@ -55,8 +55,20 @@ static bool resolve_native_workshop_recipe_profile(NativeWorkshopRecipeProfile &
     profile.begin_arguments = {0x4c,0x89,0xea}; // mov rdx,r13
     profile.end_arguments = {0x4c,0x89,0xea,0x4c,0x8d,0x45,0x18}; // + lea r8,[rbp+18]
 #else
-    // No verified inline requirement-wrap boundary for the native ELF build.
-    // Leave the binding empty; the shared complete-text path remains usable.
+    // ELF job tooltip 1377940 submits products at 1377ddc and requirements
+    // at 1378354 through add_paragraph (PLT 423910), both at width 29 after
+    // capitalization. The shared hook owns the complete source and appended
+    // rows, so no PE inline-wrapper/destructor pair belongs on this ABI.
+    profile.paragraph_width = 29;
+    profile.shared_paragraphs = true;
+    profile.base = elf_runtime::state().executable.bias;
+    profile.paragraph_calls = {
+        {0x1377ddc,0x423910,reinterpret_cast<const void *>(&capture_native_workshop_recipe_paragraph)},
+        {0x1378354,0x423910,reinterpret_cast<const void *>(&capture_native_workshop_recipe_paragraph)},
+    };
+    // Short recipe fields also need owned boundaries; prose capture's
+    // minimum sentence length must not discard e.g. a single barrel.
+    if (!native_reference_calls(profile.paragraph_calls,0)) return false;
 #endif
     return true;
 }
