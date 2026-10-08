@@ -148,9 +148,14 @@
             return std::nullopt;
         };
         const auto existing_field = [&](int x, int y, int length) {
+            const auto overlaps = [&](const Match &match) {
+                return match.y == y && x < match.x + match.length && x + length > match.x;
+            };
             return std::any_of(dfhack_auxiliary_matches.begin(), dfhack_auxiliary_matches.end(),
+                overlaps) || std::any_of(dfhack_stocks_hint_matches.begin(),
+                dfhack_stocks_hint_matches.end(),
                 [&](const Match &match) {
-                    return match.y == y && x < match.x + match.length && x + length > match.x;
+                    return match.length > 0 && !match.target.empty() && overlaps(match);
                 });
         };
         const auto emit = [&](int x, int y, int length, const std::string &target, int right,

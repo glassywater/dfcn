@@ -52,6 +52,7 @@
 #include "item_designation.h"
 #include "item_material_qualifier.h"
 #include "reloadable_thread_state.h"
+#include "dfhack_translation_thread.h"
 #include "translation_work.h"
 #include "translation_state.h"
 #include "translation_result.h"
@@ -3201,6 +3202,7 @@ public:
     void shutdown();
     void render(SDL_Renderer *renderer);
     void render_dfhack_layer(SDL_Renderer *renderer);
+    void queue_dfhack_layer_translation();
     bool native_frame_submitted() const noexcept { return native_frame_submitted_; }
     void render_ime_popup(SDL_Renderer *renderer);
     void replay_deferred_resolution_glyphs(SDL_Renderer *renderer,
@@ -4730,6 +4732,27 @@ private:
     std::vector<Match> find_native_matches(int only_y,
         const unsigned char *screen_override) const;
     std::vector<Match> find_dfhack_matches(int only_y) const;
+    void normalize_dfhack_layer_matches(std::vector<Match> &matches) const;
+    void start_dfhack_translation_worker();
+    void stop_dfhack_translation_worker();
+    void dfhack_translation_worker_loop();
+    uint64_t dfhack_layer_translation_key() const;
+    std::shared_ptr<const std::vector<Match>> request_dfhack_layer_matches(uint64_t key);
+    void remember_dfhack_layer_matches(uint64_t key,
+        std::shared_ptr<const std::vector<Match>> matches);
+    std::thread dfhack_translation_worker_;
+    std::mutex dfhack_translation_mutex_;
+    std::condition_variable dfhack_translation_cv_;
+    bool dfhack_translation_stop_ = true;
+    bool dfhack_translation_running_ = false;
+    bool dfhack_translation_pending_ = false;
+    bool dfhack_translation_needs_world_ = false;
+    uint64_t dfhack_translation_requested_key_ = 0;
+    uint64_t dfhack_translation_published_key_ = 0;
+    mutable uint64_t dfhack_translation_catalog_revision_ = 0;
+    std::shared_ptr<const std::vector<Match>> dfhack_translation_matches_;
+    std::vector<std::pair<uint64_t, std::shared_ptr<const std::vector<Match>>>>
+        dfhack_translation_cache_;
     bool append_ui_message_paragraph(std::vector<std::string> &screen_rows,
         std::vector<Match> &result, std::vector<Match> &untranslated_help_rows,
         int only_y, std::vector<Match> rows, int right, std::string_view target,
@@ -5761,6 +5784,7 @@ std::shared_ptr<const Overlay::FontGlyphBitmap> Overlay::font_glyph_bitmap_at_si
 }
 
 bool Overlay::load_font() {
+    ++dfhack_translation_catalog_revision_;
     native_knowledge_layouts_.clear();
     written_work_paragraph_cache_.clear();
     native_knowledge_frame_ = {};
@@ -6791,6 +6815,7 @@ bool Overlay::initialize() {
     load_font();
     log_line("INFO", "DFCN overlay initialized; graphicst ABI size=" +
                          std::to_string(sizeof(graphicst)));
+    start_dfhack_translation_worker();
     return true;
 }
 
@@ -6966,6 +6991,8 @@ void Overlay::set_translation_enabled(bool enabled) {
 }
 
 void Overlay::shutdown() {
+    // Join before taking the translation lock or releasing fonts/catalogs.
+    stop_dfhack_translation_worker();
     clear_legends_search_cache();
     clear_stockpile_setting_cache();
     clear_fortress_item_caption_cache();
@@ -15677,7 +15704,6 @@ std::vector<Match> Overlay::find_dfhack_matches(int only_y) const {
     if (!NativeDfhackForegroundScope::active || !gps_ || !gps_->screen ||
             gps_->dimx <= 0 || gps_->dimx > 1000 ||
             gps_->dimy <= 0 || gps_->dimy > 1000) return result;
-    refresh_dfhack_raw_creature_labels();
     const unsigned char *screen_override = nullptr;
     const auto read_row = [&](int y) {
         std::string row(static_cast<size_t>(gps_->dimx), ' ');
@@ -15731,8 +15757,52 @@ std::vector<Match> Overlay::find_dfhack_matches(int only_y) const {
             match.graphical_clear_height = 1;
         }
     }
+    normalize_dfhack_layer_matches(result);
     return result;
 }
+
+#include "dfhack_layer_match_layout.inc"
+
+uint64_t Overlay::dfhack_layer_translation_key() const {
+    const auto &storage = g_native_dfhack_layer_storage;
+    if (!gps_ || !storage.ready || storage.graphics.get() != gps_) return 0;
+    // Content, producer semantics and layout identify a job. The storage's
+    // submission revision advances every draw, even when its input repeats.
+    uint64_t key = 14695981039346656037ULL;
+    const auto bytes = [&](const void *data, size_t size) {
+        const auto *at = static_cast<const unsigned char *>(data);
+        for (size_t i = 0; i < size; ++i) {
+            key ^= at[i];
+            key *= 1099511628211ULL;
+        }
+    };
+    const auto value = [&](const auto &field) { bytes(&field, sizeof(field)); };
+    value(storage.page_revision);
+    value(dfhack_translation_catalog_revision_);
+    value(native_identity_translation_context());
+    const auto catalog = g_dfhack_output_snapshot.load(std::memory_order_acquire);
+    const auto catalog_identity = reinterpret_cast<uintptr_t>(catalog.get());
+    value(catalog_identity);
+    value(gps_->dimx); value(gps_->dimy);
+    value(gps_->screen_pixel_x); value(gps_->screen_pixel_y);
+    value(gps_->tile_pixel_x); value(gps_->tile_pixel_y);
+    value(gps_->top_in_use);
+    bytes(gps_->uccolor, sizeof(gps_->uccolor));
+    for (const auto &plane : storage.planes) {
+        bytes(plane.screen.data(), plane.screen.size());
+        bytes(plane.flags.data(), plane.flags.size() * sizeof(plane.flags[0]));
+        for (const auto &textures : plane.textures)
+            bytes(textures.data(), textures.size() * sizeof(textures[0]));
+        for (const auto &pen : plane.artwork_pens) {
+            value(pen.texture);
+            value(pen.ch);
+        }
+    }
+    value(native_dfhack_text_capture_key(gps_));
+    return key ? key : 1;
+}
+
+#include "dfhack_layer_translation.inc"
 
 static void native_dfhack_redraw_background(SDL_Renderer *renderer,
     const SDL_Rect &cells);
@@ -15753,7 +15823,10 @@ void Overlay::render_dfhack_layer(SDL_Renderer *renderer) {
             gps_->dimy <= 0 || gps_->dimy > 1000) return;
     NativePanelReadScope layer_reads(gps_);
     CellReadCacheScope layer_cells(*this);
-    const auto matches = find_dfhack_matches(-1);
+    refresh_dfhack_raw_creature_labels();
+    refresh_native_instrument_names();
+    const auto matches = request_dfhack_layer_matches(dfhack_layer_translation_key());
+    if (!matches) return;
     struct LayerDrawingScope {
         bool previous_drawing = g_drawing_overlay;
         GraphicalClearReadback *&readback;
@@ -15770,7 +15843,7 @@ void Overlay::render_dfhack_layer(SDL_Renderer *renderer) {
     } layer_drawing(graphical_clear_readback_);
     // Repaint each source field from DFHack's own background tiles. Complete
     // all source replacements before drawing translated ink into this target.
-    for (const auto &match : matches) {
+    for (const auto &match : *matches) {
         if (match.native_help_source_only || match.native_split_duplicate ||
                 match.graphical_clear_width <= 0 ||
                 match.graphical_clear_height <= 0) continue;
@@ -15778,7 +15851,7 @@ void Overlay::render_dfhack_layer(SDL_Renderer *renderer) {
             match.graphical_clear_x, match.graphical_clear_y,
             match.graphical_clear_width, match.graphical_clear_height});
     }
-    for (const auto &match : matches) {
+    for (const auto &match : *matches) {
         if (match.target.empty()) continue;
         Match text = match;
         text.graphical_clear_width = text.graphical_clear_height = 0;
@@ -41957,6 +42030,14 @@ void Overlay::render(SDL_Renderer *renderer) {
 }
 
 static Overlay g_overlay;
+
+static void native_dfhack_layer_committed() noexcept {
+    try {
+        g_overlay.queue_dfhack_layer_translation();
+    } catch (...) {
+        // Rendering can fill a cold result if prefetch could not be queued.
+    }
+}
 static std::thread::id g_native_hook_thread;
 
 // Arena composition is also exercised by the exported ruleset self-test,

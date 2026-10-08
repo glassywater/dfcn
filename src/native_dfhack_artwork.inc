@@ -65,6 +65,8 @@ struct NativeDfhackControlPanelText {
 };
 static std::vector<NativeDfhackControlPanelText> native_dfhack_control_panel_texts(
     const graphicst *gps);
+static uint64_t native_dfhack_text_capture_key(const graphicst *gps);
+static void clear_native_dfhack_text_buffer(const graphicst *gps);
 static std::optional<std::string> lookup_native_dfhack_animal_assignment_text(
     const graphicst *gps, int x, int y, std::string_view visible);
 static bool install_native_dfhack_messagebox_hook();
@@ -83,6 +85,17 @@ struct NativeDfhackTileWrite {
     unsigned char ch = 0;
     bool top_layer = false;
 };
+
+// A graphical tile can erase its character byte while retaining its texture.
+// Keep this semantic identity beside the private plane that owns the write.
+struct NativeDfhackArtworkPen {
+    int32_t texture = 0;
+    unsigned char ch = 0;
+};
+static void native_dfhack_layer_record_artwork_tile(const graphicst *gps,
+    const void *pen, int x, int y) noexcept;
+static const std::vector<NativeDfhackArtworkPen> *native_dfhack_layer_artwork_pens(
+    const graphicst *gps, bool top) noexcept;
 
 static std::mutex g_native_dfhack_logo_mutex;
 static std::array<NativeDfhackTileWrite, 12> g_native_dfhack_tile_writes{};
@@ -139,6 +152,7 @@ static void record_native_dfhack_tile_write(const graphicst *gps,
         const void *pen, int x, int y) {
     if (!pen || !native_dfhack_logo_grid_valid(gps) || x < 0 || y < 0 ||
             x >= gps->dimx || y >= gps->dimy) return;
+    native_dfhack_layer_record_artwork_tile(gps, pen, x, y);
     NativeDfhackTileWrite write;
     write.graphics = gps;
     write.x = x;
@@ -234,23 +248,25 @@ static std::vector<NativeDfhackLogoCapture> native_dfhack_logo_captures() {
 
 static void retain_native_dfhack_border_chars(const graphicst &gps,
         std::vector<std::string> &rows) {
-    std::lock_guard<std::mutex> lock(g_native_dfhack_logo_mutex);
-    if (gps.dimx != g_native_dfhack_border_dimx ||
-            gps.dimy != g_native_dfhack_border_dimy ||
+    if (!native_dfhack_logo_grid_valid(&gps) ||
             rows.size() != static_cast<size_t>(gps.dimy)) return;
+    for (const auto &row : rows)
+        if (row.size() != static_cast<size_t>(gps.dimx)) return;
+    // Present and the translation worker hold the private layer lock. These
+    // records were committed together with the exact arrays read below.
+    const std::array<const std::vector<NativeDfhackArtworkPen> *, 2> pens{{
+        native_dfhack_layer_artwork_pens(&gps, false),
+        native_dfhack_layer_artwork_pens(&gps, true)
+    }};
+    if (!pens[0] || !pens[1]) return;
     for (int x = 0; x < gps.dimx; ++x) {
         for (int y = 0; y < gps.dimy; ++y) {
             if (rows[y][x] != ' ') continue;
             const size_t tile = static_cast<size_t>(x) * gps.dimy + y;
             const bool top = native_ui_top_layer_at(gps, tile);
-            // Popup matching uses a flattened copy of graphicst. Its object
-            // address and read layer differ from the native draw, while each
-            // cell retains the original grid/layer identity in its page.
-            const auto origin = native_text_grid_origin(gps, tile, top);
-            const auto &write = g_native_dfhack_border_tiles[tile * 2 + origin.top_layer];
+            const auto &write = (*pens[top])[tile];
             const auto *textures = top ? gps.screentexpos_top : gps.screentexpos;
-            if (!write.source_grid || write.source_grid != origin.grid ||
-                    write.texture <= 0 || !textures ||
+            if (write.texture <= 0 || !textures ||
                     textures[tile] != write.texture) continue;
             if ((write.ch >= 0xb3 && write.ch <= 0xda) ||
                     write.ch == '/' || write.ch == '\\' ||
@@ -264,9 +280,7 @@ static void retain_native_dfhack_border_chars(const graphicst &gps,
             if (write.ch != '[' || x > gps.dimx - 3) continue;
             const size_t center_tile = static_cast<size_t>(x + 1) * gps.dimy + y;
             const bool center_top = native_ui_top_layer_at(gps, center_tile);
-            const auto center_origin = native_text_grid_origin(gps, center_tile, center_top);
-            const auto center_ch = g_native_dfhack_border_tiles[
-                center_tile * 2 + center_origin.top_layer].ch;
+            const auto center_ch = (*pens[center_top])[center_tile].ch;
             if (center_ch != 0x0f && center_ch != '?') continue;
             const std::array<unsigned char, 3> configure_chars{'[', center_ch, ']'};
             bool complete = true;
@@ -274,13 +288,10 @@ static void retain_native_dfhack_border_chars(const graphicst &gps,
                 const int part_x = x + static_cast<int>(part);
                 const size_t part_tile = static_cast<size_t>(part_x) * gps.dimy + y;
                 const bool part_top = native_ui_top_layer_at(gps, part_tile);
-                const auto part_origin = native_text_grid_origin(gps, part_tile, part_top);
-                const auto &part_write = g_native_dfhack_border_tiles[
-                    part_tile * 2 + part_origin.top_layer];
+                const auto &part_write = (*pens[part_top])[part_tile];
                 const auto *part_textures = part_top ? gps.screentexpos_top : gps.screentexpos;
                 complete = rows[y][part_x] == ' ' &&
-                    part_origin.grid == origin.grid && part_origin.top_layer == origin.top_layer &&
-                    part_write.source_grid == part_origin.grid &&
+                    part_top == top &&
                     part_write.ch == configure_chars[part] && part_write.texture > 0 &&
                     part_textures && part_textures[part_tile] == part_write.texture;
             }

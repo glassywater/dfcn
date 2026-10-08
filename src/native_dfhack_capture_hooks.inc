@@ -42,8 +42,14 @@ static bool native_dfhack_set_tile_capture(const void *pen, int x, int y,
     NativeDfhackLayerWriteScope layer;
     if (!layer.valid()) return false;
     const bool result = callback.call_native([&] { return original(pen, x, y, map, member_field); });
-    if (pen && result && (!map || native_ui_classic().value_or(false)))
+    if (pen && result && (!map || native_ui_classic().value_or(false))) {
         native_dfhack_layer_note_ui_write(native_dfhack_graphics(), x, y);
+        try {
+            record_native_dfhack_tile_write(native_dfhack_graphics(), pen, x, y);
+        } catch (...) {
+            // Optional artwork evidence must not unwind through DFHack.
+        }
+    }
     return result;
 }
 
@@ -129,8 +135,14 @@ static bool native_dfhack_map_port_capture(const void *pen, int x, int y,
     NativeDfhackLayerWriteScope layer;
     if (!layer.valid()) return false;
     const bool result = callback.call_native([&] { return original(pen, x, y, member_field); });
-    if (pen && result && native_ui_classic().value_or(false))
+    if (pen && result && native_ui_classic().value_or(false)) {
         native_dfhack_layer_note_ui_write(native_dfhack_graphics(), x, y);
+        try {
+            record_native_dfhack_tile_write(native_dfhack_graphics(), pen, x, y);
+        } catch (...) {
+            // Optional artwork evidence must not unwind through DFHack.
+        }
+    }
     return result;
 }
 using NativeDfhackPenArrayDrawFn = void (*)(void *, unsigned, unsigned, unsigned,

@@ -3,6 +3,7 @@
 using NativeDfhackLayerTexture = std::remove_pointer_t<decltype(graphicst::screentexpos)>;
 static void native_dfhack_gpu_suspend() noexcept;
 static void native_dfhack_gpu_resume() noexcept;
+static void native_dfhack_layer_committed() noexcept;
 
 struct NativeDfhackOutputBinding {
     std::array<void *, 14> pointers{};
@@ -197,6 +198,7 @@ struct NativeDfhackLayerStorage {
         std::vector<unsigned char> screen;
         std::array<std::vector<NativeDfhackLayerTexture>, 5> textures;
         std::vector<uint32_t> flags;
+        std::vector<NativeDfhackArtworkPen> artwork_pens;
     };
     std::array<Plane, 2> planes;
     std::vector<int32_t> refresh;
@@ -234,6 +236,7 @@ struct NativeDfhackLayerStorage {
                 plane.screen.resize(count * 8);
                 for (auto &texture : plane.textures) texture.resize(count);
                 plane.flags.resize(count);
+                plane.artwork_pens.resize(count);
             }
             refresh.resize(count); written.resize(count); maps.clear(); ready = true;
         }
@@ -242,6 +245,7 @@ struct NativeDfhackLayerStorage {
                 std::fill(plane.screen.begin(), plane.screen.end(), 0);
                 for (auto &texture : plane.textures) std::fill(texture.begin(), texture.end(), 0);
                 std::fill(plane.flags.begin(), plane.flags.end(), 0);
+                std::fill(plane.artwork_pens.begin(), plane.artwork_pens.end(), NativeDfhackArtworkPen{});
             }
             std::fill(refresh.begin(), refresh.end(), 0);
             std::fill(written.begin(), written.end(), 0);
@@ -326,6 +330,44 @@ static void *g_native_dfhack_layer_page_vtable = nullptr;
 static thread_local unsigned g_native_dfhack_layer_frame_depth = 0;
 static thread_local graphicst *g_native_dfhack_present_graphics = nullptr;
 
+static void native_dfhack_layer_record_artwork_tile(const graphicst *gps,
+        const void *pen, int x, int y) noexcept {
+    // The drawing scope owns the layer mutex and selects staging.graphics.
+    // Its pens therefore move with that frame when staging is published.
+    auto &storage = g_native_dfhack_layer_staging;
+    if (!pen || !storage.ready || !g_native_dfhack_layer_staging_pending ||
+            storage.graphics.get() != gps || x < 0 || y < 0 ||
+            x >= storage.dimx || y >= storage.dimy) return;
+    const auto *bytes = static_cast<const unsigned char *>(pen);
+    NativeDfhackArtworkPen identity;
+    identity.ch = bytes[0];
+    std::memcpy(&identity.texture, bytes + 4, sizeof(identity.texture));
+    const bool frame = identity.ch >= 0xb3 && identity.ch <= 0xda;
+    const bool control = identity.ch == '[' || identity.ch == 0x0f ||
+        identity.ch == '?' || identity.ch == ']';
+    const bool notification = identity.ch == '/' || identity.ch == '\\' ||
+        identity.ch == 176 || identity.ch == 177 || identity.ch == 219;
+    if (identity.texture <= 0 || !(frame || control || notification)) identity = {};
+    auto &pens = storage.planes[static_cast<size_t>(gps->top_in_use)].artwork_pens;
+    pens[static_cast<size_t>(x) * storage.dimy + y] = identity;
+}
+
+static const std::vector<NativeDfhackArtworkPen> *native_dfhack_layer_artwork_pens(
+        const graphicst *gps, bool top) noexcept {
+    // Callers retain the layer mutex while borrowing this view. Matching the
+    // arrays also supports a shallow read view without selecting another frame.
+    if (!gps) return nullptr;
+    for (const auto *storage : {&g_native_dfhack_layer_storage, &g_native_dfhack_layer_staging}) {
+        if (!storage->ready || storage->dimx != gps->dimx || storage->dimy != gps->dimy ||
+                !storage->graphics || storage->graphics->screen != gps->screen ||
+                storage->graphics->screen_top != gps->screen_top) continue;
+        const auto &pens = storage->planes[static_cast<size_t>(top)].artwork_pens;
+        if (pens.size() != static_cast<size_t>(gps->dimx) * gps->dimy) return nullptr;
+        return &pens;
+    }
+    return nullptr;
+}
+
 static uint64_t native_dfhack_layer_page_revision() noexcept {
     return g_native_dfhack_layer_page_revision.load(std::memory_order_acquire);
 }
@@ -347,6 +389,7 @@ static bool native_dfhack_prepare_staging(bool begin = false) {
     const bool start = begin || !g_native_dfhack_layer_staging_pending;
     auto &s = g_native_dfhack_layer_staging;
     s.prepare(*gps, NativeDfhackOutputBinding::capture(*gps), start);
+    if (start) clear_native_dfhack_text_buffer(s.graphics.get());
     s.page_revision = native_dfhack_layer_page_revision();
     g_native_dfhack_layer_staging_pending = true;
     if (start) g_native_dfhack_layer_commit_pending = false;
@@ -360,6 +403,7 @@ static void native_dfhack_publish_staging() noexcept {
     std::swap(g_native_dfhack_layer_storage, s);
     g_native_dfhack_layer_staging_pending = false;
     g_native_dfhack_layer_commit_pending = false;
+    native_dfhack_layer_committed();
 }
 
 class NativeDfhackForegroundScope {
@@ -544,6 +588,7 @@ public:
                 s.page_revision != native_dfhack_layer_page_revision()) {
             try {
                 s.prepare(*gps, NativeDfhackOutputBinding::capture(*gps), true);
+                clear_native_dfhack_text_buffer(s.graphics.get());
                 s.page_revision = native_dfhack_layer_page_revision();
                 s.revision = ++g_native_dfhack_layer_revision;
             } catch (...) { return; }

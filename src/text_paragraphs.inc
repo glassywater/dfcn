@@ -54,6 +54,8 @@ bool Overlay::append_bounded_paragraph(std::vector<Match> rows,
         std::optional<NativeParagraphViewport> viewport,
         const std::vector<std::pair<size_t, size_t>> &word_ranges,
         int complete_layout_rows) const {
+    if (NativeDfhackForegroundScope::active)
+        for (auto &row : rows) row.native_dfhack_foreground = true;
     std::vector<uint32_t> codepoints;
     if (!face_ || !gps_ || gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0 ||
         rows.empty() || !decode_utf8(target, codepoints) || codepoints.empty())

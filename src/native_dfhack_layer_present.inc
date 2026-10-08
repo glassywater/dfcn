@@ -418,11 +418,11 @@ static bool native_dfhack_gpu_target_hook_active() noexcept {
 }
 
 static void native_dfhack_compose_gpu_layer(SDL_Renderer *renderer,
-        int width, int height) {
+        SDL_Texture *bound_target, int width, int height) {
     const auto &gpu = g_native_dfhack_gpu_target;
     if (!g_native_dfhack_gpu_frame_ready || !gpu.texture ||
             gpu.renderer != renderer || width <= 0 || height <= 0 ||
-            SDL_GetRenderTarget(renderer) != g_native_dfhack_layer_target.texture ||
+            !bound_target || SDL_GetRenderTarget(renderer) != bound_target ||
             g_native_dfhack_gpu_page_revision != native_dfhack_layer_page_revision()) return;
     const SDL_Rect destination{0, 0, width, height};
     SDL_SetTextureColorMod(gpu.texture, 255, 255, 255);
@@ -442,6 +442,9 @@ struct NativeDfhackLayerPaintContext {
     inline static thread_local NativeDfhackLayerPaintContext *active = nullptr;
     NativeDfhackLayerPaintContext *previous = active;
     SDL_Renderer *renderer;
+    // SDL can bind a native backing texture for the public RGBA target.
+    // Capture its actual identity after binding, for this render pass only.
+    SDL_Texture *bound_target;
     void *native_renderer;
     graphicst *graphics;
     void **methods;
@@ -452,7 +455,8 @@ struct NativeDfhackLayerPaintContext {
 
     NativeDfhackLayerPaintContext(SDL_Renderer *sdl, void *native,
             graphicst *gps, void **vtable) noexcept
-        : renderer(sdl), native_renderer(native), graphics(gps), methods(vtable) {
+        : renderer(sdl), bound_target(SDL_GetRenderTarget(sdl)),
+          native_renderer(native), graphics(gps), methods(vtable) {
         const auto *object = static_cast<const unsigned char *>(native);
         std::memcpy(&tile_width, object + 0x168, sizeof(tile_width));
         std::memcpy(&tile_height, object + 0x16c, sizeof(tile_height));
@@ -472,9 +476,20 @@ struct NativeDfhackLayerPaintContext {
         active = this;
     }
     bool character_texture(int32_t texture, unsigned char character) const noexcept {
-        if (texture <= 0 || !character || character == ' ') return false;
-        for (const auto *table : font_tables)
-            if (table && table[character] == texture) return true;
+        if (texture <= 0) return false;
+        for (const auto *table : font_tables) {
+            if (!table) continue;
+            if (character && character != ' ') {
+                if (table[character] == texture) return true;
+                continue;
+            }
+            // Graphical paintTile can leave only the bitmap-font texture,
+            // having cleared the source character byte. Recognize that
+            // texture from the shared font atlases before repainting it as
+            // background; unrelated private artwork remains untouched.
+            for (size_t glyph = 1; glyph < 256; ++glyph)
+                if (glyph != ' ' && table[glyph] == texture) return true;
+        }
         return false;
     }
     ~NativeDfhackLayerPaintContext() noexcept { active = previous; }
@@ -495,7 +510,7 @@ static void native_dfhack_redraw_background(SDL_Renderer *renderer,
         const SDL_Rect &cells) {
     auto *paint = NativeDfhackLayerPaintContext::active;
     if (!paint || paint->renderer != renderer || !paint->graphics ||
-            SDL_GetRenderTarget(renderer) != g_native_dfhack_layer_target.texture ||
+            !paint->bound_target || SDL_GetRenderTarget(renderer) != paint->bound_target ||
             cells.w <= 0 || cells.h <= 0 ||
             paint->tile_width <= 0 || paint->tile_height <= 0) return;
     auto &gps = *paint->graphics;
@@ -601,10 +616,9 @@ static void native_dfhack_redraw_background(SDL_Renderer *renderer,
                 }
         }
     }
-    // Translation cleared only this private field. Recompose direct DFHack
-    // GPU content under the same field clip before translated ink is drawn.
-    native_dfhack_compose_gpu_layer(renderer,
-        g_native_dfhack_layer_target.width, g_native_dfhack_layer_target.height);
+    // The original GPU content was composed before source replacement.
+    // Copying that cache again here would restore its untranslated ink in
+    // the field that has just been cleared.
 }
 
 static bool native_dfhack_layer_has_content(SDL_Renderer *renderer,
@@ -696,7 +710,7 @@ static void native_dfhack_present_layer(SDL_Renderer *renderer,
                     }
                 }
         }
-        native_dfhack_compose_gpu_layer(renderer, width, height);
+        native_dfhack_compose_gpu_layer(renderer, paint.bound_target, width, height);
         if (translate) translate(renderer);
     }
     state.restore();

@@ -440,6 +440,7 @@ bool Overlay::load_rules() {
 
     // The candidate succeeded; invalidate results of the replaced dictionary
     // only now. A failed parse/index build never changes the live caches.
+    ++dfhack_translation_catalog_revision_;
     clear_legends_search_cache();
     clear_stockpile_setting_cache();
     clear_fortress_item_caption_cache();
