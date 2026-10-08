@@ -10980,13 +10980,16 @@ std::optional<std::string> Overlay::translate_ui_catalog_capture(
             return std::string(count);
         return std::nullopt;
     }
-    // The growth constructor inserts a complete animal caption, including
-    // Stray/status wrappers and RAW or authored UTF-8 names. Resolve that
-    // identity directly instead of trying unrelated item/term grammars.
+    // The growth constructor inserts a complete animal caption or an adult
+    // profession. Keep Stray/status wrappers and RAW or authored UTF-8 names
+    // on the creature parser, then resolve occupations such as Peasant through
+    // the shared role vocabulary.
     if (rule.ui_message &&
             ((index == 0 && rule.source == "An animal has grown to become a {s}.") ||
-             (index == 1 && rule.source == "{p} has grown to become a {s}.")))
-        return translate_creature_label(source, nullptr, true);
+             (index == 1 && rule.source == "{p} has grown to become a {s}."))) {
+        if (auto creature = translate_creature_label(source, nullptr, true)) return creature;
+        return translate_unit_profession(source, false);
+    }
     // Diplomatic quests use the same native historical person/entity,
     // elapsed-time and building formatters as rumors and historical prose.
     // Their authored slots are semantic fields, never generic word strings.
