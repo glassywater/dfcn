@@ -2,7 +2,7 @@
 
 为 **Dwarvemon 2.22** 和 **Dwarvemon Entity All 2.22** 提供简体中文翻译，覆盖宝可梦及形态名称、描述、偏好、道具、材料、植物、工坊与配方、身体部位、招式、特性、进化提示、战斗公告和历史事件。
 
-当前工作区另有未发布的本地试用版 2，扩展到 Dwarvemon Entity Type 和 Dwarvemon Beta；这几个宝可梦 Mod 共用此包。已发布身份文件保持原有发布记录，本地修改尚未上传。试用版的具体内容见 `content/README.zh-CN.md`。
+当前工作区另有未发布的本地试用版 3，扩展到 Dwarvemon Entity Type 和 Dwarvemon Beta，并修正工坊悬浮说明的翻译标记；这几个宝可梦 Mod 共用此包。已发布身份文件保持原有发布记录，本地修改尚未上传。试用版的具体内容见 `content/README.zh-CN.md`。
 
 需要安装 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)。本体的 [GitHub Release](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008)提供 `DFCN-Windows-x64-minimal.zip`。
 

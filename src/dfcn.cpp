@@ -6856,12 +6856,14 @@ bool Overlay::initialize() {
         g_embark_capture_screen_dimy.store(
             gps_->dimy, std::memory_order_release);
     }
+    // Read font settings before creating the library: load_config refreshes
+    // an existing font, while startup opens it once below.
+    load_config();
     if (FT_Init_FreeType(&ft_) != 0) {
         ft_ = nullptr;
         log_line("ERROR", "FT_Init_FreeType failed");
         return false;
     }
-    load_config();
     load_untranslated_index();
     load_rules();
     load_generated_instrument_names();

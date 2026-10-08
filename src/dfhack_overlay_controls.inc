@@ -78,7 +78,7 @@
                     while (cursor < row.size() && row[cursor] >= '0' && row[cursor] <= '9') ++cursor;
                     if (cursor == digits) return std::nullopt;
                 } else if (token == "*" || token == "{material}" || token == "{job}" ||
-                        token == "{suspension}") {
+                        token == "{book}" || token == "{suspension}") {
                     const size_t next_marker = pattern.find_first_of("{*", token_end + 1);
                     const auto suffix = pattern.substr(token_end + 1,
                         next_marker == std::string_view::npos ? std::string_view::npos :
@@ -111,6 +111,11 @@
                 if (token == "{material}" || token == "{job}") {
                     const auto kind = token == "{material}" ? "material" : "job";
                     if (const auto translated = translate_dfhack_caption(kind, value))
+                        replacement = *translated;
+                } else if (token == "{book}") {
+                    // An explicitly declared title shares the written-work
+                    // grammar used by the book's contents and item sheet.
+                    if (const auto translated = translate_legends_book(value))
                         replacement = *translated;
                 } else if (token == "{suspension}") {
                     if (const auto translated = exact_literal_translation(

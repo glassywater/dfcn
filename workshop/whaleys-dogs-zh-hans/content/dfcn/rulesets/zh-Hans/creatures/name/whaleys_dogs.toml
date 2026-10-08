@@ -1,4 +1,4 @@
-base = "whaleys_dogs::names"
+base = "creatures::name::whaleys_dogs"
 
 [[rulesets]]
 name = "singular"

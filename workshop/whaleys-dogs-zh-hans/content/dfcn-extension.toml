@@ -1,6 +1,6 @@
 schema = 1
 id = "whaleys-dogs-zh-hans"
-version = 1
+version = 2
 language = "zh-Hans"
 name = "Whaley 犬种汉化数据"
 translations = "dfcn/translations.tsv"

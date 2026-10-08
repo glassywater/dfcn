@@ -30,10 +30,12 @@ name = "obj3"
 [[rulesets]]
 [rulesets.rules]
 "The pages are blank." = "书页一片空白。"
-"=== {@bt_title} ===" = "=== {@bt_title} ==="
+"=== {@bt_title|::text::book} ===" = "=== {@bt_title|::text::book} ==="
 "A {type} in {#digits} chapter" = "一部{type}，共{#digits}章"
 "A {type} in {#digits} chapters" = "一部{type}，共{#digits}章"
-"Perspective: {@bt_perspective|::subscribed_books::vocabulary::perspective}" = "视角：{@bt_perspective|::subscribed_books::vocabulary::perspective}"
+# The author chooses a finite perspective label. An open terminal capture
+# would consume the remaining book and prevent paragraph translation.
+"Perspective: {::subscribed_books::vocabulary::perspective}" = "视角：{::subscribed_books::vocabulary::perspective}"
 "Chapter {#digits}" = "第{#digits}章"
 "{@bt_person|::subscribed_books::vocabulary::person} was involved in {event} in the year {@bt_year|::subscribed_books::vocabulary::birth_year}." = "{@bt_year|::subscribed_books::vocabulary::birth_year}年，{@bt_person|::subscribed_books::vocabulary::person}参与了{event}。"
 "{@bt_person|::subscribed_books::vocabulary::person} was involved in {event} in the year {@bt_year|::subscribed_books::vocabulary::birth_year} at {@bt_site|::subscribed_books::vocabulary::place}." = "{@bt_year|::subscribed_books::vocabulary::birth_year}年，{@bt_person|::subscribed_books::vocabulary::person}参与了{event}（于{@bt_site|::subscribed_books::vocabulary::place}）。"
