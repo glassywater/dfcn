@@ -1597,8 +1597,17 @@ b. {d} d. {d}	生于第{d}年，卒于第{d}年	wt
 hydra	九头蛇	wi
 hydras	九头蛇	wi
 
-# Project terminology: sheep and its generated juvenile/material names use 羊.
-sheep	羊	wi
+# Project terminology: sheep and related caste, juvenile and material names.
+# Sex stays in the UI glyph; juveniles use the adult name plus 幼崽.
+sheep	绵羊	wi
+ovine	绵羊	wi
+ram	绵羊	wi
+rams	绵羊	wi
+ewe	绵羊	wi
+ewes	绵羊	wi
+lamb	绵羊幼崽	wi
+lambs	绵羊幼崽	wi
+sheep's milk	绵羊奶	wi
 
 # Restore the established DFI18n species name; cave floater is a different creature.
 plump helmet man	肉盔菇人	wi
@@ -2879,7 +2888,7 @@ cow cheese	牛奶酪	wi
 donkey cheese	驴奶酪	wi
 horse cheese	马奶酪	wi
 goat cheese	山羊奶酪	wi
-sheep cheese	羊奶酪	wi
+sheep cheese	绵羊奶酪	wi
 pig cheese	猪奶酪	wi
 water buffalo cheese	水牛奶酪	wi
 # Keep the compound species/material name ahead of fragment composition.
