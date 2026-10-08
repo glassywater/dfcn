@@ -649,6 +649,7 @@ static std::optional<std::string> translate_dfhack_human_capture(
         return std::nullopt;
     }
     std::string_view kind;
+    bool showmood_material = false;
     if (rule.source == "{d}: {s} caravan from {s}" && capture == 1)
         kind = "creature_adjective";
     else if (rule.source == "autocheese: dispatching cheesemaking job for {s} ({d} milk) to {s}" &&
@@ -716,17 +717,26 @@ static std::optional<std::string> translate_dfhack_human_capture(
             form = form.substr(0, got);
         if (form == "item {s} material {s} flags ({s}:{s}:{s})") {
             if (capture == field) kind = "item";
-            if (capture == field + 1) kind = "material";
+            if (capture == field + 1) { kind = "material"; showmood_material = true; }
         } else if (capture == field) {
             for (std::string_view caption : {"{s} boulder", "{s} blocks", "{s} logs",
                     "{s} wafers", "{s} bars", "{s} cut gems", "{s} rough gems", "raw {s}",
                     "{s} leather", "{s} cloth", "{s} bones", "{s} shells", "{s} horns",
                     "{s} pearls", "{s} ivory/teeth", "{s} unknown body parts ({s}:{s}:{s})",
                     "{s} remains", "{s} corpse", "{s} murdered corpse"})
-                if (form == caption) { kind = "material"; break; }
+                if (form == caption) {
+                    kind = "material";
+                    showmood_material = true;
+                    break;
+                }
         }
     }
     if (kind.empty()) return std::nullopt;
+    if (showmood_material) {
+        const auto wildcard = catalog.gui_fields.find(
+            "DFHack GUI Showmood material: " + std::string(source));
+        if (wildcard != catalog.gui_fields.end()) return wildcard->second;
+    }
     const auto text = console_utf8 ? std::string(source) : native_text_to_utf8(source);
     // Whole-caption overrides are scoped to this already proved human field.
     // They cannot rename a command, material token, enum, path or flag value.
@@ -818,9 +828,14 @@ static std::vector<std::optional<std::string>> resolve_dfhack_output_captures(
     return resolved;
 }
 
+#include "dfhack_showmood_output.inc"
+
 static std::optional<std::string> translate_dfhack_output_message(
         const DfhackOutputSnapshot &catalog, std::string_view visible, int depth,
         bool templates, bool fragments, bool console_utf8) {
+    if (depth == 0)
+        if (auto target = translate_dfhack_showmood_output(catalog, visible, console_utf8))
+            return target;
     if (depth == 0)
         if (auto target = translate_dfhack_workorder_output(catalog, visible, console_utf8))
             return target;
@@ -1338,6 +1353,13 @@ std::optional<std::string> Overlay::translate_dfhack_output_rows(
     }
     if (depth == 0)
         if (const auto catalog = g_dfhack_output_snapshot.load(std::memory_order_acquire)) {
+            if (auto target = translate_dfhack_showmood_output(*catalog, visible, false,
+                    [this](std::string_view name) {
+                        return translate_dfhack_readable_unit_name(name);
+                    })) {
+                if (complete_source) *complete_source = visible;
+                return target;
+            }
             // workorder's very-verbose report uses real hard lines and all
             // fields begin at the same widget edge. Keep them separate;
             // joining an unrelated numeric table as prose loses its roles.
