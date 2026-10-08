@@ -16125,6 +16125,12 @@ std::vector<Match> Overlay::find_matches(int only_y,
     for (int row_y = 0; row_y < gps_->dimy; ++row_y)
         screen_rows.push_back(read_row(row_y));
     const auto mod_workshop_names = preserve_mod_workshop_names(screen_rows);
+    // The chooser owns complete category names and separate task controls.
+    // Capture them before caption, item and paragraph readers consume the
+    // labels needed to recognize its category column and search field.
+    const auto workshop_choices = capture_workshop_task_rows(screen_rows);
+    for (const auto &choice : workshop_choices)
+        append_workshop_task_translations(choice, screen_rows, result, only_y);
     const auto mod_list = native_mod_list_layout(*gps_, [&](int x, int y) {
         bool top = false;
         const auto *cell = cell_at(x, y, &top);
@@ -16477,9 +16483,6 @@ std::vector<Match> Overlay::find_matches(int only_y,
     context_detail.checkpoint(RenderTimingStage::Workshops);
     append_fortress_stockpile_settings(screen_rows, result, only_y);
     const auto trade_request_rows = capture_fortress_trade_request_rows();
-    const auto workshop_choices = capture_workshop_task_rows(screen_rows);
-    for (const auto &choice : workshop_choices)
-        append_workshop_task_translations(choice, screen_rows, result, only_y);
 
     context_detail.checkpoint(RenderTimingStage::Sites);
     // Capture the native widget BEFORE generic matching consumes its text.
@@ -38687,6 +38690,8 @@ void Overlay::layout_multiline_matches() {
             continue;
         }
         if (match.layout_ellipsize || is_fortress_justice_field(match) ||
+            match.rule == kWorkshopTaskRowRule ||
+            match.rule == kWorkshopMaterialFieldRule ||
             match.rule == kAdventurePersonalityFieldRule ||
             match.rule == kSettingsAnnouncementNameRule ||
             match.rule == kDfhackStocksHintRule || match.rule == kDfhackHotkeysHintRule ||
