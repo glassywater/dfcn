@@ -84358,6 +84358,7 @@ Argue nuances of nature	争辩自然的复杂之处	hP
 Art image two groups: X	两群X	wl
 Ask for {s} to made {s}	请求将{s1}任命为{s2}	hPt
 Ask to become a soldier	请求成为士兵	hP
+Assemble ballista arrow	组装弩炮箭矢	wi
 Below average endurance	耐力低于平均	wil
 Below average intuition	直觉低于平均	wil
 Below average toughness	韧性低于平均	wil
@@ -84724,6 +84725,7 @@ Main Ceremony of at {p}	在{p1}，主要仪式	htEi
 Main Ceremony of in {d}	{d1}年的主要仪式	htEi
 Main Ceremony of in {p}	在{p1}，主要仪式	htEi
 Main: Select filter box	主界面：选择筛选框	w
+Make bolt thrower parts	制作弩箭投射器部件	wi
 Make sugar, flour, and 	在此制作糖、面粉和各种有用的	w
 Max Semimegabeast Caves	半巨兽洞穴数量上限
 Maximum number of sites	最大地点数量	w
@@ -93922,6 +93924,8 @@ Magma glass furnace	岩浆玻璃窑	wi
 Main: Announcements	主界面：公告	w
 Main: Gather plants	主界面：采集植物	w
 Make Campfire ({s})	搭建篝火（{s1}）	hPt
+Make ballista parts	制作弩炮部件	wi
+Make catapult parts	制作投石机部件	wi
 Make large clay pot	制作黏土质大罐	wi
 Make plaster powder	制作石膏粉	wi
 Make traction bench	制作牵引台	wi

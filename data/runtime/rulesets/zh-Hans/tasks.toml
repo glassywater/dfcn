@@ -2,6 +2,16 @@ base = "tasks"
 
 [[rulesets]]
 [rulesets.rules]
+# Siege orders use job material adjectives and complete action captions,
+# rather than finished-item designation wrappers or equipment word ordering.
+"Assemble {::materials::adjective} ballista arrow" = "组装{::materials::adjective}弩炮箭矢"
+"Assemble ballista arrow" = "组装弩炮箭矢"
+"Make {::materials::adjective} ballista parts" = "制作{::materials::adjective}弩炮部件"
+"Make {::materials::adjective} bolt thrower parts" = "制作{::materials::adjective}弩箭投射器部件"
+"Make {::materials::adjective} catapult parts" = "制作{::materials::adjective}投石机部件"
+"Make ballista parts" = "制作弩炮部件"
+"Make bolt thrower parts" = "制作弩箭投射器部件"
+"Make catapult parts" = "制作投石机部件"
 # A task separates its action and complete item with one space. Keep that
 # boundary so material names remain inside the item instead of swallowing it.
 "{^0} {main}" = "{^0}{main}"

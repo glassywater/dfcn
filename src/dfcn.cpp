@@ -7893,12 +7893,18 @@ std::optional<std::string> Overlay::translate_compositional(const std::string &s
     try {
     TranslationWorkFrame work_frame("compositional phrase", screen_text);
     if (!utf8.empty()) {
+        // Manufacturing captions are complete actions. Resolve them before
+        // equipment parsing can lift a material out of the middle of a job.
+        const std::string folded = lower(utf8);
+        if (folded.starts_with("make ") || folded.starts_with("forge ") ||
+                folded.starts_with("assemble "))
+            translated = RULESETS.translate_activity(utf8);
         // Arena equipment names have a grammatical order of their own. Run
         // the complete-phrase parser before the general compositional rules;
         // otherwise a valid generic token-by-token result wins first (for
         // example `sheep wool coats` became `毛质羊大衣`) and the arena
         // parser is never reached.
-        translated = translate_rated_skill_phrase(screen_text);
+        if (!translated) translated = translate_rated_skill_phrase(screen_text);
         if (!translated) translated = translate_corpsepiece_item_name(screen_text);
         if (!translated) translated = translate_material_name(utf8);
         if (!translated) translated = translate_arena_equipment_source_phrase(utf8);
