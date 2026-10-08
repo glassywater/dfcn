@@ -265,6 +265,16 @@ static std::vector<NativeDfhackWindowGeometry> native_dfhack_window_geometry(
     return windows;
 }
 
+static bool native_dfhack_notification_banner_frame(
+        const NativeDfhackWindowGeometry &window,
+        const std::vector<std::string> &rows) {
+    const auto &frame = window.frame;
+    const int right = frame.x + frame.w - 1;
+    return frame.h >= 3 && frame.h <= 7 && window.title_length == 3 &&
+        window.title_x == right - 3 &&
+        rows[frame.y].compare(right - 3, 3, std::string("[\x0f]", 3)) == 0;
+}
+
 // gui/launcher's minimal mode has no window skin. Its prefix clears the
 // complete first row, ending at the ten-cell Alt+m control; anchored native
 // artwork can leave part of the screen to its right. The second row is only

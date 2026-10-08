@@ -147,10 +147,7 @@
         for (const auto &window : native_dfhack_window_geometry(dfhack_context_rows)) {
             const auto *frame = &window.frame;
             const int right = frame->x + frame->w - 1;
-            if (frame->h < 3 || frame->h > 7 || window.title_length != 3 ||
-                    window.title_x != right - 3 ||
-                    dfhack_context_rows[frame->y].compare(right - 3, 3,
-                        std::string("[\x0f]", 3)) != 0) continue;
+            if (!native_dfhack_notification_banner_frame(window, dfhack_context_rows)) continue;
             const int left = frame->x + 1, bottom = frame->y + frame->h - 1;
             // Five choices and a scrolled List both have h=7. Only the scrollbar's
             // actual two-column arrows prove that its columns are unavailable.

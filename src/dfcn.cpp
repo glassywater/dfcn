@@ -2193,6 +2193,27 @@ struct NativeTooltipPage {
     // The source pointers are identities only; reads use this page's bytes.
     std::vector<NativeTextGridOrigin> origins;
     SDL_Rect bounds{};
+    struct UncapturedStorage {};
+    NativeTooltipPage(const graphicst &gps, UncapturedStorage) {
+        reset_capture_storage(gps);
+    }
+    void reset_capture_storage(const graphicst &gps) {
+        const size_t count = static_cast<size_t>(gps.dimx) * gps.dimy;
+        screen.resize(count * 8);
+        origins.resize(count);
+        const auto resize = [count](auto &out, const auto *in) {
+            if (in) out.resize(count);
+            else out.clear();
+        };
+        resize(texture, gps.screentexpos);
+        resize(lower, gps.screentexpos_lower);
+        resize(anchored, gps.screentexpos_anchored);
+        resize(anchor_x, gps.screentexpos_anchored_x);
+        resize(anchor_y, gps.screentexpos_anchored_y);
+        resize(flags, gps.screentexpos_flag);
+        cells.assign(count, 0);
+        bounds = {0, 0, gps.dimx, gps.dimy};
+    }
     explicit NativeTooltipPage(const graphicst &gps) {
         NativeCaptureMaskScope capture_mask(&gps);
         const size_t count = static_cast<size_t>(gps.dimx) * gps.dimy;
@@ -2354,9 +2375,13 @@ static void capture_native_dfhack_background_cell(const graphicst *gps, int x, i
             g_native_dfhack_page_graphics != gps ||
             g_native_dfhack_page->bounds.w != gps->dimx ||
             g_native_dfhack_page->bounds.h != gps->dimy) {
-        g_native_dfhack_page = std::make_shared<NativeTooltipPage>(*gps);
-        g_native_dfhack_page->bounds = {0, 0, gps->dimx, gps->dimy};
-        std::fill(g_native_dfhack_page->cells.begin(), g_native_dfhack_page->cells.end(), 0);
+        // Only written cells are consumed. Reuse their storage without copying
+        // or scanning the full native page for a small DFHack HUD overlay.
+        if (!g_native_dfhack_page || g_native_dfhack_page.use_count() != 1)
+            g_native_dfhack_page = std::make_shared<NativeTooltipPage>(
+                *gps, NativeTooltipPage::UncapturedStorage{});
+        else
+            g_native_dfhack_page->reset_capture_storage(*gps);
         g_native_dfhack_page_epoch = epoch;
         g_native_dfhack_page_graphics = gps;
     }
@@ -4693,6 +4718,11 @@ private:
     void load_dfhack_help_catalog(std::function<void()> *catalog_publication = nullptr);
     void publish_dfhack_caption_snapshot();
     void publish_dfhack_stonesense_announcements() const;
+    void append_dfhack_notification_banners(
+        const std::vector<std::string> &dfhack_context_rows,
+        std::vector<SDL_Rect> &dfhack_auxiliary_regions,
+        std::vector<Match> &dfhack_auxiliary_matches, int only_y,
+        const std::function<std::string(int)> &read_row) const;
     std::optional<std::string> translate_dfhack_catalog_rows(
         const std::vector<Match> &rows, int native_width, std::string_view prefix,
         const std::vector<DfhackHelpParagraph> &paragraphs,
@@ -15737,6 +15767,20 @@ static bool help_background_covered(const Match &match, int x, int y) {
 
 #include "mod_list.inc"
 
+void Overlay::append_dfhack_notification_banners(
+        const std::vector<std::string> &dfhack_context_rows,
+        std::vector<SDL_Rect> &dfhack_auxiliary_regions,
+        std::vector<Match> &dfhack_auxiliary_matches, int only_y,
+        const std::function<std::string(int)> &read_row) const {
+    const auto auxiliary_pixels = [&](const SDL_Rect &box) {
+        const int tw = gps_->tile_pixel_x, th = gps_->tile_pixel_y;
+        return SDL_Rect{(gps_->screen_pixel_x - gps_->dimx * tw) / 2 + box.x * tw,
+            (gps_->screen_pixel_y - gps_->dimy * th) / 2 + box.y * th,
+            box.w * tw, box.h * th};
+    };
+#include "dfhack_notification_banners.inc"
+}
+
 std::vector<Match> Overlay::find_matches(int only_y,
                                          const unsigned char *screen_override) const {
     RenderTimingScope match_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Match);
@@ -15864,15 +15908,16 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 const auto page = native_announcement_foreground_page(*gps_, *frames);
                 NativeTooltipPageScope document(gps_, page, nullptr, false);
                 NativeUiReadScope composed(gps_, nullptr);
-                // Stocks and trade shortcut cards have independent fields.
-                // Translating their complete item lists merely to discard
-                // foreground matches repeats the background traversal.
+                // Shortcut cards and notification banners have independent
+                // fields; logo artwork has no translatable foreground.
+                // Matching the whole page merely to discard its foreground
+                // repeats the background traversal for these small overlays.
                 // Keep every occluder and the restored page; only replace that
                 // redundant foreground traversal when all frames are proved
-                // hint cards or excluded logo artwork.
+                // hint cards, notification banners or excluded logo artwork.
                 if (!page && !widget && !g_native_toolbar_tooltip &&
-                        std::any_of(frames->begin(), frames->end(), [](const SDL_Rect &frame) {
-                            return frame.w == 27 && (frame.h == 7 || frame.h == 13);
+                        std::all_of(frames->begin(), frames->end(), [](const SDL_Rect &frame) {
+                            return frame.h <= 7 || (frame.w == 27 && frame.h == 13);
                         })) {
                     std::vector<std::string> hint_rows(static_cast<size_t>(gps_->dimy),
                         std::string(static_cast<size_t>(gps_->dimx), ' '));
@@ -15882,10 +15927,16 @@ std::vector<Match> Overlay::find_matches(int only_y,
                             const auto *cell = cell_at(x, y, &top);
                             if (cell && cell[0]) hint_rows[static_cast<size_t>(y)][static_cast<size_t>(x)] = cell[0];
                         }
+                    retain_native_dfhack_border_chars(*gps_, hint_rows);
                     const auto hints = native_dfhack_stocks_hint_geometry(
                         gps_->dimx, gps_->dimy, [&](int y) { return hint_rows[static_cast<size_t>(y)]; });
                     const auto trade_hints = native_dfhack_trade_hint_geometry(
                         gps_->dimx, gps_->dimy, [&](int y) { return hint_rows[static_cast<size_t>(y)]; });
+                    auto banners = native_dfhack_window_geometry(hint_rows);
+                    std::erase_if(banners, [&](const auto &window) {
+                        return !native_dfhack_notification_banner_frame(window, hint_rows) ||
+                            !native_dfhack_background_matches(*gps_, window.frame);
+                    });
                     const auto logos = native_capture_mask_regions(gps_);
                     const auto same_frame = [](const SDL_Rect &a, const SDL_Rect &b) {
                         return a.x == b.x && a.y == b.y && a.w == b.w && a.h == b.h;
@@ -15898,27 +15949,35 @@ std::vector<Match> Overlay::find_matches(int only_y,
                             }) || std::any_of(trade_hints.begin(), trade_hints.end(), [&](const auto &hint) {
                                 return same_frame(frame, hint.frame) &&
                                     native_dfhack_background_matches(*gps_, hint.frame);
+                            }) || std::any_of(banners.begin(), banners.end(), [&](const auto &window) {
+                                return same_frame(frame, window.frame);
                             }) || std::any_of(logos.begin(), logos.end(), [&](const SDL_Rect &logo) {
-                                return same_frame(frame, logo);
+                                return same_frame(frame, logo) &&
+                                    native_dfhack_background_matches(*gps_, logo);
                             });
                         });
                     // Some catalog hover cards have no captured Tooltip
                     // widget or separate overlay frame until this matcher
                     // sees their source. Preserve their foreground discovery.
                     if (hint_foreground) {
+                        auto tooltip_rows = hint_rows;
                         // The ordinary matcher reserves the card before
                         // discovering other tooltip sources on the page.
                         for (const auto &hint : hints)
                             for (const SDL_Rect &owned : {hint.body, hint.brand})
                                 for (int y = owned.y; y < owned.y + owned.h; ++y)
-                                    std::fill_n(hint_rows[static_cast<size_t>(y)].begin() + owned.x,
+                                    std::fill_n(tooltip_rows[static_cast<size_t>(y)].begin() + owned.x,
                                         owned.w, ' ');
                         for (const auto &hint : trade_hints)
                             for (const SDL_Rect &owned : {hint.body, hint.brand})
                                 for (int y = owned.y; y < owned.y + owned.h; ++y)
-                                    std::fill_n(hint_rows[static_cast<size_t>(y)].begin() + owned.x,
+                                    std::fill_n(tooltip_rows[static_cast<size_t>(y)].begin() + owned.x,
                                         owned.w, ' ');
-                        if (find_toolbar_tooltip(hint_rows)) hint_foreground = false;
+                        for (const auto &window : banners)
+                            for (int y = window.frame.y; y < window.frame.y + window.frame.h; ++y)
+                                std::fill_n(tooltip_rows[static_cast<size_t>(y)].begin() + window.frame.x,
+                                    window.frame.w, ' ');
+                        if (find_toolbar_tooltip(tooltip_rows)) hint_foreground = false;
                     }
                     if (hint_foreground) {
                         std::vector<Match> actions;
@@ -15950,6 +16009,23 @@ std::vector<Match> Overlay::find_matches(int only_y,
                                         static_cast<unsigned char>(match.source[at]);
                                 if (visible) actions.push_back(std::move(match));
                             }
+                        }
+                        if (!banners.empty()) {
+                            std::vector<SDL_Rect> banner_regions;
+                            std::vector<std::optional<std::string>> visible_rows(
+                                static_cast<size_t>(gps_->dimy));
+                            append_dfhack_notification_banners(hint_rows, banner_regions,
+                                actions, only_y, [&](int y) {
+                                    auto &row = visible_rows[static_cast<size_t>(y)];
+                                    if (!row) {
+                                        row.emplace(static_cast<size_t>(gps_->dimx), ' ');
+                                        for (int x = 0; x < gps_->dimx; ++x) {
+                                            const auto ch = visible_char_at(x, y);
+                                            (*row)[static_cast<size_t>(x)] = ch ? static_cast<char>(ch) : ' ';
+                                        }
+                                    }
+                                    return *row;
+                                });
                         }
                         return actions;
                     }
