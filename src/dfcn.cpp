@@ -6,6 +6,7 @@
 #include "byayoi_sprite.inc"
 #include "native_font_fallback.h"
 #include "dfhack_command_context.h"
+#include "dfhack_interpose.h"
 
 #include <algorithm>
 #include <array>
@@ -600,9 +601,6 @@ struct Match {
     // Source ownership is exposed spans; layout retains the complete draw.
     std::optional<SDL_Rect> native_help_occluder{};
     std::shared_ptr<const std::vector<SDL_Rect>> native_help_background_frames{};
-    // Reuse this traversal's restored page when a small foreign hint is the
-    // only foreground. It is discarded with the matches, never across frames.
-    std::shared_ptr<NativeTooltipPage> native_hint_background_page{};
     // A summary row reconstructed from ordered native draws already owns
     // its complete column; physical tail spans only suppress surviving ink.
     bool native_overview_complete_row = false;
@@ -674,9 +672,10 @@ struct Match {
     std::optional<SDL_Rect> native_keybinding_table{};
     // Shared by every output/ownership span of a mixed native field.
     std::shared_ptr<const TranslationResult> translation_result;
-    // Captured foreign widget fields own their current logical page. Their
-    // source/layout must never be rebound to the pre-DFHack game snapshot.
+    // Widget fields own the logical page supplied by their source reader.
     bool native_help_current_page = false;
+    // Only the DFHack source pass may translate or suppress foreign ink.
+    bool native_dfhack_foreground = false;
 };
 
 // Reflow moves rendered Legends links, never the game's source text. The
@@ -2181,6 +2180,7 @@ static NativeTextGridOrigin native_text_grid_origin(
     const graphicst &gps, size_t at, bool top_layer);
 
 #include "native_dfhack_artwork.inc"
+#include "native_dfhack_layers.inc"
 #include "native_capture_mask.inc"
 
 struct NativeTooltipPage {
@@ -2193,29 +2193,7 @@ struct NativeTooltipPage {
     // The source pointers are identities only; reads use this page's bytes.
     std::vector<NativeTextGridOrigin> origins;
     SDL_Rect bounds{};
-    struct UncapturedStorage {};
-    NativeTooltipPage(const graphicst &gps, UncapturedStorage) {
-        reset_capture_storage(gps);
-    }
-    void reset_capture_storage(const graphicst &gps) {
-        const size_t count = static_cast<size_t>(gps.dimx) * gps.dimy;
-        screen.resize(count * 8);
-        origins.resize(count);
-        const auto resize = [count](auto &out, const auto *in) {
-            if (in) out.resize(count);
-            else out.clear();
-        };
-        resize(texture, gps.screentexpos);
-        resize(lower, gps.screentexpos_lower);
-        resize(anchored, gps.screentexpos_anchored);
-        resize(anchor_x, gps.screentexpos_anchored_x);
-        resize(anchor_y, gps.screentexpos_anchored_y);
-        resize(flags, gps.screentexpos_flag);
-        cells.assign(count, 0);
-        bounds = {0, 0, gps.dimx, gps.dimy};
-    }
     explicit NativeTooltipPage(const graphicst &gps) {
-        NativeCaptureMaskScope capture_mask(&gps);
         const size_t count = static_cast<size_t>(gps.dimx) * gps.dimy;
         screen.assign(gps.screen, gps.screen + count * 8);
         origins.reserve(count);
@@ -2234,7 +2212,6 @@ struct NativeTooltipPage {
     }
     void compose_outside(const graphicst &gps,
             const std::vector<SDL_Rect> *top_occluders = nullptr) {
-        NativeCaptureMaskScope capture_mask(&gps);
         for (int x = 0; x < gps.dimx; ++x) {
             for (int y = 0; y < gps.dimy; ++y) {
                 if (x >= bounds.x && x < bounds.x + bounds.w &&
@@ -2359,81 +2336,6 @@ static std::shared_ptr<NativeTooltipPage> g_native_help_page;
 static uint64_t g_native_drawn_text_epoch = 0;
 static uint64_t g_native_help_page_epoch = 0;
 static int g_native_help_page_dimx = 0, g_native_help_page_dimy = 0;
-// DFHack set_tile erases both native layers, even when it draws into the
-// top layer. Keep each cell before its first foreign write in this draw.
-// Only a recognized current DFHack frame may consume the saved cells.
-static std::shared_ptr<NativeTooltipPage> g_native_dfhack_page;
-static uint64_t g_native_dfhack_page_epoch = 0;
-static const graphicst *g_native_dfhack_page_graphics = nullptr;
-static void capture_native_dfhack_background_cell(const graphicst *gps, int x, int y) {
-    if (!native_capture_grid_valid(gps) || !gps->screen ||
-            x < 0 || y < 0 || x >= gps->dimx || y >= gps->dimy) return;
-    const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
-    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-    if (!native_dfhack_capture_hook_active()) return;
-    if (!g_native_dfhack_page || g_native_dfhack_page_epoch != epoch ||
-            g_native_dfhack_page_graphics != gps ||
-            g_native_dfhack_page->bounds.w != gps->dimx ||
-            g_native_dfhack_page->bounds.h != gps->dimy) {
-        // Only written cells are consumed. Reuse their storage without copying
-        // or scanning the full native page for a small DFHack HUD overlay.
-        if (!g_native_dfhack_page || g_native_dfhack_page.use_count() != 1)
-            g_native_dfhack_page = std::make_shared<NativeTooltipPage>(
-                *gps, NativeTooltipPage::UncapturedStorage{});
-        else
-            g_native_dfhack_page->reset_capture_storage(*gps);
-        g_native_dfhack_page_epoch = epoch;
-        g_native_dfhack_page_graphics = gps;
-    }
-    auto &page = *g_native_dfhack_page;
-    const size_t at = static_cast<size_t>(x) * gps->dimy + y;
-    if (page.cells[at]) return;
-    const bool top = native_ui_top_layer_at(*gps, at);
-    const bool ignored = native_capture_ignored_cell(gps, x, y);
-    const auto *screen = top ? gps->screen_top : gps->screen;
-    auto *destination = page.screen.data() + at * 8;
-    if (ignored || !screen) {
-        std::memset(destination, 0, 8);
-        destination[0] = ' ';
-    } else {
-        std::memcpy(destination, screen + at * 8, 8);
-    }
-    page.origins[at] = native_text_grid_origin(*gps, at, top);
-    const auto copy = [at, ignored](auto &out, const auto *in) {
-        if (!out.empty()) out[at] = !ignored && in ? in[at] : 0;
-    };
-    copy(page.texture, top ? gps->screentexpos_top : gps->screentexpos);
-    copy(page.lower, top ? gps->screentexpos_top_lower : gps->screentexpos_lower);
-    copy(page.anchored, top ? gps->screentexpos_top_anchored : gps->screentexpos_anchored);
-    copy(page.anchor_x, top ? gps->screentexpos_top_anchored_x : gps->screentexpos_anchored_x);
-    copy(page.anchor_y, top ? gps->screentexpos_top_anchored_y : gps->screentexpos_anchored_y);
-    copy(page.flags, top ? gps->screentexpos_top_flag : gps->screentexpos_flag);
-    page.cells[at] = 1;
-}
-// The caller holds the capture lock while reading the saved cell mask.
-static bool native_dfhack_background_matches_locked(const graphicst &gps, const SDL_Rect &frame) {
-    if (!g_native_dfhack_page || g_native_dfhack_page_graphics != &gps ||
-            g_native_dfhack_page_epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire) ||
-            g_native_dfhack_page->bounds.w != gps.dimx ||
-            g_native_dfhack_page->bounds.h != gps.dimy ||
-            frame.x < 0 || frame.y < 0 || frame.w <= 0 || frame.h <= 0 ||
-            frame.x > gps.dimx - frame.w || frame.y > gps.dimy - frame.h) return false;
-    for (int x = frame.x; x < frame.x + frame.w; ++x)
-        for (int y = frame.y; y < frame.y + frame.h; ++y)
-            if (!g_native_dfhack_page->cells[static_cast<size_t>(x) * gps.dimy + y])
-                return false;
-    return true;
-}
-static bool native_dfhack_background_matches(const graphicst &gps, const SDL_Rect &frame) {
-    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-    return native_dfhack_background_matches_locked(gps, frame);
-}
-static void clear_native_dfhack_background_capture() {
-    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-    g_native_dfhack_page.reset();
-    g_native_dfhack_page_epoch = 0;
-    g_native_dfhack_page_graphics = nullptr;
-}
 // Alert flyouts erase the base grid in place. Preserve only the current
 // native draw's background, before the flyout starts writing its rectangle.
 static std::shared_ptr<NativeTooltipPage> g_native_announcement_page;
@@ -2475,8 +2377,8 @@ static std::shared_ptr<NativeTooltipPage> native_help_background_page(const grap
     auto page = tooltip_page ? std::make_shared<NativeTooltipPage>(*tooltip_page)
                              : std::make_shared<NativeTooltipPage>(gps);
     if (tooltip_page) page->compose_outside(gps, &frames);
-    // The widget snapshot predates its own foreground draw. A later help or
-    // DFHack snapshot can contain that tooltip, so it must not replace the
+    // The widget snapshot predates its own foreground draw. A later help
+    // snapshot can contain that tooltip, so it must not replace the
     // earlier native page where their rectangles overlap.
     const auto widget_background = [&](int x, int y) {
         if (!tooltip_page) return false;
@@ -2485,12 +2387,6 @@ static std::shared_ptr<NativeTooltipPage> native_help_background_page(const grap
             y >= box.y && y < box.y + box.h;
     };
     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-    // A foreign frame may destroy a page that was already in screen_top.
-    // Outside it, retain the current composed native page rather than using
-    // an empty base layer beside the restored cells.
-    if (!tooltip_page && std::any_of(frames.begin(), frames.end(), [&](const SDL_Rect &frame) {
-            return native_dfhack_background_matches_locked(gps, frame);
-        })) page->compose_outside(gps, &frames);
     if (g_native_help_page && g_native_help_page_epoch == g_native_drawn_text_epoch &&
         g_native_help_page_dimx == gps.dimx && g_native_help_page_dimy == gps.dimy) {
         const auto &saved = *g_native_help_page;
@@ -2514,26 +2410,6 @@ static std::shared_ptr<NativeTooltipPage> native_help_background_page(const grap
             for (int y = frame.y; y < frame.y + frame.h; ++y) {
                 const size_t at = static_cast<size_t>(x) * gps.dimy + y;
                 if (widget_background(x, y) || !saved.cells[at]) continue;
-                std::memcpy(page->screen.data() + at * 8, saved.screen.data() + at * 8, 8);
-                page->origins[at] = saved.origins[at];
-                const auto copy = [at](auto &out, const auto &in) {
-                    if (!out.empty()) out[at] = in.empty() ? 0 : in[at];
-                };
-                copy(page->texture, saved.texture);
-                copy(page->lower, saved.lower);
-                copy(page->anchored, saved.anchored);
-                copy(page->anchor_x, saved.anchor_x);
-                copy(page->anchor_y, saved.anchor_y);
-                copy(page->flags, saved.flags);
-            }
-    }
-    for (const auto &frame : frames) {
-        if (!native_dfhack_background_matches_locked(gps, frame)) continue;
-        const auto &saved = *g_native_dfhack_page;
-        for (int x = frame.x; x < frame.x + frame.w; ++x)
-            for (int y = frame.y; y < frame.y + frame.h; ++y) {
-                const size_t at = static_cast<size_t>(x) * gps.dimy + y;
-                if (widget_background(x, y)) continue;
                 std::memcpy(page->screen.data() + at * 8, saved.screen.data() + at * 8, 8);
                 page->origins[at] = saved.origins[at];
                 const auto copy = [at](auto &out, const auto &in) {
@@ -2845,8 +2721,10 @@ static std::optional<SDL_Rect> native_captured_text_clip(const graphicst &gps, c
     const auto *grid = top_layer ? gps.screen_top : gps.screen;
     if (!grid) return std::nullopt;
     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-    const uint64_t epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
-    if (g_native_drawn_text_epoch != epoch) return std::nullopt;
+    // A retained native frame can be presented without another caption pass.
+    // Keep its last actual writer clip while the exact source still agrees.
+    const uint64_t epoch = g_native_drawn_text_epoch;
+    if (epoch == 0) return std::nullopt;
     const auto &draws = top_layer ? g_native_drawn_top_text_rows : g_native_drawn_text_rows;
     for (auto it = draws.rbegin(); it != draws.rend(); ++it) {
         const auto &draw = *it;
@@ -2867,8 +2745,7 @@ static std::optional<SDL_Rect> native_captured_text_clip(const graphicst &gps, c
                 break;
             }
         }
-        if (current && epoch == g_embark_item_capture_epoch.load(std::memory_order_acquire))
-            return draw.draw_clip;
+        if (current) return draw.draw_clip;
     }
     return std::nullopt;
 }
@@ -3323,6 +3200,8 @@ public:
     bool initialize();
     void shutdown();
     void render(SDL_Renderer *renderer);
+    void render_dfhack_layer(SDL_Renderer *renderer);
+    bool native_frame_submitted() const noexcept { return native_frame_submitted_; }
     void render_ime_popup(SDL_Renderer *renderer);
     void replay_deferred_resolution_glyphs(SDL_Renderer *renderer,
                                            RenderCopyFn real_copy);
@@ -3762,6 +3641,7 @@ private:
     std::optional<NativeOverviewQuoteDraw> current_character_overview_quote() const;
     std::optional<int> character_overview_display_bottom(
         int left, int top, int width, int source_height) const;
+    bool character_overview_context_current() const;
     void refresh_character_overview_context(bool force = false);
     void append_character_overview_footer(
         const std::vector<std::string> &native_rows,
@@ -4101,6 +3981,9 @@ private:
     std::vector<Match> immediate_base_matches_;
     uint64_t immediate_base_matches_epoch_ = 0;
     const unsigned char *immediate_base_matches_screen_ = nullptr;
+    uint64_t immediate_context_epoch_ = 0;
+    const unsigned char *immediate_context_screen_ = nullptr;
+    std::shared_ptr<const NativeModListLayout> immediate_mod_list_;
     uint64_t character_overview_context_ = 0;
     uint64_t character_overview_context_epoch_ = 0;
     uint64_t character_overview_context_revision_ = 0;
@@ -4114,6 +3997,8 @@ private:
     int immediate_dimx_ = 0;
     int immediate_dimy_ = 0;
     uint64_t draw_epoch_ = 1;
+    bool native_frame_drawn_ = false;
+    bool native_frame_submitted_ = false;
     // Final compositing order for each logical cell: 0 is unknown, 1 means a
     // glyph was the most recent copy, and 2 means a later graphical copy
     // covered it. Row construction uses this to keep transparent spaces in a
@@ -4842,6 +4727,9 @@ private:
     void layout_multiline_matches();
     std::vector<Match> find_matches(int only_y = -1,
                                     const unsigned char *screen_override = nullptr) const;
+    std::vector<Match> find_native_matches(int only_y,
+        const unsigned char *screen_override) const;
+    std::vector<Match> find_dfhack_matches(int only_y) const;
     bool append_ui_message_paragraph(std::vector<std::string> &screen_rows,
         std::vector<Match> &result, std::vector<Match> &untranslated_help_rows,
         int only_y, std::vector<Match> rows, int right, std::string_view target,
@@ -6875,6 +6763,7 @@ bool Overlay::initialize() {
     TranslationStateScope translation_scope;
     runtime_enabled_override_.reset();
     gps_ = native_graphics();
+    native_frame_drawn_ = native_frame_submitted_ = false;
     if (!gps_) {
         log_line("ERROR", "Cannot resolve the game graphicst object");
         return false;
@@ -6974,6 +6863,8 @@ void Overlay::reset_render_state() {
     tooltip_translation_cache_source_.clear();
     tooltip_translation_cache_target_.clear();
     cell_composite_epoch_.clear();
+    draw_epoch_ = 1;
+    native_frame_drawn_ = native_frame_submitted_ = false;
     composite_read_epoch_ = 0;
     observed_glyph_chars_.clear();
     observed_glyph_epoch_.clear();
@@ -7001,6 +6892,9 @@ void Overlay::reset_render_state() {
     immediate_base_matches_.clear();
     immediate_base_matches_epoch_ = 0;
     immediate_base_matches_screen_ = nullptr;
+    immediate_context_epoch_ = 0;
+    immediate_context_screen_ = nullptr;
+    immediate_mod_list_.reset();
     character_overview_context_ = 0;
     character_overview_context_epoch_ = 0;
     character_overview_context_revision_ = 0;
@@ -7121,16 +7015,12 @@ const unsigned char *Overlay::cell_at(int x, int y, bool *top) const {
     auto *cached = cell_read_cache_
         ? &cell_read_cache_->at(gps_, composite_read_epoch_, tile) : nullptr;
     if (cached && (cached->flags & CellReadCache::Known)) {
-        if (cached->flags & CellReadCache::Ignored) return nullptr;
         *top = (cached->flags & CellReadCache::Top) != 0;
     } else {
-        const bool ignored = native_capture_ignored_cell(gps_, x, y);
-        if (!ignored)
-            *top = gps_->screen_top && native_ui_top_layer_at(*gps_, tile);
+        *top = gps_->screen_top && native_ui_top_layer_at(*gps_, tile);
         if (cached)
             cached->flags |= CellReadCache::Known |
-                (*top ? CellReadCache::Top : 0) | (ignored ? CellReadCache::Ignored : 0);
-        if (ignored) return nullptr;
+                (*top ? CellReadCache::Top : 0);
     }
     const auto *screen = *top ? gps_->screen_top : gps_->screen;
     return screen ? screen + tile * 8 : nullptr;
@@ -7159,7 +7049,7 @@ unsigned char Overlay::visible_char_at(int x, int y) const {
     // an SDL texture (the resolution menu does exactly this). If
     // the later graphical copy wins the cell, the hidden glyph must not be
     // returned merely because screen_top still contains its byte.
-    if (tile < cell_composite_state_.size() &&
+    if (!NativeDfhackForegroundScope::active && tile < cell_composite_state_.size() &&
         tile < cell_composite_epoch_.size() &&
         graphically_occluded(cell_composite_state_[tile],
                              cell_composite_epoch_[tile],
@@ -15746,6 +15636,7 @@ static std::optional<AsciiPanelFrame> find_character_overview_frame(
 #include "settings_announcements.inc"
 
 static bool help_background_covered(const Match &match, int x, int y) {
+    if (match.native_dfhack_foreground) return false;
     if (match.native_help_occluder) {
         const auto &frame = *match.native_help_occluder;
         if (x >= frame.x && x < frame.x + frame.w &&
@@ -15781,12 +15672,132 @@ void Overlay::append_dfhack_notification_banners(
 #include "dfhack_notification_banners.inc"
 }
 
+std::vector<Match> Overlay::find_dfhack_matches(int only_y) const {
+    std::vector<Match> result;
+    if (!NativeDfhackForegroundScope::active || !gps_ || !gps_->screen ||
+            gps_->dimx <= 0 || gps_->dimx > 1000 ||
+            gps_->dimy <= 0 || gps_->dimy > 1000) return result;
+    refresh_dfhack_raw_creature_labels();
+    const unsigned char *screen_override = nullptr;
+    const auto read_row = [&](int y) {
+        std::string row(static_cast<size_t>(gps_->dimx), ' ');
+        for (int x = 0; x < gps_->dimx; ++x) {
+            bool top = false;
+            const auto *cell = cell_at(x, y, &top);
+            if (cell && cell[0]) row[static_cast<size_t>(x)] = cell[0];
+        }
+        return row;
+    };
+    std::vector<std::string> screen_rows;
+    screen_rows.reserve(static_cast<size_t>(gps_->dimy));
+    for (int y = 0; y < gps_->dimy; ++y) screen_rows.push_back(read_row(y));
+    const auto unicode_rows = screen_rows;
+#include "dfhack_stocks_hint.inc"
+#include "dfhack_hotkeys_menu.inc"
+#include "dfhack_launcher_help.inc"
+#include "dfhack_auxiliary_help.inc"
+    for (auto *matches : {&dfhack_stocks_hint_matches, &dfhack_hotkeys_matches,
+            &dfhack_launcher_matches, &dfhack_auxiliary_matches})
+        result.insert(result.end(), std::make_move_iterator(matches->begin()),
+            std::make_move_iterator(matches->end()));
+    // Lua/console translations can already be UTF-8 at the paint boundary.
+    // Render those bytes in this source layer without generic game grammar.
+    for (int y = 0; y < gps_->dimy; ++y) {
+        if (only_y >= 0 && only_y != y) continue;
+        std::vector<Match> unicode;
+        append_direct_utf8_matches(unicode_rows[static_cast<size_t>(y)], y, unicode);
+        for (auto &match : unicode) {
+            if (std::any_of(result.begin(), result.end(), [&](const Match &field) {
+                    return !field.target.empty() && field.y == match.y &&
+                        field.x < match.x + match.length && match.x < field.x + field.length;
+                })) continue;
+            result.push_back(std::move(match));
+        }
+    }
+    for (auto &match : result) {
+        match.native_dfhack_foreground = true;
+        match.native_help_current_page = true;
+        if (match.layout_foreground_rgb < 0) {
+            bool top = false;
+            if (const auto *cell = cell_at(match.x, match.y, &top))
+                match.layout_foreground_rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+        }
+        // Source erasure and translated ink both stay in DFHack's target.
+        if (match.length > 0 && !match.native_help_source_only &&
+                match.graphical_clear_width <= 0) {
+            match.graphical_clear_x = match.x;
+            match.graphical_clear_y = match.y;
+            match.graphical_clear_width = match.length;
+            match.graphical_clear_height = 1;
+        }
+    }
+    return result;
+}
+
+static void native_dfhack_redraw_background(SDL_Renderer *renderer,
+    const SDL_Rect &cells);
+
+void Overlay::render_dfhack_layer(SDL_Renderer *renderer) {
+    TranslationStateScope translation_scope;
+    if (!renderer || !NativeDfhackForegroundScope::active || !config_.enabled ||
+            !face_ || rules_.empty()) return;
+    struct LayerGraphicsScope {
+        graphicst *&graphics;
+        graphicst *previous;
+        LayerGraphicsScope(graphicst *&value, graphicst *layer)
+            : graphics(value), previous(value) { graphics = layer; }
+        ~LayerGraphicsScope() { graphics = previous; }
+    } layer_graphics(gps_, native_dfhack_present_graphics());
+    if (!gps_ || !gps_->screen ||
+            gps_->dimx <= 0 || gps_->dimx > 1000 ||
+            gps_->dimy <= 0 || gps_->dimy > 1000) return;
+    NativePanelReadScope layer_reads(gps_);
+    CellReadCacheScope layer_cells(*this);
+    const auto matches = find_dfhack_matches(-1);
+    struct LayerDrawingScope {
+        bool previous_drawing = g_drawing_overlay;
+        GraphicalClearReadback *&readback;
+        GraphicalClearReadback *previous_readback;
+        explicit LayerDrawingScope(GraphicalClearReadback *&value)
+            : readback(value), previous_readback(value) {
+            g_drawing_overlay = true;
+            readback = nullptr;
+        }
+        ~LayerDrawingScope() {
+            readback = previous_readback;
+            g_drawing_overlay = previous_drawing;
+        }
+    } layer_drawing(graphical_clear_readback_);
+    // Repaint each source field from DFHack's own background tiles. Complete
+    // all source replacements before drawing translated ink into this target.
+    for (const auto &match : matches) {
+        if (match.native_help_source_only || match.native_split_duplicate ||
+                match.graphical_clear_width <= 0 ||
+                match.graphical_clear_height <= 0) continue;
+        native_dfhack_redraw_background(renderer, {
+            match.graphical_clear_x, match.graphical_clear_y,
+            match.graphical_clear_width, match.graphical_clear_height});
+    }
+    for (const auto &match : matches) {
+        if (match.target.empty()) continue;
+        Match text = match;
+        text.graphical_clear_width = text.graphical_clear_height = 0;
+        text.graphical_auto_foreground = false;
+        if (text.rule == -8) text.rule = -13;
+        draw_match(renderer, text);
+    }
+}
+
 std::vector<Match> Overlay::find_matches(int only_y,
-                                         const unsigned char *screen_override) const {
+        const unsigned char *screen_override) const {
+    return find_native_matches(only_y, screen_override);
+}
+
+std::vector<Match> Overlay::find_native_matches(int only_y,
+        const unsigned char *screen_override) const {
     RenderTimingScope match_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Match);
     RenderTimingScope context_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Context);
     RenderTimingScope context_detail(render_timings_, config_.trace_render_timing, RenderTimingStage::Ownership);
-    NativeCaptureMaskScope capture_mask(gps_);
     NativeHistoryFrameScope history_frame(gps_);
     std::vector<Match> result;
     if (!gps_ || !gps_->screen || gps_->dimx <= 0 || gps_->dimx > 1000 ||
@@ -15806,8 +15817,6 @@ std::vector<Match> Overlay::find_matches(int only_y,
             auto help_frames = native_help_overlay_frames(*gps_);
             const auto announcement_frames = native_announcement_overlay_frames(*gps_);
             help_frames.insert(help_frames.end(), announcement_frames.begin(), announcement_frames.end());
-            const auto dfhack_frames = native_dfhack_text_overlay_frames(*gps_);
-            help_frames.insert(help_frames.end(), dfhack_frames.begin(), dfhack_frames.end());
             auto overlay_frames = help_frames;
             overlay_frames.push_back(box);
             auto frames = std::make_shared<const std::vector<SDL_Rect>>(
@@ -15879,9 +15888,6 @@ std::vector<Match> Overlay::find_matches(int only_y,
         // Only a separate foreground layer leaves a complete base page to
         // read. Same-layer cards continue to use captured native source rows.
         std::erase_if(overlay_frames, [&](const SDL_Rect &frame) {
-            // set_tile clears both layers, so screen_top cannot establish
-            // an intact base. Its current pre-write capture supplies it.
-            if (native_dfhack_background_matches(*gps_, frame)) return false;
             // The alert flyout writes screen directly. Its current native
             // draw snapshot, not screen_top, preserves the complete page.
             if (native_announcement_background_matches(*gps_, frame)) return false;
@@ -15903,133 +15909,10 @@ std::vector<Match> Overlay::find_matches(int only_y,
         auto frames = std::make_shared<const std::vector<SDL_Rect>>(std::move(overlay_frames));
         if (!frames->empty()) {
             const auto base_page = native_help_background_page(*gps_, *frames);
-            bool hint_foreground = false;
             auto foreground = [&] {
                 const auto page = native_announcement_foreground_page(*gps_, *frames);
                 NativeTooltipPageScope document(gps_, page, nullptr, false);
                 NativeUiReadScope composed(gps_, nullptr);
-                // Shortcut cards and notification banners have independent
-                // fields; logo artwork has no translatable foreground.
-                // Matching the whole page merely to discard its foreground
-                // repeats the background traversal for these small overlays.
-                // Keep every occluder and the restored page; only replace that
-                // redundant foreground traversal when all frames are proved
-                // hint cards, notification banners or excluded logo artwork.
-                if (!page && !widget && !g_native_toolbar_tooltip &&
-                        std::all_of(frames->begin(), frames->end(), [](const SDL_Rect &frame) {
-                            return frame.h <= 7 || (frame.w == 27 && frame.h == 13);
-                        })) {
-                    std::vector<std::string> hint_rows(static_cast<size_t>(gps_->dimy),
-                        std::string(static_cast<size_t>(gps_->dimx), ' '));
-                    for (int y = 0; y < gps_->dimy; ++y)
-                        for (int x = 0; x < gps_->dimx; ++x) {
-                            bool top = false;
-                            const auto *cell = cell_at(x, y, &top);
-                            if (cell && cell[0]) hint_rows[static_cast<size_t>(y)][static_cast<size_t>(x)] = cell[0];
-                        }
-                    retain_native_dfhack_border_chars(*gps_, hint_rows);
-                    const auto hints = native_dfhack_stocks_hint_geometry(
-                        gps_->dimx, gps_->dimy, [&](int y) { return hint_rows[static_cast<size_t>(y)]; });
-                    const auto trade_hints = native_dfhack_trade_hint_geometry(
-                        gps_->dimx, gps_->dimy, [&](int y) { return hint_rows[static_cast<size_t>(y)]; });
-                    auto banners = native_dfhack_window_geometry(hint_rows);
-                    std::erase_if(banners, [&](const auto &window) {
-                        return !native_dfhack_notification_banner_frame(window, hint_rows) ||
-                            !native_dfhack_background_matches(*gps_, window.frame);
-                    });
-                    const auto logos = native_capture_mask_regions(gps_);
-                    const auto same_frame = [](const SDL_Rect &a, const SDL_Rect &b) {
-                        return a.x == b.x && a.y == b.y && a.w == b.w && a.h == b.h;
-                    };
-                    hint_foreground = std::all_of(frames->begin(), frames->end(),
-                        [&](const SDL_Rect &frame) {
-                            return std::any_of(hints.begin(), hints.end(), [&](const auto &hint) {
-                                return same_frame(frame, hint.frame) &&
-                                    native_dfhack_background_matches(*gps_, hint.frame);
-                            }) || std::any_of(trade_hints.begin(), trade_hints.end(), [&](const auto &hint) {
-                                return same_frame(frame, hint.frame) &&
-                                    native_dfhack_background_matches(*gps_, hint.frame);
-                            }) || std::any_of(banners.begin(), banners.end(), [&](const auto &window) {
-                                return same_frame(frame, window.frame);
-                            }) || std::any_of(logos.begin(), logos.end(), [&](const SDL_Rect &logo) {
-                                return same_frame(frame, logo) &&
-                                    native_dfhack_background_matches(*gps_, logo);
-                            });
-                        });
-                    // Some catalog hover cards have no captured Tooltip
-                    // widget or separate overlay frame until this matcher
-                    // sees their source. Preserve their foreground discovery.
-                    if (hint_foreground) {
-                        auto tooltip_rows = hint_rows;
-                        // The ordinary matcher reserves the card before
-                        // discovering other tooltip sources on the page.
-                        for (const auto &hint : hints)
-                            for (const SDL_Rect &owned : {hint.body, hint.brand})
-                                for (int y = owned.y; y < owned.y + owned.h; ++y)
-                                    std::fill_n(tooltip_rows[static_cast<size_t>(y)].begin() + owned.x,
-                                        owned.w, ' ');
-                        for (const auto &hint : trade_hints)
-                            for (const SDL_Rect &owned : {hint.body, hint.brand})
-                                for (int y = owned.y; y < owned.y + owned.h; ++y)
-                                    std::fill_n(tooltip_rows[static_cast<size_t>(y)].begin() + owned.x,
-                                        owned.w, ' ');
-                        for (const auto &window : banners)
-                            for (int y = window.frame.y; y < window.frame.y + window.frame.h; ++y)
-                                std::fill_n(tooltip_rows[static_cast<size_t>(y)].begin() + window.frame.x,
-                                    window.frame.w, ' ');
-                        if (find_toolbar_tooltip(tooltip_rows)) hint_foreground = false;
-                    }
-                    if (hint_foreground) {
-                        std::vector<Match> actions;
-                        for (const auto &hint : hints) {
-                            if (std::none_of(frames->begin(), frames->end(), [&](const SDL_Rect &frame) {
-                                    return same_frame(frame, hint.frame);
-                                })) continue;
-                            for (const auto &action : hint.actions) {
-                                if (only_y >= 0 && only_y != action.y) continue;
-                                bool visible = true;
-                                for (size_t at = 0; at < action.source.size() && visible; ++at)
-                                    visible = visible_char_at(action.x + static_cast<int>(at), action.y) ==
-                                        static_cast<unsigned char>(action.source[at]);
-                                if (!visible) continue;
-                                const auto target = exact_literal_translation(
-                                    "DFHack stocks hint: " + action.source);
-                                if (!target) continue;
-                                actions.push_back(native_dfhack_stocks_hint_match(hint, action, *target));
-                            }
-                        }
-                        for (const auto &hint : trade_hints) {
-                            if (std::none_of(frames->begin(), frames->end(), [&](const SDL_Rect &frame) {
-                                    return same_frame(frame, hint.frame);
-                                })) continue;
-                            for (auto &match : native_dfhack_trade_hint_matches(hint, only_y)) {
-                                bool visible = true;
-                                for (size_t at = 0; at < match.source.size() && visible; ++at)
-                                    visible = visible_char_at(match.x + static_cast<int>(at), match.y) ==
-                                        static_cast<unsigned char>(match.source[at]);
-                                if (visible) actions.push_back(std::move(match));
-                            }
-                        }
-                        if (!banners.empty()) {
-                            std::vector<SDL_Rect> banner_regions;
-                            std::vector<std::optional<std::string>> visible_rows(
-                                static_cast<size_t>(gps_->dimy));
-                            append_dfhack_notification_banners(hint_rows, banner_regions,
-                                actions, only_y, [&](int y) {
-                                    auto &row = visible_rows[static_cast<size_t>(y)];
-                                    if (!row) {
-                                        row.emplace(static_cast<size_t>(gps_->dimx), ' ');
-                                        for (int x = 0; x < gps_->dimx; ++x) {
-                                            const auto ch = visible_char_at(x, y);
-                                            (*row)[static_cast<size_t>(x)] = ch ? static_cast<char>(ch) : ' ';
-                                        }
-                                    }
-                                    return *row;
-                                });
-                        }
-                        return actions;
-                    }
-                }
                 // Early glyph suppression must not read last Present's
                 // graphical occlusion state as this document's source.
                 return find_matches(only_y, page && screen_override ? gps_->screen : nullptr);
@@ -16089,28 +15972,17 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 for (auto &match : background) {
                     if (!match.native_help_background_frames)
                         match.native_help_background_frames = frames;
-                    if (hint_foreground) match.native_hint_background_page = base_page;
                     match.native_hover_background = true;
                     if (match.layout_foreground_rgb < 0) {
                         bool top = false;
                         if (const auto *cell = cell_at(match.x, match.y, &top))
                             match.layout_foreground_rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
                     }
-                    // Shortcut hints replace only their own foreign cells.
-                    // Unrelated native rows keep the ordinary copy-hook
-                    // suppression path instead of acquiring a full-screen
-                    // recovery clear merely because a hint/logo is present.
-                    const int source_y = match.native_split_text
-                        ? match.native_split_top_y : match.y;
-                    const SDL_Rect source_span{match.x, source_y, match.length,
-                        match.native_split_text ? 2 : 1};
-                    const bool restore_source = !hint_foreground || std::any_of(frames->begin(), frames->end(),
-                        [&](const SDL_Rect &frame) { return SDL_HasIntersection(&source_span, &frame); });
                     // Other help pages still need late-source recovery. A
                     // partially covered item field retains that fallback;
                     // common help clipping protects the foreground pixels.
                     if (match.length > 0 && !match.native_help_source_only &&
-                        match.graphical_clear_width <= 0 && restore_source) {
+                        match.graphical_clear_width <= 0) {
                         match.graphical_clear_x = match.x;
                         match.graphical_clear_y = match.y;
                         match.graphical_clear_width = match.length;
@@ -16353,10 +16225,6 @@ std::vector<Match> Overlay::find_matches(int only_y,
         }
     }
 #include "pause_menu_fields.inc"
-#include "dfhack_stocks_hint.inc"
-#include "dfhack_hotkeys_menu.inc"
-#include "dfhack_launcher_help.inc"
-#include "dfhack_auxiliary_help.inc"
     append_fortress_elevation_rows(screen_rows, result, only_y,
         screen_override != nullptr);
     // Native chooser callers own these whole fields even when the map has
@@ -16875,41 +16743,6 @@ std::vector<Match> Overlay::find_matches(int only_y,
         });
         result.insert(result.end(), std::make_move_iterator(hover_matches.begin()),
             std::make_move_iterator(hover_matches.end()));
-        // Recovered native page rows must respect the shortcut card too.
-        // Its keys and brand stay on the native renderer; only actions draw.
-        std::erase_if(result, [&](const Match &match) {
-            return std::any_of(dfhack_stocks_hint_regions.begin(),
-                dfhack_stocks_hint_regions.end(), [&](const SDL_Rect &owned) {
-                    return match.y >= owned.y && match.y < owned.y + owned.h &&
-                        match.x < owned.x + owned.w && owned.x < match.x + match.length;
-                });
-        });
-        result.insert(result.end(), std::make_move_iterator(dfhack_stocks_hint_matches.begin()),
-            std::make_move_iterator(dfhack_stocks_hint_matches.end()));
-        // The hotkeys card owns command strings and complete short help;
-        // independent native readers must not translate command fragments.
-        std::erase_if(result, [&](const Match &match) {
-            return std::any_of(dfhack_hotkeys_regions.begin(),
-                dfhack_hotkeys_regions.end(), [&](const SDL_Rect &owned) {
-                    return match.y >= owned.y && match.y < owned.y + owned.h &&
-                        match.x < owned.x + owned.w && owned.x < match.x + match.length;
-                });
-        });
-        result.insert(result.end(), std::make_move_iterator(dfhack_hotkeys_matches.begin()),
-            std::make_move_iterator(dfhack_hotkeys_matches.end()));
-        // The launcher and auxiliary help widgets own their complete native
-        // regions, including executable command rows and English examples.
-        for (const auto *regions : {&dfhack_launcher_regions, &dfhack_auxiliary_regions})
-            std::erase_if(result, [&](const Match &match) {
-                return std::any_of(regions->begin(), regions->end(), [&](const SDL_Rect &owned) {
-                    return match.y >= owned.y && match.y < owned.y + owned.h &&
-                        match.x < owned.x + owned.w && owned.x < match.x + match.length;
-                });
-            });
-        result.insert(result.end(), std::make_move_iterator(dfhack_launcher_matches.begin()),
-            std::make_move_iterator(dfhack_launcher_matches.end()));
-        result.insert(result.end(), std::make_move_iterator(dfhack_auxiliary_matches.begin()),
-            std::make_move_iterator(dfhack_auxiliary_matches.end()));
         // Raw caption recovery must not reinterpret editor words or previews
         // after their typed reader has reserved the editor's own frame.
         std::erase_if(result, [&](const Match &match) {
@@ -24689,6 +24522,15 @@ std::vector<Match> Overlay::find_matches(int only_y,
     return finish_matches();
 }
 
+bool Overlay::character_overview_context_current() const {
+    return gps_ && character_overview_context_epoch_ == draw_epoch_ &&
+        character_overview_context_revision_ ==
+            g_native_overview_quote_revision.load(std::memory_order_acquire) &&
+        character_overview_context_grid_ == gps_->screen &&
+        character_overview_context_dimx_ == gps_->dimx &&
+        character_overview_context_dimy_ == gps_->dimy;
+}
+
 void Overlay::refresh_character_overview_context(bool force) {
     if (!gps_) return;
     const auto revision = g_native_overview_quote_revision.load(std::memory_order_acquire);
@@ -24739,10 +24581,13 @@ void Overlay::refresh_character_overview_context(bool force) {
 }
 
 const std::vector<Match> &Overlay::prepare_immediate_base_matches() {
+    if (gps_ && immediate_base_matches_epoch_ == draw_epoch_ &&
+            immediate_base_matches_screen_ == gps_->screen &&
+            character_overview_context_current()) return immediate_base_matches_;
     refresh_character_overview_context();
     if (immediate_base_matches_epoch_ != draw_epoch_ ||
         immediate_base_matches_screen_ != gps_->screen) {
-        immediate_base_matches_ = find_matches(-1, gps_->screen);
+        immediate_base_matches_ = find_native_matches(-1, gps_->screen);
         immediate_base_matches_screen_ = gps_->screen;
         immediate_base_matches_epoch_ = draw_epoch_;
     }
@@ -24757,8 +24602,15 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
     }
     const unsigned char *raw = top_layer ? gps_->screen_top : gps_->screen;
     if (!raw || (top_layer && !gps_->top_in_use)) return false;
-    refresh_character_overview_context();
     const size_t cells = static_cast<size_t>(gps_->dimx) * gps_->dimy;
+    const auto &ready_epochs = top_layer ? immediate_top_row_epoch_ : immediate_base_row_epoch_;
+    // Most glyphs reuse a row already scanned in this draw. Reuse its source
+    // suppression when the native quote context still matches.
+    if (immediate_dimx_ == gps_->dimx && immediate_dimy_ == gps_->dimy &&
+            immediate_suppress_base_.size() == cells && immediate_suppress_top_.size() == cells &&
+            ready_epochs.size() == static_cast<size_t>(gps_->dimy) &&
+            ready_epochs[static_cast<size_t>(y)] == draw_epoch_ &&
+            character_overview_context_current()) return true;
     if (immediate_dimx_ != gps_->dimx || immediate_dimy_ != gps_->dimy ||
         immediate_suppress_base_.size() != cells || immediate_suppress_top_.size() != cells) {
         immediate_dimx_ = gps_->dimx;
@@ -24774,6 +24626,8 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
         immediate_base_matches_.clear();
         immediate_base_matches_epoch_ = 0;
         immediate_base_matches_screen_ = nullptr;
+        immediate_context_epoch_ = 0;
+        immediate_mod_list_.reset();
     }
 
     std::vector<uint8_t> &mask = top_layer ? immediate_suppress_top_
@@ -24785,18 +24639,27 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
     uint64_t &full_scan_epoch = top_layer
         ? immediate_top_full_scan_epoch_
         : immediate_base_full_scan_epoch_;
-    if (epochs[static_cast<size_t>(y)] == draw_epoch_) return true;
     NativeHistoryFrameScope history_frame(gps_);
+
+    // Cross-page ownership and mod-list geometry are shared by all glyph
+    // rows in this native SDL draw.
+    if (immediate_context_epoch_ != draw_epoch_ ||
+            immediate_context_screen_ != gps_->screen ||
+            !character_overview_context_current() || !native_knowledge_frame_matches_) {
+        refresh_character_overview_context();
+        if (!native_knowledge_frame_matches_)
+            (void)native_knowledge_matches(-1, embark_pause_menu_matches());
+        const auto layout = native_mod_list_layout(*gps_, [&](int x, int row) {
+            bool top = false;
+            const auto *cell = cell_at(x, row, &top);
+            return cell && cell[0] ? cell[0] : static_cast<unsigned char>(' ');
+        });
+        immediate_mod_list_ = layout ? std::make_shared<NativeModListLayout>(*layout) : nullptr;
+        immediate_context_screen_ = gps_->screen;
+        immediate_context_epoch_ = draw_epoch_;
+    }
     const bool has_cached_row = epochs[static_cast<size_t>(y)] != 0;
     epochs[static_cast<size_t>(y)] = draw_epoch_;
-
-    if (!native_knowledge_frame_matches_) {
-        // Document ownership can read its proven base grid directly. Keep
-        // logo exclusion around that first-frame capture, not around every
-        // subsequent row hash. Ordinary composed reads exclude it in cell_at.
-        NativeCaptureMaskScope knowledge_capture_mask(gps_);
-        (void)native_knowledge_matches(-1, embark_pause_menu_matches());
-    }
 
     // Legends link runs use foreground changes as semantic boundaries. Hash
     // colors as well as characters so hovering/recoloring a link cannot reuse
@@ -24804,11 +24667,7 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
     // Include the small vertical context used by wrapped-history assembly;
     // otherwise an unchanged continuation such as `Fortification.` could
     // retain a stale suppression mask after the preceding event row changed.
-    const auto mod_list = native_mod_list_layout(*gps_, [&](int x, int row) {
-        bool top = false;
-        const auto *cell = cell_at(x, row, &top);
-        return cell && cell[0] ? cell[0] : static_cast<unsigned char>(' ');
-    });
+    const auto &mod_list = immediate_mod_list_;
     const auto grid_row_digest = [&](int context_y) {
         uint64_t digest = 1469598103934665603ULL;
         const auto append = [&](unsigned char value) {
@@ -24962,7 +24821,7 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
         epochs[static_cast<size_t>(y)] = draw_epoch_;
         std::fill(mask.begin(), mask.end(), 0);
         std::vector<Match> top_matches;
-        if (top_layer) top_matches = find_matches(-1, raw);
+        if (top_layer) top_matches = find_native_matches(-1, raw);
         const auto &layer_matches = top_layer
             ? top_matches : prepare_immediate_base_matches();
         for (const Match &match : layer_matches) {
@@ -31690,7 +31549,6 @@ static bool should_shift_resolution_glyph(bool dropdown_active,
 void Overlay::refresh_resolution_dropdown_geometry_for_copy() {
     if (resolution_geometry_scan_epoch_ == draw_epoch_) return;
     resolution_geometry_scan_epoch_ = draw_epoch_;
-    NativeCaptureMaskScope capture_mask(gps_);
 
     int left = INT32_MAX;
     int right = INT32_MIN;
@@ -31992,7 +31850,6 @@ void Overlay::recover_embark_knowledge_list() {
 
 void Overlay::prepare_frame() {
     if (frame_prepared_) return;
-    NativeCaptureMaskScope capture_mask(gps_);
     RenderTimingScope prepare_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Prepare);
     apply_requested_reload();
     prepared_matches_.clear();
@@ -32647,6 +32504,15 @@ void Overlay::note_graphic_copy(SDL_Renderer *renderer, SDL_Texture *texture,
         dest->x >= grid_right || dest->y >= grid_bottom) {
         return;
     }
+    native_frame_drawn_ = true;
+    const int clipped_left = std::max(dest->x, origin_x);
+    const int clipped_top = std::max(dest->y, origin_y);
+    const int clipped_right = std::min(copy_right, grid_right);
+    const int clipped_bottom = std::min(copy_bottom, grid_bottom);
+    const int first_x = std::clamp((clipped_left - origin_x) / tile_w, 0, gps_->dimx - 1);
+    const int first_y = std::clamp((clipped_top - origin_y) / tile_h, 0, gps_->dimy - 1);
+    const int last_x = std::clamp((clipped_right - 1 - origin_x) / tile_w, 0, gps_->dimx - 1);
+    const int last_y = std::clamp((clipped_bottom - 1 - origin_y) / tile_h, 0, gps_->dimy - 1);
 
     // Graphical summary dividers use add_tile's primary texture. Retain the
     // actual complete one-cell copy, including its current atlas modulation,
@@ -32660,7 +32526,6 @@ void Overlay::note_graphic_copy(SDL_Renderer *renderer, SDL_Texture *texture,
         relative_x % tile_w == 0 && relative_y % tile_h == 0 &&
         copy_right <= grid_right && copy_bottom <= grid_bottom) {
         const int x = relative_x / tile_w, y = relative_y / tile_h;
-        if (native_capture_ignored_cell(gps_, x, y)) return;
         const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
         const bool top = native_ui_top_layer_at(*gps_, tile);
         const auto *primary = top ? gps_->screentexpos_top : gps_->screentexpos;
@@ -32703,10 +32568,6 @@ void Overlay::note_graphic_copy(SDL_Renderer *renderer, SDL_Texture *texture,
         cell_composite_state_.assign(cells, 0);
         cell_composite_epoch_.assign(cells, 0);
     }
-    const int clipped_left = std::max(dest->x, origin_x);
-    const int clipped_top = std::max(dest->y, origin_y);
-    const int clipped_right = std::min(copy_right, grid_right);
-    const int clipped_bottom = std::min(copy_bottom, grid_bottom);
 
     // Keep only the current drawing epoch. render() freezes this epoch as
     // composite_read_epoch_ before layout, then advances draw_epoch_ for the
@@ -32731,13 +32592,8 @@ void Overlay::note_graphic_copy(SDL_Renderer *renderer, SDL_Texture *texture,
         if (!duplicate) graphical_rects_.push_back(clipped_rect);
     }
 
-    const int first_x = std::clamp((clipped_left - origin_x) / tile_w, 0, gps_->dimx - 1);
-    const int first_y = std::clamp((clipped_top - origin_y) / tile_h, 0, gps_->dimy - 1);
-    const int last_x = std::clamp((clipped_right - 1 - origin_x) / tile_w, 0, gps_->dimx - 1);
-    const int last_y = std::clamp((clipped_bottom - 1 - origin_y) / tile_h, 0, gps_->dimy - 1);
     for (int x = first_x; x <= last_x; ++x) {
         for (int y = first_y; y <= last_y; ++y) {
-            if (native_capture_ignored_cell(gps_, x, y)) continue;
             const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
             cell_composite_state_[tile] = 2;
             cell_composite_epoch_[tile] = draw_epoch_;
@@ -33066,7 +32922,7 @@ void Overlay::capture_embark_pre_pause_snapshot(SDL_Renderer *renderer) {
     embark_pre_pause_snapshot_signature_ = 0;
     embark_pre_pause_upload_signature_ = 0;
     embark_pre_pause_pixels_.resize(static_cast<size_t>(width) * height * 4);
-    if (native_capture_read_pixels(gps_, renderer, nullptr, SDL_PIXELFORMAT_RGBA32,
+    if (SDL_RenderReadPixels(renderer, nullptr, SDL_PIXELFORMAT_RGBA32,
                              embark_pre_pause_pixels_.data(), width * 4) != 0) {
         log_line("WARN", std::string(
             "Cannot cache translated prepare-for-embark frame: ") +
@@ -33322,7 +33178,7 @@ void Overlay::refine_embark_pause_pixel_bounds(SDL_Renderer *renderer) {
 
     std::vector<Uint8> pixels(
         static_cast<size_t>(search.w) * search.h * 4);
-    if (native_capture_read_pixels(gps_, renderer, &search, SDL_PIXELFORMAT_RGBA32,
+    if (SDL_RenderReadPixels(renderer, &search, SDL_PIXELFORMAT_RGBA32,
                              pixels.data(), search.w * 4) != 0) {
         log_line("WARN", std::string(
             "Cannot inspect Escape menu gold frame: ") + SDL_GetError());
@@ -33503,6 +33359,11 @@ void Overlay::draw_embark_pre_pause_matches(SDL_Renderer *renderer) {
     draw_embark_background_matches(renderer, embark_pre_pause_matches_, true);
 }
 
+template <typename Draw>
+static void draw_with_help_clips(SDL_Renderer *renderer, const graphicst &gps,
+    const std::vector<SDL_Rect> &frames, const Match *match, Draw &&draw,
+    const SDL_Rect *paint_bounds = nullptr);
+
 void Overlay::draw_embark_background_matches(SDL_Renderer *renderer,
         const std::vector<Match> &matches, bool cached) {
     if (!embark_pause_menu_active_ || !renderer || !gps_ ||
@@ -33541,6 +33402,11 @@ void Overlay::draw_embark_background_matches(SDL_Renderer *renderer,
 
     auto draw_with_clip = [&](const Match &source, SDL_Rect clip) {
         if (clip.w <= 0 || clip.h <= 0) return;
+        if (old_clip_enabled) {
+            SDL_Rect intersection{};
+            if (!SDL_IntersectRect(&clip, &old_clip, &intersection)) return;
+            clip = intersection;
+        }
         SDL_RenderSetClipRect(renderer, &clip);
         Match visible = source;
         // The cached screenshot already owns the widget background. Re-running
@@ -33648,7 +33514,7 @@ void Overlay::clear_embark_pause_foreground(SDL_Renderer *renderer,
     if (SDL_IntersectRect(&band, &interior, &bounded) &&
         SDL_IntersectRect(&bounded, &screen, &clipped)) {
         std::vector<Uint8> pixels(static_cast<size_t>(clipped.w) * clipped.h * 4);
-        if (native_capture_read_pixels(gps_, renderer, &clipped, SDL_PIXELFORMAT_RGBA32,
+        if (SDL_RenderReadPixels(renderer, &clipped, SDL_PIXELFORMAT_RGBA32,
                                  pixels.data(), clipped.w * 4) == 0) {
             SDL_BlendMode saved_blend = SDL_BLENDMODE_NONE;
             Uint8 saved_r = 0, saved_g = 0, saved_b = 0, saved_a = 0;
@@ -33765,7 +33631,7 @@ void Overlay::restore_embark_pause_edge_patch(SDL_Renderer *renderer) {
 
         std::vector<Uint8> search_pixels(
             static_cast<size_t>(search_width) * patch_height * 4);
-        if (native_capture_read_pixels(gps_, renderer, &search_rect,
+        if (SDL_RenderReadPixels(renderer, &search_rect,
                                  SDL_PIXELFORMAT_RGBA32,
                                  search_pixels.data(), search_width * 4) != 0) {
             log_line("WARN", std::string(
@@ -33779,7 +33645,7 @@ void Overlay::restore_embark_pause_edge_patch(SDL_Renderer *renderer) {
         };
         std::vector<Uint8> destination_pixels(
             static_cast<size_t>(patch_width) * patch_height * 4);
-        if (native_capture_read_pixels(gps_, renderer, &destination_read_rect,
+        if (SDL_RenderReadPixels(renderer, &destination_read_rect,
                                  SDL_PIXELFORMAT_RGBA32,
                                  destination_pixels.data(), patch_width * 4) != 0) {
             log_line("WARN", std::string(
@@ -36204,19 +36070,6 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
             match.target = *target;
     };
     if (character_overview_present) {
-        const auto dfhack_overview_frames = native_dfhack_text_overlay_frames(*gps_);
-        const auto is_dfhack_overview_field = [&](const Match &match) {
-            if (match.rule == kDfhackHotkeysHintRule || match.rule == kDfhackStocksHintRule)
-                return true;
-            // Foreground DFHack fields own their native positions. Recovered
-            // overview text underneath the panel still uses the summary grid.
-            return !match.native_hover_background && std::any_of(
-                dfhack_overview_frames.begin(), dfhack_overview_frames.end(),
-                [&](const SDL_Rect &frame) {
-                    return match.y >= frame.y && match.y < frame.y + frame.h &&
-                        match.x >= frame.x && match.x + match.length <= frame.x + frame.w;
-                });
-        };
         if (character_ascii_tabs || native_has_graphics_metadata(*gps_)) {
         int content_top = character_info_tabs_y + 1;
         for (const Match *tab : character_info_tab_matches) {
@@ -36294,7 +36147,7 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
             };
             std::vector<SummaryRow> rows;
             for (Match &match : prepared_matches_) {
-                if (match.target.empty() || is_dfhack_overview_field(match) ||
+                if (match.target.empty() ||
                     (match.native_split_text && match.rule != kCharacterOverviewRowRule) ||
                     match.rule == kCharacterOverviewQuoteRule ||
                     match.y < grid->top || match.y >= grid->bottom ||
@@ -36423,7 +36276,6 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
         std::array<int, 2> common_x{{gps_->dimx, gps_->dimx}};
         auto overview_column = [&](const Match &match) {
             if (match.rule == kCharacterOverviewQuoteRule ||
-                is_dfhack_overview_field(match) ||
                 match.target.empty() || match.y <= character_info_tabs_y ||
                 match.y >= action_y || match.source == "Assume Control") {
                 return -1;
@@ -39286,11 +39138,6 @@ int Overlay::intercept_glyph_copy(SDL_Renderer *renderer, SDL_Texture *texture,
         dest->w != gps_->tile_pixel_x || dest->h != gps_->tile_pixel_y) {
         return real_copy(renderer, texture, source, dest);
     }
-    // Opening/closing the resolution selector changes the logical grid before
-    // this frame's glyph copies, while the normal structured-layout pass runs
-    // only at Present. Detect the transient widget once per draw epoch here so
-    // its very first frame uses the popup-aware suppression and replay paths.
-    refresh_resolution_dropdown_geometry_for_copy();
     const int origin_x = (gps_->screen_pixel_x - gps_->tile_pixel_x * gps_->dimx) / 2;
     const int origin_y = (gps_->screen_pixel_y - gps_->tile_pixel_y * gps_->dimy) / 2;
     const int relative_x = dest->x - origin_x;
@@ -39304,10 +39151,9 @@ int Overlay::intercept_glyph_copy(SDL_Renderer *renderer, SDL_Texture *texture,
     if (x < 0 || x >= gps_->dimx || y < 0 || y >= gps_->dimy) {
         return real_copy(renderer, texture, source, dest);
     }
-    // The DFHack button remains native artwork. Its characters must never
-    // become observed text or enter the translation suppression caches.
-    if (native_capture_ignored_cell(gps_, x, y))
-        return real_copy(renderer, texture, source, dest);
+    native_frame_drawn_ = true;
+    // Detect transient native widgets before source suppression.
+    refresh_resolution_dropdown_geometry_for_copy();
     const size_t observed_cells =
         static_cast<size_t>(gps_->dimx) * gps_->dimy;
     if (observed_glyph_chars_.size() != observed_cells ||
@@ -40191,10 +40037,10 @@ std::vector<int> Overlay::colored_match_foregrounds(const Match &match, int fore
 int Overlay::read_overlay_pixels(SDL_Renderer *renderer, const SDL_Rect &rect,
         void *pixels, int pitch, std::string_view kind, const Match *match) {
     if (!config_.trace_render_timing)
-        return native_capture_read_pixels(gps_, renderer, &rect, SDL_PIXELFORMAT_RGBA32, pixels, pitch);
+        return SDL_RenderReadPixels(renderer, &rect, SDL_PIXELFORMAT_RGBA32, pixels, pitch);
     const auto start = RenderTimings::Clock::now();
-    const int status = native_capture_read_pixels(
-        gps_, renderer, &rect, SDL_PIXELFORMAT_RGBA32, pixels, pitch);
+    const int status = SDL_RenderReadPixels(
+        renderer, &rect, SDL_PIXELFORMAT_RGBA32, pixels, pitch);
     const double elapsed = std::chrono::duration<double, std::milli>(
         RenderTimings::Clock::now() - start).count();
     auto &sample = render_timings_.current;
@@ -40759,7 +40605,7 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
         }
     }
     if (match.rule == -8 ||
-        (config_.clear_background && !g_copy_hook_active)) {
+        (config_.clear_background && !g_copy_hook_active && !match.native_dfhack_foreground)) {
         RenderTimingScope clear_timing(render_timings_, config_.trace_render_timing,
             RenderTimingStage::DrawClearPixels);
         SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
@@ -40973,7 +40819,6 @@ static bool is_shortcut_label(std::string_view text) {
 
 void Overlay::dump_screen() {
     if (!gps_ || !gps_->screen) return;
-    NativeCaptureMaskScope capture_mask(gps_);
     std::error_code ec;
     const auto dump_directory = runtime::path("data/extracted/dumps");
     fs::create_directories(dump_directory, ec);
@@ -41091,7 +40936,6 @@ void Overlay::dump_screen() {
 }
 
 void Overlay::collect_untranslated_fragments() {
-    NativeCaptureMaskScope capture_mask(gps_);
     if (!config_.collect_untranslated || config_.untranslated_path.empty() || !gps_ || !gps_->screen) {
         return;
     }
@@ -41347,7 +41191,7 @@ void Overlay::capture(SDL_Renderer *renderer) {
     SDL_Surface *surface = SDL_CreateRGBSurfaceWithFormat(0, width, height, 32,
                                                           SDL_PIXELFORMAT_ARGB8888);
     if (!surface) return;
-    if (native_capture_read_pixels(gps_, renderer, nullptr, SDL_PIXELFORMAT_ARGB8888,
+    if (SDL_RenderReadPixels(renderer, nullptr, SDL_PIXELFORMAT_ARGB8888,
                              surface->pixels, surface->pitch) != 0) {
         log_line("ERROR", std::string("SDL_RenderReadPixels failed: ") + SDL_GetError());
         SDL_FreeSurface(surface);
@@ -41364,7 +41208,6 @@ void Overlay::capture(SDL_Renderer *renderer) {
 }
 
 SDL_Rect Overlay::native_text_draw_region(const Match &match, bool *owner_bounds) const {
-    NativeCaptureMaskScope capture_mask(gps_);
     SDL_Rect region{0, 0, gps_->screen_pixel_x, gps_->screen_pixel_y};
     const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
     const int origin_x = (gps_->screen_pixel_x - tile_w * gps_->dimx) / 2;
@@ -41387,7 +41230,8 @@ SDL_Rect Overlay::native_text_draw_region(const Match &match, bool *owner_bounds
     } else if (match.native_picture_caption_box) {
         intersect(pixels(*match.native_picture_caption_box));
         bounded_owner = true;
-    } else if (match.x >= 0 && match.y >= 0 && match.y < gps_->dimy &&
+    } else if (!match.native_dfhack_foreground &&
+            match.x >= 0 && match.y >= 0 && match.y < gps_->dimy &&
             match.length > 0 && match.length <= gps_->dimx - match.x) {
         // Query real widget skins first, then its enclosing native panel.
         // x/length identify the owner; they do not become clipping edges.
@@ -41419,7 +41263,7 @@ SDL_Rect Overlay::native_text_draw_region(const Match &match, bool *owner_bounds
     // The paragraph fitter combines the current clips before assigning its
     // shared viewport. Complete multiline controls also move their captions
     // off the source rows, while retaining the writer's horizontal limits.
-    if (!match.layout_reflowed_paragraph) {
+    if (!match.native_dfhack_foreground && !match.layout_reflowed_paragraph) {
         if (const auto draw_clip = native_captured_text_clip(*gps_, match)) {
             SDL_Rect writer_clip = pixels(*draw_clip);
             // A one-row addst clip limits source-cell writes. The complete
@@ -41459,7 +41303,6 @@ SDL_Rect Overlay::native_text_draw_region(const Match &match, bool *owner_bounds
 }
 
 SDL_Rect Overlay::native_paragraph_draw_region(const std::vector<Match> &rows) const {
-    NativeCaptureMaskScope capture_mask(gps_);
     if (rows.empty()) return {};
     Match owner = rows.front();
     owner.layout_reflowed_paragraph = true;
@@ -41518,6 +41361,7 @@ SDL_Rect Overlay::native_paragraph_draw_region(const std::vector<Match> &rows) c
 }
 void Overlay::render(SDL_Renderer *renderer) {
     TranslationStateScope translation_scope;
+    (void)install_native_dfhack_render_layers();
     (void)install_native_dfhack_capture_hook();
     (void)install_native_dfhack_console_hook();
     (void)install_native_dfhack_lua_output_hook();
@@ -41525,7 +41369,6 @@ void Overlay::render(SDL_Renderer *renderer) {
     (void)install_native_dfhack_messagebox_hook();
     (void)install_native_dfhack_prompt_hook();
     (void)install_native_dfhack_stonesense_hook();
-    NativeCaptureMaskScope capture_mask(gps_);
     struct EndKnowledgeFrame {
         std::optional<std::vector<Match>> &matches;
         bool &transition;
@@ -41553,16 +41396,14 @@ void Overlay::render(SDL_Renderer *renderer) {
     // ownership at Present too, before advancing the native draw epoch.
     refresh_character_overview_context(true);
     ++frame_count_;
-    // All game copies issued since the previous Present used the current
-    // draw_epoch_.  Freeze that epoch for final-composite reads before
-    // advancing the counter used by next frame's copies.  Without an epoch,
-    // a graphical copy from an old scroll position remains marked forever and
-    // makes matching alternate between complete and fragmented layouts.
-    composite_read_epoch_ = draw_epoch_;
-    // Glyph copies for the next frame occur after this Present. Give their
-    // per-row suppression scans a fresh epoch while retaining hash-cached
-    // masks for rows whose logical text did not change.
-    if (++draw_epoch_ == 0) {
+    // Present can repeat without any native copies. Keep the last actual
+    // composite evidence until another native draw has produced a new frame.
+    native_frame_submitted_ = native_frame_drawn_;
+    native_frame_drawn_ = false;
+    if (native_frame_submitted_ || composite_read_epoch_ == 0)
+        composite_read_epoch_ = draw_epoch_;
+    // Only submitted native copies start a new suppression generation.
+    if (native_frame_submitted_ && ++draw_epoch_ == 0) {
         draw_epoch_ = 1;
         std::fill(immediate_base_row_epoch_.begin(), immediate_base_row_epoch_.end(), 0);
         std::fill(immediate_top_row_epoch_.begin(), immediate_top_row_epoch_.end(), 0);
@@ -41607,11 +41448,9 @@ void Overlay::render(SDL_Renderer *renderer) {
     }
     RenderTimingScope layout_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Layout);
     std::shared_ptr<const std::vector<SDL_Rect>> background_help_frames;
-    std::shared_ptr<NativeTooltipPage> hint_background_page;
     for (const auto &match : prepared_matches_)
         if (!match.native_help_current_page && match.native_help_background_frames) {
             background_help_frames = match.native_help_background_frames;
-            hint_background_page = match.native_hint_background_page;
             break;
         }
     std::vector<Match> help_foreground;
@@ -41640,7 +41479,6 @@ void Overlay::render(SDL_Renderer *renderer) {
     if (background_help_frames) g_native_toolbar_tooltip.reset();
     const auto layout_widget = captured_native_tooltip_widget(*gps_);
     const auto layout_page = !background_help_frames ? nullptr
-        : hint_background_page && !layout_widget ? hint_background_page
         : native_help_background_page(*gps_, *background_help_frames,
             layout_widget ? layout_widget->page : nullptr);
     NativeTooltipPageScope tooltip_page_layout(gps_, layout_page, background_help_frames.get());
@@ -41962,12 +41800,6 @@ void Overlay::render(SDL_Renderer *renderer) {
         }
     }
     layout_timing.stop();
-    // Restore the native buffers before any draw call. Matching, snapshots
-    // and layout above all used the same temporary capture exclusion.
-    // Keep only its region metadata through overlay drawing. Individual read
-    // scopes restore the grid independently, and native copies remain intact.
-    NativeCaptureRegionReadScope capture_regions(gps_);
-    capture_mask.reset();
     RenderTimingScope draw_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Draw);
     g_drawing_overlay = true;
     {
@@ -42055,7 +41887,6 @@ void Overlay::render(SDL_Renderer *renderer) {
         auto *background_graphics = gps_;
         NativeTooltipPageScope background_draw_view(
             background_graphics, layout_page, nullptr, false);
-        NativeCaptureRegionReadScope background_capture_regions(background_graphics);
         // Recovered native rows and reflowed Chinese need not occupy the same
         // pixels. Clear ALL exposed native spans before painting any Chinese;
         // a later continuation/half-row must never erase an earlier target.
@@ -42268,6 +42099,8 @@ bool g_copy_hook_active = false;
 
 static void apply_pending_arena_translated_search();
 static void apply_pending_name_editor_search();
+static void native_dfhack_present_layer(SDL_Renderer *renderer,
+    void (*draw_translation)(SDL_Renderer *));
 
 extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
     SlowBoundaryTiming boundary("present boundary");
@@ -42277,14 +42110,17 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
     boundary.checkpoint("replay_glyphs");
     g_overlay.render(renderer);
     boundary.checkpoint("overlay_render");
+    native_dfhack_present_layer(renderer, [](SDL_Renderer *layer_renderer) {
+        g_overlay.render_dfhack_layer(layer_renderer);
+    });
+    boundary.checkpoint("dfhack_layer");
     apply_pending_name_editor_search();
     boundary.checkpoint("name_search");
     g_overlay.render_ime_popup(renderer);
     boundary.checkpoint("ime_popup");
-    // All embark item-name draw hooks for this frame have now been consumed.
-    // Start a fresh capture generation before the game draws the next frame,
-    // so rows from the previous item category cannot survive by timeout.
-    advance_embark_item_capture_epoch();
+    // Only a newly drawn native frame consumes the caption generation.
+    // Repeated Present calls retain the last actual native writer evidence.
+    if (g_overlay.native_frame_submitted()) advance_embark_item_capture_epoch();
     boundary.checkpoint("capture_epoch");
     if (g_real_present) g_real_present(renderer);
     boundary.checkpoint("native_present");

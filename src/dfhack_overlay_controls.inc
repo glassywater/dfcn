@@ -6,34 +6,14 @@
 {
     const auto catalog = g_dfhack_output_snapshot.load(std::memory_order_acquire);
     if (catalog) {
-        // A branded error/help panel can restore just its own background,
-        // leaving another overlay's controls visible in the composed page.
-        // Complete Label captures already prove their producer and live
-        // cells; the copied graphicst address is not their draw identity.
+        // Controls belong to the committed DFHack graphics object used by
+        // this independent layer's translation pass.
         const auto source_texts = native_dfhack_overlay_texts(gps_);
-        const auto *draw_gps = native_graphics();
+        const auto *draw_gps = native_dfhack_present_graphics();
         const auto drawn_span = [&](const SDL_Rect &span) {
-            if (!draw_gps || draw_gps->dimx != gps_->dimx || draw_gps->dimy != gps_->dimy ||
-                    !native_dfhack_background_matches(*draw_gps, span)) return false;
-            if (draw_gps == gps_) return true;
-            // The capture mask belongs to the native draw. A copied page may
-            // use it only for cells still showing that draw, never a restored
-            // caption from underneath the recognized foreground panel.
-            for (int x = span.x; x < span.x + span.w; ++x)
-                for (int y = span.y; y < span.y + span.h; ++y) {
-                    const size_t at = static_cast<size_t>(x) * gps_->dimy + y;
-                    const bool top = native_ui_top_layer_at(*gps_, at);
-                    const bool draw_top = native_ui_top_layer_at(*draw_gps, at);
-                    const auto origin = native_text_grid_origin(*gps_, at, top);
-                    const auto draw_origin = native_text_grid_origin(*draw_gps, at, draw_top);
-                    const auto *grid = top ? gps_->screen_top : gps_->screen;
-                    const auto *draw_grid = draw_top ? draw_gps->screen_top : draw_gps->screen;
-                    if (!grid || !draw_grid || origin.grid != draw_origin.grid ||
-                            origin.top_layer != draw_origin.top_layer ||
-                            !std::equal(grid + at * 8, grid + at * 8 + 8, draw_grid + at * 8))
-                        return false;
-                }
-            return true;
+            return NativeDfhackForegroundScope::active && draw_gps == gps_ &&
+                span.x >= 0 && span.y >= 0 && span.w > 0 && span.h > 0 &&
+                span.x + span.w <= gps_->dimx && span.y + span.h <= gps_->dimy;
         };
         std::vector<std::pair<int, int>> sourced_controls;
         const auto named_source = [&](int x, int y, int length) {

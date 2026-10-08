@@ -212,7 +212,8 @@ static size_t capture_native_announcement_page_rows(const void *paragraph) {
 
 static void capture_native_help_cell(graphicst *gps) {
     try {
-        if (!native_capture_grid_valid(gps) || !gps->screen ||
+        if (!gps || gps->dimx <= 0 || gps->dimx > 1000 || gps->dimy <= 0 || gps->dimy > 1000 ||
+                native_dfhack_layer_write_active(gps) || !gps->screen ||
             gps->screenx < 0 || gps->screenx >= gps->dimx ||
             gps->screeny < 0 || gps->screeny >= gps->dimy ||
             gps->screenx < gps->clipx[0] || gps->screenx > gps->clipx[1] ||
@@ -235,18 +236,10 @@ static void capture_native_help_cell(graphicst *gps) {
         // Only recognized help rectangles consume these saved bytes.
         const size_t at = static_cast<size_t>(gps->screenx) * gps->dimy + gps->screeny;
         if (g_native_help_page->cells[at]) return;
-        // The page constructor masks the full snapshot once per epoch. Each
-        // later tile needs only a local logo lookup, not another grid scan.
-        const bool ignored = native_capture_ignored_cell(gps, gps->screenx, gps->screeny);
         auto *destination = g_native_help_page->screen.data() + at * 8;
-        if (ignored) {
-            std::memset(destination, 0, 8);
-            destination[0] = ' ';
-        } else {
-            std::memcpy(destination, gps->screen + at * 8, 8);
-        }
+        std::memcpy(destination, gps->screen + at * 8, 8);
         if (!g_native_help_page->texture.empty())
-            g_native_help_page->texture[at] = !ignored && gps->screentexpos
+            g_native_help_page->texture[at] = gps->screentexpos
                 ? gps->screentexpos[at] : 0;
         g_native_help_page->cells[at] = 1;
     } catch (...) {}
@@ -274,6 +267,10 @@ static void capture_native_tooltip_container(void *widget, uint32_t tick) {
     NativeInputCallbackScope callback;
     const auto original = reinterpret_cast<NativeCaptionWidgetRenderFn>(
         g_native_tooltip_container_hook.original);
+    if (native_dfhack_layer_write_active(native_graphics())) {
+        if (original) callback.call_native([&] { original(widget, tick); });
+        return;
+    }
     std::optional<NativeTooltipWidgetFrame> captured;
     auto *gps = native_graphics();
     try {
@@ -764,6 +761,10 @@ static void capture_native_multiline_widget_render(void *widget, uint32_t tick) 
     NativeInputCallbackScope callback;
     const auto original = reinterpret_cast<NativeCaptionWidgetRenderFn>(
         g_native_multiline_widget_hook.original);
+    if (native_dfhack_layer_write_active(native_graphics())) {
+        if (original) callback.call_native([&] { original(widget, tick); });
+        return;
+    }
     NativeMultilineCapture capture;
     capture.widget = widget;
     {
@@ -1209,6 +1210,7 @@ static void capture_native_truncated_widget_render(void *widget, uint32_t tick) 
     const auto original = reinterpret_cast<NativeCaptionWidgetRenderFn>(
         g_native_caption_widget_hook.original);
     if (original) callback.call_native([&] { original(widget, tick); });
+    if (native_dfhack_layer_write_active(native_graphics())) return;
     try {
         // Short skills still prove their live record. Capture before the
         // complete-caption path excludes visible == original_str.
@@ -1340,6 +1342,7 @@ static void capture_native_roster_shorten(NativeString *source, int width) {
 
 static void remember_native_clipped_resize(NativeString *source, size_t width, char fill,
         bool zero_pad_one = false) {
+    if (native_dfhack_layer_write_active(native_graphics())) return;
     auto &state = native_clipped_pending();
     if (!state.busy) {
         state.busy = true;
@@ -1524,6 +1527,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None,
         uintptr_t native_caller = 0,
         std::optional<std::array<long, 4>> capture_clip = std::nullopt) {
+    if (native_dfhack_layer_write_active(graphics)) { draw(); return; }
     const std::array<long, 4> draw_clip = capture_clip.value_or(graphics
         ? std::array<long, 4>{graphics->clipx[0], graphics->clipx[1],
                               graphics->clipy[0], graphics->clipy[1]}
@@ -2188,6 +2192,12 @@ static void capture_native_world_site_entity_fact(graphicst *graphics,
 
 static void capture_native_clipped_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width) {
+    if (native_dfhack_layer_write_active(graphics)) {
+        NativeInputCallbackScope callback;
+        if (const auto original = g_native_clipped_caption_hooks.draw)
+            callback.call_native([&] { original(graphics, source, just, width); });
+        return;
+    }
     const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
     // This call inside textbox::render draws only its owned edit string's
     // temporary copy. It remains input even when native code reaches render
@@ -2243,6 +2253,12 @@ static void capture_native_clipped_draw(graphicst *graphics, const NativeString 
 
 static void capture_native_clipped_flag_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width, uint32_t flags) {
+    if (native_dfhack_layer_write_active(graphics)) {
+        NativeInputCallbackScope callback;
+        if (const auto original = g_native_clipped_caption_hooks.flag_draw)
+            callback.call_native([&] { original(graphics, source, just, width, flags); });
+        return;
+    }
     // Collect before the ordinary caption path rejects off-screen/clip rows.
     // widget::render can invoke custom renderers first. Only the verified
     // multiline row-loop call belongs to this complete source's wrap output.
@@ -2289,15 +2305,17 @@ static PendingNativeField &native_caption_pending() {
 
 template<NativeFieldKind Kind>
 static void capture_native_caption_resize(NativeString *text, size_t width, char fill) {
-    capture_native_field_resize(native_caption_pending<Kind>(), text, width,
-        Kind == NativeFieldKind::Origin, Kind == NativeFieldKind::EmbarkItem);
+    if (!native_dfhack_layer_write_active(native_graphics()))
+        capture_native_field_resize(native_caption_pending<Kind>(), text, width,
+            Kind == NativeFieldKind::Origin, Kind == NativeFieldKind::EmbarkItem);
     if (g_native_caption_hooks.resize) g_native_caption_hooks.resize(text, width, fill);
 }
 
 template<NativeFieldKind Kind>
 static void capture_native_caption_draw(graphicst *graphics, const NativeString *text,
         NativeJustification just, int width) {
-    capture_native_field_draw(native_caption_pending<Kind>(), graphics, text, Kind);
+    if (!native_dfhack_layer_write_active(graphics))
+        capture_native_field_draw(native_caption_pending<Kind>(), graphics, text, Kind);
     if (g_native_caption_hooks.draw) g_native_caption_hooks.draw(graphics, text, just, width);
 }
 
