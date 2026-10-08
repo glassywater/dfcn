@@ -100,6 +100,9 @@ def package() -> None:
                 archive.write(ROOT / "third_party" / name, "dfcn/data/runtime/" + name)
             archive.writestr("dfcn/THIRD_PARTY_NOTICES.md", notices())
             archive.writestr("INSTALL.txt", INSTALLATION)
+            archive.write(ROOT / "workshop/content/CHANGELOG.txt", "CHANGELOG.txt")
+            archive.write(ROOT / "docs/translation-extensions.zh-CN.md",
+                          "dfcn/docs/translation-extensions.zh-CN.md")
         os.replace(candidate, output)
         print(f"Created: {output}\nSize: {output.stat().st_size / 1024 / 1024:.2f} MiB", flush=True)
     finally:

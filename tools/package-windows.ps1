@@ -52,6 +52,9 @@ try {
     # Exactly one loader path; no second root-level copy of dfhooks_dfcn.dll.
     Add-RuntimeText 'dfhooks_dfcn.ini' "dfcn/dfhooks_dfcn.dll`n"
     Add-RuntimeFile (Join-Path $projectRoot 'LICENSE') 'dfcn/LICENSE'
+    Add-RuntimeFile (Join-Path $projectRoot 'docs/install-windows.zh-CN.txt') 'INSTALL.txt'
+    Add-RuntimeFile (Join-Path $projectRoot 'workshop/content/CHANGELOG.txt') 'CHANGELOG.txt'
+    Add-RuntimeFile (Join-Path $projectRoot 'docs/translation-extensions.zh-CN.md') 'dfcn/docs/translation-extensions.zh-CN.md'
     foreach ($name in @(
         'dfcn_core.dll', 'dfhooks_dfcn.dll', 'data/runtime/config.ini',
         'data/runtime/native-addresses/pe-seed.bin',
@@ -90,7 +93,7 @@ try {
         Add-RuntimeFile (Join-Path $projectRoot ('third_party/' + $name)) ('dfcn/data/runtime/' + $name)
     }
 
-    $rulesRoot = Join-Path $projectRoot 'data\runtime\rulesets\zh-Hans'
+    $rulesRoot = Join-Path $projectRoot 'data\runtime\rulesets'
     # The complete TOML tree is loaded recursively by the runtime.
     foreach ($file in ([IO.Directory]::GetFiles($rulesRoot, '*.toml', [IO.SearchOption]::AllDirectories) | Sort-Object)) {
         $relative = $file.Substring($projectRoot.Length + 1).Replace('\', '/')

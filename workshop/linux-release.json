@@ -1,0 +1,9 @@
+{
+  "release_tag": "v53.16-20261008-linux",
+  "source_commit": "71c34d76e117187164edc4b83afcfbb43599adbc",
+  "release_url": "https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008-linux",
+  "asset_name": "DFCN-Linux-x64-minimal.zip",
+  "download_url": "https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261008-linux/DFCN-Linux-x64-minimal.zip",
+  "size": 30793804,
+  "sha256": "3c80e1f1e6287eafd2c2ba5aeaeafc3c2f63cf6b8fa070d35da26b8af1ff191c"
+}

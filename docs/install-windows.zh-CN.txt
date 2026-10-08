@@ -1,0 +1,56 @@
+DFCN · 矮人要塞简体中文汉化 / Windows x64
+适用游戏版本：Dwarf Fortress 53.16，支持 Steam 版与官网免费版。
+Byayoi 同人社区：https://byayoi.org/
+GitHub：https://github.com/pokemonchw/dfcn
+Releases：https://github.com/pokemonchw/dfcn/releases
+本版更新说明见压缩包根目录 CHANGELOG.txt。
+
+一、GitHub 整包安装
+
+将压缩包中的全部内容按原有目录结构解压到游戏根目录，也就是包含
+Dwarf Fortress.exe 的目录。安装后的主要文件位置为：
+
+游戏根目录/dfhooks.dll
+游戏根目录/dfhooks_dfcn.ini
+游戏根目录/dfcn/dfhooks_dfcn.dll
+游戏根目录/dfcn/dfcn_core.dll
+游戏根目录/dfcn/data/runtime/
+
+保留完整 dfcn 文件夹及其下的词表、规则、读音数据和许可文件。
+dfhooks_dfcn.ini 第一行已经设为 dfcn/dfhooks_dfcn.dll，整包安装无需修改。
+汉化设置位于游戏根目录/dfcn/data/runtime/config.ini。
+无需编译，无需安装 DFHack，也无需在创建世界时启用本汉化。
+
+本文件说明 GitHub 整包安装。Steam 创意工坊安装方式见本体工坊页面：
+https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379
+若此前使用工坊路径安装，整包安装时采用本包的 dfhooks_dfcn.ini。
+从旧版升级时，移除游戏根目录中旧版 dfhooks_dfcn.dll（若存在），
+使用 dfcn 文件夹内的加载器。更新前可保留自己修改过的 config.ini。
+
+二、开关与数据刷新
+
+Shift+F10：开启或关闭汉化，保留当前核心与已加载数据。
+Shift+F5：关闭汉化；再按一次开启时重新读取核心与数据。
+Ctrl+Shift+F10：显式刷新汉化配置、词表和规则。
+汉化资源在启动或上述显式刷新时读取。
+
+三、独立汉化数据扩展
+
+核心可自动识别已下载的工坊汉化数据扩展，以及游戏 mods 和
+data/installed_mods 中的本地数据包。数据包无需加入创建世界的
+模组加载顺序，不修改原始模组 RAW 或世界规则。
+
+独立数据 ZIP 中的整个 mod 文件夹解压至游戏 mods 目录即可。
+原始玩法模组仍按其作者说明使用。数据包安装、更新或移除后，
+核心在下一次启动或显式重新加载数据时处理变化。
+扩展格式与使用说明见 dfcn/docs/translation-extensions.zh-CN.md。
+用户自定义小队名称始终原样显示，包括英文、数字组合和中文。
+
+四、卸载与许可
+
+安装添加汉化自身文件，不修改游戏 RAW 或存档。
+卸载时移除自己安装的 dfhooks.dll、dfhooks_dfcn.ini 及 dfcn 文件夹；
+保留游戏本体、RAW、存档和个人资料。需要保留的汉化设置先自行保存。
+
+原创内容采用 CC BY-NC-SA 4.0，完整条款见 dfcn/LICENSE。
+第三方代码与数据保留各自许可及署名，见 dfcn/THIRD_PARTY_NOTICES.md。

@@ -2,75 +2,73 @@
 
 DFCN 是 Byayoi 同人社区的《Dwarf Fortress（矮人要塞）》汉化作品，结合社区译文与本地修订，让中文玩家更方便地阅读游戏界面、人物信息、物品描述和传说故事。
 
-[b]当前适配游戏版本：53.16。本工坊项目提供 Windows x64 运行文件，支持 Steam 版与官网免费版。[/b]项目同时提供 Linux 原生适配，相关说明见 GitHub。
+[b]适配游戏版本：53.16，提供 Windows x64 与 Linux x64 运行文件，支持 Steam 版与官网免费版。当前工坊版本：53.16-20261008.2（2026-10-08 第二版）。[/b]完整更新日志见改动说明与订阅目录的 CHANGELOG.txt。
 
-[b]当前汉化版本：53.16-20261008（2026-10-08）。[/b] 更新日志见改动说明及订阅目录中的 CHANGELOG.txt。
-
-本次增加通用汉化数据扩展加载，将 Dwarvemon 与 Entity All 2.22 的专用译文拆为独立工坊数据包。扩展订阅后由核心自动识别；已有完整译文的模组内容正常翻译，用户自定义小队名称保持原样。
+Windows 使用 [b]5a212a2[/b] 的已有编译产物，包含书籍与犬种翻译、中文与拼音搜索、初始化性能及模组内容识别改进。Linux 使用 [b]v53.16-20261008-linux（71c34d7）[/b] 已发布的原始运行包，保留原包核心、加载器及运行数据；本次 Windows 的后续改动不代表已打入 Linux 核心。
 
 [url=https://github.com/pokemonchw/dfcn]GitHub 项目主页[/url]
-[url=https://github.com/pokemonchw/dfcn/releases]GitHub Releases[/url]
+[url=https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008.2]Windows Release[/url]
+[url=https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008-linux]Linux Release[/url]
 [url=https://byayoi.org/]Byayoi 同人社区[/url]
 
-[h1]订阅与安装[/h1]
+[h1]Windows 工坊安装[/h1]
 
-[b]运行文件已解压，统一放在订阅目录的 DFCN 文件夹中。仅订阅不会自动启用汉化；安装时只需复制两个加载入口文件。[/b]
-
+[b]Windows 运行文件已解压至 DFCN 文件夹。仅订阅不会自动启用汉化；安装时只复制两个加载入口文件。[/b]
 [olist]
-[*]订阅本项目，等待 Steam 下载完成，打开：[code]你的 Steam 库目录\steamapps\workshop\content\975370\3811193379\DFCN\[/code]
-[*]将其中的 [b]dfhooks.dll[/b] 和 [b]dfhooks_dfcn.ini[/b] 复制到游戏根目录，也就是包含 [b]Dwarf Fortress.exe[/b] 的目录：[code]你的 Steam 库目录\steamapps\common\Dwarf Fortress\[/code]
-[*]打开刚复制到游戏目录中的 [b]dfhooks_dfcn.ini[/b]，第一行填写订阅目录中 [b]dfhooks_dfcn.dll[/b] 的实际路径，格式见下方。其余运行文件留在订阅目录中。
+[*]订阅后打开：[code]你的 Steam 库目录\steamapps\workshop\content\975370\3811193379\DFCN\[/code]
+[*]将 [b]dfhooks.dll[/b] 和 [b]dfhooks_dfcn.ini[/b] 复制到包含 [b]Dwarf Fortress.exe[/b] 的游戏根目录：[code]你的 Steam 库目录\steamapps\common\Dwarf Fortress\[/code]
+[*]打开游戏目录中的 [b]dfhooks_dfcn.ini[/b]，第一行填写订阅目录中 [b]DFCN/dfcn/dfhooks_dfcn.dll[/b] 的实际路径，其余文件留在订阅目录。
 [/olist]
 
-[b]加载路径如何填写[/b]
+游戏与订阅内容位于同一 Steam 库时，已预填以下相对路径：[code]../../workshop/content/975370/3811193379/DFCN/dfcn/dfhooks_dfcn.dll[/code]
+例如 Steam 库为 [b]D:\SteamLibrary[/b]，也可以填写绝对路径：[code]D:/SteamLibrary/steamapps/workshop/content/975370/3811193379/DFCN/dfcn/dfhooks_dfcn.dll[/code]
+默认 Steam 安装目录示例：[code]C:/Program Files (x86)/Steam/steamapps/workshop/content/975370/3811193379/DFCN/dfcn/dfhooks_dfcn.dll[/code]
+请按实际位置修改；位于不同 Steam 库时使用绝对路径。[b]第一行只写 DLL 路径，不加引号、不写 key=value，保存为 UTF-8 无 BOM。[/b]
 
-游戏与订阅内容位于同一 Steam 库时，配置已预填以下相对路径，可以直接使用：[code]../../workshop/content/975370/3811193379/DFCN/dfcn/dfhooks_dfcn.dll[/code]
+加载器自动读取同目录的 [b]dfcn_core.dll[/b] 和 [b]data/runtime[/b]。请保留完整订阅目录结构。游戏根目录的 [b]dfhooks_dfcn.ini[/b] 指定加载器路径；汉化设置 [b]config.ini[/b] 留在：[code]你的 Steam 库目录\steamapps\workshop\content\975370\3811193379\DFCN\dfcn\data\runtime\config.ini[/code]
+后续 Windows 工坊更新由 Steam 下载到订阅目录；目录不变时，入口配置继续指向该目录。
 
-例如 Steam 库为 [b]D:\SteamLibrary[/b]，则游戏程序与汉化加载器的完整路径分别为：[code]D:/SteamLibrary/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
-D:/SteamLibrary/steamapps/workshop/content/975370/3811193379/DFCN/dfcn/dfhooks_dfcn.dll[/code]
-此时也可以将 [b]dfhooks_dfcn.ini[/b] 的第一行直接写为：[code]D:/SteamLibrary/steamapps/workshop/content/975370/3811193379/DFCN/dfcn/dfhooks_dfcn.dll[/code]
+旧版整包安装升级时，移除游戏根目录中旧的 [b]dfhooks_dfcn.dll[/b]（若存在），避免加载两份汉化。旧 [b]dfcn[/b] 文件夹可在保留个人配置或资料后移除。
 
-如果 Steam 使用默认安装目录，路径示例为：[code]C:/Program Files (x86)/Steam/steamapps/workshop/content/975370/3811193379/DFCN/dfcn/dfhooks_dfcn.dll[/code]
+[h1]Linux 工坊安装[/h1]
 
-请按自己的实际 Steam 库位置修改盘符和目录；游戏与订阅内容在不同 Steam 库时，使用订阅内容的绝对路径。[b]第一行只写 DLL 路径，不加引号、不写“key=value”，保存为 UTF-8 无 BOM。[/b]
+[b]Linux 运行文件已解压至 DFCN-Linux 文件夹。必须复制 libdfhooks.so 和完整 dfcn 文件夹。[/b]
+[olist]
+[*]打开：[code]你的 Steam 库目录/steamapps/workshop/content/975370/3811193379/DFCN-Linux/[/code]
+[*]将其中的 [b]libdfhooks.so[/b] 和完整 [b]dfcn[/b] 文件夹复制到包含 [b]dwarfort[/b] 的游戏根目录，保留包内目录结构。
+[*]在游戏目录的 [b]dfcn/data/runtime/config.ini[/b] 中修改汉化设置。
+[/olist]
 
-路径末尾包含 [b]dfhooks_dfcn.dll[/b] 文件名。它会自动加载同目录的 [b]dfcn_core.dll[/b]，并读取该目录中的 [b]data/runtime[/b] 词表、规则与汉化设置。请保留订阅目录内的完整文件结构。
+Linux 不能只复制加载入口，也不使用 Windows 的 [b]dfhooks_dfcn.ini[/b]。Steam 后续更新到订阅目录后，需再次将 Linux 的 [b]libdfhooks.so[/b] 和完整 [b]dfcn[/b] 文件夹复制到游戏目录，并保留个人配置。
 
-[b]两个配置文件的用途不同：[/b]游戏根目录中的 [b]dfhooks_dfcn.ini[/b] 用于指定加载器路径；汉化设置 [b]config.ini[/b] 留在：[code]你的 Steam 库目录\steamapps\workshop\content\975370\3811193379\DFCN\dfcn\data\runtime\config.ini[/code]
-汉化核心与翻译数据会从订阅目录读取，无需复制整个 [b]DFCN[/b] 或 [b]dfcn[/b] 文件夹到游戏目录，也无需编译或在创建世界时启用本项目。
+Linux 包依赖系统的 [b]SDL2、FreeType、Fontconfig、libstdc++ 和 glibc[/b]，不包含这些系统库或游戏程序。Fontconfig 使用系统可用字体；没有中文字体时需安装系统中文字体。无需 DFHack 或编译。
 
-后续工坊更新会由 Steam 下载到订阅目录；只要实际目录不变，游戏中的入口配置就继续指向该目录。
+[h1]GitHub 安装与汉化扩展[/h1]
 
-[b]从旧版整包复制方式升级：[/b]移除游戏根目录中旧版汉化的 [b]dfhooks_dfcn.dll[/b]（若存在），避免加载两份汉化。旧的 [b]dfcn[/b] 文件夹已不再使用，可在保留需要的个人配置或资料后移除。
+GitHub Windows Release 的 [b]DFCN-Windows-x64-minimal.zip[/b] 需要整包解压到游戏根目录，包括 [b]dfhooks.dll[/b]、[b]dfhooks_dfcn.ini[/b] 与整个 [b]dfcn[/b] 文件夹。GitHub Linux Release 的 [b]DFCN-Linux-x64-minimal.zip[/b] 同样整包解压到包含 [b]dwarfort[/b] 的目录。两种整包安装的设置均位于游戏目录的 [b]dfcn/data/runtime/config.ini[/b]。
 
-[h1]独立汉化数据扩展[/h1]
+核心在启动或显式重新读取数据时自动识别已下载的独立汉化数据扩展；数据包无需在创建世界时启用，原始玩法模组按其作者说明使用。[b]本体运行包不合并独立数据包或原始玩法模组。[/b]
 
-安装本体后，核心会自动识别已订阅的汉化数据扩展，将扩展词条与规则用于对应内容。[b]汉化数据包无需在创建世界的模组列表中启用。[/b]原始玩法模组仍按其作者说明使用。
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177]矮人宝可梦汉化数据[/url]独立支持 [b]Dwarvemon 2.22[/b] 与 [b]Dwarvemon Entity All 2.22[/b]，覆盖名称与形态、描述、偏好、道具、植物、材料、身体部位、工坊与配方、招式、特性、进化提示、战斗公告和历史事件。专名优先采用官方简体中文译名，原创内容完整翻译，部分旧树果参考百科暂译。
 
-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177]矮人宝可梦汉化数据[/url]支持 [b]Dwarvemon 2.22[/b] 与 [b]Dwarvemon Entity All 2.22[/b]，覆盖名称与形态、描述、偏好、道具、植物、材料、身体部位、工坊与配方、招式、特性、进化提示、战斗公告和历史事件。宝可梦专名优先采用官方简体中文译名；原创内容完整翻译，部分旧树果参考百科暂译。
+模组名称及内容使用通用译文匹配，没有完整译文的名称及简介保留原文；用户自定义小队名称始终保持原样。扩展不修改原模组 RAW 或世界规则。
 
-宝可梦专用译文由独立数据包提供，本体不内置这些词条。模组名称和内容使用通用译文匹配，已有完整译文即可正常翻译；用户自定义小队名称保持原样。数据扩展不修改原模组 RAW 或世界规则。
+[h1]开关、刷新与卸载[/h1]
 
-[h1]开启、关闭与卸载[/h1]
+[b]Shift+F10[/b]：切换汉化，保留当前核心与数据。
+[b]Shift+F5[/b]：关闭汉化，再次开启时重新读取核心与数据。
+[b]Ctrl+Shift+F10[/b]：显式刷新配置、词表和规则数据。核心不自动检查文件变化。
 
-在游戏中按 [b]Shift+F10[/b] 可以开启或关闭汉化；再次按下即可切换。
+Windows 同时安装 [b]DFHack 53.16-r2[/b] 时，[b]Shift+F11[/b] 可独立暂停或恢复 DFHack 工具，保留插件配置和状态。关闭时已打开的 DFHack 界面会关闭；已执行的游戏或存档修改不会回滚。DFHack 帮助、控制面板、常用弹窗及本地命令输出也有汉化，可执行命令、快捷键和导出内容保留原文。
 
-Windows 同时安装 [b]DFHack 53.16-r2[/b] 时，可按 [b]Shift+F11[/b] 独立暂停或恢复 DFHack 工具，保留插件配置和状态；关闭时已经打开的 DFHack 界面会关闭，此前对游戏或存档执行的修改不会回滚。本版本同时汉化 DFHack 帮助、控制面板、常用弹窗及本地命令输出，可执行命令、快捷键和导出内容保留原文。
+[b]取消订阅不会删除手动安装到游戏目录的文件。[/b]Windows 工坊安装需移除自己添加的 [b]dfhooks.dll[/b] 与 [b]dfhooks_dfcn.ini[/b]；整包安装还需移除汉化 [b]dfcn[/b] 目录。Linux 需移除自己安装的 [b]libdfhooks.so[/b] 和 [b]dfcn[/b] 汉化目录。无需删除游戏本体或存档。
 
-[b]取消订阅不会自动删除手动复制到游戏目录中的文件。[/b]卸载时，手动删除本次添加到游戏根目录的 [b]dfhooks.dll[/b] 与 [b]dfhooks_dfcn.ini[/b]，再取消订阅。旧版整包安装遗留的汉化文件也需自行移除。无需删除游戏本体或存档。
+[h1]技术、致谢与许可[/h1]
 
-[h1]对游戏本体的影响与依赖[/h1]
+本项目在渲染阶段捕获英文文本，以词表与语法规则翻译并覆盖绘制。[b]不会改写磁盘上的游戏本体文件，不修改 RAW 或存档，没有 DFHack 等外部 Mod 依赖。[/b]使用 C++20、SDL2、字体渲染、TSV／TOML、toml++ 与 Python 整理数据及构建工具。
 
-本项目在游戏渲染阶段捕获英文文本，通过词表与语法规则生成中文，再进行字形测量、换行和覆盖绘制。[b]不会破坏或改写磁盘上的游戏本体文件，不修改游戏 RAW 或存档，也没有 DFHack 等外部 Mod 依赖。[/b]安装时添加的是汉化自身的加载入口；运行所需组件已包含在订阅内容中。
-
-[h1]技术与致谢[/h1]
-
-项目使用 C++20、SDL2 与字体渲染实现文本捕获和中文排版，以 TSV／TOML 与 toml++ 维护词表、配置和递归翻译规则，使用 Python 整理数据及构建工具。
-
-感谢矮人要塞中文维基翻译组及上游贡献者：DFHack / dfhooks 与 df-structures 提供加载入口和结构定义参考；DFI18n、dfint 提供基础译文；dfzh 提供词表、规则和翻译引擎；ECDICT 提供英汉释义参考。它们是代码与数据来源，并非玩家需要额外安装的 Mod。
+感谢矮人要塞中文维基翻译组及上游贡献者：DFHack / dfhooks 与 df-structures 提供加载入口和结构定义参考；DFI18n、dfint 提供基础译文；dfzh 提供词表、规则和翻译引擎；ECDICT 提供英汉释义参考。它们是代码与数据来源，并非需要额外安装的 Mod。
 
 本项目使用 OpenAI Codex 协助代码编写、跨平台适配、翻译规则整理、中文渲染与排版修复，以及工具和文档编写。
-
-[h1]许可[/h1]
 
 原创内容采用 [url=https://creativecommons.org/licenses/by-nc-sa/4.0/]CC BY-NC-SA 4.0（署名—非商业性使用—相同方式共享）[/url]。使用时须保留署名、遵守非商业限制，分享改编成果时采用相同许可。第三方资源保留各自许可与署名，详见 [url=https://github.com/pokemonchw/dfcn/blob/main/THIRD_PARTY_NOTICES.md]THIRD_PARTY_NOTICES.md[/url] 及运行文件内许可说明。
