@@ -112,6 +112,7 @@ Fortress activity: Make banana leaf dye	制作香蕉叶染料	li
 Fortress activity: Make banana peel dye	制作香蕉皮染料	li
 Fortress activity: Make bayberry dye	制作杨梅染料	li
 Fortress activity: Make bayberry leaf dye	制作杨梅叶染料	li
+Fortress activity: Make bed	制作床	li
 Fortress activity: Make bilberry dye	制作越橘染料	li
 Fortress activity: Make billon bars (use bars)	制作毕朗合金锭（使用金属锭）	li
 Fortress activity: Make billon bars (use ore)	制作毕朗合金锭（使用矿石）	li
@@ -120,6 +121,7 @@ Fortress activity: Make bismuth bronze bars	制作铋青铜锭	li
 Fortress activity: Make black bronze bars	制作乌青铜锭	li
 Fortress activity: Make blackberry dye	制作黑莓染料	li
 Fortress activity: Make blueberry dye	制作蓝莓染料	li
+Fortress activity: Make bone crossbow	制作骨十字弩	li
 Fortress activity: Make brass bars (use bars)	制作黄铜锭（使用金属锭）	li
 Fortress activity: Make brass bars (use ore)	制作黄铜锭（使用矿石）	li
 Fortress activity: Make bronze bars (use bars)	制作青铜锭（使用金属锭）	li
@@ -144,10 +146,13 @@ Fortress activity: Make coke from lignite	使用褐煤制作焦炭	li
 Fortress activity: Make cranberry dye	制作蔓越莓染料	li
 Fortress activity: Make display case	制作展示柜	li
 Fortress activity: Make eggplant dye	制作茄子染料	li
+Fortress activity: Make eight wooden blocks	制作八个木制锭块	li
 Fortress activity: Make electrum bars (use bars)	制作琥珀金锭（使用金属锭）	li
 Fortress activity: Make electrum bars (use ore)	制作琥珀金锭（使用矿石）	li
+Fortress activity: Make enormous wooden corkscrew	制作大号木制螺杆	li
 Fortress activity: Make fine pewter bars (use bars)	制作精白锡锭（使用金属锭）	li
 Fortress activity: Make fine pewter bars (use ore)	制作精白锡锭（使用矿石）	li
+Fortress activity: Make four wooden blocks	制作四个木制锭块	li
 Fortress activity: Make ginkgo leaf dye	制作银杏叶染料	li
 Fortress activity: Make grape dye	制作葡萄染料	li
 Fortress activity: Make guava bark dye	制作番石榴树皮染料	li
@@ -163,6 +168,7 @@ Fortress activity: Make mangrove bark dye	制作红树树皮染料	li
 Fortress activity: Make mangrove leaf dye	制作红树叶染料	li
 Fortress activity: Make maple bark dye	制作枫树树皮染料	li
 Fortress activity: Make mead	酿造蜜酒	li
+Fortress activity: Make menacing wooden spike	制作险恶木制尖刺	li
 Fortress activity: Make milk of lime	制作石灰乳	li
 Fortress activity: Make nickel silver bars	制作镍银锭	li
 Fortress activity: Make oak bark dye	制作橡树树皮染料	li
@@ -201,6 +207,7 @@ Fortress activity: Make sheet from plant	用植物做纸张	li
 Fortress activity: Make soap from oil	用植物油制作肥皂	li
 Fortress activity: Make soap from tallow	用脂油制作肥皂	li
 Fortress activity: Make sorghum leaf dye	制作高粱叶染料	li
+Fortress activity: Make spiked wooden ball	制作尖刺木制圆球	li
 Fortress activity: Make spinach leaf dye	制作菠菜叶染料	li
 Fortress activity: Make steel bars	制作钢锭	li
 Fortress activity: Make sterling silver bars	制作标准银锭	li
@@ -216,6 +223,9 @@ Fortress activity: Make watermelon dye	制作西瓜染料	li
 Fortress activity: Make wax crafts	制作蜂蜡工艺品	li
 Fortress activity: Make willow bark dye	制作柳树树皮染料	li
 Fortress activity: Make willow leaf dye	制作柳树叶染料	li
+Fortress activity: Make wooden altar	制作木制圣坛	li
+Fortress activity: Make wooden animal trap	制作木制动物陷阱	li
+Fortress activity: Make wooden armor stand	制作木制盔甲架	li
 Fortress activity: Make wooden barrel	制作木制圆桶	li
 Fortress activity: Make wooden bed	制作木制床	li
 Fortress activity: Make wooden bin	制作木制储物箱	li
@@ -223,9 +233,11 @@ Fortress activity: Make wooden bookcase	制作木制书架	li
 Fortress activity: Make wooden bucket	制作木制提桶	li
 Fortress activity: Make wooden buckler	制作木制小盾	li
 Fortress activity: Make wooden cabinet	制作木制橱柜	li
+Fortress activity: Make wooden cage	制作木制笼子	li
 Fortress activity: Make wooden casket	制作木棺	li
 Fortress activity: Make wooden chair	制作木制椅子	li
 Fortress activity: Make wooden chest	制作木制箱子	li
+Fortress activity: Make wooden crossbow	制作木制十字弩	li
 Fortress activity: Make wooden crutch	制作木制拐杖	li
 Fortress activity: Make wooden door	制作木制门	li
 Fortress activity: Make wooden grate	制作木制格栅	li

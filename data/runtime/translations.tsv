@@ -34462,6 +34462,7 @@ ENABLE ONE! Entities in Dwarvemon use all Pokemon	只能启用一个！Dwarvemon
 Feel free to pause and check out the information.	你随时可以暂停，仔细查看信息。	hq
 Fortress activity: Carve wooden helve from branch	用树枝雕刻木制斧柄	li
 Fortress activity: Make coke from bituminous coal	使用烟煤制作焦炭	li
+Fortress activity: Make enormous wooden corkscrew	制作大号木制螺杆	li
 Guide {s} immediately when empty of desired items	未装载所需物品时，立即引导矿车向{s1}行驶	hPt
 Guide {s} in {d} days when empty of desired items	等待{d1}天且未装载所需物品时，引导矿车向{s1}行驶	hPt
 How will you respond to the tribute cancellation?	你将如何回应停止进贡的决定？	hP
@@ -40223,6 +40224,7 @@ Fortress activity: Link a building to trigger	将建筑连接到触发装置	li
 Fortress activity: Make billon bars (use ore)	制作毕朗合金锭（使用矿石）	li
 Fortress activity: Make brass bars (use bars)	制作黄铜锭（使用金属锭）	li
 Fortress activity: Make bronze bars (use ore)	制作青铜锭（使用矿石）	li
+Fortress activity: Make menacing wooden spike	制作险恶木制尖刺	li
 Fortress activity: Make sweet potato skin dye	制作甘薯皮染料	li
 Fortress activity: Make wooden training spear	制作木制训练矛	li
 Fortress activity: Press honey from honeycomb	从蜜脾中压出蜂蜜	li
@@ -43359,6 +43361,7 @@ Forgotten beast sensitivity (less = sooner)	遗忘猛兽敏感度（越低越早
 Fortress activity: Carve downward staircase	挖掘下行楼梯	li
 Fortress activity: Extract from land animal	提炼陆地动物	li
 Fortress activity: Make bismuth bronze bars	制作铋青铜锭	li
+Fortress activity: Make eight wooden blocks	制作八个木制锭块	li
 Fortress activity: Make wooden training axe	制作木制训练斧	li
 Fortress activity: Mill seeds/nuts to paste	将种子/坚果磨浆	li
 Fortress activity: Organize Combat Training	组织战斗训练	li
@@ -45059,8 +45062,12 @@ Fortress activity: Carve up/down staircase	挖掘上下楼梯	li
 Fortress activity: Cut raw glass into gems	将粗糙玻璃切割成宝石	li
 Fortress activity: Glaze clay/stone statue	为黏土/石质雕像上釉	li
 Fortress activity: Hunt for small creature	猎捕小型生物	li
+Fortress activity: Make four wooden blocks	制作四个木制锭块	li
 Fortress activity: Make nickel silver bars	制作镍银锭	li
 Fortress activity: Make pineapple leaf dye	制作菠萝叶染料	li
+Fortress activity: Make spiked wooden ball	制作尖刺木制圆球	li
+Fortress activity: Make wooden animal trap	制作木制动物陷阱	li
+Fortress activity: Make wooden armor stand	制作木制盔甲架	li
 Fortress activity: Make wooden hatch cover	制作木制活动盖板	li
 Fortress activity: Press liquid from fruit	从果实中压出液体	li
 Fortress activity: Press liquid from paste	从浆糊中压出液体	li
@@ -50407,6 +50414,7 @@ Fortress activity: Make turnip skin dye	制作芜菁皮染料	li
 Fortress activity: Make willow bark dye	制作柳树树皮染料	li
 Fortress activity: Make willow leaf dye	制作柳树叶染料	li
 Fortress activity: Make wooden bookcase	制作木制书架	li
+Fortress activity: Make wooden crossbow	制作木制十字弩	li
 Fortress activity: Make wooden pedestal	制作木制基座	li
 Fortress activity: Process plant to bag	用袋子进行甩籽	li
 Fortress activity: Remove Rotten Tissue	清除坏死组织	li
@@ -54245,6 +54253,7 @@ Fortress activity: Carve bone earring	雕刻骨制耳环	li
 Fortress activity: Carve bone scepter	雕刻骨制节杖	li
 Fortress activity: Construct building	建造建筑	li
 Fortress activity: Make blueberry dye	制作蓝莓染料	li
+Fortress activity: Make bone crossbow	制作骨十字弩	li
 Fortress activity: Make cranberry dye	制作蔓越莓染料	li
 Fortress activity: Make pear bark dye	制作梨树皮染料	li
 Fortress activity: Make pear leaf dye	制作梨叶染料	li
@@ -56265,6 +56274,7 @@ Fortress activity: Make eggplant dye	制作茄子染料	li
 Fortress activity: Make milk of lime	制作石灰乳	li
 Fortress activity: Make oak bark dye	制作橡树树皮染料	li
 Fortress activity: Make tea leaf dye	制作茶叶染料	li
+Fortress activity: Make wooden altar	制作木制圣坛	li
 Fortress activity: Make wooden chair	制作木制椅子	li
 Fortress activity: Make wooden chest	制作木制箱子	li
 Fortress activity: Make wooden grate	制作木制格栅	li
@@ -58241,6 +58251,7 @@ Fortress activity: Load weapon trap	装填武器陷阱	li
 Fortress activity: Make clay bricks	制作黏土砖	li
 Fortress activity: Make clay crafts	制作黏土工艺品	li
 Fortress activity: Make clay statue	制作黏土雕像	li
+Fortress activity: Make wooden cage	制作木制笼子	li
 Fortress activity: Make wooden door	制作木制门	li
 Fortress activity: Pickup equipment	拾取装备	li
 Fortress activity: Store owned item	存放私人物品	li
@@ -76460,6 +76471,7 @@ Fortress activity: Cut gems	切割宝石	li
 Fortress activity: Diplomat	外交官	li
 Fortress activity: Friendly	友善	li
 Fortress activity: Make ash	制作灰烬	li
+Fortress activity: Make bed	制作床	li
 Fortress activity: Make lye	制作碱液	li
 Fortress activity: Reaction	进行反应	li
 Fortress activity: Research	研究	li
@@ -132485,6 +132497,7 @@ Magma Flow	未凝熔岩	wi
 Magma Mist	岩浆雾	wl
 Magma kiln	岩浆黏土窑	wi
 Magma-safe	耐岩浆	wi
+Make eight	制作八个	wi
 Make merry	欢庆	w
 Make peace	议和	wli
 Make quire	制作稿纸	wi
