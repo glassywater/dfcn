@@ -73,6 +73,8 @@ try {
     [IO.File]::WriteAllText((Join-Path $windowsFolder 'dfhooks_dfcn.ini'),
         "../../workshop/content/975370/$itemId/DFCN/dfcn/dfhooks_dfcn.dll`n",
         [Text.UTF8Encoding]::new($false))
+    # This payload now uses a Workshop INI, so its nearby instructions must too.
+    Copy-Item -LiteralPath (Join-Path $contentRoot 'INSTALL.txt') -Destination (Join-Path $windowsFolder 'INSTALL.txt') -Force
     Copy-Item -LiteralPath $linuxSourcePath -Destination (Join-Path $linuxFolder 'RELEASE-SOURCE.json')
 
     # Extract before replacing either platform; old payloads do not accumulate.
