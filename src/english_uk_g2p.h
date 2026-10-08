@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <array>
+#include <bit>
 #include <cmath>
 #include <cstdint>
 #include <cstring>
@@ -101,6 +102,14 @@ public:
             }
         }
         states_.reserve(static_cast<std::size_t>(state_count));
+        // VectorFst stores 12 bytes per state and 16 per arc. Reserve the
+        // complete arc array once instead of repeatedly moving the model.
+        if (static_cast<std::uint64_t>(state_count) > reader.remaining() / 12u)
+            return fail("Invalid or truncated English UK G2P state count");
+        const auto arc_count = (reader.remaining() - static_cast<std::uint64_t>(state_count) * 12u) / 16u;
+        if (arc_count > std::numeric_limits<std::uint32_t>::max())
+            return fail("Invalid English UK G2P arc count");
+        arcs_.reserve(static_cast<std::size_t>(arc_count));
         for (std::int64_t state = 0; state < state_count; ++state) {
             float final_weight = 0;
             std::int64_t count = 0;
@@ -250,18 +259,23 @@ private:
     };
     class Reader {
     public:
-        explicit Reader(const std::filesystem::path &path)
-            : stream_(path, std::ios::binary | std::ios::ate) {
-            if (stream_) {
-                const auto size = stream_.tellg();
-                if (size < 0) { stream_.setstate(std::ios::failbit); return; }
-                remaining_ = static_cast<std::uint64_t>(size);
-                stream_.seekg(0);
-            }
+        explicit Reader(const std::filesystem::path &path) {
+            std::ifstream input(path, std::ios::binary | std::ios::ate);
+            if (!input) return;
+            const auto size = input.tellg();
+            if (size < 0 || static_cast<std::uint64_t>(size) > std::numeric_limits<std::size_t>::max()) return;
+            bytes_.resize(static_cast<std::size_t>(size));
+            input.seekg(0);
+            // Parse a single byte snapshot. Per-field istream calls were
+            // repeated millions of times during every core/data reload.
+            ready_ = input.good() && (bytes_.empty() ||
+                static_cast<bool>(input.read(reinterpret_cast<char *>(bytes_.data()), size)));
         }
-        bool good() const { return static_cast<bool>(stream_); }
-        std::uint64_t remaining() const { return remaining_; }
+        bool good() const { return ready_; }
+        std::uint64_t remaining() const { return bytes_.size() - cursor_; }
         template<class T> bool number(T &value) {
+            if constexpr (std::endian::native == std::endian::little)
+                return read(&value, sizeof(value));
             std::array<unsigned char, sizeof(T)> bytes{};
             if (!read(bytes.data(), bytes.size())) return false;
             std::uint64_t bits = 0;
@@ -278,21 +292,21 @@ private:
         }
         bool text(std::string &value) {
             std::int32_t size = 0;
-            if (!number(size) || size < 0 || static_cast<std::uint64_t>(size) > remaining_)
+            if (!number(size) || size < 0 || static_cast<std::uint64_t>(size) > remaining())
                 return false;
             value.resize(static_cast<std::size_t>(size));
             return read(value.data(), value.size());
         }
     private:
         bool read(void *data, std::size_t count) {
-            if (count > remaining_) return false;
-            if (!stream_.read(static_cast<char *>(data), static_cast<std::streamsize>(count)))
-                return false;
-            remaining_ -= count;
+            if (!ready_ || count > remaining()) return false;
+            if (count) std::memcpy(data, bytes_.data() + cursor_, count);
+            cursor_ += count;
             return true;
         }
-        std::ifstream stream_;
-        std::uint64_t remaining_ = 0;
+        std::vector<unsigned char> bytes_;
+        std::size_t cursor_ = 0;
+        bool ready_ = false;
     };
     static bool valid_weight(float weight) {
         return !std::isnan(weight) && weight != -std::numeric_limits<float>::infinity();

@@ -4,10 +4,15 @@
 #include "native_address_scan.h"
 #include "native_elf_image.h"
 #include "runtime_paths.h"
+#include <cerrno>
 #include <dlfcn.h>
+#include <fcntl.h>
 #include <link.h>
 #include <sstream>
+#include <sys/mman.h>
+#include <sys/stat.h>
 #include <unistd.h>
+#include <utility>
 
 namespace dfcn::elf_runtime {
 using address_runtime::Range;
@@ -24,7 +29,18 @@ inline constexpr const char *library_build = "f45d1ee1b60004b61116fcaaf96602b305
 class Reader {
     std::vector<unsigned char> bytes_;
     size_t cursor_ = 0;
+    void unseal() {
+        if (bytes_.size() < 32) throw std::runtime_error("Truncated ELF cache digest");
+        const auto length = bytes_.size() - 32;
+        const auto hash = sha256(bytes_.data(), length);
+        if (std::memcmp(hash.data(), bytes_.data() + length, 32)) throw std::runtime_error("ELF cache digest mismatch");
+        bytes_.resize(length);
+    }
 public:
+    explicit Reader(std::vector<unsigned char> bytes, bool sealed = false) : bytes_(std::move(bytes)) {
+        if (bytes_.size() > 128 * 1024 * 1024) throw std::runtime_error("Invalid ELF address data size");
+        if (sealed) unseal();
+    }
     explicit Reader(const std::filesystem::path &path, bool sealed = false) {
         std::ifstream input(path, std::ios::binary | std::ios::ate);
         if (!input) throw std::runtime_error("Cannot read ELF address data: " + path.string());
@@ -33,13 +49,7 @@ public:
         bytes_.resize(static_cast<size_t>(size)); input.seekg(0);
         if (!bytes_.empty() && !input.read(reinterpret_cast<char *>(bytes_.data()), size))
             throw std::runtime_error("Truncated ELF address data");
-        if (sealed) {
-            if (bytes_.size() < 32) throw std::runtime_error("Truncated ELF cache digest");
-            const auto length = bytes_.size() - 32;
-            const auto hash = sha256(bytes_.data(), length);
-            if (std::memcmp(hash.data(), bytes_.data() + length, 32)) throw std::runtime_error("ELF cache digest mismatch");
-            bytes_.resize(length);
-        }
+        if (sealed) unseal();
     }
     const auto &bytes() const { return bytes_; }
     void read(void *destination, size_t length) {
@@ -214,27 +224,189 @@ inline void write_state(std::ostream &stream, const State &state) {
     write_number(stream, uint32_t(state.bytes.size()));
     for (const auto &byte : state.bytes) { write_number(stream, byte.address); stream.put(char(byte.reference)); stream.put(char(byte.native)); }
 }
-inline State read_state(Reader &reader, const Image &image, const Catalog &catalog) {
+inline State read_bindings(Reader &reader, uint32_t size, const auto &contains) {
     State result; result.size = reader.number();
-    if (result.size != image.size) throw std::runtime_error("ELF address cache size differs");
+    if (result.size != size) throw std::runtime_error("ELF address cache size differs");
     result.ranges.resize(reader.count());
     uint32_t previous = 0;
     for (auto &range : result.ranges) {
         range = {reader.number(), reader.number(), reader.number()};
         if (!range.begin || range.begin < previous || range.end <= range.begin || !range.native ||
-            uint64_t(range.native) + range.end - range.begin > image.size || !image.section(range.native, range.end - range.begin))
+            uint64_t(range.native) + range.end - range.begin > size || !contains(range.native, range.end - range.begin))
             throw std::runtime_error("Invalid ELF cached address range");
         previous = range.end;
     }
     result.bytes.resize(reader.count(8000000)); previous = 0;
     for (auto &byte : result.bytes) {
         byte.address = reader.number(); reader.read(&byte.reference, 1); reader.read(&byte.native, 1);
-        if (!byte.address || byte.address <= previous) throw std::runtime_error("Invalid ELF cached operand order");
+        if (!byte.address || byte.address <= previous || !address_runtime::resolve(result.ranges, byte.address))
+            throw std::runtime_error("Invalid ELF cached operand order");
         previous = byte.address;
     }
+    return result;
+}
+inline State read_state(Reader &reader, const Image &image, const Catalog &catalog) {
+    auto result = read_bindings(reader, image.size,
+        [&image](uint32_t address, uint32_t length) { return image.section(address, length) != nullptr; });
     address_runtime::complete_spans(result, catalog);
     return result;
 }
+
+// Match Windows' process cache: retain sealed bytes independently of the
+// reloadable core, with no module-owned objects, pointers or callbacks. Linux
+// memfd descriptors survive dlclose and the kernel releases them at game exit.
+class ProcessCache {
+    struct Descriptor {
+        int value = -1;
+        ~Descriptor() { if (value >= 0) close(value); }
+    };
+    std::array<unsigned char, 32> identity_{};
+    std::string name_;
+    static constexpr size_t maximum_size = 128 * 1024 * 1024;
+    static constexpr int seals = F_SEAL_WRITE | F_SEAL_GROW | F_SEAL_SHRINK | F_SEAL_SEAL;
+
+    static uint32_t module_size(const Module &module) {
+        uintptr_t size = 0;
+        for (const auto &[begin, end] : module.loads) {
+            if (begin < module.bias || end < begin || end - module.bias > UINT32_MAX)
+                throw std::runtime_error("Invalid process ELF load segment");
+            size = std::max(size, end - module.bias);
+        }
+        if (!size) throw std::runtime_error("Missing process ELF load segments");
+        return static_cast<uint32_t>(size);
+    }
+    static void write_string(std::ostream &output, const std::string &value) {
+        write_number(output, static_cast<uint32_t>(value.size()));
+        output.write(value.data(), static_cast<std::streamsize>(value.size()));
+    }
+    static void write_coverage(std::ostream &output, const Catalog &catalog) {
+        write_number(output, static_cast<uint32_t>(catalog.required.size()));
+        for (const auto &[begin, length] : catalog.required) {
+            write_number(output, begin); write_number(output, length);
+        }
+    }
+    static State read_covered_state(Reader &reader, const Module &module) {
+        Catalog coverage;
+        coverage.required.resize(reader.count());
+        uint32_t previous = 0;
+        for (auto &[begin, length] : coverage.required) {
+            begin = reader.number(); length = reader.number();
+            if (!begin || !length || begin <= previous || length > UINT32_MAX - begin)
+                throw std::runtime_error("Invalid process ELF resource span");
+            previous = begin;
+        }
+        auto result = read_bindings(reader, module_size(module),
+            [&module](uint32_t address, uint32_t length) {
+                if (uint64_t(address) + length > UINTPTR_MAX - module.bias) return false;
+                const auto begin = module.bias + address, end = begin + length;
+                return std::any_of(module.loads.begin(), module.loads.end(),
+                    [begin, end](const auto &span) { return begin >= span.first && end <= span.second; });
+            });
+        address_runtime::complete_spans(result, coverage);
+        return result;
+    }
+public:
+    ProcessCache(const RuntimeState &state, const std::array<unsigned char, 32> &seed) {
+        std::ostringstream identity(std::ios::binary | std::ios::out);
+        const auto pointer = [&identity](uintptr_t value) {
+            write_number(identity, static_cast<uint32_t>(value));
+            write_number(identity, static_cast<uint32_t>(uint64_t(value) >> 32));
+        };
+        for (const auto *module : {&state.executable, &state.library}) {
+            pointer(module->bias); write_string(identity, module->build);
+            write_number(identity, static_cast<uint32_t>(module->loads.size()));
+            for (const auto &[begin, end] : module->loads) { pointer(begin); pointer(end); }
+        }
+        identity.write(reinterpret_cast<const char *>(seed.data()), seed.size());
+        const auto bytes = identity.str();
+        identity_ = sha256(reinterpret_cast<const unsigned char *>(bytes.data()), bytes.size());
+        // Bump this revision when discovery rules or the snapshot format change.
+        name_ = "dfcn-native-elf-1-" + hex_digest(identity_);
+    }
+
+    bool load(RuntimeState &state) const {
+        try {
+            const auto target = "/memfd:" + name_ + " (deleted)";
+            for (const auto &entry : std::filesystem::directory_iterator("/proc/self/fd")) {
+                std::error_code error;
+                if (std::filesystem::read_symlink(entry.path(), error).string() != target || error) continue;
+                Descriptor descriptor{open(entry.path().c_str(), O_RDONLY | O_CLOEXEC)};
+                if (descriptor.value < 0 || fcntl(descriptor.value, F_GET_SEALS) != seals) continue;
+                struct stat metadata{};
+                if (fstat(descriptor.value, &metadata) != 0 || metadata.st_size < 32 ||
+                    uint64_t(metadata.st_size) > maximum_size) continue;
+                std::vector<unsigned char> bytes(static_cast<size_t>(metadata.st_size));
+                size_t offset = 0;
+                while (offset < bytes.size()) {
+                    const auto count = pread(descriptor.value, bytes.data() + offset, bytes.size() - offset, offset);
+                    if (count < 0 && errno == EINTR) continue;
+                    if (count <= 0) throw std::runtime_error("Cannot read process ELF cache");
+                    offset += static_cast<size_t>(count);
+                }
+                Reader reader(std::move(bytes), true); reader.magic("DFCNLM01");
+                std::array<unsigned char, 32> identity{}; reader.read(identity.data(), identity.size());
+                if (identity != identity_) continue;
+                auto main = read_covered_state(reader, state.executable);
+                auto library = read_covered_state(reader, state.library);
+                std::vector<Contract> contracts(reader.count(100000));
+                for (auto &contract : contracts) {
+                    contract.name = reader.string(); contract.reference = reader.number();
+                    contract.size = reader.number(); contract.type = reader.number();
+                    if (contract.name.empty() || !contract.reference || !contract.size ||
+                        contract.size > UINT32_MAX - contract.reference ||
+                        (contract.type != STT_OBJECT && contract.type != STT_FUNC))
+                        throw std::runtime_error("Invalid process ELF ABI contract");
+                }
+                const auto message = reader.blob(65536);
+                const bool complete = reader.count(1) != 0;
+                reader.finish();
+                if (complete != ((state.edition != 3 || main.complete) &&
+                    (!state.library_relocated || library.complete))) return false;
+                std::string description = "Native ELF address table reused from process cache; ";
+                description.append(message.begin(), message.end());
+                state.main_addresses = std::move(main); state.library_addresses = std::move(library);
+                state.library_contracts = std::move(contracts);
+                state.message = std::move(description); state.complete = complete;
+                return true;
+            }
+        } catch (const std::exception &) {}
+        return false;
+    }
+
+    bool save(const RuntimeState &state, const Catalog &main, const Catalog &library) const {
+        try {
+            if (state.message.size() > 65536 || state.main_addresses.size != module_size(state.executable) ||
+                state.library_addresses.size != module_size(state.library)) return false;
+            std::ostringstream output(std::ios::binary | std::ios::out);
+            output.write("DFCNLM01", 8); write_number(output, 1);
+            output.write(reinterpret_cast<const char *>(identity_.data()), identity_.size());
+            write_coverage(output, main); write_state(output, state.main_addresses);
+            write_coverage(output, library); write_state(output, state.library_addresses);
+            write_number(output, static_cast<uint32_t>(state.library_contracts.size()));
+            for (const auto &contract : state.library_contracts) {
+                write_string(output, contract.name); write_number(output, contract.reference);
+                write_number(output, contract.size); write_number(output, contract.type);
+            }
+            write_string(output, state.message); write_number(output, state.complete ? 1 : 0);
+            if (!output) return false;
+            auto bytes = output.str();
+            if (bytes.size() > maximum_size - 32) return false;
+            const auto digest = sha256(reinterpret_cast<const unsigned char *>(bytes.data()), bytes.size());
+            bytes.append(reinterpret_cast<const char *>(digest.data()), digest.size());
+            Descriptor descriptor{memfd_create(name_.c_str(), MFD_CLOEXEC | MFD_ALLOW_SEALING)};
+            if (descriptor.value < 0) return false;
+            for (size_t offset = 0; offset < bytes.size();) {
+                const auto count = write(descriptor.value, bytes.data() + offset, bytes.size() - offset);
+                if (count < 0 && errno == EINTR) continue;
+                if (count <= 0) return false;
+                offset += static_cast<size_t>(count);
+            }
+            if (fcntl(descriptor.value, F_ADD_SEALS, seals) < 0) return false;
+            descriptor.value = -1; // Retain only this sealed snapshot until process exit.
+            return true;
+        } catch (const std::exception &) { return false; }
+    }
+};
 
 inline RuntimeState prepare() {
     RuntimeState result;
@@ -250,15 +422,24 @@ inline RuntimeState prepare() {
             result.message = "Native ELF address table: 53.16 " + std::string(result.edition == 1 ? "Steam" : "Classic");
             return result;
         }
-        Reader seed(runtime::data_path() / "native-addresses/elf-seed.bin"); seed.magic("DFCNEL01");
+        Reader seed(runtime::data_path() / "native-addresses/elf-seed.bin");
+        const auto seed_digest = sha256(seed.bytes().data(), seed.bytes().size());
+        ProcessCache process_cache(result, seed_digest);
+        if (process_cache.load(result)) return result;
+        // Use the same seed snapshot for the process identity and discovery.
+        seed.magic("DFCNEL01");
         if (seed.count(2) != 2) throw std::runtime_error("Missing executable/library ELF startup evidence");
         const auto main_catalog = read_catalog(seed), library_catalog = read_catalog(seed); seed.finish();
         if (main_catalog.build != steam_build || library_catalog.build != library_build)
             throw std::runtime_error("ELF startup evidence uses a different reference ABI");
         result.library_contracts = library_catalog.contracts;
+        const auto retain = [&] {
+            if (!process_cache.save(result, main_catalog, library_catalog))
+                result.message += "; process address cache could not be retained";
+        };
         const Image main_image(result.executable.path), library_image(result.library.path);
         validate_image(main_image, result.executable); validate_image(library_image, result.library);
-        const auto key = hex_digest(main_image.digest) + "-" + hex_digest(library_image.digest) + "-" + hex_digest(sha256(seed.bytes().data(), seed.bytes().size()));
+        const auto key = hex_digest(main_image.digest) + "-" + hex_digest(library_image.digest) + "-" + hex_digest(seed_digest);
         const auto cache = runtime::data_path() / "native-addresses/cache" / ("elf-" + key + ".bin");
         try {
             Reader reader(cache, true); reader.magic("DFCNLC01");
@@ -268,6 +449,7 @@ inline RuntimeState prepare() {
                 (!result.library_relocated || result.library_addresses.complete);
             if (result.complete) {
                 result.message = "Native ELF address table loaded from version cache: main=" + result.executable.build + " g_src=" + result.library.build;
+                retain();
                 return result;
             }
         } catch (const std::exception &) { /* Missing or stale cache starts discovery. */ }
@@ -305,6 +487,7 @@ inline RuntimeState prepare() {
                 std::filesystem::rename(temporary, cache); result.message += "; version cache saved";
             } catch (const std::exception &error) { result.message += "; cache write failed: " + std::string(error.what()); }
         }
+        retain();
     } catch (const std::exception &error) { result.complete = false; result.message = "Native ELF address resolution failed: " + std::string(error.what()); }
     return result;
 }

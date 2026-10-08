@@ -1052,7 +1052,11 @@ void Overlay::index_dfhack_output(const Rule &input) {
 void Overlay::load_dfhack_help_catalog(std::function<void()> *catalog_publication) {
     const auto directory = fs::u8path(config_.mapping_path).parent_path();
     auto snapshot = std::make_shared<DfhackOutputSnapshot>();
-    const auto index_catalog_rule = [&](Rule rule, bool stonesense = false) {
+    const auto index_catalog_rule = [&](const Rule &input, bool stonesense = false) {
+        // Most of the main catalog belongs to game text. Filter those rows
+        // before copying their strings, template vectors and color data.
+        if (!input.source.starts_with("DFHack ")) return;
+        Rule rule = input;
         std::vector<uint32_t> codepoints;
         const bool gui_field = rule.source.starts_with("DFHack GUI ");
         constexpr std::string_view death_prefix = "DFHack death cause: ";

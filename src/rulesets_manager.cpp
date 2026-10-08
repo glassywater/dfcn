@@ -227,189 +227,95 @@ namespace Hooks {
             memo_cache_.size(), total_entries, LruMemoMap::DEFAULT_MAX);
     }
 
-    // -------------------------------------------------------------------------
-    // 从根出发的图分析（循环检测 + simple 叶子路径）
-    // -------------------------------------------------------------------------
-
-    /// 从 "::" 出发做全量 DFS（无缓存，每条路径完整探索），同时完成三件事：
-    ///
-    ///   设计决策：不使用 visited 集合剪枝（即同一 namespace 可能被多条路径重复访问）。
-    ///   规则集图规模有限（实际 ~585 节点，边数可控），全量遍历的开销在加载期可接受。
-    ///   保留 visited 仅用于统计可达节点数，不用于控制流程 —— 确保每条 distinct 路径的
-    ///   simple 属性都被独立评估，每条循环路径都被完整发现。
-    ///
-    ///   1. 循环检测：通过 in_stack 检测 back-edge，发现循环时标记规则签名
-    ///      到 cyclic_rule_signatures_ 并打印循环路径。
-    ///
-    ///   2. simple 叶子路径：parent_simple 在规则粒度沿 DFS 传播。
-    ///      source 为单 token 的规则是"简单委派"，不切断 simple 链。
-    ///      当 namespace 所有规则都是 1-token 纯字面时打印 [SimpleLeaf]。
-    ///
-    ///   3. 深度追踪：每次深入新节点时记录最深路径。
+    // Analyze each reachable namespace once. Shared vocabularies can have
+    // many incoming paths; enumerating every path made loading grow with
+    // their combinations rather than with the size of the rule graph.
     void RulesetsManager::analyze_from_root() {
         cyclic_rule_signatures_.clear();
+        if (!rulesets_.contains("::")) return;
 
-        if (!rulesets_.contains("::")) {
-            LOGGERMANAGER.getLogger()->warn("[Analyze] root \"::\" not found, skip");
-            return;
+        struct Edge { size_t target; const Tokens* rule; };
+        struct Node { const std::string* identifier; std::vector<Edge> edges; };
+        std::vector<Node> graph;
+        std::unordered_map<std::string, size_t> indices;
+        graph.reserve(rulesets_.size());
+        indices.reserve(rulesets_.size());
+        for (const auto& [identifier, rules] : rulesets_) {
+            (void)rules;
+            indices.emplace(identifier, graph.size());
+            graph.push_back({&identifier, {}});
         }
-
-        std::set<std::string> in_stack;      // 当前路径上的 namespace（循环检测）
-        std::set<std::string> visited;       // 所有已探索的 namespace（纯统计）
-        std::vector<std::string> path_stack; // 当前路径（有序）
-
-        // edge_stack[i] = 从 path_stack[i] 到 path_stack[i+1] 所经过的规则签名
-        struct Edge { std::string from_ns; Tokens rule_source; };
-        std::vector<Edge> edge_stack;
-
-        size_t global_max_depth = 0;
-        std::string deepest_id;
-
-        // parent_simple: 从根到当前 namespace 的路径上所有祖先都是 simple
-        std::function<std::string(const std::string&, bool)> dfs =
-            [&](const std::string& current, bool parent_simple) -> std::string {
-
-            // back-edge：current 已在当前路径上 → 发现循环
-            if (in_stack.contains(current)) {
-                auto stack_it = std::find(path_stack.begin(), path_stack.end(), current);
-                // in_stack 与 path_stack 始终同步，current 必在 path_stack 中
-                size_t idx = stack_it - path_stack.begin();
-                for (size_t i = idx; i < edge_stack.size(); ++i) {
-                    cyclic_rule_signatures_.insert({edge_stack[i].from_ns, edge_stack[i].rule_source});
-                }
-                // 打印循环路径
-                std::string cycle_path = current;
-                cycle_path.reserve(256);
-                for (size_t i = idx + 1; i < path_stack.size(); ++i)
-                    cycle_path += " → " + path_stack[i];
-                cycle_path += " → " + current + " (back)";
-                LOGGERMANAGER.getLogger()->error("[Cycle] {}", cycle_path);
-                return current;  // 返回 cycle target
-            }
-
-            in_stack.insert(current);
-            path_stack.push_back(current);
-
-            // 深度追踪
-            if (path_stack.size() > global_max_depth) {
-                global_max_depth = path_stack.size();
-                deepest_id = current;
-                std::string depth_path;
-                depth_path.reserve(256);
-                for (size_t i = 0; i < path_stack.size(); ++i) {
-                    if (i > 0) depth_path += " → ";
-                    depth_path += path_stack[i];
-                }
-                LOGGERMANAGER.getLogger()->debug("[Depth]{}: {}", global_max_depth, depth_path);
-            }
-
-            auto it = rulesets_.find(current);
-            if (it != rulesets_.end()) {
-                // [SimpleLeaf] 检查（namespace 级别）：所有规则 source 都是单 token 且无引用
-                {
-                    bool all_single_token = true;
-                    bool has_ref = false;
-                    for (const auto& [orig_tokens, trans_tokens] : it->second) {
-                        if (orig_tokens.size() == 1 && trans_tokens.size() == 1
-                            && orig_tokens[0].type == Type::Literal && orig_tokens[0].value.empty()
-                            && trans_tokens[0].type == Type::Literal && trans_tokens[0].value.empty())
-                            continue;
-
-                        if (orig_tokens.size() != 1) {
-                            all_single_token = false;
-                            break;
-                        }
-                        if (orig_tokens[0].type == Type::Reference) has_ref = true;
-                    }
-                    if (parent_simple && all_single_token && !has_ref) {
-                        std::string path_str;
-                        path_str.reserve(256);
-                        for (size_t i = 0; i < path_stack.size(); ++i) {
-                            if (i > 0) path_str += " → ";
-                            path_str += path_stack[i];
-                        }
-                        LOGGERMANAGER.getLogger()->debug("[SimpleLeaf] {}", path_str);
-                    }
-                }
-
-                // 逐规则遍历引用 — parent_simple 在规则粒度判断：
-                // 单 token source 的规则是"简单委派"，不影响 child 的 simple 链；
-                // 多 token source 的规则是"复杂匹配"，切断 simple 链。
-                std::string cycle_target;
-                for (const auto& [orig_tokens, trans_tokens] : it->second) {
-                    // 判断当前这条规则是否"简单"（source 只有 1 个 token）
-                    bool is_optional_empty = (orig_tokens.size() == 1 && trans_tokens.size() == 1
-                        && orig_tokens[0].type == Type::Literal && orig_tokens[0].value.empty()
-                        && trans_tokens[0].type == Type::Literal && trans_tokens[0].value.empty());
-                    bool rule_is_single = is_optional_empty || (orig_tokens.size() == 1);
-                    bool child_simple = parent_simple && rule_is_single;
-
-                    for (const auto& token : orig_tokens) {
-                        if (token.type != Type::Reference) continue;
-                        if (token.value[0] == '@' || token.value[0] == '#') continue;
-
-                        // 决定要跟踪的目标 namespace。
-                        // - 普通引用：直接使用 token.value（已由 parse_file 规范化）
-                        // - % 引用：格式为 %replacer:base_ns[:qualifier]（已规范化）
-                        //   从中提取目标 namespace ::base_ns[::qualifier]
-                        std::string ref_target;
-                        if (token.value[0] == '%') {
-                            auto first_colon = token.value.find(':');
-                            if (first_colon == std::string::npos) continue;       // 无冒号（不应出现）
-                            auto second_colon = token.value.find(':', first_colon + 1);
-                            if (second_colon == std::string::npos) {
-                                // %replacer:base_ns → 目标为 ::base_ns
-                                std::string base = token.value.substr(first_colon + 1);
-                                if (base.empty()) continue;                      // %replacer: → 跳过
-                                ref_target = "::" + base;
-                            } else {
-                                // %replacer:base_ns:qualifier → 目标为 ::base_ns::qualifier
-                                std::string base = token.value.substr(first_colon + 1, second_colon - first_colon - 1);
-                                std::string qualifier = token.value.substr(second_colon + 1);
-                                if (qualifier.starts_with("::"))
-                                    ref_target = qualifier;                      // 已是绝对路径
-                                else
-                                    ref_target = "::" + base + "::" + qualifier;
-                            }
+        for (const auto& [identifier, rules] : rulesets_) {
+            auto& edges = graph[indices.at(identifier)].edges;
+            for (const auto& [source, target] : rules) {
+                (void)target;
+                for (const auto& token : source) {
+                    if (token.type != Type::Reference || token.value.empty() ||
+                        token.value[0] == '@' || token.value[0] == '#') continue;
+                    std::string reference = token.value;
+                    if (reference[0] == '%') {
+                        const auto first = reference.find(':');
+                        if (first == std::string::npos) continue;
+                        const auto second = reference.find(':', first + 1);
+                        if (second == std::string::npos) {
+                            const auto base = reference.substr(first + 1);
+                            if (base.empty()) continue;
+                            reference = "::" + base;
                         } else {
-                            ref_target = token.value;
-                        }
-
-                        edge_stack.push_back({current, orig_tokens});
-                        std::string target = dfs(ref_target, child_simple);
-                        edge_stack.pop_back();
-
-                        if (!target.empty()) {
-                            cyclic_rule_signatures_.insert({current, orig_tokens});
-                            if (target != current) cycle_target = target;
+                            const auto base = reference.substr(first + 1, second - first - 1);
+                            const auto qualifier = reference.substr(second + 1);
+                            reference = qualifier.starts_with("::") ? qualifier
+                                : "::" + base + "::" + qualifier;
                         }
                     }
+                    if (const auto found = indices.find(reference); found != indices.end())
+                        edges.push_back({found->second, &source});
                 }
-
-                path_stack.pop_back();
-                in_stack.erase(current);
-                visited.insert(current);
-                return (cycle_target == current) ? "" : cycle_target;
             }
+        }
 
-            path_stack.pop_back();
-            in_stack.erase(current);
-            visited.insert(current);
-            return "";
+        // An edge lies on a cycle exactly when both ends are in the same
+        // strongly connected component (including a one-node self-reference).
+        // Keep the original whole-rule exclusion when any token is cyclic.
+        const size_t unseen = graph.size();
+        std::vector<size_t> order(graph.size(), unseen), low(graph.size()),
+            components(graph.size(), unseen), stack;
+        std::vector<bool> active(graph.size(), false);
+        std::vector<size_t> component_sizes;
+        size_t next_order = 0;
+        const auto visit = [&](auto&& self, size_t node) -> void {
+            order[node] = low[node] = next_order++;
+            stack.push_back(node);
+            active[node] = true;
+            for (const auto& edge : graph[node].edges) {
+                if (order[edge.target] == unseen) {
+                    self(self, edge.target);
+                    low[node] = std::min(low[node], low[edge.target]);
+                } else if (active[edge.target]) {
+                    low[node] = std::min(low[node], order[edge.target]);
+                }
+            }
+            if (low[node] != order[node]) return;
+            const size_t component = component_sizes.size();
+            size_t count = 0;
+            for (;;) {
+                const size_t member = stack.back();
+                stack.pop_back();
+                active[member] = false;
+                components[member] = component;
+                ++count;
+                if (member == node) break;
+            }
+            component_sizes.push_back(count);
         };
-
-        dfs("::", true);  // 根 "::" 本身视为在 simple 路径起点
-
-        if (!cyclic_rule_signatures_.empty()) {
-            LOGGERMANAGER.getLogger()->info("[Analyze] {} cyclic rule(s) detected",
-                cyclic_rule_signatures_.size());
+        visit(visit, indices.at("::"));
+        for (size_t node = 0; node < graph.size(); ++node) {
+            if (components[node] == unseen) continue;
+            for (const auto& edge : graph[node].edges)
+                if (components[node] == components[edge.target] &&
+                    (node == edge.target || component_sizes[components[node]] > 1))
+                    cyclic_rule_signatures_.insert({*graph[node].identifier, *edge.rule});
         }
-        if (global_max_depth > 0) {
-            LOGGERMANAGER.getLogger()->info("[Analyze] deepest chain: {}, depth {}",
-                deepest_id, global_max_depth);
-        }
-
-        LOGGERMANAGER.getLogger()->info("[Analyze] {} namespaces reachable from root", visited.size());
     }
 
     bool RulesetsManager::load_rule_sets() {

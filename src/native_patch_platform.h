@@ -11,10 +11,106 @@ static size_t native_patch_page_size() noexcept {
     GetSystemInfo(&info);
     return info.dwPageSize;
 #else
-    const long size = sysconf(_SC_PAGESIZE);
-    return size > 0 ? static_cast<size_t>(size) : 0;
+    static const size_t page_size = [] {
+        const long size = sysconf(_SC_PAGESIZE);
+        return size > 0 ? static_cast<size_t>(size) : size_t(0);
+    }();
+    return page_size;
 #endif
 }
+
+#ifdef _WIN32
+struct NativePatchMappingScope {};
+#else
+// Windows queries mappings directly with VirtualQuery. Linux needs a text
+// snapshot; reuse it only within one hook installation/removal operation.
+// The scope owns all storage, and TLS retains only a trivial stack pointer.
+struct NativePatchMappingSnapshot {
+    struct Region { uintptr_t begin, end; NativePatchProtection protection; };
+    std::vector<Region> regions;
+    bool loaded = false;
+
+    void invalidate() noexcept { loaded = false; regions.clear(); }
+    bool load() noexcept {
+        if (loaded) return true;
+        struct Maps {
+            FILE *file = std::fopen("/proc/self/maps", "r");
+            ~Maps() { if (file) std::fclose(file); }
+        } maps;
+        if (!maps.file) return false;
+        try {
+            regions.clear();
+            char line[4096];
+            while (std::fgets(line, sizeof(line), maps.file)) {
+                unsigned long long begin = 0, end = 0;
+                char permissions[5]{};
+                if (std::sscanf(line, "%llx-%llx %4s", &begin, &end, permissions) != 3 ||
+                    begin >= end || end > UINTPTR_MAX ||
+                    (!regions.empty() && begin < regions.back().end)) {
+                    invalidate();
+                    return false;
+                }
+                NativePatchProtection protection = 0;
+                if (permissions[0] == 'r') protection |= PROT_READ;
+                if (permissions[1] == 'w') protection |= PROT_WRITE;
+                if (permissions[2] == 'x') protection |= PROT_EXEC;
+                regions.push_back({static_cast<uintptr_t>(begin), static_cast<uintptr_t>(end), protection});
+            }
+            loaded = !std::ferror(maps.file) && !regions.empty();
+            if (!loaded) invalidate();
+            return loaded;
+        } catch (...) { invalidate(); return false; }
+    }
+    bool protection(uintptr_t address, size_t size, NativePatchProtection &value) const noexcept {
+        auto at = std::upper_bound(regions.begin(), regions.end(), address,
+            [](uintptr_t key, const Region &region) { return key < region.begin; });
+        if (at == regions.begin()) return false;
+        --at;
+        if (address >= at->end || size > at->end - address) return false;
+        value = at->protection;
+        return true;
+    }
+    void update(uintptr_t address, size_t size, NativePatchProtection protection, bool mapped) noexcept {
+        if (!loaded) return;
+        const size_t page = native_patch_page_size();
+        if (!page || !size || size > UINTPTR_MAX - address ||
+            address + size > UINTPTR_MAX - (page - 1)) { invalidate(); return; }
+        const auto begin = address & ~(page - 1);
+        const auto end = (address + size + page - 1) & ~(page - 1);
+        try {
+            std::vector<Region> next;
+            next.reserve(regions.size() + 3);
+            for (const auto &region : regions) {
+                if (region.end <= begin || region.begin >= end) next.push_back(region);
+                else {
+                    if (region.begin < begin) next.push_back({region.begin, begin, region.protection});
+                    if (region.end > end) next.push_back({end, region.end, region.protection});
+                }
+            }
+            if (mapped) next.push_back({begin, end, protection});
+            std::sort(next.begin(), next.end(),
+                [](const Region &left, const Region &right) { return left.begin < right.begin; });
+            size_t count = 0;
+            for (const auto &region : next) {
+                if (count && next[count - 1].end == region.begin &&
+                    next[count - 1].protection == region.protection) next[count - 1].end = region.end;
+                else next[count++] = region;
+            }
+            next.resize(count);
+            regions.swap(next);
+        } catch (...) { invalidate(); }
+    }
+};
+static thread_local NativePatchMappingSnapshot *g_native_patch_mappings = nullptr;
+struct NativePatchMappingScope {
+    NativePatchMappingSnapshot snapshot;
+    NativePatchMappingSnapshot *previous = g_native_patch_mappings;
+    NativePatchMappingScope() { if (!previous) g_native_patch_mappings = &snapshot; }
+    NativePatchMappingScope(const NativePatchMappingScope &) = delete;
+    NativePatchMappingScope &operator=(const NativePatchMappingScope &) = delete;
+    ~NativePatchMappingScope() { g_native_patch_mappings = previous; }
+};
+#endif
 
 static bool native_patch_page_protection(uintptr_t address, size_t size,
         NativePatchProtection &protection, unsigned long &error) noexcept {
@@ -34,6 +130,12 @@ static bool native_patch_page_protection(uintptr_t address, size_t size,
     protection = region.Protect;
     return true;
 #else
+    if (g_native_patch_mappings && g_native_patch_mappings->load()) {
+        if (g_native_patch_mappings->protection(address, size, protection)) return true;
+        // A mapping created by another owner may not be in the snapshot.
+        // Refresh before accepting an address outside the known regions.
+        g_native_patch_mappings->invalidate();
+    }
     FILE *maps = std::fopen("/proc/self/maps", "r");
     if (!maps) { error = static_cast<unsigned long>(errno); return false; }
     char line[4096];
@@ -100,7 +202,11 @@ static bool native_patch_protect(void *address, size_t size,
     if (VirtualProtect(address, size, static_cast<DWORD>(protection), &previous)) return true;
     error = GetLastError();
 #else
-    if (mprotect(address, size, static_cast<int>(protection)) == 0) return true;
+    if (mprotect(address, size, static_cast<int>(protection)) == 0) {
+        if (g_native_patch_mappings)
+            g_native_patch_mappings->update(reinterpret_cast<uintptr_t>(address), size, protection, true);
+        return true;
+    }
     error = static_cast<unsigned long>(errno);
 #endif
     return false;
@@ -154,9 +260,8 @@ static void *native_patch_allocate_between(uintptr_t minimum, uintptr_t maximum,
     const size_t page_size = native_patch_page_size();
     if (!page_size) { error = EINVAL; return nullptr; }
     minimum = std::max<uintptr_t>(65536, minimum);
+    if (minimum > UINTPTR_MAX - (page_size - 1)) { error = ENOMEM; return nullptr; }
     uintptr_t cursor = (minimum + page_size - 1) & ~(page_size - 1);
-    FILE *maps = std::fopen("/proc/self/maps", "r");
-    if (!maps) { error = static_cast<unsigned long>(errno); return nullptr; }
     auto allocate_gap = [&](uintptr_t end) noexcept -> void * {
         end = std::min(end, maximum);
         if (cursor >= end || size > end - cursor) return nullptr;
@@ -172,6 +277,26 @@ static void *native_patch_allocate_between(uintptr_t minimum, uintptr_t maximum,
         return memory;
     };
     void *memory = nullptr;
+    if (g_native_patch_mappings && g_native_patch_mappings->load()) {
+        for (const auto &region : g_native_patch_mappings->regions) {
+            if (region.end <= cursor) continue;
+            if (region.begin > cursor && (memory = allocate_gap(region.begin))) break;
+            cursor = region.end;
+            if (cursor >= maximum) break;
+        }
+        if (!memory && cursor < maximum) memory = allocate_gap(maximum);
+        if (memory) {
+            g_native_patch_mappings->update(reinterpret_cast<uintptr_t>(memory), size,
+                PROT_READ | PROT_WRITE, true);
+            return memory;
+        }
+        // MAP_FIXED_NOREPLACE still arbitrates concurrent allocations. A
+        // stale gap must fall back to the current kernel mappings.
+        g_native_patch_mappings->invalidate();
+        cursor = (minimum + page_size - 1) & ~(page_size - 1);
+    }
+    FILE *maps = std::fopen("/proc/self/maps", "r");
+    if (!maps) { error = static_cast<unsigned long>(errno); return nullptr; }
     char line[4096];
     while (std::fgets(line, sizeof(line), maps)) {
         unsigned long long begin = 0, end = 0;
@@ -182,6 +307,9 @@ static void *native_patch_allocate_between(uintptr_t minimum, uintptr_t maximum,
     }
     if (!memory && cursor < maximum) memory = allocate_gap(maximum);
     std::fclose(maps);
+    if (memory && g_native_patch_mappings)
+        g_native_patch_mappings->update(reinterpret_cast<uintptr_t>(memory), size,
+            PROT_READ | PROT_WRITE, true);
     if (!memory && !error) error = ENOMEM;
     return memory;
 #endif
@@ -193,7 +321,11 @@ static bool native_patch_release(void *memory, size_t size, unsigned long &error
     if (VirtualFree(memory, 0, MEM_RELEASE)) return true;
     error = GetLastError();
 #else
-    if (munmap(memory, size) == 0) return true;
+    if (munmap(memory, size) == 0) {
+        if (g_native_patch_mappings)
+            g_native_patch_mappings->update(reinterpret_cast<uintptr_t>(memory), size, 0, false);
+        return true;
+    }
     error = static_cast<unsigned long>(errno);
 #endif
     return false;

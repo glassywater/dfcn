@@ -92,6 +92,7 @@ static std::array<NativeImportHook, 3> g_render_hooks;
 #include "native_render_profile.inc"
 
 static bool install_sdl_hooks() {
+    [[maybe_unused]] NativePatchMappingScope mapping_scope;
     const std::pair<const char *, bool (*)()> stages[] = {
         {"SDL binding discovery", native_prepare_render_bindings},
         {"Stone economic-use bounds guard", install_native_stone_use_guard},
@@ -156,6 +157,7 @@ static bool install_sdl_hooks() {
 }
 
 static void uninstall_sdl_hooks() {
+    [[maybe_unused]] NativePatchMappingScope mapping_scope;
     uninstall_native_dfhack_sitemap_hook();
     uninstall_native_dfhack_lua_output_hook();
     uninstall_native_dfhack_stonesense_hook();
