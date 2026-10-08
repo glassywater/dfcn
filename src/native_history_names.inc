@@ -92,7 +92,8 @@ static uintptr_t native_history_profile_base() {
         ModuleBuildId module;
         dl_iterate_phdr(find_main_build_id, &module);
         if (!module.found || !native_validate_game()) return 0;
-        return module.base + 0x400000; // Nonzero anchor for ET_EXEC (bias 0).
+        const auto origin = elf_runtime::automatic() ? elf_runtime::state().executable_origin : uintptr_t(0x400000);
+        return origin <= UINTPTR_MAX - module.base ? module.base + origin : 0;
 #endif
     }();
     return base;

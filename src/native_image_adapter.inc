@@ -213,16 +213,13 @@ static int find_present_slot(dl_phdr_info *info, size_t, void *opaque) {
 }
 
 static bool native_validate_game() {
-    ModuleBuildId game, main;
-    dl_iterate_phdr(find_game_build_id, &game);
-    dl_iterate_phdr(find_main_build_id, &main);
-    if (!game.found || game.value != "f45d1ee1b60004b61116fcaaf96602b305170619" ||
-        !main.found || (main.value != "bcc6789e6fb477b785a2b02be80b8b1b054ff88c" &&
-                        main.value != "84ba59a59a6bbe4487f933a8c85360a45902749e")) {
-        log_line("ERROR", "Unsupported native game build; refusing graphics/texture ABI access");
-        return false;
-    }
-    return true;
+    const auto &binding = elf_runtime::state();
+    static const bool reported = [&binding] {
+        log_line(binding.complete ? "INFO" : "ERROR", binding.message);
+        return true;
+    }();
+    (void)reported;
+    return binding.complete;
 }
 
 #endif

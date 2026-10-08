@@ -168,9 +168,8 @@ def deploy_runtime_data(directory: Path) -> None:
         install(runtime / name, (RUNTIME / name).read_bytes())
     for name in ("dfhack-help.LICENSE", "lua-output.LICENSE", "pinyin-data/LICENSE"):
         install(runtime / name, (ROOT / "third_party" / name).read_bytes())
-    if sys.platform == "win32":
-        name = "native-addresses/pe-seed.bin"
-        install(runtime / name, (RUNTIME / name).read_bytes())
+    name = "native-addresses/pe-seed.bin" if sys.platform == "win32" else "native-addresses/elf-seed.bin"
+    install(runtime / name, (RUNTIME / name).read_bytes())
     for source in sorted((RUNTIME / "rulesets").rglob("*.toml")):
         install(runtime / source.relative_to(RUNTIME), source.read_bytes())
 
@@ -683,6 +682,18 @@ def main() -> int:
             if needs_update([output], inputs):
                 generate_elf_bindings(Image(sources["reference"]), Image(sources["classic"]),
                                       UPSTREAM / "df-structures/symbols.xml", output)
+        if sys.platform == "linux":
+            from build_elf_runtime_seed import generate as generate_elf_seed
+            from native_elf_coordinates import sources as elf_binding_sources
+            seed_output = RUNTIME / "native-addresses/elf-seed.bin"
+            seed_inputs = [ROOT / "tools/build_elf_runtime_seed.py", ROOT / "tools/native_elf_coordinates.py",
+                           ROOT / "tools/native_pe_coordinates.py", ROOT / "tools/build_pe_runtime_seed.py",
+                           ROOT / "tools/pe_instruction_match.py", ROOT / "tools/build_native_image_bindings.py",
+                           RUNTIME / "native-elf-images.json", sources["reference"],
+                           sources["reference"].parent / "libg_src_lib.so",
+                           UPSTREAM / "df-structures/symbols.xml", *elf_binding_sources(ROOT)]
+            if needs_update([seed_output], seed_inputs):
+                generate_elf_seed(sources["reference"], seed_output)
         compile_flags = ["-std=c++20", *split_arguments(env.get("CXXFLAGS", "-O2")),
                          "-Wall", "-Wextra", "-Wpedantic", *abi["compile"],
                          "-Icompat", "-Isrc", "-Ithird_party/tomlplusplus/include", "-iquote",

@@ -45,9 +45,10 @@ static bool native_prepare_render_bindings() {
     const auto top = reinterpret_cast<uintptr_t>(dlsym(RTLD_DEFAULT, "_ZN16renderer_2d_base15update_top_tileEii"));
     const auto full = reinterpret_cast<uintptr_t>(dlsym(RTLD_DEFAULT, "_ZN16renderer_2d_base10update_allEv"));
     if (!base || !top || !full) return false;
-    g_base_glyph_return = base + 0x178;
-    g_top_glyph_return = top + 0x14e;
-    g_full_top_glyph_return = full + 0x508;
+    g_base_glyph_return = elf_runtime::symbol_return("_ZN16renderer_2d_base11update_tileEii", 0x178);
+    g_top_glyph_return = elf_runtime::symbol_return("_ZN16renderer_2d_base15update_top_tileEii", 0x14e);
+    g_full_top_glyph_return = elf_runtime::symbol_return("_ZN16renderer_2d_base10update_allEv", 0x508);
+    if (!g_base_glyph_return || !g_top_glyph_return || !g_full_top_glyph_return) return false;
     for (const uintptr_t site : {g_base_glyph_return, g_top_glyph_return, g_full_top_glyph_return}) {
         if (*reinterpret_cast<const unsigned char *>(site - 5) != 0xe8) {
             log_line("ERROR", "Native glyph SDL_RenderCopy call identity mismatch");

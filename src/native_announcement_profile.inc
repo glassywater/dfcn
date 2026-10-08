@@ -49,13 +49,17 @@ static bool resolve_native_announcement_binding(NativeAnnouncementBinding &bindi
     // 17ea25b..17ea26c copies the entire source to report::text at +8.
     // Keep ENDBR64 at the original indirect-call entry; relocate three PUSHes.
     const unsigned char type_read[] = {0x48,0x0f,0xbf,0x02,0x48,0x89,0xd5,0x66,0x3d,0x63,0x01};
-    if (std::memcmp(base + native_reference_va(0x17ea0a5), type_read, sizeof(type_read)) != 0) return false;
-    binding.entry = base + native_reference_va(0x17ea074);
+    const auto type_va = native_reference_va(0x17ea0a5);
+    const auto entry_va = native_reference_va(0x17ea074);
+    const auto speech_va = native_reference_va(0x1031354);
+    if (!type_va || !entry_va || !speech_va ||
+        std::memcmp(base + type_va, type_read, sizeof(type_read)) != 0) return false;
+    binding.entry = base + entry_va;
     binding.prefix = {0x41,0x57,0x41,0x56,0x41,0x55};
     // 1031350 mutates the single string& in RDI. Its two native searches
     // (1031362/103145e) use "S"/"s" before inserting the lisp spelling.
     // PUSH R15; MOV R8D,1 are complete position-independent instructions.
-    binding.speech_entry = base + native_reference_va(0x1031354);
+    binding.speech_entry = base + speech_va;
     binding.speech_prefix = {0x41,0x57,0x41,0xb8,0x01,0x00,0x00,0x00};
 #endif
     return true;

@@ -719,6 +719,26 @@ static const NativeElfCaptionProfile *native_elf_caption_profile(ModuleBuildId &
         for (const auto &profile : native_elf_caption_profiles)
             if (module.value == profile.build_id) return &profile;
     }
+    if (module.found && elf_runtime::automatic()) {
+        static const NativeElfCaptionProfile discovered = [] {
+            auto result = native_elf_caption_profiles[0];
+            result.resize = native_reference_va(result.resize);
+            result.draw = native_reference_va(result.draw);
+            for (auto &address : result.embark_resize) address = native_reference_va(address);
+            for (auto &address : result.embark_draw) address = native_reference_va(address);
+            for (auto &address : result.origin) address = native_reference_va(address);
+            for (auto &row : result.legends_items)
+                for (auto &address : row) address = native_reference_va(address);
+            return result;
+        }();
+        if (!discovered.resize || !discovered.draw ||
+            std::any_of(discovered.embark_resize.begin(), discovered.embark_resize.end(), [](auto address) { return !address; }) ||
+            std::any_of(discovered.embark_draw.begin(), discovered.embark_draw.end(), [](auto address) { return !address; }) ||
+            std::any_of(discovered.origin.begin(), discovered.origin.end(), [](auto address) { return !address; })) return nullptr;
+        for (const auto &row : discovered.legends_items)
+            if (std::any_of(row.begin(), row.end(), [](auto address) { return !address; })) return nullptr;
+        return &discovered;
+    }
     log_line("ERROR", "Unsupported native executable for complete caption capture");
     return nullptr;
 }
@@ -963,7 +983,7 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         native_history_layout::ui_look_list_rva);
     // These are the static curses_text_boxst toolbar cards, independent of
     // ViewBase's container named Tooltip. Calls are validated on installation.
-    profile.legacy_toolbar_tooltip = module.value == "bcc6789e6fb477b785a2b02be80b8b1b054ff88c";
+    profile.legacy_toolbar_tooltip = elf_runtime::state().edition != 2;
     profile.inline_resizes.push_back(std::move(action_resize));
     const auto widget_table = reinterpret_cast<uintptr_t>(
         dlsym(RTLD_DEFAULT, "_ZTVN7widgets14text_truncatedE"));
@@ -997,8 +1017,9 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     // as its native wrap rows; Linux previously left this binding empty.
     profile.multiline_widget = {
         reinterpret_cast<void **>(multiline_table + (2 + 3) * sizeof(void *)),
-        0x10, 0x150, 0xc4, reinterpret_cast<uintptr_t>(multiline_render) + 0xc1,
+        0x10, 0x150, 0xc4, elf_runtime::symbol_return("_ZN7widgets14text_multiline6renderEj", 0xc1),
         multiline_render};
+    if (!elf_runtime::symbol_return("_ZN7widgets14text_multiline6renderEj", 0xc1)) return false;
     profile.resize_target = identity->resize;
     profile.draw_target = identity->draw;
     profile.resize = reinterpret_cast<NativeCaptionResizeFn>(module.base + identity->resize);

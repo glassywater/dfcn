@@ -8,6 +8,8 @@ DFCN 是 **Byayoi 同人社区**的《Dwarf Fortress（矮人要塞）》汉化�
 
 项目在游戏渲染阶段捕获英文文本，通过词表与语法规则生成中文，再进行字形测量、换行和覆盖绘制，不修改游戏 RAW 或存档。提供 Windows 与 Linux 原生适配，当前适配版本为 **53.16**；Windows 支持 Steam 版与官网免费版。
 
+Linux 遇到未收录的游戏 Build ID 时，会读取当前进程的 ELF 加载地址，并使用随包发布的 `data/runtime/native-addresses/elf-seed.bin` 自动解析函数和全局对象地址。完整解析后按游戏文件及特征数据的指纹缓存结果；存在歧义、缺失地址或不兼容的 ABI 时会说明具体原因并停止安装钩子。启动时无需 Python、反汇编工具或参考游戏文件，自动扫描不保证兼容任意新版本。
+
 ## Windows 安装与使用
 
 当前运行包适用于 **Dwarf Fortress 53.16 / Windows x64**，无需编译，也无需安装 DFHack 或其他外部 Mod。

@@ -33,6 +33,7 @@
 #include <sys/mman.h>
 #include <sys/uio.h>
 #include <unistd.h>
+#include "native_elf_resolver.h"
 #include "svector.h"
 #include "bimap.h"
 #include "graphics.h"

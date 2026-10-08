@@ -59,8 +59,7 @@ static uintptr_t elf_arena_relative(uintptr_t instruction, size_t displacement_o
 static bool locate_native_arena_profile(NativeArenaContext &context) {
     ModuleBuildId module;
     dl_iterate_phdr(find_main_build_id, &module);
-    if (!module.found || (module.value != "bcc6789e6fb477b785a2b02be80b8b1b054ff88c" &&
-                         module.value != "84ba59a59a6bbe4487f933a8c85360a45902749e")) return false;
+    if (!module.found || !elf_runtime::supported()) return false;
     NativeElfArenaImage image;
     dl_iterate_phdr(find_elf_arena_regions, &image);
     // Verified 53.16 filter semantics: copy both complete int16 ID vectors,
