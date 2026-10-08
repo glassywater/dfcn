@@ -1012,8 +1012,10 @@ namespace Hooks {
         static_creature_names_.clear();
         std::set<std::string> visiting;
         const auto collect = [&](auto&& self, const std::string& identifier) -> void {
-            if (!identifier.starts_with("::creatures::") ||
-                !visiting.insert(identifier).second) return;
+            // The typed roots below establish species ownership. An
+            // identity alias may lead into an extension's own namespace
+            // (e.g. ::whaleys_dogs::names), so retain its literal leaves.
+            if (!visiting.insert(identifier).second) return;
             const auto found = rulesets_.find(identifier);
             if (found != rulesets_.end()) {
                 for (const auto& [source, target] : found->second) {
