@@ -6,14 +6,14 @@ struct PinyinReading {
 };
 #include "../third_party/pinyin-data/pinyin_data.inc"
 
-static const char *search_pinyin_readings(uint32_t codepoint) {
+static const PinyinReading *search_pinyin_readings(uint32_t codepoint) {
     const auto found = std::lower_bound(std::begin(pinyin_readings),
         std::end(pinyin_readings), codepoint,
         [](const PinyinReading &entry, uint32_t value) {
             return entry.codepoint < value;
         });
     return found != std::end(pinyin_readings) && found->codepoint == codepoint
-        ? found->readings : nullptr;
+        ? found : nullptr;
 }
 
 // Accept untoned spelling, tone-marked spelling, and the usual v/u:/ü forms.
@@ -70,29 +70,45 @@ static std::string normalize_search_pinyin(std::string_view text) {
 }
 
 struct PinyinSearchUnit {
-    size_t begin, length;
-    const char *readings;
+    uint32_t begin, packed;
+    uint32_t length() const { return packed & 7; }
+    const char *readings() const {
+        const uint32_t entry = packed >> 3;
+        return entry ? pinyin_readings[entry - 1].readings : nullptr;
+    }
 };
 struct PinyinSearchIndex {
     std::string literal, full, initials;
     std::vector<PinyinSearchUnit> units;
     bool has_pinyin = false, multiple_readings = false;
+    uint32_t letters = 0;
+    std::array<uint64_t, 11> letter_pairs{};
     size_t bytes() const {
-        return literal.size() + full.size() + initials.size() +
+        return literal.capacity() + full.capacity() + initials.capacity() +
             units.capacity() * sizeof(PinyinSearchUnit);
+    }
+    void add_letter_pair(unsigned first, unsigned second) {
+        const unsigned bit = first * 26 + second;
+        letter_pairs[bit / 64] |= uint64_t{1} << (bit % 64);
     }
 };
 
 static PinyinSearchIndex make_search_pinyin_index(std::string_view text) {
     PinyinSearchIndex index;
+    index.literal.reserve(text.size());
+    index.full.reserve(text.size());
+    index.initials.reserve(text.size());
     for (size_t cursor = 0; cursor < text.size();) {
         const auto decoded = decode_utf8_at(text, cursor);
         if (!decoded) return {};
-        const auto literal = normalize_search_pinyin(text.substr(cursor, decoded->second));
+        const auto literal = text.substr(cursor, decoded->second);
         cursor += decoded->second;
-        const char *readings = search_pinyin_readings(decoded->first);
+        const auto *entry = search_pinyin_readings(decoded->first);
+        const char *readings = entry ? entry->readings : nullptr;
         if (!readings && literal.empty()) continue;
-        index.units.push_back({index.literal.size(), literal.size(), readings});
+        const auto reading_id = entry ? static_cast<uint32_t>(entry - std::begin(pinyin_readings) + 1) : 0;
+        index.units.push_back({static_cast<uint32_t>(index.literal.size()),
+            (reading_id << 3) | static_cast<uint32_t>(literal.size())});
         index.literal.append(literal);
         if (readings) {
             const std::string_view choices(readings);
@@ -106,26 +122,97 @@ static PinyinSearchIndex make_search_pinyin_index(std::string_view text) {
             index.initials.append(literal);
         }
     }
+    uint32_t previous_full = 0, previous_initial = 0;
+    for (const auto &unit : index.units) {
+        uint32_t starts = 0, ends = 0;
+        const auto collect = [&](std::string_view spelling) {
+            if (spelling.empty()) return;
+            const auto letter = [](unsigned char byte) { return byte >= 'a' && byte <= 'z'; };
+            if (letter(spelling.front())) starts |= uint32_t{1} << (spelling.front() - 'a');
+            if (letter(spelling.back())) ends |= uint32_t{1} << (spelling.back() - 'a');
+            for (size_t at = 0; at < spelling.size(); ++at) {
+                if (!letter(spelling[at])) continue;
+                index.letters |= uint32_t{1} << (spelling[at] - 'a');
+                if (at && letter(spelling[at - 1]))
+                    index.add_letter_pair(spelling[at - 1] - 'a', spelling[at] - 'a');
+            }
+        };
+        if (const auto *readings = unit.readings()) {
+            std::string_view choices(readings);
+            while (!choices.empty()) {
+                const size_t end = choices.find(' ');
+                collect(choices.substr(0, end));
+                if (end == std::string_view::npos) break;
+                choices.remove_prefix(end + 1);
+            }
+        } else collect(std::string_view(index.literal).substr(unit.begin, unit.length()));
+        for (unsigned first = 0; first < 26; ++first) {
+            if (!((previous_full | previous_initial) & (uint32_t{1} << first))) continue;
+            for (unsigned second = 0; second < 26; ++second)
+                if (starts & (uint32_t{1} << second)) index.add_letter_pair(first, second);
+        }
+        previous_full = ends;
+        previous_initial = unit.readings() ? starts : ends;
+    }
     return index;
 }
 
 struct PinyinSearchQuery {
     std::string literal, phonetic;
     std::vector<size_t> failure;
-    bool mixed = false;
+    std::vector<std::array<uint32_t, 26>> transitions;
+    uint64_t generation = 0, narrowing_epoch = 0;
+    uint32_t letters = 0;
+    std::array<uint64_t, 11> letter_pairs{};
+    bool mixed = false, phonetic_search = false;
     void assign(std::string compact) {
-        literal = std::move(compact);
-        phonetic = normalize_search_pinyin(literal);
-        mixed = std::any_of(phonetic.begin(), phonetic.end(),
+        const std::string normalized = normalize_search_pinyin(compact);
+        const bool next_mixed = std::any_of(normalized.begin(), normalized.end(),
             [](unsigned char byte) { return byte > 0x7f; });
+        const bool next_phonetic_search = std::any_of(normalized.begin(), normalized.end(),
+            [](unsigned char byte) { return byte >= 'a' && byte <= 'z'; });
+        // Appending a query can only remove matches when both representations
+        // extend and the matching grammar stays the same. Editing/deleting,
+        // tone normalization changes and Chinese/pinyin mode changes reset it.
+        const bool narrowing = !literal.empty() && !phonetic.empty() &&
+            compact.starts_with(literal) && normalized.starts_with(phonetic) &&
+            mixed == next_mixed && phonetic_search == next_phonetic_search;
+        static std::atomic<uint64_t> next_generation{1};
+        generation = next_generation.fetch_add(1, std::memory_order_relaxed);
+        if (!narrowing) narrowing_epoch = generation;
+        literal = std::move(compact);
+        phonetic = normalized;
+        mixed = next_mixed;
+        phonetic_search = next_phonetic_search;
+        letters = 0;
+        letter_pairs.fill(0);
+        for (size_t at = 0; at < phonetic.size(); ++at) {
+            const unsigned char byte = phonetic[at];
+            if (byte < 'a' || byte > 'z') continue;
+            letters |= uint32_t{1} << (byte - 'a');
+            if (at && phonetic[at - 1] >= 'a' && phonetic[at - 1] <= 'z') {
+                const unsigned bit = (phonetic[at - 1] - 'a') * 26 + byte - 'a';
+                letter_pairs[bit / 64] |= uint64_t{1} << (bit % 64);
+            }
+        }
         failure.assign(phonetic.size(), 0);
         for (size_t i = 1, prefix = 0; i < phonetic.size(); ++i) {
             while (prefix && phonetic[i] != phonetic[prefix]) prefix = failure[prefix - 1];
             if (phonetic[i] == phonetic[prefix]) ++prefix;
             failure[i] = prefix;
         }
+        transitions.clear();
+        if (phonetic_search) {
+            transitions.resize(phonetic.size());
+            for (size_t state = 0; state < phonetic.size(); ++state)
+                for (unsigned letter = 0; letter < 26; ++letter)
+                    transitions[state][letter] = phonetic[state] == 'a' + letter
+                        ? static_cast<uint32_t>(state + 1)
+                        : state ? transitions[failure[state - 1]][letter] : 0;
+        }
     }
     size_t advance(size_t state, unsigned char byte) const {
+        if (byte >= 'a' && byte <= 'z') return transitions[state][byte - 'a'];
         while (state && static_cast<unsigned char>(phonetic[state]) != byte)
             state = failure[state - 1];
         if (static_cast<unsigned char>(phonetic[state]) == byte) ++state;
@@ -133,12 +220,25 @@ struct PinyinSearchQuery {
     }
 };
 
+struct PinyinSearchScratch {
+    std::vector<size_t> states, next, seen;
+};
+
+static PinyinSearchScratch &search_pinyin_scratch() {
+    return reloadable_thread_state<PinyinSearchScratch, struct PinyinSearchScratchTag>();
+}
+
 // Each character branches into its readings, then equal query-prefix states
 // merge. This supports every pronunciation without enumerating whole names.
 static bool match_search_pinyin_readings(const PinyinSearchIndex &index,
         const PinyinSearchQuery &query, bool initials) {
-    std::vector<size_t> states{0}, next;
-    std::vector<size_t> seen(query.phonetic.size(), 0);
+    auto &scratch = search_pinyin_scratch();
+    auto &states = scratch.states;
+    auto &next = scratch.next;
+    auto &seen = scratch.seen;
+    states.assign(1, 0);
+    next.clear();
+    seen.assign(query.phonetic.size(), 0);
     size_t generation = 0;
     for (const auto &unit : index.units) {
         next.clear();
@@ -156,8 +256,8 @@ static bool match_search_pinyin_readings(const PinyinSearchIndex &index,
             }
             return false;
         };
-        if (unit.readings) {
-            std::string_view choices(unit.readings);
+        if (const auto *readings = unit.readings()) {
+            std::string_view choices(readings);
             while (!choices.empty()) {
                 const size_t end = choices.find(' ');
                 const auto spelling = choices.substr(0, end);
@@ -167,8 +267,8 @@ static bool match_search_pinyin_readings(const PinyinSearchIndex &index,
             }
             // A mixed Chinese/pinyin query can retain literal characters.
             if (query.mixed && consume(std::string_view(index.literal).substr(
-                    unit.begin, unit.length))) return true;
-        } else if (consume(std::string_view(index.literal).substr(unit.begin, unit.length))) {
+                    unit.begin, unit.length()))) return true;
+        } else if (consume(std::string_view(index.literal).substr(unit.begin, unit.length()))) {
             return true;
         }
         states.swap(next);
@@ -176,50 +276,119 @@ static bool match_search_pinyin_readings(const PinyinSearchIndex &index,
     return false;
 }
 
+// Catalog records own their normalized text and lazily built pronunciation
+// index. A second whole-world cache must not evict these during every scan.
+struct PreparedSearchText {
+    std::string literal, normalized;
+    std::unique_ptr<PinyinSearchIndex> pinyin;
+    bool ascii = true;
+    uint64_t query_generation = 0, narrowing_epoch = 0;
+    bool matched = false;
+
+    explicit PreparedSearchText(std::string_view target)
+        : literal(lower(compact_translated_search_text(target))) {
+        ascii = std::all_of(literal.begin(), literal.end(),
+            [](unsigned char byte) { return byte < 0x80; });
+        if (!ascii) normalized = normalize_search_pinyin(literal);
+    }
+    size_t bytes() const {
+        return literal.capacity() + normalized.capacity() +
+            (pinyin ? sizeof(PinyinSearchIndex) + pinyin->bytes() : 0);
+    }
+    bool matches(const PinyinSearchQuery &query) {
+        if (query_generation == query.generation ||
+                (!matched && query_generation && narrowing_epoch == query.narrowing_epoch))
+            return matched;
+        const bool result = compute_match(query);
+        query_generation = query.generation;
+        narrowing_epoch = query.narrowing_epoch;
+        matched = result;
+        return result;
+    }
+    bool compute_match(const PinyinSearchQuery &query) {
+        if (literal.empty() || (ascii && query.mixed)) return false;
+        if (literal.find(query.literal) != std::string::npos) return true;
+        if (ascii || query.phonetic.empty()) return false;
+        if (!query.phonetic_search)
+            return normalized.find(query.phonetic) != std::string::npos;
+        if (!pinyin) pinyin = std::make_unique<PinyinSearchIndex>(
+            make_search_pinyin_index(normalized));
+        if (!pinyin->has_pinyin) return false;
+        if (pinyin->full.find(query.phonetic) != std::string::npos ||
+            pinyin->initials.find(query.phonetic) != std::string::npos) return true;
+        if (!pinyin->multiple_readings && !query.mixed) return false;
+        // Necessary conditions across ALL readings, including full spelling,
+        // initials and character boundaries. Reject impossible candidates
+        // before running the branching matcher, without dropping any reading.
+        if (query.letters & ~pinyin->letters) return false;
+        for (size_t at = 0; at < query.letter_pairs.size(); ++at)
+            if (query.letter_pairs[at] & ~pinyin->letter_pairs[at]) return false;
+        return match_search_pinyin_readings(*pinyin, query, false) ||
+            match_search_pinyin_readings(*pinyin, query, true);
+    }
+};
+
+static bool match_prepared_search_text(PreparedSearchText &text,
+        const PinyinSearchQuery &query, size_t &retained_bytes, size_t maximum_bytes) {
+    const size_t before = text.bytes();
+    const bool had_index = text.pinyin != nullptr;
+    const bool result = text.matches(query);
+    const size_t extra = text.bytes() - before;
+    if (!had_index && retained_bytes + extra > maximum_bytes) text.pinyin.reset();
+    else retained_bytes += extra;
+    return result;
+}
+
+struct SearchTextHash {
+    using is_transparent = void;
+    size_t operator()(std::string_view text) const noexcept {
+        return std::hash<std::string_view>{}(text);
+    }
+};
+
 struct PinyinSearchCache {
     PinyinSearchQuery query;
-    std::unordered_map<std::string, PinyinSearchIndex> indexes;
-    std::deque<std::string> order;
+    std::string query_source;
+    std::unordered_map<std::string, PreparedSearchText, SearchTextHash, std::equal_to<>> texts;
     size_t bytes = 0;
 };
+
+static PinyinSearchCache &search_pinyin_cache() {
+    // Declare the thread-state tag once. Identically named local tags in
+    // different functions are distinct types and would create separate caches.
+    return reloadable_thread_state<PinyinSearchCache, struct PinyinSearchCacheTag>();
+}
+
+static const PinyinSearchQuery &translated_search_query(std::string_view query) {
+    if (query.size() > 4096) query = {};
+    auto &cache = search_pinyin_cache();
+    if (cache.query_source != query) {
+        cache.query.assign(lower(compact_translated_search_text(query)));
+        cache.query_source.assign(query);
+    }
+    return cache.query;
+}
 
 static bool translated_search_text_matches(std::string_view target, std::string_view query) {
     if (target.empty() || target.size() > 65536 || query.empty() || query.size() > 4096)
         return false;
-    auto &cache = reloadable_thread_state<PinyinSearchCache, struct PinyinSearchCacheTag>();
-    std::string needle = lower(compact_translated_search_text(query));
-    if (needle.empty()) return false;
-    if (cache.query.literal != needle) cache.query.assign(std::move(needle));
-    std::string compact = lower(compact_translated_search_text(target));
-    if (compact.empty()) return false;
-    if (compact.find(cache.query.literal) != std::string::npos) return true;
-    if (cache.query.phonetic.empty()) return false;
-
-    auto found = cache.indexes.find(compact);
-    if (found == cache.indexes.end()) {
-        auto index = make_search_pinyin_index(compact);
-        const size_t cost = 2 * compact.size() + index.bytes();
-        constexpr size_t maximum_records = 32768;
-        constexpr size_t maximum_bytes = 32u * 1024u * 1024u;
-        while (!cache.order.empty() && (cache.indexes.size() >= maximum_records ||
-                cache.bytes + cost > maximum_bytes)) {
-            const auto oldest = cache.indexes.find(cache.order.front());
-            if (oldest != cache.indexes.end()) {
-                cache.bytes -= 2 * oldest->first.size() + oldest->second.bytes();
-                cache.indexes.erase(oldest);
-            }
-            cache.order.pop_front();
-        }
-        cache.order.push_back(compact);
-        try { found = cache.indexes.emplace(std::move(compact), std::move(index)).first; }
-        catch (...) { cache.order.pop_back(); throw; }
-        cache.bytes += cost;
-    }
-    const auto &index = found->second;
-    if (!index.has_pinyin) return false;
-    if (index.full.find(cache.query.phonetic) != std::string::npos ||
-        index.initials.find(cache.query.phonetic) != std::string::npos) return true;
-    if (!index.multiple_readings && !cache.query.mixed) return false;
-    return match_search_pinyin_readings(index, cache.query, false) ||
-        match_search_pinyin_readings(index, cache.query, true);
+    auto &cache = search_pinyin_cache();
+    const auto &prepared = translated_search_query(query);
+    if (prepared.literal.empty()) return false;
+    // A literal Chinese fragment cannot occur in a wholly ASCII field.
+    // Reject before preparing/caching raw English names on a world scan.
+    if (prepared.mixed && std::all_of(target.begin(), target.end(),
+            [](unsigned char byte) { return byte < 0x80; })) return false;
+    constexpr size_t maximum_bytes = 64u * 1024u * 1024u;
+    if (auto found = cache.texts.find(target); found != cache.texts.end())
+        return match_prepared_search_text(found->second, prepared, cache.bytes, maximum_bytes);
+    PreparedSearchText text(target);
+    const size_t cost = sizeof(PreparedSearchText) + sizeof(std::string) +
+        target.size() + text.bytes() + 4 * sizeof(void *);
+    // Retain the working set when a full scan reaches the budget. FIFO
+    // eviction here made large catalogs rebuild the entire cache each keypress.
+    if (cache.bytes + cost > maximum_bytes) return text.matches(prepared);
+    auto inserted = cache.texts.emplace(std::string(target), std::move(text)).first;
+    cache.bytes += cost;
+    return match_prepared_search_text(inserted->second, prepared, cache.bytes, maximum_bytes);
 }

@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <array>
 #include <cstdint>
+#include <deque>
 #include <filesystem>
 #include <fstream>
 #include <functional>
@@ -12,6 +13,7 @@
 #include <string_view>
 #include <tuple>
 #include <unordered_map>
+#include <unordered_set>
 #include <utility>
 #include <vector>
 
@@ -32,6 +34,8 @@ public:
         std::unordered_map<std::string, SurnameEntry> surnames;
         MandarinNameReadings readings;
         error_.clear();
+        surname_cache_.clear();
+        surname_cache_order_.clear();
         if (!read_lexicon(runtime_dir / "character-name-lexicon.tsv", words) ||
             !read_overrides(runtime_dir / "character-name-overrides.tsv", overrides) ||
             !read_surname_lexicon(runtime_dir / "character-surname-lexicon.tsv", surnames) ||
@@ -51,6 +55,9 @@ public:
         }
         words_ = std::move(words);
         overrides_ = std::move(overrides);
+        lexical_forms_.clear();
+        for (const auto &[form, senses] : words_) lexical_forms_.insert(form);
+        for (const auto &[form, target] : overrides_) lexical_forms_.insert(form);
         surnames_ = std::move(surnames);
         surname_readings_ = std::move(readings);
         loaded_ = true;
@@ -213,6 +220,17 @@ private:
     std::unordered_map<std::string, std::vector<Entry>> words_;
     std::unordered_map<std::string, std::string> overrides_;
     std::unordered_map<std::string, SurnameEntry> surnames_;
+    struct LexicalFormHash {
+        using is_transparent = void;
+        std::size_t operator()(std::string_view form) const noexcept {
+            return std::hash<std::string_view>{}(form);
+        }
+    };
+    std::unordered_set<std::string, LexicalFormHash, std::equal_to<>> lexical_forms_;
+    // A world catalog repeats family surnames across many distinct given
+    // names. Their literary scoring depends only on this loaded lexicon.
+    mutable std::unordered_map<std::string, Part> surname_cache_;
+    mutable std::deque<std::string> surname_cache_order_;
     MandarinNameReadings surname_readings_;
     bool loaded_ = false;
     std::string error_;
@@ -626,6 +644,11 @@ private:
             if (folded[cut] == '-') ++right_start;
             if (right_start >= folded.size() || space(folded[cut - 1]) ||
                 space(folded[right_start]) || folded[cut - 1] == '-') continue;
+            // Reject impossible boundaries before constructing either sense's
+            // many strings and metadata. The folded/trimmed forms are exactly
+            // those that variants() would look up in the loaded dictionaries.
+            if (!lexical_forms_.contains(trim(std::string_view(folded).substr(0, cut))) ||
+                !lexical_forms_.contains(trim(std::string_view(folded).substr(right_start)))) continue;
             auto left = variants(std::string_view(folded).substr(0, cut));
             auto right = variants(std::string_view(folded).substr(right_start));
             for (const auto &a : left) for (const auto &b : right) {
@@ -1394,6 +1417,24 @@ private:
         return best;
     }
     Part surname_part(std::string_view source) const {
+        source = trim(source);
+        if (source.size() > 512) return surname_part_uncached(source);
+        std::string cache_key(source);
+        if (const auto cached = surname_cache_.find(cache_key); cached != surname_cache_.end())
+            return cached->second;
+        Part result = surname_part_uncached(source);
+        constexpr std::size_t maximum = 32768;
+        if (surname_cache_.size() >= maximum && !surname_cache_order_.empty()) {
+            surname_cache_.erase(surname_cache_order_.front());
+            surname_cache_order_.pop_front();
+        }
+        const auto inserted = surname_cache_.emplace(cache_key, result);
+        try { surname_cache_order_.push_back(std::move(cache_key)); }
+        catch (...) { surname_cache_.erase(inserted.first); throw; }
+        return result;
+    }
+
+    Part surname_part_uncached(std::string_view source) const {
         source = trim(source);
         bool requires_er = false;
         Part ordered = ordered_er_part(source, requires_er);

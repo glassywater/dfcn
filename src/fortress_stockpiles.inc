@@ -95,7 +95,7 @@ bool Overlay::translated_stockpile_search_matches(std::string_view source,
         std::string_view query, StockpileCaptionKind kind) const {
     TranslationStateScope translation_scope;
     if (!config_.enabled) return false;
-    if (source.empty() || compact_translated_search_text(query).empty()) return false;
+    if (source.empty() || translated_search_query(query).literal.empty()) return false;
     const auto result = translate_stockpile_setting_display(source, kind);
     return result.usable() && translated_search_text_matches(result.target, query);
 }

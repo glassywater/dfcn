@@ -3274,6 +3274,25 @@ enum class JournalSearchKind {
 struct NativeModListLayout;
 struct CivilizationReferenceCache;
 
+static std::string compact_translated_search_text(std::string_view text) {
+    std::string compact;
+    compact.reserve(text.size());
+    for (size_t cursor = 0; cursor < text.size();) {
+        const auto decoded = decode_utf8_at(text, cursor);
+        if (!decoded) return {};
+        const uint32_t codepoint = decoded->first;
+        if (!(codepoint <= 0x7f &&
+              std::isspace(static_cast<unsigned char>(codepoint))) &&
+            codepoint != 0x3000) {
+            compact.append(text.substr(cursor, decoded->second));
+        }
+        cursor += decoded->second;
+    }
+    return compact;
+}
+
+#include "pinyin_search.inc"
+
 class Overlay {
 public:
     bool initialize();
@@ -3840,21 +3859,52 @@ private:
         }
         return translated;
     }
-    // Complete roster names/jobs, independent of visible rows and query text.
-    mutable std::unordered_map<std::string, std::optional<std::string>>
-        unit_search_translation_cache_;
-    mutable std::deque<std::string> unit_search_translation_order_;
-    mutable std::unordered_map<std::string, std::string> adventure_action_search_cache_;
-    mutable std::deque<std::string> adventure_action_search_order_;
-    // Searches visit complete world catalogs, which can exceed the viewport
-    // caches. Bound this cache by both record count and retained text bytes.
-    mutable std::unordered_map<std::string, std::string> legends_search_translation_cache_;
-    mutable std::deque<std::string> legends_search_translation_order_;
+    struct LegendsSearchEntry {
+        std::vector<PreparedSearchText> fields;
+        size_t bytes() const {
+            size_t total = sizeof(LegendsSearchEntry) + fields.capacity() * sizeof(PreparedSearchText);
+            for (const auto &field : fields) total += field.bytes();
+            return total;
+        }
+    };
+    // Catalogs keep prepared fields across queries. Saturating the byte budget
+    // preserves cached records instead of cycling a FIFO through the world.
+    mutable std::unordered_map<std::string, LegendsSearchEntry> legends_search_translation_cache_;
     mutable size_t legends_search_translation_bytes_ = 0;
+    mutable std::unordered_map<std::string, std::optional<std::string>> search_translation_cache_;
+    mutable size_t search_translation_bytes_ = 0;
+    template <typename Translate>
+    std::optional<std::string> memoize_search_translation(char mode,
+            std::string_view source, Translate &&translate, bool contextual = false) const {
+        const uint64_t source_context = contextual ? native_identity_translation_context() : 0;
+        std::string key(1, mode);
+        if (contextual) key += std::to_string(source_context) + '\x1f';
+        key.append(source);
+        if (const auto found = search_translation_cache_.find(key);
+                found != search_translation_cache_.end()) return found->second;
+        auto target = translate();
+        const size_t cost = sizeof(std::string) + sizeof(target) + key.capacity() +
+            (target ? target->capacity() : 0) + 4 * sizeof(void *);
+        constexpr size_t maximum_bytes = 32u * 1024u * 1024u;
+        if (search_translation_bytes_ + cost <= maximum_bytes &&
+                (!contextual || source_context == native_identity_translation_context())) {
+            if (search_translation_cache_.emplace(std::move(key), target).second)
+                search_translation_bytes_ += cost;
+        }
+        return target;
+    }
+    struct NativeNameWord {
+        std::string translated;
+        uint8_t language_mask = 0;
+        int parts = 0;
+    };
+    mutable std::unordered_map<std::string, std::optional<NativeNameWord>> native_compound_cache_;
     void clear_legends_search_cache() const {
         legends_search_translation_cache_.clear();
-        legends_search_translation_order_.clear();
         legends_search_translation_bytes_ = 0;
+        search_translation_cache_.clear();
+        search_translation_bytes_ = 0;
+        native_compound_cache_.clear();
     }
     // Character tabs reuse complete documents. Retain several layouts so
     // switching pages cannot evict the only translated and measured copy.
@@ -5152,45 +5202,30 @@ std::optional<std::string> Overlay::exact_literal_translation(
     return translate_world_site_type(exact);
 }
 
-static std::string compact_translated_search_text(std::string_view text) {
-    std::string compact;
-    compact.reserve(text.size());
-    for (size_t cursor = 0; cursor < text.size();) {
-        const auto decoded = decode_utf8_at(text, cursor);
-        if (!decoded) return {};
-        const uint32_t codepoint = decoded->first;
-        if (!(codepoint <= 0x7f &&
-              std::isspace(static_cast<unsigned char>(codepoint))) &&
-            codepoint != 0x3000) {
-            compact.append(text.substr(cursor, decoded->second));
-        }
-        cursor += decoded->second;
-    }
-    return compact;
-}
-
-#include "pinyin_search.inc"
-
 bool Overlay::translated_search_matches(std::string_view source,
                                         std::string_view query) const {
     TranslationStateScope translation_scope;
-    const std::string compact_query = compact_translated_search_text(query);
-    if (source.empty() || compact_query.empty()) return false;
+    if (source.empty() || translated_search_query(query).literal.empty()) return false;
 
     const auto contains_query = [query](const std::string &target) {
         return translated_search_text_matches(target, query);
     };
     if (contains_query(native_text_to_utf8(source))) return true;
-    if (const auto exact = exact_literal_translation(source);
+    if (const auto exact = memoize_search_translation('e', source, [&] {
+            return exact_literal_translation(source);
+        });
         exact && contains_query(*exact)) {
         return true;
     }
-    if (const auto creature = translate_creature_label(source);
+    if (const auto creature = memoize_search_translation('c', source, [&] {
+            return translate_creature_label(source);
+        });
         creature && contains_query(*creature)) {
         return true;
     }
-    if (const auto composed =
-            translate_compositional(std::string(source));
+    if (const auto composed = memoize_search_translation('g', source, [&] {
+            return translate_compositional(std::string(source));
+        }, true);
         composed && contains_query(*composed)) {
         return true;
     }
@@ -5210,8 +5245,10 @@ bool Overlay::translated_plant_search_matches(std::string_view source,
                                              std::string_view query) const {
     TranslationStateScope translation_scope;
     if (!config_.enabled) return false;
-    if (source.empty() || compact_translated_search_text(query).empty()) return false;
-    const auto target = translate_plant_name(source);
+    if (source.empty() || translated_search_query(query).literal.empty()) return false;
+    const auto target = memoize_search_translation('p', source, [&] {
+        return translate_plant_name(source);
+    });
     return target && translated_search_text_matches(*target, query);
 }
 
@@ -5251,8 +5288,10 @@ bool Overlay::translated_color_search_matches(std::string_view source,
                                              std::string_view query) const {
     TranslationStateScope translation_scope;
     if (!config_.enabled || source.empty() ||
-            compact_translated_search_text(query).empty()) return false;
-    const auto target = translate_color_picker_caption(source);
+            translated_search_query(query).literal.empty()) return false;
+    const auto target = memoize_search_translation('o', source, [&] {
+        return translate_color_picker_caption(source);
+    });
     return target && translated_search_text_matches(*target, query);
 }
 
@@ -5260,11 +5299,14 @@ bool Overlay::translated_material_search_matches(std::string_view source,
                                                 std::string_view query) const {
     TranslationStateScope translation_scope;
     if (!config_.enabled) return false;
-    if (source.empty() || compact_translated_search_text(query).empty()) return false;
+    if (source.empty() || translated_search_query(query).literal.empty()) return false;
     // Use the material noun grammar used by the displayed captions, never
     // equipment adjectives or unrelated creature-name token matches.
-    auto target = exact_literal_translation(source);
-    if (!target && config_.compositional_rules) target = translate_material_name(source);
+    const auto target = memoize_search_translation('m', source, [&] {
+        auto translated = exact_literal_translation(source);
+        if (!translated && config_.compositional_rules) translated = translate_material_name(source);
+        return translated;
+    }, true);
     return target && translated_search_text_matches(*target, query);
 }
 
@@ -5272,10 +5314,12 @@ bool Overlay::translated_work_order_condition_search_matches(std::string_view so
                                                             std::string_view query) const {
     TranslationStateScope translation_scope;
     if (!config_.enabled) return false;
-    if (source.empty() || compact_translated_search_text(query).empty()) return false;
+    if (source.empty() || translated_search_query(query).literal.empty()) return false;
     // Exactly the same complete grammar/cache as the displayed trait row,
     // including material-bearing, tool-use and multiword color constraints.
-    const auto target = translate_workshop_recipe_source(source);
+    const auto target = memoize_search_translation('w', source, [&] {
+        return translate_workshop_recipe_source(source);
+    });
     return target && translated_search_text_matches(*target, query);
 }
 
@@ -5283,13 +5327,13 @@ bool Overlay::translated_item_search_matches(std::string_view source,
         std::string_view query, bool fortress_item) const {
     TranslationStateScope translation_scope;
     if (!config_.enabled) return false;
-    const std::string compact_query = lower(compact_translated_search_text(query));
-    if (source.empty() || compact_query.empty()) return false;
+    if (source.empty() || translated_search_query(query).literal.empty()) return false;
     // Select the caption's semantic context, not the host or visible rows.
     // Both display entries own the full-name grammar and bounded cache.
-    const auto translated = fortress_item
-        ? translate_fortress_item_caption(source)
-        : translate_embark_equipment_item(source, -1, -1, source);
+    const auto translated = memoize_search_translation(fortress_item ? 'i' : 'b', source, [&] {
+        return fortress_item ? translate_fortress_item_caption(source)
+            : translate_embark_equipment_item(source, -1, -1, source);
+    }, true);
     if (!translated || translated->empty()) return false;
     return translated_search_text_matches(*translated, query);
 }
@@ -5298,10 +5342,12 @@ bool Overlay::translated_stocks_search_matches(std::string_view source,
         std::string_view query) const {
     TranslationStateScope translation_scope;
     if (!config_.enabled || source.empty() ||
-            compact_translated_search_text(query).empty()) return false;
+            translated_search_query(query).literal.empty()) return false;
     // Stocks searches group names, so explicit log captions use the same
     // wood name as their headers. Preserve the existing item-name aliases.
-    if (const auto wood = translate_wood_item_caption(source, true, false);
+    if (const auto wood = memoize_search_translation('l', source, [&] {
+            return translate_wood_item_caption(source, true, false);
+        });
             wood && translated_search_text_matches(*wood, query)) return true;
     return translated_item_search_matches(source, query, true);
 }
@@ -5874,10 +5920,6 @@ bool Overlay::load_compositional_rules() {
     clear_material_name_cache();
     identity_record_translation_cache_.clear();
     identity_record_translation_order_.clear();
-    unit_search_translation_cache_.clear();
-    unit_search_translation_order_.clear();
-    adventure_action_search_cache_.clear();
-    adventure_action_search_order_.clear();
     compositional_cache_.clear();
     compositional_cache_order_.clear();
     item_translation_cache_.clear();
@@ -6078,10 +6120,6 @@ bool Overlay::load_generated_instrument_names() {
     clear_material_name_cache();
     identity_record_translation_cache_.clear();
     identity_record_translation_order_.clear();
-    unit_search_translation_cache_.clear();
-    unit_search_translation_order_.clear();
-    adventure_action_search_cache_.clear();
-    adventure_action_search_order_.clear();
     load_instrument_translations();
     generated_instrument_name_transliterations_.clear();
     native_name_language_masks_.clear();
@@ -6476,10 +6514,6 @@ bool Overlay::load_procedural_terms() {
     clear_material_name_cache();
     identity_record_translation_cache_.clear();
     identity_record_translation_order_.clear();
-    unit_search_translation_cache_.clear();
-    unit_search_translation_order_.clear();
-    adventure_action_search_cache_.clear();
-    adventure_action_search_order_.clear();
     procedural_terms_.clear();
     if (!english_character_names_.load(runtime::data_path()))
         log_line("ERROR", "Cannot load English character-name lexicons, overrides and Mandarin readings from " +
@@ -7013,10 +7047,6 @@ void Overlay::shutdown() {
     TranslationStateScope translation_scope;
     identity_record_translation_cache_.clear();
     identity_record_translation_order_.clear();
-    unit_search_translation_cache_.clear();
-    unit_search_translation_order_.clear();
-    adventure_action_search_cache_.clear();
-    adventure_action_search_order_.clear();
     g_embark_capture_screen_dimx.store(0, std::memory_order_release);
     g_embark_capture_screen_dimy.store(0, std::memory_order_release);
     reset_render_state();
@@ -7666,11 +7696,39 @@ static std::optional<LegendsFigureRecord> split_legends_figure_record(
     return record;
 }
 
+static std::string_view legends_figure_identity_before_dates(std::string_view source) {
+    // Filtered figure rows can append dates with a single space, rather than
+    // padding them into a separate grid field. Keep the name/species parser
+    // strict and leave the complete date suffix to the existing TSV rules.
+    const size_t quote = source.rfind('"');
+    if (quote == std::string_view::npos) return source;
+    const size_t at = std::min(source.find(" b. ", quote), source.find(" d. ", quote));
+    if (at == std::string_view::npos) return source;
+    const auto identity = trim_view(source.substr(0, at));
+    if (!split_legends_figure_record(identity)) return source;
+    auto dates = trim_view(source.substr(at));
+    const auto consume = [&](std::string_view marker) {
+        if (!dates.starts_with(marker)) return false;
+        dates.remove_prefix(marker.size());
+        size_t end = !dates.empty() && (dates.front() == '-' || dates.front() == '+') ? 1 : 0;
+        const size_t digits = end;
+        while (end < dates.size() && dates[end] >= '0' && dates[end] <= '9') ++end;
+        if (end == digits || (end < dates.size() && dates[end] != ' ')) return false;
+        dates = trim_view(dates.substr(end));
+        return true;
+    };
+    if (dates.starts_with("b. ")) {
+        if (!consume("b. ")) return source;
+        if (!dates.empty() && !consume("d. ")) return source;
+    } else if (!consume("d. ")) return source;
+    return dates.empty() ? identity : source;
+}
+
 bool Overlay::translated_unit_search_matches(std::string_view source,
                                              std::string_view query, bool activity) const {
     TranslationStateScope translation_scope;
     if (!config_.enabled || source.empty() || source.size() > 65536) return false;
-    if (compact_translated_search_text(query).empty()) return false;
+    if (translated_search_query(query).literal.empty()) return false;
     const auto matches = [&](std::string_view text) {
         return translated_search_text_matches(text, query);
     };
@@ -7681,10 +7739,8 @@ bool Overlay::translated_unit_search_matches(std::string_view source,
         if (const auto identity = native_unit_identity_source_target(source))
             return matches(*identity);
 
-    const std::string original(source);
-    const std::string key = (activity ? "job:" : "name:") + original;
-    auto cached = unit_search_translation_cache_.find(key);
-    if (cached == unit_search_translation_cache_.end()) {
+    const auto translated = memoize_search_translation(activity ? 'j' : 'u', source, [&] {
+        const std::string original(source);
         // Keep original case/accents: the native name grammar needs both to
         // distinguish personal names from ordinary words. This is the same
         // complete name/profession grammar used by resident/assignment rows.
@@ -7721,16 +7777,9 @@ bool Overlay::translated_unit_search_matches(std::string_view source,
                 break;
             }
         }
-        static constexpr size_t maximum_records = 4096;
-        if (unit_search_translation_cache_.size() >= maximum_records &&
-            !unit_search_translation_order_.empty()) {
-            unit_search_translation_cache_.erase(unit_search_translation_order_.front());
-            unit_search_translation_order_.pop_front();
-        }
-        cached = unit_search_translation_cache_.emplace(key, std::move(translated)).first;
-        unit_search_translation_order_.push_back(key);
-    }
-    return cached->second && matches(*cached->second);
+        return translated;
+    }, true);
+    return translated && matches(*translated);
 }
 
 static bool translation_complete_with_native_nicknames(
@@ -9414,11 +9463,6 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
 
     auto transliterate = transliterate_native_history_name;
 
-    struct NativeNameWord {
-        std::string translated;
-        uint8_t language_mask = 0;
-        int parts = 0;
-    };
     auto render_native_word = [&](std::string_view raw) {
         const std::string folded = lower_native_name(std::string(raw));
         const auto reviewed = native_name_reviewed_transliterations_.find(folded);
@@ -9441,6 +9485,12 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             uint8_t language_mask = 0xff, bool require_compound_grammar = true)
             -> std::optional<NativeNameWord> {
         const std::string folded = lower_native_name(std::string(raw));
+        std::string cache_key;
+        cache_key.push_back(static_cast<char>(language_mask));
+        cache_key.push_back(require_compound_grammar ? '\1' : '\0');
+        cache_key += folded;
+        if (const auto found = native_compound_cache_.find(cache_key);
+                found != native_compound_cache_.end()) return found->second;
         std::optional<NativeNameWord> best;
         int best_score = -1;
         size_t best_shorter_part = 0;
@@ -9486,6 +9536,8 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
                 }
             }
         }
+        if (native_compound_cache_.size() < 32768 && folded.size() <= 512)
+            native_compound_cache_.emplace(std::move(cache_key), best);
         return best;
     };
     auto native_name_word_shape = [](std::string_view word) {
@@ -10345,7 +10397,9 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             ? legends_structure_caption_key(record->species) : std::nullopt;
         auto kind = building ? translate_legends_structure_type(record->species)
             : site ? exact_literal_translation(record->species)
-                   : translate_creature_descriptor(record->species);
+                   : memoize_identity_translation('c', record->species, [&] {
+                       return translate_creature_descriptor(record->species);
+                   });
         if (site && !kind)
             kind = translate_procedural_fragment(std::string(record->species));
         // Sex, species, syndrome title and generated creature kind are
@@ -18185,9 +18239,12 @@ std::vector<Match> Overlay::find_matches(int only_y,
                 const size_t end = limit - 1;
                 if (button && fields[end].end > button->x + button->w) continue;
                 const int x = fields[begin].start;
-                const int length = fields[end].end - x;
-                const std::string source = row.substr(
-                    static_cast<size_t>(x), static_cast<size_t>(length));
+                const int candidate_length = fields[end].end - x;
+                const auto candidate = std::string_view(row).substr(
+                    static_cast<size_t>(x), static_cast<size_t>(candidate_length));
+                const std::string source(legends_context
+                    ? legends_figure_identity_before_dates(candidate) : candidate);
+                const int length = static_cast<int>(source.size());
                 // Nameless figures have no native-name/quoted-gloss pair.
                 // Their sex and species can still occupy padded fields;
                 // resolve the whole descriptor before literal species rules.

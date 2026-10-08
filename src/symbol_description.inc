@@ -47,8 +47,10 @@ bool Overlay::translated_symbol_search_matches(std::string_view source,
         std::string_view query, SymbolCaptionKind kind) const {
     TranslationStateScope translation_scope;
     if (!config_.enabled || source.empty()) return false;
-    if (compact_translated_search_text(query).empty()) return false;
-    const auto target = translate_symbol_candidate(source, kind);
+    if (translated_search_query(query).literal.empty()) return false;
+    const auto target = memoize_search_translation(static_cast<char>(0x40 + static_cast<int>(kind)), source, [&] {
+        return translate_symbol_candidate(source, kind);
+    }, kind == SymbolCaptionKind::Figure || kind == SymbolCaptionKind::Artifact);
     return target && translated_search_text_matches(*target, query);
 }
 

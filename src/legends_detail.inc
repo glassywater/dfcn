@@ -1657,6 +1657,18 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
     int heading_end_y = -1;
     int records = 0;
     std::string heading;
+    bool catalog_page = false;
+    if (!native_history_page) {
+        for (int y = tabs_y + 1;
+                y < std::min(tabs_y + 6, static_cast<int>(context.size())); ++y) {
+            const auto label = content(context[static_cast<size_t>(y)]);
+            if (std::find(kLegendsCategories.begin(), kLegendsCategories.end(), label) !=
+                    kLegendsCategories.end()) {
+                catalog_page = true;
+                break;
+            }
+        }
+    }
     auto detail_identity = [&](std::string_view candidate) {
         // A one-row catalog can also show an unnamed region, and a matching
         // detail tab may remain open but inactive. The selected native page
@@ -1673,7 +1685,9 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
     // page. List rows have date/type columns or multiple identities. Require
     // this identity AND narrative or matching-tab evidence before claiming
     // the body; a fixed nameless-region label alone is still a catalog row.
-    for (int y = tabs_y + 1; y < static_cast<int>(rows.size()); ++y) {
+    // An active catalog heading establishes list ownership even when only
+    // one undated figure remains and other detail tabs are still open.
+    for (int y = tabs_y + 1; !catalog_page && y < static_cast<int>(rows.size()); ++y) {
         const std::string candidate = content(context[static_cast<size_t>(y)]);
         // A native detail has one pinned title above its richbox. Do not
         // parse every event as a possible identity, or let a quoted name in

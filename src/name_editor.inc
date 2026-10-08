@@ -124,7 +124,7 @@ bool Overlay::translated_name_editor_search_matches(std::string_view word_id,
         std::string_view query) const {
     TranslationStateScope translation_scope;
     if (native_part < 0 || native_part > 8) return false;
-    if (compact_translated_search_text(query).empty()) return false;
+    if (translated_search_query(query).literal.empty()) return false;
     const auto contains = [&](std::string_view text) {
         return translated_search_text_matches(text, query);
     };
@@ -132,10 +132,18 @@ bool Overlay::translated_name_editor_search_matches(std::string_view word_id,
     const auto part = native_part <= 1 ? ProceduralNamePartOfSpeech::noun :
         native_part == 2 ? ProceduralNamePartOfSpeech::adjective :
         native_part == 3 ? ProceduralNamePartOfSpeech::prefix : ProceduralNamePartOfSpeech::verb;
-    if (const auto meaning = translate_name_editor_meaning(source, native_word, part, word_id);
+    std::string key = std::to_string(name_editor_search_revision_) + '\x1f' + std::string(word_id);
+    key.push_back('\0');
+    key.append(source).push_back('\0');
+    key.append(native_word).push_back(static_cast<char>(native_part));
+    if (const auto meaning = memoize_search_translation('N', key, [&] {
+            return translate_name_editor_meaning(source, native_word, part, word_id);
+        });
         meaning && contains(*meaning)) return true;
     if (!native_word.empty()) {
-        const auto phonetic = translate_procedural_fragment(std::string(native_word), true);
+        const auto phonetic = memoize_search_translation('n', native_word, [&] {
+            return translate_procedural_fragment(std::string(native_word), true);
+        });
         if (phonetic && contains(*phonetic)) return true;
     }
     return false;
