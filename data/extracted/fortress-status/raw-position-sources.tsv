@@ -1,0 +1,78 @@
+raw_file	line	entity	position	token	form	source	title_column_target
+data/vanilla/vanilla_entities/objects/entity_default.txt	426	MOUNTAIN	MONARCH	NAME	singular	monarch	君主
+data/vanilla/vanilla_entities/objects/entity_default.txt	426	MOUNTAIN	MONARCH	NAME	plural	monarchs	君主
+data/vanilla/vanilla_entities/objects/entity_default.txt	427	MOUNTAIN	MONARCH	NAME_MALE	singular	king	国王
+data/vanilla/vanilla_entities/objects/entity_default.txt	427	MOUNTAIN	MONARCH	NAME_MALE	plural	kings	国王
+data/vanilla/vanilla_entities/objects/entity_default.txt	428	MOUNTAIN	MONARCH	NAME_FEMALE	singular	queen	女王
+data/vanilla/vanilla_entities/objects/entity_default.txt	428	MOUNTAIN	MONARCH	NAME_FEMALE	plural	queens	女王
+data/vanilla/vanilla_entities/objects/entity_default.txt	430	MOUNTAIN	MONARCH	SPOUSE_MALE	singular	king consort	王夫
+data/vanilla/vanilla_entities/objects/entity_default.txt	430	MOUNTAIN	MONARCH	SPOUSE_MALE	plural	kings consort	王夫
+data/vanilla/vanilla_entities/objects/entity_default.txt	431	MOUNTAIN	MONARCH	SPOUSE_FEMALE	singular	queen consort	王后
+data/vanilla/vanilla_entities/objects/entity_default.txt	431	MOUNTAIN	MONARCH	SPOUSE_FEMALE	plural	queens consort	王后
+data/vanilla/vanilla_entities/objects/entity_default.txt	464	MOUNTAIN	GENERAL	NAME	singular	general	将军
+data/vanilla/vanilla_entities/objects/entity_default.txt	464	MOUNTAIN	GENERAL	NAME	plural	generals	将军
+data/vanilla/vanilla_entities/objects/entity_default.txt	492	MOUNTAIN	LIEUTENANT	NAME	singular	lieutenant	中尉
+data/vanilla/vanilla_entities/objects/entity_default.txt	492	MOUNTAIN	LIEUTENANT	NAME	plural	lieutenants	中尉
+data/vanilla/vanilla_entities/objects/entity_default.txt	516	MOUNTAIN	CAPTAIN	NAME	singular	captain	队长
+data/vanilla/vanilla_entities/objects/entity_default.txt	516	MOUNTAIN	CAPTAIN	NAME	plural	captains	队长
+data/vanilla/vanilla_entities/objects/entity_default.txt	532	MOUNTAIN	MILITIA_COMMANDER	NAME	singular	militia commander	军事指挥官
+data/vanilla/vanilla_entities/objects/entity_default.txt	532	MOUNTAIN	MILITIA_COMMANDER	NAME	plural	militia commanders	军事指挥官
+data/vanilla/vanilla_entities/objects/entity_default.txt	544	MOUNTAIN	MILITIA_CAPTAIN	NAME	singular	militia captain	军事队长
+data/vanilla/vanilla_entities/objects/entity_default.txt	544	MOUNTAIN	MILITIA_CAPTAIN	NAME	plural	militia captains	军事队长
+data/vanilla/vanilla_entities/objects/entity_default.txt	554	MOUNTAIN	SHERIFF	NAME	singular	sheriff	治安官
+data/vanilla/vanilla_entities/objects/entity_default.txt	554	MOUNTAIN	SHERIFF	NAME	plural	sheriffs	治安官
+data/vanilla/vanilla_entities/objects/entity_default.txt	574	MOUNTAIN	CAPTAIN_OF_THE_GUARD	NAME	singular	captain of the guard	卫队统领
+data/vanilla/vanilla_entities/objects/entity_default.txt	574	MOUNTAIN	CAPTAIN_OF_THE_GUARD	NAME	plural	captains of the guard	卫队统领
+data/vanilla/vanilla_entities/objects/entity_default.txt	596	MOUNTAIN	EXPEDITION_LEADER	NAME	singular	expedition leader	远征领袖
+data/vanilla/vanilla_entities/objects/entity_default.txt	596	MOUNTAIN	EXPEDITION_LEADER	NAME	plural	expedition leaders	远征领袖
+data/vanilla/vanilla_entities/objects/entity_default.txt	609	MOUNTAIN	MAYOR	NAME	singular	mayor	市长
+data/vanilla/vanilla_entities/objects/entity_default.txt	609	MOUNTAIN	MAYOR	NAME	plural	mayors	市长
+data/vanilla/vanilla_entities/objects/entity_default.txt	637	MOUNTAIN	MANAGER	NAME	singular	manager	经理人
+data/vanilla/vanilla_entities/objects/entity_default.txt	637	MOUNTAIN	MANAGER	NAME	plural	managers	经理人
+data/vanilla/vanilla_entities/objects/entity_default.txt	651	MOUNTAIN	CHIEF_MEDICAL_DWARF	NAME	singular	chief medical dwarf	首席矮人医师
+data/vanilla/vanilla_entities/objects/entity_default.txt	651	MOUNTAIN	CHIEF_MEDICAL_DWARF	NAME	plural	chief medical dwarves	首席矮人医师
+data/vanilla/vanilla_entities/objects/entity_default.txt	664	MOUNTAIN	BROKER	NAME	singular	broker	交易员
+data/vanilla/vanilla_entities/objects/entity_default.txt	664	MOUNTAIN	BROKER	NAME	plural	brokers	交易员
+data/vanilla/vanilla_entities/objects/entity_default.txt	677	MOUNTAIN	BOOKKEEPER	NAME	singular	bookkeeper	簿记员
+data/vanilla/vanilla_entities/objects/entity_default.txt	677	MOUNTAIN	BOOKKEEPER	NAME	plural	bookkeepers	簿记员
+data/vanilla/vanilla_entities/objects/entity_default.txt	691	MOUNTAIN	OUTPOST_LIAISON	NAME	singular	outpost liaison	前哨联络员
+data/vanilla/vanilla_entities/objects/entity_default.txt	691	MOUNTAIN	OUTPOST_LIAISON	NAME	plural	outpost liaisons	前哨联络员
+data/vanilla/vanilla_entities/objects/entity_default.txt	712	MOUNTAIN	DIPLOMAT	NAME	singular	diplomat	外交官
+data/vanilla/vanilla_entities/objects/entity_default.txt	712	MOUNTAIN	DIPLOMAT	NAME	plural	diplomats	外交官
+data/vanilla/vanilla_entities/objects/entity_default.txt	735	MOUNTAIN	DUKE	NAME_MALE	singular	duke	公爵
+data/vanilla/vanilla_entities/objects/entity_default.txt	735	MOUNTAIN	DUKE	NAME_MALE	plural	dukes	公爵
+data/vanilla/vanilla_entities/objects/entity_default.txt	736	MOUNTAIN	DUKE	NAME_FEMALE	singular	duchess	女公爵
+data/vanilla/vanilla_entities/objects/entity_default.txt	736	MOUNTAIN	DUKE	NAME_FEMALE	plural	duchesses	女公爵
+data/vanilla/vanilla_entities/objects/entity_default.txt	737	MOUNTAIN	DUKE	SPOUSE_MALE	singular	duke consort	女公爵之夫
+data/vanilla/vanilla_entities/objects/entity_default.txt	737	MOUNTAIN	DUKE	SPOUSE_MALE	plural	dukes consort	女公爵之夫
+data/vanilla/vanilla_entities/objects/entity_default.txt	738	MOUNTAIN	DUKE	SPOUSE_FEMALE	singular	duchess consort	公爵夫人
+data/vanilla/vanilla_entities/objects/entity_default.txt	738	MOUNTAIN	DUKE	SPOUSE_FEMALE	plural	duchesses consort	公爵夫人
+data/vanilla/vanilla_entities/objects/entity_default.txt	741	MOUNTAIN	DUKE	LAND_NAME	land	a duchy	公爵
+data/vanilla/vanilla_entities/objects/entity_default.txt	771	MOUNTAIN	COUNT	NAME_MALE	singular	count	伯爵
+data/vanilla/vanilla_entities/objects/entity_default.txt	771	MOUNTAIN	COUNT	NAME_MALE	plural	counts	伯爵
+data/vanilla/vanilla_entities/objects/entity_default.txt	772	MOUNTAIN	COUNT	NAME_FEMALE	singular	countess	女伯爵
+data/vanilla/vanilla_entities/objects/entity_default.txt	772	MOUNTAIN	COUNT	NAME_FEMALE	plural	countesses	女伯爵
+data/vanilla/vanilla_entities/objects/entity_default.txt	773	MOUNTAIN	COUNT	SPOUSE_MALE	singular	count consort	女伯爵之夫
+data/vanilla/vanilla_entities/objects/entity_default.txt	773	MOUNTAIN	COUNT	SPOUSE_MALE	plural	counts consort	女伯爵之夫
+data/vanilla/vanilla_entities/objects/entity_default.txt	774	MOUNTAIN	COUNT	SPOUSE_FEMALE	singular	countess consort	伯爵夫人
+data/vanilla/vanilla_entities/objects/entity_default.txt	774	MOUNTAIN	COUNT	SPOUSE_FEMALE	plural	countesses consort	伯爵夫人
+data/vanilla/vanilla_entities/objects/entity_default.txt	777	MOUNTAIN	COUNT	LAND_NAME	land	a county	伯爵
+data/vanilla/vanilla_entities/objects/entity_default.txt	808	MOUNTAIN	BARON	NAME_MALE	singular	baron	男爵
+data/vanilla/vanilla_entities/objects/entity_default.txt	808	MOUNTAIN	BARON	NAME_MALE	plural	barons	男爵
+data/vanilla/vanilla_entities/objects/entity_default.txt	809	MOUNTAIN	BARON	NAME_FEMALE	singular	baroness	女男爵
+data/vanilla/vanilla_entities/objects/entity_default.txt	809	MOUNTAIN	BARON	NAME_FEMALE	plural	baronesses	女男爵
+data/vanilla/vanilla_entities/objects/entity_default.txt	810	MOUNTAIN	BARON	SPOUSE_MALE	singular	baron consort	女男爵之夫
+data/vanilla/vanilla_entities/objects/entity_default.txt	810	MOUNTAIN	BARON	SPOUSE_MALE	plural	barons consort	女男爵之夫
+data/vanilla/vanilla_entities/objects/entity_default.txt	811	MOUNTAIN	BARON	SPOUSE_FEMALE	singular	baroness consort	男爵夫人
+data/vanilla/vanilla_entities/objects/entity_default.txt	811	MOUNTAIN	BARON	SPOUSE_FEMALE	plural	baronesses consort	男爵夫人
+data/vanilla/vanilla_entities/objects/entity_default.txt	814	MOUNTAIN	BARON	LAND_NAME	land	a barony	男爵
+data/vanilla/vanilla_entities/objects/entity_default.txt	845	MOUNTAIN	CHAMPION	NAME	singular	champion	冠军
+data/vanilla/vanilla_entities/objects/entity_default.txt	845	MOUNTAIN	CHAMPION	NAME	plural	champions	冠军
+data/vanilla/vanilla_entities/objects/entity_default.txt	862	MOUNTAIN	HAMMERER	NAME	singular	hammerer	锤刑官
+data/vanilla/vanilla_entities/objects/entity_default.txt	862	MOUNTAIN	HAMMERER	NAME	plural	hammerers	锤刑官
+data/vanilla/vanilla_entities/objects/entity_default.txt	875	MOUNTAIN	DUNGEON_MASTER	NAME	singular	dungeon master	地牢主管
+data/vanilla/vanilla_entities/objects/entity_default.txt	875	MOUNTAIN	DUNGEON_MASTER	NAME	plural	dungeon masters	地牢主管
+data/vanilla/vanilla_entities/objects/entity_default.txt	896	MOUNTAIN	FORCED_ADMINISTRATOR	NAME	singular	administrator	管理员
+data/vanilla/vanilla_entities/objects/entity_default.txt	896	MOUNTAIN	FORCED_ADMINISTRATOR	NAME	plural	administrators	管理员
+data/vanilla/vanilla_entities/objects/entity_default.txt	920	MOUNTAIN	MESSENGER	NAME	singular	messenger	信使
+data/vanilla/vanilla_entities/objects/entity_default.txt	920	MOUNTAIN	MESSENGER	NAME	plural	messengers	信使

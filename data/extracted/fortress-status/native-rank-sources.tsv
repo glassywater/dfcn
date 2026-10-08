@@ -1,0 +1,9 @@
+producer	branch	literal_instruction	literal_address	source	target
+0x12cc4c0	king_arrived && flags&0x20	0x12cc4e0	0x22129fe	Mountainhome	山之家
+0x12cc4c0	king_arrived && !(flags&0x20)	0x12cc53e	0x21605df	Capital	首府
+0x12cc4c0	default rank	0x12cc523	0x213c276	Outpost	哨站
+0x12cc4c0	rank=1	0x12cc56e	0x2212aed	Hamlet	村庄
+0x12cc4c0	rank=2	0x12cc5b6	0x2212ae1	Village	村庄
+0x12cc4c0	rank=3	0x12cc59e	0x2212ac4	Town	城镇
+0x12cc4c0	rank=4	0x12cc586	0x2212abb	City	城市
+0x12cc4c0	rank=5	0x12cc556	0x213c26b	Metropolis	都会

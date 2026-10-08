@@ -124,7 +124,8 @@ void Overlay::append_fortress_noble_rows(std::vector<std::string> &rows,
         if (first == end || !current(first, end, y)) continue;
         const auto position_source = complete_source(first, y,
             rows[y].substr(first, end - first));
-        auto position = translate_unit_profession(position_source);
+        auto position = translate_fortress_status(position_source, true);
+        if (!position) position = translate_unit_profession(position_source);
         if (!position) position = exact_literal_translation(position_source);
         const bool reassignable = native_appointment_button_at(*gps_, appoint_x, y);
         if (!reassignable && !position) continue;

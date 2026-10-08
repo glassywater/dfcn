@@ -1928,7 +1928,8 @@ enum class NativeInfoTitleKind {
 };
 
 enum class NativeCivilizationField {
-    None, TradePrefix, TradeEntity, TradeValue, OfficialName, OfficialPosition
+    None, TradePrefix, TradeEntity, TradeValue, OfficialName, OfficialPosition,
+    FortressRank, FortressPositionLabel
 };
 
 enum class NativeLocationPickerField {
@@ -4436,6 +4437,10 @@ private:
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
     bool capture_current_fortress_site_name(NativeHistoryName &name,
         std::string &english) const;
+    std::optional<std::string> translate_fortress_status(std::string_view source,
+        bool land_only = false) const;
+    void append_native_fortress_status_rows(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void append_fortress_site_name(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void append_fortress_petition_site_names(std::vector<std::string> &rows,
@@ -15405,6 +15410,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 }
 
 #include "embark_introduction.inc"
+#include "fortress_status.inc"
 #include "fortress_hud.inc"
 #include "fortress_petitions.inc"
 #include "adventure_target_rows.inc"
@@ -16522,6 +16528,8 @@ std::vector<Match> Overlay::find_matches(int only_y,
     append_fortress_schedule_rows(screen_rows, result, only_y, screen_override != nullptr);
     append_fortress_hauling_rows(screen_rows, result, only_y, screen_override != nullptr);
     append_fortress_noble_rows(screen_rows, result, only_y);
+    append_native_fortress_status_rows(screen_rows, result, only_y,
+        screen_override != nullptr);
     append_fortress_justice_rows(screen_rows, result, only_y);
     }
     context_detail.checkpoint(RenderTimingStage::ItemCaptions);
@@ -34904,7 +34912,7 @@ void Overlay::layout_fortress_header(SDL_Renderer *renderer) {
         if ((population.source != "Pop" && population.source != "Population") ||
             population.y < 0 || population.y > 2) continue;
         for (Match &rank : prepared_matches_) {
-            if (!fortress_header_rank(rank.source) || rank.target.empty() ||
+            if (!translate_fortress_status(rank.source) || rank.target.empty() ||
                 rank.y != population.y + 2 || rank.x >= population.x) continue;
 
             std::array<Match *, 3> labels{};

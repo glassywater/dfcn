@@ -1,0 +1,29 @@
+# Native producers and complete branches: data/extracted/fortress-status/.
+# LAND_NAME is a title-column label here; prose retains its land meaning.
+base = "fortress::status"
+
+[[rulesets]]
+[rulesets.rules]
+"{rank}" = "{rank}"
+"{land}" = "{land}"
+
+[[rulesets]]
+name = "rank"
+[rulesets.rules]
+"outpost" = "哨站"
+"hamlet" = "村庄"
+"village" = "村庄"
+"town" = "城镇"
+"city" = "城市"
+"metropolis" = "都会"
+"capital" = "首府"
+"mountainhome" = "山之家"
+# Retain the existing header reader's compatibility label.
+"fortress" = "要塞"
+
+[[rulesets]]
+name = "land"
+[rulesets.rules]
+"a barony" = "男爵"
+"a county" = "伯爵"
+"a duchy" = "公爵"

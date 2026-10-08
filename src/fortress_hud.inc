@@ -1,10 +1,3 @@
-static bool fortress_header_rank(std::string_view source) {
-    return source == "Outpost" || source == "Hamlet" ||
-        source == "Village" || source == "Town" || source == "City" ||
-        source == "Metropolis" || source == "Fortress" ||
-        source == "Mountainhome";
-}
-
 // The current world_site owns both HUD name fields. Keep the native-language
 // row phonetic, and send the English-name row through the site translator
 // before generic personal-name/compound rules can consume either field.
@@ -32,7 +25,7 @@ void Overlay::append_fortress_site_name(std::vector<std::string> &rows,
         const auto ranks = split_text_fields(context[y + 2]);
         for (const int population : populations) {
             for (const auto &rank : ranks) {
-                if (!fortress_header_rank(rank.text) || rank.end >= population) continue;
+                if (!translate_fortress_status(rank.text) || rank.end >= population) continue;
                 const int left = rank.start, right = population - 1;
                 if (left >= right) continue;
                 NativeHistoryName name;

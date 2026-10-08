@@ -1,0 +1,57 @@
+Native fortress status and position labels, Linux ELF
+Reference executable: dwarfort
+Build ID: bcc6789e6fb477b785a2b02be80b8b1b054ff88c
+Reconstruction from decoded instructions and installed vanilla ENTITY RAWs.
+All coordinates below are native ELF virtual addresses.
+
+FIXED FORTRESS RANK: 12cc4c0..12cc5c4
+  if plotinfo.king_arrived (byte 297bf0a):
+      return (byte 297e298 & 0x20) ? "Mountainhome" : "Capital"
+  switch plotinfo.fortress_rank (word 297bf02):
+      1 -> "Hamlet"; 2 -> "Village"; 3 -> "Town";
+      4 -> "City"; 5 -> "Metropolis"; default -> "Outpost"
+  HUD calls this formatter at 1681245. Strings longer than 18 bytes are
+  shortened to 18 bytes with dots at offsets 15..17. Draw returns at 168128e.
+  This producer does not read LAND_NAME. "Fortress" is a retained translation
+  reader compatibility label, not a branch of this native switch.
+
+NOBLES POSITION COLUMN: owner 16e23a0..16e8a57
+  compact mode:
+      position = entries[display_indices[row]].position (+18)
+      text = position.land_name (+258) if its length (+260) != 0
+             else position.name[0] (+98)
+      capitalize_string_first_word(text)
+      if length > 22: shorten to 22; overwrite offsets 19..21 with dots
+      addst(text) at 16e2be2; return 16e2be7
+  full mode:
+      position = entries[row].position (+18)
+      text = position.land_name (+258) if nonempty else position.name[0] (+98)
+      capitalize_string_first_word(text)
+      addst(text) at 16e379a; return 16e379f
+  Empty LAND_NAME branches are 16e4259 and 16e4478. Both rejoin the same
+  capitalization/draw path. The complete switch and both fallbacks are in
+  native-producers.asm. The label does not select the holder's gender; the
+  separate holder formatter owns NAME_MALE/NAME_FEMALE and spouse titles.
+
+RAW FIELD FAMILY
+  Scanned installed data/vanilla/*/objects/entity*.txt token streams.
+  LAND_NAME occurs on ENTITY:MOUNTAIN positions BARON, COUNT and DUKE:
+      LAND_HOLDER 1 / "a barony" -> title-column "男爵"
+      LAND_HOLDER 2 / "a county" -> title-column "伯爵"
+      LAND_HOLDER 3 / "a duchy"  -> title-column "公爵"
+  raw-position-sources.tsv retains all MOUNTAIN NAME and SPOUSE tokens, both
+  singular and plural, plus every installed vanilla LAND_NAME. Gendered
+  offices and consorts use the existing positions namespace. Land prose
+  keeps its own meaning; these mappings apply only to actual title fields.
+
+SHARED TRANSLATION CONSUMERS
+  fortress/status.toml: fixed rank and land-title subgrammars.
+  Nobles table: actual position column before ordinary dictionary lookup.
+  Elevate whom? dialog: actual left-list button, same land-title grammar,
+      otherwise existing positions grammar.
+  Native ELF callers: both column modes and HUD rank, even if surrounding
+      tabs/frame are occluded. Unknown position RAW captions retain native
+      text as one field, preventing partial generic-name/word translation.
+  HUD site-name/header layout: same full status grammar for recognition.
+  General literal generation excludes fortress/status.toml; authored unit
+      or squad names cannot acquire these meanings by matching their spelling.

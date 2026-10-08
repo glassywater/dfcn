@@ -519,8 +519,6 @@ Novice	新手的	wi
 Nobles action: NEW	新增任命	w
 # Nobles export mandate: translate the complete sentence with its item name.
 Export of {s} Prohibited	禁止出口{s}	wtlx
-# Native ENTITY:MOUNTAIN LAND_NAME labels, capitalized by the fortress HUD.
-A barony	男爵	wi
 A duchy	公爵领	w
 Needs:	需求：	w
 Throne Room/Office	王座厅／办公室	wi
@@ -6291,6 +6289,9 @@ Fortress activity: Sing	歌唱	li
 Fortress activity: Chant	吟唱	li
 Fortress activity: Station	驻守	li
 Fortress activity: Train	训练	li
+Fortress activity: Pray to	向{s}祷告	li
+Fortress activity: Meditate on	围绕{s}冥想	li
+Fortress activity: Preach on	就{s}布道	li
 Fortress activity: Kill	杀死目标	li
 Fortress activity: Kill various	杀死多个目标	li
 Fortress activity: Defend	保卫活动区	li
@@ -11383,7 +11384,6 @@ Uniform name: Updated Metal Melee	改良金属甲近战	l
 {d} dormitories created.	已创建{d1}间公共宿舍。	wtl
 
 # Diplomacy elevation fields and DFHack's per-candidate item annotations.
-DFHack GUI Elevation option: A Barony	男爵领	l
 DFHack GUI Elevate barony preferences: no item preferences	无物品偏好	l
 DFHack GUI Elevate barony preferences: {d} preference:	{d1}项物品偏好：	l
 DFHack GUI Elevate barony preferences: {d} preferences:	{d1}项物品偏好：	l

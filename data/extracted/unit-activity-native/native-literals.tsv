@@ -1,0 +1,1676 @@
+# ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c; native operands; immediate operands retain their instruction context in native-formatters.asm
+owner	function	instruction	operand	operand kind	source
+historical figure reference	0xa10320	0xa103bb	0x20df37d	cstring	an unknown creature
+historical figure reference	0xa10320	0xa103ec	0x2131973	cstring	's
+historical figure reference	0xa10320	0xa104f8	0x20df34c	cstring	an unidentified creature
+historical figure reference	0xa10320	0xa106e6	0x21ba050	cstring	the 
+historical figure reference	0xa10320	0xa10731	0x20df374	cstring	ghostly 
+historical figure reference	0xa10320	0xa10789	0x20f7379	cstring	 
+historical figure reference	0xa10320	0xa10898	0x20ca83d	cstring	[LPAGE:HF:
+historical figure reference	0xa10320	0xa108b5	0x21432dc	cstring	]
+historical figure reference	0xa10320	0xa10908	0x20df343	cstring	Nameless
+historical figure reference	0xa10320	0xa10997	0x2131973	cstring	's
+historical figure reference	0xa10320	0xa10a26	0x216072a	cstring	I
+historical figure reference	0xa10320	0xa10a70	0x20ca6cc	cstring	[/LPAGE]
+historical figure reference	0xa10320	0xa10a92	0x22182d4	cstring	a 
+historical figure reference	0xa10320	0xa10add	0x20df374	cstring	ghostly 
+historical figure reference	0xa10320	0xa10b96	0x20f7379	cstring	 
+historical figure reference	0xa10320	0xa10bbf	0x20df36c	cstring	zombie 
+historical figure reference	0xa10320	0xa10bd3	0x21ba04f	cstring	 the 
+historical figure reference	0xa10320	0xa10c1e	0x20df374	cstring	ghostly 
+historical figure reference	0xa10320	0xa10cc7	0x219d577	cstring	interrogator
+historical figure reference	0xa10320	0xa10cea	0x2204ec0	cstring	subject
+historical figure reference	0xa10320	0xa10cf6	0x21ba050	cstring	the 
+historical figure reference	0xa10320	0xa10d37	0x214db24	cstring	my
+historical figure reference	0xa10320	0xa10d4d	0x21baa4d	cstring	me
+historical figure reference	0xa10320	0xa10d63	0x20df365	cstring	myself
+historical figure reference	0xa10320	0xa10daa	0x20df36c	cstring	zombie 
+historical figure reference	0xa10320	0xa10dbe	0x20f7379	cstring	 
+historical figure reference	0xa10320	0xa10dea	0x20df36c	cstring	zombie 
+unit activity with native colors	0xb70720	0xb70b1a	0x20f3701	cstring	Monster Slayer
+unit activity with native colors	0xb70720	0xb70b21	0x20f372c	cstring	Mercenary
+unit activity with native colors	0xb70720	0xb70b31	0x2210ff0	cstring	Soldier
+unit activity with native colors	0xb70720	0xb70d83	0x20f3891	cstring	Attend Meeting
+unit activity with native colors	0xb70720	0xb70e40	0x20f38e2	cstring	No activity
+unit activity with native colors	0xb70720	0xb70e80	0x20f3ac5	cstring	 (Chained)
+unit activity with native colors	0xb70720	0xb71018	0x20d338e	cstring	Diplomacy
+unit activity with native colors	0xb70720	0xb71064	0x20746120	printable immediate	 at 
+unit activity with native colors	0xb70720	0xb711a0	0x20f38d6	cstring	New Arrival
+unit activity with native colors	0xb70720	0xb7121c	0x210eb84	cstring	!
+unit activity with native colors	0xb70720	0xb7127c	0x20f3873	cstring	Conduct Meeting
+unit activity with native colors	0xb70720	0xb712d1	0x20f3863	cstring	Return Treasure
+unit activity with native colors	0xb70720	0xb713c8	0x20f3883	cstring	Attend Parley
+unit activity with native colors	0xb70720	0xb713d4	0x697272412077654e	printable immediate	New Arri
+unit activity with native colors	0xb70720	0xb713de	0x6176	printable immediate	va
+unit activity with native colors	0xb70720	0xb7143c	0x54206e7275746552	printable immediate	Return T
+unit activity with native colors	0xb70720	0xb71446	0x7275	printable immediate	ur
+unit activity with native colors	0xb70720	0xb71454	0x73616572	printable immediate	reas
+unit activity with native colors	0xb70720	0xb71482	0x20f3abc	cstring	 (Caged)
+unit activity with native colors	0xb70720	0xb714f6	0x20f38a0	cstring	Make Request of 
+unit activity with native colors	0xb70720	0xb7152e	0x20f38d6	cstring	New Arrival
+unit activity with native colors	0xb70720	0xb7153f	0x2964656761432820	printable immediate	 (Caged)
+unit activity with native colors	0xb70720	0xb7155f	0x20f3863	cstring	Return Treasure
+unit activity with native colors	0xb70720	0xb7158e	0x20d3362	cstring	Demand surrender
+unit activity with native colors	0xb70720	0xb715ad	0x20f3abc	cstring	 (Caged)
+unit activity with native colors	0xb70720	0xb715cc	0x219eec9	cstring	 at 
+unit activity with native colors	0xb70720	0xb715fb	0x20f38b1	cstring	Make peace
+unit activity with native colors	0xb70720	0xb71646	0x20f3aa1	cstring	Noble
+unit activity with native colors	0xb70720	0xb71682	0x20f38bc	cstring	Declare war
+unit activity with native colors	0xb70720	0xb716a4	0x20f3aa7	cstring	No job
+unit activity with native colors	0xb70720	0xb716c7	0x20d3373	cstring	Make contact
+unit activity with native colors	0xb70720	0xb71715	0x20f3ab4	cstring	Chained
+unit activity with native colors	0xb70720	0xb717ef	0x20f38c8	cstring	Seek alliance
+unit activity with native colors	0xb70720	0xb71841	0x20d3380	cstring	Improve trade
+unit activity with native colors	0xb70720	0xb71863	0x20f3aae	cstring	Caged
+unit activity with native colors	0xb70720	0xb718a6	0x20f3a8a	cstring	 (cannot follow order)
+unit activity with native colors	0xb70720	0xb718ba	0x209e070	cstring	basic_string::append
+unit activity with native colors	0xb70720	0xb718f3	0x20f3a09	cstring	 (not following order)
+unit activity with native colors	0xb70720	0xb71907	0x20f3a6c	cstring	 (location no longer in zone)
+unit activity with native colors	0xb70720	0xb7191b	0x20f3928	cstring	 (no activity)
+unit activity with native colors	0xb70720	0xb7192f	0x20f3913	cstring	 (improper barracks)
+unit activity with native colors	0xb70720	0xb71943	0x20f3904	cstring	 (no barracks)
+unit activity with native colors	0xb70720	0xb71957	0x20f38ee	cstring	 (activity cancelled)
+unit activity with native colors	0xb70720	0xb7196b	0x20f3a57	cstring	 (cannot leave site)
+unit activity with native colors	0xb70720	0xb7197f	0x20f3a4c	cstring	 (no item)
+unit activity with native colors	0xb70720	0xb71993	0x20f3a3e	cstring	 (no library)
+unit activity with native colors	0xb70720	0xb719a7	0x20f3a31	cstring	 (no temple)
+unit activity with native colors	0xb70720	0xb719bb	0x20f3a20	cstring	 (invalid order)
+unit activity with native colors	0xb70720	0xb719cf	0x20f1c88	cstring	 (no reachable point on route)
+unit activity with native colors	0xb70720	0xb719e3	0x20f39f6	cstring	 (no patrol route)
+unit activity with native colors	0xb70720	0xb719f7	0x20f39e6	cstring	 (not in squad)
+unit activity with native colors	0xb70720	0xb71a0b	0x20f39d9	cstring	 (no burrow)
+unit activity with native colors	0xb70720	0xb71a1f	0x20f39bc	cstring	 (no reachable valid target)
+unit activity with native colors	0xb70720	0xb71a33	0x20f39a8	cstring	 (invalid location)
+unit activity with native colors	0xb70720	0xb71a47	0x20f3990	cstring	 (unreachable location)
+unit activity with native colors	0xb70720	0xb71a5b	0x20f397b	cstring	 (improper building)
+unit activity with native colors	0xb70720	0xb71a6f	0x20f3966	cstring	 (no archery target)
+unit activity with native colors	0xb70720	0xb71a83	0x20f3954	cstring	 (does not exist)
+unit activity with native colors	0xb70720	0xb71a97	0x20f3937	cstring	 (cannot individually drill)
+unit activity text	0xb79d40	0xb79feb	0x20f3701	cstring	Monster Slayer
+unit activity text	0xb79d40	0xb79ffe	0x2210ff0	cstring	Soldier
+unit activity text	0xb79d40	0xb7a2bc	0x20d338e	cstring	Diplomacy
+unit activity text	0xb79d40	0xb7a308	0x20746120	printable immediate	 at 
+unit activity text	0xb79d40	0xb7a38c	0x20f3873	cstring	Conduct Meeting
+unit activity text	0xb79d40	0xb7a3b4	0x20f38d6	cstring	New Arrival
+unit activity text	0xb79d40	0xb7a47a	0x2964	printable immediate	d)
+unit activity text	0xb79d40	0xb7a47f	0x656e696168432820	printable immediate	 (Chaine
+unit activity text	0xb79d40	0xb7a4b0	0x210eb84	cstring	!
+unit activity text	0xb79d40	0xb7a500	0x20f3891	cstring	Attend Meeting
+unit activity text	0xb79d40	0xb7a5e0	0x20f38e2	cstring	No activity
+unit activity text	0xb79d40	0xb7a602	0x20f38d6	cstring	New Arrival
+unit activity text	0xb79d40	0xb7a697	0x20f3a57	cstring	 (cannot leave site)
+unit activity text	0xb79d40	0xb7a6ab	0x20f3a4c	cstring	 (no item)
+unit activity text	0xb79d40	0xb7a6bf	0x20f3a3e	cstring	 (no library)
+unit activity text	0xb79d40	0xb7a6d3	0x20f3a31	cstring	 (no temple)
+unit activity text	0xb79d40	0xb7a6e7	0x20f3a20	cstring	 (invalid order)
+unit activity text	0xb79d40	0xb7a6fb	0x20f1c88	cstring	 (no reachable point on route)
+unit activity text	0xb79d40	0xb7a70f	0x20f39f6	cstring	 (no patrol route)
+unit activity text	0xb79d40	0xb7a723	0x20f39e6	cstring	 (not in squad)
+unit activity text	0xb79d40	0xb7a737	0x20f39d9	cstring	 (no burrow)
+unit activity text	0xb79d40	0xb7a74b	0x20f39bc	cstring	 (no reachable valid target)
+unit activity text	0xb79d40	0xb7a75f	0x20f39a8	cstring	 (invalid location)
+unit activity text	0xb79d40	0xb7a773	0x20f3990	cstring	 (unreachable location)
+unit activity text	0xb79d40	0xb7a787	0x20f397b	cstring	 (improper building)
+unit activity text	0xb79d40	0xb7a79b	0x20f3966	cstring	 (no archery target)
+unit activity text	0xb79d40	0xb7a7af	0x20f3954	cstring	 (does not exist)
+unit activity text	0xb79d40	0xb7a7c3	0x20f3937	cstring	 (cannot individually drill)
+unit activity text	0xb79d40	0xb7a7d7	0x20f3928	cstring	 (no activity)
+unit activity text	0xb79d40	0xb7a7eb	0x20f3913	cstring	 (improper barracks)
+unit activity text	0xb79d40	0xb7a7ff	0x20f3a09	cstring	 (not following order)
+unit activity text	0xb79d40	0xb7a813	0x20f3a6c	cstring	 (location no longer in zone)
+unit activity text	0xb79d40	0xb7a827	0x20f3904	cstring	 (no barracks)
+unit activity text	0xb79d40	0xb7a83b	0x20f38ee	cstring	 (activity cancelled)
+unit activity text	0xb79d40	0xb7a86c	0x20f372c	cstring	Mercenary
+unit activity text	0xb79d40	0xb7a8a3	0x20f372c	cstring	Mercenary
+unit activity text	0xb79d40	0xb7a943	0x20f3883	cstring	Attend Parley
+unit activity text	0xb79d40	0xb7a98c	0x2964656761432820	printable immediate	 (Caged)
+unit activity text	0xb79d40	0xb7a9ac	0x697272412077654e	printable immediate	New Arri
+unit activity text	0xb79d40	0xb7a9b6	0x6176	printable immediate	va
+unit activity text	0xb79d40	0xb7a9e7	0x20f3863	cstring	Return Treasure
+unit activity text	0xb79d40	0xb7aa4f	0x72616e656372654d	printable immediate	Mercenar
+unit activity text	0xb79d40	0xb7aa65	0x20726574736e6f4d	printable immediate	Monster 
+unit activity text	0xb79d40	0xb7aa6f	0x7265	printable immediate	er
+unit activity text	0xb79d40	0xb7aa74	0x79616c53	printable immediate	Slay
+unit activity text	0xb79d40	0xb7aaa7	0x20f38a0	cstring	Make Request of 
+unit activity text	0xb79d40	0xb7ab58	0x54206e7275746552	printable immediate	Return T
+unit activity text	0xb79d40	0xb7ab62	0x7275	printable immediate	ur
+unit activity text	0xb79d40	0xb7ab6f	0x73616572	printable immediate	reas
+unit activity text	0xb79d40	0xb7ab81	0x20f5820/16	vector	Make Request of 
+unit activity text	0xb79d40	0xb7abba	0x20f372c	cstring	Mercenary
+unit activity text	0xb79d40	0xb7ac1e	0x20d3362	cstring	Demand surrender
+unit activity text	0xb79d40	0xb7ac3d	0x20f3abc	cstring	 (Caged)
+unit activity text	0xb79d40	0xb7ac79	0x20f3aa7	cstring	No job
+unit activity text	0xb79d40	0xb7ac9b	0x219eec9	cstring	 at 
+unit activity text	0xb79d40	0xb7acba	0x20f3863	cstring	Return Treasure
+unit activity text	0xb79d40	0xb7acd9	0x20f38a0	cstring	Make Request of 
+unit activity text	0xb79d40	0xb7acf8	0x20f3ac5	cstring	 (Chained)
+unit activity text	0xb79d40	0xb7ad27	0x20f38b1	cstring	Make peace
+unit activity text	0xb79d40	0xb7ad6a	0x20f38bc	cstring	Declare war
+unit activity text	0xb79d40	0xb7adbf	0x20f3ab4	cstring	Chained
+unit activity text	0xb79d40	0xb7add8	0x20f3aa1	cstring	Noble
+unit activity text	0xb79d40	0xb7ae0a	0x20f38c8	cstring	Seek alliance
+unit activity text	0xb79d40	0xb7ae1b	0x20f372c	cstring	Mercenary
+unit activity text	0xb79d40	0xb7ae88	0x20f372c	cstring	Mercenary
+unit activity text	0xb79d40	0xb7af06	0x20f3aae	cstring	Caged
+unit activity text	0xb79d40	0xb7af12	0x20f3a8a	cstring	 (cannot follow order)
+unit activity text	0xb79d40	0xb7af38	0x20d3380	cstring	Improve trade
+unit activity text	0xb79d40	0xb7af5b	0x20d3373	cstring	Make contact
+unit activity text	0xb79d40	0xb7b066	0x209e070	cstring	basic_string::append
+English language_name groups	0x12c58d0	0x12c5cc7	0x20656874	printable immediate	the 
+English language_name groups	0x12c58d0	0x12c5dc9	0x20656874	printable immediate	the 
+English language_name groups	0x12c58d0	0x12c5ee0	0x20656874	printable immediate	the 
+English language_name groups	0x12c58d0	0x12c6071	0x20656874	printable immediate	the 
+English language_name groups	0x12c58d0	0x12c61c6	0x666f	printable immediate	of
+English language_name groups	0x12c58d0	0x12c6406	0x664f	printable immediate	Of
+English language_name groups	0x12c58d0	0x12c64e8	0x20fc8f7	cstring	The 
+English language_name groups	0x12c58d0	0x12c6878	0x21d54c2	cstring	-
+English language_name groups	0x12c58d0	0x12c69a8	0x21ba050	cstring	the 
+English language_name groups	0x12c58d0	0x12c6a9e	0x21ba050	cstring	the 
+English language_name groups	0x12c58d0	0x12c6abe	0x21ba050	cstring	the 
+English language_name groups	0x12c58d0	0x12c6aee	0x20f7379	cstring	 
+English language_name groups	0x12c58d0	0x12c6b5e	0x20f7379	cstring	 
+English language_name groups	0x12c58d0	0x12c6b80	0x20f7379	cstring	 
+English language_name groups	0x12c58d0	0x12c6ba6	0x20f7379	cstring	 
+English language_name groups	0x12c58d0	0x12c6bce	0x21ba050	cstring	the 
+English language_name groups	0x12c58d0	0x12c6bef	0x21138f3	cstring	of 
+English language_name groups	0x12c58d0	0x12c6c0d	0x213bd94	cstring	Of 
+English language_name groups	0x12c58d0	0x12c6c50	0x20f7379	cstring	 
+English language_name groups	0x12c58d0	0x12c6c79	0x20fc8f7	cstring	The 
+English language_name groups	0x12c58d0	0x12c6c8d	0x20fc8f7	cstring	The 
+English language_name groups	0x12c58d0	0x12c6ce3	0x20f7379	cstring	 
+English language_name groups	0x12c58d0	0x12c6d02	0x20f7379	cstring	 
+English language_name groups	0x12c58d0	0x12c6d35	0x20fc8f7	cstring	The 
+English language_name groups	0x12c58d0	0x12c6d6c	0x209901e	cstring	basic_string::_M_create
+English language_name groups	0x12c58d0	0x12c6d78	0x209e070	cstring	basic_string::append
+English language_name groups	0x12c58d0	0x12c6d84	0x209e070	cstring	basic_string::append
+English language_name groups	0x12c58d0	0x12c6d90	0x209e070	cstring	basic_string::append
+English language_name groups	0x12c58d0	0x12c6d9c	0x209e070	cstring	basic_string::append
+English language_name groups	0x12c58d0	0x12c6da8	0x209e070	cstring	basic_string::append
+English language_name groups	0x12c58d0	0x12c6db4	0x209e070	cstring	basic_string::append
+English language_name groups	0x12c58d0	0x12c6dc0	0x209e070	cstring	basic_string::append
+English language_name groups	0x12c58d0	0x12c6dcc	0x209e070	cstring	basic_string::append
+English language_name groups	0x12c58d0	0x12c6dd8	0x209e070	cstring	basic_string::append
+English language_name groups	0x12c58d0	0x12c6de4	0x209e070	cstring	basic_string::append
+English language_name groups	0x12c58d0	0x12c6df0	0x209e070	cstring	basic_string::append
+English language_name groups	0x12c58d0	0x12c6dfc	0x209e070	cstring	basic_string::append
+English language_name groups	0x12c58d0	0x12c6e08	0x209e070	cstring	basic_string::append
+deity sphere nouns	0x14e7b20	0x14e7b46	0x2115878	cstring	writing
+deity sphere nouns	0x14e7b20	0x14e7b55	0x2172951	cstring	wisdom
+deity sphere nouns	0x14e7b20	0x14e7b64	0x21430a1	cstring	wind
+deity sphere nouns	0x14e7b20	0x14e7b73	0x217379b	cstring	weather
+deity sphere nouns	0x14e7b20	0x14e7b82	0x21c981c	cstring	wealth
+deity sphere nouns	0x14e7b20	0x14e7b91	0x22105ff	cstring	water
+deity sphere nouns	0x14e7b20	0x14e7ba0	0x20f38c4	cstring	war
+deity sphere nouns	0x14e7b20	0x14e7baf	0x2172948	cstring	volcanos
+deity sphere nouns	0x14e7b20	0x14e7bbe	0x2172940	cstring	victory
+deity sphere nouns	0x14e7b20	0x14e7bcd	0x217293a	cstring	valor
+deity sphere nouns	0x14e7b20	0x14e7bdc	0x2172931	cstring	twilight
+deity sphere nouns	0x14e7b20	0x14e7beb	0x219d606	cstring	truth
+deity sphere nouns	0x14e7b20	0x14e7bfa	0x2172928	cstring	trickery
+deity sphere nouns	0x14e7b20	0x14e7c09	0x2143005	cstring	trees
+deity sphere nouns	0x14e7b20	0x14e7c18	0x217291e	cstring	treachery
+deity sphere nouns	0x14e7b20	0x14e7c27	0x2172914	cstring	travelers
+deity sphere nouns	0x14e7b20	0x14e7c36	0x20d3388	cstring	trade
+deity sphere nouns	0x14e7b20	0x14e7c45	0x20e235e	cstring	torture
+deity sphere nouns	0x14e7b20	0x14e7c54	0x217290c	cstring	thunder
+deity sphere nouns	0x14e7b20	0x14e7c63	0x2172902	cstring	thralldom
+deity sphere nouns	0x14e7b20	0x14e7c72	0x210f6c2	cstring	theft
+deity sphere nouns	0x14e7b20	0x14e7c81	0x2142fd2	cstring	sun
+deity sphere nouns	0x14e7b20	0x14e7c90	0x21728fa	cstring	suicide
+deity sphere nouns	0x14e7b20	0x14e7c9f	0x21c9782	cstring	strength
+deity sphere nouns	0x14e7b20	0x14e7cae	0x2142dd0	cstring	storms
+deity sphere nouns	0x14e7b20	0x14e7cbd	0x2142f7c	cstring	stars
+deity sphere nouns	0x14e7b20	0x14e7ccc	0x219c614	cstring	speech
+deity sphere nouns	0x14e7b20	0x14e7cdb	0x21728f5	cstring	song
+deity sphere nouns	0x14e7b20	0x14e7cea	0x2142f4f	cstring	sky
+deity sphere nouns	0x14e7b20	0x14e7cf9	0x21eccea	cstring	silence
+deity sphere nouns	0x14e7b20	0x14e7d08	0x221019a	cstring	seasons
+deity sphere nouns	0x14e7b20	0x14e7d17	0x20dad5b	cstring	scholarship
+deity sphere nouns	0x14e7b20	0x14e7d26	0x2142f43	cstring	salt
+deity sphere nouns	0x14e7b20	0x14e7d35	0x214ccd9	cstring	sacrifice
+deity sphere nouns	0x14e7b20	0x14e7d44	0x21728ee	cstring	rumors
+deity sphere nouns	0x14e7b20	0x14e7d53	0x21728e4	cstring	rulership
+deity sphere nouns	0x14e7b20	0x14e7d62	0x21728dd	cstring	rivers
+deity sphere nouns	0x14e7b20	0x14e7d71	0x21728d5	cstring	revenge
+deity sphere nouns	0x14e7b20	0x14e7d80	0x21728cd	cstring	revelry
+deity sphere nouns	0x14e7b20	0x14e7d8f	0x21728c5	cstring	rebirth
+deity sphere nouns	0x14e7b20	0x14e7d9e	0x21728bc	cstring	rainbows
+deity sphere nouns	0x14e7b20	0x14e7dad	0x2142fbd	cstring	rain
+deity sphere nouns	0x14e7b20	0x14e7dbc	0x21728b2	cstring	pregnancy
+deity sphere nouns	0x14e7b20	0x14e7dcb	0x20e14de	cstring	poetry
+deity sphere nouns	0x14e7b20	0x14e7dda	0x21b9700	cstring	plants
+deity sphere nouns	0x14e7b20	0x14e7de9	0x21728a7	cstring	persuasion
+deity sphere nouns	0x14e7b20	0x14e7df8	0x20f38b6	cstring	peace
+deity sphere nouns	0x14e7b20	0x14e7e07	0x217289e	cstring	painting
+deity sphere nouns	0x14e7b20	0x14e7e16	0x21b008f	cstring	order
+deity sphere nouns	0x14e7b20	0x14e7e25	0x2142ed8	cstring	oceans
+deity sphere nouns	0x14e7b20	0x14e7e34	0x2172898	cstring	oaths
+deity sphere nouns	0x14e7b20	0x14e7e43	0x2142ebd	cstring	nightmares
+deity sphere nouns	0x14e7b20	0x14e7e52	0x20f6ffc	cstring	night
+deity sphere nouns	0x14e7b20	0x14e7e61	0x21b94e3	cstring	nature
+deity sphere nouns	0x14e7b20	0x14e7e70	0x21ec8cd	cstring	music
+deity sphere nouns	0x14e7b20	0x14e7e7f	0x20e3656	cstring	murder
+deity sphere nouns	0x14e7b20	0x14e7e8e	0x2142e87	cstring	muck
+deity sphere nouns	0x14e7b20	0x14e7e9d	0x217288e	cstring	mountains
+deity sphere nouns	0x14e7b20	0x14e7eac	0x220f86e	cstring	moon
+deity sphere nouns	0x14e7b20	0x14e7ebb	0x21080f0	cstring	mist
+deity sphere nouns	0x14e7b20	0x14e7eca	0x210d45c	cstring	misery
+deity sphere nouns	0x14e7b20	0x14e7ed9	0x21ae324	cstring	minerals
+deity sphere nouns	0x14e7b20	0x14e7ee8	0x2172887	cstring	metals
+deity sphere nouns	0x14e7b20	0x14e7ef7	0x21f5db8	cstring	mercy
+deity sphere nouns	0x14e7b20	0x14e7f06	0x217287e	cstring	marriage
+deity sphere nouns	0x14e7b20	0x14e7f15	0x210e9ef	cstring	lust
+deity sphere nouns	0x14e7b20	0x14e7f24	0x2172879	cstring	luck
+deity sphere nouns	0x14e7b20	0x14e7f33	0x214da25	cstring	loyalty
+deity sphere nouns	0x14e7b20	0x14e7f42	0x210e877	cstring	love
+deity sphere nouns	0x14e7b20	0x14e7f51	0x217286f	cstring	longevity
+deity sphere nouns	0x14e7b20	0x14e7f60	0x2142dda	cstring	lightning
+deity sphere nouns	0x14e7b20	0x14e7f6f	0x2204d7e	cstring	light
+deity sphere nouns	0x14e7b20	0x14e7f7e	0x21ade3b	cstring	lies
+deity sphere nouns	0x14e7b20	0x14e7f8d	0x21163b0	cstring	laws
+deity sphere nouns	0x14e7b20	0x14e7f9c	0x21f0ff7	cstring	lakes
+deity sphere nouns	0x14e7b20	0x14e7fab	0x21b00a8	cstring	labor
+deity sphere nouns	0x14e7b20	0x14e7fba	0x20d35dd	cstring	justice
+deity sphere nouns	0x14e7b20	0x14e7fc9	0x2142db1	cstring	jewels
+deity sphere nouns	0x14e7b20	0x14e7fd8	0x20e127f	cstring	jealousy
+deity sphere nouns	0x14e7b20	0x14e7fe7	0x2172863	cstring	inspiration
+deity sphere nouns	0x14e7b20	0x14e7ff6	0x2204c9f	cstring	hunting
+deity sphere nouns	0x14e7b20	0x14e8005	0x2172857	cstring	hospitality
+deity sphere nouns	0x14e7b20	0x14e8014	0x213f9e7	cstring	healing
+deity sphere nouns	0x14e7b20	0x14e8023	0x210dad6	cstring	happiness
+deity sphere nouns	0x14e7b20	0x14e8032	0x217284c	cstring	generosity
+deity sphere nouns	0x14e7b20	0x14e8041	0x2172846	cstring	games
+deity sphere nouns	0x14e7b20	0x14e8050	0x20e4e56	cstring	gambling
+deity sphere nouns	0x14e7b20	0x14e805f	0x210daa1	cstring	freedom
+deity sphere nouns	0x14e7b20	0x14e806e	0x217283b	cstring	fortresses
+deity sphere nouns	0x14e7b20	0x14e807d	0x217282f	cstring	forgiveness
+deity sphere nouns	0x14e7b20	0x14e808c	0x21ade0e	cstring	food
+deity sphere nouns	0x14e7b20	0x14e809b	0x21ae936	cstring	fishing
+deity sphere nouns	0x14e7b20	0x14e80aa	0x20fc3d2	cstring	fish
+deity sphere nouns	0x14e7b20	0x14e80b9	0x212ffc5	cstring	fire
+deity sphere nouns	0x14e7b20	0x14e80c8	0x2172825	cstring	festivals
+deity sphere nouns	0x14e7b20	0x14e80d7	0x217281b	cstring	fertility
+deity sphere nouns	0x14e7b20	0x14e80e6	0x2172816	cstring	fate
+deity sphere nouns	0x14e7b20	0x14e80f5	0x2172811	cstring	fame
+deity sphere nouns	0x14e7b20	0x14e8104	0x21f56df	cstring	family
+deity sphere nouns	0x14e7b20	0x14e8113	0x2210bc6	cstring	earth
+deity sphere nouns	0x14e7b20	0x14e8122	0x20cafa3	cstring	duty
+deity sphere nouns	0x14e7b20	0x14e8131	0x217280c	cstring	dusk
+deity sphere nouns	0x14e7b20	0x14e8140	0x2142d7f	cstring	dreams
+deity sphere nouns	0x14e7b20	0x14e814f	0x2210657	cstring	disease
+deity sphere nouns	0x14e7b20	0x14e815e	0x2172801	cstring	discipline
+deity sphere nouns	0x14e7b20	0x14e816d	0x21727f7	cstring	depravity
+deity sphere nouns	0x14e7b20	0x14e817c	0x21727ed	cstring	deformity
+deity sphere nouns	0x14e7b20	0x14e818b	0x211550e	cstring	death
+deity sphere nouns	0x14e7b20	0x14e819a	0x219ed9a	cstring	day
+deity sphere nouns	0x14e7b20	0x14e81a9	0x2142fdd	cstring	dawn
+deity sphere nouns	0x14e7b20	0x14e81b8	0x2142d5d	cstring	darkness
+deity sphere nouns	0x14e7b20	0x14e81c7	0x21e2e3b	cstring	dance
+deity sphere nouns	0x14e7b20	0x14e81d6	0x20e3cb2	cstring	creation
+deity sphere nouns	0x14e7b20	0x14e81e5	0x20df264	cstring	crafts
+deity sphere nouns	0x14e7b20	0x14e81f4	0x2115fcf	cstring	courage
+deity sphere nouns	0x14e7b20	0x14e8203	0x2204e9e	cstring	consolation
+deity sphere nouns	0x14e7b20	0x14e8212	0x21727e6	cstring	coasts
+deity sphere nouns	0x14e7b20	0x14e8221	0x21b44bd	cstring	children
+deity sphere nouns	0x14e7b20	0x14e8230	0x21727de	cstring	charity
+deity sphere nouns	0x14e7b20	0x14e823f	0x2142d36	cstring	chaos
+deity sphere nouns	0x14e7b20	0x14e824e	0x21727d6	cstring	caverns
+deity sphere nouns	0x14e7b20	0x14e825d	0x21727cb	cstring	boundaries
+deity sphere nouns	0x14e7b20	0x14e826c	0x21727c4	cstring	blight
+deity sphere nouns	0x14e7b20	0x14e827b	0x2173957	cstring	birth
+deity sphere nouns	0x14e7b20	0x14e828a	0x220f318	cstring	beauty
+deity sphere nouns	0x14e7b20	0x14e8299	0x22108ee	cstring	balance
+deity sphere nouns	0x14e7b20	0x14e82a8	0x212f9e3	cstring	art
+deity sphere nouns	0x14e7b20	0x14e82b7	0x21ae26f	cstring	animals
+deity sphere nouns	0x14e7b20	0x14e82c6	0x21727b8	cstring	agriculture
+deity sphere nouns	0x14e7b20	0x14e82d5	0x2172958	cstring	youth
+deity sphere nouns	0x14e7b20	0x14e82e4	0x217295e	cstring	no sphere
+sphere definite article	0x14f0240	0x14f0374	0x21ba050	cstring	the 
+sphere definite article	0x14f0240	0x14f03b6	0x21ba050	cstring	the 
+sphere definite article	0x14f0240	0x14f03e0	0x20656874	printable immediate	the 
+skill action nouns	0x1502f40	0x1502f7b	0x213be2d	cstring	Stonecutting
+skill action nouns	0x1502f40	0x1502f8d	0x21760f6	cstring	Riding
+skill action nouns	0x1502f40	0x1502f9f	0x217639a	cstring	Intrigue
+skill action nouns	0x1502f40	0x1502fb1	0x213c06f	cstring	Bookbinding
+skill action nouns	0x1502f40	0x1502ffe	0x6e69	printable immediate	in
+skill action nouns	0x1502f40	0x1503003	0x6b616d7265706150	printable immediate	Papermak
+skill action nouns	0x1502f40	0x1503037	0x21748c0	cstring	Fluid Engineer
+skill action nouns	0x1502f40	0x1503049	0x214d0e0	cstring	Geography
+skill action nouns	0x1502f40	0x150305b	0x214d0d6	cstring	Chemistry
+skill action nouns	0x1502f40	0x150306d	0x21748b0	cstring	Optics Engineer
+skill action nouns	0x1502f40	0x150307f	0x214d0bc	cstring	Astronomy
+skill action nouns	0x1502f40	0x15030c9	0x74616d656874614d	printable immediate	Mathemat
+skill action nouns	0x1502f40	0x15030d9	0x6369	printable immediate	ic
+skill action nouns	0x1502f40	0x15030ef	0x2176259	cstring	Logic
+skill action nouns	0x1502f40	0x1503101	0x2176247	cstring	Critical Thinking
+skill action nouns	0x1502f40	0x1503113	0x2176231	cstring	Percussion Instrument
+skill action nouns	0x1502f40	0x1503125	0x2176221	cstring	Wind Instrument
+skill action nouns	0x1502f40	0x1503137	0x217620d	cstring	Stringed Instrument
+skill action nouns	0x1502f40	0x1503149	0x21761f9	cstring	Keyboard Instrument
+skill action nouns	0x1502f40	0x150315b	0x21761f1	cstring	Singing
+skill action nouns	0x1502f40	0x150316d	0x22129ae	cstring	Music
+skill action nouns	0x1502f40	0x150317f	0x22129cd	cstring	Dance
+skill action nouns	0x1502f40	0x1503191	0x2174e25	cstring	Gelding
+skill action nouns	0x1502f40	0x15031a3	0x2176391	cstring	Climbing
+skill action nouns	0x1502f40	0x15031b5	0x213c083	cstring	Wax Working
+skill action nouns	0x1502f40	0x15031c7	0x213bf16	cstring	Beekeeping
+skill action nouns	0x1502f40	0x15031d9	0x213bf0d	cstring	Pressing
+skill action nouns	0x1502f40	0x15031eb	0x213c08f	cstring	Glazing
+skill action nouns	0x1502f40	0x15031fd	0x213c07b	cstring	Pottery
+skill action nouns	0x1502f40	0x150320f	0x213bf82	cstring	Spinning
+skill action nouns	0x1502f40	0x1503221	0x213bf79	cstring	Shearing
+skill action nouns	0x1502f40	0x1503233	0x217626a	cstring	Military Tactics
+skill action nouns	0x1502f40	0x1503245	0x2176388	cstring	Knapping
+skill action nouns	0x1502f40	0x1503257	0x2176344	cstring	Misc. Object
+skill action nouns	0x1502f40	0x1503269	0x21762b7	cstring	Dodging
+skill action nouns	0x1502f40	0x150327b	0x21762af	cstring	Kicking
+skill action nouns	0x1502f40	0x150328d	0x21762a6	cstring	Striking
+skill action nouns	0x1502f40	0x150329f	0x217629f	cstring	Biting
+skill action nouns	0x1502f40	0x15032b1	0x2176295	cstring	Wrestling
+skill action nouns	0x1502f40	0x15032c3	0x217628d	cstring	Archery
+skill action nouns	0x1502f40	0x15032d5	0x2176284	cstring	Fighting
+skill action nouns	0x1502f40	0x15032e7	0x217627b	cstring	Teaching
+skill action nouns	0x1502f40	0x1503334	0x7069	printable immediate	ip
+skill action nouns	0x1502f40	0x1503339	0x687372656461654c	printable immediate	Leadersh
+skill action nouns	0x1502f40	0x150335f	0x221248a	cstring	Balance
+skill action nouns	0x1502f40	0x1503371	0x21748cf	cstring	Coordination
+skill action nouns	0x1502f40	0x15033bb	0x61737265766e6f43	printable immediate	Conversa
+skill action nouns	0x1502f40	0x15033cb	0x6e6f6974	printable immediate	tion
+skill action nouns	0x1502f40	0x15033e7	0x2176142	cstring	Intimidation
+skill action nouns	0x1502f40	0x15033f9	0x217613c	cstring	Lying
+skill action nouns	0x1502f40	0x150340b	0x217612d	cstring	Record Keeping
+skill action nouns	0x1502f40	0x1503455	0x617a696e6167724f	printable immediate	Organiza
+skill action nouns	0x1502f40	0x1503465	0x6e6f6974	printable immediate	tion
+skill action nouns	0x1502f40	0x1503475	0x2176123	cstring	Appraisal
+skill action nouns	0x1502f40	0x1503487	0x2176114	cstring	Judging Intent
+skill action nouns	0x1502f40	0x1503499	0x2176108	cstring	Negotiation
+skill action nouns	0x1502f40	0x15034ab	0x21760fd	cstring	Persuasion
+skill action nouns	0x1502f40	0x15034bd	0x21760ed	cstring	Swimming
+skill action nouns	0x1502f40	0x15034cf	0x21762f6	cstring	Pump Operation
+skill action nouns	0x1502f40	0x15034e1	0x213bf06	cstring	Dyeing
+skill action nouns	0x1502f40	0x15034f3	0x213bfd2	cstring	Potash Making
+skill action nouns	0x1502f40	0x1503505	0x213bf29	cstring	Soap Making
+skill action nouns	0x1502f40	0x1503552	0x676e	printable immediate	ng
+skill action nouns	0x1502f40	0x1503558	0x696b614d2065794c	printable immediate	Lye Maki
+skill action nouns	0x1502f40	0x1503573	0x213bffd	cstring	Wood Burning
+skill action nouns	0x1502f40	0x1503585	0x2174802	cstring	Discipline
+skill action nouns	0x1502f40	0x1503597	0x21747f4	cstring	Concentration
+skill action nouns	0x1502f40	0x15035a9	0x21761bd	cstring	Studying
+skill action nouns	0x1502f40	0x15035bb	0x2176176	cstring	Tracking
+skill action nouns	0x1502f40	0x15035cd	0x2176169	cstring	Pacification
+skill action nouns	0x1502f40	0x15035df	0x217615f	cstring	Consoling
+skill action nouns	0x1502f40	0x15035f1	0x2176156	cstring	Flattery
+skill action nouns	0x1502f40	0x1503603	0x217614f	cstring	Comedy
+skill action nouns	0x1502f40	0x1503615	0x22129a3	cstring	Poetry
+skill action nouns	0x1502f40	0x1503627	0x21761da	cstring	Prose
+skill action nouns	0x1502f40	0x1503639	0x21761d2	cstring	Writing
+skill action nouns	0x1502f40	0x150364b	0x21761c6	cstring	Observation
+skill action nouns	0x1502f40	0x150365d	0x21761e8	cstring	Speaking
+skill action nouns	0x1502f40	0x150366f	0x21761e0	cstring	Reading
+skill action nouns	0x1502f40	0x1503681	0x2176379	cstring	Crutch-walking
+skill action nouns	0x1502f40	0x1503693	0x2174c94	cstring	Suturing
+skill action nouns	0x1502f40	0x15036a5	0x217636c	cstring	Bone Setting
+skill action nouns	0x1502f40	0x15036b7	0x2212182	cstring	Surgery
+skill action nouns	0x1502f40	0x15036c9	0x2176360	cstring	Diagnostics
+skill action nouns	0x1502f40	0x15036db	0x2176351	cstring	Wound Dressing
+skill action nouns	0x1502f40	0x15036ed	0x2173235	cstring	Ambush
+skill action nouns	0x1502f40	0x15036ff	0x212c3b0	cstring	Nature
+skill action nouns	0x1502f40	0x1503711	0x217632f	cstring	Machinery
+skill action nouns	0x1502f40	0x1503723	0x2176326	cstring	Throwing
+skill action nouns	0x1502f40	0x1503735	0x217631e	cstring	Blowgun
+skill action nouns	0x1502f40	0x1503747	0x21762e2	cstring	Bow
+skill action nouns	0x1502f40	0x1503759	0x217633f	cstring	Lash
+skill action nouns	0x1502f40	0x150376b	0x21762dd	cstring	Pike
+skill action nouns	0x1502f40	0x150377d	0x21760bf	cstring	Bowmaking
+skill action nouns	0x1502f40	0x150378f	0x21762e6	cstring	Siege Operation
+skill action nouns	0x1502f40	0x15037a1	0x213c0d0	cstring	Siege Engineering
+skill action nouns	0x1502f40	0x15037b3	0x2175019	cstring	Armor
+skill action nouns	0x1502f40	0x15037c5	0x217500d	cstring	Shield
+skill action nouns	0x1502f40	0x15037d7	0x21762d4	cstring	Crossbow
+skill action nouns	0x1502f40	0x15037e9	0x21762ce	cstring	Spear
+skill action nouns	0x1502f40	0x15037fb	0x2212781	cstring	Hammer
+skill action nouns	0x1502f40	0x150380d	0x21762c9	cstring	Mace
+skill action nouns	0x1502f40	0x150381f	0x2176339	cstring	Knife
+skill action nouns	0x1502f40	0x1503831	0x21762c3	cstring	Sword
+skill action nouns	0x1502f40	0x1503843	0x21762bf	cstring	Axe
+skill action nouns	0x1502f40	0x1503855	0x213c0a5	cstring	Bone Carving
+skill action nouns	0x1502f40	0x1503867	0x213beef	cstring	Leatherworking
+skill action nouns	0x1502f40	0x1503879	0x213c0b2	cstring	Glassmaking
+skill action nouns	0x1502f40	0x150388b	0x21761ae	cstring	Metal Crafting
+skill action nouns	0x1502f40	0x150389d	0x217619f	cstring	Stone Crafting
+skill action nouns	0x1502f40	0x15038af	0x213c056	cstring	Woodcrafting
+skill action nouns	0x1502f40	0x15038fc	0x6e69	printable immediate	in
+skill action nouns	0x1502f40	0x1503902	0x74746553206d6547	printable immediate	Gem Sett
+skill action nouns	0x1502f40	0x1503921	0x213c03e	cstring	Gem Cutting
+skill action nouns	0x1502f40	0x1503933	0x2205fa9	cstring	Metalsmithing
+skill action nouns	0x1502f40	0x1503945	0x2176191	cstring	Armorsmithing
+skill action nouns	0x1502f40	0x1503957	0x213c00a	cstring	Weaponsmithing
+skill action nouns	0x1502f40	0x1503969	0x213c0be	cstring	Strand Extraction
+skill action nouns	0x1502f40	0x150397b	0x217617f	cstring	Furnace Operation
+skill action nouns	0x1502f40	0x150398d	0x2205fe7	cstring	Fishing
+skill action nouns	0x1502f40	0x150399f	0x21760e3	cstring	Herbalism
+skill action nouns	0x1502f40	0x15039b1	0x21760db	cstring	Growing
+skill action nouns	0x1502f40	0x15039c3	0x213bf8b	cstring	Cooking
+skill action nouns	0x1502f40	0x15039d5	0x213bf71	cstring	Milking
+skill action nouns	0x1502f40	0x15039e7	0x213bf64	cstring	Cheesemaking
+skill action nouns	0x1502f40	0x15039f9	0x2176314	cstring	Threshing
+skill action nouns	0x1502f40	0x1503a0b	0x213bf4b	cstring	Milling
+skill action nouns	0x1502f40	0x1503a1d	0x2176305	cstring	Clothes Making
+skill action nouns	0x1502f40	0x1503a2f	0x213bf21	cstring	Brewing
+skill action nouns	0x1502f40	0x1503a41	0x213bf35	cstring	Weaving
+skill action nouns	0x1502f40	0x1503a53	0x213befe	cstring	Tanning
+skill action nouns	0x1502f40	0x1503a65	0x213bece	cstring	Trapping
+skill action nouns	0x1502f40	0x1503a77	0x213bec5	cstring	Butchery
+skill action nouns	0x1502f40	0x1503a89	0x213bfb4	cstring	Fish Cleaning
+skill action nouns	0x1502f40	0x1503a9b	0x213bedd	cstring	Animal Dissection
+skill action nouns	0x1502f40	0x1503aad	0x213bfc2	cstring	Fish Dissection
+skill action nouns	0x1502f40	0x1503afa	0x2191280	cstring	Animal Caretakinsecond eldest sofifth eldest soneighth eldest sotenth eldest sonsixth eldest dauninth eldest dautenth eldest dauyoungest daughtesecond eldest chfourth eldest chfifth eldest chisixth eldest chieighth eldest chninth eldest chipaternal grandmopaternal grandfamaternal grandmoolder half-sisteolder half-sibliyounger half-sisbreakdown in fribreakdown in angflee from activioff-site army wamanage work ordeconsolidate objesue Layer ShapinUnrecognized Ethic Action Token:ic Response Tokeld Construction Unrecognized SphUnrecognized Inclusion Type TokeUnrecognized TooUnrecognized Habill-sized art acUntitled/unnamed
+skill action nouns	0x1502f40	0x1503afa	0x2191280/16	vector	Animal Caretakin
+skill action nouns	0x1502f40	0x1503b1e	0x213be60	cstring	Animal Training
+skill action nouns	0x1502f40	0x1503b30	0x213be58	cstring	Masonry
+skill action nouns	0x1502f40	0x1503b42	0x213be4e	cstring	Engraving
+skill action nouns	0x1502f40	0x1503b54	0x213be23	cstring	Carpentry
+skill action nouns	0x1502f40	0x1503b66	0x213be17	cstring	Woodcutting
+skill action nouns	0x1502f40	0x1503b78	0x213bd98	cstring	Mining
+skill action nouns	0x1502f40	0x1503b8a	0x213be3a	cstring	Stone Carving
+skill action nouns	0x1502f40	0x1503ba8	0x21760c9	cstring	Animal Caretaking
+skill action nouns	0x1502f40	0x1503bc4	0x213c063	cstring	Papermaking
+skill action nouns	0x1502f40	0x1503bea	0x217381b	cstring	Conversation
+skill action nouns	0x1502f40	0x1503c10	0x214d0b0	cstring	Mathematics
+skill action nouns	0x1502f40	0x1503c1f	0x213bfe0	cstring	Lye Making
+skill action nouns	0x1502f40	0x1503c45	0x21b5b31	cstring	Organization
+skill action nouns	0x1502f40	0x1503c54	0x213c04a	cstring	Gem Setting
+skill action nouns	0x1502f40	0x1503c66	0x217625f	cstring	Leadership
+skill action nouns	0x1502f40	0x1503cc0	0x209e070	cstring	basic_string::append
+activity_event_make_believest	0x1762120	0x1762142	0x21b3fa4	cstring	Play Make Believe
+activity_event_make_believest	0x1762120	0x176214e	0x21b5110/16	vector	Play Make Believ
+activity_event_make_believest	0x1762120	0x17621b6	0x21b3fa4	cstring	Play Make Believe
+activity_event_fill_service_orderst	0x1766e00	0x1766ef0	0x21b41f8	cstring	Serve 
+activity_event_fill_service_orderst	0x1766e00	0x1766f97	0x21b41ff	cstring	Serve Customer
+activity_event_fill_service_orderst	0x1766e00	0x1766fa3	0x7543206576726553	printable immediate	Serve Cu
+activity_event_fill_service_orderst	0x1766e00	0x1766fad	0x6d6f7473	printable immediate	stom
+activity_event_fill_service_orderst	0x1766e00	0x1766fb7	0x7265	printable immediate	er
+activity_event_fill_service_orderst	0x1766e00	0x1766ff6	0x21b41ff	cstring	Serve Customer
+activity_event_ranged_practicest	0x17670d0	0x17671e4	0x21b5120/16	vector	Archery Practice
+activity_event_ranged_practicest	0x17670d0	0x17672b3	0x206f	printable immediate	o 
+activity_event_ranged_practicest	0x17670d0	0x17672b8	0x74206f47	printable immediate	Go t
+activity_event_ranged_practicest	0x17670d0	0x17672e6	0x21b4215	cstring	Archery Practice
+activity_event_ranged_practicest	0x17670d0	0x1767318	0x21b420e	cstring	Go to 
+activity_event_ranged_practicest	0x17670d0	0x1767335	0x209e070	cstring	basic_string::append
+activity_event_individual_skill_drillst	0x1767350	0x1767469	0x6c69	printable immediate	il
+activity_event_individual_skill_drillst	0x1767350	0x176746e	0x21b5140/16	vector	Individual Comba
+activity_event_individual_skill_drillst	0x1767350	0x1767476	0x72442074	printable immediate	t Dr
+activity_event_individual_skill_drillst	0x1767350	0x176756e	0x21b5130/16	vector	Go to Individual
+activity_event_individual_skill_drillst	0x1767350	0x1767576	0x207461626d6f4320	printable immediate	 Combat 
+activity_event_individual_skill_drillst	0x1767350	0x1767584	0x6c697244	printable immediate	Dril
+activity_event_individual_skill_drillst	0x1767350	0x17675d8	0x676e69747365522f	printable immediate	/Resting
+activity_event_individual_skill_drillst	0x1767350	0x176760e	0x21b422c	cstring	Individual Combat Drill
+activity_event_individual_skill_drillst	0x1767350	0x1767638	0x21b4244	cstring	/Resting
+activity_event_individual_skill_drillst	0x1767350	0x176765b	0x21b4226	cstring	Go to Individual Combat Drill
+activity_event_individual_skill_drillst	0x1767350	0x176767b	0x209e070	cstring	basic_string::append
+activity_event_prayerst	0x1767690	0x1767715	0x657461746964654d	printable immediate	Meditate
+activity_event_prayerst	0x1767690	0x1767725	0x206e6f20	printable immediate	 on 
+activity_event_prayerst	0x1767690	0x176782e	0x21b424d	cstring	Meditate on 
+activity_event_prayerst	0x1767690	0x176786f	0x206f742079617250	printable immediate	Pray to 
+activity_event_prayerst	0x1767690	0x17679fe	0x212f9b0	cstring	Pray to 
+activity_event_prayerst	0x1767690	0x1767a1f	0x209e070	cstring	basic_string::append
+activity_event_writest	0x1767a40	0x1767a8f	0x21b425a	cstring	Write about 
+activity_event_writest	0x1767a40	0x1767a9f	0x6261206574697257	printable immediate	Write ab
+activity_event_writest	0x1767a40	0x1767aa9	0x2074756f	printable immediate	out 
+activity_event_writest	0x1767a40	0x1767b90	0x21b4267	cstring	Write
+activity_event_writest	0x1767a40	0x1767ba0	0x74697257	printable immediate	Writ
+activity_event_writest	0x1767a40	0x1767c76	0x21b425a	cstring	Write about 
+activity_event_writest	0x1767a40	0x1767c96	0x21b4267	cstring	Write
+activity_event_discuss_topicst	0x1767dd0	0x1767e0d	0x21b426d	cstring	Discuss 
+activity_event_discuss_topicst	0x1767dd0	0x1767e19	0x2073737563736944	printable immediate	Discuss 
+activity_event_discuss_topicst	0x1767dd0	0x1767e6e	0x21b426d	cstring	Discuss 
+activity_event_ponder_topicst	0x1768010	0x176804d	0x21b4276	cstring	Ponder 
+activity_event_ponder_topicst	0x1768010	0x1768059	0x7265	printable immediate	er
+activity_event_ponder_topicst	0x1768010	0x176805e	0x646e6f50	printable immediate	Pond
+activity_event_ponder_topicst	0x1768010	0x17680b6	0x21b4276	cstring	Ponder 
+activity_event_copy_written_contentst	0x1768270	0x17682b1	0x21adab2	cstring	Copy
+activity_event_copy_written_contentst	0x1768270	0x17682c1	0x79706f43	printable immediate	Copy
+activity_event_copy_written_contentst	0x1768270	0x176836e	0x21adab2	cstring	Copy
+activity_event_copy_written_contentst	0x1768270	0x17684ce	0x20f7379	cstring	 
+activity_event_copy_written_contentst	0x1768270	0x176856b	0x209e070	cstring	basic_string::append
+activity_event_readst	0x1768590	0x17685d1	0x213888b	cstring	Read
+activity_event_readst	0x1768590	0x17685e1	0x64616552	printable immediate	Read
+activity_event_readst	0x1768590	0x176868e	0x213888b	cstring	Read
+activity_event_readst	0x1768590	0x17687ee	0x20f7379	cstring	 
+activity_event_readst	0x1768590	0x176888b	0x209e070	cstring	basic_string::append
+activity_event_combat_trainingst	0x17688b0	0x17689e3	0x21b5160/16	vector	Organize Combat 
+activity_event_combat_trainingst	0x17688b0	0x17689eb	0x676e696e69617254	printable immediate	Training
+activity_event_combat_trainingst	0x17688b0	0x1768a7c	0x21b5180/16	vector	Wait for Combat 
+activity_event_combat_trainingst	0x17688b0	0x1768a87	0x676e696e69617254	printable immediate	Training
+activity_event_combat_trainingst	0x17688b0	0x1768b1c	0x21b5150/16	vector	Go to Combat Tra
+activity_event_combat_trainingst	0x17688b0	0x1768b24	0x6e696e69	printable immediate	inin
+activity_event_combat_trainingst	0x17688b0	0x1768b56	0x21b4294	cstring	Organize Combat Training
+activity_event_combat_trainingst	0x17688b0	0x1768b9b	0x21b5170/16	vector	Lead Combat Trai
+activity_event_combat_trainingst	0x17688b0	0x1768ba3	0x676e696e	printable immediate	ning
+activity_event_combat_trainingst	0x17688b0	0x1768bce	0x21b42c2	cstring	Wait for Combat Training
+activity_event_combat_trainingst	0x17688b0	0x1768bf8	0x21b42ad	cstring	Lead Combat Training
+activity_event_combat_trainingst	0x17688b0	0x1768c1e	0x21b427e	cstring	Go to Combat Training
+activity_event_combat_trainingst	0x17688b0	0x1768c43	0x209e070	cstring	basic_string::append
+activity_event_play_with_toyst	0x1768c60	0x1768ca1	0x21b42db	cstring	Play with 
+activity_event_play_with_toyst	0x1768c60	0x1768cb1	0x7469772079616c50	printable immediate	Play wit
+activity_event_play_with_toyst	0x1768c60	0x1768cbb	0x2068	printable immediate	h 
+activity_event_play_with_toyst	0x1768c60	0x1768d6f	0x6f54	printable immediate	To
+activity_event_play_with_toyst	0x1768c60	0x1768dc6	0x21b42db	cstring	Play with 
+activity_event_play_with_toyst	0x1768c60	0x1768e3e	0x2175760	cstring	Toy
+activity_event_play_with_toyst	0x1768c60	0x1768f84	0x209e070	cstring	basic_string::append
+activity_event_sparringst	0x1768fa0	0x1769120	0x6369	printable immediate	ic
+activity_event_sparringst	0x1768fa0	0x1769125	0x21b51b0/16	vector	Watch Sparring P
+activity_event_sparringst	0x1768fa0	0x176912d	0x74636172	printable immediate	ract
+activity_event_sparringst	0x1768fa0	0x1769219	0x21b51a0/16	vector	Go to Sparring P
+activity_event_sparringst	0x1768fa0	0x1769224	0x6369	printable immediate	ic
+activity_event_sparringst	0x1768fa0	0x1769229	0x74636172	printable immediate	ract
+activity_event_sparringst	0x1768fa0	0x176932d	0x72617053	printable immediate	Spar
+activity_event_sparringst	0x1768fa0	0x17693e8	0x21b5190/16	vector	Go to Sparring M
+activity_event_sparringst	0x1768fa0	0x17693f0	0x68637461	printable immediate	atch
+activity_event_sparringst	0x1768fa0	0x176941e	0x21b4318	cstring	Watch Sparring Practice
+activity_event_sparringst	0x1768fa0	0x1769447	0x21b42fb	cstring	Spar
+activity_event_sparringst	0x1768fa0	0x1769466	0x21b42e6	cstring	Go to Sparring Match
+activity_event_sparringst	0x1768fa0	0x1769482	0x21b4300	cstring	Go to Sparring Practice
+activity_event_sparringst	0x1768fa0	0x17694b1	0x209e070	cstring	basic_string::append
+activity_event_teach_topicst	0x176a080	0x176a0f5	0x21b4342	cstring	Learn 
+activity_event_teach_topicst	0x176a080	0x176a219	0x21b4342	cstring	Learn 
+activity_event_teach_topicst	0x176a080	0x176a229	0x206e	printable immediate	n 
+activity_event_teach_topicst	0x176a080	0x176a22e	0x7261654c	printable immediate	Lear
+activity_event_teach_topicst	0x176a080	0x176a288	0x21b433b	cstring	Teach 
+activity_event_teach_topicst	0x176a080	0x176a366	0x21b433b	cstring	Teach 
+activity_event_teach_topicst	0x176a080	0x176a380	0x2068	printable immediate	h 
+activity_event_teach_topicst	0x176a080	0x176a385	0x63616554	printable immediate	Teac
+activity_event_teach_topicst	0x176a080	0x176a39e	0x21b4342	cstring	Learn 
+activity_event_skill_demonstrationst	0x176a450	0x176a599	0x726f662074696157	printable immediate	Wait for
+activity_event_skill_demonstrationst	0x176a450	0x176a679	0x6e6f	printable immediate	on
+activity_event_skill_demonstrationst	0x176a450	0x176a67e	0x74736e6f6d654420	printable immediate	 Demonst
+activity_event_skill_demonstrationst	0x176a450	0x176a68b	0x69746172	printable immediate	rati
+activity_event_skill_demonstrationst	0x176a450	0x176a77d	0x206f	printable immediate	o 
+activity_event_skill_demonstrationst	0x176a450	0x176a783	0x74206f47	printable immediate	Go t
+activity_event_skill_demonstrationst	0x176a450	0x176a7d7	0x2175617	cstring	 Demonstration
+activity_event_skill_demonstrationst	0x176a450	0x176a840	0x657a696e6167724f	printable immediate	Organize
+activity_event_skill_demonstrationst	0x176a450	0x176a86e	0x2175617	cstring	 Demonstration
+activity_event_skill_demonstrationst	0x176a450	0x176a8d8	0x2068	printable immediate	h 
+activity_event_skill_demonstrationst	0x176a450	0x176a8dd	0x63746157	printable immediate	Watc
+activity_event_skill_demonstrationst	0x176a450	0x176a90e	0x21b4349	cstring	Organize 
+activity_event_skill_demonstrationst	0x176a450	0x176a94e	0x21b4353	cstring	Wait for 
+activity_event_skill_demonstrationst	0x176a450	0x176a978	0x212fb4b	cstring	Lead 
+activity_event_skill_demonstrationst	0x176a450	0x176a99a	0x21b420e	cstring	Go to 
+activity_event_skill_demonstrationst	0x176a450	0x176a9b9	0x21b435d	cstring	Watch 
+activity_event_skill_demonstrationst	0x176a450	0x176a9e3	0x209e070	cstring	basic_string::append
+activity_event_skill_demonstrationst	0x176a450	0x176a9ef	0x209e070	cstring	basic_string::append
+activity_event_performancest	0x1784e90	0x1784f57	0x21b4435	cstring	Listen to Sermon
+activity_event_performancest	0x1784e90	0x1784fc7	0x21b4451	cstring	Listen to Story
+activity_event_performancest	0x1784e90	0x178501f	0x21b446f	cstring	Listen to Poetry
+activity_event_performancest	0x1784e90	0x17850b7	0x21b448e	cstring	Listen to Music
+activity_event_performancest	0x1784e90	0x178518e	0x21b44ac	cstring	Watch Dance
+activity_event_performancest	0x1784e90	0x17851d4	0x21b449e	cstring	Perform Dance
+activity_event_performancest	0x1784e90	0x1785260	0x2130a41	cstring	Simulate 
+activity_event_performancest	0x1784e90	0x17852e7	0x21b4480	cstring	Perform Music
+activity_event_performancest	0x1784e90	0x1785387	0x21b4461	cstring	Recite Poetry
+activity_event_performancest	0x1784e90	0x17853af	0x21b4446	cstring	Tell Story
+activity_event_performancest	0x1784e90	0x1785437	0x2130a41	cstring	Simulate 
+activity_event_performancest	0x1784e90	0x178551e	0x21b4417	cstring	Inveigh Against 
+activity_event_performancest	0x1784e90	0x1785566	0x212c3b7	cstring	Peace
+activity_event_performancest	0x1784e90	0x1785589	0x212c3b0	cstring	Nature
+activity_event_performancest	0x1784e90	0x17855a9	0x212c3a8	cstring	Romance
+activity_event_performancest	0x1784e90	0x17855c9	0x212c39f	cstring	Commerce
+activity_event_performancest	0x1784e90	0x17855e9	0x212c392	cstring	Leisure Time
+activity_event_performancest	0x1784e90	0x178560c	0x212c385	cstring	Perseverance
+activity_event_performancest	0x1784e90	0x178562f	0x20df3b2	cstring	Competition
+activity_event_performancest	0x1784e90	0x1785652	0x212c37b	cstring	Sacrifice
+activity_event_performancest	0x1784e90	0x1785675	0x212c371	cstring	Hard Work
+activity_event_performancest	0x1784e90	0x1785698	0x212c36b	cstring	Skill
+activity_event_performancest	0x1784e90	0x17856bb	0x212c35b	cstring	Martial Prowess
+activity_event_performancest	0x1784e90	0x17856de	0x212c34d	cstring	Craftsmanship
+activity_event_performancest	0x1784e90	0x1785701	0x212c343	cstring	Merriment
+activity_event_performancest	0x1784e90	0x1785724	0x212c33b	cstring	Harmony
+activity_event_performancest	0x1784e90	0x1785747	0x212c32f	cstring	Tranquility
+activity_event_performancest	0x1784e90	0x178576a	0x21b4428	cstring	Self-Control
+activity_event_performancest	0x1784e90	0x178578d	0x212c314	cstring	Introspection
+activity_event_performancest	0x1784e90	0x17857b0	0x212c30b	cstring	Stoicism
+activity_event_performancest	0x1784e90	0x17857d3	0x212c2fe	cstring	Independence
+activity_event_performancest	0x1784e90	0x17857f6	0x212c2f2	cstring	Cooperation
+activity_event_performancest	0x1784e90	0x1785819	0x212c2ea	cstring	Artwork
+activity_event_performancest	0x1784e90	0x178583c	0x212c2e0	cstring	Tradition
+activity_event_performancest	0x1784e90	0x178585f	0x212c2d8	cstring	Decorum
+activity_event_performancest	0x1784e90	0x1785882	0x212c2cf	cstring	Fairness
+activity_event_performancest	0x1784e90	0x17858a5	0x212c2c5	cstring	Eloquence
+activity_event_performancest	0x1784e90	0x17858c8	0x212c2bd	cstring	Cunning
+activity_event_performancest	0x1784e90	0x17858eb	0x2210eb6	cstring	Truth
+activity_event_performancest	0x1784e90	0x178590e	0x20df178	cstring	Power
+activity_event_performancest	0x1784e90	0x1785931	0x212c2b2	cstring	Friendship
+activity_event_performancest	0x1784e90	0x1785954	0x212c2ab	cstring	Family
+activity_event_performancest	0x1784e90	0x1785977	0x212c2a3	cstring	Loyalty
+activity_event_performancest	0x1784e90	0x178599a	0x221105b	cstring	Law
+activity_event_performancest	0x1784e90	0x17859bd	0x2213292	cstring	Knowledge
+activity_event_performancest	0x1784e90	0x1785a20	0x21b4403	cstring	Preach on 
+activity_event_performancest	0x1784e90	0x1785a65	0x21b4403	cstring	Preach on 
+activity_event_performancest	0x1784e90	0x1785ad6	0x21b440e	cstring	Promote 
+activity_event_performancest	0x1784e90	0x1785b01	0x2130a4b	cstring	Sing
+activity_event_performancest	0x1784e90	0x1785b24	0x2130a50	cstring	Chant
+activity_event_performancest	0x1784e90	0x1785b30	0x2130b72	cstring	Play 
+activity_event_performancest	0x1784e90	0x1785b44	0x2130b72	cstring	Play 
+activity_eventst | activity_event_harassmentst | activity_event_encounterst | activity_event_reunionst | activity_event_conversationst | activity_event_guardst | activity_event_conflictst | activity_event_store_objectst	0x17af5f0	0x17af612	0x21b3f8a	cstring	Activity
+activity_eventst | activity_event_harassmentst | activity_event_encounterst | activity_event_reunionst | activity_event_conversationst | activity_event_guardst | activity_event_conflictst | activity_event_store_objectst	0x17af5f0	0x17af61e	0x7974697669746341	printable immediate	Activity
+activity_eventst | activity_event_harassmentst | activity_event_encounterst | activity_event_reunionst | activity_event_conversationst | activity_event_guardst | activity_event_conflictst | activity_event_store_objectst	0x17af5f0	0x17af646	0x21b3f8a	cstring	Activity
+activity_event_researchst	0x17af6f0	0x17af712	0x21756d0	cstring	Research
+activity_event_researchst	0x17af6f0	0x17af71e	0x6863726165736552	printable immediate	Research
+activity_event_researchst	0x17af6f0	0x17af746	0x21756d0	cstring	Research
+activity_event_training_sessionst	0x17af7f0	0x17af812	0x21b3f93	cstring	Training Session
+activity_event_training_sessionst	0x17af7f0	0x17af81e	0x21b5100/16	vector	Training Session
+activity_event_training_sessionst	0x17af7f0	0x17af876	0x21b3f93	cstring	Training Session
+activity_event_socializest	0x17af8f0	0x17af912	0x212f992	cstring	Socialize
+activity_event_socializest	0x17af8f0	0x17af91e	0x7a696c6169636f53	printable immediate	Socializ
+activity_event_socializest	0x17af8f0	0x17af94e	0x212f992	cstring	Socialize
+activity_event_playst	0x17afb20	0x17afb42	0x2130a9d	cstring	Play
+activity_event_playst	0x17afb20	0x17afb4e	0x79616c50	printable immediate	Play
+activity_event_playst	0x17afb20	0x17afb76	0x2130a9d	cstring	Play
+activity_event_worshipst	0x17afc20	0x17afc42	0x20fc2f3	cstring	Worship
+activity_event_worshipst	0x17afc20	0x17afc4e	0x6968	printable immediate	hi
+activity_event_worshipst	0x17afc20	0x17afc53	0x73726f57	printable immediate	Wors
+activity_event_worshipst	0x17afc20	0x17afc7e	0x20fc2f3	cstring	Worship
+job title	0x1cab560	0x1cab60e	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cab621	0x21dfea1	cstring	pair of 
+job title	0x1cab560	0x1cab671	0x21dfd16	cstring	large 
+job title	0x1cab560	0x1cab6b8	0x20f7379	cstring	 
+job title	0x1cab560	0x1cab737	0x2173361	cstring	Strange mood
+job title	0x1cab560	0x1cab74c	0x21e0355	cstring	Go shopping
+job title	0x1cab560	0x1cab761	0x2173c49	cstring	Drink
+job title	0x1cab560	0x1cab7b5	0x626f	printable immediate	ob
+job title	0x1cab560	0x1cab7ba	0x6a206f4e	printable immediate	No j
+job title	0x1cab560	0x1cab7e3	0x21dfc51	cstring	Give food
+job title	0x1cab560	0x1cab83a	0x7265	printable immediate	er
+job title	0x1cab560	0x1cab840	0x7461772065766947	printable immediate	Give wat
+job title	0x1cab560	0x1cab871	0x21e028c	cstring	Fill waterskin
+job title	0x1cab560	0x1cab8c5	0x6e6f70206c6c6946	printable immediate	Fill pon
+job title	0x1cab560	0x1cab934	0x632074726f706552	printable immediate	Report c
+job title	0x1cab560	0x1cab944	0x656d6972	printable immediate	rime
+job title	0x1cab560	0x1cab96a	0x21dfc87	cstring	Trade at depot
+job title	0x1cab560	0x1cab9be	0x657274206c6c6546	printable immediate	Fell tre
+job title	0x1cab560	0x1caba30	0x656e	printable immediate	ne
+job title	0x1cab560	0x1caba35	0x6e61686320676944	printable immediate	Dig chan
+job title	0x1cab560	0x1cabaa5	0x656b614d	printable immediate	Make
+job title	0x1cab560	0x1cabac5	0x20f7379	cstring	 
+job title	0x1cab560	0x1cabb5b	0x7472	printable immediate	rt
+job title	0x1cab560	0x1cabb61	0x21e2040	cstring	 bolt thrower paCarve fortificatPlace item in toStore item in baStore item in veStore squad equiRepair Compound Remove Rotten TiVERB_FIRST_PRES
+job title	0x1cab560	0x1cabb61	0x21e2040/16	vector	 bolt thrower pa
+job title	0x1cab560	0x1cabb94	0x214a2fc	cstring	Mix 
+job title	0x1cab560	0x1cabbd0	0x2173e5c	cstring	dye
+job title	0x1cab560	0x1cabbf3	0x21ed335	cstring	 using 
+job title	0x1cab560	0x1cabc34	0x219eeb1	cstring	 and 
+job title	0x1cab560	0x1cabcd6	0x21e2090	cstring	Store squad equiRepair Compound Remove Rotten TiVERB_FIRST_PRES
+job title	0x1cab560	0x1cabcd6	0x21e2090/16	vector	Store squad equi
+job title	0x1cab560	0x1cabcde	0x6e656d70	printable immediate	pmen
+job title	0x1cab560	0x1cabd0b	0x21755e7	cstring	Dig
+job title	0x1cab560	0x1cabd23	0x21e0187	cstring	Detail wall
+job title	0x1cab560	0x1cabd3b	0x21e017a	cstring	Smooth floor
+job title	0x1cab560	0x1cabd92	0x656b614d	printable immediate	Make
+job title	0x1cab560	0x1cabe2c	0x656c656361726220	printable immediate	 bracele
+job title	0x1cab560	0x1cabe9e	0x656b614d	printable immediate	Make
+job title	0x1cab560	0x1cabef5	0x21dfcfe	cstring	 earring
+job title	0x1cab560	0x1cabf10	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cabfa0	0x6e697220	printable immediate	 rin
+job title	0x1cab560	0x1cabfc9	0x21e021c	cstring	Carve ramp
+job title	0x1cab560	0x1cabfe1	0x21e01eb	cstring	Carve downward staircase
+job title	0x1cab560	0x1cabff9	0x21e01d4	cstring	Carve upward staircase
+job title	0x1cab560	0x1cac011	0x20f38e2	cstring	No activity
+job title	0x1cab560	0x1cac029	0x21dfacc	cstring	Interrogate 
+job title	0x1cab560	0x1cac0af	0x21dfbb3	cstring	Put item on display
+job title	0x1cab560	0x1cac0c7	0x21dfd11	cstring	Make large 
+job title	0x1cab560	0x1cac111	0x214e6e8	cstring	 gem
+job title	0x1cab560	0x1cac146	0x21e0044	cstring	Tint 
+job title	0x1cab560	0x1cac174	0x21e0079	cstring	 leather 
+job title	0x1cab560	0x1cac1a2	0x21ed335	cstring	 using 
+job title	0x1cab560	0x1cac1d0	0x2173e5b	cstring	 dye
+job title	0x1cab560	0x1cac22a	0x656b614d	printable immediate	Make
+job title	0x1cab560	0x1cac280	0x21dfce8	cstring	 scepter
+job title	0x1cab560	0x1cac2da	0x656b614d	printable immediate	Make
+job title	0x1cab560	0x1cac374	0x6e69727567696620	printable immediate	 figurin
+job title	0x1cab560	0x1cac3a7	0x21dfcb6	cstring	Geld 
+job title	0x1cab560	0x1cac46c	0x6c61	printable immediate	al
+job title	0x1cab560	0x1cac472	0x772068746f6f6d53	printable immediate	Smooth w
+job title	0x1cab560	0x1cac4e6	0x6f69	printable immediate	io
+job title	0x1cab560	0x1cac4ec	0x21e2050	cstring	Carve fortificatPlace item in toStore item in baStore item in veStore squad equiRepair Compound Remove Rotten TiVERB_FIRST_PRES
+job title	0x1cab560	0x1cac4ec	0x21e2050/16	vector	Carve fortificat
+job title	0x1cab560	0x1cac51f	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cac567	0x21dfcf1	cstring	 crown
+job title	0x1cab560	0x1cac5c1	0x2065	printable immediate	e 
+job title	0x1cab560	0x1cac5c7	0x67726f46	printable immediate	Forg
+job title	0x1cab560	0x1cac61e	0x21dffa3	cstring	 anvil
+job title	0x1cab560	0x1cac65f	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cac6a6	0x20f7379	cstring	 
+job title	0x1cab560	0x1cac6e0	0x21dffc4	cstring	Train 
+job title	0x1cab560	0x1cac740	0x21dffe3	cstring	 for war
+job title	0x1cab560	0x1cac7b4	0x206e	printable immediate	n 
+job title	0x1cab560	0x1cac7b9	0x69617254	printable immediate	Trai
+job title	0x1cab560	0x1cac827	0x21dffcb	cstring	 to hunt
+job title	0x1cab560	0x1cac85c	0x21e045d	cstring	Dump item
+job title	0x1cab560	0x1cac874	0x21e024b	cstring	Bring item to shop
+job title	0x1cab560	0x1cac88c	0x21e025e	cstring	Bring item to depot
+job title	0x1cab560	0x1cac8a4	0x21e0094	cstring	Collect webs
+job title	0x1cab560	0x1cac8bc	0x21e01c0	cstring	Remove construction
+job title	0x1cab560	0x1cac8fa	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cac917	0x21dff58	cstring	five 
+job title	0x1cab560	0x1cac960	0x20f7379	cstring	 
+job title	0x1cab560	0x1cac9a0	0x21dfeaa	cstring	Make totem
+job title	0x1cab560	0x1cac9b8	0x21e023d	cstring	Gather plants
+job title	0x1cab560	0x1cac9d0	0x21e0204	cstring	Carve up/down staircase
+job title	0x1cab560	0x1cac9e8	0x21e0193	cstring	Detail floor
+job title	0x1cab560	0x1caca00	0x21e04bc	cstring	Fire bolt thrower
+job title	0x1cab560	0x1caca18	0x21e048e	cstring	Load bolt thrower
+job title	0x1cab560	0x1caca30	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1caca79	0x21dfce0	cstring	 amulet
+job title	0x1cab560	0x1caca94	0x21dfbd9	cstring	Pit/pond 
+job title	0x1cab560	0x1cacb1a	0x21e0272	cstring	Get provisions
+job title	0x1cab560	0x1cacb32	0x21e036f	cstring	Seek infant
+job title	0x1cab560	0x1cacb86	0x747261206b656553	printable immediate	Seek art
+job title	0x1cab560	0x1cacb96	0x63616669	printable immediate	ifac
+job title	0x1cab560	0x1cacbc0	0x21e03de	cstring	Store item in bin
+job title	0x1cab560	0x1cacbd8	0x21df9a7	cstring	Spin thread
+job title	0x1cab560	0x1cacbf0	0x21df9a0	cstring	Shear 
+job title	0x1cab560	0x1cacccf	0x214a4a4	cstring	Engrave memorial slab
+job title	0x1cab560	0x1cacce7	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cacd31	0x214a4b4	cstring	 slab
+job title	0x1cab560	0x1cacd4c	0x21e02b5	cstring	Starting fist fight
+job title	0x1cab560	0x1cacd64	0x21e02c9	cstring	Beat criminal
+job title	0x1cab560	0x1cacd7c	0x21e02a1	cstring	Kidnap
+job title	0x1cab560	0x1cacd94	0x21e030f	cstring	Hunt for small creature
+job title	0x1cab560	0x1cacdac	0x2175644	cstring	Hunt
+job title	0x1cab560	0x1cacdc4	0x2175085	cstring	Fish
+job title	0x1cab560	0x1cacddc	0x21dfdbf	cstring	Collect sand
+job title	0x1cab560	0x1cace33	0x65656c53	printable immediate	Slee
+job title	0x1cab560	0x1cace5c	0x21e044c	cstring	Pickup equipment
+job title	0x1cab560	0x1cace74	0x217508a	cstring	Clean
+job title	0x1cab560	0x1cacec8	0x74736552	printable immediate	Rest
+job title	0x1cab560	0x1caceee	0x21e039f	cstring	Store item in stockpile
+job title	0x1cab560	0x1cacf06	0x21e037b	cstring	Store owned item
+job title	0x1cab560	0x1cacf1e	0x21e0349	cstring	Return kill
+job title	0x1cab560	0x1cacf75	0x6f6d	printable immediate	mo
+job title	0x1cab560	0x1cacf7a	0x72612065726f7453	printable immediate	Store ar
+job title	0x1cab560	0x1cacfea	0x65772065726f7453	printable immediate	Store we
+job title	0x1cab560	0x1cacffa	0x6e6f7061	printable immediate	apon
+job title	0x1cab560	0x1cad020	0x21e041f	cstring	Store item in location
+job title	0x1cab560	0x1cad038	0x21e03c9	cstring	Store item in barrel
+job title	0x1cab560	0x1cad08f	0x21e2070	cstring	Store item in baStore item in veStore squad equiRepair Compound Remove Rotten TiVERB_FIRST_PRES
+job title	0x1cab560	0x1cad08f	0x21e2070/16	vector	Store item in ba
+job title	0x1cab560	0x1cad0bd	0x21e0005	cstring	Make ash
+job title	0x1cab560	0x1cad0d5	0x21dfcab	cstring	Slaughter 
+job title	0x1cab560	0x1cad15b	0x21dfbe3	cstring	Pit/pond small animal
+job title	0x1cab560	0x1cad1b2	0x626d	printable immediate	mb
+job title	0x1cab560	0x1cad1b7	0x21e2060	cstring	Place item in toStore item in baStore item in veStore squad equiRepair Compound Remove Rotten TiVERB_FIRST_PRES
+job title	0x1cab560	0x1cad1b7	0x21e2060/16	vector	Place item in to
+job title	0x1cab560	0x1cad1e5	0x21dfff7	cstring	Make charcoal
+job title	0x1cab560	0x1cad1fd	0x21e01a0	cstring	Carve track
+job title	0x1cab560	0x1cad215	0x212fae2	cstring	Cause trouble
+job title	0x1cab560	0x1cad22d	0x21dfdf0	cstring	Collect hive products
+job title	0x1cab560	0x1cad284	0x6576	printable immediate	ve
+job title	0x1cab560	0x1cad28a	0x21e2020	cstring	Install colony iMake traction be bolt thrower paCarve fortificatPlace item in toStore item in baStore item in veStore squad equiRepair Compound Remove Rotten TiVERB_FIRST_PRES
+job title	0x1cab560	0x1cad28a	0x21e2020/16	vector	Install colony i
+job title	0x1cab560	0x1cad292	0x6968206e	printable immediate	n hi
+job title	0x1cab560	0x1cad2c0	0x21dfdcc	cstring	Collect clay
+job title	0x1cab560	0x1cad317	0x21e2010	cstring	Pen/pasture smalInstall colony iMake traction be bolt thrower paCarve fortificatPlace item in toStore item in baStore item in veStore squad equiRepair Compound Remove Rotten TiVERB_FIRST_PRES
+job title	0x1cab560	0x1cad317	0x21e2010/16	vector	Pen/pasture smal
+job title	0x1cab560	0x1cad31f	0x6c616d696e61206c	printable immediate	l animal
+job title	0x1cab560	0x1cad34f	0x21dfbf9	cstring	Pen/pasture 
+job title	0x1cab560	0x1cad414	0x636e	printable immediate	nc
+job title	0x1cab560	0x1cad419	0x21e2030	cstring	Make traction be bolt thrower paCarve fortificatPlace item in toStore item in baStore item in veStore squad equiRepair Compound Remove Rotten TiVERB_FIRST_PRES
+job title	0x1cab560	0x1cad419	0x21e2030/16	vector	Make traction be
+job title	0x1cab560	0x1cad48a	0x656b614d	printable immediate	Make
+job title	0x1cab560	0x1cad4e0	0x20f4c82	cstring	 crutch
+job title	0x1cab560	0x1cad4fb	0x21e02fe	cstring	Execute criminal
+job title	0x1cab560	0x1cad513	0x21e02d7	cstring	Place track vehicle
+job title	0x1cab560	0x1cad52b	0x21e02eb	cstring	Push track vehicle
+job title	0x1cab560	0x1cad584	0x21e050b	cstring	Reaction
+job title	0x1cab560	0x1cad5b7	0x21dfb5f	cstring	Apply cast
+job title	0x1cab560	0x1cad60b	0x726320676e697242	printable immediate	Bring cr
+job title	0x1cab560	0x1cad61b	0x68637475	printable immediate	utch
+job title	0x1cab560	0x1cad641	0x21e0281	cstring	Clean self
+job title	0x1cab560	0x1cad682	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cad70f	0x20f7379	cstring	 
+job title	0x1cab560	0x1cad77b	0x2173c45	cstring	Eat
+job title	0x1cab560	0x1cad793	0x21dffc4	cstring	Train 
+job title	0x1cab560	0x1cad858	0x21e2080	cstring	Store item in veStore squad equiRepair Compound Remove Rotten TiVERB_FIRST_PRES
+job title	0x1cab560	0x1cad858	0x21e2080/16	vector	Store item in ve
+job title	0x1cab560	0x1cad860	0x6c636968	printable immediate	hicl
+job title	0x1cab560	0x1cad88d	0x21dfb27	cstring	Cage 
+job title	0x1cab560	0x1cad913	0x21dfb05	cstring	Handle small creature
+job title	0x1cab560	0x1cad92b	0x21dfaee	cstring	Release small creature
+job title	0x1cab560	0x1cad969	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cad9bb	0x21dfd16	cstring	large 
+job title	0x1cab560	0x1cada04	0x20f7379	cstring	 
+job title	0x1cab560	0x1cada3e	0x21dff5e	cstring	Make
+job title	0x1cab560	0x1cada53	0x20f7379	cstring	 
+job title	0x1cab560	0x1cadaa4	0x21dff7f	cstring	 ballista parts
+job title	0x1cab560	0x1cadabc	0x21dff5e	cstring	Make
+job title	0x1cab560	0x1cadad1	0x20f7379	cstring	 
+job title	0x1cab560	0x1cadb21	0x21dff63	cstring	 catapult parts
+job title	0x1cab560	0x1cadb5f	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cadbaf	0x21dfd16	cstring	large 
+job title	0x1cab560	0x1cadbf6	0x20f7379	cstring	 
+job title	0x1cab560	0x1cadc30	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cadc78	0x20f4c5f	cstring	 splint
+job title	0x1cab560	0x1cadc93	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cadd22	0x656e	printable immediate	ne
+job title	0x1cab560	0x1cadd27	0x6f74736c6c696d20	printable immediate	 millsto
+job title	0x1cab560	0x1cadd96	0x21e2000	cstring	Cage small animaPen/pasture smalInstall colony iMake traction be bolt thrower paCarve fortificatPlace item in toStore item in baStore item in veStore squad equiRepair Compound Remove Rotten TiVERB_FIRST_PRES
+job title	0x1cab560	0x1cadd96	0x21e2000/16	vector	Cage small anima
+job title	0x1cab560	0x1caddc4	0x21dfc5b	cstring	Manage work orders
+job title	0x1cab560	0x1cadddc	0x21e04ce	cstring	Operate pump
+job title	0x1cab560	0x1caddf4	0x21dfe0c	cstring	Make raw 
+job title	0x1cab560	0x1cade84	0x656b614d	printable immediate	Make
+job title	0x1cab560	0x1cadecf	0x21dfe06	cstring	four 
+job title	0x1cab560	0x1cadf64	0x6b63	printable immediate	ck
+job title	0x1cab560	0x1cadf69	0x6f6c6220	printable immediate	 blo
+job title	0x1cab560	0x1cadf96	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cadfe0	0x21dffaa	cstring	 statue
+job title	0x1cab560	0x1cadffb	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cae044	0x21dfe4a	cstring	 cabinet
+job title	0x1cab560	0x1cae09e	0x656b614d	printable immediate	Make
+job title	0x1cab560	0x1cae0f6	0x21dfe53	cstring	 weapon rack
+job title	0x1cab560	0x1cae150	0x656b614d	printable immediate	Make
+job title	0x1cab560	0x1cae1a7	0x21dfe60	cstring	 armor stand
+job title	0x1cab560	0x1cae1c2	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cae20c	0x21da295	cstring	 bin
+job title	0x1cab560	0x1cae227	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cae26f	0x21e03c4	cstring	 bag
+job title	0x1cab560	0x1cae298	0x21df982	cstring	Process 
+job title	0x1cab560	0x1cae329	0x21df9e3	cstring	 (barrel)
+job title	0x1cab560	0x1cae36c	0x21df982	cstring	Process 
+job title	0x1cab560	0x1cae3fd	0x21df9cd	cstring	 (vial)
+job title	0x1cab560	0x1cae432	0x21dfd8d	cstring	Encrust 
+job title	0x1cab560	0x1cae462	0x20fc321	cstring	ammo
+job title	0x1cab560	0x1cae4bb	0x2068	printable immediate	h 
+job title	0x1cab560	0x1cae4c1	0x74697720	printable immediate	 wit
+job title	0x1cab560	0x1cae569	0x656e6f6220746553	printable immediate	Set bone
+job title	0x1cab560	0x1cae596	0x21dfb91	cstring	Suture
+job title	0x1cab560	0x1cae5ed	0x7265	printable immediate	er
+job title	0x1cab560	0x1cae5f3	0x67727553	printable immediate	Surg
+job title	0x1cab560	0x1cae621	0x21dfb83	cstring	Clean patient
+job title	0x1cab560	0x1cae639	0x21e000e	cstring	Smelt 
+job title	0x1cab560	0x1cae681	0x21e0015	cstring	 ore
+job title	0x1cab560	0x1cae69c	0x21df913	cstring	Destroy building
+job title	0x1cab560	0x1cae6b4	0x21dfd8d	cstring	Encrust 
+job title	0x1cab560	0x1cae6e4	0x20fc321	cstring	ammo
+job title	0x1cab560	0x1cae6f7	0x20e2a73	cstring	 with 
+job title	0x1cab560	0x1cae78f	0x2074737572636e45	printable immediate	Encrust 
+job title	0x1cab560	0x1cae7d4	0x20fc321	cstring	ammo
+job title	0x1cab560	0x1cae7e7	0x20e2a73	cstring	 with 
+job title	0x1cab560	0x1cae84a	0x21dfd23	cstring	Cut 
+job title	0x1cab560	0x1cae8c3	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cae8d6	0x21dfec0	cstring	three 
+job title	0x1cab560	0x1cae925	0x21dfec7	cstring	 waterskins
+job title	0x1cab560	0x1cae962	0x21dfc96	cstring	Chain 
+job title	0x1cab560	0x1cae9c9	0x21dfcbc	cstring	Tame 
+job title	0x1cab560	0x1caea4f	0x21dfa0b	cstring	Make potash from ash
+job title	0x1cab560	0x1caea67	0x21e0120	cstring	Fertilize field
+job title	0x1cab560	0x1caea7f	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1caeb04	0x2142060	cstring	 chest
+job title	0x1cab560	0x1caeb1c	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1caeb66	0x21f49bc	cstring	 table
+job title	0x1cab560	0x1caeb81	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1caebf1	0x21dfe75	cstring	 casket
+job title	0x1cab560	0x1caec09	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1caec75	0x20db646	cstring	 chair
+job title	0x1cab560	0x1caec8d	0x21df936	cstring	Catch live fish
+job title	0x1cab560	0x1caeca5	0x21df946	cstring	Catch live land animal
+job title	0x1cab560	0x1caecbd	0x21e0335	cstring	Guard tax collector
+job title	0x1cab560	0x1caed11	0x207463656c6c6f43	printable immediate	Collect 
+job title	0x1cab560	0x1caed21	0x65786174	printable immediate	taxe
+job title	0x1cab560	0x1caed4b	0x21e0105	cstring	Harvest plants
+job title	0x1cab560	0x1caed63	0x21e002e	cstring	Extract metal strands
+job title	0x1cab560	0x1caed7b	0x21e001a	cstring	Melt a metal object
+job title	0x1cab560	0x1caed93	0x21df95d	cstring	Prepare a raw fish
+job title	0x1cab560	0x1caedab	0x21df924	cstring	Butcher an animal
+job title	0x1cab560	0x1caedc3	0x21dfd82	cstring	Stud with 
+job title	0x1cab560	0x1caee3b	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1caee8d	0x21dfd16	cstring	large 
+job title	0x1cab560	0x1caeed6	0x20f7379	cstring	 
+job title	0x1cab560	0x1caef4f	0x6e75	printable immediate	un
+job title	0x1cab560	0x1caef54	0x6f77207373657244	printable immediate	Dress wo
+job title	0x1cab560	0x1caef88	0x21dfb4e	cstring	Immobilize break
+job title	0x1cab560	0x1caefa0	0x21dfb3d	cstring	Diagnose patient
+job title	0x1cab560	0x1caefb8	0x21dfb2d	cstring	Recover wounded
+job title	0x1cab560	0x1caefd0	0x21df9b3	cstring	Make cheese
+job title	0x1cab560	0x1caf027	0x6b6c694d	printable immediate	Milk
+job title	0x1cab560	0x1caf0bb	0x21dff22	cstring	Bait trap with 
+job title	0x1cab560	0x1caf0f2	0x214e6e9	cstring	gem
+job title	0x1cab560	0x1caf111	0x21dfd49	cstring	Polish 
+job title	0x1cab560	0x1caf172	0x21df982	cstring	Process 
+job title	0x1cab560	0x1caf228	0x21e04a0	cstring	Fire catapult
+job title	0x1cab560	0x1caf27f	0x656b614d	printable immediate	Make
+job title	0x1cab560	0x1caf2d7	0x21dffb2	cstring	 quern
+job title	0x1cab560	0x1caf2f2	0x21e01ac	cstring	Remove stairs/ramps
+job title	0x1cab560	0x1caf30a	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1caf354	0x20fbc05	cstring	 grate
+job title	0x1cab560	0x1caf36f	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1caf3fc	0x6320686374616820	printable immediate	 hatch c
+job title	0x1cab560	0x1caf40c	0x7265766f	printable immediate	over
+job title	0x1cab560	0x1caf432	0x21dff5e	cstring	Make
+job title	0x1cab560	0x1caf45d	0x2160946	cstring	 bed
+job title	0x1cab560	0x1caf4b4	0x656b614d	printable immediate	Make
+job title	0x1cab560	0x1caf52b	0x21dfe16	cstring	 Portal
+job title	0x1cab560	0x1caf546	0x21df900	cstring	Construct building
+job title	0x1cab560	0x1caf55e	0x21dfd1d	cstring	Mint 
+job title	0x1cab560	0x1caf5ec	0x736e	printable immediate	ns
+job title	0x1cab560	0x1caf5f1	0x696f6320	printable immediate	 coi
+job title	0x1cab560	0x1caf61a	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1caf664	0x20df263	cstring	 crafts
+job title	0x1cab560	0x1caf686	0x21dfd23	cstring	Cut 
+job title	0x1cab560	0x1caf6d7	0x21e0114	cstring	Plant seeds
+job title	0x1cab560	0x1caf6ef	0x21dfae2	cstring	Release pet
+job title	0x1cab560	0x1caf707	0x21dfad9	cstring	Release 
+job title	0x1cab560	0x1caf78d	0x21dfac0	cstring	Unchain pet
+job title	0x1cab560	0x1caf7a5	0x2174e7d	cstring	Unchain
+job title	0x1cab560	0x1caf7d6	0x20f7379	cstring	 
+job title	0x1cab560	0x1caf840	0x21dfaa9	cstring	Handle 
+job title	0x1cab560	0x1caf8c6	0x21dfa7a	cstring	Extract from raw fish
+job title	0x1cab560	0x1caf8ec	0x21dfa58	cstring	Extract from 
+job title	0x1cab560	0x1caf9a0	0x21e04db	cstring	Load cage trap
+job title	0x1cab560	0x1caf9b8	0x21dfcc2	cstring	Tame a small animal
+job title	0x1cab560	0x1caf9d0	0x21dfa90	cstring	Extract from land animal
+job title	0x1cab560	0x1caf9e8	0x21e0130	cstring	Pull the lever
+job title	0x1cab560	0x1cafa00	0x21e013f	cstring	Link a building to trigger
+job title	0x1cab560	0x1cafa3e	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cafa87	0x21dff32	cstring	 ballista arrow head
+job title	0x1cab560	0x1cafaa2	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cafaea	0x21dff1a	cstring	 quiver
+job title	0x1cab560	0x1cafb05	0x21e04fa	cstring	Load weapon trap
+job title	0x1cab560	0x1cafb1d	0x21e04ea	cstring	Load stone trap
+job title	0x1cab560	0x1cafb35	0x21e0467	cstring	Clean trap
+job title	0x1cab560	0x1cafb4d	0x21dff5e	cstring	Make
+job title	0x1cab560	0x1cafb5c	0x20f7379	cstring	 
+job title	0x1cab560	0x1cafbea	0x6d73	printable immediate	sm
+job title	0x1cab560	0x1cafbf0	0x696e616863656d20	printable immediate	 mechani
+job title	0x1cab560	0x1cafc61	0x6c61622065726946	printable immediate	Fire bal
+job title	0x1cab560	0x1cafc71	0x7473696c	printable immediate	list
+job title	0x1cab560	0x1cafcc1	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cafcfe	0x20f7379	cstring	 
+job title	0x1cab560	0x1cafd48	0x20f7379	cstring	 
+job title	0x1cab560	0x1cafd7e	0x21e0472	cstring	Load catapult
+job title	0x1cab560	0x1cafd96	0x21dff47	cstring	Assemble 
+job title	0x1cab560	0x1cafde0	0x20f7379	cstring	 
+job title	0x1cab560	0x1cafe56	0x6c61622064616f4c	printable immediate	Load bal
+job title	0x1cab560	0x1cafe66	0x7473696c	printable immediate	list
+job title	0x1cab560	0x1cafe90	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cafed8	0x21dff10	cstring	 backpack
+job title	0x1cab560	0x1cafef3	0x21dfd73	cstring	Decorate with 
+job title	0x1cab560	0x1caff6c	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1caffb5	0x21e03d6	cstring	 barrel
+job title	0x1cab560	0x1cafff6	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cb003e	0x21dfeef	cstring	 animal trap
+job title	0x1cab560	0x1cb007f	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cb00e2	0x21dfefc	cstring	 tube
+job title	0x1cab560	0x1cb010b	0x21df970	cstring	Mill 
+job title	0x1cab560	0x1cb01c1	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb020a	0x21dfe1e	cstring	 floodgate
+job title	0x1cab560	0x1cb024b	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cb025e	0x21dfea1	cstring	pair of 
+job title	0x1cab560	0x1cb02b0	0x21dfd16	cstring	large 
+job title	0x1cab560	0x1cb03b0	0x21e00a1	cstring	Weave metal cloth
+job title	0x1cab560	0x1cb03d0	0x21e00f8	cstring	 (dyed only)
+job title	0x1cab560	0x1cb03e8	0x21dfb1b	cstring	Recover pet
+job title	0x1cab560	0x1cb0400	0x21dfc2e	cstring	Fill aquarium
+job title	0x1cab560	0x1cb0418	0x21dfc1f	cstring	Drain aquarium
+job title	0x1cab560	0x1cb0430	0x21dfba1	cstring	Place in traction
+job title	0x1cab560	0x1cb0448	0x21df9f6	cstring	Make potash from lye
+job title	0x1cab560	0x1cb049c	0x65796c20656b614d	printable immediate	Make lye
+job title	0x1cab560	0x1cb04c9	0x21dfc6e	cstring	Update stockpile records
+job title	0x1cab560	0x1cb04fb	0x21e0044	cstring	Tint 
+job title	0x1cab560	0x1cb0529	0x21e0064	cstring	 cloth 
+job title	0x1cab560	0x1cb0557	0x21ed335	cstring	 using 
+job title	0x1cab560	0x1cb0585	0x2173e5b	cstring	 dye
+job title	0x1cab560	0x1cb05ba	0x21e0044	cstring	Tint 
+job title	0x1cab560	0x1cb05e8	0x21e004d	cstring	 thread 
+job title	0x1cab560	0x1cb0616	0x21ed335	cstring	 using 
+job title	0x1cab560	0x1cb0644	0x2173e5b	cstring	 dye
+job title	0x1cab560	0x1cb065f	0x21e008f	cstring	Sew 
+job title	0x1cab560	0x1cb06a9	0x20e5cb5	cstring	 image
+job title	0x1cab560	0x1cb06c4	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb070d	0x20fbc41	cstring	 window
+job title	0x1cab560	0x1cb074e	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cb0797	0x20f457e	cstring	 bucket
+job title	0x1cab560	0x1cb07d8	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cb081f	0x210f8a1	cstring	 toy
+job title	0x1cab560	0x1cb0860	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cb08c3	0x21dfeb5	cstring	 terrarium
+job title	0x1cab560	0x1cb0904	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cb0917	0x21dfec0	cstring	three 
+job title	0x1cab560	0x1cb09a1	0x21dfee0	cstring	 goblets
+job title	0x1cab560	0x1cb09d6	0x21dfa20	cstring	Prepare easy meal
+job title	0x1cab560	0x1cb0a14	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cb0a85	0x20e1b62	cstring	 rope
+job title	0x1cab560	0x1cb0ac3	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cb0b0a	0x20f7379	cstring	 
+job title	0x1cab560	0x1cb0bdf	0x21dfeda	cstring	 cups
+job title	0x1cab560	0x1cb0bf7	0x2131be8	cstring	animal
+job title	0x1cab560	0x1cb0c0f	0x21dfab1	cstring	a large animal
+job title	0x1cab560	0x1cb0c27	0x21dfab1	cstring	a large animal
+job title	0x1cab560	0x1cb0c3f	0x2131be8	cstring	animal
+job title	0x1cab560	0x1cb0c57	0x2131be8	cstring	animal
+job title	0x1cab560	0x1cb0c6f	0x2204ec0	cstring	subject
+job title	0x1cab560	0x1cb0c87	0x21dfc9d	cstring	Put in chains
+job title	0x1cab560	0x1cb0c9f	0x21dfab1	cstring	a large animal
+job title	0x1cab560	0x1cb0cb7	0x21dfab1	cstring	a large animal
+job title	0x1cab560	0x1cb0ccf	0x21dfab1	cstring	a large animal
+job title	0x1cab560	0x1cb0ce7	0x2131be8	cstring	animal
+job title	0x1cab560	0x1cb0db5	0x21dfd5f	cstring	 (engrave memorial)
+job title	0x1cab560	0x1cb0dda	0x21e0076	cstring	Dye leather 
+job title	0x1cab560	0x1cb0e14	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb0e2c	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb0e44	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb0e5c	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb0e74	0x21dff02	cstring	 pipe section
+job title	0x1cab560	0x1cb0e8c	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb0ea4	0x21dff51	cstring	twenty-five 
+job title	0x1cab560	0x1cb0ebc	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb0ed4	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb0eec	0x2108009	cstring	 cage
+job title	0x1cab560	0x1cb0f04	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb0f1c	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb0f34	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb0f4c	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb0f7f	0x21dfed3	cstring	 vials
+job title	0x1cab560	0x1cb0f97	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb0faf	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb0fc7	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb0fd8	0x21df98b	cstring	Process plants
+job title	0x1cab560	0x1cb0ff0	0x21e0061	cstring	Dye cloth 
+job title	0x1cab560	0x1cb1023	0x21df976	cstring	Mill plants
+job title	0x1cab560	0x1cb103b	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb1053	0x21e004a	cstring	Dye thread 
+job title	0x1cab560	0x1cb108d	0x20d32f5	cstring	 door
+job title	0x1cab560	0x1cb10a5	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb10b6	0x21df9bf	cstring	Process plants (vial)
+job title	0x1cab560	0x1cb10c7	0x21df9d5	cstring	Process plants (barrel)
+job title	0x1cab560	0x1cb10df	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb10f7	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb110f	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb1120	0x21dfa66	cstring	Extract from plants
+job title	0x1cab560	0x1cb1138	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb1158	0x213b986	cstring	cut gems
+job title	0x1cab560	0x1cb116c	0x21dfd28	cstring	Cut gems
+job title	0x1cab560	0x1cb1184	0x21dfda5	cstring	cut glass
+job title	0x1cab560	0x1cb1198	0x21dfd51	cstring	Polish stones
+job title	0x1cab560	0x1cb11c7	0x21e00ca	cstring	Weave yarn into cloth
+job title	0x1cab560	0x1cb11db	0x21dfdaf	cstring	polished stones
+job title	0x1cab560	0x1cb11ef	0x21dfd31	cstring	Cut raw glass into gems
+job title	0x1cab560	0x1cb1212	0x21e016e	cstring	Smooth wall
+job title	0x1cab560	0x1cb1235	0x21dfe9a	cstring	Forge 
+job title	0x1cab560	0x1cb1258	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb127b	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb129e	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb12c1	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb12e4	0x21dfbc7	cstring	Cage small animal
+job title	0x1cab560	0x1cb1307	0x21d820f	cstring	 coins
+job title	0x1cab560	0x1cb132a	0x21dfb98	cstring	Set bone
+job title	0x1cab560	0x1cb134d	0x2212182	cstring	Surgery
+job title	0x1cab560	0x1cb1370	0x214de53	cstring	 blocks
+job title	0x1cab560	0x1cb1393	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb13ab	0x21ae2c7	cstring	furniture
+job title	0x1cab560	0x1cb13c3	0x21dfd96	cstring	finished goods
+job title	0x1cab560	0x1cb13db	0x221cb85	cstring	 box
+job title	0x1cab560	0x1cb13fe	0x21e0327	cstring	Collect taxes
+job title	0x1cab560	0x1cb1416	0x21dfd96	cstring	finished goods
+job title	0x1cab560	0x1cb1439	0x21dfd8d	cstring	Encrust 
+job title	0x1cab560	0x1cb1451	0x21ae2c7	cstring	furniture
+job title	0x1cab560	0x1cb1474	0x21df99a	cstring	Milk 
+job title	0x1cab560	0x1cb1497	0x21dfdd9	cstring	Install colony in hive
+job title	0x1cab560	0x1cb14ba	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb14dd	0x21dfb6a	cstring	Bring crutch
+job title	0x1cab560	0x1cb1500	0x21e04ae	cstring	Fire ballista
+job title	0x1cab560	0x1cb1523	0x21dff73	cstring	 mechanisms
+job title	0x1cab560	0x1cb153b	0x21ae2c7	cstring	furniture
+job title	0x1cab560	0x1cb1553	0x21dfd96	cstring	finished goods
+job title	0x1cab560	0x1cb1576	0x21dfb77	cstring	Dress wound
+job title	0x1cab560	0x1cb1599	0x21e03f0	cstring	Store item in vehicle
+job title	0x1cab560	0x1cb15bc	0x20e2a73	cstring	 with 
+job title	0x1cab560	0x1cb15df	0x20f7379	cstring	 
+job title	0x1cab560	0x1cb1602	0x21dfc06	cstring	Pen/pasture small animal
+job title	0x1cab560	0x1cb1625	0x21dfe36	cstring	Make traction bench
+job title	0x1cab560	0x1cb1648	0x21e0413	cstring	Store armor
+job title	0x1cab560	0x1cb166b	0x21e0361	cstring	Seek artifact
+job title	0x1cab560	0x1cb168e	0x21e029b	cstring	Sleep
+job title	0x1cab560	0x1cb16b1	0x21dffc4	cstring	Train 
+job title	0x1cab560	0x1cb16d4	0x21e0406	cstring	Store weapon
+job title	0x1cab560	0x1cb16f7	0x21755bc	cstring	Rest
+job title	0x1cab560	0x1cb171a	0x21e03b7	cstring	Store item in bag
+job title	0x1cab560	0x1cb173d	0x21e038c	cstring	Place item in tomb
+job title	0x1cab560	0x1cb1760	0x21dffb9	cstring	 millstone
+job title	0x1cab560	0x1cb1783	0x21df9ed	cstring	Make lye
+job title	0x1cab560	0x1cb17a6	0x21dfc46	cstring	Give water
+job title	0x1cab560	0x1cb17c9	0x21e0480	cstring	Load ballista
+job title	0x1cab560	0x1cb17ec	0x21dfe29	cstring	 hatch cover
+job title	0x1cab560	0x1cb180f	0x21e02a8	cstring	Report crime
+job title	0x1cab560	0x1cb1832	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb1855	0x21e015a	cstring	Carve fortification
+job title	0x1cab560	0x1cb1878	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb189b	0x21dfd07	cstring	 bracelet
+job title	0x1cab560	0x1cb18be	0x21dff5e	cstring	Make
+job title	0x1cab560	0x1cb18d6	0x220f968	cstring	 chain
+job title	0x1cab560	0x1cb18f9	0x21dfcf8	cstring	 ring
+job title	0x1cab560	0x1cb191c	0x21e0436	cstring	Store squad equipment
+job title	0x1cab560	0x1cb193f	0x21e0227	cstring	Dig channel
+job title	0x1cab560	0x1cb1962	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb1985	0x21dfcd6	cstring	 figurine
+job title	0x1cab560	0x1cb19a8	0x21ae9b7	cstring	Make 
+job title	0x1cab560	0x1cb19cb	0x21dff8f	cstring	 bolt thrower parts
+job title	0x1cab560	0x1cb19ee	0x20f3aa7	cstring	No job
+job title	0x1cab560	0x1cb1a11	0x21dfc3c	cstring	Fill pond
+job title	0x1cab560	0x1cb1a34	0x21e0233	cstring	Fell tree
+job title	0x1cab560	0x1cb1a4c	0x20f7379	cstring	 
+job title	0x1cab560	0x1cb1a5f	0x20db527	cstring	tool
+job title	0x1cab560	0x1cb1a77	0x21dffec	cstring	war animal
+job title	0x1cab560	0x1cb1a8b	0x21dffd4	cstring	hunting animal
+job title	0x1cab560	0x1cb1aa3	0x21dfab1	cstring	a large animal
+job title	0x1cab560	0x1cb1abb	0x2131be8	cstring	animal
+job title	0x1cab560	0x1cb1ad3	0x2142060	cstring	 chest
+job title	0x1cab560	0x1cb1ae7	0x21dfa44	cstring	Prepare lavish meal
+job title	0x1cab560	0x1cb1afb	0x21dfa32	cstring	Prepare fine meal
+job title	0x1cab560	0x1cb1b27	0x20f7379	cstring	 
+job title	0x1cab560	0x1cb1b4c	0x21e006c	cstring	Dye cloth
+job title	0x1cab560	0x1cb1b6e	0x21e0083	cstring	Dye leather
+job title	0x1cab560	0x1cb1bbe	0x20df254	cstring	 flasks
+job title	0x1cab560	0x1cb1bd6	0x20fc3d2	cstring	fish
+job title	0x1cab560	0x1cb1bee	0x21b01e5	cstring	meat
+job title	0x1cab560	0x1cb1c10	0x21e0056	cstring	Dye thread
+job title	0x1cab560	0x1cb1c28	0x20f7379	cstring	 
+job title	0x1cab560	0x1cb1c93	0x21dfe6d	cstring	 coffer
+job title	0x1cab560	0x1cb1cc6	0x21dfe7d	cstring	 sarcophagus
+job title	0x1cab560	0x1cb1cde	0x21dfe92	cstring	 throne
+job title	0x1cab560	0x1cb1f59	0x21dfe8a	cstring	 coffin
+job title	0x1cab560	0x1cb1f71	0x21e00e0	cstring	Weave thread into cloth
+job title	0x1cab560	0x1cb1f89	0x21e00b3	cstring	Weave thread into silk
+job title	0x1cab560	0x1cb1fc3	0x21cb66e	cstring	small 
+job title	0x1cab560	0x1cb1fdb	0x21cb66e	cstring	small 
+job title	0x1cab560	0x1cb1ff3	0x21cb66e	cstring	small 
+job title	0x1cab560	0x1cb200b	0x220f968	cstring	 chain
+job title	0x1cab560	0x1cb2023	0x21cb66e	cstring	small 
+job title	0x1cab560	0x1cb203b	0x21cb66e	cstring	small 
+job title	0x1cab560	0x1cb2292	0x21dfee9	cstring	 mugs
+job title	0x1cab560	0x1cb2318	0x209901e	cstring	basic_string::_M_create
+job title	0x1cab560	0x1cb2334	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2340	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb234c	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2358	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2364	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2370	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb237c	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2388	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2394	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb23a0	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb23ac	0x209901e	cstring	basic_string::_M_create
+job title	0x1cab560	0x1cb23c0	0x209901e	cstring	basic_string::_M_create
+job title	0x1cab560	0x1cb23cc	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb23d8	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb23e4	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb23f0	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb23fc	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2408	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2414	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2420	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb242c	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2438	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2444	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2450	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb245c	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2468	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2474	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2480	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb248c	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2498	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb24a4	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb24b0	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb24bc	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb24c8	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb24d4	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb24e0	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb24ec	0x209901e	cstring	basic_string::_M_create
+job title	0x1cab560	0x1cb2500	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb250c	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2518	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2524	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2530	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb253c	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2548	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2554	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2560	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb256c	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2578	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2584	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb2590	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb259c	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb25a8	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb25b4	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb25c0	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb25cc	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb25d8	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb25e4	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb25f0	0x209e070	cstring	basic_string::append
+job title	0x1cab560	0x1cb25fc	0x209901e	cstring	basic_string::_M_create
+current job and surgery variants	0x1cb2760	0x1cb2837	0x7265	printable immediate	er
+current job and surgery variants	0x1cb2760	0x1cb283c	0x67727553	printable immediate	Surg
+current job and surgery variants	0x1cb2760	0x1cb288e	0x656c4220706f7453	printable immediate	Stop Ble
+current job and surgery variants	0x1cb2760	0x1cb289e	0x6e696465	printable immediate	edin
+current job and surgery variants	0x1cb2760	0x1cb28fb	0x21e20b0	cstring	Remove Rotten TiVERB_FIRST_PRES
+current job and surgery variants	0x1cb2760	0x1cb28fb	0x21e20b0/16	vector	Remove Rotten Ti
+current job and surgery variants	0x1cb2760	0x1cb2903	0x65757373	printable immediate	ssue
+current job and surgery variants	0x1cb2760	0x1cb2957	0x21e20a0	cstring	Repair Compound Remove Rotten TiVERB_FIRST_PRES
+current job and surgery variants	0x1cb2760	0x1cb2957	0x21e20a0/16	vector	Repair Compound 
+current job and surgery variants	0x1cb2760	0x1cb295f	0x6572757463617246	printable immediate	Fracture
+current job and surgery variants	0x1cb2760	0x1cb2996	0x2212182	cstring	Surgery
+current job and surgery variants	0x1cb2760	0x1cb29be	0x21e0522	cstring	Repair Compound Fracture
+current job and surgery variants	0x1cb2760	0x1cb29de	0x21e053b	cstring	Remove Rotten Tissue
+current job and surgery variants	0x1cb2760	0x1cb29fe	0x21e0514	cstring	Stop Bleeding
+current job and surgery variants	0x1cb2760	0x1cb2a4a	0x209e070	cstring	basic_string::append
+knowledge topic short names	0x1edc6d0	0x1edc74b	0x22108d2	cstring	the wedge
+knowledge topic short names	0x1edc6d0	0x1edc7ac	0x2210a82	cstring	the armillary sphere
+knowledge topic short names	0x1edc6d0	0x1edc80c	0x221aff6	cstring	time
+knowledge topic short names	0x1edc6d0	0x1edc90c	0x220ff8d	cstring	incommensurable ratios
+knowledge topic short names	0x1edc6d0	0x1edc95b	0x220f38b	cstring	chords
+knowledge topic short names	0x1edc6d0	0x1edc9fc	0x220f55a	cstring	relapse
+knowledge topic short names	0x1edc6d0	0x1edca49	0x221037d	cstring	the struggle for survival
+knowledge topic short names	0x1edc6d0	0x1edcaaa	0x221040a	cstring	alkali and acids
+knowledge topic short names	0x1edc6d0	0x1edcb0c	0x22107ad	cstring	bodily fluids
+knowledge topic short names	0x1edc6d0	0x1edccac	0x20f281f	cstring	powers
+knowledge topic short names	0x1edc6d0	0x1edccf8	0x2210c96	cstring	social welfare
+knowledge topic short names	0x1edc6d0	0x1edcd48	0x2210708	cstring	suturing
+knowledge topic short names	0x1edc6d0	0x1edcd98	0x221081d	cstring	medical schools
+knowledge topic short names	0x1edc6d0	0x1edcde8	0x221000d	cstring	prime numbers
+knowledge topic short names	0x1edc6d0	0x1edce38	0x220f69a	cstring	the siphon
+knowledge topic short names	0x1edc6d0	0x1edce66	0x2210346	cstring	diseases
+knowledge topic short names	0x1edc6d0	0x1edceac	0x2210b68	cstring	the trip hammer
+knowledge topic short names	0x1edc6d0	0x1edcee7	0x2172931	cstring	twilight
+knowledge topic short names	0x1edc6d0	0x1edcf38	0x221049e	cstring	laboratory ovens
+knowledge topic short names	0x1edc6d0	0x1edcf79	0x22105dc	cstring	map projections
+knowledge topic short names	0x1edc6d0	0x1edcfb7	0x221059a	cstring	wind patterns
+knowledge topic short names	0x1edc6d0	0x1edcffd	0x22102ab	cstring	astronomical models
+knowledge topic short names	0x1edc6d0	0x1edd03d	0x2210169	cstring	technological evolution
+knowledge topic short names	0x1edc6d0	0x1edd0a7	0x2210945	cstring	the water-powered sawmill
+knowledge topic short names	0x1edc6d0	0x1edd0e7	0x220f650	cstring	the voice
+knowledge topic short names	0x1edc6d0	0x1edd127	0x220ffd2	cstring	division
+knowledge topic short names	0x1edc6d0	0x1edd167	0x220fedc	cstring	interpersonal ethics
+knowledge topic short names	0x1edc6d0	0x1edd1a7	0x22106dc	cstring	excision
+knowledge topic short names	0x1edc6d0	0x1edd1e7	0x2210539	cstring	distance scales
+knowledge topic short names	0x1edc6d0	0x1edd227	0x221045b	cstring	the crucible
+knowledge topic short names	0x1edc6d0	0x1edd25c	0x220f7f0	cstring	cultural history
+knowledge topic short names	0x1edc6d0	0x1edd28c	0x2210260	cstring	the color of stars
+knowledge topic short names	0x1edc6d0	0x1edd2bc	0x2210226	cstring	the heliocentric model
+knowledge topic short names	0x1edc6d0	0x1edd2ec	0x20ca414	cstring	comparative biography
+knowledge topic short names	0x1edc6d0	0x1edd314	0x2210045	cstring	quadratic equations
+knowledge topic short names	0x1edc6d0	0x1edd33c	0x2210bd9	cstring	medical ethics
+knowledge topic short names	0x1edc6d0	0x1edd364	0x220ff41	cstring	congruent triangles
+knowledge topic short names	0x1edc6d0	0x1edd38c	0x221089d	cstring	the pulley
+knowledge topic short names	0x1edc6d0	0x1edd3b4	0x221076b	cstring	the scalpel
+knowledge topic short names	0x1edc6d0	0x1edd3dc	0x220fb36	cstring	bandages
+knowledge topic short names	0x1edc6d0	0x1edd402	0x220ff55	cstring	right triangles
+knowledge topic short names	0x1edc6d0	0x1edd42b	0x220ff65	cstring	isosceles triangles
+knowledge topic short names	0x1edc6d0	0x1edd44b	0x220f5e7	cstring	pulmonary medicine
+knowledge topic short names	0x1edc6d0	0x1edd474	0x22100ee	cstring	community conflict
+knowledge topic short names	0x1edc6d0	0x1edd49e	0x221056b	cstring	economic cartography
+knowledge topic short names	0x1edc6d0	0x1edd4c6	0x2210250	cstring	star catalogues
+knowledge topic short names	0x1edc6d0	0x1edd4ea	0x220f61e	cstring	reaction time
+knowledge topic short names	0x1edc6d0	0x1edd512	0x221090c	cstring	the tumbler lock
+knowledge topic short names	0x1edc6d0	0x1edd533	0x21b765e	cstring	nerves
+knowledge topic short names	0x1edc6d0	0x1edd553	0x22108f6	cstring	gears
+knowledge topic short names	0x1edc6d0	0x1edd573	0x2210a68	cstring	the dioptra
+knowledge topic short names	0x1edc6d0	0x1edd59e	0x2210059	cstring	triangle and circles
+knowledge topic short names	0x1edc6d0	0x1edd5c6	0x220f7bf	cstring	genealogy
+knowledge topic short names	0x1edc6d0	0x1edd5e3	0x22109c0	cstring	the verge escapement
+knowledge topic short names	0x1edc6d0	0x1edd60a	0x220f525	cstring	endemic disease
+knowledge topic short names	0x1edc6d0	0x1edd62b	0x220fb6a	cstring	exacerbation
+knowledge topic short names	0x1edc6d0	0x1edd64b	0x220fb4f	cstring	toxicology
+knowledge topic short names	0x1edc6d0	0x1edd66e	0x22108b2	cstring	the wheel-and-axle
+knowledge topic short names	0x1edc6d0	0x1edd696	0x22103df	cstring	liquid extraction
+knowledge topic short names	0x1edc6d0	0x1edd6b3	0x22108a8	cstring	the screw
+knowledge topic short names	0x1edc6d0	0x1edd6de	0x22105c1	cstring	climate zones
+knowledge topic short names	0x1edc6d0	0x1edd6fb	0x22106b0	cstring	fracture immobilization
+knowledge topic short names	0x1edc6d0	0x1edd722	0x220fc3d	cstring	cauterization
+knowledge topic short names	0x1edc6d0	0x1edd743	0x220f343	cstring	notation
+knowledge topic short names	0x1edc6d0	0x1edd75d	0x2210789	cstring	surgical needles
+knowledge topic short names	0x1edc6d0	0x1edd77b	0x214d518	cstring	government
+knowledge topic short names	0x1edc6d0	0x1edd79b	0x2210b07	cstring	water displacement
+knowledge topic short names	0x1edc6d0	0x1edd7c4	0x22104fe	cstring	surveying for engineering
+knowledge topic short names	0x1edc6d0	0x1edd7ea	0x2210685	cstring	fracture classification
+knowledge topic short names	0x1edc6d0	0x1edd812	0x220f295	cstring	events
+knowledge topic short names	0x1edc6d0	0x1edd83a	0x220ffc3	cstring	pyramids
+knowledge topic short names	0x1edc6d0	0x1edd85b	0x221065f	cstring	traumatic injuries
+knowledge topic short names	0x1edc6d0	0x1edd87b	0x220fea4	cstring	objects and properties
+knowledge topic short names	0x1edc6d0	0x1edd89b	0x220ffa4	cstring	prime divisors
+knowledge topic short names	0x1edc6d0	0x1edd8bb	0x22106f7	cstring	draining
+knowledge topic short names	0x1edc6d0	0x1edd8db	0x220fff8	cstring	remainders
+knowledge topic short names	0x1edc6d0	0x1edd8fb	0x22107f8	cstring	hospital wards
+knowledge topic short names	0x1edc6d0	0x1edd91b	0x2210320	cstring	dietary relationships
+knowledge topic short names	0x1edc6d0	0x1edd942	0x220f204	cstring	perception
+knowledge topic short names	0x1edc6d0	0x1edd963	0x220f239	cstring	belief
+knowledge topic short names	0x1edc6d0	0x1edd983	0x220fe8f	cstring	ethics and the state
+knowledge topic short names	0x1edc6d0	0x1edd9aa	0x2210a53	cstring	models and templates
+knowledge topic short names	0x1edc6d0	0x1edd9d6	0x20ca456	cstring	alternate history
+knowledge topic short names	0x1edc6d0	0x1edd9f3	0x21728bc	cstring	rainbows
+knowledge topic short names	0x1edc6d0	0x1edda1e	0x221043c	cstring	the beaker
+knowledge topic short names	0x1edc6d0	0x1edda46	0x220f470	cstring	aqua regia
+knowledge topic short names	0x1edc6d0	0x1edda6a	0x2210acc	cstring	the water-powered trip hammer
+knowledge topic short names	0x1edc6d0	0x1edda92	0x2210b4c	cstring	the bellows
+knowledge topic short names	0x1edc6d0	0x1eddab3	0x2210aaf	cstring	mural instruments
+knowledge topic short names	0x1edc6d0	0x1eddad3	0x2210b37	cstring	the piston
+knowledge topic short names	0x1edc6d0	0x1eddafa	0x2210998	cstring	the differential gear
+knowledge topic short names	0x1edc6d0	0x1eddb19	0x2210a3e	cstring	the parabolic mirror
+knowledge topic short names	0x1edc6d0	0x1eddb3b	0x2210974	cstring	chain drives
+knowledge topic short names	0x1edc6d0	0x1eddb6d	0x220ff83	cstring	triangles
+knowledge topic short names	0x1edc6d0	0x1eddb8b	0x220f62c	cstring	pulmonary circulation
+knowledge topic short names	0x1edc6d0	0x1eddbae	0x22107df	cstring	hospitals
+knowledge topic short names	0x1edc6d0	0x1eddbcb	0x2210929	cstring	the camshaft
+knowledge topic short names	0x1edc6d0	0x1eddbeb	0x22107ce	cstring	mental illnesses
+knowledge topic short names	0x1edc6d0	0x1eddc12	0x220f5c4	cstring	lithotomy surgery
+knowledge topic short names	0x1edc6d0	0x1eddc33	0x220f2c2	cstring	causation
+knowledge topic short names	0x1edc6d0	0x1eddc53	0x220f599	cstring	hernia surgery
+knowledge topic short names	0x1edc6d0	0x1eddc7a	0x2210c33	cstring	etymology
+knowledge topic short names	0x1edc6d0	0x1eddc9b	0x2210a14	cstring	spheres
+knowledge topic short names	0x1edc6d0	0x1eddcbb	0x2210c06	cstring	education
+knowledge topic short names	0x1edc6d0	0x1eddce2	0x221028b	cstring	equinoxes
+knowledge topic short names	0x1edc6d0	0x1eddd08	0x22101fc	cstring	daylight and seasons
+knowledge topic short names	0x1edc6d0	0x1eddd20	0x2210148	cstring	cultural differences
+knowledge topic short names	0x1edc6d0	0x1eddd30	0x22101e6	cstring	lunar and solar years
+knowledge topic short names	0x1edc6d0	0x1eddd40	0x220f3f5	cstring	the shape of the world
+knowledge topic short names	0x1edc6d0	0x1eddd50	0x221011b	cstring	autobiographical adventures
+knowledge topic short names	0x1edc6d0	0x1eddd60	0x220f3e9	cstring	star charts
+knowledge topic short names	0x1edc6d0	0x1eddd70	0x22100de	cstring	community bonds
+knowledge topic short names	0x1edc6d0	0x1eddd80	0x221055d	cstring	economic data
+knowledge topic short names	0x1edc6d0	0x1eddd90	0x22105b1	cstring	the water cycle
+knowledge topic short names	0x1edc6d0	0x1eddda0	0x22104eb	cstring	military surveying
+knowledge topic short names	0x1edc6d0	0x1edddb0	0x221058a	cstring	delta formation
+knowledge topic short names	0x1edc6d0	0x1edddc0	0x221052f	cstring	map grids
+knowledge topic short names	0x1edc6d0	0x1edddd0	0x22103d3	cstring	the alembic
+knowledge topic short names	0x1edc6d0	0x1eddde0	0x2210493	cstring	the retort
+knowledge topic short names	0x1edc6d0	0x1edddf0	0x2210450	cstring	the funnel
+knowledge topic short names	0x1edc6d0	0x1edde00	0x22103fe	cstring	evaporation
+knowledge topic short names	0x1edc6d0	0x1edde10	0x2210478	cstring	oil of vitriol
+knowledge topic short names	0x1edc6d0	0x1edde20	0x2210432	cstring	the flask
+knowledge topic short names	0x1edc6d0	0x1edde30	0x2210b58	cstring	the water wheel
+knowledge topic short names	0x1edc6d0	0x1edde40	0x220f35a	cstring	exhaustion
+knowledge topic short names	0x1edc6d0	0x1edde50	0x220f1cd	cstring	analogical inference
+knowledge topic short names	0x1edc6d0	0x1edde60	0x220f4e8	cstring	mineral remedies
+knowledge topic short names	0x1edc6d0	0x1edde70	0x220fc0f	cstring	forceps
+knowledge topic short names	0x1edc6d0	0x1edde80	0x221088b	cstring	mechanical clocks
+knowledge topic short names	0x1edc6d0	0x1edde90	0x221004f	cstring	equations
+knowledge topic short names	0x1edc6d0	0x1eddea0	0x2210363	cstring	embriological development
+knowledge topic short names	0x1edc6d0	0x1eddeb0	0x22102bf	cstring	comparative anatomy
+knowledge topic short names	0x1edc6d0	0x1eddec0	0x2210066	cstring	circles
+knowledge topic short names	0x1edc6d0	0x1edded0	0x21e0135	cstring	the lever
+knowledge topic short names	0x1edc6d0	0x1eddee0	0x2210b42	cstring	the crank
+knowledge topic short names	0x1edc6d0	0x1eddef0	0x2210ac1	cstring	the orrery
+knowledge topic short names	0x1edc6d0	0x1eddf00	0x220f6e5	cstring	refraction
+knowledge topic short names	0x1edc6d0	0x1eddf10	0x220f6d9	cstring	atmospheric refraction
+knowledge topic short names	0x1edc6d0	0x1eddf20	0x2210a74	cstring	the astrolabe
+knowledge topic short names	0x1edc6d0	0x1eddf30	0x220f24e	cstring	existence
+knowledge topic short names	0x1edc6d0	0x1eddf40	0x221079a	cstring	anatomical studies
+knowledge topic short names	0x1edc6d0	0x1eddf50	0x22108fc	cstring	the warded lock
+knowledge topic short names	0x1edc6d0	0x1eddf60	0x22107bb	cstring	the nervous system
+knowledge topic short names	0x1edc6d0	0x1eddf70	0x220ffb3	cstring	common divisors
+knowledge topic short names	0x1edc6d0	0x1eddf80	0x220febb	cstring	wholes and parts
+knowledge topic short names	0x1edc6d0	0x1eddf90	0x219d606	cstring	truth
+knowledge topic short names	0x1edc6d0	0x1eddfa0	0x2210c1d	cstring	grammar
+knowledge topic short names	0x1edc6d0	0x1eddfb0	0x220f5ac	cstring	tracheotomy surgery
+knowledge topic short names	0x1edc6d0	0x1eddfc0	0x220fecc	cstring	military ethics
+knowledge topic short names	0x1edc6d0	0x1eddfd0	0x2210672	cstring	fracture treatment
+knowledge topic short names	0x1edc6d0	0x1eddfe0	0x22106c8	cstring	the orthopedic cast
+knowledge topic short names	0x1edc6d0	0x1eddff0	0x220ff79	cstring	inscribed triangles
+knowledge topic short names	0x1edc6d0	0x1ede000	0x2210981	cstring	the mechanical compass
+knowledge topic short names	0x1edc6d0	0x1ede010	0x2210936	cstring	the crankshaft
+knowledge topic short names	0x1edc6d0	0x1ede020	0x220f5d6	cstring	cataract surgery
+knowledge topic short names	0x1edc6d0	0x1ede030	0x2210631	cstring	acute and chronic conditions
+knowledge topic short names	0x1edc6d0	0x1ede040	0x220f543	cstring	paroxysm
+knowledge topic short names	0x1edc6d0	0x1ede050	0x22109d5	cstring	the balance wheel
+knowledge topic short names	0x1edc6d0	0x1ede060	0x2210003	cstring	parabolas
+knowledge topic short names	0x1edc6d0	0x1ede070	0x2210807	cstring	hospital laboratories
+knowledge topic short names	0x1edc6d0	0x1ede080	0x2210700	cstring	probing
+knowledge topic short names	0x1edc6d0	0x1ede090	0x2210c79	cstring	economic policy
+knowledge topic short names	0x1edc6d0	0x1ede0a0	0x2210336	cstring	social behavior
+knowledge topic short names	0x1edc6d0	0x1ede0b0	0x221006e	cstring	the harmonic series
+knowledge topic short names	0x1edc6d0	0x1ede0c0	0x221082d	cstring	asylums
+knowledge topic short names	0x1edc6d0	0x1ede0cf	0x212f9e3	cstring	art
+knowledge topic short names	0x1edc6d0	0x1ede0de	0x220f318	cstring	beauty
+knowledge topic short names	0x1edc6d0	0x1ede0ed	0x220f2f9	cstring	direct inference
+knowledge topic short names	0x1edc6d0	0x1ede0fc	0x220f2e5	cstring	inductive reasoning
+knowledge topic short names	0x1edc6d0	0x1ede10b	0x221010e	cstring	dictionaries
+knowledge topic short names	0x1edc6d0	0x1ede11a	0x221001b	cstring	diagonals
+knowledge topic short names	0x1edc6d0	0x1ede129	0x22102f8	cstring	reproductive behavior
+knowledge topic short names	0x1edc6d0	0x1ede138	0x22102e5	cstring	migratory patterns
+knowledge topic short names	0x1edc6d0	0x1ede147	0x22102d3	cstring	physical features
+knowledge topic short names	0x1edc6d0	0x1ede156	0x22102cb	cstring	anatomy
+knowledge topic short names	0x1edc6d0	0x1ede165	0x220f947	cstring	dissection
+knowledge topic short names	0x1edc6d0	0x1ede174	0x2210025	cstring	large sums
+knowledge topic short names	0x1edc6d0	0x1ede183	0x2210030	cstring	systems of equations
+knowledge topic short names	0x1edc6d0	0x1ede192	0x22101d2	cstring	the sun and seasons
+knowledge topic short names	0x1edc6d0	0x1ede1a1	0x22101c5	cstring	tidal height
+knowledge topic short names	0x1edc6d0	0x1ede1b0	0x22101b2	cstring	the moon and tides
+knowledge topic short names	0x1edc6d0	0x1ede1bf	0x22101a2	cstring	the moon's path
+knowledge topic short names	0x1edc6d0	0x1ede1ce	0x221018d	cstring	the moon and seasons
+knowledge topic short names	0x1edc6d0	0x1ede1dd	0x2210181	cstring	moon phases
+knowledge topic short names	0x1edc6d0	0x1ede1ec	0x22100d7	cstring	cycles
+knowledge topic short names	0x1edc6d0	0x1ede1fb	0x22100c2	cstring	historical causation
+knowledge topic short names	0x1edc6d0	0x1ede20a	0x22100ae	cstring	personal interviews
+knowledge topic short names	0x1edc6d0	0x1ede219	0x22100a3	cstring	state bias
+knowledge topic short names	0x1edc6d0	0x1ede228	0x2210095	cstring	systemic bias
+knowledge topic short names	0x1edc6d0	0x1ede237	0x2210082	cstring	source reliability
+knowledge topic short names	0x1edc6d0	0x1ede246	0x220f4a6	cstring	triangulation
+knowledge topic short names	0x1edc6d0	0x1ede255	0x2210574	cstring	cartography
+knowledge topic short names	0x1edc6d0	0x1ede264	0x22104af	cstring	the surveying staff
+knowledge topic short names	0x1edc6d0	0x1ede273	0x22104e1	cstring	surveying
+knowledge topic short names	0x1edc6d0	0x1ede282	0x22104dc	cstring	land surveying
+knowledge topic short names	0x1edc6d0	0x1ede291	0x22104c3	cstring	cartographical surveying
+knowledge topic short names	0x1edc6d0	0x1ede2a0	0x220f9bd	cstring	adhesives
+knowledge topic short names	0x1edc6d0	0x1ede2af	0x22103ad	cstring	elemental materials
+knowledge topic short names	0x1edc6d0	0x1ede2be	0x21f3bf3	cstring	hardness
+knowledge topic short names	0x1edc6d0	0x1ede2cd	0x220f9a2	cstring	alloys
+knowledge topic short names	0x1edc6d0	0x1ede2dc	0x220f458	cstring	ores
+knowledge topic short names	0x1edc6d0	0x1ede2eb	0x2210397	cstring	combustible materials
+knowledge topic short names	0x1edc6d0	0x1ede2fa	0x2210a2b	cstring	the camera obscura
+knowledge topic short names	0x1edc6d0	0x1ede309	0x2210a1c	cstring	the glass lens
+knowledge topic short names	0x1edc6d0	0x1ede318	0x2210a07	cstring	water-filled spheres
+knowledge topic short names	0x1edc6d0	0x1ede327	0x22109f6	cstring	the crystal lens
+knowledge topic short names	0x1edc6d0	0x1ede336	0x22109e7	cstring	the force pump
+knowledge topic short names	0x1edc6d0	0x1ede345	0x220fdac	cstring	valves
+knowledge topic short names	0x1edc6d0	0x1ede354	0x220e230	cstring	specialized surgical instruments
+knowledge topic short names	0x1edc6d0	0x1ede363	0x2210750	cstring	animals as surgical models
+knowledge topic short names	0x1edc6d0	0x1ede372	0x2210736	cstring	plants as surgical models
+knowledge topic short names	0x1edc6d0	0x1ede381	0x221071a	cstring	mud bags as surgical models
+knowledge topic short names	0x1edc6d0	0x1ede390	0x2210726	cstring	surgical models
+knowledge topic short names	0x1edc6d0	0x1ede39f	0x2210711	cstring	ligature
+knowledge topic short names	0x1edc6d0	0x1ede3ae	0x221087d	cstring	the hourglass
+knowledge topic short names	0x1edc6d0	0x1ede3bd	0x221086f	cstring	the astrarium
+knowledge topic short names	0x1edc6d0	0x1ede3cc	0x2210858	cstring	water clock reservoirs
+knowledge topic short names	0x1edc6d0	0x1ede3db	0x2210843	cstring	conical water clocks
+knowledge topic short names	0x1edc6d0	0x1ede3ea	0x221084b	cstring	water clocks
+knowledge topic short names	0x1edc6d0	0x1ede3f9	0x2210835	cstring	shadow clocks
+knowledge topic short names	0x1edc6d0	0x1ede408	0x220ff1c	cstring	very large numbers
+knowledge topic short names	0x1edc6d0	0x1ede417	0x220ff08	cstring	negative quantities
+knowledge topic short names	0x1edc6d0	0x1ede426	0x220f32c	cstring	nothingness
+knowledge topic short names	0x1edc6d0	0x1ede435	0x220fef1	cstring	proof by contradiction
+knowledge topic short names	0x1edc6d0	0x1ede444	0x220ff2f	cstring	geometric objects
+knowledge topic short names	0x1edc6d0	0x1ede453	0x220f338	cstring	positional notation
+knowledge topic short names	0x1edc6d0	0x1ede462	0x220fb18	cstring	animal remedies
+knowledge topic short names	0x1edc6d0	0x1ede471	0x220fafa	cstring	herbal remedies
+knowledge topic short names	0x1edc6d0	0x1ede480	0x220fae2	cstring	prognosis
+knowledge topic short names	0x1edc6d0	0x1ede48f	0x220f4e0	cstring	autopsy
+knowledge topic short names	0x1edc6d0	0x1ede49e	0x2210605	cstring	physical examination
+knowledge topic short names	0x1edc6d0	0x1ede4ad	0x22105ec	cstring	disease and fouled water
+knowledge topic short names	0x1edc6d0	0x1ede4bc	0x220f1b9	cstring	dialectic reasoning
+knowledge topic short names	0x1edc6d0	0x1ede4cb	0x220f1a5	cstring	propositional logic
+knowledge topic short names	0x1edc6d0	0x1ede4da	0x220f18d	cstring	hypothetical syllogisms
+knowledge topic short names	0x1edc6d0	0x1ede4e9	0x220f17b	cstring	syllogistic logic
+knowledge topic short names	0x1edc6d0	0x1ede4f8	0x220f167	cstring	deductive reasoning
+knowledge topic short names	0x1edc6d0	0x1ede507	0x220f156	cstring	formal reasoning
+knowledge topic short names	0x1edc6d0	0x1ede520	0x221034f	cstring	climatic adaptation
+knowledge topic short names	0x1edc6d0	0x1ede52f	0x221030e	cstring	foraging behavior
+knowledge topic short names	0x1edc6d0	0x1ede53e	0x2210273	cstring	the brightness of stars
+knowledge topic short names	0x1edc6d0	0x1ede550	0x2210295	cstring	empirical observation
+knowledge topic short names	0x1edc6d0	0x1ede55f	0x221023d	cstring	eclipses
+knowledge topic short names	0x1edc6d0	0x1ede570	0x2130add	cstring	biography
+knowledge topic short names	0x1edc6d0	0x1ede580	0x2210211	cstring	the geocentric model
+knowledge topic short names	0x1edc6d0	0x1ede590	0x2210246	cstring	extensive star catalogues
+knowledge topic short names	0x1edc6d0	0x1ede5a0	0x2210137	cstring	the encyclopedia
+knowledge topic short names	0x1edc6d0	0x1ede5b0	0x221015d	cstring	archaeology
+knowledge topic short names	0x1edc6d0	0x1ede5bf	0x20ca442	cstring	cultural comparison
+knowledge topic short names	0x1edc6d0	0x1ede5ce	0x2210101	cstring	biographical dictionaries
+knowledge topic short names	0x1edc6d0	0x1ede5dd	0x22105a8	cstring	rainfall
+knowledge topic short names	0x1edc6d0	0x1ede5f0	0x22105cf	cstring	map accuracy
+knowledge topic short names	0x1edc6d0	0x1ede600	0x2210580	cstring	the atlas
+knowledge topic short names	0x1edc6d0	0x1ede610	0x2210518	cstring	geological cartography
+knowledge topic short names	0x1edc6d0	0x1ede61f	0x2210549	cstring	height measurements
+knowledge topic short names	0x1edc6d0	0x1ede630	0x2210487	cstring	the ampoule
+knowledge topic short names	0x1edc6d0	0x1ede640	0x2210447	cstring	the vial
+knowledge topic short names	0x1edc6d0	0x1ede64f	0x221041b	cstring	systematic experiments
+knowledge topic short names	0x1edc6d0	0x1ede65e	0x2210468	cstring	spirit of niter
+knowledge topic short names	0x1edc6d0	0x1ede670	0x22103f1	cstring	distillation
+knowledge topic short names	0x1edc6d0	0x1ede67f	0x22103c1	cstring	the blast furnace
+knowledge topic short names	0x1edc6d0	0x1ede68e	0x2210aea	cstring	double-acting piston bellows
+knowledge topic short names	0x1edc6d0	0x1ede6a0	0x220ece0	cstring	the water-powered piston bellows
+knowledge topic short names	0x1edc6d0	0x1ede6af	0x2210b1a	cstring	the height of the atmosphere
+knowledge topic short names	0x1edc6d0	0x1ede6be	0x220f6ce	cstring	lamination
+knowledge topic short names	0x1edc6d0	0x1ede6cd	0x220f6b3	cstring	light and color
+knowledge topic short names	0x1edc6d0	0x1ede6dc	0x2210a97	cstring	the spherical astrolabe
+knowledge topic short names	0x1edc6d0	0x1ede6eb	0x221091d	cstring	the padlock
+knowledge topic short names	0x1edc6d0	0x1ede6fa	0x220f365	cstring	axiomatic reasoning
+knowledge topic short names	0x1edc6d0	0x1ede709	0x221069d	cstring	the traction bench
+knowledge topic short names	0x1edc6d0	0x1ede718	0x219d58e	cstring	law
+knowledge topic short names	0x1edc6d0	0x1ede727	0x220f279	cstring	mind and body
+knowledge topic short names	0x1edc6d0	0x1ede736	0x22108dc	cstring	the straight-beam balance
+knowledge topic short names	0x1edc6d0	0x1ede745	0x220fc76	cstring	eye anatomy
+knowledge topic short names	0x1edc6d0	0x1ede754	0x22108c5	cstring	the windlass
+knowledge topic short names	0x1edc6d0	0x1ede763	0x220ffcc	cstring	cones
+knowledge topic short names	0x1edc6d0	0x1ede772	0x220f670	cstring	muscles
+knowledge topic short names	0x1edc6d0	0x1ede781	0x2210c4a	cstring	diplomacy
+knowledge topic short names	0x1edc6d0	0x1ede790	0x2210777	cstring	surgical scissors
+knowledge topic short names	0x1edc6d0	0x1ede79f	0x221061a	cstring	disease classification
+knowledge topic short names	0x1edc6d0	0x1ede7ae	0x220f570	cstring	convalescence
+knowledge topic short names	0x1edc6d0	0x1ede7bd	0x220fcb0	cstring	blood vessels
+knowledge topic short names	0x1edc6d0	0x1ede7cc	0x220f2aa	cstring	processes
+knowledge topic short names	0x1edc6d0	0x1ede7db	0x220fc5b	cstring	anesthesia
+knowledge topic short names	0x1edc6d0	0x1ede7ea	0x220fe7a	cstring	individual happiness
+knowledge topic short names	0x1edc6d0	0x1ede7f9	0x220f21d	cstring	justification
+knowledge topic short names	0x1edc6d0	0x1ede808	0x221064e	cstring	epidemic disease
+knowledge topic short names	0x1edc6d0	0x1ede817	0x22109ae	cstring	combination locks
+knowledge topic short names	0x1edc6d0	0x1ede826	0x22106ee	cstring	scraping
+knowledge topic short names	0x1edc6d0	0x1ede835	0x22106e5	cstring	incision
+knowledge topic short names	0x1edc6d0	0x1ede844	0x221095f	cstring	the chariot odometer
+knowledge topic short names	0x1edc6d0	0x1ede853	0x22107e9	cstring	hospital staff
+knowledge topic short names	0x1edc6d0	0x1ede862	0x220ffe9	cstring	conic sections
+knowledge topic short names	0x1edc6d0	0x1ede871	0x220ffdb	cstring	chord lengths
+squad_order_trainst	0x20311b0	0x20311d2	0x221c180	cstring	Train
+squad_order_trainst	0x20311b0	0x20311de	0x69617254	printable immediate	Trai
+squad_order_trainst	0x20311b0	0x2031206	0x221c180	cstring	Train
+squad_order_retrieve_artifactst	0x20313e0	0x203140b	0x221c1c9	cstring	Retrieve 
+squad_order_retrieve_artifactst	0x20313e0	0x2031417	0x6576656972746552	printable immediate	Retrieve
+squad_order_retrieve_artifactst	0x20313e0	0x2031466	0x221c1c9	cstring	Retrieve 
+kill historical figure helper	0x2031660	0x2031791	0x21b60d2	cstring	Kill 
+kill historical figure helper	0x2031660	0x20317a1	0x6c6c694b	printable immediate	Kill
+kill historical figure helper	0x2031660	0x203180e	0x21b60d2	cstring	Kill 
+squad_order_kill_hfst	0x20318e0	0x20319f7	0x209901e	cstring	basic_string::_M_create
+squad_order_rescue_hfst	0x2031a10	0x2031a55	0x20d335a	cstring	Rescue 
+squad_order_rescue_hfst	0x2031a10	0x2031a65	0x6575	printable immediate	ue
+squad_order_rescue_hfst	0x2031a10	0x2031a6a	0x63736552	printable immediate	Resc
+squad_order_rescue_hfst	0x2031a10	0x2031bc6	0x20d335a	cstring	Rescue 
+squad_order_drive_entity_off_sitest	0x2031ca0	0x2031d80	0x221c1d3	cstring	Drive 
+squad_order_drive_entity_off_sitest	0x2031ca0	0x2031de2	0x206d	printable immediate	m 
+squad_order_drive_entity_off_sitest	0x2031ca0	0x2031de7	0x6f726620	printable immediate	 fro
+squad_order_drive_entity_off_sitest	0x2031ca0	0x2031e5e	0x20e2431	cstring	 from 
+squad_order_drive_entity_off_sitest	0x2031ca0	0x2031e7a	0x209e070	cstring	basic_string::append
+squad_order_drive_entity_off_sitest	0x2031ca0	0x2031e86	0x209901e	cstring	basic_string::_M_create
+squad_order_drive_armies_from_sitest	0x2031ea0	0x2031f80	0x221c1da	cstring	Drive any members of 
+squad_order_drive_armies_from_sitest	0x2031ea0	0x2031fdf	0x20666f2074756f20	printable immediate	 out of 
+squad_order_drive_armies_from_sitest	0x2031ea0	0x203204e	0x20e1f80	cstring	 out of 
+squad_order_drive_armies_from_sitest	0x2031ea0	0x203206a	0x209e070	cstring	basic_string::append
+squad_order_drive_armies_from_sitest	0x2031ea0	0x2032076	0x209901e	cstring	basic_string::_M_create
+squad_order_patrol_routest	0x20324a0	0x20324cd	0x221c1f0	cstring	Patrol 
+squad_order_patrol_routest	0x20324a0	0x20324dd	0x6c6f	printable immediate	ol
+squad_order_patrol_routest	0x20324a0	0x20324e2	0x72746150	printable immediate	Patr
+squad_order_patrol_routest	0x20324a0	0x20325e1	0x2065	printable immediate	e 
+squad_order_patrol_routest	0x20324a0	0x20325e6	0x74756f52	printable immediate	Rout
+squad_order_patrol_routest	0x20324a0	0x203263e	0x221c1f0	cstring	Patrol 
+squad_order_patrol_routest	0x20324a0	0x20326ee	0x20fc0e1	cstring	Route 
+squad_order_patrol_routest	0x20324a0	0x2032779	0x209e070	cstring	basic_string::append
+squad_order_raid_sitest	0x2032790	0x2032849	0x20d334b	cstring	Raid 
+squad_order_raid_sitest	0x2032790	0x2032855	0x64696152	printable immediate	Raid
+squad_order_raid_sitest	0x2032790	0x2032896	0x20d334b	cstring	Raid 
+squad_order_raid_sitest	0x2032790	0x2032913	0x20d3315	cstring	Pillage 
+squad_order_raid_sitest	0x2032790	0x2032927	0x20d330c	cstring	Explore 
+squad_order_raid_sitest	0x2032790	0x203293b	0x221c1f8	cstring	Demand Tribute from 
+squad_order_raid_sitest	0x2032790	0x203294f	0x20d3344	cstring	Seize 
+squad_order_raid_sitest	0x2032790	0x2032963	0x221c20d	cstring	Take Over 
+squad_order_raid_sitest	0x2032790	0x2032977	0x20d3333	cstring	Raze 
+squad_order_raid_sitest	0x2032790	0x203298b	0x20d334b	cstring	Raid 
+squad_order_defend_burrowsst	0x2032a00	0x2032a33	0x221c218	cstring	Defend 
+squad_order_defend_burrowsst	0x2032a00	0x2032a43	0x646e	printable immediate	nd
+squad_order_defend_burrowsst	0x2032a00	0x2032a48	0x65666544	printable immediate	Defe
+squad_order_defend_burrowsst	0x2032a00	0x2032b52	0x776f	printable immediate	ow
+squad_order_defend_burrowsst	0x2032a00	0x2032b57	0x72727542	printable immediate	Burr
+squad_order_defend_burrowsst	0x2032a00	0x2032bcf	0x63746520	printable immediate	 etc
+squad_order_defend_burrowsst	0x2032a00	0x2032c7f	0x221c218	cstring	Defend 
+squad_order_defend_burrowsst	0x2032a00	0x2032cf6	0x20fba42	cstring	Burrow 
+squad_order_defend_burrowsst	0x2032a00	0x2032d4f	0x21e2c80	cstring	 etc.
+squad_order_defend_burrowsst	0x2032a00	0x2032dcd	0x209e070	cstring	basic_string::append
+squad_order_movest	0x2032de0	0x2032e21	0x21750a2	cstring	Station
+squad_order_movest	0x2032de0	0x2032e31	0x6f69	printable immediate	io
+squad_order_movest	0x2032de0	0x2032e36	0x74617453	printable immediate	Stat
+squad_order_movest	0x2032de0	0x2032eb2	0x20746120	printable immediate	 at 
+squad_order_movest	0x2032de0	0x2032f4e	0x21750a2	cstring	Station
+squad_order_movest	0x2032de0	0x2032fc6	0x219eec9	cstring	 at 
+squad_order_movest	0x2032de0	0x203301c	0x2074	printable immediate	t 
+squad_order_movest	0x2032de0	0x2033021	0x6e696f50	printable immediate	Poin
+squad_order_movest	0x2032de0	0x20330ae	0x221c220	cstring	Point 
+squad_order_movest	0x2032de0	0x2033144	0x209e070	cstring	basic_string::append
+squad_order_cause_trouble_for_entityst	0x2033150	0x203324c	0x21b60f1	cstring	Cause trouble for 
+squad_order_cause_trouble_for_entityst	0x2033150	0x2033258	0x2072	printable immediate	r 
+squad_order_cause_trouble_for_entityst	0x2033150	0x203325d	0x221c4e0/16	vector	Cause trouble fo
+squad_order_cause_trouble_for_entityst	0x2033150	0x20332fd	0x21b60f1	cstring	Cause trouble for 
+squad_order_cause_trouble_for_entityst	0x2033150	0x203336d	0x209901e	cstring	basic_string::_M_create
+kill list caption helper	0x2033380	0x20333cf	0x2175198	cstring	Kill
+kill list caption helper	0x2033380	0x20333df	0x6c6c694b	printable immediate	Kill
+kill list caption helper	0x2033380	0x203353b	0x2175198	cstring	Kill
+kill list caption helper	0x2033380	0x20335cb	0x73756f6972617620	printable immediate	 various
+kill list caption helper	0x2033380	0x203376c	0x221c227	cstring	 various
+kill list caption helper	0x2033380	0x203383b	0x20f7379	cstring	 
+kill list caption helper	0x2033380	0x2033883	0x20f7379	cstring	 
+kill list caption helper	0x2033380	0x2033929	0x209e070	cstring	basic_string::append
+squad_order_kill_listst	0x2033960	0x2033a77	0x209901e	cstring	basic_string::_M_create
+creature role/status display	0x204bab0	0x204bb0d	0x2175459	cstring	Job
+creature role/status display	0x204bab0	0x204c1dd	0x214e5d5	cstring	Deceased
+creature role/status display	0x204bab0	0x204d264	0x21f0ec2	cstring	Domesticated
+creature role/status display	0x204bab0	0x204d2f8	0x221cd2f	cstring	Exceptionally trained
+creature role/status display	0x204bab0	0x204d329	0x221cd0b	cstring	Skillfully trained
+creature role/status display	0x204bab0	0x204d35a	0x221ccfe	cstring	Well-trained
+creature role/status display	0x204bab0	0x204d38b	0x221cd45	cstring	Masterfully trained
+creature role/status display	0x204bab0	0x204d3bc	0x20f3f3c	cstring	Trained
+creature role/status display	0x204bab0	0x204d3ed	0x221cd1e	cstring	Expertly trained
+creature role/status display	0x204bab0	0x204d430	0x21cfba8	cstring	\#
+creature role/status display	0x204bab0	0x204d70c	0x221cce5	cstring	Chained Prisoner
+creature role/status display	0x204bab0	0x204d761	0x217340e	cstring	Berserk
+creature role/status display	0x204bab0	0x204d7ab	0x20f3ac5	cstring	 (Chained)
+creature role/status display	0x204bab0	0x204d7bf	0x221cbfb	cstring	Wild Animal
+creature role/status display	0x204bab0	0x204d7f6	0x221cc07	cstring	Undead
+creature role/status display	0x204bab0	0x204d807	0x221ccc5	cstring	Current Resident
+creature role/status display	0x204bab0	0x204d864	0x221cc64	cstring	Agitated Chained Creature
+creature role/status display	0x204bab0	0x204d878	0x221cc1e	cstring	Invader
+creature role/status display	0x204bab0	0x204d8d4	0x221cc0e	cstring	Opposed to life
+creature role/status display	0x204bab0	0x204d91e	0x221cca7	cstring	Chained Guest
+creature role/status display	0x204bab0	0x204d97e	0x221cc3b	cstring	Visitor
+creature role/status display	0x204bab0	0x204d992	0x20df31a	cstring	Underworld
+creature role/status display	0x204bab0	0x204da00	0x221cc26	cstring	Diplomat / 
+creature role/status display	0x204bab0	0x204da82	0x20fcb42	cstring	Missing
+creature role/status display	0x204bab0	0x204de2f	0x20f3f62	cstring	Tame
+creature role/status display	0x204bab0	0x204de60	0x20f3abc	cstring	 (Caged)
+creature role/status display	0x204bab0	0x204df66	0x20f3ac5	cstring	 (Chained)
+creature role/status display	0x204bab0	0x204df8b	0x221cbef	cstring	Independent
+creature role/status display	0x204bab0	0x204e002	0x20f3abc	cstring	 (Caged)
+creature role/status display	0x204bab0	0x204e02a	0x20f3f67	cstring	Semi-Wild
+creature role/status display	0x204bab0	0x204e14c	0x221ccf6	cstring	Hostile
+creature role/status display	0x204bab0	0x204e160	0x221ccd6	cstring	Caged Prisoner
+creature role/status display	0x204bab0	0x204e181	0x221ccb5	cstring	Uninvited Guest
+creature role/status display	0x204bab0	0x204e195	0x221cc9b	cstring	Caged Guest
+creature role/status display	0x204bab0	0x204e1a9	0x221cc7e	cstring	Agitated Wilderness Creature
+creature role/status display	0x204bab0	0x204e1bd	0x221cc4c	cstring	Agitated Caged Creature
+creature role/status display	0x204bab0	0x204e1ed	0x20f36f2	cstring	Merchant
+creature role/status display	0x204bab0	0x204e214	0x221cc43	cstring	Friendly
+creature role/status display	0x204bab0	0x204e246	0x221cc32	cstring	Guest / 
+creature role/status display	0x204bab0	0x204e2c1	0x221cc32	cstring	Guest / 

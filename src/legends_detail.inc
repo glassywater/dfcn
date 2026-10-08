@@ -179,6 +179,11 @@ std::optional<std::string> Overlay::translate_legends_name(
     std::string name = person && raw.find('`') != std::string_view::npos
         ? std::string(trim_view(raw)) : normalize_utterance(raw);
     if (name.empty() || name.ends_with("...")) return std::nullopt;
+    // A typed actor/title can follow a lower-case article in prose. Preserve
+    // its native name-group boundary while normalizing only that article;
+    // the complete title-word validation below still rejects ordinary prose.
+    if (person && (name.starts_with("the ") || name.starts_with("of ")))
+        name.front() = static_cast<char>(name.front() - ('a' - 'A'));
     if (!person && entity_reference)
         if (const auto civilization = translate_civilization_reference(name))
             return civilization;
@@ -1058,18 +1063,24 @@ std::optional<std::string> Overlay::translate_legends_actor(
         return std::nullopt;
     // After a full stop DF capitalizes the species article, not the species
     // itself ("The elf ..."). It still denotes the same typed person link.
-    if (value.starts_with("the ") || value.starts_with("The ")) value.remove_prefix(4);
+    // The article belongs to a caste only when that caste is proved below.
+    // A deity can have no first/surname group and start with its full English
+    // title, e.g. The Scholar of Poems. Preserve that title for the name
+    // fallback instead of discarding the native formatter's group boundary.
+    auto species_value = value;
+    if (species_value.starts_with("the ") || species_value.starts_with("The "))
+        species_value.remove_prefix(4);
     // A creature descriptor can contain several words. Try the longest
     // complete species/caste before the proper name, not the first word.
-    for (size_t at = value.rfind(' '); at != std::string_view::npos;
-         at = at == 0 ? std::string_view::npos : value.rfind(' ', at - 1)) {
+    for (size_t at = species_value.rfind(' '); at != std::string_view::npos;
+         at = at == 0 ? std::string_view::npos : species_value.rfind(' ', at - 1)) {
         // An arbitrary UI/name translation does not establish a caste.
         // Keep the native given name out of the species prefix, including
         // holders in the world-map artifact list. Generated multiword castes
         // still use the RAW-backed species and shared creature grammar.
-        const auto species = translate_creature_descriptor(value.substr(0, at), true);
+        const auto species = translate_creature_descriptor(species_value.substr(0, at), true);
         if (!species) continue;
-        const auto raw_name = trim_view(value.substr(at + 1));
+        const auto raw_name = trim_view(species_value.substr(at + 1));
         // A RAW-backed species establishes this person field. Utterance
         // names can be one proper given name without any T_WORD roots.
         const bool single_given = raw_name.size() >= 2 && raw_name.size() <= 192 &&

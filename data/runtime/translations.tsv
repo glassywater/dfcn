@@ -54031,7 +54031,6 @@ DFHack GUI Design: Mirror horizontal:	水平镜像：	l
 DFHack GUI Design: Next point offset:	连接间隔：	l
 DFHack GUI Design: Remove Designation	取消指定	l
 DFHack GUI Design: Second Curve Point	第二曲线控制点	l
-DFHack GUI Elevation option: A Barony	男爵领	l
 DFHack GUI Frame status: PAUSE FORCED	强制暂停	l
 DFHack GUI Legends race filter: Races	种族	l
 DFHack GUI Quickfort: Double click or	双击或	l
@@ -69560,6 +69559,7 @@ Fortress activity: Dye leather	染皮革	li
 Fortress activity: Go shopping	购物	li
 Fortress activity: Make cheese	制作奶酪	li
 Fortress activity: Make scroll	制作卷轴	li
+Fortress activity: Meditate on	围绕{s}冥想	li
 Fortress activity: Mill plants	碾磨植物	li
 Fortress activity: New Arrival	刚刚抵达	li
 Fortress activity: No activity	无活动	li
@@ -74262,6 +74262,7 @@ Fortress activity: Give food	送食物	li
 Fortress activity: Make mead	酿造蜜酒	li
 Fortress activity: Mercenary	佣兵	li
 Fortress activity: Play with	玩	li
+Fortress activity: Preach on	就{s}布道	li
 Fortress activity: Socialize	社交	li
 Fortress activity: Take Over	接管	li
 Gladiatory Games during {e}.	在{e1}期间，角斗比赛。	htEi
@@ -78745,6 +78746,7 @@ Fortress activity: Explore	探索	li
 Fortress activity: Hostile	敌对	li
 Fortress activity: Invader	入侵者	li
 Fortress activity: Pillage	劫掠	li
+Fortress activity: Pray to	向{s}祷告	li
 Fortress activity: Soldier	士兵	li
 Fortress activity: Station	驻守	li
 Fortress activity: Surgery	外科手术	li
@@ -137567,7 +137569,6 @@ yak bulls	牦牛	wi
 (member)	（成员）	h
 , as {a}	，化名为{a1}	ht
 .Spilled	·内脏外溢
-A barony	男爵	wi
 About DF	关于 DF
 Adequate	勉强的	wi
 Agitated	焦躁	w

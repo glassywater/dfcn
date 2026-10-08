@@ -1,0 +1,12 @@
+# ELF 0x14f0281..0x14f02a2; exact enum and bit-mask decisions
+sphere id	enum	article
+19	DAWN	the
+70	MOON	the
+76	NIGHT	the
+87	RAIN	the
+98	SEASONS	the
+100	SKY	the
+103	STARS	the
+107	SUN	the
+125	WEATHER	the
+126	WIND	the

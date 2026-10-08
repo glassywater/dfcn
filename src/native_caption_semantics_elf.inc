@@ -53,6 +53,12 @@ static bool resolve_native_caption_semantics_elf(NativeCaptionProfile &profile) 
         // The following column calls their position formatter with civ.id.
         {native_reference_address(base,0x1034035),NativeCivilizationField::OfficialName},
         {native_reference_address(base,0x10340b0),NativeCivilizationField::OfficialPosition},
+        // The HUD's complete rank switch, and both Nobles column modes.
+        // Each position draw reads LAND_NAME (+258), otherwise NAME[0]
+        // (+98), then capitalizes; the compact mode shortens to 22 bytes.
+        {native_reference_address(base,0x168128e),NativeCivilizationField::FortressRank},
+        {native_reference_address(base,0x16e2be7),NativeCivilizationField::FortressPositionLabel},
+        {native_reference_address(base,0x16e379f),NativeCivilizationField::FortressPositionLabel},
     });
     profile.location_picker_fields = {
         {native_reference_address(base,0x9a25ba),NativeLocationPickerField::GuildChoice},
