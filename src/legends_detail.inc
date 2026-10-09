@@ -1851,13 +1851,13 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
                     identity_tab_visible = true;
                     target = translate_heading(heading);
                 } else {
-                    target = translate_procedural_fragment(source);
+                    target = translate_heading(source);
                 }
             } else if (!target && !category_tab && !source.ends_with("...")) {
                 if (written_heading && source == written_heading->source_title) {
                     identity_tab_visible = true;
                     target = written_heading->title;
-                } else target = translate_legends_detail_heading(source);
+                } else target = translate_heading(source);
             }
             if (target) {
                 // A tab needs the identity, not the heading's sex/species.

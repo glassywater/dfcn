@@ -124,6 +124,7 @@ static bool capture_native_history_slab_data(uintptr_t item, NativeHistoryEventD
     if (!native_string_view(&original.value, &native_name, kNativeHistoryStringLimit) ||
         !native_string_view(&translated.value, &translated_name, kNativeHistoryStringLimit) ||
         native_name.empty() || translated_name.empty()) return false;
+    identity.name.native_name.assign(native_name);
 
     int32_t deity_id = -1;
     NativeBorrowedVector<uintptr_t> agreements;

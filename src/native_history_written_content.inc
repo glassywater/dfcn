@@ -111,6 +111,10 @@ static bool capture_native_history_written_reference(uintptr_t ref, NativeHistor
         NativeHistorySubject value;
         value.kind = kind; value.id = id;
         if (!capture_native_history_name(base, object + name_offset, value.name) ||
+                (kind == NativeHistoryObjectKind::Figure && value.name.has_name &&
+                    value.name.first_name.empty() &&
+                    !capture_native_history_original_name(base, object + name_offset,
+                        value.name.native_name)) ||
                 (kind == NativeHistoryObjectKind::Site &&
                     !capture_native_history_site_name_context(base, object, value.name, true))) return false;
         if (kind == NativeHistoryObjectKind::Site) value.native_type = value.name.site_type;

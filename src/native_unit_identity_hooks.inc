@@ -121,13 +121,17 @@ static void capture_native_unit_header_english_name(const void *name,
         const std::string original(source);
         std::optional<std::string> translated;
         NativeUnitIdentity snapshot;
+        std::array<int32_t, 7> indices;
         // The sheet selects the visible language_name itself and bypasses the
         // unit formatters. Capture that exact field without entering or altering
         // a unit TLS scope. Its separate addchar calls own the outer quotes.
         // This dedicated formatter already proves an English character name.
         // Optional native metadata must not block translation of that text.
-        capture_native_history_name(g_native_unit_identity_hooks.base,
-            reinterpret_cast<uintptr_t>(name), snapshot.name);
+        if (capture_native_history_name(g_native_unit_identity_hooks.base,
+                reinterpret_cast<uintptr_t>(name), snapshot.name, &indices))
+            snapshot.native_name_words_valid = capture_native_unit_identity_name_words(
+                reinterpret_cast<uintptr_t>(name), snapshot.name,
+                snapshot.native_name_words, &indices);
         snapshot.native_name = original;
         snapshot.form = NativeUnitIdentityForm::NameOnly;
         snapshot.english_name = true;

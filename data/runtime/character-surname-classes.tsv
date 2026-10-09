@@ -1,0 +1,309 @@
+record_type	class	parent	traits	description
+trait	solid			
+trait	liquid			
+trait	surface			
+trait	edible			
+trait	countable			
+trait	wearable			
+trait	reflective			
+trait	movable			
+trait	alive			
+trait	sentient			
+trait	vocal			
+trait	luminous			
+trait	plant			
+trait	food			
+trait	equipment			
+trait	body			
+trait	fluid			
+trait	color			
+trait	material			
+trait	independent			
+class	image			
+class	physical	image	independent	
+class	concept	image	independent	
+class	property	image		
+class	action	image		
+class	prefix	image		
+class	material	physical	material|surface	
+class	material.metal	material	solid|reflective	
+class	material.alloy	material	solid|reflective	
+class	material.rock	material	solid	
+class	material.gem	material	solid|reflective	
+class	material.ore	material	solid	
+class	material.earth	material		
+class	material.oil	material	liquid|fluid	
+class	material.wax	material	solid	
+class	material.resin	material		
+class	material.tar	material	fluid	
+class	material.paint	material	fluid	
+class	material.slime	material	fluid	
+class	material.dirt	material		
+class	material.wood	material	solid|plant	
+class	material.fiber	material	solid	
+class	material.leather	material	solid	
+class	material.fuel	material	solid	
+class	food	physical	edible|food|surface	
+class	food.staple	food	solid	
+class	food.meat	food	solid	
+class	food.dairy	food		
+class	food.sweetener	food		
+class	food.alcohol	food	liquid|fluid	
+class	food.drink	food	liquid|fluid	
+class	food.condiment	food		
+class	food.meal	food		
+class	food.vegetable	food	solid|plant	
+class	fruit	physical	plant|edible|surface|solid|countable	
+class	fruit.pome	fruit		
+class	fruit.berry	fruit		
+class	fruit.stone	fruit		
+class	fruit.nut	fruit		
+class	fruit.seed	fruit		
+class	fruit.grain	fruit		
+class	fruit.general	fruit		
+class	organism	physical	alive|surface|countable	
+class	plant	organism	plant|solid	
+class	plant.tree	plant		
+class	plant.flower	plant		
+class	plant.grass	plant		
+class	plant.fungus	plant		
+class	plant.vine	plant		
+class	plant.shrub	plant		
+class	plant.cactus	plant		
+class	plant_part	physical	plant|surface|solid	
+class	plant_part.leaf	plant_part		
+class	plant_part.root	plant_part		
+class	plant_part.branch	plant_part		
+class	plant_part.petal	plant_part		
+class	creature	organism	movable|vocal	
+class	creature.mammal	creature		
+class	creature.bird	creature		
+class	creature.fish	creature		
+class	creature.insect	creature		
+class	creature.reptile	creature		
+class	creature.amphibian	creature		
+class	creature.aquatic	creature		
+class	creature.fantasy	creature		
+class	creature.general	creature		
+class	person	organism	sentient|movable|vocal	
+class	person.kin	person		
+class	person.age	person		
+class	person.occupation	person		
+class	person.status	person		
+class	person.agent	person		
+class	person.social	person		
+class	person.general	person		
+class	body	physical	body|surface|solid	
+class	body.face	body		
+class	body.hair	body		
+class	body.limb	body		
+class	body.bone	body		
+class	body.organ	body		
+class	body.wing_scale	body		
+class	body.general	body		
+class	fluid	physical	liquid|fluid|surface	
+class	fluid.blood	fluid		
+class	fluid.tear	fluid		
+class	fluid.sweat	fluid		
+class	fluid.bile	fluid		
+class	fluid.mucus	fluid		
+class	fluid.general	fluid		
+class	equipment	physical	solid|surface|equipment|countable|movable	
+class	weapon	equipment		
+class	weapon.blade	weapon		
+class	weapon.blunt	weapon		
+class	weapon.pole	weapon		
+class	weapon.launcher	weapon		
+class	weapon.ammo	weapon		
+class	armor	equipment	wearable	
+class	armor.shield	armor		
+class	armor.helm	armor		
+class	armor.mail	armor		
+class	tool	equipment		
+class	tool.hand	tool		
+class	tool.machine	tool		
+class	tool.component	tool		
+class	tool.artifact	tool		
+class	tool.musical	tool	vocal	
+class	container	equipment		
+class	container.vessel	container		
+class	container.box	container		
+class	container.vehicle	container		
+class	attire	equipment	wearable	
+class	attire.garment	attire		
+class	attire.ornament	attire		
+class	building	physical	solid|surface|countable	
+class	building.defense	building		
+class	building.dwelling	building		
+class	building.religious	building		
+class	building.facility	building		
+class	building.part	building		
+class	building.space	building		
+class	building.settlement	building		
+class	terrain	physical	surface	
+class	terrain.height	terrain		
+class	terrain.depression	terrain		
+class	terrain.plain	terrain		
+class	terrain.water	terrain		
+class	terrain.bank	terrain		
+class	terrain.path	terrain		
+class	terrain.forest	terrain		
+class	terrain.general	terrain		
+class	celestial	physical		
+class	celestial.body	celestial	luminous	
+class	celestial.sky	celestial		
+class	celestial.cosmos	celestial		
+class	weather	physical		
+class	weather.wind	weather	movable	
+class	weather.rain	weather	liquid|fluid	
+class	weather.snow	weather	solid	
+class	weather.storm	weather	movable|vocal	
+class	weather.fog	weather	fluid	
+class	weather.thunder	weather	vocal	
+class	weather.fire	weather	luminous	
+class	weather.ice	weather	solid|surface	
+class	weather.smoke	weather	fluid	
+class	weather.water	weather	liquid|fluid	
+class	weather.air	weather	fluid	
+class	weather.general	weather		
+class	light	physical		
+class	light.source	light	luminous	
+class	light.gloss	light		
+class	light.dark	light		
+class	light.shadow	light		
+class	time	concept		
+class	time.day	time		
+class	time.season	time		
+class	time.age	time		
+class	time.duration	time		
+class	time.relative	time		
+class	voice	concept		
+class	voice.sound	voice		
+class	voice.music	voice		
+class	voice.speech	voice		
+class	voice.text	voice		
+class	social	concept		
+class	social.group	social		
+class	social.rule	social		
+class	social.law	social		
+class	social.order	social		
+class	social.trade	social		
+class	social.war	social		
+class	social.rite	social		
+class	social.relation	social		
+class	emotion	concept		
+class	emotion.anger	emotion		
+class	emotion.fear	emotion		
+class	emotion.love	emotion		
+class	emotion.sorrow	emotion		
+class	emotion.joy	emotion		
+class	emotion.desire	emotion		
+class	emotion.interest	emotion		
+class	emotion.aversion	emotion		
+class	emotion.general	emotion		
+class	virtue	concept		
+class	virtue.courage	virtue		
+class	virtue.loyalty	virtue		
+class	virtue.morality	virtue		
+class	virtue.honor	virtue		
+class	virtue.faith	virtue		
+class	virtue.oath	virtue		
+class	magic	concept		
+class	magic.spell	magic		
+class	magic.holy	magic		
+class	magic.curse	magic		
+class	magic.spirit	magic		
+class	magic.prophecy	magic		
+class	ruin	concept		
+class	ruin.life	ruin		
+class	ruin.death	ruin		
+class	ruin.disease	ruin		
+class	ruin.decay	ruin		
+class	ruin.damage	ruin		
+class	ruin.pain	ruin		
+class	quantity	concept		
+class	quantity.number	quantity		
+class	quantity.order	quantity		
+class	quantity.position	quantity		
+class	quantity.measure	quantity		
+class	concept.knowledge	concept		
+class	concept.memory	concept		
+class	concept.dream	concept		
+class	concept.fate	concept		
+class	concept.value	concept		
+class	concept.relation	concept		
+class	concept.existence	concept		
+class	concept.event	concept		
+class	concept.reason	concept		
+class	concept.form	concept		
+class	concept.activity	concept		
+class	property.taste	property		
+class	property.odor	property		
+class	property.color	property		
+class	property.temperature	property		
+class	property.shape	property		
+class	property.size	property		
+class	property.texture	property		
+class	property.moisture	property		
+class	property.weight	property		
+class	property.speed	property		
+class	property.light	property		
+class	property.sound	property		
+class	property.material	property		
+class	property.surface	property		
+class	property.vitality	property		
+class	property.age	property		
+class	property.relation	property		
+class	property.number	property		
+class	property.position	property		
+class	property.value	property		
+class	property.moral	property		
+class	property.emotion	property		
+class	property.magic	property		
+class	property.mental	property		
+class	property.social	property		
+class	property.damage	property		
+class	property.change	property		
+class	property.motion	property		
+class	action.move	action		
+class	action.vocal	action		
+class	action.strike	action		
+class	action.cut	action		
+class	action.craft	action		
+class	action.attach	action		
+class	action.guard	action		
+class	action.hunt	action		
+class	action.seek	action		
+class	action.rule	action		
+class	action.trade	action		
+class	action.communicate	action		
+class	action.cognition	action		
+class	action.emotion	action		
+class	action.change	action		
+class	action.consume	action		
+class	action.vital	action		
+class	action.hold	action		
+class	action.bind	action		
+class	action.magic	action		
+class	action.social	action		
+class	action.body	action		
+class	action.create	action		
+class	action.heat	action		
+class	action.wash	action		
+class	action.wear	action		
+class	prefix.number	prefix		
+class	prefix.negation	prefix		
+class	prefix.degree	prefix		
+class	prefix.position	prefix		
+class	prefix.time	prefix		
+class	prefix.magic	prefix		
+class	weather.cloud	weather	fluid	
+class	body.egg	body		
+class	property.sacred	property.magic		
+class	property.desecration	property.magic		
+class	magic.desecration	magic		
+class	property.disease	property.vitality		
+class	ruin.epidemic	ruin.disease		
+class	currency	social.trade		
+class	currency.wealth	currency		
+class	currency.value	currency		

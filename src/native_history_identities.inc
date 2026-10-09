@@ -32,6 +32,8 @@ static bool native_history_identity_reference(NativeHistoryEventData &event, int
     int32_t race = -1;
     int16_t caste = -1, profession = -1;
     if (!capture_native_history_name(base, object + 8, name.name) ||
+        (name.name.has_name && name.name.first_name.empty() &&
+            !capture_native_history_original_name(base, object + 8, name.name.native_name)) ||
         !native_history_copy(object + 0x80, race) ||
         !native_history_copy(object + 0x84, caste) ||
         !native_history_copy(object + 0xac, profession) ||

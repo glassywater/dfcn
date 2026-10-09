@@ -99,6 +99,7 @@ struct NativeHistoryLegendsCaption {
     bool event_title = false;
     bool region_title = false;
     std::optional<NativeHistoryName> site_name;
+    std::optional<NativeHistoryName> character_name;
 };
 // Page selection belongs to the native render that produced the grid, not
 // to the simulation/input state observed later by SDL_RenderPresent.
@@ -3495,7 +3496,8 @@ private:
         std::string_view source, bool english_field = false) const;
     std::vector<std::string> site_reference_search_aliases(std::string_view source) const;
     std::optional<std::string> translate_english_character_name(
-        std::string_view source, std::string_view native_given = {}) const;
+        std::string_view source, std::string_view native_given = {},
+        std::string_view native_given_target = {}) const;
     std::optional<std::vector<LegendsTextPiece>> translate_history_event(
         const NativeHistoryDocument &document) const;
     NativeHistoryViewport capture_history_viewport(
@@ -8711,16 +8713,20 @@ std::optional<std::string> Overlay::translate_world_region_heading(std::string_v
 static std::string transliterate_native_history_name(std::string_view raw);
 
 std::optional<std::string> Overlay::translate_english_character_name(
-        std::string_view raw, std::string_view native_given) const {
+        std::string_view raw, std::string_view native_given,
+        std::string_view native_given_target) const {
     const std::string source(trim_view(raw));
     if (source.empty()) return std::nullopt;
     // A native language_name first_name or a RAW-backed actor field proves
     // a given name even when UTTERANCES generated it without T_WORD roots.
     // Keep that proof out of the ordinary English/name-spelling cache.
     const std::string proven_given = native_text_to_utf8(native_given);
+    const std::string proven_target(native_given_target);
     std::string cache_key = source;
     if (!proven_given.empty()) {
         cache_key = proven_given;
+        cache_key.push_back('\0');
+        cache_key += proven_target;
         cache_key.push_back('\0');
         cache_key += source;
     }
@@ -8747,12 +8753,20 @@ std::optional<std::string> Overlay::translate_english_character_name(
         }
         return english_character_names_.translate(display,
             [&](std::string_view given) -> std::optional<std::string> {
+                // A captured character identity may use an English gloss for
+                // the first native name component. Its known position owns
+                // the phonetics even when the two spellings differ.
+                const bool proven_first = !proven_given.empty() &&
+                    (given == proven_given || given == first);
+                if (proven_first && !proven_target.empty()) return proven_target;
                 if (contains_cjk_utf8(given)) return native_text_to_utf8(given);
-                const auto native = utf8_to_cp437(given);
-                const std::string spelling = native ? *native : std::string(given);
+                const std::string_view phonetic_source = proven_first ?
+                    std::string_view(proven_given) : given;
+                const auto native = utf8_to_cp437(phonetic_source);
+                const std::string spelling = native ? *native : std::string(phonetic_source);
                 const std::string key = lower_native_name(spelling);
                 if (!native_name_language_masks_.contains(key) &&
-                        (proven_given.empty() || given != proven_given) &&
+                        !proven_first &&
                         !(generated_suffix && given == first &&
                           !english_character_names_.known_component(given))) return std::nullopt;
                 const auto reviewed = native_name_reviewed_transliterations_.find(key);
@@ -10336,13 +10350,17 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         const auto native = translate_procedural_fragment(
             std::string(native_name), true);
         if (!native) return std::nullopt;
+        const auto given = native_name.substr(0, native_name.find(' '));
         if (character && source_gloss != native_name) {
-            const auto translated = translate_english_character_name(source_gloss);
+            const auto given_target = trim_view(
+                std::string_view(*native).substr(0,
+                    std::min(native->find("·"), native->find("“"))));
+            const auto translated = translate_english_character_name(
+                source_gloss, given, given_target);
             return *native + "，“" + (translated ? *translated :
                 native_text_to_utf8(source_gloss)) + "”";
         }
         std::string gloss;
-        const auto given = native_name.substr(0, native_name.find(' '));
         if (source_gloss == native_name) {
             // A single-name creature repeats its untranslated given name
             // inside quotes. It is not an English dictionary word.
@@ -10688,7 +10706,8 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             // but delimit the phonetic given name from the semantic surname.
             const std::string body = trim(screen_text.substr(
                 1, screen_text.size() - 2));
-            const auto gloss = translate_english_character_name(body);
+            const auto given = std::string_view(body).substr(0, body.find(' '));
+            const auto gloss = translate_english_character_name(body, given);
             return "“" + (gloss ? *gloss : native_text_to_utf8(body)) + "”";
         }
         const std::string body = trim(screen_text.substr(
