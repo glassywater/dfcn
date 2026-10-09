@@ -42246,6 +42246,7 @@ DFCN_EXPORT void dfhooks_init() {
         dfcn::log_line("WARN", "Ignoring a second DFCN module loaded into this process");
         return;
     }
+    dfcn::reset_native_dfhack_render_lifecycle();
     dfcn::g_native_hook_thread = std::this_thread::get_id();
     dfcn::log_line("INFO", "========== DFCN loaded ==========");
     const SDL_bool native_ui = SDL_SetHintWithPriority(

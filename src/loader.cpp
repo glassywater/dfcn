@@ -3,10 +3,15 @@
 #include "runtime_paths.h"
 #include "dfhack_toggle.h"
 #include <SDL2/SDL.h>
+#include <atomic>
+#include <chrono>
+#include <condition_variable>
 #include <cstdio>
 #include <ctime>
 #include <memory>
+#include <mutex>
 #include <string>
+#include <thread>
 #include <vector>
 
 namespace {
@@ -51,6 +56,19 @@ std::uint64_t generation = 0;
 // Keep source data across failed initialization / partial hook-removal retries.
 // Cleared as soon as a new core takes ownership; never stores executable code.
 std::vector<unsigned char> pending_captures;
+enum class CoreLoadResult { Loaded, Deferred, Failed };
+enum class CoreStopResult { Stopped, Deferred, Failed };
+
+// Only the SDL event thread touches core state. The resident worker merely
+// wakes that thread while DFHack retires its links on the simulation thread.
+std::atomic_bool reload_requested{false};
+std::atomic_bool reload_wakeup_queued{false};
+std::atomic<Uint32> reload_retry_delay{100};
+Uint32 reload_event_type = 0;
+std::mutex reload_wakeup_mutex;
+std::condition_variable_any reload_wakeup_cv;
+std::jthread reload_wakeup_worker;
+bool reload_enable = true;
 
 static void loader_anchor() {}
 
@@ -76,59 +94,62 @@ static bool capture_state(void *context, const void *data, std::size_t size) {
     return true;
 }
 
-static bool stop_core() {
-    if (!core) return true;
+static CoreStopResult stop_core() {
+    if (!core) return CoreStopResult::Stopped;
     core->ready = false;
-    if (!core->api->shutdown()) {
-        log("ERROR", "Reload deferred: existing hooks still reference the current core");
-        return false;
+    if (!core->detached && !core->api->shutdown()) {
+        return CoreStopResult::Deferred;
     }
     core->detached = true;
-    if (!core->module->close()) return false;
+    if (!core->module->close()) return CoreStopResult::Failed;
     delete core;
     core = nullptr;
-    return true;
+    return CoreStopResult::Stopped;
 }
 
-static bool load_core(bool enable) {
+static CoreLoadResult load_core(bool enable) {
     // Validate the new library and transfer only data before dismantling the
     // current hooks. Neither a partial build nor an ABI mismatch disables
     // the resident keyboard handler; the next Shift+F5 can always retry.
     auto prepared = dfcn::module::PreparedCore::prepare(
         dfcn::module::library_path(reinterpret_cast<void *>(&loader_anchor)), log);
-    if (!prepared) return false;
+    if (!prepared) return CoreLoadResult::Failed;
     auto next = std::make_unique<CoreImage>();
     if (prepared->has_image()) {
         next->module = prepared->acquire();
-        if (!bind_api(*next)) return false;
+        if (!bind_api(*next)) return CoreLoadResult::Failed;
     }
     if (core && (core->ready || pending_captures.empty())) {
         std::vector<unsigned char> captures;
         if (!core->api->save_state(capture_state, &captures)) {
             log("ERROR", "Reload cancelled: native page text could not be transferred");
-            return false;
+            return CoreLoadResult::Failed;
         }
         pending_captures = std::move(captures);
     }
     if (!next->module) {
         // An exclusive image needs the current module reference released first.
-        if (!stop_core()) return false;
+        const auto stopped = stop_core();
+        if (stopped != CoreStopResult::Stopped)
+            return stopped == CoreStopResult::Deferred ? CoreLoadResult::Deferred : CoreLoadResult::Failed;
         next->module = prepared->acquire();
-        if (!bind_api(*next)) return false;
+        if (!bind_api(*next)) return CoreLoadResult::Failed;
     }
     if (!pending_captures.empty() &&
         !next->api->restore_state(pending_captures.data(), pending_captures.size())) {
         log("ERROR", "Reload cancelled: native page text could not be restored");
-        return false;
+        return CoreLoadResult::Failed;
     }
-    if (!stop_core()) return false;
+    const auto stopped = stop_core();
+    if (stopped != CoreStopResult::Stopped)
+        return stopped == CoreStopResult::Deferred ? CoreLoadResult::Deferred : CoreLoadResult::Failed;
     core = next.release();
     core->detached = false;
     if (!core->api->initialize()) {
         log("ERROR", "New core initialization failed; Shift+F5 will retry the deployed library");
         core->api->set_enabled(false);
         stop_core();
-        return false;
+        return CoreLoadResult::Failed;
     }
     core->ready = true;
     if (enable) core->api->set_enabled(true);
@@ -136,7 +157,78 @@ static bool load_core(bool enable) {
     ++generation;
     log("INFO", "Core " + std::string(enable ? "hot-reloaded" : "loaded") +
         "; generation=" + std::to_string(generation) + "; build=" + core->api->build);
-    return true;
+    return CoreLoadResult::Loaded;
+}
+
+static void reload_wakeup_loop(std::stop_token stop) {
+    std::unique_lock lock(reload_wakeup_mutex);
+    while (!stop.stop_requested()) {
+        if (reload_wakeup_cv.wait_for(lock, stop,
+                std::chrono::milliseconds(reload_retry_delay.load(std::memory_order_relaxed)),
+                [] { return !reload_requested.load(std::memory_order_acquire); })) return;
+        if (stop.stop_requested()) return;
+        lock.unlock();
+        if (reload_requested.load(std::memory_order_acquire) &&
+                !reload_wakeup_queued.exchange(true, std::memory_order_acq_rel)) {
+            SDL_Event wake{};
+            wake.type = reload_event_type;
+            wake.user.data1 = &reload_requested;
+            if (SDL_PushEvent(&wake) <= 0)
+                reload_wakeup_queued.store(false, std::memory_order_release);
+        }
+        lock.lock();
+    }
+}
+
+static void cancel_reload_request() {
+    reload_requested.store(false, std::memory_order_release);
+    reload_wakeup_worker.request_stop();
+    reload_wakeup_cv.notify_all();
+    if (reload_wakeup_worker.joinable()) reload_wakeup_worker.join();
+    reload_wakeup_queued.store(false, std::memory_order_release);
+}
+
+static void finish_reload_request(CoreLoadResult result, bool enable) {
+    if (result != CoreLoadResult::Deferred) {
+        cancel_reload_request();
+        return;
+    }
+    reload_enable = enable;
+    if (reload_requested.load(std::memory_order_acquire)) {
+        const auto delay = reload_retry_delay.load(std::memory_order_relaxed);
+        reload_retry_delay.store(delay < 500 ? delay * 2 : 1000, std::memory_order_relaxed);
+        return;
+    }
+    if (!reload_event_type) {
+        const Uint32 registered = SDL_RegisterEvents(1);
+        if (registered == static_cast<Uint32>(-1)) {
+            log("ERROR", "Cannot schedule deferred core reload: " + std::string(SDL_GetError()));
+            return;
+        }
+        reload_event_type = registered;
+    }
+    reload_retry_delay.store(100, std::memory_order_relaxed);
+    reload_requested.store(true, std::memory_order_release);
+    try {
+        reload_wakeup_worker = std::jthread(reload_wakeup_loop);
+    } catch (const std::exception &error) {
+        cancel_reload_request();
+        log("ERROR", "Cannot schedule deferred core reload: " + std::string(error.what()));
+        return;
+    }
+    log("INFO", "Core reload pending native hook retirement; completion is scheduled on the SDL event thread");
+}
+
+static void retry_core_load() {
+    // Do not reopen the deployed DLL or resnapshot live text on each wakeup.
+    // Releasing PreparedCore after deferral also leaves deployment unlocked.
+    const auto stopped = stop_core();
+    if (stopped == CoreStopResult::Deferred) {
+        finish_reload_request(CoreLoadResult::Deferred, reload_enable);
+    } else {
+        finish_reload_request(stopped == CoreStopResult::Stopped
+            ? load_core(reload_enable) : CoreLoadResult::Failed, reload_enable);
+    }
 }
 
 } // namespace
@@ -161,7 +253,7 @@ DFCN_EXPORT void dfhooks_init() {
     try {
         log("INFO", "Resident hot-reload loader initialized");
         dfhack_toggle.initialize(log);
-        load_core(false);
+        finish_reload_request(load_core(false), false);
     } catch (...) {
         log("ERROR", "Core load failed; Shift+F5 remains available to retry");
     }
@@ -170,6 +262,7 @@ DFCN_EXPORT void dfhooks_init() {
 DFCN_EXPORT void dfhooks_shutdown() {
     if (!initialized) return;
     initialized = false;
+    cancel_reload_request();
     f5_consumed = false;
     f10_consumed = false;
     try {
@@ -191,8 +284,20 @@ DFCN_EXPORT void dfhooks_sdl_loop() {}
 
 DFCN_EXPORT bool dfhooks_sdl_event(void *raw_event) {
     if (!initialized || !raw_event) return false;
-    if (dfhack_toggle.event(raw_event)) return true;
     const auto &event = *static_cast<const SDL_Event *>(raw_event);
+    if (reload_event_type && event.type == reload_event_type && event.user.data1 == &reload_requested) {
+        reload_wakeup_queued.store(false, std::memory_order_release);
+        if (reload_requested.load(std::memory_order_acquire)) {
+            try {
+                retry_core_load();
+            } catch (...) {
+                cancel_reload_request();
+                log("ERROR", "Deferred core reload failed; Shift+F5 can retry loading the deployed core");
+            }
+        }
+        return true;
+    }
+    if (dfhack_toggle.event(raw_event)) return true;
     if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_FOCUS_LOST) {
         f5_consumed = false;
         f10_consumed = false;
@@ -225,7 +330,8 @@ DFCN_EXPORT bool dfhooks_sdl_event(void *raw_event) {
                         // hooks_sdl_event and is itself the SDL render thread.
                         // No core render/capture callback is on either stack.
                         // Never unload from sdl_loop (simulation resumed).
-                        load_core(true);
+                        if (reload_requested.load(std::memory_order_acquire)) retry_core_load();
+                        else finish_reload_request(load_core(true), true);
                     } else if (core && core->ready) {
                         // Shift+F10 only resumes the current core and its data.
                         core->api->set_enabled(true);
@@ -233,6 +339,7 @@ DFCN_EXPORT bool dfhooks_sdl_event(void *raw_event) {
                         log("ERROR", "Cannot enable translation without a ready core; Shift+F5 reloads the deployed library");
                     }
                 } catch (...) {
+                    cancel_reload_request();
                     log("ERROR", "Hotkey operation failed; Shift+F5 can retry loading the deployed core");
                 }
             }

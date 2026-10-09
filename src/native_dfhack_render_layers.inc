@@ -29,6 +29,7 @@ struct NativeDfhackRenderApi {
 static NativeDfhackRenderApi g_native_dfhack_render_api;
 static std::recursive_mutex g_native_dfhack_render_mutex;
 static std::atomic_bool g_native_dfhack_render_enabled{false};
+static std::atomic_bool g_native_dfhack_render_retiring{false};
 static std::atomic_bool g_native_dfhack_render_entries_live{false};
 static std::atomic<size_t> g_native_dfhack_render_objects_live{0};
 static std::atomic<size_t> g_native_dfhack_render_custom_live{0};
@@ -591,6 +592,10 @@ static void native_dfhack_render_thread_callback() {
 
 static bool install_native_dfhack_render_layers() {
     std::lock_guard<std::recursive_mutex> lock(g_native_dfhack_render_mutex);
+    // A deferred shutdown retains the native doUpdate entry so it can retire
+    // interpose links in DFHack's own suspension context. Present retries must
+    // not turn private capture back on before that retirement finishes.
+    if (g_native_dfhack_render_retiring.load(std::memory_order_acquire)) return true;
     const auto module = GetModuleHandleW(L"dfhack.dll");
     bool success = false;
     struct PublishEntries {
@@ -677,7 +682,22 @@ static bool native_dfhack_render_layers_active() {
         native_dfhack_gpu_target_hook_active();
 }
 
+static void reset_native_dfhack_render_lifecycle() {
+    std::lock_guard<std::recursive_mutex> lock(g_native_dfhack_render_mutex);
+    // A failed shutdown still owns callbacks in this image. Only a completely
+    // detached lifetime may re-enable installation when this DLL is reused.
+    if (native_dfhack_render_layers_active()) return;
+    g_native_dfhack_render_enabled.store(false, std::memory_order_release);
+    g_native_dfhack_render_current_foreign.store(false, std::memory_order_release);
+    g_native_dfhack_render_refreshed_revision = 0;
+    g_native_dfhack_render_refreshed_screen = nullptr;
+    g_native_dfhack_render_refreshed_host = nullptr;
+    g_native_dfhack_render_registry_revision.fetch_add(1, std::memory_order_release);
+    g_native_dfhack_render_retiring.store(false, std::memory_order_release);
+}
+
 static void uninstall_native_dfhack_render_layers() {
+    g_native_dfhack_render_retiring.store(true, std::memory_order_release);
     g_native_dfhack_render_enabled.store(false, std::memory_order_release);
     try {
         std::lock_guard<std::recursive_mutex> lock(g_native_dfhack_render_mutex);
@@ -689,14 +709,15 @@ static void uninstall_native_dfhack_render_layers() {
                     native_dfhack_gpu_target_hook_active(), std::memory_order_release);
             }
         } publish;
-        // The SDL caller only disables capture. Native doUpdate retires links
-        // on the suspended simulation thread; until then callbacks pass through
-        // and these live objects keep the core resident.
-        if (!native_dfhack_render_suspended()) return;
-        native_dfhack_render_retire_links();
+        // Registry mutation belongs to DFHack's suspension context. Its
+        // doUpdate callback can finish retirement after this SDL call returns.
+        // Once those objects are gone, the paused SDL event boundary may
+        // detach entry hooks without acquiring DFHack's activity lock.
+        if (native_dfhack_render_suspended()) native_dfhack_render_retire_links();
         if (std::any_of(g_native_dfhack_render_links.begin(), g_native_dfhack_render_links.end(),
                 [](const auto *link) { return link->object != nullptr; }) ||
-                g_native_dfhack_render_custom_live.load(std::memory_order_acquire) != 0) return;
+                g_native_dfhack_render_custom_live.load(std::memory_order_acquire) != 0 ||
+                !native_callbacks_idle()) return;
         constexpr const char *label = "DFHack private rendering layer";
         for (auto *hook : {&g_native_dfhack_render_thread_entry, &g_native_dfhack_render_lua_entry,
                 &g_native_dfhack_render_update_entry}) {
@@ -710,6 +731,7 @@ static void uninstall_native_dfhack_render_layers() {
 static bool native_dfhack_render_native_scan_blocked(const graphicst *) noexcept { return false; }
 #else
 static bool install_native_dfhack_render_layers() { return true; }
+static void reset_native_dfhack_render_lifecycle() {}
 static void uninstall_native_dfhack_render_layers() {}
 static bool native_dfhack_render_layers_active() { return false; }
 static bool native_dfhack_render_native_scan_blocked(const graphicst *) noexcept { return false; }
