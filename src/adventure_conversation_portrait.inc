@@ -16,6 +16,36 @@ const std::array<std::string_view, 3> portrait_labels{
 const auto portrait_draws = captured_native_drawn_text_rows();
 const auto portrait_top_draws = captured_native_drawn_text_rows(true);
 std::vector<ConversationPortraitPanel> portrait_panels;
+#ifdef _WIN32
+// Direct addst return intervals extracted from both configured PE images.
+// Resolve them once for the current native edition, including every mood
+// selector, rather than identifying individual states by their spelling.
+std::array<std::pair<uintptr_t, uintptr_t>, 3> portrait_native_ranges{};
+std::array<std::vector<std::pair<int, int>>, 3> portrait_native_starts;
+if (const auto base = native_history_profile_base()) {
+    constexpr std::array<std::pair<uintptr_t, uintptr_t>, 3> ranges{{
+        {0x868d0e, 0x8692d8}, {0x86933e, 0x869c95}, {0x869cfd, 0x86b437},
+    }};
+    for (size_t kind = 0; kind < ranges.size(); ++kind)
+        portrait_native_ranges[kind] = {
+            native_reference_address(base, ranges[kind].first),
+            native_reference_address(base, ranges[kind].second)};
+}
+for (const auto *draws : {&portrait_draws, &portrait_top_draws})
+    for (const auto &draw : *draws)
+        for (size_t kind = 0; kind < portrait_labels.size(); ++kind) {
+            const auto first = portrait_native_ranges[kind].first;
+            if (!first || draw.native_caller != first || draw.x < 0 ||
+                    draw.x >= gps_->dimx || draw.y < 0 || draw.y >= gps_->dimy ||
+                    draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                    !draw.source.starts_with(portrait_labels[kind]) ||
+                    (screen_override && screen_override != draw.draw_grid)) continue;
+            const std::pair position{draw.x, draw.y};
+            auto &starts = portrait_native_starts[kind];
+            if (std::find(starts.begin(), starts.end(), position) == starts.end())
+                starts.push_back(position);
+        }
+#endif
 // The decompiled renderer writes each label, state and separator through
 // addst at its current cursor. Those calls own the field even when a later
 // graphical pass replaces the surrounding frame. A frame-wide text scan
@@ -23,17 +53,8 @@ std::vector<ConversationPortraitPanel> portrait_panels;
 const auto portrait_native_field = [&](int y, int left, std::string_view label)
         -> std::optional<std::pair<ConversationPortraitField, SDL_Rect>> {
 #ifdef _WIN32
-    const auto base = native_history_profile_base();
-    if (!base) return std::nullopt;
     const size_t kind = label == "Toward you:" ? 0 : label == "Relationship:" ? 1 : 2;
-    // Exact direct-call return intervals from both configured PE images;
-    // relocation maps Reference RVAs to the selected edition. The complete
-    // inventories, including all mood aliases/defaults, are in native-status-draws.tsv.
-    const std::array<std::pair<uintptr_t, uintptr_t>, 3> ranges{{
-        {0x868d0e, 0x8692d8}, {0x86933e, 0x869c95}, {0x869cfd, 0x86b437},
-    }};
-    const auto first = native_reference_address(base, ranges[kind].first);
-    const auto last = native_reference_address(base, ranges[kind].second);
+    const auto [first, last] = portrait_native_ranges[kind];
     if (!first || !last) return std::nullopt;
     for (const auto *draws : {&portrait_draws, &portrait_top_draws}) {
         const auto header = std::find_if(draws->begin(), draws->end(), [&](const auto &draw) {
@@ -90,11 +111,17 @@ const auto portrait_native_field = [&](int y, int left, std::string_view label)
             // draw; it never reserves cells beyond the actual visible span.
             for (int x = cursor; x < draw.x + static_cast<int>(draw.source.size()); ++x) {
                 bool top = false;
-                const auto *cell = cell_at(x, y, &top);
+                const auto *visible_cell = cell_at(x, y, &top);
+                const auto *cell = draw.draw_grid +
+                    (static_cast<size_t>(x) * draw.draw_dimy + y) * 8;
                 const unsigned char expected = x < draw.x ? ' ' :
                     static_cast<unsigned char>(draw.source[static_cast<size_t>(x - draw.x)]);
-                if (!cell || top != draw.top_layer || (cell[0] ? cell[0] : ' ') != expected ||
-                        (expected != ' ' && visible_char_at(x, y) != expected)) {
+                // The actual addst writer and its current buffer prove this
+                // text. Later graphical frame copies can hide it from the
+                // generic composite scan without changing the native bytes.
+                // A genuinely different text layer still owns its cells.
+                if (!visible_cell || top != draw.top_layer ||
+                        (cell[0] ? cell[0] : ' ') != expected) {
                     intact = false;
                     break;
                 }
@@ -191,78 +218,113 @@ const auto portrait_place = [&](const ConversationPortraitField &field,
     for (size_t at = begin; at-- > 0;)
         if (overlaps(result[at])) result.erase(result.begin() + at);
 };
+const auto portrait_attitude_translation = [&](std::string_view source)
+        -> std::optional<std::string> {
+    // The complete Toward messages are hP prose, deliberately absent from
+    // the generic literal index. Use their existing complete-message index;
+    // otherwise even a fully captured status row falls back to UI words.
+    if (!ui_message_trie_.empty()) {
+        int node = 0;
+        for (unsigned char ch : source) {
+            if (native_prose_space(ch)) continue;
+            const auto next = ui_message_trie_[node].next.find(ch);
+            if (next == ui_message_trie_[node].next.end()) { node = -1; break; }
+            node = next->second;
+        }
+        if (node >= 0) {
+            const int index = ui_message_trie_[node].rule;
+            if (index >= 0 && static_cast<size_t>(index) < rules_.size()) {
+                const auto &rule = rules_[static_cast<size_t>(index)];
+                if (rule.ui_message && rule.source == source && !rule.target.empty())
+                    return rule.target;
+            }
+        }
+    }
+    return exact_literal_translation(source);
+};
 for (int y = 0; y < gps_->dimy; ++y) {
     for (const auto label : portrait_labels) {
+        std::vector<int> starts;
+#ifdef _WIN32
+        const size_t kind = label == "Toward you:" ? 0 : label == "Relationship:" ? 1 : 2;
+        for (const auto &[x, row] : portrait_native_starts[kind])
+            if (row == y) starts.push_back(x);
+#endif
+        // Hosts without this PE profile keep the closed-panel reader.
+        // Captured native headers do not depend on composite text visibility.
         const size_t found = context[y].find(label);
-        if (found == std::string::npos) continue;
-        const int left = static_cast<int>(found);
-        const auto native = portrait_native_field(y, left, label);
-        const auto panel = native ? std::optional(native->second) :
-            native_panel_interior(borders, *gps_, left,
-                left + static_cast<int>(label.size()), y, occluding_frame);
-        if (!panel) continue;
-        const auto field = native ? std::optional(native->first) : portrait_field(y, left, *panel);
-        if (!field || !field->source.starts_with(label)) continue;
-        auto known = std::find_if(portrait_panels.begin(), portrait_panels.end(),
-            [&](const ConversationPortraitPanel &prior) {
-                return prior.left == left && prior.bounds.x == panel->x && prior.bounds.y == panel->y &&
-                    prior.bounds.w == panel->w && prior.bounds.h == panel->h;
-            });
-        if (known == portrait_panels.end()) portrait_panels.push_back({*panel, left, y});
-        else known->first_info_y = std::min(known->first_info_y, y);
-        std::string target;
-        std::vector<int> colors;
-        const auto append = [&](std::string_view translated, size_t source_at) {
-            std::vector<uint32_t> codepoints;
-            if (!decode_utf8(translated, codepoints)) return false;
-            target += translated;
-            colors.insert(colors.end(), codepoints.size(),
-                field->colors[std::min(source_at, field->colors.size() - 1)]);
-            return true;
-        };
-        size_t at = label.size();
-        bool complete = true;
-        if (label == "Toward you:") {
-            const size_t comma = field->source.find(',');
-            const std::string base(trim_view(std::string_view(field->source).substr(0, comma)));
-            const auto translated = exact_literal_translation(base);
-            if (!translated) continue;
-            const size_t colon = translated->find("：");
-            if (colon == std::string::npos) complete = append(*translated, 0);
-            else {
-                while (at < field->source.size() && field->source[at] == ' ') ++at;
-                complete = append(std::string_view(*translated).substr(0, colon + 3), 0) &&
-                    append(std::string_view(*translated).substr(colon + 3), at);
+        if (found != std::string::npos &&
+                std::find(starts.begin(), starts.end(), static_cast<int>(found)) == starts.end())
+            starts.push_back(static_cast<int>(found));
+        for (const int left : starts) {
+            const auto native = portrait_native_field(y, left, label);
+            const auto panel = native ? std::optional(native->second) :
+                native_panel_interior(borders, *gps_, left,
+                    left + static_cast<int>(label.size()), y, occluding_frame);
+            if (!panel) continue;
+            const auto field = native ? std::optional(native->first) : portrait_field(y, left, *panel);
+            if (!field || !field->source.starts_with(label)) continue;
+            auto known = std::find_if(portrait_panels.begin(), portrait_panels.end(),
+                [&](const ConversationPortraitPanel &prior) {
+                    return prior.left == left && prior.bounds.x == panel->x && prior.bounds.y == panel->y &&
+                        prior.bounds.w == panel->w && prior.bounds.h == panel->h;
+                });
+            if (known == portrait_panels.end()) portrait_panels.push_back({*panel, left, y});
+            else known->first_info_y = std::min(known->first_info_y, y);
+            std::string target;
+            std::vector<int> colors;
+            const auto append = [&](std::string_view translated, size_t source_at) {
+                std::vector<uint32_t> codepoints;
+                if (!decode_utf8(translated, codepoints)) return false;
+                target += translated;
+                colors.insert(colors.end(), codepoints.size(),
+                    field->colors[std::min(source_at, field->colors.size() - 1)]);
+                return true;
+            };
+            size_t at = label.size();
+            bool complete = true;
+            if (label == "Toward you:") {
+                const size_t comma = field->source.find(',');
+                const std::string base(trim_view(std::string_view(field->source).substr(0, comma)));
+                const auto translated = portrait_attitude_translation(base);
+                if (!translated) continue;
+                const size_t colon = translated->find("：");
+                if (colon == std::string::npos) complete = append(*translated, 0);
+                else {
+                    while (at < field->source.size() && field->source[at] == ' ') ++at;
+                    complete = append(std::string_view(*translated).substr(0, colon + 3), 0) &&
+                        append(std::string_view(*translated).substr(colon + 3), at);
+                }
+                at = comma;
+            } else {
+                const std::string key = label == "Relationship:" ? "Relationship" : "General Mood";
+                const auto translated = exact_literal_translation("Conversation portrait label: " + key);
+                if (!translated) continue;
+                complete = append(*translated, 0);
             }
-            at = comma;
-        } else {
-            const std::string key = label == "Relationship:" ? "Relationship" : "General Mood";
-            const auto translated = exact_literal_translation("Conversation portrait label: " + key);
-            if (!translated) continue;
-            complete = append(*translated, 0);
+            bool first = label != "Toward you:";
+            const std::string scope = label == "Toward you:" ? "Conversation demeanor: " :
+                label == "Relationship:" ? "Conversation relationship: " : "Conversation mood: ";
+            while (complete && at != std::string::npos && at < field->source.size()) {
+                if (field->source[at] == ',') ++at;
+                while (at < field->source.size() && field->source[at] == ' ') ++at;
+                if (at == field->source.size()) break;
+                const size_t next = field->source.find(',', at);
+                const std::string term(trim_view(std::string_view(field->source).substr(at,
+                    next == std::string::npos ? std::string::npos : next - at)));
+                // Mood selectors can deliberately emit no label. The native
+                // loop writes its comma before dispatch, so leading, repeated
+                // and trailing empty segments are valid source branches.
+                if (term.empty()) { at = next; continue; }
+                const auto translated = exact_literal_translation(scope + term);
+                if (!translated) { complete = false; break; }
+                if (!first) complete = append("，", at > 1 ? at - 2 : 0);
+                if (complete) complete = append(*translated, at);
+                first = false;
+                at = next;
+            }
+            if (complete) portrait_place(*field, target, colors, panel->x + panel->w);
         }
-        bool first = label != "Toward you:";
-        const std::string scope = label == "Toward you:" ? "Conversation demeanor: " :
-            label == "Relationship:" ? "Conversation relationship: " : "Conversation mood: ";
-        while (complete && at != std::string::npos && at < field->source.size()) {
-            if (field->source[at] == ',') ++at;
-            while (at < field->source.size() && field->source[at] == ' ') ++at;
-            if (at == field->source.size()) break;
-            const size_t next = field->source.find(',', at);
-            const std::string term(trim_view(std::string_view(field->source).substr(at,
-                next == std::string::npos ? std::string::npos : next - at)));
-            // Mood selectors can deliberately emit no label. The native
-            // loop writes its comma before dispatch, so leading, repeated
-            // and trailing empty segments are valid source branches.
-            if (term.empty()) { at = next; continue; }
-            const auto translated = exact_literal_translation(scope + term);
-            if (!translated) { complete = false; break; }
-            if (!first) complete = append("，", at > 1 ? at - 2 : 0);
-            if (complete) complete = append(*translated, at);
-            first = false;
-            at = next;
-        }
-        if (complete) portrait_place(*field, target, colors, panel->x + panel->w);
     }
 }
 for (const auto &portrait : portrait_panels) {

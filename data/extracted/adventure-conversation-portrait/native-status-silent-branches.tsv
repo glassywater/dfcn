@@ -16,7 +16,7 @@ reference	PE:6a70a6d9:02711000	mood	record enum == -1 or record strength <= 0	re
 reference	PE:6a70a6d9:02711000	mood	selected_count <= 0 after min(selected_count, capacity)	General Mood row skipped
 reference	PE:6a70a6d9:02711000	mood	selected mood index == 0	no leading mood separator
 reference	PE:6a70a6d9:02711000	mood	selected mood index > 0	draw comma-space before dispatch, even for a silent selector
-reference	PE:6a70a6d9:02711000	mood	unsigned selected enum > 168	default emits no label; loop advances after any preceding separator
+reference	PE:6a70a6d9:02711000	mood	unsigned selected enum outside native jump-table range	default emits no label; loop advances after any preceding separator
 reference	PE:6a70a6d9:02711000	mood	last selected mood emitted or skipped	loop ends without a terminal separator
 classic	PE:6a70b91c:0270a000	portrait	unit lookup returned null	all identity and status text skipped
 classic	PE:6a70b91c:0270a000	attitude	selected visual relationship is null	Toward you and Relationship rows skipped
@@ -35,5 +35,5 @@ classic	PE:6a70b91c:0270a000	mood	record enum == -1 or record strength <= 0	reco
 classic	PE:6a70b91c:0270a000	mood	selected_count <= 0 after min(selected_count, capacity)	General Mood row skipped
 classic	PE:6a70b91c:0270a000	mood	selected mood index == 0	no leading mood separator
 classic	PE:6a70b91c:0270a000	mood	selected mood index > 0	draw comma-space before dispatch, even for a silent selector
-classic	PE:6a70b91c:0270a000	mood	unsigned selected enum > 168	default emits no label; loop advances after any preceding separator
+classic	PE:6a70b91c:0270a000	mood	unsigned selected enum outside native jump-table range	default emits no label; loop advances after any preceding separator
 classic	PE:6a70b91c:0270a000	mood	last selected mood emitted or skipped	loop ends without a terminal separator

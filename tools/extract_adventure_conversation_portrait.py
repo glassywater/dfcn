@@ -74,7 +74,7 @@ SILENT_BRANCHES = (
     ("mood", "selected_count <= 0 after min(selected_count, capacity)", "General Mood row skipped"),
     ("mood", "selected mood index == 0", "no leading mood separator"),
     ("mood", "selected mood index > 0", "draw comma-space before dispatch, even for a silent selector"),
-    ("mood", "unsigned selected enum > 168", "default emits no label; loop advances after any preceding separator"),
+    ("mood", "unsigned selected enum outside native jump-table range", "default emits no label; loop advances after any preceding separator"),
     ("mood", "last selected mood emitted or skipped", "loop ends without a terminal separator"),
 )
 
@@ -94,6 +94,9 @@ def preceding_assignment(instructions, index, register):
 
 
 def status_field(address, boundaries):
+    for start, end in boundaries.get("selection_ranges", ()):
+        if start <= address <= end:
+            return "mood-selection"
     if address < boundaries["toward"]:
         return "identity"
     if address < boundaries["first_demeanor"]:
@@ -172,12 +175,38 @@ def decoded_status_draws(image, instructions, renderer_rows, table_targets):
                            reversed(instructions[dispatch_index - 8:dispatch_index])
                            if (match := re.match(r"ja\s+0x([0-9a-f]+)$", instruction)))
     default_rva = default_address - image.base
-    first_demeanor = next(int(row[4], 16) for row in renderer_rows
-                          if row[-1] == ", " and int(row[4], 16) > labels["Toward you: "])
+    first_demeanor = next(address - image.base for address, text in instructions
+                          if re.match(r"mov\s+eax,DWORD PTR \[r15\+0x84\]$", text))
+    relationship_start = next(address - image.base for address, text in
+                              reversed(instructions[:by_rva[labels["Relationship: "]]])
+                              if re.match(r"mov\s+ebx,0x11$", text))
+    mood_start = next(address - image.base for address, text in
+                      reversed(instructions[:by_rva[labels["General Mood: "]]])
+                      if re.match(r"test\s+esi,esi$", text))
     boundaries = {"toward": labels["Toward you: "],
                   "first_demeanor": first_demeanor,
-                  "relationship": labels["Relationship: "],
-                  "mood": labels["General Mood: "], "default": default_rva}
+                  "relationship": relationship_start,
+                  "mood": mood_start, "default": default_rva}
+    # The optimizer placed the insertion helper between the positive and
+    # negative attitude blocks. Follow its actual jump back to the selection
+    # loop instead of assigning its purpose from its position in the image.
+    selection_start = next(index for index, (_, text) in enumerate(instructions[:first_draw])
+                           if re.match(r"mov\s+rcx,QWORD PTR \[r13\+0xa98\]$", text))
+    selection_end = next(index for index in range(selection_start, first_draw)
+                         if re.match(r"cmp\s+esi,r14d$", instructions[index][1]))
+    selection_ranges = [(instructions[selection_start][0] - image.base,
+                         instructions[selection_end + 1][0] - image.base)]
+    insertion_start = next(int(match[1], 16) for _, text in
+                           instructions[selection_start:selection_end]
+                           if (match := re.match(r"jg\s+0x([0-9a-f]+)$", text)))
+    insertion_index = next(index for index, (address, _) in enumerate(instructions)
+                           if address == insertion_start)
+    insertion_end = next(address for address, text in instructions[insertion_index:]
+                         if (match := re.match(r"jmp\s+0x([0-9a-f]+)$", text))
+                         and selection_ranges[0][0] <= int(match[1], 16) - image.base
+                         <= selection_ranges[0][1])
+    selection_ranges.append((insertion_start - image.base, insertion_end - image.base))
+    boundaries["selection_ranges"] = selection_ranges
     draws = []
     for index in range(first_draw, by_rva[default_rva]):
         address, instruction = instructions[index]
@@ -272,8 +301,8 @@ def source_condition(draw, boundaries):
         "; capacity >= 2" if field == "relationship" else "")
 
 
-def native_status_flow(instructions, image, start_index, end_rva, boundaries):
-    """Retain every branch and conditional move, including silent paths."""
+def native_status_flow(instructions, image, start_index, end_rva, boundaries, table_targets):
+    """Retain every direct/indirect branch and conditional move, including silent paths."""
     last_flags = None
     result = []
     for index in range(start_index, len(instructions)):
@@ -283,14 +312,18 @@ def native_status_flow(instructions, image, start_index, end_rva, boundaries):
         if re.match(r"(?:cmp|test|inc|dec|add|sub|xor)\s+", instruction):
             last_flags = (address, instruction)
         branch = re.match(r"(j[a-z]+|cmov[a-z]+)\s+(.+)$", instruction)
-        if not branch or branch[1] == "jmp":
+        if not branch:
             continue
         direct = re.match(r"0x([0-9a-f]+)$", branch[2])
+        unconditional = branch[1] == "jmp"
+        flags = None if unconditional else last_flags
+        destinations = (hex(int(direct[1], 16) - image.base) if direct else
+                        ",".join(hex(target) for target in sorted(set(table_targets)))
+                        if unconditional and branch[2] == "rcx" else "")
         result.append((status_field(address - image.base, boundaries), hex(address - image.base),
-                       instruction, hex(last_flags[0] - image.base) if last_flags else "",
-                       last_flags[1] if last_flags else "",
-                       hex(int(direct[1], 16) - image.base) if direct else "",
-                       hex(instructions[index + 1][0] - image.base)))
+                       instruction, hex(flags[0] - image.base) if flags else "",
+                       flags[1] if flags else "", destinations,
+                       "" if unconditional else hex(instructions[index + 1][0] - image.base)))
     return result
 
 
@@ -457,7 +490,7 @@ def decompiled_status(image, edition, draws, table_targets, boundaries):
             lines.append("            " + emit("mood", selected_draw["source"]) + " break;")
         else:
             lines.append("            break; // explicit silent selector; preceding separator remains native output")
-    lines.extend((f"        default: break; // unsigned enum > 168 -> {boundaries['default']:#x}",
+    lines.extend((f"        default: break; // unsigned enum > {len(table_targets) - 1} -> {boundaries['default']:#x}",
                   "        }", "    } // native output never adds a terminal separator", "}", ""))
     return "\n".join(lines)
 
@@ -543,7 +576,11 @@ def main():
                         re.search(r"mov\s+ecx,DWORD PTR \[rdx\+rax\*4\+0x[0-9a-f]+\]", instruction))
         table = int(re.search(r"rax\*4\+0x([0-9a-f]+)", dispatch[1])[1], 16)
         table_at = image.offset(image.base + table)
-        table_targets = struct.unpack_from("<169I", image.raw, table_at)
+        dispatch_index = next(index for index, item in enumerate(instructions) if item == dispatch)
+        selector_max = next(int(match[1], 16) for _, instruction in
+                            reversed(instructions[max(0, dispatch_index - 8):dispatch_index])
+                            if (match := re.match(r"cmp\s+eax,0x([0-9a-f]+)$", instruction)))
+        table_targets = struct.unpack_from(f"<{selector_max + 1}I", image.raw, table_at)
         draws, boundaries = decoded_status_draws(image, instructions, renderer_rows, table_targets)
         separator_indices, source_indices = {}, {}
         for draw in draws:
@@ -565,7 +602,7 @@ def main():
                                     " | ".join(text for _, text, _ in draw["constructor_destinations"])))
         (DEST / f"{edition}-status.decompiled.cpp").write_text(
             decompiled_status(image, edition, draws, table_targets, boundaries), encoding="utf-8")
-        # Preserve all 169 selectors, including default/no-label destinations
+        # Preserve every native selector, including default/no-label destinations
         # and aliases. This table is executable source metadata, not a sample.
         for selector, target in enumerate(table_targets):
             draw = next((draw for draw in draws if draw["field"] == "mood" and draw["literal_rva"] == target), None)
@@ -576,7 +613,7 @@ def main():
                           "status-label" if draw else "silent", ",".join(aliases),
                           hex(draw["draw_rva"]) if draw else "", hex(draw["return_rva"]) if draw else "",
                           "comma-space before dispatch when selected index>0; no terminal separator"))
-        moods.append((edition, image.identity, "unsigned >168", hex(table), hex(boundaries["default"]), "",
+        moods.append((edition, image.identity, f"unsigned >{selector_max}", hex(table), hex(boundaries["default"]), "",
                       "includes all other enums except -1 excluded in record selection", "silent-default", "",
                       "", "", "comma-space before dispatch when selected index>0; no terminal separator"))
         # The preceding actual unit-reference call builds the portrait caption;
@@ -590,7 +627,7 @@ def main():
                            if address - image.base == 0x868a4a + delta)
         status_flow_rows.extend((edition, image.identity, *row) for row in
                                 native_status_flow(instructions, image, start_index,
-                                                   boundaries["default"] + 6, boundaries))
+                                                   boundaries["default"] + 6, boundaries, table_targets))
         silent_rows.extend((edition, image.identity, *row) for row in SILENT_BRANCHES)
         caption_fields.extend((edition, image.identity, kind, hex(address + delta),
                                instruction_map[address + delta], condition)
