@@ -50,7 +50,7 @@ Linux 已发布核心同样使用 **Shift+F10** 切换汉化并保留核心与�
 
 当前源码可用 **Shift+F6** 临时停用或恢复全部扩展数据，并立即重新载入汉化；扩展停用时继续使用本体词表和规则。
 
-目前提供 **22 个独立创意工坊汉化数据扩展**：18 个其他 Mod，以及 **Dwarvemon、Dwarvemon Entity Type、Dwarvemon Entity All、Dwarvemon Beta** 四个分别发布的数据包。每个包对应一个原模组，订阅链接见 [Mod 汉化数据扩展索引](workshop/README.local-zh-CN.md)。
+目前公开提供 **Dwarvemon、Dwarvemon Entity Type、Dwarvemon Entity All、Dwarvemon Beta** 四个独立创意工坊汉化数据包；其余 18 个 Mod 汉化数据包已下架（设为私密），本地资源与源码目录保留。四个公开数据包的订阅链接见 [Mod 汉化数据扩展索引](workshop/README.local-zh-CN.md)。
 
 使用扩展需要安装 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)，并订阅对应的原模组和汉化数据包。DFCN 自动读取已下载的数据，无需手工复制，也无需在创建世界的模组列表中启用汉化数据包；原模组按其作者说明使用。
 

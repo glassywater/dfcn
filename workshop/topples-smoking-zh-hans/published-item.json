@@ -4,10 +4,12 @@
   "title": "Topples' Smoking 简体中文汉化",
   "release_tag": "",
   "workshop_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3815790069",
-  "phase": "published",
+  "phase": "private",
   "needs_workshop_legal_agreement": false,
   "required_items": [
     "3811193379",
     "3479452579"
-  ]
+  ],
+  "visibility": 2,
+  "withdrawn_at": "2026-10-08T21:48:06+08:00"
 }

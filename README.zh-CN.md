@@ -45,9 +45,10 @@ Python，也不会触发编译。包内保留加载入口、核心、配置、�
 成功后替换同名压缩包，失败则保留旧包，窗口会停留显示结果。
 解压目标为包含 `Dwarf Fortress.exe` 的游戏根目录。
 
-Mod 汉化数据扩展提供 **22 个独立创意工坊数据包**：18 个其他 Mod，以及
+Mod 汉化数据扩展目前公开提供
 **Dwarvemon、Dwarvemon Entity Type、Dwarvemon Entity All、Dwarvemon Beta**
-四个分别发布的数据包。各包订阅链接见 [Mod 汉化数据扩展索引](workshop/README.local-zh-CN.md)。
+四个独立创意工坊数据包。其余 18 个 Mod 汉化数据包已下架（设为私密），
+本地资源与源码目录保留。公开数据包订阅链接见 [Mod 汉化数据扩展索引](workshop/README.local-zh-CN.md)。
 需要安装 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)，
 并订阅对应原模组和汉化数据包；DFCN 自动读取数据，无需在创建世界的模组列表中启用汉化包。
 [Dwarvemon 简体中文汉化](https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177)

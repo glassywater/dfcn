@@ -4,10 +4,12 @@
   "title": "Brewing Plus 简体中文汉化",
   "release_tag": "",
   "workshop_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3815788912",
-  "phase": "published",
+  "phase": "private",
   "needs_workshop_legal_agreement": false,
   "required_items": [
     "3811193379",
     "3631448639"
-  ]
+  ],
+  "visibility": 2,
+  "withdrawn_at": "2026-10-08T21:47:52+08:00"
 }
