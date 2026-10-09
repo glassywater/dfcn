@@ -391,7 +391,7 @@ std::string Overlay::site_government_name_suffix(const NativeHistoryName &name,
             (parent_context->parent_word_pos != 0 && parent_context->parent_word_pos != 1))
         return fallback();
     const auto found = site_government_parent_suffixes_.find(parent_context->parent_word_id);
-    return found == site_government_parent_suffixes_.end() ? "治所" : found->second;
+    return found == site_government_parent_suffixes_.end() ? "公署" : found->second;
 }
 
 uint64_t Overlay::history_parent_context_revision() const {
@@ -434,8 +434,19 @@ std::optional<std::string> Overlay::translate_history_entity_name(
     if (government_name && identity.entity_type != 1 &&
             !capture_native_history_entity_name_context(base, entity, identity,
                 true, nullptr, true, true)) return std::nullopt;
+    if (government_name && identity.parent_word_id.empty() &&
+            naming_context.former_governance && naming_context.parent_known &&
+            !naming_context.has_external_parent) {
+        const int32_t parent = native_history_entity_naming_parent(id);
+        if (parent >= 0) {
+            const auto head = capture_native_history_entity_parent_word(base, parent);
+            identity.parent_word_id = head.id;
+            identity.parent_word_pos = head.part_of_speech;
+        }
+    }
     // The owned name and context already include the current parent and the
-    // entity's civilian, bandit, religious or military naming category.
+    // entity's civilian, bandit, religious or military naming category. An
+    // inactive government can retain its uniquely recorded parent category.
     // Do not recapture it as an event-time shape or choose HEAD from a role.
     identity.entity_name_current = false;
     const auto translated = translate_history_name(identity, false, false, government_name,

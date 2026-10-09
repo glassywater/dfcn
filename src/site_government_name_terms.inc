@@ -74,6 +74,8 @@ std::string Overlay::independent_site_government_suffix(const NativeHistoryName 
     // A phonetic parent can lack a head WORD while the governing organization
     // and its recorded site are fully identified. Neutral site/organization
     // names remain available; autonomous civil names require present self-rule.
+    // A real residence also supplies a neutral civil name when its parent has
+    // no usable head or the organization no longer governs that residence.
     if (!context || (!context->name_site_shape_known &&
             (!context->is_current || !context->governing_role || !context->parent_known)))
         return "治所";
@@ -105,7 +107,11 @@ std::string Overlay::independent_site_government_suffix(const NativeHistoryName 
     }
     if (governance == "civilian" &&
             (!context->is_current || !context->parent_known ||
-                context->has_external_parent || context->former_governance)) return "治所";
+                context->has_external_parent || context->former_governance)) {
+        if (context->site_kind.empty() ||
+                (!context->governing_role && !context->name_site_shape_known)) return "治所";
+        governance = "civilian_residence";
+    }
     const IndependentGovernmentSuffixRule *selected = nullptr;
     int selected_score = -1;
     for (const auto &rule : site_government_independent_suffixes_) {
