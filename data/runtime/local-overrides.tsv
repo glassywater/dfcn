@@ -970,6 +970,17 @@ Mechanic's Shop	机械师工坊	wi
 Mechanic's Workshop	机械师工坊	wi
 Metalsmith's Forge	金属锻造坊	wi
 Leather Works	皮革工坊	wi
+# Workshop task chooser: translate each complete category button, including
+# its menu suffix, before the complete activity lookup preserves an unknown row.
+Weapons and ammunition (opens menu)	武器与弹药（打开菜单）	wi
+Armor (opens menu)	盔甲（打开菜单）	wi
+Furniture (opens menu)	家具（打开菜单）	wi
+Siege equipment (opens menu)	围攻装备（打开菜单）	wi
+Trap components (opens menu)	陷阱组件（打开菜单）	wi
+Other objects (opens menu)	其他物体（打开菜单）	wi
+Metal clothing (opens menu)	金属衣物（打开菜单）	wi
+Make instrument piece (opens menu)	制作乐器部件（打开菜单）	wi
+Make instrument (opens menu)	制作乐器（打开菜单）	wi
 # Installed vanilla custom workshops and the remaining task categories use
 # the existing complete dictionary labels, including their case variants.
 Soap Maker's Workshop	皂匠工坊	wi

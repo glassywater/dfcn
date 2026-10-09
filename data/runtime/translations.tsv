@@ -58536,6 +58536,7 @@ Walking spreads spatter (fort mode)	行走传播飞溅(要塞模式)	w
 We are in the right in all matters.	不管什么事，道理都在我们这边。	hP
 We are saved from a fearsome enemy!	我们从可怕的敌人手中获救了！	hP
 We rent out a room for {d} a night.	我们有一间房出租，每晚{d1}。	hPt
+Weapons and ammunition (opens menu)	武器与弹药（打开菜单）	wi
 What is your identity's profession?	你所采用的身份从事什么职业？	wl
 What will you say about the rescue?	关于这次营救，你想说些什么？	hP
 Winter has arrived on the calendar.	按历法，已到冬季。	hP
@@ -60609,6 +60610,7 @@ Land holder population trigger {d}	封地贵族人口阈值 {d}	wt
 Land holder production trigger {d}	封地贵族创造财富阈值 {d}	wt
 Look to another for what you need.	向他人寻求你需要的东西。	hP
 Loud vocalization (heard recently)	响亮叫声（刚刚听到）	wl
+Make instrument piece (opens menu)	制作乐器部件（打开菜单）	wi
 May interfere with existing saves.	可能影响现有存档。	w
 Minimum Final Glacier Region Count	最终冰川区域最少数量
 Minimum Final Wetland Region Count	最终湿地区域最少数量
@@ -74356,6 +74358,7 @@ Looks to be snowing outside.	外面好像在下雪。	hP
 Main Ceremony of during {e}.	在{e1}期间，主要仪式。	htEi
 Main Ceremony of within {p}.	在{p1}，主要仪式。	htEi
 Main: Toggle ramp indicators	主界面：切换坡道指示	w
+Make instrument (opens menu)	制作乐器（打开菜单）	wi
 Make no needless sacrifices.	不要做无谓的牺牲。	hP
 Making cave civilizations...	正在生成洞穴政权……
 Masterwork architecture lost	杰作建筑损失	w
@@ -74433,6 +74436,7 @@ Set conditions for Stop {d}.	设置站点 {d} 的发车条件。	wtl
 Several people were expelled	数人遭到驱逐	h
 She is of unknown parentage.	她的父母身份不明。	h
 She lives a fast-paced life.	她过着快节奏的生活。	l
+Siege equipment (opens menu)	围攻装备（打开菜单）	wi
 Skill name: Critical Thinker	批判思考	li
 Some changes are inevitable.	有些变化不可避免。	hP
 Sorting world information...	整理世界信息...	w
@@ -74565,6 +74569,7 @@ This {s} player is middling.	这位{s1}演奏者水平一般。	hPt
 This {s} player is splendid.	这位{s1}演奏者很出色。	hPt
 This {s} player is terrible.	这位{s1}演奏者很糟糕。	hPt
 Toward you: Neutral attitude	对你的态度：中立	hP
+Trap components (opens menu)	陷阱组件（打开菜单）	wi
 Travel building: Civic Mound	政务丘	wi
 Travel building: Dining hall	餐厅	wi
 Travel building: Market Tree	市场树	wi
@@ -76563,6 +76568,7 @@ Meeting areas and locations	集会区和地点	w
 Mercenary petitions: accept	佣兵申请：接受	wi
 Mercenary petitions: prompt	佣兵申请：询问	wi
 Mercenary petitions: reject	佣兵申请：拒绝	wi
+Metal clothing (opens menu)	金属衣物（打开菜单）	wi
 Minimum Partial Edge Oceans	最少部分临边海洋数量	l
 Monster Rampage during {e}.	在{e1}期间，怪物肆虐事件。	htEi
 Monster Rampage within {p}.	在{p1}，怪物肆虐事件。	htEi
@@ -78880,6 +78886,7 @@ Opening Ceremony of at {p}	在{p1}，开幕仪式	htEi
 Opening Ceremony of in {d}	{d1}年的开幕仪式	htEi
 Opening Ceremony of in {p}	在{p1}，开幕仪式	htEi
 Other Vegetation: Moderate	其他植被: 中等	w
+Other objects (opens menu)	其他物体（打开菜单）	wi
 Our hopes travel with you.	我们的希望就寄托在你身上了。	hP
 Overview sentence: I care.	我在乎。	l
 Overview sentence: Rawr!!!	嗷！！！	l
@@ -86686,6 +86693,7 @@ Fortress activity: Dig	挖掘	li
 Fortress activity: Eat	进食	li
 Fourth eldest daughter	第四个女儿	w
 Furnaces are used for 	熔炉用于冶炼、玻璃制造、陶器	w
+Furniture (opens menu)	家具（打开菜单）	wi
 Generating entities...	生成实体......	w
 Get {s} from {n} ({s})	从{n1}处拿取{s1}（{s2}）	hPt
 Get {s} from {s} ({s})	从{s2}处拿取{s1}（{s3}）	hPt
@@ -97059,6 +97067,7 @@ And We Sang '{b}!'	而我们唱道：“{b}！”	hbti
 Animal trap robbed	动物陷阱被盗	w
 Arena: Create tree	竞技场：创建树木	w
 Arena: Fluids, mud	竞技场：泥浆	w
+Armor (opens menu)	盔甲（打开菜单）	wi
 Art image group: X	一群X	wl
 Assemble stone axe	组装石斧	hP
 Assign messengers.	指派信使。	hP
