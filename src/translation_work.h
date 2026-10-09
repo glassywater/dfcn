@@ -1,7 +1,8 @@
 #pragma once
 
 #include <cstddef>
-#include <chrono>
+#include <limits>
+#include <memory>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -11,9 +12,9 @@
 
 namespace dfcn {
 
-// All recursive grammars and typed callbacks share the complete caller's
-// budget. An interrupted child must unwind to that caller, which can preserve
-// native text without publishing an unfinished parse as a grammar miss.
+// Recursive grammars and typed callbacks share one complete parse's memo.
+// Completion depends on semantic states and source progress, not elapsed time
+// or a fixed number of search operations that could discard a valid parse.
 struct TranslationWorkLimit {
     const char *reason;
     std::string stage;
@@ -23,21 +24,15 @@ struct TranslationWorkLimit {
 };
 
 struct TranslationWorkState {
-    using Clock = std::chrono::steady_clock;
-    static constexpr std::size_t maximum_steps = 65536;
-    static constexpr std::size_t maximum_depth = 128;
-    static constexpr auto maximum_time = std::chrono::milliseconds(8);
     std::size_t steps = 0;
     std::size_t depth = 0;
-    std::size_t next_clock_check = 0;
-    Clock::time_point deadline{};
     const char *limit_reason = nullptr;
     std::string_view stage = "historical paragraph";
     std::string_view input = {};
     std::unordered_map<std::string, std::optional<std::string>> memo;
     std::unordered_set<std::string> active;
-    std::size_t memo_bytes = 0;
     std::size_t cycle_revision = 0;
+    std::unordered_map<const void*, std::shared_ptr<void>> parser_sessions;
 };
 
 // Only a trivial TLS pointer: retaining a nontrivial TLS object would pin the
@@ -52,20 +47,8 @@ inline bool translation_work_exhausted() {
 inline void translation_work_step(std::size_t amount = 1) {
     auto *state = active_translation_work;
     if (!state) return;
-    if (!state->limit_reason) {
-        if (amount > TranslationWorkState::maximum_steps - state->steps) {
-            state->limit_reason = "steps";
-        } else {
-            state->steps += amount;
-            if (state->depth > TranslationWorkState::maximum_depth)
-                state->limit_reason = "depth";
-            else if (state->steps >= state->next_clock_check) {
-                state->next_clock_check = state->steps + 64;
-                if (TranslationWorkState::Clock::now() >= state->deadline)
-                    state->limit_reason = "time";
-            }
-        }
-    }
+    const auto remaining = std::numeric_limits<std::size_t>::max() - state->steps;
+    state->steps += amount > remaining ? remaining : amount;
     if (state->limit_reason)
         throw TranslationWorkLimit{state->limit_reason,
             std::string(state->stage.substr(0, 128)),
@@ -77,11 +60,7 @@ class TranslationWorkScope {
     TranslationWorkState *previous_ = active_translation_work;
 public:
     TranslationWorkScope() {
-        if (!previous_) {
-            state_.deadline = TranslationWorkState::Clock::now() +
-                TranslationWorkState::maximum_time;
-            active_translation_work = &state_;
-        }
+        if (!previous_) active_translation_work = &state_;
     }
     ~TranslationWorkScope() { active_translation_work = previous_; }
     TranslationWorkScope(const TranslationWorkScope &) = delete;
@@ -140,12 +119,12 @@ std::optional<std::string> translation_work_memo(const std::string &key,
     if (!state) return std::forward<Resolver>(resolve)();
     translation_work_step();
     const std::string active(active_key.empty() ? std::string_view(key) : active_key);
+    if (const auto found = state->memo.find(key); found != state->memo.end())
+        return found->second;
     if (state->active.contains(active)) {
         ++state->cycle_revision;
         return std::nullopt;
     }
-    if (const auto found = state->memo.find(key); found != state->memo.end())
-        return found->second;
     state->active.insert(active);
     struct RemoveActive {
         TranslationWorkState *state;
@@ -155,13 +134,7 @@ std::optional<std::string> translation_work_memo(const std::string &key,
     const auto cycle_revision = state->cycle_revision;
     auto result = std::forward<Resolver>(resolve)();
     translation_work_step();
-    constexpr std::size_t maximum_entries = 4096, maximum_bytes = 1024 * 1024;
-    const auto bytes = key.size() + (result ? result->size() : 0);
-    if (cycle_revision == state->cycle_revision &&
-            state->memo.size() < maximum_entries && bytes <= maximum_bytes &&
-            state->memo_bytes <= maximum_bytes - bytes) {
-        if (state->memo.emplace(key, result).second) state->memo_bytes += bytes;
-    }
+    if (cycle_revision == state->cycle_revision) state->memo.emplace(key, result);
     return result;
 }
 

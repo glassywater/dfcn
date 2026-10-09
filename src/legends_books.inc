@@ -16,6 +16,10 @@ std::optional<std::string> Overlay::translate_legends_written_item(
     TranslationWorkFrame work_frame("historical written item", raw);
     const std::string source = lower(normalize_utterance(raw));
     if (source.empty() || source.ends_with("...")) return std::nullopt;
+    const std::string memo_key = "legends written item:" +
+        std::to_string(reinterpret_cast<std::uintptr_t>(this)) + ":" +
+        std::to_string(native_identity_translation_context()) + ":" + source;
+    return translation_work_memo(memo_key, [&]() -> std::optional<std::string> {
     // Reuse reviewed noun-phrase rules and the shared material/species table.
     // Do this before the generic compositor, which cannot distinguish a
     // binding material from the paper inside the book.
@@ -44,6 +48,7 @@ std::optional<std::string> Overlay::translate_legends_written_item(
             return fill_template(rule, captures, &capture_translations_, nullptr, &translated);
     }
     return std::nullopt;
+    });
     });
 }
 

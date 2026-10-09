@@ -27510,13 +27510,16 @@ static std::optional<std::string> translate_embark_item_material_qualifier(
         ore.material->source.size() == material_source.size()) {
         qualifier = ore.material->qualifier;
     } else {
-        auto &rulesets =
-            DFHack::DFZH::Hooks::RulesetsManager::getInstance();
-        auto translate_material_piece = [&rulesets](std::string_view piece)
+        auto translate_material_piece = [](std::string_view piece)
                 -> std::optional<std::string> {
             std::optional<std::string> translated =
                 overlay_exact_literal_translation(piece);
-            if (!translated) translated = rulesets.translate(std::string(piece));
+            // The caller already owns a material field. Root composition
+            // would also try tasks and book references at every split, then
+            // re-enter this qualifier through an unrelated item production.
+            const std::string material = native_text_to_utf8(piece);
+            if (!translated) translated = lookup_item_material_rule(material, "::materials");
+            if (!translated) translated = lookup_item_material_rule(material, "::materials::adjective");
             if (!translated) return std::nullopt;
             std::string target = trim(*translated);
             const bool retains_ascii_letters = std::any_of(
@@ -28141,11 +28144,14 @@ static std::optional<std::string> translate_storage_container_item_name(
         }
     }
 
-    auto translate_term = [](const std::string &term)
+    auto translate_term = [](const std::string &term, const std::string &scope)
             -> std::optional<std::string> {
         auto translated = overlay_exact_literal_translation(term);
-        if (!translated) translated =
-            DFHack::DFZH::Hooks::RulesetsManager::getInstance().translate(term);
+        if (!translated) {
+            std::vector<size_t> origins;
+            translated = DFHack::DFZH::Hooks::RulesetsManager::getInstance()
+                .translate_with_origins(native_text_to_utf8(term), scope, origins);
+        }
         if (!translated) return std::nullopt;
         *translated = trim(std::move(*translated));
         if (translated->empty() || translated->find("[C:") != std::string::npos ||
@@ -28163,11 +28169,14 @@ static std::optional<std::string> translate_storage_container_item_name(
         const std::string bag_source = material_source.empty() ? noun_source
             : material_source + " " + noun_source;
         auto bag = translate_arena_equipment_source_phrase(bag_source);
-        if (!bag) bag = translate_term(bag_source);
+        if (!bag) bag = translate_term(bag_source, "::items::bag");
         if (!bag || bag->empty()) return std::nullopt;
         name = *bag;
     } else {
-        const auto noun = translate_term(noun_source);
+        // The vessel role is already established. Its bare noun must bypass
+        // the complete container callback, which would receive the same input.
+        const auto noun = translate_term(noun_source,
+            "::items::" + std::string(container_type) + "::main");
         if (!noun) return std::nullopt;
         if (!material_source.empty()) {
             if (!material_target) material_target =
@@ -28188,7 +28197,8 @@ static std::optional<std::string> translate_storage_container_item_name(
             contents_target = RULESETS.translate_with_origins(
                 native_text_to_utf8(contents_source), "::items::storage_contents", origins);
         }
-        if (!contents_target) contents_target = translate_term(contents_source);
+        if (!contents_target) contents_target =
+            translate_term(contents_source, "::items::storage_contents");
         if (!contents_target) return std::nullopt;
         // Filled containers lead with their contents, followed by the complete
         // vessel name in parentheses. Packing words live in the reviewed
@@ -28205,7 +28215,11 @@ static std::optional<std::string> translate_storage_container_item_name(
 
 static std::optional<std::string> translate_arena_equipment_source_phrase(
         std::string_view source) {
+    TranslationWorkScope work;
     source = trim_view(source);
+    const std::string memo_key = "arena item:" +
+        std::to_string(native_identity_translation_context()) + ":" + std::string(source);
+    return translation_work_memo(memo_key, [&]() -> std::optional<std::string> {
     // Counts belong to the complete item designation, not to its material.
     // Previously only barrels stripped them here: the weapon parser removed
     // `battle axes` from `copper battle axes [2]`, translated the remaining
@@ -28276,11 +28290,20 @@ static std::optional<std::string> translate_arena_equipment_source_phrase(
 
     auto &rulesets =
         DFHack::DFZH::Hooks::RulesetsManager::getInstance();
-    auto translate_piece = [&rulesets](std::string_view piece)
+    const auto translate_equipment_piece = [&rulesets](const std::string &piece)
+            -> std::optional<std::string> {
+        if (auto target = rulesets.translate_equipment_type(piece, false)) return target;
+        if (auto target = rulesets.translate_equipment_name(piece)) return target;
+        if (auto target = rulesets.translate_furniture_type(piece)) return target;
+        if (auto target = rulesets.translate_equipment_modifier(piece)) return target;
+        std::vector<size_t> origins;
+        return rulesets.translate_with_origins(piece, "::items", origins);
+    };
+    auto translate_piece = [&translate_equipment_piece](std::string_view piece)
             -> std::optional<std::string> {
         const std::string clean = trim(std::string(piece));
         if (clean.empty()) return std::string{};
-        if (const auto whole = rulesets.translate(clean)) {
+        if (const auto whole = translate_equipment_piece(clean)) {
             const std::string translated = trim(*whole);
             if (!translated.empty()) return translated;
         }
@@ -28308,7 +28331,7 @@ static std::optional<std::string> translate_arena_equipment_source_phrase(
             const std::string token = clean.substr(
                 begin, end == std::string::npos ? std::string::npos
                                                 : end - begin);
-            auto part = rulesets.translate(token);
+            auto part = translate_equipment_piece(token);
             if (!part || trim(*part).empty()) {
                 part = overlay_exact_literal_translation(token);
             }
@@ -28772,6 +28795,7 @@ static std::optional<std::string> translate_arena_equipment_source_phrase(
     // inventory and Arena names. Do not require an incidental material just
     // to translate `asymmetrical robes` or any other shape/type combination.
     return translate_equipment_fields({}, folded, true);
+    });
 }
 
 static std::optional<std::string>
@@ -28853,8 +28877,10 @@ static std::optional<std::string> translate_writing_material_qualifier(
     std::optional<std::string> material =
         overlay_exact_literal_translation(material_source);
     if (!material) {
-        material = DFHack::DFZH::Hooks::RulesetsManager::getInstance()
-            .translate(material_source);
+        const std::string utf8 = native_text_to_utf8(material_source);
+        material = lookup_item_material_rule(utf8, "::materials");
+        if (!material) material =
+            lookup_item_material_rule(utf8, "::materials::adjective");
     }
     if (!material || trim(*material).empty()) return std::nullopt;
     const auto paper = overlay_exact_literal_translation("Writing material: paper");
@@ -29124,9 +29150,10 @@ static ArenaEquipmentNamePart arena_equipment_name_part(
         if (target_at == std::string::npos) {
             const std::string actual_source = folded.substr(
                 wood_match.at, wood_match.length);
-            const auto translated =
-                DFHack::DFZH::Hooks::RulesetsManager::getInstance()
-                    .translate(actual_source);
+            const std::string utf8 = native_text_to_utf8(actual_source);
+            auto translated = lookup_item_material_rule(utf8, "::materials");
+            if (!translated) translated =
+                lookup_item_material_rule(utf8, "::materials::adjective");
             if (translated) {
                 displayed_material = trim(*translated);
                 if (!displayed_material.empty())
@@ -29403,8 +29430,11 @@ static std::optional<std::string> translate_embark_trap_component_name(
 
     auto &rulesets =
         DFHack::DFZH::Hooks::RulesetsManager::getInstance();
-    const auto component = rulesets.translate(component_source);
-    const auto material = rulesets.translate(material_source);
+    std::vector<size_t> origins;
+    const auto component = rulesets.translate_with_origins(
+        native_text_to_utf8(component_source), "::items::trapcomp", origins);
+    const auto material = rulesets.translate_with_origins(
+        native_text_to_utf8(material_source), "::materials", origins);
     if (component && material && !trim(*component).empty() &&
         !trim(*material).empty()) {
         ArenaEquipmentNamePart material_part = arena_equipment_name_part(
@@ -29415,7 +29445,8 @@ static std::optional<std::string> translate_embark_trap_component_name(
         }
     }
 
-    const auto translated = rulesets.translate(canonical_source);
+    const auto translated = rulesets.translate_with_origins(
+        native_text_to_utf8(canonical_source), "::items::trapcomp", origins);
     if (!translated || trim(*translated).empty()) return std::nullopt;
     ArenaEquipmentNamePart part = arena_equipment_name_part(
         canonical_source, trim(*translated));
@@ -29425,8 +29456,13 @@ static std::optional<std::string> translate_embark_trap_component_name(
 
 std::optional<std::string> Overlay::translate_captured_embark_item_segments(
         std::string_view complete_source) const {
+    TranslationWorkScope work;
     const std::string source = lower(trim(std::string(complete_source)));
     if (source.empty()) return std::nullopt;
+    const std::string memo_key = "item segments:" +
+        std::to_string(reinterpret_cast<std::uintptr_t>(this)) + ":" +
+        std::to_string(native_identity_translation_context()) + ":" + source;
+    return translation_work_memo(memo_key, [&]() -> std::optional<std::string> {
     if (const auto *material = magical_material(source)) return material->noun;
     if (auto item = translate_arena_equipment_source_phrase(source)) return item;
 
@@ -29454,8 +29490,6 @@ std::optional<std::string> Overlay::translate_captured_embark_item_segments(
     best.back().valid = true;
     best.back().pieces = 0;
 
-    auto &rulesets =
-        DFHack::DFZH::Hooks::RulesetsManager::getInstance();
     auto translate_complete_piece = [&](std::string_view piece)
             -> std::optional<std::string> {
         // The standalone case returned above. A material segment inside a
@@ -29464,7 +29498,18 @@ std::optional<std::string> Overlay::translate_captured_embark_item_segments(
             return material->qualifier;
         std::optional<std::string> translated =
             exact_literal_translation(piece);
-        if (!translated) translated = rulesets.translate(std::string(piece));
+        // This is an item field. Asking the general root also explores
+        // memories and tasks, whose book fields call this same item parser
+        // again. Keep every existing typed noun grammar, with full coverage.
+        if (!translated) {
+            std::vector<size_t> origins;
+            const std::string text = native_text_to_utf8(piece);
+            for (const auto *scope : {"::items", "::materials", "::plants",
+                    "::creatures::name"}) {
+                translated = RULESETS.translate_with_origins(text, scope, origins);
+                if (translated) break;
+            }
+        }
         if (!translated) return std::nullopt;
         std::string target = trim(*translated);
         const bool retains_ascii_letters = std::any_of(
@@ -29524,6 +29569,7 @@ std::optional<std::string> Overlay::translate_captured_embark_item_segments(
     if (!best.front().valid || best.front().target.empty())
         return std::nullopt;
     return best.front().target;
+    });
 }
 
 std::optional<std::string> Overlay::translate_embark_equipment_item(
@@ -30157,9 +30203,11 @@ std::optional<std::string> Overlay::translate_embark_equipment_fields(
                 DFHack::DFZH::Hooks::RulesetsManager::getInstance();
             std::vector<size_t> canonical_order(fields.size());
             std::iota(canonical_order.begin(), canonical_order.end(), size_t{0});
+            std::vector<size_t> origins;
             do {
                 const std::string source = source_for_order(canonical_order);
-                const auto whole = rulesets.translate(source);
+                const auto whole = rulesets.translate_with_origins(
+                    native_text_to_utf8(source), "::items", origins);
                 if (!whole || trim(*whole).empty() || trim(*whole) == source)
                     continue;
                 if (auto translated = translate_order(canonical_order))

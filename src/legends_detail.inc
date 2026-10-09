@@ -4,18 +4,7 @@
 template <typename Resolver>
 static auto legends_translation_work(Resolver &&resolve) -> decltype(resolve()) {
     TranslationWorkScope work;
-    try {
-        translation_work_step();
-        auto result = resolve();
-        translation_work_step();
-        return result;
-    } catch (const TranslationWorkLimit &) {
-        // A nested caller must stop its whole parse, rather than cache this
-        // interruption as a normal missing actor/title. Standalone entries
-        // own their scope and can leave the original native text readable.
-        if (!work.owns_budget()) throw;
-        return {};
-    }
+    return resolve();
 }
 
 static constexpr std::array<std::string_view, 9> kLegendsCategories = {{
@@ -416,11 +405,13 @@ std::optional<std::string> Overlay::translate_legends_name(
             ? native_text_to_utf8(std::string_view(name).substr(3)) + "之"
             : native_text_to_utf8(name);
     }
-    // A site is an English generated compound, not a native personal name.
-    // Quote it BEFORE the broad unquoted native-name fallback: otherwise the
-    // same site is phoneticized in kills but translated in its own heading.
+    // This is already a person slot. Resolve its native given/surname groups
+    // through the personal-name grammar instead of reentering the complete
+    // screen-text grammar on the same input. That grammar still requires
+    // recognized native/name components before accepting a person.
     if (person && !single_person)
-        if (auto translated = translate_procedural_fragment(name)) return translated;
+        if (auto translated = translate_procedural_fragment(name, false, false, {},
+                ProceduralFragmentContext::personal_name)) return translated;
     auto quoted = translate_procedural_fragment("\"" + name + "\"", false, person, {},
         entity_reference ? ProceduralFragmentContext::generated_name
             : ProceduralFragmentContext::non_entity_name);
@@ -498,6 +489,14 @@ std::vector<int> Overlay::matching_legends_rules(std::string_view source) const 
 
 std::optional<std::string> Overlay::translate_legends_term(
         std::string_view value, bool description) const {
+    return legends_translation_work([&]() -> std::optional<std::string> {
+    TranslationWorkFrame work_frame("historical term", value);
+    if (value.empty()) return std::nullopt;
+    const std::string memo_key = "legends term:" +
+        std::to_string(reinterpret_cast<std::uintptr_t>(this)) + ":" +
+        std::to_string(native_identity_translation_context()) + ":" +
+        (description ? "description:" : "noun:") + std::string(value);
+    return translation_work_memo(memo_key, [&]() -> std::optional<std::string> {
     // Offices and dispute types have scoped meanings in the same
     // reviewed TSV namespace as the prose, not a renderer dictionary.
     if (const auto it = legends_terms_.find(std::string(value)); it != legends_terms_.end())
@@ -539,10 +538,41 @@ std::optional<std::string> Overlay::translate_legends_term(
         caption.front() -= 'a' - 'A';
         if (auto translated = exact_literal_translation(caption)) return translated;
     }
-    // Body parts (side/upper/lower/front/back, digits and tissues) and other
-    // compound terms belong to the existing recursive vocabulary. Looking up
-    // only literal rows misses e.g. a singular lower left back tooth.
-    return translate_compositional(std::string(value));
+    // This slot owns a noun/descriptor, not a new complete screen phrase.
+    // Use the same typed vocabularies as its native producers so an unknown
+    // term cannot reenter book/topic/form through the general rule root.
+    const std::string utf8 = native_text_to_utf8(value);
+    const auto complete = [&](std::optional<std::string> target) -> std::optional<std::string> {
+        std::vector<uint32_t> codepoints;
+        if (!target || *target == utf8 || target->find("[C:") != std::string::npos ||
+                target->find_first_of("\r\n") != std::string::npos ||
+                !decode_utf8(*target, codepoints)) return std::nullopt;
+        return target;
+    };
+    if (auto anatomy = complete(RULESETS.translate_anatomy(utf8))) return anatomy;
+    std::vector<size_t> origins;
+    for (const auto scope : {"::health::contaminant", "::health::condition", "::professions",
+            "::positions::singular", "::positions::plural"}) {
+        if (auto term = complete(RULESETS.translate_with_origins(utf8, scope, origins)))
+            return term;
+    }
+    if (caption != value)
+        if (auto profession = complete(RULESETS.translate_with_origins(
+                native_text_to_utf8(caption), "::professions", origins)))
+            return profession;
+    if (auto material = complete(translate_material_name(value))) return material;
+    if (auto item = complete(translate_legends_item(value))) return item;
+    if (auto color = complete(translate_legends_color(value))) return color;
+    if (auto color = complete(RULESETS.translate_color(utf8))) return color;
+    // Appearance nouns/modifiers already have their own reviewed namespace.
+    // Keep the personal-hair variant reserved for its explicit personal slot.
+    for (const auto scope : {"::health::appearance::noun",
+            "::health::appearance::common", "::health::appearance::degree"})
+        if (auto appearance = complete(RULESETS.translate_with_origins(utf8, scope, origins)))
+            return appearance;
+    return std::nullopt;
+    });
+    });
 }
 
 std::optional<std::string> Overlay::translate_legends_office(
@@ -700,7 +730,14 @@ std::optional<std::string> Overlay::translate_legends_anatomy(std::string_view v
 
 std::optional<std::string> Overlay::translate_legends_item(
         std::string_view value) const {
+    return legends_translation_work([&]() -> std::optional<std::string> {
+    TranslationWorkFrame work_frame("historical item", value);
     value = trim_view(value);
+    const std::string memo_key = "legends item:" +
+        std::to_string(reinterpret_cast<std::uintptr_t>(this)) + ":" +
+        std::to_string(native_identity_translation_context()) + ":" +
+        std::string(value);
+    return translation_work_memo(memo_key, [&]() -> std::optional<std::string> {
     for (std::string_view article : {"a ", "an ", "the "}) {
         if (template_literal_at(value, 0, article, true)) {
             value.remove_prefix(article.size());
@@ -749,6 +786,8 @@ std::optional<std::string> Overlay::translate_legends_item(
     // multiword plants such as goblin-cap and kobold bulb as single terms.
     if (auto written = translate_legends_written_item(value)) return written;
     return translate_captured_embark_item_segments(value);
+    });
+    });
 }
 
 std::optional<std::string> Overlay::translate_legends_nested(
@@ -797,6 +836,51 @@ std::optional<std::string> Overlay::translate_legends_nested(
         rule.template_literals.front() == "The " &&
         (rule.template_literals[1] == "st " || rule.template_literals[1] == "nd " ||
          rule.template_literals[1] == "rd " || rule.template_literals[1] == "th ");
+    // A capture's role, not the containing rule's identity, determines its
+    // translation. Share that work between all rules trying the same source
+    // span, while keeping species, offices and ordinary terms distinct.
+    std::vector<std::string> capture_modes;
+    capture_modes.reserve(rule.template_kinds.size());
+    for (size_t field = 0; field < rule.template_kinds.size(); ++field) {
+        std::string mode(1, rule.template_kinds[field]);
+        switch (rule.template_kinds[field]) {
+        case 'n':
+            if (rule.legends_identity && rule.source == "\"{n}\"") mode += ":identity";
+            break;
+        case 'p':
+            if (rule.legends_event_title || rule.legends_participant_relation ||
+                    rule.legends_identity) {
+                mode += field > 0 && rule.template_kinds[field - 1] == 's' &&
+                    legends_office_capture(rule, field - 1)
+                    ? ":office-owner" : ":reference";
+            } else mode += journal_habitat_rule(rule) ? ":habitat" : ":place";
+            break;
+        case 's':
+            if (rule.legends_identity && field == 0 &&
+                    (rule.source.starts_with("the {s} the {s}") ||
+                     rule.source.starts_with("the {s} {s}") ||
+                     rule.source.starts_with("a {s}") || rule.source.starts_with("an {s}")))
+                mode += ":species";
+            else if (rule.legends_identity && field == 1 &&
+                    (rule.source.starts_with("the {s} the {s}") ||
+                     rule.source.starts_with("the {s} {s}") ||
+                     rule.source.starts_with("a {s} {s}") || rule.source.starts_with("an {s} {s}")))
+                mode += ":profession";
+            else if (legends_office_capture(rule, field) ||
+                    (field == 0 && rule.source.starts_with("This person is ")))
+                mode += ":office";
+            else if (rule.legends_participant_relation && field == 0 &&
+                    rule.source == "{s} of {p}") mode += ":office-term";
+            else mode += ":term";
+            break;
+        case 'e':
+            if (rule.template_literals.back().empty() && (spelled_ordinal || numeric_ordinal))
+                mode += ":ordinal";
+            break;
+        default: break;
+        }
+        capture_modes.push_back(std::move(mode));
+    }
     // Name connectors can also delimit typed fields. Backtrack within this
     // one reviewed grammar until every field AND the entire suffix resolve.
     // Earlier fields can revisit the same suffix through different splits;
@@ -827,25 +911,34 @@ std::optional<std::string> Overlay::translate_legends_nested(
                     stop + literal.size(), value.size(), true)) continue;
             const auto part = trim_view(value.substr(at, stop - at));
             if (part.empty() || part.size() >= value.size()) continue;
+            const auto &mode = capture_modes[field];
+            const std::string capture_active_key = "legends capture:" +
+                std::to_string(reinterpret_cast<std::uintptr_t>(this)) + ":" +
+                std::to_string(native_identity_translation_context()) + ":" +
+                mode + ":" + std::string(part);
+            const char kind = rule.template_kinds[field];
+            std::string capture_key = capture_active_key;
+            if (kind == 'a' || kind == 'n' || kind == 'e' || kind == 'b') {
+                capture_key += '\0';
+                capture_key += std::to_string(depth + 1);
+            }
+            auto target = translation_work_memo(capture_key, [&]() -> std::optional<std::string> {
             std::optional<std::string> target;
-            switch (rule.template_kinds[field]) {
+            switch (kind) {
             case 'a': target = translate_legends_participant(part, std::nullopt, depth + 1); break;
             case 'n':
                 target = translate_legends_actor(part, depth + 1,
-                    rule.legends_identity && rule.source == "\"{n}\"");
+                    mode == "n:identity");
                 break;
             case 'p':
-                if (rule.legends_event_title || rule.legends_participant_relation ||
-                        rule.legends_identity) {
+                if (mode == "p:reference" || mode == "p:office-owner") {
                     // Native +d8 subjects share this reference slot across
                     // sites, entities, buildings, geography and artifacts.
                     // Their participant/identity owner productions consume
                     // the same references when an actor recurses into them.
                     // Office owners are independently supplied by b92900
                     // as entities, even if a site has the same spelling.
-                    const bool office_owner = field > 0 &&
-                        rule.template_kinds[field - 1] == 's' &&
-                        legends_office_capture(rule, field - 1);
+                    const bool office_owner = mode == "p:office-owner";
                     const auto accept_reference = [&](std::optional<std::string> candidate) {
                         if (translation_complete_with_native_nicknames(candidate, part))
                             target = std::move(candidate);
@@ -872,7 +965,7 @@ std::optional<std::string> Overlay::translate_legends_nested(
                     if (!target) accept_reference(translate_legends_name(part, false, false));
                     if (!target && !office_owner) accept_reference(translate_legends_place(part));
                 } else {
-                    target = journal_habitat_rule(rule)
+                    target = mode == "p:habitat"
                         ? translate_journal_habitat_places(part)
                         : translate_legends_place(part);
                 }
@@ -882,24 +975,15 @@ std::optional<std::string> Overlay::translate_legends_nested(
                 // a profession. Only the first slot in these unambiguous
                 // forms is a species; a lone `the {s}` may be either field.
                 // Keep every profession on the established term vocabulary.
-                if (rule.legends_identity && field == 0 &&
-                        (rule.source.starts_with("the {s} the {s}") ||
-                         rule.source.starts_with("the {s} {s}") ||
-                         rule.source.starts_with("a {s}") ||
-                         rule.source.starts_with("an {s}")))
+                if (mode == "s:species")
                     target = translate_creature_descriptor(part, true);
-                else if (rule.legends_identity && field == 1 &&
-                        (rule.source.starts_with("the {s} the {s}") ||
-                         rule.source.starts_with("the {s} {s}") ||
-                         rule.source.starts_with("a {s} {s}") ||
-                         rule.source.starts_with("an {s} {s}"))) {
+                else if (mode == "s:profession") {
                     // This native identity slot is a complete occupation or
                     // office, including its territory and role modifiers.
                     // Reuse the strict unit-role grammar so scoped offices
                     // such as warlord cannot fall through to personal names.
                     target = translate_unit_profession(part, false);
-                } else if (legends_office_capture(rule, field) ||
-                        (field == 0 && rule.source.starts_with("This person is "))) {
+                } else if (mode == "s:office") {
                     // Journal office statements share the history office
                     // vocabulary, including titles whose ordinary sense
                     // differs (master, chief). Keep this lookup scoped to
@@ -910,8 +994,7 @@ std::optional<std::string> Overlay::translate_legends_nested(
                     // claimant's title) or another reviewed noun. Prefer a
                     // complete registered office without making every owner
                     // phrase an office or dropping the existing noun grammar.
-                    if (rule.legends_participant_relation && field == 0 &&
-                            rule.source == "{s} of {p}")
+                    if (mode == "s:office-term")
                         target = translate_legends_office(part);
                     if (!target) target = translate_legends_term(part);
                 }
@@ -919,8 +1002,7 @@ std::optional<std::string> Overlay::translate_legends_nested(
             case 'e': {
                 // Only complete ordinal productions may restore the article;
                 // ordinary event/name captures retain their original grammar.
-                if (rule.template_literals.back().empty() &&
-                        (spelled_ordinal || numeric_ordinal) &&
+                if (mode == "e:ordinal" &&
                         !template_literal_at(part, 0, "The ", true))
                     target = translate_legends_event("The " + std::string(part), depth + 1);
                 if (!target) target = translate_legends_event(part, depth + 1);
@@ -944,6 +1026,8 @@ std::optional<std::string> Overlay::translate_legends_nested(
             }
             default: break;
             }
+            return target;
+            }, capture_active_key);
             // Art-image event subjects use this same nested grammar. A
             // successfully parsed actor may retain an authored nickname;
             // validate its original native field instead of rejecting the

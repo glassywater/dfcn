@@ -22,21 +22,52 @@ namespace DFHack {
 namespace DFZH {
 namespace Hooks {
     namespace {
-        template<class Operation>
-        auto bounded_rule_translation(Operation&& operation) -> decltype(operation()) {
-            dfcn::TranslationWorkScope work;
-            try {
-                dfcn::translation_work_step();
-                auto result = operation();
-                // An owner callback can contain its own fallback handler.
-                // Preserve exhaustion even when that handler swallowed the
-                // original exception, before a result leaves this boundary.
-                dfcn::translation_work_step();
-                return result;
-            } catch (const dfcn::TranslationWorkLimit&) {
-                if (!work.owns_budget()) throw;
-                return {};
+        struct FrontierKey {
+            size_t remaining;
+            unsigned flags;
+            bool operator==(const FrontierKey&) const = default;
+        };
+
+        struct FrontierHash {
+            size_t operator()(const FrontierKey& key) const noexcept {
+                size_t hash = std::hash<size_t>{}(key.remaining);
+                return hash ^ (key.flags + 0x9e3779b9U + (hash << 6) + (hash >> 2));
             }
+        };
+
+        // Within one source production, remaining text is always a suffix of
+        // the same input. Equal lengths therefore mean the same parser state.
+        // Keep the first path for source-order APIs and the cheapest path for
+        // preferred-result APIs, without retaining their Cartesian products.
+        template<class Value, class Classify, class Prefer>
+        void compact_ordered_frontier(std::vector<Value>& values,
+                Classify&& classify, Prefer&& prefer) {
+            struct Choice { size_t first, best; };
+            std::unordered_map<FrontierKey, Choice, FrontierHash> choices;
+            for (size_t at = 0; at < values.size(); ++at) {
+                const auto [choice, inserted] = choices.try_emplace(
+                    classify(values[at]), Choice{at, at});
+                if (!inserted && prefer(values[at], values[choice->second.best]))
+                    choice->second.best = at;
+            }
+            std::vector<size_t> retained;
+            retained.reserve(choices.size() * 2);
+            for (const auto& [key, choice] : choices) {
+                retained.push_back(choice.first);
+                if (choice.best != choice.first) retained.push_back(choice.best);
+            }
+            if (retained.size() == values.size()) return;
+            std::sort(retained.begin(), retained.end());
+            std::vector<Value> compacted;
+            compacted.reserve(retained.size());
+            for (size_t at : retained) compacted.push_back(std::move(values[at]));
+            values = std::move(compacted);
+        }
+
+        template<class Operation>
+        auto scoped_rule_translation(Operation&& operation) -> decltype(operation()) {
+            dfcn::TranslationWorkScope work;
+            return operation();
         }
     }
 
@@ -92,7 +123,7 @@ namespace Hooks {
                 std::string_view kind, std::string_view source) -> std::optional<std::string> {
             if (source.empty() || source.size() > 65536) return std::nullopt;
             std::lock_guard<std::mutex> lock(*mutex);
-            return bounded_rule_translation([&]() -> std::optional<std::string> {
+            return scoped_rule_translation([&]() -> std::optional<std::string> {
                 if (kind == "item") return complete(source, "::items");
                 if (kind == "material") return complete(source, "::materials");
                 if (kind == "material_adjective") return complete(source, "::materials::adjective");
@@ -396,7 +427,7 @@ namespace Hooks {
     /// @return     翻译后的中文文本，无法翻译时返回 std::nullopt
     std::optional<std::string> RulesetsManager::translate(const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             // Use the same owner/child/tissue parser in health and inventory as
             // in Legends, including names with more than one owning body part.
             if (text.find(',') != std::string::npos)
@@ -409,57 +440,15 @@ namespace Hooks {
             // Keep every creature prefix available to the grammar, but at the
             // untyped root prefer a real outer structure over swallowing its noun
             // into a complete creature name. Typed creature APIs remain unchanged.
-            const auto is_creature = [](const ResultTree& tree) {
-                return tree.identifier.starts_with("::creatures::");
-            };
-            const auto has_complete_creature = [&](const auto& self,
-                    const ResultTree& tree) -> bool {
-                dfcn::translation_work_step();
-                if (is_creature(tree) && tree.matched.size() == text.size())
-                    return true;
-                for (const auto& [_, child] : tree.children)
-                    if (self(self, *child)) return true;
-                return false;
-            };
-            const auto contains_creature = [&](const auto& self,
-                    const ResultTree& tree) -> bool {
-                dfcn::translation_work_step();
-                if (!tree.matched.empty() && is_creature(tree)) return true;
-                for (const auto& [_, child] : tree.children)
-                    if (self(self, *child)) return true;
-                return false;
-            };
-            const auto has_outer_structure = [&](const auto& self,
-                    const ResultTree& tree) -> bool {
-                dfcn::translation_work_step();
-                // Do not reinterpret vocabulary used inside a creature name as
-                // an outer material or item. In particular items::fish::main can
-                // simply alias a caste, so the presence of ::items is insufficient.
-                if (is_creature(tree)) return false;
-                if (!tree.matched.empty()) {
-                    if (tree.identifier == "::materials::state" ||
-                        tree.identifier.starts_with("::materials::state::"))
-                        return true;
-                    if (tree.identifier.starts_with("::items::") &&
-                        tree.identifier.ends_with("::main") &&
-                        !contains_creature(contains_creature, tree))
-                        return true;
-                }
-                for (const auto& [_, child] : tree.children)
-                    if (self(self, *child)) return true;
-                return false;
-            };
             const bool creature_ambiguity = std::ranges::any_of(results,
-                [&](const auto& tree) {
-                    return has_complete_creature(has_complete_creature, *tree);
-                });
+                [](const auto& tree) { return tree->complete_creature; });
             auto best = std::ranges::min_element(results,
                 [&](const std::shared_ptr<const ResultTree>& a, const std::shared_ptr<const ResultTree>& b) {
                     if (a->uses_name_fallback != b->uses_name_fallback)
                         return a->preferred_to(*b);
                     if (creature_ambiguity) {
-                        const bool a_outer = has_outer_structure(has_outer_structure, *a);
-                        const bool b_outer = has_outer_structure(has_outer_structure, *b);
+                        const bool a_outer = a->has_outer_structure;
+                        const bool b_outer = b->has_outer_structure;
                         if (a_outer != b_outer) return a_outer;
                     }
                     return a->preferred_to(*b);
@@ -685,7 +674,7 @@ namespace Hooks {
         dfcn::TranslationStateScope translation_scope;
         origins.clear();
         std::vector<size_t> candidate_origins;
-        auto translated = bounded_rule_translation([&]() -> std::optional<std::string> {
+        auto translated = scoped_rule_translation([&]() -> std::optional<std::string> {
             const auto results = resolve_namespace(text, context, 0);
             const ResultTree* best = nullptr;
             for (const auto& result : results) {
@@ -704,7 +693,7 @@ namespace Hooks {
     dfcn::TranslationResult RulesetsManager::translate_prefix_with_origins(
             const std::string& text, const std::string& context) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> dfcn::TranslationResult {
+        return scoped_rule_translation([&]() -> dfcn::TranslationResult {
             const auto results = resolve_namespace(text, context, 0);
             const ResultTree* best = nullptr;
             for (const auto& result : results) {
@@ -732,7 +721,7 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_activity(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             for (const auto* ns : {"::activities", "::tasks", "::menu"}) {
                 const auto results = resolve_namespace(text, ns, 0);
                 const ResultTree* best = nullptr;
@@ -752,7 +741,7 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_ammunition_type(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             for (const auto* ns : {"::items::ammo::default::main",
                     "::items::ammo::singular::main", "::items::ammo::plural::main"}) {
                 const auto results = resolve_namespace(text, ns, 0);
@@ -767,7 +756,7 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_coin_name(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             const auto results = resolve_namespace(text, "::items::coin", 0);
             for (const auto& result : results)
                 if (result->remaining.empty() && !result->translated.empty())
@@ -779,7 +768,7 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_equipment_type(
             const std::string& text, bool wearable_only) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             for (const auto* family : {"armor", "helm", "gloves", "shoes", "pants", "shield",
                                      "weapon", "ammo", "trapcomp"}) {
                 if (wearable_only && (std::string_view(family) == "weapon" ||
@@ -800,7 +789,7 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_equipment_modifier(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             const auto results = resolve_namespace(
                 text, "::items::prefix::equipment_modifier", 0);
             for (const auto& result : results)
@@ -813,28 +802,17 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_equipment_name(
             const std::string& text, bool allow_material) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             // Keep the same item grammar for compound types such as a right
             // mitten or long skirt. Bare ::main type lookups omit these modifiers;
             // splitting them into ordinary words changes their item-specific meaning.
-            const auto contains_material = [](const auto& self, const ResultTree& result)
-                    -> bool {
-                dfcn::translation_work_step();
-                if (!result.matched.empty() &&
-                    (result.identifier.starts_with("::materials::") ||
-                     result.identifier == "::materials" ||
-                     result.identifier.ends_with("::^material"))) return true;
-                for (const auto& [_, child] : result.children)
-                    if (self(self, *child)) return true;
-                return false;
-            };
             std::shared_ptr<const ResultTree> best;
             for (const auto* family : {"armor", "helm", "gloves", "shoes", "pants", "shield"}) {
                 const auto results = resolve_namespace(
                     text, std::string("::items::") + family, 0);
                 for (const auto& result : results) {
                     if (!result->remaining.empty() || result->translated.empty() ||
-                        (!allow_material && contains_material(contains_material, *result))) continue;
+                        (!allow_material && result->contains_material)) continue;
                     if (!best || result->preferred_to(*best)) best = result;
                 }
             }
@@ -845,7 +823,7 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_furniture_type(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             for (const auto* family : {"altar", "bed", "chair", "table", "cabinet",
                     "coffin", "box", "bookcase", "statue", "door", "floodgate",
                     "hatch_cover", "grate", "armorstand", "weaponrack", "pedestal", "anvil",
@@ -863,7 +841,7 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_drinkware_type(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             const auto results = resolve_namespace(text, "::items::goblet::main", 0);
             for (const auto& result : results)
                 if (result->remaining.empty() && !result->translated.empty())
@@ -875,7 +853,7 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_meat_term(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             if (text.empty()) return std::nullopt;
             // The item table distinguishes edible organs from material states
             // and anatomy. Prefer its direct meat entry when both a literal and
@@ -896,7 +874,7 @@ namespace Hooks {
 
     bool RulesetsManager::is_item_material(const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> bool {
+        return scoped_rule_translation([&]() -> bool {
             if (text.empty()) return false;
             for (const auto* ns : {"::materials", "::materials::adjective"}) {
                 const auto results = resolve_namespace(text, ns, 0);
@@ -910,7 +888,7 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_material_state(
             const std::string& text, bool adjective) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             const auto results = resolve_namespace(text, adjective ?
                 "::materials::state::adjective" : "::materials::state", 0);
             for (const auto& result : results)
@@ -923,7 +901,7 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_material_prefix(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             if (text.empty()) return std::string{};
             // The trailing separator belongs to the existing prefix grammar;
             // the producer already supplied the entire species/plant field.
@@ -938,7 +916,7 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_woven_plant_material(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             const auto results = resolve_namespace(text, "::materials::woven_plant", 0);
             for (const auto& result : results)
                 if (result->remaining.empty() && !result->translated.empty())
@@ -949,7 +927,7 @@ namespace Hooks {
 
     bool RulesetsManager::is_material_state(const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> bool {
+        return scoped_rule_translation([&]() -> bool {
             if (text.empty()) return false;
             // No optional species/plant prefix here: callers resolve a generated
             // creature separately, then require a complete, real material state.
@@ -965,7 +943,7 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_creature_name(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             const auto results = resolve_namespace(text, "::creatures::name", 0);
             for (const auto& result : results)
                 if (result->remaining.empty() && !result->translated.empty())
@@ -1050,7 +1028,7 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_static_creature_name(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             const auto found = static_creature_names_.find(creature_lookup_key(text));
             return found == static_creature_names_.end()
                 ? std::nullopt : std::optional<std::string>(found->second);
@@ -1060,7 +1038,7 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::expand_shortened_creature_name(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             const std::string key = creature_lookup_key(text);
             if (key.size() < 2 || static_creature_names_.contains(key)) return std::nullopt;
             std::optional<std::string> expanded;
@@ -1139,13 +1117,8 @@ namespace Hooks {
         // or a shorter field while sharing the caller's original work budget.
         struct ResolverGuard {
             decltype(active_resolver_calls_)& active;
-            std::pair<std::string, std::string> key;
-            ResolutionSession* session;
-            size_t previous_context;
-            ~ResolverGuard() {
-                active.erase(key);
-                if (session) session->callback_context = previous_context;
-            }
+            const ResolutionSession::Key* key;
+            ~ResolverGuard() { active.erase(*key); }
         };
         std::vector<std::shared_ptr<const ResultTree>> results;
         const auto name_byte = [](unsigned char ch) {
@@ -1183,38 +1156,36 @@ namespace Hooks {
             // the enclosing grammar decides where the capture ends.
             const auto source = std::string_view(text).substr(0, end);
             dfcn::translation_work_step();
-            std::pair<std::string, std::string> key{kind, source};
-            if (!active_resolver_calls_.insert(key).second) {
-                if (active_resolution_session_) ++active_resolution_session_->cycle_revision;
-                if (dfcn::active_translation_work) ++dfcn::active_translation_work->cycle_revision;
-                continue;
-            }
-            auto* session = active_resolution_session_;
-            const size_t previous_context = session ? session->callback_context : 0;
-            ResolverGuard guard{active_resolver_calls_, std::move(key), session, previous_context};
-            if (session) {
-                const ResolutionSession::KeyView callback_key{
-                    kind, source, 0, previous_context};
-                if (const auto context = session->callback_contexts.find(callback_key);
-                        context != session->callback_contexts.end()) {
-                    session->callback_context = context->second;
-                } else {
-                    const size_t identity = session->next_callback_context++;
-                    constexpr size_t maximum_entries = 4096, maximum_bytes = 1024 * 1024;
-                    const size_t bytes = kind.size() + source.size();
-                    if (session->callback_contexts.size() < maximum_entries &&
-                            bytes <= maximum_bytes &&
-                            session->callback_context_bytes <= maximum_bytes - bytes) {
-                        session->callback_contexts.emplace(ResolutionSession::Key{
-                            std::string(kind), std::string(source), 0, previous_context}, identity);
-                        session->callback_context_bytes += bytes;
-                    }
-                    session->callback_context = identity;
+            const auto resolve_capture = [&]() -> std::optional<std::string> {
+                auto* session = active_resolution_session_;
+                const std::uint64_t revision = context_revision_provider_
+                    ? context_revision_provider_() : 0;
+                const ResolutionSession::KeyView key{kind, source, revision};
+                if (session) {
+                    if (const auto known = session->callbacks.find(key);
+                            known != session->callbacks.end()) return known->second;
                 }
-            }
-            auto translated = creature ? creature_name_resolver_(source)
-                : phrase_resolver_(source, kind);
-            dfcn::translation_work_step();
+                const auto [call, inserted] = active_resolver_calls_.emplace(
+                    ResolutionSession::Key{std::string(kind), std::string(source), revision});
+                if (!inserted) {
+                    if (session) ++session->cycle_revision;
+                    if (dfcn::active_translation_work) ++dfcn::active_translation_work->cycle_revision;
+                    return std::nullopt;
+                }
+                ResolverGuard guard{active_resolver_calls_, &*call};
+                const size_t local_cycle = session ? session->cycle_revision : 0;
+                const size_t shared_cycle = dfcn::active_translation_work
+                    ? dfcn::active_translation_work->cycle_revision : 0;
+                auto target = creature ? creature_name_resolver_(source)
+                    : phrase_resolver_(source, kind);
+                if (session && session->cycle_revision == local_cycle &&
+                        (!dfcn::active_translation_work ||
+                            dfcn::active_translation_work->cycle_revision == shared_cycle) &&
+                        (context_revision_provider_ ? context_revision_provider_() : 0) == revision)
+                    session->callbacks.emplace(*guard.key, target);
+                return target;
+            };
+            auto translated = resolve_capture();
             if (!translated || translated->empty()) continue;
             results.push_back(std::make_shared<const ResultTree>(identifier,
                 text.substr(0, end), std::move(*translated), text.substr(end),
@@ -1226,7 +1197,7 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_tile_description(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             auto complete = [&](const std::string& source, const std::string& ns)
                     -> std::optional<std::string> {
                 const auto results = resolve_namespace(source, ns, 0);
@@ -1287,7 +1258,7 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_color(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             // Color names such as copper/cardinal are not material/species names
             // in an appearance sentence. Use the existing reviewed color table.
             const auto results = resolve_namespace(text, "::color::name", 0);
@@ -1303,7 +1274,7 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_appearance_term(
             const std::string& text, const std::string& context) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             const auto results = resolve_namespace(
                 text, "::health::appearance::" + context, 0);
             for (const auto& result : results) {
@@ -1317,7 +1288,7 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_anatomy(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        return bounded_rule_translation([&]() -> std::optional<std::string> {
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
             if (text.empty() || text.find_first_of(".;:!?\"()\n\r") != std::string::npos)
                 return std::nullopt;
             auto complete = [&](const std::string& source, const std::string& ns)
@@ -1690,7 +1661,47 @@ namespace Hooks {
     // 翻译核心
     // -------------------------------------------------------------------------
 
-    /// 获取所有可能的翻译结果。
+    void RulesetsManager::compact_candidates(std::vector<Candidate>& candidates,
+            const Tokens& target_tokens, size_t source_size) {
+        const bool target_literal = std::any_of(target_tokens.begin(), target_tokens.end(),
+            [](const Token& token) { return token.type == Type::Literal && !token.value.empty(); });
+        for (auto& candidate : candidates) {
+            candidate.external_capture_bytes = 0;
+            candidate.tree_weight = 0;
+            candidate.selection_flags = 0;
+            bool target_nonempty = target_literal;
+            const size_t consumed = source_size - candidate.remaining.size();
+            for (const auto& [identifier, child] : candidate.results) {
+                candidate.external_capture_bytes += child->external_capture_bytes;
+                candidate.tree_weight += child->tree_weight;
+                candidate.selection_flags |= child->selection_flags() & 15U;
+                if (child->complete_creature && child->matched.size() == consumed)
+                    candidate.selection_flags |= 16U;
+                if (!child->translated.empty() && std::any_of(target_tokens.begin(),
+                        target_tokens.end(), [&](const Token& token) {
+                            return token.type == Type::Reference && token.value == identifier;
+                        })) target_nonempty = true;
+            }
+            if (target_nonempty) candidate.selection_flags |= 32U;
+        }
+        compact_ordered_frontier(candidates, [](const Candidate& candidate) {
+            return FrontierKey{candidate.remaining.size(), candidate.selection_flags};
+        }, [](const Candidate& a, const Candidate& b) {
+            if (a.external_capture_bytes != b.external_capture_bytes)
+                return a.external_capture_bytes < b.external_capture_bytes;
+            return a.tree_weight < b.tree_weight;
+        });
+    }
+
+    RulesetsManager::LruMemoMap::Value RulesetsManager::compact_results(
+            LruMemoMap::Value results) {
+        compact_ordered_frontier(results, [](const auto& tree) {
+            return FrontierKey{tree->remaining.size(), tree->selection_flags()};
+        }, [](const auto& a, const auto& b) { return a->preferred_to(*b); });
+        return results;
+    }
+
+    /// 获取各匹配前缀的首条路径和最佳路径，保留不同的语义选择资格。
     /// @param partial_match true 时返回部分匹配结果，false 时仅返回完整匹配
     std::vector<std::shared_ptr<const RulesetsManager::ResultTree>> RulesetsManager::find_translations(const std::string& text, bool partial_match) const {
         auto results = resolve_namespace(text, "::", 0);
@@ -1701,13 +1712,13 @@ namespace Hooks {
         return full;
     }
 
-    /// 在指定标识符命名空间内递归求解所有可能的翻译结果。
+    /// 在指定标识符命名空间内递归求解各匹配前缀的语义选择前沿。
     ///
     /// 算法步骤：
     ///   0. 如果是 Replacer 引用（% 前缀），委托给 resolve_replacer
     ///   1. 检查记忆化缓存，命中则直接返回
     ///   2. 查找当前标识符对应的规则集
-    ///   3. 遍历每条规则（OR 分支），逐 Token 匹配（AND 序列）
+    ///   3. 遍历每条规则（OR 分支），逐 Token 匹配并合并同状态候选（AND 序列）
     ///      - Literal: 大小写不敏感前缀匹配
     ///      - Reference: 递归调用 resolve_namespace，绑定子结果
     ///   4. 对每个成功匹配的 Candidate 构建 ResultTree
@@ -1719,7 +1730,7 @@ namespace Hooks {
     /// @param text       待翻译的剩余文本
     /// @param identifier 当前命名空间标识符
     /// @param level      递归深度（仅用于调试输出）
-    /// @return           所有可能的翻译结果列表
+    /// @return           保留首条路径与最佳路径的翻译结果列表
     std::vector<std::shared_ptr<const RulesetsManager::ResultTree>> RulesetsManager::resolve_namespace(
         const std::string& text,
         const std::string& identifier,
@@ -1727,27 +1738,40 @@ namespace Hooks {
     ) const {
         dfcn::TranslationWorkFrame translation_work_frame(identifier, text);
         ResolutionSession local_session;
+        std::shared_ptr<ResolutionSession> shared_session;
         auto* previous_session = active_resolution_session_;
-        if (!previous_session) active_resolution_session_ = &local_session;
+        if (!previous_session) {
+            if (dfcn::active_translation_work) {
+                auto& retained = dfcn::active_translation_work->parser_sessions[this];
+                if (!retained) retained = std::make_shared<ResolutionSession>();
+                shared_session = std::static_pointer_cast<ResolutionSession>(retained);
+                active_resolution_session_ = shared_session.get();
+            } else active_resolution_session_ = &local_session;
+        }
         struct SessionGuard {
             ResolutionSession*& active;
             ResolutionSession* previous;
             ~SessionGuard() { active = previous; }
         } session_guard{active_resolution_session_, previous_session};
         auto& session = *active_resolution_session_;
-        // A result found while a callback is suppressed by its active key is
-        // context-dependent; it must not replace an ordinary memo entry.
-        const bool use_memo = active_resolver_calls_.empty();
         // Freeze this query's identity context for both lookup and insertion.
         // A nested owner scope can restore a different context before return;
         // it must never put this query's candidate under that restored key.
         const std::uint64_t context_revision = context_revision_provider_
             ? context_revision_provider_() : 0;
-        const size_t callback_context = session.callback_context;
         const ResolutionSession::KeyView query{
-            identifier, text, context_revision, callback_context};
+            identifier, text, context_revision};
         if (const auto cached = session.memo.find(query); cached != session.memo.end())
             return cached->second;
+        // Completed proofs are safe even during a callback: they need no
+        // unfinished recursive owner to resolve their source again.
+        if (auto outer_it = memo_cache_.find(identifier); outer_it != memo_cache_.end()) {
+            if (auto* cached = outer_it->second.find(text, context_revision)) {
+                session.memo.emplace(ResolutionSession::Key{
+                    identifier, text, context_revision}, *cached);
+                return *cached;
+            }
+        }
         const auto [active_query, inserted] = session.active.insert(query);
         if (!inserted) {
             ++session.cycle_revision;
@@ -1763,36 +1787,20 @@ namespace Hooks {
         const size_t shared_cycle_revision = dfcn::active_translation_work
             ? dfcn::active_translation_work->cycle_revision : 0;
         const auto complete_query = [&](LruMemoMap::Value results) {
-            // Only finished searches prove a miss. A cyclic callback or a
-            // swallowed budget exception cannot publish an incomplete parse.
-            dfcn::translation_work_step();
-            const bool stable = !dfcn::translation_work_exhausted() &&
-                session.cycle_revision == cycle_revision &&
+            results = compact_results(std::move(results));
+            // Only closed searches prove a miss. A suppressed circular
+            // dependency must not publish an incomplete parse as final.
+            const bool stable = session.cycle_revision == cycle_revision &&
                 (!dfcn::active_translation_work ||
                     dfcn::active_translation_work->cycle_revision == shared_cycle_revision) &&
                 (context_revision_provider_ ? context_revision_provider_() : 0) == context_revision;
             if (stable) {
-                constexpr size_t maximum_entries = 4096, maximum_bytes = 1024 * 1024;
-                const size_t bytes = identifier.size() + text.size() +
-                    results.size() * sizeof(LruMemoMap::Value::value_type);
-                if (session.memo.size() < maximum_entries && bytes <= maximum_bytes &&
-                        session.memo_bytes <= maximum_bytes - bytes) {
-                    if (session.memo.emplace(ResolutionSession::Key{
-                            identifier, text, context_revision, callback_context}, results).second)
-                        session.memo_bytes += bytes;
-                }
-                if (use_memo) memo_cache_[identifier].insert(text, results, context_revision);
+                session.memo.emplace(ResolutionSession::Key{
+                    identifier, text, context_revision}, results);
+                memo_cache_[identifier].insert(text, results, context_revision);
             }
             return results;
         };
-        // === 0. 持久记忆化检查 — 两级异构查找 ===
-        if (use_memo) {
-            if (auto outer_it = memo_cache_.find(identifier); outer_it != memo_cache_.end()) {
-                if (auto* cached = outer_it->second.find(text, context_revision)) {
-                    return *cached;
-                }
-            }
-        }
 
         // === 1. 处理 Replacer 引用（% 前缀）===
         if (!identifier.empty() && identifier[0] == '%') {
@@ -1905,12 +1913,12 @@ namespace Hooks {
                         if (ti + 1 < orig_tokens.size()) {
                             // Existing @ slots retain their first-delimiter
                             // semantics. Authored extension prose can opt into
-                            // bounded alternatives for a multiword name before
+                            // alternatives for a multiword name before
                             // a translated title with an @bt_ slot.
                             const auto& next_lit = orig_tokens[ti + 1];
                             const bool alternatives = token.value.starts_with("@bt_") &&
                                 !next_lit.value.empty();
-                            size_t search_at = 0, choices = 0;
+                            size_t search_at = 0;
                             while (search_at <= candidate.remaining.size()) {
                                 auto pos = find_literal_position(
                                     std::string_view(candidate.remaining).substr(search_at), next_lit.value);
@@ -1924,7 +1932,7 @@ namespace Hooks {
                                 new_results.emplace_back(token.value, capture_tree(captured));
                                 next_candidates.emplace_back(
                                     std::move(new_results), std::move(rem));
-                                if (!alternatives || ++choices >= 64) break;
+                                if (!alternatives) break;
                                 search_at = *pos + std::max<size_t>(1, next_lit.value.size());
                             }
                         } else {
@@ -1976,6 +1984,7 @@ namespace Hooks {
                         }
                     }
                 }
+                compact_candidates(next_candidates, trans_tokens, text.size());
                 candidates = std::move(next_candidates);
             }
 
