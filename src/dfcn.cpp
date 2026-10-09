@@ -21781,6 +21781,22 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 range_begin = field_index + 1;
                 if (item_fields.empty() || item_end <= item_start) continue;
 
+                // A complete captured/food candidate already wins over this
+                // shorter or identical grid reconstruction. Keep its native
+                // source ownership and avoid parsing the same item twice on
+                // every raw-layer and final-composite scan. Partial captures
+                // still reach the ordinary field fallback below.
+                const bool complete_item_owned = std::any_of(
+                    candidates.begin(), candidates.end(), [&](const Match &candidate) {
+                        return (candidate.rule == kEmbarkComposedCapturedItemRule ||
+                                candidate.rule == kEmbarkComposedFoodRule) &&
+                            !candidate.target.empty() && candidate.y == y &&
+                            candidate.x <= item_start &&
+                            candidate.x + candidate.length >= item_end &&
+                            candidate.x + candidate.length <= fields[field_index].start;
+                    });
+                if (complete_item_owned) continue;
+
                 // Meat rows can expose organ, preparation and creature as
                 // independently centred graphical fields (`liver / chopped /
                 // yak`).  Food composition therefore gets the complete field
@@ -29776,8 +29792,7 @@ std::optional<std::string> Overlay::translate_embark_equipment_fields(
             }
             return source;
         };
-        auto translate_order = [&](const std::vector<size_t> &order) {
-            const std::string source = source_for_order(order);
+        auto translate_source = [&](const std::string &source) {
             const std::string counted_source = quantity.empty()
                 ? source : quantity + " " + source;
             auto translated = captured_fields
@@ -29809,6 +29824,9 @@ std::optional<std::string> Overlay::translate_embark_equipment_fields(
             }
             return std::optional<std::string>{};
         };
+        auto translate_order = [&](const std::vector<size_t> &order) {
+            return translate_source(source_for_order(order));
+        };
 
         // Weapon fields need role-aware precedence for the same reason crafts do:
         // a graphical order can be individually translatable while still being
@@ -29816,21 +29834,34 @@ std::optional<std::string> Overlay::translate_embark_equipment_fields(
         // permutations first, so `battle` and `axe` are rebound as `battle axe`
         // before any generic permutation can accept “战役” as a finished result.
         if (fields.size() <= 5) {
-            std::vector<size_t> weapon_order(fields.size());
-            std::iota(weapon_order.begin(), weapon_order.end(), size_t{0});
-            do {
-                std::string weapon_source;
-                for (const size_t index : weapon_order) {
-                    if (!weapon_source.empty()) weapon_source.push_back(' ');
-                    weapon_source += fields[index];
-                }
-                if (const auto weapon =
-                        translate_embark_weapon_item_name(weapon_source)) {
-                    if (quantity.empty()) return weapon;
-                    return translate_order(weapon_order);
-                }
-            } while (std::next_permutation(weapon_order.begin(),
-                                           weapon_order.end()));
+            // Only the strict source grammar chooses this order. Retain its
+            // canonical English phrase (or miss), then resolve current native
+            // captures when quantities need the complete item compositor.
+            std::string weapon_key = "WeaponFields|";
+            for (const std::string &field : fields) {
+                weapon_key += std::to_string(field.size());
+                weapon_key.push_back(':');
+                weapon_key += field;
+            }
+            std::optional<std::string> strict_weapon;
+            const auto weapon_source = memoize_item_translation(
+                std::move(weapon_key), [&]() -> std::optional<std::string> {
+                    std::vector<size_t> weapon_order(fields.size());
+                    std::iota(weapon_order.begin(), weapon_order.end(), size_t{0});
+                    do {
+                        std::string source = source_for_order(weapon_order);
+                        strict_weapon = translate_embark_weapon_item_name(source);
+                        if (strict_weapon) return source;
+                    } while (std::next_permutation(weapon_order.begin(),
+                                                   weapon_order.end()));
+                    return std::nullopt;
+                });
+            if (weapon_source) {
+                if (quantity.empty())
+                    return strict_weapon ? strict_weapon :
+                        translate_embark_weapon_item_name(*weapon_source);
+                return translate_source(*weapon_source);
+            }
         }
 
         // Trap component rows are laid out by field role rather than English word
@@ -29922,6 +29953,18 @@ std::optional<std::string> Overlay::translate_embark_equipment_fields(
 std::optional<std::string> Overlay::translate_embark_food_item(
         const std::vector<std::string> &screen_fields) const {
     if (screen_fields.empty()) return std::nullopt;
+    // This parser consumes only the supplied fields. Retain their ordered
+    // boundaries, including quantities and sex markers, so repeated equipment
+    // rows can reuse food misses as well as complete food translations. The
+    // shared item cache already follows rule reloads and identity context.
+    std::string cache_key = "Food|";
+    for (const std::string &field : screen_fields) {
+        cache_key += std::to_string(field.size());
+        cache_key.push_back(':');
+        cache_key += field;
+    }
+    return memoize_item_translation(std::move(cache_key), [&]()
+            -> std::optional<std::string> {
     auto trim_grid_spaces = [](std::string value) {
         const size_t first = value.find_first_not_of(' ');
         if (first == std::string::npos) return std::string{};
@@ -30116,6 +30159,7 @@ std::optional<std::string> Overlay::translate_embark_food_item(
     translated += number_suffix;
     if (!quantity.empty()) translated = quantity + " 份" + translated;
     return translated;
+    });
 }
 
 static std::string arena_equipment_row_name(
