@@ -41973,6 +41973,7 @@ The waxing half moon is setting to the west.	上弦月正向西方落下。	hP
 The waxing half moon is setting to the west.	上弦月正向西方落下。	hj
 The {s} Rampage of {n} in in {p} during {e}.	在{e1}期间，{n1}在{p1}的{s1}肆虐事件。	htEi
 The {s} Rampage of {n} in in {p} within {p}.	在{p2}，{n1}在{p1}的{s1}肆虐事件。	htEi
+The {s} have given a resident {s} the name .	{s1}给一只常住的{s2}起了名字。	hPt
 There is a heavy wind blowing from the east.	一阵大风从东方吹来。	hP
 There is a heavy wind blowing from the east.	一阵大风从东方吹来。	hj
 There is a heavy wind blowing from the west.	一阵大风从西方吹来。	hP
@@ -80296,6 +80297,7 @@ were expelled in the wilds	在荒野中遭到了驱逐	h
 {n} is an {s} born in {d}.	{n}是{s}，生于第{d}年。	ht
 {n} is playing with a toy.	{n1}正在玩玩具。	hPt
 {n} is unwilling to trade.	{n1}不愿交易。	hPt
+{n} loses hold of the {s}!	{n1}没能抓住{s1}！	hPt
 {n} loses hold of the {s}.	{n1}没能抓住{s1}。	hPt
 {n} regains consciousness.	{n1}恢复了意识。	hPt
 {n} ruled from {p} of {p}.	{n}以{p2}的{p1}为统治中心。	ht
@@ -81154,6 +81156,7 @@ You have died of old age.	你老死了。	hP
 You have frozen to death.	你冻死了。	hP
 You hear a harsh whistle.	你听到了刺耳的哨声。	hP
 You hear nearby grinding.	你听到附近传来机械摩擦声。	hP
+You lose hold of the {s}!	你没能抓住{s1}！	hPt
 You lose hold of the {s}.	你没能抓住{s1}。	hPt
 You regain consciousness.	你恢复了意识。	hP
 You should travel to {e}.	你应该前往{e1}。	hPt
@@ -119559,6 +119562,7 @@ youngest child	最小的孩子	h
 {n} dismounts.	{n1}从坐骑上下来了。	hPt
 {n} drops {i}.	{n1}扔下了{i1}。	hPt
 {n} drops {s}.	{n1}放下了{s1}。	hPt
+{n} flounders!	{n1}挣扎着！	hPt
 {n} is an {s}.	{n}是{s}。	ht
 {n} is the god	{n}是神祇	atl
 {n} licks you.	{n1}舔了舔你。	hPt
@@ -119969,6 +119973,7 @@ X is laboring	X正在劳动	wl
 X is laughing	X正在大笑	wl
 You dismount.	你从坐骑上下来了。	hP
 You drop {s}.	你放下了{s1}。	hPt
+You flounder!	你挣扎着！	hP
 You lick {n}.	你舔了舔{n1}。	hPt
 You make {s}.	你制作了{s1}。	hPt
 You mock me?!	你在嘲弄我？！	hP

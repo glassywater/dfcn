@@ -1,0 +1,271 @@
+edition	profession_enum	case_entry_va	case_linear_end_va	case_literal_forms	dynamic_supply
+reference	0	0x14132cce5	0x14132ccff	['miner']	RAW title override before enum switch; optional plural suffix after selected case
+reference	1	0x14132ccff	0x14132cd19	['woodworker']	RAW title override before enum switch; optional plural suffix after selected case
+reference	2	0x14132cd19	0x14132cd33	['carpenter']	RAW title override before enum switch; optional plural suffix after selected case
+reference	3	0x14132cd33	0x14132cd4d	['bowyer']	RAW title override before enum switch; optional plural suffix after selected case
+reference	4	0x14132cd4d	0x14132cd67	['woodcutter']	RAW title override before enum switch; optional plural suffix after selected case
+reference	5	0x14132cd67	0x14132cd81	['stoneworker']	RAW title override before enum switch; optional plural suffix after selected case
+reference	6	0x14132cd9b	0x14132cdb5	['stonecutter']	RAW title override before enum switch; optional plural suffix after selected case
+reference	7	0x14132cdb5	0x14132cdcf	['stone carver']	RAW title override before enum switch; optional plural suffix after selected case
+reference	8	0x14132cd81	0x14132cd9b	['engraver']	RAW title override before enum switch; optional plural suffix after selected case
+reference	9	0x14132cdcf	0x14132cde9	['mason']	RAW title override before enum switch; optional plural suffix after selected case
+reference	10	0x14132cde9	0x14132ce03	['ranger']	RAW title override before enum switch; optional plural suffix after selected case
+reference	11	0x14132ce03	0x14132ce1d	['animal caretaker']	RAW title override before enum switch; optional plural suffix after selected case
+reference	12	0x14132ce1d	0x14132ce37	['animal trainer']	RAW title override before enum switch; optional plural suffix after selected case
+reference	13	0x14132ce37	0x14132ce51	['hunter']	RAW title override before enum switch; optional plural suffix after selected case
+reference	14	0x14132ce51	0x14132ce6b	['trapper']	RAW title override before enum switch; optional plural suffix after selected case
+reference	15	0x14132ce6b	0x14132ce85	['animal dissector']	RAW title override before enum switch; optional plural suffix after selected case
+reference	16	0x14132ce85	0x14132ce9f	['metalsmith']	RAW title override before enum switch; optional plural suffix after selected case
+reference	17	0x14132ce9f	0x14132ceb9	['furnace operator']	RAW title override before enum switch; optional plural suffix after selected case
+reference	18	0x14132ceb9	0x14132ced3	['weaponsmith']	RAW title override before enum switch; optional plural suffix after selected case
+reference	19	0x14132ced3	0x14132ceed	['armorer']	RAW title override before enum switch; optional plural suffix after selected case
+reference	20	0x14132ceed	0x14132cf07	['blacksmith']	RAW title override before enum switch; optional plural suffix after selected case
+reference	21	0x14132cf07	0x14132cf21	['metalcrafter']	RAW title override before enum switch; optional plural suffix after selected case
+reference	22	0x14132cf21	0x14132cf3b	['jeweler']	RAW title override before enum switch; optional plural suffix after selected case
+reference	23	0x14132cf3b	0x14132cf55	['gem cutter']	RAW title override before enum switch; optional plural suffix after selected case
+reference	24	0x14132cf55	0x14132cf6f	['gem setter']	RAW title override before enum switch; optional plural suffix after selected case
+reference	25	0x14132cf6f	0x14132cf8f	['craftsman', 'craftsmen']	RAW title override before enum switch; optional plural suffix after selected case
+reference	26	0x14132cf8f	0x14132cfa9	['woodcrafter']	RAW title override before enum switch; optional plural suffix after selected case
+reference	27	0x14132d02b	0x14132d045	['stonecrafter']	RAW title override before enum switch; optional plural suffix after selected case
+reference	28	0x14132d045	0x14132d05f	['leatherworker']	RAW title override before enum switch; optional plural suffix after selected case
+reference	29	0x14132d05f	0x14132d079	['bone carver']	RAW title override before enum switch; optional plural suffix after selected case
+reference	30	0x14132d079	0x14132d093	['weaver']	RAW title override before enum switch; optional plural suffix after selected case
+reference	31	0x14132d093	0x14132d0ad	['clothier']	RAW title override before enum switch; optional plural suffix after selected case
+reference	32	0x14132d0ad	0x14132d0c7	['glassmaker']	RAW title override before enum switch; optional plural suffix after selected case
+reference	33	0x14132cfdd	0x14132cff7	['potter']	RAW title override before enum switch; optional plural suffix after selected case
+reference	34	0x14132cff7	0x14132d011	['glazer']	RAW title override before enum switch; optional plural suffix after selected case
+reference	35	0x14132d011	0x14132d02b	['wax worker']	RAW title override before enum switch; optional plural suffix after selected case
+reference	36	0x14132d0c7	0x14132d0e1	['strand extractor']	RAW title override before enum switch; optional plural suffix after selected case
+reference	37	0x14132d0e1	0x14132d0fb	['fishery worker']	RAW title override before enum switch; optional plural suffix after selected case
+reference	38	0x14132d0fb	0x14132d11b	['fisherman', 'fishermen']	RAW title override before enum switch; optional plural suffix after selected case
+reference	39	0x14132d11b	0x14132d135	['fish dissector']	RAW title override before enum switch; optional plural suffix after selected case
+reference	40	0x14132d135	0x14132d14f	['fish cleaner']	RAW title override before enum switch; optional plural suffix after selected case
+reference	41	0x14132d14f	0x14132d169	['farmer']	RAW title override before enum switch; optional plural suffix after selected case
+reference	42	0x14132d169	0x14132d183	['cheesemaker']	RAW title override before enum switch; optional plural suffix after selected case
+reference	43	0x14132d183	0x14132d19d	['milker']	RAW title override before enum switch; optional plural suffix after selected case
+reference	44	0x14132d1eb	0x14132d205	['cook']	RAW title override before enum switch; optional plural suffix after selected case
+reference	45	0x14132d205	0x14132d21f	['thresher']	RAW title override before enum switch; optional plural suffix after selected case
+reference	46	0x14132d21f	0x14132d239	['miller']	RAW title override before enum switch; optional plural suffix after selected case
+reference	47	0x14132d239	0x14132d253	['butcher']	RAW title override before enum switch; optional plural suffix after selected case
+reference	48	0x14132d253	0x14132d26d	['tanner']	RAW title override before enum switch; optional plural suffix after selected case
+reference	49	0x14132d26d	0x14132d287	['dyer']	RAW title override before enum switch; optional plural suffix after selected case
+reference	50	0x14132d2bb	0x14132d2d5	['planter']	RAW title override before enum switch; optional plural suffix after selected case
+reference	51	0x14132d2d5	0x14132d2ef	['herbalist']	RAW title override before enum switch; optional plural suffix after selected case
+reference	52	0x14132d2ef	0x14132d309	['brewer']	RAW title override before enum switch; optional plural suffix after selected case
+reference	53	0x14132d309	0x14132d323	['soap maker']	RAW title override before enum switch; optional plural suffix after selected case
+reference	54	0x14132d323	0x14132d33d	['potash maker']	RAW title override before enum switch; optional plural suffix after selected case
+reference	55	0x14132d33d	0x14132d357	['lye maker']	RAW title override before enum switch; optional plural suffix after selected case
+reference	56	0x14132d357	0x14132d371	['wood burner']	RAW title override before enum switch; optional plural suffix after selected case
+reference	57	0x14132d1b7	0x14132d1d1	['shearer']	RAW title override before enum switch; optional plural suffix after selected case
+reference	58	0x14132d1d1	0x14132d1eb	['spinner']	RAW title override before enum switch; optional plural suffix after selected case
+reference	59	0x14132d287	0x14132d2a1	['presser']	RAW title override before enum switch; optional plural suffix after selected case
+reference	60	0x14132d2a1	0x14132d2bb	['beekeeper']	RAW title override before enum switch; optional plural suffix after selected case
+reference	61	0x14132d371	0x14132d38b	['engineer']	RAW title override before enum switch; optional plural suffix after selected case
+reference	62	0x14132d38b	0x14132d3a5	['mechanic']	RAW title override before enum switch; optional plural suffix after selected case
+reference	63	0x14132d3a5	0x14132d3bf	['siege engineer']	RAW title override before enum switch; optional plural suffix after selected case
+reference	64	0x14132d3bf	0x14132d3d9	['siege operator']	RAW title override before enum switch; optional plural suffix after selected case
+reference	65	0x14132d3d9	0x14132d3f3	['pump operator']	RAW title override before enum switch; optional plural suffix after selected case
+reference	66	0x14132d3f3	0x14132d40d	['clerk']	RAW title override before enum switch; optional plural suffix after selected case
+reference	67	0x14132d40d	0x14132d427	['administrator']	RAW title override before enum switch; optional plural suffix after selected case
+reference	68	0x14132d427	0x14132d441	['trader']	RAW title override before enum switch; optional plural suffix after selected case
+reference	69	0x14132d4dd	0x14132d4f7	['doctor']	RAW title override before enum switch; optional plural suffix after selected case
+reference	70	0x14132d4f7	0x14132d511	['diagnostician']	RAW title override before enum switch; optional plural suffix after selected case
+reference	71	0x14132d511	0x14132d52b	['bone doctor']	RAW title override before enum switch; optional plural suffix after selected case
+reference	72	0x14132d52b	0x14132d545	['suturer']	RAW title override before enum switch; optional plural suffix after selected case
+reference	73	0x14132d545	0x14132d55f	['surgeon']	RAW title override before enum switch; optional plural suffix after selected case
+reference	74	0x14132d55f	0x14132d579	['merchant']	RAW title override before enum switch; optional plural suffix after selected case
+reference	75	0x14132d593	0x14132d5b3	['hammerman', 'hammermen']	RAW title override before enum switch; optional plural suffix after selected case
+reference	76	0x14132d5b3	0x14132d5cd	['Hammer Lord']	RAW title override before enum switch; optional plural suffix after selected case
+reference	77	0x14132d5cd	0x14132d5ed	['spearman', 'spearmen']	RAW title override before enum switch; optional plural suffix after selected case
+reference	78	0x14132d5ed	0x14132d607	['Spearmaster']	RAW title override before enum switch; optional plural suffix after selected case
+reference	79	0x14132d607	0x14132d627	['crossbowman', 'crossbowmen']	RAW title override before enum switch; optional plural suffix after selected case
+reference	80	0x14132d627	0x14132d647	['Elite Crossbowmen', 'Elite Crossbowman']	RAW title override before enum switch; optional plural suffix after selected case
+reference	81	0x14132d647	0x14132d661	['wrestler']	RAW title override before enum switch; optional plural suffix after selected case
+reference	82	0x14132d661	0x14132d67b	['Elite Wrestler']	RAW title override before enum switch; optional plural suffix after selected case
+reference	83	0x14132d67b	0x14132d69b	['axeman', 'axemen']	RAW title override before enum switch; optional plural suffix after selected case
+reference	84	0x14132d69b	0x14132d6b5	['Axe Lord']	RAW title override before enum switch; optional plural suffix after selected case
+reference	85	0x14132d6b5	0x14132d6d5	['swordsman', 'swordsmen']	RAW title override before enum switch; optional plural suffix after selected case
+reference	86	0x14132d6d5	0x14132d6ef	['Swordmaster']	RAW title override before enum switch; optional plural suffix after selected case
+reference	87	0x14132d6ef	0x14132d70f	['maceman', 'macemen']	RAW title override before enum switch; optional plural suffix after selected case
+reference	88	0x14132d70f	0x14132d729	['Mace Lord']	RAW title override before enum switch; optional plural suffix after selected case
+reference	89	0x14132d729	0x14132d749	['pikeman', 'pikemen']	RAW title override before enum switch; optional plural suffix after selected case
+reference	90	0x14132d749	0x14132d763	['Pikemaster']	RAW title override before enum switch; optional plural suffix after selected case
+reference	91	0x14132d763	0x14132d783	['bowman', 'bowmen']	RAW title override before enum switch; optional plural suffix after selected case
+reference	92	0x14132d783	0x14132d7a3	['Elite Bowman', 'Elite Bowmen']	RAW title override before enum switch; optional plural suffix after selected case
+reference	93	0x14132d7a3	0x14132d7bd	['blowgunner']	RAW title override before enum switch; optional plural suffix after selected case
+reference	94	0x14132d7bd	0x14132d7d7	['Master Blowgunner']	RAW title override before enum switch; optional plural suffix after selected case
+reference	95	0x14132d7d7	0x14132d7f1	['lasher']	RAW title override before enum switch; optional plural suffix after selected case
+reference	96	0x14132d7f1	0x14132d80b	['Master Lasher']	RAW title override before enum switch; optional plural suffix after selected case
+reference	97	0x14132d80b	0x14132d825	['recruit']	RAW title override before enum switch; optional plural suffix after selected case
+reference	98	0x14132d825	0x14132d83a	['hunting']	RAW title override before enum switch; optional plural suffix after selected case
+reference	99	0x14132d83a	0x14132d84f	['war']	RAW title override before enum switch; optional plural suffix after selected case
+reference	100	0x14132d84f	0x14132d869	['Master Thief']	RAW title override before enum switch; optional plural suffix after selected case
+reference	101	0x14132d869	0x14132d883	['thief']	RAW title override before enum switch; optional plural suffix after selected case
+reference	102	0x14132de47	0x14132de98	['s']	RAW title override before enum switch; optional plural suffix after selected case
+reference	103	0x14132da9d	0x14132dc6d	['children', 'child']	RAW title override before enum switch; optional plural suffix after selected case; caste/child/baby title may come from RAW vectors
+reference	104	0x14132dc6d	0x14132de47	['babies', 'baby', 'babies', 'baby']	RAW title override before enum switch; optional plural suffix after selected case; caste/child/baby title may come from RAW vectors
+reference	105	0x14132d579	0x14132d593	['drunk']	RAW title override before enum switch; optional plural suffix after selected case
+reference	106	0x14132d883	0x14132d89d	['monster slayer']	RAW title override before enum switch; optional plural suffix after selected case
+reference	107	0x14132d89d	0x14132d8b7	['scout']	RAW title override before enum switch; optional plural suffix after selected case
+reference	108	0x14132d8b7	0x14132d8d1	['beast hunter']	RAW title override before enum switch; optional plural suffix after selected case
+reference	109	0x14132d8d1	0x14132d8eb	['snatcher']	RAW title override before enum switch; optional plural suffix after selected case
+reference	110	0x14132d8eb	0x14132d917	['mercenaries', 'mercenary']	RAW title override before enum switch; optional plural suffix after selected case
+reference	111	0x14132d19d	0x14132d1b7	['gelder']	RAW title override before enum switch; optional plural suffix after selected case
+reference	112	0x14132d48f	0x14132d4a9	['performer']	RAW title override before enum switch; optional plural suffix after selected case
+reference	113	0x14132d441	0x14132d45b	['poet']	RAW title override before enum switch; optional plural suffix after selected case
+reference	114	0x14132d45b	0x14132d475	['bard']	RAW title override before enum switch; optional plural suffix after selected case
+reference	115	0x14132d475	0x14132d48f	['dancer']	RAW title override before enum switch; optional plural suffix after selected case
+reference	116	0x14132d917	0x14132d931	['sage']	RAW title override before enum switch; optional plural suffix after selected case
+reference	117	0x14132d931	0x14132d94b	['scholar']	RAW title override before enum switch; optional plural suffix after selected case
+reference	118	0x14132d94b	0x14132d965	['philosopher']	RAW title override before enum switch; optional plural suffix after selected case
+reference	119	0x14132d965	0x14132d97f	['mathematician']	RAW title override before enum switch; optional plural suffix after selected case
+reference	120	0x14132d97f	0x14132d999	['historian']	RAW title override before enum switch; optional plural suffix after selected case
+reference	121	0x14132d999	0x14132d9b3	['astronomer']	RAW title override before enum switch; optional plural suffix after selected case
+reference	122	0x14132d9b3	0x14132d9cd	['naturalist']	RAW title override before enum switch; optional plural suffix after selected case
+reference	123	0x14132d9cd	0x14132d9e7	['chemist']	RAW title override before enum switch; optional plural suffix after selected case
+reference	124	0x14132d9e7	0x14132da01	['geographer']	RAW title override before enum switch; optional plural suffix after selected case
+reference	125	0x14132d4a9	0x14132d4c3	['scribe']	RAW title override before enum switch; optional plural suffix after selected case
+reference	126	0x14132cfa9	0x14132cfc3	['papermaker']	RAW title override before enum switch; optional plural suffix after selected case
+reference	127	0x14132cfc3	0x14132cfdd	['bookbinder']	RAW title override before enum switch; optional plural suffix after selected case
+reference	128	0x14132d4c3	0x14132d4dd	['tavern keeper']	RAW title override before enum switch; optional plural suffix after selected case
+reference	129	0x14132da01	0x14132da1b	['criminal']	RAW title override before enum switch; optional plural suffix after selected case
+reference	130	0x14132da1b	0x14132da35	['peddler']	RAW title override before enum switch; optional plural suffix after selected case
+reference	131	0x14132da35	0x14132da4f	['prophet']	RAW title override before enum switch; optional plural suffix after selected case
+reference	132	0x14132da4f	0x14132da69	['pilgrim']	RAW title override before enum switch; optional plural suffix after selected case
+reference	133	0x14132da69	0x14132da83	['monk']	RAW title override before enum switch; optional plural suffix after selected case
+reference	134	0x14132da83	0x14132da9d	['messenger']	RAW title override before enum switch; optional plural suffix after selected case
+classic	0	0x141327c55	0x141327c6f	['miner']	RAW title override before enum switch; optional plural suffix after selected case
+classic	1	0x141327c6f	0x141327c89	['woodworker']	RAW title override before enum switch; optional plural suffix after selected case
+classic	2	0x141327c89	0x141327ca3	['carpenter']	RAW title override before enum switch; optional plural suffix after selected case
+classic	3	0x141327ca3	0x141327cbd	['bowyer']	RAW title override before enum switch; optional plural suffix after selected case
+classic	4	0x141327cbd	0x141327cd7	['woodcutter']	RAW title override before enum switch; optional plural suffix after selected case
+classic	5	0x141327cd7	0x141327cf1	['stoneworker']	RAW title override before enum switch; optional plural suffix after selected case
+classic	6	0x141327d0b	0x141327d25	['stonecutter']	RAW title override before enum switch; optional plural suffix after selected case
+classic	7	0x141327d25	0x141327d3f	['stone carver']	RAW title override before enum switch; optional plural suffix after selected case
+classic	8	0x141327cf1	0x141327d0b	['engraver']	RAW title override before enum switch; optional plural suffix after selected case
+classic	9	0x141327d3f	0x141327d59	['mason']	RAW title override before enum switch; optional plural suffix after selected case
+classic	10	0x141327d59	0x141327d73	['ranger']	RAW title override before enum switch; optional plural suffix after selected case
+classic	11	0x141327d73	0x141327d8d	['animal caretaker']	RAW title override before enum switch; optional plural suffix after selected case
+classic	12	0x141327d8d	0x141327da7	['animal trainer']	RAW title override before enum switch; optional plural suffix after selected case
+classic	13	0x141327da7	0x141327dc1	['hunter']	RAW title override before enum switch; optional plural suffix after selected case
+classic	14	0x141327dc1	0x141327ddb	['trapper']	RAW title override before enum switch; optional plural suffix after selected case
+classic	15	0x141327ddb	0x141327df5	['animal dissector']	RAW title override before enum switch; optional plural suffix after selected case
+classic	16	0x141327df5	0x141327e0f	['metalsmith']	RAW title override before enum switch; optional plural suffix after selected case
+classic	17	0x141327e0f	0x141327e29	['furnace operator']	RAW title override before enum switch; optional plural suffix after selected case
+classic	18	0x141327e29	0x141327e43	['weaponsmith']	RAW title override before enum switch; optional plural suffix after selected case
+classic	19	0x141327e43	0x141327e5d	['armorer']	RAW title override before enum switch; optional plural suffix after selected case
+classic	20	0x141327e5d	0x141327e77	['blacksmith']	RAW title override before enum switch; optional plural suffix after selected case
+classic	21	0x141327e77	0x141327e91	['metalcrafter']	RAW title override before enum switch; optional plural suffix after selected case
+classic	22	0x141327e91	0x141327eab	['jeweler']	RAW title override before enum switch; optional plural suffix after selected case
+classic	23	0x141327eab	0x141327ec5	['gem cutter']	RAW title override before enum switch; optional plural suffix after selected case
+classic	24	0x141327ec5	0x141327edf	['gem setter']	RAW title override before enum switch; optional plural suffix after selected case
+classic	25	0x141327edf	0x141327eff	['craftsman', 'craftsmen']	RAW title override before enum switch; optional plural suffix after selected case
+classic	26	0x141327eff	0x141327f19	['woodcrafter']	RAW title override before enum switch; optional plural suffix after selected case
+classic	27	0x141327f9b	0x141327fb5	['stonecrafter']	RAW title override before enum switch; optional plural suffix after selected case
+classic	28	0x141327fb5	0x141327fcf	['leatherworker']	RAW title override before enum switch; optional plural suffix after selected case
+classic	29	0x141327fcf	0x141327fe9	['bone carver']	RAW title override before enum switch; optional plural suffix after selected case
+classic	30	0x141327fe9	0x141328003	['weaver']	RAW title override before enum switch; optional plural suffix after selected case
+classic	31	0x141328003	0x14132801d	['clothier']	RAW title override before enum switch; optional plural suffix after selected case
+classic	32	0x14132801d	0x141328037	['glassmaker']	RAW title override before enum switch; optional plural suffix after selected case
+classic	33	0x141327f4d	0x141327f67	['potter']	RAW title override before enum switch; optional plural suffix after selected case
+classic	34	0x141327f67	0x141327f81	['glazer']	RAW title override before enum switch; optional plural suffix after selected case
+classic	35	0x141327f81	0x141327f9b	['wax worker']	RAW title override before enum switch; optional plural suffix after selected case
+classic	36	0x141328037	0x141328051	['strand extractor']	RAW title override before enum switch; optional plural suffix after selected case
+classic	37	0x141328051	0x14132806b	['fishery worker']	RAW title override before enum switch; optional plural suffix after selected case
+classic	38	0x14132806b	0x14132808b	['fisherman', 'fishermen']	RAW title override before enum switch; optional plural suffix after selected case
+classic	39	0x14132808b	0x1413280a5	['fish dissector']	RAW title override before enum switch; optional plural suffix after selected case
+classic	40	0x1413280a5	0x1413280bf	['fish cleaner']	RAW title override before enum switch; optional plural suffix after selected case
+classic	41	0x1413280bf	0x1413280d9	['farmer']	RAW title override before enum switch; optional plural suffix after selected case
+classic	42	0x1413280d9	0x1413280f3	['cheesemaker']	RAW title override before enum switch; optional plural suffix after selected case
+classic	43	0x1413280f3	0x14132810d	['milker']	RAW title override before enum switch; optional plural suffix after selected case
+classic	44	0x14132815b	0x141328175	['cook']	RAW title override before enum switch; optional plural suffix after selected case
+classic	45	0x141328175	0x14132818f	['thresher']	RAW title override before enum switch; optional plural suffix after selected case
+classic	46	0x14132818f	0x1413281a9	['miller']	RAW title override before enum switch; optional plural suffix after selected case
+classic	47	0x1413281a9	0x1413281c3	['butcher']	RAW title override before enum switch; optional plural suffix after selected case
+classic	48	0x1413281c3	0x1413281dd	['tanner']	RAW title override before enum switch; optional plural suffix after selected case
+classic	49	0x1413281dd	0x1413281f7	['dyer']	RAW title override before enum switch; optional plural suffix after selected case
+classic	50	0x14132822b	0x141328245	['planter']	RAW title override before enum switch; optional plural suffix after selected case
+classic	51	0x141328245	0x14132825f	['herbalist']	RAW title override before enum switch; optional plural suffix after selected case
+classic	52	0x14132825f	0x141328279	['brewer']	RAW title override before enum switch; optional plural suffix after selected case
+classic	53	0x141328279	0x141328293	['soap maker']	RAW title override before enum switch; optional plural suffix after selected case
+classic	54	0x141328293	0x1413282ad	['potash maker']	RAW title override before enum switch; optional plural suffix after selected case
+classic	55	0x1413282ad	0x1413282c7	['lye maker']	RAW title override before enum switch; optional plural suffix after selected case
+classic	56	0x1413282c7	0x1413282e1	['wood burner']	RAW title override before enum switch; optional plural suffix after selected case
+classic	57	0x141328127	0x141328141	['shearer']	RAW title override before enum switch; optional plural suffix after selected case
+classic	58	0x141328141	0x14132815b	['spinner']	RAW title override before enum switch; optional plural suffix after selected case
+classic	59	0x1413281f7	0x141328211	['presser']	RAW title override before enum switch; optional plural suffix after selected case
+classic	60	0x141328211	0x14132822b	['beekeeper']	RAW title override before enum switch; optional plural suffix after selected case
+classic	61	0x1413282e1	0x1413282fb	['engineer']	RAW title override before enum switch; optional plural suffix after selected case
+classic	62	0x1413282fb	0x141328315	['mechanic']	RAW title override before enum switch; optional plural suffix after selected case
+classic	63	0x141328315	0x14132832f	['siege engineer']	RAW title override before enum switch; optional plural suffix after selected case
+classic	64	0x14132832f	0x141328349	['siege operator']	RAW title override before enum switch; optional plural suffix after selected case
+classic	65	0x141328349	0x141328363	['pump operator']	RAW title override before enum switch; optional plural suffix after selected case
+classic	66	0x141328363	0x14132837d	['clerk']	RAW title override before enum switch; optional plural suffix after selected case
+classic	67	0x14132837d	0x141328397	['administrator']	RAW title override before enum switch; optional plural suffix after selected case
+classic	68	0x141328397	0x1413283b1	['trader']	RAW title override before enum switch; optional plural suffix after selected case
+classic	69	0x14132844d	0x141328467	['doctor']	RAW title override before enum switch; optional plural suffix after selected case
+classic	70	0x141328467	0x141328481	['diagnostician']	RAW title override before enum switch; optional plural suffix after selected case
+classic	71	0x141328481	0x14132849b	['bone doctor']	RAW title override before enum switch; optional plural suffix after selected case
+classic	72	0x14132849b	0x1413284b5	['suturer']	RAW title override before enum switch; optional plural suffix after selected case
+classic	73	0x1413284b5	0x1413284cf	['surgeon']	RAW title override before enum switch; optional plural suffix after selected case
+classic	74	0x1413284cf	0x1413284e9	['merchant']	RAW title override before enum switch; optional plural suffix after selected case
+classic	75	0x141328503	0x141328523	['hammerman', 'hammermen']	RAW title override before enum switch; optional plural suffix after selected case
+classic	76	0x141328523	0x14132853d	['Hammer Lord']	RAW title override before enum switch; optional plural suffix after selected case
+classic	77	0x14132853d	0x14132855d	['spearman', 'spearmen']	RAW title override before enum switch; optional plural suffix after selected case
+classic	78	0x14132855d	0x141328577	['Spearmaster']	RAW title override before enum switch; optional plural suffix after selected case
+classic	79	0x141328577	0x141328597	['crossbowman', 'crossbowmen']	RAW title override before enum switch; optional plural suffix after selected case
+classic	80	0x141328597	0x1413285b7	['Elite Crossbowmen', 'Elite Crossbowman']	RAW title override before enum switch; optional plural suffix after selected case
+classic	81	0x1413285b7	0x1413285d1	['wrestler']	RAW title override before enum switch; optional plural suffix after selected case
+classic	82	0x1413285d1	0x1413285eb	['Elite Wrestler']	RAW title override before enum switch; optional plural suffix after selected case
+classic	83	0x1413285eb	0x14132860b	['axeman', 'axemen']	RAW title override before enum switch; optional plural suffix after selected case
+classic	84	0x14132860b	0x141328625	['Axe Lord']	RAW title override before enum switch; optional plural suffix after selected case
+classic	85	0x141328625	0x141328645	['swordsman', 'swordsmen']	RAW title override before enum switch; optional plural suffix after selected case
+classic	86	0x141328645	0x14132865f	['Swordmaster']	RAW title override before enum switch; optional plural suffix after selected case
+classic	87	0x14132865f	0x14132867f	['maceman', 'macemen']	RAW title override before enum switch; optional plural suffix after selected case
+classic	88	0x14132867f	0x141328699	['Mace Lord']	RAW title override before enum switch; optional plural suffix after selected case
+classic	89	0x141328699	0x1413286b9	['pikeman', 'pikemen']	RAW title override before enum switch; optional plural suffix after selected case
+classic	90	0x1413286b9	0x1413286d3	['Pikemaster']	RAW title override before enum switch; optional plural suffix after selected case
+classic	91	0x1413286d3	0x1413286f3	['bowman', 'bowmen']	RAW title override before enum switch; optional plural suffix after selected case
+classic	92	0x1413286f3	0x141328713	['Elite Bowman', 'Elite Bowmen']	RAW title override before enum switch; optional plural suffix after selected case
+classic	93	0x141328713	0x14132872d	['blowgunner']	RAW title override before enum switch; optional plural suffix after selected case
+classic	94	0x14132872d	0x141328747	['Master Blowgunner']	RAW title override before enum switch; optional plural suffix after selected case
+classic	95	0x141328747	0x141328761	['lasher']	RAW title override before enum switch; optional plural suffix after selected case
+classic	96	0x141328761	0x14132877b	['Master Lasher']	RAW title override before enum switch; optional plural suffix after selected case
+classic	97	0x14132877b	0x141328795	['recruit']	RAW title override before enum switch; optional plural suffix after selected case
+classic	98	0x141328795	0x1413287aa	['hunting']	RAW title override before enum switch; optional plural suffix after selected case
+classic	99	0x1413287aa	0x1413287bf	['war']	RAW title override before enum switch; optional plural suffix after selected case
+classic	100	0x1413287bf	0x1413287d9	['Master Thief']	RAW title override before enum switch; optional plural suffix after selected case
+classic	101	0x1413287d9	0x1413287f3	['thief']	RAW title override before enum switch; optional plural suffix after selected case
+classic	102	0x141328db7	0x141328e08	['s']	RAW title override before enum switch; optional plural suffix after selected case
+classic	103	0x141328a0d	0x141328bdd	['children', 'child']	RAW title override before enum switch; optional plural suffix after selected case; caste/child/baby title may come from RAW vectors
+classic	104	0x141328bdd	0x141328db7	['babies', 'baby', 'babies', 'baby']	RAW title override before enum switch; optional plural suffix after selected case; caste/child/baby title may come from RAW vectors
+classic	105	0x1413284e9	0x141328503	['drunk']	RAW title override before enum switch; optional plural suffix after selected case
+classic	106	0x1413287f3	0x14132880d	['monster slayer']	RAW title override before enum switch; optional plural suffix after selected case
+classic	107	0x14132880d	0x141328827	['scout']	RAW title override before enum switch; optional plural suffix after selected case
+classic	108	0x141328827	0x141328841	['beast hunter']	RAW title override before enum switch; optional plural suffix after selected case
+classic	109	0x141328841	0x14132885b	['snatcher']	RAW title override before enum switch; optional plural suffix after selected case
+classic	110	0x14132885b	0x141328887	['mercenaries', 'mercenary']	RAW title override before enum switch; optional plural suffix after selected case
+classic	111	0x14132810d	0x141328127	['gelder']	RAW title override before enum switch; optional plural suffix after selected case
+classic	112	0x1413283ff	0x141328419	['performer']	RAW title override before enum switch; optional plural suffix after selected case
+classic	113	0x1413283b1	0x1413283cb	['poet']	RAW title override before enum switch; optional plural suffix after selected case
+classic	114	0x1413283cb	0x1413283e5	['bard']	RAW title override before enum switch; optional plural suffix after selected case
+classic	115	0x1413283e5	0x1413283ff	['dancer']	RAW title override before enum switch; optional plural suffix after selected case
+classic	116	0x141328887	0x1413288a1	['sage']	RAW title override before enum switch; optional plural suffix after selected case
+classic	117	0x1413288a1	0x1413288bb	['scholar']	RAW title override before enum switch; optional plural suffix after selected case
+classic	118	0x1413288bb	0x1413288d5	['philosopher']	RAW title override before enum switch; optional plural suffix after selected case
+classic	119	0x1413288d5	0x1413288ef	['mathematician']	RAW title override before enum switch; optional plural suffix after selected case
+classic	120	0x1413288ef	0x141328909	['historian']	RAW title override before enum switch; optional plural suffix after selected case
+classic	121	0x141328909	0x141328923	['astronomer']	RAW title override before enum switch; optional plural suffix after selected case
+classic	122	0x141328923	0x14132893d	['naturalist']	RAW title override before enum switch; optional plural suffix after selected case
+classic	123	0x14132893d	0x141328957	['chemist']	RAW title override before enum switch; optional plural suffix after selected case
+classic	124	0x141328957	0x141328971	['geographer']	RAW title override before enum switch; optional plural suffix after selected case
+classic	125	0x141328419	0x141328433	['scribe']	RAW title override before enum switch; optional plural suffix after selected case
+classic	126	0x141327f19	0x141327f33	['papermaker']	RAW title override before enum switch; optional plural suffix after selected case
+classic	127	0x141327f33	0x141327f4d	['bookbinder']	RAW title override before enum switch; optional plural suffix after selected case
+classic	128	0x141328433	0x14132844d	['tavern keeper']	RAW title override before enum switch; optional plural suffix after selected case
+classic	129	0x141328971	0x14132898b	['criminal']	RAW title override before enum switch; optional plural suffix after selected case
+classic	130	0x14132898b	0x1413289a5	['peddler']	RAW title override before enum switch; optional plural suffix after selected case
+classic	131	0x1413289a5	0x1413289bf	['prophet']	RAW title override before enum switch; optional plural suffix after selected case
+classic	132	0x1413289bf	0x1413289d9	['pilgrim']	RAW title override before enum switch; optional plural suffix after selected case
+classic	133	0x1413289d9	0x1413289f3	['monk']	RAW title override before enum switch; optional plural suffix after selected case
+classic	134	0x1413289f3	0x141328a0d	['messenger']	RAW title override before enum switch; optional plural suffix after selected case

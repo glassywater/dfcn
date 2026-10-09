@@ -1,0 +1,309 @@
+edition	image_identity	callee	callee_end	direct_announcement_calls	literal_sources
+reference	PE:6a70a6d9:02711000	0x140066b70	0x140066bcc		
+reference	PE:6a70a6d9:02711000	0x140067dc0	0x140067e30		
+reference	PE:6a70a6d9:02711000	0x14006f380	0x14006f3dd		
+reference	PE:6a70a6d9:02711000	0x14006f5a0	0x14006f5ca		
+reference	PE:6a70a6d9:02711000	0x14006f5d0	0x14006f690		
+reference	PE:6a70a6d9:02711000	0x14006fa10	0x14006fa7e		
+reference	PE:6a70a6d9:02711000	0x140071f30	0x140071f83		
+reference	PE:6a70a6d9:02711000	0x1400726e0	0x140072750		
+reference	PE:6a70a6d9:02711000	0x1400737e0	0x14007386d		
+reference	PE:6a70a6d9:02711000	0x140073870	0x140073949		
+reference	PE:6a70a6d9:02711000	0x140073b70	0x140073be3		
+reference	PE:6a70a6d9:02711000	0x140075500	0x14007556f		
+reference	PE:6a70a6d9:02711000	0x14007db20	0x14007db4b		
+reference	PE:6a70a6d9:02711000	0x1400b99a0	0x1400b99cb		
+reference	PE:6a70a6d9:02711000	0x1400b9a90	0x1400b9abb		
+reference	PE:6a70a6d9:02711000	0x1400e1560	0x1400e160b		
+reference	PE:6a70a6d9:02711000	0x1400e3c20	0x1400e569d		Empty announcement  | nt  |   | errorlog.txt
+reference	PE:6a70a6d9:02711000	0x1400eb120	0x1400eb156		
+reference	PE:6a70a6d9:02711000	0x1400eb630	0x1400eb72d		
+reference	PE:6a70a6d9:02711000	0x1400fb510	0x1400fb53b		
+reference	PE:6a70a6d9:02711000	0x1400fdcf0	0x1400fdd63		
+reference	PE:6a70a6d9:02711000	0x140144ea0	0x140144f7b		
+reference	PE:6a70a6d9:02711000	0x1401ba030	0x1401ba047		
+reference	PE:6a70a6d9:02711000	0x1402243d0	0x14022441e		
+reference	PE:6a70a6d9:02711000	0x14022c100	0x14022c129		
+reference	PE:6a70a6d9:02711000	0x14030d190	0x14030d20c		
+reference	PE:6a70a6d9:02711000	0x1403d63e0	0x1403d647a		
+reference	PE:6a70a6d9:02711000	0x1404390d0	0x1404390e9		
+reference	PE:6a70a6d9:02711000	0x14052d650	0x14052d670		
+reference	PE:6a70a6d9:02711000	0x14052f6c0	0x14052f718		
+reference	PE:6a70a6d9:02711000	0x140557a60	0x140557a86		
+reference	PE:6a70a6d9:02711000	0x1405587b0	0x140558829		
+reference	PE:6a70a6d9:02711000	0x14057c1f0	0x14057c29a		
+reference	PE:6a70a6d9:02711000	0x14057c810	0x14057c86a		
+reference	PE:6a70a6d9:02711000	0x1405b06d0	0x1405b0729		
+reference	PE:6a70a6d9:02711000	0x1406dc960	0x1406dca6b		
+reference	PE:6a70a6d9:02711000	0x1406dd860	0x1406ddecb		a  | a girl | a boy | a child | twins | triplets | quadruplets | quintuplets | sextuplets | septuplets | octuplets | nonuplets | decaplets | undecaplets | duodecaplets | tredecaplets | quattuordecaplets | quindecaplets | many babies
+reference	PE:6a70a6d9:02711000	0x140706d60	0x140708960		Null color selection at pregnancy start, creature  | tion at pregnancy start, creature  | y start, creature  | e  | errorlog.txt
+reference	PE:6a70a6d9:02711000	0x1407e43c0	0x1407e44a4		
+reference	PE:6a70a6d9:02711000	0x140931860	0x14093190b		
+reference	PE:6a70a6d9:02711000	0x1409e57d0	0x1409e58c7		
+reference	PE:6a70a6d9:02711000	0x140a68310	0x140a68371		
+reference	PE:6a70a6d9:02711000	0x140a68380	0x140a683e9		
+reference	PE:6a70a6d9:02711000	0x140a8b820	0x140a8ea27		
+reference	PE:6a70a6d9:02711000	0x140a94030	0x140a946d1		 
+reference	PE:6a70a6d9:02711000	0x140aa3bd0	0x140aa3d93		
+reference	PE:6a70a6d9:02711000	0x140aa40f0	0x140aa44da		
+reference	PE:6a70a6d9:02711000	0x140aa4850	0x140aa48be		his | her | its
+reference	PE:6a70a6d9:02711000	0x140ab52d0	0x140ab5986		
+reference	PE:6a70a6d9:02711000	0x140aca140	0x140aca163		
+reference	PE:6a70a6d9:02711000	0x140b5d200	0x140b5d24b		
+reference	PE:6a70a6d9:02711000	0x140b963d0	0x140b96c64		
+reference	PE:6a70a6d9:02711000	0x140b98b60	0x140b98d28		
+reference	PE:6a70a6d9:02711000	0x140c5fc20	0x140c5fc72		
+reference	PE:6a70a6d9:02711000	0x140c62100	0x140c62111		
+reference	PE:6a70a6d9:02711000	0x140c62a90	0x140c62aca		
+reference	PE:6a70a6d9:02711000	0x140c8baa0	0x140c8bad4		
+reference	PE:6a70a6d9:02711000	0x140cb1420	0x140cb1502		
+reference	PE:6a70a6d9:02711000	0x140cb47a0	0x140cb47cd		
+reference	PE:6a70a6d9:02711000	0x140d09860	0x140d09944		
+reference	PE:6a70a6d9:02711000	0x140d09b00	0x140d09b63		
+reference	PE:6a70a6d9:02711000	0x140daa280	0x140daa658		
+reference	PE:6a70a6d9:02711000	0x140dc4480	0x140dc57d8		
+reference	PE:6a70a6d9:02711000	0x141039f40	0x14103a036		
+reference	PE:6a70a6d9:02711000	0x1410e9130	0x1410e91a7		
+reference	PE:6a70a6d9:02711000	0x14131f730	0x14131f78f		
+reference	PE:6a70a6d9:02711000	0x141323b60	0x141323cc2		
+reference	PE:6a70a6d9:02711000	0x141325080	0x141328443	0x141325d4a;0x141325f76;0x141326238;0x141327ca0	" cancels  | :  | Unscheduled | Cannot reach site | Getting married | Interrupted by  | combat | Inappropriate dig square | Area became inappropriate | Moved | Need empty bucket | Need empty trap | Need empty bag | Need empty cage | Need valid, active sand collection zone | Need valid, active clay collection zone | No available colony | Sand vanished | Clay vanished | Incapable of carrying | Too injured | Exhausted | Resting injury | Animal inaccessible | Patient inaccessible | Infant inaccessible | No partner | Item inaccessible | Drop-off inaccessible | Building inaccessible | Area inaccessible | Nothing in cage | Nothing to cage | Nothing to catch | No patient | Patient not resting | No infant | Already leading creature | No food available | Water source vanished | No water source | Water source contaminated | Creature occupying site | No bucket at well | Bucket full of extraneous material | Well dry | Need office | Needs  |  in linked stockpile | Wrong ammunition | Ammunition inaccessible | No ammunition | No item | No weapon | Item blocking site | Building site submerged | Animal not restrained | No creature | Inappropriate building | No building | No floor space | No designated area | No party | Wrong justice state | Nothing in building | Relieved | Water is frozen | Terrified | Mortally afraid | Experiencing emotional shock | Horrified | Grieving | Too sad | In agony | Anguished | Despairing | Dismayed | Distressed | Frightened | Miserable | Mortified | Shaken | In existential crisis | Too insane | Too depressed | Oblivious | Catatonic | Taken by mood | Went insane | Throwing tantrum | Could not find path | Path blocked | Seeking artifact | Handling dangerous creature | Going to bed | Seeking Infant | Dangerous terrain | Forbidden area | Job item lost or destroyed | Job item misplaced | Getting food | Getting water | Hunting vermin for food | Target inaccessible | Target too injured | No target | No mechanism for target | No target building | No mechanism for trigger | No trigger | Attacking building | Lost pick | Invalid officer | ""Farewell!""  Leaving | Removed from guard | Equipment mismatch | Unconscious | Webbed | Paralyzed | Caged | In Custody | Getting something to drink | Using well | Lost axe | Not responsible for trade | No available traction bench | Need splint | Need thread | Need cloth | Need crutch | Bad script! #1 | Bad script! #2 | Bad script! #3 | Need bag containing powder suitable for cast application | No weapon for execution | No appropriate ammunition | Not appointed | No longer requested | The  |  suspended the construction of  | . |  suspended a linkage from  |  ( | ) has been completed."
+reference	PE:6a70a6d9:02711000	0x141329d70	0x14132ad0f		
+reference	PE:6a70a6d9:02711000	0x14132c010	0x14132c08a		
+reference	PE:6a70a6d9:02711000	0x14132c090	0x14132cb7c	0x14132c668	 lose |  loses |  hold of the  | .
+reference	PE:6a70a6d9:02711000	0x14132e430	0x14132f971		you | You |  slave | slave | e |  prisoner | the  | The  |   | a  | force | deity | stray  | fierce  | agitated  | ghost | ghostly  | average | corpse |  corpse
+reference	PE:6a70a6d9:02711000	0x14132f980	0x14133025e		deity | force |  Slave | Slave | e |  Prisoner | Stray  | Fierce  | Agitated  | Ghost | Ghostly  |   | Corpse |  Corpse
+reference	PE:6a70a6d9:02711000	0x141330c30	0x1413312b8		",  | "" |  ( | Trained | -Trained- | +Trained+ | *Trained* | Tame | Semi-Wild | )"
+reference	PE:6a70a6d9:02711000	0x141331500	0x141333724		the force | the deity | the  | Miner | r | Woodworker | er | Carpenter | Bowyer | Woodcutter | Stoneworker | ker | Stonecutter | Stone Carver | Mason | Ranger | Animal Caretaker | Animal Trainer | Hunter | Trapper | Animal Dissector | Metalsmith | Furnace Operator | Weaponsmith | Armorer | Blacksmith | th | Metalcrafter | fter | Jeweler | Gem Cutter | Gem Setter | Craftsman | Woodcrafter | Papermaker | Bookbinder | Potter | Glazer | Wax Worker | Stonecrafter | Leatherworker | Bone Carver | Weaver | Clothier | Glassmaker | Strand Extractor | Fishery Worker | Fisherman | Fish Dissector | Fish Cleaner | Farmer | Cheesemaker | Milker | Gelder | Shearer | Spinner | Cook | Thresher | Miller | Butcher | Tanner | Dyer | Presser | Beekeeper | Planter | Herbalist | Brewer | Soap Maker | Potash Maker | Lye Maker | Wood Burner | Engineer | Mechanic | Siege Engineer | Siege Operator | Pump Operator | Clerk | Administrator | Trader | Poet | Bard | Dancer | Performer | Scribe | Tavern Keeper | Sage | Scholar | Philosopher | Mathematician | Historian | Astronomer | Naturalist | Chemist | Geographer | Doctor | Diagnostician | Bone Doctor | Suturer | Surgeon | Merchant | Drunk | Monster Slayer | Scout | Beast Hunter | Snatcher | Mercenary | Hammerman | Hammer Lord | Spearman | Spearmaster | Crossbowman | Elite Crossbowman | Wrestler | Elite Wrestler | Axeman | Axe Lord | Swordsman | Swordmaster | Maceman | Mace Lord | Pikeman | Pikemaster | Bowman | Elite Bowman | Blowgunner | Master Blowgunner | Lasher | Master Lasher | Recruit | Hunting | War | Master Thief | Thief | Criminal | Peddler | Prophet | Pilgrim | Monk | Messenger | Child | Baby | Peasant | ant | t |  Slave | Slave | e |  Prisoner |   | Ghost | Ghostly  | One
+reference	PE:6a70a6d9:02711000	0x141334820	0x141334826		
+reference	PE:6a70a6d9:02711000	0x1413348f0	0x141334a0c		
+reference	PE:6a70a6d9:02711000	0x1413356f0	0x141336dec		
+reference	PE:6a70a6d9:02711000	0x1413406b0	0x141340816		
+reference	PE:6a70a6d9:02711000	0x141345b70	0x141345b8c		
+reference	PE:6a70a6d9:02711000	0x141348a40	0x141349260	0x141349082	 has stopped responding to the world... |  has gone berserk! |  has gone stark raving mad! |  is stricken by melancholy!
+reference	PE:6a70a6d9:02711000	0x141349f20	0x141349f28		
+reference	PE:6a70a6d9:02711000	0x14134a5e0	0x14134a826		
+reference	PE:6a70a6d9:02711000	0x14134a830	0x14134a866		
+reference	PE:6a70a6d9:02711000	0x14134eb30	0x14134ec4a		
+reference	PE:6a70a6d9:02711000	0x14134efc0	0x14134f014		
+reference	PE:6a70a6d9:02711000	0x14134f0e0	0x14134f134		
+reference	PE:6a70a6d9:02711000	0x14134f250	0x14134f271		
+reference	PE:6a70a6d9:02711000	0x14134f440	0x1413523ec	0x14134fa3f;0x14134fd14;0x141350045;0x14135033e;0x14135070b;0x141350d83;0x1413518f2	 are |  is |  caught in a lava mist! |  caught in dragonfire! |  caught up in the web! |  caught in a cloud of flames! |  caught in a burst of steam! |  caught in a cloud of  | ! |  caught in a pool of magma! |  caught in a pool of lava!
+reference	PE:6a70a6d9:02711000	0x1413523f0	0x14135241a		
+reference	PE:6a70a6d9:02711000	0x141352810	0x141352829		
+reference	PE:6a70a6d9:02711000	0x141353940	0x1413547bf	0x14135471a	You have  |  has  | transformed into a  | !
+reference	PE:6a70a6d9:02711000	0x14135e980	0x14135e9ab		
+reference	PE:6a70a6d9:02711000	0x1413641e0	0x141364401		
+reference	PE:6a70a6d9:02711000	0x141364410	0x141364443		
+reference	PE:6a70a6d9:02711000	0x141364880	0x1413648a2		
+reference	PE:6a70a6d9:02711000	0x141365010	0x1413650d8		
+reference	PE:6a70a6d9:02711000	0x141366d40	0x1413673ab		unit contained in unit | Double Caged Unit
+reference	PE:6a70a6d9:02711000	0x141367430	0x14136745a		
+reference	PE:6a70a6d9:02711000	0x14136ea20	0x14136ea4f		
+reference	PE:6a70a6d9:02711000	0x141373910	0x14137394e		
+reference	PE:6a70a6d9:02711000	0x1413779f0	0x141377c1c		
+reference	PE:6a70a6d9:02711000	0x141378860	0x14137895f		
+reference	PE:6a70a6d9:02711000	0x141379960	0x141379998		
+reference	PE:6a70a6d9:02711000	0x14137bd50	0x14137c020		
+reference	PE:6a70a6d9:02711000	0x14137c020	0x14137c069		
+reference	PE:6a70a6d9:02711000	0x14137f620	0x14137f676		
+reference	PE:6a70a6d9:02711000	0x1413824a0	0x14138262d		
+reference	PE:6a70a6d9:02711000	0x141382630	0x14138326a		
+reference	PE:6a70a6d9:02711000	0x141383470	0x14138350d		
+reference	PE:6a70a6d9:02711000	0x141384de0	0x141384e04		
+reference	PE:6a70a6d9:02711000	0x1413857d0	0x141385b04		
+reference	PE:6a70a6d9:02711000	0x141385b10	0x141385b2b		
+reference	PE:6a70a6d9:02711000	0x141386330	0x14138673d		
+reference	PE:6a70a6d9:02711000	0x14138a0c0	0x14138a24d		
+reference	PE:6a70a6d9:02711000	0x14138f250	0x14138f307		
+reference	PE:6a70a6d9:02711000	0x14138f430	0x14138f47a		
+reference	PE:6a70a6d9:02711000	0x1413918c0	0x14139196e		
+reference	PE:6a70a6d9:02711000	0x141391970	0x141391a96		
+reference	PE:6a70a6d9:02711000	0x141396bb0	0x141396c02		
+reference	PE:6a70a6d9:02711000	0x1413a4310	0x1413a44b6		
+reference	PE:6a70a6d9:02711000	0x1413adf80	0x1413adfae		
+reference	PE:6a70a6d9:02711000	0x1413b1090	0x1413b10f3		
+reference	PE:6a70a6d9:02711000	0x1413b2f50	0x1413b2f78		
+reference	PE:6a70a6d9:02711000	0x1413b9d80	0x1413b9f1e		
+reference	PE:6a70a6d9:02711000	0x1413ba0e0	0x1413ba17e		
+reference	PE:6a70a6d9:02711000	0x1413ba450	0x1413ba4d8		
+reference	PE:6a70a6d9:02711000	0x1413c1ef0	0x1413c1fa7		
+reference	PE:6a70a6d9:02711000	0x1413c1fb0	0x1413c1fbf		
+reference	PE:6a70a6d9:02711000	0x1413c7250	0x1413c72af		
+reference	PE:6a70a6d9:02711000	0x1413cab80	0x1413cabb4		
+reference	PE:6a70a6d9:02711000	0x1413cacb0	0x1413cad63		
+reference	PE:6a70a6d9:02711000	0x1413cc1d0	0x1413cc25e		
+reference	PE:6a70a6d9:02711000	0x1413cc4d0	0x1413cc609		
+reference	PE:6a70a6d9:02711000	0x1413cf600	0x1413cf692		
+reference	PE:6a70a6d9:02711000	0x1413cfbe0	0x1413d07f2	0x1413d0325;0x1413d0739	 has bestowed the name  |  upon a  | ! |  has grown attached to a 
+reference	PE:6a70a6d9:02711000	0x1413db000	0x1413db4df	0x1413db47b	  | . | You hear 
+reference	PE:6a70a6d9:02711000	0x1413db4e0	0x1413db52b		
+reference	PE:6a70a6d9:02711000	0x1413dcd00	0x1413ddd6c		Syndrome has only  | y  |  effects, expected at least 
+reference	PE:6a70a6d9:02711000	0x1413e5a90	0x1413e5b1c		
+reference	PE:6a70a6d9:02711000	0x1413eac10	0x1413eac74		
+reference	PE:6a70a6d9:02711000	0x1413f1f80	0x1413f20b9		
+reference	PE:6a70a6d9:02711000	0x14143cb80	0x14143cc31		
+reference	PE:6a70a6d9:02711000	0x141447200	0x1414472d5		
+reference	PE:6a70a6d9:02711000	0x14144ca60	0x14144cca9		
+reference	PE:6a70a6d9:02711000	0x1414637a0	0x1414638d6		
+reference	PE:6a70a6d9:02711000	0x141463a20	0x141463b0f		
+reference	PE:6a70a6d9:02711000	0x1414af2f0	0x1414af3ca		
+reference	PE:6a70a6d9:02711000	0x1414d1920	0x1414d1d79		plant | yarn | cloth | silk | bone | leather | shell | soap | ivory/tooth | horn | pearl | wood | wooden | 's  |   | unknown material
+reference	PE:6a70a6d9:02711000	0x1414dd1d0	0x1414dd40c		
+reference	PE:6a70a6d9:02711000	0x1414e1370	0x1414e13f2		
+reference	PE:6a70a6d9:02711000	0x141539660	0x14153967e		
+reference	PE:6a70a6d9:02711000	0x141539690	0x1415396cc		
+reference	PE:6a70a6d9:02711000	0x14153adc0	0x14153ae0e		
+classic	PE:6a70b91c:0270a000	0x140066b00	0x140066b5c		
+classic	PE:6a70b91c:0270a000	0x140067d50	0x140067dc0		
+classic	PE:6a70b91c:0270a000	0x14006f310	0x14006f36d		
+classic	PE:6a70b91c:0270a000	0x14006f530	0x14006f55a		
+classic	PE:6a70b91c:0270a000	0x14006f560	0x14006f620		
+classic	PE:6a70b91c:0270a000	0x14006f9a0	0x14006fa0e		
+classic	PE:6a70b91c:0270a000	0x140071ec0	0x140071f13		
+classic	PE:6a70b91c:0270a000	0x140072670	0x1400726e0		
+classic	PE:6a70b91c:0270a000	0x140073770	0x1400737fd		
+classic	PE:6a70b91c:0270a000	0x140073800	0x1400738d9		
+classic	PE:6a70b91c:0270a000	0x140073b00	0x140073b73		
+classic	PE:6a70b91c:0270a000	0x140075490	0x1400754ff		
+classic	PE:6a70b91c:0270a000	0x14007dab0	0x14007dadb		
+classic	PE:6a70b91c:0270a000	0x1400b9930	0x1400b995b		
+classic	PE:6a70b91c:0270a000	0x1400b9a20	0x1400b9a4b		
+classic	PE:6a70b91c:0270a000	0x1400e14f0	0x1400e159b		
+classic	PE:6a70b91c:0270a000	0x1400e3bb0	0x1400e562d		Empty announcement  | nt  |   | errorlog.txt
+classic	PE:6a70b91c:0270a000	0x1400eb0b0	0x1400eb0e6		
+classic	PE:6a70b91c:0270a000	0x1400eb5c0	0x1400eb6bd		
+classic	PE:6a70b91c:0270a000	0x1400fb4a0	0x1400fb4cb		
+classic	PE:6a70b91c:0270a000	0x1400fdc80	0x1400fdcf3		
+classic	PE:6a70b91c:0270a000	0x140144e30	0x140144f0b		
+classic	PE:6a70b91c:0270a000	0x1401b9fc0	0x1401b9fd7		
+classic	PE:6a70b91c:0270a000	0x140224360	0x1402243ae		
+classic	PE:6a70b91c:0270a000	0x14022c090	0x14022c0b9		
+classic	PE:6a70b91c:0270a000	0x14030ad50	0x14030adcc		
+classic	PE:6a70b91c:0270a000	0x1403d3fa0	0x1403d403a		
+classic	PE:6a70b91c:0270a000	0x140436c90	0x140436ca9		
+classic	PE:6a70b91c:0270a000	0x14052b070	0x14052b090		
+classic	PE:6a70b91c:0270a000	0x14052d0e0	0x14052d138		
+classic	PE:6a70b91c:0270a000	0x140555480	0x1405554a6		
+classic	PE:6a70b91c:0270a000	0x1405561d0	0x140556249		
+classic	PE:6a70b91c:0270a000	0x140579c10	0x140579cba		
+classic	PE:6a70b91c:0270a000	0x14057a230	0x14057a28a		
+classic	PE:6a70b91c:0270a000	0x1405ae0f0	0x1405ae149		
+classic	PE:6a70b91c:0270a000	0x1406da380	0x1406da48b		
+classic	PE:6a70b91c:0270a000	0x1406db280	0x1406db8eb		a  | a girl | a boy | a child | twins | triplets | quadruplets | quintuplets | sextuplets | septuplets | octuplets | nonuplets | decaplets | undecaplets | duodecaplets | tredecaplets | quattuordecaplets | quindecaplets | many babies
+classic	PE:6a70b91c:0270a000	0x140704780	0x140706380		Null color selection at pregnancy start, creature  | tion at pregnancy start, creature  | y start, creature  | e  | errorlog.txt
+classic	PE:6a70b91c:0270a000	0x1407e1c40	0x1407e1d24		
+classic	PE:6a70b91c:0270a000	0x14092f090	0x14092f13b		
+classic	PE:6a70b91c:0270a000	0x1409e3000	0x1409e30f7		
+classic	PE:6a70b91c:0270a000	0x140a65440	0x140a654a1		
+classic	PE:6a70b91c:0270a000	0x140a654b0	0x140a65519		
+classic	PE:6a70b91c:0270a000	0x140a888a0	0x140a8baa7		
+classic	PE:6a70b91c:0270a000	0x140a910b0	0x140a91751		 
+classic	PE:6a70b91c:0270a000	0x140aa0c50	0x140aa0e13		
+classic	PE:6a70b91c:0270a000	0x140aa1170	0x140aa155a		
+classic	PE:6a70b91c:0270a000	0x140aa18d0	0x140aa193e		his | her | its
+classic	PE:6a70b91c:0270a000	0x140ab2350	0x140ab2a06		
+classic	PE:6a70b91c:0270a000	0x140ac71c0	0x140ac71e3		
+classic	PE:6a70b91c:0270a000	0x140b5a240	0x140b5a28b		
+classic	PE:6a70b91c:0270a000	0x140b93410	0x140b93ca4		
+classic	PE:6a70b91c:0270a000	0x140b95ba0	0x140b95d68		
+classic	PE:6a70b91c:0270a000	0x140c5cc60	0x140c5ccb2		
+classic	PE:6a70b91c:0270a000	0x140c5f140	0x140c5f151		
+classic	PE:6a70b91c:0270a000	0x140c5fad0	0x140c5fb0a		
+classic	PE:6a70b91c:0270a000	0x140c88ae0	0x140c88b14		
+classic	PE:6a70b91c:0270a000	0x140cae460	0x140cae542		
+classic	PE:6a70b91c:0270a000	0x140cb17e0	0x140cb180d		
+classic	PE:6a70b91c:0270a000	0x140d068a0	0x140d06984		
+classic	PE:6a70b91c:0270a000	0x140d06b40	0x140d06ba3		
+classic	PE:6a70b91c:0270a000	0x140da51f0	0x140da55c8		
+classic	PE:6a70b91c:0270a000	0x140dbf3f0	0x140dc0748		
+classic	PE:6a70b91c:0270a000	0x141034eb0	0x141034fa6		
+classic	PE:6a70b91c:0270a000	0x1410e40a0	0x1410e4117		
+classic	PE:6a70b91c:0270a000	0x14131a6a0	0x14131a6ff		
+classic	PE:6a70b91c:0270a000	0x14131ead0	0x14131ec32		
+classic	PE:6a70b91c:0270a000	0x14131fff0	0x1413233b3	0x141320cba;0x141320ee6;0x1413211a8;0x141322c10	" cancels  | :  | Unscheduled | Cannot reach site | Getting married | Interrupted by  | combat | Inappropriate dig square | Area became inappropriate | Moved | Need empty bucket | Need empty trap | Need empty bag | Need empty cage | Need valid, active sand collection zone | Need valid, active clay collection zone | No available colony | Sand vanished | Clay vanished | Incapable of carrying | Too injured | Exhausted | Resting injury | Animal inaccessible | Patient inaccessible | Infant inaccessible | No partner | Item inaccessible | Drop-off inaccessible | Building inaccessible | Area inaccessible | Nothing in cage | Nothing to cage | Nothing to catch | No patient | Patient not resting | No infant | Already leading creature | No food available | Water source vanished | No water source | Water source contaminated | Creature occupying site | No bucket at well | Bucket full of extraneous material | Well dry | Need office | Needs  |  in linked stockpile | Wrong ammunition | Ammunition inaccessible | No ammunition | No item | No weapon | Item blocking site | Building site submerged | Animal not restrained | No creature | Inappropriate building | No building | No floor space | No designated area | No party | Wrong justice state | Nothing in building | Relieved | Water is frozen | Terrified | Mortally afraid | Experiencing emotional shock | Horrified | Grieving | Too sad | In agony | Anguished | Despairing | Dismayed | Distressed | Frightened | Miserable | Mortified | Shaken | In existential crisis | Too insane | Too depressed | Oblivious | Catatonic | Taken by mood | Went insane | Throwing tantrum | Could not find path | Path blocked | Seeking artifact | Handling dangerous creature | Going to bed | Seeking Infant | Dangerous terrain | Forbidden area | Job item lost or destroyed | Job item misplaced | Getting food | Getting water | Hunting vermin for food | Target inaccessible | Target too injured | No target | No mechanism for target | No target building | No mechanism for trigger | No trigger | Attacking building | Lost pick | Invalid officer | ""Farewell!""  Leaving | Removed from guard | Equipment mismatch | Unconscious | Webbed | Paralyzed | Caged | In Custody | Getting something to drink | Using well | Lost axe | Not responsible for trade | No available traction bench | Need splint | Need thread | Need cloth | Need crutch | Bad script! #1 | Bad script! #2 | Bad script! #3 | Need bag containing powder suitable for cast application | No weapon for execution | No appropriate ammunition | Not appointed | No longer requested | The  |  suspended the construction of  | . |  suspended a linkage from  |  ( | ) has been completed."
+classic	PE:6a70b91c:0270a000	0x141324ce0	0x141325c7f		
+classic	PE:6a70b91c:0270a000	0x141326f80	0x141326ffa		
+classic	PE:6a70b91c:0270a000	0x141327000	0x141327aec	0x1413275d8	 lose |  loses |  hold of the  | .
+classic	PE:6a70b91c:0270a000	0x1413293a0	0x14132a8e1		you | You |  slave | slave | e |  prisoner | the  | The  |   | a  | force | deity | stray  | fierce  | agitated  | ghost | ghostly  | average | corpse |  corpse
+classic	PE:6a70b91c:0270a000	0x14132a8f0	0x14132b1ce		deity | force |  Slave | Slave | e |  Prisoner | Stray  | Fierce  | Agitated  | Ghost | Ghostly  |   | Corpse |  Corpse
+classic	PE:6a70b91c:0270a000	0x14132bba0	0x14132c228		",  | "" |  ( | Trained | -Trained- | +Trained+ | *Trained* | Tame | Semi-Wild | )"
+classic	PE:6a70b91c:0270a000	0x14132c470	0x14132e694		the force | the deity | the  | Miner | r | Woodworker | er | Carpenter | Bowyer | Woodcutter | Stoneworker | ker | Stonecutter | Stone Carver | Mason | Ranger | Animal Caretaker | Animal Trainer | Hunter | Trapper | Animal Dissector | Metalsmith | Furnace Operator | Weaponsmith | Armorer | Blacksmith | th | Metalcrafter | fter | Jeweler | Gem Cutter | Gem Setter | Craftsman | Woodcrafter | Papermaker | Bookbinder | Potter | Glazer | Wax Worker | Stonecrafter | Leatherworker | Bone Carver | Weaver | Clothier | Glassmaker | Strand Extractor | Fishery Worker | Fisherman | Fish Dissector | Fish Cleaner | Farmer | Cheesemaker | Milker | Gelder | Shearer | Spinner | Cook | Thresher | Miller | Butcher | Tanner | Dyer | Presser | Beekeeper | Planter | Herbalist | Brewer | Soap Maker | Potash Maker | Lye Maker | Wood Burner | Engineer | Mechanic | Siege Engineer | Siege Operator | Pump Operator | Clerk | Administrator | Trader | Poet | Bard | Dancer | Performer | Scribe | Tavern Keeper | Sage | Scholar | Philosopher | Mathematician | Historian | Astronomer | Naturalist | Chemist | Geographer | Doctor | Diagnostician | Bone Doctor | Suturer | Surgeon | Merchant | Drunk | Monster Slayer | Scout | Beast Hunter | Snatcher | Mercenary | Hammerman | Hammer Lord | Spearman | Spearmaster | Crossbowman | Elite Crossbowman | Wrestler | Elite Wrestler | Axeman | Axe Lord | Swordsman | Swordmaster | Maceman | Mace Lord | Pikeman | Pikemaster | Bowman | Elite Bowman | Blowgunner | Master Blowgunner | Lasher | Master Lasher | Recruit | Hunting | War | Master Thief | Thief | Criminal | Peddler | Prophet | Pilgrim | Monk | Messenger | Child | Baby | Peasant | ant | t |  Slave | Slave | e |  Prisoner |   | Ghost | Ghostly  | One
+classic	PE:6a70b91c:0270a000	0x14132f790	0x14132f796		
+classic	PE:6a70b91c:0270a000	0x14132f860	0x14132f97c		
+classic	PE:6a70b91c:0270a000	0x141330660	0x141331d5c		
+classic	PE:6a70b91c:0270a000	0x14133b620	0x14133b786		
+classic	PE:6a70b91c:0270a000	0x141340ae0	0x141340afc		
+classic	PE:6a70b91c:0270a000	0x1413439b0	0x1413441d0	0x141343ff2	 has stopped responding to the world... |  has gone berserk! |  has gone stark raving mad! |  is stricken by melancholy!
+classic	PE:6a70b91c:0270a000	0x141344e90	0x141344e98		
+classic	PE:6a70b91c:0270a000	0x141345550	0x141345796		
+classic	PE:6a70b91c:0270a000	0x1413457a0	0x1413457d6		
+classic	PE:6a70b91c:0270a000	0x141349aa0	0x141349bba		
+classic	PE:6a70b91c:0270a000	0x141349f30	0x141349f84		
+classic	PE:6a70b91c:0270a000	0x14134a050	0x14134a0a4		
+classic	PE:6a70b91c:0270a000	0x14134a1c0	0x14134a1e1		
+classic	PE:6a70b91c:0270a000	0x14134a3b0	0x14134d35c	0x14134a9af;0x14134ac84;0x14134afb5;0x14134b2ae;0x14134b67b;0x14134bcf3;0x14134c862	 are |  is |  caught in a lava mist! |  caught in dragonfire! |  caught up in the web! |  caught in a cloud of flames! |  caught in a burst of steam! |  caught in a cloud of  | ! |  caught in a pool of magma! |  caught in a pool of lava!
+classic	PE:6a70b91c:0270a000	0x14134d360	0x14134d38a		
+classic	PE:6a70b91c:0270a000	0x14134d780	0x14134d799		
+classic	PE:6a70b91c:0270a000	0x14134e8b0	0x14134f72f	0x14134f68a	You have  |  has  | transformed into a  | !
+classic	PE:6a70b91c:0270a000	0x1413598f0	0x14135991b		
+classic	PE:6a70b91c:0270a000	0x14135f150	0x14135f371		
+classic	PE:6a70b91c:0270a000	0x14135f380	0x14135f3b3		
+classic	PE:6a70b91c:0270a000	0x14135f7f0	0x14135f812		
+classic	PE:6a70b91c:0270a000	0x14135ff80	0x141360048		
+classic	PE:6a70b91c:0270a000	0x141361cb0	0x14136231b		unit contained in unit | Double Caged Unit
+classic	PE:6a70b91c:0270a000	0x1413623a0	0x1413623ca		
+classic	PE:6a70b91c:0270a000	0x141369990	0x1413699bf		
+classic	PE:6a70b91c:0270a000	0x14136e880	0x14136e8be		
+classic	PE:6a70b91c:0270a000	0x141372960	0x141372b8c		
+classic	PE:6a70b91c:0270a000	0x1413737d0	0x1413738cf		
+classic	PE:6a70b91c:0270a000	0x1413748d0	0x141374908		
+classic	PE:6a70b91c:0270a000	0x141376cc0	0x141376f90		
+classic	PE:6a70b91c:0270a000	0x141376f90	0x141376fd9		
+classic	PE:6a70b91c:0270a000	0x14137a590	0x14137a5e6		
+classic	PE:6a70b91c:0270a000	0x14137d410	0x14137d59d		
+classic	PE:6a70b91c:0270a000	0x14137d5a0	0x14137e1da		
+classic	PE:6a70b91c:0270a000	0x14137e3e0	0x14137e47d		
+classic	PE:6a70b91c:0270a000	0x14137fd50	0x14137fd74		
+classic	PE:6a70b91c:0270a000	0x141380740	0x141380a74		
+classic	PE:6a70b91c:0270a000	0x141380a80	0x141380a9b		
+classic	PE:6a70b91c:0270a000	0x1413812a0	0x1413816ad		
+classic	PE:6a70b91c:0270a000	0x141385030	0x1413851bd		
+classic	PE:6a70b91c:0270a000	0x14138a1c0	0x14138a277		
+classic	PE:6a70b91c:0270a000	0x14138a3a0	0x14138a3ea		
+classic	PE:6a70b91c:0270a000	0x14138c830	0x14138c8de		
+classic	PE:6a70b91c:0270a000	0x14138c8e0	0x14138ca06		
+classic	PE:6a70b91c:0270a000	0x141391b20	0x141391b72		
+classic	PE:6a70b91c:0270a000	0x14139f280	0x14139f426		
+classic	PE:6a70b91c:0270a000	0x1413a8ef0	0x1413a8f1e		
+classic	PE:6a70b91c:0270a000	0x1413ac000	0x1413ac063		
+classic	PE:6a70b91c:0270a000	0x1413adec0	0x1413adee8		
+classic	PE:6a70b91c:0270a000	0x1413b4cf0	0x1413b4e8e		
+classic	PE:6a70b91c:0270a000	0x1413b5050	0x1413b50ee		
+classic	PE:6a70b91c:0270a000	0x1413b53c0	0x1413b5448		
+classic	PE:6a70b91c:0270a000	0x1413bce60	0x1413bcf17		
+classic	PE:6a70b91c:0270a000	0x1413bcf20	0x1413bcf2f		
+classic	PE:6a70b91c:0270a000	0x1413c21c0	0x1413c221f		
+classic	PE:6a70b91c:0270a000	0x1413c5af0	0x1413c5b24		
+classic	PE:6a70b91c:0270a000	0x1413c5c20	0x1413c5cd3		
+classic	PE:6a70b91c:0270a000	0x1413c7140	0x1413c71ce		
+classic	PE:6a70b91c:0270a000	0x1413c7440	0x1413c7579		
+classic	PE:6a70b91c:0270a000	0x1413ca570	0x1413ca602		
+classic	PE:6a70b91c:0270a000	0x1413cab50	0x1413cb762	0x1413cb295;0x1413cb6a9	 has bestowed the name  |  upon a  | ! |  has grown attached to a 
+classic	PE:6a70b91c:0270a000	0x1413d5f70	0x1413d644f	0x1413d63eb	  | . | You hear 
+classic	PE:6a70b91c:0270a000	0x1413d6450	0x1413d649b		
+classic	PE:6a70b91c:0270a000	0x1413d7c70	0x1413d8cdc		Syndrome has only  | y  |  effects, expected at least 
+classic	PE:6a70b91c:0270a000	0x1413e0a00	0x1413e0a8c		
+classic	PE:6a70b91c:0270a000	0x1413e5b80	0x1413e5be4		
+classic	PE:6a70b91c:0270a000	0x1413ecef0	0x1413ed029		
+classic	PE:6a70b91c:0270a000	0x141437af0	0x141437ba1		
+classic	PE:6a70b91c:0270a000	0x141442170	0x141442245		
+classic	PE:6a70b91c:0270a000	0x1414479d0	0x141447c19		
+classic	PE:6a70b91c:0270a000	0x14145e710	0x14145e846		
+classic	PE:6a70b91c:0270a000	0x14145e990	0x14145ea7f		
+classic	PE:6a70b91c:0270a000	0x1414aa260	0x1414aa33a		
+classic	PE:6a70b91c:0270a000	0x1414cc890	0x1414ccce9		plant | yarn | cloth | silk | bone | leather | shell | soap | ivory/tooth | horn | pearl | wood | wooden | 's  |   | unknown material
+classic	PE:6a70b91c:0270a000	0x1414d8140	0x1414d837c		
+classic	PE:6a70b91c:0270a000	0x1414dc2e0	0x1414dc362		
+classic	PE:6a70b91c:0270a000	0x1415345d0	0x1415345ee		
+classic	PE:6a70b91c:0270a000	0x141534600	0x14153463c		
+classic	PE:6a70b91c:0270a000	0x141535d30	0x141535d7e		

@@ -335,15 +335,19 @@ adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You fee
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You flounder in the water!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You flounder in the lava!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You flounder in the magma!
+adventure.announcement.shared-action	PE:6a70a6d9:02711000:0x141506424-0x141506459;PE:6a70b91c:0270a000:0x141501394-0x1415013c9	You flounder!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You push {s}.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede;0x14132c090:0x14132c54d-0x14132c668	You lose hold of the {s}.
+adventure.announcement.shared-action	PE:6a70a6d9:02711000:0x1415092dd-0x141509345;PE:6a70b91c:0270a000:0x14150424d-0x1415042b5	You lose hold of the {s}!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You mount {n}.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You dismount.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} flounders in the water!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} flounders in the lava!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} flounders in the magma!
+adventure.announcement.shared-action	PE:6a70a6d9:02711000:0x141506424-0x141506459;PE:6a70b91c:0270a000:0x141501394-0x1415013c9	{n} flounders!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} pushes {s}.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede;0x14132c090:0x14132c54d-0x14132c668	{n} loses hold of the {s}.
+adventure.announcement.shared-action	PE:6a70a6d9:02711000:0x1415092e6-0x141509345;PE:6a70b91c:0270a000:0x141504256-0x1415042b5	{n} loses hold of the {s}!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} mounts {n}.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} dismounts.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You cannot mount {n} due to the presence of an existing rider.

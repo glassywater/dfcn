@@ -11739,11 +11739,35 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
         // Player-authored CJK (including digits or Latin text) stays literal;
         // it is not a generated name and must not fail its Latin-only grammar.
         const auto personal_name = [&](std::string_view person) -> std::optional<std::string> {
+            if (const auto identity = native_unit_identity_source_target(person)) return identity;
             if (contains_cjk_utf8(person) && person.find('`') == std::string_view::npos)
                 return native_text_to_utf8(person);
             const auto name = translate_legends_name(person, true);
-            return translation_complete_with_native_nicknames(name, person)
-                ? name : std::nullopt;
+            if (translation_complete_with_native_nicknames(name, person)) return name;
+            // A complete species/occupation beside this field proves its
+            // native person slot (PE 0x14132e430..0x14132f971). Foreign
+            // language roots need not exist in the generated-name lexicon.
+            // Keep their typed spelling, but do not admit ordinary prose:
+            // outside one native nickname, all remaining name groups must
+            // have the existing CJK/CP437-aware proper-name shape.
+            if (person.empty() || person.ends_with("...")) return std::nullopt;
+            const size_t nickname_open = person.find('`');
+            const size_t nickname_close = person.rfind('\'');
+            bool shaped = generated_title_shape(person);
+            if (nickname_open != std::string_view::npos &&
+                    nickname_close != std::string_view::npos &&
+                    nickname_close > nickname_open &&
+                    person.find('`', nickname_open + 1) == std::string_view::npos) {
+                const auto before = trim_view(person.substr(0, nickname_open));
+                const auto after = trim_view(person.substr(nickname_close + 1));
+                const auto name_group = [](std::string_view group) {
+                    return group.empty() || contains_cjk_utf8(group) || generated_title_shape(group);
+                };
+                shaped = name_group(before) && name_group(after);
+            }
+            if (!shaped) return std::nullopt;
+            if (const auto identity = translate_unit_identity(person, true)) return identity;
+            return native_text_to_utf8(person);
         };
         // Typed identities may retain the exact native nickname. Validate
         // those fields with the shared nickname-aware completeness rule;
@@ -11785,6 +11809,34 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
             const auto creature = translate_creature_label(label);
             if (translation_complete_with_native_nicknames(creature, label))
                 return *creature + status;
+            // Native nickname punctuation belongs to one name, including
+            // commas and "and". Only separators outside it divide identities.
+            bool nickname = false, has_comma = false, has_conjunction = false;
+            size_t profession_comma = std::string_view::npos;
+            for (size_t at = 0; at < label.size(); ++at) {
+                if (!nickname && label[at] == '`') { nickname = true; continue; }
+                if (nickname) {
+                    if (label[at] == '\'') nickname = false;
+                    continue;
+                }
+                if (label[at] == ',') has_comma = true;
+                if (label.substr(at).starts_with(", ")) profession_comma = at;
+                if (label.substr(at).starts_with(" and ")) has_conjunction = true;
+            }
+            // The formatter prints species + occupation + name as well as
+            // name, species + occupation. Resolve the longest complete role
+            // first: a multiword profession must never enter the name parser.
+            // The shared role grammar covers RAW castes, standard professions,
+            // offices and their native status modifiers in every unit slot.
+            if (!has_comma && !has_conjunction) {
+                for (size_t at = label.rfind(' '); at != std::string_view::npos;
+                     at = at == 0 ? std::string_view::npos : label.rfind(' ', at - 1)) {
+                    const auto role = translate_unit_profession(label.substr(0, at), false);
+                    if (!complete(role)) continue;
+                    const auto name = personal_name(label.substr(at + 1));
+                    if (name) return *role + *name + status;
+                }
+            }
             // The native assumed-identity formatter also emits unnamed
             // a/an + species + profession + organization fields. Resolve
             // the entire identity before treating an organization's `and`
@@ -11823,8 +11875,8 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
             // A conversation list's conjunction cannot become part of the
             // personal-name field after a caste merely because names permit
             // title connectors. Complete species were already handled above.
-            if (label.find(" and ") == std::string_view::npos) {
-                if (const size_t comma = label.rfind(", "); comma != std::string_view::npos) {
+            if (!has_conjunction) {
+                if (const size_t comma = profession_comma; comma != std::string_view::npos) {
                     const auto suffix = label.substr(comma + 2);
                     auto descriptor = translate_creature_descriptor(suffix, true);
                     // Fortress status announcements append the occupation
@@ -11863,8 +11915,7 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
             // Keep article-led identities, role fields and unit lists on the
             // structured branches above so their prose cannot become a name.
             if (!definite_identity && !unnamed_identity && !quoted_identity &&
-                    label.find(',') == std::string_view::npos &&
-                    label.find(" and ") == std::string_view::npos && contains_cjk_utf8(label)) {
+                    !has_comma && !has_conjunction && contains_cjk_utf8(label)) {
                 if (const auto name = personal_name(label)) return *name + status;
             }
             // Nicknames can replace the given name entirely. Their native
@@ -11903,7 +11954,14 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
         struct UnitSeparator { size_t at, width; };
         std::vector<UnitSeparator> separators;
         std::vector<size_t> starts{0};
-        for (size_t at = 1; at < source.size(); ++at) {
+        bool nickname = false;
+        for (size_t at = 0; at < source.size(); ++at) {
+            if (!nickname && source[at] == '`') { nickname = true; continue; }
+            if (nickname) {
+                if (source[at] == '\'') nickname = false;
+                continue;
+            }
+            if (at == 0) continue;
             const auto tail = std::string_view(source).substr(at);
             const size_t width = tail.starts_with(", and ") ? 6 :
                 (tail.starts_with(", ") ? 2 : (tail.starts_with(" and ") ? 5 : 0));
