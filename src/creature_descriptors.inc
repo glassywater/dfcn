@@ -43,10 +43,10 @@ std::optional<std::string> Overlay::translate_creature_descriptor(
     }
     if (normalized.empty()) return std::nullopt;
     auto complete = [](const std::optional<std::string> &value) {
-        return value && !value->empty() &&
-            !std::any_of(value->begin(), value->end(), [](unsigned char ch) {
-                return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
-            });
+        // These lookups and grammars resolve the entire source field. Their
+        // reviewed output may retain form letters, e.g. 超级超梦Y; the output
+        // alphabet does not determine whether the source was fully covered.
+        return value && !value->empty();
     };
     auto lookup = [](const auto &table, std::string_view value)
             -> std::optional<std::string> {
