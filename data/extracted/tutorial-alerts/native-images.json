@@ -1,0 +1,38 @@
+{
+  "steam": {
+    "image_identity": "PE:6a70a6d9:02711000",
+    "image": "D:\\program\\steam\\steamapps\\common\\Dwarf Fortress\\Dwarf Fortress.exe",
+    "producer_rva": "0x1f2310",
+    "alert_branch_rva": "0x1f2f8e",
+    "stage": 9,
+    "urgent_source_rva": "0x1607d60",
+    "urgent_load_rva": "0x1f2fc7",
+    "allocator_rva": "0xe3bc0",
+    "native_submit_rva": "0xe3c20",
+    "vector_insert_rva": "0xeb530",
+    "pool_allocate_rva": "0xeb160",
+    "objective_renderer_rva": "0x1e8b20",
+    "allocator_callers": [
+      "0xe4680",
+      "0x1f2fb6"
+    ]
+  },
+  "classic": {
+    "image_identity": "PE:6a70b91c:0270a000",
+    "image": "C:\\Users\\WIN11\\Downloads\\df_53_16_win\\Dwarf Fortress.exe",
+    "producer_rva": "0x1f22a0",
+    "alert_branch_rva": "0x1f2f1e",
+    "stage": 9,
+    "urgent_source_rva": "0x1602d00",
+    "urgent_load_rva": "0x1f2f57",
+    "allocator_rva": "0xe3b50",
+    "native_submit_rva": "0xe3bb0",
+    "vector_insert_rva": "0xeb4c0",
+    "pool_allocate_rva": "0xeb0f0",
+    "objective_renderer_rva": "0x1e8ab0",
+    "allocator_callers": [
+      "0xe4610",
+      "0x1f2f46"
+    ]
+  }
+}

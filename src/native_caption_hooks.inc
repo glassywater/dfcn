@@ -76,6 +76,7 @@ struct NativeInfoTitleBinding {
     ptrdiff_t farm_building_slot = 0;
 };
 using NativeAnnouncementRowsFn = size_t (*)(const void *);
+using NativeAnnouncementPopupDrawFn = void (*)(uint64_t, uint64_t, uint64_t, uint64_t);
 struct NativeAnnouncementPageBinding {
     uintptr_t rows_target = 0;
     std::vector<uintptr_t> rows_calls;
@@ -126,6 +127,7 @@ struct NativeCaptionProfile {
     std::vector<NativeTravelBuildingSite> travel_building_fields;
     std::vector<uintptr_t> mission_title_returns;
     NativeAnnouncementPageBinding announcement_page;
+    uintptr_t announcement_popup_call = 0, announcement_popup_target = 0;
 #ifndef _WIN32
     std::vector<NativeCall> main_calls;
 #endif
@@ -157,6 +159,33 @@ static NativeHelpTileFn g_real_native_help_tile = nullptr;
 static NativeHelpTopTileFn g_real_native_help_top_tile = nullptr;
 static NativeAnnouncementPageBinding g_native_announcement_page_binding;
 static NativeAnnouncementRowsFn g_native_announcement_page_rows = nullptr;
+static NativeAnnouncementPopupDrawFn g_native_announcement_popup_draw = nullptr;
+
+#ifdef _WIN32
+static std::shared_ptr<NativeTooltipPage> capture_native_announcement_popup_background();
+static void publish_native_announcement_popup_background(
+    std::shared_ptr<NativeTooltipPage> page, int32_t margin);
+static void clear_native_announcement_popup_background();
+
+// The native caller forwards exactly four register arguments. Capture the
+// page before the renderer clears its rectangle, then publish only after
+// that draw has completed. Geometry and source ownership stay in the shared
+// page reader; this call wrapper never changes the game's inputs or text.
+static void capture_native_announcement_popup_draw(
+        uint64_t owner, uint64_t second, uint64_t margin, uint64_t fourth) {
+    NativeInputCallbackScope callback;
+    std::shared_ptr<NativeTooltipPage> page;
+    try { page = capture_native_announcement_popup_background(); } catch (...) {}
+    const auto original = g_native_announcement_popup_draw;
+    if (original) callback.call_native([&] { original(owner, second, margin, fourth); });
+    try {
+        publish_native_announcement_popup_background(std::move(page),
+            static_cast<int32_t>(margin));
+    } catch (...) {
+        try { clear_native_announcement_popup_background(); } catch (...) {}
+    }
+}
+#endif
 
 // These two call sites count the report rows immediately before the native
 // renderer clears their same-layer floating rectangle. Keep the actual page
@@ -2396,7 +2425,7 @@ static bool install_native_caption_hooks() {
     }
     std::vector<NativeCall> calls;
     calls.reserve(profile.sites.size() * 2 + profile.inline_resizes.size() +
-        profile.roster_shorten_calls.size() + profile.announcement_page.rows_calls.size() + 5);
+        profile.roster_shorten_calls.size() + profile.announcement_page.rows_calls.size() + 6);
     for (const auto &site : profile.sites) {
         switch (site.kind) {
         case NativeFieldKind::EmbarkItem:
@@ -2424,6 +2453,9 @@ static bool install_native_caption_hooks() {
         calls.push_back({site, profile.announcement_page.rows_target,
             reinterpret_cast<const void *>(&capture_native_announcement_page_rows)});
 #ifdef _WIN32
+    if (profile.announcement_popup_call)
+        calls.push_back({profile.announcement_popup_call, profile.announcement_popup_target,
+            reinterpret_cast<const void *>(&capture_native_announcement_popup_draw)});
     // All four callers set just=0 and width=0 before addst. Their nonvolatile
     // registers still hold the entity used by the preceding name formatter.
     // Replace R8 with that entity; the wrapper restores both constant args.
@@ -2495,6 +2527,9 @@ static bool install_native_caption_hooks() {
     g_native_announcement_page_rows = g_native_announcement_page_binding.rows_target
         ? reinterpret_cast<NativeAnnouncementRowsFn>(profile.base +
             g_native_announcement_page_binding.rows_target) : nullptr;
+    g_native_announcement_popup_draw = profile.announcement_popup_target
+        ? reinterpret_cast<NativeAnnouncementPopupDrawFn>(
+            profile.base + profile.announcement_popup_target) : nullptr;
     if (!g_native_caption_hooks.code.install(profile.base, calls, "Complete native caption capture"))
         return false;
 #ifndef _WIN32
@@ -2675,6 +2710,10 @@ static bool uninstall_native_caption_hooks() {
     g_native_caption_widget_hook = {};
     g_native_caption_widget_binding = {};
     if (!g_native_caption_hooks.code.uninstall("Complete native caption restore")) return false;
+    g_native_announcement_popup_draw = nullptr;
+#ifdef _WIN32
+    clear_native_announcement_popup_background();
+#endif
     g_native_announcement_page_rows = nullptr;
     g_native_announcement_page_binding = {};
     {

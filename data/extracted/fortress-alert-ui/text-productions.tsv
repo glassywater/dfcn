@@ -1,0 +1,33 @@
+edition	instruction_rva	condition	source	source_form	translation_path
+reference	0x40d812	unit-category report; repeat == 0	{report.text}	owned report source	complete announcement translation before native row slicing
+reference	0x40dc7f	alert-button report; repeat == 0	{report.text}	owned report source	complete announcement translation before native row slicing
+reference	0x40e0a0	selected-alert report; repeat == 0	{report.text}	owned report source	complete announcement translation before native row slicing
+reference	0x40d82c	unit-category report; repeat > 0	{report.text} x{repeat+1}	report source plus repeat suffix	complete announcement translation; repeat count remains a numeric suffix
+reference	0x40dc99	alert-button report; repeat > 0	{report.text} x{repeat+1}	report source plus repeat suffix	complete announcement translation; repeat count remains a numeric suffix
+reference	0x40e0ba	selected-alert report; repeat > 0	{report.text} x{repeat+1}	report source plus repeat suffix	complete announcement translation; repeat count remains a numeric suffix
+reference	0x3d7505	alert-button hover report	{report.text}[ x{repeat+1}]	owned report source; optional repeat	complete announcement translation
+reference	0x3f6427	alert hover report	{report.text}[ x{repeat+1}]	owned report source; optional repeat	complete announcement translation
+reference	0x40e4f8	selected-alert unit summary; category == 0; valid unit	{unit.name} is fighting!	dynamic unit identity template	complete alert summary translation with semantic unit name
+reference	0x40e4ef	selected-alert unit summary; category == 1; valid unit	{unit.name} is sparring.	dynamic unit identity template	complete alert summary translation with semantic unit name
+reference	0x40e4e6	selected-alert unit summary; category == 2; valid unit	{unit.name} is hunting.	dynamic unit identity template	complete alert summary translation with semantic unit name
+reference	0x3f663c	alert hover unit summary; category == 0	{unit.name|Somebody} is fighting!	dynamic unit identity template; missing-unit fallback	complete alert summary translation
+reference	0x3f6630	alert hover unit summary; category == 1	{unit.name|Somebody} is sparring.	dynamic unit identity template; missing-unit fallback	complete alert summary translation
+reference	0x3f6624	alert hover unit summary; category == 2	{unit.name|Somebody} is hunting.	dynamic unit identity template; missing-unit fallback	complete alert summary translation
+reference	0x40e50e	selected-alert unit summary; category outside 0..2	{unit.name} is 	native invalid-category fallthrough	preserve native unknown category; do not invent a verb
+reference	0x3f664f	alert hover unit summary; category outside 0..2	{unit.name|Somebody} is 	native invalid-category fallthrough	preserve native unknown category; do not invent a verb
+classic	0x40b3d2	unit-category report; repeat == 0	{report.text}	owned report source	complete announcement translation before native row slicing
+classic	0x40b83f	alert-button report; repeat == 0	{report.text}	owned report source	complete announcement translation before native row slicing
+classic	0x40bc60	selected-alert report; repeat == 0	{report.text}	owned report source	complete announcement translation before native row slicing
+classic	0x40b3ec	unit-category report; repeat > 0	{report.text} x{repeat+1}	report source plus repeat suffix	complete announcement translation; repeat count remains a numeric suffix
+classic	0x40b859	alert-button report; repeat > 0	{report.text} x{repeat+1}	report source plus repeat suffix	complete announcement translation; repeat count remains a numeric suffix
+classic	0x40bc7a	selected-alert report; repeat > 0	{report.text} x{repeat+1}	report source plus repeat suffix	complete announcement translation; repeat count remains a numeric suffix
+classic	0x3d50c5	alert-button hover report	{report.text}[ x{repeat+1}]	owned report source; optional repeat	complete announcement translation
+classic	0x3f3fe7	alert hover report	{report.text}[ x{repeat+1}]	owned report source; optional repeat	complete announcement translation
+classic	0x40c0b8	selected-alert unit summary; category == 0; valid unit	{unit.name} is fighting!	dynamic unit identity template	complete alert summary translation with semantic unit name
+classic	0x40c0af	selected-alert unit summary; category == 1; valid unit	{unit.name} is sparring.	dynamic unit identity template	complete alert summary translation with semantic unit name
+classic	0x40c0a6	selected-alert unit summary; category == 2; valid unit	{unit.name} is hunting.	dynamic unit identity template	complete alert summary translation with semantic unit name
+classic	0x3f41fc	alert hover unit summary; category == 0	{unit.name|Somebody} is fighting!	dynamic unit identity template; missing-unit fallback	complete alert summary translation
+classic	0x3f41f0	alert hover unit summary; category == 1	{unit.name|Somebody} is sparring.	dynamic unit identity template; missing-unit fallback	complete alert summary translation
+classic	0x3f41e4	alert hover unit summary; category == 2	{unit.name|Somebody} is hunting.	dynamic unit identity template; missing-unit fallback	complete alert summary translation
+classic	0x40c0ce	selected-alert unit summary; category outside 0..2	{unit.name} is 	native invalid-category fallthrough	preserve native unknown category; do not invent a verb
+classic	0x3f420f	alert hover unit summary; category outside 0..2	{unit.name|Somebody} is 	native invalid-category fallthrough	preserve native unknown category; do not invent a verb

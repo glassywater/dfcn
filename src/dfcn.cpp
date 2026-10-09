@@ -2346,33 +2346,118 @@ static int g_native_help_page_dimx = 0, g_native_help_page_dimy = 0;
 static std::shared_ptr<NativeTooltipPage> g_native_announcement_page;
 static uint64_t g_native_announcement_page_epoch = 0;
 static int g_native_announcement_page_dimx = 0, g_native_announcement_page_dimy = 0;
+// The modal report renderer has its own native owner and call site. Its open
+// flag suppresses both hover renderers, so a hover snapshot cannot stand in
+// for this page. Keep the pre-modal base for all three report-view branches.
+static std::shared_ptr<NativeTooltipPage> g_native_announcement_popup_page;
+static uint64_t g_native_announcement_popup_page_epoch = 0;
+static int g_native_announcement_popup_page_dimx = 0,
+    g_native_announcement_popup_page_dimy = 0;
+struct NativeAnnouncementPopupCapture {
+    const NativeTooltipPage *page = nullptr;
+    const unsigned char *grid = nullptr;
+    uint64_t epoch = 0;
+    std::array<long, 4> clip{};
+};
+static thread_local NativeAnnouncementPopupCapture g_native_announcement_popup_capture;
+static std::shared_ptr<NativeTooltipPage> capture_native_announcement_popup_background() {
+    g_native_announcement_popup_capture = {};
+    auto *gps = native_graphics();
+    if (!gps || !gps->screen || gps->dimx <= 0 || gps->dimx > 1000 ||
+            gps->dimy <= 0 || gps->dimy > 1000) return nullptr;
+    auto page = std::make_shared<NativeTooltipPage>(*gps);
+    page->bounds = {0, 0, gps->dimx, gps->dimy};
+    g_native_announcement_popup_capture = {page.get(), gps->screen,
+        g_embark_item_capture_epoch.load(std::memory_order_acquire),
+        {gps->clipx[0], gps->clipx[1], gps->clipy[0], gps->clipy[1]}};
+    return page;
+}
+static void publish_native_announcement_popup_background(
+        std::shared_ptr<NativeTooltipPage> page, int32_t margin) {
+    const auto capture = g_native_announcement_popup_capture;
+    g_native_announcement_popup_capture = {};
+    auto *gps = native_graphics();
+    const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+    int dimx = 0, dimy = 0;
+    // Both verified PE renderers clear x=(r8d+4)..(r8d+97), y=4..38.
+    // These are the native inclusive loop edges, independent of text, skin,
+    // report category and whether the tutorial made the report directly.
+    const int64_t left = int64_t(margin) + 4;
+    if (page && capture.page == page.get() && capture.epoch == epoch && gps &&
+            capture.grid == gps->screen && page->bounds.w == gps->dimx &&
+            page->bounds.h == gps->dimy && left >= 0 && left + 94 <= gps->dimx &&
+            gps->dimy >= 39 && left >= capture.clip[0] &&
+            left + 93 <= capture.clip[1] && capture.clip[2] <= 4 &&
+            capture.clip[3] >= 38) {
+        dimx = gps->dimx;
+        dimy = gps->dimy;
+        page->bounds = {static_cast<int>(left), 4, 94, 35};
+        std::fill(page->cells.begin(), page->cells.end(), 0);
+        for (int x = page->bounds.x; x < page->bounds.x + page->bounds.w; ++x)
+            std::fill_n(page->cells.begin() + static_cast<size_t>(x) * dimy + 4, 35, 1);
+    } else page.reset();
+    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+    g_native_announcement_popup_page = std::move(page);
+    g_native_announcement_popup_page_epoch = epoch;
+    g_native_announcement_popup_page_dimx = dimx;
+    g_native_announcement_popup_page_dimy = dimy;
+}
+static void clear_native_announcement_popup_background() {
+    g_native_announcement_popup_capture = {};
+    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+    g_native_announcement_popup_page.reset();
+    g_native_announcement_popup_page_epoch = 0;
+    g_native_announcement_popup_page_dimx = g_native_announcement_popup_page_dimy = 0;
+}
+static std::array<std::shared_ptr<NativeTooltipPage>, 2> native_announcement_backgrounds(
+        const graphicst &gps) {
+    return {
+        g_native_announcement_page && g_native_announcement_page_epoch == g_native_drawn_text_epoch &&
+                g_native_announcement_page_dimx == gps.dimx &&
+                g_native_announcement_page_dimy == gps.dimy
+            ? g_native_announcement_page : nullptr,
+        g_native_announcement_popup_page &&
+                g_native_announcement_popup_page_epoch == g_native_drawn_text_epoch &&
+                g_native_announcement_popup_page_dimx == gps.dimx &&
+                g_native_announcement_popup_page_dimy == gps.dimy
+            ? g_native_announcement_popup_page : nullptr};
+}
 static bool native_announcement_background_matches(const graphicst &gps, const SDL_Rect &frame) {
-    if (!g_native_announcement_page || g_native_announcement_page_epoch != g_native_drawn_text_epoch ||
-            g_native_announcement_page_dimx != gps.dimx ||
-            g_native_announcement_page_dimy != gps.dimy) return false;
-    const auto &bounds = g_native_announcement_page->bounds;
-    return frame.x == bounds.x && frame.y == bounds.y &&
-        frame.w == bounds.w && frame.h == bounds.h;
+    for (const auto &saved : native_announcement_backgrounds(gps)) {
+        if (!saved) continue;
+        const auto &bounds = saved->bounds;
+        if (frame.x == bounds.x && frame.y == bounds.y &&
+                frame.w == bounds.w && frame.h == bounds.h) return true;
+    }
+    return false;
 }
 static std::shared_ptr<NativeTooltipPage> native_announcement_foreground_page(
         const graphicst &gps, const std::vector<SDL_Rect> &frames) {
-    if (!g_native_announcement_page ||
-            std::none_of(frames.begin(), frames.end(), [&](const SDL_Rect &frame) {
+    if (std::none_of(frames.begin(), frames.end(), [&](const SDL_Rect &frame) {
                 return native_announcement_background_matches(gps, frame);
             })) return nullptr;
     auto page = std::make_shared<NativeTooltipPage>(gps);
     page->compose_outside(gps);
-    const auto &frame = g_native_announcement_page->bounds;
     // addchar/add_lower_tile leave these bits from the erased base page.
-    // Clear them only in the read view: every matcher must see ordinary
-    // report rows, while a later top-layer widget retains its own font.
+    // Clear them only in the read view, including when the compositor moved
+    // these ordinary addst rows to screen_top. Later help/tooltip/chooser
+    // owners keep their own font inside their independent foreground frames.
     if (!page->flags.empty())
-        for (int x = frame.x; x < frame.x + frame.w; ++x)
-            for (int y = frame.y; y < frame.y + frame.h; ++y) {
-                const size_t at = static_cast<size_t>(x) * gps.dimy + y;
-                if (!native_ui_top_layer_at(gps, at))
-                    page->flags[at] &= ~((1u << 3) | (1u << 4));
-            }
+        for (const auto &frame : frames) {
+            if (!native_announcement_background_matches(gps, frame)) continue;
+            for (int x = frame.x; x < frame.x + frame.w; ++x)
+                for (int y = frame.y; y < frame.y + frame.h; ++y) {
+                    const size_t at = static_cast<size_t>(x) * gps.dimy + y;
+                    const bool covered = std::any_of(frames.begin(), frames.end(),
+                        [&](const SDL_Rect &other) {
+                            return !native_announcement_background_matches(gps, other) &&
+                                x >= other.x && x < other.x + other.w &&
+                                y >= other.y && y < other.y + other.h;
+                        });
+                    if (!covered)
+                        page->flags[at] &= ~((1u << 3) | (1u << 4));
+                }
+        }
     page->bounds = {0, 0, gps.dimx, gps.dimy};
     return page;
 }
@@ -2408,9 +2493,14 @@ static std::shared_ptr<NativeTooltipPage> native_help_background_page(const grap
                     copy(page->texture, saved.texture);
                 }
     }
-    for (const auto &frame : frames) {
-        if (!native_announcement_background_matches(gps, frame)) continue;
-        const auto &saved = *g_native_announcement_page;
+    for (const auto &background : native_announcement_backgrounds(gps)) {
+        if (!background) continue;
+        const auto &saved = *background;
+        const auto &frame = saved.bounds;
+        if (std::none_of(frames.begin(), frames.end(), [&](const SDL_Rect &candidate) {
+                return candidate.x == frame.x && candidate.y == frame.y &&
+                    candidate.w == frame.w && candidate.h == frame.h;
+            })) continue;
         for (int x = frame.x; x < frame.x + frame.w; ++x)
             for (int y = frame.y; y < frame.y + frame.h; ++y) {
                 const size_t at = static_cast<size_t>(x) * gps.dimy + y;
@@ -25338,6 +25428,8 @@ static int embark_preparation_tab_index(std::string_view source) {
 void Overlay::normalize_native_split_text() {
     if (!gps_ || gps_->dimx <= 0 || gps_->dimy <= 0) return;
     const auto announcement_frames = native_announcement_overlay_frames(*gps_);
+    const auto overlay_frames = announcement_frames.empty()
+        ? std::vector<SDL_Rect>{} : native_text_overlay_frames(*gps_);
 
     // g_src/ViewBase.cpp tabs::render writes the caption twice with these
     // flags. g_src/enabler.cpp selects the corresponding half-font atlas.
@@ -25378,15 +25470,28 @@ void Overlay::normalize_native_split_text() {
         // whose lower half is discarded here.
         if (match.rule == kCharacterOverviewQuoteRule) continue;
         // The alert flyout draws ordinary one-row addst text after clearing
-        // the base cells. Those native writes leave the covered page's font
-        // flags behind; they do not make the report a pair of text halves.
+        // the base cells. The compositor can subsequently move them to top;
+        // their inherited flags still do not make a pair of text halves.
+        // A later overlay or a recovered background caption owns its own font.
         if (match.x >= 0 && match.x < gps_->dimx && match.y >= 0 && match.y < gps_->dimy &&
-            !native_ui_top_layer_at(*gps_, static_cast<size_t>(match.x) * gps_->dimy + match.y) &&
+            !match.native_hover_background && !match.native_help_current_page &&
+            !match.native_help_occluder &&
             std::any_of(announcement_frames.begin(), announcement_frames.end(),
                 [&](const SDL_Rect &frame) {
                     return match.x >= frame.x && match.y >= frame.y &&
                         match.x + std::max(1, match.length) <= frame.x + frame.w &&
                         match.y < frame.y + frame.h;
+                }) &&
+            std::none_of(overlay_frames.begin(), overlay_frames.end(),
+                [&](const SDL_Rect &frame) {
+                    const bool announcement = std::any_of(announcement_frames.begin(),
+                        announcement_frames.end(), [&](const SDL_Rect &owner) {
+                            return frame.x == owner.x && frame.y == owner.y &&
+                                frame.w == owner.w && frame.h == owner.h;
+                        });
+                    return !announcement && match.y >= frame.y && match.y < frame.y + frame.h &&
+                        match.x < frame.x + frame.w &&
+                        match.x + std::max(1, match.length) > frame.x;
                 })) continue;
         // Retain the native source spans of duplicates for suppression, but
         // never let a later page-specific layout resurrect their translations

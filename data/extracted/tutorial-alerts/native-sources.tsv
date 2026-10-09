@@ -1,0 +1,23 @@
+edition	image_identity	producer_rva	stage	branch	source_role	source
+steam	PE:6a70a6d9:02711000	0x1f2310	9	stage == 9; urgent report	native-report-fulltext	This is an example urgent alert!  These are very important.  Ignore them at your peril.
+steam	PE:6a70a6d9:02711000	0x1f2310	9	stage == 9	tutorial-title	Alerts
+steam	PE:6a70a6d9:02711000	0x1f2310	9	stage == 9; !(flags & 2)	tutorial-title-suffix	 (7 of 8)
+steam	PE:6a70a6d9:02711000	0x1f2310	9	stage == 9; objective 0 visible	tutorial-objective	Dismiss the large red alert
+steam	PE:6a70a6d9:02711000	0x1f2310	9	stage == 9; all n	tutorial-introduction	Important and sometimes urgent information is given as alerts on the left side of the screen. 
+steam	PE:6a70a6d9:02711000	0x1f2310	9	stage == 9; all n	tutorial-instructions	Hover over an alert icon to see the information. 
+steam	PE:6a70a6d9:02711000	0x1f2310	9	stage == 9; all n	tutorial-instructions	Left click on an alert for recentering options, and right click to dismiss an alert.
+steam	PE:6a70a6d9:02711000	0x1f2310	9	n >= 3	assembled-tutorial-body	Important and sometimes urgent information is given as alerts on the left side of the screen. There have been several already![B]Hover over an alert icon to see the information. Left click on an alert for recentering options, and right click to dismiss an alert.
+steam	PE:6a70a6d9:02711000	0x1f2310	9	n == 2	assembled-tutorial-body	Important and sometimes urgent information is given as alerts on the left side of the screen. There have been a few already![B]Hover over an alert icon to see the information. Left click on an alert for recentering options, and right click to dismiss an alert.
+steam	PE:6a70a6d9:02711000	0x1f2310	9	n == 1	assembled-tutorial-body	Important and sometimes urgent information is given as alerts on the left side of the screen. There has been one already![B]Hover over an alert icon to see the information. Left click on an alert for recentering options, and right click to dismiss an alert.
+steam	PE:6a70a6d9:02711000	0x1f2310	9	n == 0	assembled-tutorial-body	Important and sometimes urgent information is given as alerts on the left side of the screen. [B]Hover over an alert icon to see the information. Left click on an alert for recentering options, and right click to dismiss an alert.
+classic	PE:6a70b91c:0270a000	0x1f22a0	9	stage == 9; urgent report	native-report-fulltext	This is an example urgent alert!  These are very important.  Ignore them at your peril.
+classic	PE:6a70b91c:0270a000	0x1f22a0	9	stage == 9	tutorial-title	Alerts
+classic	PE:6a70b91c:0270a000	0x1f22a0	9	stage == 9; !(flags & 2)	tutorial-title-suffix	 (7 of 8)
+classic	PE:6a70b91c:0270a000	0x1f22a0	9	stage == 9; objective 0 visible	tutorial-objective	Dismiss the large red alert
+classic	PE:6a70b91c:0270a000	0x1f22a0	9	stage == 9; all n	tutorial-introduction	Important and sometimes urgent information is given as alerts on the left side of the screen. 
+classic	PE:6a70b91c:0270a000	0x1f22a0	9	stage == 9; all n	tutorial-instructions	Hover over an alert icon to see the information. 
+classic	PE:6a70b91c:0270a000	0x1f22a0	9	stage == 9; all n	tutorial-instructions	Left click on an alert for recentering options, and right click to dismiss an alert.
+classic	PE:6a70b91c:0270a000	0x1f22a0	9	n >= 3	assembled-tutorial-body	Important and sometimes urgent information is given as alerts on the left side of the screen. There have been several already![B]Hover over an alert icon to see the information. Left click on an alert for recentering options, and right click to dismiss an alert.
+classic	PE:6a70b91c:0270a000	0x1f22a0	9	n == 2	assembled-tutorial-body	Important and sometimes urgent information is given as alerts on the left side of the screen. There have been a few already![B]Hover over an alert icon to see the information. Left click on an alert for recentering options, and right click to dismiss an alert.
+classic	PE:6a70b91c:0270a000	0x1f22a0	9	n == 1	assembled-tutorial-body	Important and sometimes urgent information is given as alerts on the left side of the screen. There has been one already![B]Hover over an alert icon to see the information. Left click on an alert for recentering options, and right click to dismiss an alert.
+classic	PE:6a70b91c:0270a000	0x1f22a0	9	n == 0	assembled-tutorial-body	Important and sometimes urgent information is given as alerts on the left side of the screen. [B]Hover over an alert icon to see the information. Left click on an alert for recentering options, and right click to dismiss an alert.

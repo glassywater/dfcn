@@ -1,0 +1,11 @@
+edition	image_identity	owner	function_rva	end_rva	instruction_rva	literal_rva	source
+reference	PE:6a70a6d9:02711000	alert-hover-renderer	0x3d6950	0x3fd60d	0x3fab2b	0x16304d0	Left click for recenter and expand options.  Right click to dismiss.
+reference	PE:6a70a6d9:02711000	alert-hover-renderer	0x3d6950	0x3fd60d	0x3fae1b	0x16304d0	Left click for recenter and expand options.  Right click to dismiss.
+reference	PE:6a70a6d9:02711000	alert-popup-renderer	0x40d5f0	0x40f77a	0x40e92b	0x163a2e0	You can recenter on certain announcements.  Right click to close.
+reference	PE:6a70a6d9:02711000	alert-popup-renderer	0x40d5f0	0x40f77a	0x40ead7	0x163a2e0	You can recenter on certain announcements.  Right click to close.
+reference	PE:6a70a6d9:02711000	alert-popup-renderer	0x40d5f0	0x40f77a	0x40ec23	0x163a2e0	You can recenter on certain announcements.  Right click to close.
+classic	PE:6a70b91c:0270a000	alert-hover-renderer	0x3d4510	0x3fb1cd	0x3f86eb	0x162ae10	Left click for recenter and expand options.  Right click to dismiss.
+classic	PE:6a70b91c:0270a000	alert-hover-renderer	0x3d4510	0x3fb1cd	0x3f89db	0x162ae10	Left click for recenter and expand options.  Right click to dismiss.
+classic	PE:6a70b91c:0270a000	alert-popup-renderer	0x40b1b0	0x40d33a	0x40c4eb	0x1635430	You can recenter on certain announcements.  Right click to close.
+classic	PE:6a70b91c:0270a000	alert-popup-renderer	0x40b1b0	0x40d33a	0x40c697	0x1635430	You can recenter on certain announcements.  Right click to close.
+classic	PE:6a70b91c:0270a000	alert-popup-renderer	0x40b1b0	0x40d33a	0x40c7e3	0x1635430	You can recenter on certain announcements.  Right click to close.

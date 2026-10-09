@@ -2472,9 +2472,18 @@ static std::optional<SDL_Rect> native_panel_interior_with_occluder(
     return std::nullopt;
 }
 
-static constexpr std::array<std::string_view, 2> native_announcement_instructions = {
+// Both PE editions use all three instructions. The first belongs to the
+// two hover paths; the others belong to alert/all/unit report views. See
+// data/extracted/fortress-alert-ui for the complete native dispatch. These
+// frames share foreground ownership, regardless of which report produced
+// their text (including the tutorial's direct report allocator).
+static constexpr std::array<std::string_view, 6> native_announcement_instructions = {
     "Left click for recenter and expand options.  Right click to dismiss.",
-    "Left click for recenter and expand options. Right click to dismiss."};
+    "Left click for recenter and expand options. Right click to dismiss.",
+    "You can recenter on certain announcements.  Right click to close.",
+    "You can recenter on certain announcements. Right click to close.",
+    "Select a report to view the full text.  Right click to close.",
+    "Select a report to view the full text. Right click to close."};
 
 // The alert flyout shares its border artwork with ordinary panels. Its
 // complete interaction instruction and closed current frame establish the
