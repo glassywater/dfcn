@@ -4695,6 +4695,8 @@ private:
     bool layout_adventure_setup_selection(SDL_Renderer *renderer);
     void append_adventure_skill_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, const unsigned char *screen_override) const;
+    void append_embark_skill_matches(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, const unsigned char *screen_override) const;
     bool layout_adventure_skills(SDL_Renderer *renderer);
     void append_adventure_personality_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, const unsigned char *screen_override) const;
@@ -15514,6 +15516,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "adventure_travel_status_rows.inc"
 #include "map_hover.inc"
 #include "embark_site.inc"
+#include "embark_skills.inc"
 #include "embark_finder.inc"
 #include "embark_map_text.inc"
 #include "gameplay_map_text.inc"
@@ -16667,6 +16670,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // UI messages can claim a directional prefix such as Above or Below.
     // Hover documents have already reserved their foreground source above.
     append_adventure_skill_matches(screen_rows, result, only_y, screen_override);
+    append_embark_skill_matches(screen_rows, result, only_y, screen_override);
     append_fortress_machine_power_rows(screen_rows, result, only_y);
     if (!announcement_panel_only)
         append_adventure_combat_fields(screen_rows, result, only_y, screen_override);
@@ -29425,16 +29429,27 @@ std::optional<std::string> Overlay::translate_embark_equipment_item_uncached(
         return quantity + " 份" + *food;
     }
 
-    // Raw creature leather is already a complete material item, not finished
-    // equipment that needs the generic material/noun compositor. Once the
-    // native unabridged source has been recovered, use the authoritative Arena
-    // creature-leather resolver directly and return one complete row label.
-    if (captured_memory_source && quantity.empty()) {
-        if (const auto leather =
-                translate_arena_creature_leather(item_source)) {
-            const std::string material = trim(*leather);
-            if (!material.empty()) return material;
-        }
+    // Raw creature leather is a complete material item in creature + leather
+    // order, with no equipment noun after it. Resolve grid and captured sources
+    // alike before the equipment parser rejects that empty remainder and the
+    // field compositor retries a reversed order, producing `皮革虎`.
+    // Counts belong to this same complete item and do not change its grammar.
+    // A reversed candidate from that field compositor must resolve to the same
+    // material; require its whole remainder to be an exact species name.
+    std::string raw_leather_source = item_source;
+    constexpr std::string_view leather_prefix = "leather ";
+    if (item_source.starts_with(leather_prefix)) {
+        const std::string creature_source = trim(item_source.substr(
+            leather_prefix.size()));
+        if (is_exact_arena_creature_name(creature_source))
+            raw_leather_source = creature_source + " leather";
+    }
+    if (const auto leather =
+            translate_arena_creature_leather(raw_leather_source)) {
+        const std::string material = trim(*leather);
+        if (!material.empty())
+            return format_embark_equipment_quantity(
+                quantity, raw_leather_source, material);
     }
 
     // Writing sheets are named by their actual source material. Plant pulp
@@ -34130,26 +34145,28 @@ static bool layout_embark_skill_rows(std::vector<Match> &matches,
     if (citizens_heading == matches.end() || skills_heading == matches.end())
         return false;
 
+    const int heading_y = item_picker_text_row(*skills_heading);
     int actions_y = INT32_MAX;
     for (const Match &match : matches) {
         if (match.source == "Save Profile" || match.source == "Embark!")
-            actions_y = std::min(actions_y, match.y);
+            actions_y = std::min(actions_y, item_picker_text_row(match));
     }
 
     std::vector<size_t> skill_rows;
     std::vector<int> skill_starts;
     for (size_t index = 0; index < matches.size(); ++index) {
         const Match &match = matches[index];
-        if (match.target.empty() || match.y <= skills_heading->y ||
-            match.y >= actions_y ||
+        const int row = item_picker_text_row(match);
+        if (match.target.empty() || match.native_split_duplicate || row <= heading_y ||
+            row >= actions_y ||
             std::abs(match.x - skills_heading->x) > 3 ||
-            !is_ranked_skill_source(match.source)) {
+            (match.rule != kRatedSkillRule && !is_ranked_skill_source(match.source))) {
             continue;
         }
         skill_rows.push_back(index);
         skill_starts.push_back(match.x);
     }
-    if (skill_rows.size() < 3) return false;
+    if (skill_rows.empty()) return false;
 
     std::sort(skill_starts.begin(), skill_starts.end());
     const int common_x = std::clamp(
@@ -34162,7 +34179,7 @@ static bool layout_embark_skill_rows(std::vector<Match> &matches,
     // for transient frames in which that heading is not present.
     int text_right = std::max(common_x + 1, screen_columns - 12);
     for (const Match &match : matches) {
-        if (match.y == skills_heading->y &&
+        if (item_picker_text_row(match) == heading_y &&
             (match.source.ends_with(" skill pick left") ||
              match.source.ends_with(" skill picks left")) &&
             match.x > common_x + 4) {
