@@ -12,12 +12,15 @@ std::optional<std::string> Overlay::translate_legends_structure_type(
 
 std::optional<std::string> Overlay::translate_legends_written_item(
         std::string_view raw) const {
+    return legends_translation_work([&]() -> std::optional<std::string> {
+    TranslationWorkFrame work_frame("historical written item", raw);
     const std::string source = lower(normalize_utterance(raw));
     if (source.empty() || source.ends_with("...")) return std::nullopt;
     // Reuse reviewed noun-phrase rules and the shared material/species table.
     // Do this before the generic compositor, which cannot distinguish a
     // binding material from the paper inside the book.
     for (int index : legends_description_rules_) {
+        translation_work_step();
         const Rule &rule = rules_[static_cast<size_t>(index)];
         if (!(rule.source.ends_with("codex") || rule.source.ends_with("scroll") ||
               rule.source.ends_with("quire") || rule.source.ends_with("slab"))) continue;
@@ -41,14 +44,22 @@ std::optional<std::string> Overlay::translate_legends_written_item(
             return fill_template(rule, captures, &capture_translations_, nullptr, &translated);
     }
     return std::nullopt;
+    });
 }
 
 std::optional<std::string> Overlay::translate_legends_artifact_identity(
         std::string_view source) const {
+    return legends_translation_work([&]() -> std::optional<std::string> {
+    TranslationWorkFrame work_frame("historical artifact", source);
     // Native artifact-name formatters also emit these two non-name results.
     // Keep their existing historical vocabulary in the shared identity path,
     // including diplomatic claims and quests, rather than phoneticizing them.
     source = trim_view(source);
+    const std::string memo_key = "legends artifact:" +
+        std::to_string(reinterpret_cast<std::uintptr_t>(this)) + ":" +
+        std::to_string(native_identity_translation_context()) + ":" +
+        std::string(source);
+    return translation_work_memo(memo_key, [&]() -> std::optional<std::string> {
     const auto folded = lower(normalize_utterance(source));
     // Trade can capitalize the first byte when this field starts a reply.
     if (folded == "an unknown artifact")
@@ -60,6 +71,7 @@ std::optional<std::string> Overlay::translate_legends_artifact_identity(
     // BOOK_ART/BOOK_INSTRUCTION production selects semantic book parsing for
     // either a bare title or a repeated identity; other names keep their resolver.
     for (int index : legends_book_rules_) {
+        translation_work_step();
         const Rule &rule = rules_[static_cast<size_t>(index)];
         size_t end = 0;
         std::vector<std::string> captures;
@@ -80,10 +92,14 @@ std::optional<std::string> Overlay::translate_legends_artifact_identity(
     // this field already establishes a generated name, so use its complete
     // title grammar instead of rejecting the compound as an unknown person.
     return translate_legends_name(source, false, false);
+    });
+    });
 }
 
 std::optional<LegendsWrittenHeading> Overlay::resolve_legends_written_heading(
         std::string_view source) const {
+    return legends_translation_work([&]() -> std::optional<LegendsWrittenHeading> {
+    TranslationWorkFrame work_frame("historical written heading", source);
     // Written artifacts can show just `title, material scroll`, without the
     // native-name/quoted-gloss pair. Split at the ITEM suffix so punctuation
     // inside a book title remains part of that title. The existing written
@@ -100,10 +116,13 @@ std::optional<LegendsWrittenHeading> Overlay::resolve_legends_written_heading(
     if (!translated && !generated_title_shape(title)) return std::nullopt;
     return LegendsWrittenHeading{title,
         translated.value_or(cp437_to_utf8(std::string(title))), std::move(*item)};
+    });
 }
 
 std::optional<std::string> Overlay::translate_legends_detail_heading(
         std::string_view source) const {
+    return legends_translation_work([&]() -> std::optional<std::string> {
+    TranslationWorkFrame work_frame("historical heading", source);
     // A figure tab can omit sex/species and retain only the name/gloss pair.
     // Its captured identity still owns the personal-name grammar; the same
     // history renderer must supply both its heading and linked body name.
@@ -171,6 +190,7 @@ std::optional<std::string> Overlay::translate_legends_detail_heading(
                     return *name + "，" + *type;
     }
     return translate_legends_artifact_identity(source);
+    });
 }
 
 bool Overlay::append_legends_typed_list_matches(std::vector<std::string> &rows,

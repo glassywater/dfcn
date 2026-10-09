@@ -28,13 +28,24 @@ dfcn::TranslationResult Overlay::translate_adventure_travel_status_result(
         target_colors = found->second.target_colors;
         return found->second.result;
     }
+    dfcn::TranslationWorkScope budget;
     const auto publish = [&](dfcn::TranslationResult result) {
+        if (budget.exhausted()) {
+            if (!budget.owns_budget()) dfcn::translation_work_step();
+            result = preserve_native_translation(raw_source, "travel-status", false,
+                dfcn::TranslationStatus::WorkLimited);
+            target_colors.clear();
+            for (size_t at = 0; at < result.target.size(); ++at)
+                if ((static_cast<unsigned char>(result.target[at]) & 0xc0) != 0x80)
+                    target_colors.push_back(source_colors[
+                        result.origins[at] < raw_source.size() ? result.origins[at] : 0]);
+        }
         result.owner = "native-adventure-travel-status";
         return cache_native_display_translation(native_display_translation_cache_,
             native_display_translation_cache_bytes_, cache_key, source_colors, target_colors,
             std::move(result));
     };
-    dfcn::TranslationWorkScope budget;
+    try {
     std::vector<size_t> origins;
     const std::string source = normalize_utterance(raw_source, &origins);
     if (source.empty() || origins.size() != source.size()) return {};
@@ -133,4 +144,9 @@ dfcn::TranslationResult Overlay::translate_adventure_travel_status_result(
         return publish(std::move(result));
     }
     return publish(preserve_native_translation(raw_source, "travel-status"));
+    } catch (const dfcn::TranslationWorkLimit &) {
+        if (!budget.owns_budget()) throw;
+        return publish(preserve_native_translation(raw_source, "travel-status", false,
+            dfcn::TranslationStatus::WorkLimited));
+    }
 }

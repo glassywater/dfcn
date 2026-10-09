@@ -582,13 +582,23 @@ dfcn::TranslationResult Overlay::translate_help_paragraph_result(
         target_foregrounds = found->second.target_colors;
         return found->second.result;
     }
+    dfcn::TranslationWorkScope budget;
     const auto publish = [&](dfcn::TranslationResult result) {
+        if (budget.exhausted()) {
+            if (!budget.owns_budget()) dfcn::translation_work_step();
+            result = preserve_native_translation(raw_source, "help-paragraph", false,
+                dfcn::TranslationStatus::WorkLimited);
+            target_foregrounds.clear();
+            for (size_t at = 0; at < result.target.size(); ++at)
+                if ((static_cast<unsigned char>(result.target[at]) & 0xc0) != 0x80)
+                    target_foregrounds.push_back(raw_foregrounds[
+                        result.origins[at] < raw_source.size() ? result.origins[at] : 0]);
+        }
         result.owner = ui_message ? "native-ui-message" : "native-help-document";
         return cache_native_display_translation(native_display_translation_cache_,
             native_display_translation_cache_bytes_, cache_key, raw_foregrounds, target_foregrounds,
             std::move(result));
     };
-    dfcn::TranslationWorkScope budget;
     try {
         if (const auto complete = translate_help_paragraph(raw_source, raw_foregrounds,
                 target_foregrounds, ui_message, required_rule)) {
@@ -598,6 +608,7 @@ dfcn::TranslationResult Overlay::translate_help_paragraph_result(
             return publish(std::move(result));
         }
     } catch (const dfcn::TranslationWorkLimit &) {
+        if (!budget.owns_budget()) throw;
         target_foregrounds.clear();
         auto result = preserve_native_translation(raw_source, "help-paragraph", false,
             dfcn::TranslationStatus::WorkLimited);
@@ -644,6 +655,7 @@ dfcn::TranslationResult Overlay::translate_help_paragraph_result(
             }
         }
     } catch (const dfcn::TranslationWorkLimit &) {
+        if (!budget.owns_budget()) throw;
         // A previously ended complete candidate is a usable independent
         // result; never publish an in-progress capture or generated string.
         if (!best) best = preserve_native_translation(raw_source, "help-paragraph", false,
@@ -781,7 +793,10 @@ dfcn::TranslationResult Overlay::translate_help_paragraph_result(
         if (!work_limited) {
             try { translated = translate_help_paragraph(native, native_colors, colors,
                 ui_message, literal.rule, true); }
-            catch (const dfcn::TranslationWorkLimit &) { work_limited = true; }
+            catch (const dfcn::TranslationWorkLimit &) {
+                if (!budget.owns_budget()) throw;
+                work_limited = true;
+            }
         }
         if (translated) {
             result.append(dfcn::TranslationResult::translated(native, *translated, "help-catalog-sentence"), begin);

@@ -21,6 +21,25 @@
 namespace DFHack {
 namespace DFZH {
 namespace Hooks {
+    namespace {
+        template<class Operation>
+        auto bounded_rule_translation(Operation&& operation) -> decltype(operation()) {
+            dfcn::TranslationWorkScope work;
+            try {
+                dfcn::translation_work_step();
+                auto result = operation();
+                // An owner callback can contain its own fallback handler.
+                // Preserve exhaustion even when that handler swallowed the
+                // original exception, before a result leaves this boundary.
+                dfcn::translation_work_step();
+                return result;
+            } catch (const dfcn::TranslationWorkLimit&) {
+                if (!work.owns_budget()) throw;
+                return {};
+            }
+        }
+    }
+
     RulesetsManager::RulesetsManager() {
     }
 
@@ -73,26 +92,27 @@ namespace Hooks {
                 std::string_view kind, std::string_view source) -> std::optional<std::string> {
             if (source.empty() || source.size() > 65536) return std::nullopt;
             std::lock_guard<std::mutex> lock(*mutex);
-            dfcn::TranslationWorkScope work;
-            if (kind == "item") return complete(source, "::items");
-            if (kind == "material") return complete(source, "::materials");
-            if (kind == "material_adjective") return complete(source, "::materials::adjective");
-            if (kind == "tile") return complete(source, "::tiles");
-            if (kind == "building") return complete(source, "::map_hover::building");
-            if (kind == "job") {
-                for (const auto* ns : {"::activities", "::tasks", "::menu"})
-                    if (auto target = complete(source, ns)) return target;
+            return bounded_rule_translation([&]() -> std::optional<std::string> {
+                if (kind == "item") return complete(source, "::items");
+                if (kind == "material") return complete(source, "::materials");
+                if (kind == "material_adjective") return complete(source, "::materials::adjective");
+                if (kind == "tile") return complete(source, "::tiles");
+                if (kind == "building") return complete(source, "::map_hover::building");
+                if (kind == "job") {
+                    for (const auto* ns : {"::activities", "::tasks", "::menu"})
+                        if (auto target = complete(source, ns)) return target;
+                    return std::nullopt;
+                }
+                if (kind == "profession") {
+                    if (auto target = complete(source, "::skills::name")) return target;
+                    return complete(source, "::professions");
+                }
+                if (kind == "creature") {
+                    if (auto target = complete(source, "::creatures::name::singular")) return target;
+                    return complete(source, "::creatures::name::plural");
+                }
                 return std::nullopt;
-            }
-            if (kind == "profession") {
-                if (auto target = complete(source, "::skills::name")) return target;
-                return complete(source, "::professions");
-            }
-            if (kind == "creature") {
-                if (auto target = complete(source, "::creatures::name::singular")) return target;
-                return complete(source, "::creatures::name::plural");
-            }
-            return std::nullopt;
+            });
         };
     }
 
@@ -376,81 +396,86 @@ namespace Hooks {
     /// @return     翻译后的中文文本，无法翻译时返回 std::nullopt
     std::optional<std::string> RulesetsManager::translate(const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        // Use the same owner/child/tissue parser in health and inventory as
-        // in Legends, including names with more than one owning body part.
-        if (text.find(',') != std::string::npos)
-            if (auto anatomy = translate_anatomy(text)) return anatomy;
-        auto results = find_translations(text, false);
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            // Use the same owner/child/tissue parser in health and inventory as
+            // in Legends, including names with more than one owning body part.
+            if (text.find(',') != std::string::npos)
+                if (auto anatomy = translate_anatomy(text)) return anatomy;
+            auto results = find_translations(text, false);
 
-        if (results.empty()) return std::nullopt;
+            if (results.empty()) return std::nullopt;
 
-        // A generated owner's title can also contain an item/material noun.
-        // Keep every creature prefix available to the grammar, but at the
-        // untyped root prefer a real outer structure over swallowing its noun
-        // into a complete creature name. Typed creature APIs remain unchanged.
-        const auto is_creature = [](const ResultTree& tree) {
-            return tree.identifier.starts_with("::creatures::");
-        };
-        const auto has_complete_creature = [&](const auto& self,
-                const ResultTree& tree) -> bool {
-            if (is_creature(tree) && tree.matched.size() == text.size())
-                return true;
-            for (const auto& [_, child] : tree.children)
-                if (self(self, *child)) return true;
-            return false;
-        };
-        const auto contains_creature = [&](const auto& self,
-                const ResultTree& tree) -> bool {
-            if (!tree.matched.empty() && is_creature(tree)) return true;
-            for (const auto& [_, child] : tree.children)
-                if (self(self, *child)) return true;
-            return false;
-        };
-        const auto has_outer_structure = [&](const auto& self,
-                const ResultTree& tree) -> bool {
-            // Do not reinterpret vocabulary used inside a creature name as
-            // an outer material or item. In particular items::fish::main can
-            // simply alias a caste, so the presence of ::items is insufficient.
-            if (is_creature(tree)) return false;
-            if (!tree.matched.empty()) {
-                if (tree.identifier == "::materials::state" ||
-                    tree.identifier.starts_with("::materials::state::"))
+            // A generated owner's title can also contain an item/material noun.
+            // Keep every creature prefix available to the grammar, but at the
+            // untyped root prefer a real outer structure over swallowing its noun
+            // into a complete creature name. Typed creature APIs remain unchanged.
+            const auto is_creature = [](const ResultTree& tree) {
+                return tree.identifier.starts_with("::creatures::");
+            };
+            const auto has_complete_creature = [&](const auto& self,
+                    const ResultTree& tree) -> bool {
+                dfcn::translation_work_step();
+                if (is_creature(tree) && tree.matched.size() == text.size())
                     return true;
-                if (tree.identifier.starts_with("::items::") &&
-                    tree.identifier.ends_with("::main") &&
-                    !contains_creature(contains_creature, tree))
-                    return true;
-            }
-            for (const auto& [_, child] : tree.children)
-                if (self(self, *child)) return true;
-            return false;
-        };
-        const bool creature_ambiguity = std::ranges::any_of(results,
-            [&](const auto& tree) {
-                return has_complete_creature(has_complete_creature, *tree);
-            });
-        auto best = std::ranges::min_element(results,
-            [&](const std::shared_ptr<const ResultTree>& a, const std::shared_ptr<const ResultTree>& b) {
-                if (a->uses_name_fallback != b->uses_name_fallback)
-                    return a->preferred_to(*b);
-                if (creature_ambiguity) {
-                    const bool a_outer = has_outer_structure(has_outer_structure, *a);
-                    const bool b_outer = has_outer_structure(has_outer_structure, *b);
-                    if (a_outer != b_outer) return a_outer;
+                for (const auto& [_, child] : tree.children)
+                    if (self(self, *child)) return true;
+                return false;
+            };
+            const auto contains_creature = [&](const auto& self,
+                    const ResultTree& tree) -> bool {
+                dfcn::translation_work_step();
+                if (!tree.matched.empty() && is_creature(tree)) return true;
+                for (const auto& [_, child] : tree.children)
+                    if (self(self, *child)) return true;
+                return false;
+            };
+            const auto has_outer_structure = [&](const auto& self,
+                    const ResultTree& tree) -> bool {
+                dfcn::translation_work_step();
+                // Do not reinterpret vocabulary used inside a creature name as
+                // an outer material or item. In particular items::fish::main can
+                // simply alias a caste, so the presence of ::items is insufficient.
+                if (is_creature(tree)) return false;
+                if (!tree.matched.empty()) {
+                    if (tree.identifier == "::materials::state" ||
+                        tree.identifier.starts_with("::materials::state::"))
+                        return true;
+                    if (tree.identifier.starts_with("::items::") &&
+                        tree.identifier.ends_with("::main") &&
+                        !contains_creature(contains_creature, tree))
+                        return true;
                 }
-                return a->preferred_to(*b);
-            });
+                for (const auto& [_, child] : tree.children)
+                    if (self(self, *child)) return true;
+                return false;
+            };
+            const bool creature_ambiguity = std::ranges::any_of(results,
+                [&](const auto& tree) {
+                    return has_complete_creature(has_complete_creature, *tree);
+                });
+            auto best = std::ranges::min_element(results,
+                [&](const std::shared_ptr<const ResultTree>& a, const std::shared_ptr<const ResultTree>& b) {
+                    if (a->uses_name_fallback != b->uses_name_fallback)
+                        return a->preferred_to(*b);
+                    if (creature_ambiguity) {
+                        const bool a_outer = has_outer_structure(has_outer_structure, *a);
+                        const bool b_outer = has_outer_structure(has_outer_structure, *b);
+                        if (a_outer != b_outer) return a_outer;
+                    }
+                    return a->preferred_to(*b);
+                });
 
-        // LOGGERMANAGER.getLogger()->debug("\n========== All %zu Translation Results for \"%s\" ==========\n", results.size(), text.c_str());
-        // for (size_t i = 0; i < results.size(); ++i) {
-        //     LOGGERMANAGER.getLogger()->debug("--- Result #%zu (weight=%zu) ---\n", i, results[i]->weight());
-        //     print_translation_path(*results[i]);
-        // }
-        // LOGGERMANAGER.getLogger()->debug("======================================================\n\n");
+            // LOGGERMANAGER.getLogger()->debug("\n========== All %zu Translation Results for \"%s\" ==========\n", results.size(), text.c_str());
+            // for (size_t i = 0; i < results.size(); ++i) {
+            //     LOGGERMANAGER.getLogger()->debug("--- Result #%zu (weight=%zu) ---\n", i, results[i]->weight());
+            //     print_translation_path(*results[i]);
+            // }
+            // LOGGERMANAGER.getLogger()->debug("======================================================\n\n");
 
-        std::string translated = (*best)->translated;
-        normalize_translation(translated);
-        return translated;
+            std::string translated = (*best)->translated;
+            normalize_translation(translated);
+            return translated;
+        });
     }
 
     void RulesetsManager::normalize_translation(
@@ -464,9 +489,11 @@ namespace Hooks {
                 {"家鹅", "鹅"}, {"家猪", "猪"}, {"家兔", "兔"},
             }};
         for (const auto &[source, target] : domestic_creature_terms) {
+            dfcn::translation_work_step();
             size_t position = 0;
             while ((position = translated.find(source, position)) !=
                    std::string::npos) {
+                dfcn::translation_work_step();
                 if (origins) {
                     const size_t origin = (*origins)[position];
                     origins->erase(origins->begin() + position,
@@ -657,259 +684,294 @@ namespace Hooks {
             std::vector<size_t>& origins) const {
         dfcn::TranslationStateScope translation_scope;
         origins.clear();
-        const auto results = resolve_namespace(text, context, 0);
-        const ResultTree* best = nullptr;
-        for (const auto& result : results) {
-            if (!result->remaining.empty() || result->translated.empty()) continue;
-            if (!best || result->preferred_to(*best)) best = result.get();
-        }
-        if (!best || !translation_origins(*best, origins)) {
-            origins.clear();
-            return std::nullopt;
-        }
-        std::string translated = best->translated;
-        normalize_translation(translated, &origins);
+        std::vector<size_t> candidate_origins;
+        auto translated = bounded_rule_translation([&]() -> std::optional<std::string> {
+            const auto results = resolve_namespace(text, context, 0);
+            const ResultTree* best = nullptr;
+            for (const auto& result : results) {
+                if (!result->remaining.empty() || result->translated.empty()) continue;
+                if (!best || result->preferred_to(*best)) best = result.get();
+            }
+            if (!best || !translation_origins(*best, candidate_origins)) return std::nullopt;
+            std::string target = best->translated;
+            normalize_translation(target, &candidate_origins);
+            return target;
+        });
+        if (translated) origins = std::move(candidate_origins);
         return translated;
     }
 
     dfcn::TranslationResult RulesetsManager::translate_prefix_with_origins(
             const std::string& text, const std::string& context) const {
         dfcn::TranslationStateScope translation_scope;
-        const auto results = resolve_namespace(text, context, 0);
-        const ResultTree* best = nullptr;
-        for (const auto& result : results) {
-            const size_t consumed = result->matched.size();
-            if (!consumed || result->translated.empty() || consumed > text.size()) continue;
-            if (consumed < text.size() &&
-                    !std::isspace(static_cast<unsigned char>(text[consumed]))) continue;
-            if (!best || consumed > best->matched.size() ||
-                    (consumed == best->matched.size() && result->preferred_to(*best)))
-                best = result.get();
-        }
-        std::vector<size_t> origins;
-        if (!best || !translation_origins(*best, origins)) return {};
-        std::string translated = best->translated;
-        normalize_translation(translated, &origins);
-        if (translated.empty()) return {};
-        auto result = dfcn::TranslationResult::translated(
-            std::string_view(text).substr(0, best->matched.size()),
-            std::move(translated), context, std::move(origins));
-        result.resource_revision = resource_revision_;
-        return result;
+        return bounded_rule_translation([&]() -> dfcn::TranslationResult {
+            const auto results = resolve_namespace(text, context, 0);
+            const ResultTree* best = nullptr;
+            for (const auto& result : results) {
+                const size_t consumed = result->matched.size();
+                if (!consumed || result->translated.empty() || consumed > text.size()) continue;
+                if (consumed < text.size() &&
+                        !std::isspace(static_cast<unsigned char>(text[consumed]))) continue;
+                if (!best || consumed > best->matched.size() ||
+                        (consumed == best->matched.size() && result->preferred_to(*best)))
+                    best = result.get();
+            }
+            std::vector<size_t> origins;
+            if (!best || !translation_origins(*best, origins)) return {};
+            std::string translated = best->translated;
+            normalize_translation(translated, &origins);
+            if (translated.empty()) return {};
+            auto result = dfcn::TranslationResult::translated(
+                std::string_view(text).substr(0, best->matched.size()),
+                std::move(translated), context, std::move(origins));
+            result.resource_revision = resource_revision_;
+            return result;
+        });
     }
 
     std::optional<std::string> RulesetsManager::translate_activity(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        for (const auto* ns : {"::activities", "::tasks", "::menu"}) {
-            const auto results = resolve_namespace(text, ns, 0);
-            const ResultTree* best = nullptr;
-            for (const auto& result : results) {
-                if (!result->remaining.empty() || result->translated.empty()) continue;
-                if (!best || result->preferred_to(*best)) best = result.get();
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            for (const auto* ns : {"::activities", "::tasks", "::menu"}) {
+                const auto results = resolve_namespace(text, ns, 0);
+                const ResultTree* best = nullptr;
+                for (const auto& result : results) {
+                    if (!result->remaining.empty() || result->translated.empty()) continue;
+                    if (!best || result->preferred_to(*best)) best = result.get();
+                }
+                if (!best) continue;
+                std::string translated = best->translated;
+                normalize_translation(translated);
+                return translated;
             }
-            if (!best) continue;
-            std::string translated = best->translated;
-            normalize_translation(translated);
-            return translated;
-        }
-        return std::nullopt;
+            return std::nullopt;
+        });
     }
 
     std::optional<std::string> RulesetsManager::translate_ammunition_type(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        for (const auto* ns : {"::items::ammo::default::main",
-                "::items::ammo::singular::main", "::items::ammo::plural::main"}) {
-            const auto results = resolve_namespace(text, ns, 0);
-            for (const auto& result : results)
-                if (result->remaining.empty() && !result->translated.empty())
-                    return result->translated;
-        }
-        return std::nullopt;
-    }
-
-    std::optional<std::string> RulesetsManager::translate_coin_name(
-            const std::string& text) const {
-        dfcn::TranslationStateScope translation_scope;
-        const auto results = resolve_namespace(text, "::items::coin", 0);
-        for (const auto& result : results)
-            if (result->remaining.empty() && !result->translated.empty())
-                return result->translated;
-        return std::nullopt;
-    }
-
-    std::optional<std::string> RulesetsManager::translate_equipment_type(
-            const std::string& text, bool wearable_only) const {
-        dfcn::TranslationStateScope translation_scope;
-        for (const auto* family : {"armor", "helm", "gloves", "shoes", "pants", "shield",
-                                 "weapon", "ammo", "trapcomp"}) {
-            if (wearable_only && (std::string_view(family) == "weapon" ||
-                std::string_view(family) == "ammo" || std::string_view(family) == "trapcomp")) continue;
-            for (const auto* form : {"default", "singular", "plural"}) {
-                const std::string ns = std::string("::items::") + family +
-                    "::" + form + "::main";
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            for (const auto* ns : {"::items::ammo::default::main",
+                    "::items::ammo::singular::main", "::items::ammo::plural::main"}) {
                 const auto results = resolve_namespace(text, ns, 0);
                 for (const auto& result : results)
                     if (result->remaining.empty() && !result->translated.empty())
                         return result->translated;
             }
-        }
-        return std::nullopt;
+            return std::nullopt;
+        });
+    }
+
+    std::optional<std::string> RulesetsManager::translate_coin_name(
+            const std::string& text) const {
+        dfcn::TranslationStateScope translation_scope;
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            const auto results = resolve_namespace(text, "::items::coin", 0);
+            for (const auto& result : results)
+                if (result->remaining.empty() && !result->translated.empty())
+                    return result->translated;
+            return std::nullopt;
+        });
+    }
+
+    std::optional<std::string> RulesetsManager::translate_equipment_type(
+            const std::string& text, bool wearable_only) const {
+        dfcn::TranslationStateScope translation_scope;
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            for (const auto* family : {"armor", "helm", "gloves", "shoes", "pants", "shield",
+                                     "weapon", "ammo", "trapcomp"}) {
+                if (wearable_only && (std::string_view(family) == "weapon" ||
+                    std::string_view(family) == "ammo" || std::string_view(family) == "trapcomp")) continue;
+                for (const auto* form : {"default", "singular", "plural"}) {
+                    const std::string ns = std::string("::items::") + family +
+                        "::" + form + "::main";
+                    const auto results = resolve_namespace(text, ns, 0);
+                    for (const auto& result : results)
+                        if (result->remaining.empty() && !result->translated.empty())
+                            return result->translated;
+                }
+            }
+            return std::nullopt;
+        });
     }
 
     std::optional<std::string> RulesetsManager::translate_equipment_modifier(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        const auto results = resolve_namespace(
-            text, "::items::prefix::equipment_modifier", 0);
-        for (const auto& result : results)
-            if (result->remaining.empty() && !result->translated.empty())
-                return result->translated;
-        return std::nullopt;
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            const auto results = resolve_namespace(
+                text, "::items::prefix::equipment_modifier", 0);
+            for (const auto& result : results)
+                if (result->remaining.empty() && !result->translated.empty())
+                    return result->translated;
+            return std::nullopt;
+        });
     }
 
     std::optional<std::string> RulesetsManager::translate_equipment_name(
             const std::string& text, bool allow_material) const {
         dfcn::TranslationStateScope translation_scope;
-        // Keep the same item grammar for compound types such as a right
-        // mitten or long skirt. Bare ::main type lookups omit these modifiers;
-        // splitting them into ordinary words changes their item-specific meaning.
-        const auto contains_material = [](const auto& self, const ResultTree& result)
-                -> bool {
-            if (!result.matched.empty() &&
-                (result.identifier.starts_with("::materials::") ||
-                 result.identifier == "::materials" ||
-                 result.identifier.ends_with("::^material"))) return true;
-            for (const auto& [_, child] : result.children)
-                if (self(self, *child)) return true;
-            return false;
-        };
-        std::shared_ptr<const ResultTree> best;
-        for (const auto* family : {"armor", "helm", "gloves", "shoes", "pants", "shield"}) {
-            const auto results = resolve_namespace(
-                text, std::string("::items::") + family, 0);
-            for (const auto& result : results) {
-                if (!result->remaining.empty() || result->translated.empty() ||
-                    (!allow_material && contains_material(contains_material, *result))) continue;
-                if (!best || result->preferred_to(*best)) best = result;
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            // Keep the same item grammar for compound types such as a right
+            // mitten or long skirt. Bare ::main type lookups omit these modifiers;
+            // splitting them into ordinary words changes their item-specific meaning.
+            const auto contains_material = [](const auto& self, const ResultTree& result)
+                    -> bool {
+                dfcn::translation_work_step();
+                if (!result.matched.empty() &&
+                    (result.identifier.starts_with("::materials::") ||
+                     result.identifier == "::materials" ||
+                     result.identifier.ends_with("::^material"))) return true;
+                for (const auto& [_, child] : result.children)
+                    if (self(self, *child)) return true;
+                return false;
+            };
+            std::shared_ptr<const ResultTree> best;
+            for (const auto* family : {"armor", "helm", "gloves", "shoes", "pants", "shield"}) {
+                const auto results = resolve_namespace(
+                    text, std::string("::items::") + family, 0);
+                for (const auto& result : results) {
+                    if (!result->remaining.empty() || result->translated.empty() ||
+                        (!allow_material && contains_material(contains_material, *result))) continue;
+                    if (!best || result->preferred_to(*best)) best = result;
+                }
             }
-        }
-        return best ? std::optional<std::string>(best->translated) : std::nullopt;
+            return best ? std::optional<std::string>(best->translated) : std::nullopt;
+        });
     }
 
     std::optional<std::string> RulesetsManager::translate_furniture_type(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        for (const auto* family : {"altar", "bed", "chair", "table", "cabinet",
-                "coffin", "box", "bookcase", "statue", "door", "floodgate",
-                "hatch_cover", "grate", "armorstand", "weaponrack", "pedestal", "anvil",
-                "animaltrap"}) {
-            const auto results = resolve_namespace(
-                text, std::string("::items::") + family + "::main", 0);
-            for (const auto& result : results)
-                if (result->remaining.empty() && !result->translated.empty())
-                    return result->translated;
-        }
-        return std::nullopt;
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            for (const auto* family : {"altar", "bed", "chair", "table", "cabinet",
+                    "coffin", "box", "bookcase", "statue", "door", "floodgate",
+                    "hatch_cover", "grate", "armorstand", "weaponrack", "pedestal", "anvil",
+                    "animaltrap"}) {
+                const auto results = resolve_namespace(
+                    text, std::string("::items::") + family + "::main", 0);
+                for (const auto& result : results)
+                    if (result->remaining.empty() && !result->translated.empty())
+                        return result->translated;
+            }
+            return std::nullopt;
+        });
     }
 
     std::optional<std::string> RulesetsManager::translate_drinkware_type(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        const auto results = resolve_namespace(text, "::items::goblet::main", 0);
-        for (const auto& result : results)
-            if (result->remaining.empty() && !result->translated.empty())
-                return result->translated;
-        return std::nullopt;
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            const auto results = resolve_namespace(text, "::items::goblet::main", 0);
+            for (const auto& result : results)
+                if (result->remaining.empty() && !result->translated.empty())
+                    return result->translated;
+            return std::nullopt;
+        });
     }
 
     std::optional<std::string> RulesetsManager::translate_meat_term(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        if (text.empty()) return std::nullopt;
-        // The item table distinguishes edible organs from material states
-        // and anatomy. Prefer its direct meat entry when both a literal and
-        // the shared material reference can consume the complete term.
-        std::shared_ptr<const ResultTree> best;
-        for (const auto* ns : {"::items::meat::^0", "::items::meat::^1",
-                "::items::meat::^prefix", "::items::meat::singular::main",
-                "::items::meat::plural::main"}) {
-            const auto results = resolve_namespace(text, ns, 0);
-            for (const auto& result : results) {
-                if (!result->remaining.empty() || result->translated.empty()) continue;
-                if (!best || result->preferred_to(*best)) best = result;
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            if (text.empty()) return std::nullopt;
+            // The item table distinguishes edible organs from material states
+            // and anatomy. Prefer its direct meat entry when both a literal and
+            // the shared material reference can consume the complete term.
+            std::shared_ptr<const ResultTree> best;
+            for (const auto* ns : {"::items::meat::^0", "::items::meat::^1",
+                    "::items::meat::^prefix", "::items::meat::singular::main",
+                    "::items::meat::plural::main"}) {
+                const auto results = resolve_namespace(text, ns, 0);
+                for (const auto& result : results) {
+                    if (!result->remaining.empty() || result->translated.empty()) continue;
+                    if (!best || result->preferred_to(*best)) best = result;
+                }
             }
-        }
-        return best ? std::optional<std::string>(best->translated) : std::nullopt;
+            return best ? std::optional<std::string>(best->translated) : std::nullopt;
+        });
     }
 
     bool RulesetsManager::is_item_material(const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        if (text.empty()) return false;
-        for (const auto* ns : {"::materials", "::materials::adjective"}) {
-            const auto results = resolve_namespace(text, ns, 0);
-            for (const auto& result : results)
-                if (result->remaining.empty() && !result->translated.empty()) return true;
-        }
-        return false;
+        return bounded_rule_translation([&]() -> bool {
+            if (text.empty()) return false;
+            for (const auto* ns : {"::materials", "::materials::adjective"}) {
+                const auto results = resolve_namespace(text, ns, 0);
+                for (const auto& result : results)
+                    if (result->remaining.empty() && !result->translated.empty()) return true;
+            }
+            return false;
+        });
     }
 
     std::optional<std::string> RulesetsManager::translate_material_state(
             const std::string& text, bool adjective) const {
         dfcn::TranslationStateScope translation_scope;
-        const auto results = resolve_namespace(text, adjective ?
-            "::materials::state::adjective" : "::materials::state", 0);
-        for (const auto& result : results)
-            if (result->remaining.empty() && !result->translated.empty())
-                return result->translated;
-        return std::nullopt;
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            const auto results = resolve_namespace(text, adjective ?
+                "::materials::state::adjective" : "::materials::state", 0);
+            for (const auto& result : results)
+                if (result->remaining.empty() && !result->translated.empty())
+                    return result->translated;
+            return std::nullopt;
+        });
     }
 
     std::optional<std::string> RulesetsManager::translate_material_prefix(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        if (text.empty()) return std::string{};
-        // The trailing separator belongs to the existing prefix grammar;
-        // the producer already supplied the entire species/plant field.
-        const auto results = resolve_namespace(text + " ", "::materials::^prefix", 0);
-        for (const auto& result : results)
-            if (result->remaining.empty() && !result->translated.empty())
-                return result->translated;
-        return std::nullopt;
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            if (text.empty()) return std::string{};
+            // The trailing separator belongs to the existing prefix grammar;
+            // the producer already supplied the entire species/plant field.
+            const auto results = resolve_namespace(text + " ", "::materials::^prefix", 0);
+            for (const auto& result : results)
+                if (result->remaining.empty() && !result->translated.empty())
+                    return result->translated;
+            return std::nullopt;
+        });
     }
 
     std::optional<std::string> RulesetsManager::translate_woven_plant_material(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        const auto results = resolve_namespace(text, "::materials::woven_plant", 0);
-        for (const auto& result : results)
-            if (result->remaining.empty() && !result->translated.empty())
-                return result->translated;
-        return std::nullopt;
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            const auto results = resolve_namespace(text, "::materials::woven_plant", 0);
+            for (const auto& result : results)
+                if (result->remaining.empty() && !result->translated.empty())
+                    return result->translated;
+            return std::nullopt;
+        });
     }
 
     bool RulesetsManager::is_material_state(const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        if (text.empty()) return false;
-        // No optional species/plant prefix here: callers resolve a generated
-        // creature separately, then require a complete, real material state.
-        for (const auto* ns : {"::materials::state", "::materials::state::adjective"}) {
-            const auto results = resolve_namespace(text, ns, 0);
-            for (const auto& result : results)
-                if (result->remaining.empty() && !result->translated.empty()) return true;
-        }
-        return false;
+        return bounded_rule_translation([&]() -> bool {
+            if (text.empty()) return false;
+            // No optional species/plant prefix here: callers resolve a generated
+            // creature separately, then require a complete, real material state.
+            for (const auto* ns : {"::materials::state", "::materials::state::adjective"}) {
+                const auto results = resolve_namespace(text, ns, 0);
+                for (const auto& result : results)
+                    if (result->remaining.empty() && !result->translated.empty()) return true;
+            }
+            return false;
+        });
     }
 
     std::optional<std::string> RulesetsManager::translate_creature_name(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        const auto results = resolve_namespace(text, "::creatures::name", 0);
-        for (const auto& result : results)
-            if (result->remaining.empty() && !result->translated.empty())
-                return result->translated;
-        return std::nullopt;
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            const auto results = resolve_namespace(text, "::creatures::name", 0);
+            for (const auto& result : results)
+                if (result->remaining.empty() && !result->translated.empty())
+                    return result->translated;
+            return std::nullopt;
+        });
     }
 
     void RulesetsManager::set_creature_name_resolver(
@@ -988,53 +1050,59 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_static_creature_name(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        const auto found = static_creature_names_.find(creature_lookup_key(text));
-        return found == static_creature_names_.end()
-            ? std::nullopt : std::optional<std::string>(found->second);
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            const auto found = static_creature_names_.find(creature_lookup_key(text));
+            return found == static_creature_names_.end()
+                ? std::nullopt : std::optional<std::string>(found->second);
+        });
     }
 
     std::optional<std::string> RulesetsManager::expand_shortened_creature_name(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        const std::string key = creature_lookup_key(text);
-        if (key.size() < 2 || static_creature_names_.contains(key)) return std::nullopt;
-        std::optional<std::string> expanded;
-        bool ambiguous = false;
-        const auto consider = [&](const std::string& name) {
-            if (name.size() <= key.size() || name.front() != key.front()) return;
-            std::string shortened(name);
-            // Native 53.16's 0x52d910 helper scans backwards, retaining each
-            // word's first letter and deleting a/e/i/o/u until the width fits.
-            // Its final hard truncation is deliberately not reconstructible.
-            for (size_t at = shortened.size(); at > 1 && shortened.size() > key.size();) {
-                --at;
-                if (shortened[at - 1] != ' ' &&
-                    std::string_view("aeiou").find(shortened[at]) != std::string_view::npos)
-                    shortened.erase(at, 1);
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            const std::string key = creature_lookup_key(text);
+            if (key.size() < 2 || static_creature_names_.contains(key)) return std::nullopt;
+            std::optional<std::string> expanded;
+            bool ambiguous = false;
+            const auto consider = [&](const std::string& name) {
+                dfcn::translation_work_step();
+                if (name.size() <= key.size() || name.front() != key.front()) return;
+                std::string shortened(name);
+                // Native 53.16's 0x52d910 helper scans backwards, retaining each
+                // word's first letter and deleting a/e/i/o/u until the width fits.
+                // Its final hard truncation is deliberately not reconstructible.
+                for (size_t at = shortened.size(); at > 1 && shortened.size() > key.size();) {
+                    if ((at & 255) == 0) dfcn::translation_work_step();
+                    --at;
+                    if (shortened[at - 1] != ' ' &&
+                        std::string_view("aeiou").find(shortened[at]) != std::string_view::npos)
+                        shortened.erase(at, 1);
+                }
+                if (shortened != key) return;
+                // Equal translated labels do not prove equal source identities.
+                // Refuse every ambiguous abbreviation, including caste aliases.
+                if (expanded && *expanded != name) { ambiguous = true; return; }
+                expanded = name;
+            };
+            // Use the same scoped authored-role vocabulary as the descriptor
+            // parser. Only a complete known species licenses these candidates;
+            // never expand arbitrary words or guess a hard-truncated tail.
+            std::vector<std::string> purposes;
+            if (const auto rules = rulesets_.find("::creatures::caste::name::purpose");
+                    rules != rulesets_.end()) {
+                for (const auto& [source, target] : rules->second)
+                    if (source.size() == 1 && source.front().type == Type::Literal &&
+                        source.front().value.ends_with(' '))
+                        purposes.push_back(creature_lookup_key(source.front().value));
             }
-            if (shortened != key) return;
-            // Equal translated labels do not prove equal source identities.
-            // Refuse every ambiguous abbreviation, including caste aliases.
-            if (expanded && *expanded != name) { ambiguous = true; return; }
-            expanded = name;
-        };
-        // Use the same scoped authored-role vocabulary as the descriptor
-        // parser. Only a complete known species licenses these candidates;
-        // never expand arbitrary words or guess a hard-truncated tail.
-        std::vector<std::string> purposes;
-        if (const auto rules = rulesets_.find("::creatures::caste::name::purpose");
-                rules != rulesets_.end()) {
-            for (const auto& [source, target] : rules->second)
-                if (source.size() == 1 && source.front().type == Type::Literal &&
-                    source.front().value.ends_with(' '))
-                    purposes.push_back(creature_lookup_key(source.front().value));
-        }
-        for (const auto& [name, target] : static_creature_names_) {
-            consider(name);
-            for (const auto& purpose : purposes) consider(purpose + name);
-            if (ambiguous) return std::nullopt;
-        }
-        return expanded;
+            for (const auto& [name, target] : static_creature_names_) {
+                consider(name);
+                for (const auto& purpose : purposes) consider(purpose + name);
+                if (ambiguous) return std::nullopt;
+            }
+            return expanded;
+        });
     }
 
     std::string_view RulesetsManager::external_prefix_kind(std::string_view identifier) {
@@ -1072,7 +1140,12 @@ namespace Hooks {
         struct ResolverGuard {
             decltype(active_resolver_calls_)& active;
             std::pair<std::string, std::string> key;
-            ~ResolverGuard() { active.erase(key); }
+            ResolutionSession* session;
+            size_t previous_context;
+            ~ResolverGuard() {
+                active.erase(key);
+                if (session) session->callback_context = previous_context;
+            }
         };
         std::vector<std::shared_ptr<const ResultTree>> results;
         const auto name_byte = [](unsigned char ch) {
@@ -1080,6 +1153,7 @@ namespace Hooks {
                 (ch >= '0' && ch <= '9') || ch >= 0x80 || ch == '-' || ch == '\'';
         };
         for (size_t end = 1; end <= text.size(); ++end) {
+            if ((end & 255) == 0) dfcn::translation_work_step();
             const auto previous = static_cast<unsigned char>(text[end - 1]);
             // Never offer the owner a prefix cut inside a UTF-8 codepoint.
             if (end < text.size() &&
@@ -1110,10 +1184,37 @@ namespace Hooks {
             const auto source = std::string_view(text).substr(0, end);
             dfcn::translation_work_step();
             std::pair<std::string, std::string> key{kind, source};
-            if (!active_resolver_calls_.insert(key).second) continue;
-            ResolverGuard guard{active_resolver_calls_, std::move(key)};
+            if (!active_resolver_calls_.insert(key).second) {
+                if (active_resolution_session_) ++active_resolution_session_->cycle_revision;
+                if (dfcn::active_translation_work) ++dfcn::active_translation_work->cycle_revision;
+                continue;
+            }
+            auto* session = active_resolution_session_;
+            const size_t previous_context = session ? session->callback_context : 0;
+            ResolverGuard guard{active_resolver_calls_, std::move(key), session, previous_context};
+            if (session) {
+                const ResolutionSession::KeyView callback_key{
+                    kind, source, 0, previous_context};
+                if (const auto context = session->callback_contexts.find(callback_key);
+                        context != session->callback_contexts.end()) {
+                    session->callback_context = context->second;
+                } else {
+                    const size_t identity = session->next_callback_context++;
+                    constexpr size_t maximum_entries = 4096, maximum_bytes = 1024 * 1024;
+                    const size_t bytes = kind.size() + source.size();
+                    if (session->callback_contexts.size() < maximum_entries &&
+                            bytes <= maximum_bytes &&
+                            session->callback_context_bytes <= maximum_bytes - bytes) {
+                        session->callback_contexts.emplace(ResolutionSession::Key{
+                            std::string(kind), std::string(source), 0, previous_context}, identity);
+                        session->callback_context_bytes += bytes;
+                    }
+                    session->callback_context = identity;
+                }
+            }
             auto translated = creature ? creature_name_resolver_(source)
                 : phrase_resolver_(source, kind);
+            dfcn::translation_work_step();
             if (!translated || translated->empty()) continue;
             results.push_back(std::make_shared<const ResultTree>(identifier,
                 text.substr(0, end), std::move(*translated), text.substr(end),
@@ -1125,137 +1226,145 @@ namespace Hooks {
     std::optional<std::string> RulesetsManager::translate_tile_description(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        auto complete = [&](const std::string& source, const std::string& ns)
-                -> std::optional<std::string> {
-            const auto results = resolve_namespace(source, ns, 0);
-            const ResultTree* best = nullptr;
-            for (const auto& result : results) {
-                if (!result->remaining.empty() || result->translated.empty()) continue;
-                if (!best || result->preferred_to(*best)) best = result.get();
-            }
-            return best ? std::optional<std::string>(best->translated) : std::nullopt;
-        };
-        const auto part_at = [&](size_t start, size_t end) {
-            std::string part = text.substr(start, end - start);
-            const size_t first = part.find_first_not_of(' ');
-            return first == std::string::npos ? std::string{}
-                : part.substr(first, part.find_last_not_of(' ') - first + 1);
-        };
-        const auto growths = [&](std::string translated, size_t end)
-                -> std::optional<std::string> {
-            if (end == text.size()) return translated;
-            const auto separator = complete(", ", "::tiles::growth_separator");
-            if (!separator) return std::nullopt;
-            size_t start = end + 1;
-            while (start < text.size()) {
-                const size_t comma = text.find(',', start);
-                end = comma == std::string::npos ? text.size() : comma;
-                // After the complete tile, every entry must be a growth.
-                // Do not reinterpret another terrain or a person as foliage.
-                auto target = complete(part_at(start, end), "::plants::growth::plural");
-                if (!target) return std::nullopt;
-                translated += *separator + *target;
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            auto complete = [&](const std::string& source, const std::string& ns)
+                    -> std::optional<std::string> {
+                const auto results = resolve_namespace(source, ns, 0);
+                const ResultTree* best = nullptr;
+                for (const auto& result : results) {
+                    if (!result->remaining.empty() || result->translated.empty()) continue;
+                    if (!best || result->preferred_to(*best)) best = result.get();
+                }
+                return best ? std::optional<std::string>(best->translated) : std::nullopt;
+            };
+            const auto part_at = [&](size_t start, size_t end) {
+                std::string part = text.substr(start, end - start);
+                const size_t first = part.find_first_not_of(' ');
+                return first == std::string::npos ? std::string{}
+                    : part.substr(first, part.find_last_not_of(' ') - first + 1);
+            };
+            const auto growths = [&](std::string translated, size_t end)
+                    -> std::optional<std::string> {
                 if (end == text.size()) return translated;
-                start = end + 1;
+                const auto separator = complete(", ", "::tiles::growth_separator");
+                if (!separator) return std::nullopt;
+                size_t start = end + 1;
+                while (start < text.size()) {
+                    const size_t comma = text.find(',', start);
+                    end = comma == std::string::npos ? text.size() : comma;
+                    // After the complete tile, every entry must be a growth.
+                    // Do not reinterpret another terrain or a person as foliage.
+                    auto target = complete(part_at(start, end), "::plants::growth::plural");
+                    if (!target) return std::nullopt;
+                    translated += *separator + *target;
+                    if (end == text.size()) return translated;
+                    start = end + 1;
+                }
+                return std::nullopt; // A trailing comma has no growth after it.
+            };
+            size_t comma = text.find(',');
+            const size_t first_end = comma == std::string::npos ? text.size() : comma;
+            // Native tree/sapling/shrub paths prepend name + ", " before the
+            // plant description (PE 0xe7d749/0xe7f9b5/0xe7fb10). The first comma
+            // is therefore not necessarily a growth boundary. Require the typed
+            // name AND tree/shrub/sapling production before trying the name as a
+            // terrain fragment, then parse any remaining growths normally. The
+            // named-plant grammar excludes standalone foliage/growth nouns, so a
+            // material followed by its growth list retains the ordinary route.
+            while (comma != std::string::npos) {
+                comma = text.find(',', comma + 1);
+                const size_t end = comma == std::string::npos ? text.size() : comma;
+                if (auto target = complete(part_at(0, end), "::tiles::named_plant"))
+                    if (auto caption = growths(*target, end)) return caption;
             }
-            return std::nullopt; // A trailing comma has no growth after it.
-        };
-        size_t comma = text.find(',');
-        const size_t first_end = comma == std::string::npos ? text.size() : comma;
-        // Native tree/sapling/shrub paths prepend name + ", " before the
-        // plant description (PE 0xe7d749/0xe7f9b5/0xe7fb10). The first comma
-        // is therefore not necessarily a growth boundary. Require the typed
-        // name AND tree/shrub/sapling production before trying the name as a
-        // terrain fragment, then parse any remaining growths normally. The
-        // named-plant grammar excludes standalone foliage/growth nouns, so a
-        // material followed by its growth list retains the ordinary route.
-        while (comma != std::string::npos) {
-            comma = text.find(',', comma + 1);
-            const size_t end = comma == std::string::npos ? text.size() : comma;
-            if (auto target = complete(part_at(0, end), "::tiles::named_plant"))
-                if (auto caption = growths(*target, end)) return caption;
-        }
-        if (auto target = complete(part_at(0, first_end), "::tiles")) {
-            if (auto caption = growths(*target, first_end)) return caption;
-        }
-        return std::nullopt;
+            if (auto target = complete(part_at(0, first_end), "::tiles")) {
+                if (auto caption = growths(*target, first_end)) return caption;
+            }
+            return std::nullopt;
+        });
     }
 
     std::optional<std::string> RulesetsManager::translate_color(
             const std::string& text) const {
         dfcn::TranslationStateScope translation_scope;
-        // Color names such as copper/cardinal are not material/species names
-        // in an appearance sentence. Use the existing reviewed color table.
-        const auto results = resolve_namespace(text, "::color::name", 0);
-        const ResultTree* best = nullptr;
-        for (const auto& result : results) {
-            if (!result->remaining.empty() || result->translated.empty()) continue;
-            if (!best || result->preferred_to(*best)) best = result.get();
-        }
-        return best ? std::optional<std::string>(best->translated) : std::nullopt;
-    }
-
-    std::optional<std::string> RulesetsManager::translate_appearance_term(
-            const std::string& text, const std::string& context) const {
-        dfcn::TranslationStateScope translation_scope;
-        const auto results = resolve_namespace(
-            text, "::health::appearance::" + context, 0);
-        for (const auto& result : results) {
-            if (result->remaining.empty() && !result->translated.empty())
-                return result->translated;
-        }
-        return std::nullopt;
-    }
-
-    std::optional<std::string> RulesetsManager::translate_anatomy(
-            const std::string& text) const {
-        dfcn::TranslationStateScope translation_scope;
-        if (text.empty() || text.find_first_of(".;:!?\"()\n\r") != std::string::npos)
-            return std::nullopt;
-        auto complete = [&](const std::string& source, const std::string& ns)
-                -> std::optional<std::string> {
-            const auto results = resolve_namespace(source, ns, 0);
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            // Color names such as copper/cardinal are not material/species names
+            // in an appearance sentence. Use the existing reviewed color table.
+            const auto results = resolve_namespace(text, "::color::name", 0);
             const ResultTree* best = nullptr;
             for (const auto& result : results) {
                 if (!result->remaining.empty() || result->translated.empty()) continue;
                 if (!best || result->preferred_to(*best)) best = result.get();
             }
             return best ? std::optional<std::string>(best->translated) : std::nullopt;
-        };
-        std::vector<std::string> parts;
-        size_t start = 0;
-        while (start <= text.size()) {
-            const size_t comma = text.find(',', start);
-            const size_t end = comma == std::string::npos ? text.size() : comma;
-            std::string part = text.substr(start, end - start);
-            const size_t first = part.find_first_not_of(" \t");
-            if (first == std::string::npos) return std::nullopt;
-            part = part.substr(first, part.find_last_not_of(" \t") - first + 1);
-            parts.push_back(std::move(part));
-            if (comma == std::string::npos) break;
-            start = comma + 1;
-        }
-        // DF appends tissue AFTER the owner chain. Resolve this through the
-        // tissue namespace, not the body-part vocabulary: reversing all comma
-        // fields would turn "finger, hand, skin" into "skin hand finger".
-        std::string tissue;
-        if (parts.size() > 1) {
-            if (auto suffix = complete(", " + parts.back(), "::health::bodypart::main_tissue")) {
-                tissue = std::move(*suffix);
-                parts.pop_back();
+        });
+    }
+
+    std::optional<std::string> RulesetsManager::translate_appearance_term(
+            const std::string& text, const std::string& context) const {
+        dfcn::TranslationStateScope translation_scope;
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            const auto results = resolve_namespace(
+                text, "::health::appearance::" + context, 0);
+            for (const auto& result : results) {
+                if (result->remaining.empty() && !result->translated.empty())
+                    return result->translated;
             }
-        }
-        std::string translated;
-        for (auto it = parts.rbegin(); it != parts.rend(); ++it) {
-            auto part = complete(*it, "::health::bodypart::bodypart_main");
-            // An injury may name a tissue on its own (skin, nail, etc.).
-            // Only a single unqualified field can use this fallback.
-            if (!part && parts.size() == 1 && text.find(',') == std::string::npos)
-                part = complete(*it, "::health::bodypart::tissue");
-            if (!part) return std::nullopt;
-            translated += *part;
-        }
-        return translated + tissue;
+            return std::nullopt;
+        });
+    }
+
+    std::optional<std::string> RulesetsManager::translate_anatomy(
+            const std::string& text) const {
+        dfcn::TranslationStateScope translation_scope;
+        return bounded_rule_translation([&]() -> std::optional<std::string> {
+            if (text.empty() || text.find_first_of(".;:!?\"()\n\r") != std::string::npos)
+                return std::nullopt;
+            auto complete = [&](const std::string& source, const std::string& ns)
+                    -> std::optional<std::string> {
+                const auto results = resolve_namespace(source, ns, 0);
+                const ResultTree* best = nullptr;
+                for (const auto& result : results) {
+                    if (!result->remaining.empty() || result->translated.empty()) continue;
+                    if (!best || result->preferred_to(*best)) best = result.get();
+                }
+                return best ? std::optional<std::string>(best->translated) : std::nullopt;
+            };
+            std::vector<std::string> parts;
+            size_t start = 0;
+            while (start <= text.size()) {
+                const size_t comma = text.find(',', start);
+                const size_t end = comma == std::string::npos ? text.size() : comma;
+                std::string part = text.substr(start, end - start);
+                const size_t first = part.find_first_not_of(" \t");
+                if (first == std::string::npos) return std::nullopt;
+                part = part.substr(first, part.find_last_not_of(" \t") - first + 1);
+                parts.push_back(std::move(part));
+                if (comma == std::string::npos) break;
+                start = comma + 1;
+            }
+            // DF appends tissue AFTER the owner chain. Resolve this through the
+            // tissue namespace, not the body-part vocabulary: reversing all comma
+            // fields would turn "finger, hand, skin" into "skin hand finger".
+            std::string tissue;
+            if (parts.size() > 1) {
+                if (auto suffix = complete(", " + parts.back(), "::health::bodypart::main_tissue")) {
+                    tissue = std::move(*suffix);
+                    parts.pop_back();
+                }
+            }
+            std::string translated;
+            for (auto it = parts.rbegin(); it != parts.rend(); ++it) {
+                auto part = complete(*it, "::health::bodypart::bodypart_main");
+                // An injury may name a tissue on its own (skin, nail, etc.).
+                // Only a single unqualified field can use this fallback.
+                if (!part && parts.size() == 1 && text.find(',') == std::string::npos)
+                    part = complete(*it, "::health::bodypart::tissue");
+                if (!part) return std::nullopt;
+                translated += *part;
+            }
+            return translated + tissue;
+        });
     }
 
     /// 递归遍历目录，收集 .toml 文件并按排序顺序加载。
@@ -1605,7 +1714,7 @@ namespace Hooks {
     ///   5. 缓存结果到 memo_cache_（形成 DAG 共享边）
     ///
     /// 循环引用：加载时由 analyze_from_root() 预检测，
-    /// 翻译时仅通过 cyclic_rule_signatures_ 做 O(log n) 查表跳过。
+    /// 翻译时跳过已确认的循环规则，并拒绝同上下文的活动子问题重入。
     ///
     /// @param text       待翻译的剩余文本
     /// @param identifier 当前命名空间标识符
@@ -1617,19 +1726,66 @@ namespace Hooks {
         size_t level
     ) const {
         dfcn::TranslationWorkFrame translation_work_frame(identifier, text);
+        ResolutionSession local_session;
+        auto* previous_session = active_resolution_session_;
+        if (!previous_session) active_resolution_session_ = &local_session;
+        struct SessionGuard {
+            ResolutionSession*& active;
+            ResolutionSession* previous;
+            ~SessionGuard() { active = previous; }
+        } session_guard{active_resolution_session_, previous_session};
+        auto& session = *active_resolution_session_;
         // A result found while a callback is suppressed by its active key is
         // context-dependent; it must not replace an ordinary memo entry.
         const bool use_memo = active_resolver_calls_.empty();
         // Freeze this query's identity context for both lookup and insertion.
         // A nested owner scope can restore a different context before return;
         // it must never put this query's candidate under that restored key.
-        const std::uint64_t context_revision = use_memo && context_revision_provider_
+        const std::uint64_t context_revision = context_revision_provider_
             ? context_revision_provider_() : 0;
-        const auto can_store_memo = [&] {
-            return use_memo && (context_revision_provider_
-                ? context_revision_provider_() : 0) == context_revision;
+        const size_t callback_context = session.callback_context;
+        const ResolutionSession::KeyView query{
+            identifier, text, context_revision, callback_context};
+        if (const auto cached = session.memo.find(query); cached != session.memo.end())
+            return cached->second;
+        const auto [active_query, inserted] = session.active.insert(query);
+        if (!inserted) {
+            ++session.cycle_revision;
+            if (dfcn::active_translation_work) ++dfcn::active_translation_work->cycle_revision;
+            return {};
+        }
+        struct QueryGuard {
+            ResolutionSession& session;
+            const ResolutionSession::KeyView* key;
+            ~QueryGuard() { session.active.erase(*key); }
+        } query_guard{session, &*active_query};
+        const size_t cycle_revision = session.cycle_revision;
+        const size_t shared_cycle_revision = dfcn::active_translation_work
+            ? dfcn::active_translation_work->cycle_revision : 0;
+        const auto complete_query = [&](LruMemoMap::Value results) {
+            // Only finished searches prove a miss. A cyclic callback or a
+            // swallowed budget exception cannot publish an incomplete parse.
+            dfcn::translation_work_step();
+            const bool stable = !dfcn::translation_work_exhausted() &&
+                session.cycle_revision == cycle_revision &&
+                (!dfcn::active_translation_work ||
+                    dfcn::active_translation_work->cycle_revision == shared_cycle_revision) &&
+                (context_revision_provider_ ? context_revision_provider_() : 0) == context_revision;
+            if (stable) {
+                constexpr size_t maximum_entries = 4096, maximum_bytes = 1024 * 1024;
+                const size_t bytes = identifier.size() + text.size() +
+                    results.size() * sizeof(LruMemoMap::Value::value_type);
+                if (session.memo.size() < maximum_entries && bytes <= maximum_bytes &&
+                        session.memo_bytes <= maximum_bytes - bytes) {
+                    if (session.memo.emplace(ResolutionSession::Key{
+                            identifier, text, context_revision, callback_context}, results).second)
+                        session.memo_bytes += bytes;
+                }
+                if (use_memo) memo_cache_[identifier].insert(text, results, context_revision);
+            }
+            return results;
         };
-        // === 0. 记忆化检查 — 两级异构查找，0 次临时字符串分配 ===
+        // === 0. 持久记忆化检查 — 两级异构查找 ===
         if (use_memo) {
             if (auto outer_it = memo_cache_.find(identifier); outer_it != memo_cache_.end()) {
                 if (auto* cached = outer_it->second.find(text, context_revision)) {
@@ -1641,8 +1797,7 @@ namespace Hooks {
         // === 1. 处理 Replacer 引用（% 前缀）===
         if (!identifier.empty() && identifier[0] == '%') {
             auto results = resolve_replacer(text, identifier, level);
-            if (can_store_memo()) memo_cache_[identifier].insert(text, results, context_revision);
-            return results;
+            return complete_query(std::move(results));
         }
 
         auto all_results = resolve_external_prefixes(text, identifier);
@@ -1653,8 +1808,7 @@ namespace Hooks {
         // === 2. 查找规则集 ===
         auto ruleset_it = rulesets_.find(identifier);
         if (ruleset_it == rulesets_.end()) {
-            if (can_store_memo()) memo_cache_[identifier].insert(text, all_results, context_revision);
-            return all_results;
+            return complete_query(std::move(all_results));
         }
         const auto& rules = ruleset_it->second;
 
@@ -1672,6 +1826,7 @@ namespace Hooks {
         // Merge original ordinals so prefix pruning cannot change equal-weight
         // results, reference precedence, or the order of prefix alternatives.
         for (;;) {
+            dfcn::translation_work_step();
             size_t ordinal;
             if (!prefix_index) {
                 // A failed/incomplete reload can leave no index. Retain the
@@ -1694,9 +1849,7 @@ namespace Hooks {
             }
             const auto& [orig_tokens, trans_tokens] = rules[ordinal];
             // The full leading literal is a necessary condition too. Reject
-            // impossible dictionary entries before charging an actual parse
-            // step; large noun tables otherwise exhaust a paragraph's budget
-            // on entries whose first token can never match its source.
+            // impossible dictionary entries before expanding parse branches.
             if (!orig_tokens.empty() && orig_tokens.front().type == Type::Literal &&
                 !orig_tokens.front().value.empty() &&
                 !matches_literal(text, orig_tokens.front().value)) continue;
@@ -1793,6 +1946,7 @@ namespace Hooks {
                         dfcn::translation_work_step();
                         std::string matched;
                         for (char ch : candidate.remaining) {
+                            if ((matched.size() & 255) == 0) dfcn::translation_work_step();
                             if (!std::isdigit(static_cast<unsigned char>(ch))) break;
                             matched.push_back(ch);
                         }
@@ -1848,8 +2002,7 @@ namespace Hooks {
         }
 
         // === 4. 缓存结果 — 形成 DAG 边，共享子问题可复用 ===
-        if (can_store_memo()) memo_cache_[identifier].insert(text, all_results, context_revision);
-        return all_results;
+        return complete_query(std::move(all_results));
     }
 
     /// 将 Replacer 引用（% 前缀标识符）解析为翻译结果。
@@ -1887,10 +2040,12 @@ namespace Hooks {
             // 对每种可能的物品标记（无标记、"("、"{...}"、"$...$" 等），
             // 剥离标记 → 翻译内部文本 → 恢复标记
             for (const auto& [prefix, suffix] : dfcn::match_item_designation_prefixes(text)) {
+                dfcn::translation_work_step();
                 std::string inner_text = text.substr(prefix.size());
                 auto inner_results = resolve_namespace(inner_text, reference, level + 1);
 
                 for (auto& inner : inner_results) {
+                    dfcn::translation_work_step();
                     // 内部翻译的剩余文本必须以预期后缀开头
                     if (!inner->remaining.starts_with(suffix)) continue;
 
@@ -2064,7 +2219,12 @@ namespace Hooks {
     /// @return input 以 pattern 开头时返回 true
     bool RulesetsManager::matches_literal(std::string_view input, std::string_view pattern) {
         if (input.size() < pattern.size()) return false;
-        return std::equal(pattern.begin(), pattern.end(), input.begin(), ci_char_equal);
+        size_t comparisons = 0;
+        return std::equal(pattern.begin(), pattern.end(), input.begin(),
+            [&](unsigned char a, unsigned char b) {
+                if ((comparisons++ & 255) == 0) dfcn::translation_work_step();
+                return ci_char_equal(a, b);
+            });
     }
 
     /// 检查标识符是否为 Placeholder（@ 前缀）。
@@ -2089,8 +2249,12 @@ namespace Hooks {
         std::string_view text, std::string_view literal)
     {
         if (literal.empty()) return 0;
+        size_t comparisons = 0;
         auto it = std::search(text.begin(), text.end(),
-                              literal.begin(), literal.end(), ci_char_equal);
+            literal.begin(), literal.end(), [&](unsigned char a, unsigned char b) {
+                if ((comparisons++ & 255) == 0) dfcn::translation_work_step();
+                return ci_char_equal(a, b);
+            });
         if (it == text.end()) return std::nullopt;
         return it - text.begin();
     }
@@ -2107,6 +2271,7 @@ namespace Hooks {
         std::string s;
         if (origins) origins->clear();
         for (const auto& t : trans_tokens) {
+            dfcn::translation_work_step();
             if (t.type == Type::Literal) {
                 s += t.value;
                 if (origins) origins->insert(origins->end(), t.value.size(), std::string::npos);
@@ -2131,6 +2296,7 @@ namespace Hooks {
 
     bool RulesetsManager::translation_origins(
             const ResultTree& tree, std::vector<size_t>& origins) {
+        dfcn::TranslationWorkFrame work_frame(tree.identifier, tree.matched);
         origins.clear();
         if (tree.matched.empty()) return tree.translated.empty();
         if (tree.external_leaf) {
@@ -2141,7 +2307,10 @@ namespace Hooks {
             return true;
         }
         if (tree.matched == tree.translated) {
-            for (size_t i = 0; i < tree.translated.size(); ++i) origins.push_back(i);
+            for (size_t i = 0; i < tree.translated.size(); ++i) {
+                if ((i & 255) == 0) dfcn::translation_work_step();
+                origins.push_back(i);
+            }
             return true;
         }
         if (!tree.source_tokens || !tree.target_tokens) {
@@ -2174,6 +2343,7 @@ namespace Hooks {
         std::unordered_map<std::string, ChildSource> bindings;
         size_t cursor = 0;
         for (const auto& token : *tree.source_tokens) {
+            dfcn::translation_work_step();
             if (token.type == Type::Literal) {
                 cursor += token.value.size();
             } else {
@@ -2186,6 +2356,7 @@ namespace Hooks {
         }
         if (cursor != tree.matched.size()) return false;
         for (const auto& token : *tree.target_tokens) {
+            dfcn::translation_work_step();
             if (token.type == Type::Literal) {
                 // Connective words inherit the enclosing clause's base
                 // color; a final stop belongs to the original final stop.

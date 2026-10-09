@@ -8000,6 +8000,7 @@ std::optional<std::string> Overlay::translate_compositional(const std::string &s
         if (translated && !decode_utf8(*translated, codepoints)) translated.reset();
     }
     } catch (const TranslationWorkLimit &) {
+        if (!budget.owns_budget()) throw;
         auto limited = TranslationResult::preserved(screen_text, "composition", false,
             TranslationStatus::WorkLimited);
         limited.policy = TranslationPolicy::Strict;
@@ -8012,7 +8013,6 @@ std::optional<std::string> Overlay::translate_compositional(const std::string &s
             compositional_cache_order_.push_back(cache_key);
             compositional_cache_.insert_or_assign(cache_key, std::move(limited));
         }
-        if (!budget.owns_budget()) throw;
         return std::nullopt;
     }
 
@@ -10958,6 +10958,7 @@ static bool template_literal_at(std::string_view row, size_t position,
                                 std::string_view literal, bool case_insensitive) {
     if (position > row.size() || literal.size() > row.size() - position) return false;
     for (size_t index = 0; index < literal.size(); ++index) {
+        if ((index & 63) == 0) translation_work_step();
         unsigned char actual = static_cast<unsigned char>(row[position + index]);
         unsigned char expected = static_cast<unsigned char>(literal[index]);
         if (case_insensitive) {
@@ -10971,12 +10972,14 @@ static bool template_literal_at(std::string_view row, size_t position,
 
 static size_t find_template_literal(std::string_view row, std::string_view literal,
                                     size_t start, bool case_insensitive) {
+    translation_work_step();
     if (start > row.size() || literal.size() > row.size() - start)
         return std::string_view::npos;
     if (literal.empty()) return start;
     if (!case_insensitive) return row.find(literal, start);
     const size_t last = row.size() - literal.size();
     for (size_t position = start; position <= last; ++position) {
+        if ((position & 63) == 0) translation_work_step();
         if (template_literal_at(row, position, literal, true)) return position;
     }
     return std::string_view::npos;
@@ -14403,7 +14406,9 @@ std::optional<std::string> Overlay::translate_written_work_paragraph(
             written_work_paragraph_cache_, cached);
         return written_work_paragraph_cache_.front().second;
     }
+    TranslationWorkScope work;
     const auto translate = [&]() -> std::optional<std::string> {
+        TranslationWorkFrame work_frame("written work paragraph", source);
         std::string output;
         size_t cursor = 0;
         while (cursor < source.size()) {
@@ -14441,7 +14446,14 @@ std::optional<std::string> Overlay::translate_written_work_paragraph(
     };
     // Publish only completed parses. If an enclosing historical translation
     // exhausts its work budget, unwinding must not cache an unfinished miss.
-    auto result = translate();
+    std::optional<std::string> result;
+    try {
+        result = translate();
+        translation_work_step();
+    } catch (const TranslationWorkLimit &) {
+        if (!work.owns_budget()) throw;
+        return std::nullopt;
+    }
     if (source_context == native_identity_translation_context()) {
         written_work_paragraph_cache_.emplace_front(cache_key, result);
         if (written_work_paragraph_cache_.size() > 64)
@@ -14689,8 +14701,16 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
                         while (cursor < part.size() &&
                                std::isspace(static_cast<unsigned char>(part[cursor]))) ++cursor;
                         const size_t period = needs ? part.find('.', cursor) : std::string::npos;
-                        const size_t end = thoughts ? character_thought_sentence_end(part, cursor)
-                            : period == std::string::npos ? part.size() : period + 1;
+                        size_t end = thoughts || period == std::string::npos ? part.size() : period + 1;
+                        if (thoughts && !work.exhausted()) {
+                            try {
+                                end = character_thought_sentence_end(part, cursor);
+                            } catch (const TranslationWorkLimit &) {
+                                if (!work.owns_budget()) throw;
+                                // The remaining text is one intact native span
+                                // when its next constructor cannot be resolved.
+                            }
+                        }
                         const std::string item = trim(part.substr(cursor, end - cursor));
                         if (!item.empty()) {
                             const auto &colors = paragraph_foregrounds[p];
@@ -14703,6 +14723,7 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
                             std::vector<int> target_colors;
                             TranslationResult item_result;
                             try {
+                            if (!work.exhausted()) {
                             std::vector<size_t> semantic_origins;
                             auto semantic_target = thoughts
                                 ? translate_character_thought_paragraph(item, &semantic_origins)
@@ -14786,12 +14807,20 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
                                     sentence_begin = sentence_end;
                                 }
                             }
+                            }
                             } catch (const TranslationWorkLimit &) {
+                                if (!work.owns_budget()) throw;
+                            }
+                            if (work.exhausted()) {
                                 item_result = preserve_native_translation(item,
                                     thoughts ? "thought" : health ? "health" : "personality", false,
                                     TranslationStatus::WorkLimited);
                                 target = item_result.target;
-                                target_colors.assign(target.size(), first_color);
+                                target_colors.clear();
+                                for (size_t i = 0; i < item.size(); ++i) {
+                                    const auto glyph = cp437_to_utf8(item.substr(i, 1));
+                                    target_colors.insert(target_colors.end(), glyph.size(), colors[cursor + i]);
+                                }
                             }
                             item_result.source = item;
                             item_result.target = target;
@@ -14837,6 +14866,7 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
                             }
                         }
                     } catch (const TranslationWorkLimit &) {
+                        if (!work.owns_budget()) throw;
                         translated = preserve_native_translation(part, "knowledge paragraph", false,
                             TranslationStatus::WorkLimited);
                     }

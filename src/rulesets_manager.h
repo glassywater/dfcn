@@ -22,6 +22,7 @@
 #include <string>
 #include <string_view>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 
 namespace DFHack {
@@ -205,6 +206,10 @@ namespace Hooks {
             // has a complete material/item/building production. Propagate
             // that semantic role through every enclosing grammar wrapper.
             bool uses_name_fallback = false;
+            // Candidate selection can revisit a shared subtree many times.
+            // Cache the edge-counting weight once instead of walking its DAG
+            // for every comparison.
+            size_t tree_weight = 0;
 
             ResultTree(std::string id, std::string mat,
                     std::string trans, std::string rem,
@@ -214,10 +219,12 @@ namespace Hooks {
                 translated(std::move(trans)), remaining(std::move(rem)), children(std::move(kids)),
                 source_tokens(input), target_tokens(output), external_leaf(external),
                 external_capture_bytes(external ? matched.size() : 0),
-                uses_name_fallback(identifier == "::text::native_item_name") {
+                uses_name_fallback(identifier == "::text::native_item_name"),
+                tree_weight(matched.empty() ? 0 : 1) {
                 for (const auto& [_, child] : children) {
                     external_capture_bytes += child->external_capture_bytes;
                     if (child->uses_name_fallback) uses_name_fallback = true;
+                    tree_weight += child->tree_weight;
                 }
             }
 
@@ -227,9 +234,7 @@ namespace Hooks {
             ResultTree& operator=(ResultTree&&) = delete;
 
             [[nodiscard]] size_t weight() const {
-                size_t w = matched.empty() ? 0 : 1;
-                for (const auto& [_, child] : children) w += child->weight();
-                return w;
+                return tree_weight;
             }
 
             [[nodiscard]] bool preferred_to(const ResultTree& other) const {
@@ -344,6 +349,57 @@ namespace Hooks {
             TransparentEqual
         >;
 
+        struct ResolutionSession {
+            struct Key {
+                std::string identifier;
+                std::string text;
+                std::uint64_t context_revision = 0;
+                size_t callback_context = 0;
+                bool operator==(const Key&) const = default;
+            };
+            struct KeyView {
+                std::string_view identifier;
+                std::string_view text;
+                std::uint64_t context_revision = 0;
+                size_t callback_context = 0;
+            };
+            struct KeyHash {
+                using is_transparent = void;
+                template<class K> size_t operator()(const K& key) const noexcept {
+                    size_t hash = std::hash<std::string_view>{}(key.identifier);
+                    const auto combine = [&](size_t value) {
+                        hash ^= value + 0x9e3779b9U + (hash << 6) + (hash >> 2);
+                    };
+                    combine(std::hash<std::string_view>{}(key.text));
+                    combine(std::hash<std::uint64_t>{}(key.context_revision));
+                    combine(key.callback_context);
+                    return hash;
+                }
+            };
+            struct KeyEqual {
+                using is_transparent = void;
+                template<class A, class B>
+                bool operator()(const A& a, const B& b) const noexcept {
+                    return a.identifier == b.identifier && a.text == b.text &&
+                        a.context_revision == b.context_revision &&
+                        a.callback_context == b.callback_context;
+                }
+            };
+            // Callback-context identities distinguish suppressed recursive
+            // owner queries. Completed misses remain reusable inside this
+            // search, without entering the ordinary persistent memo cache.
+            std::unordered_map<Key, LruMemoMap::Value, KeyHash, KeyEqual> memo;
+            // Active views belong to their live recursive calls. Do not copy
+            // the complete remaining input at every depth merely to guard it.
+            std::unordered_set<KeyView, KeyHash, KeyEqual> active;
+            std::unordered_map<Key, size_t, KeyHash, KeyEqual> callback_contexts;
+            size_t callback_context = 0;
+            size_t next_callback_context = 1;
+            size_t cycle_revision = 0;
+            size_t memo_bytes = 0;
+            size_t callback_context_bytes = 0;
+        };
+
         using RuleSet = std::vector<std::pair<Tokens, Tokens>>;
         using RuleSets = std::unordered_map<std::string, RuleSet>;
 
@@ -389,6 +445,7 @@ namespace Hooks {
             phrase_resolver_;
         std::function<std::uint64_t()> context_revision_provider_;
         mutable std::set<std::pair<std::string, std::string>> active_resolver_calls_;
+        mutable ResolutionSession* active_resolution_session_ = nullptr;
 
         // =====================================================================
         // 4. 函数声明（按调用链：加载 → 翻译 → Token → 工具）

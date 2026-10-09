@@ -252,7 +252,8 @@ def split_arguments(value: str) -> list[str]:
             for part in shlex.split(value, posix=os.name != "nt")]
 
 
-def run(command: list[str], env: dict[str, str], *, capture: bool = False) -> str:
+def run(command: list[str], env: dict[str, str], *, capture: bool = False,
+        cwd: Path = ROOT) -> str:
     foreign_launchers = {"wine", "wine64", "proton", "mono", "binfmt", "wsl"}
     if any(Path(part).stem.lower() in foreign_launchers for part in command):
         raise RuntimeError("Build commands must use native executables and dependencies.")
@@ -264,7 +265,7 @@ def run(command: list[str], env: dict[str, str], *, capture: bool = False) -> st
             with Path(executable).open("rb") as source:
                 if source.read(2) == b"MZ":
                     raise RuntimeError(f"Executable format does not match this host: {executable}")
-    result = subprocess.run(command, cwd=ROOT, env=env, check=True,
+    result = subprocess.run(command, cwd=cwd, env=env, check=True,
                             text=True, stdout=subprocess.PIPE if capture else None)
     return result.stdout.strip() if capture else ""
 
@@ -700,7 +701,7 @@ def main() -> int:
         compile_flags = ["-std=c++20", *split_arguments(env.get("CXXFLAGS", "-O2")),
                          "-Wall", "-Wextra", "-Wpedantic", *abi["compile"],
                          "-Icompat", "-Isrc", "-Ithird_party/tomlplusplus/include", "-iquote",
-                         str(GAME / "g_src"),
+                         "g_src",
                          *dependency_includes, *split_arguments(env.get("CPPFLAGS", ""))]
         link_flags = ["-shared", *split_arguments(env.get("LDFLAGS", "")),
                       *dependency_libraries, *abi["link"], *split_arguments(env.get("LDLIBS", ""))]
@@ -716,13 +717,28 @@ def main() -> int:
             env.get(name) for name in ("CXX", "CPPFLAGS", "CXXFLAGS", "LDFLAGS", "LDLIBS", "PKG_CONFIG", "PKG_CONFIG_PATH")))
         rebuild_core = configured_build or needs_update([core], core_inputs)
         rebuild_loader = args.rebuild_loader or configured_build or needs_update([loader, *game_loaders], loader_inputs())
-        if rebuild_core:
-            print("Building the reloadable core...", flush=True)
-            run([*compiler, *compile_flags, "-o", str(core_candidate), "src/dfcn.cpp",
-                 "src/rulesets_manager.cpp", *link_flags, *abi["core_link"]], env)
-        if rebuild_loader:
-            print("Building the resident loader...", flush=True)
-            run([*compiler, *compile_flags, "-o", str(loader_candidate), "src/loader.cpp", *link_flags], env)
+        if rebuild_core or rebuild_loader:
+            # Both core translation units and the loader must see the same
+            # shared headers even when this checkout is edited during a long
+            # compile. Copy once; relative includes and the Linux export map
+            # resolve inside this private tree for every compiler invocation.
+            with tempfile.TemporaryDirectory(prefix=".dfcn-build-sources-", dir=ROOT) as snapshot_dir:
+                snapshot = Path(snapshot_dir)
+                for relative in ("src", "compat", "third_party/tomlplusplus/include"):
+                    shutil.copytree(ROOT / relative, snapshot / relative)
+                pinyin = Path("third_party/pinyin-data/pinyin_data.inc")
+                (snapshot / pinyin).parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(ROOT / pinyin, snapshot / pinyin)
+                if (GAME / "g_src").is_dir():
+                    shutil.copytree(GAME / "g_src", snapshot / "g_src")
+                if rebuild_core:
+                    print("Building the reloadable core...", flush=True)
+                    run([*compiler, *compile_flags, "-o", str(core_candidate), "src/dfcn.cpp",
+                         "src/rulesets_manager.cpp", *link_flags, *abi["core_link"]], env, cwd=snapshot)
+                if rebuild_loader:
+                    print("Building the resident loader...", flush=True)
+                    run([*compiler, *compile_flags, "-o", str(loader_candidate), "src/loader.cpp",
+                         *link_flags], env, cwd=snapshot)
         for directory in edition_destinations():
             deploy_runtime_data(directory)
         for directory in native_game_directories():
