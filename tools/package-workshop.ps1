@@ -2,9 +2,10 @@
 [CmdletBinding()]
 param([switch] $UseExistingWindowsArchive)
 
-# Package existing Windows binaries, the unmodified Linux release, and public data extensions.
+# Package native Windows binaries, the pinned Linux release, and public data extensions.
 # This entry never builds code, deploys to a game, or controls Steam/the game.
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'package-windows-library.ps1')
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $workshopRoot = Join-Path $projectRoot 'workshop'
 $contentRoot = Join-Path $workshopRoot 'content'
@@ -16,6 +17,7 @@ $item = [IO.File]::ReadAllText((Join-Path $workshopRoot 'published-item.json')) 
 $itemId = [string]$item.publishedfileid
 if ($itemId -notmatch '^\d+$') { throw 'The saved Workshop item ID is invalid.' }
 $stagingRoot = Join-Path $workshopRoot ('package-' + [Guid]::NewGuid().ToString('N') + '.tmp')
+$payloadRoot = Join-Path $stagingRoot 'content'
 $outputPath = Join-Path $projectRoot 'DFCN-Windows-Linux-workshop.zip'
 
 function Resolve-PackageDirectory([string] $path) {
@@ -36,7 +38,7 @@ function Remove-PackageDirectory([string] $path) {
 
 function Install-PackageDirectory([string] $name) {
     $source = Resolve-PackageDirectory (Join-Path $stagingRoot $name)
-    $destination = Resolve-PackageDirectory (Join-Path $contentRoot $name)
+    $destination = Resolve-PackageDirectory (Join-Path $workshopRoot $name)
     $previous = Resolve-PackageDirectory (Join-Path $stagingRoot ($name + '.previous'))
     if ([IO.Directory]::Exists($destination)) {
         Move-Item -LiteralPath $destination -Destination $previous
@@ -50,6 +52,40 @@ function Install-PackageDirectory([string] $name) {
         throw
     }
     Remove-PackageDirectory $previous
+}
+
+function Share-LinuxResources([string] $windowsFolder, [string] $linuxFolder) {
+    $shared = [Collections.Generic.List[string]]::new()
+    [long]$savedBytes = 0
+    $linuxRuntime = Join-Path $linuxFolder 'dfcn'
+    foreach ($source in ([IO.Directory]::GetFiles($linuxRuntime, '*', [IO.SearchOption]::AllDirectories) | Sort-Object)) {
+        $relative = $source.Substring($linuxFolder.Length + 1).Replace('\', '/')
+        # Each platform keeps its own preferences and native libraries. Share
+        # only byte-identical resources from these exact two release packages.
+        if ($relative -eq 'dfcn/data/runtime/config.ini' -or
+                $relative.EndsWith('.so') -or $relative.EndsWith('.dll')) { continue }
+        $windowsFile = Join-Path $windowsFolder $relative
+        if (-not [IO.File]::Exists($windowsFile) -or
+                ([IO.FileInfo]::new($source)).Length -ne ([IO.FileInfo]::new($windowsFile)).Length) { continue }
+        $linuxHash = (Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash
+        $windowsHash = (Get-FileHash -LiteralPath $windowsFile -Algorithm SHA256).Hash
+        if ($linuxHash -ne $windowsHash) { continue }
+        $shared.Add($relative)
+        $savedBytes += ([IO.FileInfo]::new($source)).Length
+        [IO.File]::Delete($source)
+    }
+    # This manifest is consumed by the installer to reconstruct the complete
+    # Linux tree. Different release data is retained in the Linux overlay.
+    $manifest = ''
+    if ($shared.Count -gt 0) { $manifest = [string]::Join("`n", $shared) + "`n" }
+    [IO.File]::WriteAllText((Join-Path $linuxFolder 'SHARED-FILES.txt'), $manifest,
+        [Text.UTF8Encoding]::new($false))
+    # Windows checkouts may use CRLF; Bash requires an LF script without BOM.
+    $installer = [IO.File]::ReadAllText((Join-Path $PSScriptRoot 'install-workshop-linux.sh')).Replace("`r`n", "`n")
+    [IO.File]::WriteAllText((Join-Path $linuxFolder 'install.sh'), $installer,
+        [Text.UTF8Encoding]::new($false))
+    Copy-Item -LiteralPath (Join-Path $payloadRoot 'INSTALL.txt') -Destination (Join-Path $linuxFolder 'INSTALL.txt') -Force
+    Write-Host ('Shared platform resources: ' + [Math]::Round($savedBytes / 1MB, 2) + ' MiB saved')
 }
 
 function Write-PackageArchive([string] $sourceRoot, [string] $destination,
@@ -154,22 +190,34 @@ try {
 
     Add-Type -AssemblyName System.IO.Compression
     Add-Type -AssemblyName System.IO.Compression.FileSystem
-    [void][IO.Directory]::CreateDirectory($stagingRoot)
-    $windowsFolder = Join-Path $stagingRoot 'DFCN'
-    $linuxFolder = Join-Path $stagingRoot 'DFCN-Linux'
+    [void][IO.Directory]::CreateDirectory($payloadRoot)
+    # Recreate the upload tree from selected inputs. Stray archives, caches or
+    # earlier payloads in workshop/content cannot be carried into another upload.
+    foreach ($name in @('info.txt', 'INSTALL.txt', 'CHANGELOG.txt')) {
+        Copy-Item -LiteralPath (Join-Path $contentRoot $name) -Destination (Join-Path $payloadRoot $name)
+    }
+    $windowsFolder = Join-Path $payloadRoot 'DFCN'
+    $linuxFolder = Join-Path $payloadRoot 'DFCN-Linux'
     [IO.Compression.ZipFile]::ExtractToDirectory($windowsArchive, $windowsFolder)
     [IO.Compression.ZipFile]::ExtractToDirectory($linuxArchive, $linuxFolder)
+    if ($UseExistingWindowsArchive) {
+        foreach ($name in @('dfcn_core.dll', 'dfhooks_dfcn.dll')) {
+            $library = Join-Path $windowsFolder ('dfcn/' + $name)
+            Write-StrippedWindowsLibrary $library $library
+        }
+    }
     [IO.File]::WriteAllText((Join-Path $windowsFolder 'dfhooks_dfcn.ini'),
         "../../workshop/content/975370/$itemId/DFCN/dfcn/dfhooks_dfcn.dll`n",
         [Text.UTF8Encoding]::new($false))
     # This payload now uses a Workshop INI, so its nearby instructions must too.
-    Copy-Item -LiteralPath (Join-Path $contentRoot 'INSTALL.txt') -Destination (Join-Path $windowsFolder 'INSTALL.txt') -Force
+    Copy-Item -LiteralPath (Join-Path $payloadRoot 'INSTALL.txt') -Destination (Join-Path $windowsFolder 'INSTALL.txt') -Force
     Copy-Item -LiteralPath $linuxSourcePath -Destination (Join-Path $linuxFolder 'RELEASE-SOURCE.json')
+    Share-LinuxResources $windowsFolder $linuxFolder
 
-    # Extract before replacing either platform; old payloads do not accumulate.
-    Install-PackageDirectory 'DFCN'
-    Install-PackageDirectory 'DFCN-Linux'
-    Write-PackageArchive $contentRoot $outputPath
+    # Complete the archive before replacing the upload tree. Failed archive
+    # creation leaves the previous upload folder available; replace it as a whole.
+    Write-PackageArchive $payloadRoot $outputPath
+    Install-PackageDirectory 'content'
     # Extensions remain separate from the base Workshop payload. Private data
     # packages are never selected for these public release archives.
     Write-PublicExtensionArchives

@@ -36,11 +36,11 @@ Windows 同时安装 **DFHack 53.16-r2** 时，可按 **Shift+F11** 关闭 DFHac
 
 ## Linux 安装与使用
 
-**Steam 创意工坊：**本项目同时提供 Linux x64 运行文件，位于 `你的 Steam 库目录/steamapps/workshop/content/975370/3811193379/DFCN-Linux/`。将其中的 **`libdfhooks.so` 和完整 `dfcn` 文件夹**复制到包含 `dwarfort` 的游戏根目录，保留包内目录结构。Linux 需要安装整套运行文件，不能只复制加载入口，也不使用 Windows 的 `dfhooks_dfcn.ini`。
+**Steam 创意工坊：**本项目同时提供 Linux x64 运行文件，位于 `你的 Steam 库目录/steamapps/workshop/content/975370/3811193379/DFCN-Linux/`。新版打包目录提供 `install.sh`，在该目录执行 `/bin/bash install.sh`，即可从同一订阅目录下的共享资源和 Linux 文件安装完整运行目录；游戏位于其他 Steam 库或使用官网版时，执行 `/bin/bash install.sh '/包含 dwarfort 的游戏目录'`。保留订阅目录下的 `DFCN/` 与 `DFCN-Linux/` 两个文件夹。旧版目录没有 `install.sh` 时，将其中的 **`libdfhooks.so` 和完整 `dfcn` 文件夹**复制到游戏根目录。Linux 不使用 Windows 的 `dfhooks_dfcn.ini`。
 
 **GitHub Release：**从 [v53.16-20261008-linux](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008-linux) 下载 `DFCN-Linux-x64-minimal.zip`，将全部内容按原有目录结构解压到包含 `dwarfort` 的游戏根目录。工坊中的 Linux 文件对应同一版本。
 
-Linux 汉化设置位于**游戏目录**的 `dfcn/data/runtime/config.ini`。Steam 后续将新版下载到工坊订阅目录后，需再次把 Linux 的 `libdfhooks.so` 和完整 `dfcn` 文件夹复制到游戏目录，并保留自己的配置。Linux 包同时提供 Steam 版与官网免费版的地址绑定，依赖系统的 SDL2、FreeType、Fontconfig、libstdc++ 和 glibc；这些系统库及游戏程序不包含在运行包中。系统没有可用中文字体时，需安装系统中文字体，供 Fontconfig 选择。纯汉化数据无需在创建世界时启用，也无需 DFHack。
+Linux 汉化设置位于**游戏目录**的 `dfcn/data/runtime/config.ini`。Steam 后续下载新版后，再执行订阅目录中的 `install.sh`；安装脚本保留游戏目录中已有的汉化配置，完整准备数据后替换文件，不启动或重启游戏。旧版完整运行包仍按整包复制方式更新。Linux 包同时提供 Steam 版与官网免费版的地址绑定，依赖系统的 SDL2、FreeType、Fontconfig、libstdc++ 和 glibc；这些系统库及游戏程序不包含在运行包中。系统没有可用中文字体时，需安装系统中文字体，供 Fontconfig 选择。纯汉化数据无需在创建世界时启用，也无需 DFHack。
 
 Linux 已发布核心同样使用 **Shift+F10** 切换汉化并保留核心与数据；**Shift+F5** 关闭再开启时重新读取核心与数据；**Ctrl+Shift+F10** 显式刷新数据。卸载时移除自己安装的 `libdfhooks.so` 和 `dfcn` 汉化目录，取消订阅不会自动清理游戏目录中的副本；无需删除游戏或存档。
 
@@ -64,7 +64,11 @@ Windows 本版可用 **Shift+F6** 临时停用或恢复全部扩展数据，并�
 
 打包使用已有 Windows 编译产物与 [Linux 来源记录](workshop/linux-release.json) 指定的 Linux 原始运行包。先依据其中的 `download_url` 下载 `DFCN-Linux-x64-minimal.zip`，保存至仓库根目录，再执行根目录的 `package-workshop.cmd`；也可使用 Windows PowerShell 执行 `-File tools/package-workshop.ps1`。打包入口不编译代码。
 
-该入口先生成 Windows 运行 ZIP，再将两个平台解压到工坊内容的 `DFCN/` 与 `DFCN-Linux/`，并生成 `DFCN-Windows-Linux-workshop.zip`。Linux 原包保持原有核心、加载器与运行数据，来源记录随 `DFCN-Linux/RELEASE-SOURCE.json` 发布。入口还将公开汉化数据扩展分别打包为各自目录中的 `<mod ID>.zip`，跳过私密包。独立汉化扩展与原始玩法模组不并入本体；工坊上传使用 `workshop/content`。
+该入口先生成 Windows 完整运行 ZIP，在临时副本上使用固定 Windows 工具链的 `strip.exe --strip-unneeded` 移除核心与加载器的静态符号和调试数据，保留动态导出；本机部署 DLL 不变。`-UseExistingWindowsArchive` 同样会精简解压后的 Windows 副本。Linux 的 `package-linux.sh` 使用 `/usr/bin/strip` 精简 `.so` 打包副本，独立运行 ZIP 保持完整。
+
+工坊入口从三个根目录说明文件和两个平台 ZIP 重建整个 `workshop/content`，不沿用内容目录中的旧 ZIP、缓存或其他遗留文件。`DFCN/` 保持完整 Windows 运行目录；对两个原包中路径相同且 SHA-256 相同的资源，仅在 `DFCN/` 留一份，Linux 目录通过 `SHARED-FILES.txt` 和 `install.sh` 在安装时还原。配置、平台库与内容不同的 Linux 资源保留在 `DFCN-Linux/`，不会用 Windows 新数据覆盖旧 Linux 发布版的数据。Linux 来源仍由 `RELEASE-SOURCE.json` 记录，下载的原始 ZIP 和其核心、加载器字节不改动。
+
+入口生成 `DFCN-Windows-Linux-workshop.zip`，并将公开汉化数据扩展分别打包为各自目录中的 `<mod ID>.zip`，跳过私密包。独立汉化扩展与原始玩法模组不并入本体；工坊上传使用 `workshop/content`。
 
 ## 技术栈
 

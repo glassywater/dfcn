@@ -31,9 +31,12 @@ Linux 当前运行包：[b]53.16-20261008-linux[/b]；未包含此次 Windows �
 [h1]Linux 工坊安装[/h1]
 
 打开：[code]你的 Steam 库目录/steamapps/workshop/content/975370/3811193379/DFCN-Linux/[/code]
-将其中的 [b]libdfhooks.so[/b] 和 [b]完整 dfcn 文件夹[/b]复制到包含 [b]dwarfort[/b] 的游戏根目录，保留目录结构。
+目录含 [b]install.sh[/b] 时，在该目录执行：[code]/bin/bash install.sh[/code]
+游戏位于其他 Steam 库或使用官网版时，指定游戏目录：[code]/bin/bash install.sh '/包含 dwarfort 的游戏目录'[/code]
+安装脚本会安装完整 Linux 运行文件，并保留已有的汉化配置。请保留同一订阅目录中的 [b]DFCN/[/b] 和 [b]DFCN-Linux/[/b]。
+没有 install.sh 的旧版完整包，仍将其中的 [b]libdfhooks.so[/b] 和 [b]完整 dfcn 文件夹[/b]复制到游戏根目录。
 汉化设置位于游戏目录的 [b]dfcn/data/runtime/config.ini[/b]。
-Linux 更新后需再次复制整套运行文件，并保留个人配置；不能只复制加载入口，也不使用 Windows 的 INI。
+工坊下载新版后再次执行 install.sh。Linux 不使用 Windows 的 INI。
 
 Linux 依赖系统的 SDL2、FreeType、Fontconfig、libstdc++、glibc 和可用中文字体。运行包不包含系统库或游戏程序。
 

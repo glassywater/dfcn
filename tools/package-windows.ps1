@@ -5,6 +5,7 @@ param()
 # Package existing runtime files. Paths are relative to this script, never to
 # the caller's working directory. This entry does not build or deploy code.
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'package-windows-library.ps1')
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $gameRoot = [IO.Directory]::GetParent($projectRoot).FullName
 $imageConfigPath = Join-Path $projectRoot 'data\runtime\native-pe-images.json'
@@ -18,11 +19,17 @@ if ([IO.File]::Exists($imageConfigPath)) {
 }
 $outputPath = Join-Path $projectRoot 'DFCN-Windows-x64-minimal.zip'
 $stagingPath = Join-Path $projectRoot ('DFCN-Windows-x64-minimal.' + [Guid]::NewGuid().ToString('N') + '.tmp')
+$binaryStagingRoot = Join-Path $projectRoot ('DFCN-Windows-libraries.' + [Guid]::NewGuid().ToString('N') + '.tmp')
 $archive = $null
 $archiveStream = $null
 $entryCount = 0
 
 function Add-RuntimeFile([string] $source, [string] $entryName) {
+    if ($entryName -in @('dfcn/dfcn_core.dll', 'dfcn/dfhooks_dfcn.dll')) {
+        $strippedPath = Join-Path $script:binaryStagingRoot ([IO.Path]::GetFileName($source))
+        Write-StrippedWindowsLibrary $source $strippedPath
+        $source = $strippedPath
+    }
     [void][IO.Compression.ZipFileExtensions]::CreateEntryFromFile(
         $script:archive, $source, $entryName.Replace('\', '/'),
         [IO.Compression.CompressionLevel]::Optimal)
@@ -44,6 +51,7 @@ function Add-RuntimeText([string] $entryName, [string] $content) {
 try {
     Add-Type -AssemblyName System.IO.Compression
     Add-Type -AssemblyName System.IO.Compression.FileSystem
+    [void][IO.Directory]::CreateDirectory($binaryStagingRoot)
     Write-Host 'Packaging the existing Windows translation runtime...'
     $archiveStream = [IO.File]::Open($stagingPath, [IO.FileMode]::CreateNew, [IO.FileAccess]::Write, [IO.FileShare]::None)
     $archive = [IO.Compression.ZipArchive]::new($archiveStream, [IO.Compression.ZipArchiveMode]::Create, $true)
@@ -160,6 +168,9 @@ try {
 } finally {
     if ($null -ne $archive) { $archive.Dispose() }
     if ($null -ne $archiveStream) { $archiveStream.Dispose() }
+    if ([IO.Directory]::Exists($binaryStagingRoot)) {
+        Remove-Item -LiteralPath $binaryStagingRoot -Recurse -Force
+    }
     if ([IO.File]::Exists($stagingPath)) {
         try { [IO.File]::Delete($stagingPath) }
         catch { [Console]::Error.WriteLine('Could not remove temporary package: ' + $stagingPath + ': ' + $_.Exception.Message) }

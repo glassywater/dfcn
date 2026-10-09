@@ -59,12 +59,15 @@ Windows 运行包默认 font_scale=1.1、min_font_pixels=12、font_bold=true；f
 你的 Steam 库目录/steamapps/common/Dwarf Fortress/
 
 1. 打开上面的 DFCN-Linux 文件夹。
-2. 将 libdfhooks.so 和完整 dfcn 文件夹复制到包含 dwarfort 的游戏根目录，保留包内目录结构。
-3. 汉化设置位于游戏目录的 dfcn/data/runtime/config.ini。
+2. 目录含 install.sh 时，在该目录执行：/bin/bash install.sh
+   脚本默认安装到同一 Steam 库的 Dwarf Fortress 游戏目录。
+   游戏位于其他位置时执行：/bin/bash install.sh '/包含 dwarfort 的游戏目录'
+3. 汉化设置位于游戏目录的 dfcn/data/runtime/config.ini；已有配置由安装脚本保留。
 
-Linux 需要复制整套运行文件，不能只复制 libdfhooks.so；也不使用 Windows 的 dfhooks.dll、dfhooks_dfcn.ini 或 DLL 路径配置。
-工坊中的 DFCN-Linux/dfcn 不能留在订阅目录并套用 Windows 的两个入口安装方法。
-后续 Steam 更新将新版下载到订阅目录后，需再次把 Linux 的 libdfhooks.so 和完整 dfcn 文件夹复制到游戏目录，并保留个人配置。
+新版工坊包将两个平台完全相同的资源只保存一份。保留同一订阅目录中的 DFCN/ 与 DFCN-Linux/；安装脚本组合共享资源和 Linux 自身文件，生成完整 Linux 运行目录。
+目录没有 install.sh 的旧版完整包，仍将 libdfhooks.so 和完整 dfcn 文件夹复制到游戏根目录。
+Linux 不使用 Windows 的 dfhooks.dll、dfhooks_dfcn.ini 或 DLL 路径配置。
+后续 Steam 下载新版后再次执行 install.sh；脚本不会启动、终止或重启游戏。
 
 Linux 包同时包含 Steam 版与官网免费版地址绑定，依赖系统的 SDL2、FreeType、Fontconfig、libstdc++ 和 glibc；这些系统库不包含在运行包中。
 Fontconfig 使用系统可用字体；系统没有中文字体时，需安装系统中文字体。
@@ -81,7 +84,7 @@ https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261009
 Linux：
 https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008-linux
 下载 DFCN-Linux-x64-minimal.zip，将全部内容按原目录结构解压到包含 dwarfort 的游戏根目录。
-必须保留 libdfhooks.so 和完整 dfcn 文件夹；设置、系统依赖和后续更新方式同上面的 Linux 安装说明。
+独立 Linux ZIP 始终提供完整 libdfhooks.so 和 dfcn 文件夹，不需要工坊共享资源或 install.sh。更新时按原目录结构复制整包，并保留个人配置；系统依赖同上。
 
 四、独立汉化数据扩展
 
