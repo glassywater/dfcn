@@ -537,3 +537,10 @@ name = "drink_state"
 [rulesets.rules]
 "boiling" = "沸腾的"
 "frozen" = "冰冻的"
+
+[[rulesets]]
+name = "food"
+[rulesets.rules]
+"golden apple" = "金苹果"
+"golden banana" = "金香蕉"
+"perfect apple" = "完美苹果"
