@@ -1,0 +1,95 @@
+Missing-unit announcement: reconstructed native control flow
+===========================================================
+
+Binary sources are the two configured native Windows images. The extraction
+tool reads PE bytes and unwind ownership and retains each complete owner, all
+text operands, branches and calls. It does not execute a game or translation.
+
+Steam/reference PE:6a70a6d9:02711000
+  complete producer: 0x140e39910..0x140e3fde8
+  relevant incident iteration: 0x140e39e9c..0x140e3a0ec
+  name supplier: 0x1413e5a90..0x1413e5b1c
+  full unit formatter: 0x141330c30..0x1413312b8
+  announcement submission: 0x140e3a0a0 -> 0x1400e3c20
+
+Official/classic PE:6a70b91c:0270a000
+  complete producer: 0x140e34880..0x140e3ad58
+  relevant incident iteration: 0x140e34e0c..0x140e3505c
+  name supplier: 0x1413e0a00..0x1413e0a8c
+  full unit formatter: 0x14132bba0..0x14132c228
+  announcement submission: 0x140e35010 -> 0x1400e3bb0
+
+The full producer also handles other fortress events. Its entire function is
+retained rather than treating the literal's immediate neighborhood as its
+ownership boundary. The missing production itself has the following gates
+and two complete text forms, identical in both editions.
+
+Reconstructed relevant producer (field names from local df.incident.xml;
+native offsets and thresholds come from the retained instructions):
+
+  if (current_year_tick % 100 != 60): skip missing pass
+  for incident in world.incidents.all:
+    if (incident.site [+0xd4] != current_site): continue
+    if (incident.entity [+0xe0] != fortress_entity): continue
+    if (incident.type [+0x4] != 0): continue
+    if (incident.flags [+0xec] & 1): continue
+    year_delta = current_year - incident.event_year [+0xe4]
+    if (year_delta < 0): continue
+    elapsed = current_year_tick - incident.event_time [+0xe8]
+    if (year_delta == 1): elapsed += 0x62700
+    if (year_delta < 2 && elapsed < 0x20d0): continue
+    incident.flags |= 1
+    victim = lookup_unit(incident.victim [+0x28])
+    if (!victim): continue                         // no text submitted
+    name = selected_language_name(victim)
+    text = (!name || !name.has_name [+0x72]) ? "The " : ""
+    text += format_full_unit(victim, mode=0)
+    text += " has been missing for a week."
+    category = (victim.flags1 [+0x110] & 0x04000000) ? 0x98 : 0x97
+    submit(text, category, color=5, bright=1, duration=0x7d0)
+
+The native threshold 0x20d0 is 8400 ticks (one week). The category branch changes
+announcement metadata only. It does not add another sentence or a distinct
+pet/citizen wording. No longer-duration phrase is authored in this production.
+
+has_name branch ownership:
+  reference 0x140e39ff3 retrieves the selected name;
+            0x140e39ffb/0x140e3a001 choose the article;
+            0x140e3a003 appends "The ";
+            0x140e3a023 formats the actor, r8d=0;
+            0x140e3a03b loads the common predicate.
+  classic   0x140e34f63 retrieves the selected name;
+            0x140e34f6b/0x140e34f71 choose the article;
+            0x140e34f73 appends "The ";
+            0x140e34f93 formats the actor, r8d=0;
+            0x140e34fab loads the common predicate.
+
+Complete authored text forms:
+  has_name != 0: <full unit> has been missing for a week.
+  absent name or has_name == 0: The <full unit> has been missing for a week.
+
+The actor is not an arbitrary personal-name capture. The name getter first
+follows the historical figure's current identity, including an associated
+historical figure when present; it falls back to that figure's language_name
+or the unit's own name. The full formatter retains this identity selection,
+the native name visibility/quoted-name branches, the comma and profession or
+office, and animal training status. Its mode=0 disables the optional gender
+suffix at reference 0x141330eb2 / classic 0x14132be22. The complete formatter
+and getter bodies are retained in the actor-format and actor-name .asm files;
+their subformatters are already owned by the existing native unit identity
+translation path.
+
+Translation data:
+  Both full forms use fortress-announcement [$unit] rules, with the actor
+  translated through the existing unit identity path and the predicate
+  translated as "已经失踪一周。". This covers generated names, profession/office,
+  unnamed creatures and native identity forms without adding a particular
+  screenshot person's name to a special alias list.
+  The existing adventure-announcements catalogue also retains both full
+  sentence forms. Runtime translations.tsv contains both the scoped rule and
+  the ordinary complete-sentence record; installed dictionaries receive the
+  same records in place. No dictionary generator or compilation is involved.
+
+The separate death constructor and its cause switches are retained in the
+death-* files in this directory. They are separate authored production paths,
+not suffixes inferred from this missing announcement.

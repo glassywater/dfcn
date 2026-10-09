@@ -572,7 +572,8 @@ adventure.announcement.social-world	0x140e365c0:0x140e3684e-0x140e3974f	The high
 adventure.announcement.social-world	0x140e365c0:0x140e3684e-0x140e3974f	The agreement to establish a temple for {e} has been abandoned.
 adventure.announcement.social-world	0x140e365c0:0x140e3684e-0x140e3974f	The agreement to establish a guildhall for {e} has been abandoned.
 adventure.announcement.social-world	0x140e365c0:0x140e3684e-0x140e3974f	{e}, a {s} guild, has been established.
-adventure.announcement.social-world	0x140e39910:0x140e3a003-0x140e3c811	The {n} has been missing for a week.
+adventure.announcement.social-world	data/extracted/fortress-missing-death; reference 0x140e39910:0x140e39ff3-0x140e3a049 / classic 0x140e34880:0x140e34f63-0x140e34fb9; selected name absent or name+0x72 (has_name)=0	The {n} has been missing for a week.
+adventure.announcement.social-world	data/extracted/fortress-missing-death; reference 0x140e39910:0x140e39ffd-0x140e3a049 / classic 0x140e34880:0x140e34f6d-0x140e34fb9; name+0x72 (has_name)!=0	{n} has been missing for a week.
 adventure.announcement.social-world	0x140e39910:0x140e3a003-0x140e3c811	{n} has ended a mandate.
 adventure.announcement.social-world	0x140e39910:0x140e3a003-0x140e3c811	A mandate has ended.
 adventure.announcement.social-world	0x140e39910:0x140e3a003-0x140e3c811	Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense.

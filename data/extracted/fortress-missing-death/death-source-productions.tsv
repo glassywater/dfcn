@@ -1,0 +1,909 @@
+edition	function_start	observed	cause	cause_name	branch_address	subject_form	condition	field_sources	complete_native_production
+reference	0x1413e5b20	1	0	OLD_AGE	0x1413e5eaa	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has died of old age.
+reference	0x1413e5b20	1	0	OLD_AGE	0x1413e5eaa	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has died of old age.
+reference	0x1413e5b20	1	0	OLD_AGE	0x1413e5eaa	adventure-player	native cause suffix		You have died of old age.
+reference	0x1413e5b20	1	0	OLD_AGE	0x1413e5eaa	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has died of old age.
+reference	0x1413e5b20	1	1	HUNGER	0x1413e5f90	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has starved to death.
+reference	0x1413e5b20	1	1	HUNGER	0x1413e5f90	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has starved to death.
+reference	0x1413e5b20	1	1	HUNGER	0x1413e5f90	adventure-player	native cause suffix		You have starved to death.
+reference	0x1413e5b20	1	1	HUNGER	0x1413e5f90	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has starved to death.
+reference	0x1413e5b20	1	2	THIRST	0x1413e5f9c	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has died of thirst.
+reference	0x1413e5b20	1	2	THIRST	0x1413e5f9c	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has died of thirst.
+reference	0x1413e5b20	1	2	THIRST	0x1413e5f9c	adventure-player	native cause suffix		You have died of thirst.
+reference	0x1413e5b20	1	2	THIRST	0x1413e5f9c	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has died of thirst.
+reference	0x1413e5b20	1	3	SHOT	0x1413e60da	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been shot and killed.
+reference	0x1413e5b20	1	3	SHOT	0x1413e60da	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been shot and killed.
+reference	0x1413e5b20	1	3	SHOT	0x1413e60da	adventure-player	native cause suffix		You have been shot and killed.
+reference	0x1413e5b20	1	3	SHOT	0x1413e60da	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been shot and killed.
+reference	0x1413e5b20	1	4	BLEED	0x1413e60ec	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has bled to death.
+reference	0x1413e5b20	1	4	BLEED	0x1413e60ec	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has bled to death.
+reference	0x1413e5b20	1	4	BLEED	0x1413e60ec	adventure-player	native cause suffix		You have bled to death.
+reference	0x1413e5b20	1	4	BLEED	0x1413e60ec	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has bled to death.
+reference	0x1413e5b20	1	5	DROWN	0x1413e63ba	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has drowned.
+reference	0x1413e5b20	1	5	DROWN	0x1413e63ba	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has drowned.
+reference	0x1413e5b20	1	5	DROWN	0x1413e63ba	adventure-player	native cause suffix		You have drowned.
+reference	0x1413e5b20	1	5	DROWN	0x1413e63ba	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has drowned.
+reference	0x1413e5b20	1	6	SUFFOCATE	0x1413e6110	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has suffocated.
+reference	0x1413e5b20	1	6	SUFFOCATE	0x1413e6110	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has suffocated.
+reference	0x1413e5b20	1	6	SUFFOCATE	0x1413e6110	adventure-player	native cause suffix		You have suffocated.
+reference	0x1413e5b20	1	6	SUFFOCATE	0x1413e6110	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has suffocated.
+reference	0x1413e5b20	1	7	STRUCK_DOWN	0x1413e6122	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been struck down.
+reference	0x1413e5b20	1	7	STRUCK_DOWN	0x1413e6122	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been struck down.
+reference	0x1413e5b20	1	7	STRUCK_DOWN	0x1413e6122	adventure-player	native cause suffix		You have been struck down.
+reference	0x1413e5b20	1	7	STRUCK_DOWN	0x1413e6122	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been struck down.
+reference	0x1413e5b20	1	8	SCUTTLE	0x1413e613a	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been scuttled.
+reference	0x1413e5b20	1	8	SCUTTLE	0x1413e613a	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been scuttled.
+reference	0x1413e5b20	1	8	SCUTTLE	0x1413e613a	adventure-player	native cause suffix		You have been scuttled.
+reference	0x1413e5b20	1	8	SCUTTLE	0x1413e613a	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been scuttled.
+reference	0x1413e5b20	1	9	COLLISION	0x1413e6384	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has died after colliding with an obstacle.
+reference	0x1413e5b20	1	9	COLLISION	0x1413e6384	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has died after colliding with an obstacle.
+reference	0x1413e5b20	1	9	COLLISION	0x1413e6384	adventure-player	native cause suffix		You have died after colliding with an obstacle.
+reference	0x1413e5b20	1	9	COLLISION	0x1413e6384	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has died after colliding with an obstacle.
+reference	0x1413e5b20	1	10	MAGMA	0x1413e5fae	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has burned up in magma.
+reference	0x1413e5b20	1	10	MAGMA	0x1413e5fae	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has burned up in magma.
+reference	0x1413e5b20	1	10	MAGMA	0x1413e5fae	adventure-player	native cause suffix		You have burned up in magma.
+reference	0x1413e5b20	1	10	MAGMA	0x1413e5fae	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has burned up in magma.
+reference	0x1413e5b20	1	11	MAGMA_MIST	0x1413e6092	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has burned up in a magma mist.
+reference	0x1413e5b20	1	11	MAGMA_MIST	0x1413e6092	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has burned up in a magma mist.
+reference	0x1413e5b20	1	11	MAGMA_MIST	0x1413e6092	adventure-player	native cause suffix		You have burned up in a magma mist.
+reference	0x1413e5b20	1	11	MAGMA_MIST	0x1413e6092	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has burned up in a magma mist.
+reference	0x1413e5b20	1	12	DRAGONFIRE	0x1413e5fc0	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has burned up in dragon fire.
+reference	0x1413e5b20	1	12	DRAGONFIRE	0x1413e5fc0	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has burned up in dragon fire.
+reference	0x1413e5b20	1	12	DRAGONFIRE	0x1413e5fc0	adventure-player	native cause suffix		You have burned up in dragon fire.
+reference	0x1413e5b20	1	12	DRAGONFIRE	0x1413e5fc0	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has burned up in dragon fire.
+reference	0x1413e5b20	1	13	FIRE	0x1413e606e	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has burned to death.
+reference	0x1413e5b20	1	13	FIRE	0x1413e606e	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has burned to death.
+reference	0x1413e5b20	1	13	FIRE	0x1413e606e	adventure-player	native cause suffix		You have burned to death.
+reference	0x1413e5b20	1	13	FIRE	0x1413e606e	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has burned to death.
+reference	0x1413e5b20	1	14	SCALD	0x1413e6080	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been scalded to death.
+reference	0x1413e5b20	1	14	SCALD	0x1413e6080	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been scalded to death.
+reference	0x1413e5b20	1	14	SCALD	0x1413e6080	adventure-player	native cause suffix		You have been scalded to death.
+reference	0x1413e5b20	1	14	SCALD	0x1413e6080	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been scalded to death.
+reference	0x1413e5b20	1	15	CAVEIN	0x1413e60b6	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been crushed under the collapsing ceiling.
+reference	0x1413e5b20	1	15	CAVEIN	0x1413e60b6	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been crushed under the collapsing ceiling.
+reference	0x1413e5b20	1	15	CAVEIN	0x1413e60b6	adventure-player	native cause suffix		You have been crushed under the collapsing ceiling.
+reference	0x1413e5b20	1	15	CAVEIN	0x1413e60b6	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been crushed under the collapsing ceiling.
+reference	0x1413e5b20	1	16	DRAWBRIDGE	0x1413e60a4	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been crushed by a drawbridge.
+reference	0x1413e5b20	1	16	DRAWBRIDGE	0x1413e60a4	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been crushed by a drawbridge.
+reference	0x1413e5b20	1	16	DRAWBRIDGE	0x1413e60a4	adventure-player	native cause suffix		You have been crushed by a drawbridge.
+reference	0x1413e5b20	1	16	DRAWBRIDGE	0x1413e60a4	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been crushed by a drawbridge.
+reference	0x1413e5b20	1	17	FALLING_ROCKS	0x1413e60c8	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been killed by falling rocks.
+reference	0x1413e5b20	1	17	FALLING_ROCKS	0x1413e60c8	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been killed by falling rocks.
+reference	0x1413e5b20	1	17	FALLING_ROCKS	0x1413e60c8	adventure-player	native cause suffix		You have been killed by falling rocks.
+reference	0x1413e5b20	1	17	FALLING_ROCKS	0x1413e60c8	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been killed by falling rocks.
+reference	0x1413e5b20	1	18	CHASM	0x1413e63e1	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has fallen into a deep chasm.
+reference	0x1413e5b20	1	18	CHASM	0x1413e63e1	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has fallen into a deep chasm.
+reference	0x1413e5b20	1	18	CHASM	0x1413e63e1	adventure-player	native cause suffix		You have fallen into a deep chasm.
+reference	0x1413e5b20	1	18	CHASM	0x1413e63e1	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has fallen into a deep chasm.
+reference	0x1413e5b20	1	19	CAGE	0x1413e5e98	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has died in a cage.
+reference	0x1413e5b20	1	19	CAGE	0x1413e5e98	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has died in a cage.
+reference	0x1413e5b20	1	19	CAGE	0x1413e5e98	adventure-player	native cause suffix		You have died in a cage.
+reference	0x1413e5b20	1	19	CAGE	0x1413e5e98	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has died in a cage.
+reference	0x1413e5b20	1	20	MURDER	0x1413e628c	fortress-named	killer exists	actor=subject actor formatter, named identity; killer_name=unit+8 language_name	{actor} has been murdered by {killer_name}!
+reference	0x1413e5b20	1	20	MURDER	0x1413e628c	fortress-named	killer absent	actor=subject actor formatter, named identity	{actor} has been murdered by somebody!
+reference	0x1413e5b20	1	20	MURDER	0x1413e628c	fortress-unnamed	killer exists	actor=subject actor formatter, unnamed identity; killer_name=unit+8 language_name	The {actor} has been murdered by {killer_name}!
+reference	0x1413e5b20	1	20	MURDER	0x1413e628c	fortress-unnamed	killer absent	actor=subject actor formatter, unnamed identity	The {actor} has been murdered by somebody!
+reference	0x1413e5b20	1	20	MURDER	0x1413e628c	adventure-player	killer exists	killer_name=unit+8 language_name	You have been murdered by {killer_name}!
+reference	0x1413e5b20	1	20	MURDER	0x1413e628c	adventure-player	killer absent		You have been murdered by somebody!
+reference	0x1413e5b20	1	20	MURDER	0x1413e628c	adventure-other	killer exists	actor=subject pronoun/identity formatter, nonplayer; killer_name=unit+8 language_name	{actor} has been murdered by {killer_name}!
+reference	0x1413e5b20	1	20	MURDER	0x1413e628c	adventure-other	killer absent	actor=subject pronoun/identity formatter, nonplayer	{actor} has been murdered by somebody!
+reference	0x1413e5b20	1	21	TRAP	0x1413e632a	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been killed by a trap.
+reference	0x1413e5b20	1	21	TRAP	0x1413e632a	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been killed by a trap.
+reference	0x1413e5b20	1	21	TRAP	0x1413e632a	adventure-player	native cause suffix		You have been killed by a trap.
+reference	0x1413e5b20	1	21	TRAP	0x1413e632a	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been killed by a trap.
+reference	0x1413e5b20	1	22	VANISH	0x1413e6360	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has vanished.
+reference	0x1413e5b20	1	22	VANISH	0x1413e6360	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has vanished.
+reference	0x1413e5b20	1	22	VANISH	0x1413e6360	adventure-player	native cause suffix		You have vanished.
+reference	0x1413e5b20	1	22	VANISH	0x1413e6360	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has vanished.
+reference	0x1413e5b20	1	23	QUIT	0x1413e64ed	fortress-named	no authored cause suffix	actor=subject actor formatter, named identity	{actor} has 
+reference	0x1413e5b20	1	23	QUIT	0x1413e64ed	fortress-unnamed	no authored cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has 
+reference	0x1413e5b20	1	23	QUIT	0x1413e64ed	adventure-player	no authored cause suffix		You have 
+reference	0x1413e5b20	1	23	QUIT	0x1413e64ed	adventure-other	no authored cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has 
+reference	0x1413e5b20	1	24	ABANDON	0x1413e64ed	fortress-named	no authored cause suffix	actor=subject actor formatter, named identity	{actor} has 
+reference	0x1413e5b20	1	24	ABANDON	0x1413e64ed	fortress-unnamed	no authored cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has 
+reference	0x1413e5b20	1	24	ABANDON	0x1413e64ed	adventure-player	no authored cause suffix		You have 
+reference	0x1413e5b20	1	24	ABANDON	0x1413e64ed	adventure-other	no authored cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has 
+reference	0x1413e5b20	1	25	HEAT	0x1413e601a	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has died in the heat.
+reference	0x1413e5b20	1	25	HEAT	0x1413e601a	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has died in the heat.
+reference	0x1413e5b20	1	25	HEAT	0x1413e601a	adventure-player	native cause suffix		You have died in the heat.
+reference	0x1413e5b20	1	25	HEAT	0x1413e601a	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has died in the heat.
+reference	0x1413e5b20	1	26	COLD	0x1413e605c	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has frozen to death.
+reference	0x1413e5b20	1	26	COLD	0x1413e605c	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has frozen to death.
+reference	0x1413e5b20	1	26	COLD	0x1413e605c	adventure-player	native cause suffix		You have frozen to death.
+reference	0x1413e5b20	1	26	COLD	0x1413e605c	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has frozen to death.
+reference	0x1413e5b20	1	27	SPIKE	0x1413e6396	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been impaled on spikes.
+reference	0x1413e5b20	1	27	SPIKE	0x1413e6396	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been impaled on spikes.
+reference	0x1413e5b20	1	27	SPIKE	0x1413e6396	adventure-player	native cause suffix		You have been impaled on spikes.
+reference	0x1413e5b20	1	27	SPIKE	0x1413e6396	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been impaled on spikes.
+reference	0x1413e5b20	1	28	ENCASE_LAVA	0x1413e6026	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been encased in cooling lava.
+reference	0x1413e5b20	1	28	ENCASE_LAVA	0x1413e6026	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been encased in cooling lava.
+reference	0x1413e5b20	1	28	ENCASE_LAVA	0x1413e6026	adventure-player	native cause suffix		You have been encased in cooling lava.
+reference	0x1413e5b20	1	28	ENCASE_LAVA	0x1413e6026	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been encased in cooling lava.
+reference	0x1413e5b20	1	29	ENCASE_MAGMA	0x1413e6038	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been encased in cooling magma.
+reference	0x1413e5b20	1	29	ENCASE_MAGMA	0x1413e6038	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been encased in cooling magma.
+reference	0x1413e5b20	1	29	ENCASE_MAGMA	0x1413e6038	adventure-player	native cause suffix		You have been encased in cooling magma.
+reference	0x1413e5b20	1	29	ENCASE_MAGMA	0x1413e6038	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been encased in cooling magma.
+reference	0x1413e5b20	1	30	ENCASE_ICE	0x1413e604a	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been encased in ice.
+reference	0x1413e5b20	1	30	ENCASE_ICE	0x1413e604a	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been encased in ice.
+reference	0x1413e5b20	1	30	ENCASE_ICE	0x1413e604a	adventure-player	native cause suffix		You have been encased in ice.
+reference	0x1413e5b20	1	30	ENCASE_ICE	0x1413e604a	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been encased in ice.
+reference	0x1413e5b20	1	31	BEHEAD	0x1413e6170	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been beheaded.
+reference	0x1413e5b20	1	31	BEHEAD	0x1413e6170	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been beheaded.
+reference	0x1413e5b20	1	31	BEHEAD	0x1413e6170	adventure-player	native cause suffix		You have been beheaded.
+reference	0x1413e5b20	1	31	BEHEAD	0x1413e6170	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been beheaded.
+reference	0x1413e5b20	1	32	CRUCIFY	0x1413e6182	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been crucified.
+reference	0x1413e5b20	1	32	CRUCIFY	0x1413e6182	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been crucified.
+reference	0x1413e5b20	1	32	CRUCIFY	0x1413e6182	adventure-player	native cause suffix		You have been crucified.
+reference	0x1413e5b20	1	32	CRUCIFY	0x1413e6182	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been crucified.
+reference	0x1413e5b20	1	33	BURY_ALIVE	0x1413e6194	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been buried alive.
+reference	0x1413e5b20	1	33	BURY_ALIVE	0x1413e6194	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been buried alive.
+reference	0x1413e5b20	1	33	BURY_ALIVE	0x1413e6194	adventure-player	native cause suffix		You have been buried alive.
+reference	0x1413e5b20	1	33	BURY_ALIVE	0x1413e6194	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been buried alive.
+reference	0x1413e5b20	1	34	DROWN_BY	0x1413e61b8	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been executed by drowning.
+reference	0x1413e5b20	1	34	DROWN_BY	0x1413e61b8	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been executed by drowning.
+reference	0x1413e5b20	1	34	DROWN_BY	0x1413e61b8	adventure-player	native cause suffix		You have been executed by drowning.
+reference	0x1413e5b20	1	34	DROWN_BY	0x1413e61b8	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been executed by drowning.
+reference	0x1413e5b20	1	35	BURN_ALIVE	0x1413e61ca	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been burned alive.
+reference	0x1413e5b20	1	35	BURN_ALIVE	0x1413e61ca	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been burned alive.
+reference	0x1413e5b20	1	35	BURN_ALIVE	0x1413e61ca	adventure-player	native cause suffix		You have been burned alive.
+reference	0x1413e5b20	1	35	BURN_ALIVE	0x1413e61ca	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been burned alive.
+reference	0x1413e5b20	1	36	FEED_TO_BEASTS	0x1413e61dc	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been fed to beasts.
+reference	0x1413e5b20	1	36	FEED_TO_BEASTS	0x1413e61dc	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been fed to beasts.
+reference	0x1413e5b20	1	36	FEED_TO_BEASTS	0x1413e61dc	adventure-player	native cause suffix		You have been fed to beasts.
+reference	0x1413e5b20	1	36	FEED_TO_BEASTS	0x1413e61dc	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been fed to beasts.
+reference	0x1413e5b20	1	37	HACK_TO_PIECES	0x1413e614c	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been hacked to pieces.
+reference	0x1413e5b20	1	37	HACK_TO_PIECES	0x1413e614c	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been hacked to pieces.
+reference	0x1413e5b20	1	37	HACK_TO_PIECES	0x1413e614c	adventure-player	native cause suffix		You have been hacked to pieces.
+reference	0x1413e5b20	1	37	HACK_TO_PIECES	0x1413e614c	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been hacked to pieces.
+reference	0x1413e5b20	1	38	LEAVE_OUT_IN_AIR	0x1413e61a6	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been executed by being left out in the air.
+reference	0x1413e5b20	1	38	LEAVE_OUT_IN_AIR	0x1413e61a6	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been executed by being left out in the air.
+reference	0x1413e5b20	1	38	LEAVE_OUT_IN_AIR	0x1413e61a6	adventure-player	native cause suffix		You have been executed by being left out in the air.
+reference	0x1413e5b20	1	38	LEAVE_OUT_IN_AIR	0x1413e61a6	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been executed by being left out in the air.
+reference	0x1413e5b20	1	39	BOIL	0x1413e5fd2	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has boiled.
+reference	0x1413e5b20	1	39	BOIL	0x1413e5fd2	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has boiled.
+reference	0x1413e5b20	1	39	BOIL	0x1413e5fd2	adventure-player	native cause suffix		You have boiled.
+reference	0x1413e5b20	1	39	BOIL	0x1413e5fd2	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has boiled.
+reference	0x1413e5b20	1	40	MELT	0x1413e5fe4	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has melted.
+reference	0x1413e5b20	1	40	MELT	0x1413e5fe4	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has melted.
+reference	0x1413e5b20	1	40	MELT	0x1413e5fe4	adventure-player	native cause suffix		You have melted.
+reference	0x1413e5b20	1	40	MELT	0x1413e5fe4	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has melted.
+reference	0x1413e5b20	1	41	CONDENSE	0x1413e5ff6	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has condensed.
+reference	0x1413e5b20	1	41	CONDENSE	0x1413e5ff6	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has condensed.
+reference	0x1413e5b20	1	41	CONDENSE	0x1413e5ff6	adventure-player	native cause suffix		You have condensed.
+reference	0x1413e5b20	1	41	CONDENSE	0x1413e5ff6	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has condensed.
+reference	0x1413e5b20	1	42	SOLIDIFY	0x1413e6008	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has solidified.
+reference	0x1413e5b20	1	42	SOLIDIFY	0x1413e6008	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has solidified.
+reference	0x1413e5b20	1	42	SOLIDIFY	0x1413e6008	adventure-player	native cause suffix		You have solidified.
+reference	0x1413e5b20	1	42	SOLIDIFY	0x1413e6008	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has solidified.
+reference	0x1413e5b20	1	43	INFECTION	0x1413e60fe	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has succumbed to infection.
+reference	0x1413e5b20	1	43	INFECTION	0x1413e60fe	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has succumbed to infection.
+reference	0x1413e5b20	1	43	INFECTION	0x1413e60fe	adventure-player	native cause suffix		You have succumbed to infection.
+reference	0x1413e5b20	1	43	INFECTION	0x1413e60fe	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has succumbed to infection.
+reference	0x1413e5b20	1	44	MEMORIALIZE	0x1413e64d7	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been put to rest.
+reference	0x1413e5b20	1	44	MEMORIALIZE	0x1413e64d7	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been put to rest.
+reference	0x1413e5b20	1	44	MEMORIALIZE	0x1413e64d7	adventure-player	native cause suffix		You have been put to rest.
+reference	0x1413e5b20	1	44	MEMORIALIZE	0x1413e64d7	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been put to rest.
+reference	0x1413e5b20	1	45	SCARE	0x1413e5ebc	fortress-named	killer exists	actor=subject actor formatter, named identity; killer_actor=native full unit actor	{actor} has been scared to death by {killer_actor}!
+reference	0x1413e5b20	1	45	SCARE	0x1413e5ebc	fortress-named	killer absent	actor=subject actor formatter, named identity	{actor} has been scared to death!
+reference	0x1413e5b20	1	45	SCARE	0x1413e5ebc	fortress-unnamed	killer exists	actor=subject actor formatter, unnamed identity; killer_actor=native full unit actor	The {actor} has been scared to death by {killer_actor}!
+reference	0x1413e5b20	1	45	SCARE	0x1413e5ebc	fortress-unnamed	killer absent	actor=subject actor formatter, unnamed identity	The {actor} has been scared to death!
+reference	0x1413e5b20	1	45	SCARE	0x1413e5ebc	adventure-player	killer exists	killer_actor=native full unit actor	You have been scared to death by {killer_actor}!
+reference	0x1413e5b20	1	45	SCARE	0x1413e5ebc	adventure-player	killer absent		You have been scared to death!
+reference	0x1413e5b20	1	45	SCARE	0x1413e5ebc	adventure-other	killer exists	actor=subject pronoun/identity formatter, nonplayer; killer_actor=native full unit actor	{actor} has been scared to death by {killer_actor}!
+reference	0x1413e5b20	1	45	SCARE	0x1413e5ebc	adventure-other	killer absent	actor=subject pronoun/identity formatter, nonplayer	{actor} has been scared to death!
+reference	0x1413e5b20	1	46	DARKNESS	0x1413e5f84	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has died in the dark.
+reference	0x1413e5b20	1	46	DARKNESS	0x1413e5f84	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has died in the dark.
+reference	0x1413e5b20	1	46	DARKNESS	0x1413e5f84	adventure-player	native cause suffix		You have died in the dark.
+reference	0x1413e5b20	1	46	DARKNESS	0x1413e5f84	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has died in the dark.
+reference	0x1413e5b20	1	47	COLLAPSE	0x1413e6372	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has collapsed.
+reference	0x1413e5b20	1	47	COLLAPSE	0x1413e6372	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has collapsed.
+reference	0x1413e5b20	1	47	COLLAPSE	0x1413e6372	adventure-player	native cause suffix		You have collapsed.
+reference	0x1413e5b20	1	47	COLLAPSE	0x1413e6372	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has collapsed.
+reference	0x1413e5b20	1	48	DRAIN_BLOOD	0x1413e61ee	fortress-named	killer exists and (fortress or killer is not current adventure player)	actor=subject actor formatter, named identity; killer_name=unit+8 language_name	{actor} has been drained of blood by {killer_name}!
+reference	0x1413e5b20	1	48	DRAIN_BLOOD	0x1413e61ee	fortress-named	killer absent	actor=subject actor formatter, named identity	{actor} has been drained of blood by somebody!
+reference	0x1413e5b20	1	48	DRAIN_BLOOD	0x1413e61ee	fortress-unnamed	killer exists and (fortress or killer is not current adventure player)	actor=subject actor formatter, unnamed identity; killer_name=unit+8 language_name	The {actor} has been drained of blood by {killer_name}!
+reference	0x1413e5b20	1	48	DRAIN_BLOOD	0x1413e61ee	fortress-unnamed	killer absent	actor=subject actor formatter, unnamed identity	The {actor} has been drained of blood by somebody!
+reference	0x1413e5b20	1	48	DRAIN_BLOOD	0x1413e61ee	adventure-player	adventure and killer is current player		You have been drained of blood!
+reference	0x1413e5b20	1	48	DRAIN_BLOOD	0x1413e61ee	adventure-player	killer exists and (fortress or killer is not current adventure player)	killer_name=unit+8 language_name	You have been drained of blood by {killer_name}!
+reference	0x1413e5b20	1	48	DRAIN_BLOOD	0x1413e61ee	adventure-player	killer absent		You have been drained of blood by somebody!
+reference	0x1413e5b20	1	48	DRAIN_BLOOD	0x1413e61ee	adventure-other	adventure and killer is current player	actor=subject pronoun/identity formatter, nonplayer	{actor} has been drained of blood!
+reference	0x1413e5b20	1	48	DRAIN_BLOOD	0x1413e61ee	adventure-other	killer exists and (fortress or killer is not current adventure player)	actor=subject pronoun/identity formatter, nonplayer; killer_name=unit+8 language_name	{actor} has been drained of blood by {killer_name}!
+reference	0x1413e5b20	1	48	DRAIN_BLOOD	0x1413e61ee	adventure-other	killer absent	actor=subject pronoun/identity formatter, nonplayer	{actor} has been drained of blood by somebody!
+reference	0x1413e5b20	1	49	SLAUGHTER	0x1413e612e	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been slaughtered.
+reference	0x1413e5b20	1	49	SLAUGHTER	0x1413e612e	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been slaughtered.
+reference	0x1413e5b20	1	49	SLAUGHTER	0x1413e612e	adventure-player	native cause suffix		You have been slaughtered.
+reference	0x1413e5b20	1	49	SLAUGHTER	0x1413e612e	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been slaughtered.
+reference	0x1413e5b20	1	50	VEHICLE	0x1413e633c	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been killed by a vehicle.
+reference	0x1413e5b20	1	50	VEHICLE	0x1413e633c	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been killed by a vehicle.
+reference	0x1413e5b20	1	50	VEHICLE	0x1413e633c	adventure-player	native cause suffix		You have been killed by a vehicle.
+reference	0x1413e5b20	1	50	VEHICLE	0x1413e633c	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been killed by a vehicle.
+reference	0x1413e5b20	1	51	FALLING_OBJECT	0x1413e634e	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been killed by a flying object.
+reference	0x1413e5b20	1	51	FALLING_OBJECT	0x1413e634e	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been killed by a flying object.
+reference	0x1413e5b20	1	51	FALLING_OBJECT	0x1413e634e	adventure-player	native cause suffix		You have been killed by a flying object.
+reference	0x1413e5b20	1	51	FALLING_OBJECT	0x1413e634e	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been killed by a flying object.
+reference	0x1413e5b20	1	52	LEAPT_FROM_HEIGHT	0x1413e63a8	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has leapt from a great height.
+reference	0x1413e5b20	1	52	LEAPT_FROM_HEIGHT	0x1413e63a8	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has leapt from a great height.
+reference	0x1413e5b20	1	52	LEAPT_FROM_HEIGHT	0x1413e63a8	adventure-player	native cause suffix		You have leapt from a great height.
+reference	0x1413e5b20	1	52	LEAPT_FROM_HEIGHT	0x1413e63a8	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has leapt from a great height.
+reference	0x1413e5b20	1	53	DROWN_SELF	0x1413e63ba	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has drowned.
+reference	0x1413e5b20	1	53	DROWN_SELF	0x1413e63ba	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has drowned.
+reference	0x1413e5b20	1	53	DROWN_SELF	0x1413e63ba	adventure-player	native cause suffix		You have drowned.
+reference	0x1413e5b20	1	53	DROWN_SELF	0x1413e63ba	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has drowned.
+reference	0x1413e5b20	1	54	EXECUTION_GENERIC	0x1413e615e	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been executed.
+reference	0x1413e5b20	1	54	EXECUTION_GENERIC	0x1413e615e	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been executed.
+reference	0x1413e5b20	1	54	EXECUTION_GENERIC	0x1413e615e	adventure-player	native cause suffix		You have been executed.
+reference	0x1413e5b20	1	54	EXECUTION_GENERIC	0x1413e615e	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been executed.
+reference	0x1413e5b20	0	0	OLD_AGE	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	0	OLD_AGE	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	0	OLD_AGE	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	0	OLD_AGE	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	1	HUNGER	0x1413e6417	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found, starved to death.
+reference	0x1413e5b20	0	1	HUNGER	0x1413e6417	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found, starved to death.
+reference	0x1413e5b20	0	1	HUNGER	0x1413e6417	adventure-player	native cause suffix		You have been found, starved to death.
+reference	0x1413e5b20	0	1	HUNGER	0x1413e6417	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found, starved to death.
+reference	0x1413e5b20	0	2	THIRST	0x1413e6429	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, dehydrated.
+reference	0x1413e5b20	0	2	THIRST	0x1413e6429	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, dehydrated.
+reference	0x1413e5b20	0	2	THIRST	0x1413e6429	adventure-player	native cause suffix		You have been found dead, dehydrated.
+reference	0x1413e5b20	0	2	THIRST	0x1413e6429	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, dehydrated.
+reference	0x1413e5b20	0	3	SHOT	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	3	SHOT	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	3	SHOT	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	3	SHOT	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	4	BLEED	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	4	BLEED	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	4	BLEED	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	4	BLEED	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	5	DROWN	0x1413e643b	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, drowned.
+reference	0x1413e5b20	0	5	DROWN	0x1413e643b	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, drowned.
+reference	0x1413e5b20	0	5	DROWN	0x1413e643b	adventure-player	native cause suffix		You have been found dead, drowned.
+reference	0x1413e5b20	0	5	DROWN	0x1413e643b	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, drowned.
+reference	0x1413e5b20	0	6	SUFFOCATE	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	6	SUFFOCATE	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	6	SUFFOCATE	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	6	SUFFOCATE	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	7	STRUCK_DOWN	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	7	STRUCK_DOWN	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	7	STRUCK_DOWN	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	7	STRUCK_DOWN	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	8	SCUTTLE	0x1413e64b9	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found scuttled.
+reference	0x1413e5b20	0	8	SCUTTLE	0x1413e64b9	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found scuttled.
+reference	0x1413e5b20	0	8	SCUTTLE	0x1413e64b9	adventure-player	native cause suffix		You have been found scuttled.
+reference	0x1413e5b20	0	8	SCUTTLE	0x1413e64b9	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found scuttled.
+reference	0x1413e5b20	0	9	COLLISION	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	9	COLLISION	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	9	COLLISION	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	9	COLLISION	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	10	MAGMA	0x1413e644d	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, badly burned.
+reference	0x1413e5b20	0	10	MAGMA	0x1413e644d	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, badly burned.
+reference	0x1413e5b20	0	10	MAGMA	0x1413e644d	adventure-player	native cause suffix		You have been found dead, badly burned.
+reference	0x1413e5b20	0	10	MAGMA	0x1413e644d	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, badly burned.
+reference	0x1413e5b20	0	11	MAGMA_MIST	0x1413e644d	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, badly burned.
+reference	0x1413e5b20	0	11	MAGMA_MIST	0x1413e644d	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, badly burned.
+reference	0x1413e5b20	0	11	MAGMA_MIST	0x1413e644d	adventure-player	native cause suffix		You have been found dead, badly burned.
+reference	0x1413e5b20	0	11	MAGMA_MIST	0x1413e644d	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, badly burned.
+reference	0x1413e5b20	0	12	DRAGONFIRE	0x1413e644d	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, badly burned.
+reference	0x1413e5b20	0	12	DRAGONFIRE	0x1413e644d	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, badly burned.
+reference	0x1413e5b20	0	12	DRAGONFIRE	0x1413e644d	adventure-player	native cause suffix		You have been found dead, badly burned.
+reference	0x1413e5b20	0	12	DRAGONFIRE	0x1413e644d	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, badly burned.
+reference	0x1413e5b20	0	13	FIRE	0x1413e644d	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, badly burned.
+reference	0x1413e5b20	0	13	FIRE	0x1413e644d	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, badly burned.
+reference	0x1413e5b20	0	13	FIRE	0x1413e644d	adventure-player	native cause suffix		You have been found dead, badly burned.
+reference	0x1413e5b20	0	13	FIRE	0x1413e644d	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, badly burned.
+reference	0x1413e5b20	0	14	SCALD	0x1413e644d	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, badly burned.
+reference	0x1413e5b20	0	14	SCALD	0x1413e644d	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, badly burned.
+reference	0x1413e5b20	0	14	SCALD	0x1413e644d	adventure-player	native cause suffix		You have been found dead, badly burned.
+reference	0x1413e5b20	0	14	SCALD	0x1413e644d	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, badly burned.
+reference	0x1413e5b20	0	15	CAVEIN	0x1413e64aa	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, badly crushed.
+reference	0x1413e5b20	0	15	CAVEIN	0x1413e64aa	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, badly crushed.
+reference	0x1413e5b20	0	15	CAVEIN	0x1413e64aa	adventure-player	native cause suffix		You have been found dead, badly crushed.
+reference	0x1413e5b20	0	15	CAVEIN	0x1413e64aa	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, badly crushed.
+reference	0x1413e5b20	0	16	DRAWBRIDGE	0x1413e64aa	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, badly crushed.
+reference	0x1413e5b20	0	16	DRAWBRIDGE	0x1413e64aa	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, badly crushed.
+reference	0x1413e5b20	0	16	DRAWBRIDGE	0x1413e64aa	adventure-player	native cause suffix		You have been found dead, badly crushed.
+reference	0x1413e5b20	0	16	DRAWBRIDGE	0x1413e64aa	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, badly crushed.
+reference	0x1413e5b20	0	17	FALLING_ROCKS	0x1413e64aa	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, badly crushed.
+reference	0x1413e5b20	0	17	FALLING_ROCKS	0x1413e64aa	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, badly crushed.
+reference	0x1413e5b20	0	17	FALLING_ROCKS	0x1413e64aa	adventure-player	native cause suffix		You have been found dead, badly crushed.
+reference	0x1413e5b20	0	17	FALLING_ROCKS	0x1413e64aa	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, badly crushed.
+reference	0x1413e5b20	0	18	CHASM	0x1413e63e1	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has fallen into a deep chasm.
+reference	0x1413e5b20	0	18	CHASM	0x1413e63e1	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has fallen into a deep chasm.
+reference	0x1413e5b20	0	18	CHASM	0x1413e63e1	adventure-player	native cause suffix		You have fallen into a deep chasm.
+reference	0x1413e5b20	0	18	CHASM	0x1413e63e1	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has fallen into a deep chasm.
+reference	0x1413e5b20	0	19	CAGE	0x1413e5e98	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has died in a cage.
+reference	0x1413e5b20	0	19	CAGE	0x1413e5e98	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has died in a cage.
+reference	0x1413e5b20	0	19	CAGE	0x1413e5e98	adventure-player	native cause suffix		You have died in a cage.
+reference	0x1413e5b20	0	19	CAGE	0x1413e5e98	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has died in a cage.
+reference	0x1413e5b20	0	20	MURDER	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	20	MURDER	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	20	MURDER	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	20	MURDER	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	21	TRAP	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	21	TRAP	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	21	TRAP	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	21	TRAP	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	22	VANISH	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	22	VANISH	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	22	VANISH	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	22	VANISH	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	23	QUIT	0x1413e64ed	fortress-named	no authored cause suffix	actor=subject actor formatter, named identity	{actor} has 
+reference	0x1413e5b20	0	23	QUIT	0x1413e64ed	fortress-unnamed	no authored cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has 
+reference	0x1413e5b20	0	23	QUIT	0x1413e64ed	adventure-player	no authored cause suffix		You have 
+reference	0x1413e5b20	0	23	QUIT	0x1413e64ed	adventure-other	no authored cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has 
+reference	0x1413e5b20	0	24	ABANDON	0x1413e64ed	fortress-named	no authored cause suffix	actor=subject actor formatter, named identity	{actor} has 
+reference	0x1413e5b20	0	24	ABANDON	0x1413e64ed	fortress-unnamed	no authored cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has 
+reference	0x1413e5b20	0	24	ABANDON	0x1413e64ed	adventure-player	no authored cause suffix		You have 
+reference	0x1413e5b20	0	24	ABANDON	0x1413e64ed	adventure-other	no authored cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has 
+reference	0x1413e5b20	0	25	HEAT	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	25	HEAT	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	25	HEAT	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	25	HEAT	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	26	COLD	0x1413e649b	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, frozen.
+reference	0x1413e5b20	0	26	COLD	0x1413e649b	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, frozen.
+reference	0x1413e5b20	0	26	COLD	0x1413e649b	adventure-player	native cause suffix		You have been found dead, frozen.
+reference	0x1413e5b20	0	26	COLD	0x1413e649b	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, frozen.
+reference	0x1413e5b20	0	27	SPIKE	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	27	SPIKE	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	27	SPIKE	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	27	SPIKE	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	28	ENCASE_LAVA	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	28	ENCASE_LAVA	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	28	ENCASE_LAVA	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	28	ENCASE_LAVA	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	29	ENCASE_MAGMA	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	29	ENCASE_MAGMA	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	29	ENCASE_MAGMA	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	29	ENCASE_MAGMA	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	30	ENCASE_ICE	0x1413e649b	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, frozen.
+reference	0x1413e5b20	0	30	ENCASE_ICE	0x1413e649b	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, frozen.
+reference	0x1413e5b20	0	30	ENCASE_ICE	0x1413e649b	adventure-player	native cause suffix		You have been found dead, frozen.
+reference	0x1413e5b20	0	30	ENCASE_ICE	0x1413e649b	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, frozen.
+reference	0x1413e5b20	0	31	BEHEAD	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	31	BEHEAD	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	31	BEHEAD	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	31	BEHEAD	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	32	CRUCIFY	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	32	CRUCIFY	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	32	CRUCIFY	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	32	CRUCIFY	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	33	BURY_ALIVE	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	33	BURY_ALIVE	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	33	BURY_ALIVE	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	33	BURY_ALIVE	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	34	DROWN_BY	0x1413e643b	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, drowned.
+reference	0x1413e5b20	0	34	DROWN_BY	0x1413e643b	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, drowned.
+reference	0x1413e5b20	0	34	DROWN_BY	0x1413e643b	adventure-player	native cause suffix		You have been found dead, drowned.
+reference	0x1413e5b20	0	34	DROWN_BY	0x1413e643b	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, drowned.
+reference	0x1413e5b20	0	35	BURN_ALIVE	0x1413e644d	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, badly burned.
+reference	0x1413e5b20	0	35	BURN_ALIVE	0x1413e644d	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, badly burned.
+reference	0x1413e5b20	0	35	BURN_ALIVE	0x1413e644d	adventure-player	native cause suffix		You have been found dead, badly burned.
+reference	0x1413e5b20	0	35	BURN_ALIVE	0x1413e644d	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, badly burned.
+reference	0x1413e5b20	0	36	FEED_TO_BEASTS	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	36	FEED_TO_BEASTS	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	36	FEED_TO_BEASTS	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	36	FEED_TO_BEASTS	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	37	HACK_TO_PIECES	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	37	HACK_TO_PIECES	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	37	HACK_TO_PIECES	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	37	HACK_TO_PIECES	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	38	LEAVE_OUT_IN_AIR	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	38	LEAVE_OUT_IN_AIR	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	38	LEAVE_OUT_IN_AIR	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	38	LEAVE_OUT_IN_AIR	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	39	BOIL	0x1413e645f	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found boiled.
+reference	0x1413e5b20	0	39	BOIL	0x1413e645f	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found boiled.
+reference	0x1413e5b20	0	39	BOIL	0x1413e645f	adventure-player	native cause suffix		You have been found boiled.
+reference	0x1413e5b20	0	39	BOIL	0x1413e645f	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found boiled.
+reference	0x1413e5b20	0	40	MELT	0x1413e646e	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found melted.
+reference	0x1413e5b20	0	40	MELT	0x1413e646e	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found melted.
+reference	0x1413e5b20	0	40	MELT	0x1413e646e	adventure-player	native cause suffix		You have been found melted.
+reference	0x1413e5b20	0	40	MELT	0x1413e646e	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found melted.
+reference	0x1413e5b20	0	41	CONDENSE	0x1413e647d	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found condensed.
+reference	0x1413e5b20	0	41	CONDENSE	0x1413e647d	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found condensed.
+reference	0x1413e5b20	0	41	CONDENSE	0x1413e647d	adventure-player	native cause suffix		You have been found condensed.
+reference	0x1413e5b20	0	41	CONDENSE	0x1413e647d	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found condensed.
+reference	0x1413e5b20	0	42	SOLIDIFY	0x1413e648c	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found solidified.
+reference	0x1413e5b20	0	42	SOLIDIFY	0x1413e648c	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found solidified.
+reference	0x1413e5b20	0	42	SOLIDIFY	0x1413e648c	adventure-player	native cause suffix		You have been found solidified.
+reference	0x1413e5b20	0	42	SOLIDIFY	0x1413e648c	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found solidified.
+reference	0x1413e5b20	0	43	INFECTION	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	43	INFECTION	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	43	INFECTION	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	43	INFECTION	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	44	MEMORIALIZE	0x1413e64d7	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been put to rest.
+reference	0x1413e5b20	0	44	MEMORIALIZE	0x1413e64d7	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been put to rest.
+reference	0x1413e5b20	0	44	MEMORIALIZE	0x1413e64d7	adventure-player	native cause suffix		You have been put to rest.
+reference	0x1413e5b20	0	44	MEMORIALIZE	0x1413e64d7	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been put to rest.
+reference	0x1413e5b20	0	45	SCARE	0x1413e6405	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, contorted in fear!
+reference	0x1413e5b20	0	45	SCARE	0x1413e6405	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, contorted in fear!
+reference	0x1413e5b20	0	45	SCARE	0x1413e6405	adventure-player	native cause suffix		You have been found dead, contorted in fear!
+reference	0x1413e5b20	0	45	SCARE	0x1413e6405	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, contorted in fear!
+reference	0x1413e5b20	0	46	DARKNESS	0x1413e5f84	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has died in the dark.
+reference	0x1413e5b20	0	46	DARKNESS	0x1413e5f84	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has died in the dark.
+reference	0x1413e5b20	0	46	DARKNESS	0x1413e5f84	adventure-player	native cause suffix		You have died in the dark.
+reference	0x1413e5b20	0	46	DARKNESS	0x1413e5f84	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has died in the dark.
+reference	0x1413e5b20	0	47	COLLAPSE	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	47	COLLAPSE	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	47	COLLAPSE	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	47	COLLAPSE	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	48	DRAIN_BLOOD	0x1413e64c8	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, completely drained of blood!
+reference	0x1413e5b20	0	48	DRAIN_BLOOD	0x1413e64c8	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, completely drained of blood!
+reference	0x1413e5b20	0	48	DRAIN_BLOOD	0x1413e64c8	adventure-player	native cause suffix		You have been found dead, completely drained of blood!
+reference	0x1413e5b20	0	48	DRAIN_BLOOD	0x1413e64c8	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, completely drained of blood!
+reference	0x1413e5b20	0	49	SLAUGHTER	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	49	SLAUGHTER	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	49	SLAUGHTER	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	49	SLAUGHTER	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	50	VEHICLE	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	50	VEHICLE	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	50	VEHICLE	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	50	VEHICLE	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	51	FALLING_OBJECT	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	51	FALLING_OBJECT	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	51	FALLING_OBJECT	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	51	FALLING_OBJECT	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	52	LEAPT_FROM_HEIGHT	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	52	LEAPT_FROM_HEIGHT	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	52	LEAPT_FROM_HEIGHT	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	52	LEAPT_FROM_HEIGHT	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+reference	0x1413e5b20	0	53	DROWN_SELF	0x1413e643b	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, drowned.
+reference	0x1413e5b20	0	53	DROWN_SELF	0x1413e643b	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, drowned.
+reference	0x1413e5b20	0	53	DROWN_SELF	0x1413e643b	adventure-player	native cause suffix		You have been found dead, drowned.
+reference	0x1413e5b20	0	53	DROWN_SELF	0x1413e643b	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, drowned.
+reference	0x1413e5b20	0	54	EXECUTION_GENERIC	0x1413e63f3	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+reference	0x1413e5b20	0	54	EXECUTION_GENERIC	0x1413e63f3	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+reference	0x1413e5b20	0	54	EXECUTION_GENERIC	0x1413e63f3	adventure-player	native cause suffix		You have been found dead.
+reference	0x1413e5b20	0	54	EXECUTION_GENERIC	0x1413e63f3	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	1	0	OLD_AGE	0x1413e0e1a	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has died of old age.
+classic	0x1413e0a90	1	0	OLD_AGE	0x1413e0e1a	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has died of old age.
+classic	0x1413e0a90	1	0	OLD_AGE	0x1413e0e1a	adventure-player	native cause suffix		You have died of old age.
+classic	0x1413e0a90	1	0	OLD_AGE	0x1413e0e1a	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has died of old age.
+classic	0x1413e0a90	1	1	HUNGER	0x1413e0f00	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has starved to death.
+classic	0x1413e0a90	1	1	HUNGER	0x1413e0f00	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has starved to death.
+classic	0x1413e0a90	1	1	HUNGER	0x1413e0f00	adventure-player	native cause suffix		You have starved to death.
+classic	0x1413e0a90	1	1	HUNGER	0x1413e0f00	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has starved to death.
+classic	0x1413e0a90	1	2	THIRST	0x1413e0f0c	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has died of thirst.
+classic	0x1413e0a90	1	2	THIRST	0x1413e0f0c	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has died of thirst.
+classic	0x1413e0a90	1	2	THIRST	0x1413e0f0c	adventure-player	native cause suffix		You have died of thirst.
+classic	0x1413e0a90	1	2	THIRST	0x1413e0f0c	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has died of thirst.
+classic	0x1413e0a90	1	3	SHOT	0x1413e104a	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been shot and killed.
+classic	0x1413e0a90	1	3	SHOT	0x1413e104a	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been shot and killed.
+classic	0x1413e0a90	1	3	SHOT	0x1413e104a	adventure-player	native cause suffix		You have been shot and killed.
+classic	0x1413e0a90	1	3	SHOT	0x1413e104a	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been shot and killed.
+classic	0x1413e0a90	1	4	BLEED	0x1413e105c	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has bled to death.
+classic	0x1413e0a90	1	4	BLEED	0x1413e105c	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has bled to death.
+classic	0x1413e0a90	1	4	BLEED	0x1413e105c	adventure-player	native cause suffix		You have bled to death.
+classic	0x1413e0a90	1	4	BLEED	0x1413e105c	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has bled to death.
+classic	0x1413e0a90	1	5	DROWN	0x1413e132a	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has drowned.
+classic	0x1413e0a90	1	5	DROWN	0x1413e132a	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has drowned.
+classic	0x1413e0a90	1	5	DROWN	0x1413e132a	adventure-player	native cause suffix		You have drowned.
+classic	0x1413e0a90	1	5	DROWN	0x1413e132a	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has drowned.
+classic	0x1413e0a90	1	6	SUFFOCATE	0x1413e1080	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has suffocated.
+classic	0x1413e0a90	1	6	SUFFOCATE	0x1413e1080	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has suffocated.
+classic	0x1413e0a90	1	6	SUFFOCATE	0x1413e1080	adventure-player	native cause suffix		You have suffocated.
+classic	0x1413e0a90	1	6	SUFFOCATE	0x1413e1080	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has suffocated.
+classic	0x1413e0a90	1	7	STRUCK_DOWN	0x1413e1092	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been struck down.
+classic	0x1413e0a90	1	7	STRUCK_DOWN	0x1413e1092	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been struck down.
+classic	0x1413e0a90	1	7	STRUCK_DOWN	0x1413e1092	adventure-player	native cause suffix		You have been struck down.
+classic	0x1413e0a90	1	7	STRUCK_DOWN	0x1413e1092	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been struck down.
+classic	0x1413e0a90	1	8	SCUTTLE	0x1413e10aa	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been scuttled.
+classic	0x1413e0a90	1	8	SCUTTLE	0x1413e10aa	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been scuttled.
+classic	0x1413e0a90	1	8	SCUTTLE	0x1413e10aa	adventure-player	native cause suffix		You have been scuttled.
+classic	0x1413e0a90	1	8	SCUTTLE	0x1413e10aa	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been scuttled.
+classic	0x1413e0a90	1	9	COLLISION	0x1413e12f4	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has died after colliding with an obstacle.
+classic	0x1413e0a90	1	9	COLLISION	0x1413e12f4	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has died after colliding with an obstacle.
+classic	0x1413e0a90	1	9	COLLISION	0x1413e12f4	adventure-player	native cause suffix		You have died after colliding with an obstacle.
+classic	0x1413e0a90	1	9	COLLISION	0x1413e12f4	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has died after colliding with an obstacle.
+classic	0x1413e0a90	1	10	MAGMA	0x1413e0f1e	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has burned up in magma.
+classic	0x1413e0a90	1	10	MAGMA	0x1413e0f1e	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has burned up in magma.
+classic	0x1413e0a90	1	10	MAGMA	0x1413e0f1e	adventure-player	native cause suffix		You have burned up in magma.
+classic	0x1413e0a90	1	10	MAGMA	0x1413e0f1e	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has burned up in magma.
+classic	0x1413e0a90	1	11	MAGMA_MIST	0x1413e1002	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has burned up in a magma mist.
+classic	0x1413e0a90	1	11	MAGMA_MIST	0x1413e1002	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has burned up in a magma mist.
+classic	0x1413e0a90	1	11	MAGMA_MIST	0x1413e1002	adventure-player	native cause suffix		You have burned up in a magma mist.
+classic	0x1413e0a90	1	11	MAGMA_MIST	0x1413e1002	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has burned up in a magma mist.
+classic	0x1413e0a90	1	12	DRAGONFIRE	0x1413e0f30	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has burned up in dragon fire.
+classic	0x1413e0a90	1	12	DRAGONFIRE	0x1413e0f30	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has burned up in dragon fire.
+classic	0x1413e0a90	1	12	DRAGONFIRE	0x1413e0f30	adventure-player	native cause suffix		You have burned up in dragon fire.
+classic	0x1413e0a90	1	12	DRAGONFIRE	0x1413e0f30	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has burned up in dragon fire.
+classic	0x1413e0a90	1	13	FIRE	0x1413e0fde	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has burned to death.
+classic	0x1413e0a90	1	13	FIRE	0x1413e0fde	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has burned to death.
+classic	0x1413e0a90	1	13	FIRE	0x1413e0fde	adventure-player	native cause suffix		You have burned to death.
+classic	0x1413e0a90	1	13	FIRE	0x1413e0fde	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has burned to death.
+classic	0x1413e0a90	1	14	SCALD	0x1413e0ff0	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been scalded to death.
+classic	0x1413e0a90	1	14	SCALD	0x1413e0ff0	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been scalded to death.
+classic	0x1413e0a90	1	14	SCALD	0x1413e0ff0	adventure-player	native cause suffix		You have been scalded to death.
+classic	0x1413e0a90	1	14	SCALD	0x1413e0ff0	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been scalded to death.
+classic	0x1413e0a90	1	15	CAVEIN	0x1413e1026	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been crushed under the collapsing ceiling.
+classic	0x1413e0a90	1	15	CAVEIN	0x1413e1026	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been crushed under the collapsing ceiling.
+classic	0x1413e0a90	1	15	CAVEIN	0x1413e1026	adventure-player	native cause suffix		You have been crushed under the collapsing ceiling.
+classic	0x1413e0a90	1	15	CAVEIN	0x1413e1026	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been crushed under the collapsing ceiling.
+classic	0x1413e0a90	1	16	DRAWBRIDGE	0x1413e1014	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been crushed by a drawbridge.
+classic	0x1413e0a90	1	16	DRAWBRIDGE	0x1413e1014	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been crushed by a drawbridge.
+classic	0x1413e0a90	1	16	DRAWBRIDGE	0x1413e1014	adventure-player	native cause suffix		You have been crushed by a drawbridge.
+classic	0x1413e0a90	1	16	DRAWBRIDGE	0x1413e1014	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been crushed by a drawbridge.
+classic	0x1413e0a90	1	17	FALLING_ROCKS	0x1413e1038	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been killed by falling rocks.
+classic	0x1413e0a90	1	17	FALLING_ROCKS	0x1413e1038	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been killed by falling rocks.
+classic	0x1413e0a90	1	17	FALLING_ROCKS	0x1413e1038	adventure-player	native cause suffix		You have been killed by falling rocks.
+classic	0x1413e0a90	1	17	FALLING_ROCKS	0x1413e1038	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been killed by falling rocks.
+classic	0x1413e0a90	1	18	CHASM	0x1413e1351	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has fallen into a deep chasm.
+classic	0x1413e0a90	1	18	CHASM	0x1413e1351	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has fallen into a deep chasm.
+classic	0x1413e0a90	1	18	CHASM	0x1413e1351	adventure-player	native cause suffix		You have fallen into a deep chasm.
+classic	0x1413e0a90	1	18	CHASM	0x1413e1351	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has fallen into a deep chasm.
+classic	0x1413e0a90	1	19	CAGE	0x1413e0e08	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has died in a cage.
+classic	0x1413e0a90	1	19	CAGE	0x1413e0e08	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has died in a cage.
+classic	0x1413e0a90	1	19	CAGE	0x1413e0e08	adventure-player	native cause suffix		You have died in a cage.
+classic	0x1413e0a90	1	19	CAGE	0x1413e0e08	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has died in a cage.
+classic	0x1413e0a90	1	20	MURDER	0x1413e11fc	fortress-named	killer exists	actor=subject actor formatter, named identity; killer_name=unit+8 language_name	{actor} has been murdered by {killer_name}!
+classic	0x1413e0a90	1	20	MURDER	0x1413e11fc	fortress-named	killer absent	actor=subject actor formatter, named identity	{actor} has been murdered by somebody!
+classic	0x1413e0a90	1	20	MURDER	0x1413e11fc	fortress-unnamed	killer exists	actor=subject actor formatter, unnamed identity; killer_name=unit+8 language_name	The {actor} has been murdered by {killer_name}!
+classic	0x1413e0a90	1	20	MURDER	0x1413e11fc	fortress-unnamed	killer absent	actor=subject actor formatter, unnamed identity	The {actor} has been murdered by somebody!
+classic	0x1413e0a90	1	20	MURDER	0x1413e11fc	adventure-player	killer exists	killer_name=unit+8 language_name	You have been murdered by {killer_name}!
+classic	0x1413e0a90	1	20	MURDER	0x1413e11fc	adventure-player	killer absent		You have been murdered by somebody!
+classic	0x1413e0a90	1	20	MURDER	0x1413e11fc	adventure-other	killer exists	actor=subject pronoun/identity formatter, nonplayer; killer_name=unit+8 language_name	{actor} has been murdered by {killer_name}!
+classic	0x1413e0a90	1	20	MURDER	0x1413e11fc	adventure-other	killer absent	actor=subject pronoun/identity formatter, nonplayer	{actor} has been murdered by somebody!
+classic	0x1413e0a90	1	21	TRAP	0x1413e129a	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been killed by a trap.
+classic	0x1413e0a90	1	21	TRAP	0x1413e129a	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been killed by a trap.
+classic	0x1413e0a90	1	21	TRAP	0x1413e129a	adventure-player	native cause suffix		You have been killed by a trap.
+classic	0x1413e0a90	1	21	TRAP	0x1413e129a	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been killed by a trap.
+classic	0x1413e0a90	1	22	VANISH	0x1413e12d0	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has vanished.
+classic	0x1413e0a90	1	22	VANISH	0x1413e12d0	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has vanished.
+classic	0x1413e0a90	1	22	VANISH	0x1413e12d0	adventure-player	native cause suffix		You have vanished.
+classic	0x1413e0a90	1	22	VANISH	0x1413e12d0	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has vanished.
+classic	0x1413e0a90	1	23	QUIT	0x1413e145d	fortress-named	no authored cause suffix	actor=subject actor formatter, named identity	{actor} has 
+classic	0x1413e0a90	1	23	QUIT	0x1413e145d	fortress-unnamed	no authored cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has 
+classic	0x1413e0a90	1	23	QUIT	0x1413e145d	adventure-player	no authored cause suffix		You have 
+classic	0x1413e0a90	1	23	QUIT	0x1413e145d	adventure-other	no authored cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has 
+classic	0x1413e0a90	1	24	ABANDON	0x1413e145d	fortress-named	no authored cause suffix	actor=subject actor formatter, named identity	{actor} has 
+classic	0x1413e0a90	1	24	ABANDON	0x1413e145d	fortress-unnamed	no authored cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has 
+classic	0x1413e0a90	1	24	ABANDON	0x1413e145d	adventure-player	no authored cause suffix		You have 
+classic	0x1413e0a90	1	24	ABANDON	0x1413e145d	adventure-other	no authored cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has 
+classic	0x1413e0a90	1	25	HEAT	0x1413e0f8a	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has died in the heat.
+classic	0x1413e0a90	1	25	HEAT	0x1413e0f8a	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has died in the heat.
+classic	0x1413e0a90	1	25	HEAT	0x1413e0f8a	adventure-player	native cause suffix		You have died in the heat.
+classic	0x1413e0a90	1	25	HEAT	0x1413e0f8a	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has died in the heat.
+classic	0x1413e0a90	1	26	COLD	0x1413e0fcc	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has frozen to death.
+classic	0x1413e0a90	1	26	COLD	0x1413e0fcc	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has frozen to death.
+classic	0x1413e0a90	1	26	COLD	0x1413e0fcc	adventure-player	native cause suffix		You have frozen to death.
+classic	0x1413e0a90	1	26	COLD	0x1413e0fcc	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has frozen to death.
+classic	0x1413e0a90	1	27	SPIKE	0x1413e1306	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been impaled on spikes.
+classic	0x1413e0a90	1	27	SPIKE	0x1413e1306	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been impaled on spikes.
+classic	0x1413e0a90	1	27	SPIKE	0x1413e1306	adventure-player	native cause suffix		You have been impaled on spikes.
+classic	0x1413e0a90	1	27	SPIKE	0x1413e1306	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been impaled on spikes.
+classic	0x1413e0a90	1	28	ENCASE_LAVA	0x1413e0f96	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been encased in cooling lava.
+classic	0x1413e0a90	1	28	ENCASE_LAVA	0x1413e0f96	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been encased in cooling lava.
+classic	0x1413e0a90	1	28	ENCASE_LAVA	0x1413e0f96	adventure-player	native cause suffix		You have been encased in cooling lava.
+classic	0x1413e0a90	1	28	ENCASE_LAVA	0x1413e0f96	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been encased in cooling lava.
+classic	0x1413e0a90	1	29	ENCASE_MAGMA	0x1413e0fa8	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been encased in cooling magma.
+classic	0x1413e0a90	1	29	ENCASE_MAGMA	0x1413e0fa8	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been encased in cooling magma.
+classic	0x1413e0a90	1	29	ENCASE_MAGMA	0x1413e0fa8	adventure-player	native cause suffix		You have been encased in cooling magma.
+classic	0x1413e0a90	1	29	ENCASE_MAGMA	0x1413e0fa8	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been encased in cooling magma.
+classic	0x1413e0a90	1	30	ENCASE_ICE	0x1413e0fba	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been encased in ice.
+classic	0x1413e0a90	1	30	ENCASE_ICE	0x1413e0fba	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been encased in ice.
+classic	0x1413e0a90	1	30	ENCASE_ICE	0x1413e0fba	adventure-player	native cause suffix		You have been encased in ice.
+classic	0x1413e0a90	1	30	ENCASE_ICE	0x1413e0fba	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been encased in ice.
+classic	0x1413e0a90	1	31	BEHEAD	0x1413e10e0	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been beheaded.
+classic	0x1413e0a90	1	31	BEHEAD	0x1413e10e0	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been beheaded.
+classic	0x1413e0a90	1	31	BEHEAD	0x1413e10e0	adventure-player	native cause suffix		You have been beheaded.
+classic	0x1413e0a90	1	31	BEHEAD	0x1413e10e0	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been beheaded.
+classic	0x1413e0a90	1	32	CRUCIFY	0x1413e10f2	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been crucified.
+classic	0x1413e0a90	1	32	CRUCIFY	0x1413e10f2	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been crucified.
+classic	0x1413e0a90	1	32	CRUCIFY	0x1413e10f2	adventure-player	native cause suffix		You have been crucified.
+classic	0x1413e0a90	1	32	CRUCIFY	0x1413e10f2	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been crucified.
+classic	0x1413e0a90	1	33	BURY_ALIVE	0x1413e1104	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been buried alive.
+classic	0x1413e0a90	1	33	BURY_ALIVE	0x1413e1104	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been buried alive.
+classic	0x1413e0a90	1	33	BURY_ALIVE	0x1413e1104	adventure-player	native cause suffix		You have been buried alive.
+classic	0x1413e0a90	1	33	BURY_ALIVE	0x1413e1104	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been buried alive.
+classic	0x1413e0a90	1	34	DROWN_BY	0x1413e1128	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been executed by drowning.
+classic	0x1413e0a90	1	34	DROWN_BY	0x1413e1128	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been executed by drowning.
+classic	0x1413e0a90	1	34	DROWN_BY	0x1413e1128	adventure-player	native cause suffix		You have been executed by drowning.
+classic	0x1413e0a90	1	34	DROWN_BY	0x1413e1128	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been executed by drowning.
+classic	0x1413e0a90	1	35	BURN_ALIVE	0x1413e113a	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been burned alive.
+classic	0x1413e0a90	1	35	BURN_ALIVE	0x1413e113a	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been burned alive.
+classic	0x1413e0a90	1	35	BURN_ALIVE	0x1413e113a	adventure-player	native cause suffix		You have been burned alive.
+classic	0x1413e0a90	1	35	BURN_ALIVE	0x1413e113a	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been burned alive.
+classic	0x1413e0a90	1	36	FEED_TO_BEASTS	0x1413e114c	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been fed to beasts.
+classic	0x1413e0a90	1	36	FEED_TO_BEASTS	0x1413e114c	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been fed to beasts.
+classic	0x1413e0a90	1	36	FEED_TO_BEASTS	0x1413e114c	adventure-player	native cause suffix		You have been fed to beasts.
+classic	0x1413e0a90	1	36	FEED_TO_BEASTS	0x1413e114c	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been fed to beasts.
+classic	0x1413e0a90	1	37	HACK_TO_PIECES	0x1413e10bc	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been hacked to pieces.
+classic	0x1413e0a90	1	37	HACK_TO_PIECES	0x1413e10bc	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been hacked to pieces.
+classic	0x1413e0a90	1	37	HACK_TO_PIECES	0x1413e10bc	adventure-player	native cause suffix		You have been hacked to pieces.
+classic	0x1413e0a90	1	37	HACK_TO_PIECES	0x1413e10bc	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been hacked to pieces.
+classic	0x1413e0a90	1	38	LEAVE_OUT_IN_AIR	0x1413e1116	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been executed by being left out in the air.
+classic	0x1413e0a90	1	38	LEAVE_OUT_IN_AIR	0x1413e1116	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been executed by being left out in the air.
+classic	0x1413e0a90	1	38	LEAVE_OUT_IN_AIR	0x1413e1116	adventure-player	native cause suffix		You have been executed by being left out in the air.
+classic	0x1413e0a90	1	38	LEAVE_OUT_IN_AIR	0x1413e1116	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been executed by being left out in the air.
+classic	0x1413e0a90	1	39	BOIL	0x1413e0f42	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has boiled.
+classic	0x1413e0a90	1	39	BOIL	0x1413e0f42	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has boiled.
+classic	0x1413e0a90	1	39	BOIL	0x1413e0f42	adventure-player	native cause suffix		You have boiled.
+classic	0x1413e0a90	1	39	BOIL	0x1413e0f42	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has boiled.
+classic	0x1413e0a90	1	40	MELT	0x1413e0f54	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has melted.
+classic	0x1413e0a90	1	40	MELT	0x1413e0f54	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has melted.
+classic	0x1413e0a90	1	40	MELT	0x1413e0f54	adventure-player	native cause suffix		You have melted.
+classic	0x1413e0a90	1	40	MELT	0x1413e0f54	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has melted.
+classic	0x1413e0a90	1	41	CONDENSE	0x1413e0f66	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has condensed.
+classic	0x1413e0a90	1	41	CONDENSE	0x1413e0f66	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has condensed.
+classic	0x1413e0a90	1	41	CONDENSE	0x1413e0f66	adventure-player	native cause suffix		You have condensed.
+classic	0x1413e0a90	1	41	CONDENSE	0x1413e0f66	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has condensed.
+classic	0x1413e0a90	1	42	SOLIDIFY	0x1413e0f78	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has solidified.
+classic	0x1413e0a90	1	42	SOLIDIFY	0x1413e0f78	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has solidified.
+classic	0x1413e0a90	1	42	SOLIDIFY	0x1413e0f78	adventure-player	native cause suffix		You have solidified.
+classic	0x1413e0a90	1	42	SOLIDIFY	0x1413e0f78	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has solidified.
+classic	0x1413e0a90	1	43	INFECTION	0x1413e106e	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has succumbed to infection.
+classic	0x1413e0a90	1	43	INFECTION	0x1413e106e	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has succumbed to infection.
+classic	0x1413e0a90	1	43	INFECTION	0x1413e106e	adventure-player	native cause suffix		You have succumbed to infection.
+classic	0x1413e0a90	1	43	INFECTION	0x1413e106e	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has succumbed to infection.
+classic	0x1413e0a90	1	44	MEMORIALIZE	0x1413e1447	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been put to rest.
+classic	0x1413e0a90	1	44	MEMORIALIZE	0x1413e1447	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been put to rest.
+classic	0x1413e0a90	1	44	MEMORIALIZE	0x1413e1447	adventure-player	native cause suffix		You have been put to rest.
+classic	0x1413e0a90	1	44	MEMORIALIZE	0x1413e1447	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been put to rest.
+classic	0x1413e0a90	1	45	SCARE	0x1413e0e2c	fortress-named	killer exists	actor=subject actor formatter, named identity; killer_actor=native full unit actor	{actor} has been scared to death by {killer_actor}!
+classic	0x1413e0a90	1	45	SCARE	0x1413e0e2c	fortress-named	killer absent	actor=subject actor formatter, named identity	{actor} has been scared to death!
+classic	0x1413e0a90	1	45	SCARE	0x1413e0e2c	fortress-unnamed	killer exists	actor=subject actor formatter, unnamed identity; killer_actor=native full unit actor	The {actor} has been scared to death by {killer_actor}!
+classic	0x1413e0a90	1	45	SCARE	0x1413e0e2c	fortress-unnamed	killer absent	actor=subject actor formatter, unnamed identity	The {actor} has been scared to death!
+classic	0x1413e0a90	1	45	SCARE	0x1413e0e2c	adventure-player	killer exists	killer_actor=native full unit actor	You have been scared to death by {killer_actor}!
+classic	0x1413e0a90	1	45	SCARE	0x1413e0e2c	adventure-player	killer absent		You have been scared to death!
+classic	0x1413e0a90	1	45	SCARE	0x1413e0e2c	adventure-other	killer exists	actor=subject pronoun/identity formatter, nonplayer; killer_actor=native full unit actor	{actor} has been scared to death by {killer_actor}!
+classic	0x1413e0a90	1	45	SCARE	0x1413e0e2c	adventure-other	killer absent	actor=subject pronoun/identity formatter, nonplayer	{actor} has been scared to death!
+classic	0x1413e0a90	1	46	DARKNESS	0x1413e0ef4	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has died in the dark.
+classic	0x1413e0a90	1	46	DARKNESS	0x1413e0ef4	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has died in the dark.
+classic	0x1413e0a90	1	46	DARKNESS	0x1413e0ef4	adventure-player	native cause suffix		You have died in the dark.
+classic	0x1413e0a90	1	46	DARKNESS	0x1413e0ef4	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has died in the dark.
+classic	0x1413e0a90	1	47	COLLAPSE	0x1413e12e2	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has collapsed.
+classic	0x1413e0a90	1	47	COLLAPSE	0x1413e12e2	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has collapsed.
+classic	0x1413e0a90	1	47	COLLAPSE	0x1413e12e2	adventure-player	native cause suffix		You have collapsed.
+classic	0x1413e0a90	1	47	COLLAPSE	0x1413e12e2	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has collapsed.
+classic	0x1413e0a90	1	48	DRAIN_BLOOD	0x1413e115e	fortress-named	killer exists and (fortress or killer is not current adventure player)	actor=subject actor formatter, named identity; killer_name=unit+8 language_name	{actor} has been drained of blood by {killer_name}!
+classic	0x1413e0a90	1	48	DRAIN_BLOOD	0x1413e115e	fortress-named	killer absent	actor=subject actor formatter, named identity	{actor} has been drained of blood by somebody!
+classic	0x1413e0a90	1	48	DRAIN_BLOOD	0x1413e115e	fortress-unnamed	killer exists and (fortress or killer is not current adventure player)	actor=subject actor formatter, unnamed identity; killer_name=unit+8 language_name	The {actor} has been drained of blood by {killer_name}!
+classic	0x1413e0a90	1	48	DRAIN_BLOOD	0x1413e115e	fortress-unnamed	killer absent	actor=subject actor formatter, unnamed identity	The {actor} has been drained of blood by somebody!
+classic	0x1413e0a90	1	48	DRAIN_BLOOD	0x1413e115e	adventure-player	adventure and killer is current player		You have been drained of blood!
+classic	0x1413e0a90	1	48	DRAIN_BLOOD	0x1413e115e	adventure-player	killer exists and (fortress or killer is not current adventure player)	killer_name=unit+8 language_name	You have been drained of blood by {killer_name}!
+classic	0x1413e0a90	1	48	DRAIN_BLOOD	0x1413e115e	adventure-player	killer absent		You have been drained of blood by somebody!
+classic	0x1413e0a90	1	48	DRAIN_BLOOD	0x1413e115e	adventure-other	adventure and killer is current player	actor=subject pronoun/identity formatter, nonplayer	{actor} has been drained of blood!
+classic	0x1413e0a90	1	48	DRAIN_BLOOD	0x1413e115e	adventure-other	killer exists and (fortress or killer is not current adventure player)	actor=subject pronoun/identity formatter, nonplayer; killer_name=unit+8 language_name	{actor} has been drained of blood by {killer_name}!
+classic	0x1413e0a90	1	48	DRAIN_BLOOD	0x1413e115e	adventure-other	killer absent	actor=subject pronoun/identity formatter, nonplayer	{actor} has been drained of blood by somebody!
+classic	0x1413e0a90	1	49	SLAUGHTER	0x1413e109e	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been slaughtered.
+classic	0x1413e0a90	1	49	SLAUGHTER	0x1413e109e	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been slaughtered.
+classic	0x1413e0a90	1	49	SLAUGHTER	0x1413e109e	adventure-player	native cause suffix		You have been slaughtered.
+classic	0x1413e0a90	1	49	SLAUGHTER	0x1413e109e	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been slaughtered.
+classic	0x1413e0a90	1	50	VEHICLE	0x1413e12ac	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been killed by a vehicle.
+classic	0x1413e0a90	1	50	VEHICLE	0x1413e12ac	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been killed by a vehicle.
+classic	0x1413e0a90	1	50	VEHICLE	0x1413e12ac	adventure-player	native cause suffix		You have been killed by a vehicle.
+classic	0x1413e0a90	1	50	VEHICLE	0x1413e12ac	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been killed by a vehicle.
+classic	0x1413e0a90	1	51	FALLING_OBJECT	0x1413e12be	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been killed by a flying object.
+classic	0x1413e0a90	1	51	FALLING_OBJECT	0x1413e12be	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been killed by a flying object.
+classic	0x1413e0a90	1	51	FALLING_OBJECT	0x1413e12be	adventure-player	native cause suffix		You have been killed by a flying object.
+classic	0x1413e0a90	1	51	FALLING_OBJECT	0x1413e12be	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been killed by a flying object.
+classic	0x1413e0a90	1	52	LEAPT_FROM_HEIGHT	0x1413e1318	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has leapt from a great height.
+classic	0x1413e0a90	1	52	LEAPT_FROM_HEIGHT	0x1413e1318	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has leapt from a great height.
+classic	0x1413e0a90	1	52	LEAPT_FROM_HEIGHT	0x1413e1318	adventure-player	native cause suffix		You have leapt from a great height.
+classic	0x1413e0a90	1	52	LEAPT_FROM_HEIGHT	0x1413e1318	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has leapt from a great height.
+classic	0x1413e0a90	1	53	DROWN_SELF	0x1413e132a	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has drowned.
+classic	0x1413e0a90	1	53	DROWN_SELF	0x1413e132a	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has drowned.
+classic	0x1413e0a90	1	53	DROWN_SELF	0x1413e132a	adventure-player	native cause suffix		You have drowned.
+classic	0x1413e0a90	1	53	DROWN_SELF	0x1413e132a	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has drowned.
+classic	0x1413e0a90	1	54	EXECUTION_GENERIC	0x1413e10ce	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been executed.
+classic	0x1413e0a90	1	54	EXECUTION_GENERIC	0x1413e10ce	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been executed.
+classic	0x1413e0a90	1	54	EXECUTION_GENERIC	0x1413e10ce	adventure-player	native cause suffix		You have been executed.
+classic	0x1413e0a90	1	54	EXECUTION_GENERIC	0x1413e10ce	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been executed.
+classic	0x1413e0a90	0	0	OLD_AGE	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	0	OLD_AGE	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	0	OLD_AGE	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	0	OLD_AGE	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	1	HUNGER	0x1413e1387	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found, starved to death.
+classic	0x1413e0a90	0	1	HUNGER	0x1413e1387	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found, starved to death.
+classic	0x1413e0a90	0	1	HUNGER	0x1413e1387	adventure-player	native cause suffix		You have been found, starved to death.
+classic	0x1413e0a90	0	1	HUNGER	0x1413e1387	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found, starved to death.
+classic	0x1413e0a90	0	2	THIRST	0x1413e1399	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, dehydrated.
+classic	0x1413e0a90	0	2	THIRST	0x1413e1399	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, dehydrated.
+classic	0x1413e0a90	0	2	THIRST	0x1413e1399	adventure-player	native cause suffix		You have been found dead, dehydrated.
+classic	0x1413e0a90	0	2	THIRST	0x1413e1399	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, dehydrated.
+classic	0x1413e0a90	0	3	SHOT	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	3	SHOT	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	3	SHOT	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	3	SHOT	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	4	BLEED	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	4	BLEED	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	4	BLEED	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	4	BLEED	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	5	DROWN	0x1413e13ab	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, drowned.
+classic	0x1413e0a90	0	5	DROWN	0x1413e13ab	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, drowned.
+classic	0x1413e0a90	0	5	DROWN	0x1413e13ab	adventure-player	native cause suffix		You have been found dead, drowned.
+classic	0x1413e0a90	0	5	DROWN	0x1413e13ab	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, drowned.
+classic	0x1413e0a90	0	6	SUFFOCATE	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	6	SUFFOCATE	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	6	SUFFOCATE	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	6	SUFFOCATE	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	7	STRUCK_DOWN	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	7	STRUCK_DOWN	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	7	STRUCK_DOWN	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	7	STRUCK_DOWN	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	8	SCUTTLE	0x1413e1429	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found scuttled.
+classic	0x1413e0a90	0	8	SCUTTLE	0x1413e1429	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found scuttled.
+classic	0x1413e0a90	0	8	SCUTTLE	0x1413e1429	adventure-player	native cause suffix		You have been found scuttled.
+classic	0x1413e0a90	0	8	SCUTTLE	0x1413e1429	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found scuttled.
+classic	0x1413e0a90	0	9	COLLISION	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	9	COLLISION	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	9	COLLISION	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	9	COLLISION	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	10	MAGMA	0x1413e13bd	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, badly burned.
+classic	0x1413e0a90	0	10	MAGMA	0x1413e13bd	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, badly burned.
+classic	0x1413e0a90	0	10	MAGMA	0x1413e13bd	adventure-player	native cause suffix		You have been found dead, badly burned.
+classic	0x1413e0a90	0	10	MAGMA	0x1413e13bd	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, badly burned.
+classic	0x1413e0a90	0	11	MAGMA_MIST	0x1413e13bd	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, badly burned.
+classic	0x1413e0a90	0	11	MAGMA_MIST	0x1413e13bd	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, badly burned.
+classic	0x1413e0a90	0	11	MAGMA_MIST	0x1413e13bd	adventure-player	native cause suffix		You have been found dead, badly burned.
+classic	0x1413e0a90	0	11	MAGMA_MIST	0x1413e13bd	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, badly burned.
+classic	0x1413e0a90	0	12	DRAGONFIRE	0x1413e13bd	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, badly burned.
+classic	0x1413e0a90	0	12	DRAGONFIRE	0x1413e13bd	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, badly burned.
+classic	0x1413e0a90	0	12	DRAGONFIRE	0x1413e13bd	adventure-player	native cause suffix		You have been found dead, badly burned.
+classic	0x1413e0a90	0	12	DRAGONFIRE	0x1413e13bd	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, badly burned.
+classic	0x1413e0a90	0	13	FIRE	0x1413e13bd	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, badly burned.
+classic	0x1413e0a90	0	13	FIRE	0x1413e13bd	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, badly burned.
+classic	0x1413e0a90	0	13	FIRE	0x1413e13bd	adventure-player	native cause suffix		You have been found dead, badly burned.
+classic	0x1413e0a90	0	13	FIRE	0x1413e13bd	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, badly burned.
+classic	0x1413e0a90	0	14	SCALD	0x1413e13bd	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, badly burned.
+classic	0x1413e0a90	0	14	SCALD	0x1413e13bd	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, badly burned.
+classic	0x1413e0a90	0	14	SCALD	0x1413e13bd	adventure-player	native cause suffix		You have been found dead, badly burned.
+classic	0x1413e0a90	0	14	SCALD	0x1413e13bd	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, badly burned.
+classic	0x1413e0a90	0	15	CAVEIN	0x1413e141a	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, badly crushed.
+classic	0x1413e0a90	0	15	CAVEIN	0x1413e141a	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, badly crushed.
+classic	0x1413e0a90	0	15	CAVEIN	0x1413e141a	adventure-player	native cause suffix		You have been found dead, badly crushed.
+classic	0x1413e0a90	0	15	CAVEIN	0x1413e141a	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, badly crushed.
+classic	0x1413e0a90	0	16	DRAWBRIDGE	0x1413e141a	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, badly crushed.
+classic	0x1413e0a90	0	16	DRAWBRIDGE	0x1413e141a	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, badly crushed.
+classic	0x1413e0a90	0	16	DRAWBRIDGE	0x1413e141a	adventure-player	native cause suffix		You have been found dead, badly crushed.
+classic	0x1413e0a90	0	16	DRAWBRIDGE	0x1413e141a	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, badly crushed.
+classic	0x1413e0a90	0	17	FALLING_ROCKS	0x1413e141a	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, badly crushed.
+classic	0x1413e0a90	0	17	FALLING_ROCKS	0x1413e141a	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, badly crushed.
+classic	0x1413e0a90	0	17	FALLING_ROCKS	0x1413e141a	adventure-player	native cause suffix		You have been found dead, badly crushed.
+classic	0x1413e0a90	0	17	FALLING_ROCKS	0x1413e141a	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, badly crushed.
+classic	0x1413e0a90	0	18	CHASM	0x1413e1351	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has fallen into a deep chasm.
+classic	0x1413e0a90	0	18	CHASM	0x1413e1351	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has fallen into a deep chasm.
+classic	0x1413e0a90	0	18	CHASM	0x1413e1351	adventure-player	native cause suffix		You have fallen into a deep chasm.
+classic	0x1413e0a90	0	18	CHASM	0x1413e1351	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has fallen into a deep chasm.
+classic	0x1413e0a90	0	19	CAGE	0x1413e0e08	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has died in a cage.
+classic	0x1413e0a90	0	19	CAGE	0x1413e0e08	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has died in a cage.
+classic	0x1413e0a90	0	19	CAGE	0x1413e0e08	adventure-player	native cause suffix		You have died in a cage.
+classic	0x1413e0a90	0	19	CAGE	0x1413e0e08	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has died in a cage.
+classic	0x1413e0a90	0	20	MURDER	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	20	MURDER	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	20	MURDER	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	20	MURDER	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	21	TRAP	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	21	TRAP	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	21	TRAP	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	21	TRAP	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	22	VANISH	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	22	VANISH	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	22	VANISH	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	22	VANISH	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	23	QUIT	0x1413e145d	fortress-named	no authored cause suffix	actor=subject actor formatter, named identity	{actor} has 
+classic	0x1413e0a90	0	23	QUIT	0x1413e145d	fortress-unnamed	no authored cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has 
+classic	0x1413e0a90	0	23	QUIT	0x1413e145d	adventure-player	no authored cause suffix		You have 
+classic	0x1413e0a90	0	23	QUIT	0x1413e145d	adventure-other	no authored cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has 
+classic	0x1413e0a90	0	24	ABANDON	0x1413e145d	fortress-named	no authored cause suffix	actor=subject actor formatter, named identity	{actor} has 
+classic	0x1413e0a90	0	24	ABANDON	0x1413e145d	fortress-unnamed	no authored cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has 
+classic	0x1413e0a90	0	24	ABANDON	0x1413e145d	adventure-player	no authored cause suffix		You have 
+classic	0x1413e0a90	0	24	ABANDON	0x1413e145d	adventure-other	no authored cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has 
+classic	0x1413e0a90	0	25	HEAT	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	25	HEAT	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	25	HEAT	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	25	HEAT	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	26	COLD	0x1413e140b	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, frozen.
+classic	0x1413e0a90	0	26	COLD	0x1413e140b	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, frozen.
+classic	0x1413e0a90	0	26	COLD	0x1413e140b	adventure-player	native cause suffix		You have been found dead, frozen.
+classic	0x1413e0a90	0	26	COLD	0x1413e140b	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, frozen.
+classic	0x1413e0a90	0	27	SPIKE	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	27	SPIKE	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	27	SPIKE	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	27	SPIKE	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	28	ENCASE_LAVA	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	28	ENCASE_LAVA	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	28	ENCASE_LAVA	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	28	ENCASE_LAVA	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	29	ENCASE_MAGMA	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	29	ENCASE_MAGMA	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	29	ENCASE_MAGMA	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	29	ENCASE_MAGMA	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	30	ENCASE_ICE	0x1413e140b	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, frozen.
+classic	0x1413e0a90	0	30	ENCASE_ICE	0x1413e140b	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, frozen.
+classic	0x1413e0a90	0	30	ENCASE_ICE	0x1413e140b	adventure-player	native cause suffix		You have been found dead, frozen.
+classic	0x1413e0a90	0	30	ENCASE_ICE	0x1413e140b	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, frozen.
+classic	0x1413e0a90	0	31	BEHEAD	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	31	BEHEAD	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	31	BEHEAD	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	31	BEHEAD	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	32	CRUCIFY	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	32	CRUCIFY	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	32	CRUCIFY	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	32	CRUCIFY	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	33	BURY_ALIVE	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	33	BURY_ALIVE	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	33	BURY_ALIVE	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	33	BURY_ALIVE	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	34	DROWN_BY	0x1413e13ab	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, drowned.
+classic	0x1413e0a90	0	34	DROWN_BY	0x1413e13ab	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, drowned.
+classic	0x1413e0a90	0	34	DROWN_BY	0x1413e13ab	adventure-player	native cause suffix		You have been found dead, drowned.
+classic	0x1413e0a90	0	34	DROWN_BY	0x1413e13ab	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, drowned.
+classic	0x1413e0a90	0	35	BURN_ALIVE	0x1413e13bd	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, badly burned.
+classic	0x1413e0a90	0	35	BURN_ALIVE	0x1413e13bd	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, badly burned.
+classic	0x1413e0a90	0	35	BURN_ALIVE	0x1413e13bd	adventure-player	native cause suffix		You have been found dead, badly burned.
+classic	0x1413e0a90	0	35	BURN_ALIVE	0x1413e13bd	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, badly burned.
+classic	0x1413e0a90	0	36	FEED_TO_BEASTS	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	36	FEED_TO_BEASTS	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	36	FEED_TO_BEASTS	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	36	FEED_TO_BEASTS	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	37	HACK_TO_PIECES	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	37	HACK_TO_PIECES	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	37	HACK_TO_PIECES	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	37	HACK_TO_PIECES	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	38	LEAVE_OUT_IN_AIR	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	38	LEAVE_OUT_IN_AIR	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	38	LEAVE_OUT_IN_AIR	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	38	LEAVE_OUT_IN_AIR	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	39	BOIL	0x1413e13cf	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found boiled.
+classic	0x1413e0a90	0	39	BOIL	0x1413e13cf	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found boiled.
+classic	0x1413e0a90	0	39	BOIL	0x1413e13cf	adventure-player	native cause suffix		You have been found boiled.
+classic	0x1413e0a90	0	39	BOIL	0x1413e13cf	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found boiled.
+classic	0x1413e0a90	0	40	MELT	0x1413e13de	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found melted.
+classic	0x1413e0a90	0	40	MELT	0x1413e13de	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found melted.
+classic	0x1413e0a90	0	40	MELT	0x1413e13de	adventure-player	native cause suffix		You have been found melted.
+classic	0x1413e0a90	0	40	MELT	0x1413e13de	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found melted.
+classic	0x1413e0a90	0	41	CONDENSE	0x1413e13ed	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found condensed.
+classic	0x1413e0a90	0	41	CONDENSE	0x1413e13ed	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found condensed.
+classic	0x1413e0a90	0	41	CONDENSE	0x1413e13ed	adventure-player	native cause suffix		You have been found condensed.
+classic	0x1413e0a90	0	41	CONDENSE	0x1413e13ed	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found condensed.
+classic	0x1413e0a90	0	42	SOLIDIFY	0x1413e13fc	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found solidified.
+classic	0x1413e0a90	0	42	SOLIDIFY	0x1413e13fc	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found solidified.
+classic	0x1413e0a90	0	42	SOLIDIFY	0x1413e13fc	adventure-player	native cause suffix		You have been found solidified.
+classic	0x1413e0a90	0	42	SOLIDIFY	0x1413e13fc	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found solidified.
+classic	0x1413e0a90	0	43	INFECTION	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	43	INFECTION	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	43	INFECTION	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	43	INFECTION	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	44	MEMORIALIZE	0x1413e1447	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been put to rest.
+classic	0x1413e0a90	0	44	MEMORIALIZE	0x1413e1447	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been put to rest.
+classic	0x1413e0a90	0	44	MEMORIALIZE	0x1413e1447	adventure-player	native cause suffix		You have been put to rest.
+classic	0x1413e0a90	0	44	MEMORIALIZE	0x1413e1447	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been put to rest.
+classic	0x1413e0a90	0	45	SCARE	0x1413e1375	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, contorted in fear!
+classic	0x1413e0a90	0	45	SCARE	0x1413e1375	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, contorted in fear!
+classic	0x1413e0a90	0	45	SCARE	0x1413e1375	adventure-player	native cause suffix		You have been found dead, contorted in fear!
+classic	0x1413e0a90	0	45	SCARE	0x1413e1375	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, contorted in fear!
+classic	0x1413e0a90	0	46	DARKNESS	0x1413e0ef4	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has died in the dark.
+classic	0x1413e0a90	0	46	DARKNESS	0x1413e0ef4	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has died in the dark.
+classic	0x1413e0a90	0	46	DARKNESS	0x1413e0ef4	adventure-player	native cause suffix		You have died in the dark.
+classic	0x1413e0a90	0	46	DARKNESS	0x1413e0ef4	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has died in the dark.
+classic	0x1413e0a90	0	47	COLLAPSE	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	47	COLLAPSE	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	47	COLLAPSE	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	47	COLLAPSE	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	48	DRAIN_BLOOD	0x1413e1438	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, completely drained of blood!
+classic	0x1413e0a90	0	48	DRAIN_BLOOD	0x1413e1438	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, completely drained of blood!
+classic	0x1413e0a90	0	48	DRAIN_BLOOD	0x1413e1438	adventure-player	native cause suffix		You have been found dead, completely drained of blood!
+classic	0x1413e0a90	0	48	DRAIN_BLOOD	0x1413e1438	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, completely drained of blood!
+classic	0x1413e0a90	0	49	SLAUGHTER	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	49	SLAUGHTER	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	49	SLAUGHTER	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	49	SLAUGHTER	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	50	VEHICLE	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	50	VEHICLE	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	50	VEHICLE	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	50	VEHICLE	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	51	FALLING_OBJECT	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	51	FALLING_OBJECT	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	51	FALLING_OBJECT	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	51	FALLING_OBJECT	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	52	LEAPT_FROM_HEIGHT	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	52	LEAPT_FROM_HEIGHT	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	52	LEAPT_FROM_HEIGHT	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	52	LEAPT_FROM_HEIGHT	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.
+classic	0x1413e0a90	0	53	DROWN_SELF	0x1413e13ab	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead, drowned.
+classic	0x1413e0a90	0	53	DROWN_SELF	0x1413e13ab	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead, drowned.
+classic	0x1413e0a90	0	53	DROWN_SELF	0x1413e13ab	adventure-player	native cause suffix		You have been found dead, drowned.
+classic	0x1413e0a90	0	53	DROWN_SELF	0x1413e13ab	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead, drowned.
+classic	0x1413e0a90	0	54	EXECUTION_GENERIC	0x1413e1363	fortress-named	native cause suffix	actor=subject actor formatter, named identity	{actor} has been found dead.
+classic	0x1413e0a90	0	54	EXECUTION_GENERIC	0x1413e1363	fortress-unnamed	native cause suffix	actor=subject actor formatter, unnamed identity	The {actor} has been found dead.
+classic	0x1413e0a90	0	54	EXECUTION_GENERIC	0x1413e1363	adventure-player	native cause suffix		You have been found dead.
+classic	0x1413e0a90	0	54	EXECUTION_GENERIC	0x1413e1363	adventure-other	native cause suffix	actor=subject pronoun/identity formatter, nonplayer	{actor} has been found dead.

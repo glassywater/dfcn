@@ -1,0 +1,177 @@
+NATIVE DEATH ANNOUNCEMENT SOURCE RECONSTRUCTION
+
+Image identities and complete constructors:
+  reference PE:6a70a6d9:02711000  0x1413e5b20..0x1413e6e1b
+  classic   PE:6a70b91c:0270a000  0x1413e0a90..0x1413e1d8b
+
+This file is a human reconstruction of the retained native instructions. It is
+source evidence, not compiler-produced C, and contains no game execution result.
+The instruction/operand inventory, literal bytes, full function bodies and each
+cause's two jump-table targets are retained in the adjoining death-* files.
+
+Signature, Windows x64 calling convention:
+  rcx = unit* subject
+  dl  = observed/witnessed boolean
+  r8w = int16 death_cause
+
+reference 0x1413e5b55..0x1413e5c5e / classic 0x1413e0ac5..0x1413e0bce:
+
+  incident = find_by_id(world.incidents.all, subject->counters.death_id);
+  // subject +0x7f8; world incident vector at 0x1424e7d18/20 (reference)
+  // and 0x1424e1c08/10 (classic).
+  if (incident != null) incident->flags |= 3;
+  // incident +0xec, bits 0 and 1: announced_missing and discovered.
+
+  killer = find_by_id(world.units.all, subject->relationship_ids[LastAttacker]);
+  // subject +0x3cc; unit identity comparison is unit +0x130.
+  // This caller supplies a live unit, not a guessed name or historical title.
+
+Subject construction, reference 0x1413e5c75..0x1413e5e71 and classic counterpart:
+
+  text = "";
+  if (game_mode == ADVENTURE) {
+      format_subject_pronoun(subject, text, 1, true, true);
+      // reference 0x14132e430 / classic 0x1413293a0:
+      // current adventure unit -> "You" (capitalization flag is true);
+      // other units -> native assumed identity / name / species / role.
+      text += subject == current_adventure_unit ? " have " : " has ";
+  } else {
+      name = subject_name_record(subject);
+      // reference 0x1413e5a90 / classic 0x1413e0a00:
+      // selected assumed identity -> its language_name +0x38;
+      // linked identity's referenced historical figure -> its real name;
+      // no selected identity -> subject's language_name +0x8.
+      if (name == null || name->has_name == false) text = "The ";
+      // language_name +0x72 is the native has_name boolean.
+      text += format_subject_actor(subject, false);
+      // reference 0x141330c30 / classic 0x14132bba0, shared with missing.
+      // Its complete native actor owns generated/authored name, nickname,
+      // caste/species, profession/office, translated surname gloss and
+      // training/tameness status; commas inside it are actor syntax.
+      text += " has ";
+  }
+
+Cause selection, reference 0x1413e5e78..0x1413e64e8 and classic counterpart:
+
+  if (unsigned(death_cause) <= 54) {
+      if (observed) {
+          // 55 direct entries, reference table 0x1413e6cbc,
+          // classic table 0x1413e1c2c.
+          switch (death_cause) {
+          case MURDER:  // 20
+              text += "been murdered by ";
+              text += killer != null ? language_name(killer->name) : "somebody";
+              // reference language-name 0x140a94030 /
+              // classic 0x140a910b0; killer name starts at unit +0x8.
+              text += "!";
+              break;
+          case SCARE:   // 45
+              text += "been scared to death";
+              if (killer != null) {
+                  text += " by ";
+                  text += format_fear_killer_actor(killer);
+                  // reference 0x141331500 / classic 0x14132c470:
+                  // this is the complete actor, not bare language_name.
+              }
+              text += "!";
+              break;
+          case DRAIN_BLOOD: // 48
+              if (game_mode == ADVENTURE && killer == current_adventure_unit) {
+                  text += "been drained of blood!";
+              } else {
+                  text += "been drained of blood by ";
+                  text += killer != null ? language_name(killer->name) : "somebody";
+                  text += "!";
+              }
+              break;
+          case QUIT:    // 23
+          case ABANDON: // 24
+              break;   // actual native branch adds no authored cause suffix
+          default:
+              text += observed_table[death_cause].literal;
+              // Every value and destination is in death-native-switches.tsv.
+          }
+      } else {
+          // reference byte remap 0x1413e6de4 -> table 0x1413e6d98;
+          // classic byte remap 0x1413e1d54 -> table 0x1413e1d08.
+          // 19 remap indices, including index 18 (no cause suffix).
+          switch (death_cause) {
+          case HUNGER: text += "been found, starved to death."; break;
+          case THIRST: text += "been found dead, dehydrated."; break;
+          case DROWN:
+          case DROWN_BY:
+          case DROWN_SELF: text += "been found dead, drowned."; break;
+          case SCUTTLE: text += "been found scuttled."; break;
+          case MAGMA:
+          case MAGMA_MIST:
+          case DRAGONFIRE:
+          case FIRE:
+          case SCALD:
+          case BURN_ALIVE: text += "been found dead, badly burned."; break;
+          case CAVEIN:
+          case DRAWBRIDGE:
+          case FALLING_ROCKS: text += "been found dead, badly crushed."; break;
+          case CHASM: text += "fallen into a deep chasm."; break;
+          case CAGE: text += "died in a cage."; break;
+          case COLD:
+          case ENCASE_ICE: text += "been found dead, frozen."; break;
+          case BOIL: text += "been found boiled."; break;
+          case MELT: text += "been found melted."; break;
+          case CONDENSE: text += "been found condensed."; break;
+          case SOLIDIFY: text += "been found solidified."; break;
+          case MEMORIALIZE: text += "been put to rest."; break;
+          case SCARE: text += "been found dead, contorted in fear!"; break;
+          case DARKNESS: text += "died in the dark."; break;
+          case DRAIN_BLOOD:
+              text += "been found dead, completely drained of blood!"; break;
+          case QUIT:
+          case ABANDON: break;
+          default: text += "been found dead.";
+          }
+      }
+  }
+  // Out-of-range values also add no cause suffix; do not invent a sentence.
+
+Submission, reference 0x1413e6538..0x1413e664a / classic counterpart:
+
+  announcement_type = game_mode == ADVENTURE ? 105
+                    : subject->flags1 & 0x04000000 ? 107 : 106;
+  color = 5;
+  if (subject->flags1 & 0x02000000) {
+      location = holder_reference_location(subject);
+  } else {
+      location = subject->pos; // +0xa8, +0xaa, +0xac
+  }
+  if (!(subject->flags3 & 0x1000)) {
+      details.subject_unit = subject;
+      details.killer_unit = killer;
+  }
+  submit_announcement(text, details);
+  // reference 0x1400e3c20 / classic 0x1400e3bb0.
+
+The remaining constructor instructions after reference 0x1413e664f build
+relationship/incident reactions for family, pet owners and other known units;
+they do not append to this submitted death string. Those instructions remain
+in each complete constructor source file.
+
+Observed vs discovered callers:
+  reference 0x140a8b820..0x140a8ea27 calls at 0x140a8e9c9 with dl=1.
+  reference 0x14137a9dd..0x14137b5f0 calls at 0x14137b298 with dl=0.
+  reference 0x1413e6e20..0x1413e81d1 calls at 0x1413e718d with dl=0.
+  reference 0x1414e4e00..0x1414e73ac calls at 0x1414e6739 with dl=0.
+  reference 0x1414e8470..0x1414ee3c4 calls at 0x1414ebf2d with dl=0.
+  Each discovered caller reads incident +0xf0 to pass the death cause.
+  The incident-discovery caller at 0x1413e717f additionally requires:
+      !incident.flags.discovered, a resolved victim unit,
+      incident.type == DEATH (0); then it emits the discovered branch.
+  Both editions' exact caller addresses are in death-native-callers.tsv and
+  their complete native owners are retained as death-*-caller-*.asm.
+
+Relation to the missing announcement:
+  Missing is produced elsewhere, reference 0x140e39910..0x140e3fde8 /
+  classic 0x140e34880..0x140e3ad58, retained as missing-*-producer.asm.
+  The death constructor does not produce "has been missing for a week".
+  They share the same native subject actor formatter and incident flags:
+  missing owns the announced_missing bit; the death constructor marks both
+  announced_missing and discovered. Therefore a missing record and a later
+  discovered-body record can coexist in the same announcement history.

@@ -12086,6 +12086,7 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Sand va
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Taken by mood.	{s1}取消了{s2}：陷入奇异心境。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Too depressed.	{s1}取消了{s2}：过于抑郁。	l
 Announcement combat fortress-announcement [$unit]: The {s} has been missing for a week.	{s1}已经失踪一周。	l
+Announcement combat fortress-announcement [$unit]: {s} has been missing for a week.	{s1}已经失踪一周。	l
 Announcement combat fortress-announcement [$unit]: {s} has altered the prices of goods.	{s1}调整了物品价格。	l
 Announcement combat historical-clash-outcome [$number]: slaying {s} and losing everyone	击杀对方{s1}，己方全军覆没	l
 Announcement combat justice-interrogation-relationship-factor []: trust of interrogator	信任审讯者	l
@@ -56526,6 +56527,7 @@ The world has passed into {e} in {p}	在{p1}，世界已进入{e1}	ht
 The world has passed into {s} at {p}	在{p1}，世界已进入{s1}	ht
 The world has passed into {s} in {p}	在{p1}，世界已进入{s1}	ht
 The {n} has been missing for a week.	{n1}已经失踪一周。	hPt
+{n} has been missing for a week.	{n1}已经失踪一周。	hPt
 The {s} Rampage in in {p} during {e}	在{e1}期间，{p1}的{s1}肆虐事件	htEi
 The {s} Rampage in in {p} within {p}	在{p2}，{p1}的{s1}肆虐事件	htEi
 There will be no rest for the enemy.	敌人将永无宁日。	hP

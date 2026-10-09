@@ -1,0 +1,7 @@
+edition	image_identity	image_path	role	function_start	function_end	suffix_instruction	source_suffix
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	producer	0x140e39910	0x140e3fde8	0x140e3a03b	 has been missing for a week.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	actor-format	0x141330c30	0x1413312b8	0x140e3a03b	 has been missing for a week.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	actor-name	0x1413e5a90	0x1413e5b1c	0x140e3a03b	 has been missing for a week.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	producer	0x140e34880	0x140e3ad58	0x140e34fab	 has been missing for a week.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	actor-format	0x14132bba0	0x14132c228	0x140e34fab	 has been missing for a week.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	actor-name	0x1413e0a00	0x1413e0a8c	0x140e34fab	 has been missing for a week.
