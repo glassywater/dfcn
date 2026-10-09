@@ -3533,7 +3533,11 @@ private:
     std::string legends_identity_source_;
     std::vector<LegendsHitRow> legends_hit_rows_;
     std::unordered_map<std::string, std::string> deity_sphere_translations_;
-    mutable std::unordered_map<std::string, std::optional<std::string>>
+    struct AdventureBackgroundTranslation {
+        uint64_t epoch;
+        std::optional<std::string> target;
+    };
+    mutable std::unordered_map<std::string, AdventureBackgroundTranslation>
         adventure_background_translation_cache_;
     // Reuse exact literal translations inside {s} captures (for example
     // animal names before a dynamic sex glyph) while preserving procedural
@@ -11947,12 +11951,22 @@ std::optional<std::string> Overlay::translate_adventure_background_source(
         std::string_view raw_source) const {
     const std::string source = normalize_utterance(raw_source);
     if (const auto found = adventure_background_translation_cache_.find(source);
-        found != adventure_background_translation_cache_.end()) return found->second;
+        found != adventure_background_translation_cache_.end() &&
+            found->second.epoch == draw_epoch_) return found->second.target;
     auto remember = [&](std::optional<std::string> target) {
-        if (adventure_background_translation_cache_.size() >= 256)
+        const auto previous = adventure_background_translation_cache_.find(source);
+        const bool report_failure = !target &&
+            (previous == adventure_background_translation_cache_.end() ||
+             previous->second.target.has_value());
+        if (adventure_background_translation_cache_.size() >= 256 &&
+                previous == adventure_background_translation_cache_.end())
             adventure_background_translation_cache_.clear();
-        adventure_background_translation_cache_.emplace(source, target);
-        if (!target) {
+        // Site identities and governing context are live. Reuse a production
+        // only within this draw, while retaining failure history to avoid
+        // emitting the same missing-production warning every frame.
+        adventure_background_translation_cache_.insert_or_assign(source,
+            AdventureBackgroundTranslation{draw_epoch_, target});
+        if (report_failure) {
             // A physical-row queue loses exactly the context needed to fix
             // these failures. Keep the whole production for manual feedback;
             // never pretend that a translated prefix covers the paragraph.
@@ -11967,7 +11981,7 @@ std::optional<std::string> Overlay::translate_adventure_background_source(
                 return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
             });
     };
-    std::vector<std::string> retained_site_names;
+    std::vector<std::string> retained_names;
     auto complete_production = [&](const std::optional<std::string> &value) {
         if (!value || value->empty()) return false;
         const auto latin = [](unsigned char ch) {
@@ -11975,7 +11989,7 @@ std::optional<std::string> Overlay::translate_adventure_background_source(
         };
         for (size_t at = 0; at < value->size();) {
             size_t retained_length = 0;
-            for (const auto &retained : retained_site_names) {
+            for (const auto &retained : retained_names) {
                 if (retained.size() <= retained_length ||
                         !std::string_view(*value).substr(at).starts_with(retained)) continue;
                 const size_t end = at + retained.size();
@@ -12004,20 +12018,23 @@ std::optional<std::string> Overlay::translate_adventure_background_source(
         }
         return std::nullopt;
     };
-    auto name = [&](const std::string &value, bool site) -> std::optional<std::string> {
-        if (site) {
-            // Only the hometown/destination productions prove a Site field.
-            // The shared place resolver validates a complete source before
-            // retaining an unresolved spelling, without guessing WORD senses.
-            auto translated = translate_legends_place(value);
+    auto name = [&](const std::string &value, bool site,
+                    bool government = false) -> std::optional<std::string> {
+        if (site || government) {
+            // Hometown/destination names are EnglishName fields, just like
+            // the home cards. The controller is a real governing entity;
+            // its intrinsic type and parent context select the name rules.
+            auto translated = site ? translate_site_reference(value, true)
+                : translate_civilization_reference(value, false, true);
+            if (!translated) translated = native_text_to_utf8(value);
             if (translated && !translated->empty() && !complete(translated) &&
-                    std::find(retained_site_names.begin(), retained_site_names.end(),
-                        *translated) == retained_site_names.end())
-                retained_site_names.push_back(*translated);
+                    std::find(retained_names.begin(), retained_names.end(),
+                        *translated) == retained_names.end())
+                retained_names.push_back(*translated);
             return translated;
         }
         if (auto translated = literal(value)) return translated;
-        // Other {n} fields denote deities, controlling groups, religions or
+        // Other {n} fields denote deities, religions or
         // named temples. They retain their own existing naming grammar.
         auto translated = translate_procedural_fragment(value);
         if (complete(translated)) return translated;
@@ -12092,8 +12109,10 @@ std::optional<std::string> Overlay::translate_adventure_background_source(
                       world_site_type_shape(captures[1])) ||
                      rule.template_literals[i].ends_with(" in ") ||
                      rule.template_literals[i].ends_with(" led you to "));
+                const bool government_name = rule.template_kinds[i] == 'n' &&
+                    rule.template_literals[i].ends_with(" controlled by ");
                 switch (rule.template_kinds[i]) {
-                case 'n': resolved[i] = name(captures[i], site_name); break;
+                case 'n': resolved[i] = name(captures[i], site_name, government_name); break;
                 case 's': resolved[i] = term(term, captures[i], 0); break;
                 case 'r':
                     resolved[i] = translate_deity_spheres(captures[i]);
@@ -12122,7 +12141,8 @@ std::optional<std::string> Overlay::translate_adventure_background_source(
                 default: break;
                 }
                 const bool composed_clause = rule.template_kinds[i] == 'p';
-                if (!(site_name || composed_clause ? complete_production(resolved[i])
+                if (!(site_name || government_name || composed_clause
+                        ? complete_production(resolved[i])
                         : complete(resolved[i]))) { intact = false; break; }
             }
             if (!intact) continue;

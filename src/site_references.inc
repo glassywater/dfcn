@@ -267,7 +267,7 @@ std::optional<std::string> Overlay::translate_legends_place(
     source = trim_view(source);
     if (source.empty() || source.size() > 4096 || source.ends_with("...") ||
             source.find_first_of("\r\n") != std::string_view::npos) return std::nullopt;
-    if (auto site = translate_site_reference(source)) return site;
+    if (auto site = translate_site_reference(source, english_field)) return site;
     // Paired native/English text proves each part's language even without
     // a unique loaded site. Translate both parts without borrowing a site
     // subtype from an ambiguous or unrelated native identity.
