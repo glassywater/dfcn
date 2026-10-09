@@ -10,8 +10,9 @@ std::optional<std::string> Overlay::translate_unit_profession(
     const std::string folded = lower(source);
     if (auto role = exact_literal_translation("Unit profession: " + folded)) return role;
     if (auto role = exact_literal_translation(source)) return role;
-    if (const auto role = legends_terms_.find("Native history office: " + folded);
-            role != legends_terms_.end()) return role->second;
+    // Generated religious offices share the Legends terms, which are kept
+    // out of ordinary UI literal matching. Resolve their complete role here.
+    if (auto role = translate_legends_office(source)) return role;
 
     // The semantic namespaces cover all standard professions and positions,
     // including case-sensitive skill captions used as occupations.
