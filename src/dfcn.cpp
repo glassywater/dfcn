@@ -4333,7 +4333,8 @@ private:
     std::optional<NativeTextCard> capture_map_hover_card(
         std::vector<std::string> &rows, const unsigned char *screen_override) const;
     std::unordered_map<std::string, std::string> map_track_translations_;
-    std::optional<std::string> translate_map_track_noun(std::string_view source) const;
+    std::optional<std::string> translate_map_track_noun(std::string_view source,
+        bool liquid_print = false) const;
     std::optional<std::string> translate_map_track(std::string_view source) const;
     std::optional<std::string> translate_arena_numbered_creature(std::string_view source) const;
     std::optional<std::string> translate_map_hover_phrase(std::string_view source,
@@ -11024,6 +11025,24 @@ static bool fortress_squad_reference_template(std::string_view source) {
 
 std::optional<std::string> Overlay::translate_ui_catalog_capture(
         const Rule &rule, size_t index, std::string_view source) const {
+    // Tracking descriptions bind footwear/anatomy and liquid materials as
+    // complete nouns. The species owner precedes depth/strength in the
+    // native body-part branch, so it has its own authored capture.
+    if (rule.ui_message && rule.source.starts_with("There is a ")) {
+        const bool liquid_print = rule.source.ends_with("{s} print.");
+        const bool imprint = rule.source.ends_with("{s} imprint in the {s}.");
+        if (liquid_print || imprint) {
+            const bool owned = rule.source.starts_with("There is a {s}'s ");
+            if (owned && index == 0) {
+                if (!config_.compositional_rules) return std::nullopt;
+                std::vector<size_t> origins;
+                return RULESETS.translate_with_origins(native_text_to_utf8(source) + "'s",
+                    "::map_hover::track_owner", origins);
+            }
+            if (index == static_cast<size_t>(owned))
+                return translate_map_track_noun(source, liquid_print);
+        }
+    }
     // 7f066f / classic 7edeef calls the material noun formatter with
     // type=0 and an inorganic index. It is never an entity-name field.
     if (adventure_divine_material_capture(rule, index)) {

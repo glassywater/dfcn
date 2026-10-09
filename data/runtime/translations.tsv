@@ -36009,6 +36009,7 @@ There is a strong breeze blowing from the north.	一阵劲风从北方吹来。	
 There is a strong breeze blowing from the north.	一阵劲风从北方吹来。	hj
 There is a strong breeze blowing from the south.	一阵劲风从南方吹来。	hP
 There is a strong breeze blowing from the south.	一阵劲风从南方吹来。	hj
+There is a {s}'s shallow {s} imprint in the {s}.	{s3}中有一个{s1}{s2}留下的浅压痕。	hPt
 There is nothing to catch in the central cavern.	中部的洞穴中没有可捕捉的东西。	hP
 There is nothing to catch in the central swamps.	中部的沼泽中没有可捕捉的东西。	hP
 There is nothing to catch in the eastern cavern.	东部的洞穴中没有可捕捉的东西。	hP
@@ -38847,6 +38848,7 @@ There is a mighty wind blowing from the north.	一阵狂风从北方吹来。	hP
 There is a mighty wind blowing from the north.	一阵狂风从北方吹来。	hj
 There is a mighty wind blowing from the south.	一阵狂风从南方吹来。	hP
 There is a mighty wind blowing from the south.	一阵狂风从南方吹来。	hj
+There is a {s}'s vague {s} imprint in the {s}.	{s3}中有一个{s1}{s2}留下的模糊压痕。	hPt
 There is nothing to catch in the central lake.	中部的湖泊中没有可捕捉的东西。	hP
 There is nothing to catch in the eastern lake.	东部的湖泊中没有可捕捉的东西。	hP
 There is nothing to catch in the western lake.	西部的湖泊中没有可捕捉的东西。	hP
@@ -40353,6 +40355,7 @@ There is a mighty wind blowing from the east.	一阵狂风从东方吹来。	hP
 There is a mighty wind blowing from the east.	一阵狂风从东方吹来。	hj
 There is a mighty wind blowing from the west.	一阵狂风从西方吹来。	hP
 There is a mighty wind blowing from the west.	一阵狂风从西方吹来。	hj
+There is a {s}'s deep {s} imprint in the {s}.	{s3}中有一个{s1}{s2}留下的深压痕。	hPt
 They consider you a leader of the opposition.	他们把你视为反对者的领袖。	hP
 They reported irregularities with their goods	他们报告说货物出现了异常	h
 Verbally struggle against great mortification	说出你与强烈羞愧难当的抗争	hP
@@ -63006,6 +63009,9 @@ The {s} Rampage in in {p} in {d}.	{d1}年的{p1}的{s1}肆虐事件。	htEi
 The {s} Rampage in in {p} in {p}.	在{p2}，{p1}的{s1}肆虐事件。	htEi
 The {s} Rampage of {n} in in {p}.	{n1}在{p1}的{s1}肆虐事件。	htEi
 There are no creatures available.	没有可用的生物。	hP
+There is a {s}'s faint {s} print.	这里有一处{s1}{s2}印迹，痕迹隐约可见。	hPt
+There is a {s}'s light {s} print.	这里有一处{s1}{s2}印迹，痕迹较淡。	hPt
+There is a {s}'s thick {s} print.	这里有一处{s1}{s2}印迹，痕迹浓重。	hPt
 There is no written content here.	这里还没有书写内容。	hP
 There is nothing to catch in {e}.	{e1}中没有可捕捉的东西。	hPt
 There is nothing to pick up here.	这里没有可拾取的物品。	hP
@@ -76793,6 +76799,9 @@ The {s} Purge in {p} at {p}	在{p2}，{p1}的{s1}清洗事件	htEi
 The {s} Purge in {p} in {d}	{d1}年的{p1}的{s1}清洗事件	htEi
 The {s} Purge in {p} in {p}	在{p2}，{p1}的{s1}清洗事件	htEi
 There has been one already!	已经出现过一条了！	hq
+There is a faint {s} print.	这里有一处{s1}印迹，痕迹隐约可见。	hPt
+There is a light {s} print.	这里有一处{s1}印迹，痕迹较淡。	hPt
+There is a thick {s} print.	这里有一处{s1}印迹，痕迹浓重。	hPt
 There is thick fog outside.	外面有浓雾。	hP
 There is thick fog outside.	外面有浓雾。	hj
 There were {c} competitors.	共有{c1}名参赛者。	ht
@@ -89068,6 +89077,7 @@ The {d}th {e} in {p}.	在{p1}，第{d1}次{e1}。	htEi
 The {s} Purge in {p}.	{p1}的{s1}清洗事件。	htEi
 The {s} is too salty.	{s1}太咸了。	hPt
 There are no children	没有儿童	wil
+There is a {s} print.	这里有一处{s1}印迹。	hPt
 There is fog outside.	外面有雾。	hP
 There is fog outside.	外面有雾。	hj
 Third eldest daughter	第三个女儿	w

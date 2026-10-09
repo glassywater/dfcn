@@ -389,15 +389,7 @@ std::optional<std::string> Overlay::translate_help_paragraph(
                     case 's':
                     case 'n':
                         if (ui_message || adventure_divine_material_capture(rule, i)) {
-                            // Tracking prose shares the compact spoor noun
-                            // grammar. The first slot is footwear or anatomy;
-                            // its surrounding depth/clarity belongs to the
-                            // authored sentence, never the voice vocabulary.
-                            const bool track_noun = i == 0 &&
-                                rule.source.starts_with("There is a ") &&
-                                rule.source.ends_with("{s} imprint in the {s}.");
-                            translated = track_noun ? translate_map_track_noun(captures[i])
-                                : translate_ui_catalog_capture(rule, i, captures[i]);
+                            translated = translate_ui_catalog_capture(rule, i, captures[i]);
                         }
                         break;
                     case 'c':
