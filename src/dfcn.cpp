@@ -732,8 +732,8 @@ static constexpr int kAdventureRaceDescriptionRule = -25;
 static constexpr int kAdventureOriginLabelRule = -26;
 static constexpr int kAdventureOriginDescriptionRule = -27;
 static constexpr int kAdventureBackgroundDescriptionRule = -28;
-// Whole names and category captions in the background's belief selector.
-static constexpr int kAdventureBeliefLabelRule = -29;
+// Whole names and category captions in the background's home/belief selectors.
+static constexpr int kAdventureBackgroundLabelRule = -29;
 static constexpr int kAdventureSetupCaptionRule = -30;
 // A figure or site/entity identity owns one list row, never a prose paragraph.
 static constexpr int kLegendsIdentityRecordRule = -31;
@@ -3489,7 +3489,8 @@ private:
     std::optional<std::string> localize_site_name(const NativeHistoryName &name) const;
     std::string site_name_full_transliteration(const NativeHistoryName &name) const;
     std::vector<std::string> site_name_search_aliases(const NativeHistoryName &name) const;
-    std::optional<std::string> translate_site_reference(std::string_view source) const;
+    std::optional<std::string> translate_site_reference(
+        std::string_view source, bool english_field = false) const;
     std::optional<std::string> translate_book_site_subject(std::string_view source) const;
     std::optional<std::string> translate_saved_site_name(const NativeSaveNameSource &source) const;
     std::optional<std::string> translate_legends_place(
@@ -19199,7 +19200,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             if (row.find("Accept background") != std::string::npos) footer_y = y;
         }
         if (footer_y <= tabs_y) footer_y = gps_->dimy;
-        std::vector<Match> belief_labels;
+        std::vector<Match> background_labels;
         int list_left = gps_->dimx;
         int list_right = 0;
         int last_category_y = -1;
@@ -19223,45 +19224,62 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         for (int y = tabs_y + 2; tabs_y >= 0 && y < footer_y; ++y) {
             const auto titles = split_text_fields(background_rows[static_cast<size_t>(y - 1)]);
             for (const auto &kind : split_text_fields(background_rows[static_cast<size_t>(y)])) {
-                // Religion cards append their temple state to the same
-                // native caption. Own that complete caption before words.
-                if ((kind.text != "Deity" && kind.text != "Religion" &&
-                        kind.text != "Religion with temple" &&
-                        kind.text != "Religion with ruined temple") ||
-                    kind.start >= beliefs_x) continue;
+                // Home's native producer selects EnglishName for the site
+                // (PE 62c387/62c42f). Its type row proves the place scope;
+                // resolve the full English field before ordinary WORD glosses.
+                // Religion cards retain their separate naming grammar.
+                const bool home_card = world_site_type_shape(kind.text);
+                const bool belief_card = kind.text == "Deity" || kind.text == "Religion" ||
+                    kind.text == "Religion with temple" ||
+                    kind.text == "Religion with ruined temple";
+                if ((!home_card && !belief_card) || kind.start >= beliefs_x) continue;
                 const auto title = std::find_if(titles.begin(), titles.end(),
                     [&](const LogicalTextField &field) {
                         return field.start <= kind.start && kind.start - field.start <= 4;
                     });
                 if (title == titles.end()) continue;
-                const auto target = complete_name(title->text);
+                std::optional<std::string> target;
+                if (home_card) {
+                    std::string source = title->text;
+                    for (const auto &caption : clipped_template_captions) {
+                        if (caption.x == title->start && caption.y == y - 1 &&
+                                caption.visible == title->text) {
+                            source = caption.complete;
+                            break;
+                        }
+                    }
+                    target = translate_site_reference(source, true);
+                    // An unresolved/ambiguous site still owns one full name.
+                    // Never turn it back into independently translated roots.
+                    if (!target) target = native_text_to_utf8(title->text);
+                } else target = complete_name(title->text);
                 const auto category = exact_literal_translation(kind.text);
                 if (!target || !category) continue;
-                belief_labels.push_back({title->start, y - 1, title->end - title->start,
-                    kAdventureBeliefLabelRule, *target, title->text});
-                belief_labels.push_back({kind.start, y, kind.end - kind.start,
-                    kAdventureBeliefLabelRule, *category, kind.text});
+                background_labels.push_back({title->start, y - 1, title->end - title->start,
+                    kAdventureBackgroundLabelRule, *target, title->text});
+                background_labels.push_back({kind.start, y, kind.end - kind.start,
+                    kAdventureBackgroundLabelRule, *category, kind.text});
                 list_left = std::min(list_left, title->start);
                 list_right = std::max({list_right, title->end, kind.end});
-                last_category_y = y;
+                if (belief_card) last_category_y = y;
             }
         }
-        if (!belief_labels.empty()) {
+        if (!background_labels.empty()) {
             // `None` is another card, not a continuation of the last deity.
             // Its native title column and adjacency identify this particular
             // None without moving unrelated empty fields elsewhere on screen.
-            for (int y = last_category_y + 1;
+            for (int y = last_category_y + 1; last_category_y >= 0 &&
                  y < std::min(footer_y, last_category_y + 5); ++y) {
                 for (const auto &field : split_text_fields(background_rows[static_cast<size_t>(y)])) {
                     if (field.start != list_left || field.text != "None") continue;
                     if (const auto target = exact_literal_translation(field.text)) {
-                        belief_labels.push_back({field.start, y, field.end - field.start,
-                            kAdventureBeliefLabelRule, *target, field.text});
+                        background_labels.push_back({field.start, y, field.end - field.start,
+                            kAdventureBackgroundLabelRule, *target, field.text});
                         list_right = std::max(list_right, field.end);
                     }
                 }
             }
-            for (Match &label : belief_labels) {
+            for (Match &label : background_labels) {
                 auto &row = screen_rows[static_cast<size_t>(label.y)];
                 // Context can come from the composed screen, but a raw-layer
                 // suppression query must own only its exact source bytes.
@@ -35368,7 +35386,7 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
         std::vector<Match *> labels;
         int left = gps_->dimx, right = 0;
         for (Match &match : prepared_matches_) {
-            if (match.rule != kAdventureBeliefLabelRule) continue;
+            if (match.rule != kAdventureBackgroundLabelRule) continue;
             labels.push_back(&match);
             left = std::min(left, match.layout_x);
             right = std::max(right, match.layout_x + match.layout_length);

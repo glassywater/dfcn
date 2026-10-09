@@ -162,7 +162,7 @@ void Overlay::layout_adventure_background_cards(SDL_Renderer *renderer) {
         }
         const bool none_card = card.list && card.rows.size() == 1 &&
             card.rows.front().size() == 1 &&
-            card.rows.front().front()->rule == kAdventureBeliefLabelRule &&
+            card.rows.front().front()->rule == kAdventureBackgroundLabelRule &&
             card.rows.front().front()->source == "None";
         if (!complete || (card.rows.size() != 2 && !none_card)) card.rows.clear();
     }
