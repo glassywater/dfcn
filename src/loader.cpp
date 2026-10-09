@@ -233,6 +233,12 @@ static void retry_core_load() {
 
 } // namespace
 
+// The private drawing layer must stop presenting retained DFHack frames when
+// the resident switch removes its render hooks. Keep this outside the core ABI.
+DFCN_EXPORT int dfcn_is_dfhack_disabled_v1() noexcept {
+    return dfhack_toggle.disabled() ? 1 : 0;
+}
+
 // Optional read-only command context lives independently of DfcnCoreApi.
 // It touches only the resident loader's calling-thread POD frame, never the
 // current core image, native strings, render state or game synchronization.

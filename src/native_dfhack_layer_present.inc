@@ -1,6 +1,18 @@
 // DFHack owns this target and its logical buffers. Native rendering and native
 // translation finish before this layer is composed; no game pixels are read.
 #ifdef _WIN32
+static bool native_dfhack_switch_disabled() noexcept {
+    using Query = int (*)() noexcept;
+    // The resident loader is already mapped before it initializes this core.
+    // A standalone core or an older loader keeps its existing display behavior.
+    static const auto query = []() -> Query {
+        const auto loader = GetModuleHandleW(L"dfhooks_dfcn.dll");
+        return loader ? reinterpret_cast<Query>(GetProcAddress(loader,
+            "dfcn_is_dfhack_disabled_v1")) : nullptr;
+    }();
+    return query && query() != 0;
+}
+
 static SDL_BlendMode native_dfhack_layer_composite_blend() noexcept {
     // Drawing onto a transparent target already multiplies color by alpha.
     // Composing that target must use the stored color once, without a second
@@ -647,6 +659,19 @@ static bool native_dfhack_layer_has_content(SDL_Renderer *renderer,
 static void native_dfhack_present_layer(SDL_Renderer *renderer,
         void (*translate)(SDL_Renderer *)) {
     if (!renderer || !native_pe_supported()) return;
+    const bool disabled = native_dfhack_switch_disabled();
+    static bool hidden = false;
+    if (disabled != hidden) {
+        // Discard both sides of the transition on the SDL thread, after any
+        // private writer has restored its borrowed graphicst pointers. Queued
+        // callbacks may still produce private output while tools are disabled.
+        if (NativeDfhackLayerWriteScope::in_progress()) return;
+        clear_native_dfhack_layers();
+        g_native_dfhack_gpu_frame_ready = false;
+        g_native_dfhack_gpu_target_initialized = false;
+        hidden = disabled;
+    }
+    if (disabled) return;
     NativeDfhackLayerPresentScope layer;
     if (!layer.valid()) return;
     auto *gps = layer.graphics();
