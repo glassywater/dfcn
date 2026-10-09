@@ -1,0 +1,18 @@
+{
+  "appid": 975370,
+  "title": "Whaleys Dogs 简体中文汉化",
+  "description_file": "workshop/whaleys-dogs-zh-hans/description.bbcode.txt",
+  "content_folder": "workshop/whaleys-dogs-zh-hans/content",
+  "preview_file": "workshop/whaleys-dogs-zh-hans/preview.png",
+  "tags": [
+    "mod",
+    "translation",
+    "Chinese"
+  ],
+  "visibility": 2,
+  "changelog": "发布 Whaleys Dogs 简体中文汉化数据。",
+  "required_items": [
+    3811193379,
+    2902810759
+  ]
+}

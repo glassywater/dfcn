@@ -1,0 +1,12 @@
+# Dwarvemon 2.22 translation extension; merges into the base namespace.
+base = "creatures::name::raw_names"
+
+[[rulesets]]
+name = "singular"
+[rulesets.rules]
+"dragon hatchling" = "幼龙"
+
+[[rulesets]]
+name = "plural"
+[rulesets.rules]
+"dragon hatchlings" = "幼龙"

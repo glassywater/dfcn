@@ -11,8 +11,11 @@
 #include <unistd.h>
 #include <vector>
 
-namespace dfcn::dfhack {
+namespace dfcn {
 #include "native_patch_platform.h"
+} // namespace dfcn
+
+namespace dfcn::dfhack {
 
 inline void *elf_loaded_module(const char *basename) noexcept {
     struct Search { const char *name; void *module; } search{basename, nullptr};

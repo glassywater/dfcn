@@ -24,8 +24,10 @@ __pycache__/
 # Packaged runtime
 /DFCN-Windows-x64-minimal.zip
 /DFCN-Linux-x64-minimal.zip
+/DFCN-Windows-Linux-workshop.zip
 /workshop/content/*.zip
 /workshop/content/DFCN/
+/workshop/content/DFCN-Linux/
 /workshop/*/*.zip
 /workshop/upload-*/
 

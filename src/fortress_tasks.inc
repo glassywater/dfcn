@@ -814,16 +814,25 @@ std::vector<WorkshopTaskCard> Overlay::capture_workshop_task_rows(
             // The source can overwrite the left cap in classic mode. Probe
             // that cap explicitly so the untouched upper/lower corners and
             // opposite edge can prove the complete button around its text.
-            const auto button = native_button_text_rect(*gps_, search.x, search.x + 1,
+            auto button = native_button_text_rect(*gps_, search.x, search.x + 1,
                 y, false, nullptr, false, true);
-            if (!button || button->x - 1 != search.x ||
-                button->x + button->w < minimum_right || button->x + button->w > right ||
-                button->y < content_y || button->y + button->h > bottom) continue;
+            if (button && button->x - 1 == search.x)
+                button = SDL_Rect{button->x - 1, button->y, button->w + 1, button->h};
+            else button.reset();
+            if (!button && !classic) {
+                // Dark/light chooser rows can start directly on the caption
+                // fill without a rectangle left cap. Their complete native
+                // three-row strip still owns one task, not wrapped prose.
+                const auto strip = native_picture_caption_rect(*gps_, search.x, y);
+                if (strip && strip->x == search.x) button = strip;
+            }
+            if (!button || button->x + button->w < minimum_right ||
+                button->x + button->w > right || button->y < content_y ||
+                button->y + button->h > bottom) continue;
             if (std::any_of(choices.begin(), choices.end(), [&](const NativeTextCard &card) {
                     return card.interior.x == left && card.interior.y == button->y;
                 })) continue;
-            auto card = capture_button(
-                {button->x - 1, button->y, button->w + 1, button->h});
+            auto card = capture_button(*button);
             if (!card || !current_card(*card)) continue;
             card->interior.x = left;
             card->interior.w = button->x + button->w - left;

@@ -146,6 +146,7 @@ static void index_civilization_reference_sources(CivilizationReferenceCache &cac
 
 std::optional<std::string> Overlay::translate_civilization_reference(
         std::string_view source, bool polity_role, bool government_field) const {
+    dfhack_require_world_read();
     source = trim_view(source);
     if (source.empty() || source.size() > 4096 || source.ends_with("..."))
         return std::nullopt;

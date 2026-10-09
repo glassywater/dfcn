@@ -138,6 +138,27 @@ static std::optional<NativeHistoryLegendsCaption> native_history_legends_caption
     // The region detail tab remains typed when its introduction scrolls out
     // of view. Carry that fact in the existing core-owned render snapshot.
     caption.region_title = current.type == 5;
+    if (current.type == 1 && current.index >= 0) {
+        NativeBorrowedVector<int32_t> ids;
+        int32_t id = -1;
+        const uintptr_t field = native_history_object_field(current.screen,
+            "viewscreen_legendsst", 0x1b0, sizeof(ids));
+        const uintptr_t base = native_history_profile_base();
+        if (native_history_copy(field, ids) && ids.valid(1u << 24) &&
+                static_cast<size_t>(current.index) < ids.size() &&
+                native_history_copy(reinterpret_cast<uintptr_t>(ids.begin) +
+                    size_t(current.index) * sizeof(int32_t), id) && id >= 0) {
+            const uintptr_t figure = native_history_find_subject(base,
+                NativeHistoryObjectKind::Figure, id);
+            const uintptr_t name_address = figure ? native_history_object_field(
+                figure, "historical_figure", 0x38) : 0;
+            NativeHistoryName name;
+            if (name_address && capture_native_history_name(base, name_address, name) &&
+                    name.has_name && capture_native_history_original_name(
+                        base, name_address, name.native_name))
+                caption.character_name = std::move(name);
+        }
+    }
     if (current.type == 2 && current.index >= 0) {
         NativeBorrowedVector<int32_t> ids;
         int32_t id = -1;

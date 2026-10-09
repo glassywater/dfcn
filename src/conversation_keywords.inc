@@ -285,34 +285,30 @@ bool Overlay::translated_adventure_action_matches(std::string_view source,
         std::string_view query, const NativePerformanceChoice *native_choice) const {
     TranslationStateScope translation_scope;
     if (!config_.enabled || source.empty() || source.size() > 65536) return false;
-    if (compact_translated_search_text(query).empty()) return false;
+    if (translated_search_query(query).literal.empty()) return false;
     if (native_choice) {
         // Equal captions can have different enums or native identities.
-        // Never cache a sphere, genre or person's translation by text alone.
-        std::vector<int> source_colors(source.size(), 0xffffff), target_colors;
-        const auto target = translate_adventure_action_choice(
-            source, source_colors, target_colors, native_choice);
+        // Retain the complete captured discriminator, including unnamed
+        // creatures' species, rather than caching by their shared caption.
+        std::string key = std::to_string(native_choice->type) + '\x1f' +
+            std::to_string(native_choice->id);
+        key.push_back(native_choice->unnamed ? '\1' : '\0');
+        key.append(native_choice->source).push_back('\0');
+        key.append(native_choice->species).push_back('\0');
+        key.append(source);
+        const auto target = memoize_search_translation('v', key, [&] {
+            std::vector<int> source_colors(source.size(), 0xffffff), target_colors;
+            return translate_adventure_action_choice(source, source_colors, target_colors, native_choice);
+        }, true);
         return target && translated_search_text_matches(*target, query);
     }
-    const std::string key(source);
-    auto cached = adventure_action_search_cache_.find(key);
-    if (cached == adventure_action_search_cache_.end()) {
+    const auto target = memoize_search_translation('a', source, [&] {
         // Keep complete original spelling/case for the shared name grammar.
         // Cache semantic text independently of query, viewport and row color.
         std::vector<int> source_colors(source.size(), 0xffffff), target_colors;
-        const auto target = translate_adventure_action_choice(
-            source, source_colors, target_colors);
-        std::string text = target.value_or(std::string{});
-        static constexpr size_t maximum_records = 4096;
-        if (adventure_action_search_cache_.size() >= maximum_records &&
-            !adventure_action_search_order_.empty()) {
-            adventure_action_search_cache_.erase(adventure_action_search_order_.front());
-            adventure_action_search_order_.pop_front();
-        }
-        cached = adventure_action_search_cache_.emplace(key, std::move(text)).first;
-        adventure_action_search_order_.push_back(key);
-    }
-    return !cached->second.empty() && translated_search_text_matches(cached->second, query);
+        return translate_adventure_action_choice(source, source_colors, target_colors);
+    }, true);
+    return target && translated_search_text_matches(*target, query);
 }
 
 // Immutable vocabulary is shared by every keyword row until rules reload.
@@ -946,7 +942,7 @@ bool Overlay::translated_conversation_keywords_match(std::string_view keywords,
                                                      std::string_view query) const {
     TranslationStateScope translation_scope;
     if (!translation_enabled()) return false;
-    if (compact_translated_search_text(query).empty()) return false;
+    if (translated_search_query(query).literal.empty()) return false;
     const auto translated = translate_conversation_keywords(keywords);
     if (!translated) return false;
     return translated_search_text_matches(*translated, query);

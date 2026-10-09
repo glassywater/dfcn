@@ -1,9 +1,9 @@
 [ID:dfcn_temple_rituals_zh_hans]
 [NUMERIC_VERSION:2]
-[DISPLAYED_VERSION:0.2-local]
+[DISPLAYED_VERSION:0.2]
 [EARLIEST_COMPATIBLE_NUMERIC_VERSION:1]
-[EARLIEST_COMPATIBLE_DISPLAYED_VERSION:0.1-local]
+[EARLIEST_COMPATIBLE_DISPLAYED_VERSION:0.1]
 [AUTHOR:DFCN]
 [NAME:神庙祭仪汉化数据]
-[DESCRIPTION:Temple Rituals 的独立简体中文翻译数据，由 DFCN 自动读取，无需在世界模组列表启用。仅供本地使用，尚未发布。]
-
+[DESCRIPTION:Temple Rituals (procgen) 的简体中文翻译数据。翻译祭仪、祝福饮剂、供品、祭司称号和冒险模式交互。需要 DFCN 汉化核心和原模组。]
+[STEAM_FILE_ID:3815789989]

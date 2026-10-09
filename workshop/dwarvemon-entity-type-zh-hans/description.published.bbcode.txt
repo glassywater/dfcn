@@ -1,0 +1,3 @@
+翻译 Dwarvemon Entity Type 的模组名称与文明配置简介。
+
+需要 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2898648197]原模组[/url]、[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379]DFCN 汉化核心[/url]和[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177]Dwarvemon 汉化数据[/url]。

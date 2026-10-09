@@ -3,9 +3,9 @@ base = "creatures::name"
 [[rulesets]]
 name = "singular"
 [rulesets.rules]
-"{::whaleys_dogs::names::singular}" = "{::whaleys_dogs::names::singular}"
+"{::creatures::name::whaleys_dogs::singular}" = "{::creatures::name::whaleys_dogs::singular}"
 
 [[rulesets]]
 name = "plural"
 [rulesets.rules]
-"{::whaleys_dogs::names::plural}" = "{::whaleys_dogs::names::plural}"
+"{::creatures::name::whaleys_dogs::plural}" = "{::creatures::name::whaleys_dogs::plural}"

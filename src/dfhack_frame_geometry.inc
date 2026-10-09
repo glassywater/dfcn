@@ -265,6 +265,16 @@ static std::vector<NativeDfhackWindowGeometry> native_dfhack_window_geometry(
     return windows;
 }
 
+static bool native_dfhack_notification_banner_frame(
+        const NativeDfhackWindowGeometry &window,
+        const std::vector<std::string> &rows) {
+    const auto &frame = window.frame;
+    const int right = frame.x + frame.w - 1;
+    return frame.h >= 3 && frame.h <= 7 && window.title_length == 3 &&
+        window.title_x == right - 3 &&
+        rows[frame.y].compare(right - 3, 3, std::string("[\x0f]", 3)) == 0;
+}
+
 // gui/launcher's minimal mode has no window skin. Its prefix clears the
 // complete first row, ending at the ten-cell Alt+m control; anchored native
 // artwork can leave part of the screen to its right. The second row is only
@@ -290,6 +300,53 @@ static std::vector<SDL_Rect> native_dfhack_minimal_launcher_geometry(
     if (width - 11 >= static_cast<int>(search.size()) && rows[1].starts_with(search))
         frames.push_back({0, 1, width - 11, 1});
     return frames;
+}
+
+// Autocomplete owns executable identifiers independently of the launcher's
+// title, left document and divider. Its fixed Label grammar and footer prove
+// the list even when the enclosing frame cannot be recovered in full.
+static std::vector<SDL_Rect> native_dfhack_launcher_command_regions(
+        const std::vector<std::string> &rows) {
+    std::vector<SDL_Rect> regions;
+    if (rows.empty() || rows.front().empty() || rows.size() > 1000 ||
+            rows.front().size() > 1000) return regions;
+    const int width = static_cast<int>(rows.front().size());
+    const int height = static_cast<int>(rows.size());
+    if (std::any_of(rows.begin(), rows.end(), [width](const auto &row) {
+            return row.size() != static_cast<size_t>(width);
+        })) return regions;
+    constexpr std::string_view guide = "Click or select via";
+    for (int guide_y = 0; guide_y + 8 < height; ++guide_y) {
+        for (size_t at = rows[guide_y].find(guide); at != std::string::npos;
+                at = rows[guide_y].find(guide, at + guide.size())) {
+            const int left = static_cast<int>(at), right = left + 27;
+            // launcher.lua: width 28, left inset 1; the parent's right rail
+            // follows the 27-cell list, with its signature seven cells back.
+            if (right >= width ||
+                    rows[guide_y + 1].compare(left + 1, 13, "Tab/Shift+Tab") != 0 ||
+                    rows[guide_y + 6].compare(left, 8, "Showing:") != 0) continue;
+            const auto keyed_caption = [&](int y, std::string_view source) {
+                const auto band = std::string_view(rows[y]).substr(left, 27);
+                const size_t separator = band.find(": ");
+                return separator != std::string_view::npos &&
+                    is_keybinding_code(band.substr(0, separator)) &&
+                    band.substr(separator + 2).starts_with(source);
+            };
+            if (!keyed_caption(guide_y + 3, "Tags:") ||
+                    !keyed_caption(guide_y + 4, "Reset tag filter")) continue;
+            bool mode = false;
+            for (std::string_view source : {"Matching tools", "Similar tools", "Tagged tools"})
+                mode = mode || rows[guide_y + 6].compare(left + 9, source.size(), source) == 0;
+            if (!mode) continue;
+            const int list_top = guide_y + 8;
+            for (int bottom = list_top + 1; bottom < height; ++bottom) {
+                if (rows[bottom].compare(right - 7, 6, "DFHack") != 0) continue;
+                regions.push_back({left, list_top, right - left, bottom - list_top});
+                break;
+            }
+        }
+    }
+    return regions;
 }
 
 // The executable launcher and its document share one proven native frame.

@@ -1,10 +1,5 @@
-# 祝福祭坛汉化数据
+# Altar of Blessings 简体中文汉化
 
-原模组：Altar of Blessings，作者 Nxrcss，工坊编号 3642206249，本次来源版本 1.0 (5310091)。来源为本机订阅目录 D:\program\steam\steamapps\workshop\content\975370\3642206249 中的 info.txt、objects RAW 及 scripts 下两个 Lua 文件。
+翻译祭坛、祝福、配方、法术与相关书籍文本。
 
-本包覆盖祭坛名称、四种祝福配方、祝福称号、研究秘术、竞技场能力、法术交互与施法动词、灵气/冰箭等材料、书籍名称。全部译文与规则仅保存在本包，未改动原模组、DFCN 本体词表或原始 RAW/脚本。RAW 标识符、Lua 命令及代码保留。用户自定义小队名保持原样。
-
-这是未发布的本地数据包，不带工坊发布身份。整个目录置于游戏 mods/dfcn_altar_of_blessings_zh_hans 后由 DFCN 读取；不需要在创建世界时启用。本包不是原模组的替代品。
-
-局限：只针对上述本机版本的实际显示字段；后续原模组新增文本需随版本补充。原模组的图像内容和脚本中不进入显示的代码、调试标识不作为翻译词条。翻译数据已制作，未操作游戏，尚未观察到实机最终显示效果。
-
+需要 [Altar of Blessings](https://steamcommunity.com/sharedfiles/filedetails/?id=3642206249) 和 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)。数据自动读取，无需在世界模组列表启用。

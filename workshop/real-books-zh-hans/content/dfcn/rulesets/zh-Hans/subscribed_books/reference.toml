@@ -4,7 +4,7 @@ base = "subscribed_books::reference"
 [[rulesets]]
 name = "year1"
 [rulesets.rules]
-"{::subscribed_books::vocabulary::birth_year}" = "{::subscribed_books::vocabulary::birth_year}"
+"{::subscribed_books::vocabulary::year}" = "{::subscribed_books::vocabulary::year}"
 
 [[rulesets]]
 name = "year2"
@@ -29,7 +29,7 @@ name = "role"
 [[rulesets]]
 name = "birth_year"
 [rulesets.rules]
-"{::subscribed_books::vocabulary::birth_year}" = "{::subscribed_books::vocabulary::birth_year}"
+"{::subscribed_books::vocabulary::year}" = "{::subscribed_books::vocabulary::year}"
 
 [[rulesets]]
 name = "cause"
@@ -735,6 +735,7 @@ name = "race"
 [[rulesets]]
 [rulesets.rules]
 "Procedure. applicable as of {year1}; supersedes any earlier, unwritten practice." = "规程。至{year1}年适用；取代此前一切未成文做法。"
+"Procedure, applicable as of {year1}; supersedes any earlier, unwritten practice." = "规程：至{year1}年适用；取代此前一切未成文做法。"
 
 [[rulesets]]
 [rulesets.rules]

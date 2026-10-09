@@ -2,6 +2,7 @@
 
 from pathlib import Path
 import os
+import subprocess
 import sys
 import tempfile
 import zipfile
@@ -25,6 +26,9 @@ RUNTIME_FILES = (
     "data/runtime/site-government-independent-suffixes.tsv",
     "data/runtime/character-name-lexicon.tsv", "data/runtime/character-name-overrides.tsv",
     "data/runtime/character-surname-lexicon.tsv",
+    "data/runtime/character-surname-classes.tsv",
+    "data/runtime/character-surname-constructions.tsv",
+    "data/runtime/character-surname-context-imagery.tsv",
     "data/runtime/english-pronunciation/britfone.csv",
     "data/runtime/english-pronunciation/britfone.LICENSE",
     "data/runtime/english-pronunciation/britfone.README",
@@ -80,15 +84,28 @@ def notices() -> str:
 def package() -> None:
     if sys.platform != "linux" or len(sys.argv) != 1:
         raise RuntimeError("Use package-linux.sh on Linux without arguments.")
+    strip_tool = Path("/usr/bin/strip")
+    if not strip_tool.is_file():
+        raise RuntimeError(f"Required native Linux strip tool is missing: {strip_tool}")
     output = ROOT / "DFCN-Linux-x64-minimal.zip"
     descriptor, name = tempfile.mkstemp(prefix="DFCN-Linux-x64-minimal.", suffix=".tmp", dir=ROOT)
     os.close(descriptor)
     candidate = Path(name)
     try:
-        with zipfile.ZipFile(candidate, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
-            archive.write(ROOT / "libdfhooks.so", "libdfhooks.so")
+        with tempfile.TemporaryDirectory(prefix="DFCN-Linux-libraries.", suffix=".tmp", dir=ROOT) as directory, \
+                zipfile.ZipFile(candidate, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+            libraries = {}
+            for name in ("libdfcn_core.so", "libdfhooks.so"):
+                stripped = Path(directory) / name
+                result = subprocess.run([str(strip_tool), "--strip-unneeded", "-o", str(stripped),
+                                         str(ROOT / name)], capture_output=True, text=True)
+                if result.returncode:
+                    raise RuntimeError(f"Linux library stripping failed ({result.returncode}): "
+                                       f"{ROOT / name}: {result.stderr.strip()}")
+                libraries[name] = stripped
+            archive.write(libraries["libdfhooks.so"], "libdfhooks.so")
             for relative in RUNTIME_FILES:
-                archive.write(ROOT / relative, "dfcn/" + relative)
+                archive.write(libraries.get(relative, ROOT / relative), "dfcn/" + relative)
             for source in sorted((ROOT / "data/runtime/rulesets").rglob("*.toml")):
                 archive.write(source, "dfcn/" + source.relative_to(ROOT).as_posix())
             for name in ("font.ttf", "font.otf", "font.ttc"):
@@ -100,6 +117,9 @@ def package() -> None:
                 archive.write(ROOT / "third_party" / name, "dfcn/data/runtime/" + name)
             archive.writestr("dfcn/THIRD_PARTY_NOTICES.md", notices())
             archive.writestr("INSTALL.txt", INSTALLATION)
+            archive.write(ROOT / "workshop/content/CHANGELOG.txt", "CHANGELOG.txt")
+            archive.write(ROOT / "docs/translation-extensions.zh-CN.md",
+                          "dfcn/docs/translation-extensions.zh-CN.md")
         os.replace(candidate, output)
         print(f"Created: {output}\nSize: {output.stat().st_size / 1024 / 1024:.2f} MiB", flush=True)
     finally:

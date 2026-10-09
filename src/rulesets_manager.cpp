@@ -227,95 +227,124 @@ namespace Hooks {
             memo_cache_.size(), total_entries, LruMemoMap::DEFAULT_MAX);
     }
 
-    // Analyze each reachable namespace once. Shared vocabularies can have
-    // many incoming paths; enumerating every path made loading grow with
-    // their combinations rather than with the size of the rule graph.
+    // -------------------------------------------------------------------------
+    // 从根出发的图分析（循环检测）
+    // -------------------------------------------------------------------------
+
+    /// Shared namespaces are analyzed once instead of once per incoming
+    /// path. Tarjan's strongly connected components identify every cyclic
+    /// reference in linear graph work, including self references. A rule is
+    /// disabled only when one of its own references participates in a cycle;
+    /// ancestors that merely reach a cyclic component remain available.
     void RulesetsManager::analyze_from_root() {
         cyclic_rule_signatures_.clear();
-        if (!rulesets_.contains("::")) return;
 
-        struct Edge { size_t target; const Tokens* rule; };
-        struct Node { const std::string* identifier; std::vector<Edge> edges; };
-        std::vector<Node> graph;
-        std::unordered_map<std::string, size_t> indices;
-        graph.reserve(rulesets_.size());
-        indices.reserve(rulesets_.size());
-        for (const auto& [identifier, rules] : rulesets_) {
-            (void)rules;
-            indices.emplace(identifier, graph.size());
-            graph.push_back({&identifier, {}});
+        if (!rulesets_.contains("::")) {
+            LOGGERMANAGER.getLogger()->warn("[Analyze] root \"::\" not found, skip");
+            return;
         }
-        for (const auto& [identifier, rules] : rulesets_) {
-            auto& edges = graph[indices.at(identifier)].edges;
-            for (const auto& [source, target] : rules) {
-                (void)target;
+
+        struct Edge { size_t target; const Tokens* rule_source; };
+        struct Namespace { std::string identifier; std::vector<Edge> edges; };
+        std::vector<Namespace> graph;
+        std::unordered_map<std::string, size_t> node_ids;
+        graph.reserve(rulesets_.size());
+        node_ids.reserve(rulesets_.size());
+        const auto node_id = [&](const std::string& identifier) {
+            const auto [found, inserted] = node_ids.try_emplace(identifier, graph.size());
+            if (inserted) graph.push_back({identifier, {}});
+            return found->second;
+        };
+        node_id("::");
+        // Appending new nodes makes this work list cover only root-reachable
+        // namespaces. Keep source token pointers rather than copying a rule
+        // for every edge; the candidate ruleset graph stays fixed here.
+        for (size_t current = 0; current < graph.size(); ++current) {
+            const auto rules = rulesets_.find(graph[current].identifier);
+            if (rules == rulesets_.end()) continue;
+            std::vector<Edge> edges;
+            for (const auto& [source, target] : rules->second) {
                 for (const auto& token : source) {
                     if (token.type != Type::Reference || token.value.empty() ||
                         token.value[0] == '@' || token.value[0] == '#') continue;
-                    std::string reference = token.value;
-                    if (reference[0] == '%') {
-                        const auto first = reference.find(':');
-                        if (first == std::string::npos) continue;
-                        const auto second = reference.find(':', first + 1);
-                        if (second == std::string::npos) {
-                            const auto base = reference.substr(first + 1);
+                    std::string ref_target;
+                    if (token.value[0] == '%') {
+                        // Preserve the existing replacer dependency targets.
+                        const auto first_colon = token.value.find(':');
+                        if (first_colon == std::string::npos) continue;
+                        const auto second_colon = token.value.find(':', first_colon + 1);
+                        if (second_colon == std::string::npos) {
+                            const auto base = token.value.substr(first_colon + 1);
                             if (base.empty()) continue;
-                            reference = "::" + base;
+                            ref_target = "::" + base;
                         } else {
-                            const auto base = reference.substr(first + 1, second - first - 1);
-                            const auto qualifier = reference.substr(second + 1);
-                            reference = qualifier.starts_with("::") ? qualifier
-                                : "::" + base + "::" + qualifier;
+                            const auto base = token.value.substr(first_colon + 1,
+                                second_colon - first_colon - 1);
+                            const auto qualifier = token.value.substr(second_colon + 1);
+                            ref_target = qualifier.starts_with("::")
+                                ? qualifier : "::" + base + "::" + qualifier;
                         }
+                    } else {
+                        ref_target = token.value;
                     }
-                    if (const auto found = indices.find(reference); found != indices.end())
-                        edges.push_back({found->second, &source});
+                    edges.push_back({node_id(ref_target), &source});
                 }
+            }
+            graph[current].edges = std::move(edges);
+        }
+
+        const size_t unvisited = graph.size();
+        std::vector<size_t> discovery(graph.size(), unvisited);
+        std::vector<size_t> lowlink(graph.size());
+        std::vector<size_t> component(graph.size(), unvisited);
+        std::vector<size_t> component_sizes;
+        std::vector<size_t> stack;
+        std::vector<bool> on_stack(graph.size(), false);
+        stack.reserve(graph.size());
+        size_t next_discovery = 0;
+        const auto visit = [&](auto&& self, size_t current) -> void {
+            discovery[current] = lowlink[current] = next_discovery++;
+            stack.push_back(current);
+            on_stack[current] = true;
+            for (const auto& edge : graph[current].edges) {
+                if (discovery[edge.target] == unvisited) {
+                    self(self, edge.target);
+                    lowlink[current] = std::min(lowlink[current], lowlink[edge.target]);
+                } else if (on_stack[edge.target]) {
+                    lowlink[current] = std::min(lowlink[current], discovery[edge.target]);
+                }
+            }
+            if (lowlink[current] != discovery[current]) return;
+            size_t size = 0;
+            for (;;) {
+                const auto member = stack.back();
+                stack.pop_back();
+                on_stack[member] = false;
+                component[member] = component_sizes.size();
+                ++size;
+                if (member == current) break;
+            }
+            component_sizes.push_back(size);
+        };
+        visit(visit, 0);
+
+        for (size_t current = 0; current < graph.size(); ++current) {
+            const Tokens* last_cyclic_source = nullptr;
+            for (const auto& edge : graph[current].edges) {
+                if (edge.rule_source == last_cyclic_source) continue;
+                if (component[current] != component[edge.target] ||
+                    (component_sizes[component[current]] == 1 && edge.target != current))
+                    continue;
+                cyclic_rule_signatures_.insert({graph[current].identifier, *edge.rule_source});
+                last_cyclic_source = edge.rule_source;
             }
         }
 
-        // An edge lies on a cycle exactly when both ends are in the same
-        // strongly connected component (including a one-node self-reference).
-        // Keep the original whole-rule exclusion when any token is cyclic.
-        const size_t unseen = graph.size();
-        std::vector<size_t> order(graph.size(), unseen), low(graph.size()),
-            components(graph.size(), unseen), stack;
-        std::vector<bool> active(graph.size(), false);
-        std::vector<size_t> component_sizes;
-        size_t next_order = 0;
-        const auto visit = [&](auto&& self, size_t node) -> void {
-            order[node] = low[node] = next_order++;
-            stack.push_back(node);
-            active[node] = true;
-            for (const auto& edge : graph[node].edges) {
-                if (order[edge.target] == unseen) {
-                    self(self, edge.target);
-                    low[node] = std::min(low[node], low[edge.target]);
-                } else if (active[edge.target]) {
-                    low[node] = std::min(low[node], order[edge.target]);
-                }
-            }
-            if (low[node] != order[node]) return;
-            const size_t component = component_sizes.size();
-            size_t count = 0;
-            for (;;) {
-                const size_t member = stack.back();
-                stack.pop_back();
-                active[member] = false;
-                components[member] = component;
-                ++count;
-                if (member == node) break;
-            }
-            component_sizes.push_back(count);
-        };
-        visit(visit, indices.at("::"));
-        for (size_t node = 0; node < graph.size(); ++node) {
-            if (components[node] == unseen) continue;
-            for (const auto& edge : graph[node].edges)
-                if (components[node] == components[edge.target] &&
-                    (node == edge.target || component_sizes[components[node]] > 1))
-                    cyclic_rule_signatures_.insert({*graph[node].identifier, *edge.rule});
+        if (!cyclic_rule_signatures_.empty()) {
+            LOGGERMANAGER.getLogger()->info("[Analyze] {} cyclic rule(s) detected",
+                cyclic_rule_signatures_.size());
         }
+        LOGGERMANAGER.getLogger()->info("[Analyze] {} namespaces reachable from root", graph.size());
     }
 
     bool RulesetsManager::load_rule_sets() {

@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <array>
 #include <cstdint>
+#include <deque>
 #include <filesystem>
 #include <fstream>
 #include <functional>
@@ -12,6 +13,7 @@
 #include <string_view>
 #include <tuple>
 #include <unordered_map>
+#include <unordered_set>
 #include <utility>
 #include <vector>
 
@@ -31,10 +33,14 @@ public:
         std::unordered_map<std::string, std::string> overrides;
         std::unordered_map<std::string, SurnameEntry> surnames;
         MandarinNameReadings readings;
+        loaded_ = false;
         error_.clear();
+        surname_cache_.clear();
+        surname_cache_order_.clear();
         if (!read_lexicon(runtime_dir / "character-name-lexicon.tsv", words) ||
             !read_overrides(runtime_dir / "character-name-overrides.tsv", overrides) ||
             !read_surname_lexicon(runtime_dir / "character-surname-lexicon.tsv", surnames) ||
+            !read_surname_context(runtime_dir, surnames) ||
             !readings.load(runtime_dir, error_))
             return false;
         for (auto &[key, senses] : words) {
@@ -51,6 +57,9 @@ public:
         }
         words_ = std::move(words);
         overrides_ = std::move(overrides);
+        lexical_forms_.clear();
+        for (const auto &[form, senses] : words_) lexical_forms_.insert(form);
+        for (const auto &[form, target] : overrides_) lexical_forms_.insert(form);
         surnames_ = std::move(surnames);
         surname_readings_ = std::move(readings);
         loaded_ = true;
@@ -173,7 +182,9 @@ public:
                 return translated;
             }
         }
-        Part after = unquoted(source.substr(cursor), given_callback);
+        // A suffix after an authored nickname is a surname or title. The
+        // given-name slot has already been consumed before the quote.
+        Part after = unquoted(source.substr(cursor), cursor ? GivenCallback{} : given_callback);
         append_group(translated, after.text);
         recognized = recognized || after.known;
         if (!recognized || (!remainder.empty() && !after.complete)) return std::nullopt;
@@ -196,6 +207,7 @@ private:
         std::string surname_core, surname_modifier, surname_head, surname_agent;
         std::string surname_compact, surname_balanced;
         std::string surname_source_action, surname_source_full, surname_er_identity;
+        std::string surname_sense;
         std::uint32_t kinds = 0;
         std::vector<std::string> categories, families;
         bool known = false, complete = false;
@@ -208,11 +220,24 @@ private:
     struct SurnameEntry {
         std::string core, modifier, head, action, agent, compact, balanced;
         std::vector<std::string> families;
+        std::string semantic_class, action_type, valency, identity, imagery_sense, full_meaning;
+        std::vector<std::string> traits, allowed_objects, allowed_subjects;
     };
 
     std::unordered_map<std::string, std::vector<Entry>> words_;
     std::unordered_map<std::string, std::string> overrides_;
     std::unordered_map<std::string, SurnameEntry> surnames_;
+    struct LexicalFormHash {
+        using is_transparent = void;
+        std::size_t operator()(std::string_view form) const noexcept {
+            return std::hash<std::string_view>{}(form);
+        }
+    };
+    std::unordered_set<std::string, LexicalFormHash, std::equal_to<>> lexical_forms_;
+    // A world catalog repeats family surnames across many distinct given
+    // names. Their word and pronunciation scores depend on this loaded lexicon.
+    mutable std::unordered_map<std::string, Part> surname_cache_;
+    mutable std::deque<std::string> surname_cache_order_;
     MandarinNameReadings surname_readings_;
     bool loaded_ = false;
     std::string error_;
@@ -405,7 +430,9 @@ private:
                     }
                 }
                 for (const auto *required : {"english", "kind", "category", "state", "sense",
-                        "family", "core", "modifier", "head", "action", "agent"}) {
+                        "family", "core", "modifier", "head", "action", "agent",
+                        "semantic_class", "traits", "action_type", "valency", "identity",
+                        "allowed_objects", "allowed_subjects", "imagery_english", "full_meaning"}) {
                     if (!columns.contains(required)) {
                         error_ = "Missing character-surname-lexicon.tsv column: " +
                             std::string(required);
@@ -430,9 +457,26 @@ private:
             }
             std::string sense = sense_key(key(value("english")), kinds(labels(value("kind"))),
                 labels(value("category")), key(value("state")), value("sense"));
-            SurnameEntry entry{std::string(value("core")), std::string(value("modifier")),
-                std::string(value("head")), std::string(value("action")), std::string(value("agent")),
-                std::string(value("compact")), std::string(value("balanced")), labels(value("family"))};
+            SurnameEntry entry;
+            entry.core = value("core");
+            entry.modifier = value("modifier");
+            entry.head = value("head");
+            entry.action = value("action");
+            entry.agent = value("agent");
+            entry.compact = value("compact");
+            entry.balanced = value("balanced");
+            entry.families = labels(value("family"));
+            entry.semantic_class = key(value("semantic_class"));
+            entry.traits = labels(value("traits"));
+            entry.action_type = key(value("action_type"));
+            entry.valency = key(value("valency"));
+            entry.identity = value("identity");
+            entry.full_meaning = value("full_meaning");
+            entry.allowed_objects = labels(value("allowed_objects"));
+            entry.allowed_subjects = labels(value("allowed_subjects"));
+            entry.imagery_sense = sense_key(key(value("imagery_english")),
+                kinds(labels(value("kind"))), labels(value("category")),
+                key(value("state")), value("sense"));
             auto found = out.find(sense);
             if (found == out.end()) out.emplace(std::move(sense), std::move(entry));
             else if (std::tie(entry.core, entry.modifier, entry.head, entry.action, entry.agent,
@@ -626,6 +670,11 @@ private:
             if (folded[cut] == '-') ++right_start;
             if (right_start >= folded.size() || space(folded[cut - 1]) ||
                 space(folded[right_start]) || folded[cut - 1] == '-') continue;
+            // Reject impossible boundaries before constructing either sense's
+            // many strings and metadata. The folded/trimmed forms are exactly
+            // those that variants() would look up in the loaded dictionaries.
+            if (!lexical_forms_.contains(trim(std::string_view(folded).substr(0, cut))) ||
+                !lexical_forms_.contains(trim(std::string_view(folded).substr(right_start)))) continue;
             auto left = variants(std::string_view(folded).substr(0, cut));
             auto right = variants(std::string_view(folded).substr(right_start));
             for (const auto &a : left) for (const auto &b : right) {
@@ -639,8 +688,7 @@ private:
     }
 
     // Single-root names keep complete imagery. Two-root surnames select
-    // independently authored words according to their grammatical relation:
-    // equal-width compounds or licensed particles, without truncation/padding.
+    // context forms according to both senses, their roles and relation.
     std::vector<Part> surname_variants(std::string_view source, bool lexical_only = false) const {
         if (!lexical_only) {
             if (auto p = override_part(source); p.known) {
@@ -657,6 +705,7 @@ private:
                 p.state, p.source_sense));
             if (found == surnames_.end()) continue;
             const auto &e = found->second;
+            p.surname_sense = found->first;
             p.surname_source_action = p.action;
             p.surname_source_full = p.full_text;
             p.text = p.short_text = p.full_text = p.surname_core = e.core;
@@ -813,110 +862,13 @@ private:
         return a.english == b.english && a.source_sense == b.source_sense &&
             a.kinds == b.kinds && a.state == b.state && a.categories == b.categories;
     }
-    Part ordered_er_pair(const Part &left, const Part &right) const {
-        using Relation = MandarinNameProsody::Relation;
-        Part best = original(left.english + right.english);
-        if (!er_agent(left) && !er_agent(right)) return best;
-        struct Image {
-            std::string_view word;
-            int fit;
-        };
-        auto images = [](const Part &part) {
-            std::vector<Image> out;
-            auto add = [&](std::string_view word, int fit) {
-                // Only remove an explicitly registered grammatical suffix;
-                // never shorten a two-character image by slicing its glyphs.
-                if (has(part, Agent) && word.ends_with("者"))
-                    word.remove_suffix(std::string_view("者").size());
-                if (glyph_count(word) != 1 || word == "者" || word == "之" || word == "的")
-                    return;
-                for (auto &image : out) {
-                    if (image.word == word) {
-                        image.fit = std::max(image.fit, fit);
-                        return;
-                    }
-                }
-                out.push_back({word, fit});
-            };
-            add(part.surname_compact, 10);
-            add(part.surname_source_action, 8);
-            add(part.action, 8);
-            add(part.source_sense, 8);
-            add(part.surname_source_full, 8);
-            add(part.surname_core, 6);
-            add(part.surname_modifier, 6);
-            add(part.surname_head, 6);
-            add(part.surname_agent, 6);
-            return out;
-        };
-        auto first = images(left), second = images(right);
-        for (const auto &a : first) for (const auto &b : second) {
-            int pronunciation = MandarinNameProsody::rank(surname_readings_,
-                {a.word, b.word, {}, "者", Relation::Nominal, false, false},
-                left.surname_source_full, right.surname_source_full);
-            int score = 5 * 4096 + (a.fit + b.fit) * 3 +
-                std::clamp(pronunciation, -12, 6) * 2;
-            if (best.known && score <= best.score) continue;
-            // AerB and ABer have the same immutable A, B, 者 slots. Sound
-            // selects authored images inside those slots, never their order.
-            best.text = best.short_text = best.full_text =
-                std::string(a.word) + std::string(b.word) + "者";
-            best.known = true;
-            best.complete = left.complete && right.complete;
-            best.roots = 2;
-            best.kinds = Agent;
-            best.english = left.english + right.english;
-            best.root_left = left.english;
-            best.root_right = right.english;
-            best.order = left.order + '\n' + right.order;
-            best.score = score;
-        }
-        return best;
-    }
-
-    Part ordered_er_part(std::string_view source, bool &required) const {
-        required = false;
-        Part best = original(source);
-        std::string folded = key(source);
-        // A real single-word lexical entry protects water, winter, creature
-        // nouns and other intrinsic spellings. Whole-surname overrides do not
-        // hide a genuine two-root er surname from this channel.
-        if (folded.size() > 512) return best;
-        if (words_.contains(folded)) {
-            auto exact = surname_variants(folded, true);
-            if (!std::any_of(exact.begin(), exact.end(), er_agent)) return best;
-        }
-        for (std::size_t cut = 1; cut < folded.size(); ++cut) {
-            std::size_t right_start = cut;
-            if (folded[cut] == '-') ++right_start;
-            if (right_start >= folded.size() || space(folded[cut - 1]) ||
-                space(folded[right_start]) || folded[cut - 1] == '-') continue;
-            std::string a = folded.substr(0, cut), b = folded.substr(right_start);
-            if (!words_.contains(a) || !words_.contains(b)) continue;
-            auto left = surname_variants(a, true), right = surname_variants(b, true);
-            bool left_er = std::any_of(left.begin(), left.end(), er_agent);
-            bool right_er = std::any_of(right.begin(), right.end(), er_agent);
-            if (!left_er && !right_er) continue;
-            required = true;
-            // Lock the actual agent senses before comparing surface forms;
-            // a homonymous object sense cannot escape the final 者 rule.
-            for (const auto &lhs : left) for (const auto &rhs : right) {
-                if ((left_er && !er_agent(lhs)) || (right_er && !er_agent(rhs))) continue;
-                Part candidate = ordered_er_pair(lhs, rhs);
-                if (better(candidate, best)) best = std::move(candidate);
-            }
-        }
-        return best;
-    }
+    #include "character_surname_context.inc"
 
     Part surname_combine(const Part &left, const Part &right, bool entity = false) const {
+        if (!entity) return surname_context_combine(left, right);
         using Relation = MandarinNameProsody::Relation;
-        // An er surname keeps these independently parsed A/B slots intact.
-        const bool left_er = er_agent(left), right_er = er_agent(right);
-        const bool requires_er_actor = left_er || right_er;
-        // The ordinary grammar engine may reorder nouns and predicates. An
-        // er surname must leave that engine before any such transformation.
-        if (requires_er_actor && !entity) return ordered_er_pair(left, right);
+        // The remaining composer is the entity channel's existing grammar.
+        // Personal surnames above already selected both context branches.
         struct Candidate {
             std::string text;
             MandarinNameProsody::Shape shape;
@@ -1329,75 +1281,29 @@ private:
                 best.surname_er_identity.clear();
             }
         }
-        if (entity) return best;
-        if (!best.known && !has(left, Agent) && !has(right, Agent) &&
-            same_surname_sense(left, right) && left.surname_core == right.surname_core &&
-            left.surname_compact == right.surname_compact && left.kinds == right.kinds &&
-            left.state == right.state && left.categories == right.categories &&
-            left.families == right.families && glyph_count(left.surname_core) == 2) {
-            best.text = best.short_text = best.full_text = left.surname_core + right.surname_core;
-            best.known = best.complete = left.complete && right.complete;
-            best.roots = left.roots + right.roots;
-            best.order = left.order + '\n' + right.order;
-            best.score = 18;
-        }
-        if (!best.known && (surname_actor_licensed(left) || surname_actor_licensed(right))) {
-            // A missing one-character image never licenses a longer 者 name.
-            // Keep the two complete registered images without adding an actor
-            // suffix. Removing an explicit Agent's grammatical suffix here
-            // restores its authored base; it does not truncate an image word.
-            auto images = [](const Part &part) {
-                std::vector<std::string> words;
-                for (const auto *word : {&part.surname_balanced, &part.surname_core,
-                    &part.surname_source_full, &part.action, &part.surname_compact}) {
-                    std::string base = *word;
-                    if (has(part, Agent) && base.ends_with("者"))
-                        base.erase(base.size() - std::string_view("者").size());
-                    if (base.empty() || base.find("者") != std::string::npos ||
-                        base.ends_with("的")) continue;
-                    if (std::find(words.begin(), words.end(), base) == words.end())
-                        words.push_back(std::move(base));
-                }
-                return words;
-            };
-            auto first = images(left), second = images(right);
-            for (const auto &a : first) for (const auto &b : second) {
-                const auto width = glyph_count(a);
-                if ((width != 1 && width != 2) || width != glyph_count(b)) continue;
-                int pronunciation = MandarinNameProsody::rank(surname_readings_,
-                    {a, b, {}, {}, Relation::Coordinate, false, false},
-                    left.surname_source_full, right.surname_source_full);
-                int score = -4096 + std::clamp(pronunciation, -12, 6) * 2;
-                if (best.known && score <= best.score) continue;
-                best.text = best.short_text = best.full_text = a + b;
-                best.known = true;
-                best.complete = left.complete && right.complete;
-                best.roots = left.roots + right.roots;
-                best.english = left.english + right.english;
-                best.root_left = left.english;
-                best.root_right = right.english;
-                best.order = left.order + '\n' + right.order;
-                best.score = score;
-            }
-            if (!best.known && !first.empty() && !second.empty()) {
-                best.text = best.short_text = best.full_text = first.front() + "与" + second.front();
-                best.known = true;
-                best.complete = left.complete && right.complete;
-                best.roots = left.roots + right.roots;
-                best.english = left.english + right.english;
-                best.root_left = left.english;
-                best.root_right = right.english;
-                best.order = left.order + '\n' + right.order;
-                best.score = -8192;
-            }
-        }
         return best;
     }
+
     Part surname_part(std::string_view source) const {
         source = trim(source);
-        bool requires_er = false;
-        Part ordered = ordered_er_part(source, requires_er);
-        if (requires_er) return ordered;
+        if (source.size() > 512) return surname_part_uncached(source);
+        std::string cache_key(source);
+        if (const auto cached = surname_cache_.find(cache_key); cached != surname_cache_.end())
+            return cached->second;
+        Part result = surname_part_uncached(source);
+        constexpr std::size_t maximum = 32768;
+        if (surname_cache_.size() >= maximum && !surname_cache_order_.empty()) {
+            surname_cache_.erase(surname_cache_order_.front());
+            surname_cache_order_.pop_front();
+        }
+        const auto inserted = surname_cache_.emplace(cache_key, result);
+        try { surname_cache_order_.push_back(std::move(cache_key)); }
+        catch (...) { surname_cache_.erase(inserted.first); throw; }
+        return result;
+    }
+
+    Part surname_part_uncached(std::string_view source) const {
+        source = trim(source);
         // Recognition and English segmentation stay with the existing parser.
         // Literary choices can change a sense or Chinese order, but cannot
         // invent a new boundary or make an unknown component a surname.
@@ -1407,9 +1313,11 @@ private:
         Part best = original(source);
         if (recognized.roots == 1) {
             for (auto p : surname_variants(source)) {
-                if ((er_agent(p) || p.text.ends_with("者")) && !p.surname_er_identity.empty())
-                    p.text = p.short_text = p.full_text = p.surname_er_identity;
-                if (!surname_actor_shape(p.text)) continue;
+                // A stand-alone root retains its complete registered meaning
+                // or identity; restricted surname morphemes need a partner.
+                if (const auto entry = surnames_.find(p.surname_sense); entry != surnames_.end())
+                    p.text = p.short_text = p.full_text = has(p, Agent) ?
+                        entry->second.identity : entry->second.full_meaning;
                 p.score = role_score(p, Role::Plain);
                 if (better(p, best)) best = std::move(p);
             }
@@ -1425,7 +1333,7 @@ private:
         // literary surface form survived. Keep its complete Chinese wording;
         // do not erase a known surname or publish a half-translated identity.
         if (best.known) return best;
-        return surname_actor_shape(recognized.text) ? recognized : original(source);
+        return recognized;
     }
 
     static std::optional<std::string> entity_result(const std::vector<Part> &parts) {
@@ -1808,24 +1716,16 @@ private:
                 }
             }
         }
-        // Whole multiword forms must win before inventing a first/surname split.
-        if (source.find(' ') != std::string_view::npos) {
-            Part exact = literal(source);
-            if (exact.known) return surname_part(source);
-        }
-        Part lexical = compound_part(source);
-        // A completely covered two-root compound wins before the given-name
-        // callback.  For a single homonymous word the callback may have explicit
-        // native-given evidence, which takes priority over its English sense.
-        if (lexical.known && lexical.roots >= 2) return surname_part(source);
+        // Proven given-name evidence wins even when its spelling is an
+        // ordinary English word or can be split into two surname roots.
         if (given) {
             if (source.find_first_of(" \t\r\n") == std::string_view::npos) {
                 auto value = given(source);
                 if (value && !value->empty()) {
-                Part out = original(source);
-                out.text = out.short_text = out.full_text = *value;
-                out.known = out.complete = true;
-                return out;
+                    Part out = original(source);
+                    out.text = out.short_text = out.full_text = *value;
+                    out.known = out.complete = true;
+                    return out;
                 }
             }
             for (std::size_t cut = 1; cut < source.size(); ++cut) {
@@ -1843,7 +1743,13 @@ private:
                 return out;
             }
         }
-        Part p = std::move(lexical);
+        // Without given-name evidence, complete lexemes still take priority
+        // over an inferred first/surname split.
+        if (source.find(' ') != std::string_view::npos) {
+            Part exact = literal(source);
+            if (exact.known) return surname_part(source);
+        }
+        Part p = compound_part(source);
         if (p.known) return surname_part(source);
         // A typed name can consist only of a spaced English title, without
         // a given name or leading article. Keep proven native given names
@@ -1875,8 +1781,6 @@ private:
         source = trim(source);
         if (source.empty()) return original(source);
         if (auto p = name_override_part(source); p.known) return p;
-        if (auto p = literal(source); p.known && source.find(' ') != std::string_view::npos)
-            return surname_part(source);
         if (auto the = marker(source, "the")) {
             // A standalone generated title has no personal-name prefix.
             // Its absent first group must not make a complete title fail.

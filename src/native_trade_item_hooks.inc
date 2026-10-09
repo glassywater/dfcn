@@ -70,7 +70,8 @@ static void capture_native_trade_item_draw(graphicst *graphics, const NativeStri
         native_trade_item_pending() = {};
         if (width != 0 || pending.string_owner != reinterpret_cast<uintptr_t>(source) ||
                 pending.epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire) ||
-                !native_capture_grid_valid(graphics) || !graphics->screen ||
+                !graphics || graphics->dimx <= 0 || graphics->dimx > 1000 ||
+                graphics->dimy <= 0 || graphics->dimy > 1000 || !graphics->screen ||
                 graphics->screenx < 0 || graphics->screenx >= graphics->dimx ||
                 graphics->screeny < 0 || graphics->screeny >= graphics->dimy ||
                 !native_history_copy_string(pending.string_owner, shortened) ||

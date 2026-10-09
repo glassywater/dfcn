@@ -259,20 +259,17 @@ private:
     };
     class Reader {
     public:
-        explicit Reader(const std::filesystem::path &path) {
-            std::ifstream input(path, std::ios::binary | std::ios::ate);
-            if (!input) return;
-            const auto size = input.tellg();
-            if (size < 0 || static_cast<std::uint64_t>(size) > std::numeric_limits<std::size_t>::max()) return;
-            bytes_.resize(static_cast<std::size_t>(size));
-            input.seekg(0);
-            // Parse a single byte snapshot. Per-field istream calls were
-            // repeated millions of times during every core/data reload.
-            ready_ = input.good() && (bytes_.empty() ||
-                static_cast<bool>(input.read(reinterpret_cast<char *>(bytes_.data()), size)));
+        explicit Reader(const std::filesystem::path &path)
+            : stream_(path, std::ios::binary | std::ios::ate) {
+            if (stream_) {
+                const auto size = stream_.tellg();
+                if (size < 0) { stream_.setstate(std::ios::failbit); return; }
+                remaining_ = static_cast<std::uint64_t>(size);
+                stream_.seekg(0);
+            }
         }
-        bool good() const { return ready_; }
-        std::uint64_t remaining() const { return bytes_.size() - cursor_; }
+        bool good() const { return static_cast<bool>(stream_); }
+        std::uint64_t remaining() const { return remaining_; }
         template<class T> bool number(T &value) {
             if constexpr (std::endian::native == std::endian::little)
                 return read(&value, sizeof(value));
@@ -299,14 +296,34 @@ private:
         }
     private:
         bool read(void *data, std::size_t count) {
-            if (!ready_ || count > remaining()) return false;
-            if (count) std::memcpy(data, bytes_.data() + cursor_, count);
-            cursor_ += count;
+            if (!stream_ || count > remaining_) return false;
+            auto *destination = static_cast<char *>(data);
+            while (count) {
+                if (buffer_at_ == buffer_size_) {
+                    const auto block = static_cast<std::size_t>(
+                        std::min<std::uint64_t>(remaining_, buffer_.size()));
+                    if (!stream_.read(buffer_.data(), static_cast<std::streamsize>(block)))
+                        return false;
+                    buffer_at_ = 0;
+                    buffer_size_ = block;
+                }
+                const auto copied = std::min(count, buffer_size_ - buffer_at_);
+                std::memcpy(destination, buffer_.data() + buffer_at_, copied);
+                destination += copied;
+                buffer_at_ += copied;
+                count -= copied;
+                remaining_ -= copied;
+            }
             return true;
         }
-        std::vector<unsigned char> bytes_;
-        std::size_t cursor_ = 0;
-        bool ready_ = false;
+        std::ifstream stream_;
+        std::uint64_t remaining_ = 0;
+        // FST arcs contain millions of small scalar fields. Read fixed-size
+        // blocks and decode those fields from contiguous memory rather than
+        // entering the stream for every field. The buffer stays bounded even
+        // when a corrupt file advertises an excessive length.
+        std::array<char, 64u * 1024u> buffer_{};
+        std::size_t buffer_at_ = 0, buffer_size_ = 0;
     };
     static bool valid_weight(float weight) {
         return !std::isnan(weight) && weight != -std::numeric_limits<float>::infinity();

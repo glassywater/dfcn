@@ -1,0 +1,18 @@
+{
+  "appid": 975370,
+  "title": "Stone Tint 简体中文汉化",
+  "description_file": "workshop/stone-tint-zh-hans/description.bbcode.txt",
+  "content_folder": "workshop/stone-tint-zh-hans/content",
+  "preview_file": "workshop/stone-tint-zh-hans/preview.png",
+  "tags": [
+    "mod",
+    "translation",
+    "Chinese"
+  ],
+  "visibility": 2,
+  "changelog": "发布 Stone Tint 简体中文汉化数据。",
+  "required_items": [
+    3811193379,
+    3782099990
+  ]
+}

@@ -26,23 +26,49 @@ Windows 与 Linux 共用汉化数据载入优化：TOML 规则图按节点及引
 
 如果位于不同 Steam 库，将第一行改为该 DLL 的实际绝对路径；只写路径，不加引号或 `key=value`，保存为 UTF-8 无 BOM。汉化设置 `config.ini` 留在订阅目录的 `DFCN/dfcn/data/runtime/` 中。完整路径示例、旧版迁移与卸载方法见 [工坊详细说明](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)。
 
-**GitHub Release：**从 [v53.16-20261008](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008) 下载 `DFCN-Windows-x64-minimal.zip`，解压后将全部内容按原有目录结构复制到游戏根目录，包括 `dfhooks.dll`、`dfhooks_dfcn.ini` 和整个 `dfcn` 文件夹。此方式的汉化设置位于游戏目录的 `dfcn/data/runtime/config.ini`。
+**GitHub Release：**从 [v53.16-20261009](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261009) 下载 `DFCN-Windows-x64-minimal.zip`，解压后将全部内容按原有目录结构复制到游戏根目录，包括 `dfhooks.dll`、`dfhooks_dfcn.ini` 和整个 `dfcn` 文件夹。此方式的汉化设置位于游戏目录的 `dfcn/data/runtime/config.ini`。本版修复 **Shift+F5** 卸载后无法再次载入汉化的问题；完整变化见 Release 更新日志。
 
-汉化核心、配置与翻译数据按汉化模块所在目录定位，因此支持将运行文件保留在工坊目录。游戏中按 **Shift+F10** 开启或关闭汉化，保留当前核心与数据；按 **Shift+F5** 关闭再开启汉化时，重新加载核心与数据。数据仅在启动、**Shift+F5** 重新开启或 **Ctrl+Shift+F10** 显式刷新时加载，不自动检查文件变化。安装仅添加汉化自身文件，不改写磁盘上的游戏本体、RAW 或存档；取消订阅不会删除已复制的入口文件，卸载时需手动移除自己安装的汉化文件。
+Windows 汉化核心、配置与翻译数据按汉化模块所在目录定位，因此支持将运行文件保留在工坊目录。游戏中按 **Shift+F10** 开启或关闭汉化，保留当前核心与数据；按 **Shift+F5** 关闭再开启汉化时，重新加载核心与数据。数据仅在启动、**Shift+F5** 重新开启或 **Ctrl+Shift+F10** 显式刷新时加载，不自动检查文件变化。安装仅添加汉化自身文件，不改写磁盘上的游戏本体、RAW 或存档；取消订阅不会删除已复制的入口文件，卸载时需手动移除自己安装的汉化文件。
+
+Windows 本版提供 **Shift+F6**：扩展默认启用，首次按下停用全部扩展 TSV 词表与 TOML 规则，立即重新载入本体汉化并开启显示；再次按下恢复扩展并重新载入汉化。左右 Shift 均可，长按不重复切换。扩展开关只影响本次运行，跨 **Shift+F5** 核心重载保留，不写入配置文件。
 
 Windows 同时安装 **DFHack 53.16-r2** 时，可按 **Shift+F11** 关闭 DFHack，再按一次恢复。开关独立于汉化：关闭时暂停插件更新、界面 hook、热键、命令与 Lua 定时回调，保留驻留核心、插件配置、存档数据和世界卸载清理。已打开的 DFHack 界面会关闭；已执行的游戏或存档修改不会回滚。
+
+## Linux 安装与使用
+
+**Steam 创意工坊：**本项目同时提供 Linux x64 运行文件，位于 `你的 Steam 库目录/steamapps/workshop/content/975370/3811193379/DFCN-Linux/`。新版打包目录提供 `install.sh`，在该目录执行 `/bin/bash install.sh`，即可从同一订阅目录下的共享资源和 Linux 文件安装完整运行目录；游戏位于其他 Steam 库或使用官网版时，执行 `/bin/bash install.sh '/包含 dwarfort 的游戏目录'`。保留订阅目录下的 `DFCN/` 与 `DFCN-Linux/` 两个文件夹。旧版目录没有 `install.sh` 时，将其中的 **`libdfhooks.so` 和完整 `dfcn` 文件夹**复制到游戏根目录。Linux 不使用 Windows 的 `dfhooks_dfcn.ini`。
+
+**GitHub Release：**从 [v53.16-20261008-linux](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008-linux) 下载 `DFCN-Linux-x64-minimal.zip`，将全部内容按原有目录结构解压到包含 `dwarfort` 的游戏根目录。工坊中的 Linux 文件对应同一版本。
+
+Linux 汉化设置位于**游戏目录**的 `dfcn/data/runtime/config.ini`。Steam 后续下载新版后，再执行订阅目录中的 `install.sh`；安装脚本保留游戏目录中已有的汉化配置，完整准备数据后替换文件，不启动或重启游戏。旧版完整运行包仍按整包复制方式更新。Linux 包同时提供 Steam 版与官网免费版的地址绑定，依赖系统的 SDL2、FreeType、Fontconfig、libstdc++ 和 glibc；这些系统库及游戏程序不包含在运行包中。系统没有可用中文字体时，需安装系统中文字体，供 Fontconfig 选择。纯汉化数据无需在创建世界时启用，也无需 DFHack。
+
+Linux 已发布核心同样使用 **Shift+F10** 切换汉化并保留核心与数据；**Shift+F5** 关闭再开启时重新读取核心与数据；**Ctrl+Shift+F10** 显式刷新数据。卸载时移除自己安装的 `libdfhooks.so` 和 `dfcn` 汉化目录，取消订阅不会自动清理游戏目录中的副本；无需删除游戏或存档。
+
+Linux 源码已实现 **Shift+F6**，当前 Linux 发布包尚未包含此快捷键及本版 Windows 的后续修复。
 
 ## Mod 汉化数据扩展
 
 支持扩展加载的 DFCN 核心在启动或显式重新加载数据时，发现已下载的创意工坊汉化数据 mod，以及游戏 `mods`、`data/installed_mods` 中的本地数据包。纯翻译数据无需加入新建世界的 RAW 加载顺序。扩展的词表和递归规则独立载入，安装、更新或移除后在下一次加载数据时处理。
 
-[矮人宝可梦汉化数据](https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177)独立提供 **Dwarvemon 2.22** 和 **Dwarvemon Entity All 2.22** 的全部专用中文翻译。本体提供通用扩展加载能力，宝可梦专用译文保存在独立包中。工坊订阅后自动识别，无需手工复制数据。
+Windows 本版可用 **Shift+F6** 临时停用或恢复全部扩展数据，并立即重新载入汉化；扩展停用时继续使用本体词表和规则。当前 Linux 发布包尚未包含此快捷键。
 
-从 [GitHub Release](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008) 下载 `dfcn_dwarvemon_zh_hans.zip` 时，将压缩包中的整个 `dfcn_dwarvemon_zh_hans` 文件夹解压至游戏 `mods` 目录。无需在创建世界的模组列表中启用汉化数据包；原始 Dwarvemon 模组按其作者说明使用。安装、更新或移除数据包后，核心在下一次加载数据时识别相应变化。没有完整译文的 mod 名称、简介和工坊名称保留原文；用户自定义小队名称始终保持原样。
+目前公开提供 **Dwarvemon、Dwarvemon Entity Type、Dwarvemon Entity All、Dwarvemon Beta** 四个独立创意工坊汉化数据包；其余 18 个 Mod 汉化数据包已下架（设为私密），本地资源与源码目录保留。四个公开数据包的订阅链接见 [Mod 汉化数据扩展索引](workshop/README.local-zh-CN.md)。
 
-数据包目录为 `workshop/dwarvemon-zh-hans/content`，发布说明与维护来源保存在其外层目录。
+使用扩展需要安装 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)，并订阅对应的原模组和汉化数据包。DFCN 自动读取已下载的数据，无需手工复制，也无需在创建世界的模组列表中启用汉化数据包；原模组按其作者说明使用。
+
+[Dwarvemon 简体中文汉化](https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177)仅提供基础 **Dwarvemon** 的专用翻译。Entity Type、Entity All 和 Beta 各有独立汉化包，分别订阅即可。没有完整译文的 mod 名称、简介和工坊名称保留原文；用户自定义小队名称始终保持原样。
 
 制作其他 mod 的汉化扩展时，使用同一数据声明格式即可，无需向核心添加 mod 名称或专属词条。参见 [汉化数据扩展格式](docs/translation-extensions.zh-CN.md)。
+
+## 维护者打包
+
+打包使用已有 Windows 编译产物与 [Linux 来源记录](workshop/linux-release.json) 指定的 Linux 原始运行包。先依据其中的 `download_url` 下载 `DFCN-Linux-x64-minimal.zip`，保存至仓库根目录，再执行根目录的 `package-workshop.cmd`；也可使用 Windows PowerShell 执行 `-File tools/package-workshop.ps1`。打包入口不编译代码。
+
+该入口先生成 Windows 完整运行 ZIP，在临时副本上使用固定 Windows 工具链的 `strip.exe --strip-unneeded` 移除核心与加载器的静态符号和调试数据，保留动态导出；本机部署 DLL 不变。`-UseExistingWindowsArchive` 同样会精简解压后的 Windows 副本。Linux 的 `package-linux.sh` 使用 `/usr/bin/strip` 精简 `.so` 打包副本，独立运行 ZIP 保持完整。
+
+工坊入口从三个根目录说明文件和两个平台 ZIP 重建整个 `workshop/content`，不沿用内容目录中的旧 ZIP、缓存或其他遗留文件。`DFCN/` 保持完整 Windows 运行目录；对两个原包中路径相同且 SHA-256 相同的资源，仅在 `DFCN/` 留一份，Linux 目录通过 `SHARED-FILES.txt` 和 `install.sh` 在安装时还原。配置、平台库与内容不同的 Linux 资源保留在 `DFCN-Linux/`，不会用 Windows 新数据覆盖旧 Linux 发布版的数据。Linux 来源仍由 `RELEASE-SOURCE.json` 记录，下载的原始 ZIP 和其核心、加载器字节不改动。
+
+入口生成 `DFCN-Windows-Linux-workshop.zip`，并将公开汉化数据扩展分别打包为各自目录中的 `<mod ID>.zip`，跳过私密包。独立汉化扩展与原始玩法模组不并入本体；工坊上传使用 `workshop/content`。
 
 ## 技术栈
 

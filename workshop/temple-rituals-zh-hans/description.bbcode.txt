@@ -1,0 +1,4 @@
+翻译祭仪、祝福饮剂、供品、祭司称号和冒险模式交互。
+
+需要 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379]DFCN 汉化核心[/url]和[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3642982349]Temple Rituals (procgen)[/url]。原模组需 DFHack。
+订阅后由 DFCN 自动读取，无需在创建世界时启用本汉化包。

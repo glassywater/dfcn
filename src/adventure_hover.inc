@@ -7,7 +7,6 @@ void Overlay::capture_adventure_background(graphicst *graphics) {
     if (!config_.enabled || graphics != gps_ || !graphics || !graphics->screen ||
         graphics->dimx <= 0 || graphics->dimx > 1000 ||
         graphics->dimy <= 0 || graphics->dimy > 1000) return;
-    NativeCaptureMaskScope capture_mask(graphics);
     const size_t cells = static_cast<size_t>(graphics->dimx) * graphics->dimy;
     bool same_source = adventure_before_hover_matches_valid_ &&
         adventure_before_hover_dimx_ == graphics->dimx &&
@@ -114,7 +113,6 @@ void Overlay::prepare_adventure_hover_suppression() {
         adventure_before_hover_grid_.size() != static_cast<size_t>(gps_->dimx) * gps_->dimy * 8)
         return;
     adventure_hover_scan_epoch_ = draw_epoch_;
-    NativeCaptureMaskScope capture_mask(gps_);
     adventure_hover_suppress_epoch_ = 0;
     std::vector<std::string> rows(static_cast<size_t>(gps_->dimy),
         std::string(static_cast<size_t>(gps_->dimx), ' '));
@@ -283,7 +281,7 @@ void Overlay::recover_adventure_skill_rows() {
 template <typename Draw>
 static void draw_with_help_clips(SDL_Renderer *renderer, const graphicst &gps,
         const std::vector<SDL_Rect> &frames, const Match *match, Draw &&draw,
-        const SDL_Rect *paint_bounds = nullptr) {
+        const SDL_Rect *paint_bounds) {
     if (frames.empty()) { draw(); return; }
     const int tile_w = gps.tile_pixel_x, tile_h = gps.tile_pixel_y;
     if (tile_w <= 0 || tile_h <= 0) return;
@@ -298,17 +296,21 @@ static void draw_with_help_clips(SDL_Renderer *renderer, const graphicst &gps,
         if (!SDL_IntersectRect(&clips.front(), &saved, &intersection)) return;
         clips.front() = intersection;
     }
+    const bool may_own_frame = match && !match->native_hover_background &&
+        !match->native_help_occluder && !match->native_help_background_frames;
     for (const auto &frame : frames) {
+        const SDL_Rect popup{origin_x + frame.x * tile_w, origin_y + frame.y * tile_h,
+            frame.w * tile_w, frame.h * tile_h};
+        // Distant occluders cannot affect this field's proven write footprint.
+        // Skip them before splitting clips or inspecting ownership membership.
+        if (paint_bounds && !SDL_HasIntersection(&popup, paint_bounds)) continue;
         // The foreground's source lies inside its own help frame. Recovered
         // background captions explicitly retain their separate ownership.
-        const bool foreground = match && !match->native_hover_background &&
-            !match->native_help_occluder && !match->native_help_background_frames &&
+        const bool foreground = may_own_frame &&
             match->x >= frame.x && match->y >= frame.y &&
             match->x + std::max(1, match->length) <= frame.x + frame.w &&
             match->y < frame.y + frame.h;
         if (foreground) continue;
-        const SDL_Rect popup{origin_x + frame.x * tile_w, origin_y + frame.y * tile_h,
-            frame.w * tile_w, frame.h * tile_h};
         std::vector<SDL_Rect> exposed;
         for (const auto &clip : clips) {
             SDL_Rect covered{};
@@ -341,41 +343,25 @@ void Overlay::draw_help_clipped_match(SDL_Renderer *renderer, const Match &match
         const std::vector<SDL_Rect> &frames,
         const std::shared_ptr<NativeTooltipPage> &background_page,
         graphicst *background_graphics) {
-    // Clearing and painting must read the same restored native page that
-    // supplied layout. Reopening the toolbar snapshot here loses the classic
-    // help restoration; without a toolbar it used the overwritten grid.
-    const auto page = !match.native_help_current_page && match.native_help_background_frames
-        ? background_page : nullptr;
-    NativeTooltipPageScope page_view(gps_, page ? background_graphics : nullptr);
-    NativeUiReadScope page_cells(gps_, page ? &page->cells : nullptr);
-    // Matching may also reserve an edge-clipped sidebar established by its
-    // complete source. The skin-only frame list cannot rediscover that owner.
-    const auto &occluders = match.native_help_background_frames
-        ? *match.native_help_background_frames : frames;
-    std::optional<SDL_Rect> paint_bounds;
-    if (!occluders.empty() && !match.legends_flow &&
-            match.layout_justified_parts.empty() && !match.layout_reflowed_paragraph &&
-            !match.layout_reflowed_control) {
+    const auto match_paint_bounds = [&]() -> std::optional<SDL_Rect> {
+        if (match.legends_flow || !match.layout_justified_parts.empty() ||
+                match.layout_reflowed_paragraph || match.layout_reflowed_control)
+            return std::nullopt;
         SDL_Rect bounds{};
         const auto include = [&](const SDL_Rect &rect) {
             if (rect.w <= 0 || rect.h <= 0) return;
             if (bounds.w <= 0 || bounds.h <= 0) bounds = rect;
             else SDL_UnionRect(&bounds, &rect, &bounds);
         };
-        // draw_match intersects translated ink with this native allocation.
-        // Source erasure runs before that intersection and may occupy a
-        // different row or column, so retain its complete footprint too.
-        if (!match.target.empty() && match.layout_native_clip)
-            include(*match.layout_native_clip);
+        // Source erasure runs before translated ink clipping and may occupy
+        // a different row or column, so retain its complete footprint too.
         const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
         const int origin_x = (gps_->screen_pixel_x - tile_w * gps_->dimx) / 2;
         const int origin_y = (gps_->screen_pixel_y - tile_h * gps_->dimy) / 2;
-        if (!match.target.empty() && !match.layout_native_clip &&
+        if (!match.target.empty() &&
                 (match.rule < 0 || static_cast<size_t>(match.rule) < rules_.size())) {
-            // Ordinary page labels have no explicit native allocation. Bound
-            // their actual glyph destination instead of replaying the same
-            // row in every exposed strip around a distant DFHack card/logo.
-            // Glyph ink may extend past the English span or its line box.
+            // Ink can extend past the English span or its line box. Use
+            // the measured destination, exactly as draw_match does.
             const int text_x = match.layout_x >= 0 ? match.layout_x : match.x;
             const bool native_baseline = match.native_split_text && !match.layout_fixed_baseline;
             const int text_y = native_baseline ? match.native_split_top_y
@@ -393,8 +379,8 @@ void Overlay::draw_help_clipped_match(SDL_Renderer *renderer, const Match &match
                 std::max(1, (exact_box ? match.layout_box_pixel_width : text_length * tile_w) -
                     2 * config_.horizontal_padding),
                 match.layout_line_height_pixels > 0 ? match.layout_line_height_pixels : tile_h};
-            int foreground = match.layout_foreground_rgb;
-            if (foreground < 0) {
+            int text_foreground = match.layout_foreground_rgb;
+            if (text_foreground < 0) {
                 const unsigned char *color = nullptr;
                 for (int x = match.x; x < match.x + match.length; ++x) {
                     bool top = false;
@@ -405,9 +391,9 @@ void Overlay::draw_help_clipped_match(SDL_Renderer *renderer, const Match &match
                     bool top = false;
                     color = cell_at(match.x, match.y, &top);
                 }
-                foreground = color ? (color[1] << 16) | (color[2] << 8) | color[3] : 0xffffff;
+                text_foreground = color ? (color[1] << 16) | (color[2] << 8) | color[3] : 0xffffff;
             }
-            auto foregrounds = colored_match_foregrounds(match, foreground);
+            auto foregrounds = colored_match_foregrounds(match, text_foreground);
             std::string shortened;
             const std::string *display_text = &match.target;
             if (match.layout_ellipsize) {
@@ -449,8 +435,21 @@ void Overlay::draw_help_clipped_match(SDL_Renderer *renderer, const Match &match
                 (match.rule == -8 || (config_.clear_background && !g_copy_hook_active)))
             include({origin_x + match.x * tile_w,
                 origin_y + match.y * tile_h, match.length * tile_w, tile_h});
-        paint_bounds = bounds;
-    }
+        return bounds;
+    };
+    // Clearing and painting must read the same restored native page that
+    // supplied layout. Reopening the toolbar snapshot here loses the classic
+    // help restoration; without a toolbar it used the overwritten grid.
+    const auto page = !match.native_help_current_page && match.native_help_background_frames
+        ? background_page : nullptr;
+    NativeTooltipPageScope page_view(gps_, page ? background_graphics : nullptr);
+    NativeUiReadScope page_cells(gps_, page ? &page->cells : nullptr);
+    // Matching may also reserve an edge-clipped sidebar established by its
+    // complete source. The skin-only frame list cannot rediscover that owner.
+    const auto &occluders = match.native_help_background_frames
+        ? *match.native_help_background_frames : frames;
+    const auto paint_bounds = !occluders.empty()
+        ? match_paint_bounds() : std::nullopt;
     const auto *bounds = paint_bounds ? &*paint_bounds : nullptr;
     draw_with_help_clips(renderer, *gps_, occluders, &match,
         [&] {

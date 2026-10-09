@@ -1,5 +1,5 @@
-# 精细月相汉化数据
+# Detailed Moon 简体中文汉化
 
-对应本机订阅的 Detailed Moon（工坊 ID 3622689156，数字版本 1）。翻译名称、游戏简介与工坊名称、简介。原模组只替换月相图形，没有新增显示词汇。
+翻译精细月相模组的名称与简介。
 
-本包不复制图片、不改原模组，不改变世界规则，无需在创建世界时启用。需要支持数据扩展的 DFCN。尚未发布，尚未观察游戏内效果。
+需要 [Detailed Moon](https://steamcommunity.com/sharedfiles/filedetails/?id=3622689156) 和 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)。数据自动读取，无需在世界模组列表启用。

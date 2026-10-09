@@ -104,6 +104,38 @@ std::optional<LegendsWrittenHeading> Overlay::resolve_legends_written_heading(
 
 std::optional<std::string> Overlay::translate_legends_detail_heading(
         std::string_view source) const {
+    // A figure tab can omit sex/species and retain only the name/gloss pair.
+    // Its captured identity still owns the personal-name grammar; the same
+    // history renderer must supply both its heading and linked body name.
+    if (const auto caption = native_history_legends_caption();
+            caption && caption->character_name) {
+        const auto record = split_legends_figure_record(source);
+        const auto pair = record ? std::optional<GeneratedNameIdentity>(
+            GeneratedNameIdentity{record->native_name, record->gloss}) :
+            split_generated_name_identity(source);
+        const auto &name = *caption->character_name;
+        const auto same = [](std::string_view a, std::string_view b) {
+            return lower(native_text_to_utf8(trim_view(a))) ==
+                lower(native_text_to_utf8(trim_view(b)));
+        };
+        if (pair && !name.native_name.empty() && same(pair->native_name, name.native_name)) {
+            const auto native = translate_procedural_fragment(
+                std::string(pair->native_name), true);
+            const auto gloss = translate_history_name(name, true);
+            if (native && gloss) {
+                std::string result = *native + "，“" + *gloss + "”";
+                if (record) {
+                    const auto kind = memoize_identity_translation('c', record->species, [&] {
+                        return translate_creature_descriptor(record->species);
+                    });
+                    result += "，" + kind.value_or(native_text_to_utf8(record->species));
+                    if (record->sex == "female") result += "（♀）";
+                    else if (record->sex == "male") result += "（♂）";
+                }
+                return result;
+            }
+        }
+    }
     if (auto civilization = translate_civilization_reference(source))
         return civilization;
     if (auto figure = translate_legends_unnamed_figure(source)) return figure;

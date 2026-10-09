@@ -1,0 +1,21 @@
+{
+  "appid": 975370,
+  "title": "Dwarvemon Beta 简体中文汉化",
+  "description_file": "workshop/dwarvemon-beta-zh-hans/description.bbcode.txt",
+  "content_folder": "workshop/dwarvemon-beta-zh-hans/content",
+  "preview_file": "workshop/dwarvemon-beta-zh-hans/preview.png",
+  "tags": [
+    "mod",
+    "translation",
+    "Chinese"
+  ],
+  "visibility": 0,
+  "changelog": "Dwarvemon Beta 使用独立汉化数据包，包含其随附的 PMD、TCG、MissingNo 等可选模块译文。",
+  "github_url": "https://github.com/pokemonchw/dfcn",
+  "required_items": [
+    3811193379,
+    2902397057
+  ],
+  "release_tag": "v53.16-20261009",
+  "release_url": "https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261009"
+}

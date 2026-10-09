@@ -4,5 +4,5 @@ base = "items"
 [[rulesets]]
 name = "main"
 [rulesets.rules]
-"{dwarvemon_beta}" = "{dwarvemon_beta}"
+"{dwarvemon_optional}" = "{dwarvemon_optional}"
 "{dwarvemon}" = "{dwarvemon}"

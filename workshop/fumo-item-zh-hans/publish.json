@@ -1,0 +1,18 @@
+{
+  "appid": 975370,
+  "title": "Fumo item 简体中文汉化",
+  "description_file": "workshop/fumo-item-zh-hans/description.bbcode.txt",
+  "content_folder": "workshop/fumo-item-zh-hans/content",
+  "preview_file": "workshop/fumo-item-zh-hans/preview.png",
+  "tags": [
+    "mod",
+    "translation",
+    "Chinese"
+  ],
+  "visibility": 2,
+  "changelog": "发布 Fumo item 简体中文汉化数据。",
+  "required_items": [
+    3811193379,
+    3033128365
+  ]
+}

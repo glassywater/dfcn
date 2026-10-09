@@ -45,6 +45,15 @@ Python，也不会触发编译。包内保留加载入口、核心、配置、�
 成功后替换同名压缩包，失败则保留旧包，窗口会停留显示结果。
 解压目标为包含 `Dwarf Fortress.exe` 的游戏根目录。
 
+Mod 汉化数据扩展目前公开提供
+**Dwarvemon、Dwarvemon Entity Type、Dwarvemon Entity All、Dwarvemon Beta**
+四个独立创意工坊数据包。其余 18 个 Mod 汉化数据包已下架（设为私密），
+本地资源与源码目录保留。公开数据包订阅链接见 [Mod 汉化数据扩展索引](workshop/README.local-zh-CN.md)。
+需要安装 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)，
+并订阅对应原模组和汉化数据包；DFCN 自动读取数据，无需在创建世界的模组列表中启用汉化包。
+[Dwarvemon 简体中文汉化](https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177)
+仅对应基础 Dwarvemon；Entity Type、Entity All 和 Beta 使用各自的独立汉化包。
+
 项目数据统一放在 `data/` 下：`data/extracted/` 保存脚本提取的原文、
 来源记录和采集资料；`data/upstream/` 保存上游词典、结构定义及数据许可；
 `data/runtime/` 保存本项目实际使用的配置、词表、规则和可选字体。
@@ -526,6 +535,7 @@ python tools/build_native_image_bindings.py --reference ../dwarfort --image /opt
 | 操作 | 效果 |
 | --- | --- |
 | `Shift+F5` | 关闭汉化；再次按下时重新加载核心与数据并开启 |
+| `Shift+F6` | 停用全部扩展 TSV 词表与 TOML 规则，立即重载本体汉化并开启显示；再次按下恢复扩展并重载汉化 |
 | `Shift+F10` | 开启或关闭汉化，保留当前核心与数据，不触发重载 |
 | `Ctrl+Shift+F10` | 强制更新配置与词表 |
 | `Ctrl+F9` | 将当前字符网格与漏译片段导出到 `dfcn/data/extracted/dumps/` |
@@ -534,8 +544,10 @@ python tools/build_native_image_bindings.py --reference ../dwarfort --image /opt
 汉化已经关闭时，按一次 `Shift+F5` 即可重新加载核心与数据并开启；按一次
 `Shift+F10` 则直接开启，保留当前核心与数据。左右 Shift 均可，
 长按不会重复切换。开关只影响本次运行，不改写配置文件；初始状态由 `data/runtime/config.ini`
-的 `enabled` 或 `DFCN_ENABLED` 决定。数据仅在启动、`Shift+F5` 重新开启或
-`Ctrl+Shift+F10` 显式刷新时加载，不自动检查文件变化。
+的 `enabled` 或 `DFCN_ENABLED` 决定。扩展默认启用，`Shift+F6` 切换时立即
+重新载入数据并开启汉化显示；扩展开关在本次运行中保留，包括 `Shift+F5`
+核心重载，不写入配置文件。数据仅在启动、`Shift+F5` 重新开启、`Shift+F6`
+切换扩展或 `Ctrl+Shift+F10` 显式刷新时加载，不自动检查文件变化。
 修改驻留加载器或 ABI 后仍需正常重启游戏。
 
 `Shift+F5` 重新开启时，核心交接在游戏暂停模拟线程的 SDL 事件回调中进行：

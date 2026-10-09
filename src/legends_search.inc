@@ -65,7 +65,7 @@ bool Overlay::translated_journal_search_matches(std::string_view source,
     TranslationStateScope translation_scope;
     if (!config_.enabled || source.empty() || source.size() > 65536 || query.size() > 4096)
         return false;
-    if (compact_translated_search_text(query).empty()) return false;
+    if (translated_search_query(query).literal.empty()) return false;
     const auto matches = [&](std::string_view text) {
         return translated_search_text_matches(text, query);
     };
@@ -73,7 +73,14 @@ bool Overlay::translated_journal_search_matches(std::string_view source,
     if (kind == JournalSearchKind::Site)
         for (const auto &alias : site_reference_search_aliases(source))
             if (matches(alias)) return true;
-    const auto target = translate_journal_title(source, kind);
+    // Resolve names whose parent can change through their live entity/site
+    // renderer. Other complete titles reuse their shared grammar result.
+    const bool live_reference = kind == JournalSearchKind::Site ||
+        kind == JournalSearchKind::Civilization || kind == JournalSearchKind::Group;
+    const auto target = live_reference ? translate_journal_title(source, kind)
+        : memoize_search_translation(static_cast<char>(0x20 + static_cast<int>(kind)), source, [&] {
+            return translate_journal_title(source, kind);
+        }, true);
     return target && matches(*target);
 }
 
@@ -85,11 +92,8 @@ bool Overlay::translated_legends_search_matches(std::string_view source,
     TranslationStateScope translation_scope;
     if (!config_.enabled || source.size() + description.size() > 65536 ||
         (source.empty() && description.empty()) || query.size() > 4096) return false;
-    if (compact_translated_search_text(query).empty()) return false;
-    // Keep authored Chinese names and mixed native/UTF-8 text literal.
-    if (translated_search_text_matches(native_text_to_utf8(source), query) ||
-        translated_search_text_matches(native_text_to_utf8(description), query))
-        return true;
+    const auto &prepared_query = translated_search_query(query);
+    if (prepared_query.literal.empty()) return false;
 
     const auto site_title = kind == LegendsSearchKind::Site
         ? site_name ? translate_site_display(*site_name, source) : translate_legends_place(source)
@@ -118,6 +122,12 @@ bool Overlay::translated_legends_search_matches(std::string_view source,
     }
     auto cached = legends_search_translation_cache_.find(key);
     if (cached == legends_search_translation_cache_.end()) {
+        // Avoid translating a native match on the initial scan. Once a
+        // translated record exists, its original fields are prepared too.
+        const std::string source_utf8 = native_text_to_utf8(source);
+        const std::string description_utf8 = native_text_to_utf8(description);
+        if (translated_search_text_matches(source_utf8, query) ||
+                translated_search_text_matches(description_utf8, query)) return true;
         std::optional<std::string> title = site_title ? site_title : entity_title;
         bool description_in_title = false;
         const bool written = kind == LegendsSearchKind::Artifact ||
@@ -173,7 +183,9 @@ bool Overlay::translated_legends_search_matches(std::string_view source,
             else if (kind == LegendsSearchKind::Building)
                 type = translate_legends_structure_type(description);
             else if (kind == LegendsSearchKind::Figure)
-                type = translate_creature_descriptor(description);
+                type = memoize_identity_translation('c', description, [&] {
+                    return translate_creature_descriptor(description);
+                });
             else {
                 type = exact_literal_translation(description);
                 if (!type) type = translate_legends_term(description);
@@ -186,30 +198,29 @@ bool Overlay::translated_legends_search_matches(std::string_view source,
             target.push_back('\n');
             target.append(type.value_or(native_text_to_utf8(description)));
         }
-        constexpr size_t maximum_records = 65536;
-        constexpr size_t maximum_bytes = 32u * 1024u * 1024u;
-        const size_t cost = 2 * key.size() + target.size();
-        while (!legends_search_translation_order_.empty() &&
-                (legends_search_translation_cache_.size() >= maximum_records ||
-                 legends_search_translation_bytes_ + cost > maximum_bytes)) {
-            const auto oldest = legends_search_translation_cache_.find(
-                legends_search_translation_order_.front());
-            if (oldest != legends_search_translation_cache_.end()) {
-                legends_search_translation_bytes_ -= 2 * oldest->first.size() + oldest->second.size();
-                legends_search_translation_cache_.erase(oldest);
-            }
-            legends_search_translation_order_.pop_front();
+        LegendsSearchEntry entry;
+        entry.fields.reserve(4);
+        if (!source_utf8.empty()) entry.fields.emplace_back(source_utf8);
+        if (!description_utf8.empty()) entry.fields.emplace_back(description_utf8);
+        const size_t boundary = target.find('\n');
+        entry.fields.emplace_back(std::string_view(target).substr(0, boundary));
+        if (boundary != std::string::npos)
+            entry.fields.emplace_back(std::string_view(target).substr(boundary + 1));
+        constexpr size_t maximum_bytes = 128u * 1024u * 1024u;
+        const size_t cost = sizeof(std::string) + key.capacity() + entry.bytes() + 4 * sizeof(void *);
+        if (legends_search_translation_bytes_ + cost > maximum_bytes) {
+            for (auto &field : entry.fields)
+                if (field.matches(prepared_query)) return true;
+            return false;
         }
+        cached = legends_search_translation_cache_.emplace(std::move(key), std::move(entry)).first;
         legends_search_translation_bytes_ += cost;
-        cached = legends_search_translation_cache_.emplace(key, std::move(target)).first;
-        legends_search_translation_order_.push_back(std::move(key));
     }
     // Search each field independently so literal, pinyin and initial keys
     // cannot join a title with its separate description.
-    const std::string_view target(cached->second);
-    const size_t boundary = target.find('\n');
-    if (boundary == std::string::npos)
-        return translated_search_text_matches(target, query);
-    return translated_search_text_matches(target.substr(0, boundary), query) ||
-        translated_search_text_matches(target.substr(boundary + 1), query);
+    constexpr size_t maximum_bytes = 128u * 1024u * 1024u;
+    for (auto &field : cached->second.fields)
+        if (match_prepared_search_text(field, prepared_query,
+                legends_search_translation_bytes_, maximum_bytes)) return true;
+    return false;
 }

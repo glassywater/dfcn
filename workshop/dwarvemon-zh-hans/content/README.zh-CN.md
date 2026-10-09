@@ -1,11 +1,7 @@
 # 矮人宝可梦汉化数据
 
-本地试用版 2：Dwarvemon 2.22、Dwarvemon Entity Type 2.22、Dwarvemon Entity All 2.22 和 Dwarvemon Beta 2.22 共用本数据包，需要支持扩展数据包的 DFCN 汉化核心。本次修改没有发布到创意工坊。
+Dwarvemon 的简体中文汉化数据。翻译宝可梦名称、描述、道具、材料、工坊、招式及战斗与历史文本。
 
-订阅后由核心自动识别，无需在创建世界的模组列表中启用本数据包。原始宝可梦模组按其作者说明启用。本包仅含翻译数据，不修改原模组 RAW 或世界规则。
+需要 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379) 与 [Dwarvemon](https://steamcommunity.com/sharedfiles/filedetails/?id=2898307461)。订阅后由核心自动读取，无需在创建世界的模组列表中启用汉化数据包。
 
-翻译包括名称与形态、描述、偏好、道具、材料、植物、身体部位、工坊与配方、招式、特性、进化提示、战斗公告和历史事件。宝可梦专名优先采用官方简体中文译名；原创文本完整翻译，部分旧树果使用百科暂译。
-
-来源与许可说明见 DATA-LICENSE.txt。
-
-本地补充涵盖按属性分配文明的简介、测试版名称与简介、测试版 RAW 的原文拼写差异及随包作弊工坊的“Create”配方语法。两个文明扩展自身只调整可用宝可梦范围，没有新的生物名称。Beta 随附的可选 PMD、TCG、MissingNo、作弊工坊和狼人宝可梦内容一并收录翻译数据。
+来源与许可见 DATA-LICENSE.txt。

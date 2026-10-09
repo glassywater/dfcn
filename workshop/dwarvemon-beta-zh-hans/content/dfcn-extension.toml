@@ -1,0 +1,7 @@
+schema = 1
+id = "dwarvemon-beta-zh-hans"
+version = 2
+language = "zh-Hans"
+name = "Dwarvemon Beta 简体中文汉化"
+translations = "dfcn/translations.tsv"
+rulesets = "dfcn/rulesets/zh-Hans"

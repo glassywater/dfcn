@@ -1,0 +1,3 @@
+翻译 Fumo 角色玩偶、制作配方与分类说明。
+
+需要 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3033128365]Fumo item[/url] 和 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379]DFCN 汉化核心[/url]。数据自动读取，无需在世界模组列表启用。

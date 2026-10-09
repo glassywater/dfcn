@@ -1,0 +1,4 @@
+翻译模组简介、命令帮助和启用状态提示。
+
+需要 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379]DFCN 汉化核心[/url]和[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3468962984]Topples' Workshop Icons[/url]。原模组需 DFHack。
+订阅后由 DFCN 自动读取，无需在创建世界时启用本汉化包。

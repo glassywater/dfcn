@@ -6,34 +6,14 @@
 {
     const auto catalog = g_dfhack_output_snapshot.load(std::memory_order_acquire);
     if (catalog) {
-        // A branded error/help panel can restore just its own background,
-        // leaving another overlay's controls visible in the composed page.
-        // Complete Label captures already prove their producer and live
-        // cells; the copied graphicst address is not their draw identity.
+        // Controls belong to the committed DFHack graphics object used by
+        // this independent layer's translation pass.
         const auto source_texts = native_dfhack_overlay_texts(gps_);
-        const auto *draw_gps = native_graphics();
+        const auto *draw_gps = native_dfhack_present_graphics();
         const auto drawn_span = [&](const SDL_Rect &span) {
-            if (!draw_gps || draw_gps->dimx != gps_->dimx || draw_gps->dimy != gps_->dimy ||
-                    !native_dfhack_background_matches(*draw_gps, span)) return false;
-            if (draw_gps == gps_) return true;
-            // The capture mask belongs to the native draw. A copied page may
-            // use it only for cells still showing that draw, never a restored
-            // caption from underneath the recognized foreground panel.
-            for (int x = span.x; x < span.x + span.w; ++x)
-                for (int y = span.y; y < span.y + span.h; ++y) {
-                    const size_t at = static_cast<size_t>(x) * gps_->dimy + y;
-                    const bool top = native_ui_top_layer_at(*gps_, at);
-                    const bool draw_top = native_ui_top_layer_at(*draw_gps, at);
-                    const auto origin = native_text_grid_origin(*gps_, at, top);
-                    const auto draw_origin = native_text_grid_origin(*draw_gps, at, draw_top);
-                    const auto *grid = top ? gps_->screen_top : gps_->screen;
-                    const auto *draw_grid = draw_top ? draw_gps->screen_top : draw_gps->screen;
-                    if (!grid || !draw_grid || origin.grid != draw_origin.grid ||
-                            origin.top_layer != draw_origin.top_layer ||
-                            !std::equal(grid + at * 8, grid + at * 8 + 8, draw_grid + at * 8))
-                        return false;
-                }
-            return true;
+            return NativeDfhackForegroundScope::active && draw_gps == gps_ &&
+                span.x >= 0 && span.y >= 0 && span.w > 0 && span.h > 0 &&
+                span.x + span.w <= gps_->dimx && span.y + span.h <= gps_->dimy;
         };
         std::vector<std::pair<int, int>> sourced_controls;
         const auto named_source = [&](int x, int y, int length) {
@@ -78,7 +58,7 @@
                     while (cursor < row.size() && row[cursor] >= '0' && row[cursor] <= '9') ++cursor;
                     if (cursor == digits) return std::nullopt;
                 } else if (token == "*" || token == "{material}" || token == "{job}" ||
-                        token == "{suspension}") {
+                        token == "{book}" || token == "{suspension}") {
                     const size_t next_marker = pattern.find_first_of("{*", token_end + 1);
                     const auto suffix = pattern.substr(token_end + 1,
                         next_marker == std::string_view::npos ? std::string_view::npos :
@@ -111,6 +91,11 @@
                 if (token == "{material}" || token == "{job}") {
                     const auto kind = token == "{material}" ? "material" : "job";
                     if (const auto translated = translate_dfhack_caption(kind, value))
+                        replacement = *translated;
+                } else if (token == "{book}") {
+                    // An explicitly declared title shares the written-work
+                    // grammar used by the book's contents and item sheet.
+                    if (const auto translated = translate_legends_book(value))
                         replacement = *translated;
                 } else if (token == "{suspension}") {
                     if (const auto translated = exact_literal_translation(
@@ -163,9 +148,14 @@
             return std::nullopt;
         };
         const auto existing_field = [&](int x, int y, int length) {
+            const auto overlaps = [&](const Match &match) {
+                return match.y == y && x < match.x + match.length && x + length > match.x;
+            };
             return std::any_of(dfhack_auxiliary_matches.begin(), dfhack_auxiliary_matches.end(),
+                overlaps) || std::any_of(dfhack_stocks_hint_matches.begin(),
+                dfhack_stocks_hint_matches.end(),
                 [&](const Match &match) {
-                    return match.y == y && x < match.x + match.length && x + length > match.x;
+                    return match.length > 0 && !match.target.empty() && overlaps(match);
                 });
         };
         const auto emit = [&](int x, int y, int length, const std::string &target, int right,

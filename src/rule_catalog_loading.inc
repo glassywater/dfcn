@@ -440,6 +440,7 @@ bool Overlay::load_rules() {
 
     // The candidate succeeded; invalidate results of the replaced dictionary
     // only now. A failed parse/index build never changes the live caches.
+    ++dfhack_translation_catalog_revision_;
     clear_legends_search_cache();
     clear_stockpile_setting_cache();
     clear_fortress_item_caption_cache();
@@ -449,10 +450,6 @@ bool Overlay::load_rules() {
     clear_material_name_cache();
     identity_record_translation_cache_.clear();
     identity_record_translation_order_.clear();
-    unit_search_translation_cache_.clear();
-    unit_search_translation_order_.clear();
-    adventure_action_search_cache_.clear();
-    adventure_action_search_order_.clear();
     native_knowledge_layouts_.clear();
     written_work_paragraph_cache_.clear();
     native_knowledge_frame_ = {};

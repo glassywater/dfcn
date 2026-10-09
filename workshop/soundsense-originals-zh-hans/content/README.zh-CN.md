@@ -1,5 +1,6 @@
-# SoundSense 原声汉化数据
+# SoundSense Originals 简体中文汉化
 
-对应本机订阅的 SoundSense Originals（工坊 ID 2997006603，数字版本 2）。翻译模组名称、简介与 `sound/music_file_d.txt` 中的曲名。作者姓名及缩写曲名 ZTIQ 保持原样，原创曲名采用本包译名。
+翻译模组简介和音乐曲名。
 
-本包只包含翻译数据，不复制音乐、不改原模组、不改变世界规则，无需在创建世界时启用。需要支持数据扩展的 DFCN。尚未发布，尚未观察游戏内效果。
+需要 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)和[SoundSense Originals](https://steamcommunity.com/sharedfiles/filedetails/?id=2997006603)。
+订阅后由 DFCN 自动读取，无需在创建世界时启用本汉化包。

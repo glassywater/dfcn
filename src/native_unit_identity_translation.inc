@@ -217,16 +217,16 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
         if (unit.undead) value += "的尸体";
         return value;
     };
+    const auto phonetic_word = [&](std::string_view word) -> std::string {
+        if (word.empty()) return {};
+        if (contains_cjk_utf8(word)) return native_text_to_utf8(word);
+        const auto reviewed = native_name_reviewed_transliterations_.find(
+            lower_native_name(std::string(word)));
+        return reviewed != native_name_reviewed_transliterations_.end() && !reviewed->second.empty()
+            ? reviewed->second : transliterate_native_history_name(word);
+    };
     const auto phonetic_name = [&]() -> std::optional<std::string> {
         if (!unit.name.has_name || !unit.native_name_words_valid) return std::nullopt;
-        const auto phonetic_word = [&](std::string_view word) -> std::string {
-            if (word.empty()) return {};
-            if (contains_cjk_utf8(word)) return native_text_to_utf8(word);
-            const auto reviewed = native_name_reviewed_transliterations_.find(
-                lower_native_name(std::string(word)));
-            return reviewed != native_name_reviewed_transliterations_.end() && !reviewed->second.empty()
-                ? reviewed->second : transliterate_native_history_name(word);
-        };
         // The game selected these precise WORD roots and their language.
         // Keep the established per-root pronunciation without splitting the
         // displayed name or substituting the WORDs' English meanings.
@@ -260,11 +260,29 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
     const auto name = [&]() -> std::string {
         if (unit.native_name.empty()) return {};
         std::optional<std::string> value;
-        // The English display supplies every meaning. Its captured first
-        // name only proves the given-name spelling, including authored forms
-        // that also match a registered English word.
-        if (unit.english_name)
-            value = translate_english_character_name(unit.native_name, unit.name.first_name);
+        // A first WORD group can occupy the visible given-name position
+        // even when the native literal first_name is empty. Use its captured
+        // native roots for pronunciation, rather than its English meanings.
+        if (unit.english_name) {
+            std::string given = unit.name.first_name;
+            std::string given_target;
+            if (given.empty() && unit.name.has_name && unit.native_name_words_valid &&
+                    unit.name.nickname.empty()) {
+                for (size_t slot = 0; slot < 2; ++slot) {
+                    const auto &word = unit.native_name_words[slot];
+                    if (word.empty()) continue;
+                    const std::string target = phonetic_word(word);
+                    if (target.empty()) {
+                        given.clear();
+                        given_target.clear();
+                        break;
+                    }
+                    given += word;
+                    given_target += target;
+                }
+            }
+            value = translate_english_character_name(unit.native_name, given, given_target);
+        }
         // A language-less name without WORD slots is literal authored data.
         else if (unit.name.language < 0 && unit.name.nickname.empty() &&
                 std::all_of(unit.name.words.begin(), unit.name.words.end(),

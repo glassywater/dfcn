@@ -1,0 +1,8 @@
+# Dwarvemon 2.22 translation extension; merges into the base namespace.
+base = "items"
+
+[[rulesets]]
+name = "main"
+[rulesets.rules]
+"{dwarvemon_beta}" = "{dwarvemon_beta}"
+"{dwarvemon}" = "{dwarvemon}"

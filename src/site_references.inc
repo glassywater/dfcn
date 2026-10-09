@@ -98,6 +98,7 @@ static SiteReferenceCache &site_reference_owned_cache() {
 template<typename Aliases>
 static std::optional<SiteReferenceIdentity> resolve_site_reference_identity(
         std::string_view source, uint64_t epoch, Aliases &&aliases) {
+    dfhack_require_world_read();
     source = trim_view(source);
     if (source.empty() || source.size() > 4096 || source.ends_with("..."))
         return std::nullopt;

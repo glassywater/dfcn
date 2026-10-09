@@ -5,4 +5,5 @@
 [EARLIEST_COMPATIBLE_DISPLAYED_VERSION:3.0-zh-Hans.1]
 [AUTHOR:DFCN Community]
 [NAME:装饰坊汉化数据]
-[DESCRIPTION:Decoration Emporium 的独立简体中文翻译数据，需要 DFCN 汉化核心。仅供本地试用，未发布。]
+[DESCRIPTION:Decoration Emporium 的简体中文翻译数据。翻译装饰工坊、火炬、招牌、地毯等摆饰及制作配方。需要原模组和 DFCN 汉化核心。]
+[STEAM_FILE_ID:3815789025]

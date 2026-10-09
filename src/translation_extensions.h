@@ -1,6 +1,7 @@
 #pragma once
 
 #include "runtime_paths.h"
+#include <SDL2/SDL.h>
 
 #include <algorithm>
 #include <array>
@@ -30,6 +31,19 @@
 namespace dfcn::extensions {
 
 namespace fs = std::filesystem;
+
+// SDL owns this process-local choice, so it survives a core image reload
+// without changing the resident loader ABI or writing a configuration file.
+inline constexpr const char* enabled_hint = "DFCN_TRANSLATION_EXTENSIONS_ENABLED";
+
+inline bool enabled() {
+    return SDL_GetHintBoolean(enabled_hint, SDL_TRUE) == SDL_TRUE;
+}
+
+inline bool set_enabled(bool value) {
+    return SDL_SetHintWithPriority(enabled_hint, value ? "1" : "0",
+                                  SDL_HINT_OVERRIDE) == SDL_TRUE;
+}
 
 struct Package {
     std::string id, name, language, mod_id;
@@ -304,6 +318,7 @@ inline fs::path resource_path(const fs::path& root, std::string_view value) {
 
 inline Snapshot discover(std::string_view language = "zh-Hans") {
     Snapshot snapshot;
+    if (!enabled()) return snapshot;
     const auto watch = [&](const fs::path& path) { snapshot.resources.push_back(detail::stamp(path)); };
     const auto steam = detail::subscriptions();
     snapshot.steam_subscriptions_available = steam.available;

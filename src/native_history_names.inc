@@ -314,6 +314,32 @@ static NativeHistoryEntityUmbrella native_history_resolve_current_entity_umbrell
     return result; // A longer chain remains unknown rather than being truncated.
 }
 
+static bool capture_native_history_original_name(uintptr_t base, uintptr_t address,
+        std::string &result) {
+    if (!base || !address) return false;
+#ifdef _WIN32
+    const uintptr_t formatter = native_reference_address(base, 0xa94030);
+    const uintptr_t destroy = native_reference_address(base, 0x6f850);
+    if (!formatter || !destroy) return false;
+    struct Temporary {
+        NativeString value = native_empty_string();
+        uintptr_t destroy;
+        ~Temporary() { reinterpret_cast<void (*)(NativeString *)>(destroy)(&value); }
+    } output{native_empty_string(), destroy};
+#else
+    const uintptr_t formatter = native_reference_address(base, 0x12bfe90 - 0x400000);
+    if (!formatter) return false;
+    struct Temporary { NativeString value = native_empty_string(); } output;
+#endif
+    reinterpret_cast<void (*)(const void *, NativeString *)>(formatter)(
+        reinterpret_cast<const void *>(address), &output.value);
+    std::string_view rendered;
+    if (!native_string_view(&output.value, &rendered, kNativeHistoryStringLimit) ||
+            rendered.find('\0') != std::string_view::npos) return false;
+    result.assign(rendered);
+    return true;
+}
+
 static bool capture_native_history_name(uintptr_t base, uintptr_t address,
         NativeHistoryName &result, std::array<int32_t, 7> *native_indices = nullptr) {
     // The fields are contiguous in both supported name layouts. Read them
@@ -411,28 +437,8 @@ static bool capture_native_history_site_name_context(uintptr_t base, uintptr_t s
         // Use the same OriginalName routine as native page/list producers.
         // Its complete language-specific output is the fallback identity;
         // English WORD forms cannot supply the site's native pronunciation.
-#ifdef _WIN32
-        const uintptr_t formatter = native_reference_address(base, 0xa94030);
-        const uintptr_t destroy = native_reference_address(base, 0x6f850);
-        if (!formatter || !destroy) return false;
-        struct Temporary {
-            NativeString value = native_empty_string();
-            uintptr_t destroy;
-            ~Temporary() { reinterpret_cast<void (*)(NativeString *)>(destroy)(&value); }
-        } output{native_empty_string(), destroy};
-#else
-        const uintptr_t formatter = native_reference_address(base, 0x12bfe90 - 0x400000);
-        if (!formatter) return false;
-        struct Temporary { NativeString value = native_empty_string(); } output;
-#endif
         const uintptr_t name_address = native_history_object_field(site, "world_site", 0);
-        if (!name_address) return false;
-        reinterpret_cast<void (*)(const void *, NativeString *)>(formatter)(
-            reinterpret_cast<const void *>(name_address), &output.value);
-        std::string_view rendered;
-        if (!native_string_view(&output.value, &rendered, kNativeHistoryStringLimit) ||
-                rendered.find('\0') != std::string_view::npos) return false;
-        original.assign(rendered);
+        if (!capture_native_history_original_name(base, name_address, original)) return false;
     }
     name.site_id = id;
     name.site_type = type->second.front();
@@ -799,6 +805,10 @@ static bool populate_native_history_subjects(NativeHistoryEventData &event, bool
             return;
         }
         if (!capture_native_history_name(base, object + name_offset, subject.name) ||
+            (kind == NativeHistoryObjectKind::Figure && subject.name.has_name &&
+                subject.name.first_name.empty() &&
+                !capture_native_history_original_name(base, object + name_offset,
+                    subject.name.native_name)) ||
             (kind == NativeHistoryObjectKind::Site &&
                 !capture_native_history_site_name_context(base, object, subject.name, true)) ||
             (kind == NativeHistoryObjectKind::Entity &&

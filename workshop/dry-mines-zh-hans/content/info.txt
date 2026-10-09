@@ -5,4 +5,5 @@
 [EARLIEST_COMPATIBLE_DISPLAYED_VERSION:3-zh-Hans.1]
 [AUTHOR:DFCN Community]
 [NAME:干燥矿井汉化数据]
-[DESCRIPTION:clinodev's Dry Mines 的独立简体中文翻译数据，需要 DFCN 汉化核心。仅供本地试用，未发布。]
+[DESCRIPTION:clinodev's Dry Mines (No Aquifers Mod) 的简体中文翻译数据。翻译移除含水层标记的 Dry Mines 模组名称与简介。需要原模组和 DFCN 汉化核心。]
+[STEAM_FILE_ID:3815789194]

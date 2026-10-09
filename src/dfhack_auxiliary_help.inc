@@ -306,7 +306,8 @@ std::vector<Match> dfhack_auxiliary_matches;
         append_bounded_paragraph(std::move(rows), prompt.target, screen_rows,
             dfhack_auxiliary_matches, only_y, right, right, {}, false, left);
     };
-#include "dfhack_notification_banners.inc"
+    append_dfhack_notification_banners(dfhack_context_rows,
+        dfhack_auxiliary_regions, dfhack_auxiliary_matches, only_y, read_row);
 #include "dfhack_mod_manager.inc"
     for (const auto &window : native_dfhack_window_geometry(dfhack_context_rows)) {
         const auto *frame = &window.frame;
@@ -344,6 +345,7 @@ std::vector<Match> dfhack_auxiliary_matches;
         const int right = frame->x + frame->w - 1;
         const int bottom = frame->y + frame->h - 1;
         const int left = frame->x + 2, top = frame->y + 2;
+#include "dfhack_item_type_selector.inc"
         const int footer_y = bottom - 2;
         const auto footer_band = std::string_view(dfhack_context_rows[footer_y]).substr(
             left, right - 1 - left);

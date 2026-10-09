@@ -1,35 +1,54 @@
 // Animal picker captions can draw training, caste and sex as separate native
 // fields. Own their complete physical span before ordinary word matching.
 {
+    // Raw glyph suppression and final composition must read the same layer
+    // that supplied screen_rows, including its own font-half metadata.
+    const auto animal_cell_at = [&](int x, int y, bool *top) {
+        if (!screen_override) return cell_at(x, y, top);
+        if (top) *top = screen_override == gps_->screen_top;
+        return screen_override + (static_cast<size_t>(x) * gps_->dimy + y) * 8;
+    };
     std::vector<std::string> animal_context_rows;
     animal_context_rows.reserve(static_cast<size_t>(gps_->dimy));
     for (int y = 0; y < gps_->dimy; ++y) {
         std::string row(static_cast<size_t>(gps_->dimx), ' ');
         for (int x = 0; x < gps_->dimx; ++x) {
             bool top = false;
-            const auto *cell = cell_at(x, y, &top);
+            const auto *cell = animal_cell_at(x, y, &top);
             if (cell && cell[0]) row[static_cast<size_t>(x)] = cell[0];
         }
         animal_context_rows.push_back(std::move(row));
     }
     int your_animals_y = -1, available_animals_y = -1;
     int adventure_pets_y = -1, adventure_points_y = -1;
-    bool points_left = false;
     for (int y = 0; y < gps_->dimy; ++y) {
+        // Page headings can be on the other native layer. They identify the
+        // picker but never authorize source cells from that other layer.
         const auto &row = animal_context_rows[static_cast<size_t>(y)];
-        if (your_animals_y < 0 && row.find("Your Animals") != std::string::npos)
+        std::string exposed_row;
+        if (screen_override) {
+            exposed_row.assign(static_cast<size_t>(gps_->dimx), ' ');
+            for (int x = 0; x < gps_->dimx; ++x) {
+                bool top = false;
+                const auto *cell = cell_at(x, y, &top);
+                exposed_row[static_cast<size_t>(x)] = cell && cell[0] ? cell[0] : ' ';
+            }
+        }
+        const auto contains_heading = [&](std::string_view heading) {
+            return row.find(heading) != std::string::npos ||
+                exposed_row.find(heading) != std::string::npos;
+        };
+        if (your_animals_y < 0 && contains_heading("Your Animals"))
             your_animals_y = y;
-        if (available_animals_y < 0 && row.find("Available Animals") != std::string::npos)
+        if (available_animals_y < 0 && contains_heading("Available Animals"))
             available_animals_y = y;
-        points_left = points_left || row.find("Points Left:") != std::string::npos;
-        if (adventure_pets_y < 0 && row.find("Mount and pets") != std::string::npos)
+        if (adventure_pets_y < 0 && contains_heading("Mount and pets"))
             adventure_pets_y = y;
         if (adventure_points_y < 0 &&
-                row.find("Equipment and pet points remaining:") != std::string::npos)
+                contains_heading("Equipment and pet points remaining:"))
             adventure_points_y = y;
     }
-    const bool embark_animals = your_animals_y >= 0 &&
-        available_animals_y >= 0 && points_left;
+    const bool embark_animals = your_animals_y >= 0 && available_animals_y >= 0;
     const bool adventure_pets = adventure_pets_y >= 0 &&
         adventure_points_y > adventure_pets_y;
     if (embark_animals || adventure_pets) {
@@ -62,7 +81,30 @@
         constexpr uint32_t half_mask = top_half | bottom_half;
         for (int y = headings_y + 1; y < bottom_y; ++y) {
             const auto &context = animal_context_rows[static_cast<size_t>(y)];
-            const auto fields = split_text_fields(context);
+            std::vector<LogicalTextField> fields;
+            for (const auto &field : split_text_fields(context)) {
+                // A native row may leave only one space before its price.
+                // Keep the cost separate even when the general field reader
+                // sees the name and cost as a single text run.
+                size_t cost_at = std::string::npos;
+                for (size_t at = 1; at < field.text.size(); ++at) {
+                    if (field.text[at - 1] == ' ' &&
+                            is_embark_point_cost(std::string_view(field.text).substr(at))) {
+                        cost_at = at;
+                        break;
+                    }
+                }
+                if (cost_at == std::string::npos) {
+                    fields.push_back(field);
+                    continue;
+                }
+                size_t name_end = cost_at;
+                while (name_end > 0 && field.text[name_end - 1] == ' ') --name_end;
+                fields.push_back({field.start, field.start + static_cast<int>(name_end),
+                    field.text.substr(0, name_end)});
+                fields.push_back({field.start + static_cast<int>(cost_at), field.end,
+                    field.text.substr(cost_at)});
+            }
             for (size_t cost_index = 0; cost_index < fields.size(); ++cost_index) {
                 const auto &cost = fields[cost_index];
                 if (!is_embark_point_cost(cost.text)) continue;
@@ -107,7 +149,7 @@
                     // Every actual glyph must still belong to this exposed
                     // source layer and the same native text half.
                     bool top_layer = false;
-                    const auto *first_cell = cell_at(start, y, &top_layer);
+                    const auto *first_cell = animal_cell_at(start, y, &top_layer);
                     if (!first_cell) continue;
                     const auto *flags = top_layer
                         ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
@@ -118,14 +160,15 @@
                         const unsigned char byte = static_cast<unsigned char>(context[x]);
                         if (byte == ' ') continue;
                         bool cell_top = false;
-                        const auto *cell = cell_at(x, y, &cell_top);
+                        const auto *cell = animal_cell_at(x, y, &cell_top);
                         native_source = cell && cell_top == top_layer && cell[0] == byte &&
                             (!flags || (flags[static_cast<size_t>(x) * gps_->dimy + y] & half_mask) == half);
                     }
                     if (!native_source) continue;
                     Match caption{start, y, length, kCreatureNameRule,
-                        quantity.empty() ? *target : std::string(quantity) + " " + *target,
+                        quantity.empty() ? *target : std::string(quantity) + "只" + *target,
                         physical};
+                    caption.native_animal_picker_row = true;
                     caption.layout_x = start;
                     caption.layout_length = length;
                     caption.layout_left = true;

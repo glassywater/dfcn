@@ -1,5 +1,6 @@
-# Topples 工坊图标汉化数据
+# Topples' Workshop Icons 简体中文汉化
 
-对应本机订阅的 Topples' Workshop Icons（工坊 ID 3468962984，数字版本 62）。翻译名称、简介、脚本帮助与启用状态消息、更新说明，覆盖两个 Lua 文件的可见输出。命令名、Lua 函数名与布尔值保留原样。
+翻译模组简介、命令帮助和启用状态提示。
 
-本包不修改或执行原模组脚本，无需在创建世界时启用。需要原模组所需的 DFHack 和支持数据扩展的 DFCN；终端输出翻译取决于 DFCN 对该输出界面的现有支持。尚未发布，尚未观察游戏内效果。
+需要 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)和[Topples' Workshop Icons](https://steamcommunity.com/sharedfiles/filedetails/?id=3468962984)。原模组需 DFHack。
+订阅后由 DFCN 自动读取，无需在创建世界时启用本汉化包。

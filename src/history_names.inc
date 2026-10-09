@@ -258,9 +258,8 @@ std::optional<std::string> Overlay::translate_history_name(
     const bool polity = !character && !site_government && (name.entity_type == 0 ||
         (name.entity_type < 0 && name.type == 2));
     if (character) {
-        // Reproduce the game's English display first. WORD/POS identify only
-        // the original spelling here; the character-name translator receives
-        // that spelling and never chooses Chinese from hidden name fields.
+        // Reproduce the game's English display, keeping the native proper
+        // name separate from the surname and epithet imagery.
         std::array<std::string, 7> forms;
         for (size_t slot = 0; slot < name.words.size(); ++slot) {
             const auto &word = name.words[slot];
@@ -316,7 +315,21 @@ std::optional<std::string> Overlay::translate_history_name(
         }
         if (!forms[6].empty())
             append((english.empty() ? "Of " : "of ") + capitalized(forms[6]));
-        return translate_english_character_name(english, name.first_name);
+        if (!name.first_name.empty())
+            return translate_english_character_name(english, name.first_name);
+        // Some generated actors have no literal first_name. Their first
+        // visible name group comes from WORD slots instead. Its English
+        // gloss is still a proper name here, not a surname to be recomposed.
+        if (!nickname && (!forms[0].empty() || !forms[1].empty()) &&
+                !name.native_name.empty()) {
+            const auto native = translate_procedural_fragment(name.native_name, true);
+            const auto given = std::string_view(name.native_name).substr(
+                0, name.native_name.find(' '));
+            const auto target = native ? std::string_view(*native).substr(
+                0, native->find("·")) : std::string_view{};
+            return translate_english_character_name(english, given, target);
+        }
+        return translate_english_character_name(english);
     }
     auto given_name = [&](const std::string &value) {
         // First-name/utterance fields keep the established proper-name

@@ -222,6 +222,13 @@ name = "relation"
 "an unknown bond" = "未知的纽带"
 
 [[rulesets]]
+name = "year"
+[rulesets.rules]
+"{#digits}" = "{#digits}"
+"-{#digits}" = "-{#digits}"
+"a forgotten year" = "一个已被遗忘的年份"
+
+[[rulesets]]
 name = "birth_year"
 [rulesets.rules]
 "{#digits}" = "{#digits} 年"
@@ -510,6 +517,23 @@ name = "perspective"
 "formal register" = "正式名册"
 "annotated whos who" = "带注名人录"
 "memorial register" = "纪念名册"
+"gazetteer" = "地名志"
+"travelers atlas" = "旅人地图集"
+"natural survey" = "自然环境调查"
+"positional record" = "位置记录"
+"mythographic chart" = "神话星图"
+"instrument log" = "仪器观测日志"
+"numbered catalogue" = "编号目录"
+"ancient record" = "古代记录"
+"practical walkthrough" = "实用操作指引"
+"site specific guide" = "当地指南"
+"apprentice guide" = "学徒指南"
+"field manual" = "实地手册"
+"theoretical manual" = "理论手册"
+"apprentice manual" = "学徒手册"
+"progressive treatise" = "技术进步论著"
+"comparative treatise" = "技术比较论著"
+"cautionary treatise" = "技术警示论著"
 "generic" = "通用记述"
 "unknown" = "未知"
 

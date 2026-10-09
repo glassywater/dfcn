@@ -13,7 +13,7 @@ base = "materials::subscribed_rituals"
 [[rulesets]]
 name = "liquid"
 [rulesets.rules]
-"{adjective} {noun} of {@bt_god}" = "{@bt_god}的{adjective}{noun}"
+"{adjective} {noun} of {::text::deity}" = "{::text::deity}的{adjective}{noun}"
 
 [[rulesets]]
 name = "adjective"
@@ -114,7 +114,7 @@ name = "effect"
 [[rulesets]]
 name = "syndrome"
 [rulesets.rules]
-"drinking {adjective} {noun} of {@bt_god} and {effect}" = "饮用{@bt_god}的{adjective}{noun}，并{effect}"
+"drinking {adjective} {noun} of {::text::deity} and {effect}" = "饮用{::text::deity}的{adjective}{noun}，并{effect}"
 "becoming a {::creatures::subscribed_rituals::cleric}" = "成为{::creatures::subscribed_rituals::cleric}"
 "being healed" = "受到治疗"
 "inebriation" = "醉酒"
@@ -122,8 +122,9 @@ name = "syndrome"
 [[rulesets]]
 name = "ritual"
 [rulesets.rules]
-"Rites of {@bt_god} ({offering})" = "{@bt_god}的祭仪（{offering}）"
-"Rites of {@bt_god}" = "{@bt_god}的祭仪"
+# Use the shared complete deity name, including its surname and epithet.
+"Rites of {::text::deity} ({offering})" = "{::text::deity}的祭仪（{offering}）"
+"Rites of {::text::deity}" = "{::text::deity}的祭仪"
 
 [[rulesets]]
 name = "offering"
@@ -138,4 +139,3 @@ name = "offering"
 "aluminum bar" = "铝锭"
 "star sapphire" = "星光蓝宝石"
 "star ruby" = "星光红宝石"
-

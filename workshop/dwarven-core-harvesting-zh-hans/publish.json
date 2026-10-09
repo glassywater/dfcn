@@ -1,0 +1,18 @@
+{
+  "appid": 975370,
+  "title": "Dwarven Core Harvesting 简体中文汉化",
+  "description_file": "workshop/dwarven-core-harvesting-zh-hans/description.bbcode.txt",
+  "content_folder": "workshop/dwarven-core-harvesting-zh-hans/content",
+  "preview_file": "workshop/dwarven-core-harvesting-zh-hans/preview.png",
+  "tags": [
+    "mod",
+    "translation",
+    "Chinese"
+  ],
+  "visibility": 2,
+  "changelog": "发布 Dwarven Core Harvesting 简体中文汉化数据。",
+  "required_items": [
+    3811193379,
+    3459143313
+  ]
+}

@@ -5,4 +5,5 @@
 [EARLIEST_COMPATIBLE_DISPLAYED_VERSION:50.05-zh-Hans.1]
 [AUTHOR:DFCN Community]
 [NAME:小队与区域图标汉化数据]
-[DESCRIPTION:Squad & Burrow Icons 的独立简体中文翻译数据，需要 DFCN 汉化核心。仅供本地试用，未发布。]
+[DESCRIPTION:Squad & Burrow Icons 的简体中文翻译数据。翻译模组名称与简介。原模组提供小队和区域图标。需要 DFCN 汉化核心和原模组。]
+[STEAM_FILE_ID:3815789827]

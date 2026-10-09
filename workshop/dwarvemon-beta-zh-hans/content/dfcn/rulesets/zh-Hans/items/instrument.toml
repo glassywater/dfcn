@@ -1,0 +1,7 @@
+# Dwarvemon 2.22 translation extension; merges into the base namespace.
+base = "items::instrument"
+
+[[rulesets]]
+name = "main"
+[rulesets.rules]
+"{::items::dwarvemon::instrument}" = "{::items::dwarvemon::instrument}"

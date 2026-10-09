@@ -24437,6 +24437,7 @@ Conversations occur over time, like movements and attacks.	与移动和攻击一
 Credits: and everybody who has helped out on the forum and	也感谢所有在论坛及其他地方伸出援手、	wl
 DFHack GUI Control tool: gui/settings-manager.work_details	工作分工与劳动自动化（gui/settings-manager.work_details）	l
 DFHack GUI Elevate barony preferences: no item preferences	无物品偏好	l
+DFHack GUI Item type selector: Type or select an item type	输入或选择物品类型	l
 DFHack help: "--applytypes <profession>[,<profession>...]"	"--applytypes <profession>[,<profession>...]"	l
 DFHack help: "--goals [ <goal> false [<goal> false ...] ]"	"--goals [ <goal> false [<goal> false ...] ]"	l
 DFHack help: "--named" Selects all named units on the map.	"--named" 选择地图上所有命名单位。	l
@@ -29355,6 +29356,7 @@ DFHack GUI Control tool: gui/civ-alert.big_red_button	平民警报按钮（gui/c
 DFHack GUI Control tool: gui/mod-manager.notification	模组预设应用提示（gui/mod-manager.notification）	l
 DFHack GUI Control tool: logistics enable autoretrain	自动重新驯养（logistics enable autoretrain）	l
 DFHack GUI Control tool: machine-toggle.pressureplate	压力板设置（machine-toggle.pressureplate）	l
+DFHack GUI Item type selector: What item do you want?	你想要什么物品？	l
 DFHack GUI Journal tutorial: ## My section subheading	## 子章节标题	l
 DFHack help: "--plant" Selects the highlighted plant.	"--plant" 选择突出显示的植物。	l
 DFHack help: "--scattered" Opposite of "--stockpiled"	"--scattered" 与 "--stockpiled" 相反	l
@@ -34462,6 +34464,7 @@ ENABLE ONE! Entities in Dwarvemon use all Pokemon	只能启用一个！Dwarvemon
 Feel free to pause and check out the information.	你随时可以暂停，仔细查看信息。	hq
 Fortress activity: Carve wooden helve from branch	用树枝雕刻木制斧柄	li
 Fortress activity: Make coke from bituminous coal	使用烟煤制作焦炭	li
+Fortress activity: Make enormous wooden corkscrew	制作大号木制螺杆	li
 Guide {s} immediately when empty of desired items	未装载所需物品时，立即引导矿车向{s1}行驶	hPt
 Guide {s} in {d} days when empty of desired items	等待{d1}天且未装载所需物品时，引导矿车向{s1}行驶	hPt
 How will you respond to the tribute cancellation?	你将如何回应停止进贡的决定？	hP
@@ -40223,6 +40226,7 @@ Fortress activity: Link a building to trigger	将建筑连接到触发装置	li
 Fortress activity: Make billon bars (use ore)	制作毕朗合金锭（使用矿石）	li
 Fortress activity: Make brass bars (use bars)	制作黄铜锭（使用金属锭）	li
 Fortress activity: Make bronze bars (use ore)	制作青铜锭（使用矿石）	li
+Fortress activity: Make menacing wooden spike	制作险恶木制尖刺	li
 Fortress activity: Make sweet potato skin dye	制作甘薯皮染料	li
 Fortress activity: Make wooden training spear	制作木制训练矛	li
 Fortress activity: Press honey from honeycomb	从蜜脾中压出蜂蜜	li
@@ -43359,6 +43363,7 @@ Forgotten beast sensitivity (less = sooner)	遗忘猛兽敏感度（越低越早
 Fortress activity: Carve downward staircase	挖掘下行楼梯	li
 Fortress activity: Extract from land animal	提炼陆地动物	li
 Fortress activity: Make bismuth bronze bars	制作铋青铜锭	li
+Fortress activity: Make eight wooden blocks	制作八个木制锭块	li
 Fortress activity: Make wooden training axe	制作木制训练斧	li
 Fortress activity: Mill seeds/nuts to paste	将种子/坚果磨浆	li
 Fortress activity: Organize Combat Training	组织战斗训练	li
@@ -45059,8 +45064,12 @@ Fortress activity: Carve up/down staircase	挖掘上下楼梯	li
 Fortress activity: Cut raw glass into gems	将粗糙玻璃切割成宝石	li
 Fortress activity: Glaze clay/stone statue	为黏土/石质雕像上釉	li
 Fortress activity: Hunt for small creature	猎捕小型生物	li
+Fortress activity: Make four wooden blocks	制作四个木制锭块	li
 Fortress activity: Make nickel silver bars	制作镍银锭	li
 Fortress activity: Make pineapple leaf dye	制作菠萝叶染料	li
+Fortress activity: Make spiked wooden ball	制作尖刺木制圆球	li
+Fortress activity: Make wooden animal trap	制作木制动物陷阱	li
+Fortress activity: Make wooden armor stand	制作木制盔甲架	li
 Fortress activity: Make wooden hatch cover	制作木制活动盖板	li
 Fortress activity: Press liquid from fruit	从果实中压出液体	li
 Fortress activity: Press liquid from paste	从浆糊中压出液体	li
@@ -46654,6 +46663,8 @@ DFHack GUI Control tool: spectate.tooltip	观战信息提示（spectate.tooltip�
 DFHack GUI Control tool: zone.pasturepond	牧场与池塘动物分配（zone.pasturepond）	l
 DFHack GUI Design: Next point offset: {d}	连接间隔：{d}	l
 DFHack GUI Design: Show alignment guides:	显示对齐辅助线：	l
+DFHack GUI Item type selector: No matches	无匹配项	l
+DFHack GUI Item type selector: instrument	乐器	l
 DFHack GUI Mod manager: Enter preset name	输入预设名称	l
 DFHack GUI Notification settings: Enabled	启用	l
 DFHack GUI Notification settings: injured	受伤居民	l
@@ -48410,6 +48421,7 @@ DFHack GUI Control tool: sort.candidates	贵族任命搜索（sort.candidates）
 DFHack GUI Control tool: sort.conviction	定罪对象筛选（sort.conviction）	l
 DFHack GUI Design: Auto-commit on click:	点击自动应用：	l
 DFHack GUI Design: Commit mirror changes	应用镜像	l
+DFHack GUI Item type selector: rough gem	粗糙宝石	l
 DFHack GUI Notification settings: Toggle	切换	l
 DFHack GUI Quickfort: Current blueprint:	当前蓝图：	l
 DFHack GUI Quickfort: Load new blueprint	加载新蓝图	l
@@ -50407,6 +50419,7 @@ Fortress activity: Make turnip skin dye	制作芜菁皮染料	li
 Fortress activity: Make willow bark dye	制作柳树树皮染料	li
 Fortress activity: Make willow leaf dye	制作柳树叶染料	li
 Fortress activity: Make wooden bookcase	制作木制书架	li
+Fortress activity: Make wooden crossbow	制作木制十字弩	li
 Fortress activity: Make wooden pedestal	制作木制基座	li
 Fortress activity: Process plant to bag	用袋子进行甩籽	li
 Fortress activity: Remove Rotten Tissue	清除坏死组织	li
@@ -52069,6 +52082,9 @@ DFHack GUI Control tool: partial-items	显示物品剩余百分比（partial-ite
 DFHack GUI Design: Line thickness: {d}	线宽：{d}	l
 DFHack GUI Design: Single level stair:	单层楼梯：	l
 DFHack GUI Design: Stop placing points	停止放置点	l
+DFHack GUI Item type selector: (chain)	（链甲式）	l
+DFHack GUI Item type selector: boulder	大圆石	l
+DFHack GUI Item type selector: cut gem	切割宝石	l
 DFHack GUI Mass remove: Affect planned	处理规划中	l
 DFHack GUI Mass remove: Cancel removal	取消移除	l
 DFHack GUI Mass remove: Constructions:	构筑物：	l
@@ -54245,6 +54261,7 @@ Fortress activity: Carve bone earring	雕刻骨制耳环	li
 Fortress activity: Carve bone scepter	雕刻骨制节杖	li
 Fortress activity: Construct building	建造建筑	li
 Fortress activity: Make blueberry dye	制作蓝莓染料	li
+Fortress activity: Make bone crossbow	制作骨十字弩	li
 Fortress activity: Make cranberry dye	制作蔓越莓染料	li
 Fortress activity: Make pear bark dye	制作梨树皮染料	li
 Fortress activity: Make pear leaf dye	制作梨叶染料	li
@@ -56265,6 +56282,7 @@ Fortress activity: Make eggplant dye	制作茄子染料	li
 Fortress activity: Make milk of lime	制作石灰乳	li
 Fortress activity: Make oak bark dye	制作橡树树皮染料	li
 Fortress activity: Make tea leaf dye	制作茶叶染料	li
+Fortress activity: Make wooden altar	制作木制圣坛	li
 Fortress activity: Make wooden chair	制作木制椅子	li
 Fortress activity: Make wooden chest	制作木制箱子	li
 Fortress activity: Make wooden grate	制作木制格栅	li
@@ -58002,6 +58020,7 @@ DFHack GUI Design: Building filters	建造筛选条件	l
 DFHack GUI Design: Mirror diagonal:	对角镜像：	l
 DFHack GUI Design: Mirror vertical:	垂直镜像：	l
 DFHack GUI Design: Reinforced Walls	加固墙壁	l
+DFHack GUI Item type selector: none	无	l
 DFHack GUI Legends race filter: All	全部	l
 DFHack GUI Mass remove: Leave alone	不处理	l
 DFHack GUI Mass remove: Stockpiles:	储物堆：	l
@@ -58241,6 +58260,7 @@ Fortress activity: Load weapon trap	装填武器陷阱	li
 Fortress activity: Make clay bricks	制作黏土砖	li
 Fortress activity: Make clay crafts	制作黏土工艺品	li
 Fortress activity: Make clay statue	制作黏土雕像	li
+Fortress activity: Make wooden cage	制作木制笼子	li
 Fortress activity: Make wooden door	制作木制门	li
 Fortress activity: Pickup equipment	拾取装备	li
 Fortress activity: Store owned item	存放私人物品	li
@@ -58516,6 +58536,7 @@ Walking spreads spatter (fort mode)	行走传播飞溅(要塞模式)	w
 We are in the right in all matters.	不管什么事，道理都在我们这边。	hP
 We are saved from a fearsome enemy!	我们从可怕的敌人手中获救了！	hP
 We rent out a room for {d} a night.	我们有一间房出租，每晚{d1}。	hPt
+Weapons and ammunition (opens menu)	武器与弹药（打开菜单）	wi
 What is your identity's profession?	你所采用的身份从事什么职业？	wl
 What will you say about the rescue?	关于这次营救，你想说些什么？	hP
 Winter has arrived on the calendar.	按历法，已到冬季。	hP
@@ -60207,6 +60228,7 @@ DFHack GUI Control tool: stockflow	按储物容量安排生产（stockflow）	l
 DFHack GUI Design: Line thickness:	线宽：	l
 DFHack GUI Design: Top stair type:	顶层楼梯：	l
 DFHack GUI Design: gui/design Help	形状绘制帮助	l
+DFHack GUI Item type selector: any	任意	l
 DFHack GUI Mass remove: Buildings:	建筑：	l
 DFHack GUI Quickfort: Click or hit	点击或按	l
 DFHack GUI Quickfort: No transform	无变换	l
@@ -60588,6 +60610,7 @@ Land holder population trigger {d}	封地贵族人口阈值 {d}	wt
 Land holder production trigger {d}	封地贵族创造财富阈值 {d}	wt
 Look to another for what you need.	向他人寻求你需要的东西。	hP
 Loud vocalization (heard recently)	响亮叫声（刚刚听到）	wl
+Make instrument piece (opens menu)	制作乐器部件（打开菜单）	wi
 May interfere with existing saves.	可能影响现有存档。	w
 Minimum Final Glacier Region Count	最终冰川区域最少数量
 Minimum Final Wetland Region Count	最终湿地区域最少数量
@@ -74335,6 +74358,7 @@ Looks to be snowing outside.	外面好像在下雪。	hP
 Main Ceremony of during {e}.	在{e1}期间，主要仪式。	htEi
 Main Ceremony of within {p}.	在{p1}，主要仪式。	htEi
 Main: Toggle ramp indicators	主界面：切换坡道指示	w
+Make instrument (opens menu)	制作乐器（打开菜单）	wi
 Make no needless sacrifices.	不要做无谓的牺牲。	hP
 Making cave civilizations...	正在生成洞穴政权……
 Masterwork architecture lost	杰作建筑损失	w
@@ -74412,6 +74436,7 @@ Set conditions for Stop {d}.	设置站点 {d} 的发车条件。	wtl
 Several people were expelled	数人遭到驱逐	h
 She is of unknown parentage.	她的父母身份不明。	h
 She lives a fast-paced life.	她过着快节奏的生活。	l
+Siege equipment (opens menu)	围攻装备（打开菜单）	wi
 Skill name: Critical Thinker	批判思考	li
 Some changes are inevitable.	有些变化不可避免。	hP
 Sorting world information...	整理世界信息...	w
@@ -74544,6 +74569,7 @@ This {s} player is middling.	这位{s1}演奏者水平一般。	hPt
 This {s} player is splendid.	这位{s1}演奏者很出色。	hPt
 This {s} player is terrible.	这位{s1}演奏者很糟糕。	hPt
 Toward you: Neutral attitude	对你的态度：中立	hP
+Trap components (opens menu)	陷阱组件（打开菜单）	wi
 Travel building: Civic Mound	政务丘	wi
 Travel building: Dining hall	餐厅	wi
 Travel building: Market Tree	市场树	wi
@@ -76460,6 +76486,7 @@ Fortress activity: Cut gems	切割宝石	li
 Fortress activity: Diplomat	外交官	li
 Fortress activity: Friendly	友善	li
 Fortress activity: Make ash	制作灰烬	li
+Fortress activity: Make bed	制作床	li
 Fortress activity: Make lye	制作碱液	li
 Fortress activity: Reaction	进行反应	li
 Fortress activity: Research	研究	li
@@ -76541,6 +76568,7 @@ Meeting areas and locations	集会区和地点	w
 Mercenary petitions: accept	佣兵申请：接受	wi
 Mercenary petitions: prompt	佣兵申请：询问	wi
 Mercenary petitions: reject	佣兵申请：拒绝	wi
+Metal clothing (opens menu)	金属衣物（打开菜单）	wi
 Minimum Partial Edge Oceans	最少部分临边海洋数量	l
 Monster Rampage during {e}.	在{e1}期间，怪物肆虐事件。	htEi
 Monster Rampage within {p}.	在{p1}，怪物肆虐事件。	htEi
@@ -78858,6 +78886,7 @@ Opening Ceremony of at {p}	在{p1}，开幕仪式	htEi
 Opening Ceremony of in {d}	{d1}年的开幕仪式	htEi
 Opening Ceremony of in {p}	在{p1}，开幕仪式	htEi
 Other Vegetation: Moderate	其他植被: 中等	w
+Other objects (opens menu)	其他物体（打开菜单）	wi
 Our hopes travel with you.	我们的希望就寄托在你身上了。	hP
 Overview sentence: I care.	我在乎。	l
 Overview sentence: Rawr!!!	嗷！！！	l
@@ -84358,6 +84387,7 @@ Argue nuances of nature	争辩自然的复杂之处	hP
 Art image two groups: X	两群X	wl
 Ask for {s} to made {s}	请求将{s1}任命为{s2}	hPt
 Ask to become a soldier	请求成为士兵	hP
+Assemble ballista arrow	组装弩炮箭矢	wi
 Below average endurance	耐力低于平均	wil
 Below average intuition	直觉低于平均	wil
 Below average toughness	韧性低于平均	wil
@@ -84724,6 +84754,7 @@ Main Ceremony of at {p}	在{p1}，主要仪式	htEi
 Main Ceremony of in {d}	{d1}年的主要仪式	htEi
 Main Ceremony of in {p}	在{p1}，主要仪式	htEi
 Main: Select filter box	主界面：选择筛选框	w
+Make bolt thrower parts	制作弩箭投射器部件	wi
 Make sugar, flour, and 	在此制作糖、面粉和各种有用的	w
 Max Semimegabeast Caves	半巨兽洞穴数量上限
 Maximum number of sites	最大地点数量	w
@@ -86662,6 +86693,7 @@ Fortress activity: Dig	挖掘	li
 Fortress activity: Eat	进食	li
 Fourth eldest daughter	第四个女儿	w
 Furnaces are used for 	熔炉用于冶炼、玻璃制造、陶器	w
+Furniture (opens menu)	家具（打开菜单）	wi
 Generating entities...	生成实体......	w
 Get {s} from {n} ({s})	从{n1}处拿取{s1}（{s2}）	hPt
 Get {s} from {s} ({s})	从{s2}处拿取{s1}（{s3}）	hPt
@@ -93922,6 +93954,8 @@ Magma glass furnace	岩浆玻璃窑	wi
 Main: Announcements	主界面：公告	w
 Main: Gather plants	主界面：采集植物	w
 Make Campfire ({s})	搭建篝火（{s1}）	hPt
+Make ballista parts	制作弩炮部件	wi
+Make catapult parts	制作投石机部件	wi
 Make large clay pot	制作黏土质大罐	wi
 Make plaster powder	制作石膏粉	wi
 Make traction bench	制作牵引台	wi
@@ -97033,6 +97067,7 @@ And We Sang '{b}!'	而我们唱道：“{b}！”	hbti
 Animal trap robbed	动物陷阱被盗	w
 Arena: Create tree	竞技场：创建树木	w
 Arena: Fluids, mud	竞技场：泥浆	w
+Armor (opens menu)	盔甲（打开菜单）	wi
 Art image group: X	一群X	wl
 Assemble stone axe	组装石斧	hP
 Assign messengers.	指派信使。	hP
@@ -128884,7 +128919,7 @@ broken away	折断了	h
 bubble bulb	泡泡球茎	wi
 buck rabbit	兔	wi
 bugbat pups	虫蝠幼崽	wi
-bull calves	牛幼崽	wi
+bull calves	奶牛犊	wi
 bull sharks	牛鲨	wi
 burned away	烧掉了	h
 burned {a}.	烧死了{a1}。	ht
@@ -132481,6 +132516,7 @@ Magma Flow	未凝熔岩	wi
 Magma Mist	岩浆雾	wl
 Magma kiln	岩浆黏土窑	wi
 Magma-safe	耐岩浆	wi
+Make eight	制作八个	wi
 Make merry	欢庆	w
 Make peace	议和	wli
 Make quire	制作稿纸	wi
@@ -132771,7 +132807,7 @@ cougar cub	美洲狮幼崽	wi
 cougar man	美洲狮人	wi
 cougar men	美洲狮人	wi
 counselors	顾问	hi
-cow calves	牛幼崽	wi
+cow calves	奶牛犊	wi
 cow cheese	牛奶酪	wi
 cow's milk	牛奶	wi
 cowpea pod	豇豆荚	wi
@@ -135872,7 +135908,7 @@ branching	分叉	wi
 brimstone	硫磺	wi
 buck hare	野兔	wi
 buckwheat	荞麦	wi
-bull calf	牛幼崽	wi
+bull calf	奶牛犊	wi
 bumblebee	大黄蜂	wi
 cabochons	弧面切工	wi
 cacao pod	可可豆荚	wi
@@ -137994,7 +138030,7 @@ coconuts	椰子	wi
 commerce	商业	wi
 confused	困惑	w
 costumes	服装	h
-cow calf	牛幼崽	wi
+cow calf	奶牛犊	wi
 crab man	螃蟹人	wi
 crab men	螃蟹人	wi
 creation	创造	r
@@ -141521,7 +141557,7 @@ broad	宽阔	wi
 brown	棕色	wi
 buff.	浅黄褐色。	wil
 bulky	厚重	wi
-bulls	牛	wi
+bulls	奶牛	wi
 bunny	兔幼崽	wi
 cages	笼子	wi
 caper	刺山柑	wi
@@ -142342,7 +142378,7 @@ bone	骨	wi
 bowl	碗	wi
 bows	弓	wi
 buff	浅黄褐色	wi
-bull	牛	wi
+bull	奶牛	wi
 cage	笼子	wi
 camp	营地	hv
 cape	披风	wi
@@ -142359,7 +142395,7 @@ coat	大衣	wi
 coin	硬币	wi
 coke	焦炭	wi
 cone	球果	wi
-cows	牛	wi
+cows	奶牛	wi
 crab	螃蟹	wi
 crow	乌鸦	wi
 cube	立方体	wi
@@ -142804,7 +142840,7 @@ but	但	h
 cap	帽子	wi
 cat	猫	wi
 cod	鳕鱼	wi
-cow	牛	wi
+cow	奶牛	wi
 cup	茶杯	wi
 day	白昼	r
 die	骰子	wi

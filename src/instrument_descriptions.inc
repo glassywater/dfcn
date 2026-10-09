@@ -35,6 +35,8 @@ void Overlay::load_instrument_translations() {
 }
 
 void Overlay::refresh_native_instrument_names() const {
+    // The SDL request refreshed these owned names before waking the worker.
+    if (DfhackTranslationThreadScope::active) return;
     const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
     if (instrument_names_epoch_ == epoch) return;
     std::vector<std::pair<std::string, std::string>> names;
@@ -53,6 +55,7 @@ void Overlay::refresh_native_instrument_names() const {
     instrument_names_epoch_ = epoch;
     if (current == native_instrument_names_) return;
     native_instrument_names_ = std::move(current);
+    ++dfhack_translation_catalog_revision_;
     described_instrument_items_.clear();
     instrument_description_cache_.clear();
     workshop_recipe_translation_cache_.clear();

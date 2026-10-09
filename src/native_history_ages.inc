@@ -176,6 +176,7 @@ static bool capture_native_history_age_title_components(NativeHistoryEventData &
 
 static bool capture_native_history_age_title(std::string_view base_title,
         NativeHistoryEventData &out, int32_t requested_ordinal, bool *matched) {
+    dfhack_require_world_read();
     if (matched) *matched = false;
     if (base_title.empty()) return false;
     NativeBorrowedVector<uintptr_t> ages;

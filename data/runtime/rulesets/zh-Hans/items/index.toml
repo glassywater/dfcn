@@ -81,6 +81,8 @@ name = "$number"
 optional = true
 [rulesets.rules]
 " x{#digits}" = " x{#digits}"
+# Native remaining-quantity captions put the percent sign after the digits.
+" ({#digits}%)" = " ({#digits}%)"
 " (%{#digits})" = " (%{#digits})"
 " [{#digits}]" = " [{#digits}]"
 " <#{#digits}>" = " <#{#digits}>"

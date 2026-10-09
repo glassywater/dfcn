@@ -8,7 +8,7 @@ DFHack GUI Overlay control: No content.||I|0|-1|0	没有内容。|	l
 DFHack GUI Overlay control: Codex Narrator||I|0|-1|0	故事叙述器|	l
 DFHack GUI Overlay control: Adds a Read Story button when viewing books in item sheets.||I|0|-1|0	查看物品中的书籍时，添加“阅读故事”按钮。|	l
 DFHack GUI Overlay control: Reading:|Untitled|I|1|-1|0	阅读：|未命名	l
-DFHack GUI Overlay control: Reading:|*|I|1|-1|0	阅读：|*	l
+DFHack GUI Overlay control: Reading:|{book}|I|1|-1|0	阅读：|{book}	l
 Codex Narrator	故事叙述器	wl
 Read Story [Ctrl+N]	阅读故事 [Ctrl+N]	l
 Copy text	复制文本	wl
