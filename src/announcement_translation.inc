@@ -91,6 +91,16 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         auto translated = translate_help_paragraph(block, colors, translated_colors,
             true, -1, true);
         if (translated) return translated;
+        // 7eb225/7eb273 submits the complete adventure introduction and its
+        // optional vault paragraph to the same announcement queue as ordinary
+        // reports. e9f40 draws that live queue through markup words; it never
+        // enters the help document renderer. Resolve the reviewed help
+        // productions here as a complete record, including every siege,
+        // bandit, companion, rescue and ending branch. Keep help's native
+        // historical-figure fields and palette handling for both popup/log
+        // consumers; this succeeds only when the entire source is covered.
+        translated = translate_help_paragraph(block, colors, translated_colors);
+        if (translated) return translated;
         // ELF 53.16 1882b38/1882bc0 builds spoken memories with the SAME
         // event and emotion formatters (101b7f0, 10283d0) as the overview.
         // Share complete authored sentences, including intensity/negation;
