@@ -875,6 +875,7 @@ static constexpr int kAdventurePersonalityFieldRule = -154;
 static constexpr int kFortressSquadCreationRule = -155;
 static constexpr int kFortressUniformChoiceRule = -156;
 static constexpr int kFortressSiteNameRule = -157;
+static constexpr int kConversationPortraitRule = -158;
 
 static bool is_fortress_justice_field(const Match &match) {
     return match.rule == kFortressJusticeCaseRule || match.rule == kFortressJusticeDetailRule ||
@@ -25450,11 +25451,12 @@ void Overlay::normalize_native_split_text() {
     for (size_t index = 0; index < prepared_matches_.size(); ++index) {
         Match &match = prepared_matches_[index];
         if (match.native_announcement_popup) continue;
-        // The decompiled adventure combat, trade and embark finder renderers
+        // The decompiled combat, portrait, trade and embark finder renderers
         // use ordinary addst, retaining old half-font flags without drawing halves.
         if (match.rule == kAdventureCombatFieldRule ||
                 match.rule == kAnnouncementListRule ||
                 match.rule == kFortressTradeFieldRule ||
+                match.rule == kConversationPortraitRule ||
                 match.rule == kEmbarkFinderFieldRule) continue;
         // Tooltip wrapping owns its physical source rows and output lines.
         // Flags retained from a covered picture caption cannot turn those
@@ -41913,6 +41915,7 @@ void Overlay::render(SDL_Renderer *renderer) {
             match.rule == kAdventureJournalRule ||
             match.rule == kAdventureJournalTabRule ||
             match.rule == kUiMessageRule ||
+            match.rule == kConversationPortraitRule ||
             match.rule == kWorldgenSummaryRule ||
             match.rule == kWorldgenChronicleRule || match.rule == kWorldgenControlRule;
     };

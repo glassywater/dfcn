@@ -1,0 +1,39 @@
+edition	image	field	condition	native_output
+reference	PE:6a70a6d9:02711000	portrait	unit lookup returned null	all identity and status text skipped
+reference	PE:6a70a6d9:02711000	attitude	selected visual relationship is null	Toward you and Relationship rows skipped
+reference	PE:6a70a6d9:02711000	demeanor	-25 < relationship+0x84 < 25	no patience term or preceding separator
+reference	PE:6a70a6d9:02711000	demeanor	-25 < relationship+0x8c < 25	no energy term or preceding separator
+reference	PE:6a70a6d9:02711000	demeanor	-25 < relationship+0x88 < 25	no confidence term or preceding separator
+reference	PE:6a70a6d9:02711000	relationship	capacity < 2	Relationship row skipped; mood row follows Toward row
+reference	PE:6a70a6d9:02711000	relationship	-25 < relationship+0x60 < 25	no love term
+reference	PE:6a70a6d9:02711000	relationship	-25 < relationship+0x5c < 25	no fear term
+reference	PE:6a70a6d9:02711000	relationship	-25 < relationship+0x58 < 25	no respect term
+reference	PE:6a70a6d9:02711000	relationship	-25 < relationship+0x64 < 25	no trust term
+reference	PE:6a70a6d9:02711000	relationship	relationship+0x54 < 25	no loyalty term, including negative loyalty
+reference	PE:6a70a6d9:02711000	mood	unit+0xa98 soul is null	no mood records selected
+reference	PE:6a70a6d9:02711000	mood	soul+0x278 mood vector is empty	no mood records selected
+reference	PE:6a70a6d9:02711000	mood	record enum == -1 or record strength <= 0	record skipped by selection loop
+reference	PE:6a70a6d9:02711000	mood	selected_count <= 0 after min(selected_count, capacity)	General Mood row skipped
+reference	PE:6a70a6d9:02711000	mood	selected mood index == 0	no leading mood separator
+reference	PE:6a70a6d9:02711000	mood	selected mood index > 0	draw comma-space before dispatch, even for a silent selector
+reference	PE:6a70a6d9:02711000	mood	unsigned selected enum > 168	default emits no label; loop advances after any preceding separator
+reference	PE:6a70a6d9:02711000	mood	last selected mood emitted or skipped	loop ends without a terminal separator
+classic	PE:6a70b91c:0270a000	portrait	unit lookup returned null	all identity and status text skipped
+classic	PE:6a70b91c:0270a000	attitude	selected visual relationship is null	Toward you and Relationship rows skipped
+classic	PE:6a70b91c:0270a000	demeanor	-25 < relationship+0x84 < 25	no patience term or preceding separator
+classic	PE:6a70b91c:0270a000	demeanor	-25 < relationship+0x8c < 25	no energy term or preceding separator
+classic	PE:6a70b91c:0270a000	demeanor	-25 < relationship+0x88 < 25	no confidence term or preceding separator
+classic	PE:6a70b91c:0270a000	relationship	capacity < 2	Relationship row skipped; mood row follows Toward row
+classic	PE:6a70b91c:0270a000	relationship	-25 < relationship+0x60 < 25	no love term
+classic	PE:6a70b91c:0270a000	relationship	-25 < relationship+0x5c < 25	no fear term
+classic	PE:6a70b91c:0270a000	relationship	-25 < relationship+0x58 < 25	no respect term
+classic	PE:6a70b91c:0270a000	relationship	-25 < relationship+0x64 < 25	no trust term
+classic	PE:6a70b91c:0270a000	relationship	relationship+0x54 < 25	no loyalty term, including negative loyalty
+classic	PE:6a70b91c:0270a000	mood	unit+0xa98 soul is null	no mood records selected
+classic	PE:6a70b91c:0270a000	mood	soul+0x278 mood vector is empty	no mood records selected
+classic	PE:6a70b91c:0270a000	mood	record enum == -1 or record strength <= 0	record skipped by selection loop
+classic	PE:6a70b91c:0270a000	mood	selected_count <= 0 after min(selected_count, capacity)	General Mood row skipped
+classic	PE:6a70b91c:0270a000	mood	selected mood index == 0	no leading mood separator
+classic	PE:6a70b91c:0270a000	mood	selected mood index > 0	draw comma-space before dispatch, even for a silent selector
+classic	PE:6a70b91c:0270a000	mood	unsigned selected enum > 168	default emits no label; loop advances after any preceding separator
+classic	PE:6a70b91c:0270a000	mood	last selected mood emitted or skipped	loop ends without a terminal separator

@@ -6,7 +6,8 @@ static bool native_paragraph_owns_card_row(const std::vector<Match> &matches,
     std::vector<bool> covered;
     const int right = row.x + static_cast<int>(row.source.size());
     for (const Match &match : matches) {
-        if (match.rule != kUiMessageRule || match.y != row.y || match.length <= 0 ||
+        if ((match.rule != kUiMessageRule && match.rule != kConversationPortraitRule) ||
+                match.y != row.y || match.length <= 0 ||
             match.length != static_cast<int>(match.source.size())) continue;
         const int first = std::max(row.x, match.x);
         const int last = std::min(right, match.x + match.length);

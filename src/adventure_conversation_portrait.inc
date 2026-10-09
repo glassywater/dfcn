@@ -16,6 +16,115 @@ const std::array<std::string_view, 3> portrait_labels{
 const auto portrait_draws = captured_native_drawn_text_rows();
 const auto portrait_top_draws = captured_native_drawn_text_rows(true);
 std::vector<ConversationPortraitPanel> portrait_panels;
+// The decompiled renderer writes each label, state and separator through
+// addst at its current cursor. Those calls own the field even when a later
+// graphical pass replaces the surrounding frame. A frame-wide text scan
+// otherwise drops that ownership and sends individual states to UI words.
+const auto portrait_native_field = [&](int y, int left, std::string_view label)
+        -> std::optional<std::pair<ConversationPortraitField, SDL_Rect>> {
+#ifdef _WIN32
+    const auto base = native_history_profile_base();
+    if (!base) return std::nullopt;
+    const size_t kind = label == "Toward you:" ? 0 : label == "Relationship:" ? 1 : 2;
+    // Exact direct-call return intervals from both configured PE images;
+    // relocation maps Reference RVAs to the selected edition. The complete
+    // inventories, including all mood aliases/defaults, are in native-status-draws.tsv.
+    const std::array<std::pair<uintptr_t, uintptr_t>, 3> ranges{{
+        {0x868d0e, 0x8692d8}, {0x86933e, 0x869c95}, {0x869cfd, 0x86b437},
+    }};
+    const auto first = native_reference_address(base, ranges[kind].first);
+    const auto last = native_reference_address(base, ranges[kind].second);
+    if (!first || !last) return std::nullopt;
+    for (const auto *draws : {&portrait_draws, &portrait_top_draws}) {
+        const auto header = std::find_if(draws->begin(), draws->end(), [&](const auto &draw) {
+            return draw.native_caller == first && draw.x == left && draw.y == y &&
+                draw.source.starts_with(label);
+        });
+        if (header == draws->end() || !header->draw_clip ||
+                header->draw_dimx != gps_->dimx || header->draw_dimy != gps_->dimy ||
+                header->draw_grid != (header->top_layer ? gps_->screen_top : gps_->screen) ||
+                (screen_override && screen_override != header->draw_grid)) continue;
+        std::vector<const NativeDrawnTextRow *> parts;
+        for (const auto &draw : *draws)
+            if (draw.y == y && draw.x >= left && draw.native_caller >= first &&
+                    draw.native_caller <= last && draw.sequence >= header->sequence &&
+                    draw.draw_epoch == header->draw_epoch && draw.draw_grid == header->draw_grid &&
+                    draw.draw_dimx == gps_->dimx && draw.draw_dimy == gps_->dimy)
+                parts.push_back(&draw);
+        std::sort(parts.begin(), parts.end(), [](const auto *a, const auto *b) {
+            return a->x < b->x;
+        });
+        // 868533/86853c draw center +/-50, rows 6..19. At 868b0c
+        // the native text cursor is border-left+2. Keep that complete
+        // allocation even when the generic border reader cannot prove it.
+        // A one-row writer clip limits cells, not glyph ascenders around
+        // the ordinary addst baseline; wider scroll/page clips retain Y.
+        SDL_Rect bounds{left - 1, 7, 99, 12};
+        SDL_Rect writer = *header->draw_clip;
+        if (writer.y == y && writer.h == 1) {
+            writer.y = bounds.y;
+            writer.h = bounds.h;
+        }
+        SDL_Rect visible{};
+        if (!SDL_IntersectRect(&bounds, &writer, &visible)) continue;
+        bounds = visible;
+        if (const auto panel = native_panel_interior(borders, *gps_, left,
+                left + static_cast<int>(label.size()), y, occluding_frame)) {
+            SDL_Rect intersection{};
+            if (!SDL_IntersectRect(&bounds, &*panel, &intersection)) continue;
+            bounds = intersection;
+        }
+        if (left < bounds.x || y < bounds.y || y >= bounds.y + bounds.h) continue;
+        ConversationPortraitField field{{left, y, 0, kConversationPortraitRule, {}, {}}, {}, {}};
+        int cursor = left;
+        bool intact = !parts.empty();
+        for (size_t part = 0; part < parts.size() && intact; ++part) {
+            const auto &draw = *parts[part];
+            if (draw.x < cursor || draw.x >= bounds.x + bounds.w || draw.source.empty() ||
+                    draw.source.size() > static_cast<size_t>(bounds.x + bounds.w - draw.x)) {
+                intact = false;
+                break;
+            }
+            // Gaps and every painted byte must still belong to this layer.
+            // Complete pre-clipping text supplies meaning only for the last
+            // draw; it never reserves cells beyond the actual visible span.
+            for (int x = cursor; x < draw.x + static_cast<int>(draw.source.size()); ++x) {
+                bool top = false;
+                const auto *cell = cell_at(x, y, &top);
+                const unsigned char expected = x < draw.x ? ' ' :
+                    static_cast<unsigned char>(draw.source[static_cast<size_t>(x - draw.x)]);
+                if (!cell || top != draw.top_layer || (cell[0] ? cell[0] : ' ') != expected ||
+                        (expected != ' ' && visible_char_at(x, y) != expected)) {
+                    intact = false;
+                    break;
+                }
+                field.ink.source.push_back(static_cast<char>(expected));
+                field.colors.push_back((cell[1] << 16) | (cell[2] << 8) | cell[3]);
+            }
+            if (!intact) break;
+            field.source.append(static_cast<size_t>(draw.x - cursor), ' ');
+            const auto &complete = draw.complete_source.empty() ? draw.source : draw.complete_source;
+            if (complete != draw.source && (part + 1 != parts.size() ||
+                    !std::string_view(complete).starts_with(draw.source))) {
+                intact = false;
+                break;
+            }
+            field.source += complete;
+            cursor = draw.x + static_cast<int>(draw.source.size());
+        }
+        if (!intact || field.colors.empty()) continue;
+        field.ink.length = static_cast<int>(field.ink.source.size());
+        field.colors.resize(field.source.size(), field.colors.back());
+        const int tw = gps_->tile_pixel_x, th = gps_->tile_pixel_y;
+        field.ink.layout_native_clip = SDL_Rect{
+            (gps_->screen_pixel_x - gps_->dimx * tw) / 2 + bounds.x * tw,
+            (gps_->screen_pixel_y - gps_->dimy * th) / 2 + bounds.y * th,
+            bounds.w * tw, bounds.h * th};
+        return std::pair{std::move(field), bounds};
+    }
+#endif
+    return std::nullopt;
+};
 const auto portrait_field = [&](int y, int left, const SDL_Rect &panel)
         -> std::optional<ConversationPortraitField> {
     const int right = panel.x + panel.w;
@@ -23,7 +132,7 @@ const auto portrait_field = [&](int y, int left, const SDL_Rect &panel)
     int end = right;
     while (end > left && context[y][end - 1] == ' ') --end;
     if (end <= left) return std::nullopt;
-    ConversationPortraitField field{{left, y, end - left, kUiMessageRule, {},
+    ConversationPortraitField field{{left, y, end - left, kConversationPortraitRule, {},
         context[y].substr(left, end - left)}, {}, {}};
     field.source = field.ink.source;
     bool field_top = false, known_layer = false;
@@ -87,10 +196,12 @@ for (int y = 0; y < gps_->dimy; ++y) {
         const size_t found = context[y].find(label);
         if (found == std::string::npos) continue;
         const int left = static_cast<int>(found);
-        const auto panel = native_panel_interior(borders, *gps_, left,
-            left + static_cast<int>(label.size()), y, occluding_frame);
+        const auto native = portrait_native_field(y, left, label);
+        const auto panel = native ? std::optional(native->second) :
+            native_panel_interior(borders, *gps_, left,
+                left + static_cast<int>(label.size()), y, occluding_frame);
         if (!panel) continue;
-        const auto field = portrait_field(y, left, *panel);
+        const auto field = native ? std::optional(native->first) : portrait_field(y, left, *panel);
         if (!field || !field->source.starts_with(label)) continue;
         auto known = std::find_if(portrait_panels.begin(), portrait_panels.end(),
             [&](const ConversationPortraitPanel &prior) {
@@ -140,6 +251,10 @@ for (int y = 0; y < gps_->dimy; ++y) {
             const size_t next = field->source.find(',', at);
             const std::string term(trim_view(std::string_view(field->source).substr(at,
                 next == std::string::npos ? std::string::npos : next - at)));
+            // Mood selectors can deliberately emit no label. The native
+            // loop writes its comma before dispatch, so leading, repeated
+            // and trailing empty segments are valid source branches.
+            if (term.empty()) { at = next; continue; }
             const auto translated = exact_literal_translation(scope + term);
             if (!translated) { complete = false; break; }
             if (!first) complete = append("，", at > 1 ? at - 2 : 0);

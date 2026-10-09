@@ -1,0 +1,151 @@
+edition	image	field	instruction_rva	instruction	flags_source_rva	flags_source_instruction	taken_target_rva	fallthrough_rva
+reference	PE:6a70a6d9:02711000	identity	0x868a4d	je     0x14086b45a	0x868a4a	test   rax,rax	0x86b45a	0x868a53
+reference	PE:6a70a6d9:02711000	identity	0x868a63	je     0x140868ae2	0x868a61	test   al,al	0x868ae2	0x868a65
+reference	PE:6a70a6d9:02711000	identity	0x868a6d	je     0x140868a7c	0x868a65	cmp    DWORD PTR [r13+0x142c],0x0	0x868a7c	0x868a6f
+reference	PE:6a70a6d9:02711000	identity	0x868a7a	je     0x140868a84	0x868a6f	test   DWORD PTR [r13+0x11c],0x4000	0x868a84	0x868a7c
+reference	PE:6a70a6d9:02711000	identity	0x868a8c	je     0x140868ae2	0x868a84	cmp    DWORD PTR [r13+0x142c],0x0	0x868ae2	0x868a8e
+reference	PE:6a70a6d9:02711000	identity	0x868af2	je     0x140868b0c	0x868aef	test   rax,rax	0x868b0c	0x868af4
+reference	PE:6a70a6d9:02711000	identity	0x868b30	je     0x140868c4d	0x868b2d	test   rcx,rcx	0x868c4d	0x868b36
+reference	PE:6a70a6d9:02711000	identity	0x868b7d	je     0x140868c4d	0x868b7b	test   al,al	0x868c4d	0x868b83
+reference	PE:6a70a6d9:02711000	identity	0x868ba0	je     0x140868c14	0x868b9d	cmp    DWORD PTR [rcx],0xffffffff	0x868c14	0x868ba2
+reference	PE:6a70a6d9:02711000	identity	0x868bb3	jle    0x140868c14	0x868baf	cmp    DWORD PTR [rcx+0x8],r13d	0x868c14	0x868bb5
+reference	PE:6a70a6d9:02711000	identity	0x868bbb	jle    0x140868be2	0x868bb8	test   rdi,rdi	0x868be2	0x868bbd
+reference	PE:6a70a6d9:02711000	identity	0x868bd4	jg     0x140868d71	0x868bd1	cmp    DWORD PTR [rcx+0x8],eax	0x868d71	0x868bda
+reference	PE:6a70a6d9:02711000	identity	0x868be0	jl     0x140868bc0	0x868bdd	cmp    rbx,rdi	0x868bc0	0x868be2
+reference	PE:6a70a6d9:02711000	identity	0x868be6	jge    0x140868c14	0x868be2	cmp    rdi,0x3	0x868c14	0x868be8
+reference	PE:6a70a6d9:02711000	identity	0x868c3d	jne    0x140868b90	0x868c3b	test   al,al	0x868b90	0x868c43
+reference	PE:6a70a6d9:02711000	identity	0x868c50	cmovg  esi,r14d	0x868c4d	cmp    esi,r14d		0x868c54
+reference	PE:6a70a6d9:02711000	identity	0x868cb5	je     0x140869ca1	0x868cb2	test   r15,r15	0x869ca1	0x868cbb
+reference	PE:6a70a6d9:02711000	attitude	0x868d2f	jl     0x140868ddd	0x868d2c	cmp    eax,0x19	0x868ddd	0x868d35
+reference	PE:6a70a6d9:02711000	attitude	0x868d3a	cmovl  dx,r13w	0x868d37	cmp    eax,0x4b		0x868d3f
+reference	PE:6a70a6d9:02711000	attitude	0x868d78	jle    0x140868db1	0x868d75	cmp    r8,rbx	0x868db1	0x868d7a
+reference	PE:6a70a6d9:02711000	attitude	0x868d87	jge    0x140868da3	0x868d84	cmp    edx,0x3	0x868da3	0x868d89
+reference	PE:6a70a6d9:02711000	attitude	0x868d9b	jle    0x140868da3	0x868d99	cmp    edx,esi	0x868da3	0x868d9d
+reference	PE:6a70a6d9:02711000	attitude	0x868daf	jg     0x140868d84	0x868dac	cmp    r8,rbx	0x868d84	0x868db1
+reference	PE:6a70a6d9:02711000	attitude	0x868de0	jg     0x140868e2b	0x868ddd	cmp    eax,0xffffffe7	0x868e2b	0x868de2
+reference	PE:6a70a6d9:02711000	attitude	0x868def	cmovg  dx,bx	0x868de7	cmp    eax,0xffffffb5		0x868df3
+reference	PE:6a70a6d9:02711000	attitude	0x868e73	jl     0x140868f0d	0x868e70	cmp    eax,0x19	0x868f0d	0x868e79
+reference	PE:6a70a6d9:02711000	demeanor	0x868ecc	cmovl  dx,r13w	0x868ec4	cmp    DWORD PTR [r15+0x84],0x19		0x868ed1
+reference	PE:6a70a6d9:02711000	demeanor	0x868f10	jg     0x140868fb0	0x868f0d	cmp    eax,0xffffffe7	0x868fb0	0x868f16
+reference	PE:6a70a6d9:02711000	demeanor	0x868f6c	cmovg  dx,bx	0x868f64	cmp    DWORD PTR [r15+0x84],0xffffffb5		0x868f70
+reference	PE:6a70a6d9:02711000	demeanor	0x868fba	jl     0x14086908d	0x868fb7	cmp    eax,0x19	0x86908d	0x868fc0
+reference	PE:6a70a6d9:02711000	demeanor	0x86900e	jl     0x14086903d	0x869006	cmp    DWORD PTR [r15+0x80],0x0	0x86903d	0x869010
+reference	PE:6a70a6d9:02711000	demeanor	0x86904d	cmovl  dx,bx	0x869045	cmp    DWORD PTR [r15+0x8c],0x4b		0x869051
+reference	PE:6a70a6d9:02711000	demeanor	0x869090	jg     0x140869152	0x86908d	cmp    eax,0xffffffe7	0x869152	0x869096
+reference	PE:6a70a6d9:02711000	demeanor	0x8690fd	jg     0x140869125	0x8690f5	cmp    DWORD PTR [r15+0x8c],0xffffffb5	0x869125	0x8690ff
+reference	PE:6a70a6d9:02711000	demeanor	0x86915c	jl     0x14086921d	0x869159	cmp    eax,0x19	0x86921d	0x869162
+reference	PE:6a70a6d9:02711000	demeanor	0x8691c9	jl     0x1408691f4	0x8691c1	cmp    DWORD PTR [r15+0x88],0x4b	0x8691f4	0x8691cb
+reference	PE:6a70a6d9:02711000	demeanor	0x869220	jg     0x1408692e2	0x86921d	cmp    eax,0xffffffe7	0x8692e2	0x869226
+reference	PE:6a70a6d9:02711000	demeanor	0x86928d	jg     0x1408692b5	0x869285	cmp    DWORD PTR [r15+0x88],0xffffffb5	0x8692b5	0x86928f
+reference	PE:6a70a6d9:02711000	demeanor	0x8692eb	jl     0x140869ca7	0x8692e7	cmp    r14d,0x2	0x869ca7	0x8692f1
+reference	PE:6a70a6d9:02711000	relationship	0x869351	jl     0x14086943f	0x86934e	cmp    ecx,0x4b	0x86943f	0x869357
+reference	PE:6a70a6d9:02711000	relationship	0x8693ab	jl     0x14086952b	0x8693a8	cmp    ecx,0x4b	0x86952b	0x8693b1
+reference	PE:6a70a6d9:02711000	relationship	0x8693b3	je     0x1408693fb	0x8693b1	test   al,al	0x8693fb	0x8693b5
+reference	PE:6a70a6d9:02711000	relationship	0x869442	jl     0x140869486	0x86943f	cmp    ecx,0x19	0x869486	0x869444
+reference	PE:6a70a6d9:02711000	relationship	0x869489	jg     0x1408694cf	0x869486	cmp    ecx,0xffffffb5	0x8694cf	0x86948b
+reference	PE:6a70a6d9:02711000	relationship	0x8694d2	jg     0x14086939e	0x8694cf	cmp    ecx,0xffffffe7	0x86939e	0x8694d8
+reference	PE:6a70a6d9:02711000	relationship	0x86952e	jl     0x1408695c0	0x86952b	cmp    ecx,0x19	0x8695c0	0x869534
+reference	PE:6a70a6d9:02711000	relationship	0x869536	je     0x14086957e	0x869534	test   al,al	0x86957e	0x869538
+reference	PE:6a70a6d9:02711000	relationship	0x8695c3	jg     0x14086965b	0x8695c0	cmp    ecx,0xffffffe7	0x86965b	0x8695c9
+reference	PE:6a70a6d9:02711000	relationship	0x8695cb	je     0x140869613	0x8695c9	test   al,al	0x869613	0x8695cd
+reference	PE:6a70a6d9:02711000	relationship	0x869662	jl     0x1408696f3	0x86965f	cmp    ecx,0x4b	0x8696f3	0x869668
+reference	PE:6a70a6d9:02711000	relationship	0x86966a	je     0x1408696b2	0x869668	test   al,al	0x8696b2	0x86966c
+reference	PE:6a70a6d9:02711000	relationship	0x8696f6	jl     0x140869788	0x8696f3	cmp    ecx,0x19	0x869788	0x8696fc
+reference	PE:6a70a6d9:02711000	relationship	0x8696fe	je     0x140869746	0x8696fc	test   al,al	0x869746	0x869700
+reference	PE:6a70a6d9:02711000	relationship	0x86978b	jg     0x14086981f	0x869788	cmp    ecx,0xffffffb5	0x86981f	0x869791
+reference	PE:6a70a6d9:02711000	relationship	0x869793	je     0x1408697db	0x869791	test   al,al	0x8697db	0x869795
+reference	PE:6a70a6d9:02711000	relationship	0x869822	jg     0x1408698ba	0x86981f	cmp    ecx,0xffffffe7	0x8698ba	0x869828
+reference	PE:6a70a6d9:02711000	relationship	0x86982a	je     0x140869872	0x869828	test   al,al	0x869872	0x86982c
+reference	PE:6a70a6d9:02711000	relationship	0x8698c1	jl     0x140869952	0x8698be	cmp    ecx,0x4b	0x869952	0x8698c7
+reference	PE:6a70a6d9:02711000	relationship	0x8698c9	je     0x140869911	0x8698c7	test   al,al	0x869911	0x8698cb
+reference	PE:6a70a6d9:02711000	relationship	0x869955	jl     0x1408699e7	0x869952	cmp    ecx,0x19	0x8699e7	0x86995b
+reference	PE:6a70a6d9:02711000	relationship	0x86995d	je     0x1408699a5	0x86995b	test   al,al	0x8699a5	0x86995f
+reference	PE:6a70a6d9:02711000	relationship	0x8699ea	jg     0x140869a7e	0x8699e7	cmp    ecx,0xffffffb5	0x869a7e	0x8699f0
+reference	PE:6a70a6d9:02711000	relationship	0x8699f2	je     0x140869a3a	0x8699f0	test   al,al	0x869a3a	0x8699f4
+reference	PE:6a70a6d9:02711000	relationship	0x869a81	jg     0x140869b19	0x869a7e	cmp    ecx,0xffffffe7	0x869b19	0x869a87
+reference	PE:6a70a6d9:02711000	relationship	0x869a89	je     0x140869ad1	0x869a87	test   al,al	0x869ad1	0x869a8b
+reference	PE:6a70a6d9:02711000	relationship	0x869b20	jl     0x140869bba	0x869b1d	cmp    ecx,0x4b	0x869bba	0x869b26
+reference	PE:6a70a6d9:02711000	relationship	0x869b28	je     0x140869b70	0x869b26	test   al,al	0x869b70	0x869b2a
+reference	PE:6a70a6d9:02711000	relationship	0x869bbd	jl     0x140869c55	0x869bba	cmp    ecx,0x19	0x869c55	0x869bc3
+reference	PE:6a70a6d9:02711000	relationship	0x869bc5	je     0x140869c0d	0x869bc3	test   al,al	0x869c0d	0x869bc7
+reference	PE:6a70a6d9:02711000	relationship	0x869c57	jne    0x140869ca7	0x869c55	test   al,al	0x869ca7	0x869c59
+reference	PE:6a70a6d9:02711000	relationship	0x869ca9	jle    0x14086b44d	0x869ca7	test   esi,esi	0x86b44d	0x869caf
+reference	PE:6a70a6d9:02711000	mood	0x869d0c	jle    0x14086b44d	0x869d0a	test   esi,esi	0x86b44d	0x869d12
+reference	PE:6a70a6d9:02711000	mood	0x869d17	je     0x140869d5f	0x869d14	test   rbx,rbx	0x869d5f	0x869d19
+reference	PE:6a70a6d9:02711000	mood	0x869d80	ja     0x14086b441	0x869d7b	cmp    eax,0xa8	0x86b441	0x869d86
+reference	PE:6a70a6d9:02711000	mood	0x86b447	jl     0x140869d14	0x86b444	cmp    rbx,rdi	0x869d14	0x86b44d
+classic	PE:6a70b91c:0270a000	identity	0x8662cd	je     0x140868cda	0x8662ca	test   rax,rax	0x868cda	0x8662d3
+classic	PE:6a70b91c:0270a000	identity	0x8662e3	je     0x140866362	0x8662e1	test   al,al	0x866362	0x8662e5
+classic	PE:6a70b91c:0270a000	identity	0x8662ed	je     0x1408662fc	0x8662e5	cmp    DWORD PTR [r13+0x142c],0x0	0x8662fc	0x8662ef
+classic	PE:6a70b91c:0270a000	identity	0x8662fa	je     0x140866304	0x8662ef	test   DWORD PTR [r13+0x11c],0x4000	0x866304	0x8662fc
+classic	PE:6a70b91c:0270a000	identity	0x86630c	je     0x140866362	0x866304	cmp    DWORD PTR [r13+0x142c],0x0	0x866362	0x86630e
+classic	PE:6a70b91c:0270a000	identity	0x866372	je     0x14086638c	0x86636f	test   rax,rax	0x86638c	0x866374
+classic	PE:6a70b91c:0270a000	identity	0x8663b0	je     0x1408664cd	0x8663ad	test   rcx,rcx	0x8664cd	0x8663b6
+classic	PE:6a70b91c:0270a000	identity	0x8663fd	je     0x1408664cd	0x8663fb	test   al,al	0x8664cd	0x866403
+classic	PE:6a70b91c:0270a000	identity	0x866420	je     0x140866494	0x86641d	cmp    DWORD PTR [rcx],0xffffffff	0x866494	0x866422
+classic	PE:6a70b91c:0270a000	identity	0x866433	jle    0x140866494	0x86642f	cmp    DWORD PTR [rcx+0x8],r13d	0x866494	0x866435
+classic	PE:6a70b91c:0270a000	identity	0x86643b	jle    0x140866462	0x866438	test   rdi,rdi	0x866462	0x86643d
+classic	PE:6a70b91c:0270a000	identity	0x866454	jg     0x1408665f1	0x866451	cmp    DWORD PTR [rcx+0x8],eax	0x8665f1	0x86645a
+classic	PE:6a70b91c:0270a000	identity	0x866460	jl     0x140866440	0x86645d	cmp    rbx,rdi	0x866440	0x866462
+classic	PE:6a70b91c:0270a000	identity	0x866466	jge    0x140866494	0x866462	cmp    rdi,0x3	0x866494	0x866468
+classic	PE:6a70b91c:0270a000	identity	0x8664bd	jne    0x140866410	0x8664bb	test   al,al	0x866410	0x8664c3
+classic	PE:6a70b91c:0270a000	identity	0x8664d0	cmovg  esi,r14d	0x8664cd	cmp    esi,r14d		0x8664d4
+classic	PE:6a70b91c:0270a000	identity	0x866535	je     0x140867521	0x866532	test   r15,r15	0x867521	0x86653b
+classic	PE:6a70b91c:0270a000	attitude	0x8665af	jl     0x14086665d	0x8665ac	cmp    eax,0x19	0x86665d	0x8665b5
+classic	PE:6a70b91c:0270a000	attitude	0x8665ba	cmovl  dx,r13w	0x8665b7	cmp    eax,0x4b		0x8665bf
+classic	PE:6a70b91c:0270a000	attitude	0x8665f8	jle    0x140866631	0x8665f5	cmp    r8,rbx	0x866631	0x8665fa
+classic	PE:6a70b91c:0270a000	attitude	0x866607	jge    0x140866623	0x866604	cmp    edx,0x3	0x866623	0x866609
+classic	PE:6a70b91c:0270a000	attitude	0x86661b	jle    0x140866623	0x866619	cmp    edx,esi	0x866623	0x86661d
+classic	PE:6a70b91c:0270a000	attitude	0x86662f	jg     0x140866604	0x86662c	cmp    r8,rbx	0x866604	0x866631
+classic	PE:6a70b91c:0270a000	attitude	0x866660	jg     0x1408666ab	0x86665d	cmp    eax,0xffffffe7	0x8666ab	0x866662
+classic	PE:6a70b91c:0270a000	attitude	0x86666f	cmovg  dx,bx	0x866667	cmp    eax,0xffffffb5		0x866673
+classic	PE:6a70b91c:0270a000	attitude	0x8666f3	jl     0x14086678d	0x8666f0	cmp    eax,0x19	0x86678d	0x8666f9
+classic	PE:6a70b91c:0270a000	demeanor	0x86674c	cmovl  dx,r13w	0x866744	cmp    DWORD PTR [r15+0x84],0x19		0x866751
+classic	PE:6a70b91c:0270a000	demeanor	0x866790	jg     0x140866830	0x86678d	cmp    eax,0xffffffe7	0x866830	0x866796
+classic	PE:6a70b91c:0270a000	demeanor	0x8667ec	cmovg  dx,bx	0x8667e4	cmp    DWORD PTR [r15+0x84],0xffffffb5		0x8667f0
+classic	PE:6a70b91c:0270a000	demeanor	0x86683a	jl     0x14086690d	0x866837	cmp    eax,0x19	0x86690d	0x866840
+classic	PE:6a70b91c:0270a000	demeanor	0x86688e	jl     0x1408668bd	0x866886	cmp    DWORD PTR [r15+0x80],0x0	0x8668bd	0x866890
+classic	PE:6a70b91c:0270a000	demeanor	0x8668cd	cmovl  dx,bx	0x8668c5	cmp    DWORD PTR [r15+0x8c],0x4b		0x8668d1
+classic	PE:6a70b91c:0270a000	demeanor	0x866910	jg     0x1408669d2	0x86690d	cmp    eax,0xffffffe7	0x8669d2	0x866916
+classic	PE:6a70b91c:0270a000	demeanor	0x86697d	jg     0x1408669a5	0x866975	cmp    DWORD PTR [r15+0x8c],0xffffffb5	0x8669a5	0x86697f
+classic	PE:6a70b91c:0270a000	demeanor	0x8669dc	jl     0x140866a9d	0x8669d9	cmp    eax,0x19	0x866a9d	0x8669e2
+classic	PE:6a70b91c:0270a000	demeanor	0x866a49	jl     0x140866a74	0x866a41	cmp    DWORD PTR [r15+0x88],0x4b	0x866a74	0x866a4b
+classic	PE:6a70b91c:0270a000	demeanor	0x866aa0	jg     0x140866b62	0x866a9d	cmp    eax,0xffffffe7	0x866b62	0x866aa6
+classic	PE:6a70b91c:0270a000	demeanor	0x866b0d	jg     0x140866b35	0x866b05	cmp    DWORD PTR [r15+0x88],0xffffffb5	0x866b35	0x866b0f
+classic	PE:6a70b91c:0270a000	demeanor	0x866b6b	jl     0x140867527	0x866b67	cmp    r14d,0x2	0x867527	0x866b71
+classic	PE:6a70b91c:0270a000	relationship	0x866bd1	jl     0x140866cbf	0x866bce	cmp    ecx,0x4b	0x866cbf	0x866bd7
+classic	PE:6a70b91c:0270a000	relationship	0x866c2b	jl     0x140866dab	0x866c28	cmp    ecx,0x4b	0x866dab	0x866c31
+classic	PE:6a70b91c:0270a000	relationship	0x866c33	je     0x140866c7b	0x866c31	test   al,al	0x866c7b	0x866c35
+classic	PE:6a70b91c:0270a000	relationship	0x866cc2	jl     0x140866d06	0x866cbf	cmp    ecx,0x19	0x866d06	0x866cc4
+classic	PE:6a70b91c:0270a000	relationship	0x866d09	jg     0x140866d4f	0x866d06	cmp    ecx,0xffffffb5	0x866d4f	0x866d0b
+classic	PE:6a70b91c:0270a000	relationship	0x866d52	jg     0x140866c1e	0x866d4f	cmp    ecx,0xffffffe7	0x866c1e	0x866d58
+classic	PE:6a70b91c:0270a000	relationship	0x866dae	jl     0x140866e40	0x866dab	cmp    ecx,0x19	0x866e40	0x866db4
+classic	PE:6a70b91c:0270a000	relationship	0x866db6	je     0x140866dfe	0x866db4	test   al,al	0x866dfe	0x866db8
+classic	PE:6a70b91c:0270a000	relationship	0x866e43	jg     0x140866edb	0x866e40	cmp    ecx,0xffffffe7	0x866edb	0x866e49
+classic	PE:6a70b91c:0270a000	relationship	0x866e4b	je     0x140866e93	0x866e49	test   al,al	0x866e93	0x866e4d
+classic	PE:6a70b91c:0270a000	relationship	0x866ee2	jl     0x140866f73	0x866edf	cmp    ecx,0x4b	0x866f73	0x866ee8
+classic	PE:6a70b91c:0270a000	relationship	0x866eea	je     0x140866f32	0x866ee8	test   al,al	0x866f32	0x866eec
+classic	PE:6a70b91c:0270a000	relationship	0x866f76	jl     0x140867008	0x866f73	cmp    ecx,0x19	0x867008	0x866f7c
+classic	PE:6a70b91c:0270a000	relationship	0x866f7e	je     0x140866fc6	0x866f7c	test   al,al	0x866fc6	0x866f80
+classic	PE:6a70b91c:0270a000	relationship	0x86700b	jg     0x14086709f	0x867008	cmp    ecx,0xffffffb5	0x86709f	0x867011
+classic	PE:6a70b91c:0270a000	relationship	0x867013	je     0x14086705b	0x867011	test   al,al	0x86705b	0x867015
+classic	PE:6a70b91c:0270a000	relationship	0x8670a2	jg     0x14086713a	0x86709f	cmp    ecx,0xffffffe7	0x86713a	0x8670a8
+classic	PE:6a70b91c:0270a000	relationship	0x8670aa	je     0x1408670f2	0x8670a8	test   al,al	0x8670f2	0x8670ac
+classic	PE:6a70b91c:0270a000	relationship	0x867141	jl     0x1408671d2	0x86713e	cmp    ecx,0x4b	0x8671d2	0x867147
+classic	PE:6a70b91c:0270a000	relationship	0x867149	je     0x140867191	0x867147	test   al,al	0x867191	0x86714b
+classic	PE:6a70b91c:0270a000	relationship	0x8671d5	jl     0x140867267	0x8671d2	cmp    ecx,0x19	0x867267	0x8671db
+classic	PE:6a70b91c:0270a000	relationship	0x8671dd	je     0x140867225	0x8671db	test   al,al	0x867225	0x8671df
+classic	PE:6a70b91c:0270a000	relationship	0x86726a	jg     0x1408672fe	0x867267	cmp    ecx,0xffffffb5	0x8672fe	0x867270
+classic	PE:6a70b91c:0270a000	relationship	0x867272	je     0x1408672ba	0x867270	test   al,al	0x8672ba	0x867274
+classic	PE:6a70b91c:0270a000	relationship	0x867301	jg     0x140867399	0x8672fe	cmp    ecx,0xffffffe7	0x867399	0x867307
+classic	PE:6a70b91c:0270a000	relationship	0x867309	je     0x140867351	0x867307	test   al,al	0x867351	0x86730b
+classic	PE:6a70b91c:0270a000	relationship	0x8673a0	jl     0x14086743a	0x86739d	cmp    ecx,0x4b	0x86743a	0x8673a6
+classic	PE:6a70b91c:0270a000	relationship	0x8673a8	je     0x1408673f0	0x8673a6	test   al,al	0x8673f0	0x8673aa
+classic	PE:6a70b91c:0270a000	relationship	0x86743d	jl     0x1408674d5	0x86743a	cmp    ecx,0x19	0x8674d5	0x867443
+classic	PE:6a70b91c:0270a000	relationship	0x867445	je     0x14086748d	0x867443	test   al,al	0x86748d	0x867447
+classic	PE:6a70b91c:0270a000	relationship	0x8674d7	jne    0x140867527	0x8674d5	test   al,al	0x867527	0x8674d9
+classic	PE:6a70b91c:0270a000	relationship	0x867529	jle    0x140868ccd	0x867527	test   esi,esi	0x868ccd	0x86752f
+classic	PE:6a70b91c:0270a000	mood	0x86758c	jle    0x140868ccd	0x86758a	test   esi,esi	0x868ccd	0x867592
+classic	PE:6a70b91c:0270a000	mood	0x867597	je     0x1408675df	0x867594	test   rbx,rbx	0x8675df	0x867599
+classic	PE:6a70b91c:0270a000	mood	0x867600	ja     0x140868cc1	0x8675fb	cmp    eax,0xa8	0x868cc1	0x867606
+classic	PE:6a70b91c:0270a000	mood	0x868cc7	jl     0x140867594	0x868cc4	cmp    rbx,rdi	0x867594	0x868ccd
