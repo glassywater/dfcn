@@ -534,6 +534,7 @@ python tools/build_native_image_bindings.py --reference ../dwarfort --image /opt
 | 操作 | 效果 |
 | --- | --- |
 | `Shift+F5` | 关闭汉化；再次按下时重新加载核心与数据并开启 |
+| `Shift+F6` | 停用全部扩展 TSV 词表与 TOML 规则，立即重载本体汉化并开启显示；再次按下恢复扩展并重载汉化 |
 | `Shift+F10` | 开启或关闭汉化，保留当前核心与数据，不触发重载 |
 | `Ctrl+Shift+F10` | 强制更新配置与词表 |
 | `Ctrl+F9` | 将当前字符网格与漏译片段导出到 `dfcn/data/extracted/dumps/` |
@@ -542,8 +543,10 @@ python tools/build_native_image_bindings.py --reference ../dwarfort --image /opt
 汉化已经关闭时，按一次 `Shift+F5` 即可重新加载核心与数据并开启；按一次
 `Shift+F10` 则直接开启，保留当前核心与数据。左右 Shift 均可，
 长按不会重复切换。开关只影响本次运行，不改写配置文件；初始状态由 `data/runtime/config.ini`
-的 `enabled` 或 `DFCN_ENABLED` 决定。数据仅在启动、`Shift+F5` 重新开启或
-`Ctrl+Shift+F10` 显式刷新时加载，不自动检查文件变化。
+的 `enabled` 或 `DFCN_ENABLED` 决定。扩展默认启用，`Shift+F6` 切换时立即
+重新载入数据并开启汉化显示；扩展开关在本次运行中保留，包括 `Shift+F5`
+核心重载，不写入配置文件。数据仅在启动、`Shift+F5` 重新开启、`Shift+F6`
+切换扩展或 `Ctrl+Shift+F10` 显式刷新时加载，不自动检查文件变化。
 修改驻留加载器或 ABI 后仍需正常重启游戏。
 
 `Shift+F5` 重新开启时，核心交接在游戏暂停模拟线程的 SDL 事件回调中进行：

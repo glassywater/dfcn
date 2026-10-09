@@ -3221,6 +3221,7 @@ public:
     }
     void set_translation_enabled(bool enabled);
     void toggle_translation();
+    void toggle_translation_extensions();
     void remap_legends_mouse(int *x, int *y) const;
     void request_reload() { reload_requested_.store(true); }
     bool has_translation_catalog() const {
@@ -4638,7 +4639,7 @@ private:
     void load_untranslated_index();
     void destroy_textures();
     void reset_render_state();
-    void apply_requested_reload();
+    bool apply_requested_reload();
     void prepare_frame();
     bool prepare_immediate_row(bool top_layer, int y);
     const std::vector<Match> &prepare_immediate_base_matches();
@@ -6972,6 +6973,37 @@ void Overlay::toggle_translation() {
     set_translation_enabled(!config_.enabled);
 }
 
+void Overlay::toggle_translation_extensions() {
+    TranslationStateScope translation_scope;
+    const bool previous = extensions::enabled();
+    if (!extensions::set_enabled(!previous)) {
+        log_line("ERROR", "Shift+F6: cannot change translation extension state");
+        return;
+    }
+    try {
+        request_reload();
+        if (!apply_requested_reload()) {
+            extensions::set_enabled(previous);
+            request_reload();
+            const bool restored = apply_requested_reload();
+            set_translation_enabled(restored && config_.enabled);
+            log_line("ERROR", restored
+                ? "Shift+F6: data reload failed; restored previous extension state"
+                : "Shift+F6: data reload and recovery failed; translation disabled");
+            return;
+        }
+    } catch (...) {
+        extensions::set_enabled(previous);
+        request_reload();
+        set_translation_enabled(false);
+        throw;
+    }
+    set_translation_enabled(true);
+    log_line("INFO", previous
+        ? "Shift+F6: translation reloaded with extensions disabled"
+        : "Shift+F6: translation reloaded with extensions enabled");
+}
+
 void Overlay::set_translation_enabled(bool enabled) {
     TranslationStateScope translation_scope;
     // The game's SDL event loop pauses its simulation thread before invoking
@@ -7027,15 +7059,15 @@ void Overlay::shutdown() {
                          std::to_string(newly_collected_untranslated_) + " new untranslated fragments");
 }
 
-void Overlay::apply_requested_reload() {
-    if (!reload_requested_.exchange(false)) return;
+bool Overlay::apply_requested_reload() {
+    if (!reload_requested_.exchange(false)) return true;
     log_line("INFO", "Reloading configuration and translations");
     load_config();
     load_untranslated_index();
-    load_rules();
+    if (!load_rules()) return false;
     load_generated_instrument_names();
     load_procedural_terms();
-    load_compositional_rules();
+    return load_compositional_rules();
 }
 
 const unsigned char *Overlay::cell_at(int x, int y, bool *top) const {
@@ -17161,6 +17193,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 struct ChooserTextCache {
                     const Overlay *owner = nullptr;
                     fs::file_time_type mapping{}, names{}, instruments{};
+                    uint64_t catalog_revision = 0;
                     uint64_t event_source_revision = 0;
                     std::shared_ptr<const ConversationChoices> snapshot;
                     std::vector<NativeChoiceText> records;
@@ -17173,12 +17206,14 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 auto &cache = reloadable_thread_state<ChooserTextCache, struct ConversationChooserCacheTag>();
                 const uint64_t event_source_revision = native_overview_event_source_revision();
                 if (cache.owner != this || cache.mapping != mapping_mtime_ ||
+                    cache.catalog_revision != dfhack_translation_catalog_revision_ ||
                     cache.names != name_editor_mtime_ ||
                     cache.instruments != instrument_translations_mtime_ ||
                     cache.event_source_revision != event_source_revision) {
                     cache = {};
                     cache.owner = this;
                     cache.mapping = mapping_mtime_;
+                    cache.catalog_revision = dfhack_translation_catalog_revision_;
                     cache.names = name_editor_mtime_;
                     cache.instruments = instrument_translations_mtime_;
                     cache.event_source_revision = event_source_revision;
@@ -42099,7 +42134,10 @@ early_exact_literal_translations() {
     TranslationStateScope translation_scope;
     static std::unordered_map<std::string, std::string> translations;
     static bool initialized = false;
-    if (initialized) return translations;
+    static bool loaded_extensions_enabled = true;
+    const bool current_extensions_enabled = extensions::enabled();
+    if (initialized && loaded_extensions_enabled == current_extensions_enabled)
+        return translations;
     const auto current_mapping = exact_literal_mapping_path();
     const auto current_extensions = extensions::discover();
     std::unordered_map<std::string, std::string> loaded;
@@ -42153,6 +42191,7 @@ early_exact_literal_translations() {
         if (!package->translations.empty()) read(package->translations);
     read(fs::u8path(current_mapping));
     translations.swap(loaded);
+    loaded_extensions_enabled = current_extensions_enabled;
     initialized = true;
     return translations;
 }
@@ -42305,6 +42344,22 @@ DFCN_EXPORT bool dfhooks_sdl_event(void *raw_event) {
     if (!raw_event || !dfcn::g_plugin_active.load()) return false;
     const SDL_Event *event = static_cast<const SDL_Event *>(raw_event);
     dfcn::InputDeliveryTiming input_timing(*event);
+    static bool f6_consumed = false;
+    if (event->type == SDL_WINDOWEVENT &&
+        event->window.event == SDL_WINDOWEVENT_FOCUS_LOST) f6_consumed = false;
+    if (event->type == SDL_KEYUP && event->key.keysym.sym == SDLK_F6 && f6_consumed) {
+        f6_consumed = false;
+        return true;
+    }
+    if (event->type == SDL_KEYDOWN && event->key.keysym.sym == SDLK_F6) {
+        if (f6_consumed) return true;
+        const auto mods = static_cast<SDL_Keymod>(event->key.keysym.mod);
+        if ((mods & KMOD_SHIFT) && !(mods & (KMOD_CTRL | KMOD_ALT | KMOD_GUI))) {
+            f6_consumed = true;
+            if (!event->key.repeat) dfcn::g_overlay.toggle_translation_extensions();
+            return true;
+        }
+    }
     static bool f9_consumed = false;
     if (event->type == SDL_WINDOWEVENT &&
         event->window.event == SDL_WINDOWEVENT_FOCUS_LOST) f9_consumed = false;
