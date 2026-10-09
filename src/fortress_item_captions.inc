@@ -54,6 +54,10 @@ std::optional<std::string> Overlay::translate_written_item_caption(
 std::optional<std::string> Overlay::translate_item_caption_grammar(
         std::string_view source) const {
     if (!config_.compositional_rules) return std::nullopt;
+    // Complete equipment keeps its material and specification in the same
+    // order as split native rows, including materials supplied by extensions.
+    if (auto equipment = translate_arena_equipment_source_phrase(source))
+        return equipment;
     std::vector<size_t> origins;
     auto target = RULESETS.translate_with_origins(native_text_to_utf8(source),
         "::items", origins);

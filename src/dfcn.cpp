@@ -27308,6 +27308,13 @@ std::string finish_item_material_qualifier(
         return *woven;
     if (auto finished = lookup(material_source, "::materials::finished_adjective"))
         return *finished;
+    // Extensions register their complete RAW wood adjectives in the same
+    // namespace as vanilla materials. Preserve that field before a bare
+    // `wood` match can detach 木 from a name ending in 树木材.
+    if (folded.ends_with(" wood")) {
+        if (auto wood_name = lookup(folded, "::materials::state::adjective"))
+            return workshop_wood_material_name(std::move(*wood_name));
+    }
     if (const auto ore = find_arena_metal_ore_material(folded);
         ore.material && ore.at == 0 && ore.material->source.size() == folded.size())
         return std::string(ore.material->qualifier);
@@ -28679,6 +28686,29 @@ static std::optional<std::string> translate_arena_equipment_source_phrase(
             std::string(material), true);
         if (qualifier) return *qualifier + *equipment;
     }
+    // Installed extensions contribute complete material names, including
+    // multiword wood adjectives absent from the vanilla material lists.
+    // Prove the remaining fields as equipment before resolving the material;
+    // its whole qualifier must win over any recognized word inside it.
+    for (size_t begin = 0; begin < folded.size();) {
+        for (size_t end = folded.size(); end > begin;) {
+            translation_work_step();
+            const auto equipment = translate_equipment_fields(
+                std::string_view(folded).substr(0, begin),
+                std::string_view(folded).substr(end), true);
+            if (equipment) {
+                const auto qualifier = translate_embark_item_material_qualifier(
+                    folded.substr(begin, end - begin), true);
+                if (qualifier) return *qualifier + *equipment;
+            }
+            const size_t previous = folded.rfind(' ', end - 1);
+            if (previous == std::string::npos || previous <= begin) break;
+            end = previous;
+        }
+        const size_t next = folded.find(' ', begin);
+        if (next == std::string::npos) break;
+        begin = next + 1;
+    }
     // A subtype selector has no material field: all native generated garment
     // shapes still use the very same equipment grammar as material-bearing
     // inventory and Arena names. Do not require an incidental material just
@@ -28865,6 +28895,15 @@ static ArenaEquipmentNamePart arena_equipment_name_part(
     // species/material compound back into a material and an item modifier.
     if (const auto drinkware = split_drinkware_item_name(folded))
         return *drinkware;
+
+    // A native field may contain a complete extension wood material without
+    // an equipment noun. Claim it whole before the vanilla `wood` extractor
+    // can split its translated plant name from the material suffix.
+    if (folded.ends_with(" wood") &&
+        RULESETS.translate_material_state(folded, true)) {
+        if (auto qualifier = translate_embark_item_material_qualifier(folded, true))
+            return {std::move(*qualifier), {}};
+    }
 
     // Reuse the complete source grammar here as well. This keeps row
     // recomposition identical whether the renderer supplied one full match or
@@ -30620,7 +30659,6 @@ static std::string arena_equipment_row_name(
     for (size_t begin = 0; begin < indices.size(); ++begin) {
         if (claimed[begin]) continue;
         std::string combined_source;
-        std::string combined_target;
         size_t best_end = indices.size();
         std::string best_qualifier;
         for (size_t end = begin; end < indices.size(); ++end) {
@@ -30629,11 +30667,17 @@ static std::string arena_equipment_row_name(
             if (source.empty()) break;
             if (!combined_source.empty()) combined_source.push_back(' ');
             combined_source += source;
-            combined_target += trim(fragment.target);
-            if (!is_arena_wood_material_source(combined_source)) continue;
+            const auto wood = find_arena_wood_material(combined_source);
+            const bool vanilla_wood = !wood.source.empty() && wood.at == 0 &&
+                wood.length == combined_source.size();
+            const bool extension_wood = combined_source.ends_with(" wood") &&
+                RULESETS.translate_material_state(combined_source, true).has_value();
+            if (!vanilla_wood && !extension_wood) continue;
+            const auto qualifier = translate_embark_item_material_qualifier(
+                combined_source, true);
+            if (!qualifier) continue;
             best_end = end;
-            best_qualifier = arena_wood_material_qualifier(
-                combined_source, combined_target);
+            best_qualifier = *qualifier;
         }
         if (best_end == indices.size()) continue;
         material_prefix += best_qualifier;
