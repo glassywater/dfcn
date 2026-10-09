@@ -193,6 +193,19 @@ public:
     }
 };
 
+struct NativeDfhackLayerGraphicsDeleter {
+    void operator()(graphicst *graphics) const noexcept {
+#ifdef _WIN32
+        delete graphics;
+#else
+        // The ABI view borrows game textures and metadata vectors. Only the
+        // command vector is constructed here and belongs to this layer.
+        std::destroy_at(std::addressof(graphics->texblits));
+        ::operator delete(graphics);
+#endif
+    }
+};
+
 struct NativeDfhackLayerStorage {
     struct Plane {
         std::vector<unsigned char> screen;
@@ -205,7 +218,7 @@ struct NativeDfhackLayerStorage {
     std::vector<uint8_t> written;
     std::vector<std::unique_ptr<NativeDfhackMapLayer>> maps;
     std::vector<void *> viewport_views, map_port_views;
-    std::unique_ptr<graphicst> graphics;
+    std::unique_ptr<graphicst, NativeDfhackLayerGraphicsDeleter> graphics;
     NativeDfhackOutputBinding output;
     int dimx = 0, dimy = 0;
     uint64_t revision = 0, page_revision = 0;
@@ -294,7 +307,15 @@ struct NativeDfhackLayerStorage {
             return output.main_viewport != view &&
                 std::find(output.lower.begin(), output.lower.end(), view) == output.lower.end();
         });
-        if (!graphics) graphics = std::make_unique<graphicst>();
+        if (!graphics) {
+#ifdef _WIN32
+            graphics.reset(new graphicst{});
+#else
+            auto *view = static_cast<graphicst *>(::operator new(sizeof(graphicst)));
+            std::construct_at(std::addressof(view->texblits));
+            graphics.reset(view);
+#endif
+        }
         // This copies layout, palette and shared texture resources, never
         // pointed-to game cells. Command/output vectors are kept private.
         std::array<unsigned char, sizeof(graphicst::texblits)> texblits{};
