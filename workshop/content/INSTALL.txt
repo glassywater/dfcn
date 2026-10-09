@@ -3,11 +3,10 @@ Byayoi 同人社区：https://byayoi.org/
 GitHub：https://github.com/pokemonchw/dfcn
 Releases：https://github.com/pokemonchw/dfcn/releases
 
-当前工坊版本：53.16-20261008.2（2026-10-08 第二版）。完整更新日志见本目录 CHANGELOG.txt。
+当前工坊版本：53.16-20261009（2026-10-09）。完整更新日志见本目录 CHANGELOG.txt。
 适用：Dwarf Fortress 53.16，Windows x64 与 Linux x64；支持 Steam 版与官网免费版。
-Windows 文件位于 DFCN/，使用 5a212a2 的已有编译产物。
-Linux 文件位于 DFCN-Linux/，直接使用 GitHub v53.16-20261008-linux（来源 71c34d7）的原始 DFCN-Linux-x64-minimal.zip，保留原包的核心、加载器与运行数据。
-本次 Windows 包含书籍与犬种翻译、中文与拼音搜索、汉化初始化等改进，并完善汉化数据扩展与模组内容识别。Linux 对应其已发布版本，不能将 Windows 的后续改动视为已打入 Linux 核心。
+Windows 文件位于 DFCN/，提供 Shift+F6 临时停用或恢复扩展数据，并修复 Shift+F5 卸载后无法再次载入汉化的问题。
+Linux 文件位于 DFCN-Linux/，版本为 GitHub v53.16-20261008-linux，尚未包含 Shift+F6 及本版 Windows 的后续修复。
 仅订阅不会自动启用汉化；无需在创建世界时启用本工坊项目。
 
 一、Windows 工坊安装
@@ -74,7 +73,7 @@ Fontconfig 使用系统可用字体；系统没有中文字体时，需安装系
 三、GitHub Release 安装
 
 Windows：
-https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008.2
+https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261009
 下载 DFCN-Windows-x64-minimal.zip，将全部内容按原目录结构解压到包含 Dwarf Fortress.exe 的游戏根目录。
 包括 dfhooks.dll、dfhooks_dfcn.ini 和整个 dfcn 文件夹；汉化设置位于游戏目录的 dfcn/data/runtime/config.ini。
 此包的入口配置指向游戏目录中的 dfcn/dfhooks_dfcn.dll，不使用工坊相对路径。
@@ -90,9 +89,20 @@ https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008-linux
 汉化数据包无需在创建世界的模组列表中启用；原始玩法模组按其作者说明使用。
 本体运行包不合并独立数据扩展或原始玩法模组，不修改原模组 RAW 或世界规则。
 
-“矮人宝可梦汉化数据”支持 Dwarvemon 2.22 与 Dwarvemon Entity All 2.22：
+四个公开汉化数据包分别提供：
+Dwarvemon 2.22 基础汉化：
 https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177
-宝可梦专用词条由独立数据包提供，工坊订阅后自动识别，无需复制其中的数据到本体目录。
+Dwarvemon Beta 2.22 及随包可选模块汉化：
+https://steamcommunity.com/sharedfiles/filedetails/?id=3815791420
+Dwarvemon Entity All 2.22 名称与文明配置简介汉化：
+https://steamcommunity.com/sharedfiles/filedetails/?id=3815791319
+Dwarvemon Entity Type 2.22 名称与文明配置简介汉化：
+https://steamcommunity.com/sharedfiles/filedetails/?id=3815791235
+Entity All、Entity Type 的生物和物品译文需配合 Dwarvemon 汉化数据。
+四个包分别订阅或安装，宝可梦专用词条保存在各自的独立数据包中。
+工坊订阅后自动识别，无需复制其中的数据到本体目录。
+GitHub v53.16-20261009 同时提供这四个包的独立 ZIP，整个 mod 文件夹解压至游戏 mods 目录即可。
+其余 18 个汉化数据包保持私密。
 模组名称和内容使用通用译文匹配，没有完整译文的名称及简介保留原文；用户自定义小队名称始终原样显示。
 其他汉化扩展的安装与支持范围以各自说明为准。
 
@@ -102,6 +112,10 @@ Shift+F10：开启或关闭汉化，保留当前核心和数据。
 Shift+F5：关闭汉化；再次开启时重新读取核心和数据。
 Ctrl+Shift+F10：显式刷新配置、词表和规则数据。
 核心不自动检查文件变化；数据在启动、Shift+F5 重新开启或显式刷新时读取。
+
+Windows 本版提供 Shift+F6：首次按下停用全部扩展 TSV 词表和 TOML 规则，立即重新载入本体汉化并开启显示；再次按下恢复扩展并重新载入汉化。
+扩展默认启用，左右 Shift 均可，长按不重复切换。扩展开关只影响本次运行，跨 Shift+F5 重载保留，不写入配置文件。
+Linux 源码已实现 Shift+F6，当前发布的 Linux 包尚未包含此快捷键。
 
 Windows 同时安装 DFHack 53.16-r2 时，可按 Shift+F11 独立暂停或恢复 DFHack 工具。
 插件配置和状态会保留；关闭时已经打开的 DFHack 界面会关闭，此前对游戏或存档执行的修改不会回滚。

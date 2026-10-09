@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param([switch] $UseExistingWindowsArchive)
 
-# Package existing Windows binaries and the downloaded, unmodified Linux release.
+# Package existing Windows binaries, the unmodified Linux release, and public data extensions.
 # This entry never builds code, deploys to a game, or controls Steam/the game.
 $ErrorActionPreference = 'Stop'
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
@@ -17,7 +17,6 @@ $itemId = [string]$item.publishedfileid
 if ($itemId -notmatch '^\d+$') { throw 'The saved Workshop item ID is invalid.' }
 $stagingRoot = Join-Path $workshopRoot ('package-' + [Guid]::NewGuid().ToString('N') + '.tmp')
 $outputPath = Join-Path $projectRoot 'DFCN-Windows-Linux-workshop.zip'
-$archiveCandidate = $outputPath + '.' + [Guid]::NewGuid().ToString('N') + '.tmp'
 
 function Resolve-PackageDirectory([string] $path) {
     $resolved = [IO.Path]::GetFullPath($path)
@@ -53,6 +52,95 @@ function Install-PackageDirectory([string] $name) {
     Remove-PackageDirectory $previous
 }
 
+function Write-PackageArchive([string] $sourceRoot, [string] $destination,
+                              [string] $entryPrefix = '') {
+    $sourceRoot = Resolve-PackageDirectory $sourceRoot
+    $destination = [IO.Path]::GetFullPath($destination)
+    $projectPrefix = $projectRoot + [IO.Path]::DirectorySeparatorChar
+    if (-not $destination.StartsWith($projectPrefix, [StringComparison]::OrdinalIgnoreCase)) {
+        throw ('Package output is outside the project workspace: ' + $destination)
+    }
+    # Keep archive reads inside the selected content tree, including on systems
+    # where recursive enumeration would otherwise follow a junction or symlink.
+    $ancestor = $sourceRoot
+    while ($true) {
+        if (([IO.File]::GetAttributes($ancestor) -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
+            throw ('Package source is a junction or symlink: ' + $ancestor)
+        }
+        if ($ancestor.Equals($workshopRoot, [StringComparison]::OrdinalIgnoreCase)) { break }
+        $ancestor = [IO.Path]::GetDirectoryName($ancestor)
+    }
+    if ([IO.File]::Exists($destination) -and
+            ([IO.File]::GetAttributes($destination) -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
+        throw ('Package output is a symlink: ' + $destination)
+    }
+    $candidate = $destination + '.' + [Guid]::NewGuid().ToString('N') + '.tmp'
+    try {
+        $archiveStream = [IO.File]::Open($candidate, [IO.FileMode]::CreateNew,
+            [IO.FileAccess]::Write, [IO.FileShare]::None)
+        try {
+            $archive = [IO.Compression.ZipArchive]::new($archiveStream,
+                [IO.Compression.ZipArchiveMode]::Create, $true)
+            try {
+                $directories = [Collections.Generic.Stack[string]]::new()
+                $directories.Push($sourceRoot)
+                while ($directories.Count -gt 0) {
+                    $directory = $directories.Pop()
+                    foreach ($path in ([IO.Directory]::GetFileSystemEntries($directory) | Sort-Object)) {
+                        $attributes = [IO.File]::GetAttributes($path)
+                        if (($attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
+                            throw ('Package content is a junction or symlink: ' + $path)
+                        }
+                        if (($attributes -band [IO.FileAttributes]::Directory) -ne 0) {
+                            $directories.Push($path)
+                            continue
+                        }
+                        # ZIP paths must use forward slashes for Linux extraction.
+                        $entryName = $entryPrefix + $path.Substring($sourceRoot.Length + 1).Replace('\', '/')
+                        [void][IO.Compression.ZipFileExtensions]::CreateEntryFromFile(
+                            $archive, $path, $entryName, [IO.Compression.CompressionLevel]::Optimal)
+                    }
+                }
+            } finally {
+                $archive.Dispose()
+            }
+        } finally {
+            $archiveStream.Dispose()
+        }
+        if ([IO.File]::Exists($destination)) {
+            [IO.File]::Replace($candidate, $destination, [NullString]::Value)
+        } else {
+            [IO.File]::Move($candidate, $destination)
+        }
+    } finally {
+        if ([IO.File]::Exists($candidate)) { [IO.File]::Delete($candidate) }
+    }
+}
+
+function Write-PublicExtensionArchives {
+    foreach ($directory in ([IO.Directory]::GetDirectories($workshopRoot) | Sort-Object)) {
+        $directory = Resolve-PackageDirectory $directory
+        $extensionContent = Join-Path $directory 'content'
+        $manifestPath = Join-Path $extensionContent 'dfcn-extension.toml'
+        $publishPath = Join-Path $directory 'publish.json'
+        if (-not [IO.File]::Exists($manifestPath) -or -not [IO.File]::Exists($publishPath)) {
+            continue
+        }
+        $publish = [IO.File]::ReadAllText($publishPath) | ConvertFrom-Json
+        if ($null -eq $publish.visibility -or [string]$publish.visibility -ne '0') { continue }
+        $infoPath = Join-Path $extensionContent 'info.txt'
+        $identities = [regex]::Matches([IO.File]::ReadAllText($infoPath),
+            '(?m)^\s*\[ID:([A-Za-z0-9_-]+)\]\s*$')
+        if ($identities.Count -ne 1) {
+            throw ('Public extension must have one valid mod ID: ' + $infoPath)
+        }
+        $identity = $identities[0].Groups[1].Value
+        $extensionArchive = Join-Path $directory ($identity + '.zip')
+        Write-PackageArchive $extensionContent $extensionArchive ($identity + '/')
+        Write-Host ('Public translation data package: ' + $extensionArchive) -ForegroundColor Green
+    }
+}
+
 try {
     # The source marker describes this exact published Linux ZIP, not local HEAD.
     $linuxHash = (Get-FileHash -LiteralPath $linuxArchive -Algorithm SHA256).Hash.ToLowerInvariant()
@@ -64,6 +152,7 @@ try {
         if ($LASTEXITCODE -ne 0) { throw ('Windows packaging failed with exit code ' + $LASTEXITCODE) }
     }
 
+    Add-Type -AssemblyName System.IO.Compression
     Add-Type -AssemblyName System.IO.Compression.FileSystem
     [void][IO.Directory]::CreateDirectory($stagingRoot)
     $windowsFolder = Join-Path $stagingRoot 'DFCN'
@@ -80,13 +169,10 @@ try {
     # Extract before replacing either platform; old payloads do not accumulate.
     Install-PackageDirectory 'DFCN'
     Install-PackageDirectory 'DFCN-Linux'
-    [IO.Compression.ZipFile]::CreateFromDirectory($contentRoot, $archiveCandidate,
-        [IO.Compression.CompressionLevel]::Optimal, $false)
-    if ([IO.File]::Exists($outputPath)) {
-        [IO.File]::Replace($archiveCandidate, $outputPath, [NullString]::Value)
-    } else {
-        [IO.File]::Move($archiveCandidate, $outputPath)
-    }
+    Write-PackageArchive $contentRoot $outputPath
+    # Extensions remain separate from the base Workshop payload. Private data
+    # packages are never selected for these public release archives.
+    Write-PublicExtensionArchives
     Write-Host ('Workshop content: ' + $contentRoot) -ForegroundColor Green
     Write-Host ('Linux source: ' + $linuxSource.release_tag + ' (' + $linuxSource.source_commit + ')')
     Write-Host ('Created: ' + $outputPath)
@@ -95,6 +181,5 @@ try {
     exit 1
 } finally {
     Remove-PackageDirectory $stagingRoot
-    if ([IO.File]::Exists($archiveCandidate)) { [IO.File]::Delete($archiveCandidate) }
 }
 exit 0

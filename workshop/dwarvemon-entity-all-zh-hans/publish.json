@@ -10,11 +10,13 @@
     "Chinese"
   ],
   "visibility": 0,
-  "changelog": "发布简体中文汉化数据。",
+  "changelog": "Dwarvemon Entity All 使用独立汉化数据包，翻译模组名称和文明配置简介；生物与物品译文由 Dwarvemon 汉化数据提供。",
   "github_url": "https://github.com/pokemonchw/dfcn",
   "required_items": [
     3811193379,
     2898648216,
     3815355177
-  ]
+  ],
+  "release_tag": "v53.16-20261009",
+  "release_url": "https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261009"
 }

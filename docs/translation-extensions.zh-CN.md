@@ -2,13 +2,22 @@
 
 数据扩展是独立的矮人要塞 mod。DFCN 在运行时发现其声明，载入 TSV 词表和 TOML 递归规则，不执行扩展代码。翻译资源保存在数据 mod 内，不复制进本体词表，也不参与本体词表或核心的编译。
 
-源码当前版本提供 **Shift+F6** 扩展开关。扩展默认启用；首次按下停用全部扩展 TSV 词表和 TOML 规则，立即重新载入本体汉化并开启显示；再次按下恢复扩展并重新载入汉化。左右 Shift 均可，长按不重复切换。开关只影响本次运行，跨 **Shift+F5** 核心重载保留，不写入配置文件。
+Windows [v53.16-20261009](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261009) 提供 **Shift+F6** 扩展开关。扩展默认启用；首次按下停用全部扩展 TSV 词表和 TOML 规则，立即重新载入本体汉化并开启显示；再次按下恢复扩展并重新载入汉化。左右 Shift 均可，长按不重复切换。开关只影响本次运行，跨 **Shift+F5** 核心重载保留，不写入配置文件。Linux 源码已实现此快捷键，当前 Linux 发布包尚未包含。
 
 ## 已发布的数据包
 
-[矮人宝可梦汉化数据](https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177)支持 Dwarvemon 2.22 与 Dwarvemon Entity All 2.22。宝可梦专用译文全部保存在独立包中，[DFCN 本体工坊项目](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)提供通用扩展自动加载能力。订阅数据包后自动识别，无需手工复制数据，也无需在创建世界时启用汉化数据包。
+公开提供 Dwarvemon、Dwarvemon Beta、Dwarvemon Entity All、Dwarvemon Entity Type 四个独立汉化数据包。[DFCN 本体工坊项目](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)提供通用扩展自动加载能力。订阅对应原模组和汉化数据包后自动识别，无需手工复制数据，也无需在创建世界时启用汉化数据包。
 
-[GitHub Release v53.16-20261008](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008)提供 Windows 核心运行包 `DFCN-Windows-x64-minimal.zip` 和独立数据包 `dfcn_dwarvemon_zh_hans.zip`。独立 ZIP 中整个 `dfcn_dwarvemon_zh_hans` 文件夹解压至游戏 `mods` 目录即可。更新或移除数据后，核心在下次启动或显式重新加载数据时识别相应变化；没有完整译文的 mod 名称、简介和工坊名称保留原文，用户自定义小队名称保持原样。
+[GitHub Release v53.16-20261009](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261009)提供 Windows 核心运行包 `DFCN-Windows-x64-minimal.zip` 及以下四个独立数据 ZIP：
+
+| 原模组与支持范围 | 工坊汉化数据 | 独立 ZIP |
+| --- | --- | --- |
+| Dwarvemon 2.22：基础宝可梦、生物、道具、材料、工坊、招式及战斗与历史文本 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177) | [dfcn_dwarvemon_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261009/dfcn_dwarvemon_zh_hans.zip) |
+| Dwarvemon Beta 2.22：Beta 与随包的 PMD、TCG、MissingNo 等可选模块 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791420) | [dfcn_dwarvemon_beta_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261009/dfcn_dwarvemon_beta_zh_hans.zip) |
+| Dwarvemon Entity All 2.22：模组名称与文明配置简介；生物和物品译文需配合 Dwarvemon 汉化数据 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791319) | [dfcn_dwarvemon_entity_all_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261009/dfcn_dwarvemon_entity_all_zh_hans.zip) |
+| Dwarvemon Entity Type 2.22：模组名称与文明配置简介；生物和物品译文需配合 Dwarvemon 汉化数据 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791235) | [dfcn_dwarvemon_entity_type_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261009/dfcn_dwarvemon_entity_type_zh_hans.zip) |
+
+独立 ZIP 中的整个 mod 文件夹解压至游戏 `mods` 目录即可，各包分别安装。基础 Dwarvemon 与 Beta 使用各自的专用汉化数据，Entity All、Entity Type 也分别提供独立包。其余 18 个汉化数据包保持私密，不在本次 Release 中提供。更新或移除数据后，核心在下次启动或显式重新加载数据时识别相应变化；没有完整译文的 mod 名称、简介和工坊名称保留原文，用户自定义小队名称保持原样。
 
 ## 数据声明与规则
 
@@ -34,7 +43,7 @@ rulesets = "dfcn/rulesets/zh-Hans"
 
 启动或显式重新载入数据时，核心重新读取扩展列表、声明和数据文件，重新构建词表及规则图，不自动检查文件变化。停用或移除扩展后重新使用本体数据；没有完整译文的 mod 名称、简介和工坊名称保留原文。用户自定义的小队名称始终保持原样。
 
-维护者将数据包放在 `workshop/<包目录>/content` 后，当前系统的规定编译部署入口会将它单独部署到配置游戏的 `mods/<mod ID>`，并在外层目录制作独立 ZIP。入口同时迁移本轮由本体拆出的相同词库副本。本地部署与 Steam 上传分别处理；发布身份文件按各包的发布配置目录保存，不共用本体的 Workshop ID。
+维护者将数据包放在 `workshop/<包目录>/content`，使用 `package-workshop.cmd` 打包公开扩展；入口按 `publish.json` 的公开状态选择数据包，以 `info.txt` 中的 mod ID 命名 ZIP，根目录保留同名 mod 文件夹与其完整资源。仅修改汉化数据无需编译或运行生成器。本地安装与 Steam 上传分别处理；发布身份文件按各包的发布配置目录保存，不共用本体的 Workshop ID。
 
 ## DFHack 界面与动态正文
 
