@@ -607,6 +607,9 @@ struct Match {
     bool native_overview_complete_row = false;
     // Tall adventure target cards own their name and status column together.
     bool native_adventure_target_row = false;
+    // Animal picker records retain their complete name/count/sex field and
+    // shared columns through native half-font and generic page layout.
+    bool native_animal_picker_row = false;
     // Embark resources are drawn over the site's final records by native DF.
     // Keep their display section separate from their original source rows.
     bool native_embark_resource = false;
@@ -25324,6 +25327,7 @@ void Overlay::normalize_native_split_text() {
             (rules_[static_cast<size_t>(match.rule)].source == "Total Power: {d}" ||
              rules_[static_cast<size_t>(match.rule)].source == "Total Power Needed: {d}");
         const bool structured_span = match.native_adventure_target_row ||
+            match.native_animal_picker_row ||
             match.rule == kWorldgenParameterLabelRule ||
             match.rule == kAdventureAttributeFieldRule ||
             match.rule == kAdventureSkillFieldRule ||
@@ -26380,22 +26384,20 @@ static int layout_animal_picker_rows(std::vector<Match> &matches,
     int available_animals_y = -1;
     int adventure_pets_y = -1;
     int adventure_points_y = -1;
-    bool points_left = false;
     for (const Match &match : matches) {
         if (match.source == "Your Animals") {
             your_animals_y = item_picker_text_row(match);
         } else if (match.source == "Available Animals") {
             available_animals_y = item_picker_text_row(match);
-        } else if (match.source.starts_with("Points Left:")) {
-            points_left = true;
         } else if (match.source == "Mount and pets") {
             adventure_pets_y = item_picker_text_row(match);
         } else if (match.source.starts_with("Equipment and pet points remaining:")) {
             adventure_points_y = item_picker_text_row(match);
         }
     }
-    const bool embark_animals = your_animals_y >= 0 &&
-        available_animals_y >= 0 && points_left;
+    // These two list headings identify the page independently of its
+    // changing balance, which can be owned by a separate message/control.
+    const bool embark_animals = your_animals_y >= 0 && available_animals_y >= 0;
     const bool adventure_pets = adventure_pets_y >= 0 &&
         adventure_points_y > adventure_pets_y;
     if (screen_columns <= 0 || (!embark_animals && !adventure_pets)) {
@@ -26431,7 +26433,7 @@ static int layout_animal_picker_rows(std::vector<Match> &matches,
                 item_picker_text_row(name) != row_y ||
                 name.x >= cost.x || name.x + name.length > cost.x ||
                 (name.x < divider_x ? 0u : 1u) != panel ||
-                !is_animal_name(name.source)) {
+                (!name.native_animal_picker_row && !is_animal_name(name.source))) {
                 continue;
             }
             const int right = name.x + name.length;
@@ -26462,19 +26464,29 @@ static int layout_animal_picker_rows(std::vector<Match> &matches,
         if (name_x >= cost_x || cost_right <= cost_x) continue;
 
         const int name_width = std::max(1, cost_x - name_x - 2);
-        const int cost_width = std::max(7, cost_right - cost_x);
+        const int cost_width = cost_right - cost_x;
         for (const AnimalRow &row : rows) {
             Match &name = matches[row.name];
+            name.native_animal_picker_row = true;
             name.layout_x = name_x;
             name.layout_length = name_width;
+            name.layout_box_pixel_x = -1;
+            name.layout_box_pixel_width = 0;
             name.layout_left = true;
+            name.layout_right = false;
+            name.layout_clip_right = cost_x - 2;
             name.layout_font_pixels = font_pixels;
             name.layout_visual_height_pixels = visual_height;
 
             Match &cost = matches[row.cost];
+            cost.native_animal_picker_row = true;
             cost.layout_x = cost_x;
             cost.layout_length = cost_width;
+            cost.layout_box_pixel_x = -1;
+            cost.layout_box_pixel_width = 0;
             cost.layout_left = false;
+            cost.layout_right = true;
+            cost.layout_clip_right = cost_right;
             cost.layout_font_pixels = font_pixels;
             cost.layout_visual_height_pixels = visual_height;
             ++laid_out;
@@ -35429,19 +35441,6 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
     layout_embark_item_cost_rows(
         prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
         arena_font_pixels);
-    layout_animal_picker_rows(
-        prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
-        arena_font_pixels, [this](std::string_view source) {
-            source = trim_view(source);
-            size_t count = 0;
-            while (count < source.size() && source[count] >= '0' && source[count] <= '9')
-                ++count;
-            if (count != 0 && count < source.size() && source[count] == ' ')
-                source = trim_view(source.substr(count + 1));
-            // A sexless RAW caste is still an animal row. Resolve the whole
-            // label, including its training prefix, before assigning columns.
-            return translate_creature_label(source).has_value();
-        });
     layout_embark_skill_rows(
         prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
         arena_font_pixels);
@@ -41604,6 +41603,28 @@ void Overlay::render(SDL_Renderer *renderer) {
     // A confirmation owns its title, colored warnings and all actions together.
     // Resolve it before UI messages are detached from ordinary captions.
     auto save_confirmation = layout_save_confirmation(renderer);
+    // Animal columns belong to the complete picker frame. Resolve them
+    // before independent controls are detached or another page composer
+    // short-circuits the generic structured-panel pass.
+    if (std::any_of(prepared_matches_.begin(), prepared_matches_.end(),
+            [](const Match &match) {
+                return match.source == "Your Animals" ||
+                    match.source == "Available Animals" || match.source == "Mount and pets";
+            })) {
+        // Names and costs can each retain a different half of the native
+        // caption. Pair their displayed rows only after both are normalized.
+        normalize_native_split_text();
+        layout_animal_picker_rows(prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
+            std::max(config_.min_font_pixels,
+                static_cast<int>(gps_->tile_pixel_y * config_.font_scale)),
+            [this](std::string_view source) {
+                source = trim_view(source);
+                const auto quantity = embark_item_quantity_prefix(source);
+                if (!quantity.empty()) source = trim_view(source.substr(quantity.size()));
+                // A sexless RAW caste is still a complete animal record.
+                return translate_creature_label(source).has_value();
+            });
+    }
     // Foreground tooltip text must not be grouped with a page behind it.
     // The native source mask was already built by prepare_frame().
     // Recovered picture captions are complete BACKGROUND fields. Keep them
