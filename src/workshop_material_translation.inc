@@ -1,4 +1,4 @@
-// The task selector's button captions are complete material names. Resolve
+// The task selector's button captions are complete material or plant names. Resolve
 // their role before generic word matching; composition then only places the
 // translated name inside the native row and preserves the separate count.
 static std::string workshop_wood_material_name(std::string target) {
@@ -27,6 +27,17 @@ void Overlay::append_workshop_material_translations(
         return trim_view(row.complete_source.empty() ? std::string_view(row.source)
                                                     : std::string_view(row.complete_source));
     };
+    // Capture returns one selector with its original headings. The plant
+    // selector lists RAW plant names, not material states; retain that role
+    // even when filtering leaves a single row or no available stock.
+    const bool plant_context = std::any_of(fields.begin(), fields.end(),
+        [&](const NativeTextCard &field) {
+            return !field.workshop_task_detail && !field.button_box &&
+                std::any_of(field.rows.begin(), field.rows.end(),
+                    [&](const NativeTextCardRow &row) {
+                        return lower(std::string(row_source(row))) == "setting plant";
+                    });
+        });
     // Selector headings and task-detail action captions are complete UI
     // fields, not stock-material nouns. Own their whole source before generic
     // matches can independently center a title or a piece of its heading.
@@ -85,7 +96,8 @@ void Overlay::append_workshop_material_translations(
             }
         }
     }
-    const bool wood_context = wood_task || (all_wood && unambiguous_wood);
+    const bool wood_context = !plant_context &&
+        (wood_task || (all_wood && unambiguous_wood));
     for (const auto &field : fields) {
         if (field.workshop_task_detail) continue;
         if (!field.button_box) continue; // Complete selector headings were owned above.
@@ -93,17 +105,20 @@ void Overlay::append_workshop_material_translations(
             const auto source = row_source(row);
             const auto wood = wood_context ? complete_wood(source) : std::string_view{};
             std::optional<std::string> target;
-            if (!wood.empty()) {
+            if (plant_context) {
+                target = translate_plant_name(source);
+            } else if (!wood.empty()) {
                 // Use the canonical RAW wood adjective, so ash cannot pick
                 // up the independent material noun meaning "burnt residue".
                 target = translate_material_name(wood, true);
             }
-            if (!target) target = translate_material_name(source);
+            if (!target && !plant_context) target = translate_material_name(source);
             if (target && !item_display_target_valid(*target)) target.reset();
             if (target && !wood.empty() && contains_cjk_utf8(*target))
                 *target = workshop_wood_material_name(std::move(*target));
-            auto result = target ? TranslationResult::translated(source, *target, "material")
-                : preserved_item_field(source, "material");
+            const std::string_view owner = plant_context ? "plant" : "material";
+            auto result = target ? TranslationResult::translated(source, *target, owner)
+                : preserved_item_field(source, owner);
             Match match{row.x, row.y, static_cast<int>(row.source.size()),
                 kWorkshopMaterialFieldRule, result.target, row.source};
             match.native_hover_untranslated = result.has_untranslated();
