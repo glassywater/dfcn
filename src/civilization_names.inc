@@ -390,8 +390,14 @@ std::string Overlay::site_government_name_suffix(const NativeHistoryName &name,
     if (parent_context->parent_word_id.empty() ||
             (parent_context->parent_word_pos != 0 && parent_context->parent_word_pos != 1))
         return fallback();
-    const auto found = site_government_parent_suffixes_.find(parent_context->parent_word_id);
-    return found == site_government_parent_suffixes_.end() ? "公署" : found->second;
+    // The parent's rendered title can depend on its actual noun form:
+    // NATION names a single country or the collective title "诸国".
+    const std::string key = parent_context->parent_word_id + "\t";
+    const auto specific = site_government_parent_suffixes_.find(key +
+        (parent_context->parent_word_pos == 1 ? "plural" : "singular"));
+    if (specific != site_government_parent_suffixes_.end()) return specific->second;
+    const auto shared = site_government_parent_suffixes_.find(key + "*");
+    return shared == site_government_parent_suffixes_.end() ? "属领" : shared->second;
 }
 
 uint64_t Overlay::history_parent_context_revision() const {

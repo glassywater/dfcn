@@ -28,7 +28,13 @@ bool Overlay::load_site_government_name_terms() {
             if (id.empty()) continue;
             if (index == 0) {
                 const std::string suffix = trim(line.substr(first + 1, second - first - 1));
-                if (!suffix.empty()) site_government_parent_suffixes_.insert_or_assign(id, suffix);
+                const size_t third = line.find('\t', second + 1);
+                const std::string number = third == std::string::npos
+                    ? "*" : trim(line.substr(third + 1));
+                if (!suffix.empty() && (number == "*" || number == "singular" ||
+                        number == "plural"))
+                    site_government_parent_suffixes_.insert_or_assign(
+                        id + "\t" + number, suffix);
             } else if (index == 1) {
                 const size_t third = line.find('\t', second + 1);
                 const std::string role = trim(line.substr(first + 1, second - first - 1));

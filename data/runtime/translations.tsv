@@ -6291,6 +6291,7 @@ Announcement combat agreement-core [agreement-party-list,agreement-party-list]: 
 Announcement combat memory-performance-core [memory-person,memory-performance-past,memory-performance-work]: {s} {s} {s}	{s1}{s2}{s3}	l
 Announcement combat negotiation-response []: joined in the discussion of history and past griefs and agreed on the issue	一起谈起了往事与旧日伤痛，并就此达成了一致	l
 Announcement combat sentence [$kinship]: It pains me all the more, for the foul villain was once my own {s}, now cursed.	更让我痛心的是，这个恶徒曾是我的{s1}，如今已遭到诅咒。	l
+Announcement combat sentence [$travel-site,$number]: {s} trades directly with no fewer than {s} other major settlements.	与{s1}直接做买卖的其他主要定居点，少说也有{s2}座。	l
 Announcement combat sentence [actor,unit,$person]: {s} miss {s} badly, blocked by the divine intervention of mighty {s}!	{s1}远远偏离了{s2}，攻击被强大的{s3}以神力阻止了！	l
 Announcement combat site-rumor-event [site-rumor-person,$name,site-rumor-predecessor]: {s} became of {s}, replacing {s}.	{s1}取代{s3}，在{s2}任职了。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} was will be burning {s}.	{s1}当时将正在焚烧{s2}。	l
@@ -6530,6 +6531,7 @@ A large bird with a featherless red head found in the sky of tropical deserts, s
 A snake-like creature living deep underground. Its head is covered in armor so that is resembles the head of a dragon.	一种生活在地底深处的蛇形生物。 它的头部被盔甲覆盖，就像龙头一样	lP
 Announcement combat inscription [$person,$person]: I am {s}, {s}, once of the Underworld. I bind myself to this place.	我是{s1}，又名{s2}，曾来自地下世界。我将自身束缚于此地。	l
 Announcement combat sentence [$name,dialogue-family,$unit]: I'm going to {s} to move into my new home with my {s} {s}.	我正前往{s1}，与我的{s2}{s3}搬入我们的新家。	l
+Announcement combat sentence [$travel-site]: The village {s} is the only other settlement to utilize the market there.	只有{s1}这座村庄也去那里赶集。	l
 Announcement combat sentence [diplomacy-group]: {s} is paying us tribute, and there is friendship between our peoples.	{s1}正在向我们进贡，双方百姓也相处和睦。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} will be appearing {s}.	{s1}将正在出现在{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} will be rewarding {s}.	{s1}将正在奖赏{s2}。	l
@@ -6658,6 +6660,7 @@ Announcement combat rumor-event []: Something truly horrifying has vomited itsel
 Announcement combat rumor-event [rumor-person,$travel-site]: I hear that there is an insurrection against {s} in {s}.	听说{s2}发生了反抗{s1}的叛乱。	l
 Announcement combat rumor-event [rumor-time,rumor-person,$travel-site]: I heard that {s}, {s} was kidnapped from {s}.	听说{s1}，{s2}在{s3}被人绑走了。	l
 Announcement combat rumor-flight [$travel-site,rumor-army]: from {s} just before an army {s} descended upon the place	了{s1}，随后一支军队{s2}便袭击了那里	l
+Announcement combat sentence [$travel-site]: The village {s} is the only other settlement to utilize the market here.	只有{s1}这座村庄也来这里赶集。	l
 Announcement combat sentence [diplomacy-group]: {s} accepts our tribute, and there is friendship between our peoples.	{s1}接受我们的贡品，双方百姓也相处和睦。	l
 Announcement combat sentence [diplomacy-group]: {s} is not at war with us, but there is ill-will between our peoples.	{s1}没有与我们交战，可双方百姓却互有敌意。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} were speaking to {s}.	{s1}当时正在对{s2}说话。	l
@@ -7187,7 +7190,6 @@ Announcement combat memory-possession [memory-possession-core,memory-location,me
 Announcement combat negotiation-response []: attempted to put their opposite at ease but did not ultimately agree	试着让对方放松下来，但最终仍未同意	l
 Announcement combat negotiation-response []: spun a web of deceit of their own but became tied in their own knots	也编织了一张谎言之网，却作茧自缚	l
 Announcement combat sentence [$book,$item,$name]: I am searching for {s} {s}, and this quest is taking me to {s}.	我正在寻找{s1}{s2}，为此要前往{s3}。	l
-Announcement combat sentence [$travel-site,$number]: {s} trades directly with no fewer than {s} other major settlements.	与{s1}直接做买卖的其他主要定居点，少说也有{s2}座。	l
 Announcement combat sentence [$person]: Not that it matters, as the seat of {s} is here, and the law is absolute.	不过这也没什么要紧，{s1}的统治中心就在这里，法律说一不二。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} am appearing {s}.	{s1}正在出现在{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} am rewarding {s}.	{s1}正在奖赏{s2}。	l
@@ -7482,7 +7484,6 @@ Announcement combat rumor-event []: A vile monster from the bowels of the earth 
 Announcement combat rumor-event []: Body corrupted beyond reckoning, he assumes a beastly form to terrorize us.	他的身体已经彻底腐化，还会变成野兽来吓唬我们。	l
 Announcement combat rumor-event []: Body corrupted beyond reckoning, it assumes a beastly form to terrorize us.	它的身体已经彻底腐化，还会变成野兽来吓唬我们。	l
 Announcement combat rumor-event [rumor-person,$travel-site]: I hear that {s} waited out an insurrection in {s}.	听说{s1}在{s2}按兵不动，一直等到叛乱平息。	l
-Announcement combat sentence [$travel-site]: The village {s} is the only other settlement to utilize the market there.	只有{s1}这座村庄也去那里赶集。	l
 Announcement combat threat-killing [threat-kill-count,threat-possessive]: has killed {s} in {s} lust for murder	{s2}嗜杀成性，已经杀害了{s1}	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} am burning {s}.	{s1}正在焚烧{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} destroying {s}.	{s1}正在毁灭{s2}。	l
@@ -7622,7 +7623,6 @@ Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-
 Announcement combat merchant-hawk-origin [merchant-hawk-item,merchant-advert-origin]: {s} all the way from {s}	一路从{s2}运来的{s1}	l
 Announcement combat negotiation-response []: made a persuasive argument of their own but was ultimately swayed	也提出了有说服力的论点，但最终被说动了	l
 Announcement combat rumor-event []: A night creature has infiltrated our communities and now makes prey of us.	有只夜行生物混进了我们的聚落，如今把我们当成了猎物。	l
-Announcement combat sentence [$travel-site]: The village {s} is the only other settlement to utilize the market here.	只有{s1}这座村庄也来这里赶集。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} are unable to break the grip of {s} on {s}!	{s1}无法挣脱{s2}对{s3}的抓握！	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} appearing {s}.	{s1}正在出现在{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} destroyed {s}.	{s1}曾毁灭{s2}。	l
@@ -10156,6 +10156,7 @@ Announcement combat rumor-event [rumor-identity]: Seek this place if you wish to
 Announcement combat rumor-event [rumor-time,rumor-person]: I heard that {s}, {s} was kidnapped.	听说{s1}，{s2}被人绑走了。	l
 Announcement combat rumor-flight [rumor-army]: just before an army {s} descended upon the place	了那里，随后一支军队{s1}便袭击了那里	l
 Announcement combat sentence [$person,threat-possessive]: [{s} pauses to regain {s} composure.]	【{s1}稍作停顿，{s2}正努力恢复镇定。】	l
+Announcement combat sentence [$travel-site,$travel-site]: The people of {s} go to {s} to trade.	{s1}的人会去{s2}做买卖。	l
 Announcement combat sentence [boast-victim,boast-slain-clause]: I am the conqueror of {s}, {s}!	我就是{s1}的征服者，{s2}！	l
 Announcement combat sentence [boast-victim,boast-slain-clause]: I am the strangler of {s}, {s}!	绞杀{s1}的正是我，{s2}！	l
 Announcement combat travel-beast-main [travel-actor,$travel-site]: {s} is rumored to be in {s}.	据说{s1}在{s2}。	l
@@ -11901,6 +11902,7 @@ Announcement combat negotiation-response []: negotiated with humor but was outma
 Announcement combat rumor-event [$travel-site,$name]: We reclaimed {s} on behalf of {s}.	我们代表{s2}收复了{s1}。	l
 Announcement combat sentence [$item,merchant-address]: Might I interest you in {s}, {s}?	{s2}，我能让你对{s1}感兴趣吗？	l
 Announcement combat sentence [$sphere]: There is also the issue of their worship of {s}.	还有，他们崇拜{s1}，这也是个问题。	l
+Announcement combat sentence [$travel-site,trade-places]: {s} engages in trade with {s}.	{s1}同{s2}有贸易往来。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} catches {s} with {s}!	{s1}用{s3}抓住了{s2}！	l
 Announcement combat travel-drive-main [$name]: You have been ordered to drive {s} from .	你奉命将{s1}赶出未具名地点。	l
 Announcement combat visitor-statement [visitor-statement-object]: will be appearing {s}.	将正在出现在{s1}。	l
@@ -12135,7 +12137,6 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Sand va
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Taken by mood.	{s1}取消了{s2}：陷入奇异心境。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Too depressed.	{s1}取消了{s2}：过于抑郁。	l
 Announcement combat fortress-announcement [$unit]: The {s} has been missing for a week.	{s1}已经失踪一周。	l
-Announcement combat fortress-announcement [$unit]: {s} has been missing for a week.	{s1}已经失踪一周。	l
 Announcement combat fortress-announcement [$unit]: {s} has altered the prices of goods.	{s1}调整了物品价格。	l
 Announcement combat historical-clash-outcome [$number]: slaying {s} and losing everyone	击杀对方{s1}，己方全军覆没	l
 Announcement combat journal-calendar-date [$digits,$digits]: {s}nd Opal in the year {s}	第{s2}年蛋白石月{s1}日	l
@@ -13238,6 +13239,7 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No weap
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Oblivious.	{s1}取消了{s2}：浑然不觉。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Paralyzed.	{s1}取消了{s2}：麻痹。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Terrified.	{s1}取消了{s2}：极度恐惧。	l
+Announcement combat fortress-announcement [$unit]: {s} has been missing for a week.	{s1}已经失踪一周。	l
 Announcement combat head [unit,owned-object,owned-object]: {s} pinches {s} with {s}	{s1}用{s3}掐{s2}	l
 Announcement combat historical-clash-outcome [$number]: slaying them and losing {s}	全歼对方，己方阵亡{s1}	l
 Announcement combat justice-interrogation-factor []: a lack of desire for vengeance	没有复仇的欲望	l
@@ -13872,8 +13874,6 @@ Announcement combat rumor-event []: Seek this place if you wish to confront the 
 Announcement combat rumor-event [rumor-person]: The army of {s} is marching here!	{s1}的军队正向这里进军！	l
 Announcement combat rumor-flight []: just before an army descended upon the place	了那里，随后一支军队便袭击了那里	l
 Announcement combat sentence [$item,merchant-address]: Good {s} right there, {s}.	{s2}，就那里的优质的{s1}。	l
-Announcement combat sentence [$travel-site,$travel-site]: The people of {s} go to {s} to trade.	{s1}的人会去{s2}做买卖。	l
-Announcement combat sentence [$travel-site,trade-places]: {s} engages in trade with {s}.	{s1}同{s2}有贸易往来。	l
 Announcement combat sentence [$term,$person,$name]: Make way for {s} {s} and {s}!	给{s1}{s2}和{s3}让路！	l
 Announcement combat sentence []: A demonstration of your skill might convince me.	展示一下你的技艺，也许就能说服我。	l
 Announcement combat sentence []: Can you lead me to battle and a warrior's death?	你能带我上战场，让我像个战士那样战死吗？	l
@@ -16512,6 +16512,7 @@ Announcement combat memory-value-insight [memory-value]: the value of {s}	{s1}�
 Announcement combat reference-building [reference-building-type]: the {s}	{s1}	l
 Announcement combat sentence [$item,merchant-address]: Splendid {s}, {s}.	{s2}，出色的{s1}。	l
 Announcement combat sentence [$name]: The surrounding area is called {s}.	周边地区叫做{s1}。	l
+Announcement combat sentence [$travel-site]: The largest of these is {s}.	其中最大的是{s1}。	l
 Announcement combat sentence [ability]: You have learned the power "{s}"!	你学会了能力“{s1}”！	l
 Announcement combat sentence [fluid,fluid]: {s} is injected into the {s}!	{s1}被注入了{s2}！	l
 Announcement combat sentence [shot,shot-result]: {s} but the shot is {s}!	{s1}，但射来的攻击被{s2}！	l
@@ -16520,6 +16521,7 @@ Announcement combat sentence [unit-list]: {s} is stunned by divine power!	{s1}�
 Announcement combat sentence [unit]: {s} are caught in a cloud of flames!	{s1}被火焰云吞没了！	l
 Announcement combat sentence [unit]: {s} is stumbling around obliviously!	{s1}浑浑噩噩地四处踉跄！	l
 Announcement combat threat-crimes [threat-crime,threat-crimes]: {s} , {s}	{s1}、{s2}	l
+Announcement combat trade-places [trade-places,$travel-site]: {s} and {s}	{s1}与{s2}	l
 Announcement combat visitor-statement [visitor-statement-object]: am {s}.	……{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: is {s}.	……{s1}。	l
 Announcement combat work-sentence [work-reference-list]: It concerns {s}.	内容涉及{s1}。	l
@@ -17694,6 +17696,7 @@ Announcement combat site-rumor-date [$digits]: the early spring of {s}	第{s1}�
 Announcement combat site-rumor-date [$digits]: the early summer of {s}	第{s1}年初夏	l
 Announcement combat site-rumor-date [$digits]: the early winter of {s}	第{s1}年初冬	l
 Announcement combat site-rumor-event [$name,$travel-site]: {s} in {s}.	{s1}在{s2}。	l
+Announcement combat trade-places [$travel-site,trade-places]: {s}, {s}	{s1}、{s2}	l
 Announcement combat visitor-statement [visitor-statement-object]: {s}.	……{s1}。	l
 Announcement combat visitor-statement-reference [$memorial-actor]: {s}	{s1}	l
 Announcement combat work-reference [$name]: the important location {s}	重要地点{s1}	l
@@ -19480,7 +19483,6 @@ Announcement combat rumor-event []: This place has been conquered.	这个地方�
 Announcement combat rumor-event [rumor-person,$book]: {s} has {s}.	{s2}在{s1}手里。	l
 Announcement combat sentence [$distance]: There are guards in {s}.	{s1}有卫兵。	l
 Announcement combat sentence [$item]: Might I interest you in {s}?	我能让你对{s1}感兴趣吗？	l
-Announcement combat sentence [$travel-site]: The largest of these is {s}.	其中最大的是{s1}。	l
 Announcement combat sentence []: Can you manage a troupe so large?	这么大的剧团，你管得过来吗？	l
 Announcement combat sentence []: Let us leave as soon as possible.	我们尽快离开吧。	l
 Announcement combat sentence []: Many are stunned by divine power!	许多生物被神力震慑了！	l
@@ -20937,7 +20939,6 @@ Announcement combat sentence [unit]: {s} is no longer infected.	{s1}的感染痊
 Announcement combat sentence [unit]: {s} is throwing a tantrum!	{s1}正在大发脾气！	l
 Announcement combat sentence [unit]: {s} slam into an obstacle!	{s1}猛撞在了障碍物上！	l
 Announcement combat shot-result [defense-adverb]: {s} deflected	{s1}挡开了	l
-Announcement combat trade-places [$travel-site,trade-places]: {s}, {s}	{s1}、{s2}	l
 Announcement combat visitor-statement []: was will be burning .	当时将正在燃烧。	l
 Announcement combat visitor-statement []: was will be flooding.	当时将正在泛滥。	l
 Announcement combat visitor-statement []: was will be speaking.	当时将正在说话。	l
@@ -23540,7 +23541,6 @@ Announcement combat sentence [work]: You have composed {s}.	你创作了{s1}。	
 Announcement combat threat-building []: an underworld spire	一座地下世界尖塔	l
 Announcement combat threat-crime []: devoured our livestock	吞食了我们的牲畜	l
 Announcement combat threat-crimes [threat-crime]: {s} , and	{s1}，还犯下了两项罪行（细节不明）	l
-Announcement combat trade-places [trade-places,$travel-site]: {s} and {s}	{s1}与{s2}	l
 Announcement combat travel-empty-caste-actor []: the zombie	活尸	l
 Announcement combat unit-list [unit,unit-list]: {s} and {s}	{s1}和{s2}	l
 Announcement combat visitor-statement []: are speaking to .	正在说话。	l
@@ -30388,6 +30388,7 @@ Announcement combat site-rumor-artifact [$book]: {s}	{s1}	l
 Announcement combat site-rumor-artifact [$item]: {s}	{s1}	l
 Announcement combat site-rumor-building [$name]: {s}	{s1}	l
 Announcement combat threat-kill-count [$number]: {s}	{s1}人	l
+Announcement combat trade-places [$travel-site]: {s}	{s1}	l
 Announcement combat travel-empty-caste-actor []: the	这个生物	l
 Announcement combat travel-squad-role [$office]: {s}	{s1}	l
 Announcement combat visitor-statement []: appeared .	曾出现。	l
@@ -39977,7 +39978,6 @@ Announcement combat threat-crime []: profaned	亵渎了建筑（名称不明）	
 Announcement combat threat-possessive []: her	她	l
 Announcement combat threat-possessive []: his	他	l
 Announcement combat threat-possessive []: its	它	l
-Announcement combat trade-places [$travel-site]: {s}	{s1}	l
 Announcement combat work-ordinal []: eleventh	11	l
 Announcement distance: inaccessible from here	此处无法到达的地方	l
 Announcement distance: to the north-northeast	在北东北方	l
@@ -56586,7 +56586,6 @@ The world has passed into {e} in {p}	在{p1}，世界已进入{e1}	ht
 The world has passed into {s} at {p}	在{p1}，世界已进入{s1}	ht
 The world has passed into {s} in {p}	在{p1}，世界已进入{s1}	ht
 The {n} has been missing for a week.	{n1}已经失踪一周。	hPt
-{n} has been missing for a week.	{n1}已经失踪一周。	hPt
 The {s} Rampage in in {p} during {e}	在{e1}期间，{p1}的{s1}肆虐事件	htEi
 The {s} Rampage in in {p} within {p}	在{p2}，{p1}的{s1}肆虐事件	htEi
 There will be no rest for the enemy.	敌人将永无宁日。	hP
@@ -60145,6 +60144,7 @@ Argue the worthlessness of decorum	争辩礼仪毫无价值	hP
 Argue the worthlessness of harmony	争辩和谐毫无价值	hP
 Argue the worthlessness of loyalty	争辩忠诚毫无价值	hP
 Argue the worthlessness of romance	争辩爱情毫无价值	hP
+Ask about the bone-chilling horror	询问骇人的恐怖之物	hP
 Ask about the structure you are in	询问你所在的建筑	hP
 Ask if anybody fled from this site	询问是否有人逃离此地	hP
 Ask to be made a mercenary for {e}	请求成为{e1}的佣兵	hPt
@@ -66570,6 +66570,7 @@ wrongfully convicted {n} of {s}.	错误地判定{n1}犯有{s1}。	ht
 {n} has been blessed with a pet!	{n1}受到祝福，获赐了一只宠物！	hPt
 {n} has been elected {s} of {e}.	{n1}已当选为{e1}的{s1}。	hPt
 {n} has been found dead, frozen.	{n1}被发现时，已经冻死了。	hPt
+{n} has been missing for a week.	{n1}已经失踪一周。	hPt
 {n} has grown attached to a {s}!	{n1}对一件{s1}产生了依恋！	hPt
 {n} has left the martial trance.	{n1}脱离了战斗专注状态。	hPt
 {n} is guided by forces unknown.	{n}受到未知力量的指引。	ht
@@ -66690,6 +66691,7 @@ Argue the value of independence	争辩独立自主的价值	hP
 Argue the value of leisure time	争辩闲暇的价值	hP
 Argue the value of perseverance	争辩毅力的价值	hP
 Argue the value of self-control	争辩自制的价值	hP
+Ask about the army on the march	询问正在行军的军队	hP
 Ask listener's course of action	询问对方接下来打算怎么做	hP
 Ask to be made a doctor for {e}	请求成为{e1}的医生	hPt
 Ask to be made a scribe for {e}	请求成为{e1}的抄写员	hPt
@@ -69053,6 +69055,7 @@ Argue the value of competition	争辩竞争的价值	hP
 Argue the value of cooperation	争辩合作的价值	hP
 Argue the value of tranquility	争辩宁静的价值	hP
 Argue the worthlessness of law	争辩法律毫无价值	hP
+Ask about the missing treasure	询问失踪宝物	hP
 Ask about the surrounding area	询问周边地区	hP
 Ask for a cease to hostilities	请求停止敌对行动	hP
 Ask for the whereabouts of {p}	询问{p1}的下落	hPt
@@ -71479,7 +71482,10 @@ Argue nuances of perseverance	争辩毅力的复杂之处	hP
 Argue nuances of self-control	争辩自制的复杂之处	hP
 Argue the value of friendship	争辩友谊的价值	hP
 Art image named creature: X Y	X「Y」	wl
+Ask about armies on the march	询问正在行军的各支军队	hP
 Ask about somebody (new menu)	打听某个人（新菜单）	hP
+Ask about the brewing trouble	询问正在酝酿的麻烦	hP
+Ask about the skulking vermin	询问潜伏的害兽	hP
 Ask for directions (new menu)	问路（新菜单）	hP
 Assigned to {e}, position {d}	已分配至{e1}，位置{d1}	hPt
 Austere    <->    Extravagant	朴素 ↔ 奢侈	wl
@@ -78343,6 +78349,7 @@ Argue the value of decorum	争辩礼仪的价值	hP
 Argue the value of harmony	争辩和谐的价值	hP
 Argue the value of loyalty	争辩忠诚的价值	hP
 Argue the value of romance	争辩爱情的价值	hP
+Ask about the law-breaking	询问违法行为	hP
 Ask listener to follow you	请对方跟随你	hP
 Attempted {e} in the wilds	在荒野中，未遂的{e1}	htEi
 Automatically collect webs	自动收集网	wi
@@ -82380,6 +82387,8 @@ Argue the value of power	争辩权力的价值	hP
 Argue the value of skill	争辩技艺的价值	hP
 Argue the value of truth	争辩诚实的价值	hP
 Art image other group: X	另一群X	wl
+Ask about the abductions	询问这些绑架事件	hP
+Ask about the occupation	询问这次占领	hP
 Assign new display items	指定新展品	wi
 Attempted {e} during {e}	在{e2}期间，未遂的{e1}	htEi
 Attempted {e} within {p}	在{p1}，未遂的{e1}	htEi
@@ -84455,6 +84464,8 @@ Are you ready to learn?	准备好学习了吗？	hP
 Argue nuances of family	争辩家庭的复杂之处	hP
 Argue nuances of nature	争辩自然的复杂之处	hP
 Art image two groups: X	两群X	wl
+Ask about the abduction	询问这起绑架事件	hP
+Ask about the criminals	询问罪犯	hP
 Ask for {s} to made {s}	请求将{s1}任命为{s2}	hPt
 Ask to become a soldier	请求成为士兵	hP
 Assemble ballista arrow	组装弩炮箭矢	wi
@@ -86501,6 +86512,9 @@ Argue nuances of power	争辩权力的复杂之处	hP
 Argue nuances of skill	争辩技艺的复杂之处	hP
 Argue nuances of truth	争辩诚实的复杂之处	hP
 Argue the value of law	争辩法律的价值	hP
+Ask about the fighting	询问争斗	hP
+Ask about the open war	询问公开交战	hP
+Ask about the ruffians	询问暴徒	hP
 Attack creatures ({s})	攻击多个生物（{s1}）	hPt
 Author: FirePhoenix{d}	作者：FirePhoenix{d}	wt
 Below average patience	耐心低于平均	wil
@@ -88578,6 +88592,8 @@ An Exploration of {b}	{b}探索	hbti
 An item has returned!	一件物品回来了！	hP
 Arena: Fluids, remove	竞技场：移除流体	w
 Artistically inclined	有艺术感受力	w
+Ask about occupations	询问这些占领	hP
+Ask about the bandits	询问强盗	hP
 Attack creature ({s})	攻击生物（{s1}）	hPt
 Attempted {e} at {p}.	在{p1}，未遂的{e1}。	htEi
 Attempted {e} in {d}.	{d1}年的未遂的{e1}。	htEi
@@ -90906,6 +90922,8 @@ Archery targets are 	箭靶用于射箭场区域训练射手。	w
 Arena: Fluids, magma	竞技场：岩浆	w
 Arena: Fluids, water	竞技场：水	w
 Argue nuances of law	争辩法律的复杂之处	hP
+Ask about the beasts	询问那些凶兽	hP
+Ask about the deaths	询问这些死亡事件	hP
 Ask to be made a {s}	请求担任{s1}	hPt
 Attained Social Rank	已经出人头地	w
 Attempted {e} at {p}	在{p1}，未遂的{e1}	htEi
@@ -93753,6 +93771,8 @@ Arena: Fluids, snow	竞技场：雪	w
 Art image female: X	雌性X	wl
 Artifacts (Rumored)	造物（传闻）	w
 Artifacts completed	造物处理完成	w
+Ask about the beast	询问那头凶兽	hP
+Ask about the death	询问这起死亡事件	hP
 Ask to become a {s}	请求成为{s1}	hPt
 Assign position {d}	指派第{d}名队员	wt
 Bash down {s} ({s})	撞倒{s1}（{s2}）	hPt
@@ -128857,6 +128877,8 @@ Weapon rack	兵器架	w
 Weaponsmith	武器匠	wi
 Where am I?	我在哪里？	hP
 Wild Animal	野生动物	wi
+Wiltwonders	枯萎奇观	h
+Wiltwonders	枯萎奇观	w
 Winter(now)	冬季（当前）	wi
 Wood Burner	烧炭工	wi
 Woodcrafter	木艺师	wi
@@ -128992,7 +129014,7 @@ broken away	折断了	h
 bubble bulb	泡泡球茎	wi
 buck rabbit	兔	wi
 bugbat pups	虫蝠幼崽	wi
-bull calves	奶牛犊	wi
+bull calves	奶牛幼崽	wi
 bull sharks	牛鲨	wi
 burned away	烧掉了	h
 burned {a}.	烧死了{a1}。	ht
@@ -132880,7 +132902,7 @@ cougar cub	美洲狮幼崽	wi
 cougar man	美洲狮人	wi
 cougar men	美洲狮人	wi
 counselors	顾问	hi
-cow calves	奶牛犊	wi
+cow calves	奶牛幼崽	wi
 cow cheese	牛奶酪	wi
 cow's milk	牛奶	wi
 cowpea pod	豇豆荚	wi
@@ -135644,6 +135666,7 @@ Annoyance	烦恼	w
 Appraisal	估价	wi
 Appraiser	估价员	wi
 Artifacts	造物	wi
+Ask about	询问	hP
 Astronomy	天文学	wi
 Automatic	自动	w
 Autostart	自动启动	w
@@ -135981,7 +136004,7 @@ branching	分叉	wi
 brimstone	硫磺	wi
 buck hare	野兔	wi
 buckwheat	荞麦	wi
-bull calf	奶牛犊	wi
+bull calf	奶牛幼崽	wi
 bumblebee	大黄蜂	wi
 cabochons	弧面切工	wi
 cacao pod	可可豆荚	wi
@@ -138103,7 +138126,7 @@ coconuts	椰子	wi
 commerce	商业	wi
 confused	困惑	w
 costumes	服装	h
-cow calf	奶牛犊	wi
+cow calf	奶牛幼崽	wi
 crab man	螃蟹人	wi
 crab men	螃蟹人	wi
 creation	创造	r
@@ -143003,28 +143026,3 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
-
-# Native trouble chooser: complete captions from both configured PE branches.
-Ask about the death	询问这起死亡事件	hP
-Ask about the deaths	询问这些死亡事件	hP
-Ask about the law-breaking	询问违法行为	hP
-Ask about the fighting	询问争斗	hP
-Ask about the army on the march	询问正在行军的军队	hP
-Ask about armies on the march	询问正在行军的各支军队	hP
-Ask about the abduction	询问这起绑架事件	hP
-Ask about the abductions	询问这些绑架事件	hP
-Ask about the occupation	询问这次占领	hP
-Ask about occupations	询问这些占领	hP
-Ask about the beast	询问那头凶兽	hP
-Ask about the beasts	询问那些凶兽	hP
-Ask about the criminals	询问罪犯	hP
-Ask about the bandits	询问强盗	hP
-Ask about the skulking vermin	询问潜伏的害兽	hP
-Ask about the bone-chilling horror	询问骇人的恐怖之物	hP
-Ask about the ruffians	询问暴徒	hP
-Ask about the open war	询问公开交战	hP
-Ask about the brewing trouble	询问正在酝酿的麻烦	hP
-Ask about the missing treasure	询问失踪宝物	hP
-Ask about	询问	hP
-Wiltwonders	枯萎奇观	w
-Wiltwonders	枯萎奇观	h
