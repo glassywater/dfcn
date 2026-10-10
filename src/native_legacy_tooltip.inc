@@ -1,4 +1,4 @@
-// DF 53.16 fortress toolbar: snapshot before its inline background clear,
+// DF 53.16 fortress toolbar: redirect before its inline background clear,
 // then collect only the paragraph/key calls belonging to this native card.
 // A partial border or an item picture over the card is not its identity.
 static NativeCallHook g_native_legacy_tooltip_hook;
@@ -7,6 +7,10 @@ struct NativeLegacyTooltipState {
     std::shared_ptr<NativeTooltipPage> page;
     std::optional<NativeTooltipWidgetFrame> frame;
     uint64_t epoch = 0;
+#ifdef _WIN32
+    size_t remaining_body_rows = 0;
+    bool has_keys = false;
+#endif
 };
 static NativeLegacyTooltipState &native_legacy_tooltip_state() {
     // Owning TLS registers thread-exit destructors even when shutdown merely
@@ -26,8 +30,12 @@ static size_t capture_native_legacy_tooltip_rows(const void *paragraph) {
     const size_t count = callback.call_native([&] { return original(paragraph); });
     try {
         auto &state = native_legacy_tooltip_state();
+        if (state.frame && state.frame->isolated)
+            native_tooltip_end_draw(*state.frame);
         state.frame.reset();
         state.page.reset();
+        state.remaining_body_rows = 0;
+        state.has_keys = false;
         auto *gps = native_graphics();
         const auto base = g_native_legacy_tooltip_base;
         const bool keys = *reinterpret_cast<const int32_t *>(native_pe_address(base, 0x18a93a8)) != 0;
@@ -35,7 +43,7 @@ static size_t capture_native_legacy_tooltip_rows(const void *paragraph) {
         const int bottom = *reinterpret_cast<const int32_t *>(native_pe_address(base, 0x18a93c0));
         if (paragraph && gps && gps->screen && gps->dimx > 0 && gps->dimx <= 1000 &&
                 gps->dimy > 0 && gps->dimy <= 1000 &&
-                count <= static_cast<size_t>(gps->dimy)) {
+                count <= static_cast<size_t>(gps->dimy) && (count > 0 || keys)) {
             const int height = static_cast<int>(count) + (keys ? 4 : 2);
             const int top = bottom - height + 1;
             if (height >= 3 && left >= 0 && left <= gps->dimx - 28 &&
@@ -47,8 +55,6 @@ static size_t capture_native_legacy_tooltip_rows(const void *paragraph) {
                 frame.dimx = gps->dimx;
                 frame.dimy = gps->dimy;
                 frame.epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
-                frame.page = std::make_shared<NativeTooltipPage>(*gps);
-                frame.page->bounds = frame.bounds;
                 frame.rows.assign(height, std::string(28, ' '));
                 for (size_t row = 0; row < count; ++row) {
                     std::string_view source;
@@ -60,6 +66,12 @@ static size_t capture_native_legacy_tooltip_rows(const void *paragraph) {
                     frame.body_source.append(source);
                 }
                 state.epoch = frame.epoch;
+                state.remaining_body_rows = count;
+                state.has_keys = keys;
+                if (!native_tooltip_begin_draw(frame)) {
+                    frame.page = std::make_shared<NativeTooltipPage>(*gps);
+                    frame.page->bounds = frame.bounds;
+                }
                 state.frame = std::move(frame);
             }
         }
@@ -168,6 +180,11 @@ static void capture_native_legacy_tooltip_text(graphicst *gps, Draw &&draw) {
     draw();
     try {
         if (!frame) return;
+#ifdef _WIN32
+        // The complete card is already writing to its own grid. Its body
+        // and key hooks only collect text; the final native call publishes it.
+        if (frame->isolated) return;
+#endif
         frame->document = std::make_shared<NativeTooltipPage>(*gps);
         frame->document->bounds = frame->bounds;
         std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
@@ -178,6 +195,10 @@ static void capture_native_legacy_tooltip_text(graphicst *gps, Draw &&draw) {
 static void capture_native_legacy_tooltip_row(graphicst *gps, const NativeString *source,
         NativeJustification just, int width) {
     NativeInputCallbackScope callback;
+#ifdef _WIN32
+    const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+    const bool body_row = caller == native_pe_address(g_native_legacy_tooltip_base, 0x3fb318) + 5;
+#endif
     const auto original = reinterpret_cast<NativeCaptionDrawFn>(g_native_legacy_tooltip_base +
 #ifdef _WIN32
         native_pe_rva(0xad9960));
@@ -187,6 +208,18 @@ static void capture_native_legacy_tooltip_row(graphicst *gps, const NativeString
     capture_native_legacy_tooltip_text(gps, [&] {
         callback.call_native([&] { original(gps, source, just, width); });
     });
+#ifdef _WIN32
+    try {
+        auto &state = native_legacy_tooltip_state();
+        if (body_row && state.frame && state.frame->isolated && state.remaining_body_rows > 0 &&
+                --state.remaining_body_rows == 0 && !state.has_keys) {
+            // The native loop's remaining work only advances its iterator
+            // and selects the no-key continuation; no card stores follow.
+            native_tooltip_end_draw(*state.frame);
+            state.frame.reset();
+        }
+    } catch (...) {}
+#endif
 }
 
 static void capture_native_legacy_tooltip_key(void *view, long token, NativeJustification just) {
@@ -201,6 +234,16 @@ static void capture_native_legacy_tooltip_key(void *view, long token, NativeJust
     capture_native_legacy_tooltip_text(native_graphics(), [&] {
         callback.call_native([&] { original(view, token, just); });
     });
+#ifdef _WIN32
+    try {
+        auto &state = native_legacy_tooltip_state();
+        if (state.frame && state.frame->isolated) {
+            // This call follows the Hotkey label and completes the card.
+            native_tooltip_end_draw(*state.frame);
+            state.frame.reset();
+        }
+    } catch (...) {}
+#endif
 }
 
 static bool install_native_legacy_tooltip(uintptr_t base) {

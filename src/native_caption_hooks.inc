@@ -307,13 +307,14 @@ static thread_local NativeTooltipWidgetFrame *g_native_tooltip_write = nullptr;
 
 // ViewBase::widget::render creates a container named Tooltip. Its children
 // draw the background, wrapped body and keys into screen (not screen_top).
-// Record that actual write scope; page text left in another logical layer
-// must not supply either the tooltip's identity or its paragraph bounds.
+// Redirect that actual write scope to the tooltip layer before its children
+// draw; only a renderer without a private output falls back to page capture.
 static void capture_native_tooltip_container(void *widget, uint32_t tick) {
     NativeInputCallbackScope callback;
     const auto original = reinterpret_cast<NativeCaptionWidgetRenderFn>(
         g_native_tooltip_container_hook.original);
-    if (native_private_ui_write_active(native_graphics())) {
+    if (native_private_ui_write_active(native_graphics()) ||
+            (g_native_tooltip_write && g_native_tooltip_write->isolated)) {
         if (original) callback.call_native([&] { original(widget, tick); });
         return;
     }
@@ -335,22 +336,24 @@ static void capture_native_tooltip_container(void *widget, uint32_t tick) {
                 captured->dimx = gps->dimx;
                 captured->dimy = gps->dimy;
                 captured->epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
-                captured->page = std::make_shared<NativeTooltipPage>(*gps);
-                captured->page->bounds = captured->bounds;
                 captured->rows.assign(static_cast<size_t>(captured->bounds.h),
                     std::string(static_cast<size_t>(captured->bounds.w), ' '));
-                // At this point the entire page, including its action strips,
-                // exists and none of this tooltip's children has overwritten it.
-                std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-                for (auto &draw : g_native_drawn_text_rows) {
-                    if (draw.picture_frame || draw.y < rect[1] || draw.y > rect[3] ||
-                        draw.x < 0 || draw.source.empty() ||
-                        draw.source.size() > static_cast<size_t>(gps->dimx - draw.x)) continue;
-                    bool current = true;
-                    for (size_t i = 0; current && i < draw.source.size(); ++i)
-                        current = gps->screen[(static_cast<size_t>(draw.x + i) * gps->dimy + draw.y) * 8]
-                            == static_cast<unsigned char>(draw.source[i]);
-                    if (current) draw.picture_frame = capture_native_picture_caption_frame(*gps, draw.x, draw.y);
+                if (!native_tooltip_begin_draw(*captured)) {
+                    captured->page = std::make_shared<NativeTooltipPage>(*gps);
+                    captured->page->bounds = captured->bounds;
+                    // At this point the entire page, including its action strips,
+                    // exists and none of this tooltip's children has overwritten it.
+                    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+                    for (auto &draw : g_native_drawn_text_rows) {
+                        if (draw.picture_frame || draw.y < rect[1] || draw.y > rect[3] ||
+                            draw.x < 0 || draw.source.empty() ||
+                            draw.source.size() > static_cast<size_t>(gps->dimx - draw.x)) continue;
+                        bool current = true;
+                        for (size_t i = 0; current && i < draw.source.size(); ++i)
+                            current = gps->screen[(static_cast<size_t>(draw.x + i) * gps->dimy + draw.y) * 8]
+                                == static_cast<unsigned char>(draw.source[i]);
+                        if (current) draw.picture_frame = capture_native_picture_caption_frame(*gps, draw.x, draw.y);
+                    }
                 }
             }
         }
@@ -364,6 +367,10 @@ static void capture_native_tooltip_container(void *widget, uint32_t tick) {
             ~WriteScope() { g_native_tooltip_write = previous; }
         } scope(captured ? &*captured : nullptr);
         if (original) callback.call_native([&] { original(widget, tick); });
+    }
+    if (captured && captured->isolated) {
+        native_tooltip_end_draw(*captured);
+        return;
     }
     try {
         if (!captured || !gps || !gps->screen || gps->dimx != captured->dimx ||
@@ -2855,6 +2862,7 @@ static bool uninstall_native_caption_hooks() {
     native_legacy_tooltip_state() = {};
     if (!g_native_tooltip_container_hook.uninstall("Native tooltip document restore")) return false;
     g_native_tooltip_container_hook = {};
+    native_tooltip_release_layer();
     if (!g_native_multiline_arrange_hook.uninstall("Native multiline wrapped height restore")) return false;
     g_native_multiline_arrange_hook = {};
     if (!g_native_multiline_widget_hook.uninstall("Native complete multiline widget restore")) return false;

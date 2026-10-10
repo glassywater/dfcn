@@ -2562,16 +2562,30 @@ struct NativeTooltipWidgetFrame {
     std::vector<std::string> rows;
     std::string body_source;
     bool top_layer = false;
+    bool isolated = false;
+    const unsigned char *grid_identity = nullptr;
     std::shared_ptr<NativeTooltipPage> page;
     std::shared_ptr<NativeTooltipPage> document;
     std::vector<SDL_Rect> occlusions;
 };
+static bool native_tooltip_begin_draw(NativeTooltipWidgetFrame &frame);
+static void native_tooltip_end_draw(NativeTooltipWidgetFrame &frame);
+static void native_tooltip_begin_frame();
+static void native_tooltip_release_layer();
 static std::optional<NativeTooltipWidgetFrame> g_native_tooltip_widget_frame;
 static std::optional<NativeTooltipWidgetFrame> captured_native_tooltip_widget(const graphicst &gps) {
     if (NativeTooltipPageScope::active) return std::nullopt;
     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
     if (!g_native_tooltip_widget_frame || !gps.screen) return std::nullopt;
     const auto &frame = *g_native_tooltip_widget_frame;
+    // Private tooltip output has no underlying page to recover. Only its
+    // own translation pass can read this producer's rows and bounds.
+    if (frame.isolated) {
+        if (frame.grid_identity != gps.screen || frame.dimx != gps.dimx ||
+                frame.dimy != gps.dimy ||
+                frame.rows.size() != static_cast<size_t>(frame.bounds.h)) return std::nullopt;
+        return frame;
+    }
     // Present can repeat without another native UI draw. Retain the document
     // with that actual draw batch. Background ownership below is independent
     // of foreground glyphs and pictures which may cover the document.
@@ -3416,6 +3430,7 @@ public:
     void render(SDL_Renderer *renderer);
     void render_dfhack_layer(SDL_Renderer *renderer);
     void render_native_help_layer(SDL_Renderer *renderer);
+    void render_native_tooltip_layer(SDL_Renderer *renderer);
     void render_native_info_layer(SDL_Renderer *renderer);
     void render_native_stocks_layer(SDL_Renderer *renderer);
     void render_native_fortress_layer(SDL_Renderer *renderer, bool stocks);
@@ -15862,6 +15877,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_help_layers.inc"
 #include "native_info_layers.inc"
 #include "native_stocks_layers.inc"
+#include "native_tooltip_layers.inc"
 
 struct NativeKeybindingScope {
     SDL_Rect table{};
@@ -16370,6 +16386,7 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
 #include "native_info_layer_matching.inc"
 #include "native_stocks_layer_translation.inc"
 #include "native_info_layer_translation.inc"
+#include "native_tooltip_layer_translation.inc"
 
 static void native_dfhack_redraw_background(SDL_Renderer *renderer,
     const SDL_Rect &cells);
@@ -43136,6 +43153,8 @@ static void native_info_present_layer(SDL_Renderer *renderer,
     void (*draw_info)(SDL_Renderer *));
 static void native_stocks_present_layer(SDL_Renderer *renderer,
     void (*draw_stocks)(SDL_Renderer *));
+static void native_tooltip_present_layer(SDL_Renderer *renderer,
+    void (*draw_tooltips)(SDL_Renderer *));
 
 extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
     SlowBoundaryTiming boundary("present boundary");
@@ -43152,6 +43171,9 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
     });
     native_help_present_layers(renderer, [](SDL_Renderer *help_renderer) {
         g_overlay.render_native_help_layer(help_renderer);
+    });
+    native_tooltip_present_layer(renderer, [](SDL_Renderer *tooltip_renderer) {
+        g_overlay.render_native_tooltip_layer(tooltip_renderer);
     });
     boundary.checkpoint("overlay_render");
     native_dfhack_present_layer(renderer, [](SDL_Renderer *layer_renderer) {

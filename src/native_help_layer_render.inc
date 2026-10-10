@@ -81,6 +81,8 @@ static void native_help_draw(void *help) {
 static void native_help_begin_frame(void *renderer) {
     NativeInputCallbackScope callback;
     TranslationStateScope translation;
+    // Restore any unfinished inline card before swap_arrays touches gps.
+    native_tooltip_begin_frame();
     const auto original = reinterpret_cast<NativeHelpDrawFn>(g_native_help_frame_hook.original);
     if (original) callback.call_native([&] { original(renderer); });
     // swap_arrays precedes render_things in the game's native frame producer.
