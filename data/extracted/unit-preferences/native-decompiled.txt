@@ -377,3 +377,102 @@ WRAPPING/DRAW OWNERSHIP, reference coordinates
   Preferences does not require a new capture route or a different native source.
   The full source exists before native word wrapping or justification; any loss
   caused by reconstruction from rendered rows is downstream of this producer.
+
+ITEM/MATERIAL SUPPLIERS RE-EXTRACTED FROM BOTH CONFIGURED IMAGES
+  native-field-suppliers.tsv links every retained supplier to the actual CALL
+  operand in each edition. The suppliers are not assigned an edition delta by
+  spelling or by a different function's position: their individual call targets
+  come from the native item-name instruction stream.
+
+  plant-seed-name: reference a64cb0..a64cf5; classic a61de0..a61e25.
+    item-name SEEDS type 53 enters this helper for plant material types 419..618.
+    plant index < 0 or index >= plants.size() -> leave output unchanged;
+    valid plant -> copy its +d0 seed_plural string as one complete field.
+    Other material types use material STATE_NAME:SOLID, then a space and the
+    generic seed noun/suffix. No split of a multiword RAW seed name occurs.
+
+  plant-growth-name: reference a64d00..a64d79; classic a61e30..a61ea9.
+    item-name PLANT_GROWTH type 56 enters for plant material types 419..618.
+    plant index < 0/outside vector or growth subtype < 0/outside plant+658..660
+    growth vector -> leave output unchanged.
+    count!=1 (Preferences passes a plural count) -> copy growth+40 NAME:PLURAL;
+    count==1 -> copy growth+20 NAME:SINGULAR.
+    The fallback generic plural is "leaves and fruit", one native item body.
+    Its internal "and" is not the producer's final-list conjunction.
+
+  material-record-lookup: reference 14add70..14ade9f;
+                          classic 14a8ce0..14a8e0f.
+    type 419..618 -> indexed plant+2a0 material vector;
+    type 19..218 or 219..418 -> creature/historical-figure material resolver;
+    type 0 -> inorganic material at inorganic_raw+1a8;
+    remaining type in 0..658 -> builtin-material array indexed by signed type;
+    type outside supported range -> null.
+    Invalid plant/inorganic/creature entries can return the native unknown
+    builtin material rather than null. The caller supplies the noun/fallback.
+    STATE_NAME and PREFIX therefore include all loaded RAW materials and
+    procedural materials; literal strings in the executable are not a finite
+    catalog of food names.
+  creature-material-record-lookup: reference 701e70..70207e;
+                                   classic 6ff890..6ffa9e.
+    material type 19..218 -> creature RAW index=material_index; material slot
+    index=material_type-19 in creature+1f0..1f8 material vector.
+    material type 219..418 -> material_index is a historical-figure ID; resolve
+    its stored race (historical_figure+2) using the world's ID/race cache or
+    sorted figure vector; use material slot index=material_type-219 in that
+    creature RAW's material vector. Invalid figure/race/material slot -> null.
+    The cache operation is a source lookup, not a text-production branch.
+  material-race-field: reference 701db0..701e6a;
+                       classic 6ff7d0..6ff88a.
+    type 19..218 -> return supplied material_index as creature RAW race index;
+    type 219..418 -> find historical figure by material_index, return figure+2
+    signed race; unsupported type/missing figure -> -1. This one logical body
+    has multiple contiguous unwind entries; extraction retains all its returns.
+
+  material-gem-name: reference 14d1790..14d1911;
+                     classic 14cc700..14cc881.
+    valid material can supply gem_name+20, gem_plural+40, or stone_name+60;
+    absent gem name falls back to material-state-name SOLID. The plural gem
+    marker rules include a native appended 's', retained in the complete body.
+  material-stone-name: reference 14d16f0..14d1781;
+                       classic 14cc660..14cc6f1.
+    use material+60 stone name when nonempty; otherwise SOLID state formatter.
+  shaped-gem-name: reference 14e1ec0..14e2a28;
+                  classic 14dce30..14dd998.
+    every descriptor_shape flag/count/material path is retained, including
+    native glass prefixes and dynamic descriptor shape+50/+70 names and
+    shape+90 adjective vector. Preferences item calls have no concrete item
+    object from which to obtain a physical item's shape; these are shared item
+    supplier options, not additional Preferences paragraph families.
+  creature-body-name: reference 144ea0..144f7b;
+                      classic 144e30..144f0b.
+    complete creature/caste validity branches and 35 caste-field selectors;
+    selects a complete 0x20-byte string field before optional first-byte ASCII
+    capitalization. This is eligible in the fallback item-name path.
+
+  Food DRINK type 69 supplies material STATE_NAME:LIQUID (state=1).
+  Food CHEESE type 71 supplies material STATE_NAME:SOLID (state=0).
+  Food POWDER_MISC type 70 supplies material STATE_NAME:POWDER (state=3).
+  LIQUID_MISC type 73 supplies LIQUID with optional native reagent descriptors,
+  or creature paste under the shared item's qualifying material branch.
+  These state names are complete source fields. The screenshot's "millet beer",
+  "hempseed oil", "rice flour", and "one-humped camel cheese" do not establish
+  a finite suffix grammar; translation must also accept other whole RAW names.
+  MEAT/FISH directly select creature RAW NAME:SINGULAR, which can be generated
+  or supplied by mods. "fortresses Catastrophe" cannot be classified from its
+  spelling alone: no producer literal identifies the screenshot's stored RAW
+  record. Source-aware translation must preserve this as one supplied field.
+
+PERSONALITY DRAW SOURCE RELAY, CURRENT WINDOWS IMAGE EVIDENCE
+  reference-personality-draw.asm: 17f2a0 loads sheet from [caller RSP+b260],
+    then 17f2a8 adds 1aa8 to select this page's own text-box vector;
+    17f496/17f49e load native row colors/text; 17f4ad calls ad9790.
+  classic-personality-draw.asm: 17f230 loads the same caller stack slot,
+    17f238 selects the same sheet field; 17f43d calls ad67d0.
+  The complete instruction bytes at those sheet/field reads in both images are
+    48 8b 84 24 60 b2 00 00 48 05 a8 1a 00 00.
+  The existing edition range 14d5f0..19e16c maps to classic 14d580, including
+  these sites. CALL pushes its return address: a relay at the draw callee entry
+  reads the owning sheet at [RSP+b268] without changing graphics/text/colors.
+  This evidence applies to the two configured Windows PE images. No current
+  ELF executable is configured in this Windows workspace, so it does not
+  establish a Linux draw call's sheet register or frame slot.

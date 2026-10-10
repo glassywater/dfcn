@@ -1,0 +1,20 @@
+# Complete source fields from the decompiled Preferences producer.
+# This namespace is used only for preferences; authored names and generated
+# creature/title combinations belong to their existing typed resolvers.
+# Resolve the noun/adjective conflicts in upstream STATE_NAME translations.
+ash glaze	灰釉
+tin glaze	锡釉
+quicklime	生石灰
+milk of lime	石灰乳
+ivory	象牙
+wool	羊毛
+unknown material	未知材料
+# The installed extinct-creature RAW contains these dairy states, while
+# its gettext entries are empty. Reuse the existing miohippus species name.
+frozen miohippus's milk	结冻的中新马奶
+miohippus's milk	中新马奶
+boiling miohippus's milk	沸腾的中新马奶
+miohippus cheese	中新马奶酪
+miohippus cheese powder	中新马奶酪粉
+melted miohippus cheese	熔融的中新马奶酪
+boiling miohippus cheese	沸腾的中新马奶酪

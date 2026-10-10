@@ -14321,7 +14321,16 @@ std::optional<std::string> Overlay::translate_character_preference_term(
             -> std::optional<std::string> {
         const std::string source = trim(std::string(raw));
         if (source.empty()) return std::nullopt;
+        if (const auto found = preference_terms.find(source);
+            found != preference_terms.end()) return std::string(found->second);
         if (const auto exact = exact_literal_translation(source)) return exact;
+        // The producer copies whole RAW names, not ordinary UI words. Meat
+        // and fish use a creature NAME, while the other food selectors use
+        // the shared item writer and its complete material STATE_NAME.
+        // This includes generated species such as <sphere> <creature-kind>.
+        if (const auto creature = translate_creature_descriptor(source, true)) return creature;
+        if (const auto material = translate_material_name(source)) return material;
+        if (const auto item = translate_item_description_term(source)) return item;
         if (const auto composed = translate_compositional(source)) return composed;
         return translate_procedural_fragment(source);
     };
@@ -14364,6 +14373,13 @@ std::optional<std::string> Overlay::translate_character_preference_term(
         else if (title.starts_with("An ")) title.erase(0, 3);
         title = trim(std::move(title));
         if (title.empty()) return std::nullopt;
+        // OfX is an independent native name group. With no earlier group
+        // the formatter starts with "Of ", rather than an internal " of ".
+        if (title.starts_with("Of ")) {
+            if (const auto part = translate_cultural_title(
+                    std::string_view(title).substr(3))) return "关于" + *part;
+            return std::nullopt;
+        }
         if (contains_cjk_utf8(title) && std::none_of(title.begin(), title.end(),
                 [](unsigned char ch) { return (ch >= 'A' && ch <= 'Z') ||
                     (ch >= 'a' && ch <= 'z'); })) return native_text_to_utf8(title);
@@ -14666,13 +14682,11 @@ Overlay::translate_character_preference_paragraph(
         normalized.push_back(static_cast<char>(ch));
     }
     paragraph = normalized;
-    const std::string_view first_sentence = paragraph.substr(0,
-        character_preference_boundary(paragraph, "."));
-    if (!character_preference_likes_body(first_sentence) &&
-        !first_sentence.starts_with("When possible, ") &&
-        !first_sentence.starts_with("She absolutely detests ") &&
-        !first_sentence.starts_with("He absolutely detests ") &&
-        !first_sentence.starts_with("It absolutely detests ")) {
+    if (!character_preference_likes_body(paragraph) &&
+        !paragraph.starts_with("When possible, ") &&
+        !paragraph.starts_with("She absolutely detests ") &&
+        !paragraph.starts_with("He absolutely detests ") &&
+        !paragraph.starts_with("It absolutely detests ")) {
         return std::nullopt;
     }
 
@@ -14781,14 +14795,17 @@ Overlay::translate_character_preference_paragraph(
             if (item == "for their") return "未命名对象";
             if (item.ends_with(" for their"))
                 return translate_term(item.substr(0, item.size() - 10));
+            if (item.starts_with("for their ")) {
+                reason_at = 0;
+                reason_size = std::string_view("for their ").size();
+            }
             for (std::string_view marker : markers) {
                 const size_t at = character_preference_boundary(item, marker);
                 if (at == std::string_view::npos) continue;
-                // A candidate containing two reason clauses is not one item.
-                if (reason_at != std::string_view::npos ||
-                    character_preference_boundary(item, marker, at + marker.size()) !=
-                        std::string_view::npos)
-                    return std::nullopt;
+                // The selected PREFSTRING is a whole RAW field, and can
+                // itself contain the same words. Its complete dictionary
+                // entry, rather than repeated marker text, proves the field.
+                if (reason_at != std::string_view::npos && reason_at <= at) continue;
                 reason_at = at;
                 reason_size = marker.size();
             }
@@ -14810,7 +14827,9 @@ Overlay::translate_character_preference_paragraph(
                 }
             }
             if (!reason) return std::nullopt;
-            const auto creature_or_plant = translate_term(item.substr(0, reason_at));
+            const auto creature_or_plant = reason_at == 0
+                ? std::optional<std::string>("未命名对象")
+                : translate_term(item.substr(0, reason_at));
             if (!creature_or_plant) return std::nullopt;
             return *creature_or_plant + "（欣赏它们的" + *reason + "）";
         };
@@ -14830,7 +14849,7 @@ Overlay::translate_character_preference_paragraph(
             // One unknown material, creature reason or generated title must
             // not discard the independent food and dislike sentences (nor
             // may an unknown food discard an already translated likes list).
-            translated.main.push_back(cp437_to_utf8(sentence) + ".");
+            translated.main.push_back(native_text_to_utf8(sentence) + ".");
             ++translated.passthrough_sentence_count;
             if (translated.first_passthrough_sentence.empty())
                 translated.first_passthrough_sentence = sentence;
@@ -14842,14 +14861,34 @@ Overlay::translate_character_preference_paragraph(
     while (cursor < paragraph.size()) {
         while (cursor < paragraph.size() && paragraph[cursor] == ' ') ++cursor;
         if (cursor == paragraph.size()) break;
-        const size_t period = character_preference_boundary(paragraph, ".", cursor);
-        const size_t end = period == std::string_view::npos ? paragraph.size() : period;
+        // Native appends ".  " only between the three independently emitted
+        // groups. RAW names, reasons and titles can contain periods of their
+        // own. A following fixed group opening proves a sentence boundary;
+        // any other punctuation stays in the semantic field it belongs to.
+        size_t period = std::string_view::npos;
+        for (const std::string_view boundary : {
+                ". When possible, she prefers to consume ",
+                ". When possible, he prefers to consume ",
+                ". When possible, it prefers to consume ",
+                ". She absolutely detests ", ". He absolutely detests ",
+                ". It absolutely detests "}) {
+            const size_t at = character_preference_boundary(paragraph, boundary, cursor);
+            if (at != std::string_view::npos &&
+                (period == std::string_view::npos || at < period)) period = at;
+        }
+        const size_t end = period != std::string_view::npos ? period
+            : paragraph.ends_with('.') ? paragraph.size() - 1 : paragraph.size();
         const std::string_view sentence = paragraph.substr(cursor, end - cursor);
 
         std::optional<std::string> part;
-        if (const auto body = character_preference_likes_body(sentence)) {
-            if (const auto likes = translate_likes(*body))
-                part = std::string(translated_subject) + *likes + "。";
+        if (!sentence.starts_with("When possible, ") &&
+            !sentence.starts_with("She absolutely detests ") &&
+            !sentence.starts_with("He absolutely detests ") &&
+            !sentence.starts_with("It absolutely detests ")) {
+            if (const auto body = character_preference_likes_body(sentence)) {
+                if (const auto likes = translate_likes(*body))
+                    part = std::string(translated_subject) + *likes + "。";
+            }
         }
         static constexpr std::array<std::pair<std::string_view,
                                                std::string_view>, 3>

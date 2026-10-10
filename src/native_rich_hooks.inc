@@ -1,7 +1,8 @@
 // Knowledge, health, personality and thoughts use the same capture dispatch, native
 // function ownership, installation order and teardown on every host.
 enum class NativeRichCallKind {
-    Wrap, Health, Personality, Thoughts, OverviewThoughts, Draw, ThoughtsDraw, OverviewThoughtsDraw
+    Wrap, Health, Personality, Thoughts, OverviewThoughts, Draw, PersonalityDraw,
+    ThoughtsDraw, OverviewThoughtsDraw
 };
 struct NativeRichCallSite {
     uintptr_t address, target;
@@ -72,6 +73,8 @@ static const void *native_rich_callback(NativeRichCallKind kind) {
         return reinterpret_cast<const void *>(&dfcn_capture_native_overview_thoughts_wrap);
     case NativeRichCallKind::Draw:
         return reinterpret_cast<const void *>(&dfcn_capture_native_knowledge_draw);
+    case NativeRichCallKind::PersonalityDraw:
+        return reinterpret_cast<const void *>(&dfcn_capture_native_personality_draw);
     case NativeRichCallKind::ThoughtsDraw:
         return reinterpret_cast<const void *>(&dfcn_capture_native_thoughts_draw);
     case NativeRichCallKind::OverviewThoughtsDraw:

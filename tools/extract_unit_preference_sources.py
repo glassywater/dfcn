@@ -22,6 +22,43 @@ OBJDUMP = "C:/Users/WIN11/AppData/Local/Programs/dfcn-toolchains/w64devkit-2.9.1
 SEEDS = ("When possible, ", " prefers to consume ", " absolutely detests ", " likes ",
          " for their ", " for its ", " (admiring their ")
 
+# Actual call operands within the retained shared item-name body.  Resolve each
+# target independently in each configured edition; only the producer-relative
+# site is shared.  These are text suppliers, not game execution or checks.
+ITEM_SUPPLIERS = {
+    0xA82FCE: "material-gem-name",
+    0xA83197: "material-stone-name",
+    0xA8348A: "shaped-gem-name",
+    0xA83630: "material-record-lookup",
+    0xA86CAC: "creature-body-name",
+    0xA86D5A: "plant-seed-name",
+    0xA86E36: "plant-growth-name",
+    0xA874B3: "material-race-field",
+}
+
+
+def dump_supplier(image, start, role, edition, owners, literals, calls, branches):
+    stored_end = image.functions.get(start)
+    if role == "material-race-field":
+        # This one logical leaf has three contiguous unwind records. The final
+        # return is at +b9; retain all validity/lookup paths, excluding padding.
+        image.functions[start] = start + 0xBA
+    elif stored_end is None:
+        leaf = list(image.instructions(start, start + 256))
+        end = next(address + 1 for address, instruction in leaf if instruction.startswith("ret"))
+        image.functions[start] = end
+    end = image.functions[start]
+    assembly = dump(image, start, role, edition, literals, calls, branches)
+    owners.append((edition, image.identity, str(image.path), role,
+                   hex(start-image.base), hex(end-image.base)))
+    (DEST / f"{edition}-{role}.asm").write_text(assembly, encoding="utf-8")
+    print(edition, role, f"{start-image.base:#x}..{end-image.base:#x}", flush=True)
+    if stored_end is None:
+        del image.functions[start]
+    else:
+        image.functions[start] = stored_end
+    return list(image.instructions(start, end))
+
 
 def occurrences(raw, needle):
     at = 0
@@ -95,7 +132,7 @@ def caller_operands(image, target, edition):
 def main():
     DEST.mkdir(parents=True, exist_ok=True)
     config = json.loads((ROOT / "data/runtime/native-pe-images.json").read_text(encoding="utf-8"))
-    literals, calls, branches, owners, switches, scoped, callers = [], [], [], [], [], [], []
+    literals, calls, branches, owners, switches, scoped, callers, suppliers = [], [], [], [], [], [], [], []
     for edition in ("reference", "classic"):
         image = CaptionImage(Path(config[edition]), OBJDUMP)
         roots = source_functions(image)
@@ -151,6 +188,25 @@ def main():
                 owners.append((edition, image.identity, str(image.path), helper_role, hex(target-image.base), hex(helper_end-image.base)))
                 (DEST / f"{edition}-{helper_role}.asm").write_text(helper_asm, encoding="utf-8")
                 print(edition, helper_role, f"{target-image.base:#x}..{helper_end-image.base:#x}", flush=True)
+                if helper_role == "item-name":
+                    item_instructions = dict(image.instructions(target, helper_end))
+                    for source_site, supplier_role in ITEM_SUPPLIERS.items():
+                        site = image.base + source_site + item_delta
+                        operand = item_instructions[site]
+                        callee = int(re.fullmatch(r"call\s+0x([0-9a-f]+)", operand)[1], 16)
+                        suppliers.append((edition, helper_role, hex(target-image.base),
+                                          hex(site-image.base), supplier_role, hex(callee-image.base)))
+                        supplier_instructions = dump_supplier(image, callee, supplier_role,
+                            edition, owners, literals, calls, branches)
+                        if supplier_role == "material-record-lookup":
+                            lookup_site = callee + 0x118
+                            lookup_operand = dict(supplier_instructions)[lookup_site]
+                            lookup = int(re.fullmatch(r"call\s+0x([0-9a-f]+)", lookup_operand)[1], 16)
+                            suppliers.append((edition, supplier_role, hex(callee-image.base),
+                                hex(lookup_site-image.base), "creature-material-record-lookup",
+                                hex(lookup-image.base)))
+                            dump_supplier(image, lookup, "creature-material-record-lookup",
+                                edition, owners, literals, calls, branches)
                 if helper_role == "generated-art-form-name":
                     field_call = next(ins for address,ins in image.instructions(target,helper_end)
                                       if address == target+0x254)
@@ -196,6 +252,8 @@ def main():
     write_tsv("native-switches.tsv", ("edition", "selector", "table_rva", "value", "remap_index", "target_rva"), switches)
     write_tsv("native-literal-scopes.tsv", ("edition", "scope", "instruction_rva", "source"), scoped)
     write_tsv("native-producer-callers.tsv", ("edition", "caller_owner_rva", "call_rva", "callee_rva"), callers)
+    write_tsv("native-field-suppliers.tsv", ("edition", "caller_role", "caller_rva",
+              "call_rva", "supplier_role", "supplier_rva"), suppliers)
 
 
 if __name__ == "__main__":

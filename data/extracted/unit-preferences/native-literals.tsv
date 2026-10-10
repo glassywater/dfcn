@@ -419,6 +419,37 @@ reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87f2c	rip-relative	0x15e873
 reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa88046	rip-relative	0x15fcfe0	finite-text-operand-or-substring	item
 reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa88077	rip-relative	0x161bdcc	finite-text-operand-or-substring	 [
 reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa88097	rip-relative	0x15fd690	finite-text-operand-or-substring	]
+reference	PE:6a70a6d9:02711000	material-gem-name	0x14d1790	0x14d1808	rip-relative	0x167c5d0	finite-text-operand-or-substring	NP
+reference	PE:6a70a6d9:02711000	material-gem-name	0x14d1790	0x14d1852	rip-relative	0x167c5cc	finite-text-operand-or-substring	STP
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e1f64	rip-relative	0x16cead8	finite-text-operand-or-substring	green glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e1f84	rip-relative	0x16ceac8	finite-text-operand-or-substring	clear glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e1fa4	rip-relative	0x16ceab8	finite-text-operand-or-substring	crystal glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e206d	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e211d	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2138	rip-relative	0x16cead8	finite-text-operand-or-substring	green glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2158	rip-relative	0x16ceac8	finite-text-operand-or-substring	clear glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2178	rip-relative	0x16ceab8	finite-text-operand-or-substring	crystal glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2241	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e22bc	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e22d7	rip-relative	0x1789478	finite-text-operand-or-substring	green glass gems
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e22f9	rip-relative	0x1789490	finite-text-operand-or-substring	clear glass gems
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e231b	rip-relative	0x1789440	finite-text-operand-or-substring	crystal glass gems
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e23e8	rip-relative	0x16ce760	finite-text-operand-or-substring	gems
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2412	rip-relative	0x16cead8	finite-text-operand-or-substring	green glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2432	rip-relative	0x16ceac8	finite-text-operand-or-substring	clear glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2452	rip-relative	0x16ceab8	finite-text-operand-or-substring	crystal glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e251b	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e25d5	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e25f0	rip-relative	0x16cead8	finite-text-operand-or-substring	green glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2610	rip-relative	0x16ceac8	finite-text-operand-or-substring	clear glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2630	rip-relative	0x16ceab8	finite-text-operand-or-substring	crystal glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e26f9	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e27b3	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e27ce	rip-relative	0x16cead8	finite-text-operand-or-substring	green glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e27eb	rip-relative	0x16ceac8	finite-text-operand-or-substring	clear glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2808	rip-relative	0x16ceab8	finite-text-operand-or-substring	crystal glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2833	rip-relative	0x16158fc	finite-text-operand-or-substring	gem
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e29da	rip-relative	0x16ceab0	finite-text-operand-or-substring	 gem
 reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa948a3	rip-relative	0x15e873c	separator	 
 reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa9495e	rip-relative	0x15e873c	separator	 
 reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94a3b	rip-relative	0x15e873c	separator	 
@@ -856,6 +887,37 @@ classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84fac	rip-relative	0x15e3720	
 classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa850c6	rip-relative	0x15f7fb0	finite-text-operand-or-substring	item
 classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa850f7	rip-relative	0x1616f6c	finite-text-operand-or-substring	 [
 classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa85117	rip-relative	0x15f8664	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	material-gem-name	0x14cc700	0x14cc778	rip-relative	0x1677310	finite-text-operand-or-substring	NP
+classic	PE:6a70b91c:0270a000	material-gem-name	0x14cc700	0x14cc7c2	rip-relative	0x167730c	finite-text-operand-or-substring	STP
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dced4	rip-relative	0x16caec8	finite-text-operand-or-substring	green glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dcef4	rip-relative	0x16caeb8	finite-text-operand-or-substring	clear glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dcf14	rip-relative	0x16caea8	finite-text-operand-or-substring	crystal glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dcfdd	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd08d	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd0a8	rip-relative	0x16caec8	finite-text-operand-or-substring	green glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd0c8	rip-relative	0x16caeb8	finite-text-operand-or-substring	clear glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd0e8	rip-relative	0x16caea8	finite-text-operand-or-substring	crystal glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd1b1	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd22c	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd247	rip-relative	0x1784830	finite-text-operand-or-substring	green glass gems
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd269	rip-relative	0x1784700	finite-text-operand-or-substring	clear glass gems
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd28b	rip-relative	0x1784718	finite-text-operand-or-substring	crystal glass gems
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd358	rip-relative	0x16ca1b0	finite-text-operand-or-substring	gems
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd382	rip-relative	0x16caec8	finite-text-operand-or-substring	green glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd3a2	rip-relative	0x16caeb8	finite-text-operand-or-substring	clear glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd3c2	rip-relative	0x16caea8	finite-text-operand-or-substring	crystal glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd48b	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd545	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd560	rip-relative	0x16caec8	finite-text-operand-or-substring	green glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd580	rip-relative	0x16caeb8	finite-text-operand-or-substring	clear glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd5a0	rip-relative	0x16caea8	finite-text-operand-or-substring	crystal glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd669	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd723	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd73e	rip-relative	0x16caec8	finite-text-operand-or-substring	green glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd75b	rip-relative	0x16caeb8	finite-text-operand-or-substring	clear glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd778	rip-relative	0x16caea8	finite-text-operand-or-substring	crystal glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd7a3	rip-relative	0x16106fc	finite-text-operand-or-substring	gem
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd94a	rip-relative	0x16caea0	finite-text-operand-or-substring	 gem
 classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91923	rip-relative	0x15e3720	separator	 
 classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa919de	rip-relative	0x15e3720	separator	 
 classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91abb	rip-relative	0x15e3720	separator	 

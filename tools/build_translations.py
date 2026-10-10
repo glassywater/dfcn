@@ -685,7 +685,7 @@ def parse_preference_strings(path: Path, *, include_plants: bool = False) -> lis
 
 
 def write_preference_vocabulary(args: argparse.Namespace) -> None:
-    """Compile the reason/color vocabularies without polluting UI word senses.
+    """Compile native preference fields without polluting UI word senses.
 
     PREFSTRING is a complete noun phrase, not a list of words. In particular,
     commas/``and`` inside it belong to that phrase. Keep all plants, living
@@ -713,17 +713,73 @@ def write_preference_vocabulary(args: argparse.Namespace) -> None:
     if missing:
         raise ValueError("PREFSTRING needs a reviewed translation: " + ", ".join(missing))
 
+    # 0x480271 reads STATE_NAME, while the food selector's DRINK,
+    # LIQUID_MISC, POWDER_MISC and CHEESE calls insert complete RAW material
+    # names without a trailing item-category word. The general dictionary
+    # deliberately drops adjective/noun conflicts, so it cannot be the
+    # authoritative vocabulary for those fields (hempseed oil, rice flour,
+    # every millet beer and every creature cheese are affected). Import the
+    # complete translated RAW fields into the preference namespace instead.
+    # Keep names containing commas/conjunctions whole, just like PREFSTRING.
+    field_targets: dict[str, set[str]] = collections.defaultdict(set)
+    for block in re.split(r"\n\s*\n", args.creature_objects.read_text(encoding="utf-8-sig")):
+        context = parse_po_field(block, "msgctxt")
+        source_tag = re.fullmatch(r"\[([A-Z_]+):(.*)\]", parse_po_field(block, "msgid"))
+        target_tag = re.fullmatch(r"\[([A-Z_]+):(.*)\]", parse_po_field(block, "msgstr"))
+        if source_tag is None or target_tag is None or source_tag[1] != target_tag[1]:
+            continue
+        tag = source_tag[1]
+        sources, targets = source_tag[2].split(":"), target_tag[2].split(":")
+        if len(sources) != len(targets):
+            continue
+        if tag in {"STATE_NAME", "STATE_NAME_ADJ"}:
+            if len(sources) != 2 or sources[0] != targets[0]:
+                continue
+            pairs = zip(sources[1:], targets[1:])
+        elif context.startswith("PLANT:") and tag in {
+            "NAME", "NAME_PLURAL", "SEED", "GROWTH_NAME",
+        }:
+            pairs = zip(sources, targets)
+        elif context.startswith(("SHAPE:", "ITEM_")) and tag == "NAME":
+            pairs = zip(sources, targets)
+        else:
+            continue
+        for source, target in pairs:
+            source, target = normalize_source(source).strip(), target.strip()
+            if source and target and re.search(r"[\u3400-\u9fff]", target):
+                field_targets[source].add(target)
+
+    terms = {source: next(iter(targets))
+             for source, targets in field_targets.items() if len(targets) == 1}
+    # Preserve the established material, plant/seed/growth and item nouns.
+    # Adjective, prefix and suffix leaves are grammatical components; they
+    # must not override a whole source field with a different word sense.
+    scoped_leaves = (
+        ("materials/state.toml", {"", "shared::main", "dairy"}),
+        ("plants/name.toml", {"singular", "plural"}),
+        ("plants/seed.toml", {"singular", "plural"}),
+        ("plants/growth.toml", {"singular", "plural"}),
+    )
+    for relative, names in scoped_leaves:
+        document = tomllib.loads((args.rulesets / relative).read_text(encoding="utf-8"))
+        for ruleset in document.get("rulesets", []):
+            if ruleset.get("name", "") not in names:
+                continue
+            for source, target in ruleset.get("rules", {}).items():
+                if "{" not in source + target and re.search(r"[\u3400-\u9fff]", target):
+                    terms[normalize_source(source).strip()] = target
+
     # Color words overlap materials/creatures (amber, bronze, cardinal, ...).
     # Their prefixed form must use the color namespace, never a generic noun
     # followed by another 色 (which produced e.g. 黑色色).
-    terms: dict[str, str] = {}
     colors = tomllib.loads((args.rulesets / "color.toml").read_text(encoding="utf-8"))
+    color_count = 0
     for ruleset in colors.get("rulesets", []):
         if ruleset.get("name") == "name":
             for source, target in ruleset.get("rules", {}).items():
                 if "{" not in source + target:
                     terms["the color " + source] = target
-    color_count = len(terms)
+                    color_count += 1
     # Explicit fallback labels emitted by the installed game's preference
     # generator when the referenced food/item is no longer available.
     terms.update({
@@ -733,12 +789,14 @@ def write_preference_vocabulary(args: argparse.Namespace) -> None:
         "unknown leaves": "不明叶片", "unknown powder": "不明粉末",
         "unknown cheese": "不明奶酪", "unknown item": "不明物品",
     })
+    for entry in parse_local(ROOT / "data/runtime/preference-term-overrides.tsv"):
+        terms[entry.source] = entry.target
 
     output = args.preference_output
     output.parent.mkdir(parents=True, exist_ok=True)
     with atomic_dictionary_output(output) as stream:
         stream.write("// GENERATED by tools/build_translations.py.\n")
-        stream.write("// Sources: data/upstream/objects.zh-Hans.po, data/runtime/rulesets/zh-Hans/color.toml, data/runtime/preference-reason-overrides.tsv.\n")
+        stream.write("// Sources: data/upstream/objects.zh-Hans.po, data/runtime/rulesets/zh-Hans/{materials/state,plants/name,plants/seed,plants/growth,color}.toml, data/runtime/preference-{reason,term}-overrides.tsv.\n")
         stream.write("// Scoped preferences and shared description colors; see THIRD_PARTY_NOTICES.md.\n")
         for name, values in (("preference_reasons", reasons), ("preference_terms", terms)):
             stream.write("static const std::unordered_map<std::string_view, std::string_view> " + name + " = {\n")
@@ -749,7 +807,7 @@ def write_preference_vocabulary(args: argparse.Namespace) -> None:
                              json.dumps(target, ensure_ascii=False) + "},\n")
             stream.write("};\n")
     print(f"Generated {output}: {len(reasons)} reasons, {color_count} color phrases, "
-          f"{len(terms) - color_count} unavailable-item labels")
+          f"{len(terms) - color_count} RAW field/material/food/shape terms")
 
 
 def parse_shape_names(path: Path) -> list[Entry]:
