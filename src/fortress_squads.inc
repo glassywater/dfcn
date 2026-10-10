@@ -401,6 +401,36 @@ void Overlay::append_fortress_squad_rows(std::vector<std::string> &rows,
             if (field.start == x) return logical_field(field, y);
         return std::nullopt;
     };
+    const std::array draws{captured_native_drawn_text_rows(false),
+        captured_native_drawn_text_rows(true)};
+    const auto complete_routine = [&](const Field &field, std::string complete) {
+        // The label and routine value can be separate addst draws. Their
+        // visible combined row therefore differs from either clipping key.
+        // Cached native draws retain the full value after that key's epoch
+        // expires; bind it to the surviving bytes, layer and grid here.
+        for (const auto &layer : draws)
+            for (const auto &draw : layer) {
+                if (draw.y < field.top || draw.y > field.bottom ||
+                        draw.x < field.text.start || draw.x >= field.text.end ||
+                        draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                        draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen)) continue;
+                const size_t offset = static_cast<size_t>(draw.x - field.text.start);
+                const auto visible = std::string_view(field.text.text).substr(offset);
+                if (visible.empty() || !std::string_view(draw.source).starts_with(visible)) continue;
+                bool current = true;
+                for (size_t i = 0; current && i < visible.size(); ++i) {
+                    bool top = false;
+                    const auto *cell = cell_at(draw.x + static_cast<int>(i), draw.y, &top);
+                    current = cell && top == draw.top_layer &&
+                        (cell[0] ? cell[0] : ' ') == static_cast<unsigned char>(visible[i]);
+                }
+                if (!current) continue;
+                const auto &source = draw.complete_source.empty() ? draw.source : draw.complete_source;
+                const std::string candidate = field.text.text.substr(0, offset) + source;
+                if (candidate.size() > complete.size()) complete = candidate;
+            }
+        return complete;
+    };
     for (int y = 0; y < gps_->dimy; ++y) {
         for (const auto &routine : split_text_fields(context[y])) {
             if (!routine.text.starts_with("Routine:")) continue;
@@ -433,6 +463,7 @@ void Overlay::append_fortress_squad_rows(std::vector<std::string> &rows,
                         complete = capture.complete;
                         break;
                     }
+                if (row == 2) complete = complete_routine(logical, std::move(complete));
                 auto target = row == 0 ? translate_fortress_squad_name(
                     complete, field.start, logical.top)
                     : exact_literal_translation(complete);
