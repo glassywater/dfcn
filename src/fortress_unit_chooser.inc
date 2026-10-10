@@ -7,7 +7,88 @@ struct FortressUnitChooser {
     int header_y = -1, name_x = -1, search_y = -1;
     std::vector<SDL_Rect> native_records;
     int skill_x = -1;
+    bool trainer = false;
 };
+
+// The Pets/Livestock trainer picker has a prompt and portrait buttons, but
+// no sort band, search field or skills column. Its complete portrait strips
+// still own the same name/profession records as the other unit choosers.
+static std::optional<FortressUnitChooser> fortress_trainer_chooser(
+        const graphicst &gps, const std::vector<std::string> &rows) {
+    int tabs_y = -1;
+    for (int y = 0; y < gps.dimy; ++y) {
+        const auto &row = rows[y];
+        const auto resident = std::min(row.find("Residents"), row.find("Citizens"));
+        const auto pets = row.find("Pets/Livestock"), other = row.find("Other");
+        const auto dead = row.find("Dead/Missing");
+        if (resident < pets && pets < other && other < dead &&
+                dead != std::string::npos) { tabs_y = y; break; }
+    }
+    if (tabs_y < 0) return std::nullopt;
+    constexpr std::string_view prompt = "Select a trainer for ";
+    const NativePanelBorders borders(gps);
+    for (int y = tabs_y + 1; y < gps.dimy; ++y) {
+        const size_t at = rows[y].find(prompt);
+        if (at == std::string::npos || (at > 0 && ascii_word_byte(rows[y][at - 1]))) continue;
+        auto panel = native_panel_interior(borders, gps,
+            static_cast<int>(at), static_cast<int>(at + prompt.size()), y);
+        if (!panel) {
+            // This page can reach the viewport edge without a closed bottom
+            // border. The actual prompt writer's clip owns the visible page;
+            // every candidate still requires its complete portrait strip.
+            for (bool top_layer : {false, true}) {
+                for (const auto &draw : captured_native_drawn_text_rows(top_layer)) {
+                    if (draw.x != static_cast<int>(at) || draw.y != y ||
+                            !draw.source.starts_with(prompt) || !draw.draw_clip) continue;
+                    const auto &clip = *draw.draw_clip;
+                    const int left = std::max(clip.x, static_cast<int>(at));
+                    const int right = std::min(gps.dimx, clip.x + clip.w);
+                    const int top = std::max(0, clip.y);
+                    const int bottom = std::min(gps.dimy, clip.y + clip.h);
+                    if (left <= static_cast<int>(at) &&
+                            right >= static_cast<int>(at + prompt.size()) &&
+                            top <= y && bottom > y)
+                        panel = SDL_Rect{left, top, right - left, bottom - top};
+                    if (panel) break;
+                }
+                if (panel) break;
+            }
+        }
+        if (!panel) continue;
+        const int right = panel->x + panel->w, bottom = panel->y + panel->h;
+        std::vector<SDL_Rect> records;
+        for (int middle = y + 2; middle + 1 < bottom; ++middle)
+            for (int x = panel->x; x < right;) {
+                int next = x + 1;
+                const auto box = native_picture_caption_rect(gps, x, middle,
+                    false, &next, true);
+                if (box && box->x >= panel->x && box->x + box->w <= right &&
+                        box->y > y && box->y + box->h <= bottom) {
+                    bool portrait = false;
+                    for (int picture = panel->x; picture < box->x; ++picture) {
+                        const int end = native_picture_box_right(gps, picture, middle);
+                        if (end == box->x || end == box->x - 1) { portrait = true; break; }
+                    }
+                    if (portrait && std::none_of(records.begin(), records.end(),
+                            [&](const SDL_Rect &seen) {
+                                return seen.x == box->x && seen.y == box->y &&
+                                    seen.w == box->w && seen.h == box->h;
+                            })) records.push_back(*box);
+                }
+                x = std::max(x + 1, next);
+            }
+        if (records.empty()) continue;
+        std::sort(records.begin(), records.end(), [](const SDL_Rect &a, const SDL_Rect &b) {
+            return a.y < b.y;
+        });
+        const int name_x = std::min_element(records.begin(), records.end(),
+            [](const SDL_Rect &a, const SDL_Rect &b) { return a.x < b.x; })->x;
+        return FortressUnitChooser{*panel,
+            {panel->x, y + 1, panel->w, bottom - y - 1},
+            y, name_x, bottom, std::move(records), -1, true};
+    }
+    return std::nullopt;
+}
 
 static std::optional<FortressUnitChooser> fortress_unit_chooser(
         const graphicst &gps, const std::vector<std::string> &rows,
@@ -17,6 +98,8 @@ static std::optional<FortressUnitChooser> fortress_unit_chooser(
     // treats worker-toggle records as identities without skills, so it must
     // never consume the Labor source before that page's own reader runs.
     if (fortress_labor_band(rows)) return std::nullopt;
+    if (!closed_frame_only)
+        if (auto trainer = fortress_trainer_chooser(gps, rows)) return trainer;
     const auto settings = native_ui_settings();
     if (!settings) return std::nullopt;
     if (settings->classic && !closed_frame_only) {
@@ -181,8 +264,62 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
                 const auto ch = visible_char_at(x, y);
                 context[y][x] = ch ? static_cast<char>(ch) : ' ';
             }
-    const auto chooser = fortress_unit_chooser(*gps_, context);
+    auto chooser = fortress_unit_chooser(*gps_, context);
+    if (!chooser && !raw_layer) {
+        // The UI-message reader can already have claimed the trainer prompt.
+        // Recover page identity from the visible grid; each field below still
+        // has to own its surviving bytes in the supplied work buffer.
+        auto native_context = context;
+        for (int y = 0; y < gps_->dimy; ++y)
+            for (int x = 0; x < gps_->dimx; ++x) {
+                const auto ch = visible_char_at(x, y);
+                native_context[y][x] = ch ? static_cast<char>(ch) : ' ';
+            }
+        chooser = fortress_trainer_chooser(*gps_, native_context);
+        if (chooser) context = std::move(native_context);
+    }
     if (!chooser) return;
+    if (chooser->trainer) {
+        struct Choice { int x, y; std::string source, target; };
+        std::vector<Choice> choices;
+        int choice_left = gps_->dimx;
+        for (int y = chooser->header_y + 1; y < chooser->native_records.front().y; ++y)
+            for (const auto &field : split_text_fields(context[y])) {
+                if ((field.text != "Any trainer" && field.text != "Any unassigned trainer" &&
+                     field.text != "None") || field.start < chooser->panel.x ||
+                        field.end > chooser->panel.x + chooser->panel.w) continue;
+                const auto target = exact_literal_translation(field.text);
+                if (!target) continue;
+                choices.push_back({field.start, y, field.text, *target});
+                choice_left = std::min(choice_left, field.start);
+            }
+        for (const auto &choice : choices) {
+            if (only_y >= 0 && choice.y != only_y) continue;
+            const int length = static_cast<int>(choice.source.size());
+            const auto append = [&](int offset, int count, bool owner) {
+                Match match{choice.x + offset, choice.y, count, kFortressUnitChooserRule,
+                    owner ? choice.target : std::string{}, choice.source.substr(offset, count)};
+                match.layout_x = choice_left;
+                match.layout_length = chooser->panel.x + chooser->panel.w - choice_left;
+                match.layout_clip_right = chooser->panel.x + chooser->panel.w;
+                match.layout_left = true;
+                match.layout_font_pixels = unified_font_pixels();
+                match.layout_lock_font_pixels = true;
+                matches.push_back(std::move(match));
+                std::fill_n(rows[choice.y].begin() + choice.x + offset, count, ' ');
+            };
+            if (rows[choice.y].compare(choice.x, length, choice.source) == 0) {
+                append(0, length, true);
+            } else if (raw_layer) {
+                for (int offset = 0; offset < length;) {
+                    while (offset < length && rows[choice.y][choice.x + offset] != choice.source[offset]) ++offset;
+                    const int first = offset;
+                    while (offset < length && rows[choice.y][choice.x + offset] == choice.source[offset]) ++offset;
+                    if (offset > first) append(first, offset - first, false);
+                }
+            }
+        }
+    }
     struct Field {
         int x, y;
         std::string source, complete, target;
@@ -274,7 +411,7 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
                 x >= chooser->skill_x;
             // A rated-looking authored name at the identity cursor remains
             // a name; grammar only recovers a separate column to its right.
-            const bool skill_candidate = !identity && (native_skill ||
+            const bool skill_candidate = !chooser->trainer && !identity && (native_skill ||
                 (chooser->skill_x < 0 && x > record.box.x + 1));
             const auto skills = !skill_candidate ? std::nullopt
                 : rated_skills(normalize_utterance(complete));
@@ -347,8 +484,9 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
     }
     // Skills and worker controls are separate columns with a common identity
     // budget. Short English names must not change the left edge or font size.
-    if (skill_left == gps_->dimx && !worker_controls) return;
+    if (skill_left == gps_->dimx && !worker_controls && !chooser->trainer) return;
     int identity_right = skill_left - 1;
+    if (chooser->trainer) identity_right = gps_->dimx;
     if (worker_controls && skill_left == gps_->dimx) {
         identity_right = gps_->dimx;
         for (const auto &record : records)
@@ -565,11 +703,26 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
 void Overlay::layout_fortress_unit_chooser(SDL_Renderer *renderer) {
     if (!gps_ || !renderer || !face_ || gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0) return;
     std::map<std::array<int, 4>, std::vector<Match *>> records;
-    for (auto &match : prepared_matches_)
+    for (auto &match : prepared_matches_) {
+        if (match.rule == kFortressUnitChooserRule && !match.native_picture_caption_box &&
+                !match.target.empty() && !match.native_split_duplicate) {
+            // Trainer policy choices are text actions above the portrait
+            // list. Keep their common native left edge after generic layout.
+            match.layout_box_pixel_x = -1;
+            match.layout_box_pixel_width = 0;
+            match.layout_left = true;
+            match.layout_right = false;
+            match.layout_ellipsize = true;
+            match.layout_font_pixels = unified_font_pixels();
+            match.layout_lock_font_pixels = true;
+            match.layout_visual_height_pixels = 0;
+            match.layout_line_height_pixels = gps_->tile_pixel_y;
+        }
         if (match.rule == kFortressUnitChooserRule && match.native_picture_caption_box) {
             const auto &box = *match.native_picture_caption_box;
             records[{box.x, box.y, box.w, box.h}].push_back(&match);
         }
+    }
     const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
     const int origin_x = (gps_->screen_pixel_x - gps_->dimx * tile_w) / 2;
     const int origin_y = (gps_->screen_pixel_y - gps_->dimy * tile_h) / 2;

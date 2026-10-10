@@ -6358,6 +6358,8 @@ Fortress activity: Trained	受过训练	li
 Fortress activity: Trainer	驯兽师	li
 # Pets/Livestock: Any is the unrestricted trainer setting, not a person's name.
 Fortress activity: Trainer: Any	驯兽师：任意	li
+Any trainer	任意训练员	l
+Any unassigned trainer	任意未分配的训练员	l
 Fortress activity: Well-trained	训练良好	li
 Fortress activity: Skillfully trained	训练娴熟	li
 Fortress activity: Expertly trained	训练精湛	li
