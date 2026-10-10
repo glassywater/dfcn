@@ -6,6 +6,22 @@
 static NativeEntryHook g_native_dfhack_graphics_resize_entry;
 static NativeEntryHook g_native_dfhack_graphics_zoom_entry;
 static NativeEntryHook g_native_dfhack_graphics_release_entry;
+static NativeEntryHook g_native_dfhack_graphics_display_entry;
+
+static void native_dfhack_graphics_display(void *renderer) {
+    NativeInputCallbackScope callback;
+    const auto original = reinterpret_cast<void (*)(void *)>(
+        g_native_dfhack_graphics_display_entry.original);
+    if (!original) return;
+    // The producer can enter DFHack onUpdate again after sending complete.
+    // Protect the native reads before clear, viewport selection and tile
+    // lookup: the SDL copy hook runs after those reads and cannot prevent
+    // an empty private viewport from replacing the game's map for a frame.
+    TranslationStateScope translation;
+    std::unique_lock<std::recursive_mutex> lock(g_native_dfhack_layer_mutex);
+    NativeDfhackNativeLayerScope native;
+    callback.call_native([&] { original(renderer); });
+}
 
 struct NativeDfhackGraphicsOwnershipScope {
     TranslationStateScope translation;
@@ -65,20 +81,25 @@ static bool install_native_dfhack_graphics_ownership() {
     // 0xad9460 also runs separately for native zoom/reset commands. The
     // 2026-10-11 dump caught it freeing staging.output.lower[7]'s private
     // screentexpos array through the game's heap allocator.
-    const std::array<std::pair<NativeEntryHook *, uintptr_t>, 3> entries{{
+    const std::array<std::pair<NativeEntryHook *, uintptr_t>, 4> entries{{
         {&g_native_dfhack_graphics_resize_entry, native_pe_address(base, 0x8e4870)},
         {&g_native_dfhack_graphics_zoom_entry, native_pe_address(base, 0xad9460)},
         {&g_native_dfhack_graphics_release_entry, native_pe_address(base, 0x8e4690)},
+        // renderer::display begins after the producer-complete wait and
+        // covers clear, viewport/map-port painting and update_all.
+        {&g_native_dfhack_graphics_display_entry, native_pe_address(base, 0x8e3a10)},
     }};
-    const std::array<const void *, 3> wrappers{{
+    const std::array<const void *, 4> wrappers{{
         reinterpret_cast<const void *>(&native_dfhack_graphics_resize),
         reinterpret_cast<const void *>(&native_dfhack_graphics_zoom),
         reinterpret_cast<const void *>(&native_dfhack_graphics_release),
+        reinterpret_cast<const void *>(&native_dfhack_graphics_display),
     }};
-    const std::array<std::vector<unsigned char>, 3> prefixes{{
+    const std::array<std::vector<unsigned char>, 4> prefixes{{
         {0x48,0x89,0x5c,0x24,0x08},
         {0x48,0x89,0x5c,0x24,0x08},
         {0x40,0x53,0x48,0x83,0xec,0x20},
+        {0x41,0x55,0x48,0x83,0xec,0x40},
     }};
     for (size_t i = 0; i < entries.size(); ++i) {
         auto &[entry, address] = entries[i];
@@ -93,7 +114,8 @@ static bool install_native_dfhack_graphics_ownership() {
 static bool native_dfhack_graphics_ownership_active() {
     return g_native_dfhack_graphics_resize_entry.active() ||
         g_native_dfhack_graphics_zoom_entry.active() ||
-        g_native_dfhack_graphics_release_entry.active();
+        g_native_dfhack_graphics_release_entry.active() ||
+        g_native_dfhack_graphics_display_entry.active();
 }
 
 static void uninstall_native_dfhack_graphics_ownership() {
@@ -104,7 +126,8 @@ static void uninstall_native_dfhack_graphics_ownership() {
             !native_callbacks_idle()) return;
     constexpr const char *label = "Native graphics buffer ownership";
     for (auto *entry : {&g_native_dfhack_graphics_zoom_entry,
-            &g_native_dfhack_graphics_resize_entry, &g_native_dfhack_graphics_release_entry}) {
+            &g_native_dfhack_graphics_resize_entry, &g_native_dfhack_graphics_release_entry,
+            &g_native_dfhack_graphics_display_entry}) {
         if (entry->installed && !write_native_code_patches(
                 entry->patches, false, label, &entry->installed)) continue;
         if (native_callbacks_idle()) entry->uninstall(label);
