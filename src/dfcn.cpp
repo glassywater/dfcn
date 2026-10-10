@@ -2187,6 +2187,10 @@ static NativeTextGridOrigin native_text_grid_origin(
 
 #include "native_dfhack_artwork.inc"
 #include "native_dfhack_layers.inc"
+static thread_local const graphicst *g_native_help_write_graphics = nullptr;
+static bool native_private_ui_write_active(const graphicst *gps) noexcept {
+    return gps && (gps == g_native_help_write_graphics || native_dfhack_layer_write_active(gps));
+}
 #include "native_capture_mask.inc"
 
 struct NativeTooltipPage {
@@ -2649,6 +2653,7 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         uintptr_t native_caller = 0,
         std::optional<std::string> squad_alias_target = std::nullopt,
         std::optional<NativeTradeItemCaption> trade_item_caption = std::nullopt) {
+    if (native_private_ui_write_active(graphics)) return;
     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
     const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
     if (original_epoch && original_epoch != epoch) return;
@@ -3297,6 +3302,7 @@ public:
     void shutdown();
     void render(SDL_Renderer *renderer);
     void render_dfhack_layer(SDL_Renderer *renderer);
+    void render_native_help_layer(SDL_Renderer *renderer);
     void queue_dfhack_layer_translation();
     bool native_frame_submitted() const noexcept { return native_frame_submitted_; }
     void render_ime_popup(SDL_Renderer *renderer);
@@ -15582,6 +15588,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "dfhack_frame_geometry.inc"
 #include "dfhack_hotkeys_geometry.inc"
 #include "native_panel_layout.inc"
+#include "native_help_layers.inc"
 
 struct NativeKeybindingScope {
     SDL_Rect table{};
@@ -16082,6 +16089,8 @@ uint64_t Overlay::dfhack_layer_translation_key() const {
 }
 
 #include "dfhack_layer_translation.inc"
+static void native_help_paint_grid(SDL_Renderer *renderer, const std::vector<Match> &matches);
+#include "native_help_layer_translation.inc"
 
 static void native_dfhack_redraw_background(SDL_Renderer *renderer,
     const SDL_Rect &cells);
@@ -42671,6 +42680,8 @@ static void apply_pending_arena_translated_search();
 static void apply_pending_name_editor_search();
 static void native_dfhack_present_layer(SDL_Renderer *renderer,
     void (*draw_translation)(SDL_Renderer *));
+static void native_help_present_layers(SDL_Renderer *renderer,
+    void (*draw_help)(SDL_Renderer *));
 
 extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
     SlowBoundaryTiming boundary("present boundary");
@@ -42679,6 +42690,9 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
     g_overlay.replay_deferred_resolution_glyphs(renderer, g_real_copy);
     boundary.checkpoint("replay_glyphs");
     g_overlay.render(renderer);
+    native_help_present_layers(renderer, [](SDL_Renderer *help_renderer) {
+        g_overlay.render_native_help_layer(help_renderer);
+    });
     boundary.checkpoint("overlay_render");
     native_dfhack_present_layer(renderer, [](SDL_Renderer *layer_renderer) {
         g_overlay.render_dfhack_layer(layer_renderer);
