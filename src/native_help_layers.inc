@@ -7,7 +7,7 @@ struct NativeHelpForegroundScope {
     ~NativeHelpForegroundScope() { active = previous; NativeUiReadScope::invalidate_reads(); }
 };
 
-struct NativeHelpUiGrid {
+struct NativeUiLayerGrid {
     using Texture = NativeDfhackLayerTexture;
     struct Plane {
         std::vector<unsigned char> screen;
@@ -66,26 +66,26 @@ struct NativeHelpCollapsedTitle {
     std::string source;
 };
 
-struct NativeHelpLayerStorage {
-    NativeHelpUiGrid foreground;
+struct NativeUiLayerStorage {
+    NativeUiLayerGrid foreground;
     std::vector<SDL_Rect> frames;
     std::vector<NativeHelpCollapsedTitle> collapsed_titles;
     void *native_renderer = nullptr;
     SDL_Renderer *renderer = nullptr;
     bool ready = false;
 };
-static NativeHelpLayerStorage g_native_help_layer;
+static NativeUiLayerStorage g_native_help_layer;
 
 // Both inlined game stores and graphicst helpers use the game's static gps.
 // Redirect it before the component draws, then restore its complete output
 // and cursor state. Raster helpers also borrow the renderer's array slots.
-class NativeHelpGridBinding {
+class NativeUiGridBinding {
     graphicst *gps_;
     NativeDfhackOutputBinding previous_;
     void *renderer_;
     std::array<void *, 14> renderer_pointers_{};
 public:
-    NativeHelpGridBinding(graphicst *gps, const graphicst &view, void *renderer = nullptr)
+    NativeUiGridBinding(graphicst *gps, const graphicst &view, void *renderer = nullptr)
         : gps_(gps), previous_(NativeDfhackOutputBinding::capture(*gps)), renderer_(renderer) {
         const auto binding = NativeDfhackOutputBinding::capture(view);
         binding.apply(*gps_);
@@ -96,7 +96,7 @@ public:
             std::memcpy(fields, binding.pointers.data(), sizeof(renderer_pointers_));
         }
     }
-    ~NativeHelpGridBinding() {
+    ~NativeUiGridBinding() {
         if (renderer_)
             std::memcpy(static_cast<unsigned char *>(renderer_) + sizeof(void *),
                 renderer_pointers_.data(), sizeof(renderer_pointers_));

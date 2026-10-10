@@ -2188,6 +2188,9 @@ static NativeTextGridOrigin native_text_grid_origin(
 #include "native_dfhack_artwork.inc"
 #include "native_dfhack_layers.inc"
 static thread_local const graphicst *g_native_help_write_graphics = nullptr;
+static thread_local const graphicst *g_native_info_write_graphics = nullptr;
+static thread_local bool g_native_info_foreground = false;
+static bool native_info_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_private_ui_write_active(const graphicst *gps) noexcept {
     return gps && (gps == g_native_help_write_graphics || native_dfhack_layer_write_active(gps));
 }
@@ -3303,6 +3306,7 @@ public:
     void render(SDL_Renderer *renderer);
     void render_dfhack_layer(SDL_Renderer *renderer);
     void render_native_help_layer(SDL_Renderer *renderer);
+    void render_native_info_layer(SDL_Renderer *renderer);
     void queue_dfhack_layer_translation();
     bool native_frame_submitted() const noexcept { return native_frame_submitted_; }
     void render_ime_popup(SDL_Renderer *renderer);
@@ -3383,6 +3387,11 @@ public:
         bool personality = false, bool health = false, bool thoughts = false) const;
 
 private:
+    std::vector<Match> find_native_info_matches() const;
+    std::vector<Match> find_native_info_background_matches(int only_y,
+        const unsigned char *screen_override) const;
+    void append_native_info_grid_matches(const std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, bool fragments) const;
     std::optional<std::string> translate_color_picker_caption(
         std::string_view source) const;
     std::optional<std::string> translate_journal_title(std::string_view source,
@@ -7183,6 +7192,7 @@ bool Overlay::apply_requested_reload() {
 const unsigned char *Overlay::cell_at(int x, int y, bool *top) const {
     *top = false;
     if (!gps_ || x < 0 || y < 0 || x >= gps_->dimx || y >= gps_->dimy) return nullptr;
+    if (native_info_background_cell_hidden(gps_, x, y)) return nullptr;
     const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
     auto *cached = cell_read_cache_
         ? &cell_read_cache_->at(gps_, composite_read_epoch_, tile) : nullptr;
@@ -7205,6 +7215,7 @@ static bool graphically_occluded(uint8_t state, uint64_t cell_epoch,
 
 unsigned char Overlay::visible_char_at(int x, int y) const {
     if (!gps_ || x < 0 || y < 0 || x >= gps_->dimx || y >= gps_->dimy) return 0;
+    if (native_info_background_cell_hidden(gps_, x, y)) return 0;
     const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
     auto *cached = cell_read_cache_
         ? &cell_read_cache_->at(gps_, composite_read_epoch_, tile) : nullptr;
@@ -7221,7 +7232,8 @@ unsigned char Overlay::visible_char_at(int x, int y) const {
     // an SDL texture (the resolution menu does exactly this). If
     // the later graphical copy wins the cell, the hidden glyph must not be
     // returned merely because screen_top still contains its byte.
-    if (!NativeDfhackForegroundScope::active && tile < cell_composite_state_.size() &&
+    if (!NativeDfhackForegroundScope::active && !g_native_info_foreground &&
+        tile < cell_composite_state_.size() &&
         tile < cell_composite_epoch_.size() &&
         graphically_occluded(cell_composite_state_[tile],
                              cell_composite_epoch_[tile],
@@ -15589,6 +15601,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "dfhack_hotkeys_geometry.inc"
 #include "native_panel_layout.inc"
 #include "native_help_layers.inc"
+#include "native_info_layers.inc"
 
 struct NativeKeybindingScope {
     SDL_Rect table{};
@@ -16090,7 +16103,11 @@ uint64_t Overlay::dfhack_layer_translation_key() const {
 
 #include "dfhack_layer_translation.inc"
 static void native_help_paint_grid(SDL_Renderer *renderer, const std::vector<Match> &matches);
+static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *renderer,
+    const std::vector<Match> &matches);
 #include "native_help_layer_translation.inc"
+#include "native_info_layer_matching.inc"
+#include "native_info_layer_translation.inc"
 
 static void native_dfhack_redraw_background(SDL_Renderer *renderer,
     const SDL_Rect &cells);
@@ -16166,6 +16183,11 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         only_y >= gps_->dimy) {
         return result;
     }
+    // This native component already owns the management pages. The main
+    // grid contains only the remaining HUD/background; do not rediscover
+    // those pages through the full-screen semantic pipeline a second time.
+    if (native_info_background_view(gps_))
+        return find_native_info_background_matches(only_y, screen_override);
     NativePanelReadScope panel_reads(gps_);
     refresh_dfhack_raw_creature_labels();
     if (!NativeUiReadScope::active) {
@@ -16402,6 +16424,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         if (row_y < 0 || row_y >= gps_->dimy) return rendered;
         for (int x = 0; x < gps_->dimx; ++x) {
             const size_t tile = static_cast<size_t>(x) * gps_->dimy + row_y;
+            if (native_info_background_cell_hidden(gps_, x, row_y)) continue;
             const unsigned char ch = screen_override
                                          ? screen_override[tile * 8]
                                          : visible_char_at(x, row_y);
@@ -25042,18 +25065,23 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
 
     // Cross-page ownership and mod-list geometry are shared by all glyph
     // rows in this native SDL draw.
+    const bool isolated_management_background = native_info_background_view(gps_);
     if (immediate_context_epoch_ != draw_epoch_ ||
             immediate_context_screen_ != gps_->screen ||
-            !character_overview_context_current() || !native_knowledge_frame_matches_) {
+            !character_overview_context_current() ||
+            (!isolated_management_background && !native_knowledge_frame_matches_)) {
         refresh_character_overview_context();
-        if (!native_knowledge_frame_matches_)
-            (void)native_knowledge_matches(-1, embark_pause_menu_matches());
-        const auto layout = native_mod_list_layout(*gps_, [&](int x, int row) {
-            bool top = false;
-            const auto *cell = cell_at(x, row, &top);
-            return cell && cell[0] ? cell[0] : static_cast<unsigned char>(' ');
-        });
-        immediate_mod_list_ = layout ? std::make_shared<NativeModListLayout>(*layout) : nullptr;
+        immediate_mod_list_.reset();
+        if (!isolated_management_background) {
+            if (!native_knowledge_frame_matches_)
+                (void)native_knowledge_matches(-1, embark_pause_menu_matches());
+            const auto layout = native_mod_list_layout(*gps_, [&](int x, int row) {
+                bool top = false;
+                const auto *cell = cell_at(x, row, &top);
+                return cell && cell[0] ? cell[0] : static_cast<unsigned char>(' ');
+            });
+            if (layout) immediate_mod_list_ = std::make_shared<NativeModListLayout>(*layout);
+        }
         immediate_context_screen_ = gps_->screen;
         immediate_context_epoch_ = draw_epoch_;
     }
@@ -32414,570 +32442,575 @@ void Overlay::prepare_frame() {
     if (config_.enabled && face_ && !rules_.empty() && gps_ && gps_->screen &&
         gps_->dimx > 0 && gps_->dimx <= 1000 && gps_->dimy > 0 && gps_->dimy <= 1000) {
         prepared_matches_ = find_matches();
-        recover_adventure_skill_rows();
+        const size_t cells = static_cast<size_t>(gps_->dimx) * gps_->dimy;
+        // An isolated management panel owns its page recovery. The main
+        // layer contains only the exposed HUD and must not recover covered
+        // documents or scan both raw planes for unrelated page signatures.
+        if (!native_info_background_view(gps_)) {
+            recover_adventure_skill_rows();
 
-        // Keep the economy panel drawable when its complete native fields
-        // survive on a raw layer but not on the last graphical composite.
-        const bool economy_heading_visible = std::any_of(prepared_matches_.begin(),
-            prepared_matches_.end(), [](const Match &match) {
-                return match.source == "Created Wealth:";
-            });
-        const bool economy_complete = std::any_of(prepared_matches_.begin(),
-            prepared_matches_.end(), [](const Match &match) {
-                return match.rule == kFortressEconomyRule && !match.target.empty();
-            });
-        if (economy_heading_visible && !economy_complete) {
-            for (const auto *raw : {gps_->screen, gps_->top_in_use ? gps_->screen_top : nullptr}) {
-                if (!raw) continue;
-                std::vector<Match> recovered = find_matches(-1, raw);
-                if (std::none_of(recovered.begin(), recovered.end(), [](const Match &match) {
-                        return match.rule == kFortressEconomyRule && !match.target.empty();
-                    })) continue;
-                std::erase_if(recovered, [](const Match &match) {
-                    return match.rule != kFortressEconomyRule;
+            // Keep the economy panel drawable when its complete native fields
+            // survive on a raw layer but not on the last graphical composite.
+            const bool economy_heading_visible = std::any_of(prepared_matches_.begin(),
+                prepared_matches_.end(), [](const Match &match) {
+                    return match.source == "Created Wealth:";
                 });
-                for (Match &match : recovered) {
-                    const auto *cell = raw + (static_cast<size_t>(match.x) * gps_->dimy + match.y) * 8;
-                    match.layout_foreground_rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
-                }
-                std::erase_if(prepared_matches_, [&](const Match &match) {
-                    if (match.rule == kFortressEconomyRule) return true;
-                    return std::any_of(recovered.begin(), recovered.end(), [&](const Match &span) {
-                        return span.y == match.y && span.x < match.x + match.length &&
-                            match.x < span.x + span.length;
+            const bool economy_complete = std::any_of(prepared_matches_.begin(),
+                prepared_matches_.end(), [](const Match &match) {
+                    return match.rule == kFortressEconomyRule && !match.target.empty();
+                });
+            if (economy_heading_visible && !economy_complete) {
+                for (const auto *raw : {gps_->screen, gps_->top_in_use ? gps_->screen_top : nullptr}) {
+                    if (!raw) continue;
+                    std::vector<Match> recovered = find_matches(-1, raw);
+                    if (std::none_of(recovered.begin(), recovered.end(), [](const Match &match) {
+                            return match.rule == kFortressEconomyRule && !match.target.empty();
+                        })) continue;
+                    std::erase_if(recovered, [](const Match &match) {
+                        return match.rule != kFortressEconomyRule;
                     });
-                });
-                prepared_matches_.insert(prepared_matches_.end(),
-                    std::make_move_iterator(recovered.begin()), std::make_move_iterator(recovered.end()));
-                break;
+                    for (Match &match : recovered) {
+                        const auto *cell = raw + (static_cast<size_t>(match.x) * gps_->dimy + match.y) * 8;
+                        match.layout_foreground_rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+                    }
+                    std::erase_if(prepared_matches_, [&](const Match &match) {
+                        if (match.rule == kFortressEconomyRule) return true;
+                        return std::any_of(recovered.begin(), recovered.end(), [&](const Match &span) {
+                            return span.y == match.y && span.x < match.x + match.length &&
+                                match.x < span.x + span.length;
+                        });
+                    });
+                    prepared_matches_.insert(prepared_matches_.end(),
+                        std::make_move_iterator(recovered.begin()), std::make_move_iterator(recovered.end()));
+                    break;
+                }
             }
-        }
 
-        // As with other graphical documents, the last composite can expose
-        // only some of an arrival modal's runs. Promote a complete raw-layer
-        // document rather than suppressing it without drawing its translation.
-        const bool arrival_heading_visible = std::any_of(prepared_matches_.begin(),
-            prepared_matches_.end(), [](const Match &match) {
-                return match.source.starts_with("A Dwarven Outpost");
-            });
-        const bool arrival_complete = std::any_of(prepared_matches_.begin(),
-            prepared_matches_.end(), [](const Match &match) {
-                return match.rule == kEmbarkIntroductionRule && !match.target.empty();
-            });
-        if (arrival_heading_visible && !arrival_complete) {
-            for (const auto *raw : {gps_->screen, gps_->top_in_use ? gps_->screen_top : nullptr}) {
-                if (!raw) continue;
-                std::vector<Match> recovered = find_matches(-1, raw);
-                if (std::none_of(recovered.begin(), recovered.end(), [](const Match &match) {
-                        return match.rule == kEmbarkIntroductionRule && !match.target.empty();
-                    })) continue;
-                std::erase_if(recovered, [](const Match &match) {
-                    return match.rule != kEmbarkIntroductionRule;
+            // As with other graphical documents, the last composite can expose
+            // only some of an arrival modal's runs. Promote a complete raw-layer
+            // document rather than suppressing it without drawing its translation.
+            const bool arrival_heading_visible = std::any_of(prepared_matches_.begin(),
+                prepared_matches_.end(), [](const Match &match) {
+                    return match.source.starts_with("A Dwarven Outpost");
                 });
+            const bool arrival_complete = std::any_of(prepared_matches_.begin(),
+                prepared_matches_.end(), [](const Match &match) {
+                    return match.rule == kEmbarkIntroductionRule && !match.target.empty();
+                });
+            if (arrival_heading_visible && !arrival_complete) {
+                for (const auto *raw : {gps_->screen, gps_->top_in_use ? gps_->screen_top : nullptr}) {
+                    if (!raw) continue;
+                    std::vector<Match> recovered = find_matches(-1, raw);
+                    if (std::none_of(recovered.begin(), recovered.end(), [](const Match &match) {
+                            return match.rule == kEmbarkIntroductionRule && !match.target.empty();
+                        })) continue;
+                    std::erase_if(recovered, [](const Match &match) {
+                        return match.rule != kEmbarkIntroductionRule;
+                    });
+                    std::erase_if(prepared_matches_, [&](const Match &match) {
+                        if (match.rule == kEmbarkIntroductionRule) return true;
+                        return std::any_of(recovered.begin(), recovered.end(), [&](const Match &span) {
+                            return span.length > 0 && span.y == match.y &&
+                                span.x < match.x + match.length && match.x < span.x + span.length;
+                        });
+                    });
+                    prepared_matches_.insert(prepared_matches_.end(),
+                        std::make_move_iterator(recovered.begin()), std::make_move_iterator(recovered.end()));
+                    break;
+                }
+            }
+
+            // Creation description ownership includes both source suppression and
+            // translated lines. Recover the whole group from an intact widget
+            // layer when the final composite retained only some of its words.
+            auto creation_description_source_bytes = [](const std::vector<Match> &matches) {
+                size_t bytes = 0;
+                for (const auto &match : matches) {
+                    if (match.rule == kAdventureCreationDescriptionRule && match.target.empty() &&
+                        match.layout_x < 0)
+                        bytes += static_cast<size_t>(std::count_if(match.source.begin(),
+                            match.source.end(), [](unsigned char ch) { return !std::isspace(ch); }));
+                }
+                return bytes;
+            };
+            size_t creation_description_bytes = creation_description_source_bytes(prepared_matches_);
+            const bool creation_description_action = std::any_of(prepared_matches_.begin(),
+                prepared_matches_.end(), [](const Match &match) {
+                    return match.source == "Accept appearance" || match.source == "Accept personality";
+                });
+            for (const auto *raw : {gps_->top_in_use ? gps_->screen_top : nullptr, gps_->screen}) {
+                if (!raw) continue;
+                bool action = creation_description_action;
+                for (int y = 0; y < gps_->dimy && !action; ++y) {
+                    std::string row(static_cast<size_t>(gps_->dimx), ' ');
+                    for (int x = 0; x < gps_->dimx; ++x)
+                        row[static_cast<size_t>(x)] = static_cast<char>(raw[
+                            (static_cast<size_t>(x) * gps_->dimy + y) * 8]);
+                    action = row.find("Accept appearance") != std::string::npos ||
+                        row.find("Accept personality") != std::string::npos;
+                }
+                if (!action) continue;
+                std::vector<Match> recovered = find_matches(-1, raw);
+                std::erase_if(recovered, [](const Match &match) {
+                    return match.rule != kAdventureCreationDescriptionRule;
+                });
+                const size_t bytes = creation_description_source_bytes(recovered);
+                if (bytes <= creation_description_bytes || std::none_of(recovered.begin(), recovered.end(),
+                        [](const Match &match) { return !match.target.empty(); })) continue;
+                bool intact = true;
+                for (const auto &span : recovered) {
+                    if (!span.target.empty() || span.layout_x >= 0) continue;
+                    for (int offset = 0; offset < span.length; ++offset) {
+                        const unsigned char visible = visible_char_at(span.x + offset, span.y);
+                        if (visible && visible != ' ' && visible !=
+                                static_cast<unsigned char>(span.source[static_cast<size_t>(offset)])) {
+                            intact = false;
+                            break;
+                        }
+                    }
+                    if (!intact) break;
+                }
+                if (!intact) continue;
                 std::erase_if(prepared_matches_, [&](const Match &match) {
-                    if (match.rule == kEmbarkIntroductionRule) return true;
+                    if (match.rule == kAdventureCreationDescriptionRule) return true;
                     return std::any_of(recovered.begin(), recovered.end(), [&](const Match &span) {
-                        return span.length > 0 && span.y == match.y &&
+                        return span.target.empty() && span.layout_x < 0 && span.y == match.y &&
                             span.x < match.x + match.length && match.x < span.x + span.length;
                     });
                 });
                 prepared_matches_.insert(prepared_matches_.end(),
                     std::make_move_iterator(recovered.begin()), std::make_move_iterator(recovered.end()));
-                break;
+                creation_description_bytes = bytes;
             }
-        }
 
-        // Creation description ownership includes both source suppression and
-        // translated lines. Recover the whole group from an intact widget
-        // layer when the final composite retained only some of its words.
-        auto creation_description_source_bytes = [](const std::vector<Match> &matches) {
-            size_t bytes = 0;
-            for (const auto &match : matches) {
-                if (match.rule == kAdventureCreationDescriptionRule && match.target.empty() &&
-                    match.layout_x < 0)
-                    bytes += static_cast<size_t>(std::count_if(match.source.begin(),
-                        match.source.end(), [](unsigned char ch) { return !std::isspace(ch); }));
-            }
-            return bytes;
-        };
-        size_t creation_description_bytes = creation_description_source_bytes(prepared_matches_);
-        const bool creation_description_action = std::any_of(prepared_matches_.begin(),
-            prepared_matches_.end(), [](const Match &match) {
-                return match.source == "Accept appearance" || match.source == "Accept personality";
-            });
-        for (const auto *raw : {gps_->top_in_use ? gps_->screen_top : nullptr, gps_->screen}) {
-            if (!raw) continue;
-            bool action = creation_description_action;
-            for (int y = 0; y < gps_->dimy && !action; ++y) {
-                std::string row(static_cast<size_t>(gps_->dimx), ' ');
-                for (int x = 0; x < gps_->dimx; ++x)
-                    row[static_cast<size_t>(x)] = static_cast<char>(raw[
-                        (static_cast<size_t>(x) * gps_->dimy + y) * 8]);
-                action = row.find("Accept appearance") != std::string::npos ||
-                    row.find("Accept personality") != std::string::npos;
-            }
-            if (!action) continue;
-            std::vector<Match> recovered = find_matches(-1, raw);
-            std::erase_if(recovered, [](const Match &match) {
-                return match.rule != kAdventureCreationDescriptionRule;
-            });
-            const size_t bytes = creation_description_source_bytes(recovered);
-            if (bytes <= creation_description_bytes || std::none_of(recovered.begin(), recovered.end(),
-                    [](const Match &match) { return !match.target.empty(); })) continue;
-            bool intact = true;
-            for (const auto &span : recovered) {
-                if (!span.target.empty() || span.layout_x >= 0) continue;
-                for (int offset = 0; offset < span.length; ++offset) {
-                    const unsigned char visible = visible_char_at(span.x + offset, span.y);
-                    if (visible && visible != ' ' && visible !=
-                            static_cast<unsigned char>(span.source[static_cast<size_t>(offset)])) {
-                        intact = false;
-                        break;
-                    }
-                }
-                if (!intact) break;
-            }
-            if (!intact) continue;
-            std::erase_if(prepared_matches_, [&](const Match &match) {
-                if (match.rule == kAdventureCreationDescriptionRule) return true;
-                return std::any_of(recovered.begin(), recovered.end(), [&](const Match &span) {
-                    return span.target.empty() && span.layout_x < 0 && span.y == match.y &&
-                        span.x < match.x + match.length && match.x < span.x + span.length;
-                });
-            });
-            prepared_matches_.insert(prepared_matches_.end(),
-                std::make_move_iterator(recovered.begin()), std::make_move_iterator(recovered.end()));
-            creation_description_bytes = bytes;
-        }
-
-        // The character sheet is built from several graphical widget layers.
-        // Its paragraph can remain intact in screen or screen_top while the
-        // final composite used above contains only fragments. Recover the
-        // complete poetic-description match group from that intact layer and
-        // promote it to the frame's drawable matches. Merely building an
-        // immediate suppression mask is insufficient: without this promotion
-        // the native paragraph is erased but the reflowed Chinese lines are
-        // never drawn.
-        const bool final_has_poetic_description = std::any_of(
-            prepared_matches_.begin(), prepared_matches_.end(),
-            [](const Match &match) {
-                return match.rule == kPoeticDescriptionRule &&
-                    !match.target.empty();
-            });
-        auto raw_has_poetic_landmark = [&](const unsigned char *raw) {
-            if (!raw) return false;
-            std::string normalized;
-            normalized.reserve(
-                static_cast<size_t>(gps_->dimx) * gps_->dimy);
-            bool pending_space = false;
-            for (int y = 0; y < gps_->dimy; ++y) {
-                for (int x = 0; x < gps_->dimx; ++x) {
-                    const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
-                    const unsigned char ch = raw[tile * 8];
-                    if (ch < 0x20 || ch > 0x7e ||
-                        std::isspace(ch)) {
-                        pending_space = !normalized.empty();
-                        continue;
-                    }
-                    if (pending_space) normalized.push_back(' ');
-                    pending_space = false;
-                    normalized.push_back(static_cast<char>(ch));
-                }
-                pending_space = !normalized.empty();
-            }
-            const bool poetic_opening =
-                normalized.find(" poetic ") != std::string::npos;
-            return poetic_opening &&
-                (normalized.find("The rules of the form") !=
-                     std::string::npos ||
-                 normalized.find("The form guides poets") !=
-                     std::string::npos);
-        };
-        auto recover_poetic_description = [&](const unsigned char *raw) {
-            if (!raw || !raw_has_poetic_landmark(raw)) return false;
-            std::vector<Match> raw_matches = find_matches(-1, raw);
-            const bool complete = std::any_of(
-                raw_matches.begin(), raw_matches.end(), [](const Match &match) {
+            // The character sheet is built from several graphical widget layers.
+            // Its paragraph can remain intact in screen or screen_top while the
+            // final composite used above contains only fragments. Recover the
+            // complete poetic-description match group from that intact layer and
+            // promote it to the frame's drawable matches. Merely building an
+            // immediate suppression mask is insufficient: without this promotion
+            // the native paragraph is erased but the reflowed Chinese lines are
+            // never drawn.
+            const bool final_has_poetic_description = std::any_of(
+                prepared_matches_.begin(), prepared_matches_.end(),
+                [](const Match &match) {
                     return match.rule == kPoeticDescriptionRule &&
                         !match.target.empty();
                 });
-            if (!complete) return false;
-
-            std::vector<Match> poetic_matches;
-            for (Match &match : raw_matches) {
-                if (match.rule == kPoeticDescriptionRule)
-                    poetic_matches.push_back(std::move(match));
-            }
-            std::erase_if(prepared_matches_, [&](const Match &visible) {
-                if (visible.rule == kPoeticDescriptionRule) return true;
-                return std::any_of(
-                    poetic_matches.begin(), poetic_matches.end(),
-                    [&](const Match &poetic) {
-                        if (poetic.target.empty() &&
-                            poetic.y == visible.y) {
-                            return poetic.x < visible.x + visible.length &&
-                                visible.x < poetic.x + poetic.length;
-                        }
-                        return false;
-                    });
-            });
-            prepared_matches_.insert(
-                prepared_matches_.end(),
-                std::make_move_iterator(poetic_matches.begin()),
-                std::make_move_iterator(poetic_matches.end()));
-            return true;
-        };
-        if (!final_has_poetic_description) {
-            bool recovered = recover_poetic_description(gps_->screen);
-            if (!recovered && gps_->top_in_use)
-                recovered = recover_poetic_description(gps_->screen_top);
-            if (recovered) {
-                static std::atomic_bool logged_poetic_layer_recovery{false};
-                if (!logged_poetic_layer_recovery.exchange(true)) {
-                    log_line("INFO",
-                        "Recovered complete generated poetic description "
-                        "from an intact logical widget layer");
-                }
-            }
-        }
-        const size_t cells = static_cast<size_t>(gps_->dimx) * gps_->dimy;
-        captured_embark_item_suppress_.assign(cells, 0);
-        for (const Match &match : prepared_matches_) {
-            if (match.rule != kEmbarkComposedCapturedItemRule ||
-                match.y < 0 || match.y >= gps_->dimy) {
-                continue;
-            }
-            const int left = std::clamp(match.x, 0, gps_->dimx);
-            const int right = std::clamp(
-                match.x + match.length, 0, gps_->dimx);
-            for (int x = left; x < right; ++x) {
-                const size_t tile =
-                    static_cast<size_t>(x) * gps_->dimy + match.y;
-                captured_embark_item_suppress_[tile] = 1;
-            }
-        }
-
-        bool available_items_heading = false;
-        bool available_items_landmark = false;
-        for (const Match &match : prepared_matches_) {
-            available_items_heading = available_items_heading ||
-                match.source == "Available Items";
-            available_items_landmark = available_items_landmark ||
-                match.source == "Your Items" ||
-                has_item_picker_points_label(match.source) ||
-                match.source == "Save Profile" ||
-                match.source == "Embark!";
-        }
-        if (available_items_heading && available_items_landmark) {
-            auto normalize_embark_field_sequence = [](std::string_view source) {
+            auto raw_has_poetic_landmark = [&](const unsigned char *raw) {
+                if (!raw) return false;
                 std::string normalized;
-                normalized.reserve(source.size());
+                normalized.reserve(
+                    static_cast<size_t>(gps_->dimx) * gps_->dimy);
                 bool pending_space = false;
-                for (unsigned char raw : source) {
-                    if (raw == ' ') {
-                        pending_space = !normalized.empty();
-                        continue;
+                for (int y = 0; y < gps_->dimy; ++y) {
+                    for (int x = 0; x < gps_->dimx; ++x) {
+                        const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
+                        const unsigned char ch = raw[tile * 8];
+                        if (ch < 0x20 || ch > 0x7e ||
+                            std::isspace(ch)) {
+                            pending_space = !normalized.empty();
+                            continue;
+                        }
+                        if (pending_space) normalized.push_back(' ');
+                        pending_space = false;
+                        normalized.push_back(static_cast<char>(ch));
                     }
-                    if (pending_space) normalized.push_back(' ');
-                    pending_space = false;
-                    if (raw >= 'A' && raw <= 'Z')
-                        raw = static_cast<unsigned char>(raw - 'A' + 'a');
-                    normalized.push_back(static_cast<char>(raw));
+                    pending_space = !normalized.empty();
                 }
-                return normalized;
+                const bool poetic_opening =
+                    normalized.find(" poetic ") != std::string::npos;
+                return poetic_opening &&
+                    (normalized.find("The rules of the form") !=
+                         std::string::npos ||
+                     normalized.find("The form guides poets") !=
+                         std::string::npos);
             };
-            auto composed_food_owns_capture =
-                    [&](const Match &match,
-                        const EmbarkItemSourceCapture &capture) {
-                if (match.rule != kEmbarkComposedFoodRule ||
-                    match.y != capture.screen_y) {
-                    return false;
+            auto recover_poetic_description = [&](const unsigned char *raw) {
+                if (!raw || !raw_has_poetic_landmark(raw)) return false;
+                std::vector<Match> raw_matches = find_matches(-1, raw);
+                const bool complete = std::any_of(
+                    raw_matches.begin(), raw_matches.end(), [](const Match &match) {
+                        return match.rule == kPoeticDescriptionRule &&
+                            !match.target.empty();
+                    });
+                if (!complete) return false;
+
+                std::vector<Match> poetic_matches;
+                for (Match &match : raw_matches) {
+                    if (match.rule == kPoeticDescriptionRule)
+                        poetic_matches.push_back(std::move(match));
                 }
-                const std::string item =
-                    normalize_embark_field_sequence(match.source);
-                const std::string piece =
-                    normalize_embark_field_sequence(capture.visible);
-                if (item.empty() || piece.empty()) return false;
-                return (" " + item + " ").find(" " + piece + " ") !=
-                    std::string::npos;
+                std::erase_if(prepared_matches_, [&](const Match &visible) {
+                    if (visible.rule == kPoeticDescriptionRule) return true;
+                    return std::any_of(
+                        poetic_matches.begin(), poetic_matches.end(),
+                        [&](const Match &poetic) {
+                            if (poetic.target.empty() &&
+                                poetic.y == visible.y) {
+                                return poetic.x < visible.x + visible.length &&
+                                    visible.x < poetic.x + poetic.length;
+                            }
+                            return false;
+                        });
+                });
+                prepared_matches_.insert(
+                    prepared_matches_.end(),
+                    std::make_move_iterator(poetic_matches.begin()),
+                    std::make_move_iterator(poetic_matches.end()));
+                return true;
             };
-            for (const EmbarkItemSourceCapture &capture :
-                 captured_embark_item_sources()) {
-                if (capture.screen_x < 0 || capture.screen_y < 0 ||
-                    capture.screen_y >= gps_->dimy || capture.visible.empty() ||
-                    capture.screen_x +
-                            static_cast<int>(capture.visible.size()) >
-                        gps_->dimx) {
+            if (!final_has_poetic_description) {
+                bool recovered = recover_poetic_description(gps_->screen);
+                if (!recovered && gps_->top_in_use)
+                    recovered = recover_poetic_description(gps_->screen_top);
+                if (recovered) {
+                    static std::atomic_bool logged_poetic_layer_recovery{false};
+                    if (!logged_poetic_layer_recovery.exchange(true)) {
+                        log_line("INFO",
+                            "Recovered complete generated poetic description "
+                            "from an intact logical widget layer");
+                    }
+                }
+            }
+            captured_embark_item_suppress_.assign(cells, 0);
+            for (const Match &match : prepared_matches_) {
+                if (match.rule != kEmbarkComposedCapturedItemRule ||
+                    match.y < 0 || match.y >= gps_->dimy) {
                     continue;
                 }
-                const int right = capture.screen_x +
-                    static_cast<int>(capture.visible.size());
-                const bool already_represented = std::any_of(
-                    prepared_matches_.begin(), prepared_matches_.end(),
-                    [&](const Match &match) {
-                        if (match.y != capture.screen_y) return false;
-                        if (match.rule == -13 &&
-                            normalize_embark_field_sequence(match.source) ==
-                                normalize_embark_field_sequence(
-                                    capture.visible)) {
-                            return true;
-                        }
-                        // The capture hook reports widget-local x while the
-                        // composed food match uses final-grid x.  Comparing
-                        // those coordinates lets a fragment overwrite the
-                        // complete row.  Row and exact normalized field
-                        // membership are the shared, stable identity.
-                        return composed_food_owns_capture(match, capture);
-                    });
-                if (!already_represented) {
-                    auto translated = translate_embark_equipment_item(
-                        capture.visible, capture.screen_y, capture.screen_x,
-                        capture.complete);
-                    if (!translated || translated->empty()) continue;
-                    std::erase_if(prepared_matches_, [&](const Match &match) {
-                        if (match.y != capture.screen_y) return false;
-                        const int match_right = match.x + match.length;
-                        return match.x < right &&
-                            match_right > capture.screen_x;
-                    });
-                    prepared_matches_.push_back({
-                        capture.screen_x,
-                        capture.screen_y,
-                        static_cast<int>(capture.visible.size()),
-                        -13,
-                        std::move(*translated),
-                        capture.visible,
-                    });
-                }
-                for (int x = capture.screen_x; x < right; ++x) {
+                const int left = std::clamp(match.x, 0, gps_->dimx);
+                const int right = std::clamp(
+                    match.x + match.length, 0, gps_->dimx);
+                for (int x = left; x < right; ++x) {
                     const size_t tile =
-                        static_cast<size_t>(x) * gps_->dimy + capture.screen_y;
+                        static_cast<size_t>(x) * gps_->dimy + match.y;
                     captured_embark_item_suppress_[tile] = 1;
                 }
             }
-        }
 
-        auto has_match_source = [&](std::string_view source) {
-            return std::any_of(
-                prepared_matches_.begin(), prepared_matches_.end(),
-                [&](const Match &match) { return match.source == source; });
-        };
-        const bool residents_page = has_match_source("Your Citizens");
-        const bool residents_skills_page = residents_page &&
-            has_match_source("Available Skills");
-        // View replaces the skill picker with a character sheet but retains
-        // the citizens list, View buttons and three primary tabs. Keep this
-        // body identity independent of the footer: confirming embark hides
-        // the naming controls too, without closing the character sheet.
-        const bool residents_view_body = residents_page &&
-            !residents_skills_page && has_match_source("View");
-        const bool items_page = has_match_source("Your Items") &&
-            has_match_source("Available Items");
-        const bool animals_page = has_match_source("Your Animals") &&
-            has_match_source("Available Animals");
-        const bool embark_actions = has_match_source("Save Profile") &&
-            has_match_source("Embark!");
-        // Saving a profile replaces the footer, not the page or its tabs.
-        // The duplicate-name confirmation replaces it again with Overwrite /
-        // Go back. Recognize both current footer states while still requiring
-        // the visible page body; never borrow tabs from a previous frame.
-        // The warning can be matched whole or split after its double space.
-        const bool embark_profile_footer = has_match_source(
-            "To save these settings, choose a name for this embark profile:") ||
-            ((has_match_source(
-                "Warning!  The following embark profile name is already in use:") ||
-              has_match_source(
-                "The following embark profile name is already in use:")) &&
-             has_match_source("Overwrite") && has_match_source("Go back"));
-        // Confirming embark replaces the same footer with Are you sure? /
-        // I am ready!, while the current page body and tab groups remain.
-        // The points/skill warnings are optional; do not depend on their
-        // presence, values, or a cached frame to retain the visible tabs.
-        const bool embark_confirm_footer = has_match_source("Are you sure?") &&
-            has_match_source("I am ready!");
-        const bool embark_footer = embark_actions || embark_profile_footer ||
-            embark_confirm_footer;
-        // Ordinary View retains the naming controls instead of the embark
-        // actions. Alternate footers can coexist with either the skill picker
-        // or View; prove both from this frame rather than requiring controls
-        // that the selected footer has replaced.
-        const bool embark_page =
-            (residents_view_body && has_match_source("Group Name") &&
-             has_match_source("Group Symbol")) ||
-            (embark_footer && (residents_skills_page || residents_view_body ||
-                               items_page || animals_page));
-        // A recognized page without the skill picker has only the primary
-        // group. Otherwise keep requiring all seven labels as independent
-        // proof that a raw layer really belongs to prepare-for-embark.
-        const int active_tab_count = embark_page && !residents_skills_page
-            ? 3 : static_cast<int>(embark_preparation_tabs.size());
-
-        // Prepare-for-embark's top tabs are issued through a graphical
-        // caption path after the logical grid is populated. Composite order
-        // correctly hides those metadata bytes from normal matching, but that
-        // also used to hide every translation in the strip. Recover only the
-        // complete, ordered signature for the visible tab groups from a raw
-        // logical layer. Limiting it to the first five rows prevents similarly
-        // named character-sheet tabs or page content from joining the band.
-        auto recover_embark_tabs = [&](const unsigned char *raw) {
-            if (!raw) return false;
-            std::array<bool, embark_preparation_tabs.size()> raw_signature{};
-            std::vector<Match> raw_matches;
-            const int signature_last_row = std::min(4, gps_->dimy - 1);
-            std::string raw_row(static_cast<size_t>(gps_->dimx), ' ');
-            // This recovery owns only the finite, already-proven tab band.
-            // A full find_matches() here re-translated both scrolling lists,
-            // reconstructed unrelated documents and scanned every panel just
-            // to recover three/seven literal captions. Read these exact labels
-            // through the shared dictionary, preserving their native spans.
-            for (int y = 0; y <= signature_last_row; ++y) {
-                for (int x = 0; x < gps_->dimx; ++x) {
-                    const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
-                    const unsigned char ch = raw[tile * 8];
-                    raw_row[static_cast<size_t>(x)] = ch ? static_cast<char>(ch) : ' ';
-                }
-                for (int tab = 0; tab < active_tab_count; ++tab) {
-                    const auto source = embark_preparation_tabs[static_cast<size_t>(tab)];
-                    for (size_t at = raw_row.find(source); at != std::string::npos;
-                         at = raw_row.find(source, at + source.size())) {
-                        if (!has_word_boundaries(raw_row, at, at + source.size())) continue;
-                        const auto target = exact_literal_translation(source);
-                        if (!target || target->empty()) continue;
-                        raw_signature[static_cast<size_t>(tab)] = true;
-                        raw_matches.push_back({static_cast<int>(at), y,
-                            static_cast<int>(source.size()), -13, *target, std::string(source)});
+            bool available_items_heading = false;
+            bool available_items_landmark = false;
+            for (const Match &match : prepared_matches_) {
+                available_items_heading = available_items_heading ||
+                    match.source == "Available Items";
+                available_items_landmark = available_items_landmark ||
+                    match.source == "Your Items" ||
+                    has_item_picker_points_label(match.source) ||
+                    match.source == "Save Profile" ||
+                    match.source == "Embark!";
+            }
+            if (available_items_heading && available_items_landmark) {
+                auto normalize_embark_field_sequence = [](std::string_view source) {
+                    std::string normalized;
+                    normalized.reserve(source.size());
+                    bool pending_space = false;
+                    for (unsigned char raw : source) {
+                        if (raw == ' ') {
+                            pending_space = !normalized.empty();
+                            continue;
+                        }
+                        if (pending_space) normalized.push_back(' ');
+                        pending_space = false;
+                        if (raw >= 'A' && raw <= 'Z')
+                            raw = static_cast<unsigned char>(raw - 'A' + 'a');
+                        normalized.push_back(static_cast<char>(raw));
+                    }
+                    return normalized;
+                };
+                auto composed_food_owns_capture =
+                        [&](const Match &match,
+                            const EmbarkItemSourceCapture &capture) {
+                    if (match.rule != kEmbarkComposedFoodRule ||
+                        match.y != capture.screen_y) {
+                        return false;
+                    }
+                    const std::string item =
+                        normalize_embark_field_sequence(match.source);
+                    const std::string piece =
+                        normalize_embark_field_sequence(capture.visible);
+                    if (item.empty() || piece.empty()) return false;
+                    return (" " + item + " ").find(" " + piece + " ") !=
+                        std::string::npos;
+                };
+                for (const EmbarkItemSourceCapture &capture :
+                     captured_embark_item_sources()) {
+                    if (capture.screen_x < 0 || capture.screen_y < 0 ||
+                        capture.screen_y >= gps_->dimy || capture.visible.empty() ||
+                        capture.screen_x +
+                                static_cast<int>(capture.visible.size()) >
+                            gps_->dimx) {
+                        continue;
+                    }
+                    const int right = capture.screen_x +
+                        static_cast<int>(capture.visible.size());
+                    const bool already_represented = std::any_of(
+                        prepared_matches_.begin(), prepared_matches_.end(),
+                        [&](const Match &match) {
+                            if (match.y != capture.screen_y) return false;
+                            if (match.rule == -13 &&
+                                normalize_embark_field_sequence(match.source) ==
+                                    normalize_embark_field_sequence(
+                                        capture.visible)) {
+                                return true;
+                            }
+                            // The capture hook reports widget-local x while the
+                            // composed food match uses final-grid x.  Comparing
+                            // those coordinates lets a fragment overwrite the
+                            // complete row.  Row and exact normalized field
+                            // membership are the shared, stable identity.
+                            return composed_food_owns_capture(match, capture);
+                        });
+                    if (!already_represented) {
+                        auto translated = translate_embark_equipment_item(
+                            capture.visible, capture.screen_y, capture.screen_x,
+                            capture.complete);
+                        if (!translated || translated->empty()) continue;
+                        std::erase_if(prepared_matches_, [&](const Match &match) {
+                            if (match.y != capture.screen_y) return false;
+                            const int match_right = match.x + match.length;
+                            return match.x < right &&
+                                match_right > capture.screen_x;
+                        });
+                        prepared_matches_.push_back({
+                            capture.screen_x,
+                            capture.screen_y,
+                            static_cast<int>(capture.visible.size()),
+                            -13,
+                            std::move(*translated),
+                            capture.visible,
+                        });
+                    }
+                    for (int x = capture.screen_x; x < right; ++x) {
+                        const size_t tile =
+                            static_cast<size_t>(x) * gps_->dimy + capture.screen_y;
+                        captured_embark_item_suppress_[tile] = 1;
                     }
                 }
             }
-            if (std::any_of(raw_signature.begin(),
-                            raw_signature.begin() + active_tab_count,
-                            [](bool found) { return !found; })) return false;
-            const int last_top_row = std::min(4, gps_->dimy - 1);
-            int band_row = -1;
-            int best_occurrence_count = -1;
-            std::array<int, embark_preparation_tabs.size()> representative_x{};
-            for (int row = 0; row <= last_top_row; ++row) {
-                representative_x.fill(INT32_MAX);
-                int occurrence_count = 0;
-                bool starts_on_row = false;
-                for (const Match &match : raw_matches) {
+
+            auto has_match_source = [&](std::string_view source) {
+                return std::any_of(
+                    prepared_matches_.begin(), prepared_matches_.end(),
+                    [&](const Match &match) { return match.source == source; });
+            };
+            const bool residents_page = has_match_source("Your Citizens");
+            const bool residents_skills_page = residents_page &&
+                has_match_source("Available Skills");
+            // View replaces the skill picker with a character sheet but retains
+            // the citizens list, View buttons and three primary tabs. Keep this
+            // body identity independent of the footer: confirming embark hides
+            // the naming controls too, without closing the character sheet.
+            const bool residents_view_body = residents_page &&
+                !residents_skills_page && has_match_source("View");
+            const bool items_page = has_match_source("Your Items") &&
+                has_match_source("Available Items");
+            const bool animals_page = has_match_source("Your Animals") &&
+                has_match_source("Available Animals");
+            const bool embark_actions = has_match_source("Save Profile") &&
+                has_match_source("Embark!");
+            // Saving a profile replaces the footer, not the page or its tabs.
+            // The duplicate-name confirmation replaces it again with Overwrite /
+            // Go back. Recognize both current footer states while still requiring
+            // the visible page body; never borrow tabs from a previous frame.
+            // The warning can be matched whole or split after its double space.
+            const bool embark_profile_footer = has_match_source(
+                "To save these settings, choose a name for this embark profile:") ||
+                ((has_match_source(
+                    "Warning!  The following embark profile name is already in use:") ||
+                  has_match_source(
+                    "The following embark profile name is already in use:")) &&
+                 has_match_source("Overwrite") && has_match_source("Go back"));
+            // Confirming embark replaces the same footer with Are you sure? /
+            // I am ready!, while the current page body and tab groups remain.
+            // The points/skill warnings are optional; do not depend on their
+            // presence, values, or a cached frame to retain the visible tabs.
+            const bool embark_confirm_footer = has_match_source("Are you sure?") &&
+                has_match_source("I am ready!");
+            const bool embark_footer = embark_actions || embark_profile_footer ||
+                embark_confirm_footer;
+            // Ordinary View retains the naming controls instead of the embark
+            // actions. Alternate footers can coexist with either the skill picker
+            // or View; prove both from this frame rather than requiring controls
+            // that the selected footer has replaced.
+            const bool embark_page =
+                (residents_view_body && has_match_source("Group Name") &&
+                 has_match_source("Group Symbol")) ||
+                (embark_footer && (residents_skills_page || residents_view_body ||
+                                   items_page || animals_page));
+            // A recognized page without the skill picker has only the primary
+            // group. Otherwise keep requiring all seven labels as independent
+            // proof that a raw layer really belongs to prepare-for-embark.
+            const int active_tab_count = embark_page && !residents_skills_page
+                ? 3 : static_cast<int>(embark_preparation_tabs.size());
+
+            // Prepare-for-embark's top tabs are issued through a graphical
+            // caption path after the logical grid is populated. Composite order
+            // correctly hides those metadata bytes from normal matching, but that
+            // also used to hide every translation in the strip. Recover only the
+            // complete, ordered signature for the visible tab groups from a raw
+            // logical layer. Limiting it to the first five rows prevents similarly
+            // named character-sheet tabs or page content from joining the band.
+            auto recover_embark_tabs = [&](const unsigned char *raw) {
+                if (!raw) return false;
+                std::array<bool, embark_preparation_tabs.size()> raw_signature{};
+                std::vector<Match> raw_matches;
+                const int signature_last_row = std::min(4, gps_->dimy - 1);
+                std::string raw_row(static_cast<size_t>(gps_->dimx), ' ');
+                // This recovery owns only the finite, already-proven tab band.
+                // A full find_matches() here re-translated both scrolling lists,
+                // reconstructed unrelated documents and scanned every panel just
+                // to recover three/seven literal captions. Read these exact labels
+                // through the shared dictionary, preserving their native spans.
+                for (int y = 0; y <= signature_last_row; ++y) {
+                    for (int x = 0; x < gps_->dimx; ++x) {
+                        const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
+                        const unsigned char ch = raw[tile * 8];
+                        raw_row[static_cast<size_t>(x)] = ch ? static_cast<char>(ch) : ' ';
+                    }
+                    for (int tab = 0; tab < active_tab_count; ++tab) {
+                        const auto source = embark_preparation_tabs[static_cast<size_t>(tab)];
+                        for (size_t at = raw_row.find(source); at != std::string::npos;
+                             at = raw_row.find(source, at + source.size())) {
+                            if (!has_word_boundaries(raw_row, at, at + source.size())) continue;
+                            const auto target = exact_literal_translation(source);
+                            if (!target || target->empty()) continue;
+                            raw_signature[static_cast<size_t>(tab)] = true;
+                            raw_matches.push_back({static_cast<int>(at), y,
+                                static_cast<int>(source.size()), -13, *target, std::string(source)});
+                        }
+                    }
+                }
+                if (std::any_of(raw_signature.begin(),
+                                raw_signature.begin() + active_tab_count,
+                                [](bool found) { return !found; })) return false;
+                const int last_top_row = std::min(4, gps_->dimy - 1);
+                int band_row = -1;
+                int best_occurrence_count = -1;
+                std::array<int, embark_preparation_tabs.size()> representative_x{};
+                for (int row = 0; row <= last_top_row; ++row) {
+                    representative_x.fill(INT32_MAX);
+                    int occurrence_count = 0;
+                    bool starts_on_row = false;
+                    for (const Match &match : raw_matches) {
+                        const int tab = embark_preparation_tab_index(match.source);
+                        if (tab < 0 || tab >= active_tab_count ||
+                            match.y < row || match.y > row + 1 ||
+                            match.y > last_top_row) {
+                            continue;
+                        }
+                        ++occurrence_count;
+                        starts_on_row = starts_on_row || match.y == row;
+                        representative_x[static_cast<size_t>(tab)] = std::min(
+                            representative_x[static_cast<size_t>(tab)], match.x);
+                    }
+                    const bool complete = std::none_of(
+                        representative_x.begin(),
+                        representative_x.begin() + active_tab_count,
+                        [](int x) { return x == INT32_MAX; });
+                    const bool ordered = complete && std::adjacent_find(
+                        representative_x.begin(),
+                        representative_x.begin() + active_tab_count,
+                        [](int left, int right) { return left >= right; }) ==
+                            representative_x.begin() + active_tab_count;
+                    if (ordered &&
+                        (occurrence_count > best_occurrence_count ||
+                         (occurrence_count == best_occurrence_count &&
+                          starts_on_row))) {
+                        band_row = row;
+                        best_occurrence_count = occurrence_count;
+                    }
+                }
+                if (band_row < 0) return false;
+
+                for (Match &match : raw_matches) {
                     const int tab = embark_preparation_tab_index(match.source);
                     if (tab < 0 || tab >= active_tab_count ||
-                        match.y < row || match.y > row + 1 ||
+                        match.y < band_row || match.y > band_row + 1 ||
                         match.y > last_top_row) {
                         continue;
                     }
-                    ++occurrence_count;
-                    starts_on_row = starts_on_row || match.y == row;
-                    representative_x[static_cast<size_t>(tab)] = std::min(
-                        representative_x[static_cast<size_t>(tab)], match.x);
+                    const bool duplicate = std::any_of(
+                        prepared_matches_.begin(), prepared_matches_.end(),
+                        [&](const Match &visible) {
+                            return visible.x == match.x && visible.y == match.y &&
+                                visible.length == match.length &&
+                                visible.source == match.source;
+                        });
+                    if (duplicate) continue;
+                    match.graphical_clear_x = match.x;
+                    match.graphical_clear_y = match.y;
+                    match.graphical_clear_width = match.length;
+                    match.graphical_clear_height = 1;
+                    prepared_matches_.push_back(std::move(match));
                 }
-                const bool complete = std::none_of(
-                    representative_x.begin(),
-                    representative_x.begin() + active_tab_count,
-                    [](int x) { return x == INT32_MAX; });
-                const bool ordered = complete && std::adjacent_find(
-                    representative_x.begin(),
-                    representative_x.begin() + active_tab_count,
-                    [](int left, int right) { return left >= right; }) ==
-                        representative_x.begin() + active_tab_count;
-                if (ordered &&
-                    (occurrence_count > best_occurrence_count ||
-                     (occurrence_count == best_occurrence_count &&
-                      starts_on_row))) {
-                    band_row = row;
-                    best_occurrence_count = occurrence_count;
-                }
+                return true;
+            };
+            bool recovered_embark_tabs = recover_embark_tabs(gps_->screen);
+            if (!recovered_embark_tabs && gps_->top_in_use) {
+                recovered_embark_tabs = recover_embark_tabs(gps_->screen_top);
             }
-            if (band_row < 0) return false;
 
-            for (Match &match : raw_matches) {
-                const int tab = embark_preparation_tab_index(match.source);
-                if (tab < 0 || tab >= active_tab_count ||
-                    match.y < band_row || match.y > band_row + 1 ||
-                    match.y > last_top_row) {
-                    continue;
+            // On the current graphical UI the tab captions can be absent even
+            // from both raw character layers: they are baked into the graphical
+            // widgets. The page body still exposes a stable semantic signature.
+            // Synthesize the visible captions at the widget's 16-column pitch
+            // only on that page, and let draw_match sample each tab's live fill to
+            // choose active/inactive text colour and erase the baked English ink.
+            if (!recovered_embark_tabs && embark_page && gps_->dimx >= 160) {
+                // The primary group is anchored to the left edge, while the
+                // skill group is anchored to the centre divider.  Treating the
+                // latter as right-aligned happens to work at a 174-column grid,
+                // but moves every translated caption to the right as the grid
+                // gets wider.  The clear rectangle then covers only the suffix
+                // of Crucial/Labor/Combat/Other and leaves their English prefixes
+                // visible.  Reconstruct the same centre-relative geometry used
+                // by the native widget so drawing and foreground removal remain
+                // aligned at every resolution.
+                const int right_group_first_centre = gps_->dimx / 2 + 15;
+                const std::array<int, embark_preparation_tabs.size()> centres{{
+                    14, 30, 46,
+                    right_group_first_centre,
+                    right_group_first_centre + 16,
+                    right_group_first_centre + 32,
+                    right_group_first_centre + 48,
+                }};
+                for (size_t tab = 0; tab < embark_preparation_tabs.size(); ++tab) {
+                    // The four skill-category tabs only exist while the skill
+                    // picker is visible, not while viewing a citizen's sheet.
+                    if (tab >= 3 && !residents_skills_page) continue;
+                    auto translated = exact_literal_translation(
+                        embark_preparation_tabs[tab]);
+                    if (!translated) continue;
+                    const int source_length = static_cast<int>(
+                        embark_preparation_tabs[tab].size());
+                    Match synthetic{
+                        centres[tab] - source_length / 2,
+                        1,
+                        source_length,
+                        -13,
+                        std::move(*translated),
+                        std::string(embark_preparation_tabs[tab]),
+                    };
+                    synthetic.layout_x = centres[tab] - 8;
+                    synthetic.layout_y = 2;
+                    synthetic.layout_length = 16;
+                    synthetic.layout_left = false;
+                    synthetic.layout_pixel_y = std::max(1, gps_->tile_pixel_y / 4);
+                    synthetic.layout_font_pixels = std::max(
+                        config_.min_font_pixels,
+                        static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
+                    synthetic.graphical_clear_x = synthetic.x - 1;
+                    synthetic.graphical_clear_y = 2;
+                    synthetic.graphical_clear_width = source_length + 1;
+                    synthetic.graphical_clear_height = 1;
+                    synthetic.graphical_auto_foreground = true;
+                    prepared_matches_.push_back(std::move(synthetic));
                 }
-                const bool duplicate = std::any_of(
-                    prepared_matches_.begin(), prepared_matches_.end(),
-                    [&](const Match &visible) {
-                        return visible.x == match.x && visible.y == match.y &&
-                            visible.length == match.length &&
-                            visible.source == match.source;
-                    });
-                if (duplicate) continue;
-                match.graphical_clear_x = match.x;
-                match.graphical_clear_y = match.y;
-                match.graphical_clear_width = match.length;
-                match.graphical_clear_height = 1;
-                prepared_matches_.push_back(std::move(match));
             }
-            return true;
-        };
-        bool recovered_embark_tabs = recover_embark_tabs(gps_->screen);
-        if (!recovered_embark_tabs && gps_->top_in_use) {
-            recovered_embark_tabs = recover_embark_tabs(gps_->screen_top);
+
+            recover_embark_knowledge_list();
         }
-
-        // On the current graphical UI the tab captions can be absent even
-        // from both raw character layers: they are baked into the graphical
-        // widgets. The page body still exposes a stable semantic signature.
-        // Synthesize the visible captions at the widget's 16-column pitch
-        // only on that page, and let draw_match sample each tab's live fill to
-        // choose active/inactive text colour and erase the baked English ink.
-        if (!recovered_embark_tabs && embark_page && gps_->dimx >= 160) {
-            // The primary group is anchored to the left edge, while the
-            // skill group is anchored to the centre divider.  Treating the
-            // latter as right-aligned happens to work at a 174-column grid,
-            // but moves every translated caption to the right as the grid
-            // gets wider.  The clear rectangle then covers only the suffix
-            // of Crucial/Labor/Combat/Other and leaves their English prefixes
-            // visible.  Reconstruct the same centre-relative geometry used
-            // by the native widget so drawing and foreground removal remain
-            // aligned at every resolution.
-            const int right_group_first_centre = gps_->dimx / 2 + 15;
-            const std::array<int, embark_preparation_tabs.size()> centres{{
-                14, 30, 46,
-                right_group_first_centre,
-                right_group_first_centre + 16,
-                right_group_first_centre + 32,
-                right_group_first_centre + 48,
-            }};
-            for (size_t tab = 0; tab < embark_preparation_tabs.size(); ++tab) {
-                // The four skill-category tabs only exist while the skill
-                // picker is visible, not while viewing a citizen's sheet.
-                if (tab >= 3 && !residents_skills_page) continue;
-                auto translated = exact_literal_translation(
-                    embark_preparation_tabs[tab]);
-                if (!translated) continue;
-                const int source_length = static_cast<int>(
-                    embark_preparation_tabs[tab].size());
-                Match synthetic{
-                    centres[tab] - source_length / 2,
-                    1,
-                    source_length,
-                    -13,
-                    std::move(*translated),
-                    std::string(embark_preparation_tabs[tab]),
-                };
-                synthetic.layout_x = centres[tab] - 8;
-                synthetic.layout_y = 2;
-                synthetic.layout_length = 16;
-                synthetic.layout_left = false;
-                synthetic.layout_pixel_y = std::max(1, gps_->tile_pixel_y / 4);
-                synthetic.layout_font_pixels = std::max(
-                    config_.min_font_pixels,
-                    static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
-                synthetic.graphical_clear_x = synthetic.x - 1;
-                synthetic.graphical_clear_y = 2;
-                synthetic.graphical_clear_width = source_length + 1;
-                synthetic.graphical_clear_height = 1;
-                synthetic.graphical_auto_foreground = true;
-                prepared_matches_.push_back(std::move(synthetic));
-            }
-        }
-
-        recover_embark_knowledge_list();
         suppress_base_.assign(cells, 0);
         suppress_top_.assign(cells, 0);
         for (const Match &match : prepared_matches_) {
@@ -41973,9 +42006,11 @@ void Overlay::render(SDL_Renderer *renderer) {
     }
     frame_prepared_ = false;
     prepare_frame();
+    const bool isolated_management_background = native_info_background_view(gps_);
     NativePanelReadScope panel_reads(gps_);
     publish_dfhack_stonesense_announcements();
-    const auto rendered_help_frames = gps_ && gps_->dimx > 0 && gps_->dimx <= 1000 &&
+    const auto rendered_help_frames = !isolated_management_background &&
+        gps_ && gps_->dimx > 0 && gps_->dimx <= 1000 &&
         gps_->dimy > 0 && gps_->dimy <= 1000
         ? native_text_overlay_frames(*gps_) : std::vector<SDL_Rect>{};
     const bool should_dump = dump_requested_.exchange(false) ||
@@ -42148,7 +42183,12 @@ void Overlay::render(SDL_Renderer *renderer) {
     // Save records reuse button skins from other pages. Once their native
     // sort group or complete save-card signature owns this page, no build-menu
     // or prose pass may repack them.
-    if (!layout_save_list(renderer)) {
+    if (isolated_management_background) {
+        layout_calendar_headers(renderer);
+        layout_fortress_header(renderer);
+        layout_fortress_date(renderer);
+        layout_multiline_matches();
+    } else if (!layout_save_list(renderer)) {
         if (!layout_pause_menu(renderer) &&
             !layout_embark_introduction(renderer) &&
             !layout_worldgen_setup(renderer) &&
@@ -42200,60 +42240,62 @@ void Overlay::render(SDL_Renderer *renderer) {
     prepared_matches_.insert(prepared_matches_.end(),
         std::make_move_iterator(tooltip_foreground.begin()),
         std::make_move_iterator(tooltip_foreground.end()));
-    layout_fortress_squad_creation(renderer);
-    layout_fortress_uniform_choices(renderer);
-    for (Match &match : prepared_matches_) {
-        if (match.rule != kHoverPictureCaptionRule || !match.native_picture_caption_box ||
-            match.target.empty()) continue;
-        const auto &box = *match.native_picture_caption_box;
-        layout_fortress_picture_caption(renderer, {&match}, box.x, box.x + box.w,
-            match.native_picture_caption_source);
+    if (!isolated_management_background) {
+        layout_fortress_squad_creation(renderer);
+        layout_fortress_uniform_choices(renderer);
+        for (Match &match : prepared_matches_) {
+            if (match.rule != kHoverPictureCaptionRule || !match.native_picture_caption_box ||
+                match.target.empty()) continue;
+            const auto &box = *match.native_picture_caption_box;
+            layout_fortress_picture_caption(renderer, {&match}, box.x, box.x + box.w,
+                match.native_picture_caption_source);
+        }
+        layout_adventure_journal_tabs(renderer);
+        layout_embark_site_card(renderer);
+        layout_world_site_card(renderer);
+        layout_world_artifact_rows(renderer);
+        layout_character_relation_rows(renderer);
+        // Groups records prove their own native strips, independently of a
+        // complete translated tab band or the generic character-panel layout.
+        layout_character_group_rows(renderer);
+        layout_character_work_animal_rows(renderer);
+        layout_character_room_rows(renderer);
+        // Apply the proven inventory record bounds after generic page layout so
+        // two-line captions retain their inset baseline and repaired lower edge.
+        layout_inventory(renderer);
+        layout_workshop_task_rows(renderer);
+        layout_fortress_task_rows(renderer);
+        layout_fortress_unit_chooser(renderer);
+        layout_fortress_location_list(renderer);
+        layout_fortress_stockpile_settings(renderer);
+        layout_workshop_recipe_card(renderer);
+        layout_workshop_material_fields(renderer);
+        layout_fortress_trade_requests(renderer);
+        layout_fortress_hauling(renderer);
+        layout_fortress_monthly_schedule(renderer);
+        layout_map_hover(renderer);
+        prepared_matches_.insert(prepared_matches_.end(),
+            std::make_move_iterator(operation_titles.begin()),
+            std::make_move_iterator(operation_titles.end()));
+        layout_operation_titles(renderer);
+        prepared_matches_.insert(prepared_matches_.end(),
+            std::make_move_iterator(pause_foreground.begin()),
+            std::make_move_iterator(pause_foreground.end()));
+        stabilize_embark_pause_menu();
+        layout_work_order_fields(renderer);
+        prepared_matches_.insert(prepared_matches_.end(),
+            std::make_move_iterator(save_confirmation.begin()),
+            std::make_move_iterator(save_confirmation.end()));
+        layout_credits_rows(renderer);
+        layout_main_menu_credits_rows();
+        // Header fields retain their own semantic ownership across the generic
+        // page/tooltip passes. Fit the entire block after those passes, including
+        // the activity, rather than rediscovering names from surviving fragments.
+        layout_character_header(renderer);
+        // The resting-place introduction and room label return with UI messages
+        // above. They establish ownership for the adjoining independent captions.
+        layout_resting_place_details(renderer);
     }
-    layout_adventure_journal_tabs(renderer);
-    layout_embark_site_card(renderer);
-    layout_world_site_card(renderer);
-    layout_world_artifact_rows(renderer);
-    layout_character_relation_rows(renderer);
-    // Groups records prove their own native strips, independently of a
-    // complete translated tab band or the generic character-panel layout.
-    layout_character_group_rows(renderer);
-    layout_character_work_animal_rows(renderer);
-    layout_character_room_rows(renderer);
-    // Apply the proven inventory record bounds after generic page layout so
-    // two-line captions retain their inset baseline and repaired lower edge.
-    layout_inventory(renderer);
-    layout_workshop_task_rows(renderer);
-    layout_fortress_task_rows(renderer);
-    layout_fortress_unit_chooser(renderer);
-    layout_fortress_location_list(renderer);
-    layout_fortress_stockpile_settings(renderer);
-    layout_workshop_recipe_card(renderer);
-    layout_workshop_material_fields(renderer);
-    layout_fortress_trade_requests(renderer);
-    layout_fortress_hauling(renderer);
-    layout_fortress_monthly_schedule(renderer);
-    layout_map_hover(renderer);
-    prepared_matches_.insert(prepared_matches_.end(),
-        std::make_move_iterator(operation_titles.begin()),
-        std::make_move_iterator(operation_titles.end()));
-    layout_operation_titles(renderer);
-    prepared_matches_.insert(prepared_matches_.end(),
-        std::make_move_iterator(pause_foreground.begin()),
-        std::make_move_iterator(pause_foreground.end()));
-    stabilize_embark_pause_menu();
-    layout_work_order_fields(renderer);
-    prepared_matches_.insert(prepared_matches_.end(),
-        std::make_move_iterator(save_confirmation.begin()),
-        std::make_move_iterator(save_confirmation.end()));
-    layout_credits_rows(renderer);
-    layout_main_menu_credits_rows();
-    // Header fields retain their own semantic ownership across the generic
-    // page/tooltip passes. Fit the entire block after those passes, including
-    // the activity, rather than rediscovering names from surviving fragments.
-    layout_character_header(renderer);
-    // The resting-place introduction and room label return with UI messages
-    // above. They establish ownership for the adjoining independent captions.
-    layout_resting_place_details(renderer);
     if (background_help_frames)
         for (auto &match : prepared_matches_)
             if (!match.native_help_background_frames)
@@ -42388,8 +42430,9 @@ void Overlay::render(SDL_Renderer *renderer) {
     } else {
         RenderTimingScope part_timing(render_timings_, config_.trace_render_timing,
             RenderTimingStage::DrawWorkOrder);
-        draw_with_help_clips(renderer, *gps_, rendered_help_frames, nullptr,
-            [&] { draw_work_order_buttons(renderer); });
+        if (!isolated_management_background)
+            draw_with_help_clips(renderer, *gps_, rendered_help_frames, nullptr,
+                [&] { draw_work_order_buttons(renderer); });
         part_timing.checkpoint(RenderTimingStage::DrawBorderRepairs);
         draw_with_help_clips(renderer, *gps_, rendered_help_frames, nullptr,
             [&] { draw_native_border_repairs(renderer); });
@@ -42682,6 +42725,8 @@ static void native_dfhack_present_layer(SDL_Renderer *renderer,
     void (*draw_translation)(SDL_Renderer *));
 static void native_help_present_layers(SDL_Renderer *renderer,
     void (*draw_help)(SDL_Renderer *));
+static void native_info_present_layer(SDL_Renderer *renderer,
+    void (*draw_info)(SDL_Renderer *));
 
 extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
     SlowBoundaryTiming boundary("present boundary");
@@ -42690,6 +42735,9 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
     g_overlay.replay_deferred_resolution_glyphs(renderer, g_real_copy);
     boundary.checkpoint("replay_glyphs");
     g_overlay.render(renderer);
+    native_info_present_layer(renderer, [](SDL_Renderer *info_renderer) {
+        g_overlay.render_native_info_layer(info_renderer);
+    });
     native_help_present_layers(renderer, [](SDL_Renderer *help_renderer) {
         g_overlay.render_native_help_layer(help_renderer);
     });
@@ -42714,6 +42762,13 @@ extern "C" int dfcn_render_copy(SDL_Renderer *renderer, SDL_Texture *texture,
                                  const SDL_Rect *source, const SDL_Rect *dest) {
     if (g_drawing_overlay) {
         return g_real_copy ? g_real_copy(renderer, texture, source, dest) : -1;
+    }
+    {
+        TranslationStateScope translation;
+        // The opaque management component is submitted on its own target.
+        // Covered background copies have no visible pixels and must not
+        // feed the main sweep's glyph/occlusion/suppression registries.
+        if (native_info_background_copy_hidden(renderer, dest)) return 0;
     }
     const uintptr_t caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
     if (caller == g_base_glyph_return) {

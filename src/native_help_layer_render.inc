@@ -65,7 +65,7 @@ static void native_help_draw(void *help) {
         } catch (...) { isolate = false; }
     }
     if (!isolate) { callback.call_native([&] { original(help); }); return; }
-    NativeHelpGridBinding output(gps, *layer.foreground.graphics());
+    NativeUiGridBinding output(gps, *layer.foreground.graphics());
     struct WriteScope {
         const graphicst *previous = g_native_help_write_graphics;
         explicit WriteScope(const graphicst *graphics) { g_native_help_write_graphics = graphics; }
@@ -86,6 +86,7 @@ static void native_help_begin_frame(void *renderer) {
     // Reset here even when the help renderer will not be called this frame.
     auto &layer = g_native_help_layer;
     layer.ready = false;
+    native_info_begin_frame();
     layer.frames.clear();
     layer.collapsed_titles.clear();
     layer.native_renderer = nullptr;
@@ -133,7 +134,7 @@ static bool install_native_help_layer_hook() {
     return true;
 }
 
-struct NativeHelpSdlState {
+struct NativeUiLayerSdlState {
     SDL_Renderer *renderer;
     SDL_Texture *target;
     SDL_Rect viewport{}, clip{};
@@ -143,7 +144,7 @@ struct NativeHelpSdlState {
     SDL_BlendMode blend;
     Uint8 r = 0, g = 0, b = 0, a = 255;
     bool clipped, restored = false;
-    explicit NativeHelpSdlState(SDL_Renderer *value)
+    explicit NativeUiLayerSdlState(SDL_Renderer *value)
         : renderer(value), target(SDL_GetRenderTarget(value)),
           integer_scale(SDL_RenderGetIntegerScale(value)), clipped(SDL_RenderIsClipEnabled(value)) {
         SDL_RenderGetViewport(renderer, &viewport);
@@ -174,10 +175,10 @@ struct NativeHelpSdlState {
         SDL_SetRenderDrawColor(renderer, r, g, b, a);
         restored = true;
     }
-    ~NativeHelpSdlState() { restore(); }
+    ~NativeUiLayerSdlState() { restore(); }
 };
 
-struct NativeHelpLayerTarget {
+struct NativeUiLayerTarget {
     SDL_Renderer *renderer = nullptr;
     SDL_Texture *texture = nullptr;
     int width = 0, height = 0;
@@ -199,10 +200,10 @@ struct NativeHelpLayerTarget {
         return true;
     }
 };
-static NativeHelpLayerTarget g_native_help_target;
+static NativeUiLayerTarget g_native_help_target;
 
-static void native_help_paint_grid(SDL_Renderer *renderer, const std::vector<Match> &matches) {
-    auto &layer = g_native_help_layer;
+static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *renderer,
+        const std::vector<Match> &matches) {
     if (!layer.ready || layer.renderer != renderer || !layer.native_renderer) return;
     auto *gps = layer.foreground.graphics();
     struct SourceMask {
@@ -227,7 +228,7 @@ static void native_help_paint_grid(SDL_Renderer *renderer, const std::vector<Mat
                     mask.hide(plane.screen.data() + at, static_cast<unsigned char>(match.source[i]));
             }
     }
-    NativeHelpGridBinding grid(native_graphics(), *gps, layer.native_renderer);
+    NativeUiGridBinding grid(native_graphics(), *gps, layer.native_renderer);
     void **methods = nullptr;
     std::memcpy(&methods, layer.native_renderer, sizeof(methods));
     using TileFn = void (*)(void *, int, int);
@@ -247,19 +248,17 @@ static void native_help_paint_grid(SDL_Renderer *renderer, const std::vector<Mat
     }
 }
 
-static void native_help_present_layers(SDL_Renderer *renderer,
-        void (*draw_help)(SDL_Renderer *)) {
+static void native_ui_present_layer(NativeUiLayerStorage &layer, NativeUiLayerTarget &target,
+        SDL_Renderer *renderer, void (*draw_layer)(SDL_Renderer *)) {
     TranslationStateScope translation;
-    auto &layer = g_native_help_layer;
-    if (!renderer || !draw_help || !layer.ready || layer.renderer != renderer) return;
-    auto &target = g_native_help_target;
+    if (!renderer || !draw_layer || !layer.ready || layer.renderer != renderer) return;
     int width = 0, height = 0;
     SDL_RenderGetLogicalSize(renderer, &width, &height);
     if (width <= 0 || height <= 0) {
         const auto *gps = layer.foreground.graphics();
         width = gps->screen_pixel_x; height = gps->screen_pixel_y;
     }
-    NativeHelpSdlState state(renderer);
+    NativeUiLayerSdlState state(renderer);
     struct DrawingScope {
         bool previous = g_drawing_overlay;
         DrawingScope() { g_drawing_overlay = true; }
@@ -267,7 +266,7 @@ static void native_help_present_layers(SDL_Renderer *renderer,
     } drawing;
     if (!target.prepare(renderer, width, height) || !state.bind(target.texture, width, height)) {
         state.restore();
-        draw_help(renderer);
+        draw_layer(renderer);
         return;
     }
     // This is a render destination, refreshed for every submitted native
@@ -275,10 +274,19 @@ static void native_help_present_layers(SDL_Renderer *renderer,
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
     if (SDL_RenderClear(renderer) != 0) return;
-    draw_help(renderer);
+    draw_layer(renderer);
     state.restore();
     const SDL_Rect destination{0, 0, width, height};
     SDL_RenderCopy(renderer, target.texture, nullptr, &destination);
+}
+
+static void native_help_paint_grid(SDL_Renderer *renderer, const std::vector<Match> &matches) {
+    native_ui_paint_grid(g_native_help_layer, renderer, matches);
+}
+
+static void native_help_present_layers(SDL_Renderer *renderer,
+        void (*draw_help)(SDL_Renderer *)) {
+    native_ui_present_layer(g_native_help_layer, g_native_help_target, renderer, draw_help);
 }
 
 static void uninstall_native_help_layer_hook() {
@@ -301,5 +309,6 @@ static bool install_native_help_layer_hook() { return true; }
 static void uninstall_native_help_layer_hook() {}
 static bool native_help_layer_hook_active() { return false; }
 static void native_help_paint_grid(SDL_Renderer *, const std::vector<Match> &) {}
+static void native_ui_paint_grid(NativeUiLayerStorage &, SDL_Renderer *, const std::vector<Match> &) {}
 static void native_help_present_layers(SDL_Renderer *, void (*)(SDL_Renderer *)) {}
 #endif

@@ -242,7 +242,8 @@ static size_t capture_native_announcement_page_rows(const void *paragraph) {
 static void capture_native_help_cell(graphicst *gps) {
     try {
         if (!gps || gps->dimx <= 0 || gps->dimx > 1000 || gps->dimy <= 0 || gps->dimy > 1000 ||
-                native_private_ui_write_active(gps) || !gps->screen ||
+                native_private_ui_write_active(gps) || gps == g_native_info_write_graphics ||
+            !gps->screen ||
             gps->screenx < 0 || gps->screenx >= gps->dimx ||
             gps->screeny < 0 || gps->screeny >= gps->dimy ||
             gps->screenx < gps->clipx[0] || gps->screenx > gps->clipx[1] ||
@@ -533,12 +534,13 @@ static bool native_info_title_memory_readable(const void *pointer, size_t size) 
     const uintptr_t end = cursor + size;
     const size_t page = native_patch_page_size();
     if (!page) return false;
+    // Access permissions have page granularity. The existing guarded reader
+    // can establish readability without reopening and parsing /proc/self/maps
+    // for every field of every caption's widget/parent chain.
+    unsigned char probe = 0;
     while (cursor < end) {
         const size_t span = std::min<size_t>(end - cursor, page - cursor % page);
-        NativePatchProtection protection = 0;
-        unsigned long error = 0;
-        if (!native_patch_page_protection(cursor, span, protection, error) ||
-                !native_patch_readable(protection)) return false;
+        if (!native_history_copy_bytes(cursor, &probe, sizeof(probe))) return false;
         cursor += span;
     }
     return true;
