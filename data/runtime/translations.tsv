@@ -38810,7 +38810,7 @@ Native history collection title of {p} in {d}.	{d1}年的{p1}。	htEi
 Native history collection title of {p} in {p}.	在{p2}，{p1}。	htEi
 Native history collection {s} Race during {e}.	在{e1}期间，{s1}赛跑。	htEi
 Native history collection {s} Race within {p}.	在{p1}，{s1}赛跑。	htEi
-Native history occasion {a} {s} as part of {e}	{a1}为了{e1}，{s1}	ht
+Native history occasion {a} {s} as part of {e}	{a1}在{e1}中{s1}	ht
 Nearby vegetation seem to shrink away from it.	附近的草木似乎都在退缩，躲避它。	h
 Office to work in, numbers may be approximate.	办公室可供工作，数量可能只是估算值。	wl
 Overall, this is a good source of information.	总体而言，这是良好的资料来源。	h
@@ -45177,7 +45177,7 @@ Native history collection {s} Race at {p}.	在{p1}，{s1}赛跑。	htEi
 Native history collection {s} Race in {d}.	{d1}年的{s1}赛跑。	htEi
 Native history collection {s} Race in {p}.	在{p1}，{s1}赛跑。	htEi
 Native history held story {e} in the wilds	在荒野中讲述了以下往事：「{e1}」	ht
-Native history occasion {s} as part of {e}	为了{e1}，{s1}	ht
+Native history occasion {s} as part of {e}	在{e1}中{s1}	ht
 On the coin's back is an {s} image of {a}.	硬币背面图案{s1}，描绘了{a1}。	hHt
 Overview sentence: Death is all around us.	到处都有人死去。	l
 Overview sentence: Grief?  I feel nothing.	难过？我什么感觉也没有。	l
