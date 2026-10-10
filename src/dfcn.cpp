@@ -2212,6 +2212,10 @@ static NativeTextGridOrigin native_text_grid_origin(
 static thread_local const graphicst *g_native_help_write_graphics = nullptr;
 static thread_local const graphicst *g_native_info_write_graphics = nullptr;
 static thread_local const graphicst *g_native_stocks_write_graphics = nullptr;
+static thread_local const graphicst *g_native_notification_write_graphics = nullptr;
+static bool native_notification_write_active(const graphicst *gps) noexcept {
+    return gps && gps == g_native_notification_write_graphics;
+}
 static thread_local bool g_native_info_foreground = false;
 static bool native_info_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_stocks_background_view(const graphicst *) noexcept;
@@ -2573,6 +2577,12 @@ static void native_tooltip_end_draw(NativeTooltipWidgetFrame &frame);
 static void native_tooltip_restore_output();
 static void native_tooltip_begin_frame();
 static void native_tooltip_release_layer();
+static bool native_notification_begin_draw(const SDL_Rect &bounds);
+static void native_notification_end_draw();
+static void native_notification_restore_output();
+static void native_notification_begin_frame();
+static void native_notification_release_layer();
+static void reset_native_announcement_notification_capture();
 static std::optional<NativeTooltipWidgetFrame> g_native_tooltip_widget_frame;
 static std::optional<NativeTooltipWidgetFrame> captured_native_tooltip_widget(const graphicst &gps) {
     if (NativeTooltipPageScope::active) return std::nullopt;
@@ -3432,6 +3442,7 @@ public:
     void render_dfhack_layer(SDL_Renderer *renderer);
     void render_native_help_layer(SDL_Renderer *renderer);
     void render_native_tooltip_layer(SDL_Renderer *renderer);
+    void render_native_notification_layer(SDL_Renderer *renderer);
     void render_native_info_layer(SDL_Renderer *renderer);
     void render_native_stocks_layer(SDL_Renderer *renderer);
     void render_native_fortress_layer(SDL_Renderer *renderer, bool stocks);
@@ -16003,6 +16014,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_info_layers.inc"
 #include "native_stocks_layers.inc"
 #include "native_tooltip_layers.inc"
+#include "native_notification_layers.inc"
 
 struct NativeKeybindingScope {
     SDL_Rect table{};
@@ -16512,6 +16524,7 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
 #include "native_stocks_layer_translation.inc"
 #include "native_info_layer_translation.inc"
 #include "native_tooltip_layer_translation.inc"
+#include "native_notification_layer_translation.inc"
 
 static void native_dfhack_redraw_background(SDL_Renderer *renderer,
     const SDL_Rect &cells);
@@ -43348,6 +43361,8 @@ static void native_stocks_present_layer(SDL_Renderer *renderer,
     void (*draw_stocks)(SDL_Renderer *));
 static void native_tooltip_present_layer(SDL_Renderer *renderer,
     void (*draw_tooltips)(SDL_Renderer *));
+static void native_notification_present_layer(SDL_Renderer *renderer,
+    void (*draw_notifications)(SDL_Renderer *));
 
 extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
     // A producer can reset or publish private UI output between individual
@@ -43365,6 +43380,9 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
     });
     native_stocks_present_layer(renderer, [](SDL_Renderer *stocks_renderer) {
         g_overlay.render_native_stocks_layer(stocks_renderer);
+    });
+    native_notification_present_layer(renderer, [](SDL_Renderer *notification_renderer) {
+        g_overlay.render_native_notification_layer(notification_renderer);
     });
     native_help_present_layers(renderer, [](SDL_Renderer *help_renderer) {
         g_overlay.render_native_help_layer(help_renderer);

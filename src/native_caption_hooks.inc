@@ -175,6 +175,16 @@ static NativeHelpTopTileFn g_real_native_help_top_tile = nullptr;
 static NativeAnnouncementPageBinding g_native_announcement_page_binding;
 static NativeAnnouncementRowsFn g_native_announcement_page_rows = nullptr;
 static NativeAnnouncementPopupDrawFn g_native_announcement_popup_draw = nullptr;
+// Only the actual two hover producers use this state. POD TLS has no owning
+// thread-exit destructor that could retain a reloaded core DLL.
+static thread_local size_t g_native_announcement_hover_rows = 0;
+static thread_local bool g_native_announcement_hover_isolated = false;
+
+static void reset_native_announcement_notification_capture() {
+    g_native_announcement_hover_rows = 0;
+    g_native_announcement_hover_isolated = false;
+    native_notification_restore_output();
+}
 
 #ifdef _WIN32
 static std::shared_ptr<NativeTooltipPage> capture_native_announcement_popup_background();
@@ -182,17 +192,29 @@ static void publish_native_announcement_popup_background(
     std::shared_ptr<NativeTooltipPage> page, int32_t margin);
 static void clear_native_announcement_popup_background();
 
-// The native caller forwards exactly four register arguments. Capture the
-// page before the renderer clears its rectangle, then publish only after
-// that draw has completed. Geometry and source ownership stay in the shared
-// page reader; this call wrapper never changes the game's inputs or text.
+// This four-register call owns every expanded unit/all/selected-alert branch.
+// Redirect its fixed rectangle before the first native clear and restore the
+// page when the renderer returns. A renderer without private output retains
+// the original background capture path.
 static void capture_native_announcement_popup_draw(
         uint64_t owner, uint64_t second, uint64_t margin, uint64_t fourth) {
     NativeInputCallbackScope callback;
     std::shared_ptr<NativeTooltipPage> page;
-    try { page = capture_native_announcement_popup_background(); } catch (...) {}
+    bool isolated = false;
+    try {
+        const int64_t left = int64_t(static_cast<int32_t>(margin)) + 4;
+        if (left >= 0 && left <= 1000)
+            isolated = native_notification_begin_draw({static_cast<int>(left), 4, 94, 35});
+        if (isolated) clear_native_announcement_popup_background();
+        else page = capture_native_announcement_popup_background();
+    } catch (...) {}
+    struct Restore {
+        bool isolated;
+        ~Restore() { if (isolated) native_notification_end_draw(); }
+    } restore{isolated};
     const auto original = g_native_announcement_popup_draw;
     if (original) callback.call_native([&] { original(owner, second, margin, fourth); });
+    if (isolated) return;
     try {
         publish_native_announcement_popup_background(std::move(page),
             static_cast<int32_t>(margin));
@@ -200,14 +222,32 @@ static void capture_native_announcement_popup_draw(
         try { clear_native_announcement_popup_background(); } catch (...) {}
     }
 }
+
+template<bool BodyRow>
+static void capture_native_announcement_hover_text(graphicst *gps,
+        const NativeString *source, NativeJustification just, int width) {
+    NativeInputCallbackScope callback;
+    const auto original = g_native_caption_hooks.draw;
+    if (original) callback.call_native([&] { original(gps, source, just, width); });
+    if (!g_native_announcement_hover_isolated) return;
+    if constexpr (BodyRow) {
+        if (g_native_announcement_hover_rows > 0)
+            --g_native_announcement_hover_rows;
+    }
+    if (g_native_announcement_hover_rows == 0) {
+        g_native_announcement_hover_isolated = false;
+        native_notification_end_draw();
+    }
+}
 #endif
 
 // These two call sites count the report rows immediately before the native
-// renderer clears their same-layer floating rectangle. Keep the actual page
-// before that first write, including picture/action textures and font flags.
-// The consumer still has to prove the current instruction and closed frame.
+// renderer clears its floating rectangle. Redirect every border/background
+// and text write to the notification layer, retaining page capture only when
+// this renderer cannot supply an isolated output grid.
 static size_t capture_native_announcement_page_rows(const void *paragraph) {
     NativeInputCallbackScope callback;
+    reset_native_announcement_notification_capture();
     const auto original = g_native_announcement_page_rows;
     const size_t rows = original ? callback.call_native([&] { return original(paragraph); }) : 0;
     try {
@@ -230,14 +270,20 @@ static size_t capture_native_announcement_page_rows(const void *paragraph) {
                     left <= gps->dimx - width - 5 && bottom < gps->dimy &&
                     left >= gps->clipx[0] && left + width + 4 <= gps->clipx[1] &&
                     top >= gps->clipy[0] && bottom <= gps->clipy[1]) {
-                page = std::make_shared<NativeTooltipPage>(*gps);
-                page->bounds = {left, top, width + 5, static_cast<int>(rows) + 4};
-                std::fill(page->cells.begin(), page->cells.end(), 0);
-                for (int x = left; x <= left + width + 4; ++x)
-                    std::fill_n(page->cells.begin() + static_cast<size_t>(x) * gps->dimy + top,
-                        static_cast<size_t>(rows) + 4, 1);
-                dimx = gps->dimx;
-                dimy = gps->dimy;
+                const SDL_Rect bounds{left, top, width + 5, static_cast<int>(rows) + 4};
+                if (native_notification_begin_draw(bounds)) {
+                    g_native_announcement_hover_rows = rows;
+                    g_native_announcement_hover_isolated = true;
+                } else {
+                    page = std::make_shared<NativeTooltipPage>(*gps);
+                    page->bounds = bounds;
+                    std::fill(page->cells.begin(), page->cells.end(), 0);
+                    for (int x = left; x <= left + width + 4; ++x)
+                        std::fill_n(page->cells.begin() + static_cast<size_t>(x) * gps->dimy + top,
+                            static_cast<size_t>(rows) + 4, 1);
+                    dimx = gps->dimx;
+                    dimy = gps->dimy;
+                }
             }
         }
         std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
@@ -246,6 +292,7 @@ static size_t capture_native_announcement_page_rows(const void *paragraph) {
         g_native_announcement_page_dimx = dimx;
         g_native_announcement_page_dimy = dimy;
     } catch (...) {
+        reset_native_announcement_notification_capture();
         try {
             std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
             g_native_announcement_page.reset();
@@ -258,7 +305,7 @@ static void capture_native_help_cell(graphicst *gps) {
     try {
         if (!gps || gps->dimx <= 0 || gps->dimx > 1000 || gps->dimy <= 0 || gps->dimy > 1000 ||
                 native_private_ui_write_active(gps) || gps == g_native_info_write_graphics ||
-                gps == g_native_stocks_write_graphics ||
+                gps == g_native_stocks_write_graphics || native_notification_write_active(gps) ||
             !gps->screen ||
             gps->screenx < 0 || gps->screenx >= gps->dimx ||
             gps->screeny < 0 || gps->screeny >= gps->dimy ||
@@ -314,6 +361,7 @@ static void capture_native_tooltip_container(void *widget, uint32_t tick) {
     const auto original = reinterpret_cast<NativeCaptionWidgetRenderFn>(
         g_native_tooltip_container_hook.original);
     if (native_private_ui_write_active(native_graphics()) ||
+            native_notification_write_active(native_graphics()) ||
             (g_native_tooltip_write && g_native_tooltip_write->isolated)) {
         if (original) callback.call_native([&] { original(widget, tick); });
         return;
@@ -2579,7 +2627,7 @@ static bool install_native_caption_hooks() {
     }
     std::vector<NativeCall> calls;
     calls.reserve(profile.sites.size() * 2 + profile.inline_resizes.size() +
-        profile.roster_shorten_calls.size() + profile.announcement_page.rows_calls.size() + 6);
+        profile.roster_shorten_calls.size() + profile.announcement_page.rows_calls.size() + 10);
     for (const auto &site : profile.sites) {
         switch (site.kind) {
         case NativeFieldKind::EmbarkItem:
@@ -2615,6 +2663,20 @@ static bool install_native_caption_hooks() {
     if (profile.announcement_popup_call)
         calls.push_back({profile.announcement_popup_call, profile.announcement_popup_target,
             reinterpret_cast<const void *>(&capture_native_announcement_popup_draw)});
+    // The header/body calls complete each inline hover producer. Keeping their
+    // own count closes the output grid before the main renderer continues.
+    std::vector<NativeCall> announcement_hover_calls{
+        {0x3fab53, 0xad9960,
+            reinterpret_cast<const void *>(&capture_native_announcement_hover_text<false>)},
+        {0x3fac29, 0xad9960,
+            reinterpret_cast<const void *>(&capture_native_announcement_hover_text<true>)},
+        {0x3fae43, 0xad9960,
+            reinterpret_cast<const void *>(&capture_native_announcement_hover_text<false>)},
+        {0x3faf19, 0xad9960,
+            reinterpret_cast<const void *>(&capture_native_announcement_hover_text<true>)},
+    };
+    if (!native_reference_calls(announcement_hover_calls, 0)) return false;
+    calls.insert(calls.end(), announcement_hover_calls.begin(), announcement_hover_calls.end());
     // All four callers set just=0 and width=0 before addst. Their nonvolatile
     // registers still hold the entity used by the preceding name formatter.
     // Replace R8 with that entity; the wrapper restores both constant args.
@@ -2846,6 +2908,7 @@ static bool install_native_caption_hooks() {
 }
 
 static bool uninstall_native_caption_hooks() {
+    reset_native_announcement_notification_capture();
 #ifndef _WIN32
     if (!g_native_main_caption_calls.uninstall("Native page and roster caption restore")) return false;
 #endif

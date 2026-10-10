@@ -80,6 +80,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_dfhack_layer_present.inc"
 #include "native_help_layer_render.inc"
 #include "native_tooltip_layer_render.inc"
+#include "native_notification_layer_render.inc"
 #include "native_info_layer_render.inc"
 #include "native_stocks_layer_render.inc"
 #include "native_dfhack_render_layers.inc"
@@ -200,6 +201,7 @@ static void uninstall_sdl_hooks() {
     uninstall_native_overview_quote_hooks();
     uninstall_native_character_relations_hook();
     uninstall_native_caption_hooks();
+    if (!native_caption_hooks_active()) native_notification_release_layer();
     uninstall_native_construction_search_hook();
     uninstall_native_adventure_barter_search_hook();
     uninstall_native_job_details_search_hook();

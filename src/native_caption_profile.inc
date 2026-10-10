@@ -52,15 +52,16 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     profile.draw_target = 0xad9960;
     // The two fortress report hover renderers count their native row vector, then
     // clear screen and draw HOVER_RECTANGLE at gps+0x1924 before any text.
-    // They are same-layer overlays, separate from the Tooltip widget and
-    // top_addst paths. Both use paragraph+0x48 for width and the same anchor.
+    // The row-count hook redirects both inline producers into the private
+    // notification output until their last body addst. Both use paragraph
+    // +0x48 for width and the same anchor.
     // Native bounds are [left, bottom-rows-3] through [left+width+4, bottom].
     profile.announcement_page = {0x6ee50, {0x3fa9eb, 0x3facde},
         reinterpret_cast<const int32_t *>(native_pe_address(profile.base, 0x18a93bc)),
         reinterpret_cast<const int32_t *>(native_pe_address(profile.base, 0x18a93c0)), 0x48};
     // The expanded alert/all-report/unit-report window clears a different
     // fixed rectangle before assembling its rows. Its single four-register
-    // caller owns the pre-draw page for every branch of that renderer.
+    // caller owns the complete private output scope for every branch.
     // Reference 40d64b..40d728: left=int32(R8)+4, top=4, 94 by 35 cells.
     profile.announcement_popup_call = 0x3fa6f8;
     profile.announcement_popup_target = 0x40d5f0;

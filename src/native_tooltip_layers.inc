@@ -16,7 +16,8 @@ static bool native_tooltip_begin_draw(NativeTooltipWidgetFrame &frame) {
         auto *gps = native_graphics();
         auto &layer = g_native_tooltip_layer;
         if (!gps || !gps->screen || !gps->screen_top || g_native_tooltip_output ||
-                native_private_ui_write_active(gps) || !g_native_help_layer.native_renderer ||
+                native_private_ui_write_active(gps) || native_notification_write_active(gps) ||
+                !g_native_help_layer.native_renderer ||
                 !g_native_help_layer.renderer || gps->dimx <= 0 || gps->dimx > 1000 ||
                 gps->dimy <= 0 || gps->dimy > 1000 || frame.dimx != gps->dimx ||
                 frame.dimy != gps->dimy) return false;

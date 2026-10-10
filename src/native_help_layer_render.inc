@@ -84,6 +84,7 @@ static void native_help_draw(void *help) {
 
 static void native_help_reset_frame(void *renderer) {
     native_tooltip_begin_frame();
+    native_notification_begin_frame();
     auto &layer = g_native_help_layer;
     layer.ready = false;
     native_info_begin_frame();
@@ -114,6 +115,7 @@ static void native_help_begin_frame(void *renderer) {
     // Only restore unfinished output bindings before native arrays swap.
     // Keep the last completed layer available until the producer takes over.
     native_tooltip_restore_output();
+    reset_native_announcement_notification_capture();
     const auto original = reinterpret_cast<NativeHelpDrawFn>(g_native_help_frame_hook.original);
     if (original) callback.call_native([&] { original(renderer); });
 #ifdef _WIN32
