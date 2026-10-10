@@ -238,6 +238,12 @@ static std::optional<SiteReferenceIdentity> resolve_site_reference_identity(
     return ambiguous ? std::nullopt : selected;
 }
 
+std::optional<NativeHistoryName> Overlay::resolve_site_reference_name(std::string_view source) const {
+    const auto identity = resolve_site_reference_identity(source, draw_epoch_,
+        [&](const NativeHistoryName &name) { return site_name_search_aliases(name); });
+    return identity ? std::optional(identity->name) : std::nullopt;
+}
+
 std::optional<std::string> Overlay::translate_site_reference(
         std::string_view source, bool english_field) const {
     const auto identity = resolve_site_reference_identity(source, draw_epoch_,

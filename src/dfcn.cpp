@@ -3580,6 +3580,7 @@ private:
     std::optional<std::string> localize_site_name(const NativeHistoryName &name) const;
     std::string site_name_full_transliteration(const NativeHistoryName &name) const;
     std::vector<std::string> site_name_search_aliases(const NativeHistoryName &name) const;
+    std::optional<NativeHistoryName> resolve_site_reference_name(std::string_view source) const;
     std::optional<std::string> translate_site_reference(
         std::string_view source, bool english_field = false) const;
     std::optional<std::string> translate_book_site_subject(std::string_view source) const;
@@ -4425,6 +4426,8 @@ private:
     std::vector<uint8_t> capture_map_text_cells() const;
     std::optional<NativeTextCard> capture_embark_reclaim_history() const;
     void append_embark_site_headings(const NativeTextCard &card,
+        std::vector<std::string> &rows, std::vector<Match> &matches, int only_y) const;
+    void append_embark_site_names(const NativeTextCard &card,
         std::vector<std::string> &rows, std::vector<Match> &matches, int only_y) const;
     void append_embark_site_resources(NativeTextCard &card,
         std::vector<std::string> &rows, std::vector<Match> &matches, int only_y) const;
@@ -16858,6 +16861,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     if (embark_site) {
         append_embark_site_headings(*embark_site, screen_rows, result, only_y);
         append_adventure_travel_status_paragraphs(*embark_site, screen_rows, result, only_y);
+        append_embark_site_names(*embark_site, screen_rows, result, only_y);
         append_embark_site_resources(*embark_site, screen_rows, result, only_y);
     }
     if (world_site) {
