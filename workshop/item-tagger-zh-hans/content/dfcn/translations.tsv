@@ -31,6 +31,7 @@ Set none	全部禁用	l
 [flux]	[助熔剂]	w
 [fuel]	[燃料]	w
 [msafe]	[耐岩浆]	w
+Extract adamantine [msafe] strands	提取精金缕 [耐岩浆]	l
 No world loaded	未载入世界	l
 No map loaded	未载入地图	l
 No tags to revert	没有需要撤销的标签	l

@@ -1,0 +1,7 @@
+base = "tasks"
+
+[[rulesets]]
+[rulesets.rules]
+# The native economic-use caption inserts material tags before "strands".
+# Keep the complete job and translate the bounded tag sequence together.
+"Extract adamantine{::item_tagger::tags} strands" = "提取精金缕{::item_tagger::tags}"
