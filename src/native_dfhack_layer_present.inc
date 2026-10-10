@@ -92,13 +92,24 @@ struct NativeDfhackLayerSdlState {
             SDL_RenderSetScale(renderer, 1.0f, 1.0f) == 0 &&
             SDL_RenderSetClipRect(renderer, nullptr) == 0;
     }
+    bool bind_composite(int width, int height) noexcept {
+        if (width <= 0 || height <= 0) return false;
+        restored = false;
+        // Rebuild the full logical-screen transform for the entry target.
+        // SDL handles window letterboxing and texture target dimensions;
+        // a native widget's retained viewport/clip cannot trim this layer.
+        return SDL_SetRenderTarget(renderer, target) == 0 &&
+            SDL_RenderSetIntegerScale(renderer, integer_scale) == 0 &&
+            SDL_RenderSetLogicalSize(renderer, width, height) == 0 &&
+            SDL_RenderSetClipRect(renderer, nullptr) == 0;
+    }
     void restore() noexcept {
         if (restored) return;
-        SDL_SetRenderTarget(renderer, target);
+        if (SDL_SetRenderTarget(renderer, target) != 0) return;
         SDL_RenderSetLogicalSize(renderer, logical_width, logical_height);
         SDL_RenderSetIntegerScale(renderer, integer_scale);
-        SDL_RenderSetViewport(renderer, &viewport);
         SDL_RenderSetScale(renderer, scale_x, scale_y);
+        SDL_RenderSetViewport(renderer, &viewport);
         SDL_RenderSetClipRect(renderer, clipped ? &clip : nullptr);
         SDL_SetRenderDrawBlendMode(renderer, blend);
         SDL_SetRenderDrawColor(renderer, r, g, b, a);
@@ -748,7 +759,7 @@ static void native_dfhack_present_layer(SDL_Renderer *renderer,
         native_dfhack_compose_gpu_layer(renderer, paint.bound_target, width, height);
         if (translate) translate(renderer);
     }
-    state.restore();
+    if (!state.bind_composite(width, height)) return;
     // This is the ordinary final composition of the private target. It never
     // copies game pixels into DFHack's layer or feeds it to native scanners.
     const SDL_Rect destination{0, 0, width, height};

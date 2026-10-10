@@ -59,10 +59,14 @@ static void native_tooltip_end_draw(NativeTooltipWidgetFrame &frame) {
     g_native_tooltip_translation.reset();
 }
 
-static void native_tooltip_begin_frame() {
+static void native_tooltip_restore_output() {
     g_native_tooltip_output.reset();
     g_native_tooltip_captions.reset();
     g_native_tooltip_translation.reset();
+}
+
+static void native_tooltip_begin_frame() {
+    native_tooltip_restore_output();
     g_native_tooltip_layer.ready = false;
     g_native_tooltip_layer.frames.clear();
     g_native_tooltip_layer.native_renderer = nullptr;

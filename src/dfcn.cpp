@@ -2570,6 +2570,7 @@ struct NativeTooltipWidgetFrame {
 };
 static bool native_tooltip_begin_draw(NativeTooltipWidgetFrame &frame);
 static void native_tooltip_end_draw(NativeTooltipWidgetFrame &frame);
+static void native_tooltip_restore_output();
 static void native_tooltip_begin_frame();
 static void native_tooltip_release_layer();
 static std::optional<NativeTooltipWidgetFrame> g_native_tooltip_widget_frame;
@@ -43157,6 +43158,10 @@ static void native_tooltip_present_layer(SDL_Renderer *renderer,
     void (*draw_tooltips)(SDL_Renderer *));
 
 extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
+    // A producer can reset or publish private UI output between individual
+    // layer calls. Keep the page and every foreground layer in one snapshot
+    // until the completed composite has been presented.
+    TranslationStateScope translation;
     SlowBoundaryTiming boundary("present boundary");
     apply_pending_arena_translated_search();
     boundary.checkpoint("arena_search");

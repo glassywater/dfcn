@@ -1,6 +1,10 @@
 // Every native UI layer shares the frame producer and tile painters. Only
 // the help component's own draw/bounds bindings are platform-specific.
 static NativeEntryHook g_native_help_frame_hook;
+#ifdef _WIN32
+static NativeEntryHook g_native_help_producer_hook;
+static void *g_native_help_frame_renderer = nullptr;
+#endif
 using NativeHelpDrawFn = void (*)(void *);
 // help_interfacest::render is shared by tutorials, information cards and
 // minimized guides. Redirect its output BEFORE any native stores execute.
@@ -78,15 +82,8 @@ static void native_help_draw(void *help) {
     layer.ready = true;
 }
 
-static void native_help_begin_frame(void *renderer) {
-    NativeInputCallbackScope callback;
-    TranslationStateScope translation;
-    // Restore any unfinished inline card before swap_arrays touches gps.
+static void native_help_reset_frame(void *renderer) {
     native_tooltip_begin_frame();
-    const auto original = reinterpret_cast<NativeHelpDrawFn>(g_native_help_frame_hook.original);
-    if (original) callback.call_native([&] { original(renderer); });
-    // swap_arrays precedes render_things in the game's native frame producer.
-    // Reset here even when the help renderer will not be called this frame.
     auto &layer = g_native_help_layer;
     layer.ready = false;
     native_info_begin_frame();
@@ -111,9 +108,43 @@ static void native_help_begin_frame(void *renderer) {
     layer.renderer = sdl;
 }
 
+static void native_help_begin_frame(void *renderer) {
+    NativeInputCallbackScope callback;
+    TranslationStateScope translation;
+    // Only restore unfinished output bindings before native arrays swap.
+    // Keep the last completed layer available until the producer takes over.
+    native_tooltip_restore_output();
+    const auto original = reinterpret_cast<NativeHelpDrawFn>(g_native_help_frame_hook.original);
+    if (original) callback.call_native([&] { original(renderer); });
+#ifdef _WIN32
+    g_native_help_frame_renderer = renderer;
+#else
+    native_help_reset_frame(renderer);
+#endif
+}
+
+#ifdef _WIN32
+static void native_help_produce_frame() {
+    NativeInputCallbackScope callback;
+    TranslationStateScope translation;
+    const auto original = reinterpret_cast<void (*)()>(g_native_help_producer_hook.original);
+    if (!original) return;
+    // swap_arrays and render_things are separate calls on the producer
+    // thread. Reset and rebuild the layers under one lock, so Present sees
+    // either the previous completed output or this complete frame, including
+    // an empty frame when the native component closes.
+    native_help_reset_frame(g_native_help_frame_renderer);
+    callback.call_native([&] { original(); });
+}
+#endif
+
 static bool install_native_help_layer_hook() {
     if (g_native_help_draw_hook.installed && g_native_help_frame_hook.installed &&
-            g_native_help_bounds_hook.installed) return true;
+            g_native_help_bounds_hook.installed
+#ifdef _WIN32
+            && g_native_help_producer_hook.installed
+#endif
+            ) return true;
     constexpr const char *label = "Native help component draw entry";
     const auto base = native_history_profile_base();
 #ifdef _WIN32
@@ -131,6 +162,11 @@ static bool install_native_help_layer_hook() {
     if (!frame || !native_reference_bytes(0x8e4e60, frame_prefix) ||
             !g_native_help_frame_hook.prepare(frame, frame_prefix,
                 reinterpret_cast<const void *>(&native_help_begin_frame), {}, label)) return false;
+    auto *producer = reinterpret_cast<unsigned char *>(native_reference_address(base, 0xadb420));
+    std::vector<unsigned char> producer_prefix{0x48,0x89,0x5c,0x24,0x08};
+    if (!producer || !native_reference_bytes(0xadb420, producer_prefix) ||
+            !g_native_help_producer_hook.prepare(producer, producer_prefix,
+                reinterpret_cast<const void *>(&native_help_produce_frame), {}, label)) return false;
     std::vector<NativeCall> calls{{0x1e8bb5, 0x1f74f0,
         reinterpret_cast<const void *>(&capture_native_help_draw_bounds)}};
     constexpr uintptr_t origin = 0;
@@ -158,6 +194,9 @@ static bool install_native_help_layer_hook() {
     g_native_help_bounds = reinterpret_cast<NativeHelpBoundsFn>(bounds);
     if (!native_reference_calls(calls, origin) ||
             !g_native_help_bounds_hook.install(base, calls, label) ||
+#ifdef _WIN32
+            !g_native_help_producer_hook.install(label) ||
+#endif
             !g_native_help_frame_hook.install(label) ||
             !g_native_help_draw_hook.install(label)) return false;
     log_line("INFO", "Redirected native tutorial/help drawing to its private output layer");
@@ -185,6 +224,7 @@ struct NativeUiLayerSdlState {
         SDL_GetRenderDrawColor(renderer, &r, &g, &b, &a);
     }
     bool bind(SDL_Texture *texture, int width, int height) {
+        restored = false;
         const SDL_Rect full{0, 0, width, height};
         return SDL_SetRenderTarget(renderer, texture) == 0 &&
             SDL_RenderSetLogicalSize(renderer, 0, 0) == 0 &&
@@ -193,13 +233,24 @@ struct NativeUiLayerSdlState {
             SDL_RenderSetScale(renderer, 1, 1) == 0 &&
             SDL_RenderSetClipRect(renderer, nullptr) == 0;
     }
+    bool bind_composite(int width, int height) {
+        if (width <= 0 || height <= 0) return false;
+        restored = false;
+        // The complete layer owns logical-screen coordinates. Recompute the
+        // viewport/scale for the entry window or texture target, preserving
+        // logical letterboxing but discarding a native widget's local clip.
+        return SDL_SetRenderTarget(renderer, target) == 0 &&
+            SDL_RenderSetIntegerScale(renderer, integer_scale) == 0 &&
+            SDL_RenderSetLogicalSize(renderer, width, height) == 0 &&
+            SDL_RenderSetClipRect(renderer, nullptr) == 0;
+    }
     void restore() {
         if (restored) return;
-        SDL_SetRenderTarget(renderer, target);
+        if (SDL_SetRenderTarget(renderer, target) != 0) return;
         SDL_RenderSetLogicalSize(renderer, logical_width, logical_height);
         SDL_RenderSetIntegerScale(renderer, integer_scale);
-        SDL_RenderSetViewport(renderer, &viewport);
         SDL_RenderSetScale(renderer, scale_x, scale_y);
+        SDL_RenderSetViewport(renderer, &viewport);
         SDL_RenderSetClipRect(renderer, clipped ? &clip : nullptr);
         SDL_SetRenderDrawBlendMode(renderer, blend);
         SDL_SetRenderDrawColor(renderer, r, g, b, a);
@@ -295,8 +346,7 @@ static void native_ui_present_layer(NativeUiLayerStorage &layer, NativeUiLayerTa
         ~DrawingScope() { g_drawing_overlay = previous; }
     } drawing;
     if (!target.prepare(renderer, width, height) || !state.bind(target.texture, width, height)) {
-        state.restore();
-        draw_layer(renderer);
+        if (state.bind_composite(width, height)) draw_layer(renderer);
         return;
     }
     // This is a render destination, refreshed for every submitted native
@@ -305,7 +355,7 @@ static void native_ui_present_layer(NativeUiLayerStorage &layer, NativeUiLayerTa
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
     if (SDL_RenderClear(renderer) != 0) return;
     draw_layer(renderer);
-    state.restore();
+    if (!state.bind_composite(width, height)) return;
     const SDL_Rect destination{0, 0, width, height};
     SDL_RenderCopy(renderer, target.texture, nullptr, &destination);
 }
@@ -323,14 +373,28 @@ static void uninstall_native_help_layer_hook() {
     g_native_help_draw_hook.uninstall("Native help draw entry restore");
     g_native_help_bounds_hook.uninstall("Native help layout call restore");
     g_native_help_frame_hook.uninstall("Native UI frame producer restore");
+#ifdef _WIN32
+    g_native_help_producer_hook.uninstall("Native UI complete frame producer restore");
+#endif
     if (!g_native_help_frame_hook.active() && !g_native_help_draw_hook.active() &&
-            !g_native_help_bounds_hook.active()) {
+            !g_native_help_bounds_hook.active()
+#ifdef _WIN32
+            && !g_native_help_producer_hook.active()
+#endif
+            ) {
         g_native_help_bounds = nullptr;
         g_native_help_target.release();
         g_native_help_layer = {};
+#ifdef _WIN32
+        g_native_help_frame_renderer = nullptr;
+#endif
     }
 }
 static bool native_help_layer_hook_active() {
     return g_native_help_frame_hook.active() || g_native_help_draw_hook.active() ||
-        g_native_help_bounds_hook.active();
+        g_native_help_bounds_hook.active()
+#ifdef _WIN32
+        || g_native_help_producer_hook.active()
+#endif
+        ;
 }
