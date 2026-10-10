@@ -288,7 +288,7 @@ boiling plant mash	沸腾的植物酿醪	l
 boiling plum brandy	沸腾的李白兰地	l
 boiling plum mash	沸腾的李酿醪	l
 boiling plum wine	沸腾的李果酒	l
-boiling plump helment mash	沸腾的肥盔菇酿醪	l
+boiling plump helment mash	沸腾的肉盔菇酿醪	l
 boiling pomegranate brandy	沸腾的石榴白兰地	l
 boiling pomegranate mash	沸腾的石榴酿醪	l
 boiling pomegranate wine	沸腾的石榴果酒	l
@@ -537,7 +537,7 @@ Distill persimmon wine into brandy	将柿果酒蒸馏为白兰地	l
 Distill pig tail beer into whiskey	将猪尾草啤酒蒸馏为威士忌	l
 Distill pineapple wine into brandy	将菠萝果酒蒸馏为白兰地	l
 Distill plum wine into brandy	将李果酒蒸馏为白兰地	l
-Distill plump helmet wine into brandy	将肥盔菇果酒蒸馏为白兰地	l
+Distill plump helmet wine into brandy	将肉盔菇果酒蒸馏为白兰地	l
 Distill pomegranate wine into brandy	将石榴果酒蒸馏为白兰地	l
 Distill potato wine into vodka	将马铃薯果酒蒸馏为伏特加	l
 Distill prickle berry wine into brandy	将刺浆果果酒蒸馏为白兰地	l
@@ -780,7 +780,7 @@ frozen plant mash	结冻的植物酿醪	l
 frozen plum brandy	结冻的李白兰地	l
 frozen plum mash	结冻的李酿醪	l
 frozen plum wine	结冻的李果酒	l
-frozen plump helmet mash	结冻的肥盔菇酿醪	l
+frozen plump helmet mash	结冻的肉盔菇酿醪	l
 frozen pomegranate brandy	结冻的石榴白兰地	l
 frozen pomegranate mash	结冻的石榴酿醪	l
 frozen pomegranate wine	结冻的石榴果酒	l
@@ -967,7 +967,7 @@ mango pits	芒果果核	l
 mango tree	芒果树	l
 mango wine	芒果果酒	l
 mango wood	芒果木材	l
-Mash plump helmets for wine	将肥盔菇捣成酿醪以酿造果酒	l
+Mash plump helmets for wine	将肉盔菇捣成酿醪以酿造果酒	l
 Mash prickle berries for wine	将刺浆果捣成酿醪以酿造果酒	l
 Mash strawberries for wine	将草莓捣成酿醪以酿造果酒	l
 mead	蜜酒	l
@@ -1094,9 +1094,9 @@ plum pits	李果核	l
 plum tree	李树	l
 plum wine	李果酒	l
 plum wood	李木材	l
-plump helmet	肥盔菇	l
-plump helmet mash	肥盔菇酿醪	l
-plump helmet spawn	肥盔菇菌种	l
+plump helmet	肉盔菇	l
+plump helmet mash	肉盔菇酿醪	l
+plump helmet spawn	肉盔菇菌种	l
 pomegranate	石榴	l
 pomegranate bark dye	石榴树皮染料	l
 pomegranate brandy	石榴白兰地	l
@@ -1524,7 +1524,7 @@ persimmon trees	柿树	l
 pig tails	猪尾草	l
 pineapple plants	菠萝植株	l
 plum trees	李树	l
-plump helmets	肥盔菇	l
+plump helmets	肉盔菇	l
 pomegranate trees	石榴树	l
 potato plants	马铃薯植株	l
 prickle berries	刺浆果	l
