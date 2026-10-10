@@ -1,0 +1,80 @@
+scope	selector	guard	reference_instruction_rva	classic_instruction_rva	source_production
+Preferences	2	likes_count > 0; valid named unit identity	0x4801dc	0x47dd9c	{unit_name} likes {likes_list}.  
+Preferences	2	likes_count > 0; missing or unnamed unit identity	0x4801f9	0x47ddb9	 likes {likes_list}.  
+Preferences	2	food_count > 0; unit.sex == 1	0x4809ba	0x47e57a	When possible, he prefers to consume {food_list}.  
+Preferences	2	food_count > 0; unit.sex == 0	0x4809cd	0x47e58d	When possible, she prefers to consume {food_list}.  
+Preferences	2	food_count > 0; unit.sex neither 0 nor 1	0x4809f0	0x47e5b0	When possible, it prefers to consume {food_list}.  
+Preferences	2	hate_count > 0; unit.sex == 1	0x48123c	0x47edfc	He absolutely detests {creature_plural_list}.  
+Preferences	2	hate_count > 0; unit.sex == 0	0x481254	0x47ee14	She absolutely detests {creature_plural_list}.  
+Preferences	2	hate_count > 0; unit.sex neither 0 nor 1	0x48126e	0x47ee2e	It absolutely detests {creature_plural_list}.  
+Preferences/likes	0	visible; material valid	0x4802bd	0x47de7d	{material_owner_possessive?}{material_prefix?}{material_state_name}
+Preferences/likes	0	visible; material invalid	0x4802bd	0x47de7d	unknown material
+Preferences/likes	0	state=SOLID; 419<=mattype<=618; material has flag 23	0x48031e	0x47dede	{material_name} wood
+Preferences/likes	0	state=SOLID; 419<=mattype<=618; no flag 23; material has flag 24	0x480357	0x47df17	{material_name} fabric
+Preferences/likes	1	visible	0x4805c9	0x47e189	{creature_plural} for their {selected_creature_prefstring}
+Preferences/likes	4	visible	0x4803e4	0x47dfa4	{item_name_plural}
+Preferences/likes	5	visible	0x48043a	0x47dffa	{plant_plural} for their {selected_plant_prefstring}
+Preferences/likes	6	visible	0x480504	0x47e0c4	{tree_plural} for their {selected_plant_prefstring}
+Preferences/likes	7	visible	0x48065c	0x47e21c	the color {descriptor_color_name}
+Preferences/likes	8	visible	0x4806f4	0x47e2b4	{descriptor_shape_plural}
+Preferences/likes	9	visible; form found and named	0x480737	0x47e2f7	the words of {generated_poetic_form_name}
+Preferences/likes	10	visible; form found and named	0x4807ab	0x47e36b	the sound of {generated_musical_form_name}
+Preferences/likes	11	visible; form found and named	0x480814	0x47e3d4	the sight of {generated_dance_form_name}
+Preferences/likes	9..11	visible; form missing or unnamed	0x480724	0x47e2e4	{empty body; list separator still appended}
+Preferences/likes	default/outside 0..11	visible; not type 2 or 3	0x48025e	0x47de1e	{empty body; list separator still appended}
+Preferences/food	48	visible; MEAT creature name absent	0x480b63	0x47e723	unknown meat
+Preferences/food	49	visible; FISH creature name absent	0x480bec	0x47e7ac	unknown fish
+Preferences/food	54	visible; PLANT plural absent	0x480c65	0x47e825	unknown plants
+Preferences/food	69	visible; DRINK item name absent	0x480cd7	0x47e897	unknown drink
+Preferences/food	73	visible; LIQUID_MISC item name absent	0x480d49	0x47e909	unknown liquid
+Preferences/food	53	visible; SEEDS item name absent	0x480dbb	0x47e97b	unknown seeds
+Preferences/food	56	visible; PLANT_GROWTH item name absent	0x480e2e	0x47e9ee	unknown leaves
+Preferences/food	70	visible; POWDER_MISC item name absent	0x480ea0	0x47ea60	unknown powder
+Preferences/food	71	visible; CHEESE item name absent	0x480f12	0x47ead2	unknown cheese
+Preferences/food	default	visible; all other item types; item name absent	0x480fb2	0x47eb72	unknown item
+Preferences/all-lists	remaining>1	after current visible preference	0x480871	0x47e431	, 
+Preferences/all-lists	remaining==1	after current visible preference	0x48087c	0x47e43c	 and 
+Preferences/all-lists	remaining==0	after last visible preference	0x480885	0x47e445	.  
+Preferences/empty	2	soul missing or preferences vector empty	0x4800e1	0x47dca1	{no source paragraph}
+Preferences/empty	2	preferences vector nonempty; no visible records	0x480151	0x47dd11	[C:7:0:1]
+Shared page dispatch	0	selector==0	0x47f72a	0x47d2ea	{traits/general personality; not Preferences}
+Shared page dispatch	1	selector==1	0x47f733	0x47d2f3	{values; not Preferences}
+Shared page dispatch	3	selector==3	0x47f745	0x47d305	{needs; not Preferences}
+Shared page dispatch	default	selector outside 0..3	0x47f745	0x47d305	{no source paragraphs}
+Preferences/art-form-name	all	name.has_name false	0xa94723	0xa917a3	{empty field; formatter does not alter supplied output}
+Preferences/art-form-name	nickname-mode=0	nickname nonempty; REPLACE_FIRST	0xa94770	0xa917f0	`{authored_nickname}' {generated_components?}
+Preferences/art-form-name	nickname-mode=1	nickname nonempty; CENTRALIZE	0xa94893	0xa91913	{first_name?} `{authored_nickname}' {generated_components?}
+Preferences/art-form-name	nickname-mode=2	nickname nonempty; REPLACE_ALL	0xa948e9	0xa91969	`{authored_nickname}'
+Preferences/art-form-name	nickname-mode=0/1/2	nickname empty	0xa9476e	0xa917ee	{titlecased_first_name?} {generated_components?}
+Preferences/art-form-name	nickname-mode=default	display mode outside 0/1/2	0xa94770	0xa917f0	{titlecased_first_name?} {generated_components?}; nickname omitted
+Preferences/art-form-name	display-mode-selection	current_game_type unsigned > 10; otherwise index config array	0xa94730	0xa917b0	{mode 0 fallback; or nickname_display[current_game_type]}
+Preferences/art-form-name	FrontCompound/RearCompound	valid nonempty English WORD forms; Preferences shorten=false	0xa94934	0xa919b4	{titlecase(front_word+rear_word)}
+Preferences/art-form-name	FirstAdjective	valid nonempty WORD/POS	0xa94a21	0xa91aa1	{The|the} {titlecased_adjective1}
+Preferences/art-form-name	SecondAdjective	valid nonempty WORD/POS	0xa94ad8	0xa91b58	{article_if_none}{titlecased_adjective2}
+Preferences/art-form-name	HyphenCompound	middle group entered; valid nonempty WORD/POS	0xa94b80	0xa91c00	{article_if_none}{titlecased_hyphen_word}-
+Preferences/art-form-name	TheX	valid nonempty WORD/POS; attaches directly to preceding hyphen	0xa94d05	0xa91d85	{article_if_none}{titlecased_noun}
+Preferences/art-form-name	middle-group-gate	TheX, FirstAdjective, SecondAdjective all -1	0xa949d5	0xa91a55	{no middle body, even with a lone HyphenCompound}
+Preferences/art-form-name	OfX	valid nonempty WORD/POS	0xa94df3	0xa91e73	{Of|of} {titlecased_of_word}
+Preferences/art-form-name	definite-article	output empty and capitalize=true	0xa94a5d	0xa91add	The 
+Preferences/art-form-name	definite-article	prior output exists or capitalize=false	0xa94a78	0xa91af8	the 
+Preferences/art-form-name	of-article	prior output absent	0xa94e1f	0xa91e9f	Of 
+Preferences/art-form-name	of-article	prior output exists	0xa94e18	0xa91e98	of 
+Preferences/art-form-name	all-generated-components	all absent or empty with empty first_name/nickname	0xa94e6f	0xa91eef	{empty field; no unknown-name fallback}
+Preferences/art-form-name	shorten	shorten=true with existing nonempty earlier name group; Preferences passes false	0xa9490b	0xa9198b	{skip later generated groups; shared helper option}
+Preferences/unit-name	nickname-mode=0	nickname nonempty; REPLACE_FIRST	0xa9409e	0xa9111e	`{authored_nickname}' {local_language_generated_groups?}
+Preferences/unit-name	nickname-mode=1	nickname nonempty; CENTRALIZE	0xa9412c	0xa911ac	{first_name?} `{authored_nickname}' {local_language_generated_groups?}
+Preferences/unit-name	nickname-mode=2	nickname nonempty; REPLACE_ALL	0xa94183	0xa91203	`{authored_nickname}'
+Preferences/unit-name	nickname-mode=0/1/2	nickname empty	0xa9409c	0xa9111c	{titlecased_first_name?} {local_language_generated_groups?}
+Preferences/unit-name	local_language_generated_groups	valid language and WORD indices; omit invalid fields	0xa941b7	0xa91237	{titlecase(words0+1)} {titlecase(words2+3+4+5)} {titlecase(word6)}
+Preferences/english-word-form	all	WORD < 0	0xd2cb55	0xd29b95	{no field body}
+Preferences/english-word-form	all	WORD >= language.words.size()	0xd2cb76	0xd29bb6	{no field body}
+Preferences/english-word-form	default	unsigned POS > 8	0xd2cb84	0xd29bc4	{no field body}
+Preferences/english-word-form	0	Noun	0xd2cb9e	0xd29bde	{language_word+0x20}
+Preferences/english-word-form	1	NounPlural	0xd2cba8	0xd29be8	{language_word+0x40}
+Preferences/english-word-form	2	Adjective	0xd2cbbc	0xd29bfc	{language_word+0x60}
+Preferences/english-word-form	3	Prefix	0xd2cbb2	0xd29bf2	{language_word+0x80}
+Preferences/english-word-form	4	Verb	0xd2cbc6	0xd29c06	{language_word+0xa0}
+Preferences/english-word-form	5	Verb3rdPerson	0xd2cbd3	0xd29c13	{language_word+0xc0}
+Preferences/english-word-form	6	VerbPast	0xd2cbe0	0xd29c20	{language_word+0xe0}
+Preferences/english-word-form	7	VerbPassive	0xd2cbed	0xd29c2d	{language_word+0x100}
+Preferences/english-word-form	8	VerbGerund	0xd2cbfa	0xd29c3a	{language_word+0x120}

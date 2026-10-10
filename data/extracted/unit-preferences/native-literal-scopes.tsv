@@ -1,0 +1,309 @@
+edition	scope	instruction_rva	source
+reference	shared-other-selector	0x47f7fb	[C:2:0:1]
+reference	shared-other-selector	0x47f809	[C:2:0:0]
+reference	shared-other-selector	0x47f816	[C:7:0:1]
+reference	shared-other-selector	0x47f824	[C:4:0:1]
+reference	shared-other-selector	0x47f839	[C:6:0:1]
+reference	shared-other-selector	0x47f842	[C:6:0:0]
+reference	shared-other-selector	0x47f84b	[C:7:0:0]
+reference	shared-other-selector	0x47f85e	Overall, 
+reference	shared-other-selector	0x47f8a7	 is 
+reference	shared-other-selector	0x47f8c2	very focused with satisfied needs
+reference	shared-other-selector	0x47f8d0	quite focused with satisfied needs
+reference	shared-other-selector	0x47f8f0	somewhat focused with satisfied needs
+reference	shared-other-selector	0x47f8fe	badly distracted by unmet needs
+reference	shared-other-selector	0x47f90c	distracted by unmet needs
+reference	shared-other-selector	0x47f91b	unfocused by unmet needs
+reference	shared-other-selector	0x47f924	untroubled by unmet needs
+reference	shared-other-selector	0x47f937	.
+reference	shared-other-selector	0x47fa99	[C:2:0:1]
+reference	shared-other-selector	0x47faa7	[C:2:0:0]
+reference	shared-other-selector	0x47fab5	[C:7:0:1]
+reference	shared-other-selector	0x47fac2	[C:7:0:0]
+reference	shared-other-selector	0x47fad0	[C:6:0:0]
+reference	shared-other-selector	0x47fade	[C:6:0:1]
+reference	shared-other-selector	0x47faec	[C:4:0:1]
+reference	shared-other-selector	0x47fb2f	 is 
+reference	shared-other-selector	0x47fb44	unfettered
+reference	shared-other-selector	0x47fb52	level-headed
+reference	shared-other-selector	0x47fb60	untroubled
+reference	shared-other-selector	0x47fb6d	not distracted
+reference	shared-other-selector	0x47fb7b	unfocused
+reference	shared-other-selector	0x47fb89	distracted
+reference	shared-other-selector	0x47fb97	badly distracted
+reference	shared-other-selector	0x47fba7	 
+reference	shared-other-selector	0x47fbd8	after spending time with people
+reference	shared-other-selector	0x47fbe4	after being away from people
+reference	shared-other-selector	0x47fbf8	after drinking
+reference	shared-other-selector	0x47fc04	after being kept from alcohol
+reference	shared-other-selector	0x47fc1f	after communing with 
+reference	shared-other-selector	0x47fc5d	after meditation
+reference	shared-other-selector	0x47fc69	after being unable to pray
+reference	shared-other-selector	0x47fc80	 to 
+reference	shared-other-selector	0x47fcca	after staying occupied
+reference	shared-other-selector	0x47fcd6	after being unoccupied
+reference	shared-other-selector	0x47fcea	after admiring art
+reference	shared-other-selector	0x47fcf6	after being unable to admire art
+reference	shared-other-selector	0x47fd0a	after doing something creative
+reference	shared-other-selector	0x47fd16	after doing nothing creative
+reference	shared-other-selector	0x47fd2a	after doing something exciting
+reference	shared-other-selector	0x47fd36	after leading an unexciting life
+reference	shared-other-selector	0x47fd4a	after learning something
+reference	shared-other-selector	0x47fd56	after not learning anything
+reference	shared-other-selector	0x47fd6a	after being with family
+reference	shared-other-selector	0x47fd76	after being away from family
+reference	shared-other-selector	0x47fd8a	after being with friends
+reference	shared-other-selector	0x47fd96	after being away from friends
+reference	shared-other-selector	0x47fdaa	after hearing eloquent speech
+reference	shared-other-selector	0x47fdb6	after being unable to hear eloquent speech
+reference	shared-other-selector	0x47fdca	after upholding tradition
+reference	shared-other-selector	0x47fdd6	after being away from traditions
+reference	shared-other-selector	0x47fdea	after self-examination
+reference	shared-other-selector	0x47fdf6	after a lack of introspection
+reference	shared-other-selector	0x47fe0a	after making merry
+reference	shared-other-selector	0x47fe16	after being unable to make merry
+reference	shared-other-selector	0x47fe2a	after practicing a craft
+reference	shared-other-selector	0x47fe36	after being unable to practice a craft
+reference	shared-other-selector	0x47fe4a	after practicing a martial art
+reference	shared-other-selector	0x47fe56	after being unable to practice a martial art
+reference	shared-other-selector	0x47fe6a	after practicing a skill
+reference	shared-other-selector	0x47fe76	after being unable to practice a skill
+reference	shared-other-selector	0x47fe8a	after taking it easy
+reference	shared-other-selector	0x47fe96	after being unable to take it easy
+reference	shared-other-selector	0x47feaa	after making romance
+reference	shared-other-selector	0x47feb6	after being unable to make romance
+reference	shared-other-selector	0x47feca	after seeing animals
+reference	shared-other-selector	0x47fed6	after being away from animals
+reference	shared-other-selector	0x47feea	after seeing a great beast
+reference	shared-other-selector	0x47fef6	after being away from great beasts
+reference	shared-other-selector	0x47ff0a	after acquiring something
+reference	shared-other-selector	0x47ff16	after being unable to acquire something
+reference	shared-other-selector	0x47ff2a	after eating a good meal
+reference	shared-other-selector	0x47ff36	after a lack of decent meals
+reference	shared-other-selector	0x47ff4a	after fighting
+reference	shared-other-selector	0x47ff56	after being unable to fight
+reference	shared-other-selector	0x47ff6a	after causing trouble
+reference	shared-other-selector	0x47ff76	after a lack of trouble-making
+reference	shared-other-selector	0x47ff87	after arguing
+reference	shared-other-selector	0x47ff90	after being unable to argue
+reference	shared-other-selector	0x47ffa1	after being extravagant
+reference	shared-other-selector	0x47ffaa	after being unable to be extravagant
+reference	shared-other-selector	0x47ffbb	after wandering
+reference	shared-other-selector	0x47ffc4	after being unable to wander
+reference	shared-other-selector	0x47ffd5	after helping somebody
+reference	shared-other-selector	0x47ffde	after being unable to help anybody
+reference	shared-other-selector	0x47ffed	after thinking abstractly
+reference	shared-other-selector	0x47fff6	after a lack of abstract thinking
+reference	shared-other-selector	0x480002	.
+reference	Preferences/selector=2	0x480151	[C:7:0:1]
+reference	Preferences/selector=2	0x480223	 likes 
+reference	Preferences/selector=2	0x48031e	 wood
+reference	Preferences/selector=2	0x480357	 fabric
+reference	Preferences/selector=2	0x480452	 for their 
+reference	Preferences/selector=2	0x48051c	 for their 
+reference	Preferences/selector=2	0x4805e1	 for their 
+reference	Preferences/selector=2	0x48065c	the color 
+reference	Preferences/selector=2	0x480737	the words of 
+reference	Preferences/selector=2	0x4807ab	the sound of 
+reference	Preferences/selector=2	0x480814	the sight of 
+reference	Preferences/selector=2	0x480871	, 
+reference	Preferences/selector=2	0x48087c	 and 
+reference	Preferences/selector=2	0x480885	.  
+reference	Preferences/selector=2	0x480984	When possible, 
+reference	Preferences/selector=2	0x4809ba	he
+reference	Preferences/selector=2	0x4809cd	she
+reference	Preferences/selector=2	0x4809da	e
+reference	Preferences/selector=2	0x4809f0	it
+reference	Preferences/selector=2	0x480a37	 prefers to consume 
+reference	Preferences/selector=2	0x480b63	unknown meat
+reference	Preferences/selector=2	0x480bec	unknown fish
+reference	Preferences/selector=2	0x480c65	unknown plants
+reference	Preferences/selector=2	0x480cd7	unknown drink
+reference	Preferences/selector=2	0x480d49	unknown liquid
+reference	Preferences/selector=2	0x480dbb	unknown seeds
+reference	Preferences/selector=2	0x480e2e	unknown leaves
+reference	Preferences/selector=2	0x480ea0	unknown powder
+reference	Preferences/selector=2	0x480f12	unknown cheese
+reference	Preferences/selector=2	0x480fb2	unknown item
+reference	Preferences/selector=2	0x481017	unknown item
+reference	Preferences/selector=2	0x481023	item
+reference	Preferences/selector=2	0x4810ae	, 
+reference	Preferences/selector=2	0x4810c2	 and 
+reference	Preferences/selector=2	0x4810d1	.  
+reference	Preferences/selector=2	0x48123c	he
+reference	Preferences/selector=2	0x481254	she
+reference	Preferences/selector=2	0x48125e	e
+reference	Preferences/selector=2	0x48126e	it
+reference	Preferences/selector=2	0x4812d6	 absolutely detests 
+reference	Preferences/selector=2	0x4813f6	, 
+reference	Preferences/selector=2	0x481409	 and 
+reference	Preferences/selector=2	0x481418	.  
+reference	shared-other-selector	0x481946	[C:7:0:1]
+reference	shared-other-selector	0x48198f	 needs alcohol to get through the working day
+reference	shared-other-selector	0x4819ab	 and can't even remember the last time 
+reference	shared-other-selector	0x4819f4	 had some
+reference	shared-other-selector	0x481a1d	 and has gone without a drink for far, far too long
+reference	shared-other-selector	0x481a2d	 and really wants a drink
+reference	shared-other-selector	0x481a3d	 and is starting to work slowly due to its scarcity
+reference	shared-other-selector	0x481a56	.  
+reference	shared-other-selector	0x481a90	[C:7:0:1]
+reference	shared-other-selector	0x481b03	 likes working outdoors and grumbles only mildly at inclement weather.  
+reference	shared-other-selector	0x481b35	 does not mind being outdoors, at least for a time.  
+reference	shared-other-selector	0x481b6f	[C:7:0:1]
+reference	shared-other-selector	0x481bdc	 doesn't really care about anything anymore.  
+reference	shared-other-selector	0x481c13	 is a hardened individual.  
+reference	shared-other-selector	0x481c4a	 is getting used to tragedy.  
+classic	shared-other-selector	0x47d3bb	[C:2:0:1]
+classic	shared-other-selector	0x47d3c9	[C:2:0:0]
+classic	shared-other-selector	0x47d3d6	[C:7:0:1]
+classic	shared-other-selector	0x47d3e4	[C:4:0:1]
+classic	shared-other-selector	0x47d3f9	[C:6:0:1]
+classic	shared-other-selector	0x47d402	[C:6:0:0]
+classic	shared-other-selector	0x47d40b	[C:7:0:0]
+classic	shared-other-selector	0x47d41e	Overall, 
+classic	shared-other-selector	0x47d467	 is 
+classic	shared-other-selector	0x47d482	very focused with satisfied needs
+classic	shared-other-selector	0x47d490	quite focused with satisfied needs
+classic	shared-other-selector	0x47d4b0	somewhat focused with satisfied needs
+classic	shared-other-selector	0x47d4be	badly distracted by unmet needs
+classic	shared-other-selector	0x47d4cc	distracted by unmet needs
+classic	shared-other-selector	0x47d4db	unfocused by unmet needs
+classic	shared-other-selector	0x47d4e4	untroubled by unmet needs
+classic	shared-other-selector	0x47d4f7	.
+classic	shared-other-selector	0x47d659	[C:2:0:1]
+classic	shared-other-selector	0x47d667	[C:2:0:0]
+classic	shared-other-selector	0x47d675	[C:7:0:1]
+classic	shared-other-selector	0x47d682	[C:7:0:0]
+classic	shared-other-selector	0x47d690	[C:6:0:0]
+classic	shared-other-selector	0x47d69e	[C:6:0:1]
+classic	shared-other-selector	0x47d6ac	[C:4:0:1]
+classic	shared-other-selector	0x47d6ef	 is 
+classic	shared-other-selector	0x47d704	unfettered
+classic	shared-other-selector	0x47d712	level-headed
+classic	shared-other-selector	0x47d720	untroubled
+classic	shared-other-selector	0x47d72d	not distracted
+classic	shared-other-selector	0x47d73b	unfocused
+classic	shared-other-selector	0x47d749	distracted
+classic	shared-other-selector	0x47d757	badly distracted
+classic	shared-other-selector	0x47d767	 
+classic	shared-other-selector	0x47d798	after spending time with people
+classic	shared-other-selector	0x47d7a4	after being away from people
+classic	shared-other-selector	0x47d7b8	after drinking
+classic	shared-other-selector	0x47d7c4	after being kept from alcohol
+classic	shared-other-selector	0x47d7df	after communing with 
+classic	shared-other-selector	0x47d81d	after meditation
+classic	shared-other-selector	0x47d829	after being unable to pray
+classic	shared-other-selector	0x47d840	 to 
+classic	shared-other-selector	0x47d88a	after staying occupied
+classic	shared-other-selector	0x47d896	after being unoccupied
+classic	shared-other-selector	0x47d8aa	after admiring art
+classic	shared-other-selector	0x47d8b6	after being unable to admire art
+classic	shared-other-selector	0x47d8ca	after doing something creative
+classic	shared-other-selector	0x47d8d6	after doing nothing creative
+classic	shared-other-selector	0x47d8ea	after doing something exciting
+classic	shared-other-selector	0x47d8f6	after leading an unexciting life
+classic	shared-other-selector	0x47d90a	after learning something
+classic	shared-other-selector	0x47d916	after not learning anything
+classic	shared-other-selector	0x47d92a	after being with family
+classic	shared-other-selector	0x47d936	after being away from family
+classic	shared-other-selector	0x47d94a	after being with friends
+classic	shared-other-selector	0x47d956	after being away from friends
+classic	shared-other-selector	0x47d96a	after hearing eloquent speech
+classic	shared-other-selector	0x47d976	after being unable to hear eloquent speech
+classic	shared-other-selector	0x47d98a	after upholding tradition
+classic	shared-other-selector	0x47d996	after being away from traditions
+classic	shared-other-selector	0x47d9aa	after self-examination
+classic	shared-other-selector	0x47d9b6	after a lack of introspection
+classic	shared-other-selector	0x47d9ca	after making merry
+classic	shared-other-selector	0x47d9d6	after being unable to make merry
+classic	shared-other-selector	0x47d9ea	after practicing a craft
+classic	shared-other-selector	0x47d9f6	after being unable to practice a craft
+classic	shared-other-selector	0x47da0a	after practicing a martial art
+classic	shared-other-selector	0x47da16	after being unable to practice a martial art
+classic	shared-other-selector	0x47da2a	after practicing a skill
+classic	shared-other-selector	0x47da36	after being unable to practice a skill
+classic	shared-other-selector	0x47da4a	after taking it easy
+classic	shared-other-selector	0x47da56	after being unable to take it easy
+classic	shared-other-selector	0x47da6a	after making romance
+classic	shared-other-selector	0x47da76	after being unable to make romance
+classic	shared-other-selector	0x47da8a	after seeing animals
+classic	shared-other-selector	0x47da96	after being away from animals
+classic	shared-other-selector	0x47daaa	after seeing a great beast
+classic	shared-other-selector	0x47dab6	after being away from great beasts
+classic	shared-other-selector	0x47daca	after acquiring something
+classic	shared-other-selector	0x47dad6	after being unable to acquire something
+classic	shared-other-selector	0x47daea	after eating a good meal
+classic	shared-other-selector	0x47daf6	after a lack of decent meals
+classic	shared-other-selector	0x47db0a	after fighting
+classic	shared-other-selector	0x47db16	after being unable to fight
+classic	shared-other-selector	0x47db2a	after causing trouble
+classic	shared-other-selector	0x47db36	after a lack of trouble-making
+classic	shared-other-selector	0x47db47	after arguing
+classic	shared-other-selector	0x47db50	after being unable to argue
+classic	shared-other-selector	0x47db61	after being extravagant
+classic	shared-other-selector	0x47db6a	after being unable to be extravagant
+classic	shared-other-selector	0x47db7b	after wandering
+classic	shared-other-selector	0x47db84	after being unable to wander
+classic	shared-other-selector	0x47db95	after helping somebody
+classic	shared-other-selector	0x47db9e	after being unable to help anybody
+classic	shared-other-selector	0x47dbad	after thinking abstractly
+classic	shared-other-selector	0x47dbb6	after a lack of abstract thinking
+classic	shared-other-selector	0x47dbc2	.
+classic	Preferences/selector=2	0x47dd11	[C:7:0:1]
+classic	Preferences/selector=2	0x47dde3	 likes 
+classic	Preferences/selector=2	0x47dede	 wood
+classic	Preferences/selector=2	0x47df17	 fabric
+classic	Preferences/selector=2	0x47e012	 for their 
+classic	Preferences/selector=2	0x47e0dc	 for their 
+classic	Preferences/selector=2	0x47e1a1	 for their 
+classic	Preferences/selector=2	0x47e21c	the color 
+classic	Preferences/selector=2	0x47e2f7	the words of 
+classic	Preferences/selector=2	0x47e36b	the sound of 
+classic	Preferences/selector=2	0x47e3d4	the sight of 
+classic	Preferences/selector=2	0x47e431	, 
+classic	Preferences/selector=2	0x47e43c	 and 
+classic	Preferences/selector=2	0x47e445	.  
+classic	Preferences/selector=2	0x47e544	When possible, 
+classic	Preferences/selector=2	0x47e57a	he
+classic	Preferences/selector=2	0x47e58d	she
+classic	Preferences/selector=2	0x47e59a	e
+classic	Preferences/selector=2	0x47e5b0	it
+classic	Preferences/selector=2	0x47e5f7	 prefers to consume 
+classic	Preferences/selector=2	0x47e723	unknown meat
+classic	Preferences/selector=2	0x47e7ac	unknown fish
+classic	Preferences/selector=2	0x47e825	unknown plants
+classic	Preferences/selector=2	0x47e897	unknown drink
+classic	Preferences/selector=2	0x47e909	unknown liquid
+classic	Preferences/selector=2	0x47e97b	unknown seeds
+classic	Preferences/selector=2	0x47e9ee	unknown leaves
+classic	Preferences/selector=2	0x47ea60	unknown powder
+classic	Preferences/selector=2	0x47ead2	unknown cheese
+classic	Preferences/selector=2	0x47eb72	unknown item
+classic	Preferences/selector=2	0x47ebd7	unknown item
+classic	Preferences/selector=2	0x47ebe3	item
+classic	Preferences/selector=2	0x47ec6e	, 
+classic	Preferences/selector=2	0x47ec82	 and 
+classic	Preferences/selector=2	0x47ec91	.  
+classic	Preferences/selector=2	0x47edfc	he
+classic	Preferences/selector=2	0x47ee14	she
+classic	Preferences/selector=2	0x47ee1e	e
+classic	Preferences/selector=2	0x47ee2e	it
+classic	Preferences/selector=2	0x47ee96	 absolutely detests 
+classic	Preferences/selector=2	0x47efb6	, 
+classic	Preferences/selector=2	0x47efc9	 and 
+classic	Preferences/selector=2	0x47efd8	.  
+classic	shared-other-selector	0x47f506	[C:7:0:1]
+classic	shared-other-selector	0x47f54f	 needs alcohol to get through the working day
+classic	shared-other-selector	0x47f56b	 and can't even remember the last time 
+classic	shared-other-selector	0x47f5b4	 had some
+classic	shared-other-selector	0x47f5dd	 and has gone without a drink for far, far too long
+classic	shared-other-selector	0x47f5ed	 and really wants a drink
+classic	shared-other-selector	0x47f5fd	 and is starting to work slowly due to its scarcity
+classic	shared-other-selector	0x47f616	.  
+classic	shared-other-selector	0x47f650	[C:7:0:1]
+classic	shared-other-selector	0x47f6c3	 likes working outdoors and grumbles only mildly at inclement weather.  
+classic	shared-other-selector	0x47f6f5	 does not mind being outdoors, at least for a time.  
+classic	shared-other-selector	0x47f72f	[C:7:0:1]
+classic	shared-other-selector	0x47f79c	 doesn't really care about anything anymore.  
+classic	shared-other-selector	0x47f7d3	 is a hardened individual.  
+classic	shared-other-selector	0x47f80a	 is getting used to tragedy.  

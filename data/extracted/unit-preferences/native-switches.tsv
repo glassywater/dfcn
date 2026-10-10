@@ -1,0 +1,439 @@
+edition	selector	table_rva	value	remap_index	target_rva
+reference	preference-kind	0x481e8c	0		0x480271
+reference	preference-kind	0x481e8c	1		0x480596
+reference	preference-kind	0x481e8c	2		0x48086a
+reference	preference-kind	0x481e8c	3		0x48086a
+reference	preference-kind	0x481e8c	4		0x480370
+reference	preference-kind	0x481e8c	5		0x480402
+reference	preference-kind	0x481e8c	6		0x4804cc
+reference	preference-kind	0x481e8c	7		0x48065c
+reference	preference-kind	0x481e8c	8		0x4806bf
+reference	preference-kind	0x481e8c	9		0x480712
+reference	preference-kind	0x481e8c	10		0x480786
+reference	preference-kind	0x481e8c	11		0x4807f7
+reference	food-item-kind	0x481ebc	48	0	0x480af2
+reference	food-item-kind	0x481ebc	49	1	0x480b7b
+reference	food-item-kind	0x481ebc	50	9	0x480f2a
+reference	food-item-kind	0x481ebc	51	9	0x480f2a
+reference	food-item-kind	0x481ebc	52	9	0x480f2a
+reference	food-item-kind	0x481ebc	53	2	0x480d61
+reference	food-item-kind	0x481ebc	54	3	0x480c04
+reference	food-item-kind	0x481ebc	55	9	0x480f2a
+reference	food-item-kind	0x481ebc	56	4	0x480dd3
+reference	food-item-kind	0x481ebc	57	9	0x480f2a
+reference	food-item-kind	0x481ebc	58	9	0x480f2a
+reference	food-item-kind	0x481ebc	59	9	0x480f2a
+reference	food-item-kind	0x481ebc	60	9	0x480f2a
+reference	food-item-kind	0x481ebc	61	9	0x480f2a
+reference	food-item-kind	0x481ebc	62	9	0x480f2a
+reference	food-item-kind	0x481ebc	63	9	0x480f2a
+reference	food-item-kind	0x481ebc	64	9	0x480f2a
+reference	food-item-kind	0x481ebc	65	9	0x480f2a
+reference	food-item-kind	0x481ebc	66	9	0x480f2a
+reference	food-item-kind	0x481ebc	67	9	0x480f2a
+reference	food-item-kind	0x481ebc	68	9	0x480f2a
+reference	food-item-kind	0x481ebc	69	5	0x480c7d
+reference	food-item-kind	0x481ebc	70	6	0x480e46
+reference	food-item-kind	0x481ebc	71	7	0x480eb8
+reference	food-item-kind	0x481ebc	72	9	0x480f2a
+reference	food-item-kind	0x481ebc	73	8	0x480cef
+reference	food-item-kind	0x481ebc	default/outside-48..73	9	0x480f2a
+reference	shared-item-name	0xa880e0	0		0xa83249
+reference	shared-item-name	0xa880e0	1		0xa833de
+reference	shared-item-name	0xa880e0	2		0xa835c5
+reference	shared-item-name	0xa880e0	3		0xa82f11
+reference	shared-item-name	0xa880e0	4		0xa83172
+reference	shared-item-name	0xa880e0	5		0xa82de5
+reference	shared-item-name	0xa880e0	6		0xa83680
+reference	shared-item-name	0xa880e0	7		0xa83736
+reference	shared-item-name	0xa880e0	8		0xa86522
+reference	shared-item-name	0xa880e0	9		0xa84a81
+reference	shared-item-name	0xa880e0	10		0xa840cb
+reference	shared-item-name	0xa880e0	11		0xa841f4
+reference	shared-item-name	0xa880e0	12		0xa84736
+reference	shared-item-name	0xa880e0	13		0xa8435c
+reference	shared-item-name	0xa880e0	14		0xa84669
+reference	shared-item-name	0xa880e0	15		0xa84807
+reference	shared-item-name	0xa880e0	16		0xa84877
+reference	shared-item-name	0xa880e0	17		0xa84931
+reference	shared-item-name	0xa880e0	18		0xa849a1
+reference	shared-item-name	0xa880e0	19		0xa84a11
+reference	shared-item-name	0xa880e0	20		0xa83886
+reference	shared-item-name	0xa880e0	21		0xa83fc7
+reference	shared-item-name	0xa880e0	22		0xa866e2
+reference	shared-item-name	0xa880e0	23		0xa86a02
+reference	shared-item-name	0xa880e0	24		0xa87584
+reference	shared-item-name	0xa880e0	25		0xa876bd
+reference	shared-item-name	0xa880e0	26		0xa87b5b
+reference	shared-item-name	0xa880e0	27		0xa87a87
+reference	shared-item-name	0xa880e0	28		0xa87ccb
+reference	shared-item-name	0xa880e0	29		0xa8789a
+reference	shared-item-name	0xa880e0	30		0xa83ab6
+reference	shared-item-name	0xa880e0	31		0xa83c00
+reference	shared-item-name	0xa880e0	32		0xa83a46
+reference	shared-item-name	0xa880e0	33		0xa839d6
+reference	shared-item-name	0xa880e0	34		0xa83966
+reference	shared-item-name	0xa880e0	35		0xa838f6
+reference	shared-item-name	0xa880e0	36		0xa84efc
+reference	shared-item-name	0xa880e0	37		0xa85d2e
+reference	shared-item-name	0xa880e0	38		0xa86007
+reference	shared-item-name	0xa880e0	39		0xa85eea
+reference	shared-item-name	0xa880e0	40		0xa86077
+reference	shared-item-name	0xa880e0	41		0xa863d8
+reference	shared-item-name	0xa880e0	42		0xa86442
+reference	shared-item-name	0xa880e0	43		0xa864b2
+reference	shared-item-name	0xa880e0	44		0xa86151
+reference	shared-item-name	0xa880e0	45		0xa85cbe
+reference	shared-item-name	0xa880e0	46		0xa86a35
+reference	shared-item-name	0xa880e0	47		0xa86ba6
+reference	shared-item-name	0xa880e0	48		0xa87427
+reference	shared-item-name	0xa880e0	49		0xa8727a
+reference	shared-item-name	0xa880e0	50		0xa86f2a
+reference	shared-item-name	0xa880e0	51		0xa8739f
+reference	shared-item-name	0xa880e0	52		0xa873f2
+reference	shared-item-name	0xa880e0	53		0xa86d36
+reference	shared-item-name	0xa880e0	54		0xa86e98
+reference	shared-item-name	0xa880e0	55		0xa84de3
+reference	shared-item-name	0xa880e0	56		0xa86de0
+reference	shared-item-name	0xa880e0	57		0xa84b17
+reference	shared-item-name	0xa880e0	58		0xa84c61
+reference	shared-item-name	0xa880e0	59		0xa84e4f
+reference	shared-item-name	0xa880e0	60		0xa87e00
+reference	shared-item-name	0xa880e0	61		0xa83c70
+reference	shared-item-name	0xa880e0	62		0xa83f2c
+reference	shared-item-name	0xa880e0	63		0xa858dc
+reference	shared-item-name	0xa880e0	64		0xa85c46
+reference	shared-item-name	0xa880e0	65		0xa85e0e
+reference	shared-item-name	0xa880e0	66		0xa85d9e
+reference	shared-item-name	0xa880e0	67		0xa859cc
+reference	shared-item-name	0xa880e0	68		0xa85b0d
+reference	shared-item-name	0xa880e0	69		0xa84f6c
+reference	shared-item-name	0xa880e0	70		0xa85769
+reference	shared-item-name	0xa880e0	71		0xa8588a
+reference	shared-item-name	0xa880e0	72		0xa87415
+reference	shared-item-name	0xa880e0	73		0xa84fc7
+reference	shared-item-name	0xa880e0	74		0xa860e7
+reference	shared-item-name	0xa880e0	75		0xa84fc7
+reference	shared-item-name	0xa880e0	76		0xa82fee
+reference	shared-item-name	0xa880e0	77		0xa85a44
+reference	shared-item-name	0xa880e0	78		0xa837a6
+reference	shared-item-name	0xa880e0	79		0xa83816
+reference	shared-item-name	0xa880e0	80		0xa86602
+reference	shared-item-name	0xa880e0	81		0xa86672
+reference	shared-item-name	0xa880e0	82		0xa83e52
+reference	shared-item-name	0xa880e0	83		0xa83ec2
+reference	shared-item-name	0xa880e0	84		0xa86592
+reference	shared-item-name	0xa880e0	85		0xa83d0b
+reference	shared-item-name	0xa880e0	86		0xa84432
+reference	shared-item-name	0xa880e0	87		0xa86752
+reference	shared-item-name	0xa880e0	88		0xa87118
+reference	shared-item-name	0xa880e0	89		0xa84e61
+reference	shared-item-name	0xa880e0	90		0xa84cd9
+reference	shared-item-name	0xa880e0	91		0xa82e7a
+reference	shared-item-name	0xa880e0	92		0xa85954
+reference	shared-item-name	0xa88254	0		0xa85155
+reference	shared-item-name	0xa88254	1		0xa85162
+reference	shared-item-name	0xa88254	2		0xa8516f
+reference	shared-item-name	0xa88254	3		0xa8530e
+reference	shared-item-name	0xa88254	4		0xa8531e
+reference	shared-item-name	0xa88254	5		0xa8532e
+reference	shared-item-name	0xa88254	6		0xa8533e
+reference	shared-item-name	0xa88254	7		0xa8534e
+reference	shared-item-name	0xa88274	0		0xa85735
+reference	shared-item-name	0xa88274	1		0xa85735
+reference	shared-item-name	0xa88274	2		0xa85735
+reference	shared-item-name	0xa88274	3		0xa85735
+reference	shared-item-name	0xa88274	4		0xa85735
+reference	shared-item-name	0xa88274	5		0xa85735
+reference	shared-item-name	0xa88274	6		0xa85735
+reference	shared-item-name	0xa88274	7		0xa85735
+reference	shared-item-name	0xa88294	0		0xa86852
+reference	shared-item-name	0xa88294	1		0xa869e2
+reference	shared-item-name	0xa88294	2		0xa869e2
+reference	shared-item-name	0xa88294	3		0xa869e2
+reference	shared-item-name	0xa88294	4		0xa869e2
+reference	shared-item-name	0xa88294	5		0xa869e2
+reference	shared-item-name	0xa88294	6		0xa869e2
+reference	shared-item-name	0xa88294	7		0xa86866
+reference	shared-item-name	0xa88294	8		0xa8687a
+reference	shared-item-name	0xa88294	9		0xa8688e
+reference	shared-item-name	0xa88294	10		0xa868a2
+reference	shared-item-name	0xa88294	11		0xa868b6
+reference	shared-item-name	0xa88294	12		0xa868ca
+reference	shared-item-name	0xa88294	13		0xa868de
+reference	shared-item-name	0xa88294	14		0xa868f2
+reference	shared-item-name	0xa88294	15		0xa86906
+reference	shared-item-name	0xa88294	16		0xa8691a
+reference	shared-item-name	0xa88294	17		0xa8692e
+reference	shared-item-name	0xa88294	18		0xa86942
+reference	shared-item-name	0xa88294	19		0xa86956
+reference	shared-item-name	0xa88294	20		0xa8696a
+reference	shared-item-name	0xa88294	21		0xa8697e
+reference	shared-item-name	0xa88294	22		0xa86992
+reference	shared-item-name	0xa88294	23		0xa869a6
+reference	shared-item-name	0xa88294	24		0xa869ba
+reference	shared-item-name	0xa88294	25		0xa869ce
+reference	english-word-part-of-speech	0xd2cc1c	0		0xd2cb9e
+reference	english-word-part-of-speech	0xd2cc1c	1		0xd2cba8
+reference	english-word-part-of-speech	0xd2cc1c	2		0xd2cbbc
+reference	english-word-part-of-speech	0xd2cc1c	3		0xd2cbb2
+reference	english-word-part-of-speech	0xd2cc1c	4		0xd2cbc6
+reference	english-word-part-of-speech	0xd2cc1c	5		0xd2cbd3
+reference	english-word-part-of-speech	0xd2cc1c	6		0xd2cbe0
+reference	english-word-part-of-speech	0xd2cc1c	7		0xd2cbed
+reference	english-word-part-of-speech	0xd2cc1c	8		0xd2cbfa
+reference	titlecase-cp437-byte	0x52d600	0x81	0	0x52d545
+reference	titlecase-cp437-byte	0x52d600	0x82	1	0x52d594
+reference	titlecase-cp437-byte	0x52d600	0x83	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x84	2	0x52d56e
+reference	titlecase-cp437-byte	0x52d600	0x85	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x86	3	0x52d581
+reference	titlecase-cp437-byte	0x52d600	0x87	4	0x52d5ba
+reference	titlecase-cp437-byte	0x52d600	0x88	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x89	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x8a	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x8b	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x8c	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x8d	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x8e	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x8f	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x90	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x91	5	0x52d5cd
+reference	titlecase-cp437-byte	0x52d600	0x92	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x93	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x94	6	0x52d5a7
+reference	titlecase-cp437-byte	0x52d600	0x95	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x96	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x97	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x98	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x99	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x9a	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x9b	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x9c	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x9d	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x9e	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0x9f	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0xa0	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0xa1	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0xa2	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0xa3	8	0x52d5de
+reference	titlecase-cp437-byte	0x52d600	0xa4	7	0x52d55b
+classic	preference-kind	0x47fa4c	0		0x47de31
+classic	preference-kind	0x47fa4c	1		0x47e156
+classic	preference-kind	0x47fa4c	2		0x47e42a
+classic	preference-kind	0x47fa4c	3		0x47e42a
+classic	preference-kind	0x47fa4c	4		0x47df30
+classic	preference-kind	0x47fa4c	5		0x47dfc2
+classic	preference-kind	0x47fa4c	6		0x47e08c
+classic	preference-kind	0x47fa4c	7		0x47e21c
+classic	preference-kind	0x47fa4c	8		0x47e27f
+classic	preference-kind	0x47fa4c	9		0x47e2d2
+classic	preference-kind	0x47fa4c	10		0x47e346
+classic	preference-kind	0x47fa4c	11		0x47e3b7
+classic	food-item-kind	0x47fa7c	48	0	0x47e6b2
+classic	food-item-kind	0x47fa7c	49	1	0x47e73b
+classic	food-item-kind	0x47fa7c	50	9	0x47eaea
+classic	food-item-kind	0x47fa7c	51	9	0x47eaea
+classic	food-item-kind	0x47fa7c	52	9	0x47eaea
+classic	food-item-kind	0x47fa7c	53	2	0x47e921
+classic	food-item-kind	0x47fa7c	54	3	0x47e7c4
+classic	food-item-kind	0x47fa7c	55	9	0x47eaea
+classic	food-item-kind	0x47fa7c	56	4	0x47e993
+classic	food-item-kind	0x47fa7c	57	9	0x47eaea
+classic	food-item-kind	0x47fa7c	58	9	0x47eaea
+classic	food-item-kind	0x47fa7c	59	9	0x47eaea
+classic	food-item-kind	0x47fa7c	60	9	0x47eaea
+classic	food-item-kind	0x47fa7c	61	9	0x47eaea
+classic	food-item-kind	0x47fa7c	62	9	0x47eaea
+classic	food-item-kind	0x47fa7c	63	9	0x47eaea
+classic	food-item-kind	0x47fa7c	64	9	0x47eaea
+classic	food-item-kind	0x47fa7c	65	9	0x47eaea
+classic	food-item-kind	0x47fa7c	66	9	0x47eaea
+classic	food-item-kind	0x47fa7c	67	9	0x47eaea
+classic	food-item-kind	0x47fa7c	68	9	0x47eaea
+classic	food-item-kind	0x47fa7c	69	5	0x47e83d
+classic	food-item-kind	0x47fa7c	70	6	0x47ea06
+classic	food-item-kind	0x47fa7c	71	7	0x47ea78
+classic	food-item-kind	0x47fa7c	72	9	0x47eaea
+classic	food-item-kind	0x47fa7c	73	8	0x47e8af
+classic	food-item-kind	0x47fa7c	default/outside-48..73	9	0x47eaea
+classic	shared-item-name	0xa85160	0		0xa802c9
+classic	shared-item-name	0xa85160	1		0xa8045e
+classic	shared-item-name	0xa85160	2		0xa80645
+classic	shared-item-name	0xa85160	3		0xa7ff91
+classic	shared-item-name	0xa85160	4		0xa801f2
+classic	shared-item-name	0xa85160	5		0xa7fe65
+classic	shared-item-name	0xa85160	6		0xa80700
+classic	shared-item-name	0xa85160	7		0xa807b6
+classic	shared-item-name	0xa85160	8		0xa835a2
+classic	shared-item-name	0xa85160	9		0xa81b01
+classic	shared-item-name	0xa85160	10		0xa8114b
+classic	shared-item-name	0xa85160	11		0xa81274
+classic	shared-item-name	0xa85160	12		0xa817b6
+classic	shared-item-name	0xa85160	13		0xa813dc
+classic	shared-item-name	0xa85160	14		0xa816e9
+classic	shared-item-name	0xa85160	15		0xa81887
+classic	shared-item-name	0xa85160	16		0xa818f7
+classic	shared-item-name	0xa85160	17		0xa819b1
+classic	shared-item-name	0xa85160	18		0xa81a21
+classic	shared-item-name	0xa85160	19		0xa81a91
+classic	shared-item-name	0xa85160	20		0xa80906
+classic	shared-item-name	0xa85160	21		0xa81047
+classic	shared-item-name	0xa85160	22		0xa83762
+classic	shared-item-name	0xa85160	23		0xa83a82
+classic	shared-item-name	0xa85160	24		0xa84604
+classic	shared-item-name	0xa85160	25		0xa8473d
+classic	shared-item-name	0xa85160	26		0xa84bdb
+classic	shared-item-name	0xa85160	27		0xa84b07
+classic	shared-item-name	0xa85160	28		0xa84d4b
+classic	shared-item-name	0xa85160	29		0xa8491a
+classic	shared-item-name	0xa85160	30		0xa80b36
+classic	shared-item-name	0xa85160	31		0xa80c80
+classic	shared-item-name	0xa85160	32		0xa80ac6
+classic	shared-item-name	0xa85160	33		0xa80a56
+classic	shared-item-name	0xa85160	34		0xa809e6
+classic	shared-item-name	0xa85160	35		0xa80976
+classic	shared-item-name	0xa85160	36		0xa81f7c
+classic	shared-item-name	0xa85160	37		0xa82dae
+classic	shared-item-name	0xa85160	38		0xa83087
+classic	shared-item-name	0xa85160	39		0xa82f6a
+classic	shared-item-name	0xa85160	40		0xa830f7
+classic	shared-item-name	0xa85160	41		0xa83458
+classic	shared-item-name	0xa85160	42		0xa834c2
+classic	shared-item-name	0xa85160	43		0xa83532
+classic	shared-item-name	0xa85160	44		0xa831d1
+classic	shared-item-name	0xa85160	45		0xa82d3e
+classic	shared-item-name	0xa85160	46		0xa83ab5
+classic	shared-item-name	0xa85160	47		0xa83c26
+classic	shared-item-name	0xa85160	48		0xa844a7
+classic	shared-item-name	0xa85160	49		0xa842fa
+classic	shared-item-name	0xa85160	50		0xa83faa
+classic	shared-item-name	0xa85160	51		0xa8441f
+classic	shared-item-name	0xa85160	52		0xa84472
+classic	shared-item-name	0xa85160	53		0xa83db6
+classic	shared-item-name	0xa85160	54		0xa83f18
+classic	shared-item-name	0xa85160	55		0xa81e63
+classic	shared-item-name	0xa85160	56		0xa83e60
+classic	shared-item-name	0xa85160	57		0xa81b97
+classic	shared-item-name	0xa85160	58		0xa81ce1
+classic	shared-item-name	0xa85160	59		0xa81ecf
+classic	shared-item-name	0xa85160	60		0xa84e80
+classic	shared-item-name	0xa85160	61		0xa80cf0
+classic	shared-item-name	0xa85160	62		0xa80fac
+classic	shared-item-name	0xa85160	63		0xa8295c
+classic	shared-item-name	0xa85160	64		0xa82cc6
+classic	shared-item-name	0xa85160	65		0xa82e8e
+classic	shared-item-name	0xa85160	66		0xa82e1e
+classic	shared-item-name	0xa85160	67		0xa82a4c
+classic	shared-item-name	0xa85160	68		0xa82b8d
+classic	shared-item-name	0xa85160	69		0xa81fec
+classic	shared-item-name	0xa85160	70		0xa827e9
+classic	shared-item-name	0xa85160	71		0xa8290a
+classic	shared-item-name	0xa85160	72		0xa84495
+classic	shared-item-name	0xa85160	73		0xa82047
+classic	shared-item-name	0xa85160	74		0xa83167
+classic	shared-item-name	0xa85160	75		0xa82047
+classic	shared-item-name	0xa85160	76		0xa8006e
+classic	shared-item-name	0xa85160	77		0xa82ac4
+classic	shared-item-name	0xa85160	78		0xa80826
+classic	shared-item-name	0xa85160	79		0xa80896
+classic	shared-item-name	0xa85160	80		0xa83682
+classic	shared-item-name	0xa85160	81		0xa836f2
+classic	shared-item-name	0xa85160	82		0xa80ed2
+classic	shared-item-name	0xa85160	83		0xa80f42
+classic	shared-item-name	0xa85160	84		0xa83612
+classic	shared-item-name	0xa85160	85		0xa80d8b
+classic	shared-item-name	0xa85160	86		0xa814b2
+classic	shared-item-name	0xa85160	87		0xa837d2
+classic	shared-item-name	0xa85160	88		0xa84198
+classic	shared-item-name	0xa85160	89		0xa81ee1
+classic	shared-item-name	0xa85160	90		0xa81d59
+classic	shared-item-name	0xa85160	91		0xa7fefa
+classic	shared-item-name	0xa85160	92		0xa829d4
+classic	shared-item-name	0xa852d4	0		0xa821d5
+classic	shared-item-name	0xa852d4	1		0xa821e2
+classic	shared-item-name	0xa852d4	2		0xa821ef
+classic	shared-item-name	0xa852d4	3		0xa8238e
+classic	shared-item-name	0xa852d4	4		0xa8239e
+classic	shared-item-name	0xa852d4	5		0xa823ae
+classic	shared-item-name	0xa852d4	6		0xa823be
+classic	shared-item-name	0xa852d4	7		0xa823ce
+classic	shared-item-name	0xa852f4	0		0xa827b5
+classic	shared-item-name	0xa852f4	1		0xa827b5
+classic	shared-item-name	0xa852f4	2		0xa827b5
+classic	shared-item-name	0xa852f4	3		0xa827b5
+classic	shared-item-name	0xa852f4	4		0xa827b5
+classic	shared-item-name	0xa852f4	5		0xa827b5
+classic	shared-item-name	0xa852f4	6		0xa827b5
+classic	shared-item-name	0xa852f4	7		0xa827b5
+classic	shared-item-name	0xa85314	0		0xa838d2
+classic	shared-item-name	0xa85314	1		0xa83a62
+classic	shared-item-name	0xa85314	2		0xa83a62
+classic	shared-item-name	0xa85314	3		0xa83a62
+classic	shared-item-name	0xa85314	4		0xa83a62
+classic	shared-item-name	0xa85314	5		0xa83a62
+classic	shared-item-name	0xa85314	6		0xa83a62
+classic	shared-item-name	0xa85314	7		0xa838e6
+classic	shared-item-name	0xa85314	8		0xa838fa
+classic	shared-item-name	0xa85314	9		0xa8390e
+classic	shared-item-name	0xa85314	10		0xa83922
+classic	shared-item-name	0xa85314	11		0xa83936
+classic	shared-item-name	0xa85314	12		0xa8394a
+classic	shared-item-name	0xa85314	13		0xa8395e
+classic	shared-item-name	0xa85314	14		0xa83972
+classic	shared-item-name	0xa85314	15		0xa83986
+classic	shared-item-name	0xa85314	16		0xa8399a
+classic	shared-item-name	0xa85314	17		0xa839ae
+classic	shared-item-name	0xa85314	18		0xa839c2
+classic	shared-item-name	0xa85314	19		0xa839d6
+classic	shared-item-name	0xa85314	20		0xa839ea
+classic	shared-item-name	0xa85314	21		0xa839fe
+classic	shared-item-name	0xa85314	22		0xa83a12
+classic	shared-item-name	0xa85314	23		0xa83a26
+classic	shared-item-name	0xa85314	24		0xa83a3a
+classic	shared-item-name	0xa85314	25		0xa83a4e
+classic	english-word-part-of-speech	0xd29c5c	0		0xd29bde
+classic	english-word-part-of-speech	0xd29c5c	1		0xd29be8
+classic	english-word-part-of-speech	0xd29c5c	2		0xd29bfc
+classic	english-word-part-of-speech	0xd29c5c	3		0xd29bf2
+classic	english-word-part-of-speech	0xd29c5c	4		0xd29c06
+classic	english-word-part-of-speech	0xd29c5c	5		0xd29c13
+classic	english-word-part-of-speech	0xd29c5c	6		0xd29c20
+classic	english-word-part-of-speech	0xd29c5c	7		0xd29c2d
+classic	english-word-part-of-speech	0xd29c5c	8		0xd29c3a
+classic	titlecase-cp437-byte	0x52b020	0x81	0	0x52af65
+classic	titlecase-cp437-byte	0x52b020	0x82	1	0x52afb4
+classic	titlecase-cp437-byte	0x52b020	0x83	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x84	2	0x52af8e
+classic	titlecase-cp437-byte	0x52b020	0x85	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x86	3	0x52afa1
+classic	titlecase-cp437-byte	0x52b020	0x87	4	0x52afda
+classic	titlecase-cp437-byte	0x52b020	0x88	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x89	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x8a	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x8b	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x8c	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x8d	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x8e	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x8f	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x90	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x91	5	0x52afed
+classic	titlecase-cp437-byte	0x52b020	0x92	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x93	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x94	6	0x52afc7
+classic	titlecase-cp437-byte	0x52b020	0x95	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x96	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x97	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x98	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x99	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x9a	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x9b	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x9c	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x9d	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x9e	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0x9f	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0xa0	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0xa1	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0xa2	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0xa3	8	0x52affe
+classic	titlecase-cp437-byte	0x52b020	0xa4	7	0x52af7b

@@ -14249,6 +14249,30 @@ translate_personality_facet_paragraph(std::string_view paragraph) {
 
 #include "preference_vocabulary.inc"
 
+// Native form/owner names can contain an authored `nickname'. Its punctuation
+// belongs to that one field, not to the preference sentence or list grammar.
+static size_t character_preference_nickname_end(std::string_view source, size_t open) {
+    for (size_t at = open + 1; at < source.size(); ++at) {
+        if (source[at] != '\'') continue;
+        if (at + 1 == source.size()) return at;
+        const unsigned char next = source[at + 1];
+        if (!std::isalnum(next) && next != '_' && next < 0x80) return at;
+    }
+    return std::string_view::npos;
+}
+
+static size_t character_preference_boundary(std::string_view source,
+        std::string_view delimiter, size_t start = 0) {
+    for (size_t at = 0; at < source.size(); ++at) {
+        if (source[at] == '`') {
+            const auto close = character_preference_nickname_end(source, at);
+            if (close != std::string_view::npos) { at = close; continue; }
+        }
+        if (at >= start && source.substr(at).starts_with(delimiter)) return at;
+    }
+    return std::string_view::npos;
+}
+
 static std::optional<std::string_view> character_preference_likes_body(
         std::string_view sentence) {
     // Unnamed creatures can omit the subject entirely and begin with "likes".
@@ -14257,7 +14281,7 @@ static std::optional<std::string_view> character_preference_likes_body(
     if (sentence.starts_with(bare_prefix))
         return sentence.substr(bare_prefix.size());
     constexpr std::string_view named_marker = " likes ";
-    const size_t at = sentence.find(named_marker);
+    const size_t at = character_preference_boundary(sentence, named_marker);
     if (at != std::string_view::npos && at > 0)
         return sentence.substr(at + named_marker.size());
     return std::nullopt;
@@ -14279,11 +14303,42 @@ std::optional<std::string> Overlay::translate_character_preference_term(
     translate_cultural_title = [&](std::string_view raw)
             -> std::optional<std::string> {
         std::string title = trim(std::string(raw));
+        // The native language-name formatter supports nickname-only and
+        // generated-name/nickname combinations in all three display modes.
+        // Preserve the authored span while translating its generated parts.
+        const size_t nickname_open = title.find('`');
+        if (nickname_open != std::string::npos) {
+            const size_t nickname_close = character_preference_nickname_end(title, nickname_open);
+            if (nickname_close <= nickname_open || nickname_close == std::string::npos ||
+                title.find('`', nickname_open + 1) != std::string::npos)
+                return std::nullopt;
+            const auto before = trim_view(std::string_view(title).substr(0, nickname_open));
+            const auto after = trim_view(std::string_view(title).substr(nickname_close + 1));
+            const auto nickname = native_text_to_utf8(std::string_view(title).substr(
+                nickname_open + 1, nickname_close - nickname_open - 1));
+            if (before.empty() && after.empty()) return nickname;
+            std::string translated;
+            if (!before.empty()) {
+                const auto part = translate_cultural_title(before);
+                if (!part) return std::nullopt;
+                translated += *part;
+            }
+            translated += "“" + nickname + "”";
+            if (!after.empty()) {
+                const auto part = translate_cultural_title(after);
+                if (!part) return std::nullopt;
+                translated += *part;
+            }
+            return translated;
+        }
         if (title.starts_with("The ")) title.erase(0, 4);
         else if (title.starts_with("A ")) title.erase(0, 2);
         else if (title.starts_with("An ")) title.erase(0, 3);
         title = trim(std::move(title));
         if (title.empty()) return std::nullopt;
+        if (contains_cjk_utf8(title) && std::none_of(title.begin(), title.end(),
+                [](unsigned char ch) { return (ch >= 'A' && ch <= 'Z') ||
+                    (ch >= 'a' && ch <= 'z'); })) return native_text_to_utf8(title);
 
         // The title generator capitalizes content words. This boundary keeps
         // a following ordinary preference out of a title containing "and".
@@ -14293,6 +14348,9 @@ std::optional<std::string> Overlay::translate_character_preference_term(
         while (title_words >> title_word) {
             if (std::isupper(static_cast<unsigned char>(title_word.front())))
                 continue;
+            if (static_cast<unsigned char>(title_word.front()) >= 0x80 &&
+                (contains_cjk_utf8(title_word) || native_name_language_masks_.contains(
+                    lower_native_name(title_word)))) continue;
             if (title_word != "and" && title_word != "of" &&
                 title_word != "in" && title_word != "on" &&
                 title_word != "under" && title_word != "over" &&
@@ -14376,6 +14434,9 @@ std::optional<std::string> Overlay::translate_character_preference_term(
         std::string word;
         while (words >> word) {
             const std::string folded = lower(word);
+            // The native formatter can put its article after a first name
+            // or nickname, before the generated adjective/noun group.
+            if (folded == "the" || folded == "a" || folded == "an") continue;
             const auto contextual = std::find_if(
                 cultural_words.begin(), cultural_words.end(),
                 [&](const auto &entry) { return entry.first == folded; });
@@ -14386,8 +14447,16 @@ std::optional<std::string> Overlay::translate_character_preference_term(
                 translated += found->second;
             } else if (const auto part = direct_term(word)) {
                 translated += *part;
+            } else if (native_name_language_masks_.contains(lower_native_name(word))) {
+                const auto part = translate_procedural_fragment(word, true);
+                if (!part) return std::nullopt;
+                translated += *part;
             } else {
-                return std::nullopt;
+                // Native front/rear language words are concatenated without
+                // a space. Let the shared generated-name grammar resolve
+                // that whole compound after ordinary cultural word senses.
+                return translate_procedural_fragment("The " + title, false, false, {},
+                    ProceduralFragmentContext::generated_name);
             }
         }
         return translated.empty()
@@ -14421,6 +14490,13 @@ std::optional<std::string> Overlay::translate_character_preference_term(
             source = trim(std::move(source));
         }
         if (source.empty()) return std::nullopt;
+
+        // Invalid descriptor/form IDs can leave the native prefix without a
+        // body. These are named preference fields, not untranslated UI words.
+        if (source == "the color") return "未知颜色";
+        if (source == "the words of") return "未命名诗歌的辞句";
+        if (source == "the sound of") return "未命名乐曲的声韵";
+        if (source == "the sight of") return "未命名舞蹈的舞姿";
 
         if (const auto found = preference_terms.find(source);
             found != preference_terms.end()) {
@@ -14542,9 +14618,28 @@ std::optional<std::string> Overlay::translate_character_preference_term(
 std::optional<PersonalityParagraphTranslation>
 Overlay::translate_character_preference_paragraph(
         std::string_view paragraph) const {
-    const std::string normalized = normalize_utterance(paragraph);
+    std::string normalized;
+    bool pending_space = false;
+    for (size_t at = 0; at < paragraph.size(); ++at) {
+        const unsigned char ch = paragraph[at];
+        if (native_prose_space(ch)) {
+            pending_space = !normalized.empty();
+            continue;
+        }
+        if (pending_space) { normalized.push_back(' '); pending_space = false; }
+        if (ch == '`') {
+            const auto close = character_preference_nickname_end(paragraph, at);
+            if (close != std::string_view::npos) {
+                normalized.append(paragraph.substr(at, close - at + 1));
+                at = close;
+                continue;
+            }
+        }
+        normalized.push_back(static_cast<char>(ch));
+    }
     paragraph = normalized;
-    const std::string_view first_sentence = paragraph.substr(0, paragraph.find('.'));
+    const std::string_view first_sentence = paragraph.substr(0,
+        character_preference_boundary(paragraph, "."));
     if (!character_preference_likes_body(first_sentence) &&
         !first_sentence.starts_with("When possible, ") &&
         !first_sentence.starts_with("She absolutely detests ") &&
@@ -14554,19 +14649,25 @@ Overlay::translate_character_preference_paragraph(
     }
 
     auto pronoun_in = [](std::string_view source) -> std::string_view {
-        if (source.find(" she ") != std::string_view::npos ||
+        if (character_preference_boundary(source,
+                "When possible, she prefers to consume ") != std::string_view::npos ||
             source.starts_with("She ") ||
-            source.find(". She ") != std::string_view::npos) {
+            character_preference_boundary(source, ". She absolutely detests ") !=
+                std::string_view::npos) {
             return "她";
         }
-        if (source.find(" he ") != std::string_view::npos ||
+        if (character_preference_boundary(source,
+                "When possible, he prefers to consume ") != std::string_view::npos ||
             source.starts_with("He ") ||
-            source.find(". He ") != std::string_view::npos) {
+            character_preference_boundary(source, ". He absolutely detests ") !=
+                std::string_view::npos) {
             return "他";
         }
-        if (source.find(" it ") != std::string_view::npos ||
+        if (character_preference_boundary(source,
+                "When possible, it prefers to consume ") != std::string_view::npos ||
             source.starts_with("It ") ||
-            source.find(". It ") != std::string_view::npos) {
+            character_preference_boundary(source, ". It absolutely detests ") !=
+                std::string_view::npos) {
             return "它";
         }
         return "此人";
@@ -14581,11 +14682,18 @@ Overlay::translate_character_preference_paragraph(
     // contain commas and conjunctions, and generated titles contain "and".
     // Resolve the longest complete semantic item before accepting a split;
     // memoize suffixes so ambiguous titles cannot trigger exponential work.
-    auto translate_sequence = [](std::string_view source, const auto &resolve)
+    auto translate_sequence = [](std::string_view source, const auto &resolve,
+                                std::string_view unnamed)
             -> std::optional<std::string> {
+        const auto trimmed = trim_view(source);
+        if (trimmed.empty() || trimmed == "and") return std::string(unnamed);
         struct Boundary { size_t end; size_t next; };
         std::vector<Boundary> boundaries;
         for (size_t at = 0; at < source.size(); ++at) {
+            if (source[at] == '`') {
+                const auto close = character_preference_nickname_end(source, at);
+                if (close != std::string_view::npos) { at = close; continue; }
+            }
             if (source.substr(at).starts_with(", ")) {
                 size_t next = at + 2;
                 if (source.substr(next).starts_with("and ")) next += 4;
@@ -14599,12 +14707,14 @@ Overlay::translate_character_preference_paragraph(
         std::vector<std::optional<std::string>> memo(source.size() + 1);
         std::function<std::optional<std::string>(size_t)> parse;
         parse = [&](size_t start) -> std::optional<std::string> {
-            if (start >= source.size()) return std::nullopt;
+            if (start >= source.size()) return std::string(unnamed);
             if (visited[start]) return memo[start];
             visited[start] = true;
             for (auto it = boundaries.rbegin(); it != boundaries.rend(); ++it) {
-                if (it->end <= start) continue;
-                const auto item = resolve(source.substr(start, it->end - start));
+                if (it->end < start) continue;
+                const auto raw = trim_view(source.substr(start, it->end - start));
+                const auto item = raw.empty() || raw == "and"
+                    ? std::optional<std::string>(std::string(unnamed)) : resolve(raw);
                 if (!item) continue;
                 if (it->end == source.size()) {
                     memo[start] = item;
@@ -14617,11 +14727,18 @@ Overlay::translate_character_preference_paragraph(
             }
             return memo[start];
         };
+        // Normalization collapses an empty first item's separating space
+        // into the likes/consume prefix. The remaining leading conjunction
+        // still denotes that missing record.
+        if (source.starts_with("and ")) {
+            if (const auto rest = parse(4)) return std::string(unnamed) + "、" + *rest;
+            return std::nullopt;
+        }
         return parse(0);
     };
 
-    auto translate_list = [&](std::string_view source) {
-        return translate_sequence(source, translate_term);
+    auto translate_list = [&](std::string_view source, std::string_view unnamed) {
+        return translate_sequence(source, translate_term, unnamed);
     };
 
     auto translate_likes = [&](std::string_view source)
@@ -14633,12 +14750,16 @@ Overlay::translate_character_preference_paragraph(
             }};
             size_t reason_at = std::string_view::npos;
             size_t reason_size = 0;
+            if (item == "for their") return "未命名对象";
+            if (item.ends_with(" for their"))
+                return translate_term(item.substr(0, item.size() - 10));
             for (std::string_view marker : markers) {
-                const size_t at = item.find(marker);
+                const size_t at = character_preference_boundary(item, marker);
                 if (at == std::string_view::npos) continue;
                 // A candidate containing two reason clauses is not one item.
                 if (reason_at != std::string_view::npos ||
-                    item.find(marker, at + marker.size()) != std::string_view::npos)
+                    character_preference_boundary(item, marker, at + marker.size()) !=
+                        std::string_view::npos)
                     return std::nullopt;
                 reason_at = at;
                 reason_size = marker.size();
@@ -14665,7 +14786,7 @@ Overlay::translate_character_preference_paragraph(
             if (!creature_or_plant) return std::nullopt;
             return *creature_or_plant + "（欣赏它们的" + *reason + "）";
         };
-        if (const auto items = translate_sequence(source, translate_item))
+        if (const auto items = translate_sequence(source, translate_item, "未命名对象"))
             return "喜欢" + *items;
         return std::nullopt;
     };
@@ -14693,7 +14814,7 @@ Overlay::translate_character_preference_paragraph(
     while (cursor < paragraph.size()) {
         while (cursor < paragraph.size() && paragraph[cursor] == ' ') ++cursor;
         if (cursor == paragraph.size()) break;
-        const size_t period = paragraph.find('.', cursor);
+        const size_t period = character_preference_boundary(paragraph, ".", cursor);
         const size_t end = period == std::string_view::npos ? paragraph.size() : period;
         const std::string_view sentence = paragraph.substr(cursor, end - cursor);
 
@@ -14711,7 +14832,7 @@ Overlay::translate_character_preference_paragraph(
             }};
         for (const auto &[prefix, subject] : consume_prefixes) {
             if (!sentence.starts_with(prefix)) continue;
-            if (const auto foods = translate_list(sentence.substr(prefix.size()))) {
+            if (const auto foods = translate_list(sentence.substr(prefix.size()), "不明食物")) {
                 part = "条件允许时，" + std::string(subject) +
                     "更喜欢食用" + *foods + "。";
             }
@@ -14728,7 +14849,7 @@ Overlay::translate_character_preference_paragraph(
             for (const auto &[prefix, subject] : detest_prefixes) {
                 if (!sentence.starts_with(prefix)) continue;
                 if (const auto detested =
-                        translate_list(sentence.substr(prefix.size()))) {
+                        translate_list(sentence.substr(prefix.size()), "未命名生物")) {
                     part = std::string(subject) + "极其厌恶" +
                         *detested + "。";
                 }
@@ -24943,6 +25064,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // into stable text boxes. Blank rows deliberately start a new block: DF
     // puts outdoor adaptation and similar stable notes below the main facets.
     int personality_subtabs_y = -1;
+    std::optional<AsciiPanelFrame> personality_frame;
     for (int y = 0; y < gps_->dimy; ++y) {
         const std::string &row = screen_rows[static_cast<size_t>(y)];
         if ((row.find("Traits") != std::string::npos ||
@@ -24951,6 +25073,17 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             row.find("Preferences") != std::string::npos &&
             row.find("Needs") != std::string::npos) {
             personality_subtabs_y = y;
+            const size_t traits = row.find("Traits");
+            const size_t personality = row.find("Personality");
+            const int first_tab = static_cast<int>(std::min(traits, personality));
+            const int last_tab = static_cast<int>(row.find("Needs") + 5);
+            personality_frame = find_graphical_character_panel_frame(
+                *gps_, first_tab, last_tab, y);
+            if (!personality_frame) {
+                personality_frame = find_ascii_panel_frame(
+                    first_tab, last_tab, y, gps_->dimx, gps_->dimy,
+                    [&](int x, int row_y) { return visible_char_at(x, row_y); });
+            }
             break;
         }
     }
@@ -24963,8 +25096,46 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     struct PersonalityBlock {
         std::vector<PersonalityRow> rows;
         std::string source;
+        int layout_right = 0;
     };
     std::vector<PersonalityBlock> personality_blocks;
+    std::optional<CharacterDescriptionBounds> personality_bounds;
+    if (personality_frame) {
+        personality_bounds = CharacterDescriptionBounds{
+            personality_frame->left + 1, personality_frame->right,
+            personality_subtabs_y + 1, personality_frame->bottom};
+    } else if (personality_subtabs_y >= 0) {
+        // A current native draw can still prove the actual reading width
+        // when an outer panel edge is obscured. Match its source ink before
+        // borrowing that width; the last English word is never a pane edge.
+        bool current_draw = false;
+        for (const auto &draw : captured_native_knowledge_draws(&current_draw)) {
+            if (!draw.document || !draw.document->personality ||
+                draw.y <= personality_subtabs_y || draw.y >= gps_->dimy ||
+                draw.x < 0 || draw.line < 0 ||
+                draw.line >= static_cast<int>(draw.document->rows.size())) continue;
+            const int width = draw.document->width;
+            if (width <= 0 || width > gps_->dimx - draw.x) continue;
+            const auto &source = draw.document->rows[static_cast<size_t>(draw.line)];
+            if (source.size() > static_cast<size_t>(width)) continue;
+            const auto &row = screen_rows[static_cast<size_t>(draw.y)];
+            int verified = 0;
+            bool intact = true;
+            for (size_t x = 0; x < source.size(); ++x) {
+                if (source[x] == ' ') continue;
+                if (row[static_cast<size_t>(draw.x) + x] != source[x]) {
+                    intact = false;
+                    break;
+                }
+                ++verified;
+            }
+            if (!intact || verified < 12) continue;
+            personality_bounds = CharacterDescriptionBounds{
+                draw.x, draw.x + width, personality_subtabs_y + 1,
+                gps_->dimy - 2};
+            break;
+        }
+    }
     if (personality_subtabs_y >= 0) {
         PersonalityBlock current;
         int current_x = -1;
@@ -24973,45 +25144,75 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             current = {};
             current_x = -1;
         };
-        auto subject_field = [](const std::vector<LogicalTextField> &fields)
-                -> const LogicalTextField * {
-            for (const LogicalTextField &field : fields) {
-                if (field.text.starts_with("Like others in ") ||
-                    field.text.starts_with("She ") ||
-                    field.text.starts_with("He ") ||
-                    field.text.starts_with("It ") ||
-                    field.text.starts_with("Her ") ||
-                    field.text.starts_with("His ") ||
-                    field.text.starts_with("Its ") ||
-                    field.text.starts_with("When ") ||
-                    field.text.starts_with("Whenever ") ||
-                    character_preference_likes_body(field.text)) {
-                    return &field;
-                }
-            }
-            return nullptr;
+        auto paragraph_opening = [](std::string_view source) {
+            return source.starts_with("Like others in ") ||
+                source.starts_with("She ") || source.starts_with("He ") ||
+                source.starts_with("It ") || source.starts_with("Her ") ||
+                source.starts_with("His ") || source.starts_with("Its ") ||
+                source.starts_with("When ") || source.starts_with("Whenever ") ||
+                character_preference_likes_body(source).has_value();
         };
-        for (int y = personality_subtabs_y + 1; y < gps_->dimy; ++y) {
-            const auto fields = split_text_fields(screen_rows[static_cast<size_t>(y)]);
-            const LogicalTextField *selected = nullptr;
-            if (!current.rows.empty()) {
-                for (const LogicalTextField &field : fields) {
-                    if (std::abs(field.start - current_x) <= 6) {
-                        if (!selected || field.text.size() > selected->text.size())
+        auto append_prose = [](std::string &target, std::string_view source) {
+            if (source.empty()) return;
+            // Justification can leave a punctuation-only field. Its gap is
+            // layout spacing, not part of the sentence/list grammar.
+            if (!target.empty() && !target.ends_with('-') &&
+                std::string_view(",.!?;:)]}").find(source.front()) == std::string_view::npos)
+                target.push_back(' ');
+            target.append(source);
+        };
+        const int bottom = personality_bounds ? personality_bounds->bottom : gps_->dimy;
+        for (int y = personality_subtabs_y + 1; y < bottom; ++y) {
+            const auto &row = screen_rows[static_cast<size_t>(y)];
+            if (!personality_bounds) {
+                // Retain the existing conservative recovery when neither
+                // a closed frame nor a native row proves one prose column.
+                const auto fields = split_text_fields(row);
+                const LogicalTextField *selected = nullptr;
+                if (!current.rows.empty()) {
+                    for (const LogicalTextField &field : fields) {
+                        if (std::abs(field.start - current_x) <= 6 &&
+                            (!selected || field.text.size() > selected->text.size()))
                             selected = &field;
                     }
+                    if (!selected) finish_block();
                 }
-                if (!selected) finish_block();
+                if (current.rows.empty()) {
+                    for (const LogicalTextField &field : fields) {
+                        if (!paragraph_opening(field.text)) continue;
+                        selected = &field;
+                        current_x = field.start;
+                        break;
+                    }
+                }
+                if (!selected) continue;
+                append_prose(current.source, selected->text);
+                current.rows.push_back({selected->start, y,
+                    selected->end - selected->start, selected->text});
+                continue;
             }
-            if (current.rows.empty()) {
-                selected = subject_field(fields);
-                if (selected) current_x = selected->start;
+            const int pane_left = personality_bounds->left;
+            const int pane_right = personality_bounds->right;
+            const auto fields = split_text_fields(
+                row.substr(pane_left, pane_right - pane_left));
+            std::string plain;
+            int source_left = pane_right, source_right = pane_left;
+            // The enclosed pane owns one prose column. Wide gaps separate
+            // justified words, never independent fields; keep every fragment
+            // and suppress the full span including those original gaps.
+            for (const LogicalTextField &field : fields) {
+                if (std::any_of(field.text.begin(), field.text.end(),
+                        [](unsigned char ch) { return ch < 0x20 || ch == 0x7f; })) continue;
+                append_prose(plain, field.text);
+                source_left = std::min(source_left, pane_left + field.start);
+                source_right = std::max(source_right, pane_left + field.end);
             }
-            if (!selected) continue;
-            if (!current.source.empty()) current.source.push_back(' ');
-            current.source += selected->text;
-            current.rows.push_back({selected->start, y,
-                selected->end - selected->start, selected->text});
+            if (plain.empty()) { finish_block(); continue; }
+            if (current.rows.empty() && !paragraph_opening(plain)) continue;
+            append_prose(current.source, plain);
+            current.layout_right = pane_right;
+            current.rows.push_back({source_left, y, source_right - source_left,
+                row.substr(source_left, source_right - source_left)});
         }
         finish_block();
     }
@@ -25103,6 +25304,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             paragraph_x = std::min(paragraph_x, row.x);
             paragraph_right = std::max(paragraph_right, row.x + row.length);
         }
+        paragraph_right = std::max(paragraph_right, block.layout_right);
         const int paragraph_width = std::max(8, paragraph_right - paragraph_x);
         std::erase_if(result, [&](const Match &match) {
             return std::any_of(block.rows.begin(), block.rows.end(),
