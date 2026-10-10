@@ -89,10 +89,14 @@ std::optional<std::string> Overlay::translate_fortress_item_caption(
     bool typed_description_complete = false;
     try {
         TranslationWorkFrame work_frame("complete item caption", source);
+        if (!relationship && config_.compositional_rules) {
+            target = translate_plant_seed_item_name(source);
+            typed_description_complete = target.has_value();
+        }
         // A complete wood item can omit log/logs in its native caption.
         // Incorporated components use the same name before the generic
         // material adjective; a framed classic component is still an item.
-        if ((!relationship || building_material) && config_.compositional_rules) {
+        if (!target && (!relationship || building_material) && config_.compositional_rules) {
             target = translate_wood_item_caption(source);
             typed_description_complete = target.has_value();
         }

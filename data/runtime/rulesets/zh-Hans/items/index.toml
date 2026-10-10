@@ -69,6 +69,13 @@ name = "corpsepiece::caption"
 [rulesets.rules]
 "{%item_designation:corpsepiece::with_number}" = "{%item_designation:corpsepiece::with_number}"
 
+# Bind the designation replacer at the items base, as for corpsepiece.
+# Complete plant seed names take precedence over animal/body-part grammar.
+[[rulesets]]
+name = "seeds::caption"
+[rulesets.rules]
+"{%item_designation:seeds::seed_with_number}" = "{%item_designation:seeds::seed_with_number}"
+
 # Knapped rocks decorate only the sharpness adjective. As for complete item
 # designations above, the replacer binding belongs to this base namespace.
 [[rulesets]]

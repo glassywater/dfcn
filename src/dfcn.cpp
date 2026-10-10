@@ -8144,6 +8144,15 @@ std::optional<std::string> Overlay::translate_material_name(
     return target;
 }
 
+static std::optional<std::string> translate_plant_seed_item_name(
+        std::string_view source) {
+    // A complete RAW seed name owns the plant meaning even when its words
+    // also form a valid animal/body-part/material phrase (pig tail seed).
+    std::vector<size_t> origins;
+    return RULESETS.translate_with_origins(native_text_to_utf8(source),
+        "::items::seeds::caption", origins);
+}
+
 static std::optional<std::string> translate_corpsepiece_item_name(
         std::string_view source) {
     // The complete body-component grammar owns both the animal label and
@@ -8186,6 +8195,7 @@ std::optional<std::string> Overlay::translate_compositional(const std::string &s
             // example `sheep wool coats` became `毛质羊大衣`) and the arena
             // parser is never reached.
             if (!translated) translated = translate_rated_skill_phrase(screen_text);
+            if (!translated) translated = translate_plant_seed_item_name(screen_text);
             if (!translated) translated = translate_corpsepiece_item_name(screen_text);
             if (!translated) translated = translate_material_name(utf8);
             if (!translated) translated = translate_arena_equipment_source_phrase(utf8);
@@ -30389,6 +30399,10 @@ static std::string format_embark_equipment_quantity(
 std::optional<std::string> Overlay::translate_embark_equipment_item_uncached(
         const std::string &item_source, const std::string &quantity,
         bool captured_memory_source) const {
+    if (const auto seed = translate_plant_seed_item_name(item_source)) {
+        if (quantity.empty()) return seed;
+        return quantity + " 份" + *seed;
+    }
     // This shared item entry also serves Stocks/inventory captions. A body
     // component is already a noun, even when its spelling is also a material
     // (bone, hair, shell). Resolve it before segmentation or requalification.
