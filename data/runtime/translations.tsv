@@ -8494,6 +8494,7 @@ Announcement combat memory-performance-core [memory-person,memory-sermon-topic]:
 Announcement combat memory-sentence [$name]: The agreement to establish a guildhall for {s} was ignored.	说好为{s1}建公会大厅，却没人管了。	l
 Announcement combat merchant-hawk-origin [merchant-hawk-item,merchant-advert-origin]: {s} clear from {s}	远从{s2}运来的{s1}	l
 Announcement combat negotiation-sentence []: The proposal was wildly successful beyond any expectations.	这项提案获得了远超所有人预期的巨大成功。	l
+Announcement combat rumor-event [$term,$travel-site,$name]: They have a {s} called {s} somewhere in {s}.	他们在{s3}的某处有一座名为{s2}的{s1}。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} loosens the choke hold of {s} on {s}.	{s1}松开了{s2}对{s3}的勒颈控制。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} loosens the joint lock of {s} on {s}.	{s1}松开了{s2}对{s3}的关节锁技。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} release the choke hold of {s} on {s}.	{s1}解除了{s2}对{s3}的勒颈控制。	l
@@ -8633,6 +8634,7 @@ Announcement combat memory-reunion [memory-reunion-core,memory-person]: {s} and 
 Announcement combat memory-sentence [$name]: The agreement to establish a temple for {s} was abandoned.	说好为{s1}建神殿，后来却没建。	l
 Announcement combat negotiation-response []: showed empathy with their opposite and agreed on the issue	体谅了对方的处境，并就此达成了一致	l
 Announcement combat negotiation-sentence [negotiation-speaker,negotiation-recipient]: {s} met with {s}.	{s1}与{s2}会面了。	l
+Announcement combat rumor-event [$term,$travel-site]: They have a {s} called {s} somewhere around here.	他们在这附近的某处有一座名为{s2}的{s1}。	l
 Announcement combat rumor-event [$travel-site,rumor-person]: I hear that {s} has been conquered by {s}.	听说{s1}已经被{s2}征服了。	l
 Announcement combat sentence []: I would give anything to be away from here. I can't stand the boredom!	只要能离开这里，什么代价我都愿意付。我实在受不了这么无聊的日子了！	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} loosen the choke hold of {s} on {s}.	{s1}松开了{s2}对{s3}的勒颈控制。	l
@@ -8792,6 +8794,7 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Experie
 Announcement combat fortress-announcement [$unit]: {s} has mandated the construction of certain goods.	{s1}下令制作某些物品。	l
 Announcement combat justice-intrigue-response [justice-intrigue-actor]: accepted out of loyalty to {s}	出于对{s1}的忠诚而接受了	l
 Announcement combat negotiation-response []: negotiated with discernment in turn but was outmaneuvered	也审时度势地谈判，却被对方胜过一筹	l
+Announcement combat rumor-event [$term,$travel-site]: There are foul goings-on over at the {s} of {s}.	{s2}的{s1}那里有人在干见不得人的勾当。	l
 Announcement combat rumor-event [rumor-person,$travel-site,$name]: {s} claimed {s} in the name of {s}.	{s1}以{s3}的名义取得了{s2}。	l
 Announcement combat rumor-flight [$travel-site]: from {s} just before an army descended upon the place	了{s1}，随后一支军队便袭击了那里	l
 Announcement combat sentence [$kinship]: It pains me all the more, for the foul villain is my own {s}.	更让我痛心的是，这个恶徒竟是我的{s1}。	l
@@ -9713,7 +9716,6 @@ Announcement combat negotiation-response []: negotiated deceptively in turn but 
 Announcement combat negotiation-response []: negotiated with flattery in turn and had the mastery	也用奉承话谈判，并占据了上风	l
 Announcement combat negotiation-response []: read their opposite's underlying motivations as well	也看透了对方的深层动机	l
 Announcement combat negotiation-response []: showed empathy with their opposite but did not agree	体谅了对方的处境，但仍未同意	l
-Announcement combat rumor-event [$term,$name,$name]: They have a {s} called {s} somewhere in {s}.	他们在{s3}的某处有一座名为{s2}的{s1}。	l
 Announcement combat rumor-event []: A scheming criminal gang has eluded capture for far too long.	有个犯罪团伙诡计多端，逍遥法外太久了。	l
 Announcement combat sentence [$unit,dialogue-family]: Be careful, for their leader {s} is my {s}.	小心点，他们的领袖{s1}可是我的{s2}。	l
 Announcement combat sentence []: Surely any place is better than this. Let's set off immediately!	去哪儿都比待在这里强。我们马上出发吧！	l
@@ -9919,7 +9921,6 @@ Announcement combat negotiation-response []: negotiated persuasively in turn and
 Announcement combat negotiation-response []: negotiated with empathy in turn and had the mastery	也体谅对方的处境，展开谈判，并占据了上风	l
 Announcement combat negotiation-response []: negotiated with humor in turn but was outmaneuvered	也以幽默的方式谈判，却被对方胜过一筹	l
 Announcement combat rumor-event [$name]: I hear that a group from {s} left to reclaim the ruins.	听说一群来自{s1}的人出发去重建废墟了。	l
-Announcement combat rumor-event [$term,$name]: They have a {s} called {s} somewhere around here.	他们在这附近的某处有一座名为{s2}的{s1}。	l
 Announcement combat rumor-event []: A highly-organized military order is threatening our people.	一个组织严密的军事修会正威胁着我们的人民。	l
 Announcement combat rumor-event []: A savage beast from the thick of the wilds hunts us at will.	一头来自荒野深处的凶猛野兽正在肆意猎杀我们。	l
 Announcement combat rumor-event []: At the end of the world dwell the fiercest beasts of legend.	世界尽头栖息着传说中最凶猛的野兽。	l
@@ -10147,7 +10148,6 @@ Announcement combat merchant-origin [merchant-nation,merchant-people]: {s}, {s} 
 Announcement combat merchant-origin [merchant-nation,merchant-people]: {s}, {s} out to the west	西方的{s2}，也就是{s1}	l
 Announcement combat negotiation-paragraph [negotiation-sentence,negotiation-paragraph]: {s} {s}	{s1}{s2}	l
 Announcement combat negotiation-response []: negotiated deceptively in turn and had the mastery	也用欺骗手段谈判，并占据了上风	l
-Announcement combat rumor-event [$term,$name]: There are foul goings-on over at the {s} of {s}.	{s2}的{s1}那里有人在干见不得人的勾当。	l
 Announcement combat rumor-event []: It is time to send our cursed enemy back to the underworld.	该把那个该死的敌人送回地下世界了。	l
 Announcement combat rumor-event [rumor-identity]: Seek this place if you wish to confront {s} .	想对付{s1}，就去找这个地方。	l
 Announcement combat rumor-event [rumor-time,rumor-person]: I heard that {s}, {s} was kidnapped.	听说{s1}，{s2}被人绑走了。	l

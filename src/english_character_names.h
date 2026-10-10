@@ -884,6 +884,11 @@ private:
             bool terminal = false) {
             if (first.text.empty() || second.text.empty() ||
                 (!terminal && first.text == second.text)) return;
+            // A grammatical action/noun pair still needs a compatible
+            // subject or object. Otherwise keep the caller's whole-name
+            // phonetic fallback instead of inventing a literal place name.
+            if ((relation == Relation::VerbObject && !surname_argument(a, b, false)) ||
+                (relation == Relation::SubjectVerb && !surname_argument(b, a, true))) return;
             std::string_view first_text = first.actor_suffix ? first.full_text : first.text;
             unsigned a_width = glyph_count(first_text), b_width = glyph_count(second.text);
             if (entity && (!link.empty() || actor_ending || first.actor_suffix ||
@@ -1421,6 +1426,10 @@ private:
         const auto add = [&](const Part &first, SurnameForm first_role,
             const Part &second, SurnameForm second_role, const Part &head,
             Relation relation) {
+            // Longer entity phrases must retain the same semantic argument
+            // evidence as compact forms; width cannot license a new relation.
+            if ((relation == Relation::VerbObject && !surname_argument(first, second, false)) ||
+                (relation == Relation::SubjectVerb && !surname_argument(second, first, true))) return;
             const auto first_words = entity_phrase_words(first, first_role);
             const auto second_words = entity_phrase_words(second, second_role);
             for (const auto &a : first_words) for (const auto &b : second_words) {
