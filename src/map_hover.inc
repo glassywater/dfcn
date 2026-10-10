@@ -677,7 +677,8 @@ std::optional<NativeTextCard> Overlay::capture_map_hover_card(
 // Both the compact spoor caption and the tracking paragraph carry the same
 // footwear/anatomy noun. Keep their sizes, species and body sides in the
 // existing typed grammars, outside generic prose/voice adjective matching.
-std::optional<std::string> Overlay::translate_map_track_noun(std::string_view source) const {
+std::optional<std::string> Overlay::translate_map_track_noun(std::string_view source,
+        bool liquid_print) const {
     if (!config_.compositional_rules) return std::nullopt;
     source = trim_view(source);
     const auto scoped = [&](std::string_view text, const char *ns) {
@@ -701,7 +702,10 @@ std::optional<std::string> Overlay::translate_map_track_noun(std::string_view so
         return name ? std::optional(*side + *name) : std::nullopt;
     };
     const auto marked_part = [&](std::string_view text) -> std::optional<std::string> {
-        if (auto name = sided_part(text)) return name;
+        // A liquid print's first field is a deposited substance. Resolve
+        // that boundary before equipment qualifiers can consume its name.
+        if (!liquid_print)
+            if (auto name = sided_part(text)) return name;
         // Native 0x407b33..0x407e92 and 0x408254..0x40839a prepend
         // a complete liquid material to an item or anatomical part. Try
         // semantic word boundaries, never translate those words separately.
@@ -710,18 +714,24 @@ std::optional<std::string> Overlay::translate_map_track_noun(std::string_view so
             const auto name = sided_part(trim_view(text.substr(at + 1)));
             if (!name) continue;
             const auto material = translate_material_name(text.substr(0, at));
-            if (material) return *material + *name;
+            if (material) return liquid_print
+                ? *name + "留下的" + *material : *material + *name;
+        }
+        // The native liquid branch can omit an unavailable body-part name.
+        // Only a print permits this complete material-only tail.
+        if (liquid_print) {
+            if (auto material = translate_material_name(text)) return material;
+            return sided_part(text);
         }
         return std::nullopt;
     };
-    if (auto name = marked_part(source)) return name;
     for (size_t at = source.find("'s "); at != std::string_view::npos;
          at = source.find("'s ", at + 3)) {
         const auto owner = scoped(source.substr(0, at + 2), "::map_hover::track_owner");
         if (!owner) continue;
         if (auto name = marked_part(trim_view(source.substr(at + 3)))) return *owner + *name;
     }
-    return std::nullopt;
+    return marked_part(source);
 }
 
 // The native adventure formatter emits one description followed by compass
@@ -757,7 +767,8 @@ std::optional<std::string> Overlay::translate_map_track(std::string_view source)
             // prints. Existing scoped grammars retain size, side and species
             // anatomy without guessing names from generic English fragments.
             auto name = translate_map_track_noun(
-                description.substr(0, description.size() - suffix.size()));
+                description.substr(0, description.size() - suffix.size()),
+                suffix == " print");
             if (name) translated = wrap(std::string("{s}") + std::string(suffix), *name);
             break;
         }
@@ -1073,8 +1084,15 @@ void Overlay::append_map_hover_phrases(const NativeTextCard &card,
             normalized += static_cast<char>(ch);
             space = false;
         }
-        auto target = translate_map_hover_phrase(normalized, row.map_hover,
-            row.unit_identity_target);
+        // Tracking titles and bearings are independent catalog fields without
+        // sentence punctuation. Resolve only their complete fixed UI entry;
+        // an unknown row retains the same native ownership and layout below.
+        std::vector<int> target_colors;
+        auto target = row.map_hover.kind == NativeMapHoverKind::None
+            ? translate_help_paragraph(row.source, row.foregrounds,
+                target_colors, true, -1, true)
+            : translate_map_hover_phrase(normalized, row.map_hover,
+                row.unit_identity_target);
         // Typed item/unit parsers can preserve an authored name or nickname
         // in Latin letters. Their field binding remains a complete result.
         const bool authored_field = row.map_hover.kind == NativeMapHoverKind::Unit ||
@@ -1100,6 +1118,7 @@ void Overlay::append_map_hover_phrases(const NativeTextCard &card,
         Match match{row.x, row.y, static_cast<int>(row.source.size()),
             kMapHoverPhraseRule, std::move(*target), row.source};
         match.layout_foreground_rgb = row.foregrounds.front();
+        if (!untranslated) match.layout_glyph_foreground_rgb = std::move(target_colors);
         match.native_hover_untranslated = untranslated;
         if (untranslated) match.native_help_review_source = row.complete_source.empty()
             ? row.source : row.complete_source;

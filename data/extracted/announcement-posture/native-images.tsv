@@ -1,0 +1,9 @@
+edition	image_identity	configured_path	function_role	start_va	end_va
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	shared-action	0x1415059c0	0x14150a488
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	subject-supplier	0x14132e430	0x14132f971
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	unit-description-supplier	0x14132e0c0	0x14132e428
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	profession-supplier-logical-unwind-chain	0x14132cc10	0x14132e0c0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	shared-action	0x141500930	0x1415053f8
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	subject-supplier	0x1413293a0	0x14132a8e1
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	unit-description-supplier	0x141329030	0x141329398
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	profession-supplier-logical-unwind-chain	0x141327b80	0x141329030

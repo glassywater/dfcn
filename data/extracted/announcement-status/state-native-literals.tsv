@@ -1,0 +1,1533 @@
+edition	image_identity	role	function_start	instruction	kind	operand	source
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141354940	cstring	0x14172f830	 has come!
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413549ac	cstring	0x1415fcfe8	  
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141355889	printable-immediate		gfff
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135662f	printable-immediate		gfff
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413569af	printable-immediate		gfff
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413569e5	printable-immediate		gfff
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141356d00	printable-immediate		VUUU
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413575ac	printable-immediate		gfff
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141357fb9	printable-immediate		VUUU
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413584d5	cstring	0x14178270c	 fall
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413584de	cstring	0x141782704	 falls
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413584f1	cstring	0x141782720	 over.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413587a3	cstring	0x141782718	 regain
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413587ac	cstring	0x141782600	 regains
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413587bf	cstring	0x1417825f0	 consciousness.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413589aa	cstring	0x1415eebd0	 are
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413589b3	cstring	0x1415eebd8	 is
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413589c6	cstring	0x141782630	 partially free of the web.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141358bac	cstring	0x1415eebd0	 are
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141358bb5	cstring	0x1415eebd8	 is
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141358bc8	cstring	0x141782610	 completely free of the web.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141358d24	cstring	0x1415eebd0	 are
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141358d2d	cstring	0x1415eebd8	 is
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141358d40	cstring	0x141782670	 completely paralyzed!
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141358e20	cstring	0x1415eeb2c	 have
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141358e29	cstring	0x1415eeb34	 has
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141358e3c	cstring	0x141782650	 fully overcome the paralysis.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141358f18	cstring	0x1415eebd0	 are
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141358f21	cstring	0x1415eebd8	 is
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141358f34	cstring	0x1417826a0	 partially paralyzed!
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141359010	cstring	0x1415eebd0	 are
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141359019	cstring	0x1415eebd8	 is
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135902c	cstring	0x141782688	 feeling sluggish!
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413590fb	cstring	0x1415eec8c	 feel
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141359104	cstring	0x1415eec94	 looks
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141359117	cstring	0x1417828ac	 numb!
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413591e7	cstring	0x1415eeb2c	 have
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413591f0	cstring	0x1415eeb34	 has
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141359203	cstring	0x141782888	 partially overcome the paralysis.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413593f5	cstring	0x141782ad4	 retch
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413593fe	cstring	0x141782b30	 retches
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141359411	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141359633	cstring	0x14171416c	 vomit
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135963c	cstring	0x1417828d0	 vomits
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141359674	cstring	0x1417828b8	 into the ocean wave
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141359680	cstring	0x1416b4aa8	 into the 
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413596f0	cstring	0x1417828f0	 into the lava mist
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413596f9	cstring	0x1417828d8	 into the dragonfire
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141359702	cstring	0x141782930	 into the flames
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135970b	cstring	0x141782908	 and bits of it get stuck in the web
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141359714	cstring	0x141782758	 into the sea foam
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141359727	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413598b0	cstring	0x141782728	The rest of the vomit burns away in the lava.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413598b9	cstring	0x1417827a0	The vomit burns away in the lava.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413598c7	cstring	0x141782770	The rest of the vomit burns away in the magma.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413598d0	cstring	0x141782800	The vomit burns away in the magma.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135995f	cstring	0x1417827c8	The rest of the vomit disappears into the water.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141359968	cstring	0x141782860	The vomit disappears into the water.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413599ca	cstring	0x141782828	The rest of the vomit falls away into the chasm.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x1413599d3	cstring	0x141782a30	The vomit falls away into the chasm.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141359a35	cstring	0x1417829f8	The rest of the vomit falls away into the underworld.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141359a3e	cstring	0x141782aa8	The vomit falls away into the underworld.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141359a9e	cstring	0x141782a60	The rest of the vomit splatters into the shallow puddle of water.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x141359aa7	cstring	0x141782ae0	The vomit splatters into the shallow puddle of water.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135a065	cstring	0x1415eebd0	 are
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135a06e	cstring	0x1415eebd8	 is
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135a081	cstring	0x141782b18	 no longer stunned.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135a327	cstring	0x141662844	 pass
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135a330	cstring	0x141662850	 passes
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135a343	cstring	0x141782960	 out from exhaustion.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135a50c	cstring	0x141782948	 collapse and fall
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135a515	cstring	0x1417829a0	 collapses and falls
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135a528	cstring	0x141782978	 to the ground from over-exertion.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135a71e	cstring	0x1417829c0	 give
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135a727	cstring	0x1417829b8	 gives
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135a73a	cstring	0x1417829e8	 in to pain.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135bb7b	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135bb9e	cstring	0x1415eea70	have
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135bba7	cstring	0x1415eeafc	has
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135bbba	cstring	0x1417829c8	 reverted to a wild state!
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135bd7d	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135bda0	cstring	0x1415eea70	have
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135bda9	cstring	0x1415eeafc	has
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135bdbc	cstring	0x1417834f8	 forgotten 
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135bde1	cstring	0x1415ee960	your
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135be39	cstring	0x1417834e8	 training!
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135c181	printable-immediate		a'
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135c22a	cstring	0x1415ed9bc	The 
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135c279	cstring	0x141783518	 have given a resident 
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135c2b1	cstring	0x141783508	 the name 
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135c2f9	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135c4ed	printable-immediate		VUUU
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135cf57	cstring	0x1416cb630	An animal
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135cf6a	cstring	0x141783548	 has grown to become a 
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135cfaf	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135d140	cstring	0x141783428	 is aware of 
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135d189	cstring	0x141783470	 surroundings again.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135d1b3	cstring	0x141783438	 has climbed out of depression.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135d1bc	cstring	0x141783560	 has calmed down.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135d1c5	cstring	0x141783530	 is no longer enraged.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135d1ce	cstring	0x141783578	 has left the martial trance.
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135e0dc	cstring	0x141783458	 has given birth to 
+reference	PE:6a70a6d9:02711000	status-update	0x1413547e0	0x14135e15e	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	actor-format	0x141330c30	0x141330e5d	cstring	0x1415e90d8	, 
+reference	PE:6a70a6d9:02711000	actor-format	0x141330c30	0x141330f58	cstring	0x1415e9718	""""
+reference	PE:6a70a6d9:02711000	actor-format	0x141330c30	0x141330fad	cstring	0x1415e9718	""""
+reference	PE:6a70a6d9:02711000	actor-format	0x141330c30	0x141330fc2	cstring	0x1415e90d8	, 
+reference	PE:6a70a6d9:02711000	actor-format	0x141330c30	0x141331001	cstring	0x1415e90d8	, 
+reference	PE:6a70a6d9:02711000	actor-format	0x141330c30	0x14133105d	cstring	0x1415e90d8	, 
+reference	PE:6a70a6d9:02711000	actor-format	0x141330c30	0x1413310b8	cstring	0x141615540	 (
+reference	PE:6a70a6d9:02711000	actor-format	0x141330c30	0x1413310f4	cstring	0x141782c58	Trained
+reference	PE:6a70a6d9:02711000	actor-format	0x141330c30	0x141331100	cstring	0x141782c78	-Trained-
+reference	PE:6a70a6d9:02711000	actor-format	0x141330c30	0x14133110c	cstring	0x141782c68	+Trained+
+reference	PE:6a70a6d9:02711000	actor-format	0x141330c30	0x141331118	cstring	0x141782c90	*Trained*
+reference	PE:6a70a6d9:02711000	actor-format	0x141330c30	0x14133114c	cstring	0x141782c58	Trained
+reference	PE:6a70a6d9:02711000	actor-format	0x141330c30	0x14133119c	cstring	0x141782c58	Trained
+reference	PE:6a70a6d9:02711000	actor-format	0x141330c30	0x1413311c8	cstring	0x141782c84	Tame
+reference	PE:6a70a6d9:02711000	actor-format	0x141330c30	0x1413311d1	cstring	0x141782cb0	Semi-Wild
+reference	PE:6a70a6d9:02711000	actor-format	0x141330c30	0x1413311e9	cstring	0x141615580	)
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132e4af	cstring	0x1415ec550	you
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132e4b6	cstring	0x1415e8ca0	You
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132e9a0	cstring	0x1415ec9fc	 slave
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132e9da	cstring	0x1415eca28	slave
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132ea35	cstring	0x1415eca28	slave
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132ea3d	cstring	0x1415eca2c	e
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132eb1b	cstring	0x141782bd0	 prisoner
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132eb4f	printable-immediate		prisoner
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132ebad	printable-immediate		prisoner
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132ed76	cstring	0x1415e8e48	the 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132ed7d	cstring	0x1415ed9bc	The 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132edc2	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132ef95	cstring	0x1415e8e48	the 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132efa9	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132efbe	cstring	0x1416757e4	force
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132efe3	cstring	0x1415e8e48	the 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132eff7	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f00c	cstring	0x141661fa4	deity
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f254	cstring	0x1415ec9fc	 slave
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f28e	cstring	0x1415eca28	slave
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f2ee	cstring	0x1415eca28	slave
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f2f6	cstring	0x1415eca2c	e
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f3cb	cstring	0x141782bd0	 prisoner
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f3ff	printable-immediate		prisoner
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f459	printable-immediate		prisoner
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f513	cstring	0x1415e8e48	the 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f569	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f5d3	cstring	0x141782b3c	stray 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f5da	cstring	0x141782b48	fierce 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f61e	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f633	cstring	0x141782b58	agitated 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f67b	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f690	cstring	0x1416a5e5c	ghost
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f6bf	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f6d4	cstring	0x1415fdbb8	ghostly 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f706	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f754	cstring	0x141686348	average
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f783	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f7d7	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f81e	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f843	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f89c	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f8b1	cstring	0x1416cf03c	corpse
+reference	PE:6a70a6d9:02711000	actor-article-format	0x14132e430	0x14132f8c0	cstring	0x14173e8e0	 corpse
+reference	PE:6a70a6d9:02711000	actor-creature-role	0x14132f980	0x14132fade	cstring	0x141661fa4	deity
+reference	PE:6a70a6d9:02711000	actor-creature-role	0x14132f980	0x14132faf5	cstring	0x1416757e4	force
+reference	PE:6a70a6d9:02711000	actor-creature-role	0x14132f980	0x14132fd3c	cstring	0x141782b50	 Slave
+reference	PE:6a70a6d9:02711000	actor-creature-role	0x14132f980	0x14132fd76	cstring	0x141600c30	Slave
+reference	PE:6a70a6d9:02711000	actor-creature-role	0x14132f980	0x14132fdcc	cstring	0x141600c30	Slave
+reference	PE:6a70a6d9:02711000	actor-creature-role	0x14132f980	0x14132fdd4	cstring	0x141600c34	e
+reference	PE:6a70a6d9:02711000	actor-creature-role	0x14132f980	0x14132feb3	cstring	0x141782b70	 Prisoner
+reference	PE:6a70a6d9:02711000	actor-creature-role	0x14132f980	0x14132fee7	printable-immediate		Prisoner
+reference	PE:6a70a6d9:02711000	actor-creature-role	0x14132f980	0x14132ff37	printable-immediate		Prisoner
+reference	PE:6a70a6d9:02711000	actor-creature-role	0x14132f980	0x141330066	cstring	0x141782b8c	Stray 
+reference	PE:6a70a6d9:02711000	actor-creature-role	0x14132f980	0x14133006d	cstring	0x141782b68	Fierce 
+reference	PE:6a70a6d9:02711000	actor-creature-role	0x14132f980	0x14133008e	cstring	0x141782b80	Agitated 
+reference	PE:6a70a6d9:02711000	actor-creature-role	0x14132f980	0x1413300c4	cstring	0x1416bec90	Ghost
+reference	PE:6a70a6d9:02711000	actor-creature-role	0x14132f980	0x1413300de	cstring	0x141629b50	Ghostly 
+reference	PE:6a70a6d9:02711000	actor-creature-role	0x14132f980	0x14133012d	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	actor-creature-role	0x14132f980	0x141330176	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	actor-creature-role	0x14132f980	0x1413301bc	cstring	0x141782c60	Corpse
+reference	PE:6a70a6d9:02711000	actor-creature-role	0x14132f980	0x1413301cb	cstring	0x141629b48	 Corpse
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331674	cstring	0x141782bf8	the force
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331873	cstring	0x141782ca0	the deity
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331b08	cstring	0x1415e8e48	the 
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331e1a	cstring	0x141608940	Miner
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331e23	cstring	0x141608944	r
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331e3e	cstring	0x141782be8	Woodworker
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331e4b	cstring	0x141782bf0	er
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331e67	cstring	0x14162c9e0	Carpenter
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331e74	cstring	0x14162c9e8	r
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331e8f	cstring	0x14162c9c8	Bowyer
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331e98	cstring	0x14162c9cc	er
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331eb4	cstring	0x141608960	Woodcutter
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331ec1	cstring	0x141608968	er
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331edd	cstring	0x14162c958	Stoneworker
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331eea	cstring	0x14162c960	ker
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331ef5	cstring	0x14162c962	r
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331f10	printable-immediate		Engraver
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331f27	cstring	0x1416a5848	Stonecutter
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331f3c	cstring	0x1416a5838	Stone Carver
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331f51	cstring	0x1416a5864	Mason
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331f66	cstring	0x141782c10	Ranger
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331f7b	cstring	0x1416a5880	Animal Caretaker
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331f90	cstring	0x1416a5870	Animal Trainer
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331fa5	cstring	0x141600378	Hunter
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331fba	cstring	0x1416a56f8	Trapper
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331fcf	cstring	0x1416a56d0	Animal Dissector
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331fe4	cstring	0x14162c938	Metalsmith
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141331ff9	cstring	0x1416a5628	Furnace Operator
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133200e	cstring	0x1416a5690	Weaponsmith
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332023	cstring	0x141782c08	Armorer
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332040	cstring	0x1416a56b0	Blacksmith
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133204d	cstring	0x1416a56b8	th
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332069	cstring	0x141782c28	Metalcrafter
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332076	cstring	0x141782c30	fter
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332088	cstring	0x14162c930	Jeweler
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133209d	cstring	0x1416a54e0	Gem Cutter
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413320b2	cstring	0x1416a54f0	Gem Setter
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413320c7	cstring	0x141651c38	Craftsman
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413320dc	cstring	0x1416a5500	Woodcrafter
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413320f1	cstring	0x1416a5510	Papermaker
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332106	cstring	0x1416a5520	Bookbinder
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133211b	cstring	0x1416a552c	Potter
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332130	cstring	0x1416a59c4	Glazer
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332145	cstring	0x1416a5538	Wax Worker
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133215a	cstring	0x141782c18	Stonecrafter
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133216f	cstring	0x1416a59a0	Leatherworker
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332184	cstring	0x1416a59d0	Bone Carver
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332199	cstring	0x1416a59dc	Weaver
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413321ae	cstring	0x141651cd0	Clothier
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413321c3	cstring	0x1416a5568	Glassmaker
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413321d8	cstring	0x1416a5640	Strand Extractor
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413321ed	cstring	0x141782c48	Fishery Worker
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332202	cstring	0x1416a5618	Fisherman
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332217	cstring	0x1416a56c0	Fish Dissector
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133222c	cstring	0x1416a56e8	Fish Cleaner
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332241	cstring	0x14162cb88	Farmer
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332256	cstring	0x1416a58c0	Cheesemaker
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133226b	cstring	0x1416a58cc	Milker
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332280	cstring	0x1416a58d4	Gelder
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332295	cstring	0x1416a58e0	Shearer
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413322aa	cstring	0x1416a58e8	Spinner
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413322bf	cstring	0x14163cf84	Cook
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413322d4	cstring	0x1416a59f8	Thresher
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413322e9	cstring	0x1416a59ec	Miller
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413322fe	cstring	0x14161be28	Butcher
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332313	cstring	0x14162cb80	Tanner
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332328	cstring	0x14162c910	Dyer
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133233d	cstring	0x1416a59b0	Presser
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332352	cstring	0x1416a59b8	Beekeeper
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332367	cstring	0x1416a5700	Planter
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133237c	cstring	0x1416a5708	Herbalist
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332391	cstring	0x1416a59e4	Brewer
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413323a6	cstring	0x141782c38	Soap Maker
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413323bb	cstring	0x1416a5660	Potash Maker
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413323d0	cstring	0x1416a5670	Lye Maker
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413323e5	cstring	0x1416a5680	Wood Burner
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413323fa	cstring	0x141782d20	Engineer
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133240f	cstring	0x14162c948	Mechanic
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332424	cstring	0x1416a5970	Siege Engineer
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332439	cstring	0x1416a5980	Siege Operator
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133244e	cstring	0x1416a5990	Pump Operator
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332463	cstring	0x141782d18	Clerk
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332478	cstring	0x141782d38	Administrator
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133248d	cstring	0x141782d2c	Trader
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413324a2	cstring	0x1416a55a4	Poet
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413324b7	cstring	0x141782d50	Bard
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413324cc	cstring	0x1416a5ad8	Dancer
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413324e1	cstring	0x1415ffd30	Performer
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413324f6	cstring	0x1415ffd1c	Scribe
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133250b	cstring	0x14162c890	Tavern Keeper
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332520	cstring	0x141782d48	Sage
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332535	cstring	0x1415ffd28	Scholar
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133254a	cstring	0x141782d68	Philosopher
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133255f	cstring	0x1416a5b78	Mathematician
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332574	cstring	0x141782d58	Historian
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332589	cstring	0x1416a5b88	Astronomer
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133259e	cstring	0x141782cd0	Naturalist
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413325b3	cstring	0x1416a5b98	Chemist
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413325c8	cstring	0x1416a5ba0	Geographer
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413325dd	cstring	0x1415ffcf8	Doctor
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413325f2	cstring	0x1415ffce8	Diagnostician
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332607	cstring	0x14162c8a8	Bone Doctor
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133261c	cstring	0x1416a5918	Suturer
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332631	cstring	0x1415fff10	Surgeon
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332646	cstring	0x141782cc0	Merchant
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133265b	cstring	0x141782ce4	Drunk
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332670	cstring	0x14162c880	Monster Slayer
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332685	cstring	0x141782cdc	Scout
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133269a	cstring	0x141782cf8	Beast Hunter
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413326af	cstring	0x14169e2f0	Snatcher
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413326c4	cstring	0x1415ffd10	Mercenary
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413326d9	cstring	0x1416a5a90	Hammerman
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413326ee	cstring	0x141781e48	Hammer Lord
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332703	cstring	0x1416a5aa0	Spearman
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332718	cstring	0x141781d60	Spearmaster
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133272d	cstring	0x1416a5ab0	Crossbowman
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332742	cstring	0x141781db8	Elite Crossbowman
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332757	cstring	0x1416a5a40	Wrestler
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133276c	cstring	0x141781dd0	Elite Wrestler
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332781	cstring	0x1416a5a70	Axeman
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332796	cstring	0x141781ed8	Axe Lord
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413327ab	cstring	0x1416a5a78	Swordsman
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413327c0	cstring	0x141781ee8	Swordmaster
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413327d5	cstring	0x1416a5a88	Maceman
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413327ea	cstring	0x141781e60	Mace Lord
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413327ff	cstring	0x1416a5ac0	Pikeman
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332814	cstring	0x141781e70	Pikemaster
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332829	cstring	0x1416a5948	Bowman
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133283e	cstring	0x141781e98	Elite Bowman
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332853	cstring	0x1416a5a08	Blowgunner
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332868	cstring	0x141781f88	Master Blowgunner
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133287d	cstring	0x1416a58b4	Lasher
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332892	cstring	0x141781fb0	Master Lasher
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413328a7	cstring	0x141782cf0	Recruit
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413328bc	cstring	0x1415f7148	Hunting
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413328d1	cstring	0x1416036fc	War
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413328e6	cstring	0x141781fc8	Master Thief
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x1413328fb	cstring	0x14160032c	Thief
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332910	cstring	0x1415ec960	Criminal
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332925	cstring	0x141782d10	Peddler
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133293a	cstring	0x141782d08	Prophet
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133294f	cstring	0x141782df8	Pilgrim
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332964	cstring	0x141782dec	Monk
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332979	cstring	0x141782e08	Messenger
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332a17	cstring	0x1415ffe64	Child
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332a80	cstring	0x141782e00	Baby
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332aa8	cstring	0x141782bc0	Peasant
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332ab2	cstring	0x141782bc4	ant
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332abd	cstring	0x141782bc6	t
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332c76	cstring	0x141782b50	 Slave
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332cb0	cstring	0x141600c30	Slave
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332d06	cstring	0x141600c30	Slave
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332d0e	cstring	0x141600c34	e
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332de9	cstring	0x141782b70	 Prisoner
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332e1d	printable-immediate		Prisoner
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332e6c	printable-immediate		Prisoner
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332ef4	cstring	0x1415e8e48	the 
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332f25	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332f8d	cstring	0x1416bec90	Ghost
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332f9c	cstring	0x141629b50	Ghostly 
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x141332fe9	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	actor-profession	0x141331500	0x14133300c	cstring	0x141782e38	One
+reference	PE:6a70a6d9:02711000	language-name-format	0x140a94030	0x140a9413d	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	language-name-format	0x140a94030	0x140a942b3	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	language-name-format	0x140a94030	0x140a9450f	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	language-name-format	0x140a94030	0x140a9463b	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	possessive-pronoun	0x140aa4850	0x140aa4866	cstring	0x1416ced18	his
+reference	PE:6a70a6d9:02711000	possessive-pronoun	0x140aa4850	0x140aa4871	cstring	0x1416cecc0	her
+reference	PE:6a70a6d9:02711000	possessive-pronoun	0x140aa4850	0x140aa4878	cstring	0x1415ee528	its
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406dd8cc	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406ddb95	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406ddd45	cstring	0x14167da98	a girl
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406ddd5c	cstring	0x14167da90	a boy
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406ddd6e	cstring	0x14167da88	a child
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406ddd8b	cstring	0x14167da7c	twins
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406ddda2	cstring	0x14167da70	triplets
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406dddb3	cstring	0x14167da60	quadruplets
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406dddc4	cstring	0x14167da50	quintuplets
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406ddddb	cstring	0x14167da40	sextuplets
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406dddf2	cstring	0x14167da30	septuplets
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406dde09	cstring	0x14167dc30	octuplets
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406dde20	cstring	0x14167dc20	nonuplets
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406dde34	cstring	0x14167dc10	decaplets
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406dde42	cstring	0x14167dc00	undecaplets
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406dde56	cstring	0x14167dbf0	duodecaplets
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406dde6a	cstring	0x14167dbe0	tredecaplets
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406dde7e	cstring	0x14167dbc8	quattuordecaplets
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406dde92	cstring	0x14167dbb8	quindecaplets
+reference	PE:6a70a6d9:02711000	birth-offspring-description	0x1406dd860	0x1406dde9b	cstring	0x14167dba8	many babies
+reference	PE:6a70a6d9:02711000	state-helper-a88610	0x140a88610	0x140a8999b	cstring	0x1416cee48	A kidnapper has made off with 
+reference	PE:6a70a6d9:02711000	state-helper-a88610	0x140a88610	0x140a899ef	cstring	0x1415ee438	!
+reference	PE:6a70a6d9:02711000	state-helper-a88610	0x140a88610	0x140a8a4a7	cstring	0x1416cee38	 has stolen 
+reference	PE:6a70a6d9:02711000	state-helper-a88610	0x140a88610	0x140a8ae7f	cstring	0x1416cee20	A thief has stolen 
+reference	PE:6a70a6d9:02711000	state-helper-a88610	0x140a88610	0x140a8aed7	cstring	0x1415ee438	!
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c89330	cstring	0x1416ee4c0	 gains possession of the 
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c89376	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c893f0	cstring	0x1415ed9bc	The 
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c89436	cstring	0x1416ee4a8	 remains stuck in 
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c89499	cstring	0x1415edb24	's 
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c89564	cstring	0x141681050	body part
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c896ba	cstring	0x141681050	body part
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c89715	cstring	0x141681050	body part
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c89721	cstring	0x141681058	t
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c8978f	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c89800	cstring	0x1416ee488	 maintains possession of the 
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c89846	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c898d0	cstring	0x1416ee468	You gain possession of the 
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c898f5	cstring	0x1415ed9bc	The 
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c89923	cstring	0x1416ee450	 remains stuck in your 
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c8995e	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c89973	cstring	0x1416ee430	You maintain possession of the 
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c899a1	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c899c5	cstring	0x1415ed9bc	The 
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c89a0b	cstring	0x1416ee418	 is torn from your 
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c89ad6	cstring	0x141681050	body part
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c89c2c	cstring	0x141681050	body part
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c89c87	cstring	0x141681050	body part
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c89c93	cstring	0x141681058	t
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c89ce8	cstring	0x1416ee3f8	You've lost possession of the 
+reference	PE:6a70a6d9:02711000	state-helper-c88f50	0x140c88f50	0x140c89d2e	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325395	cstring	0x141781860	 cancels 
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413253d6	cstring	0x141603460	: 
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x14132540b	cstring	0x141781948	Unscheduled
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325417	cstring	0x141781930	Cannot reach site
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325423	cstring	0x141781968	Getting married
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x14132542f	cstring	0x141781958	Interrupted by 
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325481	cstring	0x141781994	combat
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x14132548d	cstring	0x141781978	Inappropriate dig square
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325499	cstring	0x1417819a8	Area became inappropriate
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413254a5	cstring	0x14178199c	Moved
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413254b1	cstring	0x141781880	Need empty bucket
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413254bd	cstring	0x141781870	Need empty trap
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413254c9	cstring	0x1417818a8	Need empty bag
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413254d5	cstring	0x141781898	Need empty cage
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413254e1	cstring	0x1417818e0	Need valid, active sand collection zone
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413254ed	cstring	0x1417818b8	Need valid, active clay collection zone
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413254f9	cstring	0x141781918	No available colony
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325505	cstring	0x141781908	Sand vanished
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325511	cstring	0x141781a88	Clay vanished
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x14132551d	cstring	0x141781a70	Incapable of carrying
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325529	cstring	0x141781aa8	Too injured
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325535	cstring	0x1415ff708	Exhausted
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325541	cstring	0x141781a98	Resting injury
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x14132554d	cstring	0x141781ad0	Animal inaccessible
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325559	cstring	0x141781ab8	Patient inaccessible
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325565	cstring	0x141781af8	Infant inaccessible
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325571	cstring	0x141781ae8	No partner
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x14132557d	cstring	0x1417819e0	Item inaccessible
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325589	cstring	0x1417819c8	Drop-off inaccessible
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325595	cstring	0x141781a10	Building inaccessible
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413255a1	cstring	0x1417819f8	Area inaccessible
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413255ad	cstring	0x141781a38	Nothing in cage
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413255b9	cstring	0x141781a28	Nothing to cage
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413255c5	cstring	0x141781a58	Nothing to catch
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413255d1	cstring	0x141781a48	No patient
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413255dd	cstring	0x141781bd8	Patient not resting
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413255e9	cstring	0x141781bc8	No infant
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413255f5	cstring	0x141781c08	Already leading creature
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325601	cstring	0x141781bf0	No food available
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x14132560d	cstring	0x141781c38	Water source vanished
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325619	cstring	0x141781c28	No water source
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325625	cstring	0x141781c68	Water source contaminated
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325631	cstring	0x141781c50	Creature occupying site
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x14132563d	cstring	0x141781b38	No bucket at well
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325649	cstring	0x141781b10	Bucket full of extraneous material
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325655	cstring	0x141781b60	Well dry
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325661	cstring	0x141781b50	Need office
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325795	cstring	0x1415ff7b0	Needs 
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413257ba	cstring	0x141781b80	 in linked stockpile
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413257e9	cstring	0x141781bb0	Wrong ammunition
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413257f5	cstring	0x141781b98	Ammunition inaccessible
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325801	cstring	0x141781408	No ammunition
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x14132580d	cstring	0x141781400	No item
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325819	cstring	0x141781b70	No weapon
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325825	cstring	0x141781430	Item blocking site
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325831	cstring	0x141781418	Building site submerged
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x14132583d	cstring	0x141781458	Animal not restrained
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325849	cstring	0x141781448	No creature
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325855	cstring	0x141781480	Inappropriate building
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325861	cstring	0x141781470	No building
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x14132586d	cstring	0x141781370	No floor space
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325879	cstring	0x141781358	No designated area
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325885	cstring	0x141781398	No party
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325891	cstring	0x141781380	Wrong justice state
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x14132589d	cstring	0x1417813b8	Nothing in building
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413258a9	cstring	0x1416b23a8	Relieved
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413258b5	cstring	0x1417813a8	Water is frozen
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413258c1	cstring	0x1416b23d8	Terrified
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413258cd	cstring	0x1417813f0	Mortally afraid
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413258d9	cstring	0x1417813d0	Experiencing emotional shock
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413258e5	cstring	0x1416b2228	Horrified
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413258f1	cstring	0x1416b21d0	Grieving
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413258fd	cstring	0x141781550	Too sad
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325909	cstring	0x141781540	In agony
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325915	cstring	0x141781568	Anguished
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325921	cstring	0x141781558	Despairing
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x14132592d	cstring	0x1416b25f8	Dismayed
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325939	cstring	0x1416b2610	Distressed
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325945	cstring	0x1416b2568	Frightened
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325951	cstring	0x1416b2438	Miserable
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x14132595d	cstring	0x1416b2458	Mortified
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325969	cstring	0x1416b240c	Shaken
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325975	cstring	0x141781588	In existential crisis
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325981	cstring	0x141781578	Too insane
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x14132598d	cstring	0x1417815b0	Too depressed
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325999	cstring	0x1417815a0	Oblivious
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413259a5	cstring	0x1417814a8	Catatonic
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413259b1	cstring	0x141781498	Taken by mood
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413259bd	cstring	0x1417814d0	Went insane
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413259c9	cstring	0x1417814b8	Throwing tantrum
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413259d5	cstring	0x1417814f0	Could not find path
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413259e1	cstring	0x1417814e0	Path blocked
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413259ed	cstring	0x141781528	Seeking artifact
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413259f9	cstring	0x141781508	Handling dangerous creature
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325a05	cstring	0x141781690	Going to bed
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325a11	cstring	0x141781680	Seeking Infant
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325a1d	cstring	0x1417816b0	Dangerous terrain
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325a29	cstring	0x1417816a0	Forbidden area
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325a35	cstring	0x1417816c8	Job item lost or destroyed
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325a3c	cstring	0x1417816e8	Job item misplaced
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325a4e	cstring	0x141781710	Getting food
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325a5a	cstring	0x141781700	Getting water
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325a66	cstring	0x1417815d8	Hunting vermin for food
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325a72	cstring	0x1417815c0	Target inaccessible
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325a7e	cstring	0x141781608	Target too injured
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325a8a	cstring	0x14163e570	No target
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325a96	cstring	0x1417815f0	No mechanism for target
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325aa2	cstring	0x141781640	No target building
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325aae	cstring	0x141781620	No mechanism for trigger
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325aba	cstring	0x141781670	No trigger
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325ac6	cstring	0x141781658	Attacking building
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325ad2	cstring	0x1417817d0	Lost pick
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325ade	cstring	0x1417817c0	Invalid officer
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325aea	cstring	0x1417817f8	"""Farewell!""  Leaving"
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325af6	cstring	0x1417817e0	Removed from guard
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325b02	cstring	0x141781818	Equipment mismatch
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325b0e	cstring	0x1415ff5c0	Unconscious
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325b1a	cstring	0x1415ff664	Webbed
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325b26	cstring	0x1415ff5b0	Paralyzed
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325b32	cstring	0x141781810	Caged
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325b3e	cstring	0x141781850	In Custody
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325b4a	cstring	0x141781830	Getting something to drink
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325b56	cstring	0x141781730	Using well
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325b62	cstring	0x141781720	Lost axe
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325b6b	cstring	0x141781760	Not responsible for trade
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325b74	cstring	0x141781740	No available traction bench
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325b7d	cstring	0x141781790	Need splint
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325b86	cstring	0x141781780	Need thread
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325b8f	cstring	0x1417817b0	Need cloth
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325b98	cstring	0x1417817a0	Need crutch
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325ba1	cstring	0x1417820a0	Bad script! #1
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325baa	cstring	0x141782090	Bad script! #2
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325bb3	cstring	0x1417820f0	Bad script! #3
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325bbc	cstring	0x1417820b0	Need bag containing powder suitable for cast application
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325bc5	cstring	0x141782120	No weapon for execution
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325bce	cstring	0x141782100	No appropriate ammunition
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325bd7	cstring	0x141782150	Not appointed
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325be0	cstring	0x141782138	No longer requested
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325e4d	cstring	0x1415ed9bc	The 
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325eb6	cstring	0x141782018	 suspended the construction of 
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141325ef7	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413260e0	cstring	0x1415ed9bc	The 
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141326178	cstring	0x141781ff8	 suspended a linkage from 
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x1413261b9	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141327bf9	cstring	0x141615540	 (
+reference	PE:6a70a6d9:02711000	state-helper-1325080	0x141325080	0x141327c2b	cstring	0x141782048	) has been completed.
+reference	PE:6a70a6d9:02711000	state-helper-1328450	0x141328450	0x1413284f5	cstring	0x141782038	OVERWROTE JOB: 
+reference	PE:6a70a6d9:02711000	state-helper-1328450	0x141328450	0x141328505	cstring	0x141782040	E JOB: 
+reference	PE:6a70a6d9:02711000	state-helper-1328450	0x141328450	0x141328512	cstring	0x141782044	B: 
+reference	PE:6a70a6d9:02711000	state-helper-1328450	0x141328450	0x141328520	cstring	0x141782046	 
+reference	PE:6a70a6d9:02711000	state-helper-1328450	0x141328450	0x141328577	cstring	0x141782068	 BY 
+reference	PE:6a70a6d9:02711000	state-helper-1328450	0x141328450	0x14132869b	cstring	0x1416516f8	errorlog.txt
+reference	PE:6a70a6d9:02711000	state-helper-132c090	0x14132c090	0x14132c54d	cstring	0x141662a08	 lose
+reference	PE:6a70a6d9:02711000	state-helper-132c090	0x14132c090	0x14132c55c	cstring	0x141662a10	 loses
+reference	PE:6a70a6d9:02711000	state-helper-132c090	0x14132c090	0x14132c578	cstring	0x141662a18	 hold of the 
+reference	PE:6a70a6d9:02711000	state-helper-132c090	0x14132c090	0x14132c5cb	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133bfd6	cstring	0x1416cb640	 has become a 
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133c02d	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133c560	cstring	0x1416cb640	 has become a 
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133c5b7	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133c796	cstring	0x1416cb640	 has become a 
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133c7ed	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133ca00	cstring	0x1416cb640	 has become a 
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133ca57	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133cc70	cstring	0x1416cb640	 has become a 
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133ccc7	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133cee0	cstring	0x1416cb640	 has become a 
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133cf37	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133d150	cstring	0x1416cb640	 has become a 
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133d1a7	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133d3c0	cstring	0x1416cb640	 has become a 
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133d417	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133d630	cstring	0x1416cb640	 has become a 
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133d687	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133d8a0	cstring	0x1416cb640	 has become a 
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133d8f7	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133db10	cstring	0x1416cb640	 has become a 
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133db67	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133dd80	cstring	0x1416cb640	 has become a 
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133ddd7	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133dfb7	cstring	0x1416cb640	 has become a 
+reference	PE:6a70a6d9:02711000	state-helper-133bcf0	0x14133bcf0	0x14133e00e	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-1348a40	0x141348a40	0x141348c4b	cstring	0x141782588	 has stopped responding to the world...
+reference	PE:6a70a6d9:02711000	state-helper-1348a40	0x141348a40	0x141348dad	cstring	0x141782530	 has gone berserk!
+reference	PE:6a70a6d9:02711000	state-helper-1348a40	0x141348a40	0x141348e8b	cstring	0x141782548	 has gone stark raving mad!
+reference	PE:6a70a6d9:02711000	state-helper-1348a40	0x141348a40	0x141348f6b	cstring	0x141782508	 is stricken by melancholy!
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x14134f98a	cstring	0x1415eebd0	 are
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x14134f999	cstring	0x1415eebd8	 is
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x14134f9b8	cstring	0x141782460	 caught in a lava mist!
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x14134fc4d	cstring	0x1415eebd0	 are
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x14134fc5c	cstring	0x1415eebd8	 is
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x14134fc7b	cstring	0x1417824b0	 caught in dragonfire!
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x14134ff5d	cstring	0x1415eebd0	 are
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x14134ff6c	cstring	0x1415eebd8	 is
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x14134ff8b	cstring	0x1416cece0	 caught up in the web!
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x141350254	cstring	0x1415eebd0	 are
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x141350263	cstring	0x1415eebd8	 is
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x141350282	cstring	0x1416cecf8	 caught in a cloud of flames!
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x141350621	cstring	0x1415eebd0	 are
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x141350630	cstring	0x1415eebd8	 is
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x14135064f	cstring	0x141782490	 caught in a burst of steam!
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x141350c2d	cstring	0x1415eebd0	 are
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x141350c3c	cstring	0x1415eebd8	 is
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x141350c5b	cstring	0x141782478	 caught in a cloud of 
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x141350cef	cstring	0x1415ee438	!
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x1413517fb	cstring	0x1415eebd0	 are
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x141351804	cstring	0x1415eebd8	 is
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x141351852	cstring	0x1417824c8	 caught in a pool of magma!
+reference	PE:6a70a6d9:02711000	state-helper-134f440	0x14134f440	0x141351859	cstring	0x1417824e8	 caught in a pool of lava!
+reference	PE:6a70a6d9:02711000	state-helper-1353940	0x141353940	0x141353a3b	cstring	0x1417826f8	You have 
+reference	PE:6a70a6d9:02711000	state-helper-1353940	0x141353940	0x141353a59	cstring	0x141671e94	 has 
+reference	PE:6a70a6d9:02711000	state-helper-1353940	0x141353940	0x141353a75	cstring	0x1417826e0	transformed into a 
+reference	PE:6a70a6d9:02711000	state-helper-1353940	0x141353940	0x141354691	cstring	0x1415ee438	!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x1413627bb	cstring	0x14172f830	 has come!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x1413628e6	cstring	0x1415fcfe8	  
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141362b8e	cstring	0x1417834b0	Horrors!  Demons in the deep!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141362b98	cstring	0x1417834c0	 in the deep!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141362ba5	cstring	0x1417834c8	deep!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141362bae	cstring	0x1417834cc	!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141362cc5	cstring	0x14178b420	0
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141362cd2	cstring	0x1417836a8	The wilds are turning on us!  Curse these lands!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141362cdc	cstring	0x1417836b8	rning on us!  Curse these lands!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141362ce7	cstring	0x1417836c8	rse these lands!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141362da7	cstring	0x141783708	 was spotted sneaking around!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141362e8e	cstring	0x1417836e0	"  ""You will not stand between me and "
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141362ec1	cstring	0x141600fd8	"!"""
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141362f0d	cstring	0x141783748	"  ""I'll live to fight another day!"""
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x14136305f	cstring	0x141783728	Intruders!  Drive them away!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363069	cstring	0x141783738	e them away!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363076	cstring	0x141783740	way!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x14136319d	cstring	0x14178b430	1
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x1413631aa	cstring	0x1417837a0	Cavern dwellers!  Send them back to the darkness!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x1413631b4	cstring	0x1417837b0	  Send them back to the darkness!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x1413631bf	cstring	0x1417837c0	 to the darkness!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x1413631ca	cstring	0x1417837d0	!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x1413633b3	cstring	0x1417835c8	An ambush!  Skulking vermin!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x1413634cf	cstring	0x141783598	An ambush!  Curse all friends of nature!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363549	cstring	0x141783600	An ambush!  Curse them!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x14136361f	cstring	0x14178b400	.
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x14136362c	cstring	0x141783770	Thief!  Protect the hoard from skulking filth!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363636	cstring	0x141783780	the hoard from skulking filth!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363641	cstring	0x141783790	kulking filth!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x14136364e	cstring	0x141783798	filth!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363657	cstring	0x14178379c	h!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x14136376b	printable-immediate		A 
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x14136382c	cstring	0x1417835e8	!  Drive it away!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x1413639a3	cstring	0x141783600	An ambush!  Curse them!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363a26	cstring	0x141783628	Snatcher!  Protect the children!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363b8a	cstring	0x141783598	An ambush!  Curse all friends of nature!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363c04	cstring	0x141783600	An ambush!  Curse them!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363c56	cstring	0x141783618	An injured 
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363c95	cstring	0x141783668	 has sprung from ambush!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363d18	cstring	0x1415ed67c	A 
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363d57	cstring	0x141783668	 has sprung from ambush!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363e88	cstring	0x141783688	An ambush!  Drive them out!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363e92	cstring	0x141783698	e them out!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363e9f	cstring	0x1417836a0	ut!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363eaa	cstring	0x1417836a2	!
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363f27	cstring	0x1416d19d8	There is a 
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363f34	cstring	0x1416d19e0	 a 
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363f3f	cstring	0x1416d19e2	 
+reference	PE:6a70a6d9:02711000	state-helper-13625b0	0x1413625b0	0x141363fa1	cstring	0x141783650	 hidden away here.
+reference	PE:6a70a6d9:02711000	state-helper-13650e0	0x1413650e0	0x1413652dd	cstring	0x1416cc1cc	 block
+reference	PE:6a70a6d9:02711000	state-helper-13650e0	0x1413650e0	0x1413652e9	cstring	0x141705040	 blocks
+reference	PE:6a70a6d9:02711000	state-helper-13650e0	0x1413650e0	0x141365316	cstring	0x1417838a0	 the breath.
+reference	PE:6a70a6d9:02711000	state-helper-13650e0	0x1413650e0	0x141365325	cstring	0x141783878	 the dragonfire.
+reference	PE:6a70a6d9:02711000	state-helper-13650e0	0x1413650e0	0x141365334	cstring	0x141783868	 the fire.
+reference	PE:6a70a6d9:02711000	state-helper-1366d40	0x141366d40	0x141366f3b	cstring	0x1417837e8	unit contained in unit
+reference	PE:6a70a6d9:02711000	state-helper-1366d40	0x141366d40	0x141366f9e	cstring	0x141783840	Double Caged Unit
+reference	PE:6a70a6d9:02711000	state-helper-1368990	0x141368990	0x14136b258	printable-immediate		gfff
+reference	PE:6a70a6d9:02711000	state-helper-1368990	0x141368990	0x14136b29c	printable-immediate		gfff
+reference	PE:6a70a6d9:02711000	state-helper-1368990	0x141368990	0x14136b2ec	printable-immediate		gfff
+reference	PE:6a70a6d9:02711000	state-helper-1368990	0x141368990	0x14136b305	printable-immediate		gfff
+reference	PE:6a70a6d9:02711000	state-helper-1368990	0x141368990	0x14136b423	printable-immediate		VUUU
+reference	PE:6a70a6d9:02711000	state-helper-1368990	0x141368990	0x14136b48f	printable-immediate		gfff
+reference	PE:6a70a6d9:02711000	state-helper-1368990	0x141368990	0x14136b4e6	printable-immediate		gfff
+reference	PE:6a70a6d9:02711000	state-helper-13cfbe0	0x1413cfbe0	0x1413d0206	cstring	0x141784fd0	 has bestowed the name 
+reference	PE:6a70a6d9:02711000	state-helper-13cfbe0	0x1413cfbe0	0x1413d0259	cstring	0x141784fc0	 upon a 
+reference	PE:6a70a6d9:02711000	state-helper-13cfbe0	0x1413cfbe0	0x1413d029f	cstring	0x1415ee438	!
+reference	PE:6a70a6d9:02711000	state-helper-13cfbe0	0x1413cfbe0	0x1413d0658	cstring	0x141785120	 has grown attached to a 
+reference	PE:6a70a6d9:02711000	state-helper-13cfbe0	0x1413cfbe0	0x1413d06b4	cstring	0x1415ee438	!
+reference	PE:6a70a6d9:02711000	state-helper-13db000	0x1413db000	0x1413db254	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	state-helper-13db000	0x1413db000	0x1413db29b	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-13db000	0x1413db000	0x1413db318	cstring	0x141652830	You hear 
+reference	PE:6a70a6d9:02711000	state-helper-13db000	0x1413db000	0x1413db373	cstring	0x141652830	You hear 
+reference	PE:6a70a6d9:02711000	state-helper-13db000	0x1413db000	0x1413db37f	cstring	0x141652838	 
+reference	PE:6a70a6d9:02711000	state-helper-13db000	0x1413db000	0x1413db3f2	cstring	0x1415e85b4	.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e5caa	cstring	0x141784860	 have 
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e5cf0	cstring	0x141671e94	 has 
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e5d52	printable-immediate		The 
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e5da4	printable-immediate		The 
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e5e22	cstring	0x141671e94	 has 
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e5e9e	cstring	0x141784850	died in a cage.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e5eb0	cstring	0x141784868	died of old age.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e5ec2	cstring	0x1417848b8	been scared to death
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e5ee1	cstring	0x1415eda08	 by 
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e5f78	cstring	0x1415ee438	!
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e5f84	cstring	0x1417848a0	died in the dark.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e5f90	cstring	0x1417848e0	starved to death.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e5fa2	cstring	0x1417848d0	died of thirst.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e5fb4	cstring	0x1417847c0	burned up in magma.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e5fc6	cstring	0x1417847f0	burned up in dragon fire.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e5fd8	cstring	0x1417847e8	boiled.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e5fea	cstring	0x141784820	melted.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e5ffc	cstring	0x141784810	condensed.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e600e	cstring	0x141784840	solidified.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e601a	cstring	0x141784828	died in the heat.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e602c	cstring	0x1417849e8	been encased in cooling lava.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e603e	cstring	0x1417849c8	been encased in cooling magma.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6050	cstring	0x141784a20	been encased in ice.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6062	cstring	0x141784a08	frozen to death.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6074	cstring	0x141784a50	burned to death.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6086	cstring	0x141784a38	been scalded to death.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6098	cstring	0x141784a88	burned up in a magma mist.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e60aa	cstring	0x141784a68	been crushed by a drawbridge.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e60bc	cstring	0x141784918	been crushed under the collapsing ceiling.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e60ce	cstring	0x1417848f8	been killed by falling rocks.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e60e0	cstring	0x141784958	been shot and killed.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e60f2	cstring	0x141784948	bled to death.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6104	cstring	0x141784980	succumbed to infection.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6116	cstring	0x141784970	suffocated.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6122	cstring	0x1417849b0	been struck down.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e612e	cstring	0x141784998	been slaughtered.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6140	cstring	0x141784b98	been scuttled.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6152	cstring	0x141784b80	been hacked to pieces.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6164	cstring	0x141784bb8	been executed.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6176	cstring	0x141784ba8	been beheaded.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6188	cstring	0x141784be0	been crucified.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e619a	cstring	0x141784bc8	been buried alive.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e61ac	cstring	0x141784c10	been executed by being left out in the air.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e61be	cstring	0x141784bf0	been executed by drowning.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e61d0	cstring	0x141784ac0	been burned alive.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e61e2	cstring	0x141784aa8	been fed to beasts.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6206	cstring	0x141784af8	been drained of blood
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6218	cstring	0x141784ad8	been drained of blood by 
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6280	cstring	0x1415ee438	!
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6292	cstring	0x141784b28	been murdered by 
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e62f6	cstring	0x1415ee438	!
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6302	cstring	0x1415ed578	somebody
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e631e	cstring	0x1415ee438	!
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6330	cstring	0x141784b10	been killed by a trap.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6342	cstring	0x141784b60	been killed by a vehicle.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6354	cstring	0x141784b40	been killed by a flying object.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6366	cstring	0x141784d30	vanished.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6378	cstring	0x141784d20	collapsed.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e638a	cstring	0x141784d58	died after colliding with an obstacle.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e639c	cstring	0x141784d40	been impaled on spikes.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e63ae	cstring	0x141784d80	leapt from a great height.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e63c0	cstring	0x1417847d8	drowned.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e63e7	cstring	0x141784880	fallen into a deep chasm.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e63f9	cstring	0x141784de0	been found dead.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e640b	cstring	0x141784db8	been found dead, contorted in fear!
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e641d	cstring	0x141784c60	been found, starved to death.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e642f	cstring	0x141784c40	been found dead, dehydrated.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6441	cstring	0x141784ca0	been found dead, drowned.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6453	cstring	0x141784c80	been found dead, badly burned.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6465	cstring	0x141784cd8	been found boiled.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6474	cstring	0x141784cc0	been found melted.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6483	cstring	0x141784d08	been found condensed.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e6492	cstring	0x141784cf0	been found solidified.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e64a1	cstring	0x1417855b0	been found dead, frozen.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e64b0	cstring	0x141785590	been found dead, badly crushed.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e64bf	cstring	0x141785600	been found scuttled.
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e64ce	cstring	0x1417855d0	been found dead, completely drained of blood!
+reference	PE:6a70a6d9:02711000	state-helper-13e5b20	0x1413e5b20	0x1413e64d7	cstring	0x141784da0	been put to rest.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14134f8b0	cstring	0x141729780	 has come!
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14134f91c	cstring	0x1415f7ff8	  
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x1413507f9	printable-immediate		gfff
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14135159f	printable-immediate		gfff
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14135191f	printable-immediate		gfff
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141351955	printable-immediate		gfff
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141351c70	printable-immediate		VUUU
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14135251c	printable-immediate		gfff
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141352f29	printable-immediate		VUUU
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353445	cstring	0x14177d73c	 fall
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14135344e	cstring	0x14177d764	 falls
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353461	cstring	0x14177d75c	 over.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353713	cstring	0x14177d780	 regain
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14135371c	cstring	0x14177d770	 regains
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14135372f	cstring	0x14177d7a8	 consciousness.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14135391a	cstring	0x1415e9b80	 are
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353923	cstring	0x1415e9b88	 is
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353936	cstring	0x14177d788	 partially free of the web.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353b1c	cstring	0x1415e9b80	 are
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353b25	cstring	0x1415e9b88	 is
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353b38	cstring	0x14177d988	 completely free of the web.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353c94	cstring	0x1415e9b80	 are
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353c9d	cstring	0x1415e9b88	 is
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353cb0	cstring	0x14177d970	 completely paralyzed!
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353d90	cstring	0x1415e9adc	 have
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353d99	cstring	0x1415e9ae4	 has
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353dac	cstring	0x14177d9c0	 fully overcome the paralysis.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353e88	cstring	0x1415e9b80	 are
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353e91	cstring	0x1415e9b88	 is
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353ea4	cstring	0x14177d9a8	 partially paralyzed!
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353f80	cstring	0x1415e9b80	 are
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353f89	cstring	0x1415e9b88	 is
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141353f9c	cstring	0x14177d9e8	 feeling sluggish!
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14135406b	cstring	0x1415e9c3c	 feel
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354074	cstring	0x1415e9c44	 looks
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354087	cstring	0x14177d9e0	 numb!
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354157	cstring	0x1415e9adc	 have
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354160	cstring	0x1415e9ae4	 has
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354173	cstring	0x14177da08	 partially overcome the paralysis.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354365	cstring	0x14177dac4	 retch
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14135436e	cstring	0x14177dab8	 retches
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354381	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x1413545a3	cstring	0x14170ee50	 vomit
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x1413545ac	cstring	0x14177da00	 vomits
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x1413545e4	cstring	0x14177d890	 into the ocean wave
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x1413545f0	cstring	0x1416afaa0	 into the 
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354660	cstring	0x14177d878	 into the lava mist
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354669	cstring	0x14177d8c0	 into the dragonfire
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354672	cstring	0x14177d8a8	 into the flames
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14135467b	cstring	0x14177d8f0	 and bits of it get stuck in the web
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354684	cstring	0x14177d8d8	 into the sea foam
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354697	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354820	cstring	0x14177d940	The rest of the vomit burns away in the lava.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354829	cstring	0x14177d918	The vomit burns away in the lava.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354837	cstring	0x14177db58	The rest of the vomit burns away in the magma.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354840	cstring	0x14177db30	The vomit burns away in the magma.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x1413548cf	cstring	0x14177dbb0	The rest of the vomit disappears into the water.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x1413548d8	cstring	0x14177db88	The vomit disappears into the water.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14135493a	cstring	0x14177dc10	The rest of the vomit falls away into the chasm.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354943	cstring	0x14177dbe8	The vomit falls away into the chasm.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x1413549a5	cstring	0x14177dc78	The rest of the vomit falls away into the underworld.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x1413549ae	cstring	0x14177dc48	The vomit falls away into the underworld.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354a0e	cstring	0x14177da70	The rest of the vomit splatters into the shallow puddle of water.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354a17	cstring	0x14177da30	The vomit splatters into the shallow puddle of water.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354fd5	cstring	0x1415e9b80	 are
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354fde	cstring	0x1415e9b88	 is
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141354ff1	cstring	0x14177dae8	 no longer stunned.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141355297	cstring	0x14165da8c	 pass
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x1413552a0	cstring	0x14165da98	 passes
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x1413552b3	cstring	0x14177dad0	 out from exhaustion.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14135547c	cstring	0x14177db18	 collapse and fall
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141355485	cstring	0x14177db00	 collapses and falls
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141355498	cstring	0x14177d078	 to the ground from over-exertion.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14135568e	cstring	0x14177d070	 give
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141355697	cstring	0x14177d0b0	 gives
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x1413556aa	cstring	0x14177d0a0	 in to pain.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141356aeb	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141356b0e	cstring	0x1415e9a20	have
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141356b17	cstring	0x1415e9aac	has
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141356b2a	cstring	0x14177d0c8	 reverted to a wild state!
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141356ced	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141356d10	cstring	0x1415e9a20	have
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141356d19	cstring	0x1415e9aac	has
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141356d2c	cstring	0x14177d0b8	 forgotten 
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141356d51	cstring	0x1415e9910	your
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141356da9	cstring	0x14177d100	 training!
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x1413570f1	printable-immediate		a'
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14135719a	cstring	0x1415e89c4	The 
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x1413571e9	cstring	0x14177d0e8	 have given a resident 
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141357221	cstring	0x14177cfc8	 the name 
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141357269	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14135745d	printable-immediate		VUUU
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141357ec7	cstring	0x1416c66f0	An animal
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141357eda	cstring	0x14177cfb0	 has grown to become a 
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141357f1f	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x1413580b0	cstring	0x14177d060	 is aware of 
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x1413580f9	cstring	0x14177d048	 surroundings again.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141358123	cstring	0x14177d010	 has climbed out of depression.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14135812c	cstring	0x14177d030	 has calmed down.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x141358135	cstring	0x14177cff8	 is no longer enraged.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14135813e	cstring	0x14177cfd8	 has left the martial trance.
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x14135904c	cstring	0x14177d260	 has given birth to 
+classic	PE:6a70b91c:0270a000	status-update	0x14134f750	0x1413590ce	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	actor-format	0x14132bba0	0x14132bdcd	cstring	0x1415e40c4	, 
+classic	PE:6a70b91c:0270a000	actor-format	0x14132bba0	0x14132bec8	cstring	0x1415e46fc	""""
+classic	PE:6a70b91c:0270a000	actor-format	0x14132bba0	0x14132bf1d	cstring	0x1415e46fc	""""
+classic	PE:6a70b91c:0270a000	actor-format	0x14132bba0	0x14132bf32	cstring	0x1415e40c4	, 
+classic	PE:6a70b91c:0270a000	actor-format	0x14132bba0	0x14132bf71	cstring	0x1415e40c4	, 
+classic	PE:6a70b91c:0270a000	actor-format	0x14132bba0	0x14132bfcd	cstring	0x1415e40c4	, 
+classic	PE:6a70b91c:0270a000	actor-format	0x14132bba0	0x14132c028	cstring	0x141610298	 (
+classic	PE:6a70b91c:0270a000	actor-format	0x14132bba0	0x14132c064	cstring	0x14177ca90	Trained
+classic	PE:6a70b91c:0270a000	actor-format	0x14132bba0	0x14132c070	cstring	0x14177ca80	-Trained-
+classic	PE:6a70b91c:0270a000	actor-format	0x14132bba0	0x14132c07c	cstring	0x14177c9e0	+Trained+
+classic	PE:6a70b91c:0270a000	actor-format	0x14132bba0	0x14132c088	cstring	0x14177c9d0	*Trained*
+classic	PE:6a70b91c:0270a000	actor-format	0x14132bba0	0x14132c0bc	cstring	0x14177ca90	Trained
+classic	PE:6a70b91c:0270a000	actor-format	0x14132bba0	0x14132c10c	cstring	0x14177ca90	Trained
+classic	PE:6a70b91c:0270a000	actor-format	0x14132bba0	0x14132c138	cstring	0x14177c9fc	Tame
+classic	PE:6a70b91c:0270a000	actor-format	0x14132bba0	0x14132c141	cstring	0x14177c9f0	Semi-Wild
+classic	PE:6a70b91c:0270a000	actor-format	0x14132bba0	0x14132c159	cstring	0x1416102d8	)
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132941f	cstring	0x1415e74b8	you
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x141329426	cstring	0x1415e3c40	You
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x141329910	cstring	0x1415e7988	 slave
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132994a	cstring	0x1415e79ac	slave
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x1413299a5	cstring	0x1415e79ac	slave
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x1413299ad	cstring	0x1415e79b0	e
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x141329a8b	cstring	0x14177c950	 prisoner
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x141329abf	printable-immediate		prisoner
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x141329b1d	printable-immediate		prisoner
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x141329ce6	cstring	0x1415e3e34	the 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x141329ced	cstring	0x1415e89c4	The 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x141329d32	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x141329f05	cstring	0x1415e3e34	the 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x141329f19	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x141329f2e	cstring	0x14167095c	force
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x141329f53	cstring	0x1415e3e34	the 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x141329f67	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x141329f7c	cstring	0x14165d508	deity
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a1c4	cstring	0x1415e7988	 slave
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a1fe	cstring	0x1415e79ac	slave
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a25e	cstring	0x1415e79ac	slave
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a266	cstring	0x1415e79b0	e
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a33b	cstring	0x14177c950	 prisoner
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a36f	printable-immediate		prisoner
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a3c9	printable-immediate		prisoner
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a483	cstring	0x1415e3e34	the 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a4d9	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a543	cstring	0x14177c96c	stray 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a54a	cstring	0x14177c948	fierce 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a58e	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a5a3	cstring	0x14177c960	agitated 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a5eb	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a600	cstring	0x1416a0d38	ghost
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a62f	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a644	cstring	0x1415f8b70	ghostly 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a676	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a6c4	cstring	0x1416810f8	average
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a6f3	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a747	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a78e	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a7b3	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a80c	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a821	cstring	0x1416cac84	corpse
+classic	PE:6a70b91c:0270a000	actor-article-format	0x1413293a0	0x14132a830	cstring	0x141739ff8	 corpse
+classic	PE:6a70b91c:0270a000	actor-creature-role	0x14132a8f0	0x14132aa4e	cstring	0x14165d508	deity
+classic	PE:6a70b91c:0270a000	actor-creature-role	0x14132a8f0	0x14132aa65	cstring	0x14167095c	force
+classic	PE:6a70b91c:0270a000	actor-creature-role	0x14132a8f0	0x14132acac	cstring	0x14177ca4c	 Slave
+classic	PE:6a70b91c:0270a000	actor-creature-role	0x14132a8f0	0x14132ace6	cstring	0x1415fbcc8	Slave
+classic	PE:6a70b91c:0270a000	actor-creature-role	0x14132a8f0	0x14132ad3c	cstring	0x1415fbcc8	Slave
+classic	PE:6a70b91c:0270a000	actor-creature-role	0x14132a8f0	0x14132ad44	cstring	0x1415fbccc	e
+classic	PE:6a70b91c:0270a000	actor-creature-role	0x14132a8f0	0x14132ae23	cstring	0x14177ca40	 Prisoner
+classic	PE:6a70b91c:0270a000	actor-creature-role	0x14132a8f0	0x14132ae57	printable-immediate		Prisoner
+classic	PE:6a70b91c:0270a000	actor-creature-role	0x14132a8f0	0x14132aea7	printable-immediate		Prisoner
+classic	PE:6a70b91c:0270a000	actor-creature-role	0x14132a8f0	0x14132afd6	cstring	0x14177ca54	Stray 
+classic	PE:6a70b91c:0270a000	actor-creature-role	0x14132a8f0	0x14132afdd	cstring	0x14177ca60	Fierce 
+classic	PE:6a70b91c:0270a000	actor-creature-role	0x14132a8f0	0x14132affe	cstring	0x14177ca70	Agitated 
+classic	PE:6a70b91c:0270a000	actor-creature-role	0x14132a8f0	0x14132b034	cstring	0x1416b9d2c	Ghost
+classic	PE:6a70b91c:0270a000	actor-creature-role	0x14132a8f0	0x14132b04e	cstring	0x141625190	Ghostly 
+classic	PE:6a70b91c:0270a000	actor-creature-role	0x14132a8f0	0x14132b09d	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	actor-creature-role	0x14132a8f0	0x14132b0e6	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	actor-creature-role	0x14132a8f0	0x14132b12c	cstring	0x14177ca68	Corpse
+classic	PE:6a70b91c:0270a000	actor-creature-role	0x14132a8f0	0x14132b13b	cstring	0x1416250d0	 Corpse
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132c5e4	cstring	0x14177ca08	the force
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132c7e3	cstring	0x14177ca18	the deity
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132ca78	cstring	0x1415e3e34	the 
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cd8a	cstring	0x1416038f0	Miner
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cd93	cstring	0x1416038f4	r
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cdae	cstring	0x14177ca30	Woodworker
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cdbb	cstring	0x14177ca38	er
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cdd7	cstring	0x141628000	Carpenter
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cde4	cstring	0x141628008	r
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cdff	cstring	0x14162800c	Bowyer
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132ce08	cstring	0x141628010	er
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132ce24	cstring	0x141603910	Woodcutter
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132ce31	cstring	0x141603918	er
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132ce4d	cstring	0x141627f98	Stoneworker
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132ce5a	cstring	0x141627fa0	ker
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132ce65	cstring	0x141627fa2	r
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132ce80	printable-immediate		Engraver
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132ce97	cstring	0x1416a0200	Stonecutter
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132ceac	cstring	0x1416a01f0	Stone Carver
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cec1	cstring	0x1416a0754	Mason
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132ced6	cstring	0x14177ca24	Ranger
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132ceeb	cstring	0x1416a0770	Animal Caretaker
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cf00	cstring	0x1416a0760	Animal Trainer
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cf15	cstring	0x1415fb1e8	Hunter
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cf2a	cstring	0x1416a07c0	Trapper
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cf3f	cstring	0x1416a0798	Animal Dissector
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cf54	cstring	0x141628050	Metalsmith
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cf69	cstring	0x1416a06f0	Furnace Operator
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cf7e	cstring	0x1416a0568	Weaponsmith
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cf93	cstring	0x14177cb08	Armorer
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cfb0	cstring	0x1416a0588	Blacksmith
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cfbd	cstring	0x1416a0590	th
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cfd9	cstring	0x14177caf8	Metalcrafter
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cfe6	cstring	0x14177cb00	fter
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132cff8	cstring	0x141628018	Jeweler
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d00d	cstring	0x1416a0598	Gem Cutter
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d022	cstring	0x1416a05a8	Gem Setter
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d037	cstring	0x14164cbe8	Craftsman
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d04c	cstring	0x1416a05b8	Woodcrafter
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d061	cstring	0x1416a05c8	Papermaker
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d076	cstring	0x1416a05d8	Bookbinder
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d08b	cstring	0x1416a05e4	Potter
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d0a0	cstring	0x1416a0a6c	Glazer
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d0b5	cstring	0x1416a05f0	Wax Worker
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d0ca	cstring	0x14177cb20	Stonecrafter
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d0df	cstring	0x1416a0a48	Leatherworker
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d0f4	cstring	0x1416a0a78	Bone Carver
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d109	cstring	0x1416a0a84	Weaver
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d11e	cstring	0x14164cc80	Clothier
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d133	cstring	0x1416a0620	Glassmaker
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d148	cstring	0x1416a0708	Strand Extractor
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d15d	cstring	0x14177cb10	Fishery Worker
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d172	cstring	0x1416a06e0	Fisherman
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d187	cstring	0x1416a0788	Fish Dissector
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d19c	cstring	0x1416a07b0	Fish Cleaner
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d1b1	cstring	0x141627ef0	Farmer
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d1c6	cstring	0x1416a0958	Cheesemaker
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d1db	cstring	0x1416a0964	Milker
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d1f0	cstring	0x1416a096c	Gelder
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d205	cstring	0x1416a0978	Shearer
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d21a	cstring	0x1416a0980	Spinner
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d22f	cstring	0x141638128	Cook
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d244	cstring	0x1416a0910	Thresher
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d259	cstring	0x1416a0904	Miller
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d26e	cstring	0x141616fc8	Butcher
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d283	cstring	0x141627f64	Tanner
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d298	cstring	0x141627f5c	Dyer
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d2ad	cstring	0x1416a0a58	Presser
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d2c2	cstring	0x1416a0a60	Beekeeper
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d2d7	cstring	0x1416a07c8	Planter
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d2ec	cstring	0x1416a07d0	Herbalist
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d301	cstring	0x1416a0a8c	Brewer
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d316	cstring	0x14177cb40	Soap Maker
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d32b	cstring	0x1416a0728	Potash Maker
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d340	cstring	0x1416a0738	Lye Maker
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d355	cstring	0x1416a0748	Wood Burner
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d36a	cstring	0x14177cb30	Engineer
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d37f	cstring	0x141628028	Mechanic
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d394	cstring	0x1416a0a18	Siege Engineer
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d3a9	cstring	0x1416a0a28	Siege Operator
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d3be	cstring	0x1416a0a38	Pump Operator
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d3d3	cstring	0x14177cb60	Clerk
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d3e8	cstring	0x14177cb50	Administrator
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d3fd	cstring	0x14177caa0	Trader
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d412	cstring	0x1416a0484	Poet
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d427	cstring	0x14177ca98	Bard
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d43c	cstring	0x1416a04a8	Dancer
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d451	cstring	0x1415fae10	Performer
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d466	cstring	0x1415fadfc	Scribe
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d47b	cstring	0x141627a38	Tavern Keeper
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d490	cstring	0x14177cab4	Sage
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d4a5	cstring	0x1415fae08	Scholar
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d4ba	cstring	0x14177caa8	Philosopher
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d4cf	cstring	0x1416a0548	Mathematician
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d4e4	cstring	0x14177cad0	Historian
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d4f9	cstring	0x1416a0558	Astronomer
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d50e	cstring	0x14177cac0	Naturalist
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d523	cstring	0x1416a0a98	Chemist
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d538	cstring	0x1416a0aa0	Geographer
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d54d	cstring	0x1415fadd8	Doctor
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d562	cstring	0x1415fadc8	Diagnostician
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d577	cstring	0x141627938	Bone Doctor
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d58c	cstring	0x1416a09b0	Suturer
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d5a1	cstring	0x1415fadc0	Surgeon
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d5b6	cstring	0x14177cae8	Merchant
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d5cb	cstring	0x14177cadc	Drunk
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d5e0	cstring	0x141627948	Monster Slayer
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d5f5	cstring	0x14177cc10	Scout
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d60a	cstring	0x14177cc00	Beast Hunter
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d61f	cstring	0x141699490	Snatcher
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d634	cstring	0x1415fadf0	Mercenary
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d649	cstring	0x1416a0b30	Hammerman
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d65e	cstring	0x14177cd20	Hammer Lord
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d673	cstring	0x1416a09c8	Spearman
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d688	cstring	0x14177cd70	Spearmaster
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d69d	cstring	0x1416a09d8	Crossbowman
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d6b2	cstring	0x14177ce50	Elite Crossbowman
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d6c7	cstring	0x1416a0ae0	Wrestler
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d6dc	cstring	0x14177cea8	Elite Wrestler
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d6f1	cstring	0x1416a0b10	Axeman
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d706	cstring	0x14177ceb8	Axe Lord
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d71b	cstring	0x1416a0b18	Swordsman
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d730	cstring	0x14177ce18	Swordmaster
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d745	cstring	0x1416a0b28	Maceman
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d75a	cstring	0x14177ce28	Mace Lord
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d76f	cstring	0x1416a09e8	Pikeman
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d784	cstring	0x14177cf48	Pikemaster
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d799	cstring	0x1416a09f0	Bowman
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d7ae	cstring	0x14177cf80	Elite Bowman
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d7c3	cstring	0x1416a0920	Blowgunner
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d7d8	cstring	0x14177cf98	Master Blowgunner
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d7ed	cstring	0x1416a094c	Lasher
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d802	cstring	0x14177ced8	Master Lasher
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d817	cstring	0x14177cc20	Recruit
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d82c	cstring	0x1415f2160	Hunting
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d841	cstring	0x1415fe6cc	War
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d856	cstring	0x14177cef8	Master Thief
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d86b	cstring	0x1415fb19c	Thief
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d880	cstring	0x1415e7948	Criminal
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d895	cstring	0x14177cc18	Peddler
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d8aa	cstring	0x14177cc30	Prophet
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d8bf	cstring	0x14177cc28	Pilgrim
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d8d4	cstring	0x14177cc44	Monk
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d8e9	cstring	0x14177cc38	Messenger
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d987	cstring	0x1415faf04	Child
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132d9f0	cstring	0x14177cb6c	Baby
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132da18	cstring	0x14177c940	Peasant
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132da22	cstring	0x14177c944	ant
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132da2d	cstring	0x14177c946	t
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132dbe6	cstring	0x14177ca4c	 Slave
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132dc20	cstring	0x1415fbcc8	Slave
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132dc76	cstring	0x1415fbcc8	Slave
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132dc7e	cstring	0x1415fbccc	e
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132dd59	cstring	0x14177ca40	 Prisoner
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132dd8d	printable-immediate		Prisoner
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132dddc	printable-immediate		Prisoner
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132de64	cstring	0x1415e3e34	the 
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132de95	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132defd	cstring	0x1416b9d2c	Ghost
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132df0c	cstring	0x141625190	Ghostly 
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132df59	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	actor-profession	0x14132c470	0x14132df7c	cstring	0x14177cb68	One
+classic	PE:6a70b91c:0270a000	language-name-format	0x140a910b0	0x140a911bd	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	language-name-format	0x140a910b0	0x140a91333	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	language-name-format	0x140a910b0	0x140a9158f	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	language-name-format	0x140a910b0	0x140a916bb	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	possessive-pronoun	0x140aa18d0	0x140aa18e6	cstring	0x1416cb1a8	his
+classic	PE:6a70b91c:0270a000	possessive-pronoun	0x140aa18d0	0x140aa18f1	cstring	0x1416cb150	her
+classic	PE:6a70b91c:0270a000	possessive-pronoun	0x140aa18d0	0x140aa18f8	cstring	0x1415e94d8	its
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db2ec	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db5b5	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db765	cstring	0x141678d08	a girl
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db77c	cstring	0x141678d00	a boy
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db78e	cstring	0x141678cf8	a child
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db7ab	cstring	0x141678cec	twins
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db7c2	cstring	0x141678ce0	triplets
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db7d3	cstring	0x141678ad8	quadruplets
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db7e4	cstring	0x141678ac8	quintuplets
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db7fb	cstring	0x141678ab8	sextuplets
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db812	cstring	0x141678aa8	septuplets
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db829	cstring	0x141678a98	octuplets
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db840	cstring	0x141678a88	nonuplets
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db854	cstring	0x141678a78	decaplets
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db862	cstring	0x141678a68	undecaplets
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db876	cstring	0x141678a58	duodecaplets
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db88a	cstring	0x141678a48	tredecaplets
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db89e	cstring	0x141678a30	quattuordecaplets
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db8b2	cstring	0x141678a20	quindecaplets
+classic	PE:6a70b91c:0270a000	birth-offspring-description	0x1406db280	0x1406db8bb	cstring	0x141678a10	many babies
+classic	PE:6a70b91c:0270a000	state-helper-a85690	0x140a85690	0x140a86a1b	cstring	0x1416cb2d8	A kidnapper has made off with 
+classic	PE:6a70b91c:0270a000	state-helper-a85690	0x140a85690	0x140a86a6f	cstring	0x1415e942c	!
+classic	PE:6a70b91c:0270a000	state-helper-a85690	0x140a85690	0x140a87527	cstring	0x1416cb2c8	 has stolen 
+classic	PE:6a70b91c:0270a000	state-helper-a85690	0x140a85690	0x140a87eff	cstring	0x1416cb2b0	A thief has stolen 
+classic	PE:6a70b91c:0270a000	state-helper-a85690	0x140a85690	0x140a87f57	cstring	0x1415e942c	!
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c86370	cstring	0x1416e9738	 gains possession of the 
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c863b6	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c86430	cstring	0x1415e89c4	The 
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c86476	cstring	0x1416e9720	 remains stuck in 
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c864d9	cstring	0x1415e8b58	's 
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c865a4	cstring	0x14167bdf0	body part
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c866fa	cstring	0x14167bdf0	body part
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c86755	cstring	0x14167bdf0	body part
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c86761	cstring	0x14167bdf8	t
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c867cf	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c86840	cstring	0x1416e9700	 maintains possession of the 
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c86886	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c86910	cstring	0x1416e96e0	You gain possession of the 
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c86935	cstring	0x1415e89c4	The 
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c86963	cstring	0x1416e96c8	 remains stuck in your 
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c8699e	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c869b3	cstring	0x1416e96a8	You maintain possession of the 
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c869e1	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c86a05	cstring	0x1415e89c4	The 
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c86a4b	cstring	0x1416e9690	 is torn from your 
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c86b16	cstring	0x14167bdf0	body part
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c86c6c	cstring	0x14167bdf0	body part
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c86cc7	cstring	0x14167bdf0	body part
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c86cd3	cstring	0x14167bdf8	t
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c86d28	cstring	0x1416e9670	You've lost possession of the 
+classic	PE:6a70b91c:0270a000	state-helper-c85f90	0x140c85f90	0x140c86d6e	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320305	cstring	0x14177bcc0	 cancels 
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320346	cstring	0x1415fe430	: 
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x14132037b	cstring	0x14177bcb0	Unscheduled
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320387	cstring	0x14177bce0	Cannot reach site
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320393	cstring	0x14177bcd0	Getting married
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x14132039f	cstring	0x14177bc20	Interrupted by 
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413203f1	cstring	0x14177bc14	combat
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413203fd	cstring	0x14177bc50	Inappropriate dig square
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320409	cstring	0x14177bc30	Area became inappropriate
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320415	cstring	0x14177bc84	Moved
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320421	cstring	0x14177bc70	Need empty bucket
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x14132042d	cstring	0x14177bca0	Need empty trap
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320439	cstring	0x14177bc90	Need empty bag
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320445	cstring	0x14177bdd0	Need empty cage
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320451	cstring	0x14177bda8	Need valid, active sand collection zone
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x14132045d	cstring	0x14177bdf8	Need valid, active clay collection zone
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320469	cstring	0x14177bde0	No available colony
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320475	cstring	0x14177be30	Sand vanished
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320481	cstring	0x14177be20	Clay vanished
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x14132048d	cstring	0x14177be50	Incapable of carrying
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320499	cstring	0x14177be40	Too injured
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413204a5	cstring	0x1415fa5d0	Exhausted
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413204b1	cstring	0x14177bd10	Resting injury
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413204bd	cstring	0x14177bcf8	Animal inaccessible
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413204c9	cstring	0x14177bd38	Patient inaccessible
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413204d5	cstring	0x14177bd20	Infant inaccessible
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413204e1	cstring	0x14177bd68	No partner
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413204ed	cstring	0x14177bd50	Item inaccessible
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413204f9	cstring	0x14177bd90	Drop-off inaccessible
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320505	cstring	0x14177bd78	Building inaccessible
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320511	cstring	0x14177bf40	Area inaccessible
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x14132051d	cstring	0x14177bf30	Nothing in cage
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320529	cstring	0x14177bf70	Nothing to cage
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320535	cstring	0x14177bf58	Nothing to catch
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320541	cstring	0x14177bf98	No patient
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x14132054d	cstring	0x14177bf80	Patient not resting
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320559	cstring	0x14177bfc8	No infant
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320565	cstring	0x14177bfa8	Already leading creature
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320571	cstring	0x14177be80	No food available
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x14132057d	cstring	0x14177be68	Water source vanished
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320589	cstring	0x14177beb8	No water source
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320595	cstring	0x14177be98	Water source contaminated
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413205a1	cstring	0x14177bee0	Creature occupying site
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413205ad	cstring	0x14177bec8	No bucket at well
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413205b9	cstring	0x14177bf08	Bucket full of extraneous material
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413205c5	cstring	0x14177bef8	Well dry
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413205d1	cstring	0x14177c4c8	Need office
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320705	cstring	0x1415fa688	Needs 
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x14132072a	cstring	0x14177c4b0	 in linked stockpile
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320759	cstring	0x14177c4d8	Wrong ammunition
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320765	cstring	0x14177c510	Ammunition inaccessible
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320771	cstring	0x14177c500	No ammunition
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x14132077d	cstring	0x14177c540	No item
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320789	cstring	0x14177c4f0	No weapon
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320795	cstring	0x14177c528	Item blocking site
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413207a1	cstring	0x14177c428	Building site submerged
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413207ad	cstring	0x14177c410	Animal not restrained
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413207b9	cstring	0x14177c458	No creature
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413207c5	cstring	0x14177c440	Inappropriate building
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413207d1	cstring	0x14177c478	No building
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413207dd	cstring	0x14177c468	No floor space
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413207e9	cstring	0x14177c498	No designated area
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413207f5	cstring	0x14177c488	No party
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320801	cstring	0x14177c5e8	Wrong justice state
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x14132080d	cstring	0x14177c5d0	Nothing in building
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320819	cstring	0x1416ad3e8	Relieved
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320825	cstring	0x14177c610	Water is frozen
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320831	cstring	0x1416ad318	Terrified
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x14132083d	cstring	0x14177c600	Mortally afraid
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320849	cstring	0x14177c628	Experiencing emotional shock
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320855	cstring	0x1416ad2a8	Horrified
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320861	cstring	0x1416ad158	Grieving
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x14132086d	cstring	0x14177c620	Too sad
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320879	cstring	0x14177c658	In agony
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320885	cstring	0x14177c648	Anguished
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320891	cstring	0x14177c560	Despairing
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x14132089d	cstring	0x1416ad058	Dismayed
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413208a9	cstring	0x1416ad070	Distressed
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413208b5	cstring	0x1416ad5c8	Frightened
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413208c1	cstring	0x1416ad570	Miserable
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413208cd	cstring	0x1416ad590	Mortified
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413208d9	cstring	0x1416ad454	Shaken
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413208e5	cstring	0x14177c548	In existential crisis
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413208f1	cstring	0x14177c580	Too insane
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413208fd	cstring	0x14177c570	Too depressed
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320909	cstring	0x14177c5a0	Oblivious
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320915	cstring	0x14177c590	Catatonic
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320921	cstring	0x14177c5c0	Taken by mood
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x14132092d	cstring	0x14177c5b0	Went insane
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320939	cstring	0x14177c730	Throwing tantrum
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320945	cstring	0x14177c718	Could not find path
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320951	cstring	0x14177c760	Path blocked
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x14132095d	cstring	0x14177c748	Seeking artifact
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320969	cstring	0x14177c780	Handling dangerous creature
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320975	cstring	0x14177c770	Going to bed
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320981	cstring	0x14177c7b8	Seeking Infant
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x14132098d	cstring	0x14177c7a0	Dangerous terrain
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320999	cstring	0x14177c680	Forbidden area
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413209a5	cstring	0x14177c6a0	Job item lost or destroyed
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413209ac	cstring	0x14177c668	Job item misplaced
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413209be	cstring	0x14177c690	Getting food
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413209ca	cstring	0x14177c6d8	Getting water
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413209d6	cstring	0x14177c6c0	Hunting vermin for food
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413209e2	cstring	0x14177c700	Target inaccessible
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413209ee	cstring	0x14177c6e8	Target too injured
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413209fa	cstring	0x1416390c8	No target
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320a06	cstring	0x14177c888	No mechanism for target
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320a12	cstring	0x14177c870	No target building
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320a1e	cstring	0x14177c8b0	No mechanism for trigger
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320a2a	cstring	0x14177c8a0	No trigger
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320a36	cstring	0x14177c8e0	Attacking building
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320a42	cstring	0x14177c8d0	Lost pick
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320a4e	cstring	0x14177c910	Invalid officer
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320a5a	cstring	0x14177c8f8	"""Farewell!""  Leaving"
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320a66	cstring	0x14177c7e0	Removed from guard
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320a72	cstring	0x14177c7c8	Equipment mismatch
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320a7e	cstring	0x1415fa628	Unconscious
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320a8a	cstring	0x1415fa6cc	Webbed
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320a96	cstring	0x1415fa618	Paralyzed
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320aa2	cstring	0x14177c804	Caged
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320aae	cstring	0x14177c7f8	In Custody
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320aba	cstring	0x14177c820	Getting something to drink
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320ac6	cstring	0x14177c810	Using well
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320ad2	cstring	0x14177c860	Lost axe
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320adb	cstring	0x14177c840	Not responsible for trade
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320ae4	cstring	0x14177c0e0	No available traction bench
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320aed	cstring	0x14177c0d0	Need splint
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320af6	cstring	0x14177c110	Need thread
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320aff	cstring	0x14177c100	Need cloth
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320b08	cstring	0x14177c130	Need crutch
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320b11	cstring	0x14177c120	Bad script! #1
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320b1a	cstring	0x14177c150	Bad script! #2
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320b23	cstring	0x14177c140	Bad script! #3
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320b2c	cstring	0x14177bff0	Need bag containing powder suitable for cast application
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320b35	cstring	0x14177bfd8	No weapon for execution
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320b3e	cstring	0x14177c040	No appropriate ammunition
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320b47	cstring	0x14177c030	Not appointed
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320b50	cstring	0x14177c080	No longer requested
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320dbd	cstring	0x1415e89c4	The 
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320e26	cstring	0x14177c060	 suspended the construction of 
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141320e67	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141321050	cstring	0x1415e89c4	The 
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x1413210e8	cstring	0x14177c0b0	 suspended a linkage from 
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141321129	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141322b69	cstring	0x141610298	 (
+classic	PE:6a70b91c:0270a000	state-helper-131fff0	0x14131fff0	0x141322b9b	cstring	0x14177c098	) has been completed.
+classic	PE:6a70b91c:0270a000	state-helper-13233c0	0x1413233c0	0x141323465	cstring	0x14177c1d8	OVERWROTE JOB: 
+classic	PE:6a70b91c:0270a000	state-helper-13233c0	0x1413233c0	0x141323475	cstring	0x14177c1e0	E JOB: 
+classic	PE:6a70b91c:0270a000	state-helper-13233c0	0x1413233c0	0x141323482	cstring	0x14177c1e4	B: 
+classic	PE:6a70b91c:0270a000	state-helper-13233c0	0x1413233c0	0x141323490	cstring	0x14177c1e6	 
+classic	PE:6a70b91c:0270a000	state-helper-13233c0	0x1413233c0	0x1413234e7	cstring	0x14177c1d0	 BY 
+classic	PE:6a70b91c:0270a000	state-helper-13233c0	0x1413233c0	0x14132360b	cstring	0x14164c4a0	errorlog.txt
+classic	PE:6a70b91c:0270a000	state-helper-1327000	0x141327000	0x1413274bd	cstring	0x14165dab0	 lose
+classic	PE:6a70b91c:0270a000	state-helper-1327000	0x141327000	0x1413274cc	cstring	0x14165dab8	 loses
+classic	PE:6a70b91c:0270a000	state-helper-1327000	0x141327000	0x1413274e8	cstring	0x14165dac0	 hold of the 
+classic	PE:6a70b91c:0270a000	state-helper-1327000	0x141327000	0x14132753b	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141336f46	cstring	0x1416c6700	 has become a 
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141336f9d	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x1413374d0	cstring	0x1416c6700	 has become a 
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141337527	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141337706	cstring	0x1416c6700	 has become a 
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x14133775d	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141337970	cstring	0x1416c6700	 has become a 
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x1413379c7	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141337be0	cstring	0x1416c6700	 has become a 
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141337c37	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141337e50	cstring	0x1416c6700	 has become a 
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141337ea7	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x1413380c0	cstring	0x1416c6700	 has become a 
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141338117	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141338330	cstring	0x1416c6700	 has become a 
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141338387	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x1413385a0	cstring	0x1416c6700	 has become a 
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x1413385f7	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141338810	cstring	0x1416c6700	 has become a 
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141338867	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141338a80	cstring	0x1416c6700	 has become a 
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141338ad7	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141338cf0	cstring	0x1416c6700	 has become a 
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141338d47	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141338f27	cstring	0x1416c6700	 has become a 
+classic	PE:6a70b91c:0270a000	state-helper-1336c60	0x141336c60	0x141338f7e	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-13439b0	0x1413439b0	0x141343bbb	cstring	0x14177d598	 has stopped responding to the world...
+classic	PE:6a70b91c:0270a000	state-helper-13439b0	0x1413439b0	0x141343d1d	cstring	0x14177d5c0	 has gone berserk!
+classic	PE:6a70b91c:0270a000	state-helper-13439b0	0x1413439b0	0x141343dfb	cstring	0x14177d700	 has gone stark raving mad!
+classic	PE:6a70b91c:0270a000	state-helper-13439b0	0x1413439b0	0x141343edb	cstring	0x14177d720	 is stricken by melancholy!
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134a8fa	cstring	0x1415e9b80	 are
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134a909	cstring	0x1415e9b88	 is
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134a928	cstring	0x14177d7d0	 caught in a lava mist!
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134abbd	cstring	0x1415e9b80	 are
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134abcc	cstring	0x1415e9b88	 is
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134abeb	cstring	0x14177d7b8	 caught in dragonfire!
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134aecd	cstring	0x1415e9b80	 are
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134aedc	cstring	0x1415e9b88	 is
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134aefb	cstring	0x1416cb170	 caught up in the web!
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134b1c4	cstring	0x1415e9b80	 are
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134b1d3	cstring	0x1415e9b88	 is
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134b1f2	cstring	0x1416cb188	 caught in a cloud of flames!
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134b591	cstring	0x1415e9b80	 are
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134b5a0	cstring	0x1415e9b88	 is
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134b5bf	cstring	0x14177d808	 caught in a burst of steam!
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134bb9d	cstring	0x1415e9b80	 are
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134bbac	cstring	0x1415e9b88	 is
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134bbcb	cstring	0x14177d670	 caught in a cloud of 
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134bc5f	cstring	0x1415e942c	!
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134c76b	cstring	0x1415e9b80	 are
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134c774	cstring	0x1415e9b88	 is
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134c7c2	cstring	0x14177d848	 caught in a pool of magma!
+classic	PE:6a70b91c:0270a000	state-helper-134a3b0	0x14134a3b0	0x14134c7c9	cstring	0x14177d7e8	 caught in a pool of lava!
+classic	PE:6a70b91c:0270a000	state-helper-134e8b0	0x14134e8b0	0x14134e9ab	cstring	0x14177d868	You have 
+classic	PE:6a70b91c:0270a000	state-helper-134e8b0	0x14134e8b0	0x14134e9c9	cstring	0x14166ce98	 has 
+classic	PE:6a70b91c:0270a000	state-helper-134e8b0	0x14134e8b0	0x14134e9e5	cstring	0x14177d748	transformed into a 
+classic	PE:6a70b91c:0270a000	state-helper-134e8b0	0x14134e8b0	0x14134f601	cstring	0x1415e942c	!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135d72b	cstring	0x141729780	 has come!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135d856	cstring	0x1415f7ff8	  
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135dafe	cstring	0x14177d2e0	Horrors!  Demons in the deep!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135db08	cstring	0x14177d2f0	 in the deep!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135db15	cstring	0x14177d2f8	deep!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135db1e	cstring	0x14177d2fc	!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135dc35	cstring	0x141785d20	0
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135dc42	cstring	0x14177d2a8	The wilds are turning on us!  Curse these lands!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135dc4c	cstring	0x14177d2b8	rning on us!  Curse these lands!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135dc57	cstring	0x14177d2c8	rse these lands!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135dd17	cstring	0x14177d300	 was spotted sneaking around!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135ddfe	cstring	0x14177d138	"  ""You will not stand between me and "
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135de31	cstring	0x1415fbe4c	"!"""
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135de7d	cstring	0x14177d110	"  ""I'll live to fight another day!"""
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135dfcf	cstring	0x14177d198	Intruders!  Drive them away!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135dfd9	cstring	0x14177d1a8	e them away!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135dfe6	cstring	0x14177d1b0	way!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135e10d	cstring	0x141785d30	1
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135e11a	cstring	0x14177d160	Cavern dwellers!  Send them back to the darkness!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135e124	cstring	0x14177d170	  Send them back to the darkness!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135e12f	cstring	0x14177d180	 to the darkness!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135e13a	cstring	0x14177d190	!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135e323	cstring	0x14177d1b8	An ambush!  Skulking vermin!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135e43f	cstring	0x14177d220	An ambush!  Curse all friends of nature!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135e4b9	cstring	0x14177d208	An ambush!  Curse them!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135e58f	cstring	0x141785d00	.
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135e59c	cstring	0x14177d1d8	Thief!  Protect the hoard from skulking filth!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135e5a6	cstring	0x14177d1e8	the hoard from skulking filth!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135e5b1	cstring	0x14177d1f8	kulking filth!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135e5be	cstring	0x14177d200	filth!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135e5c7	cstring	0x14177d204	h!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135e6db	printable-immediate		A 
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135e79c	cstring	0x14177d3d8	!  Drive it away!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135e913	cstring	0x14177d208	An ambush!  Curse them!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135e996	cstring	0x14177d3b0	Snatcher!  Protect the children!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135eafa	cstring	0x14177d220	An ambush!  Curse all friends of nature!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135eb74	cstring	0x14177d208	An ambush!  Curse them!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135ebc6	cstring	0x14177d410	An injured 
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135ec05	cstring	0x14177d3f0	 has sprung from ambush!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135ec88	cstring	0x1415e85e4	A 
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135ecc7	cstring	0x14177d3f0	 has sprung from ambush!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135edf8	cstring	0x14177d320	An ambush!  Drive them out!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135ee02	cstring	0x14177d330	e them out!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135ee0f	cstring	0x14177d338	ut!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135ee1a	cstring	0x14177d33a	!
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135ee97	cstring	0x1416cbf28	There is a 
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135eea4	cstring	0x1416cbf30	 a 
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135eeaf	cstring	0x1416cbf32	 
+classic	PE:6a70b91c:0270a000	state-helper-135d520	0x14135d520	0x14135ef11	cstring	0x14177d438	 hidden away here.
+classic	PE:6a70b91c:0270a000	state-helper-1360050	0x141360050	0x14136024d	cstring	0x1416c708c	 block
+classic	PE:6a70b91c:0270a000	state-helper-1360050	0x141360050	0x141360259	cstring	0x1417004f8	 blocks
+classic	PE:6a70b91c:0270a000	state-helper-1360050	0x141360050	0x141360286	cstring	0x14177d450	 the breath.
+classic	PE:6a70b91c:0270a000	state-helper-1360050	0x141360050	0x141360295	cstring	0x14177d420	 the dragonfire.
+classic	PE:6a70b91c:0270a000	state-helper-1360050	0x141360050	0x1413602a4	cstring	0x14177d460	 the fire.
+classic	PE:6a70b91c:0270a000	state-helper-1361cb0	0x141361cb0	0x141361eab	cstring	0x14177d518	unit contained in unit
+classic	PE:6a70b91c:0270a000	state-helper-1361cb0	0x141361cb0	0x141361f0e	cstring	0x14177d500	Double Caged Unit
+classic	PE:6a70b91c:0270a000	state-helper-1363900	0x141363900	0x1413661c8	printable-immediate		gfff
+classic	PE:6a70b91c:0270a000	state-helper-1363900	0x141363900	0x14136620c	printable-immediate		gfff
+classic	PE:6a70b91c:0270a000	state-helper-1363900	0x141363900	0x14136625c	printable-immediate		gfff
+classic	PE:6a70b91c:0270a000	state-helper-1363900	0x141363900	0x141366275	printable-immediate		gfff
+classic	PE:6a70b91c:0270a000	state-helper-1363900	0x141363900	0x141366393	printable-immediate		VUUU
+classic	PE:6a70b91c:0270a000	state-helper-1363900	0x141363900	0x1413663ff	printable-immediate		gfff
+classic	PE:6a70b91c:0270a000	state-helper-1363900	0x141363900	0x141366456	printable-immediate		gfff
+classic	PE:6a70b91c:0270a000	state-helper-13cab50	0x1413cab50	0x1413cb176	cstring	0x14177ec20	 has bestowed the name 
+classic	PE:6a70b91c:0270a000	state-helper-13cab50	0x1413cab50	0x1413cb1c9	cstring	0x14177ec58	 upon a 
+classic	PE:6a70b91c:0270a000	state-helper-13cab50	0x1413cab50	0x1413cb20f	cstring	0x1415e942c	!
+classic	PE:6a70b91c:0270a000	state-helper-13cab50	0x1413cab50	0x1413cb5c8	cstring	0x14177ec38	 has grown attached to a 
+classic	PE:6a70b91c:0270a000	state-helper-13cab50	0x1413cab50	0x1413cb624	cstring	0x1415e942c	!
+classic	PE:6a70b91c:0270a000	state-helper-13d5f70	0x1413d5f70	0x1413d61c4	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	state-helper-13d5f70	0x1413d5f70	0x1413d620b	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-13d5f70	0x1413d5f70	0x1413d6288	cstring	0x14164d6f8	You hear 
+classic	PE:6a70b91c:0270a000	state-helper-13d5f70	0x1413d5f70	0x1413d62e3	cstring	0x14164d6f8	You hear 
+classic	PE:6a70b91c:0270a000	state-helper-13d5f70	0x1413d5f70	0x1413d62ef	cstring	0x14164d700	 
+classic	PE:6a70b91c:0270a000	state-helper-13d5f70	0x1413d5f70	0x1413d6362	cstring	0x1415e3574	.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0c1a	cstring	0x14177fa4c	 have 
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0c60	cstring	0x14166ce98	 has 
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0cc2	printable-immediate		The 
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0d14	printable-immediate		The 
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0d92	cstring	0x14166ce98	 has 
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0e0e	cstring	0x14177fa98	died in a cage.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0e20	cstring	0x14177f8a8	died of old age.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0e32	cstring	0x14177f890	been scared to death
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0e51	cstring	0x1415e8a08	 by 
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0ee8	cstring	0x1415e942c	!
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0ef4	cstring	0x14177f8d8	died in the dark.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0f00	cstring	0x14177f8c0	starved to death.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0f12	cstring	0x14177f900	died of thirst.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0f24	cstring	0x14177f930	burned up in magma.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0f36	cstring	0x14177f910	burned up in dragon fire.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0f48	cstring	0x14177fba0	boiled.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0f5a	cstring	0x14177fb98	melted.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0f6c	cstring	0x14177fbb8	condensed.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0f7e	cstring	0x14177fba8	solidified.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0f8a	cstring	0x14177fbe8	died in the heat.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0f9c	cstring	0x14177fbc8	been encased in cooling lava.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0fae	cstring	0x14177fc18	been encased in cooling magma.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0fc0	cstring	0x14177fc00	been encased in ice.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0fd2	cstring	0x14177fac0	frozen to death.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0fe4	cstring	0x14177faa8	burned to death.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e0ff6	cstring	0x14177faf8	been scalded to death.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1008	cstring	0x14177fad8	burned up in a magma mist.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e101a	cstring	0x14177fb40	been crushed by a drawbridge.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e102c	cstring	0x14177fb10	been crushed under the collapsing ceiling.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e103e	cstring	0x14177fb78	been killed by falling rocks.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1050	cstring	0x14177fb60	been shot and killed.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1062	cstring	0x14177fd20	bled to death.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1074	cstring	0x14177fd08	succumbed to infection.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1086	cstring	0x14177fd48	suffocated.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1092	cstring	0x14177fd30	been struck down.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e109e	cstring	0x14177fd68	been slaughtered.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e10b0	cstring	0x14177fd58	been scuttled.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e10c2	cstring	0x14177fd90	been hacked to pieces.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e10d4	cstring	0x14177fd80	been executed.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e10e6	cstring	0x14177fc48	been beheaded.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e10f8	cstring	0x14177fc38	been crucified.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e110a	cstring	0x14177fc88	been buried alive.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e111c	cstring	0x14177fc58	been executed by being left out in the air.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e112e	cstring	0x14177fcb8	been executed by drowning.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1140	cstring	0x14177fca0	been burned alive.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1152	cstring	0x14177fcf0	been fed to beasts.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1176	cstring	0x14177fcd8	been drained of blood
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1188	cstring	0x14177feb0	been drained of blood by 
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e11f0	cstring	0x1415e942c	!
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1202	cstring	0x14177fe98	been murdered by 
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1266	cstring	0x1415e942c	!
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1272	cstring	0x1415e8570	somebody
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e128e	cstring	0x1415e942c	!
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e12a0	cstring	0x14177fef0	been killed by a trap.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e12b2	cstring	0x14177fed0	been killed by a vehicle.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e12c4	cstring	0x14177ff18	been killed by a flying object.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e12d6	cstring	0x14177ff08	vanished.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e12e8	cstring	0x14177ff60	collapsed.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e12fa	cstring	0x14177ff38	died after colliding with an obstacle.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e130c	cstring	0x14177fdc0	been impaled on spikes.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e131e	cstring	0x14177fdf0	leapt from a great height.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1330	cstring	0x14177f8f0	drowned.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1357	cstring	0x14177fa78	fallen into a deep chasm.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1369	cstring	0x14177fdd8	been found dead.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e137b	cstring	0x14177fe30	been found dead, contorted in fear!
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e138d	cstring	0x14177fe10	been found, starved to death.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e139f	cstring	0x14177fe78	been found dead, dehydrated.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e13b1	cstring	0x14177fe58	been found dead, drowned.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e13c3	cstring	0x14177f720	been found dead, badly burned.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e13d5	cstring	0x14177f708	been found boiled.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e13e4	cstring	0x14177f758	been found melted.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e13f3	cstring	0x14177f740	been found condensed.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1402	cstring	0x14177f790	been found solidified.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1411	cstring	0x14177f770	been found dead, frozen.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1420	cstring	0x14177f7c0	been found dead, badly crushed.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e142f	cstring	0x14177f7a8	been found scuttled.
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e143e	cstring	0x14177f640	been found dead, completely drained of blood!
+classic	PE:6a70b91c:0270a000	state-helper-13e0a90	0x1413e0a90	0x1413e1447	cstring	0x14177fda8	been put to rest.

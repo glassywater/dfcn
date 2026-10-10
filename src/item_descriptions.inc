@@ -28,6 +28,15 @@ static std::string normalize_art_utterance(std::string_view source) {
         ? normalize_utterance(source) : std::string(trim_view(source));
 }
 
+static bool item_term_contains_sentence_punctuation(std::string_view source) {
+    bool quoted = false;
+    for (char ch : source) {
+        if (ch == '"' || ch == '\x10' || ch == '\x11') quoted = !quoted;
+        if (!quoted && (ch == '.' || ch == '!' || ch == '?')) return true;
+    }
+    return false;
+}
+
 static bool item_description_translation_complete(
         const std::optional<std::string> &target) {
     if (!target || target->empty()) return false;
@@ -412,12 +421,7 @@ std::optional<std::string> Overlay::translate_item_description_term(
             // native artwork. Defer rejection until the complete scoped item
             // and named-artifact productions have had a chance to own it;
             // ordinary noun/material fallback must still reject prose.
-            bool quoted = false;
-            bool punctuated = false;
-            for (char ch : value) {
-                if (ch == '"' || ch == '\x10' || ch == '\x11') quoted = !quoted;
-                if (!quoted && (ch == '.' || ch == '!' || ch == '?')) punctuated = true;
-            }
+            const bool punctuated = item_term_contains_sentence_punctuation(value);
             // Body components share the complete caption grammar with Stocks
             // and inventory. Preserve the unit prefix and noun sense before
             // generic material/item decomposition can produce a qualifier.
@@ -862,8 +866,16 @@ TranslationResult Overlay::translate_item_description_term_display(
             result = TranslationResult::translated(source, *target, result.kind);
         else {
             if (!predicate) {
-                auto complete = translate_item_caption_grammar(source);
-                if (!complete) complete = translate_material_name(source);
+                std::optional<std::string> complete;
+                // Display fallback obeys the same noun boundary as the strict
+                // parser. A failed `This is {s}.` can otherwise pass the entire
+                // book/artifact paragraph to equipment and material callbacks,
+                // retaining millions of unrelated substring queries. Typed
+                // title/inscription rules still own punctuation below.
+                if (!item_term_contains_sentence_punctuation(source)) {
+                    complete = translate_item_caption_grammar(source);
+                    if (!complete) complete = translate_material_name(source);
+                }
                 if (!complete) complete = exact_literal_translation(source);
                 if (complete && item_display_target_valid(*complete)) {
                     result = TranslationResult::translated(source, *complete, "item");
@@ -1017,12 +1029,12 @@ TranslationResult Overlay::translate_item_description_source_display(
                 }
                 return preserved_item_field(value, "item-sentence");
             };
-            result = sentence(source);
-            // Native nicknames and titles may contain punctuation. Whole-rule
-            // fallback above handles them; paragraph splitting requires a
-            // closed quote state and an independently anchored next sentence.
-            if (!result.changed() && source.find('`') == std::string::npos) {
-                std::vector<size_t> boundaries{0};
+            // The complete strict production above already had the chance to
+            // own a punctuated title or inscription. Establish proven sentence
+            // boundaries before display fallback, whose preserved fields must
+            // not let the first noun swallow all later independent sentences.
+            std::vector<size_t> boundaries{0};
+            if (source.find('`') == std::string::npos) {
                 bool quoted = false;
                 for (size_t at = 0; at + 1 < source.size(); ++at) {
                     if (source[at] == '"' || source[at] == '\x10' || source[at] == '\x11') quoted = !quoted;
@@ -1037,20 +1049,23 @@ TranslationResult Overlay::translate_item_description_source_display(
                     if (anchored(next) || translate_item_description_source(previous, true))
                         boundaries.push_back(at + 1);
                 }
-                boundaries.push_back(source.size());
-                if (!quoted && boundaries.size() > 2) {
-                    result = {};
-                    result.source = source;
-                    for (size_t at = 0; at + 1 < boundaries.size(); ++at) {
-                        auto value = std::string_view(source).substr(boundaries[at], boundaries[at + 1] - boundaries[at]);
-                        const auto trimmed = trim_view(value);
-                        const size_t offset = boundaries[at] + static_cast<size_t>(trimmed.data() - value.data());
-                        if (!result.target.empty()) result.append(TranslationResult::translated({}, " ", "item-separator"));
-                        result.append(sentence(trimmed), offset);
-                        committed_source_end = boundaries[at + 1];
-                    }
-                    finish_item_display_result(result, source, "item-prose");
+                if (quoted) boundaries.resize(1);
+            }
+            boundaries.push_back(source.size());
+            if (boundaries.size() > 2) {
+                result = {};
+                result.source = source;
+                for (size_t at = 0; at + 1 < boundaries.size(); ++at) {
+                    auto value = std::string_view(source).substr(boundaries[at], boundaries[at + 1] - boundaries[at]);
+                    const auto trimmed = trim_view(value);
+                    const size_t offset = boundaries[at] + static_cast<size_t>(trimmed.data() - value.data());
+                    if (!result.target.empty()) result.append(TranslationResult::translated({}, " ", "item-separator"));
+                    result.append(sentence(trimmed), offset);
+                    committed_source_end = boundaries[at + 1];
                 }
+                finish_item_display_result(result, source, "item-prose");
+            } else {
+                result = sentence(source);
             }
         }
     } catch (const TranslationWorkLimit &) {

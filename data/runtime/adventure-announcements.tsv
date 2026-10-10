@@ -335,15 +335,19 @@ You feed on {n}.	你吸食{n}。
 You flounder in the water!	你在水中挣扎！
 You flounder in the lava!	你在熔岩中挣扎！
 You flounder in the magma!	你在岩浆中挣扎！
+You flounder!	你挣扎着！
 You push {s}.	你推动了{s}。
 You lose hold of the {s}.	你没能抓住{s}。
+You lose hold of the {s}!	你没能抓住{s}！
 You mount {n}.	你骑上了{n}。
 You dismount.	你从坐骑上下来了。
 {n} flounders in the water!	{n}在水中挣扎！
 {n} flounders in the lava!	{n}在熔岩中挣扎！
 {n} flounders in the magma!	{n}在岩浆中挣扎！
+{n} flounders!	{n}挣扎着！
 {n} pushes {s}.	{n}推动了{s}。
 {n} loses hold of the {s}.	{n}没能抓住{s}。
+{n} loses hold of the {s}!	{n}没能抓住{s}！
 {n} mounts {n}.	{n1}骑上了{n2}。
 {n} dismounts.	{n}从坐骑上下来了。
 You cannot mount {n} due to the presence of an existing rider.	{n}已经有骑手，你无法骑上去。
@@ -573,6 +577,7 @@ The agreement to establish a temple for {e} has been abandoned.	为{e}建立神�
 The agreement to establish a guildhall for {e} has been abandoned.	为{e}建立行会大厅的协议已被放弃。
 {e}, a {s} guild, has been established.	{s}行会{e}已经成立。
 The {n} has been missing for a week.	{n}已经失踪一周。
+{n} has been missing for a week.	{n}已经失踪一周。
 {n} has ended a mandate.	{n}结束了一项法令。
 A mandate has ended.	一项法令已结束。
 Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense.	祝贺你！这座要塞如今已成为山国都城，证明那些狂妄自大的指责不过是幼稚的胡言乱语。

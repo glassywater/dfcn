@@ -117,6 +117,81 @@ void Overlay::append_embark_site_headings(const NativeTextCard &card,
     }
 }
 
+static std::string embark_site_complete_name(const NativeTextCardRow &row,
+        const std::vector<NativeClippedCaption> &captures) {
+    for (const auto &capture : captures)
+        if (capture.x == row.x && capture.y == row.y && capture.visible == row.source)
+            return normalize_utterance(capture.complete);
+    return normalize_utterance(row.source);
+}
+
+static std::string embark_site_paired_native_name(const NativeTextCard &card,
+        int y, std::string_view gloss, const std::vector<NativeClippedCaption> &captures) {
+    for (auto it = card.rows.rbegin(); it != card.rows.rend(); ++it) {
+        if (it->y >= y) continue;
+        const std::string source = embark_site_complete_name(*it, captures);
+        // Half-font draws repeat a field on its complementary physical row.
+        if (source == gloss) continue;
+        return generated_title_shape(source) ? source : std::string{};
+    }
+    return {};
+}
+
+void Overlay::append_embark_site_names(const NativeTextCard &card,
+        std::vector<std::string> &rows, std::vector<Match> &matches, int only_y) const {
+    const auto captures = captured_clipped_captions();
+    bool locations = false;
+    const auto claim = [&](const NativeTextCardRow &row, std::string target) {
+        if (rows[row.y].compare(row.x, row.source.size(), row.source) != 0) return;
+        std::erase_if(matches, [&](const Match &match) {
+            return match.y == row.y && match.x < row.x + static_cast<int>(row.source.size()) &&
+                row.x < match.x + match.length;
+        });
+        std::fill_n(rows[row.y].begin() + row.x, row.source.size(), ' ');
+        if (only_y >= 0 && only_y != row.y) return;
+        Match match{row.x, row.y, static_cast<int>(row.source.size()),
+            kEmbarkSiteRowRule, std::move(target), row.source};
+        match.layout_foreground_rgb = row.foregrounds.front();
+        matches.push_back(std::move(match));
+    };
+    for (size_t index = 0; index < card.rows.size(); ++index) {
+        const auto &row = card.rows[index];
+        const std::string source = embark_site_complete_name(row, captures);
+        if (source.starts_with("Surroundings:")) { locations = true; continue; }
+        if (source.starts_with("Neighbors:")) break;
+        if (!locations) continue;
+        if (source.size() >= 2 && source.front() == '"' && source.back() == '"') {
+            const std::string native = embark_site_paired_native_name(card, row.y, source, captures);
+            if (native.empty()) continue;
+            // The complete native/English pair selects a real site, including
+            // its WORD/POS and type. Never borrow a type from a same-name site.
+            const auto identity = resolve_site_reference_name(native + ", " + source);
+            auto gloss = identity ? translate_site_display(*identity, source) : std::nullopt;
+            if (!gloss)
+                if (auto core = translate_english_site_name(source)) gloss = "“" + *core + "”";
+            if (gloss) claim(row, *gloss);
+            const auto phonetic = identity ? translate_site_display(*identity, native) : std::nullopt;
+            for (size_t previous = index; previous-- > 0;) {
+                const auto &native_row = card.rows[previous];
+                const std::string field = embark_site_complete_name(native_row, captures);
+                if (field == source) continue;
+                if (field != native) break;
+                claim(native_row, phonetic.value_or(transliterate_site_spelling(native)));
+            }
+            continue;
+        }
+        // River captions select the English geographical name. They share
+        // whole-name composition, but have no world_site type to append.
+        for (std::string_view prefix : {"Brook:", "Stream:", "Minor River:", "Major River:"}) {
+            if (!source.starts_with(prefix)) continue;
+            const auto label = exact_literal_translation(prefix);
+            const auto name = translate_english_site_name(trim_view(std::string_view(source).substr(prefix.size())));
+            if (label && name) claim(row, *label + *name);
+            break;
+        }
+    }
+}
+
 void Overlay::append_embark_site_resources(NativeTextCard &card,
         std::vector<std::string> &rows, std::vector<Match> &matches, int only_y) const {
     // Native reserves a fixed resource band even when the preceding site list
@@ -288,8 +363,18 @@ void Overlay::append_embark_site_resources(NativeTextCard &card,
         matches.push_back(std::move(resource));
         const std::string source = normalize_utterance(site_source);
         if (!source.empty() && site_color >= 0) {
-            auto target = exact_literal_translation(source);
-            if (!target && source.front() == '"') target = translate_legends_name(source, false);
+            std::optional<std::string> target;
+            if (source.size() >= 2 && source.front() == '"' && source.back() == '"') {
+                const auto captures = captured_clipped_captions();
+                const std::string native = embark_site_paired_native_name(card, row.y, source, captures);
+                const auto identity = native.empty() ? std::nullopt
+                    : resolve_site_reference_name(native + ", " + source);
+                if (identity) target = translate_site_display(*identity, source);
+                if (!target)
+                    if (auto core = translate_english_site_name(source)) target = "“" + *core + "”";
+            }
+            if (!target) target = translate_site_reference(source);
+            if (!target) target = exact_literal_translation(source);
             if (!target) target = translate_procedural_fragment(source);
             if (!target && config_.compositional_rules) target = translate_compositional(source);
             // The resource row already owns every physical byte, including

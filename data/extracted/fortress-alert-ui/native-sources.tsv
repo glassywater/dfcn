@@ -1,0 +1,17 @@
+edition	instruction_rva	condition	source	source_form	translation_path
+reference	0x3d727e	alert-button caption	ALERT	fixed	ordinary interface caption
+reference	0x3fab2b	hovering alert-button; popup closed; no modal announcement popup	Left click for recenter and expand options.  Right click to dismiss.	fixed	ordinary interface caption
+reference	0x3fae1b	hovering alert icon; popup closed; no modal announcement popup	Left click for recenter and expand options.  Right click to dismiss.	fixed	ordinary interface caption
+reference	0x40e92b	viewing_unit != null	You can recenter on certain announcements.  Right click to close.	fixed	ordinary interface caption
+reference	0x40ead7	viewing_unit == null and viewing_alert_button	You can recenter on certain announcements.  Right click to close.	fixed	ordinary interface caption
+reference	0x40eb9c	viewing_alert and report_unid vector nonempty	Select a report to view the full text.  Right click to close.	fixed	ordinary interface caption
+reference	0x40ec23	viewing_alert and report_unid vector empty	You can recenter on certain announcements.  Right click to close.	fixed	ordinary interface caption
+reference	0x3f65b5	alert hover unit lookup failed	Somebody	fixed	complete alert summary missing-unit identity fallback
+classic	0x3d4e3e	alert-button caption	ALERT	fixed	ordinary interface caption
+classic	0x3f86eb	hovering alert-button; popup closed; no modal announcement popup	Left click for recenter and expand options.  Right click to dismiss.	fixed	ordinary interface caption
+classic	0x3f89db	hovering alert icon; popup closed; no modal announcement popup	Left click for recenter and expand options.  Right click to dismiss.	fixed	ordinary interface caption
+classic	0x40c4eb	viewing_unit != null	You can recenter on certain announcements.  Right click to close.	fixed	ordinary interface caption
+classic	0x40c697	viewing_unit == null and viewing_alert_button	You can recenter on certain announcements.  Right click to close.	fixed	ordinary interface caption
+classic	0x40c75c	viewing_alert and report_unid vector nonempty	Select a report to view the full text.  Right click to close.	fixed	ordinary interface caption
+classic	0x40c7e3	viewing_alert and report_unid vector empty	You can recenter on certain announcements.  Right click to close.	fixed	ordinary interface caption
+classic	0x3f4175	alert hover unit lookup failed	Somebody	fixed	complete alert summary missing-unit identity fallback

@@ -1,0 +1,11 @@
+edition	image_identity	conversation_state	rumor_type	selector_table_rva	table_index	branch_table_rva	title_branch_rva	title
+steam	PE:6a70a6d9:02711000	2	any	0x86dccc	1	0x86dbfc	0x86c9af	What will you say about the trouble?
+steam	PE:6a70a6d9:02711000	4	any	0x86dccc	1	0x86dbfc	0x86c9af	What will you say about the trouble?
+steam	PE:6a70a6d9:02711000	21	any	0x86dccc	1	0x86dbfc	0x86c9af	What will you say about the trouble?
+steam	PE:6a70a6d9:02711000	22	any	0x86dccc	1	0x86dbfc	0x86c9af	What will you say about the trouble?
+steam	PE:6a70a6d9:02711000	6	5	no byte selector table	direct	0x86dd24	0x86c766	What will you say about the trouble?
+classic	PE:6a70b91c:0270a000	2	any	0x86b54c	1	0x86b47c	0x86a22f	What will you say about the trouble?
+classic	PE:6a70b91c:0270a000	4	any	0x86b54c	1	0x86b47c	0x86a22f	What will you say about the trouble?
+classic	PE:6a70b91c:0270a000	21	any	0x86b54c	1	0x86b47c	0x86a22f	What will you say about the trouble?
+classic	PE:6a70b91c:0270a000	22	any	0x86b54c	1	0x86b47c	0x86a22f	What will you say about the trouble?
+classic	PE:6a70b91c:0270a000	6	5	no byte selector table	direct	0x86b5a4	0x869fe6	What will you say about the trouble?

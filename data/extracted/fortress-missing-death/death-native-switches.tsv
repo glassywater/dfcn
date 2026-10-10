@@ -1,0 +1,221 @@
+edition	function_start	observed	cause	cause_name	remap_index	table_address	branch_address	first_source_text
+reference	0x1413e5b20	1	0	OLD_AGE	0	0x1413e6cbc	0x1413e5eaa	died of old age.
+reference	0x1413e5b20	1	1	HUNGER	1	0x1413e6cbc	0x1413e5f90	starved to death.
+reference	0x1413e5b20	1	2	THIRST	2	0x1413e6cbc	0x1413e5f9c	died of thirst.
+reference	0x1413e5b20	1	3	SHOT	3	0x1413e6cbc	0x1413e60da	been shot and killed.
+reference	0x1413e5b20	1	4	BLEED	4	0x1413e6cbc	0x1413e60ec	bled to death.
+reference	0x1413e5b20	1	5	DROWN	5	0x1413e6cbc	0x1413e63ba	drowned.
+reference	0x1413e5b20	1	6	SUFFOCATE	6	0x1413e6cbc	0x1413e6110	suffocated.
+reference	0x1413e5b20	1	7	STRUCK_DOWN	7	0x1413e6cbc	0x1413e6122	been struck down.
+reference	0x1413e5b20	1	8	SCUTTLE	8	0x1413e6cbc	0x1413e613a	been scuttled.
+reference	0x1413e5b20	1	9	COLLISION	9	0x1413e6cbc	0x1413e6384	died after colliding with an obstacle.
+reference	0x1413e5b20	1	10	MAGMA	10	0x1413e6cbc	0x1413e5fae	burned up in magma.
+reference	0x1413e5b20	1	11	MAGMA_MIST	11	0x1413e6cbc	0x1413e6092	burned up in a magma mist.
+reference	0x1413e5b20	1	12	DRAGONFIRE	12	0x1413e6cbc	0x1413e5fc0	burned up in dragon fire.
+reference	0x1413e5b20	1	13	FIRE	13	0x1413e6cbc	0x1413e606e	burned to death.
+reference	0x1413e5b20	1	14	SCALD	14	0x1413e6cbc	0x1413e6080	been scalded to death.
+reference	0x1413e5b20	1	15	CAVEIN	15	0x1413e6cbc	0x1413e60b6	been crushed under the collapsing ceiling.
+reference	0x1413e5b20	1	16	DRAWBRIDGE	16	0x1413e6cbc	0x1413e60a4	been crushed by a drawbridge.
+reference	0x1413e5b20	1	17	FALLING_ROCKS	17	0x1413e6cbc	0x1413e60c8	been killed by falling rocks.
+reference	0x1413e5b20	1	18	CHASM	18	0x1413e6cbc	0x1413e63e1	fallen into a deep chasm.
+reference	0x1413e5b20	1	19	CAGE	19	0x1413e6cbc	0x1413e5e98	died in a cage.
+reference	0x1413e5b20	1	20	MURDER	20	0x1413e6cbc	0x1413e628c	been murdered by 
+reference	0x1413e5b20	1	21	TRAP	21	0x1413e6cbc	0x1413e632a	been killed by a trap.
+reference	0x1413e5b20	1	22	VANISH	22	0x1413e6cbc	0x1413e6360	vanished.
+reference	0x1413e5b20	1	23	QUIT	23	0x1413e6cbc	0x1413e64ed	
+reference	0x1413e5b20	1	24	ABANDON	24	0x1413e6cbc	0x1413e64ed	
+reference	0x1413e5b20	1	25	HEAT	25	0x1413e6cbc	0x1413e601a	died in the heat.
+reference	0x1413e5b20	1	26	COLD	26	0x1413e6cbc	0x1413e605c	frozen to death.
+reference	0x1413e5b20	1	27	SPIKE	27	0x1413e6cbc	0x1413e6396	been impaled on spikes.
+reference	0x1413e5b20	1	28	ENCASE_LAVA	28	0x1413e6cbc	0x1413e6026	been encased in cooling lava.
+reference	0x1413e5b20	1	29	ENCASE_MAGMA	29	0x1413e6cbc	0x1413e6038	been encased in cooling magma.
+reference	0x1413e5b20	1	30	ENCASE_ICE	30	0x1413e6cbc	0x1413e604a	been encased in ice.
+reference	0x1413e5b20	1	31	BEHEAD	31	0x1413e6cbc	0x1413e6170	been beheaded.
+reference	0x1413e5b20	1	32	CRUCIFY	32	0x1413e6cbc	0x1413e6182	been crucified.
+reference	0x1413e5b20	1	33	BURY_ALIVE	33	0x1413e6cbc	0x1413e6194	been buried alive.
+reference	0x1413e5b20	1	34	DROWN_BY	34	0x1413e6cbc	0x1413e61b8	been executed by drowning.
+reference	0x1413e5b20	1	35	BURN_ALIVE	35	0x1413e6cbc	0x1413e61ca	been burned alive.
+reference	0x1413e5b20	1	36	FEED_TO_BEASTS	36	0x1413e6cbc	0x1413e61dc	been fed to beasts.
+reference	0x1413e5b20	1	37	HACK_TO_PIECES	37	0x1413e6cbc	0x1413e614c	been hacked to pieces.
+reference	0x1413e5b20	1	38	LEAVE_OUT_IN_AIR	38	0x1413e6cbc	0x1413e61a6	been executed by being left out in the air.
+reference	0x1413e5b20	1	39	BOIL	39	0x1413e6cbc	0x1413e5fd2	boiled.
+reference	0x1413e5b20	1	40	MELT	40	0x1413e6cbc	0x1413e5fe4	melted.
+reference	0x1413e5b20	1	41	CONDENSE	41	0x1413e6cbc	0x1413e5ff6	condensed.
+reference	0x1413e5b20	1	42	SOLIDIFY	42	0x1413e6cbc	0x1413e6008	solidified.
+reference	0x1413e5b20	1	43	INFECTION	43	0x1413e6cbc	0x1413e60fe	succumbed to infection.
+reference	0x1413e5b20	1	44	MEMORIALIZE	44	0x1413e6cbc	0x1413e64d7	been put to rest.
+reference	0x1413e5b20	1	45	SCARE	45	0x1413e6cbc	0x1413e5ebc	been scared to death
+reference	0x1413e5b20	1	46	DARKNESS	46	0x1413e6cbc	0x1413e5f84	died in the dark.
+reference	0x1413e5b20	1	47	COLLAPSE	47	0x1413e6cbc	0x1413e6372	collapsed.
+reference	0x1413e5b20	1	48	DRAIN_BLOOD	48	0x1413e6cbc	0x1413e61ee	
+reference	0x1413e5b20	1	49	SLAUGHTER	49	0x1413e6cbc	0x1413e612e	been slaughtered.
+reference	0x1413e5b20	1	50	VEHICLE	50	0x1413e6cbc	0x1413e633c	been killed by a vehicle.
+reference	0x1413e5b20	1	51	FALLING_OBJECT	51	0x1413e6cbc	0x1413e634e	been killed by a flying object.
+reference	0x1413e5b20	1	52	LEAPT_FROM_HEIGHT	52	0x1413e6cbc	0x1413e63a8	leapt from a great height.
+reference	0x1413e5b20	1	53	DROWN_SELF	53	0x1413e6cbc	0x1413e63ba	drowned.
+reference	0x1413e5b20	1	54	EXECUTION_GENERIC	54	0x1413e6cbc	0x1413e615e	been executed.
+reference	0x1413e5b20	0	0	OLD_AGE	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	1	HUNGER	1	0x1413e6d98	0x1413e6417	been found, starved to death.
+reference	0x1413e5b20	0	2	THIRST	2	0x1413e6d98	0x1413e6429	been found dead, dehydrated.
+reference	0x1413e5b20	0	3	SHOT	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	4	BLEED	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	5	DROWN	3	0x1413e6d98	0x1413e643b	been found dead, drowned.
+reference	0x1413e5b20	0	6	SUFFOCATE	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	7	STRUCK_DOWN	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	8	SCUTTLE	4	0x1413e6d98	0x1413e64b9	been found scuttled.
+reference	0x1413e5b20	0	9	COLLISION	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	10	MAGMA	5	0x1413e6d98	0x1413e644d	been found dead, badly burned.
+reference	0x1413e5b20	0	11	MAGMA_MIST	5	0x1413e6d98	0x1413e644d	been found dead, badly burned.
+reference	0x1413e5b20	0	12	DRAGONFIRE	5	0x1413e6d98	0x1413e644d	been found dead, badly burned.
+reference	0x1413e5b20	0	13	FIRE	5	0x1413e6d98	0x1413e644d	been found dead, badly burned.
+reference	0x1413e5b20	0	14	SCALD	5	0x1413e6d98	0x1413e644d	been found dead, badly burned.
+reference	0x1413e5b20	0	15	CAVEIN	6	0x1413e6d98	0x1413e64aa	been found dead, badly crushed.
+reference	0x1413e5b20	0	16	DRAWBRIDGE	6	0x1413e6d98	0x1413e64aa	been found dead, badly crushed.
+reference	0x1413e5b20	0	17	FALLING_ROCKS	6	0x1413e6d98	0x1413e64aa	been found dead, badly crushed.
+reference	0x1413e5b20	0	18	CHASM	7	0x1413e6d98	0x1413e63e1	fallen into a deep chasm.
+reference	0x1413e5b20	0	19	CAGE	8	0x1413e6d98	0x1413e5e98	died in a cage.
+reference	0x1413e5b20	0	20	MURDER	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	21	TRAP	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	22	VANISH	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	23	QUIT	18	0x1413e6d98	0x1413e64ed	
+reference	0x1413e5b20	0	24	ABANDON	18	0x1413e6d98	0x1413e64ed	
+reference	0x1413e5b20	0	25	HEAT	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	26	COLD	9	0x1413e6d98	0x1413e649b	been found dead, frozen.
+reference	0x1413e5b20	0	27	SPIKE	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	28	ENCASE_LAVA	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	29	ENCASE_MAGMA	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	30	ENCASE_ICE	9	0x1413e6d98	0x1413e649b	been found dead, frozen.
+reference	0x1413e5b20	0	31	BEHEAD	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	32	CRUCIFY	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	33	BURY_ALIVE	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	34	DROWN_BY	3	0x1413e6d98	0x1413e643b	been found dead, drowned.
+reference	0x1413e5b20	0	35	BURN_ALIVE	5	0x1413e6d98	0x1413e644d	been found dead, badly burned.
+reference	0x1413e5b20	0	36	FEED_TO_BEASTS	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	37	HACK_TO_PIECES	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	38	LEAVE_OUT_IN_AIR	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	39	BOIL	10	0x1413e6d98	0x1413e645f	been found boiled.
+reference	0x1413e5b20	0	40	MELT	11	0x1413e6d98	0x1413e646e	been found melted.
+reference	0x1413e5b20	0	41	CONDENSE	12	0x1413e6d98	0x1413e647d	been found condensed.
+reference	0x1413e5b20	0	42	SOLIDIFY	13	0x1413e6d98	0x1413e648c	been found solidified.
+reference	0x1413e5b20	0	43	INFECTION	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	44	MEMORIALIZE	14	0x1413e6d98	0x1413e64d7	been put to rest.
+reference	0x1413e5b20	0	45	SCARE	15	0x1413e6d98	0x1413e6405	been found dead, contorted in fear!
+reference	0x1413e5b20	0	46	DARKNESS	16	0x1413e6d98	0x1413e5f84	died in the dark.
+reference	0x1413e5b20	0	47	COLLAPSE	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	48	DRAIN_BLOOD	17	0x1413e6d98	0x1413e64c8	been found dead, completely drained of blood!
+reference	0x1413e5b20	0	49	SLAUGHTER	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	50	VEHICLE	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	51	FALLING_OBJECT	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	52	LEAPT_FROM_HEIGHT	0	0x1413e6d98	0x1413e63f3	been found dead.
+reference	0x1413e5b20	0	53	DROWN_SELF	3	0x1413e6d98	0x1413e643b	been found dead, drowned.
+reference	0x1413e5b20	0	54	EXECUTION_GENERIC	0	0x1413e6d98	0x1413e63f3	been found dead.
+classic	0x1413e0a90	1	0	OLD_AGE	0	0x1413e1c2c	0x1413e0e1a	died of old age.
+classic	0x1413e0a90	1	1	HUNGER	1	0x1413e1c2c	0x1413e0f00	starved to death.
+classic	0x1413e0a90	1	2	THIRST	2	0x1413e1c2c	0x1413e0f0c	died of thirst.
+classic	0x1413e0a90	1	3	SHOT	3	0x1413e1c2c	0x1413e104a	been shot and killed.
+classic	0x1413e0a90	1	4	BLEED	4	0x1413e1c2c	0x1413e105c	bled to death.
+classic	0x1413e0a90	1	5	DROWN	5	0x1413e1c2c	0x1413e132a	drowned.
+classic	0x1413e0a90	1	6	SUFFOCATE	6	0x1413e1c2c	0x1413e1080	suffocated.
+classic	0x1413e0a90	1	7	STRUCK_DOWN	7	0x1413e1c2c	0x1413e1092	been struck down.
+classic	0x1413e0a90	1	8	SCUTTLE	8	0x1413e1c2c	0x1413e10aa	been scuttled.
+classic	0x1413e0a90	1	9	COLLISION	9	0x1413e1c2c	0x1413e12f4	died after colliding with an obstacle.
+classic	0x1413e0a90	1	10	MAGMA	10	0x1413e1c2c	0x1413e0f1e	burned up in magma.
+classic	0x1413e0a90	1	11	MAGMA_MIST	11	0x1413e1c2c	0x1413e1002	burned up in a magma mist.
+classic	0x1413e0a90	1	12	DRAGONFIRE	12	0x1413e1c2c	0x1413e0f30	burned up in dragon fire.
+classic	0x1413e0a90	1	13	FIRE	13	0x1413e1c2c	0x1413e0fde	burned to death.
+classic	0x1413e0a90	1	14	SCALD	14	0x1413e1c2c	0x1413e0ff0	been scalded to death.
+classic	0x1413e0a90	1	15	CAVEIN	15	0x1413e1c2c	0x1413e1026	been crushed under the collapsing ceiling.
+classic	0x1413e0a90	1	16	DRAWBRIDGE	16	0x1413e1c2c	0x1413e1014	been crushed by a drawbridge.
+classic	0x1413e0a90	1	17	FALLING_ROCKS	17	0x1413e1c2c	0x1413e1038	been killed by falling rocks.
+classic	0x1413e0a90	1	18	CHASM	18	0x1413e1c2c	0x1413e1351	fallen into a deep chasm.
+classic	0x1413e0a90	1	19	CAGE	19	0x1413e1c2c	0x1413e0e08	died in a cage.
+classic	0x1413e0a90	1	20	MURDER	20	0x1413e1c2c	0x1413e11fc	been murdered by 
+classic	0x1413e0a90	1	21	TRAP	21	0x1413e1c2c	0x1413e129a	been killed by a trap.
+classic	0x1413e0a90	1	22	VANISH	22	0x1413e1c2c	0x1413e12d0	vanished.
+classic	0x1413e0a90	1	23	QUIT	23	0x1413e1c2c	0x1413e145d	
+classic	0x1413e0a90	1	24	ABANDON	24	0x1413e1c2c	0x1413e145d	
+classic	0x1413e0a90	1	25	HEAT	25	0x1413e1c2c	0x1413e0f8a	died in the heat.
+classic	0x1413e0a90	1	26	COLD	26	0x1413e1c2c	0x1413e0fcc	frozen to death.
+classic	0x1413e0a90	1	27	SPIKE	27	0x1413e1c2c	0x1413e1306	been impaled on spikes.
+classic	0x1413e0a90	1	28	ENCASE_LAVA	28	0x1413e1c2c	0x1413e0f96	been encased in cooling lava.
+classic	0x1413e0a90	1	29	ENCASE_MAGMA	29	0x1413e1c2c	0x1413e0fa8	been encased in cooling magma.
+classic	0x1413e0a90	1	30	ENCASE_ICE	30	0x1413e1c2c	0x1413e0fba	been encased in ice.
+classic	0x1413e0a90	1	31	BEHEAD	31	0x1413e1c2c	0x1413e10e0	been beheaded.
+classic	0x1413e0a90	1	32	CRUCIFY	32	0x1413e1c2c	0x1413e10f2	been crucified.
+classic	0x1413e0a90	1	33	BURY_ALIVE	33	0x1413e1c2c	0x1413e1104	been buried alive.
+classic	0x1413e0a90	1	34	DROWN_BY	34	0x1413e1c2c	0x1413e1128	been executed by drowning.
+classic	0x1413e0a90	1	35	BURN_ALIVE	35	0x1413e1c2c	0x1413e113a	been burned alive.
+classic	0x1413e0a90	1	36	FEED_TO_BEASTS	36	0x1413e1c2c	0x1413e114c	been fed to beasts.
+classic	0x1413e0a90	1	37	HACK_TO_PIECES	37	0x1413e1c2c	0x1413e10bc	been hacked to pieces.
+classic	0x1413e0a90	1	38	LEAVE_OUT_IN_AIR	38	0x1413e1c2c	0x1413e1116	been executed by being left out in the air.
+classic	0x1413e0a90	1	39	BOIL	39	0x1413e1c2c	0x1413e0f42	boiled.
+classic	0x1413e0a90	1	40	MELT	40	0x1413e1c2c	0x1413e0f54	melted.
+classic	0x1413e0a90	1	41	CONDENSE	41	0x1413e1c2c	0x1413e0f66	condensed.
+classic	0x1413e0a90	1	42	SOLIDIFY	42	0x1413e1c2c	0x1413e0f78	solidified.
+classic	0x1413e0a90	1	43	INFECTION	43	0x1413e1c2c	0x1413e106e	succumbed to infection.
+classic	0x1413e0a90	1	44	MEMORIALIZE	44	0x1413e1c2c	0x1413e1447	been put to rest.
+classic	0x1413e0a90	1	45	SCARE	45	0x1413e1c2c	0x1413e0e2c	been scared to death
+classic	0x1413e0a90	1	46	DARKNESS	46	0x1413e1c2c	0x1413e0ef4	died in the dark.
+classic	0x1413e0a90	1	47	COLLAPSE	47	0x1413e1c2c	0x1413e12e2	collapsed.
+classic	0x1413e0a90	1	48	DRAIN_BLOOD	48	0x1413e1c2c	0x1413e115e	
+classic	0x1413e0a90	1	49	SLAUGHTER	49	0x1413e1c2c	0x1413e109e	been slaughtered.
+classic	0x1413e0a90	1	50	VEHICLE	50	0x1413e1c2c	0x1413e12ac	been killed by a vehicle.
+classic	0x1413e0a90	1	51	FALLING_OBJECT	51	0x1413e1c2c	0x1413e12be	been killed by a flying object.
+classic	0x1413e0a90	1	52	LEAPT_FROM_HEIGHT	52	0x1413e1c2c	0x1413e1318	leapt from a great height.
+classic	0x1413e0a90	1	53	DROWN_SELF	53	0x1413e1c2c	0x1413e132a	drowned.
+classic	0x1413e0a90	1	54	EXECUTION_GENERIC	54	0x1413e1c2c	0x1413e10ce	been executed.
+classic	0x1413e0a90	0	0	OLD_AGE	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	1	HUNGER	1	0x1413e1d08	0x1413e1387	been found, starved to death.
+classic	0x1413e0a90	0	2	THIRST	2	0x1413e1d08	0x1413e1399	been found dead, dehydrated.
+classic	0x1413e0a90	0	3	SHOT	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	4	BLEED	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	5	DROWN	3	0x1413e1d08	0x1413e13ab	been found dead, drowned.
+classic	0x1413e0a90	0	6	SUFFOCATE	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	7	STRUCK_DOWN	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	8	SCUTTLE	4	0x1413e1d08	0x1413e1429	been found scuttled.
+classic	0x1413e0a90	0	9	COLLISION	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	10	MAGMA	5	0x1413e1d08	0x1413e13bd	been found dead, badly burned.
+classic	0x1413e0a90	0	11	MAGMA_MIST	5	0x1413e1d08	0x1413e13bd	been found dead, badly burned.
+classic	0x1413e0a90	0	12	DRAGONFIRE	5	0x1413e1d08	0x1413e13bd	been found dead, badly burned.
+classic	0x1413e0a90	0	13	FIRE	5	0x1413e1d08	0x1413e13bd	been found dead, badly burned.
+classic	0x1413e0a90	0	14	SCALD	5	0x1413e1d08	0x1413e13bd	been found dead, badly burned.
+classic	0x1413e0a90	0	15	CAVEIN	6	0x1413e1d08	0x1413e141a	been found dead, badly crushed.
+classic	0x1413e0a90	0	16	DRAWBRIDGE	6	0x1413e1d08	0x1413e141a	been found dead, badly crushed.
+classic	0x1413e0a90	0	17	FALLING_ROCKS	6	0x1413e1d08	0x1413e141a	been found dead, badly crushed.
+classic	0x1413e0a90	0	18	CHASM	7	0x1413e1d08	0x1413e1351	fallen into a deep chasm.
+classic	0x1413e0a90	0	19	CAGE	8	0x1413e1d08	0x1413e0e08	died in a cage.
+classic	0x1413e0a90	0	20	MURDER	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	21	TRAP	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	22	VANISH	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	23	QUIT	18	0x1413e1d08	0x1413e145d	
+classic	0x1413e0a90	0	24	ABANDON	18	0x1413e1d08	0x1413e145d	
+classic	0x1413e0a90	0	25	HEAT	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	26	COLD	9	0x1413e1d08	0x1413e140b	been found dead, frozen.
+classic	0x1413e0a90	0	27	SPIKE	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	28	ENCASE_LAVA	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	29	ENCASE_MAGMA	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	30	ENCASE_ICE	9	0x1413e1d08	0x1413e140b	been found dead, frozen.
+classic	0x1413e0a90	0	31	BEHEAD	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	32	CRUCIFY	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	33	BURY_ALIVE	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	34	DROWN_BY	3	0x1413e1d08	0x1413e13ab	been found dead, drowned.
+classic	0x1413e0a90	0	35	BURN_ALIVE	5	0x1413e1d08	0x1413e13bd	been found dead, badly burned.
+classic	0x1413e0a90	0	36	FEED_TO_BEASTS	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	37	HACK_TO_PIECES	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	38	LEAVE_OUT_IN_AIR	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	39	BOIL	10	0x1413e1d08	0x1413e13cf	been found boiled.
+classic	0x1413e0a90	0	40	MELT	11	0x1413e1d08	0x1413e13de	been found melted.
+classic	0x1413e0a90	0	41	CONDENSE	12	0x1413e1d08	0x1413e13ed	been found condensed.
+classic	0x1413e0a90	0	42	SOLIDIFY	13	0x1413e1d08	0x1413e13fc	been found solidified.
+classic	0x1413e0a90	0	43	INFECTION	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	44	MEMORIALIZE	14	0x1413e1d08	0x1413e1447	been put to rest.
+classic	0x1413e0a90	0	45	SCARE	15	0x1413e1d08	0x1413e1375	been found dead, contorted in fear!
+classic	0x1413e0a90	0	46	DARKNESS	16	0x1413e1d08	0x1413e0ef4	died in the dark.
+classic	0x1413e0a90	0	47	COLLAPSE	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	48	DRAIN_BLOOD	17	0x1413e1d08	0x1413e1438	been found dead, completely drained of blood!
+classic	0x1413e0a90	0	49	SLAUGHTER	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	50	VEHICLE	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	51	FALLING_OBJECT	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	52	LEAPT_FROM_HEIGHT	0	0x1413e1d08	0x1413e1363	been found dead.
+classic	0x1413e0a90	0	53	DROWN_SELF	3	0x1413e1d08	0x1413e13ab	been found dead, drowned.
+classic	0x1413e0a90	0	54	EXECUTION_GENERIC	0	0x1413e1d08	0x1413e1363	been found dead.

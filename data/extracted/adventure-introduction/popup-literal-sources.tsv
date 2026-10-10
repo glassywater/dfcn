@@ -1,0 +1,5 @@
+# Native announcement popup confirmation labels; complete inline NativeString construction.
+reference	0x1400ea417	immediate:0x65726f4d	PE:instruction:0x1400ea417	More
+reference	0x1400ea440	immediate:0x79616b4f	PE:instruction:0x1400ea440	Okay
+classic	0x1400ea3a7	immediate:0x65726f4d	PE:instruction:0x1400ea3a7	More
+classic	0x1400ea3d0	immediate:0x79616b4f	PE:instruction:0x1400ea3d0	Okay

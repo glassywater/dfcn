@@ -1,0 +1,11 @@
+edition	image_identity	conversation_state	state_name	producer_branch_rva	helper_rva	helper_filter	possible_choice_types	native_flow
+steam	PE:6a70a6d9:02711000	2	CurrentProblems	0x48b81c	0x6af620	-1	12;13;103;118;217;18;21	helper; empty => type18; nonempty => state4; common retry rebuilds current state
+steam	PE:6a70a6d9:02711000	4	GeneralTroublesSummary	0x495cec	0x6af620	-1	12;13;103;118;217;74;21	helper; non-player with >=2 choices and state remains4 adds74; player or empty adds21
+steam	PE:6a70a6d9:02711000	21	TroublesSummary	0x4915a6	inline parallel vector loop	parallel vectors	75;21	copy every trouble_type+amount; empty or player adds21; non-player nonempty keeps only75
+steam	PE:6a70a6d9:02711000	22	SpecificTrouble	0x495cec	0x6af620	state+0x90	12;13;103;118;217;21	helper filter=state+0x90; player or empty adds21; type74 only if state==4
+steam	PE:6a70a6d9:02711000	6	Rumor:ENTITY_SITE_PRESENT	0x491596	0x497520	rumor.kind==5	26;198;21	player:10 allowed opinions + return; NPC: native value supplier or opinion + common return if empty
+classic	PE:6a70b91c:0270a000	2	CurrentProblems	0x4893dc	0x6ad040	-1	12;13;103;118;217;18;21	helper; empty => type18; nonempty => state4; common retry rebuilds current state
+classic	PE:6a70b91c:0270a000	4	GeneralTroublesSummary	0x4938ac	0x6ad040	-1	12;13;103;118;217;74;21	helper; non-player with >=2 choices and state remains4 adds74; player or empty adds21
+classic	PE:6a70b91c:0270a000	21	TroublesSummary	0x48f166	inline parallel vector loop	parallel vectors	75;21	copy every trouble_type+amount; empty or player adds21; non-player nonempty keeps only75
+classic	PE:6a70b91c:0270a000	22	SpecificTrouble	0x4938ac	0x6ad040	state+0x90	12;13;103;118;217;21	helper filter=state+0x90; player or empty adds21; type74 only if state==4
+classic	PE:6a70b91c:0270a000	6	Rumor:ENTITY_SITE_PRESENT	0x48f156	0x4950e0	rumor.kind==5	26;198;21	player:10 allowed opinions + return; NPC: native value supplier or opinion + common return if empty

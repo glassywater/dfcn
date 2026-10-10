@@ -1,0 +1,453 @@
+edition	image_identity	role	function_start	function_end	instruction	operand_kind	operand_address	text
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132e4af	cstring	0x1415ec550	you
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132e4b6	cstring	0x1415e8ca0	You
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132e9a0	cstring	0x1415ec9fc	 slave
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132e9da	cstring	0x1415eca28	slave
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132ea35	cstring	0x1415eca28	slave
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132ea3d	cstring	0x1415eca2c	e
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132eb1b	cstring	0x141782bd0	 prisoner
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132eb4f	immediate		prisoner
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132ebad	immediate		prisoner
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132ed76	cstring	0x1415e8e48	the 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132ed7d	cstring	0x1415ed9bc	The 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132edc2	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132ef95	cstring	0x1415e8e48	the 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132efa9	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132efbe	cstring	0x1416757e4	force
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132efe3	cstring	0x1415e8e48	the 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132eff7	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f00c	cstring	0x141661fa4	deity
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f254	cstring	0x1415ec9fc	 slave
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f28e	cstring	0x1415eca28	slave
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f2ee	cstring	0x1415eca28	slave
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f2f6	cstring	0x1415eca2c	e
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f3cb	cstring	0x141782bd0	 prisoner
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f3ff	immediate		prisoner
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f459	immediate		prisoner
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f513	cstring	0x1415e8e48	the 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f569	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f5d3	cstring	0x141782b3c	stray 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f5da	cstring	0x141782b48	fierce 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f61e	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f633	cstring	0x141782b58	agitated 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f67b	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f690	cstring	0x1416a5e5c	ghost
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f6bf	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f6d4	cstring	0x1415fdbb8	ghostly 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f706	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f754	cstring	0x141686348	average
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f783	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f7d7	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f81e	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f843	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f89c	cstring	0x1415ed620	a 
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f8b1	cstring	0x1416cf03c	corpse
+reference	PE:6a70a6d9:02711000	subject-pronoun	0x14132e430	0x14132f971	0x14132f8c0	cstring	0x14173e8e0	 corpse
+reference	PE:6a70a6d9:02711000	subject-actor	0x141330c30	0x1413312b8	0x141330e5d	cstring	0x1415e90d8	, 
+reference	PE:6a70a6d9:02711000	subject-actor	0x141330c30	0x1413312b8	0x141330f58	cstring	0x1415e9718	"
+reference	PE:6a70a6d9:02711000	subject-actor	0x141330c30	0x1413312b8	0x141330fad	cstring	0x1415e9718	"
+reference	PE:6a70a6d9:02711000	subject-actor	0x141330c30	0x1413312b8	0x141330fc2	cstring	0x1415e90d8	, 
+reference	PE:6a70a6d9:02711000	subject-actor	0x141330c30	0x1413312b8	0x141331001	cstring	0x1415e90d8	, 
+reference	PE:6a70a6d9:02711000	subject-actor	0x141330c30	0x1413312b8	0x14133105d	cstring	0x1415e90d8	, 
+reference	PE:6a70a6d9:02711000	subject-actor	0x141330c30	0x1413312b8	0x1413310b8	cstring	0x141615540	 (
+reference	PE:6a70a6d9:02711000	subject-actor	0x141330c30	0x1413312b8	0x1413310f4	cstring	0x141782c58	Trained
+reference	PE:6a70a6d9:02711000	subject-actor	0x141330c30	0x1413312b8	0x141331100	cstring	0x141782c78	-Trained-
+reference	PE:6a70a6d9:02711000	subject-actor	0x141330c30	0x1413312b8	0x14133110c	cstring	0x141782c68	+Trained+
+reference	PE:6a70a6d9:02711000	subject-actor	0x141330c30	0x1413312b8	0x141331118	cstring	0x141782c90	*Trained*
+reference	PE:6a70a6d9:02711000	subject-actor	0x141330c30	0x1413312b8	0x14133114c	cstring	0x141782c58	Trained
+reference	PE:6a70a6d9:02711000	subject-actor	0x141330c30	0x1413312b8	0x14133119c	cstring	0x141782c58	Trained
+reference	PE:6a70a6d9:02711000	subject-actor	0x141330c30	0x1413312b8	0x1413311c8	cstring	0x141782c84	Tame
+reference	PE:6a70a6d9:02711000	subject-actor	0x141330c30	0x1413312b8	0x1413311d1	cstring	0x141782cb0	Semi-Wild
+reference	PE:6a70a6d9:02711000	subject-actor	0x141330c30	0x1413312b8	0x1413311e9	cstring	0x141615580	)
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331674	cstring	0x141782bf8	the force
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331873	cstring	0x141782ca0	the deity
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331b08	cstring	0x1415e8e48	the 
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331e1a	cstring	0x141608940	Miner
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331e23	cstring	0x141608944	r
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331e3e	cstring	0x141782be8	Woodworker
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331e4b	cstring	0x141782bf0	er
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331e67	cstring	0x14162c9e0	Carpenter
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331e74	cstring	0x14162c9e8	r
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331e8f	cstring	0x14162c9c8	Bowyer
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331e98	cstring	0x14162c9cc	er
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331eb4	cstring	0x141608960	Woodcutter
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331ec1	cstring	0x141608968	er
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331edd	cstring	0x14162c958	Stoneworker
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331eea	cstring	0x14162c960	ker
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331ef5	cstring	0x14162c962	r
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331f10	immediate		Engraver
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331f27	cstring	0x1416a5848	Stonecutter
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331f3c	cstring	0x1416a5838	Stone Carver
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331f51	cstring	0x1416a5864	Mason
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331f66	cstring	0x141782c10	Ranger
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331f7b	cstring	0x1416a5880	Animal Caretaker
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331f90	cstring	0x1416a5870	Animal Trainer
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331fa5	cstring	0x141600378	Hunter
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331fba	cstring	0x1416a56f8	Trapper
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331fcf	cstring	0x1416a56d0	Animal Dissector
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331fe4	cstring	0x14162c938	Metalsmith
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141331ff9	cstring	0x1416a5628	Furnace Operator
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133200e	cstring	0x1416a5690	Weaponsmith
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332023	cstring	0x141782c08	Armorer
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332040	cstring	0x1416a56b0	Blacksmith
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133204d	cstring	0x1416a56b8	th
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332069	cstring	0x141782c28	Metalcrafter
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332076	cstring	0x141782c30	fter
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332088	cstring	0x14162c930	Jeweler
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133209d	cstring	0x1416a54e0	Gem Cutter
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413320b2	cstring	0x1416a54f0	Gem Setter
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413320c7	cstring	0x141651c38	Craftsman
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413320dc	cstring	0x1416a5500	Woodcrafter
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413320f1	cstring	0x1416a5510	Papermaker
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332106	cstring	0x1416a5520	Bookbinder
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133211b	cstring	0x1416a552c	Potter
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332130	cstring	0x1416a59c4	Glazer
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332145	cstring	0x1416a5538	Wax Worker
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133215a	cstring	0x141782c18	Stonecrafter
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133216f	cstring	0x1416a59a0	Leatherworker
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332184	cstring	0x1416a59d0	Bone Carver
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332199	cstring	0x1416a59dc	Weaver
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413321ae	cstring	0x141651cd0	Clothier
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413321c3	cstring	0x1416a5568	Glassmaker
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413321d8	cstring	0x1416a5640	Strand Extractor
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413321ed	cstring	0x141782c48	Fishery Worker
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332202	cstring	0x1416a5618	Fisherman
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332217	cstring	0x1416a56c0	Fish Dissector
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133222c	cstring	0x1416a56e8	Fish Cleaner
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332241	cstring	0x14162cb88	Farmer
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332256	cstring	0x1416a58c0	Cheesemaker
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133226b	cstring	0x1416a58cc	Milker
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332280	cstring	0x1416a58d4	Gelder
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332295	cstring	0x1416a58e0	Shearer
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413322aa	cstring	0x1416a58e8	Spinner
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413322bf	cstring	0x14163cf84	Cook
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413322d4	cstring	0x1416a59f8	Thresher
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413322e9	cstring	0x1416a59ec	Miller
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413322fe	cstring	0x14161be28	Butcher
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332313	cstring	0x14162cb80	Tanner
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332328	cstring	0x14162c910	Dyer
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133233d	cstring	0x1416a59b0	Presser
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332352	cstring	0x1416a59b8	Beekeeper
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332367	cstring	0x1416a5700	Planter
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133237c	cstring	0x1416a5708	Herbalist
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332391	cstring	0x1416a59e4	Brewer
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413323a6	cstring	0x141782c38	Soap Maker
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413323bb	cstring	0x1416a5660	Potash Maker
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413323d0	cstring	0x1416a5670	Lye Maker
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413323e5	cstring	0x1416a5680	Wood Burner
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413323fa	cstring	0x141782d20	Engineer
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133240f	cstring	0x14162c948	Mechanic
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332424	cstring	0x1416a5970	Siege Engineer
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332439	cstring	0x1416a5980	Siege Operator
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133244e	cstring	0x1416a5990	Pump Operator
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332463	cstring	0x141782d18	Clerk
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332478	cstring	0x141782d38	Administrator
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133248d	cstring	0x141782d2c	Trader
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413324a2	cstring	0x1416a55a4	Poet
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413324b7	cstring	0x141782d50	Bard
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413324cc	cstring	0x1416a5ad8	Dancer
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413324e1	cstring	0x1415ffd30	Performer
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413324f6	cstring	0x1415ffd1c	Scribe
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133250b	cstring	0x14162c890	Tavern Keeper
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332520	cstring	0x141782d48	Sage
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332535	cstring	0x1415ffd28	Scholar
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133254a	cstring	0x141782d68	Philosopher
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133255f	cstring	0x1416a5b78	Mathematician
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332574	cstring	0x141782d58	Historian
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332589	cstring	0x1416a5b88	Astronomer
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133259e	cstring	0x141782cd0	Naturalist
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413325b3	cstring	0x1416a5b98	Chemist
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413325c8	cstring	0x1416a5ba0	Geographer
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413325dd	cstring	0x1415ffcf8	Doctor
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413325f2	cstring	0x1415ffce8	Diagnostician
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332607	cstring	0x14162c8a8	Bone Doctor
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133261c	cstring	0x1416a5918	Suturer
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332631	cstring	0x1415fff10	Surgeon
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332646	cstring	0x141782cc0	Merchant
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133265b	cstring	0x141782ce4	Drunk
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332670	cstring	0x14162c880	Monster Slayer
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332685	cstring	0x141782cdc	Scout
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133269a	cstring	0x141782cf8	Beast Hunter
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413326af	cstring	0x14169e2f0	Snatcher
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413326c4	cstring	0x1415ffd10	Mercenary
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413326d9	cstring	0x1416a5a90	Hammerman
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413326ee	cstring	0x141781e48	Hammer Lord
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332703	cstring	0x1416a5aa0	Spearman
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332718	cstring	0x141781d60	Spearmaster
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133272d	cstring	0x1416a5ab0	Crossbowman
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332742	cstring	0x141781db8	Elite Crossbowman
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332757	cstring	0x1416a5a40	Wrestler
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133276c	cstring	0x141781dd0	Elite Wrestler
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332781	cstring	0x1416a5a70	Axeman
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332796	cstring	0x141781ed8	Axe Lord
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413327ab	cstring	0x1416a5a78	Swordsman
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413327c0	cstring	0x141781ee8	Swordmaster
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413327d5	cstring	0x1416a5a88	Maceman
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413327ea	cstring	0x141781e60	Mace Lord
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413327ff	cstring	0x1416a5ac0	Pikeman
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332814	cstring	0x141781e70	Pikemaster
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332829	cstring	0x1416a5948	Bowman
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133283e	cstring	0x141781e98	Elite Bowman
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332853	cstring	0x1416a5a08	Blowgunner
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332868	cstring	0x141781f88	Master Blowgunner
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133287d	cstring	0x1416a58b4	Lasher
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332892	cstring	0x141781fb0	Master Lasher
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413328a7	cstring	0x141782cf0	Recruit
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413328bc	cstring	0x1415f7148	Hunting
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413328d1	cstring	0x1416036fc	War
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413328e6	cstring	0x141781fc8	Master Thief
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x1413328fb	cstring	0x14160032c	Thief
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332910	cstring	0x1415ec960	Criminal
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332925	cstring	0x141782d10	Peddler
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133293a	cstring	0x141782d08	Prophet
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133294f	cstring	0x141782df8	Pilgrim
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332964	cstring	0x141782dec	Monk
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332979	cstring	0x141782e08	Messenger
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332a17	cstring	0x1415ffe64	Child
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332a80	cstring	0x141782e00	Baby
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332aa8	cstring	0x141782bc0	Peasant
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332ab2	cstring	0x141782bc4	ant
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332abd	cstring	0x141782bc6	t
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332c76	cstring	0x141782b50	 Slave
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332cb0	cstring	0x141600c30	Slave
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332d06	cstring	0x141600c30	Slave
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332d0e	cstring	0x141600c34	e
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332de9	cstring	0x141782b70	 Prisoner
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332e1d	immediate		Prisoner
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332e6c	immediate		Prisoner
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332ef4	cstring	0x1415e8e48	the 
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332f25	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332f8d	cstring	0x1416bec90	Ghost
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332f9c	cstring	0x141629b50	Ghostly 
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x141332fe9	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	fear-killer-actor	0x141331500	0x141333724	0x14133300c	cstring	0x141782e38	One
+reference	PE:6a70a6d9:02711000	killer-language-name	0x140a94030	0x140a946d1	0x140a9413d	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	killer-language-name	0x140a94030	0x140a946d1	0x140a942b3	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	killer-language-name	0x140a94030	0x140a946d1	0x140a9450f	cstring	0x1415e873c	 
+reference	PE:6a70a6d9:02711000	killer-language-name	0x140a94030	0x140a946d1	0x140a9463b	cstring	0x1415e873c	 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132941f	cstring	0x1415e74b8	you
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x141329426	cstring	0x1415e3c40	You
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x141329910	cstring	0x1415e7988	 slave
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132994a	cstring	0x1415e79ac	slave
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x1413299a5	cstring	0x1415e79ac	slave
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x1413299ad	cstring	0x1415e79b0	e
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x141329a8b	cstring	0x14177c950	 prisoner
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x141329abf	immediate		prisoner
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x141329b1d	immediate		prisoner
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x141329ce6	cstring	0x1415e3e34	the 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x141329ced	cstring	0x1415e89c4	The 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x141329d32	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x141329f05	cstring	0x1415e3e34	the 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x141329f19	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x141329f2e	cstring	0x14167095c	force
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x141329f53	cstring	0x1415e3e34	the 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x141329f67	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x141329f7c	cstring	0x14165d508	deity
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a1c4	cstring	0x1415e7988	 slave
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a1fe	cstring	0x1415e79ac	slave
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a25e	cstring	0x1415e79ac	slave
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a266	cstring	0x1415e79b0	e
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a33b	cstring	0x14177c950	 prisoner
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a36f	immediate		prisoner
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a3c9	immediate		prisoner
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a483	cstring	0x1415e3e34	the 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a4d9	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a543	cstring	0x14177c96c	stray 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a54a	cstring	0x14177c948	fierce 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a58e	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a5a3	cstring	0x14177c960	agitated 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a5eb	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a600	cstring	0x1416a0d38	ghost
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a62f	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a644	cstring	0x1415f8b70	ghostly 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a676	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a6c4	cstring	0x1416810f8	average
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a6f3	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a747	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a78e	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a7b3	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a80c	cstring	0x1415e8618	a 
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a821	cstring	0x1416cac84	corpse
+classic	PE:6a70b91c:0270a000	subject-pronoun	0x1413293a0	0x14132a8e1	0x14132a830	cstring	0x141739ff8	 corpse
+classic	PE:6a70b91c:0270a000	subject-actor	0x14132bba0	0x14132c228	0x14132bdcd	cstring	0x1415e40c4	, 
+classic	PE:6a70b91c:0270a000	subject-actor	0x14132bba0	0x14132c228	0x14132bec8	cstring	0x1415e46fc	"
+classic	PE:6a70b91c:0270a000	subject-actor	0x14132bba0	0x14132c228	0x14132bf1d	cstring	0x1415e46fc	"
+classic	PE:6a70b91c:0270a000	subject-actor	0x14132bba0	0x14132c228	0x14132bf32	cstring	0x1415e40c4	, 
+classic	PE:6a70b91c:0270a000	subject-actor	0x14132bba0	0x14132c228	0x14132bf71	cstring	0x1415e40c4	, 
+classic	PE:6a70b91c:0270a000	subject-actor	0x14132bba0	0x14132c228	0x14132bfcd	cstring	0x1415e40c4	, 
+classic	PE:6a70b91c:0270a000	subject-actor	0x14132bba0	0x14132c228	0x14132c028	cstring	0x141610298	 (
+classic	PE:6a70b91c:0270a000	subject-actor	0x14132bba0	0x14132c228	0x14132c064	cstring	0x14177ca90	Trained
+classic	PE:6a70b91c:0270a000	subject-actor	0x14132bba0	0x14132c228	0x14132c070	cstring	0x14177ca80	-Trained-
+classic	PE:6a70b91c:0270a000	subject-actor	0x14132bba0	0x14132c228	0x14132c07c	cstring	0x14177c9e0	+Trained+
+classic	PE:6a70b91c:0270a000	subject-actor	0x14132bba0	0x14132c228	0x14132c088	cstring	0x14177c9d0	*Trained*
+classic	PE:6a70b91c:0270a000	subject-actor	0x14132bba0	0x14132c228	0x14132c0bc	cstring	0x14177ca90	Trained
+classic	PE:6a70b91c:0270a000	subject-actor	0x14132bba0	0x14132c228	0x14132c10c	cstring	0x14177ca90	Trained
+classic	PE:6a70b91c:0270a000	subject-actor	0x14132bba0	0x14132c228	0x14132c138	cstring	0x14177c9fc	Tame
+classic	PE:6a70b91c:0270a000	subject-actor	0x14132bba0	0x14132c228	0x14132c141	cstring	0x14177c9f0	Semi-Wild
+classic	PE:6a70b91c:0270a000	subject-actor	0x14132bba0	0x14132c228	0x14132c159	cstring	0x1416102d8	)
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132c5e4	cstring	0x14177ca08	the force
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132c7e3	cstring	0x14177ca18	the deity
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132ca78	cstring	0x1415e3e34	the 
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cd8a	cstring	0x1416038f0	Miner
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cd93	cstring	0x1416038f4	r
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cdae	cstring	0x14177ca30	Woodworker
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cdbb	cstring	0x14177ca38	er
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cdd7	cstring	0x141628000	Carpenter
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cde4	cstring	0x141628008	r
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cdff	cstring	0x14162800c	Bowyer
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132ce08	cstring	0x141628010	er
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132ce24	cstring	0x141603910	Woodcutter
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132ce31	cstring	0x141603918	er
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132ce4d	cstring	0x141627f98	Stoneworker
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132ce5a	cstring	0x141627fa0	ker
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132ce65	cstring	0x141627fa2	r
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132ce80	immediate		Engraver
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132ce97	cstring	0x1416a0200	Stonecutter
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132ceac	cstring	0x1416a01f0	Stone Carver
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cec1	cstring	0x1416a0754	Mason
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132ced6	cstring	0x14177ca24	Ranger
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132ceeb	cstring	0x1416a0770	Animal Caretaker
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cf00	cstring	0x1416a0760	Animal Trainer
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cf15	cstring	0x1415fb1e8	Hunter
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cf2a	cstring	0x1416a07c0	Trapper
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cf3f	cstring	0x1416a0798	Animal Dissector
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cf54	cstring	0x141628050	Metalsmith
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cf69	cstring	0x1416a06f0	Furnace Operator
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cf7e	cstring	0x1416a0568	Weaponsmith
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cf93	cstring	0x14177cb08	Armorer
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cfb0	cstring	0x1416a0588	Blacksmith
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cfbd	cstring	0x1416a0590	th
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cfd9	cstring	0x14177caf8	Metalcrafter
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cfe6	cstring	0x14177cb00	fter
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132cff8	cstring	0x141628018	Jeweler
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d00d	cstring	0x1416a0598	Gem Cutter
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d022	cstring	0x1416a05a8	Gem Setter
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d037	cstring	0x14164cbe8	Craftsman
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d04c	cstring	0x1416a05b8	Woodcrafter
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d061	cstring	0x1416a05c8	Papermaker
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d076	cstring	0x1416a05d8	Bookbinder
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d08b	cstring	0x1416a05e4	Potter
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d0a0	cstring	0x1416a0a6c	Glazer
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d0b5	cstring	0x1416a05f0	Wax Worker
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d0ca	cstring	0x14177cb20	Stonecrafter
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d0df	cstring	0x1416a0a48	Leatherworker
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d0f4	cstring	0x1416a0a78	Bone Carver
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d109	cstring	0x1416a0a84	Weaver
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d11e	cstring	0x14164cc80	Clothier
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d133	cstring	0x1416a0620	Glassmaker
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d148	cstring	0x1416a0708	Strand Extractor
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d15d	cstring	0x14177cb10	Fishery Worker
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d172	cstring	0x1416a06e0	Fisherman
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d187	cstring	0x1416a0788	Fish Dissector
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d19c	cstring	0x1416a07b0	Fish Cleaner
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d1b1	cstring	0x141627ef0	Farmer
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d1c6	cstring	0x1416a0958	Cheesemaker
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d1db	cstring	0x1416a0964	Milker
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d1f0	cstring	0x1416a096c	Gelder
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d205	cstring	0x1416a0978	Shearer
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d21a	cstring	0x1416a0980	Spinner
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d22f	cstring	0x141638128	Cook
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d244	cstring	0x1416a0910	Thresher
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d259	cstring	0x1416a0904	Miller
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d26e	cstring	0x141616fc8	Butcher
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d283	cstring	0x141627f64	Tanner
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d298	cstring	0x141627f5c	Dyer
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d2ad	cstring	0x1416a0a58	Presser
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d2c2	cstring	0x1416a0a60	Beekeeper
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d2d7	cstring	0x1416a07c8	Planter
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d2ec	cstring	0x1416a07d0	Herbalist
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d301	cstring	0x1416a0a8c	Brewer
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d316	cstring	0x14177cb40	Soap Maker
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d32b	cstring	0x1416a0728	Potash Maker
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d340	cstring	0x1416a0738	Lye Maker
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d355	cstring	0x1416a0748	Wood Burner
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d36a	cstring	0x14177cb30	Engineer
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d37f	cstring	0x141628028	Mechanic
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d394	cstring	0x1416a0a18	Siege Engineer
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d3a9	cstring	0x1416a0a28	Siege Operator
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d3be	cstring	0x1416a0a38	Pump Operator
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d3d3	cstring	0x14177cb60	Clerk
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d3e8	cstring	0x14177cb50	Administrator
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d3fd	cstring	0x14177caa0	Trader
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d412	cstring	0x1416a0484	Poet
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d427	cstring	0x14177ca98	Bard
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d43c	cstring	0x1416a04a8	Dancer
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d451	cstring	0x1415fae10	Performer
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d466	cstring	0x1415fadfc	Scribe
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d47b	cstring	0x141627a38	Tavern Keeper
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d490	cstring	0x14177cab4	Sage
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d4a5	cstring	0x1415fae08	Scholar
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d4ba	cstring	0x14177caa8	Philosopher
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d4cf	cstring	0x1416a0548	Mathematician
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d4e4	cstring	0x14177cad0	Historian
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d4f9	cstring	0x1416a0558	Astronomer
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d50e	cstring	0x14177cac0	Naturalist
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d523	cstring	0x1416a0a98	Chemist
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d538	cstring	0x1416a0aa0	Geographer
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d54d	cstring	0x1415fadd8	Doctor
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d562	cstring	0x1415fadc8	Diagnostician
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d577	cstring	0x141627938	Bone Doctor
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d58c	cstring	0x1416a09b0	Suturer
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d5a1	cstring	0x1415fadc0	Surgeon
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d5b6	cstring	0x14177cae8	Merchant
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d5cb	cstring	0x14177cadc	Drunk
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d5e0	cstring	0x141627948	Monster Slayer
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d5f5	cstring	0x14177cc10	Scout
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d60a	cstring	0x14177cc00	Beast Hunter
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d61f	cstring	0x141699490	Snatcher
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d634	cstring	0x1415fadf0	Mercenary
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d649	cstring	0x1416a0b30	Hammerman
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d65e	cstring	0x14177cd20	Hammer Lord
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d673	cstring	0x1416a09c8	Spearman
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d688	cstring	0x14177cd70	Spearmaster
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d69d	cstring	0x1416a09d8	Crossbowman
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d6b2	cstring	0x14177ce50	Elite Crossbowman
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d6c7	cstring	0x1416a0ae0	Wrestler
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d6dc	cstring	0x14177cea8	Elite Wrestler
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d6f1	cstring	0x1416a0b10	Axeman
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d706	cstring	0x14177ceb8	Axe Lord
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d71b	cstring	0x1416a0b18	Swordsman
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d730	cstring	0x14177ce18	Swordmaster
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d745	cstring	0x1416a0b28	Maceman
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d75a	cstring	0x14177ce28	Mace Lord
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d76f	cstring	0x1416a09e8	Pikeman
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d784	cstring	0x14177cf48	Pikemaster
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d799	cstring	0x1416a09f0	Bowman
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d7ae	cstring	0x14177cf80	Elite Bowman
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d7c3	cstring	0x1416a0920	Blowgunner
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d7d8	cstring	0x14177cf98	Master Blowgunner
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d7ed	cstring	0x1416a094c	Lasher
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d802	cstring	0x14177ced8	Master Lasher
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d817	cstring	0x14177cc20	Recruit
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d82c	cstring	0x1415f2160	Hunting
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d841	cstring	0x1415fe6cc	War
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d856	cstring	0x14177cef8	Master Thief
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d86b	cstring	0x1415fb19c	Thief
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d880	cstring	0x1415e7948	Criminal
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d895	cstring	0x14177cc18	Peddler
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d8aa	cstring	0x14177cc30	Prophet
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d8bf	cstring	0x14177cc28	Pilgrim
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d8d4	cstring	0x14177cc44	Monk
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d8e9	cstring	0x14177cc38	Messenger
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d987	cstring	0x1415faf04	Child
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132d9f0	cstring	0x14177cb6c	Baby
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132da18	cstring	0x14177c940	Peasant
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132da22	cstring	0x14177c944	ant
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132da2d	cstring	0x14177c946	t
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132dbe6	cstring	0x14177ca4c	 Slave
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132dc20	cstring	0x1415fbcc8	Slave
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132dc76	cstring	0x1415fbcc8	Slave
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132dc7e	cstring	0x1415fbccc	e
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132dd59	cstring	0x14177ca40	 Prisoner
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132dd8d	immediate		Prisoner
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132dddc	immediate		Prisoner
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132de64	cstring	0x1415e3e34	the 
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132de95	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132defd	cstring	0x1416b9d2c	Ghost
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132df0c	cstring	0x141625190	Ghostly 
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132df59	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	fear-killer-actor	0x14132c470	0x14132e694	0x14132df7c	cstring	0x14177cb68	One
+classic	PE:6a70b91c:0270a000	killer-language-name	0x140a910b0	0x140a91751	0x140a911bd	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	killer-language-name	0x140a910b0	0x140a91751	0x140a91333	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	killer-language-name	0x140a910b0	0x140a91751	0x140a9158f	cstring	0x1415e3720	 
+classic	PE:6a70b91c:0270a000	killer-language-name	0x140a910b0	0x140a91751	0x140a916bb	cstring	0x1415e3720	 

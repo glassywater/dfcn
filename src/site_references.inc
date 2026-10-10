@@ -97,7 +97,8 @@ static SiteReferenceCache &site_reference_owned_cache() {
 
 template<typename Aliases>
 static std::optional<SiteReferenceIdentity> resolve_site_reference_identity(
-        std::string_view source, uint64_t epoch, Aliases &&aliases) {
+        std::string_view source, uint64_t epoch, Aliases &&aliases,
+        bool english_field = false) {
     dfhack_require_world_read();
     source = trim_view(source);
     if (source.empty() || source.size() > 4096 || source.ends_with("..."))
@@ -200,6 +201,9 @@ static std::optional<SiteReferenceIdentity> resolve_site_reference_identity(
     }
     const auto matches = [&](const SiteReferenceIdentity &identity) {
         if (!identity.name.has_name) return false;
+        if (english_field)
+            return !pair && !identity.english.empty() &&
+                key == site_reference_key(identity.english);
         if (pair) return key == site_reference_key(identity.native) &&
             meaning == site_reference_key(identity.english);
         if (key == site_reference_key(identity.native) ||
@@ -234,19 +238,23 @@ static std::optional<SiteReferenceIdentity> resolve_site_reference_identity(
     return ambiguous ? std::nullopt : selected;
 }
 
-std::optional<std::string> Overlay::translate_site_reference(std::string_view source) const {
+std::optional<NativeHistoryName> Overlay::resolve_site_reference_name(std::string_view source) const {
     const auto identity = resolve_site_reference_identity(source, draw_epoch_,
         [&](const NativeHistoryName &name) { return site_name_search_aliases(name); });
-    return identity ? translate_site_display(identity->name, source) : std::nullopt;
+    return identity ? std::optional(identity->name) : std::nullopt;
 }
 
-std::optional<std::string> Overlay::translate_book_site_subject(std::string_view source) const {
-    // The native general_ref_sitest title-subject formatter uses EnglishName.
-    // A complete title subject must match a unique real site's English field;
-    // native spellings, partial words and unrelated book topics cannot enter.
+std::optional<std::string> Overlay::translate_site_reference(
+        std::string_view source, bool english_field) const {
     const auto identity = resolve_site_reference_identity(source, draw_epoch_,
-        [&](const NativeHistoryName &name) { return site_name_search_aliases(name); });
-    if (!identity || identity->english.empty() ||
+        [&](const NativeHistoryName &name) { return site_name_search_aliases(name); },
+        english_field);
+    if (!identity) return std::nullopt;
+    if (!english_field) return translate_site_display(identity->name, source);
+    // An EnglishName producer establishes field provenance even when its
+    // spelling equals the site's native name. Require the complete English
+    // field of a unique real site before applying WORD/POS and its suffix.
+    if (identity->english.empty() ||
             site_reference_key(source) != site_reference_key(identity->english))
         return std::nullopt;
     auto translated = translate_english_site_name(identity->english, &identity->name);
@@ -255,12 +263,17 @@ std::optional<std::string> Overlay::translate_book_site_subject(std::string_view
     return translated;
 }
 
+std::optional<std::string> Overlay::translate_book_site_subject(std::string_view source) const {
+    // The native general_ref_sitest title-subject formatter uses EnglishName.
+    return translate_site_reference(source, true);
+}
+
 std::optional<std::string> Overlay::translate_legends_place(
         std::string_view source, bool english_field) const {
     source = trim_view(source);
     if (source.empty() || source.size() > 4096 || source.ends_with("...") ||
             source.find_first_of("\r\n") != std::string_view::npos) return std::nullopt;
-    if (auto site = translate_site_reference(source)) return site;
+    if (auto site = translate_site_reference(source, english_field)) return site;
     // Paired native/English text proves each part's language even without
     // a unique loaded site. Translate both parts without borrowing a site
     // subtype from an ambiguous or unrelated native identity.

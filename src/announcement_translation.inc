@@ -91,6 +91,16 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         auto translated = translate_help_paragraph(block, colors, translated_colors,
             true, -1, true);
         if (translated) return translated;
+        // 7eb225/7eb273 submits the complete adventure introduction and its
+        // optional vault paragraph to the same announcement queue as ordinary
+        // reports. e9f40 draws that live queue through markup words; it never
+        // enters the help document renderer. Resolve the reviewed help
+        // productions here as a complete record, including every siege,
+        // bandit, companion, rescue and ending branch. Keep help's native
+        // historical-figure fields and palette handling for both popup/log
+        // consumers; this succeeds only when the entire source is covered.
+        translated = translate_help_paragraph(block, colors, translated_colors);
+        if (translated) return translated;
         // ELF 53.16 1882b38/1882bc0 builds spoken memories with the SAME
         // event and emotion formatters (101b7f0, 10283d0) as the overview.
         // Share complete authored sentences, including intensity/negation;
@@ -126,7 +136,10 @@ std::optional<std::string> Overlay::translate_complete_announcement(
     bool work_limited = false;
     std::optional<std::string> target;
     try { target = translate_block(source, source_colors, target_colors); }
-    catch (const dfcn::TranslationWorkLimit &) { work_limited = true; }
+    catch (const dfcn::TranslationWorkLimit &) {
+        if (!budget.owns_budget()) throw;
+        work_limited = true;
+    }
     if (!target && !work_limited) {
         // One submitted record may combine an attack, a status change, and a
         // spoken reaction. Candidate sentence boundaries do not imply a valid
@@ -165,7 +178,11 @@ std::optional<std::string> Overlay::translate_complete_announcement(
                 std::optional<std::string> translated;
                 try { translated = translate_block(source.substr(starts[part], end - starts[part]),
                     block_colors, translated_colors); }
-                catch (const dfcn::TranslationWorkLimit &) { work_limited = true; break; }
+                catch (const dfcn::TranslationWorkLimit &) {
+                    if (!budget.owns_budget()) throw;
+                    work_limited = true;
+                    break;
+                }
                 if (!translated) continue;
                 CompleteSuffix suffix{*translated + resolved[next]->text, std::move(translated_colors)};
                 suffix.colors.insert(suffix.colors.end(), resolved[next]->colors.begin(), resolved[next]->colors.end());
@@ -192,6 +209,7 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         // Try the complete display productions before partial sentence work.
         // Missing fields stay in the exact native constructor's capture; the
         // general strict combat/dialogue APIs above keep their old contract.
+        try {
         auto best = translate_help_paragraph_result(source, source_colors, target_colors, true);
         work_limited = best.status == dfcn::TranslationStatus::WorkLimited;
         for (const std::string_view scope : {"fortress-announcement", "sentence"}) {
@@ -210,6 +228,12 @@ std::optional<std::string> Overlay::translate_complete_announcement(
                 [](const auto &fragment) { return fragment.status == dfcn::TranslationStatus::Translated; })) {
             document_result = std::move(best);
             target = document_result.target;
+        }
+        } catch (const dfcn::TranslationWorkLimit &) {
+            if (!budget.owns_budget()) throw;
+            work_limited = true;
+            target.reset();
+            target_colors.clear();
         }
     }
     if (!target && !work_limited) {
@@ -238,7 +262,11 @@ std::optional<std::string> Overlay::translate_complete_announcement(
             if (next < source.size()) {
                 try {
                     if (is_character_thought_constructor_start(source.substr(next))) starts.push_back(next);
-                } catch (const dfcn::TranslationWorkLimit &) { work_limited = true; break; }
+                } catch (const dfcn::TranslationWorkLimit &) {
+                    if (!budget.owns_budget()) throw;
+                    work_limited = true;
+                    break;
+                }
             }
         }
         starts.push_back(source.size());
@@ -258,7 +286,10 @@ std::optional<std::string> Overlay::translate_complete_announcement(
                         if (const auto complete = translate_block(block, block_colors, colors))
                             child = dfcn::TranslationResult::translated(block, *complete, "announcement-sentence");
                         else child = translate_help_paragraph_result(block, block_colors, colors, true);
-                    } catch (const dfcn::TranslationWorkLimit &) { work_limited = true; }
+                    } catch (const dfcn::TranslationWorkLimit &) {
+                        if (!budget.owns_budget()) throw;
+                        work_limited = true;
+                    }
                 }
                 if (!child.usable()) {
                     child = preserve_native_translation(block, "announcement-sentence", false,
@@ -279,6 +310,11 @@ std::optional<std::string> Overlay::translate_complete_announcement(
                     [](const auto &fragment) { return fragment.status == dfcn::TranslationStatus::Translated &&
                         fragment.kind != "record-separator"; })) target = document_result.target;
         }
+    }
+    if (budget.exhausted()) {
+        if (!budget.owns_budget()) dfcn::translation_work_step();
+        work_limited = true;
+        target.reset();
     }
     if (target && !document_result.usable())
         document_result = dfcn::TranslationResult::translated(source, *target, "announcement-record");

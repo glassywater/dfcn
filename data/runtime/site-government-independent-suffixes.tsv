@@ -2,7 +2,8 @@
 # entity_type	race_raw_id	culture_raw_id	governance_kind	site_kind	suffix
 # *为通配；种族与文化均为真实RAW ID，site_kind使用native_history_site_type的原生英语key。
 # 每行suffix是完整定稿后缀；不输出种族或组织元数据，不设SITE行，不使用{site}，不再追加“领”。
-# 仅供已确证治理身份的实体名称使用；自治类要求当前无父，洞穴等中性称谓可用于已记录的旧治理地点或纯音译上级。关系不明仍用“治所”。
+# 仅供已确证治理身份的实体名称使用；自治类要求当前无父，洞穴等中性称谓可用于已记录的旧治理地点或纯音译上级。
+# civilian_residence使用真实实体自身RESIDENCE的稳定名称形态，可用于当前下属或已失势的普通地方政府；地点形态未知仍用“治所”。
 # 普通地方政府的“自治”采用自行管理本地事务的文学义；狗头人据点按用户定稿使用洞穴、营地、山寨，不声明现实宪制、酋长制或封爵制度。
 # 地点本身不能证明宗教或军政身份；religion、military、bandit等治理分类须由真实当前元数据先行确认。
 # 普通地方治理：按实际地点选择闭合称谓；未知或其他地点使用自治领。
@@ -25,6 +26,23 @@
 1	DWARF	MOUNTAIN	civilian	castle	自治堡
 1	DWARF	MOUNTAIN	civilian	fort	自治堡
 1	ELF	FOREST	civilian	forest retreat	林地领
+# 普通地方政府的中性名称形态：真实自身居址已确认，缺少可用上级中心词或现时自治身份时保留名称类别，不宣告当前控制权。
+1	*	*	civilian_residence	*	领
+1	*	*	civilian_residence	town	城领
+1	*	*	civilian_residence	hamlet	乡领
+1	*	*	civilian_residence	fortress	堡领
+1	*	*	civilian_residence	castle	堡领
+1	*	*	civilian_residence	fort	堡领
+1	*	*	civilian_residence	mountain halls	山厅领
+1	*	*	civilian_residence	hillocks	丘堡领
+1	*	*	civilian_residence	forest retreat	林地领
+1	*	*	civilian_residence	pits	寨领
+1	*	*	civilian_residence	cave	穴领
+1	*	*	civilian_residence	camp	营领
+1	*	*	civilian_residence	tower	塔领
+1	GOBLIN	EVIL	civilian_residence	fortress	寨领
+1	GOBLIN	EVIL	civilian_residence	castle	寨领
+1	GOBLIN	EVIL	civilian_residence	fort	寨领
 # 狗头人：type1或4、KOBOLD/SKULKING的已确认治理身份使用洞穴、营地、山寨；纯音译上级不阻断这些中性后缀。
 1	KOBOLD	SKULKING	kobold_tribal	*	山寨
 1	KOBOLD	SKULKING	kobold_tribal	cave	洞穴

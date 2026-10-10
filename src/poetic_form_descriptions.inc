@@ -173,6 +173,16 @@ static std::vector<FormDescriptionSentence> form_description_sentences(
             begin = source.size();
             break;
         }
+        // A native clause after this unquoted period proves the boundary,
+        // even when this reader does not recognize the preceding sentence.
+        // Strict translation already cannot accept that unknown sentence.
+        // Do not grow it through the rest of the document and reinterpret
+        // all preceding prose as a generated name in a later production.
+        if (!target && !allow_unknown_boundaries && !next.empty() &&
+                form_description_fixed_start(next, kind)) {
+            sentences.push_back({begin, source.size(), source.size(), {}});
+            return sentences;
+        }
         const bool proven_unknown = allow_unknown_boundaries &&
             form_description_fixed_start(sentence, kind) &&
             (next.empty() || form_description_fixed_start(next, kind)) &&

@@ -1,0 +1,63 @@
+edition	image_identity	image_path	role	function_start	function_end	anchor
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	status-update	0x1413547e0	0x14135e678	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	actor-format	0x141330c30	0x1413312b8	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	actor-article-format	0x14132e430	0x14132f971	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	actor-creature-role	0x14132f980	0x14133025e	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	actor-profession	0x141331500	0x141333724	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	growth-name-getter	0x1413e5a90	0x1413e5b1c	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	language-name-format	0x140a94030	0x140a946d1	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	possessive-pronoun	0x140aa4850	0x140aa48be	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	birth-offspring-description	0x1406dd860	0x1406ddecb	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-a88610	0x140a88610	0x140a8b815	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-a8b820	0x140a8b820	0x140a8ea27	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-ab52d0	0x140ab52d0	0x140ab5986	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-c88f50	0x140c88f50	0x140c89e2a	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-1325080	0x141325080	0x141328443	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-1328450	0x141328450	0x1413289ad	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-132c090	0x14132c090	0x14132cb7c	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-13356f0	0x1413356f0	0x141336dec	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-133baf0	0x14133baf0	0x14133bbb0	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-133bcf0	0x14133bcf0	0x14133e326	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-1348a40	0x141348a40	0x141349260	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-134f440	0x14134f440	0x1413523ec	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-1353940	0x141353940	0x1413547bf	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-13625b0	0x1413625b0	0x1413640b1	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-1365010	0x141365010	0x1413650d8	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-13650e0	0x1413650e0	0x1413654b6	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-1366d40	0x141366d40	0x1413673ab	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-1368990	0x141368990	0x14136b650	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-13cfbe0	0x1413cfbe0	0x1413d07f2	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-13db000	0x1413db000	0x1413db4df	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-13e5b20	0x1413e5b20	0x1413e6e1b	0x14135d1c5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	state-helper-13f1f80	0x1413f1f80	0x1413f20b9	0x14135d1c5
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	status-update	0x14134f750	0x1413595e8	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	actor-format	0x14132bba0	0x14132c228	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	actor-article-format	0x1413293a0	0x14132a8e1	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	actor-creature-role	0x14132a8f0	0x14132b1ce	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	actor-profession	0x14132c470	0x14132e694	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	growth-name-getter	0x1413e0a00	0x1413e0a8c	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	language-name-format	0x140a910b0	0x140a91751	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	possessive-pronoun	0x140aa18d0	0x140aa193e	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	birth-offspring-description	0x1406db280	0x1406db8eb	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-a85690	0x140a85690	0x140a88895	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-a888a0	0x140a888a0	0x140a8baa7	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-ab2350	0x140ab2350	0x140ab2a06	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-c85f90	0x140c85f90	0x140c86e6a	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-131fff0	0x14131fff0	0x1413233b3	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-13233c0	0x1413233c0	0x14132391d	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-1327000	0x141327000	0x141327aec	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-1330660	0x141330660	0x141331d5c	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-1336a60	0x141336a60	0x141336b20	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-1336c60	0x141336c60	0x141339296	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-13439b0	0x1413439b0	0x1413441d0	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-134a3b0	0x14134a3b0	0x14134d35c	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-134e8b0	0x14134e8b0	0x14134f72f	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-135d520	0x14135d520	0x14135f021	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-135ff80	0x14135ff80	0x141360048	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-1360050	0x141360050	0x141360426	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-1361cb0	0x141361cb0	0x14136231b	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-1363900	0x141363900	0x1413665c0	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-13cab50	0x1413cab50	0x1413cb762	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-13d5f70	0x1413d5f70	0x1413d644f	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-13e0a90	0x1413e0a90	0x1413e1d8b	0x141358135
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	state-helper-13ecef0	0x1413ecef0	0x1413ed029	0x141358135

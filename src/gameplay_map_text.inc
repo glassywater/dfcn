@@ -135,17 +135,18 @@ std::vector<uint8_t> Overlay::capture_map_text_cells() const {
             // origin. Restoring its saved cells must also retain that native
             // text ownership in classic mode. Only exact current bytes of a
             // draw intersecting this frame's saved rectangle may re-enter.
-            if (NativeUiReadScope::background_view(gps_) && g_native_announcement_page &&
-                    native_announcement_background_matches(*gps_, g_native_announcement_page->bounds)) {
-                const auto &box = g_native_announcement_page->bounds;
-                for (const auto &draw : g_native_overwritten_text_rows) {
-                    if (draw.y < box.y || draw.y >= box.y + box.h ||
-                            draw.x >= box.x + box.w ||
-                            int64_t(draw.x) + static_cast<int64_t>(draw.source.size()) <= box.x)
-                        continue;
-                    retain_native_map_text_span(cells, context, draw.x, draw.y, draw.source);
+            if (NativeUiReadScope::background_view(gps_))
+                for (const auto &saved : native_announcement_backgrounds(*gps_)) {
+                    if (!saved) continue;
+                    const auto &box = saved->bounds;
+                    for (const auto &draw : g_native_overwritten_text_rows) {
+                        if (draw.y < box.y || draw.y >= box.y + box.h ||
+                                draw.x >= box.x + box.w ||
+                                int64_t(draw.x) + static_cast<int64_t>(draw.source.size()) <= box.x)
+                            continue;
+                        retain_native_map_text_span(cells, context, draw.x, draw.y, draw.source);
+                    }
                 }
-            }
         }
         for (const auto &caption : covered_video_captions)
             remember_clipped_caption(caption.x, caption.y, caption.visible, caption.complete);

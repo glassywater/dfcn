@@ -50,7 +50,7 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     // to update rect without repeating the multiline height estimate.
     profile.resize_target = 0xe1230;
     profile.draw_target = 0xad9960;
-    // The two fortress report popups count their native row vector, then
+    // The two fortress report hover renderers count their native row vector, then
     // clear screen and draw HOVER_RECTANGLE at gps+0x1924 before any text.
     // They are same-layer overlays, separate from the Tooltip widget and
     // top_addst paths. Both use paragraph+0x48 for width and the same anchor.
@@ -58,6 +58,12 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     profile.announcement_page = {0x6ee50, {0x3fa9eb, 0x3facde},
         reinterpret_cast<const int32_t *>(native_pe_address(profile.base, 0x18a93bc)),
         reinterpret_cast<const int32_t *>(native_pe_address(profile.base, 0x18a93c0)), 0x48};
+    // The expanded alert/all-report/unit-report window clears a different
+    // fixed rectangle before assembling its rows. Its single four-register
+    // caller owns the pre-draw page for every branch of that renderer.
+    // Reference 40d64b..40d728: left=int32(R8)+4, top=4, 94 by 35 cells.
+    profile.announcement_popup_call = 0x3fa6f8;
+    profile.announcement_popup_target = 0x40d5f0;
     // Both native string::resize implementations take (this, size, fill).
     profile.resize = reinterpret_cast<NativeCaptionResizeFn>(native_pe_address(profile.base, profile.resize_target));
     profile.draw = reinterpret_cast<NativeCaptionDrawFn>(native_pe_address(profile.base, profile.draw_target));
@@ -680,7 +686,9 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         !bind_rva(profile.map_track_shorten_call) ||
         !bind_rva(profile.map_track_shorten_target) ||
         !bind_rva(profile.roster_shorten_target) ||
-        !bind_rva(profile.announcement_page.rows_target)) return false;
+        !bind_rva(profile.announcement_page.rows_target) ||
+        !bind_rva(profile.announcement_popup_call) ||
+        !bind_rva(profile.announcement_popup_target)) return false;
     for (auto &site : profile.roster_shorten_calls)
         if (!bind_rva(site)) return false;
     for (auto &site : profile.announcement_page.rows_calls)

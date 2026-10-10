@@ -829,8 +829,8 @@ as part of {e}	作为{e}的一部分	clause
 as part of {e}.	作为{e}的一部分。	clause
 # Typed occasion events qualify the location by its host and place the
 # occasion name before the existing activity predicate, without a suffix.
-Native history occasion {a} {s} as part of {e}	{a}为了{e}，{s}	clause
-Native history occasion {s} as part of {e}	为了{e}，{s}	clause
+Native history occasion {a} {s} as part of {e}	{a}在{e}中{s}	clause
+Native history occasion {s} as part of {e}	在{e}中{s}	clause
 
 # Site ceremonies append a second sentence containing a variable feature
 # list. Keep each program item independent of order/count and each story's
@@ -3927,6 +3927,8 @@ Native history office: commander	指挥官	term
 Native history office: commanders	指挥官	term
 Native history office: representative	代表	term
 Native history office: representatives	代表	term
+# Native CUSTOM_GUILD_ALDERPERSON title (Windows literal FILE 0x16c1098).
+Native history office: alderperson	行会理事	term
 {p} was made by {a} in {p}	{a}在{p2}制成了{p1}	clause
 {p} was made from {p} by {a} in {p}	{a}在{p3}用{p2}制成了{p1}	clause
 Native Legends numbered age {d}: {s}	第{d}{s}	clause

@@ -22,6 +22,7 @@
 #include <string>
 #include <string_view>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 
 namespace DFHack {
@@ -205,6 +206,14 @@ namespace Hooks {
             // has a complete material/item/building production. Propagate
             // that semantic role through every enclosing grammar wrapper.
             bool uses_name_fallback = false;
+            // Candidate selection can revisit a shared subtree many times.
+            // Cache the edge-counting weight once instead of walking its DAG
+            // for every comparison.
+            size_t tree_weight = 0;
+            bool contains_material = false;
+            bool contains_creature = false;
+            bool has_outer_structure = false;
+            bool complete_creature = false;
 
             ResultTree(std::string id, std::string mat,
                     std::string trans, std::string rem,
@@ -214,11 +223,31 @@ namespace Hooks {
                 translated(std::move(trans)), remaining(std::move(rem)), children(std::move(kids)),
                 source_tokens(input), target_tokens(output), external_leaf(external),
                 external_capture_bytes(external ? matched.size() : 0),
-                uses_name_fallback(identifier == "::text::native_item_name") {
+                uses_name_fallback(identifier == "::text::native_item_name"),
+                tree_weight(matched.empty() ? 0 : 1) {
+                const bool creature = identifier.starts_with("::creatures::");
+                contains_material = !matched.empty() &&
+                    (identifier.starts_with("::materials::") ||
+                     identifier == "::materials" || identifier.ends_with("::^material"));
+                contains_creature = !matched.empty() && creature;
+                complete_creature = creature;
                 for (const auto& [_, child] : children) {
                     external_capture_bytes += child->external_capture_bytes;
                     if (child->uses_name_fallback) uses_name_fallback = true;
+                    tree_weight += child->tree_weight;
+                    contains_material |= child->contains_material;
+                    contains_creature |= child->contains_creature;
+                    has_outer_structure |= child->has_outer_structure;
+                    complete_creature |= child->complete_creature &&
+                        child->matched.size() == matched.size();
                 }
+                if (creature) has_outer_structure = false;
+                else if (!matched.empty() &&
+                    (identifier == "::materials::state" ||
+                     identifier.starts_with("::materials::state::") ||
+                     (identifier.starts_with("::items::") &&
+                      identifier.ends_with("::main") && !contains_creature)))
+                    has_outer_structure = true;
             }
 
             ResultTree(const ResultTree&) = default;
@@ -227,9 +256,7 @@ namespace Hooks {
             ResultTree& operator=(ResultTree&&) = delete;
 
             [[nodiscard]] size_t weight() const {
-                size_t w = matched.empty() ? 0 : 1;
-                for (const auto& [_, child] : children) w += child->weight();
-                return w;
+                return tree_weight;
             }
 
             [[nodiscard]] bool preferred_to(const ResultTree& other) const {
@@ -238,6 +265,12 @@ namespace Hooks {
                 if (external_capture_bytes != other.external_capture_bytes)
                     return external_capture_bytes < other.external_capture_bytes;
                 return weight() < other.weight();
+            }
+
+            [[nodiscard]] unsigned selection_flags() const {
+                return unsigned(uses_name_fallback) | (unsigned(contains_material) << 1) |
+                    (unsigned(contains_creature) << 2) | (unsigned(has_outer_structure) << 3) |
+                    (unsigned(complete_creature) << 4) | (unsigned(!translated.empty()) << 5);
             }
         };
 
@@ -258,6 +291,9 @@ namespace Hooks {
         struct Candidate {
             BindingMap results;
             std::string remaining;
+            size_t external_capture_bytes = 0;
+            size_t tree_weight = 0;
+            unsigned selection_flags = 0;
 
             Candidate(BindingMap res, std::string rem
             ) : results(std::move(res)), remaining(std::move(rem)) {}
@@ -344,6 +380,49 @@ namespace Hooks {
             TransparentEqual
         >;
 
+        struct ResolutionSession {
+            struct Key {
+                std::string identifier;
+                std::string text;
+                std::uint64_t context_revision = 0;
+                bool operator==(const Key&) const = default;
+            };
+            struct KeyView {
+                std::string_view identifier;
+                std::string_view text;
+                std::uint64_t context_revision = 0;
+            };
+            struct KeyHash {
+                using is_transparent = void;
+                template<class K> size_t operator()(const K& key) const noexcept {
+                    size_t hash = std::hash<std::string_view>{}(key.identifier);
+                    const auto combine = [&](size_t value) {
+                        hash ^= value + 0x9e3779b9U + (hash << 6) + (hash >> 2);
+                    };
+                    combine(std::hash<std::string_view>{}(key.text));
+                    combine(std::hash<std::uint64_t>{}(key.context_revision));
+                    return hash;
+                }
+            };
+            struct KeyEqual {
+                using is_transparent = void;
+                template<class A, class B>
+                bool operator()(const A& a, const B& b) const noexcept {
+                    return a.identifier == b.identifier && a.text == b.text &&
+                        a.context_revision == b.context_revision;
+                }
+            };
+            // Only closed computations enter this table. A completed proof
+            // remains valid when another callback is active; an unfinished
+            // cyclic query is never remembered as an ordinary miss.
+            std::unordered_map<Key, LruMemoMap::Value, KeyHash, KeyEqual> memo;
+            std::unordered_map<Key, std::optional<std::string>, KeyHash, KeyEqual> callbacks;
+            // Active views belong to their live recursive calls. Do not copy
+            // the complete remaining input at every depth merely to guard it.
+            std::unordered_set<KeyView, KeyHash, KeyEqual> active;
+            size_t cycle_revision = 0;
+        };
+
         using RuleSet = std::vector<std::pair<Tokens, Tokens>>;
         using RuleSets = std::unordered_map<std::string, RuleSet>;
 
@@ -388,7 +467,9 @@ namespace Hooks {
         std::function<std::optional<std::string>(std::string_view, std::string_view)>
             phrase_resolver_;
         std::function<std::uint64_t()> context_revision_provider_;
-        mutable std::set<std::pair<std::string, std::string>> active_resolver_calls_;
+        mutable std::unordered_set<ResolutionSession::Key,
+            ResolutionSession::KeyHash, ResolutionSession::KeyEqual> active_resolver_calls_;
+        mutable ResolutionSession* active_resolution_session_ = nullptr;
 
         // =====================================================================
         // 4. 函数声明（按调用链：加载 → 翻译 → Token → 工具）
@@ -412,6 +493,9 @@ namespace Hooks {
         std::vector<std::shared_ptr<const ResultTree>> resolve_replacer(const std::string& text, const std::string& identifier, size_t level) const;
         std::vector<std::shared_ptr<const ResultTree>> resolve_external_prefixes(
             const std::string& text, const std::string& identifier) const;
+        static void compact_candidates(std::vector<Candidate>& candidates,
+            const Tokens& target_tokens, size_t source_size);
+        static LruMemoMap::Value compact_results(LruMemoMap::Value results);
         static std::string_view external_prefix_kind(std::string_view identifier);
         bool rule_literals_fit(std::string_view text, const Tokens& tokens) const;
 

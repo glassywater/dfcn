@@ -260,6 +260,27 @@ static uint64_t native_history_entity_parent_revision(uint64_t draw_epoch = 0) {
     return state.revision;
 }
 
+static int32_t native_history_entity_naming_parent(int32_t entity_id) {
+    if (entity_id < 0) return -1;
+    auto &state = native_history_entity_parent_state();
+    std::lock_guard<std::mutex> lock(state.mutex);
+    native_history_refresh_entity_parent_state(state, 0);
+    if (!state.cache.ready || state.cache.undated.contains(entity_id)) return -1;
+    const auto found = state.cache.points.find(entity_id);
+    if (found == state.cache.points.end()) return -1;
+    // Losing a residence ends its actual affiliation, not the cultural
+    // category of the organization's name. Recover only a single recorded
+    // external parent; changes or conflicting affiliations remain unknown.
+    // This is one entity-wide naming identity, never an event-time relation.
+    int32_t parent = -1;
+    for (const auto &point : found->second) {
+        if (point.parent < 0) continue;
+        if (parent >= 0 && parent != point.parent) return -1;
+        parent = point.parent;
+    }
+    return parent;
+}
+
 static int32_t native_history_resolve_historical_entity_parent(
         const NativeHistoryEntityParentCache &cache,
         const NativeHistoryEventData &event, int32_t entity_id) {

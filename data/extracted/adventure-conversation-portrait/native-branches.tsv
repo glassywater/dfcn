@@ -2,10 +2,10 @@ edition	image	kind	source_text	instruction_rvas	condition	palette	visibility
 reference	PE:6a70a6d9:02711000	attitude	Positive attitude	0x868d44	relationship+0x80 >= 25	2 if >=75, otherwise 7	requires selected visual relationship; relationship row also requires capacity>=2
 reference	PE:6a70a6d9:02711000	attitude	Negative attitude	0x868df8	relationship+0x80 <= -25	4 if <=-75, otherwise 6	requires selected visual relationship; relationship row also requires capacity>=2
 reference	PE:6a70a6d9:02711000	attitude	Neutral attitude	0x868e33	-25 < relationship+0x80 < 25	7	requires selected visual relationship; relationship row also requires capacity>=2
-reference	PE:6a70a6d9:02711000	demeanor	Patient	0x868ee0,0x86ae4c	relationship+0x84 >= 25	2	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	demeanor	Patient	0x868ee0	relationship+0x84 >= 25	2	requires selected visual relationship; relationship row also requires capacity>=2
 reference	PE:6a70a6d9:02711000	demeanor	Impatient	0x868f7f	relationship+0x84 <= -25	4 if <=-75, otherwise 6	requires selected visual relationship; relationship row also requires capacity>=2
 reference	PE:6a70a6d9:02711000	demeanor	Animated	0x869010	relationship+0x8c >= 25 and relationship+0x80 >= 0	7	requires selected visual relationship; relationship row also requires capacity>=2
-reference	PE:6a70a6d9:02711000	demeanor	Agitated	0x869060,0x86a1d1	relationship+0x8c >= 25 and relationship+0x80 < 0	4 if energy>=75, otherwise 6	requires selected visual relationship; relationship row also requires capacity>=2
+reference	PE:6a70a6d9:02711000	demeanor	Agitated	0x869060	relationship+0x8c >= 25 and relationship+0x80 < 0	4 if energy>=75, otherwise 6	requires selected visual relationship; relationship row also requires capacity>=2
 reference	PE:6a70a6d9:02711000	demeanor	Sluggish	0x8690ff	relationship+0x8c <= -75	7	requires selected visual relationship; relationship row also requires capacity>=2
 reference	PE:6a70a6d9:02711000	demeanor	Inactive	0x869125	-75 < relationship+0x8c <= -25	7	requires selected visual relationship; relationship row also requires capacity>=2
 reference	PE:6a70a6d9:02711000	demeanor	Bold	0x8691cb	relationship+0x88 >= 75	7	requires selected visual relationship; relationship row also requires capacity>=2
@@ -30,10 +30,10 @@ reference	PE:6a70a6d9:02711000	relationship	Neutral	0x869c6e	no love/fear/respec
 classic	PE:6a70b91c:0270a000	attitude	Positive attitude	0x8665c4	relationship+0x80 >= 25	2 if >=75, otherwise 7	requires selected visual relationship; relationship row also requires capacity>=2
 classic	PE:6a70b91c:0270a000	attitude	Negative attitude	0x866678	relationship+0x80 <= -25	4 if <=-75, otherwise 6	requires selected visual relationship; relationship row also requires capacity>=2
 classic	PE:6a70b91c:0270a000	attitude	Neutral attitude	0x8666b3	-25 < relationship+0x80 < 25	7	requires selected visual relationship; relationship row also requires capacity>=2
-classic	PE:6a70b91c:0270a000	demeanor	Patient	0x866760,0x8686cc	relationship+0x84 >= 25	2	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	demeanor	Patient	0x866760	relationship+0x84 >= 25	2	requires selected visual relationship; relationship row also requires capacity>=2
 classic	PE:6a70b91c:0270a000	demeanor	Impatient	0x8667ff	relationship+0x84 <= -25	4 if <=-75, otherwise 6	requires selected visual relationship; relationship row also requires capacity>=2
 classic	PE:6a70b91c:0270a000	demeanor	Animated	0x866890	relationship+0x8c >= 25 and relationship+0x80 >= 0	7	requires selected visual relationship; relationship row also requires capacity>=2
-classic	PE:6a70b91c:0270a000	demeanor	Agitated	0x8668e0,0x867a51	relationship+0x8c >= 25 and relationship+0x80 < 0	4 if energy>=75, otherwise 6	requires selected visual relationship; relationship row also requires capacity>=2
+classic	PE:6a70b91c:0270a000	demeanor	Agitated	0x8668e0	relationship+0x8c >= 25 and relationship+0x80 < 0	4 if energy>=75, otherwise 6	requires selected visual relationship; relationship row also requires capacity>=2
 classic	PE:6a70b91c:0270a000	demeanor	Sluggish	0x86697f	relationship+0x8c <= -75	7	requires selected visual relationship; relationship row also requires capacity>=2
 classic	PE:6a70b91c:0270a000	demeanor	Inactive	0x8669a5	-75 < relationship+0x8c <= -25	7	requires selected visual relationship; relationship row also requires capacity>=2
 classic	PE:6a70b91c:0270a000	demeanor	Bold	0x866a4b	relationship+0x88 >= 75	7	requires selected visual relationship; relationship row also requires capacity>=2

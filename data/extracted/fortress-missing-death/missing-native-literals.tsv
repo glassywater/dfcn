@@ -1,0 +1,89 @@
+edition	role	function_start	instruction	operand_kind	operand_address	text
+reference	producer	0x140e39910	0x140e39b38	printable-immediate		gfff
+reference	producer	0x140e39910	0x140e39bac	printable-immediate		gfff
+reference	producer	0x140e39910	0x140e3a003	cstring	0x1415ed9bc	The 
+reference	producer	0x140e39910	0x140e3a03b	cstring	0x14172efa0	 has been missing for a week.
+reference	producer	0x140e39910	0x140e3b691	cstring	0x14172efc0	Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense. 
+reference	producer	0x140e39910	0x140e3b731	cstring	0x14172f038	What are a few pesky demons after all?
+reference	producer	0x140e39910	0x140e3b74a	cstring	0x14172f228	The gods surely want you to dig deeper still!
+reference	producer	0x140e39910	0x140e3b753	cstring	0x14172f258	And why shouldn't you dig deeper still?!
+reference	producer	0x140e39910	0x140e3b82b	cstring	0x14172f288	 is satisfied with their position here. 
+reference	producer	0x140e39910	0x140e3b871	cstring	0x14172f2b8	Everything is properly royal, properly furnished.  And yet? 
+reference	producer	0x140e39910	0x140e3b884	cstring	0x14172f110	A true Mountainhome must have a true throne! 
+reference	producer	0x140e39910	0x140e3b897	cstring	0x14172f140	And a true ruler requires seven symbols, symbols not of this world. Mere steel will not suffice. 
+reference	producer	0x140e39910	0x140e3b921	cstring	0x14172f1b0	This legend does not end until we've chipped out the last treasures of the underworld!
+reference	producer	0x140e39910	0x140e3b92a	cstring	0x14172f208	Deeper. We must dig deeper.
+reference	producer	0x140e39910	0x140e3b933	cstring	0x14172dfb0	Congratulations!  (You should be proud of your accomplishment.  Embark in a world with the deepest cavern layers for further challenges.)
+reference	producer	0x140e39910	0x140e3ba6c	cstring	0x14172e040	Your fortress is out of food!
+reference	producer	0x140e39910	0x140e3ba96	cstring	0x14172e060	  Consider placing a farmplot on some underground soil and planting seeds.
+reference	producer	0x140e39910	0x140e3ba9f	cstring	0x14172e0b0	  Are your farmplots working?  Make sure you are planting edible plants.
+reference	producer	0x140e39910	0x140e3bac1	cstring	0x14172dee0	  Try building a butcher's shop and slaughtering some livestock.
+reference	producer	0x140e39910	0x140e3baca	cstring	0x14172df28	  Do you have any livestock to slaughter?
+reference	producer	0x140e39910	0x140e3bad6	cstring	0x14172df58	  Perhaps you can gather plants, fruit, or go fishing.
+reference	producer	0x140e39910	0x140e3c5cd	cstring	0x14172df90	 has ended a mandate.
+reference	producer	0x140e39910	0x140e3c7a6	cstring	0x14172e1c0	A mandate has ended.
+reference	producer	0x140e39910	0x140e3eb3c	printable-immediate		0u
+reference	producer	0x140e39910	0x140e3ed04	printable-immediate		0u
+reference	producer	0x140e39910	0x140e3ef0e	printable-immediate		0u
+reference	producer	0x140e39910	0x140e3f1a1	printable-immediate		0u
+reference	producer	0x140e39910	0x140e3f4ac	printable-immediate		0u
+reference	actor-format	0x141330c30	0x141330e5d	cstring	0x1415e90d8	, 
+reference	actor-format	0x141330c30	0x141330f58	cstring	0x1415e9718	""""
+reference	actor-format	0x141330c30	0x141330fad	cstring	0x1415e9718	""""
+reference	actor-format	0x141330c30	0x141330fc2	cstring	0x1415e90d8	, 
+reference	actor-format	0x141330c30	0x141331001	cstring	0x1415e90d8	, 
+reference	actor-format	0x141330c30	0x14133105d	cstring	0x1415e90d8	, 
+reference	actor-format	0x141330c30	0x1413310b8	cstring	0x141615540	 (
+reference	actor-format	0x141330c30	0x1413310f4	cstring	0x141782c58	Trained
+reference	actor-format	0x141330c30	0x141331100	cstring	0x141782c78	-Trained-
+reference	actor-format	0x141330c30	0x14133110c	cstring	0x141782c68	+Trained+
+reference	actor-format	0x141330c30	0x141331118	cstring	0x141782c90	*Trained*
+reference	actor-format	0x141330c30	0x14133114c	cstring	0x141782c58	Trained
+reference	actor-format	0x141330c30	0x14133119c	cstring	0x141782c58	Trained
+reference	actor-format	0x141330c30	0x1413311c8	cstring	0x141782c84	Tame
+reference	actor-format	0x141330c30	0x1413311d1	cstring	0x141782cb0	Semi-Wild
+reference	actor-format	0x141330c30	0x1413311e9	cstring	0x141615580	)
+classic	producer	0x140e34880	0x140e34aa8	printable-immediate		gfff
+classic	producer	0x140e34880	0x140e34b1c	printable-immediate		gfff
+classic	producer	0x140e34880	0x140e34f73	cstring	0x1415e89c4	The 
+classic	producer	0x140e34880	0x140e34fab	cstring	0x1417298a8	 has been missing for a week.
+classic	producer	0x140e34880	0x140e36601	cstring	0x1417298d0	Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense. 
+classic	producer	0x140e34880	0x140e366a1	cstring	0x141729948	What are a few pesky demons after all?
+classic	producer	0x140e34880	0x140e366ba	cstring	0x141729b38	The gods surely want you to dig deeper still!
+classic	producer	0x140e34880	0x140e366c3	cstring	0x141729b68	And why shouldn't you dig deeper still?!
+classic	producer	0x140e34880	0x140e3679b	cstring	0x141729b98	 is satisfied with their position here. 
+classic	producer	0x140e34880	0x140e367e1	cstring	0x141729bc8	Everything is properly royal, properly furnished.  And yet? 
+classic	producer	0x140e34880	0x140e367f4	cstring	0x141729a20	A true Mountainhome must have a true throne! 
+classic	producer	0x140e34880	0x140e36807	cstring	0x141729a50	And a true ruler requires seven symbols, symbols not of this world. Mere steel will not suffice. 
+classic	producer	0x140e34880	0x140e36891	cstring	0x141729ac0	This legend does not end until we've chipped out the last treasures of the underworld!
+classic	producer	0x140e34880	0x140e3689a	cstring	0x141729b18	Deeper. We must dig deeper.
+classic	producer	0x140e34880	0x140e368a3	cstring	0x141729ce0	Congratulations!  (You should be proud of your accomplishment.  Embark in a world with the deepest cavern layers for further challenges.)
+classic	producer	0x140e34880	0x140e369dc	cstring	0x141729d70	Your fortress is out of food!
+classic	producer	0x140e34880	0x140e36a06	cstring	0x141729d90	  Consider placing a farmplot on some underground soil and planting seeds.
+classic	producer	0x140e34880	0x140e36a0f	cstring	0x141729de0	  Are your farmplots working?  Make sure you are planting edible plants.
+classic	producer	0x140e34880	0x140e36a31	cstring	0x141729c10	  Try building a butcher's shop and slaughtering some livestock.
+classic	producer	0x140e34880	0x140e36a3a	cstring	0x141729c58	  Do you have any livestock to slaughter?
+classic	producer	0x140e34880	0x140e36a46	cstring	0x141729c88	  Perhaps you can gather plants, fruit, or go fishing.
+classic	producer	0x140e34880	0x140e3753d	cstring	0x141729cc0	 has ended a mandate.
+classic	producer	0x140e34880	0x140e37716	cstring	0x141729ef0	A mandate has ended.
+classic	producer	0x140e34880	0x140e39aac	printable-immediate		0u
+classic	producer	0x140e34880	0x140e39c74	printable-immediate		0u
+classic	producer	0x140e34880	0x140e39e7e	printable-immediate		0u
+classic	producer	0x140e34880	0x140e3a111	printable-immediate		0u
+classic	producer	0x140e34880	0x140e3a41c	printable-immediate		0u
+classic	actor-format	0x14132bba0	0x14132bdcd	cstring	0x1415e40c4	, 
+classic	actor-format	0x14132bba0	0x14132bec8	cstring	0x1415e46fc	""""
+classic	actor-format	0x14132bba0	0x14132bf1d	cstring	0x1415e46fc	""""
+classic	actor-format	0x14132bba0	0x14132bf32	cstring	0x1415e40c4	, 
+classic	actor-format	0x14132bba0	0x14132bf71	cstring	0x1415e40c4	, 
+classic	actor-format	0x14132bba0	0x14132bfcd	cstring	0x1415e40c4	, 
+classic	actor-format	0x14132bba0	0x14132c028	cstring	0x141610298	 (
+classic	actor-format	0x14132bba0	0x14132c064	cstring	0x14177ca90	Trained
+classic	actor-format	0x14132bba0	0x14132c070	cstring	0x14177ca80	-Trained-
+classic	actor-format	0x14132bba0	0x14132c07c	cstring	0x14177c9e0	+Trained+
+classic	actor-format	0x14132bba0	0x14132c088	cstring	0x14177c9d0	*Trained*
+classic	actor-format	0x14132bba0	0x14132c0bc	cstring	0x14177ca90	Trained
+classic	actor-format	0x14132bba0	0x14132c10c	cstring	0x14177ca90	Trained
+classic	actor-format	0x14132bba0	0x14132c138	cstring	0x14177c9fc	Tame
+classic	actor-format	0x14132bba0	0x14132c141	cstring	0x14177c9f0	Semi-Wild
+classic	actor-format	0x14132bba0	0x14132c159	cstring	0x1416102d8	)

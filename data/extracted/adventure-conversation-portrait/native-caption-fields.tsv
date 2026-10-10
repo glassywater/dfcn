@@ -6,6 +6,14 @@ reference	PE:6a70a6d9:02711000	portrait color	0x868c73	call   0x141333bc0	unit i
 reference	PE:6a70a6d9:02711000	caption formatter	0x868c89	call   0x141331500	1331500(unit, NativeString) exact unit-reference formatter; classic132c470
 reference	PE:6a70a6d9:02711000	caption capitalization	0x868c92	call   0x14052d650	capitalizes constructed reference immediately before addst
 reference	PE:6a70a6d9:02711000	caption draw	0x868ca8	call   0x140ad9960	caption at native y15; body strings use addst with native clipping argument
+reference	PE:6a70a6d9:02711000	portrait left boundary	0x868533	lea    r14d,[rax-0x32]	native input midpoint-50; border spans x midpoint-50..midpoint+50 inclusive
+reference	PE:6a70a6d9:02711000	portrait right boundary	0x86853c	lea    edi,[rax+0x32]	native input midpoint+50; 101 columns including two border columns
+reference	PE:6a70a6d9:02711000	portrait top boundary	0x86853f	mov    esi,0x6	border y starts6
+reference	PE:6a70a6d9:02711000	portrait bottom boundary	0x868601	cmp    esi,0x13	border y ends19 inclusive; native content interior y7..18 and width99
+reference	PE:6a70a6d9:02711000	portrait content x	0x868b0c	lea    r12d,[r14+0x2]	r12=portrait_left+2; header.x-1 is the interior left boundary; content allocation {header.x-1,7,99,12}
+reference	PE:6a70a6d9:02711000	toward row	0x868cad	mov    ebx,0x10	native y16 when visual relationship exists
+reference	PE:6a70a6d9:02711000	relationship row	0x8692e2	mov    ebx,0x11	native y17 when capacity>=2; row counter remains17 even when Relationship is hidden by capacity
+reference	PE:6a70a6d9:02711000	mood row	0x869caf	lea    edx,[rbx+0x1]	native y=row counter+1:17 with no relationship;18 with a selected relationship
 reference	PE:6a70a6d9:02711000	relationship absent	0x868cb5	je     0x140869ca1	null selected visual relationship skips both Toward and Relationship; already drawn identity remains visible
 reference	PE:6a70a6d9:02711000	mood absent	0x869ca9	jle    0x14086b44d	nonpositive selected mood count skips General Mood; with null relationship this leaves the portrait identity as its sole textual field
 classic	PE:6a70b91c:0270a000	unit lookup	0x8662b8	call   0x14067acf0	resolves conversation+0x30 against world; no unit skips portrait fields
@@ -15,5 +23,13 @@ classic	PE:6a70b91c:0270a000	portrait color	0x8664f3	call   0x14132eb30	unit ide
 classic	PE:6a70b91c:0270a000	caption formatter	0x866509	call   0x14132c470	1331500(unit, NativeString) exact unit-reference formatter; classic132c470
 classic	PE:6a70b91c:0270a000	caption capitalization	0x866512	call   0x14052b070	capitalizes constructed reference immediately before addst
 classic	PE:6a70b91c:0270a000	caption draw	0x866528	call   0x140ad69a0	caption at native y15; body strings use addst with native clipping argument
+classic	PE:6a70b91c:0270a000	portrait left boundary	0x865db3	lea    r14d,[rax-0x32]	native input midpoint-50; border spans x midpoint-50..midpoint+50 inclusive
+classic	PE:6a70b91c:0270a000	portrait right boundary	0x865dbc	lea    edi,[rax+0x32]	native input midpoint+50; 101 columns including two border columns
+classic	PE:6a70b91c:0270a000	portrait top boundary	0x865dbf	mov    esi,0x6	border y starts6
+classic	PE:6a70b91c:0270a000	portrait bottom boundary	0x865e81	cmp    esi,0x13	border y ends19 inclusive; native content interior y7..18 and width99
+classic	PE:6a70b91c:0270a000	portrait content x	0x86638c	lea    r12d,[r14+0x2]	r12=portrait_left+2; header.x-1 is the interior left boundary; content allocation {header.x-1,7,99,12}
+classic	PE:6a70b91c:0270a000	toward row	0x86652d	mov    ebx,0x10	native y16 when visual relationship exists
+classic	PE:6a70b91c:0270a000	relationship row	0x866b62	mov    ebx,0x11	native y17 when capacity>=2; row counter remains17 even when Relationship is hidden by capacity
+classic	PE:6a70b91c:0270a000	mood row	0x86752f	lea    edx,[rbx+0x1]	native y=row counter+1:17 with no relationship;18 with a selected relationship
 classic	PE:6a70b91c:0270a000	relationship absent	0x866535	je     0x140867521	null selected visual relationship skips both Toward and Relationship; already drawn identity remains visible
 classic	PE:6a70b91c:0270a000	mood absent	0x867529	jle    0x140868ccd	nonpositive selected mood count skips General Mood; with null relationship this leaves the portrait identity as its sole textual field

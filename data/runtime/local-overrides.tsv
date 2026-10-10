@@ -878,6 +878,10 @@ Brook: Giftedcrypts	小溪：天赐墓穴
 Sorting plants...	正在整理植物……
 Stream: {s}	溪流：{s}	wt
 Brook: {s}	小溪：{s}	wt
+Stream:	溪流：	w
+Brook:	小溪：	w
+Minor River:	小河：	w
+Major River:	大河：	w
 Deep soil	深厚土层
 
 # Fortress help index: keep the native viewed status separate from its title.
@@ -6352,6 +6356,10 @@ Fortress activity: Diplomat	外交官	li
 Fortress activity: Tame	驯服	li
 Fortress activity: Trained	受过训练	li
 Fortress activity: Trainer	驯兽师	li
+# Pets/Livestock: Any is the unrestricted trainer setting, not a person's name.
+Fortress activity: Trainer: Any	驯兽师：任意	li
+Any trainer	任意训练员	l
+Any unassigned trainer	任意未分配的训练员	l
 Fortress activity: Well-trained	训练良好	li
 Fortress activity: Skillfully trained	训练娴熟	li
 Fortress activity: Expertly trained	训练精湛	li
@@ -8766,6 +8774,9 @@ Work details	劳动分组	wi
 # The Kitchen tab reuses Cooking; the workshop remains Kitchen.
 Labor tab: Work details	分组	wi
 Labor tab: Standing orders	规则	wi
+# The workshop Workers page draws this policy with a lowercase initial.
+# Keep the shared character-page caption available in either capitalization.
+Will do available tasks anywhere	完成可执行的所有工作	wi
 # Complete system labor captions. The Work details editor renders these as
 # single fields; substrings must not leave suffixes or become generated names.
 Working Wood	木材加工	wi
@@ -11484,3 +11495,5 @@ DFHack GUI Item type selector: cut gem	切割宝石	l
 DFHack GUI Item type selector: rough gem	粗糙宝石	l
 DFHack GUI Item type selector: boulder	大圆石	l
 DFHack GUI Item type selector: instrument	乐器	l
+Wiltwonders	枯萎奇观	w
+Wiltwonders	枯萎奇观	h

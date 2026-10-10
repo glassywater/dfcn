@@ -1644,6 +1644,14 @@ def generated_calendar_rules(chosen: dict[bytes, Entry]) -> list[Entry]:
         for suffix in ("st", "nd", "rd", "th"):
             source = f"{{d}}{suffix} {month}"
             rules.append(Entry(source, day, "wt", "DFCN generated calendar", 390))
+            # Event hearing paragraphs reuse both reviewed day/month and
+            # year fields. Keep this complete date scope out of global text
+            # matching, while retaining each source number's own position.
+            rules.append(Entry(
+                f"Announcement combat journal-calendar-date [$digits,$digits]: "
+                f"{{s}}{suffix} {month} in the year {{s}}",
+                year.replace("{d2}", "{s2}") + indexed_day.replace("{d1}", "{s1}"),
+                "l", "DFCN generated calendar", 390))
             # Adventure HUD omits the season and the literal "Year". Match
             # the entire compact date so its trailing bare number keeps the
             # reviewed year format and shares one translated layout span.
@@ -2020,7 +2028,23 @@ def atomic_dictionary_output(path: Path):
             if path.read_text(encoding="utf-8") == staged.read_text(encoding="utf-8"):
                 return
             staged.chmod(stat.S_IMODE(path.stat().st_mode))
-        staged.replace(path)
+        try:
+            staged.replace(path)
+        except PermissionError as original:
+            if os.name != "nt" or not path.exists():
+                raise
+            # Reuse the entry's native replacement for files still held by
+            # readers. Publish the complete new dictionary atomically while
+            # existing handles retain the old file; never truncate it in place
+            # or override permissions/read-only attributes.
+            from build import windows_atomic_rename
+            try:
+                windows_atomic_rename(staged.absolute(), path.absolute())
+            except OSError as native_error:
+                raise OSError(
+                    f"Cannot publish {path}; replace: {original}; "
+                    f"native rename: {native_error}"
+                ) from native_error
     finally:
         if staged is not None:
             staged.unlink(missing_ok=True)

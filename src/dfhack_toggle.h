@@ -526,6 +526,10 @@ class Toggle {
     }
 
 public:
+    bool disabled() const noexcept {
+        return off_.load(std::memory_order_acquire);
+    }
+
     static int query_command_context(void *requested_console,
             DfcnDfhackCommandContextV1 *result) noexcept {
         const auto *frame = command_frame_;

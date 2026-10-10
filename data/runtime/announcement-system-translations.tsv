@@ -240,6 +240,8 @@ You have forgotten your training!	你忘掉了所受的训练！
 {n} is no longer enraged.	{n1}不再暴怒了。
 {n} has left the martial trance.	{n1}脱离了战斗专注状态。
 The {s} have given a resident {s} the name {p}.	{s1}给一只常住的{s2}起名为{p1}。
+# Native resident naming still submits when the optional language_name getter is null or has_name is false.
+The {s} have given a resident {s} the name .	{s1}给一只常住的{s2}起了名字。
 An animal has grown to become a {s}.	一只动物长成了{s1}。
 {p} has grown to become a {s}.	{p1}长成了{s1}。
 {n} has given birth to {s}.	{n1}生下了{s1}。

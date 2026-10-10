@@ -1,4 +1,14 @@
 # scope	source	target	semantic field scopes	native construction evidence
+# Event hearing paragraphs share the occurrence date's ordinal/month fields.
+# Native Steam 53.16 appends an optional complete informant and a final period.
+# journal-calendar-date is generated from reviewed day/month and year fields.
+journal-event	You last heard this on the {s}.	你上次在{s1}听说了这件事。	journal-calendar-date	PE 0x1400d8c78..0x1400d90be; You last + heard this + on the + day/month + year + period
+journal-event	You last heard this on the {s} from {s}.	你上次在{s1}从{s2}那里听说了这件事。	journal-calendar-date,$person	PE 0x1400d8faf..0x1400d9030; optional from + 0x140a946e0 native figure name
+journal-event	You heard this on the {s}.	你在{s1}听说了这件事。	journal-calendar-date	PE 0x1400d8c89..0x1400d90be; unrepeated hearing uses You
+journal-event	You heard this on the {s} from {s}.	你在{s1}从{s2}那里听说了这件事。	journal-calendar-date,$person	PE 0x1400d8c89..0x1400d90be; optional native informant
+journal-event	You first heard this on the {s}.	你最初在{s1}听说了这件事。	journal-calendar-date	PE 0x1400d9205..0x1400d9629; first hearing date is independently supplied
+journal-event	You first heard this on the {s} from {s}.	你最初在{s1}从{s2}那里听说了这件事。	journal-calendar-date,$person	PE 0x1400d9385..0x1400d959b; optional native informant
+journal-event	{s}	{s1}	$message	PE 0x1400d9205..0x1400d96e2; fixed common-knowledge/assigned-mission paragraphs reuse ui-messages.tsv
 # People card producer: installed Linux 53.16 dwarfort VA 0x17c7d30..0x17c9ecd.
 # Reuse the same native FAMILY_RELATIONSHIP vocabulary and relative-time
 # formatter as dialogue/rumors, rather than enumerating one screenshot's sex,

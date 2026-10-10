@@ -1,0 +1,125 @@
+edition	image_identity	state	rumor_type	choice_type	opinion	gate_rva	group_branch_rva	opinion_table_rva	result_branch_rva	allowed	caption
+steam	PE:6a70a6d9:02711000	6	5	26	0	0x676e30	0x676ed6	0x6771d0	0x67701c	true	State opinion that it must be stopped with violent force
+steam	PE:6a70a6d9:02711000	6	5	26	1	0x676e30	0x676ed6	0x6771d0	0x67701c	true	State opinion that it is not your problem
+steam	PE:6a70a6d9:02711000	6	5	26	2	0x676e30	0x676ed6	0x6771d0	0x67701c	true	State opinion that it was inevitable
+steam	PE:6a70a6d9:02711000	6	5	26	3	0x676e30	0x676ed6	0x6771d0	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	4	0x676e30	0x676ed6	0x6771d0	0x67701c	true	State opinion that it is terrifying
+steam	PE:6a70a6d9:02711000	6	5	26	5	0x676e30	0x676ed6	0x6771d0	0x67701c	true	State that you don't know anything about it
+steam	PE:6a70a6d9:02711000	6	5	26	6	0x676e30	0x676ed6	0x6771d0	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	7	0x676e30	0x676ed6	0x6771d0	0x67701c	true	State that it is for the best
+steam	PE:6a70a6d9:02711000	6	5	26	8	0x676e30	0x676ed6	0x6771d0	0x67701c	true	State that you don't care
+steam	PE:6a70a6d9:02711000	6	5	26	9	0x676e30	0x676ed6	0x6771d0	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	10	0x676e30	0x676ed6	0x6771d0	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	11	0x676e30	0x676ed6	0x6771d0	0x67701c	true	State opinion that it is sad but not unexpected
+steam	PE:6a70a6d9:02711000	6	5	26	12	0x676e30	0x676ed6	0x6771d0	0x67701c	true	State opinion that it is terrible
+steam	PE:6a70a6d9:02711000	6	5	26	13	0x676e30	0x676ed6	0x6771d0	0x67701c	true	State that it is terrific
+steam	PE:6a70a6d9:02711000	6	5	26	14	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	15	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	16	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	17	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	18	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	19	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	20	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	21	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	22	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	23	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	24	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	25	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	26	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	27	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	28	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	29	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	30	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	31	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	32	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	33	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	34	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	35	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	36	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	37	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	38	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	39	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	40	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	41	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	42	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	43	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	44	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	45	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	46	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	47	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	48	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	49	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	50	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	51	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	52	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	53	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	54	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	55	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	56	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	57	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	58	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	59	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	60	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+steam	PE:6a70a6d9:02711000	6	5	26	61	0x676e30	0x676ed6	guard unsigned>13	0x67701f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	0	0x674850	0x6748f6	0x674bf0	0x674a3c	true	State opinion that it must be stopped with violent force
+classic	PE:6a70b91c:0270a000	6	5	26	1	0x674850	0x6748f6	0x674bf0	0x674a3c	true	State opinion that it is not your problem
+classic	PE:6a70b91c:0270a000	6	5	26	2	0x674850	0x6748f6	0x674bf0	0x674a3c	true	State opinion that it was inevitable
+classic	PE:6a70b91c:0270a000	6	5	26	3	0x674850	0x6748f6	0x674bf0	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	4	0x674850	0x6748f6	0x674bf0	0x674a3c	true	State opinion that it is terrifying
+classic	PE:6a70b91c:0270a000	6	5	26	5	0x674850	0x6748f6	0x674bf0	0x674a3c	true	State that you don't know anything about it
+classic	PE:6a70b91c:0270a000	6	5	26	6	0x674850	0x6748f6	0x674bf0	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	7	0x674850	0x6748f6	0x674bf0	0x674a3c	true	State that it is for the best
+classic	PE:6a70b91c:0270a000	6	5	26	8	0x674850	0x6748f6	0x674bf0	0x674a3c	true	State that you don't care
+classic	PE:6a70b91c:0270a000	6	5	26	9	0x674850	0x6748f6	0x674bf0	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	10	0x674850	0x6748f6	0x674bf0	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	11	0x674850	0x6748f6	0x674bf0	0x674a3c	true	State opinion that it is sad but not unexpected
+classic	PE:6a70b91c:0270a000	6	5	26	12	0x674850	0x6748f6	0x674bf0	0x674a3c	true	State opinion that it is terrible
+classic	PE:6a70b91c:0270a000	6	5	26	13	0x674850	0x6748f6	0x674bf0	0x674a3c	true	State that it is terrific
+classic	PE:6a70b91c:0270a000	6	5	26	14	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	15	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	16	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	17	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	18	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	19	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	20	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	21	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	22	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	23	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	24	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	25	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	26	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	27	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	28	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	29	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	30	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	31	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	32	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	33	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	34	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	35	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	36	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	37	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	38	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	39	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	40	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	41	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	42	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	43	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	44	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	45	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	46	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	47	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	48	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	49	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	50	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	51	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	52	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	53	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	54	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	55	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	56	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	57	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	58	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	59	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	60	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	
+classic	PE:6a70b91c:0270a000	6	5	26	61	0x674850	0x6748f6	guard unsigned>13	0x674a3f	false	

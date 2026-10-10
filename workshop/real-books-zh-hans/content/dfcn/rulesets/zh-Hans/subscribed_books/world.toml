@@ -49,7 +49,7 @@ name = "item"
 [[rulesets]]
 name = "food"
 [rulesets.rules]
-"plump helmet roast" = "烤肥盔菇"
+"plump helmet roast" = "烤肉盔菇"
 "dwarven ale" = "矮人麦酒"
 "elven wine" = "精灵葡萄酒"
 "roasted cave fish" = "烤洞穴鱼"

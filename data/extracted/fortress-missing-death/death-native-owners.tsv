@@ -1,0 +1,29 @@
+edition	image_identity	image_path	function_start	function_end	instruction	literal_address	text
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	0x1413e5b20	0x1413e6e1b	0x1413e63f9	0x141784de0	been found dead.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	0x1413e5b20	0x1413e6e1b	0x1413e640b	0x141784db8	been found dead, contorted in fear!
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	0x1413e5b20	0x1413e6e1b	0x1413e641d	0x141784c60	been found, starved to death.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	0x1413e5b20	0x1413e6e1b	0x1413e642f	0x141784c40	been found dead, dehydrated.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	0x1413e5b20	0x1413e6e1b	0x1413e6441	0x141784ca0	been found dead, drowned.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	0x1413e5b20	0x1413e6e1b	0x1413e6453	0x141784c80	been found dead, badly burned.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	0x1413e5b20	0x1413e6e1b	0x1413e6465	0x141784cd8	been found boiled.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	0x1413e5b20	0x1413e6e1b	0x1413e6474	0x141784cc0	been found melted.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	0x1413e5b20	0x1413e6e1b	0x1413e6483	0x141784d08	been found condensed.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	0x1413e5b20	0x1413e6e1b	0x1413e6492	0x141784cf0	been found solidified.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	0x1413e5b20	0x1413e6e1b	0x1413e64a1	0x1417855b0	been found dead, frozen.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	0x1413e5b20	0x1413e6e1b	0x1413e64b0	0x141785590	been found dead, badly crushed.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	0x1413e5b20	0x1413e6e1b	0x1413e64bf	0x141785600	been found scuttled.
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	0x1413e5b20	0x1413e6e1b	0x1413e64ce	0x1417855d0	been found dead, completely drained of blood!
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	0x1413e0a90	0x1413e1d8b	0x1413e1369	0x14177fdd8	been found dead.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	0x1413e0a90	0x1413e1d8b	0x1413e137b	0x14177fe30	been found dead, contorted in fear!
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	0x1413e0a90	0x1413e1d8b	0x1413e138d	0x14177fe10	been found, starved to death.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	0x1413e0a90	0x1413e1d8b	0x1413e139f	0x14177fe78	been found dead, dehydrated.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	0x1413e0a90	0x1413e1d8b	0x1413e13b1	0x14177fe58	been found dead, drowned.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	0x1413e0a90	0x1413e1d8b	0x1413e13c3	0x14177f720	been found dead, badly burned.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	0x1413e0a90	0x1413e1d8b	0x1413e13d5	0x14177f708	been found boiled.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	0x1413e0a90	0x1413e1d8b	0x1413e13e4	0x14177f758	been found melted.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	0x1413e0a90	0x1413e1d8b	0x1413e13f3	0x14177f740	been found condensed.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	0x1413e0a90	0x1413e1d8b	0x1413e1402	0x14177f790	been found solidified.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	0x1413e0a90	0x1413e1d8b	0x1413e1411	0x14177f770	been found dead, frozen.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	0x1413e0a90	0x1413e1d8b	0x1413e1420	0x14177f7c0	been found dead, badly crushed.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	0x1413e0a90	0x1413e1d8b	0x1413e142f	0x14177f7a8	been found scuttled.
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	0x1413e0a90	0x1413e1d8b	0x1413e143e	0x14177f640	been found dead, completely drained of blood!

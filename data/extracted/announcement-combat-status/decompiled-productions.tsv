@@ -1,0 +1,15 @@
+record_kind	constructor	complete_native_production	branch_condition	field_ownership
+6	0x1400e964f	{unit} have been knocked unconscious! | {unit} has been knocked unconscious!	player in adventure mode selects have; other subjects select has	unit formatter 0x14132e430 or pronoun 0x140aa4730
+7,8	0x1400e9727	{unit} have been stunned! | {unit} has been stunned! | {unit} have been stunned again! | {unit} has been stunned again!	record kind 8 selects again; player in adventure mode selects have	unit formatter 0x14132e430 or pronoun 0x140aa4730
+9,10	0x1400e9814	{unit} are having trouble breathing! | {unit} is having trouble breathing! | {unit} are having more trouble breathing! | {unit} is having more trouble breathing!	record kind 10 selects more; player in adventure mode selects are	unit formatter 0x14132e430 or pronoun 0x140aa4730
+11,12	0x1400e9901	{unit} feel sick! | {unit} looks sick! | {unit} feel even more sick! | {unit} looks even more sick!	record kind 12 selects even more; player in adventure mode selects feel	unit formatter 0x14132e430 or pronoun 0x140aa4730
+13,14,18,19,25,26,27,28,29,30,31,32,33	0x1400e9de2		auxiliary dispatch advances to next record without producing a sentence	no text field
+15	0x1400e99ee	{fluid} is injected into the {fluid}!	fluid record with native material/state/owner; target-fluid body label is appended in full	owned fluid grammar; material and tissue namespaces
+16	0x1400e9b7b	{fluid} pours over the {body}! | {fluid} flows over the {body}! | {fluid} splatters over the {body}! | {fluid} crumbles over the {body}!	material-state switch selects pours/flows/splatters/crumbles	owned fluid grammar; complete body-part formatter
+17	0x1400e9cd8	{fluid} is sucked out of the wound!	native material/state/owner fields	owned fluid grammar; material namespace
+20	0x1400e9579	{unit} are propelled away by the force of the blow! | {unit} is propelled away by the force of the blow!	player in adventure mode selects are	unit formatter 0x14132e430 or pronoun 0x140aa4730
+21	0x1400e9261	The {item} has lodged firmly in the wound!	complete native item label supplied by 0x140c65450	item grammar; no per-word substitution
+22	0x1400e9377	{unit} latch on firmly to {owner} {body}! | {unit} latches on firmly to {owner} {body}!	player in adventure mode selects latch; owned body supplied by 0x1413345d0	unit; owner; complete anatomy
+23	0x1400e94b7	{unit} latch on firmly! | {unit} latches on firmly!	player in adventure mode selects latch	unit formatter 0x14132e430 or pronoun 0x140aa4730
+24	0x1400e9189	{unit} have become enraged! | {unit} has become enraged!	player in adventure mode selects have	unit formatter 0x14132e430 or pronoun 0x140aa4730
+34	0x1400e90da	{owner} attack is interrupted!	complete possessive subject; player Your, named subject plus 's, or its	owner grammar resolves unit separately

@@ -79,12 +79,17 @@ dfcn::TranslationResult Overlay::translate_character_thought_paragraph_result(
             found != native_display_translation_cache_.end() &&
             found->second.result.resource_revision == RULESETS.resource_revision())
         return found->second.result;
+    dfcn::TranslationWorkScope budget;
     const auto publish = [&](dfcn::TranslationResult result) {
+        if (budget.exhausted()) {
+            if (!budget.owns_budget()) dfcn::translation_work_step();
+            result = preserve_native_translation(source, "thought-paragraph", false,
+                dfcn::TranslationStatus::WorkLimited);
+        }
         result.owner = "native-character-thoughts";
         return cache_native_display_translation(native_display_translation_cache_,
             native_display_translation_cache_bytes_, cache_key, {}, {}, std::move(result));
     };
-    dfcn::TranslationWorkScope budget;
     if (!config_.compositional_rules)
         return publish(preserve_native_translation(source, "thought-paragraph"));
     std::vector<size_t> normalized_origins;
@@ -116,14 +121,20 @@ dfcn::TranslationResult Overlay::translate_character_thought_paragraph_result(
             whole_result.resource_revision = result.resource_revision;
             return publish(std::move(whole_result));
         }
-    } catch (const dfcn::TranslationWorkLimit &) { work_limited = true; }
+    } catch (const dfcn::TranslationWorkLimit &) {
+        if (!budget.owns_budget()) throw;
+        work_limited = true;
+    }
     for (size_t begin = 0; begin < utf8.size();) {
         while (begin < utf8.size() && utf8[begin] == ' ') ++begin;
         if (begin == utf8.size()) break;
         size_t end = utf8.size();
         if (!work_limited) {
             try { end = character_thought_sentence_end(utf8, begin); }
-            catch (const dfcn::TranslationWorkLimit &) { work_limited = true; }
+            catch (const dfcn::TranslationWorkLimit &) {
+                if (!budget.owns_budget()) throw;
+                work_limited = true;
+            }
         }
         const size_t source_begin = utf8_origins[begin];
         const size_t source_end = utf8_origins[end - 1] + 1;
@@ -137,7 +148,10 @@ dfcn::TranslationResult Overlay::translate_character_thought_paragraph_result(
             try {
                 sentence = RULESETS.translate_with_origins(
                     utf8.substr(begin, end - begin), "::psychology", sentence_origins);
-            } catch (const dfcn::TranslationWorkLimit &) { work_limited = true; }
+            } catch (const dfcn::TranslationWorkLimit &) {
+                if (!budget.owns_budget()) throw;
+                work_limited = true;
+            }
         }
         if (!result.target.empty()) {
             auto separator = dfcn::TranslationResult::translated("", "\n", "thought-separator",

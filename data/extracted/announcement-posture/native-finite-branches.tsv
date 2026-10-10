@@ -1,0 +1,35 @@
+action_type	branch	reference_text_va	classic_text_va	condition	complete_english
+0	flounder	0x1415063b2	0x141501322	(mode==1 && actor==current_adventurer); water<=0 && molten<=0	You flounder!
+0	flounder	0x1415063b2	0x141501322	(mode==1 && actor==current_adventurer); water>0	You flounder in the water!
+0	flounder	0x1415063b2	0x141501322	(mode==1 && actor==current_adventurer); water<=0 && molten>0 && tile_bit15==0	You flounder in the lava!
+0	flounder	0x1415063b2	0x141501322	(mode==1 && actor==current_adventurer); water<=0 && molten>0 && tile_bit15==1	You flounder in the magma!
+3	lose-hold	0x141507125	0x141502095	(mode==1 && actor==current_adventurer); failed movement/hold branch	You lose hold of the {s}.
+5	lose-hold	0x1415092dd	0x14150424d	(mode==1 && actor==current_adventurer); failed movement/hold branch	You lose hold of the {s}!
+16	push	0x141506c7c	0x141501bec	actor/verb selection; push action completes	You push {s}.
+20	mount-success	0x1415079a8	0x141502918	actor/verb selection; valid target and mount succeeds	You mount {n}.
+21	dismount-success	0x141507f85	0x141502ef5	actor/verb selection; path/position helper succeeds	You dismount.
+13	stand	0x141508c01	0x141503b71	unit+0x800<=0; posture/terrain/stand-capability gates; timer expires; personal=(mode==1 && actor==current_adventurer)	You stand up.
+14	lie	0x141508dfd	0x141503d6d	on_ground bit 0x8000 is clear; timer expires; personal=(mode==1 && actor==current_adventurer)	You lie on the ground.
+0	flounder	0x1415063bb	0x14150132b	!(mode==1 && actor==current_adventurer); water<=0 && molten<=0	{n} flounders!
+0	flounder	0x1415063bb	0x14150132b	!(mode==1 && actor==current_adventurer); water>0	{n} flounders in the water!
+0	flounder	0x1415063bb	0x14150132b	!(mode==1 && actor==current_adventurer); water<=0 && molten>0 && tile_bit15==0	{n} flounders in the lava!
+0	flounder	0x1415063bb	0x14150132b	!(mode==1 && actor==current_adventurer); water<=0 && molten>0 && tile_bit15==1	{n} flounders in the magma!
+3	lose-hold	0x14150712e	0x14150209e	!(mode==1 && actor==current_adventurer); failed movement/hold branch	{n} loses hold of the {s}.
+5	lose-hold	0x1415092e6	0x141504256	!(mode==1 && actor==current_adventurer); failed movement/hold branch	{n} loses hold of the {s}!
+16	push	0x141506c85	0x141501bf5	actor/verb selection; push action completes	{n} pushes {s}.
+20	mount-success	0x1415079c3	0x141502933	actor/verb selection; valid target and mount succeeds	{n} mounts {n}.
+21	dismount-success	0x141507f8e	0x141502efe	actor/verb selection; path/position helper succeeds	{n} dismounts.
+13	stand	0x141508c53	0x141503bc3	unit+0x800<=0; posture/terrain/stand-capability gates; timer expires; personal=(mode==1 && actor==current_adventurer)	{n} stands up.
+14	lie	0x141508e4f	0x141503dbf	on_ground bit 0x8000 is clear; timer expires; personal=(mode==1 && actor==current_adventurer)	{n} lies on the ground.
+17	feed	0x141505d24	0x141500c94	(mode==1 && actor==current_adventurer); victim lookup succeeds; timer expires	You feed on {n}.
+20	mount-existing-rider	0x1415075bb	0x14150252b	(mode==1 && actor==current_adventurer); existing rider found	You cannot mount {n} due to the presence of an existing rider.
+20	mount-too-late	0x141507bd1	0x141502b41	(mode==1 && actor==current_adventurer); time/path branch fails; second constructor at reference 0x141507d08	You fail to mount {n} in time.
+21	dismount-too-late	0x1415082cb	0x14150323b	(mode==1 && actor==current_adventurer); path/position helper fails	You fail to dismount in time.
+24	already-ready	0x14150971c	0x14150468c	weapon+0xe8->+0x1cc==0 means nock; nonzero means load; intent target exists; ammo populated before append	{s} is already nocked with {s} and you prepared to shoot.
+24	already-no-intent	0x141509883	0x1415047f3	no intent target; native appends still-empty ammo buffer at 0x1415098b9 before generating ammo description	{s} is already nocked with .
+24	finish-ready	0x141509b95	0x141504b05	valid held weapon+compatible ammo; zero mode => nocking/in, nonzero => loading/into; target intent present	You finish nocking {s} in {s} and prepare to shoot.
+24	finish-no-intent	0x141509d96	0x141504d06	valid held weapon+compatible ammo; zero mode => nocking/in, nonzero => loading/into; target intent absent	You finish nocking {s} in {s}.
+24	already-ready	0x141509725	0x141504695	weapon+0xe8->+0x1cc==0 means nock; nonzero means load; intent target exists; ammo populated before append	{s} is already loaded with {s} and you prepared to shoot.
+24	already-no-intent	0x14150988c	0x1415047fc	no intent target; native appends still-empty ammo buffer at 0x1415098b9 before generating ammo description	{s} is already loaded with .
+24	finish-ready	0x141509b95	0x141504b05	valid held weapon+compatible ammo; zero mode => nocking/in, nonzero => loading/into; target intent present	You finish loading {s} into {s} and prepare to shoot.
+24	finish-no-intent	0x141509d96	0x141504d06	valid held weapon+compatible ammo; zero mode => nocking/in, nonzero => loading/into; target intent absent	You finish loading {s} into {s}.

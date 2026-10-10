@@ -5,6 +5,11 @@
 // right labor selector creates one Text from each unit_labor enum value.
 static std::optional<NativeFortressLaborCaption> capture_native_fortress_labor_caption(
         uintptr_t source_address) {
+    if (g_native_info_write_graphics &&
+            (g_native_info_page != NativeInfoPage::Labor ||
+                (g_native_info_labor_page != NativeInfoLaborPage::None &&
+                    g_native_info_labor_page != NativeInfoLaborPage::WorkDetails)))
+        return std::nullopt;
 #ifdef _WIN32
     const uintptr_t base = reinterpret_cast<uintptr_t>(GetModuleHandleW(nullptr));
     if (!base || !native_pe_supported() || source_address < 0x150) return std::nullopt;
@@ -58,10 +63,7 @@ static std::optional<NativeFortressLaborCaption> capture_native_fortress_labor_c
     };
 #endif
     const auto read = [&](uintptr_t pointer, void *destination, size_t size) {
-        if (!native_info_title_memory_readable(reinterpret_cast<const void *>(pointer), size))
-            return false;
-        std::memcpy(destination, reinterpret_cast<const void *>(pointer), size);
-        return true;
+        return native_history_copy_bytes(pointer, destination, size);
     };
     const auto pointer_at = [&](uintptr_t pointer, uintptr_t &result) {
         return read(pointer, &result, sizeof(result));
@@ -90,8 +92,10 @@ static std::optional<NativeFortressLaborCaption> capture_native_fortress_labor_c
         const uintptr_t expected = address(reference);
         return expected && widget.vtable == expected;
     };
-    const auto children = [&](uintptr_t pointer, std::array<uintptr_t, 3> &vector,
+    using ChildSlots = std::vector<std::array<uintptr_t, 2>>;
+    const auto children = [&](uintptr_t pointer, ChildSlots &members,
             size_t maximum = 8192) {
+        std::array<uintptr_t, 3> vector{};
         if (!read(pointer +
 #ifdef _WIN32
                 0x160,
@@ -102,18 +106,15 @@ static std::optional<NativeFortressLaborCaption> capture_native_fortress_labor_c
                 vector[0] > vector[1] || vector[1] > vector[2] ||
                 (vector[1] - vector[0]) % 16 || (vector[2] - vector[0]) % 16 ||
                 (vector[1] - vector[0]) / 16 > maximum) return false;
-        return vector[0] == vector[1] || native_info_title_memory_readable(
-            reinterpret_cast<const void *>(vector[0]), vector[1] - vector[0]);
+        members.resize((vector[1] - vector[0]) / 16);
+        return members.empty() || read(vector[0], members.data(), vector[1] - vector[0]);
     };
     const auto child_index = [&](const Widget &parent, const Widget &child) -> std::optional<size_t> {
         if (child.parent != parent.pointer) return std::nullopt;
-        std::array<uintptr_t, 3> vector{};
-        if (!children(parent.pointer, vector)) return std::nullopt;
-        for (uintptr_t at = vector[0]; at < vector[1]; at += 16) {
-            uintptr_t member = 0;
-            std::memcpy(&member, reinterpret_cast<const void *>(at), sizeof(member));
-            if (member == child.pointer) return (at - vector[0]) / 16;
-        }
+        ChildSlots members;
+        if (!children(parent.pointer, members)) return std::nullopt;
+        for (size_t i = 0; i < members.size(); ++i)
+            if (members[i][0] == child.pointer) return i;
         return std::nullopt;
     };
     const auto caption_box = [&](const Widget &entry, const Widget &text,
@@ -121,13 +122,12 @@ static std::optional<NativeFortressLaborCaption> capture_native_fortress_labor_c
         // Text measures the English caption, while its entry owns the full
         // allocated row. Keep the native category/labor inset and reserve
         // the live right-hand controls instead of centering by glyph width.
-        std::array<uintptr_t, 3> vector{};
-        if (!children(entry.pointer, vector)) return false;
+        ChildSlots members;
+        if (!children(entry.pointer, members)) return false;
         const int32_t left = native_inset >= 0 ? entry.rect[0] + native_inset : text.rect[0];
         int32_t right = entry.rect[2] + 1;
-        for (uintptr_t at = vector[0]; at < vector[1]; at += 16) {
-            uintptr_t member = 0;
-            std::memcpy(&member, reinterpret_cast<const void *>(at), sizeof(member));
+        for (const auto &slot : members) {
+            const uintptr_t member = slot[0];
             if (member == text.pointer) continue;
             Widget sibling;
             if (!widget_at(member, sibling) || sibling.parent != entry.pointer) continue;
@@ -158,6 +158,12 @@ static std::optional<NativeFortressLaborCaption> capture_native_fortress_labor_c
         }
         return false;
     };
+    // Stack/local captions are not widget Text fields. Reject their first
+    // word before reading visibility, parents or child vectors.
+    uintptr_t text_table = 0;
+    if (!pointer_at(source_address - 0x150, text_table) ||
+            (text_table != address(0x1618aa0) && text_table != address(0x162dc10)))
+        return std::nullopt;
     Widget text, entry, parent;
     if (!widget_at(source_address - 0x150, text) ||
             (!is(text, 0x1618aa0) && !is(text, 0x162dc10)) ||
@@ -215,7 +221,7 @@ static std::optional<NativeFortressLaborCaption> capture_native_fortress_labor_c
     // The dedicated labor selector inherits scroll_rows. Its enum vector
     // and child vector have the same order, including negative categories.
     // Unit rosters, name editors and action buttons have other native owners.
-    if (is(parent, 0x163c1c0) && child_index(parent, entry)) {
+    if (is(parent, 0x163c1c0)) {
         std::array<uintptr_t, 3> labors{};
         const auto index = child_index(parent, entry);
         if (!index || !read(parent.pointer +
@@ -245,8 +251,9 @@ static std::optional<NativeFortressLaborCaption> capture_native_fortress_labor_c
     // select_list::add_entry stores callbacks in a map keyed by entry index;
     // this work-detail callback captures the interface and record pointers.
     Widget list, labor_root;
+    if (!is(parent, 0x15eef08)) return std::nullopt;
     const auto index = child_index(parent, entry);
-    if (!is(parent, 0x15eef08) || !index || !widget_at(parent.parent, list) ||
+    if (!index || !widget_at(parent.parent, list) ||
             !is(list, 0x1785b28) || parent.pointer != list.pointer + 0x160 ||
             !widget_at(list.parent, labor_root) || !is(labor_root, 0x163bf00) ||
             !child_index(labor_root, list)) return std::nullopt;
@@ -300,15 +307,11 @@ static std::optional<NativeFortressLaborCaption> capture_native_fortress_labor_c
     if (!read(address(0x2399980), details.data(), sizeof(details)) || !details[0] ||
             details[0] > details[1] || details[1] > details[2] ||
             (details[1] - details[0]) % sizeof(uintptr_t) ||
-            details[1] - details[0] > 8192 * sizeof(uintptr_t) ||
-            !native_info_title_memory_readable(reinterpret_cast<const void *>(details[0]),
-                details[1] - details[0])) return std::nullopt;
-    bool live_detail = false;
-    for (uintptr_t at = details[0]; at < details[1]; at += sizeof(uintptr_t)) {
-        uintptr_t member = 0;
-        std::memcpy(&member, reinterpret_cast<const void *>(at), sizeof(member));
-        if (member == detail) { live_detail = true; break; }
-    }
+            details[1] - details[0] > 8192 * sizeof(uintptr_t)) return std::nullopt;
+    std::vector<uintptr_t> members((details[1] - details[0]) / sizeof(uintptr_t));
+    if (!members.empty() && !read(details[0], members.data(), details[1] - details[0]))
+        return std::nullopt;
+    const bool live_detail = std::find(members.begin(), members.end(), detail) != members.end();
     uint32_t flags = 0;
     if (!live_detail || !read(native_history_object_member(detail, "work_detail", "flags", 4), &flags, sizeof(flags))) return std::nullopt;
     NativeFortressLaborCaption result;

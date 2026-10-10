@@ -1,0 +1,5 @@
+edition	condition	branch_instruction	article_instruction	actor_formatter	predicate_instruction	submission	source_form	field_type
+reference	selected language_name absent or has_name at +0x72 equals 0	0x140e39ffb / 0x140e3a001	0x140e3a003	0x141330c30 r8d=0	0x140e3a03b	0x140e3a0a0	The {s} has been missing for a week.	$unit
+reference	selected language_name has_name at +0x72 is nonzero	0x140e3a001 -> 0x140e3a016		0x141330c30 r8d=0	0x140e3a03b	0x140e3a0a0	{s} has been missing for a week.	$unit
+classic	selected language_name absent or has_name at +0x72 equals 0	0x140e34f6b / 0x140e34f71	0x140e34f73	0x14132bba0 r8d=0	0x140e34fab	0x140e35010	The {s} has been missing for a week.	$unit
+classic	selected language_name has_name at +0x72 is nonzero	0x140e34f71 -> 0x140e34f86		0x14132bba0 r8d=0	0x140e34fab	0x140e35010	{s} has been missing for a week.	$unit

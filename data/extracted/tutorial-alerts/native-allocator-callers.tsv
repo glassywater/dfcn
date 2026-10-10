@@ -1,0 +1,5 @@
+edition	image_identity	allocator_rva	instruction_rva	caller_rva	owner
+steam	PE:6a70a6d9:02711000	0xe3bc0	0xe4680	0xe3c20	native-announcement-submit
+steam	PE:6a70a6d9:02711000	0xe3bc0	0x1f2fb6	0x1f2310	tutorial-stage-9
+classic	PE:6a70b91c:0270a000	0xe3b50	0xe4610	0xe3bb0	native-announcement-submit
+classic	PE:6a70b91c:0270a000	0xe3b50	0x1f2f46	0x1f22a0	tutorial-stage-9

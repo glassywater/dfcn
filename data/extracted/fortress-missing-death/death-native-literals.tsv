@@ -1,0 +1,157 @@
+edition	function_start	instruction	operand_kind	operand_address	text
+reference	0x1413e5b20	0x1413e5caa	cstring	0x141784860	 have 
+reference	0x1413e5b20	0x1413e5cf0	cstring	0x141671e94	 has 
+reference	0x1413e5b20	0x1413e5d52	immediate		The 
+reference	0x1413e5b20	0x1413e5da4	immediate		The 
+reference	0x1413e5b20	0x1413e5e22	cstring	0x141671e94	 has 
+reference	0x1413e5b20	0x1413e5e9e	cstring	0x141784850	died in a cage.
+reference	0x1413e5b20	0x1413e5eb0	cstring	0x141784868	died of old age.
+reference	0x1413e5b20	0x1413e5ec2	cstring	0x1417848b8	been scared to death
+reference	0x1413e5b20	0x1413e5ee1	cstring	0x1415eda08	 by 
+reference	0x1413e5b20	0x1413e5f78	cstring	0x1415ee438	!
+reference	0x1413e5b20	0x1413e5f84	cstring	0x1417848a0	died in the dark.
+reference	0x1413e5b20	0x1413e5f90	cstring	0x1417848e0	starved to death.
+reference	0x1413e5b20	0x1413e5fa2	cstring	0x1417848d0	died of thirst.
+reference	0x1413e5b20	0x1413e5fb4	cstring	0x1417847c0	burned up in magma.
+reference	0x1413e5b20	0x1413e5fc6	cstring	0x1417847f0	burned up in dragon fire.
+reference	0x1413e5b20	0x1413e5fd8	cstring	0x1417847e8	boiled.
+reference	0x1413e5b20	0x1413e5fea	cstring	0x141784820	melted.
+reference	0x1413e5b20	0x1413e5ffc	cstring	0x141784810	condensed.
+reference	0x1413e5b20	0x1413e600e	cstring	0x141784840	solidified.
+reference	0x1413e5b20	0x1413e601a	cstring	0x141784828	died in the heat.
+reference	0x1413e5b20	0x1413e602c	cstring	0x1417849e8	been encased in cooling lava.
+reference	0x1413e5b20	0x1413e603e	cstring	0x1417849c8	been encased in cooling magma.
+reference	0x1413e5b20	0x1413e6050	cstring	0x141784a20	been encased in ice.
+reference	0x1413e5b20	0x1413e6062	cstring	0x141784a08	frozen to death.
+reference	0x1413e5b20	0x1413e6074	cstring	0x141784a50	burned to death.
+reference	0x1413e5b20	0x1413e6086	cstring	0x141784a38	been scalded to death.
+reference	0x1413e5b20	0x1413e6098	cstring	0x141784a88	burned up in a magma mist.
+reference	0x1413e5b20	0x1413e60aa	cstring	0x141784a68	been crushed by a drawbridge.
+reference	0x1413e5b20	0x1413e60bc	cstring	0x141784918	been crushed under the collapsing ceiling.
+reference	0x1413e5b20	0x1413e60ce	cstring	0x1417848f8	been killed by falling rocks.
+reference	0x1413e5b20	0x1413e60e0	cstring	0x141784958	been shot and killed.
+reference	0x1413e5b20	0x1413e60f2	cstring	0x141784948	bled to death.
+reference	0x1413e5b20	0x1413e6104	cstring	0x141784980	succumbed to infection.
+reference	0x1413e5b20	0x1413e6116	cstring	0x141784970	suffocated.
+reference	0x1413e5b20	0x1413e6122	cstring	0x1417849b0	been struck down.
+reference	0x1413e5b20	0x1413e612e	cstring	0x141784998	been slaughtered.
+reference	0x1413e5b20	0x1413e6140	cstring	0x141784b98	been scuttled.
+reference	0x1413e5b20	0x1413e6152	cstring	0x141784b80	been hacked to pieces.
+reference	0x1413e5b20	0x1413e6164	cstring	0x141784bb8	been executed.
+reference	0x1413e5b20	0x1413e6176	cstring	0x141784ba8	been beheaded.
+reference	0x1413e5b20	0x1413e6188	cstring	0x141784be0	been crucified.
+reference	0x1413e5b20	0x1413e619a	cstring	0x141784bc8	been buried alive.
+reference	0x1413e5b20	0x1413e61ac	cstring	0x141784c10	been executed by being left out in the air.
+reference	0x1413e5b20	0x1413e61be	cstring	0x141784bf0	been executed by drowning.
+reference	0x1413e5b20	0x1413e61d0	cstring	0x141784ac0	been burned alive.
+reference	0x1413e5b20	0x1413e61e2	cstring	0x141784aa8	been fed to beasts.
+reference	0x1413e5b20	0x1413e6206	cstring	0x141784af8	been drained of blood
+reference	0x1413e5b20	0x1413e6218	cstring	0x141784ad8	been drained of blood by 
+reference	0x1413e5b20	0x1413e6280	cstring	0x1415ee438	!
+reference	0x1413e5b20	0x1413e6292	cstring	0x141784b28	been murdered by 
+reference	0x1413e5b20	0x1413e62f6	cstring	0x1415ee438	!
+reference	0x1413e5b20	0x1413e6302	cstring	0x1415ed578	somebody
+reference	0x1413e5b20	0x1413e631e	cstring	0x1415ee438	!
+reference	0x1413e5b20	0x1413e6330	cstring	0x141784b10	been killed by a trap.
+reference	0x1413e5b20	0x1413e6342	cstring	0x141784b60	been killed by a vehicle.
+reference	0x1413e5b20	0x1413e6354	cstring	0x141784b40	been killed by a flying object.
+reference	0x1413e5b20	0x1413e6366	cstring	0x141784d30	vanished.
+reference	0x1413e5b20	0x1413e6378	cstring	0x141784d20	collapsed.
+reference	0x1413e5b20	0x1413e638a	cstring	0x141784d58	died after colliding with an obstacle.
+reference	0x1413e5b20	0x1413e639c	cstring	0x141784d40	been impaled on spikes.
+reference	0x1413e5b20	0x1413e63ae	cstring	0x141784d80	leapt from a great height.
+reference	0x1413e5b20	0x1413e63c0	cstring	0x1417847d8	drowned.
+reference	0x1413e5b20	0x1413e63e7	cstring	0x141784880	fallen into a deep chasm.
+reference	0x1413e5b20	0x1413e63f9	cstring	0x141784de0	been found dead.
+reference	0x1413e5b20	0x1413e640b	cstring	0x141784db8	been found dead, contorted in fear!
+reference	0x1413e5b20	0x1413e641d	cstring	0x141784c60	been found, starved to death.
+reference	0x1413e5b20	0x1413e642f	cstring	0x141784c40	been found dead, dehydrated.
+reference	0x1413e5b20	0x1413e6441	cstring	0x141784ca0	been found dead, drowned.
+reference	0x1413e5b20	0x1413e6453	cstring	0x141784c80	been found dead, badly burned.
+reference	0x1413e5b20	0x1413e6465	cstring	0x141784cd8	been found boiled.
+reference	0x1413e5b20	0x1413e6474	cstring	0x141784cc0	been found melted.
+reference	0x1413e5b20	0x1413e6483	cstring	0x141784d08	been found condensed.
+reference	0x1413e5b20	0x1413e6492	cstring	0x141784cf0	been found solidified.
+reference	0x1413e5b20	0x1413e64a1	cstring	0x1417855b0	been found dead, frozen.
+reference	0x1413e5b20	0x1413e64b0	cstring	0x141785590	been found dead, badly crushed.
+reference	0x1413e5b20	0x1413e64bf	cstring	0x141785600	been found scuttled.
+reference	0x1413e5b20	0x1413e64ce	cstring	0x1417855d0	been found dead, completely drained of blood!
+reference	0x1413e5b20	0x1413e64d7	cstring	0x141784da0	been put to rest.
+classic	0x1413e0a90	0x1413e0c1a	cstring	0x14177fa4c	 have 
+classic	0x1413e0a90	0x1413e0c60	cstring	0x14166ce98	 has 
+classic	0x1413e0a90	0x1413e0cc2	immediate		The 
+classic	0x1413e0a90	0x1413e0d14	immediate		The 
+classic	0x1413e0a90	0x1413e0d92	cstring	0x14166ce98	 has 
+classic	0x1413e0a90	0x1413e0e0e	cstring	0x14177fa98	died in a cage.
+classic	0x1413e0a90	0x1413e0e20	cstring	0x14177f8a8	died of old age.
+classic	0x1413e0a90	0x1413e0e32	cstring	0x14177f890	been scared to death
+classic	0x1413e0a90	0x1413e0e51	cstring	0x1415e8a08	 by 
+classic	0x1413e0a90	0x1413e0ee8	cstring	0x1415e942c	!
+classic	0x1413e0a90	0x1413e0ef4	cstring	0x14177f8d8	died in the dark.
+classic	0x1413e0a90	0x1413e0f00	cstring	0x14177f8c0	starved to death.
+classic	0x1413e0a90	0x1413e0f12	cstring	0x14177f900	died of thirst.
+classic	0x1413e0a90	0x1413e0f24	cstring	0x14177f930	burned up in magma.
+classic	0x1413e0a90	0x1413e0f36	cstring	0x14177f910	burned up in dragon fire.
+classic	0x1413e0a90	0x1413e0f48	cstring	0x14177fba0	boiled.
+classic	0x1413e0a90	0x1413e0f5a	cstring	0x14177fb98	melted.
+classic	0x1413e0a90	0x1413e0f6c	cstring	0x14177fbb8	condensed.
+classic	0x1413e0a90	0x1413e0f7e	cstring	0x14177fba8	solidified.
+classic	0x1413e0a90	0x1413e0f8a	cstring	0x14177fbe8	died in the heat.
+classic	0x1413e0a90	0x1413e0f9c	cstring	0x14177fbc8	been encased in cooling lava.
+classic	0x1413e0a90	0x1413e0fae	cstring	0x14177fc18	been encased in cooling magma.
+classic	0x1413e0a90	0x1413e0fc0	cstring	0x14177fc00	been encased in ice.
+classic	0x1413e0a90	0x1413e0fd2	cstring	0x14177fac0	frozen to death.
+classic	0x1413e0a90	0x1413e0fe4	cstring	0x14177faa8	burned to death.
+classic	0x1413e0a90	0x1413e0ff6	cstring	0x14177faf8	been scalded to death.
+classic	0x1413e0a90	0x1413e1008	cstring	0x14177fad8	burned up in a magma mist.
+classic	0x1413e0a90	0x1413e101a	cstring	0x14177fb40	been crushed by a drawbridge.
+classic	0x1413e0a90	0x1413e102c	cstring	0x14177fb10	been crushed under the collapsing ceiling.
+classic	0x1413e0a90	0x1413e103e	cstring	0x14177fb78	been killed by falling rocks.
+classic	0x1413e0a90	0x1413e1050	cstring	0x14177fb60	been shot and killed.
+classic	0x1413e0a90	0x1413e1062	cstring	0x14177fd20	bled to death.
+classic	0x1413e0a90	0x1413e1074	cstring	0x14177fd08	succumbed to infection.
+classic	0x1413e0a90	0x1413e1086	cstring	0x14177fd48	suffocated.
+classic	0x1413e0a90	0x1413e1092	cstring	0x14177fd30	been struck down.
+classic	0x1413e0a90	0x1413e109e	cstring	0x14177fd68	been slaughtered.
+classic	0x1413e0a90	0x1413e10b0	cstring	0x14177fd58	been scuttled.
+classic	0x1413e0a90	0x1413e10c2	cstring	0x14177fd90	been hacked to pieces.
+classic	0x1413e0a90	0x1413e10d4	cstring	0x14177fd80	been executed.
+classic	0x1413e0a90	0x1413e10e6	cstring	0x14177fc48	been beheaded.
+classic	0x1413e0a90	0x1413e10f8	cstring	0x14177fc38	been crucified.
+classic	0x1413e0a90	0x1413e110a	cstring	0x14177fc88	been buried alive.
+classic	0x1413e0a90	0x1413e111c	cstring	0x14177fc58	been executed by being left out in the air.
+classic	0x1413e0a90	0x1413e112e	cstring	0x14177fcb8	been executed by drowning.
+classic	0x1413e0a90	0x1413e1140	cstring	0x14177fca0	been burned alive.
+classic	0x1413e0a90	0x1413e1152	cstring	0x14177fcf0	been fed to beasts.
+classic	0x1413e0a90	0x1413e1176	cstring	0x14177fcd8	been drained of blood
+classic	0x1413e0a90	0x1413e1188	cstring	0x14177feb0	been drained of blood by 
+classic	0x1413e0a90	0x1413e11f0	cstring	0x1415e942c	!
+classic	0x1413e0a90	0x1413e1202	cstring	0x14177fe98	been murdered by 
+classic	0x1413e0a90	0x1413e1266	cstring	0x1415e942c	!
+classic	0x1413e0a90	0x1413e1272	cstring	0x1415e8570	somebody
+classic	0x1413e0a90	0x1413e128e	cstring	0x1415e942c	!
+classic	0x1413e0a90	0x1413e12a0	cstring	0x14177fef0	been killed by a trap.
+classic	0x1413e0a90	0x1413e12b2	cstring	0x14177fed0	been killed by a vehicle.
+classic	0x1413e0a90	0x1413e12c4	cstring	0x14177ff18	been killed by a flying object.
+classic	0x1413e0a90	0x1413e12d6	cstring	0x14177ff08	vanished.
+classic	0x1413e0a90	0x1413e12e8	cstring	0x14177ff60	collapsed.
+classic	0x1413e0a90	0x1413e12fa	cstring	0x14177ff38	died after colliding with an obstacle.
+classic	0x1413e0a90	0x1413e130c	cstring	0x14177fdc0	been impaled on spikes.
+classic	0x1413e0a90	0x1413e131e	cstring	0x14177fdf0	leapt from a great height.
+classic	0x1413e0a90	0x1413e1330	cstring	0x14177f8f0	drowned.
+classic	0x1413e0a90	0x1413e1357	cstring	0x14177fa78	fallen into a deep chasm.
+classic	0x1413e0a90	0x1413e1369	cstring	0x14177fdd8	been found dead.
+classic	0x1413e0a90	0x1413e137b	cstring	0x14177fe30	been found dead, contorted in fear!
+classic	0x1413e0a90	0x1413e138d	cstring	0x14177fe10	been found, starved to death.
+classic	0x1413e0a90	0x1413e139f	cstring	0x14177fe78	been found dead, dehydrated.
+classic	0x1413e0a90	0x1413e13b1	cstring	0x14177fe58	been found dead, drowned.
+classic	0x1413e0a90	0x1413e13c3	cstring	0x14177f720	been found dead, badly burned.
+classic	0x1413e0a90	0x1413e13d5	cstring	0x14177f708	been found boiled.
+classic	0x1413e0a90	0x1413e13e4	cstring	0x14177f758	been found melted.
+classic	0x1413e0a90	0x1413e13f3	cstring	0x14177f740	been found condensed.
+classic	0x1413e0a90	0x1413e1402	cstring	0x14177f790	been found solidified.
+classic	0x1413e0a90	0x1413e1411	cstring	0x14177f770	been found dead, frozen.
+classic	0x1413e0a90	0x1413e1420	cstring	0x14177f7c0	been found dead, badly crushed.
+classic	0x1413e0a90	0x1413e142f	cstring	0x14177f7a8	been found scuttled.
+classic	0x1413e0a90	0x1413e143e	cstring	0x14177f640	been found dead, completely drained of blood!
+classic	0x1413e0a90	0x1413e1447	cstring	0x14177fda8	been put to rest.

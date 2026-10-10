@@ -6,7 +6,8 @@ static bool native_paragraph_owns_card_row(const std::vector<Match> &matches,
     std::vector<bool> covered;
     const int right = row.x + static_cast<int>(row.source.size());
     for (const Match &match : matches) {
-        if (match.rule != kUiMessageRule || match.y != row.y || match.length <= 0 ||
+        if ((match.rule != kUiMessageRule && match.rule != kConversationPortraitRule) ||
+                match.y != row.y || match.length <= 0 ||
             match.length != static_cast<int>(match.source.size())) continue;
         const int first = std::max(row.x, match.x);
         const int last = std::min(right, match.x + match.length);
@@ -140,14 +141,19 @@ void Overlay::compose_native_text_rows(const NativeTextCard &card,
                     match.layout_length == card.interior.w;
             })) continue;
         // Site news, artifact prose and complete card messages have already
-        // been reflowed as documents.
+        // been reflowed as documents. Artifact list records likewise retain
+        // their own two-line button allocation and inset baselines.
         // Preserve every owned source span, including now-empty tail rows;
         // row composition must not restore the native wrapping or English.
         if ((row_rule != kCharacterGroupRowRule &&
                 native_paragraph_owns_card_row(matches, row)) ||
             std::any_of(matches.begin(), matches.end(), [&](const Match &match) {
-                return (match.rule == kWorldSiteHistoryRule ||
-                        match.rule == kWorldArtifactDescriptionRule) && match.y == row.y;
+                return match.y == row.y &&
+                    (match.rule == kWorldSiteHistoryRule ||
+                     match.rule == kWorldArtifactDescriptionRule ||
+                     (match.rule == kWorldArtifactRowRule &&
+                      match.x < row.x + static_cast<int>(row.source.size()) &&
+                      row.x < match.x + match.length));
             })) continue;
         const int end = row.x + static_cast<int>(row.source.size());
         struct RowPart {

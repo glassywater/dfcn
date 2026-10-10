@@ -8,8 +8,9 @@ static bool world_artifact_status(std::string_view source) {
         source == "Last known to be traveling" || source == "Location unknown";
 }
 
-void Overlay::append_world_artifact_rows(std::vector<std::string> &rows,
+bool Overlay::append_world_artifact_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
+    bool owned = false;
     // Read the active logical layer both at glyph suppression and Present.
     // The mask writer checks each owned byte against the layer being drawn.
     std::vector<std::string> context(gps_->dimy, std::string(gps_->dimx, ' '));
@@ -151,6 +152,7 @@ void Overlay::append_world_artifact_rows(std::vector<std::string> &rows,
                     complete_skin = false;
             }
             if (!complete_skin) continue;
+            owned = true;
             const std::array<LogicalTextField, 2> fields = {title, field};
             for (size_t index = 0; index < fields.size(); ++index) {
                 const auto &text = fields[index];
@@ -158,46 +160,60 @@ void Overlay::append_world_artifact_rows(std::vector<std::string> &rows,
                 row.x = text.start;
                 row.y = y - 1 + static_cast<int>(index);
                 row.source = text.text;
+                if (only_y >= 0 && only_y != row.y) {
+                    std::fill_n(rows[row.y].begin() + row.x, row.source.size(), ' ');
+                    continue;
+                }
                 const std::string complete = complete_source(row.x, row.y, row.source);
                 const std::string source = normalize_utterance(complete);
-                std::optional<std::string> target;
-                if (index == 1) {
-                    // Capture before native ellipsizing, then parse the
-                    // whole species/caste/name, not Adept as a skill rating.
-                    // Native Linux 53.16 uses resize at 0x1431cc5 followed
-                    // by addst at 0x142fee6, already served by shared hooks.
-                    target = translate_legends_text("World artifact: " + source, false, false);
-                } else if (const size_t species_at = source.rfind(" the ");
-                           species_at != std::string::npos && species_at > 0 &&
-                           translate_creature_descriptor(
-                               std::string_view(source).substr(species_at + 5), true)) {
-                    // Missing citizens use the same Last in/status button as
-                    // artifacts, but their title is a figure, not an item.
-                    // Resolve the complete name/epithet/species with the shared
-                    // {n} the {s} backtracking before book and item fallbacks.
-                    target = translate_legends_text(source, true, true);
-                } else if (source.starts_with("the ") || source.starts_with("a ") ||
-                           source.starts_with("an ")) {
-                    // This typed item parser removes the article, retains
-                    // designation marks, and resolves the material + weapon
-                    // noun together (pike = the weapon, not the fish).
-                    target = translate_legends_item(source);
-                } else {
-                    if (split_generated_name_identity(source) || split_repeated_title_identity(source))
-                        target = translate_legends_artifact_identity(source);
-                    // This list mixes ordinary artifacts with written works.
-                    // Resolve the shared BOOK_ART/BOOK_INSTRUCTION grammar
-                    // before the proper-name fallback, just like Codices and
-                    // written-item descriptions. Otherwise Question and
-                    // Explorations Of become phonetic name components, while
-                    // a complete title ending in '?' is rejected altogether.
-                    // The book resolver already falls back to the same typed
-                    // generated-name parser for ordinary artifact names.
-                    if (!target) target = translate_legends_book(source);
-                    if (!target) target = translate_legends_item(source);
-                }
-                if (target && (target->empty() || target->find("[C:") != std::string::npos ||
-                        target->find_first_of("\r\n") != std::string::npos)) target.reset();
+                // The row is a complete native field. Keep its final result,
+                // including an unsupported name, across raw/composite passes
+                // and subsequent frames. The book parser's work memo belongs
+                // to one call and cannot provide that reuse on its own.
+                auto target = memoize_item_translation(
+                    std::string(index == 1 ? "world-artifact-status:" : "world-artifact-title:") + source,
+                    [&]() -> std::optional<std::string> {
+                        TranslationWorkScope work;
+                        std::optional<std::string> target;
+                        if (index == 1) {
+                            // Capture before native ellipsizing, then parse the
+                            // whole species/caste/name, not Adept as a skill rating.
+                            // Native Linux 53.16 uses resize at 0x1431cc5 followed
+                            // by addst at 0x142fee6, already served by shared hooks.
+                            target = translate_legends_text("World artifact: " + source, false, false);
+                        } else if (const size_t species_at = source.rfind(" the ");
+                                   species_at != std::string::npos && species_at > 0 &&
+                                   translate_creature_descriptor(
+                                       std::string_view(source).substr(species_at + 5), true)) {
+                            // Missing citizens use the same Last in/status button as
+                            // artifacts, but their title is a figure, not an item.
+                            // Resolve the complete name/epithet/species with the shared
+                            // {n} the {s} backtracking before book and item fallbacks.
+                            target = translate_legends_text(source, true, true);
+                        } else if (source.starts_with("the ") || source.starts_with("a ") ||
+                                   source.starts_with("an ")) {
+                            // This typed item parser removes the article, retains
+                            // designation marks, and resolves the material + weapon
+                            // noun together (pike = the weapon, not the fish).
+                            target = translate_legends_item(source);
+                        } else {
+                            if (split_generated_name_identity(source) || split_repeated_title_identity(source))
+                                target = translate_legends_artifact_identity(source);
+                            // This list mixes ordinary artifacts with written works.
+                            // Resolve the shared BOOK_ART/BOOK_INSTRUCTION grammar
+                            // before the proper-name fallback, just like Codices and
+                            // written-item descriptions. Otherwise Question and
+                            // Explorations Of become phonetic name components, while
+                            // a complete title ending in '?' is rejected altogether.
+                            // The book resolver already falls back to the same typed
+                            // generated-name parser for ordinary artifact names.
+                            if (!target) target = translate_legends_book(source);
+                            if (!target) target = translate_legends_item(source);
+                        }
+                        if (target && (target->empty() || target->find("[C:") != std::string::npos ||
+                                target->find_first_of("\r\n") != std::string::npos)) target.reset();
+                        return target;
+                    });
                 Match match{row.x, row.y, static_cast<int>(row.source.size()),
                     kWorldArtifactRowRule, target ? *target : cp437_to_utf8(complete), row.source};
                 match.native_hover_untranslated = !target;
@@ -221,11 +237,20 @@ void Overlay::append_world_artifact_rows(std::vector<std::string> &rows,
                     static_cast<int>(gps_->tile_pixel_y * config_.font_scale), 1, gps_->tile_pixel_y);
                 match.layout_lock_font_pixels = true;
                 match.layout_line_height_pixels = gps_->tile_pixel_y;
+                // Raw card readers can already have queued this caption.
+                // Reserving screen_rows prevents later dictionary matches,
+                // but does not retire those earlier display records. The
+                // complete two-line button owns both source rows exclusively.
+                std::erase_if(matches, [&](const Match &prior) {
+                    return prior.y == match.y && prior.x < match.x + match.length &&
+                        match.x < prior.x + prior.length;
+                });
                 std::fill_n(rows[row.y].begin() + row.x, row.source.size(), ' ');
-                if (only_y < 0 || only_y == row.y) matches.push_back(std::move(match));
+                matches.push_back(std::move(match));
             }
         }
     }
+    return owned;
 }
 
 std::optional<NativeTextCard> Overlay::capture_world_artifact_description_card(
@@ -421,6 +446,20 @@ size_t Overlay::append_world_artifact_description(const NativeTextCard &card,
 
 void Overlay::layout_world_artifact_rows(SDL_Renderer *renderer) {
     if (!gps_ || !face_ || !renderer || gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0) return;
+    // Generic page layout runs while these independent records are detached.
+    // A raw caption recovered in that pass must not paint the same source
+    // again when the typed records are restored with their inset baselines.
+    std::vector<SDL_Rect> owned_rows;
+    for (const Match &match : prepared_matches_)
+        if (match.rule == kWorldArtifactRowRule && match.native_picture_caption_box)
+            owned_rows.push_back({match.x, match.y, match.length, 1});
+    std::erase_if(prepared_matches_, [&](const Match &match) {
+        if (match.rule == kWorldArtifactRowRule) return false;
+        return std::any_of(owned_rows.begin(), owned_rows.end(), [&](const SDL_Rect &row) {
+            return match.y == row.y && match.x < row.x + row.w &&
+                row.x < match.x + match.length;
+        });
+    });
     const auto settings = native_ui_settings();
     if (settings && settings->classic) {
         // Description lines can overwrite two cells, including the side

@@ -335,15 +335,19 @@ adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You fee
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You flounder in the water!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You flounder in the lava!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You flounder in the magma!
+adventure.announcement.shared-action	PE:6a70a6d9:02711000:0x141506424-0x141506459;PE:6a70b91c:0270a000:0x141501394-0x1415013c9	You flounder!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You push {s}.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede;0x14132c090:0x14132c54d-0x14132c668	You lose hold of the {s}.
+adventure.announcement.shared-action	PE:6a70a6d9:02711000:0x1415092dd-0x141509345;PE:6a70b91c:0270a000:0x14150424d-0x1415042b5	You lose hold of the {s}!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You mount {n}.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You dismount.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} flounders in the water!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} flounders in the lava!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} flounders in the magma!
+adventure.announcement.shared-action	PE:6a70a6d9:02711000:0x141506424-0x141506459;PE:6a70b91c:0270a000:0x141501394-0x1415013c9	{n} flounders!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} pushes {s}.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede;0x14132c090:0x14132c54d-0x14132c668	{n} loses hold of the {s}.
+adventure.announcement.shared-action	PE:6a70a6d9:02711000:0x1415092e6-0x141509345;PE:6a70b91c:0270a000:0x141504256-0x1415042b5	{n} loses hold of the {s}!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} mounts {n}.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} dismounts.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You cannot mount {n} due to the presence of an existing rider.
@@ -572,7 +576,8 @@ adventure.announcement.social-world	0x140e365c0:0x140e3684e-0x140e3974f	The high
 adventure.announcement.social-world	0x140e365c0:0x140e3684e-0x140e3974f	The agreement to establish a temple for {e} has been abandoned.
 adventure.announcement.social-world	0x140e365c0:0x140e3684e-0x140e3974f	The agreement to establish a guildhall for {e} has been abandoned.
 adventure.announcement.social-world	0x140e365c0:0x140e3684e-0x140e3974f	{e}, a {s} guild, has been established.
-adventure.announcement.social-world	0x140e39910:0x140e3a003-0x140e3c811	The {n} has been missing for a week.
+adventure.announcement.social-world	data/extracted/fortress-missing-death; reference 0x140e39910:0x140e39ff3-0x140e3a049 / classic 0x140e34880:0x140e34f63-0x140e34fb9; selected name absent or name+0x72 (has_name)=0	The {n} has been missing for a week.
+adventure.announcement.social-world	data/extracted/fortress-missing-death; reference 0x140e39910:0x140e39ffd-0x140e3a049 / classic 0x140e34880:0x140e34f6d-0x140e34fb9; name+0x72 (has_name)!=0	{n} has been missing for a week.
 adventure.announcement.social-world	0x140e39910:0x140e3a003-0x140e3c811	{n} has ended a mandate.
 adventure.announcement.social-world	0x140e39910:0x140e3a003-0x140e3c811	A mandate has ended.
 adventure.announcement.social-world	0x140e39910:0x140e3a003-0x140e3c811	Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense.

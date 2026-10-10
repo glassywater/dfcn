@@ -491,12 +491,24 @@ You no longer assume a submissive posture.	你不再摆出投降姿态。
 You assume a submissive posture.	你摆出了投降姿态。
 You are too injured to climb.	你的伤势太重，无法攀爬。
 You need a free grasp to climb.	需要一个空闲的抓握部位才能攀爬。
-# Adventure tracking: the first slot uses the shared footwear/anatomy grammar;
-# the second resolves the complete terrain/material name. Depth is scoped here.
+# Adventure tracking: footwear/anatomy, species owners and complete liquid
+# materials share the compact spoor grammar. Depth/strength stays in sentences.
+# Native liquid branches: 0x140af54ce/0x140af54e2/0x140af54f6 and
+# 0x140af5905/0x140af5919/0x140af592d; print suffix 0x140af5674/0x140af5ab2.
 There is a deep {s} imprint in the {s}.	{s2}中有一个{s1}留下的深压痕。
 There is a shallow {s} imprint in the {s}.	{s2}中有一个{s1}留下的浅压痕。
 There is a vague {s} imprint in the {s}.	{s2}中有一个{s1}留下的模糊压痕。
 There is a {s} imprint in the {s}.	{s2}中有一个{s1}留下的压痕。
+There is a {s}'s deep {s} imprint in the {s}.	{s3}中有一个{s1}{s2}留下的深压痕。
+There is a {s}'s shallow {s} imprint in the {s}.	{s3}中有一个{s1}{s2}留下的浅压痕。
+There is a {s}'s vague {s} imprint in the {s}.	{s3}中有一个{s1}{s2}留下的模糊压痕。
+There is a thick {s} print.	这里有一处{s}印迹，痕迹浓重。
+There is a light {s} print.	这里有一处{s}印迹，痕迹较淡。
+There is a faint {s} print.	这里有一处{s}印迹，痕迹隐约可见。
+There is a {s} print.	这里有一处{s}印迹。
+There is a {s}'s thick {s} print.	这里有一处{s1}{s2}印迹，痕迹浓重。
+There is a {s}'s light {s} print.	这里有一处{s1}{s2}印迹，痕迹较淡。
+There is a {s}'s faint {s} print.	这里有一处{s1}{s2}印迹，痕迹隐约可见。
 The signs lead north.	踪迹通向北方。
 The signs lead east.	踪迹通向东方。
 The signs lead south.	踪迹通向南方。
@@ -1292,6 +1304,29 @@ Name pet (new menu)	为宠物命名（新菜单）
 Gift a (large) pet or mount (new menu)	赠送（大型）宠物或坐骑（新菜单）
 Offer your service	提出效力
 Inquire about any troubles	询问有什么烦恼
+# Native ASK_ABOUT_SPECIFIC_TROUBLE: all 15 selectors, five count branches,
+# and the empty-suffix default; PE source in adventure-trouble-menu.
+Ask about the death	询问这起死亡事件
+Ask about the deaths	询问这些死亡事件
+Ask about the law-breaking	询问违法行为
+Ask about the fighting	询问争斗
+Ask about the army on the march	询问正在行军的军队
+Ask about armies on the march	询问正在行军的各支军队
+Ask about the abduction	询问这起绑架事件
+Ask about the abductions	询问这些绑架事件
+Ask about the occupation	询问这次占领
+Ask about occupations	询问这些占领
+Ask about the beast	询问那头凶兽
+Ask about the beasts	询问那些凶兽
+Ask about the criminals	询问罪犯
+Ask about the bandits	询问强盗
+Ask about the skulking vermin	询问潜伏的害兽
+Ask about the bone-chilling horror	询问骇人的恐怖之物
+Ask about the ruffians	询问暴徒
+Ask about the open war	询问公开交战
+Ask about the brewing trouble	询问正在酝酿的麻烦
+Ask about the missing treasure	询问失踪宝物
+Ask about	询问
 List available services	列出可提供的服务
 Ask about available services, drinks, rooms, etc.	询问服务、饮品、客房等
 Trade or settle debts	交易或清偿债务

@@ -1,0 +1,51 @@
+edition	image_identity	structure	offset	name	representation
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0x0	open	bool
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0x8	viewing_alert	announcement_alertst*
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0x10	viewing_alert_button	bool
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0x18	zoom_line_is_start	MSVC bit vector
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0x38	zoom_line_ann	vector<report*>
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0x50	zoom_line_unit	vector<unit*>
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0x68	zoom_line_unit_uac	vector<int16_t>
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0x80	alert_text	curses_text_boxst; vector<string*> at +0
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0x98	alert_width	int32_t
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0x9c	alert_list_size	int32_t
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0xa0	scroll_position_alert	int32_t
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0xa4	scrolling_alert	bool
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0xa8	viewing_unit	unit*
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0xb0	viewing_unit_uac	int16_t
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0xb8	uac_zoom_line_is_start	MSVC bit vector
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0xd8	uac_zoom_line_ann	vector<report*>
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0xf0	uac_text	curses_text_boxst; vector<string*> at +0
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0x108	uac_width	int32_t
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0x10c	uac_list_size	int32_t
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0x110	scroll_position_uac	int32_t
+reference	PE:6a70a6d9:02711000	announcement_alert_interfacest	0x114	scrolling_uac	bool
+reference	PE:6a70a6d9:02711000	announcement_alertst	0x0	type	int32_t enum
+reference	PE:6a70a6d9:02711000	announcement_alertst	0x8	announcement_id	vector<int32_t>
+reference	PE:6a70a6d9:02711000	announcement_alertst	0x20	report_unid	vector<int32_t>
+reference	PE:6a70a6d9:02711000	announcement_alertst	0x38	report_unit_announcement_category	vector<int16_t>
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0x0	open	bool
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0x8	viewing_alert	announcement_alertst*
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0x10	viewing_alert_button	bool
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0x18	zoom_line_is_start	MSVC bit vector
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0x38	zoom_line_ann	vector<report*>
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0x50	zoom_line_unit	vector<unit*>
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0x68	zoom_line_unit_uac	vector<int16_t>
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0x80	alert_text	curses_text_boxst; vector<string*> at +0
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0x98	alert_width	int32_t
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0x9c	alert_list_size	int32_t
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0xa0	scroll_position_alert	int32_t
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0xa4	scrolling_alert	bool
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0xa8	viewing_unit	unit*
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0xb0	viewing_unit_uac	int16_t
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0xb8	uac_zoom_line_is_start	MSVC bit vector
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0xd8	uac_zoom_line_ann	vector<report*>
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0xf0	uac_text	curses_text_boxst; vector<string*> at +0
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0x108	uac_width	int32_t
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0x10c	uac_list_size	int32_t
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0x110	scroll_position_uac	int32_t
+classic	PE:6a70b91c:0270a000	announcement_alert_interfacest	0x114	scrolling_uac	bool
+classic	PE:6a70b91c:0270a000	announcement_alertst	0x0	type	int32_t enum
+classic	PE:6a70b91c:0270a000	announcement_alertst	0x8	announcement_id	vector<int32_t>
+classic	PE:6a70b91c:0270a000	announcement_alertst	0x20	report_unid	vector<int32_t>
+classic	PE:6a70b91c:0270a000	announcement_alertst	0x38	report_unit_announcement_category	vector<int16_t>

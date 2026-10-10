@@ -679,6 +679,28 @@ TranslationResult Overlay::translate_dance_form_paragraph_result(
         }
         if (origin_at != std::string::npos) {
             std::string_view identity(sentence.data(), origin_at);
+            // Resolve the finite dance type before any opaque name. Other
+            // art-form openings share the origin marker but have no dance
+            // production, so their remaining prose must never be a name.
+            std::string_view raw_title;
+            std::string_view dance_identity;
+            constexpr std::string_view anonymous_prefix = "A ";
+            if (identity.starts_with(anonymous_prefix)) {
+                dance_identity = identity.substr(anonymous_prefix.size());
+            } else {
+                const size_t is_a = identity.find(" is a ");
+                if (is_a == std::string_view::npos || is_a == 0) return std::nullopt;
+                raw_title = identity.substr(0, is_a);
+                dance_identity = identity.substr(is_a + 6);
+            }
+            const size_t dance_at = dance_identity.find(" dance");
+            if (dance_at == std::string_view::npos) return std::nullopt;
+            const std::string_view raw_type = dance_identity.substr(0, dance_at);
+            std::string_view participants = trim_view(
+                dance_identity.substr(dance_at + 6));
+            const auto type = translate_dance_type(raw_type);
+            if (!type) return std::nullopt;
+
             std::string_view raw_origin = std::string_view(sentence).substr(
                 origin_at + matched_origin_marker.size());
             std::optional<std::string> devised_by;
@@ -695,24 +717,10 @@ TranslationResult Overlay::translate_dance_form_paragraph_result(
             if (!origin) return std::nullopt;
 
             std::optional<std::string> title;
-            std::string_view dance_identity;
-            constexpr std::string_view anonymous_prefix = "A ";
-            if (identity.starts_with(anonymous_prefix)) {
-                dance_identity = identity.substr(anonymous_prefix.size());
-            } else {
-                const size_t is_a = identity.find(" is a ");
-                if (is_a == std::string_view::npos) return std::nullopt;
-                title = translate_reference(identity.substr(0, is_a));
+            if (!raw_title.empty()) {
+                title = translate_reference(raw_title);
                 if (!title) return std::nullopt;
-                dance_identity = identity.substr(is_a + 6);
             }
-            const size_t dance_at = dance_identity.find(" dance");
-            if (dance_at == std::string_view::npos) return std::nullopt;
-            const std::string_view raw_type = dance_identity.substr(0, dance_at);
-            std::string_view participants = trim_view(
-                dance_identity.substr(dance_at + 6));
-            const auto type = translate_dance_type(raw_type);
-            if (!type) return std::nullopt;
             const std::string provenance = performance_origin
                 ? "，从“" + *origin + "”的表演中发展而来"
                 : "，起源于“" + *origin + "”";

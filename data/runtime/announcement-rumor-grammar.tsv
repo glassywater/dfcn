@@ -168,8 +168,8 @@ rumor-event	Body corrupted beyond reckoning, he assumes a beastly form to terror
 rumor-event	Body corrupted beyond reckoning, she assumes a beastly form to terrorize us.	她的身体已经彻底腐化，还会变成野兽来吓唬我们。		0x140688e0e..0x140688ea3
 rumor-event	Body corrupted beyond reckoning, it assumes a beastly form to terrorize us.	它的身体已经彻底腐化，还会变成野兽来吓唬我们。		0x140688e0e..0x140688ea3
 rumor-event	Our people have been pestered by skulking villains.	一伙鬼鬼祟祟的恶徒一直在骚扰我们的族人。		0x1406890e5
-rumor-event	They have a {s} called {s} somewhere in {s}.	他们在{s3}的某处有一座名为{s2}的{s1}。	$term,$name,$name	0x140689103..0x140689256
-rumor-event	They have a {s} called {s} somewhere around here.	他们在这附近的某处有一座名为{s2}的{s1}。	$term,$name	0x140689103..0x140689498
+rumor-event	They have a {s} called {s} somewhere in {s}.	他们在{s3}的某处有一座名为{s2}的{s1}。	$term,$travel-site,$name	0x140689103..0x140689256; b93930 complete site field, b94a40 region field
+rumor-event	They have a {s} called {s} somewhere around here.	他们在这附近的某处有一座名为{s2}的{s1}。	$term,$travel-site	0x140689103..0x140689498; b93930 complete site field
 rumor-event	A highly-organized military order is threatening our people.	一个组织严密的军事修会正威胁着我们的人民。		0x14068926a
 rumor-event	An organized military order have brought terror to our doorsteps.	一个组织严密的军事修会欺上门来，闹得人心惶惶。		0x140689281
 rumor-event	A small but organized military order have been causing us much hardship.	一个军事修会人数不多，却组织严密，害得我们吃尽苦头。		0x140689293
@@ -180,7 +180,7 @@ rumor-event	A sprawling criminal organization has left our people living in fear
 rumor-event	A scheming criminal gang has eluded capture for far too long.	有个犯罪团伙诡计多端，逍遥法外太久了。		0x14068930d
 rumor-event	A lowly group of outcasts have perpetrated enough crimes against our community to gain notice.	一群落魄的流亡者在我们的聚落作恶，犯下的罪行已让人无法忽视。		0x14068931f
 rumor-event	There are foul goings-on here.	这里有人在干见不得人的勾当。		0x14068934c..0x140689467
-rumor-event	There are foul goings-on over at the {s} of {s}.	{s2}的{s1}那里有人在干见不得人的勾当。	$term,$name	0x14068934c..0x140689467
+rumor-event	There are foul goings-on over at the {s} of {s}.	{s2}的{s1}那里有人在干见不得人的勾当。	$term,$travel-site	0x14068934c..0x140689467; b93930 complete site field
 rumor-event	A bandit gang calling itself {s} has been harassing people right here on the streets of {s}!	有伙土匪自称{s1}，就在{s2}这里的街上骚扰百姓！	$name,$travel-site	0x1406895be..0x1406896c9
 rumor-event	A bandit gang calling itself {s}, led by {s}, has been harassing people right here on the streets of {s}!	有伙土匪自称{s1}，头目是{s2}，就在{s3}这里的街上骚扰百姓！	$name,rumor-person,$travel-site	0x1406895be..0x1406896c9
 rumor-event	A bandit gang calling itself {s} has been harassing people over in {s}.	有伙土匪自称{s1}，一直在{s2}那边骚扰百姓。	$name,$travel-site	0x1406895be..0x1406896c9

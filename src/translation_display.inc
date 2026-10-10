@@ -21,26 +21,36 @@ static TranslationResult preserve_native_translation(std::string_view source,
 
 TranslationResult Overlay::translate_ui_message_capture_display(
         std::string_view source, bool unit_label) const {
+    TranslationWorkScope budget;
+    const auto finish = [&](TranslationResult result) {
+        if (budget.exhausted()) {
+            if (!budget.owns_budget()) translation_work_step();
+            return preserve_native_translation(source, unit_label ? "unit" : "term", false,
+                TranslationStatus::WorkLimited);
+        }
+        return result;
+    };
     try {
         if (auto target = translate_ui_message_capture(source, unit_label))
-            return TranslationResult::translated(source, std::move(*target),
-                unit_label ? "unit" : "term");
+            return finish(TranslationResult::translated(source, std::move(*target),
+                unit_label ? "unit" : "term"));
         if (unit_label) {
             if (auto target = native_unit_identity_source_target(source)) {
                 auto result = TranslationResult::translated(source, std::move(*target), "unit");
                 result.status = TranslationStatus::PreservedAuthored;
                 result.fragments.front().status = result.status;
-                return result;
+                return finish(std::move(result));
             }
         } else {
             auto result = translate_item_description_term_display(source);
-            if (result.usable() && result.changed()) return result;
+            if (result.usable() && result.changed()) return finish(std::move(result));
         }
     } catch (const TranslationWorkLimit &) {
+        if (!budget.owns_budget()) throw;
         return preserve_native_translation(source, unit_label ? "unit" : "term", false,
             TranslationStatus::WorkLimited);
     }
-    return preserve_native_translation(source, unit_label ? "unit" : "term");
+    return finish(preserve_native_translation(source, unit_label ? "unit" : "term"));
 }
 
 TranslationResult Overlay::translate_template_captures_display(const Rule &rule,
@@ -48,18 +58,28 @@ TranslationResult Overlay::translate_template_captures_display(const Rule &rule,
     if (captures.empty() || captures.size() != rule.template_kinds.size() ||
             rule.template_literals.size() != captures.size() + 1) return {};
     TranslationWorkScope budget;
+    const auto finish = [&](TranslationResult result) {
+        if (budget.exhausted()) {
+            if (!budget.owns_budget()) translation_work_step();
+            return preserve_native_translation(source, "template", false, TranslationStatus::WorkLimited);
+        }
+        return result;
+    };
     bool complete = false;
     try {
         auto target = translate_template_captures(rule, captures, &complete);
         if (complete && !target.empty()) {
             auto result = TranslationResult::translated(source, std::move(target), "template");
             result.resource_revision = RULESETS.resource_revision();
-            return result;
+            return finish(std::move(result));
         }
     } catch (const TranslationWorkLimit &) {
+        if (!budget.owns_budget()) throw;
         return preserve_native_translation(source, "template", false, TranslationStatus::WorkLimited);
     }
 
+    try {
+    if (budget.exhausted()) return finish({});
     // The normal matcher may choose a lexical boundary from several copies
     // of a separator. Such a choice cannot become proof merely because an
     // unknown field is now permitted. Require one full, literal-bound source.
@@ -91,6 +111,7 @@ TranslationResult Overlay::translate_template_captures_display(const Rule &rule,
     if (compiled.target_capture_order.empty() && !compile_template_target(compiled)) return {};
     std::vector<TranslationResult> fields;
     for (size_t field = 0; field < captures.size(); ++field) {
+        if (budget.exhausted()) return finish({});
         const auto kind = rule.template_kinds[field];
         const auto &value = captures[field];
         if (kind == 'd') {
@@ -124,6 +145,7 @@ TranslationResult Overlay::translate_template_captures_display(const Rule &rule,
                     continue;
                 } else if (!rule.strict_captures) target = translate_compositional(value);
             } catch (const TranslationWorkLimit &) {
+                if (!budget.owns_budget()) throw;
                 fields.push_back(preserve_native_translation(value, std::string(1, kind), false,
                     TranslationStatus::WorkLimited));
                 continue;
@@ -147,5 +169,9 @@ TranslationResult Overlay::translate_template_captures_display(const Rule &rule,
     result.append(TranslationResult::translated({}, compiled.target_template_literals.back(), "literal"));
     result.policy = TranslationPolicy::Display;
     result.consumed = source.size();
-    return result;
+    return finish(std::move(result));
+    } catch (const TranslationWorkLimit &) {
+        if (!budget.owns_budget()) throw;
+        return preserve_native_translation(source, "template", false, TranslationStatus::WorkLimited);
+    }
 }

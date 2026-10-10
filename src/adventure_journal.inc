@@ -234,11 +234,11 @@
                 // right edge for clipping and full native-source recovery.
                 while (!collapsed && bottom < gps_->dimy &&
                     borders.at(left - 1, bottom, 3)) ++bottom;
-                if (std::any_of(context.begin() + title_y + 1, context.begin() + bottom,
-                        [&](const std::string &row) {
-                            return std::string_view(row).substr(left, right - left).find(date_prefix) !=
-                                std::string_view::npos;
-                        })) continue;
+                int event_date_y = -1;
+                for (int y = title_y + 1; y < bottom; ++y)
+                    if (std::string_view(context[y]).substr(left, right - left).find(date_prefix) !=
+                            std::string_view::npos) { event_date_y = y; break; }
+                const bool event = event_date_y >= 0;
 
                 // Full-font titles can start inside the card, while split
                 // captions start on its upper frame. Use the frame's origin
@@ -320,12 +320,14 @@
                 };
                 const auto title = field_at(title_y, *counter);
                 const std::vector<Match> title_rows = title ? field_rows(*title) : std::vector<Match>{};
+                if (event)
+                    for (const Match &row : title_rows) placed_header_rows.insert(row.y);
                 // Bestiary records put the species/caste in the title, with
                 // an optional CP437 sex glyph, rather than a separate type
                 // row. Use the same complete label grammar as animal lists.
                 const auto creature_title = title
                     ? translate_creature_label(title->source) : std::nullopt;
-                const bool bestiary = creature_title.has_value();
+                const bool bestiary = !event && creature_title.has_value();
                 const auto title_row = [&](int y) {
                     return std::any_of(title_rows.begin(), title_rows.end(),
                         [&](const Match &row) { return row.y == y; });
@@ -336,7 +338,7 @@
                 bool group = false;
                 bool civilization = false;
                 bool region = false;
-                for (int y = title_y + 1; !bestiary && y < bottom; ++y) {
+                for (int y = title_y + 1; !event && !bestiary && y < bottom; ++y) {
                     if (title_row(y)) continue;
                     const auto field = field_at(y, text_right(y));
                     if (!field) continue;
@@ -393,7 +395,7 @@
                         }
                     }
                 }
-                const bool person = !bestiary && !site && !group && !region &&
+                const bool person = !event && !bestiary && !site && !group && !region &&
                     (kind.has_value() || people_selected);
                 const std::vector<Match> kind_rows = kind ? field_rows(*kind) : std::vector<Match>{};
                 struct HeaderField {
@@ -668,7 +670,16 @@
                     }
                 }
 
-                for (int y = title_y + 1; y < bottom;) {
+                // The second pass owns an event's title and occurrence date.
+                // Its expanded hearing/mission paragraphs still need the same
+                // complete native-source and split-font handling as People.
+                int body_top = title_y + 1;
+                if (event) {
+                    body_top = event_date_y + 1;
+                    if (const auto date = field_at(event_date_y, text_right(event_date_y)))
+                        body_top = field_rows(*date).back().y + 1;
+                }
+                for (int y = body_top; y < bottom;) {
                     // Scroll controls are foreground pictures inside the
                     // card. Lower-layer card shading still belongs to prose.
                     std::vector<Match> rows;
@@ -688,6 +699,14 @@
                         const std::string_view band(context[y].data() + left, edge - left);
                         const auto source = trim_view(band);
                         if (source.empty()) { ++y; break; }
+                        // These native location controls are separate fields,
+                        // even when they touch the hearing paragraph without
+                        // a blank row. Leave their existing label/layout owner.
+                        if (event && (source == "Centered on location" ||
+                                source == "Centered on last heard")) {
+                            if (rows.empty()) continue;
+                            break;
+                        }
                         const int first = left + static_cast<int>(source.data() - band.data());
                         rows.push_back({first, y, static_cast<int>(source.size()),
                             kAdventureJournalRule, {}, std::string(source)});
@@ -708,6 +727,7 @@
                                 y = halves.back().y;
                             }
                         }
+                        if (event && source.ends_with(".")) { ++y; break; }
                     }
                     if (rows.empty()) continue;
                     NativeParagraphViewport viewport;
@@ -732,10 +752,12 @@
                     const std::string_view prefix = source.starts_with("This person is ")
                         ? "This person is " : source.starts_with("This site is ")
                         ? "This site is " : "";
-                    if (!bestiary && !person && prefix.empty()) continue;
+                    if (!event && !bestiary && !person && prefix.empty()) continue;
                     std::optional<std::string> target;
                     std::vector<int> target_colors;
-                    if (bestiary) {
+                    if (event) {
+                        target = translate_announcement_combat(source, "journal-event");
+                    } else if (bestiary) {
                         // Cache the entire dispatch, including failed UI
                         // catalog probes. The Legends cache alone is too late:
                         // generated night-creature prose otherwise runs the

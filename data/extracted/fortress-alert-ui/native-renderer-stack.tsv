@@ -1,0 +1,685 @@
+edition	image_identity	instruction_rva	stack_operand	role	instruction
+reference	PE:6a70a6d9:02711000	0x40d5f0	[rsp+0x10]	save RBX in caller home space at entry_RSP+0x10	mov    QWORD PTR [rsp+0x10],rbx
+reference	PE:6a70a6d9:02711000	0x40d600	[rsp-0x60]	callee frame operand	lea    rbp,[rsp-0x60]
+reference	PE:6a70a6d9:02711000	0x40d616	[rbp+0x50]	callee frame operand	mov    QWORD PTR [rbp+0x50],rax
+reference	PE:6a70a6d9:02711000	0x40d61a	[rsp+0x70]	callee frame operand	mov    QWORD PTR [rsp+0x70],rcx
+reference	PE:6a70a6d9:02711000	0x40d626	[rsp+0x4c]	callee frame operand	mov    DWORD PTR [rsp+0x4c],eax
+reference	PE:6a70a6d9:02711000	0x40d62a	[rsp+0x48]	callee frame operand	mov    DWORD PTR [rsp+0x48],eax
+reference	PE:6a70a6d9:02711000	0x40d63d	[rsp+0x4c]	callee frame operand	mov    DWORD PTR [rsp+0x4c],eax
+reference	PE:6a70a6d9:02711000	0x40d647	[rsp+0x48]	callee frame operand	mov    DWORD PTR [rsp+0x48],eax
+reference	PE:6a70a6d9:02711000	0x40d64f	[rsp+0x50]	callee frame operand	mov    DWORD PTR [rsp+0x50],r15d
+reference	PE:6a70a6d9:02711000	0x40d658	[rsp+0x38]	callee frame operand	mov    DWORD PTR [rsp+0x38],r14d
+reference	PE:6a70a6d9:02711000	0x40d72e	[rsp+0x78]	callee frame operand	mov    QWORD PTR [rsp+0x78],0x8
+reference	PE:6a70a6d9:02711000	0x40d737	[rsp+0x70]	callee frame operand	mov    rbx,QWORD PTR [rsp+0x70]
+reference	PE:6a70a6d9:02711000	0x40d7d3	[rsp+0x68]	callee frame operand	mov    QWORD PTR [rsp+0x68],rdi
+reference	PE:6a70a6d9:02711000	0x40d7fa	[rbp-0x80]	callee frame operand	mov    QWORD PTR [rbp-0x80],rax
+reference	PE:6a70a6d9:02711000	0x40d81c	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40d833	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40d842	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40d84b	[rsp+0x70]	callee frame operand	mov    rax,QWORD PTR [rsp+0x70]
+reference	PE:6a70a6d9:02711000	0x40d857	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40d864	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40d86f	[rsp+0x70]	callee frame operand	mov    rax,QWORD PTR [rsp+0x70]
+reference	PE:6a70a6d9:02711000	0x40d8c1	[rbp+0x10]	callee frame operand	movups XMMWORD PTR [rbp+0x10],xmm0
+reference	PE:6a70a6d9:02711000	0x40d8c8	[rbp+0x20]	callee frame operand	mov    QWORD PTR [rbp+0x20],r13
+reference	PE:6a70a6d9:02711000	0x40d8cc	[rbp+0x28]	callee frame operand	mov    QWORD PTR [rbp+0x28],0xf
+reference	PE:6a70a6d9:02711000	0x40d8d4	[rbp+0x10]	callee frame operand	mov    BYTE PTR [rbp+0x10],r13b
+reference	PE:6a70a6d9:02711000	0x40d8da	[rbp+0x10]	callee frame operand	lea    r8,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40d8e7	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40d912	[rsp+0x60]	callee frame operand	mov    QWORD PTR [rsp+0x60],rax
+reference	PE:6a70a6d9:02711000	0x40d949	[rsp+0x60]	callee frame operand	lea    r8,[rsp+0x60]
+reference	PE:6a70a6d9:02711000	0x40d992	[rsp+0x60]	callee frame operand	mov    QWORD PTR [rsp+0x60],rax
+reference	PE:6a70a6d9:02711000	0x40d9bd	[rsp+0x60]	callee frame operand	lea    r8,[rsp+0x60]
+reference	PE:6a70a6d9:02711000	0x40d9ec	[rsp+0x60]	callee frame operand	mov    QWORD PTR [rsp+0x60],rax
+reference	PE:6a70a6d9:02711000	0x40da17	[rsp+0x60]	callee frame operand	lea    r8,[rsp+0x60]
+reference	PE:6a70a6d9:02711000	0x40da54	[rbp-0x80]	callee frame operand	mov    rdi,QWORD PTR [rbp-0x80]
+reference	PE:6a70a6d9:02711000	0x40da6c	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],0x1
+reference	PE:6a70a6d9:02711000	0x40da97	[rbp-0x50]	callee frame operand	mov    QWORD PTR [rbp-0x50],rdx
+reference	PE:6a70a6d9:02711000	0x40daa8	[rbp-0x50]	callee frame operand	mov    QWORD PTR [rbp-0x50],rax
+reference	PE:6a70a6d9:02711000	0x40daaf	[rbp-0x48]	callee frame operand	mov    QWORD PTR [rbp-0x48],rcx
+reference	PE:6a70a6d9:02711000	0x40dab3	[rbp-0x50]	callee frame operand	movaps xmm0,XMMWORD PTR [rbp-0x50]
+reference	PE:6a70a6d9:02711000	0x40dab7	[rbp+0x30]	callee frame operand	lea    rdx,[rbp+0x30]
+reference	PE:6a70a6d9:02711000	0x40dabd	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],0x0
+reference	PE:6a70a6d9:02711000	0x40dae8	[rbp-0x60]	callee frame operand	mov    QWORD PTR [rbp-0x60],rdx
+reference	PE:6a70a6d9:02711000	0x40daf9	[rbp-0x60]	callee frame operand	mov    QWORD PTR [rbp-0x60],rax
+reference	PE:6a70a6d9:02711000	0x40db00	[rbp-0x58]	callee frame operand	mov    QWORD PTR [rbp-0x58],rcx
+reference	PE:6a70a6d9:02711000	0x40db04	[rbp-0x60]	callee frame operand	movaps xmm0,XMMWORD PTR [rbp-0x60]
+reference	PE:6a70a6d9:02711000	0x40db08	[rbp-0x20]	callee frame operand	lea    rdx,[rbp-0x20]
+reference	PE:6a70a6d9:02711000	0x40db0c	[rbp-0x40]	callee frame operand	movdqa XMMWORD PTR [rbp-0x40],xmm0
+reference	PE:6a70a6d9:02711000	0x40db11	[rsp+0x30]	callee frame operand	lea    r9,[rsp+0x30]
+reference	PE:6a70a6d9:02711000	0x40db16	[rbp-0x40]	callee frame operand	lea    r8,[rbp-0x40]
+reference	PE:6a70a6d9:02711000	0x40db39	[rbp-0x80]	callee frame operand	lea    r8,[rbp-0x80]
+reference	PE:6a70a6d9:02711000	0x40db51	[rsp+0x68]	callee frame operand	mov    rdi,QWORD PTR [rsp+0x68]
+reference	PE:6a70a6d9:02711000	0x40db5f	[rsp+0x38]	callee frame operand	mov    r14d,DWORD PTR [rsp+0x38]
+reference	PE:6a70a6d9:02711000	0x40db64	[rsp+0x50]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x50]
+reference	PE:6a70a6d9:02711000	0x40db69	[rsp+0x70]	callee frame operand	mov    rbx,QWORD PTR [rsp+0x70]
+reference	PE:6a70a6d9:02711000	0x40db74	[rbp-0x30]	callee frame operand	mov    DWORD PTR [rbp-0x30],eax
+reference	PE:6a70a6d9:02711000	0x40db7e	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],cl
+reference	PE:6a70a6d9:02711000	0x40dbce	[rsp+0x40]	callee frame operand	mov    QWORD PTR [rsp+0x40],r15
+reference	PE:6a70a6d9:02711000	0x40dbfb	[rbp-0x50]	callee frame operand	mov    QWORD PTR [rbp-0x50],rax
+reference	PE:6a70a6d9:02711000	0x40dc23	[rbp-0x60]	callee frame operand	mov    QWORD PTR [rbp-0x60],rax
+reference	PE:6a70a6d9:02711000	0x40dc43	[rsp+0x58]	callee frame operand	mov    QWORD PTR [rsp+0x58],rdi
+reference	PE:6a70a6d9:02711000	0x40dc48	[rsp+0x60]	callee frame operand	mov    QWORD PTR [rsp+0x60],rbx
+reference	PE:6a70a6d9:02711000	0x40dc67	[rbp-0x80]	callee frame operand	mov    QWORD PTR [rbp-0x80],rax
+reference	PE:6a70a6d9:02711000	0x40dc89	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40dca0	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40dcb0	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40dcb9	[rsp+0x70]	callee frame operand	mov    rax,QWORD PTR [rsp+0x70]
+reference	PE:6a70a6d9:02711000	0x40dcc5	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40dcd2	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40dcdd	[rsp+0x70]	callee frame operand	mov    rax,QWORD PTR [rsp+0x70]
+reference	PE:6a70a6d9:02711000	0x40dd2f	[rbp+0x10]	callee frame operand	movups XMMWORD PTR [rbp+0x10],xmm0
+reference	PE:6a70a6d9:02711000	0x40dd36	[rbp+0x20]	callee frame operand	mov    QWORD PTR [rbp+0x20],r12
+reference	PE:6a70a6d9:02711000	0x40dd3a	[rbp+0x28]	callee frame operand	mov    QWORD PTR [rbp+0x28],0xf
+reference	PE:6a70a6d9:02711000	0x40dd42	[rbp+0x10]	callee frame operand	mov    BYTE PTR [rbp+0x10],r12b
+reference	PE:6a70a6d9:02711000	0x40dd48	[rbp+0x10]	callee frame operand	lea    r8,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40dd55	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40dd80	[rsp+0x68]	callee frame operand	mov    QWORD PTR [rsp+0x68],rax
+reference	PE:6a70a6d9:02711000	0x40ddb3	[rsp+0x68]	callee frame operand	lea    r8,[rsp+0x68]
+reference	PE:6a70a6d9:02711000	0x40de11	[rsp+0x68]	callee frame operand	mov    QWORD PTR [rsp+0x68],0x0
+reference	PE:6a70a6d9:02711000	0x40de21	[rsp+0x34]	callee frame operand	mov    WORD PTR [rsp+0x34],r8w
+reference	PE:6a70a6d9:02711000	0x40de27	[rbp-0x50]	callee frame operand	mov    rdi,QWORD PTR [rbp-0x50]
+reference	PE:6a70a6d9:02711000	0x40de2b	[rbp-0x60]	callee frame operand	mov    r15,QWORD PTR [rbp-0x60]
+reference	PE:6a70a6d9:02711000	0x40de2f	[rbp-0x80]	callee frame operand	mov    rbx,QWORD PTR [rbp-0x80]
+reference	PE:6a70a6d9:02711000	0x40de3e	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],0x1
+reference	PE:6a70a6d9:02711000	0x40de65	[rbp-0x30]	callee frame operand	mov    QWORD PTR [rbp-0x30],rdx
+reference	PE:6a70a6d9:02711000	0x40de76	[rbp-0x30]	callee frame operand	mov    QWORD PTR [rbp-0x30],rax
+reference	PE:6a70a6d9:02711000	0x40de7d	[rbp-0x28]	callee frame operand	mov    QWORD PTR [rbp-0x28],rcx
+reference	PE:6a70a6d9:02711000	0x40de81	[rbp-0x30]	callee frame operand	movaps xmm0,XMMWORD PTR [rbp-0x30]
+reference	PE:6a70a6d9:02711000	0x40de85	[rbp+0x30]	callee frame operand	lea    rdx,[rbp+0x30]
+reference	PE:6a70a6d9:02711000	0x40de8b	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],0x0
+reference	PE:6a70a6d9:02711000	0x40deb2	[rbp-0x70]	callee frame operand	mov    QWORD PTR [rbp-0x70],rdx
+reference	PE:6a70a6d9:02711000	0x40dec3	[rbp-0x70]	callee frame operand	mov    QWORD PTR [rbp-0x70],rax
+reference	PE:6a70a6d9:02711000	0x40deca	[rbp-0x68]	callee frame operand	mov    QWORD PTR [rbp-0x68],rcx
+reference	PE:6a70a6d9:02711000	0x40dece	[rbp-0x70]	callee frame operand	movaps xmm0,XMMWORD PTR [rbp-0x70]
+reference	PE:6a70a6d9:02711000	0x40ded2	[rbp-0x20]	callee frame operand	lea    rdx,[rbp-0x20]
+reference	PE:6a70a6d9:02711000	0x40ded6	[rbp-0x40]	callee frame operand	movdqa XMMWORD PTR [rbp-0x40],xmm0
+reference	PE:6a70a6d9:02711000	0x40dedb	[rsp+0x30]	callee frame operand	lea    r9,[rsp+0x30]
+reference	PE:6a70a6d9:02711000	0x40dee0	[rbp-0x40]	callee frame operand	lea    r8,[rbp-0x40]
+reference	PE:6a70a6d9:02711000	0x40df00	[rbp-0x80]	callee frame operand	lea    r8,[rbp-0x80]
+reference	PE:6a70a6d9:02711000	0x40df24	[rsp+0x68]	callee frame operand	lea    r8,[rsp+0x68]
+reference	PE:6a70a6d9:02711000	0x40df4d	[rsp+0x34]	callee frame operand	lea    r8,[rsp+0x34]
+reference	PE:6a70a6d9:02711000	0x40df6c	[rsp+0x60]	callee frame operand	mov    rbx,QWORD PTR [rsp+0x60]
+reference	PE:6a70a6d9:02711000	0x40df71	[rsp+0x58]	callee frame operand	mov    rdi,QWORD PTR [rsp+0x58]
+reference	PE:6a70a6d9:02711000	0x40df76	[rsp+0x40]	callee frame operand	mov    r15,QWORD PTR [rsp+0x40]
+reference	PE:6a70a6d9:02711000	0x40df84	[rsp+0x38]	callee frame operand	mov    r14d,DWORD PTR [rsp+0x38]
+reference	PE:6a70a6d9:02711000	0x40df89	[rsp+0x50]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x50]
+reference	PE:6a70a6d9:02711000	0x40df8e	[rsp+0x70]	callee frame operand	mov    rbx,QWORD PTR [rsp+0x70]
+reference	PE:6a70a6d9:02711000	0x40df99	[rbp-0x30]	callee frame operand	mov    DWORD PTR [rbp-0x30],eax
+reference	PE:6a70a6d9:02711000	0x40dfa3	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],cl
+reference	PE:6a70a6d9:02711000	0x40dfe6	[rbp-0x60]	callee frame operand	mov    QWORD PTR [rbp-0x60],r12
+reference	PE:6a70a6d9:02711000	0x40dffd	[rbp-0x70]	callee frame operand	mov    QWORD PTR [rbp-0x70],r13
+reference	PE:6a70a6d9:02711000	0x40e017	[rsp+0x68]	callee frame operand	mov    QWORD PTR [rsp+0x68],rax
+reference	PE:6a70a6d9:02711000	0x40e02e	[rsp+0x60]	callee frame operand	mov    QWORD PTR [rsp+0x60],rax
+reference	PE:6a70a6d9:02711000	0x40e045	[rbp-0x50]	callee frame operand	mov    QWORD PTR [rbp-0x50],rax
+reference	PE:6a70a6d9:02711000	0x40e063	[rbp-0x30]	callee frame operand	mov    QWORD PTR [rbp-0x30],rdi
+reference	PE:6a70a6d9:02711000	0x40e067	[rbp-0x80]	callee frame operand	mov    QWORD PTR [rbp-0x80],rbx
+reference	PE:6a70a6d9:02711000	0x40e085	[rsp+0x40]	callee frame operand	mov    QWORD PTR [rsp+0x40],rax
+reference	PE:6a70a6d9:02711000	0x40e0aa	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40e0c1	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40e0d0	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40e0d9	[rsp+0x70]	callee frame operand	mov    rax,QWORD PTR [rsp+0x70]
+reference	PE:6a70a6d9:02711000	0x40e0e5	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40e0f2	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40e0fd	[rsp+0x70]	callee frame operand	mov    rax,QWORD PTR [rsp+0x70]
+reference	PE:6a70a6d9:02711000	0x40e14d	[rsp+0x58]	callee frame operand	mov    QWORD PTR [rsp+0x58],rax
+reference	PE:6a70a6d9:02711000	0x40e186	[rsp+0x58]	callee frame operand	lea    r8,[rsp+0x58]
+reference	PE:6a70a6d9:02711000	0x40e1b1	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40e1ca	[rbp+0x10]	callee frame operand	lea    r8,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40e1d7	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40e205	[rsp+0x58]	callee frame operand	mov    QWORD PTR [rsp+0x58],rcx
+reference	PE:6a70a6d9:02711000	0x40e216	[rsp+0x58]	callee frame operand	lea    rdx,[rsp+0x58]
+reference	PE:6a70a6d9:02711000	0x40e274	[rsp+0x58]	callee frame operand	mov    QWORD PTR [rsp+0x58],0x0
+reference	PE:6a70a6d9:02711000	0x40e284	[rsp+0x34]	callee frame operand	mov    WORD PTR [rsp+0x34],r8w
+reference	PE:6a70a6d9:02711000	0x40e28a	[rsp+0x60]	callee frame operand	mov    r12,QWORD PTR [rsp+0x60]
+reference	PE:6a70a6d9:02711000	0x40e28f	[rsp+0x68]	callee frame operand	mov    rdi,QWORD PTR [rsp+0x68]
+reference	PE:6a70a6d9:02711000	0x40e294	[rbp-0x50]	callee frame operand	mov    rbx,QWORD PTR [rbp-0x50]
+reference	PE:6a70a6d9:02711000	0x40e2ac	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],0x1
+reference	PE:6a70a6d9:02711000	0x40e2d3	[rbp-0x20]	callee frame operand	mov    QWORD PTR [rbp-0x20],rdx
+reference	PE:6a70a6d9:02711000	0x40e2e4	[rbp-0x20]	callee frame operand	mov    QWORD PTR [rbp-0x20],rax
+reference	PE:6a70a6d9:02711000	0x40e2eb	[rbp-0x18]	callee frame operand	mov    QWORD PTR [rbp-0x18],rcx
+reference	PE:6a70a6d9:02711000	0x40e2ef	[rbp-0x20]	callee frame operand	movaps xmm0,XMMWORD PTR [rbp-0x20]
+reference	PE:6a70a6d9:02711000	0x40e2f3	[rbp-0x10]	callee frame operand	lea    rdx,[rbp-0x10]
+reference	PE:6a70a6d9:02711000	0x40e2f9	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],0x0
+reference	PE:6a70a6d9:02711000	0x40e320	[rbp-0x40]	callee frame operand	mov    QWORD PTR [rbp-0x40],rdx
+reference	PE:6a70a6d9:02711000	0x40e331	[rbp-0x40]	callee frame operand	mov    QWORD PTR [rbp-0x40],rax
+reference	PE:6a70a6d9:02711000	0x40e338	[rbp-0x38]	callee frame operand	mov    QWORD PTR [rbp-0x38],rcx
+reference	PE:6a70a6d9:02711000	0x40e33c	[rbp-0x40]	callee frame operand	movaps xmm0,XMMWORD PTR [rbp-0x40]
+reference	PE:6a70a6d9:02711000	0x40e340	[rbp+0x0]	callee frame operand	lea    rdx,[rbp+0x0]
+reference	PE:6a70a6d9:02711000	0x40e344	[rbp+0x30]	callee frame operand	movdqa XMMWORD PTR [rbp+0x30],xmm0
+reference	PE:6a70a6d9:02711000	0x40e349	[rsp+0x30]	callee frame operand	lea    r9,[rsp+0x30]
+reference	PE:6a70a6d9:02711000	0x40e34e	[rbp+0x30]	callee frame operand	lea    r8,[rbp+0x30]
+reference	PE:6a70a6d9:02711000	0x40e36e	[rsp+0x40]	callee frame operand	lea    r8,[rsp+0x40]
+reference	PE:6a70a6d9:02711000	0x40e396	[rsp+0x58]	callee frame operand	lea    r8,[rsp+0x58]
+reference	PE:6a70a6d9:02711000	0x40e3bf	[rsp+0x34]	callee frame operand	lea    r8,[rsp+0x34]
+reference	PE:6a70a6d9:02711000	0x40e3de	[rbp-0x80]	callee frame operand	mov    rbx,QWORD PTR [rbp-0x80]
+reference	PE:6a70a6d9:02711000	0x40e3e2	[rbp-0x30]	callee frame operand	mov    rdi,QWORD PTR [rbp-0x30]
+reference	PE:6a70a6d9:02711000	0x40e3e6	[rbp-0x60]	callee frame operand	mov    r12,QWORD PTR [rbp-0x60]
+reference	PE:6a70a6d9:02711000	0x40e3f3	[rsp+0x70]	callee frame operand	mov    r15,QWORD PTR [rsp+0x70]
+reference	PE:6a70a6d9:02711000	0x40e408	[rbp-0x30]	callee frame operand	mov    QWORD PTR [rbp-0x30],rsi
+reference	PE:6a70a6d9:02711000	0x40e416	[rsp+0x58]	callee frame operand	mov    QWORD PTR [rsp+0x58],rdi
+reference	PE:6a70a6d9:02711000	0x40e480	[rbp-0x80]	callee frame operand	mov    QWORD PTR [rbp-0x80],r13
+reference	PE:6a70a6d9:02711000	0x40e490	[rbp+0x10]	callee frame operand	movups XMMWORD PTR [rbp+0x10],xmm0
+reference	PE:6a70a6d9:02711000	0x40e494	[rbp+0x20]	callee frame operand	mov    QWORD PTR [rbp+0x20],r14
+reference	PE:6a70a6d9:02711000	0x40e498	[rbp+0x28]	callee frame operand	mov    QWORD PTR [rbp+0x28],0xf
+reference	PE:6a70a6d9:02711000	0x40e4a0	[rbp+0x10]	callee frame operand	mov    BYTE PTR [rbp+0x10],0x0
+reference	PE:6a70a6d9:02711000	0x40e4a4	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40e4b0	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40e4c6	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40e505	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40e522	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40e56e	[rbp+0x30]	callee frame operand	movups XMMWORD PTR [rbp+0x30],xmm0
+reference	PE:6a70a6d9:02711000	0x40e575	[rbp+0x40]	callee frame operand	mov    QWORD PTR [rbp+0x40],r15
+reference	PE:6a70a6d9:02711000	0x40e579	[rbp+0x48]	callee frame operand	mov    QWORD PTR [rbp+0x48],0xf
+reference	PE:6a70a6d9:02711000	0x40e581	[rbp+0x30]	callee frame operand	mov    BYTE PTR [rbp+0x30],r15b
+reference	PE:6a70a6d9:02711000	0x40e587	[rbp+0x30]	callee frame operand	lea    r8,[rbp+0x30]
+reference	PE:6a70a6d9:02711000	0x40e594	[rbp+0x30]	callee frame operand	lea    rcx,[rbp+0x30]
+reference	PE:6a70a6d9:02711000	0x40e5bf	[rsp+0x40]	callee frame operand	mov    QWORD PTR [rsp+0x40],rax
+reference	PE:6a70a6d9:02711000	0x40e5f9	[rsp+0x40]	callee frame operand	lea    r8,[rsp+0x40]
+reference	PE:6a70a6d9:02711000	0x40e642	[rsp+0x40]	callee frame operand	mov    QWORD PTR [rsp+0x40],rax
+reference	PE:6a70a6d9:02711000	0x40e670	[rsp+0x40]	callee frame operand	lea    r8,[rsp+0x40]
+reference	PE:6a70a6d9:02711000	0x40e69f	[rsp+0x40]	callee frame operand	mov    QWORD PTR [rsp+0x40],rax
+reference	PE:6a70a6d9:02711000	0x40e6cd	[rsp+0x40]	callee frame operand	lea    r8,[rsp+0x40]
+reference	PE:6a70a6d9:02711000	0x40e70a	[rsp+0x40]	callee frame operand	mov    QWORD PTR [rsp+0x40],0x0
+reference	PE:6a70a6d9:02711000	0x40e713	[rbp-0x70]	callee frame operand	mov    rsi,QWORD PTR [rbp-0x70]
+reference	PE:6a70a6d9:02711000	0x40e717	[rsp+0x60]	callee frame operand	mov    r12,QWORD PTR [rsp+0x60]
+reference	PE:6a70a6d9:02711000	0x40e71c	[rsp+0x68]	callee frame operand	mov    rdi,QWORD PTR [rsp+0x68]
+reference	PE:6a70a6d9:02711000	0x40e72d	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],0x1
+reference	PE:6a70a6d9:02711000	0x40e758	[rbp-0x40]	callee frame operand	mov    QWORD PTR [rbp-0x40],rdx
+reference	PE:6a70a6d9:02711000	0x40e769	[rbp-0x40]	callee frame operand	mov    QWORD PTR [rbp-0x40],rax
+reference	PE:6a70a6d9:02711000	0x40e770	[rbp-0x38]	callee frame operand	mov    QWORD PTR [rbp-0x38],rcx
+reference	PE:6a70a6d9:02711000	0x40e774	[rbp-0x40]	callee frame operand	movaps xmm0,XMMWORD PTR [rbp-0x40]
+reference	PE:6a70a6d9:02711000	0x40e778	[rbp+0x0]	callee frame operand	lea    rdx,[rbp+0x0]
+reference	PE:6a70a6d9:02711000	0x40e77e	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],0x0
+reference	PE:6a70a6d9:02711000	0x40e7a9	[rbp-0x20]	callee frame operand	mov    QWORD PTR [rbp-0x20],rdx
+reference	PE:6a70a6d9:02711000	0x40e7ba	[rbp-0x20]	callee frame operand	mov    QWORD PTR [rbp-0x20],rax
+reference	PE:6a70a6d9:02711000	0x40e7c1	[rbp-0x18]	callee frame operand	mov    QWORD PTR [rbp-0x18],rcx
+reference	PE:6a70a6d9:02711000	0x40e7c5	[rbp-0x20]	callee frame operand	movaps xmm0,XMMWORD PTR [rbp-0x20]
+reference	PE:6a70a6d9:02711000	0x40e7c9	[rbp-0x10]	callee frame operand	lea    rdx,[rbp-0x10]
+reference	PE:6a70a6d9:02711000	0x40e7cd	[rbp+0x30]	callee frame operand	movdqa XMMWORD PTR [rbp+0x30],xmm0
+reference	PE:6a70a6d9:02711000	0x40e7d2	[rsp+0x30]	callee frame operand	lea    r9,[rsp+0x30]
+reference	PE:6a70a6d9:02711000	0x40e7d7	[rbp+0x30]	callee frame operand	lea    r8,[rbp+0x30]
+reference	PE:6a70a6d9:02711000	0x40e7fb	[rsp+0x40]	callee frame operand	lea    r8,[rsp+0x40]
+reference	PE:6a70a6d9:02711000	0x40e81f	[rbp-0x80]	callee frame operand	lea    r8,[rbp-0x80]
+reference	PE:6a70a6d9:02711000	0x40e82b	[rbp-0x50]	callee frame operand	mov    rcx,QWORD PTR [rbp-0x50]
+reference	PE:6a70a6d9:02711000	0x40e85a	[rsp+0x58]	callee frame operand	mov    rdi,QWORD PTR [rsp+0x58]
+reference	PE:6a70a6d9:02711000	0x40e85f	[rbp-0x30]	callee frame operand	mov    rsi,QWORD PTR [rbp-0x30]
+reference	PE:6a70a6d9:02711000	0x40e863	[rbp-0x60]	callee frame operand	mov    r12,QWORD PTR [rbp-0x60]
+reference	PE:6a70a6d9:02711000	0x40e867	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40e87a	[rsp+0x70]	callee frame operand	mov    r15,QWORD PTR [rsp+0x70]
+reference	PE:6a70a6d9:02711000	0x40e88c	[rbp-0x80]	callee frame operand	mov    QWORD PTR [rbp-0x80],r14
+reference	PE:6a70a6d9:02711000	0x40e89d	[rsp+0x38]	callee frame operand	mov    r14d,DWORD PTR [rsp+0x38]
+reference	PE:6a70a6d9:02711000	0x40e8a2	[rsp+0x50]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x50]
+reference	PE:6a70a6d9:02711000	0x40e8a7	[rsp+0x70]	callee frame operand	mov    rbx,QWORD PTR [rsp+0x70]
+reference	PE:6a70a6d9:02711000	0x40e8b2	[rbp-0x30]	callee frame operand	mov    DWORD PTR [rbp-0x30],eax
+reference	PE:6a70a6d9:02711000	0x40e8bc	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],al
+reference	PE:6a70a6d9:02711000	0x40e8d2	[rsp+0x60]	callee frame operand	mov    QWORD PTR [rsp+0x60],rax
+reference	PE:6a70a6d9:02711000	0x40e906	[rbp+0x10]	callee frame operand	movups XMMWORD PTR [rbp+0x10],xmm0
+reference	PE:6a70a6d9:02711000	0x40e917	[rbp+0x10]	callee frame operand	mov    QWORD PTR [rbp+0x10],rax
+reference	PE:6a70a6d9:02711000	0x40e91b	[rbp+0x20]	callee frame operand	mov    QWORD PTR [rbp+0x20],0x41
+reference	PE:6a70a6d9:02711000	0x40e923	[rbp+0x28]	callee frame operand	mov    QWORD PTR [rbp+0x28],0x4f
+reference	PE:6a70a6d9:02711000	0x40e967	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40e978	[rbp+0x28]	callee frame operand	mov    rdx,QWORD PTR [rbp+0x28]
+reference	PE:6a70a6d9:02711000	0x40e985	[rbp+0x10]	callee frame operand	mov    rcx,QWORD PTR [rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40ea2b	[rsp+0x4c]	callee frame operand	mov    r10d,DWORD PTR [rsp+0x4c]
+reference	PE:6a70a6d9:02711000	0x40ea30	[rsp+0x38]	callee frame operand	mov    ecx,DWORD PTR [rsp+0x38]
+reference	PE:6a70a6d9:02711000	0x40ea44	[rsp+0x48]	callee frame operand	mov    r13d,DWORD PTR [rsp+0x48]
+reference	PE:6a70a6d9:02711000	0x40eab2	[rbp+0x10]	callee frame operand	movups XMMWORD PTR [rbp+0x10],xmm0
+reference	PE:6a70a6d9:02711000	0x40eac3	[rbp+0x10]	callee frame operand	mov    QWORD PTR [rbp+0x10],rax
+reference	PE:6a70a6d9:02711000	0x40eac7	[rbp+0x20]	callee frame operand	mov    QWORD PTR [rbp+0x20],0x41
+reference	PE:6a70a6d9:02711000	0x40eacf	[rbp+0x28]	callee frame operand	mov    QWORD PTR [rbp+0x28],0x4f
+reference	PE:6a70a6d9:02711000	0x40eb13	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40eb24	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40eb6e	[rbp+0x10]	callee frame operand	movups XMMWORD PTR [rbp+0x10],xmm0
+reference	PE:6a70a6d9:02711000	0x40eb88	[rbp+0x10]	callee frame operand	mov    QWORD PTR [rbp+0x10],rax
+reference	PE:6a70a6d9:02711000	0x40eb8c	[rbp+0x20]	callee frame operand	mov    QWORD PTR [rbp+0x20],0x3d
+reference	PE:6a70a6d9:02711000	0x40eb94	[rbp+0x28]	callee frame operand	mov    QWORD PTR [rbp+0x28],0x3f
+reference	PE:6a70a6d9:02711000	0x40ebe3	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40ebf4	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40ec0f	[rbp+0x10]	callee frame operand	mov    QWORD PTR [rbp+0x10],rax
+reference	PE:6a70a6d9:02711000	0x40ec13	[rbp+0x20]	callee frame operand	mov    QWORD PTR [rbp+0x20],0x41
+reference	PE:6a70a6d9:02711000	0x40ec1b	[rbp+0x28]	callee frame operand	mov    QWORD PTR [rbp+0x28],0x4f
+reference	PE:6a70a6d9:02711000	0x40ec5f	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40ec70	[rbp+0x28]	callee frame operand	mov    rdx,QWORD PTR [rbp+0x28]
+reference	PE:6a70a6d9:02711000	0x40ec81	[rbp+0x10]	callee frame operand	mov    rcx,QWORD PTR [rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40ecb5	[rsp+0x48]	callee frame operand	mov    r13d,DWORD PTR [rsp+0x48]
+reference	PE:6a70a6d9:02711000	0x40ecba	[rsp+0x50]	callee frame operand	mov    r8d,DWORD PTR [rsp+0x50]
+reference	PE:6a70a6d9:02711000	0x40ecc3	[rbp-0x70]	callee frame operand	mov    DWORD PTR [rbp-0x70],r8d
+reference	PE:6a70a6d9:02711000	0x40ecca	[rsp+0x50]	callee frame operand	mov    DWORD PTR [rsp+0x50],ebx
+reference	PE:6a70a6d9:02711000	0x40ecce	[rsp+0x60]	callee frame operand	mov    rdx,QWORD PTR [rsp+0x60]
+reference	PE:6a70a6d9:02711000	0x40ecdb	[rsp+0x50]	callee frame operand	mov    DWORD PTR [rsp+0x50],ebx
+reference	PE:6a70a6d9:02711000	0x40ecdf	[rbp-0x30]	callee frame operand	movsxd rcx,DWORD PTR [rbp-0x30]
+reference	PE:6a70a6d9:02711000	0x40ece6	[rsp+0x38]	callee frame operand	mov    DWORD PTR [rsp+0x38],ecx
+reference	PE:6a70a6d9:02711000	0x40eced	[rsp+0x34]	callee frame operand	mov    DWORD PTR [rsp+0x34],eax
+reference	PE:6a70a6d9:02711000	0x40ecfc	[rbp-0x50]	callee frame operand	mov    QWORD PTR [rbp-0x50],rcx
+reference	PE:6a70a6d9:02711000	0x40ed03	[rbp-0x80]	callee frame operand	mov    QWORD PTR [rbp-0x80],rdi
+reference	PE:6a70a6d9:02711000	0x40ed10	[rbp-0x60]	callee frame operand	mov    QWORD PTR [rbp-0x60],r9
+reference	PE:6a70a6d9:02711000	0x40ed17	[rsp+0x40]	callee frame operand	mov    QWORD PTR [rsp+0x40],rcx
+reference	PE:6a70a6d9:02711000	0x40ed1f	[rsp+0x58]	callee frame operand	mov    QWORD PTR [rsp+0x58],rax
+reference	PE:6a70a6d9:02711000	0x40ed27	[rsp+0x68]	callee frame operand	mov    QWORD PTR [rsp+0x68],r12
+reference	PE:6a70a6d9:02711000	0x40ed2c	[rsp+0x34]	callee frame operand	mov    eax,DWORD PTR [rsp+0x34]
+reference	PE:6a70a6d9:02711000	0x40ed43	[rsp+0x70]	callee frame operand	mov    r10,QWORD PTR [rsp+0x70]
+reference	PE:6a70a6d9:02711000	0x40eda4	[rsp+0x70]	callee frame operand	mov    rax,QWORD PTR [rsp+0x70]
+reference	PE:6a70a6d9:02711000	0x40edc8	[rsp+0x78]	callee frame operand	mov    r9,QWORD PTR [rsp+0x78]
+reference	PE:6a70a6d9:02711000	0x40ee14	[rsp+0x58]	callee frame operand	mov    rdx,QWORD PTR [rsp+0x58]
+reference	PE:6a70a6d9:02711000	0x40ee22	[rsp+0x4c]	callee frame operand	cmp    DWORD PTR [rsp+0x4c],eax
+reference	PE:6a70a6d9:02711000	0x40ee31	[rsp+0x48]	callee frame operand	cmp    DWORD PTR [rsp+0x48],eax
+reference	PE:6a70a6d9:02711000	0x40eee5	[rsp+0x50]	callee frame operand	mov    ebx,DWORD PTR [rsp+0x50]
+reference	PE:6a70a6d9:02711000	0x40eee9	[rbp-0x80]	callee frame operand	mov    rdi,QWORD PTR [rbp-0x80]
+reference	PE:6a70a6d9:02711000	0x40eeed	[rbp-0x60]	callee frame operand	mov    rsi,QWORD PTR [rbp-0x60]
+reference	PE:6a70a6d9:02711000	0x40eef1	[rbp-0x50]	callee frame operand	mov    r14,QWORD PTR [rbp-0x50]
+reference	PE:6a70a6d9:02711000	0x40eef5	[rsp+0x68]	callee frame operand	mov    r12,QWORD PTR [rsp+0x68]
+reference	PE:6a70a6d9:02711000	0x40eefa	[rsp+0x38]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x38]
+reference	PE:6a70a6d9:02711000	0x40eeff	[rsp+0x78]	callee frame operand	mov    r9,QWORD PTR [rsp+0x78]
+reference	PE:6a70a6d9:02711000	0x40ef0a	[rsp+0x58]	callee frame operand	mov    rdx,QWORD PTR [rsp+0x58]
+reference	PE:6a70a6d9:02711000	0x40ef2b	[rsp+0x4c]	callee frame operand	cmp    DWORD PTR [rsp+0x4c],eax
+reference	PE:6a70a6d9:02711000	0x40ef3a	[rsp+0x48]	callee frame operand	cmp    DWORD PTR [rsp+0x48],eax
+reference	PE:6a70a6d9:02711000	0x40ef61	[rsp+0x68]	callee frame operand	mov    r12,QWORD PTR [rsp+0x68]
+reference	PE:6a70a6d9:02711000	0x40ef66	[rsp+0x38]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x38]
+reference	PE:6a70a6d9:02711000	0x40eff5	[rbp-0x60]	callee frame operand	mov    rsi,QWORD PTR [rbp-0x60]
+reference	PE:6a70a6d9:02711000	0x40eff9	[rbp-0x50]	callee frame operand	mov    r14,QWORD PTR [rbp-0x50]
+reference	PE:6a70a6d9:02711000	0x40effd	[rsp+0x78]	callee frame operand	mov    r9,QWORD PTR [rsp+0x78]
+reference	PE:6a70a6d9:02711000	0x40f002	[rsp+0x38]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x38]
+reference	PE:6a70a6d9:02711000	0x40f007	[rsp+0x40]	callee frame operand	mov    rcx,QWORD PTR [rsp+0x40]
+reference	PE:6a70a6d9:02711000	0x40f00c	[rsp+0x34]	callee frame operand	mov    eax,DWORD PTR [rsp+0x34]
+reference	PE:6a70a6d9:02711000	0x40f010	[rbp-0x70]	callee frame operand	mov    r8d,DWORD PTR [rbp-0x70]
+reference	PE:6a70a6d9:02711000	0x40f017	[rsp+0x78]	callee frame operand	mov    QWORD PTR [rsp+0x78],r9
+reference	PE:6a70a6d9:02711000	0x40f01f	[rbp-0x60]	callee frame operand	mov    QWORD PTR [rbp-0x60],rsi
+reference	PE:6a70a6d9:02711000	0x40f026	[rsp+0x38]	callee frame operand	mov    DWORD PTR [rsp+0x38],r15d
+reference	PE:6a70a6d9:02711000	0x40f02e	[rbp-0x50]	callee frame operand	mov    QWORD PTR [rbp-0x50],r14
+reference	PE:6a70a6d9:02711000	0x40f035	[rsp+0x50]	callee frame operand	movsxd rbx,DWORD PTR [rsp+0x50]
+reference	PE:6a70a6d9:02711000	0x40f03d	[rsp+0x68]	callee frame operand	mov    r12,QWORD PTR [rsp+0x68]
+reference	PE:6a70a6d9:02711000	0x40f048	[rsp+0x60]	callee frame operand	mov    rdx,QWORD PTR [rsp+0x60]
+reference	PE:6a70a6d9:02711000	0x40f04d	[rbp-0x30]	callee frame operand	mov    ecx,DWORD PTR [rbp-0x30]
+reference	PE:6a70a6d9:02711000	0x40f050	[rsp+0x48]	callee frame operand	mov    r13d,DWORD PTR [rsp+0x48]
+reference	PE:6a70a6d9:02711000	0x40f05c	[rbp+0x28]	callee frame operand	mov    QWORD PTR [rbp+0x28],rdi
+reference	PE:6a70a6d9:02711000	0x40f060	[rbp+0x10]	callee frame operand	mov    DWORD PTR [rbp+0x10],ecx
+reference	PE:6a70a6d9:02711000	0x40f063	[rbp+0x14]	callee frame operand	mov    DWORD PTR [rbp+0x14],edi
+reference	PE:6a70a6d9:02711000	0x40f069	[rbp+0x18]	callee frame operand	mov    DWORD PTR [rbp+0x18],eax
+reference	PE:6a70a6d9:02711000	0x40f06c	[rbp+0x20]	callee frame operand	mov    DWORD PTR [rbp+0x20],0x9
+reference	PE:6a70a6d9:02711000	0x40f073	[rbp+0x24]	callee frame operand	mov    DWORD PTR [rbp+0x24],0x23
+reference	PE:6a70a6d9:02711000	0x40f07a	[rbp+0x1c]	callee frame operand	mov    DWORD PTR [rbp+0x1c],0x1d
+reference	PE:6a70a6d9:02711000	0x40f081	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40f08e	[rsp+0x28]	callee frame operand	mov    DWORD PTR [rsp+0x28],edi
+reference	PE:6a70a6d9:02711000	0x40f092	[rsp+0x30]	callee frame operand	movzx  eax,BYTE PTR [rsp+0x30]
+reference	PE:6a70a6d9:02711000	0x40f097	[rsp+0x20]	callee frame operand	mov    BYTE PTR [rsp+0x20],al
+reference	PE:6a70a6d9:02711000	0x40f09e	[rsp+0x4c]	callee frame operand	mov    edx,DWORD PTR [rsp+0x4c]
+reference	PE:6a70a6d9:02711000	0x40f0a2	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+reference	PE:6a70a6d9:02711000	0x40f0ab	[rbp+0x50]	callee frame operand	mov    rcx,QWORD PTR [rbp+0x50]
+reference	PE:6a70a6d9:02711000	0x40f0b7	[rsp+0x1a8]	restore saved RBX at entry_RSP+0x10; not an incoming argument	mov    rbx,QWORD PTR [rsp+0x1a8]
+reference	PE:6a70a6d9:02711000	0x40f158	[rsp+0x70]	callee frame operand	mov    r10,QWORD PTR [rsp+0x70]
+reference	PE:6a70a6d9:02711000	0x40f179	[rsp+0x78]	callee frame operand	mov    r9,QWORD PTR [rsp+0x78]
+reference	PE:6a70a6d9:02711000	0x40f1d6	[rsp+0x58]	callee frame operand	mov    rdx,QWORD PTR [rsp+0x58]
+reference	PE:6a70a6d9:02711000	0x40f1e4	[rsp+0x4c]	callee frame operand	cmp    DWORD PTR [rsp+0x4c],eax
+reference	PE:6a70a6d9:02711000	0x40f1ea	[rsp+0x68]	callee frame operand	cmp    QWORD PTR [rsp+0x68],rsi
+reference	PE:6a70a6d9:02711000	0x40f1f5	[rsp+0x48]	callee frame operand	cmp    DWORD PTR [rsp+0x48],eax
+reference	PE:6a70a6d9:02711000	0x40f2a5	[rsp+0x50]	callee frame operand	mov    ebx,DWORD PTR [rsp+0x50]
+reference	PE:6a70a6d9:02711000	0x40f2a9	[rbp-0x80]	callee frame operand	mov    rdi,QWORD PTR [rbp-0x80]
+reference	PE:6a70a6d9:02711000	0x40f2ad	[rbp-0x60]	callee frame operand	mov    rsi,QWORD PTR [rbp-0x60]
+reference	PE:6a70a6d9:02711000	0x40f2b1	[rbp-0x50]	callee frame operand	mov    r14,QWORD PTR [rbp-0x50]
+reference	PE:6a70a6d9:02711000	0x40f2b5	[rsp+0x38]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x38]
+reference	PE:6a70a6d9:02711000	0x40f2ba	[rsp+0x78]	callee frame operand	mov    r9,QWORD PTR [rsp+0x78]
+reference	PE:6a70a6d9:02711000	0x40f2c5	[rsp+0x58]	callee frame operand	mov    rdx,QWORD PTR [rsp+0x58]
+reference	PE:6a70a6d9:02711000	0x40f2e6	[rsp+0x4c]	callee frame operand	cmp    DWORD PTR [rsp+0x4c],eax
+reference	PE:6a70a6d9:02711000	0x40f2ec	[rsp+0x68]	callee frame operand	cmp    QWORD PTR [rsp+0x68],rsi
+reference	PE:6a70a6d9:02711000	0x40f2f7	[rsp+0x48]	callee frame operand	cmp    DWORD PTR [rsp+0x48],eax
+reference	PE:6a70a6d9:02711000	0x40f31e	[rsp+0x38]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x38]
+reference	PE:6a70a6d9:02711000	0x40f4b0	[rsp+0x70]	callee frame operand	mov    r10,QWORD PTR [rsp+0x70]
+reference	PE:6a70a6d9:02711000	0x40f4d1	[rsp+0x78]	callee frame operand	mov    r9,QWORD PTR [rsp+0x78]
+reference	PE:6a70a6d9:02711000	0x40f52e	[rsp+0x58]	callee frame operand	mov    rdx,QWORD PTR [rsp+0x58]
+reference	PE:6a70a6d9:02711000	0x40f53c	[rsp+0x4c]	callee frame operand	cmp    DWORD PTR [rsp+0x4c],eax
+reference	PE:6a70a6d9:02711000	0x40f542	[rsp+0x68]	callee frame operand	cmp    QWORD PTR [rsp+0x68],rsi
+reference	PE:6a70a6d9:02711000	0x40f54d	[rsp+0x48]	callee frame operand	cmp    DWORD PTR [rsp+0x48],eax
+reference	PE:6a70a6d9:02711000	0x40f5f5	[rsp+0x50]	callee frame operand	mov    ebx,DWORD PTR [rsp+0x50]
+reference	PE:6a70a6d9:02711000	0x40f5f9	[rbp-0x80]	callee frame operand	mov    rdi,QWORD PTR [rbp-0x80]
+reference	PE:6a70a6d9:02711000	0x40f5fd	[rbp-0x60]	callee frame operand	mov    rsi,QWORD PTR [rbp-0x60]
+reference	PE:6a70a6d9:02711000	0x40f601	[rbp-0x50]	callee frame operand	mov    r14,QWORD PTR [rbp-0x50]
+reference	PE:6a70a6d9:02711000	0x40f605	[rsp+0x38]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x38]
+reference	PE:6a70a6d9:02711000	0x40f60a	[rsp+0x78]	callee frame operand	mov    r9,QWORD PTR [rsp+0x78]
+reference	PE:6a70a6d9:02711000	0x40f615	[rsp+0x58]	callee frame operand	mov    rdx,QWORD PTR [rsp+0x58]
+reference	PE:6a70a6d9:02711000	0x40f636	[rsp+0x4c]	callee frame operand	cmp    DWORD PTR [rsp+0x4c],eax
+reference	PE:6a70a6d9:02711000	0x40f63c	[rsp+0x68]	callee frame operand	cmp    QWORD PTR [rsp+0x68],rsi
+reference	PE:6a70a6d9:02711000	0x40f647	[rsp+0x48]	callee frame operand	cmp    DWORD PTR [rsp+0x48],eax
+reference	PE:6a70a6d9:02711000	0x40f66e	[rsp+0x38]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x38]
+classic	PE:6a70b91c:0270a000	0x40b1b0	[rsp+0x10]	save RBX in caller home space at entry_RSP+0x10	mov    QWORD PTR [rsp+0x10],rbx
+classic	PE:6a70b91c:0270a000	0x40b1c0	[rsp-0x60]	callee frame operand	lea    rbp,[rsp-0x60]
+classic	PE:6a70b91c:0270a000	0x40b1d6	[rbp+0x50]	callee frame operand	mov    QWORD PTR [rbp+0x50],rax
+classic	PE:6a70b91c:0270a000	0x40b1da	[rsp+0x70]	callee frame operand	mov    QWORD PTR [rsp+0x70],rcx
+classic	PE:6a70b91c:0270a000	0x40b1e6	[rsp+0x4c]	callee frame operand	mov    DWORD PTR [rsp+0x4c],eax
+classic	PE:6a70b91c:0270a000	0x40b1ea	[rsp+0x48]	callee frame operand	mov    DWORD PTR [rsp+0x48],eax
+classic	PE:6a70b91c:0270a000	0x40b1fd	[rsp+0x4c]	callee frame operand	mov    DWORD PTR [rsp+0x4c],eax
+classic	PE:6a70b91c:0270a000	0x40b207	[rsp+0x48]	callee frame operand	mov    DWORD PTR [rsp+0x48],eax
+classic	PE:6a70b91c:0270a000	0x40b20f	[rsp+0x50]	callee frame operand	mov    DWORD PTR [rsp+0x50],r15d
+classic	PE:6a70b91c:0270a000	0x40b218	[rsp+0x38]	callee frame operand	mov    DWORD PTR [rsp+0x38],r14d
+classic	PE:6a70b91c:0270a000	0x40b2ee	[rsp+0x78]	callee frame operand	mov    QWORD PTR [rsp+0x78],0x8
+classic	PE:6a70b91c:0270a000	0x40b2f7	[rsp+0x70]	callee frame operand	mov    rbx,QWORD PTR [rsp+0x70]
+classic	PE:6a70b91c:0270a000	0x40b393	[rsp+0x68]	callee frame operand	mov    QWORD PTR [rsp+0x68],rdi
+classic	PE:6a70b91c:0270a000	0x40b3ba	[rbp-0x80]	callee frame operand	mov    QWORD PTR [rbp-0x80],rax
+classic	PE:6a70b91c:0270a000	0x40b3dc	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40b3f3	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40b402	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40b40b	[rsp+0x70]	callee frame operand	mov    rax,QWORD PTR [rsp+0x70]
+classic	PE:6a70b91c:0270a000	0x40b417	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40b424	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40b42f	[rsp+0x70]	callee frame operand	mov    rax,QWORD PTR [rsp+0x70]
+classic	PE:6a70b91c:0270a000	0x40b481	[rbp+0x10]	callee frame operand	movups XMMWORD PTR [rbp+0x10],xmm0
+classic	PE:6a70b91c:0270a000	0x40b488	[rbp+0x20]	callee frame operand	mov    QWORD PTR [rbp+0x20],r13
+classic	PE:6a70b91c:0270a000	0x40b48c	[rbp+0x28]	callee frame operand	mov    QWORD PTR [rbp+0x28],0xf
+classic	PE:6a70b91c:0270a000	0x40b494	[rbp+0x10]	callee frame operand	mov    BYTE PTR [rbp+0x10],r13b
+classic	PE:6a70b91c:0270a000	0x40b49a	[rbp+0x10]	callee frame operand	lea    r8,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40b4a7	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40b4d2	[rsp+0x60]	callee frame operand	mov    QWORD PTR [rsp+0x60],rax
+classic	PE:6a70b91c:0270a000	0x40b509	[rsp+0x60]	callee frame operand	lea    r8,[rsp+0x60]
+classic	PE:6a70b91c:0270a000	0x40b552	[rsp+0x60]	callee frame operand	mov    QWORD PTR [rsp+0x60],rax
+classic	PE:6a70b91c:0270a000	0x40b57d	[rsp+0x60]	callee frame operand	lea    r8,[rsp+0x60]
+classic	PE:6a70b91c:0270a000	0x40b5ac	[rsp+0x60]	callee frame operand	mov    QWORD PTR [rsp+0x60],rax
+classic	PE:6a70b91c:0270a000	0x40b5d7	[rsp+0x60]	callee frame operand	lea    r8,[rsp+0x60]
+classic	PE:6a70b91c:0270a000	0x40b614	[rbp-0x80]	callee frame operand	mov    rdi,QWORD PTR [rbp-0x80]
+classic	PE:6a70b91c:0270a000	0x40b62c	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],0x1
+classic	PE:6a70b91c:0270a000	0x40b657	[rbp-0x50]	callee frame operand	mov    QWORD PTR [rbp-0x50],rdx
+classic	PE:6a70b91c:0270a000	0x40b668	[rbp-0x50]	callee frame operand	mov    QWORD PTR [rbp-0x50],rax
+classic	PE:6a70b91c:0270a000	0x40b66f	[rbp-0x48]	callee frame operand	mov    QWORD PTR [rbp-0x48],rcx
+classic	PE:6a70b91c:0270a000	0x40b673	[rbp-0x50]	callee frame operand	movaps xmm0,XMMWORD PTR [rbp-0x50]
+classic	PE:6a70b91c:0270a000	0x40b677	[rbp+0x30]	callee frame operand	lea    rdx,[rbp+0x30]
+classic	PE:6a70b91c:0270a000	0x40b67d	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],0x0
+classic	PE:6a70b91c:0270a000	0x40b6a8	[rbp-0x60]	callee frame operand	mov    QWORD PTR [rbp-0x60],rdx
+classic	PE:6a70b91c:0270a000	0x40b6b9	[rbp-0x60]	callee frame operand	mov    QWORD PTR [rbp-0x60],rax
+classic	PE:6a70b91c:0270a000	0x40b6c0	[rbp-0x58]	callee frame operand	mov    QWORD PTR [rbp-0x58],rcx
+classic	PE:6a70b91c:0270a000	0x40b6c4	[rbp-0x60]	callee frame operand	movaps xmm0,XMMWORD PTR [rbp-0x60]
+classic	PE:6a70b91c:0270a000	0x40b6c8	[rbp-0x20]	callee frame operand	lea    rdx,[rbp-0x20]
+classic	PE:6a70b91c:0270a000	0x40b6cc	[rbp-0x40]	callee frame operand	movdqa XMMWORD PTR [rbp-0x40],xmm0
+classic	PE:6a70b91c:0270a000	0x40b6d1	[rsp+0x30]	callee frame operand	lea    r9,[rsp+0x30]
+classic	PE:6a70b91c:0270a000	0x40b6d6	[rbp-0x40]	callee frame operand	lea    r8,[rbp-0x40]
+classic	PE:6a70b91c:0270a000	0x40b6f9	[rbp-0x80]	callee frame operand	lea    r8,[rbp-0x80]
+classic	PE:6a70b91c:0270a000	0x40b711	[rsp+0x68]	callee frame operand	mov    rdi,QWORD PTR [rsp+0x68]
+classic	PE:6a70b91c:0270a000	0x40b71f	[rsp+0x38]	callee frame operand	mov    r14d,DWORD PTR [rsp+0x38]
+classic	PE:6a70b91c:0270a000	0x40b724	[rsp+0x50]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x50]
+classic	PE:6a70b91c:0270a000	0x40b729	[rsp+0x70]	callee frame operand	mov    rbx,QWORD PTR [rsp+0x70]
+classic	PE:6a70b91c:0270a000	0x40b734	[rbp-0x30]	callee frame operand	mov    DWORD PTR [rbp-0x30],eax
+classic	PE:6a70b91c:0270a000	0x40b73e	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],cl
+classic	PE:6a70b91c:0270a000	0x40b78e	[rsp+0x40]	callee frame operand	mov    QWORD PTR [rsp+0x40],r15
+classic	PE:6a70b91c:0270a000	0x40b7bb	[rbp-0x50]	callee frame operand	mov    QWORD PTR [rbp-0x50],rax
+classic	PE:6a70b91c:0270a000	0x40b7e3	[rbp-0x60]	callee frame operand	mov    QWORD PTR [rbp-0x60],rax
+classic	PE:6a70b91c:0270a000	0x40b803	[rsp+0x58]	callee frame operand	mov    QWORD PTR [rsp+0x58],rdi
+classic	PE:6a70b91c:0270a000	0x40b808	[rsp+0x60]	callee frame operand	mov    QWORD PTR [rsp+0x60],rbx
+classic	PE:6a70b91c:0270a000	0x40b827	[rbp-0x80]	callee frame operand	mov    QWORD PTR [rbp-0x80],rax
+classic	PE:6a70b91c:0270a000	0x40b849	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40b860	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40b870	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40b879	[rsp+0x70]	callee frame operand	mov    rax,QWORD PTR [rsp+0x70]
+classic	PE:6a70b91c:0270a000	0x40b885	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40b892	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40b89d	[rsp+0x70]	callee frame operand	mov    rax,QWORD PTR [rsp+0x70]
+classic	PE:6a70b91c:0270a000	0x40b8ef	[rbp+0x10]	callee frame operand	movups XMMWORD PTR [rbp+0x10],xmm0
+classic	PE:6a70b91c:0270a000	0x40b8f6	[rbp+0x20]	callee frame operand	mov    QWORD PTR [rbp+0x20],r12
+classic	PE:6a70b91c:0270a000	0x40b8fa	[rbp+0x28]	callee frame operand	mov    QWORD PTR [rbp+0x28],0xf
+classic	PE:6a70b91c:0270a000	0x40b902	[rbp+0x10]	callee frame operand	mov    BYTE PTR [rbp+0x10],r12b
+classic	PE:6a70b91c:0270a000	0x40b908	[rbp+0x10]	callee frame operand	lea    r8,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40b915	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40b940	[rsp+0x68]	callee frame operand	mov    QWORD PTR [rsp+0x68],rax
+classic	PE:6a70b91c:0270a000	0x40b973	[rsp+0x68]	callee frame operand	lea    r8,[rsp+0x68]
+classic	PE:6a70b91c:0270a000	0x40b9d1	[rsp+0x68]	callee frame operand	mov    QWORD PTR [rsp+0x68],0x0
+classic	PE:6a70b91c:0270a000	0x40b9e1	[rsp+0x34]	callee frame operand	mov    WORD PTR [rsp+0x34],r8w
+classic	PE:6a70b91c:0270a000	0x40b9e7	[rbp-0x50]	callee frame operand	mov    rdi,QWORD PTR [rbp-0x50]
+classic	PE:6a70b91c:0270a000	0x40b9eb	[rbp-0x60]	callee frame operand	mov    r15,QWORD PTR [rbp-0x60]
+classic	PE:6a70b91c:0270a000	0x40b9ef	[rbp-0x80]	callee frame operand	mov    rbx,QWORD PTR [rbp-0x80]
+classic	PE:6a70b91c:0270a000	0x40b9fe	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],0x1
+classic	PE:6a70b91c:0270a000	0x40ba25	[rbp-0x30]	callee frame operand	mov    QWORD PTR [rbp-0x30],rdx
+classic	PE:6a70b91c:0270a000	0x40ba36	[rbp-0x30]	callee frame operand	mov    QWORD PTR [rbp-0x30],rax
+classic	PE:6a70b91c:0270a000	0x40ba3d	[rbp-0x28]	callee frame operand	mov    QWORD PTR [rbp-0x28],rcx
+classic	PE:6a70b91c:0270a000	0x40ba41	[rbp-0x30]	callee frame operand	movaps xmm0,XMMWORD PTR [rbp-0x30]
+classic	PE:6a70b91c:0270a000	0x40ba45	[rbp+0x30]	callee frame operand	lea    rdx,[rbp+0x30]
+classic	PE:6a70b91c:0270a000	0x40ba4b	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],0x0
+classic	PE:6a70b91c:0270a000	0x40ba72	[rbp-0x70]	callee frame operand	mov    QWORD PTR [rbp-0x70],rdx
+classic	PE:6a70b91c:0270a000	0x40ba83	[rbp-0x70]	callee frame operand	mov    QWORD PTR [rbp-0x70],rax
+classic	PE:6a70b91c:0270a000	0x40ba8a	[rbp-0x68]	callee frame operand	mov    QWORD PTR [rbp-0x68],rcx
+classic	PE:6a70b91c:0270a000	0x40ba8e	[rbp-0x70]	callee frame operand	movaps xmm0,XMMWORD PTR [rbp-0x70]
+classic	PE:6a70b91c:0270a000	0x40ba92	[rbp-0x20]	callee frame operand	lea    rdx,[rbp-0x20]
+classic	PE:6a70b91c:0270a000	0x40ba96	[rbp-0x40]	callee frame operand	movdqa XMMWORD PTR [rbp-0x40],xmm0
+classic	PE:6a70b91c:0270a000	0x40ba9b	[rsp+0x30]	callee frame operand	lea    r9,[rsp+0x30]
+classic	PE:6a70b91c:0270a000	0x40baa0	[rbp-0x40]	callee frame operand	lea    r8,[rbp-0x40]
+classic	PE:6a70b91c:0270a000	0x40bac0	[rbp-0x80]	callee frame operand	lea    r8,[rbp-0x80]
+classic	PE:6a70b91c:0270a000	0x40bae4	[rsp+0x68]	callee frame operand	lea    r8,[rsp+0x68]
+classic	PE:6a70b91c:0270a000	0x40bb0d	[rsp+0x34]	callee frame operand	lea    r8,[rsp+0x34]
+classic	PE:6a70b91c:0270a000	0x40bb2c	[rsp+0x60]	callee frame operand	mov    rbx,QWORD PTR [rsp+0x60]
+classic	PE:6a70b91c:0270a000	0x40bb31	[rsp+0x58]	callee frame operand	mov    rdi,QWORD PTR [rsp+0x58]
+classic	PE:6a70b91c:0270a000	0x40bb36	[rsp+0x40]	callee frame operand	mov    r15,QWORD PTR [rsp+0x40]
+classic	PE:6a70b91c:0270a000	0x40bb44	[rsp+0x38]	callee frame operand	mov    r14d,DWORD PTR [rsp+0x38]
+classic	PE:6a70b91c:0270a000	0x40bb49	[rsp+0x50]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x50]
+classic	PE:6a70b91c:0270a000	0x40bb4e	[rsp+0x70]	callee frame operand	mov    rbx,QWORD PTR [rsp+0x70]
+classic	PE:6a70b91c:0270a000	0x40bb59	[rbp-0x30]	callee frame operand	mov    DWORD PTR [rbp-0x30],eax
+classic	PE:6a70b91c:0270a000	0x40bb63	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],cl
+classic	PE:6a70b91c:0270a000	0x40bba6	[rbp-0x60]	callee frame operand	mov    QWORD PTR [rbp-0x60],r12
+classic	PE:6a70b91c:0270a000	0x40bbbd	[rbp-0x70]	callee frame operand	mov    QWORD PTR [rbp-0x70],r13
+classic	PE:6a70b91c:0270a000	0x40bbd7	[rsp+0x68]	callee frame operand	mov    QWORD PTR [rsp+0x68],rax
+classic	PE:6a70b91c:0270a000	0x40bbee	[rsp+0x60]	callee frame operand	mov    QWORD PTR [rsp+0x60],rax
+classic	PE:6a70b91c:0270a000	0x40bc05	[rbp-0x50]	callee frame operand	mov    QWORD PTR [rbp-0x50],rax
+classic	PE:6a70b91c:0270a000	0x40bc23	[rbp-0x30]	callee frame operand	mov    QWORD PTR [rbp-0x30],rdi
+classic	PE:6a70b91c:0270a000	0x40bc27	[rbp-0x80]	callee frame operand	mov    QWORD PTR [rbp-0x80],rbx
+classic	PE:6a70b91c:0270a000	0x40bc45	[rsp+0x40]	callee frame operand	mov    QWORD PTR [rsp+0x40],rax
+classic	PE:6a70b91c:0270a000	0x40bc6a	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40bc81	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40bc90	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40bc99	[rsp+0x70]	callee frame operand	mov    rax,QWORD PTR [rsp+0x70]
+classic	PE:6a70b91c:0270a000	0x40bca5	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40bcb2	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40bcbd	[rsp+0x70]	callee frame operand	mov    rax,QWORD PTR [rsp+0x70]
+classic	PE:6a70b91c:0270a000	0x40bd0d	[rsp+0x58]	callee frame operand	mov    QWORD PTR [rsp+0x58],rax
+classic	PE:6a70b91c:0270a000	0x40bd46	[rsp+0x58]	callee frame operand	lea    r8,[rsp+0x58]
+classic	PE:6a70b91c:0270a000	0x40bd71	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40bd8a	[rbp+0x10]	callee frame operand	lea    r8,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40bd97	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40bdc5	[rsp+0x58]	callee frame operand	mov    QWORD PTR [rsp+0x58],rcx
+classic	PE:6a70b91c:0270a000	0x40bdd6	[rsp+0x58]	callee frame operand	lea    rdx,[rsp+0x58]
+classic	PE:6a70b91c:0270a000	0x40be34	[rsp+0x58]	callee frame operand	mov    QWORD PTR [rsp+0x58],0x0
+classic	PE:6a70b91c:0270a000	0x40be44	[rsp+0x34]	callee frame operand	mov    WORD PTR [rsp+0x34],r8w
+classic	PE:6a70b91c:0270a000	0x40be4a	[rsp+0x60]	callee frame operand	mov    r12,QWORD PTR [rsp+0x60]
+classic	PE:6a70b91c:0270a000	0x40be4f	[rsp+0x68]	callee frame operand	mov    rdi,QWORD PTR [rsp+0x68]
+classic	PE:6a70b91c:0270a000	0x40be54	[rbp-0x50]	callee frame operand	mov    rbx,QWORD PTR [rbp-0x50]
+classic	PE:6a70b91c:0270a000	0x40be6c	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],0x1
+classic	PE:6a70b91c:0270a000	0x40be93	[rbp-0x20]	callee frame operand	mov    QWORD PTR [rbp-0x20],rdx
+classic	PE:6a70b91c:0270a000	0x40bea4	[rbp-0x20]	callee frame operand	mov    QWORD PTR [rbp-0x20],rax
+classic	PE:6a70b91c:0270a000	0x40beab	[rbp-0x18]	callee frame operand	mov    QWORD PTR [rbp-0x18],rcx
+classic	PE:6a70b91c:0270a000	0x40beaf	[rbp-0x20]	callee frame operand	movaps xmm0,XMMWORD PTR [rbp-0x20]
+classic	PE:6a70b91c:0270a000	0x40beb3	[rbp-0x10]	callee frame operand	lea    rdx,[rbp-0x10]
+classic	PE:6a70b91c:0270a000	0x40beb9	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],0x0
+classic	PE:6a70b91c:0270a000	0x40bee0	[rbp-0x40]	callee frame operand	mov    QWORD PTR [rbp-0x40],rdx
+classic	PE:6a70b91c:0270a000	0x40bef1	[rbp-0x40]	callee frame operand	mov    QWORD PTR [rbp-0x40],rax
+classic	PE:6a70b91c:0270a000	0x40bef8	[rbp-0x38]	callee frame operand	mov    QWORD PTR [rbp-0x38],rcx
+classic	PE:6a70b91c:0270a000	0x40befc	[rbp-0x40]	callee frame operand	movaps xmm0,XMMWORD PTR [rbp-0x40]
+classic	PE:6a70b91c:0270a000	0x40bf00	[rbp+0x0]	callee frame operand	lea    rdx,[rbp+0x0]
+classic	PE:6a70b91c:0270a000	0x40bf04	[rbp+0x30]	callee frame operand	movdqa XMMWORD PTR [rbp+0x30],xmm0
+classic	PE:6a70b91c:0270a000	0x40bf09	[rsp+0x30]	callee frame operand	lea    r9,[rsp+0x30]
+classic	PE:6a70b91c:0270a000	0x40bf0e	[rbp+0x30]	callee frame operand	lea    r8,[rbp+0x30]
+classic	PE:6a70b91c:0270a000	0x40bf2e	[rsp+0x40]	callee frame operand	lea    r8,[rsp+0x40]
+classic	PE:6a70b91c:0270a000	0x40bf56	[rsp+0x58]	callee frame operand	lea    r8,[rsp+0x58]
+classic	PE:6a70b91c:0270a000	0x40bf7f	[rsp+0x34]	callee frame operand	lea    r8,[rsp+0x34]
+classic	PE:6a70b91c:0270a000	0x40bf9e	[rbp-0x80]	callee frame operand	mov    rbx,QWORD PTR [rbp-0x80]
+classic	PE:6a70b91c:0270a000	0x40bfa2	[rbp-0x30]	callee frame operand	mov    rdi,QWORD PTR [rbp-0x30]
+classic	PE:6a70b91c:0270a000	0x40bfa6	[rbp-0x60]	callee frame operand	mov    r12,QWORD PTR [rbp-0x60]
+classic	PE:6a70b91c:0270a000	0x40bfb3	[rsp+0x70]	callee frame operand	mov    r15,QWORD PTR [rsp+0x70]
+classic	PE:6a70b91c:0270a000	0x40bfc8	[rbp-0x30]	callee frame operand	mov    QWORD PTR [rbp-0x30],rsi
+classic	PE:6a70b91c:0270a000	0x40bfd6	[rsp+0x58]	callee frame operand	mov    QWORD PTR [rsp+0x58],rdi
+classic	PE:6a70b91c:0270a000	0x40c040	[rbp-0x80]	callee frame operand	mov    QWORD PTR [rbp-0x80],r13
+classic	PE:6a70b91c:0270a000	0x40c050	[rbp+0x10]	callee frame operand	movups XMMWORD PTR [rbp+0x10],xmm0
+classic	PE:6a70b91c:0270a000	0x40c054	[rbp+0x20]	callee frame operand	mov    QWORD PTR [rbp+0x20],r14
+classic	PE:6a70b91c:0270a000	0x40c058	[rbp+0x28]	callee frame operand	mov    QWORD PTR [rbp+0x28],0xf
+classic	PE:6a70b91c:0270a000	0x40c060	[rbp+0x10]	callee frame operand	mov    BYTE PTR [rbp+0x10],0x0
+classic	PE:6a70b91c:0270a000	0x40c064	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40c070	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40c086	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40c0c5	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40c0e2	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40c12e	[rbp+0x30]	callee frame operand	movups XMMWORD PTR [rbp+0x30],xmm0
+classic	PE:6a70b91c:0270a000	0x40c135	[rbp+0x40]	callee frame operand	mov    QWORD PTR [rbp+0x40],r15
+classic	PE:6a70b91c:0270a000	0x40c139	[rbp+0x48]	callee frame operand	mov    QWORD PTR [rbp+0x48],0xf
+classic	PE:6a70b91c:0270a000	0x40c141	[rbp+0x30]	callee frame operand	mov    BYTE PTR [rbp+0x30],r15b
+classic	PE:6a70b91c:0270a000	0x40c147	[rbp+0x30]	callee frame operand	lea    r8,[rbp+0x30]
+classic	PE:6a70b91c:0270a000	0x40c154	[rbp+0x30]	callee frame operand	lea    rcx,[rbp+0x30]
+classic	PE:6a70b91c:0270a000	0x40c17f	[rsp+0x40]	callee frame operand	mov    QWORD PTR [rsp+0x40],rax
+classic	PE:6a70b91c:0270a000	0x40c1b9	[rsp+0x40]	callee frame operand	lea    r8,[rsp+0x40]
+classic	PE:6a70b91c:0270a000	0x40c202	[rsp+0x40]	callee frame operand	mov    QWORD PTR [rsp+0x40],rax
+classic	PE:6a70b91c:0270a000	0x40c230	[rsp+0x40]	callee frame operand	lea    r8,[rsp+0x40]
+classic	PE:6a70b91c:0270a000	0x40c25f	[rsp+0x40]	callee frame operand	mov    QWORD PTR [rsp+0x40],rax
+classic	PE:6a70b91c:0270a000	0x40c28d	[rsp+0x40]	callee frame operand	lea    r8,[rsp+0x40]
+classic	PE:6a70b91c:0270a000	0x40c2ca	[rsp+0x40]	callee frame operand	mov    QWORD PTR [rsp+0x40],0x0
+classic	PE:6a70b91c:0270a000	0x40c2d3	[rbp-0x70]	callee frame operand	mov    rsi,QWORD PTR [rbp-0x70]
+classic	PE:6a70b91c:0270a000	0x40c2d7	[rsp+0x60]	callee frame operand	mov    r12,QWORD PTR [rsp+0x60]
+classic	PE:6a70b91c:0270a000	0x40c2dc	[rsp+0x68]	callee frame operand	mov    rdi,QWORD PTR [rsp+0x68]
+classic	PE:6a70b91c:0270a000	0x40c2ed	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],0x1
+classic	PE:6a70b91c:0270a000	0x40c318	[rbp-0x40]	callee frame operand	mov    QWORD PTR [rbp-0x40],rdx
+classic	PE:6a70b91c:0270a000	0x40c329	[rbp-0x40]	callee frame operand	mov    QWORD PTR [rbp-0x40],rax
+classic	PE:6a70b91c:0270a000	0x40c330	[rbp-0x38]	callee frame operand	mov    QWORD PTR [rbp-0x38],rcx
+classic	PE:6a70b91c:0270a000	0x40c334	[rbp-0x40]	callee frame operand	movaps xmm0,XMMWORD PTR [rbp-0x40]
+classic	PE:6a70b91c:0270a000	0x40c338	[rbp+0x0]	callee frame operand	lea    rdx,[rbp+0x0]
+classic	PE:6a70b91c:0270a000	0x40c33e	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],0x0
+classic	PE:6a70b91c:0270a000	0x40c369	[rbp-0x20]	callee frame operand	mov    QWORD PTR [rbp-0x20],rdx
+classic	PE:6a70b91c:0270a000	0x40c37a	[rbp-0x20]	callee frame operand	mov    QWORD PTR [rbp-0x20],rax
+classic	PE:6a70b91c:0270a000	0x40c381	[rbp-0x18]	callee frame operand	mov    QWORD PTR [rbp-0x18],rcx
+classic	PE:6a70b91c:0270a000	0x40c385	[rbp-0x20]	callee frame operand	movaps xmm0,XMMWORD PTR [rbp-0x20]
+classic	PE:6a70b91c:0270a000	0x40c389	[rbp-0x10]	callee frame operand	lea    rdx,[rbp-0x10]
+classic	PE:6a70b91c:0270a000	0x40c38d	[rbp+0x30]	callee frame operand	movdqa XMMWORD PTR [rbp+0x30],xmm0
+classic	PE:6a70b91c:0270a000	0x40c392	[rsp+0x30]	callee frame operand	lea    r9,[rsp+0x30]
+classic	PE:6a70b91c:0270a000	0x40c397	[rbp+0x30]	callee frame operand	lea    r8,[rbp+0x30]
+classic	PE:6a70b91c:0270a000	0x40c3bb	[rsp+0x40]	callee frame operand	lea    r8,[rsp+0x40]
+classic	PE:6a70b91c:0270a000	0x40c3df	[rbp-0x80]	callee frame operand	lea    r8,[rbp-0x80]
+classic	PE:6a70b91c:0270a000	0x40c3eb	[rbp-0x50]	callee frame operand	mov    rcx,QWORD PTR [rbp-0x50]
+classic	PE:6a70b91c:0270a000	0x40c41a	[rsp+0x58]	callee frame operand	mov    rdi,QWORD PTR [rsp+0x58]
+classic	PE:6a70b91c:0270a000	0x40c41f	[rbp-0x30]	callee frame operand	mov    rsi,QWORD PTR [rbp-0x30]
+classic	PE:6a70b91c:0270a000	0x40c423	[rbp-0x60]	callee frame operand	mov    r12,QWORD PTR [rbp-0x60]
+classic	PE:6a70b91c:0270a000	0x40c427	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40c43a	[rsp+0x70]	callee frame operand	mov    r15,QWORD PTR [rsp+0x70]
+classic	PE:6a70b91c:0270a000	0x40c44c	[rbp-0x80]	callee frame operand	mov    QWORD PTR [rbp-0x80],r14
+classic	PE:6a70b91c:0270a000	0x40c45d	[rsp+0x38]	callee frame operand	mov    r14d,DWORD PTR [rsp+0x38]
+classic	PE:6a70b91c:0270a000	0x40c462	[rsp+0x50]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x50]
+classic	PE:6a70b91c:0270a000	0x40c467	[rsp+0x70]	callee frame operand	mov    rbx,QWORD PTR [rsp+0x70]
+classic	PE:6a70b91c:0270a000	0x40c472	[rbp-0x30]	callee frame operand	mov    DWORD PTR [rbp-0x30],eax
+classic	PE:6a70b91c:0270a000	0x40c47c	[rsp+0x30]	callee frame operand	mov    BYTE PTR [rsp+0x30],al
+classic	PE:6a70b91c:0270a000	0x40c492	[rsp+0x60]	callee frame operand	mov    QWORD PTR [rsp+0x60],rax
+classic	PE:6a70b91c:0270a000	0x40c4c6	[rbp+0x10]	callee frame operand	movups XMMWORD PTR [rbp+0x10],xmm0
+classic	PE:6a70b91c:0270a000	0x40c4d7	[rbp+0x10]	callee frame operand	mov    QWORD PTR [rbp+0x10],rax
+classic	PE:6a70b91c:0270a000	0x40c4db	[rbp+0x20]	callee frame operand	mov    QWORD PTR [rbp+0x20],0x41
+classic	PE:6a70b91c:0270a000	0x40c4e3	[rbp+0x28]	callee frame operand	mov    QWORD PTR [rbp+0x28],0x4f
+classic	PE:6a70b91c:0270a000	0x40c527	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40c538	[rbp+0x28]	callee frame operand	mov    rdx,QWORD PTR [rbp+0x28]
+classic	PE:6a70b91c:0270a000	0x40c545	[rbp+0x10]	callee frame operand	mov    rcx,QWORD PTR [rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40c5eb	[rsp+0x4c]	callee frame operand	mov    r10d,DWORD PTR [rsp+0x4c]
+classic	PE:6a70b91c:0270a000	0x40c5f0	[rsp+0x38]	callee frame operand	mov    ecx,DWORD PTR [rsp+0x38]
+classic	PE:6a70b91c:0270a000	0x40c604	[rsp+0x48]	callee frame operand	mov    r13d,DWORD PTR [rsp+0x48]
+classic	PE:6a70b91c:0270a000	0x40c672	[rbp+0x10]	callee frame operand	movups XMMWORD PTR [rbp+0x10],xmm0
+classic	PE:6a70b91c:0270a000	0x40c683	[rbp+0x10]	callee frame operand	mov    QWORD PTR [rbp+0x10],rax
+classic	PE:6a70b91c:0270a000	0x40c687	[rbp+0x20]	callee frame operand	mov    QWORD PTR [rbp+0x20],0x41
+classic	PE:6a70b91c:0270a000	0x40c68f	[rbp+0x28]	callee frame operand	mov    QWORD PTR [rbp+0x28],0x4f
+classic	PE:6a70b91c:0270a000	0x40c6d3	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40c6e4	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40c72e	[rbp+0x10]	callee frame operand	movups XMMWORD PTR [rbp+0x10],xmm0
+classic	PE:6a70b91c:0270a000	0x40c748	[rbp+0x10]	callee frame operand	mov    QWORD PTR [rbp+0x10],rax
+classic	PE:6a70b91c:0270a000	0x40c74c	[rbp+0x20]	callee frame operand	mov    QWORD PTR [rbp+0x20],0x3d
+classic	PE:6a70b91c:0270a000	0x40c754	[rbp+0x28]	callee frame operand	mov    QWORD PTR [rbp+0x28],0x3f
+classic	PE:6a70b91c:0270a000	0x40c7a3	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40c7b4	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40c7cf	[rbp+0x10]	callee frame operand	mov    QWORD PTR [rbp+0x10],rax
+classic	PE:6a70b91c:0270a000	0x40c7d3	[rbp+0x20]	callee frame operand	mov    QWORD PTR [rbp+0x20],0x41
+classic	PE:6a70b91c:0270a000	0x40c7db	[rbp+0x28]	callee frame operand	mov    QWORD PTR [rbp+0x28],0x4f
+classic	PE:6a70b91c:0270a000	0x40c81f	[rbp+0x10]	callee frame operand	lea    rdx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40c830	[rbp+0x28]	callee frame operand	mov    rdx,QWORD PTR [rbp+0x28]
+classic	PE:6a70b91c:0270a000	0x40c841	[rbp+0x10]	callee frame operand	mov    rcx,QWORD PTR [rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40c875	[rsp+0x48]	callee frame operand	mov    r13d,DWORD PTR [rsp+0x48]
+classic	PE:6a70b91c:0270a000	0x40c87a	[rsp+0x50]	callee frame operand	mov    r8d,DWORD PTR [rsp+0x50]
+classic	PE:6a70b91c:0270a000	0x40c883	[rbp-0x70]	callee frame operand	mov    DWORD PTR [rbp-0x70],r8d
+classic	PE:6a70b91c:0270a000	0x40c88a	[rsp+0x50]	callee frame operand	mov    DWORD PTR [rsp+0x50],ebx
+classic	PE:6a70b91c:0270a000	0x40c88e	[rsp+0x60]	callee frame operand	mov    rdx,QWORD PTR [rsp+0x60]
+classic	PE:6a70b91c:0270a000	0x40c89b	[rsp+0x50]	callee frame operand	mov    DWORD PTR [rsp+0x50],ebx
+classic	PE:6a70b91c:0270a000	0x40c89f	[rbp-0x30]	callee frame operand	movsxd rcx,DWORD PTR [rbp-0x30]
+classic	PE:6a70b91c:0270a000	0x40c8a6	[rsp+0x38]	callee frame operand	mov    DWORD PTR [rsp+0x38],ecx
+classic	PE:6a70b91c:0270a000	0x40c8ad	[rsp+0x34]	callee frame operand	mov    DWORD PTR [rsp+0x34],eax
+classic	PE:6a70b91c:0270a000	0x40c8bc	[rbp-0x50]	callee frame operand	mov    QWORD PTR [rbp-0x50],rcx
+classic	PE:6a70b91c:0270a000	0x40c8c3	[rbp-0x80]	callee frame operand	mov    QWORD PTR [rbp-0x80],rdi
+classic	PE:6a70b91c:0270a000	0x40c8d0	[rbp-0x60]	callee frame operand	mov    QWORD PTR [rbp-0x60],r9
+classic	PE:6a70b91c:0270a000	0x40c8d7	[rsp+0x40]	callee frame operand	mov    QWORD PTR [rsp+0x40],rcx
+classic	PE:6a70b91c:0270a000	0x40c8df	[rsp+0x58]	callee frame operand	mov    QWORD PTR [rsp+0x58],rax
+classic	PE:6a70b91c:0270a000	0x40c8e7	[rsp+0x68]	callee frame operand	mov    QWORD PTR [rsp+0x68],r12
+classic	PE:6a70b91c:0270a000	0x40c8ec	[rsp+0x34]	callee frame operand	mov    eax,DWORD PTR [rsp+0x34]
+classic	PE:6a70b91c:0270a000	0x40c903	[rsp+0x70]	callee frame operand	mov    r10,QWORD PTR [rsp+0x70]
+classic	PE:6a70b91c:0270a000	0x40c964	[rsp+0x70]	callee frame operand	mov    rax,QWORD PTR [rsp+0x70]
+classic	PE:6a70b91c:0270a000	0x40c988	[rsp+0x78]	callee frame operand	mov    r9,QWORD PTR [rsp+0x78]
+classic	PE:6a70b91c:0270a000	0x40c9d4	[rsp+0x58]	callee frame operand	mov    rdx,QWORD PTR [rsp+0x58]
+classic	PE:6a70b91c:0270a000	0x40c9e2	[rsp+0x4c]	callee frame operand	cmp    DWORD PTR [rsp+0x4c],eax
+classic	PE:6a70b91c:0270a000	0x40c9f1	[rsp+0x48]	callee frame operand	cmp    DWORD PTR [rsp+0x48],eax
+classic	PE:6a70b91c:0270a000	0x40caa5	[rsp+0x50]	callee frame operand	mov    ebx,DWORD PTR [rsp+0x50]
+classic	PE:6a70b91c:0270a000	0x40caa9	[rbp-0x80]	callee frame operand	mov    rdi,QWORD PTR [rbp-0x80]
+classic	PE:6a70b91c:0270a000	0x40caad	[rbp-0x60]	callee frame operand	mov    rsi,QWORD PTR [rbp-0x60]
+classic	PE:6a70b91c:0270a000	0x40cab1	[rbp-0x50]	callee frame operand	mov    r14,QWORD PTR [rbp-0x50]
+classic	PE:6a70b91c:0270a000	0x40cab5	[rsp+0x68]	callee frame operand	mov    r12,QWORD PTR [rsp+0x68]
+classic	PE:6a70b91c:0270a000	0x40caba	[rsp+0x38]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x38]
+classic	PE:6a70b91c:0270a000	0x40cabf	[rsp+0x78]	callee frame operand	mov    r9,QWORD PTR [rsp+0x78]
+classic	PE:6a70b91c:0270a000	0x40caca	[rsp+0x58]	callee frame operand	mov    rdx,QWORD PTR [rsp+0x58]
+classic	PE:6a70b91c:0270a000	0x40caeb	[rsp+0x4c]	callee frame operand	cmp    DWORD PTR [rsp+0x4c],eax
+classic	PE:6a70b91c:0270a000	0x40cafa	[rsp+0x48]	callee frame operand	cmp    DWORD PTR [rsp+0x48],eax
+classic	PE:6a70b91c:0270a000	0x40cb21	[rsp+0x68]	callee frame operand	mov    r12,QWORD PTR [rsp+0x68]
+classic	PE:6a70b91c:0270a000	0x40cb26	[rsp+0x38]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x38]
+classic	PE:6a70b91c:0270a000	0x40cbb5	[rbp-0x60]	callee frame operand	mov    rsi,QWORD PTR [rbp-0x60]
+classic	PE:6a70b91c:0270a000	0x40cbb9	[rbp-0x50]	callee frame operand	mov    r14,QWORD PTR [rbp-0x50]
+classic	PE:6a70b91c:0270a000	0x40cbbd	[rsp+0x78]	callee frame operand	mov    r9,QWORD PTR [rsp+0x78]
+classic	PE:6a70b91c:0270a000	0x40cbc2	[rsp+0x38]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x38]
+classic	PE:6a70b91c:0270a000	0x40cbc7	[rsp+0x40]	callee frame operand	mov    rcx,QWORD PTR [rsp+0x40]
+classic	PE:6a70b91c:0270a000	0x40cbcc	[rsp+0x34]	callee frame operand	mov    eax,DWORD PTR [rsp+0x34]
+classic	PE:6a70b91c:0270a000	0x40cbd0	[rbp-0x70]	callee frame operand	mov    r8d,DWORD PTR [rbp-0x70]
+classic	PE:6a70b91c:0270a000	0x40cbd7	[rsp+0x78]	callee frame operand	mov    QWORD PTR [rsp+0x78],r9
+classic	PE:6a70b91c:0270a000	0x40cbdf	[rbp-0x60]	callee frame operand	mov    QWORD PTR [rbp-0x60],rsi
+classic	PE:6a70b91c:0270a000	0x40cbe6	[rsp+0x38]	callee frame operand	mov    DWORD PTR [rsp+0x38],r15d
+classic	PE:6a70b91c:0270a000	0x40cbee	[rbp-0x50]	callee frame operand	mov    QWORD PTR [rbp-0x50],r14
+classic	PE:6a70b91c:0270a000	0x40cbf5	[rsp+0x50]	callee frame operand	movsxd rbx,DWORD PTR [rsp+0x50]
+classic	PE:6a70b91c:0270a000	0x40cbfd	[rsp+0x68]	callee frame operand	mov    r12,QWORD PTR [rsp+0x68]
+classic	PE:6a70b91c:0270a000	0x40cc08	[rsp+0x60]	callee frame operand	mov    rdx,QWORD PTR [rsp+0x60]
+classic	PE:6a70b91c:0270a000	0x40cc0d	[rbp-0x30]	callee frame operand	mov    ecx,DWORD PTR [rbp-0x30]
+classic	PE:6a70b91c:0270a000	0x40cc10	[rsp+0x48]	callee frame operand	mov    r13d,DWORD PTR [rsp+0x48]
+classic	PE:6a70b91c:0270a000	0x40cc1c	[rbp+0x28]	callee frame operand	mov    QWORD PTR [rbp+0x28],rdi
+classic	PE:6a70b91c:0270a000	0x40cc20	[rbp+0x10]	callee frame operand	mov    DWORD PTR [rbp+0x10],ecx
+classic	PE:6a70b91c:0270a000	0x40cc23	[rbp+0x14]	callee frame operand	mov    DWORD PTR [rbp+0x14],edi
+classic	PE:6a70b91c:0270a000	0x40cc29	[rbp+0x18]	callee frame operand	mov    DWORD PTR [rbp+0x18],eax
+classic	PE:6a70b91c:0270a000	0x40cc2c	[rbp+0x20]	callee frame operand	mov    DWORD PTR [rbp+0x20],0x9
+classic	PE:6a70b91c:0270a000	0x40cc33	[rbp+0x24]	callee frame operand	mov    DWORD PTR [rbp+0x24],0x23
+classic	PE:6a70b91c:0270a000	0x40cc3a	[rbp+0x1c]	callee frame operand	mov    DWORD PTR [rbp+0x1c],0x1d
+classic	PE:6a70b91c:0270a000	0x40cc41	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40cc4e	[rsp+0x28]	callee frame operand	mov    DWORD PTR [rsp+0x28],edi
+classic	PE:6a70b91c:0270a000	0x40cc52	[rsp+0x30]	callee frame operand	movzx  eax,BYTE PTR [rsp+0x30]
+classic	PE:6a70b91c:0270a000	0x40cc57	[rsp+0x20]	callee frame operand	mov    BYTE PTR [rsp+0x20],al
+classic	PE:6a70b91c:0270a000	0x40cc5e	[rsp+0x4c]	callee frame operand	mov    edx,DWORD PTR [rsp+0x4c]
+classic	PE:6a70b91c:0270a000	0x40cc62	[rbp+0x10]	callee frame operand	lea    rcx,[rbp+0x10]
+classic	PE:6a70b91c:0270a000	0x40cc6b	[rbp+0x50]	callee frame operand	mov    rcx,QWORD PTR [rbp+0x50]
+classic	PE:6a70b91c:0270a000	0x40cc77	[rsp+0x1a8]	restore saved RBX at entry_RSP+0x10; not an incoming argument	mov    rbx,QWORD PTR [rsp+0x1a8]
+classic	PE:6a70b91c:0270a000	0x40cd18	[rsp+0x70]	callee frame operand	mov    r10,QWORD PTR [rsp+0x70]
+classic	PE:6a70b91c:0270a000	0x40cd39	[rsp+0x78]	callee frame operand	mov    r9,QWORD PTR [rsp+0x78]
+classic	PE:6a70b91c:0270a000	0x40cd96	[rsp+0x58]	callee frame operand	mov    rdx,QWORD PTR [rsp+0x58]
+classic	PE:6a70b91c:0270a000	0x40cda4	[rsp+0x4c]	callee frame operand	cmp    DWORD PTR [rsp+0x4c],eax
+classic	PE:6a70b91c:0270a000	0x40cdaa	[rsp+0x68]	callee frame operand	cmp    QWORD PTR [rsp+0x68],rsi
+classic	PE:6a70b91c:0270a000	0x40cdb5	[rsp+0x48]	callee frame operand	cmp    DWORD PTR [rsp+0x48],eax
+classic	PE:6a70b91c:0270a000	0x40ce65	[rsp+0x50]	callee frame operand	mov    ebx,DWORD PTR [rsp+0x50]
+classic	PE:6a70b91c:0270a000	0x40ce69	[rbp-0x80]	callee frame operand	mov    rdi,QWORD PTR [rbp-0x80]
+classic	PE:6a70b91c:0270a000	0x40ce6d	[rbp-0x60]	callee frame operand	mov    rsi,QWORD PTR [rbp-0x60]
+classic	PE:6a70b91c:0270a000	0x40ce71	[rbp-0x50]	callee frame operand	mov    r14,QWORD PTR [rbp-0x50]
+classic	PE:6a70b91c:0270a000	0x40ce75	[rsp+0x38]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x38]
+classic	PE:6a70b91c:0270a000	0x40ce7a	[rsp+0x78]	callee frame operand	mov    r9,QWORD PTR [rsp+0x78]
+classic	PE:6a70b91c:0270a000	0x40ce85	[rsp+0x58]	callee frame operand	mov    rdx,QWORD PTR [rsp+0x58]
+classic	PE:6a70b91c:0270a000	0x40cea6	[rsp+0x4c]	callee frame operand	cmp    DWORD PTR [rsp+0x4c],eax
+classic	PE:6a70b91c:0270a000	0x40ceac	[rsp+0x68]	callee frame operand	cmp    QWORD PTR [rsp+0x68],rsi
+classic	PE:6a70b91c:0270a000	0x40ceb7	[rsp+0x48]	callee frame operand	cmp    DWORD PTR [rsp+0x48],eax
+classic	PE:6a70b91c:0270a000	0x40cede	[rsp+0x38]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x38]
+classic	PE:6a70b91c:0270a000	0x40d070	[rsp+0x70]	callee frame operand	mov    r10,QWORD PTR [rsp+0x70]
+classic	PE:6a70b91c:0270a000	0x40d091	[rsp+0x78]	callee frame operand	mov    r9,QWORD PTR [rsp+0x78]
+classic	PE:6a70b91c:0270a000	0x40d0ee	[rsp+0x58]	callee frame operand	mov    rdx,QWORD PTR [rsp+0x58]
+classic	PE:6a70b91c:0270a000	0x40d0fc	[rsp+0x4c]	callee frame operand	cmp    DWORD PTR [rsp+0x4c],eax
+classic	PE:6a70b91c:0270a000	0x40d102	[rsp+0x68]	callee frame operand	cmp    QWORD PTR [rsp+0x68],rsi
+classic	PE:6a70b91c:0270a000	0x40d10d	[rsp+0x48]	callee frame operand	cmp    DWORD PTR [rsp+0x48],eax
+classic	PE:6a70b91c:0270a000	0x40d1b5	[rsp+0x50]	callee frame operand	mov    ebx,DWORD PTR [rsp+0x50]
+classic	PE:6a70b91c:0270a000	0x40d1b9	[rbp-0x80]	callee frame operand	mov    rdi,QWORD PTR [rbp-0x80]
+classic	PE:6a70b91c:0270a000	0x40d1bd	[rbp-0x60]	callee frame operand	mov    rsi,QWORD PTR [rbp-0x60]
+classic	PE:6a70b91c:0270a000	0x40d1c1	[rbp-0x50]	callee frame operand	mov    r14,QWORD PTR [rbp-0x50]
+classic	PE:6a70b91c:0270a000	0x40d1c5	[rsp+0x38]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x38]
+classic	PE:6a70b91c:0270a000	0x40d1ca	[rsp+0x78]	callee frame operand	mov    r9,QWORD PTR [rsp+0x78]
+classic	PE:6a70b91c:0270a000	0x40d1d5	[rsp+0x58]	callee frame operand	mov    rdx,QWORD PTR [rsp+0x58]
+classic	PE:6a70b91c:0270a000	0x40d1f6	[rsp+0x4c]	callee frame operand	cmp    DWORD PTR [rsp+0x4c],eax
+classic	PE:6a70b91c:0270a000	0x40d1fc	[rsp+0x68]	callee frame operand	cmp    QWORD PTR [rsp+0x68],rsi
+classic	PE:6a70b91c:0270a000	0x40d207	[rsp+0x48]	callee frame operand	cmp    DWORD PTR [rsp+0x48],eax
+classic	PE:6a70b91c:0270a000	0x40d22e	[rsp+0x38]	callee frame operand	mov    r15d,DWORD PTR [rsp+0x38]

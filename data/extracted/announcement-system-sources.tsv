@@ -242,6 +242,7 @@ native-announcement.state.mood	0x1413547e0+0x14135d10c+0x14135d1bc+0x14135d250	{
 native-announcement.state.mood	0x1413547e0+0x14135d10c+0x14135d1c5+0x14135d250	{n} is no longer enraged.
 native-announcement.state.mood	0x1413547e0+0x14135d10c+0x14135d1ce+0x14135d250	{n} has left the martial trance.
 native-announcement.state.resident-name	0x1413547e0+0x14135c22a+0x14135c261+0x14135c279+0x14135c299+0x14135c2b1+0x14135c2e1+0x14135c2f9+0x14135c387	The {s} have given a resident {s} the name {p}.
+native-announcement.state.resident-name-empty	0x1413547e0+0x14135c22a+0x14135c261+0x14135c279+0x14135c299+0x14135c2b1+0x14135c2c7+0x14135c2cf+0x14135c2d5+0x14135c2e6+0x14135c2f9+0x14135c387	The {s} have given a resident {s} the name .
 native-announcement.state.growth	0x1413547e0+0x14135cf57+0x14135cf6a+0x14135cf97+0x14135cfaf+0x14135d031	An animal has grown to become a {s}.
 native-announcement.state.growth	0x1413547e0+0x14135cf50+0x14135cf6a+0x14135cf97+0x14135cfaf+0x14135d031	{p} has grown to become a {s}.
 native-announcement.state.birth	0x1413547e0+0x14135e0d7+0x14135e0dc+0x14135e13e+0x14135e15e+0x14135e228	{n} has given birth to {s}.

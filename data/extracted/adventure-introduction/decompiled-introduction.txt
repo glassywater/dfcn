@@ -181,7 +181,7 @@ Displayed text branch reconstruction
    else:
      append "  Perhaps some of the people here will be worth talking to before you continue on your way."
 
-7. Submission and visible paragraph consumer
+7. Submission and both visible consumers
 
    0x1407EB1E7 constructs announcement options: kind 0x008F, color 7,
    attribute byte 1, duration 2000. 0x1407EB225 submits main_text through
@@ -192,10 +192,62 @@ Displayed text branch reconstruction
    announcement objects at 0x1400E4330 .. 0x1400E4352, whose queued pointer
    vector is 0x1424E3880 / 0x1424E3888. It also submits to the native text
    object at 0x1424E3898 via 0x140D51EB0.
-   Help initializer 0x1401F5A6D .. 0x1401F5AB7 iterates that queue, appends
+   The current announcement popup consumes this queue independently of help.
+   Full renderer sources: reference-popup-render.asm,
+   0x1400E9F40 .. 0x1400EA4C8; classic-popup-render.asm,
+   0x1400E9ED0 .. 0x1400EA458. Classic dispatch is preserved separately in
+   classic-message-dispatch.asm, 0x1400E3BB0 .. 0x1400E562D. Its queue vector
+   is 0x1424DD770 / 0x1424DD778 and richbox is 0x1424DD788.
+
+   Dispatch tests per-announcement flags bit 0 at 0x1400E4303 before queuing.
+   It copies the submitted full NativeString into the queued entry, then
+   clears/rebuilds the richbox from queue[0] at 0x1400E43BF .. 0x1400E43D9.
+   0x1400E43EA calls word layout with width 50 (0x32). Classic equivalent
+   rebuild/layout calls are 0x1400E4369 (0x140D4EEF0) and 0x1400E437A
+   (0x140D4ECC0). Complete word layout sources: reference-popup-layout.asm,
+   0x140D51C80 .. 0x140D51EAB; classic-popup-layout.asm,
+   0x140D4ECC0 .. 0x140D4EEEB. These functions end at RET, preserving their
+   split unwind-region continuations rather than stopping after the prologue.
+   It preserves punctuation words and controls; regular words receive x/y
+   fields at +0x28/+0x2C. Layout uses richbox +0x30 as current width and
+   +0x34 as last occupied row, both independent of the source string length.
+
+   Popup renderer branches:
+     - Empty queue -> return, with no popup body or confirmation label.
+     - Frame X = midpoint(incoming left/right) - 26, right = frame X + 53.
+       Frame Y = init.display.grid_y / 2 - (richbox.max_y + 8) / 2,
+       calculated at 0x1400E9F9C .. 0x1400E9FB1. The height becomes at
+       least 10 when graphics mode and manager[+0x88] portrait id != -1.
+     - Graphics + valid portrait id reserves portrait space: frame left
+       moves 6 columns left, frame right 6 columns right. Text origin is
+       frame left + 14; the ordinary text origin is frame left + 2.
+       Both use frame top + 2 plus each word's own coordinates.
+     - Every richbox word is drawn directly from its own NativeString,
+       using RGB bytes +0x20/+0x21/+0x22 and use_old_16_colors=0.
+       0x1400EA17C calls 0x140AD9960 (addst), with the word in RDX and
+       R9D=0. Classic equivalent is 0x1400EA10C -> 0x140AD69A0.
+       The full announcement is never sent through add_paragraph here.
+     - Portrait drawing additionally requires successful historical-figure
+       lookup, its graphics data, available portrait index, and figure flag
+       bit 2; failures skip only that drawing, without changing body text.
+     - The three-row button below the body uses queue size: >1 creates
+       "More" with immediate 0x65726F4D at 0x1400EA417; otherwise "Okay"
+       with immediate 0x79616B4F at 0x1400EA440. Classic equivalents are
+       0x1400EA3A7 / 0x1400EA3D0. popup-literal-sources.tsv retains these
+       immediate-string origins. No other prose branch exists in renderer.
+
+   Help initializer 0x1401F5A6D .. 0x1401F5AB7 also iterates that queue, appends
    every full submitted string to its paragraph buffer, then appends "[B]".
    Thus prefixes, main body, rescue and final suffix already share one string;
-   the optional vault paragraph is separately queued before help combines it.
+   the optional vault paragraph is separately queued. Popup displays the first
+   queued entry's own word layout; help combines queued entries as paragraphs.
+
+   The supplied screenshot selects the single local-origin adventurer branch:
+     0x1407EB01B equipment/action literal (classic 0x1407E889B),
+     0x1407EB02E forgotten destination literal (classic 0x1407E88AE),
+     0x1407EB1CB friends/reminder ending (classic 0x1407E8A4B).
+   There is no rescue, siege, bandit or vault prose in that captured string.
+   All three are already members of the 29 semantic source entries below.
 
 8. Exceptional start-site path (0x1407EA1B2 .. 0x1407EA2B1)
 
@@ -285,7 +337,20 @@ The 29 semantic source entries in help-sources.tsv comprise 15 shared-body,
 companion, rescue and ending entries, four siege entries, three bandit entries
 and seven vault entries (six article/pronoun forms plus the shared tail).
 help-translations.tsv retains the Chinese prose for each; fortress_help.inc
-combines covered fragments into the complete native paragraph.
+combines covered fragments into the complete native paragraph. Those entries
+are generated as help rules, not general UI-message literal rules. The live
+announcement popup previously called translate_complete_announcement, whose
+UI-message-only literal/grammar route could not consume these help entries.
+Its existing complete source ownership and word layout were therefore not
+enough to translate the screenshot's fixed three-part introduction string.
+
+announcement_translation.inc now tries the same reviewed help paragraph
+coverage (ui_message=false) on each complete native announcement block after the
+reviewed UI-message literal and before recursive combat/dialogue parsing.
+This consumes the entire source only when every constituent and typed slot
+is covered. It reaches all 29 shared-body/siege/bandit/vault entries, including
+the same historical-figure grammar used by the help consumer; it does not
+match individual screen rows or install screenshot-specific fragments.
 
 All help {p} fields now resolve complete native person/deity identities through
 the native identity source table, then the shared historical-actor grammar.

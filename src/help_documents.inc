@@ -18,7 +18,7 @@
         // Okay modals also admit complete quoted divine guidance. This raw
         // read must keep the live markup popup's prior ownership; otherwise
         // its help fragments produce a second, differently inset paragraph.
-        mask_announcement_popup(help_rows);
+        if (!NativeHelpForegroundScope::active) mask_announcement_popup(help_rows);
         const auto claim_source = [&](int x, int y, int length) {
             std::fill_n(help_rows[y].begin() + x, length, ' ');
             std::fill_n(screen_rows[y].begin() + x, length, ' ');
@@ -239,7 +239,7 @@
         // Recover only actual current native draws with intact exposed bytes,
         // then translate the complete caption before generic word matching.
         // The hidden suffix is evidence from the draw, never a catalog guess.
-        if (!help_panels.empty()) {
+        if (!help_panels.empty() && !NativeHelpForegroundScope::active) {
             const std::array background_draws{captured_native_drawn_text_rows(false),
                 captured_native_drawn_text_rows(true)};
             for (const SDL_Rect &panel : help_panels) {

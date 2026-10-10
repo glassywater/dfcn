@@ -104,7 +104,24 @@ void Overlay::append_embark_introduction_matches(std::vector<std::string> &rows,
         trim_view(body.substr(second, third - second)),
         trim_view(body.substr(third)),
     }};
-    if (source != embark_introduction_source_) {
+    NativeHistoryName arrival_site;
+    std::string arrival_english;
+    const bool has_arrival_site = capture_current_fortress_site_name(
+        arrival_site, arrival_english);
+    // The first draw may precede the site's complete native identity. Include
+    // its owned name/type in the key so a source-only fallback is not retained
+    // after WORD/POS and classification become available.
+    std::string translation_key = source;
+    if (has_arrival_site) {
+        translation_key += '\0';
+        translation_key += site_name_decision_key(arrival_site.native_name,
+            arrival_site.type, arrival_site.words);
+        translation_key += '\t' + std::to_string(arrival_site.site_id) + '\t' +
+            std::to_string(arrival_site.site_type) + '\t' +
+            std::to_string(arrival_site.site_subtype) + '\t' +
+            arrival_site.site_label + '\t' + arrival_english;
+    }
+    if (translation_key != embark_introduction_key_) {
         std::array<std::string, 5> targets;
         const auto title = exact_literal_translation(heading);
         const auto slogan = exact_literal_translation(motto);
@@ -125,13 +142,30 @@ void Overlay::append_embark_introduction_matches(std::vector<std::string> &rows,
                 if (p == 1) {
                     // Both residents and hungry wildlife are creature nouns.
                     target = translate_creature_descriptor(capture);
+                } else if (p == 2) {
+                    // This paragraph names the arrival site. Prefer its real
+                    // current-world identity, even if another site has the
+                    // same spelling; never infer a type from the name itself.
+                    const auto same = [](std::string_view left, std::string_view right) {
+                        return lower(native_text_to_utf8(normalize_utterance(left))) ==
+                            lower(native_text_to_utf8(normalize_utterance(right)));
+                    };
+                    const auto pair = split_generated_name_identity(capture);
+                    const bool current = has_arrival_site && (pair
+                        ? same(pair->native_name, arrival_site.native_name) &&
+                            same(pair->gloss, arrival_english)
+                        : same(capture, arrival_site.native_name));
+                    if (current) target = translate_site_display(arrival_site, capture);
+                    if (!target) target = translate_site_reference(capture);
+                    // An unbound pair still proves the two languages, but
+                    // supplies no site classification for an invented suffix.
+                    if (!target && pair) target = translate_legends_place(capture);
+                    if (!target) target = translate_procedural_fragment(capture, true);
                 } else {
-                    if (p == 0) target = translate_civilization_reference(capture);
+                    target = translate_civilization_reference(capture);
                     if (!target) target = exact_literal_translation(capture);
-                    if (!target && p == 2 && split_generated_name_identity(capture))
-                        target = translate_procedural_fragment(capture);
-                    // Unresolved civilization names and the unglossed site
-                    // retain their native spelling rather than UI word senses.
+                    // Unresolved civilization names retain native spelling
+                    // rather than ordinary UI word senses.
                     if (!target) target = translate_procedural_fragment(capture, true);
                 }
                 // Unknown mod vocabulary remains one coherent field instead
@@ -142,7 +176,7 @@ void Overlay::append_embark_introduction_matches(std::vector<std::string> &rows,
             targets[p + 1] = fill_template(rule, captures,
                 &capture_translations_, nullptr, &translated);
         }
-        embark_introduction_source_ = source;
+        embark_introduction_key_ = std::move(translation_key);
         embark_introduction_targets_ = std::move(targets);
     }
 
