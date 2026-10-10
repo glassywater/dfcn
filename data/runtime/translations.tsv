@@ -7913,6 +7913,7 @@ An evil monster from the swamp. It resembles a knot of waterlogged weeds but wil
 Announcement combat agreement-title-core [agreement-party-list,agreement-item]: the plot of {s} to steal {s}	{s1}盗取{s2}的阴谋	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Bucket full of extraneous material.	{s1}取消了{s2}：桶中装满了异物。	l
 Announcement combat historical-event-paragraph [$date,agreement-record,agreement-followup]: In {s}, {s}. {s}	{s1}，{s2}。{s3}	l
+Announcement combat journal-event [journal-calendar-date,$person]: You first heard this on the {s} from {s}.	你最初在{s1}从{s2}那里听说了这件事。	l
 Announcement combat justice-interrogation-sentence []: Attempted to appeal to subject's belief in the truth.	试图以受审者对真相的重视为由进行劝说。	l
 Announcement combat negotiation-response []: joined the conversation and over time came around on the matter	加入了闲谈，并渐渐改变了对此事的看法	l
 Announcement combat negotiation-response []: made light conversation and over time came around on the matter	轻松地闲谈，并渐渐改变了对此事的看法	l
@@ -8045,6 +8046,7 @@ Announcement combat dialogue-battle-death [dialogue-battle-person,$name]: {s} wa
 Announcement combat dialogue-battle-slain-list [dialogue-battle-slain,dialogue-battle-slain-list]: {s}, {s}	{s1}、{s2}	l
 Announcement combat historical-event-paragraph [$date,agreement-record]: Subject revealed that in {s}, {s}.	受审者交代，{s1}，{s2}。	l
 Announcement combat historical-squad-clash [historical-squad-clash-core,historical-clash-outcome]: {s}, {s}	{s1}，{s2}	l
+Announcement combat journal-event [journal-calendar-date,$person]: You last heard this on the {s} from {s}.	你上次在{s1}从{s2}那里听说了这件事。	l
 Announcement combat justice-interrogation-sentence [justice-interrogation-crime]: Subject confessed to {s}.	受审者承认了{s1}。	l
 Announcement combat justice-intrigue-factors [justice-intrigue-factor,justice-intrigue-factor]: {s} and {s}	{s1}，且{s2}	l
 Announcement combat rumor-event [$name,rumor-flight]: I hear that refugees calling themselves {s} fled {s}.	听说有群难民自称{s1}，逃离{s2}。	l
@@ -8792,6 +8794,7 @@ A medium-sized mammalian predator. It is known by the tell-tale tufts of hair on
 Announcement combat artwork-artifact-destruction-subject [historical-artifact]: the destruction of {s}	{s1}的毁灭	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Experiencing emotional shock.	{s1}取消了{s2}：受到情感冲击。	l
 Announcement combat fortress-announcement [$unit]: {s} has mandated the construction of certain goods.	{s1}下令制作某些物品。	l
+Announcement combat journal-event [journal-calendar-date,$person]: You heard this on the {s} from {s}.	你在{s1}从{s2}那里听说了这件事。	l
 Announcement combat justice-intrigue-response [justice-intrigue-actor]: accepted out of loyalty to {s}	出于对{s1}的忠诚而接受了	l
 Announcement combat negotiation-response []: negotiated with discernment in turn but was outmaneuvered	也审时度势地谈判，却被对方胜过一筹	l
 Announcement combat rumor-event [$term,$travel-site]: There are foul goings-on over at the {s} of {s}.	{s2}的{s1}那里有人在干见不得人的勾当。	l
@@ -10805,6 +10808,22 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No targ
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Removed from guard.	{s1}取消了{s2}：已被调离警卫队。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Target too injured.	{s1}取消了{s2}：目标伤势过重。	l
 Announcement combat fortress-announcement [$unit]: {s} has imposed a ban on certain exports.	{s1}禁止出口某些物品。	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}nd Limestone in the year {s}	第{s2}年石灰岩月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}nd Malachite in the year {s}	第{s2}年孔雀石月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}nd Moonstone in the year {s}	第{s2}年月光石月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}nd Sandstone in the year {s}	第{s2}年砂岩月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}rd Limestone in the year {s}	第{s2}年石灰岩月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}rd Malachite in the year {s}	第{s2}年孔雀石月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}rd Moonstone in the year {s}	第{s2}年月光石月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}rd Sandstone in the year {s}	第{s2}年砂岩月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}st Limestone in the year {s}	第{s2}年石灰岩月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}st Malachite in the year {s}	第{s2}年孔雀石月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}st Moonstone in the year {s}	第{s2}年月光石月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}st Sandstone in the year {s}	第{s2}年砂岩月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}th Limestone in the year {s}	第{s2}年石灰岩月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}th Malachite in the year {s}	第{s2}年孔雀石月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}th Moonstone in the year {s}	第{s2}年月光石月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}th Sandstone in the year {s}	第{s2}年砂岩月{s1}日	l
 Announcement combat justice-interrogation-response []: spurned harmony and refused to listen	轻视和谐，拒绝听取劝说	l
 Announcement combat justice-interrogation-response []: spurned the law and refused to listen	轻视法律，拒绝听取劝说	l
 Announcement combat justice-intrigue-actor [justice-intrigue-actor]: fellow order member {s}	同一教团的成员{s1}	l
@@ -11078,6 +11097,15 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need em
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No bucket at well.	{s1}取消了{s2}：水井没有水桶。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No food available.	{s1}取消了{s2}：没有可用的食物。	l
 Announcement combat historical-event-paragraph [$date,historical-squad-clash]: In {s}, {s}.	{s1}，{s2}。	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}nd Hematite in the year {s}	第{s2}年赤铁矿月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}nd Obsidian in the year {s}	第{s2}年黑曜石月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}rd Hematite in the year {s}	第{s2}年赤铁矿月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}rd Obsidian in the year {s}	第{s2}年黑曜石月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}st Hematite in the year {s}	第{s2}年赤铁矿月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}st Obsidian in the year {s}	第{s2}年黑曜石月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}th Hematite in the year {s}	第{s2}年赤铁矿月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}th Obsidian in the year {s}	第{s2}年黑曜石月{s1}日	l
+Announcement combat journal-event [journal-calendar-date]: You first heard this on the {s}.	你最初在{s1}听说了这件事。	l
 Announcement combat justice-interrogation-factor []: being unswayed by the emotional appeal	未被情感上的劝说打动	l
 Announcement combat justice-interrogation-response []: believed in the value of cooperation	相信合作的价值	l
 Announcement combat justice-interrogation-response []: complied out of fear of interrogator	出于对审讯者的恐惧而配合	l
@@ -11343,6 +11371,15 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Seeking
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Throwing tantrum.	{s1}取消了{s2}：正在发脾气。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Wrong ammunition.	{s1}取消了{s2}：弹药不对。	l
 Announcement combat historical-clash-outcome [$number,$number]: slaying {s} and losing {s}	击杀对方{s1}，己方阵亡{s2}	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}nd Felsite in the year {s}	第{s2}年霏细岩月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}nd Granite in the year {s}	第{s2}年花岗岩月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}rd Felsite in the year {s}	第{s2}年霏细岩月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}rd Granite in the year {s}	第{s2}年花岗岩月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}st Felsite in the year {s}	第{s2}年霏细岩月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}st Granite in the year {s}	第{s2}年花岗岩月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}th Felsite in the year {s}	第{s2}年霏细岩月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}th Granite in the year {s}	第{s2}年花岗岩月{s1}日	l
+Announcement combat journal-event [journal-calendar-date]: You last heard this on the {s}.	你上次在{s1}听说了这件事。	l
 Announcement combat justice-interrogation-relationship-factor []: distrust of interrogator	不信任审讯者	l
 Announcement combat justice-interrogation-response []: distrusted interrogator and refused	不信任审讯者，因而拒绝了	l
 Announcement combat justice-intrigue-motive [justice-intrigue-place]: have an agent in {s}	在{s1}安插代理人	l
@@ -11576,6 +11613,14 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Nothing
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Nothing to cage.	{s1}取消了{s2}：没有可装入笼中的生物。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Water is frozen.	{s1}取消了{s2}：水已结冰。	l
 Announcement combat historical-commanded-squad [historical-squad,$unit]: {s}, led by {s},	{s1}（由{s2}率领）	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}nd Galena in the year {s}	第{s2}年方铅矿月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}nd Timber in the year {s}	第{s2}年林木月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}rd Galena in the year {s}	第{s2}年方铅矿月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}rd Timber in the year {s}	第{s2}年林木月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}st Galena in the year {s}	第{s2}年方铅矿月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}st Timber in the year {s}	第{s2}年林木月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}th Galena in the year {s}	第{s2}年方铅矿月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}th Timber in the year {s}	第{s2}年林木月{s1}日	l
 Announcement combat justice-interrogation-factor []: a belief in the value of cooperation	相信合作的价值	l
 Announcement combat justice-interrogation-factor []: being swayed by the emotional appeal	被情感上的劝说打动	l
 Announcement combat justice-interrogation-relationship-factor []: respect of interrogator	尊重审讯者	l
@@ -11829,6 +11874,10 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No floo
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Resting injury.	{s1}取消了{s2}：正在养伤。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Seeking Infant.	{s1}取消了{s2}：正在寻找婴儿。	l
 Announcement combat head [owner,impact-part]: {s} {s} takes the full force of the impact	{s1}{s2}承受了全部冲击力	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}nd Slate in the year {s}	第{s2}年板岩月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}rd Slate in the year {s}	第{s2}年板岩月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}st Slate in the year {s}	第{s2}年板岩月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}th Slate in the year {s}	第{s2}年板岩月{s1}日	l
 Announcement combat justice-interrogation-relationship-factor []: hatred of interrogator	憎恨审讯者	l
 Announcement combat justice-interrogation-response []: respected interrogator and agreed	出于对审讯者的尊重而答应了	l
 Announcement combat justice-intrigue-actor [justice-intrigue-actor]: comrade-in-arms {s}	战友{s1}	l
@@ -12089,6 +12138,10 @@ Announcement combat fortress-announcement [$unit]: The {s} has been missing for 
 Announcement combat fortress-announcement [$unit]: {s} has been missing for a week.	{s1}已经失踪一周。	l
 Announcement combat fortress-announcement [$unit]: {s} has altered the prices of goods.	{s1}调整了物品价格。	l
 Announcement combat historical-clash-outcome [$number]: slaying {s} and losing everyone	击杀对方{s1}，己方全军覆没	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}nd Opal in the year {s}	第{s2}年蛋白石月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}rd Opal in the year {s}	第{s2}年蛋白石月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}st Opal in the year {s}	第{s2}年蛋白石月{s1}日	l
+Announcement combat journal-calendar-date [$digits,$digits]: {s}th Opal in the year {s}	第{s2}年蛋白石月{s1}日	l
 Announcement combat justice-interrogation-relationship-factor []: trust of interrogator	信任审讯者	l
 Announcement combat justice-interrogation-response []: had a trusting nature and agreed	天性轻信，因而答应了	l
 Announcement combat justice-interrogation-sentence [$unit]: Subject's true name is {s}.	受审者的真名是{s1}。	l
@@ -12594,6 +12647,7 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Unconsc
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Unscheduled.	{s1}取消了{s2}：未排定。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Went insane.	{s1}取消了{s2}：发疯了。	l
 Announcement combat historical-event-paragraph [$date,agreement-record]: In {s}, {s}.	{s1}，{s2}。	l
+Announcement combat journal-event [journal-calendar-date]: You heard this on the {s}.	你在{s1}听说了这件事。	l
 Announcement combat justice-interrogation-factor []: an unwillingness to accept death	不愿接受死亡	l
 Announcement combat justice-interrogation-factor []: being unaffected by the comments	未受那些话影响	l
 Announcement combat justice-interrogation-factors [justice-interrogation-factor]: {s}	{s1}	l
@@ -34060,6 +34114,7 @@ Announcement combat historical-squad [$unit]: {s}	{s1}	l
 Announcement combat injury-condition []: sprained	扭伤	l
 Announcement combat injury-condition []: strained	拉伤	l
 Announcement combat injury-subject []: a ligament	一条韧带	l
+Announcement combat journal-event [$message]: {s}	{s1}	l
 Announcement combat journal-person-kind []: Force	自然之灵	l
 Announcement combat layer-phrase [layer]: the {s}	{s1}	l
 Announcement combat material []: unknown material	未知材料	l
@@ -60639,6 +60694,7 @@ Native Legends war eating sapients	吞食智慧生物的尸体	h
 Native Legends war godlessness {n}	{n1}对敌方不敬神灵的厌恶	ht
 Native Legends war plant treatment	对待植物的方式	h
 Native history collection {s} Race	{s1}赛跑	htEi
+Native history office: alderperson	行会理事	h
 Native history office: ringleaders	首领	h
 Native history relation: mercenary	佣兵	h
 Nearest site: A day's travel north	最近地点：向北，约一天路程	w

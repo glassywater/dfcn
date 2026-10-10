@@ -614,6 +614,11 @@ static bool legends_office_capture(const Rule &rule, size_t field) {
         return false;
     const auto &before = rule.template_literals[field];
     const auto &after = rule.template_literals[field + 1];
+    // The adventure journal supplies the same entity-owned office as a
+    // history event. Its ordinary prose flag must not turn the owner into a
+    // site field, including the plural "one of the" relationship forms.
+    if (field == 0 && before.starts_with("This person is ") && after.starts_with(" of "))
+        return true;
     if (before.ends_with("position of ") || before.ends_with("'s ascension to "))
         return true;
     if (after.starts_with(" of ") &&
@@ -623,6 +628,15 @@ static bool legends_office_capture(const Rule &rule, size_t field) {
              before.ends_with("symbol of a ") || before.ends_with("symbol of the ")))
         return true;
     return false;
+}
+
+static bool journal_site_entity_capture(const Rule &rule, size_t field) {
+    // These native card statements name the site's owning entity. Their
+    // source field is distinct from the actual site named in the header.
+    return field == 0 &&
+        (rule.source == "This site is the capital of {p}." ||
+         rule.source == "This site is controlled by {p}." ||
+         rule.source == "This site is a fortress of {p}.");
 }
 
 std::optional<std::string> Overlay::translate_legends_color(std::string_view value) const {
@@ -848,12 +862,14 @@ std::optional<std::string> Overlay::translate_legends_nested(
             if (rule.legends_identity && rule.source == "\"{n}\"") mode += ":identity";
             break;
         case 'p':
-            if (rule.legends_event_title || rule.legends_participant_relation ||
-                    rule.legends_identity) {
-                mode += field > 0 && rule.template_kinds[field - 1] == 's' &&
-                    legends_office_capture(rule, field - 1)
-                    ? ":office-owner" : ":reference";
-            } else mode += journal_habitat_rule(rule) ? ":habitat" : ":place";
+            if (field > 0 && legends_office_capture(rule, field - 1))
+                mode += ":office-owner";
+            else if (journal_site_entity_capture(rule, field))
+                mode += ":entity-owner";
+            else if (rule.legends_event_title || rule.legends_participant_relation ||
+                    rule.legends_identity)
+                mode += ":reference";
+            else mode += journal_habitat_rule(rule) ? ":habitat" : ":place";
             break;
         case 's':
             if (rule.legends_identity && field == 0 &&
@@ -866,8 +882,7 @@ std::optional<std::string> Overlay::translate_legends_nested(
                      rule.source.starts_with("the {s} {s}") ||
                      rule.source.starts_with("a {s} {s}") || rule.source.starts_with("an {s} {s}")))
                 mode += ":profession";
-            else if (legends_office_capture(rule, field) ||
-                    (field == 0 && rule.source.starts_with("This person is ")))
+            else if (legends_office_capture(rule, field))
                 mode += ":office";
             else if (rule.legends_participant_relation && field == 0 &&
                     rule.source == "{s} of {p}") mode += ":office-term";
@@ -931,26 +946,28 @@ std::optional<std::string> Overlay::translate_legends_nested(
                     mode == "n:identity");
                 break;
             case 'p':
-                if (mode == "p:reference" || mode == "p:office-owner") {
+                if (mode == "p:reference" || mode == "p:office-owner" ||
+                        mode == "p:entity-owner") {
                     // Native +d8 subjects share this reference slot across
                     // sites, entities, buildings, geography and artifacts.
                     // Their participant/identity owner productions consume
                     // the same references when an actor recurses into them.
-                    // Office owners are independently supplied by b92900
+                    // Office owners and journal site controllers are supplied
                     // as entities, even if a site has the same spelling.
-                    const bool office_owner = mode == "p:office-owner";
+                    const bool entity_owner = mode == "p:office-owner" ||
+                        mode == "p:entity-owner";
                     const auto accept_reference = [&](std::optional<std::string> candidate) {
                         if (translation_complete_with_native_nicknames(candidate, part))
                             target = std::move(candidate);
                     };
-                    if (office_owner) {
+                    if (entity_owner) {
                         accept_reference(translate_civilization_reference(part));
                         if (!target) accept_reference(translate_legends_name(part, false, false));
                     }
                     // Otherwise an actual site's language/provenance wins.
                     // An unknown capitalized spelling returned unchanged
                     // must not prevent the complete generated-name grammar.
-                    if (!target && !office_owner) accept_reference(translate_site_reference(part));
+                    if (!target && !entity_owner) accept_reference(translate_site_reference(part));
                     if (!target) {
                         if (const auto term = legends_terms_.find(std::string(part));
                                 term != legends_terms_.end()) accept_reference(term->second);
@@ -958,12 +975,12 @@ std::optional<std::string> Overlay::translate_legends_nested(
                                 term != legends_terms_ci_.end()) accept_reference(term->second);
                     }
                     if (!target) accept_reference(exact_literal_translation(part));
-                    if (!target && !office_owner)
+                    if (!target && !entity_owner)
                         accept_reference(translate_legends_name(part, false));
                     // An unresolved bound entity must not be returned again
                     // before the complete source-name grammar can run.
                     if (!target) accept_reference(translate_legends_name(part, false, false));
-                    if (!target && !office_owner) accept_reference(translate_legends_place(part));
+                    if (!target && !entity_owner) accept_reference(translate_legends_place(part));
                 } else {
                     target = mode == "p:habitat"
                         ? translate_journal_habitat_places(part)

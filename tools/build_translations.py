@@ -1644,6 +1644,14 @@ def generated_calendar_rules(chosen: dict[bytes, Entry]) -> list[Entry]:
         for suffix in ("st", "nd", "rd", "th"):
             source = f"{{d}}{suffix} {month}"
             rules.append(Entry(source, day, "wt", "DFCN generated calendar", 390))
+            # Event hearing paragraphs reuse both reviewed day/month and
+            # year fields. Keep this complete date scope out of global text
+            # matching, while retaining each source number's own position.
+            rules.append(Entry(
+                f"Announcement combat journal-calendar-date [$digits,$digits]: "
+                f"{{s}}{suffix} {month} in the year {{s}}",
+                year.replace("{d2}", "{s2}") + indexed_day.replace("{d1}", "{s1}"),
+                "l", "DFCN generated calendar", 390))
             # Adventure HUD omits the season and the literal "Year". Match
             # the entire compact date so its trailing bare number keeps the
             # reviewed year format and shares one translated layout span.
