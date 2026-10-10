@@ -36,6 +36,7 @@ PE_VTABLE_CONSUMED_SLOTS = {
     0x1710d18: 4,
     0x15eb4a8: 4,
     0x15f6ee8: 5,
+    0x15f6f68: 4,
 }
 
 

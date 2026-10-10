@@ -14,6 +14,7 @@ static bool native_notification_begin_draw(const SDL_Rect &bounds) {
         auto &layer = g_native_notification_layer;
         if (!gps || !gps->screen || !gps->screen_top || g_native_notification_output ||
                 g_native_tooltip_output || native_private_ui_write_active(gps) ||
+                gps == g_native_reports_write_graphics ||
                 gps == g_native_info_write_graphics || gps == g_native_stocks_write_graphics ||
                 !g_native_help_layer.native_renderer || !g_native_help_layer.renderer ||
                 gps->dimx <= 0 || gps->dimx > 1000 || gps->dimy <= 0 || gps->dimy > 1000 ||

@@ -2212,15 +2212,20 @@ static NativeTextGridOrigin native_text_grid_origin(
 static thread_local const graphicst *g_native_help_write_graphics = nullptr;
 static thread_local const graphicst *g_native_info_write_graphics = nullptr;
 static thread_local const graphicst *g_native_stocks_write_graphics = nullptr;
+static thread_local const graphicst *g_native_reports_write_graphics = nullptr;
 static thread_local const graphicst *g_native_notification_write_graphics = nullptr;
 static bool native_notification_write_active(const graphicst *gps) noexcept {
-    return gps && gps == g_native_notification_write_graphics;
+    return gps && (gps == g_native_notification_write_graphics ||
+        gps == g_native_reports_write_graphics);
 }
 static thread_local bool g_native_info_foreground = false;
 static bool native_info_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_stocks_background_view(const graphicst *) noexcept;
 static bool native_stocks_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_stocks_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
+static bool native_reports_background_view(const graphicst *) noexcept;
+static bool native_reports_background_cell_hidden(const graphicst *, int, int) noexcept;
+static bool native_reports_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
 static bool native_private_ui_write_active(const graphicst *gps) noexcept {
     return gps && (gps == g_native_help_write_graphics || native_dfhack_layer_write_active(gps));
 }
@@ -3443,6 +3448,8 @@ public:
     void render_native_help_layer(SDL_Renderer *renderer);
     void render_native_tooltip_layer(SDL_Renderer *renderer);
     void render_native_notification_layer(SDL_Renderer *renderer);
+    void render_native_reports_layer(SDL_Renderer *renderer);
+    void render_native_announcement_layer(SDL_Renderer *renderer, bool reports);
     void render_native_info_layer(SDL_Renderer *renderer);
     void render_native_stocks_layer(SDL_Renderer *renderer);
     void render_native_fortress_layer(SDL_Renderer *renderer, bool stocks);
@@ -16015,6 +16022,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_stocks_layers.inc"
 #include "native_tooltip_layers.inc"
 #include "native_notification_layers.inc"
+#include "native_reports_layers.inc"
 
 struct NativeKeybindingScope {
     SDL_Rect table{};
@@ -43359,6 +43367,8 @@ static void native_info_present_layer(SDL_Renderer *renderer,
     void (*draw_info)(SDL_Renderer *));
 static void native_stocks_present_layer(SDL_Renderer *renderer,
     void (*draw_stocks)(SDL_Renderer *));
+static void native_reports_present_layer(SDL_Renderer *renderer,
+    void (*draw_reports)(SDL_Renderer *));
 static void native_tooltip_present_layer(SDL_Renderer *renderer,
     void (*draw_tooltips)(SDL_Renderer *));
 static void native_notification_present_layer(SDL_Renderer *renderer,
@@ -43380,6 +43390,9 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
     });
     native_stocks_present_layer(renderer, [](SDL_Renderer *stocks_renderer) {
         g_overlay.render_native_stocks_layer(stocks_renderer);
+    });
+    native_reports_present_layer(renderer, [](SDL_Renderer *reports_renderer) {
+        g_overlay.render_native_reports_layer(reports_renderer);
     });
     native_notification_present_layer(renderer, [](SDL_Renderer *notification_renderer) {
         g_overlay.render_native_notification_layer(notification_renderer);

@@ -1,6 +1,14 @@
 void Overlay::render_native_notification_layer(SDL_Renderer *renderer) {
+    render_native_announcement_layer(renderer, false);
+}
+
+void Overlay::render_native_reports_layer(SDL_Renderer *renderer) {
+    render_native_announcement_layer(renderer, true);
+}
+
+void Overlay::render_native_announcement_layer(SDL_Renderer *renderer, bool reports) {
     TranslationStateScope translation;
-    auto &layer = g_native_notification_layer;
+    auto &layer = reports ? g_native_reports_layer : g_native_notification_layer;
     if (!renderer || !layer.ready || layer.renderer != renderer) return;
     if (!config_.enabled || !face_ || rules_.empty()) {
         native_ui_paint_grid(layer, renderer, {});
@@ -53,8 +61,8 @@ void Overlay::render_native_notification_layer(SDL_Renderer *renderer) {
             overlay.suppressed_glyphs_ = std::move(suppressed);
         }
     } view(*this, layer.foreground.graphics());
-    NativeInfoCapturedTextScope captions(g_native_notification_text);
-    // The submitted notification grid is a complete foreground document.
+    NativeInfoCapturedTextScope captions(reports ? g_native_reports_text : g_native_notification_text);
+    // Each submitted announcement grid is a complete foreground document.
     // Its own draw addresses and wrap records retain the existing complete
     // report ownership; an active read scope keeps page recovery out of it.
     NativeUiReadScope component(gps_, nullptr);
@@ -81,6 +89,21 @@ void Overlay::render_native_notification_layer(SDL_Renderer *renderer) {
     for (const auto &match : prepared_matches_)
         if (complete_report(match)) paragraphs.push_back(match);
     std::erase_if(prepared_matches_, complete_report);
+    if (reports) for (auto &match : prepared_matches_) {
+        const int y = match.native_split_text ? match.native_split_top_y : match.y;
+        if (match.target.empty() || match.native_split_duplicate || match.layout_font_pixels > 0)
+            continue;
+        if (const auto button = native_button_text_span(*gps_, match.x, match.x + match.length, y)) {
+            match.layout_x = button->first;
+            match.layout_length = button->second - button->first;
+            match.layout_clip_right = button->second;
+        } else if (const auto tab = native_classic_tab_text_span(*gps_, match.x, y);
+                tab && tab->first <= match.x && tab->second >= match.x + match.length) {
+            match.layout_x = tab->first;
+            match.layout_length = tab->second - tab->first;
+            match.layout_clip_right = tab->second;
+        }
+    }
     layout_multiline_matches();
     prepared_matches_.insert(prepared_matches_.end(),
         std::make_move_iterator(paragraphs.begin()), std::make_move_iterator(paragraphs.end()));
