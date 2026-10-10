@@ -141,14 +141,19 @@ void Overlay::compose_native_text_rows(const NativeTextCard &card,
                     match.layout_length == card.interior.w;
             })) continue;
         // Site news, artifact prose and complete card messages have already
-        // been reflowed as documents.
+        // been reflowed as documents. Artifact list records likewise retain
+        // their own two-line button allocation and inset baselines.
         // Preserve every owned source span, including now-empty tail rows;
         // row composition must not restore the native wrapping or English.
         if ((row_rule != kCharacterGroupRowRule &&
                 native_paragraph_owns_card_row(matches, row)) ||
             std::any_of(matches.begin(), matches.end(), [&](const Match &match) {
-                return (match.rule == kWorldSiteHistoryRule ||
-                        match.rule == kWorldArtifactDescriptionRule) && match.y == row.y;
+                return match.y == row.y &&
+                    (match.rule == kWorldSiteHistoryRule ||
+                     match.rule == kWorldArtifactDescriptionRule ||
+                     (match.rule == kWorldArtifactRowRule &&
+                      match.x < row.x + static_cast<int>(row.source.size()) &&
+                      row.x < match.x + match.length));
             })) continue;
         const int end = row.x + static_cast<int>(row.source.size());
         struct RowPart {

@@ -3549,7 +3549,7 @@ private:
     void index_template_rule(int index);
     std::vector<int> candidate_template_rules(std::string_view source) const;
     std::array<int, 3> embark_introduction_rules_{{-1, -1, -1}};
-    mutable std::string embark_introduction_source_;
+    mutable std::string embark_introduction_key_;
     mutable std::array<std::string, 5> embark_introduction_targets_;
     std::vector<int> adventure_prose_rules_;
     std::vector<int> legends_prose_rules_;
@@ -4428,7 +4428,7 @@ private:
     std::vector<NativeTextCard> capture_world_civilization_trade_rows(
         const NativeTextCard &details) const;
     void layout_world_site_card(SDL_Renderer *renderer);
-    void append_world_artifact_rows(std::vector<std::string> &rows,
+    bool append_world_artifact_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
     std::optional<NativeTextCard> capture_world_artifact_description_card(
         int footer_x, int footer_end, int footer_y) const;
@@ -5455,6 +5455,7 @@ static std::optional<std::string> utf8_to_cp437(std::string_view source,
     bool preserve_authored_cjk = false);
 static bool translation_complete_with_native_nicknames(
     const std::optional<std::string> &target, std::string_view source);
+static bool item_term_contains_sentence_punctuation(std::string_view source);
 
 bool Overlay::load_config() {
     native_knowledge_layouts_.clear();
@@ -7997,22 +7998,30 @@ std::optional<std::string> Overlay::translate_compositional(const std::string &s
     try {
     TranslationWorkFrame work_frame("compositional phrase", screen_text);
     if (!utf8.empty()) {
-        // Manufacturing captions are complete actions. Resolve them before
-        // equipment parsing can lift a material out of the middle of a job.
-        const std::string folded = lower(utf8);
-        if (folded.starts_with("make ") || folded.starts_with("forge ") ||
-                folded.starts_with("assemble "))
-            translated = RULESETS.translate_activity(utf8);
-        // Arena equipment names have a grammatical order of their own. Run
-        // the complete-phrase parser before the general compositional rules;
-        // otherwise a valid generic token-by-token result wins first (for
-        // example `sheep wool coats` became `毛质羊大衣`) and the arena
-        // parser is never reached.
-        if (!translated) translated = translate_rated_skill_phrase(screen_text);
-        if (!translated) translated = translate_corpsepiece_item_name(screen_text);
-        if (!translated) translated = translate_material_name(utf8);
-        if (!translated) translated = translate_arena_equipment_source_phrase(utf8);
-        if (!translated) translated = RULESETS.translate(utf8);
+        // Prose is owned by the sentence/document grammars. This generic
+        // caption fallback must not search every material and item substring
+        // inside an unknown artifact paragraph. Exact reviewed prose remains
+        // available here, including literal rules exported from TOML.
+        if (item_term_contains_sentence_punctuation(screen_text)) {
+            translated = exact_literal_translation(screen_text);
+        } else {
+            // Manufacturing captions are complete actions. Resolve them before
+            // equipment parsing can lift a material out of the middle of a job.
+            const std::string folded = lower(utf8);
+            if (folded.starts_with("make ") || folded.starts_with("forge ") ||
+                    folded.starts_with("assemble "))
+                translated = RULESETS.translate_activity(utf8);
+            // Arena equipment names have a grammatical order of their own. Run
+            // the complete-phrase parser before the general compositional rules;
+            // otherwise a valid generic token-by-token result wins first (for
+            // example `sheep wool coats` became `毛质羊大衣`) and the arena
+            // parser is never reached.
+            if (!translated) translated = translate_rated_skill_phrase(screen_text);
+            if (!translated) translated = translate_corpsepiece_item_name(screen_text);
+            if (!translated) translated = translate_material_name(utf8);
+            if (!translated) translated = translate_arena_equipment_source_phrase(utf8);
+            if (!translated) translated = RULESETS.translate(utf8);
+        }
         if (translated && (*translated == utf8 || translated->find("[C:") != std::string::npos ||
                            translated->find('\n') != std::string::npos ||
                            translated->find('\r') != std::string::npos)) {
@@ -16456,6 +16465,41 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     screen_rows.reserve(static_cast<size_t>(gps_->dimy));
     for (int row_y = 0; row_y < gps_->dimy; ++row_y)
         screen_rows.push_back(read_row(row_y));
+    // This native list already establishes the title/status field types.
+    // Claim them before hover, roster and item readers inspect the same ink.
+    const bool world_artifact_list =
+        append_world_artifact_rows(screen_rows, result, only_y);
+    if (world_artifact_list && !NativeTooltipPageScope::active && !tooltip_widget) {
+        auto controls = screen_rows;
+        std::vector<Match> editable;
+        for (const auto &region : native_text_input_regions(*gps_, controls, screen_override)) {
+            if (only_y < 0 || only_y == region.y) {
+                const size_t first = editable.size();
+                append_direct_utf8_matches(controls[region.y].substr(region.x, region.w),
+                    region.y, editable);
+                for (size_t index = first; index < editable.size(); ++index)
+                    editable[index].x += region.x;
+            }
+            std::fill_n(controls[region.y].begin() + region.x, region.w, ' ');
+        }
+        // A plain list leaves only its catalogued navigation controls. An
+        // adjacent detail document still needs the normal typed readers.
+        const bool navigation_only = std::all_of(controls.begin(), controls.end(),
+            [&](const std::string &row) {
+                const auto fields = split_text_fields(row);
+                return std::all_of(fields.begin(), fields.end(), [&](const auto &field) {
+                    return exact_literal_translation(field.text).has_value();
+                });
+            });
+        if (navigation_only) {
+            result.insert(result.end(), std::make_move_iterator(editable.begin()),
+                std::make_move_iterator(editable.end()));
+            // Use the shared literal/template matcher without noun fragments;
+            // these controls have no ammunition, material or unit-name slots.
+            append_native_info_grid_matches(controls, result, only_y, false);
+            return result;
+        }
+    }
     const auto mod_workshop_names = preserve_mod_workshop_names(screen_rows);
     // The chooser owns complete category names and separate task controls.
     // Capture them before caption, item and paragraph readers consume the
@@ -16915,7 +16959,6 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     append_world_mission_members(screen_rows, result, only_y);
     context_detail.checkpoint(RenderTimingStage::Roster);
     if (!announcement_panel_only) {
-    append_world_artifact_rows(screen_rows, result, only_y);
     append_embark_civilization_rows(screen_rows, result, only_y);
     append_fortress_task_rows(screen_rows, result, only_y);
     append_fortress_creature_activities(screen_rows, result, only_y);
@@ -23678,6 +23721,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     const int musical_first_row = character_skill_tabs_bottom_y >= 0
         ? character_skill_tabs_bottom_y + 1 : 0;
     auto looks_generated_performance = [](std::string_view value) {
+        if (value.find(" poetic ") != std::string_view::npos) return false;
         if (is_written_work_description(value)) return true;
         static constexpr std::array<std::string_view, 44> landmarks = {{
             " form of music", "musical voices", "entire performance",
@@ -23714,6 +23758,11 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             });
     };
     auto translate_generated_performance = [&](std::string_view paragraph) {
+        // The poetic document pass above owns this identity and all of its
+        // clauses. Its origin marker cannot establish a music/dance candidate,
+        // even when a clipped grid opening did not translate as a poem.
+        if (paragraph.find(" poetic ") != std::string_view::npos)
+            return std::optional<std::string>{};
         if (auto work = translate_written_work_paragraph(paragraph))
             return work;
         if (auto dance = translate_dance_form_paragraph(paragraph))
@@ -28277,6 +28326,13 @@ static std::optional<std::string> translate_arena_equipment_source_phrase(
         std::string_view source) {
     TranslationWorkScope work;
     source = trim_view(source);
+    // This entry is also reached through generated-name fallbacks. A failed
+    // art-form sentence can otherwise send the entire remaining paragraph
+    // through every equipment/material split on the SDL thread. Equipment
+    // captions have no unquoted sentence punctuation; quoted designations
+    // retain their existing grammar. Keep prose with its document reader.
+    if (source.empty() || item_term_contains_sentence_punctuation(source))
+        return std::nullopt;
     const std::string memo_key = "arena item:" +
         std::to_string(native_identity_translation_context()) + ":" + std::string(source);
     return translation_work_memo(memo_key, [&]() -> std::optional<std::string> {

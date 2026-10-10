@@ -1370,10 +1370,21 @@ std::optional<std::string> Overlay::translate_legends_book(
         return topic;
     if (const auto found = legends_terms_ci_.find(lower(std::string(value)));
             found != legends_terms_ci_.end()) return found->second;
+    // Resolve complete native book productions before testing their whole
+    // text as an office, material or item. Newly exposed rows on scrolling
+    // have no complete-title cache entry yet; only the production's actual
+    // subject should enter those noun namespaces.
+    // A subject can contain the wrapper's own conjunction or colon. The
+    // nested matcher retains all valid boundaries and complete suffixes.
+    for (int index : legends_book_rules_)
+        if (auto title = translate_legends_nested(
+                rules_[static_cast<size_t>(index)], value, depth)) return title;
     // Historical-figure subject references can supply a caste descriptor
     // instead of a personal name; sphere references supply one exact sphere.
     // Both native branches retain their existing semantic dictionaries.
-    if (const auto creature = translate_creature_reference(value)) return creature;
+    const bool noun_subject = !item_term_contains_sentence_punctuation(value);
+    if (noun_subject)
+        if (const auto creature = translate_creature_reference(value)) return creature;
     if (const auto sphere = deity_sphere_translations_.find(subject);
             sphere != deity_sphere_translations_.end()) return sphere->second;
     auto article_free = value;
@@ -1385,15 +1396,16 @@ std::optional<std::string> Overlay::translate_legends_book(
     const std::string noun_source = lower(std::string(article_free));
     if (const auto office = legends_terms_.find("Native history office: " + noun_source);
             office != legends_terms_.end()) return office->second;
-    std::vector<size_t> office_origins;
-    if (const auto office = RULESETS.translate_with_origins(
-            native_text_to_utf8(noun_source), "::positions::singular", office_origins))
-        return office;
-    // Artifact references can use their complete item description or their
-    // native solid material, including an actual owner's possessive name.
-    // Reuse those typed grammars before title wrappers split their contents.
-    if (const auto material = translate_material_name(article_free)) return material;
-    if (const auto item = translate_legends_item(value)) return item;
+    if (noun_subject) {
+        std::vector<size_t> office_origins;
+        if (const auto office = RULESETS.translate_with_origins(
+                native_text_to_utf8(noun_source), "::positions::singular", office_origins))
+            return office;
+        // Noun references still use their existing namespaces after complete
+        // book productions. Unrelated punctuated prose cannot expand them.
+        if (const auto material = translate_material_name(article_free)) return material;
+        if (const auto item = translate_legends_item(value)) return item;
+    }
     // BOOK_ART NOUN selects a complete singular/plural WORD form, without
     // compound-name flags. Its noun sense must not inherit a homonymous
     // adjective or verb, and a multiword form must remain one source field.
@@ -1410,19 +1422,6 @@ std::optional<std::string> Overlay::translate_legends_book(
         }
         if (noun && !ambiguous) return noun;
     }
-    // BOOK_ART adds fixed phrases to generated names. Keep these phrases in
-    // the scoped TSV, not in the name vocabulary: "Ever Onward" has a title
-    // meaning, while the existing standalone "ever" sense must not change.
-    // Only book-only templates may recurse; event prose must never become
-    // part of a title, nor may a title absorb its author or location links.
-    // A title's subject can contain the same conjunction or colon as its
-    // wrapper. The screen-template matcher commits to the first separator
-    // and treats double spaces as a new field; neither rule describes a
-    // complete written-work title. Reuse the typed nested matcher, which
-    // tries valid boundaries until every title component and suffix resolve.
-    for (int index : legends_book_rules_)
-        if (auto title = translate_legends_nested(
-                rules_[static_cast<size_t>(index)], value, depth)) return title;
     if (const auto place = translate_book_site_subject(value)) return place;
     if (const auto person = translate_procedural_fragment(std::string(value), false,
             false, {}, ProceduralFragmentContext::personal_name)) return person;

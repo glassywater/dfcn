@@ -484,7 +484,7 @@ bool Overlay::load_rules() {
     commit(journal_creature_translation_bytes_, candidate->journal_creature_translation_bytes_);
     commit(adventure_background_translation_cache_, candidate->adventure_background_translation_cache_);
     commit(item_description_cache_, candidate->item_description_cache_);
-    commit(embark_introduction_source_, candidate->embark_introduction_source_);
+    commit(embark_introduction_key_, candidate->embark_introduction_key_);
     commit(embark_introduction_targets_, candidate->embark_introduction_targets_);
     commit(symbol_element_cache_, candidate->symbol_element_cache_);
     commit(symbol_description_cache_, candidate->symbol_description_cache_);
@@ -618,7 +618,7 @@ void Overlay::build_trie(std::function<void()>* catalog_publication) {
     fortress_activity_display_cache_.clear();
     symbol_role_prompt_rules_.fill(-1);
     embark_introduction_rules_.fill(-1);
-    embark_introduction_source_.clear();
+    embark_introduction_key_.clear();
     embark_introduction_targets_.fill({});
     symbol_element_cache_.clear();
     symbol_description_cache_.clear();

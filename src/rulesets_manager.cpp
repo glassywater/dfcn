@@ -1971,13 +1971,39 @@ namespace Hooks {
                 } else {
                     for (auto& candidate : candidates) {
                         dfcn::translation_work_step();
-                        // 引用 Token：递归求解子目标（AND 绑定）
-                        auto sub_results = resolve_namespace(candidate.remaining, token.value, level + 1);
+                        // A following literal bounds this field. Passing the
+                        // entire tail to a material/person/title callback first
+                        // makes it explore later sentences that the enclosing
+                        // rule can never consume as this reference. Keep every
+                        // possible delimiter and the child's original rule order.
+                        const std::string* delimiter = ti + 1 < orig_tokens.size() &&
+                            orig_tokens[ti + 1].type == Type::Literal &&
+                            !orig_tokens[ti + 1].value.empty()
+                            ? &orig_tokens[ti + 1].value : nullptr;
+                        size_t field_end = candidate.remaining.size();
+                        if (delimiter) {
+                            std::optional<size_t> last;
+                            for (size_t begin = 0; begin <= candidate.remaining.size();) {
+                                const auto found = find_literal_position(
+                                    std::string_view(candidate.remaining).substr(begin), *delimiter);
+                                if (!found) break;
+                                last = begin + *found;
+                                begin = *last + 1;
+                            }
+                            if (!last) continue;
+                            field_end = *last;
+                        }
+                        auto sub_results = delimiter
+                            ? resolve_namespace(candidate.remaining.substr(0, field_end), token.value, level + 1)
+                            : resolve_namespace(candidate.remaining, token.value, level + 1);
 
                         // 为每个子结果创建新的 Candidate 分支
                         for (auto& sub_result : sub_results) {
                             dfcn::translation_work_step();
-                            std::string remaining_copy = sub_result->remaining;
+                            const size_t consumed = field_end - sub_result->remaining.size();
+                            const auto remaining = std::string_view(candidate.remaining).substr(consumed);
+                            if (delimiter && !matches_literal(remaining, *delimiter)) continue;
+                            std::string remaining_copy(remaining);
                             auto new_results = candidate.results;
                             new_results.emplace_back(sub_result->identifier, std::move(sub_result));
                             next_candidates.emplace_back(std::move(new_results), std::move(remaining_copy));

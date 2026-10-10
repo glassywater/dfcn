@@ -971,9 +971,6 @@ TranslationResult Overlay::translate_musical_form_paragraph_result(
         const size_t origin_at = sentence.find(origin_marker);
         if (origin_at != std::string::npos) {
             const std::string_view identity(sentence.data(), origin_at);
-            const auto origin = translate_reference(
-                std::string_view(sentence).substr(origin_at + origin_marker.size()));
-            if (!origin) return std::nullopt;
             struct Identity { std::string_view marker; std::string_view chinese; };
             static constexpr auto identities = std::to_array<Identity>({
                 {" is a form of music used for entertainment", "娱乐音乐"},
@@ -986,6 +983,12 @@ TranslationResult Overlay::translate_musical_form_paragraph_result(
             for (const Identity &entry : identities) {
                 const size_t at = identity.find(entry.marker);
                 if (at == std::string_view::npos) continue;
+                // Poetry and dance also have an origin field. Establish the
+                // music production before offering its tail to a name reader;
+                // a foreign document can otherwise become one enormous name.
+                const auto origin = translate_reference(
+                    std::string_view(sentence).substr(origin_at + origin_marker.size()));
+                if (!origin) return std::nullopt;
                 const auto title = translate_reference(identity.substr(0, at));
                 if (!title) return std::nullopt;
                 std::string tail = trim(std::string(
@@ -1013,6 +1016,7 @@ TranslationResult Overlay::translate_musical_form_paragraph_result(
                 }
                 return result;
             }
+            return std::nullopt;
         }
 
         if (sentence ==
