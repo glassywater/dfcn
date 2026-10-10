@@ -1,0 +1,137 @@
+edition	image_identity	field_role	room_type	condition	grade_helper_rva	grade_instruction_rva	grade_literal_rva	source
+reference	PE:6a70a6d9:02711000	grade	3	value>=10000	0xab4f20	0xab4f71	0x16cf318	Royal Mausoleum
+reference	PE:6a70a6d9:02711000	requirement	3	room_type>=0 and required_value>0; required_value>=10000	0xab4f20	0xab4f71	0x16cf318	Needs Royal Mausoleum
+reference	PE:6a70a6d9:02711000	grade	3	value>=2500 and value<10000	0xab4f20	0xab4f8b	0x16cf308	Grand Mausoleum
+reference	PE:6a70a6d9:02711000	requirement	3	room_type>=0 and required_value>0; required_value>=2500 and required_value<10000	0xab4f20	0xab4f8b	0x16cf308	Needs Grand Mausoleum
+reference	PE:6a70a6d9:02711000	grade	3	value>=1500 and value<2500	0xab4f20	0xab4fa5	0x16cf260	Mausoleum
+reference	PE:6a70a6d9:02711000	requirement	3	room_type>=0 and required_value>0; required_value>=1500 and required_value<2500	0xab4f20	0xab4fa5	0x16cf260	Needs Mausoleum
+reference	PE:6a70a6d9:02711000	grade	3	value>=1000 and value<1500	0xab4f20	0xab4fbf	0x16cf250	Fine Tomb
+reference	PE:6a70a6d9:02711000	requirement	3	room_type>=0 and required_value>0; required_value>=1000 and required_value<1500	0xab4f20	0xab4fbf	0x16cf250	Needs Fine Tomb
+reference	PE:6a70a6d9:02711000	grade	3	value>=500 and value<1000	0xab4f20	0xab4fd9	0x162b844	Tomb
+reference	PE:6a70a6d9:02711000	requirement	3	room_type>=0 and required_value>0; required_value>=500 and required_value<1000	0xab4f20	0xab4fd9	0x162b844	Needs Tomb
+reference	PE:6a70a6d9:02711000	grade	3	value>=250 and value<500	0xab4f20	0xab4ff3	0x16cf240	Burial Chamber
+reference	PE:6a70a6d9:02711000	requirement	3	room_type>=0 and required_value>0; required_value>=250 and required_value<500	0xab4f20	0xab4ff3	0x16cf240	Needs Burial Chamber
+reference	PE:6a70a6d9:02711000	grade	3	value>=100 and value<250	0xab4f20	0xab500a	0x16cf220	Servant's Burial Chamber
+reference	PE:6a70a6d9:02711000	requirement	3	room_type>=0 and required_value>0; required_value>=100 and required_value<250	0xab4f20	0xab500a	0x16cf220	Needs Servant's Burial Chamber
+reference	PE:6a70a6d9:02711000	grade	3	value>=1 and value<100	0xab4f20	0xab5020	0x16cf2a0	Grave
+reference	PE:6a70a6d9:02711000	requirement	3	room_type>=0 and required_value>0; required_value>=1 and required_value<100	0xab4f20	0xab5020	0x16cf2a0	Needs Grave
+reference	PE:6a70a6d9:02711000	grade	3	value<=0	0xab4f20	0xab5032	0x16cf298	No Tomb
+reference	PE:6a70a6d9:02711000	grade	2	value>=10000	0xab4f20	0xab5046	0x16cf3a8	Royal Dining Room
+reference	PE:6a70a6d9:02711000	requirement	2	room_type>=0 and required_value>0; required_value>=10000	0xab4f20	0xab5046	0x16cf3a8	Needs Royal Dining Room
+reference	PE:6a70a6d9:02711000	grade	2	value>=2500 and value<10000	0xab4f20	0xab5060	0x16cf390	Grand Dining Room
+reference	PE:6a70a6d9:02711000	requirement	2	room_type>=0 and required_value>0; required_value>=2500 and required_value<10000	0xab4f20	0xab5060	0x16cf390	Needs Grand Dining Room
+reference	PE:6a70a6d9:02711000	grade	2	value>=1500 and value<2500	0xab4f20	0xab507a	0x16cf2f0	Great Dining Room
+reference	PE:6a70a6d9:02711000	requirement	2	room_type>=0 and required_value>0; required_value>=1500 and required_value<2500	0xab4f20	0xab507a	0x16cf2f0	Needs Great Dining Room
+reference	PE:6a70a6d9:02711000	grade	2	value>=1000 and value<1500	0xab4f20	0xab5094	0x16cf2d8	Fine Dining Room
+reference	PE:6a70a6d9:02711000	requirement	2	room_type>=0 and required_value>0; required_value>=1000 and required_value<1500	0xab4f20	0xab5094	0x16cf2d8	Needs Fine Dining Room
+reference	PE:6a70a6d9:02711000	grade	2	value>=500 and value<1000	0xab4f20	0xab50ae	0x16cf2c0	Decent Dining Room
+reference	PE:6a70a6d9:02711000	requirement	2	room_type>=0 and required_value>0; required_value>=500 and required_value<1000	0xab4f20	0xab50ae	0x16cf2c0	Needs Decent Dining Room
+reference	PE:6a70a6d9:02711000	grade	2	value>=250 and value<500	0xab4f20	0xab50c8	0x163cde0	Dining Room
+reference	PE:6a70a6d9:02711000	requirement	2	room_type>=0 and required_value>0; required_value>=250 and required_value<500	0xab4f20	0xab50c8	0x163cde0	Needs Dining Room
+reference	PE:6a70a6d9:02711000	grade	2	value>=100 and value<250	0xab4f20	0xab50df	0x16cf2a8	Modest Dining Room
+reference	PE:6a70a6d9:02711000	requirement	2	room_type>=0 and required_value>0; required_value>=100 and required_value<250	0xab4f20	0xab50df	0x16cf2a8	Needs Modest Dining Room
+reference	PE:6a70a6d9:02711000	grade	2	value>=1 and value<100	0xab4f20	0xab50f5	0x16cf338	Meager Dining Room
+reference	PE:6a70a6d9:02711000	requirement	2	room_type>=0 and required_value>0; required_value>=1 and required_value<100	0xab4f20	0xab50f5	0x16cf338	Needs Meager Dining Room
+reference	PE:6a70a6d9:02711000	grade	2	value<=0	0xab4f20	0xab5107	0x16cf328	No Dining Room
+reference	PE:6a70a6d9:02711000	grade	1	value>=10000	0xab4f20	0xab5121	0x16cf438	Royal Bedroom
+reference	PE:6a70a6d9:02711000	requirement	1	room_type>=0 and required_value>0; required_value>=10000	0xab4f20	0xab5121	0x16cf438	Needs Royal Bedroom
+reference	PE:6a70a6d9:02711000	grade	1	value>=2500 and value<10000	0xab4f20	0xab513b	0x16cf428	Grand Bedroom
+reference	PE:6a70a6d9:02711000	requirement	1	room_type>=0 and required_value>0; required_value>=2500 and required_value<10000	0xab4f20	0xab513b	0x16cf428	Needs Grand Bedroom
+reference	PE:6a70a6d9:02711000	grade	1	value>=1500 and value<2500	0xab4f20	0xab5155	0x16cf418	Great Bedroom
+reference	PE:6a70a6d9:02711000	requirement	1	room_type>=0 and required_value>0; required_value>=1500 and required_value<2500	0xab4f20	0xab5155	0x16cf418	Needs Great Bedroom
+reference	PE:6a70a6d9:02711000	grade	1	value>=1000 and value<1500	0xab4f20	0xab516f	0x16cf380	Fine Quarters
+reference	PE:6a70a6d9:02711000	requirement	1	room_type>=0 and required_value>0; required_value>=1000 and required_value<1500	0xab4f20	0xab516f	0x16cf380	Needs Fine Quarters
+reference	PE:6a70a6d9:02711000	grade	1	value>=500 and value<1000	0xab4f20	0xab5189	0x16cf370	Decent Quarters
+reference	PE:6a70a6d9:02711000	requirement	1	room_type>=0 and required_value>0; required_value>=500 and required_value<1000	0xab4f20	0xab5189	0x16cf370	Needs Decent Quarters
+reference	PE:6a70a6d9:02711000	grade	1	value>=250 and value<500	0xab4f20	0xab51a3	0x16cf360	Quarters
+reference	PE:6a70a6d9:02711000	requirement	1	room_type>=0 and required_value>0; required_value>=250 and required_value<500	0xab4f20	0xab51a3	0x16cf360	Needs Quarters
+reference	PE:6a70a6d9:02711000	grade	1	value>=100 and value<250	0xab4f20	0xab51ba	0x16cf350	Modest Quarters
+reference	PE:6a70a6d9:02711000	requirement	1	room_type>=0 and required_value>0; required_value>=100 and required_value<250	0xab4f20	0xab51ba	0x16cf350	Needs Modest Quarters
+reference	PE:6a70a6d9:02711000	grade	1	value>=1 and value<100	0xab4f20	0xab51d0	0x16cf3d0	Meager Quarters
+reference	PE:6a70a6d9:02711000	requirement	1	room_type>=0 and required_value>0; required_value>=1 and required_value<100	0xab4f20	0xab51d0	0x16cf3d0	Needs Meager Quarters
+reference	PE:6a70a6d9:02711000	grade	1	value<=0	0xab4f20	0xab51e2	0x16cf3c0	No Quarters
+reference	PE:6a70a6d9:02711000	grade	0	value>=10000	0xab4f20	0xab5202	0x16cf4b8	Royal Throne Room
+reference	PE:6a70a6d9:02711000	requirement	0	room_type>=0 and required_value>0; required_value>=10000	0xab4f20	0xab5202	0x16cf4b8	Needs Royal Throne Room
+reference	PE:6a70a6d9:02711000	grade	0	value>=2500 and value<10000	0xab4f20	0xab521c	0x16cf4a0	Opulent Throne Room
+reference	PE:6a70a6d9:02711000	requirement	0	room_type>=0 and required_value>0; required_value>=2500 and required_value<10000	0xab4f20	0xab521c	0x16cf4a0	Needs Opulent Throne Room
+reference	PE:6a70a6d9:02711000	grade	0	value>=1500 and value<2500	0xab4f20	0xab5236	0x16cf490	Throne Room
+reference	PE:6a70a6d9:02711000	requirement	0	room_type>=0 and required_value>0; required_value>=1500 and required_value<2500	0xab4f20	0xab5236	0x16cf490	Needs Throne Room
+reference	PE:6a70a6d9:02711000	grade	0	value>=1000 and value<1500	0xab4f20	0xab5250	0x16cf480	Splendid Study
+reference	PE:6a70a6d9:02711000	requirement	0	room_type>=0 and required_value>0; required_value>=1000 and required_value<1500	0xab4f20	0xab5250	0x16cf480	Needs Splendid Study
+reference	PE:6a70a6d9:02711000	grade	0	value>=500 and value<1000	0xab4f20	0xab526a	0x16cf408	Decent Study
+reference	PE:6a70a6d9:02711000	requirement	0	room_type>=0 and required_value>0; required_value>=500 and required_value<1000	0xab4f20	0xab526a	0x16cf408	Needs Decent Study
+reference	PE:6a70a6d9:02711000	grade	0	value>=250 and value<500	0xab4f20	0xab5284	0x16cf400	Study
+reference	PE:6a70a6d9:02711000	requirement	0	room_type>=0 and required_value>0; required_value>=250 and required_value<500	0xab4f20	0xab5284	0x16cf400	Needs Study
+reference	PE:6a70a6d9:02711000	grade	0	value>=100 and value<250	0xab4f20	0xab529b	0x16cf3f0	Modest Study
+reference	PE:6a70a6d9:02711000	requirement	0	room_type>=0 and required_value>0; required_value>=100 and required_value<250	0xab4f20	0xab529b	0x16cf3f0	Needs Modest Study
+reference	PE:6a70a6d9:02711000	grade	0	value>=1 and value<100	0xab4f20	0xab52b1	0x16cf3e0	Meager Study
+reference	PE:6a70a6d9:02711000	requirement	0	room_type>=0 and required_value>0; required_value>=1 and required_value<100	0xab4f20	0xab52b1	0x16cf3e0	Needs Meager Study
+reference	PE:6a70a6d9:02711000	grade	0	value<=0	0xab4f20	0xab52bd	0x16cf448	No Study
+classic	PE:6a70b91c:0270a000	grade	3	value>=10000	0xab1fa0	0xab1ff1	0x16caf48	Royal Mausoleum
+classic	PE:6a70b91c:0270a000	requirement	3	room_type>=0 and required_value>0; required_value>=10000	0xab1fa0	0xab1ff1	0x16caf48	Needs Royal Mausoleum
+classic	PE:6a70b91c:0270a000	grade	3	value>=2500 and value<10000	0xab1fa0	0xab200b	0x16caf38	Grand Mausoleum
+classic	PE:6a70b91c:0270a000	requirement	3	room_type>=0 and required_value>0; required_value>=2500 and required_value<10000	0xab1fa0	0xab200b	0x16caf38	Needs Grand Mausoleum
+classic	PE:6a70b91c:0270a000	grade	3	value>=1500 and value<2500	0xab1fa0	0xab2025	0x16c8778	Mausoleum
+classic	PE:6a70b91c:0270a000	requirement	3	room_type>=0 and required_value>0; required_value>=1500 and required_value<2500	0xab1fa0	0xab2025	0x16c8778	Needs Mausoleum
+classic	PE:6a70b91c:0270a000	grade	3	value>=1000 and value<1500	0xab1fa0	0xab203f	0x16c8768	Fine Tomb
+classic	PE:6a70b91c:0270a000	requirement	3	room_type>=0 and required_value>0; required_value>=1000 and required_value<1500	0xab1fa0	0xab203f	0x16c8768	Needs Fine Tomb
+classic	PE:6a70b91c:0270a000	grade	3	value>=500 and value<1000	0xab1fa0	0xab2059	0x1626f84	Tomb
+classic	PE:6a70b91c:0270a000	requirement	3	room_type>=0 and required_value>0; required_value>=500 and required_value<1000	0xab1fa0	0xab2059	0x1626f84	Needs Tomb
+classic	PE:6a70b91c:0270a000	grade	3	value>=250 and value<500	0xab1fa0	0xab2073	0x16c8758	Burial Chamber
+classic	PE:6a70b91c:0270a000	requirement	3	room_type>=0 and required_value>0; required_value>=250 and required_value<500	0xab1fa0	0xab2073	0x16c8758	Needs Burial Chamber
+classic	PE:6a70b91c:0270a000	grade	3	value>=100 and value<250	0xab1fa0	0xab208a	0x16c8738	Servant's Burial Chamber
+classic	PE:6a70b91c:0270a000	requirement	3	room_type>=0 and required_value>0; required_value>=100 and required_value<250	0xab1fa0	0xab208a	0x16c8738	Needs Servant's Burial Chamber
+classic	PE:6a70b91c:0270a000	grade	3	value>=1 and value<100	0xab1fa0	0xab20a0	0x16c87b8	Grave
+classic	PE:6a70b91c:0270a000	requirement	3	room_type>=0 and required_value>0; required_value>=1 and required_value<100	0xab1fa0	0xab20a0	0x16c87b8	Needs Grave
+classic	PE:6a70b91c:0270a000	grade	3	value<=0	0xab1fa0	0xab20b2	0x16c87b0	No Tomb
+classic	PE:6a70b91c:0270a000	grade	2	value>=10000	0xab1fa0	0xab20c6	0x16cafd8	Royal Dining Room
+classic	PE:6a70b91c:0270a000	requirement	2	room_type>=0 and required_value>0; required_value>=10000	0xab1fa0	0xab20c6	0x16cafd8	Needs Royal Dining Room
+classic	PE:6a70b91c:0270a000	grade	2	value>=2500 and value<10000	0xab1fa0	0xab20e0	0x16cafc0	Grand Dining Room
+classic	PE:6a70b91c:0270a000	requirement	2	room_type>=0 and required_value>0; required_value>=2500 and required_value<10000	0xab1fa0	0xab20e0	0x16cafc0	Needs Grand Dining Room
+classic	PE:6a70b91c:0270a000	grade	2	value>=1500 and value<2500	0xab1fa0	0xab20fa	0x16caf20	Great Dining Room
+classic	PE:6a70b91c:0270a000	requirement	2	room_type>=0 and required_value>0; required_value>=1500 and required_value<2500	0xab1fa0	0xab20fa	0x16caf20	Needs Great Dining Room
+classic	PE:6a70b91c:0270a000	grade	2	value>=1000 and value<1500	0xab1fa0	0xab2114	0x16caf08	Fine Dining Room
+classic	PE:6a70b91c:0270a000	requirement	2	room_type>=0 and required_value>0; required_value>=1000 and required_value<1500	0xab1fa0	0xab2114	0x16caf08	Needs Fine Dining Room
+classic	PE:6a70b91c:0270a000	grade	2	value>=500 and value<1000	0xab1fa0	0xab212e	0x16caef0	Decent Dining Room
+classic	PE:6a70b91c:0270a000	requirement	2	room_type>=0 and required_value>0; required_value>=500 and required_value<1000	0xab1fa0	0xab212e	0x16caef0	Needs Decent Dining Room
+classic	PE:6a70b91c:0270a000	grade	2	value>=250 and value<500	0xab1fa0	0xab2148	0x1637a88	Dining Room
+classic	PE:6a70b91c:0270a000	requirement	2	room_type>=0 and required_value>0; required_value>=250 and required_value<500	0xab1fa0	0xab2148	0x1637a88	Needs Dining Room
+classic	PE:6a70b91c:0270a000	grade	2	value>=100 and value<250	0xab1fa0	0xab215f	0x16caed8	Modest Dining Room
+classic	PE:6a70b91c:0270a000	requirement	2	room_type>=0 and required_value>0; required_value>=100 and required_value<250	0xab1fa0	0xab215f	0x16caed8	Needs Modest Dining Room
+classic	PE:6a70b91c:0270a000	grade	2	value>=1 and value<100	0xab1fa0	0xab2175	0x16caf68	Meager Dining Room
+classic	PE:6a70b91c:0270a000	requirement	2	room_type>=0 and required_value>0; required_value>=1 and required_value<100	0xab1fa0	0xab2175	0x16caf68	Needs Meager Dining Room
+classic	PE:6a70b91c:0270a000	grade	2	value<=0	0xab1fa0	0xab2187	0x16caf58	No Dining Room
+classic	PE:6a70b91c:0270a000	grade	1	value>=10000	0xab1fa0	0xab21a1	0x16cb068	Royal Bedroom
+classic	PE:6a70b91c:0270a000	requirement	1	room_type>=0 and required_value>0; required_value>=10000	0xab1fa0	0xab21a1	0x16cb068	Needs Royal Bedroom
+classic	PE:6a70b91c:0270a000	grade	1	value>=2500 and value<10000	0xab1fa0	0xab21bb	0x16cb058	Grand Bedroom
+classic	PE:6a70b91c:0270a000	requirement	1	room_type>=0 and required_value>0; required_value>=2500 and required_value<10000	0xab1fa0	0xab21bb	0x16cb058	Needs Grand Bedroom
+classic	PE:6a70b91c:0270a000	grade	1	value>=1500 and value<2500	0xab1fa0	0xab21d5	0x16cb048	Great Bedroom
+classic	PE:6a70b91c:0270a000	requirement	1	room_type>=0 and required_value>0; required_value>=1500 and required_value<2500	0xab1fa0	0xab21d5	0x16cb048	Needs Great Bedroom
+classic	PE:6a70b91c:0270a000	grade	1	value>=1000 and value<1500	0xab1fa0	0xab21ef	0x16cafb0	Fine Quarters
+classic	PE:6a70b91c:0270a000	requirement	1	room_type>=0 and required_value>0; required_value>=1000 and required_value<1500	0xab1fa0	0xab21ef	0x16cafb0	Needs Fine Quarters
+classic	PE:6a70b91c:0270a000	grade	1	value>=500 and value<1000	0xab1fa0	0xab2209	0x16cafa0	Decent Quarters
+classic	PE:6a70b91c:0270a000	requirement	1	room_type>=0 and required_value>0; required_value>=500 and required_value<1000	0xab1fa0	0xab2209	0x16cafa0	Needs Decent Quarters
+classic	PE:6a70b91c:0270a000	grade	1	value>=250 and value<500	0xab1fa0	0xab2223	0x16caf90	Quarters
+classic	PE:6a70b91c:0270a000	requirement	1	room_type>=0 and required_value>0; required_value>=250 and required_value<500	0xab1fa0	0xab2223	0x16caf90	Needs Quarters
+classic	PE:6a70b91c:0270a000	grade	1	value>=100 and value<250	0xab1fa0	0xab223a	0x16caf80	Modest Quarters
+classic	PE:6a70b91c:0270a000	requirement	1	room_type>=0 and required_value>0; required_value>=100 and required_value<250	0xab1fa0	0xab223a	0x16caf80	Needs Modest Quarters
+classic	PE:6a70b91c:0270a000	grade	1	value>=1 and value<100	0xab1fa0	0xab2250	0x16cb000	Meager Quarters
+classic	PE:6a70b91c:0270a000	requirement	1	room_type>=0 and required_value>0; required_value>=1 and required_value<100	0xab1fa0	0xab2250	0x16cb000	Needs Meager Quarters
+classic	PE:6a70b91c:0270a000	grade	1	value<=0	0xab1fa0	0xab2262	0x16caff0	No Quarters
+classic	PE:6a70b91c:0270a000	grade	0	value>=10000	0xab1fa0	0xab2282	0x16cb0e8	Royal Throne Room
+classic	PE:6a70b91c:0270a000	requirement	0	room_type>=0 and required_value>0; required_value>=10000	0xab1fa0	0xab2282	0x16cb0e8	Needs Royal Throne Room
+classic	PE:6a70b91c:0270a000	grade	0	value>=2500 and value<10000	0xab1fa0	0xab229c	0x16cb0d0	Opulent Throne Room
+classic	PE:6a70b91c:0270a000	requirement	0	room_type>=0 and required_value>0; required_value>=2500 and required_value<10000	0xab1fa0	0xab229c	0x16cb0d0	Needs Opulent Throne Room
+classic	PE:6a70b91c:0270a000	grade	0	value>=1500 and value<2500	0xab1fa0	0xab22b6	0x16cb0c0	Throne Room
+classic	PE:6a70b91c:0270a000	requirement	0	room_type>=0 and required_value>0; required_value>=1500 and required_value<2500	0xab1fa0	0xab22b6	0x16cb0c0	Needs Throne Room
+classic	PE:6a70b91c:0270a000	grade	0	value>=1000 and value<1500	0xab1fa0	0xab22d0	0x16cb0b0	Splendid Study
+classic	PE:6a70b91c:0270a000	requirement	0	room_type>=0 and required_value>0; required_value>=1000 and required_value<1500	0xab1fa0	0xab22d0	0x16cb0b0	Needs Splendid Study
+classic	PE:6a70b91c:0270a000	grade	0	value>=500 and value<1000	0xab1fa0	0xab22ea	0x16cb038	Decent Study
+classic	PE:6a70b91c:0270a000	requirement	0	room_type>=0 and required_value>0; required_value>=500 and required_value<1000	0xab1fa0	0xab22ea	0x16cb038	Needs Decent Study
+classic	PE:6a70b91c:0270a000	grade	0	value>=250 and value<500	0xab1fa0	0xab2304	0x16cb030	Study
+classic	PE:6a70b91c:0270a000	requirement	0	room_type>=0 and required_value>0; required_value>=250 and required_value<500	0xab1fa0	0xab2304	0x16cb030	Needs Study
+classic	PE:6a70b91c:0270a000	grade	0	value>=100 and value<250	0xab1fa0	0xab231b	0x16cb020	Modest Study
+classic	PE:6a70b91c:0270a000	requirement	0	room_type>=0 and required_value>0; required_value>=100 and required_value<250	0xab1fa0	0xab231b	0x16cb020	Needs Modest Study
+classic	PE:6a70b91c:0270a000	grade	0	value>=1 and value<100	0xab1fa0	0xab2331	0x16cb010	Meager Study
+classic	PE:6a70b91c:0270a000	requirement	0	room_type>=0 and required_value>0; required_value>=1 and required_value<100	0xab1fa0	0xab2331	0x16cb010	Needs Meager Study
+classic	PE:6a70b91c:0270a000	grade	0	value<=0	0xab1fa0	0xab233d	0x16cb078	No Study

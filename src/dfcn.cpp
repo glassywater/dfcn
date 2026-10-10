@@ -1010,14 +1010,14 @@ static constexpr std::array<std::string_view, 5> adventure_destiny_descriptions 
     "Difficulty only affects starting skills and equipment.",
 }};
 
-static constexpr std::array<std::string_view, 33> character_room_statuses = {{
-    "No Study", "Meager Study", "Modest Study", "Decent Study",
+static constexpr std::array<std::string_view, 36> character_room_statuses = {{
+    "No Study", "Meager Study", "Modest Study", "Study", "Decent Study",
     "Splendid Study", "Throne Room", "Opulent Throne Room",
     "Royal Throne Room",
-    "No Quarters", "Meager Quarters", "Modest Quarters",
+    "No Quarters", "Meager Quarters", "Modest Quarters", "Quarters",
     "Decent Quarters", "Fine Quarters", "Great Bedroom",
     "Grand Bedroom", "Royal Bedroom",
-    "No Dining Room", "Meager Dining Room", "Modest Dining Room",
+    "No Dining Room", "Meager Dining Room", "Modest Dining Room", "Dining Room",
     "Decent Dining Room", "Fine Dining Room", "Great Dining Room",
     "Grand Dining Room", "Royal Dining Room",
     "No Tomb", "Grave", "Servant's Burial Chamber", "Burial Chamber",
@@ -4503,6 +4503,9 @@ private:
         std::vector<std::string> &screen_rows, std::vector<Match> &matches,
         int header_tabs_y, int only_y) const;
     void layout_character_header(SDL_Renderer *renderer);
+    void append_character_room_fields(const std::vector<std::string> &context,
+        std::vector<std::string> &rows, std::vector<Match> &matches,
+        int tabs_y, int only_y) const;
     void layout_character_room_rows(SDL_Renderer *renderer);
     std::vector<NativeTextCard> capture_character_group_rows() const;
     void append_character_group_civilization(const NativeTextCard &card,
@@ -16736,6 +16739,23 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     screen_rows.reserve(static_cast<size_t>(gps_->dimy));
     for (int row_y = 0; row_y < gps_->dimy; ++row_y)
         screen_rows.push_back(read_row(row_y));
+    // The Rooms renderer writes editable names and grades as independent
+    // fields, and its requirement prefix/suffix as two adjacent draws. Own
+    // these complete fields before generic words, names or picture captions.
+    // Immediate raw-layer scans need the same current logical composite as
+    // the final overlay; source-byte masks project ownership back per layer.
+    auto room_context = screen_rows;
+    int room_tabs_y = -1;
+    for (int y = 0; y < gps_->dimy; ++y) {
+        for (int x = 0; x < gps_->dimx; ++x) {
+            bool top = false;
+            const auto *cell = cell_at(x, y, &top);
+            room_context[y][x] = cell && cell[0] ? cell[0] : ' ';
+        }
+        if (room_tabs_y < 0 && !character_information_tab_fields(room_context[y]).empty())
+            room_tabs_y = y;
+    }
+    append_character_room_fields(room_context, screen_rows, result, room_tabs_y, only_y);
     // This native list already establishes the title/status field types.
     // Claim them before hover, roster and item readers inspect the same ink.
     const bool world_artifact_list =
@@ -20722,32 +20742,6 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         if (character_footer_tabs_y < 0 && is_character_information_tabs_row(footer_rows[y]))
             character_footer_tabs_y = y;
     }
-    // Room labels can span both logical widget layers. Matching either raw
-    // layer in isolation can recognize only `No`, while the final composite
-    // recognizes `No Dining Room` and draws the whole Chinese replacement.
-    // Use the same CURRENT composed text as the overview footer, not the
-    // previous frame's graphical occlusion. Reserve complete status fields
-    // before generic words can claim their prefix. The immediate mask below
-    // projects these spans back to each layer with a source-byte check.
-    std::vector<std::vector<Match>> character_room_rows(
-        static_cast<size_t>(gps_->dimy));
-    if (character_quote_tabs_y >= 0) {
-        const size_t panel_left = quote_rows[
-            static_cast<size_t>(character_quote_tabs_y)].find("Overview");
-        for (int y = character_quote_tabs_y + 1; y < gps_->dimy; ++y) {
-            for (const LogicalTextField &field : split_text_fields(
-                     quote_rows[static_cast<size_t>(y)])) {
-                if (static_cast<size_t>(field.start) < panel_left ||
-                    !is_character_room_status(field.text)) continue;
-                const auto translated = exact_literal_translation(field.text);
-                if (!translated || translated->empty()) continue;
-                character_room_rows[static_cast<size_t>(y)].push_back({
-                    field.start, y, field.end - field.start,
-                    kCharacterRoomStatusRule, *translated, field.text,
-                });
-            }
-        }
-    }
     // Claim the entire quoted identity before generic word matching. Offices
     // can occupy their own rows, and separately drawn quotes can be padded
     // with spaces. Both raw-layer suppression and final layout need this
@@ -21431,11 +21425,6 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             reconstructed_need_rows[static_cast<size_t>(y)];
         std::vector<Match> authoritative_captured_items;
         std::vector<int> item_cost_boundaries;
-
-        for (const Match &room : character_room_rows[static_cast<size_t>(y)]) {
-            candidates.push_back(room);
-            std::fill_n(row.begin() + room.x, room.length, ' ');
-        }
 
         for (const Match &inventory : inventory_rows[static_cast<size_t>(y)]) {
             candidates.push_back(inventory);
@@ -26043,6 +26032,7 @@ void Overlay::normalize_native_split_text() {
             match.rule == kSettingsAnnouncementNameRule ||
             match.rule == kColorPickerChoiceRule ||
             match.rule == kCharacterHeaderRule ||
+            match.rule == kCharacterRoomStatusRule ||
             match.rule == kCharacterOverviewRowRule ||
             match.rule == kCharacterGroupRowRule || match.rule == kCharacterKillRowRule ||
             match.rule == kHealthHistoryRowRule || is_fortress_justice_field(match) ||

@@ -1,0 +1,17 @@
+edition	image_identity	owner	function_rva	instruction_rva	callee_rva	instruction
+reference	PE:6a70a6d9:02711000	Rooms optional stored-name draw	0x1710c0	0x1710dc	0x6f520	call
+reference	PE:6a70a6d9:02711000	Rooms optional stored-name draw	0x1710c0	0x1710f4	0x171101	jmp
+reference	PE:6a70a6d9:02711000	Rooms optional stored-name draw	0x1710c0	0x17111c	0xbb130	call
+reference	PE:6a70a6d9:02711000	Rooms optional stored-name draw	0x1710c0	0x17113c	0xbb120	call
+reference	PE:6a70a6d9:02711000	Rooms optional stored-name draw	0x1710c0	0x17115f	0xad9960	call
+reference	PE:6a70a6d9:02711000	building_civzonest::getName	0x54f2b0	0x54f2f1	0x6f8d0	jmp
+reference	PE:6a70a6d9:02711000	building_civzonest::getName	0x54f2b0	0x54f306	0x6f8d0	call
+reference	PE:6a70a6d9:02711000	building_civzonest::getName	0x54f2b0	0x54f314	0x52c130	call
+classic	PE:6a70b91c:0270a000	Rooms optional stored-name draw	0x171050	0x17106c	0x6f4b0	call
+classic	PE:6a70b91c:0270a000	Rooms optional stored-name draw	0x171050	0x171084	0x171091	jmp
+classic	PE:6a70b91c:0270a000	Rooms optional stored-name draw	0x171050	0x1710ac	0xbb0c0	call
+classic	PE:6a70b91c:0270a000	Rooms optional stored-name draw	0x171050	0x1710cc	0xbb0b0	call
+classic	PE:6a70b91c:0270a000	Rooms optional stored-name draw	0x171050	0x1710ef	0xad69a0	call
+classic	PE:6a70b91c:0270a000	building_civzonest::getName	0x54ccd0	0x54cd11	0x6f860	jmp
+classic	PE:6a70b91c:0270a000	building_civzonest::getName	0x54ccd0	0x54cd26	0x6f860	call
+classic	PE:6a70b91c:0270a000	building_civzonest::getName	0x54ccd0	0x54cd34	0x529cf0	call

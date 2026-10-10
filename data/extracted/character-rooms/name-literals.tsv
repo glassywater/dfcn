@@ -1,0 +1,3 @@
+edition	image_identity	owner	function_rva	instruction_rva	encoding	literal_rva	operand_role	source
+reference	PE:6a70a6d9:02711000	building_civzonest::getName	0x54f2b0	0x54f2fc	rip-relative	0x1652408	finite-text-operand-or-substring	Activity Zone #
+classic	PE:6a70b91c:0270a000	building_civzonest::getName	0x54ccd0	0x54cd1c	rip-relative	0x164d2a0	finite-text-operand-or-substring	Activity Zone #

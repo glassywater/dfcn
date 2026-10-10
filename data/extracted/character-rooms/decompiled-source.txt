@@ -1,0 +1,134 @@
+Character information -> Rooms native text and display branches
+
+Sources are the configured local Steam and official classic PE images. This
+file describes static image code. It does not record a game display observation.
+The extraction script is tools/extract_character_rooms_sources.py.
+
+Scope
+  Steam PE:6a70a6d9:02711000: Rooms switch arm RVA 0x1703f6..0x171554.
+  Classic PE:6a70b91c:0270a000: Rooms switch arm RVA 0x170386..0x1714e4.
+  Steam room-grade leaf function: 0xab4f20..0xab52d0.
+  Classic room-grade leaf function: 0xab1fa0..0xab2350.
+  These grade functions have no .pdata unwind entry. They are bounded by
+  their actual native leaf entry and the next function entry, not the preceding
+  unrelated unwind function.
+
+Grade source decompilation
+  Arguments: rcx=output std::string*, edx=value, r8w=room_type.
+  The output is cleared first. Unknown room types return an empty string.
+  Native dispatch visits types 3, 2, 1, 0. Each type has nine branches.
+  The threshold tests, in native descending order, are:
+    value >= 10000; value >= 2500; value >= 1500; value >= 1000;
+    value >= 500; value >= 250; value >= 100; value > 0; default (value <= 0).
+  Every branch tail-calls the shared string assign helper with the complete
+  literal and its exact length. Source fields are never assembled from words.
+
+  The following arrays list branches in ascending value order:
+  thresholds = {value<=0, 1, 100, 250, 500, 1000, 1500, 2500, 10000}
+  room_type 0 (office):
+    {"No Study", "Meager Study", "Modest Study", "Study", "Decent Study",
+     "Splendid Study", "Throne Room", "Opulent Throne Room", "Royal Throne Room"}
+  room_type 1 (bedroom):
+    {"No Quarters", "Meager Quarters", "Modest Quarters", "Quarters",
+     "Decent Quarters", "Fine Quarters", "Great Bedroom", "Grand Bedroom",
+     "Royal Bedroom"}
+  room_type 2 (dining room):
+    {"No Dining Room", "Meager Dining Room", "Modest Dining Room", "Dining Room",
+     "Decent Dining Room", "Fine Dining Room", "Great Dining Room",
+     "Grand Dining Room", "Royal Dining Room"}
+  room_type 3 (tomb):
+    {"No Tomb", "Grave", "Servant's Burial Chamber", "Burial Chamber", "Tomb",
+     "Fine Tomb", "Mausoleum", "Grand Mausoleum", "Royal Mausoleum"}
+
+  The 36 complete grade branches and 32 positive requirement branches for
+  each edition, with native literal/instruction coordinates, are saved in
+  decompiled-text-branches.tsv. The requirement outputs are the literal
+  "Needs " plus the complete grade returned for required_value. There is no
+  branch named "Needs No Study", "Needs No Quarters", "Needs No Dining Room",
+  or "Needs No Tomb": required_value must be positive before drawing it.
+
+Rooms renderer decompilation (Steam coordinates below)
+  unit/context = [rsp+0xb260]
+  zone_id list = unit+0x1c00
+  current room values = unit+0x1c18
+  required values[4] = unit+0x114 + room_type*4
+  row index = [rsp+0x38c]
+  room_type = [rsp+0x390]
+  satisfaction = [rsp+0x1f0]
+
+  Setup 0x1703f6..0x17053d:
+    visible_count = (panel_bottom - panel_top + 1) / 3;
+    total_count = zone_id_list.size();
+    If total_count == 0, draw "No assigned rooms" and leave this switch arm.
+    If total_count > visible_count, reserve two columns for the scrollbar.
+  Scroll and row loop 0x17053d..0x1707b9:
+    Clamp the scroll offset into [0, max(0, total_count-visible_count)].
+    Visit rows until either visible_count or total_count is reached.
+    Each list entry occupies three native grid rows. Draw its background.
+  Zone/type branch 0x1707b9..0x1709aa:
+    zone = building_id_lookup(zone_id_list[row]);
+    native_type = room_type = -1;
+    If zone exists, native_type = zone->virtual_type() via vtable+0xd8.
+    Otherwise map synthetic zone IDs:
+      -1 -> native_type 0x5d; -2 -> 0x5c; -3 -> 0x50; -4 -> 0x61.
+    Then map native_type:
+      0x5d -> room_type 0; 0x5c -> room_type 1;
+      0x50 -> room_type 2; 0x61 -> room_type 3; otherwise -> -1.
+  Satisfaction and icon branch 0x1709aa..0x1710c0:
+    satisfaction = -1;
+    If room_type != -1 and required_values[room_type] > 0:
+      If required_values[room_type] <= current_values[row], satisfaction = 0.
+      Else if current_values[row] > 0, satisfaction = 1.
+      Else satisfaction = 2.
+    Draw a 4-by-3 icon from the native atlas:
+      room_type 0: no requirement 0x136, missing 0x137,
+                   insufficient 0x138, satisfied 0x139;
+      room_type 1: no requirement 0x132, missing 0x133,
+                   insufficient 0x134, satisfied 0x135;
+      room_type 2: no requirement 0x13a, missing 0x13b,
+                   insufficient 0x13c, satisfied 0x13d;
+      room_type 3: no requirement 0x13e, missing 0x13f,
+                   insufficient 0x140, satisfied 0x141.
+    Unknown native types have no room icon. A native graphics flag selects
+    whether the icon cells invoke the additional native tile rendering call.
+  Room name branch 0x1710c0..0x171165:
+    Draw the building name only if zone exists and its string at zone+0xd0
+    is nonempty. Set white (color 7). Draw at the room row's text column.
+    Exact name construction/getName branches are owned by names sources
+    beside this file; this renderer reads the supplied complete name.
+  Actual room grade 0x171165..0x17120e:
+    Set white (color 7). Set the cursor to text column, row_y+1.
+    actual = room_grade(current_values[row], room_type);
+    Draw the complete actual string even when zone is missing. That is why
+    synthetic missing-room rows retain their correct "No ..." grade.
+  Requirement branch 0x17120e..0x17136f:
+    If room_type == -1 or required_values[room_type] <= 0, skip this line.
+    Select color: satisfaction 2 -> 4 (red), 1 -> 6 (yellow), else -> 2 (green).
+    Set cursor to text column, row_y+2.
+    required = room_grade(required_values[room_type], room_type);
+    addst("Needs ", r8b=3, r9d=0);
+    addst(required, r8d=0, r9d=0);
+    These are two native draws belonging to one complete requirement field.
+    The color was set separately. Native addst at Steam RVA 0xad9960..0xad9a33
+    does not read its incoming r8 justification argument. It copies the string,
+    optionally applies the r9 width, then calls addchar(0xbb190, byte, true)
+    for each byte at the current cursor. Thus r8b=3 here does not select a
+    different font or baseline: prefix and suffix advance one continuous row.
+  Action and scrollbar 0x17136f..0x171554:
+    If zone exists, draw its 3-by-3 action icon in the existing right gutter.
+    If zone is absent, skip the action. Advance row_y by three and loop.
+    After rows, render the scrollbar only when total_count > visible_count,
+    retaining the stored scroll offset and native scroll UI flag.
+
+Native text draw return coordinates (RVA)
+  field                 Steam return    Classic return    native r8 / r9
+  No assigned rooms     0x170529        0x1704b9          0 / 0
+  zone/name             0x171164        0x1710f4          0 / 0
+  actual room grade     0x17120d        0x17119d          0 / 0
+  Needs prefix          0x171337        0x1712c7          3 / 0
+  requirement grade     0x171360        0x1712f0          0 / 0
+
+All five source fields use the same native text column (left+8). The grade
+and requirement cursor rows are row_y+1 and row_y+2, respectively. The name
+may be absent. These source locations and the complete native logical row
+are the semantic owners; generic standalone words cannot infer their role.

@@ -4938,6 +4938,12 @@ Crime	犯罪	w
 Children's Quarter	儿童居所	wl
 # Character information -> Rooms: these are room-value labels, not actions
 # or communal dormitories. Keep the complete grade names as single fields.
+No assigned rooms	未分配房间	wl
+# Native grade helper 0xab4f20 has a plain 250-value grade for types 0..2.
+# Keep these meanings lookup-scoped instead of introducing generic UI words.
+Character room grade: Study	书房	l
+Character room grade: Quarters	卧室	l
+Character room grade: Dining Room	餐厅	l
 No Study	无书房	w
 Meager Study	简陋书房	w
 Modest Study	普通书房	w
@@ -4971,6 +4977,9 @@ Mausoleum	陵寝	w
 Grand Mausoleum	宏伟陵寝	w
 Royal Mausoleum	皇家陵寝	w
 # Keep the complete room requirement ahead of generated personal-name matching.
+Needs Study	需要书房	wl
+Needs Quarters	需要卧室	wl
+Needs Dining Room	需要餐厅	wl
 Needs Meager Study	需要简陋书房	wl
 Needs Modest Study	需要普通书房	wl
 Needs Decent Study	需要像样书房	wl

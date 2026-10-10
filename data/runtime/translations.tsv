@@ -62664,6 +62664,7 @@ Bring up {e}'s reclamation of {e}	谈起{e1}收复{e2}这件事	hPt
 Bring up {p}'s crime of espionage	谈起{p1}犯下间谍罪这件事	hPt
 Bring up {p}'s disorderly conduct	谈起{p1}扰乱秩序这件事	hPt
 Change tab or highlight selection	更改选项卡或高亮选择	w
+Character room grade: Dining Room	餐厅	l
 Click for assignments and details	点击查看人员分配和详细信息。	hP
 Click to view all news and rumors	点击查看所有消息和传闻。	hP
 Climb to {s} ({s} releasing hold)	攀向{s1}（{s2}，松开抓住的手）	hPt
@@ -69422,6 +69423,7 @@ Certainly considered a brawler	被肯定地看做是一名斗士	w
 Chair rejected (not enclosed.)	椅子未被选用（房间未封闭）	hP
 Change to blueprint-only mode.	切换到仅绘制蓝图模式。	hj
 Character overview: Unmet need	未满足的需求	l
+Character room grade: Quarters	卧室	l
 Choose a symbol for the squad.	为小队选择一个符号。	hP
 Click a tile to place the {s}.	点击地格放置{s}。	wtli
 Climb to {s} ({s} holding {s})	攀向{s1}（{s2}，抓着{s3}）	hPt
@@ -76425,6 +76427,7 @@ Brook: The Packs of Tugging	小溪：拉扯之兽群	l
 Brook: The Primitive Defect	溪流:原始缺陷	w
 Character overview: Healthy	健康	l
 Character overview: Musical	有乐感	l
+Character room grade: Study	书房	l
 Classic varied ground tiles	经典多样地面图块	w
 Click a citizen or creature	点击居民或生物	hqO
 Click a citizen or creature	点击一个居民或动物	w
@@ -101596,10 +101599,12 @@ Move to {s} ({s})	移动到{s1}（{s2}）	hPt
 Mysterious palace	神秘宫殿	wi
 Name the identity	为身份命名	w
 Need trigger type	需要选择触发类型	wli
+Needs Dining Room	需要餐厅	wl
 Needs Throne Room	需要王座厅	wl
 New parameter set	新参数集	w
 Night is falling.	夜幕降临。	hP
 No assigned items	未指定物品	w
+No assigned rooms	未分配房间	wl
 No cumulus clouds	无积云
 No item to remove	没有可移除的物品	w
 No longer stunned	不再眩晕	w
@@ -115286,6 +115291,7 @@ Move downward.	向下移动。	hj
 Musings on {b}	{b}随想	hbti
 Must be inside	必须放置在室内	wli
 Name the image	为图像命名	w
+Needs Quarters	需要卧室	wl
 New inn/tavern	新建旅馆／酒馆	wi
 No Dining Room	无餐厅	w
 No Other Kills	无其他击杀记录	h
@@ -129024,6 +129030,7 @@ Name: "{s}"	姓名：“{s}”	wtlx
 Naturalists	博物学家	wi
 Necromancer	死灵法师	wi
 Needs Grave	需要坟墓	wl
+Needs Study	需要书房	wl
 Negotiation	交涉	wi
 Nervousness	紧张	w
 New Arrival	刚刚抵达	wi

@@ -1,0 +1,5 @@
+edition	image_identity	owner	start_rva	end_rva
+reference	PE:6a70a6d9:02711000	Rooms optional stored-name draw	0x1710c0	0x171165
+reference	PE:6a70a6d9:02711000	building_civzonest::getName	0x54f2b0	0x54f324
+classic	PE:6a70b91c:0270a000	Rooms optional stored-name draw	0x171050	0x1710f5
+classic	PE:6a70b91c:0270a000	building_civzonest::getName	0x54ccd0	0x54cd44

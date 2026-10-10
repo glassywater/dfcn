@@ -1,0 +1,5 @@
+edition	image_identity	image_path	owner	start_rva	end_rva
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	rooms:complete-rooms-render-arm	0x1703f6	0x171554
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab52d0
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	rooms:complete-rooms-render-arm	0x170386	0x1714e4
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab2350

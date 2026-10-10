@@ -1,0 +1,11 @@
+edition	image_identity	owner	function_rva	instruction_rva	branch	target_rva	fallthrough_rva
+reference	PE:6a70a6d9:02711000	Rooms optional stored-name draw	0x1710c0	0x1710c9	je	0x1710f6	0x1710cb
+reference	PE:6a70a6d9:02711000	Rooms optional stored-name draw	0x1710c0	0x171109	je	0x171165	0x17110b
+reference	PE:6a70a6d9:02711000	building_civzonest::getName	0x54f2b0	0x54f2c8	je	0x54f2f6	0x54f2ca
+reference	PE:6a70a6d9:02711000	building_civzonest::getName	0x54f2b0	0x54f2d4	je	0x54f319	0x54f2d6
+reference	PE:6a70a6d9:02711000	building_civzonest::getName	0x54f2b0	0x54f2df	jbe	0x54f2e4	0x54f2e1
+classic	PE:6a70b91c:0270a000	Rooms optional stored-name draw	0x171050	0x171059	je	0x171086	0x17105b
+classic	PE:6a70b91c:0270a000	Rooms optional stored-name draw	0x171050	0x171099	je	0x1710f5	0x17109b
+classic	PE:6a70b91c:0270a000	building_civzonest::getName	0x54ccd0	0x54cce8	je	0x54cd16	0x54ccea
+classic	PE:6a70b91c:0270a000	building_civzonest::getName	0x54ccd0	0x54ccf4	je	0x54cd39	0x54ccf6
+classic	PE:6a70b91c:0270a000	building_civzonest::getName	0x54ccd0	0x54ccff	jbe	0x54cd04	0x54cd01
