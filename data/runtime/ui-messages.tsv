@@ -1304,6 +1304,29 @@ Name pet (new menu)	为宠物命名（新菜单）
 Gift a (large) pet or mount (new menu)	赠送（大型）宠物或坐骑（新菜单）
 Offer your service	提出效力
 Inquire about any troubles	询问有什么烦恼
+# Native ASK_ABOUT_SPECIFIC_TROUBLE: all 15 selectors, five count branches,
+# and the empty-suffix default; PE source in adventure-trouble-menu.
+Ask about the death	询问这起死亡事件
+Ask about the deaths	询问这些死亡事件
+Ask about the law-breaking	询问违法行为
+Ask about the fighting	询问争斗
+Ask about the army on the march	询问正在行军的军队
+Ask about armies on the march	询问正在行军的各支军队
+Ask about the abduction	询问这起绑架事件
+Ask about the abductions	询问这些绑架事件
+Ask about the occupation	询问这次占领
+Ask about occupations	询问这些占领
+Ask about the beast	询问那头凶兽
+Ask about the beasts	询问那些凶兽
+Ask about the criminals	询问罪犯
+Ask about the bandits	询问强盗
+Ask about the skulking vermin	询问潜伏的害兽
+Ask about the bone-chilling horror	询问骇人的恐怖之物
+Ask about the ruffians	询问暴徒
+Ask about the open war	询问公开交战
+Ask about the brewing trouble	询问正在酝酿的麻烦
+Ask about the missing treasure	询问失踪宝物
+Ask about	询问
 List available services	列出可提供的服务
 Ask about available services, drinks, rooms, etc.	询问服务、饮品、客房等
 Trade or settle debts	交易或清偿债务

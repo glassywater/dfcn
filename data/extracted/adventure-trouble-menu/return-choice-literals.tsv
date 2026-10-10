@@ -1,0 +1,9 @@
+edition	image_identity	choice_type	instruction_rva	literal_rva	text	role
+steam	PE:6a70a6d9:02711000	21	0x6a505c	0x1674a78	Change the subject (new menu)	caption
+steam	PE:6a70a6d9:02711000	21	0x6a5093	0x1674cfc	change	keyword
+steam	PE:6a70a6d9:02711000	21	0x6a50c4	0x1674d08	subject	keyword
+steam	PE:6a70a6d9:02711000	21	0x6a50f5	0x1674ccc	back	keyword
+classic	PE:6a70b91c:0270a000	21	0x6a2a7c	0x166fba0	Change the subject (new menu)	caption
+classic	PE:6a70b91c:0270a000	21	0x6a2ab3	0x166fbc0	change	keyword
+classic	PE:6a70b91c:0270a000	21	0x6a2ae4	0x166fb90	subject	keyword
+classic	PE:6a70b91c:0270a000	21	0x6a2b15	0x166fb98	back	keyword

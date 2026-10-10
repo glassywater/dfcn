@@ -1,0 +1,43 @@
+edition	image_identity	talk_choice_type	trouble_type	trouble_enum	switch_table_rva	branch_rva	condition	caption	keywords
+steam	PE:6a70a6d9:02711000	75	0	DEATH	0x6acfb0	0x6985e1	trouble_amount < 2 (signed)	Ask about the death	death
+steam	PE:6a70a6d9:02711000	75	0	DEATH	0x6acfb0	0x6985e1	trouble_amount >= 2 (signed)	Ask about the deaths	death
+steam	PE:6a70a6d9:02711000	75	1	CRIME	0x6acfb0	0x698634	any trouble_amount	Ask about the law-breaking	crime;law
+steam	PE:6a70a6d9:02711000	75	2	CONFLICT	0x6acfb0	0x6986a9	any trouble_amount	Ask about the fighting	fight;conflict
+steam	PE:6a70a6d9:02711000	75	3	ARMY_MARCHING	0x6acfb0	0x69871e	trouble_amount < 2 (signed)	Ask about the army on the march	army;march
+steam	PE:6a70a6d9:02711000	75	3	ARMY_MARCHING	0x6acfb0	0x69871e	trouble_amount >= 2 (signed)	Ask about armies on the march	army;march
+steam	PE:6a70a6d9:02711000	75	4	ABDUCTION	0x6acfb0	0x6987a2	trouble_amount < 2 (signed)	Ask about the abduction	abduction;kidnap
+steam	PE:6a70a6d9:02711000	75	4	ABDUCTION	0x6acfb0	0x6987a2	trouble_amount >= 2 (signed)	Ask about the abductions	abduction;kidnap
+steam	PE:6a70a6d9:02711000	75	5	OCCUPATION	0x6acfb0	0x698826	trouble_amount < 2 (signed)	Ask about the occupation	occupation
+steam	PE:6a70a6d9:02711000	75	5	OCCUPATION	0x6acfb0	0x698826	trouble_amount >= 2 (signed)	Ask about occupations	occupation
+steam	PE:6a70a6d9:02711000	75	6	BEAST_PRESENT	0x6acfb0	0x698879	trouble_amount < 2 (signed)	Ask about the beast	beast
+steam	PE:6a70a6d9:02711000	75	6	BEAST_PRESENT	0x6acfb0	0x698879	trouble_amount >= 2 (signed)	Ask about the beasts	beast
+steam	PE:6a70a6d9:02711000	75	7	CRIMINALS	0x6acfb0	0x6988ca	any trouble_amount	Ask about the criminals	crime;criminal
+steam	PE:6a70a6d9:02711000	75	8	BANDITS	0x6acfb0	0x69893f	any trouble_amount	Ask about the bandits	bandit
+steam	PE:6a70a6d9:02711000	75	9	SKULKING	0x6acfb0	0x698983	any trouble_amount	Ask about the skulking vermin	skulking;vermin
+steam	PE:6a70a6d9:02711000	75	10	EVIL_SITE	0x6acfb0	0x6989f8	any trouble_amount	Ask about the bone-chilling horror	horror
+steam	PE:6a70a6d9:02711000	75	11	ARMY_HARASSING	0x6acfb0	0x698a3c	any trouble_amount	Ask about the ruffians	ruffian
+steam	PE:6a70a6d9:02711000	75	12	WAR	0x6acfb0	0x698a80	any trouble_amount	Ask about the open war	war
+steam	PE:6a70a6d9:02711000	75	13	BREWING_TROUBLE_WITH_NEIGHBORS	0x6acfb0	0x698ac4	any trouble_amount	Ask about the brewing trouble	trouble
+steam	PE:6a70a6d9:02711000	75	14	MISSING_ARTIFACT	0x6acfb0	0x698b05	any trouble_amount	Ask about the missing treasure	treasure
+steam	PE:6a70a6d9:02711000	75	default	NONE=-1 or unsigned trouble_type > 14	0x6acfb0	0x698b49	unsigned trouble_type > 14	Ask about 	no keywords appended
+classic	PE:6a70b91c:0270a000	75	0	DEATH	0x6aa9d0	0x696001	trouble_amount < 2 (signed)	Ask about the death	death
+classic	PE:6a70b91c:0270a000	75	0	DEATH	0x6aa9d0	0x696001	trouble_amount >= 2 (signed)	Ask about the deaths	death
+classic	PE:6a70b91c:0270a000	75	1	CRIME	0x6aa9d0	0x696054	any trouble_amount	Ask about the law-breaking	crime;law
+classic	PE:6a70b91c:0270a000	75	2	CONFLICT	0x6aa9d0	0x6960c9	any trouble_amount	Ask about the fighting	fight;conflict
+classic	PE:6a70b91c:0270a000	75	3	ARMY_MARCHING	0x6aa9d0	0x69613e	trouble_amount < 2 (signed)	Ask about the army on the march	army;march
+classic	PE:6a70b91c:0270a000	75	3	ARMY_MARCHING	0x6aa9d0	0x69613e	trouble_amount >= 2 (signed)	Ask about armies on the march	army;march
+classic	PE:6a70b91c:0270a000	75	4	ABDUCTION	0x6aa9d0	0x6961c2	trouble_amount < 2 (signed)	Ask about the abduction	abduction;kidnap
+classic	PE:6a70b91c:0270a000	75	4	ABDUCTION	0x6aa9d0	0x6961c2	trouble_amount >= 2 (signed)	Ask about the abductions	abduction;kidnap
+classic	PE:6a70b91c:0270a000	75	5	OCCUPATION	0x6aa9d0	0x696246	trouble_amount < 2 (signed)	Ask about the occupation	occupation
+classic	PE:6a70b91c:0270a000	75	5	OCCUPATION	0x6aa9d0	0x696246	trouble_amount >= 2 (signed)	Ask about occupations	occupation
+classic	PE:6a70b91c:0270a000	75	6	BEAST_PRESENT	0x6aa9d0	0x696299	trouble_amount < 2 (signed)	Ask about the beast	beast
+classic	PE:6a70b91c:0270a000	75	6	BEAST_PRESENT	0x6aa9d0	0x696299	trouble_amount >= 2 (signed)	Ask about the beasts	beast
+classic	PE:6a70b91c:0270a000	75	7	CRIMINALS	0x6aa9d0	0x6962ea	any trouble_amount	Ask about the criminals	crime;criminal
+classic	PE:6a70b91c:0270a000	75	8	BANDITS	0x6aa9d0	0x69635f	any trouble_amount	Ask about the bandits	bandit
+classic	PE:6a70b91c:0270a000	75	9	SKULKING	0x6aa9d0	0x6963a3	any trouble_amount	Ask about the skulking vermin	skulking;vermin
+classic	PE:6a70b91c:0270a000	75	10	EVIL_SITE	0x6aa9d0	0x696418	any trouble_amount	Ask about the bone-chilling horror	horror
+classic	PE:6a70b91c:0270a000	75	11	ARMY_HARASSING	0x6aa9d0	0x69645c	any trouble_amount	Ask about the ruffians	ruffian
+classic	PE:6a70b91c:0270a000	75	12	WAR	0x6aa9d0	0x6964a0	any trouble_amount	Ask about the open war	war
+classic	PE:6a70b91c:0270a000	75	13	BREWING_TROUBLE_WITH_NEIGHBORS	0x6aa9d0	0x6964e4	any trouble_amount	Ask about the brewing trouble	trouble
+classic	PE:6a70b91c:0270a000	75	14	MISSING_ARTIFACT	0x6aa9d0	0x696525	any trouble_amount	Ask about the missing treasure	treasure
+classic	PE:6a70b91c:0270a000	75	default	NONE=-1 or unsigned trouble_type > 14	0x6aa9d0	0x696569	unsigned trouble_type > 14	Ask about 	no keywords appended
